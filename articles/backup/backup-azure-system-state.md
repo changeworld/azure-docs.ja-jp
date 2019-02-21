@@ -9,17 +9,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
-ms.openlocfilehash: a28e3fb18f2c0b65557034e388d08918c622b8f4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14de0f632584ff5fb1a6b4395298e9cecfe455e6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255866"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268725"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Windows のシステム状態を Resource Manager デプロイメントにバックアップする
 この記事では、Windows Server のシステム状態を Azure にバックアップする方法について説明します。 基本事項に関するチュートリアルです。
 
-Azure Backup の詳細については、こちらの [概要記事](backup-introduction-to-azure-backup.md)を参照してください。
+Azure Backup の詳細については、こちらの [概要記事](backup-overview.md)を参照してください。
 
 Azure サブスクリプションがない場合は、すべての Azure サービスにアクセスできる [無料アカウント](https://azure.microsoft.com/free/) を作成します。
 
@@ -131,7 +131,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
     ![コンテナー資格情報のダウンロード完了](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
 > [!NOTE]
-> コンテナー資格情報は、エージェントを使用する予定の Windows Server に対してローカルな場所にのみ保存する必要があります。 
+> コンテナー資格情報は、エージェントを使用する予定の Windows Server に対してローカルな場所にのみ保存する必要があります。
 >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
@@ -163,7 +163,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 エージェントがインストールされ、コンピューターがコンテナーに登録されました。 バックアップを構成してスケジュールする準備ができました。
 
-## <a name="back-up-windows-server-system-state"></a>Windows Server のシステム状態のバックアップ 
+## <a name="back-up-windows-server-system-state"></a>Windows Server のシステム状態のバックアップ
 初回バックアップには、次の 2 つのタスクが含まれています。
 
 * バックアップのスケジュール
@@ -194,7 +194,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 6. **[次へ]** をクリックします。
 
-7. 後続のページで、必要なバックアップの頻度およびシステム状態のバックアップの保持ポリシーを選択します。 
+7. 後続のページで、必要なバックアップの頻度およびシステム状態のバックアップの保持ポリシーを選択します。
 
 8. [確認] ページで情報を確認し、 **[完了]** をクリックします。
 

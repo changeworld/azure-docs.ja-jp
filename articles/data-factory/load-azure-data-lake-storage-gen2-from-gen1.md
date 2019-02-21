@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: da42e0bf86aca571fb26367f18bbf07f90f5531b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e1dd3953925d4907617295fbc14a1a4e042213e1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884615"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309609"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 

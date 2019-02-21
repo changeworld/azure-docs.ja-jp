@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 3b929c3f85bab4319fe2fef1b5c0575f0d1d972a
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 11ef6f2f09aacc175f095f7118ddb26ec77b2446
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511678"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268364"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション
 
@@ -280,7 +280,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
     }
     ```
 
-3. Azure に UserA としてログインし、[ポータル](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template)、[PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-a-template-from-your-local-machine) または [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) を使用してテンプレートをデプロイします。 手順 2 で保存したサンプルの json テキストのファイル名を指定します。
+3. Azure に UserA としてログインし、[ポータル](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template)、[PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-templates-stored-locally) または [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) を使用してテンプレートをデプロイします。 手順 2 で保存したサンプルの json テキストのファイル名を指定します。
 4. 手順 2 のサンプル json をコンピューター上のファイルにコピーして、次から始まる行を変更します。
     - **name**:*myVnetA/myVnetAToMyVnetB* を *myVnetB/myVnetBToMyVnetA* に変更します。
     - **id**:`<subscription ID>` を UserB のサブスクリプション ID で置き換え、*myVnetB* を *myVnetA* に変更します。

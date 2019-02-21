@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: da75d829ccb74f7be675501b601ad3e6375bfb70
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 00468ca62e55823b4706fc52d9793f676aebd368
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813162"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312856"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>サービス プリンシパルを作成してアプリケーションに Azure Stack リソースへのアクセスを付与する
 
@@ -50,7 +50,7 @@ Azure Stack に Active Directory を構成した方法によって、サービ�
 * [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) のサービス プリンシパルを作成する。
 * [Active Directory フェデレーション サービス (AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs) のサービス プリンシパルを作成する。
 
-サービス プリンシパルをロールに割り当てる手順は、Azure AD および AD FS で同じです。 サービス プリンシパルを作成した後は、ロールに割り当てることで[アクセス許可を委任](azure-stack-create-service-principals.md#assign-role-to-service-principal)できます。
+サービス プリンシパルをロールに割り当てる手順は、Azure AD および AD FS で同じです。 サービス プリンシパルを作成した後は、ロールに割り当てることで[アクセス許可を委任](azure-stack-create-service-principals.md)できます。
 
 ## <a name="create-service-principal-for-azure-ad"></a>Azure AD のサービス プリンシパルを作成する
 
@@ -85,7 +85,7 @@ Azure Stack で Azure AD を ID ストアとして使用する場合、Azure Por
 
 ![保存されているキーに対するキー値の警告です。](./media/azure-stack-create-service-principal/image15.png)
 
-最後の手順として、[アプリケーションへのロールの割り当て](azure-stack-create-service-principals.md#assign-role-to-service-principal)を行います。
+最後の手順として、[アプリケーションへのロールの割り当て](azure-stack-create-service-principals.md)を行います。
 
 ## <a name="create-service-principal-for-ad-fs"></a>AD FS のサービス プリンシパルを作成する
 

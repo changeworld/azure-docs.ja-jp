@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 68a652fe16162d96d4ec07e6690f10f0bd34f2c0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4dc68127f2d19426c372be027634bb2563dbfa6c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980875"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341659"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Azure Policy を使用して Windows VM への拡張機能のインストールを制限する
 
@@ -30,7 +30,7 @@ ms.locfileid: "55980875"
 
 ## <a name="create-a-rules-file"></a>規則ファイルを作成する
 
-どの拡張機能をインストールできるようにするかを制限するには、拡張機能を特定するロジックを提供する[規則](/azure/azure-policy/policy-definition#policy-rule)が必要です。
+どの拡張機能をインストールできるようにするかを制限するには、拡張機能を特定するロジックを提供する[規則](../../governance/policy/concepts/definition-structure.md#policy-rule)が必要です。
 
 この例では、Azure Cloud Shell で規則ファイルを作成することで、"Microsoft.Compute" によって発行された拡張機能を拒否する方法を示していますが、ローカルの PowerShell で作業している場合は、ローカル ファイルを作成して、パス ($home/clouddrive) を、ご利用のマシンのそのローカル ファイルへのパスに置き換えることもできます。
 
@@ -70,7 +70,7 @@ nano $home/clouddrive/rules.json
 
 ## <a name="create-a-parameters-file"></a>パラメーター ファイルを作成する
 
-また、ブロックする拡張機能の一覧を渡すための構造体が自動的に作成されるように、[パラメーター](/azure/azure-policy/policy-definition#parameters) ファイルを作成する必要もあります。 
+また、ブロックする拡張機能の一覧を渡すための構造体が自動的に作成されるように、[パラメーター](../../governance/policy/concepts/definition-structure.md#parameters) ファイルを作成する必要もあります。 
 
 この例では、Cloud Shell で VM 用のパラメーター ファイルを作成する方法を示していますが、ローカルの PowerShell で作業している場合は、ローカル ファイルを作成して、パス ($home/clouddrive) を、ご利用のマシンのそのローカル ファイルへのパスに置き換えることもできます。
 
@@ -166,4 +166,4 @@ Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows
 ```
     
 ## <a name="next-steps"></a>次の手順
-詳細については、[Azure Policy](../../azure-policy/azure-policy-introduction.md) に関するページをご覧ください。
+詳細については、[Azure Policy](../../governance/policy/overview.md) に関するページをご覧ください。

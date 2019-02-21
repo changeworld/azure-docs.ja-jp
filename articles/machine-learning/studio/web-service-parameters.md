@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 337e7a848b6aa141ecf4f96cd4f8f391be35a619
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5b216242b5c1c093c5f508adce04ef7b4bec4d1e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475535"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453190"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Azure Machine Learning Studio Web サービスのパラメーターの使用
 Azure Machine Learning Web サービスは、変更可能なパラメーターを持つモジュールを含む実験を発行すると作成されます。 状況によっては、Web サービスの実行中にモジュールの動作変更が必要になる場合がありますが、 *Web サービスのパラメーター*を使えばこのタスクを実行できます。 
@@ -57,7 +57,7 @@ Web サービスの API ドキュメントには、Web サービス アクセス
 
 3. **[Path to blob beginning with container parameter]** の右にあるアイコンをクリックします。 次のように表示されています。
    
-   ![Web サービスのパラメーター アイコン][icon]
+   ![Web サービスのパラメーター アイコン](./media/web-service-parameters/icon.png)
    
    [Set as web service parameter] を選択します。
    
@@ -65,7 +65,7 @@ Web サービスの API ドキュメントには、Web サービス アクセス
 4. Web サービスのパラメーターの名前を変更するには、名前をクリックし、「Blob path」と入力して **Enter** キーを押します。 
 5. Web サービスのパラメーターの既定値を指定するには、名前の右側にあるアイコンをクリックして、[Provide default value] を選択して値を入力し (たとえば 「container1/output1.csv」)、 **Enter** キーを押します。
    
-   ![Web サービスのパラメーター][parameter]
+   ![Web サービスのパラメーター](./media/web-service-parameters/parameter.png)
 6. **[実行]** をクリックします。 
 7. **[Web サービスのデプロイ]** をクリックし、**[Deploy Web Service [Classic] \(Web サービスのデプロイ [従来])]** または **[Deploy Web Service [New] \(Web サービスのデプロイ [新規])]** を選択して、Web サービスをデプロイします。
 
@@ -78,11 +78,6 @@ Web サービスの API ドキュメントには、Web サービス アクセス
 詳細については、[Machine Learning Blog (Machine Learning ブログ)](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) の「[Web サービスのパラメーター (ブログの投稿)](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx)」をご覧ください。
 
 Machine Learning Web サービスへのアクセスの詳細については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)」を参照してください。
-
-<!-- Images -->
-[icon]: ./media/web-service-parameters/icon.png
-[parameter]: ./media/web-service-parameters/parameter.png
-
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

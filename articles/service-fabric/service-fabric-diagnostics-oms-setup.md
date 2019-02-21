@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: dc48194f4740216089f3daa869576596899e272b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5567b774171a63cc4d329daf6429cfc78e140dd3
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439053"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455077"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>クラスターに Log Analytics を設定する
 
@@ -99,7 +99,7 @@ Azure Resource Manager は、このコマンドが既存のリソースに対す
 
 ```PowerShell
 
-$SubscriptionName = "<Name of your subscription>"
+$SubID = "<subscription ID>"
 $ResourceGroup = "<Resource group name>"
 $Location = "<Resource group location>"
 $WorkspaceName = "<Log Analytics workspace name>"

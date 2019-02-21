@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 1b58401a6697cdc80acc9badaf018923c5a9a980
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: cdd709fa446ffe769c8c57aeb44fe592b12e92d4
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660291"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416111"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 
@@ -73,7 +73,7 @@ AzureRM.Resources および AzureRM.Sql モジュールの必須バージョン�
 次の手順に従って、新しい Azure Automation Runbook を作成します。
 
 - 前の手順で作成した Azure Automation アカウントにアクセスします。
-- Automation アカウントのウィンドウが表示されたら、左側の **[Runbook]** メニュー項目をクリックして、PowerShell スクリプトを含む新しい Azure Automation Runbook を作成します。 Automation Runbook の作成について詳しくは、「[新しい Runbook の作成](../automation/automation-creating-importing-runbook.md)」をご覧ください。
+- Automation アカウントのウィンドウが表示されたら、左側の **[Runbook]** メニュー項目をクリックして、PowerShell スクリプトを含む新しい Azure Automation Runbook を作成します。 Automation Runbook の作成について詳しくは、「[新しい Runbook の作成](../automation/manage-runbooks.md#create-a-runbook)」をご覧ください。
 - 新しい Runbook を追加するには、**[+ Runbook の追加]** メニュー オプションをクリックしてから、**[簡易作成 – 新しい Runbook の作成]** をクリックします。
 - [Runbook] ウィンドウで、Runbook の名前 (この例のためには 「**AutomaticTuningEmailAutomation**」を使用) を入力し、Runbook の種類として **PowerShell** を選択し、この Runbook の目的を示す説明を入力します。
 - **[作成]** ボタンをクリックすると、新しい Runbook の作成が完了します。

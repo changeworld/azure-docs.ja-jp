@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/25/2018
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8cc253f751b209332ee890c0ebc9b6846d4feab5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f93d9eaefe18dd012a639cd26636b56b9eb09249
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749850"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427638"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -113,7 +113,6 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
    }
    ```
 
-
 ## <a name="identify-devices-using-tags"></a>タグを使用したデバイスの識別
 
 デプロイを作成する前に、影響を与えるデバイスを指定できる必要があります。 Azure IoT Edge では、デバイス ツイン内の**タグ**を使用してデバイスを識別します。 各デバイスには複数のタグを設定することができ、ソリューションに適した任意の方法で定義できます。 たとえば、スマート ビルのキャンパスを管理している場合は、デバイスに次のタグを追加できます。
@@ -155,10 +154,12 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
    ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
    ```
+
 * **--deployment-id** - IoT ハブに存在するデプロイの名前です。
 * **--hub-name** - デプロイが存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 
 コマンド ウィンドウで、デプロイを検査します。 **メトリック** プロパティは、各ハブによって評価される各メトリックの数を表示します。
+
 * **targetedCount** - ターゲット条件と一致する IoT Hub 内のデバイス ツインの数を指定するシステム メトリックです。
 * **appliedCount** - IoT Hub 内でモジュール ツインにデプロイ コンテンツが適用されているデバイスの数を指定するシステム メトリックです。
 * **reportedSuccessfulCount** - IoT Edge クライアント ランタイムからデプロイの完了を報告している Edge デバイスの数を指定するデバイス メトリックです。
@@ -179,6 +180,7 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 デプロイを変更すると、変更はすべての対象デバイスにただちにレプリケートされます。 
 
 対象の条件を更新すると、次の更新が実行されます。
+
 * デバイスが古い対象条件を満たさないが、新しい対象条件を満たしており、このデプロイのそのデバイスに対する優先度が最も高い場合は、このデプロイは、このデバイスに適用されます。 
 * このデプロイを現在実行しているデバイスが対象条件を満たさなくなった場合、このデプロイはアンインストールされ、次に優先度の高いデプロイが適用されます。 
 * このデプロイを現在実行しているデバイスが対象条件を満たさなくなり、他のデプロイの対象条件を満たさない場合は、デバイスではなにも変更されません。 デバイスは現在の状態で現在のモジュールを実行し続けますが、このデプロイの一部としては管理されなくなります。 デバイスが他のデプロイの対象の条件を満たすと、このデプロイはアンインストールされ、新しいデプロイが適用されます。 
@@ -188,12 +190,13 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
    ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
    ```
+
 * **--deployment-id** - IoT ハブに存在するデプロイの名前です。
 * **--hub-name** - デプロイが存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 * **--set** - デプロイのプロパティを更新します。 次のプロパティを更新することができます。
-    * targetCondition - `targetCondition=tags.location.state='Oregon'` など
-    * labels 
-    * priority
+  * targetCondition - `targetCondition=tags.location.state='Oregon'` など
+  * labels 
+  * priority
 
 
 ## <a name="delete-a-deployment"></a>デプロイの削除
@@ -205,6 +208,7 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
    ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name] 
    ```
+
 * **--deployment-id** - IoT ハブに存在するデプロイの名前です。
 * **--hub-name** - デプロイが存在する IoT ハブの名前です。 ハブは現在のサブスクリプションにある必要があります。 コマンド `az account set -s [subscription name]` を使用して目的のサブスクリプションに切り替えます。
 

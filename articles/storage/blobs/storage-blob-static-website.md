@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 81e0e89a8ad17c92a707bae001d2861404cd0d10
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cff8b8af4ca40d428edf7c6e35976bcb154a28f1
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238841"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328692"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
 Azure Storage GPv2 アカウントでは、*$web* という名前のストレージ コンテナーから直接、静的コンテンツ (HTML、CSS、JavaScript、画像ファイル) を提供できます。 Azure Storage でのホスティングを活用すれば、[Azure Functions](/azure/azure-functions/functions-overview) やその他の PaaS サービスなど、サーバーレス アーキテクチャを使用できます。
@@ -109,7 +109,7 @@ az storage blob upload-batch -s <SOURCE_PATH> -d \$web --account-name <ACCOUNT_N
 
 - [AzCopy](../common/storage-use-azcopy.md)
 - [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
-- [Azure Pipelines](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
+- [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 - [Visual Studio Code 拡張機能](https://code.visualstudio.com/tutorials/static-website/getting-started)
 
 どの場合も、ファイルを *$web* コンテナーにコピーしてください。

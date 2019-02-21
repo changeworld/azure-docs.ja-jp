@@ -9,12 +9,12 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 22cfdd22a8d2adacb5a5a5c817a628fe2c072755
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1d07ad7e60e1ee9ff3216767fcfc77405d557f44
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001699"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455111"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法
 
@@ -50,11 +50,11 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 
 たとえば、次の実験では、サンプルの国勢調査のデータを使用した 2 クラスのブースト デシジョン ツリー モデルをトレーニングします。
 
-![トレーニング実験][figure1]
+![トレーニング実験](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
 
 この実験のモジュールは、基本的に 4 つの異なる機能を実行します。
 
-![モジュール関数][figure2]
+![モジュール関数](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
 
 トレーニング実験を予測実験に変換すると、これらのモジュールの一部は不要になったり、別の役割を果たすようになります。
 
@@ -70,7 +70,7 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 
 **[Web サービスの設定]** をクリックした後で、この例がどのようになるのかを次に示します。
 
-![変換された予測実験][figure3]
+![変換された予測実験](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
 **[Web サービスの設定]** によって実行された作業は、実験を Web サービスとしてデプロイするための準備として十分な場合があります。 ただし、実験に合わせて追加の作業を実行する可能性があります。
 
@@ -79,7 +79,7 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 
 たとえば、既定では、上の図で示すように、**[Web サービスの設定]** によって、**Web サービスの入力**モジュールがデータ フローの上部に配置されます。 ただし、**Web サービスの入力**をデータ処理モジュールの先に手動で配置することができます。
 
-![Web サービス入力の移動][figure4]
+![Web サービス入力の移動](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
 Web サービスを通じて提供される入力データが、これで処理なしでモデルのスコア付けモジュールに直接渡されるようになりました。
 
@@ -88,14 +88,14 @@ Web サービスを通じて提供される入力データが、これで処理�
 
 たとえば、入力データのベクトル全体ではなく、スコア付けの結果のみを返すようにする場合は、[データセット内の列の選択][select-columns]モジュールを追加して、スコア付けの結果以外のすべての列を除外できます。 次に、**Web サービスの出力**モジュールを[データセット内の列の選択][select-columns]モジュールの出力に移動します。 実験は次のようになります。
 
-![Web サービス出力の移動][figure5]
+![Web サービス出力の移動](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
 ### <a name="add-or-remove-additional-data-processing-modules"></a>データ処理モジュールを追加または削除する
 スコア付け中に必要ないことがわかっているモジュールが、他にも実験に存在する場合は、それらを削除できます。 たとえば、**Web サービスの入力**モジュールをデータ処理モジュールの後の地点に移動したため、[見つからないデータのクリーンアップ][clean-missing-data] モジュールを予測実験から削除できます。
 
 これで、予測実験が次のようになります。
 
-![その他のモジュールの取り外し][figure6]
+![その他のモジュールの取り外し](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
 
 
 ### <a name="add-optional-web-service-parameters"></a>オプションの Web サービス パラメーターを追加する
@@ -116,16 +116,6 @@ Web サービス パラメーターとその使用方法の詳細については
 完全なデプロイ プロセスの詳細については、「[Azure Machine Learning Web サービスをデプロイする][deploy]」を参照してください。
 
 [deploy]: publish-a-machine-learning-web-service.md
-
-
-<!-- Images -->
-[figure1]:./media/convert-training-experiment-to-scoring-experiment/figure1.png
-[figure2]:./media/convert-training-experiment-to-scoring-experiment/figure2.png
-[figure3]:./media/convert-training-experiment-to-scoring-experiment/figure3.png
-[figure4]:./media/convert-training-experiment-to-scoring-experiment/figure4.png
-[figure5]:./media/convert-training-experiment-to-scoring-experiment/figure5.png
-[figure6]:./media/convert-training-experiment-to-scoring-experiment/figure6.png
-
 
 <!-- Module References -->
 [clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/

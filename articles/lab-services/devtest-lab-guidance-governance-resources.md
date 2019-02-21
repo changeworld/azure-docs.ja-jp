@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: aff57e58ffd247bcc697908f2f25cbf17ff9b91a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c5514a43602106cf045b575d289e02b591468359
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244132"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338463"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs インフラストラクチャのガバナンス - リソース
 この記事では、組織内での DevTest Labs 用リソースの調整と管理について説明します。 
@@ -56,7 +56,7 @@ DevTest Labs 環境全体で名前付け規則を維持するにはどうすれ�
 ### <a name="answer"></a>Answer
 現在の社内の名前付け規則を Azure の運用環境にまで拡張し、DevTest Labs 環境全体で一貫性を持たせたいことがあります。
 
-DevTest Labs をデプロイするときは、開始時のポリシーを具体的に設けることをお勧めします。 一元化されたスクリプトと JSON テンプレートを使用してポリシーをデプロイすることで、一貫性を適用できます。 名前付けポリシーは、サブスクリプション レベルで適用される Azure のポリシーによって実装できます。 Azure Policy の JSON サンプルについては、「[Azure Policy のサンプル](../azure-policy/json-samples.md)」をご覧ください。
+DevTest Labs をデプロイするときは、開始時のポリシーを具体的に設けることをお勧めします。 一元化されたスクリプトと JSON テンプレートを使用してポリシーをデプロイすることで、一貫性を適用できます。 名前付けポリシーは、サブスクリプション レベルで適用される Azure のポリシーによって実装できます。 Azure Policy の JSON サンプルについては、「[Azure Policy のサンプル](../governance/policy/samples/index.md)」をご覧ください。
 
 ## <a name="number-of-users-per-lab-and-labs-per-organization"></a>ラボあたりのユーザーの数と組織あたりのラボの数
 

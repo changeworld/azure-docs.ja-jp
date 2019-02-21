@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 53ebb8ce51527adbd67310b19dccd6c7cbabf37f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 5ed1e393c78f0f8d74ad6ae8096fb8b3e384e6e0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977524"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308827"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Text Analytics の docker コンテナーの構成
 
@@ -27,11 +27,11 @@ Text Analytics ではコンテナーごとに一般的な構成フレームワ�
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [`ApiKey`](#apikey-setting)、[`Billing`](#billing-setting)、[`Eula`](#eula-setting) の各設定は一緒に使用されるため、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、お客様のコンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](how-tos/text-analytics-how-to-install-containers.md#billing)」を参照してください。
+> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting)、[`Eula`](#eula-setting) の各設定は一緒に使用されるため、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、お客様のコンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](how-tos/text-analytics-how-to-install-containers.md#billing)」を参照してください。
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 
-`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-setting) 構成設定に指定された _Text Analytics_ リソースの有効なキーであることが必要です。
+`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-configuration-setting) 構成設定に指定された _Text Analytics_ リソースの有効なキーであることが必要です。
 
 この設定は次の場所で確認できます。
 

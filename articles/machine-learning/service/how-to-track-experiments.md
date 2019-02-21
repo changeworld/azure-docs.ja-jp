@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 07b29b05bc15f57d6fd3ec64ceaee812b912b0f6
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2d528d26fa2597c35c16e50cecffcd10971bdcd5
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977900"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447119"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Azure Machine Learning で実験とトレーニング メトリックを追跡する
 
@@ -265,7 +265,7 @@ az ml run cancel -r <run_id> -p <project_path>
 2. **[自動化された機械学習の実行の場合]** 前回の実行のグラフにアクセスするには。 `<<experiment_name>>` は適切な実験名に置き換えてください。
 
    ``` 
-   from azureml.train.widgets import RunDetails
+   from azureml.widgets import RunDetails
    from azureml.core.run import Run
 
    experiment = Experiment (workspace, <<experiment_name>>)

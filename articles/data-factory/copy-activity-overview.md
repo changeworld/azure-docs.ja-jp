@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: e7d08ec0d25e7666acb510c4bae5533975b21039
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 154e0dcefab6d5bcdfc9532ba4258d09593f0970
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296547"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311134"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -240,7 +240,7 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 
 **例: パフォーマンスのチューニングに関するヒントを使用した Azure SQL DB へのコピー**
 
-このサンプルでは、コピーの実行中、シンク Azure SQL DB が高 DTU 使用率に達して書き込み操作が低速化するため、より多くの DTU を使用して Azure SQL DB 層を増やすという提案が ADF から通知されています。 
+このサンプルでは、コピーの実行中に ADF が、シンク Azure SQL DB が書き込み操作を遅くする高 DTU 使用率に達したため、より多くの DTU のある Azure SQL DB 層を増やすという提案を通知します。 
 
 ![パフォーマンスのチューニングに関するヒントを使用したコピーの監視](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 

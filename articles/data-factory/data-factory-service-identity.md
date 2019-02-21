@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 068929bbde8e4c1411004b45fc77f0188de43ff8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7937836daad5ad299f3e5b7b6b7994ae40a833fd
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814202"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446888"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory サービス ID
 
@@ -73,7 +73,7 @@ ProvisioningState : Succeeded
 要求本文の "identity" セクションを使用して、次の API を呼び出します。
 
 ```
-PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2017-09-01-preview
+PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
 **要求本文**: add "identity": { "type":"SystemAssigned" } を追加します。
@@ -99,7 +99,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
         "provisioningState": "Succeeded",
         "loggingStorageAccountKey": "**********",
         "createTime": "2017-09-26T04:10:01.1135678Z",
-        "version": "2017-09-01-preview"
+        "version": "2018-06-01"
     },
     "identity": {
         "type": "SystemAssigned",

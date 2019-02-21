@@ -3,8 +3,8 @@ title: 'App Services をデプロイする: Azure Stack | Microsoft Docs'
 description: Azure Stack への App Service のデプロイに関する詳しいガイダンスです
 services: azure-stack
 documentationcenter: ''
-author: apwestgarth
-manager: stefsch
+author: jeffgilb
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: azure-stack
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
-ms.author: anwestg
+ms.author: jeffgilb
+ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: c3d120b8d124ce8c5536365e25bf8ffa500d4cbb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 60767c3c61b0d386e4ac9b0a93d16ad161c59949
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251172"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445936"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>App Service リソース プロバイダーを Azure Stack に追加する
 
@@ -113,7 +114,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
    c. **[Identity Application certificate password]\(ID アプリケーションの証明書パスワード\)** ボックスで、証明書のパスワードを入力します。 このパスワードは、証明書作成のスクリプトを使ったときに書き留めたものです。
 
-   d. **[Azure Resource Manager root certificate file]\(Azure Resource Manager のルート証明書ファイル\)** ボックスで、証明書ファイルの場所を入力 (または参照) します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Azure Resource Manager root certificate file]\(Azure Resource Manager のルート証明書ファイル\)** ボックスで、証明書ファイルの場所を入力 (または参照) します。
 
    e. **[次へ]** を選択します。
 
@@ -159,7 +160,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
     | --- | --- | --- | --- |
     | コントローラー | 1 | Standard_A2 - (2 vCPU、3584 MB) | App Service クラウドの正常性を管理および維持します。 |
     | 管理 | 1 | Standard_A2 - (2 vCPU、3584 MB) | App Service Azure Resource Manager および API のエンドポイント、ポータル拡張機能 (管理、テナント、Functions ポータル)、データ サービスを管理します。 フェールオーバーをサポートする場合は、お勧めのインスタンス数は 2 つに増えます。 |
-    | 発行元 | 1 | Standard_A1 - (1 vCPU、1792 MB) | FTP および Web デプロイによってコンテンツを公開します。 |
+    | Publisher | 1 | Standard_A1 - (1 vCPU、1792 MB) | FTP および Web デプロイによってコンテンツを公開します。 |
     | FrontEnd | 1 | Standard_A1 - (1 vCPU、1792 MB) | App Service アプリケーションに要求をルーティングします。 |
     | 共有 Worker | 1 | Standard_A1 - (1 vCPU、1792 MB) | Web または API アプリケーション、および Azure Functions アプリをホストします。 より多くのインスタンスの追加が必要になる場合があります。 オペレーターは、サービスを定義することや任意の SKU レベルを選ぶことができます。 レベルには、少なくとも 1 つの vCPU が必要です。 |
 

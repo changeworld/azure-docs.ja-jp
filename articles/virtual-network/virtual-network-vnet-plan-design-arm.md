@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: ef293b39d0e82cdd26e0c41af5d63d0459064017
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: acd7a88acb31b9d3bd3ba714387561e91b3524a6
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820795"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339518"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
 
@@ -113,7 +113,7 @@ Azure は、リソースに対して[ロール ベースのアクセス制御](.
 
 Azure Policy を使って、ポリシーの定義の作成、割り当て、管理を行うことができます。 ポリシー定義は、リソースにさまざまな規則を適用し、組織の標準とサービス レベル アグリーメントへのリソースの準拠が維持されるようにします。 Azure Policy によって、リソースの評価が実行され、ユーザーのポリシー定義に準拠していないリソースがスキャンされます。 たとえば、特定のリソース グループまたはリージョン内でのみ仮想ネットワークの作成を許可するようなポリシーを定義して適用することができます。 または、すべてのサブネットにネットワーク セキュリティ グループが関連付けられていることを要求するポリシーを作成できます。 ポリシーは、リソースを作成および更新するときに評価されます。
 
-ポリシーは、次の階層に対して適用されます。サブスクリプション、管理グループ、およびリソース グループ。 詳しくは、[Azure Policy](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照するか、仮想ネットワーク [ポリシー テンプレート](policy-samples.md)のサンプルをデプロイしてください。
+ポリシーは、次の階層に対して適用されます。サブスクリプション、管理グループ、およびリソース グループ。 詳しくは、[Azure Policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照するか、仮想ネットワーク [ポリシー テンプレート](policy-samples.md)のサンプルをデプロイしてください。
 
 ## <a name="next-steps"></a>次の手順
 

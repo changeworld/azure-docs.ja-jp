@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/12/2019
-ms.openlocfilehash: 8d7fc6d8f581c3ad0e0f3266ea615acadcb7bc25
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.date: 02/15/2019
+ms.openlocfilehash: d67bc99a63242dd56d65d6bdac0448c7742a6b9d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176205"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311904"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -67,9 +67,10 @@ ISE をデプロイする仮想ネットワークのサブネット間で送信�
 | Azure Logic Apps への通信 <br>Azure Logic Apps からの通信 | 受信 <br>送信 | * <br>80、443 | INTERNET <br>VIRTUAL_NETWORK |
 | Azure Active Directory | 送信 | * <br>80、443 | VIRTUAL_NETWORK <br>AzureActiveDirectory |
 | Azure Storage の依存関係 | 送信 | * <br>80、443 | VIRTUAL_NETWORK <br>Storage |
+| ロジック アプリの実行履歴 | 受信 | * <br>443 | INTERNET <br>VIRTUAL_NETWORK |
 | 接続管理 | 送信 | * <br>443 | VIRTUAL_NETWORK <br>INTERNET |
 | 診断ログとメトリックの発行 | 送信 | * <br>443 | VIRTUAL_NETWORK <br>AzureMonitor |
-| Logic Apps デザイナー - 動的プロパティ <br>ロジック アプリの実行履歴 <br>コネクタのデプロイ <br>要求トリガーのエンドポイント | 受信 | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
+| Logic Apps デザイナー - 動的プロパティ <br>コネクタのデプロイ <br>要求トリガーのエンドポイント | 受信 | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
 | App Service の管理の依存関係 | 受信 | * <br>454、455 | AppServiceManagement <br>VIRTUAL_NETWORK |
 | API Management - 管理エンドポイント | 受信 | * <br>3443 | APIManagement <br>VIRTUAL_NETWORK |
 | ログから Event Hub ポリシーおよび監視エージェントへの依存関係 | 送信 | * <br>5672 | VIRTUAL_NETWORK <br>EventHub |

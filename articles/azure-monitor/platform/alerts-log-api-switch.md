@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 879a91d7007057e577631e157dae71f1566acab6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6af1c5347a522f7e42feecb6722dfbb64439d086
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118226"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341013"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>ログ アラートの API の基本設定を切り替える
 
@@ -61,7 +61,7 @@ PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers
 この API には、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンドライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を使用して PowerShell コマンド ラインからアクセスすることもできます。 下に示すように、サンプル PUT 呼び出しで ARMclient ツールを使用して、特定の Log Analytics ワークスペースに関連付けられているすべてのアラート ルールを切り替えます。
 
 ```PowerShell
-$switchJSON = {'scheduledQueryRulesEnabled': 'true'}
+$switchJSON = '{"scheduledQueryRulesEnabled": "true"}'
 armclient PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $switchJSON
 ```
 

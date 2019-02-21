@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 07dae60d1d4ab43194f88f44bde498d9fa19ce81
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 50a8c30831ba806d0ea02d4f67b4e672e71e6325
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508540"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415087"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway-preview"></a>Azure ポイント対サイト VPN Gateway 用に OpenVPN を構成する (プレビュー)
 
@@ -20,6 +20,8 @@ ms.locfileid: "55508540"
 
 > [!IMPORTANT]
 > このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="register"></a>この機能を登録する
 
@@ -32,17 +34,17 @@ Azure Cloud Shell を使用してこの機能を簡単に登録するには、�
 **[TryIt]** をクリックした後、Azure Cloud Shell を開くには、次のコマンドをコピーして貼り付けます。
 
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
  
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
 機能が登録済みと表示されたら、サブスクリプションを Microsoft.Network 名前空間に再登録します。
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
 ## <a name="vnet"></a>1.ポイント対サイト VPN を作成する
@@ -61,8 +63,8 @@ Resource Manager PowerShell コマンドレットの最新版をインストー�
 ゲートウェイで OpenVPN を有効にします。 ゲートウェイがポイント対サイト (IKEv2 または SSTP) 用に既に構成されていることを確認してから、次のコマンドを実行してください。
 
 ```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $rgname -name $name
-Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVPN
+$gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name
+Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVPN
 ```
 
 ## <a name="next-steps"></a>次の手順

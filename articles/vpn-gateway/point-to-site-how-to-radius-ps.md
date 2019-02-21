@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
-ms.openlocfilehash: 01ce4bb7b48e2f1331ebb57dc503c79b31bcc8b0
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0d31129a94d6e575ead01a62d22ae3ce8f2acf64
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700035"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414918"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する:PowerShell
 
@@ -40,6 +40,8 @@ P2S 接続には、以下のものが必要です。
 * RouteBased VPN ゲートウェイ。 
 * ユーザー認証を処理する RADIUS サーバー。 RADIUS サーバーは、オンプレミスまたは Azure VNet にデプロイできます。
 * VNet に接続する Winodows デバイスの VPN クライアント構成パッケージ。 VPN クライアント構成パッケージには、VPN クライアントが P2S を介して接続するために必要な設定が含まれています。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="aboutad"></a>P2S VPN の Active Directory (AD) ドメイン認証について
 
@@ -94,31 +96,31 @@ Azure サブスクリプションを持っていることを確認します。 A
 1. リソース グループを作成します。
 
   ```azurepowershell-interactive
-  New-AzureRmResourceGroup -Name "TestRG" -Location "East US"
+  New-AzResourceGroup -Name "TestRG" -Location "East US"
   ```
 2. 仮想ネットワークのサブネット構成を作成し、*FrontEnd*、*BackEnd*、*GatewaySubnet* いう名前を付けます。 これらのプレフィックスは、宣言した VNet アドレス空間に含まれている必要があります。
 
   ```azurepowershell-interactive
-  $fesub = New-AzureRmVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
-  $besub = New-AzureRmVirtualNetworkSubnetConfig -Name "Backend" -AddressPrefix "10.254.1.0/24"  
-  $gwsub = New-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "192.168.200.0/24"
+  $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
+  $besub = New-AzVirtualNetworkSubnetConfig -Name "Backend" -AddressPrefix "10.254.1.0/24"  
+  $gwsub = New-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -AddressPrefix "192.168.200.0/24"
   ```
 3. 仮想ネットワークを作成します。
 
   この例では、-DnsServer サーバー パラメーターはオプションです。 値を指定しても新しい DNS サーバーは作成されません。 指定する DNS サーバーの IP アドレスは、VNet から接続するリソースの名前を解決できる DNS サーバーの IP アドレスである必要があります。 この例ではプライベート IP アドレスを使用していますが、これはおそらく実際の DNS サーバーの IP アドレスと一致しません。 実際には独自の値を使用してください。 指定された値は、P2S 接続ではなく、VNet にデプロイするリソースが使用します。
 
   ```azurepowershell-interactive
-  New-AzureRmVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
+  New-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG" -Location "East US" -AddressPrefix "192.168.0.0/16","10.254.0.0/16" -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
   ```
 4. VPN ゲートウェイには、パブリック IP アドレスが必要です。 これにはまず IP アドレスのリソースを要求したうえで、仮想ネットワーク ゲートウェイの作成時にそのリソースを参照する必要があります。 IP アドレスは、VPN ゲートウェイの作成時にリソースに対して動的に割り当てられます。 VPN Gateway では現在、パブリック IP アドレスの "*動的*" 割り当てのみサポートしています。 静的パブリック IP アドレスの割り当てを要求することはできません。 もっとも、VPN ゲートウェイに割り当てられた IP アドレスが後から変わることは基本的にありません。 パブリック IP アドレスが変わるのは、ゲートウェイが削除され、再度作成されたときのみです。 VPN ゲートウェイのサイズ変更、リセット、その他の内部メンテナンス/アップグレードでは、IP アドレスは変わりません。
 
   動的に割り当てられたパブリック IP アドレスを要求する変数を指定します。
 
   ```azurepowershell-interactive
-  $vnet = Get-AzureRmVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG"  
-  $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet 
-  $pip = New-AzureRmPublicIpAddress -Name "VNet1GWPIP" -ResourceGroupName "TestRG" -Location "East US" -AllocationMethod Dynamic 
-  $ipconf = New-AzureRmVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
+  $vnet = Get-AzVirtualNetwork -Name "VNet1" -ResourceGroupName "TestRG"  
+  $subnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet 
+  $pip = New-AzPublicIpAddress -Name "VNet1GWPIP" -ResourceGroupName "TestRG" -Location "East US" -AllocationMethod Dynamic 
+  $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
   ```
 
 ## 2.<a name="radius"></a>RADIUS サーバーの設定
@@ -139,7 +141,7 @@ VPN ゲートウェイを VNet 用に構成して作成します。
 * 選択する [ゲートウェイ SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)  によっては、VPN ゲートウェイの作成が完了するまでに最大で 45 分かかる場合があります。
 
 ```azurepowershell-interactive
-New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
+New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -Location $Location -IpConfigurations $ipconf -GatewayType Vpn `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1
 ```
@@ -166,8 +168,8 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
   SSTP 構成の場合:
 
     ```azurepowershell-interactive
-    $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
-    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
+    $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
     -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol "SSTP" `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
@@ -175,8 +177,8 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
   IKEv2 構成の場合:
 
     ```azurepowershell-interactive
-    $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
-    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
+    $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
     -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol "IKEv2" `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
@@ -184,8 +186,8 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
   SSTP と IKEv2 の場合
 
     ```azurepowershell-interactive
-    $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
-    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
+    $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
     -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol @( "SSTP", "IkeV2" ) `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```

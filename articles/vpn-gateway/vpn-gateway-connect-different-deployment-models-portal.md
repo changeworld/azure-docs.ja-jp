@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9779885869666ffd1198afcda944823b99d52e5b
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508336"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417975"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -30,6 +30,8 @@ ms.locfileid: "55508336"
 仮想ネットワーク ゲートウェイがまだなく、新しく作成しない場合は、代わりに VNet ピアリングを使用して VNet を接続することを検討する可能性があります。 VNet ピアリングは、VPN ゲートウェイを使用しません。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
 ### <a name="before"></a>開始する前に
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * 次の手順では、両方の VNet が既に作成されていることを前提にしています。 この記事を演習として使用しており、VNet がない場合は、手順内のリンクを使用して作成できます。
 * これらの VNet のアドレス範囲が互いに重複しておらず、ゲートウェイの接続先になる可能性のある他の接続の範囲と重複していないことを確認します。
@@ -113,7 +115,7 @@ VPN Gateway と共に VNet を既に使用している場合、そのゲート�
 2. **[ゲートウェイの構成 (オプション)]** をクリックして、**[ゲートウェイの構成]** ページを開きます。
 
   ![[ゲートウェイの構成] ページを開く](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "[ゲートウェイの構成] ページを開く")
-3. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、**[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet**で既に構成されています。
+3. **[Subnet - Configure required settings]\(サブネット - 必要な設定の構成\)** ページをクリックして、**[サブネットの追加]** を開きます。 **[名前]** は、必須の値 **GatewaySubnet**。
 4. **[アドレス範囲]** は、ゲートウェイ サブネットの範囲を示します。 /29 アドレス範囲 (3 アドレス) でゲートウェイ サブネットを作成することもできますが、さらに多くの IP アドレスを含むゲートウエイ サブネットを作成することをお勧めします。 これにより、将来の構成でさらに多くの IP アドレスが必要になった場合にも対応できるようになります。 可能であれば、/27 または /28 を使います。 これらの手順を演習として使用している場合は、[例の値](#values)を参照してください。 この例では、10.0.0.32/28 を使用します。 **[OK]** をクリックして、ゲートウェイ サブネットを作成します。
 5. **[ゲートウェイの構成]** ページの **[サイズ]** は、ゲートウェイの SKU を示します。 VPN Gateway のゲートウェイ SKU を選びます。
 6. **[ルーティングの種類]** が **[動的]** であることを確認した後、**[OK]** をクリックして **[新しい VPN 接続]** ページに戻ります。
@@ -226,19 +228,19 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 管理者特権を使って PowerShell コンソールを開き、Azure アカウントにログインします。 ログイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。 次のコマンドレットは、Resource Manager デプロイ モデルの Azure アカウント用のログイン資格情報をユーザーに求めます。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Azure サブスクリプションの一覧を取得します。
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 複数のサブスクリプションがある場合は、使用するサブスクリプションを指定します。
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+Select-AzSubscription -SubscriptionName "Name of subscription"
 ```
 
 次に、ログインしてクラシック PowerShell コマンドレット (Service Management) を使用します。 クラシック デプロイ モデルに Azure アカウントを追加するには、次のコマンドを使用します。

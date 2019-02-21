@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: fca4b7cc59bf191094400892a37addf1023e2f85
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2e17ab5cfe51f3772148cc730c982671d602a79a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472951"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340480"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>データ サイエンス仮想マシンに基づくチーム分析と AI 環境 
 [データ サイエンス仮想マシン](overview.md) (DSVM) は、人工知能 (AI) およびデータ分析用にあらかじめ構築されているソフトウェアで、Azure プラットフォーム上のリッチな環境を提供します。 
@@ -47,7 +47,7 @@ DSVM は、Azure インフラストラクチャ レベルで動作するため�
 * [監視](https://docs.microsoft.com/azure/virtual-machines/windows/monitor)と[管理](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [ログ記録と監査](https://docs.microsoft.com/azure/security/azure-log-audit)
 * [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)
-* [ポリシーの設定と適用](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)
+* [ポリシーの設定と適用](../../governance/policy/overview.md)
 * [マルウェア対策](https://docs.microsoft.com/azure/security/azure-security-antimalware)
 * [暗号化](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [データの探索とガバナンス](https://docs.microsoft.com/azure/data-catalog/)

@@ -5,15 +5,15 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 12/21/2018
 ms.author: cynthn;davberg
 ms.custom: include file
-ms.openlocfilehash: 29f1ad29bf305150592fd1e634e006f83b296bbc
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 86320af20a5f296358e1fd1d38eb297a8bb1a4bb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53784503"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56331104"
 ---
 Azure コンピューティング ユニット (ACU) の概念は、Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供します。 これは、パフォーマンス ニーズを満たす可能性が最も高い SKU を簡単に見つけるのに役立ちます。  現在、ACU は小さい (Standard_A1) VM を 100 として標準化されており、他のすべての SKU についてはその SKU が標準ベンチマークをそれよりどれくらい速く実行できるかが表されます。 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: a35bde6e89290fd2282ba6ec829f46cb4c6fc225
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5242f31ff35e367211d48157fd4953751d1bb148
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103317"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416294"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell を使用して ExpressRoute およびサイト間の共存接続を構成する
 > [!div class="op_single_selector"]
@@ -81,9 +81,9 @@ ExpressRoute のバックアップとしてサイト間 VPN 接続を構成す�
 ## <a name="new"></a>新しい仮想ネットワークおよび共存する接続を作成するには
 この手順では、VNet を作成し、共存するサイト間接続と ExpressRoute 接続を作成します。
 
-1. 最新バージョンの Azure PowerShell コマンドレットをインストールします。 コマンドレットのインストールについては、[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があります。 必ず、これらの手順で指定されているコマンドレットを使用してください。
+1. 最新バージョンの Azure PowerShell コマンドレットをインストールします。 コマンドレットのインストールについては、[Azure PowerShell のインストールと構成の方法](/powershell/azure/azurerm/overview)に関するページを参照してください。 この構成に使用するコマンドレットは、使い慣れたコマンドレットとは少し異なる場合があります。 必ず、これらの手順で指定されているコマンドレットを使用してください。
 
-2. アカウントにサインインし、環境を設定します。
+1. アカウントにサインインし、環境を設定します。
 
   ```powershell
   Connect-AzureRmAccount

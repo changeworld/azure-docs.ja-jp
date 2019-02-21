@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 45ceee02c7ddeab84b1c3593c34aa04b8e7628d8
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6591a75577670f5bb50c1275af7e51e9b8328d50
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108274"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268706"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの比較関数
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Resource Manager には、テンプレートで比較を行うための関数がいくつか用意されています。
 

@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: f5826bf5266214d76648f3850b8e3deb478c8022
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 5ed3a0a57dad61a5fe783790eba4cb89ce19c660
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106156"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266978"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの数値関数
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 リソース マネージャーには、整数を操作する次の関数が用意されています。
 

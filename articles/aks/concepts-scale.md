@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: f464b6411e1375fa005980454a9b61d2d6c05b0b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7cd6af1dc6b947abd91c9d25a4b102e52da9d24d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819112"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456726"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング オプション
 
@@ -23,7 +23,7 @@ Azure Kubernetes Service (AKS) でアプリケーションを実行すると、�
 - [手動によるスケーリング](#manually-scale-pods-or-nodes)
 - [ポッドの水平オートスケーラー (HPA)](#horizontal-pod-autoscaler)
 - [クラスター オートスケーラー](#cluster-autoscaler)
-- AKS との Azure Container Instances (ACI) の統合
+- [AKS との Azure Container Instance (ACI) の統合](#burst-to-azure-container-instances)
 
 ## <a name="manually-scale-pods-or-nodes"></a>ポッドまたはノードを手動でスケーリングする
 

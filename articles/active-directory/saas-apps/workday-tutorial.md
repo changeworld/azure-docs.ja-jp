@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e3f60c3b0578647e68109a21ba7d57b083bea11
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae93cce7a26666383b609ac898a25fb84caee517
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184535"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301640"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>チュートリアル:Azure Active Directory と Workday の統合
 
@@ -113,7 +113,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Workday のドメインと URL] のシングル サインオン情報](./media/workday-tutorial/tutorial_workday_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://impl.workday.com/<tenant>/login-saml2.htmld` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://impl.workday.com/<tenant>/login-saml2.flex` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに次の URL を入力します。`https://www.workday.com`
 
@@ -166,7 +166,7 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
     >[!NOTE]
     > [環境] 属性の値が、テナント URL の値に関連付けられます。  
-    >- Workday テナント URL のドメイン名が impl で始まる場合 (例: *https://impl.workday.com/\<tenant\>/login-saml2.htmld*)、**[Environment]\(環境\)** 属性を [Implementation]\(実装\) に設定する必要があります。  
+    >- Workday テナント URL のドメイン名が impl で始まる場合 (例: *https://impl.workday.com/\<tenant\>/login-saml2.flex*)、**[Environment]\(環境\)** 属性を [Implementation]\(実装\) に設定する必要があります。  
     >- ドメイン名が impl 以外で始まる場合は、[Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)に問い合わせて、対応する **[Environment]\(環境\)** の値を取得してください。
 
 12. **[SAML 設定]** セクションで、次の手順を実行します。

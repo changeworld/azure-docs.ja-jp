@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: abf0c88c356ba695e2f9905f77bf5fd193821712
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a55839550b57da2ae346e66f4908da39e78b76f3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461850"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328290"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する
 
@@ -64,7 +64,7 @@ ms.locfileid: "55461850"
     ```
 
     > [!NOTE]
-    > マネージド ディスクを拡張すると、更新されたサイズがマネージド ディスクの最も近いサイズに切り上げられます。 マネージド ディスクの利用可能なサイズとレベルの表については、「[Azure Managed Disks の概要 - 価格と課金](../windows/managed-disks-overview.md#pricing-and-billing)」をご覧ください。
+    > マネージド ディスクを拡張すると、更新されたサイズがマネージド ディスクの最も近いサイズに切り上げられます。 マネージド ディスクの利用可能なサイズとレベルの表については、「[Azure Managed Disks の概要 - 価格と課金](../windows/managed-disks-overview.md)」をご覧ください。
 
 1. [az vm start](/cli/azure/vm#az-vm-start) を使用して VM を起動します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を起動します。
 
@@ -121,7 +121,7 @@ ms.locfileid: "55461850"
     End?  [107GB]? 215GB
     ```
 
-    d. 終了するには、`quit` を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 終了するには、`quit` を入力します。
 
 1. パーティションのサイズを変更したら、`e2fsck` を使用して、パーティションの整合性を確認します。
 

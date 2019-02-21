@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751924"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341720"
 ---
 # <a name="trusted-internet-connections-guidance"></a>信頼できるインターネット接続のガイダンス
 
@@ -198,7 +198,7 @@ Azure には、ネットワークのトラフィック フローを理解する�
 
 ### <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](https://azure.microsoft.com/services/azure-policy/) は、コンプライアンス イニシアティブを監査し、強制するためのすぐれた機能を組織に与える Azure サービスです。 Azure Policy は、現在販売されている Azure サービスのパブリック プレビューで使用できます。 Azure Policy は、Azure Government ではまだ使用できません。 お客様は、今のうちに Azure Policy のルールを計画およびテストしておき、後で TIC に確実に準拠できます。 
+[Azure Policy](../../governance/policy/overview.md) は、コンプライアンス イニシアティブを監査し、強制するためのすぐれた機能を組織に与える Azure サービスです。 お客様は、今のうちに Azure Policy のルールを計画およびテストしておき、後で TIC に確実に準拠できます。
 
 Azure Policy は、サブスクリプション レベルを対象としています。 サービスが提供する一元的なインターフェイスを使用して、次のようなコンプライアンス タスクを実行できます。
 - イニシアティブを管理する
@@ -213,13 +213,13 @@ Azure Policy は、サブスクリプション レベルを対象としていま
 
 |ポリシー  |サンプル シナリオ  |Template  |
 |---------|---------|---------|
-|ユーザー定義ルート テーブルを強制する。 | すべての仮想ネットワークの既定のルートを、オンプレミスにルーティングするための承認済み仮想ネットワーク ゲートウェイに確実にポイントするようにします。    | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table)で今すぐ開始。 |
-|リージョンで Network Watcher が有効になっていない場合を監査する。  | 使用されているすべてのリージョンで Network Watcher が確実に有効になっているようにします。  | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled)で今すぐ開始。 |
-|すべてのサブネット上の NSG x。  | インターネット トラフィックをブロックする NSG (または承認済み NSG のセット) を、すべての仮想ネットワークのすべてのサブネットに確実に適用されるようにします。 | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet)で今すぐ開始。 |
-|すべての NIC 上の NSG x。 | インターネット トラフィックをブロックする NSG が、すべての仮想マシンのすべての NIC に確実に適用されるようにします。 | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic)で今すぐ開始。 |
-|仮想マシン ネットワーク インターフェイスに対して承認された仮想ネットワークを使用する。  | すべての NIC が承認された仮想ネットワーク上に確実に配置されるようにします。 | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics)で今すぐ開始。 |
-|許可される場所。 | 仮想ネットワークと Network Watcher 構成が準拠しているリージョンに、すべてのリソースが確実にデプロイされるようにします。  | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs)で今すぐ開始。 |
-|**PublicIP** など、許可されないリソースの種類。 | コンプライアンス プランのない種類のリソースのデプロイを禁止します。 パブリック IP アドレス リソースのデプロイを禁止するには、このポリシーを使います。 NSG ルールを使って受信インターネット トラフィックを効果的にブロックできますが、パブリック IP の使用を禁止すると攻撃をさらに減らすことができます。   | この[テンプレート](https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type)で今すぐ開始。  |
+|ユーザー定義ルート テーブルを強制する。 | すべての仮想ネットワークの既定のルートを、オンプレミスにルーティングするための承認済み仮想ネットワーク ゲートウェイに確実にポイントするようにします。    | この[テンプレート](../../governance/policy/samples/no-user-defined-route-table.md)で今すぐ開始。 |
+|リージョンで Network Watcher が有効になっていない場合を監査する。  | 使用されているすべてのリージョンで Network Watcher が確実に有効になっているようにします。  | この[テンプレート](../../governance/policy/samples/network-watcher-not-enabled.md)で今すぐ開始。 |
+|すべてのサブネット上の NSG x。  | インターネット トラフィックをブロックする NSG (または承認済み NSG のセット) を、すべての仮想ネットワークのすべてのサブネットに確実に適用されるようにします。 | この[テンプレート](../../governance/policy/samples/nsg-on-subnet.md)で今すぐ開始。 |
+|すべての NIC 上の NSG x。 | インターネット トラフィックをブロックする NSG が、すべての仮想マシンのすべての NIC に確実に適用されるようにします。 | この[テンプレート](../../governance/policy/samples/nsg-on-nic.md)で今すぐ開始。 |
+|仮想マシン ネットワーク インターフェイスに対して承認された仮想ネットワークを使用する。  | すべての NIC が承認された仮想ネットワーク上に確実に配置されるようにします。 | この[テンプレート](../../governance/policy/samples/use-approved-vnet-vm-nics.md)で今すぐ開始。 |
+|許可される場所。 | 仮想ネットワークと Network Watcher 構成が準拠しているリージョンに、すべてのリソースが確実にデプロイされるようにします。  | この[テンプレート](../../governance/policy/samples/allowed-locations.md)で今すぐ開始。 |
+|**PublicIP** など、許可されないリソースの種類。 | コンプライアンス プランのない種類のリソースのデプロイを禁止します。 パブリック IP アドレス リソースのデプロイを禁止するには、このポリシーを使います。 NSG ルールを使って受信インターネット トラフィックを効果的にブロックできますが、パブリック IP の使用を禁止すると攻撃をさらに減らすことができます。   | この[テンプレート](../../governance/policy/samples/not-allowed-resource-types.md)で今すぐ開始。  |
 
 ### <a name="network-watcher-traffic-analytics"></a>Network Watcher のトラフィック分析
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a001cdafbd608aa2ad06976ec345c612197036d8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fc910ad51984204c8fc072ce49ebdfe4695be4a0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189958"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268008"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>PowerShell を使用して、リソースにマネージド ID アクセスを割り当てる
 
@@ -48,7 +48,7 @@ ms.locfileid: "56189958"
 2. この例では、ストレージ アカウントに Azure VM アクセスを許可しています。 まず、[Get-AzVM](/powershell/module/az.compute/get-azvm) を使用して `myVM` という VM のサービス プリンシパルを取得します。これは、マネージド ID が有効になっているときに作成されたものです。 次に、[New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) を使用して、VM の**閲覧者**アクセスを `myStorageAcct` というストレージ アカウントに付与します。
 
     ```powershell
-    $spID = (Get-Az -ResourceGroupName myRG -Name myVM).identity.principalid
+    $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
     New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/<myStorageAcct>"
     ```
 

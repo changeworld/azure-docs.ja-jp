@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 11/08/2018
-ms.openlocfilehash: 0e5d799a5128f578900e4fa326b2e129964d0873
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 92774592f86a71a8482fd3d44eca404fcf2d4e6e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243785"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429555"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Azure Stack Usage API のよくあるご質問
 

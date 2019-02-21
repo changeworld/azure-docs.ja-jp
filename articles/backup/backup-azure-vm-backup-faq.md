@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: sogup
-ms.openlocfilehash: 55fbc997f6aaf4cf99bfb8492a2e4ac608c72af8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: fe0b47bbf1ebb9cba328bfc444172249135270c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494903"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310276"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>よく寄せられる質問 - Azure Backup
 
@@ -81,7 +81,7 @@ VM の復元は、Azure VM 用の簡易的な作成オプションと考えて�
   * バックアップ時に存在しなかった構成設定を追加する
   * 作成されたリソースの名前付け規則を制御する。
   * VM を可用性セットに追加する。
-  * PowerShell またはテンプレートを使用して構成する必要があるその他の設定を追加する  。
+  * PowerShell またはテンプレートを使用して構成する必要があるその他の設定を追加する
 
 ### <a name="can-i-restore-backups-of-unmanaged-vm-disks-after-i-upgrade-to-managed-disks"></a>マネージド ディスクへのアップグレード後に、アンマネージド VM ディスクのバックアップを復元できますか。
 はい。ディスクをアンマネージドからマネージドに移行する前に作成したバックアップを使用できます。

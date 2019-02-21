@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4c5cb5a821d9bae6841c3229155c69fd2aa20e13
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 03340dc8f3be2465f20756dc9799b9c1e4293521
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698311"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417127"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -429,7 +429,6 @@ public class App {
 この例では、Python を使用して、[ノートブック内のトレーニング](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)例から作成された Web サービスを呼び出す方法を示します。
 
 ```python
-import requests
 import requests
 import json
 

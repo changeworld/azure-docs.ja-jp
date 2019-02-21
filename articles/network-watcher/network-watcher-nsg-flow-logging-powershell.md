@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 92bbcf1285449ac21cd038e1a6d27d2e3d43430b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 55a9e373893f6f46e6c109dde947b25a36ee93ed
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259735"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343002"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>PowerShell を使用したネットワーク セキュリティ グループのフローのログの構成
 
@@ -30,9 +30,6 @@ ms.locfileid: "54259735"
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
 ネットワーク セキュリティ グループのフローのログは、ネットワーク セキュリティ グループを使用したイングレスおよびエグレス IP トラフィックに関する情報を表示できる Network Watcher の機能です。 これらのフローのログは json 形式で記述され、ルールごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。
-
-> [!NOTE] 
-> フロー ログ バージョン 2 は、米国中西部リージョンでのみ利用できます。 サポートされていないリージョンでバージョン 2 のログを有効にすると、バージョン 1 のログがお客様のストレージ アカウントに出力されることになります。
 
 ## <a name="register-insights-provider"></a>Insights プロバイダーの登録
 

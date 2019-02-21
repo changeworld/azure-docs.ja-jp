@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: 1ddb993a3e4d41647a4afcf5a5daed03a834db9f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6c3312b43ef8c0a72b505fb9bc21236f15a79052
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826001"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313196"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
 
@@ -57,7 +57,7 @@ public static void Run(
 {
 var emailObject = JsonConvert.DeserializeObject<OutgoingEmail>(Encoding.UTF8.GetString(email.Body));
 
-var message = new SendGridMessage();
+message = new SendGridMessage();
 message.AddTo(emailObject.To);
 message.AddContent("text/html", emailObject.Body);
 message.SetFrom(new EmailAddress(emailObject.From));

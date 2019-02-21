@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: a429bfae001cad044da9ef729c021c8128cbfefe
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: c773aae4fa4e530b563c1ae084bf05b8b5c5c12f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090012"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299821"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Azure REST API を使用して Azure Network Watcher でパケット キャプチャを管理する
 
 > [!div class="op_single_selector"]
-> - [Azure ポータル](network-watcher-packet-capture-manage-portal.md)
+> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
@@ -210,11 +210,12 @@ armclient get "https://management.azure.com/subscriptions/${subscriptionId}/Reso
 
 ```json
 {
-    "name": "vm1PacketCapture",     "id": "/subscriptions/{guid}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatche rName}/packetCaptures/{packetCaptureName}",
-   "captureStartTime" : "9/7/2016 12:35:24PM",
-   "packetCaptureStatus" : "Stopped",
-   "stopReason" : "TimeExceeded"
-   "packetCaptureError" : [ ]
+    "name": "vm1PacketCapture",
+    "id": "/subscriptions/{guid}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkWatchers/{networkWatcherName}/packetCaptures/{packetCaptureName}",
+    "captureStartTime" : "9/7/2016 12:35:24PM",
+    "packetCaptureStatus" : "Stopped",
+    "stopReason" : "TimeExceeded",
+    "packetCaptureError" : [ ]
 }
 ```
 
@@ -300,9 +301,9 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 
 ## <a name="next-steps"></a>次の手順
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 使用できるツールとして他に Storage Explorer があります。 Storage Explorer の詳細は、次のリンクで確認することができます。[Storage Explorer](http://storageexplorer.com/)
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 使用できるツールとして他に Storage Explorer があります。 ストレージ エクスプローラーの詳細については、次のリンクを参照してください。[Storage Explorer](http://storageexplorer.com/)
 
-[アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する。
+[アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する
 
 
 

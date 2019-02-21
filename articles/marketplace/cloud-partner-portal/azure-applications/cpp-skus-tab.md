@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7f73e71677a700ba8047246addb2d27799c5a616
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a963db0b0b1a20c110f90bacdae092846f7bdd8b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890895"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342543"
 ---
 # <a name="azure-application-skus-tab"></a>Azure アプリケーション SKU タブ
 
@@ -139,7 +139,7 @@ SKU の設定手順は、マネージド アプリケーション オファー�
 
 #### <a name="policy-settings"></a>ポリシー設定
 
-マネージド アプリが準拠するポリシーを追加します。 Azure リソース ポリシーの詳細ついては、「[Azure Policy とは](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)」をご覧ください。 
+マネージド アプリが準拠するポリシーを追加します。 Azure リソース ポリシーの詳細ついては、「[Azure Policy とは](../../../governance/policy/overview.md)」をご覧ください。
 
 
    ![マネージド アプリケーションの承認設定とポリシー設定](./media/azureapp-sku-details-managedapp-auth-policy.png)

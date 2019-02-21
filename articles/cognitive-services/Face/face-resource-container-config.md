@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: a70c200f0260d87d35eae8728ed1f908e7061f32
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6a4d20073275e3d858cecb73c2e95c97ea53a647
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979107"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311972"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
 
@@ -29,11 +29,11 @@ ms.locfileid: "55979107"
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> [`ApiKey`](#apikey-setting)、[`Billing`](#billing-setting)、[`Eula`](#eula-setting) の各設定は一緒に使用されるため、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、お客様のコンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](face-how-to-install-containers.md#billing)」を参照してください。
+> [`ApiKey`](#apikey-configuration-setting)、[`Billing`](#billing-configuration-setting)、[`Eula`](#eula-setting) の各設定は一緒に使用されるため、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、お客様のコンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](face-how-to-install-containers.md#billing)」を参照してください。
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 構成設定
 
-`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-setting) 構成設定に指定された _Face_ リソースの有効なキーであることが必要です。
+`ApiKey` 設定では、コンテナーの課金情報を追跡するために使用される Azure リソース キーを指定します。 ApiKey の値を指定する必要があります。また、その値は、[`Billing`](#billing-configuration-setting) 構成設定に指定された _Face_ リソースの有効なキーであることが必要です。
 
 この設定は次の場所で確認できます。
 

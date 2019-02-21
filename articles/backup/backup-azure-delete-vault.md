@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: d514074e56ff37cc7af6a97ea86aa9e02e3763e0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d15e3773a9b6e3dceb0799d206070730675c211d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492285"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310968"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services コンテナーを削除する
 
@@ -31,7 +31,7 @@ ms.locfileid: "55492285"
 
    ![Create Recovery Services Vault step 1](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
 
-   Recovery Services コンテナーの一覧が表示されます。 
+   Recovery Services コンテナーの一覧が表示されます。
 
    ![choose vault from list](./media/backup-azure-delete-vault/choose-vault-to-delete-.png)
 
@@ -50,7 +50,7 @@ ms.locfileid: "55492285"
 
 ## <a name="delete-the-recovery-services-vault-by-force"></a>Recovery Services コンテナーを強制的に削除する
 
-PowerShell を使用すると、Recovery Services コンテナーを強制的に削除できます。 "強制的に" とは、Recovery Services コンテナーと関連するすべてのバックアップ データが完全に削除されることを意味します。 
+PowerShell を使用すると、Recovery Services コンテナーを強制的に削除できます。 "強制的に" とは、Recovery Services コンテナーと関連するすべてのバックアップ データが完全に削除されることを意味します。
 
 > [!Warning]
 > PowerShell を使用して Recovery Services コンテナーを削除する場合は、コンテナー内のすべてのバックアップ データを完全に削除する必要があることを確認してください。
@@ -95,7 +95,7 @@ Recovery Services コンテナーを削除するには:
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
-   
+
 1. Azure portal でサブスクリプションにサインインし、コンテナーが削除されたことを確認します。
 
 
@@ -106,7 +106,6 @@ Recovery Services コンテナーを削除するには:
 * Azure Storage (Azure Files) のバックアップ
 * Azure VM の SQL Server のバックアップ
 * Azure 仮想マシンのバックアップ
-* Microsoft Azure Recovery Services エージェントのバックアップ
 
 次の項目に対しては **[バックアップ インフラストラクチャ]** メニュー (画像を参照) を使用します。
 
@@ -125,7 +124,7 @@ Recovery Services コンテナーを削除するには:
 
 1. 一覧内のすべてのアイテムについて、アイテムを右クリックし、コンテキスト メニューから **[バックアップの停止]** を選択します。
 
-    ![バックアップの種類を選択する](./media/backup-azure-delete-vault/stop-backup-item.png) 
+    ![バックアップの種類を選択する](./media/backup-azure-delete-vault/stop-backup-item.png)
 
     [バックアップの停止] メニューが開きます。
 
@@ -154,9 +153,9 @@ Recovery Services コンテナーを削除するには:
 
 ## <a name="removing-azure-backup-server-or-dpm"></a>Azure Backup Server または DPM の削除
 
-1. コンテナー ダッシュボードのメニューで、[管理] セクションまで下へスクロールし、**[バックアップ インフラストラクチャ]** をクリックします。 
+1. コンテナー ダッシュボードのメニューで、[管理] セクションまで下へスクロールし、**[バックアップ インフラストラクチャ]** をクリックします。
 
-1. サブメニューで、**[バックアップ管理サーバー]** をクリックして、Azure Backup サーバーと System Center DPM サーバーを表示します。 Azure ファイル サーバー、Azure VM の SQL Server、および Azure 仮想マシンを停止および削除できます。 
+1. サブメニューで、**[バックアップ管理サーバー]** をクリックして、Azure Backup サーバーと System Center DPM サーバーを表示します。 Azure ファイル サーバー、Azure VM の SQL Server、および Azure 仮想マシンを停止および削除できます。
 
     ![目的のコンテナーを選択してそのダッシュボードを開く](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 

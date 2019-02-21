@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: ff3c1e51bcf0b7d730019fad66ed8b0c3fe17a20
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: d9d87e0e6427c0a0d4b16947fd0427e1c79d8f0c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097650"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341047"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -72,8 +72,6 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
                     * **Bytes sent - Destination to source - バージョン 2 のみ** - 最後の更新以降に宛先から送信元に送信された TCP および UDP パケット バイトの総数。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。
 
 ## <a name="nsg-flow-logs-version-2"></a>NSG フロー ログ バージョン 2
-> [!NOTE] 
-> フロー ログ バージョン 2 は、米国中西部リージョンでのみ利用できます。 サポートされていないリージョンでバージョン 2 のログを有効にすると、バージョン 1 のログがお客様のストレージ アカウントに出力されることになります。
 
 ログのバージョン 2 ではフロー状態が導入されます。 受信するフロー ログのバージョンを構成することができます。 フロー ログを有効にする方法については、[フロー ログ記録の有効化](network-watcher-nsg-flow-logging-portal.md)に関するページをご覧ください。
 

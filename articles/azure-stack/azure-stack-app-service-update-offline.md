@@ -3,8 +3,8 @@ title: Azure App Service をオフラインで更新する | Microsoft Docs
 description: Azure App Service on Azure Stack をオフラインで更新するための詳細なガイダンス
 services: azure-stack
 documentationcenter: ''
-author: apwestgarth
-manager: stefsch
+author: jeffgilb
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: azure-stack
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2019
-ms.author: anwestg
+ms.author: jeffgilb
+ms.reviewer: anwestg
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: ae06a828a9e1bd900ae0c9f91db5552a1467bfc9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 332722a1774eea41ab3566051da138f2383fef98
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251760"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447669"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack のオフライン更新
 

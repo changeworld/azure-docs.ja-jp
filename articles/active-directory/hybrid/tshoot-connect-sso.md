@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9eebd695cbbc1e29ea7d2647b5955bcc2e3cfe4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a86ce8c061450fd66b31a81ec00e51f98a39646
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175916"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415648"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -82,8 +82,8 @@ ms.locfileid: "56175916"
 - ユーザーのアカウントが、シームレス SSO が設定されている Active Directory フォレストからのものであることを確認します。
 - デバイスが企業ネットワークに接続されていることを確認します。
 - デバイスの時刻が、Active Directory とドメイン コントローラーの両方の時刻と同期されており、時刻のずれが 5 分以内であることを確認します。
-- シームレス SSO を有効にする各 AD フォレストで `AZUREADSSOACCT` コンピューター アカウントが存在し、有効になっていることを確認します。 コンピューター アカウントが削除されているか、ない場合は、[PowerShell コマンドレット](#manual-reset-of-the-feature)を使用して再度作成することができます。
-- コマンド プロンプトから `klist` コマンド使用して、デバイス上の既存の Kerberos チケットを一覧表示します。 `AZUREADSSOACCT` コンピューター アカウントに対して発行されたチケットが存在することを確認します。 ユーザーの Kerberos チケットは、通常は 10 時間有効です。 Active Directory で別の設定が行われていることがあります。
+- シームレス SSO を有効にする各 AD フォレストで `AZUREADSSOACC` コンピューター アカウントが存在し、有効になっていることを確認します。 コンピューター アカウントが削除されているか、ない場合は、[PowerShell コマンドレット](#manual-reset-of-the-feature)を使用して再度作成することができます。
+- コマンド プロンプトから `klist` コマンド使用して、デバイス上の既存の Kerberos チケットを一覧表示します。 `AZUREADSSOACC` コンピューター アカウントに対して発行されたチケットが存在することを確認します。 ユーザーの Kerberos チケットは、通常は 10 時間有効です。 Active Directory で別の設定が行われていることがあります。
 - テナントでシームレス SSO を無効にして再度有効にすると、キャッシュされた Kerberos チケットが期限切れになるまでシングル サインオン機能は利用できません。
 - `klist purge` コマンドを使用してデバイスから既存の Kerberos チケットを消去し、やり直します。
 - JavaScript に関連する問題があるかどうかを確認するために、ブラウザーのコンソール ログ (**[開発者ツール]** の下) を確認します。
@@ -123,7 +123,7 @@ ms.locfileid: "56175916"
     >[!NOTE]
     >Microsoft は、ユーザー プリンシパル名 (UPN) (johndoe@contoso.com) の形式またはドメインで修飾された sam アカウント名 (contoso \johndoe または contoso.com\johndoe) の形式で提供されている、ドメイン管理者のユーザー名を使用して目的の AD フォレストを検索します。 ドメインで修飾された sam アカウント名が使用されている場合、Microsoft はユーザー名のドメイン部分を使用して、[DNS を使用してドメイン管理者のドメイン コントローラー](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)を検索します。 UPN が使用されている場合、Microsoft は[それをドメインで修飾された sam アカウント名に変換](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)してから、適切なドメイン コントローラーを検索します。
 
-2. `Disable-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の Active Directory フォレスト用のオンプレミスのドメイン コントローラーから `AZUREADSSOACCT` コンピューター アカウントを削除します。
+2. `Disable-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の Active Directory フォレスト用のオンプレミスのドメイン コントローラーから `AZUREADSSOACC` コンピューター アカウントを削除します。
 3. 機能を設定した Active Directory フォレストごとに、前の手順を繰り返します。
 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>手順 4:各 Active Directory フォレストのシームレス SSO を有効にする

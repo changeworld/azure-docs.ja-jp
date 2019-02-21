@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 12c82d440613078e9f0593ddb9fb6c7fe7b8c362
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5db8c4be9317706fcc8a31b916cff72fd13596d6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488358"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453301"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Excel から Azure Machine Learning Studio に分析を移行する
 
@@ -102,11 +102,11 @@ Excel 内で Machine Learning Web サービスを使用したいと考えまし�
 
 *Web サービスのダッシュボード* のセクションには、ダウンロード可能な Excel ブックが含まれています。 ブックには、Web サービス API とスキーマ情報が埋め込まれて事前に書式設定されています。 *[Download Excel Workbook (Excel ブックのダウンロード)]* をクリックすると、Excel ブックが開き、ローカル コンピューターに保存できます。 
 
-![][1]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 以下に示すように、ブックを開いた状態で、定義済みのパラメーターを青色の [パラメーター] セクションにコピーします。 パラメーターが入力されると、Excel は Machine Learning Web サービスを呼び出し、予測されたスコア付けラベルが緑色の [予測値] セクションに表示されます。 ブックは、[パラメーター] に入力されたすべての行項目に対して、トレーニング済みのモデルに基づいてパラメーターの予測を作成していきます。 この機能を使用する方法の詳細については、「 [Excel からの Azure Machine Learning Web サービスの使用](consuming-from-excel.md)」をご覧ください。 
 
-![][2]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>最適化と今後の実験
 これまで、Excel モデルを使用してベースラインを構築し、Machine Learning 線形回帰モデルの最適化を進めてきました。 [フィルターに基づく機能の選択][filter-based-feature-selection]モジュールを使用して初期データ要素の選択を改善することで、平均絶対誤差 4.6% のパフォーマンス向上の達成を実現しました。 今後のプロジェクトのために、データ属性に反復処理を行う数週間を節約できる可能性があるこの特徴を使用して、モデリングに使用する正しい特徴セットを検索します。 

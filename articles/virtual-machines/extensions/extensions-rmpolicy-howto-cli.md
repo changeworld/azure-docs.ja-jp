@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1f71276c25e3ec1e5791d9b35f89aa95190c6afd
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770586"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341964"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Azure Policy を使用して Linux VM への拡張機能のインストールを制限する
 
@@ -28,7 +28,7 @@ ms.locfileid: "55770586"
 
 ## <a name="create-a-rules-file"></a>規則ファイルを作成する
 
-どの拡張機能をインストールできるようにするかを制限するには、拡張機能を特定するロジックを提供する[規則](/azure/azure-policy/policy-definition#policy-rule)が必要です。
+どの拡張機能をインストールできるようにするかを制限するには、拡張機能を特定するロジックを提供する[規則](../../governance/policy/concepts/definition-structure.md#policy-rule)が必要です。
 
 この例では、Azure Cloud Shell で規則ファイルを作成することで、"Microsoft.OSTCExtensions" によって発行された拡張機能のインストールを拒否する方法を示していますが、ローカルの CLI で作業している場合は、ローカル ファイルを作成して、パス (~/clouddrive) を、ご利用のマシンのそのローカル ファイルへのパスに置き換えることもできます。
 
@@ -69,7 +69,7 @@ vim ~/clouddrive/azurepolicy.rules.json
 
 ## <a name="create-a-parameters-file"></a>パラメーター ファイルを作成する
 
-また、ブロックする拡張機能の一覧を渡すための構造体が自動的に作成されるように、[パラメーター](/azure/azure-policy/policy-definition#parameters) ファイルを作成する必要もあります。 
+また、ブロックする拡張機能の一覧を渡すための構造体が自動的に作成されるように、[パラメーター](../../governance/policy/concepts/definition-structure.md#parameters) ファイルを作成する必要もあります。 
 
 この例では、Cloud Shell で Linux VM 用のパラメーター ファイルを作成する方法を示していますが、ローカルの CLI で作業している場合は、ローカル ファイルを作成して、パス (~/clouddrive) を、ご利用のマシンのそのローカル ファイルへのパスに置き換えることもできます。
 
@@ -171,6 +171,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-
 ## <a name="next-steps"></a>次の手順
-詳細については、[Azure Policy](../../azure-policy/azure-policy-introduction.md) に関するページをご覧ください。
+
+詳細については、[Azure Policy](../../governance/policy/overview.md) に関するページをご覧ください。

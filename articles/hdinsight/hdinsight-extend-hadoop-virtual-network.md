@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: dfcbbacc5df394e0d2a515d557d655af0ea44d11
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5862c6ef3c420c1722ddfbc1238be4e2bf43a507
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169974"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447423"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
 
@@ -221,8 +221,6 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
 
 マネージド サービスとして HDInsight には、VNET からの受信および送信トラフィックの両方に対して、HDinsight の正常性および管理サービスへの無制限アクセスが必要です。 NSG と UDR を使用する場合は、これらのサービスが引き続き HDInsight クラスターと通信できることを確認する必要があります。
 
-HDInsight では、いくつかのポート上のサービスを公開します。 仮想アプライアンスのファイアウォールを使用する場合は、これらのサービスで使用されるポートのトラフィックを許可する必要があります。 詳細については、「必須ポート」のセクションをご覧ください。
-
 ### <a id="hdinsight-ip"></a>HDInsight でネットワーク セキュリティ グループとユーザー定義のルートを使用する
 
 **ネットワーク セキュリティ グループ**や**ユーザー定義ルート**を使用してネットワーク トラフィックを制御する予定の場合は、HDInsight をインストールする前に、次の操作を実行します。
@@ -305,8 +303,6 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 3. また、__168.63.129.16__ からのアクセスも許可する必要があります。 これは、Azure の再帰リゾルバーのアドレスです。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 詳細については、「[ネットワーク トラフィックのコントロール](#networktraffic)」のセクションをご覧ください。
-
-送信 NSG ルールでは、VNET 内の任意のソースからのトラフィックが "宛先 IP アドレス" としての上記アドレスに到達することを許可します。
 
 ユーザー定義ルート (UDR) を使用している場合、次ホップが "インターネット" に設定された上記 IP へのルートを指定し、VNET からそれらの IP への送信トラフィックを許可してください。
     

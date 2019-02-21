@@ -13,16 +13,14 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: fbf94d0430685ea5791aaaa83669a730986e665c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9bb6491565f685e8ca3d7a6271747a5df3629e81
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111307"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269078"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ操作の表示
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 デプロイの操作は、Azure ポータルから確認することができます。 最も一般的な確認の対象としては、デプロイ中にエラーが発生したときに実行されていた操作が挙げられます。この記事では、失敗した操作の表示について重点的に取り上げます。 Azure ポータルには、すぐにエラーを見つけ出し、有効と考えられる解決策を特定できるインターフェイスが用意されています。
 

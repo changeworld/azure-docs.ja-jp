@@ -3,8 +3,8 @@ title: App Service on Azure Stack をデプロイする前に | Microsoft Docs
 description: App Service on Azure Stack をデプロイする前に済ましておく必要がある手順です
 services: azure-stack
 documentationcenter: ''
-author: apwestgarth
-manager: stefsch
+author: jeffgilb
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: azure-stack
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2018
-ms.author: anwestg
+ms.author: jeffgilb
+ms.reviewer: anwestg
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 558fc7280af398f0037c33121f662649ba9c3506
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0be1814fd501824056bc80d4aeb561ff58735125
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251386"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447448"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 

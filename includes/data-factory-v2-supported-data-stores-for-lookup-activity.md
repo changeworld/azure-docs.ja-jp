@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 02/01/2019
+ms.date: 02/15/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: a7e9af2ea7cd5f32f79d4b2dd1442870373e53c5
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d9562bb9c91700e817c120934e59c0c308d1e55b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55648578"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56323411"
 ---
 | Category | データ ストア |
 |:--- |:--- |

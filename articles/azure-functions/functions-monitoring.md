@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: cbc4507a7dd29afb429949a017319a63ef4cd9a2
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: d4ff009c11b3a0f2ebe97e5c452f078eaa529fc3
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100200"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301725"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 

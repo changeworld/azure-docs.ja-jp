@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 2ac140e40ec1c70bf04c35512c28e84f59522bb8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1e8bb6deeb66b506e1342fceb725b1563b822dff
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989425"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453122"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Excel からの Azure Machine Learning Studio Web サービスの使用
 
@@ -34,7 +34,7 @@ Web サービスを作成したら、Studio の左側の **[WEB サービス]** 
 
 1. Web サービスの **[ダッシュボード]** タブに、**要求/応答**サービスの行があります。 このサービスに 1 つの出力がある場合は、その行の **[Excel ブックのダウンロード]** のリンクを確認してください。
    
-    ![][1]
+    ![](./media/consuming-from-excel/excellink.png)
 2. **[Excel ブックのダウンロード]** をクリックします。
 
 **新しい Web サービス**
@@ -47,13 +47,13 @@ Web サービスを作成したら、Studio の左側の **[WEB サービス]** 
 1. ブックを開きます。
 2. セキュリティの警告が表示されます。**[編集を有効にする]** ボタンをクリックします。
    
-    ![][2]
+    ![](./media/consuming-from-excel/enableeditting.png)
 3. セキュリティの警告が表示されます。 **[コンテンツの有効化]** ボタンをクリックして、スプレッドシートのマクロを実行します。
    
-    ![][3]
+    ![](./media/consuming-from-excel/enablecontent.png)
 4. マクロが有効になると、テーブルが生成されます。 青の列は RRS Web サービス、または **PARAMETERS**への入力として必要です。 RRS サービス **PREDICTED VALUES** の出力は緑色で表示されます。 特定の行のすべての列がいっぱいになると、ブックは自動的に、スコア付け API を呼び出し、スコア付けされた結果を表示します。
    
-    ![][4]
+    ![](./media/consuming-from-excel/sampletable.png)
 5. 複数の行のスコア付けを実行するには、2 番目の行にデータを入力すると、予測値が生成されます。 複数の行を一度に貼り付けることもできます。
 
 これで、Excel 機能 (グラフ、Power Map、条件付き書式など) と予測値を使用して、データの視覚化に役立てることができます。    
@@ -66,8 +66,3 @@ RRS 呼び出しは、次の 2 つの状況で発生します。
 
 1. 初めて行のすべての **PARAMETERS**
 2. すべての **PARAMETERS** に入力されている行の任意の **PARAMETERS** が変更されたとき。
-
-[1]: ./media/consuming-from-excel/excellink.png
-[2]: ./media/consuming-from-excel/enableeditting.png
-[3]: ./media/consuming-from-excel/enablecontent.png
-[4]: ./media/consuming-from-excel/sampletable.png

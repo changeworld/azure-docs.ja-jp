@@ -3,8 +3,8 @@ title: Azure Stack のオフライン環境に App Service を展開する | Mic
 description: AD FS によって保護されているオフラインの Azure Stack 環境に App Service を展開する方法についての詳細なガイダンスです。
 services: azure-stack
 documentationcenter: ''
-author: apwestgarth
-manager: stefsch
+author: jeffgilb
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: azure-stack
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
-ms.author: anwestg
+ms.author: jeffgilb
+ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 267c3c2d8430d769b5d42de33796da8b57504516
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 315a96680674636f7cab9d93b362febcb25f9922
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238790"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447067"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>App Service リソースプロバイダーを AD FS によって保護されているオフラインの Azure Stack 環境に追加する
 
@@ -164,7 +165,7 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
     | --- | --- | --- | --- |
     | コントローラー | 1 | Standard_A2 - (2 vCPU、3584 MB) | App Service クラウドの正常性を管理および維持します。 |
     | 管理 | 1 | Standard_A2 - (2 vCPU、3584 MB) | App Service Azure Resource Manager および API のエンドポイント、ポータル拡張機能 (管理、テナント、Functions ポータル)、データ サービスを管理します。 フェールオーバーをサポートする場合は、お勧めのインスタンス数は 2 つに増えます。 |
-    | 発行元 | 1 | Standard_A1 - (1 vCPU、1792 MB) | FTP および Web デプロイによってコンテンツを公開します。 |
+    | Publisher | 1 | Standard_A1 - (1 vCPU、1792 MB) | FTP および Web デプロイによってコンテンツを公開します。 |
     | FrontEnd | 1 | Standard_A1 - (1 vCPU、1792 MB) | App Service アプリケーションに要求をルーティングします。 |
     | 共有 Worker | 1 | Standard_A1 - (1 vCPU、1792 MB) | Web または API アプリケーション、および Azure Functions アプリをホストします。 より多くのインスタンスの追加が必要になる場合があります。 オペレーターは、サービスを定義することや任意の SKU レベルを選ぶことができます。 レベルには、少なくとも 1 つの vCPU が必要です。 |
 

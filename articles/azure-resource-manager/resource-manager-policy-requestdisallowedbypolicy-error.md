@@ -13,18 +13,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8eea14703a7a4ed6fad56dc0bed981b84266e2db
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d05ec1835bc04be0ca0fc12f41322c14b5420213
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112616"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337818"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure リソース ポリシーに関する RequestDisallowedByPolicy エラー
 
 この記事では、RequestDisallowedByPolicy エラーの原因について説明し、このエラーの解決策も示します。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>症状
 
@@ -68,5 +66,5 @@ az policy definition show --name regionPolicyAssignment
 
 詳細については、次の記事を参照してください。
 
-- [Azure Policy とは](../azure-policy/azure-policy-introduction.md)
-- [コンプライアンスを強制するポリシーの作成と管理](../azure-policy/create-manage-policy.md)
+- [Azure Policy とは](../governance/policy/overview.md)
+- [コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)

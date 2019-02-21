@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1532c863a7906e7f3c1e0bc98d2080513263b9f8
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7419baf99e4c508806361b408968dbf851a7f76c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105096"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343325"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure Security Center 計画および運用ガイド
 このガイドは、所属組織が Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -126,7 +126,7 @@ Security Center の RBAC を使用してアクセス制御を計画する際は�
 
 Security Center のポリシーには、次のコンポーネントが含まれています。
 - [データ収集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection): エージェントのプロビジョニングとデータ収集の設定。
-- [セキュリティ ポリシー](https://docs.microsoft.com/azure/security-center/security-center-policies): Security Center で監視および推奨されるコントロールを決定する [Azure Policy](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)。または、Azure Policy を使用して、新しい定義の作成、追加ポリシーの定義、管理グループ間でのポリシーの割り当てを行います。
+- [セキュリティ ポリシー](https://docs.microsoft.com/azure/security-center/security-center-policies): Security Center で監視および推奨されるコントロールを決定する [Azure Policy](../governance/policy/overview.md)。または、Azure Policy を使用して、新しい定義の作成、追加ポリシーの定義、管理グループ間でのポリシーの割り当てを行います。
 - [電子メール通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details): セキュリティ連絡先と通知設定。
 - [価格レベル](https://docs.microsoft.com/azure/security-center/security-center-pricing): Free または Standard の価格の選択。これにより、(サブスクリプション、リソース グループ、ワークスペースに指定できる) スコープ内のリソースに使用できる Security Center の機能が決まります。
 

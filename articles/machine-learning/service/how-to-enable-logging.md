@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
-ms.date: 02/11/2019
-ms.openlocfilehash: bff0feab7ce062c9e2515fa038d249838a809591
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.date: 02/20/2019
+ms.openlocfilehash: 08e83cdcadabdcf7234d0bbd0fb7e6d103c8369c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101440"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447533"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>Azure Machine Learning service でログ記録を有効にする
 
@@ -112,7 +112,7 @@ logs = service.get_logs()
 また、Application Insights を有効にすることによって、Web サービスのカスタム スタック トレースを記録することもできます。これにより、要求/応答の時間、失敗率、例外を監視できます。 Application Insights を有効にするには、既存の Web サービスで `update()` 関数を呼び出します。
 
 ```python
-service..update(enable_app_insights=True)
+service.update(enable_app_insights=True)
 ```
 
 Azure portal で Application Insights を使用する方法について詳しくは、[ハウツー](how-to-enable-app-insights.md#enable-and-disable-in-the-portal)記事をご覧ください。

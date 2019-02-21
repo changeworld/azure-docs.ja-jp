@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cf30d5dd8648a2b1da3f4a40399376182bf342c4
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8a784bb4e37caa28c89939bdcec5139648164b1a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562302"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340854"
 ---
-# <a name="understand-policy-effects"></a>Policy の効果について
+# <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
 Azure Policy 内の各ポリシー定義には単一の効果があります。 その効果によって、ポリシー規則が一致すると評価されたときの動作が決まります。 効果の動作は、対象 (新しいリソース、更新されたリソース、または既存のリソース) によって異なります。
 

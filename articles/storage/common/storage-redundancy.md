@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0ba36042d02d0b4101f1e80c63af232717bcf4ca
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ea6d94ff1ee8c27c1642f24660a6ab4f276137a8
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506789"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330785"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -48,7 +48,7 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 Azure Storage の持続性と可用性の保証については、[Azure Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/) に関するページをご覧ください。
 
 > [!NOTE]
-> Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。 Premium Storage の詳細については、[Premium Storage の Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ (Premium Storage)](../../virtual-machines/windows/premium-storage.md) に関する記事を参照してください。
+> Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。
 
 ## <a name="changing-replication-strategy"></a>レプリケーション戦略の変更
 [Azure Portal](https://portal.azure.com/)、[Azure Powershell](storage-powershell-guide-full.md)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)、多くの [Azure クライアント ライブラリ](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools)のいずれかを使用して、ストレージ アカウントのレプリケーション戦略を変更できます。 使用しているストレージ アカウントのレプリケーションの種類を変更してもダウンタイムは発生しません。

@@ -2,25 +2,17 @@
 title: P2S RADIUS 接続の VPN クライアント構成ファイルを作成してインストールする:PowerShell:Azure | Microsoft Docs
 description: RADIUS 認証を使用する接続用の Windows、Mac OS X、および Linux の VPN クライアント構成ファイルを作成します。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/07/2018
+ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8fc2c487a374a34cd9a7642a45fd59c04061b398
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 8881582eac47e31b20e9eb96effea254b821ba34
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817820"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417297"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
 
@@ -46,6 +38,8 @@ P2S RADIUS 認証の構成ワークフローは次のとおりです。
 
 この記事のセクションを使用するには、最初に使用する認証の種類 (ユーザー名/パスワード、証明書、またはその他の認証の種類) を決定します。 各セクションに、Windows、Mac OS X、Linux 向けの手順があります (現時点では、利用できる手順は限られています)。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="adeap"></a>ユーザー名/パスワード認証
 
 ユーザー名/パスワード認証を構成して、Active Directory を使用するか、または使用しないようにできます。 いずれかのシナリオで、接続するすべてのユーザーに、RADIUS を使用して認証できるユーザー名とパスワードの資格情報があることを確認します。
@@ -57,7 +51,7 @@ P2S RADIUS 認証の構成ワークフローは次のとおりです。
 ユーザー名/パスワード認証で使用する VPN クライアント構成ファイルを生成します。 VPN クライアント構成ファイルの生成には、次のコマンドを使用します。
 
 ```powershell 
-New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
+New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
  
 コマンドを実行すると、リンクが返されます。 このリンクをコピーして Web ブラウザーに貼り付け、**VpnClientConfiguration.zip** をダウンロードします。 そのファイルを解凍して、次のフォルダーを表示します。 
@@ -66,12 +60,12 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 * **Generic**: このフォルダーには、独自の VPN クライアント構成を作成するのに使用する、全般的な情報が含まれています。 このフォルダーは、ユーザー名/パスワード認証の構成には不要です。
 * **Mac**: 仮想ネットワーク ゲートウェイの作成時に IKEv2 を構成した場合は、**mobileconfig** ファイルを含む **Mac** という名前のフォルダーが表示されます。 このファイルを使用して、Mac クライアントを構成します。
 
-クライアント構成ファイルを既に作成してある場合は、`Get-AzureRmVpnClientConfiguration` コマンドレットを使用して取得できます。 ただし、VPN プロトコルの種類や認証の種類など、P2S VPN 構成に変更を加える場合、構成は自動的に更新されません。  `New-AzureRmVpnClientConfiguration` コマンドレットを実行して、新しい構成のダウンロードを作成する必要があります。
+クライアント構成ファイルを既に作成してある場合は、`Get-AzVpnClientConfiguration` コマンドレットを使用して取得できます。 ただし、VPN プロトコルの種類や認証の種類など、P2S VPN 構成に変更を加える場合、構成は自動的に更新されません。  `New-AzVpnClientConfiguration` コマンドレットを実行して、新しい構成のダウンロードを作成する必要があります。
 
 以前に生成されたクライアント構成ファイルを取得するには、次のコマンドを使用します。
 
 ```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
+Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
 
 ### <a name="setupusername"></a> 2.VPN クライアントの構成
@@ -101,7 +95,8 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
    ![mobileconfig ファイルの場所](./media/point-to-site-vpn-client-configuration-radius/admobileconfigfile.png)
 
 3. オプションの手順 - カスタム DNS を指定する場合は、**mobileconfig** ファイルに次の行を追加します。
-```xml
+
+  ```xml
     <key>DNS</key>
     <dict>
       <key>ServerAddresses</key>
@@ -113,7 +108,7 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
             <string>TestDomain.com</string>
         </array>
     </dict> 
-```
+  ```
 4. プロファイルをダブルクリックしてインストールし、**[続ける]** を選択します。 プロファイル名は、仮想ネットワークの名前と同じです。
 
    ![インストール メッセージ](./media/point-to-site-vpn-client-configuration-radius/adinstall.png)
@@ -137,7 +132,7 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
    ![VPN 接続の詳細](./media/point-to-site-vpn-client-configuration-radius/adconnection.png)
 11. **[認証設定]** を選択します。 一覧で **[ユーザー名]** を選択し、資格情報を入力します。 以前に資格情報を入力した場合は、一覧で **[ユーザー名]** が自動的に選択され、ユーザー名とパスワードがあらかじめ入力されています。 **[OK]** を選択して設定を保存します。
 
-    ![[認証設定]](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
+   ![[認証設定]](./media/point-to-site-vpn-client-configuration-radius/adauthentication.png)
 12. **[ネットワーク]** ダイアログ ボックスに戻り、**[適用]** を選択して、変更を保存します。 接続を開始するには、**[接続]** を選択します。
 
 #### <a name="adlinuxcli"></a>strongSwan を使用した Linux VPN クライアントの設定
@@ -188,7 +183,7 @@ EAP-TLS プロトコルを使用する RADIUS 証明書認証用の VPN クラ�
 証明書認証で使用する VPN クライアント構成ファイルを生成します。 VPN クライアント構成ファイルの生成には、次のコマンドを使用します。
  
 ```powershell
-New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root> | fl
+New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root> | fl
 ```
 
 コマンドを実行すると、リンクが返されます。 このリンクをコピーして Web ブラウザーに貼り付け、VpnClientConfiguration.zip をダウンロードします。 そのファイルを解凍して、次のフォルダーを表示します。
@@ -196,12 +191,12 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 * **WindowsAmd64** および **WindowsX86**: これらのフォルダーにはそれぞれ、Windows の 64 ビットと 32 ビットのインストーラー パッケージが含まれています。 
 * **GenericDevice**: このフォルダーには、独自の VPN クライアント構成を作成するのに使用する、全般的な情報が含まれています。
 
-クライアント構成ファイルを既に作成してある場合は、`Get-AzureRmVpnClientConfiguration` コマンドレットを使用して取得できます。 ただし、VPN プロトコルの種類や認証の種類など、P2S VPN 構成に変更を加える場合、構成は自動的に更新されません。  `New-AzureRmVpnClientConfiguration` コマンドレットを実行して、新しい構成のダウンロードを作成する必要があります。
+クライアント構成ファイルを既に作成してある場合は、`Get-AzVpnClientConfiguration` コマンドレットを使用して取得できます。 ただし、VPN プロトコルの種類や認証の種類など、P2S VPN 構成に変更を加える場合、構成は自動的に更新されません。  `New-AzVpnClientConfiguration` コマンドレットを実行して、新しい構成のダウンロードを作成する必要があります。
 
 以前に生成されたクライアント構成ファイルを取得するには、次のコマンドを使用します。
 
 ```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
+Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  
 ### <a name="setupusername"></a> 2.VPN クライアントの構成
@@ -260,7 +255,7 @@ Azure 仮想ネットワークに接続するすべての Mac デバイスごと
 
 別の認証の種類 (OTP など) を使用するか、別の認証プロトコル (EAP-MSCHAPv2 の代わりに PEAP-MSCHAPv2 など) を使用するには、独自の VPN クライアント構成プロファイルを作成する必要があります。 プロファイルを作成するには、仮想ネットワーク ゲートウェイの IP アドレス、トンネルの種類、分割トンネルのルートなどの情報が必要です。 この情報は、次の手順を実行することで取得できます。
 
-1. `Get-AzureRmVpnClientConfiguration` コマンドレットを使用して、EapMSChapv2 用の VPN クライアント構成を生成します。 手順については、この記事のこちらのセクションを参照してください。
+1. `Get-AzVpnClientConfiguration` コマンドレットを使用して、EapMSChapv2 用の VPN クライアント構成を生成します。
 
 2. VpnClientConfiguration.zip ファイルを解凍し、**GenericDevice** フォルダーを探します。 64 ビットおよび 32 ビットのアーキテクチャ用の Windows インストーラーが含まれているフォルダーは、無視します。
  

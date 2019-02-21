@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: glenga
-ms.openlocfilehash: 9e85dbe21b98ce936ede09e741e83f59a865b73e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b39c8c19b494422d34bae7145d69e8e95cb16846
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999387"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416822"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 
@@ -431,7 +431,7 @@ WebJobs SDK では、Azure のアプリケーション設定内でストレー�
 
 1. 使用できる Application Insights リソースがまだない場合は、[作成](../azure-monitor/app/create-new-resource.md )します。 **[アプリケーションの種類]** を **[全般]** に設定し、「**インストルメンテーション キーをコピー**」の後のセクションをスキップします。
 
-1. 使用する Application Insights リソースが既にある場合は、[インストルメンテーション キーをコピー](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key)します。
+1. 使用する Application Insights リソースが既にある場合は、[インストルメンテーション キーをコピー](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key)します。
 
 ### <a name="configure-app-settings"></a>アプリケーションの設定の構成 
 

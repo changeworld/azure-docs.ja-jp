@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: fba109e04369c05f98e863b7dd0fa3d51f40d0ad
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a82984ce4c2a2e44306abaa63265e0c25cc6ace4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810241"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310293"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーで一括挿入を最適化し、一時データを使用する 
 この記事では、Azure Database for PostgreSQL サーバーでの一括挿入操作を最適化し、一時データを使用する方法について説明します。
@@ -25,9 +25,9 @@ ms.locfileid: "55810241"
 
 ログ記録されないテーブルを作成するには、次のオプションを使用します。
 - `CREATE UNLOGGED TABLE <tableName>` という構文を使用して、新しいログ記録されないテーブルを作成します。
-- `ALTER <tableName> SET UNLOGGED` という構文を使用して、既存のログ記録されるテーブルをログ記録されないテーブルに変換します。  
+- `ALTER TABLE <tableName> SET UNLOGGED` という構文を使用して、既存のログ記録されるテーブルをログ記録されないテーブルに変換します。  
 
-プロセスを元に戻すには、`ALTER <tableName> SET LOGGED` という構文を使用します。
+プロセスを元に戻すには、`ALTER TABLE <tableName> SET LOGGED` という構文を使用します。
 
 ## <a name="unlogged-table-tradeoff"></a>ログ記録されないテーブルのトレードオフ
 ログ記録されないテーブルは、クラッシュ セーフではありません。 ログ記録されないテーブルはクラッシュ後に自動的に切り捨てられるか、不完全なシャットダウンの対象になります。 ログ記録されないテーブルの内容は、スタンバイ サーバーにレプリケートされることもありません。 ログ記録されないテーブルに対して作成されたインデックスも、ログに自動的に記録されることはありません。 挿入操作が完了した後、テーブルをログ記録されるテーブルに変換して、挿入を持続的なものにします。

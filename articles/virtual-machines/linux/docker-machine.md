@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: f4be58d702b5d97722a3f9f1ee2df6b519ba4fab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: da0e393dc2ae0d93ecc49745a42ffac4669ed74b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731752"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326308"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Docker マシンを使用して、Azure で Docker ホストを作成する方法
 この記事では、[Docker マシン](https://docs.docker.com/machine/)を使用して、Azure で Docker ホストを作成する方法を詳しく説明します。 `docker-machine` コマンドを実行すると、Azure で Linux 仮想マシン (VM) が作成され、次に Docker がインストールされます。 これにより、同じローカル ツールとワークフローを使用して、Azure で Docker ホストを管理できます。 Windows 10 で Docker コンピューターを使用するには、Linux バッシュを使用する必要があります。
@@ -137,4 +137,4 @@ docker-machine ip myvm
 ![実行中の ngnix コンテナー](./media/docker-machine/nginx.png)
 
 ## <a name="next-steps"></a>次の手順
-[Docker VM 拡張機能](dockerextension.md)を使用してホストを作成することもできます。 Docker Compose の使用例については、[Azure での Docker と Compose の使用](docker-compose-quickstart.md)に関するページをご覧ください。
+Docker Compose の使用例については、[Azure での Docker と Compose の使用](docker-compose-quickstart.md)に関するページをご覧ください。

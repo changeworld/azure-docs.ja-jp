@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 17774ea74c2462cb5b8a9dfe638b3dec02499d81
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 810a4708974d18a4bba048e3e402a172868178f3
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999166"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429691"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights:よく寄せられる質問
 
@@ -270,7 +270,7 @@ Microsoft の SDK と [SDK API](api-custom-events-metrics.md) を使用するこ
 <ApplicationInsights>
   ...
   <TelemetryModules>
-    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector"/>
+    <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <QuickPulseServiceEndpoint>https://rt.services.visualstudio.com/QuickPulseService.svc</QuickPulseServiceEndpoint>
     </Add>
   </TelemetryModules>

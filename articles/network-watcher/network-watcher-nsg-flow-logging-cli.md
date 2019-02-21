@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 3e7a03f1235dab7eefd63b6611890897285d86ea
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 61674cc5551fb0d1be184de0ff0ed659cc56bbbe
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332338"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340248"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Azure CLI を使用したネットワーク セキュリティ グループ フローのログの構成
 
@@ -32,9 +32,6 @@ ms.locfileid: "54332338"
 ネットワーク セキュリティ グループのフローのログは、ネットワーク セキュリティ グループを使用したイングレスおよびエグレス IP トラフィックに関する情報を表示できる Network Watcher の機能です。 これらのフローのログは json 形式で記述され、ルールごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。
 
 この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンドライン インターフェイス (CLI) をインストール](/cli/azure/install-azure-cli)する必要があります。
-
-> [!NOTE] 
-> フロー ログ バージョン 2 は、米国中西部リージョンでのみ利用できます。 サポートされていないリージョンでバージョン 2 のログを有効にすると、バージョン 1 のログがお客様のストレージ アカウントに出力されることになります。
 
 ## <a name="register-insights-provider"></a>Insights プロバイダーの登録
 

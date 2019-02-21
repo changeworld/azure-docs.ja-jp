@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: dba5518df34fa4fb6c403a72aa40405bcde5c426
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: a71e11e4f42cd5dc365a1ccad0a8292d47342c99
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104679"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301963"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure における Durable Functions でのインスタンスの管理
 

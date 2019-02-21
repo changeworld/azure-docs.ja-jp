@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84a1fd3efb9eac30e70fea9622716a54769369e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78fc7441b109c87f1ab9ff5b56ed8e055c152d10
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184127"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456063"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator アプリに関する FAQ
 
@@ -49,7 +49,7 @@ Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換
 |Apple Watch 用の Microsoft Authenticator コンパニオン アプリが、Watch と同期も表示も行いません。なぜですか?|アプリが Watch に表示されない場合は、以下を試してください。 <ol><li>Watch が watchOS 4.0 以降で実行されていることを確認します。</li><li>Watch を再度同期します。</li></ol>|
 |Apple Watch コンパニオン アプリがクラッシュしました。 調査できるようにクラッシュ ログを送信できますか? |まず、分析を Microsoft と共有することを選択しているかどうかを確認する必要があります。 TestFlight ユーザーであれば、既にサインアップしています。 それ以外の場合は、**[設定] > [プライバシー] > [解析]** の順に移動し、**[iPhone と Watch 解析を共有]** オプションと **[App デベロッパと共有]** オプションの両方を選択します。<br><br>サインアップした後、調査のためにクラッシュ ログが自動的に送信されるように、クラッシュの再現を試みることができます。 ただし、クラッシュを再現できなくても、ログ ファイルを手動でコピーして送信できます。<ol><li>スマートフォン上で Watch アプリを開き、**[設定] > [一般]** の順に移動し、**[Watch 解析のコピー]** をクリックします。</li><li>**[設定] > [プライバシー] > [解析] > [解析データ]** で、該当するクラッシュを探し、テキスト全体を手動でコピーします。</li><li>スマートフォン上で Microsoft Authenticator アプリを開き、**[ログの送信]** ページの **[App デベロッパと共有]** テキスト ボックスに、コピーしたテキストを貼り付けます。</li></ol>|
 |アプリ ロック機能とは何ですか、セキュリティの強化にどのように役立ちますか?|ワンタイム パスコード、アプリの情報、アプリの設定のセキュリティを強化するには、Microsoft Authenticator アプリのアプリ ロック機能をオンにします。 Microsoft Authenticator アプリの **[設定]** 画面からアプリ ロック機能をオンにすることは、Microsoft Authenticator アプリを開くたびに、PIN または生体認証を使用して、認証を求められることを意味します。 この機能は保護を追加するもので、Microsoft Authenticator アプリで通知を承認する方法は変更されません。<br><br>**注**<br>30 秒以内に Android デバイスで実行されている Microsoft Authenticator アプリに戻った場合は、認証が再度求められることはありません。|
-|なぜ自分のアカウントのアクティビティに関する通知を受け取るのですか?|お客様個人の Microsoft アカウントで何が行われているかをお知らせるために、Microsoft Authenticator アプリにアクティビティの通知を送信しています。 これらの通知は、何か変更があるとすぐに表示されるため、安全性の向上に役立ちます。 以前はこれらの通知をメールと SMS で送信していましたが、アプリも含めるように拡張されました。 これらのアクティビティの通知の詳細については、「[お使いのアカウントで通常とは異なるサインインが発生した場合](https://support.microsoft.com/en-us/help/13967/microsoft-account-unusual-sign-in)」を参照してください。 通知を受け取る場所を変更するには、 https://account.live.com/SecurityNotifications/Update にサインインしてください。|
+|なぜ自分のアカウントのアクティビティに関する通知を受け取るのですか?|お客様個人の Microsoft アカウントで何が行われているかをお知らせるために、Microsoft Authenticator アプリにアクティビティの通知を送信しています。 これらの通知は、何か変更があるとすぐに表示されるため、安全性の向上に役立ちます。 以前はこれらの通知をメールと SMS で送信していましたが、アプリも含めるように拡張されました。 これらのアクティビティの通知の詳細については、「[お使いのアカウントで通常とは異なるサインインが発生した場合](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)」を参照してください。 通知を受け取る場所を変更するには、 https://account.live.com/SecurityNotifications/Update にサインインしてください。|
 
 
 ## <a name="next-steps"></a>次の手順
@@ -58,4 +58,4 @@ Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換
 
 -   セキュリティ情報の詳細については、[セキュリティ情報の管理](security-info-manage-settings.md)に関する記事を参照してください。
 
-- 疑問点への答えがここで見つからなかった場合は、ぜひお知らせください。 [Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)に質問を投稿してコミュニティからのサポートを受けるか、このページにコメントを残してください。
+- 疑問点への答えがここで見つからなかった場合は、ぜひお知らせください。 [Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp)に質問を投稿してコミュニティからのサポートを受けるか、このページにコメントを残してください。

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 503a93064b81e0db35c0477a11f2ee525680c854
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e41a669e3dcd14952077cbd21e7387184546de80
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488440"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454295"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での実験イテレーションの管理
 予測可能な分析モデルの開発では、十分にトレーニングされた有効なモデルが作成されるまで、実験におけるさまざまな関数とパラメーターを繰り返し調整します。 このプロセスでは、実験パラメーターと構成のさまざまなイテレーションを追跡することが重要になります。
@@ -48,7 +48,7 @@ ms.locfileid: "55488440"
 
 **[実行履歴を表示]** をクリックすると、これらの実行すべてがリストに表示されます。
 
-![実行履歴の例][runhistory]
+![実行履歴の例](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
 いずれかの実行をクリックし、実験を実行した時点のスナップショットを表示します。 構成、パラメーター値、コメント、結果はすべて、実験の実行の完全な記録として保持されています。
 
@@ -73,10 +73,6 @@ Machine Learning Studio の **[EXPERIMENTS]** タブの実験のリストには�
 5. **[実行]** をクリックします。
 
 これで、このバージョンの実験を引き続き変更、実行して、作業を記録する新しい実行履歴をビルドできます。
-
-<!-- Images -->
-[runhistory]:./media/manage-experiment-iterations/viewrunhistory.jpg
-
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/

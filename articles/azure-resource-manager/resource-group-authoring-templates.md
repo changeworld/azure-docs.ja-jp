@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2019
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 509c9cbe3a4c2f930c9fdfda186d78118dbe4b80
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 34f34545e4511c4f8bc4af95f906f2871480bd47
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237844"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310162"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 
@@ -79,9 +79,7 @@ ms.locfileid: "56237844"
                 {
                     "name": "<name-of-array-property>",
                     "count": <number-of-iterations>,
-                    "input": {
-                        <properties-to-repeat>
-                    }
+                    "input": <object-or-value-to-repeat>
                 }
             ]
         },
@@ -89,9 +87,7 @@ ms.locfileid: "56237844"
             {
                 "name": "<variable-array-name>",
                 "count": <number-of-iterations>,
-                "input": {
-                    <properties-to-repeat>
-                }
+                "input": <object-or-value-to-repeat>
             }
         ]
     },
@@ -152,6 +148,7 @@ ms.locfileid: "56237844"
     ],
     "outputs": {
         "<outputName>" : {
+            "condition": "<boolean-value-whether-to-output-value>",
             "type" : "<type-of-output-value>",
             "value": "<output-value-expression>"
         }

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 02/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 5af403b2d75a552719088daa17259f0771b77a94
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 0140cb4fd1721e1d13840fe27db223c0ebec7d8a
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765682"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301895"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Azure Log Analytics エージェントを使用してログ データを収集する
 
@@ -78,10 +78,10 @@ Linux および Windows エージェントが Log Analytics と通信するた�
 
 |エージェントのリソース|ポート |方向 |バイパス HTTPS 検査|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |ポート 443 |受信および送信|はい |  
-|*.oms.opinsights.azure.com |ポート 443 |受信および送信|はい |  
-|*.blob.core.windows.net |ポート 443 |受信および送信|はい |  
-|*.azure-automation.net |ポート 443 |受信および送信|はい |  
+|*.ods.opinsights.azure.com |ポート 443 |送信|はい |  
+|*.oms.opinsights.azure.com |ポート 443 |送信|はい |  
+|*.blob.core.windows.net |ポート 443 |送信|はい |  
+|*.azure-automation.net |ポート 443 |送信|はい |  
 
 
 Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook を使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 

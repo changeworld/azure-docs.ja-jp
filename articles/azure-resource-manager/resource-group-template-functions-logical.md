@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: e796afbb31c006b37b9a86556714ab3544c2fb8a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 109bd1c987c86721c6064fc0294913c85fa3a901
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107517"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267871"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの論理関数
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Resource Manager には、テンプレートで比較を行うための関数がいくつか用意されています。
 

@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 02/19/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 72229a723247d6f0d68341771b073d0626ab2edb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 2ec2ddbac5d0368aaf1b46208c9ebb44bf12a622
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745998"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447312"
 ---
 # <a name="assets"></a>アセット
 
@@ -48,8 +48,7 @@ Media Services の一般的なワークフローの 1 つに、ファイルの�
 4. Media Services v3 API を使用して、"入力" アセットを処理する変換とジョブを作成します。 詳しくは、「[Transform と Job](transform-concept.md)」をご覧ください。
 5. "出力" アセットからのコンテンツをストリーム配信します。
 
-> [!TIP]
-> アセットの作成、ストレージ内のアセット コンテナーに書き込み可能な SAS URL の取得、SAS URL を使用したストレージ内のコンテナーへのファイル アップロードを行う方法を示す .NET の完全な例については、「[ローカル ファイルからジョブの入力を作成する](job-input-from-local-file-how-to.md)」をご覧ください。
+アセットの作成、ストレージ内のアセット コンテナーに書き込み可能な SAS URL の取得、SAS URL を使用したストレージ内のコンテナーへのファイル アップロードを行う方法を示す .NET の完全な例については、「[ローカル ファイルからジョブの入力を作成する](job-input-from-local-file-how-to.md)」をご覧ください。
 
 ### <a name="create-a-new-asset"></a>新しいアセットの作成
 

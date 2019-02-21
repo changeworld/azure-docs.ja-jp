@@ -10,17 +10,18 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
+ms.subservice: users-groups-roles
 ms.date: 01/28/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22be2430108187b8d6b910d2e3852456fc00b461
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3c81ab72be58cd223eb9b3fe9ec53d56574a94e8
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202657"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430303"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>グループベースのライセンスを使用して製品ライセンス間でユーザーを安全に移行する方法
 

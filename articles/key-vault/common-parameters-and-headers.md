@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 3fb11ad74e3d1628cbf3f00e2aae648be3eea437
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1ac0f54aa4dfdc9db4724629c4dbfe7a4982838f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107686"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301232"
 ---
 # <a name="common-parameters-and-headers"></a>一般的なパラメーターとヘッダー
 
@@ -34,12 +34,14 @@ ms.locfileid: "56107686"
 ## <a name="common-error-response"></a>一般的なエラー応答
 このサービスは、HTTP 状態コードを使用して成功または失敗を示します。 さらに、エラーには次の形式の応答が含まれています。
 
+```
    {  
      "error": {  
-     "code":"BadRequest",  
-     "message":"The key vault sku is invalid."  
+     "code": "BadRequest",  
+     "message": "The key vault sku is invalid."  
      }  
    }  
+```
 
 |要素名 | type | 説明 |
 |---|---|---|

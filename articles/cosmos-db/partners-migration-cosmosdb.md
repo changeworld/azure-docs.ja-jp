@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: 25d2b9fac65525c56912e5daa7e5bcb4aa2cd5f4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 255182fe5e6c5576077dc97831628e4a13dfc026
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036003"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453523"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB (NoSQL) への移行とアプリケーション開発のパートナー
 
@@ -38,7 +38,7 @@ NoSQL への移行からアプリケーション開発まで、Azure Cosmos DB �
 |![Coeo][7]     |   アプリの刷新 (既存のアプリ)、 <br/> 新しいアプリの開発 |    英国     |  [Web サイト](http://www.coeo.com/)       |
 | ![Cognizant][15] | NoSQL の移行 |米国、カナダ、英国、デンマーク、オランダ、スイス、オーストラリア、日本 | [Web サイト](https://www.cognizant.com/)|
 |![Infosys][8]     |  NoSQL の移行       |    グローバル     |  [Web サイト](http://www.infosys.com/)       |
-| ![Lagash][16] | NoSQL の移行、 <br/> 新しいアプリの開発 | アルゼンチン、チリ、コロンビア、メキシコ| [Web サイト](https://lagash.com/)|
+| ![Lagash][16] | NoSQL の移行、 <br/> 新しいアプリの開発 | アルゼンチン、チリ、コロンビア、メキシコ| [Web サイト](https://www.lagash.com/)|
 | ![Lambda3 Informatics][17] | NoSQL の移行、 <br/> 新しいアプリの開発 | ブラジル| [Web サイト](https://www.lambda3.com.br/)|
 |![Neal Analytics][9]     |     アプリ開発 (新しいアプリ)    |    USA     |  [Web サイト](http://www.nealanalytics.com/)       |
 |![Pragmatic Works Software Inc][10]    |   NoSQL の移行      |   USA      |  [Web サイト](http://www.pragmaticworks.com/)       |

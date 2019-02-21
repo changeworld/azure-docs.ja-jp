@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 012/13/2019
 ms.author: jowargo
-ms.openlocfilehash: d0d181afd9bb8f1d387ce8e33f50a78dae3a11ec
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 6fc44e432b9614eb6270b6ef4862cc0240df8206
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961433"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266936"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS のトークンベース (HTTP/2) 認証
 
@@ -68,7 +68,7 @@ APNS での証明書資格情報の使用から移行する場合は、次の点
 
 ### <a name="authentication-token"></a>認証トークン
 
-認証トークンは、アプリケーション用のトークンを生成した後にダウンロードできます。 このトークンの生成方法の詳細については、[Apple の開発者向けドキュメント](http://help.apple.com/xcode/mac/current/#/dev11b059073?sub=dev1eb5dfe65)を参照してください。
+認証トークンは、アプリケーション用のトークンを生成した後にダウンロードできます。 このトークンの生成方法の詳細については、[Apple の開発者向けドキュメント](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1)を参照してください。
 
 ## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>トークン ベースの認証を使用するための通知ハブの構成
 

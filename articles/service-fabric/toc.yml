@@ -696,10 +696,6 @@ items:
         href: service-fabric-diagnostics-event-aggregation-wad.md
       - name: Linux クラスターの診断
         href: service-fabric-diagnostics-oms-syslog.md
-      - name: Log Analytics の設定
-        href: service-fabric-diagnostics-oms-setup.md
-      - name: Log Analytics による監視
-        href: service-fabric-diagnostics-event-analysis-oms.md
     - name: インフラストラクチャの監視
       items:
       - name: Log Analytics エージェントによるパフォーマンス カウンターの収集
@@ -841,9 +837,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: e46baa05ceda2bac38057c59411d8813de7607dd
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: c036435895366ebdb9b07de20cc8f85c39aab3ea
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309881"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454635"

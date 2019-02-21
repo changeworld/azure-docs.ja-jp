@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: d1534f76c4ef0c1edd8d83522f2d0855def48f25
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fc8283d85cf7d516edd78f20c9a47d806fbb827b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880879"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328964"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot Framework 3.x と Azure Web アプリ ボットを使用した C# の LUIS ボット
 
@@ -45,7 +45,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 
 3. [Web App Bot ]\(Web アプリ ボット\) ウィンドウで、**[作成]** をクリックします。
 
-4. **[ボット サービス]** で、必要な情報を指定し、**[作成]** をクリックします。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)を使用するには、ボットを作成する前に、[リージョンの要件](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming)を確認します。 
+4. **[ボット サービス]** で、必要な情報を指定し、**[作成]** をクリックします。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)を使用するには、ボットを作成する前に、[リージョンの要件](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming)を確認します。 
     * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
     * **Bot テンプレート**で、以下を選択します。

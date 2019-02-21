@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2fdede1308ac2c4c036d835a7be28b0e5ee180d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ea25510596903e4020e8237bc5bd389c584ead9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207078"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268433"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -202,8 +202,8 @@ MFA ポリシーを構成し、有効または無効にする| セキュリテ�
 MFA を無効にする | グローバル管理者 | 
 MFA の有効化 | グローバル管理者 | 
 MFA サービスの設定を管理する | グローバル管理者 | 
-選択したユーザーについて連絡方法の再指定を必須にする | グローバル管理者 | 
-記憶されているすべてのデバイスで多要素認証を復元する  | グローバル管理者 | 
+選択したユーザーについて連絡方法の再指定を必須にする | 認証管理者 | 
+記憶されているすべてのデバイスで多要素認証を復元する  | 認証管理者 | 
 
 ## <a name="mfa-server"></a>MFA サーバー
 

@@ -1,7 +1,7 @@
 ---
 title: Speech SDK のトラブルシューティング - Speech Services
 titleSuffix: Azure Cognitive Services
-description: この記事では、Speech Service SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
+description: この記事では、Speech SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: dbcdfd117a39939491914ebddb717f404e07f09c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a3741cb351b11b8cfd7c5d38713bb71232cf010e
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859319"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446530"
 ---
-# <a name="troubleshoot-the-speech-service-sdk"></a>Speech Service SDK のトラブルシューティング
+# <a name="troubleshoot-the-speech-sdk"></a>Speech SDK のトラブルシューティング
 
-この記事では、Speech Service SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
+この記事では、Speech SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
 
 ## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>エラー:認証エラー (403) で WebSocket をアップグレードできませんでした
 

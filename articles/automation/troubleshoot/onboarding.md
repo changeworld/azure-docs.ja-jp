@@ -8,12 +8,12 @@ ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 78e78bc019ab5f8be1cfd3448220b97b89cde6a5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ac11b1a2b625d1fc7b62130580d1f188ead21051
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228782"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342730"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>ソリューションをオンボードする際のエラーをトラブルシューティングする
 
@@ -73,7 +73,7 @@ The solution cannot be enabled due to missing permissions for the virtual machin
   * ポリシーの対象を特定のリソースに設定し直す (特定の Automation アカウントなど)。
   * 拒否するようにポリシーが構成されているリソースのセットを変更する
 
-Azure Portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、**[設定]** の **[デプロイ]** を選択して、失敗したデプロイメントを表示します。 Azure Policy の詳細については、次をご覧ください。[Azure Policy の概要](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)。
+Azure Portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、**[設定]** の **[デプロイ]** を選択して、失敗したデプロイメントを表示します。 Azure Policy の詳細については、次をご覧ください。[Azure Policy の概要](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
 
 ## <a name="mma-extension-failures"></a>MMA 拡張機能のエラー
 

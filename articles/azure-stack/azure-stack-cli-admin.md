@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/15/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/15/2019
-ms.openlocfilehash: 0d6a93b396e90f3bc27a1eb879556d774075c86f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 34a33c82813a0059cc286a7cb2d1fe984a5bf6d2
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243302"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452405"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Azure Stack ユーザーに対する Azure CLI の有効化
 
@@ -40,12 +40,12 @@ Azure Stack のユーザーに CA ルート証明書を提供して、開発マ�
 PEM 形式で ASDK ルート証明書をエクスポートするには、サインインして次のスクリプトを実行します。
 
 ```powershell
-$label = "<Your Azure Stack CA root certificate name>"
+$label = "AzureStackSelfSignedRootCert"
 Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
 $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
 if (-not $root)
 {
-    Log-Error "Certificate with subject CN=$label not found"
+    Write-Error "Certificate with subject CN=$label not found"
     return
 }
 

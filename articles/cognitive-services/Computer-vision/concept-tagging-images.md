@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f5013c83f3575e7e1fbaa6dff614e4679abf09b6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: aeb03566a650fe46286d77913e0d36dcbb19f436
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882235"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311071"
 ---
 # <a name="applying-content-tags-to-images"></a>コンテンツ タグの画像への適用
 

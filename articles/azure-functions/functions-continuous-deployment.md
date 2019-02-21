@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 8d99a52b500377e02af339588fe7155e26cf588c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: fd8fa690c508b8bf748490668c1e9aaa811ac247
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233389"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300280"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions の継続的なデプロイ
 Azure Functions を利用すると、App Service の継続的インテグレーションを使用して、関数アプリを簡単にデプロイできます。 Functions は、BitBucket、Dropbox、GitHub、および Azure DevOps と統合されています。 これにより、関数コードの更新がこれらの統合されたサービスのいずれかを使用して行われるワークフローで、Azure へのデプロイをトリガーできるようになります。 Azure Functions に慣れていない場合は、「 [Azure Functions の概要](functions-overview.md)」から始めてください。

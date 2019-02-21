@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 540abeed3587959af5ca229f59343774b824547b
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 76059c587a6378ccfe16c0a633bea0c6c7a8a57d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982898"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340095"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
@@ -207,7 +207,7 @@ Azure Resource Manager で有効にするサービスを、目的を持って選
 - [より詳細に制御されたデプロイを簡単に行うための Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-overview.md#template-deployment)。
 - [タグ](../../azure-resource-manager/resource-group-using-tags.md)。
 - [アクティビティ コントロール](../../azure-resource-manager/resource-group-audit.md)
-- [Azure のポリシー](../../azure-policy/azure-policy-introduction.md)
+- [Azure のポリシー](../../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>回避すべき問題
 

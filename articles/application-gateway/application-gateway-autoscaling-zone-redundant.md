@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: victorh
-ms.openlocfilehash: 880a6fc9d5636ff0ac67d24d0ef66c8f48ae22fb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: bc1176ea97d1c2d4fc17487c0589fb4235163b46
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743652"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446513"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)
 
@@ -45,7 +45,7 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 |問題|詳細|
 |--|--|
 |認証証明書|サポートされていません。<br>詳細については、「[Application Gateway でのエンド ツー エンド SSL の概要](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)」を参照してください。|
-|同じサブネット上の Standard_v2 と Standard Application Gateway の混在|サポートされていません。<br>さらに、自動スケールを有効にすると、1 つのサブネットには 1 つアプリケーション ゲートウェイだけが存在できます。|
+|同じサブネット上の Standard_v2 と Standard Application Gateway の混在|サポートされていません|
 |Application Gateway サブネット上のユーザー定義ルート (UDR)|サポートされていません|
 |受信ポート範囲の NSG| - Standard_v2 SKU では 65200 ～ 65535<br>- Standard SKU では 65503 ～ 65534<br>詳細については、[FAQ](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet) をご覧ください。|
 |Azure 診断でのパフォーマンス ログ|サポートされていません。<br>Azure メトリックを使用する必要があります。|
