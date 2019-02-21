@@ -13,16 +13,14 @@ ms.devlang: na
 ms.date: 12/19/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 99d4f3b6cf42ee21c34809b5604c4603da784e7b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cf1894a218af35459e0d0dc432c5813169856cca
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107822"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267702"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group-or-subscription"></a>チュートリアル:Azure リソースを別のリソース グループやサブスクリプションに移動する
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Azure リソースを 1 つのリソース グループから別のリソース グループに移動する方法について説明します。 1 つの Azure サブスクリプションから別の Azure サブスクリプションに Azure リソースを移動することもできます。 このチュートリアルでは、リソース マネージャー テンプレートを使用して 2 つのリソース グループと 1 つのストレージ アカウントをデプロイします。 その後、ストレージ アカウントを 1 つのリソース グループから別のリソース グループに移動します。
 
@@ -37,8 +35,6 @@ Azure リソースを 1 つのリソース グループから別のリソース 
 > * リソースをクリーンアップする。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-resources"></a>リソースを準備する
 
@@ -98,6 +94,8 @@ New-AzDeployment `
 ## <a name="move-the-resource"></a>リソースを移動する
 
 ストレージ アカウントはソース リソース グループ (rg1) 内にあります。次の PowerShell スクリプトを実行して、リソースを移動先のリソース グループ (rg2) に移動します。 必ず、リソースのデプロイ時に使用したのと同じプロジェクト名を使用してください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell-interactive
 $projectName = Read-Host -prompt "Enter a project name"

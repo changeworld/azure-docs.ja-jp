@@ -349,7 +349,7 @@ items:
       href: using-managed-disks-template-deployments.md
     - name: 書き込みアクセラレータを有効にする
       href: how-to-enable-write-accelerator.md
-    - name: Ultra Disks を有効にする
+    - name: ウルトラ SSD を有効にする
       href: disks-enable-ultra-ssd.md
     - name: マネージド ディスクに移行する
       href: migrate-to-managed-disks.md
@@ -461,9 +461,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: a94dc323129041ffaaadc65204fdc35327b88b33
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 1b6d748758ba201391c80f8bded8215ae4161fbc
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328828"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430371"

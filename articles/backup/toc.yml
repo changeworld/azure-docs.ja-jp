@@ -34,20 +34,30 @@ items:
     href: backup-rm-template-samples.md
 - name: 概念
   items:
+  - name: サポート マトリックス
+    items:
+    - name: Azure Backup のサポート マトリックス
+      href: backup-support-matrix.md
+    - name: Azure VM のバックアップに関するサポート マトリックス
+      href: backup-support-matrix-iaas.md
+    - name: DPM/Azure Backup Server (MABS) のサポート マトリックス
+      href: backup-support-matrix-mabs-dpm.md
+    - name: MARS エージェントのサポート マトリックス
+      href: backup-support-matrix-mars-agent.md
+  - name: よく寄せられる質問 (FAQ)
+    items:
+    - name: FAQ - Recovery Services コンテナー
+      href: backup-azure-backup-faq.md
+    - name: FAQ - Azure VM のバックアップ
+      href: backup-azure-vm-backup-faq.md
+    - name: FAQ - MARS エージェント
+      href: backup-azure-file-folder-backup-faq.md
+    - name: FAQ - Azure Files のバックアップ
+      href: backup-azure-files-faq.md
+    - name: FAQ - Azure VM 上の SQL Server データベースのバックアップ
+      href: faq-backup-sql-server.md
   - name: Backup のアーキテクチャ
     href: backup-architecture.md
-  - name: Backup のサポート マトリックス
-    href: backup-support-matrix.md
-  - name: FAQ
-    items:
-    - name: Recovery Services コンテナーに関する FAQ
-      href: backup-azure-backup-faq.md
-    - name: Azure VM バックアップに関する FAQ
-      href: backup-azure-vm-backup-faq.md
-    - name: Azure Backup エージェントを使用したファイル フォルダー バックアップに関する FAQ
-      href: backup-azure-file-folder-backup-faq.md
-    - name: バックアップ コンテナーの自動アップグレードに関する FAQ
-      href: backup-upgrade-backup-vault.md
   - name: ロールベースのアクセス制御
     href: backup-rbac-rs-vault.md
   - name: ハイブリッド バックアップのセキュリティ
@@ -104,45 +114,39 @@ items:
     items:
     - name: Azure ファイル共有のバックアップ
       href: backup-azure-files.md
-    - name: Azure ファイル共有のバックアップに関する FAQ
-      href: backup-azure-files-faq.md
-  - name: Azure VM
+  - name: Azure VM のバックアップ
     items:
-    - name: VM を準備する
+    - name: Azure VM バックアップについて
+      href: backup-azure-vms-introduction.md
+    - name: Azure Backup のインスタント リストアを使用して Azure VM をバックアップおよび復元する
+      href: backup-instant-restore-capability.md
+    - name: Azure VM のバックアップ
       items:
-      - name: Resource Manager でデプロイされた VM の準備
-        href: backup-azure-arm-vms-prepare.md
-      - name: Linux VM のアプリケーション整合性バックアップ
-        href: backup-azure-linux-app-consistent.md
-    - name: 環境を計画する
-      items:
-      - name: VM のバックアップ インフラストラクチャの計画
-        href: backup-azure-vms-introduction.md
-    - name: VM をバックアップする
-      items:
-      - name: Recovery Services コンテナーへの Azure VM のバックアップ
-        href: backup-azure-vms-first-look-arm.md
-      - name: 暗号化された VM のバックアップ
-        href: backup-azure-vms-encryption.md
-      - name: VM 作成中の VM バックアップの有効化
+      - name: Azure VM の作成時にバックアップを有効にする
         href: backup-during-vm-creation.md
-    - name: VM の管理と監視
+      - name: VM 設定から Azure VM をバックアップする
+        href: backup-azure-vms-first-look-arm.md
+      - name: コンテナーを設定して Azure VM のバックアップを有効にする
+        href: backup-azure-arm-vms-prepare.md
+      - name: 暗号化された Azure VM をバックアップする
+        href: backup-azure-vms-encryption.md
+      - name: Linux を実行中の Azure VM のアプリ整合性バックアップを構成する
+        href: backup-azure-linux-app-consistent.md
+    - name: Azure VM のバックアップを管理および監視する
       items:
-      - name: Azure Portal での Azure VM のバックアップの管理
+      - name: Azure VM のバックアップを管理する
         href: backup-azure-manage-vms.md
       - name: Azure VM のバックアップに関するアラートの監視
         href: backup-azure-monitor-vms.md
-    - name: VM からのデータの復元
+    - name: Azure VM の復元
       items:
+      - name: ポータルで Azure VM を復元する
+        href: backup-azure-arm-restore-vms.md
       - name: Azure VM のバックアップからのファイルの回復
         href: backup-azure-restore-files-from-vm.md
-      - name: Azure Portal での VM の復元
-        href: backup-azure-arm-restore-vms.md
-      - name: インスタント リストア機能
-        href: backup-instant-restore-capability.md
       - name: 暗号化された VM の復元
         href: backup-azure-vms-encryption.md
-      - name: 暗号化された VM の Key Vault のキーとシークレットの復元
+      - name: 暗号化された VM の Key Vault のキーとシークレットを復元する
         href: backup-azure-restore-key-secret.md
   - name: Azure Backup のレポートを構成する
     items:
@@ -188,10 +192,14 @@ items:
       href: backup-azure-arm-userestapi-restoreazurevms.md
     - name: Azure Backup ジョブの管理
       href: backup-azure-arm-userestapi-managejobs.md
-  - name: Azure VM での SQL
+  - name: Azure VM 上の SQL Server データベースのバックアップ
     items:
-    - name: Azure での SQL データベースのバックアップ
+    - name: Azure VM 上の SQL Server データベースのバックアップ
       href: backup-azure-sql-database.md
+    - name: バックアップした SQL Server データベースの復元
+      href: restore-sql-database-azure-vm.md
+    - name: バックアップした SQL Server データベースの管理
+      href: manage-monitor-sql-database-backup.md
   - name: Windows Server
     items:
     - name: Windows Server のファイルとフォルダーのバックアップ
@@ -262,9 +270,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: ce83f8b6b1a0c7ccd9f00672f9aaf9bb33152fa8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 77f6bf8c4dd12c31f7461b273322b4ce41e3c58d
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997236"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428297"

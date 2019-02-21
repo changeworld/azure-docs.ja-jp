@@ -64,7 +64,7 @@ items:
     - name: オンプレミス SQL からのデータの使用
       displayName: on-premises
       href: use-data-from-an-on-premises-sql-server.md
-  - name: モデルの作成とトレーニング
+  - name: モデルをトレーニングする
     items:
     - name: 実験のライフサイクル管理
       href: version-control.md
@@ -87,6 +87,12 @@ items:
         href: interpret-model-results.md
       - name: デバッグ
         href: debug-models.md
+    - name: モデルの再トレーニング
+      items:
+      - name: "\"新しい\" Web サービス"
+        href: retrain-machine-learning-model.md
+      - name: クラシック Web サービス
+        href: retrain-classic-web-service.md
     - name: R と Python の使用
       items:
       - name: R の概要
@@ -132,12 +138,6 @@ items:
     - name: エンドポイントを作成する
       displayName: scale, scaling
       href: create-endpoint.md
-  - name: モデルの再トレーニング
-    items:
-    - name: 新しい Web サービスの再トレーニングとデプロイ
-      href: retrain-machine-learning-model.md
-    - name: 従来の Web サービスの再トレーニングとデプロイ
-      href: retrain-classic-web-service.md
   - name: モデルを使用する
     items:
     - name: 概要
@@ -146,11 +146,9 @@ items:
       href: consuming-from-excel.md
     - name: Excel アドインを使用する
       href: excel-add-in-for-web-services.md
-    - name: Web アプリ テンプレートを使用する
-      href: consume-web-service-with-web-app-template.md
     - name: Batch プールを使用する
       href: dedicated-capacity-for-bes-jobs.md
-  - name: 例
+  - name: ユース ケース
     items:
     - name: 顧客離れ
       href: azure-ml-customer-churn-scenario.md
@@ -158,12 +156,14 @@ items:
       href: text-analytics-module-tutorial.md
     - name: Excel から Studio への分析の移行
       href: linear-regression-in-azure.md
-  - name: Studio データの表示と削除
-    displayName: export
-    href: export-delete-personal-data-dsr.md
-  - name: Gallery データの表示と削除
-    displayName: export
-    href: ai-gallery-control-personal-data-dsr.md
+  - name: 顧客データの削除とエクスポート
+    items:
+    - name: Studio データ
+      displayName: export
+      href: export-delete-personal-data-dsr.md
+    - name: Gallery データ
+      displayName: export
+      href: ai-gallery-control-personal-data-dsr.md
 - name: リファレンス
   items:
   - name: アルゴリズムとモジュールのリファレンス
@@ -188,9 +188,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: カスタム ニューラル ネットワーク (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: c6d072a6e032fb4059b422d0778eb78b01d3706e
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6649d1c39bdb0a66018feff73f9e9d2b39064155
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327682"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430235"

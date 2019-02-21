@@ -41,6 +41,7 @@ items:
       href: power-bi-imported-query.md
     - name: Power BI - SQL クエリ
       href: power-bi-sql-query.md
+  expanded: true
 - name: チュートリアル
   items:
   - name: コードを使用せずにデータを取り込む
@@ -54,7 +55,6 @@ items:
     href: ingest-data-overview.md
   - name: 時系列分析
     href: time-series-analysis.md
-  expanded: true
 - name: ハウツー ガイド
   items:
   - name: 作業の開始
@@ -63,7 +63,6 @@ items:
       href: write-queries.md
     - name: サンプル データを取り込む
       href: ingest-sample-data.md
-    expanded: true
   - name: 管理
     items:
     - name: データベースのアクセス許可を管理する
@@ -82,7 +81,7 @@ items:
     items:
     - name: Python を使用して Databricks から接続する
       href: connect-from-databricks.md
-    - name: Jupyter Notebook と Kqlmagic を使用してデータを分析する
+    - name: Jupyter Notebook と Kqlmagic でデータを分析する
       href: kqlmagic.md
     - name: Grafana でデータを視覚化する
       href: grafana.md
@@ -126,9 +125,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: ae147580c4d1d4bca961adfcd7a01da3b71997f5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 81cb1615178ed984138986eb22aa2cb24cfc21b0
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233916"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417161"

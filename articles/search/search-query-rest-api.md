@@ -7,24 +7,16 @@ ms.author: brjohnst
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 04/20/2018
+ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: e453e05a692e862179dcd78298b215a2384cba2c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 8dddc85d8826c2980405fd67ddc1aaab9ea12c62
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092818"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301079"
 ---
 # <a name="query-your-azure-search-index-using-the-rest-api"></a>REST API を使用した Azure Search インデックスの照会
-> [!div class="op_single_selector"]
->
-> * [概要](search-query-overview.md)
-> * [ポータル](search-explorer.md)
-> * [.NET](search-query-dotnet.md)
-> * [REST](search-query-rest-api.md)
->
->
 
 この記事では、[Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用してインデックスを照会する方法について説明します。
 
