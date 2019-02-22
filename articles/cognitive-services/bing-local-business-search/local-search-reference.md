@@ -75,7 +75,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |----------|-----------|----------|--------------|
 |<a name="count" />count|`offset` パラメーターで指定されたインデックスから始まる、返す結果の数。|String|いいえ |   
 |<a name="localCategories" />localCategories|ビジネス カテゴリ別に検索を定義するオプションの一覧。  [地元企業のカテゴリ検索](local-categories.md)についてのページを参照してください|String|いいえ |  
-|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、市場コードに関するページを参照してください。<br /><br /> **注:** 現在 Local Business Search API でサポートされるのは en-us の市場と言語のみです。<br /><br />|String|[はい]|
+|<a name="mkt" />mkt|結果の取得元の市場。 <br /><br />可能な市場の値の一覧については、市場コードに関するページを参照してください。<br /><br /> **注:** 現在 Local Business Search API でサポートされるのは en-us の市場と言語のみです。<br /><br />|String|はい|
 |<a name="offset"/>offset|`count` パラメーターで指定された、結果を開始するインデックス。|整数|いいえ |  
 |<a name="query" />q|ユーザーの検索語句。|String|いいえ |  
 |<a name="responseformat" />responseFormat|応答に使用するメディアの種類。 次の値を指定できます。大文字と小文字は区別されません。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 既定値は JSON です。 応答に含まれる JSON オブジェクトについては、「[応答オブジェクト](#response-objects)」を参照してください。<br /><br />  JsonLd を指定すると、検索結果が含まれている JSON-LD オブジェクトが応答本文に含まれます。 JSON-LD については、[JSON-LD](http://json-ld.org/) に関するページを参照してください。|String|いいえ |  
