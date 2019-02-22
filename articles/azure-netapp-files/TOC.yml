@@ -9,18 +9,8 @@ items:
     href: azure-netapp-files-understand-storage-hierarchy.md
 - name: クイック スタート
   items:
-  - name: Azure NetApp Files に登録する
-    href: azure-netapp-files-register.md
-  - name: NetApp アカウントを作成する
-    href: azure-netapp-files-create-netapp-account.md
-  - name: 容量プールを設定する
-    href: azure-netapp-files-set-up-capacity-pool.md
-  - name: サブネットを Azure NetApp Files に委任する
-    href: azure-netapp-files-delegate-subnet.md
-  - name: Azure NetApp Files のボリュームを作成する
-    href: azure-netapp-files-create-volumes.md
-  - name: ボリュームのエクスポート ポリシーを構成する (省略可能)
-    href: azure-netapp-files-configure-export-policy.md
+  - name: Azure NetApp Files の設定とボリュームの作成
+    href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: 概念
   items:
   - name: Azure NetApp Files のサービス レベル
@@ -31,6 +21,18 @@ items:
     href: azure-netapp-files-metrics.md
 - name: ハウツー ガイド
   items:
+  - name: Azure NetApp Files に登録する
+    href: azure-netapp-files-register.md
+  - name: NetApp アカウントを作成する
+    href: azure-netapp-files-create-netapp-account.md
+  - name: 容量プールを設定する
+    href: azure-netapp-files-set-up-capacity-pool.md
+  - name: サブネットを Azure NetApp Files に委任する
+    href: azure-netapp-files-delegate-subnet.md
+  - name: Azure NetApp Files のボリュームを作成する
+    href: azure-netapp-files-create-volumes.md
+  - name: ボリュームのエクスポート ポリシーを構成する
+    href: azure-netapp-files-configure-export-policy.md
   - name: ボリュームを管理する
     href: azure-netapp-files-manage-volumes.md
   - name: 仮想マシンのボリュームをマウント/マウント解除する
@@ -49,9 +51,9 @@ items:
     href: https://docs.microsoft.com/rest/api/netapp/
   - name: Resource Manager テンプレート
     href: /azure/templates/microsoft.netapp/allversions
-ms.openlocfilehash: 3da297718a3369604feda971cd8c2499a2454b72
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 99091c5e5e9a991508c9eb915c8003de60404ae8
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430150"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587414"

@@ -58,6 +58,8 @@ items:
       href: container-registry-repositories.md
     - name: コンテナー イメージのインポート
       href: container-registry-import-images.md
+    - name: コンテナー イメージのロック
+      href: container-registry-image-lock.md
     - name: コンテナー イメージの削除
       href: container-registry-delete.md
     - name: コンテンツの信頼 (プレビュー)
@@ -135,9 +137,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-registry
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: 2f622c23a3278f202fceb177459f8cf81d334f57
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bce8a055a537a1ac147e2779a891b0ae64b9a3c8
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870692"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652163"

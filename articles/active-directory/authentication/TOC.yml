@@ -25,8 +25,8 @@ items:
   items:
   - name: 認証方法
     href: concept-authentication-methods.md
-  - name: 集中型登録
-    href: concept-registration-mfa-sspr-converged.md
+  - name: 統合された登録
+    href: concept-registration-mfa-sspr-combined.md
   - name: パスワード リセット
     items:
     - name: パスワード リセットのしくみ
@@ -104,6 +104,12 @@ items:
         href: howto-mfa-nps-extension-rdg.md
       - name: VPN
         href: howto-mfa-nps-extension-vpn.md
+  - name: 統合された登録
+    items:
+    - name: 統合された登録の有効化
+      href: howto-registration-mfa-sspr-combined.md
+    - name: 統合された登録のトラブルシューティング
+      href: howto-registration-mfa-sspr-combined-troubleshoot.md
   - name: Azure AD のパスワード保護
     items:
     - name: 禁止パスワード リストを構成する
@@ -191,8 +197,6 @@ items:
         href: howto-mfa-nps-extension-errors.md
   - name: トラブルシューティング
     items:
-    - name: 集中型登録の無効化
-      href: howto-registration-mfa-sspr-converged-troubleshoot.md
     - name: SSPR のトラブルシューティング
       href: active-directory-passwords-troubleshoot.md
     - name: SSPR に関する FAQ
@@ -225,9 +229,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: d834bcd12f4f8af44c467233230744571dd9b23c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 99d21cd59b7281dbb6a34c2e3cdc9026c9955622
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660053"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585986"
