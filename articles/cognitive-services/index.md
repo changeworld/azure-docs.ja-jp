@@ -7,15 +7,10 @@ author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.author: nitinme
-ms.date: 02/15/2019
+ms.date: 02/21/2019
 ms.topic: hub-page
-ms.openlocfilehash: 12957121d386afdc911bb0be954c0066d580e83e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338038"
 ---
+
 <h1>Azure Cognitive Services のドキュメント</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。</p>
 
@@ -77,7 +72,6 @@ ms.locfileid: "56338038"
                 </div>
             </a>
         </li>
-
         <li>
             <a href="/azure/cognitive-services/language-support/">
                 <div class="cardSize">
@@ -133,7 +127,7 @@ ms.locfileid: "56338038"
                         <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/csharp-analyze-sdk">C# の使用</a></p>
                         <p><a href="/azure/cognitive-services/bing-visual-search/quickstarts/java">Java の使用</a></p>
                         <p><a href="/azure/cognitive-services/Computer-vision/Quickstarts/node-analyze">Node.js の使用</a></p>
-                        <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk#analyze-an-image">Python の使用</a></p>
+                        <p><a href="/azure/cognitive-services/Computer-vision/quickstarts-sdk/python-sdk">Python の使用</a></p>
                     </div>
                 </div>
             </div>
@@ -151,10 +145,9 @@ ms.locfileid: "56338038"
                     <div class="cardText">
                         <h3>Speech Service を使用した音声の認識</h3>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-csharp-windows/">C# の使用</a></p>
-                        <p><a href="/azure/cognitive-services/speech-service/quickstart-java-jre">Java の使用</a></p>
-                        <p><a href="/azure/cognitive-services/speech-service/quickstart-objectivec-ios">Objective-C の使用</a></p>
                         <p><a href="/azure/cognitive-services/speech-service/quickstart-js-browser">JavaScript の使用</a></p>
-                        <p><a href="/azure/cognitive-services/speech-service/quickstart-cpp-windows">C++ の使用</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service/quickstart-python">Python の使用</a></p>
+                        <p><a href="/azure/cognitive-services/speech-service/quickstart-java-jre">Java の使用</a></p>
                     </div>
                 </div>
             </div>
@@ -214,7 +207,7 @@ ms.locfileid: "56338038"
                         <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/csharp">C# の使用</a></p>
                         <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/java">Java の使用</a></p>
                         <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/nodejs">Node.js の使用</a></p>
-                        <p><a href="/azure/cognitive-services/bing-web-search/quickstarts/python">Python の使用</a></p>
+                        <p><a href="/azure/cognitive-services/bing-web-search/web-sdk-python-quickstart">Python の使用</a></p>
                     </div>
                 </div>
             </div>
@@ -234,7 +227,7 @@ ms.locfileid: "56338038"
                         <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/csharp">C# の使用</a></p>
                         <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/java">Java の使用</a></p>
                         <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/nodejs">Node.js の使用</a></p>
-                        <p><a href="/azure/cognitive-services/bing-image-search/quickstarts/python">Python の使用</a></p>
+                        <p><a href="/azure/cognitive-services/bing-image-search/image-sdk-python-quickstart">Python の使用</a></p>
                     </div>
                 </div>
             </div>

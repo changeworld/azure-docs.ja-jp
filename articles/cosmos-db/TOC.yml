@@ -53,6 +53,7 @@ items:
       - name: Xamarin
         href: mobile-apps-with-xamarin.md
   - name: 2 - データの移行
+    displayName: import
     href: import-data.md
   - name: 3 - データのクエリ
     href: tutorial-query-sql-api.md
@@ -76,15 +77,16 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
-  - name: モデル ドキュメント データ
-    href: modeling-data.md
   - name: グローバル配信
     items:
     - name: 概要
+      displayName: replication, replicate, geo distribution
       href: distribute-data-globally.md
     - name: 一貫性レベル
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: consistency-levels.md
     - name: 適切な整合性レベルの選択
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: consistency-levels-choosing.md
     - name: 整合性レベルと Azure Cosmos DB API
       href: consistency-levels-across-apis.md
@@ -93,8 +95,10 @@ items:
     - name: 高可用性
       href: high-availability.md
     - name: プロビジョニングされたスループットのグローバルなスケーリング
+      displayName: request units, RUs, RU
       href: scaling-throughput.md
     - name: 競合のタイプと解決ポリシー
+      displayName: last write wins, custom
       href: conflict-resolution-policies.md
     - name: グローバル配信 - 内部のしくみ
       href: global-dist-under-the-hood.md
@@ -111,26 +115,36 @@ items:
   - name: プロビジョニング スループット
     items:
     - name: 要求ユニット
+      displayName: RUs, RU
       href: request-units.md
     - name: コンテナーとデータベースのスループットのプロビジョニング
+      displayName: request units, RUs, RU, limits, database throughput, shared throughput, container throughput
       href: set-throughput.md
   - name: Azure Cosmos アカウントの使用
     href: account-overview.md
   - name: コンテナーとアイテム
     items:
     - name: データベース、コンテナー、アイテムの操作
+      displayName: collection, document
       href: databases-containers-items.md
     - name: SQL 言語のリファレンス
+      displayName: collection, document
       href: sql-api-query-reference.md
     - name: SQL クエリの例
+      displayName: collection, document, order by, where, top, value, aggregate, between, scalar, join, count, contains
       href: how-to-sql-query.md
+    - name: モデル ドキュメント データ
+      displayName: document
+      href: modeling-data.md
     - name: インデックス作成
       items:
       - name: 概要
         href: index-overview.md
       - name: インデックス作成ポリシー
+        displayName: consistent, none
         href: index-policy.md
       - name: インデックスの種類
+        displayName: hash, range, spatial
         href: index-types.md
       - name: インデックスのパス
         href: index-paths.md
@@ -143,8 +157,10 @@ items:
       - name: 変更フィード プロセッサ
         href: change-feed-processor.md
       - name: Azure Functions をトリガーする
+        displayName: change feed
         href: change-feed-functions.md
     - name: Time to Live
+      displayName: delete, delete data, ttl
       href: time-to-live.md
     - name: 一意のキー制約
       href: unique-keys.md
@@ -165,6 +181,7 @@ items:
     - name: 課金内容を確認する
       href: understand-your-bill.md
     - name: プロビジョニング スループット コストの最適化
+      displayName: request units, RUs, RU
       href: optimize-cost-throughput.md
     - name: クエリ コストの最適化
       href: optimize-cost-queries.md
@@ -185,6 +202,7 @@ items:
     - name: データの暗号化
       href: database-encryption-at-rest.md
     - name: データへのアクセスをセキュリティで保護する
+      displayName: master key, resource token, users, roles
       href: secure-access-to-data.md
     - name: IP ファイアウォール
       href: firewall-support.md
@@ -241,6 +259,7 @@ items:
         - name: Node.js と React のアプリ
           href: tutorial-develop-mongodb-react.md
       - name: 2 - データの移行
+        displayName: import
         href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
       - name: 3 - データのクエリ
         href: tutorial-query-mongodb.md
@@ -257,6 +276,7 @@ items:
       - name: Mongoose を使用して接続する
         href: mongodb-mongoose.md
       - name: 読み取りをグローバルに分散する
+        displayName: read preference
         href: mongodb-readpreference.md
       - name: 有効期限 - MongoDB
         href: mongodb-time-to-live.md
@@ -266,6 +286,7 @@ items:
         href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
         maintainContext: true
   - name: Gremlin API
+    displayName: graph, graph database
     items:
     - name: はじめに
       href: graph-introduction.md
@@ -323,6 +344,7 @@ items:
       - name: 3 - データのクエリ
         href: cassandra-api-query-data.md
       - name: 4 - データの移行
+        displayName: import
         href: cassandra-import-data.md
     - name: ハウツー ガイド
       items:
@@ -370,6 +392,7 @@ items:
       - name: 1 - アカウントの作成
         href: tutorial-develop-table-dotnet.md
       - name: 2 - データの移行
+        displayName: import
         href: table-import.md
       - name: 3 - データのクエリ
         href: tutorial-query-table.md
@@ -423,6 +446,7 @@ items:
     - name: マルチマスターを構成する
       href: how-to-multi-master.md
     - name: 整合性レベルを管理する
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: how-to-manage-consistency.md
     - name: カスタム同期を実装する
       href: how-to-custom-synchronization.md
@@ -431,8 +455,10 @@ items:
   - name: プロビジョニング スループット
     items:
     - name: コンテナーのスループットをプロビジョニングする
+      displayName: request units, RUs, RU, collection level
       href: how-to-provision-container-throughput.md
     - name: データベースのスループットをプロビジョニングする
+      displayName: request units, RUs, RU, shared throughput, database level
       href: how-to-provision-database-throughput.md
   - name: コンテナーとアイテムの操作
     items:
@@ -441,6 +467,7 @@ items:
     - name: コンテナーの照会
       href: how-to-query-container.md
     - name: Time to Live の構成
+      displayName: delete, delete data, ttl
       href: how-to-time-to-live.md
     - name: Azure Storage Explorer を使ってデータを操作する
       href: storage-explorer.md
@@ -627,9 +654,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: f2f061aebd996f62f793ba515f574c8a3748b87f
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: f1f36d86466f93c0acac30364ba648391fb03095
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429116"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652520"

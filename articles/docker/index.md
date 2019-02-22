@@ -11,12 +11,6 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: fa2cce2314b3df0d9d32d9d8d6ede5a70520a7d4
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647247"
 ---
 <div class="content">
    <h1>Azure 上の Docker</h1>   
@@ -28,7 +22,7 @@ Docker は人気のあるコンテナー管理およびイメージング プラ
     </div>
 <h2>5 分間のクイック スタート</h2>
 <p>Azure に Docker をデプロイする方法を学習します。</p>
-<a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS">Ubuntu 上に Docker をデプロイするクイック スタート テンプレート</a><br/>
+<a href="https://azure.microsoft.com/resources/templates/docker-simple-on-ubuntu/">Ubuntu 上に Docker をデプロイするクイック スタート テンプレート</a><br/>
 <h2>ステップバイステップのチュートリアル</h2>
 <p>アプリケーションで CI/CD パイプラインの一部として Docker を使用する方法を学習します。</p>
 <ol>
