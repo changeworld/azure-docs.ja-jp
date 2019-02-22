@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a07c165a2fc3023187ca35323e304b6943ef7318
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: fb2260d844e82632fd54cea27acc07b226b83a50
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343444"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446462"
 documentType: LandingData
 title: Azure Resource Graph のドキュメント
 metadata:
@@ -15,7 +15,7 @@ metadata:
   manager: carmonm
   ms.service: resource-graph
   ms.topic: landing-page
-  ms.date: 01/31/2019
+  ms.date: 02/15/2019
   ms.author: dacoulte
 abstract:
   description: Azure Resource Graph のドキュメントは、リソースを大規模に検索し検証するためのクエリ言語を構成および習得するのに役立ちます。
@@ -53,3 +53,5 @@ sections:
       html: <p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
     - title: REST API
       html: <p><a href="/rest/api/azureresourcegraph/resources/resources">リソース</a></p>
+    - title: OpenAPI (Swagger)
+      html: <p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview</a></p>

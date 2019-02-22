@@ -23,26 +23,6 @@ items:
     href: active-directory-passwords-reset-register.md
   - name: パスワードをリセットする
     href: user-help-reset-password.md
-- name: セキュリティ情報 (プレビュー) のヘルプ
-  items:
-  - name: 概要
-    href: user-help-security-info-overview.md
-  - name: 認証アプリの設定
-    href: security-info-setup-auth-app.md
-  - name: テキスト メッセージの設定
-    href: security-info-setup-text-msg.md
-  - name: 音声通話の設定
-    href: security-info-setup-phone-number.md
-  - name: メールの設定
-    href: security-info-setup-email.md
-  - name: セキュリティの質問の設定
-    href: security-info-setup-questions.md
-  - name: アプリ パスワードの管理
-    href: security-info-app-passwords.md
-  - name: セキュリティ情報の管理
-    href: security-info-manage-settings.md
-  - name: サインイン方法
-    href: user-help-sign-in.md?toc=./toc.json
 - name: Microsoft Authenticator アプリのヘルプ
   items:
   - name: 概要
@@ -60,21 +40,49 @@ items:
       href: user-help-auth-app-add-non-ms-account.md
     - name: アカウントの手動での追加
       href: user-help-auth-app-add-account-manual.md
-    expanded: true
   - name: Microsoft Authenticator アプリを使用してサインインする
     href: user-help-auth-app-sign-in.md
   - name: アカウントのバックアップと回復
     href: user-help-auth-app-backup-recovery.md
   - name: FAQ
     href: user-help-auth-app-faq.md
-- name: マイ アプリ ポータルのヘルプ
+- name: マイ プロファイル ポータル (プレビュー) のヘルプ
   items:
   - name: 概要
-    href: user-help-my-apps-overview.md
-  - name: マイ アプリ ポータルとは
-    href: active-directory-saas-access-panel-introduction.md
-  - name: 問題のトラブルシューティング
-    href: active-directory-saas-access-panel-user-help.md
+    href: myprofile-portal-overview.md
+  - name: セキュリティ情報の管理
+    href: user-help-security-info-overview.md
+  - name: サインイン アクティビティの表示
+    href: myprofile-portal-recent-activity-page.md
+  - name: 組織の管理
+    href: myprofile-portal-organizations-page.md
+  - name: 接続されているデバイスの管理
+    href: myprofile-portal-devices-page.md
+  - name: プライバシーに関連する情報の表示
+    href: myprofile-portal-privacy-page.md
+- name: セキュリティ情報 (プレビュー) のヘルプ
+  items:
+  - name: 概要
+    href: user-help-security-info-overview.md
+  - name: サインイン中のセキュリティ情報の追加
+    href: security-info-setup-signin.md
+  - name: セキュリティ情報の方法の追加または更新に関する概要
+    href: security-info-add-update-methods-overview.md
+    items:
+    - name: 認証アプリの設定
+      href: security-info-setup-auth-app.md
+    - name: テキスト メッセージの設定
+      href: security-info-setup-text-msg.md
+    - name: 音声通話の設定
+      href: security-info-setup-phone-number.md
+    - name: メールの設定
+      href: security-info-setup-email.md
+    - name: セキュリティの質問の設定
+      href: security-info-setup-questions.md
+  - name: アプリ パスワードの管理
+    href: security-info-app-passwords.md
+  - name: サインイン方法
+    href: user-help-sign-in.md?toc=./toc.json
 - name: デバイスの管理のヘルプ
   items:
   - name: 概要
@@ -85,9 +93,17 @@ items:
     href: user-help-register-device-on-network.md
   - name: メッセージ "アクセスできません" のトラブルシューティング
     href: user-help-device-remediation.md
-ms.openlocfilehash: 604b2c204f893bf0abaaec86f85e2159c17a8656
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+- name: マイ アプリ ポータルのヘルプ
+  items:
+  - name: 概要
+    href: user-help-my-apps-overview.md
+  - name: マイ アプリ ポータルとは
+    href: active-directory-saas-access-panel-introduction.md
+  - name: 問題のトラブルシューティング
+    href: active-directory-saas-access-panel-user-help.md
+ms.openlocfilehash: b7d8c297559736c9f22b118d50423f980302018d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816052"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452576"

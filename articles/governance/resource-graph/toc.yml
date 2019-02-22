@@ -44,6 +44,8 @@ items:
     href: /cli/azure/ext/resource-graph/graph
   - name: REST API
     href: /rest/api/azureresourcegraph/resources/resources
+  - name: OpenAPI (Swagger)
+    href: https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -54,9 +56,9 @@ items:
     href: https://feedback.azure.com/forums/915958-azure-governance
   - name: ガバナンスに関する YouTube チャンネル
     href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-ms.openlocfilehash: 1ec6153b3e80f3546ca15bbac27a280bfd8ce517
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 875da35a22e4ac5483a09938cf3be850c4ab112d
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506721"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446989"

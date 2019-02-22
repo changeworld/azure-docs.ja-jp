@@ -5,7 +5,7 @@ items:
   items:
   - name: 課金内容を確認する
     href: billing-understand-your-bill.md
-  - name: 課金内容を確認する - EA のみ
+  - name: EA 課金内容を確認する
     href: billing-understand-your-bill-ea.md
   - name: 請求書および使用状況データを取得する
     href: billing-download-azure-invoice-daily-usage-date.md
@@ -24,11 +24,11 @@ items:
     href: billing-ea-pricing.md
   - name: リソース タグの利用
     href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
-  - name: コストの分析を開始する - EA のみ
+  - name: コストの分析を開始する
     href: ../cost-management/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json
-  - name: 予算を作成して管理する - EA のみ
+  - name: 予算を作成して管理する
     href: ../cost-management/tutorial-acm-create-budgets.md?toc=/azure/billing/TOC.json
-  - name: 推奨事項を最適化する - EA のみ
+  - name: 推奨事項を最適化する
     href: ../cost-management/tutorial-acm-opt-recommendations.md?toc=/azure/billing/TOC.json
   - name: 料金の計算
     href: https://azure.microsoft.com/pricing/calculator/
@@ -190,9 +190,9 @@ items:
     items:
     - name: Enterprise Reporting REST API
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: f5c025a8425a8b0b07a2b1bb2be69e2ec8e769ca
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 156f9f2ebb293855d541c779c7a2e3ba83cffc07
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257321"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447703"

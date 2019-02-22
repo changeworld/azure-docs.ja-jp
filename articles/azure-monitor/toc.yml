@@ -315,6 +315,8 @@ items:
           href: app/asp-net-exceptions.md
         - name: ログ トレース
           href: app/asp-net-trace-logs.md
+        - name: ILogger
+          href: app/ilogger.md
         - name: パフォーマンス カウンター
           href: app/performance-counters.md
         - name: 依存関係
@@ -390,6 +392,8 @@ items:
           href: app/proactive-cloud-services.md
         - name: スマート検出規則の管理
           href: app/proactive-arm-config.md
+        - name: メール通知
+          href: app/proactive-email-notification.md
       - name: リソースの作成
         href: app/create-new-resource.md
       - name: トラブルシューティング
@@ -1027,9 +1031,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 79a0748ad69348d9eec2954731ef88232c253c64
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 519c8213c715995fea89475e81f8c63f41190d65
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416974"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455400"

@@ -102,7 +102,7 @@ items:
     href: quickstarts-sdk/python-sdk.md
 - name: チュートリアル
   items:
-  - name: Azure の画像のメタデータを取得する
+  - name: 画像のメタデータを生成する
     href: Tutorials/storage-lab-tutorial.md
 - name: 概念
   items:
@@ -202,9 +202,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 30b8a6937bafc469c4135a899af56277b4f3a9eb
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e3653590989020e4a9186cf9e083bf3b061f2f49
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310715"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452323"

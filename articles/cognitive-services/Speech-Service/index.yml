@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: eaa2511422195a7c8dc29557480007f3377134ef
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 95684ec7ba8be20ed7efc8f376aa9a2c1d65e8b6
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752791"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56448070"
 documentType: LandingData
 title: Speech Services のドキュメント
 metadata:
@@ -63,6 +63,8 @@ sections:
     - image:
         src: media/index/logo_netcore.svg
     - image:
+        src: https://docs.microsoft.com/media/logos/logo_unity.svg
+    - image:
         src: media/index/logo_java.jpg
     - image:
         src: media/index/logo_python.svg
@@ -81,6 +83,7 @@ sections:
       - href: quickstart-csharp-windows
       - href: quickstart-cpp-windows
       - href: quickstart-csharp-dotnetcore-windows
+      - href: quickstart-csharp-unity
       - href: quickstart-java-jre
       - href: quickstart-python
       - href: 
@@ -92,8 +95,9 @@ sections:
       - href: quickstart-csharp-windows
       - href: quickstart-cpp-windows
       - href: quickstart-csharp-dotnetcore-windows
+      - href: quickstart-csharp-unity
       - href: 
-      - href: 
+      - href: quickstart-python
       - href: 
       - href: quickstart-js-node
       - href: 
@@ -103,6 +107,7 @@ sections:
       - href: 
       - href: quickstart-cpp-linux
       - href: quickstart-csharp-dotnetcore-windows
+      - href: 
       - href: quickstart-java-jre
       - href: quickstart-python
       - href: 
@@ -117,6 +122,7 @@ sections:
       - href: 
       - href: 
       - href: 
+      - href: 
       - href: quickstart-js-node
       - href: 
     - title: Android (ARM32/64)
@@ -125,6 +131,7 @@ sections:
       - href: 
       - href: 
       - href: 
+      - href: quickstart-csharp-unity
       - href: quickstart-java-android
       - href: 
       - href: 
@@ -136,6 +143,7 @@ sections:
       - href: 
       - href: 
       - href: 
+      - href: quickstart-csharp-unity
       - href: quickstart-java-android
       - href: 
       - href: 
@@ -143,6 +151,7 @@ sections:
       - href: 
     - title: iOS (ARM64)
       values:
+      - href: 
       - href: 
       - href: 
       - href: 
@@ -159,12 +168,14 @@ sections:
       - href: 
       - href: 
       - href: 
+      - href: 
       - href: quickstart-python
       - href: 
       - href: quickstart-js-node
       - href: 
-    - title: Devices SDK (ARM64)
+    - title: Devices SDK (ARM32)
       values:
+      - href: 
       - href: 
       - href: 
       - href: 
@@ -184,9 +195,11 @@ sections:
       - href: 
       - href: 
       - href: 
+      - href: 
       - href: quickstart-js-browser
     - title: REST
       values:
+      - href: 
       - href: 
       - href: 
       - href: 
@@ -224,7 +237,7 @@ sections:
     items:
     - title: SDK リファレンス
       html: >
-        <p><a href="https://aka.ms/csspeech/csharpref">C# API (UWP と .NET)</a></p>
+        <p><a href="https://aka.ms/csspeech/csharpref">C# API (UWP、.NET、および Unity)</a></p>
 
         <p><a href="https://aka.ms/csspeech/cppref">C++ API</a></p>
 
