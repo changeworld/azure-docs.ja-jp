@@ -1,25 +1,20 @@
 ---
 title: Azure Marketplace のドキュメント | Microsoft Docs
 description: Azure Marketplace について説明します。
-services: Azure, marketplace
+services: 'Azure, marketplace'
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
+editor: null
 layout: LandingPage
-ms.assetid: ''
+ms.assetid: null
 ms.service: marketplace
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: e93d1b926b78a352e65a68fc71b07f7631d0b1af
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830024"
 ---
+
 # <a name="azure-marketplace-documentation"></a>Azure Marketplace のドキュメント
 
 Azure Marketplace について紹介します。Azure Marketplace は、スタートアップ企業から大企業に至るまで、ISV が自社のソリューションを世界中のお客様に提供できるようにする、アプリケーションとサービスのオンライン マーケットプレースです。
