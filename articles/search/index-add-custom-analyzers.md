@@ -245,7 +245,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |type|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#CharFilter)の表の **char_filter_type** 列をご覧ください。|  
 |オプション|指定した[文字フィルター](#CharFilter)の種類で有効なオプションを使用する必要があります。|  
 
- ### <a name="tokenizers"></a>トークナイザ
+ ### <a name="tokenizers"></a>トークナイザー
 
  トークナイザーでは、連続するテキストがトークンのシーケンスに分割されます (文を単語に分割する場合など)。  
 
@@ -260,7 +260,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
  ### <a name="token-filters"></a>トークン フィルター
 
- トークン フィルターは、トークナイザによって生成されたトークンを除外したり加工したりする目的で使用されます。 たとえば、すべての文字を小文字に変換する lowercase フィルターを指定することができます。   
+ トークン フィルターは、トークナイザーによって生成されたトークンを除外したり加工したりする目的で使用されます。 たとえば、すべての文字を小文字に変換する lowercase フィルターを指定することができます。   
 トークン フィルターは、カスタム アナライザーの中で複数割り当てることができます。 トークン フィルターは、その指定順に実行されます。  
 
 |||  
@@ -283,7 +283,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |-|-|-|  
 |[keyword](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)| (種類は、オプションが使用可能な場合にだけ適用されます) |フィールドの内容全体を 1 つのトークンとして扱います。 これは、郵便番号、ID、製品名などのデータで役立ちます。|  
 |[pattern](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|正規表現のパターンを使用してテキストを用語に柔軟に分割します。<br /><br /> **オプション**<br /><br /> lowercase (型: bool) - 用語が小文字かどうかを決定します。 既定値は true です。<br /><br /> [pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (型: string) - トークンの区切り記号に一致する正規表現パターン。 既定値は \w+ です。<br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (型: string) - 正規表現フラグ。 既定値は空の文字列です。 使用できる値は以下の通りです。CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> stopwords (型: string 配列) - ストップワードのリスト。 既定値は空のリストです。|  
-|[単純な](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|(種類は、オプションが使用可能な場合にだけ適用されます) |非文字でテキストが分割され、それらが小文字に変換されます。 |  
+|[simple](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|(種類は、オプションが使用可能な場合にだけ適用されます) |非文字でテキストが分割され、それらが小文字に変換されます。 |  
 |[standard](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) <br />(standard.lucene とも呼ばれます)|StandardAnalyzer|標準トークナイザー、小文字フィルター、ストップ フィルターで構成される標準の Lucene アナライザー。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は 255 です。 最大長より長いトークンは分割されます。 使用できる最大トークン長は、300 文字です。<br /><br /> stopwords (型: string 配列) - ストップワードのリスト。 既定値は空のリストです。|  
 |standardasciifolding.lucene|(種類は、オプションが使用可能な場合にだけ適用されます) |Ascii フォールディング フィルターの標準アナライザー。 |  
 |[stop](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/StopAnalyzer.html)|StopAnalyzer|非文字でテキストが分割され、小文字とストップワードのトークン フィルターが適用されます。<br /><br /> **オプション**<br /><br /> stopwords (型: string 配列) - ストップワードのリスト。 既定値は、英語の定義済みリストです。 |  
@@ -316,7 +316,7 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 
 |**tokenizer_name**|**tokenizer_type** <sup>1</sup>|**説明とオプション**|  
 |-|-|-|  
-|[従来](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|ほとんどのヨーロッパ言語のドキュメントの処理に適した文法ベースのトークナイザー。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は255、最大値は300。 最大長より長いトークンは分割されます。|  
+|[classic](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|ほとんどのヨーロッパ言語のドキュメントの処理に適した文法ベースのトークナイザー。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は255、最大値は300。 最大長より長いトークンは分割されます。|  
 |[edgeNGram](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|エッジからの入力が指定サイズの n グラムにトークン化されます。<br /><br /> **オプション**<br /><br /> minGram (型: int) - 既定値:1、最大値:300。<br /><br /> maxGram (型: int) - 既定値:2、最大値:300。 minGram より大きい値にする必要があります。<br /><br /> tokenChars (型: string 配列) - トークン内で維持する文字クラス。 使用できる値は以下の通りです。 <br />"letter"、"digit"、"whitespace"、"punctuation"、"symbol"。 既定値は空の配列で、すべての文字が維持されます。 |  
 |[keyword_v2](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|入力全体が 1 つのトークンとして生成されます。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は256、最大値は300。 最大長より長いトークンは分割されます。|  
 |[letter](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/LetterTokenizer.html)|(種類は、オプションが使用可能な場合にだけ適用されます)  |非文字でテキストを分割します。 255 文字より長いトークンは分割されます。|  
@@ -345,7 +345,7 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 |[asciifolding](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/miscellaneous/ASCIIFoldingFilter.html)|AsciiFoldingTokenFilter|ASCII の最初の 127 文字 ("基本ラテン" Unicode ブロック) に含まれないアルファベット、数字、記号の Unicode 文字が、同等の ASCII に変換されます (ある場合)。<br /><br /> **オプション**<br /><br /> preserveOriginal (型: bool) - true の場合、元のトークンが保持されます。 既定値は false です。|  
 |[cjk_bigram](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/cjk/CJKBigramFilter.html)|CjkBigramTokenFilter|StandardTokenizer から生成される CJK 用語のバイグラムが形成されます。<br /><br /> **オプション**<br /><br /> ignoreScripts (型: string 配列) - 無視するスクリプト。 使用できる値: "han"、"hiragana"、"katakana"、"hangul"。 既定値は空のリストです。<br /><br /> outputUnigrams (型: bool) - 常にユニグラムとバイグラムの両方を出力する場合は、true に設定します。 既定値は false です。|  
 |[cjk_width](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/cjk/CJKWidthFilter.html)|(種類は、オプションが使用可能な場合にだけ適用されます)  |CJK の幅の違いが正規化されます。 全角 ASCII 書体が同等の基本ラテンにフォールドされ、半角カタカナ書体が同等の仮名にフォールドされます。 |  
-|[従来](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/ClassicFilter.html)|(種類は、オプションが使用可能な場合にだけ適用されます)  |英語の所有格を削除し、頭字語からドットを削除します。 |  
+|[classic](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/ClassicFilter.html)|(種類は、オプションが使用可能な場合にだけ適用されます)  |英語の所有格を削除し、頭字語からドットを削除します。 |  
 |[common_grams](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/commongrams/CommonGramsFilter.html)|CommonGramTokenFilter|インデックス付けの間に、頻繁に発生する用語に対してバイグラムが作成されます。 1 つの用語も、バイグラムがオーバーレイされてインデックス付けされます。<br /><br /> **オプション**<br /><br /> commonWords (型: string 配列) - 一般的な単語のセット。 既定値は空のリストです。 必須。<br /><br /> ignoreCase (型: bool) - true の場合、マッチングで大文字と小文字は区別されません。 既定値は false です。<br /><br /> queryMode (型: bool) - バイグラムが生成された後、一般的な単語と一般的な単語の前にある 1 つの用語が削除されます。 既定値は false です。|  
 |[dictionary_decompounder](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/compound/DictionaryCompoundWordTokenFilter.html)|DictionaryDecompounderTokenFilter|多くのゲルマン言語に出現する複合語を分解します。<br /><br /> **オプション**<br /><br /> wordList (type: string 配列) - 照合対象の単語のリスト。 既定値は空のリストです。 必須。<br /><br /> minWordSize (型: int) - この値より長い単語のみが処理されます。 既定値は 5 です。<br /><br /> minSubwordSize (型: int) - この値より長いサブ単語のみが出力されます。 既定値は 2 です。<br /><br /> maxSubwordSize (型: int) - この値より短いサブ単語のみが出力されます。 既定値は 15 です。<br /><br /> onlyLongestMatch (型: bool) - 最長一致のサブ単語のみが出力に追加されます。 既定値は false です。|  
 |[edgeNGram_v2](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenFilter.html)|EdgeNGramTokenFilterV2|入力トークンの先頭または末尾から指定されたサイズの n グラムが生成されます。<br /><br /> **オプション**<br /><br /> minGram (型: int) - 既定値:1、最大値:300。<br /><br /> maxGram (型: int) - 既定値:2、最大値: 300。 minGram より大きい値にする必要があります。<br /><br /> side (型: string) - n グラムを生成する入力の側が指定されます。 使用できる値: "front"、"back" |  
