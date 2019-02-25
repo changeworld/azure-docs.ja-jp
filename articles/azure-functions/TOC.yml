@@ -73,7 +73,19 @@ items:
   - name: スケールとホスティング
     href: functions-scale.md
   - name: トリガーとバインド
-    href: functions-triggers-bindings.md
+    items:
+    - name: トリガーとバインディングについて
+      href: functions-triggers-bindings.md
+    - name: バインディングの例
+      href: functions-bindings-example.md
+    - name: バインディング拡張機能を登録する
+      href: functions-bindings-register.md
+    - name: バインディングの式のパターン
+      href: functions-bindings-expressions-patterns.md
+    - name: バインディングの戻り値の利用
+      href: functions-bindings-return-value.md
+    - name: バインディング エラーの処理
+      href: functions-bindings-errors.md
   - name: Languages
     items:
     - name: サポートされている言語
@@ -275,9 +287,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 88a0dc35c7a1d3836c21d237bc7a5b3c98555aec
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 5f2fee7c298b505977742fd105fe6227fa2c2946
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983578"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734610"

@@ -40,8 +40,10 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
-  - name: エンド ツー エンド SSL
-    href: ssl-overview.md
+  - name: Application Gateway のしくみ
+    href: how-application-gateway-works.md
+  - name: Application Gateway のコンポーネント
+    href: application-gateway-components.md
   - name: SSL ポリシーの概要
     href: application-gateway-ssl-policy-overview.md
   - name: Web アプリケーション ファイアウォール
@@ -200,9 +202,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: 3eb1167d496a5b509eec923564c072142bce3c91
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: ee7ccecec8784298759543d15bf326c507dc560c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382979"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674797"

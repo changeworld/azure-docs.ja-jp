@@ -171,15 +171,15 @@ items:
       - name: すべてのサブネット上の NSG X
         displayName: deny, all
         href: samples/nsg-on-subnet.md
-    - name: Express Route
+    - name: ExpressRoute
       items:
-      - name: 許可されている Express Route の帯域幅
+      - name: 許可された ExpressRoute の帯域幅
         displayName: deny
         href: samples/allowed-express-route-bandwidth.md
-      - name: 許可されている Express Route の SKU
+      - name: 許可された ExpressRoute の SKU
         displayName: deny
         href: samples/allowed-express-route-skus.md
-      - name: 許可されている Express Route ピアリングの場所
+      - name: 許可されている ExpressRoute ピアリングの場所
         displayName: deny, Location
         href: samples/allowed-express-route-peering.md
     - name: Network Watcher
@@ -327,9 +327,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: 9255a819340e2aa4e8f5af6752ddac3cd375705b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 840c9577da2ee29d77dc9ec36a7266f1469ce5ff
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867258"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734889"
