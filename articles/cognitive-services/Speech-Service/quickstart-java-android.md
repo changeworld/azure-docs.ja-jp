@@ -1,28 +1,28 @@
 ---
 title: 'クイック スタート: 音声を認識する (Java (Android)) - 音声サービス'
 titleSuffix: Azure Cognitive Services
-description: Android で Java と Speech Service SDK を使用して音声を認識する方法について説明します。
+description: Android で Java と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: fmegen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: ac5798d61ecd0a45f7939be928429ababdee406f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 938d48e5e13f73f584b91da03bab77ffc8814f35
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877458"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447618"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート: Android で Speech SDK を使用して Java で音声を認識する
+# <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート:Android で Speech SDK を使用して Java で音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、Cognitive Services Speech SDK を使用して音声をテキストに変換する Android 向け Java アプリケーションを開発する方法について説明します。
-このアプリケーションは、Microsoft Cognitive Services Speech SDK Maven パッケージ (バージョン 1.2.0) と Android Studio 3.1 が基になっています。
+このアプリケーションは、Microsoft Cognitive Services Speech SDK Maven パッケージ (バージョン 1.3.0) と Android Studio 3.1 が基になっています。
 現在 Speech SDK は、32/64 ビットの ARM プロセッサを搭載した Android デバイスおよび Intel x86/x64 互換のプロセッサを搭載した Android デバイスと互換性があります。
 
 > [!NOTE]
@@ -58,7 +58,7 @@ Android Studio が新しい Android プロジェクトを準備するまでし�
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.2.0` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.3.0` です。
 
 Android 用 Speech SDK は、必要なライブラリと必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。
 ホストされている Maven リポジトリの場所は https://csspeechstorage.blob.core.windows.net/maven/ です。
@@ -73,7 +73,7 @@ Speech SDK を使用するためにプロジェクトを設定します。 Andro
 
    ![[Project Structure] (プロジェクトの構造) ウィンドウのスクリーンショット](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. 表示されたウィンドウで、Android 用 Speech SDK の名前とバージョン (`com.microsoft.cognitiveservices.speech:client-sdk:1.2.0`) を入力します。 **[OK]** をクリックします。
+1. 表示されたウィンドウで、Android 用 Speech SDK の名前とバージョン (`com.microsoft.cognitiveservices.speech:client-sdk:1.3.0`) を入力します。 **[OK]** をクリックします。
    次に示すように、依存関係のリストに Speech SDK が追加されます。
 
    ![[Project Structure] (プロジェクトの構造) ウィンドウのスクリーンショット](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
