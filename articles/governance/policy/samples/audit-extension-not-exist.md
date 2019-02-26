@@ -1,6 +1,6 @@
 ---
 title: サンプル - 拡張機能が存在しない場合の監査
-description: このサンプル ポリシーでは、仮想マシンに拡張機能がデプロイされていないかどうかを監査します。
+description: このサンプル ポリシー定義は、仮想マシンに拡張機能がデプロイされていないかどうかを監査します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7e5f396bb4acfdef0d49d38019b6c4d19661d9ae
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 0c0f41c01d33add81508d828259ddcdd48d0cbc8
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244183"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340877"
 ---
-# <a name="audit-if-extension-does-not-exist"></a>拡張機能が存在しない場合の監査
+# <a name="sample---audit-if-extension-does-not-exist"></a>サンプル - 拡張機能が存在しない場合の監査
 
 このポリシーでは、仮想マシンに拡張機能がデプロイされていない場合を監査します。 デプロイされたかどうかを確認する拡張機能の公開元と種類を指定します。
 

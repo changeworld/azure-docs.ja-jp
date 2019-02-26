@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: bf807a4d24b72c948707ade28f06c4eb2a54c0a0
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 321dfaa1a58cc806394f4807c38cbdc599cfd7a0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657027"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311565"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
 
@@ -27,6 +27,9 @@ ms.locfileid: "55657027"
 > * マネージド ID を使用して、実行中のコンテナーから Key Vault にアクセスする
 
 サンプルを調整することにより、Azure Container Instances 内の ID を有効にし、それを使って他の Azure サービスにアクセスします。 これらのサンプルは対話型です。 ただし実際には、コンテナー イメージがコードを実行して Azure サービスにアクセスします。
+
+> [!NOTE]
+> 現在、仮想ネットワークにデプロイされたコンテナー グループ内でマネージド ID を使用することはできません。
 
 ## <a name="why-use-a-managed-identity"></a>マネージド ID を使用する理由
 

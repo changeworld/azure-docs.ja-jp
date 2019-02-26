@@ -1,6 +1,6 @@
 ---
 title: 'サンプル: サーバー レベルの脅威検出設定の監査'
-description: このサンプル ポリシーでは、SQL データベース セキュリティ アラート ポリシーが指定した状態に設定されていない場合、このポリシーの監査を行います。
+description: このサンプル ポリシー定義は、SQL サーバー セキュリティ アラート ポリシーが指定した状態に設定されていない場合、このポリシーの監査を行います。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,16 +8,16 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 9e0ea3b65a4c442358c357e9603d607d8464c21b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ba694618bf86ef8e97241c955a40790960be2f0c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242177"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341370"
 ---
-# <a name="audit-server-level-threat-detection-setting"></a>サーバー レベルの脅威検出設定の監査
+# <a name="sample---audit-server-level-threat-detection-setting"></a>サンプル: サーバー レベルの脅威検出設定の監査
 
-このポリシーは、SQL データベース セキュリティ アラート ポリシーが指定された状態に設定されていない場合、このポリシーの監査を行います。 脅威検出を有効または無効のどちらにするかを指示する値を指定します。
+このポリシーは、SQL サーバー セキュリティ アラート ポリシーが指定された状態に設定されていない場合、このポリシーの監査を行います。 脅威検出を有効または無効のどちらにするかを指示する値を指定します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 

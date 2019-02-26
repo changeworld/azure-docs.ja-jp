@@ -7,16 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
-ms.openlocfilehash: 0dbdf2261b851b303a0c606e5de70354578c6d2e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1d7e130d619f580aeb82939e19ea5abf680ff039
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078781"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326478"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
 Azure Kubernetes Service (AKS) で Azure Container Registry (ACR) を使用する場合は、認証メカニズムを確立する必要があります。 この記事では、この 2 つの Azure サービス間で認証を行う場合に推奨される構成について詳しく説明します。
+
+この記事では、AKS クラスターを既に作成しており、`kubectl` コマンド ライン クライアントを使用してクラスターにアクセスできることを前提としています。 
 
 ## <a name="grant-aks-access-to-acr"></a>ACR へのアクセス許可を AKS に付与する
 
@@ -59,7 +61,7 @@ ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --query loginServer --output tsv
 ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
 
 # Create acrpull role assignment with a scope of the ACR resource.
-SP_PASSWD=$(az ad sp create-for-rbac --name $SERVICE_PRINCIPAL_NAME --role acrpull --scopes $ACR_REGISTRY_ID --query password --output tsv)
+SP_PASSWD=$(az ad sp create-for-rbac --name http://$SERVICE_PRINCIPAL_NAME --role acrpull --scopes $ACR_REGISTRY_ID --query password --output tsv)
 
 # Get the service principal client id.
 CLIENT_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --output tsv)

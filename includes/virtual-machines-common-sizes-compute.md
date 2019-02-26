@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3bd4adcd6df07aa47312223c559f0e9ed4fc0b14
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5a4495dd675b662273715b5c13a5594adc87fceb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264076"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333984"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -31,21 +31,21 @@ Fs シリーズには、Premium Storage に加え、F シリーズのすべて�
 
 ## <a name="fsv2-series-sup1sup"></a>Fsv2 シリーズ <sup>1</sup>
 
-ACU: 195 ～ 210
+ACU: 195 - 210
 
-Premium Storage:  サポートされています
+Premium Storage: サポートされています
 
-Premium Storage Caching:  サポートされています
+Premium Storage Caching: サポートされています
 
-| サイズ             | vCPU の数 | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
-|------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|------------------------------------------------|
-| Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4,000/31 (32)           | 3,200/47                | 中                                       |
-| Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8,000/63 (64)           | 6,400/95                | 中                                       |
-| Standard_F8s_v2  | 8      | 16          | 64             | 16             | 16,000/127 (128)        | 12,800/190              | 高                                           |
-| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32,000/255 (256)        | 25,600/380              | 高                                           |
-| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64,000/512 (512)        | 51,200/750              | 極めて高                                 |
-| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128,000/1,024 (1024)     | 80,000/1,100             | 極めて高                                 |
-| Standard_F72s_v2<sup>2、3</sup> | 72 | 144 | 576         | 32             | 144,000/1,152 (1520)     | 80,000/1,100             | 極めて高                                 |
+| Size             | vCPU の数 | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+|------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
+| Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4,000/31 (32)           | 3,200/47                | 2/875                 |
+| Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8,000/63 (64)           | 6,400/95                | 2/1,750               |
+| Standard_F8s_v2  | 8      | 16          | 64             | 16             | 16,000/127 (128)        | 12,800/190              | 4/3,500               |
+| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32,000/255 (256)        | 25,600/380              | 4/7,000               |
+| Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64,000/512 (512)        | 51,200/750              | 8/14,000              |
+| Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128,000/1,024 (1024)     | 80,000/1,100             | 8/28,000              |
+| Standard_F72s_v2<sup>2、3</sup> | 72 | 144 | 576         | 32             | 144,000/1,152 (1520)     | 80,000/1,100             | 8/30,000              |
 
 
 <sup>1</sup> Fsv2 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています
@@ -56,13 +56,13 @@ Premium Storage Caching:  サポートされています
 
 ## <a name="fs-series-sup1sup"></a>Fs シリーズ <sup>1</sup>
 
-ACU: 210 ～ 250
+ACU: 210 から 250
 
-Premium Storage:  サポートされています
+Premium Storage: サポートされています
 
-Premium Storage Caching:  サポートされています
+Premium Storage Caching: サポートされています
 
-| サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_F1s |1 |2 |4 |4 |4,000/32 (12) |3,200/48 |2/750 |
 | Standard_F2s |2 |4 |8 |8 |8,000/64 (24) |6,400/96 |2/1,500 |
@@ -72,20 +72,20 @@ Premium Storage Caching:  サポートされています
 
 MBps = 10^6 バイト/秒、GiB = 1024^3 バイト。
 
-<sup>1</sup> Fs シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/virtual-machines/windows/premium-storage.md)」を参照してください。
+<sup>1</sup> Fs シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、[高パフォーマンス用の設計](../articles/virtual-machines/windows/premium-storage-performance.md)に関する記事を参照してください。
 
 
 <br>
 
 ## <a name="f-series"></a>F シリーズ
 
-ACU: 210 ～ 250
+ACU: 210 から 250
 
-Premium Storage:  サポートされていません
+Premium Storage: サポートされていません
 
-Premium Storage Caching:  サポートされていません
+Premium Storage Caching: サポートされていません
 
-| サイズ         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+| Size         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_F1  | 1         | 2           | 16             | 3000/46/23                                           | 4 / 4x500                         | 2/750                 |
 | Standard_F2  | 2         | 4           | 32             | 6000/93/46                                           | 8 / 8x500                         | 2/1,500                     |

@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure Active Directory と Cisco Spark の統合 | Microsoft Docs
-description: Azure Active Directory と Cisco Spark の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と Cisco Webex の統合 | Microsoft Docs
+description: Azure Active Directory と Cisco Webex の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87161c79bc58387d97863581675bb49f1e09160f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a1460fba4d6897dfcc6bf40b6e02ab856ffe8456
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191556"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340472"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-spark"></a>チュートリアル:Azure Active Directory と Cisco Spark の統合
+# <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>チュートリアル:Azure Active Directory と Cisco Webex の統合
 
-このチュートリアルでは、Cisco Spark と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Cisco Spark と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Cisco Webex と Azure Active Directory (Azure AD) を統合する方法について説明します。
+Cisco Webex と Azure AD の統合には、次の利点があります。
 
-* Cisco Spark にアクセスできるユーザーを Azure AD で制御できます。
-* ユーザーが自分の Azure AD アカウントで Cisco Spark に自動的にサインイン (シングル サインオン) するように設定できます。
+* Cisco Webex にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントで Cisco Webex に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -36,22 +36,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-Cisco Spark と Azure AD の統合を構成するには、次のものが必要です。
+Cisco Webex と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Cisco Spark でのシングル サインオンが有効なサブスクリプション
+* Cisco Webex でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Cisco Spark では、**SP** によって開始される SSO がサポートされます
+* Cisco Webex では、**SP** によって開始される SSO がサポートされます
 
-## <a name="adding-cisco-spark-from-the-gallery"></a>ギャラリーからの Cisco Spark の追加
+## <a name="adding-cisco-webex-from-the-gallery"></a>ギャラリーからの Cisco Webex の追加
 
-Azure AD への Cisco Spark の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Cisco Spark を追加する必要があります。
+Azure AD への Cisco Webex の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Cisco Webex を追加する必要があります。
 
-**ギャラリーから Cisco Spark を追加するには、次の手順に従います。**
+**ギャラリーから Cisco Webex を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -65,31 +65,31 @@ Azure AD への Cisco Spark の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Cisco Spark**」と入力して、結果パネルから **[Cisco Spark]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Cisco Webex**」と入力して、結果パネルから **[Cisco Webex]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
-     ![結果リスト内の Cisco Spark](common/search-new-app.png)
+     ![結果リストの Cisco Webex](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Cisco Spark で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Cisco Spark 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Cisco Webex で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Cisco Webex 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
-Cisco Spark で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Cisco Webex で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Cisco Spark のシングル サインオンの構成](#configure-cisco-spark-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+2. **[Cisco Webex のシングル サインオンの構成](#configure-cisco-webex-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Cisco Spark のテスト ユーザーの作成](#create-cisco-spark-test-user)** - Cisco Spark で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Cisco Webex のテスト ユーザーの作成](#create-cisco-webex-test-user)** - Cisco Webex で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-Cisco Spark で Azure AD シングル サインオンを構成するには、次の手順に従います。
+Cisco Webex で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Cisco Spark** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Cisco Webex** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -103,24 +103,24 @@ Cisco Spark で Azure AD シングル サインオンを構成するには、次
 
 4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[Cisco Spark のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
+    ![[Cisco Webex のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
     a. **[サインオン URL]** ボックスに、「`https://web.ciscospark.com/#/signin`」と入力します。
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://idbroker.webex.com/<companyname>`
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://idbroker.webex.com/<Org Id>`
 
     > [!NOTE]
-    > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 これらの値を取得するには、[Cisco Spark クライアント サポート チーム](https://support.ciscospark.com/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 サービス プロバイダーのメタデータがある場合は、それを **[基本的な SAML 構成]** セクションでアップロードすれば、**[識別子 (エンティティ ID)]** の値が自動的に事前設定されます。
 
-5. Cisco Spark アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+5. Cisco Webex アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして属性を追加します。
 
     ![image](common/edit-attribute.png)
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+6. その他に、Cisco Webex アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
     
     | Name |  ソース属性|
     | ---------------|--------- |
-    | uid | user.userprincipalname |
+    | UID | user.userprincipalname |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -144,7 +144,7 @@ Cisco Spark で Azure AD シングル サインオンを構成するには、次
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-8. **[Cisco Spark のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+8. **[Cisco Webex のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -154,7 +154,7 @@ Cisco Spark で Azure AD シングル サインオンを構成するには、次
 
     c. ログアウト URL
 
-### <a name="configure-cisco-spark-single-sign-on"></a>Cisco Spark シングル サインオンの構成
+### <a name="configure-cisco-webex-single-sign-on"></a>Cisco Webex シングル サインオンの構成
 
 1. 完全な管理者権限を備えた資格情報を使って [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/) にサインインします。
 
@@ -170,7 +170,7 @@ Cisco Spark で Azure AD シングル サインオンを構成するには、次
 
 5. **[Test SSO Connection (SSO 接続のテスト)]** を選択し、ブラウザーの新しいタブが開いたら、サインインして Azure AD で認証します。
 
-6. ブラウザーの **[Cisco Cloud Collaboration Management]** タブに戻ります。テストが成功した場合は、**[This test was successful.Enable Single Sign-On option] \(このテストは正常に完了しました。シングル サインオン オプションを有効にします) を選択して、**[次へ]** をクリックします。
+6. ブラウザーの **[Cisco Cloud Collaboration Management]** タブに戻ります。テストが成功した場合は、**[This test was successful.Enable Single Sign-On option] \(このテストは正常に完了しました。シングル サインオン オプションを有効にします)** を選択して、**[次へ]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -199,15 +199,15 @@ Cisco Spark で Azure AD シングル サインオンを構成するには、次
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Cisco Spark へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に Cisco Webex へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Cisco Spark]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Cisco Webex]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で **[Cisco Spark]** を選択します。
+2. アプリケーションの一覧で **[Cisco Webex]** を選択します。
 
-    ![アプリケーションの一覧の Cisco Spark リンク](common/all-applications.png)
+    ![アプリケーションの一覧の [Cisco Webex] リンク](common/all-applications.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
@@ -223,9 +223,9 @@ Cisco Spark で Azure AD シングル サインオンを構成するには、次
 
 7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-### <a name="create-cisco-spark-test-user"></a>Cisco Spark のテスト ユーザーの作成
+### <a name="create-cisco-webex-test-user"></a>Cisco Webex のテスト ユーザーの作成
 
-このセクションでは、Cisco Spark で Britta Simon というユーザーを作成します。 このセクションでは、Cisco Spark で Britta Simon というユーザーを作成します。
+このセクションでは、Cisco Webex で Britta Simon というユーザーを作成します。 このセクションでは、Cisco Webex で Britta Simon というユーザーを作成します。
 
 1. 完全な管理者権限を備えた資格情報を使って [Cisco Cloud Collaboration Management](https://admin.ciscospark.com/) にアクセスします。
 
@@ -253,7 +253,7 @@ Cisco Spark で Azure AD シングル サインオンを構成するには、次
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Cisco Spark] タイルをクリックすると、SSO を設定した Cisco Spark に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Cisco Webex] タイルをクリックすると、SSO を設定した Cisco Webex に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

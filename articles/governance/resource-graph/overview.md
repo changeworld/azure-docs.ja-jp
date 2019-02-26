@@ -8,12 +8,12 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 6b3bad4e4619f8909f5c6d71111b4fad9ddb3098
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 31b9405b7d4141890d786ab3d1cb70d11ef0c1b3
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813281"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267956"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 
@@ -38,7 +38,7 @@ Azure Resource Graph を使用することにより、各リソースプロバ�
 
 これで Azure Resource Graph についてはよく理解したので、クエリを作成する方法に進みましょう。
 
-Azure Resource Graph のクエリ言語が [Azure Data Explorer のクエリ言語](../../data-explorer/data-explorer-overview.md)に基づくことを理解することが重要です。
+Azure Resource Graph のクエリ言語が Azure Data Explorer で使用される [Kusto クエリ言語](../../data-explorer/data-explorer-overview.md)に基づくことを理解することが重要です。
 
 最初に、Azure Resource Graph と共に使用することができる操作および機能の詳細については、[Resource Graph のクエリ言語](./concepts/query-language.md)を参照してください。 リソースをブラウズするためには、[リソースを探索する](./concepts/explore-resources.md)を参照してください。
 

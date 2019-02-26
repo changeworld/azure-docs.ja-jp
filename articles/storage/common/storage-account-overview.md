@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 880ae672409704ddcd5597ae758f8c786c3c0720
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 430aa6e60efe63e6741436e53152126bc15798fc
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244489"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327852"
 ---
 # <a name="azure-storage-account-overview"></a>Azure ストレージ アカウントの概要
 
@@ -78,7 +78,7 @@ BLOB ストレージ アカウントには、使用パターンに基づいて�
 汎用ストレージ アカウントは、次のパフォーマンス レベルのいずれか向けに構成できます。
 
 * BLOB、ファイル、テーブル、キュー、および Azure 仮想マシン ディスクを格納するための Standard パフォーマンス レベル。
-* Azure 仮想マシン ディスクのみを格納するための Premium パフォーマンス レベル。 Premium Storage の詳細については、[Premium Storage:Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)に関するページをご覧ください。
+* アンマネージド仮想マシン ディスクのみを格納するための Premium パフォーマンス レベル。
 
 ## <a name="access-tiers-for-block-blob-data"></a>ブロック BLOB 用のデータ アクセス層
 

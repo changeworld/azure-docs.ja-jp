@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 6db263dcfc3195c9b2ab3afe7587845a4632fd1b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f7c422d560341e51fad582439117533b7d9cd4c8
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456529"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327665"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
-[Azure Premium Storage](premium-storage.md) は、高負荷の I/O ワークロードを実行する仮想マシン (VM) に対して高パフォーマンスで待ち時間の少ないディスクのサポートを実現するサービスです。 このガイドでは、[Azure Site Recovery](../../site-recovery/site-recovery-overview.md) を使用して、ユーザーが Standard Storage アカウントから Premium Storage アカウントに VM ディスクを移行する方法について説明します。
+[Azure Premium SSD](disks-types.md) は、高負荷の I/O ワークロードを実行する仮想マシン (VM) に対して高パフォーマンスで待ち時間の少ないディスクのサポートを実現するサービスです。 このガイドでは、[Azure Site Recovery](../../site-recovery/site-recovery-overview.md) を使用して、ユーザーが Standard Storage アカウントから Premium Storage アカウントに VM ディスクを移行する方法について説明します。
 
 Site Recovery は、クラウド (Azure) またはセカンダリ データセンターへのオンプレミスの物理サーバーおよび VM のレプリケーションを調整することでビジネス継続性とディザスター リカバリーの戦略を支援する Azure サービスです。 プライマリ ロケーションで障害が発生した場合は、セカンダリ ロケーションにフェールオーバーしてアプリケーションとワークロードの可用性を維持します。 プライマリ ロケーションが通常の動作に戻ると、その場所にフェールバックします。 
 
@@ -222,7 +222,6 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](premium-storage.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

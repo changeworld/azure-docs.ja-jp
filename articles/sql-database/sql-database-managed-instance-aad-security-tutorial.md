@@ -1,6 +1,6 @@
 ---
-title: Azure AD ログインを使用した Azure SQL Database マネージド インスタンスのセキュリティ | Microsoft Docs
-description: Azure SQL Database のマネージ インスタンスをセキュリティで保護し、Azure AD ログインを使用するための手法と機能について説明します
+title: Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database マネージド インスタンスのセキュリティ | Microsoft Docs
+description: Azure SQL Database のマネージド インスタンスをセキュリティで保護し、Azure AD サーバー プリンシパル (ログイン) を使用するための手法と機能について説明します
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,15 +9,15 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 402e10d9b99dbf0eeba8aac27071e4d78fdf0f01
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.date: 02/20/2019
+ms.openlocfilehash: 39877e01eb8b9690dc1ac7b1dbb79bab450814c4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984513"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456930"
 ---
-# <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-logins"></a>チュートリアル:Azure AD ログインを使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ
+# <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ
 
 マネージド インスタンスには、オンプレミスの最新の SQL Server (Enterprise Edition) データベース エンジンにあるセキュリティ機能がほとんどすべて備わっています。
 
@@ -29,16 +29,16 @@ ms.locfileid: "55984513"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> - マネージド インスタンス用に Azure Active Directory (AD) ログインを作成する
-> - マネージド インスタンスの Azure AD ログインにアクセス許可を付与する
-> - Azure AD ログインから Azure AD ユーザーを作成する
+> - マネージド インスタンス用に Azure Active Directory (AD) サーバー プリンシパル (ログイン) を作成する
+> - マネージド インスタンスの Azure AD サーバー プリンシパル (ログイン) にアクセス許可を付与する
+> - Azure AD サーバー プリンシパル (ログイン) から Azure AD ユーザーを作成する
 > - Azure AD ユーザーにアクセス許可を割り当ててデータベースのセキュリティを管理する
 > - Azure AD ユーザーで偽装を使用する
 > - Azure AD ユーザーでデータベース間クエリを使用する
 > - 脅威の防止、監査、データ マスク、暗号化などのセキュリティ機能について学習する
 
 > [!NOTE]
-> マネージド インスタンスの Azure AD ログインは、**パブリック プレビュー**段階にあります。
+> マネージド インスタンスの Azure AD サーバー プリンシパル (ログイン) は、**パブリック プレビュー**段階にあります。
 
 詳細については、[Azure SQL Database マネージド インスタンスの概要](sql-database-managed-instance-index.yml)と[機能](sql-database-managed-instance.md)に関する記事を参照してください。
 
@@ -61,15 +61,15 @@ ms.locfileid: "55984513"
 > [!NOTE] 
 > マネージド インスタンスにはその VNET の内部のみでアクセスできるため、[SQL Database のファイアウォール規則](sql-database-firewall-configure.md)は適用されません。 マネージド インスタンスには、[組み込みのファイアウォール](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)が独自に用意されています。
 
-## <a name="create-an-azure-ad-login-for-a-managed-instance-using-ssms"></a>SSMS を使用したマネージド インスタンス用の Azure AD ログインの作成
+## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>SSMS を使用してマネージド インスタンス用に Azure AD サーバー プリンシパル (ログイン) を作成する
 
-最初の Azure AD ログインは、標準の SQL Server アカウント (Azure AD 以外) である `sysadmin` で作成する必要があります。 マネージド インスタンスに接続する例については、次の記事を参照してください。
+最初の Azure AD サーバー プリンシパル (ログイン) は、標準の SQL Server アカウント (Azure AD 以外) である `sysadmin` で作成する必要があります。 マネージド インスタンスに接続する例については、次の記事を参照してください。
 
 - [クイック スタート:マネージド インスタンスに接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)
 - [クイック スタート:オンプレミスからマネージド インスタンスへのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
-> マネージド インスタンスの設定に使用された Azure AD 管理者は、マネージド インスタンス内での Azure AD ログインの作成には使用できません。 SQL Server アカウント `sysadmin` を使用して、最初の Azure AD ログインを作成する必要があります。 これは、Azure AD ログインが一般提供されると削除される一時的な制限です。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+> マネージド インスタンスの設定に使用された Azure AD 管理者は、マネージド インスタンス内での Azure AD サーバー プリンシパル (ログイン) の作成には使用できません。 SQL Server アカウント `sysadmin` を使用して、最初の Azure AD サーバー プリンシパル (ログイン) を作成する必要があります。 これは一時的な制限事項で、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
 
 1. [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) を使用して、標準の SQL Server アカウント (Azure AD 以外) である `sysadmin` を使ってマネージド インスタンスにログインします。
 
@@ -109,7 +109,7 @@ ms.locfileid: "55984513"
 
 ## <a name="granting-permissions-to-allow-the-creation-of-managed-instance-logins"></a>マネージド インスタンスのログインを作成できるようにするためのアクセス許可の付与
 
-他の Azure AD ログインを作成するには、SQL Server のロールまたはアクセス許可をプリンシパル (SQL または Azure AD) に付与する必要があります。
+他の Azure AD サーバー プリンシパル (ログイン) を作成するには、SQL Server のロールまたはアクセス許可をプリンシパル (SQL または Azure AD) に付与する必要があります。
 
 ### <a name="sql-authentication"></a>SQL 認証
 
@@ -117,10 +117,10 @@ ms.locfileid: "55984513"
 
 ### <a name="azure-ad-authentication"></a>Azure AD 認証
 
-- 新しく作成した Azure AD ログインが他の Azure AD ユーザー、グループ、またはアプリケーションのログインを作成できるように、そのログインに `sysadmin` または `securityadmin` サーバー ロールを付与します。 
-- 少なくとも、他の Azure AD ログインを作成するには **ALTER ANY LOGIN** アクセス許可を Azure AD ログインに付与する必要があります。 
-- 既定では、マスターに新しく作成された Azure AD ログインに付与される標準的なアクセス許可は **CONNECT SQL** と **VIEW ANY DATABASE** です。
-- `sysadmin` サーバー ロールは、マネージド インスタンス内の多くの Azure AD ログインに付与できます。
+- 新しく作成した Azure AD サーバー プリンシパル (ログイン) が他の Azure AD ユーザー、グループ、またはアプリケーションのログインを作成できるように、そのログインに `sysadmin` または `securityadmin` サーバー ロールを付与します。 
+- 少なくとも、他の Azure AD サーバー プリンシパル (ログイン) を作成するには **ALTER ANY LOGIN** アクセス許可を Azure AD サーバー プリンシパル (ログイン) に付与する必要があります。 
+- 既定では、マスターに新しく作成された Azure AD サーバー プリンシパル (ログイン) に付与される標準的なアクセス許可は **CONNECT SQL** と **VIEW ANY DATABASE** です。
+- `sysadmin` サーバー ロールは、マネージド インスタンス内の多くの Azure AD サーバー プリンシパル (ログイン) に付与できます。
 
 `sysadmin` サーバー ロールにログインを追加するには:
 
@@ -128,7 +128,7 @@ ms.locfileid: "55984513"
 
 1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、**[新しいクエリ]** を選択します。
 
-1. 次の T-SQL 構文を使用して、Azure AD ログインに `sysadmin` サーバー ロールを付与します。
+1. 次の T-SQL 構文を使用して、Azure AD サーバー プリンシパル (ログイン) に `sysadmin` サーバー ロールを付与します。
 
     ```sql
     ALTER SERVER ROLE sysadmin ADD MEMBER login_name
@@ -142,11 +142,11 @@ ms.locfileid: "55984513"
     GO
     ```
 
-## <a name="create-additional-azure-ad-logins-using-ssms"></a>SSMS を使用して追加の Azure AD ログインを作成する
+## <a name="create-additional-azure-ad-server-principals-logins-using-ssms"></a>SSMS を使用して追加の Azure AD サーバー プリンシパル (ログイン) を作成する
 
-Azure AD ログインが作成され、`sysadmin` の特権が付与されると、そのログインは、**CREATE LOGIN** で **FROM EXTERNAL PROVIDER** 句を使用して追加のログインを作成できます。
+Azure AD サーバー プリンシパル (ログイン) が作成され、`sysadmin` の特権が付与されると、そのログインは、**CREATE LOGIN** で **FROM EXTERNAL PROVIDER** 句を使用して追加のログインを作成できます。
 
-1. SQL Server Management Studio を使用して、Azure AD ログインでマネージド インスタンスに接続します。 マネージド インスタンスのホスト名を入力します。 SSMS での認証の場合、Azure AD アカウントを使ってログインするときに選択できるオプションは 3 つあります。
+1. SQL Server Management Studio を使用して、Azure AD サーバー プリンシパル (ログイン) でマネージド インスタンスに接続します。 マネージド インスタンスのホスト名を入力します。 SSMS での認証の場合、Azure AD アカウントを使ってログインするときに選択できるオプションは 3 つあります。
 
     - Active Directory - MFA サポートで汎用
     - Active Directory - パスワード
@@ -205,7 +205,7 @@ Azure AD ログインが作成され、`sysadmin` の特権が付与されると
 
 1. テストとして、新しく作成したログインまたはグループを使用してマネージド インスタンスにログインします。 マネージド インスタンスへの新しい接続を開き、認証時に新しいログインを使用します。
 1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、新しい接続に **[新しいクエリ]** を選択します。
-1. 次のコマンドを実行して、新しく作成した Azure AD ログインのサーバー アクセス許可を確認します。
+1. 次のコマンドを実行して、新しく作成した Azure AD サーバー プリンシパル (ログイン) のサーバー アクセス許可を確認します。
 
     ```sql
     SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
@@ -215,7 +215,7 @@ Azure AD ログインが作成され、`sysadmin` の特権が付与されると
 > [!NOTE]
 > Azure AD のゲスト ユーザーは、Azure AD グループの一員として追加されている場合のみ、マネージド インスタンスのログインがサポートされます。 Azure AD のゲスト ユーザーは、マネージド インスタンスが属している Azure AD に別の Azure AD から招待されるアカウントです。 たとえば、joe@contoso.com (Azure AD アカウント) または steve@outlook.com (MSA アカウント) は、Azure AD aadsqlmi 内のグループに追加できます。 ユーザーがグループに追加されると、**CREATE LOGIN** 構文を使用して、そのグループのマネージド インスタンス **master** データベースにログインを作成できます。 このグループのメンバーであるゲスト ユーザーは、現在のログイン (joe@contoso.com や steve@outlook.com など) を使用してマネージド インスタンスに接続できます。
 
-## <a name="create-an-azure-ad-user-from-the-azure-ad-login-and-give-permissions"></a>Azure AD ログインから Azure AD ユーザーを作成してアクセス許可を付与する
+## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login-and-give-permissions"></a>Azure AD サーバー プリンシパル (ログイン) から Azure AD ユーザーを作成してアクセス許可を付与する
 
 個々のデータベースに対する承認は、オンプレミスの SQL Server の場合とほぼ同じようにマネージド インスタンスで動作します。 ユーザーは、既存のログインからデータベースに作成し、そのデータベースに対するアクセス許可を付与するかデータベース ロールに追加することができます。
 
@@ -229,7 +229,7 @@ Azure AD ログインが作成され、`sysadmin` の特権が付与されると
 
 1. SQL Server Management Studio で、`sysadmin` アカウントを使用してマネージド インスタンスにログインします。
 1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、**[新しいクエリ]** を選択します。
-1. クエリ ウィンドウで、次の構文を使用して、Azure AD ログインから Azure AD ユーザーを作成します。
+1. クエリ ウィンドウで、次の構文を使用して、Azure AD サーバー プリンシパル (ログイン) から Azure AD ユーザーを作成します。
 
     ```sql
     USE <Database Name> -- provide your database name
@@ -247,7 +247,7 @@ Azure AD ログインが作成され、`sysadmin` の特権が付与されると
     GO
     ```
 
-1. また、グループである Azure AD ログインから Azure AD ユーザーを作成することもサポートされています。
+1. また、グループである Azure AD サーバー プリンシパル (ログイン) から Azure AD ユーザーを作成することもサポートされています。
 
     次の例では、Azure AD に存在する _mygroup_ という名前の Azure AD グループのログインを作成します。
 
@@ -261,7 +261,7 @@ Azure AD ログインが作成され、`sysadmin` の特権が付与されると
     **mygroup** に属しているすべてのユーザーが **MyMITestDB** データベースにアクセスできます。
 
     > [!IMPORTANT]
-    > Azure AD ログインから **USER** を作成するときに、**LOGIN** の login_name と同じように user_name を指定します。
+    > AD サーバー プリンシパル (ログイン) から **USER** を作成するときは、user_name を **LOGIN** と同じ login_name として指定します。
 
     詳細については、「[CREATE USER](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)」を参照してください。
 
@@ -383,7 +383,7 @@ Azure AD ログインが作成され、`sysadmin` の特権が付与されると
 
 ## <a name="using-cross-database-queries-in-managed-instances"></a>マネージド インスタンスでの複数データベース間クエリの使用
 
-データベース間クエリは、Azure AD ログインを使用する Azure AD アカウントでサポートされています。 Azure AD グループでデータベース間クエリをテストするには、データベースとテーブルをもう 1 つ作成する必要があります。 データベースとテーブルが既にもう 1 つ存在する場合はその作成をスキップできます。
+データベース間クエリは、Azure AD サーバー プリンシパル (ログイン) を使用する Azure AD アカウントのためにサポートされています。 Azure AD グループでデータベース間クエリをテストするには、データベースとテーブルをもう 1 つ作成する必要があります。 データベースとテーブルが既にもう 1 つ存在する場合はその作成をスキップできます。
 
 1. SQL Server Management Studio で、`sysadmin` アカウントを使用してマネージド インスタンスにログインします。
 1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、**[新しいクエリ]** を選択します。
@@ -424,15 +424,15 @@ Azure AD ログインが作成され、`sysadmin` の特権が付与されると
 
     **TestTable2** からテーブル結果が表示されます。
 
-## <a name="additional-scenarios-supported-for-azure-ad-logins-public-preview"></a>Azure AD ログインでサポートされているその他のシナリオ (パブリック プレビュー) 
+## <a name="additional-scenarios-supported-for-azure-ad-server-principals-logins-public-preview"></a>Azure AD サーバー プリンシパル (ログイン) でサポートされているその他のシナリオ (パブリック プレビュー) 
 
-- SQL エージェントの管理とジョブの実行は、Azure AD ログインでサポートされています。
-- データベースのバックアップと復元操作は、Azure AD ログインが実行できます。
-- Azure AD ログインと認証イベントに関連するすべてのステートメントの[監査](sql-database-managed-instance-auditing.md)。
-- `sysadmin` サーバー ロールのメンバーである Azure AD ログインの専用管理者接続。
-- Azure AD ログインは、[sqlcmd ユーティリティ](/sql/tools/sqlcmd-utility)と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) ツールの使用でサポートされています。
-- Azure AD ログインによるログオン イベントではログオン トリガーがサポートされています。
-- Service Broker とデータベース メールは Azure AD ログインを使用して設定できます。
+- SQL エージェントの管理とジョブの実行が、Azure AD サーバー プリンシパル (ログイン) に対してサポートされています。
+- データベースのバックアップと復元操作は、Azure AD サーバー プリンシパル (ログイン) が実行できます。
+- Azure AD サーバー プリンシパル (ログイン) と認証イベントに関連するすべてのステートメントの[監査](sql-database-managed-instance-auditing.md)。
+- `sysadmin` サーバー ロールのメンバーである Azure AD サーバー プリンシパル (ログイン) の専用管理者接続。
+- Azure AD サーバー プリンシパル (ログイン) は、[sqlcmd ユーティリティ](/sql/tools/sqlcmd-utility)と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) ツールの使用でサポートされています。
+- Azure AD サーバー プリンシパル (ログイン) によるログオン イベントでは、ログオン トリガーがサポートされています。
+- Service Broker とデータベース メールは、Azure AD サーバー プリンシパル (ログイン) を使用して設定できます。
 
 
 ## <a name="next-steps"></a>次の手順

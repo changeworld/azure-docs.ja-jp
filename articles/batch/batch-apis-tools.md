@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 0236947e578d12ff24e5993d253ec5597c53272a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 2a9c0cf36459a2d23b8af8f69937ab9ded7f9c04
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819826"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301504"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API とツールの概要
 
@@ -69,7 +69,8 @@ Batch 用の Azure Resource Manager API には、Batch アカウントにプロ�
 
 * [Azure portal][portal]: Azure portal では、Batch プール、ジョブ、タスクを作成、監視、削除できます。 ジョブの実行時にこれらをはじめとする各種リソースの状態情報を確認できるほか、プールのコンピューティング ノードからファイルをダウンロードすることもできます。 たとえばトラブルシューティングの際に、失敗したタスクの `stderr.txt` をダウンロードすることができます。 コンピューティング ノードへのログインに使用できるリモート デスクトップ (RDP) ファイルをダウンロードすることもできます。
 * [Azure Batch Explorer][batch_labs]: Batch Explorer (旧称: BatchLabs) は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Mac、Linux、または Windows 用の[インストール パッケージ](https://azure.github.io/BatchExplorer/)をダウンロードしてください。
-* [Microsoft Azure Storage Explorer][storage_explorer]: 厳密には Azure Batch ツールではありませんが、ストレージ エクスプローラーは Batch ソリューションの開発とデバッグで役に立つツールです。
+* [Azure Batch Shipyard](https://github.com/Azure/batch-shipyard): Batch Shipyard は、コンテナーベースのバッチ処理と HPC ワークロードを Azure Batch に対してプロビジョニング、実行、監視できるようにするツールです。
+* [Azure Storage Explorer][storage_explorer]: 厳密には Azure Batch ツールではありませんが、ストレージ エクスプローラーは Batch ソリューションの開発とデバッグで役に立つツールです。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -81,7 +82,6 @@ Batch 用の Azure Resource Manager API には、Batch アカウントにプロ�
 * Batch を使用するための準備を担当する方は、「 [開発者向け Batch 機能の概要](batch-api-basics.md)」で重要な情報をご確認ください。 この記事には、Batch アプリケーションを構築するときに使用できる多数の API 機能、プール、ノード、ジョブ、タスクなど、Batch サービスのリソースに関する詳しい情報が記載されています。
 * [.NET 向け Azure Batch ライブラリの概要](tutorial-parallel-dotnet.md) 」では、C# と Batch .NET ライブラリを利用し、一般的な Batch ワークフローを使用して簡単なワークロードを実行する方法を学習できます。 [Python バージョン](tutorial-parallel-python.md)と [Node.js のチュートリアル](batch-nodejs-get-started.md)も用意されています。
 * [GitHub のサンプル コード][github_samples]をダウンロードし、C# と Python の両方について、Batch とやり取りしてサンプル ワークロードのスケジュール設定と処理を実行する方法を確認してください。
-
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [api_java]: /java/api/overview/azure/batch

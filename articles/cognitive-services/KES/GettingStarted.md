@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: c9c336b9aed06095849f33060ff6969e8b7bfcaf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 815147abba444f0a55a8455c0a818aa048271b92
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881708"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309643"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Knowledge Exploration Service の作業を開始する
 
@@ -228,7 +228,7 @@ Azure の外で `kes.exe` を実行している場合は、インデックスは
 
 `kes.exe` が Azure アカウントにアクセスできるようにするには、Azure Portal から [Azure 発行設定ファイルをダウンロード](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)します。 メッセージが表示されたら、必要な Azure アカウントにサインインします。 ファイルを、`kes.exe` を実行する作業ディレクトリに *AzurePublishSettings.xml* として保存します。
 
-大規模なインデックスを構築しホストするには、2 つの方法があります。 1 つ目の方法では、Azure の Windows 仮想マシンにスキーマとデータ ファイルを準備します。 次に、[`kes.exe build_index`](#building-index) を実行して VM 上にローカルに、サイズ制限なしでインデックスを構築します。 構築したインデックスは、迅速なプロトタイプ作成のために [`kes.exe host_service`](#hosting-service) を使用して VM 上でローカルにホストできます。 手順の詳細については、[Azure VM のチュートリアル](../../../articles/virtual-machines/windows/quick-create-portal.md)を参照してください。
+大規模なインデックスを構築しホストするには、2 つの方法があります。 1 つ目の方法では、Azure の Windows 仮想マシンにスキーマとデータ ファイルを準備します。 次に、`kes.exe build_index` を実行して VM 上にローカルに、サイズ制限なしでインデックスを構築します。 構築したインデックスは、迅速なプロトタイプ作成のために `kes.exe host_service` を使用して VM 上でローカルにホストできます。 手順の詳細については、[Azure VM のチュートリアル](../../../articles/virtual-machines/windows/quick-create-portal.md)を参照してください。
 
 2 つ目の方法では、`--remote` パラメーターを指定した [`kes.exe build_index`](CommandLine.md#build_index-command) を使用して、リモートで Azure ビルドを実行します。 これにより、Azure VM のサイズが指定されます。 `--remote` パラメーターを指定すると、コマンドは、そのサイズで一時的な Azure VM を作成します。 次に、VM 上にインデックスが構築され、インデックスがターゲット BLOB ストレージにアップロードされ、完了時に VM が削除されます。 インデックスが構築されると、VM のコストが Azure サブスクリプションに課金されます。
 

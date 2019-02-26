@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 77c4377afaff20e77e76c0a7389c79dfdce703ca
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 869d2105ccf635a46a21e9b7f382ddbef713d68b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509135"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327012"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Azure BLOB、Azure Files、Azure ディスクの使い分け
 Microsoft Azure の Azure Storage には、クラウドにデータを格納したりそのデータにアクセスしたりするためのいくつかの機能が用意されています。 この記事では、Azure Files、Azure BLOB、Azure ディスクについて取り上げると共に、これらの機能をうまく使い分けるためのヒントを紹介しています。
@@ -67,4 +67,4 @@ Azure Files は Azure ディスクを補完するものです。 ディスクは
   
 一部の SMB 機能はクラウドでは利用できません。 詳細については、「[Features not supported by the Azure File service (Azure File Service でサポートされていない機能)](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)」を参照してください。
   
-ディスクの詳細については、[ディスクとイメージの管理](../../virtual-machines/windows/about-disks-and-vhds.md)に関するページと[データ ディスクを Windows 仮想マシンにアタッチする方法](../../virtual-machines/windows/attach-managed-disk-portal.md)に関するページを参照してください。
+ディスクの詳細については、「[マネージド ディスクの概要](../../virtual-machines/windows/managed-disks-overview.md)」と[データ ディスクを Windows 仮想マシンにアタッチする方法](../../virtual-machines/windows/attach-managed-disk-portal.md)に関するページを参照してください。

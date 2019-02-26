@@ -3,15 +3,15 @@ title: Azure Cosmos DB の SQL クエリ
 description: Azure Cosmos DB の SQL 構文、データベースの概念、および SQL クエリについて説明します。 Azure Cosmos DB では、JSON クエリ言語として SQL を使用できます。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: f8b23533127b9798e5a677f646f94ae0a53fcde8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 185ff9c7f50fa08ba952f1519bf406d9017982e0
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822410"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455961"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL クエリの例
 
@@ -1369,13 +1369,13 @@ Cosmos DB では、ユーザー定義関数 (UDF) のようにクエリ内で使
 | CEILING (num_expr) | 指定された数値式以上の最小の整数値を返します。 |
 | FLOOR (num_expr) | 指定された数値式未満の最大の整数を返します。 |
 | EXP (num_expr) | 指定された数値式の指数を返します。 |
-| [LOG (num_expr [,base])](#bk_log) | 指定された数値式の自然対数、または指定された基数を使用して自然対数を返します。 |
+| LOG (num_expr ,base) | 指定された数値式の自然対数、または指定された基数を使用して自然対数を返します。 |
 | LOG10 (num_expr) | 指定された数値式の底 10 の対数値を返します。 |
 | ROUND (num_expr) | 最も近い整数値に丸められた数値を返します。 |
 | TRUNC (num_expr) | 最も近い整数値に切り捨てられた数値を返します。 |
 | SQRT (num_expr) | 指定された数値式の平方根を返します。 |
 | SQUARE (num_expr) | 指定された数値式の 2 乗を返します。 |
-| [POWER (num_expr, num_expr)](#bk_power) | 指定された値の指定された数値式のべき乗を返します。 |
+| POWER (num_expr, num_expr) | 指定された値の指定された数値式のべき乗を返します。 |
 | SIGN (num_expr) | 指定された数値式の符号値 (-1、0、1) を返します。 |
 | ACOS (num_expr) | コサインが指定された数値式となる角度をラジアン単位で返します。アークコサインとも呼ばれます。 |
 | ASIN (num_expr) | サインが指定された数値式となる角度をラジアン単位で返します。 この関数はアークサインとも呼ばれます。 |

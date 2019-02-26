@@ -1,6 +1,6 @@
 ---
 title: サンプル - ストレージ アカウントおよび仮想マシンに対して許可されている SKU
-description: このサンプル ポリシーは、承認された SKU がストレージ アカウントと仮想マシンで使用されていることが要件です。
+description: このサンプル ポリシー定義は、承認された SKU の使用をストレージ アカウントと仮想マシンに要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4e194e70c13fe70702e700fcaafa7cdf981e0147
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: cb6ccf87cc14424801a06cc2e9749e2fc2f6ee4a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242075"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339908"
 ---
-# <a name="allowed-skus-for-storage-accounts-and-virtual-machines"></a>ストレージ アカウントおよび仮想マシンに対して許可されている SKU
+# <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>サンプル - ストレージ アカウントおよび仮想マシンに対して許可されている SKU
 
 このポリシーは、承認された SKU がストレージ アカウントと仮想マシンで使用されていることが要件です。 組み込みのポリシーを使用して、承認された SKU を確認します。 承認された仮想マシンの SKU の配列と、承認されたストレージ アカウントの SKU の配列を指定します。
 

@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/15/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/10/2018
-ms.openlocfilehash: 45eadf5e049d56c8f558596eb197eb010b1fbb14
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eff27e296800f78303d085f471e4fda188b487ce
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196996"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301861"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK インストール後の構成タスク
 
@@ -46,7 +46,18 @@ ASDK ホスト コンピューターへのインターネット接続の有無�
 
 - ASDK ホスト コンピューターからの**インターネット接続がある場合**。 次の PowerShell スクリプトを実行して、これらのモジュールを開発キット インストールにインストールします。
 
-  - Azure Stack 1811 以降:
+- Azure Stack 1901 以降:
+
+    ```PowerShell
+    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+    Install-Module AzureRM -RequiredVersion 2.4.0
+    Install-Module -Name AzureStack -RequiredVersion 1.7.0
+    ```
+
+    > [!Note]  
+    > Azure Stack モジュール バージョン 1.7.0 は互換性に影響する変更です。 Azure Stack 1.6.0 から移行するには、[移行ガイド](https://aka.ms/azspshmigration170)を参照してください。
+
+  - Azure Stack 1811:
 
     ``` PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
@@ -59,7 +70,7 @@ ASDK ホスト コンピューターへのインターネット接続の有無�
     Install-Module -Name AzureStack -RequiredVersion 1.6.0
     ```
 
-  - Azure Stack 1808 以降:
+  - Azure Stack 1810 以前:
 
     ``` PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 

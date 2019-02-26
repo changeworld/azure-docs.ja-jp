@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: a9ba02478b17b29343236a91fe637357c1414717
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ebc0f93055a014888d01fa9bffc7702b99380234
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015324"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417467"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -131,7 +131,7 @@ ms.locfileid: "54015324"
 
     ![Azure Storage の構成](./media/tutorial-copy-data-tool/configure-azure-storage.png)
 
-    d. 新しく作成したリンクされたサービスをソースとして選択し、**[次へ]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 新しく作成したリンクされたサービスをソースとして選択し、**[次へ]** をクリックします。
 
     ![ソースのリンクされたサービスの選択](./media/tutorial-copy-data-tool/select-source-linked-service.png)
 
@@ -152,7 +152,7 @@ ms.locfileid: "54015324"
 
     ![新しいシンクのリンクされたサービス](./media/tutorial-copy-data-tool/new-sink-linked-service.png)
 
-    b. ギャラリーから **[Azure Blob Storage]** を選択し、**[次へ]** を選択します。
+    b. ギャラリーで **[Azure SQL Database]** を選択し、**[次へ]** を選択します。
 
     ![Azure SQL DB の選択](./media/tutorial-copy-data-tool/select-azure-sql-db.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "54015324"
 
     ![Azure SQL DB の構成](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
-    d. 新しく作成したリンクされたサービスをシンクとして選択し、**[次へ]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 新しく作成したリンクされたサービスをシンクとして選択し、**[次へ]** をクリックします。
 
     ![シンクのリンクされたサービスの選択](./media/tutorial-copy-data-tool/select-sink-linked-service.png)
 

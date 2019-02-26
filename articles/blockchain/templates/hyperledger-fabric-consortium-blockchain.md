@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: 884f6a81796341e274027095691585212d5a3749
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: acbd41b7203e458a5ed60382354c862748863053
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54829928"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328029"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric コンソーシアム ネットワーク
 
@@ -113,7 +113,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 | パラメーター名 | 説明 | 使用できる値 |
 |---|---|---|
 **スケールの種類**|複数のコンテナーを使用した単一の仮想マシン、またはスケール アウト モデルで複数のコンテナーまたは複数の仮想マシンのいずれかのデプロイの種類。|単一の VM または複数の VM |
-**VM ディスクの種類**|デプロイされた各ノードをバックアップするストレージの種類。 <br/> ストレージの詳細については、[Microsoft Azure Storage の概要](https://docs.microsoft.com/azure/storage/common/storage-introduction)ページと [Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) に関するページを参照してください。|Standard SSD <br/> Premium SSD |
+**VM ディスクの種類**|デプロイされた各ノードをバックアップするストレージの種類。 <br/> 使用できるディスクの種類の詳細については、[ディスクの種類の選択](../../virtual-machines/windows/disks-types.md)に関する記事を参照してください。|Standard SSD <br/> Premium SSD |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>複数の VM のデプロイ (追加の設定)
 

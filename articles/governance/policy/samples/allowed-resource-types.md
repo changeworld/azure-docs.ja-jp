@@ -1,6 +1,6 @@
 ---
 title: サンプル - 許可されるリソースの種類
-description: このサンプル ポリシーを適用すると、承認されているリソースの種類のみがデプロイされます。
+description: このサンプル ポリシー定義を適用すると、承認されているリソースの種類のみがデプロイされます。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 3d2f065f875cd012a808af985e36469c85532913
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 0dc58bb11d6415cb1003a8b505e337ab385f7d46
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243639"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339993"
 ---
-# <a name="allowed-resource-types"></a>許可されるリソースの種類
+# <a name="sample---allowed-resource-types"></a>サンプル - 許可されるリソースの種類
 
 このポリシーを適用すると、承認されているリソースの種類のみがデプロイされます。 許可されているリソースの種類の配列を指定します。
 

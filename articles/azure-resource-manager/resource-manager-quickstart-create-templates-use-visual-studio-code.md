@@ -10,25 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/11/2019
+ms.date: 02/14/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c2684c7373d9ee4536b248650c7012c261166b81
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 37d84206246e60ed16244d6172a5e22ca18524c9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235395"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270251"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Visual Studio Code と Azure Resource Manager ツール拡張機能を使用して Azure Resource Manager テンプレートを作成および編集する方法について説明します。 Visual Studio Code では、拡張機能を使わずに Resource Manager テンプレートを作成することもできますが、拡張機能を利用すれば、オートコンプリート機能によってテンプレートの開発を省力化することができます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,6 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
+
 3. **[開く]** を選択して、ファイルを開きます。
 4. **[ファイル]**>**[名前を付けて保存]** を選択し、ファイルを **azuredeploy.json** としてご自身のローカル コンピューターに保存します。
 
@@ -94,6 +91,9 @@ Visual Studio Code を使用してテンプレートを編集する方法を体�
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
 テンプレートをデプロイする方法は多数あります。  このクイック スタートでは、Azure Cloud Shell を使用します。 Cloud Shell は、構成をまったく必要としない Web アプリケーションです。 Cloud Shell では、Azure CLI と Azure PowerShell の両方がサポートされます。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
 
@@ -148,7 +148,10 @@ Visual Studio Code を使用してテンプレートを編集する方法を体�
     
     ---
 
-    **azuredeploy.json** 以外の名前でファイルを保存する場合は、テンプレートのファイル名を更新します。
+    > [!NOTE]
+    > Cloud Shell での Azure PowerShell の使用には、ファイル IO の問題が存在します。  エラー メッセージは、"*コマンドレットの動的パラメーターを取得できません。パス 'Azure:/azuredeploy.json' が存在しないため検出できません*" です。  `New-AzResourceGroupDeploy` コマンドに **-TemplateFile** スイッチを含めないようにすることが暫定的な回避策となります。 コマンドを実行すると、ファイル名を入力するように求められます。
+
+    **azuredeploy.json** 以外の名前でファイルを保存する場合は、テンプレートのファイル名を更新します。 
 
     次のスクリーンショットは、サンプルのデプロイを示しています。
 

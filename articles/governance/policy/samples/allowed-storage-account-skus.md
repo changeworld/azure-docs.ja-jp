@@ -1,6 +1,6 @@
 ---
 title: サンプル - 許可されるストレージ アカウントの SKU
-description: このサンプル ポリシーでは、ストレージ アカウントが適切な SKU を使用することを必須にします。
+description: このサンプル ポリシー定義は、適切な SKU の使用をストレージ アカウントに要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 72af4c7fbc2f4822e15d33202b108ef45b5043ce
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 5d033255f45736440a6f860b9adacbd64f5446ff
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241582"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341319"
 ---
-# <a name="allowed-storage-account-skus"></a>許可されるストレージ アカウントの SKU
+# <a name="sample---allowed-storage-account-skus"></a>サンプル - 許可されるストレージ アカウントの SKU
 
 このポリシーでは、ストレージ アカウントが適切な SKU を使用することを必須にします。 承認された SKU の配列を指定します。
 

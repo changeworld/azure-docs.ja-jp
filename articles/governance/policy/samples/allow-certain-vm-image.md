@@ -1,6 +1,6 @@
 ---
 title: サンプル - 特定の VM プラットフォーム イメージのみの許可
-description: このサンプル ポリシーでは、仮想マシンが特定のバージョンの UbuntuServer を使用することが要求されます。
+description: このサンプル ポリシー定義は、特定のバージョンの UbuntuServer を使用することを仮想マシンに要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f585995cd948c16f576cae8c67bf37ab07a5575f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a2268dfe0ee696c675c069c9770f66c7ba0b1fa9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241531"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342747"
 ---
-# <a name="only-allow-a-certain-vm-platform-image"></a>特定の VM プラットフォーム イメージのみの許可
+# <a name="sample---only-allow-a-certain-vm-platform-image"></a>サンプル - 特定の VM プラットフォーム イメージのみの許可
 
 仮想マシンが特定のバージョンの UbuntuServer を使用する必要があります。
 

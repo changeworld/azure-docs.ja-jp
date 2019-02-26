@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f065a7c428f191e37449145e946b26c3133ede05
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cc8c10f8a3f515d3401dbb469a7e4a31c4fe3501
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700014"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329815"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 参照データ (別名、ルックアップテーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、参照の実行やデータ ストリームとの相互の関連付けに使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。 
@@ -74,7 +74,7 @@ Azure Stream Analytics は、更新された参照データ BLOB を、1 分間�
 
 ## <a name="azure-sql-database-preview"></a>Azure SQL Database (プレビュー)
 
-Azure SQL Database の参照データは、Stream Analytics ジョブによって取得され、処理のためにスナップショットとしてメモリに格納されます。 参照データのスナップショットも、構成設定で指定したストレージ アカウントのコンテナーに格納されます。 コンテナーはジョブの開始時に自動的に作成され、ジョブが停止すると自動的に削除されます。
+Azure SQL Database の参照データは、Stream Analytics ジョブによって取得され、処理のためにスナップショットとしてメモリに格納されます。 参照データのスナップショットも、構成設定で指定したストレージ アカウントのコンテナーに格納されます。 ジョブを開始すると、コンテナーは自動作成されます。 ジョブが停止するか失敗状態になると、自動作成されたコンテナーはジョブの再開時に削除されます。  
 
 参照データが変化の遅いデータ セットである場合、ジョブで使用されるスナップショットを定期的に更新する必要があります。 Stream Analytics では、Azure SQL Database 入力接続を構成するときにリフレッシュ レートを設定できます。 Stream Analytics ランタイムは、リフレッシュ レートによって指定された間隔で Azure SQL Database に対してクエリを実行します。 サポートされている最速のリフレッシュ レートは 1 分に 1 回です。 更新のたびに、Stream Analytics は指定されたストレージ アカウントに新しいスナップショットを格納します。
 

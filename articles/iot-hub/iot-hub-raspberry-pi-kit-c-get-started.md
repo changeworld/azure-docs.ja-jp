@@ -1,21 +1,19 @@
 ---
-title: Raspberry Pi から クラウドへ (C) - Raspberry Pi の Azure IoT Hub への接続 | Microsoft Docs
-description: このチュートリアルでは、Raspberry Pi を Azure IoT Hub に接続し、Raspberry Pi で Azure クラウド プラットフォームにデータを送信する方法について説明します。
+title: C を使用した Azure IoT Hub への Raspberry Pi の接続 | Microsoft Docs
+description: Raspberry Pi を Azure IoT Hub に接続し、Raspberry Pi で Azure クラウド プラットフォームにデータを送信する方法について説明します
 author: rangv
-manager: ''
-keywords: azure iot raspberry pi, raspberry pi iot hub, raspberry pi でクラウドにデータを送信する raspberry pi からクラウドへ
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 04/11/2018
+ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: c8b254656dcd94fd846336e9c9de3ca823691904
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1e96029b75c8168189dacdc420117e82387228d9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053502"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327249"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi の Azure IoT Hub への接続 (C)
 

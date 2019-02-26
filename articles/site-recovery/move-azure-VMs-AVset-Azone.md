@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 6a731750da4edfb4a71c00156c5ff527dee30941
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5597f3c017ccf2dbb58b7b6b046720c8f49803c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824553"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312289"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM を Availability Zones に移動する
 Azure の Availability Zones は、アプリケーションとデータをデータセンターの障害から保護します。 それぞれの可用性ゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones は 1 リージョン内で物理的に分離されているため、データセンターで障害が発生した場合でもアプリケーションとデータを保護できます。 Availability Zones では、Azure によって業界最高の 99.99% VM アップタイム SLA が実現されます。 可用性ゾーンは、[こちら](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones)に記載されている一部のリージョンでサポートされます。 

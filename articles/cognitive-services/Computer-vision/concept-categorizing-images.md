@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1967ba60088cae2b946cfcfe1467c2de5aebccdf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a85fb65ad971bfc70bdab0689e99921e616b56ac
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879953"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308861"
 ---
-# <a name="image-categorization-with-computer-vision"></a>Computer Vision での画像の分類
+# <a name="categorize-images"></a>イメージの分類
 
-タグ付けや説明に加え、Computer Vision では、前のバージョンで定義した分類ベースのカテゴリが返されます。 これらのカテゴリは親/子の遺伝階層を持つ分類として整理されます。 すべてのカテゴリは英語です。 単独で、または新しいタグ付けモデルと共に使用できます。
+タグや説明に加え、Computer Vision では、画像で検出された分類ベースのカテゴリが返されます。 タグとは異なり、カテゴリは親/子の遺伝階層で整理され、その数も少なくなります (数千ものタグと違って 86)。 すべてのカテゴリ名は英語です。 分類は単独で実行されるか、より新しいタグ モデルと共に実行できます。
 
 ## <a name="the-86-category-concept"></a>86 のカテゴリ概念
 
-以下の図に示されている 86 の概念のリストに基づき、イメージを細かく分けることができます。 テキスト形式の完全な分類については、[カテゴリの分類](category-taxonomy.md)に関するページを参照してください。
+Computer Vision では次の図の 86 カテゴリの一覧を使用して、大まかに、または具体的に画像を分類できます。 テキスト形式の完全な分類については、[カテゴリの分類](category-taxonomy.md)に関するページを参照してください。
 
 ![カテゴリの分類に含まれるすべてのカテゴリのグループ化されたリスト](./Images/analyze_categories-v2.png)
 

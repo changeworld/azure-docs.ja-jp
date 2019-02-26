@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:音声を認識する (C# (.NET Core Windows)) - Speech Services
 titleSuffix: Azure Cognitive Services
-description: Windows の .NET Core で C# と Speech Service SDK を使用して音声を認識する方法について説明します。
+description: Windows の .NET Core で C# と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: cf6ffdad9fbbf1705c0160e16de0e5ee3e5929a1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1f6cbb511546784b316da1e978abf84c41ac753c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869944"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446054"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>クイック スタート:.NET Core 用 Speech SDK を使用して音声を認識する
 

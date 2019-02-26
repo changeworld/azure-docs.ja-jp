@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cb868da60d56728e5d0c450ab362d6f381b90ea
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6ef8498ae1aa9be0322f508b3723778311e2cdd5
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756565"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327784"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS のデプロイ
 
@@ -249,7 +249,7 @@ ms.locfileid: "55756565"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -357,7 +357,7 @@ tempfiles に適した領域の量を決定するには、既存のシステム�
 ### <a name="storage-configuration"></a>ストレージの構成
 NTFS でフォーマットされたディスクを使用した単一インスタンスの Oracle のみサポートされています。 すべてのデータベース ファイルは、Managed Disks (推奨) または VHD 上の NTFS ファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、[Azure ページ BLOB ストレージ](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)または [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview) に基づいています。 
 
-[Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview) の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) の使用も強くお勧めします。
+[Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview) の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Premium SSD](../../windows/disks-types.md) の使用も強くお勧めします。
 
 ネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は、Oracle Database ファイルに対してはサポートされていません。 詳細については、次を参照してください。
 
@@ -379,7 +379,7 @@ Azure ディスクに対する IOPS スループットにはクォータが存�
 | \oracle\<SID>\origlogaA & mirrlogB | Premium | なし | 不要 |
 | \oracle\<SID>\origlogaB & mirrlogA | Premium | なし | 不要 |
 | \oracle\<SID>\sapdata1...n | Premium | 読み取り専用 | 使用可能 |
-| \oracle\<SID>\oraarch | 標準 | なし | 不要 |
+| \oracle\<SID>\oraarch | Standard | なし | 不要 |
 | Oracle ホーム、saptrace、... | OS ディスク | | 不要 |
 
 
@@ -444,11 +444,11 @@ SAP インストール マニュアルによると、Oracle 関連のファイ�
 
 ### <a name="storage-configuration"></a>ストレージの構成
 
-Azure 上の Oracle Database ファイルがサポートされているのは、ext4、xfs、Oracle ASM のファイル システムです。 すべてのデータベース ファイルは、VHD または Managed Disks をベースとするこれらのファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、[Azure ページ BLOB ストレージ](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>)または [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview) に基づいています。 
+Azure 上の Oracle Database ファイルがサポートされているのは、ext4、xfs、Oracle ASM のファイル システムです。 すべてのデータベース ファイルは、VHD または Managed Disks をベースとするこれらのファイル システムに保存する必要があります。 これらのディスクは Azure VM にマウントされており、[Azure ページ BLOB ストレージ](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>)または [Azure Managed Disks](../../windows/managed-disks-overview.md) に基づいています。
 
-Oracle Linux UEK カーネルでは、[Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#premium-storage-for-linux-vms) をサポートするには少なくとも UEK バージョン 4 が必要です。
+Oracle Linux UEK カーネルでは、[Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching) をサポートするには少なくとも UEK バージョン 4 が必要です。
 
-[Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview) の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) の使用も強くお勧めします。
+[Azure マネージド ディスク](../../windows/managed-disks-overview.md)の使用を強くお勧めします。 また、Oracle Database デプロイの場合には [Azure Premium SSD](../../windows/disks-types.md) の使用も強くお勧めします。
 
 ネットワーク ドライブまたは Azure ファイル サービスのようなリモート共有は、Oracle Database ファイルに対してはサポートされていません。 詳細については、「 
 
@@ -468,7 +468,7 @@ Azure ページ BLOB ストレージまたは Managed Disks に基づくディ�
 | /oracle/<SID>/origlogaA & mirrlogB | Premium | なし | 不要 |
 | /oracle/<SID>/origlogaB & mirrlogA | Premium | なし | 不要 |
 | /oracle/<SID>/sapdata1...n | Premium | 読み取り専用 | 使用可能 |
-| /oracle/<SID>/oraarch | 標準 | なし | 不要 |
+| /oracle/<SID>/oraarch | Standard | なし | 不要 |
 | Oracle ホーム、saptrace、... | OS ディスク | | 不要 |
 
 *ストライプ化: RAID0 を使用した LVM ストライプまたは MDADM

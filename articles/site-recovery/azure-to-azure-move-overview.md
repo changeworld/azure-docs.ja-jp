@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0d0009c833c313b5416998502601285e5b710a8d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1560dad31e00b00a2d27cf1675e05901e6611825
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112548"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309864"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 
@@ -51,7 +51,7 @@ VM の移動には、次の手順が伴います。
 > 現在 Azure Site Recovery では、異なるリージョン間の VM の移動はサポートされますが、同じリージョン内での移動はサポートされません。 
 
 > [!NOTE]
-> これらの手順についての詳しいガイダンスは、ここで言及されている各シナリオのドキュメントに記載されています。
+> これらの手順についての詳しいガイダンスは、[ここ](#next-steps)で言及されている各シナリオのドキュメントに記載されています。
 
 ## <a name="typical-architectures-for-a-multi-tier-deployment"></a>多層デプロイの一般的なアーキテクチャ
 以下のセクションでは、Azure における多層アプリケーションで採用される最も一般的なデプロイ アーキテクチャについて見ていきます。 ここでは、パブリック IP を持つ 3 階層アプリケーションの例を取り上げています。 Web、アプリケーション、データベースの各階層は、それぞれ 2 つの VM を有しており、ロード バランサーによって他の階層に接続されています。 データベース層の VM 間には SQL AlwaysOn レプリケーションが存在し、高可用性 (HA) が確保されています。

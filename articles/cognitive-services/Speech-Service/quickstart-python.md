@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 1/16/2019
+ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 43ae1339b2b6880656c68957a3d4ed2d2f13b559
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d3a6b8389d44d3ad92f9305124884d97fa293429
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859543"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447111"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>クイック スタート:Python 用 Speech SDK を使用して音声を認識する
 
@@ -26,16 +26,16 @@ ms.locfileid: "55859543"
 ## <a name="prerequisites"></a>前提条件
 
 * Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
-* [Python 3.5 以降](https://www.python.org/downloads/)、64 ビット。
+* [Python 3.5 以降](https://www.python.org/downloads/)。
 * 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。 
-    * Windows: x64。
+    * Windows: x64 および x86。
     * Mac: macOS X バージョン 10.12 以降。
     * Linux:x64 の Ubuntu 16.04 または 18.04。
 * Ubuntu では、以下のコマンドを実行して、必要なパッケージをインストールします。
 
   ```sh
   sudo apt-get update
-  sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+  sudo apt-get install build-essential libssl1.0.0 libasound2 wget
   ```
 
 * Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2017 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) も必要になります。

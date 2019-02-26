@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 04b3ebac6406f4a6e5ec07f1806b48e3b2062470
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 90431ea7649b38da6cbbd242b00c21278d8e8967
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235429"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268891"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートでの条件の使用
 
@@ -35,8 +35,6 @@ ms.locfileid: "56235429"
 > * リソースのクリーンアップ
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -154,6 +152,9 @@ New-AzResourceGroupDeployment `
     -newOrExisting $newOrExisting `
     -TemplateFile azuredeploy.json
 ```
+
+> [!NOTE]
+> Cloud Shell での Azure PowerShell の使用には、ファイル IO の問題が存在します。  エラー メッセージは、"*コマンドレットの動的パラメーターを取得できません。パス 'Azure:/azuredeploy.json' が存在しないため検出できません*" です。  `New-AzResourceGroupDeploy` コマンドに **-TemplateFile** スイッチを含めないようにすることが暫定的な回避策となります。 コマンドを実行すると、ファイル名を入力するように求められます。
 
 > [!NOTE]
 > **newOrExisting** が **new** のときに、指定したストレージ アカウント名のストレージ アカウントが既に存在している場合、デプロイは失敗します。

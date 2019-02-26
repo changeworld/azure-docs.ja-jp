@@ -1,6 +1,6 @@
 ---
 title: サンプル - 許可される場所
-description: このサンプル ポリシーでは、すべてのリソースが承認済みの場所にデプロイされることを要求します。
+description: このサンプル ポリシー定義は、すべてのリソースを承認済みの場所にデプロイすることを要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: a13f181e90f0435f23e22a7c4db42976bd0afb44
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 70e1b2b20c4846626121dec190dff220a154b81b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243548"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341353"
 ---
-# <a name="allowed-locations"></a>許可される場所
+# <a name="sample---allowed-region-locations"></a>サンプル - 許可されるリージョンの場所
 
 このポリシーでは、リソースをデプロイするときに組織が指定できる場所を制限できます。 geo コンプライアンス要件を強制するために使用されます。 リソース グループ Microsoft.AzureActiveDirectory/b2cDirectories や、「グローバル」リージョンを使用するリソースを除外します。 許可された場所の配列を指定します。
 

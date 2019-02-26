@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 5719d5c49d3061acd167f51f74aac109dc22ec49
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: e38612e0d4e0707525b313c79143018c74c4c77b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961400"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326512"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Azure Stack で仮想マシンのディスク記憶域を作成する
 
@@ -32,9 +32,9 @@ ms.locfileid: "55961400"
 
 バージョン 1808 以降、Azure Stack では、マネージド ディスクとアンマネージド ディスクの両方を、仮想マシンで、オペレーティング システム (OS) ディスクおよびデータ ディスクとして使用できます。 バージョン 1808 未満では、アンマネージド ディスクのみがサポートされます。 
 
-**[マネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)** を使用すると、VM ディスクに関連付けられているストレージ アカウントを管理できるため、Azure IaaS VM のディスク管理が簡素化されます。 Azure Stack では、必要なディスクのサイズを指定するだけで、ディスクの作成と管理が自動的に行われます。
+**[マネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)** を使用すると、VM ディスクに関連付けられているストレージ アカウントを管理できるため、Azure IaaS VM のディスク管理が簡素化されます。 Azure Stack では、必要なディスクのサイズを指定するだけで、ディスクの作成と管理が自動的に行われます。
 
-**[アンマネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)** については、そのディスクを格納する[ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)を作成する必要があります。 作成したディスクは VM ディスクと呼ばれ、ストレージ アカウントのコンテナーに格納されます。
+アンマネージド ディスクについては、そのディスクを格納するストレージ アカウントを作成する必要があります。 作成したディスクは VM ディスクと呼ばれ、ストレージ アカウントのコンテナーに格納されます。
 
 ### <a name="best-practice-guidelines"></a>ベスト プラクティス ガイドライン
 

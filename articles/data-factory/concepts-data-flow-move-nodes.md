@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 4328a090478747e9acbfb25cca45b330cd4a300b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 84a949d0e8fc915441231e1d0b07c3492776cd41
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56212535"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327138"
 ---
-#<a name="data-factory-data-flow-move-nodes"></a>Data Factory Data Flow のノードの移動
+# <a name="mapping-data-flow-move-nodes"></a>Mapping Data Flow のノードの移動
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 

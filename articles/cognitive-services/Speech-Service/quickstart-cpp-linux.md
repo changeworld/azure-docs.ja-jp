@@ -1,23 +1,23 @@
 ---
 title: 'クイック スタート: 音声を認識する、C++ (Linux) - Speech Services'
 titleSuffix: Azure Cognitive Services
-description: Linux で C++ と Speech Service SDK を使用して音声を認識する方法について説明します。
+description: Linux で C++ と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/18/2018
+ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: fbd962d7a19969c88f539b0e21848fb01c6e88e4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9e1844320786fe8a2a856b06b3a8093ca49568eb
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874755"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446360"
 ---
-# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>クイック スタート: Linux で C++ と Speech SDK を使用して音声を認識する
+# <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>クイック スタート:Linux で C++ と Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -31,7 +31,7 @@ ms.locfileid: "55874755"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.2.0` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.3.0` です。
 
 Linux 用 Speech SDK は、64 ビット アプリケーションと 32 ビット アプリケーションのどちらの構築にも使用できます。 必要なライブラリとヘッダー ファイルは、 https://aka.ms/csspeech/linuxbinary から tar ファイルとしてダウンロードできます。
 
@@ -41,7 +41,7 @@ SDK を次のようにダウンロードしてインストールします。
 
    ```sh
    sudo apt-get update
-   sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+   sudo apt-get install build-essential libssl1.0.0 libasound2 wget
    ```
 
 1. Speech SDK のファイル抽出先にする必要があるディレクトリを選択し、そのディレクトリを指すように `SPEECHSDK_ROOT` 環境変数を設定します。 この変数によって、後のコマンドでこのディレクトリを参照することが容易になります。 たとえば、ホーム ディレクトリで `speechsdk` ディレクトリを使用する場合、次のようなコマンドを使用します。
@@ -91,13 +91,13 @@ SDK を次のようにダウンロードしてインストールします。
 * **x64** (64 ビット) システムでは、次のコマンドを実行してアプリケーションをビルドします。
 
   ```sh
-  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x64" -l:libssl.so.1.0.0 -l:libasound.so.2
   ```
 
 * **x86** (32 ビット) システムでは、次のコマンドを実行してアプリケーションをビルドします。
 
   ```sh
-  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libcurl.so.4 -l:libasound.so.2
+  g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libssl.so.1.0.0 -l:libasound.so.2
   ```
 
 ## <a name="run-the-app"></a>アプリの実行

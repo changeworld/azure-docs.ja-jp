@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 2f52b3d1a5aa5b934954da09d114dce1efb8ef32
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 64008a91033b1fdd9cb318e76db2b1958f2337e9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508370"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309321"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Azure Site Recovery を使用したファイル サーバーの保護 
 
@@ -58,7 +58,7 @@ DFSR では、Remote Differential Compression (RDC) という圧縮アルゴリ�
 |---------|---------|---------|
 |ファイル サーバー環境 (DFSR あり/なし)|   [Site Recovery を使用したレプリケーション](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery では、共有ディスク クラスターとネットワーク接続ストレージ (NAS) はサポートされません。 環境でこれらの構成を使用する場合は、他の方法を適宜使用してください。 <br> Site Recovery では SMB 3.0 はサポートされません。 レプリケートされた VM にファイルの変更が反映されるのは、変更がファイルの元の場所で更新された場合だけです。
 |ファイル サーバー環境 (DFSR あり)     |  [Azure IaaS 仮想マシンへの DFSR の拡張](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      DFSR は、帯域幅が極端に不足している環境でも適切に機能します。 この方法では、Azure VM を常時稼働させておく必要があります。 計画で VM のコストを考慮する必要があります。         |
-|Azure Iaas VM     |     [File Sync](#use-azure-file-sync-service-to-replicate-your-files)   |     ディザスター リカバリー シナリオで File Sync を使用する場合は、フェールオーバー時に手動アクションを実行して、クライアント マシンがファイル共有に透過的にアクセスできるようにする必要があります。 File Sync では、クライアント マシンからポート 445 を開いておく必要があります。     |
+|Azure Iaas VM     |     File Sync    |     ディザスター リカバリー シナリオで File Sync を使用する場合は、フェールオーバー時に手動アクションを実行して、クライアント マシンがファイル共有に透過的にアクセスできるようにする必要があります。 File Sync では、クライアント マシンからポート 445 を開いておく必要があります。     |
 
 
 ### <a name="site-recovery-support"></a>Site Recovery のサポート

@@ -1,6 +1,6 @@
 ---
 title: サンプル - タグ一致パターンを強制する
-description: このサンプル ポリシーでは、リソースがタグ値に対する一致パターンを満たしていることが求められます。
+description: このサンプル ポリシー定義は、タグ値に対する一致パターンを満たしていることをリソースに要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f3e4246141a9d9de1a7d6451422e1e55a4c3545f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 9510bb147a8eb9687e074191e8fcc404c847dc0a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244421"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342662"
 ---
-# <a name="enforce-tag-match-pattern-for-tag-values"></a>タグ値のタグ一致パターンを強制する
+# <a name="sample---enforce-tag-match-pattern-for-tag-values"></a>サンプル - タグ値のタグ一致パターンを強制する
 
 タグ値が一致パターンを満たしていることを要求します。 ポリシー ルールで、使用できるパターンを指定します。
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 5fbcfd102518dc231ad61c54e626c14381bf5a02
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 0ee3ff8bb1ebfc276550cba3570fdf4360aabf72
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321621"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327869"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポートの分析
 この記事では、Azure Site Recovery Deployment Planner で、Hyper-V から Azure へのシナリオに関して生成される Excel レポート内のシートについて取り上げます。
@@ -179,7 +179,7 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 
 **[VM 名]**: レポートの生成時に VMListFile 内で使用された VM の名前です。 また、VM にアタッチされたディスク (VHD) もこの列に一覧表示されます。 この名前には、VM がプロファイリング期間中に検出された時点で配置されていた Hyper-V ホストの名前が含まれます。
 
-**[VM Compatibility]\(VM 適合性\)**: **Yes** と **Yes**\* の 2 つの値があります。 **Yes**\* は、[Azure Premium Storage](https://aka.ms/premium-storage-workload) に適した VM があるインスタンスに付けられます。 この場合、ディスクの変更頻度または IOPS が高く、現在ディスクにマップされているサイズよりも上位の Premium ディスク サイズが適していることをプロファイリングの結果は示しています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 
+**[VM Compatibility]\(VM 適合性\)**: **Yes** と **Yes**\* の 2 つの値があります。 **Yes**\* は、[Premium SSD](../virtual-machines/windows/disks-types.md) に適した VM があるインスタンスに付けられます。 この場合、ディスクの変更頻度または IOPS が高く、現在ディスクにマップされているサイズよりも上位の Premium ディスク サイズが適していることをプロファイリングの結果は示しています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 
 * 128 GB 未満の場合は P10
 * 128 GB から 256 GB の場合は P15
 * 256 ～ 512 GB の場合は P20

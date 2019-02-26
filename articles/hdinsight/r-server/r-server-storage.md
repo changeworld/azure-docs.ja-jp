@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7b937158be39f9a1f7f9374611a150fd11837f02
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910268"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309119"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure Storage ソリューション
 
@@ -119,9 +119,9 @@ HDInsight クラスターに関連付けられている Azure Active Directory (
 
 また、クラスター作成後に 1 つ以上の Data Lake Storage アカウントへのクラスター アクセスを追加することもできます。 そのためには、Data Lake Storage の Azure portal エントリを開き、**[データ エクスプローラー]、[アクセス]、[追加]** の順に移動します。 
 
-### <a name="how-to-access-data-lake-storage-from-ml-services-on-hdinsight"></a>HDInsight で ML Services から Data Lake Storage にアクセスする方法
+### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>HDInsight で ML Services から Data Lake Storage Gen1 にアクセスする方法
 
-Data Lake Storage へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の ML Services クラスターでストレージを使用できます。 唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。
+Data Lake Storage Gen1 へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の ML Services クラスターでストレージを使用できます。 唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。
 
 
     # Point to the ADL Storage (e.g. ADLtest)
@@ -143,7 +143,7 @@ Data Lake Storage へのアクセスを付与したら、Azure セカンダリ �
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-次に示すコマンドは、RevoShare ディレクトリを含む Data Lake Storage アカウントを構成し、前の例のサンプル .csv ファイルを追加します。
+次に示すコマンドは、RevoShare ディレクトリを含む Data Lake Storage Gen1 アカウントを構成し、前の例のサンプル .csv ファイルを追加します。
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user

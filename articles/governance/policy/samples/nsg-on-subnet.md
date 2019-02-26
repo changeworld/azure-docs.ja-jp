@@ -1,6 +1,6 @@
 ---
 title: サンプル - すべてのサブネット上の NSG x
-description: このサンプル ポリシーは、すべての仮想サブネットで特定のネットワーク セキュリティ グループが使用されることを要求します。
+description: このサンプル ポリシー定義は、すべての仮想サブネットで特定のネットワーク セキュリティ グループが使用されることを要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: bf02e0df860b677ed1766e083834f894251f6b63
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 1183a403c81dd71f123406991755157a4a4a1d26
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242840"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338548"
 ---
-# <a name="nsg-x-on-every-subnet"></a>すべてのサブネット上の NSG X
+# <a name="sample---network-security-group-x-on-every-subnet"></a>サンプル - すべてのサブネット上のネットワーク セキュリティ グループ x
 
 このポリシーは、特定のネットワーク セキュリティ グループで、すべての仮想サブネットが使用されていることが要件です。 使用するネットワーク セキュリティ グループの ID を指定します。
 

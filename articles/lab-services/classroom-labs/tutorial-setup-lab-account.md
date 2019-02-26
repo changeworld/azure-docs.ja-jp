@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 28710ebfaef4c82212e0208c36f50a96f0dda083
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 764b5ebb73340d377250d39e20b17ed0daf18bbe
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892050"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447686"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>チュートリアル:Azure Lab Services でラボ アカウントを設定する
 Azure Lab Services では、ラボ アカウントは、それによって組織のラボが管理される中心的なアカウントとして機能します。 ラボ アカウントでは、ラボを作成する権限を他のユーザーに付与し、ラボ アカウントの管理下にあるすべてのラボに適用されるポリシーを設定します。 このチュートリアルでは、ラボ管理者としてラボ アカウントを作成する方法について説明します。 
@@ -48,7 +48,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     2. ラボ アカウントを作成する **[Azure サブスクリプション]** を選択します。
     3. **[リソース グループ]** で、**[新規作成]** を選択し、リソース グループの名前を入力します。
     4. **[場所]** で、ラボ アカウントが作成される場所/リージョンを選択します。 
-    5. **作成**を選択します。 
+    5. **[Allow lab creator to pick lab location]\(ラボの作成者にラボの場所の選択を許可する\)** フィールドで、ラボの作成者がラボの場所を選択できるようにするかどうかを指定します。 既定では、このオプションは無効です。 無効である場合、ラボの作成者は作成するラボの場所を指定できません。 ラボは、ラボ アカウントに地理的に最も近い場所に作成されます。 有効である場合、ラボの作成者はラボの作成時に場所を選択できます。 
+    6. **作成**を選択します。 
 
         ![ラボ アカウントの作成ウィンドウ](../media/tutorial-setup-lab-account/lab-account-settings.png)
 5. ツールバーの**ベル アイコン** (**[通知]**) を選択し、デプロイが成功したことを確認して、**[リソースに移動]** を選択します。 

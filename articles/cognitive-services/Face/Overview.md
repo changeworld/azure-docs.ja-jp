@@ -2,33 +2,36 @@
 title: Face API とは
 titleSuffix: Azure Cognitive Services
 description: Face サービスを使用して、画像内の顔を検出し、分析する方法について説明します。
-author: SteveMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 10/29/2018
-ms.author: sbowles
-ms.openlocfilehash: 655234bfec650ef027e325ff8df23fe91eecfd43
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: pafarley
+ms.openlocfilehash: 2f5f57f0978adbdf33ed4ce25ba9b32247ea0484
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861054"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455978"
 ---
 # <a name="what-is-the-azure-face-api"></a>Azure Face API とは
 
 Azure Face API は、画像に含まれている人の顔を検出、認識、分析するためのアルゴリズムを備えたコグニティブ サービスです。 人の顔の情報を処理する機能は、セキュリティ、自然なユーザー インターフェイス、画像コンテンツの分析と管理、モバイル アプリ、ロボティクスなど、多種多様なソフトウェア シナリオで重要です。
 
-Face API にはいくつかの異なる機能があり、そのそれぞれについて以降のセクションで説明します。 それぞれについて詳しく理解して、それがお客様のニーズに適しているかどうかを判断するために、続きをお読みください。
+Face API にはいくつかの異なる機能があり、そのそれぞれについて以降のセクションで説明します。 それぞれの詳細については、後の説明を参照してください。
 
 ## <a name="face-detection"></a>顔検出
 
-Face API では、画像に含まれている人の顔を検出し、その位置の四角形の座標を返すことができます。 顔検出ではオプションとして、ポーズ、性別、年齢、頭のポーズ、顔の毛、眼鏡などの顔関連の属性を抽出できます。
+Face API では、画像に含まれている人の顔を検出し、その位置の四角形の座標を返すことができます。 顔検出では、オプションとして、ポーズ、頭部姿勢、性別、年齢、ひげ、眼鏡などの顔関連の属性を抽出できます。
 
 ![女性と男性の画像 (それぞれの顔の周囲に四角形が描かれ、年齢と性別が表示されている)](./Images/Face.detection.jpg)
 
-顔検出機能は [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) を通じて利用することもできますが、さらなる操作を顔データに対して実行したい場合は、Face API (本サービス) を使用することをお勧めします。 顔検出の詳細については、[Detect API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) に関するページを参照してください。
+> [!NOTE] 
+> 顔検出機能は [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) を通じて利用することもできますが、さらなる操作を顔データに対して実行したい場合は、Face API (本サービス) を使用することをお勧めします。 
+
+顔検出の詳細については、[Detect API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) に関するページを参照してください。
 
 ## <a name="face-verification"></a>顔検証
 

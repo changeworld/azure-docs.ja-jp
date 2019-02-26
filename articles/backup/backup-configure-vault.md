@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: 73074898c29a240e31b181025f8cc92f25de5061
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 006d47d397bab0869ae8a75d6c17d239e71608c3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382746"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310577"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルで Windows Server または Windows クライアントを Azure にバックアップする
 この記事では、Resource Manager デプロイ モデルを使用して、Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする方法について説明します。

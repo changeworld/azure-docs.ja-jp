@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 77763765e75500d994235bba0a5c0c3bb3e3be70
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9917901146eb0a050531a66ab24fbd88c91c02c9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756820"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311207"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 
@@ -221,7 +221,7 @@ Shared Access Signature ([SAS](storage/common/storage-dotnet-shared-access-signa
 
 3. UserB は Storage Explorer からその SAS を使用し、UserA に属するアカウントにアタッチします。
 
-### <a name="generate-a-sas-connection-string-for-the-account-you-want-to-share"></a>共有するアカウントの SAS 接続文字列を生成する
+### <a name="generate-a-sas-query-string-for-the-account-you-want-to-share"></a>共有するアカウントの SAS クエリ文字列を生成する
 
 1. Storage Explorer で、共有するストレージ アカウントを右クリックし、**[Get Shared Access Signature]\(Shared Access Signature の取得\)** を選択します。
 
@@ -231,7 +231,7 @@ Shared Access Signature ([SAS](storage/common/storage-dotnet-shared-access-signa
 
     ![SAS の取得ダイアログ ボックス][15]
 
-3. **[接続文字列]** ボックスの横にある **[コピー]** を選択してクリップボードにコピーし、**[閉じる]** をクリックします。
+3. **[クエリ文字列]** ボックスの横にある **[コピー]** を選択してクリップボードにコピーし、**[閉じる]** をクリックします。
 
 ### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>SAS 接続文字列を使用してストレージ アカウントにアタッチする
 

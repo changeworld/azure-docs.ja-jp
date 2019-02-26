@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 1/29/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 85c5947fa32751bd8381d6a1d59e91ba2026f5f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: be6823486490ca6bc414e89c62a22f996aa27089
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822784"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329951"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -88,7 +88,7 @@ VMware 仮想マシンをレプリケートする場合:
 2. **[プロパティ]** で、VM のレプリケーションとフェールオーバーの情報を確認できます。
 3. **[コンピューティングとネットワーク]** > **[コンピューティングのプロパティ]** で、複数の VM を変更することができます。
 * Azure VM 名 - 必要に応じて、Azure の要件に準拠するように名前を変更します
-* ターゲット VM のサイズまたは種類 - 既定の VM サイズは、ソース VM のサイズに基づいて選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいていて、フェールオーバー後にしか変更できないことに注意してください。 詳細については、[Standard](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets) と [Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) のディスクのサイズと IOPS を参照してください。
+* ターゲット VM のサイズまたは種類 - 既定の VM サイズは、ソース VM のサイズに基づいて選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいていて、フェールオーバー後にしか変更できないことに注意してください。 ディスクのサイズと IOPS の詳細については、[ディスクのスケーラビリティ ターゲット](../virtual-machines/windows/disk-scalability-targets.md)に関する記事を参照してください。
 
     ![コンピューティングとネットワークのプロパティ](./media/vmware-azure-enable-replication/vmproperties.png)
 

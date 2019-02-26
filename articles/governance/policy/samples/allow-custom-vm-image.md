@@ -1,6 +1,6 @@
 ---
 title: サンプル - リソース グループのカスタム VM イメージの許可
-description: このサンプル ポリシーでは、カスタム イメージが承認されたリソース グループに含まれている必要があります。
+description: このサンプル ポリシー定義は、カスタム イメージが、承認されたリソース グループに属したものであることを要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: c1afedf9d3c3ebb68d4c5344cd8795851e2bd10a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 2fe72b6f13c1bda6978a541d3665a8389ee6fa59
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242058"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340911"
 ---
-# <a name="allow-custom-vm-image-from-a-resource-group"></a>リソース グループのカスタム VM イメージの許可
+# <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>サンプル - リソース グループのカスタム VM イメージの許可
 
 このサンプル ポリシーでは、カスタム イメージが承認されたリソース グループに含まれている必要があります。 承認されたリソース グループの名前を指定します。
 

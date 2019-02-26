@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: c27af57ce4fa80a4ae167ce1e27018d049923a3f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 164d705a16dd82a1c5f3ff6f5e6982f80eb40dab
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982847"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330870"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする
 
@@ -116,10 +116,10 @@ Nginx イメージが不要になった場合は、[docker rmi](https://docs.doc
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Azure コンテナー レジストリからイメージを削除するには、Azure CLI コマンド [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete) を使用できます。 たとえば、次のコマンドは、タグ、タグによって参照されるマニフェスト、関連付けられているレイヤー データ、およびマニフェストを参照するその他すべてのタグを削除します。
+Azure コンテナー レジストリからイメージを削除するには、Azure CLI コマンド [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete) を使用できます。 たとえば、次のコマンドは、`samples/nginx:latest` タグによって参照されるマニフェスト、固有のレイヤー データ、およびそのマニフェストを参照するその他すべてのタグを削除します。
 
 ```azurecli
-az acr repository delete --name myregistry --repository samples/nginx --tag latest --manifest
+az acr repository delete --name myregistry --image samples/nginx:latest
 ```
 
 ## <a name="next-steps"></a>次の手順

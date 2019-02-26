@@ -16,25 +16,25 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 791322c71b4d1b49e1367fb0f179e7b0513a1e94
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6788568510a0aa10a859236aebc3f3edb2de7527
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975655"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329614"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>PowerShell を使用して Windows VM にデータ ディスクを接続する
 
 この記事では、PowerShell を使用して新しいディスクおよび既存のディスクを Windows 仮想マシンに接続する方法について説明します。 
 
 最初に、以下のヒントを確認してください。
+
 * 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページをご覧ください。
-* Premium Storage を使用するには、Premium Storage に対応した VM の種類 (DS シリーズや GS シリーズなどの仮想マシン) が必要です。 詳細については、[Premium Storage:Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ (Premium Storage)](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関する記事を参照してください。
+* Premium SSD を使用するには、[Premium Storage に対応した VM の種類](sizes-memory.md) (DS シリーズや GS シリーズなどの仮想マシン) が必要です。
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>空のデータ ディスクを仮想マシンに追加する
 
@@ -61,11 +61,12 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 ### <a name="using-managed-disks-in-an-availability-zone"></a>可用性ゾーンでマネージド ディスクを使用する場合
 可用性ゾーンにディスクを作成するには、`-Zone` パラメーターを指定して [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) を使用します。 次の例では、ゾーン *1* にディスクを作成します。
 
+可用性ゾーンにディスクを作成するには、`-Zone` パラメーターを指定して [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) を使用します。 次の例では、ゾーン *1* にディスクを作成します。
 
 ```powershell
 $rgName = 'myResourceGroup'
 $vmName = 'myVM'
-$location = 'East US 2' 
+$location = 'East US 2'
 $storageType = 'Premium_LRS'
 $dataDiskName = $vmName + '_datadisk1'
 
@@ -78,10 +79,9 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -Managed
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-
 ### <a name="initialize-the-disk"></a>ディスクの初期化
 
-空のディスクは、追加した後で初期化する必要があります。 ディスクを初期化するには、VM にサインインしてディスクの管理を使用します。 VM を作成したときに [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) と証明書を有効にした場合は、リモート PowerShell を使用してディスクを初期化できます。 また、カスタム スクリプト拡張機能を使用することができます。 
+空のディスクは、追加した後で初期化する必要があります。 ディスクを初期化するには、VM にサインインしてディスクの管理を使用します。 VM を作成したときに [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) と証明書を有効にした場合は、リモート PowerShell を使用してディスクを初期化できます。 また、カスタム スクリプト拡張機能を使用することができます。
 
 ```azurepowershell-interactive
     $location = "location-name"
@@ -89,7 +89,7 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
     $fileName = "script-file-name"
     Set-AzVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
-        
+
 スクリプト ファイルには、たとえば、ディスクを初期化するためのコードを含めることができます。
 
 ```azurepowershell-interactive
@@ -109,10 +109,9 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
     }
 ```
 
-
 ## <a name="attach-an-existing-data-disk-to-a-vm"></a>VM に既存のデータ ディスクを接続する
 
-既存のマネージド ディスクをデータ ディスクとして VM にアタッチできます。 
+既存のマネージド ディスクをデータ ディスクとして VM にアタッチできます。
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"

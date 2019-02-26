@@ -16,24 +16,21 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 750bb275ef936b3911503cd4c0f50674d3dff2d1
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: bd91607260d47d37bc3ce94ec63f700082416b6d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981147"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329901"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Windows 仮想マシンからディスクを切断する方法
 
 仮想マシンに接続されたデータ ディスクが不要になった場合、そのディスクは簡単に切断できます。 そうすれば、ディスクは仮想マシンから削除されますが、ストレージからは削除されません。
 
 > [!WARNING]
-> ディスクを切断した場合、自動的には削除されません。 Premium Storage のサブスクリプションにお申込みいただいている場合は、ディスクのストレージ料金が引き続き発生します。 詳細については、[Premium Storage 利用時の料金と課金](premium-storage.md#pricing-and-billing)に関する記事を参照してください。
->
->
+> ディスクを切断した場合、自動的には削除されません。 Premium Storage のサブスクリプションにお申込みいただいている場合は、ディスクのストレージ料金が引き続き発生します。 詳細については、[Premium Storage 利用時の料金と課金](disks-types.md#billing)に関する記事を参照してください。
 
 再びディスク上の既存のデータを使用する場合は、同じ仮想マシンや別の仮想マシンに再接続できます。
-
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
@@ -51,7 +48,6 @@ Update-AzVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
 
 ディスクはストレージに残りますが、仮想マシンには接続されていません。
 
-
 ## <a name="detach-a-data-disk-using-the-portal"></a>ポータルを使用してデータ ディスクを切断する方法
 
 1. 左側のメニューで **[Virtual Machines]** を選択します。
@@ -65,5 +61,5 @@ Update-AzVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
 ディスクはストレージに残りますが、仮想マシンには接続されていません。
 
 ## <a name="next-steps"></a>次の手順
-データ ディスクを再利用する場合は、 [別の VM にそのデータ ディスクをアタッチ](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
+データ ディスクを再利用する場合は、 [別の VM にそのデータ ディスクをアタッチ](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

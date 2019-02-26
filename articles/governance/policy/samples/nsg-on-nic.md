@@ -1,6 +1,6 @@
 ---
 title: サンプル - すべての NIC 上の NSG x
-description: このサンプル ポリシーでは、特定のネットワーク セキュリティ グループが、すべての仮想ネットワーク インターフェイスで使用されている必要があります。
+description: このサンプル ポリシー定義は、すべての仮想ネットワーク インターフェイスで特定のネットワーク セキュリティ グループを使用することを要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 37701a2240f5b017efdbd051972952c9f0449d69
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: d297d296f8b33122ce2b8079c5ee6c79705bcc55
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245968"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342560"
 ---
-# <a name="nsg-x-on-every-nic"></a>すべての NIC 上の NSG X
+# <a name="sample---network-security-group-x-on-every-nic"></a>サンプル - すべての NIC 上のネットワーク セキュリティ グループ X
 
 このポリシーは、特定のネットワーク セキュリティ グループで、すべての仮想ネットワーク インターフェイスが使用されていることが要件です。 使用するネットワーク セキュリティ グループの ID を指定します。
 

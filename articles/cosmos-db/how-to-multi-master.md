@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 2/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: effe6fa942ce0cabace08e72dba90baf8646680e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84c8e2921602bb653c0b1ef0adffd3d89e91bd78
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118827"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312142"
 ---
-# <a name="how-to-configure-multi-master-in-your-applications-in-azure-cosmos-db"></a>Azure Cosmos DB 内のアプリケーションでマルチマスターを構成する方法
+# <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Azure Cosmos DB を使用するアプリケーションでマルチマスターを構成する方法
 
-アプリケーションでマルチマスター機能を使用するには、アプリケーションでマルチリージョンの書き込みを有効にし、アプリケーションがデプロイされている現在のリージョンを設定してマルチホーム機能を構成する必要があります。
+アプリケーションでマルチマスター機能を使用するには、マルチリージョンの書き込みを有効にし、マルチホーム機能を構成する必要があります。 マルチホーム機能は、アプリケーションがデプロイされている現在のリージョンを設定することによって構成します。
 
 ## <a id="netv2"></a>.NET SDK v2
 
-アプリケーションでマルチマスターを有効にするには、`UseMultipleWriteLocations` を true に設定し、`SetCurrentLocation` をアプリケーションがデプロイされ、Cosmos DB がレプリケートされているリージョンに構成します。
+アプリケーションでマルチマスターを有効にするには、`UseMultipleWriteLocations` を true に設定し、`SetCurrentLocation` をアプリケーションがデプロイされ、Azure Cosmos DB がレプリケートされているリージョンに構成します。
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy

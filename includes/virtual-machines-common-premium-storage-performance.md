@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d16214bf08b0e0b5a95acae380f8d644fc4461ce
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e2dc82ee49b240fe562f02b38c4991c644c010d3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56213095"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333924"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: 高パフォーマンス用に設計する
 
@@ -35,7 +35,7 @@ Premium Storage で実行されるワークロードは高パフォーマンス�
 > ときには、ディスク パフォーマンスの問題のように見えるものが、実際にはネットワークのボトルネックであることもあります。 このような場合は、[ネットワーク パフォーマンス](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md)を最適化する必要があります。
 > VM で高速ネットワークがサポートされる場合は、それが有効になっていることを確認する必要があります。 有効になっていない場合は、[Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) と [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) の両方で、既にデプロイされている VM 上で有効にすることができます。
 
-Premium Storage を初めてご利用の場合は、開始する前にまず、[Premium Storage の Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/virtual-machines/windows/premium-storage.md)に関する記事と[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/common/storage-scalability-targets.md)に関する記事をお読みください。
+Premium Storage の知識がない場合は、作業を始める前に、まず [IaaS VM 用の Azure ディスクの種類の選択](../articles/virtual-machines/windows/disks-types.md)と [Azure Storage のスケーラビリティとパフォーマンスのターゲット](../articles/storage/common/storage-scalability-targets.md)に関する記事をお読みください。
 
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
@@ -45,7 +45,7 @@ Premium Storage を初めてご利用の場合は、開始する前にまず、[
 
 ## <a name="iops"></a>IOPS
 
-IOPS は、アプリケーションが 1 秒間にストレージ ディスクに送信する要求の数です。 入力/出力操作は読み取りまたは書き込みであり、順次の場合とランダムの場合があります。 オンライン小売 Web サイトのような OLTP アプリケーションでは、多数の同時ユーザー要求を即座に処理する必要があります。 これらのユーザー要求は、挿入と更新が集中的に行われるデータベース トランザクションであり、アプリケーションはこれらのトランザクションを迅速に処理する必要があります。 そのため、OLTP アプリケーションでは非常に高い IOPS が必要となります。 このようなアプリケーションは、数百万の小さなランダム IO 要求を処理します。 このようなアプリケーションを使用する場合は、IOPS に最適化するようにアプリケーション インフラストラクチャを設計する必要があります。 後述の「 *アプリケーションのパフォーマンスの最適化*」で、高 IOPS を実現するために考慮する必要があるすべての要素について詳しく説明します。
+IOPS (Input/output Operations Per Second) は、アプリケーションが 1 秒間にストレージ ディスクに送信する要求の数です。 入力/出力操作は読み取りまたは書き込みであり、順次の場合とランダムの場合があります。 オンライン小売 Web サイトのようなオンライン トランザクション処理 (OLTP) アプリケーションでは、多数の同時ユーザー要求を即座に処理する必要があります。 これらのユーザー要求は、挿入と更新が集中的に行われるデータベース トランザクションであり、アプリケーションはこれらのトランザクションを迅速に処理する必要があります。 そのため、OLTP アプリケーションでは非常に高い IOPS が必要となります。 このようなアプリケーションは、数百万の小さなランダム IO 要求を処理します。 このようなアプリケーションを使用する場合は、IOPS に最適化するようにアプリケーション インフラストラクチャを設計する必要があります。 後述の「 *アプリケーションのパフォーマンスの最適化*」で、高 IOPS を実現するために考慮する必要があるすべての要素について詳しく説明します。
 
 Premium Storage ディスクを高スケール VM に接続すると、そのディスクの仕様どおりに、保証された数の IOPS がプロビジョニングされます。 たとえば、P50 ディスクでは 7,500 IOPS がプロビジョニングされます。 また、高スケール VM の各サイズにも、維持できる IOPS の上限が設けられています。 たとえば、Standard GS5 VM の IOPS の上限は 80,000 です。
 
@@ -53,11 +53,11 @@ Premium Storage ディスクを高スケール VM に接続すると、そのデ
 
 スループットまたは帯域幅は、アプリケーションが指定された期間にストレージ ディスクに送信するデータの量です。 アプリケーションが大きな IO ユニット サイズで入力/出力操作を実行する場合、高スループットが必要となります。 データ ウェアハウス アプリケーションは、一度にデータの大部分にアクセスするスキャン集中型の操作を発行する傾向があり、一般に一括操作を実行します。 つまり、このようなアプリケーションでは、スループットを高める必要があります。 このようなアプリケーションを使用する場合は、スループットに最適化するようにインフラストラクチャを設計する必要があります。 次のセクションで、これを実現するために調整する必要がある要素について詳しく説明します。
 
-Premium Storage ディスクを高スケール VM に接続すると、そのディスクの仕様どおりにスループットがプロビジョニングされます。 たとえば、P50 ディスクでは 250 MB/秒のディスク スループットがプロビジョニングされます。 また、高スケール VM の各サイズにも、維持できるスループットの上限が設けられています。 たとえば、Standard GS5 VM の最大スループットは 2,000 MB/秒です。 
+Premium Storage ディスクを高スケール VM に接続すると、そのディスクの仕様どおりにスループットがプロビジョニングされます。 たとえば、P50 ディスクでは 250 MB/秒のディスク スループットがプロビジョニングされます。 また、高スケール VM の各サイズにも、維持できるスループットの上限が設けられています。 たとえば、Standard GS5 VM の最大スループットは 2,000 MB/秒です。
 
 スループットと IOPS の間には、次の式に示すような関係があります。
 
-![](media/premium-storage-performance/image1.png)
+![IOPS とスループットの関係](../articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
 
 そのため、アプリケーションが必要とする最適なスループットと IOPS の値を特定することが重要です。 一方を最適化すると、もう一方も影響を受けます。 後述の「 *アプリケーションのパフォーマンスの最適化*」で、IOPS とスループットの最適化について詳しく説明します。
 
@@ -67,15 +67,7 @@ Premium Storage ディスクを高スケール VM に接続すると、そのデ
 
 IOPS とスループットを向上させるためにアプリケーションを最適化すると、アプリケーションの待機時間に影響します。 アプリケーションのパフォーマンスを調整したら、予期しない待機時間の長い動作を回避するために、アプリケーションの待機時間を必ず評価してください。
 
-マネージド ディスクに対するコントロール プレーン操作に従うと、ある Storage の場所から別の場所へのディスクの移動が生じる場合があります。 これはデータのバックグラウンド コピーによって調整されますが、これは完了までに数時間かかることがあります (ディスク内のデータの量にもよりますが、通常は 24 時間以内)。 この間、お使いのアプリケーションで読み取り時の待ち時間が通常よりも長くなる可能性があります。一部の読み取りが元の場所にリダイレクトされ、完了までに通常よりも時間がかかる場合があるためです。 この期間中、書き込みの待ち時間への影響はありません。  
-
-1.  [ストレージの種類を更新する](../articles/virtual-machines/windows/convert-disk-storage.md)
-2.  [ある VM からディスクをデタッチして別の VM にアタッチする](../articles/virtual-machines/windows/attach-disk-ps.md)
-3.  [VHD からマネージド ディスクを作成する](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md)
-4.  [スナップショットからマネージド ディスクを作成する](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)
-5.  [アンマネージド ディスクをマネージド ディスクに変換する](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)
-
-## <a name="gather-application-performance-requirements"></a>アプリケーションのパフォーマンス要件の収集
+# <a name="performance-application-checklist-for-disks"></a>ディスクのパフォーマンス アプリケーション チェックリスト
 
 Azure Premium Storage で実行される高パフォーマンスのアプリケーションを設計するときには、まず、アプリケーションのパフォーマンス要件を把握します。 パフォーマンス要件を収集したら、最適なパフォーマンスを実現するためにアプリケーションを最適化できます。
 
@@ -83,7 +75,7 @@ Azure Premium Storage で実行される高パフォーマンスのアプリケ�
 
 次に、アプリケーションの有効期間全体にわたる最大パフォーマンス要件を評価します。 次のサンプル チェックリストを出発点として使用します。 通常時、ピーク時、時間外の各ワークロード期間の最大パフォーマンス要件を記録します。 すべてのワークロード レベルの要件を特定することで、アプリケーションの全体的なパフォーマンス要件を決定できるようになります。 たとえば、電子商取引 Web サイトの通常時のワークロードは、ほぼ毎日処理されるトランザクションです。 この Web サイトのピーク時のワークロードは、休暇シーズンや特売イベント中に処理されるトランザクションです。 通常、ピーク時のワークロードが発生するのは限られた期間ですが、アプリケーションで通常の操作を 2 倍以上に拡張することが必要になる可能性があります。 50 パーセンタイル、90 パーセンタイル、99 パーセンタイルの要件を確認します。 これにより、パフォーマンス要件のすべての外れ値を除外し、適切な値に最適化することに専念できます。
 
-### <a name="application-performance-requirements-checklist"></a>アプリケーションのパフォーマンス要件チェックリスト
+## <a name="application-performance-requirements-checklist"></a>アプリケーションのパフォーマンス要件チェックリスト
 
 | **パフォーマンス要件** | **50 パーセンタイル** | **90 パーセンタイル** | **99 パーセンタイル** |
 | --- | --- | --- | --- |
@@ -106,9 +98,7 @@ Azure Premium Storage で実行される高パフォーマンスのアプリケ�
 > [!NOTE]
 >  アプリケーションの予想される将来の成長に基づいて、これらの数値を調整することを検討する必要があります。 パフォーマンスを向上させるために、後でインフラストラクチャを変更するのは困難である可能性があるため、あらかじめ成長に向けた計画を立てることをお勧めします。
 
-既存のアプリケーションを Premium Storage に移行する場合は、まず、そのアプリケーションについて上記のチェックリストを作成します。 次に、Premium Storage でアプリケーションのプロトタイプを作成し、このドキュメントで後述する「 *アプリケーションのパフォーマンスの最適化* 」に記載されているガイドラインに基づいてアプリケーションを設計します。 次のセクションで、パフォーマンスの測定値の収集に使用できるツールについて説明しています。
-
-プロトタイプについて、既存のアプリケーションと同様のチェックリストを作成します。 ベンチマーク ツールを使用して、ワークロードをシミュレートし、プロトタイプ アプリケーションでパフォーマンスを測定します。 詳細については、「 [ベンチマーク](#benchmarking) 」をご覧ください。 こうすることで、Premium Storage がアプリケーションのパフォーマンス要件に合っているか、上回っているかを判断できます。 その後、実稼働アプリケーションにも同じガイドラインを実装できます。
+既存のアプリケーションを Premium Storage に移行する場合は、まず、そのアプリケーションについて上記のチェックリストを作成します。 次に、Premium Storage でアプリケーションのプロトタイプを作成し、このドキュメントで後述する「 *アプリケーションのパフォーマンスの最適化* 」に記載されているガイドラインに基づいてアプリケーションを設計します。 次の記事では、パフォーマンスの測定値の収集に使用できるツールについて説明しています。
 
 ### <a name="counters-to-measure-application-performance-requirements"></a>アプリケーションのパフォーマンス要件を評価するためのカウンター
 
@@ -129,13 +119,15 @@ PerfMon カウンターは、サーバーのプロセッサ、メモリ、各論
 
 詳細については、「[iostat](https://linux.die.net/man/1/iostat)」と「[PerfMon](https://msdn.microsoft.com/library/aa645516.aspx)」をご覧ください。
 
-## <a name="optimizing-application-performance"></a>アプリケーションのパフォーマンスの最適化
+
+
+## <a name="optimize-application-performance"></a>アプリケーションのパフォーマンスの最適化
 
 Premium Storage で実行されるアプリケーションのパフォーマンスに影響を与える主な要素として、IO 要求の特性、VM サイズ、ディスク サイズ、ディスク数、ディスク キャッシュ、マルチスレッド、キューの深さがあります。 これらの要素の一部は、システムで提供されるノブを使用して制御できます。 ほとんどのアプリケーションでは、IO サイズとキューの深さを直接変更することはできません。 たとえば、SQL Server を使用している場合、IO サイズとキューの深さを選択することはできません。 SQL Server では、最大限のパフォーマンスを得るために、最適な IO サイズとキューの深さの値が選択されます。 パフォーマンスのニーズを満たす適切なリソースをプロビジョニングできるように、この 2 つの要素がアプリケーションのパフォーマンスに及ぼす影響を理解しておくことが重要です。
 
 アプリケーションのパフォーマンスをどの程度最適化する必要があるかを明確にするために、このセクション全体を通じて、作成したアプリケーション要件チェックリストを参照します。 これを基に、このセクションの要素の中で、調整する必要がある要素を特定できるようになります。 アプリケーションのパフォーマンスに対する各要素の影響を監視するには、アプリケーションのセットアップでベンチマーク ツールを実行します。 Windows VM と Linux VM で一般的なベンチマーク ツールを実行する手順については、この記事の最後のセクションである「 [ベンチマーク](#Benchmarking) 」をご覧ください。
 
-### <a name="optimizing-iops-throughput-and-latency-at-a-glance"></a>IOPS、スループット、待機時間の最適化の概要
+### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>IOPS、スループット、待機時間の最適化の概要
 
 次の表に、パフォーマンス要素と、IOPS、スループット、待機時間の最適化に必要な手順の概要を示します。 この概要の後の各セクションで、それぞれの要素についてさらに詳しく説明します。
 
@@ -298,6 +290,46 @@ BlobCache の機能の詳細については、Inside の [Azure Premium Storage]
 1. ログ ファイルをホストする Premium Storage ディスクに "None" キャッシュを構成します。  
    a.  ログ ファイルの操作は、主に書き込み負荷の高い操作です。 そのため、ReadOnly キャッシュによるメリットはありません。
 
+### <a name="optimize-performance-on-linux-vms"></a>Linux VM のパフォーマンスの最適化
+
+キャッシュが **ReadOnly** または **None** に設定されているすべての Premium SSD や Ultra Disks で、ファイル システムをマウントするときに "バリア" を無効にする必要があります。 これらのキャッシュ設定では Premium Storage ディスクへの書き込みの耐久性が保証されるため、このシナリオではバリアが必要ありません。 書き込み要求が正常に完了した時点で、データは永続的なストアに書き込まれた状態になっています。 "バリア" を無効にするには、次のいずれかの方法を使用します。 ファイル システムに応じて選択してください。
+  
+* **reiserFS** の場合、バリアを無効にするには、`barrier=none` マウント オプションを使用します  (バリアを有効にするには、`barrier=flush` を使用します)。
+* **ext3/ext4** の場合、バリアを無効にするには、`barrier=0` マウント オプションを使用します  (バリアを有効にするには、`barrier=1` を使用します)。
+* **XFS** の場合、バリアを無効にするには、`nobarrier` マウント オプションを使用します  (バリアを有効にするには、`barrier` を使用します)。
+* キャッシュが **ReadWrite** に設定されている Premium Storage ディスクの場合は、書き込みの耐久性のためにバリアを有効にしてください。
+* VM を再起動してもボリューム ラベルが変更されないようにするには、ディスクに対する汎用一意識別子 (UUID) 参照で /etc/fstab を更新する必要があります。 詳細については、[Linux VM への管理ディスクの追加](../articles/virtual-machines/linux/add-disk.md)に関する記事を参照してください。
+
+Premium SSD では、次の Linux ディストリビューションが検証されました。 Premium SSD のパフォーマンスと安定性を向上するには、VM をこれらのバージョン以降のいずれかにアップグレードすることをお勧めします。 
+
+バージョンによっては、Azure 向けの最新の Linux Integration Services (LIS) v4.0 が必要になります。 ディストリビューションをダウンロードしてインストールするには、次の表に記載されているリンクを参照してください。 検証が完了すると、イメージが一覧に追加されます。 イメージごとにパフォーマンスが変動することが Microsoft の検証によって判明しています。 パフォーマンスは、ワークロードの特性やイメージの設定に応じて異なります。 ワークロードの種類に応じて、異なるイメージをチューニングします。
+
+| ディストリビューション | Version | サポートされるカーネル | 詳細 |
+| --- | --- | --- | --- |
+| Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
+| Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
+| Debian | 7.x、8.x | 3.16.7-ckt4-1+ | &nbsp; |
+| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
+| SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
+| CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
+| CentOS | 6.5、6.6、6.7、7.0 | &nbsp; | [LIS4 が必須](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> "*次のセクションの注を参照してください*" |
+| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 が推奨](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> "*次のセクションの注を参照してください*" |
+| Red Hat Enterprise Linux (RHEL) | 6.8+、7.2+ | &nbsp; | &nbsp; |
+| Oracle | 6.0+、7.2+ | &nbsp; | UEK4 または RHCK |
+| Oracle | 7.0-7.1 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6.7 | &nbsp; | UEK4 または RHCK と [LIS 4.1 +](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+
+## <a name="lis-drivers-for-openlogic-centos"></a>OpenLogic CentOS 用 LIS ドライバー
+
+OpenLogic CentOS VM を実行している場合は、次のコマンドを実行して、最新のドライバーをインストールしてください。
+
+```
+sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
+sudo yum install microsoft-hyper-v
+```
+
+新しいドライバーをアクティブにするには、VM を再起動してください。
+
 ## <a name="disk-striping"></a>ディスク ストライピング
 
 高スケール VM が Premium Storage の複数の永続ディスクに接続されている場合、ディスクをストライピングすることで、IOPS、帯域幅、ストレージ容量を集約できます。
@@ -363,249 +395,11 @@ SQL Server の [並列処理の次数](https://technet.microsoft.com/library/ms1
 
 Azure Premium Storage では、選択された VM サイズとディスク サイズに応じて、指定された数の IOPS とスループットがプロビジョニングされます。 アプリケーションが、VM またはディスクが対応できるこれらの上限を超えて IOPS やスループットを引き上げようとすると、これを抑制するように調整されます。 これは、アプリケーションのパフォーマンスの低下という形で現れます。 これにより、待機時間が長くなり、スループットや IOPS が低下する可能性があります。 Premium Storage によって調整が行われないと、リソースが対応できる範囲を上回り、アプリケーションが完全に失敗する可能性があります。 そのため、調整によるパフォーマンスの問題を回避するために、常にアプリケーションの十分なリソースをプロビジョニングします。 前の VM サイズとディスク サイズのセクションで説明した考慮事項に注意してください。 ベンチマークは、アプリケーションをホストするために必要なリソースを把握するための最適な方法です。
 
-## <a name="benchmarking"></a>ベンチマーク
-
-ベンチマークは、アプリケーションのさまざまなワークロードをシミュレートし、ワークロードごとにアプリケーションのパフォーマンスを測定するプロセスです。 以前に説明した手順を使用して、アプリケーションのパフォーマンス要件を収集しました。 アプリケーションをホストする VM でベンチマーク ツールを実行することで、アプリケーションが Premium Storage を使用して実現できるパフォーマンス レベルを確認できます。 このセクションでは、Azure Premium Storage ディスクと共にプロビジョニングされた Standard DS14 VM のベンチマークの例を示します。
-
-一般的なベンチマーク ツールである Iometer (Windows) と FIO (Linux) を使用しました。 これらのツールは、ワークロードのような実稼働をシミュレートする複数のスレッドを起動し、システム パフォーマンスを測定します。 これらのツールを使用して、通常はアプリケーションに合わせて変更できないブロック サイズやキューの深さなどのパラメーターを構成することもできます。 これにより、さまざま種類のアプリケーション ワークロードに対応するために、Premium ディスクと共にプロビジョニングされた高スケール VM でパフォーマンスを最大限に引き上げる柔軟性が得られます。 各ベンチマーク ツールの詳細については、「[Iometer](http://www.iometer.org/)」と「[fio](http://freecode.com/projects/fio)」をご覧ください。
-
-以下の例に従うために、Standard DS14 VM を作成し、11 個の Premium Storage ディスクを VM に接続します。 11 個のディスクのうち、10 個のディスクのホスト キャッシュを "None" に構成し、これらのディスクを NoCacheWrites というボリュームにストライピングします。 残りのディスクでは、ホストキャッシュを "ReadOnly" に構成し、このディスクを使用して CacheReads というボリュームを作成します。 この設定を使用して、Standard DS14 VM から最大の読み取り/書き込みパフォーマンスが得られます。 Premium ディスクを使用する DS14 VM の詳しい作成手順については、「[仮想マシンのデータ ディスク用に Premium Storage アカウントを作成する](../articles/virtual-machines/windows/premium-storage.md)」をご覧ください。
-
-*キャッシュのウォームアップ*  
- ReadOnly ホスト キャッシュを使用するディスクでは、ディスクの制限を超えた高 IOPS を実現できます。 ホスト キャッシュからこの最大の読み取りパフォーマンスを得るには、まず、このディスクのキャッシュをウォームアップする必要があります。 これにより、ベンチマーク ツールが CacheReads ボリュームで促進する読み取り IO が、直接ディスクにヒットするのではなく、実際にキャッシュにヒットするようになります。 キャッシュ ヒットにより、キャッシュが有効化された 1 つのディスクから追加の IOPS が得られます。
-
-> **重要:**  
->  VM を再起動するたびに、キャッシュをウォームアップしてからベンチマークを実行する必要があります。
-
-#### <a name="iometer"></a>Iometer
-
-[Iometer ツールをダウンロード](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) します。
-
-*テスト ファイル*  
- Iometer では、ベンチマーク テストを実行するボリュームに格納されたテスト ファイルを使用します。 Iometer は、このテスト ファイルでの読み取りと書き込みを促進して、ディスクの IOPS とスループットを測定します。 このテスト ファイルを用意していない場合は、Iometer によって作成されます。 CacheReads ボリュームと NoCacheWrites ボリュームに iobw.tst という名前の 200 GB のテスト ファイルを作成します。
-
-*アクセス仕様*  
-IO 要求サイズ、% 読み取り/書き込み、% ランダム/順次の各仕様は、Iometer の [Access Specifications] タブを使用して構成します。 以下に示すシナリオごとにアクセス仕様を作成します。 アクセス仕様を作成したら、適切な名前 (例: RandomWrites\_8K、RandomReads\_8K) を付けて保存します。 テスト シナリオを実行するときに、対応する仕様を選択します。
-
-最大書き込み IOPS シナリオのアクセス仕様の例を次に示します。  
-    ![](media/premium-storage-performance/image8.png)
-
-*最大 IOPS テストの仕様*  
- 最大 IOPS に達するように、小さな要求サイズを使用します。 8K の要求サイズを使用し、ランダム書き込み/読み取りの仕様を作成します。
-
-| アクセス仕様 | 要求サイズ | ランダム % | 読み取り % |
-| --- | --- | --- | --- |
-| RandomWrites\_8 K |8 K |100 |0 |
-| RandomReads\_8 K |8 K |100 |100 |
-
-*最大スループット テストの仕様*  
- 最大スループットに達するように、大きな要求サイズを使用します。 64K の要求サイズを使用し、ランダム書き込み/読み取りの仕様を作成します。
-
-| アクセス仕様 | 要求サイズ | ランダム % | 読み取り % |
-| --- | --- | --- | --- |
-| RandomWrites\_64 K |64 K |100 |0 |
-| RandomReads\_64 K |64 K |100 |100 |
-
-*Iometer テストの実行*  
- 次の手順を実行して、キャッシュをウォームアップします。
-
-1. 次に示す値を使用して、2 つのアクセス仕様を作成します。
-
-   | Name | 要求サイズ | ランダム % | 読み取り % |
-   | --- | --- | --- | --- |
-   | RandomWrites\_1 MB |1 MB |100 |0 |
-   | RandomReads\_1 MB |1 MB |100 |100 |
-1. 次のパラメーターを使用して、キャッシュ ディスクの初期化の Iometer テストを実行します。 ターゲット ボリュームに 3 つのワーカー スレッドを使用し、キューの深さとして 128 を使用します。 [Test Setup] タブでテストの [Run time] を 2 時間に設定します。
-
-   | シナリオ | ターゲット ボリューム | Name | duration |
-   | --- | --- | --- | --- |
-   | キャッシュ ディスクの初期化 |CacheReads |RandomWrites\_1 MB |2 時間 |
-1. 次のパラメーターを使用して、キャッシュ ディスクのウォームアップの Iometer テストを実行します。 ターゲット ボリュームに 3 つのワーカー スレッドを使用し、キューの深さとして 128 を使用します。 [Test Setup] タブでテストの [Run time] を 2 時間に設定します。
-
-   | シナリオ | ターゲット ボリューム | Name | 時間 |
-   | --- | --- | --- | --- |
-   | キャッシュ ディスクのウォームアップ |CacheReads |RandomReads\_1 MB |2 時間 |
-
-キャッシュ ディスクをウォームアップしたら、下記のテスト シナリオを実行します。 Iometer テストを実行するために、ターゲット ボリューム **ごとに** 3 つ以上のワーカー スレッドを使用します。 次の表に従って、ワーカー スレッドごとに、ターゲット ボリュームを選択してキューの深さを設定し、保存済みのテストの仕様のいずれかを選択して、対応するテスト シナリオを実行します。 表では、各テストを実行したときの IOPS とスループットの予想される結果も示しています。 すべてのシナリオで、8KB の小さな IO サイズと 128 の大きなキューの深さが使用されます。
-
-| テスト シナリオ | ターゲット ボリューム | Name | 結果 |
-| --- | --- | --- | --- |
-| 最大 読み取り IOPS |CacheReads |RandomWrites\_8 K |50,000 IOPS  |
-| 最大 書き込み IOPS |NoCacheWrites |RandomReads\_8 K |64,000 IOPS |
-| 最大 合計 IOPS |CacheReads |RandomWrites\_8 K |100,000 IOPS |
-| NoCacheWrites |RandomReads\_8 K | &nbsp; | &nbsp; |
-| 最大 読み取り MB/秒 |CacheReads |RandomWrites\_64 K |524 MB/秒 |
-| 最大 書き込み MB/秒 |NoCacheWrites |RandomReads\_64 K |524 MB/秒 |
-| 合計 MB/秒 |CacheReads |RandomWrites\_64 K |1000 MB/秒 |
-| NoCacheWrites |RandomReads\_64 K | &nbsp; | &nbsp; |
-
-次のスクリーンショットは、合計 IOPS と合計スループットのシナリオでの Iometer テストの結果を示しています。
-
-*読み取りと書き込みの合計最大 IOPS*  
-![](media/premium-storage-performance/image9.png)
-
-*読み取りと書き込みの合計最大スループット*  
-![](media/premium-storage-performance/image10.png)
-
-### <a name="fio"></a>fio
-
-FIO は、Linux VM でストレージのベンチマークを実行する一般的なツールです。 FIO では、さまざまな IO サイズ、順次読み取り/書き込み、ランダム読み取り/書き込みを柔軟に選択できます。 FIO は、ワーカー スレッドまたはワーカー プロセスを起動して、指定された I/O 操作を実行します。 各ワーカー スレッドがジョブ ファイルを使用して実行する必要がある I/O 操作の種類を指定できます。 以下の例に示すシナリオごとに、ジョブ ファイルを 1 つ作成しました。 これらのジョブ ファイルで仕様を変更して、Premium Storage で実行されるさまざまなワークロードのベンチマークを実行できます。 各例では、 **Ubuntu**を実行する Standard DS 14 VM を使用しています。 「 [ベンチマーク](#Benchmarking) 」の最初に記載されている設定を使用し、ベンチマーク テストを実行する前にキャッシュをウォームアップします。
-
-開始する前に、 [FIO をダウンロード](https://github.com/axboe/fio) し、仮想マシンにインストールします。
-
-Ubuntu に対して次のコマンドを実行します。
-
-```
-apt-get install fio
-```
-
-ディスクでの書き込み操作を促進するための 4 つのワーカー スレッドと、読み取り操作を促進するための 4 つのワーカー スレッドを使用します。 書き込みワーカーは、キャッシュが "None" に設定された 10 個のディスクを含む "nocache" ボリュームのトラフィックを促進します。 読み取りワーカーは、キャッシュが "ReadOnly" に設定された 1 つのディスクを含む "readcache" ボリュームのトラフィックを促進します。
-
-*最大書き込み IOPS*  
- 最大書き込み IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fiowrite.ini" にします。
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=256
-ioengine=libaio
-bs=8k
-
-[writer1]
-rw=randwrite
-directory=/mnt/nocache
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-[writer4]
-rw=randwrite
-directory=/mnt/nocache
-```
-
-これまでのセクションで説明した設計ガイドラインに沿った次の重要事項に注意してください。 IOPS を最大限に高めるために、これらの仕様が不可欠となります。  
-
-* 256 の大きなキューの深さ。  
-* 8KB の小さなブロック サイズ。  
-* ランダム書き込みを実行する複数のスレッド。
-
-次のコマンドを実行して、FIO テストを 30 秒間実行します。  
-
-```
-sudo fio --runtime 30 fiowrite.ini
-```
-
-テストの実行中、VM と Premium ディスクが提供している書き込み IOPS の数を確認できます。 次のサンプルに示すように、DS14 VM は書き込み IOPS の上限である 50,000 IOPS を実現しています。  
-    ![](media/premium-storage-performance/image11.png)
-
-*最大読み取り IOPS*  
- 最大読み取り IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fioread.ini" にします。
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=256
-ioengine=libaio
-bs=8k
-
-[reader1]
-rw=randread
-directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
-rw=randread
-directory=/mnt/readcache
-```
-
-これまでのセクションで説明した設計ガイドラインに沿った次の重要事項に注意してください。 IOPS を最大限に高めるために、これらの仕様が不可欠となります。
-
-* 256 の大きなキューの深さ。  
-* 8KB の小さなブロック サイズ。  
-* ランダム書き込みを実行する複数のスレッド。
-
-次のコマンドを実行して、FIO テストを 30 秒間実行します。
-
-```
-sudo fio --runtime 30 fioread.ini
-```
-
-テストの実行中、VM と Premium ディスクが提供している読み取り IOPS の数を確認できます。 次のサンプルに示すように、DS14 VM は 64,000 を超える読み取り IOPS を実現しています。 これは、ディスクとキャッシュのパフォーマンスの合計です。  
-    ![](media/premium-storage-performance/image12.png)
-
-*最大読み取り/書き込み IOPS*  
- 読み取りと書き込みの最大合計 IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fioreadwrite.ini" にします。
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=128
-ioengine=libaio
-bs=4k
-
-[reader1]
-rw=randread
-directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
-rw=randread
-directory=/mnt/readcache
-
-[writer1]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer4]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-```
-
-これまでのセクションで説明した設計ガイドラインに沿った次の重要事項に注意してください。 IOPS を最大限に高めるために、これらの仕様が不可欠となります。
-
-* 128 の大きなキューの深さ。  
-* 4KB の小さなブロック サイズ。  
-* ランダム読み取り/書き込みを実行する複数のスレッド。
-
-次のコマンドを実行して、FIO テストを 30 秒間実行します。
-
-```
-sudo fio --runtime 30 fioreadwrite.ini
-```
-
-テストの実行中、VM と Premium ディスクが提供している読み取りと書き込みの合計 IOPS を確認できます。 次のサンプルに示すように、DS14 VM は 100,000 を超える読み取りと書き込みの合計 IOPS を実現しています。 これは、ディスクとキャッシュのパフォーマンスの合計です。  
-    ![](media/premium-storage-performance/image13.png)
-
-*最大スループットの合計*  
- 読み取りと書き込みの最大合計スループットを得るには、大きなブロック サイズ、大きなキューの深さ、読み取り/書き込みを実行する複数のスレッドを使用します。 ブロック サイズとして 64KB、キューの深さとして 128 を使用します。
-
 ## <a name="next-steps"></a>次の手順
 
-Azure Premium Storage の詳細については、次の記事をご覧ください。
+使用できるディスクの種類については、次のページを参照してください。
 
-* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/virtual-machines/windows/premium-storage.md)  
+* [ディスクの種類の選択](../articles/virtual-machines/windows/disks-types.md)  
 
 SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プラクティスに関する次の記事をご覧ください。
 

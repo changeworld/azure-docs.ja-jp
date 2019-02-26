@@ -1,7 +1,7 @@
 ---
 title: カスタム アナライザーを追加する - Azure Search
 description: Azure Search のフルテキスト検索クエリで使用されるテキスト トークナイザーと文字フィルターを変更します。
-ms.date: 01/31/2019
+ms.date: 02/14/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,22 +19,24 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 150510ec09744b1350a93bde4e2a4dcb141867c0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 957c8033efc386d8e8cb13cbed921c597af4f11b
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007540"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302082"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Azure Search のインデックスにカスタム アナライザーを追加する
 
-"*カスタム アナライザー*" は、トークナイザーとオプションのフィルターのユーザー指定の組み合わせであり、検索エンジンでのテキスト処理をカスタマイズするために使用されます。 たとえば、"*文字フィルター*" でカスタム アナライザーを作成し、テキスト入力をトークン化する前に HTML マークアップを削除できます。
+*カスタム アナライザー*は特定の種類の[テキスト アナライザー](search-analyzers.md)であり、既存のトークナイザーとオプションのフィルターのユーザー定義の組み合わせで構成されます。 新しい方法でトークナイザーとフィルターを組み合わせることにより、特定の結果を実現するために、検索エンジンでテキスト処理をカスタマイズできます。 たとえば、"*文字フィルター*" でカスタム アナライザーを作成し、テキスト入力をトークン化する前に HTML マークアップを削除できます。
+
+ 複数のカスタム アナライザーを定義してフィルターの組み合わせを変えることはできますが、インデックス作成時の解析と検索時の解析に使用できるアナライザーは、各フィールドにつきそれぞれ 1 つだけです。 カスタム アナライザーがどのようなものであるかについては、「[カスタム アナライザーの例](search-analyzers.md#Example1)」をご覧ください。
 
 ## <a name="overview"></a>概要
 
- [フルテキスト検索エンジン](search-lucene-query-architecture.md)の役割を簡単に説明すると、クエリと取得を効率的に行えるようにドキュメントを処理して格納することです。 大まかに言えば、ドキュメントから重要な単語を抽出して、インデックスに配置し、インデックスを使用して指定されたクエリの単語に一致するドキュメントを検索します。 ドキュメントと検索クエリから単語を抽出するプロセスを、字句解析と呼びます。 字句解析を実行するコンポーネントは、アナライザーと呼ばれます。
+ [フルテキスト検索エンジン](search-lucene-query-architecture.md)の役割を簡単に説明すると、クエリと取得を効率的に行えるようにドキュメントを処理して格納することです。 大まかに言えば、ドキュメントから重要な単語を抽出して、インデックスに配置し、インデックスを使用して指定されたクエリの単語に一致するドキュメントを検索します。 ドキュメントと検索クエリから単語を抽出するプロセスを、"*字句解析*" と呼びます。 字句解析を実行するコンポーネントは、"*アナライザー*" と呼ばれます。
 
- Azure Search では、[アナライザー](#AnalyzerTable)の表で示されている定義済みの言語に依存しないアナライザー、および[言語アナライザー &#40;Azure Search Service REST API&#41;](index-add-language-analyzers.md) に列記されている言語固有のアナライザーから、選択できます。 また、独自のカスタム アナライザーを定義することもできます。  
+ Azure Search では、[アナライザー](#AnalyzerTable)の表で示されている定義済みの言語に依存しないアナライザー、または[言語アナライザー &#40;Azure Search Service REST API&#41;](index-add-language-analyzers.md) に列記されている言語固有のアナライザーから、選択できます。 また、独自のカスタム アナライザーを定義することもできます。  
 
  カスタム アナライザーを使用すると、テキストをインデックス付け可能で検索可能なトークンに変換するプロセスを制御できます。 それは、定義済みの 1 つのトークナイザー、1 つ以上のトークン フィルター、1 つ以上の文字フィルターで構成されるユーザー定義の構成です。 トークナイザーではテキストがトークンに分割され、トークン フィルターではトークナイザーによって生成されたトークンが変更されます。 文字フィルターは、トークナイザーによって処理される前に、入力テキストを準備するために適用されます。 たとえば、文字フィルターを使用して、特定の文字や記号を置き換えることができます。
 
@@ -50,22 +52,13 @@ ms.locfileid: "56007540"
 
 -   ASCII フォールディング。 検索語句に含まれる ö や ê などの付加記号を正規化するための標準 ASCII フォールディング フィルターを追加します。  
 
- 複数のカスタム アナライザーを定義してフィルターの組み合わせを変えることはできますが、インデックス作成時の解析と検索時の解析に使用できるアナライザーは、各フィールドにつきそれぞれ 1 つだけです。  
-
- このページでは、サポートされているアナライザー、トークナイザー、トークン フィルター、文字フィルターの一覧を示します。 また、インデックスの定義に対する変更の説明と使用例も示されています。 Azure Search の実装に利用されている基礎技術の背景については、 [解析パッケージの概要 (Lucene)](https://lucene.apache.org/core/4_10_0/core/org/apache/lucene/codecs/lucene410/package-summary.html)を参照してください。 アナライザーの構成の例については、[Azure Search でのアナライザーに関するページの例](https://docs.microsoft.com/azure/search/search-analyzers#examples)をご覧ください。
-
-
-## <a name="default-analyzer"></a>既定のアナライザー  
-
-既定では、Azure Search の検索可能フィールドは [Apache Lucene 標準アナライザー (標準 Lucene)](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) で分析されます。このアナライザーでは、["Unicode テキストのセグメント化"](https://unicode.org/reports/tr29/) のルールに従ってテキストが要素に分割されます。 さらに、標準アナライザーはすべての文字を小文字形式に変換します。 インデックス付きドキュメントと検索語句の両方について、インデックス作成とクエリ処理の間に分析が行われます。  
-
- フィールド定義内で別のアナライザーによって明示的にオーバーライドされない限り、すべての検索可能フィールドでそれが自動的に使用されます。 代わりのアナライザーとしては、カスタム アナライザーまたは下記の使用可能な[アナライザー](#AnalyzerTable)の一覧の別の定義済みアナライザーを使用できます。
+ このページでは、サポートされているアナライザー、トークナイザー、トークン フィルター、文字フィルターの一覧を示します。 また、インデックスの定義に対する変更の説明と使用例も示されています。 Azure Search の実装に利用されている基礎技術の背景については、 [解析パッケージの概要 (Lucene)](https://lucene.apache.org/core/4_10_0/core/org/apache/lucene/codecs/lucene410/package-summary.html)を参照してください。 アナライザーの構成の例については、[Azure Search でのアナライザーの追加](search-analyzers.md#examples)に関するセクションをご覧ください。
 
 ## <a name="validation-rules"></a>検証規則  
  アナライザー、トークナイザー、トークン フィルター、文字フィルターの名前は一意でなければならず、事前定義済みのアナライザー、トークナイザー、トークン フィルター、文字フィルターと同じにすることはできません。 既に使用されている名前については、「[プロパティ リファレンス](#PropertyReference)」をご覧ください。
 
-## <a name="create-a-custom-analyzer"></a>カスタム アナライザーを作成する
- インデックスを作成するときに、カスタム アナライザーを定義できます。 このセクションでは、カスタム アナライザーを指定する構文について説明します。 「[Azure Search のアナライザー](https://docs.microsoft.com/azure/search/search-analyzers#examples)」のサンプル定義を見て、構文を理解することもできます。  
+## <a name="create-custom-analyzers"></a>カスタム アナライザーの作成
+ インデックスを作成するときに、カスタム アナライザーを定義できます。 このセクションでは、カスタム アナライザーを指定する構文について説明します。 [Azure Search でのアナライザーの追加](search-analyzers.md#examples)に関するセクションのサンプル定義を見て、構文を理解することもできます。  
 
  アナライザーの定義には、名前、種類、1 つ以上の文字フィルター、最大で 1 つのトークナイザー、トークン化後の処理のための 1 つ以上のトークン フィルターが含まれます。 文字フィルターは、トークン化の前に適用されます。 トークン フィルターと文字フィルターは、左から右に適用されます。
 
@@ -148,12 +141,13 @@ ms.locfileid: "56007540"
 文字フィルター、トークナイザー、トークン フィルターの定義は、カスタム オプションを設定する場合にのみ、インデックスに追加されます。 既存のフィルターまたはトークナイザーをそのまま使用するには、アナライザーの定義内で名前を使用して指定します。
 
 <a name="Testing custom analyzers"></a>
-## <a name="test-a-custom-analyzer"></a>カスタム アナライザーをテストする
+
+## <a name="test-custom-analyzers"></a>カスタム アナライザーのテスト
 
 [REST API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) の**アナライザー テスト操作**を使用して、指定したテキストがアナライザーによってどのようにトークンに分割されるかを確認できます。
 
 **要求**
-~~~~
+```
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
   Content-Type: application/json
     api-key: [admin key]
@@ -162,9 +156,9 @@ ms.locfileid: "56007540"
      "analyzer":"my_analyzer",
      "text": "Vis-à-vis means Opposite"
   }
-~~~~
+```
 **応答**
-~~~~
+```
   {
     "tokens": [
       {
@@ -193,21 +187,21 @@ ms.locfileid: "56007540"
       }
     ]
   }
- ~~~~
+```
 
- ## <a name="update-a-custom-analyzer"></a>カスタム アナライザーを更新する
+ ## <a name="update-custom-analyzers"></a>カスタム アナライザーの更新
 
 アナライザー、トークナイザー、トークン フィルター、文字フィルターは、いったん定義すると変更できません。 インデックスの更新要求で `allowIndexDowntime` フラグが true に設定されている場合に限り、既存のインデックスに新しい定義を追加できます。
 
-~~~~
+```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
-~~~~
+```
 
 この操作を行うと、インデックスは少なくとも数秒間オフラインになるため、インデックス付けとクエリの要求は失敗します。 インデックスを更新した後の数分間、インデックスが非常に大きい場合はさらに長く、インデックスのパフォーマンスと書き込み可用性が損なわれる場合がありますが、これらの影響は一時的であり、しばらくすると自動的に解決します。
 
  <a name="ReferenceIndexAttributes"></a>
 
-## <a name="index-attribute-reference"></a>インデックス属性リファレンス
+## <a name="analyzer-reference"></a>アナライザー リファレンス
 
 次のテーブルでは、インデックス定義のアナライザー、トークナイザー、トークン フィルター、文字フィルターの各セクションで使用される構成プロパティの一覧を示します。 インデックスのアナライザー、トークナイザー、フィルターの構造は、これらの属性で構成されます。 値の割り当てについては、「[プロパティ リファレンス](#PropertyReference)」をご覧ください。
 
@@ -245,7 +239,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |type|サポートされている文字フィルターの一覧に含まれる文字フィルターの種類です。 下記の[文字フィルター](#CharFilter)の表の **char_filter_type** 列をご覧ください。|  
 |オプション|指定した[文字フィルター](#CharFilter)の種類で有効なオプションを使用する必要があります。|  
 
- ### <a name="tokenizers"></a>トークナイザー
+ ### <a name="tokenizers"></a>トークナイザ
 
  トークナイザーでは、連続するテキストがトークンのシーケンスに分割されます (文を単語に分割する場合など)。  
 
@@ -260,7 +254,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
  ### <a name="token-filters"></a>トークン フィルター
 
- トークン フィルターは、トークナイザーによって生成されたトークンを除外したり加工したりする目的で使用されます。 たとえば、すべての文字を小文字に変換する lowercase フィルターを指定することができます。   
+ トークン フィルターは、トークナイザによって生成されたトークンを除外したり加工したりする目的で使用されます。 たとえば、すべての文字を小文字に変換する lowercase フィルターを指定することができます。   
 トークン フィルターは、カスタム アナライザーの中で複数割り当てることができます。 トークン フィルターは、その指定順に実行されます。  
 
 |||  
@@ -283,7 +277,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 |-|-|-|  
 |[keyword](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)| (種類は、オプションが使用可能な場合にだけ適用されます) |フィールドの内容全体を 1 つのトークンとして扱います。 これは、郵便番号、ID、製品名などのデータで役立ちます。|  
 |[pattern](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|正規表現のパターンを使用してテキストを用語に柔軟に分割します。<br /><br /> **オプション**<br /><br /> lowercase (型: bool) - 用語が小文字かどうかを決定します。 既定値は true です。<br /><br /> [pattern](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (型: string) - トークンの区切り記号に一致する正規表現パターン。 既定値は \w+ です。<br /><br /> [flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (型: string) - 正規表現フラグ。 既定値は空の文字列です。 使用できる値は以下の通りです。CANON_EQ、CASE_INSENSITIVE、COMMENTS、DOTALL、LITERAL、MULTILINE、UNICODE_CASE、UNIX_LINES<br /><br /> stopwords (型: string 配列) - ストップワードのリスト。 既定値は空のリストです。|  
-|[simple](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|(種類は、オプションが使用可能な場合にだけ適用されます) |非文字でテキストが分割され、それらが小文字に変換されます。 |  
+|[単純な](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|(種類は、オプションが使用可能な場合にだけ適用されます) |非文字でテキストが分割され、それらが小文字に変換されます。 |  
 |[standard](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) <br />(standard.lucene とも呼ばれます)|StandardAnalyzer|標準トークナイザー、小文字フィルター、ストップ フィルターで構成される標準の Lucene アナライザー。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は 255 です。 最大長より長いトークンは分割されます。 使用できる最大トークン長は、300 文字です。<br /><br /> stopwords (型: string 配列) - ストップワードのリスト。 既定値は空のリストです。|  
 |standardasciifolding.lucene|(種類は、オプションが使用可能な場合にだけ適用されます) |Ascii フォールディング フィルターの標準アナライザー。 |  
 |[stop](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/StopAnalyzer.html)|StopAnalyzer|非文字でテキストが分割され、小文字とストップワードのトークン フィルターが適用されます。<br /><br /> **オプション**<br /><br /> stopwords (型: string 配列) - ストップワードのリスト。 既定値は、英語の定義済みリストです。 |  
@@ -316,7 +310,7 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 
 |**tokenizer_name**|**tokenizer_type** <sup>1</sup>|**説明とオプション**|  
 |-|-|-|  
-|[classic](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|ほとんどのヨーロッパ言語のドキュメントの処理に適した文法ベースのトークナイザー。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は255、最大値は300。 最大長より長いトークンは分割されます。|  
+|[従来](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/ClassicTokenizer.html)|ClassicTokenizer|ほとんどのヨーロッパ言語のドキュメントの処理に適した文法ベースのトークナイザー。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は255、最大値は300。 最大長より長いトークンは分割されます。|  
 |[edgeNGram](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenizer.html)|EdgeNGramTokenizer|エッジからの入力が指定サイズの n グラムにトークン化されます。<br /><br /> **オプション**<br /><br /> minGram (型: int) - 既定値:1、最大値:300。<br /><br /> maxGram (型: int) - 既定値:2、最大値:300。 minGram より大きい値にする必要があります。<br /><br /> tokenChars (型: string 配列) - トークン内で維持する文字クラス。 使用できる値は以下の通りです。 <br />"letter"、"digit"、"whitespace"、"punctuation"、"symbol"。 既定値は空の配列で、すべての文字が維持されます。 |  
 |[keyword_v2](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html)|KeywordTokenizerV2|入力全体が 1 つのトークンとして生成されます。<br /><br /> **オプション**<br /><br /> maxTokenLength (型: int) - 最大トークン長。 既定値は256、最大値は300。 最大長より長いトークンは分割されます。|  
 |[letter](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/LetterTokenizer.html)|(種類は、オプションが使用可能な場合にだけ適用されます)  |非文字でテキストを分割します。 255 文字より長いトークンは分割されます。|  
@@ -345,7 +339,7 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 |[asciifolding](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/miscellaneous/ASCIIFoldingFilter.html)|AsciiFoldingTokenFilter|ASCII の最初の 127 文字 ("基本ラテン" Unicode ブロック) に含まれないアルファベット、数字、記号の Unicode 文字が、同等の ASCII に変換されます (ある場合)。<br /><br /> **オプション**<br /><br /> preserveOriginal (型: bool) - true の場合、元のトークンが保持されます。 既定値は false です。|  
 |[cjk_bigram](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/cjk/CJKBigramFilter.html)|CjkBigramTokenFilter|StandardTokenizer から生成される CJK 用語のバイグラムが形成されます。<br /><br /> **オプション**<br /><br /> ignoreScripts (型: string 配列) - 無視するスクリプト。 使用できる値: "han"、"hiragana"、"katakana"、"hangul"。 既定値は空のリストです。<br /><br /> outputUnigrams (型: bool) - 常にユニグラムとバイグラムの両方を出力する場合は、true に設定します。 既定値は false です。|  
 |[cjk_width](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/cjk/CJKWidthFilter.html)|(種類は、オプションが使用可能な場合にだけ適用されます)  |CJK の幅の違いが正規化されます。 全角 ASCII 書体が同等の基本ラテンにフォールドされ、半角カタカナ書体が同等の仮名にフォールドされます。 |  
-|[classic](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/ClassicFilter.html)|(種類は、オプションが使用可能な場合にだけ適用されます)  |英語の所有格を削除し、頭字語からドットを削除します。 |  
+|[従来](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/ClassicFilter.html)|(種類は、オプションが使用可能な場合にだけ適用されます)  |英語の所有格を削除し、頭字語からドットを削除します。 |  
 |[common_grams](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/commongrams/CommonGramsFilter.html)|CommonGramTokenFilter|インデックス付けの間に、頻繁に発生する用語に対してバイグラムが作成されます。 1 つの用語も、バイグラムがオーバーレイされてインデックス付けされます。<br /><br /> **オプション**<br /><br /> commonWords (型: string 配列) - 一般的な単語のセット。 既定値は空のリストです。 必須。<br /><br /> ignoreCase (型: bool) - true の場合、マッチングで大文字と小文字は区別されません。 既定値は false です。<br /><br /> queryMode (型: bool) - バイグラムが生成された後、一般的な単語と一般的な単語の前にある 1 つの用語が削除されます。 既定値は false です。|  
 |[dictionary_decompounder](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/compound/DictionaryCompoundWordTokenFilter.html)|DictionaryDecompounderTokenFilter|多くのゲルマン言語に出現する複合語を分解します。<br /><br /> **オプション**<br /><br /> wordList (type: string 配列) - 照合対象の単語のリスト。 既定値は空のリストです。 必須。<br /><br /> minWordSize (型: int) - この値より長い単語のみが処理されます。 既定値は 5 です。<br /><br /> minSubwordSize (型: int) - この値より長いサブ単語のみが出力されます。 既定値は 2 です。<br /><br /> maxSubwordSize (型: int) - この値より短いサブ単語のみが出力されます。 既定値は 15 です。<br /><br /> onlyLongestMatch (型: bool) - 最長一致のサブ単語のみが出力に追加されます。 既定値は false です。|  
 |[edgeNGram_v2](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/ngram/EdgeNGramTokenFilter.html)|EdgeNGramTokenFilterV2|入力トークンの先頭または末尾から指定されたサイズの n グラムが生成されます。<br /><br /> **オプション**<br /><br /> minGram (型: int) - 既定値:1、最大値:300。<br /><br /> maxGram (型: int) - 既定値:2、最大値: 300。 minGram より大きい値にする必要があります。<br /><br /> side (型: string) - n グラムを生成する入力の側が指定されます。 使用できる値: "front"、"back" |  
@@ -390,5 +384,5 @@ analyzer_type は、カスタマイズ可能なアナライザーに対しての
 
 ## <a name="see-also"></a>関連項目  
  [Azure Search Service REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [Azure Search でのアナライザーの例](https://docs.microsoft.com/azure/search/search-analyzers#examples)    
+ [Azure Search でのアナライザーの例](search-analyzers.md#examples)    
  [インデックスを作成する &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

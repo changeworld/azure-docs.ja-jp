@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 60296400c40a1e79758dc53d60d2f1c61d79fd88
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 70d931a8038a9b673f3303831903287acb43a567
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108196"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418009"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -33,11 +33,15 @@ ms.locfileid: "56108196"
 - **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
 - **[Azure Database for PostgreSQL サーバー](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (データベース サービスを利用できる Azure リージョン)。
 - **[Azure Database for MySQL サーバー](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (データベース サービスを利用できる Azure リージョン)。
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure パブリック クラウド リージョン)。
-- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)**:一般公開 (全 Azure パブリック クラウド リージョン)。
-- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure パブリック クラウド リージョン)。
-- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure パブリック クラウド リージョン)。
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
+- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)**:一般公開 (全 Azure リージョン)。
+- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
+- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (全 Azure リージョン)。
 - **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**:一般公開 (ADLS Gen1 を利用できる全 Azure リージョン)。
+
+**パブリック プレビュー**
+
+- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)**: プレビュー公開 (Azure Database for MariaDB を利用できる全 Azure リージョン)。
 
 最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 

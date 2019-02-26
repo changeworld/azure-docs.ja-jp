@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: c1d9047de814b7a80210fe2502d219921f5829a4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 561eff75ef4268acd3f737f7aaa92ccaacfda7f3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976904"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328720"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>クイック スタート:Azure VM への単一インスタンスの SAP HANA の手動インストール
 ## <a name="introduction"></a>はじめに
@@ -195,7 +195,7 @@ Azure 上の Linux VM のルート ファイル システムには、サイズ�
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-推奨されるディスク構成では、HANA データ ボリュームとログ ボリュームは、LVM または MDADM を使用してストライピングされている Azure Premium Storage ディスクの同じセットに配置されます。 Azure Premium Storage では冗長性を確保するためにディスクのイメージが 3 つ保持されるため、RAID 冗長レベルを定義する必要はありません。 構成したストレージが十分であるかどうかを確認するために、「[SAP HANA TDI storage Requirements (SAP HANA TDI ストレージ要件)](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」および「[SAP HANA Server Installation and Update Guide (SAP HANA サーバー インストールおよびアップデート ガイド)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)」を参照してください。 「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](https://docs.microsoft.com/azure/storage/storage-premium-storage)」に関するページの説明に従って、異なる Azure Premium ストレージ ディスクの異なる仮想ハード ディスク (VHD) スループット ボリュームも考慮してください。 
+推奨されるディスク構成では、HANA データ ボリュームとログ ボリュームは、LVM または MDADM を使用してストライピングされている Azure Premium Storage ディスクの同じセットに配置されます。 Azure Premium Storage では冗長性を確保するためにディスクのイメージが 3 つ保持されるため、RAID 冗長レベルを定義する必要はありません。 構成したストレージが十分であるかどうかを確認するために、「[SAP HANA TDI storage Requirements (SAP HANA TDI ストレージ要件)](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」および「[SAP HANA Server Installation and Update Guide (SAP HANA サーバー インストールおよびアップデート ガイド)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)」を参照してください。 「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](../../windows/disks-types.md)」に関するページの説明に従って、異なる Azure Premium ストレージ ディスクの異なる仮想ハード ディスク (VHD) スループット ボリュームも考慮してください。 
 
 データベースまたはトランザクション ログのバックアップを格納するために、HANA DBMS VM に Premium Storage ディスクを追加することができます。
 
@@ -206,9 +206,7 @@ Azure 上の Linux VM のルート ファイル システムには、サイズ�
 
 ゲスト OS として Linux を実行している Azure VM にディスクをアタッチする方法については、「[Linux VM へのディスクの追加](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-Azure Premium Storage では、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にする必要があります。 その他のボリューム (ディスク) では、キャッシュ モードを **ReadOnly** に設定する必要があります。
-
-詳細については、[Premium Storage:Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../windows/premium-storage.md)に関する記事を参照してください。
+Azure Premium SSD では、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にする必要があります。 その他のボリューム (ディスク) では、キャッシュ モードを **ReadOnly** に設定する必要があります。
 
 VM 作成用の JSON のサンプル テンプレートを検索するには、「[Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates)」(Azure クイック スタート テンプレート) をご覧ください。
 vm-simple-sles テンプレートは、基本的なテンプレートです。 追加 100 GB のデータ ディスクを使用する記憶域セクションが含まれています。 このテンプレートはベースとして使用することができます。 テンプレートは特定の構成に適用できます。

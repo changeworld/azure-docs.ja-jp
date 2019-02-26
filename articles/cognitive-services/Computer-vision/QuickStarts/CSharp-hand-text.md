@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 160d42725abdb91af4f83696c2bceae38bbab67d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: dd9429ade750810138335c522d68df5cd595f320
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869332"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310985"
 ---
-# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c35-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と C&#35; を使用して手書きテキストを抽出する
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-c-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と C# を使用して手書きテキストを抽出する
 
-このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドと[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを使うと、画像内の手書きテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
+このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドと[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを使うと、画像内の手書きテキストを検出し、認識した文字をマシンが読み取り可能な文字ストリームに抽出することができます。
 
 > [!IMPORTANT]
 > [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドとは異なり、[テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドは非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、テキスト認識メソッドは、`Operation-Content` 応答ヘッダー フィールドの値に URI を返します。 その後、[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを表したこの URI を呼び出して、ステータスをチェックすると共に、テキスト認識メソッドの呼び出しの結果を返します。
@@ -425,7 +425,7 @@ namespace CSHttpClientSample
 
 ## <a name="next-steps"></a>次の手順
 
-Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマートにクロップされたサムネイルを作成するほか、イメージ内の視覚的な特徴 (顔など) を検出、カテゴライズ、タグ付け、および記述する、基本的な Windows アプリケーションについて詳細を確認します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
+Computer Vision を使用して、光学文字認識 (OCR) を実行する基本的な Windows アプリケーションについて学びましょう。 スマートにトリミングされたサムネイルを作成するほか、画像内の視覚的な特徴 (顔など) の検出、分類、タグ付け、記述を行います。
 
 > [!div class="nextstepaction"]
-> [Computer Vision API C&#35; チュートリアル](../Tutorials/CSharpTutorial.md)
+> [Computer Vision API の C# のチュートリアル](../Tutorials/CSharpTutorial.md)

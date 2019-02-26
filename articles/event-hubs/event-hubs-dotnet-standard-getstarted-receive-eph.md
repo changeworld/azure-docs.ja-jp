@@ -15,17 +15,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 18b37fd7c85fced4cc57b57320daf195f6f33e3e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a3c4bc741cef60576bec17cd3257914132b72666
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53082383"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452628"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-core"></a>.NET Core で イベント プロセッサ ホストを使用したメッセージ受信を開始する
 Event Hubs は、接続されているデバイスとアプリケーションからの大量のイベント データ (テレメトリ) を処理するサービスです。 Event Hubs にデータを収集した後、ストレージ クラスターを使用してデータを格納したり、リアルタイムの分析プロバイダーを使用して転送できます。 この大規模なイベントの収集と処理の機能は、モノのインターネット (IoT) など最新アプリケーション アーキテクチャの重要なコンポーネントです。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
-このチュートリアルでは、[イベント プロセッサ ホスト](event-hubs-event-processor-host.md)を使用して Event Hub からメッセージを受信する .NET Core コンソール アプリケーションの記述方法を説明します。 [イベント プロセッサ ホスト](event-hubs-event-processor-host.md)は、永続的なチェックポイントの管理によってイベント ハブのイベントの受信を簡素化し、並列してそれらのイベント ハブから受信する .NET クラスです。 イベント プロセッサ ホストを使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割できます。 この例では、受信側が単一の場合にイベント プロセッサ ホストを使用する方法を示します。 [イベント処理のスケールアウト][Event Hubs でイベント処理の拡張]のサンプルは、受信者側が複数の場合にイベント プロセッサ ホストを使用する方法を示します。
+このチュートリアルでは、[イベント プロセッサ ホスト](event-hubs-event-processor-host.md)を使用して Event Hub からメッセージを受信する .NET Core コンソール アプリケーションの記述方法を説明します。 [イベント プロセッサ ホスト](event-hubs-event-processor-host.md)は、永続的なチェックポイントの管理によってイベント ハブのイベントの受信を簡素化し、並列してそれらのイベント ハブから受信する .NET クラスです。 イベント プロセッサ ホストを使用すると、さまざまなノードでホストされている場合でも、複数の受信側間でイベントを分割できます。 この例では、受信側が単一の場合にイベント プロセッサ ホストを使用する方法を示します。 [イベント処理のスケールアウト](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)のサンプルは、受信者側が複数の場合にイベント プロセッサ ホストを使用する方法を示します。
 
 > [!NOTE]
 > このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) からダウンロードし、`EventHubConnectionString`、`EventHubName`、`StorageAccountName`、`StorageAccountKey`、`StorageContainerName` の各文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
@@ -208,6 +208,7 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
 ## <a name="next-steps"></a>次の手順
 このクイック スタートでは、イベント ハブからメッセージを受信した .NET Core アプリケーションを作成しました。 .NET Core を使用してイベント ハブにイベントを送信する方法については、[.NET Core でのイベント ハブからのイベントの送信](event-hubs-dotnet-standard-getstarted-send.md)に関するページを参照してください。
+
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/event-hubs-python1.png
 [2]: ./media/event-hubs-dotnet-standard-getstarted-receive-eph/netcorercv.png

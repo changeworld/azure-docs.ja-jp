@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 71ddf1d70953b721911a7315ab6875dd41a9a4db
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 394efd023382f9153a6869944a8a3a815203f9dd
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894175"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338599"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>チュートリアル:.NET を使用した Media Services v3 によるライブ ストリーミング
 
@@ -126,7 +126,7 @@ previewEndpoint を使用して、エンコーダーからの入力が実際に�
 #### <a name="create-a-streaming-locator"></a>ストリーミング ロケーターを作成する
 
 > [!NOTE]
-> Media Services アカウントの作成時に、**既定**のストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
+> Media Services アカウントの作成時に、**既定**のストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、[ダイナミック パッケージ](dynamic-packaging-overview.md)と動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
 
 ストリーミング ロケーターを使用してライブ出力資産を発行した場合、ライブ イベント (DVR ウィンドウの長さまで) は、ストリーミング ロケーターの有効期限まで、または削除するまで、どちらか早い方のタイミングまで引き続き表示できます。
 

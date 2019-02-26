@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: eab00663918eadea485aed17a91ce01e5718c36e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4aa4c69857bfd1ab99945cb0f5f748e60cff9978
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413674"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417332"
 ---
 # <a name="transform-and-protect-your-api"></a>API を変換および保護する 
 
@@ -41,8 +41,8 @@ ms.locfileid: "50413674"
 
 + [Azure API Management の用語](api-management-terminology.md)について学習します。
 + [Azure API Management のポリシーの概念](api-management-howto-policies.md)を理解します。
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-+ また、[最初の API のインポートと発行](import-and-publish.md)に関するチュートリアルを完了します。
++ 次のクイック スタートを完了すること:[Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
++ また、次のチュートリアルを完了すること: [最初の API のインポートと発行](import-and-publish.md)。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -126,9 +126,10 @@ ms.locfileid: "50413674"
 1. **[Demo Conference API]\(デモ会議 API)** を選択します。
 2. **[すべての操作]** を選択します。
 3. 画面の上部の **[デザイン]** タブを選択します。
-4. **[受信処理]** セクションで、**[</>]** アイコンをクリックします。5. **&lt;inbound&gt;** 要素内にカーソルを配置します。
-5. 右側のウィンドウの **[アクセス制限ポリシー]** で、**[+ Limit call rate per key]\(+ キーごとの呼び出しレートの制限\)** をクリックします。
-6. **rate-limit-by-key** コード (**\<inbound\>** 要素内) を次のコードに変更します。
+4. **[受信処理]** セクションで、**[</>]** アイコンをクリックします。
+5. **&lt;inbound&gt;** 要素内にカーソルを配置します。
+6. 右側のウィンドウの **[アクセス制限ポリシー]** で、**[+ Limit call rate per key]\(+ キーごとの呼び出しレートの制限\)** をクリックします。
+7. **rate-limit-by-key** コード (**\<inbound\>** 要素内) を次のコードに変更します。
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
@@ -190,7 +191,7 @@ ms.locfileid: "50413674"
 
 5. 15 秒ほど待ち、**[送信]** をもう一度クリックします。 今度は "**200 OK**" 応答が返されます。
 
-    ![調整](./media/transform-api/test-throttling.png)
+    ![Throttling](./media/transform-api/test-throttling.png)
 
 ## <a name="video"></a>ビデオ
 

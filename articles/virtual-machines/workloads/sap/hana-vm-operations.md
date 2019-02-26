@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c85d405502890253bcdb80c652ed53f58546de9c
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 32c326ff7bef98f9d8f4f20664889109d291a6ea
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747052"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328845"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -68,10 +68,10 @@ VPN または ExpressRoute 経由でのサイト対サイト接続は運用環�
 [SAP Cloud platform](https://cal.sap.com/) を使って Azure VM サービスに完全にインストールされた SAP HANA プラットフォームをデプロイすることもできます。 インストール プロセスについては、「[Azure に SAP S/4HANA または BW/4HANA をデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)」をご覧いただくか、[こちら](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)でリリースされている自動化スクリプトを参照してください。
 
 ### <a name="choose-azure-storage-type"></a>Azure ストレージの種類を選択する
-Azure は、SAP HANA を実行する Azure VM に適した 2 種類のストレージを提供します。
+Azure は、SAP HANA を実行する Azure VM に適した 2 種類のストレージを提供します。Standard ハード ディスク ドライブ (HDD) と Premium ソリッドステート ドライブ (SSD)。 これらのディスクの種類の詳細については、[ディスクの種類の選択](../../windows/disks-types.md)に関する記事を参照してください。
 
-- [Azure Standard Storage](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
-- [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- Standard ハード ディスク ドライブ (HDD)
+- Premium ソリッド ステート ドライブ (SSD)
 
 Azure では、Azure Standard と Premium Storage の 2 つの VHD 展開方法を提供します。 シナリオ全体で可能な場合は、[Azure 管理ディスク](https://azure.microsoft.com/services/managed-disks/) デプロイを利用します。
 
@@ -408,7 +408,7 @@ DT 2.0 のベスト プラクティス ガイダンスに従い、ディスク I
 
 DT 2.0 VM に複数の Azure ディスクをアタッチし、OS レベルでソフトウェア RAID (ストライピング) を作成して、VM あたりのディスク スループットの上限に達するようにする必要があります。 この点に関しては、単一の Azure ディスクで VM の上限に達するスループットを提供することはできません。 DT 2.0 を実行するには、Azure Premium Storage が必須です。 
 
-- 利用可能な Azure ディスクの種類の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)を参照してください。
+- 利用可能な Azure ディスクの種類の詳細については、[こちら](../../windows/disks-types.md)を参照してください。
 - mdadm でのソフトウェア RAID の作成の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)を参照してください。
 - 最大スループットのストライプ ボリュームを作成するための LVM の構成の詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)を参照してください。
 

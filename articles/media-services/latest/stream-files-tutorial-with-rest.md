@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/23/2019
+ms.date: 02/18/2019
 ms.author: juliako
-ms.openlocfilehash: 0bd882ffd5048d0b33afc9ecf00c0ed6356b6e98
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: a33001216fb805b700d077aa8c9d42fae9bd6bae
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883519"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416804"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 
@@ -41,10 +41,6 @@ Azure Media Services では、メディア ファイルをさまざまなブラ�
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
-
-- CLI をローカルにインストールして使用します。この記事では、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
-
-    現在、一部の [Media Services v3 CLI](https://aka.ms/ams-v3-cli-ref) コマンドが Azure Cloud Shell では正常に動作しません。 CLI はローカルで使用することをお勧めします。
 
 - [Media Services アカウントを作成する](create-account-cli-how-to.md)
 
@@ -229,6 +225,10 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 ジョブの完了には時間がかかり、完了したら通知を受け取る必要があります。 ジョブの進行状況を確認するには、Event Grid を使用することをお勧めします。 Event Grid は、高可用性、一貫したパフォーマンス、および動的スケーリングを目的に設計されています。 Event Grid では、アプリはほぼすべての Azure サービスやカスタム ソースのイベントをリッスンし、対応できます。 単純な HTTP ベースのリアクティブ イベント ハンドリングでは、インテリジェントなイベント フィルタリングやイベント ルーティングを使用して、効率的なソリューションを構築できます。  [カスタム Web エンドポイントへのイベントのルーティング](job-state-events-cli-how-to.md)に関するページをご覧ください。
 
 **Job** には通常、**Scheduled**、**Queued**、**Processing**、**Finished** (最終状態) という状態があります。 ジョブでエラーが発生すると、**Error** 状態を取得します。 ジョブがキャンセル処理中の場合は **Canceling** を受け取り、完了すると **Canceled** を受け取ります。
+
+#### <a name="job-error-codes"></a>ジョブ エラー コード
+
+[エラー コード](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)に関するページを参照してください。
 
 ### <a name="create-a-streaming-locator"></a>ストリーミング ロケーターを作成する
 

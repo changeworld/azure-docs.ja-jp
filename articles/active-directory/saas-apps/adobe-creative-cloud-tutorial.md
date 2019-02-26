@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccb593e198e4dff8f30bddfe26071523ea7a893d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a160c604050f567f3fc0f77ca20a22349f07fd9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179231"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>チュートリアル:Azure Active Directory と Adobe Creative Cloud の統合
 
@@ -45,7 +45,7 @@ Adobe Creative Cloud と Azure AD の統合を構成するには、次のもの�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Adobe Creative Cloud では、**SP と IDP** によって開始される SSO がサポートされます
+* Adobe Creative Cloud では、**SP** Initiated SSO がサポートされます
 
 ## <a name="adding-adobe-creative-cloud-from-the-gallery"></a>ギャラリーから Adobe Creative Cloud を追加する
 
@@ -67,7 +67,7 @@ Azure AD への Adobe Creative Cloud の統合を構成するには、ギャラ�
 
 4. 検索ボックスに「**Adobe Creative Cloud**」と入力し、結果パネルで **Adobe Creative Cloud** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果リストの Adobe Creative Cloud](common/search-new-app.png)
+    ![結果リストの Adobe Creative Cloud](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -101,29 +101,23 @@ Adobe Creative Cloud で Azure AD のシングル サインオンを構成する
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードで構成する場合は、次の手順を実行します。
+4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
-    ![[Adobe Creative Cloud のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
+    ![[Adobe Creative Cloud のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
-    a. **[識別子]** ボックスに、`https://www.okta.com/saml2/service-provider/<token>` の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、値として「`https://adobe.com`」を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<company name>.okta.com/auth/saml20/accauthlinktest` のパターンを使用して URL を入力します
+    b. **[識別子]** ボックスに、`https://www.okta.com/saml2/service-provider/<token>` の形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Adobe Creative Cloud クライアント サポート チーム](https://www.adobe.com/au/creativecloud/business/teams/plans.html)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この識別子の値は実際のものではありません。 実際の識別子でこの値を更新します。 この値を取得するには、[Adobe Creative Cloud クライアント サポート チーム](https://www.adobe.com/au/creativecloud/business/teams/plans.html)に問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** ボックスに、値として「`https://adobe.com`」を入力します。
-
-    ![[Adobe Creative Cloud のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
-
-6. Adobe Creative Cloud アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+5. Adobe Creative Cloud アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
-7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
- 
+6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+
     | Name | ソース属性|
     |----- | --------- |
     | FirstName | User.givenname |
@@ -151,11 +145,11 @@ Adobe Creative Cloud で Azure AD のシングル サインオンを構成する
     > [!NOTE]
     > ユーザーは、電子メール要求の値を、SAML 応答で設定するために、 有効な Office 365 ExO ライセンス　を持つ必要があります。
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-9. **[Adobe Creative Cloud のセットアップ]** セクションで、要件のとおりに適切な URL をコピーします。
+8. **[Adobe Creative Cloud のセットアップ]** セクションで、要件のとおりに適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 

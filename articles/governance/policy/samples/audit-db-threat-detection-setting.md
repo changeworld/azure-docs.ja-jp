@@ -1,6 +1,6 @@
 ---
 title: サンプル - DB レベルの脅威検出設定の監査
-description: このサンプル ポリシーでは、SQL データベース セキュリティ アラート ポリシーが指定した状態に設定されていない場合、このポリシーの監査を行います。
+description: このサンプル ポリシー定義は、SQL データベース セキュリティ アラート ポリシーが指定した状態に設定されていない場合、このポリシーの監査を行います。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2ef0e83f73a30b0510ec728cd5c2a88845821dc9
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 73f9300d2948337b8e397f544e1dde2d5d09ed0b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241667"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342357"
 ---
-# <a name="audit-db-level-threat-detection-setting"></a>DB レベルの脅威検出設定の監査
+# <a name="sample---audit-db-level-threat-detection-setting"></a>サンプル - DB レベルの脅威検出設定の監査
 
 このポリシーは、SQL データベース セキュリティ アラート ポリシーが指定された状態に設定されていない場合、このポリシーの監査を行います。 脅威検出を有効または無効のどちらにするかを指示する値を指定します。
 

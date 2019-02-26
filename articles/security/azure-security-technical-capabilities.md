@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: c94a078e77f1e3e5b70d2d95016b8417fe2172d5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e7f8eef2c3422084846462e2f6159a8b8be7167f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118481"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301827"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 
@@ -462,7 +462,7 @@ Log Analytics を使用すれば、オンプレミス型、Azure、AWS、Windows
 
 ### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。 devOps プロセスと統合され、さまざまな開発ツールへの接続ポイントを備えています。
+[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされる .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 devOps プロセスと統合され、さまざまな開発ツールへの接続ポイントを備えています。
 
 以下を監視します。
 

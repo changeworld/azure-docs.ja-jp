@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 34c7d431815ae7a9452bb0703cde18050d38bdb7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b12fdcec32aca65b0c66f6a3fb14595453d36fdb
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164619"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301759"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>SQL Database と SQL Data Warehouse へのデータベース アクセスの制御と許可
 
@@ -84,9 +84,9 @@ ms.locfileid: "56164619"
 
 ### <a name="database-creators"></a>データベース作成者
 
-これらの管理者ロールの 1 つは、**dbmanager** ロールです。 このロールのメンバーは、新しいデータベースを作成できます。 このロールを使用するには、`master` データベースにユーザーを作成し、そのユーザーを **dbmanager** データベース ロールに追加します。 データベースを作成するユーザーは、master データベースの SQL Server ログインに基づくユーザーであるか、Azure Active Directory ユーザーに基づく包含データベース ユーザーである必要があります。
+これらの管理者ロールの 1 つは、**dbmanager** ロールです。 このロールのメンバーは、新しいデータベースを作成できます。 このロールを使用するには、`master` データベースにユーザーを作成し、そのユーザーを **dbmanager** データベース ロールに追加します。 データベースを作成するユーザーは、`master` データベースの SQL Server ログインに基づくユーザーであるか、Azure Active Directory ユーザーに基づく包含データベース ユーザーである必要があります。
 
-1. 管理者アカウントを使用して、master データベースに接続します。
+1. 管理者アカウントを使用して、`master` データベースに接続します。
 2. [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) ステートメントを使用して、SQL Server 認証ログインを作成します。 サンプル ステートメントは、次のとおりです。
 
    ```sql
@@ -98,7 +98,7 @@ ms.locfileid: "56164619"
 
    パフォーマンスを向上させるため、ログイン (サーバー レベルのプリンシパル) はデータベース レベルで一時的にキャッシュされます。 認証キャッシュを更新する方法については、「 [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx)」をご覧ください。
 
-3. master データベースで、 [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) ステートメントを使用してユーザーを作成します。 このユーザーは、Azure Active Directory 認証の包含データベース ユーザー (Azure AD 認証用の環境を構成した場合)、SQL Server 認証の包含データベース ユーザー、または SQL Server 認証ログインに基づく SQL Server 認証ユーザー (前の手順で作成したもの) にすることができます。サンプル ステートメントは、次のとおりです。
+3. `master` データベースで、[CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) ステートメントを使用してユーザーを作成します。 このユーザーは、Azure Active Directory 認証の包含データベース ユーザー (Azure AD 認証用の環境を構成した場合)、SQL Server 認証の包含データベース ユーザー、または SQL Server 認証ログインに基づく SQL Server 認証ユーザー (前の手順で作成したもの) にすることができます。サンプル ステートメントは、次のとおりです。
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -106,7 +106,7 @@ ms.locfileid: "56164619"
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. **ALTER ROLE** ステートメントを使用して、新しいユーザーを [dbmanager](https://msdn.microsoft.com/library/ms189775.aspx) データベース ロールに追加します。 サンプル ステートメントは、次のとおりです。
+4. [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx) ステートメントを使用して、新しいユーザーを `master` の **dbmanager** データベース ロールに追加します。 サンプル ステートメントは、次のとおりです。
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary; 
@@ -118,7 +118,7 @@ ms.locfileid: "56164619"
 
 5. 必要に応じて、新しいユーザーに接続を許可するようにファイアウォール規則を構成します  (新しいユーザーは、既存のファイアウォール規則でカバーされる可能性があります)。
 
-これで、ユーザーは master データベースに接続し、新しいデータベースを作成できるようになりました。 データベースを作成したアカウントは、そのデータベースの所有者になります。
+これで、ユーザーは `master` データベースに接続し、新しいデータベースを作成できるようになりました。 データベースを作成したアカウントは、そのデータベースの所有者になります。
 
 ### <a name="login-managers"></a>ログイン マネージャー
 
@@ -141,11 +141,19 @@ CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 GRANT ALTER ANY USER TO Mary;
 ```
 
-データベースのフル コントロールを他のユーザーに与えるには、`ALTER ROLE` ステートメントを使用して、そのユーザーを **db_owner** 固定データベース ロールのメンバーにします。
+データベースのフル コントロールを他のユーザーに与えるには、そのユーザーを **db_owner** 固定データベース ロールのメンバーにします。
+
+Azure SQL Database で `ALTER ROLE` ステートメントを使用します。
 
 ```sql
-ALTER ROLE db_owner ADD MEMBER Mary; 
+ALTER ROLE db_owner ADD MEMBER Mary;
 ```
+
+Azure SQL Data Warehouse で [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) を使用します。
+```sql
+EXEC sp_addrolemember 'db_owner', 'Mary';
+```
+
 
 > [!NOTE]
 > SQL Database サーバー ログインに基づくデータベース ユーザーを作成する 1 つの一般的な理由は、複数のデータベースへのアクセスを必要とするユーザーのためです。 包含データベース ユーザーは個別のエンティティであるため、各データベースは、それぞれが独自のユーザーとパスワードを保持します。 ユーザーは各データベースのパスワードをすべて記憶する必要があるため、オーバーヘッドが発生する可能性があり、多数のデータベースのパスワードを変更する必要が生じたときに対応できない可能性があります。 ただし、SQL Server ログインと高可用性 (アクティブ geo レプリケーションとフェールオーバー グループ) を使用するときは、各サーバーで SQL Server ログインを手動で設定する必要があります。 そうしないと、フェールオーバーの発生後にデータベース ユーザーはサーバー ログインにマップされなくなり、フェールオーバー後のデータベースにアクセスできなくなります。 Geo レプリケーション用のログインの構成の詳細については、「[Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する](sql-database-geo-replication-security-config.md)」を参照してください。

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/22/2018
+ms.date: 02/20/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4322b118268ee88235190f5672585d17ea365495
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872647"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453054"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -45,13 +45,13 @@ Computer Vision は、アプリケーションからネイティブ SDK を使�
 
 ## <a name="extract-text-from-images"></a>画像からテキストを抽出する
 
-Computer Vision を使用し、イメージからコンピューターが読み取り可能な文字のストリームへ、[OCR を使用してテキストを抽出](concept-extracting-text-ocr.md)します。 必要に応じて、OCR では、認識されたテキストの回転を、イメージの水平軸を中心として度単位で修正し、各語句のフレーム座標を提供します。 OCR は 25 の言語をサポートし、抽出されたテキストの言語を自動的に検出します。
+Computer Vision を使用し、イメージからマシンが読み取り可能な文字のストリームへ、[光学式文字認識 (OCR) を使用してテキストを抽出](concept-extracting-text-ocr.md)します。 必要に応じて、OCR では、認識されたテキストの回転を修正し、各語句のフレーム座標を提供します。 OCR は 25 の言語をサポートし、認識されたテキストの言語を自動的に検出します。
 
-また、イメージから[印刷および手書きのテキストを認識](concept-recognizing-text.md)することもできます。 Computer Vision では、レシート、ポスター、名刺、手紙、およびホワイトボードなど、異なるサーフェスや背景を持つさまざまなオブジェクトのイメージから、印刷および手書き両方のテキストを検出して、抽出できます。 現時点では、印刷および手書きのテキストの認識はプレビュー段階であり、サポートされている言語は英語のみです。  
+また、イメージ内の[印刷および手書きのテキストを認識](concept-recognizing-text.md)することもできます。 Computer Vision では、レシート、ポスター、名刺、手紙、およびホワイトボードなど、異なるサーフェスや背景を持つさまざまなオブジェクトのイメージから、印刷および手書き両方のテキストを検出して、抽出できます。 現時点では、印刷および手書きのテキストの認識はプレビュー段階であり、サポートされている言語は英語のみです。 
 
 ## <a name="moderate-content-in-images"></a>画像内のコンテンツを調整する
 
-Computer Vision を使用して、イメージ内の[成人向けや人種差別的コンテンツを検出](concept-detecting-adult-content.md)できます。イメージに成人向けまたは人種差別的なコンテンツが含まれている可能性を評価し、その両方に対して信頼度スコアを生成します。 成人向けできわどいコンテンツを検出するためのフィルターは、設定に合わせて、スライディング スケールで設定することができます。
+Computer Vision を使用して、イメージ内の[成人向けや人種差別的コンテンツを検出](concept-detecting-adult-content.md)し、その両方の信頼度スコアを返します。 成人向けできわどいコンテンツを検出するためのフィルターは、設定に合わせて、スライディング スケールで設定することができます。
 
 ## <a name="use-containers"></a>コンテナーの使用
 

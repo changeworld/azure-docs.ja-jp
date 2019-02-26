@@ -1,6 +1,6 @@
 ---
 title: サンプル - 課金タグ ポリシーのイニシアティブ
-description: このサンプル ポリシー セットでは、コスト センターと製品名に対して指定したタグ値を要求します。
+description: このサンプル ポリシー定義セットは、コスト センターと製品名に対して指定したタグ値を要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4592ac63561a59bfc0e4351cc5ad83f138955370
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: b659d6f681b980b956992f0d488995fd1a55de93
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242857"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337603"
 ---
-# <a name="billing-tags-policy-initiative"></a>課金タグ ポリシーのイニシアティブ
+# <a name="sample---billing-tags-policy-initiative"></a>サンプル - 課金タグ ポリシーのイニシアティブ
 
 このポリシーは、コスト センターと製品名に対して指定したタグの値を使用することが要件です。 組み込みのポリシーを使用して、必要なタグを強制的に適用します。 タグに対して必須の値を指定します。
 

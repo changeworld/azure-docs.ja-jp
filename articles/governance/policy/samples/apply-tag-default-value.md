@@ -1,6 +1,6 @@
 ---
 title: サンプル - タグとその既定値の適用
-description: このサンプル ポリシーでは、指定されたタグがない場合、そのタグ名と値を付加します。
+description: このサンプル ポリシー定義は、指定されたタグがない場合、そのタグ名と値を付加します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: ef044d5ccba706ebc0c7102414cb1e2b42b537cb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 989d09b3e4b576fa21156ec71485c54422c643b7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242160"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338226"
 ---
-# <a name="apply-tag-and-its-default-value"></a>タグとその既定値の適用
+# <a name="sample---apply-tag-and-its-default-value"></a>サンプル - タグとその既定値の適用
 
 このポリシーでは、指定されたタグがない場合、そのタグ名と値を付加します。 適用するタグ名と値を指定します。
 

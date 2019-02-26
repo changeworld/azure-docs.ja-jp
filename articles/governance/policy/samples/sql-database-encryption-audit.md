@@ -1,6 +1,6 @@
 ---
 title: サンプル - SQL Database の Transparent Data Encryption の監査
-description: このサンプル ポリシーでは、SQL Database で Transparent Data Encryption が有効になっていないかどうかを監査します。
+description: このサンプル ポリシー定義は、SQL Database で Transparent Data Encryption が有効になっていないかどうかを監査します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 98d86d721f028a32d65ab4d336cc5579a0845607
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a35c7045f132b23dbe23978118d0c1cf865f9bab
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244693"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342608"
 ---
-# <a name="audit-sql-database-encryption"></a>SQL Database の暗号化の監査
+# <a name="sample---audit-sql-database-encryption"></a>サンプル - SQL Database の暗号化の監査
 
 このビルトイン ポリシーでは、SQL Database で Transparent Data Encryption が有効になっていないかどうかを監査します。
 

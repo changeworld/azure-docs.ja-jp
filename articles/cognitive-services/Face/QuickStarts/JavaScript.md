@@ -8,56 +8,71 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 05/10/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 07868fd70c1b2601fa676f7069f2508468e2be0e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 588faa3c59c4e6b3ea704d953c20c4319ef4b01e
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866952"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312125"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>クイック スタート:REST API と JavaScript を使用して画像内の顔を検出する
 
-このクイック スタートでは、Face API を使って画像から顔を検出します。
+このクイック スタートでは、Azure Face REST API と JavaScript を使用して、画像から人の顔を検出します。
 
 ## <a name="prerequisites"></a>前提条件
 
-サンプルを実行するにはサブスクリプション キーが必要です。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。
+- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- コード エディター ([Visual Studio Code](https://code.visualstudio.com/download) など)
 
-## <a name="detect-faces-in-an-image"></a>画像内の顔を検出する
+## <a name="initialize-the-html-file"></a>HTML ファイルを初期化する
 
-"[顔 - 検出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
-
-* Face ID: Face API の各種シナリオで使用される一意の ID。
-* 顔四角形: 画像内での顔の位置を示す値 (左、上、幅、高さ)。
-* ランドマーク: 顔の構成要素の重要な位置を示す 27 地点のランドマークの配列。
-* 顔の属性 (年齢、性別、笑顔の強さ、頭部姿勢、顔ひげなど)。
-
-このサンプルを実行するには、次の手順を実行します。
-
-1. 次をコピーし、`detectFaces.html` などのファイルに保存します。
-1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて、サブスクリプション キーを取得した場所を使用するように `uriBase` の値を変更します (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。
-1. お使いのブラウザーにファイルをドラッグ アンド ドロップします。
-1. `Analyze faces` ボタンをクリックします。
-
-### <a name="face---detect-request"></a>顔検出要求
+新しい HTML ファイル (*detectFaces.html*) を作成して次のコードを追加します。
 
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Detect Faces Sample</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-</head>
-<body>
+    <head>
+        <title>Detect Faces Sample</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    </head>
+    <body></body>
+</html>
+```
 
+さらに、ドキュメントの `body` 要素内に次のコードを追加します。 これにより、URL フィールドと **[Analyze face]** ボタン、応答ウィンドウ、画像表示ウィンドウを備えた基本的なユーザー インターフェイスが設定されます。
+
+```html
+<h1>Detect Faces:</h1>
+Enter the URL to an image that includes a face or faces, then click
+the <strong>Analyze face</strong> button.<br><br>
+Image to analyze: <input type="text" name="inputImage" id="inputImage"
+    value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg" />
+<button onclick="processImage()">Analyze face</button><br><br>
+<div id="wrapper" style="width:1020px; display:table;">
+    <div id="jsonOutput" style="width:600px; display:table-cell;">
+        Response:<br><br>
+        <textarea id="responseTextArea" class="UIInput"
+            style="width:580px; height:400px;"></textarea>
+    </div>
+    <div id="imageDiv" style="width:420px; display:table-cell;">
+        Source image:<br><br>
+        <img id="sourceImage" width="400" />
+    </div>
+</div>
+```
+
+## <a name="write-the-javascript-script"></a>JavaScript スクリプトを作成する
+
+ドキュメントの `h1` 要素のすぐ上に次のコードを追加します。 これは、Face API を呼び出す JavaScript コードを設定するものです。
+
+```html
 <script type="text/javascript">
     function processImage() {
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
-
+    
         // NOTE: You must use the same region in your REST call as you used to
         // obtain your subscription keys. For example, if you obtained your
         // subscription keys from westus, replace "westcentralus" in the URL
@@ -68,7 +83,7 @@ ms.locfileid: "55866952"
         // this region.
         var uriBase =
             "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
-
+    
         // Request parameters.
         var params = {
             "returnFaceId": "true",
@@ -77,32 +92,32 @@ ms.locfileid: "55866952"
                 "age,gender,headPose,smile,facialHair,glasses,emotion," +
                 "hair,makeup,occlusion,accessories,blur,exposure,noise"
         };
-
+    
         // Display the image.
         var sourceImageUrl = document.getElementById("inputImage").value;
         document.querySelector("#sourceImage").src = sourceImageUrl;
-
+    
         // Perform the REST API call.
         $.ajax({
             url: uriBase + "?" + $.param(params),
-
+    
             // Request headers.
             beforeSend: function(xhrObj){
                 xhrObj.setRequestHeader("Content-Type","application/json");
                 xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
             },
-
+    
             type: "POST",
-
+    
             // Request body.
             data: '{"url": ' + '"' + sourceImageUrl + '"}',
         })
-
+    
         .done(function(data) {
             // Show formatted JSON on webpage.
             $("#responseTextArea").val(JSON.stringify(data, null, 2));
         })
-
+    
         .fail(function(jqXHR, textStatus, errorThrown) {
             // Display error message.
             var errorString = (errorThrown === "") ?
@@ -115,40 +130,17 @@ ms.locfileid: "55866952"
         });
     };
 </script>
-
-<h1>Detect Faces:</h1>
-Enter the URL to an image that includes a face or faces, then click
-the <strong>Analyze face</strong> button.<br><br>
-
-Image to analyze: <input type="text" name="inputImage" id="inputImage"
-value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg" />
-
-<button onclick="processImage()">Analyze face</button><br><br>
-
-<div id="wrapper" style="width:1020px; display:table;">
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
-        Response:<br><br>
-
-        <textarea id="responseTextArea" class="UIInput"
-                  style="width:580px; height:400px;"></textarea>
-    </div>
-    <div id="imageDiv" style="width:420px; display:table-cell;">
-        Source image:<br><br>
-
-        <img id="sourceImage" width="400" />
-    </div>
-</div>
-</body>
-</html>
 ```
 
-### <a name="face---detect-response"></a>顔検出応答
+`subscriptionKey` フィールドは、実際のサブスクリプション キーの値で更新する必要があります。また `uriBase` 文字列も、適切なリージョン識別子を含むように、必要に応じて変更してください (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 `returnFaceAttributes` フィールドは、取得する顔の属性を指定します。この文字列は、実際の用途に合わせて変更してください。
 
-成功応答が JSON で返されます。
+## <a name="run-the-script"></a>スクリプトを実行する
+
+ブラウザーで *detectFaces.html* を開きます。 **[Analyze face]** ボタンをクリックすると、指定された URL からの画像が表示され、顔のデータの JSON 文字列が出力されます。
 
 ![GettingStartCSharpScreenshot](../Images/face-detect-javascript.png)
 
-以下は成功時の応答の例です。
+次に示したのは成功時の JSON 応答の例です。
 
 ```json
 [
@@ -244,7 +236,7 @@ value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gis
 
 ## <a name="next-steps"></a>次の手順
 
-画像の中から人の顔を検出し、顔の境界を四角形で囲んで、属性 (年齢、性別など) を返す Face API について考察します。
+このクイック スタートでは、Azure Face API 呼び出しにより画像から顔を検出してその属性を返す JavaScript スクリプトを作成しました。 この後は、Face API のリファレンス ドキュメントでさらに理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

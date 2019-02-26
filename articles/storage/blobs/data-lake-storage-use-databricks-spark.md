@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: e448ef0de9ef5560c1b4ea0df5c02e8efd8c0ea9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: b5d7be25ba18e256352d8793689bcb63a013e20b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891659"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452609"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 のデータにアクセスする
 
@@ -38,6 +38,17 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * AzCopy v10 をインストールします。 [AzCopy v10 を使用したデータ転送](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
 
+*  サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+
+   この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
+
+   :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
+
+   > [!IMPORTANT]
+   > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当てるようにしてください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
+
+   :heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
+
 ### <a name="download-the-flight-data"></a>フライト データのダウンロード
 
 このチュートリアルでは、運輸統計局からのフライト データを使用して ETL 操作を実行する方法を示します。 チュートリアルを完了するには、このデータをダウンロードする必要があります。
@@ -49,24 +60,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 3. **[ダウンロード]** ボタンを選択して、ご使用のコンピューターに結果を保存します。 
 
 4. ZIP ファイルの内容を解凍し、ファイル名とファイル パスをメモします。 この情報は後の手順で必要になります。
-
-## <a name="get-your-storage-account-name"></a>ストレージ アカウントの名前を取得する
-
-ストレージ アカウントの名前が必要となります。 [Azure portal](https://portal.azure.com/) にログインして **[すべてのサービス]** を選択し、"*ストレージ*" という語句でフィルター処理します。 次に、**[ストレージ アカウント]** を選択し、自分のストレージ アカウントを見つけます。
-
-その名前をテキスト ファイルに貼り付けます。 この情報はすぐに必要になります。
-
-<a id="service-principal"/>
-
-## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
-
-こちらのトピック「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
-
-この記事の手順を実行する際に、いくつかの作業を行う必要があります。
-
-:heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するとき、お客様のアプリケーションを **Blob Storage の共同作成者ロール**に必ず割り当ててください。
-
-:heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
 
 ## <a name="create-an-azure-databricks-service"></a>Azure Databricks サービスを作成する
 
@@ -145,9 +138,16 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
-18. このコード ブロックでは、`storage-account-name`、`application-id`、`authentication-id`、`tenant-id` の各プレースホルダーの値を、この記事の「ストレージ アカウント構成を確保する」および「[サービス プリンシパルの作成](#service-principal)」のステップを実行したときに収集した値に置き換えます。 `file-system-name` プレースホルダーを、ファイル システムに付ける任意の名前に置き換えます。
 
-19. **Shift + Enter** キーを押して、このブロック内のコードを実行します。 
+18. このコード ブロックでは、`application-id`、`authentication-id`、`tenant-id`、および `storage-account-name` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 `file-system-name` プレースホルダーの値を、ファイル システムに付けたい名前に置き換えます。
+
+   * `application-id` および `authentication-id` は、サービス プリンシパルの作成の一環として Active Directory に登録したアプリのものです。
+
+   * `tenant-id` は、自分のサブスクリプションのものです。
+
+   * `storage-account-name` は、Azure Data Lake Storage Gen2 ストレージ アカウントの名前です。
+
+19. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 
     このノートブックは開いたままにしておいてください。後でコマンドを追加します。
 

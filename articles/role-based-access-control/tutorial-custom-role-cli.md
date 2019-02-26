@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - Azure CLI を使用してカスタム ロールを作成する | Microsoft Docs
-description: Azure CLI を使用してカスタム ロールを作成してみましょう。
+title: チュートリアル - Azure CLI を使用して Azure リソースのカスタム ロールを作成する | Microsoft Docs
+description: Azure CLI を使用して Azure リソースのカスタム ロールを作成してみましょう。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
-ms.openlocfilehash: d2b34fa12836416f68d57f0147dd0364a1501c13
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9cd736272fce71f08006d32a169b88d092a48231
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698021"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340214"
 ---
-# <a name="tutorial-create-a-custom-role-using-azure-cli"></a>チュートリアル:Azure CLI を使用してカスタム ロールを作成する
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure リソースのカスタム ロールを作成する
 
-[組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure CLI を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプション内のすべてを閲覧し、サポート チケットを開くこともできます。
+[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure CLI を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプション内のすべてを閲覧し、サポート チケットを開くこともできます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -269,4 +269,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure CLI を使用してカスタム ロールを作成する](custom-roles-cli.md)
+> [Azure CLI を使用して Azure リソースのカスタム ロールを作成する](custom-roles-cli.md)

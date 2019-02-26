@@ -1,6 +1,6 @@
 ---
 title: サンプル - 複数の名前パターン
-description: このサンプル ポリシーでは、リソースが、指定された名前パターンのいずれかに一致する必要があります。
+description: このサンプル ポリシー定義は、指定した名前パターンのいずれかに一致することをリソースに要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2e424b7ff79aab36a50e9b44436295cf4ff3d447
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 2c77edfcb8dbf777a14e3a5ffa5b78a5689dbcbc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242976"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342526"
 ---
-# <a name="allow-multiple-name-patterns"></a>複数の名前パターンを許可する
+# <a name="sample---allow-multiple-name-patterns"></a>サンプル - 複数の名前パターンを許可する
 
 多数の名前パターンのいずれかをリソースに使うことを許可します。 ポリシー ルールで、使用できる名前パターンを指定します。
 

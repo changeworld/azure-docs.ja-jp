@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6789e1d6e514ce107ab96fddbaa582ccbe922bbb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243724"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453615"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>チュートリアル 1:信用リスクの予測 - Azure Machine Learning Studio
 
@@ -23,7 +23,7 @@ ms.locfileid: "56243724"
 
 クレジットの申請書に記入する情報に基づいて個人のクレジット リスクを予測する必要があるとします。  
 
-信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションには、Azure Machine Learning Studio と Machine Learning Web サービスを使用します。  
+信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning Studio を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションには、Azure Machine Learning Studio と Machine Learning Web サービスを使用します。  
 
 この 3 部構成のチュートリアルでは、まず、公表されている信用リスク データを使用します。  その後、予測モデルを開発してトレーニングします。  最後にそのモデルを Web サービスとしてデプロイします。
 
@@ -55,7 +55,7 @@ ms.locfileid: "56243724"
 
 Machine Learning Studio を使用するには、Microsoft Azure Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。  
 
-ワークスペースを作成するには、[Azure Machine Learning ワークスペースの作成と共有](create-workspace.md)に関するページを参照してください。
+ワークスペースを作成するには、「[Azure Machine Learning Studio ワークスペースの作成と共有](create-workspace.md)」を参照してください。
 
 ワークスペースが作成された後、Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)) を開きます。 ワークスペースが複数ある場合は、ウィンドウの右上隅のツールバーでワークスペースを選択できます。
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 6c7dd6ebaf7eebefcdcfa50bbd77ad80f4cda907
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b3d79f106554bf4a80df835ac880fbb7a72c8bfe
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077456"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268398"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -70,7 +70,7 @@ A.  Azure Data Box を入手するには、Azure portal にサインインし、
 ### <a name="q-i-was-not-able-to-create-a-data-box-order-in-the-azure-portal-why-would-this-be"></a>Q. Azure portal で Data Box の注文を作成できませんでした。 なぜでしょうか?
 A. Data Box の注文を作成できなかった場合は、サブスクリプションの種類またはアクセスのいずれかに問題があります。 
 
-サブスクリプションを確認してください。 Data Box は、マイクロソフトエンタープライズ契約 (EA)、Cloud solution provider (CSP)、または従量課金制のサブスクリプション プランでのみ利用できます。 サブスクリプションが上記のいずれのタイプにも該当しない場合は、Microsoft サポートに連絡してサブスクリプションをアップグレードしてください。
+サブスクリプションを確認してください。 Data Box は、マイクロソフトエンタープライズ契約 (EA) とクラウド ソリューション プロバイダー (CSP) のサブスクリプション プランでのみ利用できます。 サブスクリプションが上記のいずれのタイプにも該当しない場合は、Microsoft サポートに連絡してサブスクリプションをアップグレードしてください。
 
 サポートされている種類のサブスクリプション プランをお持ちの場合は、サブスクリプションのアクセス レベルを確認してください。 注文を作成するには、サブスクリプションの共同作成者または所有者である必要があります。
 

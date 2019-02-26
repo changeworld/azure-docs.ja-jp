@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: bb88736762219028d58fe70d0ec32309967c95a4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dbbfea183454b1068558111bf62b45f5fa6415cc
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55830709"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333903"
 ---
 ストレージ最適化済み VM サイズは高いディスク スループットと IO を実現し、ビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、および大規模なトランザクション データベースに最適です。  例としては、Cassandra、MongoDB、Cloudera、および Redis があります。 この記事では、最適化された各サイズのローカル ストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
@@ -64,7 +64,7 @@ Premium Storage Caching: サポートされていません
 | Standard_L32s <sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 40,000/1,000     | 8 / 20,000 | 
  
 
-Ls シリーズの VM で実現可能な最大ディスク スループットは、接続されたディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、[Premium Storage (Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ)](../articles/virtual-machines/windows/premium-storage.md) に関するページを参照してください。
+Ls シリーズの VM で実現可能な最大ディスク スループットは、接続されたディスクの数、サイズ、ストライピングによって制限される場合があります。 詳細については、[高パフォーマンス用の設計](../articles/virtual-machines/windows/premium-storage-performance.md)に関する記事を参照してください。
 
 <sup>1</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 

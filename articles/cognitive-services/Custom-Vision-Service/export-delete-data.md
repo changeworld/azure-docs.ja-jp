@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: pafarley
-ms.openlocfilehash: 7f27170a5e97d7860bcb059f16273b38757de747
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 01273ca241769c5e3bb7b7222355d32b29fd51b9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867037"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308504"
 ---
 # <a name="export-or-delete-user-data-in-custom-vision"></a>Custom Vision のユーザー データをエクスポートまたは削除する
 
-Content Moderator は、サービスの運用にユーザー データを収集しますが、データの参照、エクスポート、削除は、ユーザーが Custom Vision Service [Training API](https://go.microsoft.com/fwlink/?linkid=865446) を使用して完全に制御できます。
+Custom Vision は、サービスの運用にユーザー データを収集しますが、データの参照、エクスポート、削除は、ユーザーが Custom Vision Service [Training API](https://go.microsoft.com/fwlink/?linkid=865446) を使用して完全に制御できます。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 

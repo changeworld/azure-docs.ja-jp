@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB で高可用性を実現する
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fc818d2d7db60a8def99c2ad635580253dc795e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b5e99b421e66f087a1793f5301736e192ef75c08
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109760"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311241"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB での高可用性
 
@@ -64,19 +64,7 @@ Cosmos アカウントが N 個の Azure リージョンに分散している場
 
 - Cosmos アカウントの可用性が高くても、アプリケーションが高可用性を維持するよう正しく設計できていないこともあります。 アプリケーションのエンド ツー エンドの高可用性をテストするには、アプリケーションのテストまたはディザスター リカバリー (DR) の訓練の一部として、[Azure CLI または Azure portal を使用して手動フェールオーバー](how-to-manage-database-account.md#manual-failover)を定期的に呼び出してください。
 
-
-ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。 アプリケーションを完全に復旧するために必要な時間は、目標復旧時間 (RTO) と呼ばれます。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる新しいデータ更新の最大期間についても理解する必要があります。 損失を許容できる更新の期間は、目標復旧時点 (RPO) と呼ばれます。
-
-次の表は、最も一般的なシナリオでの RPO と RTO を示しています。
-
-|リージョン数 |構成 |整合性レベル|RPO |RTO |
-|---------|---------|---------|-------|-------|
-|1    | *    |*   | 240 分未満 | 1 週間未満 |
-|>1     | シングルマスター レプリケーション | セッション、一貫性のあるプレフィックス、最終的 | 15 分未満 | 15 分未満 |
-|>1     | シングルマスター レプリケーション | Bounded Staleness | K & T | 15 分未満 |
-|>1     | マルチマスター レプリケーション | セッション、一貫性のあるプレフィックス、最終的 | 15 分未満 | 0 |
-|>1     | マルチマスター レプリケーション | Bounded Staleness | K & T | 0 |
-|>1     | * | Strong | 0 | 15 分未満 |
+- グローバルに分散されるデータベース環境内では、リージョン全体にわたる停止が発生した場合の整合性レベルとデータ持続性の間には、直接的な関係があります。 ビジネス継続性計画を開発するときは、破壊的なイベントが発生してから、アプリケーションが完全に復旧するまでの最大許容時間について理解する必要があります。 アプリケーションを完全に復旧するために必要な時間は、目標復旧時間 (RTO) と呼ばれます。 さらに、破壊的なイベントの発生後、復旧中にアプリケーションが損失を許容できる新しいデータ更新の最大期間についても理解する必要があります。 損失を許容できる更新の期間は、目標復旧時点 (RPO) と呼ばれます。 Azure Cosmos DB の RPO および RTO を表示するには、「[整合性レベルとデータ持続性](consistency-levels-tradeoffs.md#rto)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,6 +1,6 @@
 ---
-title: Data Factory を使って Azure Data Lake Storage Gen2 プレビューとの間でデータをコピーする (プレビュー) | Microsoft Docs
-description: Azure Data Factory を使って Azure Data Lake Storage Gen2 プレビューに、または Azure Data Lake Storage Gen2 プレビューからデータをコピーする方法を説明します。
+title: Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする | Microsoft Docs
+description: Azure Data Factory を使って Azure Data Lake Storage Gen2 に、または Azure Data Lake Storage Gen2 からデータをコピーする方法を説明します。
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -8,18 +8,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 5e8bc85a309a8c6755f1efae1ca702720cf01477
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7a01b4baa9dafba4f0193c7a73dc1ae44214f501
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662310"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311582"
 ---
-# <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-preview-using-azure-data-factory-preview"></a>Azure Data Factory を使って Azure Data Lake Storage Gen2 プレビューとの間でデータをコピーする (プレビュー)
+# <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 との間でデータをコピーする
 
-Azure Data Lake Storage Gen2 プレビューは、ビッグ データ分析専用の機能セットで、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
+Azure Data Lake Storage Gen2 は、ビッグ データ分析専用の機能セットであり、[Azure BLOB ストレージ](../storage/blobs/storage-blobs-introduction.md)に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Data Lake Storage Gen2 をコピー先またはコピー元としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 

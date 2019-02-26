@@ -1,6 +1,6 @@
 ---
 title: 'サンプル: ストレージ アカウントの暗号化が必要'
-description: このサンプル ポリシーは、ストレージ アカウントが BLOB 暗号化を使用することが要件です。
+description: このサンプル ポリシー定義は、BLOB 暗号化の使用をストレージ アカウントに要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 067fab9baa2890aa2630c513fd4e6319bd40f709
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: b1afa4ce154153d97a9d7401765cd9c129009ceb
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244659"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342696"
 ---
-# <a name="require-storage-account-encryption"></a>ストレージ アカウントの暗号化が必要
+# <a name="sample---require-storage-account-encryption"></a>サンプル: ストレージ アカウントの暗号化が必要
 
 このポリシーは、ストレージ アカウントが BLOB 暗号化を使用することが要件です。
 

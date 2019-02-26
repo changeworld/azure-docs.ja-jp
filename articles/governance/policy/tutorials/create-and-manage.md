@@ -1,5 +1,5 @@
 ---
-title: Azure Policy を使用して、コンプライアンスを強制するポリシーを作成して管理する
+title: コンプライアンスを強制するポリシーの作成と管理
 description: Azure Policy を使用して、標準を強制し、規制遵守および監査の要件を満たし、コストを制御し、セキュリティとパフォーマンスの一貫性を維持し、企業全体の設計原則を適用します。
 services: azure-policy
 author: DCtheGeek
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: cb6f033c784832efab23c747057b1c0ef1b317fa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e49cffc5ba08d400c733ef7c211132c4909f9ef4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730273"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343563"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
@@ -354,7 +354,7 @@ az policy definition list
 
    ![イニシアチブ定義](../media/create-and-manage/initiative-definition-2.png)
 
-1. イニシアチブに追加されているポリシー定義にパラメーターがある場合、ポリシー名の **[ポリシーとパラメーター]** 領域に表示されます。 _値_は、[値の設定] (このイニシアチブのすべての割り当てにハードコード) または [イニシアティブ パラメーターを使用する] (各イニシアチブの割り当て時に設定) のいずれかに設定できます。 [値の設定] を選択すると、_[値]_ の右に表示されるボックスで値を入力するか選択することができます。 [イニシアティブ パラメーターを使用する] を選択すると、新しい **[イニシアチブ パラメーター]** セクションが表示され、イニシアチブ割り当て中に設定されるパラメーターを定義できます。 このイニシアチブ パラメーターに許可される値によって、イニシアチブ割り当て時に設定できる値をさらに制限できます。
+1. イニシアチブに追加されているポリシー定義にパラメーターがある場合、ポリシー名の **[ポリシーとパラメーター]** 領域に表示されます。 _値_は、[値の設定] (このイニシアチブのすべての割り当てにハードコード) または [イニシアティブ パラメーターを使用する] (各イニシアチブの割り当て時に設定) のいずれかに設定できます。 [値の設定] を選択すると、_[値]_ の右に表示されるドロップダウンで値を入力するか選択することができます。 [イニシアティブ パラメーターを使用する] を選択すると、新しい **[イニシアチブ パラメーター]** セクションが表示され、イニシアチブ割り当て中に設定されるパラメーターを定義できます。 このイニシアチブ パラメーターに許可される値によって、イニシアチブ割り当て時に設定できる値をさらに制限できます。
 
    ![イニシアチブの定義パラメーター](../media/create-and-manage/initiative-definition-3.png)
 

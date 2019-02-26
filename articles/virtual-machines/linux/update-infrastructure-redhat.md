@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 4505dcf5d9407a609bcf97c56835ff186607127d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c5e67e581d3fc370710528609bf94b1110416c33
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563738"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311377"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -103,10 +103,10 @@ RHUI は、RHEL のオンデマンド イメージが提供されているすべ
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>VM 上の有効期限が切れた RHUI クライアント証明書を更新する
 
-RHEL 7.4 (イメージ URN: `RedHat:RHEL:7.4:7.4.2018010506`) などの古い RHEL VM イメージを使用している場合は、有効期限が切れた SSL クライアント証明書による RHUI への接続の問題が発生します。 _"SSL ピアは期限切れとして証明書を拒否しました"_ のようなエラーが表示される場合があります。 この問題を解決するには、次のコマンドを使用して VM 上の RHUI クライアント パッケージを更新してください。
+RHEL 7.4 (イメージ URN: `RedHat:RHEL:7.4:7.4.2018010506`) などの古い RHEL VM イメージを使用している場合は、有効期限が切れた SSL クライアント証明書による RHUI への接続の問題が発生します。 _"SSL ピアは期限切れとして証明書を拒否しました"_ または _"エラー: リポジトリのリポジトリ メタデータ (repomd.xml) を取得できません: そのパスを確認し、もう一度お試しください"_ のようなエラーが表示される場合があります。 この問題を解決するには、次のコマンドを使用して VM 上の RHUI クライアント パッケージを更新してください。
 
 ```bash
-sudo yum update -y --disablerepo='*' --enablerepo='*-microsoft-*'
+sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 ```
 
 別の方法として、`sudo yum update` を実行した場合も、他のリポジトリに関して "有効期限が切れた SSL 証明書" のエラーは表示されますが、(RHEL バージョンに応じて) クライアント証明書パッケージが更新されることがあります。 この更新が成功した場合、他の RHUI リポジトリへの正常な接続が復元されるため、`sudo yum update` を正常に実行できるようになります。

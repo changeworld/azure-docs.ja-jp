@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: c8c7d94e216f45551ed869b2ba921f3c79e6307a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d3f8ae94cd6896aba1db29a00f6f45c81995bbd1
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452685"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301266"
 ---
 # <a name="get-started"></a>クイック スタート:Azure PowerShell を使用してパブリック ロード バランサーを作成する
 このクイック スタートでは、Azure PowerShell を使用して Basic Load Balancer を作成する方法について説明します ロード バランサーをテストするには、Windows Server を実行する 2 つの仮想マシン (VM) をデプロイし、VM 間で Web アプリの負荷を分散します。
@@ -72,7 +72,8 @@ $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "myBackEndP
 
 次の例では、TCP プローブを作成します。 よりきめ細やかな正常性チェックを行う場合は、カスタムの HTTP プローブを作成することもできます。 カスタム HTTP プローブを使用する場合は、*healthcheck.aspx* などの正常性チェック ページを作成する必要があります。 対象となるホストをロード バランサーのローテーションに維持するには、プローブが **HTTP 200 OK** 応答を返す必要があります。
 
-TCP 正常性プローブを作成するには、[Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig) を使用します。 次の例では、*HTTP* ポート *80* で各 VM を監視する *myHealthProbe* という名前の正常性プローブを作成します。
+TCP 正常性プローブを作成するには、[New-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/new-azurermloadbalancerprobeconfig) を使用します。
+次の例では、*HTTP* ポート *80* で各 VM を監視する *myHealthProbe* という名前の正常性プローブを作成します。
 
 ```azurepowershell-interactive
 $probe = New-AzureRmLoadBalancerProbeConfig `

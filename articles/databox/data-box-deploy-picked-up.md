@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 02/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 5a72bfccd69a51aa6bafb34bb768b48640e554af
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 254ebb9e23a80f71d2c46e6666362d764ff03141
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243010"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341591"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box の返送と Azure へのデータ アップロードの確認
 
@@ -42,9 +42,7 @@ ms.locfileid: "56243010"
 ## <a name="ship-data-box-back"></a>Data Box を返送する
 
 1. デバイスの電源をオフにして、ケーブル類を取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-2. デバイスを米国で配送する場合、配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、またはラベルが電子インク ディスプレイに表示されていない場合、Microsoft サポートにお問い合わせください。 サポートから指示された場合は、Azure portal の **[概要] > [出荷ラベルをダウンロード]** にアクセスしてください。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。
-
-    デバイスをヨーロッパで配送する場合、電子インク ディスプレイは配送先住所ラベルを表示しません。 代わりに、先積み配送先住所ラベルの下のクリアポーチ内に返送用配送先住所ラベルがあります。 古い配送先住所ラベルを取り除き、配送先住所ラベルがはっきり見えることを確認してください。
+2. 配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、またはラベルが電子インク ディスプレイに表示されていない場合、Microsoft サポートにお問い合わせください。 サポートから指示された場合は、Azure portal の **[概要] > [出荷ラベルをダウンロード]** にアクセスしてください。 配送先住所ラベルをダウンロードして、デバイスに貼り付けます。
     
 3. デバイスを返送する場合は、UPS での集荷をスケジュールします。 集荷をスケジュールするには、地域の UPS (国固有のフリー ダイヤル番号) に電話するか、最寄りのドロップオフ拠点に Data Box を持ち込みます。
 

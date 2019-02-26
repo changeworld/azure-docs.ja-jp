@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 594ebb6a3c82c9b9dd3ee03a8083abf052d20f49
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991329"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310938"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor メトリックス エクスプローラー
 
@@ -100,20 +100,6 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
    > [!NOTE]
    > シナリオとは無関係のセグメントを非表示にしてグラフを読みやすくするには、同じディメンションでフィルター処理と分割の両方を使用します。
 
-### <a name="new-alert-rule"></a>新しいアラート ルール
-
-メトリック ベースのアラート ルールの基になるロジックの基準として、メトリックを視覚化するために設定した条件を使用することもできます。 
-
-**[新しいアラート ルール]** をクリックすると、
-
-![赤色で強調表示されている [新しいアラート ルール] ボタン](./media/metrics-charts/015.png)
-
-カスタムのアラート ルールを生成しやすくするために、事前に設定されたグラフからの基になるメトリック ディメンションを含むアラート ルール作成ウィンドウが表示されます。
-
-![アラート ルールの作成](./media/metrics-charts/016.png)
-
-メトリック アラートの設定の詳細については、こちらの[記事](alerts-metric.md)を確認してください。
-
 ## <a name="lock-boundaries-of-chart-y-axis"></a>グラフの Y 軸の境界をロックする
 
 大きな値のわずかな変動をグラフで示す場合、Y 軸の範囲をロックすることが重要となります。 
@@ -138,6 +124,20 @@ Y 軸の範囲を制御するには、 グラフの […] メニューを使用�
 グラフを構成した後、グラフの右上隅にある **[Chart Actions]\(グラフの操作\)** メニューをクリックし、**[ダッシュボードに固定]** をクリックします。
 
 ![メトリックの画像](./media/metrics-charts/00013.png)
+
+## <a name="create-alert-rules"></a>アラート ルールの作成
+
+メトリック ベースのアラート ルールの基準として、メトリックを視覚化するために設定した条件を使用できます。 新しいアラート ルールにはターゲット リソース、メトリック、分割、およびグラフからのフィルター ディメンションが含まれます。 これらの設定は、アラート ルールの作成ウィンドウで後で変更できます。
+
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>新しいアラート ルールを作成するには、**[新しいアラート ルール]** をクリックします。
+
+![赤色で強調表示されている [新しいアラート ルール] ボタン](./media/metrics-charts/015.png)
+
+カスタムのアラート ルールを生成しやすくするために、事前に設定されたグラフからの基になるメトリック ディメンションを含むアラート ルール作成ウィンドウが表示されます。
+
+![アラート ルールの作成](./media/metrics-charts/016.png)
+
+メトリック アラートの設定の詳細については、こちらの[記事](alerts-metric.md)を確認してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

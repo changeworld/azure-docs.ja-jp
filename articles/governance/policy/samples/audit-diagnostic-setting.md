@@ -1,6 +1,6 @@
 ---
 title: サンプル - 診断設定の監査
-description: このサンプル ポリシーでは、指定されたリソースの種類で診断設定が有効になっていない場合に監査を行います。
+description: このサンプル ポリシー定義は、指定されたリソースの種類で診断設定が有効になっていない場合に監査を行います。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 77d430138ea1fe7f3a0e6e81031fb3a733f47b1c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: f5b3a5cfd8adb97918a727bd05133d6c1b9f8a42
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241463"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343725"
 ---
-# <a name="audit-diagnostic-setting"></a>診断設定の監査
+# <a name="sample---audit-diagnostic-setting"></a>サンプル - 診断設定の監査
 
 このビルトイン ポリシーでは、指定されたリソースの種類で診断設定が有効になっていない場合に監査を行います。 リソースの種類の配列を指定して、診断設定が有効になっているかどうかを確認します。
 

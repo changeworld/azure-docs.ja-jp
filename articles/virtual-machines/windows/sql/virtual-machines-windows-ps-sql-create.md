@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c37347928e75986fa8aee0d3d0a4db2667312f56
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3feb691f1f708452b6560dbe92b77ed0417ffb82
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984377"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329406"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -57,14 +57,14 @@ $ResourceGroupName = "sqlvm2"
 ### <a name="storage-properties"></a>ストレージのプロパティ
 ストレージ アカウントと、仮想マシンで使用するストレージの種類を定義します。
 
-必要に応じて変更してから、以下のコマンドレットを実行し、これらの変数を初期化します。 運用環境のワークロードには [Premium Storage](../premium-storage.md) を使用することをお勧めします。
+必要に応じて変更してから、以下のコマンドレットを実行し、これらの変数を初期化します。 運用環境のワークロードには [Premium SSD](../disks-types.md#premium-ssd) を使用することをお勧めします。
 
 ```PowerShell
 $StorageName = $ResourceGroupName + "storage"
 $StorageSku = "Premium_LRS"
 ```
 
-### <a name="network-properties"></a>ネットワークのプロパティ
+### <a name="network-properties"></a>Network properties
 仮想マシンのネットワークで使用するプロパティを定義します。 
 
 - Linux

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/22/2018
+ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 1ad344d3169643128a4860c9b0856f845d9656cd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3cbfb29542f2c71f4308b63319e77b37093529d4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021358"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445902"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB から Azure SQL Database にデータをコピーする
 このチュートリアルでは、Azure Blob Storage から Azure SQL Database にデータをコピーする Data Factory パイプラインを作成します。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
@@ -95,11 +95,11 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
 ## <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
 1. **[ツール]** -> **[NuGet パッケージ マネージャー]** -> **[パッケージ マネージャー コンソール]** の順にクリックします。
-2. **パッケージ マネージャー コンソール**で、次のコマンドを実行してパッケージをインストールします。
+2. **パッケージ マネージャー コンソール**で、次のコマンドを実行してパッケージをインストールします。 詳細については、[Microsoft.Azure.Management.DataFactory nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)を参照してください。
 
     ```
-    Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
-    Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
+    Install-Package Microsoft.Azure.Management.DataFactory
+    Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
     ```
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: f7536b5d0815351d2e6cb67705060d2e1046c970
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 445ddb3c580218e21410c961c614a8a9e29d21a0
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857874"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328335"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを照会する
 
@@ -31,6 +31,8 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 ## <a name="cross-partition-query"></a>クロスパーティション クエリ
 
 次のクエリにはパーティション キー (`DeviceId`) にフィルターがないので、クエリはすべてのパーティションにファンアウトされて、パーティションのインデックスに対して実行されます。 複数のパーティションでクエリを実行するには、`EnableCrossPartitionQuery` を true に設定します (または、REST API では `x-ms-documentdb-query-enablecrosspartition`)。
+
+EnablecrossPartitionQuery プロパティは、ブール値を受け取ります。 true に設定すると、クエリにパーティション キーが存在しない場合でも、Azure Cosmos DB によってパーティション全体にクエリが展開されます。 この展開動作は、個々のクエリをすべてのパーティションに発行することによって行われます。 クエリの結果を読み取るためには、クライアント アプリケーションが FeedResponseから結果を取り込んで ContinuationToken プロパティを調べる必要があります。 すべての結果を読み取るには、ContinuationToken が null になるまでデータを反復処理してください。 
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading

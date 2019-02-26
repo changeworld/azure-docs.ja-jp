@@ -3,37 +3,37 @@ title: Azure Custom Vision とは
 titlesuffix: Azure Cognitive Services
 description: Custom Vision サービスを使用して、Azure クラウド内にカスタム画像分類器を構築する方法について説明します。
 services: cognitive-services
-author: anrothMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 01/10/2019
-ms.author: anroth
-ms.openlocfilehash: cc60166b4105cf38d3c1f73bdb558af7a9a7c831
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: pafarley
+ms.openlocfilehash: 6cbc6e351147ed5b4c31463b5cf319417f34da34
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857483"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456777"
 ---
 # <a name="what-is-azure-custom-vision"></a>Azure Custom Vision とは
 
-Azure Custom Vision API は、カスタム画像分類器を構築、デプロイ、および改良できるようにする認識サービスです。 画像分類器は、特定の性質に基づいて画像をクラス (タグ) に分類する AI サービスです。 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) サービスとは異なり、Custom Vision では独自の分類を作成できます。
+Azure Custom Vision は、独自の画像分類器を構築、デプロイ、および改良できるようにする認識サービスです。 画像分類器は、視覚特性に基づいて画像にラベル ("_クラス_" を表す) を適用する AI サービスです。 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) サービスとは異なり、Custom Vision では適用するラベルをユーザーが決定できます。
 
 ## <a name="what-it-does"></a>実行内容
 
-Custom Vision サービスでは、画像の分類に機械学習アルゴリズムを使用します。 開発者は、分類の判定要素を備えた画像グループと、それを欠いた画像グループを提出する必要があります。 提出時に、画像の適切なタグを指定します。 次に、アルゴリズムをこのデータでトレーニングし、同じデータに対するテストを行って、アルゴリズム自体の精度を計算します。 モデルのトレーニング後、テスト、再トレーニングを行い、最終的にはモデルを使用して、新しい画像をアプリのニーズに合わせて分類することができます。 オフラインで使用するために、モデル自体をエクスポートすることもできます。
+Custom Vision サービスでは、画像にラベルを適用するために機械学習アルゴリズムを使用します。 開発者は、着目する特性を備えた画像グループと、それを欠いた画像グループを提出する必要があります。 提出時に自分で画像にラベルを付けます。 次に、アルゴリズムをこのデータでトレーニングし、同じ画像に対するテストを行って、アルゴリズム自体の精度を計算します。 アルゴリズムのトレーニング後、テスト、再トレーニングを行い、最終的にはアルゴリズムを使用して、新しい画像をアプリのニーズに合わせて分類することができます。 オフラインで使用するために、モデル自体をエクスポートすることもできます。
 
-### <a name="classification-and-object-detection"></a>分類とオブジェクトの検出
+## <a name="classification-and-object-detection"></a>分類とオブジェクトの検出
 
-Custom Vision の機能は、2 つに分割できます。 **画像の分類**では、各画像に分類の分布を割り当てます。 多クラス (画像ごとのタグ数が 1 つ) とマルチラベル (画像ごとのタグ数が任意) の両方の分類モデルがサポートされます。 **オブジェクトの検出**では、マルチラベル分類と同様のことを行いますが、適用されたラベルを見つけることができる画像内の座標も返されます。
+Custom Vision の機能は、2 つに分割できます。 **画像の分類**では、画像に 1 つまたは複数のラベルを適用します。 **オブジェクトの検出**では、同様のことを行いますが、適用されたラベルを見つけることができる画像内の座標も返されます。
 
-### <a name="optimization"></a>最適化
+## <a name="optimization"></a>最適化
 
-一般に、Custom Vision サービスで使用される方法は差異の影響を受けにくいため、少量のデータでプロトタイプを作り始めることができます。 タグあたり 50 個の画像が、通常は適切な出発点です。 しかし、これは、画像の微妙な違いの検出 (たとえば、品質保証のシナリオにおける小さな割れやへこみの検出) にはこのサービスが最適ではないということを意味します。
+Custom Vision サービスは、画像間の主な違いをすばやく認識するように最適化されています。 これにより、少量のデータでモデルのプロトタイプ作成を開始できます。 ラベルあたり 50 個の画像が、通常は適切な出発点です。 しかし、これは、画像の微妙な違いの検出 (たとえば、品質保証のシナリオにおける小さな割れやへこみの検出) にはこのサービスが最適ではないということを意味します。
 
-また、Custom Vision アルゴリズムのいくつかの種類の中から、特定の対象素材 (たとえば、ランドマークや小売り品目) に適したものを選択することもできます。 それらの詳細については、[分類器の構築](getting-started-build-a-classifier.md)に関するガイドを参照してください。
+また、Custom Vision アルゴリズムのいくつかの種類の中から、特定の対象素材 (たとえば、ランドマークや小売り品目) が含まれている画像に適したものを選択することもできます。 それらの詳細については、[分類器の構築](getting-started-build-a-classifier.md)に関するガイドを参照してください。
 
 ## <a name="what-it-includes"></a>備えている機能
 Custom Vision Service は、[Custom Vision ホーム ページ](https://customvision.ai/)の Web ベースのインターフェイスを通じて利用するだけでなく、ネイティブ SDK のセットとしても利用できます。 いずれかのインターフェイス、または両方のインターフェイスを使用して、モデルの作成、テスト、およびトレーニングを行うことができます。
@@ -46,4 +46,4 @@ Cognitive Services 全般に言えることですが、Custom Vision サービ�
 
 ## <a name="next-steps"></a>次の手順
 
-[分類器の構築](getting-started-build-a-classifier.md)に関するガイドに従って、Web で Custom Vision の使用を開始するか、[画像分類のチュートリアル](csharp-tutorial.md)を実行して、コードでシナリオを実装します。
+[分類器の構築](getting-started-build-a-classifier.md)に関するガイドに従って、Web で Custom Vision の使用を開始するか、[画像分類のチュートリアル](csharp-tutorial.md)を実行して、コードで基本的なシナリオを実装します。

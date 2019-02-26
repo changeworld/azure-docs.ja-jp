@@ -14,16 +14,14 @@ ms.date: 01/25/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 979867e7630c21b0bd724967dbc79c5f8155ca5e
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7371808db8d40948f501b051692172fd6a84e2ac
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237180"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270217"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>チュートリアル: Resource Manager Template deployment で Azure Key Vault を統合する
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Azure Key Vault からシークレットを取得し、Resource Manager デプロイ時にシークレットをパラメーターとして渡す方法を説明します。 参照するのは Key Vault ID だけであるため、値が公開されることはありません。 詳しくは、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](./resource-manager-keyvault-parameter.md)」を参照してください
 
@@ -193,6 +191,9 @@ New-AzResourceGroupDeployment `
     -TemplateFile azuredeploy.json `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
+
+> [!NOTE]
+> Cloud Shell での Azure PowerShell の使用には、ファイル IO の問題が存在します。  エラー メッセージは、"*コマンドレットの動的パラメーターを取得できません。パス 'Azure:/azuredeploy.json' が存在しないため検出できません*" です。  `New-AzResourceGroupDeploy` コマンドに **-TemplateFile** スイッチと **TemplateParameterFile** スイッチを含めないようにすることが暫定的な回避策となります。 コマンドを実行すると、ファイル名を入力するように求められます。
 
 テンプレートをデプロイするときに、キー コンテナーと同じリソース グループを使用します。 そうすると、リソースをクリーンアップしやすくなります。 削除する必要があるのは2 つではなく 1 つのリソース グループのみです。
 

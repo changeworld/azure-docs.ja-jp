@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: f6c629182fdcce83c566869860480d9c70488797
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 50feca90d375d6afd3b04afe019ad9f9025f19dc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53712748"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308574"
 ---
 # <a name="variables-section-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの変数セクション
 テンプレート内で使用できる値は、variables セクションで構築します。 必ずしも変数を定義する必要はありませんが、変数を定義することによって複雑な式が減り、テンプレートが単純化されることはよくあります。
@@ -58,9 +58,7 @@ ms.locfileid: "53712748"
             {
                 "name": "<name-of-array-property>",
                 "count": <number-of-iterations>,
-                "input": {
-                    <properties-to-repeat>
-                }
+                "input": <object-or-value-to-repeat>
             }
         ]
     },
@@ -68,9 +66,7 @@ ms.locfileid: "53712748"
         {
             "name": "<variable-array-name>",
             "count": <number-of-iterations>,
-            "input": {
-                <properties-to-repeat>
-            }
+            "input": <object-or-value-to-repeat>
         }
     ]
 }
@@ -117,38 +113,45 @@ ms.locfileid: "53712748"
 
 ## <a name="use-copy-element-in-variable-definition"></a>変数定義での copy 要素の使用
 
-**copy** 構文を使用して、複数の要素の配列で変数を作成できます。 要素の数を表すカウントを指定します。 各要素には、**input** オブジェクト内にプロパティが含まれます。 コピーは変数内で使用することも、変数の作成に使用することもできます。 変数を定義し、その変数内で **copy** を使用するには、配列化されたプロパティを持つオブジェクトを作成します。 トップ レベルで **copy** を使用し、その中で 1 つ以上の変数を定義する場合は、1 つ以上の配列を作成します。 次の例では、両方の方法を示します。
+変数のインスタンスを複数作成するには、variables セクション内で `copy` プロパティを使用します。 `input` プロパティの値から構築された要素の配列を作成します。 `copy` プロパティは、変数内で使用することも、variables セクションの最上位レベルで使用することもできます。 変数の反復処理内で `copyIndex` を使用するときは、反復処理の名前を指定する必要があります。
+
+次の例は、copy の使用方法を示しています。
 
 ```json
 "variables": {
-    "disk-array-on-object": {
-        "copy": [
-            {
-                "name": "disks",
-                "count": 3,
-                "input": {
-                    "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
-                    "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('disks')]"
-                }
-            }
-        ]
-    },
+  "disk-array-on-object": {
     "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
+      {
+        "name": "disks",
+        "count": 3,
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('disks')]"
         }
+      }
     ]
+  },
+  "copy": [
+    {
+      "name": "disks-top-level-array",
+      "count": 3,
+      "input": {
+        "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
+        "diskSizeGB": "1",
+        "diskIndex": "[copyIndex('disks-top-level-array')]"
+      }
+    },
+    {
+      "name": "top-level-string-array",
+      "count": 5,
+      "input": "[concat('myDataDisk', copyIndex('top-level-string-array', 1))]"
+    }
+  ]
 },
 ```
 
-変数 **disk-array-on-object** には、**disks** という名前の配列を持つ、次のようなオブジェクトが格納されています。
+copy 式が評価されると、変数 **disk-array-on-object** には、**disks** という名前の配列を持つ、次のようなオブジェクトが格納されます。
 
 ```json
 {
@@ -194,34 +197,19 @@ ms.locfileid: "53712748"
 ]
 ```
 
-コピーを使用して変数を作成するときに、複数のオブジェクトを指定することもできます。 次の例では、変数として 2 つの配列を定義しています。 1 つは **disks-top-level-array** という名前で 5 個の要素があります。 もう 1 つは **a-different-array** という名前で 3 つの要素があります。
+変数 **top-level-string-array** には、次のような配列が格納されています。
 
 ```json
-"variables": {
-    "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 5,
-            "input": {
-                "name": "[concat('oneDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
-        },
-        {
-            "name": "a-different-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('twoDataDisk', copyIndex('a-different-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('a-different-array')]"
-            }
-        }
-    ]
-},
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
+]
 ```
 
-パラメーターの値が必要で、その値がテンプレートの値として正しい形式であることを確認する場合に、この方法はうまく機能します。 次の例では、セキュリティの規則の定義で使用するために、パラメーターの値を書式設定します。
+copy の使用は、パラメーター値を取得して、リソースの値にそれらをマップする必要がある場合に最適です。 次の例では、セキュリティの規則の定義で使用するために、パラメーターの値を書式設定します。
 
 ```json
 {
@@ -273,7 +261,7 @@ ms.locfileid: "53712748"
 
 次のサンプル テンプレートでは、変数を使用するいくつかのシナリオを例示します。 さまざまなシナリオで変数がどのように処理されるかを、このサンプルを展開して試してください。 
 
-|テンプレート  |説明  |
+|Template  |説明  |
 |---------|---------|
 | [変数の定義](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | さまざまな種類の変数を例示します。 このテンプレートではリソースをデプロイしません。 変数の値を作成して、その値を返します。 |
 | [構成変数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | 構成の値を定義する変数の用法を例示します。 このテンプレートではリソースをデプロイしません。 変数の値を作成して、その値を返します。 |

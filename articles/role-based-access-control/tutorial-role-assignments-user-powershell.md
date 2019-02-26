@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: RBAC と Azure PowerShell を使用してユーザーにアクセス権を付与する | Microsoft Docs'
-description: Azure PowerShell を使用して、ロールベースのアクセス制御 (RBAC) によって、サブスクリプション内のすべてを表示し、リソース グループ内のすべてを管理するためのアクセス権をユーザーに付与します。
+title: チュートリアル - RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する | Microsoft Docs
+description: ロールベースのアクセス制御 (RBAC) と Azure PowerShell を使用して、Azure リソースへのアクセス権をユーザーに付与する方法について説明します。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 7f5e67edd2a5300ae1898e2620ee8ace80ac6d92
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b9aefc8eae733d9f43d1f5399c1464b40367f09e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109029"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343478"
 ---
-# <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>チュートリアル:RBAC と Azure PowerShell を使用してユーザーにアクセス権を付与する
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 このチュートリアルでは、Azure PowerShell を使用して、サブスクリプション内のすべてを表示し、リソース グループ内のすべてを管理するためのアクセス権をユーザーに付与します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセス権を管理するための手法です。 このチュートリアルでは、Azure PowerShell を使用して、サブスクリプション内のすべてを表示し、リソース グループ内のすべてを管理するためのアクセス権をユーザーに付与します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -279,4 +279,4 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [RBAC と PowerShell を使用してアクセスを管理する](role-assignments-powershell.md)
+> [RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](role-assignments-powershell.md)

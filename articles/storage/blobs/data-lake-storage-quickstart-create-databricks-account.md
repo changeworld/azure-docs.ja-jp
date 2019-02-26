@@ -7,13 +7,13 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/24/2019
-ms.openlocfilehash: 0ec682ea852f3c6da6248f3c16b539725ca18c0f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/15/2019
+ms.openlocfilehash: 9d00819143d9a8fc38bfc09844d55f088e732b46
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895807"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453028"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>クイック スタート:Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する
 
@@ -25,27 +25,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Data Lake Storage Gen2 対応のストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)
+* Data Lake Gen2 ストレージ アカウントを作成する。 「[クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
 
-<a id="config"/>
+  ストレージ アカウントの名前をテキスト ファイルに貼り付ける。 この情報はすぐに必要になります。
 
-## <a name="get-the-name-of-your-storage-account"></a>ストレージ アカウントの名前を取得する
+*  サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
 
-Azure portal でお客様のストレージ アカウントの名前を取得するには、**[すべてのサービス]** を選択し、「*ストレージ*」という語句でフィルター処理します。 次に、**[ストレージ アカウント]** を選択し、自分のストレージ アカウントを見つけます。
+   この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
-その名前をテキスト ファイルに貼り付けます。 この情報はすぐに必要になります。
+   :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
 
-<a id="service-principal"/>
+   > [!IMPORTANT]
+   > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当てるようにしてください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
 
-## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
-
-こちらのトピック「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
-
-この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
-
-:heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するとき、お客様のアプリケーションを **Blob Storage の共同作成者ロール**に必ず割り当ててください。
-
-:heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
+   :heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
@@ -126,11 +119,11 @@ Azure portal でお客様のストレージ アカウントの名前を取得す
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
- 
+
     > [!NOTE]
     > このコード ブロックでは OAuth を使用して Data Lake Gen2 エンドポイントに直接アクセスしますが、Databricks ワークスペースをお客様の Data Lake Storage Gen2 アカウントに接続する方法は他にもあります。 たとえば、OAuth を使用してファイル システムをマウントしたり、共有キーによる直接アクセスを使用したりできます。 <br>これらの方法の例については、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」を参照してください。
 
-5. このコード ブロックにおいて、このコード ブロックの `storage-account-name`、`application-id`コード、`authentication-id`、および `tenant-id` のプレースホルダーの値を、この記事の「[ストレージ アカウントの名前を取得する](#config)」と「[サービス プリンシパルの作成](#service-principal)」の手順を実行したときに収集した値に置き換えます。  `file-system-name` プレースホルダーの値を、ファイル システムに付けたい名前に設定します。
+5. このコード ブロックでは、`storage-account-name`、`application-id`、`authentication-id`、および `tenant-id` のプレースホルダー値を、サービス プリンシパルの作成中に収集した値で置き換えます。 `file-system-name` プレースホルダーの値を、ファイル システムに付けたい名前に設定します。
 
 6. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 

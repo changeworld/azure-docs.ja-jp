@@ -1,6 +1,6 @@
 ---
 title: サンプル - VM ネットワーク インターフェイスに承認されたサブネットを使用する
-description: このサンプル ポリシーは、承認されたサブネットがネットワーク インターフェイスで使用されていることが要件です。
+description: このサンプル ポリシー定義は、承認されたサブネットの使用をネットワーク インターフェイスに要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: d4f27b98581f7ea2adbbb69d6041e6ad190cc0e7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 854dbb6d3743c0e8af8a267a425286624453b688
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242739"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341115"
 ---
-# <a name="use-approved-subnet-for-vm-network-interfaces"></a>VM ネットワーク インターフェイスでの承認されたサブネットの使用
+# <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>サンプル - VM ネットワーク インターフェイスに承認されたサブネットを使用する
 
 このポリシーは、承認されたサブネットがネットワーク インターフェイスで使用されていることが要件です。 承認されたサブネットの ID を指定します。
 

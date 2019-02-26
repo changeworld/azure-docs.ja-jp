@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66ad6ea26535190d2fc5798e1223c2196d3d5a5d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1fde586563c142690078a693970a9a24bd5cacb4
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211140"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301997"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>チュートリアル:Azure Active Directory と SAP NetWeaver の統合
 
@@ -175,7 +175,14 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 
     ![[SAP NetWeaver のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    **[サインオン URL]** ボックスに、`https://<your company instance of SAP NetWeaver>` という形式で URL を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[サインオン URL]** ボックスに、`https://<your company instance of SAP NetWeaver>` という形式で URL を入力します。
+
+    > [!NOTE]
+    > ユーザーのインスタンスに対して構成された応答 URL に誤りがあるというエラーはほとんどレポートされていません。 もしそのようなエラーが発生した場合は、回避策として、次の PowerShell スクリプトを使用してください。ご使用のインスタンスに対して正しい応答 URL を設定することができます。
+    ```
+    Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
+    ``` 
+    > ServicePrincipal Object ID は最初に自分で設定しておくことができるほか、ここで渡すこともできます。
 
 12. SAP NetWeaver アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
@@ -374,4 +381,3 @@ SAP NetWeaver で Azure AD シングル サインオンを構成するには、�
 - [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

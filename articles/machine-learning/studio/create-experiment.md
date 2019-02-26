@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: f5b24b21c4511b535509421aaa35ba3498e9f6a8
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 803a52994536d2d6f39a064f97af7831af0cebb6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246019"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453173"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>クイック スタート:Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する
 
@@ -57,15 +57,15 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 1. 実験には既定の名前が付いており、キャンバスの上部で確認できます。 このテキストを選択し、「**Automobile price prediction**」(自動車価格の予測) など意味のある名前に変更します。 名前は一意でなくてもかまいません。
 
-    ![実験の名前の変更][rename-experiment]
+    ![実験の名前の変更](./media/create-experiment/rename-experiment.png)
 
 1. 実験キャンバスの左側には、データセットとモジュールのパレットがあります。 このパレットの上部にある検索ボックスに「**automobile**」と入力し、**Automobile price data (Raw)** というラベルが付いたデータセットを検索します。 このデータセットを実験キャンバスにドラッグします。
 
-    ![automobile データセットの検索と実験キャンバスへのドラッグ][type-automobile]
+    ![automobile データセットの検索と実験キャンバスへのドラッグ](./media/create-experiment/type-automobile.png)
 
 このデータの中身を確認するには、automobile データセットの下部にある出力ポートをクリックし、**[Visualize]\(視覚化\)** を選択します。
 
-![出力ポートをクリックし、[Visualize]\(視覚化\) を選択][select-visualize]
+![出力ポートをクリックし、[Visualize]\(視覚化\) を選択](./media/create-experiment/select-visualize.png)
 
 > [!TIP]
 > データセットとモジュールには、小さな円で表される入力ポートと出力ポートがあります (入力ポートは上部、出力ポートは下部)。
@@ -74,7 +74,7 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 このデータセットでは、各行が自動車を表していて、各自動車に関連付けられている変数は列として表示されます。 特定の自動車の変数を使用して、右端の列で価格が予測されます ("price" という名前の列 26)。
 
-![データ視覚化ウィンドウでの自動車データの表示][visualize-auto-data]
+![データ視覚化ウィンドウでの自動車データの表示](./media/create-experiment/visualize-auto-data.png)
 
 右上隅の "**x**" をクリックして、視覚化ウィンドウを閉じます。
 
@@ -89,9 +89,9 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 1. モジュールのパレットの上部にある検索ボックスに「**select columns**」と入力し、[Select Columns in Dataset][select-columns] (データセットの列を選択する) モジュールを見つけます。 その後、それを実験キャンバスにドラッグします。 このモジュールを使用すると、モデルに含める、またはモデルから除外するデータの列を選択できます。
 
-1. **Automobile price data (Raw)** データセットの出力ポートを、[Select Columns in Dataset][select-columns] モジュールの入力ポートに接続します。
+1. **Automobile price data (Raw)** データセットの出力ポートを、Select Columns in Dataset の入力ポートに接続します。
 
-    ![実験キャンバスへの "Select Columns in Dataset" モジュールの追加と接続][type-select-columns]
+    ![実験キャンバスへの "Select Columns in Dataset" モジュールの追加と接続](./media/create-experiment/type-select-columns.png)
 
 1. [Select Columns in Dataset][select-columns] モジュールを選択し、**[Properties]\(プロパティ\)** ウィンドウの **[Launch column selector]\(列セレクターの起動\)** をクリックします。
 
@@ -100,26 +100,26 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
     - ドロップダウンから **[Exclude]\(除外\)** と **[column names]\(列名\)** を選択し、テキスト ボックスの内側をクリックします。 列の一覧が表示されます。 **[normalized-losses]** を選択すると、テキスト ボックスに追加されます。
     - (右下の) チェック マーク (OK) ボタンをクリックして列セレクターを閉じます。
 
-    ![列セレクターの起動と "normalized-losses" 列の除外][launch-column-selector]
+    ![列セレクターの起動と "normalized-losses" 列の除外](./media/create-experiment/launch-column-selector.png)
 
     これで、**Select Columns in Dataset**のプロパティ ウィンドウに、**normalized-losses** 以外のデータセットのすべての列がフィルターを通過することが示されます。
 
-    !["normalized-losses" 列が除外されたことを示すプロパティ ウィンドウ][showing-excluded-column]
+    !["normalized-losses" 列が除外されたことを示すプロパティ ウィンドウ](./media/create-experiment/showing-excluded-column.png)
 
     > [!TIP] 
     > モジュールをダブルクリックして、テキストを入力すると、モジュールにコメントを追加できます。 これで、実験でモジュールがどのような処理をするのかがひとめでわかります。 この例では、[Select Columns in Dataset][select-columns] モジュールをダブルクリックして、「Exclude normalized losses」(normalized losses を除外する) というコメントを入力します。
 
-    ![モジュールをダブルクリックしてコメントを追加][add-comment]
+    ![モジュールをダブルクリックしてコメントを追加](./media/create-experiment/add-comment.png)
 
 1. [Clean Missing Data][clean-missing-data] (不足しているデータを整理する) モジュールを実験キャンバスにドラッグして、[Select Columns in Dataset][select-columns] モジュールに接続します。 **[Properties]\(プロパティ\)** ウィンドウで、**[Cleaning mode]\(整理モード\)** の下の **[Remove entire row]\(行全体を削除\)** を選択します。 これらのオプションにより、[Clean Missing Data][clean-missing-data] では値が不足している行が削除され、データが整理されます。 モジュールをダブルクリックして、「Remove missing value rows」(値が不足している行を削除する) というコメントを入力します。
 
-    !["Clean Missing Data" モジュールの [Cleaning Mode]\(整理モード\) を [Remove entire row]\(行全体を削除\) に設定][set-remove-entire-row]
+    !["Clean Missing Data" モジュールの [Cleaning Mode]\(整理モード\) を [Remove entire row]\(行全体を削除\) に設定](./media/create-experiment/set-remove-entire-row.png)
 
 1. ページの下部の **[RUN]\(実行\)** をクリックして、実験を実行します。
 
     実験の実行が終了すると、すべてのモジュールに緑色のチェック マークが付けられ、正常に完了したことが示されます。 右上隅にも **[Finished running]\(実行が完了しました\)** というステータスが表示されます。
 
-    ![実行後の実験の状態][early-experiment-run]
+    ![実行後の実験の状態](./media/create-experiment/early-experiment-run.png)
 
 > [!TIP]
 > ここで実験を実行したのはなぜでしょうか。 実験を実行することで、データの列の定義がデータセットから[Select Columns in Dataset][select-columns] モジュールと[Clean Missing Data][clean-missing-data] モジュールを介して渡されます。 これにより、[Clean Missing Data][clean-missing-data] に接続するすべてのモジュールに、この同じ情報が設定されることになります。
@@ -140,7 +140,7 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 1. 別の[Select Columns in Dataset][select-columns] モジュールを、実験キャンバスにドラッグします。 [Clean Missing Data][clean-missing-data] モジュールの左側の出力ポートを、[Select Columns in Dataset][select-columns] モジュールの入力に接続します。
 
-    !["Select Columns in Dataset" モジュールを "Clean Missing Data" モジュールに接続][connect-clean-to-select]
+    !["Select Columns in Dataset" モジュールを "Clean Missing Data" モジュールに接続](./media/create-experiment/connect-clean-to-select.png)
 
 1. モジュールをダブルクリックして、「Select features for prediction」と入力します。
 
@@ -152,7 +152,7 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 1. チェック マーク (OK) ボタンをクリックします。
 
-    ![予測に含める列 (特徴) の選択][select-columns-to-include]
+    ![予測に含める列 (特徴) の選択](./media/create-experiment/select-columns-to-include.png)
 
 このモジュールにより、フィルター処理されたデータセットが生成されます。このデータセットには、次の手順で使用する学習アルゴリズムに渡す特徴のみが含まれます。 後でこの手順に戻り、別の特徴を選択して再度実行することができます。
 
@@ -174,7 +174,7 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 1. [Split Data][split] モジュールをクリックして選択します。 (キャンバス右側の **[Properties]\(プロパティ\)** ウィンドウにある) **[Fraction of rows in the first output dataset]\(最初の出力データセットにおける列の割合\)** を探して 0.75 に設定します。 このようにして、データの 75% をモデルのトレーニングに使用し、25% をテスト用に保持しておきます。
 
-    !["Split Data" モジュールの分割の割合を 0.75 に設定][set-split-data-percentage]
+    !["Split Data" モジュールの分割の割合を 0.75 に設定](./media/create-experiment/set-split-data-percentage.png)
 
     > [!TIP]
     > **[Random seed]\(ランダム シード\)** パラメーターを変更して、トレーニング用とテスト用に異なるランダムなサンプルを作成できます。 このパラメーターでは、擬似乱数ジェネレーターによる生成を制御できます。
@@ -185,19 +185,19 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 1. [Train Model][train-model] (モデルをトレーニングする) モジュールを見つけて、実験にドラッグします。 [Linear Regression][linear-regression] モジュールの出力を、[Train Model][train-model] モジュールの左側の入力に接続します。次に、[Split Data][split]モジュールのトレーニング データ出力 (左側のポート) を、[Train Model][train-model] モジュールの右側の入力に接続します。
 
-    !["Linear Regression" モジュールと "Split Data" モジュールの両方に "Train Model" モジュールを接続][connect-train-model]
+    !["Linear Regression" モジュールと "Split Data" モジュールの両方に "Train Model" モジュールを接続](./media/create-experiment/connect-train-model.png)
 
 1. [Train Model][train-model] モジュールを選択して、**[Properties]\(プロパティ\)** ウィンドウの **[Launch column selector]\(列セレクターの起動\)** をクリックし、**price** 列を選択します。 **price** が、作成しているモデルで予測する値です。
 
     列セレクターで **[Available columns]\(使用できる列\)** の一覧から **[Selected columns]\(選択した列\)** の一覧に **price** 列を移動させることで選択します。
 
-    !["Train Model" モジュールで price 列を選択][select-price-column]
+    !["Train Model" モジュールで price 列を選択](./media/create-experiment/select-price-column.png)
 
 1. 実験を実行します。
 
 新しい自動車のデータをスコア付けして価格を予測するのに使用できる、トレーニング済みの回帰モデルができました。
 
-![実行後の実験の状態][second-experiment-run]
+![実行後の実験の状態](./media/create-experiment/second-experiment-run.png)
 
 ## <a name="predict-new-automobile-prices"></a>新しい自動車の価格を予測する
 
@@ -205,21 +205,21 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 1. [Score Model][score-model] (モデルをスコア付けする) モジュールを探して、実験キャンバスにドラッグします。 [Train Model][train-model] モジュールの出力を、[Score Model][score-model] の左側の入力ポートに接続します。 [Split Data][split] モジュールのテスト データの出力 (右側のポート) を[Score Model][score-model] の右側の入力ポートに接続します。
 
-    !["Train Model" モジュールと "Split Data" モジュールの両方に "Score Model" モジュールを接続][connect-score-model]
+    !["Train Model" モジュールと "Split Data" モジュールの両方に "Score Model" モジュールを接続](./media/create-experiment/connect-score-model.png)
 
 1. 実験を実行し、[Score Model][score-model] の出力ポートをクリックして、**[Visualize]\(視覚化\)** を選択します。[Score Model][score-model] モジュールの出力が表示されます。 出力に、予測された価格の値と、テスト データからの既知の値が表示されます。  
 
-    !["Score Model" モジュールの出力][score-model-output]
+    !["Score Model" モジュールの出力](./media/create-experiment/score-model-output.png)
 
 1. 最後に、結果の品質をテストします。 [Evaluate Model][evaluate-model] (モデルを評価する) モジュールを選択して実験キャンバスにドラッグし、[Score Model][score-model] モジュールの出力を、[Evaluate Model][evaluate-model] の左側の入力に接続します。 最終的な実験は次のようになります。
 
-    ![最終的な実験][complete-linear-regression-experiment]
+    ![最終的な実験](./media/create-experiment/complete-linear-regression-experiment.png)
 
 1. 実験を実行します。
 
 [Evaluate Model][evaluate-model] モジュールの出力を表示するには、出力ポートをクリックして、**[Visualize]\(視覚化\)** を選択します。
 
-![実験の評価結果][evaluation-results]
+![実験の評価結果](./media/create-experiment/evaluation-results.png)
 
 作成したモデルに対して、以下の統計値が表示されます。
 
@@ -241,35 +241,6 @@ Studio アカウントを持っていない場合は、[Studio ホームペー�
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Studio での予測ソリューションの作成](tutorial-part1-credit-risk.md)
-
-<!-- Images -->
-[sign-in-to-studio]: ./media/create-experiment/sign-in-to-studio.png
-[rename-experiment]: ./media/create-experiment/rename-experiment.png
-[visualize-auto-data]:./media/create-experiment/visualize-auto-data.png
-[select-visualize]: ./media/create-experiment/select-visualize.png
-[showing-excluded-column]:./media/create-experiment/showing-excluded-column.png
-[set-remove-entire-row]:./media/create-experiment/set-remove-entire-row.png
-[early-experiment-run]:./media/create-experiment/early-experiment-run.png
-[select-columns-to-include]:./media/create-experiment/select-columns-to-include.png
-[second-experiment-run]:./media/create-experiment/second-experiment-run.png
-[connect-score-model]:./media/create-experiment/connect-score-model.png
-[evaluation-results]:./media/create-experiment/evaluation-results.png
-[complete-linear-regression-experiment]:./media/create-experiment/complete-linear-regression-experiment.png
-
-<!-- temporarily switching GIFs to PNGs to remove animation -->
-[type-automobile]:./media/create-experiment/type-automobile.png
-[type-select-columns]:./media/create-experiment/type-select-columns.png
-[launch-column-selector]:./media/create-experiment/launch-column-selector.png
-[add-comment]:./media/create-experiment/add-comment.png
-[connect-clean-to-select]:./media/create-experiment/connect-clean-to-select.png
-
-[set-split-data-percentage]:./media/create-experiment/set-split-data-percentage.png
-
-<!-- temporarily switching GIFs to PNGs to remove animation -->
-[connect-train-model]:./media/create-experiment/connect-train-model.png
-[select-price-column]:./media/create-experiment/select-price-column.png
-
-[score-model-output]:./media/create-experiment/score-model-output.png
 
 <!-- Module References -->
 [evaluate-model]: https://msdn.microsoft.com/library/azure/927d65ac-3b50-4694-9903-20f6c1672089/

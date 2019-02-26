@@ -9,12 +9,12 @@ ms.service: service-health
 ms.topic: article
 ms.workload: Supportability
 ms.date: 03/27/2018
-ms.openlocfilehash: b771e36344ff26c9a817a0314e0f223b6e809a17
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 465e8751d02692648234a7a90b84b68f41522cb2
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871704"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328267"
 ---
 # <a name="service-health"></a>サービス正常性
 Service Health は、ユーザーが使用しているリージョン内の Azure サービスの正常性を追跡するカスタマイズ可能なダッシュボードを提供します。 このダッシュボードでは、進行中のサービスの問題、次に予定されている定期的なメンテナンス、関連する正常性の勧告などのアクティブなイベントを追跡できます。 イベントが非アクティブになると、それらは正常性の履歴に最大 90 日間保存されます。 最後に、Service Health のダッシュボードを使用して、サービスの問題が影響を与えているときにユーザーに事前に通知するサービス正常性アラートを作成および管理できます。
@@ -24,6 +24,9 @@ Service Health はお使いのリソースに及ぼす可能性のある次の 3
 1. **サービスの問題** - ユーザーに今すぐ影響を及ぼす Azure サービスの問題。 
 2. **定期的なメンテナンス** - お使いのサービスの可用性に将来影響を及ぼす可能性のある今後のメンテナンス。  
 3. **正常性に関する勧告** - ユーザーが注目する必要のある Azure サービスの変化。 Azure の機能が非推奨となるタイミングや、使用量のクォータを超えた場合に関する例も含まれます。
+
+> [!NOTE]
+> Service Health イベントを表示するには、ユーザーがサブスクリプションに閲覧者ロールを持っている必要があります。
 
 ## <a name="get-started-with-service-health"></a>Service Health の使用
 Service Health ダッシュボードを起動するには、ポータルのダッシュボードにある [Service Health] タイルを選択します。 過去にタイルを削除した、またはダッシュボードをカスタマイズしている場合は、[その他のサービス] \(ダッシュボードの右下) で Service Health サービスを検索してください。

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: cf972075aeeb780f44972e5b9134261fef33817f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3d0c72f0178cddd668c0ac029c803ff339a1f6f4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118311"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311615"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
@@ -314,7 +314,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 }
 ```
 
-完全な例については、「[C# の例](#c-example)」を参照してください。
+完全な例については、「C# の例」を参照してください。
 
 ## <a name="configuration"></a>構成
 

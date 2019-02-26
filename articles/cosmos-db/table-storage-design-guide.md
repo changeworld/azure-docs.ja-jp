@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 433f99d72feb7dc697050049817478a8c8b679e6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6495a4e4da9330cba562c7fd6530369c09d180da
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820965"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302065"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド:拡張性があり、パフォーマンスに優れたテーブルを設計する
 
@@ -721,6 +721,9 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 
 ### <a name="log-tail-pattern"></a>ログ テール パターン
 逆の日付と時間順でソートする *RowKey* 値を 使用して最も最近追加された **n** を取得します。  
+
+> [!NOTE]
+> Azure Cosmso DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 そのため、このパターンは Azure Cosmos DB ではなく Azure Table Storage に適しています。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。
 
 #### <a name="context-and-problem"></a>コンテキストと問題
 よく、最近作成されたエンティティ (従業員が提出した経費請求を日時の新しいものから 10 件など) を取得できることが必要な場合があります。 Table クエリは **$top** クエリ操作をサポートして、最初の *n* 件のエンティティをセットから返します。セットの最終 n 件のエンティティを返す同等のクエリの操作はありません。  

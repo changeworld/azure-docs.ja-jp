@@ -1,6 +1,6 @@
 ---
 title: サンプル - 許可された ExpressRoute の帯域幅
-description: このサンプル ポリシーは、ExpressRoute で、指定した帯域幅の設定が使用されていることが要件です。
+description: このサンプル ポリシー定義は、指定した一連の帯域幅の使用を ExpressRoute に要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: fc98e9085844749153ee6f45466cc367eef2ffff
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: eacd2dd7ddecba47d00ea09cb45f99e991bfd2dc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244746"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341608"
 ---
-# <a name="allowed-expressroute-bandwidth"></a>許可された ExpressRoute の帯域幅
+# <a name="sample---allowed-expressroute-bandwidth"></a>サンプル - 許可された ExpressRoute の帯域幅
 
 このポリシーは、ExpressRoute で、指定した帯域幅の設定が使用されていることが要件です。 ExpressRoute に対して指定できる SKU の配列を指定します。
 

@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 1/18/2019
+ms.date: 2/19/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: dce158e600d3bf5dbcc552aff82959208d7b47f8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0319445f946a53ace5718dce1ad593d0a8225ecc
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249063"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428518"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Azure Stack で仮想マシン イメージを使用できるようにする
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-Azure Stack でユーザーが仮想マシン イメージを使用できるように指定できます。 それらのイメージを Azure Resource Manager テンプレートで参照したり、Marketplace 項目として Azure Marketplace UI に追加したりすることができます。 グローバル Azure Marketplace のイメージを使用するか、独自のカスタム イメージを追加できます。 ポータルまたは Windows PowerShell を使用して VM を追加することもできます。
+Azure Stack でユーザーが仮想マシン イメージを使用できるように指定できます。 これらのイメージを Azure Resource Manager テンプレートで使用できます。 それらを Marketplace 項目として Azure Marketplace UI に追加することもできます。 グローバル Azure Marketplace のイメージか、独自のカスタム イメージを使用します。 ポータルまたは Windows PowerShell を使用してイメージを追加できます。
 
 ## <a name="add-a-vm-image-through-the-portal"></a>ポータルから VM イメージを追加する
 

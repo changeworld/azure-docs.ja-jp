@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 12/06/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 53a2f20254d2f206d014e6643c6fd883828a63db
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c0aa88704f699334cacf12ec24284e61fca7d2bc
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238336"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267599"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする
 
@@ -34,8 +34,6 @@ Azure SQL Database 拡張機能を使用して Azure Resource Manager テンプ�
 > * デプロイを検証する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -154,6 +152,9 @@ New-AzResourceGroupDeployment `
     -adminPassword $adminPassword `
     -TemplateFile azuredeploy.json
 ```
+
+> [!NOTE]
+> Cloud Shell での Azure PowerShell の使用には、ファイル IO の問題が存在します。  エラー メッセージは、*"* コマンドレットの動的パラメーターを取得できません。 パス 'Azure:/azuredeploy.json' が存在しないため検出できません" です。*`New-AzResourceGroupDeploy` コマンドに **-TemplateFile** スイッチを含めないようにすることが暫定的な回避策となります。 コマンドを実行すると、ファイル名を入力するように求められます。
 
 生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。
 

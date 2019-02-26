@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 94482666d0db3157b0c18c0b47f9937457172521
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 18258bf8ac9d241fd8a01957d903b1db882c2d36
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115999"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326876"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>マネージド ディスクのストレージの種類を更新する
 
-マネージド ディスクには、[Premium SSD](../windows/premium-storage.md)、[Standard SSD](../windows/disks-standard-ssd.md)、および [Standard HDD](../windows/standard-storage.md) の 3 つのストレージ オプションが用意されています。 パフォーマンスのニーズに応じて、ダウンタイムを最小限に抑えてストレージの種類間でマネージド ディスクを切り替えることができます。 アンマネージド ディスクでは、ストレージの種類の切り替えはサポートされていません。ただし、[アンマネージド ディスクをマネージド ディスクに簡単に変換する](convert-unmanaged-to-managed-disks.md)ことができます。
+マネージド ディスクには、次の 4 種類のストレージ オプションがあります。Ultra ソリッド ステート ドライブ (SSD)、Premium SSD、Standard SSD、Standard ハード ディスク ドライブ (HDD)。 パフォーマンスのニーズに応じて、ダウンタイムを最小限に抑えてストレージの種類間でマネージド ディスクを切り替えることができます。 アンマネージド ディスクでは、ストレージの種類の切り替えはサポートされていません。ただし、[アンマネージド ディスクをマネージド ディスクに簡単に変換する](convert-unmanaged-to-managed-disks.md)ことができます。
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
@@ -35,6 +35,7 @@ ms.locfileid: "56115999"
 * アンマネージド ディスクを使用している場合は、まず[マネージド ディスクに変換して](convert-unmanaged-to-managed-disks.md)、ストレージの種類間で切り替えることができます。 
 * この記事の例では、バージョン 6.0.0 以降の Azure PowerShell が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 Azure との接続を作成するには、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) を実行します。
 
+* この記事の例では、バージョン 6.0.0 以降の Azure PowerShell が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 Azure との接続を作成するには、[Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) を実行します。
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>VM のすべてのマネージド ディスクを Standard から Premium に変換する
 

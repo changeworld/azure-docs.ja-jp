@@ -1,6 +1,6 @@
 ---
 title: 'サンプル: Express Route ネットワークへのネットワークピアリングがない'
-description: このサンプル ポリシーは、指定されたリソース グループ内の 1 つのネットワークに、ネットワーク ピアリングを関連付けることを禁止します。
+description: このサンプル ポリシー定義は、指定されたリソース グループ内の 1 つのネットワークに、ネットワーク ピアリングを関連付けることを禁止します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: dbd7494b5104482624448fc0525a58d68138a833
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c06e750c19227d245fcf8eaeb077691ef2c8a675
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245645"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337607"
 ---
-# <a name="no-network-peering-to-express-route-network"></a>Express Route ネットワークへのネットワークピアリングがない
+# <a name="sample---no-network-peering-to-express-route-network"></a>サンプル: Express Route ネットワークへのネットワークピアリングがない
 
 このポリシーは、指定されたリソース グループ内の 1 つのネットワークに、ネットワーク ピアリングを関連付けることを禁止します。 集中管理されているネットワーク インフラストラクチャとの接続を防ぐために使用します。 関連付けを防ぐリソース グループの名前を指定します。
 

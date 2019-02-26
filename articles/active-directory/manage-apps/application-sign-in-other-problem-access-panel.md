@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05efbe3feb81b11d547cd50d8ba3f87c2ff0e5b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 52f8e20cb66fb9c516435dd40ff7e362567bb338
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164721"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310865"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>アクセス パネルからアプリケーションへのサインインに関する問題
 
@@ -250,13 +250,13 @@ Azure AD からアプリケーションのメタデータまたは証明書を�
 
 ギャラリー以外のアプリケーションを構成するには、Azure AD Premium を用意する必要があり、アプリケーションが SAML 2.0 をサポートする必要があります。 Azure AD のバージョンの詳細については、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページを参照してください。
 
--   [Azure AD で、アプリケーションのメタデータ値を構成する (サインオン URL、識別子、応答 URL)](#configuring-single-sign-on)
+-   Azure AD で、アプリケーションのメタデータ値を構成する (サインオン URL、識別子、応答 URL)
 
 -   [ユーザー識別子を選択し、アプリケーションに送信するためのユーザー属性を追加する](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Azure AD メタデータと証明書を取得する](#download-the-azure-ad-metadata-or-certificate)
 
--   [アプリケーションで Azure AD メタデータ値を構成する (サインオン URL、発行者、ログアウト URL、証明書)](#configuring-single-sign-on)
+-   アプリケーションで Azure AD メタデータ値を構成する (サインオン URL、発行者、ログアウト URL、証明書)
 
 ### <a name="configure-the-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url"></a>Azure AD で、アプリケーションのメタデータ値を構成する (サインオン URL、識別子、応答 URL)
 

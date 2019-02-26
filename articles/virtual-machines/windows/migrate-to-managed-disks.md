@@ -16,21 +16,17 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 4aefc8c033383125a803eb0c8a38e2f3de119540
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e9c3e10f9b48bfe2efa5396c9e64d3d87be3d826
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467913"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330649"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Azure VM を Azure Managed Disks に移行する
 
 Azure Managed Disks を使用すると、ストレージ アカウントを個別に管理する必要がなくなり、ストレージ管理が簡略化されます。  また、既存の Azure VM を Managed Disks に移行して、可用性セット内の VM の信頼性を向上させることもできます。 単一障害点を避けるために、可用性セット内の異なる VM のディスクは相互に十分に分離されます。 可用性セット内の異なる VM のディスクは異なるストレージ スケール ユニット (スタンプ) に自動的に配置されるため、ハードウェアとソフトウェアの障害を原因とする単一のストレージ スケール ユニット障害の影響が限定されます。
-ニーズに基づいて、2 種類のストレージ オプションから選ぶことができます。
-
-- [Premium Managed Disks](premium-storage.md) は、ソリッド ステート ドライブ (SSD) ベースのストレージ メディアで、I/O を集中的に行うワークロードを実行している仮想マシンに、高パフォーマンスで待ち時間の短いディスク サポートを提供します。 Premium Managed Disks に移行すると、これらのディスクの速度とパフォーマンスを最大限に高めることができます。
-
-- [Standard Managed Disks](standard-storage.md) は、ハード ディスク ドライブ (HDD) ベースのストレージ メディアで、パフォーマンス変動の影響を受けにくい、開発/テスト ワークロードやアクセス頻度の少ないワークロードに最適です。
+ニーズに基づいて、4 種類のストレージ オプションから選ぶことができます。 使用できるディスクの種類の詳細については、[ディスクの種類の選択](disks-types.md)に関する記事を参照してください。
 
 次のようなシナリオが、Managed Disks への移行に適しています。
 
@@ -50,7 +46,7 @@ Azure Managed Disks を使用すると、ストレージ アカウントを個�
 このセクションの情報を使用して、自社環境に最適な VM とディスクの種類を判断できます。
 
 
-## <a name="location"></a>場所
+## <a name="location"></a>Location
 
 Azure Managed Disks を使用できる場所を選びます。 Premium Managed Disks に移行する場合は、移行を計画しているリージョンで Premium Storage が利用可能であることも確認します。 使用できる場所に関する最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/#services)」をご覧ください。
 

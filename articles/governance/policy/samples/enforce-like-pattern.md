@@ -1,6 +1,6 @@
 ---
 title: サンプル - 類似パターンを強制する
-description: このサンプル ポリシーでは、リソースが名前付け規則に対する類似パターンを満たしていることを要求します。
+description: このサンプル ポリシー定義は、名前付け規則に対する類似パターンを満たしていることをリソースに要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,16 +8,16 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7bc7624cdcc6676d3f622f30e9549a2e444c1d6f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6ff890773a045220b7e2f343d86434fe9109ef1a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243036"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338480"
 ---
-# <a name="enforce-like-pattern-for-naming-conventions"></a>名前付け規則の類似パターンを強制する
+# <a name="sample---enforce-like-pattern-for-naming-conventions"></a>サンプル - 名前付け規則の類似パターンを強制する
 
-リソース名は名前付け規則に対する類似パターンを満たしている必要があります。 許可される類似パターンをパラメーターとして指定します。
+リソース名は名前付け規則に対する一致パターンを満たしている必要があります。 許可される類似パターンをパラメーターとして指定します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 

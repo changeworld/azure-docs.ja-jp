@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: fbfbb4e452032073d92e7c2b93f78669da0ceaf5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 1d576b24e96d6c4c88d6fbef86cb1c6cf7f7c61a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691559"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268132"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
 
 Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 Azure サブスクリプション内のリソースを作成、更新、および削除できる一貫した管理レイヤーを提供します。 そのアクセス制御、監査、およびタグ付け機能を使用して、デプロイ後にリソースをセキュリティで保護し、整理することができます。
 
-ポータル、PowerShell、Azure CLI、REST API シリーズ、またはクライアント SDK を介してアクションを実行すると、Azure Resource Manager API によって要求が処理されます。 すべての要求は同じ API を介して処理されるため、すべての異なるツールで一貫した結果と機能が得られます。
+ポータル、PowerShell、Azure CLI、REST API シリーズ、またはクライアント SDK を介してアクションを実行すると、Azure Resource Manager API によって要求が処理されます。 すべての要求は同じ API を介して処理されるため、すべての異なるツールで一貫した結果と機能が得られます。 ポータルで利用できるすべての機能は、PowerShell、Azure CLI、REST API、およびクライアント SDK からも利用できます。 API を介して最初にリリースされた機能は、最初のリリースから 180 日以内にポータルに表示されます。
 
 次の図は、どのようにすべてのツールが Azure Resource Manager API とやり取りするかを示しています。 この API は、要求の認証と承認を行う Resource Manager サービスに要求を渡します。 次に Resource Manager は、適切なサービスに要求をルーティングします。
 

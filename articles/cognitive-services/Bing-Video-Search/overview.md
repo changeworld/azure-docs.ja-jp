@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: a7fbd9eb70c50f3bbd154726bdaa807c2bc41818
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f56893f830720c57c66eb4c17bb2771efbb73f6f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863960"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267174"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Bing Video Search API とは
 
@@ -29,7 +29,7 @@ Bing Video Search API を使用すると、サービスやアプリケーショ�
 | [動画の結果をフィルター処理して制限する](concepts/get-videos.md#filtering-videos)                      | 返される動画を、クエリ パラメーターを編集してフィルター処理します。                                                                                                       |
 | [サムネイルのクロップ、サイズ変更、表示](resize-and-crop-thumbnails.md)                                                | Bing Video Search API から返された動画のサムネイル プレビューを編集して表示します。                                                                                      |
 | [急上昇中の動画の取得](trending-videos.md) | 世界で注目を集めている動画を検索します。                                                                                                          |
-| [動画の分析情報の取得](video-insights.md) | 世界で注目を集めている画像の検索をカスタマイズします。                                                                                                          |
+| [ビデオの分析情報の取得](video-insights.md) | 世界で注目を集めている動画の検索をカスタマイズします。                                                                                                          |
 
 ## <a name="workflow"></a>ワークフロー
 

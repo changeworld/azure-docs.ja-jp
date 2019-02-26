@@ -1,6 +1,6 @@
 ---
 title: サンプル - SQL Server レベルの監査設定の監査
-description: このサンプル ポリシーは、SQL Server の監査設定が指定された設定と一致しない場合に、この設定の監査を行います。
+description: このサンプル ポリシー定義は、SQL Server の監査設定が指定された設定と一致しない場合に、この設定の監査を行います。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: f23fd349a5e7c1016cc18f79cff408aefaa3fd35
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 90f91e46db9d25571bc34256ab1db737445ce3e6
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244166"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337477"
 ---
-# <a name="audit-sql-server-level-audit-setting"></a>SQL Server レベルの監査設定の監査
+# <a name="sample---audit-sql-server-level-audit-setting"></a>サンプル - SQL Server レベルの監査設定の監査
 
 このポリシーは、SQL Server の監査設定が指定された設定と一致しない場合に、この設定の監査を行います。 監査設定を有効または無効のどちらにするべきかを指示する値を指定します。
 

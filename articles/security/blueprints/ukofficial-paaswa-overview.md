@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 222957bb79a88ec7b4c6e9afd6d86fe2776dbfd3
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700980"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301794"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント:UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
@@ -29,10 +29,10 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 このアーキテクチャは、Azure [PaaS (サービスとしてのプラットフォーム)](https://azure.microsoft.com/overview/what-is-paas/) コンポーネントを使用しています。これによって、ソフトウェア ライセンスの購入、基礎となるアプリケーション インフラストラクチャの管理、ミドルウェアまたは開発ツールの管理、およびその他のリソースの費用と複雑さを回避することができます。 お客様は、自社で開発したアプリケーションとサービスを管理し、ビジネス価値の実現に集中できます。一方、Microsoft Azure が仮想マシン、ストレージ、ネットワークなどの Azure リソースを管理するため、インフラストラクチャ管理の[責任分担](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility)は Azure プラットフォームの方が重くなります。 [Azure App Services](https://azure.microsoft.com/services/app-service/) では、自動スケール、高可用性が実現されるほか、Windows と Linux がサポートされています。さらに、既定のサービスとして GitHub、Azure DevOps、または任意の Git リポジトリからの自動デプロイが可能になります。 App Services を使用すると、インフラストラクチャ管理のオーバーヘッドがないので、開発者はビジネス価値の実現に集中できます。 画期的な Java、PHP、Node.js、Python、HTML、または C# Web アプリケーションを構築することも、既存のクラウドまたはオンプレミス Web アプリケーションを Azure App Services に移行することもできます (ただし、パフォーマンスを確認するための徹底的なデュー デリジェンスとテストは必要です)。
 
-このブループリントは、公的機関およびバック オフィスのユーザー向けに、セキュリティで保護された基盤である[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/)の Web ベース インターフェイスを提供することに焦点を当てています。 このブループリントの設計シナリオでは、パブリック ユーザーが機密データを安全に提出、表示、管理できる、また、バック オフィスや政府機関のオペレーターがパブリック ユーザーが提出した機密データを安全に処理できる、Azure ホステッド Web ベース サービスの使用を考慮しています。 このシナリオには、次のようなユース ケースがあります。
+このブループリントは、公的機関およびバックオフィスのユーザー向けに、セキュリティで保護された基盤である[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/)の Web ベース インターフェイスを提供することに焦点を当てています。 このブループリントの設計シナリオでは、パブリック ユーザーが機密データを安全に提出、表示、管理できる、また、バック オフィスや政府機関のオペレーターがパブリック ユーザーが提出した機密データを安全に処理できる、Azure ホステッド Web ベース サービスの使用を考慮しています。 このシナリオには、次のようなユース ケースがあります。
 
 - 納税申告書を提出するユーザーと、提出を処理する政府機関のオペレーター。
-- Web ベースのアプリケーションを介してサービスを要求するユーザーと、そのサービスを検証および提供するバック オフィス ユーザー。または
+- Web ベースのアプリケーションを介してサービスを要求するユーザーと、そのサービスを検証および提供するバックオフィス ユーザー。または
 - 政府機関のサービスに関するパブリック ドメイン ヘルプ情報を探して閲覧するユーザー。
 
 このブループリントは、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) テンプレートと Azure Command Line Interface スクリプトを使用して、英国立サーバー セキュリティ センター (NCSC) の 14 の[クラウド セキュリティに関する原則](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)と Center for Internet Security (CIS) の[重要なセキュリティ コントロール](https://www.cisecurity.org/critical-controls.cfm)に準拠する環境をデプロイします。 NCSC は、顧客がそのクラウド セキュリティに関する原則を使用してサービスのセキュリティ プロパティを評価し、顧客とサプライヤー間での責任分担の理解に役立てるよう推奨しています。 Microsoft では、お客様が責任の分担をより理解できるように、これらの各原則に関する情報を提供しています。 このアーキテクチャおよび対応する Azure Resource Manager テンプレートは、Microsoft ホワイト ペーパー「[14 Cloud Security Controls for UK cloud Using Microsoft Azure (Microsoft Azure を使用した英国クラウド向けの 14 のクラウド セキュリティ コントロール)」](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)でサポートされています。 このアーキテクチャは NCSC によってレビューされています。また、英国 NCSC の 14 のクラウド セキュリティに関する原則に準拠しています。そのため、公的機関は、グローバルに、また英国で Microsoft Azure クラウドのクラウドベース サービスを使用してコンプライアンス義務を果たす能力を迅速に実現できます。 このテンプレートは、ワークロードのインフラストラクチャをデプロイします。 お客様は、アプリケーション コードとビジネス層およびデータ層のサポート ソフトウェアをインストールし、構成する必要があります。 詳しいデプロイ手順については、[こちら](https://aka.ms/ukofficial-paaswa-repo/)をご覧ください。
@@ -43,7 +43,7 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 ## <a name="architecture-and-components"></a>アーキテクチャとコンポーネント
 
-このブループリントでは、UK OFFICIAL ワークロードをサポートする Web アプリケーション ホスティング ソリューションを Azure クラウド環境で提供しています。 このアーキテクチャは、サービス機能として Azure プラットフォームを活用するセキュリティで保護された環境を実現しています。 この環境内には、2 つの App Service Web アプリ (パブリック ユーザー用とバック オフィス ユーザー用) と、Web フロント エンド向けのビジネス サービスを提供する API アプリケーション層がデプロイされています。 Azure SQL Database は、アプリケーションのマネージド リレーショナル データ ストアとしてデプロイされています。 このプラットフォームの外部からこれらのコンポーネントへの接続と、これらすべてのコンポーネント間の接続は、TLS 1.2 で暗号化され、Azure Active Directory によって認証されたアクセス権を使用することで、送信時のデータの機密性を保護しています。
+このブループリントでは、UK OFFICIAL ワークロードをサポートする Web アプリケーション ホスティング ソリューションを Azure クラウド環境で提供しています。 このアーキテクチャは、サービス機能として Azure プラットフォームを活用するセキュリティで保護された環境を実現しています。 この環境内には、2 つの App Service Web アプリ (パブリック ユーザー用とバックオフィス ユーザー用) と、Web フロント エンド向けのビジネス サービスを提供する API アプリケーション層がデプロイされています。 Azure SQL Database は、アプリケーションのマネージド リレーショナル データ ストアとしてデプロイされています。 このプラットフォームの外部からこれらのコンポーネントへの接続と、これらすべてのコンポーネント間の接続は、TLS 1.2 で暗号化され、Azure Active Directory によって認証されたアクセス権を使用することで、送信時のデータの機密性を保護しています。
 
 ![UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティングの参照アーキテクチャ図](images/ukofficial-paaswa-architecture.png?raw=true "UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティングの参照アーキテクチャ図")
 
@@ -182,7 +182,7 @@ Azure Storage のセキュリティ保護の詳細については、[セキュ�
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスは、Web アプリケーションをリアルタイムで監視するために使用され、パフォーマンスの異常を自動的に検出する機能、パフォーマンスの分析機能、問題の診断機能があり、ユーザーのアプリの操作方法を理解できます。 Application Insights は、.NET、Node.js、J2EE など、オンプレミスまたはクラウドでホストされているプラットフォームにデプロイできます。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。
+[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスは、Web アプリケーションをリアルタイムで監視するために使用され、パフォーマンスの異常を自動的に検出する機能、パフォーマンスの分析機能、問題の診断機能があり、ユーザーのアプリの操作方法を理解できます。 Application Insights は、.NET、Node.js、Java EE など、オンプレミスまたはクラウドでホストされているプラットフォームにデプロイできます。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。
 
 #### <a name="application-insights-in-this-blueprint"></a>このブループリントの Application Insights
 

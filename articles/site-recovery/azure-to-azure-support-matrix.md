@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 5f3d884720bce5777a358a27dc477eabd5263d0c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4c58d053412b8f90b6423454fcda814e8cf6da75
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245186"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329015"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Azure リージョン間でレプリケートするためのマトリックスのサポート
 
@@ -177,8 +177,8 @@ Site Recovery を使用して移行された VM | サポートされています
 
 **コンポーネント** | **サポート** | **詳細**
 --- | --- | ---
-OS ディスクの最大サイズ | 2048 GB | VM ディスクに関する[詳細を表示します](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)。
-一時ディスク | サポートされていません | 一時ディスクは常にレプリケーションから除外されます。<br/><br/> 一時ディスクに永続データを格納しないでください。 [詳細情報](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk)。
+OS ディスクの最大サイズ | 2048 GB | VM ディスクに関する[詳細を表示します](../virtual-machines/windows/managed-disks-overview.md)。
+一時ディスク | サポートされていません | 一時ディスクは常にレプリケーションから除外されます。<br/><br/> 一時ディスクに永続データを格納しないでください。 [詳細情報](../virtual-machines/windows/managed-disks-overview.md)。
 データ ディスクの最大サイズ | 4095 GB |
 データ ディスクの最大数 | 最大 64 (特定の Azure VM サイズでのサポートに従います) | VM サイズに関する[詳細を表示します](../virtual-machines/windows/sizes.md)。
 データ ディスクの変更レート | Premium ストレージではディスクあたり最大 10 MBps。 Standard ストレージではディスクあたり最大 2 MBps。 | ディスクでの平均データ変更レートが継続的に最大値より高い場合、レプリケーションが追いつかなくなります。<br/><br/>  ただし、上限の超過が散発的である場合は、レプリケーションが追いつくことができます。しかし、復旧ポイントがわずかに遅延することもあります。
@@ -194,7 +194,7 @@ Standard SSD | サポートされています |
 Windows OS 用 Azure Disk Encryption (ADE) | [Azure AD アプリでの暗号化](https://aka.ms/ade-aad-app)を有効になっているVMはサポートされています。 |
 Linux OS 用 Azure Disk Encryption (ADE) | サポートされていません |
 ディスクのホット アド/削除 | サポートされていません | VM 上でデータ ディスクを追加または削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。
-ディスクの除外 | サポートされていません|   一時ディスクは既定で除外されます。
+ディスクの除外 | [PowerShell を介してサポートされています](https://review.docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell?branch=pr-en-us-66458#replicate-azure-virtual-machine) |  一時ディスクは既定で除外されます。
 記憶域スペース ダイレクト  | クラッシュ整合性復旧ポイントに対してサポートされています。 アプリケーション整合性復旧ポイントはサポートされていません。 |
 スケールアウト ファイル サーバー  | クラッシュ整合性復旧ポイントに対してサポートされています。 アプリケーション整合性復旧ポイントはサポートされていません。 |
 LRS | サポートされています |

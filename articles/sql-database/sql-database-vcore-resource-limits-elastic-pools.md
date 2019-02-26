@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/072019
-ms.openlocfilehash: 4f025680c1c637f8b8475be2d5784d08e9e2343b
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/15/2019
+ms.openlocfilehash: b0bd5c0ba8641bd287951168485be715a0b46224
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962011"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328675"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>仮想コア ベースの購入モデルを使用したエラスティック プールに対するリソース制限
 
@@ -59,11 +59,11 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。
+\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。 たとえば、エラスティック プールが Gen5 を使用し、データベースあたりの最大仮想コア数が 2 の場合、最大同時ワーカー数は 200 です。  データベースあたりの最大仮想コアが 0.5 の場合、Gen 5 では仮想コアあたりの最大同時ワーカー数が 100 なので、最大同時ワーカー数は 50 です。  その他にもデータベースあたりの最大仮想コア数設定が 1 仮想コア以下である場合は、最大同時ワーカー数が同様に再スケールされます。
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>General Purpose サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 2)
 
-|コンピューティング サイズ|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|コンピューティング サイズ|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W の世代|4|4|4|4|4|4|
 |仮想コア|7|8|9|10|16|24|
@@ -85,7 +85,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。
+\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。 たとえば、エラスティック プールが Gen5 を使用し、データベースあたりの最大仮想コア数が 2 の場合、最大同時ワーカー数は 200 です。  データベースあたりの最大仮想コアが 0.5 の場合、Gen 5 では仮想コアあたりの最大同時ワーカー数が 100 なので、最大同時ワーカー数は 50 です。  その他にもデータベースあたりの最大仮想コア数設定が 1 仮想コア以下である場合は、最大同時ワーカー数が同様に再スケールされます。
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>General Purpose サービス レベル:第 5 世代コンピューティング プラットフォーム (パート 1)
 
@@ -111,7 +111,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。
+\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。 たとえば、エラスティック プールが Gen5 を使用し、データベースあたりの最大仮想コア数が 2 の場合、最大同時ワーカー数は 200 です。  データベースあたりの最大仮想コアが 0.5 の場合、Gen 5 では仮想コアあたりの最大同時ワーカー数が 100 なので、最大同時ワーカー数は 50 です。  その他にもデータベースあたりの最大仮想コア数設定が 1 仮想コア以下である場合は、最大同時ワーカー数が同様に再スケールされます。
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>General Purpose サービス レベル:第 5 世代コンピューティング プラットフォーム (パート 2)
 
@@ -136,7 +136,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |読み取りスケールアウト|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。
+\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。 たとえば、エラスティック プールが Gen5 を使用し、データベースあたりの最大仮想コア数が 2 の場合、最大同時ワーカー数は 200 です。  データベースあたりの最大仮想コアが 0.5 の場合、Gen 5 では仮想コアあたりの最大同時ワーカー数が 100 なので、最大同時ワーカー数は 50 です。  その他にもデータベースあたりの最大仮想コア数設定が 1 仮想コア以下である場合は、最大同時ワーカー数が同様に再スケールされます。
 
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Business Critical サービス レベル:ストレージ サイズとコンピューティング サイズ
 
@@ -164,7 +164,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |読み取りスケールアウト|はい|はい|はい|はい|はい|はい|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。
+\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。 たとえば、エラスティック プールが Gen5 を使用し、データベースあたりの最大仮想コア数が 2 の場合、最大同時ワーカー数は 200 です。  データベースあたりの最大仮想コアが 0.5 の場合、Gen 5 では仮想コアあたりの最大同時ワーカー数が 100 なので、最大同時ワーカー数は 50 です。  その他にもデータベースあたりの最大仮想コア数設定が 1 仮想コア以下である場合は、最大同時ワーカー数が同様に再スケールされます。
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Business Critical サービス レベル:第 4 世代コンピューティング プラットフォーム (パート 2)
 
@@ -190,7 +190,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |読み取りスケールアウト|はい|はい|はい|はい|はい|はい|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。
+\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。 たとえば、エラスティック プールが Gen5 を使用し、データベースあたりの最大仮想コア数が 2 の場合、最大同時ワーカー数は 200 です。  データベースあたりの最大仮想コアが 0.5 の場合、Gen 5 では仮想コアあたりの最大同時ワーカー数が 100 なので、最大同時ワーカー数は 50 です。  その他にもデータベースあたりの最大仮想コア数設定が 1 仮想コア以下である場合は、最大同時ワーカー数が同様に再スケールされます。
 
 #### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Business Critical サービス レベル:第 5 世代コンピューティング プラットフォーム (パート 1)
 
@@ -216,7 +216,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |読み取りスケールアウト|はい|はい|はい|はい|はい|はい|はい|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。
+\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。 たとえば、エラスティック プールが Gen5 を使用し、データベースあたりの最大仮想コア数が 2 の場合、最大同時ワーカー数は 200 です。  データベースあたりの最大仮想コアが 0.5 の場合、Gen 5 では仮想コアあたりの最大同時ワーカー数が 100 なので、最大同時ワーカー数は 50 です。  その他にもデータベースあたりの最大仮想コア数設定が 1 仮想コア以下である場合は、最大同時ワーカー数が同様に再スケールされます。
 
 #### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Business Critical サービス レベル:第 5 世代コンピューティング プラットフォーム (パート 2)
 
@@ -242,7 +242,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |読み取りスケールアウト|はい|はい|はい|はい|はい|はい|はい|
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 
-\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。
+\* 個々のデータベースの最大同時実行ワーカー数については、「[Single database resource limits (単一データベースのリソース制限)](sql-database-vcore-resource-limits-single-databases.md)」を参照してください。 たとえば、エラスティック プールが Gen5 を使用し、データベースあたりの最大仮想コア数が 2 の場合、最大同時ワーカー数は 200 です。  データベースあたりの最大仮想コアが 0.5 の場合、Gen 5 では仮想コアあたりの最大同時ワーカー数が 100 なので、最大同時ワーカー数は 50 です。  その他にもデータベースあたりの最大仮想コア数設定が 1 仮想コア以下である場合は、最大同時ワーカー数が同様に再スケールされます。
 
 エラスティック プールのすべての仮想コアがビジーの場合は、プール内の各データベースが、同量のコンピューティング リソースを受け取ってクエリを処理します。 SQL Database サービスは、コンピューティング時間を均等にすることで、データベース間におけるリソース共有の公平性を実現します。 それ以外の場合、エラスティック プールのリソース共有の公平性は、データベースあたりの仮想コア分が 0 以外の値に設定されているときに、リソース量に加えて各データベースに適用されることが保証されます。
 

@@ -1,7 +1,7 @@
 ---
 title: 言語アナライザーを追加する - Azure Search
 description: Azure Search での英語以外のクエリおよびインデックスのための多言語字句テキスト解析について説明します。
-ms.date: 01/31/2019
+ms.date: 02/14/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b5c562994c169a8c5d51ee31a9606c5c40162603
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 20a8d9f5b575fca5471916af0183257f2a43d5cb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007610"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328295"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Azure Search のインデックスに言語アナライザーを追加する
 
-"*言語アナライザー*" は、[フルテキスト検索エンジン](https://docs.microsoft.com/azure/search/search-lucene-query-architecture)固有のコンポーネントであり、対象言語の言語規則を使用して字句解析を実行します。 すべての検索可能フィールドには、`analyzer` プロパティがあります。 インデックスに翻訳された文字列が含まれる場合 (英語と中国語のテキストが別のフィールドになっている場合など)、各フィールドで言語アナライザーを指定して、これらのアナライザーの豊富な言語機能にアクセスできます。  
+"*言語アナライザー*" は、[テキスト アナライザー](search-analyzers.md)の固有の種類であり、対象言語の言語規則を使用して字句解析を実行します。 すべての検索可能フィールドには、**analyzer** プロパティがあります。 インデックスに翻訳された文字列が含まれる場合 (英語と中国語のテキストが別のフィールドになっている場合など)、各フィールドで言語アナライザーを指定して、これらのアナライザーの豊富な言語機能にアクセスできます。  
 
 Azure Search では、Lucene によって提供される 35 個のアナライザーと、Office および Bing で使用されるマイクロソフト独自の自然言語処理技術によって提供される 50 個のアナライザーがサポートされています。
 
-## <a name="compare-language-analyzer-types"></a>言語アナライザーの種類を比較する 
+## <a name="comparing-analyzers"></a>アナライザーの比較
 
 開発者によっては、使い慣れた簡単なオープン ソース ソリューションである Lucene を好む場合があります。 Lucene の言語アナライザーは高速です。しかし、マイクロソフトのアナライザーには高度な機能があります。たとえば、レンマ化、単語複混合化 (ドイツ語、デンマーク語、オランダ語、スウェーデン語、ノルウェー語、エストニア語、フィンランド語、ハンガリー語、スロバキア語などの言語で)、エンティティ認識 (URL、電子メール、日付、数値) などです。 可能であれば、マイクロソフトと Lucene の両方のアナライザーを比較し、より適したものを選んでください。 
 
@@ -49,15 +49,17 @@ Azure Search では、Lucene によって提供される 35 個のアナライ�
  > [!Tip]
  > [Search Analyzer Demo](https://alice.unearth.ai/) では、標準 Lucene アナライザー、Lucene の英語アナライザー、Microsoft の英語自然言語プロセッサによって生成された結果の比較が横並びに表示されます。 指定した検索の入力ごとに、各アナライザーの結果が隣接する列に表示されます。
 
-## <a name="analyzer-configuration"></a>アナライザーの構成
+## <a name="configuring-analyzers"></a>アナライザーの構成
 
-インデックス定義の各フィールドについて、言語とベンダーを指定するアナライザー名を `analyzer` プロパティに設定できます。 そのフィールドに対してインデックスの作成および検索を行う場合は、同じアナライザーが適用されます。 たとえば、英語、フランス語、スペイン語によるホテルの説明を含む個別のフィールドを同じインデックスに同時に作成できます。  
+言語アナライザーはそのままで使用されます。 インデックス定義の各フィールドについて、言語と言語スタック (Microsoft または Lucene) を指定するアナライザー名を **analyzer** プロパティに設定できます。 そのフィールドに対してインデックスの作成および検索を行う場合は、同じアナライザーが適用されます。 たとえば、英語、フランス語、スペイン語によるホテルの説明を含む個別のフィールドを同じインデックスに同時に作成できます。 または、**analyzer** ではなく **indexAnalyzer** と **searchAnalyzer** を使用して、インデックスの作成時とクエリの実行時で異なる分析規則を設定することができます。 
 
-**searchFields** クエリ パラメーターを使用して、クエリ内で検索対象とする言語固有のフィールドを指定します。 アナライザー プロパティを含むクエリの例は、「ドキュメントの検索」で確認できます。 
+**searchFields** クエリ パラメーターを使用して、クエリ内で検索対象とする言語固有のフィールドを指定します。 アナライザー プロパティを含むクエリの例は、「[ドキュメントの検索](https://docs.microsoft.com/rest/api/searchservice/search-documents)」で確認できます。 
 
 インデックス プロパティについて詳しくは、「[Create Index &#40;Azure Search Service REST API&#41; (インデックスの作成 &#40;Azure Search Service REST API&#41;)](https://docs.microsoft.com/rest/api/searchservice/create-index)」をご覧ください。 Azure Search での解析について詳しくは、[Azure Search でのアナライザー](https://docs.microsoft.com/azure/search/search-analyzers)に関する記事をご覧ください。
 
-## <a name="analyzer-list"></a>アナライザー一覧  
+<a name="language-analyzer-list"></a>
+
+## <a name="language-analyzer-list"></a>言語アナライザー一覧 
  サポートされている言語と、Lucene およびマイクロソフトのアナライザーの名前を以下に一覧します。  
 
 |言語|Microsoft のアナライザーの名前|Lucene のアナライザーの名前|  

@@ -1,28 +1,28 @@
 ---
 title: クイック スタート:音声を認識する (JavaScript (ブラウザー)) - 音声サービス
 titleSuffix: Azure Cognitive Services
-description: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する方法について説明します
+description: ブラウザーで JavaScript と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: fmegen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: d51624e5ae4d0e1052b562cd9142238828614597
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8e1f880c57b0db0a2f68fbe26e99679769fdee6c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872181"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56448043"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>クイック スタート: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>クイック スタート:ブラウザーで JavaScript と Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 この記事では、音声をテキストに文字起こしする Web サイトを、Cognitive Services Speech SDK の JavaScript バインドを使用して作成する方法について説明します。
-このアプリケーションは、Microsoft Cognitive Services Speech SDK ([ダウンロード バージョン 1.2.0](https://aka.ms/csspeech/jsbrowserpackage)) が基になっています。
+このアプリケーションは、Microsoft Cognitive Services Speech SDK ([ダウンロード バージョン 1.3.0](https://aka.ms/csspeech/jsbrowserpackage)) が基になっています。
 
 ## <a name="prerequisites"></a>前提条件
 

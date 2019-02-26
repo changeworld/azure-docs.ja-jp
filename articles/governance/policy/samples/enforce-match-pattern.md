@@ -1,6 +1,6 @@
 ---
 title: サンプル - 一致パターンを強制する
-description: このサンプル ポリシーは、リソースが名前付け規則に対する一致パターンを満たしていることを要求します。
+description: このサンプル ポリシー定義は、名前付け規則に対する一致パターンを満たしていることをリソースに要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4a001316afb489c7147153b5a2de076a5a425c93
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8fdbd6bc319a85c240eddcc5513c8e900329870b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241811"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341387"
 ---
-# <a name="enforce-match-pattern-for-naming-conventions"></a>名前付け規則の一致パターンを強制する
+# <a name="sample---enforce-match-pattern-for-naming-conventions"></a>サンプル - 名前付け規則の一致パターンを強制する
 
 リソース名は名前付け規則に対する一致パターンを満たしている必要があります。 許可される一致パターンをパラメーターとして指定します。
 

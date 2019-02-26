@@ -1,6 +1,6 @@
 ---
 title: サンプル - 許可された ExpressRoute の SKU
-description: このサンプル ポリシーでは、ExpressRoute が承認された SKU を使用することを要求します。
+description: このサンプル ポリシー定義は、承認された SKU の使用を ExpressRoute に要求します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/29/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2e1ab0696cc89502715ae176ee58f73449095c79
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 818bb1c0aeac49daf2564c67bf095837b00853e5
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242819"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337630"
 ---
-# <a name="allowed-expressroute-skus"></a>許可された ExpressRoute の SKU
+# <a name="sample---allowed-expressroute-skus"></a>サンプル - 許可された ExpressRoute の SKU
 
 このポリシーでは、ExpressRoute が承認された SKU を使用することを要求します。 許可された SKU の配列を指定します。
 

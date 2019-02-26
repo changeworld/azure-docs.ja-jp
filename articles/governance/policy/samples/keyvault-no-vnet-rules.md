@@ -1,6 +1,6 @@
 ---
-title: サンプル - 仮想ネットワーク エンドポイントがない Key Vault コンテナーの監査
-description: このサンプル ポリシーでは、仮想ネットワーク サービス エンドポイントがないインスタンスを検出するために、Key Vault のコンテナーを監査します。
+title: サンプル - 仮想ネットワーク エンドポイントがない Key Vault の監査
+description: このサンプル ポリシー定義では、仮想ネットワーク サービス エンドポイントがないインスタンスを検出するために、Key Vault のコンテナーを監査します。
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: c9a5359303c1feecfbc905099a1bed2fc10fa52d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6b53c94787cfcabae1072f9879f14e0d890e967c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245798"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341524"
 ---
-# <a name="key-vault-vaults-with-no-virtual-network-endpoints"></a>仮想ネットワーク エンドポイントがない Key Vault コンテナー
+# <a name="sample---key-vault-vaults-with-no-virtual-network-endpoints"></a>サンプル - 仮想ネットワーク エンドポイントがない Key Vault コンテナー
 
 このポリシーでは、仮想ネットワーク エンドポイントがない Key Vault コンテナーを監査します。 これは、セキュリティ要件を適用するために使用します。 詳細については、[Key Vault の仮想ネットワーク サービス エンドポイント](../../../key-vault/key-vault-overview-vnet-service-endpoints.md)に関するページを参照してください
 

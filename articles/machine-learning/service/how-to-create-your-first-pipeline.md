@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4698268d8e7798d0664d9eb6c33862d9641ff9fc
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: f5d453fbacb44105c491c9e69085a219099943fa
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895586"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326910"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Azure Machine Learning SDK を使用して機械学習パイプラインを作成および実行する
 
@@ -339,7 +339,7 @@ pipeline_run1.wait_for_completion()
 
 発行されたすべてのパイプラインに REST エンドポイントがあります。 このエンドポイントでは、Python ではないクライアントなどの外部システムからパイプラインの実行を呼び出します。 このエンドポイントでは、バッチ スコアリングと再トレーニングのシナリオでの "管理された再現性" が有効になります。
 
-前のパイプラインの実行を呼び出すには、「[AzureCliAuthentication class](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)」 (AzureCliAuthentication クラス) で説明されているように、Azure Active Directory 認証ヘッダー トークンが必要です。
+前のパイプラインの実行を呼び出すには、「[AzureCliAuthentication クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py)」で説明されているように、Azure Active Directory 認証ヘッダー トークンが必要です。詳しくは、[Azure Machine Learning の認証](https://aka.ms/pl-restep-auth)に関するノートブックもご覧ください。
 
 ```python
 response = requests.post(published_pipeline1.endpoint, 

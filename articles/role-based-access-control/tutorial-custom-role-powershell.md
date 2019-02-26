@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - Azure PowerShell を使用してカスタム ロールを作成する | Microsoft Docs
-description: Azure PowerShell を使用してカスタム ロールを作成してみましょう。
+title: チュートリアル - Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する | Microsoft Docs
+description: Azure PowerShell を使用して Azure リソースのカスタム ロールを作成してみましょう。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 9dddef43e1ac5f3bcedcc08b313eea300436ea61
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 23ee8aef4ab9b7ea54dae0587e2caaafbf08e5b2
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106429"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339160"
 ---
-# <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用してカスタム ロールを作成する
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する
 
-[組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure PowerShell を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプション内のすべてを閲覧し、サポート チケットを開くこともできます。
+[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 このチュートリアルでは、Azure PowerShell を使用して、Reader Support Tickets というカスタム ロールを作成します。 このカスタム ロールが割り当てられたユーザーは、サブスクリプション内のすべてを閲覧し、サポート チケットを開くこともできます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -277,4 +277,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [PowerShell を使用してカスタム ロールを作成する](custom-roles-powershell.md)
+> [Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](custom-roles-powershell.md)

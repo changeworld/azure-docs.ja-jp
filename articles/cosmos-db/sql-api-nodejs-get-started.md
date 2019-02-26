@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 9c0255382e2cfe09683931408d25ffb3f60419d1
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 4441797eb41dc909a98be3c42931140e71e36f80
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508898"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270353"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル:JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
 
@@ -72,7 +72,10 @@ ms.locfileid: "55508898"
      * ```touch app.js```
      * ```touch config.js```
 
-4. npm で @azure/cosmos モジュールをインストールします。 次のコマンドを使用します。
+4. `package.json` ファイルを作成して初期化します。 次のコマンドを使用します。
+   * ```npm init -y```
+
+5. npm で @azure/cosmos モジュールをインストールします。 次のコマンドを使用します。
    * ```npm install @azure/cosmos --save```
 
 ## <a id="Config"></a>アプリの構成を設定する
@@ -190,13 +193,12 @@ ms.locfileid: "55508898"
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
    ```
 
 1. 先ほど保存した ```config.endpoint``` と ```config.primaryKey``` を使用して新しい CosmosClient を作成するために、以下のコードをコピーして貼り付けます。
 
    ```javascript
-   const url = require('url');
+   const config = require('./config');
 
    // ADD THIS PART TO YOUR CODE
    const endpoint = config.endpoint;
@@ -280,7 +282,6 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
 
    const endpoint = config.endpoint;
    const masterKey = config.primaryKey;
@@ -382,7 +383,6 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    const CosmosClient = require('@azure/cosmos').CosmosClient;
 
    const config = require('./config');
-   const url = require('url');
 
    const endpoint = config.endpoint;
    const masterKey = config.primaryKey;
@@ -695,7 +695,6 @@ Azure Cosmos DB は、JSON 項目の削除をサポートします。
 const CosmosClient = require('@azure/cosmos').CosmosClient;
 
 const config = require('./config');
-const url = require('url');
 
 const endpoint = config.endpoint;
 const masterKey = config.primaryKey;
@@ -889,9 +888,9 @@ node app.js
 * [Azure Cosmos DB アカウント][create-account]。 
 * GitHub で入手可能な[使用の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started)ソリューション。 
 
-npm で **@azure/cosmos** モジュールをインストールします。 次のコマンドを使用します。 
+npm でプロジェクトの依存関係をインストールします。 次のコマンドを使用します。 
 
-* ```npm install @azure/cosmos --save``` 
+* ```npm install``` 
 
 次に、```config.js``` ファイルで、config.endpoint と config.primaryKey の値を更新します。このとき、「[手順 3:アプリの構成を設定する](#Config)」の説明に従います。  
 

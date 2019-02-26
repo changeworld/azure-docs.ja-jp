@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 72493c6bba556314c3652be5251463d1d1e005bd
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 5d4d74d4c3b5ec6779458e84da07c03033c37935
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383745"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330615"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>クラシック ストレージ リソース削除エラーのトラブルシューティング
 この記事では、Azure のクラシック ストレージ アカウント、コンテナー、*.vhd ページ BLOB ファイルを削除しようとして次のいずれかのエラーが発生した場合のトラブルシューティング ガイダンスを提供します。 
@@ -21,10 +21,10 @@ ms.locfileid: "54383745"
 
 この記事で取り上げるのは、クラシック ストレージ リソースに関する問題のみです。 ユーザーが Azure portal、PowerShell、または CLI を使用してクラシック仮想マシンを削除しても、ディスクが自動的に削除されることはありません。 このユーザーは、"ディスク" リソースを削除するオプションを利用できるようになります。 このオプションが選択されていない場合、"ディスク" リソースにより、ストレージ アカウント、コンテナー、実際の *.vhd ページ BLOB ファイルの削除が妨げられます。
 
-Azure ディスクについて詳しくは、[こちら](../../virtual-machines/windows/about-disks-and-vhds.md)をご覧ください。 Azure では、破損を防ぐため、VM に接続されているディスクは削除できません。 また、VM にアタッチされているページ BLOB があるコンテナーやストレージ アカウントも削除されません。 
+Azure ディスクについて詳しくは、[こちら](../../virtual-machines/windows/managed-disks-overview.md)をご覧ください。 Azure では、破損を防ぐため、VM に接続されているディスクは削除できません。 また、VM にアタッチされているページ BLOB があるコンテナーやストレージ アカウントも削除されません。 
 
 ## <a name="what-is-a-disk"></a>"ディスク" とは
-"ディスク" リソースは、*.vhd ページ BLOB ファイルを OS ディスクまたはデータ ディスクとして仮想マシンにマウントする場合に使用されます。 OS ディスクまたはデータ ディスク リソースは、削除されるまで、*.vhd ファイルのリースを保持し続けます。 上のイメージで示されているパスに含まれているストレージ リソースは、"ディスク" リソースが指している場合、削除できません。
+"ディスク" リソースは、*.vhd ページ BLOB ファイルを OS ディスクまたはデータ ディスクとして仮想マシンにマウントする場合に使用されます。 OS ディスクまたはデータ ディスク リソースは、削除されるまで、*.vhd ファイルのリースを保持し続けます。 以下の画像で示されているパスに含まれているストレージ リソースは、"ディスク" リソースが指している場合、削除できません。
 
 ![ディスク (クラシック) の [プロパティ] ウィンドウが開かれている、ポータルのスクリーンショット](./media/storage-classic-cannot-delete-storage-account-container-vhd/Disk_Lease_Illustration.jpg) 
 

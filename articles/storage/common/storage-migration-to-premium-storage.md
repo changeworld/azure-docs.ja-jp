@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 36889fc6cb8dbec77136dc8cea08416e51837243
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: bb88bf7ddaa93336c812b1ddc9794dad8daa64b7
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564835"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330581"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
 
@@ -32,7 +32,7 @@ Azure Premium Storage は、高負荷の I/O ワークロードを実行する�
 他のプラットフォームから Azure Premium Storage への VM の移行、または Standard Storage から Premium Storage への既存の Azure VM の移行が可能です。 このガイドでは、これら 2 つのシナリオの手順について説明します。 状況に応じて、関連するセクションに示されている手順に従ってください。
 
 > [!NOTE]
-> Premium Storage の機能の概要と価格については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)」をご覧ください。 高い IOPS を必要とする仮想マシンのディスクは Azure Premium Storage に移行して、アプリケーションが最高のパフォーマンスを発揮できるようにすることをお勧めします。 ディスクが高い IOPS を必要としない場合は、ディスクを Standard Storage 内に保持することでコストを抑えることができます。Standard Storage の場合、仮想マシンのディスク データは SSD ではなくハード ディスク ドライブ (HDD) に格納されます。
+> Premium SSDe の機能の概要と価格については、[IaaS VM 用のディスクの種類の選択](../../virtual-machines/windows/disks-types.md#premium-ssd)に関するページを参照してください。 高い IOPS を必要とする仮想マシンのディスクは Azure Premium Storage に移行して、アプリケーションが最高のパフォーマンスを発揮できるようにすることをお勧めします。 ディスクが高い IOPS を必要としない場合は、ディスクを Standard Storage 内に保持することでコストを抑えることができます。Standard Storage の場合、仮想マシンのディスク データは SSD ではなくハード ディスク ドライブ (HDD) に格納されます。
 >
 
 移行プロセス全体を完了するには、このガイドで説明する手順の前後で追加の操作が必要になる場合があります。 たとえば、アプリケーションをしばらく停止することが必要になる場合がある、仮想ネットワークやエンドポイントの構成や、アプリケーション内部のコード変更などがあります。 これらの操作は、アプリケーションごとに異なります。Premium Storage への完全な移行をできる限りシームレスに行うには、このガイドで説明する手順と共に、これらの必要な操作を完了してください。
@@ -69,7 +69,7 @@ Premium Storage アカウントには、[Azure Storage のスケーラビリテ�
 |:--- |:--- |
 | ディスク容量:35 TB<br />スナップショット容量:10 TB |受信と送信を合わせて最大 50 GB/秒 |
 
-Premium Storage の仕様の詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](../../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)」を参照してください。
+Premium Storage の仕様の詳細については、[Azure Storage のスケーラビリティとパフォーマンスのターゲット](storage-scalability-targets.md#premium-storage-account-scale-limits)に関するページを参照してください。
 
 #### <a name="disk-caching-policy"></a>ディスク キャッシュ ポリシー
 既定では、ディスクのキャッシュ ポリシーは、すべてのPremium データ ディスクに対して「*読み取り専用*」、VM にアタッチされた Premium オペレーティング システム ディスクに対して「*読み取り/書き込み*」です。 アプリケーションの IO パフォーマンスを最適化するには、この構成をお勧めします。 書き込み量の多いディスクや書き込み専用のディスク (SQL Server ログ ファイルなど) の場合は、ディスク キャッシュを無効にすることで、アプリケーションのパフォーマンスを向上できる場合があります。 既存のデータ ディスクのキャッシュ設定は、[Azure Portal](https://portal.azure.com)、または *Set-AzureDataDisk* コマンドレットの *-HostCaching* パラメーターを使用して更新できます。
@@ -748,7 +748,7 @@ Update-AzureVM  -VM $vm
 2. VM にログインし、現在のボリュームのデータを、そのボリュームにマッピングされる新しいディスクにコピーします。 この操作を、新しいディスクにマッピングする必要のある現在のボリュームすべてに対して実行します。
 3. 次に、新しいディスクに切り替えるようにアプリケーションの設定を変更し、以前のボリュームをデタッチします。
 
-ディスク パフォーマンス向上のためにアプリケーションをチューニングする場合は、「[アプリケーションのパフォーマンスの最適化](../../virtual-machines/windows/premium-storage-performance.md#optimizing-application-performance)」をご覧ください。
+ディスクのパフォーマンスを向上するためのアプリケーションの調整については、[高パフォーマンス用の設計](../../virtual-machines/windows/premium-storage-performance.md)に関する記事の最適化アプリケーションのパフォーマンスのセクションを参照してください。
 
 ### <a name="application-migrations"></a>アプリケーションの移行
 データベースやその他の複雑なアプリケーションを移行する場合は、アプリケーションの提供元が指定する特別な手順が必要になることがあります。 各アプリケーションのドキュメントを参照してください。 例:  通常、データベースは、バックアップと復元を使用して移行できます。
@@ -765,7 +765,7 @@ Update-AzureVM  -VM $vm
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Premium Storage:Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)
+* [IaaS VM 用のディスクの種類の選択](../../virtual-machines/windows/disks-types.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
