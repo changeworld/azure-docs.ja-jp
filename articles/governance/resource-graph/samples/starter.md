@@ -1,6 +1,6 @@
 ---
 title: 初歩的なクエリのサンプル
-description: いくつかの初歩的なクエリを実行するには、Azure Resource Graph を使用します。
+description: Azure Resource Graph を使用して、リソースのカウント、リソースの並べ替え、特定のタグによるクエリなど、いくつかの初歩的なクエリを実行します。
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 85d54503e980d8c51128c8b5235197759a536003
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fd945b5fd9f26cc65c5b049406831228a3d5f327
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852356"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338718"
 ---
 # <a name="starter-resource-graph-queries"></a>Resource Graph の初歩的なクエリ
 

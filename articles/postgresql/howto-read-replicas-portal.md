@@ -1,166 +1,174 @@
 ---
-title: Azure Database for PostgreSQL の読み取りレプリカを Azure portal で管理する
-description: この記事では、Azure portal での Azure Database for PostgreSQL の読み取りレプリカの管理について説明します。
+title: Azure Portal から Azure Database for PostgreSQL の読み取りレプリカを管理する
+description: Azure Portal から Azure Database for PostgreSQL の読み取りレプリカを管理する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 37150f67e29dae0357c978cfaea9abeebeef428c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 02/19/2019
+ms.openlocfilehash: b34b103d3b710b90fd7b396f2c8d0e7adc27aaca
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691407"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454669"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>Azure portal で読み取りレプリカを作成および管理する方法
+# <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Azure Portal から読み取りレプリカを作成および管理する
+
+この記事では、Azure Portal から Azure Database for PostgreSQL の読み取りレプリカを作成および管理する方法について説明します。 読み取りレプリカの詳細については、[概要](concepts-read-replicas.md)を参照してください。
 
 > [!IMPORTANT]
 > 読み取りレプリカ機能はパブリック プレビュー段階にあります。
 
-
-この記事では、Azure portal を使用して Azure Database for PostgreSQL サービスの読み取りレプリカを作成および管理する方法を学習します。 読み取りレプリカの詳細については、[概念のドキュメントを読んでください](concepts-read-replicas.md)。
-
 ## <a name="prerequisites"></a>前提条件
-- マスター サーバーになる [Azure Database for PostgreSQL サーバー ](quickstart-create-server-database-portal.md)。
+マスター サーバーになる [Azure Database for PostgreSQL サーバー](quickstart-create-server-database-portal.md)。
 
 ## <a name="prepare-the-master-server"></a>マスター サーバーの準備
-このマスターの準備手順は、汎用サーバーとメモリ最適化サーバーのみに適用されます。
+汎用またはメモリ最適化レベルにあるマスター サーバーを準備するには、次の手順を使用する必要があります。
 
-マスター サーバーでは、**azure.replication_support** パラメーターを REPLICA に設定する必要があります。 このパラメーターの変更を有効にするには、サーバーの再起動が必要です。
+マスター サーバーでは、`azure.replication_support` パラメーターを **[REPLICA]** に設定する必要があります。 このパラメーターが変更された場合、その変更を有効にするにはサーバーの再起動が必要です。
 
-1. Azure portal で、マスターとして使用する既存の Azure Database for PostgreSQL サーバーを選択します。
+1. Azure Portal で、マスターとして使用する既存の Azure Database for PostgreSQL サーバーを選択します。
 
-2. 左側のメニューから **[サーバー パラメーター]** を選択します。
+2. 左側のメニューで、**[サーバー パラメーター]** を選択します。
 
-3. **azure.replication_support** を検索します。
+3. `azure.replication_support` パラメーターを検索します。
 
-   ![Azure Database for PostgreSQL - azure.replication_support](./media/howto-read-replicas-portal/azure-replication-parameter.png)
+   ![azure.replication_support パラメーターを検索する](./media/howto-read-replicas-portal/azure-replication-parameter.png)
 
-4. **azure.replication_support** を REPLICA に設定します。 変更を**保存**します。
+4. `azure.replication_support` パラメーター値を **[REPLICA]** に設定します。 **[保存]** を選択して変更を保持します。
 
-   ![Azure Database for PostgreSQL - REPLICA と保存](./media/howto-read-replicas-portal/save-parameter-replica.png)
+   ![パラメーターを [REPLICA] に設定し、変更を保存する](./media/howto-read-replicas-portal/save-parameter-replica.png)
 
-5. 保存が完了すると、通知が届きます。
+5. 変更を保存すると、通知が受信されます。
 
-   ![Azure Database for PostgreSQL - 保存の通知](./media/howto-read-replicas-portal/parameter-save-notification.png)
+   ![通知を保存する](./media/howto-read-replicas-portal/parameter-save-notification.png)
 
-6. 保存後、サーバーを再起動して変更を適用します。 サーバーの再起動方法については、[再起動に関するドキュメント](howto-restart-server-portal.md)を参照してください。
+6. サーバーを再起動して変更を適用します。 サーバーを再起動する方法については、[Azure Database for PostgreSQL サーバーの再起動](howto-restart-server-portal.md)に関するページを参照してください。
 
 
 ## <a name="create-a-read-replica"></a>読み取りレプリカを作成します
-読み取りレプリカは、次の手順を使用して作成できます。
-1.  マスターとして使用する既存の Azure Database for PostgreSQL サーバーを選択します。 
+読み取りレプリカを作成するには、次の手順に従います。
 
-2.  [設定] のメニューから [レプリケーション] を選択します。
+1.  マスター サーバーとして使用する既存の Azure Database for PostgreSQL サーバーを選択します。 
 
-   汎用マスターまたはメモリ最適化マスターで **azure.replication_support** を REPLICA に設定してサーバーを再起動していない場合は、それを行うように指示するメッセージが表示されます。 作成を続行する前に、それを実行します。
+2.  サーバー メニューで、**[設定]** の **[レプリケーション]** を選択します。
 
-3.  [レプリカの追加] を選択します。
+   まだ汎用またはメモリ最適化マスター サーバーで `azure.replication_support` パラメーターを **[REPLICA]** に設定し、サーバーを再起動していない場合は、通知が受信されます。 レプリカを作成する前に、その手順を完了します。
 
-   ![Azure Database for PostgreSQL - レプリカの追加](./media/howto-read-replicas-portal/add-replica.png)
+3.  **[レプリカの追加]** を選択します。
 
-4.  レプリカ サーバーの名前を入力し、[OK] を選択してレプリカの作成を確定します。
+   ![レプリカを追加する](./media/howto-read-replicas-portal/add-replica.png)
 
-   ![Azure Database for PostgreSQL - レプリカの名前指定](./media/howto-read-replicas-portal/name-replica.png) 
+4.  読み取りレプリカの名前を入力します。 **[OK]** を選択して、レプリカの作成を確認します。
+
+   ![レプリカに名前を付ける](./media/howto-read-replicas-portal/name-replica.png) 
+
+レプリカは、マスターと同じサーバー構成を使用して作成されます。 レプリカが作成されたら、マスター サーバーとは独立にいくつかの設定 (コンピューティング世代、仮想コア、ストレージ、およびバックアップ保持期間) を変更できます。 価格レベルも独立して変更できます (Basic レベルへの変更や Basic レベルからの変更を除く)。
 
 > [!IMPORTANT]
-> マスターと同じサーバー構成で、読み取りレプリカが作成されます。 レプリカが作成されたら、マスター サーバーとは関係なく、価格レベル (Basic への変更および Basic からの変更を除く)、コンピューティング世代、仮想コア、ストレージ、バックアップ保持期間を変更できます。
+> マスター サーバー構成が新しい値に更新される前に、レプリカ構成をそれと同等以上の値に更新してください。 このアクションにより、レプリカがマスターのどのような変更にも追従できるようになります。
 
-> [!IMPORTANT]
-> マスターのサーバー構成を新しい値に更新する前に、レプリカの構成をそれと同等以上の値に更新する必要があります。 そうしないと、実行しようとしたときにエラーが発生します。 これにより、レプリカはマスターに対して行われる変更に対応できます。 
+読み取りレプリカが作成されたら、それを **[レプリケーション]** ウィンドウから表示できます。
 
-
-レプリカ サーバーは、作成後、[レプリケーション] ウィンドウから確認できます。
-
-![Azure Database for PostgreSQL - 新しいレプリカ](./media/howto-read-replicas-portal/list-replica.png)
+![[レプリケーション] ウィンドウに新しいレプリカを表示する](./media/howto-read-replicas-portal/list-replica.png)
  
 
 ## <a name="stop-replication"></a>レプリケーションの停止
+マスター サーバーと読み取りレプリカの間のレプリケーションを停止できます。
 
 > [!IMPORTANT]
-> サーバーへのレプリケーションの停止は、元に戻すことができません。 マスターとレプリカの間のレプリケーションを停止すると、取り消すことができません。 レプリカ サーバーはスタンドアロン サーバーになり、読み取りと書き込みをサポートするようになります。 このサーバーをもう一度レプリカにすることはできません。
+> マスター サーバーと読み取りレプリカへのレプリケーションを停止した後、それを元に戻すことはできません。 読み取りレプリカは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。
 
-Azure portal からマスターとレプリカの間のレプリケーションを停止するには、次の手順に従います。
+Azure Portal からマスター サーバーと読み取りレプリカの間のレプリケーションを停止するには、次の手順に従います。
+
 1.  Azure portal で、ご利用のマスター Azure Database for PostgreSQL サーバーを選択します。
 
-2.  [設定] のメニューから [レプリケーション] を選択します。
+2.  サーバー メニューで、**[設定]** の **[レプリケーション]** を選択します。
 
 3.  レプリケーションを停止するレプリカ サーバーを選択します。
 
-   ![Azure Database for PostgreSQL - レプリカの選択](./media/howto-read-replicas-portal/select-replica.png)
+   ![レプリカを選択する](./media/howto-read-replicas-portal/select-replica.png)
  
-4.  [レプリケーションの停止] を選択します。
+4.  **[レプリケーションを停止する]** を選択します。
 
-   ![Azure Database for PostgreSQL - [レプリケーションの停止] の選択](./media/howto-read-replicas-portal/select-stop-replication.png)
+   ![レプリケーションの停止を選択する](./media/howto-read-replicas-portal/select-stop-replication.png)
  
-5.  [OK] をクリックして、レプリケーションの停止を確定します。
+5.  **[OK]** を選択して、レプリケーションを停止します。
 
-   ![Azure Database for PostgreSQL - レプリケーションの停止の確定](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+   ![レプリケーションの停止を確認する](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
 
-## <a name="delete-a-master"></a>マスターの削除
+## <a name="delete-a-master-server"></a>マスター サーバーを削除します
+マスター サーバーを削除するには、スタンドアロンの Azure Database for PostgreSQL サーバーの削除と同じ手順を使用します。 
 
 > [!IMPORTANT]
-> マスター サーバーを削除すると、すべてのレプリカ サーバーへのレプリケーションが停止されます。 これでレプリカ サーバーは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。
-マスターを削除する場合は、スタンドアロンの Azure Database for PostgreSQL サーバーの場合と同じ手順に従います。 Azure portal からサーバーを削除するには、以下を実行します。
+> マスター サーバーを削除すると、すべての読み取りレプリカへのレプリケーションが停止されます。 読み取りレプリカは、読み取りと書き込みの両方をサポートするようになったスタンドアロン サーバーになります。
+
+Azure Portal からサーバーを削除するには、次の手順に従います。
 
 1.  Azure portal で、ご利用のマスター Azure Database for PostgreSQL サーバーを選択します。
 
-2.  [概要] で [削除] を選択します。
+2.  サーバーの **[概要]** ページを開きます。 **[削除]** を選択します。
 
-   ![Azure Database for PostgreSQL - サーバーの削除](./media/howto-read-replicas-portal/delete-server.png)
+   ![サーバーの [概要] ページで、マスター サーバーの削除を選択します。](./media/howto-read-replicas-portal/delete-server.png)
  
-3.  マスター サーバーの名前を入力し、[削除] を選択してマスター サーバーの削除を確定します。
+3.  削除するマスター サーバーの名前を入力します。 **[削除]** を選択して、マスター サーバーの削除を確認します。
 
-   ![Azure Database for PostgreSQL - 削除の確定](./media/howto-read-replicas-portal/confirm-delete.png)
+   ![マスター サーバーの削除を確認する](./media/howto-read-replicas-portal/confirm-delete.png)
  
 
 ## <a name="delete-a-replica"></a>レプリカの削除
-読み取りレプリカを削除するには、上のマスター サーバーの削除と同じ手順に従います。 まず、レプリカの [概要] ページを開き、[削除] を選択します。
+マスター サーバーの削除と同様の方法で読み取りレプリカを削除できます。
 
-   ![Azure Database for PostgreSQL - レプリカの削除](./media/howto-read-replicas-portal/delete-replica.png)
+- Azure Portal で、読み取りレプリカの **[概要]** ページを開きます。 **[削除]** を選択します。
+
+   ![レプリカの [概要] ページで、レプリカの削除を選択します。](./media/howto-read-replicas-portal/delete-replica.png)
  
-または、[レプリケーション] ウィンドウから削除することもできます。
+次の手順に従って、**[レプリケーション]** ウィンドウから読み取りレプリカを削除することもできます。
+
 1.  Azure portal で、ご利用のマスター Azure Database for PostgreSQL サーバーを選択します。
 
-2.  [設定] のメニューから [レプリケーション] を選択します。
+2.  サーバー メニューで、**[設定]** の **[レプリケーション]** を選択します。
 
-3.  削除するレプリカ サーバーを選択します。 
+3.  削除する読み取りレプリカを選択します。
 
-   ![Azure Database for PostgreSQL - レプリカの選択](./media/howto-read-replicas-portal/select-replica.png)
+   ![削除するレプリカを選択する](./media/howto-read-replicas-portal/select-replica.png)
  
-4.  [レプリカの削除] を選択します。
+4.  **[レプリカの削除]** を選択します。
 
-   ![Azure Database for PostgreSQL - [レプリカの削除] の選択](./media/howto-read-replicas-portal/select-delete-replica.png)
+   ![レプリカの削除を選択する](./media/howto-read-replicas-portal/select-delete-replica.png)
  
-5.  レプリカの名前を入力し、[削除] を選択してレプリカの削除を確定します。
+5.  削除するレプリカの名前を入力します。 **[削除]** を選択して、レプリカの削除を確認します。
 
-   ![Azure Database for PostgreSQL - レプリカの削除の確定](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   ![レプリカの削除を確認する](./media/howto-read-replicas-portal/confirm-delete-replica.png)
  
 
 ## <a name="monitor-a-replica"></a>レプリカの監視
-### <a name="max-lag-across-replicas"></a>Max Lag Across Replicas (レプリカ間の最大ラグ)
-**[Max lag across replicas]\(レプリカ間の最大ラグ\)** メトリックは、マスターと最も遅れているレプリカの間のラグをバイト単位で示します。 
+読み取りレプリカを監視するには 2 つのメトリックを使用できます。
 
-1.  Azure portal で、**マスター** Azure Database for PostgreSQL サーバーを選択します。
+### <a name="max-lag-across-replicas-metric"></a>Max Lag Across Replicas (レプリカ間の最大ラグ) メトリック
+**Max Lag Across Replicas (レプリカ間の最大ラグ)** メトリックは、マスター サーバーと最も遅れているレプリカの間のラグ (バイト単位) を示します。 
 
-2.  [メトリック] を選択します。 メトリック ウィンドウで、**[Max Lag Across Replicas]\(レプリカ間の最大ラグ\)** を選択します。
+1.  Azure Portal で、マスターの Azure Database for PostgreSQL サーバーを選択します。
 
-    ![Azure Database for PostgreSQL - レプリカ間の最大ラグの監視](./media/howto-read-replicas-portal/select-max-lag.png)
+2.  **[メトリック]** を選びます。 **[メトリック]** ウィンドウで、**[Max Lag Across Replicas] (レプリカ間の最大ラグ)** を選択します。
+
+    ![レプリカ間の最大ラグを監視する](./media/howto-read-replicas-portal/select-max-lag.png)
  
-3.  集計として **[Max]\(最大\)** を選択します。 
+3.  **[集計]** で **[Max] (最大)** を選択します。
 
-### <a name="replica-lag"></a>Replica Lag (レプリカ ラグ)
-**[Replica Lag]\(レプリカ ラグ\)** メトリックは、このレプリカで最後に再生されたトランザクションからの経過時間を示します。 マスターでトランザクションが発生していない場合、メトリックにはこのタイム ラグが反映されます。
 
-1.  Azure portal で、**レプリカ**の Azure Database for PostgreSQL サーバーを選択します。
+### <a name="replica-lag-metric"></a>Replica Lag (レプリカ ラグ) メトリック
+**Replica Lag (レプリカ ラグ)** メトリックは、レプリカで最後に再生されたトランザクションからの経過時間を示します。 マスターでトランザクションが発生していない場合、メトリックにはこのタイム ラグが反映されます。
 
-2.  [メトリック] を選択します。 メトリック ウィンドウで、**[Replica Lag]\(レプリカ ラグ\)** を選択します。
+1.  Azure Portal で、Azure Database for PostgreSQL の読み取りレプリカを選択します。
 
-   ![Azure Database for PostgreSQL - レプリカ ラグの監視](./media/howto-read-replicas-portal/select-replica-lag.png)
+2.  **[メトリック]** を選びます。 **[メトリック]** ウィンドウで、**[Replica Lag] (レプリカ ラグ)** を選択します。
+
+   ![レプリカ ラグを監視する](./media/howto-read-replicas-portal/select-replica-lag.png)
  
-3.  集計として **[Max]\(最大\)** を選択します。 
+3.  **[集計]** で **[Max] (最大)** を選択します。 
  
 ## <a name="next-steps"></a>次の手順
-- [Azure Database for PostgreSQL の読み取りレプリカ](concepts-read-replicas.md)について確認してください。
+[Azure Database for PostgreSQL の読み取りレプリカ](concepts-read-replicas.md)について確認してください。

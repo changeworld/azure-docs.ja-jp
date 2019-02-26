@@ -1,6 +1,6 @@
 ---
-title: Azure でのロールベースのアクセス制御 (RBAC) とは | Microsoft Docs
-description: Azure でのロールベースのアクセス制御 (RBAC) の概要を説明します。 ロールの割り当てを使用して、Azure でのリソースへのアクセスを制御します。
+title: Azure リソースのロールベースのアクセス制御 (RBAC) の概要 | Microsoft Docs
+description: Azure リソースのロールベースのアクセス制御 (RBAC) の概要について説明します。 ロールの割り当てを使用して、Azure リソースへのアクセスを制御します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 01/14/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c614ae9d157c6e4121701cb22213706020ee20a7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 2d8f3ffb4f7d90b053c8a285d62007f5655d9adb
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303323"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338633"
 ---
-# <a name="what-is-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) とは
+# <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Azure リソースのロールベースのアクセス制御 (RBAC) の概要
 
 クラウド リソースに対するアクセスの管理は、クラウドが使用している組織にとって重要な機能です。 ロールベースのアクセス制御 (RBAC) は、Azure のリソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、そのユーザーがアクセスできる領域を管理するのに役立ちます。
 
-Azure RBAC は [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 上に構築された承認システムであり、Azure 内のリソースに対するアクセスをきめ細かく管理できます。
+Azure RBAC は [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 上に構築された承認システムであり、Azure リソースに対するアクセスをきめ細かく管理できます。
 
 ## <a name="what-can-i-do-with-rbac"></a>RBAC でできること
 
@@ -72,15 +72,15 @@ Azure には複数の[組み込みロール](built-in-roles.md)があり、使�
 - [閲覧者](built-in-roles.md#reader) - 既存の Azure リソースを表示できます。
 - [ユーザー アクセス管理者](built-in-roles.md#user-access-administrator) - Azure リソースへのユーザー アクセスを管理できます。
 
-残りの組み込みロールは、特定の Azure リソースの管理を許可します。 たとえば、[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
+残りの組み込みロールは、特定の Azure リソースの管理を許可します。 たとえば、[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 組み込みロールが組織の特定のニーズを満たさない場合は、独自に [Azure リソースに対するカスタム ロール](custom-roles.md)を作成することができます。
 
-Azure には、オブジェクト内のデータへのアクセスを許可できるようにするデータ操作 (現在プレビュー段階) が導入されています。 たとえば、ユーザーがあるストレージ アカウントへのデータの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB またはメッセージを読み取ることができます。 詳しくは、「[ロール定義について](role-definitions.md)」をご覧ください。
+Azure には、オブジェクト内のデータへのアクセスを許可できるようにするデータ操作 (現在プレビュー段階) が導入されています。 たとえば、ユーザーがあるストレージ アカウントへのデータの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB またはメッセージを読み取ることができます。 詳しくは、[Azure リソースのロール定義](role-definitions.md)に関する記事をご覧ください。
 
 ### <a name="scope"></a>Scope (スコープ)
 
 "*スコープ*" は、アクセスが適用されるリソースのセットです。 ロールを割り当てるときに、スコープを定義することによって、許可される操作をさらに制限できます。 これは、1 つのリソース グループについてのみ、あるユーザーを [Web サイトの共同作業者](built-in-roles.md#website-contributor)として指定する場合に便利です。
 
-Azure では、複数のレベル ([管理グループ](../azure-resource-manager/management-groups-overview.md)、サブスクリプション、リソース グループ、リソース) でスコープを指定できます。 スコープは親子関係で構造化されています。
+Azure では、複数のレベル ([管理グループ](../governance/management-groups/index.md)、サブスクリプション、リソース グループ、リソース) でスコープを指定できます。 スコープは親子関係で構造化されています。
 
 ![ロール割り当てのスコープ](./media/overview/rbac-scope.png)
 
@@ -108,7 +108,7 @@ Azure では、複数のレベル ([管理グループ](../azure-resource-manage
 
 ## <a name="deny-assignments"></a>拒否割り当て
 
-これまでの RBAC は拒否のない許可のみのモデルでしたが、限定的にですが RBAC で拒否の割り当てがサポートされるようになりました。 ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、サービス プリンシパル、またはマネージド ID に一連の拒否アクションがアタッチされます。 ロールの割り当てでは "*許可される*" アクションのセットを定義しますが、拒否割り当てでは "*許可されない*" アクションのセットを定義します。 つまり、拒否割り当てでは、ロールの割り当てでアクセスを許可されている場合であっても、指定したアクションがユーザーによって実行されるのをブロックします。 ロールの割り当てより拒否割り当ての方が優先されます。 現在、拒否割り当ては**読み取り専用**であり、Azure によってのみ設定されます。 詳細については、「[拒否割り当てについて](deny-assignments.md)」と「[Azure portal を使用して拒否割り当てを表示する](deny-assignments-portal.md)」を参照してください。
+これまでの RBAC は拒否のない許可のみのモデルでしたが、限定的にですが RBAC で拒否の割り当てがサポートされるようになりました。 ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、サービス プリンシパル、またはマネージド ID に一連の拒否アクションがアタッチされます。 ロールの割り当てでは "*許可される*" アクションのセットを定義しますが、拒否割り当てでは "*許可されない*" アクションのセットを定義します。 つまり、拒否割り当てでは、ロールの割り当てでアクセスを許可されている場合であっても、指定したアクションがユーザーによって実行されるのをブロックします。 ロールの割り当てより拒否割り当ての方が優先されます。 現在、拒否割り当ては**読み取り専用**であり、Azure によってのみ設定されます。 詳しくは、[Azure リソースの拒否割り当て](deny-assignments.md)に関する記事および [Azure portal を使用した Azure リソースの拒否割り当ての表示](deny-assignments-portal.md)に関する記事をご覧ください。
 
 ## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>ユーザーがリソースへのアクセス権を持っているどうかを RBAC が特定する方法
 
@@ -132,7 +132,7 @@ Azure では、複数のレベル ([管理グループ](../azure-resource-manage
 
 ## <a name="next-steps"></a>次の手順
 
-- [クイック スタート:RBAC と Azure portal を使用してユーザーにアクセス権を付与する](quickstart-assign-role-user-portal.md)
-- [RBAC と Azure portal を使用してアクセスを管理する](role-assignments-portal.md)
+- [クイック スタート:Azure portal を使用して Azure リソースに対するユーザーのアクセス権を表示する](check-access.md)
+- [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
 - [Azure での各種ロールについて](rbac-and-directory-admin-roles.md)
 - [エンタープライズ クラウドの導入: Azure でのリソース アクセス管理](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

@@ -1,6 +1,6 @@
 ---
 title: 高度なクエリのサンプル
-description: いくつかの高度なクエリを実行するには、Azure Resource Graph を使用します。
+description: Azure Resource Graph を使用して、VMSS の容量、使用されているすべてのタグの一覧、正規表現と一致する仮想マシンなど、高度なクエリを実行します。
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cb2755384f8b87c74aa283af0c75f9f869fb31cd
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8bb1733090ac2a4f3fad837e55943706309c4a5a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854668"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56344014"
 ---
 # <a name="advanced-resource-graph-queries"></a>Resource Graph の高度なクエリ
 

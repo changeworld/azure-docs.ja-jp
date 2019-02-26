@@ -11,7 +11,7 @@
 ### [Azure DNS と Traffic Manager を使用したディザスター リカバリー](disaster-recovery-dns-traffic-manager.md)
 ## 計画と設計
 ### [仮想ネットワーク](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [クロスプレミス接続 - VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [クロスプレミス接続 - VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [クロスプレミス接続 - 専用プライベート](../expressroute/expressroute-workflows.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### バックエンド接続の相互運用性
 #### [前書きとテスト セットアップ](connectivty-interoperability-preface.md?toc=%2fazure%2fnetworking%2ftoc.json)

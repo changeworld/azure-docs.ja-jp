@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Azure Data Explorer クラスターとデータベースを作成する'
+title: クイック スタート:Azure Data Explorer クラスターとデータベースを作成する
 description: このクイック スタートでは、Azure Data Explorer クラスターとデータベースを作成し、データを取り込む (読み込む) 方法について説明します。
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1ab6fe13df111b5f56da1f368fc0dacf0a6206fc
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214819"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408835"
 ---
-# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>クイック スタート: Azure Data Explorer クラスターとデータベースを作成する
+# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>クイック スタート:Azure Data Explorer クラスターとデータベースを作成する
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer を使用するには、最初に "*クラスター*" を作成し、そのクラスター内に 1 つまたは複数の "*データベース*" を作成します。 その後、クエリを実行できるように、データをデータベースに "*取り込み*" (読み込み) ます。 このクイック スタートでは、クラスターとデータベースを 1 つずつ作成します。 データを取り込む方法は、後の記事で示します。
 
@@ -77,8 +77,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | データベース名 | *TestDatabase* | データベース名はクラスター内で一意である必要があります。
-    | 保持期間 | *3650* | クエリにデータを使用できることが保証される期間です。 期間は、データが取り込まれた時点から測定されます。
-    | Cache period (キャッシュ期間) | *31* | 頻繁にクエリされるデータが長期ストレージではなく SSD ストレージまたは RAM で利用できるように保持される期間です。
+    | 保持期間 | *3650* | クエリにデータを使用できることが保証される期間 (日数) です。 期間は、データが取り込まれた時点から測定されます。
+    | Cache period (キャッシュ期間) | *31* | 頻繁にクエリされるデータが長期ストレージではなく SSD ストレージまたは RAM で利用できるように保持される期間 (日数) です。
     | | | |
 
 1. **[保存]** を選択してデータベースを作成します。 通常、作成にかかる時間は 1 分未満です。 プロセスが完了すると、クラスターの **[概要]** タブに表示が戻ります。
@@ -130,6 +130,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイック スタート: イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
+> [クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
 
 

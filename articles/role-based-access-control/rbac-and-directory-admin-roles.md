@@ -15,12 +15,12 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 9fce35f811a4d2440ba73e4f305ede6891928069
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 00b96b5bfa88a6c1c31d3415027ce1d4eda11e6b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633284"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339092"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール
 
@@ -31,7 +31,7 @@ Azure を初めて使用する場合、Azure のさまざまなロールを理�
 
 ## <a name="how-the-roles-are-related"></a>各ロールの関係
 
-Azure のロールをよりよく理解するには、歴史の一部を知ることが役立ちます。 Azure が最初にリリースされたとき、リソースへのアクセスは 3 つの管理者ロールで管理されました。それらは、アカウント管理者、サービス管理者、および共同管理者でした。 その後、Azure リソース用に、ロールベース アクセス制御 (RBAC) が追加されました。 Azure RBAC は、Azure リソースに対するきめ細かいアクセス管理を提供する、より新しい承認システムです。 RBAC には多数の組み込みロールがあり、異なるスコープで割り当てることができます。また、独自のカスタム ロールを作成することができます。 ユーザー、グループ、ドメインなどの、Azure AD のリソースを管理するためには、いくつかの Azure AD 管理者ロールがあります。
+Azure のロールをよりよく理解するには、歴史の一部を知ることが役立ちます。 Azure が最初にリリースされたとき、リソースへのアクセスは次の 3 つの管理者ロールで管理されました:アカウント管理者、サービス管理者、共同管理者。 その後、Azure リソース用に、ロールベース アクセス制御 (RBAC) が追加されました。 Azure RBAC は、Azure リソースに対するきめ細かいアクセス管理を提供する、より新しい承認システムです。 RBAC には多数の組み込みロールがあり、異なるスコープで割り当てることができます。また、独自のカスタム ロールを作成することができます。 ユーザー、グループ、ドメインなどの、Azure AD のリソースを管理するためには、いくつかの Azure AD 管理者ロールがあります。
 
 次の図は、従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロールがどのように関連しているかを大まかに示しています。
 
@@ -73,7 +73,7 @@ Azure RBAC は、コンピューティングやストレージなどの Azure �
 | [Reader](built-in-roles.md#reader) | <ul><li>Azure リソースを表示する</li></ul> | すべてのリソースの種類に適用されます。 |
 | [User Access Administrator](built-in-roles.md#user-access-administrator) | <ul><li>Azure リソースに対するユーザー アクセスを管理する</li></ul> |  |
 
-残りの組み込みロールは、特定の Azure リソースの管理を許可します。 たとえば、[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 すべての組み込みロールの一覧については、[組み込みロール](built-in-roles.md)に関するページを参照してください。
+残りの組み込みロールは、特定の Azure リソースの管理を許可します。 たとえば、[仮想マシン共同作成者](built-in-roles.md#virtual-machine-contributor)ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 すべての組み込みロールの一覧については、「[Azure リソースの組み込みロール](built-in-roles.md)」をご覧ください。
 
 RBAC は、Azure portal と Azure Resource Manager API のみでサポートされています。 RBAC ロールが割り当てられているユーザー、グループ、およびアプリケーションは、[Azure クラシック デプロイ モデル API](../azure-resource-manager/resource-manager-deployment-model.md) を使用できません。
 
@@ -95,7 +95,7 @@ Azure AD 管理者ロールは、ディレクトリ内の Azure AD リソース�
 | [ユーザー管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-account-administrator) | <ul><li>ユーザーとグループのすべての側面を作成および管理する</li><li>サポート チケットの管理</li><li>サービス正常性の監視</li><li>ユーザー、ヘルプデスク管理者、およびその他のユーザー管理者のパスワードを変更する</li></ul> |  |
 | [課金管理者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>購入する</li><li>[サブスクリプションの管理]</li><li>サポート チケットの管理</li><li>サービスの正常性を監視する</li></ul> |  |
 
-すべての Azure AD 管理者ロールの一覧については、「[Assigning administrator roles in Azure Active Directory (Azure Active Directory での管理者ロールの割り当て)](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)」を参照してください。
+すべての Azure AD 管理者ロールの一覧については、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」をご覧ください。
 
 Azure portal では、Azure AD 管理者ロールの一覧が **[ロールと管理者]** ブレードに表示されます。
 
@@ -122,6 +122,6 @@ Azure portal では、Azure AD 管理者ロールの一覧が **[ロールと管
 
 ## <a name="next-steps"></a>次の手順
 
-- [ロールベースのアクセス制御 (RBAC) とは何か](overview.md)
-- [Azure Active Directory での管理者ロールの割り当て](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Azure サブスクリプション管理者を追加または変更する](/azure/billing/billing-add-change-azure-subscription-administrator)
+- [Azure リソースのロールベースのアクセス制御 (RBAC) の概要](overview.md)
+- [Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Azure サブスクリプション管理者を追加または変更する](../billing/billing-add-change-azure-subscription-administrator.md)

@@ -17,8 +17,6 @@ items:
     href: powershell-samples.md
 - name: 概念
   items:
-  - name: VPN ゲートウェイの計画と設計
-    href: vpn-gateway-plan-design.md
   - name: VPN Gateway の設定について
     href: vpn-gateway-about-vpn-gateway-settings.md
   - name: VPN デバイスについて
@@ -254,9 +252,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway
-ms.openlocfilehash: 55170e8f0f4371ef7883725089a664e035f3ae09
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: af9469c41660e8f5d98e93a8bfea9af977396d04
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416600"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817560"

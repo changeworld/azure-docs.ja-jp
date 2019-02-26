@@ -1,6 +1,6 @@
 ---
 title: ポータルでブループリントを作成する
-description: Azure Blueprint を使用して、成果物を作成、定義、デプロイします。
+description: Azure Blueprints を使用して、Azure Portal から成果物を作成、定義、デプロイします。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c6c498920d407dbbac2449d1da0d76237db0c63d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0a41f038595524a9ffaa5134ca2fe53fc0ae83af
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566314"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338378"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>ポータルで Azure ブループリントを定義して割り当てる
 

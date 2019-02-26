@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 427f3f498ac04c68ef0b335b50c60db46b46d042
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 114dac10592213d3b2fdfff909913039b3dba344
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243856"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429436"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -61,9 +61,9 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 
 |プラン  |QPU  |メモリ (GB)  |
 |---------|---------|---------|
-|S1    |    40     |    10     |
-|S2    |    100     |    25     |
-|S3    |    200     |    50     |
+|S0    |    40     |    10     |
+|S1    |    100     |    25     |
+|S2    |    200     |    50     |
 |S4    |    400     |    100     |
 |S8*    |    320     |    200     |
 |S9*    |    640    |    400     |
@@ -217,7 +217,7 @@ Power BI、Excel、Reporting Services、サードパーティ製ツールなど�
 
 ## <a name="monitoring-and-diagnostics"></a>監視と診断
 
-Azure Analysis Services は、Azure メトリックと統合され、豊富なリソース固有のメトリックを提供します。これらは、サーバーのパフォーマンスと正常性を監視するために役立ちます。 詳細については、[サーバー メトリックの監視](analysis-services-monitor.md)に関する記事をご覧ください。 メトリックは、[Azure リソース診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)に記録されます。 監視を行ってログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信し、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) ([Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) のサービス) にエクスポートします。 詳細については、「[診断ログのセットアップ](analysis-services-logging.md)」を参照してください。
+Azure Analysis Services は、Azure メトリックと統合され、豊富なリソース固有のメトリックを提供します。これらは、サーバーのパフォーマンスと正常性を監視するために役立ちます。 詳細については、[サーバー メトリックの監視](analysis-services-monitor.md)に関する記事をご覧ください。 メトリックは、[Azure リソース診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)に記録されます。 監視を行ってログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/) ([Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) のサービス) にエクスポートします。 詳細については、「[診断ログのセットアップ](analysis-services-logging.md)」を参照してください。
 
 Azure Analysis Services は、[動的管理ビュー (DMV)](https://docs.microsoft.com/sql/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) の使用もサポートします。 SQL 構文に基づいて、DMV は、メタデータとサーバー インスタンスに関する監視情報を返すスキーマ行セットとインターフェイスします。
 

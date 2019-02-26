@@ -84,14 +84,14 @@ items:
       href: how-to-transform-data.md
     - name: データを書き込む
       href: how-to-write-data.md
+  - name: データにアクセスする
+    displayName: blob get fileshare
+    href: how-to-access-data.md
   - name: モデルをトレーニングする
     items:
     - name: トレーニング環境をセットアップする
       displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, Databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
-    - name: トレーニング中のデータにアクセスする
-      displayName: blob
-      href: how-to-access-data.md
     - name: トレーニングでの推定器の作成
       href: how-to-train-ml-models.md
     - name: PyTorch の使用
@@ -187,9 +187,9 @@ items:
     href: support-for-aml-services.md
   - name: Microsoft の ML 製品の比較
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 5743da7a23f53fee32f1fe81ecc09212fccab7c5
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 313cf4072e8bf8c6f82caa4107badd8b435ebb42
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650089"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822048"

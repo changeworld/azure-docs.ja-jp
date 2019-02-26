@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 02/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 1911b851e4e219ec4c6d2d4872b75e9c18706feb
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 0f4fd963ce3649c901a76f6677be059ba5be25af
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893325"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337563"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Azure Media Services v3 の概要
 
@@ -62,7 +62,7 @@ Media Services リソース名には、"<",">"、"%"、"&"、":"、"&#92;"、"?"
 
 Azure Resource Manager の名前付けの詳細については、[名前付けの要件](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource)と[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。
 
-## <a name="media-services-v3-api-design-principles"></a>Media Services v3 API の設計原則
+## <a name="v3-api-design-principles"></a>v3 API の設計原則
 
 v3 API の主要な設計原則の 1 つは、API の安全性の向上です。 v3 API は、**Get** または **List** 操作でシークレットまたは資格情報を返しません。 キーは常に、null または空であるか、応答から削除されます。 シークレットまたは資格情報を取得するには、別のアクション メソッドを呼び出す必要があります。 別のアクションを使用すれば、シークレットが取得/表示される API もあればそうでない API もある場合に、異なる RBAC セキュリティ アクセス許可を設定できます。 RBAC を使用してアクセスを管理する方法の詳細については、[RBAC を使用したアクセスの管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)に関するページを参照してください。
 
@@ -76,25 +76,20 @@ v3 API の主要な設計原則の 1 つは、API の安全性の向上です。
 
 ## <a name="how-can-i-get-started-with-v3"></a>v3 の利用を始める方法
 
-開発者は、Media Services の [REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 Media Services v3 API は、[OpenAPI 仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media) (旧称 Swagger) に基づいています。
+各種のツールと SDK を使用して Media Services v3 API での開発を始める方法については、[開発の開始](developers-guide.md)に関する記事をご覧ください。
 
-[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) は、Media Services について学習したい Windows ユーザーが使用できるツールです。 AMSE は、Media Services で VOD およびライブ コンテンツをアップロード、ダウンロード、エンコード、ストリーミングする Winforms/C# アプリケーションです。 AMSE ツールは、コードを記述しないで Media Services をテストしたいクライアント用です。 AMSE コードは、Media Services による開発を希望するお客様用のリソースとして提供されています。
+## <a name="v3-content-map"></a>v3 のコンテンツ マップ
 
-AMSE はオープン ソース プロジェクトであり、サポートはコミュニティによって提供されます (問題は https://github.com/Azure/Azure-Media-Services-Explorer/issues) に報告できます)。 このプロジェクトでは、[Microsoft オープン ソースの倫理規定](https://opensource.microsoft.com/codeofconduct/)を採用しています。 詳しくは、「[Code of Conduct FAQ (倫理規定についてよくある質問)](https://opensource.microsoft.com/codeofconduct/faq/)」を参照するか、opencode@microsoft.com 宛てに質問またはコメントをお送りください。
- 
-Azure Media Services では、次のクライアント ライブラリがサポートされています。 
+Media Services v3 のコンテンツは、次の構造に従って編成されています (目次にも反映されています)。
 
-|API リファレンス|SDK/ツール|例|
-|---|---|---|---|
-|[REST リファレンス](https://aka.ms/ams-v3-rest-ref)|[REST SDK](https://aka.ms/ams-v3-rest-sdk)|[REST Postman の例](https://github.com/Azure-Samples/media-services-v3-rest-postman)<br/>[Azure Resource Manager ベースの REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)|
-|[Azure CLI リファレンス](https://aka.ms/ams-v3-cli-ref)|[Azure CLI](https://aka.ms/ams-v3-cli)|[Azure CLI の例](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)||
-|[.NET リファレンス](https://aka.ms/ams-v3-dotnet-ref)|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET の例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)||
-||[.NET Core SDK](https://aka.ms/ams-v3-dotnet-sdk) (**[.NET CLI]** タブを選択します)|[.NET Core の例](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)||
-|[Java リファレンス](https://aka.ms/ams-v3-java-ref)|[Java SDK](https://aka.ms/ams-v3-java-sdk)||
-|[Node.js リファレンス](https://aka.ms/ams-v3-nodejs-ref)|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk)|[Node.js のサンプル](https://github.com/Azure-Samples/media-services-v3-node-tutorials)||
-|[Python リファレンス](https://aka.ms/ams-v3-python-ref)|[Python SDK](https://aka.ms/ams-v3-python-sdk)||
-|[Go リファレンス](https://aka.ms/ams-v3-go-ref)|[Go SDK](https://aka.ms/ams-v3-go-sdk)||
-|Ruby|[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
+|セクション| 説明|
+|---|---|
+| 概要 | Media Services の機能と、サービスでできることについて説明します。|
+| クイック スタート | 新しいお客様が Media Services を簡単に試すことができるよう、基礎について 1 日で説明します。|
+| チュートリアル | Media Services でよく行われるタスクについて、シナリオ ベースで手順を示します。|
+| サンプル | コード サンプルへのリンクを示します。 |
+| 概念 | Media Services v3 の機能についての詳しい説明と図が含まれます。 開発を始める前に、これらのトピックで説明されている基本的な概念を確認する必要があります。<br/><br/>* クラウドのアップロードとストレージ<br/>* エンコード<br/>* メディア分析<br/>* パッケージ化、デリバリー、保護<br/>* ライブ ストリーミング<br/>* 継続的な監視<br/>* Player クライアント<br/><br/>その他にも用途はあります。 |
+| ハウツー ガイド | タスクを完了する方法を示します。|
 
 ## <a name="next-steps"></a>次の手順
 

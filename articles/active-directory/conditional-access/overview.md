@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41771db4ff674b2f0df941286358d3154034ea1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e6f1174351f0907ce2bef21324c7ba81c81498b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194361"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266715"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスとは
 
@@ -109,11 +109,7 @@ Azure AD の条件付きアクセスを使うと、承認されたユーザー�
 
 ## <a name="next-steps"></a>次の手順
 
-- 詳細を知りたい場合:
-    - 条件については、「[Conditions in Azure Active Directory conditional access](conditions.md)」(Azure Active Directory の条件付きアクセスの条件) をご覧ください。
+お使いの環境に条件付きアクセスを実装する方法については、「[Azure Active Directory の条件付きアクセスの展開を計画する](plan-conditional-access.md)」をご覧ください。
 
-    - アクセスの制御については、「[Azure Active Directory の条件付きアクセスのコントロール](controls.md)」をご覧ください。
 
-- 条件付きアクセス ポリシーの構成を体験するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
 
-- 推奨されるポリシーを使った段階的なデプロイメント計画を策定する場合は、[条件付きアクセスの展開計画](https://aka.ms/conditionalaccessdeploymentplan)に関する記事を参照してください。
