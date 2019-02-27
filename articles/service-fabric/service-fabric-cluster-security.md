@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 92914b26497634de1a0c61738c6aba37acb37c17
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6a568fa724d0d403833e938ae8b01556fe96cf1f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109319"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428639"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
 Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。 承認されていないユーザーが接続できないように、クラスターをセキュリティで保護する必要があります。 クラスターで実稼働ワークロードを実行している場合、セキュリティで保護されたクラスターは特に重要です。 セキュリティで保護されていないクラスターを作成することはできますが、パブリック インターネットに管理エンドポイントを公開している場合に、匿名ユーザーがそのクラスターに接続できるようになります。 セキュリティで保護されていないクラスターは、運用ワークロードでサポートされません。 
@@ -73,7 +73,12 @@ Service Fabric クラスターでは、Web ベースの [Service Fabric Explorer
 Azure で実行されているクラスターの場合、Azure Active Directory (Azure AD) を使用して管理エンドポイントへのアクセスをセキュリティで保護することもできます。 必要な Azure AD アーティファクトを作成する方法と、クラスターを作成するときにそれらに値を設定する方法については、[クライアントを認証するための Azure AD の設定](service-fabric-cluster-creation-setup-aad.md)に関するページを参照してください。
 
 ## <a name="security-recommendations"></a>セキュリティに関する推奨事項
-Azure クラスターについては、クライアントの認証に Azure AD セキュリティ、ノード間のセキュリティに証明書を使用することをお勧めします。
+Azure でホストされているパブリック ネットワークにデプロイされた Service Fabric クラスターの場合、クライアントとノードの間の相互認証は次のようにすることを推奨します。
+*   クライアント ID には Azure Active Directory を使用する
+*   サーバー ID および http 通信の SSL 暗号化には証明書
+
+Azure でホストされているパブリック ネットワークにデプロイされた Service Fabric クラスターの場合、ノード間のセキュリティではクラスター証明書を使用してノードを認証することをお勧めします。 
+
 
 スタンドアロン Windows Server クラスターについては、Windows Server 2012 R2 と Windows Active Directory を使用している場合、グループ管理サービス アカウントで Windows セキュリティを使用することをお勧めします。 それ以外の場合は、Windows アカウントで Windows セキュリティを使用してください。
 

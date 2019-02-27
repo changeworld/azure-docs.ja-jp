@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 59599686b2a9ccee7250e33f0786d4c7af816983
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/20/2019
+ms.openlocfilehash: 942b1423583f663f22ced6ea8399409778b2f6de
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894311"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455129"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点
 
@@ -96,7 +96,7 @@ Azure Blob Storage を監査するための `CREATE AUDIT` 構文の主な相違
 マネージド インスタンスはファイル共有と Windows フォルダーにはアクセスできないので、次の制約が適用されます。
 
 - ファイルからの作成/ファイルへのバックアップ (`CREATE FROM`/`BACKUP TO`) は、証明書ではサポートされていません。
-- ファイル/アセンブリ (`FILE`/`ASSEMBLY`) からの証明書の作成/バックアップ (`CREATE`/`BACKUP`) はサポートされていません。 秘密キー ファイルは使用できません。  
+- `FILE`/`ASSEMBLY` からの証明書の作成/バックアップ (`CREATE`/`BACKUP`) はサポートされていません。 秘密キー ファイルは使用できません。  
 
 [CREATE CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) に関する記事、および [BACKUP CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql) に関する記事をご覧ください。  
   
@@ -124,10 +124,45 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 ### <a name="logins--users"></a>ログイン/ユーザー
 
 - `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY`、`FROM SID` を使用して作成された SQL ログインはサポートされています。 [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql) に関する記事をご覧ください。
-- [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 構文または [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 構文で作成された Azure Active Directory (AAD) ログインがサポートされます (**パブリック プレビュー**)。
+- [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 構文または [CREATE USER FROM Login [Azure AD Login]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 構文を使用して作成された Azure Active Directory (Azure AD) サーバー プリンシパル (ログイン) がサポートされます (**パブリック プレビュー**)。 これらは、サーバー レベルで作成されるログインです。
+    - マネージド インスタンスは、`CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 構文で Azure AD データベース プリンシパルをサポートします。 これは、Azure AD 包含データベース ユーザーとも呼ばれます。
 - `CREATE LOGIN ... FROM WINDOWS` 構文を使用して作成された Windows ログインはサポートされていません。 Azure Active Directory のログインとユーザーを使用します。
-- インスタンスを作成した Azure Active Directory (Azure AD) ユーザーは、[制限のない管理特権](sql-database-manage-logins.md#unrestricted-administrative-accounts)を持ちます。
-- 管理者以外の、データベース レベルの Azure Active Directory (Azure AD) ユーザーは、`CREATE USER ... FROM EXTERNAL PROVIDER` 構文を使用して作成できます。 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users) に関するセクションをご覧ください。
+- インスタンスを作成した Azure AD ユーザーは、[無制限の管理特権](sql-database-manage-logins.md#unrestricted-administrative-accounts)を持ちます。
+- 管理者以外の、データベース レベルの Azure Active Directory (Azure AD) ユーザーは、`CREATE USER ... FROM EXTERNAL PROVIDER` 構文を使用して作成できます。 [CREATE USER ...FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users) を参照してください。
+- Azure AD サーバー プリンシパル (ログイン) は、1 つの MI インスタンス内のみで SQL 機能をサポートします。 同じ Azure AD テナント内か、または異なるテナント内かに関係なく、AD ユーザーの場合、クロス インスタンス対話を必要とする機能はサポートされていません。 そのような機能の例として次のものがあります。
+    - SQL トランザクション レプリケーション
+    - リンク サーバー
+- Azure AD グループにマップされている Azure AD ログインをデータベース所有者として設定することはサポートされていません。
+- [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql) 句など、他の Azure AD プリンシパルを使用した Azure AD サーバー レベル プリンシパルの権限の借用はサポートされています。 EXECUTE AS の制限事項:
+    - 名前がログイン名と異なる場合、EXECUTE AS USER は Azure AD ユーザーに対してポートされません。 たとえば、CREATE USER [myAadUser] FROM LOGIN [john@contoso.com] 構文を使用してユーザーが作成されて、EXEC AS USER = _myAadUser_ を使用して権限借用が試行された場合などです。 AD サーバー プリンシパル (ログイン) から **USER** を作成するときは、 user_name を **LOGIN** からの同じ login_name として指定します。
+    - Azure AD プリンシパルを対象とした次の操作を実行できるのは、`sysadmin` ロールに属している SQL サーバーレベル プリンシパル (ログイン) のみです。 
+        - EXECUTE AS USER
+        - EXECUTE AS LOGIN
+- **パブリック プレビュー** Azure AD サーバー プリンシパル (ログイン) の制限事項:
+    - マネージド インスタンスに対する Active Directory 管理者の制限事項:
+        - マネージド インスタンスの設定に使用された Azure AD 管理者は、マネージド インスタンス内での Azure AD サーバー プリンシパル (ログイン) の作成には使用できません。 SQL Server アカウント `sysadmin` を使用して、最初の Azure AD サーバー プリンシパル (ログイン) を作成する必要があります。 これは一時的な制限事項で、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。 次のエラーは、Azure AD 管理者アカウントを使用してログインを作成しようとした場合に表示されます。`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+        - 現時点では、マスター DB に作成される最初の Azure AD ログインは、[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) FROM EXTERNAL PROVIDER を使用して標準の SQL Server アカウント (Azure AD ではない) `sysadmin` によって作成される必要があります。 一般提供の後、この制限は削除され、マネージド インスタンスの Active Directory 管理者によって初期 Azure AD ログインを作成できます。
+    - SQL Server Management Studio (SSMS) または SqlPackage で使用される DacFx (エクスポート/インポート) は、Azure AD ログインではサポートされていません。 この制限は、Azure AD サーバー プリンシパル (ログイン) が一般提供されると削除されます。
+    - SSMS での Azure AD サーバー プリンシパル (ログイン) の使用
+        - (任意の認証ログインを使用した) Azure AD ログインのスクリプトはサポートされていません。
+        - Intellisense は、**CREATE LOGIN FROM EXTERNAL PROVIDER** ステートメントを認識せず、赤の下線を表示します。
+- サーバー レベル プリンシパル ログイン (マネージド インスタンスのプロビジョニング プロセスによって作成される)、サーバー ロールのメンバー (`securityadmin`または`sysadmin`)、あるいはサーバー レベルの ALTER ANY LOGIN アクセス許可を持つその他のログインのみが、マネージド インスタンスのマスター データベースに Azure AD サーバー プリンシパル (ログイン) を作成できます。
+- ログインが SQL プリンシパルの場合、作成コマンドを使用して Azure AD アカウントのログインを作成できるのは、`sysadmin` ロールに属しているログインのみです。
+- Azure AD ログインは、Azure SQL Managed Instance に使用されるのと同じディレクトリー内の Azure AD のメンバーでなければなりません。
+- Azure AD サーバー プリンシパル (ログイン) は、SSMS 18.0 プレビュー 5 から、オブジェクト エクスプ ローラーに表示されます。
+- Azure AD サーバー プリンシパル (ログイン) と Azure AD 管理者アカウントとの重複は許可されます。 プリンシパルを解決してアクセス許可をマネージ インスタンスに適用するとき、Azure AD の管理者よりも Azure AD サーバー プリンシパル (ログイン) が優先されます。
+- 認証時、認証するプリンシパルを解決するために次の順序が適用されます。
+    1. Azure AD アカウントが、Azure AD サーバー プリンシパル (ログイン) に直接マップされているものとして存在する (sys.server_principals に type ‘E’ と指定されている) 場合、アクセスを許可し、Azure AD サーバー プリンシパル (ログイン) のアクセス権を適用する。
+    2. Azure AD アカウントが、Azure AD サーバー プリンシパル (ログイン) にマップされている Azure AD グループのメンバーである (sys.server_principals に type ‘X’ と指定されている) 場合、アクセスを許可し、Azure AD グループ ログインのアクセス権を適用する。
+    3. Azure AD アカウントがマネージド インスタンス用のポータル構成の特殊な Azure AD 管理者である (マネージド インスタンス システム ビューに存在しない) 場合は、マネージド インスタンスの Azure AD 管理者の特殊な固定アクセス許可を適用する (レガシー モード)。
+    4. Azure AD アカウントが、データベース内の Azure AD ユーザーに直接マップされたものとして存在する (sys.database_principals に type ‘E’ と指定されている) 場合、アクセスを許可し、Azure AD データベース ユーザーのアクセス許可を適用する。
+    5. Azure AD アカウントが、データベース内の Azure AD ユーザーにマップされた Azure AD グループのメンバーである (sys.database_principals に type ‘X’ と指定されている) 場合、アクセスを許可し、Azure AD グループ ログインのアクセス許可を適用する。
+    6. Azure AD ユーザー アカウントまたは Azure AD グループ アカウントのいずれかにマップされている Azure AD ログインがある場合、ユーザー認証を解決すると、この Azure AD ログインのすべてのアクセス許可が適用される。
+
+
+
+
+
 
 ### <a name="service-key-and-service-master-key"></a>サービス キーとサービス マスター キー
 
@@ -159,7 +194,7 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 
 データベース ミラーリングはサポートされていません。
 
-- `ALTER DATABASE SET PARTNER` および `SET WITNESS` オプションはサポートされていません。
+- `ALTER DATABASE SET PARTNER` オプションと `SET WITNESS` オプションはサポートされていません。
 - `CREATE ENDPOINT … FOR DATABASE_MIRRORING` はサポートされていません。
 
 詳細については、[ALTER DATABASE の SET PARTNER と SET WITNESS](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring)、および [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql) の説明をご覧ください。
@@ -232,11 +267,11 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
 - [ジョブ]
   - T-SQL ジョブ ステップがサポートされています。
   - 次のレプリケーション ジョブがサポートされています。
-    - トランザクション ログ リーダー。  
-    - スナップショット。
+    - トランザクション ログ リーダー
+    - スナップショット
     - ディストリビューター
   - SSIS ジョブ ステップがサポートされています。
-  - 以下のように、他の種類のジョブ ステップは現在サポートされていません。
+  - 次のような他の種類のジョブ ステップは現在サポートされていません。
     - マージ レプリケーション ジョブ ステップはサポートされていません。  
     - キュー リーダーはサポートされていません。  
     - コマンド シェルはまだサポートされていません。
@@ -245,7 +280,7 @@ Azure Key Vault と `SHARED ACCESS SIGNATURE` の ID だけがサポートされ
   - Analysis Services はサポートされていません。
 - 通知は部分的にサポートされています。
 - 電子メール通知がサポートされていますが、データベース メール プロファイルを構成する必要があります。 データベース メール プロファイルは 1 つしか存在できず、パブリック プレビューでは `AzureManagedInstance_dbmail_profile` という名前である必要があります (一時的な制限)。  
-  - ポケットベルはサポートされていません。  
+  - Pager はサポートされていません。  
   - NetSend はサポートされていません。
   - アラートはまだサポートされていません。
   - プロキシはサポートされていません。  
@@ -377,7 +412,7 @@ HDFS または Azure Blob Storage 内のファイルを参照する外部テー�
 - `ENABLE_BROKER` (.bak ファイルでブローカーが有効になっていない場合)  
 - `AUTO_CLOSE=OFF` (.bak ファイル内のデータベースに `AUTO_CLOSE=ON` が設定されている場合)  
 - `RECOVERY FULL` (.bak ファイル内のデータベースが `SIMPLE` または `BULK_LOGGED` 回復モードの場合)
-- メモリ最適化ファイル グループが追加され、XTP という名前が付けられます (ソース .bak ファイルに含まれていなかった場合)。  
+- メモリ最適化ファイル グループが追加され、(ソースの .bak ファイルに含まれていなかった場合) XTP という名前が付けられます。  
 - 既存のメモリ最適化ファイル グループの名前が XTP に変更されます。  
 - `SINGLE_USER` および `RESTRICTED_USER` オプションは、`MULTI_USER` に変換されます。
 
@@ -407,12 +442,11 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
-  - `max text repl size`
   - `remote data archive`
   - `remote proc trans`
 - `sp_execute_external_scripts` はサポートされていません。 [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples) に関するセクションをご覧ください。
 - `xp_cmdshell` はサポートされていません。 [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql) に関する記事をご覧ください。
-- `Extended stored procedures``sp_addextendedproc` や   など、`sp_dropextendedproc` はサポートされていません。 [拡張ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
+- `sp_addextendedproc`  および `sp_dropextendedproc` などの `Extended stored procedures` はサポートされていません。 [拡張ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
 - `sp_attach_db`、`sp_attach_single_file_db`、`sp_detach_db` はサポートされていません。 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)、[sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql) に関する各記事をご覧ください。
 - `sp_renamedb` はサポートされていません。 [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql) に関する記事をご覧ください。
 
@@ -425,7 +459,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 - `@@SERVERNAME` は、"接続可能な" 完全 DNS 名を返します (例: my-managed-instance.wcus17662feb9ce98.database.windows.net)。 [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql) に関する記事をご覧ください。  
 - `SYS.SERVERS` - "name" プロパティと "data_source" プロパティを表す `myinstance.domain.database.windows.net` のような、"接続可能な" 完全 DNS 名を返します。 [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql) に関する記事をご覧ください。
 - `@@SERVICENAME` は NULL を返します。これは SQL Server に関して存在するサービスの概念が、マネージド インスタンスには該当しないためです。 [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql) に関する記事をご覧ください。
-- `SUSER_ID` がサポートされています。 AAD ログインが sys.syslogins に含まれていない場合は、NULL を返します。 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql) に関する記事をご覧ください。  
+- `SUSER_ID` がサポートされています。 Azure AD ログインが sys.syslogins に含まれていない場合は、NULL を返します。 [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql) に関する記事をご覧ください。  
 - `SUSER_SID` はサポートされていません。 間違ったデータを返します (一時的な既知の問題)。 [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql) に関する記事をご覧ください。
 - `GETDATE()` と他の組み込みの日付/時刻関数は、常に UTC タイム ゾーンの時刻を返します。 [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql) に関する記事をご覧ください。
 
@@ -457,8 +491,8 @@ Azure portal を使用して生成された SAS キーから、先頭の `?` を
 
 SQL Server Management Studio (SSMS) と SQL Server Data Tools (SSDT) には、マネージド インスタンスにアクセスするときに問題がある可能性があります。
 
-- 現在のところ、SSDT と共に Azure AD のログインとユーザー (**パブリック プレビュー**) を使用することはできません。
-- Azure AD のログインとユーザー (**パブリック プレビュー**) のスクリプトは、SSMS ではサポートされていません。
+- 現在のところ、SSDT で Azure AD サーバー プリンシパル (ログイン) とユーザー (**パブリック プレビュー**) を使用することはできません。
+- Azure AD サーバー プリンシパル (ログイン) とユーザー (**パブリック プレビュー**) のスクリプトは、SSMS ではサポートされていません。
 
 ### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>一部のビュー、ログ、およびメッセージでの不正なデータベース名
 
@@ -476,9 +510,9 @@ SQL Server Management Studio (SSMS) と SQL Server Data Tools (SSDT) には、�
 
 マネージド インスタンスでは、エラー ログに詳細情報が書き込まれ、その多くは関連のない内容です。 エラー ログの情報量は将来、減らされる予定です。
 
-**対処法**: エラー ログを読み込む際にカスタムの手順を使用して、関連のない項目をフィルターで除外します。 詳細については、[マネージド インスタンス – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)に関するページを参照してください。
+**対処法**: エラー ログを読み込む際にカスタムの手順を使用して、関連のない項目をフィルターで除外します。 詳細については、[マネージド インスタンス – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) に関するページを参照してください。
 
-### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>同じインスタンス内にある 2 つのデータベース上でトランザクション スコープがサポートされない
+### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>同じインスタンス内にある 2 つのデータベース上でトランザクション スコープがサポートされない
 
 同じトランザクション スコープ下では、同一インスタンス内にある 2 つのデータベースに対して 2 つのクエリが送信された場合、.Net の `TransactionScope` クラスが機能しません。
 
@@ -509,7 +543,7 @@ using (var scope = new TransactionScope())
 
 **対処法**: 2 つの接続を使用する代わりに [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) を使って、接続コンテキスト内で他のデータベースを使用します。
 
-### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR モジュールとリンク サーバーでローカル IP アドレスを参照できないことがある
+### <a name="clr-modules-and-linked-servers-sometime-cant-reference-local-ip-address"></a>CLR モジュールとリンク サーバーでローカル IP アドレスを参照できないことがある
 
 マネージド インスタンスに配置された CLR モジュールと、現在のインスタンスを参照しているリンク サーバー/分散クエリでは、ローカル インスタンスの IP を解決できないことがあります。 このエラーは一時的な問題です。
 

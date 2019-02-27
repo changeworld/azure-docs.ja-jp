@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 976976bc3e1913c8c3edb55dfc268a8d93afcd9f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d1f1ec45e1d4fc2fc6091a2f946caf6bc59441a9
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185330"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417059"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C:Azure AD Graph API を使用する
 
@@ -62,7 +62,7 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 これで B2C テナントに対してユーザーの作成、読み取り、更新を実行する権限を持つアプリケーションが用意されました。
 
 > [!NOTE]
-> アクセス許可を付与する処理は、完了するまでに数分間かかります。
+> アクセス許可を付与する処理は、完了するまでに数分間かかることがあります。
 > 
 > 
 

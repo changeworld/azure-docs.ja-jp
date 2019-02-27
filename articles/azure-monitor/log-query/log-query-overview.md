@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: 9aff955a2ae0f40785036c2fee22804785e6526a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4c428372868e3d3fac58bc851de8c59ad01d1d8f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002278"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269962"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Azure Monitor でログ データを分析する
 
-Azure Monitor で収集されたログ データは、[Azure データ エクスプローラー](/azure/data-explorer)に基づく Log Analytics ワークスペースに保存されます。 さまざまなソースからテレメトリが収集され、[データ エクスプローラーのクエリ言語](/azure/kusto/query)を使用してデータが取得および分析されます。
+Azure Monitor で収集されたログ データは、[Azure データ エクスプローラー](/azure/data-explorer)に基づく Log Analytics ワークスペースに保存されます。 さまざまなソースからテレメトリが収集され、Data Explorer で使用される [Kusto クエリ言語](/azure/kusto/query)によってデータが取得および分析されます。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -47,7 +47,7 @@ Azure Monitor のログ クエリは、次に示すさまざまな方法で使�
 ![ログ検索](media/log-query-overview/queries-overview.png)
 
 ## <a name="write-a-query"></a>クエリを記述する
-Azure Monitor では、[データ エクスプローラーのクエリ言語のバージョン](get-started-queries.md)を使用して、さまざまな方法でログ データを取得および分析します。  通常、基本的なクエリから開始し、要件の複雑化に合わせて、より高度な機能の使用へと進んでいきます。
+Azure Monitor では、[Kusto クエリ言語のバージョン](get-started-queries.md)を使用して、さまざまな方法でログ データを取得および分析します。  通常、基本的なクエリから開始し、要件の複雑化に合わせて、より高度な機能の使用へと進んでいきます。
 
 クエリの基本構造では、ソース テーブルの後に、一連の演算子をパイプ文字 `|` で区切って記述します。  複数の演算子を連結してデータを絞り込み、高度な機能を実行できます。
 

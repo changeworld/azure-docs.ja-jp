@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f1700e124d1f572d0bf0ca76ea7c465f1ecf96c1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 35367a9ebc9ff09f40defd444f6ceb8ff54efe07
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657418"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430286"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
 Azure Automation で実行される Runbook と、Hybrid Runbook Worker で実行される Runbook の構造に違いはありません。 それぞれで使用する Runbook は大きく異なる可能性があります。 この違いは、通常、Hybrid Runbook Worker をターゲットとする Runbook が、ローカル コンピューター自体のリソースを管理するか、またはデプロイ先のローカル環境のリソースに対して管理を行うことが原因です。 Azure Automation の Runbook は、通常、Azure クラウド内のリソースを管理します。
 
-Hybrid Runbook Worker で実行する Runbook を作成するときは、ハイブリッド worker をホストしているマシンで Runbook を編集し、テストする必要があります。 ホスト マシンには、ローカル リソースの管理とアクセスのために必要となる、すべての PowerShell モジュールとネットワーク アクセスがあります。 ハイブリッド worker マシンで Runbook をテストすると、ハイブリッド worker で実行するために使用できる Azure Automation 環境に Runbook をアップロードできるようになります。 ジョブが Windows ではローカル システム アカウント、Linux では特殊なユーザー アカウント **nxautomation** で実行されることを理解しておくことが重要です。 この動作により、Hybrid Runbook Worker 用の Runbook を作成するときに微妙な違いが生じる可能性があります。 Runbook を作成するときは、これらの変更を見直す必要があります。
+Hybrid Runbook Worker で実行する Runbook を作成するときは、ハイブリッド worker をホストしているマシンで Runbook を編集し、テストする必要があります。 ホスト マシンには、ローカル リソースの管理とアクセスのために必要となる、すべての PowerShell モジュールとネットワーク アクセスがあります。 ハイブリッド worker マシンで Runbook をテストすると、ハイブリッド worker で実行するために使用できる Azure Automation 環境に Runbook をアップロードできるようになります。 ジョブが Windows ではローカル システム アカウントで実行され、Linux では特殊なユーザー アカウント `nxautomation` で実行されることを理解しておくことが重要です。 この動作により、Hybrid Runbook Worker 用の Runbook を作成するときに微妙な違いが生じる可能性があります。 Runbook を作成するときは、これらの変更を見直す必要があります。
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の開始
 
@@ -44,7 +44,7 @@ Hybrid Runbook Worker で実行されている Runbook は Azure 以外のリソ
 
 ### <a name="runbook-authentication"></a>Runbook の認証
 
-既定で、Runbook はオンプレミス コンピューターの Windows のローカル システム アカウントおよび Linux の特殊なユーザー アカウント **nxautomation** のコンテキストで実行されるため、アクセスするリソースを独自に認証する必要があります。
+既定で、Runbook はオンプレミス コンピューターの Windows のローカル システム アカウントおよび Linux の特殊なユーザー アカウント `nxautomation` のコンテキストで実行されるため、アクセスするリソースを独自に認証する必要があります。
 
 資格情報を指定できるコマンドレットで Runbook の[資格情報](automation-credentials.md)資産と[証明書](automation-certificates.md)資産を使用することで、さまざまなリソースへの認証が可能になります。 次の例は、コンピューターを再起動する Runbook の一部を示しています。 資格情報資産から資格情報を取得し、変数資産からはコンピューター名を取得して、Restart-Computer コマンドレットでこれらの値を使用します。
 
@@ -59,7 +59,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 ### <a name="runas-account"></a>RunAs アカウント
 
-既定で、Hybrid Runbook Worker は Windows のローカル システムおよび Linux の特殊なユーザー アカウント **nxautomation** を使用して Runbook を実行します。 Runbook でローカル リソースへの独自の認証機能を用意するのではなく、ハイブリッド worker グループの **RunAs** アカウントを指定することができます。 ローカル リソースに対するアクセス権を持つ [資格情報資産](automation-credentials.md) を指定すると、グループ内の Hybrid Runbook Worker で Runbook を実行するときに、その資格情報ですべての Runbook が実行されます。
+既定で、Hybrid Runbook Worker は Windows のローカル システムおよび Linux の特殊なユーザー アカウント `nxautomation` を使用して Runbook を実行します。 Runbook でローカル リソースへの独自の認証機能を用意するのではなく、ハイブリッド worker グループの **RunAs** アカウントを指定することができます。 ローカル リソースに対するアクセス権を持つ [資格情報資産](automation-credentials.md) を指定すると、グループ内の Hybrid Runbook Worker で Runbook を実行するときに、その資格情報ですべての Runbook が実行されます。
 
 資格情報のユーザー名は、次の形式にする必要があります。
 
@@ -247,7 +247,7 @@ $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprin
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-Runbook が署名されたら、Automation アカウントにインポートし、署名ブロックによって発行する必要があります。 Runbook のインポート方法については、「[ファイルから Azure Automation への Runbook のインポート](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation)」をご覧ください。
+Runbook が署名されたら、Automation アカウントにインポートし、署名ブロックによって発行する必要があります。 Runbook のインポート方法については、「[ファイルから Azure Automation への Runbook のインポート](manage-runbooks.md#import-a-runbook)」をご覧ください。
 
 ### <a name="linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker
 
@@ -257,7 +257,7 @@ Linux Hybrid Runbook Worker で Runbook に署名するために、ご利用の 
 
 キーリングとキー ペアを作成するには、Hybrid Runbook Worker アカウント `nxautomation` を使用する必要があります。
 
-`sudo` を使用し、`nxautomation` アカウントとしてログインします。
+`nxautomation` アカウントとしてサインインするには、`sudo` を使用します。
 
 ```bash
 sudo su – nxautomation
@@ -271,7 +271,7 @@ sudo gpg --generate-key
 
 GPG に従って操作すると、キー ペアを作成できます。 名前、メール アドレス、有効期限、パスフレーズを指定して、生成されるキーに対してマシン上のエントロピが十分になるまで待つ必要があります。
 
-GPG ディレクトリは sudo を使って生成されるため、その所有者を nxautomation に変更する必要があります。 
+GPG ディレクトリは sudo を使って生成されるため、その所有者を `nxautomation` に変更する必要があります。 
 
 次のコマンドを実行して、所有者を変更します。
 
@@ -300,7 +300,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 署名の検証が構成されると、次のコマンドを使用して Runbook に署名できます。
 
 ```bash
-gpg –clear-sign <runbook name>
+gpg –-clear-sign <runbook name>
 ```
 
 署名済み Runbook は `<runbook name>.asc` という名前になります。

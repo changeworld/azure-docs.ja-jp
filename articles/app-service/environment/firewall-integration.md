@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/20/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 87331ed0d9e5a4ff51e3669390d1b40dea58574a
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: af6a32d7e32f23561b207c729402eaea7925f520
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389246"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453853"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
@@ -75,18 +75,18 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
 
 ## <a name="logging"></a>ログの記録 
 
-Azure Firewall は、Azure Storage、Event Hub、または Log Analytics にログを送信できます。 お使いのアプリをサポート対象の送信先と統合するには、Azure Firewall ポータルの [診断ログ] に移動し、目的の送信先のログを有効にします。 Log Analytics と統合すると、Azure Firewall に送信されたすべてのトラフィックのログを確認できます。 拒否されているトラフィックを表示するには、Log Analytics ポータルの [ログ] を開き、次のようなクエリを入力します。 
+Azure Firewall は、Azure Storage、Event Hub、または Azure Monitor ログにログを送信できます。 お使いのアプリをサポート対象の送信先と統合するには、Azure Firewall ポータルの [診断ログ] に移動し、目的の送信先のログを有効にします。 Azure Monitor ログと統合すると、Azure Firewall に送信されたすべてのトラフィックのログを確認できます。 拒否されているトラフィックを表示するには、Log Analytics ワークスペース ポータルの [ログ] を開き、次のようなクエリを入力します 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Azure Firewall を Log Analytics と統合すると、アプリケーションのすべての依存関係がわからないときに初めてアプリケーションを動作させる場合に非常に役立ちます。 Log Analytics の詳細については、「[Azure Monitor で Log Analytics データを分析する](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)」を参照してください。
+Azure Firewall を Azure Monitor ログと統合すると、アプリケーションのすべての依存関係がわからないときに初めてアプリケーションを動作させる場合に非常に役立ちます。 Azure Monitor ログについて詳しくは、「[Azure Monitor でログ データを分析する](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)」をご覧ください
  
 ## <a name="dependencies"></a>依存関係
 
 次の情報が必要なのは、Azure Firewall 以外のファイアウォール アプライアンスを構成する場合のみです。 
 
 - サービス エンドポイント対応のサービスは、サービス エンドポイントを使用して構成する必要があります。
-- IP アドレスの依存関係が HTTP/S 以外のトラフィックに対応しています。
+- IP アドレスの依存関係が HTTP/S 以外のトラフィック (TCP トラフィックと UDP トラフィックの両方) に対応しています
 - FQDN HTTP/HTTPS エンドポイントは、ファイアウォール デバイスに配置することができます。
 - ワイルドカード HTTP/HTTPS エンドポイントは、いくつかの修飾子に基づき、ASE によって異なる依存関係になります。 
 - Linux の依存関係は、ASE に Linux アプリをデプロイする場合にのみ考慮する必要があります。 Linux アプリを ASE に展開していない場合は、これらのアドレスをファイアウォールに追加する必要はありません。 

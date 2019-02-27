@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 6b39d01266cdde0316d1a660429d5ccab546dac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d91d62c387fc7bcaef8b7f2cb7e8d865c882aeed
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873633"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445459"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Custom Vision で分類子を構築する方法
 
@@ -23,26 +23,28 @@ ms.locfileid: "55873633"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 有効な [Microsoft アカウント](https://account.microsoft.com/account)または Azure Active Directory (AAD) アカウント ("職場または学校のアカウント")。
-
-    > [!IMPORTANT] 
-    > 現在、[Microsoft National Clouds](https://www.microsoft.com/en-us/trustcenter/cloudservices/nationalcloud) からの AAD ユーザーのログインはサポートされていません。
+- 有効な Azure サブスクリプション。 無料で[アカウントを作成](https://azure.microsoft.com/free/)できます。
 - 分類子のトレーニングに使用する画像のセット。 画像の選択に関するヒントについては、以下を参照してください。
-- 省略可能: Microsoft アカウントまたは AAD アカウントに関連付けられた Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成できます。 Azure サブスクリプションがない場合に作成できるのは、2 つの__期間限定試用版__ プロジェクトだけです。
+
+
+## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Azure Portal で Custom Vision リソースを作成する
+Custom Vision サービスを使用するには、[Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) で Custom Vision Training リソースと Prediction リソースを作成する必要があります。 ここでは、Training リソースと Prediction リソースの両方を作成します。 
 
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
-Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.ai)に移動し、__[サインイン]__ を選択します。
+Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.ai)に移動し、__[サインイン]__ を選択します。 Azure Portal にサインインしたのと同じアカウントでサインインします。
 
 ![サインイン ページの画像](./media/browser-home.png)
 
-Azure アカウントを持っている場合、プロジェクトの作成中に、[Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) で Custom Vision Service トレーニングおよび予測のリソースを作成するよう求められます。
 
 1. 最初のプロジェクトを作成するには、**[新しいプロジェクト]** を選択します。 **[新しいプロジェクトの作成]** ダイアログ ボックスが表示されます。
 
     ![[新しいプロジェクト] ダイアログ ボックスには、名前、説明、およびドメインのフィールドがあります。](./media/getting-started-build-a-classifier/new-project.png)
 
-1. プロジェクトの名前と説明を入力します。 次に、リソース グループを選択します。 サインインしたアカウントが Azure アカウントと関連付けられている場合は、[リソース グループ] ドロップダウンに、Custom Vision Service リソースを含むすべての Azure リソース グループが表示されます。 どちらの場合も、このドロップダウンから__期間限定試用版__を選択することもできます。
+1. プロジェクトの名前と説明を入力します。 次に、リソース グループを選択します。 サインインしたアカウントが Azure アカウントと関連付けられている場合は、[リソース グループ] ドロップダウンに、Custom Vision Service リソースを含むすべての Azure リソース グループが表示されます。 
+
+> [!NOTE]
+> リソース グループを使用できない場合は、[Azure Portal](https://portal.azure.com/) へのログインに使用したのと同じアカウントで [customvision.ai](https://customvision.ai) にログインしていることを確認してください。 また、Custom Vision リソースを配置した Azure portal のディレクトリと同じ "ディレクトリ" を Custom Vision ポータルで選択していることを確認してください。 どちらのサイトでも、画面の右上隅にあるドロップダウン アカウント メニューから、ディレクトリを選択できます。 
 
 1. __プロジェクトの種類__ で __分類__ を選択します。 次に、__分類の種類__ で、実際のユース ケースに応じて **マルチラベル** または **マルチクラス** のいずれかを選択します。 マルチラベル分類では、ある画像 (0 個以上) に任意の数のタグを適用します。一方、マルチクラス分類では、画像は 1 つのカテゴリへと分類されます (送信するすべての画像が、最も可能性の高いタグに分類されます)。 希望する場合は、後で分類の種類を変更できます。
 
@@ -95,6 +97,11 @@ Azure アカウントを持っている場合、プロジェクトの作成中�
     ![進行状況バーには完了したすべてのタスクが表示されます。](./media/getting-started-build-a-classifier/add-images04.png)
 
 別の画像のセットをアップロードするには、このセクションの先頭に戻り、手順を繰り返します。 分類子をより正確にする助けになるように、プロジェクトのある時点で、_否定的サンプル_の追加が必要になることがあります。 否定的サンプルとは、それ以外のどのタグとも一致しないタグです。 これらの画像をアップロードするときには、画像に特殊な **否定用** ラベルを適用します。
+
+> [!NOTE]
+> Custom Vision Service サービスは、イメージの自動否定処理をいくつかサポートしています。 たとえば、ブドウとバナナを区別する分類子を構築しており、予測のために片方の靴の画像を送信した場合、その分類子はブドウとバナナの両方について、その画像に 0% に近いスコアを付けるはずです。
+
+> これに対して、否定画像がトレーニングで使用された画像の変動にすぎない場合は、その大きな類似点のために、モデルがその否定画像をラベル付きのクラスとして分類する可能性があります。 たとえば、オレンジとグレープフルーツを区別する分類子があり、クレメンタインの画像を取り込んだ場合、クレメンタインの多くの特徴がオレンジの特徴と似ているため、その分類子はクレメンタインにオレンジとしてスコアを付ける可能性があります。 否定画像がこれと同じ性質である場合は、1 つ以上の追加のタグ (**その他**など) を作成し、トレーニング中に否定画像にこのタグのラベルを付けて、モデルがこれらのクラスをより適切に区別できるようにすることをお勧めします。
 
 ## <a name="train-the-classifier"></a>分類子をトレーニングする
 

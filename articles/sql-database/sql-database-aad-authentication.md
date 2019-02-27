@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/18/2019
-ms.openlocfilehash: 0bb7c047f6bd03a45aa6c5c6d07b8022ee59bec9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/20/2019
+ms.openlocfilehash: 4f8ee5a3a72fc143822a71bcb933f34e2f371019
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217188"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453139"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Azure Active Directory 認証を使用して SQL を認証する
 
@@ -101,16 +101,16 @@ Azure SQL Database、マネージド インスタンス、または SQL Data War
 
 ### <a name="manage-instances"></a>インスタンスを管理する
 
-- Azure AD のログインとユーザーは、[Managed Instance](sql-database-managed-instance.md) のプレビュー機能としてサポートされています。
-- Azure AD グループにマップされた Azure AD ログインをデータベース所有者として設定することは、[Managed Instance](sql-database-managed-instance.md) ではサポートされていません。
+- Azure AD のサーバー プリンシパル (ログイン) とユーザーは、[Managed Instance](sql-database-managed-instance.md) のプレビュー機能としてサポートされています。
+- Azure AD グループにマップされた Azure AD サーバー プリンシパル (ログイン) をデータベース所有者として設定することは、[Managed Instance](sql-database-managed-instance.md) ではサポートされていません。
     - この拡張機能により、グループが `dbcreator` サーバー ロールの一部として追加されたときに、このグループのユーザーが Managed Instance に接続して新しいデータベースを作成できますが、データベースにアクセスすることはできません。 これは、新しいデータベース所有者が SA であり、Azure AD ユーザーではないためです。 この問題は、`dbcreator` サーバー ロールに個々のユーザーが追加された場合は発生しません。
-- Azure AD ログインでは、SQL エージェントの管理とジョブの実行がサポートされています。
-- データベースのバックアップと復元操作は、Azure AD ログインによって実行できます。
-- Azure AD ログインと認証イベントに関連するすべてのステートメントの監査がサポートされています。
-- sysadmin サーバー ロールのメンバーである Azure AD ログインの専用管理者接続がサポートされています。
+- SQL エージェントの管理とジョブの実行が、Azure AD サーバー プリンシパル (ログイン) に対してサポートされています。
+- データベースのバックアップと復元操作は、Azure AD サーバー プリンシパル (ログイン) が実行できます。
+- Azure AD サーバー プリンシパル (ログイン) と認証イベントに関連するすべてのステートメントの監査がサポートされています。
+- sysadmin サーバー ロールのメンバーである Azure AD サーバー プリンシパル (ログイン) の専用管理者接続がサポートされています。
     - sqlcmd ユーティリティおよび SQL Server Management Studio 経由でサポートされています。
-- Azure AD ログインから送信されるログオン イベントに対するログオン トリガーがサポートされています。
-- Service Broker およびデータベース メールは Azure AD ログインを使用して設定することができます。
+- Azure AD サーバー プリンシパル (ログイン) によるログオン イベントでは、ログオン トリガーがサポートされています。
+- Service Broker とデータベース メールは、Azure AD サーバー プリンシパル (ログイン) を使用して設定できます。
 
 
 ## <a name="connecting-using-azure-ad-identities"></a>Azure AD の ID を使用した接続
@@ -121,7 +121,7 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 - Azure AD のプリンシパル名とパスワードを使用する
 - アプリケーション トークン認証を使用する
 
-Azure AD では、次の認証方法がサポートされています (**パブリック プレビュー**)。
+Azure AD サーバー プリンシパル (ログイン) では、次の認証方法がサポートされています (**パブリック プレビュー**)。
 
 - Azure Active Directory パスワード
 - Azure Active Directory 統合
@@ -133,7 +133,7 @@ Azure AD では、次の認証方法がサポートされています (**パブ�
 
 - さらに管理しやすくするには、管理者として専用の Azure AD グループをプロビジョニングすることをお勧めします。   
 - Azure SQL Database サーバーまたは Azure SQL Data Warehouse 用にいつでも構成できる Azure AD 管理者 (ユーザーまたはグループ) は 1 つだけです。
-  - マネージ インスタンス用の Azure AD ログインの追加 (**パブリック プレビュー**) により、`sysadmin` ロールに追加できる複数の Azure AD ログインを作成できる可能性があります。
+  - マネージ インスタンス用の Azure AD サーバー プリンシパル (ログイン) の追加 (**パブリック プレビュー**) により、`sysadmin` ロールに追加できる複数の Azure AD サーバー プリンシパル (ログイン) を作成できる可能性があります。
 - Azure Active Directory アカウントを使用して最初に Azure SQL Database サーバー、マネージド インスタンス、または Azure SQL Data Warehouse に接続できるのは、SQL Server の Azure AD 管理者だけです。 Active Directory 管理者は、それ以降の Azure AD のデータベース ユーザーを構成できます。   
 - 接続のタイムアウトを 30 秒に設定することをお勧めします。   
 - SQL Server 2016 Management Studio と SQL Server Data Tools for Visual Studio 2015 (バージョン 14.0.60311.1April 2016 以降) では、Azure Active Directory 認証がサポートされています  (Azure AD 認証は、**.NET Framework Data Provider for SqlServer** (.NET Framework 4.6 以降のバージョン) でサポートされています)。 したがって、これらのツールとデータ層アプリケーション (DAC および .BACPAC) の最新のバージョンでは、Azure AD 認証を使用できます。   
@@ -147,12 +147,12 @@ Azure AD では、次の認証方法がサポートされています (**パブ�
 ## <a name="next-steps"></a>次の手順
 
 - Azure AD を作成して設定し、Azure SQL Database または Azure SQL Data Warehouse を使用して Azure AD を構成する方法については、「[SQL Database、マネージド インスタンス、または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](sql-database-aad-authentication-configure.md)」を参照してください。
-- マネージ インスタンスでの Azure AD ログインの使用のチュートリアルについては、[マネージ インスタンスでの Azure AD ログイン](sql-database-managed-instance-aad-security-tutorial.md)に関するページを参照してください
+- マネージ インスタンスでの Azure AD サーバー プリンシパル (ログイン) の使用のチュートリアルについては、[マネージ インスタンスでの Azure AD サーバー プリンシパル (ログイン)](sql-database-managed-instance-aad-security-tutorial.md) に関するページを参照してください
 - SQL Database でのアクセスおよび制御の概要については、[SQL Database のアクセスと制御](sql-database-control-access.md)に関するページを参照してください。
 - SQL Database のログイン、ユーザー、データベース ロールの概要については、[ログイン、ユーザー、およびデータベース ロール](sql-database-manage-logins.md)に関するページを参照してください。
 - データベース プリンシパルの詳細については、「[プリンシパル](https://msdn.microsoft.com/library/ms181127.aspx)」を参照してください。
 - データベース ロールの詳細については、[データベース ロール](https://msdn.microsoft.com/library/ms189121.aspx)に関するページを参照してください。
-- マネージド インスタンス用の Azure AD ログインの作成の構文については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
+- マネージド インスタンス用の Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
 - SQL Database のファイアウォール規則の詳細については、[SQL Database のファイアウォール規則](sql-database-firewall-configure.md)に関するページを参照してください。
 
 <!--Image references-->

@@ -8,13 +8,13 @@ ms.author: omidm
 ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 0ab225d3579ed6a56c753f0c581709408c65f358
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 02/15/2019
+ms.openlocfilehash: b0ec8bf52b0b41aef4ea4cc2bfb6ed8fdcd170ec
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436281"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343291"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する
 
@@ -217,11 +217,12 @@ nano workflow.xml
        hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
        hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
-  
-   a. `domainuser` をドメインのユーザー名に置き換えます。  
-   b. `ClusterShortName` をクラスターの短い名前に置き換えます。 たとえば、クラスター名が https:// *[example link]* sechadoopcontoso.azurehdisnight.net である場合、`clustershortname` はクラスターの最初の 6 文字である **sechad** です。  
-   c. `jdbcurlvalue` を Hive 構成の JDBC URL に置き換えます。 たとえば、jdbc:hive2://headnodehost:10001/;transportMode=http とします。      
-   d. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。
+
+   * プライマリ クラスター記憶域として Azure Data Lake Storage Gen1 がある場合は、`nameNode` プロパティに `adl://home` URI を使用します。 Azure Blob Storage を使用している場合は、これを `wasb://home` に変更します。 Azure Data Lake Storage Gen2 を使用している場合は、これを `abfs://home` に変更します。
+   * `domainuser` をドメインのユーザー名に置き換えます。  
+   * `ClusterShortName` をクラスターの短い名前に置き換えます。 たとえば、クラスター名が https:// *[example link]* sechadoopcontoso.azurehdisnight.net である場合、`clustershortname` はクラスターの最初の 6 文字である **sechad** です。  
+   * `jdbcurlvalue` を Hive 構成の JDBC URL に置き換えます。 たとえば、jdbc:hive2://headnodehost:10001/;transportMode=http とします。      
+   * ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。
 
    このプロパティ ファイルは、Oozie ジョブの実行時にローカルに存在する必要があります。
 

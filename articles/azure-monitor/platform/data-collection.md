@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: 6fc568546721511f6289600148919d28773058f4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9b3e35e8372e5488fd97da3f035c29940cb1f293
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002285"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269197"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor によって収集される監視データ
 [Azure Monitor](../overview.md) は、アプリケーションと、それらが依存するリソースを監視するのに役立つサービスです。 この機能の中心にあるのは、監視対象のリソースからのテレメトリとその他のデータのストレージです。 この記事では、このデータが Azure Monitor によってどのように格納され、使用されるかを詳細に説明します。
@@ -50,7 +50,7 @@ Azure のメトリックの具体的な属性には、以下が含まれます�
 
 ### <a name="network-throughput"></a>ネットワーク スループット
 
-| Timestamp     | メトリック値 |
+| タイムスタンプ     | メトリック値 |
 | ------------- |:-------------|
 | 8/9/2017 8:14 | 1,331.8 Kbps |
 | 8/9/2017 8:15 | 1,141.4 Kbps |
@@ -60,7 +60,7 @@ Azure のメトリックの具体的な属性には、以下が含まれます�
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>ネットワーク スループット + 2 つのディメンション ("IP" と "方向")
 
-| Timestamp     | ディメンション "IP"   | ディメンション "方向" | メトリック値|
+| タイムスタンプ     | ディメンション "IP"   | ディメンション "方向" | メトリック値|
 | ------------- |:-----------------|:------------------- |:-----------|
 | 8/9/2017 8:14 | IP="192.168.5.2" | 方向 = "送信"    | 646.5 Kbps |
 | 8/9/2017 8:14 | IP="192.168.5.2" | 方向 = "受信" | 420.1 Kbps |
@@ -149,7 +149,7 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 - コマンドラインまたはカスタム アプリケーションから、[PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1)または [REST API](https://dev.loganalytics.io/) を使用して、メトリック値にアクセスします。
 
 ### <a name="viewing-log-data"></a>ログ データの表示
-Azure Monitor のすべてのログ データは、[データ エクスプローラーのクエリ言語](../log-query/get-started-queries.md)で書かれた[ログ クエリ](../log-query/log-query-overview.md)を使用して取得できます。これにより、収集されたデータを迅速に取得、統合、および分析できます。 [Log Analytics](../log-query/portals.md) を使用して、Azure portal でクエリを記述してテストします。 結果は、対話形式で操作したり、ダッシュボードにピン留めして他の視覚化と一緒に表示したりできます。 [Azure monitoring REST API](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) を使用してログを取得することもできます。
+Azure Monitor のすべてのログ データは、[Kusto クエリ言語](../log-query/get-started-queries.md)で書かれた[ログ クエリ](../log-query/log-query-overview.md)を使用して取得できます。これにより、収集されたデータを迅速に取得、統合、および分析できます。 [Log Analytics](../log-query/portals.md) を使用して、Azure portal でクエリを記述してテストします。 結果は、対話形式で操作したり、ダッシュボードにピン留めして他の視覚化と一緒に表示したりできます。 [Azure monitoring REST API](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) を使用してログを取得することもできます。
 
 > [!IMPORTANT]
 > Application Insights からのデータは、Azure Monitor の他のログ データとは別のパーティションに格納されます。 これは他のログ データと同じ機能をサポートしていますが、このデータにアクセスするには、[Application Insights コンソール](../app/analytics.md)または [Application Insights API](https://dev.applicationinsights.io/) を使用する必要があります。 [リソース間のクエリ](../log-query/cross-workspace-query.md)を使用して、その他のログ データと一緒にアプリケーション データを分析することができます。

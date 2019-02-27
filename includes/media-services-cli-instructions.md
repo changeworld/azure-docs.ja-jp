@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 06651b06ae84934c16e9f1ac9f604abda8b65615
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c13ba8ab42d949e5752bfefd9b792b14a5a5ce59
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55648572"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56408200"
 ---
-## <a name="open-cli-shell"></a>CLI シェルを開く
+## <a name="cli-shell"></a>CLI シェル
 
 CLI コマンドを実行するには、[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) を使用することをお勧めします。 **Cloud Shell** は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 Cloud Shell には一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 Azure Cloud Shell には、業務に最適のシェル操作を選択できる柔軟性があります。 Linux ユーザーは Bash を、Windows ユーザーは PowerShell を選ぶことができます。
 
@@ -31,7 +31,7 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 
 多くの Media Services CLI コマンドでは、ファイル名と共にパラメーターを渡すことができます。 **Cloud Shell** を使用している場合は、(Bash または PowerShell を使用して) ファイルを clouddrive にアップロードできます。 
 
-![ファイルのアップロード]
+![Upload files]
 
 ローカル CLI を使用しているか **Cloud Shell** を使用しているかにかかわらず、使用している OS または Cloud Shell (Bash または PowerShell) に従ってファイルのパスを指定する必要があります。 以下に例をいくつか示します。
 

@@ -10,20 +10,20 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0f324dec9349b44252a85b2f9334a1b6d847faae
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 870345148b55bc6026202fbd433d8575e421faba
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247138"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456012"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でアルゴリズムを最適化するためにパラメーターを選ぶ
 
-このトピックでは、Azure Machine Learning でアルゴリズムの正しいハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、*モデルの選択*といいます。
+このトピックでは、Azure Machine Learning Studio でアルゴリズムの正しいハイパーパラメーター セットを選択する方法について説明します。 ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。 モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。 トレーニングしたモデルの有効性は、選んだモデル パラメーターによって決まります。 パラメーターの最適なセットを見つけるプロセスのことを、*モデルの選択*といいます。
 
 
 
-モデルの選択を行うにはさまざまな方法があります。 Machine Learning で最も広く使われているモデルの選択方法の 1 つはクロス検証です。これは、Azure Machine Learning の既定のモデル選択メカニズムになっています。 Azure Machine Learning は R と Python の両方をサポートしているため、R または Python を使って独自のモデル選択メカニズムをいつでも実装できます。
+モデルの選択を行うにはさまざまな方法があります。 Machine Learning で最も広く使われているモデルの選択方法の 1 つはクロス検証です。これは、Azure Machine Learning Studio の既定のモデル選択メカニズムになっています。 Azure Machine Learning Studio では R と Python の両方がサポートされているため、R または Python を使って独自のモデル選択メカニズムをいつでも実装できます。
 
 最適なパラメーター セットを見つけるプロセスには、次の 4 つの手順があります。
 
@@ -32,7 +32,7 @@ ms.locfileid: "55247138"
 3. **メトリックを定義する**:その後、パラメーターの最適なセットを判別するために使うメトリックを決めます。たとえば、確度、二乗平均平方根の誤差、精度、再現率、f スコアなどがあります。
 4. **トレーニング、評価、および比較を行う**:パラメーター値の一意の組み合わせごとに、ユーザーが定義した誤差メトリックを使い、そのメトリックに基づいて、クロス検証を実行します。 評価と比較が済むと、最適なモデルを選ぶことができます。
 
-次の図は、Azure Machine Learning でこのプロセスを実施する方法を示しています。
+次の図は、Azure Machine Learning Studio でこのプロセスを実施する方法を示しています。
 
 ![最適なパラメーター セットを検索します](./media/algorithm-parameters-optimize/fig1.png)
 

@@ -10,16 +10,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 09d3d996e4c939d6691162d66f303536a3f2038d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c62ed7c0fe556c50d3171045321596536d8b7098
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239266"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427975"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>特権エンドポイントを使用して Azure Stack での更新プログラムをモニターする
 
@@ -36,7 +36,7 @@ ms.locfileid: "55239266"
 | | |
 
 ## <a name="verify-the-cmdlets-are-available"></a>コマンドレットが利用可能なことを確認する
-コマンドレットは、Azure Stack の 1710 更新プログラム パッケージの新機能であるため、モニター機能を使用する前に 1710 更新プロセスを特定の時点まで進める必要があります。 通常は、管理者ポータルの状態で、1710 更新が「**ストレージ ホストの再起動**」の手順に達していることが示された場合に、コマンドレットを使用できるようになります。 特に、コマンドレットの更新は、「**手順: 手順 2.6 の実行 - PrivilegedEndpoint ホワイトリストの更新**」の際に行われます。
+コマンドレットは、Azure Stack の 1710 更新プログラム パッケージの新機能であるため、モニター機能を使用する前に 1710 更新プロセスを特定の時点まで進める必要があります。 通常は、管理者ポータルの状態で、1710 更新が「**ストレージ ホストの再起動**」の手順に達していることが示された場合に、コマンドレットを使用できるようになります。 具体的には、コマンドレットの更新は、「**手順: 手順 2.6 の実行 - PrivilegedEndpoint ホワイトリストの更新**」の間に行われます。
 
 特権エンドポイントからのコマンドの一覧を照会することによって、コマンドレットが使用可能かどうかをプログラムによって判別することもできます。 これを行うには、ハードウェア ライフ サイクル ホストまたは特権アクセス ワークステーションから、次のコマンドを実行します。 さらに、特権エンドポイントが信頼されたホストであることを確認してください。 詳細については、「[特権エンドポイントへのアクセス](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)」の手順 1 を参照してください。 
 

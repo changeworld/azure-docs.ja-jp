@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90616544b1fddb8b6def04c30202035bec04d599
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7278eba1c9039c180f75cdd2dfd1e18a77baf423
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236007"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416787"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>事前および事後スクリプトを管理する (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "56236007"
 
 ## <a name="runbook-requirements"></a>Runbook の要件
 
-Runbook が事前または事後スクリプトとして使用されるようにするには、その Runbook をオートメーション アカウントにインポートして発行する必要があります。 このプロセスの詳細については、「[Runbook の発行](automation-creating-importing-runbook.md#publishing-a-runbook)」を参照してください。
+Runbook が事前または事後スクリプトとして使用されるようにするには、その Runbook をオートメーション アカウントにインポートして発行する必要があります。 このプロセスの詳細については、「[Runbook の発行](manage-runbooks.md#publish-a-runbook)」を参照してください。
 
 ## <a name="using-a-prepost-script"></a>事前および事後スクリプトの使用
 
@@ -52,7 +52,19 @@ Runbook が事前または事後スクリプトとして使用されるように
 
 ## <a name="passing-parameters"></a>パラメーターを渡す
 
-事前および事後スクリプトを構成する場合、Runbook のスケジュール設定のように、パラメーターを渡すことができます。 パラメーターは、更新プログラムの展開の作成の時点で定義されます。 事前および事後スクリプトでは、パラメーターの型は `String` である必要があります。 別のオブジェクト型が必要な場合は、`[System.Convert]` を使用して別の型にキャストすることも、独自のロジックでそれを処理することもできます。
+事前および事後スクリプトを構成する場合、Runbook のスケジュール設定のように、パラメーターを渡すことができます。 パラメーターは、更新プログラムの展開の作成の時点で定義されます。 事前および事後スクリプトでは次の型がサポートされます。
+
+* [char]
+* [byte]
+* [int]
+* [long]
+* [decimal]
+* [single]
+* [double]
+* [DateTime]
+* [string]
+
+別のオブジェクト型が必要な場合は、Runbook 内の独自のロジックで別の方にキャストできます。
 
 標準の Runbook パラメーターに加えて、追加のパラメーターが表示されます。 このパラメーターは **SoftwareUpdateConfigurationRunContext** です。 このパラメーターは JSON 文字列であるため、事前または事後スクリプトで定義すると、このパラメーターは更新プログラムの展開によって自動的に渡されます。 このパラメーターには、更新プログラムの展開に関する情報が含まれています。これは、[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) によって返される情報のサブセットです。次の表に、この変数で提供されるプロパティを示します。
 

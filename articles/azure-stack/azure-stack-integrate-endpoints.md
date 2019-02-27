@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: fee5db2cde4e4056a8cb1fca80e09511d0ca0b53
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c3b27291fc413310393cd0270ec750de14a4985b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117276"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270064"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack とデータセンターの統合 - エンドポイントの公開
 
@@ -35,7 +35,10 @@ Azure Stack エンドポイントを外部ネットワークに公開するに�
 > [!Note]  
 > ユーザーの VIP は動的で、Azure Stack オペレーターによって管理されず、ユーザー自身が定義します。
 
-|エンドポイント (VIP)|DNS ホスト A レコード|Protocol|ポート|
+> [!Note]
+> [拡張機能ホスト](azure-stack-extension-host-prepare.md)の追加により、1811 更新プログラム以降、12495 から 30015 の範囲のポートを開く必要はなくなりました。
+
+|エンドポイント (VIP)|DNS ホスト A レコード|プロトコル|ポート|
 |---------|---------|---------|---------|
 |AD FS|Adfs.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |ポータル (管理者)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
@@ -68,7 +71,7 @@ Azure Stack は、透過的なプロキシ サーバーのみをサポートし�
 > [!Note]  
 > Azure Stack では、ExpressRoute を利用して､次の表に示す Azure サービスに到達することはできません。
 
-|目的|接続先 URL|Protocol|ポート|ソース ネットワーク|
+|目的|接続先 URL|プロトコル|ポート|ソース ネットワーク|
 |---------|---------|---------|---------|---------|
 |ID|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|パブリック VIP - /27<br>パブリック インフラストラクチャ ネットワーク|
 |Marketplace シンジケーション|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|パブリック VIP - /27|

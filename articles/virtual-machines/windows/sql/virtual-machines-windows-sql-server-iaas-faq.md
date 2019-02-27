@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 53c22222682e2a017f55cbd5af89671edb3eddaf
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 46d51e787a388f0963788c6419a2d9e3af89bc4f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767340"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456658"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
@@ -87,6 +87,9 @@ ms.locfileid: "55767340"
 1. **従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
 
    はい。 従量課金ギャラリー イメージを最初に使用した場合、2 つのライセンス モデルを簡単に切り替えることができます。 ただし、BYOL イメージを最初に使用した場合、ライセンスを PAYG に切り替えることはできません。 詳細については、[SQL Server VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。
+
+   > [!Note]
+   > 現時点では、この機能は、パブリック クラウドのお客様だけが利用できます。
 
 1. **新しい SQL VM を作成するには、BYOL イメージまたは SQL VM RP を使用する必要がありますか。**
 

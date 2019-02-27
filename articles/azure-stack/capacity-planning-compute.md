@@ -17,12 +17,12 @@ ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
 ms.custom: mvc
-ms.openlocfilehash: ca0a6569dda89586c629cc46909862de4f27cf04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4ab04fc69d29d9bb5386261f6453b2f47bfd66bc
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56160913"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446326"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Azure Stack コンピューティング能力の計画
 [Azure Stack でサポートされる VM サイズ](./user/azure-stack-vm-sizes.md)は、Azure でサポートされているもののサブセットです。 Azure では、リソース (サーバーのローカルおよびサービス レベル) の過剰消費を防ぐため、多くのベクターに沿ってリソースの制限を適用します。 テナントの消費量にいくつかの制限を適用しないと、あるテナントでリソースが過剰消費された場合に、別のテナントのエクスペリエンスに影響します。 VM からのネットワーク送信の場合、Azure Stack では Azure の制限と一致する帯域幅の上限が設けられます。 ストレージ リソースの場合、テナントによるストレージ アクセスのためのリソースの基本的な過剰消費を防ぐため、Azure Stack にストレージ IOPS 制限が実装されています。  
@@ -43,7 +43,7 @@ Azure Stack 統合システムの修正プログラムと更新プログラム�
 
 次の計算では、テナントの VM 配置で使用できる、利用可能なメモリの合計が算出されます。 このメモリ容量は、Azure Stack スケール ユニットの全体に対するものです。
 
-  VM 配置で利用可能なメモリ = サーバーのメモリ合計 – 回復性のための予約 – Azure Stack インフラストラクチャのオーバーヘッド <sup>1</sup>
+  VM 配置で利用可能なメモリ = サーバーのメモリ合計 – 回復性のための予約 – 実行中の VM によって使用されているメモリ – Azure Stack インフラストラクチャのオーバーヘッド <sup>1</sup>
 
   回復性のための予約 = H + R * (N-1) + V * (N-2)
 

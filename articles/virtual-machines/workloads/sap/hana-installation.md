@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 10c8c0043d04d99ad10e475f903979edb0ddcb70
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fc63eb792e58d960ae67138b5e58e6b705945030
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266900"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446394"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
@@ -70,7 +70,7 @@ HANA L インスタンス ユニットは、この SMT インスタンスに接�
 
 SLES12 SP1 および RHEL 7.2 以降では、これらのパラメーターを /etc/sysctl.d ディレクトリにある構成ファイルで設定する必要があります。 たとえば、91-NetApp-HANA.conf という名前の構成ファイルを作成する必要があります。 それより前にリリースされた SLES と RHEL では、これらのパラメーターを /etc/sysctl.conf で設定する必要があります。
 
-SLES12 以降のすべての RHEL リリースについては、以下のことに留意してください。 
+RHEL 6.3 以降のすべての RHEL リリースについては、以下のことに留意してください。 
 - /etc/modprobe.d/sunrpc-local.conf で、sunrpc.tcp_slot_table_entries = 128 パラメーターを設定する必要があります。 このファイルが存在しない場合は、最初に次のエントリを追加し、ファイルを作成する必要があります。 
     - options sunrpc tcp_max_slot_table_entries=128
 

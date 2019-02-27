@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbfffa94c76de2c7c4e9f4f2e67c9744e52f22c7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 39659df99951850ced07be14f81348ae9c1c1be5
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194191"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428604"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
 
@@ -96,7 +96,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 > 必ず **Connect-MsolService** を使用して接続してください
 
 
-一括でユーザーを有効にする必要がある場合は、PowerShell の使用をお勧めします。 ユーザーの一覧をループ処理して各ユーザーを有効にする PowerShell スクリプトを作成します。
+ この PowerShell スクリプトの例では、個々のユーザーに対して MFA を有効にします。
 
         Import-Module MSOnline
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
@@ -105,7 +105,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
         $sta = @($st)
         Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
 
-次のスクリプトは一例です。
+一括でユーザーを有効にする必要がある場合は、PowerShell の使用をお勧めします。 例としては、次のスクリプトでは、ユーザーのリストをループ処理し、それらのアカウントで MFA を有効にします。
 
     $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
     foreach ($user in $users)
@@ -117,11 +117,11 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
         Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
     }
     
-無効にした MFA に対して、次のスクリプトを使用しました。
+MFA を無効にするには、次のスクリプトを使用します。
 
     Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
     
-また、次のように短縮することもできます。
+次のように短縮することもできます。
 
     Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
 

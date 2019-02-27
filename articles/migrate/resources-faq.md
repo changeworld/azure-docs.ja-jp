@@ -4,14 +4,14 @@ description: Azure Migrate についてよく寄せられる質問に対応し�
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 1e60ee5060f5f292ed6d03cf0680d9801a0c04f4
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 9d1820215dd2b81edb694d71a1b9496237876d05
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746315"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416192"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -117,6 +117,10 @@ Azure Migrate は、アプライアンスベースの検出とエージェント
 コレクター アプライアンスによって収集されたデータは、移行プロジェクトの作成中に指定した Azure の場所に格納されます。 データは Microsoft サブスクリプションに安全に格納され、ユーザーがその Azure Migrate プロジェクトを削除すると削除されます。
 
 依存関係の視覚化で、VM にエージェントをインストールした場合、依存関係エージェントによって収集されたデータは、ユーザーのサブスクリプションで作成された米国の Log Analytics ワークスペースに格納されます。 サブスクリプションの Log Analytics ワークスペースを削除すると、このデータは削除されます。 [詳細情報](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization)。
+
+### <a name="what-is-the-volume-of-data-which-is-uploaded-by-azure-migrate-in-the-case-of-continuous-profiling"></a>継続的プロファイリングの場合に Azure Migrate によってアップロードされるデータの量はどれくらいですか。
+
+Azure Migrate に送信されるデータの量は、複数のパラメーターによりさまざまです。 目安の値としては、マシンが 10 台のプロジェクトで (それぞれに 1 個のディスクと 1 個の NIC)、1 日あたり約 50 MB が送信されます。 これは概算値であり、NIC とディスクに対するデータ ポイントの数によって変わります (マシン、NIC、またはディスクの数が増える場合、送信されるデータ量の変化は非線形です)。 
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>保存データや転送中のデータは暗号化されますか。
 

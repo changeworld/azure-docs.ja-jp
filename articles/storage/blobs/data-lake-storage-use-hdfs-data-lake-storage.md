@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 649fe5ebadf69a90b4794fcaf4519ea5bcc0c4a2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f1f4cb036f4df226d651f8f4d0f5c7492f453a0a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874186"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269742"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
 
@@ -26,17 +26,37 @@ HDInsight では、それぞれのコンピューティング ノードにロー
 >[!IMPORTANT]
 >HDInsight クラスターの課金は、クラスターが作成された後に開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 クラスターを削除する方法については、[トピックに関する記事](../../hdinsight/hdinsight-delete-cluster.md)を参照してください。 ただし、HDInsight クラスターを削除しても、Data Lake Storage Gen2 が使用可能なストレージ アカウントに保存されているデータは削除されません。
 
+### <a name="create-a-file-system"></a>ファイル システムを作成する
+
+    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+
+* `<file-system-name>` プレースホルダーを、ファイル システムに付ける名前に置き換えます。
+
+* `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
+
 ### <a name="get-a-list-of-files-or-directories"></a>ファイルまたはディレクトリの一覧を取得する
 
-    hdfs dfs -ls <args>
+    hdfs dfs -ls <path>
+
+`<path>` プレースホルダーを、ファイル システムまたはファイル システム フォルダーの URI に置き換えます。
+
+次に例を示します。`hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ### <a name="create-a-directory"></a>ディレクトリを作成する
 
-    hdfs dfs -mkdir [-p] <paths>
+    hdfs dfs -mkdir [-p] <path>
 
-### <a name="delete-a-file-or-a-directory"></a>ファイルまたはディレクトリを削除する
+`<path>` プレースホルダーを、ルート ファイル システム名またはファイル システム内のフォルダーに置き換えます。
 
-    hdfs dfs -rm [-skipTrash] URI [URI ...]
+次に例を示します。`hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
+
+### <a name="delete-a-file-or-directory"></a>ファイルまたはディレクトリを削除する
+
+    hdfs dfs -rm <path>
+
+`<path>` プレースホルダーを、削除するファイルまたはフォルダーの URI に置き換えます。
+
+次に例を示します。`hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ### <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Linux の HDInsight Hadoop クラスターで HDFS CLI を使用する
 
@@ -52,11 +72,15 @@ hdfs dfs -mkdir /samplefolder
 ```
 接続文字列は、Azure portal 内の HDInsight クラスター ブレードの "SSH + Cluster login" セクションで確認できます。 SSH 資格情報は、クラスターの作成時に指定されています。
 
-HDFS CLI の詳細については、[公式ドキュメント](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)、および「[HDFS Permissions Guide](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)」 (HDFS 権限ガイド) を参照してください。 Databricks の ACL の詳細については、「[Secrets CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#secrets-cli)」を参照してください。 
+HDFS CLI の詳細については、[公式ドキュメント](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)、および「[HDFS Permissions Guide](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)」 (HDFS 権限ガイド) を参照してください。 Databricks の ACL の詳細については、「[Secrets CLI](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#secrets-cli)」を参照してください。
 
 ## <a name="hdfs-cli-with-azure-databricks"></a>Azure Databricks での HDFS CLI
 
 Databricks は、Databricks REST API 上に構築された使いやすい CLI を備えています。 このオープンソース プロジェクトは、[GitHub](https://github.com/databricks/databricks-cli) 上でホストされています。 よく使用されるコマンドを次に示します。
+
+### <a name="create-a-file-system"></a>ファイル システムを作成する
+
+ガイダンスをここに配置します。
 
 ### <a name="get-a-list-of-files-or-directories"></a>ファイルまたはディレクトリの一覧を取得する
 

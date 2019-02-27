@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC の拒否割り当てについて | Microsoft Docs
-description: Azure のリソースに対するロールベースのアクセス制御 (RBAC) の拒否割り当てについて説明します。
+title: Azure リソースの拒否割り当ての概要 | Microsoft Docs
+description: Azure リソースに対するロールベースのアクセス制御 (RBAC) の拒否割り当てについて説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: fa1a979c01999bd79c45d24e4c7771edaf346dd8
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 53716fa343df25026dcc668ed8483673d934d1ad
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632417"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339126"
 ---
-# <a name="understand-deny-assignments"></a>拒否割り当てについて
+# <a name="understand-deny-assignments-for-azure-resources"></a>Azure リソースの拒否割り当ての概要
 
-ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、またはサービス プリンシパルに一連の拒否アクションがアタッチされます。 拒否割り当てでは、ロールの割り当てでアクセスを許可されている場合であっても、指定したアクションがユーザーによって実行されるのをブロックします。 Azure の一部のリソース プロバイダーに拒否割り当てが追加されました。 現在、拒否割り当ては**読み取り専用**であり、Azure によってのみ設定されます。
+ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、またはサービス プリンシパルに一連の拒否アクションがアタッチされます。 拒否割り当てを使用すると、ロールの割り当てでアクセスを許可されている場合であっても、指定した Azure リソース アクションをユーザーが実行できなくなります。 Azure の一部のリソース プロバイダーに拒否割り当てが追加されました。 現在、拒否割り当ては**読み取り専用**であり、Microsoft によってのみ設定されます。
 
 いくつかの点で、拒否割り当てはロールの割り当てとは異なります。 拒否割り当てはプリンシパルを除外できるほか、子スコープへの継承を避けることができます。 拒否割り当ては、[従来のサブスクリプション管理者](rbac-and-directory-admin-roles.md)の割り当てにも適用されます。
 
@@ -60,5 +60,5 @@ ms.locfileid: "52632417"
 
 ## <a name="next-steps"></a>次の手順
 
-* [RBAC と REST API を使用して拒否割り当てを一覧表示する](deny-assignments-rest.md)
-* [ロール定義について](role-definitions.md)
+* [REST API を使用して Azure リソースの拒否割り当てを一覧表示する](deny-assignments-rest.md)
+* [Azure リソースのロール定義の概要](role-definitions.md)

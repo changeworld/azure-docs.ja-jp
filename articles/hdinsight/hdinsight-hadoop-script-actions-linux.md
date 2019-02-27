@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: b0eae86a4927f716c974086411e1098f2e9a190d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6702bfabd27b56ce473fe8eb14aadc9dc6e8e7c9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498031"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338871"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -142,7 +142,7 @@ Linux ベースの HDInsight クラスターは、クラスター内でアクテ
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-この例では、`hdfs` コマンドは、既定のクラスター ストレージを透過的に使用します。 一部の操作では、URI を指定しなければならない場合があります。 たとえば、Data Lake Storage には `adl:///example/jars`、Azure Storage には `wasb:///example/jars` を指定します。
+この例では、`hdfs` コマンドは、既定のクラスター ストレージを透過的に使用します。 一部の操作では、URI を指定しなければならない場合があります。 たとえば、Azure Data Lake Storage Gen1 の場合は `adl:///example/jars`、Data Lake Storage Gen2 の場合は`abfs:///example/jars`、Azure Storage の場合は `wasb:///example/jars` です。
 
 ### <a name="bPS7"></a>STDOUT および STDERR に情報を書き込む
 
@@ -351,7 +351,7 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 > [!NOTE]  
 > CRLF 行の終わりが LF に変更されるという点で、次のコマンドはほぼ同等です。 システムで使用できるユーティリティに基づいて、いずれかを選択します。
 
-| コマンド | メモ |
+| command | メモ |
 | --- | --- |
 | `unix2dos -b INFILE` |元のファイルは .BAK 拡張子でバックアップされます |
 | `tr -d '\r' < INFILE > OUTFILE` |OUTFILE には改行が LF のみのバージョンが含まれます |

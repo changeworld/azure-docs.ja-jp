@@ -1,6 +1,6 @@
 ---
-title: RBAC と Azure Resource Manager テンプレートを使用してアクセスを管理する | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) と Azure Resource Manager テンプレートを使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。
+title: RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する | Microsoft Docs
+description: ロールベースのアクセス制御 (RBAC) と Azure Resource Manager テンプレートを使用してユーザー、グループ、アプリケーションの Azure リソースへのアクセスを管理する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b8c6ac78447a4e4db79ed75100222eee8d528b58
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 537ee35e96a41cd02605319e244d39c6567c3bf1
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696899"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337205"
 ---
-# <a name="manage-access-using-rbac-and-azure-resource-manager-templates"></a>RBAC と Azure Resource Manager テンプレートを使用してアクセスを管理する
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 Azure PowerShell または Azure CLI を使う以外に、RBAC と [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使って Azure リソースへのアクセスを管理することもできます。 リソースを一貫して繰り返しデプロイする場合は、テンプレートが便利です。 この記事では、RBAC とテンプレートを使ってアクセスを管理する方法について説明します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 Azure PowerShell または Azure CLI を使う以外に、RBAC と [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使って Azure リソースへのアクセスを管理することもできます。 リソースを一貫して繰り返しデプロイする場合は、テンプレートが便利です。 この記事では、RBAC とテンプレートを使ってアクセスを管理する方法について説明します。
 
 ## <a name="example-template-to-create-a-role-assignment"></a>ロールの割り当てを作成するためのテンプレートの例
 
@@ -251,6 +251,6 @@ Azure CLI を使って前記のテンプレートをデプロイするには、�
     
 ## <a name="next-steps"></a>次の手順
 
-- [初めての Azure Resource Manager テンプレートを作成およびデプロイする](../azure-resource-manager/resource-manager-create-first-template.md)
+- [クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 - [Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?term=rbac)

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c9d8b875d7e5a831af52eae8abc642632cb5f635
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 287e4d63ca60200340a88dd45d6b8912a62b74cd
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238387"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454696"
 documentType: LandingData
 title: Azure SQL Database Managed Instance
 metadata:
@@ -75,7 +75,7 @@ sections:
     style: unordered
     items:
     - html: <a href="sql-database-managed-instance#business-critical-service-tier">Business Critical サービス レベル</a>は現在、<a href="https://azure.microsoft.com/blog/migrate-mission-critical-sql-workloads-to-the-most-economical-cloud-destination/">一般公開 (GA)</a> されています。
-    - html: (プレビュー) <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> を使用して、<a href="https://aka.ms/managed-instance-aadlogins">インスタンス レベルの Azure AD ログイン</a>を作成します。
+    - html: (プレビュー) <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> を使用して、<a href="https://aka.ms/managed-instance-aadlogins">インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)</a> を作成します。
     - html: (プレビュー) <a href="https://aka.ms/managed-instance-collation">任意のサーバー レベルの照合順序</a>を使用してインスタンスを作成します。
     - html: ポイントインタイム リストアのために<a href="https://aka.ms/managed-instance-configurable-backup-retention">最大 35 日のバックアップ保有期間を構成します</a>。 長期のバックアップ保有期間 (最大 10 年) はまだ有効になっていないため、代わりに<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">コピーのみのバックアップ</a>を使用できることに注意してください。
     - html: (プレビュー) <a href="https://aka.ms/managed-instance-failover-groups">地理的に分散されたフェールオーバー グループ</a>を使用して別のリージョン内のインスタンスのコピーを保持し、地域災害が発生した場合でも確実にデータが使用可能になるようにします。

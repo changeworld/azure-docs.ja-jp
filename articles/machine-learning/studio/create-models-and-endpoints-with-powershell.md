@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 40cb4b7969ec2272936d1361be8183db84f944d8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244300"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455060"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>PowerShell を使用して 1 つの実験から Studio モデルと Web サービス エンドポイントを作成する
 
@@ -25,9 +25,9 @@ ms.locfileid: "56244300"
 
 全拠点のすべてのデータセットをマージして 1 回だけモデルをトレーニングすることは可能です。 しかし、環境は拠点ごとに異なります。 このため、手法としては、拠点ごとのデータセットを使用して回帰モデルを個別にトレーニングした方が適切と考えられます。 そうすれば、トレーニング済みのモデルごとに異なる店舗サイズ、ボリューム、地勢、人口、自転車に配慮した交通環境などを反映することができます。
 
-ただ最良の手法であったとしても、それぞれ固有の拠点を表す 1,000 件ものトレーニング実験を Azure Machine Learning で作成するのは非現実的です。 個々の実験の構成要素が、トレーニング データセットを除いてすべて同じであることを考えると、膨大な手間のかかる作業であるだけでなく非効率な方法でもあります。
+ただ最良の手法であったとしても、それぞれ固有の拠点を表す 1,000 件ものトレーニング実験を Azure Machine Learning Studio で作成するのは非現実的です。 個々の実験の構成要素が、トレーニング データセットを除いてすべて同じであることを考えると、膨大な手間のかかる作業であるだけでなく非効率な方法でもあります。
 
-さいわい、この処理には [Azure Machine Learning の再トレーニング API](retrain-models-programmatically.md) を使用でき、[Azure Machine Learning PowerShell](powershell-module.md) でタスクを自動化することができます。
+さいわい、この処理には [Azure Machine Learning Studio の再トレーニング API](retrain-models-programmatically.md) を使用でき、[Azure Machine Learning Studio PowerShell](powershell-module.md) でタスクを自動化することができます。
 
 > [!NOTE]
 > ここではサンプルの実行時間を短くするために、拠点数を 1,000 から 10 に減らすことにします。 しかし拠点が 1,000 か所あっても原理と手順は同じです。 ただし、1,000 データセットからトレーニングする場合は、次の PowerShell スクリプトを並列に実行できます。 その方法はこの記事で取り上げる範囲を超えていますが、PowerShell のマルチスレッド化の例は、インターネットを検索すれば見つかります。  

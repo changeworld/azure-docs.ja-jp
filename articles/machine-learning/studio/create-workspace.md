@@ -1,5 +1,5 @@
 ---
-title: ワークスペースの作成
+title: Machine Learning Studio ワークスペースの作成
 titleSuffix: Azure Machine Learning Studio
 description: Azure Machine Learning Studio を使用するには、Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 services: machine-learning
@@ -10,24 +10,23 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 16c67c217c8ef33a360fd479a45317d6c42af494
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: bcd5b377f00ad43ff727c581471aad3ac651bdbb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486319"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270103"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Azure Machine Learning Studio ワークスペースの作成と共有
 
 Azure Machine Learning Studio を使用するには、Machine Learning Studio ワークスペースが必要です。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
 
+## <a name="create-a-studio-workspace"></a>Studio ワークスペースを作成する
 
-
-### <a name="to-create-a-workspace"></a>ワークスペースを作成するには
-1. [Azure ポータル](https://portal.azure.com/)
+1. [Azure ポータル](https://portal.azure.com/)にサインインする
 
     > [!NOTE]
-    > サインインしてワークスペースを作成するには、Azure サブスクリプションの管理者である必要があります。 
+    > サインインして Studio ワークスペースを作成するには、Azure サブスクリプション管理者である必要があります。 
     >
     > 
 
@@ -40,9 +39,13 @@ Azure Machine Learning Studio を使用するには、Machine Learning Studio �
     - *[ワークスペース名]* に使用できる最大文字数は 260 文字です。末尾に空白文字は使用しないでください。 また、`< > * % & : \ ? + /` の各文字は使用できません。
     - このワークスペースから Web サービスをデプロイした場合、選択 (または作成) した "*Web サービス プラン*" とそれに関連して選択した "*価格レベル*" が使用されます。
 
-    ![新しいワークスペースを作成する](./media/create-workspace/create-new-workspace.png)
+    ![新しい Studio ワークスペースを作成する](./media/create-workspace/create-new-workspace.png)
 
 5. **Create** をクリックしてください。
+
+> [!NOTE]
+> Machine Learning Studio では、ワークフローの実行時に中間データを保存するときにユーザーが指定した Azure ストレージ アカウントを使用します。 ワークスペースの作成後に、ストレージ アカウントが削除された場合、またはアクセスキーが変更された場合、ワークスペースは機能しなくなり、そのワークスペースのすべての実験は失敗します。
+誤ってストレージ アカウントを削除した場合は、削除されたストレージ アカウントと同じリージョンに同じ名前のストレージ アカウントを再作成し、アクセス キーを再同期します。 ストレージ アカウントのアクセス キーを変更した場合は、Azure Portal を使用してワークスペースのアクセス キーを再同期します。
 
 デプロイしたワークスペースは、Machine Learning Studio で開くことができます。
 
@@ -56,12 +59,12 @@ Azure Machine Learning Studio を使用するには、Machine Learning Studio �
 
     ![実験を開く](./media/create-workspace/my-experiments.png)
 
-ワークスペースの管理方法の詳細については、「 [Azure Machine Learning ワークスペースの管理](manage-workspace.md)」をご覧ください。
-ワークスペースの作成で問題が発生した場合は、「[トラブルシューティング ガイド: Machine Learning ワークスペースの作成と接続](troubleshooting-creating-ml-workspace.md)」をご覧ください。
+Studio ワークスペースの管理方法の詳細については、「[Azure Machine Learning Studio ワークスペースの管理](manage-workspace.md)」をご覧ください。
+ワークスペースの作成で問題が発生した場合は、「[トラブルシューティング ガイド: Machine Learning Studio ワークスペースの作成と接続](troubleshooting-creating-ml-workspace.md)」を参照してください。
 
 
-## <a name="sharing-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースの共有
-Machine Learning ワークスペースを作成した後は、ユーザーをワークスペースに招待し、ワークスペースとそのすべての実験、データセット、ノートブックへのアクセス権を共有することができます。ユーザーは、次のいずれかの役割で追加することができます。
+## <a name="share-an-azure-machine-learning-studio-workspace"></a>Azure Machine Learning Studio ワークスペースを共有する
+Machine Learning Studio ワークスペースを作成した後、ユーザーをワークスペースに招待し、ワークスペースとその実験、データセット、ノートブックなどのすべてに対するアクセスを共有できます。ユーザーは、次のいずれかの役割で追加することができます。
 
 * **ユーザー** - ワークスペース内の実験やデータセットの作成、表示、変更、削除を行うことができます。
 * **所有者** - ワークスペース ユーザーの招待と削除、ユーザーが実行できる操作の登録を行うことができます。
@@ -71,7 +74,7 @@ Machine Learning ワークスペースを作成した後は、ユーザーをワ
 > 
 > 
 
-### <a name="to-share-a-workspace"></a>ワークスペースを共有するには
+### <a name="to-share-a-studio-workspace"></a>Studio ワークスペースを共有するには
 
 1. [https://studio.azureml.net/Home](https://studio.azureml.net/Home) で Machine Learning Studio にサインインします。
 

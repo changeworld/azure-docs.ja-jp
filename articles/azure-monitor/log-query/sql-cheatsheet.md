@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 121f9ff602907e64bba0c98342e38477109e9294
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 76c9e143a4127807bfffa879103fca42d2d27e71
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993667"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268330"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL から Azure Monitor ログ クエリへのチート シート 
 
-下の表は、SQL を使い慣れているユーザーが、Azure Monitor でログ クエリを記述するためのデータ エクスプローラーのクエリ言語を学習する助けになります。 一般的なシナリオを解決する場合の、T-SQL コマンドと、Azure Monitor ログ クエリでの同等の使用方法を確認してください。
+下の表は、SQL を使い慣れているユーザーが、Azure Monitor でログ クエリを記述するための Kusto クエリ言語を学習する助けになります。 一般的なシナリオを解決する場合の、T-SQL コマンドと、Azure Monitor ログ クエリでの同等の使用方法を確認してください。
 
 ## <a name="sql-to-azure-monitor"></a>SQL から Azure Monitor へ
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: f05935f73f385b076741d2e856af8316a74e9d2f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 67bdabe24e789dc4d1f2020a7a7853eafaa607c3
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042497"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429368"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -30,7 +30,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
 1. **接続ポリシー:直接接続モードを使用する**
 
-    クライアントが Azure Cosmos DB に接続する方法は、特に監視対象となるクライアント側の待機時間の観点から、パフォーマンスに重要な影響を及ぼします。 クライアントの接続ポリシーを構成する際に使用できる 2 つの主要な構成設定として、接続 "*モード*" と[接続 "*プロトコル*"](#connection-protocol) があります。  次の 2 つのモードが用意されています。
+    クライアントが Azure Cosmos DB に接続する方法は、特に監視対象となるクライアント側の待機時間の観点から、パフォーマンスに重要な影響を及ぼします。 クライアントの接続ポリシーを構成する際に使用できる 2 つの主要な構成設定として、接続 "*モード*" と接続 "*プロトコル*" があります。  次の 2 つのモードが用意されています。
 
    * ゲートウェイ モード (既定値)
       
@@ -47,8 +47,8 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     |接続モード  |サポートされるプロトコル  |サポートされる SDK  |API/サービス ポート  |
     |---------|---------|---------|---------|
-    |ゲートウェイ  |   HTTPS    |  すべての SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
-    |直接    |    HTTPS     |  .Net と Java SDK    |    SQL(443)   |
+    |Gateway  |   HTTPS    |  すべての SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
+    |直接    |    HTTPS     |  .Net と Java SDK    |   10,000 ～ 20,000 の範囲内のポート    |
     |直接    |     TCP    |  .Net SDK    | 10,000 ～ 20,000 の範囲内のポート |
 
     Azure Cosmos DB は、HTTPS を介したシンプルなオープン RESTful プログラミング モデルを提供します。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 Direct TCP と HTTPS は、どちらも最初の認証とトラフィックの暗号化で SSL を使用します。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。

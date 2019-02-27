@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: 41a826304af338814666e80dfaf584021809dbb0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: efd069b90e2f085b7bacf4dfa72478e1232554bc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880048"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313362"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Backup コンテナーを Recovery Services コンテナーにアップグレードする
 
@@ -98,13 +98,13 @@ Azure の資格情報を入力すると、Azure によって、環境が次の�
 ![[クイック スタート] ブレードのヘルプ リンク](./media/backup-azure-upgrade-backup-to-recovery-services/quick-start-w-help-links.png)
 
 ## <a name="post-upgrade-steps"></a>アップグレード後の手順
-Recovery Services コンテナーでは、バックアップ ポリシーでのタイム ゾーン情報の指定をサポートしています。 コンテナーが正常にアップグレードされたら、コンテナー設定メニューからバックアップ ポリシーに移動し、コンテナーで構成されているポリシーごとにタイム ゾーン情報を更新します。 この画面には、ポリシーの作成時に使用したローカル タイム ゾーンに従って指定されたバックアップのスケジュール時刻が既に表示されています。 
+Recovery Services コンテナーでは、バックアップ ポリシーでのタイム ゾーン情報の指定をサポートしています。 コンテナーが正常にアップグレードされたら、コンテナー設定メニューからバックアップ ポリシーに移動し、コンテナーで構成されているポリシーごとにタイム ゾーン情報を更新します。 この画面には、ポリシーの作成時に使用したローカル タイム ゾーンに従って指定されたバックアップのスケジュール時刻が既に表示されています。
 
 ## <a name="enhanced-security"></a>強化されたセキュリティ
 
-Backup コンテナーを Recovery Services コンテナーにアップグレードすると、そのコンテナーのセキュリティ設定が自動的に有効になります。 セキュリティ設定が有効になると、バックアップの削除やパスフレーズの変更などの特定の操作で [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) の PIN が必要になります。 強化されたセキュリティの詳細については、[ハイブリッド バックアップを保護するためのセキュリティ機能](backup-azure-security-feature.md)に関する記事をご覧ください。 
+Backup コンテナーを Recovery Services コンテナーにアップグレードすると、そのコンテナーのセキュリティ設定が自動的に有効になります。 セキュリティ設定が有効になると、バックアップの削除やパスフレーズの変更などの特定の操作で [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) の PIN が必要になります。 強化されたセキュリティの詳細については、[ハイブリッド バックアップを保護するためのセキュリティ機能](backup-azure-security-feature.md)に関する記事をご覧ください。
 
-強化されたセキュリティを有効にすると、データは、復旧ポイント情報がコンテナーから削除されてから最大 14 日間保持されます。 このセキュリティ データのストレージに対して課金されます。 セキュリティ データのリテンション期間は、Azure Backup エージェント、Azure Backup Server、System Center Data Protection Manager に対して作成された復旧ポイントに適用されます。 
+強化されたセキュリティを有効にすると、データは、復旧ポイント情報がコンテナーから削除されてから最大 14 日間保持されます。 このセキュリティ データのストレージに対して課金されます。 セキュリティ データのリテンション期間は、Azure Backup エージェント、Azure Backup Server、System Center Data Protection Manager に対して作成された復旧ポイントに適用されます。
 
 ## <a name="gather-data-on-your-vault"></a>コンテナー上のデータの収集
 
@@ -112,38 +112,38 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-**アップグレード プランは進行中のバックアップに影響を与えますか?**</br>
+### <a name="does-the-upgrade-plan-affect-my-ongoing-backups"></a>アップグレード プランは進行中のバックアップに影響を与えますか?
 いいえ。 進行中のバックアップは、アップグレード中もアップグレード後も、中断なく続行されます。
 
-**近日中にアップグレードする予定がない場合、コンテナーはどうなりますか?**</br>
+### <a name="if-i-dont-plan-on-upgrading-soon-what-happens-to-my-vaults"></a>近日中にアップグレードする予定がない場合、コンテナーはどうなりますか?
 すべての新機能は Recovery Services コンテナーにのみ適用されるので、コンテナーをアップグレードすることをお勧めします。 2017 年 9 月 1 日から、Microsoft は Recovery Services コンテナーへのバックアップ コンテナーの自動アップグレードを開始します。 2017 年 11 月 30 日以降、PowerShell を使用してバックアップ コンテナーを作成できなくなります。 コンテナーは、その間いつでも自動的にアップグレードできます。 できるだけ早急にコンテナーをアップグレードすることをお勧めします。
 
-**このアップグレードは、既存のツールにとってどのような意味がありますか?**</br>
-ツールを Resource Manager デプロイ モデルに更新します。 Recovery Services コンテナーは、Resource Manager デプロイ モデルで使用するように作成されています。 Resource Manager デプロイ モデルの計画を立て、コンテナーの違いを考慮することが重要です。 
+### <a name="what-does-this-upgrade-mean-for-my-existing-tooling"></a>このアップグレードは、既存のツールにとってどのような意味がありますか?
+ツールを Resource Manager デプロイ モデルに更新します。 Recovery Services コンテナーは、Resource Manager デプロイ モデルで使用するように作成されています。 Resource Manager デプロイ モデルの計画を立て、コンテナーの違いを考慮することが重要です。
 
-**アップグレード中のダウンタイムはどれくらいですか?**</br>
+### <a name="during-the-upgrade-is-there-much-downtime"></a>アップグレード中のダウンタイムはどれくらいですか?
 アップグレードされるリソースの数によって異なります。 小規模なデプロイ (保護されたインスタンスが数十) では、アップグレード全体は 20 分未満で実行されます。 大規模なデプロイでは、最大 1 時間かかります。
 
-**アップグレード後にロールバックすることはできますか?**</br>
+### <a name="can-i-roll-back-after-upgrading"></a>アップグレード後にロールバックすることはできますか?
 いいえ。 リソースが正常にアップグレードされた後のロールバックはサポートされていません。
 
-**サブスクリプションまたはリソースがアップグレードが可能かどうかを確認できますか?**</br>
+### <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-upgrade"></a>サブスクリプションまたはリソースがアップグレードが可能かどうかを確認できますか?
 はい。 アップグレードの最初の手順は、リソースがアップグレード可能であることを検証することです。 前提条件の検証が失敗した場合は、アップグレードを完了できない理由をすべて通知するメッセージが表示されます。
 
-**CSP ベースの Backup コンテナーはアップグレードできますか?**</br>
+### <a name="can-i-upgrade-my-csp-based-backup-vault"></a>CSP ベースの Backup コンテナーはアップグレードできますか?
 いいえ。 現時点では、CSP ベースのバックアップ コンテナーはアップグレードできません。 次のリリースで、CSP ベースのバックアップ コンテナーのアップグレードのサポートが追加される予定です。
 
-**アップグレード後に、従来のコンテナーを表示できますか?**</br>
+### <a name="can-i-view-my-classic-vault-post-upgrade"></a>アップグレード後に、従来のコンテナーを表示できますか?
 いいえ。 アップグレード後は、従来のコンテナーは、表示することも管理することもできません。 コンテナーのすべての管理操作は、新しい Azure ポータルを使用してのみ実行できます。
 
-**アップグレードに失敗しましたが、更新する必要があるエージェントを保持するコンピューターがもう存在しません。このような場合はどうすればよいでしょうか?**</br>
+### <a name="my-upgrade-failed-but-the-machine-that-held-the-agent-requiring-updating-doesnt-exist-anymore-what-do-i-do-in-such-a-case"></a>アップグレードに失敗しましたが、更新する必要があるエージェントを保持するコンピューターがもう存在しません。 このような場合はどうすればよいでしょうか?
 コンピューターのバックアップを長期間保存する必要がある場合は、コンテナーをアップグレードすることはできません。 今後のリリースで、このようなコンテナーのアップグレードのサポートが追加される予定です。
 コンピューターのバックアップを保存する必要がなくなった場合は、コンテナーからそのコンピューターの登録を解除してから、アップグレードをやり直してください。
 
-**アップグレード後にリソースのジョブ情報が表示されないのはなぜですか?**</br>
+### <a name="why-cant-i-see-the-jobs-information-for-my-resources-after-upgrade"></a>アップグレード後にリソースのジョブ情報が表示されないのはなぜですか?
 バックアップの監視 (MARS エージェントおよび IaaS) は、バックアップ コンテナーを Recovery Services コンテナーにアップグレードした後で利用できる新しい機能です。 監視情報がサービスと同期されるまで、最大 12 時間かかります。
 
-**問題はどのようにレポートすればよいですか?**</br>
+### <a name="how-do-i-report-an-issue"></a>問題はどのようにレポートすればよいですか?
 コンテナーのアップグレードの一部が失敗した場合は、エラーに示されている OperationId を書き留めます。 Microsoft サポートが問題の解決に積極的に取り組みます。 サポートを受けるには、サブスクリプション ID、コンテナー名、OperationId を記載した電子メールを rsvaultupgrade@service.microsoft.com にお送りください。 Microsoft は、問題をできるだけ速やかに解決するよう努力します。 Microsoft による明確な指示がない限り、操作をやり直さないでください。
 
 

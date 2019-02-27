@@ -5,15 +5,15 @@ author: yossi-y
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: 36be305e60806ba2cdea260fc46bc329c43284cb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 53cd84d669a3f14d5ac028cc29ae483962860f72
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429788"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447216"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Azure Monitor でのログ アラートのクエリ
 [Azure Monitor ログに基づくアラート ルール](alerts-unified-log.md)は一定間隔で実行されるため、必ずオーバーヘッドと待機時間を最小限に抑えるように記述する必要があります。 この記事では、ログ アラートの効率的なクエリの記述と、既存のクエリを変換するためのプロセスに関する推奨事項を示します。 
@@ -31,16 +31,11 @@ SecurityEvent | where EventID == 4624
 
 ```Kusto
 search "Memory"
-
 search * | where == "Memory"
-
 search ObjectName: "Memory"
-
 search ObjectName == "Memory"
-
 union * | where ObjectName == "Memory"
 ```
- 
 
 `search` と `union` は、データ モデル全体で用語を検索するデータの探索時には便利ですが、複数のテーブルをスキャンする必要があるため、テーブルを使用するよりも効率が低下します。 アラート ルールのクエリは一定間隔で実行されるため、結果として過剰なオーバーヘッドが生じてアラートに待機時間が追加されます。 このオーバーヘッドのため、Azure のログ アラートのクエリは、常に明確な範囲を定義するテーブルで始める必要があります。これにより、クエリのパフォーマンスと結果の関連性の両方が向上します。
 
@@ -55,7 +50,9 @@ app('Contoso-app1').requests,
 app('Contoso-app2').requests, 
 workspace('Contoso-workspace1').Perf 
 ```
- 
+
+>[!NOTE]
+>ログ アラートでの[リソース間のクエリ](../log-query/cross-workspace-query.md)は、新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) でサポートされています。 [従来の Log Alerts API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) から切り替えていない場合、Azure Monitor では既定で、[従来の Log Analytics Alert API](api-alerts.md) を使用して Azure portal から新しいログ アラート ルールが作成されます。 切り替えた後は、Azure portal での新しいアラート ルールに対して新しい API が既定になり、リソース間のクエリのログ アラート ルールを作成できます。 切り替えを行わなくても、[scheduledQueryRules API 用の ARM テンプレート](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)を使用することで、[リソース間のクエリ](../log-query/cross-workspace-query.md)のログ アラート ルールを作成できます。ただし、このアラート ルールは、[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) では管理できますが、Azure portal では管理できません。
 
 ## <a name="examples"></a>例
 次の例には、`search` と `union` を使用するログ クエリが含まれていて、アラート ルールで使用するためにこれらのクエリを変更する際に使用できる手順を示しています。

@@ -1,26 +1,19 @@
 ---
-title: SQL Server VM の Azure Backup トラブルシューティング ガイド | Microsoft Docs
-description: SQL Server VM を Azure にバックアップする場合のトラブルシューティング情報。
+title: Azure Backup での SQL Server データベースのバックアップのトラブルシューティング | Microsoft Docs
+description: Azure VM で実行されている SQL Server データベースの Azure Backup によるバックアップに関するトラブルシューティング情報です。
 services: backup
-documentationcenter: ''
-author: rayne-wiselman
-manager: carmonm
-editor: ''
-keywords: ''
-ms.assetid: ''
+author: anuragm
+manager: shivamg
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 02/19/2019
 ms.author: anuragm
-ms.custom: ''
-ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0beb65d6ef7c036c8a294f53eeb3db327457ea84
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296123"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428621"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>SQL Server を Azure にバックアップする場合のトラブルシューティング
 
@@ -28,11 +21,11 @@ ms.locfileid: "55296123"
 
 ## <a name="public-preview-limitations"></a>パブリック プレビューの制限事項
 
-パブリック プレビューの制限事項を確認するには、「[Azure での SQL Server データベースのバックアップ](backup-azure-sql-database.md#public-preview-limitations)」の記事を参照してください。
+パブリック プレビューの制限事項を確認するには、「[Azure での SQL Server データベースのバックアップ](backup-azure-sql-database.md#preview-limitations)」の記事を参照してください。
 
 ## <a name="sql-server-permissions"></a>SQL Server のアクセス許可
 
-仮想マシン上で SQL Server データベースの保護を構成するには、その仮想マシンに **AzureBackupWindowsWorkload** 拡張機能をインストールする必要があります。 **UserErrorSQLNoSysadminMembership** エラーが発生した場合は、必要なバックアップ アクセス許可が SQL インスタンスにないことを意味します。 このエラーを修正するには、[マーケットプレース以外の SQL VM にアクセス許可を設定する](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms)手順に従います。
+仮想マシン上で SQL Server データベースの保護を構成するには、その仮想マシンに **AzureBackupWindowsWorkload** 拡張機能をインストールする必要があります。 **UserErrorSQLNoSysadminMembership** エラーが発生した場合は、必要なバックアップ アクセス許可が SQL インスタンスにないことを意味します。 このエラーを修正するには、[マーケットプレース以外の SQL VM にアクセス許可を設定する](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)手順に従います。
 
 ## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
 
@@ -56,13 +49,13 @@ ms.locfileid: "55296123"
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
 | この SQL データベースは、要求されたバックアップの種類をサポートしていません。 | データベース復旧モデルが要求されたバックアップの種類を許可していない場合に発生します。 このエラーは、以下の状況で発生する可能性があります。 <br/><ul><li>単純復旧モデルを使用するデータベースでは、ログ バックアップが許可されていません。</li><li>マスター データベースでは、差分バックアップとログ バックアップが許可されていません。</li></ul>詳細については、[SQL 復旧モデル](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server)に関するドキュメントを参照してください。 | 単純復旧モデルの DB のログ バックアップが失敗した場合は、次のいずれかのオプションを試してください。<ul><li>データベースが単純復旧モードの場合は、ログ バックアップを無効にします。</li><li>データベースの復旧モデルを完全または一括ログに変更するには、[SQL ドキュメント](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)を参照してください。 </li><li> 復旧モデルを変更したくない場合で、変更できない複数のデータベースをバックアップする標準ポリシーがある場合は、エラーを無視してください。 完全バックアップと差分バックアップはスケジュールに従って動作します。 ログ バックアップはスキップされますが、この場合は想定どおりの動作です。</li></ul>マスター データベースで、差分バックアップまたはログ バックアップを構成した場合は、次のいずれかの手順を実行します。<ul><li>ポータルを使用して、マスター データベースのバックアップ ポリシー スケジュールを [完全] に変更します。</li><li>変更できない複数のデータベースをバックアップする標準ポリシーがある場合は、エラーを無視してください。 完全バックアップはスケジュールに従って動作します。 差分バックアップまたはログ バックアップは行われませんが、この場合は想定どおりの動作です。</li></ul> |
-| 競合する操作が既に同じデータベースに対して実行されているため、操作がキャンセルされました。 | 同時に実行される[バックアップと復元の制限事項に関するブログ エントリ](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database)を参照してください。| [SQL Server Management Studio (SSMS) を使用してバックアップ ジョブを監視します。](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms) 競合する操作が失敗したら、操作を再開します。|
+| 競合する操作が既に同じデータベースに対して実行されているため、操作がキャンセルされました。 | 同時に実行される[バックアップと復元の制限事項に関するブログ エントリ](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database)を参照してください。| [SQL Server Management Studio (SSMS) を使用してバックアップ ジョブを監視します。](manage-monitor-sql-database-backup.md) 競合する操作が失敗したら、操作を再開します。|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
 | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 |---|---|---|
-| SQL データベースが存在しません。 | データベースは削除されたか、名前が変更されました。 | <ul><li>データベースが誤って削除されたか、名前が変更されたかを確認してください。</li><li>誤ってデータベースを削除した場合、バックアップを続行するために、元の場所にデータベースを復元してください。</li><li>データベースを削除し、今後のバックアップが必要ない場合は、Recovery Services のコンテナーの [[データの削除]/[データの保持] で [バックアップの停止] をクリックします](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms)。</li>|
+| SQL データベースが存在しません。 | データベースは削除されたか、名前が変更されました。 | データベースが誤って削除されたか、名前が変更されたかを確認してください。<br/><br/> 誤ってデータベースを削除した場合、バックアップを続行するために、元の場所にデータベースを復元してください。<br/><br/> データベースを削除し、今後のバックアップが必要ない場合は、Recovery Services のコンテナーの [[データの削除]/[データの保持] で [バックアップの停止] をクリックします](manage-monitor-sql-database-backup.md)。
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 

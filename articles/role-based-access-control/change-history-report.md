@@ -1,6 +1,6 @@
 ---
-title: Azure での RBAC 変更のアクティビティ ログの表示 | Microsoft Docs
-description: 過去 90 日間のロールベースのアクセス制御 (RBAC) の変更のアクティビティ ログを表示します。
+title: Azure リソースに対する RBAC の変更のアクティビティ ログを表示する | Microsoft Docs
+description: 過去 90 日間の Azure リソースに対するロールベースのアクセス制御 (RBAC) の変更のアクティビティ ログを表示します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ff09647dc3271c947b3037afcfacc33951ddb07
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 01ac309d333b6e2456c53e0352067471514198c9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117650"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338814"
 ---
-# <a name="view-activity-logs-for-rbac-changes"></a>RBAC の変更のアクティビティ ログを表示する
+# <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Azure リソースに対する RBAC の変更のアクティビティ ログを表示する
 
-監査やトラブルシューティングなどの目的で、ロールベースのアクセス制御 (RBAC) の変更に関する情報が必要になる場合があります。 サブスクリプション内のロール割り当てまたはロール定義を変更したときは常に、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)に変更が記録されます。 アクティビティ ログを確認すると、過去 90 日間の RBAC のすべての変更を確認できます。
+監査やトラブルシューティングなどの目的で、Azure リソースに対するロールベースのアクセス制御 (RBAC) の変更に関する情報が必要になる場合があります。 サブスクリプション内のロール割り当てまたはロール定義を変更したときは常に、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)に変更が記録されます。 アクティビティ ログを確認すると、過去 90 日間の RBAC のすべての変更を確認できます。
 
 ## <a name="operations-that-are-logged"></a>ログに記録される操作
 

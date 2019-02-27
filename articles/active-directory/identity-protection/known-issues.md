@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd894b214366302af4651b5944e250086be14beb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bc08710909252c9bcade6177a105684128acc5bf
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183838"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339025"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Azure Active Directory の Identity Protection (更新版) に関してよく寄せられる質問と既知の問題
 
@@ -33,6 +33,8 @@ ms.locfileid: "56183838"
 
 
 Identity Protection (更新版) で**ユーザーのリスクを無視する**と、Identity Protection (更新版) のユーザーのリスク履歴のアクターが **\<ユーザーのブレードを指すハイパーリンクが付いた管理者の名前\>** に設定されます。
+
+現在、ユーザー リスクの無視フローに遅延が発生するという既知の問題があります。 "ユーザー リスク ポリシー" がある場合、このポリシーによって、[ユーザー リスクを無視する] をクリックしてから数分以内に、無視されたユーザーへの適用が停止されます。 ただし、無視されたユーザーの "リスク状態" が UX で更新されるまでに既知の遅延があります。 回避策としては、ブラウザー レベルでページを更新して最新のユーザーの "リスク状態" を確認します。
 
 
 ## <a name="risky-users-report"></a>危険なユーザー レポート

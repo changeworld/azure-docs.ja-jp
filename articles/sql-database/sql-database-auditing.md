@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: vainolo
-ms.author: vainolo
+ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: d092b4e8096b311ba9ca9d3fbceea8fb57bf4aa9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 08c71ac1aba659a2e0fbb6655b6ee0a21576bf5d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234664"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339789"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -43,8 +43,11 @@ SQL Database 監査を使用して、以下を行うことができます。
 > [!IMPORTANT]
 > 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。
 >
-> - **Premium Storage** は現在、追加 BLOB では**サポートされていません**。
+> - すべてのストレージの種類 (v1、v2、BLOB) がサポートされています。
+> - すべてのストレージ レプリケーション構成がサポートされています。
+> - **Premium Storage** は現在**サポートされていません**。
 > - **VNet 内の Storage** は現在**サポートされていません**。
+> - **ファイアウォールの背後にある Storage** は現在**サポートされていません**。
 
 ## <a id="subheading-8"></a>サーバー レベルおよびデータベース レベルの監査ポリシーを定義する
 

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: be6c04fe31aaa8d4b9081942b054575ff548cf5a
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 2051a14532f00f24be0c8cb0ca03a7b2b4078a45
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300372"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56457015"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Net# ニューラル ネットワーク仕様言語について
 
@@ -56,7 +56,7 @@ Net# では、さまざまな種類の結合バンドルがサポートされて
 
 ## <a name="supported-customizations"></a>サポートされるカスタマイズ
 
-Azure Machine Learning で作成するニューラル ネットワーク モデルのアーキテクチャを使用すると、Net# で高度なカスタマイズができます。 次のようにすることができます。
+Azure Machine Learning Studio で作成するニューラル ネットワーク モデルのアーキテクチャは、Net# を使用して高度にカスタマイズできます。 次のようにすることができます。
 
 + 隠れ層を作成し、各層のノード数を管理する。
 + 層間の結合方法を指定する。

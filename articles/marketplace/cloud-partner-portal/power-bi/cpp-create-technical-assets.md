@@ -14,23 +14,23 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: pbutlerm
-ms.openlocfilehash: d0545d7285289c7081faf51c6e3ea09071f55a51
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f3d6466ced6efdb4047f9531329b70477911bf21
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55665683"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414765"
 ---
-# <a name="create-power-bi-app-technical-assets"></a>Power BI アプリの技術資産の作成
+# <a name="create-power-bi-app-offer-technical-assets"></a>Power BI アプリ オファーの技術資産を作成する
 
-このオファー タイプに必要な主な技術資産は、Power BI アプリケーションです。これは、プライマリ データセット、レポート、および (または) ダッシュボードと、オプションの接続済みサービス、埋め込みデータセットのコレクションです。 (Power BI アプリケーションは、以前[コンテンツ パック](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)と呼ばれていた資産タイプが進化したものです。)これらのアプリケーションの開発について詳しくは、[Power BI アプリ](https://go.microsoft.com/fwlink/?linkid=2028636)に関するページを参照してください。
+このオファーの種類に必要な主な技術資産は Power BI アプリです。 Power BI アプリは、主なデータセット、レポート、またはダッシュボードのコレクションであり、オプションとして接続サービスと埋め込みデータセットがあります。 これは、以前は[コンテンツ パック](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)と呼ばれていた資産の種類から進化したものです。 この種類のアプリを開発する場合の詳細については、「[Power BI テンプレート アプリとは](https://go.microsoft.com/fwlink/?linkid=2028636)」を参照してください。
 
 
-## <a name="obtaining-an-installation-url"></a>インストール URL の取得
+## <a name="obtain-an-installation-url"></a>インストール URL を取得する
 
-Power BI アプリのビルドは、[Power BI サービス](https://powerbi.microsoft.com/)内でのみ実行可能で、[Power BI Pro ライセンス](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)を使用してサインインする必要があります。 Power BI でサービス アプリケーションを作成し、テストした後、Power BI が生成するアプリケーション インストール URL を保存します。  クラウド パートナー ポータルの送信フォームの [[Technical Info]\(技術情報\)](./cpp-technical-info-tab.md) タブで、この URL を指定する必要があります。
+Power BI アプリは、[Power BI サービス](https://powerbi.microsoft.com/)内でのみビルドできます。 まず [Power BI Pro ライセンス](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)でサインインします。 Power BI でサービス アプリケーションを作成し、テストした後、Power BI から生成されるアプリのインストール URL を保存します。 最後に、Cloud パートナー ポータルの送信フォームの [[Technical Info]\(技術情報\)](./cpp-technical-info-tab.md) タブで、この URL を指定します。
  
 
 ## <a name="next-steps"></a>次の手順
 
-Power BI アプリを作成、テストし、関連するオファーを作成した後、[Power BI のオファーを公開](./cpp-publish-offer.md)できます。  
+Power BI アプリを作成、テストし、関連するオファーを作成した後、[Power BI アプリのオファーを公開](./cpp-publish-offer.md)できます。 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b4829b0da656c648db732b2e7564de6db8fbf2eb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9e4b9d8cf3300f977824f95aeb14a614d8897abd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312614"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430269"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>コグニティブ検索のシナリオで画像からの情報を処理し、抽出する方法
 
@@ -34,7 +34,7 @@ ms.locfileid: "53312614"
 
 | 構成パラメーター | 説明 |
 |--------------------|-------------|
-| imageAction   | 見つかった埋め込み画像や画像ファイルに対してアクションを実行しない場合は、"none" に設定します。 <br/>"GenerateNormalizedImages" に設定すると、ドキュメント クラッキングの際、正規化された画像の配列が生成されます。 これらの画像は、*normalized_images* フィールドで公開されます。 <br/>既定値は "none" です。 この構成は、BLOB データ ソースにのみ関連します ("dataToExtract" が "contentAndMetadata" に設定されている場合)。 |
+| imageAction   | 見つかった埋め込み画像や画像ファイルに対してアクションを実行しない場合は、"none" に設定します。 <br/>"GenerateNormalizedImages" に設定すると、ドキュメント クラッキングの際、正規化された画像の配列が生成されます。<br/>"generateNormalizedImagePerPage" に設定すると、正規化された画像の配列が生成され、データ ソース内の PDF は、各ページが 1 つの出力画像にレンダリングされます。  PDF 以外のファイルの種類については、機能は "generateNormalizedImages" の場合と同じです。<br/>"none" ではないすべてのオプションについては、画像が *normalized_images* フィールドで公開されます。 <br/>既定値は "none" です。 この構成は、BLOB データ ソースにのみ関連します ("dataToExtract" が "contentAndMetadata" に設定されている場合)。 |
 |  normalizedImageMaxWidth | 生成された正規化画像の最大幅 (ピクセル単位)。 既定値は 2000 です。|
 |  normalizedImageMaxHeight | 生成された正規化画像の最大の高さ (ピクセル単位)。 既定値は 2000 です。|
 
@@ -62,7 +62,7 @@ ImageAction は、[インデクサー定義](https://docs.microsoft.com/rest/api
 }
 ```
 
-*imageAction* が "generateNormalizedImages" に設定されている場合は、新しい *normalized_images* フィールドに画像の配列が含められます。 各画像は、次のメンバーを含んだ複合型になります。
+*imageAction* を "none" 以外の値に設定すると、新しい *normalized_images* フィールドに画像の配列が格納されます。 各画像は、次のメンバーを含んだ複合型になります。
 
 | 画像のメンバー       | 説明                             |
 |--------------------|-----------------------------------------|

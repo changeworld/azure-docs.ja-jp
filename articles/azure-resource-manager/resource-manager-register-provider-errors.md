@@ -11,14 +11,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/10/2018
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: e87ff83470ac8d375b4eee3b69f8793e3e11c0f5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2f3db5e6260b065c83f0e337306d38dca6e5ff51
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497419"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341404"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>リソース プロバイダーの登録エラーの解決
 
@@ -45,13 +45,21 @@ Message: The subscription is not registered to use namespace {resource-provider-
 
 サポートされる場所や API バージョンがエラー メッセージに提示されます。 提示されたいずれかの値を使用するようにテンプレートを変更してください。 ほとんどのプロバイダーは、Azure portal またはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。 まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。
 
+または、仮想マシンの自動シャットダウンを無効にすると、次のようなエラー メッセージを受け取ることがあります。
+
+```
+Code: AuthorizationFailed
+Message: The client '<identifier>' with object id '<identifier>' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/read' over scope ...
+```
+
 ## <a name="cause"></a>原因
 
-これらのエラーの原因として、次の 3 つの理由のいずれかが考えられます。
+これらのエラーの原因として、次のいずれかの理由が考えられます。
 
-* サブスクリプションに対してリソース プロバイダーが登録されていない
+* サブスクリプションに対して必要なリソース プロバイダーが登録されていない
 * リソース タイプでサポートされた API バージョンに該当しない
 * リソース タイプでサポートされた場所に該当しない
+* VM を自動シャットダウンするには、Microsoft.DevTestLab リソース プロバイダーを登録する必要があります。
 
 ## <a name="solution-1---powershell"></a>解決策 1 - PowerShell
 

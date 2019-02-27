@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: f2c4939436db5ae4c862cb311cc66a162ac716e3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 01d452f97134093e9b40b6ec32f1c9fed41564aa
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989248"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343053"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor ログ クエリ
-Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azure Monitor ログ クエリでは、同じクエリ言語のバージョンが使用されます。 [Azure Data Explorer クエリ言語のドキュメント](/azure/kusto/query)には言語に関するすべての詳細が記載されているため、Azure Monitor ログ クエリを記述するためのプライマリ リソースとなります。 このページでは、クエリの記述方法を学習するためのその他のリソースへのリンクと、言語による Azure Monitor の実装の違いに関する情報へのリンクを示します。
+Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azure Monitor ログ クエリでは、同じ Kusto クエリ言語のバージョンが使用されます。 [Kusto クエリ言語のドキュメント](/azure/kusto/query)には言語に関するすべての詳細が記載されているため、Azure Monitor ログ クエリを記述するためのプライマリ リソースとなります。 このページでは、クエリの記述方法を学習するためのその他のリソースへのリンクと、言語による Azure Monitor の実装の違いに関する情報へのリンクを示します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,8 +36,8 @@ Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azur
 
 ## <a name="reference"></a>リファレンス
 
-- [クエリ言語リファレンス](/azure/kusto/query)は、データ エクスプローラーのクエリ言語の完全な言語リファレンスです。
-- 「[Azure Monitor log query language differences (Azure Monitor ログ クエリ言語の違い)](data-explorer-difference.md)」では、データ エクスプローラーのクエリ言語のバージョンによる違いについて説明しています。
+- [クエリ言語リファレンス](/azure/kusto/query)は、Kusto クエリ言語の完全な言語リファレンスです。
+- 「[Azure Monitor ログ クエリ言語の違い](data-explorer-difference.md)」では、Kusto クエリ言語のバージョンによる違いについて説明しています。
 - 「[Standard properties in Azure Monitor log records (Azure Monitor ログ レコードの標準プロパティ)](../../azure-monitor/platform/log-standard-properties.md)」では、すべての Azure Monitor ログ データの標準プロパティについて説明しています。
 - 「[Perform cross-resource log queries in Azure Monitor Azure (Monitor でのリソース間のログ クエリの実行)](../../azure-monitor/log-query/cross-workspace-query.md)」では、複数の Log Analytics ワークスペースと Application Insights アプリケーションのデータを使用するログ クエリを記述する方法について説明しています。
 
@@ -65,4 +65,4 @@ Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azur
  
 ## <a name="next-steps"></a>次の手順
 
-- 完全な[データ エクスプローラーのクエリ言語のリファレンス ドキュメント](/azure/kusto/query/)にアクセスします。
+- 完全な [Kusto クエリ言語のリファレンス ドキュメント](/azure/kusto/query/)にアクセスします。

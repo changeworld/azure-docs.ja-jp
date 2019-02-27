@@ -4,17 +4,17 @@ description: Azure Policy でリソース ポリシー定義を使用して、�
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/11/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: aa334f88d04bb30ce01fe12fecb3aac3c9cd572d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1c65ea47f7dd091ea326d9300a8ef09208a03951
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237419"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447788"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -80,7 +80,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定することができます。 ポリシー定義に **mode** 値が含まれていない場合、既定値として Azure PowerShell では `all` が、Azure CLI では `null` が使用されます。 `null` モードは、下位互換性をサポートするために `indexed` を使用するのと同じです。
 
-タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroup` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。
+タグまたは場所を適用するポリシーを作成する場合は、`indexed` を使用してください。 これは必須ではありませんが、それによって、タグまたは場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表示されることを回避できます。 例外は**リソース グループ**です。 リソース グループに対して場所またはタグを適用するポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroups` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](../samples/enforce-tag-rg.md)ことに関する記事を参照してください。
 
 ## <a name="parameters"></a>parameters
 
@@ -215,7 +215,9 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `"like": "value"`
 - `"notLike": "value"`
 - `"match": "value"`
+- `"matchInsensitively": "value"`
 - `"notMatch": "value"`
+- `"notMatchInsensitively": "value"`
 - `"contains": "value"`
 - `"notContains": "value"`
 - `"in": ["value1","value2"]`
@@ -227,7 +229,8 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 **like** 条件と **notLike** 条件を使用する場合は、値にワイルドカード (`*`) を指定できます。
 値に複数のワイルドカード (`*`) を指定することはできません。
 
-**match** 条件と **notMatch** 条件を使用する場合は、任意の数字と一致する `#`、任意の文字と一致する `?`、すべての文字と一致する `.` のほか、一致させる具体的な文字を指定することができます。 例については、「[複数の名前パターンを許可する](../samples/allow-multiple-name-patterns.md)」を参照してください。
+**match** 条件と **notMatch** 条件を使用する場合は、任意の数字と一致する `#`、任意の文字と一致する `?`、すべての文字と一致する `.` のほか、一致させる具体的な文字を指定することができます。
+**match** と **notMatch** は、大文字と小文字が区別されます。 大文字と小文字が区別されない代替手段は、**matchInsensitively** と **notMatchInsensitively** で使用できます。 例については、「[複数の名前パターンを許可する](../samples/allow-multiple-name-patterns.md)」を参照してください。
 
 ### <a name="fields"></a>フィールド
 
@@ -245,15 +248,41 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 - `identity.type`
   - リソースで有効になっている[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) の種類を返します。
 - `tags`
-- `tags.<tagName>`
+- `tags['<tagName>']`
+  - この角かっこ構文では、ハイフン、ピリオド、スペースなどの区切り記号を含むタグ名がサポートされます。
   - **\<tagName\>** は、条件を検証するタグの名前です。
-  - 例: `tags.CostCenter`。**CostCenter** がタグの名前です。
-- `tags[<tagName>]`
-  - このかっこ構文では、ピリオドを含むタグ名がサポートされます。
-  - **\<tagName\>** は、条件を検証するタグの名前です。
-  - 例: `tags[Acct.CostCenter]`。**Acct.CostCenter** がタグの名前です。
-
+  - 例: `tags['Acct.CostCenter']` (**Acct.CostCenter** がタグの名前)。
+- `tags['''<tagName>''']`
+  - この角かっこ構文では、2 個のアポストロフィでエスケープすることにより、アポストロフィが含まれるタグ名がサポートされます。
+  - **'\<tagName\>'** は、条件を検証するタグの名前です。
+  - 例: `tags['''My.Apostrophe.Tag''']` (**'\<tagName\>'** がタグの名前)。
 - プロパティのエイリアス: 一覧については、「[エイリアス](#aliases)」を参照してください。
+
+> [!NOTE]
+> `tags.<tagName>`、`tags[tagName]`、および`tags[tag.with.dots]` は、タグ フィールドを宣言する方法としてまだ受け付けられます。
+> ただし、推奨される式は上に示したものです。
+
+#### <a name="use-tags-with-parameters"></a>パラメーターを含むタグを使用する
+
+パラメーター値をタグ フィールドに渡すことができます。 タグ フィールドにパラメーターを渡すと、ポリシー割り当ての間のポリシー定義の柔軟性が向上します。
+
+次の例では、`concat` を使用して、**tagName** パラメーターの値で指定されているタグのタグ フィールド参照が作成されています。 そのタグが存在しない場合、**append** 効果が使用され、`resourcegroup()` 参照関数を使用することにより監査対象のリソースの親リソース グループで設定されている同じ名前付きタグの値を使用してタグが追加されます。
+
+```json
+{
+    "if": {
+        "field": "[concat('tags[', parameters('tagName'), ']')]",
+        "exists": "false"
+    },
+    "then": {
+        "effect": "append",
+        "details": [{
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "value": "[resourcegroup().tags[parameters('tagName')]]"
+        }]
+    }
+}
+```
 
 ### <a name="value"></a>値
 
@@ -341,7 +370,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 ### <a name="policy-functions"></a>ポリシー関数
 
-次のデプロイ関数およびリソース関数を除く、すべての [Resource Manager テンプレート関数](../../../azure-resource-manager/resource-group-template-functions.md)は、ポリシー規則内で使用するために利用可能です。
+次の関数を除き、すべての [Resource Manager テンプレート関数](../../../azure-resource-manager/resource-group-template-functions.md)をポリシー規則内で使用できます。
 
 - copyIndex()
 - deployment()
@@ -353,7 +382,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 さらに、`field` 関数もポリシー規則で使用できます。 `field` は、主に **AuditIfNotExists** と **DeployIfNotExists** で、評価されるリソースのフィールドを参照するために使用されます。 使用例については、「[DeployIfNotExists の例](effects.md#deployifnotexists-example)」をご覧ください。
 
-#### <a name="policy-function-examples"></a>ポリシー関数の例
+#### <a name="policy-function-example"></a>ポリシー関数の例
 
 このポリシー規則の例では、`resourceGroup` リソース関数を使用して **name** プロパティを取得します。ここでは、`concat` 配列およびオブジェクト関数と組み合わせて、リソース グループ名で始まるリソース名を指定する `like` 条件を作成します。
 
@@ -367,24 +396,6 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
     },
     "then": {
         "effect": "deny"
-    }
-}
-```
-
-このポリシー規則の例では、`resourceGroup` リソース関数を使用して、リソース グループの **CostCenter**タグの **tags** プロパティ配列値を取得し、それを新しいリソースの **CostCenter** タグに付加します。
-
-```json
-{
-    "if": {
-        "field": "tags.CostCenter",
-        "exists": "false"
-    },
-    "then": {
-        "effect": "append",
-        "details": [{
-            "field": "tags.CostCenter",
-            "value": "[resourceGroup().tags.CostCenter]"
-        }]
     }
 }
 ```

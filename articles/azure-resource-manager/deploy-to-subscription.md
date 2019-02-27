@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: ce95406cbcb6d9514159d84d653a9ff361713aec
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: bdba294e1ee776d90b93f715e930ec26765abb7f
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744400"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343036"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>サブスクリプション レベルでリソース グループとリソースを作成する
 
 通常、Azure リソースは Azure サブスクリプションのリソース グループにデプロイします。 ただし、サブスクリプション レベルで Azure リソース グループを作成し、Azure リソースを作成することもできます。 サブスクリプション レベルでテンプレートをデプロイするには、Azure CLI と Azure PowerShell を使用します。 Azure portal は、サブスクリプション レベルでのデプロイをサポートしていません。
 
-Azure Resource Manager テンプレートでリソース グループを作成するには、[**Microsoft.Resources/resourceGroups**](/azure/templates/microsoft.resources/allversions) リソースを定義してリソース グループの名前と場所を指定します。 同じテンプレートでリソース グループを作成し、そのリソース グループにリソースをデプロイすることができます。 サブスクリプション レベルでデプロイできるリソースには、[ポリシー](../azure-policy/azure-policy-introduction.md)、[ロールベースのアクセス制御](../role-based-access-control/overview.md)などがあります。
+Azure Resource Manager テンプレートでリソース グループを作成するには、[**Microsoft.Resources/resourceGroups**](/azure/templates/microsoft.resources/allversions) リソースを定義してリソース グループの名前と場所を指定します。 同じテンプレートでリソース グループを作成し、そのリソース グループにリソースをデプロイすることができます。 サブスクリプション レベルでデプロイできるリソースには、[ポリシー](../governance/policy/overview.md)、[ロールベースのアクセス制御](../role-based-access-control/overview.md)などがあります。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -307,7 +307,7 @@ New-AzDeployment `
 
 ### <a name="define-and-assign-policy"></a>ポリシーを定義して割り当てる
 
-ポリシーは同じテンプレートで[定義](../azure-policy/policy-definition.md)して割り当てることができます。
+ポリシーは同じテンプレートで[定義](../governance/policy/concepts/definition-structure.md)して割り当てることができます。
 
 ```json
 {

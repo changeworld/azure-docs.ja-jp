@@ -1,6 +1,6 @@
 ---
-title: Azure RBAC のロール定義の概要 | Microsoft Docs
-description: Azure のリソースの詳細なアクセス管理を行うためのロールベースのアクセス制御 (RBAC) のロール定義について説明します。
+title: Azure リソースの RBAC のロール定義の概要 | Microsoft Docs
+description: Azure リソースの詳細なアクセス管理を行うためのロールベースのアクセス制御 (RBAC) のロール定義について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 8966eb337af07b90e7d9c697a4bfd14c543540aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b7f4ce9508928ccc6ab766e7164c674511bcaa37
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991363"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342781"
 ---
-# <a name="understand-role-definitions"></a>ロール定義について
+# <a name="understand-role-definitions-for-azure-resources"></a>Azure リソースのロール定義の概要
 
-ロールのしくみを理解しようとしている場合、または独自の[カスタム ロール](custom-roles.md)を作成している場合は、ロールの定義方法を理解すると便利です。 この記事では、ロール定義の詳細について説明し、いくつかの例を示します。
+ロールのしくみを理解しようとしている場合、または独自の [Azure リソースのカスタム ロール](custom-roles.md)を作成している場合は、ロールの定義方法を理解すると便利です。 この記事では、ロール定義の詳細について説明し、いくつかの例を示します。
 
 ## <a name="role-definition-structure"></a>ロール定義の構造
 
@@ -151,6 +151,8 @@ Alice にはサブスクリプション スコープにワイルドカード (`*
 
 Bob のアクセス許可は[ストレージ BLOB データ共同作成者 (プレビュー)](built-in-roles.md#storage-blob-data-contributor-preview) ロールで指定された `Actions` および `DataActions` のみに制限されます。 Bob はロールに基づいて、管理操作とデータ操作の両方を実行できます。 たとえば、Bob は指定されたストレージ アカウントのコンテナーを読み取り、書き込み、および削除でき、また BLOB も読み取り、書き込み、および削除できます。
 
+ストレージの管理とデータ プレーンのセキュリティの詳細については、「[Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)」を参照してください。
+
 ### <a name="what-tools-support-using-rbac-for-data-operations"></a>RBAC を使用してデータ操作をサポートするツール
 
 データ操作を表示し、操作するには、正しいバージョンのツールまたは SDK が必要です。
@@ -225,10 +227,10 @@ Azure portal では、ユーザーが Azure AD のプレビュー エクスペ�
 | ネットワーク リソース グループでのみ割り当てにロールを使用できる | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
 | すべてのスコープの割り当てにロールを使用できる | `"/"` |
 
-カスタム ロールの `AssignableScopes` について詳しくは、[カスタム ロール](custom-roles.md)に関する記事をご覧ください。
+カスタム ロールの `AssignableScopes` の詳細については、[Azure リソースのカスタム ロール](custom-roles.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-* [組み込みのロール](built-in-roles.md)
-* [カスタム ロール](custom-roles.md)
+* [Azure リソースの組み込みロール](built-in-roles.md)
+* [Azure リソースのカスタム ロール](custom-roles.md)
 * [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4a4b760652ce38e27e12e9eb73fbe7692eddbc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8d39b614c373c63cf1405c5db0f64581c481d1f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204374"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417205"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>更新:Azure AD のパスワード保護をデプロイする
 
@@ -53,15 +53,18 @@ Microsoft では、すべての展開を監査モードで開始することを�
     |`https://login.microsoftonline.com`|認証要求|
     |`https://enterpriseregistration.windows.net`|Azure AD パスワード保護機能|
 
+* Azure AD のパスワード保護プロキシ サービスがホストされているすべてのマシンで、送信 TLS 1.2 HTTP トラフィックを許可するように構成する必要があります。
 * Azure AD で Azure AD パスワード保護プロキシ サービスとフォレストを登録するグローバル管理者アカウント。
 * Azure AD で Windows Server Active Directory フォレストを登録するために、フォレスト ルート ドメインの Active Directory ドメイン管理者特権を持つアカウント。
 * DC エージェント サービス ソフトウェアを実行しているすべての Active Directory ドメインは、sysvol レプリケーションに DFSR を使用する必要があります。
 
 ## <a name="single-forest-deployment"></a>1 つのフォレストへの展開
 
-次の図は、Azure AD パスワード保護の基本コンポーネントが、オンプレミスの Active Directory 環境でどのように連携し、機能するかを示したものです。  
+次の図は、Azure AD パスワード保護の基本コンポーネントが、オンプレミスの Active Directory 環境でどのように連携し、機能するかを示したものです。
 
 ![Azure AD パスワード保護コンポーネントの連携方法](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
+
+デプロイする前に、ソフトウェアの動作を確認することをお勧めします。[Azure AD のパスワード保護の概念の概要](concept-password-ban-bad-on-premises.md)に関する記事をご覧ください。
 
 ### <a name="download-the-software"></a>ソフトウェアをダウンロードする
 

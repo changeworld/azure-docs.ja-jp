@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 784cb5248dab2b9554c67347e1b9b848e1a9e985
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 29e6215358eaf544f32f585744ed36f30822d134
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820786"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446751"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
-このチュートリアルでは、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に App Service 証明書を作成 (購入) することによって Web アプリをセキュリティで保護し、それを App Service アプリにバインドする方法を示します。
+このチュートリアルでは、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に App Service 証明書を作成 (購入) し、それを App Service アプリにバインドすることによって、[App Service アプリ](https://docs.microsoft.com/azure/app-service/)または[関数アプリ](https://docs.microsoft.com/azure/azure-functions/)をセキュリティで保護する方法を示します。
 
 > [!TIP]
 > App Service 証明書はあらゆる Azure Service と Azure ではないサービスで利用できます。App Service に限定されません。 そのためには、任意の場所で利用できるように、App Service 証明書のローカル PFX コピーを作成する必要があります。 詳しくは、[App Service 証明書のローカル PFX コピーの作成](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)に関する記事をご覧ください。
@@ -35,7 +35,7 @@ ms.locfileid: "54820786"
 この攻略ガイドに従うには:
 
 - [App Service アプリを作成する](/azure/app-service/)
-- [ドメイン名を Web アプリにマップ](app-service-web-tutorial-custom-domain.md)するか、[購入し、Azure で構成する](manage-custom-dns-buy-domain.md)
+- [ドメイン名をアプリにマップする](app-service-web-tutorial-custom-domain.md)か、[Azure で購入して構成する](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -72,7 +72,7 @@ ms.locfileid: "54820786"
 |-|-|
 | Name | 英数字とダッシュで構成される一意の名前。 |
 | リソース グループ | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
-| 場所 | App Service アプリと同じ場所を選択します。 |
+| Location | App Service アプリと同じ場所を選択します。 |
 | 価格レベル  | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
 | アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/key-vault-group-permissions-for-apps.md)」の手順に従って構成できます。 |
 | 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/key-vault-network-security.md)」の手順に従って構成できます |

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory (プレビュー) の Log Analytics ビューをインストールして使用する方法 |Microsoft Docs
-description: Azure Active Directory (プレビュー) の Log Analytics ビューをインストールして使用する方法について説明します。
+title: Azure Active Directory (プレビュー) の Log Analytics ビューをインストールして使用する方法 | Microsoft Docs
+description: Azure Active Directory (プレビュー) の Log Analytics ビューをインストールして使用する方法について説明します
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de2aa262dff54f2b8e535aa646e9a8cac7719567
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7220fc6b239d20e9f1fc81e7d18b4d7ca6f0ded5
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165265"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453632"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory 用の Log Analytics ビューのインストールと使用
 
@@ -41,13 +41,13 @@ Log Analytics ビューを使用するには、次の準備が必要です。
 
 ## <a name="install-the-log-analytics-views"></a>Log Analytics ビューのインストール
 
-1. Log Analytics ワークスペースに移動します。 これを行うには、最初に [Azure portal](https://portal.azure.com) に移動して、**[All services]\(すべてのサービス\)** を選択します。 テキスト ボックスに「**Log Analytics**」と入力して、**[Log Analytics]** を選択します。 前提条件の中で、アクティビティ ログをルーティングしたワークスペースを選択します。
+1. Log Analytics ワークスペースに移動します。 これを行うには、最初に [Azure portal](https://portal.azure.com) に移動して、**[All services]\(すべてのサービス\)** を選択します。 テキスト ボックスに「**Log Analytics**」と入力して、"**Log Analytic ワークスペース**" を選択します。 前提条件の中で、アクティビティ ログをルーティングしたワークスペースを選択します。
 2. **[ビュー デザイナー]** を選択し、**[インポート]** してから、**[ファイルの選択]** を選択して、ローカル コンピューターからビューをインポートします。
 3. 前提条件からダウンロードしたビューを選択し、**[保存]** を選択してインポートを保存します。 **[Azure AD Account Provisioning Events]\(Azure AD アカウントのプロビジョニング イベント\)** ビューと **[Sign-ins Events]\(サインイン イベント\)** ビューに対しても同じ操作を実行します。
 
 ## <a name="use-the-views"></a>ビューの使用
 
-1. Log Analytics ワークスペースに移動します。 これを行うには、最初に [Azure portal](https://portal.azure.com) に移動して、**[All services]\(すべてのサービス\)** を選択します。 テキスト ボックスに「**Log Analytics**」と入力して、**[Log Analytics]** を選択します。 前提条件の中で、アクティビティ ログをルーティングしたワークスペースを選択します。
+1. Log Analytics ワークスペースに移動します。 これを行うには、最初に [Azure portal](https://portal.azure.com) に移動して、**[All services]\(すべてのサービス\)** を選択します。 テキスト ボックスに「**Log Analytics**」と入力して、"**Log Analytic ワークスペース**" を選択します。 前提条件の中で、アクティビティ ログをルーティングしたワークスペースを選択します。
 
 2. ワークスペースに移動して、**[ワークスペースの概要]** を選択します。 次の 3 つのビューを確認する必要があります。
 
@@ -73,5 +73,5 @@ Log Analytics ビューを使用するには、次の準備が必要です。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Log Analytics でアクティビティ ログを分析する方法](howto-analyze-activity-logs-log-analytics.md)
-* [Azure portal で Log Analytics の使用を開始する](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)
+* [Azure Monitor ログでアクティビティ ログを分析する方法](howto-analyze-activity-logs-log-analytics.md)
+* [Azure portal での Azure Monitor ログの概要](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)

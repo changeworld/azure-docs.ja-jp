@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: b6cc65d10fc8924686d01c02177a9cb76f7a9571
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 722a40dca0a64407a407ecad6d990d1651b0e998
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660920"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415733"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を使用して、Enterprise セキュリティ パッケージで HDInsight クラスターを構成する
 
@@ -95,6 +95,10 @@ AAD-DS が NSG によって保護されている場合、[必須ポート](https
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>ESP の HDInsight クラスターの作成
 
 前の手順を正しく設定したら、次の手順は、ESP が有効になった HDInsight クラスターを作成することです。 HDInsight クラスターを作成するとき、**カスタム** タブで Enterprise セキュリティ パッケージを有効にできます。デプロイ用に Azure Resource Manager テンプレートを使用する場合は、ポータルのエクスペリエンスを一度使用して、最後の "概要" ページに後で再利用するために事前入力されたテンプレートをダウンロードします。
+
+> [!NOTE]  
+> ESP クラスター名の最初の 6 文字は、環境内で一意である必要があります。 たとえば、異なる VNET 内に複数の ESP クラスターがある場合、クラスター名の最初の 6 文字が一意になるように名前付け規則を選択する必要があります。
+
 
 ![Azure HDInsight Enterprise セキュリティ パッケージのドメインの検証](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
 

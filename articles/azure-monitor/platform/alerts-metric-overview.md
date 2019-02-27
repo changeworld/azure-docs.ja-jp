@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 3c7feda32bf162499888720ce56edac55197abe4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005524"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342985"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
-Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、プラットフォーム メトリック、[カスタム メトリック](../../azure-monitor/platform/metrics-custom-overview.md)、[Azure Monitor からの一般的なログのメトリックへの変換](../../azure-monitor/platform/alerts-metric-logs.md)、Application Insights の標準的なメトリックが含まれます。 メトリック アラートは 1 つまたは複数のメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
+Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、[プラットフォーム メトリック](alerts-metric-near-real-time.md#metrics-and-dimensions-supported)、[カスタム メトリック](../../azure-monitor/platform/metrics-custom-overview.md)、[Azure Monitor からの一般的なログのメトリック](../../azure-monitor/platform/alerts-metric-logs.md)への変換、Application Insights のメトリックが含まれます。 メトリック アラートは 1 つまたは複数のメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
 
 ## <a name="how-do-metric-alerts-work"></a>メトリック アラートの機能
 
@@ -65,8 +65,6 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 しばらくして、"myVM" の使用率が標準 (しきい値未満) に戻った場合、動作は次のようになります。 アラート ルールでは、その条件をさらに 2 回監視してから、解決済みの通知を送信します。 アラート ルールは、条件が変動している場合のノイズを減らすため、3 つの連続する期間にアラート条件が検出されない場合に、解決済み/非アクティブ化済みのメッセージを送信します。
 
 解決済みの通知が Web フックまたは電子メールで送信されると、Azure portal でのアラート インスタンスの状態 (監視状態と呼ばれる) も解決済みに設定されます。
-
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートによるスケールの監視
 
 ### <a name="using-dimensions"></a>ディメンションの使用
 
@@ -123,9 +121,9 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 ルックバック期間と違反の数が大きくなると、大きな偏差の定義に対するアラートのみに、アラートをフィルター処理することもできます。 [動的しきい値の詳細設定オプションについて詳しくはこちらをご覧ください](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean)。
 
-### <a name="monitoring-multiple-resources-using-metric-alerts"></a>メトリック アラートによる複数のリソースの監視
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートによるスケールの監視
 
-前のセクションで説明したようには、1 つのメトリック アラート ルールでそれぞれのディメンションの組み合わせ (つまり、 メトリック タイム シリーズ) を監視することができます。 ただし、以前はこれは一度に 1 つのリソースに限定されていました。 また、Azure Monitor はプレビューで 1 つのメトリック アラート ルールによる複数リソースの監視をサポートするようになりました。 この機能は現在はプレビューで、仮想マシンでのみサポートされています。 また、1 つのメトリック アラートが 1 つの Azure リージョン内のリソースを監視することもできます。
+ここまでは、単一の Azure リソースに関連する 1 つ以上のメトリックの時系列を監視するために、単一のメトリック アラートを使用する方法について説明しました。 1 つのアラート ルールを多数のリソースに適用する場合はよくあります。 また、Azure Monitor はプレビューで 1 つのメトリック アラート ルールによる複数リソースの監視をサポートするようになりました。 現在、この機能は仮想マシンでのみサポートされています。 また、1 つのメトリック アラートが 1 つの Azure リージョン内のリソースを監視することもできます。
 
 1 つのメトリック アラートでの監視範囲は、次の 3 つのいずれかの方法で指定することができます。
 
@@ -133,7 +131,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - サブスクリプション内の 1 つまたは複数のリソース グループ内の (1 つの Azure リージョン内の) すべての仮想マシン
 - 1 つのサブスクリプション内の (1 つの Azure リージョン内の) すべての仮想マシン
 
-Azure portal では現在、複数のリソースを監視するメトリック アラート ルールの作成はサポートされていません。 そのようなルールは [Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources)を使って作成できます。 仮想マシンごとに個別の通知が届きます。
+複数のリソースを監視するメトリックのアラート ルールを作成する方法は、単一のリソースを監視する[他のメトリック アラートを作成する](alerts-metric.md)場合と同じです。 唯一の違いは、監視対象にするリソースをすべて選択する点です。 このようなルールは [Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources)を使って作成することもできます。 仮想マシンごとに個別の通知が届きます。
 
 ## <a name="typical-latency"></a>一般的な待機時間
 
@@ -149,7 +147,7 @@ Azure portal では現在、複数のリソースを監視するメトリック 
 |-------------------------------------------------|----------------------------|
 | Microsoft.ApiManagement/service | はい |
 | Microsoft.Batch/batchAccounts| はい|
-|Microsoft.Cache/redis| はい
+|Microsoft.Cache/redis| はい |
 |Microsoft.ClassicCompute/virtualMachines | いいえ  |
 |Microsoft.ClassicCompute/domainNames/slots/roles | いいえ |
 |Microsoft.CognitiveServices/accounts | いいえ  |
@@ -160,7 +158,7 @@ Azure portal では現在、複数のリソースを監視するメトリック 
 |Microsoft.DBforMySQL/servers| はい|
 |Microsoft.DBforPostgreSQL/servers| はい|
 |Microsoft.Devices/IotHubs | いいえ |
-|Microsoft.DocumentDB/databaseAccounts| いいえ |
+|Microsoft.DocumentDB/databaseAccounts| はい|
 |Microsoft.EventHub/namespaces | はい|
 |Microsoft.Logic/workflows | はい|
 |Microsoft.Network/loadBalancers |はい|
@@ -168,16 +166,16 @@ Azure portal では現在、複数のリソースを監視するメトリック 
 |Microsoft.Network/applicationGateways| はい|
 |Microsoft.Network/expressRouteCircuits| はい|
 |Microsoft.Network/trafficManagerProfiles | はい|
-|Microsoft.Search/searchServices | いいえ |
-|Microsoft.ServiceBus/namespaces| いいえ |
+|Microsoft.Search/searchServices | はい|
+|Microsoft.ServiceBus/namespaces| はい |
 |Microsoft.Storage/storageAccounts | はい|
 |Microsoft.StreamAnalytics/streamingjobs| はい|
 |Microsoft.TimeSeriesInsights/environments | はい|
 |Microsoft. Web/serverfarms | はい |
 |Microsoft. Web/sites (関数を除く) | はい|
 |Microsoft. Web/hostingEnvironments/multiRolePools | いいえ |
-|Microsoft. Web/hostingEnvironments/workerPools| いいえ 
-|Microsoft.SQL/Servers | いいえ |
+|Microsoft. Web/hostingEnvironments/workerPools| いいえ  |
+|Microsoft.SQL/Servers | いいえ  |
 
 ## <a name="next-steps"></a>次の手順
 

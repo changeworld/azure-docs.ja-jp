@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 51376661530d5de67e0efeacbcfd0d3a56078511
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 492beba1040cef3d5a910cc9db3fe16b41c33cd6
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117954"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301589"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 
@@ -246,7 +246,7 @@ Network Watcher には現在、前述のログ機能に加えて、次の機能�
 
 Application Insights は、パフォーマンスと使いやすさを継続的に改善できるように設計されています。
 
-オンプレミスとクラウドのどちらでホストされているに関係なく、.NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリに役立ちます。 DevOps プロセスと統合され、さまざまな開発ツールとの接続ポイントを備えています。
+オンプレミスまたはクラウドのどちらでホストされているかに関係なく、.NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリに役立ちます。 DevOps プロセスと統合され、さまざまな開発ツールとの接続ポイントを備えています。
 
 ![Application Insights の図](./media/azure-log-audit/azure-log-audit-fig6.png)
 

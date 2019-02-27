@@ -10,12 +10,12 @@ ms.date: 01/23/19
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/23/19
-ms.openlocfilehash: a7753280c0b84b21f44e52c303b96f11cd4cd8af
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: a71362f4d6a69f2eaed36dd549437bb5857d555f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765792"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456998"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
 Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 AD FS を使用したデプロイは、切断モードでの Azure Stack のデプロイとも呼ばれます。
@@ -73,7 +73,7 @@ Graph は、単一の Active Directory フォレストとの統合のみをサ�
 
 複数のサイトを持つ Active Directory の展開では、Azure Stack のデプロイに最も近い Active Directory サイトを構成します。 この構成により、Azure Stack Graph サービスで、リモート サイトからグローバル カタログ サーバーを使用してクエリが解決されなくなります。
 
-Azure Stack の[パブリック VIP ネットワーク](azure-stack-network.md#public-vip-network) サブネットを Azure Stack に最も近い Azure AD サイトに追加します。 たとえば、Active Directory にシアトル サイトに Azure Stack がデプロイされたシアトルとレドモンドの 2 つのサイトがある場合、Azure Stack のパブリック VIP ネットワーク サブネットをシアトルの Azure AD サイトに追加します。
+Azure Stack の[パブリック VIP ネットワーク](azure-stack-network.md#public-vip-network) サブネットを Azure Stack に最も近い Active Directory サイトに追加します。 たとえば、Active Directory にシアトルとレドモンドの 2 つのサイトがあり、シアトルのサイトに Azure Stack がデプロイされている場合、Azure Stack のパブリック VIP ネットワーク サブネットを Active Directory のシアトルのサイトに追加します。
 
 Active Directory サイトについて詳しくは、「[サイト トポロジの設計](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)」をご覧ください。
 

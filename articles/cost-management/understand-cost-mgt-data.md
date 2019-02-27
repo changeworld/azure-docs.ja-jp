@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 79cf839a23d41058e0d9583a378dc063cd220136
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1d7f58780819202eb02e3a48b4b5e0ac108a0432
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981759"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447465"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -61,6 +61,8 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 | **サポート プラン** | Azure Government Standard サポート | MS-AZR-USGOV-0041P |
 | **サポート プラン** | Azure Government Pro-Direct サポート | MS-AZR-USGOV-0042P |
 | **サポート プラン** | Azure Government Developer サポート | MS-AZR-USGOV-0043P |
+
+従量課金制、MSDN、および Visual Studio のオファー カテゴリのお客様の場合、2018 年 10 月 2 からデータを Cost Management で使用できます。
 
 サブスクリプションのデータが表示されず、ご利用のサブスクリプションがサポート対象のプランに該当するかどうかわからない場合は、ご利用のサブスクリプションがサポート対象かどうかを検証することができます。 Azure サブスクリプションがサポート対象かどうかを検証するには、[Azure portal](https://portal.azure.com) にサインインします。 次に、左側のメニュー ウィンドウにある **[すべてのサービス]** を選択します。 サービスの一覧で **[サブスクリプション]** を選択します。 [サブスクリプション] の一覧で、検証するサブスクリプションを選択します。 選択したサブスクリプションが [概要] タブに表示され、**プラン**と**プラン ID** を確認できます。 次に例を示します。
 

@@ -12,19 +12,20 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d95f7eb971f7da229c7d66d586598697ab0a2d8b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2aca321ac0902d115f4fc7622992d29183c1d35c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209398"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452599"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>2 段階認証またはセキュリティ情報を使ったサインイン方法
-
 2 段階認証またはセキュリティ情報を設定したら、指定した認証方法を使って、アカウントにサインインできるようになります。
 
 >[!Note]
->引き続き 2 段階認証を使用している場合は、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」の手順に従って認証方法を設定する必要があります。 管理者によってセキュリティ情報エクスペリエンスが有効化されている場合は、次のステップ バイ ステップ ガイドを使用して認証方法を設定する必要があります。<ul><li>[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)</li><li>[テキスト メッセージを使用するようにセキュリティ情報を設定する](security-info-setup-text-msg.md)</li><li>[電話呼び出しを使用するようにセキュリティ情報を設定する](security-info-setup-phone-number.md)</li></ul>
+>引き続き 2 段階認証を使用している場合は、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」の手順に従って認証方法を設定する必要があります。
+
+>管理者によってセキュリティ情報エクスペリエンスが有効化されている場合は、次のステップ バイ ステップ記事を使用して認証方法を設定する必要があります。<ul><li>[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)</li><li>[テキスト メッセージを使用するようにセキュリティ情報を設定する](security-info-setup-text-msg.md)</li><li>[電話呼び出しを使用するようにセキュリティ情報を設定する](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>モバイル デバイスの認証アプリの通知を使ってサインインする
 
@@ -55,10 +56,7 @@ ms.locfileid: "56209398"
 
 
 ## <a name="next-steps"></a>次の手順
-
-- 「[Manage your security info (セキュリティ情報の管理)](security-info-manage-settings.md)」を参照して、セキュリティ情報を編集し、認証方法を追加または変更する。 
-
-- 「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」でセキュリティ情報について学習する。
+- 「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」の記事でセキュリティ情報について学習する。
 
 - 「[2 段階認証の概要](user-help-two-step-verification-overview.md)」の記事で 2 段階認証について学習する。 
 

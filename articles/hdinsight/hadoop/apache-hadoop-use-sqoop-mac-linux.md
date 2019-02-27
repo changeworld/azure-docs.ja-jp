@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: d7df1c65b8588b97a6beb0a4c2428b3c6430c3b2
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.date: 02/15/2019
+ms.openlocfilehash: 2f16ba3fde73705d431ba97d65059b178020bb62
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635699"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340299"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
@@ -105,7 +105,7 @@ GO
     データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。
 
     > [!IMPORTANT]  
-    > `wasb:///` パスは、Azure Storage を既定のクラスター記憶域として使用するクラスターで動作します。 Azure Data Lake Storage を使用するクラスターでは、代わりに `adl:///` を使用してください。
+    > `wasb:///` パスは、Azure Storage を既定のクラスター記憶域として使用するクラスターで動作します。 Azure Data Lake Storage Gen2 を使用するクラスターでは、代わりに `abfs:///` を使用します。 Azure Data Lake Storage Gen1 を使用するクラスターでは、代わりに `adl:///` を使用します。
 
 2. インポートが完了したら、次のコマンドを使用して、新しいディレクトリのデータを列挙します。
 

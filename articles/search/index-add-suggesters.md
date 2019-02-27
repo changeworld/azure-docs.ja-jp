@@ -1,7 +1,7 @@
 ---
 title: Azure Search インデックスに suggester を追加する
 description: Azure Search インデックスのフィールドのテキストで提案されたクエリが構成される、先行入力クエリ操作に対してフィールドを有効にします。
-ms.date: 01/31/2019
+ms.date: 02/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 35025d69865aa6890e1cd921e31ac6c26c015789
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7128e4d3b0675775dc713451ef672b28a4991499
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007700"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269928"
 ---
 # <a name="add-suggesters-to-an-azure-search-index"></a>Azure Search インデックスに suggester を追加する
 
@@ -34,9 +34,12 @@ ms.locfileid: "56007700"
 
 インデックスごとに使用できる **suggester** リソースは 1 つだけです (具体的には、**suggesters** コレクション内の 1 つの **suggester**)。
 
-いつでも **suggester** を作成できますが、インデックスへの影響はフィールドによって異なります。 同じ更新の一部として suggester に新しいフィールドを追加する場合は、インデックスの再構築が必要ないため影響は最も小さくなります。 一方、既存のフィールドを追加する場合は、フィールドの定義が変化するので、インデックスの完全な再構築が必要です。
+## <a name="creating-a-suggester"></a>suggester の作成 
 
-## <a name="usage"></a>使用法  
+いつでも **suggester** を作成できますが、インデックスへの影響はフィールドによって異なります。 
+
++ 同じ更新の一部として suggester に新しいフィールドを追加する場合は、インデックスの再構築が必要ないため影響は最も小さくなります。
++ 一方、既存のフィールドを suggester に追加する場合は、フィールドの定義が変化するので、インデックスの完全な再構築が必要です。
 
  **suggester** は、あいまいな用語やフレーズではなく、特定のドキュメントを提案するために使用した場合に、最も効果的に機能します。 最適な候補フィールドは、タイトル、名前、および項目を識別できる他の比較的短い語句です。 あまり効果的ではないのは、カテゴリやタグなどの反復的なフィールドまたは説明やコメントなどの非常に長いフィールドです。  
 

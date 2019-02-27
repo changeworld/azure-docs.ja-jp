@@ -6,17 +6,66 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/30/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ef2a782a19dd319de346f14d6189759d0a26686c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d8ef70088d904720a81ac558206a3140d7bbecd6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55665773"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269999"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours ソリューションのトラブルシューティング
+
+## <a name="deployment-failure"></a>シナリオ:VM の起動/停止ソリューションを正常にデプロイできない
+
+### <a name="issue"></a>問題
+
+[時間外の VM の起動/停止ソリューション](../automation-solution-vm-management.md)のデプロイで、次のいずれかのエラーが発生しました。
+
+```
+Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
+```
+
+```
+Resource 'StartStop_VM_Notification' was disallowed by policy. Policy identifiers: '[{\\\"policyAssignment\\\":{\\\"name\\\":\\\"[MyPolicyName]”.
+```
+
+```
+The subscription is not registered to use namespace 'Microsoft.OperationsManagement'.
+```
+
+```
+The subscription is not registered to use namespace 'Microsoft.Insights'.
+```
+
+```
+The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
+```
+
+### <a name="cause"></a>原因
+
+デプロイは、次のいずれかの理由で失敗する場合があります。
+
+1. 選択したリージョンに同じ名前の Automation アカウントが既に存在している。
+2. VM の起動/停止ソリューションのデプロイを許可しないポリシーが設定されている。
+3. リソースの種類として `Microsoft.OperationsManagement`、`Microsoft.Insights`、または `Microsoft.Automation` が登録されていない。
+4. Log Analytics ワークスペースがロックされている。
+
+### <a name="resolution"></a>解決策
+
+問題の考えられる解決策または参照する場所については、次の一覧を確認してください。
+
+1. Automation アカウントは、異なるリソース グループ内にある場合でも、Azure リージョン内で一意である必要があります。 ターゲット リージョンの既存の Automation アカウントをチェックします。
+2. 既存のポリシーによって、VM の起動/停止ソリューションをデプロイするために必要なリソースの使用が妨げられています。 Azure portal でポリシーの割り当てに移動し、そのリソースのデプロイを許可していないポリシーの割り当てがあるかどうかを確認します。 詳細については、[RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md) を参照してください。
+3. VM の起動/停止ソリューションをデプロイするには、次の Azure リソースの名前空間にサブスクリプションが登録されている必要があります。
+    * `Microsoft.OperationsManagement`
+    * `Microsoft.Insights`
+    * `Microsoft.Automation`
+
+   プロバイダーの登録時のエラーについては、「[Resolve errors for resource provider registration (リソースプロバイダーの登録エラーを解決する)](../../azure-resource-manager/resource-manager-register-provider-errors.md)」を参照してください。
+4. Log Analytics ワークスペースがロックされている場合は、Azure portal でワークスペースに移動し、すべてのリソースのロックを削除します。
 
 ## <a name="all-vms-fail-to-startstop"></a>シナリオ:すべての VM を起動/停止できない
 

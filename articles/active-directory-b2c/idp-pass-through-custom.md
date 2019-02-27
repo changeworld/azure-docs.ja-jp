@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f21f835ea50563497b73fb6e4505f60411029406
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cd24d4ad026af7d8bce70902376c3a31d659a203
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883000"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427873"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを通じてアクセス トークンをご自身のアプリケーションに渡す
 
@@ -24,11 +24,11 @@ ms.locfileid: "55883000"
 
 Azure Active Directory (Azure AD) B2C の[カスタム ポリシー](active-directory-b2c-get-started-custom.md)は、ご自身のアプリケーションのユーザーに、ID プロバイダーを使用してサインアップまたはサインインする機会を提供します。 これが発生すると、Azure AD B2C は ID プロバイダーから[アクセス トークン](active-directory-b2c-reference-tokens.md)を受け取ります。 Azure AD B2C はそのトークンを使用して、そのユーザーに関する情報を取得します。 要求の種類を追加し、要求をカスタム ポリシーに出力して、トークンを Azure AD B2C に登録するアプリケーションに渡します。 
 
-Azure AD B2C は現在、Facebook や [Google](active-directory-b2c-custom-setup-goog-idp.md) などの [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) ID プロバイダーのアクセス トークンのみを渡すことができます。 その他すべての ID プロバイダーについては、要求が空で返されます。
+Azure AD B2C では、[OAuth 2.0](active-directory-b2c-reference-oauth-code.md) および [OpenID Connect](active-directory-b2c-reference-oidc.md) ID プロバイダーのアクセス トークンを渡すことがサポートされています。 その他すべての ID プロバイダーについては、要求が空で返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-- 対象のカスタム ポリシーが OAuth 2.0 ID プロバイダーを使用して構成されている。
+- 対象のカスタム ポリシーが OAuth 2.0 または OpenID Connect の ID プロバイダーを使用して構成されている。
 
 ## <a name="add-the-claim-elements"></a>要求の要素を追加する 
 

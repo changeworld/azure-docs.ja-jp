@@ -11,26 +11,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/10/2019
+ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5049a5a829ce8e94b62409c9d3b1439e8431fb1
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f4838f688210f9017d691bd6a463217a75fc90d4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101424"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447516"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
-ロールベースのアクセス制御 (RBAC) を使用して、リソースへのアクセスを管理することをお勧めします。 ただし、クラシック デプロイ モデルをまだ使用している場合は、次の従来のサブスクリプション管理者ロールを使用する必要があります:サービス管理者および共同管理者。 詳しくは、[Azure Resource Manager とクラシック デプロイ](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事をご覧ください。
+ロールベースのアクセス制御 (RBAC) を使用して、Azure リソースへのアクセスを管理することをお勧めします。 ただし、クラシック デプロイ モデルをまだ使用している場合は、次の従来のサブスクリプション管理者ロールを使用する必要があります:サービス管理者および共同管理者。 詳しくは、[Azure Resource Manager とクラシック デプロイ](../azure-resource-manager/resource-manager-deployment-model.md)に関する記事をご覧ください。
 
 この記事では、共同管理者ロールとサービス管理者ロールを追加または変更する方法、およびアカウント管理者を表示する方法について説明します。
 
 ## <a name="add-a-co-administrator"></a>共同管理者を追加する
 
 > [!TIP]
-> ユーザーが Azure クラシック デプロイを管理する必要がある場合に必要なのは、共同管理者を追加することだけです。 他の目的についてはすべて、RBAC を使用することをお勧めします。
+> 共同管理者を追加する必要があるのは、[Azure サービス管理 PowerShell モジュール](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure)を使用して Azure クラシック デプロイを管理する必要がある場合だけです。 クラシック リソースの管理に Azure portal だけを使用する場合は、ユーザーに従来の管理者を追加する必要はありません。
 
 1. [Azure portal](https://portal.azure.com) にサービス管理者としてサインインします。
 
@@ -155,4 +155,4 @@ ms.locfileid: "56101424"
 ## <a name="next-steps"></a>次の手順
 
 * [Azure での各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)
+* [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](../role-based-access-control/role-assignments-portal.md)

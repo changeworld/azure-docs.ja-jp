@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 02/08/19
+ms.date: 02/16/19
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 199c0e53fb9462a121072dbea8c90928c0d75abf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c1496653c319b4732614cd1c8148afb5c5b06215
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178950"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456743"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
-Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別々の管理者を指定することができます。 Azure AD ポータルで、ユーザーの追加または変更、管理ロールの割り当て、ユーザーのパスワードのリセット、ユーザーのライセンスの管理、ドメイン名の管理などのタスクを実行する管理者を指定できます。
+Azure Active Directory (Azure AD) を使用して、特権ロールよりも少ない操作を行う限定された管理者を指定できます。 Azure AD ポータルで、ユーザーの追加または変更、管理ロールの割り当て、ユーザーのパスワードのリセット、ユーザーのライセンスの管理、ドメイン名の管理などのタスクを実行する管理者を指定できます。 既定のユーザー アクセス許可は、Azure AD のユーザー設定のみで変更できます。
 
 全体管理者は、すべての管理機能にアクセスできます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 管理者ロールを委任できるのは全体管理者と特権ロール管理者だけです。 ビジネスに対するリスクを軽減するには、このロールを、社内の少数のユーザーにのみ割り当てることをお勧めします。
 
@@ -42,7 +42,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[アプリケーション開発者](#application-developer)**:このロールのユーザーは、[ユーザーはアプリケーションを登録できる] 設定が [いいえ] に設定されている場合に、アプリケーション登録を作成できます。 さらにこのロールでは、[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます] 設定が [いいえ] に設定されている場合に、メンバーが自分のために同意できます。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されます。
 
-* **[認証管理者](#authentication-administrator)**:このロールのユーザーは、現在の認証方法に関する情報を表示し、パスワード以外の資格情報を設定またはリセットできます。 認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録をユーザーに強制することができます。また、「デバイスの MFA の記憶」を取り消して、管理者や次のロールのメンバーでない他のユーザーが次回ログインするときに MFA の入力を求めることができます。
+* **[認証管理者](#authentication-administrator)**:このロールのユーザーは、パスワード以外の資格情報の設定とリセットを行うことができます。 認証管理者は、パスワード以外の既存の資格情報 (たとえば、MFA、FIDO) に対する再登録をユーザーに強制することができます。また、「デバイスの MFA の記憶」を取り消して、管理者や次のロールのメンバーでない他のユーザーが次回ログインするときに MFA の入力を求めることができます。
   * 認証管理者
   * ディレクトリ リーダー
   * ゲスト招待元

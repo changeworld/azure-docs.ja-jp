@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: add222c024b5adde1ce81d6ed7f725d0a691c232
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: dd6836ef4f859ce77c1a56095d32373d8e08f468
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246053"
+ms.locfileid: "56270388"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](resource-group-using-tags.md)をサポートしているかどうかについて説明します。
@@ -1132,7 +1132,7 @@ ms.locfileid: "56246053"
 | servers/tdeCertificates | いいえ  | 
 
 > [!NOTE]
-> マスター データベースではタグはサポートされませんが、データ ウェアハウス データベースを含むその他のデータベースではタグがサポートされます。
+> マスター データベースではタグはサポートされませんが、Azure SQL Data Warehouse データベースを含むその他のデータベースではタグがサポートされます。 Azure SQL Data Warehouse データベースは (一時停止ではなく) アクティブ状態である必要があります。
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

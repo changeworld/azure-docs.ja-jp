@@ -4,14 +4,14 @@ description: ドメインの委任を変更し、ドメインのホストに Azu
 services: dns
 author: vhorne
 ms.service: dns
-ms.date: 1/22/2019
+ms.date: 2/19/2019
 ms.author: victorh
-ms.openlocfilehash: d1de1212280c6767862233f990c9fc5e0cf97473
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 85f7318ac584e324f58d2ad470dc896e79e416d5
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461031"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417890"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Azure DNS による DNS ゾーンの委任
 
@@ -27,7 +27,7 @@ Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメイ
 
 **ドメイン レジストラー** - ドメイン レジストラーは、インターネット ドメイン名を提供できる企業です。 ドメイン レジストラーは、ユーザーが希望するインターネット ドメインが使用可能かどうかを確認し、購入を許可します。 ドメイン名が登録されると、そのユーザーはドメイン名の法律上の所有者になります。 既にインターネット ドメインを所有している場合は、現在のドメイン レジストラーを使用して、Azure DNS に委任します。
 
-特定のドメイン名の所有者の詳細や、ドメインの購入方法の詳細については、「 [Internet domain management in Azure AD (Azure AD でのインターネット ドメイン管理)](https://msdn.microsoft.com/library/azure/hh969248.aspx)」を参照してください。
+認定ドメイン レジストラーについて詳しくは、「[ICANN-Accredited Registrars (ICANN 認定レジストラー)](https://www.icann.org/registrar-reports/accredited-list.html)」をご覧ください。
 
 ### <a name="resolution-and-delegation"></a>解決と委任
 

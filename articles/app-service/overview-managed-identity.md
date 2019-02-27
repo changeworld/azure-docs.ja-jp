@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 68f640f6962802c45ca369786c4e5d0d4f785fa6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3f064769728d5d081c4a110e6c981c4b36aad384
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105079"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300586"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -280,8 +280,8 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 
 マネージド ID を使用するアプリでは、2 つの環境変数を定義します。
 
-- MSI_ENDPOINT
-- MSI_SECRET
+- MSI_ENDPOINT - ローカル トークン サービスに対する URL。
+- MSI_SECRET - サーバー側のリクエスト フォージェリ (SSRF) 攻撃を回避するために使用されるヘッダー。 値は、プラットフォームによってローテーションされます。
 
 **MSI_ENDPOINT** は、アプリがトークンを要求できるローカル URL です。 リソースのトークンを取得するには、次のパラメーターを指定して、このエンドポイントに HTTP GET 要求を行います。
 
@@ -289,7 +289,7 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 > |-----|-----|-----|
 > |resource|Query|トークンを取得する必要のあるリソースの AAD リソース URI。 これは [Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication)の 1 つか、その他のリソース URI になります。|
 > |api-version|Query|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
-> |secret|ヘッダー|MSI_SECRET 環境変数の値。|
+> |secret|ヘッダー|MSI_SECRET 環境変数の値。 このヘッダーは、サーバー側のリクエスト フォージェリ (SSRF) 攻撃を回避するために使用されます。|
 > |clientid|Query|(省略可能) 使用するユーザー割り当て ID のID。 省略すると、システム割り当て ID が使用されます。|
 
 正常終了の応答である 200 OK には、JSON 本文と次のプロパティが含まれています。

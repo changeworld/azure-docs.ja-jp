@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 6/8/2018
+ms.date: 02/20/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 733d2896ef15d2e78073268e263a144ea25846ec
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 98231ab55ce66f06d591dc9c933e4790460625c8
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985457"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56458432"
 ---
 # <a name="enable-write-accelerator"></a>書き込みアクセラレータを有効にする
 
@@ -42,17 +42,17 @@ Azure ディスク/VHD で書き込みアクセラレータを使うときは、
 
 - Premium ディスクのキャッシュを 'None' または 'Read Only' に設定する必要があります。 他のすべてのキャッシュ モードはサポートされていません。
 - 現在、書き込みアクセラレータ対応のディスクでは、スナップショットはサポートされていません。 バックアップ中、VM に接続されている書き込みアクセラレータ対応ディスクは Azure Backup サービスによって自動的に除外されます。
-- 高速化パスは、I/O サイズが小さい場合 (32KiB 以下) にのみ使用されます。 データが一括で読み込まれたり、ストレージに保存される前に複数の DBMS のトランザクション ログ バッファの大部分が入力されるようなワークロードの状況では、ディクスに書き込まれる I/O で高速化パスが使用される機会はありません。
+- 高速化パスは、I/O サイズが小さい場合 (512 KiB 以下) にのみ使用されます。 データが一括で読み込まれたり、ストレージに保存される前に複数の DBMS のトランザクション ログ バッファの大部分が入力されるようなワークロードの状況では、ディクスに書き込まれる I/O で高速化パスが使用される機会はありません。
 
 書き込みアクセラレータでサポートできる VM ごとの Azure Premium Storage VHD には制限があります。 現在の制限は次のとおりです。
 
 | VM の SKU | 書き込みアクセラレータ ディスクの数 | VM あたりの書き込みアクセラレータ ディスクの IOPS |
 | --- | --- | --- |
-| M128ms、128s | 16 | 8000 |
-| M64ms、M64ls、M64s | 8 | 4000 |
-| M32ms、M32ls、M32ts、M32s | 4 | 2000 |
-| M16ms、M16s | 2 | 1,000 |
-| M8ms、M8s | 1 | 500 |
+| M128ms、128s | 16 | 20000 |
+| M64ms、M64ls、M64s | 8 | 10000 |
+| M32ms、M32ls、M32ts、M32s | 4 | 5000 |
+| M16ms、M16s | 2 | 2500 |
+| M8ms、M8s | 1 | 1250 |
 
 IOPS の制限は、VM あたりの値であり、ディスクあたりの値では*ありません*。 すべての書き込みアクセラレータ ディスクが VM あたりの同じ IOPS 制限を共有します。
 

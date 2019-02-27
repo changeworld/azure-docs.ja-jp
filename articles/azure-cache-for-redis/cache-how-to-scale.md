@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
-ms.openlocfilehash: 5f448c1c66520a5941ad867eaf3c89c22693cc45
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235574"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313434"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Azure Cache for Redis のスケーリング方法
 Azure Cache for Redis には、キャッシュ サイズや機能の選択に柔軟性を持たせるために、さまざまなキャッシュ オファリングが用意されています。 キャッシュを作成した後でご利用のアプリケーションの要件が変わった場合、キャッシュのサイズと価格レベルをスケーリングできます。 この記事では、Azure Portal と、Azure PowerShell や Azure CLI などのツールを使用して、キャッシュをスケーリングする方法を説明します。
@@ -115,7 +115,7 @@ Azure CLI によるスケーリングの詳細については、「[Change setti
 * [スケーリング中にキャッシュからデータは失われますか](#will-i-lose-data-from-my-cache-during-scaling)
 * [スケーリング中に影響を受けるカスタム データベース](#is-my-custom-databases-setting-affected-during-scaling)
 * [スケーリング中にキャッシュを使用できますか](#will-my-cache-be-available-during-scaling)
-* [geo レプリケーションを構成していますが、キャッシュをスケーリングしたり、クラスターのシャードを変更したりできません。](#scaling-limitations-with-geo-relication)
+* geo レプリケーションを構成していますが、キャッシュをスケーリングしたり、クラスターのシャードを変更したりできません。
 * [サポートされていない処理](#operations-that-are-not-supported)
 * [スケーリングにはどのくらいの時間がかかりますか](#how-long-does-scaling-take)
 * [スケーリングが完了したことをどのようにして確認できますか](#how-can-i-tell-when-scaling-is-complete)

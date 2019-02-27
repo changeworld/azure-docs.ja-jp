@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/16/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: a58c61287cfc7828fe0dc15beda9d54f02a694c3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4a3da9e2ad4d5ab83c1e906b3ab43540e819b48c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814148"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342005"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>HDInsight 上の Apache Hive で Java UDF を使用する
 
@@ -213,7 +213,7 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
     ```
 
     > [!NOTE]
-    > この例では、Azure ストレージが、クラスターの既定のストレージであることを前提としています。 クラスターが代わりに Data Lake Storage を使用する場合は、`wasb:///` の値を `adl:///` に変更します。
+    > この例では、Azure ストレージが、クラスターの既定のストレージであることを前提としています。 クラスターが Data Lake Storage Gen2 を使用する場合は、`wasb:///` の値を `abfs:///` に変更します。 クラスターが Data Lake Storage Gen1 を使用する場合は、`wasb:///` の値を `adl:///` に変更します。
 
 3. UDF を使用して、テーブルから取得した値を小文字の文字列に変換します。
 

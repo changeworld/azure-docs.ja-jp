@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: b31bdacbaf1ab81223d2a99472233cd5024edced
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: bfc1c419d5d58b4528b76dbed6fd0060f6b2833d
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300733"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446666"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
@@ -26,12 +26,11 @@ ms.locfileid: "55300733"
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>各コンテナーに登録できるサーバーやマシンの数に制限はありますか。
 コンテナーあたり最大 1000 の Azure 仮想マシンを登録できます。 Microsoft Azure Backup エージェントを使用している場合は、コンテナーあたり最大 50 の MAB エージェントを登録できます。 1 つのコンテナーには、50 の MAB サーバー/DPM サーバーを登録できます。
 
-
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>組織で所有しているコンテナーが 1 つの場合、データを復元する際にコンテナー内の他のサーバーのデータを分離するには、どうすればよいですか。
 まとめて復旧するサーバー データには、バックアップをセットアップするときに、同じパスフレーズを使用してください。 1 つ以上の特定のサーバーを分離して復旧する場合は、該当するサーバー専用のパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで 2 番目、ストレージ サーバーで 3 番目の暗号化パスフレーズを使用することができます。
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>サブスクリプション間でコンテナーを移動することはできますか。
-いいえ。 コンテナーはサブスクリプション レベルで作成されるため、別のサブスクリプションに再割り当てすることはできません。
+はい。 Recovery Services コンテナーの移動については、こちらの[記事](backup-azure-move-recovery-services-vault.md)をご覧ください
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>バックアップ データを別のコンテナーに移動することはできますか。
 いいえ。 コンテナーに保存されているバックアップ データを別のコンテナーに移行することはできません。
@@ -40,7 +39,8 @@ ms.locfileid: "55300733"
 いいえ。 Recovery Services コンテナーでは、バックアップが保存される前にしか、ストレージ オプションを変更できません。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Recovery Services コンテナーにバックアップした VM でアイテム レベルの復元 (ILR) を行うことはできますか。
-いいえ、ILR はサポートされていません。
+- ILR は、Azure VM バックアップによってバックアップされている Azure VM に対してサポートされています。 詳しくは、[こちらの記事](backup-azure-restore-files-from-vm.md)をご覧ください
+- ILR は、Azure Backup Server または System Center DPM によってバックアップされているオンプレミスの VM のオンライン復旧ポイントに対してはサポートされていません。
 
 
 ## <a name="azure-backup-agent"></a>Azure Backup エージェント
@@ -76,10 +76,8 @@ VMware/Hyper-V を保護するために個別のライセンスは必要あり�
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Azure Backup Server を使用して、物理サーバーのベア メタル回復 (BMR) バックアップを作成できますか。 <br/>
 はい。
 
-
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>DPM を使用して Azure Stack でアプリをバックアップすることはできますか。
 いいえ。 Azure Backup を使用して Azure Stack を保護することはできますが、Azure Backup では DPM を使用した Azure Stack でのアプリのバックアップをサポートしていません。
-
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>ファイルとフォルダーを保護するために Azure Backup エージェントをインストールしてある場合、System Center DPM をインストールしてオンプレミスのワークロードを Azure にバックアップすることはできますか。
 はい。 ただし、最初に DPM をセットアップしてから、Azure Backup エージェントをインストールする必要があります。  この順序でコンポーネントをインストールすることで、Azure Backup エージェントが DPM と連携するようになります。 DPM をインストールする前にエージェントをインストールする方法は推奨されておらず、サポートもされていません。
@@ -93,7 +91,6 @@ VMware/Hyper-V を保護するために個別のライセンスは必要あり�
 - Azure VM のバックアップは 1 日 1 回に限られます。
 
 ### <a name="what-operating-systems-are-supported-for-backup"></a>バックアップでサポートされているオペレーティング システムはどれですか。
-
 ファイルとフォルダーのほか、Azure Backup Server と DPM を使用して保護されたアプリのバックアップについて、Azure Backup では次のオペレーティング システムをサポートしています。
 
 **OS**| **SKU** |**詳細**
@@ -138,29 +135,23 @@ SharePoint | バックアップ対象の SharePoint ファーム内のコンテ�
 Exchange |バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計。
 BMR/システム状態 |バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー。
 
-
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Recovery Services コンテナーを使用してバックアップできるデータ量に制限はありますか。
 Recovery Services コンテナーを使用してバックアップできるデータ量に制限はありません。
 
-### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>バックアップを開始した後でバックアップ ジョブを取り消すと、転送されたバックアップ データは削除されますか。
-いいえ。 バックアップ ジョブを取り消す前にコンテナーに転送されたすべてのデータは、コンテナーに残ります。 Azure Backup では、チェックポイント メカニズムを使用して、バックアップ中に随時バックアップ データにチェックポイントを追加します。 バックアップ データにチェックポイントがあることで、次回のバックアップ処理でファイルの整合性を検証できます。 次のバックアップ ジョブは、これまでバックアップしたデータの増分になります。 増分バックアップでは、新しいデータまたは変更されたデータのみが転送され、帯域幅の使用状況が向上します。
-
-Azure VM のバックアップ ジョブを取り消した場合、転送済みのデータは無視されます。 次のバックアップ ジョブでは、最後に成功したバックアップ ジョブから増分データが転送されます。
-
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Recovery Services コンテナーに転送されたデータのサイズが、バックアップ対象として選択したデータよりも小さいのはなぜでしょうか。
-
- Azure Backup エージェント、DPM、または Azure Backup Server からバックアップしたデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、コンテナー内のデータのサイズは 30 から 40% 小さくなります。
+Azure Backup エージェント、DPM、または Azure Backup Server からバックアップしたデータは、圧縮および暗号化されてから転送されます。 圧縮と暗号化が適用されると、コンテナー内のデータのサイズは 30 から 40% 小さくなります。
 
 ### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vault"></a>コンテナー内の復旧ポイントから個々のファイルを削除できますか。
 いいえ。Azure Backup では、保存されているバックアップからの個々の項目の削除または消去はサポートしていません。
 
-
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>バックアップを開始した後でバックアップ ジョブを取り消すと、転送されたバックアップ データは削除されますか。
-
 いいえ。 バックアップ ジョブを取り消す前にコンテナーに転送されたすべてのデータは、コンテナー内に残ります。
+
 - Azure Backup では、チェックポイント メカニズムを使用して、バックアップ中に随時バックアップ データにチェックポイントを追加します。
 - バックアップ データにチェックポイントがあることで、次回のバックアップ処理でファイルの整合性を検証できます。
 - 次のバックアップ ジョブは、これまでバックアップしたデータの増分になります。 増分バックアップでは、新しいデータまたは変更されたデータのみが転送され、帯域幅の使用状況が向上します。
+
+Azure VM のバックアップ ジョブを取り消した場合、転送済みのデータは無視されます。 次のバックアップ ジョブでは、最後に成功したバックアップ ジョブから増分データが転送されます。
 
 ## <a name="retention-and-recovery"></a>保有期間と復元
 
@@ -177,7 +168,7 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point-br"></a>バックアップを長期にわたって保持した場合、データ ポイントが古いほど復元に時間がかかるのでしょうか。 <br/>
-いいえ。最古のデータ ポイントも最新のデータ ポイントも復元に要する時間は同じです。 それぞれの回復ポイントは、完全なポイントと同じように動作します。
+いいえ。 最古のデータ ポイントも最新のデータ ポイントも復元に要する時間は同じです。 それぞれの回復ポイントは、完全なポイントと同じように動作します。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>それぞれの回復ポイントが完全なポイントと同じように機能する場合、それは課金対象のバックアップ ストレージの合計に影響するのでしょうか。
 一般的に、回復ポイントのリテンション期間が長い製品では、バックアップ データが完全なポイントとして格納されます。
@@ -203,7 +194,7 @@ Azure Backup からの回復の数に制限はありません。
 新しいポリシーが適用されると、新しいポリシーのスケジュールとリテンション期間が適用されます。
 
 - リテンション期間が延長された場合、既にある復旧ポイントは、新しいポリシーに従って保存するようにマーキングされます。
-- - リテンション期間が短縮された場合、次回のクリーンアップ ジョブで排除対象としてマーキングされて、その後削除されます。
+- リテンション期間が短縮された場合、次回のクリーンアップ ジョブで排除対象としてマーキングされて、その後削除されます。
 
 ## <a name="encryption"></a>暗号化
 

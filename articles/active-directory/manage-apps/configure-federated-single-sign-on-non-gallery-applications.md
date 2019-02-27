@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f99fa8cbc211469185f2503718c84bc1b12db44c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 56c992b1cc0e8f1d9743ff8226ab48852afc1168
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178221"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313128"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する方法
 
@@ -29,13 +29,13 @@ ms.locfileid: "56178221"
 ## <a name="overview-of-steps-required"></a>必要な手順の概要
 以下は、ギャラリー以外の (たとえばカスタム) アプリケーションの SAML 2.0 を使用するフェデレーション シングル サインオンの構成に必要な手順の概要です。
 
--   [Azure AD で、アプリケーションのメタデータ値を構成する (サインオン URL、識別子、応答 URL)](#_Configuring_single_sign-on)
+-   Azure AD で、アプリケーションのメタデータ値を構成する (サインオン URL、識別子、応答 URL)
 
 -   [ユーザー識別子を選択し、アプリケーションに送信するためのユーザー属性を追加する](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Azure AD メタデータと証明書を取得する](#download-the-azure-ad-metadata-or-certificate)
 
--   [アプリケーションで Azure AD メタデータ値を構成する (サインオン URL、発行者、ログアウト URL、証明書)](#_Configuring_single_sign-on)
+-   アプリケーションで Azure AD メタデータ値を構成する (サインオン URL、発行者、ログアウト URL、証明書)
 
 -   アプリケーションにユーザーを割り当てる
 

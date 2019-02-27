@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell を使用してカスタム ロールを作成する | Microsoft Docs
-description: Azure PowerShell を使用して、ロールベースのアクセス制御 (RBAC) のカスタム ロールを作成する方法について説明します。 これには、カスタム ロールを一覧表示、作成、更新、削除する方法が含まれます。
+title: Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する | Microsoft Docs
+description: Azure PowerShell を使用して、ロールベースのアクセス制御 (RBAC) による Azure リソースのカスタム ロールを作成する方法について説明します。 これには、カスタム ロールを一覧表示、作成、更新、削除する方法が含まれます。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 26e5b33504ff543e8442108e4368ce3b04f25df4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 92c061a7f854b46ab5aee07aa5e648ace8f9ae52
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696763"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343844"
 ---
-# <a name="create-custom-roles-using-azure-powershell"></a>Azure PowerShell を使用してカスタム ロールを作成する
+# <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する
 
-[組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure PowerShell を使用し、カスタム ロールを作成して管理する方法について説明します。
+[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure PowerShell を使用し、カスタム ロールを作成して管理する方法について説明します。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -296,6 +296,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>次の手順
 
-- [チュートリアル:Azure PowerShell を使用してカスタム ロールを作成する](tutorial-custom-role-powershell.md)
-- [Azure のカスタム ロール](custom-roles.md)
+- [チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-powershell.md)
+- [Azure リソースのカスタム ロール](custom-roles.md)
 - [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)

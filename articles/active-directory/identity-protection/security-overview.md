@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 02/14/2018
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4026f710def26b50da87ebb8fdafcafc74d84758
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dca184e5b94d69845bfa6e2d83753f53554cadeb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185827"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266749"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - セキュリティの概要
 
-[セキュリティの概要] では、組織のセキュリティ体制の分析情報を得ることができます。 潜在的な攻撃を特定し、ポリシーの有効性を把握するために役立ちます。
+この[セキュリティの概要](https://aka.ms/IdentityProtectionRefresh)では、組織のセキュリティ体制の分析情報を得ることができます。 潜在的な攻撃を特定し、ポリシーの有効性を把握するために役立ちます。
 
 [セキュリティの概要] は、大まかに 2 つのセクションに分かれています。
 
@@ -37,7 +37,7 @@ ms.locfileid: "56185827"
 
 ![セキュリティの概要](./media/security-overview/01.png)
   
-## <a name="trends"></a>Trends
+## <a name="trends"></a>傾向
 
 ### <a name="new-risky-users-detected"></a>新しい危険なユーザーが検出されました
 

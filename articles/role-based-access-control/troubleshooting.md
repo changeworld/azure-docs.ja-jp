@@ -1,6 +1,6 @@
 ---
-title: Azure での RBAC のトラブルシューティング | Microsoft Docs
-description: Azure ロールベースのアクセス制御 (RBAC) に関する問題を解決します。
+title: Azure リソースの RBAC のトラブルシューティング | Microsoft Docs
+description: Azure リソースのロールベースのアクセス制御 (RBAC) に関する問題を解決します。
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e204beea5bdf72c2ec5ebcf661d3c983a2e0e6b4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7b27c811214def7f5646f886b955d035a50c0725
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411239"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342475"
 ---
-# <a name="troubleshoot-rbac-in-azure"></a>Azure での RBAC のトラブルシューティング
+# <a name="troubleshoot-rbac-for-azure-resources"></a>Azure リソースの RBAC のトラブルシューティング
 
-この記事では、Azure portal でロールを使用するときに予想されることをユーザーが理解し、アクセスの問題を解決できるように、ロールベースのアクセス制御 (RBAC) に関する一般的な質問に回答します。
+この記事では、Azure portal でロールを使用するときに予想されることをユーザーが理解し、アクセスの問題を解決できるように、Azure リソースのロールベースのアクセス制御 (RBAC) に関する一般的な質問に回答します。
 
 ## <a name="problems-with-rbac-role-assignments"></a>RBAC ロールの割り当てに関する問題
 
@@ -119,6 +119,6 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 閲覧者は、**[プラットフォーム機能]** タブをクリックし、**[すべての設定]** をクリックすることで、関数アプリ (Web アプリに類似) に関連する一部の設定を表示できます。ただし、これらの設定を変更することはできません。
 
 ## <a name="next-steps"></a>次の手順
-* [RBAC と Azure portal を使用してアクセスを管理する](role-assignments-portal.md)
-* [RBAC の変更のアクティビティ ログを表示する](change-history-report.md)
+* [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
+* [Azure リソースに対する RBAC の変更のアクティビティ ログを表示する](change-history-report.md)
 

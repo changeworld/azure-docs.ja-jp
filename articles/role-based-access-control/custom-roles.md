@@ -1,6 +1,6 @@
 ---
-title: Azure のカスタム ロール | Microsoft Docs
-description: Azure のリソースの詳細なアクセス管理を行うために、ロールベースのアクセス制御 (RBAC) を使用してカスタム ロールを定義する方法について説明します。
+title: Azure リソースのカスタム ロール | Microsoft Docs
+description: Azure リソースの詳細なアクセス管理を行うために、ロールベースのアクセス制御 (RBAC) を使用してカスタム ロールを作成する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d2e3dc989a44de0c7c091dfbe1254a0e204faae
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6307c57f32700c0c2dd2e5da15b98a2a54dbe9c4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697131"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339330"
 ---
-# <a name="custom-roles-in-azure"></a>Azure のカスタム ロール
+# <a name="custom-roles-for-azure-resources"></a>Azure リソースのカスタム ロール
 
-[組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 組み込みロールと同様、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。 カスタム ロールは Azure Active Directory (Azure AD) ディレクトリに保存され、サブスクリプション間で共有することができます。 各ディレクトリは、最大 2,000 個のカスタム ロールを持つことができます。 カスタム ロールは、Azure PowerShell、Azure CLI、REST API で作成することができます。
+[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 組み込みロールと同様、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。 カスタム ロールは Azure Active Directory (Azure AD) ディレクトリに保存され、サブスクリプション間で共有することができます。 各ディレクトリは、最大 2,000 個のカスタム ロールを持つことができます。 カスタム ロールは、Azure PowerShell、Azure CLI、REST API で作成することができます。
 
 ## <a name="custom-role-example"></a>カスタム ロールの例
 
@@ -107,7 +107,7 @@ JSON 形式で表示されるカスタム ロールの例を次に示します�
 | カスタム ロールの表示 | `Microsoft.Authorization/ roleDefinition/read` | あるスコープでこの操作を許可されたユーザーは、そのスコープで割り当て可能なカスタム ロールを表示できます。 すべての組み込みロールでは、カスタム ロールを割り当てることができます。 |
 
 ## <a name="next-steps"></a>次の手順
-- [Azure PowerShell を使用してカスタム ロールを作成する](custom-roles-powershell.md)
-- [Azure CLI を使用してカスタム ロールを作成する](custom-roles-cli.md)
-- [ロール定義について](role-definitions.md)
-- [Azure での RBAC のトラブルシューティング](troubleshooting.md)
+- [Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](custom-roles-powershell.md)
+- [Azure CLI を使用して Azure リソースのカスタム ロールを作成する](custom-roles-cli.md)
+- [Azure リソースのロール定義の概要](role-definitions.md)
+- [Azure リソースの RBAC のトラブルシューティング](troubleshooting.md)

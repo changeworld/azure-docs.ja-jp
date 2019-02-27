@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 599e6b0cd615be7275df127b0b2f174bd8e6c290
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 52a441d5d8f3f44b35253e02786a033da5439597
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994889"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269858"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの使用を開始する
 
@@ -43,7 +43,7 @@ ms.locfileid: "55994889"
 クエリは、テーブル名または *search* コマンドから始めることができます。 まずテーブル名から始めます。これは、テーブル名でクエリの明確な範囲が定義され、クエリのパフォーマンスと結果の関連性の両方が向上するためです。
 
 > [!NOTE]
-> Azure Monitor によって使用される Data Explorer クエリ言語では、大文字と小文字が区別されます。 通常、言語のキーワードは小文字で記述されます。 クエリ内でテーブルまたは列の名前を使用する場合は、スキーマ ウィンドウの表示に従って大文字と小文字を正しく指定します。
+> Azure Monitor によって使用される Kusto クエリ言語では、大文字と小文字が区別されます。 通常、言語のキーワードは小文字で記述されます。 クエリ内でテーブルまたは列の名前を使用する場合は、スキーマ ウィンドウの表示に従って大文字と小文字を正しく指定します。
 
 ### <a name="table-based-queries"></a>テーブルベースのクエリ
 Azure Monitor では、ログ データはテーブルに編成され、各テーブルは複数の列で構成されます。 Analytics ポータルでは、すべてのテーブルと列は Log Analytics のスキーマ ウィンドウに表示されます。 目的のテーブルを指定子、データの一部を見てみます。

@@ -15,12 +15,12 @@ ms.date: 02/08/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 72c4bfc4151e8120f8641c743c0da3896bd71fe1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 89e75afd3b9001f7a0b8a027744ef71c8bb69690
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995032"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299566"
 ---
 # <a name="install-powershell-for-azure-stack"></a>PowerShell for Azure Stack をインストールする
 
@@ -97,7 +97,7 @@ Azure Stack では、Azure Stack バージョン 1808 以降の **2018-03-01-hyb
 
 次の PowerShell スクリプトを実行して、これらのモジュールを開発用ワークステーションにインストールします。
 
-- Azure Stack 1901 以降。
+- Azure Stack 1901 以降:
 
     ```PowerShell
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
@@ -108,7 +108,7 @@ Azure Stack では、Azure Stack バージョン 1808 以降の **2018-03-01-hyb
     > [!Note]  
     > Azure Stack モジュール バージョン 1.7.0 は互換性に影響する変更です。 Azure Stack 1.6.0 から移行するには、[移行ガイド](https://aka.ms/azspshmigration170)を参照してください。
 
-- Azure Stack 1811 以前。
+- Azure Stack 1811:
 
     ```PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet
@@ -120,7 +120,7 @@ Azure Stack では、Azure Stack バージョン 1808 以降の **2018-03-01-hyb
     Install-Module -Name AzureStack -RequiredVersion 1.6.0
     ```
 
-- Azure Stack 1809 以前: 
+- Azure Stack 1810 以前:
 
     ```PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet

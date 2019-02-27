@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eba77f79ad4625319a9b6e3eae46bf8470f43607
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67cb3d049cc2d2f26be6d62270e677a5cbcd39cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203779"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455043"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>個人用の Microsoft アカウントを追加する
 標準的な 2 要素検証プロセスとパスワードなしの電話によるサインイン方法向けに、Outlook.com や Xbox LIVE などの個人用の Microsoft アカウントを Microsoft Authenticator アプリに追加します。
@@ -37,7 +37,7 @@ ms.locfileid: "56203779"
 
 ### <a name="turn-on-two-factor-verification"></a>2 要素検証を有効にする
 
-1. ご使用の PC で、[[Security basics]\(セキュリティの基礎\)](https://account.microsoft.com/security) ページに移動して、個人用の Microsoft アカウントを使用してサインインします。 たとえば、「 alain@outlook.com 」のように入力します。
+1. ご使用のコンピューターで、[[Security basics]\(セキュリティの基礎\)](https://account.microsoft.com/security) ページに移動して、個人用の Microsoft アカウントを使用してサインインします。 たとえば、「 alain@outlook.com 」のように入力します。
 
 2. **[Security basics]\(セキュリティの基礎\)** ページの下部で、**[more security options]\(さらに多くのセキュリティ オプション\)** のリンクを選択します。
 

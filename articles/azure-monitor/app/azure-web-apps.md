@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4ec6e1288b34f04350a88697ca13ed044922ee50
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 19e0e5797e05589baa1e104f3e9ab8b4d9cc2d6c
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002244"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267293"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 [Azure portal](https://portal.azure.com) では、[Azure App Service](../../app-service/overview.md) の Web アプリ、モバイル バック エンド、および API アプリのアプリケーション パフォーマンス監視を設定できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。 Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
@@ -29,7 +29,7 @@ ms.locfileid: "56002244"
 * **ビルド時** - 開発時にアプリにパッケージをインストールすることができます。 これは、汎用性が高い方法です。 同じ標準パッケージに加えて、コードを記述してテレメトリをカスタマイズしたり、独自のテレメトリを送信したりすることができます。 アプリのドメインのセマンティクスに従って、特定のアクティビティをログに記録したり、イベントを記録したりすることができます。 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Application Insights での実行時のインストルメント化
-Azure でアプリ サービスを既に実行している場合、要求率とエラー発生率を既に監視しています。 応答時間、依存関係の呼び出しの監視、スマート検出、強力な Data Explorer クエリ言語など、さらに多くの機能を利用するには、Application Insights を追加します。 
+Azure でアプリ サービスを既に実行している場合、要求率とエラー発生率を既に監視しています。 応答時間、依存関係の呼び出しの監視、スマート検出、強力な Kusto クエリ言語など、さらに多くの機能を利用するには、Application Insights を追加します。 
 
 1. アプリ サービスの Azure コントロール パネルで **[Application Insights]** を選択します。
 

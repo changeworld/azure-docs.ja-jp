@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: bdd512972f1a684a3b76ae0323bbadd87bf0d659
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9ea9cc116a13aac2dca9edf8ba86c933310b5198
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238319"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269639"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics での異常検出
 
-Azure Stream Analytics には、機械学習をベースにした異常検出機能が組み込まれています。これを使用して、最も多く発生する 2 種類の異常 (一時的な異常と永続的な異常) を監視できます。 **AnomalyDetection_SpikeAndDip** と **AnomalyDetection_ChangePoint** 関数を使用して、異常検出を Stream Analytics ジョブ内で直接実行することができます。
+クラウドと Azure IoT Edge の両方で利用できます。Azure Stream Analytics には、機械学習をベースにした異常検出機能が組み込まれています。これを使用して、最も多く発生する 2 種類の異常 (一時的な異常と永続的な異常) を監視できます。 **AnomalyDetection_SpikeAndDip** と **AnomalyDetection_ChangePoint** 関数を使用して、異常検出を Stream Analytics ジョブ内で直接実行することができます。
 
 機械学習モデルでは、均等にサンプリングされたタイム シリーズを想定しています。 タイム シリーズが均等でない場合は、異常検出を呼び出す前に、タンブリング ウィンドウを使って集計手順を挿入してもかまいません。
 
@@ -36,7 +36,8 @@ Azure Stream Analytics には、機械学習をベースにした異常検出機
 
 ## <a name="spike-and-dip"></a>スパイクとディップ
 
-タイム シリーズ イベント ストリーム内の一時的な異常は、スパイクとディップと呼ばれます。 スパイクとディップは、機械学習をベースにした演算子 **AnomalyDetection_SpikeAndDip** を使って監視できます。
+タイム シリーズ イベント ストリーム内の一時的な異常は、スパイクとディップと呼ばれます。 スパイクとディップは、機械学習をベースにした演算子 [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+) を使って監視できます。
 
 ![スパイクとディップの異常の例](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
@@ -67,9 +68,9 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>変化点
 
-タイム シリーズ イベント ストリーム内の永続的な異常は、レベルの変化や傾向の変化などのような、イベント ストリーム内の値の分布内で起きる変化です。 Stream Analytics では、このような異常を機械学習をベースにした **AnomalyDetection_ChangePoint** 演算子を使って検出します。
+タイム シリーズ イベント ストリーム内の永続的な異常は、レベルの変化や傾向の変化などのような、イベント ストリーム内の値の分布内で起きる変化です。 Stream Analytics では、このような異常を機械学習をベースにした [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) 演算子を使って検出します。
 
-永続的な変化は、スパイクやディップよりもはるかに長期間継続するため、致命的なイベントを示している可能性があります。 永続的な変化は、肉眼では容易に確認できないことがほとんどですが、**AnomalyDetection_ChangePoint** 演算子を使えば検出できます。
+永続的な変化は、スパイクやディップよりもはるかに長期間継続するため、致命的なイベントを示している可能性があります。 永続的な変化は、肉眼では確認できないことがほとんどですが、**AnomalyDetection_ChangePoint** 演算子を使えば検出できます。
 
 次の画像はレベルの変化の例です。
 

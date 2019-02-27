@@ -1,25 +1,22 @@
 ---
-title: 複数の Web サイトをホストするアプリケーション ゲートウェイの作成 - Azure Portal | Microsoft Docs
+title: 複数の Web サイトをホストするアプリケーション ゲートウェイを作成する - Azure portal
 description: Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/28/2017
+ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: fc418f58b299dcba08fda65000c5356c51f471e6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 09bb81b0382f18c9cb94e5e4d0932dc6597ae73c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993308"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454299"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成し、構成します。
 
-[アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure Portal を使用して[複数の Web サイト](multiple-site-overview.md)のホスティングを構成できます。 このチュートリアルでは、仮想マシンを使用してバックエンド アドレス プールを定義します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www.contoso.com* と *www.fabrikam.com* の例を使用します。
+[アプリケーション ゲートウェイ](overview.md)を作成するときに、Azure Portal を使用して[複数の Web サイト](multiple-site-overview.md)のホスティングを構成できます。 この記事では、仮想マシンを使用してバックエンド アドレス プールを定義します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 この記事では、複数のドメインを所有していることを前提として、*www.contoso.com* と *www.fabrikam.com* の例を使用します。
 
 この記事では、次のことについて説明します。
 
@@ -35,9 +32,9 @@ ms.locfileid: "52993308"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインする
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -141,6 +138,8 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 3. Click **OK**.
 4. *fabrikamListener* という名前を使用して 2 番目のリスナーを作成し、2 番目のドメイン名を使用します。 この例では、*www.fabrikam.com* が使用されています。
 
+![マルチサイト リスナー](media/create-multiple-sites-portal/be-listeners.png)
+
 ## <a name="create-routing-rules"></a>ルーティング規則の作成
 
 ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールを使用してリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも先に配置する必要があります。 
@@ -180,12 +179,4 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 ## <a name="next-steps"></a>次の手順
 
-この記事で学習した内容は次のとおりです。
-
-> [!div class="checklist"]
-> * アプリケーション ゲートウェイの作成
-> * バックエンド サーバー用の仮想マシンの作成
-> * バックエンド サーバーでのバックエンド プールの作成
-> * バックエンド リスナーの作成
-> * ルーティング規則の作成
-> * ドメインの CNAME レコードの作成
+[Application Gateway を使用した App Service の構成](create-web-app.md)

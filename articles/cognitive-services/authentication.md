@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: erhopf
-ms.openlocfilehash: f724bba5acdda20d31d067b850634178a0650cf7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2f9b477e076b038a6a695952ee3f770b30ad179b
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859747"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429470"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 
@@ -58,7 +58,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-次のビデオでは、Cognitive Services キーを使用するデモンストレーションを行っています。 
+次のビデオでは、Cognitive Services キーを使用するデモンストレーションを行っています。
 
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>マルチサービスのサブスクリプション キーによる認証
 
@@ -127,16 +127,15 @@ Azure Cognitive Services の中には、認証トークンを受け入れるも�
 
 ### <a name="sample-requests"></a>サンプルの要求
 
-単一サービスのサブスクリプション キーを認証トークンと交換するには、`https://api.cognitive.microsoft.com/sts/v1.0/issueToken` という URL を使用します。
+サブスクリプション キーを認証トークンと交換するには、`https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken` という URL を使用します。
 
 ```cURL
 curl -v -X POST \
-"https://api.cognitive.microsoft.com/sts/v1.0/issueToken" \
+"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
 -H "Content-type: application/x-www-form-urlencoded" \
+-H "Content-length: 0" \
 -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
-
-マルチサービスのサブスクリプション キーを使用している場合は、リージョンに固有のエンドポイントをトークンの交換に使用する必要があります。 マルチサービスのサブスクリプション キーを認証トークンと交換するには、`https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken` という URL を使用します。
 
 以下のマルチサービスのリージョンで、トークンの交換がサポートされています。
 
@@ -147,13 +146,6 @@ curl -v -X POST \
 | `japaneast` | `northeurope` | `southcentralus` |
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
-
-```cURL
-curl -v -X POST \
-"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
--H "Content-type: application/x-www-form-urlencoded" \
--H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
-```
 
 認証トークンを取得したら、各要求内でそれを `Authorization` ヘッダーとして渡す必要があります。 これは、Translator Text API 呼び出しのサンプルです。
 

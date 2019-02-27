@@ -8,17 +8,70 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: a5b8cd7da465bc2dc58c2b89852903669c18bf4b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0f5452e3abbde40c247ef7e000b84fc3eb00c943
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871797"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446836"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="speech-sdk-130-2019-february-release"></a>Speech SDK 1.3.0: 2019-February リリース
+
+**新機能**
+
+* Speech SDK では、AudioConfig クラスによって入力マイクの選択がサポートされます。 これにより、既定以外のマイクから Speech Service にオーディオ データをストリーミングできます。 詳しくは、[オーディオ入力デバイスの選択](how-to-select-audio-input-devices.md)に関する記事をご覧ください。 これは、JavaScript からはまだ使用できません。
+* Speech SDK では、ベータ版で Unity がサポートされるようになりました。 [GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の問題セクションでフィードバックをお送りください。 このリリースでは、Windows x86 と x64 (デスクトップまたはユニバーサル Windows プラットフォーム アプリケーション) および Android (ARM32/64、x86) での Unity がサポートされています。 詳しくは、[Unity のクイック スタート](quickstart-csharp-unity.md)に関する記事をご覧ください。
+
+**サンプル**
+
+[サンプル リポジトリ](https://aka.ms/csspeech/samples)で次の新しいコンテンツを利用できます。
+
+* AudioConfig.FromMicrophoneInput の追加サンプル。
+* 意図認識と翻訳に関する追加の Python サンプル。
+* iOS での Connection オブジェクトの使用に関する追加サンプル。
+* オーディオ出力での翻訳に関する追加の Java サンプル。
+* [Batch Transcription REST API](batch-transcription.md) の使用に関する新しいサンプル。
+
+**機能強化/変更**
+
+* Python
+  * SpeechConfig でのパラメーター検証とエラー メッセージが強化されました。
+  * Connection オブジェクトのサポートが追加されました。
+  * Windows での 32 ビット Python (x86) のサポート。
+  * Python 用 Speech SDK がベータ版ではなくなりました。
+* iOS
+  * SDK のビルド対象が iOS SDK バージョン 12.1 になりました。
+  * SDK が、iOS バージョン 9.2 以降をサポートするようになりました。
+  * リファレンス ドキュメントが改善され、いくつかのプロパティ名が修正されました。
+* JavaScript
+  * Connection オブジェクトのサポートが追加されました。
+  * バンドルされている JavaScript の型定義ファイルが追加されました
+  * 語句ヒントの最初のサポートと実装。
+  * 認識に対するサービス JSON でプロパティのコレクションが返されます
+* Windows の DLL に、バージョン リソースが含まれるようになりました。
+
+**バグの修正**
+
+* 空のプロキシ ユーザー名とプロキシ パスワードが、正しく処理されませんでした。 このリリースでは、プロキシ ユーザー名とプロキシ パスワードを空の文字列に設定した場合は、プロキシに接続したときに送信されません。
+* SDK によって作成された SessionId が、一部の言語&nbsp;/環境で本当にランダムではないことがありました。 乱数ジェネレーターの初期化を追加して解決しました。
+* 認可トークンの処理が向上します。 認可トークンを使用する場合、SpeechConfig で指定し、サブスクリプション キーを空のままにします。 その後、通常どおり認識エンジンを作成します。
+* 場合によっては、Connection オブジェクトが正しく解放されませんでした。 この問題は修正されています。
+* 翻訳合成も Safari 上にある場合にオーディオ出力をサポートするよう、JavaScript のサンプルが修正されました。
+
+## <a name="speech-sdk-121"></a>Speech SDK 1.2.1
+
+これは、JavaScript のみのリリースです。 機能は追加されていません。 以下の修正が行われました。
+
+* speech.end ではなく turn.end でストリームの終了が発生します。
+* 現在の送信が失敗した場合に、次の送信がスケジュールされなかった、オーディオ ポンプのバグを修正しました。
+* 認証トークンでの継続的な認識を修正しました。
+* 別の認識エンジン/エンドポイントのバグ修正。
+* ドキュメントの改善。
 
 ## <a name="speech-sdk-120-2018-december-release"></a>Speech SDK 1.2.0:2018-December リリース
 

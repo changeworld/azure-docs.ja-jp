@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 04a923a8bc022aefb667489702c0e74493df94a8
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 5faea45a55d69cece56137d70862d80dfe335971
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652763"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342458"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>psql を使用した Apache Phoenix へのデータの一括読み込み
 
@@ -115,7 +115,7 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
     ```
 
-8. ADLS で MapReduce を使用するには、`hbase-site.xml` 内の `hbase.rootdir` 値に相当する ADLS ルート ディレクトリを検索します。 次のコマンドにおいて、ADLS ルート ディレクトリは `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1` です。 このコマンドでは、ADLS の入力フォルダーと出力フォルダーをパラメーターとして指定します。
+8. Azure Data Lake Storage で MapReduce を使用するには、Data Lake Storage のルート ディレクトリ (`hbase-site.xml` の `hbase.rootdir` 値) を確認します。 次のコマンドでは、Data Lake Storage のルート ディレクトリは `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1` です。 このコマンドで、Data Lake Storage の入力フォルダーと出力フォルダーをパラメーターとして指定します。
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -125,9 +125,9 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/temp/input/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure --output  adl://hdinsightconf1.azuredatalakestore.net:443/hbase1/data/hbase/output1
     ```
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
-* 入力フォルダーと出力フォルダーの両方で同じ記憶媒体 (WASB または ADLS のいずれか) を使用します。 WASB から ADLS にデータを転送するには、`distcp` コマンドを使用します。
+* 入力フォルダーと出力フォルダーの両方に同じストレージ メディア (Azure Storage (WASB) または Azure Data Lake Storage (ADL) のいずれか) を使用します。 Azure Storage から Data Lake Storage にデータを転送するには、`distcp` コマンドを使用できます。
 
     ```bash
     hadoop distcp wasb://@.blob.core.windows.net/example/data/gutenberg adl://.azuredatalakestore.net:443/myfolder

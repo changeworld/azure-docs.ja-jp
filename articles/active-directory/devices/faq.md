@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9517ccac4006edec473e25c5e6524ce62d4e1259
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 31e380379b5237f6b1a72b3427eb857f64d55c2e
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210104"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269061"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -157,7 +157,11 @@ Azure AD でデバイスが削除または無効化されても、Windows デバ
 
 **A:** ユーザーが Multi-Factor Authentication を使用してデバイスを Azure AD に参加または登録している可能性があります。 それにより、デバイス自体がそのユーザーにとっての信頼された 2 つ目の要素になります。 同じユーザーがデバイスにサインインしてアプリケーションにアクセスするときは常に、Azure AD はデバイスを 2 つ目の要素と見なします。 これによりそのユーザーは、Multi-Factor Authentication の追加のプロンプトが表示されることなく、アプリケーションにシームレスにアクセスできます。 
 
-この動作は、そのデバイスにサインインするその他のユーザーには適用されません。 そのため、そのデバイスにアクセスする他のすべてのユーザーは、Multi-Factor Authentication で必要な情報を取得します。 その後、Multi-Factor Authentication を必要とするアプリケーションにアクセスできるようになります。
+この動作は、
+
+- Azure AD 参加済みデバイスと Azure AD 登録済みデバイスに適用できますが、ハイブリッド Azure AD 参加済みデバイスには適用できません。
+
+- そのデバイスにサインインするその他のユーザーには適用されません。 そのため、そのデバイスにアクセスする他のすべてのユーザーは、Multi-Factor Authentication で必要な情報を取得します。 その後、Multi-Factor Authentication を必要とするアプリケーションにアクセスできるようになります。
 
 ---
 

@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/12/2019
+ms.date: 02/20/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5abc13a39db3f1061e3df76857645d8075feade5
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1a15600889a3c5a3c0ca587c78499f32be0ab8ed
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245754"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456709"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
@@ -262,6 +262,7 @@ C#、Node.js、または Java で開発している場合、モジュールで�
       import ptvsd
       ptvsd.enable_attach(('0.0.0.0',  5678))
       ```
+
    - デバッグするコールバックに次の 1 行のコードを追加します。
 
       ```python
@@ -350,6 +351,12 @@ C#、Node.js、または Java で開発している場合、モジュールで�
 
 > [!NOTE]
 > 前の例は、コンテナー上の IoT Edge モジュールをデバッグする方法を示しています。 これにより、公開ポートがモジュールのコンテナーの `createOptions` 設定に追加されました。 モジュールのデバッグが終了したら、運用環境対応の IoT Edge モジュールではこれらの公開ポートを削除することをお勧めします。
+
+## <a name="build-and-debug-a-module-remotely"></a>モジュールをリモートでビルドしてデバッグする
+
+最近行われた Docker エンジンと Moby エンジンの両方での SSH 接続をサポートするための変更と、Visual Studio Code コマンド パレットと Azure IoT Edge ターミナルへの環境設定のインジェクションを可能にする Azure IoT Tools の新しい設定によって、リモート デバイス上でモジュールのビルドとデバッグを実行できるようになりました。
+
+詳細情報と手順については、こちらの [IoT 開発者のブログ記事](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 1dba84c686fbb873f044b4980990baa396a94c79
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237673"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429518"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Azure Monitor で複数の Application Insights リソースを統合する 
 この記事では、非推奨になった Application Insights Connector を引き継ぐものとして、お使いのすべての Application Insights アプリケーションのログ データのクエリと表示を 1 か所で行う方法について説明します。Azure サブスクリプションは違っていてもかまいません。 1 回のクエリに含めることができる Application Insights リソースの数は 100 個に制限されています。  
@@ -68,6 +68,9 @@ applicationsScoping
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Application Insights リソースとワークスペース データ間のクエリ 
 Connector を停止しているときに、Application Insights のデータ保有期間 (90 日間) によって切り取られた期間のクエリを実行する必要がある場合は、ワークスペースと Application Insights リソースに対して中間期間の[クロスリソース クエリ](../../azure-monitor/log-query/cross-workspace-query.md)を実行する必要があります。 これは、前述の新しい Application Insights のデータ保有期間でアプリケーション データが蓄積されるまで必要です。 Application Insights とワークスペースではスキーマが異なるため、クエリではいくつかの操作が必要です。 このセクションで後述する、スキーマの相違点を強調している表を参照してください。 
+
+>[!NOTE]
+>ログ アラートでの[リソース間のクエリ](../log-query/cross-workspace-query.md)は、新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) でサポートされています。 [従来の Log Alerts API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) から切り替えていない場合、Azure Monitor では既定で、[従来の Log Analytics Alert API](../platform/api-alerts.md) を使用して Azure portal から新しいログ アラート ルールが作成されます。 切り替えた後は、Azure portal での新しいアラート ルールに対して新しい API が既定になり、リソース間のクエリのログ アラート ルールを作成できます。 切り替えを行わなくても、[scheduledQueryRules API 用の ARM テンプレート](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)を使用することで、[リソース間のクエリ](../log-query/cross-workspace-query.md)のログ アラート ルールを作成できます。ただし、このアラート ルールは、[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) では管理できますが、Azure portal では管理できません。
 
 たとえば、Connector が 2018 年 11 月 1 日に動作を停止しているときに、Application Insights リソースとワークスペース内のアプリケーション データのログのクエリを実行する場合、そのクエリは次の例のようになります。
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: ba51da8b71406cb1bf7446bd66818a6a74e61317
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243418"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428909"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Cognitive Services を使用して Language Understanding アプリを構築するためのベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。 
@@ -77,23 +77,32 @@ LUIS の予測データを使用して、意図が重複していないかどう
 * 概念: [LUIS アプリの作成サイクル](luis-concept-app-iteration.md)
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>すべきこと: 後のイテレーションでフレーズ リストとパターンを追加する
-[フレーズ リスト](luis-concept-feature.md)を使用すると、お使いのアプリ ドメインに関連する単語のディクショナリを定義できます。 いくつかの単語を使ってフレーズ リストをシード処理し、提案機能を使用することで、LUIS によって、アプリに固有のボキャブラリの単語がさらに詳しく認識されるようになります。 フレーズ リストは完全一致ではないため、ボキャブラリにはすべての単語は追加しないでください。 
+
+アプリのテストが済むまではこれらのプラクティスを適用しないのがベスト プラクティスです。 フレーズ リストとパターンを追加する前に、アプリがどのように動作するかを理解する必要があります。 これらがないときにアプリがどのように動作するかを理解したら、これらの機能がアプリに適用されるときに各機能を追加します。 これらの機能を[繰り返し](luis-concept-app-iteration.md)のたびに追加したり、バージョンが変わるたびに変更したりする必要はありません。 
+
+それらをモデル設計の開始時に追加しても害はありませんが、モデルを発話でテストした後、各機能変更がどのような結果になるかを確認することが容易になります。 
+
+ベスト プラクティスは、[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md)の追加されたベネフィットを得られるよう、[エンドポイント](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)を介してテストすることです。 [対話型テスト ウィンドウ](luis-interactive-test.md)も有効なテスト手法になります。 
+ 
+
+### <a name="phrase-lists"></a>フレーズ リスト
+
+[フレーズ リスト](luis-concept-feature.md)を使用すると、お使いのアプリ ドメインに関連する単語のディクショナリを定義できます。 いくつかの単語を使ってフレーズ リストをシード処理し、提案機能を使用することで、LUIS によって、アプリに固有のボキャブラリの単語がさらに詳しく認識されるようになります。 フレーズ リストを使用すると、アプリにとって重要な語句に関連付けられているシグナルをブーストすることで、意図の検出とエンティティの分類が向上します。 
+
+フレーズ リストは完全一致ではないため、ボキャブラリにはすべての単語は追加しないでください。 
+
+詳細:
+* 概念: [LUIS アプリのフレーズ リストのフィーチャー](luis-concept-feature.md)
+* 方法: [フレーズ リストを使用して単語リストのシグナルをブーストする](luis-how-to-add-features.md)
+
+### <a name="patterns"></a>パターン
 
 エンドポイントからの実際のユーザーの発話で、非常によく似ているものにより、単語の選択と配置のパターンが明らかになる可能性があります。 [パターン](luis-concept-patterns.md)機能では、この単語の選択と配置および正規表現を使って、ご自身の予測精度を向上させます。 パターン内の正規表現を使用すると、単語や句読点を無視して、パターンを一致させることができます。 
 
 句読点を無視するには、パターンの[省略可能な句読点の構文](luis-concept-patterns.md)を使用します。 [明示的なリスト](luis-concept-patterns.md#explicit-lists)を使用して、pattern.any 構文の問題を補正します。 
 
-これらのプラクティスは、アプリがエンドポイント要求を受信する前には適用しないでください。 フレーズ リストとパターンを追加する前に、アプリがどのように動作するかを理解する必要があります。 これらがないときにアプリがどのように動作するかを理解したら、これらの機能がアプリに適用されるときに各機能を追加します。 
-
-それらをモデル設計の開始時に追加しても害はありませんが、実際のトラフィックでアプリを使用した後に追加すると、各機能変更がどのような結果になるかを確認することが容易になります。 
-
-これらの機能を繰り返しのたびに追加したり、バージョンが変わるたびに変更したりする必要はありません。 
-
 詳細:
-* 概念: [LUIS アプリの作成サイクル](luis-concept-app-iteration.md)
-* 概念: [LUIS アプリのフレーズ リストのフィーチャー](luis-concept-feature.md)
 * 概念: [パターンは予測精度を改善する](luis-concept-patterns.md)
-* 方法: [フレーズ リストを使用して単語リストのシグナルをブーストする](luis-how-to-add-features.md)
 * 方法: [パターンを追加して予測精度を改善する方法](luis-how-to-model-intent-pattern.md)
 
 ## <a name="balance-your-utterances-across-all-intents"></a>すべての意図の間で発話のバランスを取る

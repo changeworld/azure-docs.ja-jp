@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 1/14/2019
-ms.openlocfilehash: 8d5fc1c579fd09f1a71d63dce4d1673ef5a8652b
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 2/18/2019
+ms.openlocfilehash: 4fd0f0990163963fc0cc3c7caf221609da487909
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354622"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340180"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure データ エクスプローラーでのデータ インジェスト
 
@@ -39,15 +39,21 @@ ms.locfileid: "54354622"
 
 Azure データ エクスプローラーでは複数のインジェスト方法がサポートされており、それぞれに固有のターゲット シナリオ、利点、欠点があります。 Azure Data Explorer では、一般的なサービスに対するパイプラインとコネクタ、SDK を使用するプログラムでのインジェスト、および探索のためのエンジンへの直接アクセスが提供されています。
 
-### <a name="ingestion-using-pipelines"></a>パイプラインを使用したインジェスト
+### <a name="ingestion-using-pipelines-connectors-and-plugins"></a>パイプライン、コネクタ、およびプラグインを使用したインジェスト
 
-現在、Azure Data Explorer ではイベント ハブ パイプラインがサポートされており、Azure portal 内の管理ウィザードを使用して管理できます。 詳細については、「[クイック スタート: イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)」を参照してください。
+現在、Azure Data Explorer は以下をサポートしています。
 
-### <a name="ingestion-using-connectors-and-plugins"></a>コネクタとプラグインを使用したインジェスト
+* Event Grid パイプライン。Azure portal 内の管理ウィザードを使用して管理できます。 詳細については、[Azure Data Explorer への Azure BLOB の取り込み](ingest-data-event-grid.md)に関するページを参照してください。
 
-* Azure Data Explorer では Logstash プラグインがサポートされています。 詳しくは、「[Logstash Output Plugin for Azure Data Explorer](https://github.com/Azure/logstash-output-kusto/blob/master/README.md)」(Azure Data Explorer 向けの Logstash 出力プラグイン) をご覧ください。
+* イベント ハブ パイプライン。Azure portal 内の管理ウィザードを使用して管理できます。 詳細については、[イベント ハブから Azure Data Explorer へのデータの取り込み](ingest-data-event-hub.md)に関するページを参照してください。
 
-* Azure Data Explorer では Kafka コネクタがサポートされています。 詳細については、「[クイック スタート: Kafka から Azure Data Explorer にデータを取り込む](ingest-data-kafka.md)」を参照してください
+* Logstash プラグイン。[Logstash から Azure Data Explorer へのデータの取り込み](ingest-data-logstash.md)に関するページを参照してください。
+
+* Kafka コネクタ。[Kafka から Azure Data Explorer へのデータの取り込み](ingest-data-kafka.md)に関するページを参照してください。
+
+### <a name="ingestion-using-integration-services"></a>統合サービスを使用した取り込み
+
+* Azure Data Factory (ADF) は Azure の分析ワークロード用のフル マネージド データ統合サービスです。Azure Data Explorer との間でデータのコピーを行います。 詳細については、「[Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする](/azure/data-factory/connector-azure-data-explorer)」を参照してください。
 
 ### <a name="programmatic-ingestion"></a>プログラムによるインジェスト
 
@@ -131,21 +137,27 @@ Event Hub などのメッセージング サービスに基づく既存のイン
 スキーマ マッピングは、ソースのデータ フィールドをターゲットのテーブル列にバインドするのに役立ちます。
 
 * [CSV マッピング](/azure/kusto/management/mappings?branch=master#csv-mapping) (省略可能) は、すべての序数ベースの形式で動作します。 取り込みコマンドのパラメーターを使用して実行すること、または[テーブルで事前に作成](/azure/kusto/management/tables?branch=master#create-ingestion-mapping)して取り込みコマンドのパラメーターから参照することができます。
-* [JSON マッピング](/azure/kusto/management/mappings?branch=master#json-mapping) (必須) と [Avro マッピング](/azure/kusto/management/mappings?branch=master#avro-mapping) (必須) は、取り込みコマンドのパラメーターを使用して実行すること、または[テーブルで事前に作成](/azure/kusto/management/tables#create-ingestion-mapping)して取り込みコマンドのパラメーターから参照することができます。
+* [JSON マッピング](/azure/kusto/management/mappings?branch=master#json-mapping) (必須) と [Avro マッピング](/azure/kusto/management/mappings?branch=master#avro-mapping) (必須) は、取り込みコマンドのパラメーターを使用して実行できます。 また、[テーブルで事前に作成](/azure/kusto/management/tables#create-ingestion-mapping)して取り込みコマンドのパラメーターから参照することもできます。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
+> [イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Kafka から Azure Data Explorer にデータを取り込む](ingest-data-kafka.md)
+> [Event Grid サブスクリプションを使用して Azure Data Explorer にデータを取り込む](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)
+> [Kafka から Azure Data Explorer にデータを取り込む](ingest-data-kafka.md)
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Azure Data Explorer の Node ライブラリを使用してデータを取り込む](node-ingest-data.md)
+> [Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)
 
 > [!div class="nextstepaction"]
-> [クイック スタート:Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む](net-standard-ingest-data.md)
+> [Azure Data Explorer の Node ライブラリを使用してデータを取り込む](node-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む](net-standard-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Logstash から Azure Data Explorer にデータを取り込む](ingest-data-logstash.md)

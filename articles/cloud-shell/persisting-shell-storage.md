@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 4671287d78dafce9b662a167ba99a680d2fa70d2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 7bf31c11c705dbdfe8a326aad99ee8d373db8f3e
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734077"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301096"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -101,6 +101,8 @@ Cloud Shell にマウントされた Azure ファイル共有は、いつでも�
 ![Dismount-CloudDrive の実行](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
+
+注:ファイル内に関数を定義して、PowerShell コマンドレットから呼び出す必要がある場合は、ドット演算子が含まれていることが要件になります。 例: . .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>次の手順
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>

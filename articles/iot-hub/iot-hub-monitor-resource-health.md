@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: 3b56097f8805b4c6d95256ae1753daf5ded266fb
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 86e690e5ff437d924b9c548c2d75afb1866b14aa
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888398"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446785"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub の正常性を監視し、問題をすばやく診断する
 
@@ -302,12 +302,118 @@ C2D コマンド カテゴリでは、IoT Hub で発生し、かつクラウド�
             "category": "DirectMethods",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"deviceId\":\"<deviceId>\", \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
+            "properties": "{\"deviceId\":<messageSize>, \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
             "location": "Resource location"
         }
     ]
 }
 ```
+
+#### <a name="distributed-tracing-preview"></a>分散トレース (プレビュー)
+
+分散トレース カテゴリでは、トレース コンテキスト ヘッダーが含まれれるメッセージの関連付け ID が追跡されます。 これらのログを完全に有効にするには、「[Analyze and diagnose IoT applications end-to-end with IoT Hub distributed tracing (preview) (IoT Hub 分散トレース (プレビュー) で IoT アプリケーションをエンド ツー エンドに分析および診断する)](iot-hub-distributed-tracing.md)」に従って、クライアント側のコードを更新する必要があります。
+
+`correlationId` が [W3C トレース コンテキスト](https://github.com/w3c/trace-context)の提案に準拠していることに注意してください。これには、`trace-id` と `span-id` が含まれます。 
+
+##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>IoT Hub D2C (device-to-cloud) のログ
+
+IoT Hub では、有効なトレース プロパティを含むメッセージが IoT Hub に到着すると、このログが記録されます。 
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubD2C",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Receive message success",
+            "durationMs": "",
+            "properties": "{\"messageSize\": 1, \"deviceId\":\"<deviceId>\", \"callerLocalTimeUtc\": : \"2017-02-22T03:27:28.633Z\", \"calleeLocalTimeUtc\": \"2017-02-22T03:27:28.687Z\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+ここで、IoT Hub のクロックがデバイスのクロックと同期していない可能性があり、経過時間を計算すると誤解を招く場合があるので、`durationMs` は計算されません。 `properties` セクションのタイムスタンプを使用するロジックを記述して、device-to-cloud 待機時間のスパイクをキャプチャすることをお勧めします。
+
+| プロパティ | type | 説明 |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **messageSize** | 整数 | device-to-cloud メッセージのサイズ (バイト単位) |
+| **deviceId** | ASCII の 7 ビットの英数字の文字列 | デバイスの ID |
+| **callerLocalTimeUtc** | UTC タイムスタンプ | デバイスのローカル クロックによって報告されたメッセージの作成時刻 |
+| **calleeLocalTimeUtc** | UTC タイムスタンプ | IoT Hub サービス側のクロックによって報告された、IoT Hub のゲートウェイへのメッセージの到着時刻 |
+
+##### <a name="iot-hub-ingress-logs"></a>IoT Hub のイングレス ログ
+
+有効なトレース プロパティを含むメッセージが内部または組み込みの Event Hub に書き込むと、IoT Hub でこのログが記録されます。
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubIngress",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Ingress message success",
+            "durationMs": "10",
+            "properties": "{\"isRoutingEnabled\": \"true\", \"parentSpanId\":\"0144d2590aacd909\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+`properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
+
+| プロパティ | type | 説明 |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **isRoutingEnabled** | String | true または false。IoT Hub でメッセージのルーティングが有効になっているかどうかを示します |
+| **parentSpanId** | String | 親メッセージの [span-id](https://w3c.github.io/trace-context/#parent-id)。この場合は、D2C のメッセージ トレースです |
+
+##### <a name="iot-hub-egress-logs"></a>IoT Hub のエグレス ログ
+
+[ルーティング](iot-hub-devguide-messages-d2c.md)が有効になっていて、メッセージが[エンドポイント](iot-hub-devguide-endpoints.md)に書き込まれると、IoT Hub でこのログが記録されます。 ルーティングが有効でない場合、IoT Hub はこのログを記録しません。
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubEgress",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-98ac3578922acd26-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Egress message success",
+            "durationMs": "10",
+            "properties": "{\"endpointType\": \"EventHub\", \"endpointName\": \"myEventHub\", \"parentSpanId\":\"349810a9bbd28730\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+`properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
+
+| プロパティ | type | 説明 |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **endpointName** | String | ルーティング エンドポイントの名前 |
+| **endpointType** | String | ルーティング エンドポイントの種類 |
+| **parentSpanId** | String | 親メッセージの [span-id](https://w3c.github.io/trace-context/#parent-id)。この場合は、IoT Hub のイングレス メッセージ トレースです |
+
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Azure Event Hubs からのログの読み取り
 

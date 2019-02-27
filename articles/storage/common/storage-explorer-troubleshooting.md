@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.subservice: common
-ms.openlocfilehash: 180780c3a3a644a8da0fa544c37bc8cd252c982f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c192b3e995cacd3085f343d1f6b2c243f1531acc
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469500"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415512"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -54,6 +54,20 @@ Storage Explorer に自己署名証明書または信頼されない証明書が
 
 ## <a name="sign-in-issues"></a>サインインの問題
 
+### <a name="blank-sign-in-dialog"></a>空白のサインイン ダイアログ
+サインイン ダイアログが空白になる原因で最もよくあるのは、Electron によってサポートされていないリダイレクトを実行するよう、ADFS が Storage Explorer に要求する場合です。 この問題を回避するには、サインインにデバイス コード フローを使用してみることができます。 そのためには、次の手順を実行します。
+1. [Go to Experimental]\(実験に移動\) -> [Use Device Code Sign-In]\(デバイス コード サインインを使用\)。
+2. [Connect]\(接続\) ダイアログを開きます (左側の垂直バーのプラグ アイコン、またはアカウント パネルの [Add Account]\(アカウントの追加\) を使用して)。
+3. サインインする環境を選択します。
+4. [サインイン] ボタンをクリックします。
+5. 次のパネルの手順に従います。
+
+注: 現在、この機能は 1.7.0 プレビューのみで使用できます。
+
+既定のブラウザーが別のアカウントに既にサインインしているために、使用するアカウントへのサインインで問題が発生する場合は、次のどちらかのようにすることができます。
+1. お使いのブラウザーのプライベート セッションに、リンクとコードを手動でコピーします。
+2. 別のブラウザーに、リンクとコードを手動でコピーします。
+
 ### <a name="reauthentication-loop-or-upn-change"></a>再認証ループまたは UPN の変更
 再認証ループに入った、またはアカウントのいずれかの UPN を変更されている場合は、以下を試してください。
 1. すべてのアカウントを削除した後、Storage Explorer を閉じます。
@@ -90,7 +104,7 @@ macOS のキーチェーンが、Storage Explorer の認証ライブラリの問
 正常にサインインした後にサブスクリプションを取得できない場合は、次のトラブルシューティング方法を試してください。
 
 * お使いのアカウントに必要なサブスクリプションへのアクセス権があることを確認します。 使用しようとしている Azure 環境のポータルにサインインして、アクセス権があることを確認することができます。
-* 適切な Azure 環境 (Azure、Azure China、Azure Germany、Azure US Government、またはカスタム環境) を使用してサインインしていることを確認します。
+* 適切な Azure 環境 (Azure、Azure China 21Vianet、Azure Germany、Azure US Government、またはカスタム環境) を使用してサインインしていることを確認します。
 * プロキシの内側にいる場合は、Storage Explorer のプロキシが適切に構成されていることを確認します。
 * アカウントを削除してから再度追加します。
 * [詳細] リンクがある場合は、障害が発生しているテナントに対してどのようなエラー メッセージが報告されているかを確認します。 エラー メッセージを見てもどうすればいいかわからない場合は、[GitHub に問題を投稿](https://github.com/Microsoft/AzureStorageExplorer/issues)してください。
@@ -116,7 +130,7 @@ macOS のキーチェーンが、Storage Explorer の認証ライブラリの問
 * プロキシの URL とポート番号
 * プロキシで必要な場合はユーザー名とパスワード
 
-Storage Explorer では、プロキシ設定の構成に関して .pac ファイルがサポートされないことに注意してください。
+Storage Explorer では、プロキシ設定の構成にプロキシ自動構成ファイルがサポートされていないことに注意してください。
 
 ### <a name="common-solutions"></a>一般的な解決方法
 

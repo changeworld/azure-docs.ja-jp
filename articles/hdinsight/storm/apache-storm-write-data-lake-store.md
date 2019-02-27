@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 53f81a06a0a10d4526816b5117eb12f01d75e25a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 301de81fc9b8bdb8b295700de33065d988379334
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819163"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428796"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む
 
@@ -50,15 +50,18 @@ ms.locfileid: "55819163"
 HdfsBolt は、ユーザーが指定したファイル スキームを使用して、HDFS に書き込む方法を理解します。 HDInsight では、次のいずれかのスキームを使用します。
 
 * `wasb://`:Azure Storage アカウントで使用されます。
-* `adl://`:Azure Data Lake Storage で使用されます。
+* `abfs://`:Azure Data Lake Storage Gen2 で使用されます。
+* `adl://`:Azure Data Lake Storage Gen1 で使用されます。
 
 次の表は、さまざまなシナリオでファイル スキームを使用する例を示しています。
 
 | スキーム | メモ |
 | ----- | ----- |
 | `wasb:///` | 既定のストレージ アカウントは、Azure Storage アカウント内の BLOB コンテナーです。 |
-| `adl:///` | 既定のストレージ アカウントは、Azure Data Lake Storage 内のディレクトリです。 クラスターの作成中に、そのクラスターの HDFS のルートである Data Lake Storage 内のディレクトリを指定します。 たとえば、`/clusters/myclustername/` ディレクトリです。 |
+| `abfs:///` | 既定のストレージ アカウントは、Azure Data Lake Storage Gen2 アカウント内のディレクトリです |
+| `adl:///` | 既定のストレージ アカウントは、Azure Data Lake Storage Gen1 内のディレクトリです。 クラスターの作成中に、そのクラスターの HDFS のルートである Data Lake Storage 内のディレクトリを指定します。 たとえば、`/clusters/myclustername/` ディレクトリです。 |
 | `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | クラスターに関連付けられている既定以外の (追加の) Azure Storage アカウント。 |
+| `abfs://CONTAINER@ACCOUNT.dfs.core.windows.net/` | クラスターに関連付けられている既定以外の (追加の) Azure Storage アカウント。 |
 | `adl://STORENAME/` | クラスターによって使用される Data Lake Storage のルート。 このスキームを使用すると、クラスター ファイル システムを含むディレクトリの外部にあるデータにアクセスできます。 |
 
 詳細については、Apache.org にある [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) のリファレンスを参照してください。
@@ -180,7 +183,7 @@ Flux フレームワークの詳細については、「[https://storm.apache.or
         hdfs.url: wasb:///
 
     > [!IMPORTANT]  
-    > この例では、クラスターが既定のストレージとして Azure Storage アカウントを使用することを前提にしています。 クラスターで Azure Data Lake Storage を使用する場合は、代わりに `hdfs.url: adl:///` を使用してください。
+    > この例では、クラスターが既定のストレージとして Azure Storage アカウントを使用することを前提にしています。 クラスターで Azure Data Lake Storage Gen2 を使用する場合は、代わりに `hdfs.url: abfs:///` を使用します。 クラスターで Azure Data Lake Storage Gen1 を使用する場合は、代わりに `hdfs.url: adl:///` を使用します。
     
     ファイルを保存するには、__Ctrl + X__ キーを押してから __Y__ キー、__Enter__ キーの順に押します。 このファイル内の値により、Data Lake Storage の URL とデータが書き込まれるディレクトリ名が設定されます。
 

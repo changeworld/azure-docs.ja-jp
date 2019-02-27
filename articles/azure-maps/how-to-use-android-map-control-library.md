@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e3f7579324e1218cc2e2c3594889db776da6e529
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 57cc585d621c71872a4b7658c74f581c8998b245
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56119143"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341081"
 ---
 # <a name="how-to-use-azure-maps-android-sdk"></a>Azure Maps Android SDK を使用する方法
 
@@ -45,7 +45,7 @@ Android Studio のインストールと新しいプロジェクトの作成の�
 
 ## <a name="set-up-a-virtual-device"></a>仮想デバイスを設定する
 
-Android Studio を使用すると、コンピューター上で仮想 Android デバイスを設定できます。 これは開発中にアプリケーションをテストするために役立ちます。 仮想デバイスを設定するには、プロジェクト イメージの右上にある Android Virtual Device (AVD) Manager アイコンをクリックします。 次に **[Create Virtual Device]\(仮想デバイスの作成\)** ボタンをクリックします。 また、ツールバーの [Tools]\(ツール\) > [Android] > [AVD Manager] からマネージャーにアクセスすることもできます。 **[Phones]\(電話\)** カテゴリから **[Nexus 5X]** を選択し、**[Next]\(次へ\)** をクリックします。
+Android Studio を使用すると、コンピューター上で仮想 Android デバイスを設定できます。 これは開発中にアプリケーションをテストするために役立ちます。 仮想デバイスを設定するには、プロジェクト画面の右上にある Android Virtual Device (AVD) Manager アイコンをクリックします。 次に **[Create Virtual Device]\(仮想デバイスの作成\)** ボタンをクリックします。 また、ツールバーの **[Tools]\(ツール\) > [Android] > [AVD Manager]** からマネージャーにアクセスすることもできます。 **[Phones]\(電話\)** カテゴリから **[Nexus 5X]** を選択し、**[Next]\(次へ\)** をクリックします。
 
 AVD の設定の詳細については、[Android Studio のドキュメント](https://developer.android.com/studio/run/managing-avds)を参照してください。
 
@@ -55,7 +55,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
 
 アプリケーションのビルドに進む前に、次の手順に従って Azure Maps Android SDK をインストールします。 
 
-1. **build.gradle** ファイルのリポジトリ ブロックである **allprojects** に以下を追加します。
+1. **build.gradle** ファイルのリポジトリ ブロックである **all projects** に以下を追加します。
 
     ```
     maven {
@@ -79,7 +79,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
         implementation "com.microsoft.azure.maps:mapcontrol:0.1"
         ```
 
-3. 'AndroidManifest.xml' に以下を追加してアクセス許可を設定します。
+3. **AndroidManifest.xml** に以下を追加してアクセス許可を設定します。
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -128,7 +128,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
 
     public class MainActivity extends AppCompatActivity {
         
-        static{
+        static {
             AzureMaps.setSubscriptionKey("{subscription-key}");
         }
 
@@ -187,7 +187,7 @@ AVD の設定の詳細については、[Android Studio のドキュメント](h
 
 ## <a name="import-classes"></a>クラスをインポートする
 
-前述の手順を完了すると、コード内の一部のテキストに対して Android Studio から警告を受け取る可能性が高くなります。 これを処理するには、`MainActivity.java` で参照されているクラスのいくつかをインポートする必要があります。
+前述の手順を完了すると、コード内の一部のテキストに対して Android Studio から警告を受け取る可能性が高くなります。 これらの警告を解決するには、`MainActivity.java` で参照されているクラスをインポートします。
 
 `Alt`+`Enter` (Mac では `Option`+`Return`) を押すと、このようなクラスを自動的にインポートできます。 
 

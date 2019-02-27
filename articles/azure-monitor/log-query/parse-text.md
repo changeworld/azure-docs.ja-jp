@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: b6a2ca70faa36b94ace8158f33e58b5e6688ece3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9897fbb3f5efe1f5255992e4894ea22041595263
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002205"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268194"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Monitor ログのテキスト データの解析
 Azure Monitor によって収集された一部のログ データでは、1 つのプロパティに複数に分けられた情報が含まれます。 このデータを複数のプロパティに分けて解析すると、クエリで使用しやすくなります。 一般的な例は、複数の値を持つすべてのログ エントリを 1 つのプロパティに集める[カスタム ログ](../../log-analytics/log-analytics-data-sources-custom-logs.md)です。 異なる値に個別のプロパティを作成することによって、それぞれで検索したり、集約したりできます。
@@ -63,7 +63,7 @@ Azure Monitor によって収集された一部のログ データでは、1 つ
 収集されたとおりにデータを解析する方法については、[Azure Monitor でのカスタム フィールドの作成](../platform/custom-fields.md)に関するページを参照してください。 この方法では、他のプロパティと同じようにクエリで使用できるテーブル内のカスタム プロパティが作成されます。
 
 ## <a name="parse-data-in-query-using-patterns"></a>パターンを使用してクエリでデータを解析する
-レコード全体で繰り返されるパターンによって解析するデータを識別できる場合、[Data Explorer クエリ言語](/azure/kusto/query/)のさまざまな演算子を使用して、1 つまたは複数の新しいプロパティに特定のデータを抽出することができます。
+レコード全体で繰り返されるパターンによって解析するデータを識別できる場合、[Kusto クエリ言語](/azure/kusto/query/)のさまざまな演算子を使用して、1 つまたは複数の新しいプロパティに特定のデータを抽出することができます。
 
 ### <a name="simple-text-patterns"></a>単純なテキスト パターン
 
@@ -139,7 +139,7 @@ MyCustomCSVLog_CL
 ```
 
 ## <a name="parse-predefined-structures-in-a-query"></a>クエリの定義済み構造の解析
-データが既知の構造で形式が設定されている場合、定義済みの構造を解析するために、[Data Explorer クエリ言語](/azure/kusto/query/)のいずれかの関数を使用することができます。
+データが既知の構造で形式が設定されている場合、定義済みの構造を解析するために、[Kusto クエリ言語](/azure/kusto/query/)のいずれかの関数を使用することができます。
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)

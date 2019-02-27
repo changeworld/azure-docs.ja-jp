@@ -35,13 +35,16 @@
 ## 高可用性の構成
 ### [Azure Storage を使用したバックアップと復元](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 ### Always On 可用性グループ
-#### [Azure portal テンプレートの使用](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-#### [クイック スタート テンプレートの使用](virtual-machines-windows-sql-availability-group-quickstart-template.md)
-#### [手動 - 前提条件](virtual-machines-windows-portal-sql-availability-group-prereq.md)
-#### [手動 - チュートリアル](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [ロード バランサー - Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [ロード バランサー - Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md)
+#### [Azure portal テンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [Azure クイックスタート テンプレート](virtual-machines-windows-sql-availability-group-quickstart-template.md)
 #### [複数リージョン](virtual-machines-windows-portal-sql-availability-group-dr.md)
+#### 手動で構成    
+##### [前提条件](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+##### [チュートリアル](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+##### [ロード バランサー - Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+##### [ロード バランサー - Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+
 ### フェールオーバー クラスター インスタンス
 #### [構成](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 

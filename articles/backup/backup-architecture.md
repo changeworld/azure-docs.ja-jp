@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: 84890c0658970aa9f61a06764cf902a5e5ee4379
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4be483994bd7bc5bd97b1e59df230f66e9b4e24e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812567"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430348"
 ---
 # <a name="azure-backup-architecture"></a>Azure Backup のアーキテクチャ
 
@@ -24,12 +24,17 @@ ms.locfileid: "54812567"
 
 Azure Backup では、データ、マシンの状態、オンプレミスのマシンや Azure VM で実行されているワークロードをバックアップします。 Azure Backup のシナリオは数多くあります。
 
+## <a name="how-does-azure-backup-work"></a>Azure Backup のしくみ
+
+複数の方法を使用して、マシンとデータをバックアップすることができます。
+
 - **オンプレミスのマシンをバックアップする**:
-    - Azure Backup を使用して、Azure に直接オンプレミス マシンをバックアップすることができます。
-    - System Center Data Protection Manager (DPM) または Microsoft Azure Backup Server (MABS) を使用して、オンプレミス マシンを保護して、その後、Azure Backup を使用して、Azure に DPM/MABS の保護されたデータをバックアップすることができます。
+    - Azure Backup Microsoft Azure Recovery Services (MARS) エージェントを使用して、オンプレミスの Windows マシンを Azure に直接バックアップできます。 Linux マシンはサポートされていません。
+    - オンプレミスのマシンをバックアップ サーバー (System Center Data Protection Manager (DPM) または Microsoft Azure Backup Server (MABS)) にバックアップし、さらにバックアップ サーバーを Azure の Azure Backup Recovery Services コンテナーにバックアップすることができます。
 - **Azure VM をバックアップする**:
-    - Azure Backup を使用して、直接 Azure VM をバックアップすることができます。
-    - Azure で実行されている DPM または MABS を使用して Azure VM を保護し、その後、Azure Backup を使用して、DPM/MABS の保護されているデータをバックアップすることができます。
+    - Azure VM を直接バックアップすることができます。 これを行うために、Azure Backup によって、VM で実行されている Azure VM エージェントに、バックアップ拡張機能がインストールされます。 これにより、VM 全体がバックアップされます。
+    - MARS エージェントを実行することにより、Azure VM 上の特定のファイルおよびフォルダーをバックアップできます。
+    - Azure で実行されている MABS に Azure VM をバックアップし、さらに MABS をコンテナーにバックアップできます。
 
 詳細については、[バックアップできる内容](backup-overview.md)と[サポートされるバックアップ シナリオ](backup-support-matrix.md)に関するページを参照してください。
 
@@ -38,8 +43,8 @@ Azure Backup では、データ、マシンの状態、オンプレミスのマ�
 
 Azure Backup では、Recovery Services コンテナーにバックアップしたデータを格納します。 コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure のオンライン ストレージ エンティティです。
 
-- Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。
-- 各 Azure サブスクリプションに、最大 500 個の Recovery Services コンテナーを作成できます。 
+- コンテナーを使用すると、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。
+- 各 Azure サブスクリプションに、最大 500 個のコンテナーを作成できます。
 - Azure VM とオンプレミスのマシンを含む、コンテナーでバックアップされたアイテムを監視することができます。
 - Azure の[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) を使用して、コンテナーのアクセスを管理できます。
 - 冗長性のためにコンテナー内のデータをレプリケートする方法を指定します。
@@ -49,18 +54,6 @@ Azure Backup では、Recovery Services コンテナーにバックアップし�
 
 
 
-## <a name="how-does-azure-backup-work"></a>Azure Backup のしくみ
-
-Azure Backup では、既定またはカスタマイズされたバックアップ ポリシーに基づいて、バックアップ ジョブを実行します。 Azure Backup でのバックアップ方法は、シナリオによって異なります。
-
-**シナリオ** | **詳細** 
---- | ---
-**オンプレミス マシンを直接バックアップする** | オンプレミス マシンを直接バックアップする場合、Azure Backup では Microsoft Azure Recovery Services (MARS) エージェントが使用されます。 このエージェントは、バックアップする各マシンにインストールされます。 <br/><br/> この種のバックアップは、オンプレミスの Linux マシンでは使用できません。 
-**Azure VM を直接バックアップする** | Azure VM を直接バックアップする場合、VM に対して最初にバックアップが実行されたときに、Azure VM 拡張機能が VM にインストールされます。 
-**DPM または MABS によって保護されているマシンとアプリをバックアップする** | このシナリオでは、まず、マシン/アプリは DPM または MABS のローカル ストレージにバックアップされます。 次に、Azure Backup によって、DPM/MABS 内のデータがコンテナーにバックアップされます。 オンプレミス マシンは、オンプレミスで実行されている DPM/MABS で保護することができます。 Azure VM は、Azure で実行されている DPM/MABS で保護することができます。
-
-概要については[こちら](backup-overview.md)、各シナリオでサポートされている内容については[こちら](backup-support-matrix.md)を参照してください。
-
 
 ### <a name="backup-agents"></a>Backup のエージェント
 
@@ -68,17 +61,26 @@ Azure Backup では、バックアップの種類に応じて、さまざまな�
 
 **エージェント** | **詳細** 
 --- | --- 
-**Microsoft Azure Recovery Services (MARS) エージェント** | このエージェントは、ファイル、フォルダー、およびシステム状態をバックアップする場合、オンプレミスの Windows サーバー上で実行されます。<br/><br/> このエージェントは、DPM/MABS のローカル ストレージ ディスクをバックアップする場合、DPM/MABS サーバー上で実行されます。 マシンとアプリは、この DPM/MABS ディスクにローカルでバックアップされます。
-**Azure VM 拡張機能** | Azure VM をバックアップするために、VM 上で実行されている Azure VM エージェントにバックアップ拡張機能が追加されます。 
+**Microsoft Azure Recovery Services (MARS) エージェント** | 1) オンプレミスの Windows サーバー上で実行され、ファイル、フォルダー、システムの状態をバックアップします<br/><br/> 2) Azure VM 上で実行され、ファイル、フォルダー、システムの状態をバックアップします。<br/><br/>  3) DPM/MABS サーバー上で実行され、DPM/MABS のローカル ストレージ ディスクを Azure にバックアップします。 
+**Azure VM 拡張機能** | Azure VM 上で実行され、コンテナーに VM をバックアップします。
 
 
 ## <a name="backup-types"></a>バックアップの種類
 
 **バックアップの種類** | **詳細** | **使用方法**
 --- | --- | ---
-**完全** | バックアップにはデータ ソース全体が含まれます。<br/><br/> 完全バックアップでは、より多くのネットワーク帯域幅が使用されます。 | 初回バックアップで使用されます。
+**完全** | バックアップにはデータ ソース全体が含まれます。 完全バックアップでは、より多くのネットワーク帯域幅が使用されます。 | 初回バックアップで使用されます。
 **差分** |  初回の完全バックアップ以降に変更されたブロックを格納します。 より少ない量のネットワークとストレージが使用され、変更されていないデータの冗長コピーは保持されません。<br/><br/> 以降の各バックアップの間には変更されていないデータ ブロックが転送され、格納されるため、非効率です。 | Azure Backup では使用されません。
 **増分** | ストレージとネットワークの効率が高くなります。 前回のバックアップ以降に変更されたデータのブロックのみが格納されます。 <br/><br/> 増分バックアップを使用する場合、完全バックアップで補完する必要はありません。 | ディスク バックアップで DPM/MABS によって使用され、Azure へのすべてのバックアップで使用されます。
+
+## <a name="sql-server-backup-types"></a>SQL Server のバックアップの種類
+
+**バックアップの種類** | **詳細** | **使用方法**
+--- | --- | ---
+**完全バックアップ** | 完全なデータベース バックアップでは、データベース全体をバックアップします。 特定のデータベースあるいは一連のファイル グループまたはファイル内のすべてのデータと、そのデータを復旧するための十分なログが含まれます。 | 最多で、1 日に 1 回の完全バックアップをトリガーできます。<br/><br/> 日次または週次で完全バックアップを取得することを選択できます。
+**差分バックアップ** | 差分バックアップは、直近の完全データ バックアップに基づきます。<br/><br/> 完全バックアップ以降に変更されたデータのみがキャプチャされます。 |  最多で、1 日に 1 回の差分バックアップをトリガーできます。<br/><br/> 完全バックアップと差分バックアップを同じ日に構成することはできません。
+**トランザクション ログ バックアップ** | ログ バックアップでは、ある特定の時点への復元を、指定した秒に至るまで可能にします。 | 最多で、15 分ごとにトランザクション ログ バックアップを構成できます。
+
 
 ### <a name="comparison"></a>比較
 
@@ -96,28 +98,16 @@ Azure Backup では、バックアップの種類に応じて、さまざまな�
 
 **機能** | **オンプレミスの Windows マシン (直接)** | **Azure VM** | **DPM/MABS を使用するマシン/アプリ**
 --- | --- | --- | ---
-コンテナーにバックアップする | ![[はい]][green] | ![はい][green] | ![[はい]][green] 
-DPM/MABS ディスクにバックアップしてから、Azure にバックアップする | | | ![[はい]][green] 
-バックアップのために送信されるデータを圧縮する | ![[はい]][green] | データの転送時に圧縮は使用されません。 ストレージが少し大きくなりますが、復元はより高速になります。  | ![[はい]][green] 
-増分バックアップを実行する |![[はい]][green] |![はい][green] |![[はい]][green] 
+コンテナーにバックアップする | ![はい][green] | ![はい][green] | ![はい][green] 
+DPM/MABS ディスクにバックアップしてから、Azure にバックアップする | | | ![はい][green] 
+バックアップのために送信されるデータを圧縮する | ![はい][green] | データの転送時に圧縮は使用されません。 ストレージが少し大きくなりますが、復元はより高速になります。  | ![はい][green] 
+増分バックアップを実行する |![はい][green] |![はい][green] |![はい][green] 
 重複除去されたディスクをバックアップする | | | ![部分的][yellow]<br/><br/> オンプレミスにデプロイされた DPM/MABS サーバーの場合のみ。 
 
 ![table key](./media/backup-architecture/table-key.png)
 
 
-## <a name="architecture-direct-backup-of-on-premises-windows-machines"></a>アーキテクチャ:オンプレミスの Windows マシンの直接バックアップ
 
-1. シナリオを設定するには、Microsoft Azure Recovery Services (MARS) エージェントをマシンにダウンロードしてインストールし、バックアップの対象、バックアップを実行するタイミング、および Azure での保持期間を選択します。
-2. 初期バックアップは、バックアップ設定に従って実行されます。
-3. MARS エージェントでは Windows ボリューム シャドウ コピー (VSS) サービスを使用して、バックアップ用に選択されたボリュームの特定の時点のスナップショットを取得します。
-    - MARS エージェントでは Windows システムによる書き込みのみを使用して、スナップショットをキャプチャします。
-    - エージェントではアプリケーションの VSS ライターは使用しないため、アプリ整合性スナップショットはキャプチャしません。
-3. VSS でスナップショットを取得した後、MARS エージェントでは、バックアップの構成時に指定されたキャッシュ フォルダーに VHD を作成し、各データ ブロックのチェックサムを格納します。 
-4. 増分バックアップは、アドホック バックアップが実行されない限り、指定されたスケジュールに従って実行されます。
-5. 増分バックアップでは、変更されたファイルが識別され、新しい VHD が作成されます。 これは圧縮および暗号化されて、コンテナーに送信されます。
-6. 増分バックアップが完了した後、新しい VHD は初期レプリケーション後に作成された VHD にマージされ、進行中のバックアップの比較に使用される最新の状態が提供されます。 
-
-![MARS エージェントを使用するオンプレミス Windows サーバーのバックアップ](./media/backup-architecture/architecture-on-premises-mars.png)
 
 
 ## <a name="architecture-direct-backup-of-azure-vms"></a>アーキテクチャ:Azure VM の直接バックアップ
@@ -136,19 +126,33 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
     - スナップショット データはコンテナーにすぐにコピーされない場合があります。 ピーク時には、数時間かかる場合があります。 毎日のバックアップ ポリシーでは、VM のバックアップの合計時間は 24 時間未満になります。
 5. データがコンテナーに送信された後、スナップショットが削除され、回復ポイントが作成されます。
 
+Azure VM では制御コマンド用にインターネット アクセスが必要であることに注意してください。 VM 内のワークロードでバッキングしている場合は (SQL Server のバックアップなど)、バック データもインターネット アクセスが必要です。 
 
 ![Azure VM のバックアップ](./media/backup-architecture/architecture-azure-vm.png)
 
+## <a name="architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders"></a>アーキテクチャ:オンプレミスの Windows マシン/Azure VM ファイル/フォルダーの直接バックアップ
+
+1. シナリオを設定するには、Microsoft Azure Recovery Services (MARS) エージェントをマシンにダウンロードしてインストールし、バックアップの対象、バックアップを実行するタイミング、および Azure での保持期間を選択します。
+2. 初期バックアップは、バックアップ設定に従って実行されます。
+3. MARS エージェントでは Windows ボリューム シャドウ コピー (VSS) サービスを使用して、バックアップ用に選択されたボリュームの特定の時点のスナップショットを取得します。
+    - MARS エージェントでは Windows システムによる書き込みのみを使用して、スナップショットをキャプチャします。
+    - エージェントではアプリケーションの VSS ライターは使用しないため、アプリ整合性スナップショットはキャプチャしません。
+3. VSS でスナップショットを取得した後、MARS エージェントでは、バックアップの構成時に指定されたキャッシュ フォルダーに VHD を作成し、各データ ブロックのチェックサムを格納します。 
+4. 増分バックアップは、アドホック バックアップが実行されない限り、指定されたスケジュールに従って実行されます。
+5. 増分バックアップでは、変更されたファイルが識別され、新しい VHD が作成されます。 これは圧縮および暗号化されて、コンテナーに送信されます。
+6. 増分バックアップが完了した後、新しい VHD は初期レプリケーション後に作成された VHD にマージされ、進行中のバックアップの比較に使用される最新の状態が提供されます。 
+
+![MARS エージェントを使用するオンプレミス Windows サーバーのバックアップ](./media/backup-architecture/architecture-on-premises-mars.png)
 
 ## <a name="architecture-back-up-to-dpmmabs"></a>アーキテクチャ:DPM/MABS へのバックアップ
 
 1. 保護対象のマシン上に DPM または MABS 保護エージェントをインストールし、DPM 保護グループにマシンを追加します。
     - オンプレミス マシンを保護するには、DPM または MABS サーバーをオンプレミスに配置する必要があります。
-    - Azure VM を保護するには、DPM または MABS サーバーを、Azure VM として実行されている Azure に配置する必要があります。
+    - Azure VM を保護するには、MABS サーバーを Azure に配置し、Azure VM として実行する必要があります。
     - DPM/MABS を使用することで、バックアップ ボリューム、共有、ファイル、およびフォルダーを保護できます。 マシン システムの状態/ベア メタルを保護し、アプリ対応のバックアップ設定で特定のアプリを保護することができます。
-2. DPM でマシンまたはアプリの保護を設定する場合は、短期的なストレージ用の DMP ローカル ディスクにバックアップしてから、Azure にバックアップ (オンライン保護) することを選択します。 また、ローカル DPM/MABS ストレージへのバックアップを実行するタイミングと、Azure へのオンライン バックアップを実行するタイミングを指定する必要があります。
-3. 指定したスケジュールに従って、保護されたワークロードのディスクがローカル DPM ディスクにバックアップされてから、Azure にバックアップされます。
-4. コンテナーへのオンライン バックアップは、DPM/MABS サーバーで実行されている MARS エージェントによって処理されます。
+2. DPM/MABS でマシンまたはアプリの保護を設定する場合は、短期的なストレージ用の MABS/DPM ローカル ディスクにバックアップしてから、Azure にバックアップ (オンライン保護) することを選択します。 また、ローカル DPM/MABS ストレージへのバックアップを実行するタイミングと、Azure へのオンライン バックアップを実行するタイミングを指定する必要があります。
+3. 指定したスケジュールに従って、保護されたワークロードのディスクがローカル MABS/DPM ディスクにバックアップされます。
+4. DPM/MABS ディスクは、DPM/MABS サーバーで実行されている MARS エージェントによって、コンテナーにバックアップされます。
 
 ![DPM または MABS で保護されたマシン/ワークロードのバックアップ](./media/backup-architecture/architecture-dpm-mabs.png)
 
@@ -175,8 +179,8 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
 
 詳細:
 
-- [Windows](../virtual-machines/windows/about-disks-and-vhds.md) および [Linux](../virtual-machines/linux/about-disks-and-vhds.md) VM のディスク ストレージに関する詳細を参照してください。
-- [Standard](../virtual-machines/windows/standard-storage.md) および [Premium](../virtual-machines/windows/premium-storage.md) Storage について確認してください。
+- [Windows](../virtual-machines/windows/managed-disks-overview.md) および [Linux](../virtual-machines/linux/managed-disks-overview.md) VM のディスク ストレージに関する詳細を参照してください。
+- Standard や Premium など、利用可能な[ディスクの種類](../virtual-machines/windows/disks-types.md)について学習してください。
 
 
 ### <a name="backing-up-and-restoring-azure-vms-with-premium-storage"></a>Premium Storage を使用する Azure VM のバックアップと復元 
@@ -184,9 +188,9 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
 Azure Backup で Premium Storage を使用して、Azure VM をバックアップすることができます。
 
 - Premium Storage で VM をバックアップすると、Backup サービスによって、Storage アカウントに "AzureBackup-" という名前の一時的なステージング場所が作成されます。 このステージング場所のサイズは、復旧ポイントのスナップショットのサイズと同じです。
-- Premium Storage アカウントに、一時的なステージング場所として使用できる十分な空き領域があることを確認してください。 [詳細情報](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)。 ステージングの場所は変更しないでください。
+- Premium Storage アカウントに、一時的なステージング場所として使用できる十分な空き領域があることを確認してください。 [詳細情報](../storage/common/storage-scalability-targets.md#premium-storage-account-scale-limits)。 ステージングの場所は変更しないでください。
 - バックアップ ジョブが完了した後、ステージングの場所は削除されます。
-- ステージングの場所に使用されるストレージの価格は、[Premium Storage の価格](../virtual-machines/windows/premium-storage.md#pricing-and-billing)に準じます。
+- ステージングの場所に使用されるストレージの価格は、[Premium Storage の価格](../virtual-machines/windows/disks-types.md#billing)に準じます。
 
 Premium Storage を使用して Azure VM を復元する場合、Premium または Standard Storage に復元できます。 通常は、Premium に復元しますが、VM からファイルのサブセットのみが必要な場合は、Standard に復元するほうがコスト効率が良いことがあります。
 

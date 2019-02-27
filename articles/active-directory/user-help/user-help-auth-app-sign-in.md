@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120e0f3c7e6af22210ba04565b86b8098851b26d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3974d1de2bd90049541dcc249f18346c9e48fd3d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186898"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456029"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウントにサインインする
 Microsoft Authenticator アプリは、2 要素認証を使用する場合に、アカウントにサインインするために役立ちます。 2 要素認証は、特に機密情報を閲覧する際に、アカウントにより安全にアクセスするために役立ちます。 パスワードは忘れたり、盗まれたり、侵害されたりすることがあるため、2 要素認証は、他のユーザーの侵入を困難にすることでお客様のアカウントの保護に役立つ追加のセキュリティ手順です。
@@ -62,9 +62,9 @@ Microsoft Authenticator アプリを使用するには、次の条件を満た�
 
     ユーザー名を入力すると、**[サインインの承認]** 画面が開き、2 桁の数字が表示され、Microsoft Authenticator アプリでサインインするように求められます。 このサインイン方法を使用しない場合は、**[Use your password instead]\(代わりにパスワードを使用する\)** を選択し、パスワードを使用してサインインします。
 
-    ![PC 上の [サインインの承認] ボックス](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
+    ![コンピューター上の [サインインの承認] ボックス](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
 
-2. デバイス上で通知または Microsoft Authenticator アプリを開き、PC の **[サインインの承認]** 画面に表示される数字と一致する数字をタップします。
+2. デバイス上で通知または Microsoft Authenticator アプリを開き、コンピューターの **[サインインの承認]** 画面に表示される数字と一致する数字をタップします。
 
     ![デバイス上の [サインインの承認] ボックス](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in-numbers.png)
 
@@ -113,7 +113,7 @@ Outlook.com、Xbox、または Skype などにサインインするために使�
 |**電話を紛失した場合、または電話が手元にない場合は、どのようにしてアカウントにアクセスできますか。アカウントへのアクセス方法を教えてください。**| サインイン ページで [Use a password instead]\(代わりにパスワードを使用する)\ リンクを選択すれば、いつでもパスワードの使用に戻すことができます。 ただし、2 段階認証を使用している場合は、第 2 の方法で身元を証明する必要があることに注意してください。<br><br>**重要**<br>アカウントに、最新の認証方法を複数関連付けてあることを確認することを強くお勧めします。<br><br>個人アカウントの認証方法は [[セキュリティ設定]](https://account.live.com/proofs/manage) ページから管理することができます。 職場または学校アカウントの場合、管理者がセキュリティ情報をオンに設定している場合は、組織の [[追加のセキュリティ確認]](https://aka.ms/MFASetup) ページまたは **[Keep your account secure]\(アカウントのセキュリティ保護を維持\)** ページに移動します。 セキュリティ情報の詳細については、[セキュリティ情報の管理](security-info-manage-settings.md)に関する記事を参照してください。<br><br>認証方法を管理できない場合は、管理者に連絡する必要があります。|
 |**この機能の使用を停止してパスワードの入力に戻すにはどうすればよいですか。**|個人アカウントの場合は、サインイン時に **[Use a password instead]\(代わりにパスワードを使用する\)** リンクを選択します。 前回の選択内容が記憶され、次にサインインするときは既定で表示されます。 電話によるサインインに戻る場合は、サインイン時に **[Use an app instead]\(代わりにアプリを使用する)\** リンクを選択します。<br><br>職場または学校アカウントの場合は、追加のセキュリティ確認ページ (たとえば https://aka.ms/MFASetup) に移動して Microsoft Authenticator アプリを削除する必要があります。|
 |**電話によるサインインに複数の職場または学校アカウントを使用できないのはなぜですか。**| 携帯電話は、1 つの職場または学校アカウントに登録する必要があります。 電話によるサインインを別の職場または学校アカウントで有効にするには、**[設定]** ページから古いデバイスの登録を解除する必要があります。|
-|**携帯電話を使用して自分の PC にサインインできますか。**| PC には、Windows 10 で Windows Hello を使用してサインインすることをお勧めします。 Windows Hello を使用すると、顔、指紋、または暗証番号を使用してサインインできます。|
+|**携帯電話を使用して自分のコンピューターにサインインできますか。**| コンピューターには、Windows 10 で Windows Hello を使用してサインインすることをお勧めします。 Windows Hello を使用すると、顔、指紋、または暗証番号を使用してサインインできます。|
 
 ## <a name="next-steps"></a>次の手順
 - アプリに関する一般的な質問については、「[Microsoft Authenticator アプリに関する FAQ](user-help-auth-app-faq.md)」をご覧ください

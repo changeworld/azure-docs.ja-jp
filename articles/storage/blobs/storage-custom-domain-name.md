@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f0fe4bef436576bec90d1d770d262c2c22d280a3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: edd011509c9129e95bcf7ea49f5a84e17fffd176
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694586"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310552"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Azure Storage アカウントのカスタム ドメイン名の構成
 
@@ -56,7 +56,7 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 
 カスタム ドメインを BLOB エンドポイントにマッピングすると、[Azure portal](https://portal.azure.com) でのドメインの登録中に短時間のダウンタイムが発生する可能性があります。 ドメインが現在、ダウンタイムが発生しないことを必要とするサービス レベル アグリーメント (SLA) があるアプリケーションをサポートしている場合は、Azure *asverify* サブドメインを中間登録ステップとして使用できます。 このステップにより、ユーザーは、DNS マッピングの実行中、ドメインにアクセスすることができます。
 
-中間の方法については、「[*asverify* サブドメインを使用したカスタム ドメインの登録](#register-a-custom-domain-using-the-asverify-subdomain)」を参照してください。
+中間の方法については、「*asverify* サブドメインを使用したカスタム ドメインの登録」を参照してください。
 
 ## <a name="register-a-custom-domain"></a>カスタム ドメインの登録
 次のステートメントが当てはまる場合、このセクションの手順を使用して、ドメインを登録します。
@@ -65,7 +65,7 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 
 Azure DNS を使用して、Azure BLOB のカスタム DNS 名を構成できます。 詳細については、「[Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage)」をご覧ください。
 
-カスタム ドメインが現在、いかなるダウンタイムの発生も許容されないアプリケーションをサポートしている場合は、「[*asverify* サブドメインを使用したカスタム ドメインの登録](#register-a-custom-domain-using-the-asverify-subdomain)」の手順を使用してください。
+カスタム ドメインが現在、いかなるダウンタイムの発生も許容されないアプリケーションをサポートしている場合は、「*asverify* サブドメインを使用したカスタム ドメインの登録」にある手順を使用してください。
 
 カスタム ドメイン名を構成するには、DNS で新しい CNAME レコードを作成します。 CNAME レコードによって、ドメイン名のエイリアスが指定されます。 この例では、カスタム ドメインのアドレスが、ストレージ アカウントの Blob ストレージ エンドポイントにマッピングされます。
 

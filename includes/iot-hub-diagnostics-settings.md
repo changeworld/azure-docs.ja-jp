@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e518263fc7f427ade4943f91fdc840b62a235205
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 150b800bfa6bfa20f10dbba7e8d55981ecb9df34
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550025"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56422836"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>診断設定を使用してログ記録を有効にする
 
@@ -46,6 +46,7 @@ ms.locfileid: "53550025"
    * ツイン操作
    * ジョブ操作
    * ダイレクト メソッド  
+   * 分散トレース (プレビュー)
 
 6. 新しい設定を保存します。 
 

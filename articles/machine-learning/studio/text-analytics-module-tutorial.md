@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 79882fc895262f0fb607ec048e7912ae5f2efdd7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e8e50aa49595addeab3369f74b618c31b7cf1625
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242670"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454380"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio で感情分析モデルを作成する
 
-Azure Machine Learning を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。 こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。
+Azure Machine Learning Studio を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。 こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。
 
 通常のテキスト分析の実験では、次の作業を行います。
 
@@ -66,7 +66,7 @@ N グラム特徴抽出に代わる方法として、Feature Hashing (特徴ハ�
 ## <a name="step-3-train-classification-or-regression-model"></a>手順 3: 分類モデルまたは回帰モデルのトレーニング
 テキストが数値の特徴列に変換されました。 データセットにはまだ前の段階からの文字列があるため、データセット内の列選択を使ってこれらを除外します。
 
-その後、 [2 クラスのロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905994.aspx) を使ってターゲット、つまりレビュー スコアの高低を予測します。 この時点で、テキスト分析の問題は、通常の分類問題に変換されています。 Azure Machine Learning で使用できるツールを使って、モデルを改良できます。 たとえば、実験の精度を確認するために異なる分類器を試したり、ハイパーパラメーター チューニングを使用して精度を向上させたりすることができます。
+その後、 [2 クラスのロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905994.aspx) を使ってターゲット、つまりレビュー スコアの高低を予測します。 この時点で、テキスト分析の問題は、通常の分類問題に変換されています。 Azure Machine Learning Studio で使用できるツールを使って、モデルを改良できます。 たとえば、実験の精度を確認するために異なる分類子を試したり、ハイパーパラメーター チューニングを使用して精度を向上させたりすることができます。
 
 ![トレーニングとスコア付け](./media/text-analytics-module-tutorial/scoring-text.png)
 

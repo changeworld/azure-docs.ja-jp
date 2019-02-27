@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 096f310b7c82718ea836d1b2048ca665a1e1e2f4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 49f045e8da5094f583c01c514bf92f6bf3fe1c09
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994954"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453361"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Azure Machine Learning Studio から製品内ユーザー データをエクスポートおよび削除する
 
@@ -70,8 +70,8 @@ Machine Learning Studio には 3 種類のアカウントがあります。 所�
 ![Machine Learning Studio で無料のワークスペースを削除する](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
 ## <a name="export-studio-data-with-powershell"></a>PowerShell を使用して Studio データをエクスポートする
-PowerShell では、コマンドを使用して Azure Machine Learning Studio から、すべての情報をポータブル形式にエクスポートできます。 詳細については、「[Azure Machine Learning 用 PowerShell モジュール](powershell-module.md)」を参照してください。
+PowerShell では、コマンドを使用して Azure Machine Learning Studio から、すべての情報をポータブル形式にエクスポートできます。 詳細については、「[Azure Machine Learning Studio 用 PowerShell モジュール](powershell-module.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-Web サービスおよび契約プランの課金を説明するドキュメントについては、[Azure Machine Learning REST API リファレンス](https://docs.microsoft.com/rest/api/machinelearning/)に関するページを参照してください。 
+Web サービスおよび契約プランの課金を説明するドキュメントについては、[Azure Machine Learning Studio REST API リファレンス](https://docs.microsoft.com/rest/api/machinelearning/)に関するページを参照してください。 

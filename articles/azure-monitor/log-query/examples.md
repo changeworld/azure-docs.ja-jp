@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor の Azure Monitor ログ クエリの例 | Microsoft Docs
-description: Data Explorer クエリ言語を使用する Azure Monitor でのログ クエリの例。
+title: Azure Monitor ログ クエリの例 | Microsoft Docs
+description: Kusto クエリ言語を使用する Azure Monitor でのログ クエリの例です。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: 81852590ec714c458ebf2ba2b714d0b20f0b873c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993199"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416651"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure Monitor ログ クエリの例
-この記事には、[Data Explorer クエリ言語](https://docs.microsoft.com/azure/kusto/query/)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
+この記事には、[Kusto クエリ言語](/azure/kusto/query/)を使用して Azure Monitor から複数の種類のログ データを取得する、多様な[クエリ](log-query-overview.md)の例が含まれています。 データを統合し、分析するためにさまざまな方法が用いられています。そのため、これらのサンプルを使用して、独自の要件に使用できる戦略を識別することができます。  
 
 これらのサンプルで使用されるさまざまなキーワードの詳細については、[Kusto 言語リファレンス](https://docs.microsoft.com/azure/kusto/query/)を参照してください。 Azure Monitor を使用するのが初めてであれば、[クエリの作成に関するレッスン](get-started-queries.md)を行ってください。
 
@@ -38,7 +38,7 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>マーシャリングの解除に関連するイベントの検索
-テーブル **Event** と **SecurityEvents** から _unmashaling_ に言及するレコードを検索します。
+テーブル **Event** と **SecurityEvents** から _unmarshaling_ が言及されているレコードを検索します。
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"

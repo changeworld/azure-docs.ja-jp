@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/16/2018
+ms.date: 02/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2b26261fdbae07bf3eea793efe6ff0755ca3f577
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 1383c59ca88400868f83d30d04d9b0e5f5401282
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895994"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268959"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -400,7 +400,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
 ## <a name="operation-context"></a>操作コンテキスト
 
-テレメトリ項目を操作コンテキストと関連付けることで、それらの項目を互いに相関させることができます。 標準の要求追跡モジュールでは、HTTP 要求の処理中に送信される例外や他のイベントに対してこの関連付けが行われます。 [Search](../../azure-monitor/app/diagnostic-search.md) および [Analytics](analytics.md) では、操作 ID を使用して、要求に関連付けられたイベントを簡単に見つけることができます。
+テレメトリ項目を操作コンテキストと関連付けることで、それらの項目を互いに相関させることができます。 標準の要求追跡モジュールでは、HTTP 要求の処理中に送信される例外や他のイベントに対してこの関連付けが行われます。 [検索](../../azure-monitor/app/diagnostic-search.md)と[分析](analytics.md)では、操作 ID を使用して、要求に関連付けられたイベントを簡単に見つけることができます。
 
 相関の詳細については、「[Application Insights におけるテレメトリの相関付け](../../azure-monitor/app/correlation.md)」を参照してください。
 
@@ -508,7 +508,7 @@ catch (ex)
 SDK が多数の例外を自動的にキャッチするため、常に TrackException を明示的に呼び出す必要はありません。
 
 * ASP.NET:[例外をキャッチするコードを記述します](../../azure-monitor/app/asp-net-exceptions.md)。
-* J2EE:[例外は自動的にキャッチされます](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures)。
+* Java EE:[例外は自動的にキャッチされます](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures)。
 * JavaScript:例外は自動的にキャッチされます。 自動コレクションを無効にする場合は、Web ページに挿入するコード スニペットに次の行を追加します。
 
 ```javascript
@@ -732,7 +732,7 @@ Thread.sleep(5000);
 telemetry.flush();
 ```
 
-[サーバー テレメトリ チャネル](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/)の場合、この関数は非同期であることに注意してください。
+[サーバー テレメトリ チャネル](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/)の場合、この関数は非同期です。
 
 理想的には、アプリケーションのシャットダウン アクティビティで flush() メソッドを使用する必要があります。
 
@@ -1144,7 +1144,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 * **InstrumentationKey**:テレメトリが表示される Azure 内の Application Insights リソース。 通常、ApplicationInsights.config から取得されます。
 * **Location**:デバイスの地理的な場所。
 * **Operation**:Web アプリでは現在の HTTP 要求。 他の種類のアプリケーションでは、イベントをグループ化するために、これを設定できます。
-  * **Id**:診断検索でイベントを調べるときに関連項目を見つけることができるように、さまざまなイベントを関連付けるために生成される値。
+  * **ID**:診断検索でイベントを調べるときに関連項目を見つけることができるように、さまざまなイベントを関連付けるために生成される値。
   * **Name**:識別子。通常は HTTP 要求の URL です。
   * **SyntheticSource**:null 値または空ではない場合に、要求元がロボットまたは Web テストとして識別されたことを示す文字列。 既定で、メトリックス エクスプローラーの計算から除外されます。
 * **Properties**:すべてのテレメトリ データとともに送信されるプロパティ。 個々 の Track* 呼び出しでオーバーライドできます。

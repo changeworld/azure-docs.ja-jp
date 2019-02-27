@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/20/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: 29244c20bb4bbad8077788abbc29e6267f701d2e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/20/2019
+ms.openlocfilehash: 32e6e8ff4c37554a0c3fa50e243b241eed2953cf
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176352"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446003"
 ---
 # <a name="azure-stack-storage-capacity-planning"></a>Azure Stack ストレージ容量の計画
 次のセクションでは、ソリューションのストレージ ニーズに合わせて計画する場合に役立つ Azure Stack ストレージ容量の計画に関する情報を提供します。
@@ -38,7 +38,9 @@ Azure Stack のハイパーコンバージド構成では、物理ストレー�
 
 ![Azure のストレージ容量の計画](media/azure-stack-capacity-planning/storage.png)
 
-オール フラッシュ構成では、キャッシュは NVMe となり、容量に対して SATA SSD または NVMe を選択することができます。 ハイブリッド構成では、キャッシュは NVMe と SATA SSD から選ぶことができますが、容量は HDD となります。
+オール フラッシュ構成では、2 層または 1 層の構成にできます。  構成が 1 層の場合は、すべての容量デバイスが同じ種類 (NVMe、SATA SSD、SAS SSD など) になり、キャッシュ デバイスは使用されません。 2 層のオール フラッシュ構成での一般的な構成は、キャッシュ デバイスとして NVMe を使用し、容量デバイスとして SATA または SAS SSD を使用するものです。
+
+ハイブリッドの 2 層構成では、キャッシュは NVMe、SATA、SAS SSD から選択し、容量は HDD です。 
 
 記憶域スペース ダイレクトと Azure Stack ストレージ構成の簡単な概要を以下に示します。
 - スケール ユニットごとに記憶域スペース プールが 1 つ (ストレージ デバイスはすべて単一プール内で構成されます)

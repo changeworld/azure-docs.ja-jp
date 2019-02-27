@@ -16,12 +16,12 @@ ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 8f53bbd65053fe9ac2bf49478944dc99dac3acfd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 67022b1d00c8982d7b6e6eff77ffb648bfc557ec
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247852"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301283"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack でサポートされているゲスト オペレーティング システム
 
@@ -53,11 +53,11 @@ Datacenter エディションは、Marketplace でダウンロードできます
 Marketplace で入手可能として示されている Linux ディストリビューションには、必要な Windows Azure Linux エージェント (WALA) が含まれます。 Azure Stack に独自のイメージを持ち込む場合は、「[Azure Stack への Linux イメージの追加](azure-stack-linux.md)」のガイドラインに従ってください。
 
 > [!NOTE]
-> カスタム イメージは、最新のパブリック WALA バージョンでビルドする必要があります。 2.2.18 より古いバージョンは、Azure Stack で正しく機能しない可能性があります。
+> カスタム イメージは、最新のパブリック WALA バージョンまたはバージョン 2.2.20 を使ってビルドする必要があります。 2.2.20 より古いバージョンと、2.2.20 から 2.2.35 (Exclusive) までのバージョンは、Azure Stack 上で正しく機能しない可能性があります。 
 >
 > 現在、[cloud-init](https://cloud-init.io/) は Azure Stack ではサポートされていません。
 
-| ディストリビューション | 説明 | 発行元 | マーケットプレース |
+| ディストリビューション | 説明 | Publisher | マーケットプレース |
 | --- | --- | --- | --- | --- | --- |
 | CentOS-based 6.9 | 64 ビット | Rogue Wave | はい |
 | CentOS-based 7.4 | 64 ビット | Rogue Wave | はい |

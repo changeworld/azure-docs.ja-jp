@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0d46fc8a152c4426832669ce22d4aa78ac640e6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e82e8f6caafb38b758f552913def234a92a0d83
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173944"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454652"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>アプリにアカウントを手動で追加する
 カメラで QR コードをキャプチャできない場合は、2 要素検証のために Microsoft Authenticator アプリにご自分のアカウント情報を手動で追加できます。 この方法は、職場または学校アカウントと Microsoft 以外のアカウントに対して使用できます。
@@ -27,9 +27,9 @@ ms.locfileid: "56173944"
 >[!Important]
 >アカウントを追加する前に、Microsoft Authenticator アプリをダウンロードしてインストールする必要があります。 まだ完了していない場合は、「[アプリのダウンロードとインストール](user-help-auth-app-download-install.md)」という記事の手順に従ってください。
 
-## <a name="add-your-work-or-school-account"></a>職場または学校アカウントを追加する
+## <a name="add-your-work-or-school-account"></a>職場または学校のアカウントを追加する
 
-1. PC 上で、**[モバイル アプリケーションの構成]** ページの **[コード]** と **[URL]** の情報を書き留めます。 このページを開いたままにして、コードと URL を確認できるようにします。
+1. コンピューター上で、**[モバイル アプリケーションの構成]** ページの **[コード]** と **[URL]** の情報を書き留めます。 このページを開いたままにして、コードと URL を確認できるようにします。
     
     ![QR コードを提供する画面](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
@@ -47,7 +47,7 @@ ms.locfileid: "56173944"
 
 ## <a name="add-your-google-account"></a>Google アカウントを追加する
 
-1. PC 上で、QR コードが記載された **[Set up Authenticator]\(Authenticator の設定\)** ページから **[CAN'T SCAN IT]\(スキャンできない\)** を選択します。
+1. コンピューター上で、QR コードが記載された **[Set up Authenticator]\(Authenticator の設定\)** ページから **[CAN'T SCAN IT]\(スキャンできない\)** を選択します。
 
     秘密コードが記載された **[Can't scan barcode]\(バーコードをスキャンできない\)** ページが表示されます。 このページを開いたままにして、秘密コードを確認できるようにします。
 
@@ -55,7 +55,7 @@ ms.locfileid: "56173944"
 
 3. **[アカウント名]** (Google など) を入力し、手順 1 の **[秘密鍵]** を入力してから **[完了]** を選択します。
 
-4. PC の **[Set up Authenticator]\(Authenticator の設定\)** ページで、Google アカウント用にアプリで提供された 6 桁の確認コードを入力してから、**[確認]** を選びます。
+4. コンピューターの **[Set up Authenticator]\(Authenticator の設定\)** ページで、Google アカウント用にアプリで提供された 6 桁の確認コードを入力してから、**[確認]** を選びます。
 
     アプリの **[アカウント]** 画面に、アカウント名と 6 桁の認証コードが表示されます。 セキュリティ強化のため、他のユーザーによってコードが複数回使用されないように、確認コードは 30 秒ごとに変更されます。
 
@@ -70,7 +70,7 @@ ms.locfileid: "56173944"
 
 3. **[アカウント名]** (Facebook など) を入力し、手順 1 の **[秘密鍵]** を入力してから **[完了]** を選択します。
 
-4. PC の **[2 要素認証]** ページで、Facebook アカウント用にアプリで提供された 6 桁の確認コードを入力してから、**[確認]** を選択します。
+4. コンピューターの **[2 要素認証]** ページで、Facebook アカウント用にアプリで提供された 6 桁の確認コードを入力してから、**[確認]** を選択します。
 
     アプリの **[アカウント]** 画面に、アカウント名と 6 桁の認証コードが表示されます。 セキュリティ強化のため、他のユーザーによってコードが複数回使用されないように、確認コードは 30 秒ごとに変更されます。
 
@@ -80,7 +80,7 @@ ms.locfileid: "56173944"
 ## <a name="add-your-amazon-account"></a>Amazon アカウントを追加する
 2 要素検証を有効にし、アプリにアカウントを追加して、Amazon アカウントを追加できます。
 
-1. PC 上で、QR コードが記載された **[Choose how you'll receive codes]\(コードの受信方法の選択\)** ページから **[Can't scan barcode]\(バーコードをスキャンできない\)** を選択します。
+1. コンピューター上で、QR コードが記載された **[Choose how you'll receive codes]\(コードの受信方法の選択\)** ページから **[Can't scan barcode]\(バーコードをスキャンできない\)** を選択します。
 
     秘密コードとともに、**[Can't scan barcode]\(バーコードをスキャンできない\)** メッセージが表示されます。 このメッセージを開いたままにして、秘密コードを確認できるようにします。
 
@@ -90,9 +90,9 @@ ms.locfileid: "56173944"
 
 4. テキスト メッセージなどのバックアップの確認方法の追加を含め、残りのサインイン プロセスを完了してから、**[コードの送信]** を選択します。
 
-5. PC の **[Add a backup verification method]\(バックアップの確認方法の追加\)** ページで、Amazon アカウントのバックアップの確認方法で提供された 6 桁の確認コードを入力してから、**[Verify code and continue]\(コードを確認して続行\)** を選びます。
+5. コンピューターの **[Add a backup verification method]\(バックアップの確認方法の追加\)** ページで、Amazon アカウントのバックアップの確認方法で提供された 6 桁の確認コードを入力してから、**[Verify code and continue]\(コードを確認して続行\)** を選びます。
 
-6. [まもなく完了します] ページで、ご利用の PC を信頼済みデバイスにするかどうかを決定してから、**[了解しました。2 段階認証を有効にしてください]** を選択します。
+6. [まもなく完了します] ページで、ご利用のコンピューターを信頼済みデバイスにするかどうかを決定してから、**[了解しました。2 段階認証を有効にしてください]** を選択します。
 
     **[セキュリティの詳細設定]** ページが表示され、更新した 2 要素検証の詳細が示されます。
 

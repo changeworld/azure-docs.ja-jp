@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57c4f0595fdea3d266a56d125d6d86cba8b4f651
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 01cc85f7eba2aefd08192c4e3f4e5151e7645238
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195534"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269112"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect:設計概念
 このドキュメントの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 このドキュメントでは特定の領域について詳しく説明しますが、これらの概念については、他のドキュメントでも簡単に説明しています。
@@ -120,7 +120,7 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 ![カスタム インストール - sourceAnchor 構成](./media/plan-connect-design-concepts/consistencyGuid-02.png)
 
-| Setting | 説明 |
+| 設定 | 説明 |
 | --- | --- |
 | ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択した場合、Azure AD Connect ウィザードで[高速インストール時に使用される sourceAnchor 属性の選択ロジック](#express-installation)が同じように適用されます。 高速インストールと同様、どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
 | 特有の属性 | sourceAnchor 属性として既存の AD 属性を指定する場合は、このオプションを選択します。 |
@@ -171,7 +171,7 @@ Azure AD Connect を使わずに AD FS を管理している場合や、サー�
 ![サード パーティのフェデレーション構成](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>既存のデプロイに対する新しいディレクトリの追加
-既に ConsistencyGuid 機能を有効にして Azure AD Connect がデプロイされているとき、そのデプロイにもう 1 つディレクトリを追加する必要が生じたとしましょう。 ディレクトリを追加しようとすると、そのディレクトリ内の ms-DS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによってチェックされます。 ディレクトリ内の少なくとも 1 つのオブジェクトに対してこの属性が構成済みであった場合は、この属性が他のアプリケーションによって使用されていると判断され、以下の図のようなエラーが返されます。 この属性が、既存のアプリケーションで使用されていないことが確実である場合は、サポートに連絡してエラーの抑制方法を入手する必要があります。
+既に ConsistencyGuid 機能を有効にして Azure AD Connect がデプロイされているとき、そのデプロイにもう 1 つディレクトリを追加する必要が生じたとしましょう。 ディレクトリを追加しようとすると、そのディレクトリ内の ms-DS-ConsistencyGuid 属性の状態が Azure AD Connect ウィザードによってチェックされます。 ディレクトリ内の少なくとも 1 つのオブジェクトに対してこの属性が構成済みであった場合は、この属性が他のアプリケーションによって使用されていると判断され、以下の図のようなエラーが返されます。 属性が既存のアプリケーションで使用されていないことがわかっている場合は、上記の説明のように **/SkipLdapSearchcontact** を指定して Azure AD Connect ウィザードを再起動することでエラーを抑制できます。詳細については、サポートにお問い合わせください。
 
 ![既存のデプロイに対する新しいディレクトリの追加](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 

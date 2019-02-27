@@ -1,7 +1,7 @@
 ---
 title: Machine Learning Studio ワークスペースを管理する
 titleSuffix: Azure Machine Learning Studio
-description: Azure Machine Learning ワークスペースへのアクセスを管理し、ML API Web サービスをデプロイおよび管理します
+description: Azure Machine Learning Studio ワークスペースへのアクセスを管理し、Machine Learning API Web サービスをデプロイおよび管理します
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: f1904552b6c43cadd611659ed544b9f4bafcb465
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f792c2b23c8d36225b4c05cf7a334721bd08272a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487279"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269027"
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>Azure Machine Learning Studio ワークスペースの管理
 
@@ -24,16 +24,16 @@ ms.locfileid: "55487279"
 > 
 > 
 
-Machine Learning ワークスペースは、Azure Portal で管理できます。
+Machine Learning Studio ワークスペースは、Azure portal で管理できます。
 
 
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
 
-Azure Portal のワークスペースは次のとおりに管理します。
+Studio ワークスペースを Azure portal で 管理するには:
 
 1. Azure サブスクリプション管理者アカウントを使用して [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ページ上部の検索ボックスに、"machine learning workspaces" と入力して、**[Machine Learning ワークスペース]** を選択します。
+2. ページ上部の検索ボックスに「machine learning studio workspaces」と入力した後、**[Machine Learning Studio ワークスペース]** を選択します。
 3. 管理するワークスペースをクリックします。
 
 標準のリソース管理情報と利用可能なオプションに加え、以下のことも可能です。
@@ -41,10 +41,10 @@ Azure Portal のワークスペースは次のとおりに管理します。
 - **[プロパティ]** の表示 - このページではワークスペースとリソースの情報が表示され、このワークスペースに接続されているサブスクリプションとリソース グループが変更できます。
 - **[ストレージの再同期]** - ワークスペースによってキーがストレージ アカウントに維持されます。 ストレージ アカウントによってキーが変更された場合は、**[キーの再同期]** をクリックして、ワークスペースでキーを同期できます。
 
-このワークスペースに関連付けられた Web サービスを管理するには、Machine Learning Web サービス ポータルを使用します。 詳細な情報については、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。
+この Studio ワークスペースに関連付けられた Web サービスを管理するには、Machine Learning Web サービス ポータルを使用します。 詳細な情報については、「[Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する](manage-new-webservice.md)」をご覧ください。
 
 > [!NOTE]
-> New Web サービスをデプロイして管理するには、Web サービスがデプロイされているサブスクリプションで共同作成者または管理者ロールが割り当てられている必要があります。 別のユーザーを Machine Learning ワークスペースに招待したら、Web サービスをデプロイまたは管理する前に、そのユーザーを共同作成者または管理者ロールに割り当てる必要があります。 
+> New Web サービスをデプロイして管理するには、Web サービスがデプロイされているサブスクリプションで共同作成者または管理者ロールが割り当てられている必要があります。 別のユーザーを Machine Learning Studio ワークスペースに招待したら、Web サービスをデプロイまたは管理する前に、そのユーザーをサブスクリプションの共同作成者または管理者ロールに割り当てる必要があります。 
 > 
 >アクセス許可の設定の詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 

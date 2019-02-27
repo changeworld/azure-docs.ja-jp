@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage での Apache Spark を使用したデータ分析
-description: Spark ジョブを実行して Azure Data Lake Storage に格納されているデータを分析する
+title: Azure Data Lake Storage Gen1 で Apache Spark を使用してデータを分析する
+description: Spark ジョブを実行して、Azure Data Lake Storage Gen1 に格納されているデータを分析します
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,22 +9,22 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: e33ec52a2546100a043a78f66c2232c3c1ad264e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d4228091c52e65da70d91fffd8af2f2472fa8f43
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821366"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430558"
 ---
-# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>HDInsight Spark クラスターを使用して Data Lake Storage 内のデータを分析する
+# <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>HDInsight Spark クラスターを使用して Data Lake Storage Gen1 内のデータを分析する
 
 このチュートリアルでは、HDInsight Spark クラスターで利用できる [Jupyter Notebook](https://jupyter.org/) を使用して、Data Lake Storage アカウントからデータを読み取るジョブを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Data Lake Storage アカウント。 [Azure portal で Azure Data Lake Storage の使用を開始する方法](../../data-lake-store/data-lake-store-get-started-portal.md)の記事の手順に従ってください。
+* Azure Data Lake Storage Gen1 アカウント。 「[Azure portal で Azure Data Lake Storage Gen1 の使用を開始する](../../data-lake-store/data-lake-store-get-started-portal.md)」の手順に従ってください。
 
-* Data Lake Storage をストレージとして使用する Azure HDInsight Spark クラスター。 [HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
+* Data Lake Storage Gen1 をストレージとして使用する Azure HDInsight Spark クラスター。 [HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
     
 ## <a name="prepare-the-data"></a>データを準備する
@@ -45,7 +45,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
         AdlCopy /Source https://mydatastore.blob.core.windows.net/mysparkcluster/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv /dest swebhdfs://mydatalakestore.azuredatalakestore.net/hvac/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
    > [!WARNING]  
-   > ファイル名とパス名の大文字/小文字が正しいことを確認します。
+   > ファイル名とパス名で大文字と小文字が適切に使用されていることを確認します。
 
 3. Data Lake Storage アカウントがある Azure サブスクリプションの資格情報を入力するように求められます。 次のスニペットのような出力が表示されます。
 
@@ -56,7 +56,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
 
     データ ファイル (**HVAC.csv**) が、Data Lake Storage アカウントの **/hvac** フォルダーにコピーされます。
 
-## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage"></a>Data Lake Storage で HDInsight Spark クラスターを使用する
+## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Data Lake Storage Gen1 で HDInsight Spark クラスターを使用する
 
 1. [Azure portal](https://portal.azure.com/) のスタート画面で Apache Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
 
@@ -79,9 +79,9 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
 
      ![Jupyter Notebook ジョブのステータス](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Jupyter Notebook ジョブのステータス")
 
-5. Data Lake Storage アカウントにコピーした **HVAC.csv** ファイルを使用して、サンプル データを一時テーブルに読み込みます。 Data Lake Storage アカウントのデータにアクセスするには、次の URL パターンを使用します。
+5. Data Lake Storage Gen1 アカウントにコピーした **HVAC.csv** ファイルを使用して、サンプル データを一時テーブルに読み込みます。 Data Lake Storage アカウントのデータにアクセスするには、次の URL パターンを使用します。
 
-    * Data Lake Storage を既定のストレージとしている場合、HVAC.csv は次の URL と同じようなパスになります。
+    * Data Lake Storage Gen1 を既定のストレージとしている場合、HVAC.csv は次の URL と同じようなパスになります。
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 

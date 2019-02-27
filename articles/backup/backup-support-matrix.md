@@ -5,20 +5,23 @@ services: backup
 author: rayne-wiselman
 manager: carmonm
 ms.service: backup
-ms.topic: overview
-ms.date: 01/09/2019
+ms.topic: conceptual
+ms.date: 02/17/2019
 ms.author: raynew
-ms.custom: mvc
-ms.openlocfilehash: cb3a60995a4edfe5eb00f1a5e88812146816806a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ff4ee1d88bd13e647d0f6218d7e9c9b2c57a5a01
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883706"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429572"
 ---
 # <a name="azure-backup-support-matrix"></a>Azure Backup のサポート マトリックス
 
-[Azure Backup サービス](backup-overview.md)を使用して、Microsoft Azure クラウドにデータをバックアップすることができます。 この記事では、Azure Backup のシナリオとデプロイのサポート設定と制限事項について説明します。
+[Azure Backup サービス](backup-overview.md)を使用して、Microsoft Azure クラウドにデータをバックアップすることができます。 この記事では、Azure Backup のシナリオとデプロイの一般的なサポート設定と制限事項について説明します。
+
+他に以下のサポート マトリックスを使用できます。
+
+Azure VM バックアップの[サポート マトリックス](backup-support-matrix-iaas.md)、System Center DPM/Microsoft Azure Backup サーバー (MABS) を使用するバックアップの[サポート マトリックス](backup-support-matrix-mabs-dpm.md)、Microsoft Azure Recovery Services (MARS) エージェントを使用するバックアップの[サポート マトリックス](backup-support-matrix-mars-agent.md)
 
 ## <a name="vault-support"></a>コンテナーのサポート
 
@@ -26,13 +29,14 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 
 **設定** | **詳細**
 --- | ---
-コンテナーの数 | 1 つのサブスクリプションで、最大 500 個の Recovery Services コンテナー。
-コンテナー内のマシン | 1 つのコンテナーで、最大 1,000 台の Azure VM。<br/><br/> 1 つのコンテナーに、Azure Backup エージェント (Microsoft Azure Recovery Services エージェント (MABS)) を実行している最大で 50 台のオンプレミス マシンを登録できます。
-コンテナー ストレージ内のデータ ソース | 最大 54,400 GB。 Azure VM のバックアップに関する制限はありません。
-コンテナーへのバックアップ | Azure VM: 1 日 1 回、DPM または MABS によって保護されているマシン: 1 日 2 回、MARS エージェントを使用して直接バックアップされているマシン: 1 日 3 回。  
-コンテナーの移動 | Recovery Services コンテナーを移動するには、プライベート プレビューへの登録が必要となります。 お試しになる場合は、AskAzureBackupTeam@microsoft.com までメールでご連絡ください。
-コンテナー間のデータの移動 | コンテナー間におけるバックアップ データの移動はサポートされていません。
-ストレージ レプリケーションの種類 | バックアップが格納される前に、コンテナーのストレージ レプリケーションの種類 (GRS と LRS) を変更できます。 コンテナーでバックアップが開始された後は、レプリケーションの種類を変更できません。
+**サブスクリプション内のコンテナー数** | 1 つのサブスクリプションで、最大 500 個の Recovery Services コンテナー。
+**コンテナー内のマシン数** | 1 つのコンテナーで、最大 1,000 台の Azure VM。<br/><br/> 1 つのコンテナーに最大で 50 MABS を登録することができます。
+**コンテナー ストレージ内のデータ ソース量** | 最大 54,400 GB。 Azure VM のバックアップに関する制限はありません。
+**コンテナーへのバックアップ回数** | Azure VM: 1 日に 1 回<br/><br/>DPM/MABS で保護されたマシン: 1 日に 2 回<br/><br/> MARS エージェントを使用して直接バックアップされているマシン: 1 日に 3 回。 
+**コンテナー間のバックアップ** | バックアップは 1 つのリージョン内です。<br/><br/> バックアップする VM が含まれるすべての Azure リージョンにコンテナーが必要です。 異なるリージョンにバックアップすることはできません。 
+**コンテナーの移動** | 異なるサブスクリプション間で、または同じサブスクリプション内のリソース グループ間で、[コンテナーを移動する](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)ことができます。
+**コンテナー間のデータの移動** | コンテナー間におけるバックアップ データの移動はサポートされていません。
+**コンテナー ストレージの種類の変更** | バックアップが格納される前に、コンテナーのストレージ レプリケーションの種類 (GRS と LRS) を変更できます。 コンテナーでバックアップが開始された後は、レプリケーションの種類を変更できません。
 
 
 
@@ -40,15 +44,15 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 
 オンプレミス マシンをバックアップしたい場合に何がサポートされるかを以下に示します。
 
-**マシン** | **場所** | **バックアップ** | **機能**
+**マシン** | **バックアップ対象** | **場所** | **機能**
 --- | --- | --- | ---
-**Windows 物理または仮想 (バックアップ サーバーなし)** | ファイル、フォルダー、システム状態 | Recovery Services コンテナーにバックアップされます | 1 日に 3 回のバックアップ。<br/><br/> アプリ対応のバックアップなし。<br/><br/> ファイル、フォルダー、ボリュームの復元。
-**Linux 物理または仮想 (バックアップ サーバーなし)** | バックアップはサポートされていません。
-**物理または仮想 (DPM あり)** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ。 | DPM にバックアップされます (DPM サーバーにローカルにアタッチされているディスク、またはテープに)。<br/><br/> DPM はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/>。 Oracle はサポートされていません。
-**物理または仮想 (MABS あり)** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ。 | MABS にバックアップされます (MABS サーバーにローカルにアタッチされているディスクに)。 テープはサポートされていません<br/><br/> MABS はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/>。 Oracle はサポートされていません。
+**MARS エージェントを使用した Windows マシンの直接バックアップ** | ファイル、フォルダー、システム状態 | Recovery Services コンテナーへのバックアップ | 1 日に 3 回のバックアップ。<br/><br/> アプリ対応のバックアップなし。<br/><br/> ファイル、フォルダー、ボリュームの復元。
+**MARS エージェントを使用した Linux マシンの直接バックアップ** | バックアップはサポートされていません。
+**DPM へのバックアップ** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ。 | ローカル DPM ストレージにバックアップします。 DPM はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/>。 Oracle はサポートされていません。
+**MABS へのバックアップ** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ。 | MABS ローカル ストレージにバックアップします。 MABS はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/>。 Oracle はサポートされていません。
 
 
-## <a name="azure-vms"></a>Azure VM
+## <a name="azure-vm-backup-support"></a>Azure VM バックアップのサポート
 
 ### <a name="azure-vm-limits"></a>Azure VM の制限
 
@@ -62,11 +66,12 @@ Azure VM のデータ ディスク サイズ | ディスクごとに最大で 4,
 
 Azure VM をバックアップしたい場合に何がサポートされるかを以下に示します。
 
-**マシン** | **場所** | **バックアップ** | **機能**
+**マシン** | **バックアップ対象** | **場所** | **機能**
 --- | --- | --- | ---
-**Azure VM (バックアップ サーバーなし)** | ファイル、フォルダー、システム状態 | コンテナーにバックアップされます。 | 1 日 1 回のバックアップ。<br/><br/> Windows VM の場合はアプリ対応バックアップ、Linux VM の場合はファイル整合性バックアップ。 カスタム スクリプトを使用して、Linux マシン用にアプリ整合性を構成できます。<br/><br/> VM またはディスクの復元。<br/><br/> Azure VM では、オンプレミスの場所へのバックアップはできません。
-**Azure VM (DPM あり)** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ。 | Azure で実行されている DPM にバックアップされます (DPM サーバーにローカルにアタッチされているディスクに)。 テープはサポートされていません。<br/><br/> DPM はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/>。 Oracle はサポートされていません。
-**Azure VM (MABS あり)** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ。 | Azure で実行されている MABS にバックアップされます (MABS サーバーにローカルにアタッチされているディスクに)。 テープはサポートされていません<br/><br/> MABS はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/>。 Oracle はサポートされていません。
+**VM 拡張機能を使用した Azure VM のバックアップ** | VM 全体 | コンテナーへのバックアップ | VM のバックアップを有効にするときにインストールされる拡張機能。<br/><br/> 1 日 1 回のバックアップ。<br/><br/> Windows VM の場合はアプリ対応バックアップ、Linux VM の場合はファイル整合性バックアップ。 カスタム スクリプトを使用して、Linux マシン用にアプリ整合性を構成できます。<br/><br/> VM またはディスクの復元。<br/><br/> Azure VM では、オンプレミスの場所へのバックアップはできません。
+**MARS エージェントを使用する Azure VM のバックアップ** | ファイル、フォルダー | コンテナーへのバックアップ | 1 日に 3 回のバックアップ。<br/><br/> VM 全体ではなく特定のファイル/フォルダーをバックアップしたい場合は、MARS エージェントを VM 拡張機能と共に実行できます。
+**Azure VM (DPM あり)** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ。 | DPM が実行されている Azure VM のローカル ストレージにバックアップします。 DPM はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/>。 Oracle はサポートされていません。
+**Azure VM (MABS あり)** | ファイル、フォルダー、ボリューム、システム状態、アプリ データ。 | MABS が実行されている Azure VM のローカル ストレージにバックアップされます。 MABS はその後、コンテナーにバックアップされます。 | アプリ対応のスナップショット<br/><br/> バックアップと回復の完全な細分性。<br/><br/> VM (Hyper-V または VMware) で Linux がサポートされています。<br/><br/> Oracle はサポートされていません。
 
 
 
@@ -78,12 +83,17 @@ Linux マシンをバックアップをしたい場合に何がサポートさ�
 
 **Backup** | **Linux (Azure での動作保証済み)**
 --- | ---
-**オンプレミスの Linux マシン (DPM または MABS なし)**。 | いいえ。 MARS エージェントをインストールできるのは Windows マシンだけです。
-**Azure VM (DPM または MABS なし)** | [カスタム スクリプト](backup-azure-linux-app-consistent.md)を使用したアプリ整合性バックアップ。<br/><br/> ファイルレベルの回復。<br/><br/> 復旧ポイントまたはディスクから VM を作成することによる復元。
-**オンプレミス マシンまたは Azure VM (DPM あり)** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/><br/> Hyper-V および VMWare Linux Guest VM の VM 復元</br></br> ファイル整合性バックアップは Azure VM では利用できません
-**オンプレミス マシンまたは Azure VM (MABS あり)** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/><br/> Hyper-V および VMWare Linux ゲスト VM の VM 復元</br></br> ファイル整合性バックアップは Azure VM では利用できません。
+**Linux が実行されているオンプレミスのマシンの直接バックアップ** | いいえ。 MARS エージェントをインストールできるのは Windows マシンだけです。
+**Linux が実行されている Azure VM のバックアップ (エージェント拡張機能を使用)** | [カスタム スクリプト](backup-azure-linux-app-consistent.md)を使用したアプリ整合性バックアップ。<br/><br/> ファイルレベルの回復。<br/><br/> 復旧ポイントまたはディスクから VM を作成することによる復元。
+**DPM を使用した、Linux が実行されているオンプレミスまたは Azure VM のバックアップ** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/><br/> Hyper-V および VMWare Linux Guest VM の VM 復元</br></br> ファイル整合性バックアップは Azure VM では利用できません
+**MABS を使用した、Linux が実行されているオンプレミス マシン/Azure VM のバックアップ** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/><br/> Hyper-V および VMWare Linux ゲスト VM の VM 復元</br></br> ファイル整合性バックアップは Azure VM では利用できません。
 
-## <a name="disk-support"></a>ディスクのサポート
+## <a name="daylight-saving-support"></a>夏時間のサポート
+
+Azure Backup では、Azure VM バックアップの夏時間変更に対する時計の自動調整はサポートされていません。 必要に応じて手動でバックアップ ポリシーを変更します。
+
+
+## <a name="disk-deduplication-support"></a>ディスクの重複除去のサポート
 
 ディスクの重複除去のサポートは、次のとおりです。
 - Windows を実行している Hyper-V VM をバックアップするために DPM または MABS を使用する場合、ディスクの重複除去はオンプレミスでサポートされています。 Windows Server では、重複除去は、バックアップ ストレージとして仮想マシンに接続されている仮想ハード ディスク (VHD) 上で (ホスト レベルで) 実行されます。
@@ -109,26 +119,25 @@ Azure へのネットワーク トラフィック:
 
 **マシン** | **転送中** | **保存時**
 --- | --- | ---
-オンプレミスの Windows マシン (DPM または MABS なし) | ![[はい]][green] | ![[はい]][green]
-Azure VM | ![[はい]][green] | ![[はい]][green]
-オンプレミス VM または Azure VM (DPM あり) | ![[はい]][green] | ![[はい]][green]
-オンプレミス VM または Azure VM (MABS あり) | ![[はい]][green] | ![[はい]][green]
+オンプレミスの Windows マシン (DPM または MABS なし) | ![はい][green] | ![はい][green]
+Azure VM | ![はい][green] | ![はい][green]
+オンプレミス VM または Azure VM (DPM あり) | ![はい][green] | ![はい][green]
+オンプレミス VM または Azure VM (MABS あり) | ![はい][green] | ![はい][green]
 
 
 
 ## <a name="compression-support"></a>圧縮のサポート
 
-Backup では、次の表にまとめたように、バックアップ トラフィックの圧縮をサポートしています。 以下の点に注意してください。
+Backup では、次の表にまとめたように、バックアップ トラフィックの圧縮をサポートしています。 
 
 - Azure VM では、ストレージ ネットワーク経由で Azure ストレージ アカウントから直接データが VM 拡張機能によって読み取られます。そのため、このトラフィックを圧縮する必要はありません。
 - DPM または MABS を使用する場合は、帯域幅を節約するために、データを DPM または MABS にバックアップする前に圧縮できます。
 
 **マシン** | **MABS または DPM に圧縮 (TCP)** | **コンテナーに圧縮 (HTTPS)**
 --- | --- | ---
-オンプレミスの Windows マシン (DPM または MABS なし) | NA | [はい]
-Azure VM | NA | NA
-オンプレミス VM または Azure VM (DPM あり) | ![[はい]][green] | ![[はい]][green]
-オンプレミス VM または Azure VM (MABS あり) | ![[はい]][green] | ![[はい]][green]
+**オンプレミスの Windows マシンの直接バックアップ** | NA | はい
+**VM 拡張機能を使用した Azure VM のバックアップ** | NA | NA
+** MABS/DPM を使用したオンプレミス/Azure マシンでのバックアップ | ![はい][green] | ![はい][green]
 
 
 
@@ -146,10 +155,8 @@ DPM または MABS ディスクの復旧ポイント数 | ファイル サーバ
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure VM のバックアップ](backup-azure-arm-vms-prepare.md)
-- バックアップ サーバーなしで、[Windows マシンを直接バックアップ](tutorial-backup-windows-server-to-azure.md)します。
-- Azure へのバックアップのために [MABS を設定](backup-azure-microsoft-azure-backup.md)してから、MABS にワークロードをバックアップします。
-- Azure へのバックアップのために [DPM を設定](backup-azure-dpm-introduction.md)してから、DPM にワークロードをバックアップします。
+- Azure VM バックアップの[サポート マトリックスを確認します](backup-support-matrix-iaas.md)。
+
 
 [green]: ./media/backup-support-matrix/green.png
 [yellow]: ./media/backup-support-matrix/yellow.png

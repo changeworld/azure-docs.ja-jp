@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: 90c508fb5ad3caf961747f2ac10bae42dd1f4c35
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c31510b0d5ca2afcd6a52cf4301e5e5eaae7da5b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114962"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343512"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
-この記事では、セキュリティ ポリシーの構成方法と、それの Security Center での表示方法について説明します。 Azure Security Center では、オンボードされている各サブスクリプションに、[組み込みのセキュリティ ポリシー](security-center-policy-definitions.md)が自動的に割り当てられます。 これらは、ポリシーを管理グループや複数のサブスクリプションに渡って設定できる [Azure Policy](../azure-policy/azure-policy-introduction.md) で構成することも可能です。
+この記事では、セキュリティ ポリシーの構成方法と、それの Security Center での表示方法について説明します。 Azure Security Center では、オンボードされている各サブスクリプションに、[組み込みのセキュリティ ポリシー](security-center-policy-definitions.md)が自動的に割り当てられます。 これらは、ポリシーを管理グループや複数のサブスクリプションに渡って設定できる [Azure Policy](../governance/policy/overview.md) で構成することも可能です。
 
-PowerShell を使用してポリシーを設定する手順については、「[クイック スタート: Azure RM PowerShell モジュールを使用してポリシーの割り当てを作成し、準拠していないリソースを特定する](../azure-policy/assign-policy-definition-ps.md)」を参照してください。
+PowerShell を使用してポリシーを設定する手順については、「[クイック スタート: Azure PowerShell モジュールを使用してポリシーの割り当てを作成し、準拠していないリソースを特定する](../governance/policy/assign-policy-powershell.md)」を参照してください。
 
 >[!NOTE]
 > Security Center では、Azure Policy との統合が開始されました。 既存のお客様は、Security Center における以前のセキュリティ ポリシーではなく、Azure Policy の新しい組み込みイニシアティブに自動的に移行されます。 この変更は、Azure Policy に新しいイニシアティブが存在すること以外、お客様のリソースや環境には影響を与えません。
 
 ## <a name="what-are-security-policies"></a>セキュリティ ポリシーとは
-セキュリティ ポリシーは、ワークロードの必要な構成を定義し、会社や規制のセキュリティ要件に確実に準拠できるようにします。 Azure Policy では、Azure サブスクリプションのポリシーを定義して、ワークロードの種類やデータの機密性に合わせてそれを調整することが可能です。 たとえば、個人を特定できる情報のような、規制されたデータが使用されるアプリケーションには、他のワークロードより高いレベルのセキュリティが必要です。 設定を管理グループまたはサブスクリプション間でのポリシーを設定する [Azure Policy](../azure-policy/azure-policy-introduction.md) します。
+セキュリティ ポリシーは、ワークロードの必要な構成を定義し、会社や規制のセキュリティ要件に確実に準拠できるようにします。 Azure Policy では、Azure サブスクリプションのポリシーを定義して、ワークロードの種類やデータの機密性に合わせてそれを調整することが可能です。 たとえば、個人を特定できる情報のような、規制されたデータが使用されるアプリケーションには、他のワークロードより高いレベルのセキュリティが必要です。 設定を管理グループまたはサブスクリプション間でのポリシーを設定する [Azure Policy](../governance/policy/overview.md) します。
 
 Azure Security Center から取得するセキュリティに関する推奨事項は、ご使用のセキュリティ ポリシーによって駆動されます。 ユーザーは、それへの準拠を監視して、潜在的な脆弱性を特定し、脅威を軽減することができます。 自分に合った選択肢を判断する方法の詳細については、[組み込みのセキュリティ ポリシー](security-center-policy-definitions.md)の一覧を参照してください。
 
@@ -52,7 +52,7 @@ Security Center では、Azure サブスクリプションごとに自動で既�
 - 組織全体または組織内の部署を表す、管理グループおよびサブスクリプションにまたがってポリシーを割り当てる。
 - ポリシーのコンプライアンスを監視する。
 
-Azure Policy の詳細については、「[コンプライアンスを強制するポリシーの作成と管理](../azure-policy/create-manage-policy.md)」を参照してください。
+Azure Policy の詳細については、「[コンプライアンスを強制するポリシーの作成と管理](../governance/policy/tutorials/create-and-manage.md)」を参照してください。
 
 Azure ポリシーは、次のコンポーネントで構成されています。
 
@@ -236,4 +236,4 @@ Security Center ではロールベースのアクセス制御 (RBAC) が使用�
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md):このサービスの使用に関してよく寄せられる質問とその回答を紹介しています。
 * [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/):Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-Azure Policy について詳しくは、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」をご覧ください。
+Azure Policy について詳しくは、「[Azure Policy とは](../governance/policy/overview.md)」をご覧ください。

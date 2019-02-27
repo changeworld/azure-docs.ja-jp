@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 381e8361d31660d90eaee3f7a500139af1ef2a82
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 07d0866bd697587da170a00e8077a57035989d32
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992988"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269418"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Azure Monitor ログ クエリからのグラフと図の作成
 
@@ -93,7 +93,7 @@ SecurityEvent
 ![棒グラフ AccountType](media/charts/charts-and-diagrams-multiDimension2.png)
 
 ## <a name="next-steps"></a>次の手順
-Azure Monitor ログ データと共に [Data Explorer クエリ言語](/azure/kusto/query/)を使用することに関するその他のレッスンを参照してください。
+Azure Monitor ログ データと共に [Kusto クエリ言語](/azure/kusto/query/)を使用することに関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)
 - [日付と時刻の操作](datetime-operations.md)

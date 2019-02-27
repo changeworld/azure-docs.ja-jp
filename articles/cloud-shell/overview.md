@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 1ad85a57762ae4fba30e1699b38eaa52d45ab26e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4195016bb029d2cf8f5042a853fa591609bd486e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447209"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428535"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。
@@ -53,7 +53,7 @@ Cloud Shell は Microsoft によって管理されており、広く使われて
 Cloud Shell にインストールされているツールの詳細な一覧は[こちら](features.md#tools)からご覧いただけます。
 
 ### <a name="integrated-cloud-shell-editor"></a>統合 Cloud Shell エディター
-Cloud Shell は、オープンソース Monaco Editor を基盤とする統合グラフィカル テキスト エディターを提供します。 `code .` を実行して構成ファイルを作成または編集するだけで、Azure CLI 2.0 または Azure PowerShell を利用したシームレスなデプロイが可能になります。
+Cloud Shell は、オープンソース Monaco Editor を基盤とする統合グラフィカル テキスト エディターを提供します。 `code .` を実行して構成ファイルを作成または編集するだけで、Azure CLI または Azure PowerShell を利用したシームレスなデプロイが可能になります。
 
 [Cloud Shell エディターの詳細についてはこちらをご覧ください](using-cloud-shell-editor.md)。
 
@@ -68,7 +68,7 @@ Cloud Shell は、以下から使用できる柔軟なツールです。
 * [Azure CLI ドキュメント](https://docs.microsoft.com/cli/azure)
 * [Azure PowerShell ドキュメント](https://docs.microsoft.com/powershell/azure/overview)
 * [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/)
-* [VS Code Azure Account の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
+* [Visual Studio Code の Azure Account 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Microsoft Azure Files ストレージの接続
 Cloud Shell マシンは一時的なものであるため、ファイルを永続化するには新規または既存の Azure Files 共有を `clouddrive` としてマウントする必要があります。

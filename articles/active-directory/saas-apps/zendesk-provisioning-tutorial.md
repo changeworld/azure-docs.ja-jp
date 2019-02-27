@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e56cc5a893c5a88a5b64466d6feceb20ccd8cdc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167849"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445544"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル:Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -118,7 +118,8 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
     *   **[ドメイン]** フィールドに、Zendesk テナントのサブドメインを設定します。
     例:https://my-tenant.zendesk.com のテナント URL があるアカウントの場合、サブドメインは **my-tenant** になります。
 
-6. Zendesk アカウントの**シークレット トークン** は、**[管理者] > [API] > [設定]** に配置されています。 
+6. Zendesk アカウントの**シークレット トークン** は、**[管理者] > [API] > [設定]** に配置されています。
+   **[Token Access]\(トークン アクセス\)** が **[有効]** に設定されていることを確認します。
 
     ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk4.png) ![Zendesk のプロビジョニング](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
 

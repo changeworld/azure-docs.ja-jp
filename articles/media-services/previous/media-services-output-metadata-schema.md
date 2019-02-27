@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: ec4b03629b56c09973c1ecc5c55930c33c24990b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cdcdcff8a5c016cfd3074a950ad6060e55b8b0fe
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997577"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312584"
 ---
 # <a name="output-metadata"></a>出力メタデータ
 ## <a name="overview"></a>概要
@@ -29,7 +29,7 @@ Media Services では、メタデータを生成するために入力資産を�
 
 メタデータ ファイルを確認したい場合は、**SAS** ロケータ―を作成してファイルをローカル コンピューターにダウンロードできます。  
 
-この記事では、出力メタデータ (&lt;source_file_name&gt;_manifest.xml) が基づく XML スキーマの要素と種類について説明します。 入力資産に関するメタデータを含むファイルについては、「[Input Metadata (入力メタデータ)](media-services-input-metadata-schema.md)」を参照してください。  
+この記事では、出力メタデータ (&lt;source_file_name&gt;_manifest.xml) が基づく XML スキーマの要素と種類について説明します。 入力資産に関するメタデータを含むファイルについては、入力メタデータに関するページを参照してください。  
 
 完全なスキーマ コードと XML の例は、この記事の最後で紹介します。  
 
@@ -39,10 +39,10 @@ Media Services では、メタデータを生成するために入力資産を�
 ### <a name="child-elements"></a>子要素
 | Name | 説明 |
 | --- | --- |
-| **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |AssetFiles コレクションの一部である [AssetFile 要素](media-services-output-metadata-schema.md)。 |
+| **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |AssetFiles コレクションの一部である AssetFile 要素。 |
 
 ## <a name="AssetFile "></a> AssetFile 要素
-XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
+XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
@@ -54,24 +54,24 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 ### <a name="child-elements"></a>子要素
 | Name | 説明 |
 | --- | --- |
-| **Sources** |この AssetFile を生成するために処理された入力/ソース メディア ファイルのコレクション。 詳細については、「[Source 要素](media-services-output-metadata-schema.md)」を参照してください。 |
-| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 詳細については、「[VideoTracks 要素](media-services-output-metadata-schema.md)」を参照してください。 |
-| **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のオーディオ トラックを含めることができます。 これは、そのオーディオ トラックすべてのコレクションです。 詳細については、「[AudioTracks 要素](media-services-output-metadata-schema.md)」を参照してください。 |
+| **Sources** |この AssetFile を生成するために処理された入力/ソース メディア ファイルのコレクション。 詳細については、「Source 要素」を参照してください。 |
+| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 詳細については、「VideoTracks 要素」を参照してください。 |
+| **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のオーディオ トラックを含めることができます。 これは、そのオーディオ トラックすべてのコレクションです。 詳細については、「AudioTracks 要素」を参照してください。 |
 
 ## <a name="Sources "></a> Sources 要素
 この AssetFile を生成するために処理された入力/ソース メディア ファイルのコレクション。  
 
-XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
+XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
 | Name | 説明 |
 | --- | --- |
-| **ソース**<br/><br/> minOccurs="1" maxOccurs="unbounded" |この資産を生成するときに使用される入力/ソース ファイル。 詳細については、「[Source 要素](media-services-output-metadata-schema.md)」を参照してください。 |
+| **ソース**<br/><br/> minOccurs="1" maxOccurs="unbounded" |この資産を生成するときに使用される入力/ソース ファイル。 詳細については、「Source 要素」を参照してください。 |
 
 ## <a name="Source "></a> Source 要素
 この資産を生成するときに使用される入力/ソース ファイル。  
 
-XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
+XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
@@ -81,17 +81,17 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 ## <a name="VideoTracks "></a> VideoTracks 要素
 各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 **VideoTracks** 要素は、すべてのビデオ トラックのコレクションを表します。  
 
-XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
+XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
 | Name | 説明 |
 | --- | --- |
-| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |親 AssetFile 内の特定のビデオ トラック。 詳細については、「[VideoTrack 要素](media-services-output-metadata-schema.md#VideoTrack)」を参照してください。 |
+| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |親 AssetFile 内の特定のビデオ トラック。 詳細については、「VideoTrack 要素」を参照してください。 |
 
 ## <a name="VideoTrack"></a> VideoTrack 要素
 親 AssetFile 内の特定のビデオ トラック。  
 
-XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
+XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
@@ -113,17 +113,17 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 ## <a name="AudioTracks "></a> AudioTracks 要素
 各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のオーディオ トラックを含めることができます。 **AudioTracks** 要素は、すべてのオーディオ トラックのコレクションを表します。  
 
-XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
+XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
 | Name | 説明 |
 | --- | --- |
-| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |親 AssetFile 内の特定のオーディオ トラック。 詳細については、「[AudioTrack 要素](media-services-output-metadata-schema.md)」を参照してください。 |
+| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |親 AssetFile 内の特定のオーディオ トラック。 詳細については、「AudioTrack 要素」を参照してください。 |
 
 ## <a name="AudioTrack "></a> AudioTrack 要素
 親 AssetFile 内の特定のオーディオ トラック。  
 
-XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
+XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |
@@ -139,12 +139,12 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 ### <a name="child-elements"></a>子要素
 | Name | 説明 |
 | --- | --- |
-| **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |ラウドネス測定結果パラメーター。 詳細については、「[LoudnessMeteringResultParameters 要素](media-services-output-metadata-schema.md)」を参照してください。 |
+| **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |ラウドネス測定結果パラメーター。 詳細については、「LoudnessMeteringResultParameters 要素」を参照してください。 |
 
 ## <a name="LoudnessMeteringResultParameters "></a> LoudnessMeteringResultParameters 要素
 ラウドネス測定結果パラメーター。  
 
-XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
+XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
 | Name | type | 説明 |

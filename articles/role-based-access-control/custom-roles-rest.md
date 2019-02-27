@@ -1,6 +1,6 @@
 ---
-title: REST API を使用してカスタム ロールを作成する - Azure | Microsoft Docs
-description: REST API を使用して、ロールベースのアクセス制御 (RBAC) のカスタム ロールを作成する方法について説明します。 これには、カスタム ロールを一覧表示、作成、更新、および削除する方法が含まれます。
+title: REST API を使用して Azure リソースのカスタム ロールを作成する - Azure | Microsoft Docs
+description: REST API を使用して、ロールベースのアクセス制御 (RBAC) による Azure リソースのカスタム ロールを作成する方法について説明します。 これには、カスタム ロールを一覧表示、作成、更新、削除する方法が含まれます。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8a1bbe8217e2d4a9846f56124e248e19cbe70b19
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: cfcb7ef2a4fc02932f9d03c277b105c4b1e0ff3a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436064"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338769"
 ---
-# <a name="create-custom-roles-using-the-rest-api"></a>REST API を使用してカスタム ロールを作成する
+# <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>REST API を使用して Azure リソースのカスタム ロールを作成する
 
-[組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、REST API を使用して、カスタム ロールを作成して管理する方法について説明します。
+[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、REST API を使用して、カスタム ロールを作成して管理する方法について説明します。
 
 ## <a name="list-roles"></a>ロールの一覧表示
 
@@ -38,7 +38,7 @@ ms.locfileid: "37436064"
 
 1. URI 内の *{scope}* は、ロールを一覧表示するスコープに置き換えます。
 
-    | スコープ | type |
+    | Scope (スコープ) | type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
@@ -67,7 +67,7 @@ ms.locfileid: "37436064"
 
 1. URI 内の *{scope}* は、ロールを一覧表示するスコープに置き換えます。
 
-    | スコープ | type |
+    | Scope (スコープ) | type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
@@ -115,7 +115,7 @@ ms.locfileid: "37436064"
 
 1. URI 内の *{scope}* は、カスタム ロールの 1 つ目の `assignableScopes` に置き換えます。
 
-    | スコープ | type |
+    | Scope (スコープ) | type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
@@ -179,7 +179,7 @@ ms.locfileid: "37436064"
 
 1. URI 内の *{scope}* は、カスタム ロールの 1 つ目の `assignableScopes` に置き換えます。
 
-    | スコープ | type |
+    | Scope (スコープ) | type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
@@ -262,7 +262,7 @@ ms.locfileid: "37436064"
 
 1. URI 内の *{scope}* は、カスタム ロールを削除するスコープに置き換えます。
 
-    | スコープ | type |
+    | Scope (スコープ) | type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
@@ -272,6 +272,6 @@ ms.locfileid: "37436064"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure のカスタム ロール](custom-roles.md)
-- [RBAC と REST API を使用してアクセスを管理する](role-assignments-rest.md)
+- [Azure リソースのカスタム ロール](custom-roles.md)
+- [RBAC と REST API を使用して Azure リソースへのアクセスを管理する](role-assignments-rest.md)
 - [Azure REST API リファレンス](/rest/api/azure/)

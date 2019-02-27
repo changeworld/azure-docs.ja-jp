@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d6778e1749493a04a73d0ac210c1557b89343d00
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2a030daa8d9c30add1beb3a2628aa16b2da22dde
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695582"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338854"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる
 
@@ -263,5 +263,5 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 
 ## <a name="next-steps"></a>次の手順
 
-- [各種ロールについて](rbac-and-directory-admin-roles.md)
-- [REST を使用したロールベースのアクセス制御](role-assignments-rest.md)
+- [Azure での各種ロールについて](rbac-and-directory-admin-roles.md)
+- [RBAC と REST API を使用して Azure リソースへのアクセスを管理する](role-assignments-rest.md)

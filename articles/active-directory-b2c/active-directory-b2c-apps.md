@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7ea179ff7e4b525e86003faadfb92e090476bd81
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 116abd259d11e66be2dc158d833c569f06aaa923
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172648"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446377"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Azure Active Directory B2C で使用できるアプリケーションの種類
 
@@ -91,10 +91,10 @@ Web API はトークンを使用して API の呼び出し元の ID を検証し
 Web API は、Web アプリケーション、デスクトップ アプリケーション、モバイル アプリケーション、シングル ページ アプリケーション、サーバー サイド デーモン、それ以外の Web API など、多くの種類のクライアントからトークンを受信できます。 ここでは、Web API を呼び出す Web アプリケーションの完全なフローの例を示します。
 
 1. Web アプリケーションがポリシーを実行し、ユーザーがユーザー エクスペリエンスを完了する。
-2. Azure AD B2C が `access_token` と承認コードをブラウザーに返す。
-3. ブラウザーが `access_token` と承認コードをリダイレクト URI にポストする。
-4. Web サーバーが `access token` を検証し、セッション cookie を設定する。
-5. `access_token` が、承認コード、アプリケーション クライアント ID、および資格情報と共に Azure AD B2C に提供される。
+2. Azure AD B2C が (OpenID Connect) `id_token` と承認コードをブラウザーに返す。
+3. ブラウザーが `id_token` と承認コードをリダイレクト URI にポストする。
+4. Web サーバーが `id_token` を検証し、セッション cookie を設定する。
+5. Web サーバーが、認可コード、アプリケーション クライアント ID、クライアントの資格情報を提供することで、Azure AD B2C に `access_token` を要求する。
 6. `access_token` と `refresh_token` が Web サーバーに返される。
 7. Authorization ヘッダーに `access_token` が含まれる Web API が呼び出される。
 8. Web API がトークンを検証する。

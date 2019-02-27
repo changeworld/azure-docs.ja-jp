@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor (プレビュー) を使用して Azure Active Directory のログを Log Analytics にストリーミングする | Microsoft Docs
-description: Azure Monitor (プレビュー) を使用して Azure Active Directory のログを Log Analytics と統合する方法について説明します
+title: Azure Active Directory のログを Azure Monitor ログ (プレビュー) にストリーミングする | Microsoft Docs
+description: Azure Active Directory のログを Azure Monitor ログ (プレビュー) と統合する方法について説明します
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -17,30 +17,30 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51db96523a96015822f4507731bad2a398521530
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2e9c1b2513f769b065883dc98b649a68d565ccc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165843"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456488"
 ---
-# <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Azure Monitor (プレビュー) を使用して Azure AD のログを Log Analytics と統合する
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>Azure AD ログを Azure Monitor ログ (プレビュー) と統合する
 
-Log Analytics を使用すると、データのクエリを行って、特定のイベントを検索し、傾向を分析して、さまざまなデータ ソース間の相関を実行できます。 Log Analytics に Azure AD アクティビティ ログを統合すると、次のようなタスクを実行できます。
+Azure Monitor ログを使用すると、データのクエリを行って、特定のイベントを検索し、傾向を分析して、さまざまなデータ ソース間の相関を実行できます。 Azure Monitor ログに Azure AD アクティビティ ログを統合すると、次のようなタスクを実行できます。
 
  * Azure Security Center によって公開されたセキュリティ ログに対して Azure AD のサインイン ログを比較します
 
  * Azure Application Insights からのアプリケーション パフォーマンス データを相関させることによって、アプリケーションのサインイン ページでのパフォーマンス ボトルネックのトラブルシューティングを行います。  
 
-Ignite セッションの次のビデオでは、実用的なユーザー シナリオで Azure AD ログに対して Log Analytics を使用する利点が実演されています。
+Ignite セッションの次のビデオでは、実用的なユーザー シナリオで Azure AD ログに対して Azure Monitor ログを使用する利点が実演されています。
 
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
 
-この記事では、Azure Monitor を使用して Azure Active Directory (Azure AD) のログを Log Analytics と統合する方法について説明します。
+この記事では、Azure Active Directory (Azure AD) のログを Azure Monitor と統合する方法について説明します。
 
 ## <a name="supported-reports"></a>サポートされるレポート
 
-監査アクティビティ ログとサインイン アクティビティ ログを Log Analytics にルーティングして、さらに詳しく分析できます。 
+監査アクティビティ ログとサインイン アクティビティ ログを Azure Monitor ログにルーティングして、さらに詳しく分析できます。 
 
 * **[監査ログ]**:テナント内で実行されたすべてのタスクの履歴は、[監査ログ アクティビティ レポート](concept-audit-logs.md)で把握できます。
 * **サインイン ログ**:監査ログによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で判断することができます。
@@ -58,13 +58,13 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 * Azure AD テナントの "*グローバル管理者*" または "*セキュリティ管理者*" であるユーザー。
 * Azure サブスクリプションの Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)を確認してください。
 
-## <a name="send-logs-to-log-analytics"></a>ログを Log Analytics に送信する
+## <a name="send-logs-to-azure-monitor-logs"></a>Azure Monitor ログへのログの送信
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
 
 2. **[Azure Active Directory]** > **[診断設定]** -> **[Add diagnostic setting]\(診断設定の追加\)** を選択します。 **[監査ログ]** または **[サインイン]** ページから **[エクスポート設定]** を選択して、診断設定の構成ページに移動することもできます。  
     
-3. **[診断設定]** メニューで **[Log Analytics への送信]** チェック ボックスをオンにして、**[構成]** を選択します。
+3. **[診断設定]** メニューで **[Send to Log Analytics workspace]\(Log Analytics ワークスペースに送信\)** チェック ボックスをオンにして、**[構成]** を選択します。
 
 4. ログ送信先の Log Analytics ワークスペースを選択するか、表示されたダイアログ ボックスで新しいワークスペースを作成します。  
 
@@ -80,5 +80,5 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 
 ## <a name="next-steps"></a>次の手順
 
-* [Log Analytics で Azure AD のアクティビティ ログを分析する](howto-analyze-activity-logs-log-analytics.md)
+* [Azure Monitor ログ を使用して Azure AD アクティビティ ログを分析する](howto-analyze-activity-logs-log-analytics.md)
 * [Azure Active Directory 用の Log Analytics ビューのインストールと使用](howto-install-use-log-analytics-views.md)

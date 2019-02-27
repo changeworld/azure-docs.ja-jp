@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 880b4e4ce09fec3caf70586c2cfb54236d13b668
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8bcb00029acbe8c64e29addbc9291a694f1de98b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996306"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267719"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights の設定:依存関係の追跡
 *依存関係* は、アプリによって呼び出される外部コンポーネントです。 一般的には、HTTP を使用して呼び出されるサービス、またはデータベース、あるいはファイル システムです。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) では、アプリケーションが依存関係を待機する期間や、依存関係の呼び出しが失敗する頻度が測定されます。 特定の呼び出しを調査し、要求や例外に関連付けることができます。
@@ -42,7 +42,7 @@ ms.locfileid: "55996306"
 ## <a name="set-up-dependency-monitoring"></a>依存関係の監視の設定
 [Application Insights SDK](asp-net.md) では、部分的な依存関係情報が自動的に収集されます。 完全なデータを取得するには、ホスト サーバー用の適切なエージェントをインストールします。
 
-| プラットフォーム | Install |
+| プラットフォーム | インストール |
 | --- | --- |
 | IIS サーバー |[サーバーに Status Monitor をインストール](../../azure-monitor/app/monitor-performance-live-website-now.md)するか、[アプリを .NET Framework 4.6 以降にアップグレード](https://go.microsoft.com/fwlink/?LinkId=528259)して [Application Insights SDK](asp-net.md) をアプリにインストールします。 |
 | Azure Web アプリ |Web アプリのコントロール パネルで [[Application Insights] ブレードを開き](../../azure-monitor/app/azure-web-apps.md)、メッセージが表示された場合は [Install (インストール)] を選択します。 |
@@ -133,7 +133,7 @@ ms.locfileid: "55996306"
 ![要求の種類をクリックし、インスタンスをクリックして同じインスタンスの異なるビューを取得し、それをクリックして例外の詳細を取得します。](./media/asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>Analytics
-依存関係は [Data Explorer クエリ言語](https://aka.ms/LogAnalyticsLanguage)によって追跡できます。 次に例をいくつか示します。
+依存関係は [Kusto クエリ言語](/azure/kusto/query/)で追跡できます。 次に例をいくつか示します。
 
 * これは、失敗した依存関係呼び出しを見つけます。
 
@@ -205,7 +205,7 @@ ms.locfileid: "55996306"
 
 次の表を参照して、アプリケーションの依存関係の監視が可能なように正しい構成を選択したことを確認します。
 
-| プラットフォーム | Install |
+| プラットフォーム | インストール |
 | --- | --- |
 | IIS サーバー |[Status Monitor をサーバーにインストールします](../../azure-monitor/app/monitor-performance-live-website-now.md)。 または、[アプリを .NET Framework 4.6 以降にアップグレード](https://go.microsoft.com/fwlink/?LinkId=528259)して、[Application Insights SDK](asp-net.md) をアプリにインストールします。 |
 | IIS Express |代わりに IIS サーバーを使用します。 |

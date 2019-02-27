@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 02/20/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 616854e89a95eb83508e30099a663f0017e63784
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2acc26fc473d0e8dcb93b1439de316fbef67ae98
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115710"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416515"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新プログラム
 
@@ -199,7 +199,9 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
            "autoUpgradeMinorVersion": "true"
    ```
 
-- Azure Stack のキャパシティを正確に計画するための新しい考慮事項があります。 Azure Stack 内にデプロイできる VM の合計数に制限を設定しました。これは、すべての内部サービスがお客様の実行スケールを満たすようにするためです。 この制限では、ホストあたりの VM 数が 60 で、スタンプ全体では最大で 700 です (ホストあたりの制限 60 に達した場合)。 詳細については、[Capacity Planner の新しいリリース](http://aka.ms/azstackcapacityplanner)に関するページを参照してください。
+- Azure Stack のキャパシティを正確に計画するための新しい考慮事項があります。 1901 更新プログラムでは、作成できる仮想マシンの合計数に制限があります。  この制限は、ソリューションの不安定性を回避するための一時的なものです。 VM の数が多い場合の安定性の問題の原因は対処されていますが、修復のための具体的なタイムラインは決定されていません。 1901 更新プログラムでは、VM の数が、サーバーごとに 60 個、ソリューションの合計で 700 個に制限されています。  たとえば、8 サーバーの Azure Stack VM の制限は 480 個 (8 * 60) になります。  12 ～ 16 サーバーの Azure Stack ソリューションでは、制限は 700 個になります。 この制限は、オペレーターがスタンプで維持したい回復性の予約や仮想と物理の CPU の比率など、コンピューティング容量に関するすべての考慮事項を念頭に置いて作成されています。 詳細については、Capacity Planner の新しいリリースに関するページを参照してください。  
+VM のスケールの上限に達すると、次のエラー コードが返されます: VMsPerScaleUnitLimitExceeded、VMsPerScaleUnitNodeLimitExceeded。 
+ 
 
 - Compute API のバージョンが 2017-12-01 に更新されました。
 
@@ -290,7 +292,7 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 
    - 1808 更新の前にサブスクリプションが作成された場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
       1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** を選択し、**[Microsoft.Compute]** を選択してから、**[再登録]** をクリックします。
-      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
+      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**AzureStack-DiskRP-Client** がリストに含まれていることを確認します。
    - マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、[この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
 
 - SSH の認可を有効にして作成した Ubuntu 18.04 VM では、SSH キーを使用してログインすることはできません。 回避策として、プロビジョニング後に Linux 拡張機能用の VM アクセスを使用して SSH キーを実装するか、パスワードベースの認証を使用してください。

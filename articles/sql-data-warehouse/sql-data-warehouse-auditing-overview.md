@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ef791bdfafbbd49cacad1a75c7171b9a030df2a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 701c5c175e22556aefa95d1ac3836d52cd19b845
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456223"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342306"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での監査
 
@@ -74,10 +74,13 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
     ![ナビゲーション ウィンドウ][8]
 
     > [!IMPORTANT]
-    > サーバーレベルの監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。
+    > 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。
     >
-    > * **Premium Storage** は現在、追加 BLOB では**サポートされていません**。
-    > * **VNet 内の Storage** は現在**サポートされていません**。
+    > - すべてのストレージの種類 (v1、v2、BLOB) がサポートされています。
+    > - すべてのストレージ レプリケーション構成がサポートされています。
+    > - **Premium Storage** は現在**サポートされていません**。
+    > - **VNet 内の Storage** は現在**サポートされていません**。
+    > - **ファイアウォールの背後にある Storage** は現在**サポートされていません**。
 
 8. **[Save]** をクリックします。
 
