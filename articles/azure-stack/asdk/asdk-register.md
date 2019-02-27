@@ -214,7 +214,7 @@ Azure Stack の登録に成功したことは、**[Region management]\(リージ
 
 2. ダッシュボードで、**[Region management]\(リージョン管理\)** を選択します。
 
-    [ ![[\Region management]\(リージョン管理\) タイル](media/asdk-register/admin1sm.png "[\Region management]\(リージョン管理\) タイル") ](media/asdk-register/admin1.png#lightbox)
+    [ ![Region management リージョン管理 タイル](media/asdk-register/admin1sm.png "Region management リージョン管理 タイル") ](media/asdk-register/admin1.png#lightbox)
 
 3. **[プロパティ]** を選択します。 このブレードには、環境の状態と詳細が表示されます。 **[登録済み]** 状態と **[未登録]** 状態とがあります。 登録済みである場合は、Azure Stack の登録に使用した Azure サブスクリプション ID が、登録のリソース グループおよび名前と共に表示されます。
 
