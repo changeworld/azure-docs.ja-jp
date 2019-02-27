@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 2e35afe996ec80411d2e0e339fd4d49adecd1239
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5c45918a2cdcdd0a848e392d125849953af976ea
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857942"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445119"
 ---
 # <a name="ship-an-application"></a>アプリケーションの出荷
 
@@ -47,19 +47,19 @@ Cognitive Services Speech SDK には、[Visual Studio 2017 の Microsoft Visual 
 
 ## <a name="linux"></a>Linux
 
+現在、Speech SDK では、Ubuntu 16.04 および 18.04 のディストリビューションがサポートされています。
 ネイティブ アプリケーションについては、Speech SDK ライブラリ `libMicrosoft.CognitiveServices.Speech.core.so` を配布する必要があります。
 必ず、お使いのアプリケーションと一致するバージョン (x86、x64) を選択してください。 Linux バージョンによっては、次の依存関係を追加しなければならない場合もあります。
 
 * GNU C ライブラリの共有ライブラリ (POSIX Threads Programming ライブラリ `libpthreads` など)
 * OpenSSL ライブラリ (`libssl.so.1.0.0`)
-* cURL ライブラリ (`libcurl.so.4`)
 * ALSA アプリケーションの共有ライブラリ (`libasound.so.2`)
 
-たとえば、Ubuntu 16.04 または 18.04 では、GNU C ライブラリが既定でインストールされています。 残りの 3 つをインストールするには、次のコマンドを使用します。
+Ubuntu では、GNU C ライブラリが既定でインストールされています。 残りの 3 つをインストールするには、次のコマンドを使用します。
 
 ```sh
 sudo apt-get update
-sudo apt-get install libssl1.0.0 libcurl3 libasound2 wget
+sudo apt-get install libssl1.0.0 libasound2 wget
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -1,6 +1,6 @@
 ---
-title: RBAC と Azure portal を使用してアクセスを管理する | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) と Azure Portal を使用して、ユーザー、グループ、サービス プリンシパル、およびマネージド ID のアクセス権を管理する方法について説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
+title: RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する | Microsoft Docs
+description: ロールベースのアクセス制御 (RBAC) と Azure portal を使用して、ユーザー、グループ、サービス プリンシパル、およびマネージド ID の Azure リソースへのアクセスを管理する方法について説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c339556353967db26f022384f2cf877962dc6d83
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 1e3057108ef179af2f4692c061091fbdf59f0af2
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412310"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342339"
 ---
-# <a name="manage-access-using-rbac-and-the-azure-portal"></a>RBAC と Azure portal を使用してアクセスを管理する
+# <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 この記事では、RBAC と Azure Portal を使用して、ユーザー、グループ、サービス プリンシパル、およびマネージド ID のアクセス権を管理する方法について説明します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 この記事では、RBAC と Azure Portal を使用して、ユーザー、グループ、サービス プリンシパル、およびマネージド ID のアクセス権を管理する方法について説明します。
 
 ## <a name="open-access-control-iam"></a>[アクセス制御 (IAM)] を開く
 
@@ -41,7 +41,7 @@ ms.locfileid: "54412310"
 
 ## <a name="view-roles-and-permissions"></a>ロールとアクセス許可を表示する
 
-ロール定義とは、ロールの割り当てに使用するアクセス許可のコレクションを指します。 Azure には、[組み込みのロール](built-in-roles.md)が 70 種類以上用意されています。 管理およびデータ プレーンで実行できるロールとアクセス許可を表示するには、次の手順に従います。
+ロール定義とは、ロールの割り当てに使用するアクセス許可のコレクションを指します。 Azure には、[Azure リソースに対して 70 個を超える組み込みロール](built-in-roles.md)があります。 管理およびデータ プレーンで実行できるロールとアクセス許可を表示するには、次の手順に従います。
 
 1. ロールとアクセス許可を表示する管理グループ、サブスクリプション、リソース グループ、リソースなどのスコープで **[アクセス制御 (IAM)]** を開きます。
 
@@ -165,7 +165,7 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル:RBAC と Azure portal を使用してユーザーにアクセス権を付与する](quickstart-assign-role-user-portal.md)
-* [チュートリアル:RBAC と Azure PowerShell を使用してユーザーにアクセス権を付与する](tutorial-role-assignments-user-powershell.md)
-* [Azure での RBAC のトラブルシューティング](troubleshooting.md)
-* [Azure 管理グループでリソースを整理する](../azure-resource-manager/management-groups-overview.md)
+* [チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](quickstart-assign-role-user-portal.md)
+* [チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](tutorial-role-assignments-user-powershell.md)
+* [Azure リソースの RBAC のトラブルシューティング](troubleshooting.md)
+* [Azure 管理グループでリソースを整理する](../governance/management-groups/index.md)

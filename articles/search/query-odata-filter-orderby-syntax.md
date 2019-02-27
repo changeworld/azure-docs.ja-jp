@@ -75,7 +75,7 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 -   地理空間関数の `geo.distance` と `geo.intersects`。 `geo.distance` 関数により、フィルターの一部として、1 つはフィールドで、もう 1 つは定数で渡される 2 つの点の間の距離が、キロメートル単位で返されます。 `geo.intersects` 関数は、指定された点が指定された多角形の内部にある場合は true を返します。点はフィールドとして、多角形は定数として指定されて、フィルターの一部として渡されます。  
 
-    多角形は、境界リングを定義するポイント シーケンスとして格納される 2 次元の表面です (下の例を参照してください)。 多角形は閉じられている必要があります。つまり、最初と最後のポイント セットを同じにする必要があります。 [多角形のポイントは時計回りにする必要があります](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
+    多角形は、境界リングを定義するポイント シーケンスとして格納される 2 次元の表面です (下の例を参照してください)。 多角形は閉じられている必要があります。つまり、最初と最後のポイント セットを同じにする必要があります。 [多角形のポイントは反時計回りにする必要があります](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
 
     `geo.distance` により Azure Search でキロメートル単位の距離が返されます。 これは、距離を通常はメートルで返す、OData 地理空間操作をサポートする他のサービスとは異なります。  
 
