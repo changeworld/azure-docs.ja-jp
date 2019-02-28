@@ -3,7 +3,7 @@ title: コンテナー内の .NET アプリを Azure Service Fabric にデプロ
 description: Visual Studio を使って既存の .NET アプリケーションをコンテナーに格納し、Service Fabric 内のコンテナーをローカルでデバッグする方法を紹介します。 コンテナーに格納されたアプリケーションは Azure のコンテナー レジストリにプッシュされ、Service Fabric クラスターにデプロイされます。 Azure にデプロイされたアプリケーションは、データの保持に Azure SQL DB を使用します。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
-ms.author: twhitney
-ms.openlocfilehash: 5bd43378d626d48f2ce05423fc49f85305b5858b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: aljo
+ms.openlocfilehash: bd92ac2a36fdb15741799571d3ceff7fbbb36eef
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151449"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807526"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル:Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -168,7 +168,7 @@ Service Fabric アプリケーションは、ネットワークに接続され�
 
     c. **[証明書]** タブを選択します。このタブでは、クラスターの証明書をセキュリティで保護するために使用されるパスワードを入力します。 この証明書は、クラスターのセキュリティ保護に役立ちます。 また、証明書を保存したい場所にパスを変更することもできます。 アプリケーションをクラスターに発行するうえで必要な手順であるため、Visual Studio では証明書を自動でインポートすることもできます。
 
-    d. **[VM の詳細]** タブを選択します。クラスターを構成する仮想マシン (VM) に使用したいパスワードを指定します。 ユーザー名とパスワードは、VM へのリモート接続に使用できます。 また、VM マシン サイズを選択できるほか、必要に応じて VM イメージを変更できます。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[VM の詳細]** タブを選択します。クラスターを構成する仮想マシン (VM) に使用したいパスワードを指定します。 ユーザー名とパスワードは、VM へのリモート接続に使用できます。 また、VM マシン サイズを選択できるほか、必要に応じて VM イメージを変更できます。 
 
     > [!IMPORTANT]
     >実行中のコンテナーをサポートする SKU を選択します。 クラスター ノード上の Windows Server OS は、コンテナーの Windows Server OS と互換性を持っている必要があります。 詳細については、[Windows Server コンテナーの OS とホスト OS の互換性](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility)に関するページを参照してください。 このチュートリアルでは、既定では Windows Server 2016 LTSC に基づいて Docker イメージを作成します。 このイメージに基づくコンテナーは、コンテナー搭載 Windows Server 2016 Datacenter で作成されたクラスター上で実行されます。 ただし、コンテナー搭載 Windows Server Datacenter Core 1709 に基づいてクラスターを作成するか、既存のクラスターを使用する場合は、コンテナーの基になる Windows Server OS イメージを変更する必要があります。 **FabrikamFiber.Web** プロジェクトの **Dockerfile** を開き、(`windowsservercore-ltsc` に基づいて) 既存の `FROM` ステートメントをコメントアウトし、`windowsservercore-1709` に基づいて `FROM` ステートメントのコメントを解除します。 

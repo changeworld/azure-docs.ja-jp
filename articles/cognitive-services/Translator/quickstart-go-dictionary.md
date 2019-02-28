@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/05/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: d923dee2c1bad70183d2c0fadbc1beebe7ef3cbe
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b9f1b3b7ab99ca878227d8bf618545ec90aca4ac
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872426"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732043"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>クイック スタート:Go を使用して 2 か国語辞書で単語を検索する
 

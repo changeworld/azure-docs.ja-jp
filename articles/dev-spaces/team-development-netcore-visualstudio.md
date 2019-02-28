@@ -12,12 +12,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 7a77b8a1a2205465956d8c30a3fee6aec5e8428b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: af0a4a719f964e400119be313842f385b410406c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663793"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817424"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したチーム開発
 
@@ -125,9 +125,9 @@ Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサー�
 Azure Dev Spaces のこの組み込み機能を使用すると、共有環境でコードをエンド ツー エンドでテストできます。各開発者が自分のスペースにサービスの完全なスタックを再作成する必要はありません。 このガイドの以前の手順で示したように、このルーティングではアプリ コードで伝達ヘッダーを転送する必要があります。
 
 ### <a name="test-code-running-in-the-devscott-space"></a>_dev/scott_ 空間で実行されているコードをテストする
-*mywebapi* の新しいバージョンと *webfrontend* をテストするには、ブラウザーで *webfrontend* のパブリック アクセス ポイントの URL (たとえば、 http://dev.webfrontend.123456abcdef.eastus.aksapp.io) を開き、About ページに移動します。 "Hello from webfrontend and Hello from mywebapi" という元のメッセージが表示されます。
+*mywebapi* の新しいバージョンと *webfrontend* をテストするには、ブラウザーで *webfrontend* のパブリック アクセス ポイントの URL (たとえば、 http://dev.webfrontend.123456abcdef.eus.azds.io) を開き、About ページに移動します。 "Hello from webfrontend and Hello from mywebapi" という元のメッセージが表示されます。
 
-URL に "scott.s." の部分を追加して、 http://scott.s.dev.webfrontend.123456abcdef.eastus.aksapp.io になるようにし、ブラウザーを更新します。 *mywebapi* プロジェクトで設定したブレークポイントに到達します。 F5 キーを押して続行すると、"Hello from webfrontend and mywebapi now says something new" という新しいメッセージがブラウザーに表示されます。 これは、*mywebapi* で更新したコードのパスが _dev/scott_ 空間で実行されているためです。
+URL に "scott.s." の部分を追加して、 http://scott.s.dev.webfrontend.123456abcdef.eus.azds.io になるようにし、ブラウザーを更新します。 *mywebapi* プロジェクトで設定したブレークポイントに到達します。 F5 キーを押して続行すると、"Hello from webfrontend and mywebapi now says something new" という新しいメッセージがブラウザーに表示されます。 これは、*mywebapi* で更新したコードのパスが _dev/scott_ 空間で実行されているためです。
 
 最新の変更を常に含む _dev_ 空間があり、このチュートリアルのセクションで説明されているようにアプリケーションが DevSpace の空間ベースのルーティングを利用するように設計されていると仮定した場合、大規模なアプリケーションのコンテキスト内で新機能をテストする際に Dev Spaces がいかに役立つかは容易に想像できます。 "_すべての_" サービスをプライベート空間にデプロイする代わりに、_dev_ から派生するプライベート空間を作成し、実際に作業しているサービスのみを "アップ" することができます。 Dev Spaces ルーティング インフラストラクチャでは、_dev_ 空間で実行されている最新バージョンを既定で使用する一方で、プライベート空間で検出できる限りのサービスを利用して、残りの処理が行われます。 さらにすばらしいことに、"_複数の_" 開発者が互いに影響を与えることなく、自分の空間で同時に、異なるサービスをアクティブに開発することができます。
 

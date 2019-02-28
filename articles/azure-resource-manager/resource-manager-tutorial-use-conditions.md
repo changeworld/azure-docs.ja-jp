@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 90431ea7649b38da6cbbd242b00c21278d8e8967
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 57e71261bad950b409da7a58b53712d84dc1b3df
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268891"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56815860"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートでの条件の使用
 
@@ -150,11 +150,8 @@ New-AzResourceGroupDeployment `
     -dnsLabelPrefix $dnsLabelPrefix `
     -storageAccountName $storageAccountName `
     -newOrExisting $newOrExisting `
-    -TemplateFile azuredeploy.json
+    -TemplateFile "$HOME/azuredeploy.json"
 ```
-
-> [!NOTE]
-> Cloud Shell での Azure PowerShell の使用には、ファイル IO の問題が存在します。  エラー メッセージは、"*コマンドレットの動的パラメーターを取得できません。パス 'Azure:/azuredeploy.json' が存在しないため検出できません*" です。  `New-AzResourceGroupDeploy` コマンドに **-TemplateFile** スイッチを含めないようにすることが暫定的な回避策となります。 コマンドを実行すると、ファイル名を入力するように求められます。
 
 > [!NOTE]
 > **newOrExisting** が **new** のときに、指定したストレージ アカウント名のストレージ アカウントが既に存在している場合、デプロイは失敗します。

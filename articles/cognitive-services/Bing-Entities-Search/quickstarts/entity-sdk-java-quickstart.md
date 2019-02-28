@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 1534b2a85067867800c147c86ee7d82374de8794
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ea13ae5bc649ae3a803fb8446fa009fac94874a8
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866197"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673566"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>クイック スタート:Bing Entity Search SDK for Java を使用して検索要求を送信する
 
@@ -145,10 +145,11 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
             }
         }
     }
+    ```
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [単一ページの Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
+> [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Bing Entity Search API とは](../overview.md )

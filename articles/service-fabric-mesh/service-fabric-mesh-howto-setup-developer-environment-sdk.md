@@ -3,18 +3,18 @@ title: Service Fabric Mesh アプリをビルドするための Windows 開発�
 description: Windows 開発環境を設定して、Service Fabric Mesh アプリケーションを作成し、Azure Service Fabric Mesh にデプロイします。
 services: service-fabric-mesh
 keywords: ''
-author: tylermsft
-ms.author: twhitney
+author: dkkapur
+ms.author: dekapur
 ms.date: 12/12/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: a2c00d5373bd4e19a6e6057c6eddc758857860da
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+manager: chakdan
+ms.openlocfilehash: 6aba4b9d2958dbb8dd43d2242debc3b1b19f63ce
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556766"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804486"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Service Fabric Mesh アプリをビルドするための Windows 開発環境の設定
 

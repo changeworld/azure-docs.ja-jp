@@ -10,12 +10,12 @@ ms.date: 11/21/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: f3dbe8c62cb1fcc0585b5abccc51a620ea713543
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 8d305e051bd6708977926e3a4de47c15a784c7b6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664769"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818818"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したマルチサービスの開発
 
@@ -76,7 +76,7 @@ ms.locfileid: "55664769"
 お気付きかもしれませんが、*mywebapi* に対する HTTP 呼び出しを出力するための特別なコードが *webfrontend* に含まれていないにもかかわらず、出力ウィンドウに HTTP トレース メッセージが表示されます。
 ```
 // The request from your browser
-webfrontend.<id>.<region>.aksapp.io --hyh-> webfrontend:
+default.webfrontend.856bb3af715744c6810b.eus.azds.io --hyh-> webfrontend:
    GET /api?_=1544485357627 HTTP/1.1
 
 // *webfrontend* reaching out to *mywebapi*
@@ -89,7 +89,7 @@ webfrontend <-1b1-- mywebapi:
    Hello from mywebapi
 
 // Response from *webfrontend* to your browser
-webfrontend.<id>.<region>.aksapp.io <-hyh-- webfrontend:
+default.webfrontend.856bb3af715744c6810b.eus.azds.io <-hyh-- webfrontend:
    HTTP/1.1 200 OK
    Hello from webfrontend and Hello from mywebapi
 ```

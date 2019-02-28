@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/29/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: e7757b05ba0e99c5c326f3c63aa6b1d3be06a365
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7cfcf68a7725ba6c8a7ad4e0a88c5eed814b38ba
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856973"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729714"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-nodejs"></a>クイック スタート:Node.js を使用して 2 か国語辞書で単語を検索する
 

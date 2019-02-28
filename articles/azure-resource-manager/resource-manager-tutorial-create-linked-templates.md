@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/16/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 446c5393b654c7743371e4097517d16ba71da630
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 5f8dffa01b2d7dd7fa966d2b417019f1d2afb1bc
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270302"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867016"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>チュートリアル:リンクされた Azure Resource Manager テンプレートの作成
 
@@ -297,7 +297,7 @@ echo "Linked template URI with SAS token: $templateURI"
 1. azuredeploy.json が開いていない場合、Visual Studio Code で開きます。
 2. 仮想マシン リソース定義を展開し、次のスクリーンショットに示すように、**dependsOn** を更新します。
 
-    ![Azure Resource Manager のリンクされたテンプレートで依存関係を構成する ](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
+    ![Azure Resource Manager のリンクされたテンプレートで依存関係を構成する](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
 
     "*linkedTemplate*" は、デプロイ リソースの名前です。  
 3. 前のスクリーンショットに示すように、**properties/diagnosticsProfile/bootDiagnostics/storageUri** を更新します。

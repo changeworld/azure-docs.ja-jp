@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 222ac0b5dede45b9ae2b6fe9ba464e738ea48b94
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4f51ade234c8792f235bd8c9218b3c6ef9f22de7
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194259"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870824"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>チュートリアル:Azure Active Directory と Cisco Umbrella の統合
 
@@ -147,7 +147,7 @@ Azure AD への Cisco Umbrella の統合を構成するには、ギャラリー�
 
 6. **[Option A:Upload XML file]\(オプション A: XML ファイルのアップロード\)** で、Azure portal からダウンロードした**フェデレーション メタデータ XML** ファイルをアップロードします。アップロードすると、次の値が自動的に入力されます。**[NEXT]\(次\)** をクリックします。
 
-    ![Choosefile ](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
+    ![Choosefile](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
 7. **[Validate SAML Configuration]\(SAML 構成の検証\)** セクションで、**[TEST YOUR SAML CONFIGURATION]\(SAML 構成のテスト\)** をクリックします。
 
@@ -247,6 +247,6 @@ Cisco Umbrella の場合、プロビジョニングは手動で行います。
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/29/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 8e09eb19558bf3c328c8ce29cf35ce83074568aa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ebeb5fb8863dbe31b525bd4058f54fb88d4ddf7b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876217"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736602"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-with-nodejs"></a>クイック スタート:Translator Text API と Node.js を使用してテキストの言語を検出する
 

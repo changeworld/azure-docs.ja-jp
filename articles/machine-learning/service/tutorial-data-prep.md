@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
-ms.date: 02/04/2018
+ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7be1bf8c003315fc4dbed449283f7c92850edced
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 4f6c1af2051d946b29e2022c90d0ad9820b4d283
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752043"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823503"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル:回帰モデリングのためにデータを準備する
 
