@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 28172ed2309c1e97fe6dafa46cf055862a894cee
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: daf643a96195bc5f8f30652eaf1e7b071d63fa87
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730343"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888238"
 documentType: LandingData
 title: Bing Spell Check API のドキュメント
 metadata:
@@ -12,18 +12,39 @@ metadata:
   title: Bing Spell Check API のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
   description: Bing Spell Check API を使用して、テキスト ドキュメントの修正候補を取得する方法について説明します。 チュートリアルでは、この API を使用するアプリを構築する方法を説明します。
   services: cognitive-services
-  author: noellelacharite
-  manager: nolachar
+  author: aahill
+  manager: cgronlun
   ms.service: cognitive-services
   ms.subservice: bing-spell-check
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/09/2018
-  ms.author: nolachar
+  ms.date: 02/19/2019
+  ms.author: aahi
 abstract:
   description: Bing Spell Check API を使用して、コンテキストに応じた文法とスペルのチェックを実行できます。 Bing では、機械学習と統計的機械翻訳を活用して、常に進化する高度にコンテキストに応じたアルゴリズムを動的にトレーニングする Web ベースのスペル チェック機能を開発しています。 このスペル チェック機能は、Web 検索とドキュメントの大規模な本体に基づいています。 Microsoft が提供するクイックスタート、チュートリアル、サンプルを使用して、コンテンツを分析するさまざまな方法をご確認ください。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-spell-check/overview
+      html: <p>Bing Spell Check API について説明します。</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Bing Spell Check API とは
+    - href: /azure/cognitive-services/bing-spell-check/concepts/sending-requests
+      html: <p>スペル チェック要求を Bing Spell Check API に送信する方法について説明します。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: スペル チェック要求
+    - href: /azure/cognitive-services/bing-spell-check/concepts/using-spell-check
+      html: <p>API のさまざまなスペルチェック モードの使用について説明します。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Image Search の応答
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
@@ -63,7 +84,6 @@ sections:
     style: unordered
     items:
     - html: <a href="tutorials/spellcheck.md">単一ページの Web アプリ</a>
-    - html: <a href="tutorials/spellcheck-source.md">単一ページの Web アプリ (ソース コード)</a>
 - title: サンプル
   items:
   - type: paragraph

@@ -420,8 +420,6 @@ items:
         href: platform/collect-azure-metrics-logs.md
       - name: Azure ストレージからの診断またはログ データ
         href: platform/azure-storage-iis-table.md
-      - name: Azure PaaS リソース
-        href: platform/collect-azurepass-posh.md
       - name: カスタム データ ソースを関連付ける
         href: app/custom-data-correlation.md
     - name: カスタム データの収集
@@ -448,10 +446,10 @@ items:
         href: platform/archive-diagnostic-logs.md
       - name: 診断ログを保存する
         href: platform/diagnostic-logs-stream-log-store.md
+      - name: Event Hub への Azure リソース データ
+        href: platform/stream-monitoring-data-event-hubs.md
       - name: アクティビティ ログの Event Hubs へのストリーム
         href: platform/activity-logs-stream-event-hubs.md
-      - name: ログとメトリックをイベント ハブにストリーミングする
-        href: platform/stream-monitoring-data-event-hubs.md
       - name: 診断ログをイベント ハブにストリーミングする
         href: platform/diagnostic-logs-stream-event-hubs.md
       - name: アプリケーション データを Log Analytics に送信する
@@ -636,8 +634,9 @@ items:
   - name: データの視覚化
     items:
     - name: ビュー
-      href: platform/view-designer.md
       items:
+      - name: ビュー デザイナー
+        href: platform/view-designer.md
       - name: タイルのリファレンス
         href: platform/view-designer-tiles.md
       - name: 視覚化パーツのリファレンス
@@ -1031,9 +1030,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 519c8213c715995fea89475e81f8c63f41190d65
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7ca33f101a86f08ce8249bd43975d6ed2aab6141
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455400"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888170"

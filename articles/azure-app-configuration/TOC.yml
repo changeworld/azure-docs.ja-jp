@@ -1,0 +1,60 @@
+items:
+- name: Azure App Configuration のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+  - name: Azure App Configuration について
+    href: overview.md
+- name: クイック スタート
+  items:
+  - name: ASP.NET Core アプリを作成する
+    href: quickstart-aspnet-core-app.md
+  - name: .NET Core アプリを作成する
+    href: quickstart-dotnet-core-app.md
+  - name: .NET Framework アプリを作成する
+    href: quickstart-dotnet-app.md
+  - name: Azure 関数の作成
+    href: quickstart-azure-function-csharp.md
+  - name: Java Spring アプリを作成する
+    href: quickstart-java-spring-app.md
+  expanded: true
+- name: チュートリアル
+  items:
+  - name: ASP.NET Core で動的な構成を有効にする
+    href: enable-dynamic-configuration-aspnet-core.md
+  - name: Azure マネージド サービス ID と統合する
+    href: integrate-azure-managed-service-identity.md
+- name: サンプル
+  items:
+  - name: コード サンプル
+    href: https://github.com/Azure/AppConfiguration/samples
+  - name: Azure CLI
+    href: cli-samples.md
+- name: 概念
+  items:
+  - name: キー値ストア
+    href: concept-key-value.md
+  - name: ポイントインタイム スナップショット
+    href: concept-point-time-snapshot.md
+- name: ハウツー ガイド
+  items:
+  - name: 構成データのインポートまたはエクスポート
+    href: howto-import-export-data.md
+  - name: CI/CD パイプラインとの統合
+    href: howto-integrate-ci-cd-pipeline.md
+- name: リファレンス
+  items:
+  - name: .NET Core 構成プロバイダー
+    href: https://go.microsoft.com/fwlink/?linkid=2074664
+  - name: .NET Framework 構成プロバイダー
+    href: https://go.microsoft.com/fwlink/?linkid=2074663
+  - name: Java Spring 構成プロバイダー
+    href: https://go.microsoft.com/fwlink/?linkid=2074659
+  - name: REST
+    href: https://docs.microsoft.com/rest/api/azure-app-configuration
+ms.openlocfilehash: c35296a6923e464ca20a873de4165ea20c08278f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56884136"

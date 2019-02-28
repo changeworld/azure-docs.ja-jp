@@ -239,12 +239,12 @@ items:
     - name: HDInsight とオンプレミス ネットワークの接続
       href: ../connect-on-premises-network.md
       maintainContext: true
-  - name: Log Analytics を使用した監視
+  - name: Azure Monitor ログを使用した監視
     items:
-    - name: Azure Log Analytics の使用
+    - name: Azure Monitor ログの使用
       href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
       maintainContext: true
-    - name: Log Analytics でのクエリの使用
+    - name: Azure Monitor ログでのクエリの使用
       href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
       maintainContext: true
     - name: クラスター パフォーマンスの監視
@@ -318,9 +318,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 2e6e05ac149308339c8d663fe96287dbc476579d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ea149749fcb073861cb6af05225536c552e3f79a
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327165"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886487"

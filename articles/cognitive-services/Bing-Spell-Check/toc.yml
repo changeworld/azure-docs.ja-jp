@@ -4,45 +4,49 @@ items:
 - name: 概要
   items:
   - name: Bing Spell Check API とは
-    href: proof-text.md
+    href: overview.md
   - name: Bing Search API を比較する
     href: ../Bing-Web-Search/bing-api-comparison.md
     maintainContext: true
-- name: REST API のクイック スタート
+- name: クイック スタート
   items:
-  - name: C#
-    href: quickstarts/csharp.md
-  - name: Java
-    href: quickstarts/java.md
-  - name: Node.js
-    href: quickstarts/nodejs.md
-  - name: PHP
-    href: quickstarts/php.md
-  - name: Python
-    href: quickstarts/python.md
-  - name: Ruby
-    href: quickstarts/ruby.md
-  expanded: true
-- name: SDK のクイック スタート
-  items:
-  - name: SDK C# のクイック スタート
-    href: sdk-quickstart-spell-check.md
-  - name: SDK のサンプルの概要
-    href: sdk.md
+  - name: REST API
+    items:
+    - name: C# の使用
+      href: quickstarts/csharp.md
+    - name: Java の使用
+      href: quickstarts/java.md
+    - name: Node.js の使用
+      href: quickstarts/nodejs.md
+    - name: PHP の使用
+      href: quickstarts/php.md
+    - name: Python の使用
+      href: quickstarts/python.md
+    - name: Ruby の使用
+      href: quickstarts/ruby.md
+    expanded: true
+  - name: SDK
+    items:
+    - name: C# の使用
+      href: sdk-quickstart-spell-check.md
 - name: チュートリアル
   items:
   - name: スペル チェック Web アプリの構築
     href: tutorials/spellcheck.md
-  - name: 'ソース コード: スペル チェック Web アプリ'
-    href: tutorials/spellcheck-source.md
 - name: ハウツー ガイド
   items:
   - name: v5 から v7 へのアップグレード
     href: bing-spell-check-upgrade-guide-v5-to-v7.md
+- name: 概念
+  items:
+  - name: Bing Spell Check API への要求の送信
+    href: concepts/sending-requests.md
+  - name: Bing Spell Check API の使用
+    href: concepts/using-spell-check.md
 - name: サンプル
   items:
   - name: コード サンプル
-    href: sdk.md
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Spell+Check
 - name: リファレンス
   items:
   - name: Bing Spell Check API v7
@@ -68,8 +72,6 @@ items:
   items:
   - name: Bing Spell Check API 用の分析
     href: bing-spell-check-stats.md
-  - name: FAQ
-    href: bing-spell-check-resource-faq.md
   - name: 言語とリージョンのサポート
     href: language-support.md
   - name: 価格
@@ -84,9 +86,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/spell-check/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/598195-bing-spell-check
-ms.openlocfilehash: a993da847ca775a18efba42a82045d450a1e9f59
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 132901c3bf159054519658893f1f05438852afcb
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512094"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890047"

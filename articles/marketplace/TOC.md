@@ -1,5 +1,6 @@
 # [Azure Marketplace と AppSource のドキュメント](index.md)
 ## [Azure Marketplace と AppSource のロードマップ](./marketplace-roadmap.md)
+## [Azure Marketplace のポリシーと利用規約](./policies-terms.md)
 
 ## [Azure Marketplace と AppSource の概要とベネフィット](./marketplace-publishers-guide.md)  
 ### [マーケットプレースで公開元になる](./become-publisher.md)  
@@ -29,7 +30,6 @@
 #### [プラン掲載のベスト プラクティス](./gtm-offer-listing-best-practices.md)
 #### [取り上げられる方法](./gtm-how-to-get-featured.md)
 #### [Marketplace コンテンツの検証](./marketplace-criteria-content-validation.md)
-#### [ポリシーの評価とレビュー](./rating-review-policies.md)   
 
 ### [マーケットプレースの特典](./gtm-your-marketplace-benefits.md)
 #### [Microsoft を利用したビジネスのプロモーション](./gtm-promote-your-business.md)
@@ -37,9 +37,6 @@
 
 ### [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)
 #### [Marketplace に関する FAQ](./marketplace-faq-publisher-guide.md)
-#### [Marketplace の利用規約](./marketplace-terms.md)
-#### [Marketplace の参加ポリシー](./marketplace-participation-policy.md)
-
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 

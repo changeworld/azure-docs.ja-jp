@@ -126,7 +126,7 @@
 #### [Twitter 認証](../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ### HTTPS
-#### [TLS 相互認証を構成する](../app-service/app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [TLS 相互認証の構成](../app-service/app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Azure で SSL 証明書を購入する](../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [他の場所で取得した SSL 証明書を使用する](../app-service/app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
