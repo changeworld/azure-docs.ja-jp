@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: b4ac0ccb249bac7149014861056c10f9093d6759
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878164"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593915"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>チュートリアル:ユーザーの意図を特定する LUIS アプリを構築する
 
@@ -165,9 +165,13 @@ LUIS ポータルに戻り、ユーザーの発話が、仕事への応募に関
     |エンジニアのポストにレジュメを送信して|
     |職務経歴書です。 求人 234123 への履歴書です。|
 
-    [![ApplyForJob の意図に新しい発話を入力しているスクリーンショット](media/luis-quickstart-intents-only/utterance-applyforjob.png "ApplyForJob の意図に新しい発話を入力しているスクリーンショット")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+<!--
 
-    現時点ではその意図が正しいことを LUIS が判断できないため、ラベル付きの意図は赤で囲まれています。 アプリをトレーニングすることで、LUIS にその発話が正しい意図であることを指示します。 
+    [![Screenshot of entering new utterances for ApplyForJob intent](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot of entering new utterances for ApplyForJob intent")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+
+    The labeled intent is outlined in red because LUIS is currently uncertain the intent is correct. Training the app tells LUIS the utterances are on the correct intent. 
+
+-->
 
 ## <a name="train-again"></a>再度のトレーニング
 

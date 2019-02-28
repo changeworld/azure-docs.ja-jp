@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6e3f0613e89ef7d6e9b44e519226a793940d41f6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f64000ed502ee817f907e6ac9c89c2f037725a39
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56006760"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823792"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>チュートリアル 3:信用リスク モデルをデプロイする - Azure Machine Learning Studio
 
@@ -23,7 +23,7 @@ ms.locfileid: "56006760"
 
 クレジットの申請書に記入する情報に基づいて個人のクレジット リスクを予測する必要があるとします。  
 
-信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションには、Azure Machine Learning Studio と Machine Learning Web サービスを使用します。 
+信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning Studio を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションには、Azure Machine Learning Studio と Machine Learning Web サービスを使用します。 
 
 この 3 部構成のチュートリアルでは、まず、公表されている信用リスク データを使用します。  その後、予測モデルを開発してトレーニングします。  最後にそのモデルを Web サービスとしてデプロイします。
 
@@ -234,7 +234,7 @@ Web サービスは、次の 2 つの方法のいずれかで、REST API を使�
 
 このような Web アプリ テンプレートを使用すると、Web サービスの入力データとサービスで返される内容を認識するカスタム Web アプリを構築できます。 必要な操作は、Web サービスおよびデータへのアクセスを許可することだけで、後の処理はテンプレートによって行われます。
 
-Web アプリ テンプレートの使用方法の詳細については、「[Web アプリケーション テンプレートによる Azure Machine Learning Web サービスの使用](consume-web-service-with-web-app-template.md)」をご覧ください。
+Web アプリ テンプレートの使用方法の詳細については、「[Web アプリケーション テンプレートによる Azure Machine Learning Web サービスの使用](/azure/machine-learning/studio/consume-web-services)」をご覧ください。
 
 
 

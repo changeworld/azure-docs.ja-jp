@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 02/07/2019
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: eb852f0449a7f59ba0235ffc8ad7c8aff6f3babc
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 0d092b6dfbd453d5583fed8d993da6aec633ac1b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892754"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731499"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-with-nodejs"></a>クイック スタート:Translator Text API と Node.js を使用してサポートされている言語の一覧を取得する
 
