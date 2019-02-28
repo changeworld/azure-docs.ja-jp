@@ -206,7 +206,7 @@ Palo Alto Networks - Aperture で Azure AD のシングル サインオンを構
 
 ![ユーザー ロールを割り当てる][200] 
 
- **を Palo Alto Networks - Aperture に割り当てるには、次の手順に従います。**
+**を Palo Alto Networks - Aperture に割り当てるには、次の手順に従います。**
 
 1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
