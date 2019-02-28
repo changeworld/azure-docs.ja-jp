@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 961f7bf85ed8bb67c8284edea1846e96895d7f46
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d81905d3e42302a5654b51cc0269e546fee49d2f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452850"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816778"
 ---
 # <a name="what-is-azure-active-directory-monitoring-preview"></a>Azure Active Directory 監視とは (プレビュー)
 
@@ -35,6 +35,8 @@ Azure Active Directory (Azure AD) 監視を使用すると、Azure AD のアク�
 - Azure Log Analytics ワークスペース。このワークスペースで、データの分析や、特定のイベントのダッシュボードとアラートの作成を行うことができます。
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="diagnostic-settings-configuration"></a>診断設定を構成する
 

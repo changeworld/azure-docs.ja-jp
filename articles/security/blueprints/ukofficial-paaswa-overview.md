@@ -124,7 +124,7 @@ SQL Database は、リレーショナル データ、JSON、空間、XML など�
 
 このブループリントの Azure SQL Database
 
-Azure SQL Database インスタンスは、次のデータベース セキュリティ対策を使用します。
+Azure SQL データベース インスタンスは、次のデータベース セキュリティ対策を使用します。
 
 - [サーバー レベルおよびデータベース レベルのファイアウォール ルール](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)、または[仮想ネットワーク ルール](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)を使用した[仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)
 - [透過的なデータ暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)によって、悪意のあるアクティビティの脅威から Azure SQL Database と Azure Data Warehouse の保護を支援します。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。

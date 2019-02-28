@@ -164,7 +164,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 ### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL データ同期サービスのコストはどのくらいですか?
 
-SQL データ同期サービスそのものに対しては課金されません。  ただし、SQL Database インスタンスへの、またはインスタンスからのデータ移動には、データ転送の料金がかかります。 詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+SQL データ同期サービスそのものに対しては課金されません。  ただし、SQL データベース インスタンスへの、またはインスタンスからのデータ移動には、データ転送の料金がかかります。 詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 ### <a name="what-regions-support-data-sync"></a>データ同期はどのリージョンでサポートされていますか?
 

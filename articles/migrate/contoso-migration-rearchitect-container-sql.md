@@ -134,7 +134,7 @@ Contoso は、長所と短所の一覧をまとめて、提案されたデザイ
 Contoso が移行を実行する方法を次に示します。
 
 > [!div class="checklist"]
-> * **手順 1:Azure SQL Database インスタンスをプロビジョニングする**:Contoso は、Azure で SQL インスタンスをプロビジョニングします。 フロントエンド Web VM が Azure コンテナーに移行された後、アプリ Web フロントエンドを含むコンテナー インスタンスは、このデータベースを示すようになります。
+> * **手順 1:Azure SQL データベース インスタンスをプロビジョニングする**:Contoso は、Azure で SQL インスタンスをプロビジョニングします。 フロントエンド Web VM が Azure コンテナーに移行された後、アプリ Web フロントエンドを含むコンテナー インスタンスは、このデータベースを示すようになります。
 > * **手順 2:Azure Container Registry (ACR) を作成する**: Contoso は、Docker コンテナー イメージのエンタープライズ コンテナー レジストリをプロビジョニングします。
 > * **手順 3:Azure Service Fabric をプロビジョニングする**: Service Fabric クラスターをプロビジョニングします。
 > * **手順 4:Service Fabric 証明書を管理する**: Contoso は Azure DevOps Services がクラスターにアクセスするための証明書を設定します。

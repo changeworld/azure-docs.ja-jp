@@ -89,7 +89,7 @@ ms.locfileid: "56194973"
 
 ## <a name="environment"></a>環境
 **Q:Azure AD Connect のインストール後のサーバー名の変更はサポートされていますか。**  
-いいえ。 サーバー名を変更すると、同期エンジンは SQL Database インスタンスに接続できなくなり、サービスを開始できなくなります。
+いいえ。 サーバー名を変更すると、同期エンジンは SQL データベース インスタンスに接続できなくなり、サービスを開始できなくなります。
 
 ## <a name="identity-data"></a>ID データ
 **Q:Azure AD の userPrincipalName (UPN) 属性がオンプレミス UPN と一致しないのはなぜですか。**  

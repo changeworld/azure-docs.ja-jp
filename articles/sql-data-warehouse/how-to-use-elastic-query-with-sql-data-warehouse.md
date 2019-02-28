@@ -36,7 +36,7 @@ ms.locfileid: "55466287"
 2. セキュリティの分離 - 特定のスキーマを使用して選択的に、承認されたデータ サブセットを分離します。
 3. サンドボックス - データのサンプル セットを、実稼働クエリなどを探索するための "プレイグラウンド" として提供します。
 
-エラスティック クエリを使用すると、簡単に SQL Data Warehouse データのサブセットを選択して SQL Database インスタンスに移動できます。 さらに、この分離はリモート クエリ実行を有効にする機能を妨害しないため、より興味深い "キャッシュ" のシナリオが可能になります。
+エラスティック クエリを使用すると、簡単に SQL Data Warehouse データのサブセットを選択して SQL データベース インスタンスに移動できます。 さらに、この分離はリモート クエリ実行を有効にする機能を妨害しないため、より興味深い "キャッシュ" のシナリオが可能になります。
 
 ### <a name="remote-query-execution"></a>リモート クエリ実行
 
@@ -51,7 +51,7 @@ ms.locfileid: "55466287"
 > 
 > ユーザーは、ALTER ANY EXTERNAL DATA SOURCE アクセス許可を所有している必要があります。 このアクセス許可は、ALTER DATABASE アクセス許可に含まれています。 ALTER ANY EXTERNAL DATA SOURCE アクセス許可は、リモート データ ソースを参照するために必要です。
 
-次に、SQL Database インスタンスに、SQL Data Warehouse 内のリモート テーブルをポイントするリモート外部テーブル定義を作成します。 クエリで外部テーブルが利用されると、クエリの外部テーブルを参照する部分が SQL Data Warehouse インスタンスに送信されて処理されます。 クエリが完了すると、呼び出し元の SQL Database インスタンスに結果セットが返されます。 SQL Database と SQL Data Warehouse 間のエラスティック クエリを設定する簡単なチュートリアルについては、「[SQL Data Warehouse のエラスティック クエリの構成][Configure Elastic Query with SQL Data Warehouse]」をご覧ください。
+次に、SQL データベース インスタンスに、SQL Data Warehouse 内のリモート テーブルをポイントするリモート外部テーブル定義を作成します。 クエリで外部テーブルが利用されると、クエリの外部テーブルを参照する部分が SQL Data Warehouse インスタンスに送信されて処理されます。 クエリが完了すると、呼び出し元の SQL データベース インスタンスに結果セットが返されます。 SQL Database と SQL Data Warehouse 間のエラスティック クエリを設定する簡単なチュートリアルについては、「[SQL Data Warehouse のエラスティック クエリの構成][Configure Elastic Query with SQL Data Warehouse]」をご覧ください。
 
 SQL Database のエラスティック クエリの詳細については、「[Azure SQL Database のエラスティック クエリの概要][Azure SQL Database elastic query overview]」をご覧ください。
 
@@ -72,7 +72,7 @@ SQL Database のエラスティック クエリの詳細については、「[Az
 
 - テーブルの一部分はパフォーマンスのためにキャッシュ データとして SQL Database 内に格納され、残りのデータは SQL Data Warehouse に格納される、一種のストレッチ テーブルを管理することがよくあります。 この場合、SQL Database に 2 つのオブジェクトが必要になります。1 つは SQL Data Warehouse のベース テーブルを参照する SQL Database 内の外部テーブルであり、もう 1 つは SQL Database 内のテーブルの "キャッシュされた" 部分です。 そして、テーブルのキャッシュされた部分と外部テーブルの上位に両方のテーブルの和集合となるビューを作成し、SQL Database 内で具体化されているデータと、外部テーブルによって公開される SQL Data Warehouse のデータを分離するフィルターを適用することを検討します。
 
-  たとえば、最も新しい年のデータを SQL Database インスタンスに保持する場合について考えてみましょう。 **ext.Orders** テーブルは、データ ウェアハウスの Orders (注文) テーブルを参照します。 **dbo.Orders** は、SQL Database インスタンス内の最も新しい年のデータを表します。 どちらのテーブルに対してクエリを実行するかをユーザーに判断してもらう代わりに、両方のテーブルの最も新しい年のパーティション ポイントの上にビューを作成します。
+  たとえば、最も新しい年のデータを SQL データベース インスタンスに保持する場合について考えてみましょう。 **ext.Orders** テーブルは、データ ウェアハウスの Orders (注文) テーブルを参照します。 **dbo.Orders** は、SQL Database インスタンス内の最も新しい年のデータを表します。 どちらのテーブルに対してクエリを実行するかをユーザーに判断してもらう代わりに、両方のテーブルの最も新しい年のパーティション ポイントの上にビューを作成します。
 
   ```sql
   CREATE VIEW dbo.Orders_Elastic AS

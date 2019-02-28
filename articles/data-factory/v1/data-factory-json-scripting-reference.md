@@ -936,7 +936,7 @@ Azure SQL Database のリンクされたサービスを定義するには、リ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| connectionString |connectionString プロパティの Azure SQL Database インスタンスに接続するために必要な情報を指定します。 |はい |
+| connectionString |connectionString プロパティの Azure SQL データベース インスタンスに接続するために必要な情報を指定します。 |はい |
 
 #### <a name="example"></a>例
 ```json
@@ -958,7 +958,7 @@ Azure SQL Database データセットを定義するには、データセット�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Azure SQL Database インスタンスのテーブルまたはビューの名前です。 |はい |
+| tableName |リンクされたサービスが参照する Azure SQL データベース インスタンスのテーブルまたはビューの名前です。 |はい |
 
 #### <a name="example"></a>例
 
@@ -5002,7 +5002,7 @@ Azure SQL Database のリンクされたサービスを定義するには、リ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| connectionString |connectionString プロパティの Azure SQL Database インスタンスに接続するために必要な情報を指定します。 |はい |
+| connectionString |connectionString プロパティの Azure SQL データベース インスタンスに接続するために必要な情報を指定します。 |はい |
 
 #### <a name="json-example"></a>JSON の例
 

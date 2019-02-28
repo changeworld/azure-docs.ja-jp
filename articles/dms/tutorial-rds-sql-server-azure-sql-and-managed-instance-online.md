@@ -57,7 +57,7 @@ Azure Database Migration Service を使用すれば、オンプレミスの RDS 
 - Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
 - Azure SQL Database サーバーのサーバー レベルの[ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用される VNET のサブネット範囲を指定します。
 - ソース RDS SQL Server インスタンスへの接続に使用される資格情報が、"Processadmin" サーバー ロールのメンバーであり、移行対象のすべてのデータベースで "db_owner" データベース ロールのメンバーであるアカウントに、関連付けられていることを確認します。
-- ターゲットの Azure SQL Database インスタンスへの接続に使用される資格情報に、ターゲットの Azure SQL データベースに対する CONTROL DATABASE アクセス許可があることを確認します。また、Azure SQL Database Managed Instance に移行する場合は、sysadmin ロールのメンバーであることを確認します。
+- ターゲットの Azure SQL データベース インスタンスへの接続に使用される資格情報に、ターゲットの Azure SQL データベースに対する CONTROL DATABASE アクセス許可があることを確認します。また、Azure SQL Database Managed Instance に移行する場合は、sysadmin ロールのメンバーであることを確認します。
 - ソース RDS SQL Server のバージョンは SQL Server 2012 以降である必要があります。 SQL Server インスタンスが実行されているバージョンを確認する方法については、「[バージョン、エディション、および SQL Server の更新プログラム レベルとそのコンポーネントを確認する方法](https://support.microsoft.com/help/321185/how-to-determine-the-version-edition-and-update-level-of-sql-server-an)」の記事を参照してください。
 - RDS SQL Server データベースおよび移行対象に選択されているすべてのユーザー テーブルで、変更データ キャプチャ (CDC) を有効にします。
     > [!NOTE]
@@ -153,7 +153,7 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
 
 5. 既存の仮想ネットワーク (VNET) を選択するか、新しい VNET を作成します。
 
-    この VNET が Azure Database Migration Service に、ソース SQL Server とターゲット Azure SQL Database インスタンスへのアクセスを提供します。
+    この VNET が Azure Database Migration Service に、ソース SQL Server とターゲット Azure SQL データベース インスタンスへのアクセスを提供します。
 
     Azure portal で VNET を作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](https://aka.ms/DMSVnet)に関する記事を参照してください。
 
@@ -218,7 +218,7 @@ DMA を使用して、Azure SQL Database にスキーマを移行します。
 
 3. **[保存]** を選択し、**[テーブルの選択]** 画面でテーブルの一覧を展開して、影響を受けるフィールドの一覧を確認します。
 
-    Azure Database Migration Service では、ターゲット Azure SQL Database インスタンスに存在する空のソース テーブルがすべて自動的に選択されます。 データが既に含まれているテーブルを再移行する場合は、この画面でテーブルを明示的に選択する必要があります。
+    Azure Database Migration Service では、ターゲット Azure SQL データベース インスタンスに存在する空のソース テーブルがすべて自動的に選択されます。 データが既に含まれているテーブルを再移行する場合は、この画面でテーブルを明示的に選択する必要があります。
 
     ![テーブルを選択する](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-configure-setting-activity4.png)
 

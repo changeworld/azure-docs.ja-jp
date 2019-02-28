@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 8b890630d352619da86c3017426e24f55ef016d9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d08ebc7c1e52022ec918020387264c464d1cd967
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307172"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883421"
 ---
 # <a name="create-a-xamarinios-app"></a>Xamarin.iOS アプリを作成する
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -49,7 +49,7 @@ ms.locfileid: "38307172"
 [!INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="download-and-run-the-xamarinios-app"></a>Xamarin.iOS アプリのダウンロードと実行
-1. [Azure ポータル] をブラウザー ウィンドウで開きます。
+1. [Azure Portal] をブラウザー ウィンドウで開きます。
 2. モバイル アプリの [設定] ブレードで、**[開始]**  >  **[Xamarin.iOS]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリを作成する]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
 
       モバイル バックエンドに接続されているクライアント アプリケーションがダウンロードされます。 圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
@@ -72,7 +72,7 @@ ms.locfileid: "38307172"
 
 ## <a name="next-steps"></a>次の手順
 * [アプリへのオフライン同期の追加](app-service-mobile-xamarin-ios-get-started-offline-data.md)
-* [アプリへの認証の追加 ](app-service-mobile-xamarin-ios-get-started-users.md)
+* [アプリへの認証の追加](app-service-mobile-xamarin-ios-get-started-users.md)
 * [Xamarin.Android アプリへのプッシュ通知の追加](app-service-mobile-xamarin-ios-get-started-push.md)
 * [Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md)
 
@@ -88,4 +88,4 @@ ms.locfileid: "38307172"
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

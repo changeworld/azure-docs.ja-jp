@@ -128,7 +128,7 @@ Contoso は、長所と短所の一覧をまとめて、提案されたデザイ
 Contoso が移行を実行する方法を次に示します。
 
 > [!div class="checklist"]
-> * **手順 1:Azure SQL Database インスタンスをプロビジョニングする**:Contoso は、Azure で SQL インスタンスをプロビジョニングします。 アプリの Web サイトが Azure に移行されると、WCF サービス Web アプリはこのインスタンスを示します。
+> * **手順 1:Azure SQL データベース インスタンスをプロビジョニングする**:Contoso は、Azure で SQL インスタンスをプロビジョニングします。 アプリの Web サイトが Azure に移行されると、WCF サービス Web アプリはこのインスタンスを示します。
 > * **手順 2:DMA を使用してデータベースを移行する**: Contoso は、Data Migration Assistant を使用してアプリ データベースを移行します。
 > * **手順 3:Web アプリをプロビジョニングする**:Contoso は 2 つの Web アプリをプロビジョニングします。
 > * **手順 4:Azure DevOps を設定する**:Contoso は新しい Azure DevOps プロジェクトを作成し、Git リポジトリをインポートします。
