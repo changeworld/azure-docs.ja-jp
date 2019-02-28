@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7bc6b57122072c2fe0c063c1278cf11d97469b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e86ede90a19d829e87b47d49fa4a12a17fe1d5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191318"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>チュートリアル:Azure Active Directory と Snowflake の統合
 
@@ -141,7 +141,7 @@ Snowflake で Azure AD シングル サインオンを構成するには、次�
     > [!NOTE]
     > これは、右上の [ユーザー名] で選択したコンテキストとは別のものです。
     
-    ![Snowflake 管理者 ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Snowflake 管理者](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 10. **ダウンロードした Base 64 証明書**をメモ帳で開きます。 “-----BEGIN CERTIFICATE-----” と “-----END CERTIFICATE-----" の間の値をコピーし、下の **certificate** の横の引用符の間に貼り付けます。 **[ssoUrl]** に、Azure portal からコピーした**ログイン URL** の値を貼り付けます。 **[All Queries]\(すべてのクエリ\)** を選択し、**[実行]** をクリックします。
 
@@ -219,11 +219,11 @@ Azure AD ユーザーが Snowflake にログインできるようにするには
 
 2. ページの右上で **[プロファイル]** をクリックして、**[Switch Role]\(ロールの切り替え\)** で **[ACCOUNTADMIN]** を選択します。  
 
-    ![Snowflake 管理者 ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Snowflake 管理者](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 3. 次に示すように、"Login name" がワークシートの Azure AD ユーザー名に設定されていることを確認して、次の SQL クエリを実行してユーザーを作成します。
 
-    ![Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+    ![Snowflake adminsql](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
 
     ```
     use role accountadmin;
@@ -240,7 +240,7 @@ Azure AD ユーザーが Snowflake にログインできるようにするには
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

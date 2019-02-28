@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/05/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 56f85a19b33223140d87833f8237fc728402d2f9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2382bc553a7b27676ae4137933e322822a23c0a6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876234"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738693"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-go"></a>クイック スタート: C# と Translator Text API を使用してテキストの表記を変換する
 

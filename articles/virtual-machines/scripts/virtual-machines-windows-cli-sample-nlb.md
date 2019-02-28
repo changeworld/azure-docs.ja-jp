@@ -1,7 +1,7 @@
 ---
 title: Azure CLI のサンプル スクリプト - NLB がインストールされた Windows Server 2016 の作成 | Microsoft Docs
 description: Azure CLI のサンプル スクリプト - NLB がインストールされた Windows Server 2016 の作成
-services: virtual-machines-Windows
+services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: rickstercdn
 manager: jeconnoc
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: 76e7d550c53ad2e9d1c1a1bab5ea4000279fcaa4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5f7f07fb51c39062466675d56f65c6bf2504c3e9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700419"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672051"
 ---
 # <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>高可用性仮想マシン間でトラフィックの負荷を分散する
 
@@ -46,7 +46,7 @@ az group delete --name myResourceGroup --yes
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Azure 仮想ネットワークとサブネットを作成します。 |

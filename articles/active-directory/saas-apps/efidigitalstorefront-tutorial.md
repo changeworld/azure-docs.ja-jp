@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c14e73819b561aa7ab8f6f91d65a9d34ee0cab5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 304d18bc92a03b096c42ee42359db58900fd3e10
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200635"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864738"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>チュートリアル: Azure Active Directory と EFI Digital StoreFront の統合
 
@@ -69,21 +69,21 @@ Azure AD への EFI Digital StoreFront の統合を構成するには、ギャ�
 
      ![結果一覧の EFI Digital StoreFront](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD のシングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
 このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、EFI Digital StoreFront で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンが機能するには、Azure AD ユーザーと EFI Digital StoreFront の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 EFI Digital StoreFront で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD のシングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[EFI Digital StoreFront のシングル サインオンの構成](#configure-efi-digital-storefront-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[EFI Digital StoreFront テスト ユーザーの作成](#create-efi-digital-storefront-test-user)** - EFI Digital StoreFront で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD のシングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
@@ -165,7 +165,7 @@ EFI Digital StoreFront で Azure AD シングル サインオンを構成する�
 
 2. アプリケーションの一覧で **[EFI Digital StoreFront]** を選択します。
 
-    ![アプリケーションの一覧の [EFI Digital StoreFront] リンク](common/all-applications.png)
+    ![アプリケーションの一覧の EFI Digital StoreFront のリンク](common/all-applications.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
@@ -195,7 +195,7 @@ EFI Digital StoreFront で Azure AD シングル サインオンを構成する�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

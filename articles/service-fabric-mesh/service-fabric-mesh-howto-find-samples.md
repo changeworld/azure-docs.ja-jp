@@ -8,13 +8,13 @@ ms.author: v-vasuke
 ms.date: 12/03/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: 6dac55e69761067cf9700e10f449af27ca659f20
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+manager: chakdan
+ms.openlocfilehash: 12fbc0df8df56426679faef02b2b3fd285d391dc
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000327"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805190"
 ---
 # <a name="find-service-fabric-mesh-samples"></a>Service Fabric Mesh のサンプル
 

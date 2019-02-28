@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1fe21e8c7a4f4b73648eb5cf0cd3ee5e96dff760
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 262706868fe286f2134e71f53330ebd2eeb66488
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107596"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587839"
 ---
 # <a name="create-a-scheduled-backup-for-a-web-app-using-powershell"></a>PowerShell を使用した Web アプリのスケジュールされたバックアップの作成
 
@@ -50,8 +50,8 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | ストレージ アカウントを作成します。 |
-| [New-AzStorageContainer](/powershell/module/azure.storage/new-AzStoragecontainer) | Azure ストレージ コンテナーを作成します。 |
-| [New-AzStorageContainerSASToken](/powershell/module/azure.storage/new-AzStoragecontainersastoken) | Azure ストレージ コンテナーの SAS トークンを生成します。 |
+| [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer) | Azure ストレージ コンテナーを作成します。 |
+| [New-AzStorageContainerSASToken](/powershell/module/az.storage/new-AzStoragecontainersastoken) | Azure ストレージ コンテナーの SAS トークンを生成します。 |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | App Service プランを作成します。 |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Web アプリを作成します。 |
 | [Edit-AzWebAppBackupConfiguration](/powershell/module/az.websites/edit-azwebappbackupconfiguration) | Web アプリのバックアップ構成を編集します。 |

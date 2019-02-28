@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 34d397412a6d461325465ccc5dd41a62d91c6fc5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 9a6afc4dfb25a2a5f6e778fbda877a93269a96eb
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872052"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673277"
 ---
 # <a name="quickstart-translator-speech-api-with-python"></a>クイック スタート:Translator Speech API (Python)
 <a name="HOLTop"></a>
@@ -30,7 +31,7 @@ ms.locfileid: "55872052"
 
 Python 用の [websocket-client パッケージ](https://pypi.python.org/pypi/websocket-client)をインストールする必要があります。
 
-下記のコードからコンパイルする実行可能ファイルと同じフォルダーに、"speak.wav" という名前の .wav ファイルを置く必要があります。 この .wav ファイルは、標準の PCM (16 ビット、16 kHz、モノラル形式) である必要があります。 
+下記のコードからコンパイルする実行可能ファイルと同じフォルダーに、"speak.wav" という名前の .wav ファイルを置く必要があります。 この .wav ファイルは、標準の PCM (16 ビット、16 kHz、モノラル形式) である必要があります。
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Microsoft Translator Speech API** を用意している必要があります。 [Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServices)の有料サブスクリプション キーが必要です。
 
@@ -132,7 +133,7 @@ client.run_forever()
 > [!div class="nextstepaction"]
 > [Translator Speech のチュートリアル](../tutorial-translator-speech-csharp.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>関連項目
 
 [Translator Speech の概要](../overview.md)
 [API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

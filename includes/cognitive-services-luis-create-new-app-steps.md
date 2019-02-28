@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 01420c8c63e2a1e238fb608be23e969df400871b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 589569ac1f7b3ff44880062cee235c3aa4375011
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55480509"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738923"
 ---
 1. URL が [https://www.luis.ai](https://www.luis.ai) の LUIS ポータルにサインインします。 
 

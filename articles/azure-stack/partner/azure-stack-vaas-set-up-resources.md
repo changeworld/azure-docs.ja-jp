@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 460edc7f092764cce3584c81371db4801fbd69bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c866bb1ff5603f08377ed96ddd81eedf71e243bf
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240016"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593236"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>チュートリアル:サービスとしての検証のためのリソースを設定する
 
@@ -92,7 +92,7 @@ Azure AD 管理者として、テナントのために必要なアクセス許�
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 
-テストの実行中、VaaS によって、Azure ストレージ アカウントに診断ログが出力されます。 テスト ログに加えて、ストレージ アカウントは、ソリューション検証ワークフローの OEM 拡張機能パッケージをアップロードするために使用することもできます。
+テストの実行中、VaaS によって、Azure ストレージ アカウントに診断ログが出力されます。 テスト ログに加えて、ストレージ アカウントは、パッケージ検証ワークフローの OEM 拡張機能パッケージをアップロードするために使用することもできます。
 
 Azure ストレージ アカウントは、お客様の Azure Stack 環境ではなく Azure パブリック クラウドでホストされます。
 

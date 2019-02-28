@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: a815fac8ecdf108e940f0679536b038e4c0d0d43
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 23a94f7b2054692feedb3b7755dad1e840809be7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880810"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734120"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>チュートリアル:発話から完全なテキスト一致データを取得する
 

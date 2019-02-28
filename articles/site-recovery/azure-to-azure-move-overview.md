@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 1560dad31e00b00a2d27cf1675e05901e6611825
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a73eac1dea731bbf1ffb903ddf2438e791fec9d5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309864"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726451"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 
@@ -70,7 +70,7 @@ VM の移動には、次の手順が伴います。
 
 
 
- ## <a name="move-vms-as-is-to-a-target-region"></a>VM をそのままターゲット リージョンに移動する
+## <a name="move-vms-as-is-to-a-target-region"></a>VM をそのままターゲット リージョンに移動する
 
 以下に示したのは、前述の[アーキテクチャ](#typical-architectures-for-a-multi-tier-deployment)をベースに、ターゲット リージョンに VM をそのまま移動した後のデプロイの概観です。
 

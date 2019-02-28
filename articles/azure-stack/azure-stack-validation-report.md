@@ -16,17 +16,17 @@ ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: 1545fa3c1c94edc98e53b3579e5617a6bf16461c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0f6230dd3fe59e2aa34e358bfa9133f736d17f36
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238859"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732451"
 ---
 # <a name="azure-stack-validation-report"></a>Azure Stack 検証レポート
 Azure Stack 適合性チェッカー ツールでは、Azure Stack 環境のデプロイとサービスをサポートする検証が実行されます。 このツールでは、結果が .json レポート ファイルに書き込まれます。 レポートには、Azure Stack デプロイの前提条件の状態に関する詳細データと概要データが表示されます。 また、既存のAzure Stack デプロイのシークレット ローテーションについての情報も表示されます。  
 
- ## <a name="where-to-find-the-report"></a>レポートの場所
+## <a name="where-to-find-the-report"></a>レポートの場所
 ツールを実行すると、結果のログが **AzsReadinessCheckerReport.json** に出力されます。 また、ツールにより、**AzsReadinessChecker.log** という名前のログも作成されます。 これらのファイルの場所は、PowerShell に検証結果と共に表示されます。
 
 ![run-validation](./media/azure-stack-validation-report/validation.png)

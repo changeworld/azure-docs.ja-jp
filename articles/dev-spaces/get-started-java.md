@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: mmontwil
-ms.openlocfilehash: d1840a451fc9354b32950283b335455d67ccbf43
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d080a3d251d88095e14011b5834d2b923f204162
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657248"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822908"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Azure Dev Spaces での Java の使用
 
@@ -71,7 +71,7 @@ az group create --name MyResourceGroup --location <region>
 以下のコマンドを使用して Kubernetes クラスターを作成します。
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --enable-addons http_application_routing --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --generate-ssh-keys
 ```
 
 クラスターの作成には数分かかります。

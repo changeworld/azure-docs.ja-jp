@@ -12,12 +12,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 08903bcb15c69e3bc9a2b5435785d4a1ee8edb5c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f345ff2e64670536771a639a7619c6e1d4d2d82d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659050"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823945"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Azure Dev Spaces での .NET Core と Visual Studio の使用
 
@@ -52,13 +52,6 @@ ms.locfileid: "55659050"
 1. ロールベースのアクセス制御 (RBAC) に必要な設定を選択します。 Azure Dev Spaces では、RBAC が有効なクラスターと無効なクラスターのどちらでもサポートされます。
 
     ![RBAC の設定](media/common/k8s-RBAC.PNG)
-
-1. [HTTP アプリケーションのルーティング] が有効になっていることを確認します。
-
-   ![[HTTP アプリケーションのルーティング] の有効化](media/common/Kubernetes-Create-Cluster-3.PNG)
-
-    > [!Note]
-    > 既存のクラスターで [Http アプリケーション ルーティング](/azure/aks/http-application-routing)を有効にするには、`az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing` コマンドを使用します。
 
 1. 完了したら、**[Review + create] (レビュー + 作成)**、**[作成]** の順に選択します。
 

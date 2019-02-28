@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2018
+ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: 27a1f385468c2fac59bdb2a5365e798e975b7c87
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f81a781bf3d1232c0af519b81f38c1d27fa6b2df
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252007"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818393"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>チュートリアル:高可用性 SQL データベースの提供
 

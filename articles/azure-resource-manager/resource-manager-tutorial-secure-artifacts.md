@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/07/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: cd692442791f57e1560a97f09253ccd1a8264fb3
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 53cc987d13479fc0d9276ec80f33a163a2a6ded7
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269095"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817033"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>チュートリアル: Azure Resource Manager テンプレートのデプロイ時に成果物をセキュリティで保護する
 
@@ -214,11 +214,8 @@ New-AzResourceGroupDeployment `
     -_artifactsLocation $artifactsLocation `
     -_artifactsLocationSasToken $artifactsLocationSasToken `
     -bacpacFileName $bacpacFileName `
-    -TemplateFile azuredeploy.json
+    -TemplateFile "$HOME/azuredeploy.json"
 ```
-
-> [!NOTE]
-> Cloud Shell での Azure PowerShell の使用には、ファイル IO の問題が存在します。  エラー メッセージは、"*コマンドレットの動的パラメーターを取得できません。パス 'Azure:/azuredeploy.json' が存在しないため検出できません*" です。  `New-AzResourceGroupDeploy` コマンドに **-TemplateFile** スイッチを含めないようにすることが暫定的な回避策となります。 コマンドを実行すると、ファイル名を入力するように求められます。
 
 生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。
 _artifactsLocation、_artifactsLocationSasToken、および bacpacFileName の値については、「[Generate a SAS token](#generate-a-sas-token)」(SAS トークンの生成) を参照してください。

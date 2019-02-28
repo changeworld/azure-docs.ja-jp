@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: e15934fb849e38d69772117a7578289a5843801a
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: d7679f41b5e1c1fe6705ef3ed4be28a521f0d0d2
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963473"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728490"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-java"></a>クイック スタート:Translator Text API と Java を使用して文の長さを調べる
 

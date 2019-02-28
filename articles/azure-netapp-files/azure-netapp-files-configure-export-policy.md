@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 08de7e2ca8cd993a0931f5b16cb9d6c9a04e53dc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 115c6726ed150b9a76685bd5a558d547d215958f
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010958"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587737"
 ---
-# <a name="configure-export-policy-for-a-volume-optional"></a>ボリュームのエクスポート ポリシーを構成する (省略可能)
+# <a name="configure-export-policy-for-a-volume"></a>ボリュームのエクスポート ポリシーを構成する
 
 Azure NetApp Files ボリュームへのアクセスを制御するエクスポート ポリシーは、必要に応じて構成することができます。 
 

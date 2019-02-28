@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 535dd04efd9f150365b24ae175ee90fbb247305f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 28b15e950aa4ebbfcb1b04bfd495b3accf13528e
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846678"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586904"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 
@@ -41,40 +41,11 @@ ms.locfileid: "54846678"
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.Azure Portal を使用した名前空間の作成
-
-> [!NOTE] 
-> [PowerShell](/powershell/azure/get-started-azureps) を使用して Service Bus 名前空間とメッセージング エンティティを作成することもできます。 詳細については、「[PowerShell モジュールで Service Bus リソースを管理する](service-bus-manage-with-ps.md)」を参照してください。
-
-Service Bus メッセージング名前空間を既に作成している場合は、「[Azure Portal を使用したトピックの作成](#2-create-a-topic-using-the-azure-portal)」セクションに進んでください。
-
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-topic-using-the-azure-portal"></a>2.Azure Portal を使用したトピックの作成
+[!INCLUDE [service-bus-create-topics-subscriptions-portal](../../includes/service-bus-create-topics-subscriptions-portal.md)]
 
-1. [Azure Portal][azure-portal] にサインインします。
-2. ポータルの左側のナビゲーション ウィンドウで、**[Service Bus]** をクリックします (**[Service Bus]** が表示されていない場合は、**[すべてのサービス]** をクリックするか、**[すべてのリソース]** をクリックします)。 トピックを作成する名前空間をクリックします。 
-3. 名前空間の [概要] ウィンドウが表示されます。 **[トピック]** をクリックします。
-   
-    ![トピックを作成する][createtopic1]
-4. **[+ トピック]** をクリックします。
-   
-    ![トピックの選択][createtopic2]
-5. トピックの名前を入力します。 他のオプションは既定値のままにしてください。
-   
-    ![Select New][createtopic3]
-6. ダイアログの下部にある **[作成]** をクリックします。
-
-## <a name="3-create-a-subscription-to-the-topic"></a>手順 3.トピックに対するサブスクリプションの作成
-
-1. 手順 1. で作成した名前空間をポータル リソース ウィンドウでクリックし、**[トピック]** をクリックして、手順 2. で作成したトピックの名前をクリックします。
-2. 概要ウィンドウの上部で、**[+ サブスクリプション]** をクリックし、このトピックにサブスクリプションを追加します。
-
-    ![サブスクリプションの作成][createtopic4]
-
-3. サブスクリプションの名前を入力します。 他のオプションは既定値のままにしてください。
-
-## <a name="4-send-messages-to-the-topic"></a>4.トピックにメッセージを送信する
+## <a name="send-messages-to-the-topic"></a>トピックにメッセージを送信する
 
 トピックにメッセージを送信するために、Visual Studio を使用して C# コンソール アプリケーションを作成します。
 
@@ -231,7 +202,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
    
       ![メッセージ サイズ][topic-message]
 
-## <a name="5-receive-messages-from-the-subscription"></a>5.サブスクリプションからメッセージを受信する
+## <a name="receive-messages-from-the-subscription"></a>サブスクリプションからメッセージを受信する
 
 送信したメッセージを受信するには、前の手順で説明した送信側アプリケーションと同じように、.NET Core コンソール アプリケーションをもう 1 つ作成し、**Microsoft.Azure.ServiceBus** NuGet パッケージをインストールします。
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4abec80df4aeeb4c20d56b43ba122ee7266905a6
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998520"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649589"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -69,10 +69,8 @@ ms.locfileid: "55998520"
 
     ![完了後の [Configure template]\(テンプレートの構成\) ページ](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. **[Configure template]\(テンプレートの構成\)** ページで、次の手順のようにします。これらの手順は、チュートリアルでは**省略可能**です。
-    1. **[開始]** を選択してテンプレート VM を開始します。
     2. **[接続]** を選択してテンプレート VM に接続します。 
-    3. テンプレート VM にソフトウェアをインストールして構成します。 
-    4. VM を**停止**します。  
+    3. テンプレート VM にソフトウェアをインストールして構成します。     
     5. テンプレートの**説明**を入力します。
 9. [Configure template]\(テンプレートの構成\) ページの **[次へ]** を選択します。 
 10. **[Publish the template]** \(テンプレートの発行\) ページで、次の操作を行います。 
