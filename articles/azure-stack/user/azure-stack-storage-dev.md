@@ -4,18 +4,17 @@ description: Azure Stack ストレージの開発ツールの使用方法の概�
 services: azure-stack
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 12/03/2018
+ms.date: 11/05/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 857e12664defb1fc0106dd0d3012b77a89f826c2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: aa044ba9a7fcb66b5314144dd77bdd3435488218
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495107"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877607"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack ストレージの開発ツールの概要
 
@@ -30,9 +29,9 @@ Microsoft Azure Stack には、Blob Storage、Table Storage、Queue Storage な�
 
 ## <a name="azure-client-libraries"></a>Azure のクライアント ライブラリ
 
-したがって、ストレージのクライアント ライブラリについて、REST API と互換性のあるバージョンを把握しておいてください。 また、コード内で Azure Stack エンドポイントも指定する必要があります。
+Azure Stack ストレージでサポートされる REST API のバージョンは、1802 update 以降のバージョンでは 2017-04-17、2016-05-31、2015-12-11、2015-07-08、2015-04-05、それより前のバージョンでは 2015-04-05 となります。 Azure Stack のエンドポイントは、最新バージョンの Azure ストレージ REST API と完全に対応しているわけではありません。 したがって、ストレージのクライアント ライブラリについて、REST API と互換性のあるバージョンを把握しておく必要があります。
 
-### <a name="1811-update-or-newer-versions"></a>更新プログラム 1811 以降のバージョン
+### <a name="1802-update-or-newer-versions"></a>1802 update 以降のバージョン
 
 | クライアント ライブラリ | Azure Stack でサポートされるバージョン | Link | エンドポイントの指定 |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
@@ -50,18 +49,18 @@ Composer 経由でインストールするには (BLOB の例):
 
 1. プロジェクトのルートに **composer.json** という名前のファイルを次のコードを使用して作成します。
 
-    ```json
+  ```php
     {
       "require": {
-      "Microsoft/azure-storage-blob":"1.2.0"
+      "Microsoft/azure-storage-blob":"1.0.0"
       }
     }
-    ```
+  ```
 
 2. [composer.phar](http://getcomposer.org/composer.phar) をプロジェクトのルートにダウンロードします。
 3. `php composer.phar install` を実行します。
 
-### <a name="previous-versions-1802-to-1809-update"></a>以前のバージョン (1802 から 1809 までの更新プログラム)
+### <a name="previous-versions"></a>以前のバージョン
 
 |クライアント ライブラリ|Azure Stack でサポートされるバージョン|Link|エンドポイントの指定|
 |---------|---------|---------|---------|
@@ -75,15 +74,15 @@ Composer 経由でインストールするには (BLOB の例):
 
 #### <a name="install-php-client-via-composer---previous"></a>Composer 経由で PHP クライアントをインストールする (以前)
 
-Composer 経由でインストールするには (BLOB の例):
+Composer 経由でインストールするには:
 
 1. プロジェクトのルートに **composer.json** という名前のファイルを次のコードを使用して作成します。
 
-  ```json
+  ```php
     {
-      "require": {
-      "Microsoft/azure-storage-blob":"1.0.0"
-      }
+          "require":{
+          "Microsoft/azure-storage":"0.15.0"
+          }
     }
   ```
 
@@ -102,7 +101,7 @@ Azure Stack Development Kit の既定のエンドポイントは **local.azurest
 
 Azure Stack のエンドポイントのサフィックスは、app.config ファイルに指定されています。
 
-```xml
+```
 <add key="StorageConnectionString"
 value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;
 EndpointSuffix=local.azurestack.external;" />
@@ -112,7 +111,7 @@ EndpointSuffix=local.azurestack.external;" />
 
 Azure Stack のエンドポイントのサフィックスは、接続文字列のセットアップに指定されています。
 
-```java
+```
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account;" +
@@ -124,7 +123,7 @@ public static final String storageConnectionString =
 
 Azure Stack のエンドポイントのサフィックスは、宣言のインスタンスに指定されています。
 
-```javascript
+```
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```
@@ -133,7 +132,7 @@ var blobSvc = azure.createBlobService('myaccount', 'mykey',
 
 Azure Stack のエンドポイントのサフィックスは、接続文字列のセットアップに指定されています。
 
-```cpp
+```
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;
 AccountName=your_storage_account;
 AccountKey=your_storage_account_key;
@@ -144,7 +143,7 @@ EndpointSuffix=local.azurestack.external"));
 
 Azure Stack のエンドポイントのサフィックスは、接続文字列のセットアップに指定されています。
 
-```php
+```
 $connectionString = 'BlobEndpoint=http://<storage account name>.blob.local.azurestack.external/;
 QueueEndpoint=http:// <storage account name>.queue.local.azurestack.external/;
 TableEndpoint=http:// <storage account name>.table.local.azurestack.external/;
@@ -155,7 +154,7 @@ AccountName=<storage account name>;AccountKey=<storage account key>'
 
 Azure Stack のエンドポイントのサフィックスは、宣言のインスタンスに指定されています。
 
-```python
+```
 block_blob_service = BlockBlobService(account_name='myaccount',
 account_key='mykey',
 endpoint_suffix='local.azurestack.external')
@@ -165,7 +164,7 @@ endpoint_suffix='local.azurestack.external')
 
 Azure Stack のエンドポイントのサフィックスは、接続文字列のセットアップに指定されています。
 
-```ruby
+```
 set
 AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;
 AccountName=myaccount;

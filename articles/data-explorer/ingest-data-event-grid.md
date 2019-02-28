@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 343baedb77eb5c8a250e2ab967332dc0905f5112
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6dac6fb18f221ddb45e5b5b7e325868915732368
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743687"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804649"
 ---
 # <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>クイック スタート:Event Grid の通知をサブスクライブすることで Azure Data Explorer に Azure BLOB を取り込む
 
@@ -58,7 +58,7 @@ Azure Data Explorer で、イベント ハブのデータの送信先となる�
 
 1. Azure portal のクラスターで、**[クエリ]** を選択します。
 
-    ![アプリケーションの [クエリ] リンク](media/ingest-data-event-hub/query-explorer-link.png)
+    ![アプリケーションの [クエリ] リンク](media/ingest-data-event-grid/query-explorer-link.png)
 
 1. 次のコマンドをウィンドウにコピーし、**[実行]** を選択して、取り込んだデータを受け取るテーブル (TestTable) を作成します。
 
@@ -82,11 +82,11 @@ Azure Data Explorer で、イベント ハブのデータの送信先となる�
 
 1. 作成したクラスターの **[データベース]**、**[TestDatabase]** の順に選択します。
 
-    ![テスト データベースの選択](media/ingest-data-event-hub/select-test-database.png)
+    ![テスト データベースの選択](media/ingest-data-event-grid/select-test-database.png)
 
 1. **[データ インジェスト]**、**[データ接続の追加]** の順に選択します。
 
-    ![データの取り込み](media/ingest-data-event-hub/data-ingestion-create.png)
+    ![データの取り込み](media/ingest-data-event-grid/data-ingestion-create.png)
 
 1. 接続の種類として、**Blob Storage**。
 
@@ -185,9 +185,9 @@ Azure Storage リソースを操作するいくつかの基本的な Azure CLI �
 
 1. Azure Portal の左端で **[リソース グループ]** を選択し、作成したリソース グループを選択します。  
 
-    左側のメニューが折りたたまれている場合は、 ![展開ボタン](media/ingest-data-event-hub/expand.png) をクリックして展開します。
+    左側のメニューが折りたたまれている場合は、 ![展開ボタン](media/ingest-data-event-grid/expand.png) をクリックして展開します。
 
-   ![削除するリソース グループの選択](media/ingest-data-event-hub/delete-resources-select.png)
+   ![削除するリソース グループの選択](media/ingest-data-event-grid/delete-resources-select.png)
 
 1. **test-resource-group** で **[リソース グループの削除]** を選択します。
 

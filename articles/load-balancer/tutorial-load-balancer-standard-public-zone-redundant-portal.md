@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: d2e81e4f2eda730dc064699f42ba7bfb49648082
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: e83991f553d00af11cfc275137f8e73ebab2098c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230834"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882639"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure Portal と Standard Load Balancer を使用して、可用性ゾーン間で VM の負荷を分散します
 
@@ -177,7 +177,7 @@ Standard Load Balancer では、Standard パブリック IP アドレスだけ�
 4. **[新しいローカル リソースを追加する]** をクリックして、ロード バランサーのバックエンド プールに追加する各仮想マシン (*myVM2* と *myVM3*) を追加します。
 5. **[追加]** をクリックします。
 
-    ![バックエンド アドレス プールへの追加 ](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
+    ![バックエンド アドレス プールへの追加](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
 3. ロード バランサー バックエンド プール設定に、3 つの VM **myVM1**、**myVM2**、および **myVM3** すべてが表示されることを確認します。
 

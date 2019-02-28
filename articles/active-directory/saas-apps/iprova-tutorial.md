@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6576366df214304bb30c46fa65a4bc8bc783cedf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c65f8e023e087c3ca49e0d53f5760fbcd9a5f4d9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182104"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869209"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iprova"></a>チュートリアル:Azure Active Directory と iProva の統合
 
@@ -287,6 +287,6 @@ iProva で Azure AD シングル サインオンを構成するには、次の�
 ## <a name="additional-resources"></a>その他のリソース
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [iProva - SAML2 シングル サインオンを構成する方法](https://webshare.iprova.nl/0wqwm45yn09f5poh/Document.aspx)

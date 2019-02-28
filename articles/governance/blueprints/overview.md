@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 29670b94450e9f145a96b737ef96970db40aeed8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cf3801381359bb973d126e2ee946cdb51e5aecb7
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998554"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823095"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprint とは
 

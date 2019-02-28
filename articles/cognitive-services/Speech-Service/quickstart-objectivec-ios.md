@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 5f6a66b4005a0fa7106830d7e53950a9902cd078
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 67acc7a074b26cb7614b5e08d25afd7b7c1caa74
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447244"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958509"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>クイック スタート:iOS で Objective-C と Speech SDK を使用して音声を認識する
 
@@ -35,7 +35,7 @@ ms.locfileid: "56447244"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.3.0` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.3.1` です。
 
 Mac および iOS 用の Cognitive Services Speech SDK は、現在は Cocoa フレームワークとして配布されています。
 これは https://aka.ms/csspeech/iosbinary からダウンロードできます。 ファイルをホーム ディレクトリにダウンロードします。

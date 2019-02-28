@@ -7,12 +7,12 @@ ms.service: batch-ai
 ms.topic: overview
 ms.date: 2/14/2019
 ms.author: garye
-ms.openlocfilehash: 87dcf18a2517561e3166726f8f1f1a70c2ec7713
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: fb1114e94c227ce6787532c6059186399d0f57f0
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447805"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961359"
 ---
 # <a name="whats-happening-to-azure-batch-ai"></a>Azure Batch AI の現状
 
@@ -282,7 +282,7 @@ ds = ws.get_default_datastore()
 print(ds.datastore_type, ds.account_name, ds.container_name)
 ```
 
-追加ストレージ アカウントの登録または別の登録済みデータストアへの参照の取得について詳しくは、[Azure ML サービスのドキュメント](../machine-learning/service/how-to-access-data.md#create-a-datastore)をご覧ください。
+追加ストレージ アカウントの登録または別の登録済みデータストアへの参照の取得について詳しくは、[Azure ML サービスのドキュメント](../machine-learning/service/how-to-access-data.md#access)をご覧ください。
 
 
 #### <a name="downloading-and-uploading-data"></a>データのダウンロードとアップロード 
@@ -434,7 +434,7 @@ estimator = TensorFlow(source_directory=project_folder,
                        use_gpu=True)
 ```
 
-このトレーニング コード スニペットの完全な情報 (tf_mnist_replica.py ファイルを含む) は、[Azure ML サンプル ノートブックの GitHub リポジトリ](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/distributed-tensorflow-with-parameter-server)にあります。 データストア自体を個々のノードにマウントするか、またはノード自体にトレーニング データをダウンロードすることができます。 Estimator でのデータストアの参照について詳しくは、[Azure ML サービスのドキュメント](../machine-learning/service/how-to-access-data.md#access-datastores-for-training)をご覧ください。 
+このトレーニング コード スニペットの完全な情報 (tf_mnist_replica.py ファイルを含む) は、[Azure ML サンプル ノートブックの GitHub リポジトリ](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/distributed-tensorflow-with-parameter-server)にあります。 データストア自体を個々のノードにマウントするか、またはノード自体にトレーニング データをダウンロードすることができます。 Estimator でのデータストアの参照について詳しくは、[Azure ML サービスのドキュメント](../machine-learning/service/how-to-access-data.md#access)をご覧ください。 
 
 Azure ML での実行の送信は、submit 関数で行います。
 

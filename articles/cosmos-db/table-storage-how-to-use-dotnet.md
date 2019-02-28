@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
-ms.openlocfilehash: 7798af5d667bcf70ba562bb7198f9af570f3005a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 57ed02463555ce9e958aedd9c2b317f7a167567b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044418"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985888"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>.NET を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -36,7 +36,6 @@ Table Storage または Azure Cosmos DB Table API を使用すると、Web ア�
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [.NET 用 Azure Storage Common ライブラリ (プレビュー)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)。 - 運用環境でサポートされている必須のプレビュー パッケージ。 
 * [.NET 用 Microsoft Azure CosmosDB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) - このライブラリは、現在、.NET Standard だけで利用できます。まだ .NET Core では利用できません。
-* [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
@@ -77,14 +76,11 @@ Azure クラウド サービス、Azure Web アプリ、デスクトップ ア�
 
 * [.NET 用 Microsoft Azure Cosmos DB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。 このパッケージを使用すると、Azure Table ストレージ アカウントまたは Azure Cosmos DB Table API アカウント内のデータ リソースにプログラムでアクセスできます。 このライブラリは、現在、.NET Standard だけで利用できます。まだ .NET Core では利用できません。
 
-* [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/):このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
-
 NuGet パッケージを取得するには、次の手順に従います。
 
 1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 2. 「Microsoft.Azure.Storage.Common」をオンラインで検索し、<= 9.0.0.1 のバージョンを選択し、**[インストール]** を選択して .NET 用 Azure Storage Common ライブラリ (プレビュー) とその依存関係をインストールします。 これはプレビュー パッケージなので、**[プレリリースを含める]** チェックボックスをオンにします。
 3. 「Microsoft.Azure.CosmosDB.Table」をオンラインで検索し、**[インストール]** を選択して Microsoft Azure CosmosDB Table ライブラリをインストールします。
-4. "WindowsAzure.ConfigurationManager" をオンラインで検索し、**[インストール]** を選択して Microsoft Azure Configuration Manager ライブラリをインストールします。
 
 > [!NOTE]
 > .NET 用 Storage Common ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet で入手できる ODataLib パッケージで解決されます。 ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。 ストレージ クライアント ライブラリで使用される ODataLib パッケージは、[OData](https://nuget.org/packages/Microsoft.Data.OData/)、[Edm](https://nuget.org/packages/Microsoft.Data.Edm/)、[Spatial](https://nuget.org/packages/System.Spatial/) です。 これらのライブラリが Azure Table ストレージ クラスで使用されるときは、Storage Common ライブラリを使用したプログラミングの必須の依存関係です。

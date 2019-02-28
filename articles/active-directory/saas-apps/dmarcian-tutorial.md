@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4768c38b2e76bfa8cdff3187c32c03fdaaf57bbf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a2c6b95d62f6210ecfdd560bc1c00a3e055be3ee
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207655"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880352"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>チュートリアル:Azure Active Directory と dmarcian の統合
 
@@ -143,15 +143,15 @@ dmarcian で Azure AD のシングル サインオンを構成するには、次
 
 2. 右上隅にある **[プロファイル]** をクリックし、**[ユーザー設定]** に移動します。
 
-    ![[ユーザー設定] ](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
+    ![[ユーザー設定]](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
 
 3. 下へスクロールして **[シングル サインオン]** セクションをクリックしてから、**[構成]** をクリックします。
 
-    ![シングル ](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
+    ![シングル](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
 
 4. **[SAML シングル サインオン]** ページで、**[状態]** を **[有効]** に設定し、次の手順を実行します。
 
-    ![認証 ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
+    ![認証](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
     * **[Add dmarcian to your Identity Provider]\(ID プロバイダーへの dmarcian の追加\)** セクションで、**[コピー]** をクリックしてインスタンスの **[Assertion Consumer Service URL]** をコピーし、それを Azure portal の **[基本的な SAML 構成] セクション**にある **[応答 URL]** テキスト ボックスに貼り付けます。
 
@@ -229,15 +229,15 @@ Azure AD ユーザーが dmarcian にサインインできるようにするに�
 
 2. 右上隅にある **[プロファイル]** をクリックし、**[ユーザーの管理]** に移動します。
 
-    ![ユーザー ](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
+    ![ユーザー](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
 
 3. **[SSO Users] (SSO ユーザー)** セクションの右側で、**[新しいユーザーの追加]** をクリックします。
 
-    ![ユーザーの追加 ](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
+    ![ユーザーの追加](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
 
 4. **[新しいユーザーの追加]** ポップアップで、次の手順を実行します。
 
-    ![新しいユーザー ](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
+    ![新しいユーザー](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
     a. **[New User Email] (新しいユーザーの電子メール)** テキスト ボックスに、ユーザーの電子メール (**brittasimon@contoso.com** など) を入力します。
 
@@ -255,7 +255,7 @@ Azure AD ユーザーが dmarcian にサインインできるようにするに�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: db0ff8b8cc305bb9f7b4625cf060de72a5c7d276
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6bf7c92b0c9b143f9622cf1698fa39b0f45843f1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109794"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874530"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-net-framework"></a>クイック スタート:Speech SDK for .NET Framework を使用して音声を翻訳する
 
@@ -32,7 +32,7 @@ ms.locfileid: "56109794"
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
-[!INCLUDE [Create project ](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
+[!INCLUDE [Create project](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 

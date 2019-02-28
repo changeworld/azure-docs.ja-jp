@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: b43dac7f81b92ac504427dab164d23d9ebb1ec03
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: d0d5ee18e37436562f1e9e15571dc39fb0e00129
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411409"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875038"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは
 
@@ -59,7 +59,7 @@ Data Box は、ネットワークにほとんどまたはまったく影響を�
 | 仕様                                          | 説明              |
 |---------------------------------------------------------|--------------------------|
 | Weight                                                  | 23 kg (50 lbs) 未満                |
-| ディメンション                                              | デバイス - 幅: 309.0 mm、高さ: 430.4 mm、奥行: 502.0 mm |            
+| Dimensions                                              | デバイス - 幅: 309.0 mm、高さ: 430.4 mm、奥行: 502.0 mm |            
 | ラック スペース                                              | 寝かせてラックに配置した場合 7 U (ラック マウント不可)|
 | 必要なケーブル                                         | 電源ケーブル x 1 (同梱) <br> RJ45 ケーブル x 2 <br> SFP+ Twinax 銅線ケーブル x 2|
 | ストレージの容量                                        | 100 TB のデバイス (RAID 5 保護後の使用可能容量 80 TB)|
@@ -76,7 +76,7 @@ Data Box に含まれるコンポーネントを次に示します。
 
 * **Data Box デバイス** - プライマリ ストレージを提供し、クラウド ストレージとの通信を管理する物理デバイスです。デバイス上に保存されたすべてのデータのセキュリティと機密性も確保されます。 Data Box デバイスでは、80 TB のストレージ容量を使用できます。 
 
-    ![Data Box の正面と背面 ](media/data-box-overview/data-box-combined3.png)
+    ![Data Box の正面と背面](media/data-box-overview/data-box-combined3.png)
 
     
 * **Data Box サービス** - さまざまな地理的場所からアクセスできる Web インターフェイスから、Data Box デバイスを管理できる、Azure portal の拡張機能。 Data Box サービスを使用すると、Data Box デバイスの日常的な管理を実行できます。 サービス タスクには、注文の作成と管理、警告の表示と管理、共有の管理が含まれます。  

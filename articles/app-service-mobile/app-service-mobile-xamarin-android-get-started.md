@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: a3b039b1ea492c44505c427ec171cf7a4a5fad01
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 16f67f55b752e8602d43066cc1ce503ce9e5c1e2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47062437"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879205"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -72,7 +72,7 @@ Xamarin Android アプリケーションの他のすべての Mobile Apps のチ
 
 ## <a name="next-steps"></a>次の手順
 * [アプリへのオフライン同期の追加](app-service-mobile-xamarin-android-get-started-offline-data.md)
-* [アプリへの認証の追加 ](app-service-mobile-xamarin-android-get-started-users.md)
+* [アプリへの認証の追加](app-service-mobile-xamarin-android-get-started-users.md)
 * [Xamarin.Android アプリへのプッシュ通知の追加](app-service-mobile-xamarin-android-get-started-push.md)
 * [Azure Mobile Apps 用の管理されたクライアントの使用方法](app-service-mobile-dotnet-how-to-use-client-library.md)
 
