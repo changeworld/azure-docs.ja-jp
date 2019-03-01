@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7ddc451627cd6880f3aca6cdcff03d83b86b8eb1
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: afb2cae4875b198c6da8ce6568ac5039520b4b27
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958305"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193927"
 documentType: LandingData
 title: Azure App Configuration (プレビュー) のドキュメント
 metadata:
@@ -56,13 +56,12 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/azure-app-configuration/integrate-with-azure-managed-service-identity">Azure マネージド サービス ID と統合する</a>
-    - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-in-aspnet-core">ASP.NET Core で動的な構成を有効にする</a>
+    - html: <a href="/azure/azure-app-configuration/integrate-azure-managed-service-identity">Azure マネージド サービス ID と統合する</a>
+    - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core">ASP.NET Core で動的な構成を有効にする</a>
 - title: サンプル
   items:
   - type: list
     style: unordered
     className: spaced noBullet
     items:
-    - html: <a href="https://github.com/azure/AzureAppConfiguration-samples">コード サンプル</a>
     - html: <a href="/azure/azure-app-configuration/cli-samples">Azure CLI</a>

@@ -26,8 +26,6 @@ items:
     href: integrate-azure-managed-service-identity.md
 - name: サンプル
   items:
-  - name: コード サンプル
-    href: https://github.com/Azure/AppConfiguration/samples
   - name: Azure CLI
     href: cli-samples.md
 - name: 概念
@@ -52,9 +50,13 @@ items:
     href: https://go.microsoft.com/fwlink/?linkid=2074659
   - name: REST
     href: https://go.microsoft.com/fwlink/?linkid=2078296
-ms.openlocfilehash: 44586961e8baf9338f03995c6f420dbc88fb97ef
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+- name: リソース
+  items:
+  - name: 製品フィードバックの提供
+    href: https://github.com/Azure/AppConfiguration
+ms.openlocfilehash: 6723ea35f6cc674c0e2776260c2077d781a5014c
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958033"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989774"
