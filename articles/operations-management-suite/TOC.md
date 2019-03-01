@@ -2,7 +2,7 @@
 ## [エージェントの監視](../monitoring/index.md)
 
 # 作業開始
-## [Log Analytics](../log-analytics/log-analytics-get-started.md)
+## [Azure Monitor ログ](../log-analytics/log-analytics-get-started.md)
 ## [Automation](/azure/automation/)
 ## [Backup](../backup/backup-introduction-to-azure-backup.md)
 ## [Site Recovery](../site-recovery/site-recovery-overview.md)
@@ -11,7 +11,7 @@
 # 方法
 
 ## 分析
-### [Log Analytics](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## 自動化
 ### [Azure Automation の概要](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 

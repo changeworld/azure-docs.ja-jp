@@ -1,5 +1,5 @@
 items:
-- name: Azure App Configuration のドキュメント
+- name: Azure App Configuration (プレビュー) のドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -51,10 +51,10 @@ items:
   - name: Java Spring 構成プロバイダー
     href: https://go.microsoft.com/fwlink/?linkid=2074659
   - name: REST
-    href: https://docs.microsoft.com/rest/api/azure-app-configuration
-ms.openlocfilehash: c35296a6923e464ca20a873de4165ea20c08278f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+    href: https://go.microsoft.com/fwlink/?linkid=2078296
+ms.openlocfilehash: 44586961e8baf9338f03995c6f420dbc88fb97ef
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884136"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958033"

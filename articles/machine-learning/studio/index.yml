@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b8ce62533af1cf8f921a8a8eafb8e781821c2604
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 4428bf710df5eae3b06c8abd38eb85d6128a574d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233814"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959427"
 documentType: LandingData
 title: Machine Learning Studio のドキュメント
 metadata:
@@ -18,21 +18,10 @@ metadata:
   ms.author: jmartens
   ms.tgt_pltfrm: na
   ms.devlang: na
-  ms.date: 01/24/2019
+  ms.date: 02/24/2019
 abstract:
   description: Azure Machine Learning Studio は、データに基づき予測分析ソリューションを構築、テスト、デプロイするための、コラボレーションに対応したドラッグ アンド ドロップ ツールです。 チュートリアル、ビデオ、サンプル モデルでは、Studio を使用して機械学習モデルを構築し、デプロイする方法を紹介しています。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: Machine Learning Studio の基本的な使用方法を学習します。
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="create-experiment">初めての Studio 実験を作成する</a>
-    - html: <a href="algorithm-choice">最適なアルゴリズムを選択する</a>
-    - html: <a href="deploy-consume-web-service-guide">モデルを Web サービスとしてデプロイする</a>
-    - html: <a href="data-science-for-beginners-the-5-questions-data-science-answers">「初心者向けデータ サイエンス解説」について読む</a>
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
@@ -40,8 +29,8 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-part1-credit-risk">予測ソリューションを作成およびデプロイする</a>
-    - html: <a href="azure-ml-customer-churn-scenario">顧客離れの例</a>
+    - html: <a href="create-experiment">初めての Studio 実験を作成する</a>
+    - html: <a href="tutorial-part1-credit-risk">信用リスクに対する予測ソリューションを作成およびデプロイする</a>
 - title: リファレンス
   items:
   - type: list

@@ -148,6 +148,8 @@ items:
           href: azure-stack-solution-template-kubernetes-azuread.md
         - name: AD FS を使用した Kubernetes のデプロイ
           href: azure-stack-solution-template-kubernetes-adfs.md
+        - name: Kubernetes ダッシュボードの有効化
+          href: azure-stack-solution-template-kubernetes-dashboard.md
         - name: Kubernetes クラスターのトラブルシューティング
           href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Cognitive Services のデプロイ
@@ -233,9 +235,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: c9c4e0109df5880100956e167d17c61dfd001743
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: a06965bc494da93dfb945ccdfbbf10db310df48c
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450679"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986296"
