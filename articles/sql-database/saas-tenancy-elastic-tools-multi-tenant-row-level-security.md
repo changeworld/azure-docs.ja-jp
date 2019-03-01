@@ -42,7 +42,7 @@ ms.locfileid: "55568262"
 - Visual Studio (2012 以降) を使用します。
 - 3 つの Azure SQL データベースを作成します
 - サンプル プロジェクトをダウンロードします:[Elastic DB Tools for Azure SQL - Multi-Tenant Shards](https://go.microsoft.com/?linkid=9888163)
-  -  **Program.cs** 
+  - **Program.cs** 
 
 このプロジェクトでは、 [Azure SQL の弾力性 DB ツールの Entity Framework 統合](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) に関するページで説明したプロジェクトを、マルチテナント シャード データベースのサポートを追加して拡張します。 このプロジェクトでは、ブログや記事を作成するための単純なコンソール アプリケーションを作成します。 プロジェクトには、4 つのテナントのほか、2 つのマルチテナント シャード データベースが含まれます。 この構成は、上の図に示されています。 
 

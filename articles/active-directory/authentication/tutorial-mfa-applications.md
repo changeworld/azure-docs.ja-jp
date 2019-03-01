@@ -52,7 +52,7 @@ ms.locfileid: "56204799"
     * **[選択]** をクリックします。
 1. **[セッション]** セクションはスキップします
 1. **[ポリシーを有効にする]** を **[オン]** にします
-1.  **[作成]**
+1. **[作成]**
 
 ## <a name="test-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のテスト
 

@@ -60,7 +60,7 @@ ms.locfileid: "55459130"
 ## <a name="blob-dataexploration"></a>Pandas を使用したデータ探索の例
 次に、Pandas を使用してデータを探索する方法の例をいくつかを示します。
 
-1.  **行と列の数** 
+1. **行と列の数** 
    
         print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 2. 次のデータセットの始めまたは終わりの数**行**を**検査**します。
