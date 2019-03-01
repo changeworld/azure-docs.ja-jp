@@ -128,10 +128,10 @@ items:
       href: how-to-control-access.md
   - name: IoT Edge デバイスのプロビジョニング
     items:
-    - name: " Linux"
+    - name: Linux
       href: ../iot-edge/how-to-auto-provision-simulated-device-linux.md
       maintainContext: true
-    - name: " Windows"
+    - name: Windows
       href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
       maintainContext: true
   - name: SDK での構成証明メカニズムの使用
@@ -201,7 +201,7 @@ items:
   - name: Azure IoT Hub
     href: https://azure.microsoft.com/services/iot-hub/
   - name: IoT デバイス カタログ向けの Azure 認定
-    href: https://catalog.azureiotsuite.com/
+    href: https://catalog.azureiotsolutions.com/
   - name: Azure IoT デベロッパー センター
     href: https://azure.microsoft.com/develop/iot/
   - name: 顧客データ要求
@@ -226,9 +226,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 1a47edb218cc07fe48ee64bd8d23cc167083935e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 2eac27d88f9467d5badf1050d6358af84d9a49d8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156407"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009836"
