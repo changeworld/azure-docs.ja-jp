@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2105919e0c21ef57ae2cd19450110df384252e97
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 43d28cde7e4287b5394087000b5e730a94748713
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730938"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010635"
 documentType: LandingData
 title: Bing Autosuggest のドキュメント
 metadata:
@@ -12,18 +12,39 @@ metadata:
   title: Bing Autosuggest のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
   description: Bing Autosuggest API を使用して、部分クエリに基づいてクエリ候補を取得する方法について説明します。 チュートリアルでは、このサービスを使用するアプリを構築する方法を説明します。
   services: cognitive-services
-  author: v-jaswel
-  manager: kamrani
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/10/2017
-  ms.author: v-jaswel
+  ms.date: 02/20/2019
+  ms.author: aahi
 abstract:
-  description: Bing Autosuggest API によって、部分検索のクエリ用語を Bing に送信すると、他のユーザーがそれに基づいて検索を実行するクエリ候補の一覧が返されます。  たとえば、ユーザーが検索語の各文字を入力するときに、この API を呼び出して、検索ボックスのドロップダウン リストにクエリ文字列の候補を入力します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Autosuggest API の使用方法を確認してください。
+  description: Bing Autosuggest API によって、部分検索のクエリ用語を Bing に送信すると、他のユーザーがそれに基づいて検索を実行するクエリ候補の一覧が返されます。  たとえば、ユーザーが検索語の各文字を入力すると、この API を呼び出して、検索ボックスのドロップダウン リストに候補を設定できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Autosuggest API の使用方法を確認してください。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-autosuggest/overview
+      html: <p>Bing Autosuggest API について説明します</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Bing Autosuggest API とは
+    - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
+      html: <p>リアルタイムで検索候補を取得する方法について説明します</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Bing Autosuggest API からの候補の取得
+    - href: /azure/cognitive-services/bing-autosuggest/language-support
+      html: <p>この API でサポートされている言語を確認します。</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: サポートされている言語
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
@@ -60,7 +81,7 @@ sections:
   - type: paragraph
     text: Bing Autosuggest API を使用してアプリケーションを開発する方法について説明します。
   - type: paragraph
-    text: <a href="tutorials/autosuggest.md">シングルページの Web アプリ</a> &#124; <a href="tutorials/autosuggest-source.md">ソース コード</a>
+    text: <a href="tutorials/autosuggest.md">単一ページの Web アプリ</a>
 - title: リファレンス
   items:
   - type: list

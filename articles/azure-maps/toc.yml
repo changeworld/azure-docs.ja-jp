@@ -149,6 +149,30 @@ items:
       href: https://docs.microsoft.com/javascript/api/azure-maps-rest/
   - name: Resource Manager テンプレート
     href: /azure/templates/microsoft.maps/accounts
+- name: リソース
+  items:
+  - name: Azure Maps の使用条件
+    href: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/azure-maps
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/azure-maps
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs
+  - name: 用語集
+    href: glossary.md
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates
+  - name: Azure IoT デベロッパー センター
+    href: https://azure.microsoft.com/develop/iot/
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=iot
+  - name: 技術的なケース スタディ
+    href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
+  - name: ビデオ
+    href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
 - name: 関連項目
   items:
   - name: 解決方法
@@ -175,31 +199,9 @@ items:
       href: /azure/iot-edge
     - name: IoT デバイス SDK
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-- name: リソース
-  items:
-  - name: Azure IoT デベロッパー センター
-    href: https://azure.microsoft.com/develop/iot/
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=iot
-  - name: 用語集
-    href: glossary.md
-  - name: MSDN フォーラム
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/azure-maps
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates
-  - name: スタック オーバーフロー
-    href: https://stackoverflow.com/questions/tagged/azure-maps
-  - name: 技術的なケース スタディ
-    href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
-  - name: ビデオ
-    href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
-ms.openlocfilehash: 114647e85aa775d37dab827daef2e55867e5a47b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 194b8ff59a19e33a3ec8e2544e4d04c9afb6613f
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234392"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246444"

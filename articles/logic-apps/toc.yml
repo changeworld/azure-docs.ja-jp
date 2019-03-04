@@ -293,14 +293,14 @@ items:
     items:
     - name: ロジック アプリの監視
       href: logic-apps-monitor-your-logic-apps.md
-    - name: Log Analytics を使用したロジック アプリの監視
+    - name: Azure Monitor ログでロジック アプリを監視する
       href: logic-apps-monitor-your-logic-apps-oms.md
-    - name: Log Analytics を使用した B2B メッセージの監視
+    - name: Azure Monitor ログで B2B メッセージを監視する
       href: logic-apps-monitor-b2b-message.md
       items:
-      - name: Log Analytics を使用した B2B メッセージの追跡
+      - name: Azure Monitor ログで B2B メッセージを追跡する
         href: logic-apps-track-b2b-messages-omsportal.md
-      - name: Log Analytics を使用した B2B メッセージに対するクエリの作成
+      - name: Azure Monitor ログで B2B メッセージに対するクエリを作成する
         href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
   - name: 例、シナリオ、チュートリアル
     href: logic-apps-examples-and-scenarios.md
@@ -375,9 +375,9 @@ items:
     href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest
-ms.openlocfilehash: a0f802723c1c2c74dfb0599ace922ac61e1c2a64
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ceb5c51c3cd189da408ce23f0b03babb73f462ef
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243928"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194233"

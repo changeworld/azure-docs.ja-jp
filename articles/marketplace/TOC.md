@@ -14,6 +14,7 @@
 #### [リード管理](./lead-management-for-cloud-marketplace.md)
 #### [Azure Marketplace における取引](./marketplace-commercial-transaction-capabilities-and-considerations.md)
 #### [プライベート プラン](./private-offers.md)
+#### [標準的な契約](./standard-contract.md)
 
 ### [プランの種類別の公開ガイド](./publisher-guide-by-offer-type.md)
 #### [Virtual Machines](./marketplace-virtual-machines.md)
@@ -30,13 +31,16 @@
 #### [プラン掲載のベスト プラクティス](./gtm-offer-listing-best-practices.md)
 #### [取り上げられる方法](./gtm-how-to-get-featured.md)
 #### [Marketplace コンテンツの検証](./marketplace-criteria-content-validation.md)
+#### [クラウド ソリューション プロバイダー](./cloud-solution-providers.md)
 
 ### [マーケットプレースの特典](./gtm-your-marketplace-benefits.md)
 #### [Microsoft を利用したビジネスのプロモーション](./gtm-promote-your-business.md)
 #### [推奨されるソリューション](./preferred-solutions.md) 
+#### [統合されたソリューション](./integrated-solutions.md)
 
 ### [Azure Marketplace および AppSource のサポート](./support-azure-marketplace.md)
 #### [Marketplace に関する FAQ](./marketplace-faq-publisher-guide.md)
+#### [利用可能な地域と通貨](./marketplace-geo-availability-currencies.md)
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 

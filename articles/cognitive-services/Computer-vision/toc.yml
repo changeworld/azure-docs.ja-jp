@@ -126,8 +126,6 @@ items:
     href: concept-detecting-color-schemes.md
   - name: サムネイルの生成
     href: concept-generating-thumbnails.md
-  - name: OCR によるテキストの抽出
-    href: concept-extracting-text-ocr.md
   - name: 印刷されたテキストと手書きのテキストの認識
     href: concept-recognizing-text.md
   - name: 成人向けコンテンツとわいせつなコンテンツの検出
@@ -202,9 +200,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: e3653590989020e4a9186cf9e083bf3b061f2f49
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 2fc31b518155f49cd17b86780e6accbacc2ba354
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452323"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192311"

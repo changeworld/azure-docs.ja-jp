@@ -113,7 +113,7 @@ items:
       href: load-balancer-multiple-ip-cli.md
     - name: 複数の IP 構成の使用 (PowerShell)
       href: load-balancer-multiple-ip-powershell.md
-  - name: Azure Load Balancer のログ分析
+  - name: Azure Load Balancer 用の Azure Monitor のログ
     href: load-balancer-monitor-log.md
   - name: REST を使用して Load Balancer のメトリックを取得する
     href: load-balancer-query-metrics-rest-api.md
@@ -192,9 +192,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=load-balancer
-ms.openlocfilehash: 592ebadf6b356486cb8fac7d517d509874d0533b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 97290ad2dbd72a368f5130b8f4a295a4ed2fbd9a
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229797"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193508"
