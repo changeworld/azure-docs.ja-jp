@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/21/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 1395c79b9c39d7376f39446eac6da8ee80b2ef18
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 97d1cf2817ebfbf2eb1a6ba5a4d20d457b6369c6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232670"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961739"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure Portal を使用して VM の負荷を分散する Standard Load Balancer を作成する
 
@@ -40,21 +40,20 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサイン�
 このセクションでは、仮想マシンの負荷分散に役立つパブリック ロード バランサーを作成します。 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 Standard Load Balancer を作成するときに、Standard Load Balancer のフロントエンド (既定では *LoadBalancerFrontend* という名前) として構成される新しい Standard パブリック IP アドレスも作成する必要があります。 
 
 1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[ロード バランサー]** の順にクリックします。
-2. **[ロード バランサーの作成]** ページで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
+2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[確認と作成]** を選択します。
 
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
+    | サブスクリプション               | サブスクリプションを選択します。    |    
+    | リソース グループ         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupSLB*」と入力します。|
     | Name                   | *myLoadBalancer*                                   |
-    | type          | パブリック                                        |
-    | SKU           | 標準                          |
-    | パブリック IP アドレス | **[新規作成]** を選択して、テキスト ボックスに「*myPublicIP*」と入力します。 既定では、パブリック IP アドレスの Standard SKU が選択されます。 **[可用性ゾーン]** で、**[ゾーン冗長]** を選択します。 |
-    | サブスクリプション               | サブスクリプションを選択します。    |
-    |リソース グループ | **[新規作成]** を選択して、「*myResourceGroupSLB*」と入力します。    |
-    | 場所           | **[西ヨーロッパ]** を選択します。                          |
-    
-
-![ロード バランサーの作成](./media/load-balancer-standard-public-portal/create-load-balancer.png)
-
+    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | type          | **[パブリック]** を選択します。                                        |
+    | SKU           | **[Standard]** を選択します。                          |
+    | パブリック IP アドレス | **[新規作成]** を選択します。 |
+    | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
+    |可用性ゾーン| **[ゾーン冗長]** を選択します。    |
+3. **[確認と作成]** タブで、**[作成]** をクリックします。   
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
@@ -84,7 +83,7 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサイン�
         2. **[ネットワーク セキュリティ グループの作成]** ページで、**[名前]** に「*myNetworkSecurityGroup*」と入力し、**[OK]** を選択します。
 5. **[無効]** をクリックして、ブート診断を無効にします。
 6. **[OK]** をクリックし、概要ページの設定を確認して、**[作成]** をクリックします。
-7. 手順 1. から 6. を使用して、*VM2* という名前の 2 つ目の VM を作成します。可用性セットとして *myAvailibilityset*、仮想ネットワークとして *myVnet*、サブネットとして *myBackendSubnet*、ネットワーク セキュリティ グループとして **myNetworkSecurityGroup* を指定します。 
+7. 手順 1 から 6 を使用して、*VM2* という名前の 2 つ目の VM を作成します。仮想ネットワークとして *myVnet*、サブネットとして *myBackendSubnet*、ネットワーク セキュリティ グループとして **myNetworkSecurityGroup* を指定します。 
 
 ### <a name="create-nsg-rule"></a>NSG 規則の作成
 

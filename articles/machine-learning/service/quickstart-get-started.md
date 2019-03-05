@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: f04cd2c6d3d4eff0cbc03ee57b9a57c6883db1d6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9d441ed408f9c9348ba091178cf6ce84d67abb3a
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239011"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672935"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>クイック スタート:Azure portal を使用した Azure Machine Learning の基本操作
 

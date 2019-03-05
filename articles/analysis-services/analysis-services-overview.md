@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 114dac10592213d3b2fdfff909913039b3dba344
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 53ce82a6e1180d4493e2d4014bf6e26e9bde2466
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429436"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731397"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -132,7 +132,7 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 
 ## <a name="built-on-sql-server-analysis-services"></a>SQL Server Analysis Services が基礎
 
-Azure Analysis Services には、SQL Server Analysis Services Enterprise Edition が既に備えている数多くの優れた機能との互換性があります。 Azure Analysis Services は、[互換性レベル](analysis-services-compat-level.md) 1200 以降の表形式モデルをサポートします。 表形式モデルは、Tabular Model Scripting Language (TMSL) と表形式オブジェクト モデル (TOM) コードで表形式メタデータ オブジェクト定義に明記されたリレーショナル モデリング構造 (モデル、テーブル、列) です。 パーティション、パースペクティブ、行レベルのセキュリティ、双方向リレーションシップ、および翻訳のすべてがサポートされています。* 多次元モデルと PowerPivot for SharePoint は、Azure Analysis Services ではサポートされて "*いません*"。
+Azure Analysis Services には、SQL Server Analysis Services Enterprise Edition が既に備えている数多くの優れた機能との互換性があります。 Azure Analysis Services は、[互換性レベル](analysis-services-compat-level.md) 1200 以降の表形式モデルをサポートします。 表形式モデルは、Tabular Model Scripting Language (TMSL) と表形式オブジェクト モデル (TOM) コードで表形式メタデータ オブジェクト定義に明記されたリレーショナル モデリング構造 (モデル、テーブル、列) です。 パーティション、パースペクティブ、行レベルのセキュリティ、双方向リレーションシップ、および翻訳のすべてがサポートされています。\* 多次元モデルと PowerPivot for SharePoint は、Azure Analysis Services ではサポートされて "*いません*"。
 
 インメモリと DirectQuery モードの両方で表形式モデルがサポートされます。 インメモリ モード (既定値) の表形式モデルでは、複数のデータ ソースがサポートされます。 モデル データは高度に圧縮され、インメモリでキャッシュされるため、このモードは、大量のデータに対するクエリの応答を最速で提供します。 複雑なデータセットとクエリに対する最大の柔軟性も備えています。 パーティション分割によって増分読み込みが可能になり、並列処理が増加し、メモリの消費量が減少します。 計算テーブルなどの高度なデータ モデリング機能と、すべての DAX 関数がサポートされます。 データ ソースからキャッシュされたデータを更新するには、インメモリ モデルを更新 (処理) する必要があります。 Azure サービス プリンシパルのサポートによる PowerShell、TOM、TMSL、および REST を使用した無人の更新操作によって、モデル データが常に最新であることを柔軟に保証できます。 
 
@@ -203,7 +203,7 @@ Visual Studio 2017 を使用している場合、インストール可能な無�
 
 ### <a name="powershell"></a>PowerShell
 
-サーバー リソースの作成、サーバー操作の中断/再開、サービス レベルの変更などのサーバー リソース管理タスクでは、Azure Resource Manager (AzureRM) コマンドレットが使用されます。 ロール メンバーの追加と削除、処理、TMSL スクリプトの実行など、その他のデータベース管理タスクでは、SqlServer モジュールのコマンドレットが使用されます。 詳細については、「[PowerShell で Azure Analysis Services を管理する](analysis-services-powershell.md)」を参照してください。
+サーバー リソースの作成、サーバー操作の中断/再開、サービス レベルの変更などのサーバー リソース管理タスクでは、Azure PowerShell コマンドレットが使用されます。 ロール メンバーの追加と削除、処理、TMSL スクリプトの実行など、その他のデータベース管理タスクでは、SqlServer モジュールのコマンドレットが使用されます。 詳細については、「[PowerShell で Azure Analysis Services を管理する](analysis-services-powershell.md)」を参照してください。
 
 ### <a name="object-model-and-scripting"></a>オブジェクト モデルとスクリプト
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 16c9eea61391511f7515308131b3541e186cd7ae
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b8600ed03140e302c730d44c6410d2020b7c48a3
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232619"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983185"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>チュートリアル:Azure portal の Basic ロードバランサーを使用して内部トラフィックの負荷を分散する
 
@@ -87,20 +87,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ポータルの左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。
    
-1. **[ロード バランサーの作成]** ウィンドウで次の値を入力または選択します。
+2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[確認と作成]** を選択します。
+
+    | Setting                 | 値                                              |
+    | ---                     | ---                                                |
+    | サブスクリプション               | サブスクリプションを選択します。    |    
+    | リソース グループ         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
+    | Name                   | *myLoadBalancer*                                   |
+    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | type          | **[パブリック]** を選択します。                                        |
+    | SKU           | **[Basic]** を選択します。                          |
+    | 仮想ネットワーク           | *[MyVNet]* を選択します。                          |    
+| パブリック IP アドレス | **[新規作成]** を選択します。 |
+    | パブリック IP アドレスの割り当て              | **[静的]** を選択します。   |
+    | プライベート IP アドレス|仮想ネットワークとサブネットのアドレス空間内にあるアドレスを入力します (例: *10.3.0.7*)。  |
+
+3. **[確認と作成]** タブで、**[作成]** をクリックします。 
    
-   - **[名前]**:「*MyLoadBalancer*」と入力します。
-   - **[種類]**:**[内部]** を選択します。 
-   - **[SKU]**:**[Basic]** を選択します。
-   - **[仮想ネットワーク]**:**[仮想ネットワークの選択]** を選択し、**[MyVNet]** を選択します。
-   - **[サブネット]**:**[サブネットの選択]** を選択し、**[MyBackendSubnet]** を選択します。
-   - **[IP アドレスの割り当て]**:選択されていない場合は **[静的]** を選択します。
-   - **[プライベート IP アドレス]**:仮想ネットワークとサブネットのアドレス空間内にあるアドレスを入力します (例: *10.3.0.7*)。
-   - **ResourceGroup**:**[既存の選択]** ドロップ ダウンから **[MyResourceGroupLB]** を選択します。 
-   
-1. **作成**を選択します。
-   
-![ロード バランサーの作成](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
 
 ## <a name="create-basic-load-balancer-resources"></a>Basic ロード バランサーのリソースを作成する
 

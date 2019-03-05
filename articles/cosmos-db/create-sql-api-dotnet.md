@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/10/2018
-ms.openlocfilehash: 6f90485b17361089de9770bb630db38cf91abe12
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 530cd5adf942f32aaf883f668e3564ba5c12bbe2
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040916"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588026"
 ---
-# <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>クイック スタート: SQL API と Azure portal を使って Azure Cosmos DB と連携する .NET Web アプリを構築する
+# <a name="quickstart-build-a-net-web-app-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して .NET Web アプリをビルドする
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)

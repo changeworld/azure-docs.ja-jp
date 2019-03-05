@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 01bd8b5d1f8ed0d78f3331b4150df37ef0a1049e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 571cce2fafe1d19653dfa1e3d9a91042584621eb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426783"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735943"
 ---
 # <a name="quickstart-create-a-server---powershell"></a>クイック スタート: サーバーの作成 - PowerShell
 
@@ -21,49 +21,51 @@ ms.locfileid: "54426783"
 
 ## <a name="prerequisites"></a>前提条件
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 - **Azure サブスクリプション**: [Azure 無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p/)にアクセスしてアカウントを作成します。
 - **Azure Active Directory**: サブスクリプションは、Azure Active Directory テナントに関連付けられている必要があります。また、そのディレクトリのアカウントが必要となります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
-- **Azure PowerShell モジュール バージョン 4.0 以降**. バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードするには、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
+- **Azure PowerShell**。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードするには、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
-## <a name="import-azurermanalysisservices-module"></a>AzureRm.AnalysisServices モジュールのインポート
+## <a name="import-azanalysisservices-module"></a>Az.AnalysisServices モジュールをインポートする
 
-サブスクリプションにサーバーを作成するには、[AzureRM.AnalysisServices](https://www.powershellgallery.com/packages/AzureRM.AnalysisServices) コンポーネント モジュールを使います。 PowerShell セッションに AzureRm.AnalysisServices モジュールを読み込みます。
+サブスクリプション内にサーバーを作成するには、[Az.AnalysisServices](/powershell/module/az.analysisservices) モジュールを使用します。 PowerShell セッションに Az.AnalysisServices モジュールを読み込みます。
 
 ```powershell
-Import-Module AzureRM.AnalysisServices
+Import-Module Az.AnalysisServices
 ```
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) コマンドを使用して Azure サブスクリプションにサインインします。 画面の指示に従います。
+[Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) コマンドを使用して Azure サブスクリプションにサインインします。 画面の指示に従います。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)とは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 サーバーを作成するときは、自分のサブスクリプション内のリソース グループを指定する必要があります。 リソース グループがまだない場合は、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドを使って新しく作成してください。 次の例は、米国西部リージョンに `myResourceGroup` という名前のリソース グループを作成します。
+[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)とは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 サーバーを作成するときは、自分のサブスクリプション内のリソース グループを指定する必要があります。 リソース グループがまだない場合は、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して新しく作成できます。 次の例は、米国西部リージョンに `myResourceGroup` という名前のリソース グループを作成します。
 
 ```powershell
-New-AzureRmResourceGroup -Name "myResourceGroup" -Location "WestUS"
+New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
 ```
 
 ## <a name="create-a-server"></a>サーバーの作成
 
-[New-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver) コマンドを使って新しいサーバーを作成します。 次の例では、米国西部リージョンの myResourceGroup に myServer という D1 (無料) レベルのサーバーを作成し、philipc@adventureworks.com をサーバー管理者として指定します。
+[New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) コマンドを使って新しいサーバーを作成します。 次の例では、米国西部リージョンの myResourceGroup に myServer という D1 (無料) レベルのサーバーを作成し、philipc@adventureworks.com をサーバー管理者として指定します。
 
 ```powershell
-New-AzureRmAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "myserver" -Location WestUS -Sku D1 -Administrator "philipc@adventure-works.com"
+New-AzAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "myserver" -Location WestUS -Sku D1 -Administrator "philipc@adventure-works.com"
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-サブスクリプションからサーバーを削除するには、[Remove-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver) コマンドを使います。 続けてこのコレクション内の他のクイック スタートやチュートリアルに取り組む場合は、サーバーを削除しないでください。 次の例では、前の手順で作成したサーバーを削除します。
+サブスクリプションからサーバーを削除するには、[New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) コマンドを使います。 続けてこのコレクション内の他のクイック スタートやチュートリアルに取り組む場合は、サーバーを削除しないでください。 次の例では、前の手順で作成したサーバーを削除します。
 
 
 ```powershell
-Remove-AzureRmAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceGroup"
+Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceGroup"
 ```
 
 ## <a name="next-steps"></a>次の手順

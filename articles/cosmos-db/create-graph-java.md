@@ -8,14 +8,14 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: 54a371b5cd5049ba7ac73e3b49408c30a74a8f78
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: ac32ec6fc1f59b87d3efb88d95d21af309681934
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040695"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587975"
 ---
-# <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB は:Java と Azure portal を使用してグラフ データベースを作成する
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-the-java-sdk"></a>クイック スタート:Azure Cosmos DB で Java SDK を使用してグラフ データベースを作成する 
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -188,7 +188,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
 
-    key|value|メモ
+    キー|値|メモ
     ----|----|----
     id|ashley|頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
     gender|female| 
@@ -205,7 +205,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 9. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。
 
-    key|value|メモ
+    キー|値|メモ
     ----|----|----
     id|rakesh|頂点の一意の識別子。 id を指定しなかった場合は、自動的に生成されます。
     gender|male| 

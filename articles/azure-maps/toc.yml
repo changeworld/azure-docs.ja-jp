@@ -1,6 +1,4 @@
 items:
-- name: Azure IoT の基礎
-  href: ../iot-fundamentals/index.yml
 - name: Azure Maps のドキュメント
   href: index.yml
 - name: 概要
@@ -199,9 +197,9 @@ items:
       href: /azure/iot-edge
     - name: IoT デバイス SDK
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: 194b8ff59a19e33a3ec8e2544e4d04c9afb6613f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b0584c77ed7d8b3ed6c6962d02b75e061a97bf14
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246444"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57336735"

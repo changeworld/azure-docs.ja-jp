@@ -11,16 +11,16 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f6c1af2051d946b29e2022c90d0ad9820b4d283
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 1d483d14a08f589fc8d014a13a47008b9fb59690
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823503"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984953"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル:回帰モデリングのためにデータを準備する
 
-このチュートリアルでは、Azure Machine Learning Data Prep SDK を使用して回帰モデルのためにデータを準備する方法を説明します。 さまざまな変換を実行して、2 つの異なる NYC タクシー データ セットをフィルター処理して結合します。
+このチュートリアルでは、[Azure Machine Learning Data Prep SDK for Python](https://aka.ms/data-prep-sdk) を使用して回帰モデルのためにデータを準備する方法を説明します。 さまざまな変換を実行して、2 つの異なる NYC タクシー データ セットをフィルター処理して結合します。
 
 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。 このチュートリアル シリーズを完了すると、データの特徴についてモデルをトレーニングして、タクシー移動のコストを予測できます。 これらの特徴には、乗車日時、乗客数、乗車場所が含まれます。
 
@@ -48,7 +48,7 @@ ms.locfileid: "56823503"
 
 ### <a name="azure"></a>Azure Notebooks を使用する: クラウド上の無料の Jupyter Notebook
 
-Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](https://notebooks.azure.com/) には [Azure Machine Learning Data Prep SDK for Python](https://aka.ms/data-prep-sdk) が既にインストールされて構成されています。 インストールと今後の更新プログラムは、Azure サービスを介して自動的に管理されます。
+Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](https://notebooks.azure.com/) には Azure Machine Learning Data Prep SDK が既にインストールされて構成されています。 インストールと今後の更新プログラムは、Azure サービスを介して自動的に管理されます。
 
 以下の手順を完了したら、**Getting Started** プロジェクトの **tutorials/regression-part1-data-prep.ipynb** ノートブックを実行します。
 

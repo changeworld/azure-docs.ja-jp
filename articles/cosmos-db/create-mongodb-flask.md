@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 81ffd384602218aa3b08441ae9f6fe2262e7e542
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 24c47acd028aa767d1f02dd7c4119692eeac479a
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041426"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587023"
 ---
-# <a name="build-a-flask-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して Flask アプリを構築する
+# <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して Python アプリをビルドする
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

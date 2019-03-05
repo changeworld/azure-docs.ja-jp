@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 7caddde5c7695d0c572dc139b52cd0743e39d778
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fa40f4f666444209f70d3f49b7947450af01ec36
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672001"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983288"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してインターネット トラフィックを VM に負荷分散する
 
@@ -45,21 +45,22 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサイン�
 このセクションでは、仮想マシンの負荷分散に役立つパブリック ロード バランサーを作成します。 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 Standard Load Balancer を作成するときに、Standard Load Balancer のフロントエンド (既定では *LoadBalancerFrontend* という名前) として構成される新しい Standard パブリック IP アドレスも作成する必要があります。 
 
 1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[ロード バランサー]** の順にクリックします。
-2. **[ロード バランサーの作成]** ページで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
-    
+2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[確認と作成]** を選択します。
+
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
+    | サブスクリプション               | サブスクリプションを選択します。    |    
+    | リソース グループ         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupSLB*」と入力します。|
     | Name                   | *myLoadBalancer*                                   |
-    | type          | パブリック                                        |
-    | SKU           | Standard                          |
-    | パブリック IP アドレス | **[新規作成]** を選択して、テキスト ボックスに「*myPublicIP*」と入力します。 既定では、パブリック IP アドレスの Standard SKU が選択されます。 **[可用性ゾーン]** で、**[ゾーン冗長]** を選択します。 |
-    | サブスクリプション               | サブスクリプションを選択します。    |
-    |リソース グループ | **[新規作成]** を選択して、「*myResourceGroupSLB*」と入力します。    |
-    | Location           | **[西ヨーロッパ]** を選択します。                          |
-    
+    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | type          | **[パブリック]** を選択します。                                        |
+    | SKU           | **[Standard]** を選択します。                          |
+    | パブリック IP アドレス | **[新規作成]** を選択します。 |
+    | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
+    |可用性ゾーン| **[ゾーン冗長]** を選択します。    |
+3. **[確認と作成]** タブで、**[作成]** をクリックします。   
 
-![ロード バランサーの作成](./media/load-balancer-standard-public-portal/create-load-balancer.png)
-   
+  
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
 このセクションでは、仮想ネットワークを作成し、ロード バランサーのバックエンド プール用に 3 台の仮想マシンを作成して、ロード バランサーをテストするために仮想マシンに IIS をインストールします。

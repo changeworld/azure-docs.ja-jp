@@ -57,7 +57,7 @@ items:
     - name: テンプレート ファイルの構造
       href: resource-group-authoring-templates.md
     - name: parameters
-      href: resource-manager-templates-parameters.md
+      href: resource-group-authoring-templates.md#parameters
     - name: variables
       href: resource-group-authoring-templates.md#variables
     - name: Functions
@@ -260,9 +260,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: cb2e9b6d12acfb6fff514fc5e2603d9531acd76f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 60d7bdba8bcaedd229a3ad1170b88906383fb74e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241684"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311663"

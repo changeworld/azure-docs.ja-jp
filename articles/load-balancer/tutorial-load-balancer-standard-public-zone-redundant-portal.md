@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e83991f553d00af11cfc275137f8e73ebab2098c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2b37d77e00595be125490431694f4549f61fced6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882639"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56982795"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure Portal と Standard Load Balancer を使用して、可用性ゾーン間で VM の負荷を分散します
 
@@ -50,16 +50,20 @@ Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサイン�
 Standard Load Balancer では、Standard パブリック IP アドレスだけがサポートされています。 ロード バランサーの作成時に新しいパブリック IP を作成すると、自動的に Standard SKU バージョンとして構成され、自動的にゾーン冗長になります。
 
 1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[ロード バランサー]** の順にクリックします。
-2. **[Create a load balancer]\(ロード バランサーの作成\)** ページで、ロード バランサーの以下の値を入力します。
-    - *myLoadBalancer* - ロード バランサーの名前。
-    - **パブリック** - ロード バランサーの種類。
-     - *myPublicIP* - 作成する新しいパブリック IP アドレス。 この場合、**[パブリック IP アドレスの選択]** をクリックし、**[新規作成]** をクリックします。 [名前] に「*myPublicIP*」と入力します。SKU の既定は Standard です。**[可用性ゾーン]** には **[ゾーン冗長]** を選択します。
-    - *myResourceGroupLBAZ* - 作成する新しいリソース グループの名前。
-    - **westeurope** - 場所。
-3. **[作成]** をクリックして、ロード バランサーを作成します。
-   
-    ![ロード バランサーの作成](./media/load-balancer-standard-public-availability-zones-portal/1a-load-balancer.png)
+2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[確認と作成]** を選択します。
 
+    | Setting                 | 値                                              |
+    | ---                     | ---                                                |
+    | サブスクリプション               | サブスクリプションを選択します。    |    
+    | リソース グループ         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLBAZ*」と入力します。|
+    | Name                   | *myLoadBalancer*                                   |
+    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | type          | **[パブリック]** を選択します。                                        |
+    | SKU           | **[Standard]** を選択します。                          |
+    | パブリック IP アドレス | **[新規作成]** を選択します。 |
+    | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
+    |可用性ゾーン| **[ゾーン冗長]** を選択します。    |
+   
 
 ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 

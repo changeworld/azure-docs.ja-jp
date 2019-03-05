@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/25/2019
+ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04631431c03f6fdd378bfa99edb9b67f8d6a0cad
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cf47e3b48f1047af88a19c59459c19c078f71a63
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193919"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984477"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -42,19 +42,21 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
     ![Batch アカウントを作成する][account_portal]
 
-    a. **アカウント名**:選択する名前は、アカウントが作成される Azure リージョン内で一意である必要があります (下の **[場所]** を参照)。 アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。
+    a. **サブスクリプション**:Batch アカウントを作成するサブスクリプション。 サブスクリプションが 1 つのみの場合は、既定でそのサブスクリプションが選択されます。
 
-    b. **サブスクリプション**:Batch アカウントを作成するサブスクリプション。 サブスクリプションが 1 つのみの場合は、既定でそのサブスクリプションが選択されます。
+    b. **[リソース グループ]**:新しい Batch アカウント用の既存のリソース グループを選択します。必要に応じて、新しく作成することもできます。
 
-    c. **[リソース グループ]**:新しい Batch アカウント用の既存のリソース グループを選択します。必要に応じて、新しく作成することもできます。
+    c. **アカウント名**:選択する名前は、アカウントが作成される Azure リージョン内で一意である必要があります (下の **[場所]** を参照)。 アカウント名に含めることができるのは、英小文字と数字のみで、文字数は 3 ～ 24 文字にする必要があります。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[場所]**:Batch アカウントを作成する Azure リージョン。 サブスクリプションとリソース グループでサポートされているリージョンのみがオプションとして表示されます。
+    d. **[場所]**:Batch アカウントを作成する Azure リージョン。 サブスクリプションとリソース グループでサポートされているリージョンのみがオプションとして表示されます。
 
-    e. **ストレージ アカウント** (省略可能):Batch アカウントに関連付ける Azure ストレージ アカウント。 ほとんどの Batch アカウントでこれをお勧めします。 Batch のストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページをご覧ください。 ポータルで、既存のストレージ アカウントを選択するか、必要に応じて新しいストレージ アカウントを作成します。
+    e. **ストレージ アカウント**: Batch アカウントに関連付ける省略可能な Azure ストレージ アカウント。 最適なパフォーマンスのために汎用 v2 ストレージ アカウントをお勧めします。 Batch のすべてのストレージ アカウント オプションについては、[Batch 機能の概要](batch-api-basics.md#azure-storage-account)に関するページを参照してください。 ポータルで、既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。
 
       ![ストレージ アカウントの作成][storage_account]
 
-    f. **プール割り当てモード**:ほとんどのシナリオで、既定の **[Batch サービス]** をそのまま使用してください。
+    f. **プール割り当てモード**:**[詳細]** 設定タブでは、プール割り当てモードに **[Batch サービス]** または **[ユーザー サブスクリプション]** を指定できます。 ほとんどのシナリオで、既定の **[Batch サービス]** をそのまま使用してください。
+
+      ![Batch のプール割り当てモード][pool_allocation]
 
 1. **[作成]** を選択して、アカウントを作成します。
 
@@ -115,7 +117,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 ### <a name="configure-subscription-quotas"></a>サブスクリプション クォータを構成する
 
-コア クォータは、既定ではユーザー サブスクリプションの Batch アカウントに設定されません。 一般的な Batch コア クォータは、ユーザー サブスクリプション モードのアカウントには適用されないため、コア クォータは手動で設定する必要があります。
+コア クォータは、既定ではユーザー サブスクリプションの Batch アカウントに設定されません。 標準的な Batch コア クォータは、ユーザー サブスクリプション モードのアカウントには適用されないため、コア クォータは手動で設定する必要があります。
 
 1. [Azure portal][azure_portal] でユーザー サブスクリプション モードの Batch アカウントを選択し、その設定とプロパティを表示します。
 
@@ -142,8 +144,8 @@ Azure portal を利用する方法に加えて、次のようなツールを使�
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace-batch.png
 [account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch-account-portal.png
+[pool_allocation]: ./media/batch-account-create-portal/batch-pool-allocation.png
 [account_keys]: ./media/batch-account-create-portal/batch-account-keys.png
-[account_url]: ./media/batch-account-create-portal/account_url.png
 [storage_account]: ./media/batch-account-create-portal/storage_account.png
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png
