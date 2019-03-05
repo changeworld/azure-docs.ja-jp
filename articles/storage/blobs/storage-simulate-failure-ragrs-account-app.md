@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: tamram
-ms.openlocfilehash: 2d86c0c4838fb2ae9d839e64a067824019133d8b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0cbb4d2bc6449dc1cf12a374085b429743224995
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024435"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872881"
 ---
 # <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>チュートリアル:読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする
 
@@ -75,7 +75,7 @@ Fiddler ScriptEditor が起動し、**SampleRules.js** ファイルが表示さ�
 
 ### <a name="interrupting-the-application"></a>アプリケーションの中断
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7](#tab/dotnet-python-java-v7)
 
 IDE またはシェルでアプリケーションを実行します。
 
@@ -83,7 +83,7 @@ IDE またはシェルでアプリケーションを実行します。
 
 ![シナリオ アプリ](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 IDE またはシェルでアプリケーションを実行します。
 
@@ -113,7 +113,7 @@ Fiddler に移動し、**[Rules]\(ルール\)** -> **[Customize Rules]\(ルー�
          }
 ```
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7](#tab/dotnet-python-java-v7)
 
 アプリケーションを再開するために**任意のキー**を押します。
 
@@ -123,7 +123,7 @@ Fiddler に移動し、**[Rules]\(ルール\)** -> **[Customize Rules]\(ルー�
 
 ![カスタマイズしたルールを貼り付ける](media/storage-simulate-failure-ragrs-account-app/figure3.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 失敗が組み込まれたので、「**G**」と入力して失敗をテストします。
 
@@ -133,7 +133,7 @@ Fiddler に移動し、**[Rules]\(ルール\)** -> **[Customize Rules]\(ルー�
 
 ### <a name="simulate-primary-endpoint-restoration"></a>プライマリ エンドポイントの復元をシミュレートする
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7](#tab/dotnet-python-java-v7)
 
 前の手順で選択した Fiddler のカスタム ルールがあるので、プライマリ エンドポイントに対する要求は失敗します。
 
@@ -153,7 +153,7 @@ Fiddler に移動し、**[Rules]\(ルール\)**、**[Customize Rules]\(ルール
 
 ![アプリケーションを再開する](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 前の手順で選択した Fiddler のカスタム ルールがあるので、プライマリ エンドポイントに対する要求は失敗します。
 
@@ -173,11 +173,11 @@ Fiddler に移動し、**[Rules]\(ルール\)**、**[Customize Rules]\(ルール
 
 ### <a name="start-and-pause-the-application"></a>アプリケーションの開始と一時停止
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7](#tab/dotnet-python-java-v7)
 
 IDE またはシェルでアプリケーションを実行します。 アプリケーションでプライマリ エンドポイントから読み取りが開始されたら、コンソール ウィンドウで**任意のキー**を押してアプリケーションを一時停止します。
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 サンプルを制御するため、失敗をテストするためにアプリケーションを中断する必要はありません。
 
@@ -200,7 +200,7 @@ nslookup STORAGEACCOUNTNAME.blob.core.windows.net
 
 宛先ホストの静的ルートを追加するには、Windows のコマンド プロンプトまたは Linux のターミナルから次のコマンドを入力します。 
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 
 `route add <destination_ip> gw <gateway_ip>`
 
@@ -210,13 +210,13 @@ nslookup STORAGEACCOUNTNAME.blob.core.windows.net
 
 `<destination_ip>` の部分はストレージ アカウントの IP アドレスに、`<gateway_ip>` の部分はローカル ホストの IP アドレスに置き換えてください。
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7](#tab/dotnet-python-java-v7)
 
 アプリケーションを再開するために**任意のキー**を押します。
 
 アプリケーションの実行が再開されると、プライマリ エンドポイントに対する要求は失敗するようになります。 アプリケーションは、プライマリ エンドポイントへの再接続を 5 回試行します。 5 回の試行というエラーしきい値を超えると、セカンダリの読み取り専用エンドポイントのイメージを要求します。 セカンダリ エンドポイントからイメージの取得が 20 回正常に完了した後に、アプリケーションはプライマリ エンドポイントへの接続を試行します。 まだプライマリ エンドポイントに到達できない場合、アプリケーションはセカンダリ エンドポイントからの読み取りを再開します。 このパターンは、前のチュートリアルで説明した[ブレーカー](/azure/architecture/patterns/circuit-breaker)です。
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 失敗が組み込まれたので、「**G**」と入力して失敗をテストします。 プライマリ パイプラインではなくセカンダリ パイプラインを使用していることがわかります。
 
@@ -228,7 +228,7 @@ nslookup STORAGEACCOUNTNAME.blob.core.windows.net
 
 宛先ホスト (ストレージ アカウント) の静的ルートを削除するには、Windows のコマンド プロンプトまたは Linux のターミナルから次のコマンドを入力します。
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 
 `route del <destination_ip> gw <gateway_ip>`
 
@@ -236,14 +236,14 @@ nslookup STORAGEACCOUNTNAME.blob.core.windows.net
 
 `route delete <destination_ip>`
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET、Python、および Java v7](#tab/dotnet-python-java-v7)
 
 **任意のキー**を押してアプリケーションを再開します。 読み取り回数が 999 回になるまで、アプリケーションはプライマリ エンドポイントからの読み取りを継続します。
 
 ![アプリケーションを再開する](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 「**G**」と入力してダウンロードをテストします。 今度は再びプライマリ パイプラインを使用していることがアプリケーションから報告されます。
 

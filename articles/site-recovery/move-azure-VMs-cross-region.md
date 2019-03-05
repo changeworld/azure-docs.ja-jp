@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: bbede01844f20c0240b154fd319b818a43463131
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: efa8f4fc604440b8c1396aa654834ce83a41844e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824563"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875822"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 
@@ -73,7 +73,7 @@ ms.locfileid: "55824563"
 
     - [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [ロード バランサー](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [パブリック IP ](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [パブリック IP](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
     
     その他のネットワーク コンポーネントについては、ネットワークに関する[ドキュメント](https://docs.microsoft.com/azure/#pivot=products&panel=network)を参照してください。 
 
