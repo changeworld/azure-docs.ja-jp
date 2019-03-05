@@ -51,7 +51,7 @@ items:
   items:
   - name: Maps のアカウントを管理する
     items:
-    - name: '[アカウントの管理]'
+    - name: アカウントの管理
       href: how-to-manage-account-keys.md
     - name: 認証を管理する
       href: how-to-manage-authentication.md
