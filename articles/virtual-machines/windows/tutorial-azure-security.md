@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ebb1a3fba95ed5794b3737d75c4ec182163a32fb
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4c54383df74d9cfd7941dc52d26856bc8da51457
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984428"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594714"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>チュートリアル:Azure Security Center を使用して Windows 仮想マシンを監視する
 
@@ -65,7 +65,7 @@ Security Center によるデータの収集と推奨事項の提示の対象と�
 
 1. Security Center ダッシュボードで、**[セキュリティ ポリシー]** を選択し、ご利用のサブスクリプションを選択します。
 2. **[セキュリティ ポリシー]** ブレードで **[セキュリティ ポリシー]** を選択します。 
-3. [セキュリティ ポリシー - セキュリティ ポリシー] ブレードで、サブスクリプションに適用するポリシー項目をオンまたはオフにします。
+3. **[セキュリティ ポリシー - セキュリティ ポリシー]** ブレードで、サブスクリプションに適用するポリシー項目をオンまたはオフにします。
 4. 設定の選択が完了したら、ブレードの上部にある **[保存]** を選択します。 
 
 

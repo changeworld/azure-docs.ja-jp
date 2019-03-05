@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 3b09af19bd25ea3c64375869cd7db7f2b65923f6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a7dd8cd349703fc9009695e570b66c3a3e626d15
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423769"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593184"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする 
 このチュートリアルでは、ソース Azure SQL Database から**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
@@ -232,7 +232,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
 この手順では、Azure SQL データベースをデータ ファクトリにリンクします。
 
-1. 以下の内容を記述した **AzureSQLDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADFTutorials\IncCopyChangeTrackingTutorial** フォルダー内に作成します。server、database name **、&lt;user id&gt;、&lt;password&gt;** を実際の Azure SQL サーバーの名前、データベースの名前、ユーザー ID、パスワードに置き換えてからファイルを保存してください。 
+1. 以下の内容を記述した **AzureSQLDatabaseLinkedService.json** という名前の JSON ファイルを **C:\ADFTutorials\IncCopyChangeTrackingTutorial** フォルダー内に作成します。**&lt;server&gt;、&lt;database name **、&lt;user id&gt;、&lt;password&gt;** を実際の Azure SQL サーバーの名前、データベースの名前、ユーザー ID、パスワードに置き換えてからファイルを保存してください。 
 
     ```json
     {
@@ -661,10 +661,10 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 
     
 ## <a name="next-steps"></a>次の手順
-次のチュートリアルに進み、Azure 上の Spark クラスターを使ってデータを変換する方法について学習しましょう。
+次のチュートリアルに進んで、LastModifiedDate に基づいて新規ファイルおよび変更されたファイルのみをコピーする方法について学習してください。
 
 > [!div class="nextstepaction"]
->[クラウド内の Spark クラスターを使用してデータを変換する](tutorial-transform-data-spark-powershell.md)
+>[lastmodifieddate を基準に新しいファイルをコピーする](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 
 

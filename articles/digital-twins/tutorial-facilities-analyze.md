@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: 488b97074d74650ecf5602d25e2a90a1998e5585
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8f8bdb4d601e35cf489c1c4c1db3574fb8c8f18f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883876"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730787"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>チュートリアル:Time Series Insights を使用して Azure Digital Twins 空間からのイベントを視覚化および分析する
 
@@ -90,13 +90,13 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
       - UdfCustom
       connectionString: Primary_connection_string_for_your_event_hub
       secondaryConnectionString: Secondary_connection_string_for_your_event_hub
-      path: Name_of_your_Event_Hubs_namespace
+      path: Name_of_your_Event_Hub
     - type: EventHub
       eventTypes:
       - DeviceMessage
       connectionString: Primary_connection_string_for_your_event_hub
       secondaryConnectionString: Secondary_connection_string_for_your_event_hub
-      path: Name_of_your_Event_Hubs_namespace
+      path: Name_of_your_Event_Hub
     ```
 
 1. プレースホルダー `Primary_connection_string_for_your_event_hub` を、イベント ハブの **[接続文字列 - 主キー]** の値に置き換えます。 この接続文字列が次の形式になっていることを確認します。
@@ -111,7 +111,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 
-1. プレースホルダー `Name_of_your_Event_Hubs_namespace` を Event Hubs 名前空間の名前に置き換えます。
+1. プレースホルダー `Name_of_your_Event_Hub` をイベント ハブの名前に置き換えます。
 
     > [!IMPORTANT]
     > 引用符なしですべての値を入力します。 YAML ファイル内のコロンの後に少なくとも 1 つの空白文字があることを確認してください。 YAML ファイルの内容は、[このツール](https://onlineyamltools.com/validate-yaml)のようなオンライン YAML 検証ツールを使用して検証することもできます。

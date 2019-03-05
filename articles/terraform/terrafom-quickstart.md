@@ -7,16 +7,16 @@ ms.service: terraform
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: nepeters
-ms.openlocfilehash: 408e07e9b6214dbd223bd4ec7959b00ecc414f1e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b3d872008c95d94a8401e6f38665c3c88616a168
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869179"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736925"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Azure 用の Terraform 構成の作成
 
-この例では、Terraform 構成を作成し、この構成を Azure にデプロイする操作を体験します。 完了すると、Azure Cosmos DB インスタンス、Azure Container Instances、およびこの 2 つのリソース間で動作するアプリケーションがデプロイされます。 このドキュメントでは、Terraform ツールが事前にインストールされている Azure Cloud Shell ですべての作業を行うことを前提としています。 自分のシステム上でこの例の作業を行いたい場合は、[ここ](../virtual-machines/linux/terraform-install-configure.md)の指示に従って Terraform をインストールすることができます。
+この例では、Terraform 構成を作成し、この構成を Azure にデプロイする操作を体験します。 完了すると、Azure Cosmos DB インスタンス、Azure Container インスタンス、およびこの 2 つのリソース間で動作するアプリケーションがデプロイされます。 このドキュメントでは、Terraform ツールが事前にインストールされている Azure Cloud Shell ですべての作業を行うことを前提としています。 自分のシステム上でこの例の作業を行いたい場合は、[ここ](../virtual-machines/linux/terraform-install-configure.md)の指示に従って Terraform をインストールすることができます。
 
 ## <a name="create-first-configuration"></a>最初の構成を作成する
 
@@ -30,7 +30,7 @@ code .
 
 次の Terraform 構成をコピーして貼り付けます。
 
-この構成では、Azure リソース グループ、ランダム整数、および Azure Cosmos DB インスタンスをモデル化しています。 ランダム整数は Cosmos DB インスタンス名に使用されます。 いくつかの Cosmos DB 設定も構成されています。 Cosmos DB Terraform 構成の完全な一覧については、[Cosmos DB Terraform のリファレンス](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html)を参照してください。
+この構成では、Azure リソース グループ、ランダム整数、および Azure Cosmos DB インスタンスをモデル化しています。 ランダム整数は、Cosmos DB インスタンス名に使用されます。 いくつかの Cosmos DB 設定も構成されています。 Cosmos DB Terraform 構成の完全な一覧については、[Cosmos DB Terraform のリファレンス](https://www.terraform.io/docs/providers/azurerm/r/cosmosdb_account.html)を参照してください。
 
 完了したら、ファイルを `main.tf` として保存します。 この操作は、コード エディターの右上部分にある省略記号を使用して実行できます。
 

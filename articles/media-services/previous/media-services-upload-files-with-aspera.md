@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: aeeacdd5a83ff41eeb900b142e09030b5642f4f8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 179be5df8013d4e79eca473036d1a09875cbcc61
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993828"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865911"
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Azure 上の Aspera Server On Demand サービスを使用して Media Services アカウントにファイルをアップロードする 
 
@@ -130,7 +130,7 @@ Azure Marketplace にログインしたら、次の基本的な手順に従っ�
 
 ## <a name="next-steps"></a>次の手順
 
-[ストレージ アカウントから AMS アカウントに blob をコピー](media-services-copying-existing-blob.md#copy-blobs-from-a-storage-account-into-an-ams-account)できます。
+[ストレージ アカウントから AMS アカウントに BLOB をコピー](media-services-copying-existing-blob.md#copy-blobs-from-a-storage-account-into-an-ams-account)できます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

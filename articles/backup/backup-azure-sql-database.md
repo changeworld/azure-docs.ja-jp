@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 17ec7723044cec391ebe390bbcfba3aa6f2f29ca
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 61219fc4e1fc329708a7e58ee6a293e4e25cca31
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446853"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887813"
 ---
 # <a name="back-up-sql-server-databases-on-azure-vms"></a>Azure VM 上の SQL Server データベースのバックアップ 
 
@@ -52,8 +52,7 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 - FCI ミラー データベース、データベース スナップショット、データベースのバックアップ操作および復元操作はサポートされていません。
 - 多数のファイルがあるデータベースは保護できません。 サポートされるファイルの最大数は明確ではありません。 これはファイルの数だけでなく、ファイルのパスの長さによっても異なります。 
 
-サポート/サポート対象外のシナリオの詳細については、[「FAQ」セクション](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq)を参照してください。
-
+SQL Server データベースのバックアップに関する [FAQ](faq-backup-sql-server.md) を参照してください。
 ## <a name="scenario-support"></a>シナリオのサポート
 
 **サポート** | **詳細**
@@ -69,9 +68,9 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 SQL Server データベースをバックアップする前に、次の条件を確認してください。
 
 1. SQL Server インスタンスをホストする VM として、同じリージョンまたはロケールの Recovery Services コンテナーを特定または[作成](backup-azure-sql-database.md#create-a-recovery-services-vault)する。
-2. SQL データベースをバックアップするのに必要な [VM のアクセス許可をチェック](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms)する。
+2. SQL データベースをバックアップするのに必要な [VM のアクセス許可をチェック](#fix-sql-sysadmin-permissions)する。
 3. VM が[ネットワーク接続](backup-azure-sql-database.md#establish-network-connectivity)を備えていることを確認する。
-4. Azure Backup の[命名ガイドライン](backup-azure-sql-database.md#sql-database-naming-guidelines-for-azure-backup)に従って SQL Server データベースが名付けられていることをチェックする。
+4. Azure Backup の[命名ガイドライン](backup-azure-sql-database.md)に従って SQL Server データベースが名付けられていることをチェックする。
 5. データベースに対して有効になっているバックアップ ソリューションが他にないことを確認する。 このシナリオを設定する前に、他のすべての SQL Server バックアップを無効にします。 競合が発生することなく、VM 上で稼働している SQL Server データベースに対して Azure Backup を有効にするのと同時に、Azure VM に対して Azure Backup を有効にできます。
 
 
@@ -197,7 +196,7 @@ VM 上で稼働しているデータベースを検出します。
 
     - 既定のポリシーを選択します:**HourlyLogBackup**。
     - SQL 用に以前に作成された既存のバックアップ ポリシーを選択する。
-    - RPO とリテンション期間の範囲に基づいて[新しいポリシーを定義する](backup-azure-sql-database.md#define-a-backup-policy)。
+    - RPO とリテンション期間の範囲に基づいて[新しいポリシーを定義する](backup-azure-sql-database.md#configure-a-backup-policy)。
     - プレビュー期間中は、既存のバックアップ ポリシーを編集できません。
     
 9. **[バックアップ] メニュー**で、**[バックアップの有効化]** を選択します。
@@ -326,7 +325,7 @@ VM 上で稼働しているデータベースを検出します。
 
     ![デプロイの成功メッセージ](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-または、**[AUTOPROTECT]\(自動保護\)** 列の対応するドロップダウン **[オン]** オプションを選択することにより、インスタンス全体または Always On 可用性グループで[自動保護](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)を有効にすることができます。 [自動保護](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm)機能では、既存のすべてのデータベースの保護が一度に有効になるだけでなく、それ以降にそのインスタンスまたは可用性グループに追加されるすべての新しいデータベースも自動的に保護されます。  
+または、**[AUTOPROTECT]\(自動保護\)** 列の対応するドロップダウン **[オン]** オプションを選択することにより、インスタンス全体または Always On 可用性グループで[自動保護](backup-azure-sql-database.md#enable-auto-protection)を有効にすることができます。 [自動保護](backup-azure-sql-database.md#enable-auto-protection)機能では、既存のすべてのデータベースの保護が一度に有効になるだけでなく、それ以降にそのインスタンスまたは可用性グループに追加されるすべての新しいデータベースも自動的に保護されます。  
 
    ![Always On 可用性グループで自動保護を有効にする](./media/backup-azure-sql-database/enable-auto-protection.png)
 

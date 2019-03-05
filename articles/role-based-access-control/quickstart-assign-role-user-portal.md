@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: 41f1c6dc8904f167f34ea72aeb9b3866504b7087
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 9352130eeeb68a87947450cb5616aa59e8e99ae9
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341302"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807373"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する
 
@@ -38,9 +38,9 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-1. ナビゲーション リストで、**[リソース グループ]** を選択します。
+1. ナビゲーション リストで、**[リソース グループ]** をクリックします。
 
-1. **[Add]\(追加)** を選択し、**[リソース グループ]** ブレードを開きます。
+1. **[追加]** を選択して **[リソース グループ]** ブレードを開きます。
 
    ![新しいリソース グループの追加](./media/quickstart-assign-role-user-portal/resource-group.png)
 
@@ -48,9 +48,9 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
 
 1. サブスクリプションと場所を選択します。
 
-1. **[作成]** を選択してリソース グループを作成します。
+1. **[作成]** をクリックしてリソース グループを作成します。
 
-1. **[更新]** を選択してリソース グループの一覧を更新します。
+1. **[更新]** をクリックしてリソース グループの一覧を更新します。
 
    新しいリソース グループがリソース グループの一覧に表示されます。
 
@@ -60,17 +60,19 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
 
 RBAC でアクセス権を付与するには、ロールの割り当てを作成します。
 
-1. **[リソース グループ]** の一覧で、新しい **rbac-resource-group** リソース グループを選択します。
+1. **[リソース グループ]** の一覧で、新しい **rbac-resource-group** リソース グループをクリックします。
 
-1. **[アクセス制御 (IAM)]** を選択します。
+1. **[アクセス制御 (IAM)]** をクリックします。
 
-1. **[ロールの割り当て]** タブを選択して、ロールの割り当ての現在の一覧を表示します。
+1. **[ロールの割り当て]** タブをクリックして、ロールの割り当ての現在の一覧を表示します。
 
    ![リソース グループの [アクセス制御 (IAM)] ブレード](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1. **[ロールの割り当ての追加]** を選択して、[ロールの割り当ての追加] ウィンドウを開きます。
+1. **[追加]** > **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ウィンドウを開きます。
 
    ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
+
+   ![[追加] メニュー](./media/role-assignments-portal/add-menu.png)
 
    ![[ロールの割り当ての追加] ウィンドウ](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
@@ -78,7 +80,7 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
 
 1. **[選択]** 一覧で、自分または別のユーザーを選択します。
 
-1. **[保存]** を選択して、ロールの割り当てを作成します。
+1. **[保存]** をクリックして、ロールの割り当てを作成します。
 
    しばらくすると、rbac-resource-group リソース グループ スコープにおける仮想マシン共同作成者ロールがユーザーに割り当てられます。
 
@@ -90,25 +92,25 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
 1. ロールの割り当ての一覧で、仮想マシン共同作成者ロールを持つユーザーの横にチェック マークを追加します。
 
-1. **[削除]** を選択します。
+1. **[削除]** をクリックします。
 
    ![ロールの割り当ての削除メッセージ](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
-1. ロールの割り当ての削除メッセージが表示されたら、**[はい]** をクリックします。
+1. 表示されるロールの割り当ての削除メッセージで、**[はい]** をクリックします。
 
 ## <a name="clean-up"></a>クリーンアップ
 
-1. ナビゲーション リストで、**[リソース グループ]** を選択します。
+1. ナビゲーション リストで、**[リソース グループ]** をクリックします。
 
-1. **rbac-resource-group** を選択してリソース グループを開きます。
+1. **rbac-resource-group** をクリックしてリソース グループを開きます。
 
-1. **[リソース グループの削除]** を選択してリソース グループを削除します。
+1. **[リソース グループの削除]** をクリックしてリソース グループを削除します。
 
    ![Delete resource group](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
 
 1. **[削除しますか]** ブレードにリソース グループ名 **rbac-resource-group** を入力します。
 
-1. **[削除する]** を選択してリソース グループを削除します。
+1. **[削除する]** をクリックしてリソース グループを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

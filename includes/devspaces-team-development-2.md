@@ -10,12 +10,12 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
-ms.openlocfilehash: 749120446619bf682d02be0f9290a6d47540c16a
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7dddf7e48913aea9d84e0f8b66c2c9d29449ee6f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664403"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825322"
 ---
 ### <a name="run-the-service"></a>サービスを実行する
 
@@ -35,10 +35,10 @@ ms.locfileid: "55664403"
     Uri                                                                        Status
     -------------------------------------------------------------------------  ---------
     http://localhost:53831 => mywebapi.scott:80                                Tunneled
-    http://dev.s.dev.webfrontend.6364744826e042319629.canadaeast.aksapp.io/  Available
+    http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
     ```
 
-1. Web ブラウザーで、"dev.s." の  URL プレフィックスを "sscott.s." に 置き換えます。 この更新された URL が引き続き解決されることに注意してください。 この URL は _dev/scott_ 空間に固有のものです。 この特別な URL は、"scott URL" に送信された要求で、まず、_dev/scott_ 空間内のサービスへのルーティングが試行され、失敗した場合は、_dev_ 空間内のサービスにフォールバックされることを示します。
+1. *scott.s* というプレフィックスの付いた URL を使用してアプリケーションに移動します。 この更新された URL が引き続き解決されることに注意してください。 この URL は _dev/scott_ 空間に固有のものです。 この特別な URL は、"scott URL" に送信された要求で、まず、_dev/scott_ 空間内のサービスへのルーティングが試行され、失敗した場合は、_dev_ 空間内のサービスにフォールバックされることを示します。
 
 <!--
 TODO: replace 2 & 3 with below once bug#753164 and PR#158827 get pushed to production.
@@ -56,7 +56,7 @@ webfrontend               dev       Service  26m ago  Running
 Uri                                                                        Status
 -------------------------------------------------------------------------  ---------
 http://localhost:53831 => mywebapi.scott:80                                Tunneled
-http://scott.s.dev.webfrontend.6364744826e042319629.canadaeast.aksapp.io/  Available
+http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 ```
 -->
 

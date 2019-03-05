@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 88e55573e88a45d7733e12c3bb8751763a0ef901
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0885671d777d79c6f8a9fc993aa1224312705bce
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113364"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650905"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -199,6 +199,15 @@ A レコードをアプリにマップする場合、App Service では **2 つ*
 | - | - | - |
 | A | `@` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
+
+> [!NOTE]
+> 推奨される [CNAME レコード](#map-a-cname-record)の代わりに A レコードを使用してサブドメイン (`www.contoso.com`など) を追加するには、A レコードと TXT レコードが次の表のようになっている必要があります。
+>
+> | レコード タイプ | Host | 値 |
+> | - | - | - |
+> | A | `www` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
+> | TXT | `www` | `<app_name>.azurewebsites.net` |
+>
 
 レコードが追加されると、DNS レコード ページは次の例のようになります。
 

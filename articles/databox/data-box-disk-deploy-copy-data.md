@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 97c33a5dc2eb43644081579b5d1c0172ce953906
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 75a78e303991e5426c97b8ceb0eb1375e03be2a2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449352"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868189"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル:Azure Data Box Disk にデータをコピーして確認する
 
@@ -178,20 +178,20 @@ ms.locfileid: "54449352"
 1. Windows コンピューターで、Data Box 分割コピー ツールがダウンロードされ、ローカル フォルダーに抽出されていることを確認します。 このツールは、Windows 用の Data Box Disk ツールセットをダウンロードしたときにダウンロードされました。
 2. エクスプローラーを開きます。 Data Box Disk に割り当てられたデータ ソース ドライブと ドライブ文字をメモしておきます。 
 
-     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-1.png)
+     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-1.png)
  
 3. コピーするソース データを特定します。 たとえば、この場合:
     - 以下のブロック BLOB データが特定されました。
 
-         ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+         ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
 
     - 以下のページ BLOB データが特定されました。
 
-         ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+         ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
 4. ソフトウェアが抽出されるフォルダーに移動します。 そのフォルダーで `SampleConfig.json` ファイルを見つけます。 これは、変更して保存できる読み取り専用ファイルです。
 
-   ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+   ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
 5. `SampleConfig.json` ファイルを変更します。
  
@@ -200,11 +200,11 @@ ms.locfileid: "54449352"
     - ターゲット ディスクに対応するドライブ文字を入力します。 データはソース パスから取得され、複数のディスクにコピーされます。
     - ログ ファイルのパスを指定します。 既定では、`.exe` がある現在のディレクトリに送信されます。
 
-     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
 6. ファイル形式を検証するには、`JSONlint` に移動します。 ファイルを `ConfigFile.json`という名前で保存します。 
 
-     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. コマンド プロンプト ウィンドウを開きます。 
 
@@ -212,15 +212,15 @@ ms.locfileid: "54449352"
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
-     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-7.png)
  
 9. Enter キーを押してスクリプトを続行します。
 
-    ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+    ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-8.png)
   
 10. データセットを分割してコピーすると、コピー セッションの分割コピー ツールの概要が表示されます。 サンプル出力を次に示します。
 
-    ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+    ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-9.png)
  
 11. データがターゲット ディスク間で分割されていることを確認します。 
  
@@ -229,7 +229,7 @@ ms.locfileid: "54449352"
      
     `n:` ドライブの内容をさらに調べると、ブロック BLOB およびページ BLOB 形式データに対応して 2 つのサブフォルダーが作成されていることがわかります。
     
-     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
 12. コピー セッションが失敗した場合、復旧して再開するには、次のコマンドを使用します。
 

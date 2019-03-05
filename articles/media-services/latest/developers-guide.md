@@ -13,19 +13,19 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/16/2019
+ms.date: 02/22/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 2f0191bd181a8e10fa59f6d1d53da348e6440aba
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 97123ec795353073b912bd83e0abb45e23549a75
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343585"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749802"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>SDK/ツールを使用して Media Services v3 API での開発を始める
 
-開発者は、Media Services の [REST API](https://aka.ms/ams-v3-rest-sdk) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 Media Services v3 API は、OpenAPI 仕様 (旧称 Swagger) に基づいています。
+開発者は、Media Services の [REST API](https://aka.ms/ams-v3-rest-ref) または REST API と対話できるクライアント ライブラリを使って、カスタム メディア ワークフローを簡単に作成、管理、メンテナンスできます。 [Media Services v3](https://aka.ms/ams-v3-rest-sdk) API は、OpenAPI 仕様 (旧称 Swagger) に基づいています。
 
 このトピックでは、SDK、ツール、ドキュメントへのリンクを提供します。 また、さまざまな開発環境に役立つ情報も提供します。
 
@@ -95,6 +95,7 @@ Media Services の [.NET リファレンス](https://aka.ms/ams-v3-dotnet-ref) �
 - [DRM 動的暗号化とライセンス配信サービスを使用する - .NET](protect-with-drm.md)
 - [既存のポリシーから署名キーを取得する - .NET](get-content-key-policy-dotnet-howto.md)
 - [Media Services を使用してフィルターを作成する - .NET](filters-dynamic-manifest-dotnet-howto.md)
+- [Azure Functions v2 と Media Services v3 の高度なビデオ オンデマンドの例](http://aka.ms/ams3functions)
 
 ## <a name="java"></a>Java
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: c91292bff22a76e4c15f031094809e20fdc43031
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3f308c38e9fa23c36f964b117f620a39e56c9bbd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175729"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958186"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -63,7 +63,7 @@ ms.locfileid: "56175729"
 
 ![仮想ネットワーク ピアリングのトランジット](./media/virtual-networks-peering-overview/figure04.png)
 
-ゲートウェイ転送は、異なるリージョンに作成された仮想ネットワーク間のピアリング関係ではサポートされません。 ゲートウェイ転送が機能するためには、ピアリング関係にある両方の仮想ネットワークが、同じリージョンに存在する必要があります。 異なるデプロイ モデル (Resource Manager とクラシック) を使って作成された仮想ネットワーク間のゲートウェイ転送は、ゲートウェイが仮想ネットワーク (Resource Manager) 内にある場合にのみサポートされます。 転送へのゲートウェイの使用について詳しくは、「[仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
+ゲートウェイ転送は、異なるリージョンに作成された仮想ネットワーク間のピアリング関係ではサポートされません。 ゲートウェイ転送が機能するためには、ピアリング関係にある両方の仮想ネットワークが、同じリージョンに存在する必要があります。 異なるデプロイ モデル (Resource Manager とクラシック) を使って作成された仮想ネットワーク間のゲートウェイ転送は、ゲートウェイ (VPN または ExpressRoute) が仮想ネットワーク (Resource Manager) 内にある場合にのみサポートされます。 転送へのゲートウェイの使用について詳しくは、「[仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
 1 本の Azure ExpressRoute 接続を共有する仮想ネットワークどうしをピアリングした場合、両者間のトラフィックは、そのピアリング関係を通過することになります (つまり Azure バックボーン ネットワークが使用されます)。 それでも、各仮想ネットワークのローカル ゲートウェイを使用してオンプレミス回線に接続できます。 また、共有ゲートウェイを使用して、オンプレミス接続用のトランジットを構成することもできます。
 
@@ -77,8 +77,7 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 
 ## <a name="requirements-and-constraints"></a>要件と制約
 
-仮想ネットワークがグローバルにピアリングされている場合、次の制約が適用されます。
-- 仮想ネットワークは、Azure パブリック クラウドの任意のリージョンまたは Azure 中国クラウド リージョン内に存在できますが、Azure Government クラウドに存在することはできません。
+仮想ネットワークがグローバルにピアリングされている場合のみ、次の制約が適用されます。
 - ある仮想ネットワーク内のリソースは、グローバルにピアリングされた仮想ネットワークの Azure 内部ロード バランサーのフロントエンド IP アドレスと通信することはできません。 ロード バランサーおよびそれと通信するリソースは、同じリージョン内に存在する必要があります。
 - リモート ゲートウェイを使うこと、またはゲートウェイの通過を許可することはできません。 リモート ゲートウェイを使う場合、またはゲートウェイの通過を許可する場合は、ピアリングされた仮想ネットワークが同じリージョンに存在する必要があります。
 

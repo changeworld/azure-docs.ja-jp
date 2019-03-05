@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a2dc5653b7579d9c5db4667d84e6e5b5082abaab
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 869f6d2391632c77e01e4383c1457f88b9171c8b
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448076"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651194"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>チュートリアル:監視ソリューションに接続されているデバイスを構成する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="add-a-simulated-device"></a>シミュレートされたデバイスの追加
 
-ソリューションの **[デバイス]** ページに移動して、**[+ 新規デバイス]** をクリックします。
+ソリューションの **[Device Explorer]** ページに移動して、**[+ 新規デバイス]** をクリックします。
 
 [![シミュレートされたデバイスのプロビジョニング](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="test-the-simulated-device"></a>シミュレートされたデバイスのテスト
 
-シミュレートされたエンジン デバイスがテレメトリとレポートのプロパティ値を送信していることをテストするには、**[デバイス]** ページのデバイスの一覧でデバイスを選択します。 エンジンに関するライブ情報が **[デバイスの詳細]** パネルに表示されます。
+シミュレートされたエンジン デバイスがテレメトリとレポートのプロパティ値を送信していることをテストするには、**[Device Explorer]** ページのデバイスの一覧でデバイスを選択します。 エンジンに関するライブ情報が **[デバイスの詳細]** パネルに表示されます。
 
 [![新しくシミュレートされたエンジン デバイスの表示](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
@@ -60,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="reconfigure-a-device"></a>デバイスの再構成
 
-エンジンの構成プロパティを更新できることをテストするには、**[デバイス]** ページのデバイスの一覧でデバイスを選択します。 次に、**[ジョブ]** をクリックし、**[プロパティ]** を選択します。 [ジョブ] パネルには、選択したデバイスの更新可能なプロパティ値が表示されます。
+エンジンの構成プロパティを更新できることをテストするには、**[Device Explorer]** ページのデバイスの一覧でデバイスを選択します。 次に、**[ジョブ]** をクリックし、**[プロパティ]** を選択します。 [ジョブ] パネルには、選択したデバイスの更新可能なプロパティ値が表示されます。
 
 [![デバイスの再構成](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * Smart Vehicle (スマート車両) チームは、トラックとプロトタイプ作成デバイスを管理します。
 * Smart Building (スマート ビルディング) チームは、冷却装置、エレベーター、エンジンを管理します。
 
-すべてのデバイスを表示するために、**[デバイス]** ページに移動して **[すべてのデバイス]** フィルターを選択します。
+すべてのデバイスを表示するには、**[Device Explorer]** ページに移動して **[すべてのデバイス]** フィルターを選択します。
 
 [![すべてのデバイスを表示する](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
 
@@ -103,7 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="create-filters"></a>フィルターの作成
 
-タグ値を使用してフィルターを作成できます。 **[デバイス]** ページで、**[Manage device groups]\(デバイス グループの管理\)** をクリックします。
+タグ値を使用してフィルターを作成できます。 **[Device Explorer]** ページで、**[Manage device groups]\(デバイス グループの管理\)** をクリックします。
 
 [![デバイス グループの管理](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-expanded.png#lightbox)
 

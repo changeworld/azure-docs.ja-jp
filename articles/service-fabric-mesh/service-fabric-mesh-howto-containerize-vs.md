@@ -3,18 +3,18 @@ title: 既存の .NET アプリを Service Fabric Mesh 用にコンテナー化�
 description: 既存の .NET アプリに Mesh のサポートを追加します
 services: service-fabric-mesh
 keywords: コンテナー化 service fabric mesh
-author: tylermsft
-ms.author: twhitney
+author: dkkapur
+ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: 6f71f45d435b6be3358f79d8b6e72e4636d92ab6
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+manager: chakdan
+ms.openlocfilehash: bb4aacafaa90f16370bc097b5feab7791def4006
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891897"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806948"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する
 
@@ -71,4 +71,4 @@ Service Fabric Mesh のアプリケーション プロジェクトがソリュ�
 
 ## <a name="next-steps"></a>次の手順
 
-Service Fabric Mesh にアプリを発行する方法について学習しましょう: [チュートリアル - Service Fabric mesh アプリケーションをデプロイする](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+Service Fabric Mesh にアプリを発行する方法: [チュートリアル: Service Fabric Mesh アプリケーションをデプロイする](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

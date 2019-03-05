@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 549ef0d073a740edf700c54d02a0d9ef247db0b7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8197d091763709282c42379a7ca0ea802e5c6fdf
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245089"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886790"
 ---
 # <a name="example-how-to-detect-language-with-text-analytics"></a>例:Text Analytics で言語を検出する方法
 
@@ -29,7 +29,7 @@ ms.locfileid: "56245089"
 
 JSON ドキュメントは、id、text の形式である必要があります。
 
-ドキュメントのサイズは、ドキュメントあたり 5,000 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 言語検出のために送信するコンテンツの例を次に示します。
+ドキュメントのサイズは、ドキュメントあたり 5,120 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 言語検出のために送信するコンテンツの例を次に示します。
 
    ```
     {

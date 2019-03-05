@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 36e0ca360cfbdfc77ce0a1768222f43f8864537c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fd6ecb6cb45aef399a137c9eac2c8c6f845b610b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267260"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872490"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
 
@@ -32,7 +32,7 @@ Azure Machine Learning service とは、機械学習モデルのトレーニン�
 
 Azure Machine Learning service には、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、および追跡に使用できるクラウドベースの環境が用意されています。
 
-[ ![Azure Machine Learning service のワークフロー](./media/overview-what-is-azure-ml/aml.png)] (./media/overview-what-is-azure-ml/aml.png#lightbox)
+[![Azure Machine Learning service のワークフロー](./media/overview-what-is-azure-ml/aml.png)] (./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Azure Machine Learning service では、オープン ソース テクノロジが完全にサポートされます。 そのため、数万のオープン ソース Python パッケージを機械学習コンポーネントと組み合わせて使用することができます。 たとえば、PyTorch、TensorFlow、scikit-learn などです。
 豊富なツールのサポートにより、簡単に対話形式でデータを探して変換した後、モデルを開発してテストすることができます。 その例としては、[Jupyter Notebook](http://jupyter.org) や [Azure Machine Learning for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) 拡張機能があります。
@@ -70,7 +70,7 @@ Azure Machine Learning service の基本的な使い方については、「[次
 
 ## <a name="how-is-azure-machine-learning-service-different-from-machine-learning-studio"></a>Azure Machine Learning service と Machine Learning Studio の違い
 
-Azure Machine Learning Studio は、共同作業に対応するドラッグアンドドロップ式の視覚的なワークスペースです。コードを記述することなく機械学習ソリューションを構築、テスト、およびデプロイすることができます。 事前に構築および構成された機械学習アルゴリズムとデータ処理モジュールが使用されています。 
+[Azure Machine Learning Studio](../studio/what-is-ml-studio.md) は、共同作業に対応するドラッグ アンド ドロップ式の視覚的なワークスペースです。コードを記述することなく機械学習ソリューションを構築、テスト、およびデプロイすることができます。 事前に構築および構成された機械学習アルゴリズムとデータ処理モジュールが使用されています。
 
 Machine Learning Studio を使用するのは、機械学習モデルをすばやく簡単に試したいときで、組み込みの機械学習アルゴリズムで十分な場合です。
 

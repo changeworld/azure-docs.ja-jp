@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 01/07/2019
+ms.lastreviewed: 02/19/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: b3a9ee66907b51a40e9f4b0871d9f6ba6e29763a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f9ed10c84be86304722020606873b0c7866df1e8
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242401"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594051"
 ---
 # <a name="validate-oem-packages"></a>OEM パッケージの検証
 
@@ -35,7 +35,7 @@ ms.locfileid: "55242401"
 
 ## <a name="managing-packages-for-validation"></a>検証のためのパッケージの管理
 
-**パッケージの検証**ワークフローを使用してパッケージを検証する場合は、**Azure Storage Blob** への URL を指定する必要があります。 この BLOB は、デプロイ時にソリューションにインストールされた OEM パッケージです。 設定中に作成した Azure Storage アカウントを使用して BLOB を作成します ([サービスとしての検証のリソースの設定](azure-stack-vaas-set-up-resources.md)に関するページを参照してください)。
+**パッケージの検証**ワークフローを使用してパッケージを検証する場合は、**Azure Storage Blob** への URL を指定する必要があります。 この BLOB は、更新プロセスの一環としてインストールされる、テスト署名済みの OEM パッケージです。 設定中に作成した Azure Storage アカウントを使用して BLOB を作成します ([サービスとしての検証のリソースの設定](azure-stack-vaas-set-up-resources.md)に関するページを参照してください)。
 
 ### <a name="prerequisite-provision-a-storage-container"></a>前提条件:ストレージ コンテナーをプロビジョニングする
 
@@ -58,7 +58,9 @@ ms.locfileid: "55242401"
 
 VaaS ポータルで**パッケージの検証**ワークフローを作成する場合、パッケージが含まれている Azure Storage BLOB への URL を指定する必要があります。
 
-#### <a name="option-1-generating-an-account-sas-url"></a>オプション 1:アカウントの SAS URL を生成する
+#### <a name="option-1-generating-a-blob-sas-url"></a>オプション 1:BLOB の SAS URL を生成する
+
+ストレージ コンテナーまたは BLOB へのパブリック読み取りアクセスを有効にしたくない場合は、このオプションを使用します。
 
 1. [Azure portal](https://portal.azure.com/) でストレージ アカウントに移動し、パッケージが含まれている .zip に移動します
 
@@ -68,20 +70,23 @@ VaaS ポータルで**パッケージの検証**ワークフローを作成す�
 
 4. **[開始時間]** を現在の時刻に設定し、**[終了時間]** を少なくとも **[開始時間]** から 48 時間後に設定します。 同じパッケージに対して別のテストも行う場合は、**[終了時間]** をテストの時間分遅らせることを検討します。 VaaS を通じて **[終了時間]** より後にスケジュールされたテストは失敗し、新しい SAS の生成が必要になります。
 
-5. **[BLOB SAS トークンおよび URL を生成]** を選択します
+5. **[BLOB SAS トークンおよび URL を生成]** を選択します。
 
-**BLOB SAS URL** は、VaaS ポータルで新しい**パッケージの検証**ワークフローを開始するときに使用します。
+ポータルでパッケージ BLOB URL を指定する場合は、**BLOB SAS URL** を使用してください。
 
-#### <a name="option-2-using-public-read-container"></a>オプション 2:パブリック読み取りコンテナーを使用する
+#### <a name="option-2-grant-public-read-access"></a>オプション 2:パブリック読み取りアクセスを許可する
 
 > [!CAUTION]
-> このオプションでは、匿名の読み取り専用アクセス用にコンテナーを開放します。
+> このオプションでは、匿名の読み取り専用アクセス用に BLOB を開放します。
 
 1. 「[コンテナーと BLOB への匿名ユーザーのアクセス許可を付与します](https://docs.microsoft.com/azure/storage/storage-manage-access-to-resources#grant-anonymous-users-permissions-to-containers-and-blobs)」の手順に従って、**BLOB のパブリック読み取りアクセス**をパッケージ コンテナーにのみ許可します。
 
-2. パッケージ コンテナーで、コンテナー内のパッケージ BLOB を選択してプロパティ ウィンドウを開きます。
+> [!NOTE]
+> パッケージ URL を "*対話型テスト*" (たとえば、Monthly AzureStack Update Verification (月次 Azure Stack 更新プログラムの検証)、OEM Extension Package Verification (OEM 拡張機能パッケージの検証) など) に提供する場合は、テストを続行するために、**完全パブリック読み取りアクセス**を付与する必要があります。
 
-3. **URL** をコピーします。 この値は、VaaS ポータルで新しい**パッケージの検証**ワークフローを開始するときに使用します。
+2. パッケージ コンテナーで、パッケージ BLOB を選択してプロパティ ウィンドウを開きます。
+
+3. **URL** をコピーします。 ポータルでパッケージ BLOB URL を指定する場合は、この値を使用してください。
 
 ## <a name="apply-monthly-update"></a>毎月の更新プログラムの適用
 
@@ -99,7 +104,7 @@ VaaS ポータルで**パッケージの検証**ワークフローを作成す�
 
 4. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
 
-5. デプロイ時にソリューションにインストールされた OEM パッケージへの Azure Storage Blob URL を入力します。 手順については、「[VaaS のパッケージ BLOB の URL の生成](#generate-package-blob-url-for-vaas)」を参照してください。
+5. Microsoft の署名が必要なテスト署名済み OEM パッケージに、Azure Storage BLOB URL を入力します。 手順については、「[VaaS のパッケージ BLOB の URL の生成](#generate-package-blob-url-for-vaas)」を参照してください。
 
 6. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
 
@@ -113,9 +118,16 @@ VaaS ポータルで**パッケージの検証**ワークフローを作成す�
 9. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
     テストの概要ページにリダイレクトされます。
 
+## <a name="required-tests"></a>必須のテスト
+
+OEM パッケージの検証には、以下のテストが必要です。
+
+- OEM Extension Package Verification (OEM 拡張機能パッケージの検証)
+- Cloud Simulation Engine (クラウド シミュレーション エンジン)
+
 ## <a name="run-package-validation-tests"></a>パッケージの検証テストの実行
 
-1. **パッケージの検証テストの概要**のページには、検証を完了するために必要なテストの一覧が表示されます。 このワークフローのテストは約 24 時間実行されます。
+1. **パッケージの検証テストの概要**に関するページでは、ご自分のシナリオに適した、一覧表示されているテストの一部を実行します。
 
     検証ワークフローでは、テストを**スケジュール設定**するときに、ワークフローの作成時に指定したワークフロー レベルの一般的なパラメーターを使用します (「[Azure Stack Validation as a Service に使用される一般的なワークフロー パラメーター](azure-stack-vaas-parameters.md)」を参照してください)。 テスト パラメーター値のいずれかが無効になった場合は、[ワークフロー パラメーターの変更](azure-stack-vaas-monitor-test.md#change-workflow-parameters)に関するセクションの手順に従ってパラメーター値を再度指定する必要があります。
 
@@ -125,13 +137,11 @@ VaaS ポータルで**パッケージの検証**ワークフローを作成す�
 
 2. テストを実行するエージェントを選択します。 ローカル テストの実行エージェントの追加については、「[ローカル エージェントをデプロイする](azure-stack-vaas-local-agent.md)」を参照してください。
 
-3. 以下の各テストに対して、手順 4. と 5. を実行します。
-    - OEM Extension Package Verification (OEM 拡張機能パッケージの検証)
-    - Cloud Simulation Engine (クラウド シミュレーション エンジン)
+3. OEM Extension Package Verification (OEM 拡張機能パッケージの検証) を完了するには、コンテキスト メニューの **[スケジュール]** を選択して、テスト インスタンスをスケジュール設定するためのプロンプトを開きます。
 
-4. テスト インスタンスをスケジュール設定するためのプロンプトを開くには、コンテキスト メニューの **[スケジュール]** を選択します。
+4. テスト パラメーターを確認し、**[送信]** を選択して、OEM Extension Package Verification (OEM 拡張機能パッケージの検証) の実行をスケジュール設定します。
 
-5. テスト パラメーターを確認し、**[送信]** を選択してテストの実行をスケジュール設定します。
+5. OEM Extension Package Verification (OEM 拡張機能パッケージの検証) の結果を確認します。 テストが成功したら、Cloud Simulation Engine (クラウド シミュレーション エンジン) の実行をスケジュール設定します。
 
 すべてのテストが正常に完了したら、VaaS ソリューションとパッケージの検証の名前を [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) に送信して、パッケージの署名を要求してください。
 

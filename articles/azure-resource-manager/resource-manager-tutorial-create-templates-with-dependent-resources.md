@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c5bf56482534a55d24d8ca043e36c39cec99b1f0
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: be1249969fc50f5305dc5844f2578f8a24a6a220
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267531"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817951"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む Azure Resource Manager テンプレートを作成する
 
@@ -122,22 +122,10 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 4. チュートリアルで前に保存したテンプレートを選択します。 既定の名前は **azuredeploy.json** です。  同じ名前のファイルが既にある場合は、古いファイルが通知なしに上書きされます。
-5. Cloud Shell から次のコマンドを実行し、ファイルが正常にアップロードされていることを確認します。 
 
-    ```bash
-    ls
-    ```
+    オプションで **ls $HOME** コマンドと **cat $HOME/azuredeploy.json** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。 
 
-    ![Azure portal の Cloud Shell のファイルの一覧表示](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-list-file.png)
-
-    スクリーン ショットに示されているファイル名は、azuredeploy.json です。
-
-6. Cloud Shell から次のコマンドを実行し、JSON ファイルの内容を確認します。
-
-    ```bash
-    cat azuredeploy.json
-    ```
-7. Cloud Shell から、次の PowerShell コマンドを実行します。 セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
+5. Cloud Shell から、次の PowerShell コマンドを実行します。 セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -146,17 +134,14 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
     $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
 
-    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -adminUsername $adminUsername `
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
-        -TemplateFile azuredeploy.json
+        -TemplateFile "$HOME/azuredeploy.json"
     ```
-
-    > [!NOTE]
-    > Cloud Shell での Azure PowerShell の使用には、ファイル IO の問題が存在します。  エラー メッセージは、"*コマンドレットの動的パラメーターを取得できません。パス 'Azure:/azuredeploy.json' が存在しないため検出できません*" です。  `New-AzResourceGroupDeploy` コマンドに **-TemplateFile** スイッチを含めないようにすることが暫定的な回避策となります。 コマンドを実行すると、ファイル名を入力するように求められます。
 
 8. 次の PowerShell コマンドを実行して、新しく作成された仮想マシンの一覧を表示します。
 

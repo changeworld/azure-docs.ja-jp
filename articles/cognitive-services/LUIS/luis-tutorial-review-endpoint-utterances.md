@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 88ac9f07fb8791ca3d64123663b0380a56220cdd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 25841971a2e7921c89c63032e8fd48bc528263aa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865957"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878177"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>チュートリアル:エンドポイントの発話を確認して不確かな予測を修正する
 このチュートリアルでは、LUIS HTTPS エンドポイント経由で受け取った LUIS にとって不確かな発話を確認または修正することによって、アプリの予測精度を高めます。 いくつかの発話についての意図を確認したり、その他の発話のエンティティを確認したりすることが必要な場合もあります。 LUIS の定期メンテナンスの通常の部分としてエンドポイントの発話を確認する必要があります。 
@@ -50,11 +50,13 @@ ms.locfileid: "55865957"
 
 1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json)をダウンロードして保存します。
 
-2. JSON を新しいアプリにインポートします。
+1. JSON を新しいアプリにインポートします。
 
-3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `review` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
+1. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `review` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
 
-    新たにインポートしたアプリとしてこのチュートリアルを使用する場合は、発話をトレーニングして公開したうえで、エンドポイントに追加する必要があります。エンドポイントへの追加は、[スクリプト](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js)を使って行うか、またはエンドポイントからブラウザーで行います。 追加する発話は次のとおりです。
+1. 新しいアプリをトレーニングして発行します。
+
+1. エンドポイントを使用して次の発話を追加します。 これは[スクリプト](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js)を使用するか、またはブラウザーでエンドポイントから実行できます。 追加する発話は次のとおりです。
 
    [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
 
@@ -64,13 +66,13 @@ ms.locfileid: "55865957"
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. 左側のナビゲーションから **[Review endpoint utterances]\(エンドポイントの発話の確認\)** を選択します。 このリストは、**ApplyForJob** という意図がフィルターで抽出されています。 
+1. 左側のナビゲーションから **[Review endpoint utterances]\(エンドポイントの発話の確認\)** を選択します。 このリストは、**ApplyForJob** という意図がフィルターで抽出されています。 
 
-    [ ![左側のナビゲーションにある [Review endpoint utterances]\(エンドポイントの発話の確認\) ボタンのスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
+    [![左側のナビゲーションにある [Review endpoint utterances]\(エンドポイントの発話の確認\) ボタンのスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
-3. **[エンティティの表示]** を切り替えて、ラベル付けされたエンティティを表示します。 
+1. **[エンティティの表示]** を切り替えて、ラベル付けされたエンティティを表示します。 
     
-    [ ![[エンティティの表示] トグルを強調表示した [Review endpoint utterances]\(エンドポイントの発話の確認\) のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
+    [![[エンティティの表示] トグルを強調表示した [Review endpoint utterances]\(エンドポイントの発話の確認\) のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
     |発話|正しい意図|エンティティが不明|
     |:--|:--|:--|
@@ -78,29 +80,29 @@ ms.locfileid: "55865957"
 
     この発話は正しい意図には存在せず、スコアは 50% 未満となっています。 **ApplyForJob** 意図には 21 の発話があります。一方、**GetJobInformation** の発話は 7 個です。 エンドポイントの発話を正しくアラインメントすると共に、**GetJobInformation** 意図には、もっと発話を追加する必要があります。 この作業については各自が演習として行ってください。 それぞれの意図に割り当てられる発話の例は、**None** を除き、ほぼ同数となるようにする必要があります。 **None** 意図は、アプリ内の発話全体の 10% にすることをお勧めします。 
 
-4. 意図 `I'm looking for a job with Natual Language Processing` について、**[Aligned intent]\(アラインメントされた意図\)** 列から、正しい意図である **[GetJobInformation]** を選択します。 
+1. 意図 `I'm looking for a job with Natual Language Processing` について、**[Aligned intent]\(アラインメントされた意図\)** 列から、正しい意図である **[GetJobInformation]** を選択します。 
 
-    [ ![[Review endpoint utterances]\(エンドポイントの発話の確認\) で発話を意図にアラインメントする操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
+    [![[Review endpoint utterances]\(エンドポイントの発話の確認\) で発話を意図にアラインメントする操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
 
-5. 同じ発話で、`Natural Language Processing` のエンティティが keyPhrase になっています。 これは **Job** エンティティに変更する必要があります。 [`Natural Language Processing`] を選択し、ボックスの一覧から **[Job]** エンティティを選択してください。
+1. 同じ発話で、`Natural Language Processing` のエンティティが keyPhrase になっています。 これは **Job** エンティティに変更する必要があります。 [`Natural Language Processing`] を選択し、ボックスの一覧から **[Job]** エンティティを選択してください。
 
-    [ ![[Review endpoint utterances]\(エンドポイントの発話の確認\) で発話のエンティティをラベル付けする操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
+    [![[Review endpoint utterances]\(エンドポイントの発話の確認\) で発話のエンティティをラベル付けする操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
 
-6. 同じ行の **[Add to aligned intent]\(アラインメント済みの意図に追加\)** 列にある円形のチェックマークをオンにします。 
+1. 同じ行の **[Add to aligned intent]\(アラインメント済みの意図に追加\)** 列にある円形のチェックマークをオンにします。 
 
-    [ ![意図に対する発話のアラインメントを確定する操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
+    [![意図に対する発話のアラインメントを確定する操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
 
     この操作により、発話が **[Review endpoint utterances]\(エンドポイントの発話の確認\)** から **[GetJobInformation]** の意図に移されます。 これでエンドポイントの発話が、適切な意図の発話例になりました。 
 
-7. この意図に関して、残りの発話をレビューします。発話のラベル付けを行い、**[Aligned intent]\(アラインメントされた意図\)** が誤っていれば修正してください。
+1. この意図に関して、残りの発話をレビューします。発話のラベル付けを行い、**[Aligned intent]\(アラインメントされた意図\)** が誤っていれば修正してください。
 
-8. すべての発話が正しければ、各行のチェック ボックスをオンにし、**[Add selected]\(選択項目の追加\)** を選択すると、発話が正しくアラインメントされます。 
+1. すべての発話が正しければ、各行のチェック ボックスをオンにし、**[Add selected]\(選択項目の追加\)** を選択すると、発話が正しくアラインメントされます。 
 
-    [ ![アラインメントされた意図に残りの発話を確定する操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
+    [![アラインメントされた意図に残りの発話を確定する操作のスクリーンショット](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
-9. 前出の発話はリストから消えます。 さらに発話が表示された場合は、引き続きリストの項目を処理します。リストが空になるまで意図を修正し、不明なエンティティのラベル付けを行ってください。 
+1. 前出の発話はリストから消えます。 さらに発話が表示された場合は、引き続きリストの項目を処理します。リストが空になるまで意図を修正し、不明なエンティティのラベル付けを行ってください。 
 
-10. フィルター リストから次の意図を選択し、続けて発話の修正とエンティティのラベル付けを行います。 意図ごとの最後の手順で必ず、発話行の **[Add to aligned intent]\(アラインメント済みの意図に追加\)** を選択するか、または、各意図のチェック ボックスをオンにして、表の上にある **[Add selected]\(選択項目の追加\)** を選択してください。
+1. フィルター リストから次の意図を選択し、続けて発話の修正とエンティティのラベル付けを行います。 意図ごとの最後の手順で必ず、発話行の **[Add to aligned intent]\(アラインメント済みの意図に追加\)** を選択するか、または、各意図のチェック ボックスをオンにして、表の上にある **[Add selected]\(選択項目の追加\)** を選択してください。
 
     フィルター リスト内のすべての意図およびエンティティが空になるまで続行します。 これはきわめて小さなアプリです。 レビュー プロセスの所要時間は数分程度です。 
 

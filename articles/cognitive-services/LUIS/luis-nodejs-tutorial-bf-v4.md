@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 8a24ffa4717244d8ce2ef507183cff06cbea5797
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 852cc5e5b3b018d871bd40775dce64d669fb3011
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492234"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880616"
 ---
 # <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>チュートリアル: Bot Framework 4.x と Azure Web アプリ ボットを備えた Node.js の LUIS ボット
 Node.js を使用すると、Language Understanding (LUIS) と統合されたチャット ボットを作成することができます。 このボットは、HomeAutomation アプリを使用してボット ソリューションを実装します。 このボットは、[Bot Framework バージョン](https://github.com/Microsoft/botbuilder-js) v4 と Azure [Web アプリ ボット](https://docs.microsoft.com/azure/bot-service/)で作成します。
@@ -50,7 +50,7 @@ Node.js を使用すると、Language Understanding (LUIS) と統合されたチ
     |ボット名|リソース名|`luis-nodejs-bot-` + `<your-name>` (例: `luis-nodejs-bot-johnsmith`)|
     |サブスクリプション|サブスクリプション ボットを作成するサブスクリプション。|プライマリ サブスクリプション。
     |リソース グループ|Azure リソースの論理グループ|このボットで使用するすべてのリソースを格納する新しいグループを作成し、グループに `luis-nodejs-bot-resource-group` という名前を付けます。|
-    |場所|Azure リージョン - これは LUIS の作成または公開リージョンと同じである必要はありません。|`westus`|
+    |Location|Azure リージョン - これは LUIS の作成または公開リージョンと同じである必要はありません。|`westus`|
     |価格レベル |サービス要求の制限と課金に使用されます。|`F0` は無料レベルです。
     |アプリの名前|この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (humanresourcesbot.azurewebsites.net など)。|`luis-nodejs-bot-` + `<your-name>` (例: `luis-nodejs-bot-johnsmith`)|
     |ボット テンプレート|Bot Framework の設定 - 次の表を参照|
@@ -66,7 +66,7 @@ Node.js を使用すると、Language Understanding (LUIS) と統合されたチ
     
 5. **作成**を選択します。 これによって、ボット サービスが作成され、Azure にデプロイされます。 このプロセスの一環として、`luis-nodejs-bot-XXXX` という LUIS アプリが作成されます。 この名前は、前のセクションのボットとアプリの名前に基づいています。
 
-    [ ![Web アプリ ボットの作成](./media/bfv4-nodejs/create-web-app-service.png) ](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    [![Web アプリ ボットの作成](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
 6. このブラウザー タブは開いたままにしておきます。 LUIS ポータルを使用したどの手順でも、新しいブラウザー タブを開きます。新しいボット サービスがデプロイされたら、次のセクションに進みます。
 
@@ -106,7 +106,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 3. **[ボットのソース コードをダウンロードする]** を選択します。 
 
-    [ ![基本ボットの Web アプリ ボットのソース コードのダウンロード](../../../includes/media/cognitive-services-luis/bfv4/download-code.png) ](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [![基本ボットの Web アプリ ボットのソース コードのダウンロード](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
 4. ソース コードが圧縮されている場合は、コードをダウンロードするリンクを示すメッセージが表示されます。 リンクを選択します。 
 
@@ -230,7 +230,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 2. ボット エミュレーターで、プロジェクトのルートにある *.bot ファイルを選択します。 この `.bot` ファイルには、メッセージに対するボットの URL エンドポイントが含まれています。
 
-    [ ![Bot emulator v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png) ](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
+    [![Bot emulator v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png)](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
 
 3. 「**[Web アプリ ボットをダウンロードする](#download-the-web-app-bot)**」セクションの手順 1 で Azure Bot Service の [アプリケーションの設定] からコピーした、ボット シークレットを入力します。 これにより、エミュレーターが .bot ファイル内の暗号化されたフィールドにアクセスできるようになります。
 
@@ -239,7 +239,7 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
 4. ボット エミュレーターで、`Hello` と入力し、基本ボットの適切な返答を取得します。
 
-    [ ![エミュレーターでの基本ボットの返答](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png) ](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
+    [![エミュレーターでの基本ボットの返答](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png)](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
 
 ## <a name="modify-bot-code"></a>ボットのコードを変更する 
 

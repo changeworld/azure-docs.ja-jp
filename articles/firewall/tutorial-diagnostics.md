@@ -7,18 +7,20 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 875efddfff9b50ab05665cb8c158467dc46c8d0d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2befbf66733430e6077f5e5ff3044c30a77b7e5c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987434"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958985"
 ---
-# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>チュートリアル: Azure Firewall のログとメトリックを監視する
+# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>チュートリアル:Azure Firewall のログとメトリックを監視する
 
 Azure Firewall を監視するには、ファイアウォール ログを使用できます。 また、アクティビティ ログを使用して、Azure Firewall リソースに対する操作を監査することもできます。 メトリックを使用して、ポータルにパフォーマンス カウンターを表示できます。 
 
-一部のログにはポータルからアクセスできます。 ログを [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md)、Storage、および Event Hubs に送信し、Log Analytics や他のツール (Excel、Power BI など) で分析することができます。
+一部のログにはポータルからアクセスできます。 ログを [Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)、Storage、および Event Hubs に送信し、Azure Monitor ログや他のツール (Excel、Power BI など) で分析することができます。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -48,7 +50,7 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 
 3. データの収集を開始するには、**[診断を有効にする]** をクリックします。
 4. **[診断設定]** ページに、診断ログの設定が表示されます。 
-5. この例では、Log Analytics にログを保存するため、名前として「**Firewall log analytics**」と入力します。
+5. この例では、Azure Monitor ログにログを保存するため、名前として「**Firewall log analytics**」と入力します。
 6. **[Send to Log Analytics]\(Log Analytics に送信\)** をクリックして、ワークスペースを構成します。 イベント ハブとストレージ アカウントを使用して診断ログを保存することもできます。
 7. **[Log Analytics]** で、**[構成]** をクリックします。
 8. [Log Analytics ワークスペース] ページで、**[新しいワークスペースの作成]** をクリックします。
@@ -89,14 +91,14 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 
 次のいずれかの方法を使用して、アクティビティ ログのデータを表示および分析できます。
 
-* **Azure Tools:** Azure PowerShell、Azure CLI、Azure REST API、または Azure Portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)」を参照してください。
-* **Power BI**: [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure アクティビティ ログ コンテンツ パック](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
+* **Azure Tools**:Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)」を参照してください。
+* **Power BI**:[Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure アクティビティ ログ コンテンツ パック](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>ネットワークおよびアプリケーション ルール ログの表示と分析
 
-Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) は、カウンターおよびイベント ログ ファイルを収集します。 このツールには、ログを分析するための視覚化と強力な検索機能が含まれています。
+[Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)は、カウンターおよびイベント ログ ファイルを収集します。 このツールには、ログを分析するための視覚化と強力な検索機能が含まれています。
 
-Azure Firewall Log Analytics のサンプル クエリについては、「[Azure Firewall Log Analytics samples (Azure Firewall Log Analytics のサンプル)](log-analytics-samples.md)」を参照してください。
+Azure Firewall のログ分析のサンプル クエリについては、「[Azure Firewall Log Analytics のサンプル](log-analytics-samples.md)」を参照してください。
 
 自身のストレージ アカウントに接続して、アクセス ログとパフォーマンス ログの JSON ログ エントリを取得することもできます。 JSON ファイルをダウンロードした後、そのファイルを CSV に変換し、Excel、Power BI などのデータ視覚化ツールで表示できます。
 
@@ -108,10 +110,10 @@ Azure Firewall に移動し、**[監視]** の **[メトリック]** をクリ�
 
 ## <a name="next-steps"></a>次の手順
 
-ログを収集するようにファイアウォールを構成した後、Log Analytics を使用してデータを表示できます。
+ログを収集するようにファイアウォールを構成した後、Azure Monitor ログを使用してデータを表示できます。
 
 > [!div class="nextstepaction"]
-> [Log Analytics のネットワーク監視ソリューション](../log-analytics/log-analytics-azure-networking-analytics.md)
+> [Azure Monitor ログのネットワーク監視ソリューション](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

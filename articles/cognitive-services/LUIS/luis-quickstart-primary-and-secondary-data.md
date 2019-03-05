@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 9da2f8fa345ad3447d7c3344772458c451cf427e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d333eb6baa41321fdf7daca3c545d5d5e3ed5fe4
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867241"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732706"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>チュートリアル:Simple エンティティとフレーズ リストを使用して名前を抽出する
 
@@ -233,7 +233,9 @@ Azure-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://gi
 
     [![新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    フレーズ リストに単語をさらに追加したい場合は、**[Related Values]\(関連する値\)** を確認し、関連のある単語を追加します。 
+    フレーズ リストに単語をさらに追加したい場合は、**[推奨]** を選択してから、新しい **[Related Values]\(関連する値\)** を確認し、関連のある単語を追加します。 
+
+    これらの値は、すべてがジョブのシノニムとして扱われる必要があるため、**[These values are interchangeable]\(これらの値は交換可能\)** をオンのままにしておきます。 交換可能と交換不能の[フレーズ リストの概念](luis-concept-feature.md#how-to-use-phrase-lists)について学習してください。
 
 1. **[保存]** を選択して、フレーズ リストをアクティブにします。
 

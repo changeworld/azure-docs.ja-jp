@@ -7,13 +7,14 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 01/24/2019
-ms.openlocfilehash: b48ac9cf8eff001e62f54e41b5f76a9d006bc5ba
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.workload: Active
+ms.date: 02/15/2019
+ms.openlocfilehash: 6ec32a40cea4f95d9225134cfb36d4930245d1c5
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328930"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750601"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
@@ -21,14 +22,19 @@ ms.locfileid: "56328930"
 
 このチュートリアルの手順では、Azure Databricks 用の SQL Data Warehouse コネクタを使って Azure Databricks にデータを転送します。 その後、このコネクタによって、Azure Databricks クラスターと Azure SQL Data Warehouse の間で転送されるデータの一時記憶域として Azure Blob Storage が使用されます。
 
+次の図に、アプリケーション フローを示します。
+
+![Data Lake Store を使用する Azure Databricks と SQL Data Warehouse](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Data Lake Store を使用する Azure Databricks と SQL Data Warehouse")
+
 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
 > * Azure Databricks サービスを作成する。
 > * Azure Databricks で Spark クラスターを作成する。
-> * ファイル システムを作成して Azure Data Lake Storage Gen2 にデータをアップロードする。
+> * Data Lake Storage Gen2 アカウントでファイル システムを作成する。
+> * サンプル データを Azure Data Lake Storage Gen2 アカウントにアップロードする。
 > * サービス プリンシパルを作成する。
-> * Data Lake Store からデータを抽出する。
+> * Azure Data Lake Storage Gen2 アカウントからデータを抽出する。
 > * Azure Databricks でデータを変換する。
 > * Azure SQL Data Warehouse にデータを読み込む。
 
@@ -42,11 +48,40 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * Azure SQL データ ウェアハウスに使用するデータベース マスター キーを作成します。 「[データベース マスター キーの作成](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)」を参照してください。
 
-* Azure Data Lake Storage Gen2 アカウントを作成します。 [Azure Data Lake Storage Gen2 アカウントの作成](../storage/blobs/data-lake-storage-quickstart-create-account.md)に関するページを参照してください。
-
 * Azure Blob Storage アカウントを作成し、そこにコンテナーを作成します。 また、ストレージ アカウントにアクセスするためのアクセス キーを取得します。 「[クイック スタート:Azure BLOB ストレージ アカウントの作成に関するクイック スタート](../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。
 
+* Azure Data Lake Storage Gen2 ストレージ アカウントを作成します。 [Azure Data Lake Storage Gen2 アカウントの作成](../storage/blobs/data-lake-storage-quickstart-create-account.md)に関するページを参照してください。
+
+*  サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+
+   この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
+
+   * 記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
+
+     > [!IMPORTANT]
+     > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当てるようにしてください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
+
+   * 記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
+
 * [Azure Portal](https://portal.azure.com/) にサインインします。
+
+## <a name="gather-the-information-that-you-need"></a>必要な情報を収集する
+
+このチュートリアルの前提条件を満たしていることを確認します。
+
+   開始する前に、以下の情報が必要です。
+
+   :heavy_check_mark:Azure SQL Data Warehouse のデータベース名、データベース サーバー名、ユーザー名、およびパスワード。
+
+   :heavy_check_mark:BLOB ストレージ アカウントのアクセス キー。
+
+   :heavy_check_mark:Data Lake Storage Gen2 ストレージ アカウントの名前。
+
+   :heavy_check_mark:サブスクリプションのテナント ID。
+
+   :heavy_check_mark:Azure Active Directory (Azure AD) に登録したアプリのアプリケーション ID。
+
+   :heavy_check_mark:Azure AD に登録したアプリの認証キー。
 
 ## <a name="create-an-azure-databricks-service"></a>Azure Databricks サービスを作成する
 
@@ -94,40 +129,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     * **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
-## <a name="create-a-file-system-and-upload-sample-data"></a>ファイル システムを作成してサンプル データをアップロードする
+## <a name="create-a-file-system-in-the-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2 アカウントでファイル システムを作成する
 
-まず、Data Lake Storage Gen2 アカウントでファイル システムを作成します。 その後サンプル データ ファイルを Data Lake Store にアップロードすることができます。 このファイルは、後から Azure Databricks でいくつかの変換処理を実行する際に使用します。
-
-1. ローカル ファイル システムに [small_radio_json.json](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) サンプル データ ファイルをダウンロードします。
-
-2. [Azure portal](https://portal.azure.com/) から、このチュートリアルの前提条件として作成した Data Lake Storage Gen2 アカウントに移動します。
-
-3. ストレージ アカウントの **[概要]** ページから **[Explorer で開く]** を選択します。
-
-   ![Storage Explorer を開く](./media/databricks-extract-load-sql-data-warehouse/data-lake-storage-open-storage-explorer.png "Storage Explorer を開く")
-
-4. **[Azure Storage Explorer を開く]** を選択して Storage Explorer を開きます。
-
-   ![[Storage Explorer を開く] の 2 つ目のプロンプト](./media/databricks-extract-load-sql-data-warehouse/data-lake-storage-open-storage-explorer-2.png "[Storage Explorer を開く] の 2 つ目のプロンプト")
-
-   Storage Explorer が開きます。 ファイル システムを作成してサンプル データをアップロードすることができます。「[クイック スタート:Azure Storage Explorer を使用してオブジェクト ストレージ内に BLOB を作成する](../storage/blobs/data-lake-storage-explorer.md)」のトピックのガイダンスに従ってください。
-
-<a id="service-principal"/>
-
-## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
-
-こちらのトピック「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
-
-この記事の手順を実行する際に、いくつかの作業を行う必要があります。
-
-:heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するとき、お客様のアプリケーションを **Blob Storage の共同作成者ロール**に必ず割り当ててください。
-
-:heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
-まず、Azure Databricks ワークスペースにノートブックを作成し、ストレージ アカウントにファイル システムを作成するコード スニペットを実行します。
-
-## <a name="extract-data-from-the-data-lake-store"></a>Data Lake Store からデータを抽出する
-
-このセクションでは、Azure Databricks ワークスペースにノートブックを作成し、Data Lake Store から Azure Databricks にデータを抽出するコード スニペットを実行します。
+このセクションでは、Azure Databricks ワークスペースにノートブックを作成し、ストレージ アカウントを構成するコード スニペットを実行します
 
 1. [Azure portal](https://portal.azure.com) で、作成した Azure Databricks サービスに移動し、**[Launch Workspace]\(ワークスペースの起動\)** を選択します。
 
@@ -149,13 +153,40 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    spark.conf.set("fs.azure.account.oauth2.client.id.<storage-account-name>.dfs.core.windows.net", "<application-id>")
    spark.conf.set("fs.azure.account.oauth2.client.secret.<storage-account-name>.dfs.core.windows.net", "<authentication-key>")
    spark.conf.set("fs.azure.account.oauth2.client.endpoint.<storage-account-name>.dfs.core.windows.net", "https://login.microsoftonline.com/<tenant-id>/oauth2/token")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
+   dbutils.fs.ls("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/")
+   spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. このコード ブロックでは、`application-id`、`authentication-id`、`tenant-id` の各プレースホルダーの値を、この記事の「ストレージ アカウント構成を確保する」の手順を実行したときに収集した値に置き換えます。 `storage-account-name` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
+6. このコード ブロックでは、`application-id`、`authentication-id`、`tenant-id`、および `storage-account-name` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 `file-system-name` プレースホルダーの値を、ファイル システムに付けたい名前に置き換えます。
+
+   * `application-id` および `authentication-id` は、サービス プリンシパルの作成の一環として Active Directory に登録したアプリのものです。
+
+   * `tenant-id` は、自分のサブスクリプションのものです。
+
+   * `storage-account-name` は、Azure Data Lake Storage Gen2 ストレージ アカウントの名前です。
 
 7. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 
-8. これで、サンプル json ファイルをデータフレームとして Azure Databricks に読み込むことができます。 新しいセルに次のコードを貼り付けます。 角かっこで囲まれているプレースホルダーは、実際の値に置き換えてください。
+## <a name="ingest-sample-data-into-the-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2 アカウントにサンプル データを取り込む
+
+このセクションで始める前に、次の前提条件を満たす必要があります。
+
+ノートブックのセルに次のコードを入力します。
+
+    %sh wget -P /tmp https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json
+
+セル内で **Shift + Enter** キーを押して、コードを実行します。
+
+次に、その下の新しいセルに次のコードを入力します。ブラケットで囲まれている値は、前に使用したのと同じ値に置き換えてください。
+
+    dbutils.fs.cp("file:///tmp/small_radio_json.json", "abfss://<file-system>@<account-name>.dfs.core.windows.net/")
+
+セル内で **Shift + Enter** キーを押して、コードを実行します。
+
+## <a name="extract-data-from-the-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage Gen2 アカウントからデータを抽出する
+
+1. これで、サンプル json ファイルをデータフレームとして Azure Databricks に読み込むことができます。 新しいセルに次のコードを貼り付けます。 角かっこで囲まれているプレースホルダーは、実際の値に置き換えてください。
 
    ```scala
    val df = spark.read.json("abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/small_radio_json.json")
@@ -165,9 +196,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
    * `storage-account-name` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
 
-9. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
+2. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 
-10. 次のコードを実行して、データ フレームの内容を表示します。
+3. 次のコードを実行して、データ フレームの内容を表示します。
 
     ```scala
     df.show()
@@ -300,8 +331,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    val dwPass = "<password>"
    val dwJdbcPort =  "1433"
    val dwJdbcExtraOptions = "encrypt=true;trustServerCertificate=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30;"
-   val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
-   val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ".database.windows.net:" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
+   val sqlDwUrl = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass + ";$dwJdbcExtraOptions"
+   val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
 5. 次のスニペットを実行して、変換済みのデータフレーム (**renamedColumnsDf**) をテーブルとして SQL データ ウェアハウスに読み込みます。 このスニペットは、SQL データベースに **SampleTable** というテーブルを作成します。

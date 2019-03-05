@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a494e403b8afa1424640ac2e24d0f832b3de02dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 89b264c35d7dc269252a156aad6a24a565dbd6ea
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210613"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872685"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>チュートリアル:Azure Active Directory と Apex Portal の統合
 
@@ -217,8 +217,8 @@ Apex Portal で Azure AD シングル サインオンを構成するには、次
 
 このセクションでは、Britta Simon というユーザーを Apex Portal に作成します。 Apex Portal では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Apex Portal にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
-> [!NOTE]
-> ユーザーを手動で作成する必要がある場合は、 [Apex Portal サポート チーム](mailto:support@apexanalytix.com)に問い合わせてください。
+> [!NOTE]
+> ユーザーを手動で作成する必要がある場合は、 [Apex Portal サポート チーム](mailto:support@apexanalytix.com)に問い合わせてください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
@@ -230,7 +230,7 @@ Apex Portal で Azure AD シングル サインオンを構成するには、次
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

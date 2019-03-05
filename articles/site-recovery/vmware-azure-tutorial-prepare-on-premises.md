@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bee9d2f823fe46d81550ea5090222f491562d636
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ea67c19beeb2fa52b77b04913aee1838569c4ac6
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700113"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675026"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
@@ -80,7 +80,7 @@ VMware サーバーと VM が要件に準拠していることを確認します
 3. オンプレミスの[ネットワーク](vmware-physical-azure-support-matrix.md#network)と[ストレージ](vmware-physical-azure-support-matrix.md#storage)のサポートをチェックします。 
 4. [Azure のネットワーク](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](vmware-physical-azure-support-matrix.md#azure-compute)に関して、フェールオーバー後のサポートをチェックします。
 5. Azure にレプリケートするオンプレミスの VM は、「[Azure VM の要件](vmware-physical-azure-support-matrix.md#azure-vm-requirements)」に準拠している必要があります。
-6. Linux 仮想マシンでは、デバイス名またはマウント ポイント名が一意である必要があります。 大文字と小文字の区別なしで同じ名前を持つデバイス/マウント ポイントが複数存在しないことを確認します。 たとえば、同じ仮想マシンの 2 つのデバイスに *device1* および *Device1* という名前を付けることは許可されません。
+6. Linux 仮想マシンでは、デバイス名またはマウント ポイント名が一意である必要があります。 同じ名前を持つ複数のデバイス/マウント ポイントが存在しないことを確認します。 名前の大文字と小文字は区別されないことに注意してください。 たとえば、同じ VM の 2 つのデバイスに _device1_ と _Device1_ という名前を付けることは許可されません。
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 8e31717f9fd232a7c256b65d044a97396af8f960
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0978db31f4aa8caa273c63c2f55d5146b19dea26
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448588"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878015"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>クイック スタート:Unity 用 Speech SDK (ベータ版) を使用して音声を認識する
 
@@ -74,7 +74,7 @@ Unity に慣れていない場合は、アプリケーションの開発を始�
 
 完了したら、次のスクリーンショットのような UI になります。
 
-[ ![Unity エディターにおけるクイック スタートのユーザー インターフェイスを示すスクリーンショット](media/sdk/qs-csharp-unity-02-ui-inline.png) ](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
+[![Unity エディターにおけるクイック スタートのユーザー インターフェイスを示すスクリーンショット](media/sdk/qs-csharp-unity-02-ui-inline.png)](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
 
 ## <a name="add-the-sample-code"></a>サンプル コードを追加する
 
@@ -111,7 +111,7 @@ Unity に慣れていない場合は、アプリケーションの開発を始�
 
 * アプリが起動したら、ボタンをクリックし、コンピューターのマイクに向かって英語のフレーズや文章を話します。 音声が Speech サービスに送信されてテキストに変換され、ウィンドウに表示されます。
 
-  [ ![Unity のゲーム ウィンドウで実行中のクイック スタートのスクリーンショット](media/sdk/qs-csharp-unity-03-output-inline.png) ](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
+  [![Unity のゲーム ウィンドウで実行中のクイック スタートのスクリーンショット](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
 
 * [[Console]\(コンソール\) ウィンドウ](https://docs.unity3d.com/Manual/Console.html)でデバッグ メッセージを確認します。
 

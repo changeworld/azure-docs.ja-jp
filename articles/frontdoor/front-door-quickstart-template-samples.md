@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2018
 ms.author: sharadag
-ms.openlocfilehash: 1e4571edb15bf1a06948e720e51c672f890d68b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c0dccdd38f4b945df3702178e7351db58687bf82
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959523"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883898"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Front Door のための Azure Resource Manager デプロイ モデル テンプレート
 
@@ -39,5 +39,5 @@ ms.locfileid: "46959523"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Front Door の作成](quickstart-create-front-door.md)方法について説明します。
-- [Front Door の機能](front-door-routing-architecture.md)について説明します。
+- [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
+- [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

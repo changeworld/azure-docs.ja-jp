@@ -3,7 +3,7 @@ title: Azure で Service Fabric 上の Windows コンテナーを監視および
 description: このチュートリアルでは、Azure Service Fabric 上の Windows コンテナーの監視と診断用に Log Analytics を構成します。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2018
-ms.author: twhitney, dekapur
+ms.author: aljo, dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9249c0bb559328c878d784b54af5117b785daffe
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: f6aa0dcfa4a4f9e2780c8fb886523da347eeaa31
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300627"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806455"
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>チュートリアル: Log Analytics を使用して Service Fabric 上の Windows コンテナーを監視する
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>チュートリアル:Log Analytics を使用して Service Fabric 上の Windows コンテナーを監視する
 
 これはチュートリアルの第 3 部です。Service Fabric で調整された Windows コンテナーを監視するように Log Analytics を設定する手順について説明します。
 
@@ -225,7 +225,7 @@ Log Analytics ワークスペースに移動します。ここでは、ソリュ
 
 数分後にコンテナー監視ソリューションを**更新**すると、*コンピューターのパフォーマンス* データが表示されるようになります。 このデータから、リソースの使用状況を把握することができます。 また、これらのメトリックを使用して、クラスターの拡大縮小に関する適切な判断を下すことができます。また、クラスターが期待どおりに負荷を分散しているかどうかを確認することができます。
 
-*注: これらのメトリックを使用するには、時間フィルターが適切に設定されていることを確認します。*
+*注:これらのメトリックを使用するには、時間フィルターが適切に設定されていることを確認します。*
 
 ![パフォーマンス カウンター 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
 

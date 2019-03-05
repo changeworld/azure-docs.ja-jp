@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 7623f98b9fd6c4bad8a41050e39b6e0e8650dccc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242929"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889287"
 ---
 # <a name="what-is-text-analytics"></a>Text Analytics とは
 
@@ -64,11 +64,11 @@ ID をベースに出力は 1 つの JSON ドキュメントとして返され�
 
 ## <a name="data-limits"></a>データ制限
 
-Text Analytics API のエンドポイントはすべて、未加工のテキスト データを受け取ります。 現在の上限はドキュメントあたり 5,000 文字です。それより大きなドキュメントを分析する必要がある場合は小さなまとまりに分割できます。 分割ではなく、上限を増やす必要がある場合は[お問い合わせください](https://azure.microsoft.com/overview/sales-number/)。要件について説明いたします。
+Text Analytics API のエンドポイントはすべて、未加工のテキスト データを受け取ります。 現在の上限はドキュメントあたり 5,120 文字です。それより大きなドキュメントを分析する必要がある場合は小さなまとまりに分割できます。 分割ではなく、上限を増やす必要がある場合は[お問い合わせください](https://azure.microsoft.com/overview/sales-number/)。要件について説明いたします。
 
 | 制限 | 値 |
 |------------------------|---------------|
-| 1 つのドキュメントの最大サイズ | [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) で測定される 5,000 文字。 |
+| 1 つのドキュメントの最大サイズ | [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) で測定される 5,120 文字。 |
 | 要求全体の最大サイズ | 1 MB |
 | 1 件の要求での最大ドキュメント数 | 1,000 ドキュメント |
 
@@ -80,7 +80,7 @@ Text Analytics API では、テキストの表現と文字数の計算に Unicod
 
 ## <a name="next-steps"></a>次の手順
 
-まず、[対話型デモ](https://azure.microsoft.com/services/cognitive-services/text-analytics/)をお試しください。 テキスト入力 (最大 5,000 文字) を貼り付け、言語を検出したり (最大 120)、感情スコアを算出したり、キー フレーズを抽出したりできます。 新規登録の必要ありません。
+まず、[対話型デモ](https://azure.microsoft.com/services/cognitive-services/text-analytics/)をお試しください。 テキスト入力 (最大 5,120 文字) を貼り付け、言語を検出したり (最大 120)、感情スコアを算出したり、キー フレーズを抽出したりできます。 新規登録の必要ありません。
 
 API を直接呼び出す準備ができたら:
 

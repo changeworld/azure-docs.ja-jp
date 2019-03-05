@@ -16,12 +16,12 @@ ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 88cbfc895d188162d0f242a5aceaab721a6c877f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: def9026fb0422d8868af098f12180617aefe7eff
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239105"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877947"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
 
@@ -74,7 +74,7 @@ ms.locfileid: "55239105"
 3.  表示されたブレードで、**[サービスとクォータ]** を選択します。
 4.  表示するクォータの **[名前]** 列をクリックして選択します。
 
-    [ ![クォータ](media/azure-stack-quota-types/quotas1sm.png "クォータの表示") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![クォータ](media/azure-stack-quota-types/quotas1sm.png "クォータの表示")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 ### <a name="resource-providers"></a>リソース プロバイダー
 
@@ -92,7 +92,7 @@ ms.locfileid: "55239105"
 2.  編集するプランの名前をクリックして選択します。
 3.  表示されたブレードで、**[サービスとクォータ]** を選択します。
 4.  編集するクォータの **[名前]** 列をクリックして選択します。
-    [ ![クォータ](media/azure-stack-quota-types/quotas1sm.png "クォータの表示") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![クォータ](media/azure-stack-quota-types/quotas1sm.png "クォータの表示")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 5.  表示されたブレードで、**[Edit in Compute]\(コンピューティングで編集\)**、**[Edit in Network]\(ネットワークで編集\)**、または **[Edit in Storage]\(\)** を選択します。
     ![クォータ](media/azure-stack-quota-types/quotas3.png "クォータの表示")    

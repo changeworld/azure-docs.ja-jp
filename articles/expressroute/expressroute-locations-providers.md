@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/25/2019
+ms.date: 02/26/2019
 ms.author: pareshmu
-ms.openlocfilehash: 457eb6335c5a67d381250861a4009225cf04fc25
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 58532eedab2e704861221b75d219a56e0a3f0f2c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488052"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959563"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -95,7 +95,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ラスベガス** | Switch | CenturyLink Cloud Connect、Megaport |
 | **ロンドン** | Equinix | AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Telehouse - KDDI、Telenor、Telia Carrier、Verizon、Vodafone、Zayo |
 | **London2** | Telehouse | Equinix
-| **ロサンゼルス** | CoreSite | CoreSite、Equinix、Megaport、NTT、Zayo |
+| **ロサンゼルス** | CoreSite | CoreSite、Equinix、Megaport、Neutrona Networks、NTT、Zayo |
 | **マルセイユ** |Interxion | Interxion |
 | **メルボルン** | NextDC | AARNet、Equinix、Megaport、NEXTDC、Optus、Telstra Corporation |
 | **マイアミ** | Equinix | C3ntro+、Equinix、Megaport、Neutrona Networks |
@@ -103,7 +103,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ムンバイ** | Tata Communications | Global CloudXchange (GCX)、Sify、Tata Communications、Vodafone Idea |
 | **ムンバイ 2** | Airtel | Airtel、Sify、Vodafone Idea |
 | **ニューヨーク** | Equinix | CenturyLink Cloud Connect、Coresite、Equinix、InterCloud、Megaport、Zayo |
-| **ニューポート (ウェールズ)** | Next Generation Data | Level 3 Communications、Next Generation Data |
+| **ニューポート (ウェールズ)** | Next Generation Data | British Telecom、Level 3 Communications、Next Generation Data |
 | **大阪** | Equinix | Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT SmartConnect、Softbank |
 | **パリ** | Interxion | Colt、Intercloud、Interxion、Equinix、Orange |
 | **パース** | NextDC | NextDC |
@@ -117,7 +117,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **シンガポール 2** | Global Switch | Colt、Megaport、SingTel |
 | **シドニー** | Equinix | AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、NTT Communications、Optus、Orange、Telstra Corporation、Verizon |
 | **台北** | Chief Telecom | Chief Telecom |
-| **東京** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT EAST、Softbank、Verizon |
+| **東京** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT EAST、Orange、Softbank、Verizon |
 | **トロント** | Cologix | AT&T NetBond、Bell Canada、CenturyLink Cloud Connect、Cologix、Equinix、Megaport、Telus、Zayo |
 | **ワシントン DC** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Cologix、Comcast、Coresite、Equinix、Internet2、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、PacketFabric、Sprint、Tata Communications、Telia Carrier、Verizon、Zayo |
 | **ワシントン DC2** | Coresite | Coresite | 

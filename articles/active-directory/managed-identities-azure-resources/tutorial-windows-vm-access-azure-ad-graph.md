@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed94b7571acb0ced124644dafc59d805d5112e8a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 10b74b85235cc47375f6289b52371bc588105ad9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268568"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890098"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
 
@@ -43,10 +43,14 @@ ms.locfileid: "56268568"
 
 ## <a name="connect-to-azure-ad"></a>Azure への接続
 
-Azure AD に接続して、VM をグループに割り当てることに加えて、そのグループ メンバーシップを取得するためのアクセス許可を VM に付与する必要があります。
+Azure AD に接続して、VM をグループに割り当てることに加えて、そのグループ メンバーシップを取得するためのアクセス許可を VM に付与する必要があります。 Connect-AzureAD コマンドレットは直接使用できるほか、複数のテナントがある場合には TenantId パラメータを指定することもできます。
 
 ```powershell
 Connect-AzureAD
+```
+または
+```powershell
+Connect-AzureAD -TenantId "Object Id of the tenant"
 ```
 
 ## <a name="add-your-vm-identity-to-a-group-in-azure-ad"></a>Azure AD 内のグループに VM ID を追加する
@@ -79,7 +83,13 @@ Azure AD Graph:
    ```powershell
    Connect-AzureAD
    ```
+   特定の Azure Active Directory に接続するには、次のように _TenantId_ パラメーターを使用します。
 
+   ```PowerShell
+   Connect-AzureAD -TenantId "Object Id of the tenant"
+   ```
+
+   
 2. 次の PowerShell コマンドを実行して、VM の ID を表すサービス プリンシパルに ``Directory.Read.All`` のアプリケーションのアクセス許可を割り当てます。
 
    ```powershell

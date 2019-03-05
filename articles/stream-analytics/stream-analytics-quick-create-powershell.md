@@ -8,12 +8,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 5591e8174f15d552bf7295d1c3fe9cb5257c0f2e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b79800f9a9f0eb44c16c7f45fa97c55eca8ecd1a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438900"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737945"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Stream Analytics ジョブを作成する
 
@@ -23,40 +23,42 @@ Azure PowerShell モジュールは、PowerShell コマンドレットまたは�
 
 ## <a name="before-you-begin"></a>開始する前に
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。  
 
-* このクイック スタートには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 ローカル マシンにインストールされているバージョンを調べるには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
+* このクイック スタートには、Azure PowerShell モジュールが必要です。 ローカル マシンにインストールされているバージョンを調べるには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関するページを参照してください。
 
 * 一部の IoT Hub アクションは Azure PowerShell でサポートされていないため、Azure CLI バージョン 2.0.24 以降および Azure CLI の IoT 拡張機能を使用して実行する必要があります。 [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)し、`az extension add --name azure-cli-iot-ext` を使用して IoT 拡張機能をインストールします。
 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-`Connect-AzureRmAccount` コマンドを使用して Azure サブスクリプションにサインインし、ポップアップ ブラウザーに Azure 資格情報を入力します。
+`Connect-AzAccount` コマンドを使用して Azure サブスクリプションにサインインし、ポップアップ ブラウザーに Azure 資格情報を入力します。
 
 ```powershell
 # Connect to your Azure account
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 サブスクリプションが複数ある場合は、次のコマンドレットを実行して、このクイック スタートに使用するサブスクリプションを選択します。 `<your subscription name>` は、実際のサブスクリプションの名前に置き換えてください。  
 
 ```powershell
 # List all available subscriptions.
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Select the Azure subscription you want to use to create the resource group and resources.
-Get-AzureRmSubscription -SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
+Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
 $location = "WestUS2"
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
    -Name $resourceGroup `
    -Location $location 
 ```
@@ -111,17 +113,17 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
 次の Azure PowerShell コード ブロックでは、コマンドを使用して、ジョブの出力に使用される BLOB ストレージを作成します。 コードを理解するためにセクションを確認してください。
 
-1. [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount) コマンドレットを使用して、標準の汎用ストレージ アカウントを作成します。  この例では、ローカル冗長ストレージ (LRS) と BLOB 暗号化 (既定で有効) を使用する、**myasaquickstartstorage** と呼ばれるストレージ アカウントを作成します。  
+1. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) コマンドレットを使用して、標準の汎用ストレージ アカウントを作成します。  この例では、ローカル冗長ストレージ (LRS) と BLOB 暗号化 (既定で有効) を使用する、**myasaquickstartstorage** と呼ばれるストレージ アカウントを作成します。  
    
 2. 使用されるストレージ アカウントを定義するストレージ アカウント コンテキスト `$storageAccount.Context` を取得します。 ストレージ アカウントを操作するとき、資格情報を繰り返し入力する代わりに、このコンテキストを参照します。 
 
-3. [New-AzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) を使用して、ストレージ コンテナーを作成します。
+3. [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontainer) を使用して、ストレージ コンテナーを作成します。
 
 4. コードによって出力されたストレージ キーをコピーし、そのキーを保存します。これは、後でストリーミング ジョブの出力を作成するために使用します。
 
    ```powershell
    $storageAccountName = "myasaquickstartstorage"
-   $storageAccount = New-AzureRmStorageAccount `
+   $storageAccount = New-AzStorageAccount `
      -ResourceGroupName $resourceGroup `
      -Name $storageAccountName `
      -Location $location `
@@ -131,11 +133,11 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
    $ctx = $storageAccount.Context
    $containerName = "container1"
    
-   New-AzureStorageContainer `
+   New-AzStorageContainer `
      -Name $containerName `
      -Context $ctx
    
-   $storageAccountKey = (Get-AzureRmStorageAccountKey `
+   $storageAccountKey = (Get-AzStorageAccountKey `
      -ResourceGroupName $resourceGroup `
      -Name $storageAccountName).Value[0]
    
@@ -145,7 +147,7 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
 
-[New-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsjob?view=azurermps-5.4.0) コマンドレットを使用して、Stream Analytics ジョブを作成します。 このコマンドレットは、パラメーターとしてジョブ名、リソース グループ名、およびジョブ定義を受け取ります。 ジョブ名は、ジョブを識別する任意のフレンドリ名にすることができます。 これには英数字、ハイフン、アンダースコアのみを使用できます。長さは 3 文字以上 63 文字以下でなければなりません。 ジョブ定義は、ジョブの作成に必要なプロパティを含む JSON ファイルです。 ローカル マシンに `JobDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。
+[New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob?view=azurermps-5.4.0) コマンドレットを使用して、Stream Analytics ジョブを作成します。 このコマンドレットは、パラメーターとしてジョブ名、リソース グループ名、およびジョブ定義を受け取ります。 ジョブ名は、ジョブを識別する任意のフレンドリ名にすることができます。 これには英数字、ハイフン、アンダースコアのみを使用できます。長さは 3 文字以上 63 文字以下でなければなりません。 ジョブ定義は、ジョブの作成に必要なプロパティを含む JSON ファイルです。 ローカル マシンに `JobDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。
 
 ```json
 {    
@@ -161,12 +163,12 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 }
 ```
 
-次に、`New-AzureRmStreamAnalyticsJob` コマンドレットを実行します。 `jobDefinitionFile` 変数の値は、ジョブ定義 JSON ファイルを保存したパスに置き換えてください。 
+次に、`New-AzStreamAnalyticsJob` コマンドレットを実行します。 `jobDefinitionFile` 変数の値は、ジョブ定義 JSON ファイルを保存したパスに置き換えてください。 
 
 ```powershell
 $jobName = "MyStreamingJob"
 $jobDefinitionFile = "C:\JobDefinition.json"
-New-AzureRmStreamAnalyticsJob `
+New-AzStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -File $jobDefinitionFile `
   -Name $jobName `
@@ -175,7 +177,7 @@ New-AzureRmStreamAnalyticsJob `
 
 ## <a name="configure-input-to-the-job"></a>ジョブへの入力を構成する
 
-[New-AzureRmStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsinput?view=azurermps-5.4.0) コマンドレットを使用して、ジョブへの入力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ入力名、リソース グループ名、およびジョブ入力定義を受け取ります。 ジョブ入力定義は、ジョブの入力の構成に必要なプロパティを含む JSON ファイルです。 この例では、BLOB ストレージを入力として作成します。 
+[New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput?view=azurermps-5.4.0) コマンドレットを使用して、ジョブへの入力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ入力名、リソース グループ名、およびジョブ入力定義を受け取ります。 ジョブ入力定義は、ジョブの入力の構成に必要なプロパティを含む JSON ファイルです。 この例では、BLOB ストレージを入力として作成します。 
 
 ローカル マシンに `JobInputDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。 `accesspolicykey` の値は必ず、前のセクションで保存した IoT ハブの接続文字列の `SharedAccessKey` 部分に置き換えてください。
 
@@ -208,12 +210,12 @@ New-AzureRmStreamAnalyticsJob `
 }
 ```
 
-次に、`New-AzureRmStreamAnalyticsInput` コマンドレットを実行します。`jobDefinitionFile` 変数の値は必ず、ジョブ入力定義 JSON ファイルを保存したパスに置き換えてください。 
+次に、`New-AzStreamAnalyticsInput` コマンドレットを実行します。`jobDefinitionFile` 変数の値は必ず、ジョブ入力定義 JSON ファイルを保存したパスに置き換えてください。 
 
 ```powershell
 $jobInputName = "IoTHubInput"
 $jobInputDefinitionFile = "C:\JobInputDefinition.json"
-New-AzureRmStreamAnalyticsInput `
+New-AzStreamAnalyticsInput `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobInputDefinitionFile `
@@ -222,7 +224,7 @@ New-AzureRmStreamAnalyticsInput `
 
 ## <a name="configure-output-to-the-job"></a>ジョブへの出力を構成する
 
-[New-AzureRmStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsoutput?view=azurermps-5.4.0) コマンドレットを使用して、ジョブへの出力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ出力名、リソース グループ名、およびジョブ出力定義を受け取ります。 ジョブ出力定義は、ジョブの出力の構成に必要なプロパティを含む JSON ファイルです。 この例では、BLOB ストレージを出力として使用します。 
+[New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput?view=azurermps-5.4.0) コマンドレットを使用して、ジョブへの出力を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ出力名、リソース グループ名、およびジョブ出力定義を受け取ります。 ジョブ出力定義は、ジョブの出力の構成に必要なプロパティを含む JSON ファイルです。 この例では、BLOB ストレージを出力として使用します。 
 
 ローカル マシンに `JobOutputDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。 `accountKey` の値は、ストレージ アカウントのアクセス キー ($storageAccountKey 値に格納されている値) に置き換えてください。 
 
@@ -256,12 +258,12 @@ New-AzureRmStreamAnalyticsInput `
 }
 ```
 
-次に、`New-AzureRmStreamAnalyticsOutput` コマンドレットを実行します。 `jobOutputDefinitionFile` 変数の値は、ジョブ出力定義 JSON ファイルを保存したパスに置き換えてください。 
+次に、`New-AzStreamAnalyticsOutput` コマンドレットを実行します。 `jobOutputDefinitionFile` 変数の値は、ジョブ出力定義 JSON ファイルを保存したパスに置き換えてください。 
 
 ```powershell
 $jobOutputName = "BlobOutput"
 $jobOutputDefinitionFile = "C:\JobOutputDefinition.json"
-New-AzureRmStreamAnalyticsOutput `
+New-AzStreamAnalyticsOutput `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobOutputDefinitionFile `
@@ -270,7 +272,7 @@ New-AzureRmStreamAnalyticsOutput `
 
 ## <a name="define-the-transformation-query"></a>変換クエリを定義する
 
-[New-AzureRmStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticstransformation?view=azurermps-5.4.0) コマンドレットを使用して、ジョブの変換を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ変換名、リソース グループ名、およびジョブ変換定義を受け取ります。 ローカル マシンに `JobTransformationDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。 JSON ファイルには、変換クエリを定義するクエリ パラメーターが含まれています。
+[New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation?view=azurermps-5.4.0) コマンドレットを使用して、ジョブの変換を追加します。 このコマンドレットは、パラメーターとして、ジョブ名、ジョブ変換名、リソース グループ名、およびジョブ変換定義を受け取ります。 ローカル マシンに `JobTransformationDefinition.json` という名前のファイルを作成し、次の JSON データを追加します。 JSON ファイルには、変換クエリを定義するクエリ パラメーターが含まれています。
 
 ```json
 {     
@@ -284,12 +286,12 @@ New-AzureRmStreamAnalyticsOutput `
 }
 ```
 
-次に、`New-AzureRmStreamAnalyticsTransformation` コマンドレットを実行します。 `jobTransformationDefinitionFile` 変数の値は必ず、ジョブ変換定義 JSON ファイルを保存したパスに置き換えてください。 
+次に、`New-AzStreamAnalyticsTransformation` コマンドレットを実行します。 `jobTransformationDefinitionFile` 変数の値は必ず、ジョブ変換定義 JSON ファイルを保存したパスに置き換えてください。 
 
 ```powershell
 $jobTransformationName = "MyJobTransformation"
 $jobTransformationDefinitionFile = "C:\JobTransformationDefinition.json"
-New-AzureRmStreamAnalyticsTransformation `
+New-AzStreamAnalyticsTransformation `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobTransformationDefinitionFile `
@@ -307,12 +309,12 @@ New-AzureRmStreamAnalyticsTransformation `
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Stream Analytics ジョブを開始して出力をチェックする
 
-[Start-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0) コマンドレットを使用して、ジョブを開始します。 このコマンドレットは、パラメーターとして、ジョブ名、リソース グループ名、出力開始モード、および開始時刻を受け取ります。 `OutputStartMode` には、`JobStartTime`、`CustomTime`、または `LastOutputEventTime` の値が使用できます。 これらの値がそれぞれ何を意味しているかについては、PowerShell ドキュメントの[パラメーター](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0)に関するセクションを参照してください。 
+[Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob?view=azurermps-5.4.0) コマンドレットを使用して、ジョブを開始します。 このコマンドレットは、パラメーターとして、ジョブ名、リソース グループ名、出力開始モード、および開始時刻を受け取ります。 `OutputStartMode` には、`JobStartTime`、`CustomTime`、または `LastOutputEventTime` の値が使用できます。 これらの値がそれぞれ何を意味しているかについては、PowerShell ドキュメントの[パラメーター](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob?view=azurermps-5.4.0)に関するセクションを参照してください。 
 
 次のコマンドレットを実行すると、ジョブが開始されたときに出力として `True` が返されます。 変換されたデータが含まれた出力フォルダーがストレージ コンテナーに作成されます。 
 
 ```powershell
-Start-AzureRmStreamAnalyticsJob `
+Start-AzStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -Name $jobName `
   -OutputStartMode 'JobStartTime'
@@ -323,7 +325,7 @@ Start-AzureRmStreamAnalyticsJob `
 リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合、削除をスキップしてこのジョブを一時的に停止できます。 このジョブを今後使用しない場合には、次のコマンドレットを実行して、このクイック スタートで作成したすべてのリソースを削除してください。
 
 ```powershell
-Remove-AzureRmResourceGroup `
+Remove-AzResourceGroup `
   -Name $resourceGroup 
 ```
 

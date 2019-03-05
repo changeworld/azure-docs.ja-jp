@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/11/2018
-ms.openlocfilehash: b4f8d2bdbce20fc7a932280edc26cb3ddfbe6471
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 5fd3200ab787a26b11feb121b5db125e4a79365c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247607"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960387"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオフラインで移行する
 Azure Database Migration Service を使用して、MongoDB のオンプレミスまたはクラウドのインスタンスから Azure Cosmos DB の MongoDB 用 API に、データベースのオフライン (1 回限り) の移行を実行できます。
@@ -100,7 +100,7 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 ## <a name="specify-source-details"></a>ソース詳細を指定する
 1. **[ソースの詳細]** 画面で、ソース MongoDB サーバーの接続の詳細を指定します。
     
-   また、接続文字列モードを使用し、移行するコレクション データをダンプしたブログ ストア ファイル コンテナーの場所を指定できます。
+   また、接続文字列モードを使用し、移行するコレクション データをダンプした BLOB ストア ファイル コンテナーの場所を指定できます。
 
    > [!NOTE]
    > また、Azure Database Migration Service では、BSON ドキュメントまたは JSON ドキュメントを Azure Cosmos DB の MongoDB 用 API のコレクションに移行することもできます。

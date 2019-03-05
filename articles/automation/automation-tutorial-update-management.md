@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: bd7072ce8212366bf3d8a0a9e0a30000debea2ea
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: fbca620fca1aeb53acc9bd70561e783b49ff1a60
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434616"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822354"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Azure Automation を使用して Windows 更新プログラムを管理する
 
@@ -66,7 +66,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ![[Update Management の有効化] ソリューション ウィンドウ](./media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-ソリューションの有効化には、最大数分かかることがあります。 この処理中はブラウザーのウィンドウを閉じないでください。 ソリューションが有効になると、VM 上の不足している更新プログラムの情報が Log Analytics に送られます。 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
+ソリューションの有効化には、最大数分かかることがあります。 この処理中はブラウザーのウィンドウを閉じないでください。 ソリューションが有効になると、VM 上の不足している更新プログラムの情報が Azure Monitor ログに送られます。 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
 
 ## <a name="view-update-assessment"></a>更新の評価を確認する
 
@@ -92,7 +92,7 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 
 **[条件の追加]** をクリックして、お客様の更新プログラムの展開に適したシグナルを選択します。 次の表は、更新プログラムの展開に使用できる 2 つのシグナルの詳細を示しています。
 
-|シグナル名|ディメンション|説明|
+|シグナル名|Dimensions|説明|
 |---|---|---|
 |**Total Update Deployment Runs (更新プログラムの展開の合計実行回数)**|- Update Deployment Name (更新プログラムの展開の名前)</br>- Status (状態)|このシグナルは、更新プログラムの展開の全体的な状態を通知するために使用されます。|
 |**Total Update Deployment Machine Runs (更新プログラムの展開マシンの合計実行回数)**|- Update Deployment Name (更新プログラムの展開の名前)</br>- Status (状態)</br>- Target Computer (ターゲット コンピューター)</br>- Update Deployment Run Id (更新プログラムの展開の実行 ID)|このシグナルは、特定のマシンを対象とした更新プログラムの展開の状態を通知するために使用されます。|
@@ -137,9 +137,9 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
 * **[Groups to update (preview)]\(更新するグループ (プレビュー)\)**: サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 詳しくは、[動的グループ](automation-update-management.md#using-dynamic-groups)に関するページをご覧ください。
 
-* **[更新するマシン]**: 保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください
+* **[更新するマシン]**: 保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください
 
-* **[更新プログラムの分類]**: 更新プログラムの展開によって展開に追加されたソフトウェアの種類を選択します。 このチュートリアルでは、すべての種類を選択したままにします。
+* **[更新プログラムの分類]**:更新プログラムの展開によって展開に追加されたソフトウェアの種類を選択します。 このチュートリアルでは、すべての種類を選択したままにします。
 
   分類の種類は次のとおりです。
 

@@ -13,23 +13,23 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 66c462dee3a2940a7a090101ffb9cec7e4ff1e7c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 431c31b39103e5ef21cb83b388167cab57e0c129
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981286"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649086"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>チュートリアル: サブスクリプションの作成とテスト
 
 このチュートリアルでは、オファーが含まれているサブスクリプションを作成してテストする方法を示します。 テストの場合は、クラウド管理者として Azure Stack ユーザー ポータルにサインインし、オファーにサブスクライブしてから、仮想マシンを作成します。
 
 > [!TIP]
-> より高度な評価エクスペリエンスを使用するには、[特定のユーザーのサブスクリプションを作成](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator)し、ユーザー ポータルでそのユーザーとしてサインインします。 
+> より高度な評価エクスペリエンスを使用するには、[特定のユーザーのサブスクリプションを作成](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator)し、ユーザー ポータルでそのユーザーとしてサインインします。
 
 このチュートリアルでは、Azure Stack のオファーにサブスクライブする方法について説明します。
 
@@ -60,10 +60,10 @@ ms.locfileid: "55981286"
 
 ## <a name="test-the-offer"></a>オファーのテスト
 
-ユーザー ポータルにサインインしている間に、新しいサブスクリプション機能を使用して仮想マシンをプロビジョニングすることで、オファーをテストできます。 
+ユーザー ポータルにサインインしている間に、新しいサブスクリプション機能を使用して仮想マシンをプロビジョニングすることで、オファーをテストできます。
 
 > [!NOTE]
-> このテストでは、まず Windows Server 2016 Datacenter VM が Azure Stack マーケットプレースに追加されている必要があります。 
+> このテストでは、まず Windows Server 2016 Datacenter VM が Azure Stack マーケットプレースに追加されている必要があります。
 
 1. ユーザー ポータルにサインインします。
 
@@ -84,7 +84,6 @@ ms.locfileid: "55981286"
 > [!NOTE]
 > 仮想マシンのデプロイが完了するまでに数分かかる場合があります。
 
-
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容:
@@ -92,7 +91,6 @@ ms.locfileid: "55981286"
 > [!div class="checklist"]
 > * プランへのサブスクライブ 
 > * オファーのテスト
-
 
 > [!div class="nextstepaction"]
 > [コミュニティ テンプレートからの VM の作成](azure-stack-create-vm-template.md)

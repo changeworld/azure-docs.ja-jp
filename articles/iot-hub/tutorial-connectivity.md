@@ -6,15 +6,15 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ebd206f6de031ea73d621568e091632e2e8123b9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745811"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674509"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
@@ -122,7 +122,7 @@ node SimulatedDevice-1.js "{your device connection string}"
 
 デバイスが IoT Hub デバイス SDK のいずれかを使用している場合、SDK ライブラリ コードで、ハブの認証を受けるために使用される SAS トークンを生成します。 SAS トークンは、ハブの名前、デバイスの名前、およびデバイス キーから生成されます。
 
-クラウド プロトコル ゲートウェイやカスタム認証スキームの一部のシナリオなど、場合によっては SAS トークンを手動で生成する必要があります。 SAS 生成コードに関する問題を解決する場合、テスト時に使用できる問題のない既知の SAS トークンを生成できると便利です。
+クラウド プロトコル ゲートウェイやカスタム認証スキームの一部のシナリオなど、場合によっては SAS トークンを手動で生成する必要があります。 SAS 生成コードに関する問題を解決する場合、テスト時に使用できる、問題のないことが明白な SAS トークンを生成できると便利です。
 
 > [!NOTE]
 > SimulatedDevice-2.js のサンプルには、SDK があるバージョンとないバージョンの SAS トークンを生成する例が含まれています。
@@ -133,7 +133,7 @@ CLI を使用して問題のない既知の SAS トークンを生成するに�
 az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubName}
 ```
 
-生成された SAS トークンの全文をメモします。 SAS トークンは次のようになります。`'SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307'`
+生成された SAS トークンの全文をメモします。 SAS トークンは次のようになります。`SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
 開発用マシンのターミナル ウィンドウで、ダウンロードしたサンプル Node.js プロジェクトのルート フォルダーに移動します。 次に **iot-hub\Tutorials\ConnectivityTests\simulated-device** フォルダーに移動します。
 
@@ -189,13 +189,9 @@ node SimulatedDevice-3.js "{your device connection string}"
 
 ![メッセージを送信するシミュレートされたデバイス](media/tutorial-connectivity/sim-3-sending.png)
 
-ポータルの **[メトリック]** を使用して、テレメトリ メッセージが IoT ハブに到達していることを確認できます。
+ポータルの **[メトリック]** を使用して、テレメトリ メッセージが IoT ハブに到達していることを確認できます。 **[リソース]** ドロップダウンで IoT ハブを選択し、メトリックとして **[Telemetry messages sent]\(送信されたテレメトリ メッセージ\)** を選択し、時間範囲を **[過去 1 時間]** に設定します。 グラフには、シミュレートしたデバイスから送信されたメッセージの総数が表示されます。
 
-![IoT Hub メトリックに移動する](media/tutorial-connectivity/metrics-portal.png)
-
-**[リソース]** ドロップダウンで IoT ハブを選択し、メトリックとして **[Telemetry messages sent]\(送信されたテレメトリ メッセージ\)** を選択し、時間範囲を **[過去 1 時間]** に設定します。 グラフには、シミュレートしたデバイスから送信されたメッセージの総数が表示されます。
-
-![IoT Hub メトリックを表示する](media/tutorial-connectivity/metrics-active.png)
+![IoT Hub メトリックを表示する](media/tutorial-connectivity/metrics-portal.png)
 
 シミュレートされたデバイスの起動後、メトリックが使用できるようになるまでには数分かかります。
 

@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.openlocfilehash: 5f9af39616e45983a7ec592f33c3f2ffd34ea34f
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/26/2019
+ms.openlocfilehash: 4f72def4d81f51fcf1bedbeb83798b16ebb6eb32
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233406"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888663"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>チュートリアル: Azure Event Hubs に送信されたリアルタイム イベントのデータの異常を視覚化する
 
@@ -324,6 +324,8 @@ Stream Analytics ジョブで、**[開始]**、**[今すぐ]**、**[開始]** �
 
     ![ダッシュボード タイルのタイトルとサブタイトルを指定しているスクリーンショット。](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
+    > [!IMPORTANT]
+    > サンプル アプリケーションを実行してイベント ハブにデータをストリーム配信すると、このタイルの数値が刻々と (毎秒) 変化します。 これは、Stream Analytics クエリによって実際に **1 秒ごとに**値が更新されているためです。 直近数分の合計を表示したければ、クエリのタンブリング ウィンドウを 3 分に更新してください。 
 11. 別の視覚化を追加します。 最初のいくつかの手順をもう一度繰り返します。
 
    * **[タイルの追加]** をクリックします。
