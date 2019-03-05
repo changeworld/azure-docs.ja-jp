@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 7035035823e00fb0c12de3f4eeae11d8b3e1d54d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 181e2c1d1a9758d6f196c9cb2b281eefa141d81a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016925"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984766"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks ノートブックを実行する
 
@@ -109,7 +109,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
     1.  **[アクセス トークン]** で、Azure Databricks ワークスペースからトークンを生成します。 手順については、[こちら](https://docs.databricks.com/api/latest/authentication.html#generate-token)を参照してください。
 
-    1.  **[クラスターのバージョン]** で、**[4.0]** (Apache Spark 2.3.0、Scala 2.11 を含む) を選択します
+    1.  **[クラスターのバージョン]** で、**[4.2]** (Apache Spark 2.3.1、Scala 2.11 を含む) を選択します
 
     1.  このチュートリアルでは、**[Cluster node type]\(クラスター ノードの種類)** で、**[General Purpose (HDD)]\(一般的な目的 (HDD))** カテゴリの **[Standard\_D3\_v2]** を選択します。 
     
@@ -151,7 +151,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
           ![新しいフォルダーを作成する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [新しいノートブックを作成](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook)します (Python)。**adftutorial** フォルダー の下の **mynotebook** という名前にして、**[作成]** をクリックします。
+       1. [新しいノートブックを作成](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook)します (Python)。**adftutorial** フォルダーの下の **mynotebook** という名前にして **、****[作成]** をクリックします。
 
           ![新しいノートブックを作成する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 

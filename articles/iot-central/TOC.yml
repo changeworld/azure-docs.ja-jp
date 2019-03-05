@@ -1,6 +1,4 @@
 items:
-- name: Azure IoT の基礎
-  href: /azure/iot-fundamentals
 - name: Azure IoT Central のドキュメント
   href: index.yml
 - name: 概要
@@ -145,9 +143,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: サポートされているブラウザー
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: 4843570f131b06657df1770060b95622fde43cc0
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: c54c627e04dbb825d14cda8af28ebe77636bb785
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216817"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342260"

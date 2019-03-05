@@ -1,6 +1,4 @@
 items:
-- name: Azure IoT の基礎
-  href: /azure/iot-fundamentals
 - name: IoT Hub のドキュメント
   href: index.yml
 - name: 概要
@@ -446,9 +444,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: d6e4297f24644366f4779eb40e0fb638a4532adf
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: b04836e45f65222ce43c0f5bfdb83aa0d6cc0e91
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009972"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342702"
