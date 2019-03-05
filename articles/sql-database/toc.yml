@@ -7,6 +7,8 @@ items:
     href: sql-database-technical-overview.md
   - name: Azure SQL のバージョンを選択する
     href: sql-database-paas-vs-sql-server-iaas.md
+  - name: リリース ノート
+    href: sql-database-release-notes.md
 - name: クイック スタート
   items:
   - name: 単一データベースのクイック スタート ガイド
@@ -632,7 +634,7 @@ items:
 - name: リファレンス
   items:
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.sql/#sql
+    href: /powershell/module/az.sql
   - name: Azure CLI
     href: /cli/azure/sql
   - name: .NET
@@ -716,9 +718,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 459ea95c74eedc207b08bda6ece5a27b963d8df7
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 02c5f768de9b4e6ef03757c21a0d1188649f1b1d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214029"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338129"
