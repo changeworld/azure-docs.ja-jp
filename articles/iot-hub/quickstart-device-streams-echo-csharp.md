@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: edd3912b3674f3a80a81fd47ed490479f663852c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7b3a8ac0500652b8c4250b4bc3b4f5514b62c4aa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830826"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816939"
 ---
 # <a name="quickstart-communicate-to-device-applications-in-c-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して C# でデバイス アプリケーションと通信する (プレビュー)
 
@@ -39,8 +39,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 dotnet --version
 ```
 
-https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip からサンプル C# プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
-
+https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip からサンプル C# プロジェクトをダウンロードし、ZIP アーカイブを抽出します。 デバイス側とサービス側の両方で必要になります。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -86,18 +85,17 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
     次のような戻り値をメモしておきます。
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
-    
 
 ## <a name="communicate-between-device-and-service-via-device-streams"></a>デバイス ストリームを介したデバイスとサービスの間の通信
 
 ### <a name="run-the-service-side-application"></a>サービス側アプリケーションの実行
 
-解凍したプロジェクト フォルダーの `device-streams-echo/service` に移動します。 以下の情報が必要になります。
+解凍したプロジェクト フォルダーの `iot-hub/Quickstarts/device-streams-echo/service` に移動します。 以下の情報が必要になります。
 
 | パラメーター名 | パラメーター値 |
 |----------------|-----------------|
-| `ServiceConnectionString` | IoT Hub のサービス接続文字列。 |
-| `DeviceId` | 前に作成したデバイスの識別子。 |
+| `ServiceConnectionString` | お使いの IoT ハブのサービス接続文字列を指定します。 |
+| `DeviceId` | 前に作成したデバイスの ID を指定します (例: MyDevice)。 |
 
 次のようにコードをコンパイルして実行します。
 
@@ -109,19 +107,22 @@ dotnet build
 
 # Run the application
 # In Linux/MacOS
-dotnet run $ServiceConnectionString MyDevice
+dotnet run "<ServiceConnectionString>" "<MyDevice>"
 
 # In Windows
-dotnet run %ServiceConnectionString% MyDevice
+dotnet run <ServiceConnectionString> <MyDevice>
 ```
+
+> [!NOTE]
+> デバイス側のアプリケーションが時間内に応答しない場合、タイムアウトが発生します。
 
 ### <a name="run-the-device-side-application"></a>デバイス側アプリケーションの実行
 
-解凍したプロジェクト フォルダーの `device-streams-echo/device` ディレクトリに移動します。 以下の情報が必要になります。
+解凍したプロジェクト フォルダーの `iot-hub/Quickstarts/device-streams-echo/device` ディレクトリに移動します。 以下の情報が必要になります。
 
 | パラメーター名 | パラメーター値 |
 |----------------|-----------------|
-| `DeviceConnectionString` | 前に作成したデバイスの接続文字列。 |
+| `DeviceConnectionString` | お使いの IoT ハブのデバイス接続文字列を指定します。 |
 
 次のようにコードをコンパイルして実行します。
 
@@ -133,28 +134,23 @@ dotnet build
 
 # Run the application
 # In Linux/MacOS
-dotnet run $DeviceConnectionString
+dotnet run "<DeviceConnectionString>"
 
 # In Windows
-dotnet run %DeviceConnectionString%
+dotnet run <DeviceConnectionString>
 ```
 
 最後の手順の終わりに、サービス側プログラムはデバイスへのストリームを開始し、確立後はストリームを介してサービスに文字列バッファーを送信します。 このサンプルでは、​​サービス側プログラムは単に同じデータをデバイスにエコーバックして、2 つのアプリケーション間の双方向の通信が成功したことを示します。 次の図を見てください。
 
 デバイス側のコンソール出力: ![代替テキスト](./media/quickstart-device-streams-echo-csharp/device-console-output.png "デバイス側のコンソール出力")
 
-
 サービス側のコンソール出力: ![代替テキスト](./media/quickstart-device-streams-echo-csharp/service-console-output.png "サービス側のコンソール出力")
 
-
-
 ストリームを介して送信されるトラフィックは、直接送信されるのではなく、IoT Hub を通じてトンネリングされます。 このことには、[これらの利点](./iot-hub-device-streams-overview.md#benefits)があります。
-
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
-
 
 ## <a name="next-steps"></a>次の手順
 

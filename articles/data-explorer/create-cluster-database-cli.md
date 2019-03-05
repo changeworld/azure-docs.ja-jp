@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
-description: このクイック スタートでは、Azure CLI を使用して、Azure Data Explorer クラスターとデータベースを作成する方法について説明します。
+description: Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
 services: data-explorer
 author: radennis
 ms.author: radennis
@@ -8,14 +8,14 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 2/4/2019
-ms.openlocfilehash: 9e0ae547df34594674dc03702310a1537717a4ed
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 357f0efcf7300545d10113c92702d9fed4aad049
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881118"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958024"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-using-cli"></a>CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-the-cli"></a>CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
 
 このクイック スタートでは、Azure CLI を使用して、Azure Data Explorer クラスターとデータベースを作成する方法について説明します。
 
@@ -25,11 +25,11 @@ ms.locfileid: "55881118"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="configure-the-cli-parameters"></a>CLI パラメーターを構成する
 
-Cloud Shell でコマンドを実行している場合、次の手順は必要ありません。 ローカルで CLI を実行している場合、次の手順を実行して Azure にサインインし、現在のサブスクリプションを設定します。
+Azure Cloud Shell でコマンドを実行している場合、次の手順は必要ありません。 ローカル環境で CLI を実行している場合、次の手順に従って Azure にサインインし、現在のサブスクリプションを設定します。
 
 1. 次のコマンドを実行して、Azure にサインインします。
 
@@ -65,7 +65,7 @@ Cloud Shell でコマンドを実行している場合、次の手順は必要�
     az kusto cluster show --name azureclitest --resource-group testrg
     ```
 
-結果に値が "Succeeded" の "provisioningState" が含まれている場合、クラスターは正常に作成されています。
+結果に値が `Succeeded` の `provisioningState` が含まれている場合、クラスターは正常に作成されています。
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターでデータベースを作成する
 
@@ -78,10 +78,10 @@ Cloud Shell でコマンドを実行している場合、次の手順は必要�
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | cluster-name | *azureclitest* | データベースの作成先となるクラスターの名前。|
-   | name | *clidatabase* | データベースの任意の名前。|
+   | name | *clidatabase* | データベースの名前。|
    | resource-group | *testrg* | クラスターが作成されるリソース グループの名前。 |
-   | soft-delete-period | *3650:00:00:00* | データをクエリに使用できるようにするために保持する必要がある時間。 |
-   | hot-cache-period | *3650:00:00:00* | データをキャッシュで保持する必要がある時間。 |
+   | soft-delete-period | *3650:00:00:00* | データをクエリに使用できるようにしておく時間。 |
+   | hot-cache-period | *3650:00:00:00* | データをキャッシュに保持する時間。 |
 
 2. 次のコマンドを実行して、作成したデータベースを確認します。
 
@@ -94,7 +94,7 @@ Cloud Shell でコマンドを実行している場合、次の手順は必要�
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 * 他のクイック スタートやチュートリアルを行う場合は、作成したリソースをそのままにします。
-* リソースをクリーンアップするには、クラスターを削除します。 クラスターを削除するときに、その中に含まれるデータベースもすべて削除されます。 以下のコマンドを使用して、クラスターを削除します。
+* リソースをクリーンアップするには、クラスターを削除します。 クラスターを削除するときに、その中に含まれるデータベースもすべて削除されます。 クラスターを削除するには次のコマンドを使います。
 
     ```azurecli-interactive
     az kusto cluster delete --name azureclitest --resource-group testrg

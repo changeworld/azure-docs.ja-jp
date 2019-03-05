@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1962cef85c5e663de640f296a6e8e9efd5a1f4d6
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 513df9f68fdd54b5dc90e57bd8389688c46bf615
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310357"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804248"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>クイック スタート:Python SDK を使用して Azure Machine Learning の利用を開始する
 
@@ -60,16 +60,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 SDK をインストールする前に、分離された Python 環境を作成することをお勧めします。 この記事では [Miniconda](https://docs.conda.io/en/latest/miniconda.html) を使用していますが、[Anaconda](https://www.anaconda.com/) をフルインストールしたり、[Python virtualenv](https://virtualenv.pypa.io/en/stable/) を使用したりすることもできます。
 
+このクイック スタートの手順では、クイック スタートとチュートリアルのノートブックを実行するために必要なすべてのパッケージをインストールします。  他のサンプル ノートブックでは、さらに別のコンポーネントのインストールが必要になることがあります。  これらのコンポーネントの詳細については、「[Install the Azure Machine Learning SDK for Python (Azure Machine Learning SDK for Python をインストールする)](https://docs.microsoft.com/python/api/overview/azure/ml/install)」を参照してください。
+
 ### <a name="install-miniconda"></a>Miniconda のインストール
 
-[Miniconda をダウンロードしてインストールします](https://docs.conda.io/en/latest/miniconda.html)。 Python 3.7 以降のバージョンを選択してインストールしてください。 Python 2.x バージョンは選択しないでください。  
+[Miniconda をダウンロードしてインストールします](https://docs.conda.io/en/latest/miniconda.html)。 Python 3.7 バージョンを選択してインストールします。 Python 2.x バージョンは選択しないでください。  
 
 ### <a name="create-an-isolated-python-environment"></a>分離された Python 環境の作成
 
-1. コマンド ライン ウィンドウを開いて、*myenv* という名前の新しい conda 環境を作成し、Python 3.6 をインストールします。 Azure Machine Learning SDK は Python 3.5.2 以降で動作します。ただし、自動化された機械学習コンポーネントは、Python 3.7 で完全には機能しません。
+1. コマンド ライン ウィンドウを開いて、*myenv* という名前の新しい conda 環境を作成し、Python 3.6.5 をインストールします。 Azure Machine Learning SDK は Python 3.5.2 以降で動作します。ただし、自動化された機械学習コンポーネントは、Python 3.7 で完全には機能しません。  コンポーネントとパッケージがダウンロードされて環境が作成されるまでに数分かかります。
 
     ```shell
-    conda create -n myenv -y Python=3.6
+    conda create -n myenv python=3.6.5
     ```
 
 1. 環境をアクティブにします。
@@ -78,18 +80,24 @@ SDK をインストールする前に、分離された Python 環境を作成�
     conda activate myenv
     ```
 
+1. 環境固有の ipython カーネルを有効にします。
+
+    ```shell
+    conda install notebook ipykernel
+    ```
+
+    その後、カーネルを作成します。
+
+    ```shell
+    ipython kernel install --user
+    ```
+
 ### <a name="install-the-sdk"></a>SDK のインストール
 
 1. アクティブ化された conda 環境で、Jupyter Notebook 機能を備えた Machine Learning SDK の主要なコンポーネントをインストールします。  お使いのマシンの構成によっては、インストールが完了するまでに数分かかります。
 
   ```shell
     pip install --upgrade azureml-sdk[notebooks]
-    ```
-
-1. Jupyter Notebook サーバーを conda 環境にインストールします。
-
-  ```shell
-    conda install -y nb_conda
     ```
 
 1. Azure Machine Learning チュートリアルにこの環境を使用するために、これらのパッケージをインストールします。

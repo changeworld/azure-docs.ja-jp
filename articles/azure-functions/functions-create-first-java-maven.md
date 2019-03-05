@@ -12,53 +12,30 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dfbd8425048ddc5c96349bfd6a7462dcd32dc1d9
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: a72d6b180db35f3e0f0e0527e8ae0f544a585b25
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727758"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822970"
 ---
-# <a name="create-your-first-function-with-java-and-maven-preview"></a>Java と Maven を使用して初めての関数を作成する (プレビュー)
+# <a name="create-your-first-function-with-java-and-maven"></a>Java と Maven を使用して初めての関数を作成する
 
-> [!NOTE] 
-> Azure Functions 用の Java は現在プレビュー段階です。
-
-このクイックスタートでは、Maven で[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数プロジェクトを作成し、ローカルでテストして、Azure にデプロイする手順について説明します。 完了すると、Java 関数コードはクラウドで実行され、HTTP 要求からトリガーできるようになります。
-
-![コマンド ラインから cURL で Hello World 関数にアクセスする](media/functions-create-java-maven/hello-azure.png)
+この記事では、Maven コマンド ライン ツールを使用して Java 関数を作成し、Azure Functions に公開する方法を説明します。 完了すると、関数コードは Azure の[従量課金プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求を使用してトリガーできるようになります。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
-Java で関数アプリを開発するには、以下のものがインストールされている必要があります。
 
--  [Java Developer Kit](https://www.azul.com/downloads/zulu/) バージョン 8。
--  [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
+Java を使用して関数を開発するには、以下のものがインストールされている必要があります。
 
-> [!IMPORTANT] 
+- [Java Developer Kit](https://www.azul.com/downloads/zulu/) バージョン 8。
+- [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
+- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure Functions Core Tools](functions-run-local.md#v2) (**.NET Core 2.x SDK** が必要)
+
+> [!IMPORTANT]
 > このクイックスタートを行うには、JAVA_HOME 環境変数を JDK のインストール場所に設定する必要があります。
-
-## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
-
-[Azure Functions Core Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) では、Azure Functions を記述、実行、デバッグするためのローカル開発環境が提供されます。 
-
-インストールするには、Azure Functions Core Tools プロジェクトの「[Installing (インストール)](https://github.com/azure/azure-functions-core-tools#installing)」セクションにアクセスし、オペレーティング システムに固有の手順を参照してください。
-
-次の要件のインストール後、[Node.js](https://nodejs.org/) に付属する [npm](https://www.npmjs.com/) を使って手動でインストールすることもできます。
-
--  [.NET Core](https://www.microsoft.com/net/core) の最新バージョン。
--  [Node.js](https://nodejs.org/download/) バージョン 8.6 以降。
-
-npm ベースのインストールを続行するには、次のコマンドを実行します。
-
-```
-npm install -g azure-functions-core-tools
-```
-
-> [!NOTE]
-> Azure Functions Core Tools バージョン 2.0 のインストールで問題がある場合は、「[バージョン 2.x ランタイム](/azure/azure-functions/functions-run-local)」をご覧ください。
 
 ## <a name="generate-a-new-functions-project"></a>新しい Functions プロジェクトを生成する
 

@@ -1,5 +1,5 @@
 ---
-title: Linux での .NET Core アプリの作成 - Azure App Service | Microsoft Docs
+title: Linux で ASP.NET Core アプリを作成する - Azure App Service | Microsoft Docs
 description: App Service on Linux で、初めての .NET Core の Hello World アプリを数分でデプロイします。
 keywords: Azure App Service, Web アプリ, .NET, コア, Linux, OSS
 services: app-service
@@ -16,14 +16,14 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 047ed6026412cac7fc7c51135e1837a20decd910
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: af22473e0c9b56210b720ee5d122d96566689158
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633932"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889717"
 ---
-# <a name="create-a-net-core-app-in-app-service-on-linux"></a>App Service on Linux での .NET Core アプリの作成
+# <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>App Service on Linux で ASP.NET Core アプリを作成する
 
 > [!NOTE]
 > この記事では、Linux 上の App Service にアプリをデプロイします。 _Windows_ 上の App Service にデプロイするには、[Azure での ASP.NET Core アプリの作成](../app-service-web-get-started-dotnet.md)に関するページを参照してください。

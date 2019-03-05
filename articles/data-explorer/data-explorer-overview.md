@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: ebce27f3558661aca9e1bd6e7130c96c396d33ee
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb173981e3f06c923fa7357eb64777493bd17b8c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257124"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958271"
 ---
 # <a name="what-is-azure-data-explorer"></a>Azure データ エクスプローラーとは
 
@@ -45,11 +45,11 @@ Azure データ エクスプローラーは、イベント ハブなどの一般
 
 Azure データ エクスプローラーの使用は一般的に次のパターンに従います。
 
-1. **データベースの作成:** *クラスター*を作成し、そのクラスターで 1 つまたは複数の*データベース*を作成します。 [クイック スタート: Azure データ エクスプローラー クラスターとデータベースを作成する](create-cluster-database-portal.md)
+1. **データベースの作成:** "*クラスター*" を作成してから、そのクラスターに 1 つまたは複数の "*データベース*" を作成します。 [クイック スタート:Azure Data Explorer クラスターとデータベースを作成する](create-cluster-database-portal.md)
 
-1. **データの取り込み:** クエリを実行できるように、データをデータベース テーブルに読み込みます。 [クイック スタート: イベント ハブから Azure データ エクスプローラーにデータを取り込む](ingest-data-event-hub.md)
+1. **データの取り込み:** クエリを実行できるように、データをデータベース テーブルに読み込みます。 [クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
 
-1. **クエリ データベース:** Microsoft の Web アプリケーションを使用し、クエリを実行して結果を確認し、共有します。 これは Azure portal で利用できます。また、スタンドアロン アプリケーションとして利用できます。 さらに、(SDK を利用して) プログラミングでクエリを送信したり、REST API エンドポイントにクエリを送信したりできます。 [クイック スタート: Azure データ エクスプローラーでデータのクエリを実行する](web-query-data.md)
+1. **データベースのクエリ:** Web アプリケーションを使用してクエリを実行し、結果を確認して共有します。 これは Azure portal で利用できます。また、スタンドアロン アプリケーションとして利用できます。 さらに、(SDK を利用して) プログラミングでクエリを送信したり、REST API エンドポイントにクエリを送信したりできます。 [クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)
 
 ## <a name="query-experience"></a>クエリの利用
 
@@ -57,7 +57,7 @@ Azure データ エクスプローラーのクエリは読み取り専用の要�
 
 Azure データ エクスプローラーでは、大量の構造化データ、半構造化データ (JSON に似た、入れ子にされた型)、非構造化データ (フリーテキスト) が等しく処理されます。 特定のテキスト語句を検索したり、特定のイベントを見つけたり、構造化データにメトリックスタイルの計算を実行したりできます。 Azure データ エクスプローラーは、自由形式のテキスト フィールドから実行時に値を抽出することで、構造化されていないテキスト ログの領域と構造化されている数字や次元の領域の橋渡しとなります。 データ探索は、高速のテキスト インデックス作成、列ストア、時系列操作を組み合わせることで簡素化されます。
 
-Azure データ エクスプローラー機能は、[Log Analytics](/azure/log-analytics/)、[Application Insights](/azure/application-insights/)、[Time Series Insights](/azure/time-series-insights/)、[Windows Defender Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/) など、その高性能なクエリ言語を基盤に構築された他のサービスにより拡張されます。
+Azure Data Explorer の機能は、[Azure Monitor ログ](/azure/log-analytics/)、[Application Insights](/azure/application-insights/)、[Time Series Insights](/azure/time-series-insights/)、[Windows Defender Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/) など、その高性能なクエリ言語を基盤に構築された他のサービスにより拡張されます。
 
 ## <a name="feedback"></a>フィードバック
 
@@ -71,8 +71,8 @@ Azure データ エクスプローラーとそのクエリ言語に関するフ�
 
 ## <a name="next-steps"></a>次の手順
 
-[クイック スタート: Azure データ エクスプローラー クラスターとデータベースを作成する](create-cluster-database-portal.md)
+[クイック スタート:Azure Data Explorer クラスターとデータベースを作成する](create-cluster-database-portal.md)
 
-[クイック スタート: イベント ハブから Azure データ エクスプローラーにデータを取り込む](ingest-data-event-hub.md)
+[クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む](ingest-data-event-hub.md)
 
-[クイック スタート: Azure データ エクスプローラーでデータのクエリを実行する](web-query-data.md)
+[クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

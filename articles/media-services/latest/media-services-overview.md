@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/07/2019
+ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 0f4fd963ce3649c901a76f6677be059ba5be25af
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: de1bd8599682baae860737401d02c7c1dec9e223
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337563"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960651"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Azure Media Services v3 の概要
 
@@ -88,7 +88,7 @@ Media Services v3 のコンテンツは、次の構造に従って編成され�
 | クイック スタート | 新しいお客様が Media Services を簡単に試すことができるよう、基礎について 1 日で説明します。|
 | チュートリアル | Media Services でよく行われるタスクについて、シナリオ ベースで手順を示します。|
 | サンプル | コード サンプルへのリンクを示します。 |
-| 概念 | Media Services v3 の機能についての詳しい説明と図が含まれます。 開発を始める前に、これらのトピックで説明されている基本的な概念を確認する必要があります。<br/><br/>* クラウドのアップロードとストレージ<br/>* エンコード<br/>* メディア分析<br/>* パッケージ化、デリバリー、保護<br/>* ライブ ストリーミング<br/>* 継続的な監視<br/>* Player クライアント<br/><br/>その他にも用途はあります。 |
+| 概念 | [Media Services v3 の概念と機能](concepts-overview.md)についての詳しい説明が含まれます。 開発を始める前に、これらのトピックで説明されている基本的な概念を確認する必要があります。<br/><br/>* クラウドのアップロードとストレージ<br/>* エンコード<br/>* メディア分析<br/>* パッケージ化、デリバリー、保護<br/>* ライブ ストリーミング<br/>* 監視<br/>* Player クライアント<br/><br/>その他にも用途はあります。 |
 | ハウツー ガイド | タスクを完了する方法を示します。|
 
 ## <a name="next-steps"></a>次の手順

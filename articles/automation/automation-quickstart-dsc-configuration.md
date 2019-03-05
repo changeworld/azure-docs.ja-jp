@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: c0a7bb9dfe8553515816efd53785dbe661cee0fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f272f72a0bcae70a25bada266dc6b080f46526cd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431590"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817729"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Desired State Configuration を使用して Linux 仮想マシンを構成する
 
@@ -144,5 +144,5 @@ Automation アカウントの **[状態の構成 (DSC)]** の **[ノード]** �
 
 * PowerShell Desired State Configuration の詳細については、「[Windows PowerShell Desired State Configuration の概要](https://docs.microsoft.com/powershell/dsc/overview)」を参照してください。
 * PowerShell から Automation DSC を管理する方法の詳細については、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0) に関するページを参照してください。
-* レポートとアラートのために DSC レポートを Log Analytics に転送する方法については、[DSC レポートを Log Analytics に転送する方法](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics)に関するページを参照してください。 
+* レポートとアラートのために DSC レポートを Azure Monitor ログに転送する方法については、[Azure Monitor ログへの DSC レポートの転送](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics)に関する記事をご覧ください。 
 
