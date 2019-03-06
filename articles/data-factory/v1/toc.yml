@@ -66,7 +66,7 @@ items:
       href: data-factory-copy-activity-fault-tolerance.md
     - name: セキュリティに関する考慮事項
       href: data-factory-data-movement-security-considerations.md
-    - name: コネクタ
+    - name: Connectors
       items:
       - name: Amazon Redshift
         href: data-factory-amazon-redshift-connector.md
@@ -188,7 +188,7 @@ items:
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=data-factory
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.datafactories
+    href: /powershell/module/az.datafactory
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.datafactories.models
   - name: REST
@@ -227,9 +227,9 @@ items:
       href: data-factory-customer-profiling-usecase.md
     - name: 製品の推奨
       href: data-factory-product-reco-usecase.md
-ms.openlocfilehash: 5f2c249f5e822b26d7e1cd5a4fe0c340feb108bf
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ef872162799f08919ad6810ea8341b7dd087c46e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363041"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450311"

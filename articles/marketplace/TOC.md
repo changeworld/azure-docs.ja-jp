@@ -99,12 +99,12 @@
 #### [プランの削除](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
 
 ### 体験版
-#### [体験版とは](./cloud-partner-portal-orig/what-is-test-drive.md)
-#### [Azure Resource Manager の体験版](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
-#### [ホストされた体験版](./cloud-partner-portal-orig/hosted-test-drive.md)
-#### [ロジック アプリの体験版](./cloud-partner-portal-orig/logic-app-test-drive.md)
-#### [体験版の変換の例](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
-#### [マーケティングとベスト プラクティス](./cloud-partner-portal-orig/marketing-and-best-practices.md)
+#### [体験版とは](./cloud-partner-portal/test-drive/what-is-test-drive.md)
+#### [Azure Resource Manager の体験版](./cloud-partner-portal/test-drive/azure-resource-manager-test-drive.md)
+#### [ホストされた体験版](./cloud-partner-portal/test-drive/hosted-test-drive.md)
+#### [ロジック アプリの体験版](./cloud-partner-portal/test-drive/logic-app-test-drive.md)
+#### [体験版の変換の例](./cloud-partner-portal/test-drive/transforming-examples-for-test-drive.md)
+#### [マーケティングとベスト プラクティス](./cloud-partner-portal/test-drive/marketing-and-best-practices.md)
 
 ### [Azure アプリケーション プラン](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 #### [前提条件](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)

@@ -52,20 +52,9 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: 概念
   items:
-  - name: テンプレート
-    items:
-    - name: テンプレート ファイルの構造
-      href: resource-group-authoring-templates.md
-    - name: parameters
-      href: resource-group-authoring-templates.md#parameters
-    - name: variables
-      href: resource-group-authoring-templates.md#variables
-    - name: Functions
-      href: resource-group-authoring-templates.md#functions
-    - name: リソース
-      href: resource-manager-templates-resources.md
-    - name: 出力
-      href: resource-group-authoring-templates.md#outputs
+  - name: テンプレート ファイルの構造
+    displayName: parameters,variables,resources,outputs
+    href: resource-group-authoring-templates.md
   - name: テンプレートのベスト プラクティス
     href: template-best-practices.md
   - name: クラウドの一貫性を実現するテンプレート
@@ -260,9 +249,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 60d7bdba8bcaedd229a3ad1170b88906383fb74e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5fe3392efaab14730468841e078c73b13040594d
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311663"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404605"
