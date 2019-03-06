@@ -21,9 +21,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/27/2019
 ms.locfileid: "56957438"
 ---
-# <a name="quickstart-create-an-azure-function-with-app-configuration"></a>クイック スタート:App Configuration で Azure 関数を作成する
+# <a name="quickstart-create-an-azure-function-with-app-configuration"></a>クイック スタート:App Configuration で Azure Function を作成する
 
-Azure App Configuration は、Azure 内にあるマネージド構成サービスです。 すべてのアプリケーション設定を、お使いのコードとは別の 1 つの場所に簡単に保存して管理することが可能です。 このクイック スタートでは、Azure 関数にサービスを組み込む方法を示します。 
+Azure App Configuration は、Azure 内にあるマネージド構成サービスです。 すべてのアプリケーション設定を、お使いのコードとは別の 1 つの場所に簡単に保存して管理することが可能です。 このクイック スタートでは、Azure Function にサービスを組み込む方法を示します。 
 
 このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 ただし、推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
 
@@ -105,7 +105,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、新しいアプリ構成ストアを作成して、Azure 関数で使用しました。 App Configuration の使用についてさらに学習するには、認証について示した次のチュートリアルに進んでください。
+このクイック スタートでは、新しいアプリ構成ストアを作成して、Azure Function で使用しました。 App Configuration の使用についてさらに学習するには、認証について示した次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure リソースのマネージド ID の統合](./integrate-azure-managed-service-identity.md)
