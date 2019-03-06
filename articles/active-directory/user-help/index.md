@@ -51,10 +51,9 @@ ms.collection: M365-identity-device-management
                         <p>
                         <a href="/azure/active-directory/user-help/myprofile-portal-overview">概要</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-security-info-overview">セキュリティ情報の管理</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-recent-activity-page">最近のサインイン アクティビティの表示</a><br/>
                         <a href="/azure/active-directory/user-help/myprofile-portal-organizations-page">組織の管理</a><br/>
                         <a href="/azure/active-directory/user-help/myprofile-portal-devices-page">接続されているデバイスの管理</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">プライバシーに関連する情報の表示</a><br/>                       
+                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">プライバシー関連情報の表示</a>
                         </p>
                     </div>
                 </div>

@@ -139,7 +139,35 @@ items:
     topicHref: /azure/azure-netapp-files/
   - name: Azure portal のカスタマイズ
     tocHref: /azure/azure-portal/
-    topicHref: /azure/azure-portal/
+    topicHref: /azure/azure-portal/\
+  - name: モノのインターネット (IoT)
+    tocHref: /azure/iot-fundamentals/
+    topicHref: /azure/iot-fundamentals/
+    items:
+    - name: IoT Hub
+      tocHref: /azure/iot-hub/
+      topicHref: /azure/iot-hub/
+    - name: IoT Central
+      tocHref: /azure/iot-central/
+      topicHref: /azure/iot-central/
+    - name: IoT Edge
+      tocHref: /azure/iot-edge/
+      topicHref: /azure/iot-edge/
+    - name: Azure Digital Twins
+      tocHref: /azure/digital-twins/
+      topicHref: /azure/digital-twins/
+    - name: IoT ソリューション アクセラレータ
+      tocHref: /azure/iot-accelerators/
+      topicHref: /azure/iot-accelerators/
+    - name: IoT Hub Device Provisioning Service
+      tocHref: /azure/iot-dps/
+      topicHref: /azure/iot-dps/
+    - name: Time Series Insights
+      tocHref: /azure/time-series-insights/
+      topicHref: /azure/time-series-insights/
+    - name: Azure Maps
+      tocHref: /azure/azure-maps/
+      topicHref: /azure/azure-maps/
   - name: リソース マネージャー
     tocHref: /azure/azure-resource-manager/
     topicHref: /azure/azure-resource-manager/
@@ -406,34 +434,6 @@ items:
   - name: FHIR 用の Azure API
     tocHref: /azure/healthcare-apis
     topicHref: /azure/healthcare-apis
-  - name: モノのインターネット (IoT)
-    tocHref: /azure/iot-fundamentals/
-    topicHref: /azure/iot-fundamentals/
-    items:
-    - name: IoT の基礎
-      tocHref: /azure/iot-fundamentals/
-      topicHref: /azure/iot-fundamentals/
-    - name: IoT Edge
-      tocHref: /azure/iot-edge/
-      topicHref: /azure/iot-edge/
-    - name: IoT Hub
-      tocHref: /azure/iot-hub/
-      topicHref: /azure/iot-hub/
-    - name: IoT Hub Device Provisioning Service
-      tocHref: /azure/iot-dps/
-      topicHref: /azure/iot-dps/
-    - name: IoT ソリューション アクセラレータ
-      tocHref: /azure/iot-accelerators/
-      topicHref: /azure/iot-accelerators/
-    - name: IoT Central
-      tocHref: /azure/iot-central/
-      topicHref: /azure/iot-central/
-    - name: マップ
-      tocHref: /azure/azure-maps/
-      topicHref: /azure/azure-maps/
-    - name: Time Series Insights
-      tocHref: /azure/time-series-insights/
-      topicHref: /azure/time-series-insights/
   - name: Jenkins
     tocHref: /azure/jenkins/
     topicHref: /azure/jenkins/
@@ -649,9 +649,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: 437c5cc70a4325c3911d906c85f7b89407bc1200
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 38927a138c186109532729ba1b7e413644e31019
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011124"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339081"

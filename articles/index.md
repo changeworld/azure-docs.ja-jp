@@ -1314,7 +1314,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                         <li>
                                             <a href="/azure/iot-fundamentals">
                                                 <img src="media/index/IoTHub.svg" alt="" />
-                                                <p>IoT の基礎</p>
+                                                <p>Azure IoT</p>
                                             </a>
                                         </li>
                                         <li>
@@ -3929,12 +3929,12 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/iothub.svg" alt="" />
+                                                        <img src="media/index/question-mark-grey.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>IoT の基礎</h3>
-                                                    <p>デバイスの接続を開始</p>
+                                                    <h3>Azure IoT は初めてですか。</h3>
+                                                    <p>お客様のニーズを満たすサービスについては、こちらでご確認ください</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -588,6 +588,8 @@ items:
       items:
       - name: Data Lake Storage Gen1 からアップグレードする
         href: ../blobs/data-lake-storage-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      - name: オンプレミスの HDFS ストアを移行する
+        href: ../blobs/data-lake-storage-migrate-on-premises-HDFS-cluster.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   - name: リファレンス
     items:
     - name: REST
@@ -612,9 +614,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: d9e38d2ea09057e6156f0506b74e78b0f23bdba3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 33a3a620b18a004d82c29fc0b1abf483d8961cf6
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824081"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337908"

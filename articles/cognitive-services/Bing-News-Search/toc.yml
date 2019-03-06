@@ -25,6 +25,8 @@ items:
       href: python.md
     - name: Ruby の使用
       href: ruby.md
+    - name: Go の使用
+      href: go.md
   - name: SDK
     items:
     - name: C# の使用
@@ -108,9 +110,9 @@ items:
     href: language-support.md
   - name: Bing News Search API 用の分析
     href: bing-news-stats.md
-ms.openlocfilehash: fc75c7142e737cd9db7662946869aaf0f2ced714
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2f560504a582de36ccd55c7755d9113e68a8bf4a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116373"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306716"
