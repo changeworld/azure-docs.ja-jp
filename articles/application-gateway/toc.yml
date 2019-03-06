@@ -166,13 +166,13 @@ items:
       href: application-gateway-create-probe-ps.md
   - name: トラブルシューティング
     items:
-    - name: アプリケーション ゲートウェイのトラブルシューティング - 内部ロード バランサー (ILB) と App Service Environment (ASE)
+    - name: ILB と App Service Environment
       href: create-gateway-internal-load-balancer-app-service-environment.md
-    - name: App Service を使用した Application Gateway のトラブルシューティング - App Service の URL へのリダイレクト
+    - name: App Service の URL へのリダイレクト
       href: troubleshoot-app-service-redirection-app-service-url.md
-    - name: Azure Application Gateway のセッション アフィニティに関する問題のトラブルシューティング
+    - name: セッション アフィニティの問題
       href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
-    - name: Bad Gateway (502) エラーのトラブルシューティング
+    - name: 無効なゲートウェイ (502) エラー
       href: application-gateway-troubleshooting-502.md
     - name: 診断
       href: application-gateway-diagnostics.md
@@ -212,9 +212,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: 7fd344a06dcd29c53d313a59c484101b1d0b2c8f
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 7fe790e7b75e3cf6bead50635b7be690b1b7eeb7
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985667"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309045"
