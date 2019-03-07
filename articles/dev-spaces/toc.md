@@ -25,6 +25,9 @@
 #### [2 - マルチサービス開発](multi-service-nodejs.md)
 #### [3 - チーム開発](team-development-nodejs.md)
 
+## 概念
+### [Dev Spaces のしくみ](how-dev-spaces-works.md)
+
 ## 方法
 ### [Azure Cloud Shell を使用して Kubernetes クラスターを作成する](how-to/create-cluster-cloud-shell.md)
 ### [Azure Dev Spaces を共有する](how-to/share-dev-spaces.md)
