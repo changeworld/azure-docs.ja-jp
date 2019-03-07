@@ -384,10 +384,10 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 3. Chrome アプリケーションの作成時にエラーが発生しなかった場合は、作成した Chrome アプリケーションが表示されます。
 
     ![Google Chrome - Chrome App Display][18]
-4. 前の手順で **Google Cloud Console** から取得した**プロジェクト番号**を送信者 ID として入力し、**[Register with GCM]** をクリックします。  **GCM 登録が成功しました**
+4. 前の手順で **Google Cloud Console** から取得した**プロジェクト番号**を送信者 ID として入力し、**[Register with GCM]** をクリックします。 **GCM 登録が成功しました**
 
     ![Google Chrome - Chrome App Customization][19]
-5. **[Notification Hub Name]** に通知ハブの名前を入力し、前の手順でポータルから取得した **DefaultListenSharedAccessSignature** を入力して、**[Register with Azure Notification Hub]** をクリックします。  **Notification Hub の登録に成功しました** というメッセージ、および Azure Notification Hubs の登録 ID を含む登録応答の詳細が表示されます。
+5. **[Notification Hub Name]** に通知ハブの名前を入力し、前の手順でポータルから取得した **DefaultListenSharedAccessSignature** を入力して、**[Register with Azure Notification Hub]** をクリックします。 **Notification Hub の登録に成功しました** というメッセージ、および Azure Notification Hubs の登録 ID を含む登録応答の詳細が表示されます。
 
     ![Google Chrome - Specify Notification Hub Details][20]  
 
