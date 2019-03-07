@@ -34,7 +34,7 @@ ms.locfileid: "53555525"
 > 最新の形式では、混乱は、安全な障害のみを発生させ、外部障害がなければ、クォーラム損失またはデータの損失は起こりません。
 >
 
-混乱の実行中は、その時点での実行状態をキャプチャするさまざまなイベントが生成されます。 たとえば、ExecutingFaultsEvent には、混乱がその反復で実行することを決定したすべての障害が含まれています。 ValidationFailedEvent には、クラスターの検証中に検出された検証エラー (正常性または安定性の問題) の詳細が含まれています。 GetChaosReport API (C#、Powershell、または REST) を呼び出して、混乱実行のレポートを取得できます。 これらのイベントは、[信頼性の高いディクショナリ](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)内に永続化されます。それには、次の 2 つの構成によって決定される切り捨てポリシーがあります。**MaxStoredChaosEventCount** (既定値は 25,000) と **StoredActionCleanupIntervalInSeconds** (既定値は 3,600)。 すべての *StoredActionCleanupIntervalInSeconds* 混乱チェックおよびほとんどのすべての最新の *MaxStoredChaosEventCount* イベントが、信頼性の高いディクショナリから削除されます。
+混乱の実行中は、その時点での実行状態をキャプチャするさまざまなイベントが生成されます。 たとえば、ExecutingFaultsEvent には、混乱がその反復で実行することを決定したすべての障害が含まれています。 ValidationFailedEvent には、クラスターの検証中に検出された検証エラー (正常性または安定性の問題) の詳細が含まれています。 GetChaosReport API (C#、Powershell、または REST) を呼び出して、混乱実行のレポートを取得できます。 これらのイベントは、[リライアブル ディクショナリ](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections)内に永続化されます。それには、次の 2 つの構成によって決定される切り捨てポリシーがあります。**MaxStoredChaosEventCount** (既定値は 25,000) と **StoredActionCleanupIntervalInSeconds** (既定値は 3,600)。 すべての *StoredActionCleanupIntervalInSeconds* 混乱チェックおよびほとんどのすべての最新の *MaxStoredChaosEventCount* イベントが、信頼性の高いディクショナリから削除されます。
 
 ## <a name="faults-induced-in-chaos"></a>混乱で誘発される障害
 混乱により、Service Fabric クラスター全体で数か月または数年の間に発生する障害が、数時間に圧縮され生成されます。 障害率の高い交互に配置された障害の組み合わせにより、通常は見過ごされるめったに発生しないケースが検出されます。 この混乱を実施することで、サービスのコードの品質が大幅に向上します。

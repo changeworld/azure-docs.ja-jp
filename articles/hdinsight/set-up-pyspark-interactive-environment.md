@@ -52,7 +52,7 @@ ms.locfileid: "54910650"
    sudo apt-get install python-dev
    ```
 
-4. VSCode を再起動して、**HDInsight: PySpark Interactive を実行しているスクリプト エディターに戻ります。
+4. VSCode を再起動して、**HDInsight: PySpark Interactive** を実行しているスクリプト エディターに戻ります。
 
 ## <a name="next-steps"></a>次の手順
 

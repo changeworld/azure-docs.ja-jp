@@ -128,7 +128,7 @@ Insider Track で Azure AD のシングル サインオンを構成してテス�
 
     ![Insider Track 構成](./media/insidertrack-tutorial/tutorial_insidertrack_configure.png) 
 
-7. **Insider Track** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML、サインアウト URL、SAML エンティティ ID、****SAML シングル サインオン サービス URL** を [Insider Track サポート チーム](https://cytecsolutions.com/contact/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+7. **Insider Track** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML、サインアウト URL、SAML エンティティ ID、** **SAML シングル サインオン サービス URL** を [Insider Track サポート チーム](https://cytecsolutions.com/contact/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。

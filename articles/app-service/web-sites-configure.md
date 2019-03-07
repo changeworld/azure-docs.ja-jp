@@ -168,7 +168,7 @@ PHP、Python、Java、および Node アプリケーションの場合、実行�
 ## <a name="next-steps"></a>次の手順
 * [Azure App Service のカスタム ドメイン名の構成]
 * [アプリに対する HTTPS を Azure App Service で有効にする]
-* [Azure App Service でのアプリの拡張]
+* [Azure App Service でのアプリのスケーリング]
 * [Azure App Service での監視の基本]
 
 <!-- URL List -->
@@ -181,7 +181,7 @@ PHP、Python、Java、および Node アプリケーションの場合、実行�
 [方法:Web エンドポイントの状態を監視する]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Azure App Service での監視の基本]: ./web-sites-monitor.md
 [パイプライン モード]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
-[Azure App Service でのアプリの拡張]: ./web-sites-scale.md
+[Azure App Service でのアプリのスケーリング]: ./web-sites-scale.md
 
 <!-- IMG List -->
 

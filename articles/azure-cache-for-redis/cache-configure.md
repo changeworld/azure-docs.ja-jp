@@ -134,7 +134,7 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
 #### <a name="memory-policies"></a>メモリ ポリシー
-**[詳細設定]** ブレードの **[Maxmemory ポリシー]** **[maxmemory-reserved]****[maxfragmentationmemory-reserved]** の設定によって、キャッシュのメモリ ポリシーが構成されます。
+**[詳細設定]** ブレードの **[Maxmemory ポリシー]** **[maxmemory-reserved]** **[maxfragmentationmemory-reserved]** の設定によって、キャッシュのメモリ ポリシーが構成されます。
 
 ![Azure Cache for Redis の Maxmemory ポリシー](./media/cache-configure/redis-cache-maxmemory-policy.png)
 

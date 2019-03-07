@@ -97,7 +97,7 @@ Grafana サーバーをローカルにセットアップするには、[Grafana 
 4. 構成した Azure Monitor データ ソースを選択します。
     * Azure Monitor のメトリックの収集 - [Service]\(サービス\) のドロップダウンから **[Azure Monitor]** を選択します。 セレクターの一覧が表示されます。この一覧から、このグラフで監視するリソースとメトリックを選択できます。 VM からメトリックを収集するには、**Microsoft.Compute/VirtualMachines** 名前空間を使用します。 VM とメトリックを選択したら、ダッシュボードでのそれらのデータの表示を開始できます。
     ![Grafana での Azure Monitor 用のグラフの構成](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-    * Azure Log Analytics のデータの収集 - [Service]\(サービス\) のドロップダウンから **[Azure Log Analytics]** を選択します。 クエリを実行するワークスペースを選択し、クエリ テキストを設定します。 設定済みの Log Analytics クエリをここにコピーすることも、新しく作成することもできます。 クエリの入力中は、IntelliSense が起動し、オートコンプリートによる選択肢が表示されます。 視覚化の種類と**時系列****テーブル**を選択し、クエリを実行します。
+    * Azure Log Analytics のデータの収集 - [Service]\(サービス\) のドロップダウンから **[Azure Log Analytics]** を選択します。 クエリを実行するワークスペースを選択し、クエリ テキストを設定します。 設定済みの Log Analytics クエリをここにコピーすることも、新しく作成することもできます。 クエリの入力中は、IntelliSense が起動し、オートコンプリートによる選択肢が表示されます。 視覚化の種類と**時系列** **テーブル**を選択し、クエリを実行します。
     
     > [!NOTE]
     >

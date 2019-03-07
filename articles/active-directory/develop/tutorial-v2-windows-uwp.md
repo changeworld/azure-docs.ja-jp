@@ -391,6 +391,6 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 **原因:** この問題は、Windows 10 デスクトップで実行される UWP アプリケーションの Web 認証ブローカーに関する既知の制限です。 Windows 10 Mobile では正常に動作します。
 
-**対処法:****[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、**[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
+**対処法:** **[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、**[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
