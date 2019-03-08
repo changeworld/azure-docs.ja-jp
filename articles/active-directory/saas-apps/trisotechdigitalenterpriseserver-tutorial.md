@@ -146,7 +146,7 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
     d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[保存]**
 
-    e. **[Allowed Domains (empty means everyone)]\(許可されているドメイン (空の場合はすべてのユーザー))\** テキストボックスにドメイン名を入力します。許可されているドメインに一致するユーザーのライセンスが自動的に割り当てられます
+    e. **[Allowed Domains (empty means everyone)]\(許可されているドメイン (空の場合はすべてのユーザー))** テキストボックスにドメイン名を入力します。許可されているドメインに一致するユーザーのライセンスが自動的に割り当てられます
 
     f. **[保存]**
 

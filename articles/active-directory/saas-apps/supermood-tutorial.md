@@ -153,7 +153,7 @@ Supermood で Azure AD のシングル サインオンを構成してテスト�
 1. **[My account]\(マイ アカウント\)** (左下) と **[Single Sign On (SSO)]\(シングル サインオン (SSO)\)** をクリックします。
 
     ![証明書シングル](./media/supermood-tutorial/tutorial_supermood_single.png)
-1. **[Your SAML 2.0 configurations]\(SAML 2.0 構成)\** で **[Add an SAML 2.0 configuration for an email domain]\(電子メール ドメインの SAML 2.0 構成の追加\)** をクリックします。
+1. **[Your SAML 2.0 configurations]\(SAML 2.0 構成)\\** で **[Add an SAML 2.0 configuration for an email domain]\(電子メール ドメインの SAML 2.0 構成の追加\)** をクリックします。
 
     ![証明書の追加](./media/supermood-tutorial/tutorial_supermood_add.png)
 

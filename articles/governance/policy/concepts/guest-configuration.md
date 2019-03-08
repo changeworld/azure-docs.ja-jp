@@ -108,7 +108,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 
 - 仮想マシンに、評価する構成が割り当てられていることを検証します。 割り当てが現在存在しない場合は、割り当てを取得し、次を実行して、仮想マシンを準備します。
   - [マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) を使用して、仮想マシンへの認証を行う
-  -  **Microsoft.GuestConfiguration** 拡張機能の最新バージョンをインストールする
+  - **Microsoft.GuestConfiguration** 拡張機能の最新バージョンをインストールする
   - 必要とする場合、[検証ツール](#validation-tools)と依存関係をインストールする
 
 **DeployIfNotExists** が準拠している場合は、 **Audit** ポリシー定義はローカル検証ツールを使用して、割り当てられた構成の割り当てが準拠しているかどうかを判断します。 この検証ツールは、結果をゲスト構成クライアントに提供します。 クライアントは、その結果をゲストの拡張機能に転送します。それにより、その結果がゲスト構成のリソース プロバイダー全体で使用可能になります。
