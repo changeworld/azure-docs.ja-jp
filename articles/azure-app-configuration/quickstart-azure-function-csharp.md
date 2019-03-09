@@ -21,7 +21,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 02/27/2019
 ms.locfileid: "56957438"
 ---
-# <a name="quickstart-create-an-azure-function-with-app-configuration"></a>クイック スタート:App Configuration で Azure Function を作成する
+# <a name="quickstart-create-an-azure-function-with-app-configuration"></a>クイック スタート:App Configuration で Azure 関数を作成する
 
 Azure App Configuration は、Azure 内にあるマネージド構成サービスです。 すべてのアプリケーション設定を、お使いのコードとは別の 1 つの場所に簡単に保存して管理することが可能です。 このクイック スタートでは、Azure Function にサービスを組み込む方法を示します。 
 
