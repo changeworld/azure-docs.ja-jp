@@ -158,5 +158,5 @@ Azure Resource Manager を使用して作成された仮想マシン、仮想ネ
 ## <a name="next-steps"></a>次の手順
 
 * 仮想マシン、ストレージ アカウント、仮想ネットワークを定義するテンプレートの作成に関するチュートリアルについては、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」を参照してください。
-* テンプレートをデプロイするためのコマンドについては、「 [AAzure Resource Manager テンプレートを使用したアプリケーションのデプロイに関するページ](resource-group-template-deploy.md)」を参照してください。
+* テンプレートをデプロイするためのコマンドについては、「 [Azure Resource Manager テンプレートを使用したアプリケーションのデプロイに関するページ](resource-group-template-deploy.md)」を参照してください。
 
