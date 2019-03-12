@@ -83,12 +83,12 @@ items:
   - name: 利用可能なリージョン
     href: https://azure.microsoft.com/regions/services/
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-container-service
+    href: https://stackoverflow.com/questions/tagged/azure-container-service
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
-ms.openlocfilehash: c9dca5917c2cfe92a5b3ae8b93cdd04b8fc97c53
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e88e51d16298b53cdbab5196f4db1d7000ceba18
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31394453"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57529714"
