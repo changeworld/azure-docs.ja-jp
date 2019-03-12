@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: daf575f60739c58ba0380880ade2de865ae1d6ad
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: d6ae30f73fa16bbd5e3c698e12c54c074f0a0b43
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510876"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772737"
 documentType: LandingData
 title: Azure 上の Resource Manager のドキュメント
 metadata:
@@ -80,6 +80,6 @@ sections:
     - title: コマンド ライン
       html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
     - title: Languages
-      html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/azure/">Python</a></p>
+      html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/api/overview/azure/resources?view=azure-python">Python</a></p>
     - title: REST
       html: <p><a href="/rest/api/resources/">REST API</a></p>

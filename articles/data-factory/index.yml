@@ -1,23 +1,23 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8a1f9967b51d3655c962620b9436dfe4f9ffd521
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2179b212dbbc7891b003664f4bea3d47cbb3a34e
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442530"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575394"
 documentType: LandingData
 title: Azure Data Factory のドキュメント
 metadata:
   title: Azure Data Factory のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: 分析用のデータを移動して処理するために、Data Factory を使用してオンプレミスやクラウドのソースとの間で自動化データ パイプラインを設定する方法について説明します。
   services: data-factory
-  author: douglaslMS
+  author: sharonlo101
+  ms.author: shlo
   manager: craigg
   ms.service: data-factory
   ms.tgt_pltfrm: na
   ms.topic: overview
   ms.date: 08/06/2018
-  ms.author: douglasl
 abstract:
   description: クラウド データ統合サービスである Data Factory を使用して、データの保管、移行、および処理のサービスを自動化データ パイプラインにまとめる方法について説明します。 チュートリアルなどのドキュメントでは、データ パイプラインの設定と管理の方法や分析用のデータの移動と変換の方法を紹介します。 <p>Data Factory サービスの V1 を使用している場合は、<a href=/azure/data-factory/v1/data-factory-introduction>V1 のドキュメント</a>を参照してください。</p>
   aside:

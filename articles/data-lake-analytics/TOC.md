@@ -85,6 +85,6 @@
 ## [料金](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-lake-analytics)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics)
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)

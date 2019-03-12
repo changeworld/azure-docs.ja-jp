@@ -31,5 +31,5 @@
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リリース ノート](biztalk-release-notes.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=biztalk-services)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/biztalk-services)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/biztalk-services)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=biztalk-services)
