@@ -7,11 +7,11 @@ items:
     href: container-instances-overview.md
 - name: クイック スタート
   items:
-  - name: コンテナーの作成 - CLI
+  - name: コンテナー インスタンスのデプロイ - CLI
     href: container-instances-quickstart.md
-  - name: コンテナーの作成 - ポータル
+  - name: コンテナー インスタンスのデプロイ - ポータル
     href: container-instances-quickstart-portal.md
-  - name: コンテナーの作成 - PowerShell
+  - name: コンテナー インスタンスのデプロイ - PowerShell
     href: container-instances-quickstart-powershell.md
   expanded: true
 - name: チュートリアル
@@ -30,12 +30,14 @@ items:
     href: container-instances-samples-rm.md
 - name: 概念
   items:
-  - name: クォータと地域の制限
-    href: container-instances-quotas.md
-  - name: オーケストレーターとの関係
-    href: container-instances-orchestrator-relationship.md
   - name: コンテナー グループ
     href: container-instances-container-groups.md
+  - name: クォータと制限
+    href: container-instances-quotas.md
+  - name: 利用可能なリージョン
+    href: container-instances-region-availability.md
+  - name: オーケストレーターとの関係
+    href: container-instances-orchestrator-relationship.md
 - name: ハウツー ガイド
   items:
   - name: デプロイ
@@ -44,48 +46,50 @@ items:
       href: container-instances-multi-container-yaml.md
     - name: 複数コンテナー グループ - Resource Manager
       href: container-instances-multi-container-group.md
-    - name: 仮想ネットワークのデプロイ (プレビュー)
+    - name: 仮想ネットワークでのデプロイ (プレビュー)
       href: container-instances-vnet.md
-    - name: GPU リソースを使用したデプロイ (プレビュー)
-      href: container-instances-gpu.md
     - name: Azure Container Registry からのデプロイ
       href: container-instances-using-azure-container-registry.md
+  - name: コンテナーのシナリオ
+    items:
+    - name: 一度だけ実行されるタスクの再起動ポリシーの設定
+      href: container-instances-restart-policy.md
     - name: 環境変数の設定 (env)
       href: container-instances-environment-variables.md
-    - name: liveness probe の構成
-      href: container-instances-liveness-probe.md
-  - name: 管理
-    items:
-    - name: 実行中のコンテナーの更新
-      href: container-instances-update.md
     - name: コマンドの実行 (exec)
       href: container-instances-exec.md
-    - name: CPU とメモリの使用率の監視
-      href: container-instances-monitor.md
-    - name: Azure Monitor ログでのログ記録
-      href: container-instances-log-analytics.md
-  - name: ワークロードの実行
-    items:
-    - name: 再起動ポリシーによるタスクの実行
-      href: container-instances-restart-policy.md
-    - name: ACI 上の Jenkins ビルド エージェント
+    - name: Jenkins ビルド ジョブの実行
       href: container-instances-jenkins.md
     - name: マネージド ID の使用 (プレビュー)
       href: container-instances-managed-identity.md
-  - name: データ ボリュームの構成
+    - name: GPU リソースの使用 (プレビュー)
+      href: container-instances-gpu.md
+  - name: データ ボリュームのマウント
     items:
-    - name: Azure Files
+    - name: Azure ファイル共有
       href: container-instances-volume-azure-files.md
-    - name: emptyDir
-      href: container-instances-volume-emptydir.md
-    - name: gitRepo
-      href: container-instances-volume-gitrepo.md
-    - name: secret
+    - name: シークレット
       href: container-instances-volume-secret.md
-  - name: トラブルシューティング
+    - name: 空のディレクトリ
+      href: container-instances-volume-emptydir.md
+    - name: 複製された Git リポジトリ
+      href: container-instances-volume-gitrepo.md
+  - name: 実行中のコンテナーの管理
     items:
+    - name: liveness probe の構成
+      href: container-instances-liveness-probe.md
+    - name: 実行中のコンテナーの更新
+      href: container-instances-update.md
+  - name: 監視とログ記録
+    items:
+    - name: CPU とメモリの使用率の監視
+      href: container-instances-monitor.md
     - name: コンテナー ログとコンテナー イベントの取得
       href: container-instances-get-logs.md
+    - name: Azure Log Analytics によるログ記録
+      href: container-instances-log-analytics.md
+  - name: トラブルシューティング
+    items:
     - name: 一般的な問題のトラブルシューティング
       href: container-instances-troubleshooting.md
 - name: リファレンス
@@ -119,12 +123,12 @@ items:
   - name: 製品フィードバックの提供
     href: https://feedback.azure.com/forums/602224-azure-container-instances
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-container-instances
+    href: https://stackoverflow.com/questions/tagged/azure-container-instances
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
-ms.openlocfilehash: 062c4f2b196ab587577ef4703f79af2f7259c776
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: fcee083f7d98aba1856cf204f5c2d559d1b5925b
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871708"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731200"

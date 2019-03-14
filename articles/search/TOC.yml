@@ -74,7 +74,7 @@ items:
       href: search-sku-tier.md
     - name: サービスの制限
       href: search-limits-quotas-capacity.md
-    - name: パーティションとレプリカの割り当て
+    - name: パーティションとレプリカのスケーリング
       href: search-capacity-planning.md
     - name: デプロイ戦略とベスト プラクティス
       href: search-performance-optimization.md
@@ -150,7 +150,7 @@ items:
       href: search-howto-large-index.md
     - name: 同時更新を処理する
       href: search-howto-concurrency.md
-    - name: インデクサー (クローラー)
+    - name: インデクサー
       items:
       - name: インデクサーの概要
         href: search-indexer-overview.md
@@ -309,9 +309,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: ca754d1244a207fc4c18122e5624af218e6ef04f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 1d181caf4728f35d3cfcf68c968b4fbedd85a4e8
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404843"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764611"

@@ -53,8 +53,16 @@ items:
     href: concept-accelerate-with-fpgas.md
   - name: 機械学習パイプライン
     href: concept-ml-pipelines.md
-  - name: エンタープライズ セキュリティ
-    href: concept-enterprise-security.md
+  - name: セキュリティ
+    items:
+    - name: エンタープライズ セキュリティの概要
+      displayName: authorization authentication encryption
+      href: concept-enterprise-security.md
+    - name: 仮想ネットワークの使用
+      displayName: vnet
+      href: how-to-enable-virtual-network.md
+    - name: SSL を使用して Web サービスをセキュリティで保護する
+      href: how-to-secure-web-service.md
 - name: ハウツー ガイド
   items:
   - name: ワークスペースを管理する
@@ -113,6 +121,8 @@ items:
     - name: リモート コンピューティング ターゲットを使用する
       displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
+    - name: 予測モデルを自動トレーニングする
+      href: how-to-auto-train-forecast.md
   - name: ONNX モデル
     href: how-to-build-deploy-onnx.md
   - name: モデルをデプロイする
@@ -139,13 +149,6 @@ items:
       href: how-to-enable-data-collection.md
     - name: Application Insights での監視
       href: how-to-enable-app-insights.md
-  - name: セキュリティ
-    items:
-    - name: 仮想ネットワークの使用
-      displayName: vnet
-      href: how-to-enable-virtual-network.md
-    - name: SSL を使用して Web サービスをセキュリティで保護する
-      href: how-to-secure-web-service.md
   - name: 最初のパイプラインの作成
     href: how-to-create-your-first-pipeline.md
   - name: ログの有効化
@@ -189,9 +192,9 @@ items:
     href: support-for-aml-services.md
   - name: Microsoft の ML 製品の比較
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 5d7cdcec4e0b855f509539a1fc79015793efc404
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 19a26ea88ba8c8e820e838a7c96a802180129dd7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192133"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766268"

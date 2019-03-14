@@ -9,14 +9,14 @@ items:
     items:
     - name: 最新の更新
       href: azure-stack-servicing-policy.md#update-package-release-cadence
+    - name: 1902 更新プログラム
+      href: azure-stack-update-1902.md
     - name: 1901 更新プログラム
       href: azure-stack-update-1901.md
     - name: 1811 更新プログラム
       href: azure-stack-update-1811.md
     - name: 1809 更新プログラム
       href: azure-stack-update-1809.md
-    - name: 1808 更新プログラム
-      href: azure-stack-update-1808.md
 - name: クイック スタート
   items:
   - name: 管理ポータルの使用
@@ -294,7 +294,7 @@ items:
       href: azure-stack-app-service-update.md
     - name: App Service のオフライン更新
       href: azure-stack-app-service-update-offline.md
-    - name: Web worker ロールの追加
+    - name: App Service のインフラストラクチャ ロールの追加
       href: azure-stack-app-service-add-worker-roles.md
     - name: デプロイ ソースを構成する
       href: azure-stack-app-service-configure-deployment-sources.md
@@ -399,9 +399,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 0a38112e8e57c685dec49a380a0e669429dc2673
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: ed6de4a1839c8fe60248e79e5349d8077193d052
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991624"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774270"

@@ -274,19 +274,14 @@ items:
         href: iot-hub-configure-file-upload-powershell.md
       - name: Azure CLI の使用
         href: iot-hub-configure-file-upload-cli.md
-    - name: 診断を使用した監視
+    - name: Azure Monitor のメトリック
+      href: iot-hub-metrics.md
+    - name: 診断ログの設定
       href: iot-hub-monitor-resource-health.md
-      items:
-      - name: 診断設定への移行
-        href: iot-hub-migrate-to-diagnostics-settings.md
-      - name: 操作の監視
-        href: iot-hub-operations-monitoring.md
     - name: X.509 証明書によるハブのセキュリティ保護
       href: iot-hub-security-x509-get-started.md
     - name: IoT ハブのアップグレード
       href: iot-hub-upgrade.md
-    - name: 使用状況のメトリック
-      href: iot-hub-metrics.md
     - name: メッセージのトレースを有効にする
       href: iot-hub-distributed-tracing.md
     - name: IP フィルター処理を構成する
@@ -378,6 +373,12 @@ items:
     href: https://docs.microsoft.com/rest/api/iothub/certificates
   - name: Resource Manager テンプレート
     href: /azure/templates/microsoft.devices/iothub-allversions
+  - name: 機能と API の廃止
+    items:
+    - name: 操作の監視
+      href: iot-hub-operations-monitoring.md
+    - name: 診断設定への移行
+      href: iot-hub-migrate-to-diagnostics-settings.md
 - name: 関連項目
   items:
   - name: 解決方法
@@ -444,9 +445,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: cdeb8f013ee8a0dff212d5fc9facc199ed81828e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3bde9a6b9abcb5b99224ae9397756fe410cc0708
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530880"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791870"

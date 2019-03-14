@@ -124,8 +124,6 @@ items:
     href: monitor.md
   - name: バックアップと回復
     href: backup-recovery.md
-  - name: ハイ パフォーマンス コンピューティング
-    href: high-performance-computing.md
   - name: デプロイに関する考慮事項
     items:
     - name: インフラストラクチャのガイドライン
@@ -398,7 +396,7 @@ items:
       - name: Linux 上の MS SQL
         href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: ハイ パフォーマンス コンピューティング (HPC)
-      href: https://docs.microsoft.com/powershell/high-performance-computing/overview
+      href: https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/
     - name: IBM Db2 pureScale
       items:
       - name: アーキテクチャ
@@ -407,49 +405,52 @@ items:
         href: deploy-ibm-db2-purescale-azure.md
   - name: ストレージの管理
     items:
-    - name: ディスクに関する FAQ
-      href: faq-for-disks.md
     - name: ディスクを追加する
       items:
       - name: Azure CLI
         href: add-disk.md
       - name: Azure ポータル
         href: attach-disk-portal.md
-    - name: ディスクのベンチマークの実行
-      href: disks-benchmarks.md
     - name: ディスクを取り外す
       href: detach-disk.md
+    - name: テンプレートによるディスクのデプロイ
+      href: using-managed-disks-template-deployments.md
     - name: ディスクのサイズの変更
       href: expand-disks.md
     - name: ディスクのスナップショットの作成
       href: snapshot-copy-managed-disk.md
     - name: 非管理対象ディスクのバックアップ
       href: incremental-snapshots.md
-    - name: 管理ディスクに変換する
-      href: convert-unmanaged-to-managed-disks.md
-    - name: Standard と Premium 間でディスクを変換する
-      href: convert-disk-storage.md
+    - name: 移行と変換
+      items:
+      - name: Azure Site Recovery を使用した Premium Storage への移行
+        href: migrate-to-premium-storage-using-azure-site-recovery.md
+      - name: 管理ディスクに変換する
+        href: convert-unmanaged-to-managed-disks.md
+      - name: Standard と Premium 間でディスクを変換する
+        href: convert-disk-storage.md
     - name: ファイルを VM にコピーする
       href: copy-files-to-linux-vm-using-scp.md
-    - name: Azure Site Recovery を使用した Premium Storage への移行
-      href: migrate-to-premium-storage-using-azure-site-recovery.md
-    - name: アタッチされていないディスクの検出
-      href: find-unattached-disks.md
-    - name: File Storage を使用する
-      href: mount-azure-file-storage-on-linux-using-smb.md
-    - name: テンプレートによるディスクのデプロイ
-      href: using-managed-disks-template-deployments.md
-    - name: 書き込みアクセラレータの使用
-      href: how-to-enable-write-accelerator.md
-    - name: ウルトラ SSD を有効にする
-      href: disks-enable-ultra-ssd.md
-    - name: パフォーマンスを最適化する
-      href: optimization.md
+    - name: パフォーマンス
       items:
+      - name: 書き込みアクセラレータの使用
+        href: how-to-enable-write-accelerator.md
+      - name: ウルトラ SSD を有効にする
+        href: disks-enable-ultra-ssd.md
+      - name: ディスクのベンチマークの実行
+        href: disks-benchmarks.md
+      - name: パフォーマンスの最適化
+        href: optimization.md
       - name: ソフトウェア RAID を構成する
         href: configure-raid.md
       - name: LVM を構成する
         href: configure-lvm.md
+    - name: アタッチされていないディスクの検出
+      href: find-unattached-disks.md
+    - name: File Storage を使用する
+      href: mount-azure-file-storage-on-linux-using-smb.md
+    - name: ディスクに関する FAQ
+      href: faq-for-disks.md
   - name: ネットワークの管理
     items:
     - name: Create virtual network
@@ -559,9 +560,9 @@ items:
     href: faq.md
 - name: トラブルシューティング
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 776adc5310db7c4a7762409a53c57e896cc95360
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ade43488288949aa22942c8df2d6900e4522615a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438291"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732029"

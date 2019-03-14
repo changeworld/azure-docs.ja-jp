@@ -13,6 +13,8 @@ items:
     href: cdn-create-new-endpoint.md
   - name: ストレージ アカウントの統合
     href: cdn-create-a-storage-account-with-cdn.md
+  - name: Azure Resource Manager テンプレートを使用したプロファイルの作成
+    href: create-profile-resource-manager-template.md
 - name: チュートリアル
   items:
   - name: Web アプリに Azure CDN を追加する
@@ -178,12 +180,12 @@ items:
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=cdn
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-cdn
+    href: https://stackoverflow.com/questions/tagged/azure-cdn
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=cdn
-ms.openlocfilehash: dbb216e848309dc696e1923166deced18827f08e
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3aa21668a51af3d89951a0a5d13d31cacf3f6f4d
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232193"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727095"

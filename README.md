@@ -1,6 +1,14 @@
+---
+ms.openlocfilehash: 2690a01535365ba097e0c058858f24e8c9d80aac
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588739"
+---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure のドキュメント
 
-> MicrosoftDocs/azure-docs リポジトリでは、2019 年 3 月 5 日から 3 月 9 日にかけて、現在のマークダウン エンジンから [Markdig](https://github.com/lunet-io/markdig) マークダウン エンジンに移行する作業を実施する予定です。 移行を完了させるため、この期間中はパブリック pull request のマージを一時停止する機能がオフになります。
+> MicrosoftDocs/azure-docs リポジトリでは、2019 年 3 月 5 日から 3 月 9 日にかけて、現在のマークダウン エンジンから [Markdig](https://github.com/lunet-io/markdig) マークダウン エンジンに移行する作業を実施する予定です。 移行を完了させるために、この期間中はパブリック pull request をマージする機能が一時停止されます。
 
 [Microsoft Azure](https://azure.microsoft.com) のオープン ソース [ドキュメント](https://docs.microsoft.com/azure)にようこそ。 この README ファイルを読み、Microsoft Azure のドキュメントの共同作成に参加する方法をよく理解しておくようにしてください。
 

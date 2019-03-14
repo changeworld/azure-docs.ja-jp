@@ -1034,7 +1034,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                         </li>
                                         <li>
                                             <a href="/azure/spatial-anchors/">
-                                                <img src="https://azure.microsoft.com/patterns/styles/glyphs-icons/hololens.svg" alt="" />
+                                                <img src="media/index/spatial_anchors.png" alt="" />
                                                 <p>Azure Spatial Anchors</p>
                                             </a>
                                         </li>
@@ -1605,6 +1605,12 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                             <a href="/azure/role-based-access-control/">
                                                 <img src="media/index/PersonWithFriend.svg" alt="" />
                                                 <p>ロールベースのアクセス制御</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/sentinel/">
+                                                <img src="media/index/sentinel.png" alt="" />
+                                                <p>Azure Sentinel</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -4750,6 +4756,25 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure/sentinel/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/sentinel.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Sentinel</h3>
+                                                    <p>クラウド規模のインテリジェントなセキュリティ分析を企業全体に提供する Microsoft の SIEM を使用する方法を学習</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -5840,7 +5865,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="https://azure.microsoft.com/patterns/styles/glyphs-icons/hololens.svg" alt="" />
+                                                        <img src="media/index/spatial_anchors.png" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">

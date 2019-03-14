@@ -63,47 +63,49 @@ items:
       href: how-to-search-for-address.md
     - name: 静的マップ上にカスタム データをレンダリングする
       href: how-to-render-custom-data.md
-  - name: JavaScript のマップを作成する
+  - name: Web SDK を使った開発
     items:
-    - name: マップ コントロールを使用する
-      href: how-to-use-map-control.md
-    - name: マップを作成する
-      href: map-create.md
-    - name: マップ スタイルを選択する
-      href: choose-map-style.md
-    - name: マップ コントロールを追加する
-      href: map-add-controls.md
-    - name: シンボル レイヤーを追加する
-      href: map-add-pin.md
-    - name: ポップアップを追加する
-      href: map-add-popup.md
-    - name: バブル レイヤーを追加する
-      href: map-add-bubble-layer.md
-    - name: 図形を追加する
-      href: map-add-shape.md
-    - name: ヒート マップ レイヤーを追加する
-      href: map-add-heat-map-layer.md
-    - name: イメージ レイヤーを追加する
-      href: map-add-image-layer.md
-    - name: タイル レイヤーを追加する
-      href: map-add-tile-layer.md
-    - name: HTML マーカーを追加する
-      href: map-add-custom-html.md
-    - name: サービス
+    - name: マップ コントロール
+      items:
+      - name: マップ コントロールを使用する
+        href: how-to-use-map-control.md
+      - name: マップを作成する
+        href: map-create.md
+      - name: マップ スタイルを選択する
+        href: choose-map-style.md
+      - name: マップにコントロールを追加する
+        href: map-add-controls.md
+      - name: シンボル レイヤーを追加する
+        href: map-add-pin.md
+      - name: ポップアップを追加する
+        href: map-add-popup.md
+      - name: バブル レイヤーを追加する
+        href: map-add-bubble-layer.md
+      - name: 図形を追加する
+        href: map-add-shape.md
+      - name: ヒート マップ レイヤーを追加する
+        href: map-add-heat-map-layer.md
+      - name: イメージをオーバーレイする
+        href: map-add-image-layer.md
+      - name: タイル レイヤーを追加する
+        href: map-add-tile-layer.md
+      - name: HTML マーカー
+        href: map-add-custom-html.md
+      - name: 交通情報を表示する
+        href: map-show-traffic.md
+      - name: マウス イベントと連動させる
+        href: map-events.md
+      - name: アプリをアクセス可能にする
+        href: map-accessibility.md
+    - name: サービス モジュール
       items:
       - name: 検索結果を表示する
         href: map-search-location.md
       - name: 座標から情報を取得する
         href: map-get-information-from-coordinate.md
-      - name: A から B へのルートを表示する
+      - name: A から B までのルートを表示する
         href: map-route.md
-    - name: 交通情報を表示する
-      href: map-show-traffic.md
-    - name: マウス イベントと連動させる
-      href: map-events.md
-    - name: アクセス可能なマップ アプリケーション
-      href: map-accessibility.md
-  - name: Android マップの作成
+  - name: Android SDK を使った開発
     items:
     - name: Android マップ コントロールの使用方法
       href: how-to-use-android-map-control-library.md
@@ -150,7 +152,7 @@ items:
 - name: リソース
   items:
   - name: Azure Maps の使用条件
-    href: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
+    href: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/azure-maps
   - name: 料金計算ツール
@@ -197,9 +199,9 @@ items:
       href: /azure/iot-edge
     - name: IoT デバイス SDK
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: b0584c77ed7d8b3ed6c6962d02b75e061a97bf14
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2d974c96dd953c7a2727bcd5b1bcc3b60ad807a0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336735"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569231"

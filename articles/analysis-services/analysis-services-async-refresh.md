@@ -98,7 +98,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 
 パラメーターを指定する必要はありません。 既定値が適用されます。
 
-|Name  |type  |[説明]  |既定値  |
+|Name  |Type  |[説明]  |既定値  |
 |---------|---------|---------|---------|
 |Type     |  列挙型       |  実行する処理の種類です。 この種類は、TMSL の [refresh コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)の種類 (full、clearValues、calculate、dataOnly、automatic、defragment) と一致します。 add 型はサポートされていません。      |   automatic      |
 |CommitMode     |  列挙型       |  オブジェクトがバッチでコミットされるかどうか、または完了する時間のみを決定します。 Mode には default、transactional、partialBatch が含まれています。  |  transactional       |

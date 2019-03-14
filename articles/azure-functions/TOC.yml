@@ -69,6 +69,7 @@ items:
 - name: 概念
   items:
   - name: バージョン 1.x と 2.x の比較
+    displayName: migrate, migration
     href: functions-versions.md
   - name: スケールとホスティング
     href: functions-scale.md
@@ -154,6 +155,9 @@ items:
       href: functions-infrastructure-as-code.md
     - name: オンプレミスの関数
       href: functions-runtime-install.md
+    - name: Jenkins プラグインを使用したデプロイ
+      href: /azure/jenkins/jenkins-azure-functions-deploy
+      maintainContext: true
   - name: 構成
     items:
     - name: 関数アプリの管理
@@ -293,9 +297,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: adc910de92bb5500f219b4f373735f2fb9f7eb48
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 12fed934b54c3295c5fec7f7b65cab9255f83d2b
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442190"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791173"

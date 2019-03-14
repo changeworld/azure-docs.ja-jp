@@ -45,90 +45,106 @@ items:
       href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
 - name: ハウツー ガイド
   items:
-  - name: サイト対サイト接続の構成
+  - name: VPN ゲートウェイを作成して管理する
     items:
-    - name: Azure ポータル
-      href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
-    - name: Azure PowerShell
-      href: vpn-gateway-create-site-to-site-rm-powershell.md
-    - name: Azure CLI
-      href: vpn-gateway-howto-site-to-site-resource-manager-cli.md
-  - name: VPN デバイス構成スクリプトのダウンロード
-    href: vpn-gateway-download-vpndevicescript.md
-  - name: ポイント対サイト接続の構成 - ネイティブの Azure 証明書認証
-    items:
-    - name: P2S VPN の構成
+    - name: ルートベースの VPN ゲートウェイの作成
       items:
       - name: Azure ポータル
-        href: vpn-gateway-howto-point-to-site-resource-manager-portal.md
+        href: create-routebased-vpn-gateway-portal.md
       - name: Azure PowerShell
-        href: vpn-gateway-howto-point-to-site-rm-ps.md
-    - name: P2S 証明書とクライアント
+        href: create-routebased-vpn-gateway-powershell.md
+      - name: Azure CLI
+        href: create-routebased-vpn-gateway-cli.md
+    - name: VPN ゲートウェイ接続の確認
+      href: vpn-gateway-verify-connection-resource-manager.md
+    - name: VPN ゲートウェイのリセット
+      href: vpn-gateway-resetgw-classic.md
+    - name: VPN ゲートウェイの削除
       items:
-      - name: 自己署名証明書の生成
-        items:
-        - name: Azure PowerShell
-          href: vpn-gateway-certificates-point-to-site.md
-        - name: Makecert
-          href: vpn-gateway-certificates-point-to-site-makecert.md
-        - name: Linux
-          href: vpn-gateway-certificates-point-to-site-linux.md
-    - name: クライアント証明書のインストール
-      href: point-to-site-how-to-vpn-client-install-azure-cert.md
-    - name: VPN クライアント構成ファイルの作成とインストール
-      href: point-to-site-vpn-client-configuration-azure-cert.md
-  - name: ポイント対サイト接続の構成 - RADIUS 認証
-    items:
-    - name: P2S VPN の構成
-      items:
+      - name: Azure ポータル
+        href: vpn-gateway-delete-vnet-gateway-portal.md
       - name: Azure PowerShell
-        href: point-to-site-how-to-radius-ps.md
-    - name: VPN クライアント構成ファイルの作成とインストール
-      href: point-to-site-vpn-client-configuration-radius.md
-    - name: P2S VPN RADIUS 認証と NPS サーバーの統合
-      href: vpn-gateway-radiuis-mfa-nsp.md
-  - name: OpenVPN を構成する
+        href: vpn-gateway-delete-vnet-gateway-powershell.md
+    - name: レガシ ゲートウェイ SKU の管理
+      href: vpn-gateway-about-skus-legacy.md
+  - name: サイト間接続
     items:
-    - name: ポイント対サイト接続用に OpenVPN を構成する
-      href: vpn-gateway-howto-openvpn.md
-    - name: OpenVPN クライアントを構成する
-      href: vpn-gateway-howto-openvpn-clients.md
-  - name: VNet 間の接続の構成
-    items:
-    - name: Azure ポータル
-      href: vpn-gateway-howto-vnet-vnet-resource-manager-portal.md
-    - name: Azure PowerShell
-      href: vpn-gateway-vnet-vnet-rm-ps.md
-    - name: Azure CLI
-      href: vpn-gateway-howto-vnet-vnet-cli.md
-  - name: デプロイメント モデル間の VNet 間接続の構成
-    items:
-    - name: Azure ポータル
-      href: vpn-gateway-connect-different-deployment-models-portal.md
-    - name: Azure PowerShell
-      href: vpn-gateway-connect-different-deployment-models-powershell.md
-  - name: サイト対サイトおよび ExpressRoute の共存接続の構成
-    items:
-    - name: Azure PowerShell
-      href: ../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-  - name: 複数のサイト対サイト接続
-    items:
-    - name: Azure ポータル
+    - name: サイト間接続の構成
+      items:
+      - name: Azure ポータル
+        href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
+      - name: Azure PowerShell
+        href: vpn-gateway-create-site-to-site-rm-powershell.md
+      - name: Azure CLI
+        href: vpn-gateway-howto-site-to-site-resource-manager-cli.md
+    - name: 複数のサイト対サイト接続
       href: vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md
-  - name: 複数のポリシーベース VPN デバイスの接続
-    items:
-    - name: Azure PowerShell
+    - name: 複数のポリシーベース VPN デバイスへの接続
       href: vpn-gateway-connect-multiple-policybased-rm-ps.md
-  - name: 接続に対する IPsec/IKE ポリシーの構成
+    - name: サイト間と ExpressRoute の共存接続
+      href: ../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+  - name: VNet 対 VNet 接続
     items:
-    - name: Azure PowerShell
-      href: vpn-gateway-ipsecikepolicy-rm-powershell.md
-  - name: 高可用性のアクティブ/アクティブ接続の構成
+    - name: VNet 間の接続の構成
+      items:
+      - name: Azure ポータル
+        href: vpn-gateway-howto-vnet-vnet-resource-manager-portal.md
+      - name: Azure PowerShell
+        href: vpn-gateway-vnet-vnet-rm-ps.md
+      - name: Azure CLI
+        href: vpn-gateway-howto-vnet-vnet-cli.md
+    - name: デプロイメント モデル間の VNet 間接続の構成
+      items:
+      - name: Azure ポータル
+        href: vpn-gateway-connect-different-deployment-models-portal.md
+      - name: Azure PowerShell
+        href: vpn-gateway-connect-different-deployment-models-powershell.md
+  - name: ポイント対サイト接続
     items:
-    - name: Azure PowerShell
-      href: vpn-gateway-activeactive-rm-powershell.md
+    - name: Azure 証明書認証
+      items:
+      - name: P2S VPN の構成
+        items:
+        - name: Azure ポータル
+          href: vpn-gateway-howto-point-to-site-resource-manager-portal.md
+        - name: Azure PowerShell
+          href: vpn-gateway-howto-point-to-site-rm-ps.md
+      - name: P2S 証明書とクライアントの構成
+        items:
+        - name: 自己署名証明書の生成
+          items:
+          - name: Azure PowerShell
+            href: vpn-gateway-certificates-point-to-site.md
+          - name: Makecert
+            href: vpn-gateway-certificates-point-to-site-makecert.md
+          - name: Linux
+            href: vpn-gateway-certificates-point-to-site-linux.md
+      - name: クライアント証明書のインストール
+        href: point-to-site-how-to-vpn-client-install-azure-cert.md
+      - name: VPN クライアント構成ファイルの作成とインストール
+        href: point-to-site-vpn-client-configuration-azure-cert.md
+    - name: RADIUS 認証
+      items:
+      - name: P2S VPN の構成
+        href: point-to-site-how-to-radius-ps.md
+      - name: VPN クライアント構成ファイルの作成とインストール
+        href: point-to-site-vpn-client-configuration-radius.md
+      - name: P2S VPN RADIUS 認証と NPS サーバーの統合
+        href: vpn-gateway-radiuis-mfa-nsp.md
+    - name: OpenVPN
+      items:
+      - name: ポイント対サイト接続用に OpenVPN を構成する
+        href: vpn-gateway-howto-openvpn.md
+      - name: OpenVPN クライアントを構成する
+        href: vpn-gateway-howto-openvpn-clients.md
+    - name: P2S 用公開 CA ゲートウェイ証明書への移行
+      href: vpn-gateway-point-to-site-gateway-public-ca.md
   - name: Azure Availability Zones でのゾーン冗長 VNet ゲートウェイの作成
     href: create-zone-redundant-vnet-gateway.md
+  - name: 接続に対する IPsec/IKE ポリシーの構成
+    href: vpn-gateway-ipsecikepolicy-rm-powershell.md
+  - name: アクティブ/アクティブ接続の構成
+    href: vpn-gateway-activeactive-rm-powershell.md
   - name: ルーティング、BGP、VNET ピアリング
     items:
     - name: VPN ゲートウェイ用の BGP の構成
@@ -145,7 +161,7 @@ items:
         href: vpn-gateway-about-forced-tunneling.md
     - name: VNET ピアリングのゲートウェイ転送を構成する
       href: vpn-gateway-peering-gateway-transit.md
-  - name: ローカル ネットワーク ゲートウェイの設定を変更する
+  - name: ローカル ネットワーク ゲートウェイを変更する
     items:
     - name: Azure ポータル
       href: vpn-gateway-modify-local-network-gateway-portal.md
@@ -153,34 +169,14 @@ items:
       href: vpn-gateway-modify-local-network-gateway.md
     - name: Azure CLI
       href: vpn-gateway-modify-local-network-gateway-cli.md
-  - name: ルートベースの VPN ゲートウェイの作成
-    items:
-    - name: Azure ポータル
-      href: create-routebased-vpn-gateway-portal.md
-    - name: Azure PowerShell
-      href: create-routebased-vpn-gateway-powershell.md
-    - name: Azure CLI
-      href: create-routebased-vpn-gateway-cli.md
-  - name: VPN ゲートウェイ接続の確認
-    href: vpn-gateway-verify-connection-resource-manager.md
-  - name: VPN ゲートウェイのリセット
-    href: vpn-gateway-resetgw-classic.md
-  - name: VPN ゲートウェイの削除
-    items:
-    - name: Azure ポータル
-      href: vpn-gateway-delete-vnet-gateway-portal.md
-    - name: Azure PowerShell
-      href: vpn-gateway-delete-vnet-gateway-powershell.md
-  - name: ゲートウェイの SKU (旧)
-    href: vpn-gateway-about-skus-legacy.md
   - name: VPN デバイスの構成
     items:
     - name: 概要と Azure の構成
       href: vpn-gateway-3rdparty-device-config-overview.md
+    - name: VPN デバイス構成スクリプトのダウンロード
+      href: vpn-gateway-download-vpndevicescript.md
     - name: サンプル:Cisco ASA デバイス (IKEv2/BGP なし)
       href: vpn-gateway-3rdparty-device-config-cisco-asa.md
-  - name: P2S 用公開 CA ゲートウェイ証明書への移行
-    href: vpn-gateway-point-to-site-gateway-public-ca.md
   - name: トラブルシューティング
     href: vpn-gateway-troubleshoot.md
     items:
@@ -252,9 +248,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway
-ms.openlocfilehash: af9469c41660e8f5d98e93a8bfea9af977396d04
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 84c6a8972109e8512e66a5fa6283125534b2e2e1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817560"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781291"
