@@ -165,7 +165,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. **[名前空間]** ボックスに、その行に表示される名前空間の値を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [ソース] として **[属性]** を選択します。
+    d. [ソース] として **[属性]** を選択します。
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
@@ -213,7 +213,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、**[ファイルの選択]** をクリックします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ページの下部にある **[Next Step]**」を参照してください。
+    d. **[Next Step]**」をクリックします。
 
 6. **[Verify Provider Information]** ダイアログ ボックスで、**[Create]** をクリックします。
 
@@ -233,7 +233,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. **[Allow programmatic and AWS Management Console access]** を選択します。
   
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ: Permissions]\(次へ: アクセス許可\)** をクリックします。
+    d. **[次へ: Permissions]\(次へ: アクセス許可\)** をクリックします。
 
 9. **[Attach Permissions Policies]\(アクセス許可ポリシーのアタッチ\)** ダイアログで、組織の規定に準拠した適切なポリシーを添付します。 **次へ: 確認\)** をクリックします。  
 
@@ -249,7 +249,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. **[Create Role]** をクリックします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
+    d. 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
 
 11. Azure AD ユーザー プロビジョニングの AWS アカウントからロールをフェッチするには、AWS サービス アカウントの資格情報を使用します。 そのためには、AWS コンソール ホームを開きます。
 
@@ -377,7 +377,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. **[テスト接続]** をクリックすると、この接続を正常にテストできます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 上部にある **[保存]** をクリックして、設定を保存します。
+    d. 上部にある **[保存]** をクリックして、設定を保存します。
 
 23. スイッチをオンにしてから上部の **[保存]** をクリックして、[設定] セクションで [プロビジョニングの状態] を **[オン]** にします。
 
