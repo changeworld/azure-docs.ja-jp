@@ -1,4 +1,4 @@
----
+﻿---
 title: .NET を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 author: wmengmsft
