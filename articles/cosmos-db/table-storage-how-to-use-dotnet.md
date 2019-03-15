@@ -171,7 +171,7 @@ CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 これで、Table Storage に対してデータの読み取りと書き込みを実行するコードを記述する準備が整いました。
 
 ## <a name="create-a-table"></a>テーブルを作成する
-この例は、テーブルがない場合に、キューを作成する方法を示しています。
+この例は、テーブルが存在しない場合に作成する方法を示しています。
 
 ```csharp
 // Retrieve the storage account from the connection string.
