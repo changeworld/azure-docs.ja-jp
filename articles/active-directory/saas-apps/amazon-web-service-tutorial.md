@@ -213,7 +213,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、**[ファイルの選択]** をクリックします。
 
-    d. **[Next Step]**」をクリックします。
+    d. ページの下部にある **[Next Step]**」を参照してください。
 
 6. **[Verify Provider Information]** ダイアログ ボックスで、**[Create]** をクリックします。
 
