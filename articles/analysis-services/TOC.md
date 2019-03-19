@@ -43,8 +43,6 @@
 ### [サーバー管理者ロールにサービス プリンシパルを追加する](analysis-services-addservprinc-admins.md)
 
 ## モデル
-### [Power BI Desktop ファイルのインポート](analysis-services-import-pbix.md)
-### [Azure Portal でのモデルの作成 (プレビュー)](analysis-services-create-model-portal.md)
 ### [Visual Studio からのデプロイ (SSDT)](analysis-services-deploy.md)
 ### [REST API を使用した更新](analysis-services-async-refresh.md)
 ### [Visual Studio でのデータ モデリング - Adventure Works (1400) チュートリアル](tutorials/aas-adventure-works-tutorial.md)
@@ -97,13 +95,3 @@
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-analysis-services)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
-
-
-
-
-
-
-
-
-
-

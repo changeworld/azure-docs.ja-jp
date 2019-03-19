@@ -11,16 +11,10 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 09e0debba88ed87ab84b567e797d3ae63ec32a81
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157107"
 ---
+<div id="main" class="v2">
 <h1>Azure Data Box</h1>
 <p>Azure Data Box ファミリには、信頼性が高く、迅速かつ安価な方法で数テラバイト (TB) のデータを Azure に送信できる、ストレージ容量が異なる製品が用意されています。 Microsoft は、オフラインまたはネットワーク経由のデータ転送を可能にする独自のストレージ デバイスをお客様に届けることで、安全なデータ転送を促進しています。</p>
-
 <h2>オフライン データ転送</h2>
 <p>ネットワーク帯域幅が制限されている場合</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -79,7 +73,6 @@ ms.locfileid: "54157107"
         </a>
     </li>
 </ul>
-
 <h2>オンライン データ転送</h2>
 <p>ネットワーク経由の転送</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -120,3 +113,4 @@ ms.locfileid: "54157107"
         </a>
     </li>
 </ul>
+</div>

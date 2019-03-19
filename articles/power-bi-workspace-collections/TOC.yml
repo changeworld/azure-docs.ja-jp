@@ -66,16 +66,16 @@ items:
   - name: Power BI C# の Git リポジトリ
     href: https://github.com/Microsoft/PowerBI-CSharp
   - name: Power BI コミュニティ
-    href: http://community.powerbi.com/t5/Developer/bd-p/Developer
+    href: https://community.powerbi.com/t5/Developer/bd-p/Developer
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サンプル アプリケーション
     href: https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/powerbi
-ms.openlocfilehash: 8478b88c9c23d7fe933921f99102c64a1b5025ab
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+    href: https://stackoverflow.com/questions/tagged/powerbi
+ms.openlocfilehash: ceef0dc6803c8c4edcfa9e3a76b849a67f8bc27f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434680"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849586"

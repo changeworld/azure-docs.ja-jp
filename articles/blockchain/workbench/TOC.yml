@@ -70,13 +70,11 @@ items:
   items:
   - name: Ethereum Proof-of-Authority Consortium
     href: ../templates/ethereum-poa-deployment.md
-  - name: Ethereum Proof-of-Work Consortium
-    href: ../templates/ethereum-deployment.md
   - name: Hyperledger Fabric コンソーシアム
     href: ../templates/hyperledger-fabric-consortium-blockchain.md
-ms.openlocfilehash: 9195465017217b50d67265feff88281c461e43aa
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b0426cc5dfbac62657ad172f5fa73586e6214601
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884080"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001929"
