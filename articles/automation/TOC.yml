@@ -122,8 +122,6 @@ items:
     - name: Azure Automation データを管理する
       displayName: backup
       href: automation-managing-data.md
-    - name: Python 2 パッケージの管理
-      href: python-packages.md
     - name: PowerShell ワークフローについての説明
       href: automation-powershell-workflow.md
     - name: 子 Runbook
@@ -177,16 +175,18 @@ items:
       href: automation-dsc-diagnostics.md
   - name: 共有リソースの管理
     items:
-    - name: 証明書
-      href: automation-certificates.md
-    - name: Connections
-      href: automation-connections.md
-    - name: 資格情報
-      href: automation-credentials.md
-    - name: 統合モジュール
-      href: automation-integration-modules.md
     - name: スケジュール
       href: automation-schedules.md
+    - name: モジュール
+      href: shared-resources/modules.md
+    - name: Python 2 パッケージの管理
+      href: python-packages.md
+    - name: 資格情報
+      href: automation-credentials.md
+    - name: Connections
+      href: automation-connections.md
+    - name: 証明書
+      href: automation-certificates.md
     - name: variables
       href: automation-variables.md
     - name: Azure PowerShell モジュールの更新
@@ -287,9 +287,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: b4499b2a09dc8ac330582e2f42f5d683a89790c5
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 68b40786eefb7cb1abfb32e5042c07f6a1b5314d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730727"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840530"
