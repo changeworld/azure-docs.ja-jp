@@ -94,11 +94,11 @@ Video Indexer については Azure Media Service の SLA が適用されます�
 
 はい、アカウント管理者だけが、自分のアカウントにユーザーを招待したりメンバーを削除したりすることができ、編集特権を持つユーザーと読み取り専用アクセスを持つユーザーを割り当てることもできます。
 
-### <a name="who-has-access-to-my-video-and-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Video Indexer でインデックスを作成したり保存したりしたビデオ ファイルやオーディオ ファイルと、抽出されたメタデータと分析情報報には、誰がアクセスできますか?
+### <a name="who-has-access-to-my-video-and-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Video Indexer でインデックスを作成したり保存したりしたビデオ ファイルやオーディオ ファイルと、抽出されたメタデータと分析情報には、誰がアクセスできますか?
 
 ビデオのプライバシー設定がパブリックになっているビデオやオーディオのコンテンツには、ビデオやオーディオのコンテンツとその分析情報へのリンクを持つすべてのユーザーがアクセスできます。 ビデオのプライバシー設定がプライベートになっているビデオやオーディオのコンテンツには、ビデオやオーディオのコンテンツのアカウントに招待されたユーザーのみがアクセスできます。 コンテンツのプライバシーの設定は、Video Indexer で抽出されるメタデータと分析情報にも適用されます。 プライバシーの設定は、ビデオ ファイルやオーディオ ファイルをアップロードするときに割り当てます。 また、インデックスの作成後にプライバシーの設定を変更することもできます。
 
-### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Video Indexer でインデックスを作成したり保存したりしたビデオ ファイルやオーディオ ファイルと、抽出されたメタデータと分析情報報には、誰がアクセスできますか?
+### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Video Indexer でインデックスを作成したり保存したりしたビデオ ファイルやオーディオ ファイルと、抽出されたメタデータと分析情報には、誰がアクセスできますか?
 
 [Azure オンライン サービス条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) に従い、お客様はご自分のコンテンツを完全に所有し、Microsoft は、お客様のコンテンツと、OST と Microsoft のプライバシーに関する声明に従って Video Indexer でお客様のコンテンツから抽出するメタデータと分析情報のみにアクセスします。
 
