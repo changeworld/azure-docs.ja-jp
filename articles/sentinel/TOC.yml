@@ -83,12 +83,12 @@ items:
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=security-identity
   - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-    href: http://blogs.msdn.com/b/azuresecurity/
+    href: https://blogs.msdn.com/b/azuresecurity/
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 50587fc6b2fca37ddbe5a9a1cbe4ff1914c809c9
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 51b9a9742b5b8fd80e2ad11ed4de5cdc712e8128
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993369"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837254"

@@ -325,6 +325,8 @@ items:
         href: sql-database-advisor.md
   - name: データベース機能
     items:
+    - name: 概要
+      href: sql-database-features-index.yml
     - name: SQL 機能の比較
       href: sql-database-features.md
     - name: マルチモデル機能
@@ -693,7 +695,7 @@ items:
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/sql-azure
+    href: https://stackoverflow.com/questions/tagged/sql-azure
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=sql-database
   - name: サービスの更新情報
@@ -701,7 +703,7 @@ items:
   - name: アーキテクチャ センター
     href: /azure/architecture/
   - name: 顧客事例
-    href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
+    href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
   - name: エラスティック ジョブ (非推奨)
     items:
     - name: エラスティック ジョブ (非推奨)
@@ -716,9 +718,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: fabc468e22f1df077e9350873d084bc7e26252b6
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 8c0124072f26716a25cc2fc098c2da0a29a6b15f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576448"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835505"
