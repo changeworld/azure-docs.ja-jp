@@ -339,8 +339,6 @@ items:
           href: app/annotations.md
         - name: ApplicationInsights.config
           href: app/configuration-with-applicationinsights-config.md
-        - name: スナップショット デバッガー
-          href: app/snapshot-debugger.md
       - name: Java アプリ
         items:
         - name: Web Apps
@@ -1046,9 +1044,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 19b06e5e558bdeb903907e8db8d17fd2ee4eb288
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 661ffa0c16b17186523c7b36e571a38785a2ea5c
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897318"
+ms.locfileid: "58189871"

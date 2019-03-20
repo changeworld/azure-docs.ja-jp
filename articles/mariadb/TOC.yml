@@ -66,6 +66,8 @@ items:
       href: concepts-server-logs.md
   - name: 開発
     items:
+    - name: ドライバーとツールの互換性
+      href: concepts-compatibility.md
     - name: 接続の回復性
       href: concepts-connectivity.md
   - name: レプリケーション
@@ -162,9 +164,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 34c4b85157db28f39ef0c7de57a45c43e45af35a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d017c688fa5ff6050d43393fb55a31f4bf88c97
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875551"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223735"

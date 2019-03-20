@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3b47cc9db956f390789e557e42592a840fafd1c7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c4aeb25530739931a18f010a579bd8354d6fdc5a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57998547"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223293"
 documentType: LandingData
 title: Azure Blueprints のドキュメント
 metadata:
@@ -15,7 +15,7 @@ metadata:
   manager: carmonm
   ms.service: blueprints
   ms.topic: landing-page
-  ms.date: 10/30/2018
+  ms.date: 03/18/2019
   ms.author: dacoulte
 abstract:
   description: Azure Blueprints は、コンポーザブルな成果物 (リソース、ロールベースのアクセス制御、ポリシーをプロビジョニングするための Azure Resource Manager テンプレートなど) を使用して、繰り返し可能な方法でクラウド環境をデプロイおよび更新する際に役立ちます。
@@ -33,9 +33,9 @@ sections:
       text: Azure Portal
       href: create-blueprint-portal.md
     - image:
-        alt: REST API
+        alt: REST
         src: ./media/rest.svg
-      text: REST API
+      text: REST
       href: create-blueprint-rest-api.md
 - title: リファレンス
   items:
@@ -43,5 +43,7 @@ sections:
     style: cards
     className: cardsD
     items:
+    - title: Languages
+      html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK for .NET</a></p>
     - title: REST
       html: <p><a href="/rest/api/blueprints/">API リファレンス</a></p>
