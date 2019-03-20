@@ -64,12 +64,6 @@ items:
       - name: HDInsight tools for Visual Studio を使用する
         href: ../hadoop/apache-hadoop-use-hive-visual-studio.md
         maintainContext: true
-      - name: リモート デスクトップを使用する
-        href: ../hadoop/apache-hadoop-use-hive-remote-desktop.md
-        maintainContext: true
-      - name: クエリ コンソールを使用する
-        href: ../hadoop/apache-hadoop-use-hive-query-console.md
-        maintainContext: true
       maintainContext: true
     - name: Apache Hive で Java UDF を使用する
       href: ../hadoop/apache-hadoop-hive-java-udf.md
@@ -110,17 +104,11 @@ items:
     - name: Apache Hive JDBC ドライバーを使用して接続する
       href: ../hadoop/apache-hadoop-connect-hive-jdbc-driver.md
       maintainContext: true
-    - name: 格納されたセンサー データを分析する
-      href: ../hadoop/apache-hive-analyze-sensor-data.md
-      maintainContext: true
     - name: 格納されたツイートを分析する
       href: ../hdinsight-analyze-twitter-data-linux.md
       maintainContext: true
     - name: フライト遅延データを分析する
       href: ../hdinsight-analyze-flight-delay-data-linux.md
-      maintainContext: true
-    - name: Apache Hive を使用して Web サイトのログを分析する
-      href: ../hadoop/apache-hive-analyze-website-log.md
       maintainContext: true
   - name: クラスターを拡張する
     items:
@@ -395,9 +383,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 3a687530afde6f24d1e264b289b7aaebf290c68f
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 092c8909194b5f656c040dfd27ac721c587351c8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888255"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200193"

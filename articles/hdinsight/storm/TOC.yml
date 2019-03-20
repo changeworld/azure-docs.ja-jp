@@ -288,17 +288,11 @@ items:
     - name: Apache Maven を使用して Java アプリケーションを構築する
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
-    - name: スクリプト アクションを使用してカスタマイズする
-      href: ../hdinsight-hadoop-customize-cluster.md
-      maintainContext: true
     - name: Apache Hadoop YARN アプリケーション ログにアクセスする
       href: ../hdinsight-hadoop-access-yarn-app-logs.md
       maintainContext: true
     - name: スクリプト アクションを開発する
       href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Azure Portal でクラスターを管理する
-      href: ../hdinsight-administer-use-management-portal.md
       maintainContext: true
     - name: Apache Ambari API を使用してクラスターを監視する
       href: ../hdinsight-monitor-use-ambari-api.md
@@ -318,9 +312,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: ea149749fcb073861cb6af05225536c552e3f79a
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: e2ad72d544a401842c9352ebca86394357ce96eb
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886487"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200921"
