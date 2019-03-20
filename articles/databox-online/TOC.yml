@@ -72,10 +72,24 @@ items:
       href: data-box-edge-system-requirements.md
     - name: 制限を理解する
       href: data-box-edge-limits.md
+    - name: セキュリティの概要
+      href: data-box-edge-security.md
+    - name: 仕様の確認
+      href: data-box-edge-technical-specifications-compliance.md
   - name: 方法
     items:
+    - name: コンピューティングの管理
+      href: data-box-edge-manage-compute.md
     - name: C# モジュールの開発
       href: data-box-edge-create-iot-edge-module.md
+    - name: 共有の管理
+      href: data-box-edge-manage-shares.md
+    - name: ユーザーの管理
+      href: data-box-edge-manage-users.md
+    - name: 帯域幅スケジュールの管理
+      href: data-box-edge-manage-bandwidth-schedules.md
+    - name: 電源、アクセス、接続の管理
+      href: data-box-edge-manage-access-power-connectivity-mode.md
     - name: PowerShell を通じた管理
       href: data-box-edge-connect-powershell-interface.md
 - name: リソース
@@ -86,9 +100,9 @@ items:
     href: https://azure.microsoft.com/services/storage/databox/edge/
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
-ms.openlocfilehash: 0ce74b9b3000c04c7e94358c8c93bade74cfd81f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e9a8ba6e284a03b4be085aa59be7fa5ae0ab65e9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551325"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855114"

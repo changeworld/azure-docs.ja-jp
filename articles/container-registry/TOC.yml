@@ -62,26 +62,29 @@ items:
       href: container-registry-image-lock.md
     - name: コンテナー イメージの削除
       href: container-registry-delete.md
-    - name: コンテンツの信頼 (プレビュー)
-      href: container-registry-content-trust.md
     - name: クラシック レジストリのアップグレード
       href: container-registry-upgrade.md
     - name: ACR webhook の使用
       href: container-registry-webhook.md
     - name: Helm Chart リポジトリ (プレビュー)
       href: container-registry-helm-repos.md
-  - name: Authentication
+  - name: セキュリティと認証
     items:
+    - name: 仮想ネットワークでのアクセスの制限 (プレビュー)
+      href: container-registry-vnet.md
     - name: 認証の概要
       href: container-registry-authentication.md
-    - name: サービス プリンシパルの認証
-      href: container-registry-auth-service-principal.md
-    - name: マネージド ID の認証
-      href: container-registry-authentication-managed-identity.md
-    - name: Azure Container Instances
-      href: container-registry-auth-aci.md
-    - name: Azure Kubernetes Service (AKS)
-      href: container-registry-auth-aks.md
+      items:
+      - name: サービス プリンシパルの認証
+        href: container-registry-auth-service-principal.md
+      - name: マネージド ID の認証
+        href: container-registry-authentication-managed-identity.md
+      - name: Azure Container Instances からの認証
+        href: container-registry-auth-aci.md
+      - name: Azure Kubernetes Service (AKS) からの認証
+        href: container-registry-auth-aks.md
+    - name: コンテンツの信頼 (プレビュー)
+      href: container-registry-content-trust.md
   - name: ビルドと修正プログラム
     items:
     - name: ACR タスク
@@ -137,9 +140,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-container-registry
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: ef8f6b64129f9dd2f2959c89e93c34b9d90a62f7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 732c0f878df9b5d722571bf45e4afd76a3180ebb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541951"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58137996"

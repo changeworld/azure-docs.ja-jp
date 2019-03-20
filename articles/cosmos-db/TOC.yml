@@ -22,7 +22,7 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: 1 - アカウントの作成
+  - name: 1 - データの作成/管理
     items:
     - name: コンソール アプリの構築
       items:
@@ -238,7 +238,7 @@ items:
         href: create-mongodb-golang.md
     - name: チュートリアル
       items:
-      - name: 1 - アカウントの作成
+      - name: 1 - データの作成/管理
         items:
         - name: Node.js コンソール アプリ
           href: mongodb-samples.md
@@ -337,7 +337,7 @@ items:
         href: create-cassandra-python.md
     - name: チュートリアル
       items:
-      - name: 1 - アカウントおよびデータベースの作成
+      - name: 1 - データの作成/管理
         href: create-cassandra-api-account-java.md
       - name: 2 - データの読み込み
         href: cassandra-api-load-data.md
@@ -389,7 +389,7 @@ items:
         href: create-table-python.md
     - name: チュートリアル
       items:
-      - name: 1 - アカウントの作成
+      - name: 1 - データの作成/管理
         href: tutorial-develop-table-dotnet.md
       - name: 2 - データの移行
         displayName: import
@@ -656,9 +656,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: f42bc31661ecc14fde4d2466ccd89d91dfd5deb5
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 96160b85319ddd7e09b1ecd4e57b974608648021
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406815"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876920"

@@ -78,6 +78,7 @@
 #### [(A)SCS インスタンス用の共有ディスクを使用した Windows の HA](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [(A)SCS インスタンス用の SOFS ファイル共有を使用した Windows の HA](sap-high-availability-guide-wsfc-file-share.md)
 #### [(A)SCS インスタンス用の SUSE Linux の HA](high-availability-guide-suse.md)
+#### [Azure NetApp Files を使用した (A)SCS インスタンス用の SUSE Linux の HA](high-availability-guide-suse-netapp-files.md)
 #### [(A)SCS インスタンス用の Red Hat Enterprise Linux の HA](high-availability-guide-rhel.md)
 ### Azure インフラストラクチャの準備
 #### [(A)SCS インスタンス用の共有ディスクを使用した Windows](sap-high-availability-infrastructure-wsfc-shared-disk.md)
@@ -90,6 +91,7 @@
 #### [(A)SCS インスタンス用の共有ディスクを使用した Windows](sap-high-availability-installation-wsfc-shared-disk.md)
 #### [(A)SCS インスタンス用の SOFS ファイル共有を使用した Windows](sap-high-availability-installation-wsfc-file-share.md)
 #### [(A)SCS インスタンス用の NFS を使用した SUSE Linux](high-availability-guide-suse.md)
+#### [Azure NetApp Files を使用した (A)SCS インスタンス用の NFS を使用した SUSE Linux](high-availability-guide-suse-netapp-files.md)
 #### [Red Hat Enterprise Linux での SAP NetWeaver の高可用性](high-availability-guide-rhel.md)
 ### SAP マルチ SID
 #### [(A)SCS インスタンス用の共有ディスクを使用した Windows](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)

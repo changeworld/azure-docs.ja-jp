@@ -64,6 +64,12 @@ items:
       href: quickstart-scale-compute-powershell.md
     - name: T-SQL
       href: quickstart-scale-compute-tsql.md
+  - name: ワークロード管理
+    items:
+    - name: ワークロード分類子の作成 (プレビュー)
+      items:
+      - name: T-SQL
+        href: quickstart-create-a-workload-classifier-tsql.md
   expanded: true
 - name: 概念
   items:
@@ -155,6 +161,10 @@ items:
     items:
     - name: リソース クラスとワークロード管理
       href: resource-classes-for-workload-management.md
+    - name: ワークロード分類 (プレビュー)
+      href: sql-data-warehouse-workload-classification.md
+    - name: ワークロードの重要度 (プレビュー)
+      href: sql-data-warehouse-workload-importance.md
     - name: メモリとコンカレンシーの制限
       href: memory-and-concurrency-limits.md
   - name: 管理容易性と監視
@@ -169,8 +179,6 @@ items:
       href: backup-and-restore.md
     - name: Recommendations
       href: sql-data-warehouse-concept-recommendations.md
-    - name: メンテナンス スケジュール
-      href: service-maintenance.md
     - name: トラブルシューティング
       href: sql-data-warehouse-troubleshoot.md
   - name: メンテナンス スケジュール
@@ -311,9 +319,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: データ管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: fb1b3751d398af947eb6dad1a40699104280bc21
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 70ad58128b088a44f2e95626e6883645a947e629
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730659"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884695"

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7d0947450352907eb90af748e8ced4a8bea67471
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 3b47cc9db956f390789e557e42592a840fafd1c7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337887"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998547"
 documentType: LandingData
 title: Azure Blueprints のドキュメント
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.date: 10/30/2018
   ms.author: dacoulte
 abstract:
-  description: Azure Blueprint は、ポリシー、ロール ベースのアクセス制御、Azure Resource Manager テンプレートなどのコンポーザブルな成果物を使用して、繰り返し可能な方法でクラウド環境をデプロイおよび更新する際に役立ちます。
+  description: Azure Blueprints は、コンポーザブルな成果物 (リソース、ロールベースのアクセス制御、ポリシーをプロビジョニングするための Azure Resource Manager テンプレートなど) を使用して、繰り返し可能な方法でクラウド環境をデプロイおよび更新する際に役立ちます。
 sections:
 - title: 5 分間のクイック スタート
   items:
@@ -43,5 +43,5 @@ sections:
     style: cards
     className: cardsD
     items:
-    - title: REST API
-      html: <p><a href="/rest/api/blueprints/">ブループリント</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/blueprints/">API リファレンス</a></p>

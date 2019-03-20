@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4ad9de80a77d054ef723d9ed5bd53e410c653baa
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 5fc027e52d838a85e7b880e3dd0daf4438e850dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195083"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57851993"
 documentType: LandingData
 title: Azure Dev Spaces
 metadata:
@@ -25,7 +25,7 @@ sections:
     text: >-
       > [!IMPORTANT]
 
-      > Azure Dev Spaces は現在プレビューの段階で、**米国東部**、**米国東部 2**、**米国中部**、**米国西部 2**、**西ヨーロッパ**、**東南アジア**、**カナダ中部**、**カナダ東部**のリージョンの AKS クラスターでのみサポートされます。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+      > Azure Dev Spaces は現在プレビューの段階で、**米国東部**、**米国東部 2**、**米国中部**、**米国西部 2**、**北ヨーロッパ**、**西ヨーロッパ**、**東南アジア**、**カナダ中部**、**カナダ東部**のリージョンの AKS クラスターでのみサポートされます。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 - title: Azure Dev Spaces での作業の開始
   items:
   - type: paragraph

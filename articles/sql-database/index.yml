@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ba32f17ac596a21614c1e18a01f622defb069a8e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: dad3d16ad6d630bd57e6e5d196d16d45692935d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338418"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167968"
 documentType: LandingData
 title: Azure SQL Database のドキュメント
 metadata:
@@ -65,7 +65,7 @@ sections:
         src: media/index/i_elasticpool.svg
       title: エラスティック プール
     - href: /azure/sql-database/sql-database-managed-instance-index
-      html: <p>Managed Instance を使用すると、データベース コードの変更を最小またはゼロに抑えながら、オンプレミス データベースをフル マネージド Azure PaaS データベース サービスに簡単に移行できます。</p>
+      html: <p>マネージド インスタンスを使用して、オンプレミス データベースからの移行に必要なデータベース コードの変更を最小またはゼロに抑えて、Azure クラウドでホストされたフル マネージド SQL Server Database エンジン インスタンスを取得します。</p>
       image:
         src: media/index/i_mi.svg
       title: マネージド インスタンス

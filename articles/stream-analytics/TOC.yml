@@ -32,15 +32,17 @@ items:
 - name: 概念
   items:
   - name: ジョブの入力の種類
-    href: stream-analytics-add-inputs.md
     items:
+    - name: 入力の概要
+      href: stream-analytics-add-inputs.md
     - name: ストリーミング データの入力
       href: stream-analytics-define-inputs.md
     - name: 参照データ入力
       href: stream-analytics-use-reference-data.md
   - name: ジョブの出力の種類
-    href: stream-analytics-define-outputs.md
     items:
+    - name: 出力の概要
+      href: stream-analytics-define-outputs.md
     - name: Cosmos DB に出力する
       href: stream-analytics-documentdb-output.md
     - name: Azure SQL DB に出力する
@@ -122,9 +124,10 @@ items:
     items:
     - name: ストリーミング ユニットを利用したスケーリング
       href: stream-analytics-streaming-unit-consumption.md
-    - name: クエリ並列処理を使用したスケーリング
-      href: stream-analytics-parallelization.md
+    - name: 並列処理を使用したスケーリング
       items:
+      - name: クエリ並列処理
+        href: stream-analytics-parallelization.md
       - name: スループットの向上
         href: stream-analytics-scale-jobs.md
     - name: ML 関数を利用したスケーリング
@@ -428,16 +431,16 @@ items:
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=stream-analytics
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-stream-analytics
+    href: https://stackoverflow.com/questions/tagged/azure-stream-analytics
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
   - name: お客様導入事例
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 24c475fcbe1bda825693ee04f9381922c46633ad
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 127d7aa2588a47084dd43eb7f22adf9f73f90dce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539243"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853013"

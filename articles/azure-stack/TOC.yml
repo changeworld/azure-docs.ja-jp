@@ -286,8 +286,10 @@ items:
       href: azure-stack-app-service-capacity-planning.md
     - name: 開始する前に
       href: azure-stack-app-service-before-you-get-started.md
-    - name: App Service リソース プロバイダーのデプロイ
+    - name: App Service のデプロイ
       href: azure-stack-app-service-deploy.md
+    - name: 高可用性のための App Service のデプロイ
+      href: app-service-deploy-ha.md
     - name: App Service のオフライン デプロイ
       href: azure-stack-app-service-deploy-offline.md
     - name: App Service の更新
@@ -399,9 +401,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: ed6de4a1839c8fe60248e79e5349d8077193d052
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fc0efe87aa0eea7f7c7ba5c6ca11d3e88e3d74df
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774270"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838580"
