@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 65625fcc12143a8ea53ff2ab7d1dfcb43a0def8d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 92fc63ed45b6f1ea377138744d19137645c916e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992145"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57882728"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法  
 
-Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。 スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。 サポートされている機能の詳細については、 [リリース ノート](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)を参照してください。 詳細については、 [Windows 8 用プレーヤー フレームワークに関する記事](http://playerframework.codeplex.com/)を参照してください。 
+Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。 スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。 サポートされている機能の詳細については、 [リリース ノート](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)を参照してください。 詳細については、 [Windows 8 用プレーヤー フレームワークに関する記事](https://playerframework.codeplex.com/)を参照してください。 
 
 このチュートリアルには、次の 4 つのレッスンが含まれています。
 
@@ -38,7 +38,7 @@ Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマン�
 
 * Windows 8 32 ビットまたは 64 ビット。
 * Visual Studio バージョン 2012 から 2015。
-* [Windows 8 用 Microsoft Smooth Streaming Client SDK](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home)。
+* [Windows 8 用 Microsoft Smooth Streaming Client SDK](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home)。
 
 各レッスンの完成したソリューションは、MSDN デベロッパー サンプル コード集 (コード ギャラリー) からダウンロードできます: 
 
@@ -107,7 +107,7 @@ Windows ストア アプリケーションの開発の詳細については、�
 
          <StackPanel Name="spMediaControl" Grid.Row="1" Orientation="Horizontal">
             <TextBlock x:Name="tbSource" Text="Source :  " FontSize="16" FontWeight="Bold" VerticalAlignment="Center" />
-            <TextBox x:Name="txtMediaSource" Text="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" FontSize="10" Width="700" Margin="0,4,0,10" />
+            <TextBox x:Name="txtMediaSource" Text="https://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" FontSize="10" Width="700" Margin="0,4,0,10" />
             <Button x:Name="btnSetSource" Content="Set Source" Width="111" Height="43" Click="btnSetSource_Click"/>
             <Button x:Name="btnPlay" Content="Play" Width="111" Height="43" Click="btnPlay_Click"/>
             <Button x:Name="btnPause" Content="Pause"  Width="111" Height="43" Click="btnPause_Click"/>
@@ -203,7 +203,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
          }
          # endregion
    ```
-ここでは sliderProgress_PointerPressed イベント ハンドラーが定義されています。  正しく機能させるには他の作業も必要ですが、これらについては次のレッスンで説明します。
+   ここでは sliderProgress_PointerPressed イベント ハンドラーが定義されています。  正しく機能させるには他の作業も必要ですが、これらについては次のレッスンで説明します。
 6. **Ctrl + S** キーを押して、ファイルを保存します。
 
 完成したコード ビハインド ファイルは次のようになります。
@@ -807,7 +807,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             changeStreams(selectedStreams);
         }
    ```
-**アプリケーションのコンパイルとテストを行うには**
+   **アプリケーションのコンパイルとテストを行うには**
 
 1. **F6** キーを押して、プロジェクトをコンパイルします。 
 2. **F5** キーを押してアプリケーションを実行します。
@@ -1009,7 +1009,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             changeStreams(selectedStreams);
          }
    ```
-**アプリケーションのコンパイルとテストを行うには**
+   **アプリケーションのコンパイルとテストを行うには**
 
 1. **F6** キーを押して、プロジェクトをコンパイルします。 
 2. **F5** キーを押してアプリケーションを実行します。
@@ -1026,8 +1026,8 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="other-resources"></a>その他のリソース:
-* [How to build a Smooth Streaming Windows 8 JavaScript application with advanced features (高度な機能を備えたスムーズ ストリーミング用の Windows 8 JavaScript アプリケーションを作成する方法)](http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
-* [Smooth Streaming Technical Overview (スムーズ ストリーミングの技術概要)](http://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
+* [How to build a Smooth Streaming Windows 8 JavaScript application with advanced features (高度な機能を備えたスムーズ ストリーミング用の Windows 8 JavaScript アプリケーションを作成する方法)](https://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
+* [Smooth Streaming Technical Overview (スムーズ ストリーミングの技術概要)](https://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png

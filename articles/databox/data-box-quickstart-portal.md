@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 03/12/2019
 ms.author: alkohli
-ms.openlocfilehash: ae6ab0eb4c966ef57c7859098217b5b6b560614b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188557"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834722"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Data Box をデプロイする
 
@@ -43,7 +43,7 @@ ms.locfileid: "54188557"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="order"></a>順序
 
@@ -74,7 +74,7 @@ Data Box を入手したら、次の手順に従ってデバイスのケーブ�
     
 4. 次に示すようにしてデバイスのケーブルを接続します。  
 
-    ![Data Box のケーブル接続](media/data-box-quickstart-portal/data-box-cabled-dhcp.png)  
+    ![ケーブル配線した Data Box デバイスのバックプレーン](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)  
 
     1. 電源ケーブルをデバイスに接続します。
     2. RJ-45 CAT 6 ネットワーク ケーブルを使用して、ホスト コンピューターをデバイス上の管理ポート (MGMT) に接続します。 
@@ -86,7 +86,7 @@ Data Box を入手したら、次の手順に従ってデバイスのケーブ�
 
 この手順の所要時間は 5 分から 7 分程度です。
 
-1. デバイスのパスワードを取得するには、[Azure Portal](http://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。
+1. デバイスのパスワードを取得するには、[Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。
 2. Data Box に接続するために使用するコンピューターのイーサネット アダプターを、静的 IP アドレス 192.168.100.5、サブネット 255.255.255.0 で構成します。 `https://192.168.100.10` からデバイスのローカル Web UI にアクセスします。 デバイスを起動してから接続するまで最大 5 分かかることがあります。 
 3. Azure portal からパスワードを使用してサインインします。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 ブラウザー固有の手順に従い Web ページに進みます。
 4. 既定では、10 Gbps のデータ インターフェイス(または 1 Gbps) のネットワーク設定は、DHCP として構成されます。 必要に応じて、このインターフェイスを静的インターフェイスとして構成し、IP アドレスを入力することができます。 

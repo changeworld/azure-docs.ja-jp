@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f577a7dd9f517be6ab7b632a82227e4807862ba5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: b596af8ae9fbbaee6964622df44d316a11582cb9
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727910"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337925"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
@@ -33,7 +33,7 @@ ms.locfileid: "55727910"
 
 ### <a name="create-key-vault"></a>キー コンテナーの作成
 
-[Azure キー コンテナー](/azure/key-vault/)にコンテナーがない場合、次のコマンドを使用して Azure CLI で 1 つ作成します。
+[Azure キー コンテナー](../key-vault/key-vault-overview.md)にコンテナーがない場合、次のコマンドを使用して Azure CLI で 1 つ作成します。
 
 `RES_GROUP` 変数をキー コンテナーが作成される既存のリソース グループの名前で、また `ACR_NAME` をコンテナー レジストリの名前で更新します。 `AKV_NAME` で新しいキー コンテナーの名前を指定します。 コンテナー名は、3 ～ 24 文字の英数字で、Azure 内で一意である必要があります。名前の先頭には英字、末尾には英字または数字を使用する必要があります。また、ハイフンを連続させることはできません。
 

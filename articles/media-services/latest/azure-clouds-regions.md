@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 02/17/2019
 ms.author: juliako
-ms.openlocfilehash: a5a4205c97e4db25d5d0a92472610364d912b278
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 4f8851248c395a1f03c46490c8eb5e71221dd133
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963439"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549903"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Azure Media Services v3 が存在するクラウドとリージョン
 

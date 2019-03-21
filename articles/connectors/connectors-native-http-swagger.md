@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: bb89c76fb19bff74d39d919c8d2e65d430cb0566
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: de61443da41f1015b2890e9052f38e25d3bed86a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817752"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551978"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントを呼び出す
 
@@ -60,7 +60,7 @@ Azure Storage で Swagger ドキュメントを作成、構成し、格納する
 
 3. Swagger ファイルを BLOB にアップロードします。 
 
-   この手順は、[Azure Portal](https://portal.azure.com) から、または [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールから実行できます。
+   この手順は、[Azure Portal](https://portal.azure.com) から、または [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールから実行できます。
 
 4. Azure BLOB ストレージ内のドキュメントへの HTTPS リンクを参照します  
 

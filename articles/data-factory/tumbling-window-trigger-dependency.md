@@ -3,22 +3,21 @@ title: Azure Data Factory でのタンブリング ウィンドウ トリガー�
 description: Azure Data Factory でタンブリング ウィンドウ トリガーの依存関係を作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: douglasl
-ms.openlocfilehash: c51c1056869cbd7741fae2ed1a554a7c794d1a39
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: f3a547f5b953262d7263d1be0897161cf4091a1d
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55966854"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57574391"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>タンブリング ウィンドウ トリガーの依存関係の作成
 
@@ -75,10 +74,10 @@ ms.locfileid: "55966854"
 
 次の表に、タンブリング ウィンドウの依存関係を定義するために必要な属性の一覧を示します。
 
-| **プロパティ名** | **説明**  | **種類** | **必須** |
+| **プロパティ名** | **説明**  | **Type** | **必須** |
 |---|---|---|---|
 | トリガー  | 既存のすべてのタンブリング ウィンドウ トリガーがこのドロップダウンに表示されます。 依存関係を設定するトリガーを選択します。  | TumblingWindowTrigger | はい |
-| オフセット | 依存関係トリガーのオフセット。 時間範囲形式で値を指定します。正と負の両方のオフセットを指定できます。 このパラメーターは、トリガーが自己に依存する場合は必須であり、それ以外の場合は省略可能です。 自己依存関係は、常に負のオフセットにする必要があります。 | Timespan | 自己依存関係:はい その他:いいえ  |
+| offset | 依存関係トリガーのオフセット。 時間範囲形式で値を指定します。正と負の両方のオフセットを指定できます。 このパラメーターは、トリガーが自己に依存する場合は必須であり、それ以外の場合は省略可能です。 自己依存関係は、常に負のオフセットにする必要があります。 | Timespan | 自己依存関係:はい その他:いいえ  |
 | ウィンドウ サイズ | 依存関係のタンブリング ウィンドウのサイズ。 時間範囲形式で値を指定します。 このパラメーターは省略可能です。 | Timespan | いいえ   |
 |||||
 
