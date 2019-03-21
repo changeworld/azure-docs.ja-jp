@@ -4,18 +4,20 @@ description: Resource Manager テンプレートを使用して Windows 仮想�
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 2b032405a2fb3b8b608228d8a739bf91dcf439ef
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 64fb3acf9b134b7188d316633bc663d7dd9b14b8
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895943"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760224"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシン スケール セットのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Monitor [Microsoft Azure 診断 (WAD) 拡張機能](diagnostics-extension-overview.md)を使用すると、仮想マシン、クラウド サービス、または Azure Service Fabric クラスターの一部として実行されているゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、以前にリンクされた記事に記載されている多くの場所にテレメトリを送信できます。  
 
@@ -27,7 +29,7 @@ Resource Manager テンプレートを初めて利用する場合は、[テン�
 
 - サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) に登録する必要があります 
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) がインストールされている必要があります。[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用することもできます。 
+- [Azure PowerShell](/powershell/azure) がインストールされている必要があります。[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用することもできます。 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitor をデータ シンクとして設定する 
@@ -236,17 +238,17 @@ MSI 拡張機能の次のコードはまた、診断拡張機能および構成�
 Resource Manager テンプレートをデプロイするために、Azure PowerShell を使用します。  
 
 1. PowerShell を起動します。 
-1. `Login-AzureRmAccount` を使用して Azure にサインインします。
-1. `Get-AzureRmSubscription` を使用して、サブスクリプションの一覧を取得します。
+1. `Login-AzAccount` を使用して Azure にサインインします。
+1. `Get-AzSubscription` を使用して、サブスクリプションの一覧を取得します。
 1. 作成するサブスクリプションを設定するか、仮想マシンを更新します。 
 
    ```PowerShell
-   Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>" 
+   Select-AzSubscription -SubscriptionName "<Name of the subscription>" 
    ```
 1. デプロイされている VM の新しいリソース グループを作成します。 次のコマンドを実行します。 
 
    ```PowerShell
-    New-AzureRmResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
+    New-AzResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
    ```
 
    > [!NOTE]  
@@ -258,7 +260,7 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
    > 既存のスケール セットを更新する場合は、**-Mode Incremental** をコマンドの末尾に追加します。 
  
    ```PowerShell
-   New-AzureRmResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
+   New-AzResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
    ```
 
 1. デプロイが成功したら、Azure portal に仮想マシン スケール セットが表示されるようになります。 これによって、メトリックが Azure Monitor に出力されます。 

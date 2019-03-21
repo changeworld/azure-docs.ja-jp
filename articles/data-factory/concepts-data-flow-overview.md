@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: ac07c0207f9463107b0c354bcd690cd9cc3981f4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5064f47444b4ca6d9194ed66144938e6e3d51a4e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56212708"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732367"
 ---
 # <a name="what-are-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory の Mapping Data Flow について
 

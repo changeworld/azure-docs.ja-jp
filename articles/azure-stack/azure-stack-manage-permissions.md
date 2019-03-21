@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: f20cd877e4cc53490016d251c5bdb343ab0cb4b0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: acec53a99fd6d809dc01ce12b02987d66579b0c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250335"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118291"
 ---
 # <a name="manage-role-based-access-control"></a>ロールベースのアクセス制御の管理
 
@@ -41,8 +41,8 @@ Azure Stack のユーザーは、サブスクリプション、リソース グ�
 
 ## <a name="set-access-permissions-for-a-universal-group"></a>ユニバーサル グループのアクセス許可を設定する 
 
-> [!Note]  
-Active Directory フェデレーション サービス (AD FS) にのみ適用されます。
+> [!Note]
+> Active Directory フェデレーション サービス (AD FS) にのみ適用されます。
 
 1. 管理するリソースへの所有者アクセス許可があるアカウントでサインインします。
 2. リソースのブレードで、**[アクセス]** アイコン ![](media/azure-stack-manage-permissions/image1.png) をクリックします。

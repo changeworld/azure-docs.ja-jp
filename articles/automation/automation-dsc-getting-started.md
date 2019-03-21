@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 19e1721a638dfc750938e09e1626c4e291367723
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 234d59f9d625af6d0309b2995cc734fad6028b1e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432447"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767041"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration の使用開始
 
@@ -157,7 +157,6 @@ Azure Automation State Configuration を使用すると、Azure VM (クラシッ
    ![Screenshot of the Registration blade](./media/automation-dsc-getting-started/RegisterVM.png)
 
    指定したノード構成は、**[構成モードの頻度]** に指定された間隔で VM に適用されます。また、VM は、**[更新頻度]** に指定された間隔でノード構成に対する更新をチェックします。 これらの値の使用方法の詳細については、「[ローカル構成マネージャーの構成](https://msdn.microsoft.com/PowerShell/DSC/metaConfig)」を参照してください。
-1. **[Azure VM の追加]** ブレードで、**[作成]** をクリックします。
 
 Azure によって VM のオンボード処理が開始されます。 処理が完了すると、Automation アカウントの **[状態の構成 (DSC)]** ページの **[ノード]** タブに VM が表示されます。
 

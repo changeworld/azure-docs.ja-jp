@@ -10,12 +10,12 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: 8f087e07bbf5033698b18b4349c4d13e862a1555
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ba66c96f9129b253fc5897c3a2eaaefb53056cea
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223342"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548730"
 ---
 # <a name="tutorial-anomaly-detection-with-java-application"></a>チュートリアル:Java アプリケーションによる異常検出
 
@@ -28,7 +28,7 @@ ms.locfileid: "55223342"
 
 ### <a name="platform-requirements"></a>プラットフォームの要件
 
-このチュートリアルは、[IntelliJ IDEA](https://www.jetbrains.com/idea) を使用して開発されています。 [Java Development Kit (JDK)](https://aka.ms/azure-jdks) バージョン 1.8 以降と、最新の [Apache Maven](http://maven.apache.org/) ビルド ツールをインストールする必要もあります。
+このチュートリアルは、[IntelliJ IDEA](https://www.jetbrains.com/idea) を使用して開発されています。 [Java Development Kit (JDK)](https://aka.ms/azure-jdks) バージョン 1.8 以降と、最新の [Apache Maven](https://maven.apache.org/) ビルド ツールをインストールする必要もあります。
 
 ### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>異常検出にサブスクライブしてサブスクリプション キーを取得する 
 

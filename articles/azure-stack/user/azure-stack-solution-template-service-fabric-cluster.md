@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: a8897288e19a7628dbd1cc2c022de4db2a111393
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d0d725a57c27fe30215d77a596f6fb3b8c8720d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248046"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098010"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Service Fabric クラスターを Azure Stack にデプロイする
 
@@ -37,17 +37,17 @@ Service Fabric クラスターをデプロイするには、次のものが必�
    これは、Service Fabric のデプロイ時に KeyVault に追加する X.509 サーバー証明書です。 
    - この証明書の **CN** が、作成する Service Fabric クラスターの完全修飾ドメイン名 (FQDN) と一致している必要があります。 
    - 公開キーと秘密キーの両方が必要なため、証明書の形式は PFX である必要があります。 
-   このサーバー側証明書の作成に関する[要件](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)を参照してください。
+     このサーバー側証明書の作成に関する[要件](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)を参照してください。
 
-    > [!NOTE]  
-    > テスト用途であれば、x.509 サーバー証明書の代わりに自己署名証明書を使用することができます。 自己署名証明書は、クラスターの FQDN と一致している必要はありません。
+     > [!NOTE]  
+     > テスト用途であれば、x.509 サーバー証明書の代わりに自己署名証明書を使用することができます。 自己署名証明書は、クラスターの FQDN と一致している必要はありません。
 
-1.  **管理用クライアント証明書** これは、Service Fabric クラスターに対して認証を行うクライアントが使用する証明書で、自己署名されたものでもかまいません。 このクライアント証明書の作成に関する[要件](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)を参照してください。
+1. **管理用クライアント証明書** これは、Service Fabric クラスターに対して認証を行うクライアントが使用する証明書で、自己署名されたものでもかまいません。 このクライアント証明書の作成に関する[要件](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)を参照してください。
 
-1.  **Azure Stack Marketplace に次の項目が用意されている必要があります。**
-     - **Windows Server 2016** - テンプレートで Windows Server 2016 イメージを使用してクラスターを作成します。  
-     - **カスタム スクリプト拡張機能** - Microsoft の仮想マシン拡張機能。  
-     - **PowerShell Desired State Configuration** - Microsoft の仮想マシン拡張機能。
+1. **Azure Stack Marketplace に次の項目が用意されている必要があります。**
+    - **Windows Server 2016** - テンプレートで Windows Server 2016 イメージを使用してクラスターを作成します。  
+    - **カスタム スクリプト拡張機能** - Microsoft の仮想マシン拡張機能。  
+    - **PowerShell Desired State Configuration** - Microsoft の仮想マシン拡張機能。
 
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault にシークレットを追加する

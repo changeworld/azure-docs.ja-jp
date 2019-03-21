@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 00468ca62e55823b4706fc52d9793f676aebd368
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 3a6fa631fdf3436dc3a76817d2c0043b0407b2ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312856"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121555"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>サービス プリンシパルを作成してアプリケーションに Azure Stack リソースへのアクセスを付与する
 
@@ -56,8 +56,8 @@ Azure Stack に Active Directory を構成した方法によって、サービ�
 
 Azure Stack で Azure AD を ID ストアとして使用する場合、Azure Portal を使って、Azure と同じ手順を利用してサービス プリンシパルを作成できます。
 
->[!NOTE]
-サービス プリンシパルの作成を開始する前に、[必要な Azure AD のアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)があることを確認してください。
+> [!NOTE]
+> サービス プリンシパルの作成を開始する前に、[必要な Azure AD のアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)があることを確認してください。
 
 ### <a name="create-service-principal"></a>サービス プリンシパルの作成
 
@@ -75,15 +75,15 @@ Azure Stack で Azure AD を ID ストアとして使用する場合、Azure Por
 
 2. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。 サンプル アプリケーション内にあるアプリケーションでは、**アプリケーション ID** を参照するときに**クライアント ID** を使用します。
 
-     ![アプリケーションのアプリケーション ID](./media/azure-stack-create-service-principal/image12.png)
+     ![アプリケーションのアプリケーション ID](./media/azure-stack-create-service-principals/image12.png)
 3. 認証キーを生成するには、**[キー]** を選択します。
 
 4. キーの説明を入力し、キーの期間を指定します。 操作が完了したら、**[保存]** をクリックします。
 
->[!IMPORTANT]
-キーを保存した後、キーの**値**が表示されます。 後からキーを取得することはできないので、この値をメモしてください。 アプリケーションが取得できる場所にキー値を保存します。
+> [!IMPORTANT]
+> キーを保存した後、キーの**値**が表示されます。 後からキーを取得することはできないので、この値をメモしてください。 アプリケーションが取得できる場所にキー値を保存します。
 
-![保存されているキーに対するキー値の警告です。](./media/azure-stack-create-service-principal/image15.png)
+![保存されているキーに対するキー値の警告です。](./media/azure-stack-create-service-principals/image15.png)
 
 最後の手順として、[アプリケーションへのロールの割り当て](azure-stack-create-service-principals.md)を行います。
 
@@ -101,8 +101,8 @@ AD FS を ID ストアとして使用して Azure Stack をデプロイした場
 
 サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 アプリケーションにとって適切なアクセス許可を表すのはどのロールであるかを判断します。 利用可能なロールについては、「[RBAC: 組み込みロール](../../role-based-access-control/built-in-roles.md)」を参照してください。
 
->[!NOTE]
-ロールのスコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリがリソース グループに対するリーダー ロールを備えている場合、そのアプリはリソース グループ内の任意のリソースを読み取ることができます。
+> [!NOTE]
+> ロールのスコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリがリソース グループに対するリーダー ロールを備えている場合、そのアプリはリソース グループ内の任意のリソースを読み取ることができます。
 
 次の手順を使用して、サービス プリンシパルにロールを割り当てます。
 
@@ -110,7 +110,7 @@ AD FS を ID ストアとして使用して Azure Stack をデプロイした場
 
 2. アプリケーションを割り当てるサブスクリプションを選択します。 この例では、サブスクリプションは、Visual Studio Enterprise です。
 
-     ![割り当てる Visual Studio Enterprise サブスクリプションを選択する](./media/azure-stack-create-service-principal/image16.png)
+     ![割り当てる Visual Studio Enterprise サブスクリプションを選択する](./media/azure-stack-create-service-principals/image16.png)
 
 3. サブスクリプションの **[アクセス制御 (IAM)]** を選択します。
 

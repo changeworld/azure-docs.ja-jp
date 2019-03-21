@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f5d54f90c0b53105953726b1f26dab98192b40a6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 24a35b387a8b47d44f742303ddde0a0e8fb47fe6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752821"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833800"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Azure Spatial Anchors の概要
 
@@ -30,7 +30,7 @@ Azure Spatial Anchors へようこそ。 Azure Spatial Anchors は、空間を�
 
 - [道案内](concepts/anchor-relationships-way-finding.md)。 開発者は、空間アンカーをつなげて、それらの間にリレーションシップを作成することもできます。 たとえば、あるタスクを完了するためにユーザーが対話する必要がある 2 つまたは 3 つの関心ポイントがあるエクスペリエンスをアプリに含めることができます。 これらの関心ポイントをつなげるように作成できます。 その後、アプリでは、ユーザーがマルチステップ タスクを完了すると、現在のアンカーの近くにあるアンカーが要求され、タスクの次の手順にユーザーを案内することができます。
 
-- [仮想コンテンツの現実世界での永続化](concepts/create-locate-anchors-unity.md#creating-a-cloud-spatial-anchor)。 あるユーザーが仮想カレンダーを会議室の壁に配置し、他のユーザーがフォン アプリまたは HoloLens デバイスを使用してそれを見ることができるようにするアプリが可能です。 労働環境では、ユーザーは、サポートされているデバイス カメラを機械に向けることで、コンテキスト情報を受け取ることができます。
+- [仮想コンテンツの現実世界での永続化](concepts/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor)。 あるユーザーが仮想カレンダーを会議室の壁に配置し、他のユーザーがフォン アプリまたは HoloLens デバイスを使用してそれを見ることができるようにするアプリが可能です。 労働環境では、ユーザーは、サポートされているデバイス カメラを機械に向けることで、コンテキスト情報を受け取ることができます。
 
 Azure Spatial Anchors は、サポート対象のデバイス プラットフォーム用のマネージド サービスとクライアント SDK で構成されています。 以下のセクションで、Azure Spatial Anchors を使用するアプリのビルドの開始に関する情報を提供します。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: a6607fa91d9c8556881a5532527a63b6f21ad4d1
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f6f4858740288facb1e206eed3a8cd4ee1854daa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977458"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111448"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>拇印ではなく証明書共通名を使用する Service Fabric クラスターをデプロイする
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  証明書共通名を使用するクラスターにより、証明書の管理が大幅に単純化されます。 この記事では、Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するようにデプロイする方法について説明します。
@@ -158,36 +158,36 @@ Write-Host "Common Name              :"  $CommName
           },
     ```
 
-4.  **Microsoft.ServiceFabric/clusters** リソースで、API バージョンを "2018-02-01" に更新します。  次の例のように、**certificateCommonNames** の設定 (**commonNames** プロパティを含む) の追加と、**certificate** の設定 (thumbprint プロパティを含む) の削除も行います。
-    ```json
-    {
-        "apiVersion": "2018-02-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
-        ],
-        "properties": {
-        "addonFeatures": [
-            "DnsService",
-            "RepairManager"
-        ],        
-        "certificateCommonNames": {
-            "commonNames": [
-            {
-                "certificateCommonName": "[parameters('certificateCommonName')]",
-                "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprint')]"
-            }
-            ],
-            "x509StoreName": "[parameters('certificateStoreValue')]"
-        },
-        ...
-    ```
-> [!NOTE]
-> 'certificateIssuerThumbprint' フィールドには、想定される証明書の発行者を、特定のサブジェクトの共通名を使用して指定できます。 このフィールドでは、SHA1 サムプリントのコンマ区切りの列挙を使用できます。 これは、証明書の検証の強化であることに注意してください。発行者が指定されていないか空の場合でも、証明書チェーンの構築が可能であり、検証者によって信頼されているルートに最終的に到達すれば、証明書は認証用に受け入れられます。 発行者が指定されている場合は、証明書の直接的な発行者のサムプリントがこのフィールドに指定されている値のいずれかと一致すれば、ルートが信頼されているかどうかに関係なく、証明書は受け入れられます。 PKI では、同じサブジェクトの証明書が異なる証明機関を使用して発行される場合があるため、特定のサブジェクトの想定される発行者のサムプリントをすべて指定することが重要であることに注意してください。
->
-> 発行者の指定はベスト プラクティスとみなされています。省略しても、信頼されたルートに到達する証明書チェーンによって機能は続行されますが、この動作には制限があり、近い将来、段階的に廃止される可能性があります。 さらに、Azure にデプロイされたクラスターで、プライベート PKI によって発行され、サブジェクトによって宣言されている X509 証明書を使用してセキュリティ保護されているクラスターでは、PKI の証明書ポリシーの検出、使用、およびアクセスを実行できなければ、(クラスター対サービス間通信での) Azure Service Fabric サービスによる検証を実行できない可能性があることに注意してください。 
+4. **Microsoft.ServiceFabric/clusters** リソースで、API バージョンを "2018-02-01" に更新します。  次の例のように、**certificateCommonNames** の設定 (**commonNames** プロパティを含む) の追加と、**certificate** の設定 (thumbprint プロパティを含む) の削除も行います。
+   ```json
+   {
+       "apiVersion": "2018-02-01",
+       "type": "Microsoft.ServiceFabric/clusters",
+       "name": "[parameters('clusterName')]",
+       "location": "[parameters('clusterLocation')]",
+       "dependsOn": [
+       "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
+       ],
+       "properties": {
+       "addonFeatures": [
+           "DnsService",
+           "RepairManager"
+       ],        
+       "certificateCommonNames": {
+           "commonNames": [
+           {
+               "certificateCommonName": "[parameters('certificateCommonName')]",
+               "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprint')]"
+           }
+           ],
+           "x509StoreName": "[parameters('certificateStoreValue')]"
+       },
+       ...
+   ```
+   > [!NOTE]
+   > 'certificateIssuerThumbprint' フィールドには、想定される証明書の発行者を、特定のサブジェクトの共通名を使用して指定できます。 このフィールドでは、SHA1 サムプリントのコンマ区切りの列挙を使用できます。 これは、証明書の検証の強化であることに注意してください。発行者が指定されていないか空の場合でも、証明書チェーンの構築が可能であり、検証者によって信頼されているルートに最終的に到達すれば、証明書は認証用に受け入れられます。 発行者が指定されている場合は、証明書の直接的な発行者のサムプリントがこのフィールドに指定されている値のいずれかと一致すれば、ルートが信頼されているかどうかに関係なく、証明書は受け入れられます。 PKI では、同じサブジェクトの証明書が異なる証明機関を使用して発行される場合があるため、特定のサブジェクトの想定される発行者のサムプリントをすべて指定することが重要であることに注意してください。
+   >
+   > 発行者の指定はベスト プラクティスとみなされています。省略しても、信頼されたルートに到達する証明書チェーンによって機能は続行されますが、この動作には制限があり、近い将来、段階的に廃止される可能性があります。 さらに、Azure にデプロイされたクラスターで、プライベート PKI によって発行され、サブジェクトによって宣言されている X509 証明書を使用してセキュリティ保護されているクラスターでは、PKI の証明書ポリシーの検出、使用、およびアクセスを実行できなければ、(クラスター対サービス間通信での) Azure Service Fabric サービスによる検証を実行できない可能性があることに注意してください。 
 
 ## <a name="deploy-the-updated-template"></a>更新したテンプレートをデプロイする
 変更を加えた後、更新したテンプレートを再度デプロイします。

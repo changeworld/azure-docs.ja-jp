@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b797cc6e1c0ef0df61c4d1384d2beb12c37112ba
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: a4757be00a3633f56aed52dd7af22923e49b0b62
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456862"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102385"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>認証アプリを使用するようにセキュリティ情報 (プレビュー) を設定する
 次の手順に従って、2 要素認証とパスワードのリセット メソッドを追加できます。 これを初回に設定したら、**[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
@@ -36,11 +36,11 @@ ms.locfileid: "56456862"
 
 1. 職場または学校アカウントでサインインし、 https://myprofile.microsoft.com/ ページに移動します。
 
-    ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile.png)
+    ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile-page.png)
 
-2. 左側のナビゲーション ウィンドウから、または **[セキュリティ情報]** ブロックのリンクから、**[セキュリティ情報]** を選択し、次に **[セキュリティ情報]** ページから **[メソッドの追加]** を選択します。
+2. 左側のナビゲーション ウィンドウから、または **[セキュリティ情報]** ブロックのリンクから **[セキュリティ情報]** を選択した後、**[セキュリティ情報]** ページで **[メソッドの追加]** を選択します。
 
-    ![[メソッドの追加] オプションが強調表示されている [セキュリティ情報] ページ](media/security-info/securityinfo-myprofile-addmethod.png)
+    ![[メソッドの追加] オプションが強調表示されている [セキュリティ情報] ページ](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. **[メソッドの追加]** ページで、ドロップダウン リストから **[Authenticator アプリ]** を選択して、**[追加]** を選択します。
 
@@ -52,10 +52,10 @@ ms.locfileid: "56456862"
 
     ![[Start by getting the app]\(アプリを取得して起動\) ページ](media/security-info/securityinfo-myprofile-getauthapp.png)
 
-    >[!Note]
-    >Microsoft Authenticator アプリ以外の認証アプリを使用する場合は、**[別の認証アプリを使用します]** リンクを選択します。
-    
-    >組織で、認証アプリのほかに別の方法を選択できる場合は、**[I want to set up a different method]\(別の方法を設定します\)** リンクを選択できます。
+   > [!Note]
+   > Microsoft Authenticator アプリ以外の認証アプリを使用する場合は、**[別の認証アプリを使用します]** リンクを選択します。
+   > 
+   > 組織で、認証アプリのほかに別の方法を選択できる場合は、**[I want to set up a different method]\(別の方法を設定します\)** リンクを選択できます。
 
 5. モバイル デバイスでの Microsoft Authenticator アプリの設定中に、**[アカウントのセットアップ]** ページに留まります。
 
@@ -81,9 +81,9 @@ ms.locfileid: "56456862"
 
 8. Microsoft Authenticator アプリで通知を承認し、**[次へ]** を選択します。
 
-    ![アプリとアカウントの接続の成功通知](media/security-info/securityinfo-myprofile-successauthapp.png)
+     ![アプリとアカウントの接続の成功通知](media/security-info/securityinfo-myprofile-successauthapp.png)
 
-    2 段階認証またはパスワード リセットを使用するときに、既定で Microsoft Authenticator アプリを使用して本人確認をするようにセキュリティ情報が更新されます。
+     2 段階認証またはパスワード リセットを使用するときに、既定で Microsoft Authenticator アプリを使用して本人確認をするようにセキュリティ情報が更新されます。
 
 ## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>セキュリティ情報メソッドから認証アプリを削除する
 セキュリティ情報メソッドとして認証 アプリを使用しなくなった場合は、**[セキュリティ情報]** ページから削除できます。 これは、Microsoft Authenticator アプリだけでなく、すべての認証アプリに対して機能します。 アプリの削除後、モバイル デバイスの認証アプリに移動し、アカウントを削除する必要があります。

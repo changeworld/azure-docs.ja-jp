@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e947b71fe6bb9e6bd884b8b2dd0397a63bea2a95
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8b5ec711f0e43d9d29d962d43ed8b1d86338db87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203643"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>チュートリアル:Azure Active Directory と xMatters OnDemand の統合
 
@@ -114,6 +114,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
     ![Configure single sign-on](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
     a. **[識別子]** ボックスに、次のパターンで URL を入力します。
+
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -123,6 +124,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
     | `https://<companyname>.xmatters.com.au/`|
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au`|
@@ -164,7 +166,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
     c. **[Single Sign On URL]\(シングル サインオン URL\)** テキストボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure portal からコピーした**サインアウト URL** を **[Single Logout URL]\(シングル ログアウト URL\)** テキストボックスに貼り付けます。
+    d. Azure portal からコピーした**サインアウト URL** を **[Single Logout URL]\(シングル ログアウト URL\)** テキストボックスに貼り付けます。
 
     e. [会社の詳細] ページで、上部にある **[変更の保存]** をクリックします。
 
@@ -199,7 +201,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
 
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>xMatters OnDemand テスト ユーザーの作成
 
@@ -209,9 +211,9 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
 1. **XMatters OnDemand** テナントにログインします。
 
-1.  **[Users]\(ユーザー\)** タブをクリックし、**[Add User]\(ユーザーの追加\)** をクリックします。
+1. **[Users]\(ユーザー\)** タブをクリックし、**[Add User]\(ユーザーの追加\)** をクリックします。
 
-    ![ユーザー](./media/xmatters-ondemand-tutorial/IC781048.png "Users")
+   ![ユーザー](./media/xmatters-ondemand-tutorial/IC781048.png "Users")
 
 1. **[ユーザーの追加]** セクションで、次の手順に従います。
 
@@ -223,7 +225,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
     c. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (この例では Britta)。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では Simon)。
+    d. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では Simon)。
 
     e. **[Site]\(サイト\)** ボックスに、プロビジョニングする有効な Azure AD アカウントの有効なサイトを入力します。
 

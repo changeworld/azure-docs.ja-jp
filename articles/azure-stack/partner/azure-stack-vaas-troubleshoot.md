@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a6fea6962c5e8864398cd80635d997407cf1d22e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4b212ae884b184ffc60cdc0b3a2181a59efa3904
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250301"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760870"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>サービスとしての検証のトラブルシューティング
 
@@ -39,7 +39,7 @@ ms.locfileid: "55250301"
 
 ### <a name="agent-process-on-machine-was-shut-down-while-executing-test-what-to-expect"></a>テストの実行中にコンピューター上のエージェント プロセスがシャットダウンされた。 予期される事柄
 
-コンピューターの再起動、プロセスの強制終了 (エージェント ウィンドウでの Ctrl + C は正常なシャットダウンとみなされます) など、正常でない方法でエージェント プロセスがシャットダウンされた場合、実行中だったテストは **running** と表示されたままになります。 エージェントが再起動された場合、エージェントによってテストの状態が **canceled** に更新されます。 エージェントが再起動されない場合、テストは **running** と表示され、テストを手動でキャンセルする必要があります。
+コンピューターの再起動、プロセスの強制終了 (エージェント ウィンドウでの Ctrl + C は正常なシャットダウンとみなされます) など、正常でない方法でエージェント プロセスがシャットダウンされた場合、実行中だったテストは **running** と表示されたままになります。 エージェントが再起動される場合、エージェントはテストの状態を **canceled** に更新します。 エージェントが再起動されない場合、テストは **running** と表示され、テストを手動でキャンセルする必要があります。
 
 > [!Note]
 > ワークフロー内のテストは、連続して実行されるようにスケジュールされます。 **保留中**のテストは、同じワークフロー内の **running** 状態のテストが完了するまで実行されません。
@@ -101,7 +101,7 @@ ms.locfileid: "55250301"
 
     | フィールド  | 値  |
     |---------|---------|
-    | 発行元 | MicrosoftWindowsServer |
+    | Publisher | MicrosoftWindowsServer |
     | プラン | WindowsServer |
     | [OS Type]\(OS の種類\) |  Windows |
     | SKU | 2012-R2-Datacenter |
@@ -113,7 +113,7 @@ ms.locfileid: "55250301"
 
 全 5 つの VM イメージのプロパティは次のとおりです。
 
-| 発行元  | プラン  | [OS Type]\(OS の種類\) | SKU | Version | OS ディスク BLOB URI |
+| Publisher  | プラン  | [OS Type]\(OS の種類\) | SKU | Version | OS ディスク BLOB URI |
 |---------|---------|---------|---------|---------|---------|
 | MicrosoftWindowsServer| WindowsServer |  Windows | 2012-R2-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
 | MicrosoftWindowsServer | WindowsServer |  Windows | 2016-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterFullBYOL.vhd |

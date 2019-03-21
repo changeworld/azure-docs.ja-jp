@@ -3,7 +3,7 @@ title: Azure VM の起動が Windows Update で停止する | Microsoft Docs
 description: Windows Update で Azure VM の起動が停止しているときに問題のトラブルシューティングを行う方法について説明します。
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genli
+author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: d56e96ca1fbc96261f6f526c792b0a53c74718ef
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 7c516781f7d0c80dc7185585a29278820ab9a46e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063662"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777568"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Azure VM の起動が Windows Update で停止する
 
@@ -27,7 +27,7 @@ ms.locfileid: "54063662"
 > [!NOTE] 
 > Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用について説明します。 新しいデプロイでは、クラシック デプロイ モデルではなく、このモデルを使用することをお勧めします。
 
- ## <a name="symptom"></a>症状
+## <a name="symptom"></a>症状
 
  Windows VM が起動しません。 [[ブート診断]](../troubleshooting/boot-diagnostics.md) ウィンドウでスクリーンショットを調べると、起動が更新プロセスで停止していることがわかります。 表示されるメッセージの例を次に示します。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8f682e0795f8f732805e817e4498cc486bbb2c6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6376a479d2e6969505310de0e8e73e74738a04c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178466"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881328"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>チュートリアル:Azure Active Directory と SCC LifeCycle の統合
 
@@ -117,6 +117,7 @@ SCC LifeCycle で Azure AD のシングル サインオンを構成してテス�
     a. **[サインオン URL]** ボックスに、`https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|--|
     | `https://bs1.scc.com/<entity>`|
@@ -135,8 +136,8 @@ SCC LifeCycle で Azure AD のシングル サインオンを構成してテス�
 
 1. **SCC LifeCycle** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [SCC LifeCycle サポート チーム](mailto:lifecycle.support@scc.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
-  >[!NOTE]
-  >SCC LifeCycle サポート チームがシングル サインオンを有効にする必要があります。
+   >[!NOTE]
+   >SCC LifeCycle サポート チームがシングル サインオンを有効にする必要があります。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -171,7 +172,7 @@ SCC LifeCycle で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-an-scc-lifecycle-test-user"></a>SCC LifeCycle テスト ユーザーの作成
 

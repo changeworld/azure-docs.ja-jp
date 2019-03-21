@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: ebc0f93055a014888d01fa9bffc7702b99380234
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 553e87cacf407da2333da3105647719679feaabf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417467"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544207"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -54,7 +54,7 @@ ms.locfileid: "56417467"
     Jane|Doe
     ```
 
-1. **adfv2tutorial** という名前のコンテナーを作成し、そこに inputEmp.txt ファイルをアップロードします。 この作業は、[Azure Storage Explorer](http://storageexplorer.com/) をはじめとするさまざまなツールを使用して実行できます。
+1. **adfv2tutorial** という名前のコンテナーを作成し、そこに inputEmp.txt ファイルをアップロードします。 この作業は、[Azure Storage Explorer](https://storageexplorer.com/) をはじめとするさまざまなツールを使用して実行できます。
 
 #### <a name="create-a-sink-sql-table"></a>シンク SQL テーブルを作成する
 
@@ -131,7 +131,7 @@ ms.locfileid: "56417467"
 
     ![Azure Storage の構成](./media/tutorial-copy-data-tool/configure-azure-storage.png)
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 新しく作成したリンクされたサービスをソースとして選択し、**[次へ]** をクリックします。
+    d. 新しく作成したリンクされたサービスをソースとして選択し、**[次へ]** をクリックします。
 
     ![ソースのリンクされたサービスの選択](./media/tutorial-copy-data-tool/select-source-linked-service.png)
 
@@ -160,7 +160,7 @@ ms.locfileid: "56417467"
 
     ![Azure SQL DB の構成](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 新しく作成したリンクされたサービスをシンクとして選択し、**[次へ]** をクリックします。
+    d. 新しく作成したリンクされたサービスをシンクとして選択し、**[次へ]** をクリックします。
 
     ![シンクのリンクされたサービスの選択](./media/tutorial-copy-data-tool/select-sink-linked-service.png)
 

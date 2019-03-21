@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: shlo
-ms.openlocfilehash: 53540128b5a9a1e2690179a35f26a9a82c6cb584
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: d2f892941f9d37dd3d74afe17d7952b404dc709f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446955"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551638"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合は、成功したコピー操作の詳細 (書き込まれたデータの量など) を成功電子メールで送信します。 コピー アクティビティが失敗した場合は、コピー失敗の詳細 (エラー メッセージなど) を失敗電子メールで送信します。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     John|Doe
     Jane|Doe
     ```
-2. [Azure Storage Explorer](http://storageexplorer.com/) などのツールを使用して **adfv2branch** コンテナーを作成し、このコンテナーに **input.txt** ファイルをアップロードします。
+2. [Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用して **adfv2branch** コンテナーを作成し、このコンテナーに **input.txt** ファイルをアップロードします。
 
 ## <a name="create-visual-studio-project"></a>Visual Studio プロジェクトの作成
 

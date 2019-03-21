@@ -8,22 +8,24 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 81f9db7e90e2cef85d41561cc677db3d6422ef45
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 1eab0be59de90ad68cbf9601b7e2200e640875f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079870"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58178069"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents スキーマを Event Grid で使用する
 
-Azure Event Grid では、[既定のイベント スキーマ](event-schema.md)に加えて、[CloudEvents JSON スキーマ](https://github.com/cloudevents/spec/blob/master/json-format.md)内のイベントをネイティブ サポートしています。 [CloudEvents](http://cloudevents.io/) は、イベント データを記述するための[オープンな仕様](https://github.com/cloudevents/spec/blob/master/spec.md)です。
+Azure Event Grid では、[既定のイベント スキーマ](event-schema.md)に加えて、[CloudEvents JSON スキーマ](https://github.com/cloudevents/spec/blob/master/json-format.md)内のイベントをネイティブ サポートしています。 [CloudEvents](https://cloudevents.io/) は、イベント データを記述するための[オープンな仕様](https://github.com/cloudevents/spec/blob/master/spec.md)です。
 
 CloudEvents を使用すると、クラウド ベースのイベントを発行したり使用したりするための共通のイベント スキーマを提供し、相互運用性を簡略化することができます。 このスキーマを使用すれば、ツールを統一化したり、イベントのルーティングや処理方法を標準化したり、外部のイベント スキーマを共通の方法で逆シリアル化することができます。 共通のスキーマを使用することで、プラットフォーム間での作業をより簡単に統合できます。
 
 CloudEvents は、[Cloud Native Computing Foundation](https://www.cncf.io/) を通じ、複数の[コラボレーター](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (マイクロソフトを含む) によって構築されています。 現在、バージョン 0.1 が提供されています。
 
 この記事では、Event Grid で CloudEvents スキーマを使用する方法について説明します。
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 ## <a name="install-preview-feature"></a>プレビュー機能のインストール
 
@@ -71,7 +73,7 @@ CloudEvents v0.1 では、次のプロパティが使えます。
 | schemaURL          | URI      | "https://myschema.com"           | データ属性が準拠しているスキーマへのリンク (省略可能) | *使用されません*
 | contentType        | String   | "application/json"               | データ エンコード形式の説明 (省略可能)                       | *使用されません*
 | 拡張機能         | マップ      | { "extA": "vA", "extB", "vB" }  | 追加のメタデータ (省略可能)                                 | *使用されません*
-| data               | オブジェクト   | { "objA": "vA", "objB", "vB" }  | イベント ペイロード (省略可能)                                       | data
+| data               | Object   | { "objA": "vA", "objB", "vB" }  | イベント ペイロード (省略可能)                                       | data
 
 詳しくは、[CloudEvents の仕様](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes)をご覧ください。
 

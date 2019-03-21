@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 03/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 3a577c462eee40af9ea52cf6fef910a47088ea93
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 20018e8d97aa5af6dd12d74a10d951d788c0d306
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884992"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58171144"
 ---
 # <a name="add-analytics-to-the-bing-web-search-api"></a>Bing Web Search API に分析を追加する
 

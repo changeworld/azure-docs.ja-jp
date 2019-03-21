@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cb0822380fd375c111f8acb8b28132727a7c048
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8ee74c5caed04d2626fea27d3419d0b0d685d675
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188309"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840343"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>チュートリアル: Azure Active Directory と Insignia SAML SSO の統合
 
@@ -112,6 +112,7 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
     ![[Insignia SAML SSO のドメインと URL] のシングル サインオン情報](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_url.png)
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|
     | `https://<customername>.insigniails.com/ils` |
@@ -172,7 +173,7 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-an-insignia-saml-sso-test-user"></a>Insignia SAML SSO テスト ユーザーの作成
 

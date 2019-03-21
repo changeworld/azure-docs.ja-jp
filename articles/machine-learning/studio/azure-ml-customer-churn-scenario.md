@@ -5,17 +5,17 @@ description: Azure Machine Learning Studio を使用した顧客離れの分析�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: a00548bd5eb88c95ea83d492524e2ae10f274bba
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 320dd28ba22d7919e3f3afdcd8baa47780f363dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453989"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856119"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Azure Machine Learning Studio を使用して顧客離れを分析する
 ## <a name="overview"></a>概要
@@ -25,7 +25,7 @@ ms.locfileid: "56453989"
 この実験は、Serge Berger (Microsoft 主任データ サイエンティスト)、Roger Barga (Microsoft Azure Machine Learning Studio の前プロダクト マネージャー) によって開発およびテストされました。 Azure ドキュメント チームは、このホワイト ペーパーに情報と知識をご提供いただいたこの 2 人に感謝いたします。
 
 > [!NOTE]
-> この実験のデータは公開されていません。 顧客離れ分析の機械学習モデルを構築する方法の例については、「[Azure AI Gallery](http://gallery.azure.ai/)」(Azure AI ギャラリー) の「[Retail churn model template](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)」(小売業の顧客離れモデルのテンプレート) を参照してください
+> この実験のデータは公開されていません。 顧客離れ分析の機械学習モデルを構築する方法の例については、「[Azure AI Gallery](https://gallery.azure.ai/)」(Azure AI ギャラリー) の「[Retail churn model template](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1)」(小売業の顧客離れモデルのテンプレート) を参照してください
 > 
 > 
 
@@ -106,7 +106,7 @@ ms.locfileid: "56453989"
  
 
 > これはプライベート データであるため、モデルとデータを共有することはできません。
-> ただし、パブリックに使用可能なデータを使用する同様のモデルについては、「[Azure AI Gallery](http://gallery.azure.ai/)」(Azure AI ギャラリー) の「[Telco Customer Churn](http://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383)」(Telco の顧客離れ) にあるサンプル実験を参照してください。
+> ただし、パブリックに使用可能なデータを使用する同様のモデルについては、「[Azure AI Gallery](https://gallery.azure.ai/)」(Azure AI ギャラリー) の「[Telco Customer Churn](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383)」(Telco の顧客離れ) にあるサンプル実験を参照してください。
 > 
 > Cortana Intelligence Suite を使用して顧客離れ分析モデルを実装する方法の詳細については、上級プログラム マネージャーの Wee Hyong Tok による [こちらのビデオ](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) をご覧になることをお勧めします。 
 > 
@@ -213,13 +213,13 @@ Azure Machine Learning Studio にはほかにも便利な機能があり、元�
 ## <a name="references"></a>参照
 [1] 予測分析: 予想を超える、W. McKnight、Information Management、2011 年 7 月/8 月、p18 から 20。  
 
-[2] Wikipedia の記事: [正確性と精度](http://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] Wikipedia の記事: [正確性と精度](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [CRISP-DM 1.0:ステップ バイ ステップのデータ マイニングのガイド](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [CRISP-DM 1.0:ステップ バイ ステップのデータ マイニングのガイド](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
 [4] [ビッグ データ マーケティング:お客様に効率の向上と価値の促進を保証する](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Azure AI ギャラリー](http://gallery.azure.ai/)の「[Telco の顧客離れ](http://gallery.azure.ai/Experiment/Telco-Customer-Churn-5)」 
+[5] [Azure AI ギャラリー](https://gallery.azure.ai/)の「[Telco の顧客離れ](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5)」 
  
 
 ## <a name="appendix"></a>付録

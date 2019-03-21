@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 898f2eca0b6cc115f56bcae195c58c6eef190694
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 69b142cd46c006e562218c949fb450864589a661
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884870"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838071"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>webhook を使用して既存の問題管理システム用に正常性通知を構成する
 
@@ -59,7 +59,7 @@ https://app.azure.com/h/0DET-URB/bbadb3
 
 ## <a name="parsing-the-impacted-services-to-understand-the-full-scope-of-the-incident"></a>影響を受けるサービスを解析してインシデントの全体像を把握する
 サービス正常性アラートは、複数のリージョンとサービスにまたがる問題について通知することがあります。 完全な詳細情報を取得するには、`impactedServices` の値を解析する必要があります。
-この値に含まれているのは[エスケープされた JSON](http://json.org/) 文字列で、エスケープを解除すると、規則的に解析することができる別の JSON オブジェクトになります。
+この値に含まれているのは[エスケープされた JSON](https://json.org/) 文字列で、エスケープを解除すると、規則的に解析することができる別の JSON オブジェクトになります。
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}

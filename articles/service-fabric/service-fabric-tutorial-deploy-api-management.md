@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 015cbadef57a3e306fea4321db4b12c3a3918683
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4685c4213ad992e8d0fcffdf91a039cd04b426ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433783"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844209"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 
@@ -142,7 +142,7 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
 
 * **displayName** には、API の任意の名前を指定できます。 この記事では、「Service Fabric App」を使用します。
 * **name** は、"service-fabric-app" などの API に対する一意のわかりやすい名前です。 開発者ポータルとパブリッシャー ポータルには、この名前が表示されます。
-* **serviceUrl** は、API が実装されている HTTP サービスを参照します。 要求は、API Management によってこのアドレスに転送されます。 Service Fabric のバックエンドの場合、この URL の値は使用されません。 任意の値を入力できます。 この記事では、たとえば「 http://servicefabric」です。
+* **serviceUrl** は、API が実装されている HTTP サービスを参照します。 要求は、API Management によってこのアドレスに転送されます。 Service Fabric のバックエンドの場合、この URL の値は使用されません。 任意の値を入力できます。 この記事では、たとえば「<http://servicefabric>」です。
 * **path** が API Management サービスのベース URL に付加されます。 ベース URL は、API Management サービス インスタンスによってホストされるすべての API に共通です。 API Management では API がサフィックスによって識別されるため、サフィックスは、特定の発行者のすべての API で一意である必要があります。
 * **protocols** により、API へのアクセスに使用できるプロトコルが決まります。 この記事では、**http** と **https** を指定します。
 * **path** は API のサフィックスです。 この記事では、「myapp」を使用します。
@@ -177,7 +177,7 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
     <set-backend-service
         backend-id="servicefabric"
         sf-service-instance-name="service-name"
-        sf-resolve-condition="@(context.LastError?.Reason == 'BackendConnectionFailure')" />
+        sf-resolve-condition="@(context.LastError?.Reason == "BackendConnectionFailure")" />
   </inbound>
   <backend>
     <base/>
@@ -226,7 +226,7 @@ $b64 = [System.Convert]::ToBase64String($bytes);
     <set-backend-service
         backend-id="servicefabric"
         sf-service-instance-name="service-name"
-        sf-resolve-condition="@(context.LastError?.Reason == 'BackendConnectionFailure')" />
+        sf-resolve-condition="@(context.LastError?.Reason == "BackendConnectionFailure")" />
   </inbound>
   <backend>
     <base/>
@@ -285,7 +285,7 @@ az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 クラスターは、クラスター リソース自体に加え、その他の Azure リソースで構成されます。 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。
 
-Azure にログインして、クラスターを削除するサブスクリプション ID を選択します。  サブスクリプション ID は、[Azure Portal](http://portal.azure.com) にログインして確認できます。 リソース グループとそのグループのクラスター リソースすべてを削除するには、[Remove-AzureRMResourceGroup cmdlet](/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドレットを使用します。
+Azure にログインして、クラスターを削除するサブスクリプション ID を選択します。  サブスクリプション ID は、[Azure Portal](https://portal.azure.com) にログインして確認できます。 リソース グループとそのグループのクラスター リソースすべてを削除するには、[Remove-AzureRMResourceGroup cmdlet](/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドレットを使用します。
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"

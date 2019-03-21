@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: e6d2404e6f509c03d2d3965f34d8229de25df4b7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ee28bfebb6732c7bb3b689cf08b9b876adb74b1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114622"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104677"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイック スタート:Linux コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Linux エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。
@@ -37,7 +37,7 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
 2. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
- ![Security Center の概要][2]
+   ![Security Center の概要][2]
 
 3. Security Center メイン メニューの **[使用の開始]** を選択します。
 4. **[作業の開始]** タブを選択します。![[作業の開始]][3]
@@ -46,16 +46,16 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 
     ![Azure 以外のコンピューターの追加](./media/quick-onboard-linux-computer/non-azure.png)
 
-6.  **[直接エージェント]** ページの **[Linux 用エージェントのインストールとオンボード]** で、**[コピー]** を選択して *wget*コマンドをコピーします。
+6. **[直接エージェント]** ページの **[Linux 用エージェントのインストールとオンボード]** で、**[コピー]** を選択して *wget*コマンドをコピーします。
 
-7.  メモ帳を開き、このコマンドを貼り付けます。 このファイルを、Linux コンピューターからアクセスできる場所に保存します。
+7. メモ帳を開き、このコマンドを貼り付けます。 このファイルを、Linux コンピューターからアクセスできる場所に保存します。
 
 ## <a name="install-the-agent"></a>エージェントをインストールする
 
-1.  Linux コンピューターで、前に保存したファイルを開きます。 コンテンツ全体を選択し、コピーしてターミナル コンソールを開き、コマンドを貼り付けます。
-2.  インストールの完了後、*pgrep* コマンドを実行して、*omsagent* がインストールされていることを検証できます。 次に示すように、コマンドから *omsagent* PID (プロセス ID) が返されます。
+1. Linux コンピューターで、前に保存したファイルを開きます。 コンテンツ全体を選択し、コピーしてターミナル コンソールを開き、コマンドを貼り付けます。
+2. インストールの完了後、*pgrep* コマンドを実行して、*omsagent* がインストールされていることを検証できます。 次に示すように、コマンドから *omsagent* PID (プロセス ID) が返されます。
 
-  ![エージェントをインストールする][5]
+   ![エージェントをインストールする][5]
 
 Linux 用の Security Center エージェントのログは */var/opt/microsoft/omsagent/<workspace id>/log/* にあります
 

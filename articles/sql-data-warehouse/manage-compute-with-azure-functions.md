@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 0832fbcacd8b58ffaf36ce2e55e3add151a881db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470197"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870932"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse で Azure Functions を使用してコンピューティング リソースを管理します。
 
@@ -57,14 +57,14 @@ Azure Function App を SQL Data Warehouse と組み合わせて使用するた�
 
 4. SQL Data Warehouse のスケールアップ頻度を表す時刻 (CRON 式) をスケジュール領域に追加します。 
 
-  ![関数のスケジュールを変更](media/manage-compute-with-azure-functions/change-schedule.png)
+   ![関数のスケジュールを変更](media/manage-compute-with-azure-functions/change-schedule.png)
 
-  `schedule` の値は、次の 6 個のフィールドが含まれる [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)です。 
-  ```json
-  {second} {minute} {hour} {day} {month} {day-of-week}
-  ```
+   `schedule` の値は、次の 6 個のフィールドが含まれる [CRON 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)です。 
+   ```json
+   {second} {minute} {hour} {day} {month} {day-of-week}
+   ```
 
-  たとえば、「*0 30 9 * * 1-5*」と入力した場合、毎平日の午前 9 時 30 分に実行されます。 詳細については、Azure Functions の[スケジュールの例][schedule examples]を参照してください。
+   たとえば、「*0 30 9 * * 1-5*」と入力した場合、毎平日の午前 9 時 30 分に実行されます。 詳細については、Azure Functions の[スケジュールの例][schedule examples]を参照してください。
 
 
 ## <a name="change-the-time-of-the-scale-operation"></a>スケール操作の時間を変更する

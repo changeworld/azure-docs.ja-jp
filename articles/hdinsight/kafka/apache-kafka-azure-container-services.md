@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: b8995436677c195317b9ac304fe8c52cc2fcfc80
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b9b4af353e5bbd36f1f8d7468c38542a0fabda85
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602071"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112179"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
 
@@ -81,17 +81,17 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
 
 5. HDInsight ネットワークと AKS クラスター ネットワークの間のピアリングを構成するには、仮想ネットワークを選択し、__[ピアリング]__ を選択します。 __[+ 追加]__ を選択し、次の値を使用してフォームに値を入力します。
 
-    * __[名前]__:このピアリング構成の一意の名前を入力します。
-    * __仮想ネットワーク__:**AKS クラスター**用の仮想ネットワークを選択するには、このフィールドを使用します。
+   * __[名前]__:このピアリング構成の一意の名前を入力します。
+   * __仮想ネットワーク__:**AKS クラスター**用の仮想ネットワークを選択するには、このフィールドを使用します。
 
-    その他のフィールドはすべて既定値のままにし、__[OK]__ を選択してピアリングを構成します。
+     その他のフィールドはすべて既定値のままにし、__[OK]__ を選択してピアリングを構成します。
 
 6. AKS クラスター ネットワークと HDInsight ネットワークの間のピアリングを構成するには、__AKS クラスターの仮想ネットワーク__ を選択し、__[ピアリング]__ を選択します。 __[+ 追加]__ を選択し、次の値を使用してフォームに値を入力します。
 
-    * __[名前]__:このピアリング構成の一意の名前を入力します。
-    * __仮想ネットワーク__:__HDInsight クラスター__ 用の仮想ネットワークを選択するには、このフィールドを使用します。
+   * __[名前]__:このピアリング構成の一意の名前を入力します。
+   * __仮想ネットワーク__:__HDInsight クラスター__ 用の仮想ネットワークを選択するには、このフィールドを使用します。
 
-    その他のフィールドはすべて既定値のままにし、__[OK]__ を選択してピアリングを構成します。
+     その他のフィールドはすべて既定値のままにし、__[OK]__ を選択してピアリングを構成します。
 
 ## <a name="install-apache-kafka-on-hdinsight"></a>HDInsight に Apache Kafka をインストールする
 

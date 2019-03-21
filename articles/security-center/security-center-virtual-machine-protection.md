@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2019
+ms.date: 2/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 8dcaa9b98292e66d81daf3d115159b0c0c1124af
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: dd7dad51f29b4b5034c72085cd789077747faa0b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106728"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106561"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Azure Security Center でのマシンとアプリケーションの保護
 Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。 推奨事項は、仮想マシン (VM)、コンピューター、アプリケーション、ネットワーク、SQL、および ID とアクセスといった、Azure のリソースの種類に適用されます。
@@ -144,21 +144,39 @@ App Service 情報を表示するには、App Service をサブスクリプシ�
 
 1. Web アプリケーションを選択します。 3 つのタブがある概要ビューが開きます。
 
-  - **推奨事項**: Security Center によって実行され、失敗した評価に基づいて表示されます。
-  - **評価に合格しました**: Security Center によって実行され、合格した評価の一覧。
-  - **利用できない評価**: エラーのため、または推奨事項が特定のアプリ サービスに関連していないために実行に失敗した評価の一覧
+   - **推奨事項**: Security Center によって実行され、失敗した評価に基づいて表示されます。
+   - **評価に合格しました**: Security Center によって実行され、合格した評価の一覧。
+   - **利用できない評価**: エラーのため、または推奨事項が特定のアプリ サービスに関連していないために実行に失敗した評価の一覧
 
-  **[推奨事項]** には、選択した Web アプリケーションの推奨事項と各推奨事項の重大度の一覧が表示されます。
+   **[推奨事項]** には、選択した Web アプリケーションの推奨事項と各推奨事項の重大度の一覧が表示されます。
 
-  ![App Services に関する推奨事項](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
+   ![App Services に関する推奨事項](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
 
 2. 推奨事項を選択すると、推奨事項の説明、正常でないリソース、正常なリソース、およびスキャンされていないリソースの一覧が表示されます。
 
- - **[評価に合格しました]** 列には、合格した評価の一覧が表示されます。  これらの評価の重大度は常に緑色です。
+   - **[評価に合格しました]** 列には、合格した評価の一覧が表示されます。  これらの評価の重大度は常に緑色です。
 
- -  一覧から合格した評価を選択すると、評価の説明、正常でないリソース、正常なリソース、およびスキャンされていないリソースの一覧が表示されます。 正常でないリソース用のタブがありますが、評価に合格しているため、その一覧は常に空です。
+   - 一覧から合格した評価を選択すると、評価の説明、正常でないリソース、正常なリソース、およびスキャンされていないリソースの一覧が表示されます。 正常でないリソース用のタブがありますが、評価に合格しているため、その一覧は常に空です。
 
-    ![App Service の自動修復](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
+     ![App Service の自動修復](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
+
+## <a name="virtual-machine-scale-sets"></a>仮想マシン スケール セット
+Security Center は自動的にスケール セットがあるかどうかを検出し、これらのスケール セットに Microsoft Monitoring Agent をインストールすることを推奨します。 
+
+Microsoft Monitoring Agent をインストールするには 
+
+1. 推奨事項 **[仮想マシン スケール セットに監視エージェントをインストールする]** を選択します。 監視されていないスケール セットの一覧が表示されます。
+2. 異常なスケール セットを選択します。 既存の挿入済みのワークスペースを使用して監視エージェントをインストールするか、または新しいものを作成するという指示に従います。 ワークスペースの[価格レベル](security-center-pricing.md)が設定されていない場合は設定します。
+
+   ![MMS のインストール](./media/security-center-virtual-machine-recommendations/install-mms.png)
+
+新しいスケール セットを設定して自動的に Microsoft Monitoring Agent をインストールするには
+1. Azure Policy に移動して、**[定義]** をクリックします。
+2. **[Windows VM スケール セット用の Log Analytics エージェントのデプロイ]** ポリシーを検索してクリックします。
+3. **[割り当て]** をクリックします。
+4. **[スコープ]** と **[Log Analytics ワークスペース]** を設定して **[割り当て]** をクリックします。
+
+既存のスケール セットをすべて設定して Microsoft Monitoring Agent をインストールする場合は、Azure Policy で、**[修復]** に移動し、既存のポリシーを既存のスケール セットに適用します。
 
 
 ## <a name="compute-and-app-recommendations"></a>コンピューティングとアプリの推奨事項
@@ -208,7 +226,11 @@ App Service 情報を表示するには、App Service をサブスクリプシ�
 |マシン|30|仮想マシンに脆弱性評価ソリューションをインストールする|仮想マシンに脆弱性評価ソリューションをインストールする|
 |マシン|1|仮想マシンを新しい Azure Resource Manager リソースに移行する|Azure Resource Manager を仮想マシンに使用して、セキュリティの拡張機能を提供します。たとえば、アクセス制御の強化 (RBAC)、監査の改善、Resource Manager ベースのデプロイとガバナンス、マネージド ID へのアクセス、シークレット取得のための Key Vault へのアクセス、Azure AD に基づく認証、セキュリティ管理を容易にするタグとリソース グループのサポートがあります。 |
 |マシン|30|脆弱性評価ソリューションを使用して脆弱性を修復する|脆弱性評価のサード パーティ製ソリューションがデプロイされている仮想マシンは、アプリケーションと OS の脆弱性に関して継続的に評価され続けています。 そのような脆弱性が検出されるたびに、推奨事項の一部として、詳細を参照できるようにこれらが提供されます。|
-
+|仮想マシン スケール セット |4|Virtual Machine Scale Sets で診断ログを有効にする|ログを有効にし、それらを最大 1 年間保持します。 これにより、調査目的でアクティビティ証跡を再作成できます。 これは、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に便利です。|
+|仮想マシン スケール セット|35|仮想マシン スケール セットのセキュリティ構成の脆弱性を修復する|仮想マシン スケール セットのセキュリティ構成の脆弱性を修復し、攻撃から保護します。 |
+|仮想マシン スケール セット|5|仮想マシン スケール セットにおけるエンドポイントの保護の正常性エラーを修復する|脅威と脆弱性から保護するため、仮想マシン スケール セット上で発生したエンドポイントの保護の正常性エラーを修復します。 |
+|仮想マシン スケール セット|10|仮想マシン スケール セットにエンドポイントの保護のソリューションをインストールする|脅威と脆弱性から保護するため、仮想マシン スケール セットにエンドポイントの保護のソリューションをインストールします。 |
+|仮想マシン スケール セット|40|仮想マシン スケール セットにシステムの更新プログラムをインストールする|不足しているシステム セキュリティの更新プログラムと重要な更新プログラムをインストールして、Windows と Linux の仮想マシン スケール セットをセキュリティで保護します。 |
  
 
 

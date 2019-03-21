@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 88ac97c36a9b09b795a3ea792df6711fc1275422
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 67db13c8a36977f2614ba7b0e263919bd0405bc7
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163009"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585595"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フロー
 
@@ -85,6 +85,6 @@ Azure portal では、[ユーザー フローの新しいバージョン](user-f
 
 ## <a name="next-steps"></a>次の手順
 
-推奨されるユーザー フローを作成する手順については、[チュートリアル:ユーザー フローの作成](tutorial-create-tenant.md)の指示に従います。
+推奨されるユーザー フローを作成する手順については、[チュートリアル:ユーザー フローの作成](tutorial-create-user-flows.md)の指示に従います。
 
 

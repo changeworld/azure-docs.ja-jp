@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: fd7e7151d8ec676239ed810fb700149aab0fe0fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 71e71b417f12b58fc03c581826c0e5c2412e684b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427404"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876648"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 
@@ -110,13 +110,13 @@ Network Watcher PowerShell コマンドレットを使うには、最新の Powe
 
     この例では、Azure PowerShell モジュールのローカル パスを取得しています。 これらのフォルダーは、後の手順で使用されます。 このシナリオで使われているモジュールは次のとおりです。
 
-    * AzureRM.Network
+   * AzureRM.Network
 
-    * AzureRM.Profile
+   * AzureRM.Profile
 
-    * AzureRM.Resources
+   * AzureRM.Resources
 
-    ![PowerShell フォルダー][functions5]
+     ![PowerShell フォルダー][functions5]
 
 1. **[Function App の設定]** > **[App Service エディターに移動]** の順に選びます。
 
@@ -344,7 +344,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
   |**設定** | **値** | **詳細** |
   |---|---|---|
   |**Name**|TCP_Segments_Sent_Exceeded|アラート ルールの名前。|
-  |**説明**|送信された TCP セグメント数がしきい値を超えました|アラート ルールの説明。||
+  |**説明**|送信された TCP セグメント数がしきい値を超えました|アラート ルールの説明。|
   |**メトリック**|送信した TCP セグメント数| アラートのトリガーに使うメトリック。 |
   |**Condition**|より大きい| メトリックを評価するときに使う条件。|
   |**しきい値**|100| アラートをトリガーするメトリックの値。 この値は、環境で有効な値に設定する必要があります。|
@@ -362,7 +362,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
 キャプチャ ファイルがローカルに格納されている場合は、仮想マシンにサインインすることで取得できます。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 他のツールとしては、[ストレージ エクスプローラー](http://storageexplorer.com/)を使うことができます。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 他のツールとしては、[ストレージ エクスプローラー](https://storageexplorer.com/)を使うことができます。
 
 ダウンロードしたキャプチャは、**.cap** ファイルを読み取ることができる任意のツールを使って表示できます。 次に示すのはそのような 2 つのツールへのリンクです。
 

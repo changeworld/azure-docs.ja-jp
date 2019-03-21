@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 115c6726ed150b9a76685bd5a558d547d215958f
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 1098c5c2f42b242b3ba2f68ec7480de90dd7c22e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587737"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766650"
 ---
 # <a name="configure-export-policy-for-a-volume"></a>ボリュームのエクスポート ポリシーを構成する
 

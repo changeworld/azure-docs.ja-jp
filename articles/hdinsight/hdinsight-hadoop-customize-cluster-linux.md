@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: d325cfd679c2a8b878ae9a7b483431aba32b2a5a
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ccb408a427680cffc339797bd3421ed9f53af640
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313281"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200686"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
 
@@ -157,7 +157,6 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 | Azure Storage アカウントの追加 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh` 「[HDInsight にストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」をご覧ください。 |
 | Hue のインストール |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh` 「[HDInsight Hadoop クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)」をご覧ください。 |
 | Presto のインストール |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh` 「[Hadoop ベースの HDInsight クラスターに Presto をインストールして使用する](hdinsight-hadoop-install-presto.md)」をご覧ください。 |
-| Solr のインストール |`https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh` 「[HDInsight Hadoop クラスターに Apache Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)」をご覧ください。 |
 | Giraph のインストール |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh` [HDInsight Hadoop クラスターへの Apache Giraph のインストール](hdinsight-hadoop-giraph-install-linux.md)に関する記事をご覧ください。 |
 | Hive ライブラリの事前読み込み |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh` 「[HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する](hdinsight-hadoop-add-hive-libraries.md)」をご覧ください。 |
 | Mono のインストールまたは更新 | `https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash` [HDInsight での Mono のインストールまたは更新](hdinsight-hadoop-install-mono.md) を参照してください。 |
@@ -410,9 +409,9 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 
 * **組み込みコンポーネント**。 これらのコンポーネントは、HDInsight クラスターにプレインストールされており、クラスターの主要な機能を提供します。 次のコンポーネントは、このカテゴリに属します。
 
-    * [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ResourceManager。
-    * Hive クエリ言語 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)。
-    * [Apache Mahout](https://mahout.apache.org/)。 
+  * [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) ResourceManager。
+  * Hive クエリ言語 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)。
+  * [Apache Mahout](https://mahout.apache.org/)。 
     
     クラスター コンポーネントの完全な一覧は、「[HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは](hdinsight-component-versioning.md)」から入手できます。
 
@@ -524,7 +523,6 @@ SSH を使用してクラスターに接続する方法については、「[SSH
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions-linux.md)
-* [HDInsight クラスターに Apache Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
 * [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
 * [HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)
 

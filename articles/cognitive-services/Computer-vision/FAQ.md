@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: e1bc40f10547eb6c79a41cab8a3ac5fd2f500415
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0155a601a0b1e1ed0a89773540d48ff79c38be73
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874081"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726296"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API についてよく寄せられる質問
 
@@ -55,7 +55,7 @@ ms.locfileid: "55874081"
 
 -----
 
-**質問:***手書き認識ではどの言語がサポートされますか?*
+**質問**: *手書き認識ではどの言語がサポートされますか?*
 
 **回答**: 現時点では、英語のみがサポートされています。
 

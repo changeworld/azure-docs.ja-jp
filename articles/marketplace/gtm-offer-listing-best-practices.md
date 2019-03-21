@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 60f02f0ae92f471718c0c35f8ac833b9ca6c1da4
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e5db2f340917705ec29f7b6db4de40914c66efcd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355403"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863935"
 ---
 # <a name="offer-listing-best-practices"></a>オファーの掲載のベスト プラクティス
 
@@ -56,7 +56,7 @@ ms.locfileid: "54355403"
 
 次の URL の例には、前述のクエリ パラメーターの両方が含まれています。`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-これらのパラメーターを AppSource の URL に追加すると、[Cloud パートナー ポータル](http://cloudpartner.azure.com/#insights)の分析ダッシュボードでキャンペーンの効果を確認できます。
+これらのパラメーターを AppSource の URL に追加すると、[Cloud パートナー ポータル](https://cloudpartner.azure.com/#insights)の分析ダッシュボードでキャンペーンの効果を確認できます。
 
 ## <a name="next-steps"></a>次の手順
 

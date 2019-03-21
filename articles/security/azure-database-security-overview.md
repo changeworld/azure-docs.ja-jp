@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: f9297946b7e09bc8c516470515d0eee9885d5d38
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7e0e93c82279ec1a4fbecbbf27c7a1866286b2f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116322"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860518"
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 
@@ -50,7 +50,7 @@ SQL Database は、次の暗号化を提供することでデータを保護し�
 その他の方法でデータを暗号化するには、次を検討してください。
 
 -   [セルレベルの暗号化](https://msdn.microsoft.com/library/ms179331.aspx) により、暗号化キーが異なるデータの特定の列またはセルを暗号化できます。
--   ハードウェア セキュリティ モジュールか、暗号化キー階層の中央管理が必要な場合は、[Azure VM で Azure Key Vault と SQL Server を併用](http://blogs.technet.com/b/kv/archive/2015/01/12/using-the-key-vault-for-sql-server-encryption.aspx)します。
+-   ハードウェア セキュリティ モジュールか、暗号化キー階層の中央管理が必要な場合は、[Azure VM で Azure Key Vault と SQL Server を併用](https://blogs.technet.com/b/kv/archive/2015/01/12/using-the-key-vault-for-sql-server-encryption.aspx)します。
 
 ### <a name="encryption-in-motion"></a>移動時の暗号化
 

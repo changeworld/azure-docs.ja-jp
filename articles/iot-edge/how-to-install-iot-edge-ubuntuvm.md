@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: gregman
-ms.openlocfilehash: 7ff7671425e2a2a5dbebe2d09cadb8ef71bc7c97
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5b3dcb3abad071cb5d079d6c740cc09e2577a363
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896630"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116420"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ubuntu 仮想マシン上で Azure IoT Edge を実行する
 
@@ -22,7 +22,7 @@ Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デ�
 
 IoT Edge ランタイムの動作とランタイムに含まれるコンポーネントについては、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
 
-この記事では、あらかじめ構成された [Azure IoT Edge on Ubuntu Azure Marketplace オファー](http://aka.ms/azure-iot-edge-ubuntuvm)を使用して、Ubuntu 16.04 仮想マシン上で Azure IoT Edge ランタイムを実行する手順を示します。 
+この記事では、あらかじめ構成された [Azure IoT Edge on Ubuntu Azure Marketplace オファー](https://aka.ms/azure-iot-edge-ubuntuvm)を使用して、Ubuntu 16.04 仮想マシン上で Azure IoT Edge ランタイムを実行する手順を示します。 
 
 最初の起動時、Azure IoT Edge on Ubuntu VM には、Azure IoT Edge ランタイムの最新バージョンがプレインストールされています。 また、接続文字列を設定し、ランタイムを再起動するためのスクリプトも含まれています。これは、Azure VM ポータルまたは Azure コマンド ラインを通じてリモートでトリガーできます。これにより、SSH やリモート デスクトップ セッションを起動することなく、IoT Edge デバイスを簡単に構成し、接続することができます。 このスクリプトは、IoT Edge クライアントが完全にインストールされるまで、接続文字列の設定を待機します。そのため、その操作を自動化に組み込む必要はありません。
 
@@ -45,48 +45,48 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
 Azure portal から、"Azure IoT Edge" を検索し、"**Ubuntu Server 16.04 LTS + Azure IoT Edge runtime**" を選択して VM の作成ワークフローを開始します。 そこから、上記の「Azure Marketplace からデプロイする」にある手順 3 と 4 を完了します。
 
 ## <a name="deploy-from-azure-cli"></a>Azure CLI からデプロイする
-1.  CLI から仮想マシンをデプロイするのが初めての場合は、ご利用の Azure サブスクリプションで、プログラムによるデプロイを有効にする必要があります。
-    1. [Azure IoT Edge on Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) Marketplace オファーを開きます
-    1. **[今すぐ入手する]** を選択し、次のダイアログで **[続行]** を選択します
-    1. ポータル内のダイアログの下部で、**[プログラムによるデプロイについて作業を開始する]** を選択します。
-    1. **[プログラムによるデプロイの構成]** ページの **[有効にする]** ボタンをクリックし、**[保存]** をクリックします
-1.  デスクトップで Azure CLI を使用している場合は、まずログインします。
+1. CLI から仮想マシンをデプロイするのが初めての場合は、ご利用の Azure サブスクリプションで、プログラムによるデプロイを有効にする必要があります。
+   1. [Azure IoT Edge on Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm) Marketplace オファーを開きます
+   1. **[今すぐ入手する]** を選択し、次のダイアログで **[続行]** を選択します
+   1. ポータル内のダイアログの下部で、**[プログラムによるデプロイについて作業を開始する]** を選択します。
+   1. **[プログラムによるデプロイの構成]** ページの **[有効にする]** ボタンをクリックし、**[保存]** をクリックします
+1. デスクトップで Azure CLI を使用している場合は、まずログインします。
 
-    ```azurecli-interactive
-    az login
-    ```
+   ```azurecli-interactive
+   az login
+   ```
     
-1.  複数のサブスクリプションがある場合は、次のようにして、使用するサブスクリプションを選択します。
-    1.  サブスクリプションを一覧表示します。
+1. 複数のサブスクリプションがある場合は、次のようにして、使用するサブスクリプションを選択します。
+   1. サブスクリプションを一覧表示します。
     
-       ```azurecli-interactive
-       azure account list --output table
-       ```
+      ```azurecli-interactive
+      az account list --output table
+      ```
     
-    1.  使用するサブスクリプションの SubscriptionID フィールドをコピーします
-    1.  コピーした ID を使用して、次のコマンドを実行します。
+   1. 使用するサブスクリプションの SubscriptionID フィールドをコピーします
+   1. コピーした ID を使用して、次のコマンドを実行します。
     
-       ```azurecli-interactive 
-       az account set -s {SubscriptionId}
-       ```
+      ```azurecli-interactive 
+      az account set -s {SubscriptionId}
+      ```
     
-1.  新しいリソース グループを作成します (または、次の手順で既存のリソース グループを指定します)。
+1. 新しいリソース グループを作成します (または、次の手順で既存のリソース グループを指定します)。
 
-    ```azurecli-interactive
-    az group create --name IoTEdgeResources --location westus2
-    ```
+   ```azurecli-interactive
+   az group create --name IoTEdgeResources --location westus2
+   ```
     
-1.  新しい仮想マシンを作成します。
+1. 新しい仮想マシンを作成します。
 
-    ```azurecli-interactive
-    az vm create --resource-group IoTEdgeResources --name EdgeVM –image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
-    ```
+   ```azurecli-interactive
+   az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   ```
 
-1.  デバイス接続文字列を設定します (このプロセスに詳しくない場合は、[Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する](how-to-register-device-cli.md)方法のハウツー ガイドをご覧ください)。
+1. デバイス接続文字列を設定します (このプロセスに詳しくない場合は、[Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する](how-to-register-device-cli.md)方法のハウツー ガイドをご覧ください)。
 
-    ```azurecli-interactive
-    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
-    ```
+   ```azurecli-interactive
+   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
+   ```
 
 セットアップ後にこの VM に SSH する場合は、次のコマンドで publicIpAddress を使用します。`ssh azureuser@{publicIpAddress}`
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: Mingfeiy;willzhan;Juliako
-ms.openlocfilehash: 0b3d8759f13f48e5fa95ff709fa283ed41e0ea25
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dfb82e91b0f65b85d34b7e20d57ed9929469321f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003212"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863259"
 ---
 # <a name="using-castlabs-to-deliver-widevine-licenses-to-azure-media-services"></a>castLabs を使用して Azure Media Services に Widevine ライセンスを配信する 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "56003212"
 
 この記事では、PlayReady と Widevine DRM の両方を使用して AMS で動的に暗号化されたストリームを、Azure Media Services (AMS) を使用して配信する方法について説明します。 PlayReady ライセンスは Media Services PlayReady サーバーから取得し、Widevine ライセンスは **castLabs** ライセンス サーバーから取得します。
 
-CENC (PlayReady または Widevine、あるいはその両方) によって保護されたストリーミング コンテンツを再生するには、[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用できます。 詳細については、 [AMP のドキュメント](http://amp.azure.net/libs/amp/latest/docs/) を参照してください。
+CENC (PlayReady または Widevine、あるいはその両方) によって保護されたストリーミング コンテンツを再生するには、[Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用できます。 詳細については、 [AMP のドキュメント](https://amp.azure.net/libs/amp/latest/docs/) を参照してください。
 
 次の図は、Azure Media Services と castLabs の統合アーキテクチャを大まかに示しています。
 
@@ -101,10 +101,10 @@ Web アプリケーション (STS) を使用するには、次の手順に従い
 
 ## <a name="playing-back-a-video"></a>ビデオを再生する
 
-共通暗号化 (PlayReady または Widevine、あるいはその両方) で暗号化されたビデオを再生するには、[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用できます。 コンソール アプリケーションを実行すると、コンテンツ キー ID とマニフェスト URL がエコーされます。
+共通暗号化 (PlayReady または Widevine、あるいはその両方) で暗号化されたビデオを再生するには、[Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用できます。 コンソール アプリケーションを実行すると、コンテンツ キー ID とマニフェスト URL がエコーされます。
 
 1. 新しいタブを開き、STS を起動します。 http://[yourStsName].azurewebsites.net/api/token/assetid/[yourCastLabsAssetId]/contentkeyid/[thecontentkeyid]
-2. [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html)に移動します。
+2. [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html)に移動します。
 3. ストリーミング URL に貼り付けます。
 4. **[詳細オプション]** チェックボックスをクリックします。
 5. **[保護]** ドロップダウンで、PlayReady や Widevine を選択します。

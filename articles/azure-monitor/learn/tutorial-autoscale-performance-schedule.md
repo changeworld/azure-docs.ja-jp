@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 9c8803ff73b3e70c19a409ef6c1e072b5f7c8b53
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 44fecf47ccd1ce07c7e51f7bcf51ef7823f2cf97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734270"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088351"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>パフォーマンス データまたはスケジュールに基づいて自動スケール設定を作成する
 
@@ -60,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. 既定のプロファイルで **[スケール モード]** が [特定のインスタンス数にスケーリングする] に設定されていることを確認します。
 3. インスタンス数を **1** に設定します。 このように設定すると、他のプロファイルがアクティブでない場合、または有効でない場合、既定のプロファイルのインスタンス数が 1 に戻ります。
 
-  ![自動スケール設定に移動する](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![自動スケール設定に移動する](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>定期プロファイルを作成する

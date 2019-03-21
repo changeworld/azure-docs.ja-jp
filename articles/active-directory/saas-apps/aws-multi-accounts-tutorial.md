@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23ceb9c7b18de5262a38fc724aad9605e82a615a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 322615203d188581dd04aadeff2a08307b733d06
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238421"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>チュートリアル:Azure Active Directory と複数の Amazon Web Services (AWS) アカウントの統合
 
@@ -155,7 +155,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. **[名前空間]** ボックスに、その行に表示される名前空間の値を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [ソース] として **[属性]** を選択します。
+    d. [ソース] として **[属性]** を選択します。
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
@@ -193,7 +193,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、**[ファイルの選択]** をクリックします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ページの下部にある **[Next Step]**」を参照してください。
+    d. ページの下部にある **[Next Step]**」を参照してください。
 
 6. **[Verify Provider Information]** ダイアログ ボックスで、**[Create]** をクリックします。
 
@@ -213,7 +213,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. **[Allow programmatic and AWS Management Console access]** を選択します。
   
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ: Permissions]\(次へ: アクセス許可\)** をクリックします。
+    d. **[次へ: Permissions]\(次へ: アクセス許可\)** をクリックします。
 
 9. **[Attach Permissions Policies]\(アクセス許可ポリシーのアタッチ\)** ダイアログで、組織の規定に準拠した適切なポリシーを添付します。 **次へ: 確認\)** をクリックします。  
 
@@ -229,7 +229,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     c. **[Create Role]** をクリックします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
+    d. 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
 
 11. 現在の AWS アカウントからサインアウトし、Azure AD によるシングル サインオンを構成する他のアカウントでログインします。
 
@@ -259,7 +259,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![Graph Explorer のダイアログ ボックス](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ここで、再度ログインし、同意を受け入れるよう求められます。 同意を受け入れると、Graph Explorer に再度ログインされます。
+    d. ここで、再度ログインし、同意を受け入れるよう求められます。 同意を受け入れると、Graph Explorer に再度ログインされます。
 
     e. バージョン ドロップダウンを**ベータ**に変更します。 テナントからすべてのサービス プリンシパルを取得するには、次のクエリを使用します。
 

@@ -3,16 +3,16 @@ title: Azure 上の Terraform の概要。
 description: Azure Cosmos DB と Azure Container Instances をデプロイして、Azure 上の Terraform の使用を開始します。
 services: terraform
 author: neilpeterson
-ms.service: terraform
+ms.service: azure
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: nepeters
-ms.openlocfilehash: b3d872008c95d94a8401e6f38665c3c88616a168
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6c858514c29a040539516f42e024f1633c2512a7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736925"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776532"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Azure 用の Terraform 構成の作成
 

@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 7d5630c082c044ac936f555965aec5a2a00f3544
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5393e202c7b5005552f164c9c6f55da92fc82572
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448722"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104439"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) を使用した U-SQL ジョブのスケジュール設定
 
@@ -93,16 +93,16 @@ Azure Data Lake Store ファイル システム タスクの詳細について�
     
     このファイル接続を作成するには:
 
-    1. FileConnection 設定で **<New Connection...>** を選択します。
-    2. **[使用法の種類]** を **[既存のファイル]** に設定し、**[ファイル]** を既存の任意のファイルのファイル パスに設定します。
+   1. FileConnection 設定で **<New Connection...>** を選択します。
+   2. **[使用法の種類]** を **[既存のファイル]** に設定し、**[ファイル]** を既存の任意のファイルのファイル パスに設定します。
 
-        ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-    3. **接続マネージャー** ビューで、今作成したファイル接続を右クリックし、**[プロパティ]** を選択します。
+   3. **接続マネージャー** ビューで、今作成したファイル接続を右クリックし、**[プロパティ]** を選択します。
 
-    4. **[プロパティ]** ウィンドウで、**[式]** を展開し、**[ConnectionString]** を Foreach ループ コンテナーで定義されている変数 (`@[User::FileName]` など) に設定します。
+   4. **[プロパティ]** ウィンドウで、**[式]** を展開し、**[ConnectionString]** を Foreach ループ コンテナーで定義されている変数 (`@[User::FileName]` など) に設定します。
 
-        ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
+       ![Foreach ループ コンテナーを構成する](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
 3. **[AzureDataLakeAnalyticsConnection]** を、ジョブの送信先となる Azure Data Lake Analytics アカウントに設定します。 Azure Data Lake Analytics 接続マネージャーの詳細については、[こちら](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017)を参照してください。
 

@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e705bbbd08882f56020192a3b42c311e05bfa399
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bee16ed8205453546702946628c98c73b0f34b15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191730"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103810"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>クイック スタート:Azure Active Directory のアプリケーションを更新する
 
@@ -60,24 +60,24 @@ Web/confidential クライアント アプリケーションが認証を必要�
    ![アプリケーションの登録の更新](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
 4. アプリケーションのメイン登録ページが表示され、そのアプリケーションの **[設定]** ページがそこに含まれています。 Web アプリケーションの資格情報を追加するには:
-  1. **[設定]** ページの **[キー]** セクションを選択します。
-  2. 証明書を追加するには:
-    - **[公開キーのアップロード]** を選択します。
-    - アップロードするファイルを選択します。 ファイルの種類は .cer、.pem、.crt のいずれかである必要があります。
-  - パスワードを追加するには:
-    - 鍵の説明を追加します。
-    - 期間を選択します。
-    - **[保存]** を選択します。 構成の変更を保存すると、右端の列に鍵の値が格納されます。 クライアント アプリケーションのコードで使用するので、**必ず鍵をコピーしておいてください**。このページを一度閉じると、鍵にアクセスできなくなります。
+   1. **[設定]** ページの **[キー]** セクションを選択します。
+   1. 証明書を追加するには:
+      - **[公開キーのアップロード]** を選択します。
+      - アップロードするファイルを選択します。 ファイルの種類は .cer、.pem、.crt のいずれかである必要があります。
+   1. パスワードを追加するには:
+      - 鍵の説明を追加します。
+      - 期間を選択します。
+      - **[保存]** を選択します。 構成の変更を保存すると、右端の列に鍵の値が格納されます。 クライアント アプリケーションのコードで使用するので、**必ず鍵をコピーしておいてください**。このページを一度閉じると、鍵にアクセスできなくなります。
 
 5. 次の手順に従い、クライアントからリソース API にアクセスするためのアクセス許可を追加します。
-  1. **[設定]** ページで **[必要なアクセス許可]** セクションを選択し、**[追加]** を選択します。
-  1. **[API を選択します]** を選択し、選択するリソースの種類を選択します。
-  1. 利用可能な API の一覧を参照するか、検索ボックスを使用して、ディレクトリ内にあって Web API を公開している利用可能なリソース アプリケーションの中から選択します。 目的のリソースを選択し、**[選択]** をクリックします。
-  1. **[アクセスの有効化]** ページで、アプリケーションのアクセス許可や委任されたアクセス許可のうち、アプリケーションが API にアクセスするうえで必要なものを選択します。
+   1. **[設定]** ページで **[必要なアクセス許可]** セクションを選択し、**[追加]** を選択します。
+   1. **[API を選択します]** を選択し、選択するリソースの種類を選択します。
+   1. 利用可能な API の一覧を参照するか、検索ボックスを使用して、ディレクトリ内にあって Web API を公開している利用可能なリソース アプリケーションの中から選択します。 目的のリソースを選択し、**[選択]** をクリックします。
+   1. **[アクセスの有効化]** ページで、アプリケーションのアクセス許可や委任されたアクセス許可のうち、アプリケーションが API にアクセスするうえで必要なものを選択します。
    
-  ![アプリケーションの登録の更新 - アクセス許可 API](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
+   ![アプリケーションの登録の更新 - アクセス許可 API](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
 
-  ![アプリケーションの登録の更新 - アクセス許可](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
+   ![アプリケーションの登録の更新 - アクセス許可](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. 完了したら、**[アクセスの有効化]** ページで **[選択]** ボタンを選択し、**[API アクセスの追加]** ページ で **[完了]** ボタンを選択します。 **[必要なアクセス許可]** ページに戻ります。ページでは API の一覧に新しいリソースが追加されています。
 
@@ -98,8 +98,8 @@ Web/confidential クライアント アプリケーションが認証を必要�
 4. アプリケーションのメイン登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。 アプリケーションの登録ページで **[マニフェスト]** をクリックして、**[マニフェストの編集]** ページに切り替えます。 Web ベースのマニフェスト エディターが開き、ポータルでマニフェストを**編集**できます。 必要があれば、**[ダウンロード]** をクリックしてローカルで編集します。編集を終えたら **[アップロード]** をクリックすると、アプリケーションに編集後のマニフェストが適用されます。
 5. この例では、`oauth2Permissions` コレクションに以下の JSON 要素を追加して、リソース/API で `Employees.Read.All` という新しいスコープを公開します。 既存の `user_impersonation` スコープは、登録時に既定で提供されます。 `user_impersonation` は、クライアント アプリケーションがリソースに対するアクセス許可を要求するにあたり、サインインしたユーザーの ID を使えるようにするためのものです。 既存の `user_impersonation` スコープ要素の後にコンマを追加したうえで、リソースのニーズに応じてプロパティの値を変更してください。 
 
-  ```json
-  {
+   ```json
+   {
     "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
     "adminConsentDisplayName": "Read-only access to Employee records",
     "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
@@ -108,17 +108,17 @@ Web/confidential クライアント アプリケーションが認証を必要�
     "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
     "userConsentDisplayName": "Read-only access to your Employee records",
     "value": "Employees.Read.All"
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE]
-  > `id` の値は、プログラムによって、または [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) などの GUID 生成ツールを使って作成する必要があります。 `id` は、Web API によって公開されるスコープの一意の識別子となります。 クライアントに対して Web API にアクセスするためのアクセス許可が適切に構成されていると、そのクライアントには、Azure AD によって OAuth 2.0 アクセス トークンが発行されます。 クライアントが Web API を呼び出すときには、このアクセス トークンを提示することになります。そして、このアクセス トークンでは、スコープ (scp) 要求がアプリケーションの登録時に要求されたアクセス許可のとおりに設定されています。
-  >
-  > 公開するスコープは、必要に応じて後から追加することもできます。 たとえば、Web API で、さまざまな機能が関連付けられたスコープをいくつも公開しているとします。 リソースでは、受け取った OAuth 2.0 アクセス トークンのスコープ (`scp`) 要求を評価することによって、実行時に Web API へのアクセスを制御します。
+   > [!NOTE]
+   > `id` の値は、プログラムによって、または [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) などの GUID 生成ツールを使って作成する必要があります。 `id` は、Web API によって公開されるスコープの一意の識別子となります。 クライアントに対して Web API にアクセスするためのアクセス許可が適切に構成されていると、そのクライアントには、Azure AD によって OAuth 2.0 アクセス トークンが発行されます。 クライアントが Web API を呼び出すときには、このアクセス トークンを提示することになります。そして、このアクセス トークンでは、スコープ (scp) 要求がアプリケーションの登録時に要求されたアクセス許可のとおりに設定されています。
+   >
+   > 公開するスコープは、必要に応じて後から追加することもできます。 たとえば、Web API で、さまざまな機能が関連付けられたスコープをいくつも公開しているとします。 リソースでは、受け取った OAuth 2.0 アクセス トークンのスコープ (`scp`) 要求を評価することによって、実行時に Web API へのアクセスを制御します。
 
 6. 完了したら、**[保存]** をクリックします。 これで Web API の構成が終わり、ディレクトリ内の他のアプリケーションが利用できるようになりました。
 
-  ![アプリケーションの登録の更新](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
+   ![アプリケーションの登録の更新](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
 
 ### <a name="verify-the-web-api-is-exposed-to-other-applications-in-your-tenant"></a>テナント内の他のアプリケーションに Web API が公開されているかどうかの確認
 
@@ -130,7 +130,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 3. **[アクセスの有効化]** ページに新しいスコープが表示されていれば、クライアントのアクセス許可の要求で利用できる状態です。
 
-  ![新しいアクセス許可の表示](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
+   ![新しいアクセス許可の表示](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
 
 ### <a name="more-on-the-application-manifest"></a>アプリケーション マニフェストの詳細
 
@@ -211,9 +211,9 @@ Web アプリケーションではほかにも、次のものが提供される�
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメイン登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
 4. アプリケーションの登録ページで **[マニフェスト]** をクリックして、**[マニフェストの編集]** ページに切り替えます。 Web ベースのマニフェスト エディターが開き、ポータルでマニフェストを**編集**できます。 "oauth2AllowImplicitFlow" を探し、値を "true" に設定します。 既定値は "false" です。
    
-  ```json
-  "oauth2AllowImplicitFlow": true,
-  ```
+   ```json
+   "oauth2AllowImplicitFlow": true,
+   ```
 5. 更新したマニフェストを保存します。 保存が完了すると、ユーザー認証に OAuth 2.0 Implicit Grant を使用するように Web API が構成されます。
 
 ## <a name="next-steps"></a>次の手順

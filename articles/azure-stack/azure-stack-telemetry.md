@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: jeffgilb
 ms.reviewer: comartin
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 8d1e13b5bcda174c979205537f4c484aa94dce10
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 1977ced65b6dd62a023a79ce8949a8b428d2f965
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428824"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760360"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack のテレメトリ
 

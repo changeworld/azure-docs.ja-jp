@@ -6,18 +6,18 @@ ms.service: sql-database
 ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
-ms.topic: howto
+ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: f63f929f21d4df06e409784e2ccab611e951a1bc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f7e31c9e153f25faae9224f04eabf5ca54bb06b4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477711"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759221"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Azure SQL Database を使用する方法
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 05abc61da7af02c56dacd632175d6fbfa64cb9e1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098563"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116828"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>DevTest Labs 仮想マシンのカスタム アーティファクトの作成
 
@@ -79,7 +79,7 @@ ms.locfileid: "55098563"
 | 要素名 | 必須 | 説明 |
 | --- | --- | --- |
 | type |はい |パラメーター値の型。 使用できる型については、下記を参照してください。 |
-| displayName |はい |ラボのユーザーに対して表示されるパラメーターの名前。 | |
+| displayName |はい |ラボのユーザーに対して表示されるパラメーターの名前。 |
 | description |はい |ラボで表示されるパラメーターの説明。 |
 
 使用できる型は次のとおりです。
@@ -126,7 +126,7 @@ ms.locfileid: "55098563"
 
 ## <a name="related-articles"></a>関連記事
 * [DevTest Labs でアーティファクトのエラーを診断する方法](devtest-lab-troubleshoot-artifact-failure.md)
-* [DevTest Labs で Resource Manager テンプレートを使用して既存の Active Directory ドメインに VM を参加させる](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [DevTest Labs で Resource Manager テンプレートを使用して既存の Active Directory ドメインに VM を参加させる](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>次の手順
 * [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。

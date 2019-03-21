@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: hning86
-ms.author: haining
-ms.reviewer: sgilley
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f596f40cdea095ea152785e656c44eaa062e28c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a8f3a5c6a1c7adaff620f8675fcffa4018eb9874
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564036"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58133095"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>チュートリアル:Azure Container Instances に画像分類モデルをデプロイする
 
@@ -41,7 +40,7 @@ Container Instances は、ワークフローをテストして理解するうえ
 ## <a name="prerequisites"></a>前提条件
 [開発環境の設定](#start)に関するセクションに進み、ノートブックの手順に目を通してください。  
 
-ノートブックを実行するにはまず、「[チュートリアル (パート 1): Azure Machine Learning service でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」でモデルのトレーニングを実施する必要があります。   次に、同じノートブック サーバーを使用して **tutorials/img-classification-part2-deploy.ipynb** ノートブックを実行します。
+ノートブックを実行するにはまず、「[チュートリアル (パート 1): Azure Machine Learning service で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)。   次に、同じノートブック サーバーを使用して **tutorials/img-classification-part2-deploy.ipynb** ノートブックを実行します。
 
 
 ## <a name="start"></a>環境をセットアップする

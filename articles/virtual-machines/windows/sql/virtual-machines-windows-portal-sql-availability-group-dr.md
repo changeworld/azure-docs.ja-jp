@@ -3,7 +3,7 @@ title: SQL Server 可用性グループ - Azure Virtual Machines - ディザス�
 description: この記事では、別のリージョンのレプリカを使って、Azure Virtual Machines に SQL Server 可用性グループを構成する方法について説明します。
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: d64c55857cda0aa64dc010566490e1696fffdea0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5e4b63d4fc8b437bd4d476c72d23f9dbf5242d5b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972381"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780560"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>さまざまな地域に存在する Azure 仮想マシンに Always On 可用性グループを構成します｡
 
@@ -165,7 +165,7 @@ ms.locfileid: "53972381"
 
 接続をテストした後は、プライマリ レプリカをプライマリ データ センターに戻し、可用性モードを通常の動作設定に戻します。 次の表では、このドキュメントで説明されているアーキテクチャの通常の動作設定を示します。
 
-| 場所 | サーバー インスタンス | Role | 可用性モード | フェールオーバー モード
+| Location | サーバー インスタンス | Role | 可用性モード | フェールオーバー モード
 | ----- | ----- | ----- | ----- | -----
 | プライマリ データ センター | SQL-1 | プライマリ | 同期 | 自動
 | プライマリ データ センター | SQL-2 | セカンダリ | 同期 | 自動

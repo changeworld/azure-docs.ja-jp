@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4228692d707f0cff8be0d76bc70794f48d944143
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 751b6e5979174eae9bc815061f16bf99bd0899cf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878767"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534788"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>Web Language Model API とは (プレビュー)
 
@@ -44,7 +44,7 @@ Web Language Model API では、次の 4 つの検索操作がサポートされ
 1. サービスをサブスクライブします。
 2. [SDK](https://www.github.com/microsoft/cognitive-weblm-windows) をダウンロードします。
 3. SDK のサンプル コードを実行します。
-4. エンドポイントの完全な説明は、[API リファレンス](http://web.archive.org/web/20170503191852/westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51)を参照してください。さまざまな言語のコード スニペットも含まれています。
+4. エンドポイントの完全な説明は、[API リファレンス](https://web.archive.org/web/20170503191852/westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51)を参照してください。さまざまな言語のコード スニペットも含まれています。
 
 ## <a name="underlying-technology"></a>基礎となるテクノロジ
 

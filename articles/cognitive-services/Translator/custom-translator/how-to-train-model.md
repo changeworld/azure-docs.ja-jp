@@ -5,16 +5,16 @@ description: モデルのトレーニングは、翻訳モデルを構築する�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 36f0ff273ac5ec9409d58af0480c2101ce9d49e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: 8fee19b4d7a1ae05ca9a38c5a9ba374c0674a867
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215352"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776259"
 ---
 # <a name="train-a-model"></a>モデルをトレーニングする
 

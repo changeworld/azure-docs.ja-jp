@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: 1609d413604e172b9c718bd11768c495dfa8afe8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 734fb5ce641d48800cef68ea79cdb258e44ac267
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191425"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867101"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 
@@ -83,7 +83,7 @@ Azure AD Domain Services では、Azure AD で使用できるすべてのユー�
 
 3. **[概要]** タブは、マネージド ドメインが現在プロビジョニング中であることを示しています。 完全にプロビジョニングされるまで、マネージド ドメインを構成することはできません。 マネージド ドメインが完全にプロビジョニングされるまでに最大で 1 時間かかる場合があります。
 
-    ![Domain Services - プロビジョニング状態のときの [概要] タブ ](./media/getting-started/domain-services-provisioning-state-details.png)
+    ![Domain Services - プロビジョニング状態のときの [概要] タブ](./media/getting-started/domain-services-provisioning-state-details.png)
 
 4. マネージド ドメインが完全にプロビジョニングされると、**[概要]** タブには、ドメインの状態が **[実行中]** であることが示されます。
 

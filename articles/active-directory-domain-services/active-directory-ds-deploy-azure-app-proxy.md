@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: e787d946aa62f0bcb6615d89192e7d9e4d91ffe4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 867d061e46494e5ef65340ce325a71638acc8dfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197050"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099629"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに Azure AD アプリケーション プロキシをデプロイします
 Azure Active Directory (AD) アプリケーション プロキシを使用して、オンプレミス アプリケーションを発行してインターネット経由でアクセスできるようにすることで、リモート ワーカーをサポートできます。 Azure AD Domain Services を使用して、オンプレミスで実行しているレガシ アプリケーションを Azure インフラストラクチャ サービスにリフトアンドシフトできるようになりました。 その後、Azure AD アプリケーション プロキシを使用してこれらのアプリケーションを発行し、組織内のユーザーに安全なリモート アクセスを提供することができます。
@@ -75,12 +75,12 @@ Azure AD Domain Services のマネージド ドメインを有効化済みの同
 
     ![インストールの条項に同意する](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. インストール時に、Azure AD ディレクトリのアプリケーション プロキシにコネクタを登録するように求められます。
-    * **Azure AD グローバル管理者の資格情報**を指定します。 グローバル管理者のテナントは、Microsoft Azure の資格情報とは異なる場合があります。
-    * コネクタの登録に使用する管理者アカウントは、アプリケーション プロキシ サービスを有効にしたディレクトリと同じディレクトリに属している必要があります。 たとえば、テナントのドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他の有効なエイリアスであることが必要です。
-    * コネクタをインストールするサーバーで [IE セキュリティ強化の構成] がオンになっていると、登録画面がブロックされることがあります。 アクセスを許可するには、エラー メッセージに示された指示に従ってください。 Internet Explorer セキュリティ強化の構成が無効になっていることを確認します。
-    * コネクタの登録が成功しない場合は、「 [アプリケーション プロキシのトラブルシューティング](../active-directory/manage-apps/application-proxy-troubleshoot.md)」をご覧ください。
+   * **Azure AD グローバル管理者の資格情報**を指定します。 グローバル管理者のテナントは、Microsoft Azure の資格情報とは異なる場合があります。
+   * コネクタの登録に使用する管理者アカウントは、アプリケーション プロキシ サービスを有効にしたディレクトリと同じディレクトリに属している必要があります。 たとえば、テナントのドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他の有効なエイリアスであることが必要です。
+   * コネクタをインストールするサーバーで [IE セキュリティ強化の構成] がオンになっていると、登録画面がブロックされることがあります。 アクセスを許可するには、エラー メッセージに示された指示に従ってください。 Internet Explorer セキュリティ強化の構成が無効になっていることを確認します。
+   * コネクタの登録が成功しない場合は、「 [アプリケーション プロキシのトラブルシューティング](../active-directory/manage-apps/application-proxy-troubleshoot.md)」をご覧ください。
 
-    ![コネクタのインストール完了](./media/app-proxy/app-proxy-connector-installed.png)
+     ![コネクタのインストール完了](./media/app-proxy/app-proxy-connector-installed.png)
 4. コネクタが適切に動作していることを確認するには、Azure AD アプリケーション プロキシ コネクタのトラブルシューティング ツールを実行します。 トラブルシューティング ツールを実行すると、正常であることを示すレポートが表示されます。
 
     ![トラブルシューティング ツールの正常終了](./media/app-proxy/app-proxy-connector-troubleshooter.png)

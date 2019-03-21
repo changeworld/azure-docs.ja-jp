@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c4e3d074ad241ec6add6fe43b77413ce283e389
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e99f794c4eb9db78f50f63f14ccfad08c65ddb07
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207009"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442058"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sauce-labs---mobile-and-web-testing"></a>チュートリアル:Azure Active Directory と Sauce Labs - Mobile and Web Testing の統合
 
@@ -138,7 +138,7 @@ Sauce Labs - Mobile and Web Testing で Azure AD のシングル サインオン
 
     b. **[ALLOW JUST-IN-TIME PROVISIONING]\(Just-In-Time プロビジョニングを許可する\)** チェックボックスをオンにします。
 
-    c. **[保存]** をクリックします。
+    c. **[Save]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -170,7 +170,7 @@ Sauce Labs - Mobile and Web Testing で Azure AD のシングル サインオン
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
   
 ### <a name="create-a-sauce-labs---mobile-and-web-testing-test-user"></a>Sauce Labs - Mobile and Web Testing テスト ユーザーを作成する
 

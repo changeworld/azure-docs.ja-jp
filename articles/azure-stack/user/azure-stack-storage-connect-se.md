@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 9debcd121cbbde626758abccfe838abda12ad840
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822835"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763369"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Azure Stack サブスクリプションまたはストレージ アカウントにストレージ エクスプローラーを接続する
 
@@ -30,7 +30,7 @@ ms.locfileid: "55822835"
 > [!NOTE]  
 > Azure Stack ストレージからデータを移動するために利用できるツールは、いくつかあります。 詳細については、「[Data transfer tools for Azure Stack storage](azure-stack-storage-transfer.md)」 (Azure Stack Storage のデータ転送ツール) を参照してください。
 
-ストレージ エクスプローラーをまだインストールしていない場合は、[ストレージ エクスプローラーをダウンロード](http://www.storageexplorer.com/)し、インストールしてください。
+ストレージ エクスプローラーをまだインストールしていない場合は、[ストレージ エクスプローラーをダウンロード](https://www.storageexplorer.com/)し、インストールしてください。
 
 Azure Stack サブスクリプションまたはストレージ アカウントに接続したら、[Azure ストレージ エクスプローラーの記事](../../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用し、Azure Stack データを操作できます。 
 

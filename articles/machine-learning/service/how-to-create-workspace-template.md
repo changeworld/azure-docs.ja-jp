@@ -4,18 +4,17 @@ titleSuffix: Azure Machine Learning service
 description: Azure Resource Manager テンプレートを使用して新しい Azure Machine Learning service ワークスペースを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: larryfr
-ms.author: haining
-author: hning86
+ms.author: larryfr
+author: Blackmist
 ms.date: 02/11/2019
-ms.openlocfilehash: b9d05e8de01178fd8731e492d2aeefd28f3ef4cf
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2b5ee1b5079f22985b03aaafac30c11a10a3c8f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105707"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850079"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>テンプレートを使用して Azure Machine Learning service ワークスペースを作成する
 
@@ -25,7 +24,7 @@ ms.locfileid: "56105707"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) をお試しください。
 
 * CLI からテンプレートを使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) または [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) が必要です。
 
@@ -193,12 +192,12 @@ Resource Manager テンプレートを使用すると、1 つの調整された�
 1. 「[カスタム テンプレートからリソースをデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)」の手順に従います。 __[テンプレートの編集]__ 画面に到達したら、このドキュメントからテンプレートを貼り付けます。
 1. __[保存]__ を選択してテンプレートを使用します。 次の情報を指定して、表示される使用条件に同意します。
 
-    * サブスクリプション:これらのリソースに使用する Azure サブスクリプションを選択します。
-    * リソース グループ: サービスが含まれるリソース グループを選択または作成します。
-    * ワークスペース名: 作成される Azure Machine Learning ワークスペースに使用する名前。 ワークスペース名は 3 から 33 文字で指定する必要があります。 使用できるのは英数字と "-" のみです。
-    * 場所:リソースを作成する場所を選択します。
+   * サブスクリプション:これらのリソースに使用する Azure サブスクリプションを選択します。
+   * リソース グループ: サービスが含まれるリソース グループを選択または作成します。
+   * ワークスペース名: 作成される Azure Machine Learning ワークスペースに使用する名前。 ワークスペース名は 3 から 33 文字で指定する必要があります。 使用できるのは英数字と "-" のみです。
+   * 場所:リソースを作成する場所を選択します。
 
-    ![Azure portal 内のテンプレート パラメーター](media/how-to-create-workspace-template/template-parameters.png)
+     ![Azure portal 内のテンプレート パラメーター](media/how-to-create-workspace-template/template-parameters.png)
 
 詳細については、「[カスタム テンプレートからリソースをデプロイする](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)」を参照してください。
 

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 95fb889da564d6e40e25dfb9ee64a8665a954652
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5496be93a5241621cd4dc5e873e4386f8ed6c992
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700742"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195219"
 ---
 # <a name="public-ip-address-prefix"></a>パブリック IP アドレス プレフィックス
 
 パブリック IP アドレス プレフィックスとは、Azure でパブリック エンドポイントに対して予約されている IP アドレスの範囲です。 Azure では、ユーザーが指定した数に基づいて、連続した範囲のアドレスがサブスクリプションに割り当てられます。 パブリック アドレスについて詳しくは、「[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)」をご覧ください。
 
-パブリック IP アドレスは、各 Azure リージョン内のアドレスのプールから割り当てられます。 Azure で各リージョンに使用される範囲の一覧を[ダウンロード](https://www.microsoft.com/download/details.aspx?id=41653)できます。 たとえば、40.121.0.0/16 は、米国東部リージョンで使用される 100 を超える範囲の 1 つです。 この範囲には、40.121.0.1 から 40.121.255.254 の使用可能なアドレスが含まれます。
+パブリック IP アドレスは、各 Azure リージョン内のアドレスのプールから割り当てられます。 Azure で各リージョンに使用される範囲の一覧を[ダウンロード](https://www.microsoft.com/download/details.aspx?id=56519)できます。 たとえば、40.121.0.0/16 は、米国東部リージョンで使用される 100 を超える範囲の 1 つです。 この範囲には、40.121.0.1 から 40.121.255.254 の使用可能なアドレスが含まれます。
 
 Azure リージョンおよびサブスクリプションでパブリック IP アドレス プレフィックスを作成するには、名前と、プレフィックスに含まれるアドレスの数を指定します。 たとえば、/28 というパブリック IP アドレス プレフィックスを作成すると、Azure の範囲の 1 つからユーザーに 16 個のアドレスが割り当てられます。 Azure によって割り当てられる範囲は、範囲を作成するまでわかりませんが、アドレスは連続しています。 パブリック IP アドレス プレフィックスは有料です。 詳しくは、「[パブリック IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses)」をご覧ください。
 

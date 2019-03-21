@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 3d7fd9b3e7ab8e5f193fd3b34a804b9ed0780d66
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 54b440ee76fe36a83284b8ce769bb31012781a35
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105690"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295761"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Azure Data Factory で Databricks を使用してデータを変換する
 
@@ -39,7 +39,7 @@ ms.locfileid: "56105690"
 
 2.  **Azure Databricks ワークスペース**があることを確認します。または、新しく作成します。
 
-1.  **ETL 用のノートブックをインポート**します。 以下の Transformations ノートブックを Databricks ワークスペースにインポートします。 (以下と同じ場所でなくてもかまいませんが、後でわかるように選択したパスを憶えておいてください。)URL フィールドに次の URL を入力して、そこからノートブックをインポートします: `https://Data Factorylabstaging1.blob.core.windows.net/share/Transformations.html`。 **[インポート]** を選択します。
+1.  **ETL 用のノートブックをインポート**します。 以下の Transformations ノートブックを Databricks ワークスペースにインポートします。 (以下と同じ場所でなくてもかまいませんが、後でわかるように選択したパスを憶えておいてください。)URL フィールドに次の URL を入力して、そこからノートブックをインポートします: `https://DataFactorylabstaging1.blob.core.windows.net/share/Transformations.html`。 **[インポート]** を選択します。
 
     ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
 
@@ -54,9 +54,9 @@ ms.locfileid: "56105690"
 
     try:  
       dbutils.fs.mount(  
-        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
-        mount_point = "/mnt/Data Factorydata",  
-        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
+        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
+        mount_point = "/mnt/Data Factorydata",  
+        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
 
     except Exception as e:  
       # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.

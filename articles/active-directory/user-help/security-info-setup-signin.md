@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3da54c4f7fae5a613d88f169d58a083f9273c0d3
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: f9c6faff10f68d720bc3c86a191e4cd1b1f9abdc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587890"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123608"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>サインイン ページのプロンプトからセキュリティ情報 (プレビュー) を設定する
 職場または学校アカウントにサインインした直後にセキュリティ情報の設定を求められた場合は、次の手順のようにして設定できます。
@@ -39,10 +39,10 @@ ms.locfileid: "56587890"
 
 1. プロンプトで **[次へ]** を選択した後、**アカウントのセキュリティ保護ウィザード**が表示されて、管理者と組織が設定するよう要求している最初のメソッドが示されます。 この例では、Microsoft Authenticator アプリです。
 
-    >[!Note]
-    >Microsoft Authenticator アプリ以外の認証アプリを使用する場合は、**[別の認証アプリを使用します]** リンクを選択します。
-    
-    >組織で、認証アプリのほかに別の方法を選択できる場合は、**[別の方法を設定します]** リンクを選択できます。
+   > [!Note]
+   > Microsoft Authenticator アプリ以外の認証アプリを使用する場合は、**[別の認証アプリを使用します]** リンクを選択します。
+   > 
+   > 組織で、認証アプリのほかに別の方法を選択できる場合は、**[別の方法を設定します]** リンクを選択できます。
 
     ![認証アプリのダウンロード ページを表示されているアカウントのセキュリティ保護ウィザード](media/security-info/securityinfo-prompt-get-auth-app.png)
 

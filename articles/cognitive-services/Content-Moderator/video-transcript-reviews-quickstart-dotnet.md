@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: feecafcae8095c11736d1a76a1b6774c8dde1fc8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2e33f94486fe295fffa1f0b4bbd298b15d9271f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864096"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113735"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>.NET を使用してビデオ トランスクリプト レビューを作成する
 
@@ -246,10 +246,10 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 1. Content Moderator のチーム名。
 1. **CreateVideoReviews** によって返されるビデオ レビュー ID。
 1. An IList<TranscriptModerationBodyItem>。 **TranscriptModerationBodyItem** には次のプロパティがあります。
-- **Terms**。 An IList<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** には次のプロパティがあります。
-- **Index**。 用語のゼロベースのインデックスです。
-- **Term**。 用語を含む文字列です。
-- **Timestamp**。 用語が見つかったトランスクリプトの時間 (秒単位) を含む文字列です。
+1. **Terms**。 An IList<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** には次のプロパティがあります。
+1. **Index**。 用語のゼロベースのインデックスです。
+1. **Term**。 用語を含む文字列です。
+1. **Timestamp**。 用語が見つかったトランスクリプトの時間 (秒単位) を含む文字列です。
 
 トランスクリプトは、WebVTT 形式である必要があります。 詳細については、[WebVTT (Web ビデオ テキスト トラック) 形式に関するページを参照してください](https://www.w3.org/TR/webvtt1/)。
 

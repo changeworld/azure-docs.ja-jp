@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/21/2019
+ms.topic: conceptual
+ms.date: 03/21/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: aa467910cfa2dad84af3905db3592657cae85be9
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d35ab3f477f327cb85cd8dfebd255542489debdc
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594357"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286144"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>VPN を使用して Azure Stack を Azure に接続する
 
@@ -92,8 +92,7 @@ ms.locfileid: "56594357"
 5. 仮想ネットワークを選択するには、**[仮想ネットワーク]** を選択します。 その後、一覧から **[AzureVnet]** を選択します。
 6. **[パブリック IP アドレス]** を選択します。 **[パブリック IP アドレスの選択]** セクションが開いたら、**[新規作成]** を選択します。
 7. **[名前]** に「**Azure-GW-PiP**」と入力し、**[OK]** を選択します。
-8. 既定では、**[VPN の種類]** に **[ルート ベース]** が選択されています。 VPN の種類は **[ルート ベース]** のままにします。
-9. **[サブスクリプション]** と **[場所]** が正しいことを確認します。 リソースをダッシュボードにピン留めできます。 **作成**を選択します。
+8. **[サブスクリプション]** と **[場所]** が正しいことを確認します。 リソースをダッシュボードにピン留めできます。 **作成**を選択します。
 
 ### <a name="create-the-local-network-gateway-resource"></a>ローカル ネットワーク ゲートウェイ リソースを作成する
 

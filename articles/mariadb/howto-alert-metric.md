@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 15f280b16e362a4b39cb9fc0e4baaf67d0e31942
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ce9804a4ecad4cd0f2e797038dc10c71b50de9bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661702"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122719"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Azure portal を使用して Azure Database for MariaDB のメトリックのアラートを設定する
 
@@ -60,21 +60,21 @@ ms.locfileid: "55661702"
 
 10. アクションの種類で、**[電子メール/SMS/プッシュ/音声]** を構成します。
     
-   [電子メールの Azure Resource Manager のロール] を選択して、通知を受信するサブスクリプションの所有者、共同作成者、および閲覧者を選択します。
+    [電子メールの Azure Resource Manager のロール] を選択して、通知を受信するサブスクリプションの所有者、共同作成者、および閲覧者を選択します。
    
-   オプションで、アラートが発生したときに呼び出す webhook の有効な URI を **[webhook]** フィールドに入力します。
+    オプションで、アラートが発生したときに呼び出す webhook の有効な URI を **[webhook]** フィールドに入力します。
 
-   完了したら、**[OK]** を選択します。
+    完了したら、**[OK]** を選択します。
 
-   ![アクション グループ](./media/howto-alert-metric/10-action-group-type.png)
+    ![アクション グループ](./media/howto-alert-metric/10-action-group-type.png)
 
 11. [アラート ルール名]、[説明]、[重大度] を指定します。
 
-   ![アクション グループ](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![アクション グループ](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. **[アラート ルールの作成]** を選択して、アラートを作成します。
 
-   数分後にアラートがアクティブになり、前述のようにトリガーされます。
+    数分後にアラートがアクティブになり、前述のようにトリガーされます。
 
 ## <a name="manage-your-alerts"></a>アラートの管理
 アラートを作成したら、それを選択して次のアクションを実行できます。

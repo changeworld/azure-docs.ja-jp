@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b7a785cc506f12360edc14555b7241a557dc400c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817337"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541929"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ ms.locfileid: "55817337"
 > Amazon Redshift から大量のデータをコピーするときに最適なパフォーマンスを得るには、Amazon Simple Storage Service (Amazon S3) 経由で組み込みの Redshift **UNLOAD** コマンドを使用することを検討してください。 詳細については、「[Amazon Redshift からのデータ コピーで UNLOAD を使用する](#use-unload-to-copy-data-from-amazon-redshift)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-* データをオンプレミスのデータ ストアに移動する場合は、オンプレミス コンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。 オンプレミスのマシンの IP アドレスを使用してゲートウェイが Amazon Redshift クラスターにアクセスすることを許可します。 手順については、「[Authorize access to the cluster (クラスターへのアクセスの許可)](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)」を参照してください。
+* データをオンプレミスのデータ ストアに移動する場合は、オンプレミス コンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。 オンプレミスのマシンの IP アドレスを使用してゲートウェイが Amazon Redshift クラスターにアクセスすることを許可します。 手順については、「[Authorize access to the cluster (クラスターへのアクセスの許可)](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)」を参照してください。
 * Azure データ ストアにデータを移動する場合は、[Microsoft Azure データセンターで使用されるコンピューティング IP アドレスと SQL 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。
 
 ## <a name="getting-started"></a>使用の開始
@@ -100,7 +100,7 @@ ms.locfileid: "55817337"
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Amazon Redshift からのデータ コピーで UNLOAD を使用する
 
-Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) コマンドでは、クエリの結果が Amazon S3 上の 1 つ以上のファイルにアンロードされます。 このコマンドは、Redshift から大きなデータセットをコピーするための方法として Amazon から推奨されています。
+Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) コマンドでは、クエリの結果が Amazon S3 上の 1 つ以上のファイルにアンロードされます。 このコマンドは、Redshift から大きなデータセットをコピーするための方法として Amazon から推奨されています。
 
 **例:Amazon Redshift から Azure SQL Data Warehouse へのデータのコピー**
 

@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: e7ffd8f6f4f3aee376a09071fad0f1a36c23f1c4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: dd80095f50aa7bff488ac24e498afc0b41958dc0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694008"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403449"
 ---
 # <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>モノのインターネット (IoT) テクノロジとソリューション: PaaS と SaaS
 
@@ -90,7 +90,7 @@ IoT ソリューションを計画するうえで、Azure IoT 製品の選択は
 
 ### <a name="device-support"></a>デバイスのサポート
 
-[Azure IoT スタート キット](https://catalog.azureiotsuite.com/kits)を活用したり、[デバイス カタログ](http://catalog.azureiotsuite.com/)に掲載された数百もの Certified for IoT デバイスから選択することで、IoT プロジェクトを自信を持って始めることができます。 すべてのデバイスはどのプラットフォームでも使用可能であり、IoT Hub へシームレスに接続できることをテスト済みです。
+[Azure IoT スタート キット](https://catalog.azureiotsolutions.com/kits)を活用したり、[デバイス カタログ](https://catalog.azureiotsolutions.com/)に掲載された数百もの Certified for IoT デバイスから選択することで、IoT プロジェクトを自信を持って始めることができます。 すべてのデバイスはどのプラットフォームでも使用可能であり、IoT Hub へシームレスに接続できることをテスト済みです。
 オープン ソース [デバイス SDK](/azure/iot-hub/iot-hub-devguide-sdks) を使用すれば、すべてのデバイスを Azure IoT に接続できます。 SDK は複数のオペレーティング システム (Linux、Windows など)、リアルタイム オペレーティング システム、および複数のプログラミング言語 ([C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp)、[Python](https://github.com/Azure/azure-iot-sdk-python) など) をサポートしています。
 
 ### <a name="iot"></a>IoT 

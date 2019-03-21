@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory とは | Microsoft Docs
+title: Azure Active Directory とは - Azure Active Directory | Microsoft Docs
 description: 必要な用語、対象ユーザー、ライセンスの基本、および関連する機能を含め、Azure Active Directory について学習します。
 services: active-directory
 author: eross-msft
@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8b443dc2d25558343fb8cad3fd5e9734a672e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0d3b3cd7e759892c2215f190a682f5f69818958d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187391"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442370"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは 
 Azure Active Directory (Azure AD) は、Microsoft のクラウドベースの ID およびアクセス管理サービスです。 Azure AD を使用すると、従業員が次のリソースにサインインおよびアクセスしやすくなります。

@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: c03278c0d0faced20f4e02fcc1f61531c88ae141
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8a8f669c33f40fb80dc826ec04203880dee74d82
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869672"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109411"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
@@ -49,7 +49,7 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 | `-s START_DATE`、`--start_date START_DATE` | *YYYY-MM-DD* 形式のダウンロード開始日 (当日を含む)。 | `None` |
 | `-e END_DATE`、`--end_date END_DATE` | *YYYY-MM-DD* 形式のダウンロード終了日 (当日を含む)。 | `None` |
 | `-o OVERWRITE_MODE`、`--overwrite_mode OVERWRITE_MODE` | 使用する上書きモード。 | |
-| | `0`:上書きしません。BLOB が現在使用されているかどうかをユーザーに問い合わせます。 | 既定値 | |
+| | `0`:上書きしません。BLOB が現在使用されているかどうかをユーザーに問い合わせます。 | 既定値 |
 | | `1`:ファイルのサイズが異なる場合や BLOB が現在使用されている場合の処理方法をユーザーに問い合わせます。 | |
 | | `2`:常に上書きします。現在使用されている BLOB をダウンロードします。 | |
 | | `3`:上書きしません。サイズがより大きい場合は問い合わせなしで追加します。現在使用されている BLOB をダウンロードします。 | |

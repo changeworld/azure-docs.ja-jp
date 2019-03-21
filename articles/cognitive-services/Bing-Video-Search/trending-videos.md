@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2aa3c0cd9112f2de9ccda818e74b0b2c377133bf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 486cf2e3bcf851f23011bb2fb8d91691d6190698
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869366"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120841"
 ---
 # <a name="get-trending-videos-with-the-bing-video-search-api"></a>Bing Video Search API を使用して急上昇中の動画を取得する 
 
@@ -124,4 +124,4 @@ Host: api.cognitive.microsoft.com
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-[ビデオの分析情報の取得](video-insights.md)
+> [ビデオの分析情報の取得](video-insights.md)

@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a40159a43db6f83029ed6eacd37d2a4eff28aa09
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203848"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193060"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同期: Scheduler
 このトピックでは、Azure AD Connect 同期の組み込みのスケジューラ ( 同期エンジンとも言います) について説明します。
@@ -55,7 +55,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 * **PurgeRunHistoryInterval**。 操作ログを保持する時間です。 ログは Synchronization Service Manager で参照できます。 既定では、ログは 7 日間保持されます。
 * **SyncCycleEnabled**。 スケジューラが、その操作の一部としてインポート、同期、およびエクスポート処理を実行しているかどうかを示します。
 * **MaintenanceEnabled**。 メンテナンス処理が有効になっているかどうかを示します。 メンテナンス処理では、証明書/キーの更新と、操作ログの消去が行われます。
-* **StagingModeEnabled**。 [ステージング モード](how-to-connect-sync-operations.md#staging-mode) が有効になっているかどうかを示します。 この設定が有効になっている場合、エクスポートは実行されませんが、インポートと同期は引き続き実行されます。
+* **StagingModeEnabled**。 [ステージング モード](how-to-connect-sync-staging-server.md) が有効になっているかどうかを示します。 この設定が有効になっている場合、エクスポートは実行されませんが、インポートと同期は引き続き実行されます。
 * **SchedulerSuspended**。 アップグレード中にスケジューラの実行を一時的にブロックするために Connect によって設定されます。
 
 これらの設定のいくつかは、 `Set-ADSyncScheduler`を使用して変更できます。 次のパラメーターに変更を加えることができます。

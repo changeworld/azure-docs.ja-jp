@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: f84341d6d8ac3b5c7febaa4f659da84efcebb780
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473348"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847367"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>機械学習ツールとデータ サイエンス ツール
 Azure データ サイエンス仮想マシンには、Python、R、Julia などの一般的な言語で使用できる、機械学習 (ML) のための豊富な一連のツールおよびライブラリがあります。 
@@ -71,7 +71,7 @@ Azure データ サイエンス仮想マシンには、Python、R、Julia など
 | サポートされているエディション     | Windows、Linux     |
 | 標準的な使用      | 一般的な ML ツール     |
 | 使用または実行方法      | Windows では、[スタート] メニューで Weka を探します。 Linux では、X2Go でサインインし、**[アプリケーション]** > **[開発]** > **[Weka]** に移動します。 |
-| サンプルへのリンク      | [Weka サンプル](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| サンプルへのリンク      | [Weka サンプル](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | 関連するツール      |LightGBM、Rattle、XGBoost   |
 
 ## <a name="rattle"></a>Rattle

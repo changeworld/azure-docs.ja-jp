@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: 937e261405634e88ab234d2fe43ee660a3acc417
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b6c5df1ef0c93508595e27cbda315281aa3461b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233661"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124288"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法  
 
@@ -328,17 +328,17 @@ msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataL
    ![U-SQL プロジェクトの CI/CD MSBuild タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
 
-1.  `Azure.DataLake.USQL.SDK` を含むソリューションで参照する NuGet パッケージを取得する NuGet 復元タスクを追加して、MSBuild で U-SQL 言語ターゲットを見つけられるようにします。 手順 2 で直接 MSBuild 引数サンプルを使用する場合は、**[詳細設定]** > **[宛先ディレクトリ]** を `$(Build.SourcesDirectory)/packages` に設定します。
+1. `Azure.DataLake.USQL.SDK` を含むソリューションで参照する NuGet パッケージを取得する NuGet 復元タスクを追加して、MSBuild で U-SQL 言語ターゲットを見つけられるようにします。 手順 2 で直接 MSBuild 引数サンプルを使用する場合は、**[詳細設定]** > **[宛先ディレクトリ]** を `$(Build.SourcesDirectory)/packages` に設定します。
 
-    ![U-SQL プロジェクトの CI/CD NuGet タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
+   ![U-SQL プロジェクトの CI/CD NuGet タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2.  次の例に示すように、Visual Studio ビルド ツールまたは MSBuild タスクで MSBuild 引数を設定します。 または、Azure Pipelines ビルド パイプラインで、これらの引数の変数を定義することもできます。
+2. 次の例に示すように、Visual Studio ビルド ツールまたは MSBuild タスクで MSBuild 引数を設定します。 または、Azure Pipelines ビルド パイプラインで、これらの引数の変数を定義することもできます。
 
    ![U-SQL データベース プロジェクトの CI/CD MSBuild 変数を定義する](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
 
-    ```
-    /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
-    ```
+   ```
+   /p:USQLSDKPath=$(Build.SourcesDirectory)/packages/Microsoft.Azure.DataLake.USQL.SDK.1.3.180615/build/runtime
+   ```
  
 ### <a name="u-sql-database-project-build-output"></a>U-SQL データベース プロジェクトのビルド出力
 

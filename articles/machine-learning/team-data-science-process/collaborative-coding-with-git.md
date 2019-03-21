@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 045f2d12eb6836d14a09ea96c8eca3cad0e5246d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458231"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863300"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
@@ -36,7 +36,7 @@ Azure DevOps Services は、作業項目 (ストーリーやタスク) を Git �
 
 各ストーリーの作業項目の Git ブランチを作成することをお勧めします。 次に、タスク作業項目ごとに、ストーリー ブランチに基づいてブランチを作成します。 ストーリーとタスクのリレーションシップに対応するこの階層的な方法でブランチを編成すると、複数のユーザーが同じプロジェクトの異なるストーリーを作業する場合や、複数のユーザーが同じストーリーの異なるタスクを作業する場合に便利です。 各チーム メンバーが異なるブランチに取り組むときや、ブランチを共有している各メンバーが異なるコードまたはその他のアーティファクトに取り組むときの競合を最小化できます。 
 
-次の図は、TDSP の推奨のブランチ戦略を示しています。 同じプロジェクトに取り組むユーザーが 1 人か 2 人だけの場合や、1 人のユーザーだけがストーリーのすべてのタスクに取り組む場合には特に、ここで示すほど多くのブランチは必要ありません。 ただし、開発ブランチは master ブランチから分離することを常にお勧めします。 これにより、リリース ブランチが開発アクティビティによって中断されるのを防ぐことができます。 Git ブランチ モデルのより詳細な説明は、「[A Successful Git Branching Model (成功する Git ブランチ モデル)](http://nvie.com/posts/a-successful-git-branching-model/)」をご覧ください。
+次の図は、TDSP の推奨のブランチ戦略を示しています。 同じプロジェクトに取り組むユーザーが 1 人か 2 人だけの場合や、1 人のユーザーだけがストーリーのすべてのタスクに取り組む場合には特に、ここで示すほど多くのブランチは必要ありません。 ただし、開発ブランチは master ブランチから分離することを常にお勧めします。 これにより、リリース ブランチが開発アクティビティによって中断されるのを防ぐことができます。 Git ブランチ モデルのより詳細な説明は、「[A Successful Git Branching Model (成功する Git ブランチ モデル)](https://nvie.com/posts/a-successful-git-branching-model/)」をご覧ください。
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 

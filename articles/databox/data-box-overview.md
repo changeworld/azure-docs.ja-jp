@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: d0d5ee18e37436562f1e9e15571dc39fb0e00129
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a81eef9e3f7892afa1d64befec35852381ffe17b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875038"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117746"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは
 
@@ -44,11 +44,11 @@ Data Box は、ネットワークにほとんどまたはまったく影響を�
 - **速度** - Data Box では、1 Gbps または 10 Gbps ネットワーク インターフェイスを使用して、最大 80 TB のデータを Azure に移動します。
 
 - **セキュリティ保護** - Data Box には、デバイス、データ、サービスのセキュリティ保護が組み込まれています。
-    - デバイスの筐体は堅牢で、開封防止ネジと開封明示ステッカーによってセキュリティ保護されています。 
-    - デバイスのデータは、AES 256 ビット暗号化によって常にセキュリティ保護されています。
-    - デバイスは、Azure portal で提供されるパスワードでのみロックを解除できます。
-    - このサービスは、Azure のセキュリティ機能によって保護されています。
-    - データが Azure にアップロードされたら、NIST 800-88r1 規格に従って、デバイスのディスクが完全にワイプされます。
+  - デバイスの筐体は堅牢で、開封防止ネジと開封明示ステッカーによってセキュリティ保護されています。 
+  - デバイスのデータは、AES 256 ビット暗号化によって常にセキュリティ保護されています。
+  - デバイスは、Azure portal で提供されるパスワードでのみロックを解除できます。
+  - このサービスは、Azure のセキュリティ機能によって保護されています。
+  - データが Azure にアップロードされたら、NIST 800-88r1 規格に従って、デバイスのディスクが完全にワイプされます。
     
     詳細については、「[Azure Data Box のセキュリティとデータ保護](data-box-security.md)」を参照してください。
 

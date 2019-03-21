@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: johndeu;
-ms.openlocfilehash: 89a19d53046afd8d2b16b23508e952989091c8d2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 10dbf7e8cf67ab721cf525d4a1e7594473592bd4
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005269"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295174"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>ライブ ストリーミングでの時間指定メタデータのシグナル通知 
 
@@ -120,6 +120,7 @@ Movie Box ("moov") は、スパース トラックのストリーム ヘッダ�
 | **フィールド名** | **フィールドの型**          | **必須** | **説明**                                                                                                |
 |----------------|-------------------------|---------------|----------------------------------------------------------------------------------------------------------------|
 | duration       | 64 ビット符号なし整数 | 必須      | 0 である必要があります。これは、トラック ボックスは 0 サンプルであり、トラック ボックスのサンプルの合計継続時間は 0 であるためです。 |
+
 -------------------------------------
 
 [ISO-14496-12] で定義されているように、"moov" ボックスは **HandlerBox ("hdlr")** を含む必要があり、次の制約があります。
@@ -127,6 +128,7 @@ Movie Box ("moov") は、スパース トラックのストリーム ヘッダ�
 | **フィールド名** | **フィールドの型**          | **必須** | **説明**   |
 |----------------|-------------------------|---------------|-------------------|
 | handler_type   | 32 ビット符号なし整数 | 必須      | "meta" である必要があります。 |
+
 -------------------------------------
 
 "stsd" ボックスは、[ISO-14496-12] で定義されているコーディング名前を持つ MetaDataSampleEntry ボックスを含む必要があります。  たとえば、SCTE-35 メッセージの場合は、コーディング名は "scte" である必要があります。
@@ -225,7 +227,7 @@ Apple HTTP ライブ ストリーミング (HLS) の時間指定メタデータ�
 
 | **属性名** | **Type**                      | **必須**                             | **説明**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CUE                | 引用符で囲まれた文字列                 | 必須                                  | [IETF RFC 4648](http://tools.ietf.org/html/rfc4648) で説明されているように、base64 文字列としてエンコードされたメッセージ。 [SCTE-35] メッセージの場合、これは base64 でエンコードされた splice_info_section() です。                                                                                                |
+| CUE                | 引用符で囲まれた文字列                 | 必須                                  | [IETF RFC 4648](https://tools.ietf.org/html/rfc4648) で説明されているように、base64 文字列としてエンコードされたメッセージ。 [SCTE-35] メッセージの場合、これは base64 でエンコードされた splice_info_section() です。                                                                                                |
 | TYPE               | 引用符で囲まれた文字列                 | 必須                                  | メッセージのスキームを示す URN または URL。 [SCTE-35] メッセージの場合、タイプは特別な値 "scte35" です。                                                                                                                                |
 | ID                 | 引用符で囲まれた文字列                 | 必須                                  | イベントの一意識別子。 メッセージが取り込まれときに ID が指定されていない場合は、Azure Media Services が一意 ID を生成します。                                                                                                                                          |
 | DURATION           | 10 進浮動小数点数 | 必須                                  | イベントの継続時間。 わからない場合は、0 にする必要があります。 単位は秒の小数部です。                                                                                                                                                                                           |
@@ -292,7 +294,7 @@ EventStream 要素には 0 個以上の Event 要素が含まれており、次�
 | presentation_time   | 64 ビット符号なし整数 | 省略可能      | Period の開始を基準とするイベントのメディア プレゼンテーション時間でなければなりません。 プレゼンテーション時間と継続時間は、[ISO-14496-12] Annex I で定義されているように、タイプ 1 または 2 のストリーム アクセス ポイント (SAP) と一致している必要があります。 |
 | duration            | 32 ビット符号なし整数 | 省略可能      | イベントの継続時間。 継続時間が不明の場合、この属性は省略しなければなりません。                                                                                                                                                 |
 | id                  | 32 ビット符号なし整数 | 省略可能      | メッセージのこのインスタンスを示します。 同じセマンティクスを持つメッセージには、同じ値が設定されている必要があります。 メッセージが取り込まれときに ID が指定されていない場合は、Azure Media Services が一意 ID を生成します。             |
-| Event element value | 文字列                  | 必須      | [IETF RFC 4648](http://tools.ietf.org/html/rfc4648) で説明されているように、base64 文字列として表されたイベント メッセージ。                                                                                                                   |
+| Event element value | 文字列                  | 必須      | [IETF RFC 4648](https://tools.ietf.org/html/rfc4648) で説明されているように、base64 文字列として表されたイベント メッセージ。                                                                                                                   |
 
 #### <a name="xml-syntax-and-example-for-dash-manifest-mpd-signaling"></a>DASH マニフェスト (MPD) シグナル通知の XML 構文と例
 
@@ -396,7 +398,7 @@ Smooth Streaming の取り込みでは、[SCTE-35] の表 8-1 で定義されて
 
 **[MS-SSTR]** ["Microsoft Smooth Streaming プロトコル"、2014 年 5 月 15 日](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf)
 
-**[AMF0]** ["アクション メッセージ形式 AMF0"](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
+**[AMF0]** ["アクション メッセージ形式 AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf)
 
 **[LIVE-FMP4]** [Azure Media Services の Fragmented MP4 ライブ取り込み仕様](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview)
 

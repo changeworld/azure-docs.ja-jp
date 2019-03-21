@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: f9abc6d79bd821ef612e9e7648b1b5af98bb5cf6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 27c1481314ba1dd77cdcf229842aeec7de3e4444
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456233"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117457"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption (ADE) が有効な仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -123,8 +123,8 @@ Site Recovery によって使用される既定のターゲット設定を変更
 
 
 2. [暗号化設定] の横にある **[カスタマイズ]** をクリックして、以下の既定の設定を変更します。
-    - **[ターゲットのディスク暗号化キー コンテナー]** で、サブスクリプションのターゲットの場所にあるすべてのキー コンテナーの一覧から、ターゲットのディスク暗号化キー コンテナーを選択します。
-  - **[ターゲットのキー暗号化キー コンテナー]** で、サブスクリプションのターゲットの場所にあるすべてのキー コンテナーの一覧から、ターゲットのキー暗号化キー コンテナーを選択します。
+   - **[ターゲットのディスク暗号化キー コンテナー]** で、サブスクリプションのターゲットの場所にあるすべてのキー コンテナーの一覧から、ターゲットのディスク暗号化キー コンテナーを選択します。
+     - **[ターゲットのキー暗号化キー コンテナー]** で、サブスクリプションのターゲットの場所にあるすべてのキー コンテナーの一覧から、ターゲットのキー暗号化キー コンテナーを選択します。
 
 3. **[Create target resource]\(ターゲット リソースを作成する\)** > **[レプリケーションを有効にする]** の順にクリックします。
 4. VM のレプリケーションが有効になったら、**[レプリケートされたアイテム]** で VM の正常性の状態を確認できます。

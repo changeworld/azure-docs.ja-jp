@@ -10,18 +10,18 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 2df1e2c261069473a02b40e4a7e45895eadea42d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5a2fb54658599e0500944aaae9225f314277f9da
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219398"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539090"
 ---
 # <a name="tutorial-anomaly-detection-with-python-application"></a>チュートリアル: Python アプリケーションによる異常検出
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-このチュートリアルでは、Python で異常検出 API を使用する方法と、広く使われているライブラリを使用して結果を視覚化する方法を紹介します。 このチュートリアルでは Jupyter を使用し、サブスクリプション キーを使って独自のデータを検証します。 対話型の Jupyter ノートブックを使い始める方法については、[Jupyter のドキュメント](http://jupyter.readthedocs.io/en/latest/index.html)を参照してください。 
+このチュートリアルでは、Python で異常検出 API を使用する方法と、広く使われているライブラリを使用して結果を視覚化する方法を紹介します。 このチュートリアルでは Jupyter を使用し、サブスクリプション キーを使って独自のデータを検証します。 対話型の Jupyter ノートブックを使い始める方法については、[Jupyter のドキュメント](https://jupyter.readthedocs.io/en/latest/index.html)を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 

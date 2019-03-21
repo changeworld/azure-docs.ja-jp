@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: a030860bcef41d7276e1356553b984f55e27ae1e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 65fccada665743cf293b4ee4bb8f786a4c01c58a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093907"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>ステートフル サービスの単体テストの作成
 Service Fabric ステートフル サービスの単体テストにより、従来のアプリケーションまたはドメイン固有の単体テストでは必ずしも検出されない一般的な誤りが明らかになります。 ステートフル サービスの単体テストを作成するときに、留意すべき特別な考慮事項があります。
@@ -42,13 +42,13 @@ Service Fabric ステートフル サービスの単体テストにより、従�
 テストの準備 (Arrange) 部分の一環として、モック レプリカ セットと状態マネージャーが作成されます。 レプリカ セットは、各レプリカのテスト対象となるサービスのインスタンスの作成を制御します。 また、`OnChangeRole` や `RunAsync` などのライフサイクル イベントの実行も制御します。 モック状態マネージャーにより、状態マネージャーに対して実行される操作が、実際の状態マネージャーの場合と同様に実行され、維持されるようになります。
 
 1. テスト対象のサービスをインスタンス化するサービス ファクトリ デリゲートを作成します。 これは、Service Fabric サービスまたは Service Fabric アクターの `Program.cs` で通常見られるサービス ファクトリ コールバックと類似しているか同じである必要があります。 これは次のシグネチャに従う必要があります。
-```csharp
-MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
-```
+   ```csharp
+   MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
+   ```
 2. `MockReliableStateManager` クラスのインスタンスを作成します。 これにより、状態マネージャーとのすべての対話がモックされます。
 3. `MockStatefulServiceReplicaSet<TStatefulService>` のインスタンスを作成します。`TStatefulService` は、テスト対象のサービスの種類です。 これには、手順 1. で作成したデリゲートと、手順 2. でインスタンス化された状態マネージャーが必要です。
 4. レプリカ セットにレプリカを追加します。 役割 (Primary、ActiveSecondary、IdleSecondary など) とレプリカの ID を指定します。
-> レプリカ ID は必ず保持してください。 これらは、単体テストの実行 (Act) 部分とアサート (Assert) 部分で使用される可能性があります。
+   > レプリカ ID は必ず保持してください。 これらは、単体テストの実行 (Act) 部分とアサート (Assert) 部分で使用される可能性があります。
 
 ```csharp
 //service factory to instruct how to create the service instance

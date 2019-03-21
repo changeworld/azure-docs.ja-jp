@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 37aa248af30c4beae3f9d170174842c908933339
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 16741461df2431cbf4433899dd375741e944ce0f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020015"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112570"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
 このチュートリアルでは、**Azure SQL Database から Azure SQL Data Warehouse に多数のテーブルをコピーする方法**について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
@@ -87,24 +87,24 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 1. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
 1. **[リソース グループ]** について、次の手順のいずれかを行います。
      
-      - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
-      - **[新規作成]** を選択し、リソース グループの名前を入力します。   
+   - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
+   - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
-      リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+     リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
 1. **バージョン**として **[V2]** を選択します。
 1. データ ファクトリの **場所** を選択します。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 1. **[ダッシュボードにピン留めする]** をオンにします。     
 1. **Create** をクリックしてください。
 1. ダッシュボードに、**[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
 
-    ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
+     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//tutorial-bulk-copy-portal/deploying-data-factory.png)
 1. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
    
-    ![データ ファクトリのホーム ページ](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
+     ![データ ファクトリのホーム ページ](./media/tutorial-bulk-copy-portal/data-factory-home-page.png)
 1. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Data Factory UI アプリケーションを起動します。
 1. **開始**ページで、次の図に示すように、左パネルの **[編集]** タブに切り替えます。  
 
-    ![開始ページ](./media/tutorial-bulk-copy-portal/get-started-page.png)
+     ![開始ページ](./media/tutorial-bulk-copy-portal/get-started-page.png)
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 データ ストアやコンピューティングをデータ ファクトリにリンクするには、リンクされたサービスを作成します。 リンクされたサービスは、Data Factory サービスが実行時にデータ ストアに接続するために使用する接続情報を持っています。 
@@ -179,10 +179,10 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 
 1. **[接続]** タブに切り替えて、次の手順を実行します。 
 
-    1. **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
-    1. **[テーブル]** で任意のテーブルを選択します。 このテーブルはダミーのテーブルです。 パイプラインを作成するときに、ソース データセットに対するクエリを指定します。 このクエリは Azure SQL Database からデータを抽出するために使用します。 または、**[編集]** チェック ボックスをオンにして、テーブル名として「**dummyName**」と入力してもかまいません。 
+   1. **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
+   1. **[テーブル]** で任意のテーブルを選択します。 このテーブルはダミーのテーブルです。 パイプラインを作成するときに、ソース データセットに対するクエリを指定します。 このクエリは Azure SQL Database からデータを抽出するために使用します。 または、**[編集]** チェック ボックスをオンにして、テーブル名として「**dummyName**」と入力してもかまいません。 
 
-    ![ソース データセットの接続ページ](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
+      ![ソース データセットの接続ページ](./media/tutorial-bulk-copy-portal/source-dataset-connection-page.png)
  
 
 ### <a name="create-a-dataset-for-sink-sql-data-warehouse"></a>シンク SQL Data Warehouse のデータセットを作成する

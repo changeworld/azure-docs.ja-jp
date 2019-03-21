@@ -17,12 +17,12 @@ ms.author: negoe
 ms.reviewer: negoe,andret,saeeda,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a487c233e7bb71f05c6f2181d9c822ca508a583c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4feaf97de7b833514113af6c91b3745be0503eff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192950"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113687"
 ---
 # <a name="national-clouds"></a>各国のクラウド
 
@@ -44,10 +44,10 @@ ms.locfileid: "56192950"
 
 | 各国のクラウド | Azure AD ポータル エンドポイント
 | --- | --- |
-| 米国政府向け Azure AD |https://portal.azure.us
-|Azure AD Germany |https://portal.microsoftazure.de
-|21Vianet が運営する Azure AD China |https://portal.azure.cn
-|Azure AD (グローバル サービス)|https://portal.azure.com 
+| 米国政府向け Azure AD |`https://portal.azure.us`
+|Azure AD Germany |`https://portal.microsoftazure.de`
+|21Vianet が運営する Azure AD China |`https://portal.azure.cn`
+|Azure AD (グローバル サービス)|`https://portal.azure.com` 
 
 ## <a name="azure-ad-authentication-endpoints"></a>Azure AD 認証エンドポイント
 
@@ -78,8 +78,8 @@ ms.locfileid: "56192950"
 
 
 
->[!IMPORTANT]
-グローバル サービスの特定のリージョンにある特定のサービスと機能は、各国のクラウドでは使用できない場合もあります。 どのサービスを利用できるかを確認するには、[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)に関するページを参照してください。
+> [!IMPORTANT]
+> グローバル サービスの特定のリージョンにある特定のサービスと機能は、各国のクラウドでは使用できない場合もあります。 どのサービスを利用できるかを確認するには、[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

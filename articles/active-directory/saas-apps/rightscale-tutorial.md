@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 301199667d2307bc81da7ef42f3e4f7daa750ee2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0c99bc4ef23ee2d8f4478bbaab591e7b36c7ea75
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199700"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109833"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>チュートリアル:Azure Active Directory と Rightscale の統合
 
@@ -132,7 +132,7 @@ Rightscale で Azure AD のシングル サインオンを構成してテスト�
 1. **[Rightscale 構成]** セクションで、**[Rightscale の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
     ![シングル サインオンを構成する](./media/rightscale-tutorial/tutorial_rightscale_configure.png) 
-<CS>
+   <CS>
 1. アプリケーションに合わせて SSO を構成するには、管理者として RightScale テナントにサインオンする必要があります。
 
     a. 上部にあるメニューの **[Settings]** タブをクリックし、**[Single Sign-On]** を選択します。
@@ -147,7 +147,7 @@ Rightscale で Azure AD のシングル サインオンを構成してテスト�
    
     ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_003.png)
  
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Allow RightScale-initiated SSO using a discovery hint]** を選択して、下のテキストボックスに**ドメイン名**を入力します。
+    d. **[Allow RightScale-initiated SSO using a discovery hint]** を選択して、下のテキストボックスに**ドメイン名**を入力します。
    
     ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
@@ -164,10 +164,10 @@ Rightscale で Azure AD のシングル サインオンを構成してテスト�
     ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
     h. **[Save]** をクリックします。
-<CE>
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
+   <CE>
+   > [!TIP]
+   > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+   > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -198,7 +198,7 @@ Rightscale で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-rightscale-test-user"></a>Rightscale のテスト ユーザーの作成
 

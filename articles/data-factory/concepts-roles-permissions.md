@@ -1,9 +1,6 @@
 ---
 title: Azure Data Factory のロールとアクセス許可 | Microsoft Docs
 description: データ ファクトリの作成および子リソースの操作に必要なロールとアクセス許可について説明します。
-author: douglaslMS
-ms.author: douglasl
-manager: craigg
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
@@ -11,12 +8,15 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.openlocfilehash: ee35c7ae1b75c6fb4d656927d7e6e4384cd76836
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: 19666eb668dd120c1705c6a62a8ba1abd2321026
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003943"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575717"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 

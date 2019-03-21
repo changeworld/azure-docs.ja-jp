@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 58be8a222f649abe4be6de272a1ef2b686336262
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448485"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847129"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>発行ポータルでのアプリケーションのセットアップ
 
@@ -27,16 +27,16 @@ ms.locfileid: "54448485"
 
 ## <a name="login-and-create-a-new-offer"></a>ログインして新しいオファーを作成する
 
-1. [クラウド パートナー ポータル](http://cloudpartner.azure.com/)にサインインします。
+1. [クラウド パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
 2. 左側のナビゲーション バーから [+新しいオファー] をクリックして、[Dynamics 365 for Customer Engagement] を選択します。
 
 ![新しいオファーの選択](./media/CRMScreenShot14.png)
 
-3. これで新しいプランの "エディター" ビューが開いて、作成を開始する準備ができました。
+1. これで新しいプランの "エディター" ビューが開いて、作成を開始する準備ができました。
 
 ![新しいオファーの画面](./media/CRMScreenShot15.png)
 
-4. 入力が必要な "フォーム" は、[エディター] ビューの左側に表示されます。 各 "フォーム" は、入力する必要がある一連のフィールドで構成されています。必須フィールドには赤いアスタリスク (\*) が付いています。
+1. 入力が必要な "フォーム" は、[エディター] ビューの左側に表示されます。 各 "フォーム" は、入力する必要がある一連のフィールドで構成されています。必須フィールドには赤いアスタリスク (\*) が付いています。
 
 Dynamics 365 for Customer Engagement オファーを作成するための、主な 4 つのフォームがあります。
 
@@ -88,7 +88,7 @@ Dynamics 365 for Customer Engagement オファーを作成するための、主�
 
 ### <a name="crm-package-availability"></a>CRM パッケージの利用可能性
 
-このセクションでは、パッケージが使用可能になる CRM のリージョンを選択します。 どのリージョンがどの国にサービスを提供しているかについては、次のリンクを参照してください: [http://o365datacentermap.azurewebsites.net/](http://o365datacentermap.azurewebsites.net/)
+このセクションでは、パッケージが使用可能になる CRM のリージョンを選択します。 どのリージョンがどの国にサービスを提供しているかについては、次のリンクを参照してください: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 注:ドイツの "ソブリンおよび US Gov クラウド" ソブリンへのデプロイには、認定の際に特別なアクセス許可と検証が必要です。
 

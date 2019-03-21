@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 7f864c90b8279f315fc0dbe96f41bfd03be7cebc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8c9fba14bd3f7d3b55a245f8e647f0eae1f8ef83
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883368"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118427"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler を構成する
 
@@ -111,11 +111,11 @@ App Services の **[アプリケーション設定]** ウィンドウに移動�
     ![App Insights を変更して保存する][change-and-save-appinsights]
 
 1. App Service の **[アプリケーション設定]** ウィンドウに戻り、次の値が設定されていることを確認します。
-    * **APPINSIGHTS_INSTRUMENTATIONKEY**:Application Insights 用の適切なインストルメンテーション キーに置き換えます。
-    * **APPINSIGHTS_PORTALINFO**:ASP.NET 
-    * **APPINSIGHTS_PROFILERFEATURE_VERSION**:1.0.0
+   * **APPINSIGHTS_INSTRUMENTATIONKEY**:Application Insights 用の適切なインストルメンテーション キーに置き換えます。
+   * **APPINSIGHTS_PORTALINFO**:ASP.NET 
+   * **APPINSIGHTS_PROFILERFEATURE_VERSION**:1.0.0
 
-    ![Profiler 用のアプリ設定][app-settings-for-profiler]
+     ![Profiler 用のアプリ設定][app-settings-for-profiler]
 
 1. 必要に応じて、**[拡張機能]** を選択し、拡張機能のバージョンを確認して、更新プログラムを利用できるかどうかを判断します。
 

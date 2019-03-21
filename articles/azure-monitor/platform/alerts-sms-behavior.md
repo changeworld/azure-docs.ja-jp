@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 85480a098dc5ef70938a5ec4cd7a31105496df6f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 225c86ee1a7f764f60b2da0b8e3be02aa5dd22e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461402"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123302"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>アクション グループの SMS アラート動作
 ## <a name="overview"></a>概要 ##
@@ -28,7 +28,7 @@ ms.locfileid: "54461402"
 ## <a name="receiving-an-sms-alert"></a>SMS アラートを受信する
 アクション グループの一部として構成されている SMS の受信者は、アラートがトリガーされたときに SMS を受け取ります。 SMS には、次の情報が含まれています。
 * このアラートの送信先のアクション グループの短い名前
-- アラートのタイトル
+* アラートのタイトル
 
 | 応答 | 説明 |
 | ----- | ----------- |

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: abfc7ce78e8676e9560621be1ec9a81717d958e5
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: b198f860c10bd207a191057e21a8a159c5ebde26
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994285"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403517"
 ---
 # <a name="create-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを作成する
 
@@ -38,15 +38,15 @@ Resource Manager ツールの拡張機能をインストールするチュート
 
 テンプレートのしくみを理解するためにテンプレートの一部を確認してみましょう。 テンプレートに一部のセクションしかない場合もあります。 注目すべきセクションは次のとおりです。
 
-* [parameters](resource-manager-templates-parameters.md) セクション: デプロイ中に指定してデプロイされるインフラストラクチャをカスタマイズできる値を示します。 
+* [parameters](resource-group-authoring-templates.md#parameters) セクション: デプロイ中に指定してデプロイされるインフラストラクチャをカスタマイズできる値を示します。 
 
-* [variables](resource-manager-templates-variables.md) セクション: テンプレート内で使用される値を示します。
+* [variables](resource-group-authoring-templates.md#variables) セクション: テンプレート内で使用される値を示します。
 
 * [functions](resource-group-authoring-templates.md#functions) セクション: テンプレート内で使用されるカスタマイズされたテンプレートの正規表現を示します。
 
-* [resources](resource-manager-templates-resources.md) セクション： サブスクリプションにデプロイされる Azure リソースを示します。
+* [resources](resource-group-authoring-templates.md#resources) セクション： サブスクリプションにデプロイされる Azure リソースを示します。
 
-* [outputs](resource-manager-templates-outputs.md) セクション： デプロイ完了後に返される値を示します。
+* [outputs](resource-group-authoring-templates.md#outputs) セクション： デプロイ完了後に返される値を示します。
 
 ## <a name="look-for-similar-templates"></a>類似のテンプレートを検索する
 
@@ -98,7 +98,7 @@ Resource Manager ツールの拡張機能をインストールするチュート
 }
 ```
 
-タグはパラメーターから動的に適用することもできます。 詳細については、「[テンプレートのタグ](resource-manager-templates-resources.md#tags)」を参照してください。
+タグはパラメーターから動的に適用することもできます。 詳細については、「[テンプレートのタグ](resource-group-using-tags.md#templates)」を参照してください。
 
 ## <a name="review-template-functions"></a>テンプレート関数を確認する
 
@@ -176,7 +176,7 @@ Resource Manager ツールの拡張機能をインストールするチュート
 }
 ```
 
-詳細については、[condition 要素](resource-manager-templates-resources.md#condition)をご覧ください。
+詳細については、[condition 要素](resource-group-authoring-templates.md#condition)をご覧ください。
 
 ## <a name="review-dependencies"></a>依存関係を表示する
 

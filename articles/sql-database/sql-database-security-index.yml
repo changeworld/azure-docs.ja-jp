@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3d82735a5fcfaaa16efec1578136531fd3a2dd91
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b97629551823cfc77d0d88dbd6a19fe1a6ba2b70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236862"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852306"
 documentType: LandingData
 title: Azure SQL Database - 高度なセキュリティ
 metadata:
@@ -83,7 +83,7 @@ sections:
       - href: /azure/sql-database/sql-database-firewall-configure#manage-server-level-ip-firewall-rules-using-azure-powershell
     - title: 脆弱性評価規則の管理
       values:
-      - href: 
+      - href: /azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
       - href: 
       - href: /azure/sql-database/sql-vulnerability-assessment#manage-vulnerability-assessments-using-azure-powershell
 - title: その他のリソース

@@ -5,21 +5,21 @@ description: Azure AI ギャラリーで分析リソースなどを共有し、�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 48bb9b24901cd07891f3d52bcd916f95bc2801f4
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 382d05869a56dc0920d60bca55d99be4b46e3f52
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244225"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885421"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Azure AI ギャラリーでリソースなどを共有し、発見する
 
-**[Azure AI ギャラリー](http://gallery.azure.ai)** は、Azure AI を使用して構築されたソリューションを入手および共有するためのコミュニティ主導のサイトです。
+**[Azure AI ギャラリー](https://gallery.azure.ai)** は、Azure AI を使用して構築されたソリューションを入手および共有するためのコミュニティ主導のサイトです。
 このギャラリーには、独自の分析ソリューションの開発に使用できるさまざまなリソースが含まれています。
 
 ## <a name="what-can-i-find-in-the-gallery"></a>ギャラリーではどのようなものが見つかるのですか。
@@ -201,4 +201,4 @@ Studio 内からリソースをダウンロードするには:
 
 ![フィードバック](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[ギャラリーにアクセスする >>](http://gallery.azure.ai)**
+**[ギャラリーにアクセスする >>](https://gallery.azure.ai)**

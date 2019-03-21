@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 14bbb77678a70b51c7f640b501827c5618cce606
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 07a8195969df7ad7afd2bfe2e9124b07144d48cb
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978948"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284784"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Windows が実行されている Azure 仮想マシンに接続してサインオンする方法
 Azure Portal の **[接続]** ボタンを使用して、Windows デスクトップからリモート デスクトップ (RDP) セッションを開始します。 まず、仮想マシンに接続して、サインオンします。
 
-Mac から Windows VM に接続するには、[Microsoft リモート デスクトップ](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417)など、Mac 用の RDP クライアントをインストールする必要があります。
+Mac から Windows VM に接続するには、[Microsoft リモート デスクトップ](https://aka.ms/rdmac)など、Mac 用の RDP クライアントをインストールする必要があります。
 
 ## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
 1. まだサインインしていない場合は、 [Azure ポータル](https://portal.azure.com/)にサインインします。
 2. 左側のメニューで **[Virtual Machines]** を選択します。
 3. 一覧から仮想マシンを選択します。
 4. 仮想マシンのページの上部にある **[接続]** を選択します。
-2. **[仮想マシンへの接続]** ページで、適切な IP アドレスとポートを選択します。 ほとんどの場合、既定の IP アドレスとポートを使用する必要があります。 **[RDP ファイルのダウンロード]** RDP ファイルのダウンロード** を選択します。 VM に Just-In-Time ポリシーが設定されている場合は、RDP ファイルをダウンロードする前に、まず **[Request access] (アクセス権の要求)** ボタンをクリックしてアクセス権を要求する必要があります。 Just-In-Time ポリシーの詳細については、[Just in Time ポリシーを使用した仮想マシン アクセスの管理](../../security-center/security-center-just-in-time.md)に関するページを参照してください。
+2. **[仮想マシンへの接続]** ページで、適切な IP アドレスとポートを選択します。 ほとんどの場合、既定の IP アドレスとポートを使用する必要があります。 **[RDP ファイルのダウンロード]** を選択します。 VM に Just-In-Time ポリシーが設定されている場合は、RDP ファイルをダウンロードする前に、まず **[Request access] (アクセス権の要求)** ボタンをクリックしてアクセス権を要求する必要があります。 Just-In-Time ポリシーの詳細については、[Just in Time ポリシーを使用した仮想マシン アクセスの管理](../../security-center/security-center-just-in-time.md)に関するページを参照してください。
 2. ダウンロードした RDP ファイルを開き、プロンプトが表示されたら **[接続]** を選択します。 
 2. `.rdp` ファイルの発行元が不明であることを示す警告が表示されます。 これは予期されることです。 **[リモート デスクトップ接続]** ウィンドウで **[接続]** を選択して続行します。
    

@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: d9855f107f9888fbfbcb10a3df849e78c87c0605
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7981df6aa1e08688bdbe3b18629450b996f7609e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246764"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123404"
 ---
 # <a name="optimize-sql-server-performance"></a>SQL Server のパフォーマンスを最適化する
 
@@ -104,20 +104,20 @@ Azure Stack 仮想マシンには、次の 3 種類のメイン ディスクが�
 
 - **ディスク ストライピング:** スループットを向上させるために、データ ディスクをさらに追加し、ディスク ストライピングを使用できます。 必要なデータ ディスク数を決定するには、ログ ファイルと、データおよび TempDB ファイルのために必要な IOPS 数と帯域幅を分析します。 IOPS の制限は、仮想マシンのサイズではなく、仮想マシン シリーズ ファミリに基づくデータ ディスクあたりの制限であることに注意してください。 ただし、ネットワーク帯域幅の制限は、仮想マシンのサイズに基づきます。 詳細については、「[Azure Stack でサポートされている仮想マシンのサイズ](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)」に示されている表を参照してください。 次のガイドラインに従ってください。
 
-    - Windows Server 2012 以降の場合は、次のガイドラインに従った[記憶域スペース](https://technet.microsoft.com/library/hh831739.aspx)を使用します｡
+  - Windows Server 2012 以降の場合は、次のガイドラインに従った[記憶域スペース](https://technet.microsoft.com/library/hh831739.aspx)を使用します｡
 
-        1.  パーティションの配置不良を原因とするパフォーマンスの低下を回避するため、インターリーブ (ストライプ サイズ) をオンライン トランザクション処理 (OLTP) ワークロードに対しては 64 KB (65,536 バイト)、データ ウェアハウス ワークロードに対しては 256 KB (262,144 バイト) に設定します。 これは､PowerShell を使って設定する必要があります｡
+    1. パーティションの配置不良を原因とするパフォーマンスの低下を回避するため、インターリーブ (ストライプ サイズ) をオンライン トランザクション処理 (OLTP) ワークロードに対しては 64 KB (65,536 バイト)、データ ウェアハウス ワークロードに対しては 256 KB (262,144 バイト) に設定します。 これは､PowerShell を使って設定する必要があります｡
 
-        2.  カラム数 = 物理ディスク数を設定します｡ 8 つを超えるディスクを構成する場合は、PowerShell を使用します (サーバー マネージャー UI ではない)。
+    2. カラム数 = 物理ディスク数を設定します｡ 8 つを超えるディスクを構成する場合は、PowerShell を使用します (サーバー マネージャー UI ではない)。
 
-            たとえば、次の PowerShell では、インターリーブ サイズが 64 KB、列数が 2 に設定されている新しい記憶域プールが作成されます｡
+       たとえば、次の PowerShell では、インターリーブ サイズが 64 KB、列数が 2 に設定されている新しい記憶域プールが作成されます｡
 
-          ```PowerShell  
-          $PoolCount = Get-PhysicalDisk -CanPool $True
-          $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
+       ```PowerShell  
+       $PoolCount = Get-PhysicalDisk -CanPool $True
+       $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
 
-          New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
-          ```
+       New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
+       ```
 
 - 負荷予測に基づいて、ご使用の記憶域プールに関連付けるディスク数を決定します。 接続できるデータ ディスクの数は仮想マシンのサイズによって異なることに注意してください。 詳細については、「[Azure Stack でサポートされている仮想マシンのサイズ](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)」を参照してください。
 - データ ディスクで利用可能な最大 IOPS を確保するには、[仮想マシンのサイズ](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes)でサポートされる最大数のデータ ディスクを追加し、ディスク ストライピングを使用することをお勧めします。

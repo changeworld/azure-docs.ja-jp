@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9bd015076cdbd70768b1359fac0cfc893d871513
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 360fd8e7ab0f7a85dbeed2bdbc7da379cbcfe91a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149596"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737027"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
 
@@ -350,7 +350,7 @@ Azure AD B2C にエラー メッセージが表示された場合に、要素が
 
 ![述語のプロセス](./media/predicates/predicates-pass.png)
 
- ## <a name="configure-a-date-range"></a>日付範囲の構成
+## <a name="configure-a-date-range"></a>日付範囲の構成
 
 **Predicates** 要素と **PredicateValidations** 要素を使用して、**UserInputType** の最小および最大日付値を、`DateTimeDropdown` を使用して制御できます。 これを行うには、`IsDateRange` メソッドを使用して**述語**を作成し、最小および最大パラメーターを指定します。
 

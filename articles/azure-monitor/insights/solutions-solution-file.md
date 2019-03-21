@@ -7,19 +7,19 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.assetid: 1915e204-ba7e-431b-9718-9eb6b4213ad8
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c84aedbdb306bbd7432c3c0b611e6e58243624e2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 298bf10cf07467de897c7e38af9539fc71375eab
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999370"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776650"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
@@ -229,13 +229,6 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 | product |ソリューションを特定する一意の文字列。 |
 | publisher |ソリューションの発行者。 |
 
-
-
-## <a name="sample"></a>サンプル
-ソリューション リソースを含むソリューション ファイルのサンプルは、次の場所で確認できます。
-
-- [Automation リソース](solutions-resources-automation.md#sample)
-- [検索とアラート リソース](solutions-resources-searches-alerts.md#sample)
 
 
 ## <a name="next-steps"></a>次の手順

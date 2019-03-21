@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5ab537d94c56f1d5a9a0b32e3a18a416baf74a75
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 82a8eecb4fb211117000c94c51644ce1fd27916d
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995749"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189701"
 ---
 # <a name="encoding-error-codes"></a>エラー コードのエンコード
 
@@ -51,4 +51,4 @@ ms.locfileid: "55995749"
 * [クォータと制限](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->
-[1]: http://azure.microsoft.com/pricing/details/media-services/
+[1]: https://azure.microsoft.com/pricing/details/media-services/

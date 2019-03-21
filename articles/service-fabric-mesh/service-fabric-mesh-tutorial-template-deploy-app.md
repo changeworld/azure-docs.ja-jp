@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 906efa00243cc622c374d442a7982d87d106079b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 773a466f9619f162fe3f7cbeeab0b766d3ca32ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158844"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864866"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル:テンプレートを使用して Azure Service Fabric Mesh にアプリケーションをデプロイする
 
@@ -211,7 +211,7 @@ parameters セクションは、デプロイ テンプレートの先頭の、*r
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
       ...
@@ -229,7 +229,7 @@ parameters セクションは、デプロイ テンプレートの先頭の、*r
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     ...
@@ -344,6 +344,7 @@ To Do List アプリケーションの仕様については、[mesh_rp.windows.j
 次のコマンドを使用して、アプリケーションおよび関連リソースを作成し、前の「[レジストリの資格情報を取得する](#retrieve-credentials-for-the-registry)」ステップからの資格情報を指定します。
 
 パラメーター ファイルでは、次のパラメーター値を更新します。
+
 |パラメーター|値|
 |---|---|
 |location|アプリケーションをデプロイするリージョン。  たとえば、"eastus"。|

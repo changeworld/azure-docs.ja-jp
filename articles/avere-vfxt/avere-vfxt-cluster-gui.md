@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 30c03d52e31f70448eef07b4567083061605d8dd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300474"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856843"
 ---
 # <a name="access-the-vfxt-cluster"></a>vFXT クラスターへのアクセス
 
@@ -31,7 +31,7 @@ vFXT クラスターはプライベート仮想ネットワーク内にあるた
 
 Linux ベースのクライアントを使用する場合は、SSH トンネリング コマンドを次の形式で使用します。 
 
-ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*@*controller_public_IP*
+ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
 
 このコマンドでは、クラスター コントローラーの IP アドレスを介してクラスターの管理 IP アドレスに接続します。
 
@@ -47,7 +47,7 @@ SSH 公開キーを使用してクラスターを作成し、一致するキー�
 
 この例では、一般的な Windows ベースの ターミナル ユーティリティである PuTTY を使用します。
 
-PuTTY の **[ホスト名]** フィールドにクラスター コントローラーのユーザー名とその IP アドレスを、"*自分のユーザー名*@*コントローラーのパブリック IP*" という形式で入力します。
+PuTTY の **[ホスト名]** フィールドにクラスター コントローラーのユーザー名とその IP アドレスを、"*自分のユーザー名*\@*コントローラーのパブリック IP*" という形式で入力します。
 
 例: ``azureuser@203.0.113.51``
 
@@ -69,7 +69,7 @@ SSH 公開キーを使用してクラスターを作成し、一致するキー�
 
 この手順では、Web ブラウザーを使用して、vFXT クラスター上で実行されている構成ユーティリティに接続します。
 
-* SSH トンネル接続を行うには、Web ブラウザーを開いて https://127.0.0.1:8443 に移動します。 
+* SSH トンネル接続を行うには、Web ブラウザーを開いて `https://127.0.0.1:8443` に移動します。 
 
   トンネルを作成したときのクラスターの IP アドレスに接続されるため、必要なのはローカル ホストの IP アドレスをブラウザーで使用することだけです。 8443 以外のローカル ポートを使用した場合は、そのポート番号を使用してください。
 

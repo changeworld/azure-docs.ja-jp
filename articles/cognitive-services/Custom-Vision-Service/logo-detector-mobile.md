@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 5b749a85295e85ecde8d283ca02066a31be33666
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 259787a90b61b171f391dc02276214f17a57d0d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673071"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838818"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>チュートリアル:写真内にある Azure サービスのロゴを認識する
 
@@ -101,7 +101,6 @@ Computer Vision サービスに登録して、キーとエンドポイント URL
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
 
-
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
 このアプリでは、Azure サブスクリプションにサービスをデプロイするために、Azure サービス プリンシパル アカウントが必要です。 サービス プリンシパルを使用すると、ロールベースのアクセス制御を使用して特定のアクセス許可をアプリに委任できます。 詳細については、[サービス プリンシパルのガイド](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals)を参照してください。
@@ -131,6 +130,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
   ...
 }
 ```
+
 `clientId` と `tenantId` の値を書き留めておきます。 これらを *Source\VisualProvision\AppSettings.cs* ファイルの適切なフィールドに追加します。
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
@@ -138,9 +138,10 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 ## <a name="run-the-app"></a>アプリの実行
 
 これで、以下に対するアクセス権がアプリに付与されました。
-* トレーニング済みの Custom Vision モデル
-* Computer Vision サービス
-* サービス プリンシパル アカウント 
+
+- トレーニング済みの Custom Vision モデル
+- Computer Vision サービス
+- サービス プリンシパル アカウント
 
 アプリを実行するには、次の手順に従います。
 
@@ -163,7 +164,6 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
     ![ターゲット Azure サブスクリプションのドロップダウン フィールドが表示されているアプリの画面](media/azure-logo-tutorial/app-az-subscription.png)
 
-    
 
 1. デバイスのカメラがアクティブになります。 トレーニングしたいずれかの Azure サービス ロゴの写真を撮影します。 デプロイ ウィンドウで、新しいサービスのリージョンとリソース グループを選択するように求められます (Azure portal からデプロイする場合と同様に)。 
 
@@ -171,7 +171,7 @@ az ad sp create-for-rbac --name <servicePrincipalName> --password <yourSPStrongP
 
     ![デプロイ リージョンとリソース グループのフィールドが表示されているアプリの画面](media/azure-logo-tutorial/app-deployment-options.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 このシナリオのすべての手順を実行し、アプリを使用して Azure サービスを自分のアカウントにデプロイした場合は、[Azure portal](https://ms.portal.azure.com/) に移動します。 そこで、使用しないサービスを取り消します。
 

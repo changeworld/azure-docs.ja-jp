@@ -4,17 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この例では、BitLocker キー回復に関する単純なよくあるご質問の Web ページから QnA Maker KB を作成します。
 author: diberry
 manager: nitinme
+services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 2ac6e6fcd73abddcee668b8f73184b923aeab5d3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3f7b24af3d48075150ae7c192ccf421b928a7aa3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876999"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113701"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
@@ -53,7 +54,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 10. 右上の **[Add QnA pair]\(QnA ペアの追加)** を選択し、KB の **[Editorial]\(編集)** セクションに新しい行を追加します。 **[質問]** に、**Hi** と入力します。 **[回答]** に、**こんにちは。bitlocker について質問してください。** と入力します。
 
-   ![QnA ペアの追加](../media/qnamaker-quickstart-kb/add-qna-pair.png)
+    ![QnA ペアの追加](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 
 11. 右上の **[Save and train]\(保存してトレーニング\)** を選択し、編集内容を保存して QnA Maker のモデルをトレーニングします。 保存しないと、編集した内容は保持されません。
 
@@ -61,7 +62,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 13. **[検査]** を選択し、詳細に応答を確認します。 テスト ウィンドウは、公開する前に KB への変更をテストする際に使用します。
 
-   ![テスト パネル](../media/qnamaker-quickstart-kb/inspect-panel.png)
+    ![テスト パネル](../media/qnamaker-quickstart-kb/inspect-panel.png)
 
 14. もう一度 **[テスト]** を選択して、**[テスト]** ポップアップを閉じます。
 
@@ -69,7 +70,7 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
 16. QnA Maker サービスが正常に発行されました。 お使いのアプリケーションまたはボット コードで、エンドポイントを使用できます。
 
-   ![発行](../media/qnamaker-quickstart-kb/publish-sucess.png)
+    ![発行](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
 ## <a name="next-steps"></a>次の手順
 

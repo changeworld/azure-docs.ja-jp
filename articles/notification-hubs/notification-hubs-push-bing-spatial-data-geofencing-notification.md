@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 7b01ee726d8417e34645e743497a02455fbe709c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9baeb1c21252f8b7f7b24debde48108532d9865c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453154"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118308"
 ---
 # <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>チュートリアル:Azure Notification Hubs と Bing Spatial Data を使用して場所に基づいたプッシュ通知を送信する
 
@@ -63,12 +63,12 @@ ms.locfileid: "54453154"
 
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. **[Upload a data source] (データ ソースをアップロードする)** ページで、次のアクションを実行します。
-    1. **[データ形式]** として **[パイプ]** を選択します。
-    2. 前の手順で作成した `NotificationHubGeofence.pipe` ファイルを参照して選択します。
-    3. **[アップロード]** ボタンを選択します。
+   1. **[データ形式]** として **[パイプ]** を選択します。
+   2. 前の手順で作成した `NotificationHubGeofence.pipe` ファイルを参照して選択します。
+   3. **[アップロード]** ボタンを選択します。
 
-    > [!NOTE]
-    > **[マスター キー]** に、**[クエリ キー]** とは異なる新しいキーを指定するよう求められる場合があります。 ダッシュボードで新しいキーを作成して、データ ソースのアップロード ページを更新してください。
+      > [!NOTE]
+      > **[マスター キー]** に、**[クエリ キー]** とは異なる新しいキーを指定するよう求められる場合があります。 ダッシュボードで新しいキーを作成して、データ ソースのアップロード ページを更新してください。
 6. データ ファイルをアップロードしたら、そのデータ ソースを確実に発行する必要があります。 前と同様に **[データ ソース]** -> **[Manage Data Sources] (データ ソースの管理)** を選択します。
 7. 一覧のデータ ソースを選択してから、**[アクション]** 列で **[発行]** を選択します。
 
@@ -112,11 +112,11 @@ ms.locfileid: "54453154"
     ```
     これを機能させるには、次のパラメーターを指定します。
 
-    * **データ ソース ID** と**データ ソース名** – Bing マップ API では、さまざまな分類のメタデータ (位置情報、企業の営業時間など) がデータ ソースに格納されます。  
-    * **エンティティ名** – 通知の基準点として使用するエンティティです。
-    * **Bing Maps API キー** – 前に Bing デベロッパー センター アカウントを作成するときに取得したキー。
+   * **データ ソース ID** と**データ ソース名** – Bing マップ API では、さまざまな分類のメタデータ (位置情報、企業の営業時間など) がデータ ソースに格納されます。  
+   * **エンティティ名** – 通知の基準点として使用するエンティティです。
+   * **Bing Maps API キー** – 前に Bing デベロッパー センター アカウントを作成するときに取得したキー。
 
-    これでデータ ソースが準備できたので、UWP アプリケーションの操作を開始できます。
+     これでデータ ソースが準備できたので、UWP アプリケーションの操作を開始できます。
 2. アプリケーションの場所サービスを有効にします。 **ソリューション エクスプローラー**で `Package.appxmanifest` ファイルを開きます。
 
     ![](./media/notification-hubs-geofence/vs-package-manifest.png)

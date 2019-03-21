@@ -9,17 +9,17 @@ editor: spelluru
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 3ff0d0db554fe514fdd6be6383b6d1a19f1c39ec
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: c9aadb0dcd5adabed6a6490760282c5201a79000
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451461"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848679"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu での Notification Hubs の使用
 
@@ -132,8 +132,8 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 5. 次に、Azure Notification Hubs ライブラリを追加します。 アプリの `Build.Gradle` ファイルの dependencies セクションに次の行を追加します。
 
     ```javascript
-    compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
     dependencies セクションの後に次のリポジトリを追加します。
@@ -141,7 +141,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
     ```javascript
     repositories {
         maven {
-            url "http://dl.bintray.com/microsoftazuremobile/SDK"
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
         }
     }
     ```
@@ -161,7 +161,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
         tools:replace="android:allowBackup,icon,theme,label">
     ```
 
-6. [Baidu Push Android SDK](http://push.baidu.com/doc/android/api) をダウンロードして解凍します。 libs フォルダー内の `pushservice-x.y.z jar` ファイルをコピーします。 さらに、`.so` ファイルを Android アプリケーションの `src/main/jniLibs` フォルダー (新しいフォルダーを作成してください) にコピーします。
+6. [Baidu Push Android SDK](https://push.baidu.com/doc/android/api) をダウンロードして解凍します。 libs フォルダー内の `pushservice-x.y.z jar` ファイルをコピーします。 さらに、`.so` ファイルを Android アプリケーションの `src/main/jniLibs` フォルダー (新しいフォルダーを作成してください) にコピーします。
 
     ![Azure Notification Hubs - Baidu (SDK ライブラリ)](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
@@ -497,7 +497,7 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
     Install-Package Microsoft.Azure.NotificationHubs
     ```
 
-    この手順により、[Microsoft.Azure.Notification Hubs NuGet パッケージ](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を利用して Azure Notification Hubs SDK に参照が追加されます。
+    この手順により、[Microsoft.Azure.Notification Hubs NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)を利用して Azure Notification Hubs SDK に参照が追加されます。
 
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
@@ -537,6 +537,6 @@ Baidu クラウド プッシュ プロジェクトを作成すると、アプリ
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Baidu Push Android SDK]: http://push.baidu.com/sdk/push_client_sdk_for_android
+[Baidu Push Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
 [Azure Portal]: https://portal.azure.com/
-[Baidu ポータル]: http://www.baidu.com/
+[Baidu ポータル]: https://www.baidu.com/

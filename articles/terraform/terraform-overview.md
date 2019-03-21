@@ -2,19 +2,19 @@
 title: Azure で Terraform を使用する
 description: Terraform を使用した Azure インフラストラクチャのバージョン管理およびデプロイの概要
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, DevOps, 概要, 計画, 適用, 自動化
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: 962631728f96e0551f9cc18d5d835928e5a7705a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8b5ad3f060e2c8760014d7fc1990b971976388f7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567976"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779200"
 ---
 # <a name="terraform-with-azure"></a>Azure での Terraform
 

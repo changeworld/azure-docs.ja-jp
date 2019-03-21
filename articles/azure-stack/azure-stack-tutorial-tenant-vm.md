@@ -17,12 +17,12 @@ ms.author: jeffgilb
 ms.reviewer: unknown
 ms.lastreviewed: 09/11/2018
 ms.custom: mvc
-ms.openlocfilehash: a24b7314775ea7667ab992742586e5b5c8bbb369
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 34ef200ff96b098969c74937934d6178cfaf81ea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205159"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117134"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>チュートリアル: Azure Stack ユーザーが仮想マシンを使用できるようにする
 
@@ -129,8 +129,8 @@ Marketplace にさまざまな項目を追加する方法については、「[A
    ユーザー ポータルから、新しいサブスクリプションを使用して仮想マシンをプロビジョニングできます。
 
    a. ユーザー アカウントを使用してユーザー ポータルにサインインします。
-      - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、 https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
-   - Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external になります。
+   - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、 https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
+     - Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external になります。
 
    b.  ダッシュボードで、**[+Create a resource]\(+ リソースの作成\)** > **[コンピューティング]** > **[Windows Server 2016 Datacenter Eval]** の順に選択し、**[作成]** を選択します。
 
@@ -142,7 +142,7 @@ Marketplace にさまざまな項目を追加する方法については、「[A
       - **リソース グループ**を作成する (または既存のものを選択する) 
       - **[OK]** を選択してこのパターンを保存する
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[サイズの選択]** で、**[A1 標準]** を選択し、**[選択]** を選択します。  
+   d. **[サイズの選択]** で、**[A1 標準]** を選択し、**[選択]** を選択します。  
 
    e. **[設定]** で、**[仮想ネットワーク]** を選択します。
 

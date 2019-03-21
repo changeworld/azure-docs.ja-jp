@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 842c0d5e3dff0c21545405624f0f536c80359b19
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: eb98fc2da95f1aa2b7294d09ec2a3145bdb5c789
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809897"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112740"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Azure 仮想ネットワークのトポロジを表示する
 
@@ -42,7 +42,7 @@ ms.locfileid: "55809897"
     - *myVnet* 仮想ネットワークとしての同じリソース グループおよびリージョン内。 たとえば、ネットワーク セキュリティ グループが *MyVnet* 仮想ネットワーク内のサブネットに関連付けられている場合でも、*MyResourceGroup* 以外のリソース グループに存在するネットワーク セキュリティ グループは表示されません。
     - *myVnet* 仮想ネットワーク内、またはそのリソースに関連付けられている。 たとえば、*myVnet* 仮想ネットワーク内のサブネットまたはネットワーク インターフェイスに関連付けられていないネットワーク セキュリティ グループは、ネットワーク セキュリティ グループが *MyResourceGroup* リソース グループ内にあっても表示されません
 
-  図に示すトポロジは、**ネットワーク仮想アプライアンス スクリプト サンプルを介してルート トラフィック**を展開した後に作成される仮想ネットワーク用です。これは [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) または [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) を使用して展開できます。
+   図に示すトポロジは、**ネットワーク仮想アプライアンス スクリプト サンプルを介してルート トラフィック**を展開した後に作成される仮想ネットワーク用です。これは [Azure CLI](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) または [PowerShell](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) を使用して展開できます。
 
 6. **[ダウンロード トポロジ]** を選択して、イメージを編集可能なファイル (svg 形式) としてダウンロードします。
 
@@ -79,7 +79,7 @@ ms.locfileid: "55809897"
 
     トポロジ情報は、*MyResourceGroup* リソース グループと同じリソース グループ内にあり、ネットワーク ウォッチャーと同じリージョン内にあるリソースに対してのみ返されます。 たとえば、ネットワーク セキュリティ グループが *MyVnet* 仮想ネットワーク内のサブネットに関連付けられている場合でも、*MyResourceGroup* 以外のリソース グループに存在するネットワーク セキュリティ グループは表示されません。
 
-  返される出力で、リレーションシップと[プロパティ](#properties)の詳細を確認します。 トポロジを表示する既存の仮想ネットワークがない場合は、[ネットワーク仮想アプライアンス経由のトラフィックのルーティング](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) スクリプト サンプルを使用して仮想ネットワークを作成できます。 トポロジの図を表示し、編集可能なファイル形式でダウンロードするには、[Portal](#azure-portal) を使用します。
+   返される出力で、リレーションシップと[プロパティ](#properties)の詳細を確認します。 トポロジを表示する既存の仮想ネットワークがない場合は、[ネットワーク仮想アプライアンス経由のトラフィックのルーティング](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) スクリプト サンプルを使用して仮想ネットワークを作成できます。 トポロジの図を表示し、編集可能なファイル形式でダウンロードするには、[Portal](#azure-portal) を使用します。
 
 ## <a name = "powershell"></a>トポロジを表示する - PowerShell
 
@@ -123,7 +123,7 @@ ms.locfileid: "55809897"
 
    トポロジ情報は、*MyResourceGroup* リソース グループと同じリソース グループ内にあり、ネットワーク ウォッチャーと同じリージョン内にあるリソースに対してのみ返されます。 たとえば、ネットワーク セキュリティ グループが *MyVnet* 仮想ネットワーク内のサブネットに関連付けられている場合でも、*MyResourceGroup* 以外のリソース グループに存在するネットワーク セキュリティ グループは表示されません。
 
-  返される出力で、リレーションシップと[プロパティ](#properties)の詳細を確認します。 トポロジを表示する既存の仮想ネットワークがない場合は、[ネットワーク仮想アプライアンス経由のトラフィックのルーティング](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) スクリプト サンプルを使用して仮想ネットワークを作成できます。 トポロジの図を表示し、編集可能なファイル形式でダウンロードするには、[Portal](#azure-portal) を使用します。
+   返される出力で、リレーションシップと[プロパティ](#properties)の詳細を確認します。 トポロジを表示する既存の仮想ネットワークがない場合は、[ネットワーク仮想アプライアンス経由のトラフィックのルーティング](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) スクリプト サンプルを使用して仮想ネットワークを作成できます。 トポロジの図を表示し、編集可能なファイル形式でダウンロードするには、[Portal](#azure-portal) を使用します。
 
 ## <a name="relationships"></a>リレーションシップ
 

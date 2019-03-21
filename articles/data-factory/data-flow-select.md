@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 6b33568354653e2b222dd99d7a933de252646f9e
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: bc83b41067d587adce41658a2c4b3d68969750ba
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271150"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729340"
 ---
 # <a name="azure-data-factory-mapping-data-flow-select-transformation"></a>Azure Data Factory の Mapping Data Flow の選択変換
 

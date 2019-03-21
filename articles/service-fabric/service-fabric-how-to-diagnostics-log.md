@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/27/2018
 ms.author: ryanwi
-ms.openlocfilehash: 42a6430162f3bafd3ec3ce2a3c523f6f5755914a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0e5cfa42eba5a2110ebf8879c771f2fef048ae03
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001380"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835715"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Service Fabric アプリケーションにログ記録を追加する
 
@@ -132,7 +132,7 @@ ASP.NET Core のログ記録 ([Microsoft.Extensions.Logging NuGet パッケー�
 
 ### <a name="using-other-logging-providers"></a>他のログ記録プロバイダーの使用
 
-[Serilog](https://serilog.net/)、[NLog](http://nlog-project.org/)、[Loggr](https://github.com/imobile3/Loggr.Extensions.Logging) などの一部のサード パーティ プロバイダーでは、前のセクションで説明した方法を使用します。 これらの各プロバイダーは、ASP.NET Core のログ記録に接続することも、個別に使用することもできます。 Serilog は、ロガーから送信されるすべてのメッセージを強化する機能を備えています。 この機能は、サービスの名前、種類、パーティションの情報を出力する際に役立ちます。 ASP.NET Core インフラストラクチャ内でこの機能を使用するには、次の手順を実行します。
+[Serilog](https://serilog.net/)、[NLog](https://nlog-project.org/)、[Loggr](https://github.com/imobile3/Loggr.Extensions.Logging) などの一部のサード パーティ プロバイダーでは、前のセクションで説明した方法を使用します。 これらの各プロバイダーは、ASP.NET Core のログ記録に接続することも、個別に使用することもできます。 Serilog は、ロガーから送信されるすべてのメッセージを強化する機能を備えています。 この機能は、サービスの名前、種類、パーティションの情報を出力する際に役立ちます。 ASP.NET Core インフラストラクチャ内でこの機能を使用するには、次の手順を実行します。
 
 1. **Serilog**、**Serilog.Extensions.Logging**、**Serilog.Sinks.Literate**、**Serilog.Sinks.Observable** の各 NuGet パッケージをプロジェクトに追加します。 
 2. `LoggerConfiguration` とロガー インスタンスを作成します。

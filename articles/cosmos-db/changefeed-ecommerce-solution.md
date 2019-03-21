@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 90f9a13882e370d6d0c67826750b3edd27603ede
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 50ae4de8c9c1d10b0b17a9744ffa2340059fc298
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862294"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120518"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 
@@ -105,7 +105,7 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos DB コンテナーのレコ
 
 3. 次に、変更フィードを処理する「**leases**」という名前の別のコレクションを作成します。 リース コレクションは、複数の worker 間で変更フィードの処理を調整します。 個別のコレクションを使用して、リース (パーティションごとに 1 リース) が保存されます。  
 
-4.  **[データ エクスプローラー]** ペインに戻り、**[新しいコレクション]** を選択し、次の詳細でフォームに入力します。
+4. **[データ エクスプローラー]** ペインに戻り、**[新しいコレクション]** を選択し、次の詳細でフォームに入力します。
 
    * **[データベース ID]** フィールドで、**[既存のものを使用]** を選択し、「**changefeedlabdatabase**」と入力します。  
    * **[コレクション ID]** フィールドに、「**leases**」と入力します。  

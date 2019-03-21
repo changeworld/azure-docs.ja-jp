@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang, cherylmc
-ms.openlocfilehash: d1c5ea0ae60894e810d2f4eb0edff2126171a220
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 4c5a7a138a2b491867c5c4ba7234415036c8ba0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417110"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100838"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Azure VPN ゲートウェイで、アクティブ/アクティブ S2S VPN 接続を構成する
 
@@ -36,10 +36,8 @@ ms.locfileid: "56417110"
 
 > [!IMPORTANT]
 > アクティブ/アクティブ モードは、次の SKU でのみ機能します。 
-  * VpnGw1、VpnGw2、VpnGw3
-  * HighPerformance (古いレガシ SKU 向け)
-> 
-> 
+>   * VpnGw1、VpnGw2、VpnGw3
+>   * HighPerformance (古いレガシ SKU 向け)
 
 ## <a name ="aagateway"></a>パート 1 - アクティブ/アクティブの VPN ゲートウェイを作成、構成する
 次の手順では、Azure VPN ゲートウェイをアクティブ/アクティブ モードで構成します。 アクティブ/アクティブ ゲートウェイとアクティブ/スタンバイ ゲートウェイの主な違い:

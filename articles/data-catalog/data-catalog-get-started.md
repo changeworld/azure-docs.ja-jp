@@ -8,12 +8,12 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5513948a6611e93833c7e70fa4e5667b3901a9f3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238490"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880225"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Azure Data Catalog の概要
 Azure Data Catalog は、フル マネージドのクラウド サービスで、エンタープライズ データ資産の登録システムと検出システムとして機能します。 詳細については、「 [Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md)」を参照してください。
@@ -82,7 +82,7 @@ Azure Data Catalog ポータルにはサインインできるものの、デー�
     ![Azure Data Catalog--view catalog in list](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
 3. 作成したカタログをクリックします。 ポータルに **[Data Catalog]** ブレードが表示されます。
    
-   ![Azure Data Catalog--blade in portal ](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
+   ![Azure Data Catalog--blade in portal](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
 4. データ カタログのプロパティが表示され、更新することができます。 たとえば、 **[価格レベル]** をクリックし、エディションを変更します。
    
     ![Azure Data Catalog--pricing tier](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
@@ -144,7 +144,7 @@ Adventure Works サンプル データベースのインストール方法を次
       ![Azure Data Catalog--registered objects](media/data-catalog-get-started/data-catalog-registered-objects.png)
    9. 登録されているデータ ソース オブジェクトを表示するには、**[ポータルの表示]** をクリックします。 Azure Data Catalog ポータルで、4 つのテーブルとデータベースすべてがグリッド ビューに表示されていることを確認します。
       
-      ![Objects in the Azure Data Catalog portal ](media/data-catalog-get-started/data-catalog-view-portal.png)
+      ![Objects in the Azure Data Catalog portal](media/data-catalog-get-started/data-catalog-view-portal.png)
 
 この演習では、組織全体のユーザーがオブジェクトを簡単に検出できるように、Adventure Works サンプル データベースからオブジェクトを登録しました。 次の演習では、登録されているデータ資産を検出する方法を学習します。
 
@@ -247,9 +247,9 @@ Azure Data Catalog での検出では、検索とフィルター処理という 
 
 このページでは、次のことも実行できます。
 
-* データ資産のエキスパートを追加する。 **[追加]** in the **[追加]** をクリックします。
-* データセット レベルでタグを追加する。 **[追加]** in the **[追加]** をクリックします。 タグは、ユーザー タグにも用語集タグにもすることができます。 Data Catalog Standard Edition には、カタログ管理者が主なビジネスの分類を定義するために利用できるビジネス用語集が含まれています。 そのため、Catalog ユーザーは用語集の用語を使ってデータ資産に注釈を付けることができます。 詳細については、「 [管理タグ付け用のビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)
-* 列レベルでタグを追加する。 **[追加]** under **[追加]** をクリックします。
+* データ資産のエキスパートを追加する。  **[追加]** in the **[追加]** をクリックします。
+* データセット レベルでタグを追加する。  **[追加]** in the **[追加]** をクリックします。 タグは、ユーザー タグにも用語集タグにもすることができます。 Data Catalog Standard Edition には、カタログ管理者が主なビジネスの分類を定義するために利用できるビジネス用語集が含まれています。 そのため、Catalog ユーザーは用語集の用語を使ってデータ資産に注釈を付けることができます。 詳細については、「 [管理タグ付け用のビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)
+* 列レベルでタグを追加する。  **[追加]** under **[追加]** をクリックします。
 * 列レベルで説明を追加する。 列の **[説明]** を入力します。 また、データ ソースから抽出された説明メタデータを表示することもできます。
 * データ資産へのアクセスを要求する方法をユーザーに示す **[アクセスの要求]** 情報を追加する。
   

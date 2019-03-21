@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e6da35eeb98d4017baae6aa2c8e19fa3f9d5ac1b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5e7e405bdb251bbebc5da81253eea2414b434cb8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752570"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838316"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code の使用を開始する
 
@@ -26,7 +26,7 @@ Visual Studio Code で Azure Machine Learning 拡張機能を使用して、Azur
 ## <a name="prerequisites"></a>前提条件
 
 
-+ Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
++ Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 + Visual Studio Code をインストールする必要があります。 VS Code とは、デスクトップ上で実行される、軽量にもかかわらず強力なソース コード エディターです。 Python などの組み込みサポートが付属します。  [VS Code のインストール方法を確認](https://code.visualstudio.com/docs/setup/setup-overview)してください。
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5e56579a856f7b6259acddcbe34f2e5361505cb5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 3ee582e2541e4eb55e5ea1424782df132ecf3575
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217613"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116556"
 ---
 # <a name="connect-to-other-cognitive-services"></a>他のコグニティブ サービスに接続する
 
@@ -33,27 +33,27 @@ Content Moderator には次の既定コネクタが含まれています。
 
 ワークフローを定義する前に、使用するコネクタ API に対して有効な資格情報があることを確認します。
 
-1.  レビュー ツールのダッシュボードで、**[設定]** > **[コネクタ]** を選択します。
+1. レビュー ツールのダッシュボードで、**[設定]** > **[コネクタ]** を選択します。
 
-  ![Content Moderator でのコネクタの選択](images/connectors-2.png)
+   ![Content Moderator でのコネクタの選択](images/connectors-2.png)
 
-2.  資格情報を確認するコネクタの横にある**編集**記号を選択します。
+2. 資格情報を確認するコネクタの横にある**編集**記号を選択します。
 
-  ![Content Moderator での編集記号の選択](images/connectors-3.png)
+   ![Content Moderator での編集記号の選択](images/connectors-3.png)
 
-3.  サブスクリプション キーが表示されます。 編集する場合は、終了時に **[保存]** を選択します。
+3. サブスクリプション キーが表示されます。 編集する場合は、終了時に **[保存]** を選択します。
 
-  ![Content Moderator のコネクタ編集ページ](images/connectors-4-1.png)
+   ![Content Moderator のコネクタ編集ページ](images/connectors-4-1.png)
  
 ## <a name="add-a-connector"></a>コネクタを追加する
 
-1.  コネクタを追加する前にサブスクリプション キーが必要です。 レビュー ツールのダッシュボードで、**[設定]** > **[資格情報]** を選択します。 **[Ocp-Admin-Subscription-Key]** ボックスにある値を選択してコピーします。
+1. コネクタを追加する前にサブスクリプション キーが必要です。 レビュー ツールのダッシュボードで、**[設定]** > **[資格情報]** を選択します。 **[Ocp-Admin-Subscription-Key]** ボックスにある値を選択してコピーします。
 
-2.  **[コネクタ]** を選択します。 レビュー ツールのダッシュボードに表示される使用可能なコネクタの 1 つを選択します。 次に、**[接続]** を選択します。 
+2. **[コネクタ]** を選択します。 レビュー ツールのダッシュボードに表示される使用可能なコネクタの 1 つを選択します。 次に、**[接続]** を選択します。 
 
-  ![Content Moderator の [コネクタの追加] ページ](images/connectors-5.png)
+   ![Content Moderator の [コネクタの追加] ページ](images/connectors-5.png)
 
-3.  **[Ocp-Admin-Subscription-Key]** ボックスに、コピーしたキーを貼り付けます。 次に、**[保存]** を選択します。
+3. **[Ocp-Admin-Subscription-Key]** ボックスに、コピーしたキーを貼り付けます。 次に、**[保存]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

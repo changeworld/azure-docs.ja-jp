@@ -12,12 +12,12 @@ ms.date: 12/06/2018
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b04831790083f9ba41f20719a7d8ffddc35348b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 037f5b554889d89fc0b50983d3d85d38f4345311
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210409"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571407"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>チュートリアル:Azure Active Directory による SAML ベースのシングル サインオンをアプリケーションに構成する
 
@@ -189,6 +189,6 @@ Azure AD は、アプリケーションに送信する SAML トークンに対�
 社内の他のユーザーについてもアプリケーションをロールアウトする場合は、自動ユーザー プロビジョニングの使用をお勧めします。
 
 > [!div class="nextstepaction"]
->[自動プロビジョニングを使ってユーザーを割り当てる方法について](configure-automatic-user-provisioning-portal.md)
+> [自動プロビジョニングを使ってユーザーを割り当てる方法について](configure-automatic-user-provisioning-portal.md)
 
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8008f96e00b0d9a4366832110c696c67a9c7257
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dc3a42c280a344ef08fa23111df8652b6167cfb0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165411"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109901"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>チュートリアル:Azure Active Directory と Panorama9 の統合
 
@@ -184,7 +184,7 @@ Panorama9 で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-panorama9-test-user"></a>Panorama9 テスト ユーザーの作成
 
@@ -198,18 +198,18 @@ Panorama9 の場合、プロビジョニングは手動で行います。
 
 1. 上部のメニューで、**[管理]**、**[ユーザー]** の順にクリックします。
    
-  ![ユーザー](./media/panorama9-tutorial/ic790027.png "Users")
+   ![ユーザー](./media/panorama9-tutorial/ic790027.png "Users")
 
 1. [ユーザー] セクションの **+** をクリックして新しいユーザーを追加します。
 
- ![ユーザー](./media/panorama9-tutorial/ic790028.png "Users")
+   ![ユーザー](./media/panorama9-tutorial/ic790028.png "Users")
 
 1. [ユーザー データ] セクションに移動し、**[電子メール]** テキストボックスにプロビジョニングする有効な Azure Active Directory ユーザーの電子メール アドレスを入力します。
 
 1. [ユーザー] セクションに移動し、**[保存]** をクリックします。
    
 > [!NOTE]
-    > Azure Active Directory アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認すると、そのアカウントがアクティブになります。
+> Azure Active Directory アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認すると、そのアカウントがアクティブになります。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

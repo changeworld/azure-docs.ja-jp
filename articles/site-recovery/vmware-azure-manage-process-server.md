@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/05/2018
+ms.date: 03/11/2019
 ms.author: ramamill
-ms.openlocfilehash: fd434ed8d5b625a1a0ed1ff195da0f864a4024b0
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: ba80c8ce57495eaa46e915cb0c472eb4aabcee57
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769430"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863629"
 ---
 # <a name="manage-process-servers"></a>プロセス サーバーの管理
 
@@ -30,7 +30,7 @@ ms.locfileid: "55769430"
 [!INCLUDE [site-recovery-vmware-upgrade -process-server](../../includes/site-recovery-vmware-upgrade-process-server-internal.md)]
 
 > [!NOTE]
-  通常、フェールバックの目的で Azure でプロセス サーバーを作成するために Azure ギャラリー イメージを使用する場合、そのサーバーは使用可能な最新バージョンを実行しています。 Site Recovery チームは修正プログラムや拡張機能を定期的にリリースしているため、プロセス サーバーを最新の状態に維持することをお勧めします。
+>   通常、フェールバックの目的で Azure でプロセス サーバーを作成するために Azure ギャラリー イメージを使用する場合、そのサーバーは使用可能な最新バージョンを実行しています。 Site Recovery チームは修正プログラムや拡張機能を定期的にリリースしているため、プロセス サーバーを最新の状態に維持することをお勧めします。
 
 ## <a name="balance-the-load-on-process-server"></a>プロセス サーバーの負荷を分散させる
 
@@ -91,23 +91,23 @@ ms.locfileid: "55769430"
 
 1. プロセス サーバー マシンにログオンします。 
 2. 管理者の PowerShell コマンド ウィンドウを開き、次のコマンドを実行します。
-  ```powershell
-  $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-  Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
-  net stop obengine
-  net start obengine
-  ```
+   ```powershell
+   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd
+   net stop obengine
+   net start obengine
+   ```
 2. フォルダー **%PROGRAMDATA%\ASR\Agent** を参照し、次のコマンドを実行します。
-  ```
-  cmd
-  cdpcli.exe --registermt
+   ```
+   cmd
+   cdpcli.exe --registermt
 
-  net stop obengine
+   net stop obengine
 
-  net start obengine
+   net start obengine
 
-  exit
-  ```
+   exit
+   ```
 
 
 ## <a name="remove-a-process-server"></a>プロセス サーバーを削除する

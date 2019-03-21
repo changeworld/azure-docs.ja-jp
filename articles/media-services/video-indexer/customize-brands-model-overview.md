@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 48255614291086fe85666bec407ea62f7a365410
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 15f4b8b6d4a27e721dfcaed8b9dd700e87e3a257
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237367"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872881"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Video Indexer でのブランド モデルのカスタマイズ
 
@@ -28,7 +28,7 @@ Video Indexer では、動画と音声コンテンツのインデックス作成
 
 ![ブランドの概要](./media/content-model-customization/brands-overview.png)
 
-コンテキストからあいまいさを解消する方法を熟知している高度な機械学習アルゴリズムに基づくため、建築のコンテキストで "windows" について話しても、"Windows" はブランドとして検出されません。Box、Apple、Fox などでも同様です。 ブランドの検出は、サポートされているすべての言語で機能します。 Microsoft Build 2017 Day 2 の基調講演の動画とインデックスの完全版については、[ここ](http://www.videoindexer.ai/media/ed6ede78ad/)をクリックしてください。
+コンテキストからあいまいさを解消する方法を熟知している高度な機械学習アルゴリズムに基づくため、建築のコンテキストで "windows" について話しても、"Windows" はブランドとして検出されません。Box、Apple、Fox などでも同様です。 ブランドの検出は、サポートされているすべての言語で機能します。 Microsoft Build 2017 Day 2 の基調講演の動画とインデックスの完全版については、[ここ](https://www.videoindexer.ai/media/ed6ede78ad/)をクリックしてください。
 
 独自のブランドを使用するには、「次の手順」を確認してください。
 

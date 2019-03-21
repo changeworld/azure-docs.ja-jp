@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/7/2019
-ms.openlocfilehash: 4b530ed2ffd32e2433a744b05aaab2219bf2b15a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 185e605db366fb392758ad9870a3c15badc0f321
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896596"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874870"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB サーバーの再起動
 このトピックでは、Azure Database for MariaDB サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
@@ -36,15 +36,15 @@ ms.locfileid: "55896596"
 
 3. **[はい]** をクリックして、サーバーを再起動することを確認します。
 
-   ![Azure Database for MariaDB - 再起動の確認 ](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![Azure Database for MariaDB - 再起動の確認](./media/howto-restart-server-portal/3-restart-confirm.png)
 
 4. サーバーの状態が [再起動中] に変わることを確認します。
 
-   ![Azure Database for MariaDB - 再起動の状態 ](./media/howto-restart-server-portal/4-restarting-status.png)
+   ![Azure Database for MariaDB - 再起動の状態](./media/howto-restart-server-portal/4-restarting-status.png)
 
 5. サーバーの再起動が成功したことを確認します。
 
-   ![Azure Database for MariaDB - 再起動の成功 ](./media/howto-restart-server-portal/5-restart-success.png)
+   ![Azure Database for MariaDB - 再起動の成功](./media/howto-restart-server-portal/5-restart-success.png)
 
 ## <a name="next-steps"></a>次の手順
 

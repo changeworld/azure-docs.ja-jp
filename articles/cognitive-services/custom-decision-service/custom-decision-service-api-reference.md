@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
-ms.openlocfilehash: 2feaa6fa87b6e788683ad543bfb7780b0e517506
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: be9966f5d8e8d94aa3f49aac91b35b105195b108
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867343"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552063"
 ---
 # <a name="api"></a>API
 
@@ -44,7 +44,7 @@ Ranking API は、標準の [JSONP](https://en.wikipedia.org/wiki/JSONP) スタ�
 > Ranking API を呼び出す前に、コールバック関数を定義する必要があります。
 
 > [!TIP]
-> 待ち時間を短縮するため、Ranking API は、`http://ds.microsoft.com/api/v2/<appId>/rank/*` のように、HTTPS ではなく HTTP を使用して公開されます。
+> 待ち時間を短縮するため、Ranking API は、`https://ds.microsoft.com/api/v2/<appId>/rank/*` のように、HTTPS ではなく HTTP を使用して公開されます。
 > ただし、フロント ページが HTTPS で提供される場合は、HTTPS エンドポイントを使用する必要があります。
 
 パラメーターが使用されない場合、Ranking API からの HTTP 応答は JSONP 形式の文字列です。

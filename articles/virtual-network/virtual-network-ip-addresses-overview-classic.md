@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: f96ac14d68d98937cf230b04b45503e21c5e0187
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3a295a5c8a202b2f3186e696bb281002090fcad4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024571"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112604"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure における IP アドレスの種類と割り当て方法 (クラシック)
 Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
@@ -165,13 +165,13 @@ Azure における [ネットワークの制限](../azure-subscription-service-l
 |  | リソース | クラシック | リソース マネージャー |
 | --- | --- | --- | --- |
 | **パブリック IP アドレス** |***VM*** |ILPIP と呼ばれる (動的のみ) |パブリック IP と呼ばれる (動的または静的) |
-|  ||IaaS VM や PaaS ロール インスタンスに割り当てられる |VM の NIC に関連付けられる | |
-|  |***インターネットに接続するロード バランサー*** |VIP (動的) または予約済み IP (静的) と呼ばれる |パブリック IP と呼ばれる (動的または静的) | |
-|  ||クラウド サービスに割り当てられる |ロード バランサーのフロントエンド構成に関連付けられる | |
+|  ||IaaS VM や PaaS ロール インスタンスに割り当てられる |VM の NIC に関連付けられる |
+|  |***インターネットに接続するロード バランサー*** |VIP (動的) または予約済み IP (静的) と呼ばれる |パブリック IP と呼ばれる (動的または静的) |
+|  ||クラウド サービスに割り当てられる |ロード バランサーのフロントエンド構成に関連付けられる |
 |  | | | |
 | **プライベート IP アドレス** |***VM*** |DIP と呼ばれる |プライベート IP アドレスと呼ばれる |
-|  ||IaaS VM や PaaS ロール インスタンスに割り当てられる |VM の NIC に割り当てられる | |
-|  |***内部ロード バランサー (ILB)*** |ILB に割り当てられる (動的または静的) |ILB のフロントエンド構成に割り当てられる (動的または静的) | |
+|  ||IaaS VM や PaaS ロール インスタンスに割り当てられる |VM の NIC に割り当てられる |
+|  |***内部ロード バランサー (ILB)*** |ILB に割り当てられる (動的または静的) |ILB のフロントエンド構成に割り当てられる (動的または静的) |
 
 ## <a name="next-steps"></a>次の手順
 * Azure Portal を使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-classic-pportal.md)します。

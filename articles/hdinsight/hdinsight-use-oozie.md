@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5048a4ab4db6d4cb168d2a643a412f89273658b4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: ece621b18c15061ccb559baf9583677dcc848ca4
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984258"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201757"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>HDInsight での Apache Oozie と Apache Hadoop を使用したワークフローの定義と実行
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -126,7 +126,7 @@ RunHiveScript には、変数がいくつかあります。 その値は、Azure
 |ワークフローの変数|説明|
 |---|---|
 |${jobTracker}|Hadoop ジョブ トラッカーの URL を指定します。 HDInsight バージョン 3.0 と 2.1 では **jobtrackerhost:9010** を使用します。|
-|${nameNode}|Hadoop 名前ノードの URL を指定します。 既定のファイル システムのアドレス (たとえば、*wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net*) を使用します。|
+|${nameNode}|Hadoop 名前ノードの URL を指定します。 既定のファイル システムのアドレス (たとえば、*wasb://&lt;containerName&gt;\@&lt;storageAccountName&gt;.blob.core.windows.net*) を使用します。|
 |${queueName}|ジョブの送信先になるキュー名を指定します。 **既定値**を使用します。|
 
 |Hive アクションの変数|説明|
@@ -631,7 +631,6 @@ Oozie ワークフローとワークフロー アクションの使用の詳細�
 [hdinsight-versions]:  hdinsight-component-versioning.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 
 
 [hdinsight-use-sqoop]:hadoop/hdinsight-use-sqoop.md

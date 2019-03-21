@@ -5,22 +5,22 @@ description: Custom Translator でプロジェクトを作成する方法
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 9886ba39846d9489a66c57bcc614f90e2bf70d4e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: 2e49a8c40396b03c231fa7fd484331b0e28d4cf6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218106"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762706"
 ---
 # <a name="create-a-project"></a>プロジェクトの作成
 
-プロジェクトは、モデル、ドキュメント、およびテストのコンテナーです。 各プロジェクトには、正しい言語ペアを持ち、そのワークスペースにアップロードされたすべてのドキュメントが自動的に追加されます。 
+プロジェクトは、モデル、ドキュメント、およびテストのコンテナーです。 各プロジェクトには、正しい言語ペアを持ち、そのワークスペースにアップロードされたすべてのドキュメントが自動的に追加されます。
 
-プロジェクトの作成は、モデル構築の第一歩です。 
+プロジェクトの作成は、モデル構築の第一歩です。
 
 ## <a name="create-a-project"></a>プロジェクトを作成する:
 

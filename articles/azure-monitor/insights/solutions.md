@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: ff7d886d3f219d007f159167cacfed1b8ee13863
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b66d9cf15aaeaca975b60f24601b8ad7f555f458
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001019"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887558"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
 監視ソリューションでは、Azure のサービスを利用して、特定のアプリケーションまたはサービスの操作に対する詳細な分析情報が提供されます。 この記事では、Azure の監視ソリューションの簡単な概要と、監視ソリューションの使用とインストールの詳細について説明します。
@@ -65,7 +65,7 @@ Azure Monitor の **[概要]** ページを開くと、ワークスペースに�
 ## <a name="install-a-monitoring-solution"></a>監視ソリューションをインストールする
 Microsoft およびパートナーの監視ソリューションは、[Azure Marketplace](https://azuremarketplace.microsoft.com) から入手できます。 次の手順を使用して、使用可能なソリューションを検索し、インストールできます。 ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../platform/manage-access.md)と、データが収集される場所を選択する必要があります。
 
-1. [お使いのサブスクリプションのソリューションの一覧](#list-installed-management-solutions)で、**[追加]** をクリックします。 
+1. [お使いのサブスクリプションのソリューションの一覧](#list-installed-monitoring-solutions)で、**[追加]** をクリックします。 
 1. **[管理ソリューション]** の右側の **[More (その他)]** をクリックします。 
 1. 目的の監視ソリューションを見つけ、その説明を読みます。
 1. **[作成]** をクリックして、インストール プロセスを開始します。
