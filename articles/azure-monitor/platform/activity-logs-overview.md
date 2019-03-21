@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 2fc09ccdf68605e444ed4b196162df6205557272
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fb3ed970b7f92e1cc06a9d1023e01f5888915e94
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002109"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088674"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
 
 **Azure アクティビティ ログ**は、Azure で発生したサブスクリプションレベルのイベントの分析に利用できるサブスクリプション ログです。 たとえば、Azure Resource Manager の運用データから、サービスの正常性イベントまでの範囲のデータが含まれています。 管理者のカテゴリではサブスクリプションのコントロール プレーン イベントが報告されるため、アクティビティ ログは以前は "監査ログ" または "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用するリソースに対する操作は含まれません。
 
-![アクティビティ ログとその他の種類のログ ](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![アクティビティ ログとその他の種類のログ](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 図 1:アクティビティ ログとその他の種類のログ
 
@@ -118,26 +118,28 @@ Azure portal の [イベント ハブにエクスポート] オプションを�
 
     ![ポータルの [エクスポート] ボタン](./media/activity-logs-overview/activity-logs-portal-export-v2.png)
 3. ブレードが表示されたら、以下を選択できます。  
-  * イベントをエクスポートするリージョン
-  * イベントの保存先となるストレージ アカウント
-  * ストレージでイベントを保持する日数。 日数を 0 にした場合には、ログが永久に保持されます。
-  * イベントのストリーミング用にイベント ハブを作成する Service Bus 名前空間。
+   * イベントをエクスポートするリージョン
+   * イベントの保存先となるストレージ アカウント
+   * ストレージでイベントを保持する日数。 日数を 0 にした場合には、ログが永久に保持されます。
+   * イベントのストリーミング用にイベント ハブを作成する Service Bus 名前空間。
 
      ![[Export Activity Log (アクティビティ ログのエクスポート)] ブレード](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
 4. **[保存]** をクリックして設定を保存します。 設定はサブスクリプションにすぐに適用されます。
 
 ### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>Azure PowerShell コマンドレットを使用したログ プロファイルの構成
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 #### <a name="get-existing-log-profile"></a>既存のログ プロファイルの取得
 
 ```
-Get-AzureRmLogProfile
+Get-AzLogProfile
 ```
 
 #### <a name="add-a-log-profile"></a>ログ プロファイルの追加
 
 ```
-Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
+Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
 | プロパティ | 必須 | 説明 |
@@ -151,7 +153,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 #### <a name="remove-a-log-profile"></a>ログ プロファイルの削除
 ```
-Remove-AzureRmLogProfile -name my_log_profile
+Remove-AzLogProfile -name my_log_profile
 ```
 
 ### <a name="configure-log-profiles-using-the-azure-cli"></a>Azure CLI を使用したログ プロファイルの構成

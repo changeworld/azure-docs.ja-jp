@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Hub デバイス管理の開始 (.NET/.NET) | Microsoft Docs
 description: Azure IoT Hub デバイス管理を使用してリモート デバイスの再起動を開始する方法。 .NET 用 Azure IoT device SDK を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、ダイレクト メソッドを呼び出すサービス アプリを実装します。
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 09/15/2017
-ms.author: dobett
-ms.openlocfilehash: 00eda1dc5ad0e455c451fda17cc915ae6c633696
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.author: robin.shahan
+ms.openlocfilehash: 7e7d6fad4268200e5410eb3d3ba3c1e2df06e967
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515145"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008612"
 ---
 # <a name="get-started-with-device-management-netnet"></a>デバイス管理の開始 (.NET/.NET)
 

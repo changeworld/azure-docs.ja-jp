@@ -17,12 +17,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e07fc6c4ce7477cd6f1c64d5de1574ae7c4cecff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8ff2caae7cb387f4f0d88cf059d01ad28861b9ad
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168954"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191989"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect 同期: インストール ウィザードの 2 回目の実行
 初めて Azure AD Connect のインストール ウィザードを実行すると、インストールの構成方法が手順に沿って表示されます。 インストール ウィザードをもう一度実行すると、メンテナンスのオプションが表示されます。
@@ -73,7 +73,7 @@ Azure AD Connect を使用して ADFS をインストールした場合は、こ
 ![環境内のすべてのディレクトリの一覧を含むページ](./media/how-to-connect-installation-wizard/refreshschema.png)
 
 ## <a name="configure-staging-mode"></a>ステージング モードの構成
-このオプションを使用すると、サーバー上のステージング モードを有効または無効にすることができます。 ステージング モードとその使用方法の詳細については、「 [操作](how-to-connect-sync-operations.md#staging-mode)」を参照してください。
+このオプションを使用すると、サーバー上のステージング モードを有効または無効にすることができます。 ステージング モードとその使用方法の詳細については、「 [操作](how-to-connect-sync-staging-server.md)」を参照してください。
 
 このオプションでは、ステージングが現時点で有効になっているか無効になっているかが表示されます。  
 ![Option that is also showing the current state of staging mode](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)

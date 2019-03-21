@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 57279a4e92b1f42505003f12d41c8203aa5603d4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 02977032c5975de4098600ddbebccfcbb9b0fafd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881871"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122894"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects-preview"></a>Azure DevOps Projects (プレビュー) を使用して IoT Edge 用の CI/CD パイプラインを作成する
 
@@ -127,7 +127,7 @@ DevOps Projects によって、Azure Repos にプロジェクトの Git リポ�
 
 12. リリース パイプラインのメニューで、**[タスク]** を選択し、ドロップダウン リストから **[開発]** ステージを選択します。 DevOps Projects によって、IoT hub を作成し、そのハブに IoT Edge デバイスを作成して、ビルド パイプラインからサンプル モジュールをデプロイし、IoT Edge デバイスとして実行する仮想マシンをプロビジョニングするリリース ステージが自動的に作成されています。 CD 用の Azure IoT Edge タスクに関する詳細を確認するには、「[継続的配置のための Azure Pipelines の構成](how-to-ci-cd.md#configure-continuous-deployment)」を参照してください。
 
-   ![継続的配置タスクの表示](media/how-to-devops-project/dev-release.png)
+    ![継続的配置タスクの表示](media/how-to-devops-project/dev-release.png)
 
 13. 右側の **[リリースの表示]** を選択します。 このビューには、リリースの履歴が表示されます。
 

@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e525e5584e4835b0f2b73203c818c3f799b77cf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075716"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Azure Logic Apps で変数を作成して値を保存、管理する
 
@@ -414,10 +414,11 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
 
 1. 対象の変数が文字列か配列かによって、次のいずれかのアクションを検索して選択します。 
 
-  * **変数 - 文字列変数に追加**
-  * **変数 - 配列変数に追加** 
+   * **変数 - 文字列変数に追加**
+   * **変数 - 配列変数に追加** 
 
-2. 文字列または配列の最後の要素として追加する値を指定します。 この値は必須です。 
+2. 文字列または配列の最後の要素として追加する値を指定します。 
+   この値は必須です。 
 
 各**追加**アクションのプロパティを次に示します。
 

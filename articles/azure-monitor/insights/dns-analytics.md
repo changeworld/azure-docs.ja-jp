@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 0eeab5a2489bacde74b98e7d404789a00b64d02a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fdc3c42da7f3d2290806a8cd00d7c90d16f3b87d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992723"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103929"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -66,7 +66,7 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 - **ホワイトリストに含まれるドメイン名**。 ソリューションでは、すべてのルックアップ クエリが処理されるわけではありません。 ドメイン名サフィックスのホワイトリストが保持されています。 このホワイトリストのドメイン名のサフィックスと一致するドメイン名を解決するルックアップ クエリは、ソリューションでは処理されません。 ホワイトリストに含まれるドメイン名を処理しないことで、Azure Monitor に送信されるデータを最適化できます。 既定のホワイトリストには、よく使用されるパブリック ドメイン名 (www.google.com や www.facebook.com など) が含まれています。 スクロールすると、既定のリスト全体を確認できます。
 
- このリストを変更して、ルックアップの洞察の対象にするドメイン名のサフィックスを追加できます。 ルックアップの洞察の対象にしないドメイン名のサフィックスを削除することもできます。
+  このリストを変更して、ルックアップの洞察の対象にするドメイン名のサフィックスを追加できます。 ルックアップの洞察の対象にしないドメイン名のサフィックスを削除することもできます。
 
 - **話好きなクライアントのしきい値**。 ルックアップ要求数のしきい値を超えた DNS クライアントは、**[DNS クライアント]** ブレードで強調表示されます。 既定のしきい値は 1,000 です。 しきい値は編集できます。
 
@@ -142,7 +142,7 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
 **[名前登録要求]**。 上のタイルには、成功および失敗した DNS 動的更新要求のトレンドラインが表示されます。 下のタイルには、失敗した DNS 更新要求を DNS サーバーに送信している上位 10 個のクライアントが、失敗の回数で並べ替えられて表示されます。
 
-![[名前登録要求] ブレード ](./media/dns-analytics/name-reg-req-blade.png)
+![[名前登録要求] ブレード](./media/dns-analytics/name-reg-req-blade.png)
 
 **[DDI 分析のサンプル クエリ]**。 生の分析データを直接取得する最も一般的な検索クエリの一覧が含まれています。
 

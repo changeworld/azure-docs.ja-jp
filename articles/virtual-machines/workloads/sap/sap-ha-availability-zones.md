@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d98a5ab13c2aecd3b3cef590526031f5bdee594
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 687f99fb6447eddb4ce10ce81bc349181ec5c48c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268313"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094754"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Availability Zones での SAP ワークロードの構成
 [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) は、Azure で提供されている高可用性機能の 1 つです。 Availability Zones により、Azure での SAP ワークロードの全体的な可用性が向上します。 この機能は、既に一部の[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)で利用可能になっています。 今後、さらに多くのリージョンで利用できるようになります。
@@ -109,8 +109,8 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
 - デプロイするすべての仮想マシンで、[Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を使用する必要があります。 アンマネージド ディスクは、ゾーン ベースのデプロイにはサポートされていません。
 - Azure Premium Storage と [Ultra SSD ストレージ](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd)では、どのような種類のゾーン間ストレージ レプリケーションもサポートされていません。 重要なデータのレプリケートは、アプリケーション (DBMS または SAP セントラル サービス) で行う必要があります。
 - 共有ディスク (Windows)、CIFS 共有 (Windows)、または NFS 共有 (Linux)である共有 sapmnt ディレクトリについても同じです。 ゾーン間でこれらの共有ディスクまたは共有をレプリケートするテクノロジを使用する必要があります。 次のテクノロジがサポートされています。
-    - Windows では、「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)」に記載されている、SIOS Datakeeper を使用するクラスター ソリューション。
-    - SUSE linux では、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)」に記載されているように構築された NFS 共有。
+  - Windows では、「[Azure のクラスター共有ディスクを使用して Windows フェールオーバー クラスター上の SAP ASCS/SCS インスタンスをクラスター化する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)」に記載されている、SIOS Datakeeper を使用するクラスター ソリューション。
+  - SUSE linux では、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)」に記載されているように構築された NFS 共有。
     
     現時点では、「[Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)」に記載されているように、Microsoft スケールアウト ファイル サーバーを使用するソリューションは、ゾーンをまたいでサポートされません。
 - 3 番目のゾーンは、[SUSE Linux Pacemaker クラスター](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device)または追加のアプリケーション インスタンスをビルドする場合に、SBD デバイスをホストするために使用されます。
@@ -123,7 +123,7 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
 
 このアーキテクチャの基本的なレイアウトを次に示します。
 
-![アクティブ/パッシブ ゾーンのデプロイ](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+![アクティブ/パッシブ ゾーンのデプロイ](./media/sap-ha-availability-zones/active_passive_zones_deployment.png)
 
 この構成には、次の考慮事項が適用されます。
 

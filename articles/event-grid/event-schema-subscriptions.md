@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 04bb19c074edff08677d759fb386608f6905e979
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473437"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536251"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid のサブスクリプション用のイベント スキーマ
 
@@ -250,7 +250,7 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
 | authorization | オブジェクト | 操作の要求された承認。 |
-| claims | オブジェクト | 要求のプロパティ。 詳細については、[JWT 認証](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)に関する記事を参照してください。 |
+| claims | オブジェクト | 要求のプロパティ。 詳細については、[JWT 認証](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)に関する記事を参照してください。 |
 | correlationId | 文字列 | トラブルシューティング用の操作 ID。 |
 | httpRequest | オブジェクト | 操作の詳細。 このオブジェクトは、既存のリソースを更新する場合、またはリソースを削除する場合にのみ含まれます。 |
 | resourceProvider | 文字列 | 操作に対するリソース プロバイダー。 |

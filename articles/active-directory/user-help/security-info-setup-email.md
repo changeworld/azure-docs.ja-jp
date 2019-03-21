@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c6bf2c8ea6a2526f8548a785706e5ed3a7460ff
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 720aafac79a67f64b0974dba0dd60c6aa24a8c54
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455213"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342073"
 ---
 # <a name="set-up-security-info-preview-to-use-your-email-address"></a>メール アドレスを使用するようにセキュリティ情報 (プレビュー) を設定する
 次の手順に従って、パスワードのリセット メソッドを追加できます。 これを初回に設定したら、**[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
@@ -36,11 +36,11 @@ ms.locfileid: "56455213"
 
 1. 職場または学校アカウントにサインインした後、、 https://myprofile.microsoft.com/ ページに移動します。
 
-    ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile.png)
+    ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile-page.png)
 
 2. 左側のナビゲーション ウィンドウから、または **[セキュリティ情報]** ブロックのリンクから **[セキュリティ情報]** を選択した後、**[セキュリティ情報]** ページで **[メソッドの追加]** を選択します。
 
-    ![[メソッドの追加] オプションが強調表示されている [セキュリティ情報] ページ](media/security-info/securityinfo-myprofile-addmethod.png)
+    ![[メソッドの追加] オプションが強調表示されている [セキュリティ情報] ページ](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. **[メソッドの追加]** ページで、ドロップダウン リストから **[電子メール]** を選択し、**[追加]** を選択します。
 

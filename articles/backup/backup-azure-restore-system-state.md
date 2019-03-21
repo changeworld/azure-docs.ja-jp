@@ -8,20 +8,20 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: ab307548853a545c4aa8ee5a573ca5b1ca67c91d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 031b3096d919eb3faadf907f0d30e15d8d8fb5e5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310259"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122962"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 
 この記事では、Azure Recovery Services コンテナーから Windows Server のシステム状態バックアップを復元する方法について説明します。 システム状態を復元するには、システム状態バックアップ ([システム状態のバックアップ](backup-azure-system-state.md#back-up-windows-server-system-state)に関する記事の手順に従って作成) が必要であり、[最新バージョンの Microsoft Azure Recovery Services (MARS) エージェント](https://aka.ms/azurebackup_agent)がインストールされていることを確認する必要があります。 Azure Recovery Services コンテナーからの Windows Server システム状態データの回復は、次の 2 段階のプロセスです。
 
 1. Azure Backup からシステム状態をファイルとして復元します。 Azure Backup からシステム状態をファイルとして復元するときは、次のいずれかを実行できます。
-  * バックアップが作成されたサーバーにシステム状態を復元する。または、
-  * システム状態ファイルを別のサーバーに復元する。
+   * バックアップが作成されたサーバーにシステム状態を復元する。または、
+   * システム状態ファイルを別のサーバーに復元する。
 
 2. 復元されたシステム状態ファイルを Windows Server に適用します。
 

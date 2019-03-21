@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 8b1504961254fefcaafc22008b4cc5adaf77e9c4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: b9a847f04048cd17d550ca66bd3e6502577746eb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447873"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878457"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
@@ -127,7 +127,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 **Application Insights Connector** ダッシュボードで何かをクリックしているかどうかに関係なく、**[検索]** ページでは、Application Insights データを返すすべてのクエリで Application Insights パースペクティブが表示されます。 たとえば、Application Insights データを表示する場合、**&#42;** クエリでも、次の図のように、パースペクティブ タブが表示されます。
 
-![Application Insights ](./media/app-insights-connector/app-insights-search.png)
+![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
 パースペクティブ コンポーネントは、検索クエリに応じて更新されます。 つまり、結果を任意の検索フィールドを使用してフィルター処理することで、以下のデータを表示することができます。
 

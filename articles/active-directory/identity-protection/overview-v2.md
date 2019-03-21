@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e60804e6bdf37607a08b6c530fd900e0f481a45b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2c3543b217339c39ad79c2125afdef8f087a70b3
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204510"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57336688"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Azure Active Directory Identity Protection (更新版) とは
 
@@ -58,6 +58,7 @@ ms.locfileid: "56204510"
 
 Azure AD Identity Protection は Azure Active Directory Premium P2 の一機能です。これを使用して、ユーザーの ID が侵害されたときや、アカウント所有者以外の誰かがその ID を使用してサインインしようとしたときに自動的に対応するようにポリシーを構成することができます。 こうしたポリシーと、Azure AD によって提供される他の条件付きアクセス制御により、自動的にアクセスをブロックするか、パスワードのリセットや多要素認証の適用などの軽減アクションを開始することができます。 さらに、Identity Protection では、組織内のリスクと潜在的な侵害について、より深い洞察を得るための監視およびレポート機能が提供されます。 
 
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
 
 ## <a name="risk-events"></a>リスク イベント

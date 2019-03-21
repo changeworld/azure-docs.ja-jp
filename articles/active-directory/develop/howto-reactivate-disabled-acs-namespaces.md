@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0078c260e09ec9fd31ecf2124bc4bf7ad7f92b0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 534c0463cd8aee9fccfa183586b946032dada722
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173744"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094560"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法:無効化された Access Control Service 名前空間を再アクティブ化する
 
@@ -102,7 +102,7 @@ Microsoft では、2019 年 1 月 21 日より、新しい延長要請を受け�
     | **問題の種類** | `ACS to SAS Migration` |
     | **[件名]** | 問題を説明します |
 
-  ![新しいテクニカル サポート リクエスト](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![新しいテクニカル サポート リクエスト](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 

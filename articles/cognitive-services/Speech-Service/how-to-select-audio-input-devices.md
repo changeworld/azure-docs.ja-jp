@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: e02c99edcc1774510f9d10a5d19f49c4fc0530a9
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: e8e2bd34ebb5b789bb3e9ba4a419ab424d3fdf5a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594085"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550681"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Speech SDK を使用してオーディオ入力デバイスを選択する
 
@@ -223,7 +223,7 @@ namespace helloworld {
 
 標準の ALSA デバイス ID を使用して、デバイス ID が選択されます。
 システムに接続された入力の ID は、コマンド `arecord -L` の出力に含まれます。
-あるいは、[ALSA C ライブラリ](http://www.alsa-project.org/alsa-doc/alsa-lib/)を使用して取得できます。
+あるいは、[ALSA C ライブラリ](https://www.alsa-project.org/alsa-doc/alsa-lib/)を使用して取得できます。
 サンプル ID は `hw:1,0` と `hw:CARD=CC,DEV=0` です。
 
 ## <a name="audio-device-ids-on-macos"></a>macOS でのオーディオ デバイス ID

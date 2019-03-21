@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 02/18/2019
-ms.openlocfilehash: 3bf0f62b0a8d909231ad747435ce363e6686fe80
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 44ea6db1c31f0ebfbe2abe2f9f6eea165a3ff4e0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874751"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306767"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスの概要
 
@@ -28,6 +28,7 @@ ms.locfileid: "56874751"
 以下のクイック スタートを使用すると、マネージド インスタンスの迅速な作成、クライアント アプリケーション用の仮想マシンやポイント対サイト VPN 接続の構成のほか、`.bak` ファイルを使用した新しいマネージド インスタンスへのデータベースの復元を行うことができます。
 
 ### <a name="configure-environment"></a>環境の構成
+
 最初の手順として、初めてのマネージド インスタンスをそれが配置されるネットワーク環境で作成し、マネージド インスタンスに対するクエリを実行するコンピューターまたは仮想マシンから接続できるようにする必要があります。 次のガイドを使用できます。
 
 - [Azure portal を使用してマネージド インスタンスを作成します](sql-database-managed-instance-get-started.md)。 Azure portal で、必要なパラメーター (ユーザー名/パスワード、コア数、最大ストレージ量) を構成します。また、Azure ネットワーク環境を自動的に作成できます。ネットワークの詳細やインフラストラクチャの要件を把握している必要はありません。 現在マネージド インスタンスを作成できる[タイプのサブスクリプション](sql-database-managed-instance-resource-limits.md#supported-subscription-types)を持っていることの確認のみが必要です。 独自のネットワークがあってそれを使用したい場合、またはネットワークをカスタマイズしたい場合は、「[Azure SQL Database Managed Instance の既存の仮想ネットワークを構成する](sql-database-managed-instance-configure-vnet-subnet.md)」または「[Azure SQL Database Managed Instance の仮想ネットワークを作成する](sql-database-managed-instance-create-vnet-subnet.md)」をご覧ください。
@@ -39,10 +40,11 @@ ms.locfileid: "56874751"
   > [!NOTE]
   > ローカル ネットワークから Express Route またはサイト間接続を使用することもできますが、このような方法はこれらのクイック スタートでは扱いません。
 
-### <a name="migrate-your-databases"></a>データベースを移行する 
+### <a name="migrate-your-databases"></a>データベースを移行する
+
 マネージド インスタンスを作成してアクセスを構成したら、オンプレミスまたは Azure VM 上の SQL Server からのデータベースの移行を開始できます。 移行するソース データベースにサポートされていない機能がある場合、移行は失敗します。 失敗を回避し、互換性を確認するために、[Data Migration Assistant (DMA) ](https://www.microsoft.com/download/details.aspx?id=53595) をインストールできます。これにより、SQL Server 上のデータベースが分析され、マネージド インスタンスへの移行を妨げる可能性がある問題 ([FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) や複数のログ ファイルの存在など) が特定されます。 このような問題を解決すると、データベースはマネージド インスタンスに移行できる状態になります。 もう 1 つの便利なツールとして、[Database Experimentation Assistant](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) があります。このツールを使用すると、SQL Server 上のワークロードを記録し、マネージド インスタンス上で再生することができます。そのため、マネージド インスタンスに移行した場合にパフォーマンスの問題が発生するかどうかを判断できます。
 
-データベースをマネージド インスタンスに移行できる状態になったら、ネイティブの SQL Server 復元機能を使用して、データベースを `.bak` ファイルからマネージド インスタンスに復元できます。 この方法を使用すると、SQL Server データベース エンジンがインストールされているオンプレミスまたは Azure VM からデータベースを移行することができます。 クイック スタートについては、[バックアップからマネージド インスタンスへの復元](sql-database-managed-instance-get-started-restore.md)に関するページを参照してください。 このクイック スタートでは、`RESTORE` Transact-SQL コマンドを使用して、Azure Blob Storage に格納されている `.bak` ファイルから復元します。 
+データベースをマネージド インスタンスに移行できる状態になったら、ネイティブの SQL Server 復元機能を使用して、データベースを `.bak` ファイルからマネージド インスタンスに復元できます。 この方法を使用すると、SQL Server データベース エンジンがインストールされているオンプレミスまたは Azure VM からデータベースを移行することができます。 クイック スタートについては、[バックアップからマネージド インスタンスへの復元](sql-database-managed-instance-get-started-restore.md)に関するページを参照してください。 このクイック スタートでは、`RESTORE` Transact-SQL コマンドを使用して、Azure Blob Storage に格納されている `.bak` ファイルから復元します。
 
 > [!TIP]
 > `BACKUP` Transact-SQL コマンドを使用して Azure Blob Storage にデータベースのバックアップを作成する場合は、「[SQL Server Backup to URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)」を参照してください。
@@ -51,7 +53,9 @@ ms.locfileid: "56874751"
 
 ## <a name="customize-network-environment"></a>ネットワーク環境をカスタマイズする
 
-Azure portal を使用してインスタンスを作成するときに、VNet/サブネットを自動的に構成できますが、VNet およびサブネットのパラメーターを構成できるように、マネージド インスタンスの作成を開始する前に VNet/サブネットを作成したい場合があります。 ネットワーク環境を作成および構成するときの最も簡単な方法は、[Azure リソース デプロイ](sql-database-managed-instance-create-vnet-subnet.md) テンプレートを使用して、マネージド インスタンスのネットワークとサブネットを作成および構成する方法です。 必要な操作は、Azure Resource Manager のデプロイ ボタンを押し、フォームにパラメーターを入力することのみです。 
+[Azure portal](sql-database-managed-instance-get-started.md) を使用してインスタンスを作成するときに VNet/サブネットを自動的に構成できますが、VNet およびサブネットのパラメーターを構成できるので、マネージド インスタンスの作成を開始する前に作成することをお勧めします。 ネットワーク環境を作成および構成する場合、最も簡単な方法は、[Azure リソース デプロイ](sql-database-managed-instance-create-vnet-subnet.md) テンプレートを使用することです。このテンプレートで、インスタンスが配置されるネットワークとサブネットを作成および構成します。 必要な操作は、Azure Resource Manager のデプロイ ボタンを押し、フォームにパラメーターを入力することのみです。
+
+別の方法として、[PowerShell スクリプト](https://www.powershellmagazine.com/20../../configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/)を使用してネットワークの作成を自動化することもできます。
 
 別の方法として、この [PowerShell スクリプト](https://www.powershellmagazine.com/2018/07/23/configuring-azure-environment-to-set-up-azure-sql-database-managed-instance-preview/)を使用してネットワークの作成を自動化することもできます。
 
@@ -72,5 +76,5 @@ Azure portal を使用してインスタンスを作成するときに、VNet/�
 ## <a name="next-steps"></a>次の手順
 
 - [マネージド インスタンスでサポートされている機能の概要の一覧についてはこちら](sql-database-features.md)、[詳細情報と既知の問題についてはこちら](sql-database-managed-instance-transact-sql-information.md)を確認します。
-- [マネージド インスタンスの技術的な特性](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)を学びます。 
-- 「[Azure SQL Database でマネージド インスタンスを作成する方法](sql-database-howto-managed-instance.md)」で、より高度な操作方法を参照します。 
+- [マネージド インスタンスの技術的な特性](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)を学びます。
+- 「[Azure SQL Database でマネージド インスタンスを作成する方法](sql-database-howto-managed-instance.md)」で、より高度な操作方法を参照します。

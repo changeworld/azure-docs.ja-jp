@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 10/15018
+ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: c1029d5efe0c8e87cd9bc84887826ddf837d32c5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4409cf5e6e4827af86892b51697a6acced2cb135
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456257"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675298"
 ---
 # <a name="change-a-maintenance-schedule"></a>メンテナンス スケジュールの変更 
 

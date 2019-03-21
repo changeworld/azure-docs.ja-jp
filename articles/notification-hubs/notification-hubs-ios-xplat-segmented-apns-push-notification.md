@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 8b37f86706e47e3998a4ba85e4416ce1a8a44c22
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: dd625dba0e125ccf993af524a0ab0c0cc66555fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567087"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834219"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の iOS デバイスにプッシュ通知を送信する
 
@@ -49,14 +49,14 @@ ms.locfileid: "55567087"
 
 1. **MainStoryboard_iPhone.storyboard** で、オブジェクト ライブラリから次のコンポーネントを追加します。
 
-    * "Breaking News" というテキストが付いたラベル
-    * "World"、"Politics"、"Business"、"Technology"、"Science"、"Sports" というカテゴリ テキストが付いたラベル
-    * 6 つのスイッチ (カテゴリごとに 1 つ)。各スイッチの **[状態]** は、既定で **[Off]** に設定されます。
-    * [Subscribe] というラベルが付いた 1 個のボタン
+   * "Breaking News" というテキストが付いたラベル
+   * "World"、"Politics"、"Business"、"Technology"、"Science"、"Sports" というカテゴリ テキストが付いたラベル
+   * 6 つのスイッチ (カテゴリごとに 1 つ)。各スイッチの **[状態]** は、既定で **[Off]** に設定されます。
+   * [Subscribe] というラベルが付いた 1 個のボタン
 
-    ストーリーボードは次のようになります。
+     ストーリーボードは次のようになります。
 
-    ![Xcode インターフェイス ビルダー][3]
+     ![Xcode インターフェイス ビルダー][3]
 
 2. アシスタント エディターで、すべてのスイッチのアウトレットを作成し、"WorldSwitch"、"PoliticsSwitch"、"BusinessSwitch"、"TechnologySwitch"、"ScienceSwitch"、"SportsSwitch" という名前にします。
 3. `subscribe` という名前のボタンのアクションを作成します。`ViewController.h` には次のコードを含める必要があります。
@@ -359,11 +359,11 @@ Visual Studio にアクセスできない場合は、次のセクションをス
 [3]: ./media/notification-hubs-ios-send-breaking-news/notification-hub-breakingnews-ios2.png
 
 <!-- URLs. -->
-[How To: Service Bus Notification Hubs (iOS Apps)]: http://msdn.microsoft.com/library/jj927168.aspx
+[How To: Service Bus Notification Hubs (iOS Apps)]: https://msdn.microsoft.com/library/jj927168.aspx
 [Use Notification Hubs to broadcast localized breaking news]: notification-hubs-ios-xplat-localized-apns-push-notification.md
 [Mobile Service]: /develop/mobile/tutorials/get-started
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
-[Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/dn530749.aspx
+[Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: notification-hubs-ios-apple-push-notification-apns-get-started.md
 [Azure Portal]: https://portal.azure.com

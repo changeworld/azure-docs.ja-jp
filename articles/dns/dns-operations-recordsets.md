@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: 6907382fccaa463fe305ac5049b3858e59b8631b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fa1f90cf0236a589d1df96658c672a555195be6b
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991397"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888816"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS のレコードおよびレコード セットを管理する
 
@@ -238,7 +238,7 @@ $recordsets = Get-AzDnsRecordSet -Zone $zone
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-上記の例は、種類が "A" の既存のレコード セットに "A" レコードを追加する方法を示しています。 同様の操作は、他の種類のレコード セットにレコードを追加するときにも使用されます。そのときは、`Add-AzDnsRecordConfig` の `-Ipv4Address` パラメーターをレコードの種類それぞれに固有の他のパラメーターに置き換えます。 レコードの種類それぞれに対応したパラメーターは、上記の[その他のレコードの種類の例](#additional-record-type-examples)に関するセクションに示したとおり、`New-AzDnsRecordConfig` コマンドレットと同じです。
+上記の例は、種類が "A" の既存のレコード セットに "A" レコードを追加する方法を示しています。 同様の操作は、他の種類のレコード セットにレコードを追加するときにも使用されます。そのときは、`Add-AzDnsRecordConfig` の `-Ipv4Address` パラメーターをレコードの種類それぞれに固有の他のパラメーターに置き換えます。 レコードの種類それぞれに対応したパラメーターは、上記のその他のレコードの種類の例に関するセクションに示したとおり、`New-AzDnsRecordConfig` コマンドレットと同じです。
 
 種類が "CNAME" または "SOA" のレコード セットに複数のレコードを含めることはできません。 この制約は DNS 標準によるものです。 Azure DNS の制限ではありません。
 
@@ -272,7 +272,7 @@ Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyR
 Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-レコードの種類に固有の適切なパラメーターを `Remove-AzDnsRecordSet` に渡すことで、さまざまなレコードの種類がサポートされます。 レコードの種類それぞれに対応したパラメーターは、上記の[その他のレコードの種類の例](#additional-record-type-examples)に関するセクションに示したとおり、`New-AzDnsRecordConfig` コマンドレットと同じです。
+レコードの種類に固有の適切なパラメーターを `Remove-AzDnsRecordSet` に渡すことで、さまざまなレコードの種類がサポートされます。 レコードの種類それぞれに対応したパラメーターは、上記のその他のレコードの種類の例に関するセクションに示したとおり、`New-AzDnsRecordConfig` コマンドレットと同じです。
 
 
 ## <a name="modify-an-existing-record-set"></a>既存のレコード セットの変更

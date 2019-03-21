@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 4441797eb41dc909a98be3c42931140e71e36f80
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fe925ed408f64424de8da98f6e182a06a41bf015
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270353"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075051"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>チュートリアル:JavaScript SDK を使用して、Azure Cosmos DB SQL API データを管理するための Node.js コンソール アプリを構築する
 
@@ -338,7 +338,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
 次に、データの保存とクエリに使用できるように、Azure Cosmos DB アカウント内にコンテナーを作成します。 
 
 > [!WARNING]
-コンテナーを作成すると、料金に影響があります。 かかる料金については、[料金ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
+> コンテナーを作成すると、料金に影響があります。 かかる料金については、[料金ページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
 
 コンテナーは、**Containers** クラスの `createIfNotExists` または create 関数を使用して作成できます。  コンテナーは、項目 (SQL API の場合は JSON ドキュメント) と、それに関連する JavaScript アプリケーション ロジックで構成されます。
 
@@ -462,7 +462,7 @@ Azure Cosmos DB クライアントを初期化するためのコードは以上�
    /**
    * Create family item if it does not exist
    */
-  async function createFamilyItem(itemBody) {
+   async function createFamilyItem(itemBody) {
      try {
          // read the item to see if it exists
          const { item } = await client.database(databaseId).container(containerId).item(itemBody.id).read();
@@ -612,9 +612,9 @@ Azure Cosmos DB は、JSON 項目の削除をサポートします。
 1. **replaceFamilyItem** 関数の下に、**deleteFamilyItem** 関数をコピーして貼り付けます。
 
    ```javascript
-  /**
-  * Delete the item by ID.
-  */
+   /**
+   * Delete the item by ID.
+   */
    async function deleteFamilyItem(itemBody) {
       await client.database(databaseId).container(containerId).item(itemBody.id).delete(itemBody);
       console.log(`Deleted item:\n${itemBody.id}\n`);

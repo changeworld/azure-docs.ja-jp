@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1139993be6e408e0a2d19c13a6ced3823aaa0003
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: de72de6725172d118672292e1681d09f0dab291a
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858316"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008765"
 ---
 # <a name="how-to-get-analytics-for-bing-autosuggest-api"></a>Bing Autosuggest API の分析を取得する方法
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: e3d13082e3c076061b8d343827266ec04ae80646
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ac11244b87c87285722b4922da69530fab98c299
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180689"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117610"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Azure AD からマネージド ドメインまで範囲指定された同期を構成する
 この記事では、Azure AD ディレクトリから Azure AD Domain Services のマネージド ドメインに同期される特定のユーザー アカウントのみを構成する方法を示します。
@@ -39,12 +39,10 @@ ms.locfileid: "55180689"
 
 > [!WARNING]
 > **同期のスコープを変更すると、マネージド ドメインが再同期されます。**
->
- * マネージド ドメインの同期スコープを変更すると、完全な再同期が発生します。
- * マネージド ドメインで不要になったオブジェクトは削除されます。 新しいオブジェクトは、マネージド ドメインに作成されます。
- * 再同期は、マネージド ドメインと Azure AD ディレクトリ内のオブジェクト (ユーザー、グループ、およびグループ メンバーシップ) の数によっては、完了までに時間がかかる場合があります。 数十万のオブジェクトを含む大規模なディレクトリについては、再同期に数日かかる場合があります。
->
->
+> 
+>  * マネージド ドメインの同期スコープを変更すると、完全な再同期が発生します。
+>  * マネージド ドメインで不要になったオブジェクトは削除されます。 新しいオブジェクトは、マネージド ドメインに作成されます。
+>  * 再同期は、マネージド ドメインと Azure AD ディレクトリ内のオブジェクト (ユーザー、グループ、およびグループ メンバーシップ) の数によっては、完了までに時間がかかる場合があります。 数十万のオブジェクトを含む大規模なディレクトリについては、再同期に数日かかる場合があります。
 
 
 ## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Azure portal を使用して新しいマネージド ドメインを作成し、グループ ベースのスコープ付き同期を有効にする
@@ -58,46 +56,46 @@ ms.locfileid: "55180689"
 グループ ベースのスコープ付きの同期をマネージド ドメインに対して構成するには、次の手順を完了します。
 
 1. 次のタスクを実行してください。
-  * [タスク 1 :必要な PowerShell モジュールをインストールする](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules)。
-  * [タスク 2 :Azure AD ディレクトリに必要なサービス プリンシパルを作成する](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory)。
-  * [タスク 3 :"AAD DC 管理者" グループを作成して構成する](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group)。
-  * [タスク 4 :Azure AD Domain Services のリソース プロバイダーを登録する](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider)。
-  * [タスク 5 :リソース グループを作成する](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group)。
-  * [タスク 6 :仮想ネットワークを作成して構成する](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network)。
+   * [タスク 1 :必要な PowerShell モジュールをインストールする](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules)。
+   * [タスク 2 :Azure AD ディレクトリに必要なサービス プリンシパルを作成する](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory)。
+   * [タスク 3 :"AAD DC 管理者" グループを作成して構成する](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group)。
+   * [タスク 4 :Azure AD Domain Services のリソース プロバイダーを登録する](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider)。
+   * [タスク 5 :リソース グループを作成する](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group)。
+   * [タスク 6 :仮想ネットワークを作成して構成する](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network)。
 
 2. 同期するグループを選択し、マネージド ドメインに同期するグループの表示名を指定します。
 
 3. [以下のセクションのスクリプト](active-directory-ds-scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1)を ```Select-GroupsToSync.ps1``` というファイルに保存します。 次のようなスクリプトを実行します。
 
-  ```powershell
-  .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
-  ```
+   ```powershell
+   .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
+   ```
 
-  > [!WARNING]
-  > **"AAD DC Administrators" グループを含めることを忘れないでください。**
-  >
-  > スコープを持つ同期用に構成されたグループの一覧に、"AAD DC Administrators" グループを含める必要があります。 このグループを含めない場合、マネージド ドメインは使用できません。
-  >
+   > [!WARNING]
+   > **"AAD DC Administrators" グループを含めることを忘れないでください。**
+   >
+   > スコープを持つ同期用に構成されたグループの一覧に、"AAD DC Administrators" グループを含める必要があります。 このグループを含めない場合、マネージド ドメインは使用できません。
+   >
 
 4. ここで、マネージド ドメインを作成し、マネージド ドメインのグループ ベースのスコープを持つ同期を有効にします。 ```Properties``` パラメーターに ```"filteredSync" = "Enabled"``` プロパティ を含めます。 たとえば、「[タスク 7:Azure AD Domain Services のマネージド ドメインをプロビジョニングする](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain)」からコピーした次のスクリプト フラグメントを参照してください。
 
-  ```powershell
-  $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-  $ManagedDomainName = "contoso100.com"
-  $ResourceGroupName = "ContosoAaddsRg"
-  $VnetName = "DomainServicesVNet_WUS"
-  $AzureLocation = "westus"
+   ```powershell
+   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
+   $ManagedDomainName = "contoso100.com"
+   $ResourceGroupName = "ContosoAaddsRg"
+   $VnetName = "DomainServicesVNet_WUS"
+   $AzureLocation = "westus"
 
-  # Enable Azure AD Domain Services for the directory.
-  New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-  -Location $AzureLocation `
-  -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
+   # Enable Azure AD Domain Services for the directory.
+   New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+   -Location $AzureLocation `
+   -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -ApiVersion 2017-06-01 -Force -Verbose
-  ```
+   -ApiVersion 2017-06-01 -Force -Verbose
+   ```
 
-  > [!TIP]
-  > スコープを持つ同期がマネージド ドメインに有効となるように ```-Properties``` パラメーターに ```"filteredSync" = "Enabled"``` を含めることを忘れないでください。
+   > [!TIP]
+   > スコープを持つ同期がマネージド ドメインに有効となるように ```-Properties``` パラメーターに ```"filteredSync" = "Enabled"``` を含めることを忘れないでください。
 
 
 ## <a name="script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1"></a>マネージド ドメインに同期するグループを選択するスクリプト (Select-GroupsToSync.ps1)

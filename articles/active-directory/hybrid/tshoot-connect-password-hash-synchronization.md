@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29cb7f6799556406c4c5def12b1367bfd581d06b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 56fda1110218910f8fbd8aa9597195f37444e01c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198679"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193329"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング
 このトピックでは、パスワード ハッシュ同期の問題のトラブルシューティングを行う手順を示します。 パスワードが想定どおりに同期しない場合、そのパスワードが、ユーザーのサブセット、またはすべてのユーザーを対象している可能性があります。
@@ -225,7 +225,7 @@ Azure AD テナントに対応するオブジェクトがないため、この�
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>パスワードが同期されない: 手動によるトラブルシューティング手順
 パスワードが同期されない理由を確認するには、次の手順に従います。
 
-1. Connect サーバーは[ステージング モード](how-to-connect-sync-operations.md#staging-mode)ですか。 ステージング モードのサーバーは、パスワードを同期しません。
+1. Connect サーバーは[ステージング モード](how-to-connect-sync-staging-server.md)ですか。 ステージング モードのサーバーは、パスワードを同期しません。
 
 2. 「[パスワード同期設定の状態の取得](#get-the-status-of-password-sync-settings)」セクションにあるスクリプトを実行してください。 これにより、パスワード同期の構成の概要が示されます。  
 
@@ -292,7 +292,7 @@ Azure AD との接続がありますか。
 
     c. ユーザーが存在する **Active Directory コネクタ**を選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Search Connector Space (コネクタ スペースの検索)]** を選択します。
+    d. **[Search Connector Space (コネクタ スペースの検索)]** を選択します。
 
     e. **[スコープ]** ボックスで、**[DN or Anchor]\(DN またはアンカー\)** を選択し、トラブルシューティングを行うユーザーの完全な DN を入力します。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: d103061289991fb149b7c8d76430b37a6b385f80
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 21e66f962d1cc0bbbe8d780a702216d40abe2836
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064374"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453475"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -94,10 +94,13 @@ https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGrou
 サンプルの詳細については、[REST API を使用してデータ ファクトリを作成する方法のクイック スタート](quickstart-create-data-factory-rest-api.md)に関する記事を参照してください。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 次のサンプル コマンドは、Azure PowerShell を使用してパイプラインを手動で実行する方法を示します。
 
 ```powershell
-Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickStartPipeline" -ParameterFile .\PipelineParameters.json
+Invoke-AzDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickStartPipeline" -ParameterFile .\PipelineParameters.json
 ```
 
 パラメーターは要求ペイロードの本文に入れて渡します。 .NET SDK、Azure PowerShell、Python SDK では、呼び出しに引数として渡されるディクショナリに値を入れて渡します。

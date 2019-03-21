@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5588d2bd6cf2098d8744479c2bf2d308c9bf8f0d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b275f23209979e1a8068ecd99465f7b52392bc6c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460440"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082910"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>SQL Data Warehouse のレコメンデーション
 
@@ -63,4 +63,3 @@ Advisor は、テーブル アクセスの頻度、返された平均行数、�
 
 > [!IMPORTANT]
 > レプリケート テーブルのレコメンデーションは、完全に試験済みの状態ではなく、アカウント データの移動操作は考慮されていません。 これをヒューリスティックとして追加することには取り組んでいますが、それまでは、レコメンデーションの適用後、実際のワークロードを必ず検証する必要があります。 ワークロードの状況を悪化させるレプリケート テーブルのレコメンデーションが見つかった場合は、sqldwadvisor@service.microsoft.com までご連絡ください。 レプリケート テーブルに関する詳細については、次の[ドキュメント](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table)を参照してください。
->

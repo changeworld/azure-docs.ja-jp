@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ea80824588980fdd6c580b6d77c2a5566159547
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b78cb45d83cd9bc9bc973ec7a09cb75a8b111744
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211089"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224150"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -53,7 +53,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 > [!IMPORTANT]
 > 単一の Azure AD ユーザーを G Suite に割り当てて、プロビジョニングの構成をテストすることをお勧めします。 後で、追加のユーザーとグループを割り当てることができます。
-
+> 
 > ユーザーを G Suite に割り当てるときに、[割り当て] ダイアログ ボックスで **[ユーザー]** または **[グループ]** ロールを選択します。 **[既定のアクセス]** ロールはプロビジョニングでは機能しません。
 
 ## <a name="enable-automated-user-provisioning"></a>自動化されたユーザー プロビジョニングを有効にする
@@ -80,8 +80,8 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
    
     ![API リファレンスを選択する][16]
 
-    > [!IMPORTANT]
-    > G Suite にプロビジョニングするすべてのユーザーは、Azure Active Directory でのユーザー名がカスタム ドメインに関連付けられている "*必要があります*"。 たとえば G Suite では、bob@contoso.onmicrosoft.com のようなユーザー名は使用できませんが、 bob@contoso.com のようなユーザー名は使用できます。 Azure AD でプロパティを編集することによって、既存のユーザーのドメインを変更できます。 Azure Active Directory と G Suite の両方でカスタム ドメインを設定する方法は、以下の手順に含まれています。
+   > [!IMPORTANT]
+   > G Suite にプロビジョニングするすべてのユーザーは、Azure Active Directory でのユーザー名がカスタム ドメインに関連付けられている "*必要があります*"。 たとえば G Suite では、bob@contoso.onmicrosoft.com のようなユーザー名は使用できませんが、 bob@contoso.com のようなユーザー名は使用できます。 Azure AD でプロパティを編集することによって、既存のユーザーのドメインを変更できます。 Azure Active Directory と G Suite の両方でカスタム ドメインを設定する方法は、以下の手順に含まれています。
       
 1. まだ Azure Active Directory にカスタム ドメイン名を追加していない場合は、次の手順に従います。
   
@@ -97,7 +97,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
      
      ![ドメイン名](./media/google-apps-provisioning-tutorial/domain_3.png)
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ]** を選択し、確認ページに移動します。 このドメインを所有していることを確認するために、このページに表示されている値に従ってドメインの DNS レコードを編集します。 **[レコードの種類]** オプションでの選択内容に応じて、**MX レコード**と **TXT レコード**のどちらを使用して確認するかを選択します。 
+    d. **[次へ]** を選択し、確認ページに移動します。 このドメインを所有していることを確認するために、このページに表示されている値に従ってドメインの DNS レコードを編集します。 **[レコードの種類]** オプションでの選択内容に応じて、**MX レコード**と **TXT レコード**のどちらを使用して確認するかを選択します。 
     
     Azure AD でのドメイン名の確認に関する包括的な手順の詳細については、[Azure AD への独自のドメイン名の追加](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409)に関するトピックを参照してください。
      
@@ -105,8 +105,8 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
     e. ディレクトリに追加するすべてのドメインに対して、前述の手順を繰り返します。
 
-    > [!NOTE]
-    ユーザー プロビジョニングでは、カスタム ドメインがソースの Azure AD のドメイン名と一致する必要があります。 ドメイン名が一致しない場合は、属性マッピングのカスタマイズを実装することにより、問題が解決する場合があります。
+   > [!NOTE]
+   >  ユーザー プロビジョニングでは、カスタム ドメインがソースの Azure AD のドメイン名と一致する必要があります。 ドメイン名が一致しない場合は、属性マッピングのカスタマイズを実装することにより、問題が解決する場合があります。
 
 
 1. すべてのドメインを Azure AD で確認したので、Google Apps でも確認する必要があります。 Google にまだ登録されていない各ドメインに対して、次の手順を実行します。
@@ -123,7 +123,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
      
      ![Type in your domain name][22]
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Continue and verify domain ownership]\(続行してドメインの所有権を確認\)** を選択します。 次に、手順に従って、ドメイン名を所有していることを確認します。 Google でドメインを確認する包括的な手順については、[Google Apps でサイトの所有者であることを確認する](https://support.google.com/webmasters/answer/35179)方法に関するページをご覧ください。
+    d. **[Continue and verify domain ownership]\(続行してドメインの所有権を確認\)** を選択します。 次に、手順に従って、ドメイン名を所有していることを確認します。 Google でドメインを確認する包括的な手順については、[Google Apps でサイトの所有者であることを確認する](https://support.google.com/webmasters/answer/35179)方法に関するページをご覧ください。
 
     e. Google Apps に追加するすべての追加ドメインに対して、前述の手順を繰り返します。
      
@@ -149,13 +149,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 1. **[プロビジョニング モード]** を **[自動]** に設定します。 
 
-     ![プロビジョニング](./media/google-apps-provisioning-tutorial/provisioning.png)
+       ![Provisioning](./media/google-apps-provisioning-tutorial/provisioning.png)
 
 1. **[管理者資格情報]** セクションにある **[承認する]** を選択します。 これで、ブラウザーの新しいウィンドウで Google 認可ダイアログ ボックスが開きます。
 
 1. G Suite のテナントに対して変更を行うためのアクセス許可を Azure Active Directory に付与することを確認します。 **[Accept]\(承認\)** を選択します。
     
-     ![Confirm permissions.][28]
+       ![Confirm permissions.][28]
 
 1. Azure portal で、**[テスト接続]** を選択して Azure AD がアプリに接続できることを確認します。 接続が失敗した場合は、使用中の G Suite アカウントに Team Admin アクセス許可があることを確認します。 その後、**承認**手順を再び試します。
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 038a70f5cce5b78f6c0e95316e66de42fa529954
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 7432cbf8fae098c0753641f2002b72eaab3ddbb4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321740"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57851365"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル:ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 
@@ -187,7 +187,7 @@ ASP.NET アプリの既定のレイアウトである **Views/Shared/_Layout.csh
 
 ```html
 <!DOCTYPE html>
-<html ng-app="VotingApp" xmlns:ng="http://angularjs.org">
+<html ng-app="VotingApp" xmlns:ng="https://angularjs.org">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -621,22 +621,22 @@ Visual Studio でアプリケーションをデバッグするときは、ロー
 4. ブラウザーに戻り、投票の選択肢をクリックするか、新しい選択肢を追加します。 Web フロントエンドの API コントローラーで 1 つ目のブレークポイントに到達します。
     
 
-    1. ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
+   1. ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
 
-    ![投票フロントエンド サービスの追加](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
+      ![投票フロントエンド サービスの追加](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
-    2. 最初に、バックエンド サービスの ReverseProxy の URL を構築します **(1)**。
-    3. 次に、HTTP PUT 要求を ReverseProxy に送信します **(2)**。
-    4. 最後に、バックエンド サービスからの応答をクライアントに返します **(3)**。
+   2. 最初に、バックエンド サービスの ReverseProxy の URL を構築します **(1)**。
+   3. 次に、HTTP PUT 要求を ReverseProxy に送信します **(2)**。
+   4. 最後に、バックエンド サービスからの応答をクライアントに返します **(3)**。
 
 5. **F5** キーを押して続行します。
-    1. 今度は、バックエンド サービスのブレークポイントに到達します。
+   1. 今度は、バックエンド サービスのブレークポイントに到達します。
 
-    ![投票バックエンド サービスの追加](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
+      ![投票バックエンド サービスの追加](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
 
-    2. メソッド **(1)** の先頭行では、`StateManager` を使用して信頼性の高いディクショナリ (`counts`) を取得または追加します。
-    3. 信頼性の高いディクショナリ内の値とのすべてのやり取りにはトランザクションが必要です。この using ステートメント **(2)** によってトランザクションが作成されます。
-    4. トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)**。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
+   2. メソッド **(1)** の先頭行では、`StateManager` を使用して信頼性の高いディクショナリ (`counts`) を取得または追加します。
+   3. 信頼性の高いディクショナリ内の値とのすべてのやり取りにはトランザクションが必要です。この using ステートメント **(2)** によってトランザクションが作成されます。
+   4. トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)**。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
 6. **F5** キーを押して続行します。
 
 デバッグ セッションを停止するには、**Shift + F5** キーを押します。

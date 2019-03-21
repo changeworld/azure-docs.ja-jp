@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 763dfbc3813a63ffbc91180de1d5b518cef2a46d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d62ad37e6bbe9c89ef803cefc43f373e287a7af7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470163"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100447"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box のサポート チケットを開く 
 
@@ -55,14 +55,14 @@ ms.locfileid: "55470163"
 
 4. **[新しいサポート要求]** で、**[手順 3 連絡先情報]** をクリックします。 **[連絡先情報]** で、次の手順を実行します。
 
-    1. **[連絡先オプション]** で、希望する連絡方法 (電話または電子メール) および言語を指定します。 応答時間が、サブスクリプション プランに基づいて自動的に選択されます。
-    2. **[連絡先情報]** で、名前、電子メール、オプションの連絡先、国を指定します。 **[今後のサポート リクエストのために連絡先の変更を保存します]** をオンにします。
-    3. **Create** をクリックしてください。
+   1. **[連絡先オプション]** で、希望する連絡方法 (電話または電子メール) および言語を指定します。 応答時間が、サブスクリプション プランに基づいて自動的に選択されます。
+   2. **[連絡先情報]** で、名前、電子メール、オプションの連絡先、国を指定します。 **[今後のサポート リクエストのために連絡先の変更を保存します]** をオンにします。
+   3. **Create** をクリックしてください。
    
-        ![連絡先情報](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
+       ![連絡先情報](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
-    Microsoft サポートでは、この情報を使用してお客様に連絡し、詳細、診断、および解決策に関する情報を提供します。
-要求を送信した後、その要求を処理するサポート エンジニアから速やかに連絡があります。
+      Microsoft サポートでは、この情報を使用してお客様に連絡し、詳細、診断、および解決策に関する情報を提供します。
+      要求を送信した後、その要求を処理するサポート エンジニアから速やかに連絡があります。
 
 ## <a name="manage-a-support-request"></a>サポート要求を管理する
 

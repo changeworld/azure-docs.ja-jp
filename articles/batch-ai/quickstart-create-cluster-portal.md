@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78c743448a7f7439875d3598d6ba5d4eb6dc12fc
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 49e78f1774a2998de7070453f7c098aef1761242
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408937"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093230"
 ---
 # <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Batch AI トレーニング ジョブ用のクラスターを作成する
 
@@ -59,7 +59,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 3. **[ワークスペース名]** と **[リソース グループ]** に値を入力します。 必要に応じて、ワークスペースの **[サブスクリプション]** と **[場所]** に別のオプションを選択します。 **[ワークスペースの作成]** を選択します。
 
-  ![Batch AI ワークスペースの作成](./media/quickstart-create-cluster-portal/create-workspace.png)
+   ![Batch AI ワークスペースの作成](./media/quickstart-create-cluster-portal/create-workspace.png)
 
 **"デプロイメントに成功しました"** というメッセージが表示されたら、作成したリソースに移動し、ワークスペースを選択します。
 
@@ -73,7 +73,7 @@ Batch AI ファイル サーバーは単一ノード NFS であり、クラス�
 
 3. **管理者ユーザー名**を入力し、SSH 公開キー ファイルの内容を **[SSH キー]** にコピーします。 残りの値には既定値をそのまま使用し、**[ファイル サーバーの作成]** を選択します。
 
-  ![Batch AI ファイル サーバーの作成](./media/quickstart-create-cluster-portal/create-file-server.png)
+   ![Batch AI ファイル サーバーの作成](./media/quickstart-create-cluster-portal/create-file-server.png)
 
 ファイル サーバーのデプロイには数分かかります。
 

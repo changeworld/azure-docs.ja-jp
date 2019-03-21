@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 58773dded162ea51ccc6e502bbbdd4e13965c1d6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c312433832f7402eaff8b40c4e0a2a61397f6f87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203490"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123506"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 要求変換
 
@@ -52,10 +52,10 @@ ms.locfileid: "55203490"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **collection**: ["someone@outlook.com"]
-    - **item**: "admin@contoso.com"
+  - **collection**: ["someone@outlook.com"]
+  - **item**: "admin@contoso.com"
 - 出力要求: 
-    - **collection**: ["someone@outlook.com", "admin@contoso.com"]
+  - **collection**: ["someone@outlook.com", "admin@contoso.com"]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
@@ -86,11 +86,11 @@ ms.locfileid: "55203490"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **collection**: ["someone@outlook.com"]
+  - **collection**: ["someone@outlook.com"]
 - 入力パラメーター 
-    - **item**: "admin@contoso.com"
+  - **item**: "admin@contoso.com"
 - 出力要求:
-    - **collection**: ["someone@outlook.com", "admin@contoso.com"]
+  - **collection**: ["someone@outlook.com", "admin@contoso.com"]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
@@ -117,7 +117,7 @@ ms.locfileid: "55203490"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **collection**: ["someone@outlook.com", "someone@contoso.com"]
+  - **collection**: ["someone@outlook.com", "someone@contoso.com"]
 - 出力要求: 
-    - **extractedItem**: "someone@outlook.com"
+  - **extractedItem**: "someone@outlook.com"
 

@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: 0536831d22f40cb9783e95de2708f40010eb62d9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c9f2a476353b1807bbb1c8c13dc8b8e2cdbb4ae4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883867"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544462"
 ---
 # <a name="quickstart-query-for-entities"></a>クイック スタート:エンティティのクエリ
 
@@ -62,7 +62,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle
             "mustBeCloseToContent": true,
             "license": {
               "name": "CC-BY-SA",
-              "url": "http://creativecommons.org/licenses/by-sa/3.0/"
+              "url": "https://creativecommons.org/licenses/by-sa/3.0/"
             },
             "licenseNotice": "Text under CC-BY-SA license"
           },
@@ -71,13 +71,13 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle
             "targetPropertyName": "description",
             "mustBeCloseToContent": true,
             "text": "Wikipedia",
-            "url": "http://en.wikipedia.org/wiki/Space_Needle"
+            "url": "https://en.wikipedia.org/wiki/Space_Needle"
           },
           {
             "_type": "ContractualRules/MediaAttribution",
             "targetPropertyName": "image",
             "mustBeCloseToContent": true,
-            "url": "http://en.wikipedia.org/wiki/Space_Needle"
+            "url": "https://en.wikipedia.org/wiki/Space_Needle"
           }
         ],
         "webSearchUrl": "https://www.bing.com/entityexplore?q\u003dSpace+Needle\u0026filters\u003dsid:%22f8dd5b08-206d-2554-6e4a-893f51f4de7e%22\u0026elv\u003dAXXfrEiqqD9r3GuelwApulpmymQx!ODfuQu*veOQHkvP0!Zbvi5F5tVcMSDJvDEWiQWwrdueYTtIszgj03oFQHykYYLYgq3q5!Sf00QxXGIS",
@@ -88,10 +88,10 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=space+needle
           "provider": [
             {
               "_type": "Organization",
-              "url": "http://en.wikipedia.org/wiki/Space_Needle"
+              "url": "https://en.wikipedia.org/wiki/Space_Needle"
             }
           ],
-          "hostPageUrl": "http://upload.wikimedia.org/wikipedia/commons/2/23/Space_Needle_2011-07-04.jpg",
+          "hostPageUrl": "https://upload.wikimedia.org/wikipedia/commons/2/23/Space_Needle_2011-07-04.jpg",
           "width": 110,
           "height": 110,
           "sourceWidth": 152,

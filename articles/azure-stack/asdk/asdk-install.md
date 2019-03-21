@@ -16,12 +16,12 @@ ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: a58f5a3794d352fa8671321f5a30d74d2598df75
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 509dafb02d456e3f612e1de8a5bc1cf4b010a05a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977730"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113858"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Azure Stack Development Kit (ASDK) のインストール
 [ASDK ホスト コンピューターの準備](asdk-prepare-host.md)ができたら、この記事の次の手順に従って ASDK を CloudBuilder.vhdx イメージにデプロイできます。
@@ -44,8 +44,8 @@ ms.locfileid: "55977730"
   
    Azure サブスクリプション ID プロバイダーを選択する場合は、インターネット接続、Azure AD ディレクトリ テナントのフルネーム (*domainname*.onmicrosoft.com の形式) または Azure AD の検証済みのカスタム ドメイン名、および指定されたディレクトリの全体管理者の資格情報が必要です。<br><br>デプロイの後、Azure Active Directory の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に再配置するか、*既定のプロバイダー サブスクリプション*の所有者である個別の全体管理者アカウントを使用するかのいずれかを行うことができます。<br><br>ID プロバイダーとして AD FS を使用している場合は、既定のスタンプ ディレクトリ サービスが使用されます。 サインインに使用する既定のアカウントは azurestackadmin@azurestack.local であり、使用するパスワードは、セットアップの一部として指定したものです。
 
-  > [!NOTE]
-  > AD FS を ID プロバイダーとして使って、インターネット接続されていない Azure Stack 環境を使う場合でも、最適な結果を得るには、インターネットへの接続中に ASDK をインストールすることが最良です。 そうすることにより、開発キット インストールに含まれている Windows Server 2016 の評価バージョンがデプロイ時にアクティブ化されます。
+   > [!NOTE]
+   > AD FS を ID プロバイダーとして使って、インターネット接続されていない Azure Stack 環境を使う場合でも、最適な結果を得るには、インターネットへの接続中に ASDK をインストールすることが最良です。 そうすることにより、開発キット インストールに含まれている Windows Server 2016 の評価バージョンがデプロイ時にアクティブ化されます。
 
 4. 開発キットに使用するネットワーク アダプターを選択して、**[次へ]** をクリックします。
 

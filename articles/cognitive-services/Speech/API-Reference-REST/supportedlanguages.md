@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 1f184d54c0d9edc8e203b697c06c2178436172ff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 044c0355b6ec9f064cae74ffd5259d457cb49147
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206938"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672391"
 ---
 # <a name="supported-languages"></a>サポートされている言語
 
@@ -23,7 +24,7 @@ ms.locfileid: "55206938"
 
 ## <a name="interactive-and-dictation-mode"></a>対話モードとディクテーション モード
 
-Microsoft Speech Recognition API では、`interactive` モードおよび `dictation` モードで、次の言語がサポートされています。 
+Microsoft Speech Recognition API では、`interactive` モードおよび `dictation` モードで、次の言語がサポートされています。
 
 |コード | 言語 | コード | 言語 |
 |-----|-----|-----|-----|
@@ -45,7 +46,7 @@ Microsoft Speech Recognition API では、`interactive` モードおよび `dict
 
 ## <a name="conversation-mode"></a>会話モード
 
-Microsoft Speech Recognition API では、`conversation` モードで、次の言語がサポートされています。 
+Microsoft Speech Recognition API では、`conversation` モードで、次の言語がサポートされています。
 
 | コード | 言語 | コード | 言語 |
 |-----|-----|-----|-----|

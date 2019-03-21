@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813842"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119345"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。
@@ -169,8 +169,8 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 次の手順に従って、ゲートウェイをオンラインに戻します。
 
 1. ゲートウェイ コンピューターと会社のファイアウォールで IP アドレスの送信規則を許可します。 Windows イベント ログ (ID == 401) の"An attempt was made to access a socket in a way forbidden by its access permissions XX.XX.XX.XX:9350 (アクセス許可 XX.XX.XX.XX:9350 によって禁止されている方法でソケットへのアクセスが試みられました)" というメッセージから、IP アドレスを検出できます。
-* ゲートウェイのプロキシ設定を構成します。 詳細については、プロキシ サーバーに関する考慮事項セクションを参照してください。
-* ゲートウェイ コンピューターの Windows ファイアウォールと会社のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。 詳細については、ポートとファイアウォールのセクションを参照してください。 この手順は省略できますが、パフォーマンスの観点から推奨されます。
+1. ゲートウェイのプロキシ設定を構成します。 詳細については、プロキシ サーバーに関する考慮事項セクションを参照してください。
+1. ゲートウェイ コンピューターの Windows ファイアウォールと会社のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。 詳細については、ポートとファイアウォールのセクションを参照してください。 この手順は省略できますが、パフォーマンスの観点から推奨されます。
 
 ### <a name="3-problem"></a>手順 3.問題点
 次のエラーが表示されます。
@@ -184,7 +184,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 次の手順に従って、ゲートウェイをオンラインに戻します。
 
 1. 数分待ちます。エラーが解決すると、接続が自動的に回復します。
-* エラーが解決しない場合は、ゲートウェイ サービスを再起動してください。
+1. エラーが解決しない場合は、ゲートウェイ サービスを再起動してください。
 
 ## <a name="failed-to-author-linked-service"></a>リンクされたサービスを作成できない
 ### <a name="problem"></a>問題点
@@ -282,6 +282,6 @@ SQL データベースに接続する前に、Data Management Gateway クライ�
 1. Windows **イベント ビューアー**を起動します。
 2. **[アプリケーションとサービス ログ]** > **[Data Management Gateway]** フォルダーでログを見つけます。
 
- ゲートウェイ関連の問題のトラブルシューティングでは、イベント ビューアーでエラー レベルのイベントを調べます。
+   ゲートウェイ関連の問題のトラブルシューティングでは、イベント ビューアーでエラー レベルのイベントを調べます。
 
 ![Data Management Gateway - イベント ビューアーに表示されたログ](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)

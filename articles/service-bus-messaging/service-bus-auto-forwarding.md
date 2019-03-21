@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 8b51a4b8690d2184223bf33c7e863287de431d62
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 85ab5e3bb963ee692e5b70af3eb90cc68cec361f
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853155"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593388"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
 
-Service Bus の*自動転送*機能を使用すると、キューまたはサブスクリプションを同じ名前空間に属する別のキューまたはトピックにチェーンできます。 自動転送が有効な場合、Service Bus は元のキューまたはサブスクリプション (転送元) にあるメッセージを自動的に削除し、そのメッセージを転送先のキューまたはトピックに入れます。 転送先エンティティには､メッセージを直接送信することもできます｡ 配信不能キューなどのサブキューを別のキューまたはトピックにチェーンすることはできません。
+Service Bus の*自動転送*機能を使用すると、キューまたはサブスクリプションを同じ名前空間に属する別のキューまたはトピックにチェーンできます。 自動転送が有効な場合、Service Bus は元のキューまたはサブスクリプション (転送元) にあるメッセージを自動的に削除し、そのメッセージを転送先のキューまたはトピックに入れます。 転送先エンティティには､メッセージを直接送信することもできます｡
 
 ## <a name="using-autoforwarding"></a>自動転送の利用
 

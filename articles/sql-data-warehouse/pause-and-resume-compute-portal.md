@@ -5,19 +5,20 @@ services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
-ms.topic: conceptual
+ms.topic: quickstart
 ms.subservice: manage
-ms.date: 04/17/2018
+ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b21c982a7f390855ccb7b9212ea92db8c26d303c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9c3ed6dd79d6225b38751c910253cfa1f0720d1c
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460286"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731967"
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート:Azure portal での Azure SQL Data Warehouse のコンピューティングの一時停止と再開
+
 Azure Portal を使用して、Azure SQL Data Warehouse のコンピューティングを一時停止し、コストを節約します。 データ ウェアハウスを使用する準備ができたら、[コンピューティングを再開](sql-data-warehouse-manage-compute-overview.md)します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
@@ -31,6 +32,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [Azure Portal での作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成してください。 
 
 ## <a name="pause-compute"></a>コンピューティングの一時停止
+
 コストを節約するために、オンデマンドでコンピューティング リソースを一時停止および再開できます。 たとえば、夜間と週末にデータベースを使用しない場合、その期間にデータベースを一時停止して、日中に再開することができます。 データベースが一時停止されている間、コンピューティング リソースへの課金は行われません。 ただし、ストレージに対する課金は引き続き行われます。 
 
 SQL Data Warehouse を一時停止するには、次の手順を実行します。
@@ -54,6 +56,7 @@ SQL Data Warehouse を一時停止するには、次の手順を実行します�
 
 
 ## <a name="resume-compute"></a>コンピューティングの再開
+
 SQL Data Warehouse を再開するには、次の手順を実行します。
 
 1. Azure Portal の左側のページで **[SQL データベース]** を選択します。
@@ -96,7 +99,8 @@ SQL Data Warehouse を再開するには、次の手順を実行します。
 
 
 ## <a name="next-steps"></a>次の手順
+
 データ ウェアハウスに対するコンピューティングの一時停止と再開を行いました。 Azure SQL Data Warehouse の詳細については、データの読み込みに関するチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
->[SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
+> [SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)

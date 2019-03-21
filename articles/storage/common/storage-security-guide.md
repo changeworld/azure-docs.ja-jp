@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 72d4a9cd9a8b9244c428d49b5270952deb6f5162
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 56c09d9c6d1249713de7c6a0428ad2a124eee157
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454489"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013079"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -111,7 +111,7 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
 ### <a name="managing-your-storage-account-keys"></a>ストレージ アカウント キーを管理する
 ストレージ アカウント キーは、Azure で作成される 512 ビットの文字列です。ストレージ アカウント名と共に使用して、ストレージ アカウントに保存されているデータ オブジェクト (BLOB、テーブル内のエンティティ、キュー メッセージ、Azure ファイル共有上のファイルなど) へのアクセスに使用できます。 ストレージ アカウント キーに対するアクセス権の制御によって、そのストレージ アカウントのデータ プレーンに対するアクセス権を制御します。
 
-各ストレージ アカウントには、[Azure Portal ](http://portal.azure.com/)と PowerShell コマンドレットで "キー 1" と "キー 2" と呼ばれる 2 つのキーがあります。 これらのキーは、 [Azure ポータル](https://portal.azure.com/)、PowerShell、Azure CLI、プログラム (.NET ストレージ クライアント ライブラリや Azure Storage Services REST API を使用) など、いずれかの方法を使用して手動で再生成できます。
+各ストレージ アカウントには、[Azure Portal ](https://portal.azure.com/)と PowerShell コマンドレットで "キー 1" と "キー 2" と呼ばれる 2 つのキーがあります。 これらのキーは、 [Azure ポータル](https://portal.azure.com/)、PowerShell、Azure CLI、プログラム (.NET ストレージ クライアント ライブラリや Azure Storage Services REST API を使用) など、いずれかの方法を使用して手動で再生成できます。
 
 ストレージ アカウント キーは、さまざまな理由で再生成することがあります。
 

@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: fc6d68e862f6a2f3c95f5ca6d130e42c96649eb1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 929dc7a86d141446a2070b046c6febfda4a07f0f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874622"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092567"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>リスト エンティティを使用してエンティティの検出を向上する 
 このチュートリアルでは、[リスト エンティティ](luis-concept-entity-types.md)を使用してエンティティの検出を向上する方法について説明します。 リスト エンティティは、用語の完全一致なので、ラベルを付ける必要はありません。  
@@ -23,9 +23,9 @@ ms.locfileid: "55874622"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-* リスト エンティティを作成する 
-* 正規化された値とシノニムを追加する
-* 改善されたエンティティ特定を検証する
+> * リスト エンティティを作成する 
+> * 正規化された値とシノニムを追加する
+> * 改善されたエンティティ特定を検証する
 
 ## <a name="prerequisites"></a>前提条件
 

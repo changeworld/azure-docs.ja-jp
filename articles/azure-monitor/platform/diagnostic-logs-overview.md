@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: e9fcf36d6ece441c73e7d1224bd5918d2e74bf84
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 07ea18a767044f0f74249859bb46d8285d52d7ab
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001989"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310184"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
@@ -23,7 +23,7 @@ ms.locfileid: "56001989"
 * **テナント ログ**: Azure Active Directory ログなど、Azure サブスクリプションの外部に存在するテナント レベルのサービスのログです。
 * **リソースログ**: ネットワーク セキュリティ グループやストレージ アカウントなど、Azure サブスクリプション内でリソースをデプロイする Azure サービスのログです。
 
-    ![リソース診断ログとその他の種類のログ ](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
+    ![リソース診断ログとその他の種類のログ](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
 
 これらのログの内容は、Azure サービスとリソースの種類によって異なります。 たとえば、ネットワーク セキュリティ グループのルール カウンターとキー コンテナーの監査は、2 種類の診断ログです。
 
@@ -113,12 +113,14 @@ ms.locfileid: "56001989"
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>PowerShell でリソース診断ログの収集を有効にする
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Azure PowerShell でリソース診断ログの収集を有効にするには、次のコマンドを使用します。
 
 ストレージ アカウントへの診断ログの保存を有効にするには、次のコマンドを使用します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 ```
 
 ストレージ アカウント ID は、ログの送信先となるストレージ アカウントのリソース ID です。
@@ -126,7 +128,7 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [y
 イベント ハブへの診断ログのストリーミングを有効にするには、次のコマンドを使用します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
 ```
 
 Service Bus 規則 ID は、`{Service Bus resource ID}/authorizationrules/{key name}` という形式の文字列です。
@@ -134,13 +136,13 @@ Service Bus 規則 ID は、`{Service Bus resource ID}/authorizationrules/{key n
 Log Analytics ワークスペースへの診断ログの送信を有効にするには、次のコマンドを使用します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 ```
 
 次のコマンドを使用して、Log Analytics ワークスペースのリソース ID を取得できます。
 
 ```powershell
-(Get-AzureRmOperationalInsightsWorkspace).ResourceId
+(Get-AzOperationalInsightsWorkspace).ResourceId
 ```
 
 このパラメーターを組み合わせて、複数の出力オプションを有効にできます。
