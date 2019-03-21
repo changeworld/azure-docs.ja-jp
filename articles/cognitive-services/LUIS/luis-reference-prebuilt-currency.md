@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: f3d4c8aeabb33e9f0f8b53f63c60c8d6ca702a83
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 76531e3ebba5519d9ddab7733abb2890003cbcd5
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876676"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339914"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの currency 作成済みエンティティ
 作成済みの currency エンティティは、LUIS アプリのカルチャに関係なく、多くの貨幣単位や国の通貨を検出します。 このエンティティは既にトレーニングされているので、通貨を含む発話の例をアプリケーション意図に追加する必要はありません。 currency エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 

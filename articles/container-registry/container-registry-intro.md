@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 0ffad78afd6acdfbcea8df970358c639706f14b8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: befac6f1429d5099f68f0c2ba0a90bb1217f8b6f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814250"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530264"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure のプライベート Docker コンテナー レジストリの概要
 
@@ -27,7 +27,7 @@ Docker およびコンテナーに関する背景情報は､[Docker概要](http
 
 Azure コンテナー レジストリからさまざまなデプロイ ターゲットにイメージをプルできます。
 
-* [Kubernetes](http://kubernetes.io/docs/)、[DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/swarm/) など、ホストから成るクラスターにわたってコンテナー化されたアプリケーションを管理する**スケーラブルなオーケストレーション システム**。
+* [Kubernetes](https://kubernetes.io/docs/)、[DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/swarm/) など、ホストから成るクラスターにわたってコンテナー化されたアプリケーションを管理する**スケーラブルなオーケストレーション システム**。
 * [Azure Kubernetes Service (AKS)](../aks/index.yml) や  [App Service](../app-service/index.yml)､[Batch](../batch/index.yml)､[Service Fabric](/azure/service-fabric/) など､大規模なアプリケーション のビルドと実行をサポートしている **Azure サービス**｡
 
 開発者は、コンテナー開発ワークフローの一環としてコンテナー レジストリにプッシュすることもできます。 たとえば、[Azure DevOps Services](https://docs.microsoft.com/azure/devops/) や [Jenkins](https://jenkins.io/) などの継続的インテグレーションとデプロイのツールからコンテナー レジストリを対象にします。

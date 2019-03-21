@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/19/2018
-ms.openlocfilehash: 0a5c0204909a3fa6730a5e852fb24b2213e093a1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 009eb56621f7cd395c3d2eefb29b9fa624af888b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650582"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778197"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Azure Stack PKI 証明書に関する一般的な問題を修復する
 

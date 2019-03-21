@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 8e83da53d0b2f71abc1f74a0ca8fbc2405e75bda
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: aebc308f6bfaddbe8e9b430096cb6698d7dd06c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736585"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099071"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>クイック スタート:Service Fabric に .NET Reliable Services アプリケーションをデプロイする
 
@@ -47,9 +47,10 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 2. [Git をインストールする](https://git-scm.com/)
 3. [Microsoft Azure Service Fabric SDK をインストールする](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK)
 4. 次のコマンドを実行して Visual Studio からローカル Service Fabric クラスターへのデプロイを有効にする
-    ```powershell
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
-    ```
+
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
+   ```
     
 ## <a name="build-a-cluster"></a>クラスターの構築
 
@@ -63,14 +64,14 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 1. 管理者として、管理者特権で新しく PowerShell ウィンドウを開きます。
 2. 次の PowerShell コマンドを実行して、開発クラスターを作成します。
 
-    ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
-    ```
+   ```powershell
+   . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
+   ```
 3. 次のコマンドを実行して、ローカル クラスター マネージャー ツールを起動します。
 
-    ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
-    ```
+   ```powershell
+   . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
+   ```
 
 >[!NOTE]
 > このクイックスタートのサンプル アプリケーションは、Windows 7 では使用できない機能を使用します。
@@ -131,23 +132,23 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 2. **/VotingData/Controllers/VoteDataController.cs** ファイルを開き、この Web API の **Put** メソッド (54 行目) にブレークポイントを設定します。
 
 3. ブラウザーに戻り、投票の選択肢をクリックするか、新しい選択肢を追加します。 Web フロントエンドの API コントローラーで 1 つ目のブレークポイントに到達します。
-    * ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
+   * ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
 
-    ![投票フロントエンド サービスの追加](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
+     ![投票フロントエンド サービスの追加](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-    * 最初にバックエンド サービスの ReverseProxy の URL を構築します **(1)**。
-    * 次に HTTP PUT 要求を ReverseProxy に送信します **(2)**。
-    * 最後にバックエンド サービスからの応答をクライアントに返します **(3)**。
+   * 最初にバックエンド サービスの ReverseProxy の URL を構築します **(1)**。
+   * 次に HTTP PUT 要求を ReverseProxy に送信します **(2)**。
+   * 最後にバックエンド サービスからの応答をクライアントに返します **(3)**。
 
 4. **F5** キーを押して続行します。
-    - ブラウザーのプロンプトが表示された場合は、デバッグ モードに使用する読み取りと実行のアクセス許可を ServiceFabricAllowedUsers グループに与えます。
-    - 今度は、バックエンド サービスのブレークポイントに到達します。
+   - ブラウザーのプロンプトが表示された場合は、デバッグ モードに使用する読み取りと実行のアクセス許可を ServiceFabricAllowedUsers グループに与えます。
+   - 今度は、バックエンド サービスのブレークポイントに到達します。
 
-    ![投票バックエンド サービスの追加](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
+     ![投票バックエンド サービスの追加](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-    * メソッド **(1)** の先頭行では、`StateManager` によって信頼性の高いディクショナリ (`counts`) が取得または追加されます。
-    * 信頼性の高いディクショナリ内の値とのすべてのやり取りにはトランザクションが必要です。この using ステートメント **(2)** によってトランザクションが作成されます。
-    * その後、トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)**。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
+   - メソッド **(1)** の先頭行では、`StateManager` によって信頼性の高いディクショナリ (`counts`) が取得または追加されます。
+   - 信頼性の高いディクショナリ内の値とのすべてのやり取りにはトランザクションが必要です。この using ステートメント **(2)** によってトランザクションが作成されます。
+   - その後、トランザクションで、投票の選択肢に関連したキーの値を更新し、操作をコミットします **(3)**。 コミット メソッドから制御が戻ると、ディクショナリ内のデータが更新され、クラスター内の他のノードにレプリケートされます。 これでデータが安全にクラスターに保存され、バックエンド サービスは、データの可用性を維持したまま他のノードにフェールオーバーすることができます。
 5. **F5** キーを押して続行します。
 
 デバッグ セッションを停止するには、**Shift + F5** キーを押します。

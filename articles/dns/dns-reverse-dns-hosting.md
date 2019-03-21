@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: 2d576a0d51eb723efdd1652898c2c019ee7475a8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cb2f04c692d4b5f385a89ba6a3071c20ef1bdf21
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999217"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118257"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS での逆引き DNS 参照ゾーンのホスト
 
@@ -131,7 +131,7 @@ az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2
 1. **[ドメイン名]** に、その IP アドレスを使うリソースの完全修飾ドメイン名 (FQDN) を入力します。
 1. ウィンドウ下部の **[OK]** を選択すると、DNS レコードが作成されます。
 
- ![ボックスに入力された [レコード セットの追加] ウィンドウ](./media/dns-reverse-dns-hosting/figure5.png)
+   ![ボックスに入力された [レコード セットの追加] ウィンドウ](./media/dns-reverse-dns-hosting/figure5.png)
 
 次の例では、PowerShell または Azure CLI を使用してこのタスクを行う方法を示します。
 
@@ -269,6 +269,6 @@ ISP によって割り当てられた IP アドレス ブロックの逆引き D
 
 ## <a name="next-steps"></a>次の手順
 
-逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](http://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
+逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](https://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
 <br>
 [Azure サービスの逆引き DNS レコードを管理する](dns-reverse-dns-for-azure-services.md)方法を学習してください。

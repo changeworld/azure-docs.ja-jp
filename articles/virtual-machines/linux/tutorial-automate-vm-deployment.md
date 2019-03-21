@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: af8d06a8eeb1c8fbce7ccc47c9f25b9d37ff83e6
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: b71c48a86be13df51222069f6948642455bc77fc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414648"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121266"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>チュートリアル - Azure での Linux 仮想マシンの初回の起動時に cloud-init を使用してカスタマイズする方法
 
@@ -46,7 +46,7 @@ cloud-init はディストリビューション全体でも有効です。 た�
 Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。 次の表は、Azure プラットフォーム イメージでの最新の cloud-init の可用性の概要を示しています。
 
 | エイリアス | Publisher | プラン | SKU | Version |
-|:--- |:--- |:--- |:--- |:--- |:--- |
+|:--- |:--- |:--- |:--- |:--- |
 | UbuntuLTS |Canonical |UbuntuServer |16.04 LTS |latest |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |latest |
 | CoreOS |CoreOS |CoreOS |安定版 |latest |

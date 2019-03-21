@@ -4,7 +4,7 @@ description: Azure Machine Learning Web サービスに対する操作では、�
 keywords: ''
 services: machine-learning
 documentationcenter: ''
-author: ericlicoding
+author: xiaoharper
 ms.custom: seodec18
 ms.author: amlstudiodocs
 editor: cgronlun
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: cb8d0120a4a686321c65016f6e5e41cbee963933
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8e91d0cd68997dee9bb00cceeaa6b697f6644ee5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478119"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100957"
 ---
 # <a name="azure-machine-learning-studio-rest-api-error-codes"></a>Azure Machine Learning Studio REST API のエラー コード
  

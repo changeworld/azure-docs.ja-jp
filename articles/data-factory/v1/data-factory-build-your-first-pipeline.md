@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 266d16311115f788283eadc60ca16f95b433d6b0
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d9d9e68b7e74ba7725e97162d01e1a35314fdd0f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015952"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544957"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>チュートリアル:Hadoop クラスターを使用してデータを変換する初めてのパイプラインを作成する
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 3. [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) にある Hive クエリ ファイル (**HQL**) をダウンロードして確認します。 このクエリが、入力データを変換して出力データを生成します。 
 4. [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) にあるサンプルの入力ファイル (**input.log**) をダウンロードして確認します。
 5. Azure Blob Storage に **adfgetstarted** という名前の BLOB コンテナーを作成します。 
-6. **partitionweblogs.hql** ファイルを **adfgetstarted** コンテナーの **script** フォルダーにアップロードします。 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用します。 
+6. **partitionweblogs.hql** ファイルを **adfgetstarted** コンテナーの **script** フォルダーにアップロードします。 [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用します。 
 7. **adfgetstarted** コンテナーの **inputdata** フォルダーに **input.log** ファイルをアップロードします。 
 
 前提条件を満たせたら、チュートリアルを実行するための次のいずれかのツールまたは SDK を選択します。 

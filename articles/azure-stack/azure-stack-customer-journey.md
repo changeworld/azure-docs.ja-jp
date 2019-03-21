@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: d5ed8da4ea527e350b1ff73d0bd188cdad2caf71
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ad58b8f1034a0e2818d3aca53c023736da9370cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189211"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119923"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Azure Stack データセンターの統合
 
@@ -116,32 +116,32 @@ Azure Stack をデプロイするには、ハードウェア ソリューショ�
 
 OEM パートナーによって必ず実行されるアクションは次のとおりです。
 
--   [test-azurestack の実行](azure-stack-diagnostic-test.md#run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix)
+- [test-azurestack の実行](azure-stack-diagnostic-test.md#run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix)
 
--   [Azure への登録](azure-stack-registration.md)
+- [Azure への登録](azure-stack-registration.md)
 
--   [Marketplace シンジケーション](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
+- [Marketplace シンジケーション](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
 
--   スイッチ構成ファイルと HLH 構成ファイルのバックアップ
+- スイッチ構成ファイルと HLH 構成ファイルのバックアップ
 
--   DVM の削除
+- DVM の削除
 
--   デプロイの顧客概要の準備
+- デプロイの顧客概要の準備
 
--   [ソリューションのソフトウェアが必ず最新バージョンに更新されているように、更新プログラムを確認します。](.\azure-stack-updates.md)
+- [ソリューションのソフトウェアが必ず最新バージョンに更新されているように、更新プログラムを確認します。](./azure-stack-updates.md)
 
 インストールの種類によっては、いくつかの手順は必須または省略可能です。
 
--   [AD FS](azure-stack-integrate-identity.md) を使用してデプロイが完了した場合、Azure Stack スタンプをお客様独自の AD FS と統合する必要があります。
+- [AD FS](azure-stack-integrate-identity.md) を使用してデプロイが完了した場合、Azure Stack スタンプをお客様独自の AD FS と統合する必要があります。
 
   > [!NOTE]
   > この手順はお客様の責任で実施しますが、パートナーがオプションでこれを行うサービスの提供を選択する場合もあります。
 
--   それぞれのパートナーが提供する既存の監視システムとの統合。
+- それぞれのパートナーが提供する既存の監視システムとの統合。
 
-    -   [System Center Operations Manager 統合](azure-stack-integrate-monitor.md)も、フリート管理機能をサポートします。
+  -   [System Center Operations Manager 統合](azure-stack-integrate-monitor.md)も、フリート管理機能をサポートします。
 
-    -   [Nagios の統合](azure-stack-integrate-monitor.md#integrate-with-nagios)
+  -   [Nagios の統合](azure-stack-integrate-monitor.md#integrate-with-nagios)
 
 ## <a name="overall-timeline"></a>全体的なタイムライン
 

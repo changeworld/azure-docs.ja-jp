@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: a1a2128e4e13494a76dfad9f051be56e02dbd995
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b01b68964600f6162512d4405fddbaf125e7e76d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878801"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082725"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
 
@@ -286,7 +286,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-// http://hc.apache.org/downloads.cgi (HttpComponents Downloads) HttpClient 4.5.5
+// https://hc.apache.org/downloads.cgi (HttpComponents Downloads) HttpClient 4.5.5
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -373,19 +373,19 @@ public class InsightsToken {
 1. プロジェクト用のフォルダーを作成します (または、お気に入りの IDE やエディターを使用)。
 2. コマンド プロンプトまたはターミナルから、先ほど作成したフォルダーに移動します。
 3. request モジュールをインストールします。  
-  ```  
-  npm install request  
-  ```  
+   ```  
+   npm install request  
+   ```  
 3. form-data モジュールをインストールします。  
-  ```  
-  npm install form-data  
-  ```  
+   ```  
+   npm install form-data  
+   ```  
 4. GetVisualInsights.js という名前のファイルを作成し、次のコードを追加します。
 5. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
 7. プログラムを実行します。  
-  ```
-  node GetVisualInsights.js
-  ```
+   ```
+   node GetVisualInsights.js
+   ```
 
 ```javascript
 var request = require('request');

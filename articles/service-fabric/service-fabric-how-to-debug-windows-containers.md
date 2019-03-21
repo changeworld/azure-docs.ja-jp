@@ -3,7 +3,7 @@ title: Service Fabric と VS での Windows コンテナーのデバッグ | Mic
 description: Visual Studio 2017 を使用して Azure Service Fabric で Windows コンテナーをデバッグする方法を説明します。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: msfussell
 editor: ''
 ms.service: service-fabric
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: twhitney, mikhegn
-ms.openlocfilehash: 9801db8a38a8c21aea26b42f4fe01bd4a43988c5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.author: aljo, mikhegn
+ms.openlocfilehash: 9fe66e40376d9098244a1268fe9884cd416a36c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311224"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113573"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>方法:Visual Studio 2017 を使用して Azure Service Fabric で Windows コンテナーをデバッグする
 
@@ -35,19 +35,19 @@ Visual Studio 2017 Update 7 (15.7) では、Service Fabric サービスとして
 1. 次の手順に進む前に、Docker for Window サービスが実行されていることを確認します。
 
 1. コンテナー間での DNS 解決をサポートするには、コンピューター名を使用して、ローカルの開発クラスターを設定する必要があります。 リバース プロキシ経由でサービスに対応する場合は、以下の手順も必要です。
-    1. PowerShell を管理者として開きます。
-    2. SDK クラスターのセットアップ フォルダー (通常は `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`) に移動します。
-    3. スクリプト `DevClusterSetup.ps1` を実行する
+   1. PowerShell を管理者として開きます。
+   2. SDK クラスターのセットアップ フォルダー (通常は `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`) に移動します。
+   3. スクリプト `DevClusterSetup.ps1` を実行する
 
-       ``` PowerShell
-         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
-       ```
+      ``` PowerShell
+        C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
+      ```
 
-    > [!NOTE]
-    > `-CreateOneNodeCluster` を使用して、1 ノード クラスターを設定することができます。 既定では、ローカルの 5 ノード クラスターが作成されます。
-    >
+      > [!NOTE]
+      > `-CreateOneNodeCluster` を使用して、1 ノード クラスターを設定することができます。 既定では、ローカルの 5 ノード クラスターが作成されます。
+      >
 
-    Service Fabric の DNS サービスの詳細については、「[Azure Service Fabric の DNS サービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)」を参照してください。 コンテナーで実行されているサービスから Service Fabric リバース プロキシを使用する方法の詳細については、[コンテナーで実行されているサービスに対するリバース プロキシの特別な処理](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)に関する記事をご覧ください。
+      Service Fabric の DNS サービスの詳細については、「[Azure Service Fabric の DNS サービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice)」を参照してください。 コンテナーで実行されているサービスから Service Fabric リバース プロキシを使用する方法の詳細については、[コンテナーで実行されているサービスに対するリバース プロキシの特別な処理](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers)に関する記事をご覧ください。
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Service Fabric でコンテナーをデバッグする場合の既知の制限事項
 

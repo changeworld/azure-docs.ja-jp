@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe77602d138224c848cc915bbba5a7084c29650
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c22b035b325582cf4a12ff10a9abbedb8837229b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117882"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -30,20 +30,20 @@ Azure のネットワーク ポリシー サーバー (NPS) 拡張機能を使�
 
 * ネットワーク要求を管理および制御するための一元化された場所を割り当てて、以下を指定します。
 
-    * 接続できるユーザー 
+  * 接続できるユーザー 
     
-    * 接続を許可する時刻 
+  * 接続を許可する時刻 
     
-    * 接続の期間
+  * 接続の期間
     
-    * クライアントが接続に使用する必要があるセキュリティのレベル
+  * クライアントが接続に使用する必要があるセキュリティのレベル
 
     各 VPN やリモート デスクトップ ゲートウェイ サーバーにポリシーを指定するのではなく、一元化された場所で処理される場合のポリシーを指定します。 一元化された認証、承認、アカウンティング (AAA) を提供するために、RADIUS プロトコルが使用されます。 
 
 * デバイスにネットワーク リソースへの無制限のアクセスを許可するか制限付きアクセスを許可するかを決定する、ネットワーク アクセス保護 (NAP) クライアント正常性ポリシーを制定し、強制できます。
 
 * 802.1x 対応ワイヤレス アクセス ポイントとイーサネット スイッチへのアクセスに認証と承認を強制する方法を提供できます。   
-詳細については、「[Network Policy Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」(ネットワーク ポリシー サーバー) を参照してください。 
+  詳細については、「[Network Policy Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」(ネットワーク ポリシー サーバー) を参照してください。 
 
 組織がセキュリティを強化し、高水準のコンプライアンスを実現するには、NPS を Azure Multi-Factor Authentication と統合して、ユーザーが 2 段階認証を使用して VPN サーバーの仮想ポートに接続する方法があります。 ユーザーはアクセスの許可を得るために、ユーザー名とパスワードの組み合わせを、ユーザーが管理している他の情報と共に提供する必要があります。 これは、信頼できる、簡単に複製できない情報にする必要があります。 たとえば、携帯電話番号、固定電話番号、モバイル デバイス上のアプリケーションなどです。
 

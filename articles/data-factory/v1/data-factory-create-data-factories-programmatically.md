@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d05661c131d981538dada988131c39d4fd956ee9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 8f333b626fa51fa60f80350547ee53f346d6cc3a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016740"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436769"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK を使用した Azure Data Factory の作成、監視、および管理
 > [!NOTE]
@@ -31,6 +31,9 @@ Data Factory .NET SDK を使用して Azure Data Factory をプログラムに�
 > この記事では、すべての Data Factory .NET API を取り上げているわけではありません。 Data Factory の .NET API に関する完全なドキュメントについては、[Data Factory .NET API リファレンス](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1)を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * Visual Studio 2012 または 2013 または 2015
 * [Azure .NET SDK](https://azure.microsoft.com/downloads/)のダウンロードとインストール。
 * Azure PowerShell。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview) 」に記載されている手順に従って、コンピューターに Azure PowerShell をインストールします。 Azure PowerShell を使用して、Azure Active Directory アプリケーションを作成します。
@@ -42,17 +45,17 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 2. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
 
     ```PowerShell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 3. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
     ```PowerShell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 4. 次のコマンドを実行して、使用するサブスクリプションを選択します。 **&lt;NameOfAzureSubscription**&gt; を自分の Azure サブスクリプションの名前で置き換えます。
 
     ```PowerShell
-    Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
+    Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
     ```
 
    > [!IMPORTANT]
@@ -61,7 +64,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 5. PowerShell で次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
 
     ```PowerShell
-    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
     リソース グループが既に存在する場合は、それを更新するか (Y) そのまま保持するか (N) を指定します。
@@ -70,7 +73,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 6. Azure Active Directory アプリケーションを作成します。
 
     ```PowerShell
-    $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
+    $azureAdApplication = New-AzADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
     ```
 
     次のエラーが表示された場合は、別の URL を指定して、コマンドをもう一度実行します。
@@ -81,12 +84,12 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 7. AD サービス プリンシパルを作成します。
 
     ```PowerShell
-    New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+    New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
 8. **Data Factory 共同作成者** ロールにサービス プリンシパルを追加します。
 
     ```PowerShell
-    New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+    New-AzRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
     ```
 9. アプリケーション ID を取得します。
 
@@ -175,7 +178,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     ```
 
    > [!IMPORTANT]
-   > **resourceGroupName** の値を、使用する Azure リソース グループの名前で置き換えます。 リソース グループを作成するには、 [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドレットを使用します。
+   > **resourceGroupName** の値を、使用する Azure リソース グループの名前で置き換えます。 リソース グループを作成するには、 [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを使用します。
    >
    > データ ファクトリの名前 (dataFactoryName) が一意になるように更新します。 データ ファクトリの名前はグローバルに一意にする必要があります。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。
 7. **データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 243697c20f10a019a73326c3bd79e23fc3342640
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ddcaca46a2b8f9501337b3591d6ed666876e1de9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113602"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093771"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>チュートリアル:Azure Data Box Edge をインストールする (プレビュー)
 
@@ -94,15 +94,15 @@ ms.locfileid: "56113602"
     ![ラックマウント レールを取り付ける](./media/data-box-edge-deploy-install/rack-mount-rail-1.png)
 
 2. ラック キャビネットの垂直部に外部レールを取り付けます。 向きがわかりやすいように、レール スライドには **Front** というマークが付いていて、その端をエンクロージャの正面に向けて取り付けます。    
-    1. レール アセンブリの前後にあるレール ピンを見つけます。 ラック ポストの間に合うようにレールを伸ばします。 外部レールは、まずラックの後方に取り付けます。 後部取り付けブラケットが、後部ラック取り付け穴の内側に位置するように調整します。   
+   1. レール アセンブリの前後にあるレール ピンを見つけます。 ラック ポストの間に合うようにレールを伸ばします。 外部レールは、まずラックの後方に取り付けます。 後部取り付けブラケットが、後部ラック取り付け穴の内側に位置するように調整します。   
 
-    2. 後部ブラケット上の引き金を押したまま保持して、金属製のフックを出します。 位置を合わせて後部ブラケットを取り付け穴に挿入し、引き金を離します。
+   2. 後部ブラケット上の引き金を押したまま保持して、金属製のフックを出します。 位置を合わせて後部ブラケットを取り付け穴に挿入し、引き金を離します。
 
-    3. 前部ブラケットの位置を取り付け穴に合わせます。
+   3. 前部ブラケットの位置を取り付け穴に合わせます。
 
-    4. これで前部ブラケットが、ラックに固定されるはずです。 必要に応じて、オプションの M5 X 10L ネジを使用して、レールをポストに固定できます。 
+   4. これで前部ブラケットが、ラックに固定されるはずです。 必要に応じて、オプションの M5 X 10L ネジを使用して、レールをポストに固定できます。 
 
-    ![ラックマウント レールを取り付ける](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
+      ![ラックマウント レールを取り付ける](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
 
 3. 内部レールをシャーシに取り付けるため、内部レールの鍵穴開口部の位置がシャーシ側面の位置決めピンに合っていることを確認します。 シャーシの位置決めピンの先端が内部レールの鍵穴開口部から突き出ていることを確認します。 レールがロック位置になってクリック音が聞こえるまで、レールをシャーシの前方に向けて引っ張ります。 逆側の内部レールで作業を繰り返します。 内部レールが付いたシャーシをスライド部の中に押し入れて、ラックの取り付けを完了します。
 

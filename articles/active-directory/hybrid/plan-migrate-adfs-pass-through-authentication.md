@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0df959439eae703d18d8777e8d433e1ee176556c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bf0bb51470272099ed2824d0450082f93fe65f14
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184620"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076464"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパススルー認証に移行する
 
@@ -128,9 +128,9 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 |-|-|
 | 引き続き AD FS を (Azure AD と Office 365 以外の) 他のアプリケーションと一緒に使用する予定である。 | ドメインを変換した後、AD FS と Azure AD の両方を使用します。 ユーザー エクスペリエンスをよく検討してください。 一部のシナリオでは、ユーザーの認証が 2 回必要になる可能性があります。1 回は Azure AD に対するもので (これにより、ユーザーは Office 365 などの他のアプリケーションに対する SSO アクセスを取得します)、もう 1 回は証明書利用者信頼として AD FS にまだバインドされているすべてのアプリケーションに対するものです。 |
 | AD FS インスタンスが大幅にカスタマイズされていて、onload.js ファイル内の特定のカスタマイズ設定に依存している (たとえば、ユーザー名にユーザー プリンシパル名 (UPN) ではなく **SamAccountName** 形式のみを使用するようにサインイン エクスペリエンスを変更している場合や、組織でサインイン エクスペリエンスを大幅にブランド化している場合)。 Azure AD で onload.js ファイルを複製できない。 | 続行する前に、Azure AD で現在のカスタマイズ要件を満たせることを確認する必要があります。 詳細情報とガイダンスについては、AD FS のブランド化と AD FS のカスタマイズに関するセクションを参照してください。|
-| AD FS を使用して、以前のバージョンの認証クライアントをブロックしている。| [条件付きアクセス制御](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)と [Exchange Online のクライアント アクセス規則](http://aka.ms/EXOCAR)の組み合わせを使用して、以前のバージョンの認証クライアントをブロックする AD FS 制御を置き換えることを検討します。 |
+| AD FS を使用して、以前のバージョンの認証クライアントをブロックしている。| [条件付きアクセス制御](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)と [Exchange Online のクライアント アクセス規則](https://aka.ms/EXOCAR)の組み合わせを使用して、以前のバージョンの認証クライアントをブロックする AD FS 制御を置き換えることを検討します。 |
 | ユーザーに、AD FS への認証時にオンプレミスの多要素認証サーバー ソリューションに対する多要素認証を行うことを要求している。| マネージド ID ドメインでは、オンプレミスの多要素認証ソリューションを介して認証フローに多要素認証チャレンジを挿入することはできません。 ただし、ドメインの変換後は、Azure Multi-Factor Authentication サービスを使用して多要素認証を行うことができます。<br /><br /> 現在、ユーザーが Azure Multi-Factor Authentication を使用していない場合は、1 回限りのユーザー登録手順が必要になります。 計画した登録の準備を行い、ユーザーに連絡する必要があります。 |
-| 現在、Office 365 へのアクセスを制御するために、AD FS でアクセス制御ポリシー (AuthZ 規則) を使用している。| ポリシーを同等の Azure AD [条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)と [Exchange Online のクライアント アクセス規則](http://aka.ms/EXOCAR)に置き換えることを検討します。|
+| 現在、Office 365 へのアクセスを制御するために、AD FS でアクセス制御ポリシー (AuthZ 規則) を使用している。| ポリシーを同等の Azure AD [条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)と [Exchange Online のクライアント アクセス規則](https://aka.ms/EXOCAR)に置き換えることを検討します。|
 
 ### <a name="common-ad-fs-customizations"></a>一般的な AD FS のカスタマイズ
 
@@ -260,11 +260,11 @@ Azure AD スマート ロックアウトでは、ブルートフォース パス
    ![[構成の準備完了] ページのスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
 7. Azure AD ポータルで、**[Azure Active Directory]** を選択してから、**[Azure AD Connect]** を選びます。
 8. 以下の設定を確認します。
-  * **[フェデレーション]** が **[無効]** に設定されている。
-  * **[シームレス シングル サインオン]** が **[有効]** に設定されている。
-  * **[パススルー認証]** が **[有効]** に設定されている。<br />
+   * **[フェデレーション]** が **[無効]** に設定されている。
+   * **[シームレス シングル サインオン]** が **[有効]** に設定されている。
+   * **[パススルー認証]** が **[有効]** に設定されている。<br />
 
-  ![[ユーザー サインイン] セクションの設定を示すスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
+   ![[ユーザー サインイン] セクションの設定を示すスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
 
 次に、 追加の認証方法をデプロイします。
 
@@ -272,16 +272,16 @@ Azure AD スマート ロックアウトでは、ブルートフォース パス
 2. **[パススルー認証]** ページで、**[ダウンロード]** ボタンを選択します。
 3. **[エージェントのダウンロード]** ページで、**[Accept terms and download]\(利用規約に同意してダウンロード\)** を選択します。
 
-  追加の認証エージェントのダウンロードが開始されます。 セカンダリ認証エージェントは、ドメイン参加済みサーバーにインストールします。 
+   追加の認証エージェントのダウンロードが開始されます。 セカンダリ認証エージェントは、ドメイン参加済みサーバーにインストールします。 
 
-  > [!NOTE]
-  > 最初のエージェントは、Azure AD Connect ツールの **[ユーザー サインイン]** セクションで行われた構成変更の一部として、常に Azure AD Connect サーバー自体にインストールされます。 追加の認証エージェントはすべて、別のサーバーにインストールします。 2 個または 3 個の追加の認証エージェントを使用できるようにすることをお勧めします。 
+   > [!NOTE]
+   > 最初のエージェントは、Azure AD Connect ツールの **[ユーザー サインイン]** セクションで行われた構成変更の一部として、常に Azure AD Connect サーバー自体にインストールされます。 追加の認証エージェントはすべて、別のサーバーにインストールします。 2 個または 3 個の追加の認証エージェントを使用できるようにすることをお勧めします。 
 
 4. 認証エージェントのインストールを実行します。 インストール中に、グローバル管理者アカウントの資格情報を入力する必要があります。
 
-  ![Microsoft Azure AD Connect 認証エージェント パッケージのページにある [インストール] ボタンを示すスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![Microsoft Azure AD Connect 認証エージェント パッケージのページにある [インストール] ボタンを示すスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-  ![サインイン ページを示すスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![サインイン ページを示すスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. 認証エージェントがインストールされたら、パススルー認証エージェントの正常性ページに戻って、追加のエージェントの状態を確認できます。
 
@@ -377,7 +377,7 @@ Azure AD PowerShell モジュールを使用して、変換を完了します。
 パススルー認証をテストするには、次のようにします。
 
 1. シームレス SSO によって自動的にサインインされないように、InPrivate モードで Internet Explorer を開きます。
-2. Office 365 のサインイン ページ ([http://portal.office.com](http://portal.office.com/)) に移動します。
+2. Office 365 のサインイン ページ ([https://portal.office.com](https://portal.office.com/)) に移動します。
 3. ユーザーの UPN を入力し、**[次へ]** を選択します。 必ず、オンプレミスの Active Directory インスタンスから同期されており、以前はフェデレーション認証を使用していた、ハイブリッド ユーザーの UPN を入力してください。 ユーザー名とパスワードを入力するページが表示されます。
 
    ![ユーザー名を入力するサインイン ページを示すスクリーンショット](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)

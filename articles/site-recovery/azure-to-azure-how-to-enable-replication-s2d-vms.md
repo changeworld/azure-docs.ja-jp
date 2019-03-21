@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: asgang
-ms.openlocfilehash: 0b3094abfe1642cb65043729489f3aaed0732df9
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6c639d4503b170660abed5767e3571c8a2bf24b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568993"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112774"
 ---
 # <a name="replicate-azure-virtual-machines-using-storage-spaces-direct-to-another-azure-region"></a>記憶域スペース ダイレクトを使用する Azure 仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -23,10 +23,10 @@ ms.locfileid: "55568993"
 >記憶域スペース ダイレクト クラスターでは、クラッシュ整合性復旧ポイントのみがサポートされています。
 >
 
-##<a name="introduction"></a>はじめに 
+## <a name="introduction"></a>はじめに 
 [記憶域スペース ダイレクト (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct) はソフトウェアで定義されたストレージであり、Azure 上に[ゲスト クラスター](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure)を作成する手段を提供します。  Microsoft Azure のゲスト クラスターは、IaaS VM で構成されるフェールオーバー クラスターです。 ホストされた VM ワークロードはゲスト クラスター間でフェールオーバーすることができ、アプリケーションに対して、単独の Azure VM で可能なものより高い可用性 SLA を実現できます。 SQL やスケールアウト ファイル サーバーなどの重要なアプリケーションを VM でホストしている場合に便利です。
 
-##<a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>記憶域スペース ダイレクトを使用している Azure 仮想マシンのディザスター リカバリー
+## <a name="disaster-recovery-of-azure-virtual-machines-using-storage-spaces-direct"></a>記憶域スペース ダイレクトを使用している Azure 仮想マシンのディザスター リカバリー
 一般的なシナリオでは、スケールアウト ファイル サーバーのようなアプリケーションの高い回復性のために、Azure で仮想マシン ゲスト クラスターを使用できます。 これでもアプリケーションに高可用性を提供できますが、リージョン レベルの障害に対して Site Recovery を使用し、これらのアプリケーションを保護することができます。 Site Recovery では、1 つのリージョンから別の Azure リージョンにデータがレプリケートされ、フェールオーバーのときはディザスター リカバリー リージョンでクラスターが稼働されます。
 
 次の図は、記憶域スペース ダイレクトを使用している 2 つの Azure VM フェールオーバー クラスターを視覚的に表現したものです。
@@ -45,7 +45,7 @@ ms.locfileid: "55568993"
 2. ソース リージョンとは異なる DR リージョン上のサブネットに仮想マシンをフェールオーバーする場合は、フェールオーバーの後でクラスターの IP アドレスを変更する必要があります。  クラスターの IP アドレスを変更するには、ASR の[復旧計画スクリプト](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)を使用する必要があります。</br>
 カスタム スクリプト拡張機能を使用して VM 内でコマンドを実行する[サンプル スクリプト](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) 
 
-###<a name="enabling-site-recovery-for-s2d-cluster"></a>S2D クラスターに対して Site Recovery を有効にする
+### <a name="enabling-site-recovery-for-s2d-cluster"></a>S2D クラスターに対して Site Recovery を有効にする
 
 1. 復旧サービス コンテナー内で、[+replicate]\(+ レプリケート\) をクリックします
 1. クラスター内のすべてのノードを選択し、それらを[マルチ VM 整合性グループ](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-common-questions#multi-vm-consistency)の一部にします
@@ -72,7 +72,7 @@ ms.locfileid: "55568993"
 お使いのアプリケーションを正常に機能させるには、フェールオーバー後、またはテスト フェールオーバー時に、Azure の仮想マシンに対して一定の操作を実行することが必要な場合があります。 フェールオーバー後の操作は一部自動化することもできます。 たとえば、ここではロード バランサーをアタッチし、クラスターの IP を変更します。
 
 
-###<a name="failover-of-the-virtual-machines"></a>仮想マシンのフェールオーバー 
+### <a name="failover-of-the-virtual-machines"></a>仮想マシンのフェールオーバー 
 [ASR 復旧計画](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)を使用して、仮想マシンの両方のノードをフェールオーバーする必要があります 
 
 ![storagespacesdirect 保護](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)

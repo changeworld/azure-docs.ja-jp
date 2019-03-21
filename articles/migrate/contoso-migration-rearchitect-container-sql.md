@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 243b19d19fbce11d77f60bc2eccc4d1c58c85b80
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: cb984bcbe79b69c0614579d66a3b853cd38a7e12
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892186"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099088"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso の移行: Azure コンテナーと Azure SQL Database でオンプレミス アプリを再構築する
 
@@ -402,10 +402,10 @@ Contoso 管理者は、以下のように Visual Studio と SDK Tools を使用�
 4. SmartHotel.Registration.WCF アプリについて同じプロセスを繰り返します。
 5. 次にソリューションがどのように変化したかを確認します。
 
-    - 新しいアプリは **SmartHotel.RegistrationApplication/** です
-    - ここには次の 2 つのサービスが含まれています。**SmartHotel.Registration.WCF** と **SmartHotel.Registration.Web** です。
+   - 新しいアプリは **SmartHotel.RegistrationApplication/** です
+   - ここには次の 2 つのサービスが含まれています。**SmartHotel.Registration.WCF** と **SmartHotel.Registration.Web** です。
 
-    ![コンテナー](./media/contoso-migration-rearchitect-container-sql/container4.png)
+     ![コンテナー](./media/contoso-migration-rearchitect-container-sql/container4.png)
 
 6. Visual Studio によって Docker ファイルが作成され、必要なイメージが開発者用マシンのローカルにプルダウンされました。
 
@@ -488,7 +488,7 @@ Contoso 管理者は、以下のように Visual Studio と SDK Tools を使用�
 
 16. さらに、継続的配置トリガーが有効になっていることを確認します。
 
-   ![有効な継続的配置](./media/contoso-migration-rearchitect-container-sql/pipeline14.png) 
+    ![有効な継続的配置](./media/contoso-migration-rearchitect-container-sql/pipeline14.png) 
 
 17. **[保存]** > **[Create a release]\(リリースの追加\)** の順にクリックします。
 

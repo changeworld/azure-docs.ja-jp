@@ -6,18 +6,15 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 11/20/2018
-ms.openlocfilehash: bfa55c0a91473a4adc6b9fb02ac9697208ef39f9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/26/2019
+ms.openlocfilehash: a86b755770dc59f196c57f1d86e7f29200ce25e3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540063"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56962062"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB VNet サービス エンドポイントの作成と管理
-
-> [!IMPORTANT]
-> VNet サービス エンドポイント機能は、パブリック プレビューの段階です。
 
 Virtual Network (VNet) サービス エンドポイントおよびルールは、仮想ネットワークのプライベート アドレス空間を Azure Database for MariaDB サーバーに拡張します。 便利な Azure コマンド ライン インターフェイス (CLI) コマンドを使用して、サーバーを管理するための VNet サービス エンドポイントおよびルールの作成、更新、削除、一覧化、表示を行うことができます。 制限事項を含む、Azure Database for MariaDB VNet サービス エンドポイントの概要については、[Azure Database for MariaDB サーバー VNet サービス エンドポイント](concepts-data-access-security-vnet.md)に関する記事を参照してください。 VNet サービス エンドポイントは、Azure Database for MariaDB でサポートされるすべてのリージョンで利用できます。
 

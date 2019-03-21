@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: f3376b8077302eb6bd9a96710f92d692b641cac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0723c3730ca0ae6325d828fbb5f41698cb807dd3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866782"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874887"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>フレーズ リストを使用して単語リストのシグナルをブーストする
 
@@ -44,7 +44,7 @@ LUIS では、アプリごとに最大 10 のフリーズ リストが許可さ�
 
 5. 追加されるフレーズ リストの値が、交換して使用できる代替値である場合、**[These values are interchangeable]\(これらの値は交換可能です\)** をクリックします。
 
-    ![フレーズ リストの提案値 - 代替値の選択ボックス ](./media/luis-add-features/interchangeable.png)
+    ![フレーズ リストの提案値 - 代替値の選択ボックス](./media/luis-add-features/interchangeable.png)
 
 6. **[Save]** をクリックします。 "Cities" フレーズ リストが **[Phrase lists]\(フレーズ リスト\)** ページに追加されます。
 

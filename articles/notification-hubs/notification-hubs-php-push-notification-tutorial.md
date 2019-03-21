@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 7bd533e9319a265e935e32be15768ab3487db6da
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 054edaf321d90015840fd84e1697fca742fd7e1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561350"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838597"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>PHP から Notification Hubs を使用する方法
 
@@ -289,4 +289,4 @@ PHP コードを実行すると、ターゲット デバイスに表示される
 詳細については、 [PHP デベロッパー センター](https://azure.microsoft.com/develop/php/)も参照してください。
 
 [PHP REST wrapper sample (PHP REST ラッパー サンプル)]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
-[Notification Hubs の使用]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Notification Hubs の使用]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/

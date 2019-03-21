@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6444d2ab5265fffd4e3c956a2eec29437911b0e2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 73f962cc8e0d4605c0c5f0bace79553033ebe082
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876710"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110904"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>バージョンを使用してステージング アプリまたは運用環境アプリに影響を与えることなく編集とテストを行う
 
@@ -39,7 +39,7 @@ ms.locfileid: "55876710"
      > [!NOTE]
      > バージョン ID は、文字、数字、または '.' のみで構成できます。文字数は 10 文字までです。
  
- 指定した名前の新しいバージョンが作成され、アクティブなバージョンとして設定されます。
+   指定した名前の新しいバージョンが作成され、アクティブなバージョンとして設定されます。
 
 ## <a name="set-active-version"></a>アクティブなバージョンを設定する
 

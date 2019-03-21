@@ -5,17 +5,17 @@ documentationcenter: na
 services: networking
 author: rambk
 manager: tracsman
-ms.service: expressroute,vpn-gateway,virtual-network
+ms.service: virtual-network
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: abcf22dfebee695de54c36952c8f93dfaae31d57
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8be546c5dba4c6c694c8cef03a4bdd6005d68189
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178768"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771567"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Azure バックエンド接続機能の相互運用性: テストの設定
 

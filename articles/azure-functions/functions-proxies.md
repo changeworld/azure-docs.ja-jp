@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: da46d33e05a6f76687d3b8982855d477cbabfe86
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895620"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094577"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -171,8 +171,8 @@ ms.locfileid: "55895620"
 
 プロキシの動作は、いくつかのアプリ設定によって制御できます。 これらについては、[関数のアプリ設定のリファレンス](./functions-app-settings.md)で説明されています
 
-* [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azurefunctionproxydisablelocalcall)
-* [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azurefunctionproxybackendurldecodeslashes)
+* [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
+* [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
 ### <a name="reservedChars"></a> 予約文字 (文字列形式)
 

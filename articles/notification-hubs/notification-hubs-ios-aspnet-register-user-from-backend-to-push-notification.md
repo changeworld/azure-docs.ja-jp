@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 67baa204d50d1319559abcc58e0ae00e1810ebaf
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ff77a955c34941d87a1f653726ab3f19e84aa440
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452651"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101977"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>ASP.NET を使用した現在のユーザーのプッシュ通知への登録
 
@@ -42,9 +42,9 @@ ms.locfileid: "54452651"
    * **テキスト フィールド**: "Password"
    * **ボタン**: "Login"
 
-    この時点で、ストーリーボードは次のようになります。
+     この時点で、ストーリーボードは次のようになります。
 
-    ![][0]
+     ![][0]
 
 2. アシスタント エディターで、すべての switched コントロールのアウトレットを作成してそれらを呼び出し、テキスト フィールドとビュー コントローラー (デリゲート) を接続して、**ログイン** ボタンの**アクション**を作成します。
 

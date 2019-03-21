@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: a6aeffb40092252a4e48a200da640f22a149f089
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c901a384d7629a187a2a4fbd4295a1a68615abdb
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867309"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342600"
 ---
 # <a name="age-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの age 作成済みエンティティ
 作成済みの age エンティティは、数値と、年数、月数、週数、日数の両方で、年齢の値をキャプチャします。 このエンティティは既にトレーニングされているので、年齢を含む発話の例をアプリケーション意図に追加する必要はありません。 age エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされます。 

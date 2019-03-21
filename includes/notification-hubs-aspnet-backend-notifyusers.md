@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/04/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9a94f76e2d1fe930d2d6d43e81a756f0cb15d23d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8413044beff68390dbccdf16c4477e113a85f81b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453071"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125177"
 ---
 ## <a name="create-the-webapi-project"></a>Web API プロジェクトを作成する
 
@@ -55,7 +55,7 @@ ms.locfileid: "54453071"
     * 作成済みの App Service プランを選択します。
     * **[新しい App Service プランの作成]** を選択し、App Service プランを作成します。
 
-  このチュートリアルではデータベースは必要ありません。 App Service プランを選択したら、**[OK]** を選択して、プロジェクトを作成します。
+   このチュートリアルではデータベースは必要ありません。 App Service プランを選択したら、**[OK]** を選択して、プロジェクトを作成します。
 
     ![[Microsoft Azure Web App の構成] ウィンドウ][B5]
 
@@ -84,9 +84,9 @@ ms.locfileid: "54453071"
    * 要求に *基本* 認証が使用されている。
    * ユーザー名の文字列とパスワードの文字列が同じである。
 
-  それ以外の場合、要求は拒否されます。 この認証は、認証と認可の正規のアプローチではありません。 このチュートリアルのための単なる例にすぎません。
+   それ以外の場合、要求は拒否されます。 この認証は、認証と認可の正規のアプローチではありません。 このチュートリアルのための単なる例にすぎません。
 
-  要求メッセージが認証され、`AuthenticationTestHandler` によって承認される場合、基本認証ユーザーは [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) の現在の要求に添付されます。 HttpContext のユーザー情報は、後で別のコントローラー (RegisterController) で使用され、通知登録の要求に[タグ](https://msdn.microsoft.com/library/azure/dn530749.aspx)を追加します。
+   要求メッセージが認証され、`AuthenticationTestHandler` によって承認される場合、基本認証ユーザーは [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) の現在の要求に添付されます。 HttpContext のユーザー情報は、後で別のコントローラー (RegisterController) で使用され、通知登録の要求に[タグ](https://msdn.microsoft.com/library/azure/dn530749.aspx)を追加します。
 
     ```csharp
     public class AuthenticationTestHandler : DelegatingHandler

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ed0912e8d4705b6cbefa9eb8f7a712a37d8b0be
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8d2001e221ef9c02ee2ab80b647a9bafe6490432
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183181"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>チュートリアル:Azure Active Directory と TINFOIL SECURITY の統合
 
@@ -133,7 +133,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
     
     c. **[属性値]** ボックスに、後で取得するアカウント ID の値を貼り付けます。
     
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。    
+    d. **[OK]** をクリックします。    
 
 1. **[保存]** ボタンをクリックします。
 
@@ -163,7 +163,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
    
     c. **[SAML Post URL]\(SAML POST の URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML Certificate Fingerprint]\(SAML 証明書フィンガープリント\)** ボックスに、**[SAML 署名証明書]** セクションからコピーした**拇印**の値を貼り付けます。
+    d. **[SAML Certificate Fingerprint]\(SAML 証明書フィンガープリント\)** ボックスに、**[SAML 署名証明書]** セクションからコピーした**拇印**の値を貼り付けます。
   
     e. **[Your Account ID]\(アカウント ID\)** の値をコピーし、Azure Portal の **[属性の追加]** セクションの **[属性値]** ボックスに値を貼り付けます。
    
@@ -186,7 +186,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
 
 1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
-    ![[ユーザーとグループ] -> [すべてのユーザー] ](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
+    ![[ユーザーとグループ] -> [すべてのユーザー]](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
 
 1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
@@ -202,7 +202,7 @@ TINFOIL SECURITY で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-tinfoil-security-test-user"></a>TINFOIL SECURITY テスト ユーザーの作成
 

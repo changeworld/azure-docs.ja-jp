@@ -3,21 +3,21 @@ title: Azure Data Factory で Hadoop Hive アクティビティを使用して�
 description: Azure データ ファクトリで Hive アクティビティを使用して、オンデマンドまたは独自の HDInsight クラスターで Hive クエリを実行する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: douglasl
-ms.openlocfilehash: e77b8c89954064fb143f04f0f901d1512d4fc50d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 3852b2d18b48be63cbc612159facb6273f23dc2b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491010"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575581"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop Hive アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 66137f01672820584f97273ddca26a66ada781ba
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 92859667e1dc53b9c6ca9e46a2db1c6dc335ae37
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312538"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339013"
 ---
 # <a name="detect-domain-specific-content"></a>ドメイン固有のコンテンツの検出
 
-タグ付けと大まかなカテゴリ化に加えて、Computer Vision では、特殊なデータでトレーニング済みのモデルを使用した詳細なドメイン固有の解析もサポートされます。 
+タグ付けと大まかなカテゴリ化に加えて、Computer Vision では、特殊なデータでトレーニング済みのモデルを使用した詳細なドメイン固有の解析もサポートされます。
 
 ドメイン固有のモデルには、それ自体で使用する方法 (スコープ解析) と、カテゴリ化機能の拡張として使用する方法があります。
 
 ### <a name="scoped-analysis"></a>スコープされた分析
 
-選択したドメイン固有のモデルのみを使用してイメージを分析するには、[Models/\<model\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API を使用します。 
+選択したドメイン固有のモデルのみを使用してイメージを分析するには、[Models/\<model\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API を使用します。
 
 特定のイメージについて、**models/celebrities/analyze** API で返される JSON 応答の例を次に示します。
 
@@ -55,28 +55,28 @@ ms.locfileid: "56312538"
 }
 ```
 
-### <a name="enhanced-categorization-analysis"></a>拡張カテゴリ化解析  
+### <a name="enhanced-categorization-analysis"></a>拡張カテゴリ化解析
 
-ドメイン固有のモデルを使用して、一般的なイメージ解析を補足することもできます。 これは、[Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 呼び出しの *details* パラメーターにドメイン固有のモデルを指定して、[大まかなカテゴリ化](concept-categorizing-images.md)の一部として行います。 
+ドメイン固有のモデルを使用して、一般的なイメージ解析を補足することもできます。 これは、[Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 呼び出しの *details* パラメーターにドメイン固有のモデルを指定して、[大まかなカテゴリ化](concept-categorizing-images.md)の一部として行います。
 
-この場合、最初に 86 のカテゴリ分類の分類子が呼び出されます。 検出されたカテゴリのいずれかに、一致するドメイン固有のモデルがあった場合、イメージはそのモデルもパススルーし、結果が追加されます。 
+この場合、最初に 86 のカテゴリ分類の分類子が呼び出されます。 検出されたカテゴリのいずれかに、一致するドメイン固有のモデルがあった場合、イメージはそのモデルもパススルーし、結果が追加されます。
 
 次の JSON 応答は、ドメイン固有の解析を `detail` ノードとしてより広範なカテゴリ化解析に含める方法を示しています。
 
 ```json
-"categories":[  
-  {  
+"categories":[
+  {
     "name":"abstract_",
     "score":0.00390625
   },
-  {  
+  {
     "name":"people_",
     "score":0.83984375,
-    "detail":{  
-      "celebrities":[  
-        {  
+    "detail":{
+      "celebrities":[
+        {
           "name":"Satya Nadella",
-          "faceRectangle":{  
+          "faceRectangle":{
             "left":597,
             "top":162,
             "width":248,
@@ -85,8 +85,8 @@ ms.locfileid: "56312538"
           "confidence":0.999028444
         }
       ],
-      "landmarks":[  
-        {  
+      "landmarks":[
+        {
           "name":"Forbidden City",
           "confidence":0.9978346
         }
@@ -108,20 +108,20 @@ ms.locfileid: "56312538"
 [Models](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API を呼び出すと、各モデルを適用できるカテゴリと共に、この情報が返されます。
 
 ```json
-{  
-  "models":[  
-    {  
+{
+  "models":[
+    {
       "name":"celebrities",
-      "categories":[  
+      "categories":[
         "people_",
         "人_",
         "pessoas_",
         "gente_"
       ]
     },
-    {  
+    {
       "name":"landmarks",
-      "categories":[  
+      "categories":[
         "outdoor_",
         "户外_",
         "屋外_",

@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 21f59ad03f2ff91b3c33675b0994b7f565bf5031
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f4afd83e31cf724e734b4e86045f8404e65753c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563203"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088028"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>チュートリアル: C# IoT Edge モジュールを開発して、シミュレートされたデバイスにデプロイする
 
@@ -277,15 +277,15 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 10. **CSharpModule** モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを **modulesContent** セクションの下部、**$edgeHub** モジュール ツインの後に挿入します。 
 
-   ```json
+    ```json
        "CSharpModule": {
            "properties.desired":{
                "TemperatureThreshold":25
            }
        }
-   ```
+    ```
 
-   ![モジュール ツインをデプロイ テンプレートに追加する](./media/tutorial-csharp-module/module-twin.png)
+    ![モジュール ツインをデプロイ テンプレートに追加する](./media/tutorial-csharp-module/module-twin.png)
 
 11. deployment.template.json ファイルを保存します。
 

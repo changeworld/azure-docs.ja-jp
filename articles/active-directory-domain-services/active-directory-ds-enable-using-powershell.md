@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: ergreenl
-ms.openlocfilehash: 758183efd6a6a2c2b8d172c52ad3bd5c5e12d969
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f2c4f73af00e0093ce98f2de37e9c3a0ba381eda
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169146"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119906"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell を使用した Azure Active Directory Domain Services の有効化
 この記事では、PowerShell を使用して Azure Active Directory (AD) Domain Services を有効にする方法について説明します。
@@ -141,8 +141,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > **マネージド ドメインをプロビジョニングした後、必ず追加の構成手順を実行してください。**
 > マネージド ドメインがプロビジョニングされた後、次のタスクを実行する必要があります。
 > * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの **[DNS 設定を更新](active-directory-ds-getting-started-dns.md)** します。
-* **[Azure AD Domain Services とのパスワード同期を有効](active-directory-ds-getting-started-password-sync.md)** にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
->
+> * **[Azure AD Domain Services とのパスワード同期を有効](active-directory-ds-getting-started-password-sync.md)** にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 
 ## <a name="powershell-script"></a>PowerShell スクリプト
@@ -226,8 +225,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > **マネージド ドメインをプロビジョニングした後、必ず追加の構成手順を実行してください。**
 > マネージド ドメインがプロビジョニングされた後、次のタスクを実行する必要があります。
 > * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
-* Azure AD Domain Services とのパスワード同期を有効にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
->
+> * Azure AD Domain Services とのパスワード同期を有効にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="next-steps"></a>次の手順
 マネージド ドメインを作成した後は、マネージド ドメインを使用できるように、次の構成タスクを実行します。

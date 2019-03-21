@@ -16,12 +16,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 73c770f45666ce76b770796ac9714d007c2870cb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c7031b0d0a08106473409233db0ad95ecb32525
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247189"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095366"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Azure Stack での Ruby による API バージョンのプロファイルの使用
 
@@ -86,7 +86,7 @@ gem install 'azure_sdk'
 Azure Stack で Ruby Azure SDK を使用するには、次の値を指定した後、環境変数に値を設定する必要があります。 環境変数を設定する方法については、表の後にある、オペレーティング システム別の手順を参照してください。
 
 | 値 | 環境変数 | 説明 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | テナント ID | AZURE_TENANT_ID | Azure Stack の[テナント ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview) の値。 |
 | クライアント ID | AZURE_CLIENT_ID | このドキュメントの前のセクションでサービス プリンシパルが作成されたときに保存した、サービス プリンシパル アプリケーション ID。  |
 | サブスクリプション ID | AZURE_SUBSCRIPTION_ID | [サブスクリプション ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。 |

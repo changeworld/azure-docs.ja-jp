@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: a33dfe2e20cdb6c1944d4be89692ec1da5a5482e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: b439b702fb5ae4990c8c31838fe9677cb882d2a2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889666"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546321"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>クイック スタート:Bing Spell Check REST API と C# を使用してスペルをチェックする
 
@@ -25,7 +25,7 @@ ms.locfileid: "56889666"
 
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 * NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。
-* Linux/macOS を使用している場合、このアプリケーションは [Mono](http://www.mono-project.com/) を使用して実行できます。
+* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 

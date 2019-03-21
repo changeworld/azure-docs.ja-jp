@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8d5dca65734640dc9e756f9130e6b362178781f2
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453518"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848928"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>P2S 用公開 CA ゲートウェイ証明書への移行
 
 Azure VPN Gateway では、P2S 接続用のゲートウェイに対して Azure レベルの自己署名証明書が発行されなくなりました。 発行された証明書は現在、公的な証明機関 (CA) によって署名されています。 ただし、一部の古いゲートウェイではまだ、自己署名証明書を使用している場合があります。 これらの自己署名証明書は有効期間の終了が近づいており、公開 CA 証明書へ移行する必要があります。
 
 >[!NOTE]
-> P2S クライアント認証に使用される自己署名証明書は、この Azure レベルの証明書の変更の影響を受けません。 引き続き通常どおり、自己署名証明書を発行して使用できます。
+> * P2S クライアント認証に使用される自己署名証明書は、この Azure レベルの証明書の変更の影響を受けません。 引き続き通常どおり、自己署名証明書を発行して使用できます。
 >
 
 このコンテキストでの証明書は、追加の Azure レベル証明書です。 認証用に独自の自己署名ルート証明書とクライアント証明書を生成するときに使用する、証明書チェーンではありません。 これらの証明書は影響を受けず、生成時に設定された日に有効期限が切れます。
@@ -38,7 +38,7 @@ Azure VPN Gateway では、P2S 接続用のゲートウェイに対して Azure 
 >
 > **残りのすべてのゲートウェイでは、2019年 3 月 12 日 18時 00 分 (UTC) に移行を開始します**。
 >
-> ゲートウェイ移行プロセスは完了するまで 2 時間かかります。 ゲートウェイの移行プロセスが完了すると、お客様にメールが送られます。
+> ゲートウェイの移行プロセスが完了すると、お客様にメールが送られます。
 > 
 
 ## <a name="1-verify-your-certificate"></a>1.証明書を確認する
@@ -50,8 +50,8 @@ Azure VPN Gateway では、P2S 接続用のゲートウェイに対して Azure 
 2. zip ファイルを開くか、または抽出し、"Generic" フォルダーを閲覧します。 Generic フォルダー内には、2 つのファイルが見つかります。そのうち 1 つは、*VPNSettings.xml* です。
 3. 任意の xml ビューア―/エディターで *VPNSettings.xml* を開きます。 xml ファイル内で、次のフィールドを検索します。
 
-  * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
-  * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
+   * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
+   * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
 4. *ServerCertRotCn* および *ServerCertIssuerCn* が "DigiCert Global Root CA" になっている場合は、この更新による影響を受けず、この記事の手順を進める必要はありません。 しかし、これ以外が表示された場合は、お使いのゲートウェイ証明書は更新の対象となり、移行されます。
 
 ### <a name="classic"></a>クラシック

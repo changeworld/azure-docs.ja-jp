@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: dc5439c98b5abc69b6cb1ba144e015426bb887ce
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c0571e202448951de0994d34f68e1649eabd5519
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996952"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259076"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Azure Portal を使用したコンテンツ保護ポリシーの構成
  Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 Media Services では、Advanced Encryption Standard (AES) 128 ビット暗号化キーを使用して、動的に暗号化されたコンテンツを配信できます。 また、PlayReady や Widevine デジタル著作権管理 (DRM) と Apple FairPlay を使用した共通暗号化 (CENC) と共に使用することもできます。 
@@ -106,7 +106,7 @@ AES クリア キー暗号化は、Smooth Streaming、HLS、および MPEG-DASH 
 
     c. **Smooth Streaming、HLS、および MPEG-DASH とのみの PlayReady**: PlayReady DRM により Smooth Streaming、HLS、MPEG-DASH ストリームが動的に暗号化されます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **MPEG-DASH とのみの Widevine**: Widevine DRM により MPEG-DASH が動的に暗号化されます。
+    d. **MPEG-DASH とのみの Widevine**: Widevine DRM により MPEG-DASH が動的に暗号化されます。
     
     e. **HLS とのみの FairPlay**: FairPlay により HLS ストリームが動的に暗号化されます。
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: d65267992876b3b3255a5eea22ff827522ddcdf1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2dc314dd1d1e728f03c1d0c660d9339254ddc462
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674703"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541861"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -69,7 +69,7 @@ geo レプリケーションは、[Premium レジストリ](container-registry-s
 
 ![Azure Portal での SKU の切り替え](media/container-registry-skus/update-registry-sku.png)
 
-Premium レジストリの geo レプリケーションを構成するには、Azure Portal (http://portal.azure.com) にログインします。
+Premium レジストリの geo レプリケーションを構成するには、Azure Portal (https://portal.azure.com) にログインします。
 
 Azure Container Registry に移動し、**[レプリケーション]** を選択します。
 

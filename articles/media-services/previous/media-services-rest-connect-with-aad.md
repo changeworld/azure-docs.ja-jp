@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: ef81e0c4d04d57edbffa16b817b34af5f3bf8c26
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4b6bd97d7e87832f774f7a09f7e0deeb4047e695
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995631"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294469"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Azure AD 認証を使用して REST で Media Services API にアクセスする
 
@@ -60,8 +60,8 @@ Media Services API にアクセスするには、以下のデータ ポイント
 
 |Setting|例|説明|
 |---|-------|-----|
-|Azure Active Directory テナント ドメイン|microsoft.onmicrosoft.com|セキュリティ トークン サービス (STS) エンドポイントとしての Azure AD は、 https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token という形式で作成されます。 Azure AD は、リソース (アクセス トークン) にアクセスするために JWT を発行します。|
-|REST API エンドポイント|https://amshelloworld.restv2.westus.media.azure.net/api/|これは、アプリケーションのすべての Media Services REST API 呼び出しの呼び出し先エンドポイントです。|
+|Azure Active Directory テナント ドメイン|microsoft.onmicrosoft.com|セキュリティ トークン サービス (STS) エンドポイントとしての Azure AD は、<https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token> という形式で作成されます。 Azure AD は、リソース (アクセス トークン) にアクセスするために JWT を発行します。|
+|REST API エンドポイント|<https://amshelloworld.restv2.westus.media.azure.net/api/>|これは、アプリケーションのすべての Media Services REST API 呼び出しの呼び出し先エンドポイントです。|
 |クライアント ID (アプリケーション ID)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD アプリケーション (クライアント) ID。 アクセス トークンを取得するには、クライアント ID が必要です。 |
 |クライアント シークレット|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD アプリケーション キー (クライアント シークレット)。 アクセス トークンを取得するには、クライアント シークレットが必要です。|
 
@@ -69,7 +69,7 @@ Media Services API にアクセスするには、以下のデータ ポイント
 
 情報を取得するには、次の手順を実行します。
 
-1. [Azure Portal](http://portal.azure.com) にログインします。
+1. [Azure Portal](https://portal.azure.com) にログインします。
 2. AMS インスタンスに移動します。
 3. **[API アクセス]** を選択します。
 4. **[サービス プリンシパルを使って Azure Media Services API に接続する]** をクリックします。
@@ -83,33 +83,33 @@ Media Services API にアクセスするには、以下のデータ ポイント
 
     新しい AD アプリケーションを作成する場合は、次の手順を実行します。
     
-    1. **[新規作成]** をクリックします。
-    2. 名前を入力します。
-    3. **[新規作成]** をもう一度クリックします。
-    4. **[保存]** をクリックします。
+   1. **[新規作成]** をクリックします。
+   2. 名前を入力します。
+   3. **[新規作成]** をもう一度クリックします。
+   4. **[保存]** をクリックします。
 
-    ![API アクセス](./media/connect-with-rest/new-app.png)
+      ![API アクセス](./media/connect-with-rest/new-app.png)
 
-    ページに新しいアプリケーションが表示されます。
+      ページに新しいアプリケーションが表示されます。
 
 6. **クライアント ID** (アプリケーション ID) を取得します。
     
-    1. アプリケーションを選択します。
-    2. 右側のウィンドウから**クライアント ID** を取得します。 
+   1. アプリケーションを選択します。
+   2. 右側のウィンドウから**クライアント ID** を取得します。 
 
-    ![API アクセス](./media/connect-with-rest/existing-client-id.png)
+      ![API アクセス](./media/connect-with-rest/existing-client-id.png)
 
-7.  アプリケーションの**キー** (クライアント シークレット) を取得します。 
+7. アプリケーションの**キー** (クライアント シークレット) を取得します。 
 
-    1. **[アプリケーションの管理]** ボタンをクリックします (クライアント ID の情報は **[アプリケーション ID]** の下に表示されます)。 
-    2. **[キー]** をクリックします。
+   1. **[アプリケーションの管理]** ボタンをクリックします (クライアント ID の情報は **[アプリケーション ID]** の下に表示されます)。 
+   2. **[キー]** をクリックします。
     
-        ![API アクセス](./media/connect-with-rest/manage-app.png)
-    3. **[説明]** と **[有効期限]** に入力し、**[保存]** をクリックしてアプリケーション キー (クライアント シークレット) を生成します。
+       ![API アクセス](./media/connect-with-rest/manage-app.png)
+   3. **[説明]** と **[有効期限]** に入力し、**[保存]** をクリックしてアプリケーション キー (クライアント シークレット) を生成します。
     
-        **[保存]** ボタンをクリックすると、キー値が表示されます。 ブレードから離れる前に、キー値をコピーします。
+       **[保存]** ボタンをクリックすると、キー値が表示されます。 ブレードから離れる前に、キー値をコピーします。
 
-    ![API アクセス](./media/connect-with-rest/connect-with-rest03.png)
+   ![API アクセス](./media/connect-with-rest/connect-with-rest03.png)
 
 AD 接続パラメーターの値を web.config ファイルまたは app.config ファイルに追加して、後でコードに使用することができます。
 

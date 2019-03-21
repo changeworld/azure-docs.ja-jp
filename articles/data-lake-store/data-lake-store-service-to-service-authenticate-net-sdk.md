@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 3075f515b8095451a873727fef696fd523664d0a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5ec6325f3fae21e62fe4a3fb6452aa11158047a4
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891716"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340237"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Azure Data Lake Storage Gen1 に対する .NET SDK を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -24,11 +24,10 @@ ms.locfileid: "55891716"
 > * [.NET SDK の使用](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [Python の使用](data-lake-store-service-to-service-authenticate-python.md)
 > * [REST API の使用](data-lake-store-service-to-service-authenticate-rest-api.md)
-> 
->  
+>
+>
 
 この記事では、.NET SDK を使用して、Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します。 .NET SDK を使用した Data Lake Storage Gen1 に対するエンド ユーザー認証については、[Data Lake Storage Gen1 による .NET SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-net-sdk.md)に関するページを参照してください。
-
 
 ## <a name="prerequisites"></a>前提条件
 * **Visual Studio 2013、2015、2017**。 以下の手順では、Visual Studio 2017 を使用します。
@@ -80,11 +79,11 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
 ## <a name="service-to-service-authentication-with-client-secret"></a>クライアント シークレットによるサービス間認証
-このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。  このスニペットを使用すると、Data Lake Storage Gen1 に対し、Azure AD Web アプリケーションのクライアント シークレット/キーを使用して、**非対話形式**でアプリケーションを認証することができます。 
+このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 に対し、Azure AD Web アプリケーションのクライアント シークレット/キーを使用して、**非対話形式**でアプリケーションを認証することができます。
 
 ```csharp
 private static void Main(string[] args)
-{    
+{
     // Service principal / application authentication with client secret / key
     // Use the client ID of an existing AAD "Web App" application.
     string TENANT = "<AAD-directory-domain>";
@@ -125,5 +124,3 @@ private static void Main(string[] args)
 
 * [.NET SDK を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-net-sdk.md)
 * [.NET SDK を使用した Data Lake Storage Gen1 に対するデータ操作](data-lake-store-data-operations-net-sdk.md)
-
-

@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 507aa1485cb039db2c26d0e513af58d67bb9fa58
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 1afc40bd601c06def57ae59797d31a5edf4095bd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381267"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57430919"
 ---
 # <a name="clean-up-ssisdb-logs-with-azure-elastic-database-jobs"></a>Azure エラスティック データベース ジョブで SSISDB のログをクリーンアップする
 
@@ -30,6 +30,8 @@ ms.locfileid: "54381267"
 以降の各セクションでは、管理者によって設定された保持期間が経過した SSISDB のログを削除するストアド プロシージャ `[internal].[cleanup_server_retention_window_exclusive]` をトリガーする方法について説明しています。
 
 ## <a name="clean-up-logs-with-power-shell"></a>PowerShell を使ってログをクリーンアップする
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 以下のサンプル PowerShell スクリプトでは、SSISDB のログをクリーンアップするためのストアド プロシージャをトリガーする新しいエラスティック ジョブを作成しています。 詳細については、「[PowerShell を使用したエラスティック ジョブ エージェントの作成](../sql-database/elastic-jobs-powershell.md)」を参照してください。
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: .NET を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 author: wmengmsft
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
-ms.openlocfilehash: 57ed02463555ce9e958aedd9c2b317f7a167567b
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 8d9037a0f557a39ba4384981d9f31daa5f1ca6e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985888"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842653"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>.NET を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]

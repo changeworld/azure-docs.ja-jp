@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: d963cdd484727ac46aed1915643dd92462e2c643
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2e40165bde7f3ce2eabd91b55c5bbc8139282b60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857815"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101467"
 ---
 # <a name="create-reviews-from-the-api-console"></a>API コンソールでレビューを作成する
 
@@ -33,35 +33,35 @@ Review API の[レビュー操作](https://westus.dev.cognitive.microsoft.com/do
 
 テスト用コンソールにアクセスする最も簡単な方法は、**[資格情報]** ウィンドウを使用することです。
 
-1.  **[資格情報]** ウィンドウで [[Review API reference]\(Review API リファレンス\)](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4) を選択します。
+1. **[資格情報]** ウィンドウで [[Review API reference]\(Review API リファレンス\)](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4) を選択します。
 
-  **[Review - Create]\(Review - Create\)** ページが開きます。
+   **[Review - Create]\(Review - Create\)** ページが開きます。
 
-2.  **[Open API testing console]\(API テスト コンソールを開く\)** で、実際の場所に最もあてはまるリージョンを選択します。
+2. **[Open API testing console]\(API テスト コンソールを開く\)** で、実際の場所に最もあてはまるリージョンを選択します。
 
-  ![[Review - Create]\(Review - Create\) ページのリージョン選択肢](images/test-drive-region.png)
+   ![[Review - Create]\(Review - Create\) ページのリージョン選択肢](images/test-drive-region.png)
 
-  **[Review - Create]\(Review - Create\)** API コンソールが開きます。
+   **[Review - Create]\(Review - Create\)** API コンソールが開きます。
   
-3.  必須のクエリ パラメーター、コンテンツ タイプ、サブスクリプション キーの値を入力します。 **[要求本文]** ボックスで、コンテンツ (画像の場所など)、メタデータ、およびコンテンツに関連する他の情報を指定します。
+3. 必須のクエリ パラメーター、コンテンツ タイプ、サブスクリプション キーの値を入力します。 **[要求本文]** ボックスで、コンテンツ (画像の場所など)、メタデータ、およびコンテンツに関連する他の情報を指定します。
 
-  ![[Review - Create]\(Review - Create\) コンソールの [クエリ パラメーター]、[ヘッダー]、および [要求本文] ボックス](images/test-drive-review-1.PNG)
+   ![[Review - Create]\(Review - Create\) コンソールの [クエリ パラメーター]、[ヘッダー]、および [要求本文] ボックス](images/test-drive-review-1.PNG)
   
-4.  **[送信]** を選択します。 レビュー ID が作成されます。 次の手順で使用するためにこの ID をコピーします。
+4. **[送信]** を選択します。 レビュー ID が作成されます。 次の手順で使用するためにこの ID をコピーします。
 
-  ![[Review - Create]\(Review - Create\) コンソールの [応答のコンテンツ] ボックスに表示されるレビュー ID](images/test-drive-review-2.PNG)
+   ![[Review - Create]\(Review - Create\) コンソールの [応答のコンテンツ] ボックスに表示されるレビュー ID](images/test-drive-review-2.PNG)
   
-5.  **[取得]** を選択し、リージョンと一致するボタンを選択して API を開きます。 表示されるページで、**teamName**、**ReviewID**、および **subscription key** の値を入力します。 このページの **[送信]** ボタンを選択します。 
+5. **[取得]** を選択し、リージョンと一致するボタンを選択して API を開きます。 表示されるページで、**teamName**、**ReviewID**、および **subscription key** の値を入力します。 このページの **[送信]** ボタンを選択します。 
 
-  ![[Review - Create]\(Review - Create\) コンソールの取得結果](images/test-drive-review-3.PNG)
+   ![[Review - Create]\(Review - Create\) コンソールの取得結果](images/test-drive-review-3.PNG)
   
-6.  スキャンの結果を確認します。
+6. スキャンの結果を確認します。
 
-  ![[Review - Create]\(Review - Create\) コンソールの [応答のコンテンツ] ボックス](images/test-drive-review-4.PNG)
+   ![[Review - Create]\(Review - Create\) コンソールの [応答のコンテンツ] ボックス](images/test-drive-review-4.PNG)
   
-7.  Content Moderator ダッシュボードで、**[確認]** > **[イメージ]** を選択します。 スキャンした画像がヒューマン レビューのために表示されます。
+7. Content Moderator ダッシュボードで、**[確認]** > **[イメージ]** を選択します。 スキャンした画像がヒューマン レビューのために表示されます。
 
-  ![レビュー ツール画像、サッカー ボール](images/test-drive-review-5.PNG)
+   ![レビュー ツール画像、サッカー ボール](images/test-drive-review-5.PNG)
 
 ## <a name="next-steps"></a>次の手順
 

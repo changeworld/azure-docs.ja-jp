@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: aac23f616cb9d7c3fb29e516cfa2daa47c00e8e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4190f06129d7f9bcfe455b3e321de785fc531f1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989262"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842551"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>PowerShell を使用した Azure Network Watcher との接続のトラブルシューティング
 
@@ -214,7 +214,7 @@ $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networ
 $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
 
-Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress http://bing.com/
+Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://bing.com/
 ```
 
 ### <a name="response"></a>Response

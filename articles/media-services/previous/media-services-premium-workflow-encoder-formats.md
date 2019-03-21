@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 03/19/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: a24448507fa16a48ab3522c3307261d989d773ee
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 25f32750b612bb66f23eb19c378f7935689f3a73
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895025"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258617"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>メディア エンコーダー プレミアム ワークフローの形式とコーデック
 
@@ -26,8 +26,6 @@ ms.locfileid: "55895025"
 > プレミアム エンコーダーに関するご質問は、電子メールで mepd@microsoft.com までお送りください。
 > 
 > このトピックで説明するメディア エンコーダー プレミアム ワークフロー メディア プロセッサは中国では提供されません。 
-> 
-> 
 
 このドキュメントには、以前のパブリック プレビュー バージョンの **メディア エンコーダー プレミアム ワークフロー** でサポートされる入力ファイルおよび出力ファイルの形式とコーデックの一覧が含まれています。
 

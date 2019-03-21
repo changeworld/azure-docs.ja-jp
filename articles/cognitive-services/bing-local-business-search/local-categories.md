@@ -6,16 +6,15 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9ee6d0f8b609b87fe7ed4083bc5886ceaf158cb2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b96c4e0ebfb12f48917febcc8ad623de18758935
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188713"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773685"
 ---
 # <a name="search-categories-for-the-bing-local-business-search-api"></a>Bing Local Business Search API の検索カテゴリ
 

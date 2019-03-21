@@ -11,22 +11,22 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 19a0e7f3317a5c4a87b2622de170b0fc2cc137be
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: a1eb946d3f1b18aaa86735dedcfbaa1fd6a89621
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326825"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089983"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>ストレージ リソースの削除エラーのトラブルシューティング
 
 このシナリオでは、Azure Resource Manager デプロイで Azure ストレージ アカウント、コンテナー、または BLOB を削除しようとしたときに、次のいずれかのエラーが発生する場合があります。
 
->**ストレージ アカウント 'StorageAccountName' を削除できませんでした。エラー:ストレージ アカウントのアーティファクトが使用中であるため、このストレージ アカウントを削除できません。**
-
->**# 個のコンテナー (# 個のコンテナーのうち) を削除できませんでした:<br>vhds:There is currently a lease on the container and no lease ID was specified in the request. (現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした。)**
-
->**# 個の BLOB (# 個の BLOB のうち) を削除できませんでした:<br>BlobName.vhd:There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)**
+> **ストレージ アカウント 'StorageAccountName' を削除できませんでした。エラー:ストレージ アカウントのアーティファクトが使用中であるため、このストレージ アカウントを削除できません。**
+> 
+> **# 個のコンテナー (# 個のコンテナーのうち) を削除できませんでした:<br>vhds:There is currently a lease on the container and no lease ID was specified in the request. (現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした。)**
+> 
+> **# 個の BLOB (# 個の BLOB のうち) を削除できませんでした:<br>BlobName.vhd:There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)**
 
 Azure VM で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。 Azure ディスクについて詳しくは、「[マネージド ディスクの概要](../linux/managed-disks-overview.md)」をご覧ください。
 

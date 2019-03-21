@@ -12,12 +12,12 @@ ms.author: craigg
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: c456954c3bf68fd87e51162ea6aab1d0a54b86ad
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: e1cd0d8462c31c8b843f7962f923accc6b63ae00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237015"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103402"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL Database の単一データベースに接続してレポートを作成する
 
@@ -43,10 +43,10 @@ Excel を Azure SQL Database の単一データベースに接続し、データ
 
 4. **[SQL Server データベース]** ダイアログ ボックスで、左側の **[データベース]** を選択し、接続する SQL Database サーバーの **[ユーザー名]** と **[パスワード]** を入力します。 **[接続]** を選択して **[ナビゲーター]** を開きます。 
 
-  ![Type the server name and login credentials](./media/sql-database-connect-excel/connect-to-server.png)
+   ![Type the server name and login credentials](./media/sql-database-connect-excel/connect-to-server.png)
 
-  > [!TIP]
-  > ネットワーク環境によっては、使用しているクライアント IP アドレスからのトラフィックを SQL データベース サーバーが許可しない場合に、接続できないことまたは接続を失うことがあります。 [Azure ポータル](https://portal.azure.com/)に移動し、[SQL サーバー]、お使いのサーバー、設定の下のファイアウォールの順にクリックし、使用しているクライアント IP アドレスを追加します。 詳細については、 [ファイアウォール設定の構成方法](sql-database-configure-firewall-settings.md) に関するページを参照してください。
+   > [!TIP]
+   > ネットワーク環境によっては、使用しているクライアント IP アドレスからのトラフィックを SQL データベース サーバーが許可しない場合に、接続できないことまたは接続を失うことがあります。 [Azure ポータル](https://portal.azure.com/)に移動し、[SQL サーバー]、お使いのサーバー、設定の下のファイアウォールの順にクリックし、使用しているクライアント IP アドレスを追加します。 詳細については、 [ファイアウォール設定の構成方法](sql-database-configure-firewall-settings.md) に関するページを参照してください。
 
 5. **[ナビゲーター]** で、操作するデータベースを一覧から選択し、操作するテーブルまたはビューを選択し (**vGetAllCategories** を選択しました)、**[読み込み]** を選択して、データベースから Excel スプレッドシートにデータを移動します。
 
@@ -75,17 +75,17 @@ Excel を Azure SQL Database の単一データベースに接続し、データ
 接続の詳細を永続的に保存するために、.odc ファイルを作成し、この接続を **[既存の接続]** ダイアログ ボックス内で選択可能なオプションにすることができます。 
 
 1. ページ上部のメニュー バーで **[データ]** タブを選択し、**[既存の接続]** を選択して **[既存の接続]** ダイアログ ボックスを開きます。 
-    1. **[Browse for more]**(参照) を選択して **[データ ソースの選択]** ダイアログ ボックスを開きます。   
-    2. **+NewSqlServerConnection.odc** ファイルを選択し、**[開く]** をクリックして **[データ接続ウィザード]** を開きます。
+   1. **[Browse for more]**(参照) を選択して **[データ ソースの選択]** ダイアログ ボックスを開きます。   
+   2. **+NewSqlServerConnection.odc** ファイルを選択し、**[開く]** をクリックして **[データ接続ウィザード]** を開きます。
 
-    ![新しい接続](media/sql-database-connect-excel/new-connection.png)
+      ![新しい接続](media/sql-database-connect-excel/new-connection.png)
 
 2. **[データ接続ウィザード]** で、サーバー名と SQL Database 資格情報を入力します。 **[次へ]** を選択します。 
-    1. データが含まれるデータベースをドロップダウンから選択します。 
-    2. 関心のあるテーブルまたはビューを選択します。 ここでは vGetAllCategories を選択しました。
-    3. **[次へ]** を選択します。 
+   1. データが含まれるデータベースをドロップダウンから選択します。 
+   2. 関心のあるテーブルまたはビューを選択します。 ここでは vGetAllCategories を選択しました。
+   3. **[次へ]** を選択します。 
 
-    ![データ接続ウィザード](media/sql-database-connect-excel/data-connection-wizard.png) 
+      ![データ接続ウィザード](media/sql-database-connect-excel/data-connection-wizard.png) 
 
 3. [データ接続ウィザード] の次の画面で、ファイルの場所、**[ファイル名]**、および **[フレンドリ名]** を選択します。 パスワードをファイルに保存することも選択できますが、これによりデータが望ましくないアクセスにさらされる可能性があります。 準備ができたら **[完了]** を選択します。 
 

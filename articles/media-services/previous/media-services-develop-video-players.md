@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6c57c8ad85ef83e8739bc2bf35b3bd0dc6d5a902
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b8d4ff3e833dcbe92802845796e3b826735b68ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004844"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880689"
 ---
 # <a name="develop-video-player-applications"></a>ビデオ プレーヤー アプリケーションの開発
 ## <a name="overview"></a>概要
@@ -44,10 +44,10 @@ Microsoft Azure Media Services では、DASH、スムーズ ストリーミン�
 ## <a name="other-tools-for-creating-player-applications"></a>プレーヤー アプリケーションを作成するためのその他のツール
 次のような SDK を使用することもできます。
 
-* [Smooth Streaming Client SDK](http://www.iis.net/downloads/microsoft/smooth-streaming) 
+* [Smooth Streaming Client SDK](https://www.iis.net/downloads/microsoft/smooth-streaming) 
 * [スムーズ ストリーミング用 Windows ストア アプリ](media-services-build-smooth-streaming-apps.md)
-* [Microsoft Media Platform: プレーヤー フレームワーク](http://playerframework.codeplex.com/) 
-* [HTML5 プレーヤー フレームワークに関するドキュメント](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
+* [Microsoft Media Platform: プレーヤー フレームワーク](https://playerframework.codeplex.com/) 
+* [HTML5 プレーヤー フレームワークに関するドキュメント](https://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 * [OSMF 用 Microsoft Smooth Streaming Plugin](https://www.microsoft.com/download/details.aspx?id=36057) 
 * [Licensing Microsoft® Smooth Streaming Client Porting Kit](https://aka.ms/sspk) 
 * [Xbox ビデオ アプリケーションの開発](https://xbox.create.msdn.com/) 

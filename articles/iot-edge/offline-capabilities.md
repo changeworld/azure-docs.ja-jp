@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7bf672715b45233807ab848c78aeb1bed2d352e9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e82c842ec8fce703c48c98eaf09ea5c8d91be9be
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699348"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307991"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する (プレビュー)
 
@@ -73,7 +73,7 @@ IoT Edge デバイスによってその拡張オフライン機能を子 IoT デ
 
 ```json
 {
-    "dns": [“1.1.1.1”]
+    "dns": ["1.1.1.1"]
 }
 ```
 
@@ -136,7 +136,7 @@ IoT Edge ハブ モジュールの環境変数および作成オプションは�
 
 `<HostStoragePath>` と `<ModuleStoragePath>` は、ご利用のホストとモジュールのストレージ パスに置き換えます。ホストとモジュールの両方のストレージ パスは絶対パスである必要があります。 作成オプションでは、ホストとモジュールのストレージ パスをバインドします。 次に、モジュールのストレージ パスを指す環境変数を作成します。  
 
-たとえば、`"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` は、ご利用のホスト システム上のディレクトリ **/etc/iotedge/storage** がコンテナー上のディレクトリ **/iotedge/storage/** にマップされていることを意味します。 または Windows システムにおける別の例として、`"Binds":["C:\\temp:C:\\contemp]"` は、ご利用のホスト システム上のディレクトリ **C:\\temp** がコンテナー上のディレクトリ **C:\\contemp** にマップされていることを意味します。 
+たとえば、`"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` は、ご利用のホスト システム上のディレクトリ **/etc/iotedge/storage** がコンテナー上のディレクトリ **/iotedge/storage/** にマップされていることを意味します。 または Windows システムにおける別の例として、`"Binds":["C:\\temp:C:\\contemp"]` は、ご利用のホスト システム上のディレクトリ **C:\\temp** がコンテナー上のディレクトリ **C:\\contemp** にマップされていることを意味します。 
 
 作成オプションの詳細については、[Docker ドキュメント](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)でも確認できます。
 

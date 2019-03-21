@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5fb263819a5bb96175f636f53a16c28649a3f39
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: b006a4fbb8d1059f5096f5c1585853953b69042f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339551"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082145"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -94,18 +94,18 @@ ms.locfileid: "56339551"
 中断中の危険な状態を理解することは、リスクを軽減するのに役立ち、計画プロセスの重要な一部です。 コンティンジェンシー計画を作成するには、まず、組織での次のビジネス要件を決定します。
 
 1. 事前にミッション クリティカルなアプリを決定します。低いリスク/セキュリティ体制であっても、アクセス権を付与する必要があるアプリは何ですか。 そのようなアプリの一覧を作成し、すべてのアクセス制御が失われた場合であってもそれらのアプリの実行を継続する必要があることを、他の利害関係者 (ビジネス、セキュリティ、法律、リーダーシップ) が全員同意していることを確認します。 最終的に以下のカテゴリになる可能性があります。
-  * **カテゴリ 1: ミッション クリティカルなアプリ**: 数分より長く使用不可能になることはできません。たとえば、組織の収益に直接影響するアプリなどです。
-  * **カテゴリ 2: 重要なアプリ**: 数時間以内にアクセス可能になる必要があります。
-  * **カテゴリ 3: 優先順位の低いアプリ**: 数日間停止しても耐えられます。
+   * **カテゴリ 1: ミッション クリティカルなアプリ**: 数分より長く使用不可能になることはできません。たとえば、組織の収益に直接影響するアプリなどです。
+   * **カテゴリ 2: 重要なアプリ**: 数時間以内にアクセス可能になる必要があります。
+   * **カテゴリ 3: 優先順位の低いアプリ**: 数日間停止しても耐えられます。
 2. カテゴリ 1 と 2 のアプリについては、許可するアクセス レベルの種類を事前に計画することをお勧めします。
-  * フル アクセスまたは制限されたセッション (ダウンロードの制限など) を許可しますか。
-  * アプリ全体へのアクセスは許可せず、アプリの一部へのアクセスを許可しますか。
-  * アクセス制御が復元されるまで、情報ワーカーのアクセスを許可し、管理者のアクセスをブロックしますか。
+   * フル アクセスまたは制限されたセッション (ダウンロードの制限など) を許可しますか。
+   * アプリ全体へのアクセスは許可せず、アプリの一部へのアクセスを許可しますか。
+   * アクセス制御が復元されるまで、情報ワーカーのアクセスを許可し、管理者のアクセスをブロックしますか。
 3. このようなアプリについては、意図的に開くアクセス手段と閉じるアクセス手段を計画することもお勧めします。
-  * ブラウザーのみのアクセスは許可し、オフライン データを保存できるリッチ クライアントはブロックしますか。
-  * 企業ネットワーク内のユーザーに対してのみアクセスを許可し、外部のユーザーはブロックしますか。
-  * 中断中は、特定の国または地域からのアクセスのみを許可しますか。
-  * 代わりのアクセス制御を使用できない場合に、コンティンジェンシー ポリシーに対するポリシーを失敗または成功させますか (特にミッション クリティカルなアプの場合)。
+   * ブラウザーのみのアクセスは許可し、オフライン データを保存できるリッチ クライアントはブロックしますか。
+   * 企業ネットワーク内のユーザーに対してのみアクセスを許可し、外部のユーザーはブロックしますか。
+   * 中断中は、特定の国または地域からのアクセスのみを許可しますか。
+   * 代わりのアクセス制御を使用できない場合に、コンティンジェンシー ポリシーに対するポリシーを失敗または成功させますか (特にミッション クリティカルなアプの場合)。
 
 #### <a name="microsoft-recommendations"></a>Microsoft の推奨事項
 
@@ -251,7 +251,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 組織でユーザーごとの MFA レガシ ポリシーを使用している場合は、次の代替手段を検討します。
 
 1. 企業ネットワークに送信 IP アドレスがある場合は、それを信頼できる IP として追加し、企業ネットワークに対してのみ認証を有効にできます。
- 2. 送信 IP アドレスのインベントリがない場合、または企業ネットワークの内部と外部でアクセスを有効にする必要があった場合は、0.0.0.0/1 と 128.0.0.0/1 を指定することにより、IPv4 アドレス空間全体を信頼できる IP アドレスとして追加できます。
+   1. 送信 IP アドレスのインベントリがない場合、または企業ネットワークの内部と外部でアクセスを有効にする必要があった場合は、0.0.0.0/1 と 128.0.0.0/1 を指定することにより、IPv4 アドレス空間全体を信頼できる IP アドレスとして追加できます。
 
 >[!IMPORTANT]
  > アクセスのブロックを解除するために信頼できる IP アドレスの範囲を広げた場合、IP アドレスに関連するリスク イベント (たとえば、あり得ない移動や未知の場所) は生成されなくなります。
@@ -264,9 +264,9 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 * [Azure AD Authentication のドキュメント](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Azure AD で緊急アクセス用管理者アカウントを管理する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [Azure Active Directory で名前付きの場所を構成する](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
- * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Windows Hello for Business の展開ガイド](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
- * [パスワードのガイダンス - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
+  * [パスワードのガイダンス - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Azure Active Directory 条件付きアクセスの条件の概要](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Azure Active Directory 条件付きアクセスによるアクセス制御の概要](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

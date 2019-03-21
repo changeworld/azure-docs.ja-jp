@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: aaaec6e02c9280801fbf7e3b5a8eaa1ae4a1ff43
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3d4c1029315e754410f31b13042d1d6acb105da1
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429771"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309691"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Event Hubs への Azure アクティビティ ログのストリーミング
 [Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)は、以下のいずれかを実行することで、あらゆるアプリケーションでほぼリアルタイムにストリームできます。
@@ -58,21 +58,24 @@ Event Hubs 名前空間が存在しない場合は、最初に作成する必要
 6. 複数のサブスクリプションがある場合は、この操作を繰り返して、すべてのデータを同じイベント ハブに送信します。
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell コマンドレットの使用
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ログ プロファイルが既に存在する場合は、最初に既存のログ プロファイルを削除してから、新しいログ プロファイルを作成する必要があります。
 
-1. `Get-AzureRmLogProfile` を使用して、ログ プロファイルが存在するかどうかを確認します。  ログ プロファイルが存在する場合は、*name* プロパティを探します。
-2. `Remove-AzureRmLogProfile` を使用し、*name* プロパティの値を使用してログ プロファイルを削除します。
+1. `Get-AzLogProfile` を使用して、ログ プロファイルが存在するかどうかを確認します。  ログ プロファイルが存在する場合は、*name* プロパティを探します。
+2. `Remove-AzLogProfile` を使用し、*name* プロパティの値を使用してログ プロファイルを削除します。
 
     ```powershell
     # For example, if the log profile name is 'default'
-    Remove-AzureRmLogProfile -Name "default"
+    Remove-AzLogProfile -Name "default"
     ```
-3. `Add-AzureRmLogProfile` を使用して、新しいログ プロファイルを作成します。
+3. `Add-AzLogProfile` を使用して、新しいログ プロファイルを作成します。
 
    ```powershell
    # Settings needed for the new log profile
    $logProfileName = "default"
-   $locations = (Get-AzureRmLocation).Location
+   $locations = (Get-AzLocation).Location
    $locations += "global"
    $subscriptionId = "<your Azure subscription Id>"
    $resourceGroupName = "<resource group name your event hub belongs to>"
@@ -81,7 +84,7 @@ Event Hubs 名前空間が存在しない場合は、最初に作成する必要
    # Build the service bus rule Id from the settings above
    $serviceBusRuleId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventHubNamespace/authorizationrules/RootManageSharedAccessKey"
 
-   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
+   Add-AzLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
 
 ### <a name="via-azure-cli"></a>Azure CLI の使用

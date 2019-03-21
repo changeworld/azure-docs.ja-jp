@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d71489194422a785ee98ec70a07c765c3d686808
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 20d7218b9b1d53b3cfb72a12ee34a77956327ce2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182614"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093196"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform-preview"></a>クイック スタート:Microsoft ID プラットフォームに登録されたアプリケーションを削除する (プレビュー)
 
@@ -52,8 +52,8 @@ ms.locfileid: "56182614"
 4. **[概要]** ページで **[削除]** を選択します。
 5. アプリの削除を確認する画面で **[はい]** を選択します。
 
-  > [!NOTE]
-  > アプリケーションを削除するには、アプリケーションの所有者の一覧に含まれているか、管理者特権を持っている必要があります。
+   > [!NOTE]
+   > アプリケーションを削除するには、アプリケーションの所有者の一覧に含まれているか、管理者特権を持っている必要があります。
 
 ## <a name="remove-an-application-authored-by-another-organization"></a>他の組織が作成したアプリケーションを削除する
 

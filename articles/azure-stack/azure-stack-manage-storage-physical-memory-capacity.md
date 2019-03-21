@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 4a9c7221fbb549494e3ed112e2ab4e66c4b7dadd
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: cb5b64869a26133e1c08095a816c2d2854f85b94
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770637"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103504"
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>Azure Stack の物理メモリ容量を管理する
 
@@ -39,11 +39,11 @@ Azure Stack に関して使用可能な総メモリ容量を増やすために�
 ## <a name="add-memory-to-an-existing-node"></a>既存のノードへのメモリの増設
 次の手順は、メモリの増設プロセスの概要を示しています。 
 
-> [!Warning]  
-OEM 提供のマニュアルを参照せずにこれらの手順を実行しないでください。
-
-> [!Warning]  
-スケール ユニット全体をシャットダウンしてください。メモリのローリング アップグレードはサポートされません。
+> [!Warning]
+> OEM 提供のマニュアルを参照せずにこれらの手順を実行しないでください。
+> 
+> [!Warning]
+> スケール ユニット全体をシャットダウンしてください。メモリのローリング アップグレードはサポートされません。
 
 1. 「[Azure Stack の開始および停止](azure-stack-start-and-stop.md)」の記事に記載の手順に従って Azure Stack を停止します。
 2. ハードウェア製造元のドキュメントを参照して、各物理コンピューターのメモリをアップグレードします。

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fd2feb8bbd54e7aefab357b0b2ba4209aa29e09
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 4c3c936a3d547389de3681b4f82f329c4978742d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418442"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886623"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Azure Automation で Runbook を開始する
 
@@ -22,7 +22,7 @@ ms.locfileid: "56418442"
 
 | **メソッド** | **特性** |
 | --- | --- |
-| [Azure Portal](#starting-a-runbook-with-the-azure-portal) |<li>対話型ユーザー インターフェイスを使用する最も簡単な方法です。<br> <li>単純なパラメーター値を提供するフォームです。<br> <li>ジョブの状態を簡単に追跡できます。<br> <li>Azure のサインインで認証されたアクセスです。 |
+| [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>対話型ユーザー インターフェイスを使用する最も簡単な方法です。<br> <li>単純なパラメーター値を提供するフォームです。<br> <li>ジョブの状態を簡単に追跡できます。<br> <li>Azure のサインインで認証されたアクセスです。 |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Windows PowerShell コマンドレットを使用してコマンドラインから呼び出します。<br> <li>複数のステップで自動化されたソリューションに含めることができます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルで要求が認証されます。<br> <li>単純および複雑なパラメーター値を提供します。<br> <li>ジョブの状態を追跡できます。<br> <li>PowerShell コマンドレットをサポートするために必要なクライアントです。 |
 | [Azure Automation API](/rest/api/automation/) |<li>最も柔軟性の高い方法ですが、最も複雑でもあります。<br> <li>HTTP 要求を発行することが可能なあらゆるカスタム コードから呼び出せます。<br> <li>証明書または OAuth ユーザー プリンシパル/サービス プリンシパルでの認証を要求します。<br> <li>単純および複雑なパラメーター値を提供します。 *API を使用して Python Runbook を呼び出している場合は、JSON ペイロードをシリアル化する必要があります。*<br> <li>ジョブの状態を追跡できます。 |
 | [Webhook](automation-webhooks.md) |<li>1 つの HTTP 要求で Runbook を開始します。<br> <li>URL のセキュリティ トークンを使用して認証します。<br> <li>クライアントは Webhook の作成時に指定されたパラメーター値をオーバーライドできません。 Runbook は、HTTP 要求の詳細が含まれる 1 つのパラメーターを定義できます。<br> <li>Webhook URL でジョブの状態を追跡することはできません。 |

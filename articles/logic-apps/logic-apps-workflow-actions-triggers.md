@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: a7a34c703b9c6589679cf2035785c005f13f06cb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 066c8bc3edfc2bf36b4d96f787d6db6f16daec9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822818"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856826"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類に関するリファレンス
 
@@ -2594,7 +2594,7 @@ Azure Active Directory を使用する[基本認証](../active-directory-b2c/act
    "type": "Http",
    "inputs": {
       "method": "GET",
-      "uri": "http://www.microsoft.com",
+      "uri": "https://www.microsoft.com",
       "authentication": {
          "type": "Basic",
          "username": "@parameters('userNameParam')",
@@ -2628,7 +2628,7 @@ Azure Active Directory を使用する[証明書ベース認証](../active-direc
    "type": "Http",
    "inputs": {
       "method": "GET",
-      "uri": "http://www.microsoft.com",
+      "uri": "https://www.microsoft.com",
       "authentication": {
          "type": "ClientCertificate",
          "pfx": "@parameters('pfxParam')",
@@ -2668,7 +2668,7 @@ Azure Active Directory を使用する[証明書ベース認証](../active-direc
    "type": "Http",
    "inputs": {
       "method": "GET",
-      "uri": "http://www.microsoft.com",
+      "uri": "https://www.microsoft.com",
       "authentication": {
          "type": "ActiveDirectoryOAuth",
          "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",

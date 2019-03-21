@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: c4f32113c0750b825f217330f94b45484dc3be29
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ad6fd4a75ca139c4943ca0d079a2d041ccb46d09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313468"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101093"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータを読み込む
 
@@ -77,12 +77,12 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
     
 4. **[Amazon S3 接続の指定]** ページで、次の手順を実行します。
 
-    1. **[アクセス キー ID]** の値を指定します。
-    2. **[シークレット アクセス キー]** の値を指定します。
-    3. **[テスト接続]** をクリックして設定を検証し、**[完了]** を選択します。
-    4. 新しい接続が作成されたことを確認します。 **[次へ]** を選択します。
+   1. **[アクセス キー ID]** の値を指定します。
+   2. **[シークレット アクセス キー]** の値を指定します。
+   3. **[テスト接続]** をクリックして設定を検証し、**[完了]** を選択します。
+   4. 新しい接続が作成されたことを確認します。 **[次へ]** を選択します。
    
-    ![Amazon S3 アカウントの指定](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
+      ![Amazon S3 アカウントの指定](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       
 5. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、コピーするフォルダーとファイルを参照します。 フォルダーまたはファイルを選択し、**[選択]** を選択します。
 

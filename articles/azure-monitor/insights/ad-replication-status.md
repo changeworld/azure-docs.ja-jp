@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 3b7aa932d24b7879ee3f46419afa2327ee48b403
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 100d33bbd888d00ed33a38680df5a777e12fd63e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000996"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120807"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Azure Monitor で Active Directory のレプリケーション状態を監視する
 
@@ -45,8 +45,8 @@ AD レプリケーションの状態ソリューション パックは、レプ�
 
    > [!NOTE]
    > こうした変更は、Microsoft Monitoring Agent サービス (HealthService.exe) を再起動するまで反映されません。
-### <a name="install-solution"></a>ソリューションをインストールする
-「[監視ソリューションをインストールする](solutions.md#install-a-monitoring-solution)」で説明されている手順に従って、**Active Directory Replication Status** ソリューションをお使いの Log Analytics ワークスペースに追加します。 さらに手動で構成する必要はありません。
+   > ### <a name="install-solution"></a>ソリューションをインストールする
+   > 「[監視ソリューションをインストールする](solutions.md#install-a-monitoring-solution)」で説明されている手順に従って、**Active Directory Replication Status** ソリューションをお使いの Log Analytics ワークスペースに追加します。 さらに手動で構成する必要はありません。
 
 
 ## <a name="ad-replication-status-data-collection-details"></a>AD レプリケーションの状態データの収集に関する詳細

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: a5c08536614476de38c7bfde524a12163162bed4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f6ebeb1d9953311ad1cb85d8ab33c83d5e92d687
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339262"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405523"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -37,7 +37,7 @@ ms.locfileid: "56339262"
 | AllocationFailed | クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできません。 後で要求を再試行するか、別の VM サイズを要求します。 | [Linux のプロビジョニングと割り当ての問題](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)、[Windows のプロビジョニングと割り当ての問題](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)、[割り当てエラーのトラブルシューティング](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | 同時実行操作の完了を待ちます。 | |
 | AuthorizationFailed | お客様のアカウントまたはサービス プリンシパルには、デプロイを完了するために十分なアクセス権がありません。 自分のアカウントが属するロールと、デプロイの範囲に対するアクセス権を確認してください。<br><br>必要なリソース プロバイダーが登録されていないと、このエラーを受け取ることがあります。 | [Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)<br><br>[登録を解決する](resource-manager-register-provider-errors.md) |
-| BadRequest | Resource Manager で予期される値と一致しないデプロイ値を送信しました。 トラブルシューティングの方法については、内部ステータス メッセージを確認してください。 | [テンプレート リファレンス](/azure/templates/)と[サポートされている場所](resource-manager-templates-resources.md#location) |
+| BadRequest | Resource Manager で予期される値と一致しないデプロイ値を送信しました。 トラブルシューティングの方法については、内部ステータス メッセージを確認してください。 | [テンプレート リファレンス](/azure/templates/)と[サポートされている場所](resource-group-authoring-templates.md#resource-location) |
 | 競合 | リソースの現在の状態では許可されていない操作を要求しています。 たとえば、ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。 | |
 | DeploymentActive | このリソース グループへの同時実行デプロイが完了するまで待ちます。 | |
 | DeploymentFailed | DeploymentFailed エラーは、そのエラーを解決するために必要な詳細が示されない一般的なエラーです。 エラー コードのエラー詳細で情報を確認してください。 | [エラー コードを見つける](#find-error-code) |
@@ -58,7 +58,7 @@ ms.locfileid: "56339262"
 | InvalidTemplateCircularDependency | 不要な依存関係を削除します。 | [循環依存関係を解決する](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | デプロイ先のリソース グループと同じテナントに自分のアカウントが属しているかどうかを確認してください。 | |
 | LinkedInvalidPropertyId | リソースのリソース ID が正しく解決されていません。 リソース ID に必要なすべての値 (サブスクリプション ID、リソース グループ名、リソースの種類、親リソース名 (必要な場合)、リソース名など) を指定しているかどうかを確認してください。 | |
-| LocationRequired | リソースの場所を指定します。 | [場所を設定する](resource-manager-templates-resources.md#location) |
+| LocationRequired | リソースの場所を指定します。 | [場所を設定する](resource-group-authoring-templates.md#resource-location) |
 | MismatchingResourceSegments | 入れ子になったリソースの名前と種類でセグメント数が正しいことを確認します。 | [リソース セグメントを解決する](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | リソース プロバイダーの登録状態、およびサポートされている場所を確認してください。 | [登録を解決する](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | リソース プロバイダーにサブスクリプションを登録してください。 | [登録を解決する](resource-manager-register-provider-errors.md) |

@@ -9,12 +9,12 @@ ms.subservice: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: c670bf8228662929310c4462d324393827e6b354
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5ca9a0d5dcbf5b2525f547562b5838ded7441a66
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213754"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551907"
 ---
 # <a name="use-the-anomaly-finder-api-with-javascript"></a>Anomaly Finder API と Javascript の使用
 
@@ -51,7 +51,7 @@ ms.locfileid: "55213754"
 <html>
 <head>
     <title>Anomaly Detection Javascript Quick Starts</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 </head>
 <body>
 

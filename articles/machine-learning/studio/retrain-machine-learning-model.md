@@ -5,17 +5,17 @@ description: Azure Machine Learning Studio で新しくトレーニングされ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: b57dd40c8610953563a3d5b8861e144d775b4eb7
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ea73c16687d393cd1e61c4aee83fbf74cc4ae9a7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330513"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108122"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>機械学習モデルの再トレーニングとデプロイ
 
@@ -42,7 +42,7 @@ ms.locfileid: "56330513"
 
     実験を実行した後のワークフローは、次の画像のようになります。
 
-    ![結果のワークフロー](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE04.png)
+    ![結果のワークフロー](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE04.png)
 
     以上の手順で、トレーニング済みのモデルとモデル評価結果を出力する再トレーニング Web サービスとして、トレーニング実験をデプロイしました。
 
@@ -68,7 +68,7 @@ ms.locfileid: "56330513"
 
 次のスクリーン ショットは、Azure Machine Learning Web サービス ポータルの **[使用]** ページです。
 
-![[使用] ページ](media/retrain-existing-arm-web-service/machine-learning-retrain-models-consume-page.png)
+![[使用] ページ](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
 ### <a name="update-the-apikey-declaration"></a>ApiKey 宣言の更新
 
@@ -114,7 +114,7 @@ BES サンプル コードは、ファイルをローカル ドライブ ("C:\te
 
 再トレーニング出力の例を次に示します。
 
-![再トレーニング出力](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE06.png)
+![再トレーニング出力](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
 
 ### <a name="evaluate-the-retraining-results"></a>再トレーニングの結果を評価する
 

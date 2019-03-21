@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 89b18d71e864c198b7efafcff09777da21930b6c
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 8a2ea64d32194ff06378e3227b260c4f10d53175
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733639"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116675"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
@@ -38,7 +38,7 @@ Azure Migrate は、評価対象の VM を自動的に検出するために、VM
 
 テナント環境にデプロイする場合、これを設定する 1 つの方法を以下に示します。
 
-1.  テナントあたり 1 つのユーザーを作成し、[RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) を使用して、特定のテナントに属するすべての VM に読み取り専用のアクセス許可を割り当てます。 次にこれらの資格情報を使用して検出を行います。 RBAC により、対応する vCenter ユーザーが、テナント固有の VM のみにアクセスできるようになります。
+1. テナントあたり 1 つのユーザーを作成し、[RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) を使用して、特定のテナントに属するすべての VM に読み取り専用のアクセス許可を割り当てます。 次にこれらの資格情報を使用して検出を行います。 RBAC により、対応する vCenter ユーザーが、テナント固有の VM のみにアクセスできるようになります。
 2. 次の例でユーザー 1 とユーザー 2 について記載されているように、異なるテナント ユーザーに対して RBAC を設定します。
 
     - **[ユーザー名]** と **[パスワード]** に、コレクターが VM を検出するために使用する読み取り専用の資格情報を指定します。

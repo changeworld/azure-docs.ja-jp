@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 13495107aff24b868a4188c25768868945e70db8
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c22ba0b57ed1161e1f7e2082d2ba21f27b656da1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658217"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121572"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作
 
@@ -45,72 +45,72 @@ AMQP メッセージにマップされている Service Bus のメッセージ�
 
 要求を送信するために管理ノードへのリンクを作成します。  
   
-```  
-requestLink = session.attach(     
-role: SENDER,   
-    target: { address: "<entity address>/$management" },   
-    source: { address: ""<my request link unique address>" }   
-)  
-  
-```  
+```
+requestLink = session.attach(
+role: SENDER,
+    target: { address: "<entity address>/$management" },
+    source: { address: ""<my request link unique address>" }
+)
+
+```
   
 ### <a name="create-link-for-receiving-responses"></a>応答を受信するためのリンクの作成  
 
 管理ノードからの応答を受信するためのリンクを作成します。  
   
-```  
-responseLink = session.attach(    
-role: RECEIVER,   
-    source: { address: "<entity address>/$management" }   
-    target: { address: "<my response link unique address>" }   
-)  
-  
-```  
+```
+responseLink = session.attach(
+role: RECEIVER,
+    source: { address: "<entity address>/$management" }
+    target: { address: "<my response link unique address>" }
+)
+
+```
   
 ### <a name="transfer-a-request-message"></a>要求メッセージの転送  
 
 要求メッセージを転送します。  
 トランザクションをサポートする操作の場合は、必要に応じてトランザクション状態を追加することができます。
 
-```  
-requestLink.sendTransfer(  
-        Message(  
-                properties: {  
-                        message-id: <request id>,  
-                        reply-to: "<my response link unique address>"  
-                },  
-                application-properties: {  
-                        "operation" -> "<operation>",  
+```
+requestLink.sendTransfer(
+        Message(
+                properties: {
+                        message-id: <request id>,
+                        reply-to: "<my response link unique address>"
+                },
+                application-properties: {
+                        "operation" -> "<operation>",
                 }
         ),
         [Optional] State = transactional-state: {
                 txn-id: <txn-id>
         }
 )
-```  
+```
   
 ### <a name="receive-a-response-message"></a>応答メッセージの受信  
 
 応答リンクから応答メッセージを受信します。  
   
-```  
-responseMessage = responseLink.receiveTransfer()  
-```  
+```
+responseMessage = responseLink.receiveTransfer()
+```
   
 応答メッセージは次の形式になります。
   
-```  
-Message(  
-properties: {     
-        correlation-id: <request id>  
-    },  
-    application-properties: {  
-            "statusCode" -> <status code>,  
-            "statusDescription" -> <status description>,  
-           },         
-)  
-  
-```  
+```
+Message(
+properties: {
+        correlation-id: <request id>
+    },
+    application-properties: {
+            "statusCode" -> <status code>,
+            "statusDescription" -> <status description>,
+           },
+)
+
+```
   
 ### <a name="service-bus-entity-address"></a>Service Bus エンティティのアドレス  
 
@@ -607,7 +607,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 `com.microsoft:correlation-filter:list` は以下の内容が含まれる、配列の記述です。
 
 |インデックス (存在する場合)|値の型|値の内容|  
-|---------|----------------|--------------|--------------------|  
+|---------|----------------|--------------|
 | 0 | 文字列 | 関連付け ID |
 | 1 | 文字列 | メッセージ ID |
 | 2 | 文字列 | ターゲット |

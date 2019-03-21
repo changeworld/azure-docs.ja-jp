@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 246ee5f8360869c1b0f901ee54d56e017ac8aeb7
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 36815010c3e8fccc2ec24ce344071d0836da219b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649681"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097459"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 
@@ -221,7 +221,7 @@ Visual Studio では、テンプレートの編集時に使用できるプロパ
 
 1. WebsiteSqlDeploy.json ファイルを開き、ストレージ アカウント リソースの後、resources セクションの右角かっこ `]` の前に、次の JSON を追加します。
 
-  ```json
+   ```json
     ,{
       "properties": {
         "lenses": {
@@ -296,7 +296,7 @@ Visual Studio では、テンプレートの編集時に使用できるプロパ
         "hidden-title": "[concat('OPS-',resourceGroup().name)]"
       }
     }
-  ```
+   ```
 
 2. リソース グループを再デプロイします。 Azure portal でダッシュボードを見て、共有ダッシュボードが選択肢の一覧に追加されたことを確認します。
 

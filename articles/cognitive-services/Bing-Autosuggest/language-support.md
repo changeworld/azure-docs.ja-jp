@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 94a887e06af1963b16d244103de407493d4c8eb7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857109"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011009"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Bing Autosuggest API の言語と地域のサポート
 

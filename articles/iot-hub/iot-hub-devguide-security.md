@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub セキュリティについて | Microsoft Docs
 description: 開発者ガイド - デバイス アプリとバックエンド アプリの IoT Hub へのアクセスを制御する方法。 X.509 証明書のセキュリティ トークンおよびサポートに関する情報が含まれています。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: f347c9ca3d56bedcc838d72ca15793bd13ee19ad
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563934"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534367"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -74,7 +74,7 @@ MQTT、AMQP、および HTTPS など、サポートされているプロトコ�
 
 MQTT を使用する場合、CONNECT パケットでは、ClientId、ユーザー名フィールドの `{iothubhostname}/{deviceId}`、およびパスワード フィールドの SAS トークンとして、deviceId が使用されます。 `{iothubhostname}` は IoT Hub の完全な CName とする必要があります (contoso.azure-devices.net など)。
 
-[AMQP](https://www.amqp.org/) を使用する場合、IoT Hub では [SASL PLAIN](http://tools.ietf.org/html/rfc4616) と [AMQP Claims-Based-Security](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) がサポートされます。
+[AMQP](https://www.amqp.org/) を使用する場合、IoT Hub では [SASL PLAIN](https://tools.ietf.org/html/rfc4616) と [AMQP Claims-Based-Security](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) がサポートされます。
 
 AMQP Claims-Based-Security の場合、標準でこれらのトークンの送信方法が指定されます。
 

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 5ce99e06ea1a8e72a8767367ddfd7bbb845c8400
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 3abe0511200bf5828b485b15a4b8a512731c4ffa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318425"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082128"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 
@@ -42,18 +42,18 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 ## <a name="create-a-new-dashboard"></a>新しいダッシュボードを作成する
 単一のダッシュボードには、複数のアプリケーション、リソース グループ、サブスクリプションからのリソースを含めることができます。  お使いのアプリケーションの新しいダッシュボードを作成して、チュートリアルを開始します。  
 
-2.  ダッシュボード ウィンドウで、**[新しいダッシュボード]** を選択します。
+1. ダッシュボード ウィンドウで、**[新しいダッシュボード]** を選択します。
 
-    ![新しいダッシュボード](media/tutorial-app-dashboards/1newdashboard.png)
+   ![新しいダッシュボード](media/tutorial-app-dashboards/1newdashboard.png)
 
-3. ダッシュボードの名前を入力します。
-4. ダッシュボードに追加できるさまざまなタイルを**タイル ギャラリー**で確認します。  ギャラリーからタイルを追加するだけでなく、グラフおよびその他のビューを、Application Insights からダッシュボードに直接ピン留めできます。
-5. **マークダウン** タイルを見つけて、ダッシュボードにドラッグします。  このタイルには、お使いのダッシュボードへのわかりやすいテキストの追加に最適な、マークダウン記法のテキストを追加できます。
-6. タイルのプロパティにテキストを追加し、ダッシュボード キャンバス上でサイズを変更します。
+1. ダッシュボードの名前を入力します。
+1. ダッシュボードに追加できるさまざまなタイルを**タイル ギャラリー**で確認します。  ギャラリーからタイルを追加するだけでなく、グラフおよびその他のビューを、Application Insights からダッシュボードに直接ピン留めできます。
+1. **マークダウン** タイルを見つけて、ダッシュボードにドラッグします。  このタイルには、お使いのダッシュボードへのわかりやすいテキストの追加に最適な、マークダウン記法のテキストを追加できます。
+1. タイルのプロパティにテキストを追加し、ダッシュボード キャンバス上でサイズを変更します。
     
     ![マークダウン タイルを編集する](media/tutorial-app-dashboards/2dashboard-text.png)
 
-6. 画面上部にある **[カスタマイズ完了]** をクリックして、タイルのカスタマイズ モードを終了します。
+1. 画面上部にある **[カスタマイズ完了]** をクリックして、タイルのカスタマイズ モードを終了します。
 
 ## <a name="add-health-overview"></a>正常性の概要を追加する
 静的テキストだけのダッシュボードでは味気ないため、ここで Application Insights からタイルを追加して、お使いのアプリケーションの情報を表示させましょう。  Application Insights タイルはタイル ギャラリーから追加するか、Application Insights 画面から直接ピン留めできます。  これにより、既に使い慣れているグラフやビューを、ご自分のダッシュボードにピン留めする前に構成できます。  まず、お使いのアプリケーションの標準的な正常性の概要を追加します。  これには構成が不要で、ダッシュボードのカスタマイズを最小限に抑えられます。

@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61739d381d5c668b5f1a9467b10398d173601b33
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cf496e448cbc11b9e986ca3b58c956c4cd18a34e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178534"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113454"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題
 
@@ -62,13 +62,13 @@ Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンター�
 
 監査ログでユーザーが "スキップ" されていると表示される場合、ログ メッセージで詳細を確認して原因を判断することが非常に重要です。 一般的な原因と解決策を次に示します。
 
--   **属性値に基づいてユーザーをフィルター処理する** **スコープ フィルターが構成されています**。 スコープ フィルターの詳細については、「<https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>」を参照してください。
+- **属性値に基づいてユーザーをフィルター処理する** **スコープ フィルターが構成されています**。 スコープ フィルターの詳細については、「<https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>」を参照してください。
 
--   **ユーザーが "実質的に有効でない" 状態です**。 この特定のエラー メッセージが表示された場合、その原因は、Azure AD に格納されているユーザー割り当てレコードの問題です。 この問題を解決するには、ユーザー (またはグループ) の割り当てをアプリから解除し、再割り当てを行います。 割り当ての詳細については、<https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal> を参照してください。
+- **ユーザーが "実質的に有効でない" 状態です**。 この特定のエラー メッセージが表示された場合、その原因は、Azure AD に格納されているユーザー割り当てレコードの問題です。 この問題を解決するには、ユーザー (またはグループ) の割り当てをアプリから解除し、再割り当てを行います。 割り当ての詳細については、<https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal> を参照してください。
 
--   **必須の属性が見つからないか、ユーザー用に設定されていません**。 プロビジョニングを設定するときの重要な考慮事項の 1 つは、属性マッピングとワークフローを確認し、構成することです。これらは、どのユーザー (またはグループ) のプロパティが Azure AD からアプリケーションに適用されるかを定義します。 これには、2 つのシステム間でユーザーまたはグループを一意に識別して照合するために使用される "照合プロパティ" の設定も含まれます。 この重要なプロセスの詳細については、「<https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>」を参照してください。
+- **必須の属性が見つからないか、ユーザー用に設定されていません**。 プロビジョニングを設定するときの重要な考慮事項の 1 つは、属性マッピングとワークフローを確認し、構成することです。これらは、どのユーザー (またはグループ) のプロパティが Azure AD からアプリケーションに適用されるかを定義します。 これには、2 つのシステム間でユーザーまたはグループを一意に識別して照合するために使用される "照合プロパティ" の設定も含まれます。 この重要なプロセスの詳細については、「<https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>」を参照してください。
 
-   * **グループの属性マッピング:** 一部のアプリケーションでサポートされている場合は、メンバーだけでなくグループの名前と詳細もプロビジョニングします。 **[プロビジョニング]** タブに表示されるグループ オブジェクトの **[マッピング]** を有効化/無効化して、この機能を有効または無効にします。グループのプロビジョニングが有効になっている場合は、適切なフィールドが "照合 ID" に使用されていることを確かめるために、属性マッピングを必ず確認してください。 照合プロパティが空か、Azure AD のグループ用に設定されていない場合は、グループとそのメンバーがプロビジョニングされないので、これが表示名または電子メール エイリアスとなる場合があります。
+  * **グループの属性マッピング:** 一部のアプリケーションでサポートされている場合は、メンバーだけでなくグループの名前と詳細もプロビジョニングします。 **[プロビジョニング]** タブに表示されるグループ オブジェクトの **[マッピング]** を有効化/無効化して、この機能を有効または無効にします。グループのプロビジョニングが有効になっている場合は、適切なフィールドが "照合 ID" に使用されていることを確かめるために、属性マッピングを必ず確認してください。 照合プロパティが空か、Azure AD のグループ用に設定されていない場合は、グループとそのメンバーがプロビジョニングされないので、これが表示名または電子メール エイリアスとなる場合があります。
 
 ## <a name="next-steps"></a>次の手順
 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)

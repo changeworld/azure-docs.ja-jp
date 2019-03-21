@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 3f55b3b099cc22fda2bebf0dcb8d3e9c1a580f02
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 410727022b092e2dd8ab8b05e628e25fd60ab833
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099696"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102528"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Active Directory ID を使用して Azure Search の結果をトリミングするためのセキュリティ フィルター
 
@@ -22,13 +22,13 @@ ms.locfileid: "56099696"
 
 この記事に含まれるタスクは次のとおりです。
 > [!div class="checklist"]
-- AAD グループとユーザーを作成します
-- 作成したユーザーとグループを関連付けます
-- 新しいグループをキャッシュします
-- 関連付けられているグループでドキュメントのインデックスを作成します
-- グループ識別子フィルターでの検索要求を発行します
-
->[!NOTE]
+> - AAD グループとユーザーを作成します
+> - 作成したユーザーとグループを関連付けます
+> - 新しいグループをキャッシュします
+> - 関連付けられているグループでドキュメントのインデックスを作成します
+> - グループ識別子フィルターでの検索要求を発行します
+> 
+> [!NOTE]
 > この記事のサンプル コード スニペットは、C# で書かれています。 [GitHub](https://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 
 
 ## <a name="prerequisites"></a>前提条件

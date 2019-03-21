@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 588faa3c59c4e6b3ea704d953c20c4319ef4b01e
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: d1aa3e3a23acf82af8435cbb075fac38353500e5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312125"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538733"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-javascript"></a>クイック スタート:REST API と JavaScript を使用して画像内の顔を検出する
 
@@ -35,7 +35,7 @@ ms.locfileid: "56312125"
 <html>
     <head>
         <title>Detect Faces Sample</title>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     </head>
     <body></body>
 </html>

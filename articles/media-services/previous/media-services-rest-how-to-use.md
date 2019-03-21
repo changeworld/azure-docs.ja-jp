@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: e0011d36ccff7b9d621679f15776bbdb15d0cbe4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 549554521570d1d2f27b2da2b36ca1dfde25562f
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005456"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293616"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -35,7 +35,7 @@ Media Services REST API への認証は、Azure Active Directory 認証で実行
 REST を使用するときには、次の考慮事項が適用されます。
 
 * パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 [この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 
-* JSON を使用し、要求で **__metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)に設定する必要があります (次の例を参照)。 verbose に設定していない場合、Odata は要求内の **__metadata** プロパティを認識しません。  
+* JSON を使用し、要求で **__metadata** キーワードの使用を指定した場合 (リンクされたオブジェクトを参照する場合など)、**Accept** ヘッダーを [JSON Verbose 形式](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)に設定する必要があります (次の例を参照)。 verbose に設定していない場合、Odata は要求内の **__metadata** プロパティを認識しません。  
   
         POST https://media.windows.net/API/Jobs HTTP/1.1
         Content-Type: application/json;odata=verbose

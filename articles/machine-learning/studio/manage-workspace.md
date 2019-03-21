@@ -5,17 +5,17 @@ description: Azure Machine Learning Studio ワークスペースへのアクセ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: f792c2b23c8d36225b4c05cf7a334721bd08272a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: a947f9a94dd4ceed624e6b04a671b21b8926d25e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269027"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080745"
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>Azure Machine Learning Studio ワークスペースの管理
 

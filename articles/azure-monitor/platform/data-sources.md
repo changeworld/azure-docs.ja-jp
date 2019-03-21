@@ -5,19 +5,19 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: monitoring
+ms.service: azure-monitor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 5896083c9159c30e6b66009f43073391eec936ed
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4ae8ae43d8c245270b64611bed0ac4930aa0ecc3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003702"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763429"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Azure Monitor で使用するデータのソース
 この記事では、リソースとそれらで実行されているアプリケーションの正常性とパフォーマンスを監視するために Azure Monitor によって収集されるデータのソースについて説明します。 これらのリソースは、Azure、別のクラウド、またはオンプレミスに存在する可能性があります。  このデータが保存されるしくみと、データを表示する方法の詳細については、[Azure Monitor によって収集されるデータ](data-collection.md)に関する記事をご覧ください。

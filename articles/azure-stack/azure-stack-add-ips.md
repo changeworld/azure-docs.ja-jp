@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/28/2019
 ms.author: jeffgilb
 ms.reviewer: scottnap
-ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: ed2205455c4d3c82554f3d552bacc059fffa68e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: 09805719262f0a1d30f3b38af4b5209667d25e5a
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174658"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195372"
 ---
 # <a name="add-public-ip-addresses"></a>Public IP Addresses を追加する
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*  
@@ -53,11 +53,6 @@ Azure Stack に新しい Public IP Addresses ブロックを追加するプロ�
 8.   CIDR 表記で追加するアドレス ブロックを入力します。  例: 192.168.203.0/24
 9.  [アドレス範囲 (CIDR ブロック)] フィールドに有効な CIDR 範囲を指定すると、[開始 IP アドレス]、[終了 IP アドレス] および [利用可能な IP アドレス] の各フィールドが自動的に設定されます。  これらは読み取り専用で、自動的に生成されるため、[アドレス範囲] フィールドで値を変更せずにこれらを変更することはできません。
 10. ブレード上の情報を確認し、すべて正しいことがわかったら、[OK] をクリックして変更をコミットし、アドレス範囲を Azure Stack に追加します。
-
-## <a name="update-the-acls-on-your-top-of-rack-switches"></a>Top-of-Rack スイッチの ACL を更新する
-最後に、新しく追加されたアドレス IP 範囲を有効にして動作させるために、Top-of-Rack (ToR) スイッチのアクセス制御リスト (ACL) を更新する必要があります。  ToR スイッチの ACL に新しい範囲が追加されるまで、新しく追加された IP 範囲への Azure Stack 外からの接続が動作しないように、ToR スイッチの ACL はロックダウンされます。  
-
-OEM に連絡し、協力して ToR スイッチの ACL を更新する必要があります。  サポートされている方法でこれを行うために必要なツールが用意されています。
 
 
 ## <a name="next-steps"></a>次の手順 

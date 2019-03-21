@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e49cffc5ba08d400c733ef7c211132c4909f9ef4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 32962e6d40103c23a0ec7fd1116aec8820f513bd
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343563"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780288"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
@@ -87,32 +87,32 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
       - ポリシー ルール/条件。この例では、VM SKU サイズが G シリーズと同じサイズです。
       - ポリシーの効果。この例では、**Deny** です。
 
-    JSON の作成例は次のとおりです。 変更後のコードを Azure Portal に貼り付けます。
+   JSON の作成例は次のとおりです。 変更後のコードを Azure Portal に貼り付けます。
 
-    ```json
-    {
-        "policyRule": {
-            "if": {
-                "allOf": [{
-                        "field": "type",
-                        "equals": "Microsoft.Compute/virtualMachines"
-                    },
-                    {
-                        "field": "Microsoft.Compute/virtualMachines/sku.name",
-                        "like": "Standard_G*"
-                    }
-                ]
-            },
-            "then": {
-                "effect": "deny"
-            }
-        }
-    }
-    ```
+   ```json
+   {
+       "policyRule": {
+           "if": {
+               "allOf": [{
+                       "field": "type",
+                       "equals": "Microsoft.Compute/virtualMachines"
+                   },
+                   {
+                       "field": "Microsoft.Compute/virtualMachines/sku.name",
+                       "like": "Standard_G*"
+                   }
+               ]
+           },
+           "then": {
+               "effect": "deny"
+           }
+       }
+   }
+   ```
 
-    ポリシー ルールの *field* プロパティは、Name、Type、Location、Tags、エイリアスのいずれかの値であることが必要です。 `"Microsoft.Compute/VirtualMachines/Size"` はエイリアスの 1 つの例です。
+   ポリシー ルールの *field* プロパティは、Name、Type、Location、Tags、エイリアスのいずれかの値であることが必要です。 `"Microsoft.Compute/VirtualMachines/Size"` はエイリアスの 1 つの例です。
 
-    Azure ポリシーの他のサンプルについては、「[Azure Policy のサンプル](../samples/index.md)」をご覧ください。
+   Azure ポリシーの他のサンプルについては、「[Azure Policy のサンプル](../samples/index.md)」をご覧ください。
 
 1. **[保存]** を選択します。
 

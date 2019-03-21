@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako;johndeu;anilmur
-ms.openlocfilehash: 7358f259d4c38157a203369e9eadae28710f4290
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fb24c856138bb9e59d9cb3ea07c9182454e6463a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993709"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080203"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>ワークフロー デザイナーを使用して高度なエンコード ワークフローを作成する  
 ## <a name="overview"></a>概要
@@ -37,8 +37,6 @@ ms.locfileid: "55993709"
 
 > [!NOTE]
 > ワークフロー デザイナー ツールのコピーを取得するには、mepd@microsoft.com にお問い合わせください。
-> 
-> 
 
 作成されたワークフロー ファイルはアセットとしてアップロードした後、メディア ファイルのエンコードに使用できます。 **.NET** を使用した**メディア エンコーダー プレミアム ワークフロー**によるエンコード方法の詳細については、「[メディア エンコーダー プレミアム ワークフローでの高度なエンコード](media-services-encode-with-premium-workflow.md)」を参照してください。
 

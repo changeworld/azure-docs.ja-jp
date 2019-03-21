@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 8f5d98ff591cb456cbbcb3d28a63f39ab3729152
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 47f3c4bdf21d751cd3804c6a854e7f8706b0815a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308517"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767959"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-cli"></a>Azure CLI を使用して最初の Resource Graph クエリを実行します
 
@@ -70,8 +70,8 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
    az graph query -q 'project name, type | limit 5 | order by name asc'
    ```
 
-  > [!NOTE]
-  > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 これによりクエリの結果をまず制限し、それからそれらを注文します。
+   > [!NOTE]
+   > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 これによりクエリの結果をまず制限し、それからそれらを注文します。
 
 1. 最初に**名前**プロパティで並べ替え (`order by`) を行ってから結果を上位 5 件に制限 (`limit`) するようにクエリを更新します。
 

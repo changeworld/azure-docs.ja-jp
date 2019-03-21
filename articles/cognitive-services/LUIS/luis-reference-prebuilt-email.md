@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 51e6a5da0d757023bd7cd1f61c77387a77b77de4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4a48bb4a6e988d4352f957c6435a9c1bf0a3e5fb
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869046"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340118"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの email 作成済みエンティティ
 email の抽出には、発話からのメール アドレス全体が含まれます。 このエンティティは既にトレーニングされているので、メールを含む発話の例をアプリケーション意図に追加する必要はありません。 email エンティティは、`en-us` カルチャでのみサポートされます。 
@@ -42,7 +42,10 @@ email の抽出には、発話からのメール アドレス全体が含まれ�
       "entity": "patti.owens@microsoft.com",
       "type": "builtin.email",
       "startIndex": 31,
-      "endIndex": 55
+      "endIndex": 55,
+      "resolution": {
+        "value": "patti.owens@microsoft.com"
+      }
     }
   ]
 }

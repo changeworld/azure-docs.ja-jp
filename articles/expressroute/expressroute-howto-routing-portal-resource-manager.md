@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 0cc0068f9e1d836800aa77b3057815962581d47b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 401827f3fa5eb6d364d0f133d8cd672cf8968031
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243370"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103181"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute 回線のピアリングの作成と変更を行う
 
@@ -57,37 +57,37 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Microsoft ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
 
-  ![Microsoft ピアリングを一覧表示する](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   ![Microsoft ピアリングを一覧表示する](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. 回路の Microsoft ピアリングを構成する 続行する前に、次の情報を確認してください。
 
-  * プライマリ リンク用の /30 サブネット。 これは、自分が所有しており、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
-  * セカンダリ リンク用の /30 サブネット。 これは、自分が所有しており、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
-  * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。 プライマリとセカンダリの両方のリンクに対し、同じ VLAN ID を使用する必要があります。
-  * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
-  * アドバタイズするプレフィックス:BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する場合は、コンマ区切りのリストを送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
-  * **省略可能 -** 顧客 ASN:ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスが登録されている AS 数を指定できます。
-  * ルーティング レジストリ名:AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
-  * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
+   * プライマリ リンク用の /30 サブネット。 これは、自分が所有しており、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
+   * セカンダリ リンク用の /30 サブネット。 これは、自分が所有しており、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
+   * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。 プライマリとセカンダリの両方のリンクに対し、同じ VLAN ID を使用する必要があります。
+   * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
+   * アドバタイズするプレフィックス:BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する場合は、コンマ区切りのリストを送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
+   * **省略可能 -** 顧客 ASN:ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスが登録されている AS 数を指定できます。
+   * ルーティング レジストリ名:AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
+   * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
 3. 次の例のように、構成するピアリングを選ぶことができます。 Microsoft ピアリング行を選択します。
 
-  ![Microsoft ピアリング行を選択する](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft1.png)
+   ![Microsoft ピアリング行を選択する](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft1.png)
 4. Microsoft ピアリングを構成します。 次の図は構成例です。
 
-  ![Microsoft ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
+   ![Microsoft ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft2.png)
 5. すべてのパラメーターを指定したら、構成を保存します。
 
-  回線が検証が必要な状態になった場合 (次の図を参照)、サポート チケットを開き、プレフィックスの所有権を示す証拠をサポート チームに示してください。
+   回線が検証が必要な状態になった場合 (次の図を参照)、サポート チケットを開き、プレフィックスの所有権を示す証拠をサポート チームに示してください。
 
-  ![Microsoft ピアリング構成を保存する](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
+   ![Microsoft ピアリング構成を保存する](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft5.png)
 
-  次の例のように、ポータルから直接サポート チケットを開くことができます。
+   次の例のように、ポータルから直接サポート チケットを開くことができます。
 
-  ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
+   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft6.png)
 
 
 1. 構成が正常に受け付けられると、次のような画面が表示されます。
 
-  ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
+   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
 
 ### <a name="getmsft"></a>Microsoft ピアリングの詳細を表示するには
 
@@ -115,23 +115,23 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
 
-  ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. 回線用に Azure プライベート ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
 
-  * プライマリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
-  * セカンダリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
-  * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。 プライマリとセカンダリの両方のリンクに対し、同じ VLAN ID を使用する必要があります。
-  * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。 このピアリングではプライベート AS 番号を使用できます (ただし、65515 ～ 65520 までの番号を除きます)。
-  * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
+   * プライマリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
+   * セカンダリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
+   * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。 プライマリとセカンダリの両方のリンクに対し、同じ VLAN ID を使用する必要があります。
+   * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。 このピアリングではプライベート AS 番号を使用できます (ただし、65515 ～ 65520 までの番号を除きます)。
+   * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
 3. 次の例で示すように、Azure プライベート ピアリング行を選択します。
 
-  ![プライベート](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
+   ![プライベート](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
 4. プライベート ピアリングを構成します。 次の図は構成例です。
 
-  ![プライベート ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
+   ![プライベート ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
 5. すべてのパラメーターを指定したら、構成を保存します。 構成が正常に受け付けられると、次のような画面が表示されます。
 
-  ![プライベート ピアリングを保存する](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
+   ![プライベート ピアリングを保存する](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
 
 ### <a name="getprivate"></a>Azure プライベート ピアリングの詳細を表示するには
 
@@ -164,23 +164,23 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure パブリック ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
 
-  ![パブリック ピアリングを一覧表示する](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+   ![パブリック ピアリングを一覧表示する](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. 回線用に Azure パブリック ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
 
-  * プライマリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。 
-  * セカンダリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
-  * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。 プライマリとセカンダリの両方のリンクに対し、同じ VLAN ID を使用する必要があります。
-  * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
-  * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
+   * プライマリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。 
+   * セカンダリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
+   * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。 プライマリとセカンダリの両方のリンクに対し、同じ VLAN ID を使用する必要があります。
+   * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
+   * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
 3. 次の図ように、Azure パブリック ピアリング行を選びます。
 
-  ![パブリック ピアリング行を選ぶ](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
+   ![パブリック ピアリング行を選ぶ](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
 4. パブリック ピアリングを構成します。 次の図は構成例です。
 
-  ![パブリック ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
+   ![パブリック ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
 5. すべてのパラメーターを指定したら、構成を保存します。 構成が正常に受け付けられると、次のような画面が表示されます。
 
-  ![パブリック ピアリングの構成を保存する](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
+   ![パブリック ピアリングの構成を保存する](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
 
 ### <a name="getpublic"></a>Azure パブリック ピアリングの詳細を表示するには
 

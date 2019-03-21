@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2006b025c4bcf54ee2ab131e0d6a105f9f4e9f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fa740a558015b28e6d3fa7245c9041dc4167f832
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178177"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110360"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>チュートリアル:BlueJeans を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -107,9 +107,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションの **[管理ユーザー名]** と **[管理パスワード]** に、BlueJeans アカウントの情報を入力します。 これらの値の例を次に示します。
 
-    *   **[管理ユーザー名]** フィールドに、BlueJeans テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
+   * **[管理ユーザー名]** フィールドに、BlueJeans テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
 
-    *   **[管理パスワード]** フィールドに、管理ユーザー名に対応するパスワードを入力します。
+   * **[管理パスワード]** フィールドに、管理ユーザー名に対応するパスワードを入力します。
 
 6. 手順 5 のフィールドに入力したら、**[テスト接続]** をクリックして Azure AD が BlueJeans に接続できることを確認します。 接続できない場合は、使用中の BlueJeans アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9361c8b17d1b43b4ef63aca6ab4660571efddcde
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a40619000998d7222781094db2829aabcc6a7fb2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492790"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100770"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする
 
@@ -68,13 +68,13 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 1. ファイルを開くには、**[開く]** を選択します。  
     このテンプレートには、次の 5 つのリソースが定義されています。
 
-    * **Microsoft.Storage/storageAccounts**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
-    * **Microsoft.Network/publicIPAddresses**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
-    * **Microsoft.Network/virtualNetworks**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
-    * **Microsoft.Network/networkInterfaces**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
-    * **Microsoft.Compute/virtualMachines**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
+   * **Microsoft.Storage/storageAccounts**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
+   * **Microsoft.Network/publicIPAddresses**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
+   * **Microsoft.Network/virtualNetworks**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
+   * **Microsoft.Network/networkInterfaces**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
+   * **Microsoft.Compute/virtualMachines**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
 
-    カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
+     カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
 
 1. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを *azuredeploy.json* という名前でローカル コンピューターに保存します。
 
@@ -108,14 +108,14 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 このリソース定義の詳細については、[拡張機能のリファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions)を参照してください。 以下にいくつかの重要な要素を示します。
 
-* **name**:拡張機能リソースが仮想マシン オブジェクトの子リソースであるため、名前には仮想マシン名のプレフィックスが含まれている必要があります。 「[子リソース](./resource-manager-templates-resources.md#child-resources)」を参照してください。
+* **name**:拡張機能リソースが仮想マシン オブジェクトの子リソースであるため、名前には仮想マシン名のプレフィックスが含まれている必要があります。 「[子リソース](./resource-group-authoring-templates.md#child-resources)」を参照してください。
 * **dependsOn**:仮想マシンの作成後に拡張機能リソースを作成します。
 * **fileUris**: スクリプト ファイルが格納される場所です。 提供された場所を使用しない場合は、値を更新する必要があります。
 * **commandToExecute**: このコマンドによってスクリプトが呼び出されます。  
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-デプロイ手順については、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)」の「テンプレートのデプロイ」セクションを参照してください。 生成されたパスワードを仮想マシンの管理者アカウントに対して使用することが推奨されます。 この記事の「[前提条件](#prerequisites)」セクションを参照してください。
+デプロイ手順については、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)」で使用されたものと同じテンプレートです。 生成されたパスワードを仮想マシンの管理者アカウントに対して使用することが推奨されます。 この記事の「[前提条件](#prerequisites)」セクションを参照してください。
 
 ## <a name="verify-the-deployment"></a>デプロイを検証する
 

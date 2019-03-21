@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 93046fa8225d8c85172d113d3c7f9e979c336770
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: f28ea3dd2837a241c538057bd118409d4f5b858a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331437"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096267"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(非推奨) Docker Swarm と Azure DevOps Services を使用して、Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
 
@@ -204,14 +204,14 @@ Azure DevOps Services を使用すると、[複数の環境のリリースを管
 
     マスターで実行されるコマンドでは、Docker CLI と Docker-Compose CLI を使用して、次のタスクを実行します。
 
-    - Azure コンテナー レジストリにログインします (**[変数]** タブで定義されている 3 つのビルド変数を使用します)。
-    - Swarm エンドポイント (:2375) を使用するよう **DOCKER_HOST** 変数を定義します。
-    - 前の安全なコピー タスクによって作成された、docker-compose.yml ファイルを含む *deploy* フォルダーに移動します。 
-    - 新しいイメージの取得、サービスの停止、サービスの削除、コンテナーの作成を行う `docker-compose` コマンドを実行します。
+   - Azure コンテナー レジストリにログインします (**[変数]** タブで定義されている 3 つのビルド変数を使用します)。
+   - Swarm エンドポイント (:2375) を使用するよう **DOCKER_HOST** 変数を定義します。
+   - 前の安全なコピー タスクによって作成された、docker-compose.yml ファイルを含む *deploy* フォルダーに移動します。 
+   - 新しいイメージの取得、サービスの停止、サービスの削除、コンテナーの作成を行う `docker-compose` コマンドを実行します。
 
-    >[!IMPORTANT]
-    > 前の画面に示すように、**[STDERR でのエラー]** チェック ボックスをオフのままにします。 `docker-compose` では標準エラー出力でいくつかの診断メッセージ (コンテナーが停止中や削除中など) が出力されるため、これは重要な設定です。 このチェック ボックスをオンにすると、すべてうまくいった場合でも、Azure DevOps Services からリリース中にエラーが発生したと報告されます。
-    >
+     >[!IMPORTANT]
+     > 前の画面に示すように、**[STDERR でのエラー]** チェック ボックスをオフのままにします。 `docker-compose` では標準エラー出力でいくつかの診断メッセージ (コンテナーが停止中や削除中など) が出力されるため、これは重要な設定です。 このチェック ボックスをオンにすると、すべてうまくいった場合でも、Azure DevOps Services からリリース中にエラーが発生したと報告されます。
+     >
 1. この新しいリリース パイプラインを保存します。
 
 

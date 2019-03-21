@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pbutlerm
-ms.openlocfilehash: f13d49fde7f0e40f6dcb026fcb20cb11c028c64b
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: fd51a9f70d60219a9429ff66d6f1d404391f6fb0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100885"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446711"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure Marketplace と AppSource Marketplace のオファー
 
@@ -41,7 +41,7 @@ ms.locfileid: "56100885"
 
 ## <a name="test-drive"></a>体験版
 
-"*体験版*" は、顧客に各オファーを "購入する前に試してみる" デモ オプションを提供するマーケットプレース機能です。  体験版の機能は、オファーの種類の次のようなサブセットに限定されています。[Azure アプリケーション](./azure-applications/cpp-azure-app-offer.md)、[Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md)、[Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md)、[Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md)、[SaaS アプリケーション](./saas-app/cpp-saas-offer.md)、および[仮想マシン](./virtual-machine/cpp-virtual-machine-offer.md)。  この機能を提供するには、発行元はオファー用にカスタマイズされた体験版テンプレートを作成する必要があります。  詳しくは、「[体験版とは](../cloud-partner-portal-orig/what-is-test-drive.md)」セクションをご覧ください。
+"*体験版*" は、顧客に各オファーを "購入する前に試してみる" デモ オプションを提供するマーケットプレース機能です。  体験版の機能は、オファーの種類の次のようなサブセットに限定されています。[Azure アプリケーション](./azure-applications/cpp-azure-app-offer.md)、[Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md)、[Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md)、[Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md)、[SaaS アプリケーション](./saas-app/cpp-saas-offer.md)、および[仮想マシン](./virtual-machine/cpp-virtual-machine-offer.md)。  この機能を提供するには、発行元はオファー用にカスタマイズされた体験版テンプレートを作成する必要があります。  詳しくは、「[体験版とは](./test-drive/what-is-test-drive.md)」セクションをご覧ください。
 
 [体験版フィルター](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive)を適用することにより、体験版のデモがある既存のマーケットプレース オファーを参照できます。 
 

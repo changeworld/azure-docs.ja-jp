@@ -15,12 +15,12 @@ ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 44cf5b2cc7547a4e85c65215fdc1e4fe2cb585a9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 81f06e0f5d5201b902504d8275f356f9a1731065
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243642"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098901"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Marketplace アイテムを作成および発行する
 
@@ -69,19 +69,19 @@ ms.locfileid: "55243642"
 
 10. **My Marketplace Items** を Marketplace アイテムを表示するカテゴリの一覧に置き換えます。
 
-   ```json
-   "categories":[
-   "My Marketplace Items"
-   ],
-   ```
+    ```json
+    "categories":[
+    "My Marketplace Items"
+    ],
+    ```
 
 11. Manifest.json に対するその他の編集については、「[リファレンス: Marketplace アイテム manifest.json](#reference-marketplace-item-manifestjson)」を参照してください。
 
 12. フォルダーを .azpkg ファイルにパッケージ化するには、コマンド プロンプトを開き、次のコマンドを実行します。
 
-   ```shell
-   AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
-   ```
+    ```shell
+    AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+    ```
 
     > [!NOTE]
     > 出力パッケージへの完全パスが存在している必要があります。 たとえば、出力パスが C:\MarketPlaceItem\yourpackage.azpkg の場合は、C:\MarketPlaceItem フォルダーが存在する必要があります。
@@ -192,8 +192,8 @@ Azure Stack ポータルで表示される Marketplace アイテムのアイコ�
 
 ### <a name="create-blade"></a>[作成] ブレード
 
-![[作成] ブレード](media/azure-stack-marketplace-item-ui-reference/image1.png)
+![[作成] ブレード](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### <a name="marketplace-item-details-blade"></a>[Marketplace item details (Marketplace アイテムの詳細)] ブレード
 
-![[Marketplace item details (Marketplace アイテムの詳細)] ブレード](media/azure-stack-marketplace-item-ui-reference/image3.png)
+![[Marketplace item details (Marketplace アイテムの詳細)] ブレード](media/azure-stack-create-and-publish-marketplace-item/image3.png)

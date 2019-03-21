@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b81129ada4710eff58d50bf998802e8ac1b2788
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a674748e9e95828436df25222f6daad881e0487
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109139"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Azure Active Directory 向け Atlassian Jira および Confluence 管理ガイド
 
@@ -110,33 +110,33 @@ Jira と Confluence の管理者が、このプラグインを使用して Azure
 
 ![プラグインの構成画面](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-*   **メタデータ URL**:Azure AD からフェデレーション メタデータを取得するための URL です。
+* **メタデータ URL**:Azure AD からフェデレーション メタデータを取得するための URL です。
 
-*   **識別子**:Azure AD が要求のソースを検証するために使用する URL です。 これは、Azure AD の**識別子**要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/ として自動的に派生させます。
+* **識別子**:Azure AD が要求のソースを検証するために使用する URL です。 これは、Azure AD の**識別子**要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/ として自動的に派生させます。
 
-*   **応答 URL**:SAML サインインを開始する ID プロバイダー (IdP) の応答 URL です。 これは、Azure AD の**応答 URL** 要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
+* **応答 URL**:SAML サインインを開始する ID プロバイダー (IdP) の応答 URL です。 これは、Azure AD の**応答 URL** 要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
 
-*   **サインオン URL**:SAML サインインを開始する IdP のサインオン URL です。 これは、Azure AD の**サインオン**要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
+* **サインオン URL**:SAML サインインを開始する IdP のサインオン URL です。 これは、Azure AD の**サインオン**要素にマップされます。 このプラグインはこの URL を https://*<domain:port>*/plugins/servlet/saml/auth として自動的に派生させます。
 
-*   **IdP Entity ID (IdP エンティティ ID)**:IdP が使うエンティティ ID です。 このボックスは、メタデータ URL が解決されると設定されます。
+* **IdP Entity ID (IdP エンティティ ID)**:IdP が使うエンティティ ID です。 このボックスは、メタデータ URL が解決されると設定されます。
 
-*   **ログイン URL**:IdP からのサインイン URL です。 このボックスは、メタデータ URL が解決されると Azure AD から設定されます。
+* **ログイン URL**:IdP からのサインイン URL です。 このボックスは、メタデータ URL が解決されると Azure AD から設定されます。
 
-*   **ログアウト URL**:IdP からのログアウト URL です。 このボックスは、メタデータ URL が解決されると Azure AD から設定されます。
+* **ログアウト URL**:IdP からのログアウト URL です。 このボックスは、メタデータ URL が解決されると Azure AD から設定されます。
 
-*   **X.509 証明書**:IdP の X.509 証明書です。 このボックスは、メタデータ URL が解決されると Azure AD から設定されます。
+* **X.509 証明書**:IdP の X.509 証明書です。 このボックスは、メタデータ URL が解決されると Azure AD から設定されます。
 
-*   **Login Button Name (ログイン ボタン名)**:組織がサインイン ページでユーザーに表示するサインイン ボタンの名前です。
+* **Login Button Name (ログイン ボタン名)**:組織がサインイン ページでユーザーに表示するサインイン ボタンの名前です。
 
-*   **SAML User ID Locations (SAML ユーザー ID の場所)**:SAML の応答で Jira または Confluence のユーザー ID が必要となる場所です。 **NameID** またはカスタム属性名を使用できます。
+* **SAML User ID Locations (SAML ユーザー ID の場所)**:SAML の応答で Jira または Confluence のユーザー ID が必要となる場所です。 **NameID** またはカスタム属性名を使用できます。
 
-*   **属性名**:ユーザー ID が格納されている属性の名前です。
+* **属性名**:ユーザー ID が格納されている属性の名前です。
 
-*   **Enable Home Realm Discovery (ホーム領域の検出を有効にする)**:Active Directory フェデレーション サービス (AD FS) ベースのサインインを使用する場合に選択します。
+* **Enable Home Realm Discovery (ホーム領域の検出を有効にする)**:Active Directory フェデレーション サービス (AD FS) ベースのサインインを使用する場合に選択します。
 
-*   **ドメイン名**:サインインが AD FS ベースの場合のドメイン名です。
+* **ドメイン名**:サインインが AD FS ベースの場合のドメイン名です。
 
-*   **Enable Single Signout (シングル サインアウトを有効にする)**:ユーザーが Jira または Confluence からサインアウトしたときに Azure AD からサインアウトする場合に選択します。
+* **Enable Single Signout (シングル サインアウトを有効にする)**:ユーザーが Jira または Confluence からサインアウトしたときに Azure AD からサインアウトする場合に選択します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

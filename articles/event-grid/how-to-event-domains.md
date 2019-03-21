@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
 ms.date: 01/17/2019
-ms.openlocfilehash: 662e946eee633d12cf517549509281fca4047385
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c49044d8bd96efb7e86cf54509c32033900be305
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470428"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180910"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>イベント ドメインを使用してトピックを管理し、イベントを発行する
 
@@ -24,6 +24,8 @@ ms.locfileid: "54470428"
 * ドメインにイベントを発行する
 
 イベント ドメインについて学習するには、「[Event Grid トピックを管理するためのイベント ドメインについて](event-domains.md)」をご覧ください。
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 ## <a name="install-preview-feature"></a>プレビュー機能のインストール
 
@@ -132,7 +134,7 @@ New-AzureRmEventGridSubscription `
 
 イベントをサブスクライブするテスト エンドポイントが必要な場合は、受信イベントを表示する[ビルド済みの Web アプリ](https://github.com/Azure-Samples/azure-event-grid-viewer)をいつでもデプロイすることができます。 `https://<your-site-name>.azurewebsites.net/api/updates` のテスト Web サイトにイベントを送信できます。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 トピックに設定されているアクセス許可は Azure Active Directory で格納され、明示的に削除する必要があります。 ユーザーにトピックへの書き込みアクセス権限がある場合、イベント サブスクリプションを削除しても、イベント サブスクリプションを作成するためのアクセスは取り消されません。
 

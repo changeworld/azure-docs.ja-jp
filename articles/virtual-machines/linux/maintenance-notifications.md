@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: e07937710dd36c14e7118caf6028a161ad7dc4ee
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 860cb2bee902c6559b7851eb05fa9c5270876fe9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753624"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084727"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Linux 仮想マシンに対する計画メンテナンスの通知の処理
 
@@ -86,12 +86,12 @@ MaintenanceRedeployStatus では、次の値が返されます。
 
 | 値 | 説明   |
 |-------|---------------|
-| IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 ||
-| PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 ||
-| PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 ||
-| MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の始まりです。 ||
-| MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 ||
-| LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 ||
+| IsCustomerInitiatedMaintenanceAllowed | この時点で VM に対してメンテナンスを開始できるかどうかを示します。 |
+| PreMaintenanceWindowStartTime         | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の始まりです。 |
+| PreMaintenanceWindowEndTime           | VM に対してメンテナンスを開始できる場合、メンテナンスのセルフサービス期間の終わりです。 |
+| MaintenanceWindowStartTime            | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の始まりです。 |
+| MaintenanceWindowEndTime              | Azure が VM に対してメンテナンスを開始する、予定メンテナンス期間の終わりです。 |
+| LastOperationResultCode               | VM に対して最後にメンテナンスを試みたときの結果です。 |
 
 
 

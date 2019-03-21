@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: d97171003507ea0d7412c0706f9deea02fe06c0d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 0553bd904cfaabaefce4e6ab3f7fbf5d356922d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418412"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100362"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -214,7 +214,7 @@ C SDK を使用していないが IoT Hub の分散トレースをプレビュ�
 
     ![サンプリング モードを更新する](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
-    ![サンプリング レートを更新する ](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
+    ![サンプリング レートを更新する](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
 
 ### <a name="bulk-update-for-multiple-devices"></a>複数のデバイスの一括更新
 
@@ -269,7 +269,7 @@ Log Analytics で表示されるログの例
 IoT メッセージのフローを可視化するために、アプリケーション マップのサンプル アプリを設定します。 サンプル アプリでは、Azure Function と Event Hub を使用して[アプリケーション マップ](../application-insights/app-insights-app-map.md)に分散トレース ログが送信されます。
 
 > [!div class="button"]
-<a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Github でのサンプルの入手</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Github でのサンプルの入手</a>
 
 次の図は、3 つのルーティング エンドポイントがあるアプリケーション マップの分散トレースを示しています。
 

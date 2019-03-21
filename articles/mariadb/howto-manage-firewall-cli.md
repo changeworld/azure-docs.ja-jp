@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 11/10/2018
-ms.openlocfilehash: a2f0d775f061ab221092c9354d9d04b9241c9430
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f457246b429062625e6542cfdaf00f3526a85209
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543888"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083234"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用すると、管理者は特定の IP アドレスまたは IP アドレス範囲からの Azure Database for MariaDB サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for MariaDB ファイアウォールの概要については、「[Azure Database for MariaDB サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。
@@ -35,10 +35,10 @@ Azure CLI の **az mariadb server firewall-rule** コマンドで、ファイア
 **az login** コマンドを使用して、ご利用の Azure アカウントで Azure CLI に安全に接続します。
 
 1. コマンド ラインから次のコマンドを実行します。
-```azurecli
-az login
-```
-このコマンドにより、次の手順で使用するコードが出力されます。
+   ```azurecli
+   az login
+   ```
+   このコマンドにより、次の手順で使用するコードが出力されます。
 
 2. Web ブラウザーを使用して [https://aka.ms/devicelogin](https://aka.ms/devicelogin) ページを開いた後、コードを入力します。
 

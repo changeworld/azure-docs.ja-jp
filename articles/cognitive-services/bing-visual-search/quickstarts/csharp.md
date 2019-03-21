@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: d4a1ff43f6165e2620bbc3a5fbbf381ca114062e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7961fb05f7ca9c6e6b61330e7dff53f2d5a41001
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884258"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535316"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>クイック スタート:Bing Visual Search REST API と C# を使用して画像に関する分析情報を取得する
 
@@ -25,7 +25,7 @@ ms.locfileid: "55884258"
 
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 * NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。
-* Linux/macOS を使用している場合、このアプリケーションは [Mono](http://www.mono-project.com/) を使用して実行できます。
+* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 

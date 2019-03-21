@@ -11,15 +11,15 @@ ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 00b635853d0dfad73a258ddc8ef9b168559fc5df
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 289d50fc9d71ee5ea8960fd077e91ef6f68027cb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098427"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771312"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>Azure バックエンドを使用して Windows アプリを作成する
 
@@ -37,7 +37,7 @@ UWP アプリの他のすべての Mobile Apps チュートリアルを行う前
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。 このアプリは評価終了後も使用できます。 詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。 このアプリは評価終了後も使用できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 * Windows 10。
 * [Visual Studio Community 2017]。
 * UWP アプリ開発に関する知識。 UWP アプリをビルドするための[セットアップ](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)方法については、[UWP のドキュメント](https://docs.microsoft.com/windows/uwp/)を参照してください。

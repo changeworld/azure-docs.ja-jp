@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.custom: mvc
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: e3ac94c91742f4a90f9ddd8c975d946bb918ac64
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f09ed70647eaa0275020bdac66e0fcf84d2ff00a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244744"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760377"
 ---
 # <a name="tutorial-make-web-and-api-apps-available-to-your-azure-stack-users"></a>チュートリアル: Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにする
 

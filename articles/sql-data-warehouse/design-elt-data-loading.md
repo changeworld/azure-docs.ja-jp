@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: be3843dc8dfbb45ebb981123bf3df4bb741c82d8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 96f6da7e081430768b5a6f8fd874e289b8256271
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466084"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308484"
 ---
 # <a name="designing-a-polybase-data-loading-strategy-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 用の PolyBase データ読み込み戦略をデザインする
 
@@ -40,7 +40,7 @@ SQL Data Warehouse 用に PolyBase ELT を実装する基本的な手順は次�
 
 読み込みのチュートリアルについては、「[PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)」を参照してください。
 
-詳細については、[読み込みパターンに関するブログ](https://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/)をご覧ください。 
+詳細については、[読み込みパターンに関するブログ](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/)をご覧ください。 
 
 
 ## <a name="1-extract-the-source-data-into-text-files"></a>1.ソース データをテキスト ファイルに抽出する

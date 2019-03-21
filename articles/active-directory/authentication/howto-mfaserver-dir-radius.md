@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79104895e91dc2143a0f4a592878ecc5e2df61d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d3d21ff9b56a7fcb33fbdb6bbb82c64ef97abf71
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172826"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085781"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS 認証と Azure Multi-Factor Authentication Server の統合
 
@@ -39,9 +39,9 @@ RADIUS 認証を構成するには、Azure Multi-Factor Authentication Server �
 4. **[追加]** をクリックします。
 5. Azure Multi-Factor Authentication Server に対して認証するアプライアンス/サーバーの IP アドレス、アプリケーション名 (省略可能)、共有シークレットを入力します。
 
-  アプリケーション名はレポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
+   アプリケーション名はレポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 
-  共有シークレットは、Azure Multi-Factor Authentication Server とアプライアンス/サーバーの両方で同じである必要があります。
+   共有シークレットは、Azure Multi-Factor Authentication Server とアプライアンス/サーバーの両方で同じである必要があります。
 
 6. すべてのユーザーを Server にインポート済みであり、多要素認証の対象となる場合は、**[Multi-Factor Authentication のユーザー照合が必要]** チェック ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、または 2 段階認証から除外される場合、ボックスはオフのままにします。
 7. バックアップ手段として、モバイル認証アプリの OATH パスコードを使用する場合は、**[代替の OATH トークンを有効にする]** チェック ボックスをオンにします。

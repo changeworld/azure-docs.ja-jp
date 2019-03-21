@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: b8600ed03140e302c730d44c6410d2020b7c48a3
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 6abae32f5d8781735bc6a50dc888fddacbe8d0b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983185"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105303"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>チュートリアル:Azure portal の Basic ロードバランサーを使用して内部トラフィックの負荷を分散する
 
@@ -185,7 +185,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 1. **[OK]** を選択します。
    
-  ![ロード バランサー規則の追加](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
+   ![ロード バランサー規則の追加](./media/tutorial-load-balancer-basic-internal-portal/5-load-balancing-rules.png)
 
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
 

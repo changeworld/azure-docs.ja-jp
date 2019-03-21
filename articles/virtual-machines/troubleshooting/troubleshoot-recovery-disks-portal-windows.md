@@ -3,7 +3,7 @@ title: Azure Portal でトラブルシューティング用 Windows VM を使用
 description: Azure Portal で OS ディスクを復旧 VM に接続して、Azure の Windows 仮想マシンの問題のトラブルシューティングを行う方法について説明します
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-windows
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/013/2018
+ms.date: 08/13/2018
 ms.author: genli
-ms.openlocfilehash: 2c5fac377dfab4b4c85991dcb8f4e15f4e3cb61a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ec2da7d9f659f32c40f7a2685ab08be4eec27ed5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225939"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780628"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure Portal で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う
 Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure Portal で仮想ハード ディスクを別の Windows VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。

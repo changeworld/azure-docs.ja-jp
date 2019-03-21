@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 2504a6e4ade46e1746443a8ec3e494563a52ae18
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7833b5d6b9b94ddcd4b94d96201ccc85497f2529
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884181"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446930"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure App Configuration ストアの作成
 
@@ -75,8 +75,8 @@ echo "$connstring"
 | command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | アプリ構成ストア リソースを作成します。 |
-| [az appconfig key list](/cli/azure/ext/appconfig/appconfig/key#ext-appconfig-az-appconfig-key-list) | アプリ構成ストアに格納されているキーを一覧表示します。 |
+| [az appconfig create](/cli/azure/ext/appconfig/appconfig) | アプリ構成ストア リソースを作成します。 |
+| [az appconfig key list](/cli/azure/ext/appconfig/appconfig/kv) | アプリ構成ストアに格納されているキーを一覧表示します。 |
 
 ## <a name="next-steps"></a>次の手順
 

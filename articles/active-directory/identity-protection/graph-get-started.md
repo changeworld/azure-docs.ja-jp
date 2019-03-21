@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36a2fc9d1ab364d44bd5dd6e7930e5d8ae3fb78d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7d9935b5605bc09f000a81e7616e807a0e194e12
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204748"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295540"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
 
@@ -86,7 +86,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
    
     c. **[サインオン URL]** ボックスに、「`http://localhost`」と入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
 
 4. **[設定]** ページを開くには、アプリケーションの一覧で、新しく作成したアプリの登録をクリックします。 
 
@@ -145,7 +145,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
     c. **[Save]** をクリックします。
    
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 キーの値をコピーし、安全な場所に貼り付けます。   
+    d. キーの値をコピーし、安全な場所に貼り付けます。   
    
    > [!NOTE]
    > このキーを紛失した場合、このセクションに戻って新しいキーを作成する必要があります。 このキーはだれにも渡さないように注意してください。このキーがあれば、だれでもデータにアクセスすることができます。
@@ -166,7 +166,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
 - grant_type: “**client_credentials**”
 
--  リソース: "**https://graph.microsoft.com**"
+-  resource: `https://graph.microsoft.com`
 
 - client_id: \<クライアント ID\>
 
@@ -246,7 +246,7 @@ https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>
 
 
 
-# <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 
 以上、Microsoft Graph の API を呼び出す基本的な方法を紹介しました。  
 これを応用すれば、思いどおりに ID リスク イベントを照会し、そのデータを活用することができます。

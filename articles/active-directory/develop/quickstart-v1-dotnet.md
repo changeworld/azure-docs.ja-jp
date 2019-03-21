@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b06ceb86e8406657766be1375889fcfe1b4673d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2b55f7e615f2c2edb604d5b9433db6cc48d9f36f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204544"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223395"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>クイック スタート:.NET Desktop (WPF) アプリでユーザーのサインインと Microsoft Graph API の呼び出しを行う
 
@@ -77,9 +77,9 @@ Azure Active Directory (Azure AD) には、保護されたリソースにアク�
 
 1. `DirectorySearcher` プロジェクトで、`app.config` ファイルを開きます。
 1. Azure portal で入力した値が反映されるように、`<appSettings>` セクションの要素の値を置き換えます。 これらの値は、コードで ADAL を使用する際に常に参照されます。
-  * `ida:Tenant` は、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) です。
-  * `ida:ClientId` は、ポータルからコピーしたアプリケーションのクライアント ID である必要があります。
-  * `ida:RedirectUri` は、ポータルに登録したリダイレクト URL です。
+   * `ida:Tenant` は、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) です。
+   * `ida:ClientId` は、ポータルからコピーしたアプリケーションのクライアント ID である必要があります。
+   * `ida:RedirectUri` は、ポータルに登録したリダイレクト URL です。
 
 ## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>手順 3:ADAL を使用して、Azure AD からトークンを取得する
 
@@ -172,7 +172,7 @@ ADAL を使用することの基本的なメリットは、アプリがアクセ
                 MessageBox.Show(ex.Message);
             }
 
-            // If user interaction is required, proceed to main page without singing the user in.
+            // If user interaction is required, proceed to main page without signing the user in.
             return;
         }
 

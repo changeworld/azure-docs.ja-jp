@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
-ms.openlocfilehash: 2d1f5cc4883ce17da76eea815b42833b84031549
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f74ebb4e36f9648b2f78e968877a9ef861888af8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56231826"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58133443"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -97,7 +97,7 @@ OUTPUT @a
 `Submit-AdlJob` コマンドレットと `-Script` パラメーターでスクリプト テキストを送信します。
 
 ```
-$job = Submit-AdlJob -Account $adla -Name "My Job" �Script $script
+$job = Submit-AdlJob -Account $adla -Name "My Job" -Script $script
 ```
 
 別の方法として、`-ScriptPath` パラメーターを使用してスクリプト ファイルを送信することもできます。
@@ -105,7 +105,7 @@ $job = Submit-AdlJob -Account $adla -Name "My Job" �Script $script
 ```
 $filename = "d:\test.usql"
 $script | out-File $filename
-$job = Submit-AdlJob -Account $adla -Name "My Job" �ScriptPath $filename
+$job = Submit-AdlJob -Account $adla -Name "My Job" -ScriptPath $filename
 ```
 
 `Get-AdlJob` でジョブの状態を取得します。 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 2e30f3bb40e23e5b0b1951759bdff3a9f02cc9d5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 01c3e9c82959629dc3e43fb6b0833d4dbb05e0aa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236065"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823010"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -369,7 +369,7 @@ Azure アカウント (Azure Resource Manager モード) にログインする�
 Login-AzAccount
 ```
 
-Azure Resource Manager で Azure PowerShell を使用する方法について詳しく確認するには、[**こちら**](../../azure-resource-manager/powershell-azure-resource-manager.md)をクリックしてください。
+Azure Resource Manager で Azure PowerShell を使用する方法について詳しく確認するには、[**こちら**](../../azure-resource-manager/manage-resources-powershell.md)をクリックしてください。
 
 次を実行して DSCForLinux 拡張機能をデプロイできます。
 

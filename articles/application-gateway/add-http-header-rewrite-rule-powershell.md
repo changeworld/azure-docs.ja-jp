@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 68da63bcad3c670c5e8bda62dda656e29c41f899
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: f3bda2cf680fa1ad17b5cbb3b9ba5911c78a1e4e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692925"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316508"
 ---
 # <a name="rewrite-http-headers-in-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイで HTTP ヘッダーを書き換える
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、Azure PowerShell をローカルで実行する必要があります。 Az モジュール バージョン 1.0.0 以降がインストールされている必要があります。 バージョンを確認するには、`Import-Module Az`、`Get-Module Az` の順に実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
+このチュートリアルでは、Azure PowerShell をローカルで実行する必要があります。 Az モジュール バージョン 1.0.0 以降がインストールされている必要があります。 バージョンを確認するには、`Import-Module Az`、`Get-Module Az` の順に実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

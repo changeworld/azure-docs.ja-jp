@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: a165fac2de89d5510b21b9185d4bc61e730b09ff
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: cc55466dac7344053e0cce3cad5f8161cef5226a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960124"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438127"
 ---
 # <a name="recommended-live-streaming-encoders"></a>おすすめのライブ ストリーミング エンコーダー
 

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: a999553d7ba26daba674534b1656e90ad0de4f5f
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7211ffddf82b38ca27b776ecfd12bca25ebbb0f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243969"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121946"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Azure Portal を使用して Azure Database for PostgreSQL のメトリックのアラートを設定する 
 
@@ -48,7 +48,7 @@ ms.locfileid: "54243969"
    
    ![メトリックを選択する](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
-7. アラート ロジックを構成します。これには、**[条件]**(例: 「より大きい」)、**[しきい値]** (例: 85 パーセント)、**[時間の集計]**、どのくらいの期間メトリック ルールが満たされた後にアラートがトリガーされるかを示す **[期間]** (例: 「直近 30 分」)、**[頻度]** があります。
+7. アラート ロジックを構成します。これには、**[条件]**(例: 「より大きい」)、**[しきい値]** (例: 85 パーセント)、**[時間の集計]**、どのくらいの期間メトリック ルールが満たされた後にアラートがトリガーされるかを示す **[期間]** (例: 「直近 30 分」)、と **[頻度]** があります。
    
    完了したら、**[完了]** を選択します。
 
@@ -60,21 +60,21 @@ ms.locfileid: "54243969"
 
 10. アクションの種類で、**[電子メール/SMS/プッシュ/音声]** を構成します。
     
-   [電子メールの Azure Resource Manager のロール] を選択して、通知を受信するサブスクリプションの所有者、共同作成者、および閲覧者を選択します。
+    [電子メールの Azure Resource Manager のロール] を選択して、通知を受信するサブスクリプションの所有者、共同作成者、および閲覧者を選択します。
    
-   オプションで、アラートが発生したときに呼び出す webhook の有効な URI を **[webhook]** フィールドに入力します。
+    オプションで、アラートが発生したときに呼び出す webhook の有効な URI を **[webhook]** フィールドに入力します。
 
-   完了したら、**[OK]** を選択します。
+    完了したら、**[OK]** を選択します。
 
-   ![アクション グループ](./media/howto-alert-on-metric/10-action-group-type.png)
+    ![アクション グループ](./media/howto-alert-on-metric/10-action-group-type.png)
 
 11. [アラート ルール名]、[説明]、[重大度] を指定します。
 
-   ![アクション グループ](./media/howto-alert-on-metric/11-name-description-severity.png) 
+    ![アクション グループ](./media/howto-alert-on-metric/11-name-description-severity.png) 
 
 12. **[アラート ルールの作成]** を選択して、アラートを作成します。
 
-   数分後にアラートがアクティブになり、前述のようにトリガーされます。
+    数分後にアラートがアクティブになり、前述のようにトリガーされます。
 
 ## <a name="manage-your-alerts"></a>アラートの管理
 アラートを作成したら、それを選択して次のアクションを実行できます。

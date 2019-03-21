@@ -3,16 +3,16 @@ ms.assetid: ''
 title: Azure Key Vault セキュリティ ワールド | Microsoft Docs
 ms.service: key-vault
 ms.topic: conceptual
-author: bryanla
-ms.author: bryanla
+author: msmbaldwin
+ms.author: mbaldwin
 manager: barbkess
 ms.date: 07/03/2017
-ms.openlocfilehash: 3dea506958bbe41f1c387959bb1188696e57043a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 86438ab7ebecc53aa716e72662965276b19f1b96
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107534"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406154"
 ---
 # <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault セキュリティ ワールドと地理的境界
 

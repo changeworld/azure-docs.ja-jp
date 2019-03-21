@@ -15,12 +15,12 @@ ms.date: 07/30/2018
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8b099f845df66dfe8c43bc6f968fd63b30d09d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 198f32b5f3d7572807b6af3e41ccf8085d9cbc0b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186354"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576941"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
 
@@ -260,7 +260,7 @@ Azure Portal で監査ログを確認する方法については、[プロビジ
 
 ただし、動的グループの使用は、Azure AD から SaaS アプリケーションへのエンドツーエンドのユーザー プロビジョニングのパフォーマンス全体に影響することがあります。 動的グループを使用している場合は、これらの注意事項と推奨事項に留意してください。
 
-* SaaS アプリケーションで動的グループのユーザーをプロビジョニングまたはプロビジョニング解除する速度は、動的グループがメンバーシップの変更を評価する速さによって決まります。 動的グループの処理状態を確認する方法の詳細については、「[メンバーシップ ルールの処理状態をチェックする](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule)」を参照してください。
+* SaaS アプリケーションで動的グループのユーザーをプロビジョニングまたはプロビジョニング解除する速度は、動的グループがメンバーシップの変更を評価する速さによって決まります。 動的グループの処理状態を確認する方法の詳細については、「[メンバーシップ ルールの処理状態をチェックする](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)」を参照してください。
 
 * 動的グループを使用しているときに、メンバーシップの喪失はプロビジョニング解除イベントになるので、ユーザープロビジョニングおよびプロビジョニング解除に留意してルールを慎重に考慮する必要があります。
 

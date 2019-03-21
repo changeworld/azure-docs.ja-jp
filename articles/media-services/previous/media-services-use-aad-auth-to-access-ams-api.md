@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: b846e1fe4552c6cec356a7e7828135b0e1fdf315
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fa13ffe450b60bd8c896636911268a98b49bbc0f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994103"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104133"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD 認証を使用した Azure Media Services API へのアクセス  
  
@@ -71,20 +71,20 @@ Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの�
 1. ユーザーに資格情報の入力を求めます。
 2. 次のパラメーターが含まれた Azure AD アクセス トークンを要求します。  
 
-    * Azure AD テナント エンドポイント。
+   * Azure AD テナント エンドポイント。
 
-        テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
-    * Media Services リソース URI。 
+       テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
+   * Media Services リソース URI。 
 
-        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例:https://rest.media.azure.net)。
+       この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例:https://rest.media.azure.net)。
 
-    * Media Services (ネイティブ) アプリケーション クライアント ID。
-    * Media Services (ネイティブ) アプリケーション リダイレクト URI。
-    * REST Media Services のリソース URI。
+   * Media Services (ネイティブ) アプリケーション クライアント ID。
+   * Media Services (ネイティブ) アプリケーション リダイレクト URI。
+   * REST Media Services のリソース URI。
         
-        この URI は REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
+       この URI は REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
 
-    これらのパラメーターの値を取得するには、[Azure Portal を使用した Azure AD 認証設定へのアクセス](media-services-portal-get-started-with-aad.md)に関するページで、ユーザー認証オプションの使用について参照してください。
+     これらのパラメーターの値を取得するには、[Azure Portal を使用した Azure AD 認証設定へのアクセス](media-services-portal-get-started-with-aad.md)に関するページで、ユーザー認証オプションの使用について参照してください。
 
 3. Azure AD アクセス トークンがクライアントに送信されます。
 4. クライアントが、Azure AD アクセス トークンを使用して要求を Azure Media REST API に送信します。
@@ -113,20 +113,20 @@ Azure AD アプリケーションを作成した後、次の設定の値を取�
     
 1. 中間層アプリ (Web API または Web アプリケーション) が、次のパラメーターが含まれた Azure AD アクセス トークンを要求します。  
 
-    * Azure AD テナント エンドポイント。
+   * Azure AD テナント エンドポイント。
 
-        テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
-    * Media Services リソース URI。 
+       テナント情報は、Azure Portal から取得できます。 右上隅のサインインしているユーザーの名前にカーソルを合わせます。
+   * Media Services リソース URI。 
 
-        この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例:https://rest.media.azure.net)。
+       この URI は、同じ Azure 環境 内の Media Services アカウントの URI と同じです (例:https://rest.media.azure.net)。
 
-    * REST Media Services のリソース URI。
+   * REST Media Services のリソース URI。
 
-        この URI は REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
+       この URI は REST API エンドポイントを表します (例: https://test03.restv2.westus.media.azure.net/api/)。
 
-    * Azure AD アプリケーションの値 (クライアント ID と クライアント シークレット)。
+   * Azure AD アプリケーションの値 (クライアント ID と クライアント シークレット)。
     
-    これらのパラメーターの値を取得するには、[Azure Portal を使用した Azure AD 認証設定へのアクセス](media-services-portal-get-started-with-aad.md)に関するページで、サービス プリンシパル認証オプションの使用について参照してください。
+     これらのパラメーターの値を取得するには、[Azure Portal を使用した Azure AD 認証設定へのアクセス](media-services-portal-get-started-with-aad.md)に関するページで、サービス プリンシパル認証オプションの使用について参照してください。
 
 2. Azure AD アクセス トークンが中間層アプリに送信されます。
 4. 中間層アプリが、Azure AD トークンを使用して要求を Azure Media REST API に送信します。

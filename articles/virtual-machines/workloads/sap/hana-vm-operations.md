@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32c326ff7bef98f9d8f4f20664889109d291a6ea
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 74b1ed79e04bcca05dcb5308b844622e4dd413ce
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328845"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410300"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -442,7 +442,7 @@ SAP HANA のスケール アウトの場合と同様に、SAP HANA VM と DT 2.0
 ### <a name="links-to-dt-20-documentation"></a>DT 2.0 ドキュメントへのリンク 
 
 - [SAP HANA Dynamic Tiering のインストールと更新に関するガイド](https://help.sap.com/viewer/88f82e0d010e4da1bc8963f18346f46e/2.0.03/en-US)
-- [SAP HANA Dynamic Tiering のチュートリアルとリソース](https://www.sap.com/developer/topics/hana-dynamic-tiering.html)
+- [SAP HANA Dynamic Tiering のチュートリアルとリソース](https://help.sap.com/viewer/fb9c3779f9d1412b8de6dd0788fa167b/2.0.03/en-US)
 - [SAP HANA Dynamic Tiering の PoC](https://blogs.sap.com/2017/12/08/sap-hana-dynamic-tiering-delivering-on-low-tco-with-impressive-performance/)
 - [SAP HANA 2.0 SPS 02 Dynamic Tiering の拡張](https://blogs.sap.com/2017/07/31/sap-hana-2.0-sps-02-dynamic-tiering-enhancements/)
 

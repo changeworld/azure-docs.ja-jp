@@ -7,18 +7,18 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.assetid: 1f054a4e-6243-4a66-a62a-0031adb750d8
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: d1d2dd689cb389b6adfe1dd534e7c73e17f755f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4082847e1871fc03713471b0c043dddb80f91b0d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989187"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769235"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure Monitor での監視ソリューションのターゲット設定 (プレビュー)
 サブスクリプションに監視ソリューションを追加すると、ソリューションは、既定では Log Analytics ワークスペースに接続されているすべての Windows エージェントと Linux エージェントに自動的にデプロイされます。  ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。  この記事では、**ソリューションのターゲット設定**を使用する方法について説明します。この機能を使用すると、ソリューションにスコープを適用することができます。
@@ -35,7 +35,7 @@ ms.locfileid: "55989187"
 ワークスペースにコンピューター グループが作成されたら、1 つ以上のソリューションに適用できるスコープ構成に、そのグループを追加します。
  
  
- ### <a name="2-create-a-scope-configuration"></a>2.スコープ構成の作成
+### <a name="2-create-a-scope-configuration"></a>2.スコープ構成の作成
  1 つ以上のコンピューター グループが含まれる**スコープ構成**を、1 つ以上のソリューションに適用できます。 
  
  次のプロセスを使用して、スコープ構成を作成します。  
@@ -49,7 +49,7 @@ ms.locfileid: "55989187"
  6. **[OK]** をクリックして、スコープ構成を作成します。 
 
 
- ### <a name="3-apply-the-scope-configuration-to-a-solution"></a>手順 3.ソリューションへのスコープ構成の適用。
+### <a name="3-apply-the-scope-configuration-to-a-solution"></a>手順 3.ソリューションへのスコープ構成の適用。
 作成したスコープ構成は、1 つ以上のソリューションに適用できます。  1 つのスコープ構成を複数のソリューションで使用することはできますが、ソリューションが使用できるスコープ構成は、ソリューションごとに 1 つだけです。
 
 次のプロセスを使用して、スコープ構成を適用します。  

@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 02/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 338907585ade0a33f74ca3e6337f1dd5cf8cc211
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b40cd130039f7d55b69198b4be4af908dedbe8b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820360"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076889"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>クイック スタート:Azure CLI を使用して Service Bus キューを作成する
 
@@ -61,31 +61,31 @@ connectionString=$(az servicebus namespace authorization-rule keys list --resour
 
 名前空間とキューを作成し、必要な資格情報を用意すれば、メッセージを送信および受信する準備が整いました。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters)でコードを調べることができます。
 
-2. 次のコマンドを発行して、[Service Bus の GitHub リポジトリ](https://github.com/Azure/azure-service-bus/)をお使いのコンピューターに複製します。
+1. 次のコマンドを発行して、[Service Bus の GitHub リポジトリ](https://github.com/Azure/azure-service-bus/)をお使いのコンピューターに複製します。
 
    ```bash
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. スラッシュをパスの区切り記号として使用し、サンプル フォルダーに現在のディレクトリを変更します。
+1. スラッシュをパスの区切り記号として使用し、サンプル フォルダーに現在のディレクトリを変更します。
 
    ```bash
    cd azure-service-bus/samples/Java/azure-servicebus/QueuesGettingStarted
    ```
 
-3. 次のコマンドを発行して、アプリケーションをビルドします。
+1. 次のコマンドを発行して、アプリケーションをビルドします。
    
    ```bash
    mvn clean package -DskipTests
    ```
 
-4. プログラムを実行するには、接続文字列を前にコピーした値に置き換えた後、次のコマンドを発行します。
+1. プログラムを実行するには、接続文字列を前にコピーした値に置き換えた後、次のコマンドを発行します。
 
    ```bash
    java -jar ./target/queuesgettingstarted-1.0.0-jar-with-dependencies.jar -c "<SERVICE BUS NAMESPACE CONNECTION STRING>" 
    ```
 
-6. キューに 10 個のメッセージが送信されることを確認します。 メッセージの順序は保証されませんが、メッセージがペイロード データと共に送信され、受信確認されて、受信されるのを確認できます。
+1. キューに 10 個のメッセージが送信されることを確認します。 メッセージの順序は保証されませんが、メッセージがペイロード データと共に送信され、受信確認されて、受信されるのを確認できます。
 
     ```
     Message sending: Id = 0

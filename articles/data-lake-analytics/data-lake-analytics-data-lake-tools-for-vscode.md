@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 5ebd543000c8927f714e5345dfd8eb6033c6301a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5042d89f1cb5e928444e4b3c9a23db7bb1d66585
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820370"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531608"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake Tools for Visual Studio Code の使用
 
@@ -30,7 +30,7 @@ Azure Data Lake Tools for VS Code では、Windows、Linux、および macOS が
 
 MacOS および Linux の場合 :
 - [.NET Core SDK 2.0](https://www.microsoft.com/net/download/core)
-- [Mono 5.2.x](http://www.mono-project.com/download/)
+- [Mono 5.2.x](https://www.mono-project.com/download/)
 
 ## <a name="install-azure-data-lake-tools"></a>Azure Data Lake Tools をインストールする
 
@@ -233,7 +233,7 @@ Data Lake Analytics で U-SQL スクリプトをコンパイルして実行す�
 <b id="sign-in-by-command"> コマンドを使用して Azure に接続する</b>
 
 1.  Ctrl + Shift + P キーを押してコマンド パレットを開きます。 
-2.  「**ADL:Login**」と入力します。 右下にログイン情報が表示されます。
+2.  「**ADL:Login** を選択します。 右下にログイン情報が表示されます。
 
     ![ログイン コマンドを入力しています](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
 

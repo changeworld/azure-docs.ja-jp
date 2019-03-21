@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2a030daa8d9c30add1beb3a2628aa16b2da22dde
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ede7037aabc85739ee47636f1390c15e0b0d1639
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338854"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106323"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる
 
@@ -227,39 +227,39 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
     >[!NOTE] 
     >ディレクトリ管理者の割り当ては多くありません。前のクエリが返す割り当ての数が多すぎる場合は、ディレクトリ スコープ レベルのみで、すべての割り当てに対してクエリを実行し、結果をフィルター処理することもできます。`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-    2. 前の呼び出しは、ロール割り当ての一覧を返します。 スコープが `"/"` で、`roleDefinitionId` が手順 1 で見つかったロール名 ID で終了し、`principalId` がディレクトリ管理者の objectId と一致する、ロール割り当てを検索します。 
+   1. 前の呼び出しは、ロール割り当ての一覧を返します。 スコープが `"/"` で、`roleDefinitionId` が手順 1 で見つかったロール名 ID で終了し、`principalId` がディレクトリ管理者の objectId と一致する、ロール割り当てを検索します。 
     
-    サンプル ロールの割り当て
+      サンプル ロールの割り当て
 
-        ```json
-        {
-          "value": [
-            {
-              "properties": {
-                "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
-                "principalId": "{objectID}",
-                "scope": "/",
-                "createdOn": "2016-08-17T19:21:16.3422480Z",
-                "updatedOn": "2016-08-17T19:21:16.3422480Z",
-                "createdBy": "93ce6722-3638-4222-b582-78b75c5c6d65",
-                "updatedBy": "93ce6722-3638-4222-b582-78b75c5c6d65"
-              },
-              "id": "/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099",
-              "type": "Microsoft.Authorization/roleAssignments",
-              "name": "e7dd75bc-06f6-4e71-9014-ee96a929d099"
-            }
-          ],
-          "nextLink": null
-        }
-        ```
+       ```json
+       {
+         "value": [
+           {
+             "properties": {
+               "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+               "principalId": "{objectID}",
+               "scope": "/",
+               "createdOn": "2016-08-17T19:21:16.3422480Z",
+               "updatedOn": "2016-08-17T19:21:16.3422480Z",
+               "createdBy": "93ce6722-3638-4222-b582-78b75c5c6d65",
+               "updatedBy": "93ce6722-3638-4222-b582-78b75c5c6d65"
+             },
+             "id": "/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099",
+             "type": "Microsoft.Authorization/roleAssignments",
+             "name": "e7dd75bc-06f6-4e71-9014-ee96a929d099"
+           }
+         ],
+         "nextLink": null
+       }
+       ```
         
-    もう一度、`name` パラメーターの ID を保存します (この例では e7dd75bc-06f6-4e71-9014-ee96a929d099)。
+      もう一度、`name` パラメーターの ID を保存します (この例では e7dd75bc-06f6-4e71-9014-ee96a929d099)。
 
-    3. 最後に、ロール割り当て ID を使用して、`elevateAccess` によって追加された割り当てを削除します。
+   1. 最後に、ロール割り当て ID を使用して、`elevateAccess` によって追加された割り当てを削除します。
 
-    ```http
-    DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
-    ```
+      ```http
+      DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
+      ```
 
 ## <a name="next-steps"></a>次の手順
 

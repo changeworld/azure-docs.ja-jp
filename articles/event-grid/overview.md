@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/06/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 01c88b9bc64bc1541e97aff26e41c360acfaf6bd
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 1fa9eaa5f4ba399622e0b8889ab722e4a4e130a0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809974"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770478"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -44,6 +44,7 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 * Service Bus
 * ストレージ BLOB
 * ストレージ汎用 v2 (GPv2)
+* Azure Maps
 
 ## <a name="event-handlers"></a>イベント ハンドラー
 
@@ -87,7 +88,7 @@ Event Grid、Event Hubs、および Service Bus の比較については、「[C
 
 ## <a name="what-can-i-do-with-event-grid"></a>Event Grid でできること
 
-Azure Event Grid は、サーバーレス、操作の自動化、および[統合](http://azure.com/integration)作業を大幅に向上する複数の機能を提供します。 
+Azure Event Grid は、サーバーレス、操作の自動化、および[統合](https://azure.com/integration)作業を大幅に向上する複数の機能を提供します。 
 
 ### <a name="serverless-application-architectures"></a>サーバーレス アプリケーション アーキテクチャ
 

@@ -5,17 +5,17 @@ description: Azure Machine Learning Studio でモデルの再トレーニング�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 4f3ca01ae44900e4d0ce22b79db44d7bfa84e56d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: fa4448c2a44a3c56548120bd04abf53df9a85ba0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456556"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822021"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>従来の Studio Web サービスの再トレーニングとデプロイ
 
@@ -23,7 +23,7 @@ ms.locfileid: "56456556"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、再トレーニング実験と予測実験の両方が既に用意されていることを前提としています。 これらの手順については、[機械学習モデルの再トレーニングとデプロイ](retrain-models-programmatically.md)に関する記事に説明があります。 ただし、機械学習モデルを新しい Web サービスとしてのデプロイするのではなく、予測実験を従来の Web サービスとしてデプロイします。
+この記事では、再トレーニング実験と予測実験の両方が既に用意されていることを前提としています。 これらの手順については、[機械学習モデルの再トレーニングとデプロイ](/azure/machine-learning/studio/retrain-machine-learning-model)に関する記事に説明があります。 ただし、機械学習モデルを新しい Web サービスとしてのデプロイするのではなく、予測実験を従来の Web サービスとしてデプロイします。
      
 ## <a name="add-a-new-endpoint"></a>新しいエンドポイントを追加する
 
@@ -60,7 +60,7 @@ ms.locfileid: "56456556"
 1. [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) サンプル コードを実行します。
 1. AddEndpoint の出力から、 *HelpLocation* 値を見つけ、URL をコピーします。
 
-   ![addEndpoint サンプルの出力での HelpLocation](./media/troubleshooting-retraining-a-model/addEndpoint-output.png)
+   ![addEndpoint サンプルの出力での HelpLocation](./media/retrain-classic/addEndpoint-output.png)
 1. ブラウザーにこの URL を貼り付けて、Web サービスのヘルプ リンクを提供するページに移動します。
 1. **[Update Resource (リソースの更新)]** リンクをクリックしてパッチ適用のヘルプ ページを開きます。
 
@@ -81,7 +81,7 @@ ms.locfileid: "56456556"
 
 PATCH ヘルプ ページには、使用する必要のある PATCH URL が含まれており、これを呼び出すために使用できるサンプル コードが提供されています。
 
-![PATCH URL](./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png)
+![PATCH URL](./media/retrain-classic/ml-help-page-patch-url.png)
 
 ### <a name="update-the-endpoint"></a>エンドポイントを更新する
 
@@ -148,4 +148,4 @@ PATCH ヘルプ ページには、使用する必要のある PATCH URL が含�
 Web サービスの管理または複数の実験の実行の追跡を行う方法については、次の記事を参照してください。
 
 * [Web サービス ポータルを使用する](manage-new-webservice.md)
-* [実験イテレーションを管理する](manage-experiment-iterations.md)
+* [実験イテレーションの管理](manage-experiment-iterations.md)

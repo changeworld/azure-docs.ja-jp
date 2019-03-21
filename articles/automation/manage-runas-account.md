@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e5949016281b5f8ba5d8770403a146e52d279c73
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b3c9f2f8671d5a7aa313a9f49e07230a4f9b6220
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079989"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109343"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -197,6 +197,12 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
         return
     }
 
+    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous two lines to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
+
+    # Import-Module Az.Automation
+    # Enable-AzureRmAlias 
+
+
     Connect-AzureRmAccount -Environment $EnvironmentName 
     $Subscription = Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
@@ -320,13 +326,13 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 3. **実行アカウント**のプロパティ ページで、削除する実行アカウントまたはクラシック実行アカウントを選択します。 次に、選択したアカウントの **[プロパティ]** ウィンドウで **[削除]** をクリックします。
 
- ![Azure 実行アカウントを削除する](media/manage-runas-account/automation-account-delete-runas.png)
+   ![Azure 実行アカウントを削除する](media/manage-runas-account/automation-account-delete-runas.png)
 
 1. アカウントが削除されている間、メニューの **[通知]** で進行状況を追跡できます。
 
 1. 削除したアカウントは、**実行アカウント**のプロパティ ページで再作成できます。このとき、作成オプションとして **[Azure 実行アカウント]** を選択します。
 
- ![Automation 実行アカウントの再作成](media/manage-runas-account/automation-account-create-runas.png)
+   ![Automation 実行アカウントの再作成](media/manage-runas-account/automation-account-create-runas.png)
 
 ## <a name="cert-renewal"></a>自己署名証明書の書き換え
 

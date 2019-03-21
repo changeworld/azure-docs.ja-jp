@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 207d1f7f5eb4db4203f2595a06f943e8ae69881e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e69158a6ee4d8415f52cf458c028cab56f481d8b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432032"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121130"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Monitor アラートによって複雑なアクションをトリガーする方法
 
@@ -275,19 +275,19 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
 - 手順 9 から 10 は同じです。
 - 手順 11 から 14 では、次の手順に従います。
 
-   1. **[+** **新しいステップ]**、**[条件の追加]** の順に選択します。 次の条件を設定して、入力データが下の値と一致する場合にのみロジック アプリが実行されるようにします。 テキスト ボックスにバージョンの値を入力するときに、数値型ではなく文字列として評価されるように引用符で囲みます ("2.0")。  ページに戻ったとき、基になるコードが引き続き文字列型の場合、引用符は表示されません。 
-       - `schemaId == AzureMonitorMetricAlert`
-       - `version == "2.0"`
+  1. **[+** **新しいステップ]**、**[条件の追加]** の順に選択します。 次の条件を設定して、入力データが下の値と一致する場合にのみロジック アプリが実行されるようにします。 テキスト ボックスにバージョンの値を入力するときに、数値型ではなく文字列として評価されるように引用符で囲みます ("2.0")。  ページに戻ったとき、基になるコードが引き続き文字列型の場合、引用符は表示されません。 
+     - `schemaId == AzureMonitorMetricAlert`
+     - `version == "2.0"`
        
        !["メトリック アラートのペイロード条件"](media/action-groups-logic-app/metric-alert-payload-condition.png "メトリック アラートのペイロード条件")
 
-   1. **[true の場合]** 条件で、**For each** ループと Microsoft Teams アクションを追加します。 HTML と動的コンテンツの組み合わせを使用してメッセージを定義します。
+  1. **[true の場合]** 条件で、**For each** ループと Microsoft Teams アクションを追加します。 HTML と動的コンテンツの組み合わせを使用してメッセージを定義します。
 
-       !["メトリック アラートの true 条件の事後アクション"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "メトリック アラートの true 条件の事後アクション")
+      !["メトリック アラートの true 条件の事後アクション"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "メトリック アラートの true 条件の事後アクション")
 
-   1. **[false の場合]** 条件で、メトリック アラートがロジック アプリの期待に一致しないことを知らせる Microsoft Teams アクションを定義します。 JSON ペイロードを含めます。 `json()` 式で `triggerBody` 動的コンテンツを参照する方法に注目してください。
+  1. **[false の場合]** 条件で、メトリック アラートがロジック アプリの期待に一致しないことを知らせる Microsoft Teams アクションを定義します。 JSON ペイロードを含めます。 `json()` 式で `triggerBody` 動的コンテンツを参照する方法に注目してください。
 
-       !["メトリック アラートの false 条件の事後アクション"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "メトリック アラートの false 条件の事後アクション")
+      !["メトリック アラートの false 条件の事後アクション"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "メトリック アラートの false 条件の事後アクション")
 
 - 手順 15 は同じです。 指示に従ってロジック アプリを保存し、アクション グループを更新します
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: 09514e37d1d40c489eda483980237d26e4a08730
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: ec97cf903a37465f98007750fc41edc0952ab3a6
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417924"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889598"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Data Lake Storage Gen2 を使用してビッグ データの要件に対応する
 
@@ -70,9 +70,9 @@ Storage Explorer または AzCopy を使用してファイル システムを作
 |---|--|---|
 |ストレージ エクスプローラー| ユーザーおよびグループにロールを割り当てる | [Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
 |AzCopy| ユーザーおよびグループにロールを割り当てる <br>**or**<br> SAS トークンを使用する| [Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[SAS を簡単に作成して Azure Storage からファイルをダウンロードする – Azure Storage Explorer の使用](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
-|Apache DistCp | ユーザー割り当てマネージド ID にロールを割り当てる | [Data Lake Storage Gen2 を使用する HDInsight クラスターの作成](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2) |
+|Apache DistCp | ユーザー割り当てマネージド ID にロールを割り当てる | [Data Lake Storage Gen2 を使用する HDInsight クラスターの作成](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Data Factory| ユーザー割り当てマネージド ID にロールを割り当てる<br>**or**<br> サービス プリンシパルにロールを割り当てる<br>**or**<br> ストレージ アカウント キーを使用する | [リンクされたサービスのプロパティ](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
-|Azure HDInsight| ユーザー割り当てマネージド ID にロールを割り当てる | [Data Lake Storage Gen2 を使用する HDInsight クラスターの作成](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2)|
+|Azure HDInsight| ユーザー割り当てマネージド ID にロールを割り当てる | [Data Lake Storage Gen2 を使用する HDInsight クラスターの作成](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
 |Azure Databricks| サービス プリンシパルにロールを割り当てる | [方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 特定のファイルやフォルダーへのアクセス権を付与するには、次の記事をご覧ください。

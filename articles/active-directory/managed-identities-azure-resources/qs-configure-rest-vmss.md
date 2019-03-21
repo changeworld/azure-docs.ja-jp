@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d208cab8b39b777fea7809be418613f17751b1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b35470daf8ef037a72516690c75980a6d07e8e29
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170288"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097168"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>REST API 呼び出しを使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -72,7 +72,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Bearer アクセス トークンを取得します。このトークンは、次の手順で、Authorization ヘッダーでシステム割り当てマネージド ID を使用して仮想マシン スケール セットを作成するときに使用します。
+3. Bearer アクセス トークンを取得します。このトークンは、次の手順で、Authorization ヘッダーでシステム割り当てマネージド ID を使用して仮想マシン スケール セットを作成するときに使用します。
 
    ```azurecli-interactive
    az account get-access-token
@@ -81,23 +81,23 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 4. Azure Resource Manager REST エンドポイントを呼び出す CURL を使用して、仮想マシン スケール セットを作成します。 次の例では、値 `"identity":{"type":"SystemAssigned"}` からの要求本文で指定されたシステム割り当てマネージド ID を使用して、*myResourceGroup* 内の *myVMSS* という仮想マシン スケール セットを作成します。 `<ACCESS TOKEN>` は前の手順で Bearer アクセス トークンを要求したときに受け取った値に置き換え、`<SUBSCRIPTION ID>` 値はご利用の環境に合わせて置き換えます。
 
    ```bash   
-  curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
-  ```
+   curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01' -X PUT -d '{"sku":{"tier":"Standard","capacity":3,"name":"Standard_D1_v2"},"location":"eastus","identity":{"type":"SystemAssigned"},"properties":{"overprovision":true,"virtualMachineProfile":{"storageProfile":{"imageReference":{"sku":"2016-Datacenter","publisher":"MicrosoftWindowsServer","version":"latest","offer":"WindowsServer"},"osDisk":{"caching":"ReadWrite","managedDisk":{"storageAccountType":"Standard_LRS"},"createOption":"FromImage"}},"osProfile":{"computerNamePrefix":"myVMSS","adminUsername":"azureuser","adminPassword":"myPassword12"},"networkProfile":{"networkInterfaceConfigurations":[{"name":"myVMSS","properties":{"primary":true,"enableIPForwarding":true,"ipConfigurations":[{"name":"myVMSS","properties":{"subnet":{"id":"/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet"}}}]}}]}},"upgradePolicy":{"mode":"Manual"}}}' -H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
+   ```
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myVMSS?api-version=2018-06-01 HTTP/1.1
    ```
 
-  **要求ヘッダー**
+   **要求ヘッダー**
 
-  |要求ヘッダー  |説明  |
-  |---------|---------|
-  |*Content-Type*     | 必須。 `application/json` を設定します。        |
-  |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
+   |要求ヘッダー  |説明  |
+   |---------|---------|
+   |*Content-Type*     | 必須。 `application/json` を設定します。        |
+   |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
 
-  **要求本文**
+   **要求本文**
 
-  ```JSON
+   ```JSON
     {
        "sku":{
           "tier":"Standard",
@@ -158,7 +158,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
           }
        }
     }  
-  ```  
+   ```  
 
 ### <a name="enable-system-assigned-managed-identity-on-a-existing-virtual-machine-scale-set"></a>既存の仮想マシン スケール セットでシステム割り当てマネージド ID を有効にする
 
@@ -331,7 +331,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Bearer アクセス トークンを取得します。このトークンは、次の手順で、Authorization ヘッダーでシステム割り当てマネージド ID を使用して仮想マシン スケール セットを作成するときに使用します。
+3. Bearer アクセス トークンを取得します。このトークンは、次の手順で、Authorization ヘッダーでシステム割り当てマネージド ID を使用して仮想マシン スケール セットを作成するときに使用します。
 
    ```azurecli-interactive
    az account get-access-token

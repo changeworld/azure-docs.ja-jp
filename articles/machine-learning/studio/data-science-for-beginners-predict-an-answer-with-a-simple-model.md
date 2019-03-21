@@ -5,17 +5,17 @@ description: 初心者向けデータ サイエン ビデオ 4 で、単純な�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/03/2018
-ms.openlocfilehash: 6adcf59053186c961a115164baac1f0af631ff4a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: dfac085727ee86be018cfee1e15c3ee51b221763
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456845"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819873"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>単純なモデルで回答を予測する
 ## <a name="video-4-data-science-for-beginners-series"></a>ビデオ 4:初心者向けデータ サイエンス シリーズ
@@ -128,4 +128,4 @@ Microsoft Azure Machine Learning Studio の "初心者向けデータ サイエ�
 
 ## <a name="next-steps"></a>次の手順
 * [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
-* [Microsoft Azure での Machine Learning の概要を学習する](what-is-machine-learning.md)
+* [Microsoft Azure での Machine Learning の概要を学習する](/azure/machine-learning/preview/overview-what-is-azure-ml)

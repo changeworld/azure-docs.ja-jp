@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 1cf2276ca1995df19cc7068764a31916e4981100
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e3cd9d0036a55a3e6de49988dddcd6a91b81b078
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452696"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088657"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 
@@ -50,60 +50,60 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 2. 各ドライブに 1 つの NTFS ボリュームを作成します。 ボリュームにドライブ文字を割り当てます。 マウントポイントを使用しないでください。
 3. ツールが配置されているルート フォルダーにある *dataset.csv* ファイルを変更します。 インポート対象がファイルとフォルダーのどちらか一方か両方かに応じて、次の例のようなエントリを *dataset.csv* ファイルに追加します。  
 
-    - **ファイルをインポートするには**:次の例では、コピーするデータは C: ドライブにあります。 ファイル *MyFile1.txt* は *MyAzureFileshare1* のルートにコピーされます。 *MyAzureFileshare1* は、存在しない場合、Azure Storage アカウントに作成されます。 フォルダー構造は維持されます。
+   - **ファイルをインポートするには**:次の例では、コピーするデータは C: ドライブにあります。 ファイル *MyFile1.txt* は *MyAzureFileshare1* のルートにコピーされます。 *MyAzureFileshare1* は、存在しない場合、Azure Storage アカウントに作成されます。 フォルダー構造は維持されます。
 
-        ```
-            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
-            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+       ```
+           BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
     
-        ```
-    - **フォルダーをインポートするには**:*MyFolder2* の下にあるすべてのファイルとフォルダーがファイル共有に再帰的にコピーされます。 フォルダー構造は維持されます。
+       ```
+   - **フォルダーをインポートするには**:*MyFolder2* の下にあるすべてのファイルとフォルダーがファイル共有に再帰的にコピーされます。 フォルダー構造は維持されます。
 
-        ```
-            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-            
-        ```
-    インポートするフォルダーまたはファイルに対応する複数のエントリを同じファイル内に作成できます。 
+       ```
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
+            
+       ```
+     インポートするフォルダーまたはファイルに対応する複数のエントリを同じファイル内に作成できます。 
 
-        ```
-            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-                        
-        ```
-    詳しくは、[データセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file)に関する記事をご覧ください。
+       ```
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
+                        
+       ```
+     詳しくは、[データセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file)に関する記事をご覧ください。
     
 
 4. ツールが配置されているルート フォルダーにある *driveset.csv* ファイルを変更します。 次の例のようなエントリを *driveset.csv* ファイルに追加します。 ドライブセット ファイルには、ツールが準備するディスクの一覧を正しく選択できるように、ディスクとそれに対応するドライブ文字の一覧が含まれています。
 
     この例では、2 つのディスクが接続され、ベーシック NTFS ボリューム G:\ と H:\ が作成されていることを前提としています。 H:\ は暗号化されていませんが、G:\ は既に暗号化されています。 このツールでは、(G:\) ではなく) H:\ のみをホストしているディスクをフォーマットし、暗号化します。
 
-    - **暗号化されていないディスクの場合**:*Encrypt* を指定して、ディスクの BitLocker 暗号化を有効にします。
+   - **暗号化されていないディスクの場合**:*Encrypt* を指定して、ディスクの BitLocker 暗号化を有効にします。
 
-        ```
-        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-        H,Format,SilentMode,Encrypt,
-        ```
+       ```
+       DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
+       H,Format,SilentMode,Encrypt,
+       ```
     
-    - **既に暗号化されているディスクの場合**:*AlreadyEncrypted* を指定し、BitLocker キーを指定します。
+   - **既に暗号化されているディスクの場合**:*AlreadyEncrypted* を指定し、BitLocker キーを指定します。
 
-        ```
-        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-        G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
-        ```
+       ```
+       DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
+       G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
+       ```
 
-    複数のドライブに対応する複数のエントリを同じファイル内に作成できます。 詳しくは、[ドライブセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file)に関する記事をご覧ください。 
+     複数のドライブに対応する複数のエントリを同じファイル内に作成できます。 詳しくは、[ドライブセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file)に関する記事をご覧ください。 
 
-5.  `PrepImport` オプションを使用して、ディスク ドライブにデータをコピーして準備します。 最初のコピー セッションで新しいコピー セッションを使用してディレクトリやファイルをコピーするために、次のコマンドを実行します。
+5. `PrepImport` オプションを使用して、ディスク ドライブにデータをコピーして準備します。 最初のコピー セッションで新しいコピー セッションを使用してディレクトリやファイルをコピーするために、次のコマンドを実行します。
 
-        ```
-        .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
-        ```
+       ```
+       .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
+       ```
 
-    インポートの例を以下に示します。
+   インポートの例を以下に示します。
   
-        ```
-        .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
-        ```
+       ```
+       .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
+       ```
  
 6. コマンド行を実行するたびに、`/j:` パラメーターで指定した名前のジャーナル ファイルが作成されます。 準備した各ドライブには、インポート ジョブを作成するときにアップロードする必要があるジャーナル ファイルがあります。 ジャーナル ファイルのないドライブは処理されません。
 

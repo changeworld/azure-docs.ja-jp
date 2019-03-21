@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 78aa65614920d093b6ba0b8fa43614fd7f3c5176
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: a498fb2bc3efcc3a081a0ab854df107135a4e008
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100433"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104694"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Azure アプリケーションの技術アセットを準備する
 
@@ -48,11 +48,11 @@ ms.locfileid: "56100433"
   - [定義ファイルの作成](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
   - [マーケットプレース アプリケーションの発行](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
 
- - サンプル:
+  - サンプル:
 
-   - [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-   - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-   - [マネージド アプリケーション ソリューション](https://docs.microsoft.com/azure/managed-applications/sample-projects)
+    - [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
+    - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
+    - [マネージド アプリケーション ソリューション](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
 ## <a name="fundamental-technical-knowledge"></a>技術的な知識の基礎
 

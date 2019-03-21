@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 2a28409120bac13ea7d288c7fc41f7154c003388
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 53cde81ed5df97c4cb6d8360c9bb639b8bdabe20
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106258"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818138"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
 
@@ -136,5 +136,5 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * [Azure App Service でアプリをバックアップする](manage-backup.md)
 * [Azure Resource Manager による Azure Traffic Manager プレビューのサポート](../traffic-manager/traffic-manager-powershell-arm.md)
 * [App Service 環境の概要](environment/intro.md)
-* [Azure リソース マネージャーでの Azure PowerShell の使用](../azure-resource-manager/powershell-azure-resource-manager.md)
+* [Azure リソース マネージャーでの Azure PowerShell の使用](../azure-resource-manager/manage-resources-powershell.md)
 

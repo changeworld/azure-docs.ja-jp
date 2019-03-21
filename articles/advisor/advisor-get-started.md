@@ -9,12 +9,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: kasparks
-ms.openlocfilehash: aabb316cf564520e6ea5e8689f1c18c98b94ab3c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a7e82fffdd9c865de6040c05ec28bc8bd2dced61
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488477"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111397"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor の使用を開始する
 
@@ -35,7 +35,7 @@ Azure Portal を使用して Advisor にアクセスし、推奨事項を取得�
 
 1. 特定のカテゴリの推奨事項を取得するには、次の各タブのいずれかをクリックします。**[高可用性]**、**[セキュリティ]**、**[パフォーマンス]**、**[コスト]**。 
 
-  ![Azure Advisor ダッシュボード](./media/advisor-overview/advisor-dashboard.png)
+   ![Azure Advisor ダッシュボード](./media/advisor-overview/advisor-dashboard.png)
 
 ## <a name="get-recommendation-details-and-implement-a-solution"></a>推奨事項の詳細を取得してソリューションを実装する
 

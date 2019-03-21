@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: ad4270700712311d8bea2e2014701a99e44c735f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e4550dde533044260c120b17c4f72758f90e8bff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992447"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102114"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Azure Monitor のエージェント データ ソース
 Azure Monitor がエージェントから収集するデータは、構成されたデータ ソースによって定義されます。  エージェントからのデータは、一連のレコードを含んだ[ログ データ](data-collection.md)として格納されます。  データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。
@@ -30,7 +30,7 @@ Azure Monitor がエージェントから収集するデータは、構成され
 
 
 | データ ソース | プラットフォーム | Microsoft Monitoring Agent | Operations Manager エージェント | Azure Storage | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | [カスタム ログ](data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | 着信時 |
 | [カスタム ログ](data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | 着信時 |
 | [IIS ログ](data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |ログ ファイル ロールオーバー設定によって異なる |

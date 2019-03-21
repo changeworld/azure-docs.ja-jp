@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d94d434f83e1a8507b1a98660e8169ff6be4ee24
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d220922f17f6727acdbfcd5c2feabac6fc2b88d4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244591"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010591"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のトラブルシューティング
 この記事では、一般的なトラブルシューティングの質問を示します。
@@ -52,7 +52,7 @@ ms.locfileid: "55244591"
 | メッセージ 40847:サーバーが許容データベース トランザクション単位クォータ 45000 を超えることになるため、操作を実行できませんでした。 | 作成しようとしているデータベースの [DWU][DWU] を減らすか、[クォータの引き上げを要求][request a quota increase]してください。 |
 | 領域使用率の調査                              | システムの領域使用率の詳細については、[テーブルのサイズ][Table sizes]に関するセクションをご覧ください。 |
 | テーブルの管理に関するヘルプ                                    | テーブルの管理については、[テーブルの概要][Overview]に関する記事をご覧ください。  この記事には、[テーブルのデータ型][Data types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブルの統計の管理][Statistics]、[一時テーブル][Temporary]などのより詳細なトピックへのリンクも含まれています。 |
-| Azure Portal で、透過的なデータ暗号化 (TDE) の進行状況バーが更新されません。 | [powershell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption) を使用すると、TDE の状態を表示できます。 |
+| Azure Portal で、透過的なデータ暗号化 (TDE) の進行状況バーが更新されません。 | [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) を使用すると、TDE の状態を表示できます。 |
 
 ## <a name="polybase"></a>PolyBase
 | 問題                                           | 解決策                                                   |
@@ -129,6 +129,6 @@ ms.locfileid: "55244591"
 [CAT チームのブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse
-[Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse

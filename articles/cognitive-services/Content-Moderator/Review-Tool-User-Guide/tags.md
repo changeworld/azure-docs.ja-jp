@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 942b30ab9949a28c42949913d90e7448c22b658f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fa3b7be6ac7cc398685bf5ad7d21173bcb072b69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206283"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118410"
 ---
 # <a name="create-and-use-moderation-tags"></a>モデレーション タグを作成して使用する
 
@@ -23,15 +23,15 @@ ms.locfileid: "55206283"
 
 ## <a name="create-tags"></a>タグの作成
 
-1.  [設定] タブから [タグ] を選択します。
+1. [設定] タブから [タグ] を選択します。
 
-  ![コンテンツ モデレーション タグ](images/tags-1.png)
+   ![コンテンツ モデレーション タグ](images/tags-1.png)
 
-2.  タグの 2 文字の短いコードを入力します。
-3.  タグの名前を入力します。 短くてわかりやすい名前にします。 たとえば、**isbullying** などとします。
-4.  説明を入力します。
-5.  [追加] をクリックします。
-6.  タグの作成が完了したら、[保存] をクリックします。
+2. タグの 2 文字の短いコードを入力します。
+3. タグの名前を入力します。 短くてわかりやすい名前にします。 たとえば、**isbullying** などとします。
+4. 説明を入力します。
+5. [追加] をクリックします。
+6. タグの作成が完了したら、[保存] をクリックします。
 
 ![コンテンツ モデレーション タグの定義](images/tags-2-define.png)
 

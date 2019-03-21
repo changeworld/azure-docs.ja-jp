@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a0685f75111a5552645d487589734846b05968
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed081b32fd8ac464f7ec66f97c6867708a6f8533
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164636"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991482"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -175,7 +175,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **関数:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**説明:**<br> 1 つの文字列引数が必要です。 文字列を返しますが、分音記号はそれ以外の同等の記号で置換されます。
+**説明:**<br> 指定したアプリケーションで 1 人のユーザーに割り当てられた appRoleAssignments の全一覧から、単一の appRoleAssignment を返します。 appRoleAssignments オブジェクトを単一のロール名文字列に変換するために、この関数が必要になります。 ベスト プラクティスは、確実に 1 つの appRoleAssignment だけが一度に 1 人のユーザーに割り当てられるようにすることです。複数のロールが割り当てられると、返されるロール文字列を予測できません。 
 
 **パラメーター:**<br> 
 

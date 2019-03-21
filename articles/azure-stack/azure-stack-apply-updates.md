@@ -15,12 +15,12 @@ ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: justini
 ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: 0c3f52c78bbfd3094324b74f3b66610fcebfa2f4
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 9eca22f5a594bf3d61b1d68882c4853f4bfc499d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099294"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100753"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Azure Stack で更新を適用する
 
@@ -30,7 +30,7 @@ ms.locfileid: "56099294"
 
 統合システム バージョン 1807 以前を使用している場合は、更新プログラム パッケージをダウンロードし、パッケージ ファイルを Azure Stack にインポートした後、更新プログラム パッケージをインストールする必要があります。 手順については、「[パッケージをダウンロードして Azure Stack を更新する](#update-azure-stack-by-downloading-the-package)」をご覧ください
 
-このアップグレードの説明は、Azure Stack 統合システムに適用されます。 Azure Stack 開発システムを使用している場合は、現在のバージョンのインストール パッケージをダウンロードする必要があります。 方法については、「[Azure Stack Development Kit のインストール](.\asdk\asdk-install.md)」をご覧ください
+このアップグレードの説明は、Azure Stack 統合システムに適用されます。 Azure Stack 開発システムを使用している場合は、現在のバージョンのインストール パッケージをダウンロードする必要があります。 方法については、「[Azure Stack Development Kit のインストール](./asdk/asdk-install.md)」をご覧ください
 
 ## <a name="update-azure-stack"></a>Azure Stack の更新
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: efd069b90e2f085b7bacf4dfa72478e1232554bc
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b4ecebc6bef7f49a23455c7a85f25680df087a95
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313362"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530758"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Backup コンテナーを Recovery Services コンテナーにアップグレードする
 
@@ -80,7 +80,7 @@ PowerShell スクリプトによって、資格情報を入力することを求
 ### <a name="pre-requisites-checking"></a>前提条件のチェック
 Azure の資格情報を入力すると、Azure によって、環境が次の前提条件を満たしていることがチェックされます。
 
-- **エージェントの最小バージョン** - バックアップ コンテナーを Recovery Services コンテナーにアップグレードするには、MARS エージェントのバージョンが少なくとも 2.0.9083.0 である必要があります。 2.0.9083.0 より前のエージェントを使用してバックアップ コンテナーに登録した項目がある場合、前提条件のチェックは失敗します。 前提条件のチェックが失敗した場合は、エージェントを更新し、コンテナーのアップグレードをやり直してください。 最新バージョンのエージェントは、[http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) からダウンロードできます。
+- **エージェントの最小バージョン** - バックアップ コンテナーを Recovery Services コンテナーにアップグレードするには、MARS エージェントのバージョンが少なくとも 2.0.9083.0 である必要があります。 2.0.9083.0 より前のエージェントを使用してバックアップ コンテナーに登録した項目がある場合、前提条件のチェックは失敗します。 前提条件のチェックが失敗した場合は、エージェントを更新し、コンテナーのアップグレードをやり直してください。 最新バージョンのエージェントは、[https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) からダウンロードできます。
 - **実行中の構成ジョブ**: アップグレードの対象として設定されている Backup コンテナーに対するジョブの構成または項目の登録を実行中の場合、前提条件のチェックは失敗します。 構成を完了するか、項目の登録を終了した後、コンテナーのアップグレード プロセスを開始してください。
 - **ストレージ ベースの課金モデル**: Recovery Service コンテナーでは、インスタンス ベースの課金モデルがサポートされています。 ストレージ ベースの課金モデルを使用している Backup コンテナーでコンテナーのアップグレードを実行した場合、コンテナーと共に課金モデルもアップグレードするよう求められます。 または、課金モデルを更新した後でコンテナーのアップグレードを実行できます。
 - Recovery Services コンテナーのリソース グループを識別します。 Resource Manager デプロイ機能を活用するには、Recovery Services コンテナーをリソース グループ内に配置する必要があります。 使用するリソース グループがわからない場合は、名前を指定すると、アップグレード プロセスによってリソース グループが作成されます。 さらに、アップグレード プロセスは、新しいリソース グループにコンテナーを関連付けます。

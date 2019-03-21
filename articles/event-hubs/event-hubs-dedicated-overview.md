@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 2a1785b9c749a8c413987974446190aafc08ed3a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237129"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105592"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Event Hubs Dedicated の概要
 
@@ -29,7 +29,7 @@ ms.locfileid: "56237129"
 次の表では、Event Hubs で提供されるサービス レベルを比較しています。 Standard のほとんどの機能が従量課金であるのに対し、Event Hubs Dedicated プランは月額固定価格となっています。 Dedicated レベルの機能は Standard プランとすべて同じですが、要求の厳しいワークロードを実行するお客様向けにエンタープライズ スケールの容量で提供されます。 
 
 | 機能 | Standard | 専用 |
-| --- |:---:|:---:|:---:|
+| --- |:---:|:---:|
 | イングレス イベント | 100 万イベントごとの課金 | あり |
 | スループット単位 (1 MB/秒イングレス、2 MB/秒エグレス) | 1 時間ごとの課金 | あり |
 | メッセージ サイズ | 1 MB | 1 MB |

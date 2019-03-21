@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: fd7dd06692e20eb0e7cc02af8d2f36c4dad8b597
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e6afea414ed632dead97a4b9adc7c623e48bd7ef
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251930"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766701"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>クイック スタート:Azure Stack で PowerShell を使用して Linux サーバー仮想マシンを作成する
 
@@ -390,7 +390,7 @@ New-AzureRmVM `
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-SSH がインストールされているクライアント システムから、次のコマンドを使用して仮想マシンに接続します。 Windows で作業している場合は、[Putty](http://www.putty.org/) を使用して接続を作成できます。
+SSH がインストールされているクライアント システムから、次のコマンドを使用して仮想マシンに接続します。 Windows で作業している場合は、[Putty](https://www.putty.org/) を使用して接続を作成できます。
 
 ```
 ssh <Public IP Address>

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 2d36b10adbe277331eafdf1b68d0f5711508cc05
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6bcaadc8dd61899aff860ad246e30170c99ec0f6
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992214"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188630"
 ---
-#  <a name="manage-speed-and-concurrency-of-your-encoding-legacy"></a>エンコーディングの速度とコンカレンシーを管理する (レガシ)
+#  <a name="manage-speed-and-concurrency-of-your-encoding"></a>エンコードの速度とコンカレンシーの管理  
 
 この記事では、エンコード ジョブやエンコード タスクの速度とコンカレンシーを管理する方法について簡単に説明します。
 

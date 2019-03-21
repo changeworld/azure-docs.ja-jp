@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 9/12/2018
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 1c8e08cdf6238064e6ec2468a00bbc65ec46b675
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 353641c514c9171e211221b84b13c5f09a413a48
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880751"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341224"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: fb59740289caffaf8325aa75aaf8ae649611b347
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fa94bffc05879be9d6bbaaa7cd884c36ffe7e0b8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991635"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451291"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure Monitor の Syslog データ ソース
 Syslog は、Linux に共通のイベント ログ プロトコルです。  アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。  Linux 用 Log Analytics エージェントがインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。  エージェントは Azure Monitor にメッセージを送信し、そこで対応するレコードが作成されます。  

@@ -4,12 +4,12 @@ ms.service: cloud-shell
 ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
-ms.openlocfilehash: e175f603e97ccf51e1e13d9c2fc42ba7ed1a475f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c28441b6fe25b3480a55b79682d5067b19e3023a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246983"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58052225"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する
 Cloud Shell では Azure File ストレージを使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
@@ -48,6 +48,7 @@ Cloud Shell では Azure File ストレージを使用してセッション間�
 マウント先の Cloud Shell マシンと同じリージョンに、関連付けられた Azure ストレージ アカウントが存在する必要があります。 現在のリージョンを確認するには、Bash で `env` を実行し、変数 `ACC_LOCATION` を見つけます。 ファイル共有には、`$Home` ディレクトリの永続化に使用できる 5 GB のイメージが割り当てられます。
 
 Cloud Shell マシンは、次の各リージョンに存在します。
+
 |領域|リージョン|
 |---|---|
 |アメリカ合衆国|米国東部、米国中南部、米国西部|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 2f6fad0ecca09ff9210b5961301fea3446a88f11
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 43d19e5c69733689be184f06b853fa4e488dd51e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213165"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871725"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>データのシリアル化がアプリケーションのアップグレードに与える影響
 [アプリケーションのローリング アップグレード](service-fabric-application-upgrade.md)では、アップグレードはノードのサブセットに、一度に 1 つのアップグレード ドメインのみに適用されます。 このプロセス中に、一部のアップグレード ドメインがアプリケーションの新しいバージョンになり、一部のアップグレード ドメインはアプリケーションの以前のバージョンになります。 ロールアウト時に、アプリケーションの新しいバージョンは、古いバージョンのデータを、アプリケーションの古いバージョンは新しいバージョンのデータを読み取ることができる必要があります。 データ形式の上位互換性と下位互換性がない場合は、アップグレードが失敗するか、データが失われたり、破損したりするおそれがあります。 この記事では、データ形式の構成要素と、データが上位互換性と下位互換性を確保するためのベスト プラクティスについて説明します。
@@ -62,5 +62,5 @@ C# クラスによって、データ形式が決まるため、クラスへの�
 
 「 [高度なトピック](service-fabric-application-upgrade-advanced.md)」を参照して、アプリケーションをアップグレードするときの高度な機能の使用方法を学習します。
 
-「 [アプリケーションのアップグレードのトラブルシューティング ](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
+「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
 

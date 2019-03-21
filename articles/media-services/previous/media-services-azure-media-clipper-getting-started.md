@@ -6,15 +6,15 @@ keywords: クリップ;サブクリップ;エンコード;メディア
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 02/10/2019
+ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 772865f42dfef8734fb23022039f02910958af61
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 51848b9ba4d18b3ac7d652cfbd97cab6b85f2ee8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992468"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842364"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Azure Media Clipper を使用したクリップの作成
 このセクションでは、Azure Media Clipper の使用を開始する基本的な手順を示します。 以降のセクションで、Azure Media Clipper の構成方法の詳細を提供します。
@@ -100,7 +100,7 @@ var subclipper = new subclipper({
 - `height` {省略可能、数字} ウィジェット全体の高さ (高さの最小値は、資産ウィンドウなしで 600 px、資産ウィンドウありで 850 px)。
 - `subclippingMode`(省略可能、{'all', 'render', 'filter'}):サブクリップ モードを許可します。 既定値は all です。
 - `filterAssetsTypes`(省略可能、ブール値): filterAssetsTypes を使用すると、資産ウィンドウでフィルター ドロップダウン リストを表示したり隠したりできます。 既定値は true です。
-- `speedLevels` (省略可能、配列): speedLevels を使用すると、ビデオ プレーヤーに異なる速度レベルを設定できます。詳細については、[Azure Media Player ドキュメント](http://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions)に関するページをご覧ください。
+- `speedLevels` (省略可能、配列): speedLevels を使用すると、ビデオ プレーヤーに異なる速度レベルを設定できます。詳細については、[Azure Media Player ドキュメント](https://amp.azure.net/libs/amp/latest/docs/#amp.player.playbackspeedoptions)に関するページをご覧ください。
 - `resetOnJobDone`(省略可能、ブール値): resetOnJobDone を使用すると、ジョブが正常に送信された場合に Clipper がサブクリッパーを初期状態にリセットできます。
 - `autoplayVideo`(省略可能、ブール値): autoplayVideo を使用すると、Clipper が読み込まれたビデオを自動再生できます。 既定値は true です。
 - `language` {省略可能、文字列}: language を指定すると、ウィジェットの言語が設定されます。 指定しない場合、ウィジェットはブラウザーの言語に基づいてメッセージをローカライズします。 ブラウザーの言語が検出されない場合、ウィジェットの既定は英語となります。 詳しくは、「[ローカライズの構成](media-services-azure-media-clipper-localization.md)」セクションをご覧ください。
@@ -108,7 +108,7 @@ var subclipper = new subclipper({
 - `extraLanguages`(省略可能、JSON): extraLanguages パラメーターを指定すると、既定の辞書に新しい言語が追加されます。 詳しくは、「[ローカライズの構成](media-services-azure-media-clipper-localization.md)」セクションをご覧ください。
 
 ## <a name="typescript-definition"></a>TypeScript 定義
-Clipper の [TypeScript](https://www.typescriptlang.org/) 定義ファイルは、[ここ](http://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts)にあります。
+Clipper の [TypeScript](https://www.typescriptlang.org/) 定義ファイルは、[ここ](https://amp.azure.net/libs/amc/latest/azuremediaclipper.d.ts)にあります。
 
 ## <a name="azure-media-clipper-api"></a>Azure Media Clipper API
 このセクションでは、Clipper によって提供される API サーフェスを説明します。

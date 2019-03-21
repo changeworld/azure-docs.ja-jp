@@ -6,16 +6,15 @@ services: cognitive-services
 author: mikedodaro
 manager: rosh
 ms.service: cognitive-services
-ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh; v-gedod
-ms.openlocfilehash: 3e5fcf45ac1d8649203bdbb5b4aa3899332b3a1c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 79219de775be96f35bd11ac85640efcc4a04a93b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153336"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779795"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing Local Business Search API クエリと応答の送信と使用
 

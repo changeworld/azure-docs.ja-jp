@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: dkshir
-ms.openlocfilehash: 8f8bdb4d601e35cf489c1c4c1db3574fb8c8f18f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0c441974b40f35bcc39aec05e5ffe66b68e46c10
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730787"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542269"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>チュートリアル:Time Series Insights を使用して Azure Digital Twins 空間からのイベントを視覚化および分析する
 
@@ -160,7 +160,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 これ以降 Azure Digital Twins の探索を中止する場合は、このチュートリアルで作成されたリソースを削除してかまいません。
 
-1. [Azure portal](http://portal.azure.com) の左側のメニューの **[すべてのリソース]** をクリックし、目的の Digital Twins リソース グループを選択して **[削除]** を選択します。
+1. [Azure portal](https://portal.azure.com) の左側のメニューの **[すべてのリソース]** をクリックし、目的の Digital Twins リソース グループを選択して **[削除]** を選択します。
 
     > [!TIP]
     > ご自分の Digital Twins インスタンスの削除で問題が発生していた場合は、サービス更新が修正と共にロールアウトされています。 ご自分のインスタンスの削除を再試行してください。

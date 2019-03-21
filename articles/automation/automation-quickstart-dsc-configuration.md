@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f272f72a0bcae70a25bada266dc6b080f46526cd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8bb035a02b8ab684bc1efb7accd785518cb151c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817729"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107612"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Desired State Configuration を使用して Linux 仮想マシンを構成する
 

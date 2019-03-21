@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 3948b0e1445aef5b9030e5e40f4bd4ec7ea1bf51
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fe9ec05b3d8f084f58d5836f1a077e952966ecef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175759"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119328"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>CoreOS Linux 仮想マシンをマネージド ドメインに参加させる
 この記事では、Azure 内の CoreOS Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
@@ -113,10 +113,9 @@ sudo adcli join -D CONTOSO100.COM -U bob@CONTOSO100.COM -K /etc/krb5.keytab -H c
 
 > [!NOTE]
 > **トラブルシューティング:** *adcli* でマネージド ドメインが見つからない場合:
-  * ドメインに仮想マシンからアクセスできることを確認します (ping の試行)。
-  * 仮想マシンが、マネージド ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。
-  * マネージド ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。
->
+>   * ドメインに仮想マシンからアクセスできることを確認します (ping の試行)。
+>   * 仮想マシンが、マネージド ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。
+>   * マネージド ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。
 
 SSSD サービスを起動します。 SSH ターミナルで、次のコマンドを入力します。
   ```
