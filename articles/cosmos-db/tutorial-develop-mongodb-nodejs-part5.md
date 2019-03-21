@@ -12,12 +12,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 4e7aa9931ffb268f787882729341fbe860255f70
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c8cab3c723b7e507b0f3b05b933cca9e2c24fb39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767861"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075477"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Mongoose を使用して Cosmos DB に接続する
 
@@ -56,35 +56,35 @@ Mongoose は、MongoDB および Node.js のためのオブジェクト デー�
 
 1. 次のコードを **mongo.js** ファイルにコピーします。 このコードでは以下の機能が提供されます。
 
-    * Mongoose を要求する。
-    * Mongo の Promise をオーバーライドして ES6/ES2015 以降のバージョンに組み込まれている基本的な Promise を使用する。
-    * 環境の種類 (ステージング、運用、開発) に応じて特定の動作を設定できる env ファイルを要求する。 そのファイルは、次のセクションで作成します。
-    * MongoDB の接続文字列をインクルードする。その接続文字列は、env ファイルで設定されています。
-    * Mongoose を呼び出す connect 関数を作成する。
+   * Mongoose を要求する。
+   * Mongo の Promise をオーバーライドして ES6/ES2015 以降のバージョンに組み込まれている基本的な Promise を使用する。
+   * 環境の種類 (ステージング、運用、開発) に応じて特定の動作を設定できる env ファイルを要求する。 そのファイルは、次のセクションで作成します。
+   * MongoDB の接続文字列をインクルードする。その接続文字列は、env ファイルで設定されています。
+   * Mongoose を呼び出す connect 関数を作成する。
 
-    ```javascript
-    const mongoose = require('mongoose');
-    /**
+     ```javascript
+     const mongoose = require('mongoose');
+     /**
      * Set to Node.js native promises
-     * Per http://mongoosejs.com/docs/promises.html
+     * Per https://mongoosejs.com/docs/promises.html
      */
-    mongoose.Promise = global.Promise;
+     mongoose.Promise = global.Promise;
 
-    const env = require('./env/environment');
+     const env = require('./env/environment');
 
-    // eslint-disable-next-line max-len
-    const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
+     // eslint-disable-next-line max-len
+     const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
 
-    function connect() {
+     function connect() {
      mongoose.set('debug', true);
      return mongoose.connect(mongoUri, { useMongoClient: true });
-    }
+     }
 
-    module.exports = {
-      connect,
-      mongoose
-    };
-    ```
+     module.exports = {
+     connect,
+     mongoose
+     };
+     ```
     
 1. [エクスプローラー] ウィンドウで、**server** の下に **environment** という名前のフォルダーを作成します。 **environment** フォルダーに、**environment.js** という名前のファイルを作成します。
 

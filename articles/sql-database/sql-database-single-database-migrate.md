@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: f033a93c0e4fc2648e151572bee25db5463e32e3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 2feece21644f8b79b4e5fc74331944cdddbdee4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101416"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996418"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server データベースの Azure SQL Database への移行
 
@@ -114,7 +114,7 @@ SQL Database への移行に関するヒントと相違点
 - [Discontinued Database Engine Functionality in SQL Server 2008 R2 (SQL Server 2008 R2 で廃止されたデータベース エンジンの機能)](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
 - [SQL Server 2005 で廃止されたデータベース エンジンの機能](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
 
-インターネット検索やこれらのリソースの参照に加えて、[MSDN SQL Server コミュニティ フォーラム](https://social.msdn.microsoft.com/Forums/sqlserver/home?category=sqlserver)や [StackOverflow](http://stackoverflow.com/) も参照してください。
+インターネット検索やこれらのリソースの参照に加えて、[MSDN SQL Server コミュニティ フォーラム](https://social.msdn.microsoft.com/Forums/sqlserver/home?category=sqlserver)や [StackOverflow](https://stackoverflow.com/) も参照してください。
 
 > [!IMPORTANT]
 > SQL Database Managed Instance を使用すると、互換性の問題をゼロまたは最小限に抑えながら、既存の SQL Server インスタンスとそのデータベースを移行できます。 「[What is an Managed Instance](sql-database-managed-instance.md)」(マネージド インスタンスとは) を参照してください。

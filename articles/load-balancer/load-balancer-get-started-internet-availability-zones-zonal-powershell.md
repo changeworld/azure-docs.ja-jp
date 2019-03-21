@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 02/21/2019
 ms.author: kumud
-ms.openlocfilehash: 861759eec266f0ab66d30a466c06e7d2ee14bf06
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: faffe5acb6ec33dcddee5c47679f29f64d2e61fb
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247159"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674312"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Azure PowerShell を使用してゾーン フロントエンドで Standard Load Balancer を作成する
 
@@ -30,27 +30,29 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!NOTE]
 > 可用性ゾーンのサポートは、Azure リソース、リージョン、および VM サイズ ファミリを選択するために使用できます。 使用を開始する方法、および可用性ゾーンを試行する場合にどの Azure リソース、リージョン、および VM サイズ ファミリを使用できるかの詳細については、「[Overview of Availability Zones (可用性ゾーンの概要)](https://docs.microsoft.com/azure/availability-zones/az-overview)」を参照してください。 サポートについては、[StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) でアクセスするか、または [Azure サポート チケットを開く](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ことができます。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-`Connect-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Connect-AzAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
-```powershell
-Connect-AzureRmAccount
+```azurepowershell-interactive
+Connect-AzAccount
 ```
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
 リソース グループを作成するには、次のコマンドを使用します。
 
-```powershell
-New-AzureRmResourceGroup -Name myResourceGroupZLB -Location westeurope
+```azurepowershell-interactive
+New-AzResourceGroup -Name myResourceGroupZLB -Location westeurope
 ```
 
 ## <a name="create-a-public-ip-standard"></a>パブリック IP Standard の作成 
 パブリック IP Standard を作成するには、次のコマンドを使用します。
 
-```powershell
-$publicIp = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroupZLB -Name 'myPublicIPZonal' `
+```azurepowershell-interactive
+$publicIp = New-AzPublicIpAddress -ResourceGroupName myResourceGroupZLB -Name 'myPublicIPZonal' `
   -Location westeurope -AllocationMethod Static -Sku Standard -zone 1
 ```
 
@@ -58,45 +60,42 @@ $publicIp = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroupZLB -Na
 
 フロントエンド IP 構成を作成するには、次のコマンドを使用します。
 
-```powershell
-$feip = New-AzureRmLoadBalancerFrontendIpConfig -Name 'myFrontEnd' -PublicIpAddress $publicIp
+```azurepowershell-interactive
+$feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEnd' -PublicIpAddress $publicIp
 ```
 
 ## <a name="create-the-back-end-address-pool"></a>バックエンド アドレス プールの作成
 
 バックエンド アドレス プールを作成するには、次のコマンドを使用します。
 
-```powershell
-$bepool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
+```azurepowershell-interactive
+$bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
 ```
 
 ## <a name="create-a-load-balancer-probe-on-port-80"></a>ポート 80 でのロード バランサー プローブの作成
 
 ポート 80 でロード バランサーの正常性プローブを作成するには、次のコマンドを使用します。
 
-```powershell
-$probe = New-AzureRmLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
+```azurepowershell-interactive
+$probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
   -RequestPath / -IntervalInSeconds 360 -ProbeCount 5
 ```
 
 ## <a name="create-a-load-balancer-rule"></a>ロード バランサー規則の作成
  ロード バランサー ルールを作成するには、次のコマンドを使用します。
 
-```powershell
-   $rule = New-AzureRmLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $feip -BackendAddressPool  $bepool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
+```azurepowershell-interactive
+   $rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $feip -BackendAddressPool  $bepool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 ```
 
 ## <a name="create-a-load-balancer"></a>ロード バランサーの作成
 Standard Load Balancer を作成するには、次のコマンドを使用します。
 
-```powershell
-$lb = New-AzureRmLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBalancer' -Location westeurope `
+```azurepowershell-interactive
+$lb = New-AzLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBalancer' -Location westeurope `
   -FrontendIpConfiguration $feip -BackendAddressPool $bepool `
   -Probe $probe -LoadBalancingRule $rule -Sku Standard
 ```
 
 ## <a name="next-steps"></a>次の手順
 - [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)を確認します。
-
-
-

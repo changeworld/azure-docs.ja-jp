@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 73b666116a23ab8d861d38af4dc9fa5e19d5d1bd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b35fa32776fa449bf4f46479345a94e63fe28e68
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857160"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109578"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>クイック スタート:Python を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -53,18 +53,18 @@ ms.locfileid: "55857160"
 ## <a name="send-a-request-and-get-a-response"></a>要求を送信して応答を取得する
 
 1. `get_suggestions()` という関数を作成します。 次に、以下の手順のようにします。
-    1. `Ocp-Apim-Subscription-Key` をキーとしてディクショナリにサブスクリプション キーを追加します。
-    2. `http.client.HTTPSConnection()` を使用して HTTPS クライアント オブジェクトを作成します。 パスとパラメーターおよびヘッダー情報を使用して、`request()` で `GET` 要求を送信します。
-    3. `getresponse()` で応答を格納し、`response.read()` を返します。
+   1. `Ocp-Apim-Subscription-Key` をキーとしてディクショナリにサブスクリプション キーを追加します。
+   2. `http.client.HTTPSConnection()` を使用して HTTPS クライアント オブジェクトを作成します。 パスとパラメーターおよびヘッダー情報を使用して、`request()` で `GET` 要求を送信します。
+   3. `getresponse()` で応答を格納し、`response.read()` を返します。
 
-    ```python
-    def get_suggestions ():
-        headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
-        conn = http.client.HTTPSConnection (host)
-        conn.request ("GET", path + params, None, headers)
-        response = conn.getresponse ()
-        return response.read()
-    ```
+      ```python
+      def get_suggestions ():
+       headers = {'Ocp-Apim-Subscription-Key': subscriptionKey}
+       conn = http.client.HTTPSConnection (host)
+       conn.request ("GET", path + params, None, headers)
+       response = conn.getresponse ()
+       return response.read()
+      ```
 
 2. `get_suggestions()` を呼び出して、JSON 応答を出力します。
 
@@ -113,7 +113,7 @@ ms.locfileid: "55857160"
         "_type": "Restaurant",
         "webSearchUrl": "https://www.bing.com/search?q=Pickles+and+Preserves...",
         "name": "Munson's Pickles and Preserves Farm",
-        "url": "http://www.princi.com/",
+        "url": "https://www.princi.com/",
         "entityPresentationInfo": {
           "entityScenario": "ListItem",
           "entityTypeHints": [

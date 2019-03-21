@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 099c7a456e67eae981b2e68e73e2bed7557c7372
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3c6b5094613ee482b0fd3f63e3d9d69dfe4d40f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632401"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094856"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのプロビジョニングと管理
 
@@ -67,7 +67,7 @@ Azure Time Series Insights Preview 環境をプロビジョニングする際に
      > [!TIP]
      > メッセージが待ち行列に入った時刻は、バッチ イベントや履歴データをアップロードする場合、最適な構成設定ではないことがあります。 そのような場合、タイムスタンプ プロパティを使用するかどうかの判断を確認してください。
 
-    ![[イベント ソース] タブ][2]
+     ![[イベント ソース] タブ][2]
 
 1. 希望の設定で環境がプロビジョニングされていることを確認します。
 

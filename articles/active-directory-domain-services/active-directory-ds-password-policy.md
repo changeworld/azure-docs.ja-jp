@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5fc50aeeb2764f90a111c2466ff5a9deefe1e65c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 513cccb8b83eb4a69df1bc6172f1f02485215e35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167990"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086005"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>マネージド ドメインに関するパスワードとアカウントのロックアウト ポリシー
 この記事では、マネージド ドメインに関する既定のパスワード ポリシーについて説明します。 また、これらのポリシーの構成方法についても説明します。
@@ -89,28 +89,28 @@ FGPP を使用して、次のパスワード設定を構成できます。
 7. 右側の **[タスク]** パネルで **[新規]** をクリックし、**[パスワード設定]** をクリックします。
 8. **[Create Password Settings]\(パスワード設定の作成\)** ダイアログで、カスタムの FGPP の一環で適用されるカスタムのパスワード設定を指定します。 必ず既定の FGPP をオーバーライドするように優先順位を適切に設定してください。
 
-  ![カスタムの FGPP を作成する](./media/how-to/custom-fgpp.png)
+   ![カスタムの FGPP を作成する](./media/how-to/custom-fgpp.png)
 
-  > [!TIP]
-  > **必ず [誤って削除されないように保護する] オプションをオフにしてください。** このオプションがオンの場合、FGPP を保存できません。
-  >
-  >
+   > [!TIP]
+   > **必ず [誤って削除されないように保護する] オプションをオフにしてください。** このオプションがオンの場合、FGPP を保存できません。
+   >
+   >
 
 9. **[直接の適用先]** で **[追加]** ボタンをクリックします。 **[ユーザーまたはグループの選択]** ダイアログで、**[場所]** ボタンをクリックします。
 
-  ![ユーザーとグループを選択](./media/how-to/fgpp-applies-to.png)
+   ![ユーザーとグループを選択](./media/how-to/fgpp-applies-to.png)
 
 10. **[場所]** ダイアログでドメイン名を展開し、**[AADDC Users]** をクリックします。 これで、組み込みのユーザー OU から FGPP を適用するグループを選択できるようになります。
 
-  ![グループが属する OU を選択する](./media/how-to/fgpp-container.png)
+    ![グループが属する OU を選択する](./media/how-to/fgpp-container.png)
 
 11. グループの名前を入力し、**[名前の確認]** ボタンをクリックしてグループが存在することを確認します。
 
-  ![FGPP を適用するグループを選択する](./media/how-to/fgpp-apply-group.png)
+    ![FGPP を適用するグループを選択する](./media/how-to/fgpp-apply-group.png)
 
 12. **[直接の適用先]** セクションにグループの名前が表示されます。 **[OK]** ボタンをクリックしてこれらの変更を保存します。
 
-  ![適用される FGPP](./media/how-to/fgpp-applied.png)
+    ![適用される FGPP](./media/how-to/fgpp-applied.png)
 
 > [!TIP]
 > **カスタムの OU のユーザー アカウントにカスタムのパスワード ポリシーを適用するには:** 細かい設定が可能なパスワード ポリシーはグループにのみ適用できます。 カスタムの OU のユーザーに対してのみカスタム パスワード ポリシーを構成するには、その OU 内のユーザーを含むグループを作成します。

@@ -1,24 +1,24 @@
 ---
 title: サービス マップと System Center Operations Manager の統合 | Microsoft Docs
 description: Service Map は、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、Azure のソリューションです。 この記事では、Operations Manager でサービス マップを使用して、分散アプリケーション ダイアグラムを自動作成する方法について説明します。
-services: monitoring
+services: azure-monitor
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: e8614a5a-9cf8-4c81-8931-896d358ad2cb
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
-ms.author: bwren
-ms.openlocfilehash: 73e27044fc8cc79b2c95471e30bca558bd14d473
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.author: magoedte
+ms.openlocfilehash: 40e6d6ff6ea8748b525642e5507c80590b322b7a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818755"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110105"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>サービス マップと System Center Operations Manager の統合
 
@@ -67,11 +67,11 @@ Operations Manager とサービス マップの統合を有効にするには、
 
     この統合によりサーバーの分散アプリケーション ダイアグラムを作成するには、サーバーが次の条件を満たす必要があります。
 
-    * Operations Manager で管理されている
-    * Service Map で管理されている
-    * Service Map サーバー グループに登録されている
+   * Operations Manager で管理されている
+   * Service Map で管理されている
+   * Service Map サーバー グループに登録されている
 
-    ![Operations Manager 構成グループ](media/service-map-scom/scom-config-group.png)
+     ![Operations Manager 構成グループ](media/service-map-scom/scom-config-group.png)
 
 6. 省略可能:Log Analytics と通信する管理サーバーのリソース プールを選択し、**[ワークスペースの追加]** をクリックします。
 

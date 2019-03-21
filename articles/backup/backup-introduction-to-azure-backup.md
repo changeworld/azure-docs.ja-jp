@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e2b9d380b5e164bb8b730ec7037a6b2836c2af85
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: ca50c7cbbcccadf96641c28e43f7da48421c8f3b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447363"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994427"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
 Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
@@ -54,6 +54,7 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 | Azure IaaS VM のバックアップ |<li>アプリケーション対応スナップショット (VSS)<li>Windows/Linux のネイティブ バックアップ<li>特定のエージェント インストールが不要<li>バックアップ インフラストラクチャを必要としないファブリック レベルのバックアップ |<li>1 日に 1 回 VM をバックアップ <li>ディスク レベルでのみ VM を復元<li>オンプレミスでバックアップできない |<li>VM、 <li>すべてのディスク (PowerShell を使用) |<p>Recovery Services コンテナー</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>各コンポーネントのデプロイ シナリオ
+
 | コンポーネント | Azure にデプロイできる? | オンプレミスにデプロイできる? | サポートされているターゲット ストレージ |
 | --- | --- | --- | --- |
 | Azure Backup (MARS) エージェント |<p>**はい**</p> <p>Azure Backup エージェントは、Azure で実行されている任意の Windows Server VM にデプロイできます。</p> |<p>**はい**</p> <p>Backup エージェントは、任意の Windows Server VM または物理マシンにデプロイできます。</p> |<p>Recovery Services コンテナー</p> |
@@ -114,6 +115,7 @@ Azure Backup では、完全なマネージド ディスク VM を復元する�
 次のセクションの各表は、各 Azure Backup コンポーネントのさまざまな機能の可用性とサポートを簡単にまとめたものです。 追加のサポートや詳細情報については、それぞれの表に続く説明を参照してください。
 
 ### <a name="storage"></a>Storage
+
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | Recovery Services コンテナー |![はい][green] |![はい][green] |![はい][green] |![はい][green] |
@@ -121,7 +123,7 @@ Azure Backup では、完全なマネージド ディスク VM を復元する�
 | テープ ストレージ | |![はい][green] | | |
 | 圧縮 <br/>(Recovery Services コンテナー内) |![はい][green] |![はい][green] |![はい][green] | |
 | 増分バックアップ |![はい][green] |![はい][green] |![はい][green] |![はい][green] |
-| ディスクの重複除去 | |![部分的][yellow] |![部分的][yellow] | | |
+| ディスクの重複除去 | |![部分的][yellow] |![部分的][yellow] | |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -132,7 +134,7 @@ Recovery Services コンテナーは、すべてのコンポーネントの中�
 
 
 #### <a name="disk-deduplication"></a>ディスクの重複除去
-System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx)にデプロイすると、重複除去を利用できます。 Windows Server では、重複除去は、バックアップ ストレージとして仮想マシンに接続されている仮想ハード ディスク (VHD) 上で (ホスト レベルで) 実行されます。
+System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](https://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx)にデプロイすると、重複除去を利用できます。 Windows Server では、重複除去は、バックアップ ストレージとして仮想マシンに接続されている仮想ハード ディスク (VHD) 上で (ホスト レベルで) 実行されます。
 
 > [!NOTE]
 > Azure では、どの Backup コンポーネントについても重複除去を使用できません。 System Center DPM と Backup Server が Azure にデプロイされている場合は、VM に接続されているストレージ ディスクを重複除去できません。
@@ -155,6 +157,7 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 **増分バックアップ**では、前回のバックアップ以降に変更されたデータ ブロックのみが格納されるため、記憶域とネットワークで高い効率性が実現します。 増分バックアップでは、完全バックアップを定期的に実行する必要はありません。 この例では、最初の月に完全バックアップが行われた後、A2、A3、A4、および A9 が変更済みとしてマークされ、2 か月目に転送されます。 3 か月目は、変更された A5 のみがマークされ、転送されます。 データ移動が少ないためストレージおよびネットワーク リソースを節約でき、TCO が削減されます。
 
 ### <a name="security"></a>セキュリティ
+
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | ネットワークのセキュリティ<br/> (対 Azure) |![はい][green] |![はい][green] |![はい][green] |![はい][green] |
@@ -174,6 +177,7 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 Azure VM のバックアップの場合は、仮想マシン " *内* " で暗号化を設定する必要があります。 Azure Backup は Azure Disk Encryption をサポートしており、Windows 仮想マシンでは BitLocker が、Linux 仮想マシンでは **dm-crypt** が使用されます。 Azure Backup のバックエンドでは [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) が使用されており、これによって保存データが保護されます。
 
 ### <a name="network"></a>ネットワーク
+
 | 機能 | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | ネットワーク圧縮 <br/>(対**バックアップ サーバー**) | |![はい][green] |![はい][green] | |

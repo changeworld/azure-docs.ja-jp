@@ -3,23 +3,21 @@ title: Azure Traffic Manager のしくみ | Microsoft Docs
 description: この記事は、Traffic Manager でトラフィックをルーティングし、Web アプリケーションの高いパフォーマンスと可用性を実現するしくみを理解するために役立ちます
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: KumudD
 manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/25/2018
+ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 26d61c1b263a8fa7ff4f0ff5b2888f1d900e772e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 52469cb2735b2270815191ec0815daee350882a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567844"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108867"
 ---
 # <a name="how-traffic-manager-works"></a>Traffic Manager のしくみ
 
@@ -41,8 +39,8 @@ Contoso Corp が、新しいパートナー ポータルを開発しました。
 この構成を実現するために、次の手順を実行します。
 
 1. 3 つのサービス インスタンスをデプロイします。 各デプロイの DNS 名は "contoso-us.cloudapp.net"、"contoso-eu.cloudapp.net"、および "contoso-asia.cloudapp.net" です。
-2. "contoso.trafficmanager.net" という名前の Traffic Manager プロファイルを作成し、3 つのエンドポイントで "パフォーマンス" トラフィック ルーティング方法を使用するように構成します。
-* DNS CNAME レコードを使用して、"contoso.trafficmanager.net" を参照するようにバニティ ドメイン名 "partners.contoso.com" を構成します。
+1. "contoso.trafficmanager.net" という名前の Traffic Manager プロファイルを作成し、3 つのエンドポイントで "パフォーマンス" トラフィック ルーティング方法を使用するように構成します。
+1. DNS CNAME レコードを使用して、"contoso.trafficmanager.net" を参照するようにバニティ ドメイン名 "partners.contoso.com" を構成します。
 
 ![Traffic Manager の DNS 構成][1]
 

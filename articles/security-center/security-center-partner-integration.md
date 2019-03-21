@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/3/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52b347aef240f2338aedff2c2a1a3cd53743dc27
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 5a25ba889ebde750937f88e447123263a82d5627
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114265"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896825"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -34,7 +34,7 @@ Security Center を使用すると、Azure で統合されたセキュリティ 
 現時点では、統合されたセキュリティ ソリューションには以下が含まれます。
 
 - Web アプリケーション ファイアウォール ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall)、[F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html)、[Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF)、[Fortinet](https://www.fortinet.com/products.html)、[Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
-- 次世代ファイアウォール ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html)、および [Palo Alto Networks](https://www.paloaltonetworks.com/products))
+- 次世代ファイアウォール ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](https://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](https://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html)、および [Palo Alto Networks](https://www.paloaltonetworks.com/products))
 - 脆弱性評価 ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) および [Rapid7](https://www.rapid7.com/products/insightvm/))
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
 3. Security Center のメニューで、**[セキュリティ ソリューション]** を選択します。
 
-  ![Security Center の概要](./media/security-center-partner-integration/overview.png)
+   ![Security Center の概要](./media/security-center-partner-integration/overview.png)
 
 **[セキュリティ ソリューション]** では、統合された Azure セキュリティ ソリューションの正常性に関する情報を表示し、基本的な管理タスクを実行することができます。 また、共通イベント形式 (CEF) の Azure Active Directory Identity Protection のアラートやファイアウォール ログなど、他の種類のセキュリティ データ ソースを接続することもできます。
 
@@ -82,12 +82,12 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 >
 >
 
-2. **[表示]** を選択すると、次の追加情報とオプションを確認できます。
+1. **[表示]** を選択すると、次の追加情報とオプションを確認できます。
 
-  - **ソリューション コンソール**。 このソリューションの管理エクスペリエンスが開きます。
-  - **VM をリンクする**。 [アプリケーションのリンク] ブレードが開きます。 ここで、パートナー ソリューションにリソースを接続できます。
-  - **ソリューションの削除**。
-  - **構成**。
+   - **ソリューション コンソール**。 このソリューションの管理エクスペリエンスが開きます。
+   - **VM をリンクする**。 [アプリケーションのリンク] ブレードが開きます。 ここで、パートナー ソリューションにリソースを接続できます。
+   - **ソリューションの削除**。
+   - **構成**。
 
    ![パートナー ソリューションの詳細](./media/security-center-partner-solutions/partner-solutions-detail.png)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d222e398653487cb87525ac13ebe682e9c8a26ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195945"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122928"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
@@ -66,7 +66,7 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 - コンテンツが HTML5 に準拠しており、アクセス可能であることを確認する。
 - コンテンツ サーバーで CORS が有効になっていることを確認する。
 - HTTPS を使用してコンテンツを配信する。
-- すべてのリンクと CSS コンテンツで、 https://yourdomain/content などの絶対 URL を使用する。
+- すべてのリンクと CSS コンテンツで、`https://yourdomain/content` などの絶対 URL を使用する。
 
 > [!TIP]
 > コンテンツをホストしているサイトで CORS が有効になっていることを確認し、CORS 要求をテストするには、サイト https://test-cors.org/ を使用します。 このサイトでは、(CORS がサポートされているかどうかをテストするために) CORS 要求をリモート サーバー、または (CORS の特定の機能を使ってみるために) テスト サーバーに送信できます。
@@ -121,16 +121,16 @@ Azure AD B2C でコンテンツの読み込みに使用するエンドポイン�
 
 1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、「 https://contoso369b2c.blob.core.windows.net/b2c/unified.html 」のように入力します。
 2. https://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
-<!--
-![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
--->
+   <!--
+   ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
+   -->
 
 3. **[リモート URL]** に、unified.html のコンテンツの完全な URL を入力し、**[要求の送信]** をクリックします。
 4. **[結果]** セクションの出力に *XHR status: 200* が含まれていることを確認します。これは、CORS が有効になっていることを示します。
-<!--
-![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
--->
-これで、ストレージ アカウントに、ここで説明した *b2c* という BLOB コンテナーが含まれるようになりました。このコンテナーには、*Starter-Pack* 内の次の wingtiptoys テンプレートが含まれます。
+   <!--
+   ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
+   -->
+   これで、ストレージ アカウントに、ここで説明した *b2c* という BLOB コンテナーが含まれるようになりました。このコンテナーには、*Starter-Pack* 内の次の wingtiptoys テンプレートが含まれます。
 
 <!--
 ![Correctly configured storage account](../../articles/active-directory-b2c/media/active-directory-b2c-reference-customize-ui-custom/storage-account-final.png)

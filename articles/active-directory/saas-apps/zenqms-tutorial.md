@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9804dee56e9f099654359e7c336f706cedbd1f7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d5d2e734ff9bd34a176d08e36019c826dac355bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003792"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>チュートリアル:Azure Active Directory と ZenQMS の統合
 
@@ -120,6 +120,7 @@ ZenQMS で Azure AD のシングル サインオンを構成してテストす�
     ![[ZenQMS のドメインと URL] のシングル サインオン情報](./media/zenqms-tutorial/tutorial_zenqms_url1.png)
 
     **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |-|-|
     | `https://<INSTANCE>.zenqms.com/<ID>`|
@@ -169,7 +170,7 @@ ZenQMS で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
 
 ### <a name="create-a-zenqms-test-user"></a>ZenQMS テスト ユーザーの作成
 

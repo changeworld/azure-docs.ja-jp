@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: 5cb26b98f5969032bcff95e4408fcf685399d6da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9a0b536426ab024d5af7b257e44a2d5e20f14def
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114503"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898705"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>REST API を使用してエンタープライズ加入契約の請求書を確認する
 
@@ -78,7 +78,7 @@ Authorization: Bearer
 }
 ```  
 
-この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[請求先アカウントの使用状況詳細の取得](/rest/api/consumption/usagedetails/listbybillingaccount)に関する記事をご覧ください。
+この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[請求先アカウントの使用状況詳細の取得](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist)に関する記事をご覧ください。
 
 ## <a name="department-billing"></a>部門の課金 
 
@@ -134,7 +134,7 @@ Authorization: Bearer
 }
 ```  
 
-この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[部門の使用状況詳細の取得](/rest/api/consumption/usagedetails/listbydepartment)に関する記事をご覧ください。
+この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[部門の使用状況詳細の取得](/rest/api/consumption/usagedetails/list#departmentusagedetailslist)に関する記事をご覧ください。
 
 ## <a name="enrollment-account-billing"></a>登録アカウントの課金
 
@@ -187,7 +187,7 @@ Authorization: Bearer
 }
 ``` 
 
-この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[登録アカウントの使用状況詳細の取得](/rest/api/consumption/usagedetails/listbyenrollmentaccount)に関する記事をご覧ください。
+この例は省略されたものです。各応答フィールドの詳しい説明とエラー処理については、[登録アカウントの使用状況詳細の取得](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順 
 - 「[Enterprise Reporting の概要](https://docs.microsoft.com/azure/billing/billing-enterprise-api)」を参照してください。

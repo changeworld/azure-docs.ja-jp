@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: dafafa8ff5d721034b3b10bdeb1a2fc09cd32835
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fb637197139001c67a4cfa773f897e6701dc1e9c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267582"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100651"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk ユーザーのための Azure Monitor ログ クエリ
 
@@ -28,23 +28,23 @@ ms.locfileid: "56267582"
 
 次の表では、Splunk と Azure Monitor ログの概念とデータ構造を比較します。
 
- | 概念  | Splunk | Azure Monitor |  コメント
+ | 概念  | Splunk | Azure Monitor |  Comment (コメント)
  | --- | --- | --- | ---
- | 展開単位  | クラスター |  クラスター |  Azure Monitor では、任意のクロス クラスター クエリが可能です。 Splunk ではできません。 |
+ | 展開単位  | cluster |  cluster |  Azure Monitor では、任意のクロス クラスター クエリが可能です。 Splunk ではできません。 |
  | データ キャッシュ |  バケット  |  キャッシュおよび保持ポリシー |  データの期間とキャッシュ レベルを制御します。 この設定は、クエリのパフォーマンスと展開のコストに直接影響します。 |
- | データの論理パーティション  |  インデックス  |  データベース  |  データの論理的な分離を可能にします。 どちらの実装でも、これらのパーティション間の和集合と結合が可能です。 |
- | 構造化されたイベント メタデータ | 該当なし | テーブル |  Splunk には、イベント メタデータの検索言語に対して公開される概念はありません。 Azure Monitor ログには、列を含むテーブルの概念があります。 各イベント インスタンスは行にマップされます。 |
- | データ レコード | イベント | 行 |  用語の変更のみです。 |
+ | データの論理パーティション  |  Index  |  database  |  データの論理的な分離を可能にします。 どちらの実装でも、これらのパーティション間の和集合と結合が可能です。 |
+ | 構造化されたイベント メタデータ | 該当なし | table |  Splunk には、イベント メタデータの検索言語に対して公開される概念はありません。 Azure Monitor ログには、列を含むテーブルの概念があります。 各イベント インスタンスは行にマップされます。 |
+ | データ レコード | event | 行 |  用語の変更のみです。 |
  | データ レコード属性 | フィールド |  列 |  Azure Monitor では、テーブル構造の一部として事前に定義されます。 Splunk では、イベントごとに固有のフィールドのセットがあります。 |
  | 型 | データ型 |  データ型 |  Azure Monitor のデータ型は、列に設定されるので、より明示的です。 どちらにもデータ型を動的に操作する機能があり、JSON のサポートを含めて、データ型のセットはほぼ同等です。 |
- | クエリと検索  | 検索 | クエリ |  概念は、Azure Monitor でも Splunk でも基本的に同じです。 |
+ | クエリと検索  | 検索 | query |  概念は、Azure Monitor でも Splunk でも基本的に同じです。 |
  | イベント取り込み時刻 | システム時刻 | ingestion_time() |  Splunk では、イベントのインデックスが作成された時刻のシステム タイムスタンプが各イベントに設定されます。 Azure Monitor では、ingestion_time() 関数を通じて参照できるシステム列を公開する ingestion_time という名前のポリシーを定義できます。 |
 
-## <a name="functions"></a>関数
+## <a name="functions"></a>Functions
 
 次の表では、Splunk の関数と同等の Azure Monitor の関数を指定します。
 
-|Splunk | Azure Monitor |コメント
+|Splunk | Azure Monitor |Comment (コメント)
 |---|---|---
 |strcat | strcat()| (1) |
 |split  | split() | (1) |
@@ -72,7 +72,7 @@ ms.locfileid: "56267582"
 > [!NOTE]
 > 次の例で、Splunk のフィールド _rule_ は Azure Monitor のテーブルにマップし、Splunk の既定のタイムスタンプは Log Analytics の _ingestion_time()_ 列にマップします。
 
-### <a name="search"></a>検索
+### <a name="search"></a>Search
 Splunk では、`search` キーワードを省略し、引用符なしの文字列を指定することができます。 Azure Monitor では、各クエリを `find` で始める必要があります。また、引用符なしの文字列は列名であり、検索値は引用符で囲まれた文字列である必要があります。 
 
 | |  | |
@@ -81,7 +81,7 @@ Splunk では、`search` キーワードを省略し、引用符なしの文字�
 | Azure Monitor | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 | | |
 
-### <a name="filter"></a>フィルター
+### <a name="filter"></a>filter
 Azure Monitor のクエリは、フィルターの表形式の結果セットから開始します。 Splunk では、フィルター処理は現在のインデックスに対する既定の操作です。 Splunk でも `where` 演算子を使用できますが、推奨されません。
 
 | |  | |
@@ -163,7 +163,7 @@ Splunk での結合には重要な制限があります。 サブクエリには
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **join** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias | join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
+| Splunk | **join** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
 | Azure Monitor | **join** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
 | | |
 

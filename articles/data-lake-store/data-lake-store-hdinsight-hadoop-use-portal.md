@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 23a1b2853423dd9f2a62c32792e27e3174495aff
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 25e4c308b55b66038be6825a239f185e5e813af5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817038"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085764"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal を使用して、Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
@@ -136,7 +136,7 @@ Azure Portal から、既存のサービス プリンシパルを使用するか
 
     ![HDInsight クラスターにサービス プリンシパルを追加する](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png "HDInsight クラスターにサービス プリンシパルを追加する")
 
-  既定では、__[読み取り]__、__[書き込み]__、__[実行]__ がすべて選択されています。
+   既定では、__[読み取り]__、__[書き込み]__、__[実行]__ がすべて選択されています。
 
 3. ページの下部にある **[選択]** をクリックします。
 4. **[実行]** をクリックして、アクセス許可を割り当てます。

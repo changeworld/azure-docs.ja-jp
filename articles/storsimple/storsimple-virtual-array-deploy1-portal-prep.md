@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e51c91d2857ac91b0ebf998c016ebcf56c0de0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244785"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088708"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual Array のデプロイ - Azure Portal の準備
 
@@ -155,15 +155,15 @@ StorSimple デバイス マネージャー サービスが稼働したら、サ�
 3. **[追加]** をクリックします。
 4. **[ストレージ アカウントの追加]** ブレードで、次の操作を行います。
    
-    1. **[サブスクリプション]** で **[現在]** を選択します。
+   1. **[サブスクリプション]** で **[現在]** を選択します。
    
-    2. Azure ストレージ アカウントの名前を指定します。
+   2. Azure ストレージ アカウントの名前を指定します。
    
-    3. **[有効にする]** を選択し、StorSimple デバイスとクラウドの間のネットワーク通信用に、セキュリティで保護されたチャネルを作成します。 **[無効にする]** は、プライベート クラウド内で動作している場合にのみ選択します。
+   3. **[有効にする]** を選択し、StorSimple デバイスとクラウドの間のネットワーク通信用に、セキュリティで保護されたチャネルを作成します。 **[無効にする]** は、プライベート クラウド内で動作している場合にのみ選択します。
    
-    4. **[追加]** をクリックします。 ストレージ アカウントが正常に作成されると、その旨が通知が表示されます。<br></br>
+   4. **[追加]** をクリックします。 ストレージ アカウントが正常に作成されると、その旨が通知が表示されます。<br></br>
    
-     ![既存のストレージ アカウントの資格情報の追加](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
+      ![既存のストレージ アカウントの資格情報の追加](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 ## <a name="next-step"></a>次のステップ
 

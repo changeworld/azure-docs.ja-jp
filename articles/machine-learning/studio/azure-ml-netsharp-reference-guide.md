@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 2051a14532f00f24be0c8cb0ca03a7b2b4078a45
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d667dadeb2e7c9d0005ab8d1a565017973038aaa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56457015"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905156"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Net# ニューラル ネットワーク仕様言語について
 
@@ -216,17 +216,16 @@ hidden ByCol[5, 20] from Pixels where (s,d) => abs(s[1] - d[1]) <= 1;
 + **UpperPad** および **LowerPad**: (オプション) 使用する埋め込みの量をさらに詳細に管理します。 **重要:** これらの属性は、上記の **Padding** プロパティが定義されて***いない***場合にのみ定義できます。 値は、整数値のタプルで、長さがバンドルのアリティである必要があります。 これらの属性が指定されると、入力層の各次元の最上部と最下部に、"ダミー" のノードが追加されます。 次元の最上部と最下部に追加されるノードの数は、**LowerPad**[i] と **UpperPad**[i] で決定されます。
 
     カーネルが "ダミー" ではない "実際" のノードのみに対応するようにするには、以下の条件を満たす必要があります。
-      - **LowerPad** の各要素が厳密に `KernelShape[d]/2` 未満である。
-      - **UpperPad** の各要素が `KernelShape[d]/2` を超過しない。
-      - これらの属性の既定値は、すべての要素が 0 に等しいタプルです。
+  - **LowerPad** の各要素が厳密に `KernelShape[d]/2` 未満である。
+  - **UpperPad** の各要素が `KernelShape[d]/2` を超過しない。
+  - これらの属性の既定値は、すべての要素が 0 に等しいタプルです。
 
     **Padding** = true に設定すると、「実際」の入力内のカーネルの「中央」を維持するのに必要なだけ埋め込みを行えるようになります。 これにより、出力サイズを計算するための演算が若干変更されます。 通常、出力サイズ *D* は `D = (I - K) / S + 1` で計算されます。ここで、`I` は入力サイズ、`K` はカーネル サイズ、`S` は Stride、`/` は整数除算 (ゼロへ丸め) を示します。 UpperPad = [1, 1] に設定すると、入力サイズ `I` は事実上 29 になるため、`D = (29 - 5) / 2 + 1 = 13` になります。 しかし、**Padding** = true に設定すると、基本的に `I` は `K - 1` によって引き上げられるため、`D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14` になります。 **UpperPad** と **LowerPad** の値を指定することで、単に **Padding** = true を設定したときよりも埋め込みをさらに詳細に管理できます。
 
 畳み込みネットワークとそのアプリケーションの詳細については、以下の記事を参照してください。
 
-+ [http://deeplearning.net/tutorial/lenet.html ](http://deeplearning.net/tutorial/lenet.html)
-+ [http://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
-+ [http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf](http://people.csail.mit.edu/jvb/papers/cnn_tutorial.pdf)
++ [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
++ [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
 ## <a name="pooling-bundles"></a>プーリング バンドル
 
@@ -252,13 +251,13 @@ hidden P1 [5, 12, 12]
 
 プーリング層の詳細については、以下の記事を参照してください。
 
-+ [http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (セクション 3.4)
-+ [http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](http://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
-+ [http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](http://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (セクション 3.4)
++ [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
++ [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
 ## <a name="response-normalization-bundles"></a>応答正規化バンドル
 
-**応答正規化**は、Geoffrey Hinton らが「[ImageNet Classification with Deep Convolutional Neural Networks](http://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)」(ディープ畳み込みニューラル ネットワークを使用した ImageNet 分類) という論文で最初に発表した、ローカル正規化スキームです。
+**応答正規化**は、Geoffrey Hinton らが「[ImageNet Classification with Deep Convolutional Neural Networks](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)」(ディープ畳み込みニューラル ネットワークを使用した ImageNet 分類) という論文で最初に発表した、ローカル正規化スキームです。
 
 応答正規化は、ニューラル ネットの一般化を支援するために使用します。 あるニューロンが高度な活性レベルで発火しているときに、ローカルな応答正規化層によって周囲のニューロンの活性レベルを抑えます。 これは、`α`、`β`、`k` の 3 つのパラメーターと、畳み込み構造体 (または隣接する形状) で行います。 宛先層 **y** のすべてのニューロンは、ソース層のニューロン **x** に対応しています。 **y** のアクティブ化レベルは、次の公式で得られます。次の畳み込み構造体で定義されているように、`f` はニューロンのアクティブ化レベルで、`Nx` はカーネル (**x** に隣接するニューロンを含むセット) です。
 
@@ -463,4 +462,4 @@ output Digit [10] from Hid3 all;
 
 ## <a name="acknowledgements"></a>謝辞
 
-ニューラル ネットワークのアーキテクチャをカスタマイズするための Net# 言語は Microsoft の Shon Katzenberger (設計者、Machine Learning) と Alexey Kamenev (ソフトウェア エンジニア、Microsoft Research) により開発されました。 機械学習と、画像検出からテキスト分析までの用途に社内利用されています。 詳細については、[Azure Machine Learning studio でのニューラル ネットの Net# の概要](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)に関するページを参照してください
+ニューラル ネットワークのアーキテクチャをカスタマイズするための Net# 言語は Microsoft の Shon Katzenberger (設計者、Machine Learning) と Alexey Kamenev (ソフトウェア エンジニア、Microsoft Research) により開発されました。 機械学習と、画像検出からテキスト分析までの用途に社内利用されています。 詳細については、[Azure Machine Learning studio でのニューラル ネットの Net# の概要](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)に関するページを参照してください

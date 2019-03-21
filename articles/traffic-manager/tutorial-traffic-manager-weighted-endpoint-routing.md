@@ -8,12 +8,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: f4c29526f675cab461153b4749c4f6edc237dada
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 50790e50602fbc8d302a67ea9963a4e492ce2f0b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467334"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009762"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して重み付けされたエンドポイントを使用してトラフィックのルーティングを制御する
 
@@ -60,6 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |リソース グループ| **[新規]** を選択し、「**myResourceGroupTM1**」と入力します。|
     |Location| **[米国東部]** を選択します。|
     |||
+
 4. **[サイズの選択]** で、VM サイズを選択します。
 5. **[設定]** に次の値を選択し、**[OK]** を選択します。
     
@@ -69,6 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |ネットワーク セキュリティ グループ|**[Basic]** を選択します。 **[パブリック受信ポートを選択]** ボックスの一覧から **[HTTP]** と **[RDP]** を選択します。 |
     |ブート診断|**[無効]** を選択します。|
     |||
+
 6. **[概要]** の **[作成]** で **[作成]** を選択して、VM のデプロイを開始します。
 
 7. 次のように値を変更して、手順 1 から 6 を繰り返します。
@@ -80,6 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |VM 名 | 「**myIISVMWEurope**」と入力します。|
     |仮想ネットワーク | **[仮想ネットワーク]** を選択します。 **[仮想ネットワークの作成]** で、**[名前]** に「**myVNet2**」と入力します。 **[サブネット]** には、「**mySubnet**」と入力します。|
     |||
+
 8. VM の作成には数分かかります。 両方の VM の作成が完了するまで、他の手順に進まないでください。
 
 ![VM の作成](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -137,6 +140,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 4. **[サイズの選択]** で、VM サイズを選択します。
 5. **[設定]** に次の値を選択し、**[OK]** を選択します。
+
     |Setting|値|
     |---|---|
     |仮想ネットワーク| **[仮想ネットワーク]** を選択します。 **[仮想ネットワークの作成]** で、**[名前]** に「**myVNet3**」と入力します。 サブネットには、「**mySubnet**」と入力します。|

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 40062cfb2e646fd6befef1e746f9493f3e4b20f9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f2f4fb04ac483f7716c0b7a0fb1f87843d8b817f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821365"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995301"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
@@ -588,7 +588,7 @@ var employees = query.Execute();
 
 パフォーマンスを確保するため、クエリで **RowKey** と **PartitionKey** の両方をどのように指定するか注意してください。  
 
-次のコード サンプルは、Fluent API を使用したのと同等の機能を示しています (一般的な Fluent API の詳細について、 [Fluent API を設計するためのベスト プラクティス](http://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)を参照してください)。  
+次のコード サンプルは、Fluent API を使用したのと同等の機能を示しています (一般的な Fluent API の詳細について、 [Fluent API を設計するためのベスト プラクティス](https://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)を参照してください)。  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(

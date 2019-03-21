@@ -8,44 +8,44 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 33234c03a3e691a95e61f825a0351cf481431294
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e0513bc18f1cf14beb4c1becfc1835235a5ddc96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731396"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092227"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのエクスポート ジョブの作成
 REST API を使用して Microsoft Azure Import/Export サービスのエクスポート ジョブを作成するには、次の手順を実行します。
 
--   エクスポートする BLOB の選択。
+- エクスポートする BLOB の選択。
 
--   送付先の取得。
+- 送付先の取得。
 
--   エクスポート ジョブの作成。
+- エクスポート ジョブの作成。
 
--   サポートされている運送サービスを経由して、Microsoft に空のドライブを送付する。
+- サポートされている運送サービスを経由して、Microsoft に空のドライブを送付する。
 
--   エクスポート ジョブのパッケージ情報を更新する。
+- エクスポート ジョブのパッケージ情報を更新する。
 
--   Microsoft から返送されたドライブを受け取る。
+- Microsoft から返送されたドライブを受け取る。
 
- Import/Export サービスの概要については、「[Using the Windows Azure Import/Export service to Transfer Data to Blob Storage (Windows Azure Import/Export サービスを使用した Blob Storage へのデータの転送)](storage-import-export-service.md)」を参照してください。[Azure ポータル](https://portal.azure.com/)を使用してインポート ジョブやエクスポート ジョブを作成および管理する方法も説明されています。
+  Import/Export サービスの概要については、「[Using the Windows Azure Import/Export service to Transfer Data to Blob Storage (Windows Azure Import/Export サービスを使用した Blob Storage へのデータの転送)](storage-import-export-service.md)」を参照してください。[Azure ポータル](https://portal.azure.com/)を使用してインポート ジョブやエクスポート ジョブを作成および管理する方法も説明されています。
 
 ## <a name="selecting-blobs-to-export"></a>エクスポートする BLOB を選択する
  エクスポート ジョブを作成するには、ストレージ アカウントからエクスポートする BLOB の一覧を提供する必要があります。 エクスポートする BLOB の選択方法は複数あります。
 
--   BLOB の相対パスを使用して、1 つの BLOB とそのすべてのスナップショットを選択する。
+- BLOB の相対パスを使用して、1 つの BLOB とそのすべてのスナップショットを選択する。
 
--   BLOB の相対パスを使用して、1 つの BLOB (スナップショットを除く) を選択する。
+- BLOB の相対パスを使用して、1 つの BLOB (スナップショットを除く) を選択する。
 
--   BLOB の相対パスとスナップショット時刻を使用して、1 つのスナップショットを選択する。
+- BLOB の相対パスとスナップショット時刻を使用して、1 つのスナップショットを選択する。
 
--   BLOB のプレフィックスを使用して、特定のプレフィックスを持つすべての BLOB とスナップショットを選択する。
+- BLOB のプレフィックスを使用して、特定のプレフィックスを持つすべての BLOB とスナップショットを選択する。
 
--   ストレージ アカウント内のすべての BLOB とスナップショットをエクスポートする。
+- ストレージ アカウント内のすべての BLOB とスナップショットをエクスポートする。
 
- エクスポートする BLOB の指定方法について詳しくは、[Put Job](/rest/api/storageimportexport/jobs) をご覧ください。
+  エクスポートする BLOB の指定方法について詳しくは、[Put Job](/rest/api/storageimportexport/jobs) をご覧ください。
 
 ## <a name="obtaining-your-shipping-location"></a>送付先を取得する
 エクスポート ジョブを作成する前に、[Get Location](https://portal.azure.com) または [List Locations](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) 操作を呼び出して、送付先の名前と住所を取得する必要があります。 `List Locations` は、送付先と住所の一覧とを返します。 返された一覧から送付先を選択し、その住所宛てにハードドライブを発送します。 `Get Location` 操作を使用して、特定の送付先の住所を取得することもできます。

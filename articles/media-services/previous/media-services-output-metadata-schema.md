@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: cdcdcff8a5c016cfd3074a950ad6060e55b8b0fe
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 42227095c69924cd2922673d020b349aa29f2daa
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312584"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259518"
 ---
 # <a name="output-metadata"></a>出力メタデータ
 ## <a name="overview"></a>概要
@@ -33,7 +33,7 @@ Media Services では、メタデータを生成するために入力資産を�
 
 完全なスキーマ コードと XML の例は、この記事の最後で紹介します。  
 
-## <a name="AssetFiles "></a> AssetFiles ルート要素
+## <a name="AssetFiles"></a> AssetFiles ルート要素
 エンコード ジョブの AssetFile エントリのコレクション。  
 
 ### <a name="child-elements"></a>子要素
@@ -41,11 +41,11 @@ Media Services では、メタデータを生成するために入力資産を�
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |AssetFiles コレクションの一部である AssetFile 要素。 |
 
-## <a name="AssetFile "></a> AssetFile 要素
+## <a name="AssetFile"></a> AssetFile 要素
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **Name**<br/><br/> 必須 |**xs:string** |メディア資産ファイルの名前。 |
 | **サイズ**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:long** |資産ファイルのサイズ (バイト単位)。 |
@@ -58,7 +58,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 詳細については、「VideoTracks 要素」を参照してください。 |
 | **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のオーディオ トラックを含めることができます。 これは、そのオーディオ トラックすべてのコレクションです。 詳細については、「AudioTracks 要素」を参照してください。 |
 
-## <a name="Sources "></a> Sources 要素
+## <a name="Sources"></a> Sources 要素
 この AssetFile を生成するために処理された入力/ソース メディア ファイルのコレクション。  
 
 XML の例については、「[XML の例](#xml)」を参照してください。  
@@ -68,17 +68,17 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 | --- | --- |
 | **ソース**<br/><br/> minOccurs="1" maxOccurs="unbounded" |この資産を生成するときに使用される入力/ソース ファイル。 詳細については、「Source 要素」を参照してください。 |
 
-## <a name="Source "></a> Source 要素
+## <a name="Source"></a> Source 要素
 この資産を生成するときに使用される入力/ソース ファイル。  
 
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **Name**<br/><br/> 必須 |**xs:string** |入力ソース ファイルの名前。 |
 
-## <a name="VideoTracks "></a> VideoTracks 要素
+## <a name="VideoTracks"></a> VideoTracks 要素
 各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 **VideoTracks** 要素は、すべてのビデオ トラックのコレクションを表します。  
 
 XML の例については、「[XML の例](#xml)」を参照してください。  
@@ -94,7 +94,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |このビデオ トラックの 0 から始まるインデックス。**注:** この **Id** は、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **FourCC**<br/><br/> 必須 |**xs:string** |ビデオ コーデックの FourCC コード。 |
@@ -110,7 +110,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 | **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |エンコード プリセットを使用して要求された、このビデオ トラックのターゲット平均ビットレート (キロビット/秒)。 |
 | **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |このビデオ トラックの最大 GOP 平均ビットレート (キロビット数/秒)。 |
 
-## <a name="AudioTracks "></a> AudioTracks 要素
+## <a name="AudioTracks"></a> AudioTracks 要素
 各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のオーディオ トラックを含めることができます。 **AudioTracks** 要素は、すべてのオーディオ トラックのコレクションを表します。  
 
 XML の例については、「[XML の例](#xml)」を参照してください。  
@@ -120,13 +120,13 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |親 AssetFile 内の特定のオーディオ トラック。 詳細については、「AudioTrack 要素」を参照してください。 |
 
-## <a name="AudioTrack "></a> AudioTrack 要素
+## <a name="AudioTrack"></a> AudioTrack 要素
 親 AssetFile 内の特定のオーディオ トラック。  
 
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |このオーディオ トラックの 0 から始まるインデックス。**注:** これは、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **Codec** |**xs:string** |オーディオ トラック コーデック文字列。 |
@@ -141,13 +141,13 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |ラウドネス測定結果パラメーター。 詳細については、「LoudnessMeteringResultParameters 要素」を参照してください。 |
 
-## <a name="LoudnessMeteringResultParameters "></a> LoudnessMeteringResultParameters 要素
+## <a name="LoudnessMeteringResultParameters"></a> LoudnessMeteringResultParameters 要素
 ラウドネス測定結果パラメーター。  
 
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | 説明 |
+| Name | Type | 説明 |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs:string** |**Dolby** Professional Loudness Metering 開発キット バージョン。 |
 | **DialogNormalization**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> 必須 |**xs:int** |DPLM によって生成された DialogNormalization。LoudnessMetering が設定されているときに必要 |
@@ -162,7 +162,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 
 ## <a name="schema-code"></a>スキーマ コード
     <?xml version="1.0" encoding="utf-8"?>  
-    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.2"  
+    <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.2"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata"  
                targetNamespace="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata"  
                elementFormDefault="qualified">  
@@ -513,7 +513,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 
 出力メタデータ ファイルの XML の例を次に示します。  
 
-    <AssetFiles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"   
+    <AssetFiles xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema"   
                 xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata">  
       <AssetFile Name="BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4" Size="4646283" Duration="PT8.4288444S">  
         <Sources>  

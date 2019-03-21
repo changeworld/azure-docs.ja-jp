@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8316e571e97fce65b3f8308709d3300bc585663f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: edc38296374538fd708a74f575d5b0c77770c005
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434871"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901544"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Azure Automation でのソース管理の統合 - 従来
 
@@ -69,19 +69,19 @@ GitHub アカウントと、Azure Automation にリンクするリポジトリ�
      | type |String |
      | 値 |{"Branch":\<*ブランチ名*>,"RunbookFolderPath":\<*Runbookフォルダー パス*>,"ProviderType":\<*GitHub の場合は値 1*>,"Repository":\<*リポジトリ名*>,"Username":\<*Your GitHub ユーザー名*>} |
 
-    * **Microsoft.Azure.Automation.SourceControl.OauthToken**変数には、OAuthToken のセキュリティで保護され暗号化された値が格納されます。  
+     * **Microsoft.Azure.Automation.SourceControl.OauthToken**変数には、OAuthToken のセキュリティで保護され暗号化された値が格納されます。  
 
-    |**パラメーター**            |**値** |
-    |:---|:---|
-    | Name  | Microsoft.Azure.Automation.SourceControl.OauthToken |
-    | type | Unknown(Encrypted) |
-    | 値 | <*暗号化された OAuthToken*> |  
+     |**パラメーター**            |**値** |
+     |:---|:---|
+     | Name  | Microsoft.Azure.Automation.SourceControl.OauthToken |
+     | type | Unknown(Encrypted) |
+     | 値 | <*暗号化された OAuthToken*> |  
 
-    ![variables](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
+     ![variables](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 
-    * **Automation ソース管理** は、承認済みのアプリケーションとして GitHub アカウントに追加されます。 アプリケーションを表示するには、GitHub のホーム ページから **[プロファイル]** > **[設定]** > **[アプリケーション]** の順に移動します。 このアプリケーションにより、Azure Automation は GitHub リポジトリを Automation アカウントに同期できます。  
+     * **Automation ソース管理** は、承認済みのアプリケーションとして GitHub アカウントに追加されます。 アプリケーションを表示するには、GitHub のホーム ページから **[プロファイル]** > **[設定]** > **[アプリケーション]** の順に移動します。 このアプリケーションにより、Azure Automation は GitHub リポジトリを Automation アカウントに同期できます。  
 
-    ![Git アプリケーション](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
+     ![Git アプリケーション](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
 
 
 ## <a name="using-source-control-in-automation"></a>Automation でのソース管理の使用
@@ -124,10 +124,6 @@ Runbook をチェックインすると、Azure Automation で Runbook に対し�
 
     > [!NOTE] 
     > ソース管理から同期すると、ソース管理に現在含まれている **すべての** Runbook のうち、Automation アカウントに現在存在するドラフト バージョンの Runbook が上書きされます。 同期するための対応する Git コマンド ライン命令は、**git pull** です。
-
-
-## <a name="troubleshooting-source-control-problems"></a>ソース管理の問題のトラブルシューティング
-チェックイン ジョブまたは同期ジョブにエラーがある場合は、ジョブが中断状態になるため、[ジョブ] ページでエラーに関する詳細情報を表示できます。  **[すべてのログ]** 部分には、該当するジョブに関連付けられた PowerShell ストリームがすべて表示されます。 これにより、チェックインまたは同期の問題を解決するために必要な詳細情報が提供されます。Runbook での同期またはチェックイン中に発生した一連のアクションも表示されます。  
 
 ![AllLogs イメージ](media/automation-source-control-integration-legacy/automation_13_AllLogs.png)
 

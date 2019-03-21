@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: ea13ae5bc649ae3a803fb8446fa009fac94874a8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a5a3bb38f832d13a39a061453e6ef7910ba5cccf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673566"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094111"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>クイック スタート:Bing Entity Search SDK for Java を使用して検索要求を送信する
 
@@ -67,7 +67,7 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
 
 ## <a name="create-a-search-client"></a>検索クライアントを作成する
 
-2. `dominantEntityLookup` クライアントを実装します。これには API エンドポイントと `ServiceClientCredentials` クラスのインスタンスが必要となります。
+1. `dominantEntityLookup` クライアントを実装します。これには API エンドポイントと `ServiceClientCredentials` クラスのインスタンスが必要となります。
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -80,47 +80,47 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
 
     `ServiceClientCredentials` を実装するには、次の手順に従います。
 
-    1. `OkHttpClient.Builder` オブジェクトをパラメーターとして `applyCredentialsFilter()` 関数をオーバーライドします。 
+   1. `OkHttpClient.Builder` オブジェクトをパラメーターとして `applyCredentialsFilter()` 関数をオーバーライドします。 
         
-        ```java
-        //...
-        new ServiceClientCredentials() {
-                @Override
-                public void applyCredentialsFilter(OkHttpClient.Builder builder) {
-                //...
-                }
-        //...
-        ```
+       ```java
+       //...
+       new ServiceClientCredentials() {
+               @Override
+               public void applyCredentialsFilter(OkHttpClient.Builder builder) {
+               //...
+               }
+       //...
+       ```
     
-    2. `applyCredentialsFilter()` 内で `builder.addNetworkInterceptor()` を呼び出します。 新しい `Interceptor` オブジェクトを作成し、その `intercept()` メソッドをオーバーライドして、`Chain` インターセプター オブジェクトを受け取るようにします。
+   2. `applyCredentialsFilter()` 内で `builder.addNetworkInterceptor()` を呼び出します。 新しい `Interceptor` オブジェクトを作成し、その `intercept()` メソッドをオーバーライドして、`Chain` インターセプター オブジェクトを受け取るようにします。
 
-        ```java
-        //...
-        builder.addNetworkInterceptor(
-            new Interceptor() {
-                @Override
-                public Response intercept(Chain chain) throws IOException {
-                //...    
-                }
-            });
-        ///...
-        ```
+       ```java
+       //...
+       builder.addNetworkInterceptor(
+           new Interceptor() {
+               @Override
+               public Response intercept(Chain chain) throws IOException {
+               //...    
+               }
+           });
+       ///...
+       ```
 
-    3. `intercept` 関数内に、要求のための変数を作成します。 `Request.Builder()` を使用して要求を作成します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、要求オブジェクトで `chain.proceed()` を返します。
+   3. `intercept` 関数内に、要求のための変数を作成します。 `Request.Builder()` を使用して要求を作成します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、要求オブジェクトで `chain.proceed()` を返します。
             
-        ```java
-        //...
-        public Response intercept(Chain chain) throws IOException {
-            Request request = null;
-            Request original = chain.request();
-            Request.Builder requestBuilder = original.newBuilder()
-                    .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            request = requestBuilder.build();
-            return chain.proceed(request);
-        }
-        //...
-        ```
-## <a name="send-a-request-and-receive-a-response"></a>要求を送信して応答を受信する
+       ```java
+       //...
+       public Response intercept(Chain chain) throws IOException {
+           Request request = null;
+           Request original = chain.request();
+           Request.Builder requestBuilder = original.newBuilder()
+                   .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+           request = requestBuilder.build();
+           return chain.proceed(request);
+       }
+       //...
+       ```
+      ## <a name="send-a-request-and-receive-a-response"></a>要求を送信して応答を受信する
 
 1. サブスクリプション キーを使用して検索クライアントの新しいインスタンスを作成します。 `client.entities().search()` を使用して検索クエリ `satya nadella` に対する検索要求を送信し、応答を受け取ります。 
     
@@ -130,7 +130,7 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
             "satya nadella", null, null, null, null, null, null, "en-us", null, null, SafeSearch.STRICT, null);
     ```
 
-2. エンティティが返された場合は、リストに変換します。 それを反復処理し、主要なエンティティを表示します。
+1. エンティティが返された場合は、リストに変換します。 それを反復処理し、主要なエンティティを表示します。
 
     ```java
     if (entityData.entities().value().size() > 0){

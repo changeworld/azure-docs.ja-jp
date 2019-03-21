@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e56169d74d1669c3bb7adda06590145d2ca31b72
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 432120c324aa81107946fc30548e6e49acce6575
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893342"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002320"
 ---
 # <a name="saas-sell-through-azure---apis"></a>Azure を通じた SaaS の販売 - API
 
@@ -53,26 +53,26 @@ Azure では、SaaS サービスがそのエンド ユーザーに公開する�
 
 Azure portal を使用して新しいアプリケーションを登録するには、次の手順を実行します。
 
-1.  [Azure Portal](https://portal.azure.com/) にサインインします。
-2.  ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータルのセッションを目的のテナントに設定します。
-3.  左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]**、**[新しいアプリケーションの登録]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータルのセッションを目的のテナントに設定します。
+3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]**、**[新しいアプリケーションの登録]** の順にクリックします。
 
-    ![SaaS AD のアプリ登録](./media/saas-offer-app-registration.png)
+   ![SaaS AD のアプリ登録](./media/saas-offer-app-registration.png)
 
-4.  [作成] ページで、アプリケーションの登録情報を入力します。
-    -   **[名前]**:わかりやすいアプリケーション名を入力します
-    -   **アプリケーションの種類**: 
-        - デバイスのローカルにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)については、**[ネイティブ]** を選択します。 OAuth の public [ネイティブ クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client)の場合には、この設定を使用します。
-        - セキュリティで保護されたサーバーにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)と[リソース/API アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server)については、**[Web アプリ/API]** を選択します。 OAuth のコンフィデンシャル [Web クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client)と、パブリック [ユーザーエージェントベース クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)の場合には、この設定を使用します。
-        同じアプリケーションでクライアントとリソース/API を両方とも公開することもできます。
-    -   **サインオン URL**:Web アプリまたは API アプリケーションの場合は、アプリのベース URL を指定します。 ローカル コンピューターで実行されている Web アプリの URL であれば、たとえば **http://localhost:31544** のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
-    -   **リダイレクト URI**:ネイティブ アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 **http://MyFirstAADApp** など、ご自分のアプリケーションに固有の値を入力してください。
+4. [作成] ページで、アプリケーションの登録情報を入力します。
+   - **[名前]**:わかりやすいアプリケーション名を入力します
+   - **アプリケーションの種類**: 
+     - デバイスのローカルにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)については、**[ネイティブ]** を選択します。 OAuth の public [ネイティブ クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#native-client)の場合には、この設定を使用します。
+     - セキュリティで保護されたサーバーにインストールされている[クライアント アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#client-application)と[リソース/API アプリケーション](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#resource-server)については、**[Web アプリ/API]** を選択します。 OAuth のコンフィデンシャル [Web クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#web-client)と、パブリック [ユーザーエージェントベース クライアント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#user-agent-based-client)の場合には、この設定を使用します。
+     同じアプリケーションでクライアントとリソース/API を両方とも公開することもできます。
+   - **サインオン URL**:Web アプリまたは API アプリケーションの場合は、アプリのベース URL を指定します。 ローカル コンピューターで実行されている Web アプリの URL であれば、たとえば **http://localhost:31544** のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
+   - **リダイレクト URI**:ネイティブ アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 **http://MyFirstAADApp** など、ご自分のアプリケーションに固有の値を入力してください。
 
-        ![SaaS AD アプリの登録](./media/saas-offer-app-registration-2.png) Web アプリケーションまたはネイティブ アプリケーションの具体的な例については、[Azure AD 開発者向けガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)に関する記事の開始セクションで利用できるクイック スタート ガイド付きセットアップを確認してください。
+     ![SaaS AD アプリの登録](./media/saas-offer-app-registration-2.png) Web アプリケーションまたはネイティブ アプリケーションの具体的な例については、[Azure AD 開発者向けガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)に関する記事の開始セクションで利用できるクイック スタート ガイド付きセットアップを確認してください。
 
-5.  完了したら、**[作成]** をクリックします。 Azure AD によってアプリケーションに一意の ID が割り当てられ、アプリケーションのメイン登録ページが表示されます。 アプリケーションが Web アプリケーションとネイティブ アプリケーションのどちらであるかに応じて、アプリケーションに機能を追加するためのさまざまなオプションが表示されます。
+5. 完了したら、**[作成]** をクリックします。 Azure AD によってアプリケーションに一意の ID が割り当てられ、アプリケーションのメイン登録ページが表示されます。 アプリケーションが Web アプリケーションとネイティブ アプリケーションのどちらであるかに応じて、アプリケーションに機能を追加するためのさまざまなオプションが表示されます。
 
-    **注:** 既定では、新しく登録されたアプリケーションは、同じテナントのユーザーのみがサインインできる構成になります。
+   **注:** 既定では、新しく登録されたアプリケーションは、同じテナントのユーザーのみがサインインできる構成になります。
 
 <a name="api-methods-and-endpoints"></a>API メソッドとエンドポイント
 -------------------------
@@ -502,6 +502,7 @@ Azure Marketplace API のエンドポイントは、`https://marketplaceapi.micr
     "lastModified": ""
 }
 ```
+
 | **パラメーター名**     | **データの種類** | **説明**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | String        | Azure の SaaS サブスクリプション リソースの ID。    |

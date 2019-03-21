@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 76af79cc9ef1ebea30b30a291f451b7b0a4f3ba6
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 832614c46f0269460245d081f20897b591e31fce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694484"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101569"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso の移行: オンプレミス アプリを Azure VM および SQL Database Managed Instance にリホストする
 
@@ -222,7 +222,7 @@ Contoso は以下の点を考慮します。
 - 1 つのサブネットは、1 つのルート テーブルにのみ関連付けることができます。
 - Microsoft Azure では、ルート テーブルの作成に追加料金はかかりません。
 
- Contoso の管理者は次のようにしてルーティングを設定します。
+  Contoso の管理者は次のようにしてルーティングを設定します。
 
 1. **ContosoNetworkingRG** リソース グループに UDR (ルート) テーブルを作成します。
 
@@ -441,11 +441,11 @@ Azure への移行を実行する前に、Contoso の管理者は、オンプレ
 
 1. **[インフラストラクチャの準備]** > **[レプリケーションの設定]** > **[レプリケーション ポリシー]** >  **[作成と関連付け]** で、**ContosoMigrationPolicy** ポリシーを作成します。
 2. 以下の既定の設定を使用します。
-    - **RPO しきい値**: 既定値は 60 分です。 この値で、復旧ポイントの作成頻度を指定します。 継続的なレプリケーションがこの制限を超えると、アラートが生成されます。
-    - **[復旧ポイントのリテンション期間]**: 既定値は 24 時間です。 この値は、各復旧ポイントのリテンション期間の長さを指定します。 レプリケートされた VM は、期間内の任意の時点に復旧できます。
-    - **[アプリ整合性スナップショットの頻度]**: 既定値は 1 時間です。 この値は、アプリケーション整合性スナップショットが作成される頻度を指定します。
+   - **RPO しきい値**: 既定値は 60 分です。 この値で、復旧ポイントの作成頻度を指定します。 継続的なレプリケーションがこの制限を超えると、アラートが生成されます。
+   - **[復旧ポイントのリテンション期間]**: 既定値は 24 時間です。 この値は、各復旧ポイントのリテンション期間の長さを指定します。 レプリケートされた VM は、期間内の任意の時点に復旧できます。
+   - **[アプリ整合性スナップショットの頻度]**: 既定値は 1 時間です。 この値は、アプリケーション整合性スナップショットが作成される頻度を指定します。
  
-    ![レプリケーション ポリシー - 作成](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
+     ![レプリケーション ポリシー - 作成](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
 
 3. このポリシーは自動的に構成サーバーに関連付けられます。 
 

@@ -14,12 +14,12 @@ ms.devlang: R
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: jepeach
-ms.openlocfilehash: 0e5db2c08749a59a03e384c6048e67f7570f6750
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 70fc78fb515c56f0b3102bb006eb6491a664babd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211440"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886673"
 ---
 # <a name="r-developers-guide-to-azure"></a>Azure での R 開発者向けガイド
 <img src="media/r-developers-guide/logo_r.svg" alt="R logo" align="right" width="200" />
@@ -125,7 +125,7 @@ Machine Learning Services は 2016 以降、オンプレミスの SQL Server の
 
 
 ### <a name="next-steps"></a>次の手順
-* [mrsdeploy を使った Azure での R コードの実行](http://blog.revolutionanalytics.com/2017/03/running-your-r-code-azure.html)
+* [mrsdeploy を使った Azure での R コードの実行](https://blog.revolutionanalytics.com/2017/03/running-your-r-code-azure.html)
 * [クラウド内の Machine Learning Server](https://docs.microsoft.com/machine-learning-server/install/machine-learning-server-in-the-cloud)
 * [Machine Learning Server および Microsoft R 用のその他のリソース](https://docs.microsoft.com/machine-learning-server/resources-more)
 * [Azure 上での R](https://github.com/yueguoguo/r-on-azure) - Azure で R を使用するためのパッケージ、ツール、ケース スタディの概要

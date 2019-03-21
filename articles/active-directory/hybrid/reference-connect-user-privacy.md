@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74cdbd704f589ca4c045f672bbc49fa4460003a0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6f5d3125b7b77e8ce7a943f640c44615049ab160
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175848"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096352"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>ユーザー プライバシーと Azure AD Connect 
 
@@ -84,4 +84,4 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
 
 ## <a name="next-steps"></a>次の手順
 * [セキュリティ センターで Microsoft のプライバシー ポリシーを確認する](https://www.microsoft.com/trustcenter)
-- [Azure AD Connect Health とユーザー プライバシー](reference-connect-health-user-privacy.md)
+* [Azure AD Connect Health とユーザー プライバシー](reference-connect-health-user-privacy.md)

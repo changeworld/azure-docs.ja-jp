@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 104730d94134d935f56fb95fd55d05b515e9f501
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245567"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014982"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 上に IBM DB2 pureScale をデプロイする
 
 最近、z/OS 上で実行される IBM DB2 環境から Azure 上の IBM DB2 pureScale に企業のお客様が移行する際に、ある[アーキテクチャの例](ibm-db2-purescale-azure.md)が使用されています。この記事では、そのアーキテクチャの例をデプロイする方法について説明します。
 
-移行の際に使用される手順に従うには、GitHub 上の [Db2onAzure](http://aka.ms/db2onazure) リポジトリ内にあるインストール スクリプトをご覧ください。 これらのスクリプトは、一般的な中規模サイズのオンライン トランザクション処理 (OLTP) ワークロード用のアーキテクチャに基づきます。
+移行の際に使用される手順に従うには、GitHub 上の [Db2onAzure](https://aka.ms/db2onazure) リポジトリ内にあるインストール スクリプトをご覧ください。 これらのスクリプトは、一般的な中規模サイズのオンライン トランザクション処理 (OLTP) ワークロード用のアーキテクチャに基づきます。
 
 ## <a name="get-started"></a>作業開始
 
-このアーキテクチャをデプロイするには、GitHub 上の [DB2onAzure](http://aka.ms/db2onazure) リポジトリ内にある deploy.sh スクリプトをダウンロードして実行します。
+このアーキテクチャをデプロイするには、GitHub 上の [DB2onAzure](https://aka.ms/db2onazure) リポジトリ内にある deploy.sh スクリプトをダウンロードして実行します。
 
 このリポジトリには、Grafana ダッシュボードを設定するためのスクリプトも含まれています。 ダッシュボードを使用すると、DB2 に含まれているオープンソースの監視およびアラート システムである Prometheus に対してクエリを実行できます。
 
@@ -76,7 +76,7 @@ deploy.sh スクリプトを実行すると、このアーキテクチャの Azu
 GitHub リポジトリには、DB2server.rsp という応答 (.rsp) ファイルが用意されています。このファイルを利用して、DB2 pureScale インストールのための自動化されたスクリプトを生成できます。 次の表に、応答ファイルでセットアップのために使用される DB2 pureScale オプションを示します。 必要に応じて、お使いの環境に合わせて応答ファイルをカスタマイズできます。
 
 > [!NOTE]
-> サンプル応答ファイル DB2server.rsp は、GitHub 上の [DB2onAzure](http://aka.ms/db2onazure) リポジトリにあります。 このファイルを使用する場合、お使いの環境で機能するように、事前にファイルを編集しておく必要があります。
+> サンプル応答ファイル DB2server.rsp は、GitHub 上の [DB2onAzure](https://aka.ms/db2onazure) リポジトリにあります。 このファイルを使用する場合、お使いの環境で機能するように、事前にファイルを編集しておく必要があります。
 
 | 画面の名前               | フィールド                                        | 値                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
@@ -138,7 +138,7 @@ GitHub リポジトリには、作成者によって管理されるナレッジ 
 
 -   DB2 pureScale と IBM Spectrum Scale を削除しようとしている。
 
-上記およびその他の既知の問題の詳細については、[DB2onAzure](http://aka.ms/DB2onAzure) リポジトリ内の kb.md ファイルをご覧ください。
+上記およびその他の既知の問題の詳細については、[DB2onAzure](https://aka.ms/DB2onAzure) リポジトリ内の kb.md ファイルをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -148,7 +148,7 @@ GitHub リポジトリには、作成者によって管理されるナレッジ 
 
 -   [DB2icrt - インスタンス コマンドを作成する](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
 
--   [DB2 pureScale クラスター データ ソリューション](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+-   [DB2 pureScale クラスター データ ソリューション](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 
 -   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 

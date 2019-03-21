@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 16c37f5ccaed7c161ecaae65a07c5da7400aad3c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 776523bb001848e6ecc153f670a96e3143e2ac0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815076"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006336"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Hyper-V の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する
 
@@ -34,6 +34,7 @@ Site Recovery Deployment Planner のコマンドライン ツール (ASRDeployme
 ```
 ASRDeploymentPlanner.exe -Operation GetVMList /?
 ```
+
 | パラメーター名 | 説明 |
 |---|---|
 | -Operation | GetVMList |
@@ -83,6 +84,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList -Directory "E:\Hyper-V_ProfiledDat
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
+
 | パラメーター名 | 説明 |
 |---|---|
 | -Operation | StartProfiling |
@@ -164,6 +166,7 @@ Deployment Planner ツールでは、マクロ有効 Microsoft Excel ファイ�
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
+
 | パラメーター名 | 説明 |
 |---|---|
 | -Operation | GenerateReport |
@@ -271,6 +274,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Dire
 ```
 ASRDeploymentPlanner.exe -Operation GetThroughput /?
 ```
+
  パラメーター名 | 説明 |
 |---|---|
 | -Operation | GetThroughput |

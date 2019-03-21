@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: b748e203e3bf769eef8ce728bbb9471b8d13fb9a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822308"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093332"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>StorSimple デバイス マネージャー サービスを使用してボリュームを管理する (Update 3 以降)
 
@@ -235,7 +235,7 @@ StorSimple ボリュームは、次のいずれかです。
    * 種類を **[階層化]** に変更し、このボリュームをアーカイブ データ用に使用する場合は、**[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。
    * ローカル固定ボリュームを階層化ボリュームとして構成している場合や、_その逆_の構成をしている場合は、次のメッセージが表示されます。
    
-    ![ボリュームの種類の変更に関するメッセージ](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+     ![ボリュームの種類の変更に関するメッセージ](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
 7. **[保存]** をクリックして変更を保存します。 確認を求めるメッセージが表示されたら、**[はい]** をクリックして変換プロセスを開始します。 
 

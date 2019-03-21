@@ -2,19 +2,19 @@
 title: Azure Kubernetes Service (AKS) を使用してイングレス コントローラーとしての Application Gateway を備えた Kubernetes クラスターを作成する
 description: Azure Kubernetes Service を使用してイングレス コントローラーとしての Application Gateway を備えた Kubernetes クラスターを作成する方法を示すチュートリアル
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, 仮想マシン, azure, kubernetes, イングレス, アプリケーション ゲートウェイ
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
-ms.openlocfilehash: 6add7323fdbcf07681e8566437632aa6679828e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 477b2ec1af4c52f51c3ab20ac2ddf7ef043dfcc7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891983"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994351"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes Service と Terraform を使用して Application Gateway のイングレス コントローラーを備えた Kubernetes クラスターを作成する
 [Azure Kubernetes Service (AKS)](/azure/aks/) では、ホストされている Kubernetes 環境を管理します。 AKS では、コンテナー オーケストレーションの専門知識がなくても、コンテナー化されたアプリケーションを迅速かつ簡単にデプロイして管理できます。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。
@@ -36,16 +36,16 @@ ms.locfileid: "55891983"
 - **Terraform の構成**:[Terraform および Azure へのアクセスの構成](/azure/virtual-machines/linux/terraform-install-configure)に関する記事の指示に従ってください
 
 - **Azure サービス プリンシパル**:「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」の「**サービス プリンシパルを作成する**」セクションの指示に従ってください。 appId、displayName、および password の値を書き留めます。
-    - 次のコマンドを実行して、サービス プリンシパルのオブジェクト ID をメモします
+  - 次のコマンドを実行して、サービス プリンシパルのオブジェクト ID をメモします
 
     ```bash
-     az ad sp list --display-name <displayName>
+    az ad sp list --display-name <displayName>
     ```
 
 ## <a name="create-the-directory-structure"></a>ディレクトリ構造を作成する
 最初の手順では、演習のために、Terraform 構成ファイルを保持するディレクトリを作成します。
 
-1. [Azure ポータル](http://portal.azure.com)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
 1. [Azure Cloud Shell](/azure/cloud-shell/overview) を開きます。 前に環境を選択しなかった場合、環境として **Bash** を選択します。
 
@@ -99,8 +99,8 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
     ```bash
     :wq
     ```
-## <a name="define-input-variables"></a>入力変数を定義する
-このデプロイに必要なすべての変数の一覧を示した Terraform 構成ファイルを作成します。
+   ## <a name="define-input-variables"></a>入力変数を定義する
+   このデプロイに必要なすべての変数の一覧を示した Terraform 構成ファイルを作成します。
 1. Cloud Shell で、`variables.tf` という名前のファイルを作成します。
     ```bash
     vi variables.tf
@@ -328,7 +328,7 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
       tags = "${var.tags}"
     }
     ```
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Application Gateway のリソースを作成します
+    d. Application Gateway のリソースを作成します
     ```JSON
     resource "azurerm_application_gateway" "network" {
       name                = "${var.app_gateway_name}"

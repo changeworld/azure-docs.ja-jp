@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 20a8d9f5b575fca5471916af0183257f2a43d5cb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9584f0ee4264724787c5913c0d6baa4c2769fa82
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085679"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Azure Search のインデックスに言語アナライザーを追加する
 
@@ -46,8 +46,8 @@ Azure Search では、Lucene によって提供される 35 個のアナライ�
 
 + Microsoft の英語アナライザーでは、ステミングではなくレンマ化が実行されます。 つまり、語形変化および変則的な語形がより適切に処理され、関連性の高い検索結果が得られます 
 
- > [!Tip]
- > [Search Analyzer Demo](https://alice.unearth.ai/) では、標準 Lucene アナライザー、Lucene の英語アナライザー、Microsoft の英語自然言語プロセッサによって生成された結果の比較が横並びに表示されます。 指定した検索の入力ごとに、各アナライザーの結果が隣接する列に表示されます。
+  > [!Tip]
+  > [Search Analyzer Demo](https://alice.unearth.ai/) では、標準 Lucene アナライザー、Lucene の英語アナライザー、Microsoft の英語自然言語プロセッサによって生成された結果の比較が横並びに表示されます。 指定した検索の入力ごとに、各アナライザーの結果が隣接する列に表示されます。
 
 ## <a name="configuring-analyzers"></a>アナライザーの構成
 
@@ -113,7 +113,7 @@ Azure Search では、Lucene によって提供される 35 個のアナライ�
 |スロベニア語|sl.microsoft||  
 |スペイン語|es.microsoft|es.lucene|  
 |スウェーデン語|sv.microsoft|sv.lucene|  
-|タミール語|ta.microsoft||  
+|タミル語|ta.microsoft||  
 |テルグ語|te.microsoft||  
 |タイ語|th.microsoft|th.lucene|  
 |トルコ語|tr.microsoft|tr.lucene|  

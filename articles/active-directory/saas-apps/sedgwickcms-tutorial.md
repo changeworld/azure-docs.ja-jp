@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7783da2e3e5fe2ee79942b246e452ad7998e278
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4c42b7010a6586e4845d3a58b9a47b01143f5b1d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193324"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904833"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>チュートリアル:Azure Active Directory と Sedgwick CMS の統合
 
@@ -112,12 +112,14 @@ Sedgwick CMS で Azure AD のシングル サインオンを構成してテス�
     ![[Sedgwick CMS のドメインと URL] のシングル サインオン情報](./media/sedgwickcms-tutorial/tutorial_sedgwickcms_url.png)
 
     a. **[識別子]** ボックスに次の URL を入力します。 
+
     | |
     |--|
     | `expresspreview.sedgwickcms.net/voe/sso` |
     | `claimlookup.com/Voe/sso` |
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    
     | |
     |--|
     | `https://<subdomain>.sedgwickcms.net/voe/sso` |
@@ -170,7 +172,7 @@ Sedgwick CMS で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
   
 ### <a name="create-a-sedgwick-cms-test-user"></a>Sedgwick CMS テスト ユーザーの作成
 

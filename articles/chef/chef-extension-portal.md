@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: d7728dd5c025a88f8912dca708abc45ab519ce2c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cf7afb50006fb273b4d685f9e4259be1cb60fe4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327546"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084744"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Azure portal から Chef クライアントをインストールする
 Azure portal から Linux または Windows マシンに直接、Chef クライアント拡張機能を追加できます。 この記事では、新しい Linux 仮想マシンを使用してそのプロセスを説明します。
@@ -30,7 +30,7 @@ Azure portal から Linux または Windows マシンに直接、Chef クライ�
 ## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>新しい Linux 仮想マシンに Chef 拡張機能をインストールする
 このセクションでは、Azure portal を使用して、Linux コンピューターを作成します。 処理中に、新しい仮想マシンに Chef 拡張機能をインストールする方法も表示されます。
 
-1. [Azure ポータル](http://portal.azure.com)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
 1. 左側のメニューで **[仮想マシン]** オプションを選択します。 **[仮想マシン]** オプションがない場合は、**[すべてのサービス]**、**[仮想マシン]** の順に選択します。
 
@@ -52,31 +52,31 @@ Azure portal から Linux または Windows マシンに直接、Chef クライ�
 
 1. **[基本]** タブで次の値を指定し、**[OK]** を選択します。
 
-    - **名前**: 新しい仮想マシンの名前を入力します。
-    - **VM ディスクの種類**: **[SSD]** または **[HDD]** の記憶域ディスクの種類を選択します。 Azure での仮想マシン ディスクの種類について詳しくは、[ディスクの種類の選択](../virtual-machines/windows/disks-types.md)に関する記事をご覧ください。
-    - **ユーザー名**: 仮想マシンの管理者権限が付与されているユーザー名を入力します。
-    - **認証の種類**: **[パスワード]** を選択します。 **[SSH 公開キー]** を選択して、SSH 公開キー値を指定することもできます。 このデモでは (およびスクリーン ショットでは)、**[パスワード]** が選択されています。
-    - **[パスワード]** と **[パスワードの確認入力]**: ユーザーのパスワードを入力します。
-    - **Azure Active Directory でのログイン**: **[無効]** を選択します。
-    - **サブスクリプション**: 複数のサブスクリプションがある場合は、目的の Azure サブスクリプションを選択します。
-    - **リソース グループ**: リソース グループの名前を入力します。
-    - **場所**: **[米国東部]** を選択します。
+   - **名前**: 新しい仮想マシンの名前を入力します。
+   - **VM ディスクの種類**: **[SSD]** または **[HDD]** の記憶域ディスクの種類を選択します。 Azure での仮想マシン ディスクの種類について詳しくは、[ディスクの種類の選択](../virtual-machines/windows/disks-types.md)に関する記事をご覧ください。
+   - **ユーザー名**: 仮想マシンの管理者権限が付与されているユーザー名を入力します。
+   - **認証の種類**: **[パスワード]** を選択します。 **[SSH 公開キー]** を選択して、SSH 公開キー値を指定することもできます。 このデモでは (およびスクリーン ショットでは)、**[パスワード]** が選択されています。
+   - **[パスワード]** と **[パスワードの確認入力]**: ユーザーのパスワードを入力します。
+   - **Azure Active Directory でのログイン**: **[無効]** を選択します。
+   - **サブスクリプション**: 複数のサブスクリプションがある場合は、目的の Azure サブスクリプションを選択します。
+   - **リソース グループ**: リソース グループの名前を入力します。
+   - **場所**: **[米国東部]** を選択します。
 
-    ![仮想マシンを作成するための [基本] タブ](./media/chef-extension-portal/add-vm-basics.png)
+     ![仮想マシンを作成するための [基本] タブ](./media/chef-extension-portal/add-vm-basics.png)
 
 1. **[サイズの選択]** タブで、仮想マシンのサイズを選択して、**[選択]** を選択します。
 
 1. **[設定]** タブでは、前のタブで選択した値に基づいてほとんどの値が設定されます。 **[拡張機能]** を選択します。
 
-    ![[設定] タブを通じて拡張機能が仮想マシンに追加される](./media/chef-extension-portal/add-vm-select-extensions.png)
+     ![[設定] タブを通じて拡張機能が仮想マシンに追加される](./media/chef-extension-portal/add-vm-select-extensions.png)
 
 1. **[拡張機能]** タブで **[拡張機能の追加]** を選択します。
 
-    ![[拡張機能の追加] を選択して仮想マシンに拡張機能を追加する](./media/chef-extension-portal/add-vm-add-extension.png)
+     ![[拡張機能の追加] を選択して仮想マシンに拡張機能を追加する](./media/chef-extension-portal/add-vm-add-extension.png)
 
 1. **[新しいリソース]** タブで **[Linux Chef Extension (1.2.3)]** を選択します。
 
-    ![Linux および Windows の仮想マシン向けの Chef の拡張機能](./media/chef-extension-portal/select-linux-chef-extension.png)
+     ![Linux および Windows の仮想マシン向けの Chef の拡張機能](./media/chef-extension-portal/select-linux-chef-extension.png)
 
 1. **[Linux Chef Extension]** タブで **[作成]** を選択します。
 
@@ -94,7 +94,7 @@ Azure portal から Linux または Windows マシンに直接、Chef クライ�
     - **Encrypted Databag Secret (Encrypted Databag のシークレット)**: このコンピューターがアクセスする必要がある Encrypted Databag のシークレットが含まれているファイルを選択します。 ここは空白のままにします。
     - **Chef Server SSL Certificate (Chef サーバー SSL 証明書)**: お使いの Chef サーバーに割り当てられている SSL 証明書を選択します。 ここは空白のままにします。
 
-    ![Linux 仮想マシンに Chef サーバーをインストールする](./media/chef-extension-portal/install-extension.png)
+      ![Linux 仮想マシンに Chef サーバーをインストールする](./media/chef-extension-portal/install-extension.png)
 
 1. **[拡張機能]** タブに戻ったら、**[OK]** を選択します。
 

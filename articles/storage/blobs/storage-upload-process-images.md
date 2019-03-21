@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 01404c89665ebfea62e7bda0e7566289bb15f2ae
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 7d06d23af8d4d4f0282f6eb743c0f47dba80e3f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300960"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58015310"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>チュートリアル: Azure Storage を使用してクラウドに画像データをアップロードする
 
@@ -258,7 +258,7 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 このサンプル コードでは、`post` ルートが画像を BLOB コンテナーにアップロードする処理を担当します。 このルートは、次のモジュールを使用してアップロードを処理します。
 
 - [multer](https://github.com/expressjs/multer) には、ルート ハンドラーのアップロード戦略が実装されています。
-- [into-stream](https://github.com/sindresorhus/into-stream) では、[createBlockBlobFromStream](http://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html) の要求に応じてバッファーがストリームに変換されます。
+- [into-stream](https://github.com/sindresorhus/into-stream) では、[createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html) の要求に応じてバッファーがストリームに変換されます。
 
 ファイルがルートに送信されると、ファイルが BLOB コンテナーにアップロードされるまで、ファイルの内容はメモリに残ります。
 
@@ -322,7 +322,7 @@ router.post('/', uploadStrategy, (req, res) => {
 このサンプル コードでは、`post` ルートが画像を BLOB コンテナーにアップロードする処理を担当します。 このルートは、次のモジュールを使用してアップロードを処理します。
 
 - [multer](https://github.com/expressjs/multer) には、ルート ハンドラーのアップロード戦略が実装されています。
-- [into-stream](https://github.com/sindresorhus/into-stream) では、[createBlockBlobFromStream](http://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html) の要求に応じてバッファーがストリームに変換されます。
+- [into-stream](https://github.com/sindresorhus/into-stream) では、[createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html) の要求に応じてバッファーがストリームに変換されます。
 
 ファイルがルートに送信されると、ファイルが BLOB コンテナーにアップロードされるまで、ファイルの内容はメモリに残ります。
 

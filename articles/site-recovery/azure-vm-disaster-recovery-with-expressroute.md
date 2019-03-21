@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 16b4031c0242d79b6d866d612a4d4f594dc608fa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4622809f0e261236d6753daf5bb2e00ff814c849
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821951"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087875"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Azure ExpressRoute を Azure VM のディザスター リカバリーと統合する
 
@@ -91,11 +91,11 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
     - **ソース vNet2**: 10.2.0.0/24。
     - 各スポークの仮想ネットワークは、**ハブ vNet** に接続されます。
 - **ハブ vNet**。 1 つのハブ vNet があります。**ソース ハブ vNet**: 10.10.10.0/24。
-    - このハブ vNet はゲートキーパーとして機能します。
-    - サブネット間でのすべての通信は、このハブを通過します。
- - ****ハブ vNet のサブネット**。 ハブ vNet には、次の 2 つのサブネットがあります。
-     - **NVA サブネット**: 10.10.10.0/25。 このサブネットには NVA (10.10.10.10) が含まれています。
-     - **ゲートウェイ サブネット**: 10.10.10.128/25。 このサブネットには、ExpressRoute 接続に接続された ExpressRoute ゲートウェイがあります。これは、プライベート ピアリング ルーティング ドメインを通じてオンプレミス サイトにルーティングされます。
+  - このハブ vNet はゲートキーパーとして機能します。
+  - サブネット間でのすべての通信は、このハブを通過します。
+    - ****ハブ vNet のサブネット**。 ハブ vNet には、次の 2 つのサブネットがあります。
+    - **NVA サブネット**: 10.10.10.0/25。 このサブネットには NVA (10.10.10.10) が含まれています。
+    - **ゲートウェイ サブネット**: 10.10.10.128/25。 このサブネットには、ExpressRoute 接続に接続された ExpressRoute ゲートウェイがあります。これは、プライベート ピアリング ルーティング ドメインを通じてオンプレミス サイトにルーティングされます。
 - オンプレミス データ センターでは、香港のパートナー エッジを介した ExpressRoute 回線接続が使用されています。
 - すべてのルーティングは、Azure ルート テーブル (UDR) によって制御されます。
 - vNet 間のアウトバウンド トラフィックや、オンプレミス データ センターへのアウトバウンド トラフィックはすべて、NVA を介してルーティングされます。

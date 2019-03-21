@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8c760a7881894b688591230952e2a685880b8d08
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 422b97414142c36669ed449a21c6045fd774581a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412167"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902656"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>キー フレーズ抽出コグニティブ スキル
 
@@ -38,12 +38,14 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
 パラメーターの大文字と小文字は区別されます。
+
 | 入力                | 説明 |
 |---------------------|-------------|
 | defaultLanguageCode | (省略可能) 言語を明示的に指定しないドキュメントに適用する言語コード。  既定の言語コードが指定されていない場合、既定の言語コードとして英語 (en) が使用されます。 <br/> [サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)を参照してください。 |
 | maxKeyPhraseCount   | (省略可能) 生成するキー フレーズの最大数。 |
 
 ## <a name="skill-inputs"></a>スキルの入力
+
 | 入力     | 説明 |
 |--------------------|-------------|
 | text | 分析されるテキスト。|

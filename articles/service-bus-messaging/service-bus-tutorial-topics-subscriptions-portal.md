@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 10f3f7d6b878e8f1d4efee360e0f8a9967ac07bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: a325b976e657fbdc318a41b3b79b50e77a948e14
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886436"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079845"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル:Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -88,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - 2 の実行: 独自のフィルターを追加します。
    - 3 の実行: 必要に応じて独自のフィルターを削除します。 この操作では、既定のフィルターは再作成されません。
 
-    ![2 の出力例](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
+     ![2 の出力例](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
 
 8. フィルターの作成後は、メッセージを送信できます。 4 キーを押して、トピックに送信されている 10 個のメッセージを観察します。
 

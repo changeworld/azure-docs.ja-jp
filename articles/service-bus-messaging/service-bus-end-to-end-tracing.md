@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 2330e395244f33653af415b5db896fdc2aa2024d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852985"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107037"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
 
@@ -213,7 +213,7 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 
 1. `IsEnabled(<OperationName>, string entity, null)` を、たとえば、`IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` と指定します。 最後に 'Start' も 'Stop' もないことに注意してください。 これを使用して、特定の操作またはキューをフィルター処理で除外します。 コールバックから `false` が返されると、その操作のイベントは送信されません。
 
-  * 'Process' 操作および 'ProcessSession' 操作では `IsEnabled(<OperationName>, string entity, Activity activity)` コールバックも受け取ります。 これを使用して、`activity.Id` または Tags プロパティに基づいてイベントをフィルター処理します。
+   * 'Process' 操作および 'ProcessSession' 操作では `IsEnabled(<OperationName>, string entity, Activity activity)` コールバックも受け取ります。 これを使用して、`activity.Id` または Tags プロパティに基づいてイベントをフィルター処理します。
   
 2. `IsEnabled(<OperationName>.Start)` を、たとえば `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` と指定します。 'Start' イベントが起動されるかどうかを確認します。 この結果は 'Start' イベントのみに影響し、それ以降のインストルメンテーションが依存することはありません。
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: 65ecaaea09c28c31d76f31dc447108273b379f9e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1ab799ef7eb9d7c591e76ab9180d4e3f4ba6ba59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811666"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007283"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
 
@@ -124,7 +124,7 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
 }
 ```
 
-このコード例が正常に機能していることを確認するには、 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com) で、 *newcontainer* がストレージ アカウントのコンテナーの一覧に含まれていることを確認します。
+このコード例が正常に機能していることを確認するには、 [Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com) で、 *newcontainer* がストレージ アカウントのコンテナーの一覧に含まれていることを確認します。
 
 ## <a name="set-container-permissions"></a>コンテナーのアクセス許可を設定する
 コンテナーのアクセス許可は、既定では、 **プライベート** アクセス用に構成されています。 ただし、コンテナーには、コンテナー アクセス用にいくつかの異なるオプションが用意されています。
@@ -203,7 +203,7 @@ Blob service の概念に関するセクションで説明したように、Blob
 }
 ```
 
-このコード例が正常に機能していることを確認するには、[Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。 この例では､パブリック コンテナーが使用されているため、このアプリケーションが機能することは､次の BLOB URI にアクセスすることによっても確認できます。
+このコード例が正常に機能していることを確認するには、[Microsoft Azure ストレージ エクスプローラー](https://storageexplorer.com)で、コンテナー *containerpublic* に BLOB *sampleblob* が含まれていることを確認します。 この例では､パブリック コンテナーが使用されているため、このアプリケーションが機能することは､次の BLOB URI にアクセスすることによっても確認できます。
 
     https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 
@@ -378,10 +378,10 @@ NSString からのブロック BLOB のアップロードばかりでなく、NS
 これで、iOS から BLOB ストレージを使用する方法を学習できました。 iOS ライブラリおよび Storage サービスの詳細については、次のリンク先をご覧ください。
 
 * [iOS 用 Azure Storage クライアント ライブラリ](https://github.com/azure/azure-storage-ios)
-* [Azure Storage iOS リファレンス ドキュメント](http://azure.github.io/azure-storage-ios/)
+* [Azure Storage iOS リファレンス ドキュメント](https://azure.github.io/azure-storage-ios/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure のストレージ チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage)
 
-このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) または [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) に投稿してください。
+このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) または [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) に投稿してください。
 Azure Storage の機能についてご提案がある場合は、 [Azure Storage のフィードバック](https://feedback.azure.com/forums/217298-storage/)に投稿してください。
 

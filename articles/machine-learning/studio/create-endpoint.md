@@ -5,17 +5,17 @@ description: Azure Machine Learning Studio で Web サービスのエンドポ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 62505a89be5535f7b8b7b50ad2462e33d44db57a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: ac434a696f6e77e5ce61b430232166e7727eda38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454006"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084693"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>デプロイされた Azure Machine Learning Studio Web サービスのエンドポイントを作成する
 

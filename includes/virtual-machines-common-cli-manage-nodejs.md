@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 713068b940532331ee4a6c5f5a92816d328e41ec
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a4c9ec133b3686a92cec7e7c8d4552c1302e3074
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55736092"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125140"
 ---
 Resource Manager のコマンドとテンプレートで Azure CLI を使用して、リソース グループを使用する Azure リソースとワークロードをデプロイするには、Azure のアカウントが必要です。 アカウントがない場合、 [ここから無料の Azure 試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
@@ -31,7 +31,7 @@ Resource Manager のコマンドとテンプレートで Azure CLI を使用し�
 > 
 
 | タスク | リソース マネージャー |
-| --- | --- | --- |
+| --- | --- |
 | 最も基本的な VM の作成 |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(`azure vm image list` コマンドから `image-urn` を取得します。 例については[こちらの記事](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を参照してください。) |
 | Linux VM の作成 |`azure  vm create [options] <resource-group> <name> <location> -y "Linux"` |
 | Windows VM の作成 |`azure  vm create [options] <resource-group> <name> <location> -y "Windows"` |

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: fd64376f68a177f12b2105ae0974eeeeefa94f4b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 966518f17392e6158089cb5b6df96f41674fed41
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460082"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996152"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Microsoft Azure Storage Data Movement Library を使用してデータを転送する
 
@@ -193,7 +193,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 このコードにより、ローカル ファイルへのパス、新規または既存のコンテナーの名前、および新しい BLOB の名前を入力するように求められます。 `TransferManager.UploadAsync` メソッドは、この情報を使用してアップロードを実行します。
 
-`F5` キーを押してアプリケーションを実行します。 アップロードが行われたことを確認するには、[Microsoft Azure ストレージ エクスプ ローラー](http://storageexplorer.com/)でストレージ アカウントを表示します。
+`F5` キーを押してアプリケーションを実行します。 アップロードが行われたことを確認するには、[Microsoft Azure ストレージ エクスプ ローラー](https://storageexplorer.com/)でストレージ アカウントを表示します。
 
 ## <a name="set-number-of-parallel-operations"></a>並列操作数の設定
 Data Movement Library では、並列操作数を設定できます。この優れた機能によって、データ転送のスループットを向上させることができます。 既定では、Data Movement Library の並列操作数は "8 x コンピューター上のコア数" に設定されています。

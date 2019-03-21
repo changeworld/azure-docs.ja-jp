@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 94baa1235388ce99d013f8267f8410dcc206a51d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998350"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894361"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Azure Media Services のアクセス制御を使用したコンテンツ保護システムの設計 
 
@@ -28,7 +28,7 @@ Over-the-Top (OTT) 用またはオンライン ストリーミング ソリュ�
 
 このドキュメントの対象読者は、OTT またはオンライン ストリーミング/マルチスクリーン ソリューションの DRM サブシステムに関する作業を行っているエンジニア、または DRM サブシステムに興味のあるすべての読者です。 前提として、読者は、PlayReady、Widevine、FairPlay、Adobe Access など、市販されている DRM テクノロジの少なくとも 1 つには精通している必要があります。
 
-ここでは、マルチ DRM での共通暗号化 (CENC) についても説明します。 オンライン ストリーミングと OTT 業界での大きなトレンドは、さまざまなクライアント プラットフォームのマルチ ネイティブ DRM で CENC を使う方法です。 その前は、さまざまなクライアント プラットフォームに 1 つの DRM とそのクライアント SDK を使う方法がトレンドでした。 マルチ ネイティブ DRM で CENC を使うと、PlayReady と Widevine はいずれも [共通暗号化 (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 仕様に従って暗号化されます。
+ここでは、マルチ DRM での共通暗号化 (CENC) についても説明します。 オンライン ストリーミングと OTT 業界での大きなトレンドは、さまざまなクライアント プラットフォームのマルチ ネイティブ DRM で CENC を使う方法です。 その前は、さまざまなクライアント プラットフォームに 1 つの DRM とそのクライアント SDK を使う方法がトレンドでした。 マルチ ネイティブ DRM で CENC を使うと、PlayReady と Widevine はいずれも [共通暗号化 (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) 仕様に従って暗号化されます。
 
 マルチ DRM での CENC の利点は次のとおりです。
 
@@ -156,7 +156,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
 | **キー管理** |参照実装には必要ありません |
 | **コンテンツ管理** |C# コンソール アプリケーション |
 
-つまり、IDP と STS の両方が Azure AD で使われます。 プレーヤーには [Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) が使われます。 Media Services と Media Player はどちらも、マルチ DRM での DASH および CENC をサポートします。
+つまり、IDP と STS の両方が Azure AD で使われます。 プレーヤーには [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) が使われます。 Media Services と Media Player はどちらも、マルチ DRM での DASH および CENC をサポートします。
 
 次の図では、このテクノロジ マッピングでの全体的な構造とフローを示します。
 
@@ -208,7 +208,7 @@ DRM サブシステムに含まれる可能性のあるコンポーネントは�
    * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-8. [Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) を使ってプレーヤーを作成します。 異なる DRM プラットフォームで使う DRM テクノロジを指定するには、[Azure Media Player の ProtectionInfo API](http://amp.azure.net/libs/amp/latest/docs/) を使います。
+8. [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) を使ってプレーヤーを作成します。 異なる DRM プラットフォームで使う DRM テクノロジを指定するには、[Azure Media Player の ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) を使います。
 
 9. テスト マトリックスを次の表に示します。
 

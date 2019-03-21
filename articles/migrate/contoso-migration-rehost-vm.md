@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 47b16966f9e72a43cf4fb934706f7b96becef59a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4a6ed900753747c1d5bf394aced54da11177320f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694501"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118393"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso の移行: オンプレミス アプリを Azure VM にリホストする
 
@@ -168,10 +168,10 @@ Contoso が VM を Azure に移行するには、以下の Azure コンポーネ
     - アプリのデータベース VM (SQLVM) は、運用ネットワーク内のデータベース サブネット (PROD-DB-EUS2) に移行されます。
 
 2. ストレージ アカウントをセットアップする。Contoso は、プライマリ リージョンに Azure ストレージ アカウント (contosovmsacc20180528) を作成します。
-    - ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
-    - 標準ストレージと LRS レプリケーション付きの汎用アカウントを使用します。
+   - ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
+   - 標準ストレージと LRS レプリケーション付きの汎用アカウントを使用します。
 
-    ![Site Recovery ストレージ](./media/contoso-migration-rehost-vm/asr-storage.png)
+     ![Site Recovery ストレージ](./media/contoso-migration-rehost-vm/asr-storage.png)
 
 3. コンテナーを作成する。ネットワークとストレージ アカウントが用意できたので、Recovery Services コンテナー (ContosoMigrationVault) を作成し、それを米国東部 2 リージョンの ContosoFailoverRG リソース グループ内に配置します。
 
@@ -221,15 +221,15 @@ Contoso は、フェールオーバー後に Azure VM に接続することを�
 
 1. インターネットでアクセスする場合:
 
- - フェールオーバーの前に、オンプレミスの VM で RDP を有効にします。
- - **パブリック** プロファイルに TCP 規則と UDP 規則が追加されていることを確認します。
- - **[Windows ファイアウォール]** > **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。
+   - フェールオーバーの前に、オンプレミスの VM で RDP を有効にします。
+   - **パブリック** プロファイルに TCP 規則と UDP 規則が追加されていることを確認します。
+   - **[Windows ファイアウォール]** > **[許可されたアプリ]** で、すべてのプロファイルで RDP が許可されていることを確認します。
 
 2. サイト間 VPN でアクセスする場合:
 
- - オンプレミスのマシンで RDP を有効にします。
- - **[Windows ファイアウォール]** -> **[Allowed apps and features]\(許可されたアプリと機能\)** で、**ドメイン ネットワークとプライベート ネットワーク**での RDP を許可します。
- - オンプレミスの VM 上のオペレーティング システムの SAN ポリシーを **[OnlineAll]** に設定します。
+   - オンプレミスのマシンで RDP を有効にします。
+   - **[Windows ファイアウォール]** -> **[Allowed apps and features]\(許可されたアプリと機能\)** で、**ドメイン ネットワークとプライベート ネットワーク**での RDP を許可します。
+   - オンプレミスの VM 上のオペレーティング システムの SAN ポリシーを **[OnlineAll]** に設定します。
 
 さらに、フェールオーバーを実行するときに、以下を確認する必要があります。
 
@@ -341,10 +341,10 @@ Contoso の管理者は、これらのステップを以下のように実行し
 
 4. **WebVM** のレプリケーションを選択し、レプリケーション ポリシーを確認し、レプリケーションを有効にします。
 
-    - VNet とサブネットを選択する必要があるため、この段階では WEBVM のみを選択しています。アプリの VM は異なるサブネットに配置されます。
-    - レプリケーションを有効にすると、Site Recovery によってモビリティ サービスが VM 上に自動的にインストールされます。
+   - VNet とサブネットを選択する必要があるため、この段階では WEBVM のみを選択しています。アプリの VM は異なるサブネットに配置されます。
+   - レプリケーションを有効にすると、Site Recovery によってモビリティ サービスが VM 上に自動的にインストールされます。
 
-    ![レプリケーションを有効にする](./media/contoso-migration-rehost-vm/enable-replication3.png)
+     ![レプリケーションを有効にする](./media/contoso-migration-rehost-vm/enable-replication3.png)
 
 5. レプリケーションの進行状況は、**[ジョブ]** で追跡します。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 6. Azure portal の **[要点]** で、Azure にレプリケートする VM の構造を確認できます。

@@ -7,16 +7,16 @@ author: tulasim88
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.subservice: qna-maker`
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 930d2d7279f23974e937fd0d858891d0bcaa1291
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b948835b1a15eee391c6902d18229ec4926b66ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869162"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095213"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>チュートリアル: Azure Bot Service v3 による QnA ボットの作成
 
@@ -90,12 +90,12 @@ ms.locfileid: "55869162"
 
 1. QnA Maker ポータルで、ナレッジ ベースの [設定] タブから、ナレッジ ベース ID、ホスト URL、およびエンドポイント キーを取得します。
 
-    - [QnA Maker](https://qnamaker.ai) にサインインする
-    - ナレッジ ベースに移動する
-    - **[設定]** タブを選択します
-    - まだの場合は、ナレッジ ベースを**発行**します。
+   - [QnA Maker](https://qnamaker.ai) にサインインする
+   - ナレッジ ベースに移動する
+   - **[設定]** タブを選択します
+   - まだの場合は、ナレッジ ベースを**発行**します。
 
-    ![QnA Maker の値](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
+     ![QnA Maker の値](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
 
 ## <a name="test-the-bot"></a>ボットのテスト
 

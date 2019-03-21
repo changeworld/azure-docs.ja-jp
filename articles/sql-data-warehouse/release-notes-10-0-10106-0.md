@@ -10,12 +10,12 @@ author: mlee3gsd
 ms.author: anumjs
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 2de7c335e56117f2a99db5150575ed94616467e9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0b0d302dcd86f18eef6bf7600dd93878d0d9bd99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455587"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902690"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 この記事は、[Azure SQL Data Warehouse](sql-data-warehouse-overview-what-is.md) の最新リリースで導入された新機能と機能強化をまとめたものです。 この記事では、今回のリリースとは直接関連しないものの、同じタイム フレームで公開された注目すべきコンテンツの更新についても一覧表示しています。 他の Azure サービスの機能強化については、「[サービスの更新情報](https://azure.microsoft.com/updates)」を参照してください
@@ -44,7 +44,7 @@ ms.locfileid: "56455587"
 - [ブログ - Azure SQL Data Warehouse](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [Customer Advisory Team のブログ](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
 - [顧客の成功事例](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
-- [Stack Overflow フォーラム](http://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)
 - [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Azure 用語集](../azure-glossary-cloud-terminology.md)

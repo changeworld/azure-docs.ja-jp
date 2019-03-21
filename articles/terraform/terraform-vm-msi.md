@@ -2,19 +2,19 @@
 title: Azure Marketplace イメージを使用してマネージド ID を使用する Terraform Linux 仮想マシンを作成する
 description: Azure にリソースを簡単にデプロイするために、Marketplace イメージを使用して、マネージド ID とリモート状態管理を使用する Terraform Linux 仮想マシンを作成します。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, MSI, 仮想マシン, リモート状態, azure
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 3f10e5dfd0a4aac859c1a946b5f0a680899e0888
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852543"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007967"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Azure Marketplace イメージを使用して Azure リソースのマネージド ID を使用する Terraform Linux 仮想マシンを作成する
 
@@ -77,7 +77,7 @@ Terraform VM イメージでは、次の手順が実行されます。
 
 ## <a name="access-and-configure-a-linux-terraform-virtual-machine"></a>Terraform Linux 仮想マシンにアクセスして構成する。
 
-VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の [基本] セクションで作成したアカウントの資格情報を使用します。 Windows では、[Putty](http://www.putty.org/) などの SSH クライアント ツールをダウンロードできます。
+VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の [基本] セクションで作成したアカウントの資格情報を使用します。 Windows では、[Putty](https://www.putty.org/) などの SSH クライアント ツールをダウンロードできます。
 
 SSH を使用して仮想マシンに接続したら、仮想マシン上の Azure リソースのマネージド ID に、サブスクリプション全体に対する共同作成者のアクセス許可を付与する必要があります。 
 

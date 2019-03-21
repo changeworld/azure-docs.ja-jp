@@ -8,14 +8,14 @@ author: preetikr
 ms.author: preetikr
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
-ms.date: 01/30/19
+ms.date: 01/30/2019
 tags: connectors
-ms.openlocfilehash: 647df9e73804c8f261b58d5ede7c4b030d448fed
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 24963a35bc3e54b2d140bf4ed1d169b213bd9b2a
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513307"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673684"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>セキュリティ操作を Microsoft Graph Security および Azure Logic Apps と統合することで脅威の防止能力を強化する
 
@@ -79,7 +79,7 @@ Microsoft Graph Security の詳細については、「[Microsoft Graph Security
 
 ここでは、Microsoft Graph Security コネクタで利用できるさまざまなアクションの使用についての詳細を説明します。
 
-### <a name="manage-alerts"></a>アラートを管理する
+### <a name="manage-alerts"></a>Manage alerts
 
 フィルター処理、並べ替え、または最新の結果の取得を行うには、[Microsoft Graph でサポートされている ODATA クエリ パラメーター](https://docs.microsoft.com/graph/query-parameters) "*だけ*" を指定します。 完全なベース URL または HTTP アクション (`https://graph.microsoft.com/v1.0/security/alerts`、`GET` 操作、`PATCH` 操作など) は "*指定しないでください*"。 重大度が高いアラートの一覧を取得する場合の**アラートの取得**アクションのパラメーターの例は次のとおりです。
 
@@ -87,7 +87,7 @@ Microsoft Graph Security の詳細については、「[Microsoft Graph Security
 
 このコネクタで使用できるクエリの詳細については、[Microsoft Graph Security アラート リファレンス ドキュメント](https://docs.microsoft.com/graph/api/alert-list)を参照してください。 このコネクタを使用して強化されたエクスペリエンスを構築するには、コネクタでサポートされている[スキーマ プロパティのアラート](https://docs.microsoft.com/graph/api/resources/alert)の詳細を確認してください。
 
-| アクション | 説明 |
+| Action | 説明 |
 |--------|-------------|
 | **アラートの取得** | 1 つまたは複数の[アラートのプロパティ](https://docs.microsoft.com/graph/api/resources/alert)に基づいてフィルター処理されたアラートを取得します。例: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
 | **ID によるアラートの取得** | アラート ID に基づいて特定のアラートを取得します。 | 
@@ -101,7 +101,7 @@ Microsoft Graph では、"[*サブスクリプション*](https://docs.microsoft
 
 `security/alerts?$filter=status eq 'New'`
 
-| アクション | 説明 |
+| Action | 説明 |
 |--------|-------------|
 | **サブスクリプションを作成する** | 変更について通知する[サブスクリプションを作成します](https://docs.microsoft.com/graph/api/subscription-post-subscriptions)。 特定のアラートの種類用にこのサブスクリプションをフィルター処理できます。 たとえば、重大度が高いアラートについて通知するサブスクリプションを作成できます。 |
 | **アクティブなサブスクリプションを取得する** | [有効期限が切れていないサブスクリプションを取得します](https://docs.microsoft.com/graph/api/subscription-list)。 | 

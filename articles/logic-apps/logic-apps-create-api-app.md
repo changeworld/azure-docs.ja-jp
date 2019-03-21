@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 25b33242b9f7bddf0497067f111ca3fb4a1ea570
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600720"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895857"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
 
@@ -25,7 +25,7 @@ Azure Logic Apps が提供する [100 以上の組み込みコネクタ](../conn
 * 仕事または個人的な作業の管理にサービスを利用する顧客を支援する。
 * サービスが届く範囲を拡大する。サービスを見つけやすくする。サービスの用途を拡大する。
 
-基本的に、コネクタはプラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](http://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 コネクタは HTTP エンドポイント経由で通信する REST API であるため、コネクタの構築には、.NET、Java、Node.js など、あらゆる言語を利用できます。 [Azure App Service](../app-service/overview.md) で API をホストすることもできます。Azure App Service は、最も効果的で簡単、かつ拡張可能な方法で API ホスティングを提供する PaaS (サービスとしてのプラットフォーム) です。 
+基本的に、コネクタはプラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](https://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 コネクタは HTTP エンドポイント経由で通信する REST API であるため、コネクタの構築には、.NET、Java、Node.js など、あらゆる言語を利用できます。 [Azure App Service](../app-service/overview.md) で API をホストすることもできます。Azure App Service は、最も効果的で簡単、かつ拡張可能な方法で API ホスティングを提供する PaaS (サービスとしてのプラットフォーム) です。 
 
 カスタム API をロジック アプリで利用するために、API はロジック アプリ ワークフローで特定のタスクを実行する[*アクション*](./logic-apps-overview.md#logic-app-concepts)を提供できます。 API は、新しいデータ、またはあるイベントが指定の条件を満たすときにロジック アプリ ワークフローを開始する[*トリガー*](./logic-apps-overview.md#logic-app-concepts)として機能させることもできます。 このトピックでは、API のアクションやトリガーを構築するときに採用できる、動作に基づく共通パターンについて説明します。
 
@@ -41,11 +41,11 @@ API は [Azure App Service](../app-service/overview.md) でホストできます
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> ロジック アプリ用の API アプリ サンプルについては、[Azure Logic Apps GitHub リポジトリ](http://github.com/logicappsio)または[ブログ](https://aka.ms/logicappsblog)をご覧ください。
+> ロジック アプリ用の API アプリ サンプルについては、[Azure Logic Apps GitHub リポジトリ](https://github.com/logicappsio)または[ブログ](https://aka.ms/logicappsblog)をご覧ください。
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>カスタム API とカスタム コネクタの違い
 
-カスタム API と[カスタム コネクタ](../logic-apps/custom-connector-overview.md)は、プラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](http://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 また、これらの API とコネクタは HTTP エンドポイント経由で通信する REST API であるため、カスタム API とコネクタの構築には、.NET、Java、Node.js など、任意の言語を利用できます。
+カスタム API と[カスタム コネクタ](../logic-apps/custom-connector-overview.md)は、プラグ可能インターフェイスの REST、ドキュメント用の [Swagger メタデータ形式](https://swagger.io/specification/)、さらにデータ交換形式として JSON を利用する Web API です。 また、これらの API とコネクタは HTTP エンドポイント経由で通信する REST API であるため、カスタム API とコネクタの構築には、.NET、Java、Node.js など、任意の言語を利用できます。
 
 カスタム API を使用すると、コネクタではない API を呼び出すことができ、HTTP + Swagger、Azure API Management、または App Services で呼び出せるエンドポイントを提供できます。 カスタム コネクタはカスタム API と同じように動作しますが、次の属性も備えています。
 
@@ -63,7 +63,7 @@ API は [Azure App Service](../app-service/overview.md) でホストできます
 
 ## <a name="helpful-tools"></a>便利なツール
 
-API の操作やパラメーターを説明する [Swagger ドキュメント](http://swagger.io/specification/)も API に含まれるとき、カスタム API はロジック アプリと最も効果的に連動します。
+API の操作やパラメーターを説明する [Swagger ドキュメント](https://swagger.io/specification/)も API に含まれるとき、カスタム API はロジック アプリと最も効果的に連動します。
 [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) のようなライブラリの多くは、Swagger ファイルを自動的に生成できます。 表示名やプロパティの種類などに関して Swagger ファイルに注釈を付けるために、[TRex](https://github.com/nihaue/TRex) を利用することもできます。Swagger ファイルとロジック アプリが効果的に連動します。
 
 <a name="actions"></a>

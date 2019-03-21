@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ef0dfafce33837a80ec00ba58e6be99784e652a2
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 969e0c2582ce8f72592059fbf1d58e3ebe9faa5d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418420"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117202"
 ---
 # <a name="runbook-input-parameters"></a>Runbook の入力パラメーター
 
@@ -338,10 +338,10 @@ Azure PowerShell を使用して、ローカル コンピューターから Runb
    Connect-AzureRmAccount
    ```
 
-  Azure 資格情報を入力するよう求められます。
+   Azure 資格情報を入力するよう求められます。
 
-  > [!IMPORTANT]
-  > これで、**Connect-AzureRmAccount** のエイリアスは **Add-AzureRMAccount** に設定されました。 ライブラリ項目を検索して **Connect-AzureRMAccount** が表示されない場合は、**Add-AzureRmAccount** を使用するか、Automation アカウントでモジュールを更新できます。
+   > [!IMPORTANT]
+   > これで、**Connect-AzureRmAccount** のエイリアスは **Add-AzureRMAccount** に設定されました。 ライブラリ項目を検索して **Connect-AzureRMAccount** が表示されない場合は、**Add-AzureRmAccount** を使用するか、Automation アカウントでモジュールを更新できます。
 
 1. JSON ファイルの内容を取得して文字列に変換:
 

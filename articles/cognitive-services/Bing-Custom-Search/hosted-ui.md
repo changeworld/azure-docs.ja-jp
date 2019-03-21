@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fbe865a5d9ef6c44b80c811a023c86f6446c3bb8
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233882"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084134"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>ホステッド UI エクスペリエンスを構成する
 
@@ -43,10 +43,10 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
     
 5. 配色テーマを選択します。 **[テーマのカスタマイズ]** をクリックして、ご自身のアプリに合うように色をカスタマイズできます。 色を変更するには、色の RGB 16 進値 (例: `#366eb8`) を入力するか、色プレビューをクリックします。
 
-  ポータルの右側で、変更の結果をプレビューできます。 **[既定値にリセット]** をクリックすることで、選択したテーマの既定の色に戻すことができます。
+   ポータルの右側で、変更の結果をプレビューできます。 **[既定値にリセット]** をクリックすることで、選択したテーマの既定の色に戻すことができます。
 
-  > [!NOTE]
-  > 色を選択するときは、アクセシビリティを考慮してください。
+   > [!NOTE]
+   > 色を選択するときは、アクセシビリティを考慮してください。
 
 6. **[追加の構成]** で、実際のアプリにとって適切な値を指定します。 これらの設定は省略可能です。 適用または削除の影響を確認するには、右側のプレビュー ウィンドウを参照します。 使用できる構成は次のとおりです。  
 

@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: f1f4cb036f4df226d651f8f4d0f5c7492f453a0a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: c77981574ff2e507af7012f26f742dda62d952fc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269742"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991964"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
 
-Azure Data Lake Storage Gen2 では、[Hadoop 分散ファイル システム (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) を利用する場合と同様に、データの管理およびアクセスを可能にします。 HDInsight クラスターをアタッチする場合でも、Azure Databricks を使用して Apache Spark ジョブを実行し、Azure Storage アカウントに保存されているデータを分析する場合でも、コマンド ライン インターフェイス (CLI) を使用して、読み込まれたデータを取得したり、操作したりできます。
+Azure Data Lake Storage Gen2 では、[Hadoop 分散ファイル システム (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) を利用する場合と同様に、データの管理およびアクセスを可能にします。 HDInsight クラスターをアタッチする場合でも、Azure Databricks を使用して Apache Spark ジョブを実行し、Azure Storage アカウントに保存されているデータを分析する場合でも、コマンド ライン インターフェイス (CLI) を使用して、読み込まれたデータを取得したり、操作したりできます。
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDInsight での HDFS CLI
 
@@ -77,10 +77,6 @@ HDFS CLI の詳細については、[公式ドキュメント](https://hadoop.ap
 ## <a name="hdfs-cli-with-azure-databricks"></a>Azure Databricks での HDFS CLI
 
 Databricks は、Databricks REST API 上に構築された使いやすい CLI を備えています。 このオープンソース プロジェクトは、[GitHub](https://github.com/databricks/databricks-cli) 上でホストされています。 よく使用されるコマンドを次に示します。
-
-### <a name="create-a-file-system"></a>ファイル システムを作成する
-
-ガイダンスをここに配置します。
 
 ### <a name="get-a-list-of-files-or-directories"></a>ファイルまたはディレクトリの一覧を取得する
 

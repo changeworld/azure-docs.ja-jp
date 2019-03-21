@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7b2de1ae56e554013d9a5c574bb231164b80f8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9ee58c2a3bed7544ff68e7d6ec756c35bee1d05b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207298"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103164"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意
 
@@ -102,11 +102,11 @@ Azure AD のアプリケーションでは、必要なリソースや API への
 - リソースでは、`Read` アクセス許可と `ReadWrite` アクセス許可をそれぞれ明示的に定義します。
 - リソースでは、ユーザー境界を越えるデータへのアクセスを許可するすべてのアクセス許可を `Admin` アクセス許可としてマークします。
 - リソースは `Subject.Permission[.Modifier]` という名前付けパターンに従う必要があります。このパターンで、
-    - `Subject` は、利用可能なデータの種類に対応します
-    - `Permission` は、ユーザーがそのデータに対して行うアクションに対応します
-    - `Modifier` は、別のアクセス許可の特殊化を記述するためにオプションで使用されます
+  - `Subject` は、利用可能なデータの種類に対応します
+  - `Permission` は、ユーザーがそのデータに対して行うアクションに対応します
+  - `Modifier` は、別のアクセス許可の特殊化を記述するためにオプションで使用されます
     
     例: 
-    * Mail.Read - ユーザーにメールの読み取りを許可します。
-    * Mail.ReadWrite - ユーザーにメールの読み取りまたは書き込みを許可します。
-    * Mail.ReadWrite.All - 管理者またはユーザーに、組織内のすべてのメールへのアクセスを許可します。
+  - Mail.Read - ユーザーにメールの読み取りを許可します。
+  - Mail.ReadWrite - ユーザーにメールの読み取りまたは書き込みを許可します。
+  - Mail.ReadWrite.All - 管理者またはユーザーに、組織内のすべてのメールへのアクセスを許可します。

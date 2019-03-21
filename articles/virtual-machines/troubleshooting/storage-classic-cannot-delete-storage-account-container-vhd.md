@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 5d4d74d4c3b5ec6779458e84da07c03033c37935
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330615"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078161"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>クラシック ストレージ リソース削除エラーのトラブルシューティング
 この記事では、Azure のクラシック ストレージ アカウント、コンテナー、*.vhd ページ BLOB ファイルを削除しようとして次のいずれかのエラーが発生した場合のトラブルシューティング ガイダンスを提供します。 
@@ -59,10 +59,10 @@ Azure ディスクについて詳しくは、[こちら](../../virtual-machines/
 #### <a name="azure-powershell"></a>Azure PowerShell
 ユーザーは、クラシック PowerShell コマンドレットを使用して、もう使用されていないストレージ アカウントを削除しようとします。 ユーザーには、次のメッセージが表示されます。
 
-><span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
-
-><span style="color:red">Remove-AzureStorageAccount : BadRequest: ストレージ アカウント myclassicaccount に、アクティブなイメージやディスクがあります (例:   
-myclassicaccount)。 このストレージ アカウントを削除する前に、これらのイメージやディスクを削除してください。</span>
+> <span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
+> 
+> <span style="color:red">Remove-AzureStorageAccount : BadRequest: ストレージ アカウント myclassicaccount に、アクティブなイメージやディスクがあります (例:   
+> myclassicaccount)。 このストレージ アカウントを削除する前に、これらのイメージやディスクを削除してください。</span>
 
 ## <a name="unable-to-delete-storage-container"></a>ストレージ コンテナーを削除できない
 
@@ -77,9 +77,9 @@ Azure portal では、コンテナー内の *.vhd ページ BLOB ファイルを
 #### <a name="azure-powershell"></a>Azure PowerShell
 ユーザーは、PowerShell を使用した削除を選択すると、結果として次のエラーが発生します。 
 
-><span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
-
-><span style="color:red">Remove-AzureStorageContainer: リモート サーバーからエラーが返される:(412) There is currently a lease on the container and no lease ID was specified in the request. (現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした。)HTTP 状態コード: 412 - HTTP エラー メッセージ: There is currently a lease on the container and no lease ID was specified in the request. (現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした。)</span>
+> <span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
+> 
+> <span style="color:red">Remove-AzureStorageContainer: リモート サーバーからエラーが返される:(412) There is currently a lease on the container and no lease ID was specified in the request. (現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした。)HTTP 状態コード: 412 - HTTP エラー メッセージ: There is currently a lease on the container and no lease ID was specified in the request. (現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした。)</span>
 
 ## <a name="unable-to-delete-a-vhd"></a>vhd を削除できない 
 
@@ -99,9 +99,9 @@ Azure の仮想マシンを削除した後、ユーザーが vhd ファイル (�
 #### <a name="azure-powershell"></a>Azure PowerShell 
 ユーザーは、PowerShell を使用した削除を選択すると、結果として次のエラーが発生します。 
 
-><span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
-
-><span style="color:red">Remove-AzureStorageBlob : リモート サーバーからエラーが返される:(412) There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)HTTP 状態コード: 412 - HTTP エラー メッセージ: There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)</span>
+> <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
+> 
+> <span style="color:red">Remove-AzureStorageBlob : リモート サーバーからエラーが返される:(412) There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)HTTP 状態コード: 412 - HTTP エラー メッセージ: There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)</span>
 
 
 ## <a name="resolution-steps"></a>解決手順

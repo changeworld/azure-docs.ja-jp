@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: bb0eac4f7de11c2b80412319227a00d5dbe6d8c6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 84f9472618322111ad2f669ebb172258837620fd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243404"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106068"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>クイック スタート: Azure Stack で Azure CLI を使用して Linux サーバー仮想マシンを作成する
 
@@ -46,8 +46,8 @@ Azure CLI を使用して、Ubuntu Server 16.04 LTS 仮想マシンを作成で�
 
 リソース グループは、Azure Stack リソースのデプロイと管理を行うことができる論理コンテナーです。 開発キットまたは Azure Stack 統合システムから、[az group create](/cli/azure/group#az-group-create) コマンドを実行してリソース グループを作成します。
 
->[!NOTE]
- 値は、コード例のすべての変数に割り当てられます。 ただし、必要に応じて新しい値を割り当てることができます。
+> [!NOTE]
+>  値は、コード例のすべての変数に割り当てられます。 ただし、必要に応じて新しい値を割り当てることができます。
 
 次の例では、myResourceGroup という名前のリソース グループをローカルの場所に作成します。
 
@@ -82,7 +82,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="use-ssh-to-connect-to-the-virtual-machine"></a>SSH を使用して仮想マシンに接続する
 
-SSH がインストールされたクライアント コンピューターから、仮想マシンに接続します。 Windows クライアントを使用している場合は、[Putty](http://www.putty.org/) を使用して接続を作成できます。 仮想マシンに接続するには、次のコマンドを使用します。
+SSH がインストールされたクライアント コンピューターから、仮想マシンに接続します。 Windows クライアントを使用している場合は、[Putty](https://www.putty.org/) を使用して接続を作成できます。 仮想マシンに接続するには、次のコマンドを使用します。
 
 ```bash
 ssh <publicIpAddress>

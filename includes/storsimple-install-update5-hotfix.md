@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 8abc6129e1179378ac90278fd2032737b2b828b2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 19d2dedc2ccf7015696504a94f5ef7c43a90d3be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888757"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124993"
 ---
 #### <a name="to-download-hotfixes"></a>修正プログラムをダウンロードするには
 
@@ -93,19 +93,19 @@ ms.locfileid: "55888757"
     > [!NOTE]
     > 場合によっては、更新がまだ進行中であっても、コマンドレットは `False` とレポートします。 修正プログラムが完了したことを確認するには、数分待ってから、このコマンドを再実行し、`RunInProgress` が `False` になっていることを確認します。 False の場合、修正プログラムは完了しています。
 
-7. ソフトウェアの更新が完了したら、システムのソフトウェア バージョンを確認します。 次のコマンドを入力します: 
+7. ソフトウェアの更新が完了したら、システムのソフトウェア バージョンを確認します。 型: 
    
     `Get-HcsSystem`
    
     次のバージョンが表示されます。
    
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 5.0`
-   *  `HcsSoftwareVersion: 6.3.9600.17845`
+   * `HcsSoftwareVersion: 6.3.9600.17845`
    
-    更新プログラムの適用後にバージョン番号が変わらない場合は、修正プログラムの適用に失敗したことを示します。 そのような場合は、[Microsoft サポート](../articles/storsimple/storsimple-8000-contact-microsoft-support.md)にお問い合わせください。
+     更新プログラムの適用後にバージョン番号が変わらない場合は、修正プログラムの適用に失敗したことを示します。 そのような場合は、[Microsoft サポート](../articles/storsimple/storsimple-8000-contact-microsoft-support.md)にお問い合わせください。
      
-    > [!IMPORTANT]
-    > 次の更新プログラムを適用する前に、`Restart-HcsController` コマンドレットを使用してアクティブ コントローラーを再起動する必要があります。
+     > [!IMPORTANT]
+     > 次の更新プログラムを適用する前に、`Restart-HcsController` コマンドレットを使用してアクティブ コントローラーを再起動する必要があります。
      
 8. 手順 3. ～ 6. を繰り返して、_FirstOrderUpdate_ フォルダーにダウンロードした _CisMDSAgentupdate.exe_ エージェントをインストールします。
 8. 2 番目の順位の更新プログラムをインストールするには、手順 3. ～ 6. を繰り返します。 
@@ -175,7 +175,7 @@ KB4037263 を使用して、ディスク ファームウェアの更新プログ
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. `Get-HcsUpdateStatus` コマンドを使用して、インストールの進行状況を監視します。 更新が完了すると、`RunInProgress` が `False` に変わります。
-4. インストールが完了すると、メンテナンス モードの修正プログラムがインストールされたコントローラーが再起動されます。 オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択し、ディスクのファームウェアのバージョンを確認します。 次のコマンドを入力します: 
+4. インストールが完了すると、メンテナンス モードの修正プログラムがインストールされたコントローラーが再起動されます。 オプション 1 の **[Log in with full access]\(フル アクセスによるログイン\)** を選択し、ディスクのファームウェアのバージョンを確認します。 型: 
    
    `Get-HcsFirmwareVersion`
    

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5ff0a70d8b370655df1eef55dac68804a1db406b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: f83ee40c97e49add539a44a6ba764024a8e47bfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082148"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081493"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Azure DevTest Labs でのクレーム可能 VM の作成と管理
 要求可能な VM をラボに追加する方法は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.md)、[数式](devtest-lab-manage-formulas.md)、[Marketplace イメージ](devtest-lab-configure-marketplace-images.md)のいずれか) から[標準の VM を追加](devtest-lab-add-vm.md)する方法と似ています。 このチュートリアルでは、Azure Portal を使用して DevTest Labs でクレーム可能 VM をラボに追加する方法を説明し、ユーザーが VM を要求および解放する際に従うプロセスを示します。
@@ -64,12 +64,12 @@ ms.locfileid: "55082148"
 
 * ラボの [概要] ウィンドウの下部にある [要求可能な仮想マシン] の一覧で、一覧にある VM のいずれかを右クリックし、**[マシンの要求]** を選択します。
 
- ![特定の要求可能 VM を要求する。](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
+  ![特定の要求可能 VM を要求する。](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
 
 
 * [概要] ウィンドウの上部で、**[要求]** を選択します。 要求可能 VM の一覧から仮想マシンがランダムに割り当てられます。
 
- ![任意の claimable VM を要求する。](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
+  ![任意の claimable VM を要求する。](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
 ユーザーが VM を要求すると、その VM は、"マイ仮想マシン" の一覧に挿入され、他のユーザーが要求できなくなります。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 8ee424412c9c54dadef7391084e3ab976da9ad7f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417450"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896264"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows Data Science Virtual Machine のプロビジョニング
 
@@ -44,7 +44,7 @@ DSVM には次のツールが含まれています。
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) - オンライン、ハッシュ、allreduce、リダクション、learning2search、アクティブ、対話型学習などの手法をサポートする高速機械学習システム
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/) - 迅速かつ正確なブースト ツリー実装を提供するツール
   * [Rattle](https://togaware.com/rattle/) - R で Data Analytics と機械学習を簡単に開始できる R 分析ツール。GUI ベースのデータ探索と R コードの自動生成によるモデリングを含みます。
-  * [Weka](http://www.cs.waikato.ac.nz/ml/weka/) - Java のビジュアル データ マイニングと機械学習ソフトウェア
+  * [Weka](https://www.cs.waikato.ac.nz/ml/weka/) - Java のビジュアル データ マイニングと機械学習ソフトウェア
   * [Apache Drill](https://drill.apache.org/) - Apache Hadoop、NoSQL、およびクラウド ストレージ向けのスキーマフリーの SQL クエリ エンジン。 ODBC と JDBC のインターフェイスをサポートし、Power BI、Microsoft Excel、Tableau などの標準の BI ツールから NoSQL やファイルに対してクエリを実行できます。
 * Azure Machine Learning などの Azure サービスで使用する R と Python のライブラリ
 * GitHub、Azure DevOps を含むソース コード リポジトリを操作する Git Bash を含む Git。 Git では、いくつかの一般的な Linux コマンド ライン ユーティリティが提供されており、Git Bash とコマンド プロンプトの両方でアクセスできます。 awk、sed、perl、grep、find、wget、curl などです。
@@ -71,7 +71,7 @@ DSVM を使えば分析プロジェクトをすぐに開始できます。 R、P
 
 ## <a name="prerequisite"></a>前提条件
 
-Microsoft Data Science Virtual Machine を作成するには、Azure サブスクリプションが必要です。 [Azure 無料試用版の取得](http://azure.com/free)に関するページを参照してください。
+Microsoft Data Science Virtual Machine を作成するには、Azure サブスクリプションが必要です。 [Azure 無料試用版の取得](https://azure.com/free)に関するページを参照してください。
 
 ## <a name="create-your-dsvm"></a>DSVM を作成する
 
@@ -229,4 +229,4 @@ Python SDK は、Microsoft Data Science Virtual Machine にプレインストー
 * エクスプローラーで **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** に移動し、エンタープライズ規模での Data Analytics をサポートする R で RevoScaleR ライブラリを使用するサンプルを入手します。  
 * 記事「[Windows データ サイエンス仮想マシンでできる 10 のこと](https://aka.ms/dsvmtenthings)」を読みます。
 * [Team Data Science Process](../team-data-science-process/index.yml)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
-* Azure Machine Learning および関連する Azure 上のデータ サービスを使用した機械学習および Data Analytics については、[Azure AI Gallery](http://gallery.cortanaintelligence.com) をご覧ください。 **[スタート]** メニューと仮想マシンのデスクトップに、このギャラリーへのアイコンも用意されています。
+* Azure Machine Learning および関連する Azure 上のデータ サービスを使用した機械学習および Data Analytics については、[Azure AI Gallery](https://gallery.cortanaintelligence.com) をご覧ください。 **[スタート]** メニューと仮想マシンのデスクトップに、このギャラリーへのアイコンも用意されています。

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51daf3b9553babb5fc627c02d79914c68c318145
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 941a02ef9ab3d623d34c8dc6996040f6d9e44859
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190825"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096845"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screencast-o-matic"></a>チュートリアル:Azure Active Directory と Screencast-O-Matic の統合
 
@@ -133,17 +133,17 @@ Screencast-O-Matic で Azure AD のシングル サインオンを構成して�
 
 9. **[Setup Access Page]\(アクセス ページのセットアップ\)** で、次の手順を実行します。
 
-    * **[アクセス URL]** セクションで、指定されたテキスト ボックスにインスタンス名を入力します。
+   * **[アクセス URL]** セクションで、指定されたテキスト ボックスにインスタンス名を入力します。
 
-    ![アクセス](./media/screencast-tutorial/tutorial_screencast_access.png)
+     ![アクセス](./media/screencast-tutorial/tutorial_screencast_access.png)
 
-    * **[SAML User Restriction (optional)]\(SAML ユーザーの制限 (省略可能)\)** セクションで、**[Require Domain User]\(ドメイン ユーザーが必要\)** を選択します。
+   * **[SAML User Restriction (optional)]\(SAML ユーザーの制限 (省略可能)\)** セクションで、**[Require Domain User]\(ドメイン ユーザーが必要\)** を選択します。
 
-    * **[Upload IDP Metadata XML File]\(IDP メタデータ XML ファイルのアップロード\)** で、**[ファイルの選択]** をクリックして、Azure portal からダウンロードしたメタデータをアップロードします。
+   * **[Upload IDP Metadata XML File]\(IDP メタデータ XML ファイルのアップロード\)** で、**[ファイルの選択]** をクリックして、Azure portal からダウンロードしたメタデータをアップロードします。
 
-    * Click **OK**. 
+   * Click **OK**. 
 
-    ![アクセス](./media/screencast-tutorial/tutorial_screencast_save.png)
+     ![アクセス](./media/screencast-tutorial/tutorial_screencast_save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -175,7 +175,7 @@ Screencast-O-Matic で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-screencast-o-matic-test-user"></a>Screencast-O-Matic テスト ユーザーの作成
 

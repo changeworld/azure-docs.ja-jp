@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: f1be314db7bfc4cbdfcc809eb3b1d985583739a4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c8a74df19c012613807d39fb3ee529173e82d5ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470146"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093264"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
 
@@ -35,7 +35,7 @@ Azure Cosmos DB は、すべての Azure リージョンで利用できます。
 Azure Cosmos DB は、その認証範囲を拡大し続けています。 現時点では、Azure Cosmos DB は、以下の認証を受けています。
 
 | **グローバルに適用可能** | **米国政府** | **業界に固有** | **地域/国に固有** |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | CSA STAR 認証<br/><br/>CSA STAR 証明<br/><br/>ISO 20000-1:2011<br/><br/>ISO 22301:2012<br/><br/>ISO 27001:2013<br/><br/>ISO 27017:2015<br/><br/>ISO 27018:2014<br/><br/>SOC 1、2、3| DoD SRG Level 2<br/><br/>FedRAMP Moderate<br/><br/>GxP (FDA 21 CFR Part 11)<br/><br/>| HIPAA BAA<br/><br/>HITRUST<br/><br/>PCI DSS | オーストラリアの IRAP Unclassified<br/><br/>ドイツの C5<br/><br/>シンガポールの MTCS Level 3<br/><br/>スペインの ENS High|
 
 これらのコンプライアンス認証とそれらのメリットの詳細については、「[Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」(Microsoft Azure のコンプライアンスの概要) ページをご覧ください。

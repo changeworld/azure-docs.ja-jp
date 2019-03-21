@@ -11,17 +11,17 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/08/2019
+ms.topic: conceptual
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7730d15b0d3be9c0ffc7c7fbafe40fece713afbd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b603d7848dfe427bb6f5e43319c6bea8eccb5e0a
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976794"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258406"
 ---
-# <a name="upload-files-to-a-media-services-account-in-the-azure-portal-legacy"></a>Azure portal での Media Services アカウントへのファイルのアップロード (レガシ)
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Azure Portal での Media Services アカウントへのファイルのアップロード 
 
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-upload-files.md)

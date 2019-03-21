@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 1e922f1c02876f09dcf51b192bc08c4f4fccac9e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879022"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100481"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram メソッド
 
@@ -27,7 +27,7 @@ ms.locfileid: "55879022"
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 ``` 
 <br>
-  
+
 ## <a name="request-parameters"></a>要求パラメーター
 
 Name  |値 | 必須  |説明

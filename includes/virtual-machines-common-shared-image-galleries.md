@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: f8122f35ac6d604908fc31dcece7dfb53dd50286
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8c7da8d04b456642b158dda77d9c745891aa18e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985455"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58052136"
 ---
 共有イメージ ギャラリーは、カスタム マネージド VM イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーを使用すると、組織内のさまざまなユーザー、サービス プリンシパル、AD グループに対してイメージを共有できます。 共有イメージを複数のリージョンにレプリケートすることで、デプロイのスケーリングにかかる時間を短縮することができます。
 
@@ -128,18 +128,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
  
  A. アクセス可能なサブスクリプション全体の共有イメージ ギャラリーのリソースをAzure portal 上にすべて一覧表示するには、次の手順に従います。
 
- 1. [Azure Portal](https://portal.azure.com)を開きます。
- 1. **[すべてのリソース]** に移動します。
- 1. 全リソースを一覧表示するサブスクリプションを、すべて選択します。
- 1. リソースの種類の **[プライベート ギャラリー]** を探します。
+1. [Azure Portal](https://portal.azure.com)を開きます。
+1. **[すべてのリソース]** に移動します。
+1. 全リソースを一覧表示するサブスクリプションを、すべて選択します。
+1. リソースの種類の **[プライベート ギャラリー]** を探します。
  
- イメージ定義とイメージ バージョンを表示するには、**[非表示の型の表示]** も選択する必要があります。
+   イメージ定義とイメージ バージョンを表示するには、**[非表示の型の表示]** も選択する必要があります。
  
- アクセス可能なサブスクリプション全体の共有イメージ ギャラリー リソースをすべて一覧表示するために、Azure CLI で次のコマンドを使用します。
+   アクセス可能なサブスクリプション全体の共有イメージ ギャラリー リソースをすべて一覧表示するために、Azure CLI で次のコマンドを使用します。
 
- ```bash
- az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
- ```
+   ```bash
+   az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
+   ```
 
 
 **Q.** サブスクリプション全体でイメージを共有するには、どうしたらいいですか?
@@ -155,9 +155,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
  シナリオ 2:汎用のアンマネージド イメージがある場合、そこからマネージド イメージを作成して、イメージ定義を作成し、その定義からイメージ バージョンを作成できる。 
 
- シナリオ 3:ローカル ファイル システムに VHD がある場合、VHD をアップロードして、マネージド イメージを作成する必要がある。その後、イメージ定義と、定義からのイメージ バージョンを作成できる。 
-    - VHD が Windows VM 対応の場合は、[汎用 VHD のアップロード](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)に関するページを参照してください。
-    - VHD が Linux VM 対応の場合は、「[VHD をアップロードする](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)」の手順を参照してください。
+ シナリオ 3:ローカル ファイル システムに VHD がある場合、VHD をアップロードして、マネージド イメージを作成する必要がある。その後、イメージ定義と、定義からのイメージ バージョンを作成できる。
+- VHD が Windows VM 対応の場合は、[汎用 VHD のアップロード](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)に関するページを参照してください。
+- VHD が Linux VM 対応の場合は、「[VHD をアップロードする](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)」の手順を参照してください。
 
 
 **Q.** 特殊なディスクからイメージ バージョンを作成できますか?

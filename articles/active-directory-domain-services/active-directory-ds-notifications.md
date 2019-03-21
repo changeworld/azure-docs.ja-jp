@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
-ms.subservice: domains
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: d2cdff4b0b961083d8f8ac6e2eb8b1b46d30c06b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 85fcd28b5964cbe0246a7c79fa6d24d756f7bd35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086566"
 ---
 # <a name="notification-settings-in-azure-ad-domain-services"></a>Azure AD Domain Services の通知設定
 
@@ -47,7 +47,6 @@ Azure AD Domain Services の通知を使用することで、ご利用のマネ�
 
 > [!WARNING]
 > メール内のリンクは、Microsoft であることが確認された差出人から送信されたメールであることを必ず確かめたうえでクリックしてください。 このメールは常に azure-noreply@microsoft.com から送信されます。
->
 
 
 ## <a name="why-would-i-receive-email-notifications"></a>メール通知が送信される理由

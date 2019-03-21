@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: fb12fe381cb4df6139fae7289279220f72984484
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078016"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000410"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketplace の掲載に関するガイドライン
 
@@ -72,16 +72,18 @@ ms.locfileid: "54078016"
 ----
 
 ## <a name="container-offer-requirements"></a>コンテナー オファーの要件
+
 |  | 掲載する要素 | 基本要件 | 最適な要件 | 
 |:--- |:--- |:--- |:--- |
 |1 |プラン設定 | <br>• オファーID:最大 50 文字 <br>• パブリッシャー ID:ドロップダウンから選択します <br>• 名前:最大 50 文字 | 説明で既に利用できるタイトル スタイルを反映させる。長いタイトルは不要です。 | 
-| 2 | SKU | パートナーが新しい SKU をクリックする| 説明で既に利用できるタイトル スタイルを反映させる。長いタイトルは不要です。  |  |
+| 2 | SKU | パートナーが新しい SKU をクリックする| 説明で既に利用できるタイトル スタイルを反映させる。長いタイトルは不要です。  |
 | 3 | Marketplace の成果物 | ロゴが正しく表示される |<br>• ロゴに、Azure Portal での大判イメージである "ヒーロー イメージ" が含まれている <br>• ロゴ:小 (48 x 48) と大 (216 x 216) が必須です <br>• ヒーロー イメージの要件: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• スクリーンショット (最大 5):CPP には解像度 1280 x 720 の .png イメージが必要です。|
 | 4 | 見込み客管理 |<br>• 見込み客管理:潜在顧客を保存するシステムを選択する。 <br>•   CRM システムを接続する方法については[ここ](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)を参照 | |
 
 ----
 
 ## <a name="consulting-offer-requirements"></a>コンサルティング オファーの要件
+
 |  | 掲載する要素 | 基本要件 | 最適な要件 |
 |:--- |:--- |:--- |:--- |
 | 1 | オファーのタイトル  |  <br>• サービスの種類と期間を次の形式で明確に示す必要がある:名前 :期間の種類。 (例: "オファー エンゲージメント:1 週間の概念実証")  | <br>• パブリッシャー名は繰り返さない <br>•  説明で既に利用できるタイトル スタイルを反映させる。長いタイトルは不要です。 | 
@@ -103,4 +105,4 @@ ms.locfileid: "54078016"
 *   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
 
  
----  
+---

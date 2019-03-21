@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4947977fbed2b4fe4bd47adcc4de6516090573ad
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c1f5dd329f34d64478d605c21d229d8c75a99300
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661311"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260144"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Azure Maps にマップ コントロールを追加する
 
@@ -26,7 +26,7 @@ ms.locfileid: "55661311"
 
 最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
 
-ズーム コントロールは、マップをズームイン/ズームアウトする機能を追加します。 2 番目のコード ブロックでは、atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) を使用してズーム コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、ズーム コントロールはマップ **イベント リスナー**内にあります。
+ズーム コントロールは、マップをズームイン/ズームアウトする機能を追加します。 2 番目のコード ブロックでは、atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) を使用してズーム コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、ズーム コントロールはマップ **イベント リスナー**内にあります。
 
 ## <a name="add-pitch-control"></a>ピッチ コントロールを追加する
 
@@ -35,7 +35,7 @@ ms.locfileid: "55661311"
 
 最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
 
-ピッチ コントロールは、マップのピッチを変更する機能を追加します。 コードの 2 番目のブロックでは、atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) を使用してピッチ コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、ピッチ コントロールはマップ **イベント リスナー**内にあります。
+ピッチ コントロールは、マップのピッチを変更する機能を追加します。 コードの 2 番目のブロックでは、atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) を使用してピッチ コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、ピッチ コントロールはマップ **イベント リスナー**内にあります。
 
 ## <a name="add-compass-control"></a>コンパス コントロールを追加する
 
@@ -44,7 +44,7 @@ ms.locfileid: "55661311"
 
 最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
 
-コードの 2 番目のブロックでは、atlas [Compass Control](/javascript/api/azure-maps-control/atlas.controls.compasscontrol) を使用してコンパス コントロール オブジェクトを作成しています。 さらに、マップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用して、コンパス コントロールをマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、コンパス コントロールはマップ **イベント リスナー**内にあります。
+コードの 2 番目のブロックでは、atlas [Compass Control](/javascript/api/azure-maps-control/atlas.control.compasscontrol) を使用してコンパス コントロール オブジェクトを作成しています。 さらに、マップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用して、コンパス コントロールをマップに追加しています。 マップが完全に読み込まれた後に読み込まれるようにするために、コンパス コントロールはマップ **イベント リスナー**内にあります。
 
 ## <a name="a-map-with-all-controls"></a>すべてのコントロールを含むマップ
 
@@ -53,13 +53,13 @@ ms.locfileid: "55661311"
 
 最初のコード ブロックでは、サブスクリプション キーが設定され、スタイルが事前に設定されていないマップ オブジェクトが作成されます。 マップの作成方法については、「[マップを作成する](./map-create.md)」を参照してください。
 
-2 番目のコード ブロックでは、atlas [CompassControl](/javascript/api/azure-maps-control/atlas.controls.compasscontrol) を使用してコンパス コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。
+2 番目のコード ブロックでは、atlas [CompassControl](/javascript/api/azure-maps-control/atlas.control.compasscontrol) を使用してコンパス コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。
 
-コードの 3 番目のブロックでは、atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.controls.zoomcontrol) を使用してズーム コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。
+コードの 3 番目のブロックでは、atlas [ZoomControl](/javascript/api/azure-maps-control/atlas.control.zoomcontrol) を使用してズーム コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。
 
-4 番目のコード ブロックでは、atlas [PitchControl](/javascript/api/azure-maps-control/atlas.controls.pitchcontrol) を使用してピッチ コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。
+4 番目のコード ブロックでは、atlas [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) を使用してピッチ コントロール オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。
 
-コードの最後のブロックでは、atlas [StyleControl](/javascript/api/azure-maps-control/atlas.controls.stylecontrol) を使用してスタイルの選択オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。 コントロール オブジェクトはすべて、マップが完全に読み込まれた後に読み込まれるようにするため、マップ **イベント リスナー**内に追加されます。
+コードの最後のブロックでは、atlas [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) を使用してスタイルの選択オブジェクトを作成し、これをマップの [controls.add](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) メソッドを使用してマップに追加しています。 コントロール オブジェクトはすべて、マップが完全に読み込まれた後に読み込まれるようにするため、マップ **イベント リスナー**内に追加されます。
 
 スクリプト内のコントロール オブジェクトの順序により、マップに表示される順序が決まります。 マップ上のコントロールの順序を変更するには、スクリプト内の順序を変更できます。
 

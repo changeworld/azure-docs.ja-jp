@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 3bc42bf5b83f9ff983c3d8d88a9a496cc395096c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4c7e0e091aeecb205c63b8fa7e97d7592f15b856
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992587"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084380"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard の形式とコーデック
 
@@ -27,7 +27,7 @@ ms.locfileid: "55992587"
 ## <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
 
 | ファイル形式 (ファイル拡張子) | サポートされています |
-| --- | --- | --- | --- |
+| --- | --- |
 | (H.264 および AAC コーデックでの) FLV (.flv) |はい |
 | MXF    (.mxf) |はい |
 | GXF    (.gxf) |はい |
@@ -56,7 +56,7 @@ or
 
 ## <a name="input-video-codecs"></a>入力ビデオ コーデック
 | 入力ビデオ コーデック | サポートされています |
-| --- | --- | --- | --- |
+| --- | --- |
 | AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む) |8 ビット 4:2:0 および 4:2:2 |
 | Avid DNxHD (MXF) |はい |
 | DVCPro/DVCProHD (MXF) |はい |
@@ -79,7 +79,7 @@ or
 
 ## <a name="input-audio-codecs"></a>入力オーディオ コーデック
 | 入力オーディオ コーデック | サポートされています |
-| --- | --- | --- | --- |
+| --- | --- |
 | AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1) |はい |
 | MPEG Layer 2 |はい |
 | MP3 (MPEG-1 Audio Layer 3) |はい |

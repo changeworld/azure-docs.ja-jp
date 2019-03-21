@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae428f18a2b927f42716a1c00b55790fe73d81a4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b42a6b667a8708aeb2edeb0c80a5ab747b6c60a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173404"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891139"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
@@ -151,7 +151,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 #### <a name="description"></a>説明
 最初のセクションでは、名前や説明などの基本的な情報を提供します。
 
-![Description tab in Sync rule editor ](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
+![Description tab in Sync rule editor](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
 
 この規則が関連する接続先システム、この規則の適用される接続先システム、およびメタバース オブジェクトのタイプの情報も示されています。 メタバース オブジェクトのタイプは、ソース オブジェクトのタイプがユーザーでも、iNetOrgPerson でも連絡先でも、必ず個人です。 メタバース オブジェクトの種類は、ジェネリック型として作成されるため、変更しないでください。 リンクの種類は、[結合]、[スティッキー結合]、または [プロビジョニング] に設定できます。 この設定は [Join Rules (結合規則)] セクションと共に機能します。この設定については、後で説明します。
 
@@ -160,18 +160,18 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 #### <a name="scoping-filter"></a>スコープ フィルター
 [スコープ フィルター] セクションは、同期規則の適用が必要なタイミングを構成するために使用されます。 ここで説明している同期規則の名前は、有効なユーザーのみに同期規則が適用されることを意味しているため、AD 属性 **userAccountControl** にビット 2 を設定しないようスコープが構成されます。 **userAccountControl** が 10 進数値 512 (有効な通常のユーザー) に設定されていると、同期エンジンが AD でユーザーを発見したときに、この同期規則が適用されます。 ユーザーが **userAccountControl** を 514 (無効な通常のユーザー) に設定していた場合には、この規則が適用されることはありません。
 
-![Scoping tab in Sync rule editor ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![Scoping tab in Sync rule editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 スコープ フィルターには、入れ子にできるグループおよび句があります。 同期規則を適用するには、グループ内のすべての句が満たされている必要があります。 複数のグループが定義されている場合、規則を適用するには少なくとも 1 つのグループが満たされている必要があります。 つまり、グループ間では論理 OR が評価され、グループ内では論理 AND が評価されます。 この構成の例は、送信の同期規則 "**AAD への送信 - グループ結合**" で確認することができます。 たとえば、同期フィルター グループはいくつかあります。たとえば、1 つはセキュリティ グループ向け (`securityEnabled EQUAL True`)、1 つは配布グループ向け (`securityEnabled EQUAL False`) です。
 
-![Scoping tab in Sync rule editor ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
+![Scoping tab in Sync rule editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
 この規則は、Azure AD にプロビジョニングするグループを定義するために使用されます。 配布グループを Azure AD と同期するにはメールを有効にする必要がありますが、セキュリティ グループの場合、メールは必須ではありません。
 
 #### <a name="join-rules"></a>結合規則
 3 番目のセクションは、コネクタ スペース内のオブジェクトと、メタバース内のオブジェクトの関連付けの構成に使用されます。 ここまでに説明した規則には結合規則の構成がないため、ここでは " **AD からの受信 - ユーザー結合**" について説明します。
 
-![Join rules tab in Sync rule editor ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
+![Join rules tab in Sync rule editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
 結合規則の内容は、インストール ウィザードで選択されている一致オプションによって異なります。 受信規則の場合、評価はソースのコネクタ スペースのオブジェクトで開始され、結合規則の各グループが順番に評価されます。 結合規則の 1 つを使用してソース オブジェクトを評価した結果、メタバースの 1 つのオブジェクトのみと一致した場合、これらのオブジェクトは結合されます。 すべての規則が評価されて一致が存在しない場合は、説明ページのリンクの種類が使用されます。 この構成が **[Provision (プロビジョニング)]** に設定されている場合は、新しいオブジェクトがターゲットであるメタバースに作成されます。 メタバースへの新しいオブジェクトのプロビジョニングは、メタバースへのオブジェクトの **投影** とも呼ばれています。
 
@@ -184,7 +184,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 #### <a name="transformations"></a>変換
 変換セクションでは、オブジェクトが結合され、スコープ フィルターも満たしている場合にターゲット オブジェクトに適用されるすべての属性のフローを定義します。 もう一度 " **AD からの受信 - ユーザー アカウント有効** " 同期規則を見ると、次の変換があることがわかります。
 
-![Transformations tab in Sync rule editor ](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
+![Transformations tab in Sync rule editor](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
 この構成を踏まえると、アカウント/リソース フォレストのデプロイでは、アカウント フォレストには有効なアカウントが、Exchange および Lync 設定のあるリソース フォレストには無効なアカウントが、それぞれ見つかると予想されます。 ここで説明している同期規則には、サインインに必要な属性が含まれており、有効なアカウントが存在するフォレストから、これらの属性がフローする必要があります。 これらすべての属性フローが 1 つの同期規則にまとめられます。
 
@@ -201,7 +201,7 @@ SRE は、リソース キット ツールで、Azure AD Connect 同期と共に
 IIF(
 // (The evaluation for IIF) Is the attribute pwdLastSet present in AD?
 IsPresent([pwdLastSet]),
-// (The True part of IIF) If it is, then from right to left, convert the AD time format to a .Net datetime, change it to the time format used by Azure AD, and finally convert it to a string.
+// (The True part of IIF) If it is, then from right to left, convert the AD time format to a .NET datetime, change it to the time format used by Azure AD, and finally convert it to a string.
 CStr(FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")),
 // (The False part of IIF) Nothing to contribute
 NULL

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: b412d2b054fc8703c7524479359a3670782fd646
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1b15a3966c6e408fb17655b112c1ec900bd86c5f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980893"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999802"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>1 つ以上の AlwaysOn 可用性グループ リスナーの構成 - Resource Manager
 このトピックでは、以下のことを行う方法を示します。
@@ -48,7 +48,7 @@ ms.locfileid: "55980893"
 
 お使いの PowerShell モジュールが 5.4.1 以降であることを確認してください。
 
-[Azure PowerShell モジュールのインストール](http://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。
+[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。
 
 ## <a name="configure-the-windows-firewall"></a>Windows ファイアウォールの構成
 
@@ -227,7 +227,7 @@ SQLCMD 接続では、プライマリ レプリカをホストしている SQL S
 
 * Azure ネットワーク セキュリティ グループを使用してアクセスを制限する場合は、バックエンド SQL Server VM の IP アドレス、AG リスナーのロード バランサー フローティング IP アドレス、および該当する場合はクラスター コア IP アドレスが許可ルールに含まれていることを確認します。
 
-## <a name="for-more-information"></a>詳細
+## <a name="for-more-information"></a>BLOB の詳細
 詳細については、「[Azure VM での AlwaysOn 可用性グループの手動構成](virtual-machines-windows-portal-sql-availability-group-tutorial.md)」をご覧ください。
 
 ## <a name="powershell-cmdlets"></a>PowerShell コマンドレット

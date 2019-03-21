@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 4fa8e28d9ccc16482ca937a220eae83e282da7e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b801df6036566840dd96bde0801ab018d0614b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210035"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103096"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 
@@ -109,7 +109,7 @@ RDM | 該当なし
 プロバイダーは VMM サーバー間の通信を調整します。 
 
 **最新** | **更新プログラム**
---- | --- | --- | --- | ---
+--- | --- 
 5.1.19 ([ポータルから入手可能](https://aka.ms/downloaddra) | [最新の機能と修正](https://support.microsoft.com/kb/3155002)
 
 

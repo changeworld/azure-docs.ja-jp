@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 0ba3c7321b0771c839289abb7891cd8e6b280afe
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4d3d45434a90e89e011bf8aa7c3fd37909e25386
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822682"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203066"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop のログを分析する
 
-Azure HDInsight 上の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。 このストレージ アカウントを、既定のストレージ アカウントと呼びます。 クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。  クラスターの既定のストレージ アカウントを調べるには、[HDInsight での Apache Hadoop クラスターの管理](../hdinsight-administer-use-management-portal.md#find-the-default-storage-account)に関するページを参照してください。 ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
+Azure HDInsight 上の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。 このストレージ アカウントを、既定のストレージ アカウントと呼びます。 クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。  クラスターの既定のストレージ アカウントを調べるには、[HDInsight での Apache Hadoop クラスターの管理](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts)に関するページを参照してください。 ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
 
 ## <a name="logs-written-to-azure-tables"></a>Azure テーブルに書き込まれたログ
 

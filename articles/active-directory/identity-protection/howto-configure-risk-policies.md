@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9f759eb815e8d0d03d4cdd7fe4ed603ff39d34f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1b578c0187f7b804b6261fec9d299f83d7dc1832
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197540"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58015148"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>方法:Azure Active Directory Identity Protection (更新版) でのリスク ポリシーの構成
 
@@ -31,6 +31,8 @@ Azure AD は、ID が侵害されている可能性の指標となるリスク �
 
 - サインイン リスク ポリシーにより、ユーザーのサインイン中に検出されたリアルタイム リスク イベントに対する応答を構成できます。 
 - ユーザー リスク ポリシーにより、あるユーザーについて一定期間にわたって検出されたすべてのアクティブ ユーザー リスクに対する応答を構成できます。  
+
+> [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>サインイン リスク ポリシーとは

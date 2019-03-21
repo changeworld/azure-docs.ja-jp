@@ -2,24 +2,24 @@
 title: Azure で Yeoman を使用して Terraform ベース テンプレートを作成する
 description: Azure で Yeoman を使用して Terraform ベース テンプレートを作成する方法について説明します。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform、DevOps、仮想マシン、Azure、Yeoman
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 1133e6b35d200ec7f855b41f3ae5d6f37949fc97
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8405624831c572f194fa0afaad2f0caa40bcf9ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568500"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001280"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Azure で Yeoman を使用して Terraform ベース テンプレートを作成する
 
 [Terraform](https://docs.microsoft.com/azure/terraform/
-) は Azure にインフラストラクチャを簡単に作成する方法を提供します。 [Yeoman](http://yeoman.io/)は、優れた*ベスト プラクティス*フレームワークを提供する一方で、モジュール開発者が Terraform モジュールを作成するジョブを大幅に簡素化します。
+) は Azure にインフラストラクチャを簡単に作成する方法を提供します。 [Yeoman](https://yeoman.io/)は、優れた*ベスト プラクティス*フレームワークを提供する一方で、モジュール開発者が Terraform モジュールを作成するジョブを大幅に簡素化します。
 
 このアーティクルでは、Yeoman モジュール ジェネレーターを使用してベースの Terraform テンプレートを作成する方法を説明します。 その後、新しい Terraform テンプレートをテストする方法について説明します。次の 2 とおりの方法を使用します。
 

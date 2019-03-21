@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 386662a4e98b881228a82de3777632ed002bb5b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d1ecac243ee4cfd3385d0fc69c9ce7c9e2afd95c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989156"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898841"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する 
 
@@ -49,7 +49,7 @@ ms.locfileid: "55989156"
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-1. [Azure Portal](http://portal.azure.com) に移動し、Azure アカウントでサインインします。
+1. [Azure Portal](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 2. [こちら](../../azure-functions/functions-create-function-app-portal.md)の説明に従って関数アプリを作成します。
 
 ## <a name="configure-function-app-settings"></a>関数アプリの設定の構成
@@ -379,22 +379,22 @@ webhook がトリガーされると、上記の例により次の出力が生成
 2. [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) を使用して、Azure Media Services をインストールします。
 3. 適切な値で App.config ファイルを更新します。 
     
-    * Azure Media Services の接続情報 
-    * 通知の取得を想定する Webhook URL 
-    * Webhook が予期するキーと一致する署名キー 署名キーは、Azure Media Services からの webhook コールバックをセキュリティで保護するために使用される、64 バイトの Base64 でエンコードされた値です。 
+   * Azure Media Services の接続情報 
+   * 通知の取得を想定する Webhook URL 
+   * Webhook が予期するキーと一致する署名キー 署名キーは、Azure Media Services からの webhook コールバックをセキュリティで保護するために使用される、64 バイトの Base64 でエンコードされた値です。 
 
-    ```xml
-            <appSettings>
-                <add key="AMSAADTenantDomain" value="domain" />
-                <add key="AMSRESTAPIEndpoint" value="endpoint" />
+     ```xml
+           <appSettings>
+               <add key="AMSAADTenantDomain" value="domain" />
+               <add key="AMSRESTAPIEndpoint" value="endpoint" />
 
-                <add key="AMSClientId" value="clinet id" />
-                <add key="AMSClientSecret" value="client secret" />
+               <add key="AMSClientId" value="clinet id" />
+               <add key="AMSClientSecret" value="client secret" />
 
-                <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
-                <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
-            </appSettings>
-    ```
+               <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
+               <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
+           </appSettings>
+     ```
 
 4. 次のコードで Program.cs ファイルを更新します。
 

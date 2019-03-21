@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 76059c587a6378ccfe16c0a633bea0c6c7a8a57d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: b8bb3db58538263ea60520d4537a76c6ebb6abf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340095"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112519"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。
@@ -79,8 +79,8 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
   スムーズな移行を行うための最善の方法は、正確なシナリオ (コンピューティング、ネットワーク、およびストレージ) のラボ テストを実施することです。 これにより、次のメリットが得られます。
 
-  - 完全に独立したラボまたは既存の非運用環境をテストに使用できます。 繰り返し移行可能であり、破壊的な変更が可能な、完全に独立したラボの使用をお勧めします。  実際のサブスクリプションからメタデータを収集およびハイドレートするスクリプトについては後述します。
-  - 別のサブスクリプションでラボを作成することをお勧めします。 これは、ラボが繰り返し解体されるためであり、個別の独立したサブスクリプションを用意することで、実際に使用する項目が誤って削除される可能性を削減できます。
+- 完全に独立したラボまたは既存の非運用環境をテストに使用できます。 繰り返し移行可能であり、破壊的な変更が可能な、完全に独立したラボの使用をお勧めします。  実際のサブスクリプションからメタデータを収集およびハイドレートするスクリプトについては後述します。
+- 別のサブスクリプションでラボを作成することをお勧めします。 これは、ラボが繰り返し解体されるためであり、個別の独立したサブスクリプションを用意することで、実際に使用する項目が誤って削除される可能性を削減できます。
 
   これは、AsmMetadataParser ツールを使用して実施できます。 [このツールについては、こちらをご覧ください](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)。
 
@@ -122,13 +122,13 @@ Azure Resource Manager には多くの優れた機能が用意されています
     > 移行対象の現在の環境と同じリージョンでは、これらの制限を引き上げる必要があります。
     >
 
-    - ネットワーク インターフェイス
-    - ロード バランサー
-    - パブリック IP
-    - 静的パブリック IP
-    - コア
-    - ネットワーク セキュリティ グループ
-    - ルート テーブル
+  - ネットワーク インターフェイス
+  - ロード バランサー
+  - パブリック IP
+  - 静的パブリック IP
+  - コア
+  - ネットワーク セキュリティ グループ
+  - ルート テーブル
 
     最新バージョンの Azure PowerShell で次のコマンドを使用すると、現在の Azure Resource Manager のクォータを確認できます。
     

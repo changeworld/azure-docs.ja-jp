@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4d4acecbbb90fff7865902a3371d282f1d402374
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a1ecc4de9475e735cd17286826c1d8cea05904ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662892"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089354"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C:ソーシャル ID を持つユーザーを移行する
 ご利用の ID プロバイダーを Azure AD B2C に移行する場合は、ソーシャル ID を持つユーザーも移行する必要がある場合があります。 この記事では、Facebook、LinkedIn、Microsoft、Google などの既存のソーシャル ID アカウントを Azure AD B2C に移行する方法を説明します。 この記事はフェデレーション ID にも適用されますが、これらの移行はあまり一般的ではありません。
@@ -32,14 +32,14 @@ ms.locfileid: "55662892"
 * **ローカル アカウントをソーシャル ID と結合します**。 前述のように、ローカル アカウントのサインイン名とソーシャル アカウント ID は異なる属性に格納されます。 `signInNames` はローカル アカウントに使われ、`userIdentities` はソーシャル アカウントに使われます。 1 つのユーザー レコードで、1 つの Azure AD B2C アカウントは、ローカル アカウントのみまたはソーシャル アカウントのみとするか、ローカル アカウントとソーシャル ID を結合したものにすることができます。 この動作により、管理するアカウントは 1 つになりますが、ユーザーはローカル アカウントの資格情報またはソーシャル ID でサインインできます。
 
 * `UserIdentity` 種類 - Azure AD B2C テナント内のソーシャル アカウント ユーザーの ID に関する情報が含まれています。
-    * `issuer` facebook.com など、ユーザー識別子を発行した ID プロバイダーの文字列表現。
-    * `issuerUserId` ソーシャル ID プロバイダーによって使われる base64 形式での一意のユーザー識別子。
+  * `issuer` facebook.com など、ユーザー識別子を発行した ID プロバイダーの文字列表現。
+  * `issuerUserId` ソーシャル ID プロバイダーによって使われる base64 形式での一意のユーザー識別子。
 
     ```JSON
     "userIdentities": [{
-            "issuer": "Facebook.com",
-            "issuerUserId": "MTIzNDU2Nzg5MA=="
-        }
+          "issuer": "Facebook.com",
+          "issuerUserId": "MTIzNDU2Nzg5MA=="
+      }
     ]
     ```
 
@@ -139,7 +139,7 @@ ms.locfileid: "55662892"
 1. いずれかのソーシャル アカウントでサインインします
 2. JWT トークンから、`sub` 値をコピーします。 通常、`sub` には Azure AD B2C におけるユーザーのオブジェクト ID が含まれます。 または、Azure Portal から、ユーザーのプロパティを開き、オブジェクト ID をコピーします。
 3. [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net) を開きます
-4. 管理者としてサインインします。 N
+4. 管理者としてサインインします。
 5. 次の GET 要求を実行します。 userObjectId を、コピーしたユーザー ID に置き換えます。 **GET** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 6. Azure AD B2C から返される JSON 内で `userIdentities` 要素を特定します。
 7. [オプション] `issuerUserId` 値をデコードすることもできます。

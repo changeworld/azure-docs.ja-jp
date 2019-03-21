@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1f79330f12117c6ade8884165d1538623e19c7ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6be2a2d6febfe927cadbdeb12dc91b0e103d6ac4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175266"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094628"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C:カスタム プロファイル編集ポリシーでカスタム属性を使用する
 
@@ -260,20 +260,20 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 1. **TechnicalProfile** に従って変更することで、ソーシャル アカウントにサインインするフローに新しい要求を追加します。 ソーシャル アカウントおよびフェデレーション アカウントでは、次の 2 つの **TechnicalProfile** を使用してサインインします。 これらは、ユーザー オブジェクトのロケーターとして **alternativeSecurityId** を使用してユーザー データの書き込みおよび読み取りを行います。
 
-  ```xml
+   ```xml
     <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
     <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-  ```
+   ```
 
 2. 組み込みポリシーとカスタム ポリシー間で同じ拡張属性を使用します。 ポータルのエクスペリエンスを使用して拡張属性 (カスタム属性とも呼ばれます) を追加すると、これらの属性が、すべての B2C テナントに存在する **b2c-extensions-app** を使用して登録されます。 カスタム ポリシーで拡張属性を使用するには、次の手順を行います。
 
-  a. portal.azure.com の B2C テナント内で、**[Azure Active Directory]** に移動し、**[アプリの登録]** を選択します。  
-  b. 自分の **b2c-extensions-app** を検索して選択します。  
-  c. **Essentials** で、**アプリケーション ID** と**オブジェクト ID** を入力します。  
-  d. これらを、以下のように **AAD-Common** TechnicalProfile メタデータに含めます。  
+   a. portal.azure.com の B2C テナント内で、**[Azure Active Directory]** に移動し、**[アプリの登録]** を選択します。  
+   b. 自分の **b2c-extensions-app** を検索して選択します。  
+   c. **Essentials** で、**アプリケーション ID** と**オブジェクト ID** を入力します。  
+   d. これらを、以下のように **AAD-Common** TechnicalProfile メタデータに含めます。  
 
-  ```xml
+   ```xml
       <ClaimsProviders>
         <ClaimsProvider>
           <DisplayName>Azure Active Directory</DisplayName>
@@ -285,14 +285,14 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
               <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
               <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
             </Metadata>
-  ```
+   ```
 
 3. ポータルのエクスペリエンスとの整合性を保ちます。 カスタム ポリシーで使用する前に、ポータルの UI を使用してこれらの属性を作成します。 ポータルで属性 **ActivationStatus** を作成するときに、次のようにこの属性を参照する必要があります。
 
-  ```
-  extension_ActivationStatus in the custom policy.
-  extension_<app-guid>_ActivationStatus via Graph API.
-  ```
+   ```
+   extension_ActivationStatus in the custom policy.
+   extension_<app-guid>_ActivationStatus via Graph API.
+   ```
 
 ## <a name="reference"></a>リファレンス
 

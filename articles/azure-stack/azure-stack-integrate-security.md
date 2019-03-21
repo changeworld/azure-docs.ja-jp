@@ -11,12 +11,12 @@ ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/28/2019
 keywords: ''
-ms.openlocfilehash: 7dff82538448b27f14dd81e2862cd63d4dd56a9b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a47b38acc372e6c1d215c7440657486b5babf3bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247104"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009479"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Azure Stack データセンターの統合 - Syslog 転送
 
@@ -72,6 +72,7 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 |*Remove*| クライアントからサーバーの構成を削除し、Syslog 転送を停止します| フラグ | ×|
 
 *Set-SyslogClient* コマンドレットのパラメーター:
+
 | パラメーター | 説明 | type |
 |---------|---------| ---------|
 | *pfxBinary* | Syslog サーバーに対する認証のためにクライアントが ID として使用する証明書が入った pfx ファイル  | Byte[] |
@@ -287,6 +288,7 @@ Prefix fields
 |RecoveryEndpointClosed |1016|RecoveryEndpointClosedEvent|5|
 
 REP 重大度の表:
+
 | severity | Level | 数値 |
 |----------|-------| ----------------|
 |0|Undefined|値:0. すべてのレベルのログを示します|
@@ -306,6 +308,7 @@ REP 重大度の表:
 ```
 
 Windows イベントの重大度の表:
+
 | CEF 重大度の値 | Windows イベント レベル | 数値 |
 |--------------------|---------------------| ----------------|
 |0|Undefined|値:0. すべてのレベルのログを示します|
@@ -316,6 +319,7 @@ Windows イベントの重大度の表:
 |0|詳細|値:5. すべてのレベルのログを示します|
 
 Azure Stack における Windows イベントのカスタム拡張機能の表:
+
 | カスタム拡張機能名 | Windows イベントの例 | 
 |-----------------------|---------|
 |MasChannel | システム|
@@ -352,6 +356,7 @@ Azure Stack における Windows イベントのカスタム拡張機能の表:
 ```
 
 アラートの重大度の表:
+
 | severity | Level |
 |----------|-------|
 |0|Undefined|
@@ -359,6 +364,7 @@ Azure Stack における Windows イベントのカスタム拡張機能の表:
 |5|警告|
 
 Azure Stack における作成されたアラートのカスタム拡張機能の表:
+
 | カスタム拡張機能名 | 例 | 
 |-----------------------|---------|
 |MasEventDescription|説明: ユーザー アカウント \<TestUser\> が \<TestDomain\> に対して作成されました。 これは潜在的なセキュリティ リスクです。 -- 解決策:サポートにお問い合せください。 この問題を解決するにはカスタマー サポートが必要です。 サポートを受けずに、この問題を解決しようとしないでください。 サポート要求を開く前に、 https://aka.ms/azurestacklogfiles のガイダンスを使用してログ ファイルの収集プロセスを開始してください |

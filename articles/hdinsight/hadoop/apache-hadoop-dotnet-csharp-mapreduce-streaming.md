@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 130ca849b39336637f53b32043874b5d037a8f0d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 09b652b236e1fbe68d93298f0f8793854e411aad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342925"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095672"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する
 
@@ -161,13 +161,13 @@ namespace reducer
 
 5. .exe file をアップロードするには、次のいずれかの手順に従ってください。
 
-    * __Azure Storage アカウント__ を使用している場合は、アップロード アイコンをクリックし、**マッパー** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**mapper.exe** ファイルを選択し、**[OK]** をクリックします。
+   * __Azure Storage アカウント__ を使用している場合は、アップロード アイコンをクリックし、**マッパー** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**mapper.exe** ファイルを選択し、**[OK]** をクリックします。
 
-        ![アップロード アイコン](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
+       ![アップロード アイコン](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     
-    * __Azure Data Lake Storage__ を使用している場合は、ファイルの一覧の空の領域を右クリックし、__[アップロード]__ を選択します。 最後に、**mapper.exe** ファイルを選択し、**[開く]** をクリックします。
+   * __Azure Data Lake Storage__ を使用している場合は、ファイルの一覧の空の領域を右クリックし、__[アップロード]__ を選択します。 最後に、**mapper.exe** ファイルを選択し、**[開く]** をクリックします。
 
-    __mapper.exe__ のアップロードが完了したら、 __reducer.exe__ ファイルのアップロード プロセスを繰り返します。
+     __mapper.exe__ のアップロードが完了したら、 __reducer.exe__ ファイルのアップロード プロセスを繰り返します。
 
 ## <a name="run-a-job-using-an-ssh-session"></a>ジョブの実行: SSH セッションを使用
 
@@ -175,32 +175,32 @@ namespace reducer
 
 2. MapReduce ジョブを開始するには、次のいずれかのコマンドを使用します。
 
-    * 既定のストレージとして __Data Lake Storage Gen2__ を使用している場合:
+   * 既定のストレージとして __Data Lake Storage Gen2__ を使用している場合:
 
-        ```bash
-        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-        ```
+       ```bash
+       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+       ```
 
-    * 既定のストレージとして __Data Lake Storage Gen1__ を使用している場合:
+   * 既定のストレージとして __Data Lake Storage Gen1__ を使用している場合:
 
-        ```bash
-        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-        ```
+       ```bash
+       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+       ```
     
-    * 既定のストレージとして __Azure Storage__ を使用している場合:
+   * 既定のストレージとして __Azure Storage__ を使用している場合:
 
-        ```bash
-        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-        ```
+       ```bash
+       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+       ```
 
-    次の一覧に、各パラメーターの動作を示します。
+     次の一覧に、各パラメーターの動作を示します。
 
-    * `hadoop-streaming.jar`:ストリーミング MapReduce 機能を含む jar ファイル。
-    * `-files`:このジョブに `mapper.exe` および `reducer.exe` ファイルを追加します。 各ファイルの前の `abfs:///`、`adl:///`、または `wasb:///` は、クラスターの既定の記憶域のルートへのパスです。
-    * `-mapper`:マッパーを実装するファイルを指定します。
-    * `-reducer`:レジューサを実装するファイルを指定します。
-    * `-input`:入力データ。
-    * `-output`:出力ディレクトリ。
+   * `hadoop-streaming.jar`:ストリーミング MapReduce 機能を含む jar ファイル。
+   * `-files`:このジョブに `mapper.exe` および `reducer.exe` ファイルを追加します。 各ファイルの前の `abfs:///`、`adl:///`、または `wasb:///` は、クラスターの既定の記憶域のルートへのパスです。
+   * `-mapper`:マッパーを実装するファイルを指定します。
+   * `-reducer`:レジューサを実装するファイルを指定します。
+   * `-input`:入力データ。
+   * `-output`:出力ディレクトリ。
 
 3. MapReduce ジョブが完了したら、次のコマンドを使用して結果を表示します。
 

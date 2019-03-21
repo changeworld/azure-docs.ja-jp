@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb50d22b5e0bd1a247dd806f45d9e4519214aba
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 328393d78514b236707cff1cedb9c34680900015
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208182"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120331"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>クイック スタート:Azure Active Directory で名前付きの場所を構成する
 
@@ -53,11 +53,11 @@ ms.locfileid: "56208182"
 
 6. 新しいページのフォームに入力します。 
 
-    * **[名前]** ボックスに、名前付きの場所の名前を入力します。
-    * **[IP 範囲]** ボックスに、IP 範囲を CIDR 形式で入力します。  
-    * **Create** をクリックしてください。
+   * **[名前]** ボックスに、名前付きの場所の名前を入力します。
+   * **[IP 範囲]** ボックスに、IP 範囲を CIDR 形式で入力します。  
+   * **Create** をクリックしてください。
     
-    ![[新規] ブレード](./media/quickstart-configure-named-locations/61.png)
+     ![[新規] ブレード](./media/quickstart-configure-named-locations/61.png)
 
 ## <a name="next-steps"></a>次の手順
 

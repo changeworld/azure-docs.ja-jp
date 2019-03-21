@@ -1,21 +1,21 @@
 ---
 title: Azure IoT Hub からのデバイスの制御に関するクイック スタート (Node.js) | Microsoft Docs
 description: このクイック スタートでは、2 つのサンプル Node.js アプリケーションを実行します。 1 つのアプリケーションは、ハブに接続されたデバイスをリモートで制御できるバックエンド アプリケーションです。 もう 1 つのアプリケーションは、ハブに接続されたリモートで制御できるデバイスをシミュレートします。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/22/2019
-ms.author: dobett
-ms.openlocfilehash: 97491ca483ec402a491e5f20b2527b93df810d64
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.date: 02/27/2019
+ms.openlocfilehash: 8c297c973a8d6a03b6d5990164bbde1485e36023
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674108"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170906"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Node.js)
 
@@ -94,7 +94,7 @@ node --version
 
     ```azurecli-interactive
     az iot hub show-connection-string \
-      --hub-name YourIoTHubName --output table
+      --name YourIoTHubName --output table
     ```
 
     次のようなサービス接続文字列をメモしておきます。

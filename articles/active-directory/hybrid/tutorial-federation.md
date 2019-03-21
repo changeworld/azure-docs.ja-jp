@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc6d1d53fd292a936c833450fee3af91671eec86
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a51175d192a5afb1f84f8d0ed2de9796f198f82d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171169"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102402"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>チュートリアル:単一の AD フォレスト環境をクラウドに統合する
 
@@ -83,7 +83,7 @@ Set-VMFirmware -VMName $VMName -FirstBootDevice $DVDDrive
 
 1. Hyper-V マネージャーで仮想マシンをダブルクリックします。
 2. [スタート] ボタンをクリックします。
-3.  "Press any key to boot from CD or DVD" というメッセージが表示されます。 キーを押して続行します。
+3. "Press any key to boot from CD or DVD" というメッセージが表示されます。 キーを押して続行します。
 4. Windows Server の起動画面で言語を選択し、**[次へ]** をクリックします。
 5. **[今すぐインストール]** をクリックします。
 6. ライセンス キーを入力し、**[次へ]** をクリックします。
@@ -281,9 +281,9 @@ Azure AD テナントを作成したので、次は全体管理者アカウン�
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>いずれかのユーザーでサインインをテストする
 
-1.  [https://myapps.microsoft.com](httpss://myapps.microsoft.com) に移動します。
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。
 2. 新しいテナントで作成されたユーザー アカウントを使用してサインインします。  user@domain.onmicrosoft.com の形式を使用してサインインする必要があります。 ユーザーがオンプレミスでのサインインに使用するのと同じパスワードを使用します。
-![確認](media/tutorial-password-hash-sync/verify1.png)
+   ![確認](media/tutorial-password-hash-sync/verify1.png)
 
 これでハイブリッド ID 環境を正常に設定できました。この環境は、Azure で提供されるサービスをテストしたり理解したりするために使用できます。
 

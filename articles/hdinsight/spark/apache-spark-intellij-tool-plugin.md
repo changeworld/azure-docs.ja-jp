@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: a22dd1114b6ad49695b1ce7cab2ff26f23b7e1be
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 8fa3cd79011ab31349ec44edf52b8fd9048d0d37
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447856"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077974"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -27,7 +27,7 @@ Azure Toolkit for IntelliJ プラグインを使用して [Scala](https://www.sc
 ## <a name="prerequisites"></a>前提条件
 
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
-* [Oracle Java Development Kit](https://www.azul.com/downloads/azure-only/zulu/)。  このチュートリアルでは、Java バージョン 8.0.202 を使用します。
+* [Oracle Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。  このチュートリアルでは、Java バージョン 8.0.202 を使用します。
 * IntelliJ IDEA。 この記事では、[IntelliJ IDEA Community Version 2018.3.4](https://www.jetbrains.com/idea/download/) を使用します。
 * Azure Toolkit for IntelliJ。  「[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable)」を参照してください。
 * WINUTILS.EXE。  [Windows での Hadoop の実行の問題](https://wiki.apache.org/hadoop/WindowsProblems)に関する記事を参照してください。
@@ -57,10 +57,10 @@ Scala プラグインをインストールするには、次の手順を実行�
 3. メイン ウィンドウで **[Spark Project (Scala)]\(Spark プロジェクト (Scala)\)** を選択します。
 
 4. **[Build tool]\(ビルド ツール\)** ドロップダウン ボックスの一覧で、次のいずれかを選択します。
-      * Scala プロジェクト作成ウィザードをサポートする場合は **Maven**。
-      * 依存関係を管理し、Scala プロジェクトをビルドする場合は **SBT**。
+   * Scala プロジェクト作成ウィザードをサポートする場合は **Maven**。
+   * 依存関係を管理し、Scala プロジェクトをビルドする場合は **SBT**。
 
-    ![[New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
+     ![[New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/create-hdi-scala-app.png)
 
 5. **[次へ]** を選択します。
 
@@ -99,7 +99,7 @@ Scala プラグインをインストールするには、次の手順を実行�
 
      ![[Create New Scala Class]\(新規 Scala クラスの作成\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/hdi-spark-scala-code-object.png)
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **myApp.scala** ファイルがメイン ビューで開きます。 既定のコードを次のコードに置き換えます。  
+   d. **myApp.scala** ファイルがメイン ビューで開きます。 既定のコードを次のコードに置き換えます。  
 
         import org.apache.spark.SparkConf
         import org.apache.spark.SparkContext
@@ -209,7 +209,7 @@ Scala アプリケーションを作成した後に、クラスターに送信�
     |Spark クラスター (Linux のみ)|アプリケーションを実行する HDInsight Spark クラスターを選択します。|
     |送信するアーティファクトの選択|既定の設定のままにします。|
     |Main クラス名|既定値は、選択されたファイルのメイン クラスです。 省略記号 (**...**) を選択して別のクラスを選ぶことにより、クラスを変更できます。|
-    |ジョブの構成|既定のキーと値のどちらかまたは両方を変更できます。 詳細については、[Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) に関するページを参照してください。|
+    |ジョブの構成|既定のキーと値のどちらかまたは両方を変更できます。 詳細については、[Apache Livy REST API](https://livy.incubator.apache.org./docs/latest/rest-api.html) に関するページを参照してください。|
     |Command line arguments|必要に応じて、main クラスの引数をスペースで区切って入力できます。|
     |参照される JAR と参照されるファイル|参照される JAR およびファイルのパスを入力できます (存在する場合)。 詳細:[Apache Spark 構成](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)。  [リソースをクラスターにアップロードする方法](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)に関するページも参照してください。|
     |ジョブ アップロード ストレージ|展開して追加のオプションを表示します。|

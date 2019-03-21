@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 135741a8bf385388fa1b3ac75a45e4c4678bf196
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ca2523a1101a21740a318a304f9bec491d4de2f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814472"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106238"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする
 GRUB とは GRand Unified Bootloader です。これは、VM を起動したときにおそらく最初に表示されるものです。 オペレーティング システムが起動する前に表示されるため、SSH からはアクセスできません。 GRUB からは、特にシングル ユーザー モードで起動するようにブート構成を変更することができます。
@@ -187,7 +187,7 @@ SLES が正常に起動できない場合は、自動的に緊急シェルが開
 1. `linux` で始まるカーネル行を探します
 1. `systemd.unit=emergency.target` を行末に追加します
 1. Ctrl キーを押しながら X キーを押してこれらの設定で再起動し、緊急シェルを開始します
-> 緊急シェルは、_読み取り専用_ファイルシステムで開始される点に注意してください。 任意のファイルを編集する場合は、読み取り/書き込みアクセス許可でファイルシステムを再マウントする必要があります。 これを行うには、シェルに `mount -o remount,rw /` と入力します
+   > 緊急シェルは、_読み取り専用_ファイルシステムで開始される点に注意してください。 任意のファイルを編集する場合は、読み取り/書き込みアクセス許可でファイルシステムを再マウントする必要があります。 これを行うには、シェルに `mount -o remount,rw /` と入力します
 
 ## <a name="access-for-oracle-linux"></a>Oracle Linux へのアクセス
 Red Hat Enterprise Linux と同様に、Oracle Linux のシングル ユーザー モードを使用するには、GRUB が必要であり、root ユーザーを有効にする必要があります。

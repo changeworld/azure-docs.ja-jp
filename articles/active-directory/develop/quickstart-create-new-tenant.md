@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7db08cde0df1ba3d9bc227758ab3ad00c1fc422
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2f569b497afe01db0fc4c3aa29589e6f2c538faf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207372"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108663"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>クイック スタート:開発環境の設定
 
@@ -55,8 +55,8 @@ Azure AD テナントはそれぞれ異なり、その他の Azure AD とは分�
 
 > [!TIP]
 > テナント ID を調べる必要がある場合は、次の操作を実行できます。
-* アカウント名をポイントして、ディレクトリ/テナント ID を取得します。または、
-* Azure portal で、**[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します
+> * アカウント名をポイントして、ディレクトリ/テナント ID を取得します。または、
+> * Azure portal で、**[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します
 
 アカウントに関連付けられた既存のテナントがない場合は、アカウント名の下に GUID が表示されます。次のセクションの手順に従うまで、アプリの登録などのアクションは実行できません。
 

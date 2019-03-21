@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c982707b24f18e840e866b1dcc858fe2aceb686e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4f72738d0ca9b8c6dc170892a985d821923a4405
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000011"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894021"
 ---
 # <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
 
@@ -34,7 +34,7 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 ## <a name="overview"></a>概要
 コンテンツ (ストリーミング ライブ イベントまたはビデオ オン デマンド) を顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。 この目標を達成するために、次の操作を行います。
 
-* ストリームをマルチビットレート ([アダプティブ ビットレート](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) ビデオ ストリームにエンコードします (これにより品質とネットワーク条件に対応)。 
+* ストリームをマルチビットレート ([アダプティブ ビットレート](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) ビデオ ストリームにエンコードします (これにより品質とネットワーク条件に対応)。 
 * Media Services の [動的パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します (これにより異なるデバイスでのストリーミングに対応)。 Media Services は、次のアダプティブ ビットレート ストリーミング配信テクノロジをサポートしています。HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH 
 
 ### <a name="manifest-files"></a>マニフェスト ファイル

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/28/2019
-ms.openlocfilehash: a48e9a21c97ecb881798b0f944e91cfcf81f0a72
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: cf6122b45f82b9304acd28819861b9fda2dcb5ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295765"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085730"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
@@ -31,9 +31,9 @@ Azure Storage は、堅牢な汎用ストレージ ソリューションであ�
 
 | ストレージ アカウントの種類 | サポートされているサービス | サポートされているパフォーマンス レベル | サポートされているアクセス層 |
 |----------------------|--------------------|-----------------------------|------------------------|
-| 汎用 v2   | BLOB               | 標準                    | ホット、クール、アーカイブ *    |
-| 汎用 v1   | BLOB               | 標準                    | 該当なし                    |
-| BLOB ストレージ         | BLOB               | 標準                    | ホット、クール、アーカイブ *    |
+| 汎用 v2   | BLOB               | Standard                    | ホット、クール、アーカイブ *    |
+| 汎用 v1   | BLOB               | Standard                    | 該当なし                    |
+| BLOB ストレージ         | BLOB               | Standard                    | ホット、クール、アーカイブ *    |
 
 ビジネス データの格納には、既定の BLOB コンテナーを使用しないことをお勧めします。 ストレージ コストを削減するために、既定の BLOB コンテナーの使用後、コンテナーを毎回削除することをお勧めします。 既定のコンテナーには、アプリケーション ログとシステム ログが格納されます。 コンテナーを削除する前に、ログを取り出してください。
 
@@ -197,7 +197,7 @@ example/jars/hadoop-mapreduce-examples.jar
 ### <a name="access-blobs-using-azure-powershell"></a> Azure PowerShell の使用
 
 > [!NOTE]
-
+> 
 > このセクションでは、PowerShell を使用して BLOB に格納されているデータにアクセスする基本的なコマンドの例を紹介します。 HDInsight を使用した操作にカスタマイズされた高度な例については、 [HDInsight ツール](https://github.com/Blackmist/hdinsight-tools)に関するページを参照してください。
 
 BLOB 関連のコマンドレットを一覧表示するには、次のコマンドを使用します。

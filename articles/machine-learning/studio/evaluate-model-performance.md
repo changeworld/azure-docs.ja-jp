@@ -5,17 +5,17 @@ description: この記事では、Azure Machine Learning Studio でモデルの�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: e5c85451ca48aab8f980b89de41ebf40f1f97ff3
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 37ab56c377bc53a7300b51ffc709ea8d1b9d6f9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453955"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891588"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でモデルのパフォーマンスを評価する方法
 
@@ -83,7 +83,7 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 図 4: 回帰モデルのクロス検証の結果。
 
 ## <a name="evaluating-a-binary-classification-model"></a>二項分類モデルの評価
-二項分類のシナリオでは、ターゲット変数には 2 つの選択肢しかありません。たとえば、{0, 1}、{偽, 真}、{負, 正} などです。 ここで、成人の従業員の人口統計データや雇用データが含まれているデータセットに基づいて収入のレベルを予測するために、二項変数 {"<=50 K", ">50 K"} を使うと想定しましょう。 つまり、年収が 5 万ドル以下の従業員を表す負のクラスと、その他の従業員を表す正のクラスです。 回帰のシナリオの場合と同じく、モデルのトレーニング、データのスコア付け、結果の評価を行います。 おもな違いは、Azure Machine Learning Studio で計算されて出力されるメトリックの選択です。 この収入レベルの予測シナリオでは、[Adult](http://archive.ics.uci.edu/ml/datasets/Adult) データセットを使用して Studio の実験を作成し、よく使われている二項分類モデルである 2 クラスのロジスティック回帰モデルのパフォーマンスを評価します。
+二項分類のシナリオでは、ターゲット変数には 2 つの選択肢しかありません。たとえば、{0, 1}、{偽, 真}、{負, 正} などです。 ここで、成人の従業員の人口統計データや雇用データが含まれているデータセットに基づいて収入のレベルを予測するために、二項変数 {"<=50 K", ">50 K"} を使うと想定しましょう。 つまり、年収が 5 万ドル以下の従業員を表す負のクラスと、その他の従業員を表す正のクラスです。 回帰のシナリオの場合と同じく、モデルのトレーニング、データのスコア付け、結果の評価を行います。 おもな違いは、Azure Machine Learning Studio で計算されて出力されるメトリックの選択です。 この収入レベルの予測シナリオでは、[Adult](https://archive.ics.uci.edu/ml/datasets/Adult) データセットを使用して Studio の実験を作成し、よく使われている二項分類モデルである 2 クラスのロジスティック回帰モデルのパフォーマンスを評価します。
 
 ### <a name="creating-the-experiment"></a>実験の作成
 Azure Machine Learning Studio で以下のモジュールをワークスペースに追加します。
@@ -133,7 +133,7 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 図 9: 二項分類モデルのクロス検証の結果。
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>多クラス分類モデルの評価
-この実験では、3 種類のあやめの事例が含まれている有名な [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris ") データセットを使います。 事例ごとに 4 つの特徴値 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。 前の実験では、同じデータセットを使ってモデルのトレーニングとテストを行いました。 今回は、[[データの分割]][split] モジュールを使ってデータのサブセットを 2 つ作成し、最初のサブセットでトレーニングを行い、2 つ目のセブセットでスコア付けと評価を行います。 Iris データセットは [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) で公開されており、[[データのインポート]][import-data] モジュールを使ってダウンロードできます。
+この実験では、3 種類のあやめの事例が含まれている有名な [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris ") データセットを使います。 事例ごとに 4 つの特徴値 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。 前の実験では、同じデータセットを使ってモデルのトレーニングとテストを行いました。 今回は、[[データの分割]][split] モジュールを使ってデータのサブセットを 2 つ作成し、最初のサブセットでトレーニングを行い、2 つ目のセブセットでスコア付けと評価を行います。 Iris データセットは [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.html) で公開されており、[[データのインポート]][import-data] モジュールを使ってダウンロードできます。
 
 ### <a name="creating-the-experiment"></a>実験の作成
 Azure Machine Learning Studio で以下のモジュールをワークスペースに追加します。

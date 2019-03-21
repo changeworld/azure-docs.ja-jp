@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453615"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904509"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>チュートリアル 1:信用リスクの予測 - Azure Machine Learning Studio
 
@@ -70,7 +70,7 @@ Machine Learning Studio を使用するには、Microsoft Azure Machine Learning
 ## <a name="upload"></a>既存のデータのアップロード
 
 信用リスクの予測モデルを作成するには、トレーニングとその後のモデルのテストに使用できるデータが必要です。 このチュートリアルでは、UC Irvine Machine Learning Repository の "UCI Statlog (German Credit Data) Data Set" (UCI Statlog (ドイツの信用貸付データ) データ セット) を使用します。 詳細についてはこちらを参照してください:  
-<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
+<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
 **german.data** という名前のファイルを使用します。 このファイルをローカル ハード ドライブにダウンロードします。  
 
@@ -212,18 +212,18 @@ Studio にアップロードしたデータセットは、Studio ウィンドウ
 
 1. **[プロパティ]** ウィンドウに戻り、**[新しい列名]** パラメーターを探します。 このフィールドには、コンマ区切りで列の順番どおりに、データセットの 21 列分の名前を入力します。 列名は、UCI Web サイトのデータセットに関するドキュメントから入手できます。または、次の一覧をコピーして貼り付けることができます。  
 
-  ```   
-  Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
-  ```
+   ```   
+   Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
+   ```
 
-  [プロパティ] ウィンドウは次のようになります。
+   [プロパティ] ウィンドウは次のようになります。
 
-  ![メタデータの編集のプロパティ](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
+   ![メタデータの編集のプロパティ](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
-  > [!TIP]
-  > 列見出しを検証する場合は、実験を実行します (実験キャンバスの下の **[Run (実行)]** をクリックします)。 実行が終了したら ([メタデータの編集][edit-metadata]上に緑のチェック マークが表示されたら)、[メタデータの編集][edit-metadata]モジュールの出力ポートをクリックし、**[視覚化]** を選択します。 すべてのモジュールで、この方法によって実験データの進捗状況を確認することができます。
-  > 
-  > 
+   > [!TIP]
+   > 列見出しを検証する場合は、実験を実行します (実験キャンバスの下の **[Run (実行)]** をクリックします)。 実行が終了したら ([メタデータの編集][edit-metadata]上に緑のチェック マークが表示されたら)、[メタデータの編集][edit-metadata]モジュールの出力ポートをクリックし、**[視覚化]** を選択します。 すべてのモジュールで、この方法によって実験データの進捗状況を確認することができます。
+   > 
+   > 
 
 ### <a name="create-training-and-test-datasets"></a>トレーニング用およびテスト用のデータセットを作成する
 

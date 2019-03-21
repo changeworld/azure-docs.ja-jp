@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/18/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 27e9a5b33170855455e8906b659e0f0c009e42d3
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c862de2eec4e6c116218457a20b567dc02778685
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984105"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190024"
 ---
-# <a name="media-encoder-standard-formats-and-codecs-legacy"></a>Media Encoder Standard の形式とコーデック (レガシ)
+# <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard の形式とコーデック
 
 > [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
 > * [Version 2](media-services-media-encoder-standard-formats.md)
@@ -30,7 +30,7 @@ ms.locfileid: "55984105"
 
 ## <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
 | ファイル形式 (ファイル拡張子) | サポートされています |
-| --- | --- | --- | --- |
+| --- | --- |
 | (H.264 および AAC コーデックでの) FLV (.flv) |はい |
 | MXF    (.mxf) |はい |
 | GXF    (.gxf) |はい |
@@ -59,7 +59,7 @@ or
 
 ## <a name="input-video-codecs"></a>入力ビデオ コーデック
 | 入力ビデオ コーデック | サポートされています |
-| --- | --- | --- | --- |
+| --- | --- |
 | AVC 8-bit/10-bit、最大 4:2:2 (AVCIntra を含む) |8 ビット 4:2:0 および 4:2:2 |
 | Avid DNxHD (MXF) |はい |
 | DVCPro/DVCProHD (MXF) |はい |
@@ -82,7 +82,7 @@ or
 
 ## <a name="input-audio-codecs"></a>入力オーディオ コーデック
 | 入力オーディオ コーデック | サポートされています |
-| --- | --- | --- | --- |
+| --- | --- |
 | AAC (AAC-LC、AAC-HE、AAC-HEv2。最大 5.1) |はい |
 | MPEG Layer 2 |はい |
 | MP3 (MPEG-1 Audio Layer 3) |はい |

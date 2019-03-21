@@ -5,17 +5,17 @@ description: Azure Machine Learning Studio を使用するには、Machine Learn
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: bcd5b377f00ad43ff727c581471aad3ac651bdbb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 7aeee4f24f6c7133ad978bc0c6c7fb8853bc4c35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270103"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086141"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Azure Machine Learning Studio ワークスペースの作成と共有
 
@@ -23,7 +23,7 @@ Azure Machine Learning Studio を使用するには、Machine Learning Studio �
 
 ## <a name="create-a-studio-workspace"></a>Studio ワークスペースを作成する
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインする
+1. [Azure ポータル](https://portal.azure.com/)
 
     > [!NOTE]
     > サインインして Studio ワークスペースを作成するには、Azure サブスクリプション管理者である必要があります。 
@@ -36,10 +36,10 @@ Azure Machine Learning Studio を使用するには、Machine Learning Studio �
 
 4. ワークスペースの情報を入力します。
 
-    - *[ワークスペース名]* に使用できる最大文字数は 260 文字です。末尾に空白文字は使用しないでください。 また、`< > * % & : \ ? + /` の各文字は使用できません。
-    - このワークスペースから Web サービスをデプロイした場合、選択 (または作成) した "*Web サービス プラン*" とそれに関連して選択した "*価格レベル*" が使用されます。
+   - *[ワークスペース名]* に使用できる最大文字数は 260 文字です。末尾に空白文字は使用しないでください。 また、`< > * % & : \ ? + /` の各文字は使用できません。
+   - このワークスペースから Web サービスをデプロイした場合、選択 (または作成) した "*Web サービス プラン*" とそれに関連して選択した "*価格レベル*" が使用されます。
 
-    ![新しい Studio ワークスペースを作成する](./media/create-workspace/create-new-workspace.png)
+     ![新しい Studio ワークスペースを作成する](./media/create-workspace/create-new-workspace.png)
 
 5. **Create** をクリックしてください。
 

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 937f6ffb9865419611c35b95ac84832bb2f1f3fe
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 92ffa02959f020789d14b3bea71763f3f5b9bb47
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791816"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084100"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスター上の Jupyter Notebook のカーネル 
 
@@ -59,15 +59,15 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 
 - **コンテキストのプリセット**。 **PySpark**、**PySpark3**、または **Spark** カーネルでは、アプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。 これらは既定で利用できます。 各コンテキストは次のとおりです。
    
-   * **sc** : Spark コンテキスト用
-   * **sqlContext** : Hive コンテキスト用
+  * **sc** : Spark コンテキスト用
+  * **sqlContext** : Hive コンテキスト用
    
-   そのため、コンテキストを設定するための次のようなステートメントを実行する必要はありません。
+    そのため、コンテキストを設定するための次のようなステートメントを実行する必要はありません。
    
-          sc = SparkContext('yarn-client')
-          sqlContext = HiveContext(sc)
+         sc = SparkContext('yarn-client')
+         sqlContext = HiveContext(sc)
    
-   代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
+    代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 
 - **セル マジック**。 PySpark カーネルには、"マジック"、つまり、`%%` で呼び出すことができる特別なコマンドがいくつか事前定義されています (`%%MAGIC` <args> など)。 このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。 魔法の単語はセルの最初の単語にする必要があります。 その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。     マジックの詳細については、[こちら](https://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
    
@@ -80,14 +80,14 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
    | [構成] |`%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} |セッションを作成するためのパラメーターを構成します。 セッションが既に作成されている場合、強制フラグ (-f) は必須です。これにより、セッションの破棄と再作成が保証されます。 有効なパラメーターの一覧については、 [Livy の「POST /sessions」の「Request Body (要求本文)」](https://github.com/cloudera/livy#request-body) をご覧ください。 例の列で示されているように、パラメーターは JSON 文字列として渡し、マジックの後の次の行に置く必要があります。 |
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |sqlContext に対して Hive クエリを実行します。 `-o` パラメーターが渡される場合、クエリの結果は、 [Pandas](https://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化されます。 |
    | local |`%%local`<br>`a=1` |後続行のすべてのコードがローカルで実行されます。 使用しているカーネルに関係なく、コードは有効な Python2 コードである必要があります。 したがって、Notebook の作成時に **PySpark3** または **Spark** カーネルを選択している場合でも、`%%local` マジックをセルで使用する場合、そのセルには、有効な Python2 コードのみが含まれている必要があります。 |
-   | ログ |`%%logs` |現在の Livy セッションのログを出力します。 |
+   | logs |`%%logs` |現在の Livy セッションのログを出力します。 |
    | 削除 |`%%delete -f -s <session number>` |現在 Livy エンドポイントの特定のセッションを削除します。 カーネル自体が開始したセッションを削除することはできません。 |
    | cleanup |`%%cleanup -f` |このノートブックのセッションを含む、現在 Livy エンドポイントのすべてのセッションを削除します。 強制フラグ -f は必須です。 |
 
    > [!NOTE]  
    > PySpark カーネルによって追加されるマジックに加えて、`%%sh` などの[組み込み IPython](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics) マジックも使用することができます。 `%%sh` マジックは、クラスター ヘッド ノードでスクリプトやコード ブロックを実行する際に使用することができます。
 
-2. **自動視覚化**。 **Pyspark** カーネルは、Hive と SQL のクエリの出力を自動的に視覚化します。 表、円グラフ、面積グラフ、棒グラフなど、さまざまな種類の視覚化から選択できます。
+1. **自動視覚化**。 **Pyspark** カーネルは、Hive と SQL のクエリの出力を自動的に視覚化します。 表、円グラフ、面積グラフ、棒グラフなど、さまざまな種類の視覚化から選択できます。
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>%%sql マジックでサポートされるパラメーター
 `%%sql` マジックでは、クエリの実行時に受け取る出力の種類の制御に使用できる、さまざまなパラメーターがサポートされます。 次の表に、出力を示します。
@@ -148,7 +148,7 @@ Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome で�
 新しいカーネルは進化の過程にあり、時間の経過と共に成熟するでしょう。 カーネルが改良されるにつれて、API も変更される可能性があります。 これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。 これらのカーネルの最終リリースの設計に役立ちます。 ご意見やフィードバックは、この記事の下部にある **コメント** のセクションからお寄せください。
 
 ## <a name="seealso"></a>関連項目
-* [概要:Azure HDInsight での Apache Spark](apache-spark-overview.md)
+* [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
 * [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)

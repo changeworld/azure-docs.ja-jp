@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3442ced47e50485da1ffdd475d9649243b1c8583
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 37f85afbdd55d3f14638f0833f69bb1992770449
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116696"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086073"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイック スタート:Azure サブスクリプションでの Security Center Standard の利用開始
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
@@ -37,7 +37,7 @@ Azure Security Center は、ハイブリッド クラウド ワークロード�
 1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
 2. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
- ![Security Center の概要][2]
+   ![Security Center の概要][2]
 
 **[セキュリティ センター - 概要]** では、ハイブリッド クラウド ワークロードのセキュリティ対策の統合ビューが表示されるので、ワークロードのセキュリティを検出して評価したり、リスクを特定して軽減したりできます。 Security Center は、ユーザーまたは別のサブスクリプション ユーザーによって以前に Free レベルにオンボードされていない Azure サブスクリプションを自動的に有効にします。
 
@@ -55,13 +55,13 @@ Security Center のクイックスタートおよびチュートリアルの目�
 
 1. Security Center メイン メニューの **[使用の開始]** を選択します。
  
-  ![作業開始][4]
+   ![作業開始][4]
 
 2. Security Center の **[アップグレード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 
    - 展開可能な **[Apply your trial] \(試用版を適用)** をクリックすると、すべてのサブスクリプションとワークスペースの一覧を各試用版の資格の状態と共に表示できます。
    -    試用版の対象にならないサブスクリプションとワークスペースをアップグレードできます。
    -    対象となるワークスペースとサブスクリプションを選択すると、ご自身の試用版を開始できます。
-3.  **[無料体験する]** をクリックして、選択したサブスクリプションでご自身の試用版を開始します。
+3. **[無料体験する]** をクリックして、選択したサブスクリプションでご自身の試用版を開始します。
 
 
   ![セキュリティのアラート][9]

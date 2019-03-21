@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 97766472ea5f7b62a452e6cc5a71a77426e975ad
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f7f8e86f17b0fdb715afc96dba80db0746440cef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235412"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078127"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>チュートリアル:WPF を使って翻訳アプリを作成する
 
@@ -108,7 +108,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 
 このユーザー インターフェイスには、次のコンポーネントが含まれています。
 
-| Name | type | 説明 |
+| Name | Type | 説明 |
 |------|------|-------------|
 | `FromLanguageComboBox` | ComboBox | Microsoft Translator でサポートされているテキスト翻訳の言語の一覧を表示します。 ユーザーは、翻訳前の言語を選択します。 |
 | `ToLanguageComboBox` | ComboBox | `FromComboBox` と同じ言語の一覧を表示しますが、ユーザーの翻訳先の言語を選択するために使用されます。 |
@@ -240,7 +240,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
    // In the following sections, we'll add code below this.
    }
    ```
-   4. 自分の Cognitive Services サブスクリプション キーを追加し、保存します。
+   1. 自分の Cognitive Services サブスクリプション キーを追加し、保存します。
 
 このコード ブロックでは、翻訳可能な言語に関する情報を含む 2 つのメンバー変数を宣言しました。
 

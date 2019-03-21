@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: bcb62b311426c7582202ced3714d01c429118ab5
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: d3aad8f1b032960786564bbb18f99c260fd72113
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268415"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092720"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -212,7 +212,7 @@ ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビ�
 ## <a name="next-steps"></a>次の手順
 
 - [カスタム テレメトリ](../../azure-monitor/app/api-custom-events-metrics.md)を記述します。
-- 他の SDK における [cloud_RoleName の設定](../../azure-monitor/app/app-map.md#set-cloudrolename)について、詳細を確認します。
+- 他の SDK における [cloud_RoleName の設定](../../azure-monitor/app/app-map.md#set-cloud_rolename)について、詳細を確認します。
 - Application Insights でマイクロサービスのすべてのコンポーネントの利用を開始します。 [サポートされているプラットフォーム](../../azure-monitor/app/platforms.md)を調べます。
 - [データ モデル](../../azure-monitor/app/data-model.md)に関するページを参照して、Application Insights の種類を確認します。
 - [テレメトリの拡張とフィルター処理](../../azure-monitor/app/api-filtering-sampling.md)を行う方法を確認します。

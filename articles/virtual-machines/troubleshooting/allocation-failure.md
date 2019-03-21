@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 10c5dc5614731b247b917b68307f6a2d11663461
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 1298e7d7ed9c3760ff5022b5b97e8444eb1bcad1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510478"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007051"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング
 
@@ -25,7 +25,7 @@ ms.locfileid: "55510478"
 
 **エラー コード**:AllocationFailed または ZonalAllocationFailed
 
-**エラー メッセージ**:「割り当てに失敗しました。 このリージョンには、要求された VM サイズに対して十分な容量がありません。 Read more about improving likelihood of allocation success at http://aka.ms/allocation-guidance」(割り当てに失敗しました。このリージョンには、要求された VM サイズに対して十分な容量がありません。割り当てが成功する可能性を向上させる方法については、 http://aka.ms/allocation-guidance をご覧ください)
+**エラー メッセージ**:「割り当てに失敗しました。 このリージョンには、要求された VM サイズに対して十分な容量がありません。 Read more about improving likelihood of allocation success at `https://aka.ms/allocation-guidance`」(割り当てに失敗しました。このリージョンには、要求された VM サイズに対して十分な容量がありません。割り当てが成功する可能性を向上させる方法については、 http://aka.ms/allocation-guidance をご覧ください)
 
 この記事では、いくつかの一般的な割り当てエラーの原因を説明し、可能な対処方法を提案します。
 
@@ -86,7 +86,7 @@ Dv1、DSv1、Av1、D15v2、DS15v2 などの以前の VM シリーズまたはサ
 |レガシ VM シリーズ/サイズ|推奨される新しい VM シリーズ/サイズ|詳細情報|
 |----------------------|----------------------------|--------------------|
 |Av1 シリーズ|[Av2 シリーズ](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 または DSv1 シリーズ (D1 から D5)|[Dv3 または DSv3 シリーズ](../windows/sizes-general.md#dsv3-series-sup1sup)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 または DSv1 シリーズ (D1 から D5)|[Dv3 または DSv3 シリーズ](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
 |Dv1 または DSv1 シリーズ (D11 から D14)|[Ev3 または ESv3 シリーズ](../windows/sizes-memory.md#ev3-series)|
 |D15v2 または DS15v2|より大きい VM サイズを利用するために Resource Manager デプロイ モデルを使用している場合は、D16v3/DS16v3 または D32v3/DS32v3 への移行を検討します。 これらは、最新の世代のハードウェア上で稼働するように設計されています。 VM インスタンスが単一の顧客に専用のハードウェアに分離されるように Resource Manager デプロイ モデルを使用している場合は、最新世代のハードウェア上で稼働するように設計された、新しい分離 VM サイズ (E64i_v3 または E64is_v3) への移行を検討してください。 |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 

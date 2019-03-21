@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: b7814ce2ae94216da691b9a54049d20a03aafdd9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cbb144cc8aac6dc8e90d196147b0c154471b7239
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994818"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102062"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights のデータをカスタム データ ソースと関連付ける
 
@@ -44,7 +44,7 @@ Azure Monitor へのログ データの送信を開始するには、 いくつ�
 
 - 同期メカニズムを使用する場合は、[データ コレクター API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) を直接呼び出すか、または Microsoft のロジック アプリ コネクタを使用できます。[Azure Log Analytics] から [データを送信する] オプションを選択してください。
 
- ![スクリーンショット (アクションを選択してください)](./media/custom-data-correlation/01-logic-app-connector.png)  
+  ![スクリーンショット (アクションを選択してください)](./media/custom-data-correlation/01-logic-app-connector.png)  
 
 - 非同期オプションを使用する場合は、データ コレクター API を使って処理パイプラインを作成します。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)をご覧ください。
 

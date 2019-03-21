@@ -3,7 +3,7 @@ title: Azure VM での BitLocker ブート エラーのトラブルシューテ�
 description: Azure VM での BitLocker ブート エラーをトラブルシューティングする方法について説明します
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genli
+author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 3a615beeec45871aab1e98ad338ffa053ddbec92
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a7bd812d3aadfd3c358c8d0aeccf0e92ed474a05
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984768"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993201"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Azure VM での BitLocker ブート エラー
 
@@ -26,13 +26,13 @@ ms.locfileid: "55984768"
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
- ## <a name="symptom"></a>症状
+## <a name="symptom"></a>症状
 
  Windows VM が起動しません。 [[ブート診断]](../windows/boot-diagnostics.md) ウィンドウでスクリーンショットを調べると、次のエラー メッセージのいずれかが表示されています。
 
 - Plug in the USB driver that has the BitLocker key (BitLocker キーが格納されている USB ドライバーを差し込んでください)
 
-- You’re locked out! (ロックアウトされています) Enter the recovery key to get going again (Keyboard Layout:US) The wrong sign-in info has been entered too many times, so your PC was locked to protect your privacy. (回復キーを入力して先に進んでください (キーボード レイアウト: US)。間違ったサインイン情報が何度も入力されたため、プライバシー保護のために PC はロックされました。) To retrieve the recovery key, go to http://windows.microsoft.com/recoverykeyfaq from another PC or mobile device. (回復キーを取得するには、別の PC またはモバイル デバイスから http://windows.microsoft.com/recoverykeyfaq に移動してください。) In case you need it, the key ID is XXXXXXX. (それが必要な場合、キー ID は XXXXXXX です。) Or, you can reset your PC. (または、PC をリセットできます。)
+- You’re locked out! (ロックアウトされています) Enter the recovery key to get going again (Keyboard Layout:US) The wrong sign-in info has been entered too many times, so your PC was locked to protect your privacy. (回復キーを入力して先に進んでください (キーボード レイアウト: US)。間違ったサインイン情報が何度も入力されたため、プライバシー保護のために PC はロックされました。) To retrieve the recovery key, go to https://windows.microsoft.com/recoverykeyfaq from another PC or mobile device. (回復キーを取得するには、別の PC またはモバイル デバイスから https://windows.microsoft.com/recoverykeyfaq に移動してください。) In case you need it, the key ID is XXXXXXX. (それが必要な場合、キー ID は XXXXXXX です。) Or, you can reset your PC. (または、PC をリセットできます。)
 
 - Enter the password to unlock this drive [ ] Press the Insert Key to see the password as you type. (このドライブ [ ] をロック解除するためのパスワードを入力してください。入力したパスワードを表示するには Insert キーを押してください。)
 - Enter your recovery key Load your recovery key from a USB device. (回復キーを入力してください。USB デバイスから回復キーを読み込んでください。)

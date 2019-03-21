@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 655d65ebfbb0141acd829a64414d9ba20dd2c697
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633744"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085152"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Azure Time Series Insights とリモート監視の統合
 
@@ -62,8 +62,8 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
     | 環境名 | 次のスクリーン ショットでは、**contorosrmtsi** という名前を使用しています。 この手順を完了したら、独自の一意の名前を選択してください。 |
     | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
     | リソース グループ | **既存のものを使用します**。 既存のリモート監視リソース グループの名前を選択します。 |
-    | 場所 | **[米国東部]** を使用します。 可能な場合は、リモート監視ソリューションと同じリージョンに環境を作成します。 |
-    | SKU |**S1** |
+    | Location | **[米国東部]** を使用します。 可能な場合は、リモート監視ソリューションと同じリージョンに環境を作成します。 |
+    | Sku |**S1** |
     | 容量 | **1** |
 
     ![Time Series Insights を作成する](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
@@ -96,7 +96,8 @@ IoT Hub に接続する新しいイベント ソースを作成します。 必�
     | IoT Hub ポリシー名 | **iothubowner**。使用するポリシーは、所有者ポリシーであることを確認してください。 |
     | IoT Hub ポリシー キー | このフィールドは自動的に設定されます。 |
     | IoT Hub コンシューマー グループ | **timeseriesinsights**。 |
-    | イベントのシリアル化の形式 | **JSON**     | タイムスタンプ プロパティ名 | 空白 |
+    | イベントのシリアル化の形式 | **JSON**     | 
+    | タイムスタンプ プロパティ名 | 空白 |
 
     ![イベント ソースを作成する](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 

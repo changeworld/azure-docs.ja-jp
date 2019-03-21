@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 4110b8f1b336a604c89180ac44ad470132765830
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 366ab452d1693315e7e71301d953248008c1eac8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820676"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079130"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>C# での Reliable Services を使用したサービスのリモート処理
 
@@ -128,28 +128,28 @@ V2 スタックを有効にするには、次の方法を使用できます。
 
 1. サービス マニフェストで、エンドポイント リソースを `"ServiceEndpoint"` から `"ServiceEndpointV2"` に変更します。
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2" />
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners` 拡張メソッドを使用して、リモート処理リスナーを作成します (V1 と V2 の両方で同一)。
 
-  ```csharp
+   ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return this.CreateServiceRemotingInstanceListeners();
     }
-  ```
+   ```
 
 3. リモート処理インターフェイスが含まれているアセンブリに、`FabricTransportServiceRemotingProvider` 属性を指定してマークを付けます。
 
-  ```csharp
-  [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2, RemotingClientVersion = RemotingClientVersion.V2)]
-  ```
+   ```csharp
+   [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2, RemotingClientVersion = RemotingClientVersion.V2)]
+   ```
 
 クライアント プロジェクトでは、コードの変更は必要ありません。
 上に示したアセンブリ属性が確実に使用されるように、目的のインターフェイス アセンブリを使用してクライアント アセンブリをビルドします。
@@ -162,18 +162,18 @@ V2 スタックを有効にするには、次の方法を使用できます。
 
 1. サービス マニフェストで、エンドポイント リソースを `"ServiceEndpoint"` から `"ServiceEndpointV2"` に変更します。
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2" />
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime` 名前空間の [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) を使用します。
 
-  ```csharp
-  protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+   ```csharp
+   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[]
         {
@@ -184,16 +184,16 @@ V2 スタックを有効にするには、次の方法を使用できます。
             })
         };
     }
-  ```
+   ```
 
 3. `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client` 名前空間の [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) を使用してクライアントを作成します。
 
-  ```csharp
-  var proxyFactory = new ServiceProxyFactory((c) =>
+   ```csharp
+   var proxyFactory = new ServiceProxyFactory((c) =>
           {
               return new FabricTransportServiceRemotingClientFactory();
           });
-  ```
+   ```
 
 ## <a name="upgrade-from-remoting-v1-to-remoting-v2"></a>リモート処理 V1 からリモート処理 V2 にアップグレードする
 
@@ -248,29 +248,29 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
 
 1. サービス マニフェストに、"ServiceEndpointV2_1" という名前のエンドポイント リソースを追加します。
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2_1" />  
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. リモート処理拡張メソッドを使用して、リモート処理リスナーを作成します。
 
-  ```csharp
+   ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return this.CreateServiceRemotingInstanceListeners();
     }
-  ```
+   ```
 
 3. リモート処理インターフェイスに[アセンブリ属性](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet)を追加します。
 
-  ```csharp
+   ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
 
-  ```
+   ```
 
 クライアント プロジェクトでは、変更は必要ありません。
 前記のアセンブリ属性が確実に使用されるように、目的のインターフェイス アセンブリを使用してクライアント アセンブリをビルドします。
@@ -281,18 +281,18 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
 
 1. サービス マニフェストに、"ServiceEndpointV2_1" という名前のエンドポイント リソースを追加します。
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2_1" />  
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. [リモート処理 V2 リスナーを使用します](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet)。 使用される既定のサービス エンドポイント リソース名は、"ServiceEndpointV2_1" です。 これはサービス マニフェストで定義されている必要があります。
 
-  ```csharp
-  protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+   ```csharp
+   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[]
         {
@@ -305,17 +305,17 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
             })
         };
     }
-  ```
+   ```
 
 3. V2 [クライアント ファクトリ](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet)を使用します。
-  ```csharp
-  var proxyFactory = new ServiceProxyFactory((c) =>
+   ```csharp
+   var proxyFactory = new ServiceProxyFactory((c) =>
           {
             var settings = new FabricTransportRemotingSettings();
             settings.UseWrappedMessage = true;
             return new FabricTransportServiceRemotingClientFactory(settings);
           });
-  ```
+   ```
 
 ## <a name="upgrade-from-remoting-v1-to-remoting-v2-interface-compatible"></a>リモート処理 V1 からリモート処理 V2 (インターフェイス互換) にアップグレードする
 
@@ -527,8 +527,8 @@ V1 から V2 (インターフェイス互換、V2_1 と呼ばれます) にア�
 
 2. リモート処理リスナーのために、`JsonSerializationProvider` を使用して既定のシリアル化プロバイダーをオーバーライドします。
 
-  ```csharp
-  protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+   ```csharp
+   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
    {
        return new[]
        {
@@ -539,7 +539,7 @@ V1 から V2 (インターフェイス互換、V2_1 と呼ばれます) にア�
            })
        };
    }
-  ```
+   ```
 
 3. リモート処理クライアント ファクトリのために、`JsonSerializationProvider` を使用して既定のシリアル化プロバイダーをオーバーライドします。
 

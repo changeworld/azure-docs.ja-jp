@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 6c0207a68cea70951143c87f83f6b17bb0c7b1f3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4fd96aedc658833493d6fddb704104a70c01df44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098461"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010979"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Linux の仮想マシンのシリアル コンソール
 
@@ -82,6 +82,7 @@ Oracle Linux        | シリアル コンソール アクセスが既定で有�
 > シリアル コンソールに何も表示されない場合、VM でそのブート診断が有効になっていることを確認してください。
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>シリアル コンソールにアクセスする一般的なシナリオ
+
 シナリオ          | シリアル コンソールでのアクション
 :------------------|:-----------------------------------------
 壊れた *FSTAB* ファイル | **Enter** キーを押して続行し、テキスト エディターを使って *FSTAB* ファイルを修正します。 そのためには、シングル ユーザー モードにすることが必要な場合があります。 詳細については、[fstab の問題の修正方法](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)に関するページ、および「[シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする](serial-console-grub-single-user-mode.md)」を参照してください。
@@ -143,14 +144,14 @@ SSH/RDP の構成の問題 | シリアル コンソールにアクセスし、�
 ### <a name="audit-logs"></a>監査ログ
 現在、シリアル コンソールへのすべてのアクセスが、仮想マシンの[ブート診断](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics)ログに記録されます。 これらのログへのアクセスは、Azure 仮想マシン管理者が所有し、制御します。
 
->[!CAUTION]
-コンソールのアクセス パスワードはログに記録されません。 ただし、コンソール内で実行されるコマンドにパスワード、シークレット、ユーザー名、またはその他の形式の個人を特定できる情報 (PII) が含まれていたり、出力されたりした場合、それらの情報は VM のブート診断ログに書き込まれます。 それらは、シリアル コンソールのスクロールバック機能の実装の一部として、表示される他のすべてのテキストと共に書き込まれます。 これらのログは循環型であり、診断ストレージ アカウントに対する読み取りアクセス許可を持つユーザーだけがアクセスできます。 ただし、シークレットや PII が含まれている可能性のあるものにはリモート デスクトップを使用するというベスト プラクティスに従うことをお勧めします。
+> [!CAUTION]
+> コンソールのアクセス パスワードはログに記録されません。 ただし、コンソール内で実行されるコマンドにパスワード、シークレット、ユーザー名、またはその他の形式の個人を特定できる情報 (PII) が含まれていたり、出力されたりした場合、それらの情報は VM のブート診断ログに書き込まれます。 それらは、シリアル コンソールのスクロールバック機能の実装の一部として、表示される他のすべてのテキストと共に書き込まれます。 これらのログは循環型であり、診断ストレージ アカウントに対する読み取りアクセス許可を持つユーザーだけがアクセスできます。 ただし、シークレットや PII が含まれている可能性のあるものにはリモート デスクトップを使用するというベスト プラクティスに従うことをお勧めします。
 
 ### <a name="concurrent-usage"></a>同時使用
 ユーザーがシリアル コンソールに接続しているときに、別のユーザーがその同じ仮想マシンへのアクセスを要求し、その要求が成功した場合、最初のユーザーが切断され、2 番目のユーザーが同じセッションに接続されます。
 
->[!CAUTION]
-これは、切断されたユーザーはログアウトされないことを意味します。(SIGHUP または同様のメカニズムを使用して) 切断時に強制的にログアウトする機能は、まだロードマップにあります。 Windows では Special Administrative Console (SAC) で自動タイムアウトが有効になっていますが、Linux ではターミナルのタイムアウト設定を構成できます。 これを行うには、コンソールへのサインインに使用しているユーザーの *.bash_profile* または *.profile* ファイルに `export TMOUT=600` を追加します。 この設定により、10 分後にセッションがタイムアウトされます。
+> [!CAUTION]
+> これは、切断されたユーザーはログアウトされないことを意味します。(SIGHUP または同様のメカニズムを使用して) 切断時に強制的にログアウトする機能は、まだロードマップにあります。 Windows では Special Administrative Console (SAC) で自動タイムアウトが有効になっていますが、Linux ではターミナルのタイムアウト設定を構成できます。 これを行うには、コンソールへのサインインに使用しているユーザーの *.bash_profile* または *.profile* ファイルに `export TMOUT=600` を追加します。 この設定により、10 分後にセッションがタイムアウトされます。
 
 ## <a name="accessibility"></a>アクセシビリティ
 アクセシビリティは、Azure シリアル コンソールの重点事項です。 そのために、シリアル コンソールに完全にアクセスできるようにしました。
@@ -161,10 +162,10 @@ Azure portal からシリアル コンソール インターフェイスでナ�
 ### <a name="use-the-serial-console-with-a-screen-reader"></a>スクリーン リーダーでシリアル コンソールを使用する
 シリアル コンソールには、スクリーン リーダーのサポートが組み込まれています。 スクリーン リーダーを有効にしてナビゲートすると、現在選択されているボタンの代替テキストをスクリーン リーダーで読み上げることができます。
 
-## <a name="errors"></a>エラー
+## <a name="errors"></a>Errors
 ほとんどのエラーは一時的なものであるため、多くの場合、接続の再試行によって解決できます。 次の表にエラーと対応策を示します。
 
-エラー                            |   対応策
+Error                            |   対応策
 :---------------------------------|:--------------------------------------------|
 Unable to retrieve boot diagnostics settings for *&lt;VMNAME&gt;*. (VMNAME のブート診断設定を取得できません。) To use the serial console, ensure that boot diagnostics is enabled for this VM. (シリアル コンソールを使用するには、この VM のブート診断が有効になっていることを確認してください。) | VM の[ブート診断](boot-diagnostics.md)が有効になっていることを確認します。
 The VM is in a stopped deallocated state. (VM は停止済み (割り当て解除) 状態です。) Start the VM and retry the serial console connection. (VM を起動し、シリアル コンソール接続を再試行してください。) | シリアル コンソールにアクセスするには、VM が起動済み状態である必要があります。
@@ -188,7 +189,7 @@ Microsoft は、シリアル コンソールには問題がいくつかあるこ
 
 **Q.フィードバックを送信するにはどうすればよいですか?**
 
-A. https://aka.ms/serialconsolefeedback で GitHub の問題を作成することで、フィードバックを提供してください。 (あまりお勧めしませんが) azserialhelp@microsoft.com、または http://feedback.azure.com の仮想マシン カテゴリでフィードバックをお送りいただくこともできます。
+A. https://aka.ms/serialconsolefeedback で GitHub の問題を作成することで、フィードバックを提供してください。 (あまりお勧めしませんが) azserialhelp@microsoft.com、または https://feedback.azure.com の仮想マシン カテゴリでフィードバックをお送りいただくこともできます。
 
 **Q.シリアル コンソールでは、コピー/貼り付けが可能ですか。**
 

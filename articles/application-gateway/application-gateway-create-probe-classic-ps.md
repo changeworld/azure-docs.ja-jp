@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 2b661968fd64f4d2a61bc59f9b99b1eea6b01f86
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 17893a37bbaf67014c9b34dd446af204b907ff24
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997266"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004975"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell を使用して Azure Application Gateway (クラシック) のカスタム プローブを作成する
 
@@ -150,8 +150,8 @@ Get-AzureApplicationGateway AppGwTest
 
 |パラメーター|説明|
 |---|---|
-|**名前** |カスタム プローブの参照名。 |
-* **Protocol** | 使用されるプロトコル (有効な値は HTTP または HTTPS です)。|
+|**Name** |カスタム プローブの参照名。 |
+| **プロトコル** | 使用されるプロトコル (有効な値は HTTP または HTTPS です)。|
 | **Host** と **Path** | インスタンスの状態を判断するためにアプリケーション ゲートウェイによって呼び出される完全な URL パス。 たとえば、 http://contoso.com/ という Web サイトがある場合、HTTP 応答が正常かどうかをプローブでチェックするために、"http://contoso.com/path/custompath.htm" に対してカスタム プローブを構成します。|
 | **間隔** | プローブのチェック間隔を秒単位で指定します。|
 | **タイムアウト** | プローブの HTTP 応答チェックのタイムアウト期間を定義します。|
@@ -165,14 +165,14 @@ Get-AzureApplicationGateway AppGwTest
 
 1. `Get-AzureApplicationGatewayConfig` を使用して XML ファイルを取得します。 このコマンドレットにより、プローブ設定を追加するために変更される XML 構成ファイルがエクスポートされます。
 
-  ```powershell
-  Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
-  ```
+   ```powershell
+   Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
+   ```
 
 1. テキスト エディターで XML ファイルを開きます。 `<frontendport>` の後に `<probe>` セクションを追加します。
 
-  ```xml
-<Probes>
+   ```xml
+   <Probes>
     <Probe>
         <Name>Probe01</Name>
         <Protocol>Http</Protocol>
@@ -182,12 +182,12 @@ Get-AzureApplicationGateway AppGwTest
         <Timeout>15</Timeout>
         <UnhealthyThreshold>5</UnhealthyThreshold>
     </Probe>
-</Probes>
-  ```
+   </Probes>
+   ```
 
-  XML の backendHttpSettings セクションで、次の例に示すようにプローブ名を追加します。
+   XML の backendHttpSettings セクションで、次の例に示すようにプローブ名を追加します。
 
-  ```xml
+   ```xml
     <BackendHttpSettings>
         <Name>setting1</Name>
         <Port>80</Port>
@@ -196,9 +196,9 @@ Get-AzureApplicationGateway AppGwTest
         <RequestTimeout>120</RequestTimeout>
         <Probe>Probe01</Probe>
     </BackendHttpSettings>
-  ```
+   ```
 
-  XML ファイルを保存します。
+   XML ファイルを保存します。
 
 1. `Set-AzureApplicationGatewayConfig` を使用して、新しい XML ファイルでアプリケーション ゲートウェイの構成を更新します。 このコマンドレットにより、新しい構成でアプリケーション ゲートウェイが更新されます。
 

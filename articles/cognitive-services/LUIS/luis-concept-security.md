@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: ac4095d19904db10d4d60364dd2c739e8105c171
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4465488dc02568932e839d3234bdb672d59e6804
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863621"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089847"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>オーサリングとエンドポイントのユーザー アクセス
 オーサリング アクセスは、所有者とコラボレーターが利用できます。 プライベート アプリについては、エンドポイント アクセスは所有者とコラボレーターが利用できます。 パブリック アプリについては、エンドポイント アクセスは、自分の LUIS アカウントを持ち、パブリック アプリの ID を持つすべてのユーザーが利用できます。 
@@ -53,7 +53,7 @@ ms.locfileid: "55863621"
 プライベート アプリのエンドポイントは、次の場合のみ使用できます。
 
 |キーとユーザー|説明|
-|--|--|--|
+|--|--|
 |所有者のオーサリング キー| 最大で 1,000 エンドポイント ヒット|
 |コラボレーターのオーサリング キー| 最大で 1,000 エンドポイント ヒット|
 |作成者またはコラボレーターによって LUIS に割り当てられた任意のキー|キー使用法のレベルに基づく|

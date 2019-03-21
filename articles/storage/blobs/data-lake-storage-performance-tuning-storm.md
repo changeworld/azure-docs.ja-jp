@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 5d7b798c66ec6512c8badcccbf36d6f2f0d50e3b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2401c74b55df78014a2f642b5166b4cf0017d87d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076209"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight と Azure Data Lake Storage Gen2 の Storm に対するパフォーマンス チューニング ガイダンス
 
@@ -78,7 +78,7 @@ D13v2 Azure VM を含む 8 つのワーカー ノードから成るクラスタ�
 
 - **スパウトでの保留の最大数: topology.max.spout.pending**。 この設定は、任意の時点でフライト状態 (トポロジのどのノードでも受信確認されていない状態) でいられる、スパウト スレッドあたりのタプルの数を決定します。
 
- 適切な計算を行うには、まず各タプルのサイズを見積もります。 次に、1 つのスパウト スレッドにどれだけのメモリがあるかを確認します。 1 つのスレッドに割り当てられたメモリの合計をこの値で割ると、スパウトでの保留パラメーターの最大値が得られます。
+  適切な計算を行うには、まず各タプルのサイズを見積もります。 次に、1 つのスパウト スレッドにどれだけのメモリがあるかを確認します。 1 つのスレッドに割り当てられたメモリの合計をこの値で割ると、スパウトでの保留パラメーターの最大値が得られます。
 
 既定の Data Lake Storage Gen2 Storm ボルトには、このパラメーターのチューニングに使用できるサイズ同期ポリシー パラメーター (fileBufferSize) が用意されています。
 

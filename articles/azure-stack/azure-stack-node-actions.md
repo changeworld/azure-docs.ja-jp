@@ -15,12 +15,12 @@ ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 8073dff6dbd8bbceb16d7fdcf8d39012233c32d6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 24c500251c8e91b7542c5c9d3e77676205c88c1f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240457"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090969"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack でのスケール ユニット ノードの操作
 
@@ -42,15 +42,15 @@ ms.locfileid: "55240457"
 3. 結果画面で、スケール ユニットを選択します。
 4. 左側の **[全般]** で、**[ノード]** を選択します。
 
-  次の情報を確認します。
+   次の情報を確認します。
 
-  - 個々のノードの一覧
-  - 動作状態 (以下の一覧を参照)
-  - 電源の状態 (実行中または停止)
-  - サーバー モデル
-  - ベースボード管理コントローラー (BMC) の IP アドレス
-  - コアの合計数
-  - メモリの総量
+   - 個々のノードの一覧
+   - 動作状態 (以下の一覧を参照)
+   - 電源の状態 (実行中または停止)
+   - サーバー モデル
+   - ベースボード管理コントローラー (BMC) の IP アドレス
+   - コアの合計数
+   - メモリの総量
 
 ![スケール ユニットの状態](media/azure-stack-node-actions/multinodeactions.png)
 

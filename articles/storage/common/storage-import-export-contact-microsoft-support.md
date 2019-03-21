@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: alkohli;
 ms.subservice: common
-ms.openlocfilehash: 1494ccea1580d7415c6c86f14682ca59ad7124d5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b01c8a3fe9b0c0856dceb5c05f449504ce8c75d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459900"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120365"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Import/Export ジョブのサポート チケットを開く
 
@@ -57,14 +57,14 @@ Import/Export サービスで問題が発生した場合は、テクニカル �
 
 4. **[新しいサポート要求]** で、**[手順 3 連絡先情報]** をクリックします。 **[連絡先情報]** で、次の手順を実行します。
 
-    1. **[連絡先オプション]** で、希望する連絡方法 (電話または電子メール) および言語を指定します。 応答時間が、サブスクリプション プランに基づいて自動的に選択されます。
-    2. [連絡先情報] で、名前、電子メール、オプションの連絡先、国を指定します。 **[今後のサポート要求用に連絡先の変更を保存]** チェック ボックスをオンにします。
-    3. **Create** をクリックしてください。
+   1. **[連絡先オプション]** で、希望する連絡方法 (電話または電子メール) および言語を指定します。 応答時間が、サブスクリプション プランに基づいて自動的に選択されます。
+   2. [連絡先情報] で、名前、電子メール、オプションの連絡先、国を指定します。 **[今後のサポート要求用に連絡先の変更を保存]** チェック ボックスをオンにします。
+   3. **Create** をクリックしてください。
    
-        ![連絡先情報](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
+       ![連絡先情報](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
-    Microsoft サポートでは、この情報を使用してお客様に連絡し、詳細、診断、および解決策に関する情報を提供します。
-要求を送信した後、その要求を処理するサポート エンジニアから速やかに連絡があります。
+      Microsoft サポートでは、この情報を使用してお客様に連絡し、詳細、診断、および解決策に関する情報を提供します。
+      要求を送信した後、その要求を処理するサポート エンジニアから速やかに連絡があります。
 
 ## <a name="manage-a-support-request"></a>サポート要求を管理する
 

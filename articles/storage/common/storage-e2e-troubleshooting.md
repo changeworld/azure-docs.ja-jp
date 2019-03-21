@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a160ef767909814e363dbb692e58c30783aaf6f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ac30888c9f54c5dc88cb72aeec0f3db81d5a99dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746306"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004954"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -133,9 +133,9 @@ Azure の PowerShell を使用するには、 [Azure PowerShell のインスト�
 ストレージ クライアント ライブラリは、クライアント側のログ データをアプリケーションの構成ファイル (web.config または app.config) 内で指定した場所に格納します。
 
 ### <a name="collect-a-network-trace"></a>ネットワーク トレースを収集する
-Message Analyzer を使用して、クライアント アプリケーションの動作時の HTTP/HTTPS ネットワーク トレースを収集することができます。 Message Analyzer は、バックエンドで [Fiddler](http://www.telerik.com/fiddler) を使用します。 ネットワーク トレースを収集する前に、暗号化されていない HTTPS トラフィックを記録するよう、Fiddler を構成することをお勧めします。
+Message Analyzer を使用して、クライアント アプリケーションの動作時の HTTP/HTTPS ネットワーク トレースを収集することができます。 Message Analyzer は、バックエンドで [Fiddler](https://www.telerik.com/fiddler) を使用します。 ネットワーク トレースを収集する前に、暗号化されていない HTTPS トラフィックを記録するよう、Fiddler を構成することをお勧めします。
 
-1. [Fiddler](http://www.telerik.com/download/fiddler)をインストールします。
+1. [Fiddler](https://www.telerik.com/download/fiddler)をインストールします。
 2. Fiddler を起動します。
 3. **[Tools]、[Fiddler Options]** の順に選択します。
 4. Options ダイアログで、以下に示すように **[Capture HTTPS CONNECTs]** と **[Decrypt HTTPS Traffic]** が両方とも選択されている状態にします。

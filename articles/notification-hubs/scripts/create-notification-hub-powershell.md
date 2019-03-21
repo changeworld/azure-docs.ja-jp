@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: d1d9628c073b298b6e01f044abfde8b1d40ece2d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 93c5118962fed1bfda4d32afba942a6600664e5d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245679"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586463"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>PowerShell を使用して Azure 通知ハブを作成する
 
@@ -50,8 +50,8 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 | command | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
-| [New-AzNotificationHubsNamespace](/powershell/module//azurerm.notificationhubs/new-Aznotificationhubsnamespace) | 通知ハブの名前空間を作成します。 |
-| [New-AzNotificationHub](/powershell/module//azurerm.notificationhubs/new-Aznotificationhubsnamespace) | 通知ハブを作成します。 |
+| [New-AzNotificationHubsNamespace](/powershell/module/az.notificationhubs/new-aznotificationhubsnamespace) | 通知ハブの名前空間を作成します。 |
+| [New-AzNotificationHub](/powershell/module/az.notificationhubs/new-aznotificationhub) | 通知ハブを作成します。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 

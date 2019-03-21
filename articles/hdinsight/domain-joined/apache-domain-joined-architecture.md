@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5c5615dcfc9d43016bdf995a22ae29a5c5dd2c6f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7e71f27ab8d577602dd4b02f83d57ff84a92858a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185385"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088096"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight で Enterprise セキュリティ パッケージを使用する
 
@@ -64,33 +64,33 @@ Azure AD と Azure AD DS を使用せずに、IaaS VM 単独でオンプレミ�
 
 フェデレーションの使用時、パスワード ハッシュが正常に同期されていても認証エラーが発生する場合は、PowerShell サービス プリンシパルのクラウド パスワード認証が有効かどうかを確認します。 有効でない場合は、Azure AD テナントに[ホーム領域の検出 (HRD) ポリシー](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)を設定する必要があります。 HRD ポリシーを確認し、設定するには:
 
- 1. Azure AD PowerShell モジュールをインストールします。
+1. Azure AD PowerShell モジュールをインストールします。
 
- ```
-    Install-Module AzureAD
- ```
+   ```
+   Install-Module AzureAD
+   ```
 
- 2. グローバル管理者 (テナント管理者) の資格情報を使用して `Connect-AzureAD` を入力します。
+2. グローバル管理者 (テナント管理者) の資格情報を使用して `Connect-AzureAD` を入力します。
 
- 3. Microsoft Azure PowerShell サービス プリンシパルが既に作成されているかどうかを確認します。
+3. Microsoft Azure PowerShell サービス プリンシパルが既に作成されているかどうかを確認します。
 
- ```
-    $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
- ```
+   ```
+   $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+   ```
 
- 4. 存在しない場合 (つまり `($powershellSPN -eq $null)` の場合) はサービス プリンシパルを作成します
+4. 存在しない場合 (つまり `($powershellSPN -eq $null)` の場合) はサービス プリンシパルを作成します
 
- ```
-    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
- ```
+   ```
+   $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+   ```
 
- 5. ポリシーを作成し、このサービス プリンシパルにアタッチします
+5. ポリシーを作成し、このサービス プリンシパルにアタッチします
 
- ```
-    $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+   ```
+   $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
 
-    Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
- ```
+   Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
+   ```
 
 ## <a name="next-steps"></a>次の手順
 

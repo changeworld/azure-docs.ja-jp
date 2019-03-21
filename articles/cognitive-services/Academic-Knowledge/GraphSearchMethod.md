@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: f6c2fbe5daeb114d6a5ea77c9823f1fa5bfe8425
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5d47b938560fb1bd15adfe1a1c2d35b7359d47a3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864470"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57977413"
 ---
 # <a name="graph-search-method"></a>グラフ検索メソッド
 
@@ -29,6 +29,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 <br>
 
 ## <a name="request-parameters"></a>要求パラメーター  
+
 Name     | 値 | 必須  | 説明
 -----------|-----------|---------|--------
 **mode**       | テキスト文字列 | はい | 使用するモードの名前。 値は *json* または *lambda* です。
@@ -45,7 +46,9 @@ Name     | 値 | 必須  | 説明
 "*ラムダ*" 検索では、POST の本文はプレーン テキスト文字列です。 POST の本文は 1 つの C# ステートメントである LIKQ ラムダ クエリ文字列です ("*ラムダ*" 検索については、[クエリ文字列の仕様](LambdaSearchSyntax.md)に関する記事をご覧ください)。 
 
 <br>
+
 ## <a name="response-json"></a>応答 (JSON)
+
 Name | 説明
 -------|-----   
 **results** | クエリ式に一致する 0 個以上のエンティティの配列。 各エンティティには、要求された属性の値が含まれています。 このフィールドは、要求が正常に処理された場合に存在します。
@@ -55,6 +58,7 @@ Name | 説明
 クエリを "_800 ミリ秒_" 以内に処理できない場合は、"_タイムアウト_" エラーが返されます。 
 
 <br>
+
 #### <a name="example"></a>例:
 
 ##### <a name="json-search"></a>JSON 検索

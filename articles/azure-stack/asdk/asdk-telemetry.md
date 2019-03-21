@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 6c4527f88e10e652ebcaf94a153cf30cebb54841
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 25a832be432f1d1a6d9b18dfc8f7384c564c3060
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177463"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103436"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack のテレメトリ
 
@@ -114,7 +114,7 @@ Windows と Azure Stack のテレメトリをオフにすると、SQL のテレ�
 
 パラメーターの詳細:
 > .PARAMETER Enable - テレメトリ データのアップロードを有効にします。
-
+> 
 > .PARAMETER Disable - テレメトリ データのアップロードを無効にします。  
 
 **テレメトリを有効にするためのスクリプト:**

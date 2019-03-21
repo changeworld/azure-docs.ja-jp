@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 5f3b9b48fc5f15738c3de9928ca0bb220a66db12
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 563b54fe9b4ab65cd8d3008e9d3955618194031f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985990"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899548"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した Standard Load Balancer による可用性ゾーン内での VM の負荷分散
 
@@ -41,7 +41,7 @@ ms.locfileid: "56985990"
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
 ## <a name="create-a-public-standard-load-balancer-instance"></a>パブリック Standard Load Balancer インスタンスを作成する
 
@@ -63,7 +63,7 @@ Standard Load Balancer では、標準パブリック IP アドレスだけが�
     |可用性ゾーン| **[1]** を選択します。    |
 3. **[確認と作成]** タブで、**[作成]** をクリックします。   
 
- ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
+   ## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
 このセクションでは、仮想ネットワークを作成します。 また、リージョンの同じゾーン (つまり、ゾーン 1) に 2 つの仮想マシンを作成して、ロード バランサーのバックエンド プールに追加します。 次に、ゾーン冗長ロード バランサーをテストするために仮想マシンに IIS をインストールします。 1 つの VM が失敗した場合、同じゾーンの VM の正常性プローブが失敗します。 同じゾーン内の他の VM によって処理されるトラフィックは続行されます。
 
@@ -80,8 +80,8 @@ Standard Load Balancer では、標準パブリック IP アドレスだけが�
 
 1. 画面の左上で、**[リソースの作成]** を選択します。 [検索] ボックスに「**ネットワーク セキュリティ グループ**」と入力します。 ネットワーク セキュリティ グループ ページで、**[作成]** を選択します。
 2. **[ネットワーク セキュリティ グループの作成]** ページで次の値を入力します。
-    - **myNetworkSecurityGroup** - ネットワーク セキュリティ グループの名前。
-    - **myResourceGroupLBAZ** - 既存のリソース グループの名前。
+   - **myNetworkSecurityGroup** - ネットワーク セキュリティ グループの名前。
+   - **myResourceGroupLBAZ** - 既存のリソース グループの名前。
    
      ![ネットワーク セキュリティ グループの作成](./media/tutorial-load-balancer-standard-zonal-portal/create-network-security-group.png)
 

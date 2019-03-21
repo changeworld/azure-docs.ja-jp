@@ -4,12 +4,12 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/02/2019
-ms.openlocfilehash: c4d6cfe983016c59ad5606591dba4a75c3e9899d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 04b7031382d7ed611822a3dd721dfa09f01bce74
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53977367"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56741467"
 ---
 `Eula` 設定は、コンテナーのライセンスに同意済みであることを示します。 この構成設定の値を指定する必要があり、値を `accept` に設定する必要があります。
 

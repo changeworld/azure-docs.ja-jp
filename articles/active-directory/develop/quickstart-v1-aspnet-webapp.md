@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb235ab96ed8a85cbe44dd672dff004dd0a7310
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 73d762e5bb358964b439d1dc6027abc01332da21
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185318"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007609"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -146,7 +146,8 @@ Visual Studio で新しいビューを作成してサインイン ボタンを�
 
     [!code-html[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Views/Home/Index.cshtml "Index.cshtml")]
 
-<!--start-collapse--> このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Sign-in with Microsoft](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](howto-add-branding-in-azure-ad-apps.md)をご覧ください。
+<!--start-collapse-->
+このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Sign-in with Microsoft](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](howto-add-branding-in-azure-ad-apps.md)をご覧ください。
 <!--end-collapse-->
 
 ## <a name="step-7-display-users-claims-by-adding-a-controller"></a>手順 7: コントローラーを追加してユーザーの要求を表示する
@@ -300,7 +301,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 
 この手順では、匿名ユーザーとして要求コントローラーへのアクセスをテストします。<br/>
 ユーザーのサインアウトのリンクを選択し、サインアウトのプロセスを完了します。<br/>
-お使いのブラウザーで「 http://localhost:{port}/claims」を入力し、`[Authorize]` 属性で保護されているコントローラーにアクセスします
+お使いのブラウザーで「`http://localhost:{port}/claims`」を入力し、`[Authorize]` 属性で保護されているコントローラーにアクセスします
 
 #### <a name="expected-results"></a>予想される結果
 

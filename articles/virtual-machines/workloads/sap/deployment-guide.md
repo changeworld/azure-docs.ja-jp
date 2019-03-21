@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 6eb81e7fff8df547f905e169ac72a78848d2583f
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 2d296281f6865030bcdfec33d8c69cc313a358a5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330768"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011909"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 
@@ -157,7 +157,7 @@ ms.locfileid: "56330768"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -171,7 +171,7 @@ ms.locfileid: "56330768"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -421,34 +421,34 @@ Azure Marketplace のイメージを使用して新しい仮想マシンを作�
 ウィザードの指示に従って、必要なすべてのリソース (ネットワーク インターフェイスやストレージ アカウントなど) だけでなく、仮想マシンを作成するために必要なパラメーターも設定します。 次のようなパラメーターがあります。
 
 1. **[基本]**:
- * **[名前]**:リソースの名前 (仮想マシン名)。
- * **VM ディスクの種類**: OS ディスクのディスクの種類を選択します。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
- * **[ユーザー名とパスワード]** または **[SSH 公開キー]**: プロビジョニング中に作成されるユーザーのユーザー名とパスワードを入力します。 Linux 仮想マシンの場合、マシンへのサインインに使用する Secure Shell (SSH) 公開キーを入力できます。
- * **サブスクリプション**:新しい仮想マシンをプロビジョニングするために使用するサブスクリプションを選択します。
- * **[リソース グループ]**:VM のリソース グループの名前。 新しいリソース グループの名前を入力することも、既存のリソース グループの名前を入力することもできます。
- * **[場所]**:新しい仮想マシンをデプロイする場所。 仮想マシンをオンプレミス ネットワークに接続する場合は、Azure をオンプレミス ネットワークに接続する仮想ネットワークの場所を必ず選択します。 詳しくは、「[Azure Virtual Machines (VM) への SAP NetWeaver の導入 – 計画/導入ガイド][planning-guide]」の「[Microsoft Azure のネットワーク][planning-guide-microsoft-azure-networking]」をご覧ください。
+   * **[名前]**:リソースの名前 (仮想マシン名)。
+   * **VM ディスクの種類**: OS ディスクのディスクの種類を選択します。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
+   * **[ユーザー名とパスワード]** または **[SSH 公開キー]**: プロビジョニング中に作成されるユーザーのユーザー名とパスワードを入力します。 Linux 仮想マシンの場合、マシンへのサインインに使用する Secure Shell (SSH) 公開キーを入力できます。
+   * **サブスクリプション**:新しい仮想マシンをプロビジョニングするために使用するサブスクリプションを選択します。
+   * **[リソース グループ]**:VM のリソース グループの名前。 新しいリソース グループの名前を入力することも、既存のリソース グループの名前を入力することもできます。
+   * **[場所]**:新しい仮想マシンをデプロイする場所。 仮想マシンをオンプレミス ネットワークに接続する場合は、Azure をオンプレミス ネットワークに接続する仮想ネットワークの場所を必ず選択します。 詳しくは、「[Azure Virtual Machines (VM) への SAP NetWeaver の導入 – 計画/導入ガイド][planning-guide]」の「[Microsoft Azure のネットワーク][planning-guide-microsoft-azure-networking]」をご覧ください。
 1. **[サイズ]**:
 
      サポートされている VM の種類の一覧については、SAP Note [1928533] を参照してください。 Azure Premium Storage を使用する場合は、適切な VM の種類を選択してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]」の「ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」を参照してください。
 
 1. **設定**:
-  * **Storage**
-    * **ディスクの種類**: OS ディスクのディスクの種類を選択します。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
-    * **[マネージド ディスクの使用]**: Managed Disks を使用する場合は、[はい] を選択します。 Managed Disks について詳しくは、計画ガイドの [Managed Disks][planning-guide-managed-disks] の章をご覧ください。
-    * **ストレージ アカウント**: 既存のストレージ アカウントを選択するか、または新しいアカウントを作成します。 すべてのストレージの種類が SAP アプリケーションの実行に対応しているわけではありません。 ストレージの種類の詳細については、「[RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)」を参照してください。
-  * **ネットワーク**
-    * **[仮想ネットワーク]** と **[サブネット]**: 仮想マシンをイントラネットと統合するには、オンプレミスのネットワークに接続されている仮想ネットワークを選択します。
-    * **[パブリック IP アドレス]**: 使用するパブリック IP アドレスを選択するか、または新しいパブリック IP アドレスを作成するためのパラメーターを入力します。 パブリック IP アドレスを使用して、インターネット経由で仮想マシンにアクセスできます。 仮想マシンへのアクセスをセキュリティで保護するために、ネットワーク セキュリティ グループも作成してください。
-    * **[ネットワーク セキュリティ グループ]**: 詳細については、[ネットワーク セキュリティ グループを使用したネットワーク トラフィック フローの制御][virtual-networks-nsg]に関するページを参照してください。
-  * **[拡張機能]**: デプロイに追加することによって、仮想マシン拡張機能をインストールできます。 この手順では、拡張機能を追加する必要はありません。 SAP サポートに必要な拡張機能は、後でインストールします。 このガイドの「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章をご覧ください。
-  * **高可用性**: 可用性セットを選択するか、または新しい可用性セットを作成するためのパラメーターを入力します。 詳細については、「[Azure の可用性セット][planning-guide-3.2.3]」をご覧ください。
-  * **監視**
-    * **[ブート診断]**: ブート診断には **[無効]** を選択できます。
-    * **[ゲスト OS の診断]**: 監視診断には **[無効]** を選択できます。
+   * **Storage**
+     * **ディスクの種類**: OS ディスクのディスクの種類を選択します。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
+     * **[マネージド ディスクの使用]**: Managed Disks を使用する場合は、[はい] を選択します。 Managed Disks について詳しくは、計画ガイドの [Managed Disks][planning-guide-managed-disks] の章をご覧ください。
+     * **ストレージ アカウント**: 既存のストレージ アカウントを選択するか、または新しいアカウントを作成します。 すべてのストレージの種類が SAP アプリケーションの実行に対応しているわけではありません。 ストレージの種類の詳細については、「[RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)」を参照してください。
+   * **ネットワーク**
+     * **[仮想ネットワーク]** と **[サブネット]**: 仮想マシンをイントラネットと統合するには、オンプレミスのネットワークに接続されている仮想ネットワークを選択します。
+     * **[パブリック IP アドレス]**: 使用するパブリック IP アドレスを選択するか、または新しいパブリック IP アドレスを作成するためのパラメーターを入力します。 パブリック IP アドレスを使用して、インターネット経由で仮想マシンにアクセスできます。 仮想マシンへのアクセスをセキュリティで保護するために、ネットワーク セキュリティ グループも作成してください。
+     * **[ネットワーク セキュリティ グループ]**: 詳細については、[ネットワーク セキュリティ グループを使用したネットワーク トラフィック フローの制御][virtual-networks-nsg]に関するページを参照してください。
+   * **[拡張機能]**: デプロイに追加することによって、仮想マシン拡張機能をインストールできます。 この手順では、拡張機能を追加する必要はありません。 SAP サポートに必要な拡張機能は、後でインストールします。 このガイドの「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章をご覧ください。
+   * **高可用性**: 可用性セットを選択するか、または新しい可用性セットを作成するためのパラメーターを入力します。 詳細については、「[Azure の可用性セット][planning-guide-3.2.3]」をご覧ください。
+   * **監視**
+     * **[ブート診断]**: ブート診断には **[無効]** を選択できます。
+     * **[ゲスト OS の診断]**: 監視診断には **[無効]** を選択できます。
 
 1. **概要**:
 
-  選択内容を確認し、**[OK]** をクリックします。
+   選択内容を確認し、**[OK]** をクリックします。
 
 選択したリソース グループに仮想マシンがデプロイされます。
 
@@ -472,37 +472,37 @@ Azure Marketplace のイメージを使用して新しい仮想マシンを作�
 Azure Portal で、テンプレートの次のパラメーターを入力します。
 
 1. **[基本]**:
-  * **サブスクリプション**:テンプレートをデプロイするために使用するサブスクリプション。
-  * **[リソース グループ]**:テンプレートをデプロイするために使用するリソース グループ。 新しいリソース グループを作成することも、サブスクリプション内の既存のリソース グループを選択することもできます。
-  * **[場所]**:テンプレートをデプロイする場所。 既存のリソース グループを選択した場合は、そのリソース グループの場所が使用されます。
+   * **サブスクリプション**:テンプレートをデプロイするために使用するサブスクリプション。
+   * **[リソース グループ]**:テンプレートをデプロイするために使用するリソース グループ。 新しいリソース グループを作成することも、サブスクリプション内の既存のリソース グループを選択することもできます。
+   * **[場所]**:テンプレートをデプロイする場所。 既存のリソース グループを選択した場合は、そのリソース グループの場所が使用されます。
 
 1. **設定**:
-  * **[SAP System ID] (SAP システム ID)**: SAP システム ID (SID)。
-  * **[OS の種類]**: デプロイするオペレーティング システム (Windows Server 2012 R2、SUSE Linux Enterprise Server 12 (SLES 12)、Red Hat Enterprise Linux 7.2 (RHEL 7.2)、Oracle Linux 7.2 など)。
+   * **[SAP System ID] (SAP システム ID)**: SAP システム ID (SID)。
+   * **[OS の種類]**: デプロイするオペレーティング システム (Windows Server 2012 R2、SUSE Linux Enterprise Server 12 (SLES 12)、Red Hat Enterprise Linux 7.2 (RHEL 7.2)、Oracle Linux 7.2 など)。
 
-    リスト ビューには、サポートされているオペレーティング システムがすべて表示されるわけではありません。 SAP ソフトウェア デプロイのサポートされているオペレーティング システムの詳細については、SAP Note [1928533] を参照してください。
-  * **[SAP system size] (SAP システムのサイズ)**: SAP システムのサイズ。
+     リスト ビューには、サポートされているオペレーティング システムがすべて表示されるわけではありません。 SAP ソフトウェア デプロイのサポートされているオペレーティング システムの詳細については、SAP Note [1928533] を参照してください。
+   * **[SAP system size] (SAP システムのサイズ)**: SAP システムのサイズ。
 
-    新しいシステムで提供する SAPS の数です。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
-  * **[System availability] (システムの可用性)** (3 層テンプレートのみ): システムの可用性。
+     新しいシステムで提供する SAPS の数です。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+   * **[System availability] (システムの可用性)** (3 層テンプレートのみ): システムの可用性。
 
-    高可用性インストールに適した構成用の **HA** を選択します。 ABAP SAP Central Services (ASCS) 用の 2 つのデータベース サーバーと 2 つのサーバーが作成されます。
-  * **[ストレージの種類]** (2 層テンプレートのみ): 使用するストレージの種類。
+     高可用性インストールに適した構成用の **HA** を選択します。 ABAP SAP Central Services (ASCS) 用の 2 つのデータベース サーバーと 2 つのサーバーが作成されます。
+   * **[ストレージの種類]** (2 層テンプレートのみ): 使用するストレージの種類。
 
-    大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
+     大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
       * [Use of Azure Premium SSD Storage for SAP DBMS Instance][2367194] (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用)
       * [RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
       * [Microsoft Azure Storage の概要][storage-introduction]
-  * **[管理ユーザー名]** と **[管理パスワード]**: ユーザー名とパスワード。
-    仮想マシンへのサインインに使用する新しいユーザーが作成されます。
-  * **[New or existing subnet] (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、または既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
-  * **[Subnet ID]\(サブネット ID\)**:VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名> のようになります。
+   * **[管理ユーザー名]** と **[管理パスワード]**: ユーザー名とパスワード。
+     仮想マシンへのサインインに使用する新しいユーザーが作成されます。
+   * **[New or existing subnet] (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、または既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
+   * **[Subnet ID]\(サブネット ID\)**:VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名> のようになります。
 
 1. **使用条件**:   
     法律条項を確認し、同意します。
 
-1.  **[購入]** を選択します。
+1. **[購入]** を選択します。
 
 Azure Marketplace のイメージを使用すると、Azure VM エージェントが既定でデプロイされます。
 
@@ -561,33 +561,33 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
 ウィザードの指示に従って、必要なすべてのリソース (ネットワーク インターフェイスやストレージ アカウントなど) だけでなく、仮想マシンを作成するために必要なパラメーターも設定します。 次のようなパラメーターがあります。
 
 1. **[基本]**:
- * **[名前]**:リソースの名前 (仮想マシン名)。
- * **VM ディスクの種類**: OS ディスクのディスクの種類を選択します。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
- * **[ユーザー名とパスワード]** または **[SSH 公開キー]**: プロビジョニング中に作成されるユーザーのユーザー名とパスワードを入力します。 Linux 仮想マシンの場合、マシンへのサインインに使用する Secure Shell (SSH) 公開キーを入力できます。
- * **サブスクリプション**:新しい仮想マシンをプロビジョニングするために使用するサブスクリプションを選択します。
- * **[リソース グループ]**:VM のリソース グループの名前。 新しいリソース グループの名前を入力することも、既存のリソース グループの名前を入力することもできます。
- * **[場所]**:新しい仮想マシンをデプロイする場所。 仮想マシンをオンプレミス ネットワークに接続する場合は、Azure をオンプレミス ネットワークに接続する仮想ネットワークの場所を必ず選択します。 詳しくは、「[Azure Virtual Machines (VM) への SAP NetWeaver の導入 – 計画/導入ガイド][planning-guide]」の「[Microsoft Azure のネットワーク][planning-guide-microsoft-azure-networking]」をご覧ください。
+   * **[名前]**:リソースの名前 (仮想マシン名)。
+   * **VM ディスクの種類**: OS ディスクのディスクの種類を選択します。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
+   * **[ユーザー名とパスワード]** または **[SSH 公開キー]**: プロビジョニング中に作成されるユーザーのユーザー名とパスワードを入力します。 Linux 仮想マシンの場合、マシンへのサインインに使用する Secure Shell (SSH) 公開キーを入力できます。
+   * **サブスクリプション**:新しい仮想マシンをプロビジョニングするために使用するサブスクリプションを選択します。
+   * **[リソース グループ]**:VM のリソース グループの名前。 新しいリソース グループの名前を入力することも、既存のリソース グループの名前を入力することもできます。
+   * **[場所]**:新しい仮想マシンをデプロイする場所。 仮想マシンをオンプレミス ネットワークに接続する場合は、Azure をオンプレミス ネットワークに接続する仮想ネットワークの場所を必ず選択します。 詳しくは、「[Azure Virtual Machines (VM) への SAP NetWeaver の導入 – 計画/導入ガイド][planning-guide]」の「[Microsoft Azure のネットワーク][planning-guide-microsoft-azure-networking]」をご覧ください。
 1. **[サイズ]**:
 
      サポートされている VM の種類の一覧については、SAP Note [1928533] を参照してください。 Azure Premium Storage を使用する場合は、適切な VM の種類を選択してください。 Premium Storage ではすべての VM の種類はサポートしていません。 詳細については、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装][planning-guide]」の「ストレージ: Microsoft Azure Storage とデータ ディスク][planning-guide-storage-microsoft-azure-storage-and-data-disks]」および「[Azure Premium Storage][planning-guide-azure-premium-storage]」を参照してください。
 
 1. **設定**:
-  * **Storage**
-    * **ディスクの種類**: OS ディスクのディスクの種類を選択します。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
-    * **[マネージド ディスクの使用]**: Managed Disks を使用する場合は、[はい] を選択します。 Managed Disks について詳しくは、計画ガイドの [Managed Disks][planning-guide-managed-disks] の章をご覧ください。
-  * **ネットワーク**
-    * **[仮想ネットワーク]** と **[サブネット]**: 仮想マシンをイントラネットと統合するには、オンプレミスのネットワークに接続されている仮想ネットワークを選択します。
-    * **[パブリック IP アドレス]**: 使用するパブリック IP アドレスを選択するか、または新しいパブリック IP アドレスを作成するためのパラメーターを入力します。 パブリック IP アドレスを使用して、インターネット経由で仮想マシンにアクセスできます。 仮想マシンへのアクセスをセキュリティで保護するために、ネットワーク セキュリティ グループも作成してください。
-    * **[ネットワーク セキュリティ グループ]**: 詳細については、[ネットワーク セキュリティ グループを使用したネットワーク トラフィック フローの制御][virtual-networks-nsg]に関するページを参照してください。
-  * **[拡張機能]**: デプロイに追加することによって、仮想マシン拡張機能をインストールできます。 この手順では、拡張機能を追加する必要はありません。 SAP サポートに必要な拡張機能は、後でインストールします。 このガイドの「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章をご覧ください。
-  * **高可用性**: 可用性セットを選択するか、または新しい可用性セットを作成するためのパラメーターを入力します。 詳細については、「[Azure の可用性セット][planning-guide-3.2.3]」をご覧ください。
-  * **監視**
-    * **[ブート診断]**: ブート診断には **[無効]** を選択できます。
-    * **[ゲスト OS の診断]**: 監視診断には **[無効]** を選択できます。
+   * **Storage**
+     * **ディスクの種類**: OS ディスクのディスクの種類を選択します。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
+     * **[マネージド ディスクの使用]**: Managed Disks を使用する場合は、[はい] を選択します。 Managed Disks について詳しくは、計画ガイドの [Managed Disks][planning-guide-managed-disks] の章をご覧ください。
+   * **ネットワーク**
+     * **[仮想ネットワーク]** と **[サブネット]**: 仮想マシンをイントラネットと統合するには、オンプレミスのネットワークに接続されている仮想ネットワークを選択します。
+     * **[パブリック IP アドレス]**: 使用するパブリック IP アドレスを選択するか、または新しいパブリック IP アドレスを作成するためのパラメーターを入力します。 パブリック IP アドレスを使用して、インターネット経由で仮想マシンにアクセスできます。 仮想マシンへのアクセスをセキュリティで保護するために、ネットワーク セキュリティ グループも作成してください。
+     * **[ネットワーク セキュリティ グループ]**: 詳細については、[ネットワーク セキュリティ グループを使用したネットワーク トラフィック フローの制御][virtual-networks-nsg]に関するページを参照してください。
+   * **[拡張機能]**: デプロイに追加することによって、仮想マシン拡張機能をインストールできます。 この手順では、拡張機能を追加する必要はありません。 SAP サポートに必要な拡張機能は、後でインストールします。 このガイドの「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」の章をご覧ください。
+   * **高可用性**: 可用性セットを選択するか、または新しい可用性セットを作成するためのパラメーターを入力します。 詳細については、「[Azure の可用性セット][planning-guide-3.2.3]」をご覧ください。
+   * **監視**
+     * **[ブート診断]**: ブート診断には **[無効]** を選択できます。
+     * **[ゲスト OS の診断]**: 監視診断には **[無効]** を選択できます。
 
 1. **概要**:
 
-  選択内容を確認し、**[OK]** をクリックします。
+   選択内容を確認し、**[OK]** をクリックします。
 
 選択したリソース グループに仮想マシンがデプロイされます。
 
@@ -611,38 +611,38 @@ Azure Portal からプライベート OS イメージを使用してデプロイ
 Azure Portal で、テンプレートの次のパラメーターを入力します。
 
 1. **[基本]**:
-  * **サブスクリプション**:テンプレートをデプロイするために使用するサブスクリプション。
-  * **[リソース グループ]**:テンプレートをデプロイするために使用するリソース グループ。 新しいリソース グループを作成することも、サブスクリプション内の既存のリソース グループを選択することもできます。
-  * **[場所]**:テンプレートをデプロイする場所。 既存のリソース グループを選択した場合は、そのリソース グループの場所が使用されます。
+   * **サブスクリプション**:テンプレートをデプロイするために使用するサブスクリプション。
+   * **[リソース グループ]**:テンプレートをデプロイするために使用するリソース グループ。 新しいリソース グループを作成することも、サブスクリプション内の既存のリソース グループを選択することもできます。
+   * **[場所]**:テンプレートをデプロイする場所。 既存のリソース グループを選択した場合は、そのリソース グループの場所が使用されます。
 1. **設定**:
-  * **[SAP System ID] (SAP システム ID)**: SAP システム ID。
-  * **[OS の種類]**: デプロイするオペレーティング システムの種類 (Windows または Linux)。
-  * **[SAP system size] (SAP システムのサイズ)**: SAP システムのサイズ。
+   * **[SAP System ID] (SAP システム ID)**: SAP システム ID。
+   * **[OS の種類]**: デプロイするオペレーティング システムの種類 (Windows または Linux)。
+   * **[SAP system size] (SAP システムのサイズ)**: SAP システムのサイズ。
 
-    新しいシステムで提供する SAPS の数です。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
-  * **[System availability] (システムの可用性)** (3 層テンプレートのみ): システムの可用性。
+     新しいシステムで提供する SAPS の数です。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+   * **[System availability] (システムの可用性)** (3 層テンプレートのみ): システムの可用性。
 
-    高可用性インストールに適した構成用の **HA** を選択します。 ASCS 用の 2 つのデータベース サーバーと 2 つのサーバーが作成されます。
-  * **[ストレージの種類]** (2 層テンプレートのみ): 使用するストレージの種類。
+     高可用性インストールに適した構成用の **HA** を選択します。 ASCS 用の 2 つのデータベース サーバーと 2 つのサーバーが作成されます。
+   * **[ストレージの種類]** (2 層テンプレートのみ): 使用するストレージの種類。
 
-    大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
+     大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
       * [Use of Azure Premium SSD Storage for SAP DBMS Instance][2367194] (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用)
       * [RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
       * [Microsoft Azure Storage の概要][storage-introduction]
-  * **[User image VHD URI] (ユーザー イメージ VHD の URI)** (非管理ディスク イメージ テンプレートのみ): プライベート OS イメージ VHD の URI (https://&lt;アカウント名>.blob.core.windows.net/vhds/userimage.vhd など)。
-  * **[User image storage account] (ユーザー イメージのストレージ アカウント)** (非管理ディスク イメージ テンプレートのみ): プライベート OS イメージが格納されるストレージ アカウントの名前 (https://&lt;アカウント名>.blob.core.windows.net/vhds/userimage.vhd の &lt;アカウント名> など)。
-  * **[userImageId] (ユーザー イメージ ID)** (マネージド ディスク イメージ テンプレートのみ): 使用するマネージド ディスク イメージの ID。
-  * **[管理ユーザー名]** と **[管理パスワード]**: ユーザー名とパスワード。
+   * **[User image VHD URI] (ユーザー イメージ VHD の URI)** (非管理ディスク イメージ テンプレートのみ): プライベート OS イメージ VHD の URI (https://&lt;アカウント名>.blob.core.windows.net/vhds/userimage.vhd など)。
+   * **[User image storage account] (ユーザー イメージのストレージ アカウント)** (非管理ディスク イメージ テンプレートのみ): プライベート OS イメージが格納されるストレージ アカウントの名前 (https://&lt;アカウント名>.blob.core.windows.net/vhds/userimage.vhd の &lt;アカウント名> など)。
+   * **[userImageId] (ユーザー イメージ ID)** (マネージド ディスク イメージ テンプレートのみ): 使用するマネージド ディスク イメージの ID。
+   * **[管理ユーザー名]** と **[管理パスワード]**: ユーザー名とパスワード。
 
-    仮想マシンへのサインインに使用する新しいユーザーが作成されます。
-  * **[New or existing subnet] (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、または既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
-  * **[Subnet ID]\(サブネット ID\)**:VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名> のようになります。
+     仮想マシンへのサインインに使用する新しいユーザーが作成されます。
+   * **[New or existing subnet] (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、または既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
+   * **[Subnet ID]\(サブネット ID\)**:VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名> のようになります。
 
 1. **使用条件**:   
     法律条項を確認し、同意します。
 
-1.  **[購入]** を選択します。
+1. **[購入]** を選択します。
 
 #### <a name="install-the-vm-agent-linux-only"></a>VM エージェントのインストール (Linux のみ)
 
@@ -706,31 +706,31 @@ Azure Portal からプライベート OS ディスクを使用してデプロイ
 Azure Portal で、テンプレートの次のパラメーターを入力します。
 
 1. **[基本]**:
-  * **サブスクリプション**:テンプレートをデプロイするために使用するサブスクリプション。
-  * **[リソース グループ]**:テンプレートをデプロイするために使用するリソース グループ。 新しいリソース グループを作成することも、サブスクリプション内の既存のリソース グループを選択することもできます。
-  * **[場所]**:テンプレートをデプロイする場所。 既存のリソース グループを選択した場合は、そのリソース グループの場所が使用されます。
+   * **サブスクリプション**:テンプレートをデプロイするために使用するサブスクリプション。
+   * **[リソース グループ]**:テンプレートをデプロイするために使用するリソース グループ。 新しいリソース グループを作成することも、サブスクリプション内の既存のリソース グループを選択することもできます。
+   * **[場所]**:テンプレートをデプロイする場所。 既存のリソース グループを選択した場合は、そのリソース グループの場所が使用されます。
 1. **設定**:
-  * **[SAP System ID] (SAP システム ID)**: SAP システム ID。
-  * **[OS の種類]**: デプロイするオペレーティング システムの種類 (Windows または Linux)。
-  * **[SAP system size] (SAP システムのサイズ)**: SAP システムのサイズ。
+   * **[SAP System ID] (SAP システム ID)**: SAP システム ID。
+   * **[OS の種類]**: デプロイするオペレーティング システムの種類 (Windows または Linux)。
+   * **[SAP system size] (SAP システムのサイズ)**: SAP システムのサイズ。
 
-    新しいシステムで提供する SAPS の数です。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
-  * **[ストレージの種類]** (2 層テンプレートのみ): 使用するストレージの種類。
+     新しいシステムで提供する SAPS の数です。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+   * **[ストレージの種類]** (2 層テンプレートのみ): 使用するストレージの種類。
 
-    大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
+     大規模なシステムの場合、Azure Premium Storage を使用することを強くお勧めします。 ストレージの種類の詳細については、次のリソースを参照してください。
       * [Use of Azure Premium SSD Storage for SAP DBMS Instance][2367194] (SAP DBMS インスタンスでの Azure Premium SSD Storage の使用)
       * [RDBMS デプロイの VM のストレージの構造](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
       * [Microsoft Azure Storage の概要][storage-introduction]
-  * **[OS disk VHD URI] (OS ディスク VHD の URI)** (非管理ディスク テンプレートのみ): プライベート OS ディスクの URI (https://&lt; アカウント名>.blob.core.windows.net/vhds/osdisk.vhd など)。
-  * **[OS disk Managed Disk Id] (OS ディスクの管理ディスク ID)** (マネージド ディスク テンプレートのみ): 管理ディスクの OS ディスクの ID (/subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN)
-  * **[New or existing subnet] (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、または既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
-  * **[Subnet ID]\(サブネット ID\)**:VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名> のようになります。
+   * **[OS disk VHD URI] (OS ディスク VHD の URI)** (非管理ディスク テンプレートのみ): プライベート OS ディスクの URI (https://&lt; アカウント名>.blob.core.windows.net/vhds/osdisk.vhd など)。
+   * **[OS disk Managed Disk Id] (OS ディスクの管理ディスク ID)** (マネージド ディスク テンプレートのみ): 管理ディスクの OS ディスクの ID (/subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN)
+   * **[New or existing subnet] (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、または既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
+   * **[Subnet ID]\(サブネット ID\)**:VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名> のようになります。
 
 1. **使用条件**:   
     法律条項を確認し、同意します。
 
-1.  **[購入]** を選択します。
+1. **[購入]** を選択します。
 
 #### <a name="install-the-vm-agent"></a>[VM エージェントのインストール]
 
@@ -771,16 +771,16 @@ SAP が現在の環境をサポートできるように、「[Azure Enhanced Mon
 
 ### <a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Azure PowerShell コマンドレットのデプロイ
 
-1.  [Microsoft Azure のダウンロード](https://azure.microsoft.com/downloads/) ページに移動します。
-1.  **[コマンドライン ツール]** で、**[PowerShell]** の **[Windows のインストール]** をクリックします。
-1.  [Microsoft ダウンロード マネージャー] ダイアログ ボックスで、ダウンロードしたファイル (例: WindowsAzurePowershellGet.3f.3f.3fnew.exe) の **[実行]** を選択します。
-1.  Microsoft Web プラットフォーム インストーラー (Microsoft Web PI) を実行するには、**[はい]** を選択します。
-1.  次のようなページが表示されます。
+1. [Microsoft Azure のダウンロード](https://azure.microsoft.com/downloads/) ページに移動します。
+1. **[コマンドライン ツール]** で、**[PowerShell]** の **[Windows のインストール]** をクリックします。
+1. [Microsoft ダウンロード マネージャー] ダイアログ ボックスで、ダウンロードしたファイル (例: WindowsAzurePowershellGet.3f.3f.3fnew.exe) の **[実行]** を選択します。
+1. Microsoft Web プラットフォーム インストーラー (Microsoft Web PI) を実行するには、**[はい]** を選択します。
+1. 次のようなページが表示されます。
 
-  ![Azure PowerShell コマンドレットのインストール ページ][deployment-guide-figure-500]<a name="figure-5"></a>
+   ![Azure PowerShell コマンドレットのインストール ページ][deployment-guide-figure-500]<a name="figure-5"></a>
 
-1.  **[インストール]** をクリックし、マイクロソフト ソフトウェア ライセンス条項に同意します。
-1.  PowerShell がインストールされます。 **[終了]** をクリックして、インストール ウィザードを閉じます。
+1. **[インストール]** をクリックし、マイクロソフト ソフトウェア ライセンス条項に同意します。
+1. PowerShell がインストールされます。 **[終了]** をクリックして、インストール ウィザードを閉じます。
 
 PowerShell コマンドレットの更新プログラムがあるかどうかをこまめに確認してください。通常は毎月更新されます。 更新プログラムの有無を確認する最も簡単な方法は、手順 5. でインストール ページが表示されるまでのインストール手順を実行することです。 手順 5. で表示されるページには、コマンドレットのリリース日とリリース番号が記載されています。 SAP Note [1928533] または [2015553] に特に記載されていない限り、最新バージョンの Azure PowerShell コマンドレットを使用することをお勧めします。
 
@@ -800,16 +800,16 @@ PowerShell コマンドレットの更新プログラムがあるかどうかを
 
 ### <a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Azure CLI のデプロイ
 
-1.  [Microsoft Azure のダウンロード](https://azure.microsoft.com/downloads/) ページに移動します。
-1.  **[コマンドライン ツール]** の **[Azure コマンド ライン インターフェイス]** で、使用しているオペレーティング システムの**インストール** リンクをクリックします。
-1.  [Microsoft ダウンロード マネージャー] ダイアログ ボックスで、ダウンロードしたファイル (例: WindowsAzureXPlatCLI.3f.3f.3fnew.exe) の **[実行]** を選択します。
-1.  Microsoft Web プラットフォーム インストーラー (Microsoft Web PI) を実行するには、**[はい]** を選択します。
-1.  次のようなページが表示されます。
+1. [Microsoft Azure のダウンロード](https://azure.microsoft.com/downloads/) ページに移動します。
+1. **[コマンドライン ツール]** の **[Azure コマンド ライン インターフェイス]** で、使用しているオペレーティング システムの**インストール** リンクをクリックします。
+1. [Microsoft ダウンロード マネージャー] ダイアログ ボックスで、ダウンロードしたファイル (例: WindowsAzureXPlatCLI.3f.3f.3fnew.exe) の **[実行]** を選択します。
+1. Microsoft Web プラットフォーム インストーラー (Microsoft Web PI) を実行するには、**[はい]** を選択します。
+1. 次のようなページが表示されます。
 
-  ![Azure PowerShell コマンドレットのインストール ページ][deployment-guide-figure-500]<a name="figure-5"></a>
+   ![Azure PowerShell コマンドレットのインストール ページ][deployment-guide-figure-500]<a name="figure-5"></a>
 
-1.  **[インストール]** をクリックし、マイクロソフト ソフトウェア ライセンス条項に同意します。
-1.  Azure CLI がインストールされます。 **[終了]** をクリックして、インストール ウィザードを閉じます。
+1. **[インストール]** をクリックし、マイクロソフト ソフトウェア ライセンス条項に同意します。
+1. Azure CLI がインストールされます。 **[終了]** をクリックして、インストール ウィザードを閉じます。
 
 Azure CLI の更新プログラムがあるかどうかをこまめに確認してください。通常は毎月更新されます。 更新プログラムの有無を確認する最も簡単な方法は、手順 5. でインストール ページが表示されるまでのインストール手順を実行することです。
 
@@ -837,15 +837,15 @@ Azure Marketplace から VM をデプロイした場合には、この手順は�
 
 #### <a name="b2db5c9a-a076-42c6-9835-16945868e866"></a>Windows
 
-1.  Azure VM エージェントのダウンロード:
-  1.  [Azure VM エージェント インストーラー パッケージ](https://go.microsoft.com/fwlink/?LinkId=394789)をダウンロードします。
-  1.  パーソナル コンピューターまたはサーバーで、VM エージェント MSI パッケージをローカルに保存します。
-1.  Azure VM エージェントのインストール:
-  1.  リモート デスクトップ プロトコル (RDP) を使用して、デプロイした Azure VM に接続します。
-  1.  VM で Windows エクスプローラー ウィンドウを開き、VM エージェントの MSI ファイルのターゲット ディレクトリを選択します。
-  1.  Azure VM エージェント インストーラー MSI ファイルを、ローカル コンピューター/サーバーから VM 上の VM エージェントのターゲット ディレクトリにドラッグします。
-  1.  VM 上の MSI ファイルをダブルクリックします。
-1.  オンプレミス ドメインに参加している VM の場合、「[プロキシの構成][deployment-guide-configure-proxy]」で説明するように、最終的なインターネット プロキシ設定が VM の Windows ローカル システム アカウント (S-1-5-18) にも適用されていることを確認します。 VM エージェントはこのコンテキストで実行されるので、Azure に接続できる必要があります。
+1. Azure VM エージェントのダウンロード:
+   1.  [Azure VM エージェント インストーラー パッケージ](https://go.microsoft.com/fwlink/?LinkId=394789)をダウンロードします。
+   1.  パーソナル コンピューターまたはサーバーで、VM エージェント MSI パッケージをローカルに保存します。
+1. Azure VM エージェントのインストール:
+   1.  リモート デスクトップ プロトコル (RDP) を使用して、デプロイした Azure VM に接続します。
+   1.  VM で Windows エクスプローラー ウィンドウを開き、VM エージェントの MSI ファイルのターゲット ディレクトリを選択します。
+   1.  Azure VM エージェント インストーラー MSI ファイルを、ローカル コンピューター/サーバーから VM 上の VM エージェントのターゲット ディレクトリにドラッグします。
+   1.  VM 上の MSI ファイルをダブルクリックします。
+1. オンプレミス ドメインに参加している VM の場合、「[プロキシの構成][deployment-guide-configure-proxy]」で説明するように、最終的なインターネット プロキシ設定が VM の Windows ローカル システム アカウント (S-1-5-18) にも適用されていることを確認します。 VM エージェントはこのコンテキストで実行されるので、Azure に接続できる必要があります。
 
 Azure VM エージェントを更新する際にユーザーの操作は不要です。 VM エージェントは自動的に更新され、VM の再起動を必要としません。
 
@@ -890,21 +890,21 @@ Microsoft Azure ゲスト エージェントの構成ファイル (\\etc\\waagen
 
 次のパラメーターを設定します。
 
-1.  **HTTP プロキシ ホスト**。 たとえば、**proxy.corp.local** に設定します。
-  ```
-  HttpProxy.Host=<proxy host>
+1. **HTTP プロキシ ホスト**。 たとえば、**proxy.corp.local** に設定します。
+   ```
+   HttpProxy.Host=<proxy host>
 
-  ```
-1.  **HTTP プロキシ ポート**。 たとえば、**80** に設定します。
-  ```
-  HttpProxy.Port=<port of the proxy host>
+   ```
+1. **HTTP プロキシ ポート**。 たとえば、**80** に設定します。
+   ```
+   HttpProxy.Port=<port of the proxy host>
 
-  ```
-1.  エージェントを再起動します。
+   ```
+1. エージェントを再起動します。
 
-  ```
-  sudo service waagent restart
-  ```
+   ```
+   sudo service waagent restart
+   ```
 
 \\etc\\waagent.conf のプロキシ設定は、必要な VM 拡張機能にも適用されます。 Azure リポジトリを使用する場合は、これらのリポジトリへのトラフィックがオンプレミスのイントラネットを経由しないようにしてください。 強制トンネリングを有効にするためにユーザー定義ルートを作成した場合は、サイト間 VPN 接続を介さずに、リポジトリへのトラフィックをインターネットに直接ルーティングするルートを追加する必要があります。
 
@@ -1034,20 +1034,20 @@ Azure VM をデプロイし、関連する Azure 監視インフラストラク�
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>Windows VM での適合性チェックの実行
 
-1.  Azure 仮想マシンにサインインします (管理者アカウントを使用する必要はありません)。
-1.  コマンド プロンプト ウィンドウを開きます。
-1.  コマンド プロンプトで、Azure Enhanced Monitoring Extension for SAP のインストール フォルダー (C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;バージョン>\\drop) にディレクトリを変更します。
+1. Azure 仮想マシンにサインインします (管理者アカウントを使用する必要はありません)。
+1. コマンド プロンプト ウィンドウを開きます。
+1. コマンド プロンプトで、Azure Enhanced Monitoring Extension for SAP のインストール フォルダー (C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;バージョン>\\drop) にディレクトリを変更します。
 
-  監視の拡張機能のパスに含まれる "*バージョン*" が異なる場合があります。 インストール フォルダーに監視の拡張機能の複数のバージョンのフォルダーがある場合は、AzureEnhancedMonitoring Windows サービスの構成を確認し、*[実行可能ファイルへのパス]* に示されているフォルダーに切り替えます。
+   監視の拡張機能のパスに含まれる "*バージョン*" が異なる場合があります。 インストール フォルダーに監視の拡張機能の複数のバージョンのフォルダーがある場合は、AzureEnhancedMonitoring Windows サービスの構成を確認し、*[実行可能ファイルへのパス]* に示されているフォルダーに切り替えます。
 
-  ![Azure Enhanced Monitoring Extension for SAP を実行しているサービスのプロパティ][deployment-guide-figure-1000]
+   ![Azure Enhanced Monitoring Extension for SAP を実行しているサービスのプロパティ][deployment-guide-figure-1000]
 
-1.  コマンド プロンプトで、パラメーターを指定せずに **azperflib.exe** を実行します。
+1. コマンド プロンプトで、パラメーターを指定せずに **azperflib.exe** を実行します。
 
-  > [!NOTE]
-  > azperflib.exe はループで実行され、収集したカウンターを 60 秒ごとに更新します。 ループを終了するには、コマンド プロンプト ウィンドウを閉じます。
-  >
-  >
+   > [!NOTE]
+   > azperflib.exe はループで実行され、収集したカウンターを 60 秒ごとに更新します。 ループを終了するには、コマンド プロンプト ウィンドウを閉じます。
+   >
+   >
 
 Azure Enhanced Monitoring Extension がインストールされていない場合や、AzureEnhancedMonitoring サービスが実行されていない場合は、拡張機能が正しく構成されていません。 拡張機能をデプロイする方法の詳細については、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」をご覧ください。
 
@@ -1077,51 +1077,51 @@ azperflib.exe の出力には、SAP 用に設定されたすべての Azure パ�
 
 #### <a name="run-the-readiness-check-on-a-linux-vm"></a>Linux VM での適合性チェックの実行
 
-1.  SSH を使用して Azure 仮想マシンに接続します。
+1. SSH を使用して Azure 仮想マシンに接続します。
 
-1.  Azure Enhanced Monitoring Extension の出力を確認します。
+1. Azure Enhanced Monitoring Extension の出力を確認します。
 
-  a.  `more /var/lib/AzureEnhancedMonitor/PerfCounters` を実行します。
+   a.  `more /var/lib/AzureEnhancedMonitor/PerfCounters` を実行します。
 
    **予測される結果**: パフォーマンス カウンターの一覧を返します。 ファイルを空にすることはできません。
 
- b. `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` を実行します。
+   b. `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` を実行します。
 
    **予測される結果**: エラーが **none** である 1 行 (**3;config;Error;;0;0;none;0;1456416792;tst-servercs;** など) を返します。
 
-  c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` を実行します。
+   c. `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` を実行します。
 
-    **予測される結果**: 空または存在しないとして返します。
+   **予測される結果**: 空または存在しないとして返します。
 
 前のチェックが失敗した場合は、次の追加チェックを実行します。
 
-1.  waagent がインストールされ、有効になっていることを確認します。
+1. waagent がインストールされ、有効になっていることを確認します。
 
-  a.  `sudo ls -al /var/lib/waagent/` を実行します。
+   a.  `sudo ls -al /var/lib/waagent/` を実行します。
 
-      **予測される結果**: waagent ディレクトリの内容を一覧表示します。
+     **予測される結果**: waagent ディレクトリの内容を一覧表示します。
 
-  b.  `ps -ax | grep waagent` を実行します。
+   b.  `ps -ax | grep waagent` を実行します。
 
    **予測される結果**: `python /usr/sbin/waagent -daemon` のような 1 つのエントリを表示します。
 
-1.   Azure Enhanced Monitoring Extension がインストールされ、実行されていることを確認します。
+1. Azure Enhanced Monitoring Extension がインストールされ、実行されていることを確認します。
 
-  a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` を実行します。
+   a.  `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` を実行します。
 
-    **予測される結果**: Azure Enhanced Monitoring Extension ディレクトリの内容を一覧表示します。
+   **予測される結果**: Azure Enhanced Monitoring Extension ディレクトリの内容を一覧表示します。
 
-  b. `ps -ax | grep AzureEnhanced` を実行します。
+   b. `ps -ax | grep AzureEnhanced` を実行します。
 
-     **予測される結果**: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon` のような 1 つのエントリを表示します。
+   **予測される結果**: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon` のような 1 つのエントリを表示します。
 
 1. SAP Note [1031096] の説明に従って SAP Host Agent をインストールし、`saposcol` の出力を確認します。
 
-  a.  `/usr/sap/hostctrl/exe/saposcol -d` を実行します。
+   a.  `/usr/sap/hostctrl/exe/saposcol -d` を実行します。
 
-  b.  `dump ccm` を実行します。
+   b.  `dump ccm` を実行します。
 
-  c.  **Virtualization_Configuration\Enhanced Monitoring Access** メトリックが **true** であるかどうかを確認します。
+   c.  **Virtualization_Configuration\Enhanced Monitoring Access** メトリックが **true** であるかどうかを確認します。
 
 SAP NetWeaver ABAP アプリケーション サーバーが既にインストールされている場合は、トランザクション ST06 を開き、Enhanced Monitoring が有効になっているかどうかを確認します。
 
@@ -1131,22 +1131,22 @@ SAP NetWeaver ABAP アプリケーション サーバーが既にインストー
 
 一部の監視データが「[Azure Enhanced Monitoring Extension for SAP の適合性チェック][deployment-guide-5.1]」で説明したテストで示されているように正しく提供されない場合は、`Test-AzureRmVMAEMExtension` コマンドレットを実行して、Azure 監視インフラストラクチャと Monitoring Extension for SAP が正しく構成されているかどうかを確認します。
 
-1.  「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」で説明したように、Azure PowerShell コマンドレットの最新バージョンがインストールされていることを確認します。
-1.  次の PowerShell コマンドレットを実行します。 使用可能な環境のリストを表示するには、`Get-AzureRmEnvironment` コマンドレットを実行します。 グローバル Azure を使う場合は、**AzureCloud** 環境を選びます。 中国で Azure を使用する場合は、**AzureChinaCloud** を選択します。
-  ```powershell
-  $env = Get-AzureRmEnvironment -Name <name of the environment>
-  Connect-AzureRmAccount -Environment $env
-  Set-AzureRmContext -SubscriptionName <subscription name>
-  Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
-  ```
+1. 「[Azure PowerShell コマンドレットのデプロイ][deployment-guide-4.1]」で説明したように、Azure PowerShell コマンドレットの最新バージョンがインストールされていることを確認します。
+1. 次の PowerShell コマンドレットを実行します。 使用可能な環境のリストを表示するには、`Get-AzureRmEnvironment` コマンドレットを実行します。 グローバル Azure を使う場合は、**AzureCloud** 環境を選びます。 中国で Azure を使用する場合は、**AzureChinaCloud** を選択します。
+   ```powershell
+   $env = Get-AzureRmEnvironment -Name <name of the environment>
+   Connect-AzureRmAccount -Environment $env
+   Set-AzureRmContext -SubscriptionName <subscription name>
+   Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+   ```
 
-1.  アカウント データを入力し、Azure 仮想マシンを特定します。
+1. アカウント データを入力し、Azure 仮想マシンを特定します。
 
-  ![SAP 固有の Azure コマンドレット Test-VMConfigForSAP_GUI の入力ページ][deployment-guide-figure-1200]
+   ![SAP 固有の Azure コマンドレット Test-VMConfigForSAP_GUI の入力ページ][deployment-guide-figure-1200]
 
 1. 選択した仮想マシンの構成がスクリプトによってテストされます。
 
-  ![SAP 用 Azure 監視インフラストラクチャの成功したテストの出力][deployment-guide-figure-1300]
+   ![SAP 用 Azure 監視インフラストラクチャの成功したテストの出力][deployment-guide-figure-1300]
 
 正常性チェックのすべての結果が **OK** であることを確認します。 一部のチェックで **OK** と表示されていない場合は、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」で説明した更新コマンドレットを実行します。 15 分待ってから、「[Azure Enhanced Monitoring Extension for SAP の適合性チェック][deployment-guide-5.1]」と「[Azure 監視インフラストラクチャ構成の正常性チェック][deployment-guide-5.2]」で説明したチェックをもう一度実行します。 チェックで一部またはすべてのカウンターの問題が引き続き見つかった場合は、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」をご覧ください。
 

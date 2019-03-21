@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 60bd3aef20e39a9f451f54164ef3fb8ef682bc3e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4ff3f129838a43bd7684dc10e1653dab969e9c1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809691"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087008"
 ---
 # <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Contoso の移行: Azure App Service、Traffic Manager、Azure MySQL を使用して複数のリージョンに Contoso Linux サービス デスク アプリをリファクターする
 
@@ -109,7 +109,7 @@ Contoso は、次のようにして移行プロセスを完了します。
 **サービス** | **説明** | **コスト**
 --- | --- | ---
 [Mobile Apps](https://azure.microsoft.com/services/app-service/) | このサービスでは、Web サイト向けの Azure PaaS サービスを使用してアプリケーションを実行およびスケーリングします。  | 価格は、インスタンスのサイズと必要な機能に基づきます。 [詳細情報](https://azure.microsoft.com/pricing/details/app-service/windows/)。
-[Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) | DNS を使用して、Azure、外部 Web サイト、またはサービスにユーザーを送るロード バランサー。 | 価格は、受信した DNS クエリの数と監視対象のエンドポイントの数に基づきます。 | [詳細情報](https://azure.microsoft.com/pricing/details/traffic-manager/)。
+[Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) | DNS を使用して、Azure、外部 Web サイト、またはサービスにユーザーを送るロード バランサー。 | 価格は、受信した DNS クエリの数と監視対象のエンドポイントの数に基づきます。 [詳細情報](https://azure.microsoft.com/pricing/details/traffic-manager/)。
 [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) | データベースは、オープン ソースの MySQL Server エンジンに基づいています。 これは、アプリの開発とデプロイに向けたサービスとしての、フルマネージドのエンタープライズ対応コミュニティ MySQL データベースです。 | 価格は、コンピューティング、ストレージ、およびバックアップ要件に基づきます。 [詳細情報](https://azure.microsoft.com/pricing/details/mysql/)。
 
  

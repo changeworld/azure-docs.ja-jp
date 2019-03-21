@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62888afb29c3b721da978c7180b36d62d6a575a8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c097fb045db1afe65a84a2a96dc202c57e8a449e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200566"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57975544"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>チュートリアル:Azure Active Directory と Cerner Central の統合
 
@@ -119,6 +119,7 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
     | `https://<instancename>.sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
     
     b. **[応答 URL]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
@@ -166,7 +167,7 @@ Cerner Central で Azure AD のシングル サインオンを構成してテス
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
 
 ### <a name="creating-a-cerner-central-test-user"></a>Cerner Central のテスト ユーザーの作成
 

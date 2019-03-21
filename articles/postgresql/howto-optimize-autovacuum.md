@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: e8e9991f20481deee85a6d582582335eb98e3c24
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e1b4bf1f9fa956da7a7b0ca1521439002d1ce76b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815219"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993420"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバー上で自動バキュームを最適化する 
 この記事では、Azure Database for PostgreSQL サーバー上で自動バキュームを効率的に最適化する方法について説明します。
@@ -43,6 +43,7 @@ PostgreSQL は、MVCC (MultiVersion Concurrency Control) を使用して、デ�
 - 開始後にどれだけ消去する必要があるか。
 
 ここでは、この問いに基づいて更新することができる自動バキューム構成パラメーターの一部と、いくつかのガイダンスを示します。
+
 パラメーター|説明|既定値
 ---|---|---
 autovacuum_vacuum_threshold|任意の 1 つのテーブルでバキューム操作をトリガーするために必要な、更新または削除されたタプルの最小数を指定します。 既定値は 50 タプルです。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|50
@@ -51,6 +52,7 @@ autovacuum_vacuum_cost_limit|自動バキューム操作で使用されるコス
 autovacuum_vacuum_cost_delay|自動バキューム操作で使用されるコストの遅延値を指定します。 -1 が指定された場合は、通常の vacuum_cost_delay 値が使用されます。 既定値は 20 ミリ秒です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。|20 ミリ秒
 autovacuum_nap_time|特定のデータベースに対する自動バキューム実行の間隔の最小遅延を指定します。 各ラウンドで、デーモンがデータベースを調査し、そのデータベースのテーブルに対して、必要に応じて VACUUM コマンドと ANALYZE コマンドを発行します。 遅延は秒単位で測定され、既定値は 1 分 (1 min) です。 このパラメーターは、postgresql.conf ファイルまたはサーバーのコマンド ラインでのみ設定します。|15 s
 autovacuum_max_workers|任意の時点で実行できる (自動バキューム ランチャー以外の) 自動バキューム プロセスの最大数を指定します。 既定値は 3 です。 このパラメーターは、サーバー起動時にのみ設定します。|3
+
 個々のテーブルの設定をオーバーライドするには、テーブル ストレージのパラメーターを変更します。 
 
 ## <a name="autovacuum-cost"></a>自動バキュームのコスト

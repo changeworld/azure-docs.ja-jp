@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 188e58261cec90e9afcc885f3da21fa3fab3b746
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2925ca5a303876a68b6d605c7312d43af102b6e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875435"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088470"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>チュートリアル:Visual Studio と C# の接続済みサービスを使用して Bing News Search API に接続する
 
@@ -87,14 +87,14 @@ Bing News Search を使用すると、Web にスコープした広告のない�
 
 Bing News Search API のサポートをプロジェクトに追加したので、ここでは、API を使用してインテリジェント検索を Web ページに追加する方法を示します。
 
-1.  *Startup.cs* 内の `ConfigureServices` メソッドで、`IServiceCollection.AddSingleton` の呼び出しを追加します。 これにより、キー設定を含む構成オブジェクトがプロジェクト内のコードから使用できるようになります。
+1. *Startup.cs* 内の `ConfigureServices` メソッドで、`IServiceCollection.AddSingleton` の呼び出しを追加します。 これにより、キー設定を含む構成オブジェクトがプロジェクト内のコードから使用できるようになります。
  
    ```csharp
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc();
-            services.AddSingleton<IConfiguration>(Configuration);
-        }
+       public void ConfigureServices(IServiceCollection services)
+       {
+           services.AddMvc();
+           services.AddSingleton<IConfiguration>(Configuration);
+       }
    ```
 
 

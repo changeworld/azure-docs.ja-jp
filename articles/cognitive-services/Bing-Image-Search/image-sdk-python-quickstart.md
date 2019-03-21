@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a785cb461b12c20bd5e322a55a91c8b49cb40d54
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cabf29423123d988b08e002077b4782529e96aa0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858163"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095638"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>クイック スタート:Bing Image Search SDK for Python を使用してイメージを検索する
 
@@ -52,16 +52,16 @@ ms.locfileid: "55858163"
 
 ## <a name="create-the-image-search-client"></a>画像検索クライアントを作成する
 
-3. `CognitiveServicesCredentials` のインスタンスを作成し、それを使用してクライアントをインスタンス化します。
+1. `CognitiveServicesCredentials` のインスタンスを作成し、それを使用してクライアントをインスタンス化します。
 
     ```python
     client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
     ```
-4. Bing Image Search API に検索クエリを送信します。
+1. Bing Image Search API に検索クエリを送信します。
     ```python
     image_results = client.images.search(query=search_term)
     ```
-## <a name="process-and-view-the-results"></a>結果の処理と表示
+   ## <a name="process-and-view-the-results"></a>結果の処理と表示
 
 応答で返された画像の結果を解析します。
 

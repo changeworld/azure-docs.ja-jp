@@ -10,17 +10,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: e38612e0d4e0707525b313c79143018c74c4c77b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4edaf782b193e99dfe4002eedb6f3a046fb7dcd8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326512"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081459"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Azure Stack で仮想マシンのディスク記憶域を作成する
 
@@ -68,56 +68,56 @@ VM の作成後、ポータルを使って次の操作を行うことができ�
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>ポータルを使用して新しいデータ ディスクを作成して接続する
 
-1.  ポータルで、**[すべてのサービス]** > **[仮想マシン]** の順に選択します。    
-    ![例:VM ダッシュボード](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+1. ポータルで、**[すべてのサービス]** > **[仮想マシン]** の順に選択します。    
+   ![例:VM ダッシュボード](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
-2.  以前に作成した仮想マシンを選択します。   
-    ![例:ダッシュボードで VM を選択する](media/azure-stack-manage-vm-disks/select-a-vm.png)
+2. 以前に作成した仮想マシンを選択します。   
+   ![例:ダッシュボードで VM を選択する](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  その仮想マシンについて、**[ディスク]** > **[データ ディスクの追加]** の順に選択します。       
-    ![例:VM に新しいディスクをアタッチする](media/azure-stack-manage-vm-disks/Attach-disks.png)    
+3. その仮想マシンについて、**[ディスク]** > **[データ ディスクの追加]** の順に選択します。       
+   ![例:VM に新しいディスクをアタッチする](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  データ ディスクに対して次の操作を実行します。
-    -  **LUN** を入力します。 LUN には有効な数値を指定してください。
-    -  **[ディスクの作成]** を選択します。
-    ![例:VM に新しいディスクをアタッチする](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
+4. データ ディスクに対して次の操作を実行します。
+   -  **LUN** を入力します。 LUN には有効な数値を指定してください。
+   -  **[ディスクの作成]** を選択します。
+   ![例:VM に新しいディスクをアタッチする](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
 
-5.  [マネージド ディスクの作成] ブレードで次の操作を行います。
-    -  **[名前]** にディスクの名前を入力します。
-    -  既存のリソース グループを選択するか、新しい**リソース グループ**を作成します。
-    -  **[場所]** を選択します。 既定では、場所は、OS ディスクを保持するコンテナーに設定されます。
-    -  **[アカウントの種類]** を選択します。 
-        ![例:VM に新しいディスクをアタッチする](media/azure-stack-manage-vm-disks/create-manage-disk.png)
+5. [マネージド ディスクの作成] ブレードで次の操作を行います。
+   - **[名前]** にディスクの名前を入力します。
+   - 既存のリソース グループを選択するか、新しい**リソース グループ**を作成します。
+   - **[場所]** を選択します。 既定では、場所は、OS ディスクを保持するコンテナーに設定されます。
+   - **[アカウントの種類]** を選択します。 
+      ![例:VM に新しいディスクをアタッチする](media/azure-stack-manage-vm-disks/create-manage-disk.png)
 
-        **Premium SSD**  
-        Premium ディスク (SSD) の実体はソリッドステート ドライブであり、待ち時間の短い一貫したパフォーマンスが得られます。 価格とパフォーマンスのバランスにきわめて優れており、I/O 集中型のアプリケーションや運用環境のワークロードに最適です。
+      **Premium SSD**  
+      Premium ディスク (SSD) の実体はソリッドステート ドライブであり、待ち時間の短い一貫したパフォーマンスが得られます。 価格とパフォーマンスのバランスにきわめて優れており、I/O 集中型のアプリケーションや運用環境のワークロードに最適です。
        
-        **Standard HDD**  
-        Standard ディスク (HDD) の実体は磁気ドライブであり、データへのアクセス頻度が低い用途に適しています。 ゾーン冗長ディスクの実体はゾーン冗長ストレージ (ZRS) です。ZRS では、データが複数のゾーンにレプリケートされ、1 つのゾーンがダウンしても可用性が保たれます。 
+      **Standard HDD**  
+      Standard ディスク (HDD) の実体は磁気ドライブであり、データへのアクセス頻度が低い用途に適しています。 ゾーン冗長ディスクの実体はゾーン冗長ストレージ (ZRS) です。ZRS では、データが複数のゾーンにレプリケートされ、1 つのゾーンがダウンしても可用性が保たれます。 
 
-    -  **[ソースの種類]** を選択します。
+   - **[ソースの種類]** を選択します。
 
-       ディスクは、別のディスクのスナップショットや、ストレージ アカウント内の BLOB から作成できるほか、空のディスクを作成することができます。
+     ディスクは、別のディスクのスナップショットや、ストレージ アカウント内の BLOB から作成できるほか、空のディスクを作成することができます。
 
-        **スナップショット**  
-        スナップショットが利用できる場合は、スナップショットを選択します。 スナップショットは、VM のサブスクリプションと場所から利用できることが必要です。
+      **スナップショット**  
+      スナップショットが利用できる場合は、スナップショットを選択します。 スナップショットは、VM のサブスクリプションと場所から利用できることが必要です。
 
-        **BLOB ストレージ**  
-        - ディスク イメージが格納されている BLOB ストレージの URI を追加します。  
-        - **[参照]** を選択して、[ストレージ アカウント] ブレードを開きます。 手順については、「[ストレージ アカウントからデータ ディスクを追加する](#add-a-data-disk-from-a-storage-account)」を参照してください。
-        - イメージの OS の種類を **[Windows]**、**[Linux]**、**[なし (データ ディスク)]** のいずれかから選択します。
+      **BLOB ストレージ**  
+     - ディスク イメージが格納されている BLOB ストレージの URI を追加します。  
+     - **[参照]** を選択して、[ストレージ アカウント] ブレードを開きます。 手順については、「[ストレージ アカウントからデータ ディスクを追加する](#add-a-data-disk-from-a-storage-account)」を参照してください。
+     - イメージの OS の種類を **[Windows]**、**[Linux]**、**[なし (データ ディスク)]** のいずれかから選択します。
 
-        **[なし (空のディスク)]**
+       **[なし (空のディスク)]**
 
-    -  **[サイズ (GiB)]** を選択します。
+   - **[サイズ (GiB)]** を選択します。
 
-       Standard ディスクのコストは、ディスクのサイズに応じて高くなります。 Premium ディスクのコストとパフォーマンスは、ディスクのサイズに応じて高くなります。 詳細については、「[Managed Disks の価格](https://go.microsoft.com/fwlink/?linkid=843142)」を参照してください。
+     Standard ディスクのコストは、ディスクのサイズに応じて高くなります。 Premium ディスクのコストとパフォーマンスは、ディスクのサイズに応じて高くなります。 詳細については、「[Managed Disks の価格](https://go.microsoft.com/fwlink/?linkid=843142)」を参照してください。
 
-    -  **作成**を選択します。 Azure Stack でマネージド ディスクが作成されて検証されます。
+   - **作成**を選択します。 Azure Stack でマネージド ディスクが作成されて検証されます。
 
-5.  Azure Stack でディスクが作成され、仮想マシンに接続されると、仮想マシンのディスク設定の **[データ ディスク]** に新しいディスクが表示されます。   
+5. Azure Stack でディスクが作成され、仮想マシンに接続されると、仮想マシンのディスク設定の **[データ ディスク]** に新しいディスクが表示されます。   
 
-    ![例:ディスクを表示する](media/azure-stack-manage-vm-disks/view-data-disk.png)
+   ![例:ディスクを表示する](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 ### <a name="add-a-data-disk-from-a-storage-account"></a>ストレージ アカウントからデータ ディスクを追加する
 

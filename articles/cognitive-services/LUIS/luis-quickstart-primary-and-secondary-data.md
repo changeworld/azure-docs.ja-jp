@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: d333eb6baa41321fdf7daca3c545d5d5e3ed5fe4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: b9ddd82d18b7f67f61e5c1589511ea6db4fa18a3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732706"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100294"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>チュートリアル:Simple エンティティとフレーズ リストを使用して名前を抽出する
 
@@ -127,7 +127,7 @@ Simple エンティティがこのデータの種類に適しているのは次�
     |タイル職人に応募します。|タイル|
     |造園技師に応募するための履歴書を添付します。|造園技師|
     |生物学教授への応募に必要な履歴書を同封します。|生物学教授|
-    |写真撮影の職に応募します。|写真撮影|git 
+    |写真撮影の職に応募します。|写真撮影|
 
 ## <a name="mark-job-entity-in-other-intents"></a>他の意図のジョブ エンティティにマークを付ける
 

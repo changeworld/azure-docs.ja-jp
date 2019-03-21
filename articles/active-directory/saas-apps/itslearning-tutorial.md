@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1b1020e66cd794ffd6e51f4af697fa79e0ae20
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a12fb0123e96c592a8af9fe04f6ff17f8fea62a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167169"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900762"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>チュートリアル:Azure Active Directory と itslearning の統合
 
@@ -114,6 +114,7 @@ itslearning で Azure AD のシングル サインオンを構成してテスト
     ![Configure single sign-on](./media/itslearning-tutorial/tutorial_itslearning_url.png)
 
     a. **[サインオン URL]** ボックスに、次のような URL を入力します。
+    
     | |
     |--| 
     | `https://www.itslearning.com/index.aspx`|
@@ -164,7 +165,7 @@ itslearning で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-an-itslearning-test-user"></a>itslearning テスト ユーザーの作成
 

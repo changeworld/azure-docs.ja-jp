@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 97734ad6119e89c00634035b1646bc29ac6549bd
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a8f756385b62dfb21e910b9373dc275c7f679d3e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237862"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009660"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンに MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する
 
@@ -91,13 +91,13 @@ sudo apt-get install -y nodejs
 ```
 
 ## <a name="install-mongodb-and-set-up-the-server"></a>MongoDB のインストールとサーバーの設定
-[MongoDB](http://www.mongodb.com) は、柔軟性の高い JSON のようなドキュメントにデータを格納します。 データベースのフィールドはドキュメントごとに異なる場合があり、時間の経過と共にデータ構造を変更することもできます。 このアプリケーションの例では、書籍の名前、ISBN 番号、著者、ページ数の情報が格納されている MongoDB に書籍のレコードを追加します。 
+[MongoDB](https://www.mongodb.com) は、柔軟性の高い JSON のようなドキュメントにデータを格納します。 データベースのフィールドはドキュメントごとに異なる場合があり、時間の経過と共にデータ構造を変更することもできます。 このアプリケーションの例では、書籍の名前、ISBN 番号、著者、ページ数の情報が格納されている MongoDB に書籍のレコードを追加します。 
 
 1. VM にて、SSH を使用して開いた bash シェルを使用して、MongoDB のキーを設定します。
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
-    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
     ```
 
 2. このキーを使用して、パッケージ マネージャーを更新します。
@@ -149,7 +149,7 @@ sudo apt-get install -y nodejs
 
 ## <a name="install-express-and-set-up-routes-to-the-server"></a>Express のインストールとサーバーへのルートの設定
 
-[Express](https://expressjs.com) は、最小限かつ柔軟性の高い Node.js の Web アプリケーション フレームワークで、Web アプリケーションとモバイル アプリケーションの機能を提供します。 このチュートリアルでは、Express を使用して、MongoDB データベースとの書籍情報の送受信を行います。 [Mongoose](http://mongoosejs.com) は、アプリケーション データのモデリングを行う簡単かつスキーマ ベースのソリューションを提供します。 このチュートリアルでは、Mongoose を使用して、書籍のスキーマをデータベースに提供します。
+[Express](https://expressjs.com) は、最小限かつ柔軟性の高い Node.js の Web アプリケーション フレームワークで、Web アプリケーションとモバイル アプリケーションの機能を提供します。 このチュートリアルでは、Express を使用して、MongoDB データベースとの書籍情報の送受信を行います。 [Mongoose](https://mongoosejs.com) は、アプリケーション データのモデリングを行う簡単かつスキーマ ベースのソリューションを提供します。 このチュートリアルでは、Mongoose を使用して、書籍のスキーマをデータベースに提供します。
 
 1. Express と Mongoose をインストールします。
 

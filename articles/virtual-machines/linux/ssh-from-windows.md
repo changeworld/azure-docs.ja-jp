@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 247d09e58ded2de12fb7cc6b5a036b695e715077
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0ac62a99f5735647f67917d441645e30444b3818
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298655"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005678"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 
@@ -37,9 +37,9 @@ Windows コンピューターでは、それに相当する SSH コマンドが�
 
 ローカルにインストールできるその他の一般的な Windows SSH クライアントは、次のパッケージに含まれています。
 
-* [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
+* [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git For Windows](https://git-for-windows.github.io/)
-* [MobaXterm](http://mobaxterm.mobatek.net/)
+* [MobaXterm](https://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
 また、[Azure Cloud Shell](../../cloud-shell/overview.md) の Bash で入手できる SSH ユーティリティを使用することもできます。 
@@ -62,7 +62,7 @@ ssh-keygen -t rsa -b 2048
 
 ### <a name="create-ssh-keys-with-puttygen"></a>PuTTYgen で SSH キーを作成する
 
-GUI ベースのツールを使って SSH キーを作成する場合は、[PuTTY のダウンロード パッケージ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)に含まれる PuTTYgen キー ジェネレーターを使うことができます。 
+GUI ベースのツールを使って SSH キーを作成する場合は、[PuTTY のダウンロード パッケージ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)に含まれる PuTTYgen キー ジェネレーターを使うことができます。 
 
 PuTTYgen で SSH RSA キー ペアを作成するには:
 
@@ -110,7 +110,7 @@ VM が Just-In-Time アクセス ポリシーを使用している場合、VM �
 
 ### <a name="connect-with-putty"></a>PuTTY を使用して接続する
 
-[PuTTY のダウンロード パッケージ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)をインストールし、前に PuTTY の秘密キー (.ppk) ファイルを生成した場合は、PuTTY を使って Linux VM に接続することができます。
+[PuTTY のダウンロード パッケージ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)をインストールし、前に PuTTY の秘密キー (.ppk) ファイルを生成した場合は、PuTTY を使って Linux VM に接続することができます。
 
 1. PuTTY を起動します。
 

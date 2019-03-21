@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: da6be839f5e7c1bfd885015c9b0206945feb77d1
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d90f23f52ca4c0cce3d853114acf673aa085d3c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452787"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889787"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 
@@ -31,7 +31,7 @@ ms.locfileid: "54452787"
 > [!IMPORTANT]
 > このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントをお持ちでない場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)を使用してわずか数分で無料試用アカウントを作成できます。
 
-このガイドでは、Azure Notification Hubs を使用して [Node.js](http://nodejs.org) アプリケーションから直接プッシュ通知を送信する方法を示します。
+このガイドでは、Azure Notification Hubs を使用して [Node.js](https://nodejs.org) アプリケーションから直接プッシュ通知を送信する方法を示します。
 
 ここで扱うシナリオでは、次のプラットフォーム上のアプリケーションにプッシュ通知を送信します。
 
@@ -60,7 +60,7 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 4. そのフォルダーで **azure** パッケージを探します。このパッケージには、Notification Hubs にアクセスするために必要なライブラリが含まれています。
 
 > [!NOTE]
-> NPM のインストールについては、公式 [NPM ブログ](http://blog.npmjs.org/post/85484771375/how-to-install-npm)を参照してください。
+> NPM のインストールについては、公式 [NPM ブログ](https://blog.npmjs.org/post/85484771375/how-to-install-npm)を参照してください。
 
 ### <a name="import-the-module"></a>モジュールのインポート
 
@@ -107,7 +107,7 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 - **Payload** - メッセージの JSON または未加工の文字列ペイロード
 - **Callback** - コールバック関数。
 
-ペイロード形式の詳細については、「 **Implementing GCM Server (GCM サーバーの実装)** 」ドキュメントの「 [Payload (ペイロード)](http://developer.android.com/google/gcm/server.html#payload) 」のセクションを参照してください。
+ペイロード形式の詳細については、「 **Implementing GCM Server (GCM サーバーの実装)** 」ドキュメントの「 [Payload (ペイロード)](https://developer.android.com/google/gcm/server.html#payload) 」のセクションを参照してください。
 
 次のコードは、`NotificationHubService` によって公開されている `GcmService` インスタンスを使用して、登録されているすべてのクライアントにプッシュ通知を送信します。
 
@@ -132,7 +132,7 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 - **Payload** - メッセージの JSON または文字列ペイロード。
 - **Callback** - コールバック関数。
 
-ペイロード形式の詳細については、「 **Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)** 」ドキュメントの「 [Notification Payload (通知ペイロード)](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) 」のセクションを参照してください。
+ペイロード形式の詳細については、「 **Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)** 」ドキュメントの「 [Notification Payload (通知ペイロード)](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) 」のセクションを参照してください。
 
 次のコードは、`NotificationHubService` によって公開されている `ApnsService` インスタンスを使用して、すべてのクライアントにアラート メッセージを送信します。
 
@@ -221,9 +221,9 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
 [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
 [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-[SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-[Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
-[SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
+[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+[Azure Service Bus Notification Hubs]: https://msdn.microsoft.com/library/windowsazure/jj927170.aspx
+[SqlFilter]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
 [Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png

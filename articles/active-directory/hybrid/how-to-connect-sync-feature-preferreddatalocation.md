@@ -16,12 +16,12 @@ ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe9a10c85efa2f52a04f5c2fab87421a08f0a16
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199801"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118444"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect (同期): Office 365 リソースの優先されるデータの場所の構成
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -192,8 +192,8 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
    3. ダイアログ ボックスで **[フル インポート]** を選択し、**[OK]** を選択します。
    4. 操作の完了を待ちます。
 
-    > [!NOTE]
-    > インポート対象の属性の一覧にソース属性が既に含まれている場合は、オンプレミスの Active Directory コネクタでのフル インポートは省略できます。 つまり、この記事の前半の手順 2 で、何も変更する必要がなかった場合です。
+      > [!NOTE]
+      > インポート対象の属性の一覧にソース属性が既に含まれている場合は、オンプレミスの Active Directory コネクタでのフル インポートは省略できます。 つまり、この記事の前半の手順 2 で、何も変更する必要がなかった場合です。
 
 2. Azure AD コネクタで、**フル インポート**を実行します。
 
@@ -219,7 +219,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
         a. **[スコープ]** を **[Pending Export]\(保留中のエクスポート\)** に設定します。<br>
         b. **[追加]、[変更]、[削除]** を含む、3 つのすべてのチェック ボックスを選択します。<br>
         c. 変更がエクスポートされるオブジェクトを一覧表示するには、**[検索]** を選択します。 指定したオブジェクトの変更を検証するには、オブジェクトをダブルクリックします。<br>
-        d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 変更が正しいことを確認します。
+        d. 変更が正しいことを確認します。
 
 6. **Azure AD コネクタ**で **[エクスポート]** を実行します。
 

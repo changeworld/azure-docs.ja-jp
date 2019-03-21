@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7bd4c261af4159429a91bd8b425180037eec8c23
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670895"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085322"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Azure Maps を使用してジオフェンスを設定する
 
@@ -25,11 +25,11 @@ Event Grid の詳細については、[Azure Event Grid](https://docs.microsoft.
 このチュートリアルでは、次の方法を学習します。
 
 > [!div class="checklist"]
-* Data Upload API を使用して Azure Maps のデータ サービスにジオフェンス領域をアップロードする。
-*   ジオフェンス イベントを処理する Event Grid を設定する。
-*   ジオフェンス イベントのハンドラーを設定する。
-*   ジオフェンス イベントに反応するアラートを Logic Apps を使用して設定する。
-*   Azure Maps のジオフェンス サービス API シリーズを使用して、建設用資産が建設現場内に存在するかどうかを追跡する。
+> * Data Upload API を使用して Azure Maps のデータ サービスにジオフェンス領域をアップロードする。
+> *   ジオフェンス イベントを処理する Event Grid を設定する。
+> *   ジオフェンス イベントのハンドラーを設定する。
+> *   ジオフェンス イベントに反応するアラートを Logic Apps を使用して設定する。
+> *   Azure Maps のジオフェンス サービス API シリーズを使用して、建設用資産が建設現場内に存在するかどうかを追跡する。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -150,9 +150,9 @@ Azure Maps の Data Upload API を使用して建設現場のジオフェンス�
 
 5. [send]\(送信\) をクリックして、応答ヘッダーを確認します。 今後使用するためにデータをダウンロードしたりデータにアクセスしたりするための URI は、location ヘッダーに格納されます。 また、アップロードされたデータの一意の `udId` もそこに格納されます。
 
-  ```HTTP
-  https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
 
 ## <a name="set-up-an-event-handler"></a>イベント ハンドラーの設定
 
@@ -163,15 +163,15 @@ Operations Manager に enter イベントと exit イベントを通知するに
 
 1. Azure portal でロジック アプリを作成します。
 
-  ![ロジック アプリを作成する](./media/tutorial-geofence/logic-app.png)
+   ![ロジック アプリを作成する](./media/tutorial-geofence/logic-app.png)
 
 2. HTTP 要求トリガーを選択し、Outlook Connector のアクションとして [電子メールの送信] を選択します
   
-  ![Logic Apps スキーマ](./media/tutorial-geofence/logic-app-schema.png)
+   ![Logic Apps スキーマ](./media/tutorial-geofence/logic-app-schema.png)
 
 3. ロジック アプリを保存して HTTP URL エンドポイントを生成し、HTTP URL をコピーします。
 
-  ![Logic Apps エンドポイント](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Logic Apps エンドポイント](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Azure Maps イベントのサブスクリプションの作成
@@ -208,53 +208,53 @@ Postman アプリで、先ほど作成したコレクションの新しいタブ
  
 1. 場所 1:
     
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
-  ![ジオフェンス クエリ 1](./media/tutorial-geofence/geofence-query1.png)
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
+   ![ジオフェンス クエリ 1](./media/tutorial-geofence/geofence-query1.png)
 
-  上の応答を見ると、メイン ジオフェンスからの距離が負数になっていますが、これは機材がメイン ジオフェンス内にあることを意味します。サブサイトのジオフェンスからの距離は正数になっていることから、サブサイトのジオフェンスの外にあることがわかります。 
+   上の応答を見ると、メイン ジオフェンスからの距離が負数になっていますが、これは機材がメイン ジオフェンス内にあることを意味します。サブサイトのジオフェンスからの距離は正数になっていることから、サブサイトのジオフェンスの外にあることがわかります。 
 
 2. 場所 2: 
    
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
     
-  ![ジオフェンス クエリ 2](./media/tutorial-geofence/geofence-query2.png)
+   ![ジオフェンス クエリ 2](./media/tutorial-geofence/geofence-query2.png)
 
-  前の JSON 応答をよく見ると、機材がサブサイトの外側、かつメイン フェンスの内側にあります。 この場合は、イベントがトリガーされず、メールは送信されません。
+   前の JSON 応答をよく見ると、機材がサブサイトの外側、かつメイン フェンスの内側にあります。 この場合は、イベントがトリガーされず、メールは送信されません。
 
 3. 場所 3: 
   
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![ジオフェンス クエリ 3](./media/tutorial-geofence/geofence-query3.png)
+   ![ジオフェンス クエリ 3](./media/tutorial-geofence/geofence-query3.png)
 
-  状態の変化が発生しました。機材はメイン ジオフェンスの内側、かつサブサイト ジオフェンスの内側にあります。 これによりイベントが発行され、Operations Manager には通知メールが送信されます。
+   状態の変化が発生しました。機材はメイン ジオフェンスの内側、かつサブサイト ジオフェンスの内側にあります。 これによりイベントが発行され、Operations Manager には通知メールが送信されます。
 
 4. 場所 4: 
 
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
   
-  ![ジオフェンス クエリ 4](./media/tutorial-geofence/geofence-query4.png)
+   ![ジオフェンス クエリ 4](./media/tutorial-geofence/geofence-query4.png)
 
    対応する応答をよく観察すると、機材がサブサイト ジオフェンスから出たにもかかわらず、イベントが発行されていません。 ユーザーが GET 要求で指定した時刻を見てみると、この時刻に対して、サブサイト ジオフェンスは有効期限が切れており、また、機材は依然としてメイン ジオフェンス内に存在することがわかります。 また、サブサイト ジオフェンスのジオメトリ ID は応答本文の `expiredGeofenceGeometryId` で確認できます。
 
 
 5. 場所 5:
       
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![ジオフェンス クエリ 5](./media/tutorial-geofence/geofence-query5.png)
+   ![ジオフェンス クエリ 5](./media/tutorial-geofence/geofence-query5.png)
 
-  建設現場のメイン ジオフェンスから機材が移動されたことが確認できます。 これによってイベントが発行されます。これは重大な違反であるため、Operations Manager には、重要なアラート メールが送信されます。
+   建設現場のメイン ジオフェンスから機材が移動されたことが確認できます。 これによってイベントが発行されます。これは重大な違反であるため、Operations Manager には、重要なアラート メールが送信されます。
 
 ## <a name="next-steps"></a>次の手順
 

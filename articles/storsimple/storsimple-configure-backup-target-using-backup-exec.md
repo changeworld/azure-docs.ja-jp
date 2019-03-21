@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.openlocfilehash: 8cde3402ef52747e61333c56903309259e07599a
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747596"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011132"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec を使用したバックアップ ターゲットとしての StorSimple
 
@@ -94,6 +94,7 @@ StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブ
 |------------------------|---------------|-----------------|
 | ローカル ストレージの容量 | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | クラウド ストレージの容量 | &gt; 200 TiB\* | &gt; 500 TiB\* |
+
 \*ストレージの容量は、重複除去または圧縮がないことを前提としています。
 
 **StorSimple のプライマリ バックアップとセカンダリ バックアップの容量**
@@ -206,16 +207,16 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 ### <a name="operating-system-best-practices"></a>オペレーティング システムのベスト プラクティス
 
--   Windows Server の暗号化と、NTFS ファイル システムの重複除去を無効にします。
--   StorSimple ボリュームでの Windows Server の最適化を無効にします。
--   StorSimple ボリュームでの Windows Server のインデックス作成を無効にします。
--   (StorSimple ボリュームに対してではなく) ソース ホストでウィルス対策スキャンを実行します。
--   タスク マネージャーで、既定の [ Windows Server のメンテナンス](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)を無効にします。 これは、次の方法のいずれかで実行します。
-   - Windows タスク スケジューラでメンテナンス コンフィギュレータを無効にする。
-   - Windows Sysinternals から [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) をダウンロードする。 PsExec のダウンロード後、Azure PowerShell を管理者として実行し、次のように入力します。
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Windows Server の暗号化と、NTFS ファイル システムの重複除去を無効にします。
+- StorSimple ボリュームでの Windows Server の最適化を無効にします。
+- StorSimple ボリュームでの Windows Server のインデックス作成を無効にします。
+- (StorSimple ボリュームに対してではなく) ソース ホストでウィルス対策スキャンを実行します。
+- タスク マネージャーで、既定の [ Windows Server のメンテナンス](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)を無効にします。 これは、次の方法のいずれかで実行します。
+  - Windows タスク スケジューラでメンテナンス コンフィギュレータを無効にする。
+  - Windows Sysinternals から [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) をダウンロードする。 PsExec のダウンロード後、Azure PowerShell を管理者として実行し、次のように入力します。
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>StorSimple のベスト プラクティス
 
@@ -259,6 +260,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 | 年単位 - 完全 | 1  | 10 | 10 |
 | GFS 要件 |   | 38 |   |
 | 追加のクォータ  | 4  |   | GFS 要件合計 42  |
+
 \* GFS 乗数は、バックアップ ポリシー要件を遵守するために保護および保持する必要があるコピー数を指します。
 
 ## <a name="set-up-backup-exec-storage"></a>Backup Exec ストレージのセットアップ
@@ -312,7 +314,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 |---|---|---|
 | 週単位 (第 1 - 4 週) | 土曜日 | 月曜日 - 金曜日 |
 | 月単位  | 土曜日  |   |
-| 年単位 | 土曜日  |   |   |
+| 年単位 | 土曜日  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>StorSimple ボリュームを Backup Exec バックアップ ジョブに割り当てる
@@ -373,6 +375,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 | 月単位 - 完全 |StorSimple ディスク (長期) | 1 | 12 | 12 |
 | 年単位 - 完全 |StorSimple ディスク (長期) | 1 | 1 | 1 |
 |GFS ボリュームのサイズ要件 |  |  |  | 18*|
+
 \* 合計容量は、StorSimple ディスクの 17 TiB とローカル RAID ボリュームの 1 TiB の合計です。
 
 
@@ -385,7 +388,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 | 第 3 週 | StorSimple 第 2 - 4 週 |   |   |   |   |   |
 | 第 4 週 | StorSimple 第 2 - 4 週 |   |   |   |   |   |
 | 月単位 | StorSimple 月単位 |   |   |   |   |   |
-| 年単位 | StorSimple 年単位  |   |   |   |   |   |   |
+| 年単位 | StorSimple 年単位  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>StorSimple ボリュームを Backup Exec のアーカイブおよび重複除去ジョブに割り当てる
@@ -445,15 +448,15 @@ StorSimple クラウド スナップショットは、StorSimple デバイスに
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>クラウド スナップショットを開始または削除する方法
 
-1.  [Azure PowerShell をインストールします](/powershell/azure/overview)。
+1. [Azure PowerShell をインストールします](/powershell/azure/overview)。
 2. [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell スクリプトをダウンロードして設定します。
 3. スクリプトを実行するサーバーで PowerShell を管理者として実行します。 スクリプトによって行われる変更を確認するには、`-WhatIf $true` を指定してスクリプトを実行してください。 検証が完了したら、`-WhatIf $false` を渡します。 次のコマンドを実行します。
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
-4.  Backup Exec ジョブ オプションの前処理コマンドと後処理コマンドを編集し、Backup Exec のバックアップ ジョブにスクリプトを追加します。
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
+4. Backup Exec ジョブ オプションの前処理コマンドと後処理コマンドを編集し、Backup Exec のバックアップ ジョブにスクリプトを追加します。
 
-    ![Backup Exec コンソール、バックアップ オプション、前処理および後処理コマンド タブ](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
+   ![Backup Exec コンソール、バックアップ オプション、前処理および後処理コマンド タブ](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
 
 > [!NOTE]
 > StorSimple クラウド スナップショット バックアップ ポリシーは、日単位のバックアップ ジョブの最後に後処理スクリプトとして実行することをお勧めします。 RPO および RTO に適合するようバックアップ アプリケーション環境をバックアップ、復元する方法の詳細については、担当バックアップ アーキテクトにご相談ください。

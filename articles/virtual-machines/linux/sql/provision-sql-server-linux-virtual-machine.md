@@ -5,20 +5,19 @@ services: virtual-machines-linux
 author: MashaMSFT
 manager: craigg
 ms.date: 12/5/2018
-ms.topic: hero-article
+ms.topic: conceptual
 tags: azure-service-management
 ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
-ms.technology: database-engine
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d6a82414974c00d5fa2a7cfe5c1dd00ceaeb3bfa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 468db9d62a98e079fbe6954843e23a518eaabd0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729474"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011722"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での Linux SQL Server 仮想マシンのプロビジョニング
 
@@ -77,23 +76,23 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[仮想マシン名]** に、新しい Linux VM の名前を入力します。
 1. 次に、以下の値を入力または選択します。
-    * **[リージョン]**:適切な Azure リージョンを選択します。
-    * **[可用性オプション]**:アプリとデータに最適な可用性と冗長性のオプションを選択します。
-    * **[サイズの変更]**:このオプションを選択してマシン サイズを選択し、完了したら **[選択]** を選択します。 VM マシン サイズの詳細については、[Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)に関するページを参照してください。
+   * **[リージョン]**:適切な Azure リージョンを選択します。
+   * **[可用性オプション]**:アプリとデータに最適な可用性と冗長性のオプションを選択します。
+   * **[サイズの変更]**:このオプションを選択してマシン サイズを選択し、完了したら **[選択]** を選択します。 VM マシン サイズの詳細については、[Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)に関するページを参照してください。
 
-    ![VM サイズを選択する](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
+     ![VM サイズを選択する](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
    > 開発と機能テストには、**DS2** 以上の VM サイズを使用してください。 パフォーマンス テストには、**DS13** 以上を使用してください。
 
-    * **[認証の種類]**: **[SSH 公開キー]** を選択します。
+   * **[認証の種類]**: **[SSH 公開キー]** を選択します。
 
-    > [!Note]
-    > 認証には、SSH 公開キーまたはパスワードを使用する選択肢があります。 安全性が高いのは SSH です。 SSH キーを生成する方法の手順については、[Azure の Linux VM と Mac for Linux VM に SSH キーを作成する方法](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)に関するページを参照してください。
+     > [!Note]
+     > 認証には、SSH 公開キーまたはパスワードを使用する選択肢があります。 安全性が高いのは SSH です。 SSH キーを生成する方法の手順については、[Azure の Linux VM と Mac for Linux VM に SSH キーを作成する方法](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)に関するページを参照してください。
 
-    * **[ユーザー名]**: VM の管理者名を入力します。
-    * **[SSH 公開キー]**: RSA 公開キーを入力します。
-    * **[パブリック受信ポート]**:**[選択したポートを許可する]** を選択し、**[パブリック受信ポートを選択]** ボックスの一覧で **[SSH (22)]** ポートを選択します。 このクイック スタートでは、SQL Server に接続し、構成を完了するために、この手順が必要です。 リモートで SQL Server に接続する場合は、**[MS SQL (1433)]** も選択して、インターネット経由での接続用にポート 1433 を開きます。
+   * **[ユーザー名]**: VM の管理者名を入力します。
+   * **[SSH 公開キー]**: RSA 公開キーを入力します。
+   * **[パブリック受信ポート]**:**[選択したポートを許可する]** を選択し、**[パブリック受信ポートを選択]** ボックスの一覧で **[SSH (22)]** ポートを選択します。 このクイック スタートでは、SQL Server に接続し、構成を完了するために、この手順が必要です。 リモートで SQL Server に接続する場合は、**[MS SQL (1433)]** も選択して、インターネット経由での接続用にポート 1433 を開きます。
 
    ![受信ポート](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
@@ -121,7 +120,7 @@ VM の IP アドレスは、Azure Portal で確認できます。
 
 Windows を使用していて BASH シェルがない場合は PuTTY などの SSH クライアントをインストールします。
 
-1. [PuTTY をダウンロードしてインストールします](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
+1. [PuTTY をダウンロードしてインストールします](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)。
 
 1. PuTTY を実行します。
 

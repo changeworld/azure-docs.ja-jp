@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: e407aee98bef9917a99e3305e2c99dbdd0c182e0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e5f428062155ea732dce785955ac76011f3e4678
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469823"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899351"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 ## <a name="overview"></a>概要
@@ -32,7 +32,7 @@ ms.locfileid: "55469823"
 
 異常検出に関して、すぐに使い始めることのできる便利なツールが付属しています。
 
-* たとえば目的のデータに関して異常検出 API から得られた結果は、 [Web アプリケーション](http://anomalydetection-aml.azurewebsites.net/) を使用して評価し、視覚化することができます。
+* たとえば目的のデータに関して異常検出 API から得られた結果は、 [Web アプリケーション](https://anomalydetection-aml.azurewebsites.net/) を使用して評価し、視覚化することができます。
 
 > [!NOTE]
 > [この API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) を利用した **IT Anomaly Insights ソリューション**をお試しください
@@ -110,9 +110,9 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 | 検出機能のカテゴリ | 検出機能 | 説明 | 入力パラメーター | 出力 |
 | --- | --- | --- | --- | --- |
 | スパイク検出機能 |T スパイク検出機能 |第 1 四分位数および第 3 四分位数から値までの距離に基づいて、スパイクとディップを検出します。 |*tspikedetector.sensitivity:* 1 から 10 の範囲の整数値を受け取ります。既定値は3 です。値が高いほど極端な値を取得するため、感度が低くなります。 |TSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ |
-| スパイク検出機能 | Z スパイク検出機能 |平均値からデータポイントまでの距離に基づいて、スパイクとディップを検出します。 |*zspikedetector.sensitivity:* 1 から 10 の範囲の整数値を受け取ります。既定値は3 です。値が高いほど極端な値を取得するため、感度が低くなります |ZSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ | |
+| スパイク検出機能 | Z スパイク検出機能 |平均値からデータポイントまでの距離に基づいて、スパイクとディップを検出します。 |*zspikedetector.sensitivity:* 1 から 10 の範囲の整数値を受け取ります。既定値は3 です。値が高いほど極端な値を取得するため、感度が低くなります |ZSpike: 2 進値 – スパイク/ディップが検出された場合は ‘1’、それ以外の場合は ‘0’ |
 | スロー傾向検出機能 |スロー傾向検出機能 |設定されている感度に従って、ゆっくりとした正方向の傾向を検出します。 |*trenddetector.sensitivity:* 検出機能スコアのしきい値 (既定値:3.25、妥当な範囲は 3.25 から 5、値が大きいほど感度が低下) |tscore: 傾向に関する異常スコアを表す浮動小数点数 |
-| レベル変化検出機能 | 双方向レベル変化検出機能 |設定されている感度に従って、上向きと下向きの両方のレベルの変化を検出します。 |*bileveldetector.sensitivity:* 検出機能スコアのしきい値 (既定値:3.25、妥当な範囲は 3.25 から 5、値が大きいほど感度が低下) |rpscore: 上向きと下向きのレベルの変化に関する異常スコアを表す浮動小数点数 | |
+| レベル変化検出機能 | 双方向レベル変化検出機能 |設定されている感度に従って、上向きと下向きの両方のレベルの変化を検出します。 |*bileveldetector.sensitivity:* 検出機能スコアのしきい値 (既定値:3.25、妥当な範囲は 3.25 から 5、値が大きいほど感度が低下) |rpscore: 上向きと下向きのレベルの変化に関する異常スコアを表す浮動小数点数 |
 
 ### <a name="parameters"></a>parameters
 以下の表は、前述の入力パラメーターに関する詳しい情報の一覧です。

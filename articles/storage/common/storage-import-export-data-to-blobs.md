@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: cdaa151f0603cddc9ca1bf17b0ff304f646cfdde
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e826c7a3fc12e819fd6f145d42b7381087d5970c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462836"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000248"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -29,7 +29,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     - ストレージ コンテナーについては、[ストレージ コンテナーの作成](../blobs/storage-quickstart-blobs-portal.md#create-a-container)に関するセクションを参照してください。
 - 十分な数の[サポートされている種類](storage-import-export-requirements.md#supported-disks)のディスクがある。 
 - [サポートされている OS バージョン](storage-import-export-requirements.md#supported-operating-systems)を実行している Windows システムがある。 
-- Windows システムで BitLocker を有効にする。 [BitLocker を有効にする方法](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)に関するページを参照してください。
+- Windows システムで BitLocker を有効にする。 [BitLocker を有効にする方法](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)に関するページを参照してください。
 - Windows システムに [WAImportExport バージョン 1 をダウンロード](https://aka.ms/waiev1)します。 既定のフォルダー `waimportexportv1` に解凍します。 たとえば、「 `C:\WaImportExportV1` 」のように入力します。
 - FedEx または DHL のアカウントを用意します。  
     - アカウントは、有効で、残高があり、差出人住所の機能を持っている必要があります。
@@ -47,7 +47,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
 1.  ディスク ドライブを SATA コネクタを介して Windows システムに接続します。
 1.  各ドライブに 1 つの NTFS ボリュームを作成します。 ボリュームにドライブ文字を割り当てます。 マウントポイントを使用しないでください。
-2.  NTFS ボリュームの BitLocker 暗号化を有効にします。 Windows Server システムを使用している場合は、[Windows Server 2012 R2 で BitLocker を有効にする方法](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)に関するページを参照してください。
+2.  NTFS ボリュームの BitLocker 暗号化を有効にします。 Windows Server システムを使用している場合は、[Windows Server 2012 R2 で BitLocker を有効にする方法](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)に関するページを参照してください。
 3.  暗号化されたボリュームにデータをコピーします。 ドラッグ アンド ドロップや、Robocopy などのコピーツールを使用します。
 4.  管理者特権を使用して PowerShell またはコマンド ライン ウィンドウを開きます。 解凍されたフォルダーにディレクトリを変更するには、次のコマンドを実行します。
     
@@ -94,14 +94,14 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
 4. **[基本]** で次のようにします。
 
-    - **[Azure へインポート]** を選択します。
-    - インポート ジョブのわかりやすい名前を入力します。 この名前は、ジョブの進行状況の追跡に使用します。
-        - 名前には小文字、数字、ハイフンのみを含めることができます。
-        - 名前はアルファベットから始める必要があります。スペースを含めることはできません。
-    - サブスクリプションを選択します。
-    - リソース グループを入力または選択します。  
+   - **[Azure へインポート]** を選択します。
+   - インポート ジョブのわかりやすい名前を入力します。 この名前は、ジョブの進行状況の追跡に使用します。
+       - 名前には小文字、数字、ハイフンのみを含めることができます。
+       - 名前はアルファベットから始める必要があります。スペースを含めることはできません。
+   - サブスクリプションを選択します。
+   - リソース グループを入力または選択します。  
 
-    ![インポート ジョブを作成する - 手順 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![インポート ジョブを作成する - 手順 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
 3. **[ジョブの詳細]** で次の操作を実行します。
 
@@ -113,21 +113,21 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
 4. **[差出人住所の詳細]** で次の操作を実行します。
 
-    - ドロップダウン リストから運送業者を選択します。
-    - その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。 アカウント番号をお持ちでない場合は、[FedEx](http://www.fedex.com/us/oadr/) または [DHL](http://www.dhl.com/) の運送業者アカウントを作成してください。
-    - 完全かつ有効な連絡先の名前、電話番号、電子メール、番地、市区町村、郵便番号、都道府県、国/地域を指定します。 
+   - ドロップダウン リストから運送業者を選択します。
+   - その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。 アカウント番号をお持ちでない場合は、[FedEx](https://www.fedex.com/us/oadr/) または [DHL](http://www.dhl.com/) の運送業者アカウントを作成してください。
+   - 完全かつ有効な連絡先の名前、電話番号、電子メール、番地、市区町村、郵便番号、都道府県、国/地域を指定します。 
         
-        > [!TIP] 
-        > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
+       > [!TIP] 
+       > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
 
-    ![インポート ジョブの作成 - ステップ 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![インポート ジョブの作成 - ステップ 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    
 5. **[概要]** で次の操作を実行します。
 
-    - 概要に表示されているジョブ情報を確認します。 ジョブ名と、Azure にディスクを送付するために使用する Azure データセンターの送付先住所をメモします。 この情報は、後で配送先住所ラベルに使用します。
-    - **[OK]** をクリックしてインポート ジョブを作成します。
+   - 概要に表示されているジョブ情報を確認します。 ジョブ名と、Azure にディスクを送付するために使用する Azure データセンターの送付先住所をメモします。 この情報は、後で配送先住所ラベルに使用します。
+   - **[OK]** をクリックしてインポート ジョブを作成します。
 
-    ![インポート ジョブを作成する - 手順 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![インポート ジョブを作成する - 手順 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
 ## <a name="step-3-ship-the-drives"></a>手順 3:ドライブを送付する 
 

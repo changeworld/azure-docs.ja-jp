@@ -1,8 +1,14 @@
---- 
+---
 layout: HubPage
 hide_bc: true
 title: Microsoft Azure のドキュメント
 description: Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。
+ms.openlocfilehash: 023dd29d536ba1d5d963ca1c6b833f016acb7250
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736453"
 ---
 <div id="main" class="v2">
     <div class="container">

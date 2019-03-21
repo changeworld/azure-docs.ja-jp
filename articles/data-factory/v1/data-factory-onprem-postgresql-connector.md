@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e86180a643b27056edc9901d590760cedcbf259
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331879"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081833"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,12 +50,12 @@ Data Management Gateway で PostgreSQL Databases に接続するには、Data Ma
 
 - パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 手順については、「[チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 - また、次のツールを使用してパイプラインを作成することもできます。
-    - Azure ポータル
-    - Visual Studio
-    - Azure PowerShell
-    - Azure Resource Manager テンプレート
-    - .NET API
-    - REST API
+  - Azure ポータル
+  - Visual Studio
+  - Azure PowerShell
+  - Azure Resource Manager テンプレート
+  - .NET API
+  - REST API
 
     コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
@@ -191,7 +191,7 @@ source の種類が **RelationalSource** (PostgreSQL を含む) である場合�
 
 **Azure BLOB の出力データセット:**
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```json
 {
@@ -306,46 +306,46 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 
 | PostgreSQL Databases 型 | PostgreSQL エイリアス | .NET Framework 型 |
 | --- | --- | --- |
-| abstime | |DateTime | &nbsp;
+| abstime | |DateTime |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
-| bit [(n)] | |Byte[]、String | &nbsp;
+| bit [(n)] | |Byte[]、String |
 | bit varying [ (n) ] |varbit |Byte[]、String |
 | boolean |bool |boolean |
-| box | |Byte[]、String |&nbsp;
-| bytea | |Byte[]、String |&nbsp;
+| box | |Byte[]、String |
+| bytea | |Byte[]、String |
 | character [(n)] |char [(n)] |String |
 | character varying [(n)] |varchar [(n)] |String |
-| cid | |String |&nbsp;
-| cidr | |String |&nbsp;
-| circle | |Byte[]、String |&nbsp;
-| date | |DateTime |&nbsp;
-| daterange | |String |&nbsp;
+| cid | |String |
+| cidr | |String |
+| circle | |Byte[]、String |
+| date | |DateTime |
+| daterange | |String |
 | double precision |float8 |Double |
-| inet | |Byte[]、String |&nbsp;
-| intarry | |String |&nbsp;
-| int4range | |String |&nbsp;
-| int8range | |String |&nbsp;
+| inet | |Byte[]、String |
+| intarry | |String |
+| int4range | |String |
+| int8range | |String |
 | integer |int, int4 |Int32 |
-| interval [fields] [(p)] | |Timespan |&nbsp;
-| json | |String |&nbsp;
-| jsonb | |Byte[] |&nbsp;
-| line | |Byte[]、String |&nbsp;
-| lseg | |Byte[]、String |&nbsp;
-| macaddr | |Byte[]、String |&nbsp;
-| money | |Decimal |&nbsp;
+| interval [fields] [(p)] | |Timespan |
+| json | |String |
+| jsonb | |Byte[] |
+| line | |Byte[]、String |
+| lseg | |Byte[]、String |
+| macaddr | |Byte[]、String |
+| money | |Decimal |
 | numeric [(p, s)] |decimal [(p, s)] |Decimal |
-| numrange | |String |&nbsp;
-| oid | |Int32 |&nbsp;
-| path | |Byte[]、String |&nbsp;
-| pg_lsn | |Int64 |&nbsp;
-| point | |Byte[]、String |&nbsp;
-| polygon | |Byte[]、String |&nbsp;
+| numrange | |String |
+| oid | |Int32 |
+| path | |Byte[]、String |
+| pg_lsn | |Int64 |
+| point | |Byte[]、String |
+| polygon | |Byte[]、String |
 | real |float4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |String |&nbsp;
+| text | |String |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
 ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。

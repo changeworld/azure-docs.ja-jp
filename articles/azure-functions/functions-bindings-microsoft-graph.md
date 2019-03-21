@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: eb05d1b28b80cb7bf48bc1160c251936423763e6
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f112bdf9eacf51852659ab49a5673b0c8bfb0e46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100787"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997553"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -360,6 +360,7 @@ module.exports = function (context, req) {
 ### <a name="excel-input---usage"></a>Excel の入力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
@@ -522,6 +523,7 @@ module.exports = function (context, req) {
 ### <a name="excel-output---usage"></a>Excel の出力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
@@ -664,6 +666,7 @@ module.exports = function (context, req) {
 ### <a name="file-input---usage"></a>ファイルの入力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
@@ -811,6 +814,7 @@ module.exports = function (context, req) {
 #### <a name="file-output---usage"></a>ファイルの出力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
@@ -960,6 +964,7 @@ module.exports = function (context, req) {
 ### <a name="outlook-output---usage"></a>Outlook の出力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザーとしてのメールの送信|

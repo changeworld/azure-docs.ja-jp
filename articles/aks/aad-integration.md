@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 0dced367f62ab97d62cd4b11758e13a05278442e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 0cf83180647c142c9db2a1229674de96fec6a6bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099260"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087535"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -40,47 +40,47 @@ Kubernetes クラスターの内部からは、webhook トークン認証を使�
 
 1. **[Azure Active Directory]** > **[アプリの登録]** > **[新しいアプリケーションの登録]** を選択します。
 
-  アプリケーションの名前を指定し、アプリケーションの種類として **[Web アプリ/API]** を選び、**[サインオン URL]** に URI 形式の値を入力します。 完了したら **[作成]** を選択します。
+   アプリケーションの名前を指定し、アプリケーションの種類として **[Web アプリ/API]** を選び、**[サインオン URL]** に URI 形式の値を入力します。 完了したら **[作成]** を選択します。
 
-  ![Azure AD の登録を作成する](media/aad-integration/app-registration.png)
+   ![Azure AD の登録を作成する](media/aad-integration/app-registration.png)
 
 2. **[マニフェスト]** を選び、`groupMembershipClaims` の値を `"All"` に編集します。
 
-  更新が終わったら保存します。
+   更新が終わったら保存します。
 
-  ![グループ メンバーシップを全部に更新する](media/aad-integration/edit-manifest.png)
+   ![グループ メンバーシップを全部に更新する](media/aad-integration/edit-manifest.png)
 
 3. Azure AD アプリケーションに戻り、**[設定]** > **[キー]** を選びます。
 
-  キーの説明を追加し、有効期限を選んで、**[保存]** を選びます。 キーの値を書き留めておきます。 Azure AD が有効な AKS クラスターを展開するときに、`Server application secret` としてこの値を参照します。
+   キーの説明を追加し、有効期限を選んで、**[保存]** を選びます。 キーの値を書き留めておきます。 Azure AD が有効な AKS クラスターを展開するときに、`Server application secret` としてこの値を参照します。
 
-  ![アプリケーションの秘密キーを取得する](media/aad-integration/application-key.png)
+   ![アプリケーションの秘密キーを取得する](media/aad-integration/application-key.png)
 
 4. Azure AD アプリケーションに戻り、**[設定]** > **[必要なアクセス許可]** > **[追加]** > **[API を選択します]** > **[Microsoft Graph]** > **[選択]** の順に選びます。
 
-  ![Graph API を選択する](media/aad-integration/graph-api.png)
+   ![Graph API を選択する](media/aad-integration/graph-api.png)
 
 5. **[アプリケーションのアクセス許可]** で、**[ディレクトリ データの読み取り]** をオンにします。
 
-  ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/read-directory.png)
+   ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/read-directory.png)
 
 6. **[委任されたアクセス許可]** で、**[サインインとユーザー プロファイルの読み取り]** と **[ディレクトリ データの読み取り]** をオンにします。 終わったら保存します。
 
-  ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/delegated-permissions.png)
+   ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/delegated-permissions.png)
 
-  **[完了]** を選択します。
+   **[完了]** を選択します。
 
 7. API のリストから *[Microsoft Graph]* を選択してから、**[アクセス許可の付与]** を選択します。 現在のアカウントがテナント管理者ではない場合、このステップは失敗します。
 
-  ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/grant-permissions.png)
+   ![アプリケーションの Graph のアクセス許可を設定する](media/aad-integration/grant-permissions.png)
 
-  アクセス許可が正常に付与されると、ポータルに次の通知が表示されます。
+   アクセス許可が正常に付与されると、ポータルに次の通知が表示されます。
 
-  ![アクセス許可が正常に付与されたことを示す通知](media/aad-integration/permissions-granted.png)
+   ![アクセス許可が正常に付与されたことを示す通知](media/aad-integration/permissions-granted.png)
 
 8. アプリケーションに戻り、**[アプリケーション ID]** を書き留めます。 Azure AD が有効な AKS クラスターを展開するときに、`Server application ID` としてこの値を参照します。
 
-  ![アプリケーション ID を取得する](media/aad-integration/application-id.png)
+   ![アプリケーション ID を取得する](media/aad-integration/application-id.png)
 
 ## <a name="create-client-application"></a>クライアント アプリケーションを作成する
 
@@ -88,27 +88,27 @@ Kubernetes クラスターの内部からは、webhook トークン認証を使�
 
 1. **[Azure Active Directory]** > **[アプリの登録]** > **[新しいアプリケーションの登録]** を選択します。
 
-  アプリケーションの名前を指定し、アプリケーションの種類として **[ネイティブ]** を選び、**[リダイレクト URI]** に URI 形式の値を入力します。 完了したら **[作成]** を選択します。
+   アプリケーションの名前を指定し、アプリケーションの種類として **[ネイティブ]** を選び、**[リダイレクト URI]** に URI 形式の値を入力します。 完了したら **[作成]** を選択します。
 
-  ![AAD の登録を作成する](media/aad-integration/app-registration-client.png)
+   ![AAD の登録を作成する](media/aad-integration/app-registration-client.png)
 
 2. Azure AD アプリケーションから **[設定]** > **[必要なアクセス許可]** > **[追加]** > **[API を選択します]** の順に選び、このドキュメントの前のステップで作成したサーバー アプリケーションの名前を検索します。
 
-  ![アプリケーションのアクセス許可を構成する](media/aad-integration/select-api.png)
+   ![アプリケーションのアクセス許可を構成する](media/aad-integration/select-api.png)
 
 3. アプリケーションの横にチェック マークを付けて、**[選択]** をクリックします。
 
-  ![AKS AAD サーバー アプリケーション エンドポイントを選択する](media/aad-integration/select-server-app.png)
+   ![AKS AAD サーバー アプリケーション エンドポイントを選択する](media/aad-integration/select-server-app.png)
 
-  **[完了]** を選択します
+   **[完了]** を選択します
 
 4. 一覧からサーバー API を選択し、**[アクセス許可の付与]** を選択します。
 
-  ![アクセス許可を付与する](media/aad-integration/grant-permissions-client.png)
+   ![アクセス許可を付与する](media/aad-integration/grant-permissions-client.png)
 
 5. AD アプリケーションに戻り、**[アプリケーション ID]** を書き留めます。 Azure AD が有効な AKS クラスターを展開するときに、`Client application ID` としてこの値を参照します。
 
-  ![アプリケーション ID を取得する](media/aad-integration/application-id-client.png)
+   ![アプリケーション ID を取得する](media/aad-integration/application-id-client.png)
 
 ## <a name="get-tenant-id"></a>テナント ID を取得する
 

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: 88bb87dea4508ba41ee97a127fc60c531f2bfcab
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5b76d7393e78b464227e93a4c7c8a3f22ccc169e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958349"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092533"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>クイック スタート:Python と Azure portal を使用して Azure Cosmos DB にグラフ データベースを作成する
 
@@ -222,17 +222,17 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある編集ボタンをクリックします。 ウィンドウの幅を広げないと **[プロパティ]** 領域が見えない場合があります。
 
-   ![グラフ内の頂点のターゲットを変更します。](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
+    ![グラフ内の頂点のターゲットを変更します。](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
 
 13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、**[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力して、チェック ボックスをオンにします。
 
-   ![データ エクスプローラーで ashley と rakesh との間の接続を追加します。](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
+    ![データ エクスプローラーで ashley と rakesh との間の接続を追加します。](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
 
 14. 結果リストから **[rakesh]** を選択すると、ashley と rakesh が接続されていることがわかります。 
 
-   ![データ エクスプローラーで接続されている 2 つの頂点](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
+    ![データ エクスプローラーで接続されている 2 つの頂点](./media/create-graph-python/azure-cosmosdb-graph-explorer.png)
 
-   以上で、このチュートリアルのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
+    以上で、このチュートリアルのリソース作成部分は完了です。 引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

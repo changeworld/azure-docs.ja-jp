@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0f70bb91ccb0cb403d9292c2e3f069a8a9d2da41
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2639d47a6c9d8da53c9d6bccde0d317698d5d9fd
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993862"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257971"
 ---
-# <a name="publish-content-in-the-azure-portal-legacy"></a>Azure Portal でコンテンツを発行する (レガシ)
+# <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する  
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -89,7 +89,7 @@ Azure Portal のコンテンツ プレーヤーでビデオをテストできま
 いくつかの考慮事項が適用されます。
 
 * ビデオが発行されたことを確認します。
-* Azure Portal のメディア プレーヤーは、既定のストリーミング エンドポイントから再生を行います。 既定以外のストリーミング エンドポイントから再生する場合は、URL を選択してコピーし、別のプレーヤーに貼り付けます。 たとえば、[Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) でビデオをテストすることができます。
+* Azure Portal のメディア プレーヤーは、既定のストリーミング エンドポイントから再生を行います。 既定以外のストリーミング エンドポイントから再生する場合は、URL を選択してコピーし、別のプレーヤーに貼り付けます。 たとえば、[Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) でビデオをテストすることができます。
 * ストリーミング元となるストリーミング エンドポイントが実行されている必要があります。  
 
 ## <a name="provide-feedback"></a>フィードバックの提供

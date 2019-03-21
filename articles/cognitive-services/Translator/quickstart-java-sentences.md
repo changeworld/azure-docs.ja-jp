@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: d7679f41b5e1c1fe6705ef3ed4be28a521f0d0d2
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 46507562ab5a31f377b8c3a11902abf9aeccd846
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728490"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176448"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-java"></a>クイック スタート:Translator Text API と Java を使用して文の長さを調べる
 
@@ -34,8 +34,8 @@ ms.locfileid: "56728490"
 まずは、このプロジェクトの作業ディレクトリを作成しましょう。 コマンド ライン (またはターミナル) から、次のコマンドを実行します。
 
 ```console
-mkdir break-sentence-sample
-cd break-sentence-sample
+mkdir length-sentence-sample
+cd length-sentence-sample
 ```
 
 次に、Gradle プロジェクトを初期化します。 次のコマンドを実行すると、Gradle の重要なビルド ファイルが作成されます。特に重要なのは `build.gradle.kts` です。これは、アプリケーションを作成して構成するために、実行時に使用されます。 作業ディレクトリから次のコマンドを実行します。
@@ -56,7 +56,7 @@ plugins {
     application
 }
 application {
-    mainClassName = "BreakSentence"
+    mainClassName = "LengthSentence"
 }
 repositories {
     mavenCentral()
@@ -77,11 +77,11 @@ dependencies {
 mkdir -p src/main/java
 ```
 
-次に、このフォルダー内に `BreakSentence.java` というファイルを作成します。
+次に、このフォルダー内に `LengthSentence.java` というファイルを作成します。
 
 ## <a name="import-required-libraries"></a>必要なライブラリをインポートする
 
-`BreakSentence.java` を開き、次のインポート ステートメントを追加します。
+`LengthSentence.java` を開き、次のインポート ステートメントを追加します。
 
 ```java
 import java.io.*;
@@ -97,12 +97,12 @@ import com.squareup.okhttp.*;
 まず、プロジェクトのパブリック クラスを作成する必要があります。
 
 ```java
-public class BreakSentence {
+public class LengthSentence {
   // All project code goes here...
 }
 ```
 
-次の行を `BreakSentence` クラスに追加します。 `api-version` と共に、入力言語を定義できることがわかります。 このサンプルでは英語です。
+次の行を `LengthSentence` クラスに追加します。 `api-version` と共に、入力言語を定義できることがわかります。 このサンプルでは英語です。
 
 ```java
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
@@ -111,7 +111,7 @@ String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-ve
 
 ## <a name="create-a-client-and-build-a-request"></a>クライアントを作成して要求をビルドする
 
-次の行を `BreakSentence` クラスに追加して、`OkHttpClient` をインスタンス化します。
+次の行を `LengthSentence` クラスに追加して、`OkHttpClient` をインスタンス化します。
 
 ```java
 // Instantiates the OkHttpClient.
@@ -156,8 +156,8 @@ public static String prettify(String json_text) {
 ```java
 public static void main(String[] args) {
     try {
-        BreakSentence breakSentenceRequest = new BreakSentence();
-        String response = breakSentenceRequest.Post();
+        LengthSentence lengthSentenceRequest = new LengthSentence();
+        String response = lengthSentenceRequest.Post();
         System.out.println(prettify(response));
     } catch (Exception e) {
         System.out.println(e);

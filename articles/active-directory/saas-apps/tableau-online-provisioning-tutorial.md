@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a81754b9b95c7cc6e257707aec188abf1dab58c3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ed8bae32cb8d0680b1f9aa66f26407c3313ea06
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194871"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077821"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>チュートリアル:Tableau Online を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -106,13 +106,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションの **[ドメイン]**、**[管理ユーザー名]**、**[管理パスワード]**、**[コンテンツ URL]** に、Tableau Online アカウントの情報を入力します。
 
-    *   **[ドメイン]** フィールドに、手順 6. に基づくサブドメインを設定します。
+   * **[ドメイン]** フィールドに、手順 6. に基づくサブドメインを設定します。
 
-    *   **[管理ユーザー名]** フィールドに、Clarizen テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
+   * **[管理ユーザー名]** フィールドに、Clarizen テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
 
-    *   **[管理パスワード]** フィールドに、管理者ユーザー名に対応する管理者アカウントのパスワードを入力します。
+   * **[管理パスワード]** フィールドに、管理者ユーザー名に対応する管理者アカウントのパスワードを入力します。
 
-    *   **[コンテンツ URL]** フィールドに、手順 6. に基づくサブドメインを設定します。
+   * **[コンテンツ URL]** フィールドに、手順 6. に基づくサブドメインを設定します。
 
 6. **[ドメイン]** および **[コンテンツ URL]** の値は、Tableau Online の管理者アカウントにログインした後、管理者ページの URL から抽出できます。
 

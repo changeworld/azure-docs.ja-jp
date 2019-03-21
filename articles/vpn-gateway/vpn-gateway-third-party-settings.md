@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 389578cb45977890645020fe7fcd6c69c08c41f5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fae790f9b2d5ecc492f7ece5d259809e8664898d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694253"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991873"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Azure VPN Gateway 向けにコミュニティで推奨されるサード パーティの VPN デバイスまたはファイアウォール デバイスの設定
 
@@ -40,7 +40,7 @@ ms.locfileid: "55694253"
 |Cisco ASR  |[Azure VPN で使う Cisco ASR に関してコミュニティで推奨されるソリューション](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
 |Sonicwall |[Sonicwall のサイト](https://www.sonicwall.com/en-us/support)で「**Azure VPN**」を検索してください。 |
 | チェックポイント    |[Checkpoint のサイト](https://supportcenter.checkpoint.com/supportcenter/portal)で「**Azure VPN**」を検索してください。 |
-|Juniper |[Juniper のサイト]( http://www.juniper.net/search/public/)で「**Azure VPN**」を検索してください。|
+|Juniper |[Juniper のサイト]( https://www.juniper.net/search/public/)で「**Azure VPN**」を検索してください。|
 |Barracuda  |[Azure VPN で使う Barracuda に関してコミュニティで推奨されるソリューション](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
 |F5         |[Azure VPN で使う F5 に関してコミュニティで推奨されるソリューション](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
 |Palo       |[Azure VPN で使う Palo に関してコミュニティで推奨されるソリューション](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |

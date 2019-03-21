@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: d91d62c387fc7bcaef8b7f2cb7e8d865c882aeed
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f2cd8f5074f815e84caaedb01335406657f29088
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445459"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088011"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Custom Vision で分類子を構築する方法
 
@@ -100,7 +100,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 > [!NOTE]
 > Custom Vision Service サービスは、イメージの自動否定処理をいくつかサポートしています。 たとえば、ブドウとバナナを区別する分類子を構築しており、予測のために片方の靴の画像を送信した場合、その分類子はブドウとバナナの両方について、その画像に 0% に近いスコアを付けるはずです。
-
+> 
 > これに対して、否定画像がトレーニングで使用された画像の変動にすぎない場合は、その大きな類似点のために、モデルがその否定画像をラベル付きのクラスとして分類する可能性があります。 たとえば、オレンジとグレープフルーツを区別する分類子があり、クレメンタインの画像を取り込んだ場合、クレメンタインの多くの特徴がオレンジの特徴と似ているため、その分類子はクレメンタインにオレンジとしてスコアを付ける可能性があります。 否定画像がこれと同じ性質である場合は、1 つ以上の追加のタグ (**その他**など) を作成し、トレーニング中に否定画像にこのタグのラベルを付けて、モデルがこれらのクラスをより適切に区別できるようにすることをお勧めします。
 
 ## <a name="train-the-classifier"></a>分類子をトレーニングする

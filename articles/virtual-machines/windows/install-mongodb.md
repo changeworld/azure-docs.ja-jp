@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: a45d6a6064173cea7ed15065ab3464718cc8578e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: afd8e6b47fb86985acde062af1fb38ec3af4e902
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888823"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998486"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Azure の Windows VM に MongoDB をインストールして構成する
-[MongoDB](http://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Azure の Windows Server 2016 仮想マシン (VM) での MongoDB のインストールと構成について説明します。 [Azure の Linux VM に MongoDB をインストールする](../linux/install-mongodb.md)こともできます。
+[MongoDB](https://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Azure の Windows Server 2016 仮想マシン (VM) での MongoDB のインストールと構成について説明します。 [Azure の Linux VM に MongoDB をインストールする](../linux/install-mongodb.md)こともできます。
 
 ## <a name="prerequisites"></a>前提条件
 MongoDB をインストールして構成する前に、VM を作成し、できればそれにデータ ディスクを追加する必要があります。 VM を作成し、データ ディスクを追加するには、以下の記事を参照してください。
@@ -34,7 +34,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
 
 ## <a name="install-mongodb"></a>MongoDB のインストール
 > [!IMPORTANT]
-> 認証、IP アドレス バインドなどの MongoDB セキュリティ機能は既定では有効になっていません。 MongoDB を運用環境に展開する前に、セキュリティ機能を有効にすることをお勧めします。 詳細については、[MongoDB のセキュリティと認証](http://www.mongodb.org/display/DOCS/Security+and+Authentication)に関するページを参照してください。
+> 認証、IP アドレス バインドなどの MongoDB セキュリティ機能は既定では有効になっていません。 MongoDB を運用環境に展開する前に、セキュリティ機能を有効にすることをお勧めします。 詳細については、[MongoDB のセキュリティと認証](https://www.mongodb.org/display/DOCS/Security+and+Authentication)に関するページを参照してください。
 
 
 1. リモート デスクトップを使用して VM に接続したら、タスク バーから Internet Explorer を開きます。
@@ -46,7 +46,7 @@ MongoDB のインストールと構成を開始するには、リモート デ�
    * **[サイト]** ボタンをクリックします。 信頼済みサイトの一覧に *https://\*.mongodb.com* を追加し、ダイアログ ボックスを閉じます。
      
      ![Internet Explorer のセキュリティ設定の構成](./media/install-mongodb/configure-internet-explorer-security.png)
-4. [MongoDB のダウンロード](http://www.mongodb.com/downloads) ページ (http://www.mongodb.com/downloads)) を参照します。
+4. [MongoDB のダウンロード](https://www.mongodb.com/downloads) ページ (https://www.mongodb.com/downloads)) を参照します。
 5. 必要に応じて、**Community Server** エディションを選んでから、"*Windows Server 2008 R2 64 ビット以降*" 用の最新の安定版リリースを選びます。 インストーラーをダウンロードするには、**[DOWNLOAD (msi) (ダウンロード (msi))]** をクリックします。
    
     ![MongoDB インストーラーのダウンロード](./media/install-mongodb/download-mongodb.png)

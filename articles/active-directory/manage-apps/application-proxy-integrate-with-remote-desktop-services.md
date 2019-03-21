@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e433eded9ffccde0eccb3b807c8eb8e3219771f5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 295422e0f456c4dfd4166911ef8150e8a896ba1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162104"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111108"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -86,7 +86,7 @@ RDS デプロイに管理者として接続し、デプロイの RD ゲートウ
 6. [RD ゲートウェイ] タブで、**[サーバー名]** フィールドを、アプリケーション プロキシで RD ホスト エンドポイントに対して設定した外部 URL に変更します。
 7. **[ログオン方法]** フィールドを **[パスワード認証]** に変更します。
 
-  ![RDS の [展開プロパティ] 画面](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
+   ![RDS の [展開プロパティ] 画面](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
 8. 各コレクションに対してこのコマンドを実行します。 *\<yourcollectionname\>* と *\<proxyfrontendurl\>* は、実際の情報に置き換えてください。 このコマンドは、RD Web と RD ゲートウェイの間のシングル サインオンを有効にし、パフォーマンスを最適化します。
 
@@ -98,8 +98,8 @@ RDS デプロイに管理者として接続し、デプロイの RD ゲートウ
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
->[!NOTE]
->上記のコマンドでは、"`nrequire" でバッククォートを使用しています。
+   >[!NOTE]
+   >上記のコマンドでは、"`nrequire" でバッククォートを使用しています。
 
 9. カスタム RDP プロパティの変更を検証するには、またはこのコレクションの RDWeb からダウンロードされる RDP ファイルの内容を表示するには、次のコマンドを実行します。
     ```

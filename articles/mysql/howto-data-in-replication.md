@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/31/2018
-ms.openlocfilehash: 18ef70d64523bc4001fa7d9a35a7f803b8050613
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53539621"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102943"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
@@ -184,7 +184,7 @@ ms.locfileid: "53539621"
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
    ```
 
-2. レプリケーションを開始する
+1. レプリケーションを開始する
 
    `mysql.az_replication_start` ストアド プロシージャを呼び出してレプリケーションを開始します。
 
@@ -192,7 +192,7 @@ ms.locfileid: "53539621"
    CALL mysql.az_replication_start;
    ```
 
-3. レプリケーションの状態をチェックする
+1. レプリケーションの状態をチェックする
 
    レプリカ サーバーで [`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html) コマンドを呼び出して、レプリケーションの状態を確認します。
     

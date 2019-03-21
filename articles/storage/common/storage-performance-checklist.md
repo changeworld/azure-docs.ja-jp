@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 010a9f4e5be34986c1098f403e4df0ccf569838c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1b6c8b1af00c2819632c60a27d61d7cf8db44885
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821670"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012321"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
 ## <a name="overview"></a>概要
@@ -122,7 +122,7 @@ Azure Storage では、範囲を基にしたパーティション構成を使用
 
 * アカウント、コンテナー、BLOB、テーブルおよびキューに対して使用する命名規則を精査します。 お客様のニーズに最も適したハッシュ関数を使用して、アカウント名に 3 桁のハッシュでプレフィックスを付けることを検討します。  
 * タイムスタンプまたは数値識別子を使用してデータを整理する場合は、末尾にのみ (または先頭にのみ) 追加されるトラフィック パターンを使用していないことを確認する必要があります。 これらのパターンは、範囲ベースのパーティション分割システムには適していません。すべてのトラフィックを 1 つのパーティションに向けたり、システムを効果的な負荷分散から制限したりする場合があります。 たとえば、yyyymmdd などのタイムスタンプを持つ BLOB オブジェクトを使用する毎日の操作がある場合、毎日の操作に対するすべてのトラフィックが、1 台のパーティション サーバーで提供される 1 つのオブジェクトに直接送信されます。 BLOB の制限およびパーティションの制限ごとにお客様のニーズを満たすかどうかを確認して、必要に応じて、この操作を複数の BLOB に分割することを検討します。 同様に、時系列データをテーブルに保存する場合、すべてのトラフィックをキーの名前空間の最後の部分に直接送信することができます。 タイムスタンプまたは数値 ID を使用する必要がある場合は、3 桁のハッシュを使用して ID にプレフィックスを付けます。また、タイムスタンプの場合は、ssyyyymmdd のように時刻の秒の部分を使用したプレフィックスを付けます。 操作の一覧およびクエリを繰り返し実行する場合は、クエリの数を制限するハッシュ関数を選択します。 その他の場合は、ランダムなプレフィックスが望ましい場合があります。  
-* Azure Storage で使用されるパーティション構成の詳細については、 [こちら](http://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)の SOSP ペーパーを参照してください。
+* Azure Storage で使用されるパーティション構成の詳細については、 [こちら](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)の SOSP ペーパーを参照してください。
 
 ### <a name="networking"></a>ネットワーク
 API 呼び出しは重要ですが、一方で、アプリケーションの物理的ネットワークに存在する制約がパフォーマンスに大きな影響を及ぼすことも少なくありません。 以下では、ユーザーが遭遇するいくつかの制限について説明します。  

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 03/14/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9d2ddcb879e9f152fd7f3ab7867d263b88cbbef
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: da3f03cfcf821fa093e9f21cf9a11a2d99d67683
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193279"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999047"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>方法:サインイン リスク ポリシーを構成する
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2364715bfeaea473db292baff2eb1e1cce3203b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 63fd8f75cb22a4dec888b7765c7515bfb68a4a6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233016"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999027"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 - 同時要求数が上限を超えると調整が発生し、ランダムにエラーが表示されます。
 - 要求数の合計が上限を超えると、Salesforce アカウントが 24 時間ブロックされます。
 
-また、どちらの場合も、"REQUEST_LIMIT_EXCEEDED" エラーが表示されることがあります。 詳細については、[Salesforce Developer の制限](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「API Request Limits (API 要求の制限)」をご覧ください。
+また、どちらの場合も、"REQUEST_LIMIT_EXCEEDED" エラーが表示されることがあります。 詳細については、[Salesforce Developer の制限](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「API Request Limits (API 要求の制限)」をご覧ください。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、Salesforce からデータを移動するコピー アクティビティを含むパイプラインを作成できます。
@@ -283,6 +283,7 @@ RelationalSource でサポートされるプロパティの一覧については
 
 
 ### <a name="type-mapping-for-salesforce"></a>Salesforce の型マッピング
+
 | Salesforce の型 | .NET ベースの型 |
 | --- | --- |
 | オート ナンバー |String |

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: fc594a660efe1bf90daeffa79826057a8e66c60c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 512417a228ed99a2f5b516f14084a5785bc0c1dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245169"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096743"
 ---
 # <a name="how-to-find-endpoints-and-access-keys-for-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service のエンドポイントとアクセス キーを見つける方法
 
@@ -33,7 +33,7 @@ Text Analytics にサインアップするとき、ご自身のサブスクリ�
 
 4. リンクをクリックすると、サービス ブレードが開きます。 **[リソース] > [キー]** から、または [要点] ウィンドウの **[Show access keys]\(アクセス キーを表示\)** をクリックすることで、キーを取得できます。 [要点] ウィンドウには、エンドポイントも表示されます。
 
- ![エンドポイントとキーを含むポータル ページ](../media/portal-keys-endpoint.png)
+   ![エンドポイントとキーを含むポータル ページ](../media/portal-keys-endpoint.png)
 
 ## <a name="see-also"></a>関連項目 
 

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b50b8f6c54cbefde2120dd61643c23f5175927c9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8706e839005d43ab9fa2662d13d7d3c3994c136
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211752"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077753"
 ---
 # <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account-preview"></a>チュートリアル:Azure AD のログを Azure ストレージ アカウントにアーカイブする (プレビュー)
 
@@ -45,11 +45,11 @@ ms.locfileid: "56211752"
 3. **[エクスポート設定]** を選択します。 
 
 4. **[診断設定]** ウィンドウで、次のいずれかの操作を実行します。
-    * 既存の設定を変更するには、**[設定の編集]** を選択します。
-    * 新しい設定を追加するには、**[診断の設定の追加]** を選択します。  
-      最大で 3 つの設定を作成できます。 
+   * 既存の設定を変更するには、**[設定の編集]** を選択します。
+   * 新しい設定を追加するには、**[診断の設定の追加]** を選択します。  
+     最大で 3 つの設定を作成できます。 
 
-    ![設定のエクスポート](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
+     ![設定のエクスポート](./media/quickstart-azure-monitor-route-logs-to-storage-account/ExportSettings.png)
 
 5. 設定にその目的を連想しやすいよう、わかりやすい名前を付けます ("*Azure ストレージ アカウントに送信*" など)。 
 

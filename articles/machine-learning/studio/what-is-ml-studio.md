@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
-ms.openlocfilehash: 44f2c24f1fe53b6fadabf23f03a6feda75c87883
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 570f0a825f679ec5f0cc4c62b0608ec517148161
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738285"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894004"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning Studio とは
 Microsoft Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 Machine Learning Studio でモデルを Web サービスとして公開すれば、カスタム アプリや BI ツール (Excel など) からそのモデルを簡単に利用することができます。
@@ -40,7 +40,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 ## <a name="download-the-machine-learning-studio-overview-diagram"></a>Machine Learning Studio 概要図のダウンロード
 **Microsoft Azure Machine Learning Studio 機能の概要** 図をダウンロードして、Machine Learning Studio の機能の概要を確認します。 図をタブロイド サイズ (11 x 17 インチ) で印刷し、手元に置いておくことができます。
 
-**ここから図をダウンロード:[Microsoft Azure Machine Learning Studio の機能の概要](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
+**ここから図をダウンロード:[Microsoft Azure Machine Learning Studio の機能の概要](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
 ![Microsoft Azure Machine Learning Studio の機能の概要](./media/what-is-ml-studio/ml_studio_overview_v1.1.png)
 
 ## <a name="get-started-with-machine-learning-studio"></a>Machine Learning Studio の概要
@@ -61,7 +61,7 @@ Machine Learning Studio があれば、最新のデータ サイエンスとク�
 * **設定** - アカウントとリソースを構成するための各種設定がまとめられています。
 
 ### <a name="gallery"></a>[ギャラリー]
-**[ギャラリー]** をクリックすると、**[Azure AI ギャラリー](http://gallery.azure.ai/)** に移動します。 ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Intelligence Suite のコンポーネントを使用して作成したソリューションを共有する場です。
+**[ギャラリー]** をクリックすると、**[Azure AI ギャラリー](https://gallery.azure.ai/)** に移動します。 ギャラリーは、データ サイエンティストや開発者のコミュニティが、Cortana Intelligence Suite のコンポーネントを使用して作成したソリューションを共有する場です。
 
 ギャラリーの詳細については、[Azure AI ギャラリーでのソリューションの共有と発見](gallery-how-to-use-contribute-publish.md)に関するページを参照してください。
 
@@ -103,7 +103,7 @@ Machine Learning Studio に含まれている一連のサンプル データセ�
 
 モジュールに一連のパラメーターが含まれている場合、これらを使用してモジュールの内部アルゴリズムを構成することができます。 モジュールのパラメーターは、キャンバスでモジュールを選択するとキャンバス右側の **[プロパティ]** ウィンドウに表示されます。 このウィンドウでパラメーターを変更することにより、モデルを微調整できます。
 
-大規模な機械学習アルゴリズムのライブラリを利用する際のヒントについては、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](algorithm-choice.md)」を参照してください。
+大規模な機械学習アルゴリズムのライブラリを利用する際のヒントについては、[Microsoft Azure Machine Learning Studio のアルゴリズムの選択方法](algorithm-choice.md)に関する記事を参照してください。
 
 ## <a name="deploying-a-predictive-analytics-web-service"></a>予測分析 Web サービスのデプロイ
 予測分析モデルの準備が整ったら、それを Machine Learning Studio から Web サービスとしてデプロイすることができます。 このプロセスの詳細については、「 [Azure Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)」を参照してください。

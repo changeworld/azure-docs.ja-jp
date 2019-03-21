@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/19/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 08838ce0af16cc4ae768bd5d2ecf72c57f8fae97
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 03e519520d4a956a5c9690dc1327089505aafced
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858078"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120858"
 ---
 # <a name="how-to-obtain-subscription-keys"></a>サブスクリプション キーを取得する方法
 
@@ -24,8 +24,8 @@ Computer Vision サービスには特別なサブスクリプション キーが
 
 サブスクリプション キーにサインアップする場合は、[サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページを参照してください。 サインアップは無料です。 これらのサービスの料金は変更されることがあります。
 
->[!NOTE]
-サブスクリプション キーが有効になるのは、次の [Microsoft Azure リージョン](https://azure.microsoft.com/regions/)のいずれか 1 つでのみとなります。 
+> [!NOTE]
+> サブスクリプション キーが有効になるのは、次の [Microsoft Azure リージョン](https://azure.microsoft.com/regions/)のいずれか 1 つでのみとなります。 
 
 | リージョン | Address |
 |---|---|

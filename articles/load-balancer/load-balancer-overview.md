@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 9ca8e6876b67167429dbc0b5e6c3f5b454878c2a
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: c2f6a614524f0dfb242db11618fda94ce57e6e6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382681"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111533"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -94,8 +94,8 @@ Load Balancer リソースはオブジェクトであり、その中では、ユ
 
     仮想ネットワーク内のプライベート IP アドレスから、インターネット上のパブリック IP アドレスへのすべての送信フローは、Load Balancer のフロントエンド IP アドレスに変換できます。 パブリック フロントエンドが負荷分散規則によってバックエンドの VM に関連付けられていると、Azure は送信接続がパブリック フロントエンドの IP アドレスに自動的に変換されるようにプログラムします。
 
-    * フロントエンドを別のサービス インスタンスに動的にマップできるため、サービスのアップグレードやディザスター リカバリーが簡単にできます。
-    * 容易なアクセス制御リスト (ACL) の管理。 フロントエンド IP で表わされる ACL は、サービスをスケールアップ、スケールダウン、または再デプロイしても変更されません。  送信接続をマシンより少ない数の IP アドレスに変換すると、ホワイトリストの作業負荷を軽減できます。
+  * フロントエンドを別のサービス インスタンスに動的にマップできるため、サービスのアップグレードやディザスター リカバリーが簡単にできます。
+  * 容易なアクセス制御リスト (ACL) の管理。 フロントエンド IP で表わされる ACL は、サービスをスケールアップ、スケールダウン、または再デプロイしても変更されません。  送信接続をマシンより少ない数の IP アドレスに変換すると、ホワイトリストの作業負荷を軽減できます。
 
     詳しくは、[送信接続](load-balancer-outbound-connections.md)に関するページをご覧ください。
 

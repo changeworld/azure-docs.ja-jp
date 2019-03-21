@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: magattus
-ms.openlocfilehash: 526f3522bff05618189ad4f8205fbb61afc47fdc
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 5be1835de2aa1631c4ec2115dd34ea85f0267403
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320312"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870892"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>コンテンツ配信の種類に応じて Azure CDN を最適化する
 
@@ -66,7 +66,7 @@ CDN エンドポイントを作成するときに、エンドポイントが配�
 
 1. **Azure CDN Standard from Akamai** プロファイルで、エンドポイントを選択します。
 
-    ![エンドポイントの選択 ](./media/cdn-optimization-overview/01_Akamai.png)
+    ![エンドポイントの選択](./media/cdn-optimization-overview/01_Akamai.png)
 
 2. [設定] で、**[最適化]** を選択します。 **[最適化の種類]** ドロップダウン リストで種類を選択します。
 

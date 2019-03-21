@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: 7abc15264a44c969f57071e84ffcedca30d326fb
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 3b1e6f769d5c65065d95ac96c4ab4ed10702e5cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766318"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089898"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Jenkins を使用した Linux アプリケーションのビルドと配置
 Jenkins は、アプリの継続的な統合とデプロイを行うための一般的なツールです。 この記事では、Jenkins を使用して Azure Service Fabric アプリケーションをビルドし、デプロイする方法について説明します。
@@ -224,7 +224,7 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
 
    c. Jenkins webhook の URL を入力します (既定では、`http://<PublicIPorFQDN>:8081/github-webhook/` です)。 **[Add service (サービスの追加)] または [Update service (サービスの更新)]** をクリックします。
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 テスト イベントが Jenkins インスタンスに送信されます。 GitHub で webhook の側に緑色のチェック マークが表示され、プロジェクトがビルドされます。
+   d. テスト イベントが Jenkins インスタンスに送信されます。 GitHub で webhook の側に緑色のチェック マークが表示され、プロジェクトがビルドされます。
 
 1. Jenkins の **[Build Triggers (ビルド トリガー)]** タブで、目的のビルド オプションを選択します。 この例では、リポジトリへのプッシュが行われるたびにビルドがトリガーされるようにします。そのため、**[GitHub hook trigger for GITScm polling (GITScm ポーリングの GitHub フック トリガー)]** を選択します。 (以前、このオプションの名前は **[Build when a change is pushed to GitHub (変更が GitHub にプッシュされたときにビルド)]** でした)。
 1. **[ビルド]** タブで、Java アプリケーションまたは .NET Core アプリケーションのどちらをビルドするかに応じて、次のいずれかを実行します。
@@ -253,24 +253,24 @@ Jenkins をセットアップした後は、次のセクション、「[Jenkins 
       ```
    
    * **クラスター外で実行される Jenkins の場合:** 次の手順に従って、クラスター証明書をコンテナーにコピーします。
-      1. 証明書は、PEM 形式でなければなりません。 PEM ファイルがない場合は、証明書の PFX ファイルから作成できます。 PFX ファイルがパスワードで保護されていない場合は、ホストから次のコマンドを実行します。
+     1. 証明書は、PEM 形式でなければなりません。 PEM ファイルがない場合は、証明書の PFX ファイルから作成できます。 PFX ファイルがパスワードで保護されていない場合は、ホストから次のコマンドを実行します。
 
-         ```sh
-         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:
-         ``` 
+        ```sh
+        openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:
+        ``` 
 
-      PFX ファイルがパスワードで保護されている場合は、`-passin` パラメーターにパスワードを含めます。 例: 
+        PFX ファイルがパスワードで保護されている場合は、`-passin` パラメーターにパスワードを含めます。 例: 
 
-         ```sh
-         openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
-         ``` 
+        ```sh
+        openssl pkcs12 -in clustercert.pfx -out clustercert.pem -nodes -passin pass:MyPassword1234!
+        ``` 
 
-      1. Jenkins コンテナーのコンテナーの ID を取得するには、ホストから `docker ps` を実行します。
-      1. 次の Docker コマンドを使用して、PEM ファイルをコンテナーにコピーします。
+     1. Jenkins コンテナーのコンテナーの ID を取得するには、ホストから `docker ps` を実行します。
+     1. 次の Docker コマンドを使用して、PEM ファイルをコンテナーにコピーします。
     
-         ```sh
-         docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
-         ``` 
+        ```sh
+        docker cp clustercert.pem [first-four-digits-of-container-ID]:/var/jenkins_home
+        ``` 
 
 あともう少しで終了です。 Jenkins ジョブは開いたままにください。 残りのタスクは、アプリケーションを Service Fabric クラスターにデプロイするようにビルド後のステップを構成することだけです。
 

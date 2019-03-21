@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a5ad7005a2ab3d6ed5f9c8fe38db9552e3925a30
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871321"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004926"
 ---
 # <a name="evaluate-method"></a>Evaluate メソッド
 
@@ -27,7 +27,9 @@ ms.locfileid: "55871321"
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate? 
 ```   
 <br>
+
 ## <a name="request-parameters"></a>要求パラメーター  
+
 Name     | 値 | 必須  | 説明
 -----------|-----------|---------|--------
 **expr**       | テキスト文字列 | はい | エンティティが返す必要のあるエンティティを指定するクエリ式。
@@ -38,7 +40,9 @@ Name     | 値 | 必須  | 説明
 **orderby** |   テキスト文字列 | いいえ <br>既定値: 確率の降順 | エンティティの並べ替えに使用される属性の名前。 必要に応じて、昇順/降順を指定できます。 形式: *name:asc* または *name:desc*。
   
  <br>
+
 ## <a name="response-json"></a>応答 (JSON)
+
 Name | 説明
 -------|-----   
 **expr** |  要求からの *expr* パラメーター。
@@ -46,6 +50,7 @@ Name | 説明
 **aborted** | 要求がタイムアウトした場合は True です。
 
 <br>
+
 #### <a name="example"></a>例:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?expr=

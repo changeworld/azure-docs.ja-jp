@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 6db9a5b65fc2723af2eae006ad81716e23e52133
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b679f1da0ada3e61fca79cdb985a43dc445877ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860526"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57975493"
 ---
 # <a name="interpret-method"></a>Interpret メソッド
 
@@ -37,9 +37,11 @@ Name     | 値 | 必須  | 説明
 **count**    | Number | いいえ <br>既定値: 10 | 返される解釈の最大数。         
 **offset**   | Number | いいえ <br>既定値: 0  | 返される最初の解釈のインデックス。 たとえば、*count=2&offset=0* では、解釈 0 および 1 が返されます。 *count=2&offset=2* では、解釈 2 および 3 が返されます。       
 **timeout**  | Number | いいえ <br>既定値: 1000 | タイムアウト (ミリ秒)。 タイムアウトが経過する前に見つかった解釈だけが返されます。
+
 <br>
   
 ## <a name="response-json"></a>応答 (JSON)
+
 Name     | 説明
 ---------|---------
 **query** |要求からの *query* パラメーター。
@@ -54,6 +56,7 @@ Name     | 説明
 **aborted** | 要求がタイムアウトした場合は True です。
 
 <br>
+
 #### <a name="example"></a>例:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/interpret?query=papers by jaime&complete=1&count=2

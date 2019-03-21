@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 47ca2febeffe395ba2482165f04ee29aa0193c63
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: be1c46c5bc2c8edcfeca81c82095687c4ddfd894
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512246"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225826"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS を使用した高可用性アプリケーションの設計
 
@@ -123,7 +123,7 @@ RA-GRS ストレージを使用するには、失敗した読み取り要求と�
 
     このシナリオでは、すべての読み取り要求が最初にプライマリ エンドポイントを試し、タイムアウトになるまで待機してからセカンダリ エンドポイントに切り替えるため、パフォーマンスの低下が起こります。
 
-これらのシナリオについては、**LocationMode** プロパティを **SecondaryOnly** に設定し、プライマリ エンドポイントで継続的な問題が起こっていることを確認したら、すべての読み取り要求を直接セカンダリ エンドポイントに送信する必要があります。 また、この時点でアプリケーションを読み取り専用モードに変更する必要もあります。 このアプローチは[サーキット ブレーカー パターン](https://msdn.microsoft.com/library/dn589784.aspx)と呼ばれます。
+これらのシナリオについては、**LocationMode** プロパティを **SecondaryOnly** に設定し、プライマリ エンドポイントで継続的な問題が起こっていることを確認したら、すべての読み取り要求を直接セカンダリ エンドポイントに送信する必要があります。 また、この時点でアプリケーションを読み取り専用モードに変更する必要もあります。 このアプローチは[サーキット ブレーカー パターン](/azure/architecture/patterns/circuit-breaker)と呼ばれます。
 
 ### <a name="update-requests"></a>更新要求
 
@@ -216,7 +216,7 @@ RA-GRS は、プライマリ リージョンからセカンダリ リージョ�
 
 再試行可能なエラーが発生した場合にアプリケーションが予想どおりに動作するかどうかをテストすることが重要です。 たとえば、問題が検出されたときにアプリケーションがセカンダリ リージョンに切り替わって読み取り専用モードになり、プライマリ リージョンが再び使用可能になったときに元に戻るかどうかをテストします。 そのためには、再試行可能なエラーをシミュレートしてその発生頻度を制御する方法が必要です。
 
-[Fiddler](http://www.telerik.com/fiddler) を使用すると、スクリプトで HTTP 応答をインターセプトして変更することができます。 このスクリプトは、プライマリ エンドポイントからの応答を識別し、その HTTP 状態コードを、ストレージ クライアント ライブラリが再試行できないエラーとして認識するコードに変更します。 下のコード スニペットは、**employeedata** テーブルに対する読み取り要求への応答をインターセプトして 502 ステータスを返す、Fiddler スクリプトの簡単な例を示しています。
+[Fiddler](https://www.telerik.com/fiddler) を使用すると、スクリプトで HTTP 応答をインターセプトして変更することができます。 このスクリプトは、プライマリ エンドポイントからの応答を識別し、その HTTP 状態コードを、ストレージ クライアント ライブラリが再試行できないエラーとして認識するコードに変更します。 下のコード スニペットは、**employeedata** テーブルに対する読み取り要求への応答をインターセプトして 502 ステータスを返す、Fiddler スクリプトの簡単な例を示しています。
 
 ```java
 static function OnBeforeResponse(oSession: Session) {
@@ -228,7 +228,7 @@ static function OnBeforeResponse(oSession: Session) {
 }
 ```
 
-より広範な要求をインターセプトし、そのうちのいくつかの **responseCode** だけを変更するようこのサンプル コードを拡張すれば、より現実的なシナリオをシミュレートすることもできます。 Fiddler スクリプトのカスタマイズの詳細については、Fiddler のドキュメント「[Modifying a Request or Response (要求または応答の変更)](http://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse)」を参照してください。
+より広範な要求をインターセプトし、そのうちのいくつかの **responseCode** だけを変更するようこのサンプル コードを拡張すれば、より現実的なシナリオをシミュレートすることもできます。 Fiddler スクリプトのカスタマイズの詳細については、Fiddler のドキュメント「[Modifying a Request or Response (要求または応答の変更)](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse)」を参照してください。
 
 アプリケーションを読み取り専用モードに切り替えるためのしきい値を構成可能にしている場合は、運用環境以外のトランザクション ボリュームを使って動作をテストしやすくなります。
 

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5a24bf415cd575ebf62a2843207872c66bbeb021
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989865"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177638"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-net-legacy"></a>.NET を使用した Azure Media Services テレメトリの構成 (レガシ)
+# <a name="configuring-azure-media-services-telemetry-with-net"></a>.NET での Azure Media Services テレメトリの構成 
 
 この記事では、.NET SDK を使用して Azure Media Services (AMS) テレメトリを構成するときの一般的な手順について説明します。 
 

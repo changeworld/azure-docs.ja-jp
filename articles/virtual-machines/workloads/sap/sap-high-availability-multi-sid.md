@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05fda1b4f71f67714b4723e15533d3555d497249
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e5d8357d17f8a6b463546789dd4627b74924a763
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321672"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081000"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成
 
@@ -72,7 +72,7 @@ Azure 内部ロード バランサーを使用して複数の仮想 IP アドレ
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
 
-ロード バランサーの制限の詳細については、[Azure Resource Manager のネットワークの制限][networking-limits-azure-resource-manager]に関する記事の「ロード バランサーごとのプライベート フロントエンド IP」をご覧ください。
+ロード バランサーの制限の詳細については、[ネットワークの制限 -Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。
 
 2 つの高可用性 SAP システムを用いた場合の概要は次のようになります。
 
@@ -114,7 +114,7 @@ Azure 内部ロード バランサーを使用して複数の仮想 IP アドレ
 次のパラメーターを使用して、ASCS/SCS インスタンスの仮想ホスト名の DNS エントリを作成することができます。
 
 | 新しい SAP ASCS/SCS 仮想ホスト名 | 関連付けられる IP アドレス |
-| --- | --- | --- |
+| --- | --- |
 |pr5-sap-cl |10.0.0.50 |
 
 次のスクリーンショットのとおり、新しいホスト名と IP アドレスが DNS Manager に表示されます。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: fd73863dacd7914e23199ba92211ea67e68f7d0d
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: d42349de4324428103ccca3ef270ceb9109ca0c7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402151"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011667"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure の Red Hat Enterprise Linux イメージ
 この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace 内で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します。
@@ -74,6 +74,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 > RHEL 6 イメージ セットは、新しい名前付け規則には移動されませんでした。
 
 現在、一般的に使用できるプランと SKU は以下のとおりです。
+
 プラン| SKU | パーティション分割 | プロビジョニング | メモ
 :----|:----|:-------------|:-------------|:-----
 RHEL | 7-RAW | RAW | Linux エージェント | RHEL 7 イメージ ファミリ

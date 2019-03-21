@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 94bc7d2ddca84b01dd799552fe7a331c9bb958a1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 96848e30c13d226978a6be1a1786e9ed2b4ab7c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856898"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892865"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>クイック スタート:Node.js 用の Bing Web Search SDK を使用する
 
@@ -43,14 +43,14 @@ Bing Web Search SDK を使用すると、Node.js アプリケーションに Bin
     mkdir YOUR_PROJECT
     ```
 
-2. 新しいパッケージ ファイルを作成します。
+1. 新しいパッケージ ファイルを作成します。
 
     ```console
     cd YOUR_PROJECT
     npm init
     ```
 
-3. ここで、いくつかの Azure モジュールをインストールし、`package.json` に追加します。
+1. ここで、いくつかの Azure モジュールをインストールし、`package.json` に追加します。
 
     ```console
     npm install --save azure-cognitiveservices-websearch

@@ -4,14 +4,14 @@ description: Azure Cosmos DB のインデックス作成のしくみを説明し
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2018
+ms.date: 3/1/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6c145b58a1f0eaaf93fb5797028e11ba8338d6be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0ba5cdd4f92390634d6d2bea8add8309cb1f4d3e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460235"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014507"
 ---
 # <a name="index-policy-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 
@@ -23,9 +23,9 @@ Azure Cosmos コンテナー上の既定のインデックス作成ポリシー�
 
 * **インデックス作成モードを構成する**: コンテナー上でインデックス作成ポリシーを使用することで、"*同期*" や "*なし*" などの各種インデックス作成モードを構成することができます。
 
-## <a name="indexing-modes"></a>インデックス作成モード 
+## <a name="indexing-modes"></a>インデックス作成モード
 
-Azure Cosmos DB では、Azure Cosmos コンテナー上で構成可能なインデックス作成モードとして 2 つがサポートされています。 インデックス作成ポリシーを通して次の 2 つのインデックス作成モードを構成することができます。 
+Azure Cosmos DB では、Azure Cosmos コンテナー上で構成可能なインデックス作成モードとして 2 つがサポートされています。 インデックス作成ポリシーを通して次の 2 つのインデックス作成モードを構成することができます。
 
 * **同期**: Azure Cosmos コンテナーのポリシーが "同期" に設定されている場合、特定のコンテナーに対するクエリは、ポイントの読み取りに指定されたのと同じ整合性レベル (強固、有界整合性制約、セッション、最終的など) に従います。 
 

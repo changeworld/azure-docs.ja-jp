@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: e240cbadbee87938107c4a9bf034c47db42acf92
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: bb5a4b3a3019007948a9996ed6715e755f284f9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098648"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175169"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -97,14 +97,14 @@ Azure Cost Management では、Azure サービスのコスト節約のための�
 
 この例では、**実績経過コスト** レポートを使用して、Azure VM の支出が合計予算に近づいたときに通知を送信します。 このシナリオでは、合計予算が 20,000 ドルで、コストが予算の半分 (9,000 ドル) に近づいたときに通知を受け取り、コストが 10,000 ドルに達したときに追加のアラートを受け取ります。
 
-1. Cloudyn ポータルの上部にあるメニューで、**[コスト]** > **[コスト分析]** > **[実績経過コスト]** の順に選択します。 
-2. **[グループ]** を **[サービス]** に設定し、**[Filter on the service]\(サービスのフィルター\)** を **[Azure/VM]** に設定します。 
+1. Cloudyn ポータルの上部にあるメニューで、**[コスト]** > **[コスト分析]** > **[実績経過コスト]** の順に選択します。
+2. **[グループ]** を **[サービス]** に設定し、**[Filter on the service]\(サービスのフィルター\)** を **[Azure/VM]** に設定します。
 3. レポートの右上にある **[アクション]** を選択してから **[レポートのスケジュール]** を選択します。
-4. スケジュールされた間隔でレポートのメールを自分に送信するには、**[Save or Schedule this report]\(このレポートを保存またはスケジュールする\)** ダイアログの **[スケジューリング]** タブを選択します。 必ず **[メールで送信]** を選択してください。 使用するタグ、グループ、およびフィルターは、メールで送信されるレポートに含まれます。 
-5. **[しきい値]** タブを選択して、**[Actual Cost vs.Threshold]\(実際のコスト対しきい値\)** を選択します。 
-   1. **[Red alert]\(赤色のアラート\)** しきい値ボックスに、「10000」と入力します。 
-   2. **[Yellow alert]\(黄色のアラート\)** しきい値ボックスに、「9000」と入力します。 
-   3. **[Number of consecutive alerts]\(連続アラートの回数\)** ボックスに、受信する連続アラートの回数を入力します。 指定したアラートの合計数に達すると、それ以上アラートは送信されません。 
+4. スケジュールされた間隔でレポートのメールを自分に送信するには、**[Save or Schedule this report]\(このレポートを保存またはスケジュールする\)** ダイアログの **[スケジューリング]** タブを選択します。 必ず **[メールで送信]** を選択してください。 使用するタグ、グループ、およびフィルターは、メールで送信されるレポートに含まれます。
+5. **[しきい値]** タブを選択して、**[Actual Cost vs.Threshold]\(実際のコスト対しきい値\)** を選択します。
+   1. **[Red alert]\(赤色のアラート\)** しきい値ボックスに、「10000」と入力します。
+   2. **[Yellow alert]\(黄色のアラート\)** しきい値ボックスに、「9000」と入力します。
+   3. **[Number of consecutive alerts]\(連続アラートの回数\)** ボックスに、受信する連続アラートの回数を入力します。 指定したアラートの合計数に達すると、それ以上アラートは送信されません。
 6. **[保存]** を選択します。
 
 ![支出しきい値に基づいて赤色と黄色のアラートが示された例](./media/tutorial-review-usage/schedule-alert01.png)

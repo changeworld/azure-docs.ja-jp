@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 139fe946b013b1c86404bdef6ed06314af349c89
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: df8196389ecb92229ff9495002c4bce394d7c048
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343138"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202709"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig ストリーミングで C# のユーザー定義関数 (UDF) を使用する
 
@@ -172,13 +172,13 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 6. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
 
-    * __Azure ストレージ アカウント__ を使用している場合は、アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
+   * __Azure ストレージ アカウント__ を使用している場合は、アップロード アイコンをクリックし、**HiveCSharp** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
 
-        ![アップロード アイコン](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+       ![アップロード アイコン](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * __Azure Data Lake Storage__ を使用している場合は、ファイルの一覧の空の領域を右クリックし、__[アップロード]__ を選択します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
+   * __Azure Data Lake Storage__ を使用している場合は、ファイルの一覧の空の領域を右クリックし、__[アップロード]__ を選択します。 最後に、**HiveCSharp.exe** ファイルを選択し、**[OK]** をクリックします。
 
-    __HiveCSharp.exe__ のアップロードが完了したら、__PigUDF.exe__ ファイルのアップロード プロセスを繰り返します。
+     __HiveCSharp.exe__ のアップロードが完了したら、__PigUDF.exe__ ファイルのアップロード プロセスを繰り返します。
 
 ## <a name="run-an-apache-hive-query"></a>Apache Hive クエリを実行する
 
@@ -216,11 +216,7 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 ## <a name="run-an-apache-pig-job"></a>Apache Pig ジョブを実行する
 
-1. HDInsight クラスターに接続するには、次のいずれかの方法を使用します。
-
-    * __Linux ベース__ の HDInsight クラスターを使用している場合は、SSH を使用します。 たとえば、「 `ssh sshuser@mycluster-ssh.azurehdinsight.net` 」のように入力します。 詳細については、「[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
-    
-    * __Windows ベース__ の HDInsight クラスターを使用している場合は、[リモート デスクトップを使用してクラスターに接続します。](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
+1. SSH を使用して、HDInsight クラスターに接続します。 たとえば、「 `ssh sshuser@mycluster-ssh.azurehdinsight.net` 」のように入力します。 詳細については、「[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
 2. 次のいずれかのコマンドを使用して、Pig コマンド ラインを開始します。
 

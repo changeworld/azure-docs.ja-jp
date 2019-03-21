@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2187d0e986a173e1b8dc37fd0abdfa3bfd9e9505
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 64aebaedd9221b2570b66bdb8550bff36b54492c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168989"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>チュートリアル: Azure Active Directory と SpringCM の統合
 
@@ -146,7 +146,7 @@ SpringCM で Azure AD のシングル サインオンを構成してテストす
     
     c. Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を、**[Service Provider (SP) Initiated Endpoint]\(サービス プロバイダー (SP) 開始エンドポイント\)** ボックスに貼り付けます。
             
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML Enabled]\(SAML の有効化\)** で **[Enable]\(有効\)** を選びます。
+    d. **[SAML Enabled]\(SAML の有効化\)** で **[Enable]\(有効\)** を選びます。
 
     e. **[Save]** をクリックします。
  
@@ -183,7 +183,7 @@ SpringCM で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-springcm-test-user"></a>SpringCM テスト ユーザーの作成
 
@@ -212,9 +212,9 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
 
 1. **[Save]** をクリックします。
 
-  >[!NOTE]
-  >SpringCM から提供されている他の SpringCM ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。  
-  > 
+   >[!NOTE]
+   >SpringCM から提供されている他の SpringCM ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。  
+   > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -249,7 +249,7 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
- 
+ 
 アクセス パネルで SpringCM のタイルをクリックすると、自動的に SpringCM アプリケーションにサインオンします。
 
 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 

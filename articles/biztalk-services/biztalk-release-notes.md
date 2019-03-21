@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a82035bfbed109d6521131d8c730bef04030c94f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260336"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093543"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk Services のリリース ノート
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
-
+> 
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 Microsoft Azure BizTalk Services リリース ノートでは、このリリースの既知の問題について説明します。
@@ -47,7 +47,8 @@ Microsoft Azure BizTalk Services リリース ノートでは、このリリー�
 * 送信側契約は、スキーマごとに異なる区切り記号セットを指定できるようになりました。 この構成は、送信側契約のプロトコル設定で指定します。 詳細については、「[Azure BizTalk Services での X12 アグリーメントの作成](https://msdn.microsoft.com/library/azure/hh689847.aspx)」および「[Azure BizTalk Services で EDIFACT アグリーメントを作成する](https://msdn.microsoft.com/library/azure/dn606267.aspx)」を参照してください。 同じ目的のために、TPM OM API にも 2 つの新しいエンティティが追加されました。 「[X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx)」および「[EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx)」を参照してください。  
 * 派生型を含む標準 XSD コンストラクトがサポートされるようになりました。 「[マップでの標準 XSD コンストラクトの使用](https://msdn.microsoft.com/library/azure/dn793987.aspx)」および「[マッピングのシナリオと例で派生型を使用する](https://msdn.microsoft.com/library/azure/dn793997.aspx)」を参照してください。  
 * AS2 でメッセージ署名のための新しい MIC アルゴリズムと新しい暗号化アルゴリズムがサポートされるようになりました。 「 [Azure BizTalk Services で AS2 アグリーメントを作成する](https://msdn.microsoft.com/library/azure/hh689890.aspx)」をご覧ください。  
-  ## <a name="know-issues"></a>既知の問題
+
+## <a name="known-issues"></a>既知の問題
 
 ### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>BizTalk Services ポータル更新後の接続に関する問題
   BizTalk Services ポータルが開いているときに BizTalk Services をアップグレードし、サービスへの変更を取り込むと、BizTalk Services ポータルの接続に問題が発生することがあります。  
@@ -127,7 +128,7 @@ BizTalk アダプター サービス機能に含まれている BizTalk Adapter 
 <faultcode>s:Client</faultcode>
 <faultstring xml:lang="en-US">The UDT with FullName "File, FileUDT, Version=Value, Culture=Value, PublicKeyToken=Value" could not be loaded. Try placing the assembly containing the UDT definition in the Global Assembly Cache.</faultstring>
 <detail>
-  <AFConnectRuntimeFault xmlns="http://Microsoft.ApplicationServer.Integration.AFConnect/2011" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <AFConnectRuntimeFault xmlns="http://Microsoft.ApplicationServer.Integration.AFConnect/2011" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
     <ExceptionCode>ERROR_IN_SENDING_MESSAGE</ExceptionCode>
   </AFConnectRuntimeFault>
 </detail>
@@ -199,7 +200,7 @@ WCF を使用してブリッジに送信されたメッセージが拡張しな�
 ### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>アップグレード:BizTalk Services プレビューから一般公開 (GA) にアップグレードした後にトークン プロバイダーのエラーが発生する
 アクティブなバッチが含まれた EDI 契約または AS2 契約がある場合、 BizTalk Servicesをプレビューから GA にアップグレードすると、次のエラーが発生することがあります。
 
-* エラー:トークン プロバイダーがセキュリティ トークンを提供できませんでした。 トークン プロバイダーによって返されたメッセージ:リモート名を解決できませんでした。
+* エラー:トークン プロバイダーがセキュリティ トークンを提供できませんでした。 トークン プロバイダーによって返されたメッセージ:リモート名を解決できませんでした" という WebException を時々発生させる問題を修正しました。
 * バッチ タスクがキャンセルされます。
 
 **対処法**: BizTalk Services を GA に更新した後に、契約を再度デプロイします。  

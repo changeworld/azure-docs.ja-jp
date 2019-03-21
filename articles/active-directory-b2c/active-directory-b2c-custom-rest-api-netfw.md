@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5ade3ac7587d4ac5c5a6d8e174e76e76088e4e57
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bc2e41fd5da4737ea1efe329b70964535daff54a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157943"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105966"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
 
@@ -249,10 +249,10 @@ Web API では、_コントローラー_ は、HTTP 要求を処理するオブ�
 XML スニペットには、次の 2 つの技術プロファイルを持つクレーム プロバイダー ノードが含まれています。
 
 * **TechnicalProfile Id="REST-API-SignUp"**:RESTful サービスを定義します。
-   * `Proprietary` は、RESTful ベースのプロバイダーのプロトコルとして記述されています。
-   * `InputClaims` は、Azure AD B2C から REST サービスに送信される要求を定義します。
+  * `Proprietary` は、RESTful ベースのプロバイダーのプロトコルとして記述されています。
+  * `InputClaims` は、Azure AD B2C から REST サービスに送信される要求を定義します。
 
-   この例では、要求 `givenName` のコンテンツは `firstName` として REST サービスに送信され、要求 `surname` のコンテンツは `lastName` として REST サービスに送信され、`email` はそのまま送信されます。 `OutputClaims` 要素は、RESTful サービスから Azure AD B2C に戻る間に取得する要求を定義します。
+    この例では、要求 `givenName` のコンテンツは `firstName` として REST サービスに送信され、要求 `surname` のコンテンツは `lastName` として REST サービスに送信され、`email` はそのまま送信されます。 `OutputClaims` 要素は、RESTful サービスから Azure AD B2C に戻る間に取得する要求を定義します。
 
 * **TechnicalProfile Id="LocalAccountSignUpWithLogonEmail"**:検証技術プロファイルを、(基本ポリシーで定義されている) 既存の技術プロファイルに追加します。 サインアップ中、検証技術プロファイルは、上記の技術プロファイルを呼び出します。 RESTful サービスで HTTP エラー 409 (競合エラー) が返された場合、そのエラー メッセージがユーザーに表示されます。
 

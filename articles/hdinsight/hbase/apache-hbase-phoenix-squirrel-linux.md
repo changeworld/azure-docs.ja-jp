@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: 51707baeba4a511d2766161afacd512a4338cf24
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 6dee4ac7cb863a08e9046b16189e7f4a7b04b810
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653987"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201672"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>HDInsight 内の Linux ベースの Apache HBase クラスターで Apache Phoenix を使用する
 Azure HDInsight での [Apache Phoenix](https://phoenix.apache.org/) の使用方法、およびSQLLine の使用方法について説明します。 Phoenix について詳しくは、「[Apache Phoenix in 15 minutes or less (Apache Phoenix についての簡単な説明)](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)」をご覧ください。 Phoenix の文法については、「[Apache Phoenix grammar (Apache Phoenix の文法)](https://phoenix.apache.org/language/index.html)」をご覧ください。
@@ -47,7 +47,7 @@ HBase クラスターに接続するときは、いずれかの [Apache ZooKeepe
 
 2. SSH で次のコマンドを実行して、SQLLine を実行します。
 
-        cd /usr/hdp/2.2.9.1-7/phoenix/bin
+        cd /usr/hdp/current/phoenix/bin
         ./sqlline.py <ZOOKEEPER SERVER FQDN>:2181:/hbase-unsecure
 3. HBase テーブルを作成していくつかのデータを挿入するには、次のコマンドを実行します。
 
@@ -76,7 +76,6 @@ HBase クラスターに接続するときは、いずれかの [Apache ZooKeepe
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
 
-[hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp
 [hdinsight-hbase-provision-vnet]:apache-hbase-provision-vnet.md
 [hdinsight-hbase-overview]:apache-hbase-overview.md
 

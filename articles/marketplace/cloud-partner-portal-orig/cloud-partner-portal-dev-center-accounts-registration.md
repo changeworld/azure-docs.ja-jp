@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: adfe0af646fae79bc9a954cd5d654626880915d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168245"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894089"
 ---
 <a name="create-a-microsoft-developer-account"></a>Microsoft 開発者アカウントの作成
 ====================================
@@ -90,7 +90,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 
 1. 新しい Internet Explorer InPrivate または Chrome Incognito のブラウズ セッションを開き、個人用アカウントにサインインしていないことを確認します。
 
-2. [Windows デベロッパー センター](http://dev.windows.com/registration?accountprogram=azure)に移動し、自分を販売者として登録します。 作業を進める前に、次の重要な注意事項をお読みください。
+2. [Windows デベロッパー センター](https://dev.windows.com/registration?accountprogram=azure)に移動し、自分を販売者として登録します。 作業を進める前に、次の重要な注意事項をお読みください。
 
    ![Microsoft アカウントの確認](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-verify.jpg)
 
@@ -157,7 +157,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 
 **銀行に関する情報を提供するには**
 
-1.  Microsoft アカウントを使用して、 [Microsoft デベロッパー センター](http://dev.windows.com/registration?accountprogram=azure) にサインインします。
+1.  Microsoft アカウントを使用して、 [Microsoft デベロッパー センター](https://dev.windows.com/registration?accountprogram=azure) にサインインします。
 2.  左側の **[支払いアカウント]** を選択し、**[支払方法の選択]** で **[銀行口座]** または **[PayPal]** を選択します。
 
     >[!NOTE]
@@ -173,7 +173,7 @@ Microsoft デベロッパー センターは、会社情報を登録するため
 
 **税に関する情報を追加するには**
 
-1.  必要に応じて、Microsoft アカウントを使用して [Microsoft デベロッパー センター](http://dev.windows.com/registration?accountprogram=azure) にサインインします。
+1.  必要に応じて、Microsoft アカウントを使用して [Microsoft デベロッパー センター](https://dev.windows.com/registration?accountprogram=azure) にサインインします。
 2.  左側のメニューで **[税プロファイル]** を選択します。
 3.  **[税フォームの設定]** ページで:
     - 永住権を持つ国または地域を選択します。

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: c994190ed4ccbd8e5b90f17b70ec6b65477fb0d8
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232007"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117270"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Web ページを使用して Azure Traffic Manager に Real User Measurements を送信する方法
 
@@ -34,7 +34,7 @@ Azure Portal を使用して RUM キーを取得するには:
 3. Traffic Manager プロファイル ブレードで、**[設定]** の下の **[Real User Measurements]\(Real User Measurements\)** をクリックします。
 4. **[キーの生成]** をクリックして、新しい RUM キーを作成します。
  
-  ![Real User Measurements キーの生成](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![Real User Measurements キーの生成](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
    "**図 1:Real User Measurements キーの生成**
 
@@ -44,7 +44,7 @@ Azure Portal を使用して RUM キーを取得するには:
 
     "**図 2:Real User Measurements キーと測定 JavaScript**
  
-6.  **[コピー]** をクリックして、JavaScript コードをコピーします。 
+6. **[コピー]** をクリックして、JavaScript コードをコピーします。 
 
 >[!IMPORTANT]
 > 正常に機能させるには、Real User Measurements 機能用に生成された JavaScript を使用します。 このスクリプトまたは Real User Measurements で使用されるスクリプトを変更すると、予期しないビヘイビアーにつながることがあります。

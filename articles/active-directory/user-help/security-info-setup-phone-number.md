@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf07541c23ba2295a367ac8ba6a514b7dee6ee9a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 9c1620be30d8cdf3a592ab0fc118938783579689
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453836"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085084"
 ---
 # <a name="set-up-security-info-preview-to-use-phone-calls"></a>電話呼び出しを使用するようにセキュリティ情報 (プレビュー) を設定する
 次の手順に従って、2 要素認証とパスワードのリセット メソッドを追加できます。 これを初回に設定したら、**[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
@@ -26,10 +26,10 @@ ms.locfileid: "56453836"
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
->[!Note]
->セキュリティ情報では、電話の内線番号の使用はサポートされません。 電話番号が "+1 4255551234X12345" の適切な形式であっても、電話がかけられる前に内線番号は削除されます。
-
->電話番号オプションが表示されない場合、検証に電話呼び出しを使用することを組織が許可していない可能性があります。 この場合、別のメソッドを選択するか、管理者に支援を要請する必要があります。
+> [!Note]
+> セキュリティ情報では、電話の内線番号の使用はサポートされません。 電話番号が "+1 4255551234X12345" の適切な形式であっても、電話がかけられる前に内線番号は削除されます。
+> 
+> 電話番号オプションが表示されない場合、検証に電話呼び出しを使用することを組織が許可していない可能性があります。 この場合、別のメソッドを選択するか、管理者に支援を要請する必要があります。
 
 ## <a name="set-up-phone-calls-from-the-security-info-page"></a>[セキュリティ情報] ページから電話呼び出しを設定する
 組織の設定に応じて、セキュリティ情報メソッドの 1 つとして電話呼び出しを使用できます。
@@ -41,11 +41,11 @@ ms.locfileid: "56453836"
 
 1. 職場または学校アカウントでサインインし、 https://myprofile.microsoft.com/ ページに移動します。
 
-    ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile.png)
+    ![強調表示されているセキュリティ情報リンクを示す [マイ プロファイル] ページ](media/security-info/securityinfo-myprofile-page.png)
 
-2. 左側のナビゲーション ウィンドウから、または **[セキュリティ情報]** ブロックのリンクから、**[セキュリティ情報]** を選択し、次に **[セキュリティ情報]** ページから **[メソッドの追加]** を選択します。
+2. 左側のナビゲーション ウィンドウから、または **[セキュリティ情報]** ブロックのリンクから **[セキュリティ情報]** を選択した後、**[セキュリティ情報]** ページで **[メソッドの追加]** を選択します。
 
-    ![[メソッドの追加] オプションが強調表示されている [セキュリティ情報] ページ](media/security-info/securityinfo-myprofile-addmethod.png)
+    ![[メソッドの追加] オプションが強調表示されている [セキュリティ情報] ページ](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. **[メソッドの追加]** ページで、ドロップダウン リストから **[電話番号]** を選択し、**[追加]** を選択します。
 
@@ -82,7 +82,7 @@ ms.locfileid: "56453836"
 
 ### <a name="to-change-your-default-security-info-method"></a>既定のセキュリティ情報メソッドを変更するには
 
-1. **[セキュリティ情報]** ページで、**[Default sign-in method]\(既定のサインイン メソッド\)** 情報の横の **[変更]** リンクを選択します。
+1. **[セキュリティ情報]** ページで、**[Default sign-in method]\(既定のサインイン方法\)** 情報の横の **[変更]** リンクを選択します。
 
     ![既定のサインイン メソッドの変更リンク](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 

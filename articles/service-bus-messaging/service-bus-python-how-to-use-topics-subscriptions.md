@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/20/2018
 ms.author: aschhab
-ms.openlocfilehash: 280901c4b7af9cc65163ebc453a54fb7ec5d5111
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 476c51d1835a1be0178faf28e6dd8a3c95371929
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849398"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240968"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Python で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -32,12 +32,14 @@ ms.locfileid: "54849398"
 > [!NOTE] 
 > Python または [Azure Python パッケージ][Azure Python package]をインストールする場合は、[Python インストール ガイド](../python-how-to-install.md)をご覧ください。
 
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+
 ## <a name="create-a-topic"></a>トピックを作成する
 
 **ServiceBusService** オブジェクトを使用すると、トピックを操作できます。 プログラムを使用して Service Bus にアクセスするすべての Python ファイルの先頭付近に次のコードを追加します。
 
 ```python
-from azure.servicebus import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
+from azure.servicebus.control_client import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
 ```
 
 次のコードでは、**ServiceBusService** オブジェクトを作成します。 `mynamespace`、`sharedaccesskeyname`、`sharedaccesskey` の部分は、実際の名前空間、Shared Access Signature (SAS) キー名、キー値に置き換えます。

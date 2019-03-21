@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 07912dab52cb0569428d070282551eebbdb1c7bc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7831e5e989835b2c9432dbd61a242584a7b6244d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191447"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082944"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
@@ -44,10 +44,10 @@ PHP ログを有効にするには、次の手順を実行します。
 9. **[保存]** を選択します。
 10. **wp-config.php** の横にある鉛筆のアイコンを選択します。
 11. テキストを次のコードに変更します。
-   ```php
-   //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
-   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
-   ```
+    ```php
+    //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
+    //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
+    ```
 12. Azure ポータルの Web アプリのメニューで、Web アプリを再起動します。
 
 詳細については、[WordPress エラー ログを有効にする](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/)に関するページを参照してください。
@@ -59,31 +59,31 @@ PHP ログを有効にするには、次の手順を実行します。
 
 Node.js アプリケーションのバージョンを変更するために、次のオプションのいずれかを使用できます。
 
-*   Azure ポータルで、**[アプリ設定]** を使用します。
-    1. Azure Portal で、Web アプリに移動します。
-    2. **[設定]** ブレードで、**[アプリケーション設定]** を選択します。
-    3. **[アプリ設定]** で、キーとして WEBSITE_NODE_DEFAULT_VERSION を含め、値として希望する Node.js のバージョンを指定できます。
-    4. [Kudu コンソール](https://*yourwebsitename*.scm.azurewebsites.net)に移動します。
-    5. Node.js バージョンを確認するには、次のコマンドを入力します。  
-   ```
-   node -v
-   ```
-*   Iisnode.yml ファイルを変更します。 iisnode.yml ファイルで Node.js バージョンを変更しても、iisnode が使用するランタイム環境が設定されるだけです。 Kudu cmd などは、Azure ポータルの **[アプリ設定]** で設定されている Node.js バージョンを引き続き使用します。
+* Azure ポータルで、**[アプリ設定]** を使用します。
+  1. Azure Portal で、Web アプリに移動します。
+  2. **[設定]** ブレードで、**[アプリケーション設定]** を選択します。
+  3. **[アプリ設定]** で、キーとして WEBSITE_NODE_DEFAULT_VERSION を含め、値として希望する Node.js のバージョンを指定できます。
+  4. [Kudu コンソール](https://*yourwebsitename*.scm.azurewebsites.net)に移動します。
+  5. Node.js バージョンを確認するには、次のコマンドを入力します。  
+     ```
+     node -v
+     ```
+* Iisnode.yml ファイルを変更します。 iisnode.yml ファイルで Node.js バージョンを変更しても、iisnode が使用するランタイム環境が設定されるだけです。 Kudu cmd などは、Azure ポータルの **[アプリ設定]** で設定されている Node.js バージョンを引き続き使用します。
 
-    Iisnode.yml を手動で設定するには、アプリのルート フォルダーに iisnode.yml ファイルを作成します。 ファイルに次の行を含めます。
-   ```yml
-   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-   ```
+  Iisnode.yml を手動で設定するには、アプリのルート フォルダーに iisnode.yml ファイルを作成します。 ファイルに次の行を含めます。
+  ```yml
+  nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+  ```
    
-*   ソース管理デプロイ中に package.json を使用して Iisnode.yml ファイルを設定します。
-    Azure のソース管理デプロイ プロセスには、次の手順があります。
-    1. コンテンツを Azure Web アプリに移動します。
-    2. Web アプリのルート フォルダーにデプロイ スクリプト (deploy.cmd、デプロイメント ファイル) がない場合、既定のデプロイメント スクリプトを作成します。
-    3. package.json ファイルで Node.js バージョンを指定する場合、iisnode.yml ファイルを作成した場所でデプロイメント スクリプトを実行します。> engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`
-    4. Iisnode.yml ファイルには、次のコード行があります。
-        ```yml
-        nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-        ```
+* ソース管理デプロイ中に package.json を使用して Iisnode.yml ファイルを設定します。
+  Azure のソース管理デプロイ プロセスには、次の手順があります。
+  1. コンテンツを Azure Web アプリに移動します。
+  2. Web アプリのルート フォルダーにデプロイ スクリプト (deploy.cmd、デプロイメント ファイル) がない場合、既定のデプロイメント スクリプトを作成します。
+  3. package.json ファイルで Node.js バージョンを指定する場合、iisnode.yml ファイルを作成した場所でデプロイメント スクリプトを実行します。> engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  4. Iisnode.yml ファイルには、次のコード行があります。
+      ```yml
+      nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+      ```
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>App Service にホストされている WordPress アプリに "Error establishing a database connection"(データベースの接続を確立中にエラーが発生しました) というメッセージが表示されます。 どのようにトラブルシューティングすればよいですか?
 

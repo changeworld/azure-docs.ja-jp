@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 3c69cb076b3b23cd5149e05f1b6ee9ae1ba170a6
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 9154add96084142ca1f93ad61c6418e3b487fb83
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430201"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090918"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files を使用して、スナップショットを管理する
 
@@ -77,9 +77,9 @@ Azure NetApp Files を使用すると、ボリュームのオンデマンド ス
     * **サブネット**  
         ボリュームで使用するサブネットを指定します。  
         指定するサブネットは Azure NetApp Files サービスに委任されている必要があります。 [サブネット] フィールドにある **[新規作成]** を選択することで、新しいサブネットを作成できます。  
-<!--
+   <!--
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
--->
+   -->
 
 5. Click **OK**.   
     スナップショットから復元された新しいボリュームが [ボリューム] ブレードに表示されます。

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7967459e1318e85e1e179e21bc803bf00ee329cd
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ff6601042c82cef2b0101833117f17aca8b463dc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743795"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223259"
 ---
 # <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Apache Ambari API を使用して HDInsight の Apache Hadoop クラスターを監視する
 Apache Ambari API を使用して HDInsight クラスターを監視する方法について説明します。
@@ -137,7 +137,7 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 ## <a name="next-steps"></a>次の手順
 ここでは Apache Ambari での API 呼び出しの監視の使用方法を説明しました。 詳細については、次を参照してください。
 
-* [Azure Portal を使用した HDInsight クラスターの管理][hdinsight-admin-portal]
+* [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md)
 * [Azure PowerShell を使用した HDInsight クラスターの管理][hdinsight-admin-powershell]
 * [コマンド ライン インターフェイスを使用した HDInsight クラスターの管理][hdinsight-admin-cli]
 * [HDInsight のドキュメント][hdinsight-documentation]
@@ -155,7 +155,6 @@ Ambari エンドポイント (https://{clusterDns}.azurehdinsight.net/ambari/api
 [powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
 [hdinsight-documentation]: https://docs.microsoft.com/azure/hdinsight/
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md

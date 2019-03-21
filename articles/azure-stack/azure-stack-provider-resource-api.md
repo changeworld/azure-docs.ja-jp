@@ -11,18 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2018
-ms.openlocfilehash: 47ba057091f0660bf1449f062edfacde710d2f1a
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 34159d059b976043fac415470421970056320acc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428179"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996482"
 ---
 # <a name="provider-resource-usage-api"></a>プロバイダー リソース使用量 API
+
 *プロバイダー*という用語は、サービス管理者と委任されたすべてのプロバイダーに適用されます。 Azure Stack オペレーターおよび委任されたプロバイダーは、プロバイダー使用量 API を使用して、直接のテナントの使用状況を表示できます。 たとえば、図に示したように、P0 はプロバイダー API を呼び出して、P1 と P2 の直接の使用状況に関する情報を取得でき、P1 は P3 と P4 の使用状況情報を呼び出すことができます。
 
 ![プロバイダー階層の概念モデル](media/azure-stack-provider-resource-api/image1.png)
@@ -38,6 +39,7 @@ ms.locfileid: "56428179"
 | GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&subscriberId={sub1.1}&api-version=2015-06-01-preview&continuationToken={token-value} |
 
 ### <a name="arguments"></a>引数
+
 | **引数** | **説明** |
 | --- | --- |
 | *armendpoint* |Azure Stack 環境の Azure Resource Manager エンドポイント。 Azure Stack 規則は、Azure Resource Manager エンドポイントの名前が、`https://adminmanagement.{domain-name}` の形式であることです。 たとえば、開発キットでは、ドメイン名が *local.azurestack.external* の場合、Resource Manager エンドポイントは `https://adminmanagement.local.azurestack.external` になります。 |
@@ -79,6 +81,7 @@ meterID1",
 ```
 
 ### <a name="response-details"></a>応答の詳細
+
 | **引数** | **説明** |
 | --- | --- |
 | *id* |使用状況集計の一意の ID |
@@ -101,9 +104,10 @@ meterID1",
 1. [PowerShell for Azure Stack をインストールします。](azure-stack-powershell-install.md)
 2. [Azure Stack ユーザー](user/azure-stack-powershell-configure-user.md)または [Azure Stack オペレーター](azure-stack-powershell-configure-admin.md)の PowerShell 環境を構成します 
 3. 使用量データを取得するには、[Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) PowerShell コマンドレットを使います。
-```powershell
-Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
-```
+   ```powershell
+   Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
+   ```
+
 ### <a name="rest-api"></a>REST API
 
 Microsoft.Commerce.Admin サービスを呼び出すことで、削除されたサブスクリプションの利用状況情報を収集できます。 

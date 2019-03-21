@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 729287cfcc557e167a70d6f69a5b2b34909df836
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d7f047d784796b9e7c59d95863aa74b3f72da324
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180982"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>チュートリアル:Azure Active Directory と SilkRoad Life Suite の統合
 
@@ -114,12 +114,14 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.silkroad-eng.com/Authentication/` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。 
+
     | |
     |--|
     | `https://<subdomain>.silkroad-eng.com/Authentication/SP` |
     | `https://<subdomain>.silkroad.com/Authentication/SP` |
 
     c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 
+    
     | |
     |--|
     | `https://<subdomain>.silkroad-eng.com/Authentication/` |
@@ -183,7 +185,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
    
     c. **[IdP Description]\(IdP の説明\)** ボックスに、構成の説明を入力します (例:*Azure AD の SSO*)。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[メタデータ ファイル]** ボックスに、Azure Portal からダウンロードした**メタデータ** ファイルをアップロードします。
+    d. **[メタデータ ファイル]** ボックスに、Azure Portal からダウンロードした**メタデータ** ファイルをアップロードします。
   
     e. **[IdP Name]\(IdP 名\)** ボックスに、構成の固有の名前を入力します (例:*Azure SP*)。
   
@@ -230,7 +232,7 @@ SilkRoad Life Suite で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-silkroad-life-suite-test-user"></a>SilkRoad Life Suite テスト ユーザーの作成
 

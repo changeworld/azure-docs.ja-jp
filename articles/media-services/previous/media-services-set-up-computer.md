@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/10/2019
+ms.topic: conceptual
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 108fd47eea88e4fe0bd8e3eb22cb03e1a092a29e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e42386c380c94e36f1dbe0d418bf5a42f2486fd0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999149"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293670"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Media Services 開発環境の設定  
 

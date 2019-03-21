@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: d55c9db9af2eea9a56afe34c7a8689947a689bac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 596ed857b39cf106ed2e37ad81c5fe9e939cca61
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462547"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001432"
 ---
 # <a name="sql-data-warehouse-frequently-asked-questions"></a>SQL Data Warehouse のよく寄せられる質問
 
@@ -105,7 +105,7 @@ SQL Data Warehouse 全体について詳しくは、[概要に関するページ
 <!-- Article references -->
 [UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [接続文字列に関するページ]: ./sql-data-warehouse-connection-strings.md
-[Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [サポート チケット]: ./sql-data-warehouse-get-started-create-support-ticket.md
 [セキュリティ]: ./sql-data-warehouse-overview-manage-security.md
 [Microsoft のコンプライアンスに関するページ]: https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c01cc6bd6244bcaa8d33baead35ac2a1dadc3d7a
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e3a2b45e2039c5cabaa7c507c85a045ca73add83
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970799"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993953"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 
@@ -23,10 +23,10 @@ ms.locfileid: "53970799"
 これは、オンプレミスの VMware VM または Hyper-V VM のディザスター リカバリーを Azure に設定する方法について説明するシリーズの 4 番目のチュートリアルです。
 
 このチュートリアルでは、最初の 3 つのチュートリアルを完了したことを前提としています。
-    - [1 番目のチュートリアル](tutorial-prepare-azure.md)では、VMware のディザスター リカバリーに必要な Azure コンポーネントを設定しました。
-    - [2 番目のチュートリアル](vmware-azure-tutorial-prepare-on-premises.md)では、ディザスター リカバリー用のオンプレミスのコンポーネントを準備し、前提条件を確認しました。
-    - [3 番目のチュートリアル](vmware-azure-tutorial.md)では、オンプレミスの VMware VM 用にレプリケーションを設定して有効にしました。
-    - これらのチュートリアルは、**シナリオの最も簡単なデプロイ パス**を示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 さらに詳細なテスト フェールオーバーの手順については、[方法ガイド](site-recovery-test-failover-to-azure.md)をご覧ください。
+- [1 番目のチュートリアル](tutorial-prepare-azure.md)では、VMware のディザスター リカバリーに必要な Azure コンポーネントを設定しました。
+- [2 番目のチュートリアル](vmware-azure-tutorial-prepare-on-premises.md)では、ディザスター リカバリー用のオンプレミスのコンポーネントを準備し、前提条件を確認しました。
+- [3 番目のチュートリアル](vmware-azure-tutorial.md)では、オンプレミスの VMware VM 用にレプリケーションを設定して有効にしました。
+- これらのチュートリアルは、**シナリオの最も簡単なデプロイ パス**を示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 さらに詳細なテスト フェールオーバーの手順については、[方法ガイド](site-recovery-test-failover-to-azure.md)をご覧ください。
 
 このチュートリアルで学習する内容は次のとおりです。
 

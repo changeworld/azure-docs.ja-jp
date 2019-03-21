@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e9c1b2513f769b065883dc98b649a68d565ccc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7d8259cdb61d2481805dd2e07c11b539e057215c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456488"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817067"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>Azure AD ログを Azure Monitor ログ (プレビュー) と統合する
 
@@ -37,6 +37,8 @@ Ignite セッションの次のビデオでは、実用的なユーザー シナ
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
 
 この記事では、Azure Active Directory (Azure AD) のログを Azure Monitor と統合する方法について説明します。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="supported-reports"></a>サポートされるレポート
 

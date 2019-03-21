@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9b8b92b7a672a4d344b17d4ade497749766f8a91
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7d8a654b6b2f429119323fa5d18eb0596f63e6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719695"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105269"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>HDInsight で Apache Ambari ビューを使用して Apache Tez ジョブをデバッグする
 
@@ -90,14 +90,14 @@ Tez を使用する Hive クエリを実行するには、次の手順に従い�
 
 5. このページのタブでは、次の情報を確認できます。
 
-    * **クエリの詳細**:Hive クエリに関する詳細情報。
-    * **タイムライン**:処理の各ステージに要した時間に関する情報。
-    * **構成**:このクエリに使用される構成。
+   * **クエリの詳細**:Hive クエリに関する詳細情報。
+   * **タイムライン**:処理の各ステージに要した時間に関する情報。
+   * **構成**:このクエリに使用される構成。
 
-    __[クエリの詳細]__ では、リンクを使用してこのクエリの __アプリケーション__ や __DAG__ に関する情報を確認できます。
+     __[クエリの詳細]__ では、リンクを使用してこのクエリの __アプリケーション__ や __DAG__ に関する情報を確認できます。
     
-    * __[アプリケーション]__ リンクには、このクエリの YARN アプリケーションに関する情報が表示されます。 ここから YARN アプリケーションのログにアクセスすることができます。
-    * __[DAG]__ リンクには、このクエリの有向非巡回グラフ (DAG) に関する情報が表示されます。 ここから DAG のグラフィカル表示を見ることができます。 また、DAG 内の頂点の情報も確認できます。
+   * __[アプリケーション]__ リンクには、このクエリの YARN アプリケーションに関する情報が表示されます。 ここから YARN アプリケーションのログにアクセスすることができます。
+   * __[DAG]__ リンクには、このクエリの有向非巡回グラフ (DAG) に関する情報が表示されます。 ここから DAG のグラフィカル表示を見ることができます。 また、DAG 内の頂点の情報も確認できます。
 
 ## <a name="next-steps"></a>次の手順
 

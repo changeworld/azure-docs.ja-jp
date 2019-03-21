@@ -8,12 +8,12 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 47646a1593f01c4ea695b549bbde22260ffaf2f7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 83e2f6f42de5c729667f366a6e068f1c8bd71f02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962436"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011078"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure BLOB ファイルシステム ドライバー (ABFS):Hadoop 専用の Azure Storage ドライバー
 
@@ -21,7 +21,7 @@ Azure Data Lake Storage Gen2 内のデータの主要なアクセス方法の 1 
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>以前の機能:Windows Azure Storage Blob ドライバー
 
-Windows Azure Storage Blob ドライバー ([WASB ドライバー](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)) は、Azure Blob Storage のオリジナル サポートを提供しました。 このドライバーは、(Hadoop FileSystem インターフェイスでの必要に応じて) Azure Blob Storage によって公開されているオブジェクト ストア スタイルのインターフェイスのセマンティクスへのファイル システム セマンティクスのマッピングの複雑なタスクを実行しました。 このドライバーは引き続きこのモデルをサポートし、BLOB に格納されたデータへの高パフォーマンス アクセスを実現しますが、このマッピングを実行するコードが大量に含まれているため、メンテナンスが困難になります。 さらに、[FileSystem.rename()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) や [FileSystem.delete()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) などの一部の操作がディレクトリに適用される場合、(オブジェクト ストアにディレクトリのサポートがないため) ドライバーが膨大な数の操作を実行する必要があり、多くの場合にパフォーマンスの低下につながります。 ABFS ドライバーは、WASB の本質的な弱点を克服するために設計されました。
+Windows Azure Storage Blob ドライバー ([WASB ドライバー](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)) は、Azure Blob Storage のオリジナル サポートを提供しました。 このドライバーは、(Hadoop FileSystem インターフェイスでの必要に応じて) Azure Blob Storage によって公開されているオブジェクト ストア スタイルのインターフェイスのセマンティクスへのファイル システム セマンティクスのマッピングの複雑なタスクを実行しました。 このドライバーは引き続きこのモデルをサポートし、BLOB に格納されたデータへの高パフォーマンス アクセスを実現しますが、このマッピングを実行するコードが大量に含まれているため、メンテナンスが困難になります。 さらに、[FileSystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) や [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) などの一部の操作がディレクトリに適用される場合、(オブジェクト ストアにディレクトリのサポートがないため) ドライバーが膨大な数の操作を実行する必要があり、多くの場合にパフォーマンスの低下につながります。 ABFS ドライバーは、WASB の本質的な弱点を克服するために設計されました。
 
 ## <a name="the-azure-blob-file-system-driver"></a>Azure BLOB ファイル システム ドライバー
 
@@ -52,13 +52,13 @@ Hadoop アプリケーションが Data Lake Storage Gen2 対応アカウント�
 
 ### <a name="configuration"></a>構成
 
-ABFS ドライバーのすべての構成は <code>core-site.xml</code> 構成ファイルに格納されます。 [Ambari](http://ambari.apache.org/) を備えた Hadoop ディストリビューションでは、構成は Web ポータルまたは Ambari REST API を使用して管理することもできます。
+ABFS ドライバーのすべての構成は <code>core-site.xml</code> 構成ファイルに格納されます。 [Ambari](https://ambari.apache.org/) を備えた Hadoop ディストリビューションでは、構成は Web ポータルまたは Ambari REST API を使用して管理することもできます。
 
-サポートされるすべての構成エントリの詳細は、[公式 Hadoop ドキュメント](http://hadoop.apache.org/docs/current/hadoop-azure/index.html)で指定されています。
+サポートされるすべての構成エントリの詳細は、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)で指定されています。
 
 ### <a name="hadoop-documentation"></a>Hadoop ドキュメント
 
-ABFS ドライバーについては、[公式 Hadoop ドキュメント](http://hadoop.apache.org/docs/current/hadoop-azure/index.html)に完全に記載されています
+ABFS ドライバーについては、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)に完全に記載されています
 
 ## <a name="next-steps"></a>次の手順
 

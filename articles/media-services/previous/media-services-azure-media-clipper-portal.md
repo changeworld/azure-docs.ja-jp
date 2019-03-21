@@ -6,15 +6,15 @@ keywords: クリップ;サブクリップ;エンコード;メディア
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 510176331a1b79a1069b42afabb63b6b326951cc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8c88caefb0909da55de87116a23fa520c1679cc2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992314"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990606"
 ---
 # <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>ポータルで Azure Media Clipper を使用してクリップを作成する  
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 91c069f845ef6291f867099e59e79fd059d8caf1
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: a99d8a265cdc72b6bd1dd45ab670f514d828f808
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320227"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005701"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Storage Gen1 の使用を開始する
 
@@ -76,9 +76,9 @@ Azure Key Vault のキーを使用して Data Lake Storage Gen1 アカウント�
 
 > [!NOTE]
 > Azure Resource Manager テンプレートを使用して、Data Lake Storage Gen1 アカウントを作成することもできます。 以下のテンプレートは、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=data+lake+store)からアクセスすることができます。
-    - データ暗号化なし: [Deploy Azure Data Lake Storage Gen1 account with no data encryption](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/) (Azure Data Lake Storage Gen1 アカウントをデータ暗号化なしでデプロイする)。
-    - Data Lake Storage Gen1 によるデータ暗号化あり: [Deploy Data Lake Storage Gen1 account with encryption(Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/) (Data Lake Storage Gen1 アカウントを暗号化 (Data Lake) ありでデプロイする)。
-    - Azure Key Vault によるデータ暗号化あり:[Deploy Data Lake Storage Gen1 account with encryption(Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/) (Data Lake Storage Gen1 アカウントを暗号化 (Key Vault) ありでデプロイする)。
+> - データ暗号化なし: [Deploy Azure Data Lake Storage Gen1 account with no data encryption](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/) (Azure Data Lake Storage Gen1 アカウントをデータ暗号化なしでデプロイする)。
+> - Data Lake Storage Gen1 によるデータ暗号化あり: [Deploy Data Lake Storage Gen1 account with encryption(Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/) (Data Lake Storage Gen1 アカウントを暗号化 (Data Lake) ありでデプロイする)。
+> - Azure Key Vault によるデータ暗号化あり:[Deploy Data Lake Storage Gen1 account with encryption(Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/) (Data Lake Storage Gen1 アカウントを暗号化 (Key Vault) ありでデプロイする)。
 > 
 > 
 

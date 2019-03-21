@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: dbc3b7e2e013dc53a1e2524c44bd2229a6a1b18d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7c2e3b2bea7ddef3dfbf69f85b499d9a60158689
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462972"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999129"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
 
@@ -28,7 +28,7 @@ ms.locfileid: "55462972"
 ### <a name="prerequisites"></a>前提条件
 
 * Java Developer Kit (JDK) バージョン 1.8 以降
-* [Maven](http://maven.apache.org/download.cgi)
+* [Maven](https://maven.apache.org/download.cgi)
 * Azure の SQL Database サーバーまたは SQL Server のローカル インスタンス
 
 ### <a name="download-and-run-the-sample-app"></a>サンプル アプリケーションのダウンロードと実行
@@ -74,7 +74,7 @@ JAR ファイルをビルドし、サンプル プロジェクトを始めるに
 ### <a name="prerequisites"></a>前提条件
 
 * Visual Studio 2012 以降 (C#)。 「 [Visual Studio のダウンロード](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)」で無償評価版をダウンロードしてください。
-* NuGet 2.7 以降。 最新版を入手するには、「[Installing NuGet](http://docs.nuget.org/docs/start-here/installing-nuget)(NuGet のインストール)」をご覧ください。
+* NuGet 2.7 以降。 最新版を入手するには、「[Installing NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)(NuGet のインストール)」をご覧ください。
 
 ### <a name="download-and-run-the-sample-app"></a>サンプル アプリケーションのダウンロードと実行
 
@@ -131,8 +131,8 @@ Elastic Database ツールについて詳しくは、以下の記事をご覧く
   * Elastic Database ツール ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)、[Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Azure SQL 用 Elastic Database ツール - Entity Framework の統合](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [スクリプト センターのシャードの弾力性](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
-* ブログ:[Elastic Scale の発表](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
-* チャンネル 9:[Elastic Scale の概要に関するビデオ](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
+* ブログ:[Elastic Scale の発表](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
+* チャンネル 9:[Elastic Scale の概要に関するビデオ](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 * ディスカッション フォーラム:[Azure SQL Database フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * パフォーマンスを測定するには:[シャード マップ マネージャーのパフォーマンス カウンター](sql-database-elastic-database-client-library.md)
 

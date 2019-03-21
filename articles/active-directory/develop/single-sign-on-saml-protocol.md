@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a46bc954d137ad610310d83d3ad7f54370b9177b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d9cb9877015f2cfe61799a56be6490a3f4e2fb60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184042"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012762"
 ---
 # <a name="single-sign-on-saml-protocol"></a>シングル サインオンの SAML プロトコル
 
@@ -170,7 +170,7 @@ Azure AD は、`Issuer` 要素を  `https://login.microsoftonline.com/<TenantIDG
 
 `Status` 要素には、サインオンの成功または失敗を示す値が設定されます。 `StatusCode` 要素が含まれており、この要素には要求の状態を表すコードまたは一連の入れ子になったコードが含まれます。 また、 `StatusMessage` 要素もあり、これにはサインイン プロセス中に生成されたカスタム エラー メッセージが含まれます。
 
-<!-- TODO: Add a authentication protocol error reference -->
+<!-- TODO: Add an authentication protocol error reference -->
 
 サインオンに失敗した場合、次のような SAML 応答が返されます。
 

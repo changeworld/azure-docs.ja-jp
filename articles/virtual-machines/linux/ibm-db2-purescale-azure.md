@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 901afc8f28b617eb5bada2a0f58761ddb9f67607
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 1622de0cccdbc8fee0681e209e756b30da292d3c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327410"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003491"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>Azure 上の IBM DB2 pureScale
 
@@ -66,7 +66,7 @@ Azure 上での高可用性とスケーラビリティをサポートするた�
 
 ### <a name="compute-considerations"></a>コンピューティングに関する考慮事項
 
-このアーキテクチャは、Azure 仮想マシン上でアプリケーション、ストレージ、およびデータ層を実行します。 [展開セットアップ スクリプト](http://aka.ms/db2onazure)では、以下を作成します。
+このアーキテクチャは、Azure 仮想マシン上でアプリケーション、ストレージ、およびデータ層を実行します。 [展開セットアップ スクリプト](https://aka.ms/db2onazure)では、以下を作成します。
 
 -   DB2 pureScale クラスター。 Azure 上で必要なコンピューティング リソースの種類は、設定に依存します。 一般的には、次の 2 つの方法を使用できます。
 

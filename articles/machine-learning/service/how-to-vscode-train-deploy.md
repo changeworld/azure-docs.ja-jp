@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6d190e4c5d283b9f803cf7287445d7591b5465db
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 8d63d5f6281de022e8f7e5c9e0a208866fef3f4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753114"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889558"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Visual Studio Code を使用して機械学習モデルをトレーニングおよびデプロイする
 
@@ -27,7 +27,7 @@ Azure Machine Learning は、実験をローカルおよびリモート コン�
 
 ## <a name="prerequisites"></a>前提条件
 
-+ Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning サービス](http://aka.ms/AMLFree)を今日からお試しいただけます。
++ Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning サービス](https://aka.ms/AMLFree)を今日からお試しいただけます。
 
 + [Azure Machine Learning for VS Code](how-to-vscode-tools.md) 拡張機能が設定されている。
 

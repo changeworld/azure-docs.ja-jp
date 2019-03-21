@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 4d5c7f8a91bb63cdd80a6f70603e34f8130b92ef
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 4b1c829a417d050b4d931611d9f2952e01582f04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106683"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089473"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>クラウドの一貫性のための Azure Resource Manager テンプレートを開発する
 
@@ -49,8 +49,6 @@ Microsoft は、次のように、インテリジェントでエンタープラ�
 
 Azure Resource Manger テンプレートの概要については、「[テンプレートのデプロイ](resource-group-overview.md#template-deployment)」をご覧ください。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="ensure-template-functions-work"></a>テンプレート関数を確実に動作させる
 
 Resource Manager テンプレートの基本的な構文は JSON です。 テンプレートは JSON のスーパーセットを使用しており、式と関数について構文が拡張されています。 テンプレートの言語プロセッサは、追加されたテンプレート関数をサポートするために頻繁に更新されます。 使用可能なテンプレート関数の詳細については、「[Azure Resource Manager テンプレートの関数](resource-group-template-functions.md)」をご覧ください。
@@ -65,13 +63,13 @@ Azure Resource Manager の機能は、常にグローバル Azure に最初に�
 
 1. psm1 モジュールをインポートし、Test-AzureRmureRmTemplateFunctions コマンドレットを実行します。
 
-  ```powershell
-  # Import the module
-  Import-module <path to local clone>\AzTemplateFunctions.psm1
+   ```powershell
+   # Import the module
+   Import-module <path to local clone>\AzTemplateFunctions.psm1
 
-  # Execute the Test-AzureRmTemplateFunctions cmdlet
-  Test-AzureRmTemplateFunctions -path <path to local clone>
-  ```
+   # Execute the Test-AzureRmTemplateFunctions cmdlet
+   Test-AzureRmTemplateFunctions -path <path to local clone>
+   ```
 
 このスクリプトでは、それぞれが固有のテンプレート関数のみを含む、複数の最小化されたテンプレートが展開されます。 スクリプトの出力では、サポートされているテンプレート関数と、使用できないテンプレート関数が報告されます。
 

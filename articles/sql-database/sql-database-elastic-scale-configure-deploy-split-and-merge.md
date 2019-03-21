@@ -12,19 +12,19 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 7939de5cf45535dc911c25ae8fa8c914a214fa3c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5aff7e93dcfaa5320be0d6f7d427abcdc88c69e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995829"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
 
 split-merge ツールを使用すると、シャード化されたデータベース間でデータを移動できます。 「 [スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)
 
 ## <a name="download-the-split-merge-packages"></a>分割-結合パッケージのダウンロード
-1. [NuGet](http://docs.nuget.org/docs/start-here/installing-nuget)から最新の NuGet バージョンをダウンロードします。
+1. [NuGet](https://docs.nuget.org/docs/start-here/installing-nuget)から最新の NuGet バージョンをダウンロードします。
 2. コマンド プロンプトを開き、nuget.exe をダウンロードしたディレクトリに移動します。 ダウンロードには、PowerShell コマンドが含まれています。
 3. 次のコマンドで最新の Split-Merge パッケージを現在のディレクトリにダウンロードします。
    ```

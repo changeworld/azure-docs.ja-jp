@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: f1e905b0b67048a10f6eb455d77275375a99dbd0
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 805abec84b26a6b2b9af3dfe318f877f4edb9547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245407"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080898"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Blob コンテナーの合計課金サイズを計算する
 
@@ -101,17 +101,17 @@ For-Each Signed Identifier[512 bytes]
 * 格納されているメタデータのブロックごとに、名前 (ASCII 形式) の長さを加え、文字列値の長さを足します。
 
 * ブロック BLOB の場合:
-    * ブロック一覧の 8 バイト。
-    * ブロックの数にブロック ID のサイズ (バイト単位) を掛けたもの。
-    * コミットされたブロックとコミットされていないブロックすべてのデータのサイズ。
+  * ブロック一覧の 8 バイト。
+  * ブロックの数にブロック ID のサイズ (バイト単位) を掛けたもの。
+  * コミットされたブロックとコミットされていないブロックすべてのデータのサイズ。
 
     >[!NOTE]
     >スナップショットが使用されている場合、このサイズは、ベース BLOB またはスナップショット BLOB の一意のデータだけを含みます。 コミットされていないブロックが 1 週間後に使用されていなければ、ガベージ コレクションされます。 その後は、課金対象ではありません。
 
 * ページ BLOB の場合:
-    * 連続しないデータのあるページ範囲の数に 12 バイトを掛けます。 これは **GetPageRanges** API を呼び出すときに表示される一意のページ範囲の数です。
+  * 連続しないデータのあるページ範囲の数に 12 バイトを掛けます。 これは **GetPageRanges** API を呼び出すときに表示される一意のページ範囲の数です。
 
-    * 保存されているすべてのページのデータのサイズ (バイト単位)。
+  * 保存されているすべてのページのデータのサイズ (バイト単位)。
 
     >[!NOTE]
     >スナップショットを使用すると、計算中のベース BLOB またはスナップショット BLOB の一意のページだけがこのサイズに含まれます。

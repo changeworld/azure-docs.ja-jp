@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 713905ac0c6dcd53f468fe7e9af7c565ee38ac66
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b25a47e929ef540ad3a74a86d431962d37cde434
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106530"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009436"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 の概要
 
@@ -37,7 +37,7 @@ Data Lake Storage Gen2 の基礎部分は、BLOB ストレージに[階層型名
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage Gen2 の主な機能
 
--   **Hadoop と互換性のあるアクセス**:Data Lake Storage Gen2 を使用すると、[Hadoop 分散ファイル システム (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理およびアクセスを行うことができます。 新しい [ABFS ドライバー](data-lake-storage-abfs-driver.md)は、[Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*、* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)、[SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) など、すべての Apache Hadoop 環境内で、Data Lake Storage Gen2 に格納されているデータにアクセスするために使用できます。
+-   **Hadoop と互換性のあるアクセス**:Data Lake Storage Gen2 を使用すると、[Hadoop 分散ファイル システム (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にデータの管理およびアクセスを行うことができます。 新しい [ABFS ドライバー](data-lake-storage-abfs-driver.md)は、[Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*、* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)、[SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) など、すべての Apache Hadoop 環境内で、Data Lake Storage Gen2 に格納されているデータにアクセスするために使用できます。
 
 -   **POSIX アクセス許可のスーパーセット**:Data Lake Gen2 のセキュリティ モデルは、ACL および POSIX のアクセス許可に加え、Data Lake Storage Gen2 固有の追加設定をサポートしています。 設定は、ストレージ エクスプローラーだけでなく、Hive や Spark などのフレームワークを使用して構成できます。
 

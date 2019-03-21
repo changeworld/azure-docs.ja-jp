@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub の X.509 セキュリティのチュートリアル | Microsoft Docs
 description: シミュレートされた環境で Azure IoT Hub の X.509 ベースのセキュリティの作業を開始します。
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
-ms.author: dobett
-ms.openlocfilehash: b190390840a765953a2125348c3c9188f6bf7d37
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 80d3d3cf5f386c5f21e1e8fed1071a12c10235cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452036"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091615"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 
@@ -65,7 +65,7 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、[X.509 証明�
 
 10. 証明書が正常にアップロードされたら、**[確認]** をクリックします。 **[証明書]** ブレードでは、証明書の **[状態]** が **_[確認済み]_** に変わります。 自動的に更新されない場合は、**[更新]** をクリックしてください。
 
-   ![証明書のアップロードの確認](./media/iot-hub-security-x509-get-started/upload-cert-verification.png)  
+    ![証明書のアップロードの確認](./media/iot-hub-security-x509-get-started/upload-cert-verification.png)  
 
 
 <a id="createdevice"></a>

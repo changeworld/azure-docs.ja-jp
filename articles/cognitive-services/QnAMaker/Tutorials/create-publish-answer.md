@@ -7,27 +7,27 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 348cb6a451f15ddec6b7ee013832ad6c563bb2da
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 42d53cee48be73a0d151b6f44d381463fa1c4e16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874952"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102164"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>チュートリアル: C# を使用してナレッジ ベースを作成し、質問に回答する
 
 このチュートリアルでは、プログラムでナレッジ ベース (KB) を作成、発行した後、そのナレッジ ベースを使用してユーザーの質問に回答する手順について説明します。 
 
 > [!div class="checklist"]
-* ナレッジ ベースの作成 
-* 作成の状態を確認する
-* ナレッジ ベースをトレーニングして発行する
-* エンドポイント情報を取得する
-* Curl を使用してナレッジ ベースを照会する
+> * ナレッジ ベースの作成 
+> * 作成の状態を確認する
+> * ナレッジ ベースをトレーニングして発行する
+> * エンドポイント情報を取得する
+> * Curl を使用してナレッジ ベースを照会する
 
 
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。

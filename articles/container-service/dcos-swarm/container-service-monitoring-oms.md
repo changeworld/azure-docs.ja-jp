@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 1278c788c0d36b2cadf860e379791ecd823a510b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113850"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110972"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(非推奨) Log Analytics で Azure Container Service DC/OS クラスターを監視する
 
@@ -34,25 +34,25 @@ Log Analytics は、オンプレミスのインフラストラクチャやクラ
 ### <a name="pre-requisite"></a>前提条件
 - [Microsoft Azure サブスクリプション](https://azure.microsoft.com/free/) - 無料でサブスクリプションを取得できます。  
 - Log Analytics ワークスペースのセットアップ - 下の「手順 3.」を参照
-- [DC/OS CLI](http://docs.mesosphere.com/1.12/cli) がインストールされていること。
+- [DC/OS CLI](https://docs.mesosphere.com/1.12/cli) がインストールされていること。
 
 1. DC/OS ダッシュボードで、次のように [Universe] をクリックし、"OMS" を検索します。
 
    >[!NOTE]
    >OMS は、Log Analytics と呼ばれるようになりました。
 
- ![](media/container-service-monitoring-oms/image2.png)
+   ![](media/container-service-monitoring-oms/image2.png)
 
 2. **[インストール]** をクリックします。 バージョン情報と **[パッケージのインストール]** または **[Advanced Installation] (高度なインストール)** ボタンを含むポップアップが表示されます。 **[Advanced Installation (高度なインストール)]** をクリックすると、**[OMS specific configuration properties (OMS に固有の構成のプロパティ)]** ページが表示されます。
 
- ![](media/container-service-monitoring-oms/image3.png)
+   ![](media/container-service-monitoring-oms/image3.png)
 
- ![](media/container-service-monitoring-oms/image4.png)
+   ![](media/container-service-monitoring-oms/image4.png)
 
 3. ここでは、`wsid` (Log Analytics ワークスペース ID) と `wskey` (ワークスペース ID の主キー) を入力するよう求められます。 `wsid` と `wskey` の両方を取得するには、<https://mms.microsoft.com> でアカウントを作成する必要があります。
-手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして `wsid` と `wskey` を取得する必要があります。
+   手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして `wsid` と `wskey` を取得する必要があります。
 
- ![](media/container-service-monitoring-oms/image5.png)
+   ![](media/container-service-monitoring-oms/image5.png)
 
 4. 必要なインスタンスの数を選択し、[Review and Install] (確認およびインストール) ボタンをクリックします。 通常、インスタンスの数は、エージェント クラスター内の VM の数と同じにします。 Linux 用 Log Analytics エージェントは、監視のための情報やログ情報を収集する各 VM に個別のコンテナーとしてインストールされます。
 

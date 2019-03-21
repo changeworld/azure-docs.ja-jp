@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f2e05e5e430760d16d5d494a6f27ef985aafc487
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445544"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097993"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル:Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -111,12 +111,12 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションに、Zendesk アカウントの **[管理ユーザー名]**、**[シークレット トークン]**、**[ドメイン]** を入力します。 これらの値の例を次に示します。
 
-    *   **[管理ユーザー名]** フィールドには、Zendesk テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
+   * **[管理ユーザー名]** フィールドには、Zendesk テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
 
-    *   **[シークレット トークン]** フィールドに、手順 6 で説明されているシークレット トークンを設定します。
+   * **[シークレット トークン]** フィールドに、手順 6 で説明されているシークレット トークンを設定します。
 
-    *   **[ドメイン]** フィールドに、Zendesk テナントのサブドメインを設定します。
-    例:https://my-tenant.zendesk.com のテナント URL があるアカウントの場合、サブドメインは **my-tenant** になります。
+   * **[ドメイン]** フィールドに、Zendesk テナントのサブドメインを設定します。
+     例:https://my-tenant.zendesk.com のテナント URL があるアカウントの場合、サブドメインは **my-tenant** になります。
 
 6. Zendesk アカウントの**シークレット トークン** は、**[管理者] > [API] > [設定]** に配置されています。
    **[Token Access]\(トークン アクセス\)** が **[有効]** に設定されていることを確認します。

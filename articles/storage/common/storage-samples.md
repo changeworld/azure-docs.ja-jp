@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/03/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d1eac8f79ea53643659f8780ee03f8ced13c7dcd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 411b43ec631c77246da1ee55f2532486f8b55ffc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452228"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006631"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage のサンプル
 
@@ -63,8 +63,8 @@ C++ のサンプルを調べるには、NuGet から [C++ ストレージ クラ
 |----------|---------------|-------------|
 | .NET | [.NET クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/mt347887.aspx) | [.NET ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-net) |
 | Java | [Java クライアント ライブラリ リファレンス](https://docs.microsoft.com/java/api/overview/azure/storage) | [Java ストレージ クライアント ライブラリのソース コード](https://github.com/azure/azure-storage-java) |
-| Node.js | [Node.js クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-node) | [Node.js ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-node) |
-| C++ | [C++ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp/) | [C++ ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-cpp)|
+| Node.js | [Node.js クライアント ライブラリ リファレンス](https://azure.github.io/azure-storage-node) | [Node.js ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-node) |
+| C++ | [C++ クライアント ライブラリ リファレンス](https://azure.github.io/azure-storage-cpp/) | [C++ ストレージ クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-cpp)|
 
 ## <a name="next-steps"></a>次の手順
 

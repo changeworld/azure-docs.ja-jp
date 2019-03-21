@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4184d3605c464b5da495de0698155dda1ae4e474
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b7cc47c449b91693831dda74bf987f595fe65681
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438713"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997880"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple デバイスを管理する
 
@@ -77,7 +77,7 @@ Azure PowerShell の使用方法の詳細については、「[Azure PowerShell 
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. 前の手順で作成したフォルダーに [NuGet CLI をダウンロード](http://www.nuget.org/downloads)します。 _nuget.exe_ にはさまざまなバージョンがあります。 SDK に対応するバージョンを選択します。 各ダウンロード リンクは、_.exe_ ファイルを直接ポイントします。 ブラウザーから実行するのではなく、ファイルを右クリックしてコンピューターに保存してください。
+2. 前の手順で作成したフォルダーに [NuGet CLI をダウンロード](https://www.nuget.org/downloads)します。 _nuget.exe_ にはさまざまなバージョンがあります。 SDK に対応するバージョンを選択します。 各ダウンロード リンクは、_.exe_ ファイルを直接ポイントします。 ブラウザーから実行するのではなく、ファイルを右クリックしてコンピューターに保存してください。
 
     次のコマンドを実行して、スクリプトをダウンロードし、前に作成した同じフォルダーに格納することもできます。
     

@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/10/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 3b6daa60e8c8945d49170a00da5bd3ffb57b48ac
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e98cf44db01de1f99836e247066ba01006eac97b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000116"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733301"
 ---
 # <a name="manage-multiple-tenants"></a>複数のテナントの管理
 
@@ -56,7 +56,7 @@ ms.locfileid: "56000116"
 
 [ビデオをアップロードする](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)ときに、テナントごとに異なるパーティション属性を指定することができます。 これにより、[検索 API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?) での分離が可能になります。 検索 API でパーティション属性を指定することにより、指定したパーティションのみの結果を取得します。 
 
- ### <a name="considerations"></a>考慮事項
+### <a name="considerations"></a>考慮事項
 
 * テナント間でコンテンツとカスタマイズ モデルを共有する機能。
 * あるテナントによって他のテナントのパフォーマンスに影響があります。

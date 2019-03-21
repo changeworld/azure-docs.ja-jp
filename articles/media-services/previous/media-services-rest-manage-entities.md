@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0f500ec776d90755d6738af80c34866105d354f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ffbf30f2bfdf0a175513a8d2b9182b35c39f6aae
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999404"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58292451"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>REST による Media Services エンティティの管理  
 
@@ -29,7 +29,7 @@ ms.locfileid: "55999404"
 > 
 > 
 
-Microsoft Azure Media Services は、OData v3 上に構築された REST ベースのサービスです。 他の OData サービスで行うのとほとんど同じ方法で、エンティティの追加、照会、更新、削除を行うことができます。 該当する場合には例外が呼び出されます。 OData の詳細については、 [Open Data Protocol に関するドキュメント](http://www.odata.org/documentation/)を参照してください。
+Microsoft Azure Media Services は、OData v3 上に構築された REST ベースのサービスです。 他の OData サービスで行うのとほとんど同じ方法で、エンティティの追加、照会、更新、削除を行うことができます。 該当する場合には例外が呼び出されます。 OData の詳細については、 [Open Data Protocol に関するドキュメント](https://www.odata.org/documentation/)を参照してください。
 
 このトピックでは、REST で Azure Media Services エンティティを管理する方法を説明します。
 

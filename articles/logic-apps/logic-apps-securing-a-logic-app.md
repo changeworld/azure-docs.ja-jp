@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: c3057934d960efd0a846ef31c5fac5abd63a21f6
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 34076b790a91b1c0e9d8bee224423aab0db7c8f3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768471"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891809"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Azure Logic Apps へのアクセスのセキュリティ保護
 
@@ -238,7 +238,7 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
          "type": "Http",
          "inputs": {
             "method": "GET",
-            "uri": "http://www.microsoft.com",
+            "uri": "https://www.microsoft.com",
             "authentication": {
                "type": "Basic",
                "username": "@parameters('usernameParam')",
@@ -353,7 +353,7 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
                      "type": "Http",
                      "inputs": {
                         "method": "GET",
-                        "uri": "http://www.microsoft.com",
+                        "uri": "https://www.microsoft.com",
                         "authentication": {
                            "type": "Basic",
                            "username": "@parameters('usernameParam')",

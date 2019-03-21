@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 610b140fd6049842b993c17fd53bebf799f83f5c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 59f88d54d3542738f1a500c8c476995eb1535ecf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453146"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006489"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>ディープ ラーニングと AI のフレームワーク
 [データ サイエンス仮想マシン](https://aka.ms/dsvm) (DSVM) と[ディープ ラーニング VM](https://aka.ms/dsvm/deeplearning) は、多数のディープ ラーニング フレームワークをサポートし、予測分析や、画像および言語の理解などの認識機能を駆使した人工知能 (AI) アプリケーションの構築を支援します。
@@ -218,8 +218,7 @@ X2Go で VM にログインします。 ターミナルで、サービスを開�
 | DSVM での構成/インストール方法  | PyTorch は、[Python 3.5](dsvm-languages.md#python-linux-and-windows-server-2012-edition) にインストールされています。  |
 | サンプルへのリンク      | サンプル Jupyter ノートブックが含まれています。また、サンプルは /dsvm/samples/pytorch でも見つけることができます。      |
 | DSVM 上の関連ツール      | Torch      |
-| 使用/実行方法 |
-* ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/> * Jupyter で: [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている PyTorch ディレクトリを開きます。  |
+| 使用/実行方法 |* ターミナルで、適切な環境をアクティブ化し、Python を実行します。 <br/> * Jupyter で: [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-data-science-virtual-machine-for-linux) に接続し、サンプルの保存されている PyTorch ディレクトリを開きます。  |
 
 ## <a name="mxnet-model-server"></a>MXNet モデル サーバー
 

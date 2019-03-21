@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 940ca126eb18b81fd31f1ee2876948563e9d97af
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a8ff17656978e6e4e8741c19cda79743560481a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188378"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080847"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する (プレビュー)
 
@@ -106,10 +106,10 @@ UI を通じて新しいスコープを公開するには:
       }
       ```
 
-  > [!NOTE]
-  > `id` の値は、プログラムによって、または [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) などの GUID 生成ツールを使って作成する必要があります。 `id` は、Web API によって公開されるスコープの一意の識別子となります。 クライアントに対して Web API にアクセスするためのアクセス許可が適切に構成されていると、そのクライアントには、Azure AD によって OAuth 2.0 アクセス トークンが発行されます。 クライアントが Web API を呼び出すときには、このアクセス トークンを提示することになります。そして、このアクセス トークンでは、スコープ (scp) 要求がアプリケーションの登録時に要求されたアクセス許可のとおりに設定されています。
-  >
-  > 公開するスコープは、必要に応じて後から追加することもできます。 たとえば、Web API で、さまざまな機能が関連付けられたスコープをいくつも公開しているとします。 リソースは、受け取った OAuth 2.0 アクセス トークンのスコープ (`scp`) 要求を評価することによって、実行時に Web API へのアクセスを制御します。
+   > [!NOTE]
+   > `id` の値は、プログラムによって、または [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) などの GUID 生成ツールを使って作成する必要があります。 `id` は、Web API によって公開されるスコープの一意の識別子となります。 クライアントに対して Web API にアクセスするためのアクセス許可が適切に構成されていると、そのクライアントには、Azure AD によって OAuth 2.0 アクセス トークンが発行されます。 クライアントが Web API を呼び出すときには、このアクセス トークンを提示することになります。そして、このアクセス トークンでは、スコープ (scp) 要求がアプリケーションの登録時に要求されたアクセス許可のとおりに設定されています。
+   >
+   > 公開するスコープは、必要に応じて後から追加することもできます。 たとえば、Web API で、さまざまな機能が関連付けられたスコープをいくつも公開しているとします。 リソースは、受け取った OAuth 2.0 アクセス トークンのスコープ (`scp`) 要求を評価することによって、実行時に Web API へのアクセスを制御します。
 
 1. 完了したら、**[保存]** をクリックします。 これで Web API の構成が終わり、ディレクトリ内の他のアプリケーションが利用できるようになりました。
 1. [他のアプリケーションに Web API が公開されていることを確認する](#verify-the-web-api-is-exposed-to-other-applications)ための手順を実行します。

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 3cac893fcaafd4fe8d35aab2a10da92019d3ed42
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 114f4ccccaa861928263eb59b4e43379989abcca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698967"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077855"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Contoso の移行: オンプレミス Linux アプリを Azure VM と Azure MySQL にリホストする
 
@@ -127,7 +127,7 @@ Contoso 管理者は、次のようにして移行を完了します。
 > [!div class="checklist"]
 > * **手順 1:Site Recovery のために Azure を準備する**: レプリケートされたデータを保持するための Azure ストレージ アカウントを作成し、Recovery Services コンテナーを作成します。
 > * **手順 2:Site Recovery 用にオンプレミスの VMware を準備する**: フェールオーバー後に Azure VM に接続するために、VM 検出およびエージェント インストール用のアカウントを準備します。
- * **手順 3: データベースをプロビジョニングする**: Azure で、Azure MySQL データベースのインスタンスをプロビジョニングします。
+>   * **手順 3: データベースをプロビジョニングする**: Azure で、Azure MySQL データベースのインスタンスをプロビジョニングします。
 > * **手順 4:VM をレプリケートする**:  Site Recovery のソース環境とターゲット環境を構成し、レプリケーション ポリシーを設定して、Azure のストレージへの VM のレプリケーションを開始します。
 > * **手順 5:データベースを移行する**: MySQL ツールを使用して移行を設定します。
 > * **手順 6:Site Recovery を使用して VM を移行する**:最後に、テスト フェールオーバーを実行してすべてが機能していることを確認した後、完全フェールオーバーを実行して VM を Azure に移行します。
@@ -147,10 +147,10 @@ Contoso 管理者は、次のようにストレージ アカウントとコン�
 
 1. 米国東部 2 リージョンの中にストレージ アカウント (**contosovmsacc20180528**) を作成します。
 
-    - ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
-    - Standard ストレージと LRS レプリケーション付きの汎用アカウントを使用します。
+   - ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
+   - Standard ストレージと LRS レプリケーション付きの汎用アカウントを使用します。
 
-    ![Site Recovery ストレージ](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
+     ![Site Recovery ストレージ](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
 
 3. ネットワークとストレージ アカウントを準備したら、コンテナー (ContosoMigrationVault) を作成し、それをプライマリの米国東部 2 リージョン内の **ContosoFailoverRG** リソース グループ内に配置します。
 

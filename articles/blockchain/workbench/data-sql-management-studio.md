@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 32606f988152b061fa1923c409207b2a650e64ba
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a5554f1fe0a14799a100aefc975a110d3a9a6311
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332457"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088725"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>SQL Server Management Studio で Azure Blockchain Workbench データを使用します
 
@@ -38,9 +38,9 @@ Microsoft SQL Server Management Studio では、Azure Blockchain ワークベン
 
     ![SQL 資格情報を入力します](./media/data-sql-management-studio/sql-creds.png)
 
- 4. SQL Server Management Studio では、Azure Blockchain Workbench データベース内のデータベース、データベース ビュー、およびストアド プロシージャの一覧が表示されます。
+   1. SQL Server Management Studio では、Azure Blockchain Workbench データベース内のデータベース、データベース ビュー、およびストアド プロシージャの一覧が表示されます。
 
-    ![データベースの一覧](./media/data-sql-management-studio/db-list.png)
+      ![データベースの一覧](./media/data-sql-management-studio/db-list.png)
 
 5. データベース ビューのいずれかに関連付けられているデータを表示するには、以下の手順を使用して、自動的に選択ステートメントを生成できます。
 6. オブジェクト エクスプローラーのデータベースビューのいずれかを右クリックします。

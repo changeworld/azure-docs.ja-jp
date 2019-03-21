@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c45a19c8f6bbce2ffdfff0758eb3e57203b7cf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fd7145be5f82a90acced0f02e35f6c8880dbcad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211208"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120399"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>チュートリアル:自動的にユーザーをプロビジョニングするように Cisco Spark を構成する
 
@@ -113,28 +113,28 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
     *   **[シークレット トークン]** フィールドに、手順 6 で説明するシークレット トークンを設定します。
 
 1. Admin アカウントで [Cisco Spark 開発者サイト](https://developer.webex.com/)にログインし、 Cisco Spark アカウントの**テナントの URL** と **シークレット トークン**を確認します。 ログインしたら、次の操作を実行します。
-    * [[Getting Started]\(はじめに\) ページ](https://developer.webex.com/getting-started.html)に移動します。
-    * [[Authentication]\(認証\) セクション](https://developer.webex.com/getting-started.html#authentication)
-    にスクロールダウンします。![Cisco Spark 認証トークン](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
-    * ボックス内の英数字文字列が、**シークレット トークン**です。 このトークンをクリップボードにコピーします。
-    * [[Get My Own Details]\([詳細を表示]\) ページ](https://developer.webex.com/endpoint-people-me-get.html)に移動します。
-        * [Test Mode]\(テスト モード\) が [オン] であることを確認します。
-        * [Authorization]\(許可\) フィールドに "Bearer" という語とスペースを入力し、その後にシークレット トークンを貼り付けます。![Cisco Spark 認証トークン](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
-        * [Run]\(実行\) をクリックします。
-    * 右側の応答テキストで、**テナント ID** が "orgId" として表示されます。
+   * [[Getting Started]\(はじめに\) ページ](https://developer.webex.com/getting-started.html)に移動します。
+   * [[Authentication]\(認証\) セクション](https://developer.webex.com/getting-started.html#authentication)
+     にスクロールダウンします。![Cisco Spark 認証トークン](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
+   * ボックス内の英数字文字列が、**シークレット トークン**です。 このトークンをクリップボードにコピーします。
+   * [[Get My Own Details]\([詳細を表示]\) ページ](https://developer.webex.com/endpoint-people-me-get.html)に移動します。
+       * [Test Mode]\(テスト モード\) が [オン] であることを確認します。
+       * [Authorization]\(許可\) フィールドに "Bearer" という語とスペースを入力し、その後にシークレット トークンを貼り付けます。![Cisco Spark 認証トークン](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
+       * [Run]\(実行\) をクリックします。
+   * 右側の応答テキストで、**テナント ID** が "orgId" として表示されます。
 
-    ```json
-    {
-        "id": "(...)",
-        "emails": [
-            "admin.user@contoso.com"
-        ],
-        "displayName": "John Smith",
-        "nickName": "John",
-        "orgId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-        (...)
-    }
-    ```
+     ```json
+     {
+       "id": "(...)",
+       "emails": [
+           "admin.user@contoso.com"
+       ],
+       "displayName": "John Smith",
+       "nickName": "John",
+       "orgId": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+       (...)
+     }
+     ```
 
 1. 手順 5 のフィールドに入力したら、**[テスト接続]** をクリックして Azure AD が Cisco Spark に接続できることを確認します。 接続できない場合は、使用中の Cisco Spark アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

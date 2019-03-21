@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 83225ef3991ba7f3714ec6e18d6fd1eee3029f41
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c4c5c53f19831946675aca74a631c3e582690308
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878852"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897692"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-php-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と PHP を使用してリモート画像を分析する
 
@@ -69,7 +69,7 @@ $ocpApimSubscriptionKey = '<Subscription Key>';
 // from westus, replace "westcentralus" in the URL below with "westus".
 $uriBase = 'https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/';
 
-$imageUrl = 'http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg';
+$imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg';
 
 require_once 'HTTP/Request2.php';
 

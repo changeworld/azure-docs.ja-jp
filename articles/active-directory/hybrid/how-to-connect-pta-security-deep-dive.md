@@ -15,12 +15,12 @@ ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e1d3058600bca6630c3efcbb860b7f8eeeaf57
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 80b8db3bb2e7a21011508f30492bf99c7ecca583
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096862"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -195,8 +195,8 @@ Azure AD は、新しいバージョンのソフトウェアを、署名済み�
 3. アップデーターは、MSI が Microsoft によって署名されていることを確認します。
 4. アップデーターは MSI を実行します。 この操作では次の手順を実行します。
 
- > [!NOTE]
- > アップデーターは[ローカル システム](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)権限で実行されます。
+   > [!NOTE]
+   > アップデーターは[ローカル システム](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)権限で実行されます。
 
     - 認証エージェント サービスの停止
     - 新しいバージョンの認証エージェントのサーバーへのインストール

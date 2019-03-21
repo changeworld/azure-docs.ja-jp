@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: e51fa086b26e5692d8dd572654b7c1ec50c641c5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2412bd5b4b4f05cdeb1638aa3d9ef1676e7b8315
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005150"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293075"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 >
 > Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「[Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 >
-> JSON を使用しており、(たとえば、リンクされたオブジェクトを参照するために) 要求で **__metadata** キーワードを使用することを指定する場合は、**Accept** ヘッダーを [JSON Verbose 形式](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Accept: application/json;odata=verbose) に設定する必要があります。
+> JSON を使用しており、(たとえば、リンクされたオブジェクトを参照するために) 要求で **__metadata** キーワードを使用することを指定する場合は、**Accept** ヘッダーを [JSON Verbose 形式](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/) (Accept: application/json;odata=verbose) に設定する必要があります。
 >
 >
 
@@ -151,7 +151,7 @@ AMS API に接続する方法については、「[Azure AD 認証を使用し�
 * タスクの入力がジョブ内の別のタスクの出力である、1 つ以上のタスクがある必要があります。
 
 ## <a name="use-odata-batch-processing"></a>OData バッチ処理の使用
-次の例では、OData バッチ処理を使用して、ジョブとタスクを作成する方法を示します。 バッチ処理の詳細については、 [Open Data Protocol (OData) のバッチ処理](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)に関するページを参照してください。
+次の例では、OData バッチ処理を使用して、ジョブとタスクを作成する方法を示します。 バッチ処理の詳細については、 [Open Data Protocol (OData) のバッチ処理](https://www.odata.org/documentation/odata-version-3-0/batch-processing/)に関するページを参照してください。
 
     POST https://media.windows.net/api/$batch HTTP/1.1
     DataServiceVersion: 1.0;NetFx

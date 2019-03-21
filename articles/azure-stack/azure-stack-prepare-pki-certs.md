@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: fab7ead59ce8d7e12d145095c64cedf4234e6233
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6e11df8bedb88d3e505b7fa3c55ade13282911a2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656721"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106493"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-use-in-deployment-or-rotation"></a>デプロイまたはローテーション用の Azure Stack PKI 証明書の準備
 
@@ -32,23 +32,23 @@ ms.locfileid: "55656721"
 
 ### <a name="import-the-certificate"></a>証明書のインポート
 
-1.  [任意の CA から取得した](azure-stack-get-pki-certs.md)オリジナル バージョンの証明書を、デプロイ ホスト上のディレクトリにコピーします。 
-  > [!WARNING]
-  > CA によって直接提供されたファイルから何らかの方法で既にインポート、エクスポート、または変更されているファイルをコピーすることはできません。
+1. [任意の CA から取得した](azure-stack-get-pki-certs.md)オリジナル バージョンの証明書を、デプロイ ホスト上のディレクトリにコピーします。 
+   > [!WARNING]
+   > CA によって直接提供されたファイルから何らかの方法で既にインポート、エクスポート、または変更されているファイルをコピーすることはできません。
 
-1.  証明書を右クリックして、CA からどのように証明書が配信されたかによって、**[証明書のインストール]** または **[PFX のインストール]** を選択します。
+1. 証明書を右クリックして、CA からどのように証明書が配信されたかによって、**[証明書のインストール]** または **[PFX のインストール]** を選択します。
 
 1. **証明書のインポート ウィザード**で、インポートの場所として **[ローカル コンピューター]** を選択します。 **[次へ]** を選択します。 次の画面で、再度次へをクリックします。
 
     ![ローカル コンピューターのインポート場所](./media/prepare-pki-certs/1.png)
 
-1.  **[Place all certificate in the following store]\(すべての証明書を次のストアに配置する\)** を選択し、場所として **[エンタープライズの信頼]** を選択します。 **[OK]** をクリックして証明書ストアの選択ダイアログ ボックスを閉じ、**[次へ]** をクリックします。
+1. **[Place all certificate in the following store]\(すべての証明書を次のストアに配置する\)** を選択し、場所として **[エンタープライズの信頼]** を選択します。 **[OK]** をクリックして証明書ストアの選択ダイアログ ボックスを閉じ、**[次へ]** をクリックします。
 
-    ![証明書ストアの構成](./media/prepare-pki-certs/3.png)
+   ![証明書ストアの構成](./media/prepare-pki-certs/3.png)
 
-    a. PFX をインポートする場合は、ダイアログがさらに表示されます。 **[秘密キーの保護]** ページで、証明書ファイルのパスワードを入力し、**[Mark this key as exportable. This allows you to back up or transport your keys at a later time]\(このキーをエクスポート可能としてマークします。これにより、後でキーをバックアップまたは転送できるようになります\)** オプションを有効にします。 **[次へ]** を選択します。
+   a. PFX をインポートする場合は、ダイアログがさらに表示されます。 **[秘密キーの保護]** ページで、証明書ファイルのパスワードを入力し、**[Mark this key as exportable. This allows you to back up or transport your keys at a later time]\(このキーをエクスポート可能としてマークします。これにより、後でキーをバックアップまたは転送できるようになります\)** オプションを有効にします。 **[次へ]** を選択します。
 
-    ![キーをエクスポート可能としてマークする](./media/prepare-pki-certs/2.png)
+   ![キーをエクスポート可能としてマークする](./media/prepare-pki-certs/2.png)
 
 1. [完了] をクリックしてインポートを完了します。
 
@@ -70,19 +70,19 @@ ms.locfileid: "55656721"
 
 1. 証明書管理者コンソールのタスク バーから、**[アクション]** > **[All Tasks]\(すべてのタスク\)** > **[エクスポート]** を選択します。 **[次へ]** を選択します。
 
-  > [!NOTE]
-  > 所持している Azure Stack 証明書により、この手順は何度か完了する必要があります。
+   > [!NOTE]
+   > 所持している Azure Stack 証明書により、この手順は何度か完了する必要があります。
 
 1. **[はい、秘密キーをエクスポートします]** を選択し、**[次へ]** をクリックします。
 
 1. [エクスポート ファイルの形式] セクションで、次の操作を行います。
     
-    - **[Include all certificates in the certificate if possible]\(証明書にすべての証明書を含める (可能な場合)\)** を選択します。  
-    - **[Export all Extended Properties]\(すべての拡張プロパティをエクスポートする\)** を選択します。  
-    - **[証明書のプライバシーを有効にする ]** を選択します。  
-    - **[次へ]** をクリックします。  
+   - **[Include all certificates in the certificate if possible]\(証明書にすべての証明書を含める (可能な場合)\)** を選択します。  
+   - **[Export all Extended Properties]\(すべての拡張プロパティをエクスポートする\)** を選択します。  
+   - **[証明書のプライバシーを有効にする ]** を選択します。  
+   - **[次へ]** をクリックします。  
     
-    ![いくつかのオプションが選択されている [Certificate export wizard]\(証明書のエクスポート ウィザード\)](./media/prepare-pki-certs\azure-stack-save-cert.png)
+     ![いくつかのオプションが選択されている [Certificate export wizard]\(証明書のエクスポート ウィザード\)](./media/prepare-pki-certs/azure-stack-save-cert.png)
 
 1. **[パスワード]** を選択し、証明書のパスワードを指定します。 次のパスワードの複雑さの要件を満たしているパスワードを作成します。 8 文字の最小長。 パスワードに、大文字、小文字、0 - 9 の数字、特殊文字、および大文字でも小文字でもない英字のうち 3 種類以上が含まれている。 このパスワードを書き留めておいてください。 デプロイ パラメーターとして使用します。
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4e28dff6235e869c9275a8b0ba8d80252a9ea792
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6a9a819e75e487999a2b50ae758b8d9c6c716a4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167378"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084897"
 ---
 # <a name="general-claims-transformations"></a>一般要求変換
 
@@ -48,7 +48,7 @@ ms.locfileid: "55167378"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputClaim**: someone@contoso.com
+  - **inputClaim**: someone@contoso.com
 - 出力要求: 
     - **outputClaim**: true
 

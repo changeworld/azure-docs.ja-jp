@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: d0b171f05bb2243da83509348b099bebcb44ebc7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 81407a298ccfe1b9884fc5d5b815ac8c18ffee6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508710"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094679"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>C# IoT Edge モジュールを開発してファイルを Data Box Edge (プレビュー) に移動する
 
@@ -71,14 +71,14 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 2. **[Create a resource] (リソースの作成) > [コンテナー] > [Container Registry]** を選択します。 **Create** をクリックしてください。
 3. 次を指定します。
 
-    1. 5 - 50 文字の英数字を含む、Azure 内で一意の**レジストリ名**。
-    2. **[サブスクリプション]** を選択します。
-    3. 新しい**リソース グループ**を作成するか、既存のリソース グループを選択します。
-    4. **[場所]** を選択します。 この場所には、Data Box Edge リソースと関連付けられているのと同じ場所を指定することをお勧めします。
-    5. **[管理者ユーザー]** を **[有効]** に切り替えます。
-    6. SKU を **[Basic]** に設定します。
+   1. 5 - 50 文字の英数字を含む、Azure 内で一意の**レジストリ名**。
+   2. **[サブスクリプション]** を選択します。
+   3. 新しい**リソース グループ**を作成するか、既存のリソース グループを選択します。
+   4. **[場所]** を選択します。 この場所には、Data Box Edge リソースと関連付けられているのと同じ場所を指定することをお勧めします。
+   5. **[管理者ユーザー]** を **[有効]** に切り替えます。
+   6. SKU を **[Basic]** に設定します。
 
-    ![コンテナー レジストリを作成する](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![コンテナー レジストリを作成する](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. **作成**を選択します。
 5. コンテナー レジストリが作成されたら、その場所を参照し、**[アクセス キー]** を選択します。

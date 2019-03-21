@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8225f5a093724c00dcc336d5dc2195f4addc998b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f0972e840fab3c624616ba8aa70bae74be5b1dc2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237826"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090476"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリを作成する 
 
@@ -52,7 +52,7 @@ ms.locfileid: "56237826"
 
     c. **[ASP.NET Web アプリケーション]** を選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **.NET Framework 4.5.2** 以降が選択されていることを確認します。
+    d. **.NET Framework 4.5.2** 以降が選択されていることを確認します。
 
     e. **[名前]** ボックスで、プロジェクトに名前を付けます。 この例では、**ContosoTeamStats** という名前を使用しました。
 
@@ -74,9 +74,9 @@ ms.locfileid: "56237826"
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>*CacheSecrets.config* ファイルを編集するには
 
-3. コンピューター上に *CacheSecrets.config* というファイルを作成します。そのファイルをサンプル アプリケーションのソース コードでチェックインされない場所に配置します。 このクイック スタートでは、*CacheSecrets.config* ファイルを *C:\AppSecrets\CacheSecrets.config* に配置します。
+1. コンピューター上に *CacheSecrets.config* というファイルを作成します。そのファイルをサンプル アプリケーションのソース コードでチェックインされない場所に配置します。 このクイック スタートでは、*CacheSecrets.config* ファイルを *C:\AppSecrets\CacheSecrets.config* に配置します。
 
-4. *CacheSecrets.config* ファイルを編集します。 次の内容を追加します。
+1. *CacheSecrets.config* ファイルを編集します。 次の内容を追加します。
 
     ```xml
     <appSettings>
@@ -84,14 +84,14 @@ ms.locfileid: "56237826"
     </appSettings>
     ```
 
-5. `<cache-name>` は実際のキャッシュ ホスト名に置き換えます。
+1. `<cache-name>` は実際のキャッシュ ホスト名に置き換えます。
 
-6. `<access-key>` は、実際のキャッシュのプライマリ キーに置き換えます。
+1. `<access-key>` は、実際のキャッシュのプライマリ キーに置き換えます。
 
     > [!TIP]
     > セカンダリ アクセス キーは、プライマリ アクセス キーを再生成する間の代替キーとして、キー ローテーションのときに使用できます。
->
-7. ファイルを保存します。
+   >
+1. ファイルを保存します。
 
 ## <a name="update-the-mvc-application"></a>MVC アプリケーションを更新する
 

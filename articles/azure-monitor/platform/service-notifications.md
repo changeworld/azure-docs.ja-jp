@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/12/2018
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 9bd5ec3471fc3447d1e29d875c154793daf8e9e5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ab4aa2f37d5a883c83b8ee09b5de6551ebf13d2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474032"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995150"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure Portal を使用したサービス正常性通知の表示
 
@@ -60,24 +60,24 @@ Properties.communicationId | このイベントが関連付けられている通
 ### <a name="details-on-service-health-level-information"></a>サービス正常性レベルの詳細情報
 
 **操作が必要** (properties.incidentType == ActionRequired)
-    - Informational - 既存のサービスへの影響を防ぐために管理者の操作が必要です
+- Informational - 既存のサービスへの影響を防ぐために管理者の操作が必要です
     
 **メンテナンス** (properties.incidentType == Maintenance)
-    - Warning - 緊急のメンテナンス
-    - Informational - 標準的な計画済みメンテナンス
+- Warning - 緊急のメンテナンス
+- Informational - 標準的な計画済みメンテナンス
 
 **情報** (properties.incidentType == Information)
-    - Informational - 既存のサービスへの影響を防ぐために管理者の操作が必要になる場合があります
+- Informational - 既存のサービスへの影響を防ぐために管理者の操作が必要になる場合があります
 
 **セキュリティ** (properties.incidentType == Security)
-    - Error - 複数の領域にまたがり多様なサービスを利用する際に発生する問題で、範囲は多岐にわたり多くのお客様に影響します。
-    - Warning - 特定のサービス、あるいは特定の領域を利用した際に発生する問題で、そうしたサービスを利用される一部のお客様に影響します。
-    - Informational - 管理操作あるいは待機時間に影響し、サービスの可用性には影響しない問題です。
+- Error - 複数の領域にまたがり多様なサービスを利用する際に発生する問題で、範囲は多岐にわたり多くのお客様に影響します。
+- Warning - 特定のサービス、あるいは特定の領域を利用した際に発生する問題で、そうしたサービスを利用される一部のお客様に影響します。
+- Informational - 管理操作あるいは待機時間に影響し、サービスの可用性には影響しない問題です。
 
 **サービスに関する問題** (properties.incidentType == Incident)
-    - Error - 複数の領域にまたがり多様なサービスを利用する際に発生する問題で、範囲は多岐にわたり多くのお客様に影響します。
-    - Warning - 特定のサービス、あるいは特定の領域を利用した際に発生する問題で、そうしたサービスを利用される一部のお客様に影響します。
-    - Informational - 管理操作あるいは待機時間に影響し、サービスの可用性には影響しない問題です。
+- Error - 複数の領域にまたがり多様なサービスを利用する際に発生する問題で、範囲は多岐にわたり多くのお客様に影響します。
+- Warning - 特定のサービス、あるいは特定の領域を利用した際に発生する問題で、そうしたサービスを利用される一部のお客様に影響します。
+- Informational - 管理操作あるいは待機時間に影響し、サービスの可用性には影響しない問題です。
 
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Azure Portal でのサービス正常性通知の表示

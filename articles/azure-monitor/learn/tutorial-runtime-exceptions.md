@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 84d98d6b3af884c959e8f0e4d9c117192af32d3a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 267e790cec3c915330f8f72053458527ee7bfead
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106309"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095570"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
@@ -96,11 +96,11 @@ Snapshot Debugger は、お使いのアプリケーションで最も一般的�
 ## <a name="use-analytics-data"></a>分析データを使用する
 Application Insights によって収集されたすべてのデータはAzure Log Analytics に保存され、さまざまな方法でデータを分析できるようにする高度なクエリ言語が提供されます。  このデータを使って、調査中の例外を生成した要求を分析できます。 
 
-8. コードの上の CodeLens 情報をクリックして、Application Insights が提供するテレメトリを表示します。
+1. コードの上の CodeLens 情報をクリックして、Application Insights が提供するテレメトリを表示します。
 
     ![コード](media/tutorial-runtime-exceptions/codelens.png)
 
-9. **[影響の分析]** をクリックして、Application Insights Analytics を開きます。  影響を受けたユーザー、ブラウザー、リージョンなどの失敗した要求に関する詳細情報を提供するいくつかのクエリが表示されます。<br><br>![Analytics](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. **[影響の分析]** をクリックして、Application Insights Analytics を開きます。  影響を受けたユーザー、ブラウザー、リージョンなどの失敗した要求に関する詳細情報を提供するいくつかのクエリが表示されます。<br><br>![Analytics](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>作業項目を追加する
 Application Insights を Azure DevOps や GitHub などの追跡システムに接続する場合は、Application Insights から直接、作業項目を作成できます。

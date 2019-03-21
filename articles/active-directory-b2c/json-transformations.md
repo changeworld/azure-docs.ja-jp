@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 67cda814925c3e5b974e4580594724c890851f64
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 88d447f86dd54fc9479a6d7d2006b9a8639ad09e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176211"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089235"
 ---
 # <a name="json-claims-transformations"></a>JSON 要求変換
 
@@ -52,11 +52,11 @@ JSON データから、指定された要素を取得します。
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputJson**: {"emailAddress": "someone@example.com", "displayName":"Someone"}
+  - **inputJson**: {"emailAddress": "someone@example.com", "displayName":"Someone"}
 - 入力パラメーター:
     - **claimToExtract**: emailAddress
 - 出力要求： 
-    - **extractedClaim**: someone@example.com
+  - **extractedClaim**: someone@example.com
 
 
 ## <a name="getclaimsfromjsonarray"></a>GetClaimsFromJsonArray
@@ -100,18 +100,18 @@ Json データから、指定された要素の一覧を取得します。
 ```    
 
 - 入力要求：
-    - **jsonSourceClaim**: [{「キー」:"email"、"value":"someone@example.com"}、{「キー」:"displayName"、"value":"Someone"}、{「キー」:"membershipNum"、"value": 6353399}、{「キー」:"active"、"value": true}、{「キー」:"birthdate"、"value":"1980-09-23T00:00:00Z"}]
+  - **jsonSourceClaim**: [{「キー」:"email"、"value":"someone@example.com"}、{「キー」:"displayName"、"value":"Someone"}、{「キー」:"membershipNum"、"value": 6353399}、{「キー」:"active"、"value": true}、{「キー」:"birthdate"、"value":"1980-09-23T00:00:00Z"}]
 - 入力パラメーター：
     - **errorOnMissingClaims**：false
     - **includeEmptyClaims**：false
     - **jsonSourceKeyName**：キー
     - **jsonSourceValueName**: value
 - 出力要求：
-    - **email**: "someone@example.com"
-    - **displayName**:"Someone"
-    - **membershipNum**:6353399
-    - **アクティブ**: true
-    - **birthdate**:1980-09-23T00:00:00Z
+  - **email**: "someone@example.com"
+  - **displayName**:"Someone"
+  - **membershipNum**:6353399
+  - **アクティブ**: true
+  - **birthdate**:1980-09-23T00:00:00Z
 
 ## <a name="getnumericclaimfromjson"></a>GetNumericClaimFromJson
 
@@ -150,7 +150,7 @@ JSON データから、指定した数値の (長) 要素を取得します。
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputJson**: {"emailAddress": "someone@example.com", "displayName":"Someone", "id" :6353399}
+  - **inputJson**: {"emailAddress": "someone@example.com", "displayName":"Someone", "id" :6353399}
 - 入力パラメーター
     - **claimToExtract**:  id
 - 出力要求: 
@@ -181,9 +181,9 @@ JSON データの配列から最初の要素を取得します。
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputJsonClaim**: ["someone@example.com", "Someone", 6353399]
+  - **inputJsonClaim**: ["someone@example.com", "Someone", 6353399]
 - 出力要求： 
-    - **extractedClaim**: someone@example.com
+  - **extractedClaim**: someone@example.com
 
 ## <a name="xmlstringtojsonstring"></a>XmlStringToJsonString
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 1/30/2019
 ms.author: yizhon
-ms.openlocfilehash: 0bfba7f923ca394aa29dd907db1b8b1284a605d8
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e5b075a457c646eb03810b2c51af1a1181ee96ed
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981674"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670259"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Azure IoT SDK を使用した Android Things プラットフォーム向けの開発
 [Azure IoT Hub SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) では、Windows、Linux、OSX、MBED、および Android や iOS のようなモバイル プラットフォームなどの人気のあるプラットフォーム向けの、最上位のサポートを提供します。  IoT の展開において選択の幅を広げ、柔軟性を高めるための取り組みの一環として、Java SDK では [Android Things](https://developer.android.com/things/) プラットフォームもサポートされています。  開発者は、デバイス側では Android Things オペレーティング システムの利点を活用しながら、数百万台のデバイスの同時接続までスケーリングする中央メッセージ ハブとして [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) を使用できます。 
@@ -69,7 +69,6 @@ ms.locfileid: "55981674"
     ```
 4.  Android Studio で、"\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample" にある Android プロジェクトを開きます。
 5.  gradle.properties ファイルを開き、"Device_connection_string" を前に書き留めた実際のデバイス接続文字列に置き換えます。
-    ![リポジトリのマスター ブランチのスクリーンショット](./media/how-to-android-things/connection-string.png)
 6.  [Run]\(実行\) > [Debug]\(デバッグ\) をクリックして、このコードを Android Things デバイスに展開するためのデバイスを選択します。
 7.  アプリケーションが正常に開始されると、Android Things デバイスで実行されているアプリケーションを確認できます。  このサンプル アプリケーションでは、ランダムに生成された温度の測定値が送信されます。
 

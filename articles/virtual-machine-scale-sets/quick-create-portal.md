@@ -17,12 +17,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 0a9975b6f44a97d198dc308e263879c3358aab82
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a2081bab2aebf0d49f3bde2467dac1fa683452ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672697"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008721"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート:Azure Portal での仮想マシン スケール セットの作成
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure Portal で仮想マシン スケール セットを作成します。
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
-Azure Portal (http://portal.azure.com) にログインします。
+Azure Portal (https://portal.azure.com) にログインします。
 
 
 ## <a name="create-virtual-machine-scale-set"></a>仮想マシン スケール セットを作成する
@@ -43,10 +43,10 @@ Windows Server イメージまたは Linux イメージ (RHEL、CentOS、Ubuntu�
 4. 目的の OS の種類を選択します (*Windows Server 2016 Datacenter* など)。
 5. 目的のリソース グループ名 (*myResourceGroup* など) と場所 ("*米国東部*" など) を入力します。
 6. 目的のユーザー名を入力して、任意の認証の種類を選択します。
-    - **パスワード**は、12 文字以上で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 つの要件のうち、3 つを満たしている必要があります。 詳細については、[ユーザー名とパスワードの要件](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)を参照してください。
-    - Linux OS ディスク イメージを選択した場合は、代わりに **[SSH public key]\(SSH 公開キー\)** を選択できます。 公開キーのみを指定してください (*~/.ssh/id_rsa.pub* など)。 ポータルから Azure Cloud Shell を使用して、[SSH キー](../virtual-machines/linux/mac-create-ssh-keys.md)を作成および使用することができます。
+   - **パスワード**は、12 文字以上で指定する必要があります。また、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という複雑さの 4 つの要件のうち、3 つを満たしている必要があります。 詳細については、[ユーザー名とパスワードの要件](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)を参照してください。
+   - Linux OS ディスク イメージを選択した場合は、代わりに **[SSH public key]\(SSH 公開キー\)** を選択できます。 公開キーのみを指定してください (*~/.ssh/id_rsa.pub* など)。 ポータルから Azure Cloud Shell を使用して、[SSH キー](../virtual-machines/linux/mac-create-ssh-keys.md)を作成および使用することができます。
 
-    ![Azure portal で仮想マシン スケール セットを作成する基本的な詳細](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
+     ![Azure portal で仮想マシン スケール セットを作成する基本的な詳細](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
 1. **[負荷分散オプションの選択]** で *[ロード バランサー]* などの負荷分散オプションを選択します。 負荷分散オプションのその他の詳細を入力します。 たとえば、*[ロード バランサー]* の場合、**[パブリック IP アドレス名]** と **[ドメイン名ラベル]** を入力する必要があります。
 1. **[仮想ネットワークを構成します]** で仮想ネットワークの詳細を入力します。 たとえば、新しい仮想ネットワーク *myVirtualNetwork* と新しいサブネット *default* を作成できます。
 1. スケール セットのオプションを確認するために、**[作成]** を選択します。

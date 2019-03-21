@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fbd4782d7fde089f9770e148564ec5941da3dc8e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753590"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871538"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)
 
@@ -152,7 +152,6 @@ Azure 仮想マシン (VM) は、アカウントのフェールオーバーの�
 4. **[最終同期時刻]** が更新されて、VM を削除した時刻より後になるまで待ちます。 フェールオーバーが発生した時点で、セカンダリ エンドポイントの VHD ファイルが完全に更新されていない場合、新しいプライマリ リージョンで VM が正常に機能しない可能性があるので、このステップは重要です。
 5. アカウントのフェールオーバーを開始します。
 6. アカウントのフェールオーバーが完了し、セカンダリ リージョンが新しいプライマリ リージョンになるまで待機します。
-6. 新しいプライマリ リージョンでストレージ アカウントを作成し、アンマネージド ディスクをコピーします。
 7. 新しいプライマリ リージョンで VM を作成し、VHD を再アタッチします。
 8. 新しい VM を起動します。
 

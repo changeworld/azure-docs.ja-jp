@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: 9aa6b9dc26b53315957b7ddbb113d1d129dcc1da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: da7750198f76bc9e17c23b1347e9fc78262aa06c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086957"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>VMware VM のディザスター リカバリー用の構成サーバーを管理する
 
@@ -93,25 +93,25 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 必要な場合は、同じコンテナーに構成サーバーを再登録することができます。 構成サーバー マシンで実行されている既定のプロセス サーバーだけでなく、他のプロセス サーバー マシンがある場合は、両方のマシンを再登録します。
 
 
-  1. コンテナーで、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** を開きます。
-  2. **[サーバー]** で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
-  3. 構成サーバー マシンにサインインします。
-  4. **%ProgramData%\ASR\home\svsystems\bin** で、**cspsconfigtool.exe** を開きます。
-  5. **[Vault Registration]\(コンテナーの登録\)** タブで **[参照]** を選択して、ダウンロードしたコンテナー資格情報ファイルを探します。
-  6. 必要な場合は、プロキシ サーバーの詳細を指定します。 次に、**[登録]** を選択します。
-  7. 管理者の PowerShell コマンド ウィンドウを開き、次のコマンドを実行します。
+1. コンテナーで、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** を開きます。
+2. **[サーバー]** で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
+3. 構成サーバー マシンにサインインします。
+4. **%ProgramData%\ASR\home\svsystems\bin** で、**cspsconfigtool.exe** を開きます。
+5. **[Vault Registration]\(コンテナーの登録\)** タブで **[参照]** を選択して、ダウンロードしたコンテナー資格情報ファイルを探します。
+6. 必要な場合は、プロキシ サーバーの詳細を指定します。 次に、**[登録]** を選択します。
+7. 管理者の PowerShell コマンド ウィンドウを開き、次のコマンドを実行します。
    ```
-      $pwd = ConvertTo-SecureString -String MyProxyUserPassword
-      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
+    $pwd = ConvertTo-SecureString -String MyProxyUserPassword
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
    ```
 
-      >[!NOTE]
-      >構成サーバーからスケール アウト プロセス サーバーに**最新の証明書を取得する**には、コマンド *“<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt* を実行します
+    >[!NOTE]
+    >構成サーバーからスケール アウト プロセス サーバーに**最新の証明書を取得する**には、コマンド *“<Installation Drive\Microsoft Azure Site Recovery\agent\cdpcli.exe>" --registermt* を実行します
 
-  8. 最後に、次のコマンドを実行して obengine を再起動します。
-  ```
-          net stop obengine
-          net start obengine
+8. 最後に、次のコマンドを実行して obengine を再起動します。
+   ```
+        net stop obengine
+        net start obengine
    ```
 
 

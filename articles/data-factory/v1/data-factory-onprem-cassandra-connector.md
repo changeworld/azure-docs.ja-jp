@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 38d5d469c920cafa33e0cc5b37846df2dc6d6ab9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0a3adbd082c68121e762fd03c2221a0c800f0bc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236418"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892644"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Cassandra データベースからデータを移動する 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -260,7 +260,7 @@ RelationalSource でサポートされるプロパティの一覧については
 ```
 
 ### <a name="type-mapping-for-cassandra"></a>Cassandra の型マッピング
-| Cassandra の型 | .Net ベースの型 |
+| Cassandra の型 | .NET ベースの型 |
 | --- | --- |
 | ASCII |String |
 | BIGINT |Int64 |

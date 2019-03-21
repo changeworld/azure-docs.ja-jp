@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: c9e3a98b1073a2b198a341f31a320bba670b0596
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 4ced712b1b2716d85f0366ea892460053db598b8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117903"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076906"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -258,7 +258,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 |                                  |                    | **暗号化モデルとキーの管理** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **サービス管理キーを使用したサーバー側**     | **Key Vault でユーザー管理を使用したサーバー側**             | **クライアント管理を使用したクライアント側**      |
-| **ストレージとデータベース**        |                    |                    |                    |                    |
+| **ストレージとデータベース**        |                    |                    |                    |
 | ディスク (IaaS)                      | -                  | はい、RSA 2048 ビット  | -                  |
 | SQL Server (IaaS)                | はい                | はい、RSA 2048 ビット  | はい                |
 | Azure SQL (Database/Data Warehouse) | はい                | はい、RSA 2048 ビット  | はい                |
@@ -268,7 +268,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | Azure Storage (テーブル、キュー)   | はい                | -                  | はい                |
 | Cosmos DB (ドキュメント DB)          | はい                | -                  | -                  |
 | StorSimple                       | はい                | -                  | はい                |
-| バックアップ                           | -                  | -                  | はい                |
+| バックアップ                           | はい                | -                  | はい                |
 | **インテリジェンスおよび分析**   |                    |                    |                    |
 | Azure Data Factory               | はい                | -                  | -                  |
 | Azure Machine Learning           | -                  | プレビュー、RSA 2048 ビット | -                  |

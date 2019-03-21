@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e940d7593b6760a81a781fd72c0bb45347b00c2a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4494996ed54b25be71367dd3e3043023d0958074
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168149"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>チュートリアル:Azure Active Directory と StatusPage の統合
 
@@ -114,23 +114,25 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
     ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_url.png)
 
     a. **[識別子]** ボックスに、次のパターンで URL を入力します。
+
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/` |
     | `https://<subdomain>.statuspage.io/` |
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 
+    
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/sso/saml/consume` |
     | `https://<subdomain>.statuspage.io/sso/saml/consume` |
 
-    > [!NOTE]
-    > シングル サインオンを構成するために必要なメタデータは、StatusPage サポート チーム ( [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io)) に連絡して入手してください。 
-    >
-    >a. メタデータから発行者の値をコピーし、**[識別子]** ボックスに貼り付けます。
-    >
-    >b. メタデータから応答 URL をコピーし、**[応答 URL]** ボックスに貼り付けます。
+   > [!NOTE]
+   > シングル サインオンを構成するために必要なメタデータは、StatusPage サポート チーム ( [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io)) に連絡して入手してください。 
+   > 
+   > a. メタデータから発行者の値をコピーし、**[識別子]** ボックスに貼り付けます。
+   > 
+   > b. メタデータから応答 URL をコピーし、**[応答 URL]** ボックスに貼り付けます。
 
 1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -156,15 +158,15 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 
 1. [SSO Setup] ページで、次の手順に従います。
    
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
+      ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
 
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
+      ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
  
-    a. **[SSO ターゲット URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+      a. **[SSO ターゲット URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    b. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Certificate]** ボックスに貼り付けます。 
+      b. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Certificate]** ボックスに貼り付けます。 
 
-    c. **[構成の保存]** をクリックします。
+      c. **[構成の保存]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -199,7 +201,7 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-statuspage-test-user"></a>StatusPage のテスト ユーザーの作成
 

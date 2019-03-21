@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/04/2018
+ms.date: 02/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 3bdc3a91e87f1bbd06ef0181d0042ee618f519c9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4e1dbf408565e78547928047ae2ce2d37ad1a022
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861444"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105126"
 ---
 # <a name="language-and-region-support-for-qna-maker"></a>QnA Maker の言語と地域のサポート
 
@@ -47,7 +47,7 @@ QnA Maker は、作成時にナレッジ ベースの言語を自動検出し、
 |サポートされている言語|
 |-----|
 |アラビア語|
-|アルメニア語|,
+|アルメニア語|
 ベンガル語|
 |バスク語|
 |ブルガリア語|
@@ -92,7 +92,7 @@ QnA Maker は、作成時にナレッジ ベースの言語を自動検出し、
 |スロベニア語|
 |スペイン語|
 |スウェーデン語|
-|タミール語|
+|タミル語|
 |テルグ語|
 |タイ語|
 |トルコ語|

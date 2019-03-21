@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bdc7adf9843ec5d0bd7b6127abfe3899cc04f3a2
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: a6b6728d7eaa263bb7e9da0f08a47ffe2f1e961a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747715"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009469"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -41,7 +41,7 @@ ms.locfileid: "55747715"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -451,26 +451,26 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 >
 >
 
-1.  Azure Portal の **[パラメーター]** ブレードにある **[NEWOREXISTINGSUBNET]** ボックスで、**[existing (既存)]** を選択します。
-2.  **[SUBNETID]** ボックスに、Azure 仮想マシンのデプロイ先となる準備済みの Azure ネットワーク SubnetID の完全な文字列を追加します。
-3.  すべての Azure ネットワーク サブネットの一覧を取得するには、次の PowerShell コマンドを実行します。
+1. Azure Portal の **[パラメーター]** ブレードにある **[NEWOREXISTINGSUBNET]** ボックスで、**[existing (既存)]** を選択します。
+2. **[SUBNETID]** ボックスに、Azure 仮想マシンのデプロイ先となる準備済みの Azure ネットワーク SubnetID の完全な文字列を追加します。
+3. すべての Azure ネットワーク サブネットの一覧を取得するには、次の PowerShell コマンドを実行します。
 
-  ```PowerShell
-  (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
-  ```
+   ```PowerShell
+   (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
+   ```
 
-  **[ID]** フィールドに **[SUBNETID]** と表示されます。
+   **[ID]** フィールドに **[SUBNETID]** と表示されます。
 4. すべての **SUBNETID** 値の一覧を取得するには、次の PowerShell コマンドを実行します。
 
-  ```PowerShell
-  (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
-  ```
+   ```PowerShell
+   (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
+   ```
 
-  **SUBNETID** は次のようになります。
+   **SUBNETID** は次のようになります。
 
-  ```
-  /subscriptions/<SubscriptionId>/resourceGroups/<VPNName>/providers/Microsoft.Network/virtualNetworks/azureVnet/subnets/<SubnetName>
-  ```
+   ```
+   /subscriptions/<SubscriptionId>/resourceGroups/<VPNName>/providers/Microsoft.Network/virtualNetworks/azureVnet/subnets/<SubnetName>
+   ```
 
 ### <a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a> テストおよびデモ用のクラウドのみの SAP インスタンスのデプロイ
 クラウドのみのデプロイメント モデルで高可用性 SAP システムをデプロイすることができます。 この種類のデプロイは、主として、デモおよびテストのユース ケースに適しています。 運用環境での使用には適していません。
@@ -551,16 +551,16 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 データベース マルチ SID テンプレートを設定するには、[データベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image]または [Managed Disks を使用したデータベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image-md]で、次のパラメーターの値を入力します。
 
-  -  **Sap System Id (SAP システム ID)**。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
-  -  **Os Type (OS の種類)**。 仮想マシンのオペレーティング システムを選びます。
-  -  **Dbtype (DB の種類)**。 クラスターにインストールするデータベースの種類を選びます。 Microsoft SQL Server をインストールする場合は、**[SQL]** を選択します。 仮想マシンに SAP HANA をインストールする予定の場合は、**[HANA]** を選択します。 正しいオペレーティング システムの種類 (SQL の場合は **Windows**、HANA の場合は Linux ディストリビューション) を選択してください。 仮想マシンに接続されている Azure Load Balancer は、選んだデータベースの種類をサポートするように構成されます。
-    * **SQL**。 ロード バランサーは、ポート 1433 で負荷分散を行います。 SQL Server Always On セットアップにはこのポートを使ってください。
-    * **HANA**。 ロード バランサーは、ポート 35015 および 35017 で負荷分散を行います。 インスタンス番号が **50** の SAP HANA をインストールしてください。
-    ロード バランサーはプローブ ポート 62550 を使います。
-  -  **Sap System Size (SAP システムのサイズ)**。 新しいシステムで提供する SAPS の数を設定します。 システムで必要となる SAPS の数が不明な場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
-  -  **System Availability (システムの可用性)**。 **[HA]** を選択します。
-  -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
-  -  **Subnet Id (サブネット ID)**。ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
+- **Sap System Id (SAP システム ID)**。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
+- **Os Type (OS の種類)**。 仮想マシンのオペレーティング システムを選びます。
+- **Dbtype (DB の種類)**。 クラスターにインストールするデータベースの種類を選びます。 Microsoft SQL Server をインストールする場合は、**[SQL]** を選択します。 仮想マシンに SAP HANA をインストールする予定の場合は、**[HANA]** を選択します。 正しいオペレーティング システムの種類 (SQL の場合は **Windows**、HANA の場合は Linux ディストリビューション) を選択してください。 仮想マシンに接続されている Azure Load Balancer は、選んだデータベースの種類をサポートするように構成されます。
+  * **SQL**。 ロード バランサーは、ポート 1433 で負荷分散を行います。 SQL Server Always On セットアップにはこのポートを使ってください。
+  * **HANA**。 ロード バランサーは、ポート 35015 および 35017 で負荷分散を行います。 インスタンス番号が **50** の SAP HANA をインストールしてください。
+  ロード バランサーはプローブ ポート 62550 を使います。
+- **Sap System Size (SAP システムのサイズ)**。 新しいシステムで提供する SAPS の数を設定します。 システムで必要となる SAPS の数が不明な場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+- **System Availability (システムの可用性)**。 **[HA]** を選択します。
+- **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
+- **Subnet Id (サブネット ID)**。ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
 
 #### <a name="application-servers-template"></a> アプリケーション サーバー テンプレート
 
@@ -588,20 +588,20 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 
 必要な DNS IP アドレスを設定するには、次の手順を実行します。
 
-1.  Azure Portal の **[DNS サーバー]** ブレードで、仮想ネットワークの **[DNS サーバー]** オプションが **[カスタム DNS]** に設定されていることを確認します。
-2.  ネットワークの種類に基づいて設定を選択します。 詳細については、次のリソースを参照してください。
-    * [企業ネットワーク接続 (クロスプレミス)][planning-guide-2.2]:オンプレミスの DNS サーバーの IP アドレスを追加します。  
-    Azure で実行されている仮想マシンにオンプレミスの DNS サーバーを拡張できます。 その場合、DNS サービスを実行する Azure Virtual Machines の IP アドレスを追加できます。
-    * Azure 内の分離された VM デプロイの場合:DNS サーバーとして機能する別の仮想マシンを同じ Virtual Network インスタンスにデプロイします。 DNS サービスを実行するように設定した Azure Virtual Machines の IP アドレスを追加します。
+1. Azure Portal の **[DNS サーバー]** ブレードで、仮想ネットワークの **[DNS サーバー]** オプションが **[カスタム DNS]** に設定されていることを確認します。
+2. ネットワークの種類に基づいて設定を選択します。 詳細については、次のリソースを参照してください。
+   * [企業ネットワーク接続 (クロスプレミス)][planning-guide-2.2]:オンプレミスの DNS サーバーの IP アドレスを追加します。  
+   Azure で実行されている仮想マシンにオンプレミスの DNS サーバーを拡張できます。 その場合、DNS サービスを実行する Azure Virtual Machines の IP アドレスを追加できます。
+   * Azure 内の分離された VM デプロイの場合:DNS サーバーとして機能する別の仮想マシンを同じ Virtual Network インスタンスにデプロイします。 DNS サービスを実行するように設定した Azure Virtual Machines の IP アドレスを追加します。
 
-    ![図 12:Azure Virtual Network 用に DNS サーバーを構成する][sap-ha-guide-figure-3001]
+   ![図 12:Azure Virtual Network 用に DNS サーバーを構成する][sap-ha-guide-figure-3001]
 
-    _**図 12:** Azure Virtual Network 用に DNS サーバーを構成する_
+   _**図 12:** Azure Virtual Network 用に DNS サーバーを構成する_
 
-  > [!NOTE]
-  > DNS サーバーの IP アドレスを変更した場合、変更を適用して新しい DNS サーバーに反映するには、Azure Virtual Machines を再起動する必要があります。
-  >
-  >
+   > [!NOTE]
+   > DNS サーバーの IP アドレスを変更した場合、変更を適用して新しい DNS サーバーに反映するには、Azure Virtual Machines を再起動する必要があります。
+   >
+   >
 
 このガイドの例では、DNS サービスは次の Windows 仮想マシンにインストールされ、構成されています。
 
@@ -627,19 +627,19 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
 ### <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> SAP 仮想マシンの静的 IP アドレスの設定
 クラスターで使用する仮想マシンをデプロイした後は、すべての仮想マシンに静的 IP アドレスを設定する必要があります。 これは、ゲスト オペレーティング システムではなく、Azure Virtual Network の構成で行います。
 
-1.  Azure Portal で、**[リソース グループ]** > **[ネットワーク カード]** > **[設定]** > **[IP アドレス]** の順に選択します。
-2.  **[IP アドレス]** ブレードの **[割り当て]** で **[静的]** を選択します。 **[IP アドレス]** ボックスに、使用する IP アドレスを入力します。
+1. Azure Portal で、**[リソース グループ]** > **[ネットワーク カード]** > **[設定]** > **[IP アドレス]** の順に選択します。
+2. **[IP アドレス]** ブレードの **[割り当て]** で **[静的]** を選択します。 **[IP アドレス]** ボックスに、使用する IP アドレスを入力します。
 
-  > [!NOTE]
-  > ネットワーク カードの IP アドレスを変更する場合は、Azure Virtual Machines を再起動して変更を適用する必要があります。  
-  >
-  >
+   > [!NOTE]
+   > ネットワーク カードの IP アドレスを変更する場合は、Azure Virtual Machines を再起動して変更を適用する必要があります。  
+   >
+   >
 
-  ![図 13:各仮想マシンのネットワーク カードの静的 IP アドレスを設定する][sap-ha-guide-figure-3002]
+   ![図 13:各仮想マシンのネットワーク カードの静的 IP アドレスを設定する][sap-ha-guide-figure-3002]
 
-  _**図 13:** 各仮想マシンのネットワーク カードの静的 IP アドレスを設定する_
+   _**図 13:** 各仮想マシンのネットワーク カードの静的 IP アドレスを設定する_
 
-  すべてのネットワーク インターフェイス、つまり Active Directory/DNS サービスに使用する仮想マシンを含むすべての仮想マシンについて、この手順を繰り返します。
+   すべてのネットワーク インターフェイス、つまり Active Directory/DNS サービスに使用する仮想マシンを含むすべての仮想マシンについて、この手順を繰り返します。
 
 このガイドの例では、次の仮想マシンと静的 IP アドレスを使用します。
 
@@ -666,13 +666,13 @@ SAP Azure Resource Manager テンプレートでは、SAP ASCS/SCS インスタ�
 
 Azure 内部ロード バランサーの静的 IP アドレスを設定するには
 
-1.  初期デプロイでは、内部ロード バランサーの IP アドレスが**動的**に設定されます。 Azure Portal の **[IP アドレス]** ブレードの **[割り当て]** で **[静的]** を選択します。
-2.  内部ロード バランサー **pr1-lb-ascs** の IP アドレスを、SAP ASCS/SCS インスタンスの仮想ホスト名の IP アドレスに設定します。
-3.  内部ロード バランサー **pr1-lb-dbms** の IP アドレスを、DBMS インスタンスの仮想ホスト名の IP アドレスに設定します。
+1. 初期デプロイでは、内部ロード バランサーの IP アドレスが**動的**に設定されます。 Azure Portal の **[IP アドレス]** ブレードの **[割り当て]** で **[静的]** を選択します。
+2. 内部ロード バランサー **pr1-lb-ascs** の IP アドレスを、SAP ASCS/SCS インスタンスの仮想ホスト名の IP アドレスに設定します。
+3. 内部ロード バランサー **pr1-lb-dbms** の IP アドレスを、DBMS インスタンスの仮想ホスト名の IP アドレスに設定します。
 
-  ![図 14:SAP ASCS/SCS インスタンスの内部ロード バランサーの静的 IP アドレスを設定する][sap-ha-guide-figure-3003]
+   ![図 14:SAP ASCS/SCS インスタンスの内部ロード バランサーの静的 IP アドレスを設定する][sap-ha-guide-figure-3003]
 
-  _**図 14:** SAP ASCS/SCS インスタンスの内部ロード バランサーの静的 IP アドレスを設定する_
+   _**図 14:** SAP ASCS/SCS インスタンスの内部ロード バランサーの静的 IP アドレスを設定する_
 
 この例で使用する 2 つの Azure 内部ロード バランサーと静的 IP アドレスは次のとおりです。
 
@@ -738,20 +738,20 @@ _**図 15:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷�
 
 SAP ASCS または SCS インスタンスに別の番号を使う場合は、それらのポートの名前と値を既定値から変更する必要があります。
 
-1.  Azure Portal で、**<[*SID*>-lb-ascs ロード バランサー]** > **[負荷分散規則]** の順に選びます。
-2.  SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
+1. Azure Portal で、**<[*SID*>-lb-ascs ロード バランサー]** > **[負荷分散規則]** の順に選びます。
+2. SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
-  * Name
-  * ポート
-  * バックエンド ポート
+   * Name
+   * ポート
+   * バックエンド ポート
 
-  たとえば、既定の ASCS インスタンス番号を 00 から 31 に変更する場合は、表 1 に記載されているすべてのポートについて変更する必要があります。
+   たとえば、既定の ASCS インスタンス番号を 00 から 31 に変更する場合は、表 1 に記載されているすべてのポートについて変更する必要があります。
 
-  ポート *lbrule3200* の更新の例を次に示します。
+   ポート *lbrule3200* の更新の例を次に示します。
 
-  ![図 16:Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則を変更する][sap-ha-guide-figure-3005]
+   ![図 16:Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則を変更する][sap-ha-guide-figure-3005]
 
-  _**図 16:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則を変更する_
+   _**図 16:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則を変更する_
 
 ### <a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a> ドメインへの Windows 仮想マシンの追加
 
@@ -798,81 +798,81 @@ SAP ASCS/SCS インスタンスの Windows Server フェールオーバー ク�
 
 #### <a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a> クラスター構成内のクラスター ノードの収集
 
-1.  役割と機能の追加ウィザードで、両方のクラスター ノードにフェールオーバー クラスタリングを追加します。
-2.  フェールオーバー クラスター マネージャーを使用して、フェールオーバー クラスターをセットアップします。 フェールオーバー クラスター マネージャーで **[クラスターの作成]** を選択し、1 つ目のクラスターであるノード A の名前だけを追加します。2 つ目のノードは、まだ追加しないでください。2 つ目のノードは、後の手順で追加します。
+1. 役割と機能の追加ウィザードで、両方のクラスター ノードにフェールオーバー クラスタリングを追加します。
+2. フェールオーバー クラスター マネージャーを使用して、フェールオーバー クラスターをセットアップします。 フェールオーバー クラスター マネージャーで **[クラスターの作成]** を選択し、1 つ目のクラスターであるノード A の名前だけを追加します。2 つ目のノードは、まだ追加しないでください。2 つ目のノードは、後の手順で追加します。
 
-  ![図 18:第 1 のクラスター ノードのサーバー名または仮想マシン名を追加する][sap-ha-guide-figure-3007]
+   ![図 18:第 1 のクラスター ノードのサーバー名または仮想マシン名を追加する][sap-ha-guide-figure-3007]
 
-  _**図 18:** 第 1 のクラスター ノードのサーバー名または仮想マシン名を追加する_
+   _**図 18:** 第 1 のクラスター ノードのサーバー名または仮想マシン名を追加する_
 
-3.  クラスターのネットワーク名 (仮想ホスト名) を入力します。
+3. クラスターのネットワーク名 (仮想ホスト名) を入力します。
 
-  ![図 19:クラスター名を入力する][sap-ha-guide-figure-3008]
+   ![図 19:クラスター名を入力する][sap-ha-guide-figure-3008]
 
-  _**図 19:** クラスター名を入力する_
+   _**図 19:** クラスター名を入力する_
 
-4.  クラスターを作成した後、クラスター検証テストを実行します。
+4. クラスターを作成した後、クラスター検証テストを実行します。
 
-  ![図 20:クラスター検証チェックを実行する][sap-ha-guide-figure-3009]
+   ![図 20:クラスター検証チェックを実行する][sap-ha-guide-figure-3009]
 
-  _**図 20:** クラスター検証チェックを実行する_
+   _**図 20:** クラスター検証チェックを実行する_
 
-  プロセスのこの時点では、ディスクに関する警告は無視してかまいません。 ファイル共有監視と SIOS 共有ディスクは後で追加します。 この段階では、クォーラムについて心配する必要はありません。
+   プロセスのこの時点では、ディスクに関する警告は無視してかまいません。 ファイル共有監視と SIOS 共有ディスクは後で追加します。 この段階では、クォーラムについて心配する必要はありません。
 
-  ![図 21:クォーラム ディスクが見つからない][sap-ha-guide-figure-3010]
+   ![図 21:クォーラム ディスクが見つからない][sap-ha-guide-figure-3010]
 
-  _**図 21:** クォーラム ディスクが見つからない_
+   _**図 21:** クォーラム ディスクが見つからない_
 
-  ![図 22:コア クラスター リソースに新しい IP アドレスが必要である][sap-ha-guide-figure-3011]
+   ![図 22:コア クラスター リソースに新しい IP アドレスが必要である][sap-ha-guide-figure-3011]
 
-  _**図 22:** コア クラスター リソースに新しい IP アドレスが必要である_
+   _**図 22:** コア クラスター リソースに新しい IP アドレスが必要である_
 
-5.  コア クラスター サービスの IP アドレスを変更します。 サーバーの IP アドレスが仮想マシン ノードの 1 つを指しているため、コア クラスター サービスの IP アドレスを変更するまではクラスターを開始できません。 この操作は、コア クラスター サービスの IP リソースの **[プロパティ]** ページで行います。
+5. コア クラスター サービスの IP アドレスを変更します。 サーバーの IP アドレスが仮想マシン ノードの 1 つを指しているため、コア クラスター サービスの IP アドレスを変更するまではクラスターを開始できません。 この操作は、コア クラスター サービスの IP リソースの **[プロパティ]** ページで行います。
 
-  たとえば、クラスターの仮想ホスト名 **pr1-ascs-vir** の IP アドレス (このガイドの例では **10.0.0.42**) を割り当てる必要があります。
+   たとえば、クラスターの仮想ホスト名 **pr1-ascs-vir** の IP アドレス (このガイドの例では **10.0.0.42**) を割り当てる必要があります。
 
-  ![図 23:[プロパティ] ダイアログ ボックスで IP アドレスを変更する][sap-ha-guide-figure-3012]
+   ![図 23:[プロパティ] ダイアログ ボックスで IP アドレスを変更する][sap-ha-guide-figure-3012]
 
-  _**図 23:****[プロパティ]** ダイアログ ボックスで IP アドレスを変更する_
+   _**図 23:****[プロパティ]** ダイアログ ボックスで IP アドレスを変更する_
 
-  ![図 24:このクラスター用に予約された IP アドレスを割り当てる][sap-ha-guide-figure-3013]
+   ![図 24:このクラスター用に予約された IP アドレスを割り当てる][sap-ha-guide-figure-3013]
 
-  _**図 24:** このクラスター用に予約された IP アドレスを割り当てる_
+   _**図 24:** このクラスター用に予約された IP アドレスを割り当てる_
 
-6.  クラスター仮想ホスト名をオンラインにします。
+6. クラスター仮想ホスト名をオンラインにします。
 
-  ![図 25:正しい IP アドレスでコア クラスター サービスが起動して実行されている][sap-ha-guide-figure-3014]
+   ![図 25:正しい IP アドレスでコア クラスター サービスが起動して実行されている][sap-ha-guide-figure-3014]
 
-  _**図 25:** 正しい IP アドレスでコア クラスター サービスが起動して実行されている_
+   _**図 25:** 正しい IP アドレスでコア クラスター サービスが起動して実行されている_
 
-7.  2 つ目のクラスター ノードを追加します。
+7. 2 つ目のクラスター ノードを追加します。
 
-  コア クラスター サービスが起動して実行されているので、第 2 のクラスター ノードを追加できます。
+   コア クラスター サービスが起動して実行されているので、第 2 のクラスター ノードを追加できます。
 
-  ![図 26:第 2 のクラスター ノードを追加する][sap-ha-guide-figure-3015]
+   ![図 26:第 2 のクラスター ノードを追加する][sap-ha-guide-figure-3015]
 
-  _**図 26:** 第 2 のクラスター ノードを追加する_
+   _**図 26:** 第 2 のクラスター ノードを追加する_
 
-8.  2 つ目のクラスター ノード ホストの名前を入力します。
+8. 2 つ目のクラスター ノード ホストの名前を入力します。
 
-  ![図 27:第 2 のクラスター ノード ホストの名前を入力する][sap-ha-guide-figure-3016]
+   ![図 27:第 2 のクラスター ノード ホストの名前を入力する][sap-ha-guide-figure-3016]
 
-  _**図 27:** 第 2 のクラスター ノード ホストの名前を入力する_
+   _**図 27:** 第 2 のクラスター ノード ホストの名前を入力する_
 
-  > [!IMPORTANT]
-  > **[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスがオンになって**いない**ことを確認してください。  
-  >
-  >
+   > [!IMPORTANT]
+   > **[使用可能な記憶域をすべてクラスターに追加する]** チェック ボックスがオンになって**いない**ことを確認してください。  
+   >
+   >
 
-  ![図 28:このチェック ボックスはオンにしない][sap-ha-guide-figure-3017]
+   ![図 28:このチェック ボックスはオンにしない][sap-ha-guide-figure-3017]
 
-  _**図 28:** このチェック ボックスはオンに**しない**_
+   _**図 28:** このチェック ボックスはオンに**しない**_
 
-  クォーラムとディスクに関する警告は無視して構いません。 「[SAP ASCS/SCS クラスター共有ディスクのための SIOS DataKeeper Cluster Edition のインストール][sap-ha-guide-8.12.3]」で説明されているように、クォーラムと共有ディスクは後で設定します。
+   クォーラムとディスクに関する警告は無視して構いません。 「[SAP ASCS/SCS クラスター共有ディスクのための SIOS DataKeeper Cluster Edition のインストール][sap-ha-guide-8.12.3]」で説明されているように、クォーラムと共有ディスクは後で設定します。
 
-  ![図 29:ディスク クォーラムに関する警告を無視する][sap-ha-guide-figure-3018]
+   ![図 29:ディスク クォーラムに関する警告を無視する][sap-ha-guide-figure-3018]
 
-  _**図 29:** ディスク クォーラムに関する警告を無視する_
+   _**図 29:** ディスク クォーラムに関する警告を無視する_
 
 
 #### <a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a> クラスターのファイル共有監視の構成
@@ -884,74 +884,74 @@ SAP ASCS/SCS インスタンスの Windows Server フェールオーバー ク�
 
 ##### <a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a> ファイル共有の作成
 
-1.  クォーラム ディスクではなく、ファイル共有監視を選択します。 SIOS DataKeeper は、このオプションをサポートしています。
+1. クォーラム ディスクではなく、ファイル共有監視を選択します。 SIOS DataKeeper は、このオプションをサポートしています。
 
-  この記事の例では、ファイル共有監視は Azure で実行されている Active Directory/DNS サーバー上にあります。 ファイル共有監視の名前は **domcontr-0** です。 Azure への VPN 接続を構成したので (サイト間 VPN または Azure ExpressRoute 経由)、Active Directory/DNS サービスはオンプレミスであり、ファイル共有監視の実行には適していません。
+   この記事の例では、ファイル共有監視は Azure で実行されている Active Directory/DNS サーバー上にあります。 ファイル共有監視の名前は **domcontr-0** です。 Azure への VPN 接続を構成したので (サイト間 VPN または Azure ExpressRoute 経由)、Active Directory/DNS サービスはオンプレミスであり、ファイル共有監視の実行には適していません。
 
-  > [!NOTE]
-  > Active Directory/DNS サービスがオンプレミスのみで実行している場合は、オンプレミスで実行している Active Directory/DNS Windows オペレーティング システムには、ファイル共有監視を構成しないでください。 Azure で実行しているクラスター ノードとオンプレミスの Active Directory/DNS の間のネットワーク待機時間が長すぎて、接続の問題が発生する可能性があります。 ファイル共有監視は、クラスター ノードの近くで動いている Azure Virtual Machines に構成する必要があります。  
-  >
-  >
+   > [!NOTE]
+   > Active Directory/DNS サービスがオンプレミスのみで実行している場合は、オンプレミスで実行している Active Directory/DNS Windows オペレーティング システムには、ファイル共有監視を構成しないでください。 Azure で実行しているクラスター ノードとオンプレミスの Active Directory/DNS の間のネットワーク待機時間が長すぎて、接続の問題が発生する可能性があります。 ファイル共有監視は、クラスター ノードの近くで動いている Azure Virtual Machines に構成する必要があります。  
+   >
+   >
 
-  クォーラム ドライブには、1,024 MB 以上の空き領域が必要です。 クォーラム ドライブでは空き領域を 2,048 MB にすることをお勧めします。
+   クォーラム ドライブには、1,024 MB 以上の空き領域が必要です。 クォーラム ドライブでは空き領域を 2,048 MB にすることをお勧めします。
 
-2.  クラスター名オブジェクトを追加します。
+2. クラスター名オブジェクトを追加します。
 
-  ![図 30:クラスター名オブジェクトの共有に対するアクセス許可を割り当てる][sap-ha-guide-figure-3019]
+   ![図 30:クラスター名オブジェクトの共有に対するアクセス許可を割り当てる][sap-ha-guide-figure-3019]
 
-  _**図 30:** クラスター名オブジェクトの共有に対するアクセス許可を割り当てる_
+   _**図 30:** クラスター名オブジェクトの共有に対するアクセス許可を割り当てる_
 
-  アクセス許可には、クラスター名オブジェクト (この例では **pr1-ascs-vir$**) の共有内のデータを変更する権限を必ず含めます。
+   アクセス許可には、クラスター名オブジェクト (この例では **pr1-ascs-vir$**) の共有内のデータを変更する権限を必ず含めます。
 
-3.  クラスター名オブジェクトをリストに追加するには、**[追加]** を選択します。 図 31 に示されているものに加えて、コンピューター オブジェクトをチェックするようにフィルターを変更します。
+3. クラスター名オブジェクトをリストに追加するには、**[追加]** を選択します。 図 31 に示されているものに加えて、コンピューター オブジェクトをチェックするようにフィルターを変更します。
 
-  ![図 31:コンピューターを含むようにオブジェクトの種類を変更する][sap-ha-guide-figure-3020]
+   ![図 31:コンピューターを含むようにオブジェクトの種類を変更する][sap-ha-guide-figure-3020]
 
-  _**図 31:** コンピューターを含むようにオブジェクトの種類を変更する_
+   _**図 31:** コンピューターを含むようにオブジェクトの種類を変更する_
 
-  ![図 32:[コンピューター] チェック ボックスをオンにする][sap-ha-guide-figure-3021]
+   ![図 32:[コンピューター] チェック ボックスをオンにする][sap-ha-guide-figure-3021]
 
-  _**図 32:****[コンピューター]** チェック ボックスをオンにする_
+   _**図 32:****[コンピューター]** チェック ボックスをオンにする_
 
-4.  図 31 に示すように、クラスター名オブジェクトを入力します。 レコードは既に作成されているので、図 30 に示すようにアクセス許可を変更できます。
+4. 図 31 に示すように、クラスター名オブジェクトを入力します。 レコードは既に作成されているので、図 30 に示すようにアクセス許可を変更できます。
 
-5.  共有の **[セキュリティ]** タブを選択し、クラスター名オブジェクトのアクセス許可をさらに詳しく設定します。
+5. 共有の **[セキュリティ]** タブを選択し、クラスター名オブジェクトのアクセス許可をさらに詳しく設定します。
 
-  ![図 33:ファイル共有クォーラムでクラスター名オブジェクトのセキュリティ属性を設定する][sap-ha-guide-figure-3022]
+   ![図 33:ファイル共有クォーラムでクラスター名オブジェクトのセキュリティ属性を設定する][sap-ha-guide-figure-3022]
 
-  _**図 33:** ファイル共有クォーラムでクラスター名オブジェクトのセキュリティ属性を設定する_
+   _**図 33:** ファイル共有クォーラムでクラスター名オブジェクトのセキュリティ属性を設定する_
 
 ##### <a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a> フェールオーバー クラスター マネージャーでのファイル共有監視クォーラムの設定
 
-1.  クラスター クォーラム構成ウィザードを開きます。
+1. クラスター クォーラム構成ウィザードを開きます。
 
-  ![図 34:クラスター クォーラム設定の構成ウィザードを開始する][sap-ha-guide-figure-3023]
+   ![図 34:クラスター クォーラム設定の構成ウィザードを開始する][sap-ha-guide-figure-3023]
 
-  _**図 34:** クラスター クォーラム設定の構成ウィザードを開始する_
+   _**図 34:** クラスター クォーラム設定の構成ウィザードを開始する_
 
-2.  **[クォーラム構成の選択]** ページで、**[クォーラム監視を選択する]** を選択します。
+2. **[クォーラム構成の選択]** ページで、**[クォーラム監視を選択する]** を選択します。
 
-  ![図 35:選択できるクォーラム構成][sap-ha-guide-figure-3024]
+   ![図 35:選択できるクォーラム構成][sap-ha-guide-figure-3024]
 
-  _**図 35:** 選択できるクォーラム構成_
+   _**図 35:** 選択できるクォーラム構成_
 
-3.  **[クォーラム監視の選択]** ページで、**[ファイル共有監視を構成する]** を選択します。
+3. **[クォーラム監視の選択]** ページで、**[ファイル共有監視を構成する]** を選択します。
 
-  ![図 36:ファイル共有監視を選択する][sap-ha-guide-figure-3025]
+   ![図 36:ファイル共有監視を選択する][sap-ha-guide-figure-3025]
 
-  _**図 36:** ファイル共有監視を選択する_
+   _**図 36:** ファイル共有監視を選択する_
 
-4.  ファイル共有の UNC パスを入力します (この例では \\domcontr-0\FSW)。 **[次へ]** を選択して、行うことができる変更の一覧を表示します。
+4. ファイル共有の UNC パスを入力します (この例では \\domcontr-0\FSW)。 **[次へ]** を選択して、行うことができる変更の一覧を表示します。
 
-  ![図 37:監視共有のファイル共有の場所を定義する][sap-ha-guide-figure-3026]
+   ![図 37:監視共有のファイル共有の場所を定義する][sap-ha-guide-figure-3026]
 
-  _**図 37:** 監視共有のファイル共有の場所を定義する_
+   _**図 37:** 監視共有のファイル共有の場所を定義する_
 
-5.  必要な変更を選択し、**[次へ]** を選択します。 図 38 に示すように、クラスター構成が正常に再構成されている必要があります。  
+5. 必要な変更を選択し、**[次へ]** を選択します。 図 38 に示すように、クラスター構成が正常に再構成されている必要があります。  
 
-  ![図 38:クラスターが再構成されたことを確認する][sap-ha-guide-figure-3027]
+   ![図 38:クラスターが再構成されたことを確認する][sap-ha-guide-figure-3027]
 
-  _**図 38:** クラスターが再構成されたことを確認する_
+   _**図 38:** クラスターが再構成されたことを確認する_
 
 Windows フェールオーバー クラスターが正常にインストールされた後、フェールオーバーの検出を Azure での条件に合わせるように、いくつかのしきい値を変更する必要があります。 変更されるパラメーターは、 https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/のブログに記載されています。 ASCS/SCS 用に Windows クラスター構成を構築する 2 つの VM が同じサブネットにあることを前提とした場合、次のパラメーターを次の値に変更する必要があります。
 - SameSubNetDelay = 2
@@ -1003,104 +1003,104 @@ SIOS ソフトウェアをインストールする前に、ドメイン ユー�
 
 SIOS DataKeeper をインストールするには
 
-1.  SIOS ソフトウェアを両方のクラスター ノードにインストールします。
+1. SIOS ソフトウェアを両方のクラスター ノードにインストールします。
 
-  ![SIOS インストーラー][sap-ha-guide-figure-3030]
+   ![SIOS インストーラー][sap-ha-guide-figure-3030]
 
-  ![図 41:SIOS DataKeeper のインストールの最初のページ][sap-ha-guide-figure-3031]
+   ![図 41:SIOS DataKeeper のインストールの最初のページ][sap-ha-guide-figure-3031]
 
-  _**図 41:** SIOS DataKeeper のインストールの最初のページ_
+   _**図 41:** SIOS DataKeeper のインストールの最初のページ_
 
-2.  図 42 のダイアログ ボックスで、**[Yes (はい)]** を選択します。
+2. 図 42 のダイアログ ボックスで、**[Yes (はい)]** を選択します。
 
-  ![図 42:DataKeeper からサービスを無効にすることが通知される][sap-ha-guide-figure-3032]
+   ![図 42:DataKeeper からサービスを無効にすることが通知される][sap-ha-guide-figure-3032]
 
-  _**図 42:** DataKeeper からサービスを無効にすることが通知される_
+   _**図 42:** DataKeeper からサービスを無効にすることが通知される_
 
-3.  図 43 のダイアログ ボックスでは、**[Domain or Server account (ドメインまたはサーバーのアカウント)]** を選択することをお勧めします。
+3. 図 43 のダイアログ ボックスでは、**[Domain or Server account (ドメインまたはサーバーのアカウント)]** を選択することをお勧めします。
 
-  ![図 43:SIOS DataKeeper のユーザー選択][sap-ha-guide-figure-3033]
+   ![図 43:SIOS DataKeeper のユーザー選択][sap-ha-guide-figure-3033]
 
-  _**図 43:** SIOS DataKeeper のユーザー選択_
+   _**図 43:** SIOS DataKeeper のユーザー選択_
 
-4.  SIOS DataKeeper 用に作成したドメイン アカウントのユーザー名とパスワードを入力します。
+4. SIOS DataKeeper 用に作成したドメイン アカウントのユーザー名とパスワードを入力します。
 
-  ![図 44:SIOS DataKeeper インストールのドメイン ユーザー名とパスワードを入力する][sap-ha-guide-figure-3034]
+   ![図 44:SIOS DataKeeper インストールのドメイン ユーザー名とパスワードを入力する][sap-ha-guide-figure-3034]
 
-  _**図 44:** SIOS DataKeeper インストールのドメイン ユーザー名とパスワードを入力する_
+   _**図 44:** SIOS DataKeeper インストールのドメイン ユーザー名とパスワードを入力する_
 
-5.  図 45 に示すように、SIOS DataKeeper インスタンスのライセンス キーをインストールします。
+5. 図 45 に示すように、SIOS DataKeeper インスタンスのライセンス キーをインストールします。
 
-  ![図 45:SIOS DataKeeper ライセンス キーを入力する][sap-ha-guide-figure-3035]
+   ![図 45:SIOS DataKeeper ライセンス キーを入力する][sap-ha-guide-figure-3035]
 
-  _**図 45:** SIOS DataKeeper ライセンス キーを入力する_
+   _**図 45:** SIOS DataKeeper ライセンス キーを入力する_
 
-6.  メッセージが表示されたら、仮想マシンを再起動します。
+6. メッセージが表示されたら、仮想マシンを再起動します。
 
 #### <a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a> SIOS DataKeeper のセットアップ
 
 両方のノードに SIOS DataKeeper をインストールした後、構成を開始する必要があります。 この構成の目的は、各仮想マシンに接続された追加ディスク間で同期データ レプリケーションを実現することです。
 
-1.  DataKeeper の管理および構成ツールを起動し、**[Connect to Server (サーバーに接続)]** を選択します  (図 46 の赤い丸で囲んだオプション)。
+1. DataKeeper の管理および構成ツールを起動し、**[Connect to Server (サーバーに接続)]** を選択します  (図 46 の赤い丸で囲んだオプション)。
 
-  ![図 46:SIOS DataKeeper の管理および構成ツール][sap-ha-guide-figure-3036]
+   ![図 46:SIOS DataKeeper の管理および構成ツール][sap-ha-guide-figure-3036]
 
-  _**図 46:** SIOS DataKeeper の管理および構成ツール_
+   _**図 46:** SIOS DataKeeper の管理および構成ツール_
 
-2.  管理および構成ツールが接続する 1 番目のノードの名前または TCP/IP アドレスを入力し、次の手順で 2 番目のノードを入力します。
+2. 管理および構成ツールが接続する 1 番目のノードの名前または TCP/IP アドレスを入力し、次の手順で 2 番目のノードを入力します。
 
-  ![図 47:管理および構成ツールが接続する 1 番目のノードの名前または TCP/IP アドレスを入力し、次の手順で 2 番目のノードの情報を入力する][sap-ha-guide-figure-3037]
+   ![図 47:管理および構成ツールが接続する 1 番目のノードの名前または TCP/IP アドレスを入力し、次の手順で 2 番目のノードの情報を入力する][sap-ha-guide-figure-3037]
 
-  _**図 47:** 管理および構成ツールが接続する 1 番目のノードの名前または TCP/IP アドレスを入力し、次の手順で 2 番目のノードの情報を入力する_
+   _**図 47:** 管理および構成ツールが接続する 1 番目のノードの名前または TCP/IP アドレスを入力し、次の手順で 2 番目のノードの情報を入力する_
 
-3.  2 つのノード間のレプリケーション ジョブを作成します。
+3. 2 つのノード間のレプリケーション ジョブを作成します。
 
-  ![図 48:レプリケーション ジョブを作成する][sap-ha-guide-figure-3038]
+   ![図 48:レプリケーション ジョブを作成する][sap-ha-guide-figure-3038]
 
-  _**図 48:** レプリケーション ジョブを作成する_
+   _**図 48:** レプリケーション ジョブを作成する_
 
-  ウィザードでレプリケーション ジョブの作成手順が示されます。
-4.  ソース ノードの名前、TCP/IP アドレス、ディスク ボリュームを定義します。
+   ウィザードでレプリケーション ジョブの作成手順が示されます。
+4. ソース ノードの名前、TCP/IP アドレス、ディスク ボリュームを定義します。
 
-  ![図 49:レプリケーション ジョブの名前を定義する][sap-ha-guide-figure-3039]
+   ![図 49:レプリケーション ジョブの名前を定義する][sap-ha-guide-figure-3039]
 
-  _**図 49:** レプリケーション ジョブの名前を定義する_
+   _**図 49:** レプリケーション ジョブの名前を定義する_
 
-  ![図 50:現在のソース ノードとして使用するノードの基本データを定義する][sap-ha-guide-figure-3040]
+   ![図 50:現在のソース ノードとして使用するノードの基本データを定義する][sap-ha-guide-figure-3040]
 
-  _**図 50:** 現在のソース ノードとして使用するノードの基本データを定義する_
+   _**図 50:** 現在のソース ノードとして使用するノードの基本データを定義する_
 
-5.  ターゲット ノードの名前、TCP/IP アドレス、ディスク ボリュームを定義します。
+5. ターゲット ノードの名前、TCP/IP アドレス、ディスク ボリュームを定義します。
 
-  ![図 51:現在のターゲット ノードとして使用するノードの基本データを定義する][sap-ha-guide-figure-3041]
+   ![図 51:現在のターゲット ノードとして使用するノードの基本データを定義する][sap-ha-guide-figure-3041]
 
-  _**図 51:** 現在のターゲット ノードとして使用するノードの基本データを定義する_
+   _**図 51:** 現在のターゲット ノードとして使用するノードの基本データを定義する_
 
-6.  圧縮アルゴリズムを定義します。 この例では、レプリケーション ストリームを圧縮することをお勧めします。 特に再同期の状況では、レプリケーション ストリームを圧縮すると、再同期時間が大幅に短縮されます。 圧縮では仮想マシンの CPU および RAM リソースが使用されることに注意してください。 圧縮率を大きくするほど、使用される CPU リソースの量も増えます。 この設定は後で調整することもできます。
+6. 圧縮アルゴリズムを定義します。 この例では、レプリケーション ストリームを圧縮することをお勧めします。 特に再同期の状況では、レプリケーション ストリームを圧縮すると、再同期時間が大幅に短縮されます。 圧縮では仮想マシンの CPU および RAM リソースが使用されることに注意してください。 圧縮率を大きくするほど、使用される CPU リソースの量も増えます。 この設定は後で調整することもできます。
 
-7.  確認する必要があるもう 1 つの設定は、レプリケーションを非同期と同期のどちらで行うかです。 *SAP ASCS/SCS の構成を保護する場合は、同期レプリケーションを使用する必要があります*。  
+7. 確認する必要があるもう 1 つの設定は、レプリケーションを非同期と同期のどちらで行うかです。 *SAP ASCS/SCS の構成を保護する場合は、同期レプリケーションを使用する必要があります*。  
 
-  ![図 52:レプリケーションの詳細を定義する][sap-ha-guide-figure-3042]
+   ![図 52:レプリケーションの詳細を定義する][sap-ha-guide-figure-3042]
 
-  _**図 52:** レプリケーションの詳細を定義する_
+   _**図 52:** レプリケーションの詳細を定義する_
 
-8.  レプリケーション ジョブによってレプリケートされたボリュームを、Windows Server フェールオーバー クラスタリングのクラスター構成に共有ディスクとして示すかどうかを定義します。 SAP ASCS/SCS の構成では、Windows クラスターがレプリケートされたボリュームをクラスター ボリュームとして使用できる共有ディスクとして認識するように、**[はい]** を選択します。
+8. レプリケーション ジョブによってレプリケートされたボリュームを、Windows Server フェールオーバー クラスタリングのクラスター構成に共有ディスクとして示すかどうかを定義します。 SAP ASCS/SCS の構成では、Windows クラスターがレプリケートされたボリュームをクラスター ボリュームとして使用できる共有ディスクとして認識するように、**[はい]** を選択します。
 
-  ![図 53:[はい] を選択し、レプリケートされたボリュームをクラスター ボリュームとして設定する][sap-ha-guide-figure-3043]
+   ![図 53:[はい] を選択し、レプリケートされたボリュームをクラスター ボリュームとして設定する][sap-ha-guide-figure-3043]
 
-  _**図 53:****[はい]** を選択し、レプリケートされたボリュームをクラスター ボリュームとして設定する_
+   _**図 53:****[はい]** を選択し、レプリケートされたボリュームをクラスター ボリュームとして設定する_
 
-  ボリュームが作成された後、DataKeeper の管理および構成ツールではレプリケーション ジョブがアクティブであると表示されます。
+   ボリュームが作成された後、DataKeeper の管理および構成ツールではレプリケーション ジョブがアクティブであると表示されます。
 
-  ![図 54:SAP ASCS/SCS 共有ディスクの DataKeeper 同期ミラーリングがアクティブになっている][sap-ha-guide-figure-3044]
+   ![図 54:SAP ASCS/SCS 共有ディスクの DataKeeper 同期ミラーリングがアクティブになっている][sap-ha-guide-figure-3044]
 
-  _**図 54:** SAP ASCS/SCS 共有ディスクの DataKeeper 同期ミラーリングがアクティブになっている_
+   _**図 54:** SAP ASCS/SCS 共有ディスクの DataKeeper 同期ミラーリングがアクティブになっている_
 
-  図 55 のように、フェールオーバー クラスター マネージャーでディスクが DataKeeper ディスクとして表示されるようになりました。
+   図 55 のように、フェールオーバー クラスター マネージャーでディスクが DataKeeper ディスクとして表示されるようになりました。
 
-  ![図 55:DataKeeper がレプリケートしたディスクがフェールオーバー クラスター マネージャーに表示される][sap-ha-guide-figure-3045]
+   ![図 55:DataKeeper がレプリケートしたディスクがフェールオーバー クラスター マネージャーに表示される][sap-ha-guide-figure-3045]
 
-  _**図 55:** DataKeeper がレプリケートしたディスクがフェールオーバー クラスター マネージャーに表示される_
+   _**図 55:** DataKeeper がレプリケートしたディスクがフェールオーバー クラスター マネージャーに表示される_
 
 ## <a name="a06f0b49-8a7a-42bf-8b0d-c12026c5746b"></a> SAP NetWeaver システムのインストール
 
@@ -1130,35 +1130,35 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 
 #### <a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a> クラスター化された SAP ASCS/SCS インスタンスの仮想ホスト名の作成
 
-1.  Windows DNS マネージャーで、ASCS/SCS インスタンスの仮想ホスト名の DNS エントリを作成します。
+1. Windows DNS マネージャーで、ASCS/SCS インスタンスの仮想ホスト名の DNS エントリを作成します。
 
-  > [!IMPORTANT]
-  > ASCS/SCS インスタンスの仮想ホスト名に割り当てる IP アドレスは Azure Load Balancer (**<*SID*>-lb-ascs**) に割り当てた IP アドレスと同じでなければなりません。  
-  >
-  >
+   > [!IMPORTANT]
+   > ASCS/SCS インスタンスの仮想ホスト名に割り当てる IP アドレスは Azure Load Balancer (**<*SID*>-lb-ascs**) に割り当てた IP アドレスと同じでなければなりません。  
+   >
+   >
 
-  SAP ASCS/SCS の仮想ホスト名 (**pr1-ascs-sap**) の IP アドレスは、Azure Load Balancer (**pr1-lb-ascs**) の IP アドレスと同じです。
+   SAP ASCS/SCS の仮想ホスト名 (**pr1-ascs-sap**) の IP アドレスは、Azure Load Balancer (**pr1-lb-ascs**) の IP アドレスと同じです。
 
-  ![図 56:SAP ASCS/SCS クラスターの仮想名と TCP/IP アドレスの DNS エントリを定義する][sap-ha-guide-figure-3046]
+   ![図 56:SAP ASCS/SCS クラスターの仮想名と TCP/IP アドレスの DNS エントリを定義する][sap-ha-guide-figure-3046]
 
-  _**図 56:** SAP ASCS/SCS クラスターの仮想名と TCP/IP アドレスの DNS エントリを定義する_
+   _**図 56:** SAP ASCS/SCS クラスターの仮想名と TCP/IP アドレスの DNS エントリを定義する_
 
-2.  仮想ホスト名に割り当てる IP アドレスを定義するには、**[DNS マネージャー]** > **[ドメイン]** の順に選択します。
+2. 仮想ホスト名に割り当てる IP アドレスを定義するには、**[DNS マネージャー]** > **[ドメイン]** の順に選択します。
 
-  ![図 57:SAP ASCS/SCS クラスター構成の新しい仮想名と TCP/IP アドレス][sap-ha-guide-figure-3047]
+   ![図 57:SAP ASCS/SCS クラスター構成の新しい仮想名と TCP/IP アドレス][sap-ha-guide-figure-3047]
 
-  _**図 57:** SAP ASCS/SCS クラスター構成の新しい仮想名と TCP/IP アドレス_
+   _**図 57:** SAP ASCS/SCS クラスター構成の新しい仮想名と TCP/IP アドレス_
 
 #### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a> 最初の SAP クラスター ノードのインストール
 
-1.  クラスター ノード A で、最初のクラスター ノード オプションを実行します。たとえば、**pr1-ascs-0** ホストで実行します。
-2.  Azure 内部ロード バランサーの既定のポートを維持するには、以下を選択します。
+1. クラスター ノード A で、最初のクラスター ノード オプションを実行します。たとえば、**pr1-ascs-0** ホストで実行します。
+2. Azure 内部ロード バランサーの既定のポートを維持するには、以下を選択します。
 
-  * **ABAP システム**:**ASCS** インスタンス番号 **00**
-  * **Java システム**:**SCS** インスタンス番号 **01**
-  * **ABAP+Java システム**:**ASCS** インスタンス番号 **00** と **SCS** インスタンス番号 **01**
+   * **ABAP システム**:**ASCS** インスタンス番号 **00**
+   * **Java システム**:**SCS** インスタンス番号 **01**
+   * **ABAP+Java システム**:**ASCS** インスタンス番号 **00** と **SCS** インスタンス番号 **01**
 
-  他のインスタンス番号 (ABAP ASCS インスタンスでは 00 以外、Java SCS インスタンスでは 01 以外) を使用するには、「[Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則の変更][sap-ha-guide-8.9]」の説明に従って、Azure 内部ロード バランサーの既定の負荷分散規則を変更する必要があります。
+   他のインスタンス番号 (ABAP ASCS インスタンスでは 00 以外、Java SCS インスタンスでは 01 以外) を使用するには、「[Azure 内部ロード バランサーの既定の ASCS/SCS 負荷分散規則の変更][sap-ha-guide-8.9]」の説明に従って、Azure 内部ロード バランサーの既定の負荷分散規則を変更する必要があります。
 
 次のいくつかのタスクは、通常の SAP インストール ドキュメントには記載されていません。
 
@@ -1173,20 +1173,20 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 
 ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
-1.  SAP ASCS/SCS インスタンス プロファイルに次のプロファイル パラメーターを追加します。
+1. SAP ASCS/SCS インスタンス プロファイルに次のプロファイル パラメーターを追加します。
 
-  ```
-  enque/encni/set_so_keepalive = true
-  ```
-  このガイドの例では、パスは次のようになります。
+   ```
+   enque/encni/set_so_keepalive = true
+   ```
+   このガイドの例では、パスは次のようになります。
 
-  `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_ASCS00_pr1-ascs-sap`
+   `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_ASCS00_pr1-ascs-sap`
 
-  たとえば、SAP SCS インスタンス プロファイルの対応するパスは次のようになります。
+   たとえば、SAP SCS インスタンス プロファイルの対応するパスは次のようになります。
 
-  `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+   `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
 
-2.  変更を適用するには、SAP ASCS/SCS インスタンスを再起動します。
+2. 変更を適用するには、SAP ASCS/SCS インスタンスを再起動します。
 
 #### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> プローブ ポートの追加
 
@@ -1194,94 +1194,94 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
 プローブ ポートを追加するには
 
-1.  次の PowerShell コマンドを実行して、現在の **ProbePort** の設定を確認します。 クラスター構成内のいずれかの仮想マシンで実行します。
+1. 次の PowerShell コマンドを実行して、現在の **ProbePort** の設定を確認します。 クラスター構成内のいずれかの仮想マシンで実行します。
 
-  ```PowerShell
-  $SAPSID = "PR1"     # SAP <SID>
+   ```PowerShell
+   $SAPSID = "PR1"     # SAP <SID>
 
-  $SAPNetworkIPClusterName = "SAP $SAPSID IP"
-  Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
-  ```
+   $SAPNetworkIPClusterName = "SAP $SAPSID IP"
+   Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
+   ```
 
-2.  プローブ ポートを定義します。 既定のプローブ ポート番号は **0** です。 この例では、プローブ ポート **62000** を使用します。
+2. プローブ ポートを定義します。 既定のプローブ ポート番号は **0** です。 この例では、プローブ ポート **62000** を使用します。
 
-  ![図 58:クラスター構成のプローブ ポートは既定で 0 に設定されている][sap-ha-guide-figure-3048]
+   ![図 58:クラスター構成のプローブ ポートは既定で 0 に設定されている][sap-ha-guide-figure-3048]
 
-  _**図 58:** 既定のクラスター構成のプローブ ポートは 0 に設定されている_
+   _**図 58:** 既定のクラスター構成のプローブ ポートは 0 に設定されている_
 
-  ポート番号は、SAP Azure Resource Manager テンプレートで定義されています。 PowerShell でポート番号を割り当てることができます。
+   ポート番号は、SAP Azure Resource Manager テンプレートで定義されています。 PowerShell でポート番号を割り当てることができます。
 
-  **SAP <*SID*> IP** クラスター リソースの新しい ProbePort 値を設定するには、次の PowerShell スクリプトを実行します。 環境に合わせて PowerShell 変数を更新してください。 スクリプトを実行した後、変更を有効にするために SAP クラスター グループを再起動するよう求められます。
+   **SAP <*SID*> IP** クラスター リソースの新しい ProbePort 値を設定するには、次の PowerShell スクリプトを実行します。 環境に合わせて PowerShell 変数を更新してください。 スクリプトを実行した後、変更を有効にするために SAP クラスター グループを再起動するよう求められます。
 
-  ```PowerShell
-  $SAPSID = "PR1"      # SAP <SID>
-  $ProbePort = 62000   # ProbePort of the Azure Internal Load Balancer
+   ```PowerShell
+   $SAPSID = "PR1"      # SAP <SID>
+   $ProbePort = 62000   # ProbePort of the Azure Internal Load Balancer
 
-  Clear-Host
-  $SAPClusterRoleName = "SAP $SAPSID"
-  $SAPIPresourceName = "SAP $SAPSID IP"
-  $SAPIPResourceClusterParameters =  Get-ClusterResource $SAPIPresourceName | Get-ClusterParameter
-  $IPAddress = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Address" }).Value
-  $NetworkName = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Network" }).Value
-  $SubnetMask = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "SubnetMask" }).Value
-  $OverrideAddressMatch = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "OverrideAddressMatch" }).Value
-  $EnableDhcp = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "EnableDhcp" }).Value
-  $OldProbePort = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "ProbePort" }).Value
+   Clear-Host
+   $SAPClusterRoleName = "SAP $SAPSID"
+   $SAPIPresourceName = "SAP $SAPSID IP"
+   $SAPIPResourceClusterParameters =  Get-ClusterResource $SAPIPresourceName | Get-ClusterParameter
+   $IPAddress = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Address" }).Value
+   $NetworkName = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "Network" }).Value
+   $SubnetMask = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "SubnetMask" }).Value
+   $OverrideAddressMatch = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "OverrideAddressMatch" }).Value
+   $EnableDhcp = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "EnableDhcp" }).Value
+   $OldProbePort = ($SAPIPResourceClusterParameters | Where-Object {$_.Name -eq "ProbePort" }).Value
 
-  $var = Get-ClusterResource | Where-Object {  $_.name -eq $SAPIPresourceName  }
+   $var = Get-ClusterResource | Where-Object {  $_.name -eq $SAPIPresourceName  }
 
-  Write-Host "Current configuration parameters for SAP IP cluster resource '$SAPIPresourceName' are:" -ForegroundColor Cyan
-  Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
+   Write-Host "Current configuration parameters for SAP IP cluster resource '$SAPIPresourceName' are:" -ForegroundColor Cyan
+   Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
 
-  Write-Host
-  Write-Host "Current probe port property of the SAP cluster resource '$SAPIPresourceName' is '$OldProbePort'." -ForegroundColor Cyan
-  Write-Host
-  Write-Host "Setting the new probe port property of the SAP cluster resource '$SAPIPresourceName' to '$ProbePort' ..." -ForegroundColor Cyan
-  Write-Host
+   Write-Host
+   Write-Host "Current probe port property of the SAP cluster resource '$SAPIPresourceName' is '$OldProbePort'." -ForegroundColor Cyan
+   Write-Host
+   Write-Host "Setting the new probe port property of the SAP cluster resource '$SAPIPresourceName' to '$ProbePort' ..." -ForegroundColor Cyan
+   Write-Host
 
-  $var | Set-ClusterParameter -Multiple @{"Address"=$IPAddress;"ProbePort"=$ProbePort;"Subnetmask"=$SubnetMask;"Network"=$NetworkName;"OverrideAddressMatch"=$OverrideAddressMatch;"EnableDhcp"=$EnableDhcp}
+   $var | Set-ClusterParameter -Multiple @{"Address"=$IPAddress;"ProbePort"=$ProbePort;"Subnetmask"=$SubnetMask;"Network"=$NetworkName;"OverrideAddressMatch"=$OverrideAddressMatch;"EnableDhcp"=$EnableDhcp}
 
-  Write-Host
+   Write-Host
 
-  $ActivateChanges = Read-Host "Do you want to take restart SAP cluster role '$SAPClusterRoleName', to activate the changes (yes/no)?"
+   $ActivateChanges = Read-Host "Do you want to take restart SAP cluster role '$SAPClusterRoleName', to activate the changes (yes/no)?"
 
-  if($ActivateChanges -eq "yes"){
-  Write-Host
-  Write-Host "Activating changes..." -ForegroundColor Cyan
+   if($ActivateChanges -eq "yes"){
+   Write-Host
+   Write-Host "Activating changes..." -ForegroundColor Cyan
 
-  Write-Host
-  write-host "Taking SAP cluster IP resource '$SAPIPresourceName' offline ..." -ForegroundColor Cyan
-  Stop-ClusterResource -Name $SAPIPresourceName
-  sleep 5
+   Write-Host
+   write-host "Taking SAP cluster IP resource '$SAPIPresourceName' offline ..." -ForegroundColor Cyan
+   Stop-ClusterResource -Name $SAPIPresourceName
+   sleep 5
 
-  Write-Host "Starting SAP cluster role '$SAPClusterRoleName' ..." -ForegroundColor Cyan
-  Start-ClusterGroup -Name $SAPClusterRoleName
+   Write-Host "Starting SAP cluster role '$SAPClusterRoleName' ..." -ForegroundColor Cyan
+   Start-ClusterGroup -Name $SAPClusterRoleName
 
-  Write-Host "New ProbePort parameter is active." -ForegroundColor Green
-  Write-Host
+   Write-Host "New ProbePort parameter is active." -ForegroundColor Green
+   Write-Host
 
-  Write-Host "New configuration parameters for SAP IP cluster resource '$SAPIPresourceName':" -ForegroundColor Cyan
-  Write-Host
-  Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
-  }else
-  {
-  Write-Host "Changes are not activated."
-  }
-  ```
+   Write-Host "New configuration parameters for SAP IP cluster resource '$SAPIPresourceName':" -ForegroundColor Cyan
+   Write-Host
+   Get-ClusterResource -Name $SAPIPresourceName | Get-ClusterParameter
+   }else
+   {
+   Write-Host "Changes are not activated."
+   }
+   ```
 
-  **SAP <*SID*>** クラスター ロールをオンラインにした後、**ProbePort** が新しい値に設定されていることを確認します。
+   **SAP <*SID*>** クラスター ロールをオンラインにした後、**ProbePort** が新しい値に設定されていることを確認します。
 
-  ```PowerShell
-  $SAPSID = "PR1"     # SAP <SID>
+   ```PowerShell
+   $SAPSID = "PR1"     # SAP <SID>
 
-  $SAPNetworkIPClusterName = "SAP $SAPSID IP"
-  Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
+   $SAPNetworkIPClusterName = "SAP $SAPSID IP"
+   Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
 
-  ```
+   ```
 
-  ![図 59:新しい値を設定した後でクラスター ポートをプローブする][sap-ha-guide-figure-3049]
+   ![図 59:新しい値を設定した後でクラスター ポートをプローブする][sap-ha-guide-figure-3049]
 
-  _**図 59:** 新しい値を設定した後でクラスター ポートをプローブする_
+   _**図 59:** 新しい値を設定した後でクラスター ポートをプローブする_
 
 #### <a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a> Windows ファイアウォール プローブ ポートを開く
 
@@ -1343,29 +1343,29 @@ _**図 62:** SIOS DataKeeper で、クラスター ノード A からクラス�
 
 ### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> ノード A からノード B へのフェールオーバー
 
-1.  次のいずれかの方法を選択して、クラスター ノード A からクラスター ノード B への SAP <*SID*> クラスター グループのフェールオーバーを開始します。
-  - フェールオーバー クラスター マネージャーを使用します  
-  - 次のフェールオーバー クラスター PowerShell を使用します
+1. 次のいずれかの方法を選択して、クラスター ノード A からクラスター ノード B への SAP <*SID*> クラスター グループのフェールオーバーを開始します。
+   - フェールオーバー クラスター マネージャーを使用します  
+   - 次のフェールオーバー クラスター PowerShell を使用します
 
-  ```PowerShell
-  $SAPSID = "PR1"     # SAP <SID>
+   ```PowerShell
+   $SAPSID = "PR1"     # SAP <SID>
 
-  $SAPClusterGroup = "SAP $SAPSID"
-  Move-ClusterGroup -Name $SAPClusterGroup
+   $SAPClusterGroup = "SAP $SAPSID"
+   Move-ClusterGroup -Name $SAPClusterGroup
 
-  ```
-2.  Windows ゲスト オペレーティング システムでクラスター ノード A を再起動します (ノード A からノード B への SAP <*SID*> クラスター グループの自動フェールオーバーが開始されます)。  
-3.  Azure Portal からクラスター ノード A を再起動します (ノード A からノード B への SAP <*SID*> クラスター グループの自動フェールオーバーが開始されます)。  
-4.  Azure PowerShell を使用してクラスター ノード A を再起動します (ノード A からノード B への SAP <*SID*> クラスター グループの自動フェールオーバーが開始されます)。
+   ```
+2. Windows ゲスト オペレーティング システムでクラスター ノード A を再起動します (ノード A からノード B への SAP <*SID*> クラスター グループの自動フェールオーバーが開始されます)。  
+3. Azure Portal からクラスター ノード A を再起動します (ノード A からノード B への SAP <*SID*> クラスター グループの自動フェールオーバーが開始されます)。  
+4. Azure PowerShell を使用してクラスター ノード A を再起動します (ノード A からノード B への SAP <*SID*> クラスター グループの自動フェールオーバーが開始されます)。
 
-  フェールオーバーの後、SAP <*SID*> クラスター グループは、クラスター ノード B (たとえば **pr1-ascs-1**) で動作しています。
+   フェールオーバーの後、SAP <*SID*> クラスター グループは、クラスター ノード B (たとえば **pr1-ascs-1**) で動作しています。
 
-  ![図 63:フェールオーバー クラスター マネージャーで SAP <SID> クラスター グループがクラスター ノード B で動作している][sap-ha-guide-figure-5002]
+   ![図 63:フェールオーバー クラスター マネージャーで SAP <SID> クラスター グループがクラスター ノード B で動作している][sap-ha-guide-figure-5002]
 
-  _**図 63**:フェールオーバー クラスター マネージャーで SAP <*SID*> クラスター グループがクラスター ノード B で動作している_
+   _**図 63**:フェールオーバー クラスター マネージャーで SAP <*SID*> クラスター グループがクラスター ノード B で動作している_
 
-  現在、共有ディスクはクラスター ノード B にマウントされています。SIOS DataKeeper は、クラスター ノード B (例: **pr1-ascs-1 [10.0.0.41]**) のソース ボリューム ドライブ S から、クラスター ノード A (例: **pr1-ascs-0 [10.0.0.40]**) のターゲット ボリューム ドライブ S に、データをレプリケートします。
+   現在、共有ディスクはクラスター ノード B にマウントされています。SIOS DataKeeper は、クラスター ノード B (例: **pr1-ascs-1 [10.0.0.41]**) のソース ボリューム ドライブ S から、クラスター ノード A (例: **pr1-ascs-0 [10.0.0.40]**) のターゲット ボリューム ドライブ S に、データをレプリケートします。
 
-  ![図 64:SIOS DataKeeper で、クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする][sap-ha-guide-figure-5003]
+   ![図 64:SIOS DataKeeper で、クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする][sap-ha-guide-figure-5003]
 
-  _**図 64:** SIOS DataKeeper で、クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする_
+   _**図 64:** SIOS DataKeeper で、クラスター ノード B からクラスター ノード A にローカル ボリュームをレプリケートする_

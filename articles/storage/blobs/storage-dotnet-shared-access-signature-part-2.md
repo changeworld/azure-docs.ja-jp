@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9c5f32bb1b4f335fab11f0fd865421f2eec5eee9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5dcb9f16b589b8332d5fcf35c9d8b4cd914460f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244914"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012545"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用
 
@@ -33,7 +33,7 @@ ms.locfileid: "55244914"
 **アプリケーション 2**:クライアント アプリケーションです。 最初のアプリケーションが作成した共有アクセス署名を使用して、コンテナー リソースと BLOB リソースにアクセスします。 共有アクセス署名のみを使用して、コンテナーと BLOB リソースにアクセスします。ストレージ アカウント アクセス キーは "*含まれません"*。
 
 ## <a name="part-1-create-a-console-application-to-generate-shared-access-signatures"></a>パート 1:共有アクセス署名を生成するコンソール アプリケーションを作成する
-まず、Azure .NET 用ストレージ クライアント ライブラリがインストールされていることを確認します。 クライアント ライブラリの最新のアセンブリを含む [NuGet パッケージ](http://nuget.org/packages/WindowsAzure.Storage/ "NuGet パッケージ")をインストールできます。 これは、最新の修正プログラムが適用されていることを保証するため、推奨される方法です。 また、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) の最新バージョンの一部として、クライアント ライブラリをダウンロードすることもできます。
+まず、Azure .NET 用ストレージ クライアント ライブラリがインストールされていることを確認します。 クライアント ライブラリの最新のアセンブリを含む [NuGet パッケージ](https://nuget.org/packages/WindowsAzure.Storage/ "NuGet パッケージ")をインストールできます。 これは、最新の修正プログラムが適用されていることを保証するため、推奨される方法です。 また、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) の最新バージョンの一部として、クライアント ライブラリをダウンロードすることもできます。
 
 Visual Studio で、新しい Windows コンソール アプリケーションを作成し、 **GenerateSharedAccessSignatures**という名前を付けます。 次の方法のいずれかを使用して、[Microsoft.WindowsAzure.ConfigurationManager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager) と [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage/) への参照を追加します。
 

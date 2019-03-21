@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc60f3ac785bede0f3a2e4d83cc98980b46868e2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 15e77767e16ce6ae02c6f1f93891d5acf4bfcb6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167067"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119600"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>クイック スタート:Azure Active Directory v1.0 エンドポイントを使用してアプリを登録する
 
@@ -52,16 +52,16 @@ ms.locfileid: "56167067"
 
 1. **[作成]** ページが表示されたら、アプリケーションの登録情報を入力します。 
 
-    - **[名前]:** わかりやすいアプリケーション名を入力します
-    - **アプリケーションの種類:**
-      - デバイスのローカルにインストールされている[クライアント アプリケーション](developer-glossary.md#client-application)については、**[ネイティブ]** を選択します。 OAuth の public [ネイティブ クライアント](developer-glossary.md#native-client)の場合には、この設定を使用します。
-      - セキュリティで保護されたサーバーにインストールされている[クライアント アプリケーション](developer-glossary.md#client-application)と[リソース/API アプリケーション](developer-glossary.md#resource-server)については、**[Web アプリ/API]** を選択します。 OAuth の confidential [Web クライアント](developer-glossary.md#web-client)と、public [ユーザーエージェントベース クライアント](developer-glossary.md#user-agent-based-client)の場合には、この設定を使用します。 同じアプリケーションでクライアントとリソース/API を両方とも公開することもできます。
-    - **サインオン URL:** "Web アプリ/API" アプリケーションの場合は、アプリのベース URL を指定します。 ローカル マシンで実行されている Web アプリの URL であれば、たとえば `http://localhost:31544` のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。 
-    - **リダイレクト URI:** "ネイティブ" アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 `http://MyFirstAADApp` など、アプリケーションに固有の値を入力してください。
+   - **[名前]:** わかりやすいアプリケーション名を入力します
+   - **アプリケーションの種類:**
+     - デバイスのローカルにインストールされている[クライアント アプリケーション](developer-glossary.md#client-application)については、**[ネイティブ]** を選択します。 OAuth の public [ネイティブ クライアント](developer-glossary.md#native-client)の場合には、この設定を使用します。
+     - セキュリティで保護されたサーバーにインストールされている[クライアント アプリケーション](developer-glossary.md#client-application)と[リソース/API アプリケーション](developer-glossary.md#resource-server)については、**[Web アプリ/API]** を選択します。 OAuth の confidential [Web クライアント](developer-glossary.md#web-client)と、public [ユーザーエージェントベース クライアント](developer-glossary.md#user-agent-based-client)の場合には、この設定を使用します。 同じアプリケーションでクライアントとリソース/API を両方とも公開することもできます。
+   - **サインオン URL:** "Web アプリ/API" アプリケーションの場合は、アプリのベース URL を指定します。 ローカル マシンで実行されている Web アプリの URL であれば、たとえば `http://localhost:31544` のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。 
+   - **リダイレクト URI:** "ネイティブ" アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 `http://MyFirstAADApp` など、アプリケーションに固有の値を入力してください。
 
-      ![新しいアプリケーションの登録 - 作成](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
+     ![新しいアプリケーションの登録 - 作成](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
 
-    Web アプリケーションまたはネイティブ アプリケーションの具体的な例が必要な場合には、ドキュメントの**クイック スタート**を参照してください。
+     Web アプリケーションまたはネイティブ アプリケーションの具体的な例が必要な場合には、ドキュメントの**クイック スタート**を参照してください。
 
 1. 終わったら、**[作成]** を選択します。
 

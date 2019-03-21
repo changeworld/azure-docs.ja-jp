@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2018
 ms.author: roiyz
-ms.openlocfilehash: f29c995c4fb4a1e87c95295779ff83dd133ac61c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 520ff1dfeefc8cca66710745012ee54b550a19a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984394"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097925"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -123,11 +123,11 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 >これらのプロパティ名では大文字と小文字が区別されます。 展開の問題を回避するには、次のような名前を使います。
 
 #### <a name="property-value-details"></a>プロパティ値の詳細
- * `commandToExecute`: (**必須**、文字列) 実行するエントリ ポイント スクリプト。 コマンドにパスワードなどの機密情報が含まれている場合、または fileUris が機密の場合は、代わりにこのフィールドを使用します。
-* `fileUris`: (省略可能、文字列の配列) ファイルをダウンロードする URL。
-* `timestamp` (省略可能、32 ビットの整数) このフィールドは、このフィールドの値を変更することによりスクリプトの再実行をトリガーする場合のみ使用します。  任意の整数値が使用できますが、前の値と異なる必要があります。
-* `storageAccountName`: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての `fileUris` が Azure BLOB の URL である必要があります。
-* `storageAccountKey`: (省略可能、文字列) ストレージ アカウントのアクセス キー。
+* `commandToExecute`: (**必須**、文字列) 実行するエントリ ポイント スクリプト。 コマンドにパスワードなどの機密情報が含まれている場合、または fileUris が機密の場合は、代わりにこのフィールドを使用します。
+  * `fileUris`: (省略可能、文字列の配列) ファイルをダウンロードする URL。
+  * `timestamp` (省略可能、32 ビットの整数) このフィールドは、このフィールドの値を変更することによりスクリプトの再実行をトリガーする場合のみ使用します。  任意の整数値が使用できますが、前の値と異なる必要があります。
+  * `storageAccountName`: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての `fileUris` が Azure BLOB の URL である必要があります。
+  * `storageAccountKey`: (省略可能、文字列) ストレージ アカウントのアクセス キー。
 
 パブリックまたはプロテクトのいずれかの設定に、次の値を設定することができます。拡張機能では、パブリックおよびプロテクトの両方の設定に以下の値が設定された場合、構成が拒否されます。
 * `commandToExecute`

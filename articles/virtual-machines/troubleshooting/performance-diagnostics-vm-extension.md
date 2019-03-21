@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 415cf34a8b19400091807005e1e9943aa025f244
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980025"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002735"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -89,7 +89,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 
 Windows 仮想マシンにこの拡張機能をインストールするには、次の手順に従います。
 
-1. [Azure Portal](http://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. この拡張機能をインストールする仮想マシンを選びます。
 
     ![仮想マシンが強調表示されている Azure Portal のスクリーンショット](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -112,7 +112,7 @@ Windows 仮想マシンにこの拡張機能をインストールするには、
 ## <a name="remove-the-extension"></a>拡張機能を削除する
 仮想マシンから拡張機能を削除するには、以下の手順のようにします。
 
-1. [Azure Portal](http://portal.azure.com) にサインインし、この拡張機能を削除する仮想マシンを選択し、**[拡張機能]** ブレードを選択します。 
+1. [Azure Portal](https://portal.azure.com) にサインインし、この拡張機能を削除する仮想マシンを選択し、**[拡張機能]** ブレードを選択します。 
 2. 一覧でパフォーマンス診断拡張機能のエントリの **[...]** をクリックし、**[アンインストール]** を選択します。
 
     ![[アンインストール] が強調表示されている [拡張機能] ブレードのスクリーンショット](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
@@ -125,7 +125,7 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
 
 ```
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {

@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08ad61070fd3bfb8472cffb51fd0b1bb4bcf169b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7ef499e49fc4d1a0dc79dfc4efb818f7330b57b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169379"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995208"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する (プレビュー)
 
@@ -74,11 +74,11 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 1. Web アプリケーションとパブリック クライアント アプリケーションのカスタム リダイレクト URI を追加するには、次の手順を実行します。
 
-    1. **[リダイレクト URI]** セクションを見つけます。
-    1. 構築するアプリケーションの種類として **[Web]** または **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
-    1. アプリケーションのリダイレクト URI を入力します。
-        * Web アプリケーションの場合は、アプリケーションのベース URL を指定します。 ローカル コンピューターで実行されている Web アプリケーションの URL であれば、たとえば http://localhost:31544 のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
-        * パブリック アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 https://MyFirstApp など、アプリケーションに固有の値を入力してください。
+   1. **[リダイレクト URI]** セクションを見つけます。
+   1. 構築するアプリケーションの種類として **[Web]** または **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
+   1. アプリケーションのリダイレクト URI を入力します。
+      * Web アプリケーションの場合は、アプリケーションのベース URL を指定します。 ローカル コンピューターで実行されている Web アプリケーションの URL であれば、たとえば `http://localhost:31544` のようになります。 ユーザーはこの URL を使用して、Web クライアント アプリケーションにサインインすることになります。
+      * パブリック アプリケーションの場合は、トークン応答を返すために Azure AD に使用される URI を指定します。 https://MyFirstApp など、アプリケーションに固有の値を入力してください。
 
 1. パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI の中から選択するには、以下の手順に従います。
 

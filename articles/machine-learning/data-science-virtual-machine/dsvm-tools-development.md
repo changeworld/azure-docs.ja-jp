@@ -16,18 +16,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 663da31985759f47fff77dc5ad0f985d44559385
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: dd60c5d0210ffba373839fd0f194496c5dbcc20d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451582"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999410"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシン上の開発ツール
 
 データ サイエンス仮想マシン (DSVM) は、いくつかの一般的なツールと IDE をバンドルすることにより、開発のための生産性の高い環境を提供します。 DSVM で提供されるツールには、次のものがあります。 
 
 ## <a name="visual-studio-2017"></a>Visual Studio 2017  
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | 汎用 IDE      |
@@ -38,6 +39,7 @@ ms.locfileid: "55451582"
 | DSVM 上の関連ツール      |     Visual Studio Code、RStudio、Juno  |
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | 汎用 IDE      |
@@ -47,6 +49,7 @@ ms.locfileid: "55451582"
 | DSVM 上の関連ツール      |     Visual Studio 2017、RStudio、Juno  |
 
 ## <a name="rstudio--desktop"></a>RStudio Desktop 
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | R 言語用のクライアント IDE    |
@@ -56,6 +59,7 @@ ms.locfileid: "55451582"
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、Juno      |
 
 ## <a name="rstudio--server"></a>RStudio Server 
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | R 言語用の Web ベース IDE    |
@@ -65,6 +69,7 @@ ms.locfileid: "55451582"
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | Julia 言語用のクライアント IDE   |
@@ -74,6 +79,7 @@ ms.locfileid: "55451582"
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、RStudio      |
 
 ## <a name="pycharm"></a>Pycharm
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | Python 言語用のクライアント IDE    |
@@ -85,6 +91,7 @@ ms.locfileid: "55451582"
 
 
 ## <a name="powerbi-desktop"></a>PowerBI Desktop 
+
 |    |           |
 | ------------- | ------------- |
 | 紹介   | 対話型データ視覚化と BI ツール    |

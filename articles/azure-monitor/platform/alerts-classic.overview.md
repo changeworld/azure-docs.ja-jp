@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 596b7eb53d82f8eee7da439314994fd0951c7e64
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 3b6ddd99d7b198cdc5274b2944a723e68864bd4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661719"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993034"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要
 
@@ -80,10 +80,10 @@ Azure Monitor に、*アクション グループ*という再利用可能な通
 - webhook を呼び出す。これにより、追加のオートメーション アクションを実行できます。
 
 たとえば、Webhook では、以下を使用して自動化や修復を可能にします。
-    - Azure Automation Runbook
-    - Azure 関数
-    - Azure Logic App
-    - サードパーティのサービス
+- Azure Automation Runbook
+- Azure 関数
+- Azure Logic App
+- サードパーティのサービス
 
 ## <a name="next-steps"></a>次の手順
 アラート ルールとその構成方法については、以下をご覧ください。

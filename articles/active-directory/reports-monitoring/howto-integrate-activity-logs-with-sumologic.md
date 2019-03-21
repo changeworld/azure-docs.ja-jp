@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 085b23fe43db4936a0fd459872ec841f2b45e221
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 98134a8fd7609a6f8857d633d2c45251e4c9197b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194276"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081578"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor-preview"></a>Azure Monitor (プレビュー) を使用して Azure Active Directory のログを SumoLogic と統合する方法
 
@@ -40,7 +40,7 @@ ms.locfileid: "56194276"
 2. [Azure Active Directory のログを収集](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory)するための構成を SumoLogic インスタンスに対して行います。
 3. 対象環境のリアルタイム分析を行うことができる事前構成済みのダッシュボードを使用するために、[Azure AD SumoLogic アプリをインストール](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)します。
 
- ![ダッシュボード](./media/howto-integrate-activity-logs-with-sumologic/overview-dashboard.png)
+   ![ダッシュボード](./media/howto-integrate-activity-logs-with-sumologic/overview-dashboard.png)
 
 ## <a name="next-steps"></a>次の手順
 

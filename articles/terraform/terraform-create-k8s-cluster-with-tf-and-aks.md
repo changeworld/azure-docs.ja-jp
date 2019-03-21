@@ -2,24 +2,24 @@
 title: Azure Kubernetes Service (AKS) および Terraform を使用して Kubernetes クラスターを作成する
 description: Azure Kubernetes Service と Terraform を使用して Kubernetes クラスターを作成する方法を示すチュートリアル
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, 仮想マシン, azure, kubernetes
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 57615ecd4c81359360004b732736bf757c0026c3
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d8438f5ddbbb3744811448aeb563be602b04516d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892067"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009093"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes Service および Terraform を使用して Kubernetes クラスターを作成する
 [Azure Kubernetes Service (AKS)](/azure/aks/) を使用すると、ホストされている Kubernetes 環境を管理できます。これによって、コンテナー オーケストレーションの知識がなくてもコンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。
 
-このチュートリアルでは、[Terraform](http://terraform.io) と AKS を使用して [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) クラスターを作成する際に次のタスクを実行する方法を学びます。
+このチュートリアルでは、[Terraform](https://terraform.io) と AKS を使用して [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) クラスターを作成する際に次のタスクを実行する方法を学びます。
 
 > [!div class="checklist"]
 > * HCL (HashiCorp 言語) を使用した Kubernetes クラスターの定義
@@ -37,7 +37,7 @@ ms.locfileid: "55892067"
 ## <a name="create-the-directory-structure"></a>ディレクトリ構造を作成する
 最初の手順では、演習のために、Terraform 構成ファイルを保持するディレクトリを作成します。
 
-1. [Azure ポータル](http://portal.azure.com)にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
 1. [Azure Cloud Shell](/azure/cloud-shell/overview) を開きます。 前に環境を選択しなかった場合、環境として **Bash** を選択します。
 

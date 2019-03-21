@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: ffac79209f998f1ef042ed5fcb4d8c6a45de2c2e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 03374f63345bd6c9e4f2b603443a1448493e1cdc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447039"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894616"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Chrome アプリにプッシュ通知を送信する
 
@@ -266,7 +266,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
         sendNHRegistrationRequest();
     }
 
-    // From http://msdn.microsoft.com/library/dn495627.aspx
+    // From https://msdn.microsoft.com/library/dn495627.aspx
     function splitConnectionString()
     {
         var parts = connectionString.split(';');
@@ -361,17 +361,17 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 
     このスクリプトの主要なパラメーターは次のとおりです。
 
-    * `window.onload` は、UI の 2 つのボタンのボタン クリック イベントを定義します。 1 つ目のボタン クリック イベント ハンドラーは GCM への登録を行い、もう 1 つは、GCM への登録後に返される登録 ID を使用して Azure Notification Hubs への登録を行います。
-    * `updateLog` は、コードで情報を記録するための関数です。
-    * `registerWithGCM` は、現在の Chrome アプリ インスタンスを登録するために、GCM に対して `chrome.gcm.register` を呼び出す最初のボタン クリック ハンドラーです。
-    * `registerCallback` は、GCM 登録の呼び出しから戻った時点で呼び出されるコールバック関数です。
-    * `registerWithNH` は 2 番目のボタン クリック ハンドラーで、Notification Hubs への登録を行います。 また、ユーザーが指定した `hubName` と `connectionString` を取得して、Notification Hubs 登録の REST API 呼び出しを作成します。
-    * `splitConnectionString` と `generateSaSToken` は、すべての REST API 呼び出しで使用する必要のある SaS トークン作成プロセスの JavaScript の実装です。 詳細については、「 [一般的な概念](https://msdn.microsoft.com/library/dn495627.aspx)」を参照してください。
-    * `sendNHRegistrationRequest` は、Azure Notification Hubs に対して HTTP REST 呼び出しを実行する関数です。
-    * `registrationPayload` は、登録の XML ペイロードを定義します。 詳細については、「 [登録の作成]」をご覧ください。 そこでは、GCM から受信された値を使用して登録 ID を更新します。
-    * `client` は、HTTP POST 要求に使用する `XMLHttpRequest` のインスタンスです。 `sasToken` を使用して `Authorization` ヘッダーを更新します。 この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。
+   * `window.onload` は、UI の 2 つのボタンのボタン クリック イベントを定義します。 1 つ目のボタン クリック イベント ハンドラーは GCM への登録を行い、もう 1 つは、GCM への登録後に返される登録 ID を使用して Azure Notification Hubs への登録を行います。
+   * `updateLog` は、コードで情報を記録するための関数です。
+   * `registerWithGCM` は、現在の Chrome アプリ インスタンスを登録するために、GCM に対して `chrome.gcm.register` を呼び出す最初のボタン クリック ハンドラーです。
+   * `registerCallback` は、GCM 登録の呼び出しから戻った時点で呼び出されるコールバック関数です。
+   * `registerWithNH` は 2 番目のボタン クリック ハンドラーで、Notification Hubs への登録を行います。 また、ユーザーが指定した `hubName` と `connectionString` を取得して、Notification Hubs 登録の REST API 呼び出しを作成します。
+   * `splitConnectionString` と `generateSaSToken` は、すべての REST API 呼び出しで使用する必要のある SaS トークン作成プロセスの JavaScript の実装です。 詳細については、「 [一般的な概念](https://msdn.microsoft.com/library/dn495627.aspx)」を参照してください。
+   * `sendNHRegistrationRequest` は、Azure Notification Hubs に対して HTTP REST 呼び出しを実行する関数です。
+   * `registrationPayload` は、登録の XML ペイロードを定義します。 詳細については、「 [登録の作成]」をご覧ください。 そこでは、GCM から受信された値を使用して登録 ID を更新します。
+   * `client` は、HTTP POST 要求に使用する `XMLHttpRequest` のインスタンスです。 `sasToken` を使用して `Authorization` ヘッダーを更新します。 この呼び出しが正常に完了すると、Chrome アプリケーション インスタンスが Azure Notification Hubs に登録されます。
 
-    このプロジェクトの全体的なフォルダー構造は、![Google Chrome アプリ - フォルダー構造][21]のような構造になります。
+     このプロジェクトの全体的なフォルダー構造は、![Google Chrome アプリ - フォルダー構造][21]のような構造になります。
 
 ### <a name="set-up-and-test-your-chrome-app"></a>Chrome アプリケーションのセットアップとテスト
 
@@ -406,7 +406,7 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
     Install-Package Microsoft.Azure.NotificationHubs
     ```
 
-   Azure Service Bus SDK への参照が、[WindowsAzure.ServiceBus NuGet パッケージと共に自動的にプロジェクトに追加](http://nuget.org/packages/WindowsAzure.ServiceBus/)されます。
+   Azure Service Bus SDK への参照が、[WindowsAzure.ServiceBus NuGet パッケージと共に自動的にプロジェクトに追加](https://nuget.org/packages/WindowsAzure.ServiceBus/)されます。
 4. `Program.cs` を開いて、次の `using` ステートメントを追加します。
 
     ```csharp
@@ -481,8 +481,8 @@ Chrome アプリケーションは JavaScript を使用して作成されます�
 [Chrome アプリケーションの GCM サンプル]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
 [モバイルでの Chrome アプリケーションの実行]: https://developer.chrome.com/apps/chrome_apps_on_mobile
-[登録の作成]: http://msdn.microsoft.com/library/azure/dn223265.aspx
-[crypto-js ライブラリ]: http://code.google.com/p/crypto-js/
+[登録の作成]: https://msdn.microsoft.com/library/azure/dn223265.aspx
+[crypto-js ライブラリ]: https://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
 [Google Cloud Messaging for Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
 [Azure Notification Hubs Notify Users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md

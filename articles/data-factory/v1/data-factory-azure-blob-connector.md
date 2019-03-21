@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 733ae4451988651df2a62a22aa6eb1b6fae44309
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ea4cf03b368cebbfc7d1229be28014b54f2c11d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331726"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004322"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -181,6 +181,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     John, Doe
     Jane, Doe
     ```
+
 ### <a name="create-the-data-factory"></a>Data Factory の作成
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左上隅にある **[リソースの作成]**、**[インテリジェンス + 分析]**、**[データ ファクトリ]** の順にクリックします。
@@ -249,14 +250,14 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     4. [Azure ストレージ アカウント] を選択します。
     5. **[次へ]** をクリックします。
 10. **[Choose the output file or folder (出力ファイルまたはフォルダーの選択)]** ページで次の操作を実行します。  
-    6. **[フォルダー パス]** で **adfblobconnector/output/{year}/{month}/{day}** を指定します。 **Tab** キーを押します。
-    7. **[年]** では **[yyyy]** を選択します。
-    8. **[月]** で、**[MM]** が設定されていることを確認します。
-    9. **[日]** で、**[dd]** が設定されていることを確認します。
-    10. **[圧縮の種類]** が **[なし]** に設定されていることを確認します。
-    11. **[コピー動作]** が **[Merge files (ファイルを結合)]** に設定されていることを確認します。 同じ名前の出力ファイルが既に存在する場合は、最後にある同じファイルに新しいコンテンツが追加されます。
-    12. **[次へ]** をクリックします。
-    ![コピー ツール - 出力ファイルまたはフォルダーの選択](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+    1. **[フォルダー パス]** で **adfblobconnector/output/{year}/{month}/{day}** を指定します。 **Tab** キーを押します。
+    1. **[年]** では **[yyyy]** を選択します。
+    1. **[月]** で、**[MM]** が設定されていることを確認します。
+    1. **[日]** で、**[dd]** が設定されていることを確認します。
+    1. **[圧縮の種類]** が **[なし]** に設定されていることを確認します。
+    1. **[コピー動作]** が **[Merge files (ファイルを結合)]** に設定されていることを確認します。 同じ名前の出力ファイルが既に存在する場合は、最後にある同じファイルに新しいコンテンツが追加されます。
+    1. **[次へ]** をクリックします。
+       ![コピー ツール - 出力ファイルまたはフォルダーの選択](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. **[File format settings (ファイル形式設定)]** ページで設定を確認し、**[次へ]** をクリックします。 ここで使用できる追加オプションの 1 つが、ヘッダーを出力ファイルに追加するオプションです。 このオプションを選択すると、ヘッダー行が、コピー元のスキーマの列名で追加されます。 既定の列名は、コピー元のスキーマを表示するときに変更できます。 たとえば、最初の列を "名" に、2 番目の列を "姓" に変更できます。 その後、出力ファイルが生成され、そのファイルのヘッダーでは、この名前が列名として使用されます。
     ![コピー ツール - コピー先のファイル形式の設定](media/data-factory-azure-blob-connector/file-format-destination.png)
 12. **[パフォーマンス設定]** ページで、**[Cloud units (クラウド単位)]** と **[Parallel copies (並列コピー)]** が **[自動]** に設定されていることを確認し、[次へ] をクリックします。 こうした設定の詳細については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md#parallel-copy)」を参照してください。
@@ -281,7 +282,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
     2017/04/24
     2017/04/25
     ```
-データ ファクトリの監視と管理の詳細については、[Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事をご覧ください。
+   データ ファクトリの監視と管理の詳細については、[Data Factory パイプラインの監視と管理](data-factory-monitor-manage-app.md)に関する記事をご覧ください。
 
 ### <a name="data-factory-entities"></a>Data Factory のエンティティ
 ここで、Data Factory のホーム ページのタブに戻ります。 現在データ ファクトリには、2 つのリンクされたサービス、2 つのデータセット、および 1 つのパイプラインがあります。
@@ -685,7 +686,7 @@ Azure Data Factory では、2 種類の Azure Storage のリンクされたサ�
 
 **Azure BLOB の出力データセット:**
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```json
 {

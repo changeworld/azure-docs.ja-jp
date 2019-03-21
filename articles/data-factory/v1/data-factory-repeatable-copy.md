@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fa08e6da6b87de5878f099709563fb90e8669e77
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 20c916275acd6bb79675c592711b17b277c9fc78
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237605"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294095"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory での反復可能なコピー
 
@@ -114,7 +114,7 @@ ID    Product        Quantity    ModifiedDate
 1. 対象 SQL テーブルで **binary (32)** 型の列を定義します。 この列に制約は設定しないでください。 この例では、この列に AdfSliceIdentifier という名前を付けます。
 
 
-ソース テーブル:
+    ソース テーブル:
 
     ```sql
     CREATE TABLE [dbo].[Student](
@@ -123,7 +123,7 @@ ID    Product        Quantity    ModifiedDate
     )
     ```
 
-対象テーブル: 
+    対象テーブル: 
 
     ```sql
     CREATE TABLE [dbo].[Student](
@@ -133,7 +133,7 @@ ID    Product        Quantity    ModifiedDate
     )
     ```
 
-2. コピー アクティビティで、次のように使用します。
+1. コピー アクティビティで、次のように使用します。
    
     ```json
     "sink":  
