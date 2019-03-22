@@ -66,16 +66,16 @@ GitHub アカウントと、Azure Automation にリンクするリポジトリ�
      | **パラメーター** | **値** |
      |:--- |:--- |
      | Name |Microsoft.Azure.Automation.SourceControl.Connection |
-     | type |String |
-     | 値 |{"Branch":\<*ブランチ名*>,"RunbookFolderPath":\<*Runbookフォルダー パス*>,"ProviderType":\<*GitHub の場合は値 1*>,"Repository":\<*リポジトリ名*>,"Username":\<*Your GitHub ユーザー名*>} |
+     | Type |String |
+     | Value |{"Branch":\<*ブランチ名*>,"RunbookFolderPath":\<*Runbookフォルダー パス*>,"ProviderType":\<*GitHub の場合は値 1*>,"Repository":\<*リポジトリ名*>,"Username":\<*Your GitHub ユーザー名*>} |
 
      * **Microsoft.Azure.Automation.SourceControl.OauthToken**変数には、OAuthToken のセキュリティで保護され暗号化された値が格納されます。  
 
      |**パラメーター**            |**値** |
      |:---|:---|
      | Name  | Microsoft.Azure.Automation.SourceControl.OauthToken |
-     | type | Unknown(Encrypted) |
-     | 値 | <*暗号化された OAuthToken*> |  
+     | Type | Unknown(Encrypted) |
+     | Value | <*暗号化された OAuthToken*> |  
 
      ![variables](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 
