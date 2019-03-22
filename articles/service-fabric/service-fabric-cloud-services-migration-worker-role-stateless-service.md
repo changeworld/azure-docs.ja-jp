@@ -32,7 +32,7 @@ ms.locfileid: "44049951"
 ![Service Fabric プロジェクトと Cloud Services プロジェクトの比較][3]
 
 ## <a name="worker-role-to-stateless-service"></a>worker ロールからステートレス サービスへ
-概念上、worker ロールは、ステートレス ワークロードを表しています。つまり、ワークロードのすべてのインスタンスは同じであり、要求はいつでも任意のインスタンスにルーティングできます。 各インスタンスは、前の要求を記憶しません。 ワークロードが処理する状態は、Azure Table Storage、Azure Document DB などの外部の状態ストアが管理します。 Service Fabric の場合、この種類のワークロードはステートレス サービスで表されます。 worker ロールを Service Fabric に移行する最も簡単なアプローチは、worker ロール コードをステートフル サービスに変換する方法です。
+概念上、worker ロールは、ステートレス ワークロードを表しています。つまり、ワークロードのすべてのインスタンスは同じであり、要求はいつでも任意のインスタンスにルーティングできます。 各インスタンスは、前の要求を記憶しません。 ワークロードが処理する状態は、Azure Table Storage、Azure Document DB などの外部の状態ストアが管理します。 Service Fabric の場合、この種類のワークロードはステートレス サービスで表されます。 worker ロールを Service Fabric に移行する最も簡単なアプローチは、worker ロール コードをステートレス サービスに変換する方法です。
 
 ![worker ロールからステートレス サービスへ][4]
 
