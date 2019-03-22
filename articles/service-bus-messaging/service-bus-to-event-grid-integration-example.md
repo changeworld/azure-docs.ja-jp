@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus と Event Grid の統合の例 | Microsoft Docs
-description: この記事では、Service Bus メッセージングと Event Grid の統合の例を紹介します。
+title: Azure Service Bus to Event Grid integration examples | Microsoft Docs
+description: This article provides examples of Service Bus messaging and Event Grid integration.
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -11,71 +11,71 @@ ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: a1c0078cf2359de7fa018af749c61880caa8fcdd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7c38de9c1dbb5e8a286fa1b72d0461dd74ed6f25
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821811"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770529"
 ---
-# <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure Service Bus と Azure Event Grid の統合の例
+# <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure Service Bus to Azure Event Grid integration examples
 
-Azure 関数とロジック アプリはどちらも、Azure Event Grid からのイベントの受信に基づいてメッセージを受信します。この記事では、Azure 関数とロジック アプリの設定方法について説明します。 次の作業を行います。
+In this article, you learn how to set up an Azure function and a logic app, which both receive messages based on receiving an event from Azure Event Grid. You'll do the following:
  
-* Event Grid からのイベントの初期フローをデバッグして確認するための、簡単なテスト Azure 関数を作成します。 この手順は、他の作業を行うかどうかに関係なく実行します。
-* Event Grid イベントに基づいて Azure Service Bus メッセージを受信して処理する Azure 関数を作成します。
-* Azure App Service の Logic Apps 機能を利用します。
+* Create a simple test Azure function for debugging and viewing the initial flow of events from the Event Grid. Perform this step regardless of whether you perform the others.
+* Create an Azure function to receive and process Azure Service Bus messages based on Event Grid events.
+* Utilize the The Logic Apps feature of Azure App Service.
 
-作成する例では、Service Bus トピックに 2 つのサブスクリプションがあることを前提としています。 また、一方の Service Bus サブスクリプションについてのみ、イベントを送信するように Event Grid サブスクリプションが作成されていることを前提とします。 
+The example that you create assumes that the Service Bus topic has two subscriptions. The example also assumes that the Event Grid subscription was created to send events for only one Service Bus subscription. 
 
-この例では、Service Bus トピックにメッセージを送信した後、その Service Bus サブスクリプションのイベントが生成されているかどうかを確認します。 関数アプリまたはロジック アプリは、Service Bus サブスクリプションからメッセージを受信して完了します。
+In the example, you send messages to the Service Bus topic and then verify that the event has been generated for this Service Bus subscription. The function or logic app receives the messages from the Service Bus subscription and then completes it.
 
-## <a name="prerequisites"></a>前提条件
-開始する前に、次の 2 つのセクションの手順が完了していることを確認してください。
+## <a name="prerequisites"></a>Prerequisites
+Before you begin, make sure that you have completed the steps in the next two sections.
 
-### <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間を作成する
+### <a name="create-a-service-bus-namespace"></a>Create a Service Bus namespace
 
-Service Bus Premium 名前空間を作成し、2 つのサブスクリプションを持った Service Bus トピックを作成します。
+Create a Service Bus Premium namespace, and create a Service Bus topic that has two subscriptions.
 
-### <a name="send-a-message-to-the-service-bus-topic"></a>Service Bus トピックにメッセージを送信する
+### <a name="send-a-message-to-the-service-bus-topic"></a>Send a message to the Service Bus topic
 
-メッセージを Service Bus トピックに送信するには、お好きな方法を使用できます。 この手順の最後にあるサンプル コードは、Visual Studio 2017 の使用を前提としています。
+You can use any method to send a message to your Service Bus topic. The sample code at the end of this procedure assumes that you are using Visual Studio 2017.
 
-1. [GitHub の azure-service-bus リポジトリ](https://github.com/Azure/azure-service-bus/)を複製します。
+1. Clone [the GitHub azure-service-bus repository](https://github.com/Azure/azure-service-bus/).
 
-1. Visual Studio で *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* フォルダーに移動し、*SBEventGridIntegration.sln* ファイルを開きます。
+1. In Visual Studio, go to the *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration* folder, and then open the *SBEventGridIntegration.sln* file.
 
-1. **MessageSender** プロジェクトに移動し、**[Program.cs]** を選択します。
+1. Go to the **MessageSender** project, and then select **Program.cs**.
 
    ![8][]
 
-1. トピック名と接続文字列を入力し、次のコンソール アプリケーション コードを実行します。
+1. Fill in your topic name and connection string, and then execute the following console application code:
 
     ```CSharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
 
-## <a name="set-up-a-test-function"></a>テスト関数をセットアップする
+## <a name="set-up-a-test-function"></a>Set up a test function
 
-完全なシナリオを実行する前に、少なくとも小さなテスト関数をセットアップします。これを使用して、送信されているイベントのデバッグと観察を行えます。
+Before you work through the entire scenario, set up at least a small test function, which you can use to debug and observe what events are flowing.
 
-1. Azure Portal で、新しい Azure Functions アプリケーションを作成します。 Azure Functions の基礎については、[Azure Functions のドキュメント](https://docs.microsoft.com/azure/azure-functions/)を参照してください。
+1. In the Azure portal, create a new Azure Functions application. To learn the basics of Azure Functions, see [Azure Functions documentation](https://docs.microsoft.com/azure/azure-functions/).
 
-1. 新たに作成した関数の正符号 (+) を選択して、HTTP トリガー関数を追加します。
+1. In your newly created function, select the plus sign (+) to add an HTTP trigger function:
 
     ![2][]
     
-    **[用意されている関数を使ってすぐに使用を開始する]** ウィンドウが表示されます。
+    The **Get started quickly with a premade function** window opens.
 
     ![3][]
 
-1. **[webhook + API]** ボタンを選択し、**[CSharp]** を選択して、**[この関数を作成する]** を選択します。
+1. Select the **Webhook + API** button, select **CSharp**, and then select **Create this function**.
  
-1. この関数に次のコードを貼り付けます。
+1. Into the function, paste the following code:
 
     ```CSharp
     #r "Newtonsoft.Json"
@@ -121,108 +121,108 @@ Service Bus Premium 名前空間を作成し、2 つのサブスクリプショ�
     }
     ```
 
-1. **[保存および実行]** を選択します。
+1. Select **Save and run**.
 
-## <a name="connect-the-function-and-namespace-via-event-grid"></a>Event Grid による関数と名前空間の接続
+## <a name="connect-the-function-and-namespace-via-event-grid"></a>Connect the function and namespace via Event Grid
 
-このセクションでは、関数と Service Bus 名前空間を関連付けます。 たとえば、Azure Portal を使用します。 PowerShell または Azure CLI を使用してこの手順を行う方法については、[Azure Service Bus と Azure Event Grid の統合の概要](service-bus-to-event-grid-integration-concept.md)に関するページを参照してください。
+In this section, you tie together the function and the Service Bus namespace. For this example, use the Azure portal. To understand how to use PowerShell or Azure CLI to do this procedure, see [Azure Service Bus to Azure Event Grid integration overview](service-bus-to-event-grid-integration-concept.md).
 
-Azure Event Grid サブスクリプションを作成するには、次の手順に従います。
-1. Azure Portal で、該当する名前空間に移動し、左側のウィンドウで **[Event Grid]** を選択します。  
-    該当する名前空間のウィンドウが開き、右側のウィンドウに 2 つの Event Grid サブスクリプションが表示されます。
+To create an Azure Event Grid subscription, do the following:
+1. In the Azure portal, go to your namespace and then, in the left pane, select **Event Grid**.  
+    Your namespace window opens, with two Event Grid subscriptions displayed in the right pane.
 
     ![20][]
 
-1. **[イベント サブスクリプション]** を選びます。  
-    **[イベント サブスクリプション]** ウィンドウが表示されます。 次の画像は、フィルターを適用せずに、Azure 関数または webhook をサブスクライブするためのフォームを示しています。
+1. Select **Event Subscription**.  
+    The **Event Subscription** window opens. The following image displays a form for subscribing to an Azure function or a webhook without applying filters.
 
     ![21][]
 
-1. ここに示したようにフォームに必要事項を入力します。**[サフィックス フィルター]** ボックスに、関連するフィルターを忘れずに入力してください。
+1. Complete the form as shown and, in the **Suffix Filter** box, remember to enter the relevant filter.
 
-1. **作成**を選択します。
+1. Select **Create**.
 
-1. 「前提条件」セクションで説明したとおりメッセージを Service Bus トピックに送信し、Azure Functions の監視機能を使用して、イベントが送信されていることを確認します。
+1. Send a message to your Service Bus topic, as mentioned in the "Prerequisites" section, and then verify that events are flowing via the Azure Functions Monitoring feature.
 
-次の手順では、関数と Service Bus 名前空間を関連付けます。 たとえば、Azure Portal を使用します。 PowerShell または Azure CLI を使用してこの手順を行う方法については、[Azure Service Bus と Azure Event Grid の統合の概要](service-bus-to-event-grid-integration-concept.md)に関するページを参照してください。
+The next step is to tie together the function and the Service Bus namespace. For this example, use the Azure portal. To understand how to use PowerShell or Azure CLI to perform this step, see [Azure Service Bus to Azure Event Grid integration overview](service-bus-to-event-grid-integration-concept.md).
 
 ![9][]
 
-### <a name="receive-messages-by-using-azure-functions"></a>Azure Functions を使用してメッセージを受信する
+### <a name="receive-messages-by-using-azure-functions"></a>Receive messages by using Azure Functions
 
-前のセクションでは、テストとデバッグの簡単なシナリオを確認し、イベントが送信されていることを確認しました。 
+In the preceding section, you observed a simple test and debugging scenario and ensured that events are flowing. 
 
-このセクションでは、イベントを受信した後に、メッセージを受信して処理する方法について説明します。
+In this section, you'll learn how to receive and process messages after you receive an event.
 
-Azure Functions 内の Service Bus の関数では、新しい Event Grid の統合がまだネイティブにサポートされていません。そのため、次の例に示したように Azure 関数を自分で追加することになります。
+You'll add an Azure function, as shown in the following example, because the Service Bus functions within Azure Functions do not yet natively support the new Event Grid integration.
 
-1. 前提条件で開いたのと同じ Visual Studio ソリューションで、**ReceiveMessagesOnEvent.cs** を選択します。 
+1. In the same Visual Studio Solution that you opened in the prerequisites, select **ReceiveMessagesOnEvent.cs**. 
 
     ![10][]
 
-1. 次のコードに実際の接続文字列を入力します。
+1. Enter your connection string in the following code:
 
     ```Csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     ```
 
-1. 「テスト関数をセットアップする」セクションで作成した Azure 関数の発行プロファイルを Azure Portal でダウンロードします。
+1. In the Azure portal, download the publishing profile for the Azure function that you created in the "Set up a test function" section.
 
     ![11][]
 
-1. Visual Studio で **SBEventGridIntegration** を右クリックして **[発行]** を選択します。 
+1. In Visual Studio, right-click **SBEventGridIntegration**, and then select **Publish**. 
 
-1. 先ほどダウンロードした発行プロファイルの **[発行]** ウィンドウで、**[プロファイルのインポート]** を選択し、**[発行]** を選択します。
+1. In the **Publish** pane for the publishing profile that you downloaded previously, select **Import profile**, and then select **Publish**.
 
     ![12][]
 
-1. 新しい Azure 関数を発行した後、その新しい Azure 関数を指す新しい Azure Event Grid サブスクリプションを作成します。  
-    **[次の値で終わる]** ボックスで、必ず正しいフィルターを適用してください。実際の Service Bus のサブスクリプション名を指定する必要があります。
+1. After you've published the new Azure function, create a new Azure Event Grid subscription that points to the new Azure function.  
+    In the **Ends with** box, be sure to apply the correct filter, which should be your Service Bus subscription name.
 
-1. 先ほど作成した Azure Service Bus トピックにメッセージを送信し、Azure Portal で Azure Functions ログを監視し、イベントが送信されていることとメッセージが受信されていることを確認します。
+1. Send a message to the Azure Service Bus topic that you created previously, and then monitor the Azure Functions log in the Azure portal to ensure that events are flowing and that messages are being received.
 
     ![12-1][]
 
-### <a name="receive-messages-by-using-logic-apps"></a>Logic Apps を使用してメッセージを受信する
+### <a name="receive-messages-by-using-logic-apps"></a>Receive messages by using Logic Apps
 
-次の手順に従い、Azure Service Bus と Azure Event Grid にロジック アプリを接続します。
+Connect a logic app with Azure Service Bus and Azure Event Grid by doing the following:
 
-1. Azure Portal で新しいロジック アプリを作成し、**Event Grid** を開始アクションとして選択します。
+1. Create a new logic app in the Azure portal, and select **Event Grid** as the start action.
 
     ![13][]
 
-    Logic Apps デザイナー ウィンドウが表示されます。
+    The Logic Apps designer window opens.
 
     ![14][]
 
-1. 次の手順に従って、該当する情報を追加します。
+1. Add your information by doing the following:
 
-    a. **[リソース名]** ボックスには、独自の名前空間名を入力します。 
+    a. In the **Resource Name** box, enter your own namespace name. 
 
-    b. **[詳細設定オプション]** の **[サフィックス フィルター]** ボックスに、ご利用のサブスクリプションのフィルターを入力します。
+    b. Under **Advanced options**, in the **Suffix Filter** box, enter filter for your subscription.
 
-1. トピック サブスクリプションからメッセージを受信する Service Bus 受信アクションを追加します。  
-    最終的なアクションを次の図に示します。
+1. Add a Service Bus receive action to receive messages from a topic subscription.  
+    The final action is shown in the following image:
 
     ![15][]
 
-1. 次の図に示すように、完全なイベントを追加します。
+1. Add a complete event, as shown in the following image:
 
     ![16][]
 
-1. ロジック アプリを保存し、「前提条件」セクションで説明したとおり Service Bus トピックにメッセージを送信します。  
-    ロジック アプリの実行を観察します。 実行に関するデータをさらに表示するには、**[概要]** を選択し、**[実行の履歴]** でデータを確認します。
+1. Save the logic app, and send a message to your Service Bus topic, as mentioned in the "Prerequisites" section.  
+    Observe the logic app execution. To view more data for the execution, select **Overview**, and then view the data under **Runs history**.
 
     ![17][]
 
     ![18][]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
-* [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) について学習します。
-* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) について学習します。
-* [Azure App Service の Logic Apps 機能](https://docs.microsoft.com/azure/logic-apps/)について学習します。
-* Azure Service Bus の詳細については、[こちら](https://docs.microsoft.com/azure/service-bus/)を参照してください。
+* Learn more about [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/).
+* Learn more about [Azure Functions](https://docs.microsoft.com/azure/azure-functions/).
+* Learn more about the [Logic Apps feature of Azure App Service](https://docs.microsoft.com/azure/logic-apps/).
+* Learn more about [Azure Service Bus](https://docs.microsoft.com/azure/service-bus/).
 
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png

@@ -1,6 +1,6 @@
 ---
-title: Azure 仮想マシン スケール セットのネットワーク | Microsoft Docs
-description: Azure 仮想マシン スケール セットのネットワーク プロパティの構成。
+title: Networking for Azure virtual machine scale sets | Microsoft Docs
+description: Configuration networking properties for Azure virtual machine scale sets.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -12,24 +12,24 @@ ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: 9203e786f701929a25251066190f5d507eacac02
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 656645326314fec42ba909957c9dc27fe88ae338
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982026"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773301"
 ---
-# <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
+# <a name="networking-for-azure-virtual-machine-scale-sets"></a>Networking for Azure virtual machine scale sets
 
-ポータルを通じて Azure 仮想マシン スケール セットをデプロイすると、特定のネットワーク プロパティには既定値が設定されます。たとえば、受信 NAT 規則付きの Azure ロード バランサーです。 この記事では、スケール セットで構成できる、いくつかのより高度なネットワーク機能の使用方法について説明します。
+When you deploy an Azure virtual machine scale set through the portal, certain network properties are defaulted, for example an Azure Load Balancer with inbound NAT rules. This article describes how to use some of the more advanced networking features that you can configure with scale sets.
 
-この記事で説明されているすべての機能は、Azure Resource Manager テンプレートを使用して構成することができます。 一部の機能については、Azure CLI と PowerShell の例も含まれています。
+You can configure all of the features covered in this article using Azure Resource Manager templates. Azure CLI and PowerShell examples are also included for selected features.
 
-## <a name="accelerated-networking"></a>高速ネットワーク
-Azure 高速ネットワークでは、仮想マシンでシングルルート I/O 仮想化 (SR-IOV) が可能になることにより、ネットワークのパフォーマンスが向上します。 高速ネットワークの使用方法について詳しくは、[Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) または [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 仮想マシンの高速ネットワークに関する記事をご覧ください。 スケール セットで高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を **true** に設定します。 例: 
+## <a name="accelerated-networking"></a>Accelerated Networking
+Azure Accelerated Networking improves network performance by enabling single root I/O virtualization (SR-IOV) to a virtual machine. To learn more about using Accelerated networking, see Accelerated networking for [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) or [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) virtual machines. To use accelerated networking with scale sets, set enableAcceleratedNetworking to **true** in your scale set's networkInterfaceConfigurations settings. For example:
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -47,8 +47,8 @@ Azure 高速ネットワークでは、仮想マシンでシングルルート I
 }
 ```
 
-## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>既存の Azure ロード バランサーを参照するスケール セットの作成
-Azure Portal を使用してスケール セットを作成した場合、ほとんどの構成オプションで新しいロード バランサーが作成されます。 既存のロード バランサーを参照する必要があるスケール セットを作成する場合は、CLI を使用して作成することができます。 次のサンプル スクリプトは、ロード バランサーを作成してから、それを参照するスケール セットを作成します。
+## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>Create a scale set that references an existing Azure Load Balancer
+When a scale set is created using the Azure portal, a new load balancer is created for most configuration options. If you create a scale set, which needs to reference an existing load balancer, you can do this using the CLI. The following example script creates a load balancer and then creates a scale set, which references it:
 ```bash
 az network lb create \
     -g lbtest \
@@ -72,8 +72,8 @@ az vmss create \
     --backend-pool-name mybackendpool
 ```
 
-## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway を参照するスケール セットを作成する
-アプリケーション ゲートウェイを使うスケール セットを作成するには、次の ARM テンプレート構成のように、スケール セットの ipConfigurations セクションにおいてアプリケーション ゲートウェイのバックエンド アドレス プールを参照します。
+## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Create a scale set that references an Application Gateway
+To create a scale set that uses an application gateway, reference the backend address pool of the application gateway in the ipConfigurations section of your scale set as in this ARM template config:
 ```json
 "ipConfigurations": [{
   "name": "{config-name}",
@@ -88,28 +88,28 @@ az vmss create \
 ```
 
 >[!NOTE]
-> アプリケーション ゲートウェイは、スケール セットと同じ仮想ネットワーク内の、スケール セットとは異なるサブネット内に存在する必要があることに、注意してください。
+> Note that the application gateway must be in the same virtual network as the scale set but must be in a different subnet from the scale set.
 
 
-## <a name="configurable-dns-settings"></a>構成可能な DNS 設定
-スケール セットは、それが作成された VNET とサブネットの特定の DNS 設定を既定で引き継ぎます。 しかし、スケール セットの DNS 設定は直接構成することができます。
+## <a name="configurable-dns-settings"></a>Configurable DNS Settings
+By default, scale sets take on the specific DNS settings of the VNET and subnet they were created in. You can however, configure the DNS settings for a scale set directly.
 
-### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>構成可能な DNS サーバーによるスケール セットの作成
-Azure CLI を使用してカスタム DNS 構成を備えたスケール セットを作成するには、**--dns-servers** 引数とその後に続けたスペース区切りのサーバー IP アドレスを **vmss create** コマンドに追加します。 例: 
+### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Creating a scale set with configurable DNS servers
+To create a scale set with a custom DNS configuration using the Azure CLI, add the **--dns-servers** argument to the **vmss create** command, followed by space separated server ip addresses. For example:
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
-Azure テンプレート内でカスタム DNS サーバーを構成するには、スケール セットの networkInterfaceConfigurations セクションに dnsSettings プロパティを追加します。 例: 
+To configure custom DNS servers in an Azure template, add a dnsSettings property to the scale set networkInterfaceConfigurations section. For example:
 ```json
 "dnsSettings":{
     "dnsServers":["10.0.0.6", "10.0.0.5"]
 }
 ```
 
-### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>構成可能な仮想マシン ドメイン名を備えたスケール セットの作成
-CLI を使用して、仮想マシンのカスタム DNS 名が付いたスケール セットを作成するには、**virtual machine scale set create** コマンドに **--vm-domain-name** 引数を追加し、その後にドメイン名を表す文字列を追加します。
+### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Creating a scale set with configurable virtual machine domain names
+To create a scale set with a custom DNS name for virtual machines using the CLI, add the **--vm-domain-name** argument to the **virtual machine scale set create** command, followed by a string representing the domain name.
 
-Azure テンプレート内でドメイン名を設定するには、スケール セットの **networkInterfaceConfigurations** セクションに **dnsSettings** プロパティを追加します。 例: 
+To set the domain name in an Azure template, add a **dnsSettings** property to the scale set **networkInterfaceConfigurations** section. For example:
 
 ```json
 "networkProfile": {
@@ -141,20 +141,20 @@ Azure テンプレート内でドメイン名を設定するには、スケー�
 }
 ```
 
-個々の仮想マシンの DNS 名に対する出力は、次の形式になります。 
+The output, for an individual virtual machine dns name would be in the following form: 
 ```
 <vm><vmindex>.<specifiedVmssDomainNameLabel>
 ```
 
-## <a name="public-ipv4-per-virtual-machine"></a>仮想マシンごとのパブリック IPv4
-一般に、Azure スケール セット仮想マシンには、独自のパブリック IP アドレスは不要です。 ほとんどのシナリオでは、パブリック IP アドレスをロード バランサーまたは個々の仮想マシン (別名、ジャンプボックス) に関連付ける方が、経済的で安全です。そうすれば、受信接続は必要に応じて (たとえば、受信 NAT 規則を通じて) スケール セット仮想マシンにルーティングされます。
+## <a name="public-ipv4-per-virtual-machine"></a>Public IPv4 per virtual machine
+In general, Azure scale set virtual machines do not require their own public IP addresses. For most scenarios, it is more economical and secure to associate a public IP address to a load balancer or to an individual virtual machine (aka a jumpbox), which then routes incoming connections to scale set virtual machines as needed (for example, through inbound NAT rules).
 
-ただし、一部のシナリオでは、スケール セット仮想マシンが独自のパブリック IP アドレスを備える必要があります。 たとえば、ゲームで、ゲームの物理処理を行っているクラウド仮想マシンにコンソールが直接接続する必要がある場合です。 もう 1 つの例は、分散型データベースで複数のリージョンにわたって各仮想マシンが互いに対する外部接続を確立する必要がある場合です。
+However, some scenarios do require scale set virtual machines to have their own public IP addresses. An example is gaming, where a console needs to make a direct connection to a cloud virtual machine, which is doing game physics processing. Another example is where virtual machines need to make external connections to one another across regions in a distributed database.
 
-### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>仮想マシンごとにパブリック IP アドレスがあるスケール セットの作成
-CLI を使用して、各仮想マシンにパブリック IP アドレスを割り当てるスケール セットを作成するには、**vmss create** コマンドに **--public-ip-per-vm** パラメーターを追加します。 
+### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Creating a scale set with public IP per virtual machine
+To create a scale set that assigns a public IP address to each virtual machine with the CLI, add the **--public-ip-per-vm** parameter to the **vmss create** command. 
 
-Azure テンプレートを使用してスケール セットを作成するには、Microsoft.Compute/virtualMachineScaleSets リソースの API バージョンが少なくとも **2017-03-30** であることを確認し、スケール セットの ipConfigurations セクションに **publicIpAddressConfiguration** JSON プロパティを追加します。 例: 
+To create a scale set using an Azure template, make sure the API version of the Microsoft.Compute/virtualMachineScaleSets resource is at least **2017-03-30**, and add a **publicIpAddressConfiguration** JSON property to the scale set ipConfigurations section. For example:
 
 ```json
 "publicIpAddressConfiguration": {
@@ -164,42 +164,42 @@ Azure テンプレートを使用してスケール セットを作成するに�
     }
 }
 ```
-テンプレートの例:[201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
+Example template: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
-### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>スケール セットに含まれた仮想マシンのパブリック IP アドレスの照会
-CLI を使用して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを一覧表示するには、**az vmss list-instance-public-ips** コマンドを使用します。
+### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Querying the public IP addresses of the virtual machines in a scale set
+To list the public IP addresses assigned to scale set virtual machines using the CLI, use the **az vmss list-instance-public-ips** command.
 
-PowerShell を使用して、スケール セットのパブリック IP アドレスを一覧表示するには、_Get-AzPublicIpAddress_ コマンドを使用します。 例: 
+To list scale set public IP addresses using PowerShell, use the _Get-AzPublicIpAddress_ command. For example:
 ```PowerShell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
-また、パブリック IP アドレス構成のリソース ID を直接参照して、パブリック IP アドレスを照会することもできます。 例: 
+You can also query the public IP addresses by referencing the resource ID of the public IP address configuration directly. For example:
 ```PowerShell
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-[Azure Resource Explorer](https://resources.azure.com) またはバージョン **2017-03-30** 以上の Azure REST API でクエリを実行して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを表示することもできます。
+You can also display the public IP addresses assigned to the scale set virtual machines by querying the [Azure Resource Explorer](https://resources.azure.com) or the Azure REST API with version **2017-03-30** or higher.
 
-[Azure Resource Explorer](https://resources.azure.com) でクエリを実行するには:
+To query the [Azure Resource Explorer](https://resources.azure.com):
 
-1. Web ブラウザーで [Azure Resource Explorer](https://resources.azure.com) を開きます。
-1. 左側の *subscriptions* を、その横にある *+* をクリックして展開します。 *subscriptions* に項目が 1 つしかない場合は、既に展開されている可能性があります。
-1. ご自分のサブスクリプションを展開します。
-1. ご自分のリソース グループを展開します。
-1. *providers* を展開します。
-1. *Microsoft.Compute* を展開します。
-1. *virtualMachineScaleSets* を展開します。
-1. ご自分のスケール セットを展開します。
-1. *publicipaddresses* をクリックします。
+1. Open [Azure Resource Explorer](https://resources.azure.com) in a web browser.
+1. Expand *subscriptions* on the left side by clicking the *+* next to it. If you only have one item under *subscriptions*, it may already be expanded.
+1. Expand your subscription.
+1. Expand your resource group.
+1. Expand *providers*.
+1. Expand *Microsoft.Compute*.
+1. Expand *virtualMachineScaleSets*.
+1. Expand your scale set.
+1. Click on *publicipaddresses*.
 
-Azure REST API でクエリを実行するには:
+To query the Azure REST API:
 
 ```bash
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30
 ```
 
-[Azure Resource Explorer](https://resources.azure.com) と Azure REST API からの出力の例:
+Example output from the [Azure Resource Explorer](https://resources.azure.com) and Azure REST API:
 ```json
 {
   "value": [
@@ -237,13 +237,13 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
     }
 ```
 
-## <a name="multiple-ip-addresses-per-nic"></a>NIC ごとの複数の IP アドレス
-スケール セット内の VM に接続されたすべての NIC には、1 つ以上の IP 構成を関連付けることができます。 各構成には、1 つのプライベート IP アドレスが割り当てられます。 また、1 つのパブリック IP アドレス リソースが関連付けられる場合もあります。 いくつの IP アドレスを NIC に割り当てることができるかと、Azure サブスクリプションでいくつのパブリック IP アドレスを使用できるかを理解するには、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページを参照してください。
+## <a name="multiple-ip-addresses-per-nic"></a>Multiple IP addresses per NIC
+Every NIC attached to a VM in a scale set can have one or more IP configurations associated with it. Each configuration is assigned one private IP address. Each configuration may also have one public IP address resource associated with it. To understand how many IP addresses can be assigned to a NIC, and how many public IP addresses you can use in an Azure subscription, refer to [Azure limits](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-## <a name="multiple-nics-per-virtual-machine"></a>仮想マシンごとの複数の NIC
-マシンのサイズに応じて、仮想マシンごとに最大 8 個の NIC を使用することができます。 マシンごとの NIC の最大数については、[VM サイズの記事](../virtual-machines/windows/sizes.md)を参照してください。 VM インスタンスに接続されているすべての NIC は、同じ仮想ネットワークに接続する必要があります。 NIC は異なるサブネットに接続できますが、すべてのサブネットは同じ仮想ネットワークに属している必要があります。
+## <a name="multiple-nics-per-virtual-machine"></a>Multiple NICs per virtual machine
+You can have up to 8 NICs per virtual machine, depending on machine size. The maximum number of NICs per machine is available in the [VM size article](../virtual-machines/windows/sizes.md). All NICs connected to a VM instance must connect to the same virtual network. The NICs can connect to different subnets, but all subnets must be part of the same virtual network.
 
-次の例のスケール セット ネットワーク プロファイルは、複数の NIC エントリと、仮想マシンごとの複数のパブリック IP を示しています。
+The following example is a scale set network profile showing multiple NIC entries, and multiple public IPs per virtual machine:
 
 ```json
 "networkProfile": {
@@ -316,14 +316,14 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 }
 ```
 
-## <a name="nsg--asgs-per-scale-set"></a>スケール セットごとの NSG と ASG
-[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)では、セキュリティ規則を使用して、Azure 仮想ネットワーク内の Azure リソースとの間でやり取りされるトラフィックをフィルター処理できます。 [アプリケーション セキュリティ グループ](../virtual-network/security-overview.md#application-security-groups)を使用すると、Azure リソースのネットワーク セキュリティを処理し、Azure リソースをアプリケーションの構造の拡張機能としてグループ化することができます。
+## <a name="nsg--asgs-per-scale-set"></a>NSG & ASGs per scale set
+[Network Security Groups](../virtual-network/security-overview.md) allow you to filter traffic to and from Azure resources in an Azure virtual network using security rules. [Application Security Groups](../virtual-network/security-overview.md#application-security-groups) enable you to handle network security of Azure resources and group them as an extension of your application's structure.
 
-ネットワーク セキュリティ グループは、スケール セットに直接適用できます。そのためには、スケール セット仮想マシン プロパティのネットワーク インターフェイス構成セクションに参照を追加します。
+Network Security Groups can be applied directly to a scale set, by adding a reference to the network interface configuration section of the scale set virtual machine properties.
 
-アプリケーション セキュリティ グループもスケール セットに直接指定できます。そのためには、スケール セット仮想マシン プロパティのネットワーク インターフェイス IP 構成セクションに参照を追加します。
+Application Security Groups can also be specified directly to a scale set, by adding a reference to the network interface ip configurations section of the scale set virtual machine properties.
 
-例:  
+For example: 
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -365,7 +365,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 }
 ```
 
-ネットワーク セキュリティ グループがスケール セットに関連付けられていることを確認するには、`az vmss show` コマンドを使用します。 次の例では、結果をフィルター処理して出力の関連セクションのみを表示するために、`--query` が使用されています。
+To verify your Network Security Group is associated with your scale set, use the `az vmss show` command. The below example uses `--query` to filter the results and only show the relevant section of the output.
 
 ```bash
 az vmss show \
@@ -381,7 +381,7 @@ az vmss show \
 ]
 ```
 
-アプリケーション セキュリティ グループがスケール セットに関連付けられていることを確認するには、`az vmss show` コマンドを使用します。 次の例では、結果をフィルター処理して出力の関連セクションのみを表示するために、`--query` が使用されています。
+To verify your Application Security Group is associated with your scale set, use the `az vmss show` command. The below example uses `--query` to filter the results and only show the relevant section of the output.
 
 ```bash
 az vmss show \
@@ -401,5 +401,5 @@ az vmss show \
 
 
 
-## <a name="next-steps"></a>次の手順
-Azure 仮想ネットワークの詳細については、「[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。
+## <a name="next-steps"></a>Next steps
+For more information about Azure virtual networks, see [Azure virtual networks overview](../virtual-network/virtual-networks-overview.md).

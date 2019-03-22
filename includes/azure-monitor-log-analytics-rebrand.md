@@ -4,12 +4,12 @@ ms.author: bwren
 ms.service: azure-monitor
 ms.topic: include
 ms.date: 01/19/2019
-ms.openlocfilehash: f19d713e4b1120c614537c43582a061ae1f2a27c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 92e57f12e4525fe5769e8b09d34345cdac362c32
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005952"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56741654"
 ---
 >[!NOTE]
-> この記事は最近、Log Analytics ではなく Azure Monitor ログという用語を使うように更新されました。 ログ データは引き続き Log Analytics ワークスペースに格納され、同じ Log Analytics サービスによって収集されて分析されます。 [Azure Monitor のログ](../articles/azure-monitor/platform/data-collection.md#logs)の役割をより適切に反映させるために、用語を更新しています。 詳しくは、[Azure Monitor の用語の変更](../articles/azure-monitor/azure-monitor-rebrand.md)に関するページをご覧ください。
+> This article was recently updated to use the term Azure Monitor logs instead of Log Analytics. Log data is still stored in a Log Analytics workspace and is still collected and analyzed by the same Log Analytics service. We are updating the terminology to better reflect the role of [logs in Azure Monitor](../articles/azure-monitor/platform/data-collection.md#logs). See [Azure Monitor terminology changes](../articles/azure-monitor/azure-monitor-rebrand.md) for details.

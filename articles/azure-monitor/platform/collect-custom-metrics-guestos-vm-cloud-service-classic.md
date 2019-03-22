@@ -1,62 +1,64 @@
 ---
-title: Azure Monitor メトリック ストアの従来の Cloud Services にゲスト OS メトリックを送信する
-description: Azure Monitor メトリック ストアの Cloud Services にゲスト OS メトリックを送信する
+title: Send Guest OS metrics to the Azure Monitor metric store classic Cloud Services
+description: Send Guest OS metrics to the Azure Monitor metric store Cloud Services
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1e322c9bd6f78c4801c14e9982cc170b3af1971a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6523c2b26a0340fa5347d8224ac8bf6c5e285926
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893580"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759051"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Azure Monitor メトリック ストアの従来の Cloud Services にゲスト OS メトリックを送信する 
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Send Guest OS metrics to the Azure Monitor metric store classic Cloud Services 
 
-Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として、ゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、[多くの場所](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)にテレメトリを送信できます。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、従来の Azure Cloud Services 用のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック ストアに送信するプロセスについて説明します。 診断拡張機能バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 
+With the Azure Monitor [Diagnostics extension](diagnostics-extension-overview.md), you can collect metrics and logs from the guest operating system (Guest OS) running as part of a virtual machine, cloud service, or Service Fabric cluster. The extension can send telemetry to [many different locations.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
-この場所にこれらを格納することで、プラットフォーム メトリックに対して使用できるのと同じアクションにアクセスできます。 アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能があります。  これまで、診断拡張機能は Azure Storage に書き込みましたが、Azure Monitor データ ストアには書き込みませんでした。  
+This article describes the process for sending Guest OS performance metrics for Azure classic Cloud Services to the Azure Monitor metric store. Starting with Diagnostics version 1.11, you can write metrics directly to the Azure Monitor metrics store, where standard platform metrics are already collected. 
 
-この記事で説明されているプロセスは、Azure Cloud Services でのパフォーマンス カウンターに対してのみ機能します。 他のカスタム メトリックに対しては機能しません。 
+Storing them in this location allows you to access the same actions that you can for platform metrics. Actions include near-real time alerting, charting, routing, access from a REST API, and more.  In the past, the Diagnostics extension wrote to Azure Storage, but not to the Azure Monitor data store.  
 
-## <a name="prerequisites"></a>前提条件
+The process that's outlined in this article works only for performance counters in Azure Cloud Services. It doesn't work for other custom metrics. 
 
-- Azure サブスクリプションで、[サービス管理者または共同管理者](~/articles/billing/billing-add-change-azure-subscription-administrator.md)である必要があります。 
+## <a name="prerequisites"></a>Prerequisites
 
-- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) に登録する必要があります。 
+- You must be a [service administrator or co-administrator](~/articles/billing/billing-add-change-azure-subscription-administrator.md) on your Azure subscription. 
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) がインストールされている必要があります。
+- Your subscription must be registered with [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-## <a name="provision-a-cloud-service-and-storage-account"></a>クラウド サービスとストレージ アカウントのプロビジョニング 
+- You need to have either [Azure PowerShell](/powershell/azure) or [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) installed.
 
-1. 従来のクラウド サービスを作成し、デプロイします。 従来の Cloud Services アプリケーションとデプロイのサンプルは、「[Azure Cloud Services と ASP.NET を使ってみる](../../cloud-services/cloud-services-dotnet-get-started.md)」に示されています。 
+## <a name="provision-a-cloud-service-and-storage-account"></a>Provision a cloud service and storage account 
 
-2. 既存のストレージ アカウントを使用できるか、新しいストレージ アカウントを配置できます。 ストレージ アカウントが、作成した従来のクラウド サービスと同じ領域にある場合は最適です。 Azure portal で、**ストレージ アカウント**のリソース ブレードに移動し、**キー**を選択します。 ストレージ アカウント名とストレージ アカウント キーをメモしておきます。 この情報は後続の手順で必要になります。
+1. Create and deploy a classic cloud service. A sample classic Cloud Services application and deployment can be found at [Get started with Azure Cloud Services and ASP.NET](../../cloud-services/cloud-services-dotnet-get-started.md). 
 
-   ![ストレージ アカウント キー](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/storage-keys.png)
+2. You can use an existing storage account or deploy a new storage account. It's best if the storage account is in the same region as the classic cloud service that you created. In the Azure portal, go to the **Storage accounts** resource blade, and then select **Keys**. Take note of the storage account name and the storage account key. You'll need this information in later steps.
 
-## <a name="create-a-service-principal"></a>サービス プリンシパルの作成 
+   ![Storage account keys](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/storage-keys.png)
 
-「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)」の手順を使用して、お使いの Azure Active Directory テナントでサービス プリンシパルを作成します。 このプロセスを進める際には、次の点に注意してください。 
+## <a name="create-a-service-principal"></a>Create a service principal 
 
-- サインイン URL には任意の URL を入力できます。  
-- このアプリ用に新しいクライアント シークレットを作成します。  
-- 後の手順で使用するために、キーとクライアント ID を保存します。  
+Create a service principle in your Azure Active Directory tenant by using the instructions at [Use portal to create an Azure Active Directory application and service principal that can access resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Note the following while you're going through this process: 
 
-以前の手順の*メトリック パブリッシャーの監視*で作成したアプリに、メトリックを発行するリソースへのアクセス許可を付与します。 アプリを使用して多くのリソースに対してカスタム メトリックを発行する予定である場合は、リソース グループまたはサブスクリプション レベルでこれらのアクセス許可を付与できます。  
+- You can put in any URL for the sign-in URL.  
+- Create new client secret for this app.  
+- Save the key and the client ID for use in later steps.  
+
+Give the app created in the previous step *Monitoring Metrics Publisher* permissions to the resource you want to emit metrics against. If you plan to use the app to emit custom metrics against many resources, you can grant these permissions at the resource group or subscription level.  
 
 > [!NOTE]
-> 診断拡張機能では、サービス プリンシパルを使用して、Azure Monitor を認証し、クラウド サービス用のメトリックを発行します。
+> The Diagnostics extension uses the service principal to authenticate against Azure Monitor and emit metrics for your cloud service.
 
-## <a name="author-diagnostics-extension-configuration"></a>診断拡張機能の構成の作成 
+## <a name="author-diagnostics-extension-configuration"></a>Author Diagnostics extension configuration 
 
-診断拡張機能の構成ファイルを準備します。 このファイルにより、お使いのクラウド サービスに対して、診断拡張機能が収集するパフォーマンス カウンターとログが決まります。 サンプルの診断構成ファイルを以下に示します。  
+Prepare your Diagnostics extension configuration file. This file dictates which logs and performance counters the Diagnostics extension should collect for your cloud service. Following is a sample Diagnostics configuration file:  
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?> 
@@ -98,7 +100,7 @@ Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用�
 </DiagnosticsConfiguration> 
 ```
 
-診断ファイルの "SinksConfig" セクションで、新しい Azure Monitor シンクを定義します。 
+In the "SinksConfig" section of your diagnostics file, define a new Azure Monitor sink: 
 
 ```XML
   <SinksConfig> 
@@ -111,7 +113,7 @@ Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用�
   </SinksConfig> 
 ```
 
-収集するパフォーマンス カウンターをリストした構成ファイルのセクションに、Azure Monitor シンクを追加します。 このエントリにより、指定されたすべてのパフォーマンス カウンターが Azure Monitor にメトリックとしてルーティングされます。 パフォーマンス カウンターは必要に応じて追加したり、削除することができます。 
+In the section of your configuration file where you list the performance counters to collect, add the Azure Monitor sink. This entry ensures that all the performance counters that you specified are routed to Azure Monitor as metrics. You can add or remove performance counters according to your needs. 
 
 ```xml
     <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzMonSink">
@@ -120,7 +122,7 @@ Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用�
     </PerformanceCounters>
 ```
 
-最後に、プライベート構成に *Azure Monitor アカウント*セクションを追加します。 前の手順で作成したサービス プリンシパルのクライアント ID とシークレットを入力します。 
+Finally, in the private configuration, add an *Azure Monitor Account* section. Enter the service principal client ID and secret that you created earlier. 
 
 ```XML
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"> 
@@ -134,59 +136,59 @@ Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用�
 </PrivateConfig> 
 ```
 
-この診断ファイルをローカルに保存します。  
+Save this diagnostics file locally.  
 
-## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>診断拡張機能をクラウド サービスに配置する 
+## <a name="deploy-the-diagnostics-extension-to-your-cloud-service"></a>Deploy the Diagnostics extension to your cloud service 
 
-PowerShell を起動し、Azure にログインします。 
+Launch PowerShell and log in to Azure. 
 
 ```PowerShell
-Login-AzureRmAccount 
+Login-AzAccount 
 ```
 
-次のコマンドを使用して、先ほど作成したストレージ アカウントの詳細情報を格納します。 
+Use the following commands to store the details of the storage account that you created earlier. 
 
 ```PowerShell
 $storage_account = <name of your storage account from step 3> 
 $storage_keys = <storage account key from step 3> 
 ```
 
-同様に、次のコマンドを使用して、診断ファイルのパスを変数に設定します。
+Similarly, set the diagnostics file path to a variable by using the following command:
 
 ```PowerShell
 $diagconfig = “<path of the Diagnostics configuration file with the Azure Monitor sink configured>” 
 ```
 
-次のコマンドを使用して、Azure Monitor シンクが構成された診断ファイルで、診断拡張機能をクラウド サービスに配置します。  
+Deploy the Diagnostics extension to your cloud service with the diagnostics file with the Azure Monitor sink configured using the following command:  
 
 ```PowerShell
 Set-AzureServiceDiagnosticsExtension -ServiceName <classicCloudServiceName> -StorageAccountName $storage_account -StorageAccountKey $storage_keys -DiagnosticsConfigurationPath $diagconfig 
 ```
 
 > [!NOTE] 
-> 診断拡張機能のインストールの一環として、引き続きストレージ アカウントを指定する必要があります。 診断構成ファイルで指定されたログやパフォーマンス カウンターは、指定したストレージ アカウントに書き込まれます。  
+> It's still mandatory to provide a storage account as part of the installation of the Diagnostics extension. Any logs or performance counters that are specified in the diagnostics config file are written to the specified storage account.  
 
-## <a name="plot-metrics-in-the-azure-portal"></a>Azure portal でメトリックをプロットします 
+## <a name="plot-metrics-in-the-azure-portal"></a>Plot metrics in the Azure portal 
 
-1. Azure Portal にアクセスします。 
+1. Go to the Azure portal. 
 
-   ![メトリック Azure portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
+   ![Metrics Azure portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/navigate-metrics.png)
 
-2. 左側のメニューで **[モニター]** を選択します。
+2. On the left menu, select **Monitor.**
 
-3. **[モニター]** ブレードで、**[メトリックのプレビュー]** タブを選択します。
+3. On the **Monitor** blade, select the **Metrics Preview** tab.
 
-4. リソースのドロップダウン メニューで、お使いのクラシック クラウド サービスを選択します。
+4. In the resources drop-down menu, select your classic cloud service.
 
-5. 名前空間のドロップダウン メニューで、**[azure.vm.windows.guest]** を選択します。 
+5. In the namespaces drop-down menu, select **azure.vm.windows.guest**. 
 
-6. メトリックのドロップダウン メニューで、**[Memory\Committed Bytes in Use]** を選択します。 
+6. In the metrics drop-down menu, select **Memory\Committed Bytes in Use**. 
 
-ディメンションのフィルタリング機能と分割機能を使用することで、特定のロールとロール インスタンスにより使用されている合計メモリを選択して表示することができます。 
+You use the dimension filtering and splitting capabilities to view the total memory that's used by a specific role or role instance. 
 
- ![メトリック Azure portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
+ ![Metrics Azure portal](./media/collect-custom-metrics-guestos-vm-cloud-service-classic/metrics-graph.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
-- [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
+- Learn more about [custom metrics](metrics-custom-overview.md).
 

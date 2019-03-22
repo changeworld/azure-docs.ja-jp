@@ -1,111 +1,111 @@
 ---
-title: 中速から高速のネットワーク帯域幅での、大規模なデータセットの Azure データ転送のオプション | Microsoft Docs
-description: ご利用の環境に中速から高速のネットワーク帯域幅があり、大規模なデータセットを転送する予定の場合に、データ転送に関する Azure ソリューションを選択する方法について説明します。
+title: Azure data transfer options for large datasets, moderate to high network bandwidth| Microsoft Docs
+description: Learn how to choose an Azure solution for data transfer when you have moderate to high network bandwidth in your environment and you are planning to transfer large datasets.
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.openlocfilehash: bc5668d826395fb71ee70907f095303a43f1ec7f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 4a8a014b365974bb8c138c74197d3d89cc63e42e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214319"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771982"
 ---
-# <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>中速から高速のネットワーク帯域幅での大規模なデータセットのデータ転送
+# <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Data transfer for large datasets with moderate to high network bandwidth
  
-この記事では、ご利用の環境に中速から高速のネットワーク帯域幅があり、大規模なデータセットを転送する予定の場合の、データ転送ソリューションの概要を示します。 また、この記事では、推奨されるデータ転送と、このシナリオのそれぞれの主要な機能のマトリックスについても説明します。
+This article provides an overview of the data transfer solutions when you have moderate to high network bandwidth in your environment and you are planning to transfer large datasets. The article also describes the recommended data transfer options and the respective key capability matrix for this scenario.
 
-利用可能なすべてのデータ転送オプションの概要を理解するには、[Azure データ転送ソリューションの選択](storage-choose-data-transfer-solution.md)に関するページに移動します。
+To understand an overview of all the available data transfer options, go to [Choose an Azure data transfer solution](storage-choose-data-transfer-solution.md).
 
-## <a name="scenario-description"></a>シナリオの説明
+## <a name="scenario-description"></a>Scenario description
 
-大規模なデータセットでは、TB から PB の順にデータ サイズを参照します。 中速から高速のネットワーク帯域幅では、100 Mbps から 10 Gbps の順に参照します。
+Large datasets refer to data sizes in the order of TBs to PBs. Moderate to high network bandwidth refers to 100 Mbps to 10 Gbps.
 
-## <a name="recommended-options"></a>推奨されるオプション
+## <a name="recommended-options"></a>Recommended options
 
-このシナリオで推奨されるオプションは、中速ネットワーク帯域幅であるか、高速ネットワーク帯域幅であるかによって異なります。
+The options recommended in this scenario depend on whether you have moderate network bandwidth or high network bandwidth.
 
-### <a name="moderate-network-bandwidth-100-mbps---1-gbps"></a>ネットワーク帯域幅 - 中 (100 Mbps から 1 Gbps)
+### <a name="moderate-network-bandwidth-100-mbps---1-gbps"></a>Moderate network bandwidth (100 Mbps - 1 Gbps)
 
-中速ネットワーク帯域幅では、ネットワーク経由のデータ転送時間をプロジェクションする必要があります。
+With moderate network bandwidth, you need to project the time for data transfer over the network.
 
-以下の表を使用して時間を予測し、それに基づいて、オフライン転送かネットワーク経由の転送を選びます。 表には、さまざまなネットワーク帯域幅に対する、ネットワーク データ転送の予想時間が示されています (90% の使用率と仮定)。  
+Use the following table to estimate the time and based on that, choose between an offline transfer or over the network transfer. The table shows the projected time for network data transfer, for various available network bandwidths (assuming 90% utilization).  
 
-![ネットワーク転送またはオフライン転送](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
+![Network transfer or offline transfer](media/storage-solution-large-dataset-low-network/storage-network-or-offline-transfer.png)
 
-- ネットワーク転送に時間がかかりすぎると予想される場合は、物理デバイスを使用する必要があります。 この場合に推奨されるオプションは、Azure Data Box ファミリのデバイスを使用するオフライン転送、または独自のディスクを使用する Azure Import/Export です。
+- If the network transfer is projected to be too slow, you should use a physical device. The recommended options in this case are the offline transfer devices from Azure Data Box family or Azure Import/Export using your own disks.
 
-    - **オフライン転送用の azure Data Box ファミリ** – 時間、ネットワークの可用性、またはコストが限られている場合は、Microsoft によって提供される Data Box デバイスのデバイスを使用して、大量のデータを Azure に移動します。 Robocopy などのツールを使って、オンプレミスのデータをコピーします。 転送対象のデータのサイズに応じて、Data Box Disk、Data Box、Data Box Heavy から選択できます。
-    - **Azure Import/Export** – 大量のデータを安全に Azure Blob Storage と Azure Files にインポートするために、独自のディスク ドライブを送付して Azure Import/Export サービスを使用します。 また、このサービスでは、Azure Blob Storage からディスク ドライブにデータを転送し、オンプレミスのサイトに送付できます。
+    - **Azure Data Box family for offline transfers** – Use devices from Microsoft-supplied Data Box devices to move large amounts of data to Azure when you’re limited by time, network availability, or costs. Copy on-premises data using tools such as Robocopy. Depending on the data size intended for transfer, you can choose from Data Box Disk, Data Box, or Data Box Heavy.
+    - **Azure Import/Export** – Use Azure Import/Export service by shipping your own disk drives to securely import large amounts of data to Azure Blob storage and Azure Files. This service can also be used to transfer data from Azure Blob storage to disk drives and ship to your on-premises sites.
 
-- ネットワーク転送が妥当であると予想される場合は、「[ネットワーク帯域幅 - 高](#high-network-bandwidth)」で詳しく説明されている以下のツールのいずれかを使用できます。
+- If the network transfer is projected to be reasonable, then you can use any of the following tools detailed in [High network bandwidth](#high-network-bandwidth).
 
 
-### <a name="high-network-bandwidth-1-gbps---100-gbps"></a>ネットワーク帯域幅 - 高 (1 Gbps から 100 Gbps)
+### <a name="high-network-bandwidth-1-gbps---100-gbps"></a>High network bandwidth (1 Gbps - 100 Gbps)
 
-利用可能なネットワーク帯域幅が高い場合は、次のツールのいずれかを使用します。
+If the available network bandwidth is high, use one of the following tools.
 
-- **AzCopy** - このコマンドライン ツールを使用すると、最適なパフォーマンスで Azure BLOB、Files、および Table ストレージとの間で相互に簡単にデータをコピーできます。 AzCopy はコンカレンシーと並列処理をサポートし、中断された場合にコピー操作を再開することができます。
-- **Azure Storage REST API/SDK** – アプリケーションの構築時に、Azure Storage REST API に対するアプリケーションを開発し、複数の言語で提供される Azure SDK を使用できます。
-- **オンライン転送用の Azure Data Box** – Data Box Edge と Data Box Gateway はオンラインのネットワークデバイスであり、Azure の内外へのデータの移動が可能です。 継続的な取り込みと、アップロード前のデータの前処理を同時に行う必要がある場合は、Data Box Edge の物理デバイスを使用します。 Data Box Gateway は、同じデータ転送機能を備えた、デバイスの仮想バージョンです。 いずれの場合も、データ転送はデバイスによって管理されます。
-- **Azure Data Factory** – 転送操作をスケールアウトする場合や、オーケストレーションとエンタープライズ レベルの監視機能が必要な場合は、Data Factory を使用する必要があります。 Data Factory を使用し、複数の Azure サービス間またはオンプレミスで、あるいは 2 つを組み合わせて、ファイルを定期的に転送します。 Data Factory では、さまざまなデータ ストアからデータを取り込み、データ移動とデータ転送を自動化するデータ駆動型ワークフロー (パイプラインと呼ばれる) を作成し、スケジュールを設定できます。
+- **AzCopy** - Use this command-line tool to easily copy data to and from Azure Blobs, Files, and Table storage with optimal performance. AzCopy supports concurrency and parallelism, and the ability to resume copy operations when interrupted.
+- **Azure Storage REST APIs/SDKs** – When building an application, you can develop the application against Azure Storage REST APIs and use the Azure SDKs offered in multiple languages.
+- **Azure Data Box family for online transfers** – Data Box Edge and Data Box Gateway are online network devices that can move data into and out of Azure. Use Data Box Edge physical device when there is a simultaneous need for continuous ingestion and pre-processing of the data prior to upload. Data Box Gateway is a virtual version of the device with the same data transfer capabilities. In each case, the data transfer is managed by the device.
+- **Azure Data Factory** – Data Factory should be used to scale out a transfer operation, and if there is a need for orchestration and enterprise grade monitoring capabilities. Use Data Factory to regularly transfer files between several Azure services, on-premises, or a combination of the two. with Data Factory, you can create and schedule data-driven workflows (called pipelines) that ingest data from disparate data stores and automate data movement and data transformation.
 
-## <a name="comparison-of-key-capabilities"></a>主な機能の比較
+## <a name="comparison-of-key-capabilities"></a>Comparison of key capabilities
 
-次の表は、推奨されるオプションの主な機能の違いをまとめたものです。
+The following tables summarize the differences in key capabilities for the recommended options.
 
-### <a name="moderate-network-bandwidth"></a>ネットワーク帯域幅 - 中
+### <a name="moderate-network-bandwidth"></a>Moderate network bandwidth
 
-オフライン データ転送を使用する場合は、以下の表を使用して、主な機能の違いを理解します。
+If using offline data transfer, use the following table to understand the differences in key capabilities.
 
-|                                     |    Data Box Disk (プレビュー)    |    Data Box                                      |    Data Box Heavy (プレビュー)              |    Import/Export                       |
+|                                     |    Data Box Disk   (preview)    |    Data Box                                      |    Data Box Heavy (preview)              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
-|    データ サイズ                        |    最大 35 TB                 |    デバイスあたり最大 80 TB                       |    デバイスあたり最大 800 TB               |    可変                            |
-|    データ型                        |    Azure BLOB                  |    Azure BLOB<br>Azure Files                    |    Azure BLOB<br>Azure Files            |    Azure BLOB<br>Azure Files          |
-|    フォーム ファクター                      |    注文ごとに 5 つの SSD             |    1 X 50 lbs。 1 回の注文ごとにデスクトップ サイズのデバイス    |    1 X 最大 500-lbs。 1 回の注文ごとに大容量のデバイス    |    1 回の注文ごとに最大 10 台の HDD/SSD        |
-|    初期セットアップ時間               |    低 <br>(15 分)            |    低から中 <br> (30 分未満)               |    中<br>(1 ～ 2 時間)               |    中から難<br>(可変) |
-|    データを Azure に送信する               |    はい                          |    はい                                           |    はい                                   |    はい                                 |
-|    Azure からデータをエクスポートする           |    いいえ                            |    いいえ                                             |    いいえ                                     |    はい                                 |
-|    暗号化                       |    AES 128 ビット                  |    AES 256 ビット                                   |    AES 256 ビット                           |    AES 128 ビット                         |
-|    ハードウェア                         |     Microsoft による提供          |    Microsoft による提供                            |    Microsoft による提供                    |    お客様による提供                   |
-|    Linux                |    USB 3.1/SATA                 |    RJ 45、SFP+                                   |    RJ45、QSFP+                           |    SATA II/SATA III                    |
-|    パートナー統合              |    一部                         |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    一部                                |
-|    発送                         |    Microsoft による管理            |    Microsoft による管理                             |    Microsoft による管理                     |    お客様による管理                    |
-| データの移動時に使用する         |コマース境界内|コマース境界内|コマース境界内|地理的境界を越える (US から EU など)|
-|    価格                          |    [料金](https://azure.microsoft.com/pricing/details/storage/databox/disk/)                    |   [料金](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [料金](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [料金](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    Data size                        |    Up to 35 TBs                 |    Up to 80 TBs per device                       |    Up to 800 TB per device               |    Variable                            |
+|    Data type                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
+|    Form factor                      |    5 SSDs per order             |    1 X 50-lbs. desktop-sized device per order    |    1 X ~500-lbs. large device per order    |    Up to 10 HDDs/SSDs per order        |
+|    Initial setup time               |    Low <br>(15 mins)            |    Low to moderate <br> (<30 mins)               |    Moderate<br>(1-2 hours)               |    Moderate to difficult<br>(variable) |
+|    Send data to Azure               |    Yes                          |    Yes                                           |    Yes                                   |    Yes                                 |
+|    Export data from Azure           |    No                           |    No                                            |    No                                    |    Yes                                 |
+|    Encryption                       |    AES 128-bit                  |    AES 256-bit                                   |    AES 256-bit                           |    AES 128-bit                         |
+|    Hardware                         |     Microsoft supplied          |    Microsoft supplied                            |    Microsoft supplied                    |    Customer supplied                   |
+|    Network interface                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
+|    Partner integration              |    Some                         |    [High](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [High](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Some                                |
+|    Shipping                         |    Microsoft managed            |    Microsoft managed                             |    Microsoft managed                     |    Customer managed                    |
+| Use when data moves         |Within a commerce boundary|Within a commerce boundary|Within a commerce boundary|Across geographic boundaries, e.g. US to EU|
+|    Pricing                          |    [Pricing](https://azure.microsoft.com/pricing/details/storage/databox/disk/)                    |   [Pricing](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Pricing](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Pricing](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
-オンラインのデータ転送を使用する場合は、高速ネットワーク帯域幅に対して、次のセクションの表を使用します。
+If using online data transfer, use the table in the following section for high network bandwidth.
 
-### <a name="high-network-bandwidth"></a>ネットワーク帯域幅 - 高
+### <a name="high-network-bandwidth"></a>High network bandwidth
 
-|                                     |    ツール AzCopy、 <br>Azure PowerShell、 <br>Azure CLI             |    Azure Storage REST API、SDK                   |    Data Box Gateway または Data Box Edge (プレビュー)           |    Azure Data Factory                                            |
+|                                     |    Tools AzCopy, <br>Azure PowerShell, <br>Azure CLI             |    Azure Storage REST APIs, SDKs                   |    Data Box Gateway or Data Box Edge (preview)           |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
-|    データ型                  |    Azure BLOB、Azure Files、Azure Tables    |    Azure BLOB、Azure Files、Azure Tables    |    Azure BLOB、Azure Files                           |   データ ストアと形式について、70 個を超えるデータ コネクタがサポートされます    |
-|    フォーム ファクター                |    コマンドライン ツール                        |    プログラマティック インターフェイス                    |    Microsoft では仮想 <br>または物理デバイスが提供されます     |    Azure ポータルのサービス                                            |
-|    最初の 1 回限りのセットアップ     |    簡単               |    中                       |    簡単 (30 分未満) から中 (1 から 2 時間)            |    広範                                                          |
-|    データの前処理              |    いいえ                                         |    いいえ                                         |    はい (Edge コンピューティングを使用)                               |    はい                                                                |
-|    その他のクラウドからの転送       |    いいえ                                         |    いいえ                                         |    いいえ                                                     |    はい                                                                |
-|    ユーザー タイプ                        |    IT プロフェッショナルまたは開発者                                       |    Dev                                       |    IT プロフェッショナル                                                |    IT プロフェッショナル                                                             |
-|    価格                          |    無料、データ エグレス料金を適用         |    無料、データ エグレス料金を適用         |    [料金](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [料金](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
+|    Data type                  |    Azure Blobs, Azure Files, Azure Tables    |    Azure Blobs, Azure Files, Azure Tables    |    Azure Blobs, Azure Files                           |   Supports 70+ data connectors for data stores and formats    |
+|    Form factor                |    Command-line tools                        |    Programmatic interface                    |    Microsoft supplies a virtual <br>or physical device     |    Service in Azure portal                                            |
+|    Initial one-time setup     |    Easy               |    Moderate                       |    Easy (<30 minutes) to moderate (1-2 hours)            |    Extensive                                                          |
+|    Data pre-processing              |    No                                        |    No                                        |    Yes (With Edge compute)                               |    Yes                                                                |
+|    Transfer from other clouds       |    No                                        |    No                                        |    No                                                    |    Yes                                                                |
+|    User type                        |    IT Pro or dev                                       |    Dev                                       |    IT Pro                                                |    IT Pro                                                             |
+|    Pricing                          |    Free, data egress charges apply         |    Free, data egress charges apply         |    [Pricing](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [Pricing](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
-- [Import/Export でデータを転送する方法を学習します](/azure/storage/common/storage-import-export-data-to-blobs)。
-- 以下の方法を理解します。
+- [Learn how to transfer data with Import/Export](/azure/storage/common/storage-import-export-data-to-blobs).
+- Understand how to
 
-    - [Data Box Edge を使用してデータを転送する](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal)。
-    - [Data Box を使用してデータを転送する](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)。
-- [AzCopy を使用してデータを転送する](/azure/storage/common/storage-use-azcopy-v10)。
-- 以下の方法を理解します。
-    - [Data Box Gateway を使用してデータを転送する](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)します。
-    - [Azure に送信する前に Data Box Edge を使用してデータを変換する](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute)。
-- [Azure Data Factory を使用してデータを転送する方法を学習します](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal)。
-- REST API を使用してデータ転送する
+    - [Transfer data with Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
+    - [Transfer data with Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
+- [Transfer data with AzCopy](/azure/storage/common/storage-use-azcopy-v10).
+- Understand how to:
+    - [Transfer data with Data Box Gateway](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares).
+    - [Transform data with Data Box Edge before sending to Azure](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute).
+- [Learn how to transfer data with Azure Data Factory](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal).
+- Use the REST APIs to transfer data
 
-    - [.NET の場合](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
-    - [Java の場合](https://docs.microsoft.com/java/api/overview/azure/storage/client)
+    - [In .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
+    - [In Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)

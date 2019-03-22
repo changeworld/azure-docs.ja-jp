@@ -1,10 +1,10 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
+title: include file
+description: include file
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,54 +14,54 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 29b7893bbe813ece7cece9d1591dd574158f4482
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 2a7734f729c4b1db7e8c0b4571e8792373ee11ae
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56409659"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203208"
 ---
-## <a name="set-up-your-project"></a>プロジェクトの設定
+## <a name="set-up-your-project"></a>Set up your project
 
-このセクションでは、Windows デスクトップ .NET アプリケーション (XAML) に *"Microsoft でサインイン"* を統合して、トークンを必要とする Web API でクエリを実行できるようにする方法を示すために、新しいプロジェクトを作成します。
+In this section you create a new project to demonstrate how to integrate a Windows Desktop .NET application (XAML) with *Sign-In with Microsoft* so that the application can query Web APIs that require a token.
 
-このガイドで作成したアプリケーションには、グラフを呼び出すボタン、結果を画面に表示する領域、およびサインアウト ボタンが表示されます。
+The application that you create with this guide displays a button that's used to call a graph, an area to show the results on the screen, and a sign-out button.
 
 > [!NOTE]
-> 代わりにこのサンプルの Visual Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)したら、[構成手順](#register-your-application)に進んでサンプル コードを構成してから実行してください。
+> Prefer to download this sample's Visual Studio project instead? [Download a project](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip), and skip to the [Configuration step](#register-your-application) to configure the code sample before you execute it.
 >
 
-アプリケーションを作成するには、次の手順を実行します。
+To create your application, do the following:
 
-1. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
-2. **[テンプレート]** で **[Visual C#]** を選択します。
-3. 使用している Visual Studio バージョンに応じて、**[WPF アプリ (.NET Framework)]** を選択します。
+1. In Visual Studio, select **File** > **New** > **Project**.
+2. Under **Templates**, select **Visual C#**.
+3. Select **WPF App (.NET Framework)**, depending on the version of Visual Studio version you're using.
 
-## <a name="add-msal-to-your-project"></a>プロジェクトに MSAL を追加する
+## <a name="add-msal-to-your-project"></a>Add MSAL to your project
 
-1. Visual Studio で、**[ツール]** > **[NuGet パッケージ マネージャー]**> **[パッケージ マネージャー コンソール]** の順に選択します。
-2. [パッケージ マネージャー コンソール] ウィンドウで、次の Azure PowerShell コマンドを貼り付けます。
+1. In Visual Studio, select **Tools** > **NuGet Package Manager**> **Package Manager Console**.
+2. In the Package Manager Console window, paste the following Azure PowerShell command:
 
     ```powershell
     Install-Package Microsoft.Identity.Client
     ```
 
     > [!NOTE] 
-    > このコマンドを実行すると、Microsoft Authentication Library がインストールされます。 MSAL は、Azure Active Directory v2.0 で保護される API へのアクセスで使用するユーザー トークンの取得、キャッシュ、更新を処理します
+    > This command installs Microsoft Authentication Library. MSAL handles acquiring, caching, and refreshing user tokens that are used to access the APIs that are protected by Azure Active Directory v2.0
     >
 
-## <a name="add-the-code-to-initialize-msal"></a>MSAL を初期化するコードの追加
+## <a name="add-the-code-to-initialize-msal"></a>Add the code to initialize MSAL
 
-この手順では、トークンの処理など MSAL ライブラリとのやり取りを処理するクラスを作成します。
+In this step, you create a class to handle interaction with MSAL, such as handling of tokens.
 
-1. *App.xaml.cs* ファイルを開き、クラスに MSAL の参照を追加します。
+1. Open the *App.xaml.cs* file, and then add the reference for MSAL to the class:
 
     ```csharp
     using Microsoft.Identity.Client;
     ```
-<!-- Workaround for Docs conversion bug -->
+   <!-- Workaround for Docs conversion bug -->
 
-2. App クラスを以下のように更新します。
+2. Update the app class to the following:
 
     ```csharp
     public partial class App : Application
@@ -75,11 +75,11 @@ ms.locfileid: "56409659"
     }
     ```
 
-## <a name="create-the-application-ui"></a>アプリケーション UI を作成する
+## <a name="create-the-application-ui"></a>Create the application UI
 
-このセクションでは、アプリケーションで、Microsoft Graph のような保護されたバックエンド サーバーに対してクエリを実行する方法を示します。 
+This section shows how an application can query a protected back-end server such as Microsoft Graph. 
 
-*MainWindow.xaml* ファイルは、プロジェクト テンプレートの一部として自動的に作成されます。 このファイルを開き、アプリケーションの *\<Grid>* ノードを次のコードに置き換えます。
+A *MainWindow.xaml* file should automatically be created as a part of your project template. Open this file, and then replace your application's *\<Grid>* node with the following code:
 
 ```xml
 <Grid>

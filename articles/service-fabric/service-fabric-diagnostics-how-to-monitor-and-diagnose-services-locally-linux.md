@@ -1,6 +1,6 @@
 ---
-title: Linux で Azure Service Fabric アプリをデバッグする | Microsoft Docs
-description: ローカルの Linux 開発用コンピューターで Service Fabric サービスを監視し、診断する方法について説明します。
+title: Debug Azure Service Fabric apps in Linux | Microsoft Docs
+description: Learn how to monitor and diagnose your Service Fabric services on a local Linux development machine.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 33ada343738e113e8f14e1e5ac4a0e8aee481670
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 144b3f8ae210d515695c2184c2c3193084755746
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185467"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841023"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
+# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitor and diagnose services in a local machine development setup
 
 
 > [!div class="op_single_selector"]
@@ -30,16 +30,16 @@ ms.locfileid: "55185467"
 >
 >
 
-監視、検出、診断、トラブルシューティングにより、ユーザー エクスペリエンスの中断を最小限に抑えてサービスを続行できます。 監視と診断は、実際のデプロイされた運用環境で重要です。 サービスの開発中に類似するモデルを採用することにより、運用環境に移行するときに診断のパイプラインが動作します。 Service Fabric により、サービスの開発者は、1 台のコンピューターのローカルの開発のセットアップと実際の運用クラスターのセットアップの両方でシームレスに操作できる診断を簡単に実装できます。
+Monitoring, detecting, diagnosing, and troubleshooting allow for services to continue with minimal disruption to the user experience. Monitoring and diagnostics are critical in an actual deployed production environment. Adopting a similar model during development of services ensures that the diagnostic pipeline works when you move to a production environment. Service Fabric makes it easy for service developers to implement diagnostics that can seamlessly work across both single-machine local development setups and real-world production cluster setups.
 
 
-## <a name="debugging-service-fabric-java-applications"></a>Service Fabric の Java アプリケーションのデバッグ
+## <a name="debugging-service-fabric-java-applications"></a>Debugging Service Fabric Java applications
 
-Java アプリケーションの場合は、 [複数のログ記録フレームワーク](http://en.wikipedia.org/wiki/Java_logging_framework) を利用できます。 `java.util.logging` は JRE の既定のオプションであるため、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)にも使用されています。 以降では、 `java.util.logging` フレームワークを構成する方法について説明します。
+For Java applications, [multiple logging frameworks](https://en.wikipedia.org/wiki/Java_logging_framework) are available. Since `java.util.logging` is the default option with the JRE, it is also used for the [code examples in GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started). The following discussion explains how to configure the `java.util.logging` framework.
 
-java.util.logging を使用すると、アプリケーションのログを、メモリ、出力ストリーム、コンソール、ファイル、またはソケットにリダイレクトできます。 これらのそれぞれのオプションに対して、フレームワークで既定のハンドラーが既に提供されています。 `app.properties` ファイルを作成すると、すべてのログをローカル ファイルにリダイレクトするようにアプリケーションのファイル ハンドラーを構成できます。
+Using java.util.logging you can redirect your application logs to memory, output streams, console files, or sockets. For each of these options, there are default handlers already provided in the framework. You can create a `app.properties` file to configure the file handler for your application to redirect all logs to a local file.
 
-次のコード スニペットに構成例を示します。
+The following code snippet contains an example configuration:
 
 ```java
 handlers = java.util.logging.FileHandler
@@ -51,34 +51,34 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log
 ```
 
-`app.properties` ファイルが指しているフォルダーが存在する必要があります。 `app.properties` ファイルを作成した後は、エントリ ポイントのスクリプトである `<applicationfolder>/<servicePkg>/Code/` フォルダー内の `entrypoint.sh` を修正して、`java.util.logging.config.file` プロパティを `app.properties` ファイルに設定する必要があります。 エントリは、次のスニペットのようになります。
+The folder pointed to by the `app.properties` file must exist. After the `app.properties` file is created, you need to also modify your entry point script, `entrypoint.sh` in the `<applicationfolder>/<servicePkg>/Code/` folder to set the property `java.util.logging.config.file` to `app.properties` file. The entry should look like the following snippet:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-この構成を使用すると、 `/tmp/servicefabric/logs/`にログが輪番方式で収集されます。 このケースでは、ログ ファイルの名前は mysfapp%u.%g.log になります。
-* **%u** は同時 Java プロセス間の競合を解決する一意の番号です。
-* **%g** はログのローテーションを区別する世代番号です。
+This configuration results in logs being collected in a rotating fashion at `/tmp/servicefabric/logs/`. The log file in this case is named mysfapp%u.%g.log where:
+* **%u** is a unique number to resolve conflicts between simultaneous Java processes.
+* **%g** is the generation number to distinguish between rotating logs.
 
-ハンドラーが明示的に構成されていない場合、既定でコンソール ハンドラーが登録されます。 /var/log/syslog の syslog のログを表示できます。
+By default if no handler is explicitly configured, the console handler is registered. One can view the logs in syslog under /var/log/syslog.
 
-詳細については、 [GitHub のコード例](http://github.com/Azure-Samples/service-fabric-java-getting-started)を参照してください。
-
-
-## <a name="debugging-service-fabric-c-applications"></a>Service Fabric の C# アプリケーションのデバッグ
+For more information, see the [code examples in GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 
-Linux で CoreCLR アプリケーションをトレースするときには、複数のフレームワークを使用できます。 詳細については、「[GitHub: logging](http:/github.com/aspnet/logging)」(GitHub: ログ記録) を参照してください。  EventSource は、C# 開発者にとってわかりやすいので、この資料では、Linux での CoreCLR サンプルでのトレースに EventSource を使用します。
+## <a name="debugging-service-fabric-c-applications"></a>Debugging Service Fabric C# applications
 
-最初の手順では、メモリ、出力ストリーム、またはコンソール ファイルにログを書き込むことができるように、System.Diagnostics.Tracing を含めます。  EventSource を使用したログ記録の場合は、project.json に、次のプロジェクトを追加します。
+
+Multiple frameworks are available for tracing CoreCLR applications on Linux. For more information, see [GitHub: logging](http:/github.com/aspnet/logging).  Since EventSource is familiar to C# developers,`this article uses EventSource for tracing in CoreCLR samples on Linux.
+
+The first step is to include System.Diagnostics.Tracing so that you can write your logs to memory, output streams, or console files.  For logging using EventSource, add the following project to your project.json:
 
 ```json
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-カスタム EventListener を使用して、サービス イベントをリッスンし、それらを適切にトレース ファイルにリダイレクトすることができます。 次のコード スニペットは、EventSource とカスタム EventListener を使用したログ記録の実装例を示しています。
+You can use a custom EventListener to listen for the service event and then appropriately redirect them to trace files. The following code snippet shows a sample implementation of logging using EventSource and a custom EventListener:
 
 
 ```csharp
@@ -131,16 +131,16 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-上記のスニペットは、`/tmp/MyServiceLog.txt` 内のファイルにログを出力します。 このファイル名は、適切に更新する必要があります。 ログをコンソールにリダイレクトする場合は、カスタマイズされた EventListener クラスで次のスニペットを使用します。
+The preceding snippet outputs the logs to a file in `/tmp/MyServiceLog.txt`. This file name needs to be appropriately updated. In case you want to redirect the logs to console, use the following snippet in your customized EventListener class:
 
 ```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-「[C# Samples](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)」(C# サンプル) のサンプルでは、EventSource とカスタム EventListener を使用してイベントをファイルにログ記録しています。
+The samples at [C# Samples](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) use EventSource and a custom EventListener to log events to a file.
 
 
 
-## <a name="next-steps"></a>次の手順
-アプリケーションに追加した同じトレース コードで Azure のクラスター上のアプリケーションの診断を行うこともできます。 ツールの各オプションや、その設定方法について説明した記事を参照してください。
-* [Azure 診断でログを収集する方法](service-fabric-diagnostics-how-to-setup-lad.md)
+## <a name="next-steps"></a>Next steps
+The same tracing code added to your application also works with the diagnostics of your application on an Azure cluster. Check out these articles that discuss the different options for the tools and describe how to set them up.
+* [How to collect logs with Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md)

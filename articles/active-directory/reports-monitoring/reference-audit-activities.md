@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory (Azure AD) 監査アクティビティ リファレンス | Microsoft Docs
-description: Azure Active Directory (Azure AD) で監査ログに記録できる監査アクティビティの概要を示します。
+title: Azure Active Directory (Azure AD) audit activity reference | Microsoft Docs
+description: Get an overview of the audit activities that can be logged in your audit logs in Azure Active Directory (Azure AD).
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -17,590 +17,590 @@ ms.date: 01/24/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a60f95bc8a98ea15c174f48bc3c3e63eae534d1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 88fc78a1263ac4587a98288dc71df26385bc81ce
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164059"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453645"
 ---
-# <a name="azure-ad-audit-activity-reference"></a>Azure AD 監査アクティビティのリファレンス
+# <a name="azure-ad-audit-activity-reference"></a>Azure AD audit activity reference
 
-環境の動作状況を判断するために必要な情報は、Azure Active Directory (Azure AD) レポートで入手できます。
+With Azure Active Directory (Azure AD) reports, you can get the information you need to determine how your environment is doing.
 
-Azure AD のレポート アーキテクチャは、次のコンポーネントで構成されます。
+The reporting architecture in Azure AD consists of the following components:
 
-- **アクティビティ レポート** 
-    - [サインイン](concept-sign-ins.md) – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報を提供します。
-    - [監査ログ](concept-audit-logs.md) - Azure AD 内のさまざまな機能によって行われたすべての変更についてログによる追跡可能性を提供します。 
+- **Activity reports** 
+    - [Sign-ins](concept-sign-ins.md) – Provides information about the usage of managed applications and user sign-in activities
+    - [Audit logs](concept-audit-logs.md) - Provides traceability through logs for all changes done by various features within Azure AD. 
     
-- **セキュリティ レポート** 
-    - [リスクの高いサインイン](concept-risky-sign-ins.md) - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
-    - [リスクのフラグ付きユーザー](concept-user-at-risk.md) - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 
+- **Security reports** 
+    - [Risky sign-ins](concept-risky-sign-ins.md) - A risky sign-in is an indicator for a sign-in attempt that might have been performed by someone who is not the legitimate owner of a user account. 
+    - [Users flagged for risk](concept-user-at-risk.md) - A risky user is an indicator for a user account that might have been compromised. 
 
-この記事では、監査ログにログに記録できる監査アクティビティの一覧を示します。
+This articles lists the audit activities that can be logged in your audit logs.
 
-## <a name="access-reviews"></a>アクセス レビュー
+## <a name="access-reviews"></a>Access reviews
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|アクセス レビュー|終了したアクセス レビュー|
-|アクセス レビュー|要求の承認に承認者を追加|
-|アクセス レビュー|アクセス レビューにレビュー担当者を追加|
-|アクセス レビュー|アクセス レビュー結果の適用|
-|アクセス レビュー|アクセス レビューの作成|
-|アクセス レビュー|プログラムの作成|
-|アクセス レビュー|要求の承認の作成|
-|アクセス レビュー|アクセス レビューの削除|
-|アクセス レビュー|プログラムの削除|
-|アクセス レビュー|プログラム コントロールのリンク|
-|アクセス レビュー|Azure AD アクセス レビューへのオンボード|
-|アクセス レビュー|アクセス レビューからレビュー担当者を削除|
-|アクセス レビュー|レビューの停止を要求|
-|アクセス レビュー|レビュー結果の適用の要求|
-|アクセス レビュー|Rbac ロール メンバーシップをレビュー|
-|アクセス レビュー|アプリの割り当てのレビュー|
-|アクセス レビュー|グループ メンバーシップのレビュー|
-|アクセス レビュー|要求の承認要求のレビュー|
-|アクセス レビュー|プログラム コントロールのリンクの解除|
-|アクセス レビュー|アクセス レビューの更新|
-|アクセス レビュー|Azure AD アクセス レビューのオンボード状態の更新|
-|アクセス レビュー|アクセス レビューのメール通知設定を更新|
-|アクセス レビュー|アクセス レビューの再実行設定の更新|
-|アクセス レビュー|アクセス レビューの再実行日数設定の更新|
-|アクセス レビュー|アクセス レビューの再実行の終了タイプの更新|
-|アクセス レビュー|アクセス レビューの再実行タイプ設定の更新|
-|アクセス レビュー|アクセス レビューのリマインダー設定を更新|
-|アクセス レビュー|プログラムの更新|
-|アクセス レビュー|要求の承認の更新|
-|アクセス レビュー|無効なユーザー|
+|Access Reviews|Access review ended|
+|Access Reviews|Add approver to request approval|
+|Access Reviews|Add reviewer to access review|
+|Access Reviews|Apply access review|
+|Access Reviews|Create access review|
+|Access Reviews|Create program|
+|Access Reviews|Create request approval|
+|Access Reviews|Delete access review|
+|Access Reviews|Delete program|
+|Access Reviews|Link program control|
+|Access Reviews|Onboard to Azure AD Access Reviews|
+|Access Reviews|Remove reviewer from access review|
+|Access Reviews|Request Stop Review|
+|Access Reviews|Request apply review result|
+|Access Reviews|Review Rbac Role membership|
+|Access Reviews|Review app assignment|
+|Access Reviews|Review group membership|
+|Access Reviews|Review request approval request|
+|Access Reviews|Unlink program control|
+|Access Reviews|Update Access Review|
+|Access Reviews|Update Azure AD Access Reviews Onboarding status|
+|Access Reviews|Update access review mail notification settings|
+|Access Reviews|Update access review recurrence count setting|
+|Access Reviews|Update access review recurrence duration in days setting|
+|Access Reviews|Update access review recurrence end type setting|
+|Access Reviews|Update access review recurrence type setting|
+|Access Reviews|Update access review reminder settings|
+|Access Reviews|Update program|
+|Access Reviews|Update request approval|
+|Access Reviews|User disabled|
 
-## <a name="account-provisioning"></a>アカウント プロビジョニング
+## <a name="account-provisioning"></a>Account provisioning
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|アプリケーション管理|V2 アプリケーションのアクセス許可の付与の取得|
-|アプリケーション管理|現在のテナントの V2 アプリケーション サービス プリンシパルの取得|
-|アプリケーション管理|V1 アプリケーションの更新|
-|アプリケーション管理|V2 アプリケーションの更新|
-|アプリケーション管理|V2 アプリケーションのアクセス許可の付与の更新|
-|アプリケーション管理|OAuth2PermissionGrant の追加|
-|アプリケーション管理|サービス プリンシパルへのアプリ ロールの割り当ての追加|
+|Application Management|Retrieve V2 application permissions grants|
+|Application Management|Retrieve V2 application service principals in the current tenant|
+|Application Management|Update V1 application|
+|Application Management|Update V2 application|
+|Application Management|Update V2 application permission grant|
+|Application Management|Add OAuth2PermissionGrant|
+|Application Management|Add app role assignment to service principal|
 
-## <a name="application-proxy"></a>アプリケーション プロキシ
+## <a name="application-proxy"></a>Application proxy
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|アプリケーション管理|[アプリケーションの追加]|
-|アプリケーション管理|アプリケーションへの所有者の追加|
-|アプリケーション管理|サービス プリンシパルへの所有者の追加|
-|アプリケーション管理|サービス プリンシパルへのポリシーの追加|
-|ディレクトリ管理|サービス プリンシパルの追加|
-|ディレクトリ管理|サービス プリンシパルの資格情報の追加|
-|ディレクトリ管理|アプリケーションへの同意|
-|ディレクトリ管理|Delete application|
-|ディレクトリ管理|アプリケーションの物理的な削除|
-|ディレクトリ管理|OAuth2PermissionGrant の削除|
-|ディレクトリ管理|サービス プリンシパルからのアプリ ロールの割り当ての削除|
-|ディレクトリ管理|アプリケーションからの所有者の削除|
-|リソース|サービス プリンシパルからの所有者の削除|
-|リソース|サービス プリンシパルからのポリシーの削除|
-|リソース|サービス プリンシパルの削除|
+|Application Management|Add application|
+|Application Management|Add owner to application|
+|Application Management|Add owner to service principal|
+|Application Management|Add policy to service principal|
+|Directory Management|Add service principal|
+|Directory Management|Add service principal credentials|
+|Directory Management|Consent to application|
+|Directory Management|Delete application|
+|Directory Management|Hard Delete application|
+|Directory Management|Remove OAuth2PermissionGrant|
+|Directory Management|Remove app role assignment from service principal|
+|Directory Management|Remove owner from application|
+|Resource|Remove owner from service principal|
+|Resource|Remove policy from service principal|
+|Resource|Remove service principal|
 
 
-## <a name="automated-password-rollover"></a>自動パスワード ロールオーバー
+## <a name="automated-password-rollover"></a>Automated password rollover
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|アプリケーション管理|サービス プリンシパルの資格情報の削除|
+|Application Management|Remove service principal credentials|
 
 
 ## <a name="b2c"></a>B2C
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|アプリケーション管理|アプリケーションの復元|
-|アプリケーション管理|同意の取り消し|
-|アプリケーション管理|アプリケーションを更新する|
-|アプリケーション管理|外部シークレットを更新します。|
-|アプリケーション管理|サービス プリンシパルの更新|
-|アプリケーション管理|アプリケーションへのアクセス トークンの発行|
-|アプリケーション管理|アプリケーションへの認証コードの発行|
-|アプリケーション管理|アプリケーションへの id_token の発行|
-|アプリケーション管理|ローカル アカウントの資格情報の検証|
-|アプリケーション管理|ユーザー認証の検証|
-|アプリケーション管理|V2 アプリケーションのアクセス許可の追加|
-|アプリケーション管理|CPIM キー コンテナーへの ASCII シークレットに基づくキーの追加|
-|アプリケーション管理|CPIM キー コンテナーへのキーの追加|
-|アプリケーション管理|AdminPolicyDatas-SetResources|
-|アプリケーション管理|AdminUserJourneys-GetResources|
-|アプリケーション管理|AdminUserJourneys-RemoveResources|
+|Application Management|Restore application|
+|Application Management|Revoke consent|
+|Application Management|Update application|
+|Application Management|Update external secrets|
+|Application Management|Update service principal|
+|Application Management|Issue an access token to the application|
+|Application Management|Issue an authorization code to the application|
+|Application Management|Issue an id_token to the application|
+|Application Management|Validate local account credentials|
+|Application Management|Validate user authentication|
+|Application Management|Add V2 application permissions|
+|Application Management|Add a key based on ASCII secret to a CPIM key container|
+|Application Management|Add a key to a CPIM key container|
+|Application Management|AdminPolicyDatas-SetResources|
+|Application Management|AdminUserJourneys-GetResources|
+|Application Management|AdminUserJourneys-RemoveResources|
 |Authentication|AdminUserJourneys-SetResources|
-|Authentication|IdentityProvider の作成|
-|Authentication|V1 アプリケーションの作成|
-|Authentication|V2 アプリケーションの作成|
-|Authentication|テナント内のカスタム ドメインの作成|
-|Authorization|新しい AdminUserJourney の作成|
-|Authorization|ローカライズされたリソース json の作成|
-|Authorization|新しいカスタム IDP の作成|
-|Authorization|新しい IDP の作成|
-|Authorization|B2C ディレクトリ リソースの作成または更新|
-|Authorization|ポリシーの作成|
-|Authorization|trustFramework ポリシーの作成|
-|Authorization|構成可能なプレフィックスを持つ trustFramework ポリシーの作成|
-|Authorization|ユーザー属性の作成|
+|Authentication|Create IdentityProvider|
+|Authentication|Create V1 application|
+|Authentication|Create V2 application|
+|Authentication|Create a custom domains in the tenant|
+|Authorization|Create a new AdminUserJourney|
+|Authorization|Create localized resource json|
+|Authorization|Create new Custom IDP|
+|Authorization|Create new IDP|
+|Authorization|Create or update a B2C directory resource|
+|Authorization|Create policy|
+|Authorization|Create trustFramework policy|
+|Authorization|Create trustFramework policy with configurable prefix|
+|Authorization|Create user attribute|
 |Authorization|CreateTrustFrameworkPolicy|
-|Authorization|新しい AdminUserJourney の作成または更新|
-|Authorization|IDP の削除|
-|Authorization|IdentityProvider の削除|
-|Authorization|V1 アプリケーションの削除|
-|Authorization|V2 アプリケーションの削除|
-|Authorization|V2 アプリケーションのアクセス許可の付与の削除|
-|Authorization|B2C ディレクトリ リソースの削除|
-|Authorization|CPIM キー コンテナーの削除|
-|Authorization|trustFramework ポリシーの削除|
-|Authorization|ユーザー属性の削除|
-|Authorization|B2C 機能の有効化|
-|Authorization|サブスクリプション内の B2C ディレクトリ リソースの取得|
-|Authorization|カスタム IDP の取得|
-|Authorization|IDP の取得|
-|Authorization|V1 および V2 アプリケーションの取得|
-|Authorization|V1 アプリケーションの取得|
-|Authorization|V1 アプリケーションの取得|
-|Authorization|V2 アプリケーションの取得|
-|Authorization|V2 アプリケーションの取得|
-|Authorization|B2C ディレクトリ リソースの取得|
-|Authorization|テナント内のカスタム ドメインの一覧の取得|
-|Authorization|ユーザー体験の取得|
-|Authorization|ユーザー体験で許可されているアプリケーション要求の取得|
-|Authorization|ユーザー体験で許可されているセルフアサート要求の取得|
-|Authorization|ポリシーの許可されているセルフアサート要求の取得|
-|Authorization|使用可能な出力要求の一覧の取得|
-|Authorization|ユーザー体験のコンテンツ定義の取得|
-|Authorization|固有の管理フローの IDP の取得|
-|Authorization|JWK のキー コンテナー アクティブ キー メタデータの取得|
-|Authorization|すべての管理フローの一覧の取得|
-|Authorization|すべてのユーザーのすべての管理フローに対するタグの一覧の取得|
-|Authorization|ユーザーのテナントの一覧の取得|
-|Authorization|ローカル アカウントのセルフアサート要求の取得|
-|Authorization|ローカライズされたリソース json の取得|
-|Authorization|Microsoft.AzureActiveDirectory リソース プロバイダーの操作の取得|
-|Authorization|ポリシーの取得|
-|Authorization|ポリシーの取得|
-|Authorization|テナントのリソース プロパティの取得|
-|Authorization|サポートされている IDP の一覧の取得|
-|Authorization|ユーザー体験でサポートされている IDP の一覧の取得|
-|Authorization|テナント情報の取得|
-|Authorization|テナントで許可されている機能の取得|
-|Authorization|テナントで定義されているカスタム IDP の一覧の取得|
-|Authorization|テナントで定義されている IDP の一覧の取得|
-|Authorization|テナントで定義されているローカル IDP の一覧の取得|
-|Authorization|リソース作成のためのユーザーに関するテナントの詳細の取得|
-|Authorization|テナントの一覧の取得|
-|Authorization|tenantDomains の取得|
-|Authorization|CPIM のサポートされている既定のカルチャの取得|
-|Authorization|管理フローの詳細の取得|
-|Authorization|このテナントの UserJourneys の一覧の取得|
-|Authorization|CPIM の使用可能なサポートされるカルチャのセットの取得|
-|Authorization|trustFramework ポリシーの取得|
-|Authorization|trustFramework ポリシーの xml としての取得|
-|Authorization|ユーザー属性の取得|
-|Authorization|ユーザー属性の取得|
-|Authorization|ユーザー体験の一覧の取得|
+|Authorization|Creates or Update an new AdminUserJourney|
+|Authorization|Delete IDP|
+|Authorization|Delete IdentityProvider|
+|Authorization|Delete V1 application|
+|Authorization|Delete V2 application|
+|Authorization|Delete V2 application permission grant|
+|Authorization|Delete a B2C directory resource|
+|Authorization|Delete a CPIM key container|
+|Authorization|Delete trustFramework policy|
+|Authorization|Delete user attribute|
+|Authorization|Enable B2C feature|
+|Authorization|Get B2C directory resources in a subscription|
+|Authorization|Get Custom IDP|
+|Authorization|Get IDP|
+|Authorization|Get V1 and V2 applications|
+|Authorization|Get V1 application|
+|Authorization|Get V1 applications|
+|Authorization|Get V2 application|
+|Authorization|Get V2 applications|
+|Authorization|Get a B2C directory resource|
+|Authorization|Get a list of custom domains in the tenant|
+|Authorization|Get a user journey|
+|Authorization|Get allowed application claims for user journey|
+|Authorization|Get allowed self-asserted claims for user journey|
+|Authorization|Get allowed self-asserted claims of policy|
+|Authorization|Get available output claims list|
+|Authorization|Get content definitions for user journey|
+|Authorization|Get idps for a specific admin flow|
+|Authorization|Get key container active key metadata in JWK|
+|Authorization|Get list of all admin flows|
+|Authorization|Get list of tags for all admin flows for all users|
+|Authorization|Get list of tenants for a user|
+|Authorization|Get local accounts' self-asserted claims|
+|Authorization|Get localized resource json|
+|Authorization|Get operations of Microsoft.AzureActiveDirectory resource provider|
+|Authorization|Get policies|
+|Authorization|Get policy|
+|Authorization|Get resource properties of a tenant|
+|Authorization|Get supported IDP list|
+|Authorization|Get supported IDP list of the user journey|
+|Authorization|Get tenant Info|
+|Authorization|Get tenant allowed features|
+|Authorization|Get tenant defined Custom IDP list|
+|Authorization|Get tenant defined IDP list|
+|Authorization|Get tenant defined local IDP list|
+|Authorization|Get tenant details for a user for resource creation|
+|Authorization|Get tenant list|
+|Authorization|Get tenantDomains|
+|Authorization|Get the default supported culture for CPIM|
+|Authorization|Get the details of an admin flow|
+|Authorization|Get the list of UserJourneys for this tenant|
+|Authorization|Get the set of available supported cultures for CPIM|
+|Authorization|Get trustFramework policy|
+|Authorization|Get trustFramework policy as xml|
+|Authorization|Get user attribute|
+|Authorization|Get user attributes|
+|Authorization|Get user journey list|
 |Authorization|GetIEFPolicies|
 |Authorization|GetIdentityProviders|
 |Authorization|GetTrustFrameworkPolicy|
-|Authorization|jwk 形式での CPIM キー コンテナーの取得|
-|Authorization|テナント内のキー コンテナーの一覧の取得|
-|Authorization|テナントの種類の取得|
+|Authorization|Gets a CPIM key container in jwk format|
+|Authorization|Gets list of key containers in the tenant|
+|Authorization|Gets the type of tenant|
 |Authorization|MigrateTenantMetadata|
-|Authorization|IdentityProvider のパッチ|
+|Authorization|Patch IdentityProvider|
 |Authorization|PutTrustFrameworkPolicy|
 |Authorization|PutTrustFrameworkpolicy|
-|Authorization|ユーザー体験の削除|
-|Authorization|CPIM キー コンテナー バックアップの復元|
-|Authorization|V2 アプリケーションのアクセス許可の付与の取得|
-|Authorization|現在のテナントの V2 アプリケーション サービス プリンシパルの取得|
-|Authorization|カスタム IDP の更新|
-|Authorization|IDP の更新|
-|Authorization|ローカル IDP の更新|
-|Authorization|V1 アプリケーションの更新|
-|Authorization|V2 アプリケーションの更新|
-|Authorization|V2 アプリケーションのアクセス許可の付与の更新|
-|Authorization|ポリシーの更新|
-|Authorization|ユーザー属性の更新|
-|Authorization|CPIM 暗号化キーのアップロード|
-|Authorization|ユーザーの承認:テナント機能セットに対して API が無効化された|
-|Authorization|ユーザーの承認:'テナント管理者' としてのアクセスを付与されているユーザー|
-|Authorization|ユーザーの承認:ユーザーが '認証されたユーザー' アクセス権を付与された|
-|Authorization|B2C 機能が有効になっているかどうかの確認|
-|Authorization|機能が有効になっているかどうかの確認|
-|Authorization|プログラムの作成|
-|Authorization|プログラムの削除|
-|Authorization|プログラム コントロールのリンク|
-|Authorization|Azure AD アクセス レビューへのオンボード|
-|Authorization|プログラム コントロールのリンクの解除|
-|Authorization|プログラムの更新|
-|Authorization|デスクトップ SSO の無効化|
-|Authorization|特定のドメインに対するデスクトップ SSO の無効化|
-|Authorization|アプリケーション プロキシの無効化|
-|Authorization|パススルー認証の無効化|
-|Authorization|デスクトップ SSO の有効化|
-|ディレクトリ管理|特定のドメインに対するデスクトップ SSO の有効化|
-|ディレクトリ管理|アプリケーション プロキシの有効化|
-|ディレクトリ管理|パススルー認証の有効化|
-|ディレクトリ管理|テナント内のカスタム ドメインの作成|
-|ディレクトリ管理|B2C 機能の有効化|
-|ディレクトリ管理|テナント内のカスタム ドメインの一覧の取得|
-|ディレクトリ管理|テナントのリソース プロパティの取得|
-|ディレクトリ管理|テナント情報の取得|
-|ディレクトリ管理|テナントで許可されている機能の取得|
-|ディレクトリ管理|tenantDomains の取得|
-|キー|テナントの種類の取得|
-|キー|B2C 機能が有効になっているかどうかの確認|
-|キー|機能が有効になっているかどうかの確認|
-|キー|会社へのパートナーの追加|
-|キー|未確認ドメインの追加|
-|キー|確認済みドメインの追加|
-|キー|会社の作成|
-|キー|会社の設定を作成します。|
-|キー|会社の設定を削除します。|
-|キー|パートナーの降格|
-|キー|ディレクトリが削除された|
-|その他|ディレクトリが完全に削除された|
-|その他|ディレクトリの削除が予定された|
-|リソース|パートナーへの会社の昇格|
-|リソース|権限管理プロパティの消去|
-|リソース|会社からのパートナーの削除|
-|リソース|未確認ドメインの削除|
-|リソース|確認済みドメインの削除|
-|リソース|会社情報の設定|
-|リソース|DirSync 機能の設定|
-|リソース|DirSyncEnabled フラグの設定|
-|リソース|パートナーシップの設定|
-|リソース|誤削除のしきい値の設定|
-|リソース|会社で許可されるデータの場所の設定|
-|リソース|会社の多国対応機能の有効化の設定|
-|リソース|テナントでのディレクトリ機能の設定|
-|リソース|ドメインの認証の設定|
-|リソース|ドメインのフェデレーションの設定|
-|リソース|パスワード ポリシーの設定|
-|リソース|権限管理プロパティの設定|
-|リソース|会社の更新|
-|リソース|会社の設定の更新|
-|リソース|ドメインの更新|
-|リソース|ドメインの検証|
-|リソース|電子メール検証済みドメインの検証|
-|リソース|オンボード|
-|リソース|アラート設定の更新|
-|リソース|週間ダイジェストの設定の更新|
-|リソース|ディレクトリのパスワード ライトバックの無効化|
-|リソース|ディレクトリのパスワード ライトバックの有効化|
-|リソース|グループへのアプリ ロールの割り当ての追加|
-|リソース|グループの追加|
-|リソース|グループへのメンバーの追加|
-|リソース|グループへの所有者の追加|
-|リソース|グループ設定の作成|
-|リソース|グループの削除|
-|リソース|グループ設定の削除|
-|リソース|ユーザーに対するグループ ベースのライセンスの適用の終了|
-|リソース|グループの物理的な削除|
-|リソース|グループからのアプリ ロールの割り当ての削除|
-|リソース|グループからのメンバーの削除|
-|リソース|グループからの所有者の削除|
-|リソース|グループの復元|
-|リソース|グループ ライセンスの設定|
-|リソース|ユーザーが管理するグループが設定されました。|
-|リソース|ユーザーに対するグループ ベースのライセンスの適用の開始|
-|リソース|グループ ライセンスの再計算のトリガー|
-|リソース|グループの更新|
-|リソース|グループ設定の更新|
-|リソース|メンバーの追加|
-|リソース|グループの作成|
-|リソース|グループの削除|
-|リソース|メンバーの削除|
-|リソース|グループの更新|
-|リソース|保留になっているグループへの参加要求の承認|
-|リソース|保留になっているグループへの参加要求の取り消し|
-|リソース|ライフサイクル管理ポリシーの作成|
-|リソース|保留になっているグループへの参加要求の削除|
-|リソース|保留になっているグループへの参加要求の拒否|
-|リソース|グループの更新|
-|リソース|グループへの参加要求|
-|リソース|動的グループのプロパティの設定|
-|リソース|ライフサイクル管理ポリシーの更新|
-|リソース|CPIM キー コンテナーへの ASCII シークレットに基づくキーの追加|
-|リソース|CPIM キー コンテナーへのキーの追加|
-|リソース|CPIM キー コンテナーの削除|
-|リソース|キー コンテナーの削除|
-|リソース|JWK のキー コンテナー アクティブ キー メタデータの取得|
-|リソース|キー コンテナー メタデータの取得|
-|リソース|jwk 形式での CPIM キー コンテナーの取得|
-|リソース|テナント内のキー コンテナーの一覧の取得|
-|リソース|CPIM キー コンテナー バックアップの復元|
-|リソース|キー コンテナーの保存|
-|リソース|CPIM 暗号化キーのアップロード|
-|リソース|アプリケーションへの認証コードの発行|
-|リソース|アプリケーションへの id_token の発行|
+|Authorization|Remove a user journey|
+|Authorization|Restore a CPIM key container backup|
+|Authorization|Retrieve V2 application permissions grants|
+|Authorization|Retrieve V2 application service principals in the current tenant|
+|Authorization|Update Custom IDP|
+|Authorization|Update IDP|
+|Authorization|Update Local IDP|
+|Authorization|Update V1 application|
+|Authorization|Update V2 application|
+|Authorization|Update V2 application permission grant|
+|Authorization|Update policy|
+|Authorization|Update user attribute|
+|Authorization|Upload a CPIM encrypted key|
+|Authorization|User Authorization: API is disabled for tenant featureset|
+|Authorization|User Authorization: User granted access as 'Tenant Admin'|
+|Authorization|User Authorization: User was granted 'Authenticated Users' access rights|
+|Authorization|Verify if B2C feature is enabled|
+|Authorization|Verify if feature is enabled|
+|Authorization|Create program|
+|Authorization|Delete program|
+|Authorization|Link program control|
+|Authorization|Onboard to Azure AD Access Reviews|
+|Authorization|Unlink program control|
+|Authorization|Update program|
+|Authorization|Disable Desktop Sso|
+|Authorization|Disable Desktop Sso for a specific domain|
+|Authorization|Disable application proxy|
+|Authorization|Disable passthrough authentication|
+|Authorization|Enable Desktop Sso|
+|Directory Management|Enable Desktop Sso for a specific domain|
+|Directory Management|Enable application proxy|
+|Directory Management|Enable passthrough authentication|
+|Directory Management|Create a custom domains in the tenant|
+|Directory Management|Enable B2C feature|
+|Directory Management|Get a list of custom domains in the tenant|
+|Directory Management|Get resource properties of a tenant|
+|Directory Management|Get tenant Info|
+|Directory Management|Get tenant allowed features|
+|Directory Management|Get tenantDomains|
+|Key|Gets the type of tenant|
+|Key|Verify if B2C feature is enabled|
+|Key|Verify if feature is enabled|
+|Key|Add partner to company|
+|Key|Add unverified domain|
+|Key|Add verified domain|
+|Key|Create company|
+|Key|Create company settings|
+|Key|Delete company settings|
+|Key|Demote partner|
+|Key|Directory deleted|
+|Other|Directory deleted permanently|
+|Other|Directory scheduled for deletion|
+|Resource|Promote company to partner|
+|Resource|Purge rights management properties|
+|Resource|Remove partner from company|
+|Resource|Remove unverified domain|
+|Resource|Remove verified domain|
+|Resource|Set Company Information|
+|Resource|Set DirSync feature|
+|Resource|Set DirSyncEnabled flag|
+|Resource|Set Partnership|
+|Resource|Set accidental deletion threshold|
+|Resource|Set company allowed data location|
+|Resource|Set company multinational feature enabled|
+|Resource|Set directory feature on tenant|
+|Resource|Set domain authentication|
+|Resource|Set federation settings on domain|
+|Resource|Set password policy|
+|Resource|Set rights management properties|
+|Resource|Update company|
+|Resource|Update company settings|
+|Resource|Update domain|
+|Resource|Verify domain|
+|Resource|Verify email verified domain|
+|Resource|Onboarding|
+|Resource|Update alert settings|
+|Resource|Update weekly digest settings|
+|Resource|Disable password writeback for directory|
+|Resource|Enable password writeback for directory|
+|Resource|Add app role assignment to group|
+|Resource|Add group|
+|Resource|Add member to group|
+|Resource|Add owner to group|
+|Resource|Create group settings|
+|Resource|Delete group|
+|Resource|Delete group settings|
+|Resource|Finish applying group based license to users|
+|Resource|Hard Delete group|
+|Resource|Remove app role assignment from group|
+|Resource|Remove member from group|
+|Resource|Remove owner from group|
+|Resource|Restore Group|
+|Resource|Set group license|
+|Resource|Set group to be managed by user|
+|Resource|Start applying group based license to users|
+|Resource|Trigger group license recalculation|
+|Resource|Update group|
+|Resource|Update group settings|
+|Resource|Add Member|
+|Resource|Create Group|
+|Resource|Delete Group|
+|Resource|Remove Member|
+|Resource|Update Group|
+|Resource|Approve a pending request to join a group|
+|Resource|Cancel a pending request to join a group|
+|Resource|Create lifecycle management policy|
+|Resource|Delete a pending request to join a group|
+|Resource|Reject a pending request to join a group|
+|Resource|Renew group|
+|Resource|Request to join a group|
+|Resource|Set dynamic group properties|
+|Resource|Update lifecycle management policy|
+|Resource|Add a key based on ASCII secret to a CPIM key container|
+|Resource|Add a key to a CPIM key container|
+|Resource|Delete a CPIM key container|
+|Resource|Delete key container|
+|Resource|Get key container active key metadata in JWK|
+|Resource|Get key container metadata|
+|Resource|Gets a CPIM key container in jwk format|
+|Resource|Gets list of key containers in the tenant|
+|Resource|Restore a CPIM key container backup|
+|Resource|Save key container|
+|Resource|Upload a CPIM encrypted key|
+|Resource|Issue an authorization code to the application|
+|Resource|Issue an id_token to the application|
 
 
-## <a name="core-directory"></a>コア ディレクトリ
+## <a name="core-directory"></a>Core directory
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|管理単位管理|単一のリスク イベントの種類のダウンロード|
-|管理単位管理|管理者と、週間ダイジェスト オプトインの状態をダウンロード|
-|管理単位管理|すべてのリスク イベントの種類のダウンロード|
-|管理単位管理|無料のユーザー リスク イベントのダウンロード|
-|管理単位管理|リスクのフラグ付きユーザーのダウンロード|
-|アプリケーション管理|バッチ招待が処理された|
-|アプリケーション管理|バッチ招待がアップロードされた|
-|アプリケーション管理|ポリシーへの所有者の追加|
-|アプリケーション管理|ポリシーの追加|
-|アプリケーション管理|ポリシーの削除|
-|アプリケーション管理|ポリシー資格情報の削除|
-|アプリケーション管理|ポリシーの更新|
-|アプリケーション管理|MFA 登録ポリシーの設定|
-|アプリケーション管理|サインン リスク ポリシーの設定|
-|アプリケーション管理|ユーザー リスク ポリシーの設定|
-|アプリケーション管理|使用条件の同意|
-|アプリケーション管理|使用条件の作成|
-|アプリケーション管理|使用条件の拒否|
-|アプリケーション管理|使用条件の削除|
-|アプリケーション管理|使用条件の編集|
-|アプリケーション管理|使用条件の公開|
-|アプリケーション管理|使用条件の公開の取り消し|
-|アプリケーション管理|アプリケーション SSL 証明書の追加|
-|アプリケーション管理|SSL バインディングの削除|
-|アプリケーション管理|コネクタの登録|
-|アプリケーション管理|AdminPolicyDatas-RemoveResources|
-|アプリケーション管理|AdminPolicyDatas-SetResources|
-|アプリケーション管理|AdminUserJourneys-GetResources|
-|ディレクトリ管理|AdminUserJourneys-RemoveResources|
-|ディレクトリ管理|AdminUserJourneys-SetResources|
-|ディレクトリ管理|IdentityProvider の作成|
-|ディレクトリ管理|新しい AdminUserJourney の作成|
-|ディレクトリ管理|ローカライズされたリソース json の作成|
-|ディレクトリ管理|新しいカスタム IDP の作成|
-|ディレクトリ管理|新しい IDP の作成|
-|ディレクトリ管理|B2C ディレクトリ リソースの作成または更新|
-|ディレクトリ管理|ポリシーの作成|
-|ディレクトリ管理|trustFramework ポリシーの作成|
-|ディレクトリ管理|構成可能なプレフィックスを持つ trustFramework ポリシーの作成|
-|ディレクトリ管理|ユーザー属性の作成|
-|ディレクトリ管理|CreateTrustFrameworkPolicy|
-|ディレクトリ管理|IDP の削除|
-|ディレクトリ管理|IdentityProvider の削除|
-|ディレクトリ管理|B2C ディレクトリ リソースの削除|
-|ディレクトリ管理|trustFramework ポリシーの削除|
-|ディレクトリ管理|ユーザー属性の削除|
-|ディレクトリ管理|リソース グループ内の B2C ディレクトリ リソースの取得|
-|ディレクトリ管理|サブスクリプション内の B2C ディレクトリ リソースの取得|
-|ディレクトリ管理|カスタム IDP の取得|
-|ディレクトリ管理|IDP の取得|
-|ディレクトリ管理|B2C ディレクトリ リソースの取得|
-|ディレクトリ管理|ユーザー体験の取得|
-|ディレクトリ管理|ユーザー体験で許可されているアプリケーション要求の取得|
-|ディレクトリ管理|ユーザー体験で許可されているセルフアサート要求の取得|
-|ディレクトリ管理|ポリシーの許可されているセルフアサート要求の取得|
-|ディレクトリ管理|使用可能な出力要求の一覧の取得|
-|ディレクトリ管理|ユーザー体験のコンテンツ定義の取得|
-|ディレクトリ管理|固有の管理フローの IDP の取得|
-|ディレクトリ管理|すべての管理フローの一覧の取得|
-|ディレクトリ管理|すべてのユーザーのすべての管理フローに対するタグの一覧の取得|
-|グループ管理|ユーザーのテナントの一覧の取得|
-|グループ管理|ローカル アカウントのセルフアサート要求の取得|
-|グループ管理|ローカライズされたリソース json の取得|
-|グループ管理|Microsoft.AzureActiveDirectory リソース プロバイダーの操作の取得|
-|グループ管理|ポリシーの取得|
-|グループ管理|ポリシーの取得|
-|グループ管理|サポートされている IDP の一覧の取得|
-|グループ管理|ユーザー体験でサポートされている IDP の一覧の取得|
-|グループ管理|テナントで定義されているカスタム IDP の一覧の取得|
-|グループ管理|テナントで定義されている IDP の一覧の取得|
-|グループ管理|テナントで定義されているローカル IDP の一覧の取得|
-|グループ管理|リソース作成のためのユーザーに関するテナントの詳細の取得|
-|グループ管理|CPIM のサポートされている既定のカルチャの取得|
-|グループ管理|管理フローの詳細の取得|
-|グループ管理|このテナントの UserJourneys の一覧の取得|
-|グループ管理|CPIM の使用可能なサポートされるカルチャのセットの取得|
-|グループ管理|trustFramework ポリシーの取得|
-|グループ管理|trustFramework ポリシーの xml としての取得|
-|グループ管理|ユーザー属性の取得|
-|ポリシー管理|ユーザー属性の取得|
-|ポリシー管理|ユーザー体験の一覧の取得|
-|ポリシー管理|GetIEFPolicies|
-|ポリシー管理|GetIdentityProviders|
-|ポリシー管理|GetTrustFrameworkPolicy|
-|リソース|MigrateTenantMetadata|
-|リソース|リソースの移動|
-|リソース|IdentityProvider のパッチ|
-|リソース|PutTrustFrameworkPolicy|
-|リソース|PutTrustFrameworkpolicy|
-|リソース|ユーザー体験の削除|
-|リソース|カスタム IDP の更新|
-|リソース|IDP の更新|
-|リソース|ローカル IDP の更新|
-|リソース|B2C ディレクトリ リソースの更新|
-|リソース|ポリシーの更新|
-|リソース|サブスクリプションの状態の更新|
-|ロール管理|ユーザー属性の更新|
-|ロール管理|リソースの移動の検証|
-|ロール管理|デバイスの追加|
-|ロール管理|デバイス構成の追加|
-|ロール管理|デバイスへの登録済み所有者の追加|
-|ロール管理|デバイスへの登録済みユーザーの追加|
-|ロール管理|デバイスの削除|
-|ロール管理|デバイスの構成の削除|
-|ロール管理|デバイスが準拠していなくなった|
-|ロール管理|デバイスが管理されなくなった|
-|[ユーザー管理]|デバイスからの登録済み所有者の削除|
-|[ユーザー管理]|デバイスからの登録済みユーザーの削除|
-|[ユーザー管理]|デバイスの更新|
-|[ユーザー管理]|デバイス構成の更新|
-|[ユーザー管理]|ロールへの有資格メンバーの追加|
-|[ユーザー管理]|ロールへのメンバーの追加|
-|[ユーザー管理]|ロール定義へのロール割り当ての追加|
-|[ユーザー管理]|テンプレートからのロールの追加|
-|[ユーザー管理]|ロールへのスコープを持つメンバーの追加|
-|[ユーザー管理]|ロールからの有資格メンバーの削除|
-|[ユーザー管理]|ロールからのメンバーの削除|
-|[ユーザー管理]|ロール定義からのロール割り当ての削除|
-|[ユーザー管理]|ロールからのスコープを持つメンバーの削除|
-|[ユーザー管理]|ロールの更新|
-|[ユーザー管理]|AccessReview_Review|
-|[ユーザー管理]|AccessReview_Update|
-|[ユーザー管理]|ActivationAborted|
-|[ユーザー管理]|ActivationApproved|
-|[ユーザー管理]|ActivationCanceled|
-|[ユーザー管理]|ActivationRequested|
-|[ユーザー管理]|追加済み|
-|[ユーザー管理]|割り当て|
+|Administrative Unit Management|Download a single risk event type|
+|Administrative Unit Management|Download admins and status of weekly digest opt-in|
+|Administrative Unit Management|Download all risk event types|
+|Administrative Unit Management|Download free user risk events|
+|Administrative Unit Management|Download users flagged for risk|
+|Application Management|Batch invites processed|
+|Application Management|Batch invites uploaded|
+|Application Management|Add owner to policy|
+|Application Management|Add policy|
+|Application Management|Delete policy|
+|Application Management|Remove policy credentials|
+|Application Management|Update policy|
+|Application Management|Set MFA registration policy|
+|Application Management|Set sign-in risk policy|
+|Application Management|Set user risk policy|
+|Application Management|Accept Terms Of Use|
+|Application Management|Create Terms Of Use|
+|Application Management|Decline Terms Of Use|
+|Application Management|Delete Terms Of Use|
+|Application Management|Edit Terms Of Use|
+|Application Management|Publish Terms Of Use|
+|Application Management|Unpublish Terms Of Use|
+|Application Management|Add application SSL certificate|
+|Application Management|Delete SSL binding|
+|Application Management|Register connector|
+|Application Management|AdminPolicyDatas-RemoveResources|
+|Application Management|AdminPolicyDatas-SetResources|
+|Application Management|AdminUserJourneys-GetResources|
+|Directory Management|AdminUserJourneys-RemoveResources|
+|Directory Management|AdminUserJourneys-SetResources|
+|Directory Management|Create IdentityProvider|
+|Directory Management|Create a new AdminUserJourney|
+|Directory Management|Create localized resource json|
+|Directory Management|Create new Custom IDP|
+|Directory Management|Create new IDP|
+|Directory Management|Create or update a B2C directory resource|
+|Directory Management|Create policy|
+|Directory Management|Create trustFramework policy|
+|Directory Management|Create trustFramework policy with configurable prefix|
+|Directory Management|Create user attribute|
+|Directory Management|CreateTrustFrameworkPolicy|
+|Directory Management|Delete IDP|
+|Directory Management|Delete IdentityProvider|
+|Directory Management|Delete a B2C directory resource|
+|Directory Management|Delete trustFramework policy|
+|Directory Management|Delete user attribute|
+|Directory Management|Get B2C directory resources in a resource group|
+|Directory Management|Get B2C directory resources in a subscription|
+|Directory Management|Get Custom IDP|
+|Directory Management|Get IDP|
+|Directory Management|Get a B2C directory resource|
+|Directory Management|Get a user journey|
+|Directory Management|Get allowed application claims for user journey|
+|Directory Management|Get allowed self-asserted claims for user journey|
+|Directory Management|Get allowed self-asserted claims of policy|
+|Directory Management|Get available output claims list|
+|Directory Management|Get content definitions for user journey|
+|Directory Management|Get idps for a specific admin flow|
+|Directory Management|Get list of all admin flows|
+|Directory Management|Get list of tags for all admin flows for all users|
+|Group Management|Get list of tenants for a user|
+|Group Management|Get local accounts' self-asserted claims|
+|Group Management|Get localized resource json|
+|Group Management|Get operations of Microsoft.AzureActiveDirectory resource provider|
+|Group Management|Get policies|
+|Group Management|Get policy|
+|Group Management|Get supported IDP list|
+|Group Management|Get supported IDP list of the user journey|
+|Group Management|Get tenant defined Custom IDP list|
+|Group Management|Get tenant defined IDP list|
+|Group Management|Get tenant defined local IDP list|
+|Group Management|Get tenant details for a user for resource creation|
+|Group Management|Get the default supported culture for CPIM|
+|Group Management|Get the details of an admin flow|
+|Group Management|Get the list of UserJourneys for this tenant|
+|Group Management|Get the set of available supported cultures for CPIM|
+|Group Management|Get trustFramework policy|
+|Group Management|Get trustFramework policy as xml|
+|Group Management|Get user attribute|
+|Policy Management|Get user attributes|
+|Policy Management|Get user journey list|
+|Policy Management|GetIEFPolicies|
+|Policy Management|GetIdentityProviders|
+|Policy Management|GetTrustFrameworkPolicy|
+|Resource|MigrateTenantMetadata|
+|Resource|Move resources|
+|Resource|Patch IdentityProvider|
+|Resource|PutTrustFrameworkPolicy|
+|Resource|PutTrustFrameworkpolicy|
+|Resource|Remove a user journey|
+|Resource|Update Custom IDP|
+|Resource|Update IDP|
+|Resource|Update Local IDP|
+|Resource|Update a B2C directory resource|
+|Resource|Update policy|
+|Resource|Update subscription status|
+|Role Management|Update user attribute|
+|Role Management|Validate move resources|
+|Role Management|Add device|
+|Role Management|Add device configuration|
+|Role Management|Add registered owner to device|
+|Role Management|Add registered users to device|
+|Role Management|Delete device|
+|Role Management|Delete device configuration|
+|Role Management|Device no longer compliant|
+|Role Management|Device no longer managed|
+|User Management|Remove registered owner from device|
+|User Management|Remove registered users from device|
+|User Management|Update device|
+|User Management|Update device configuration|
+|User Management|Add eligible member to role|
+|User Management|Add member to role|
+|User Management|Add role assignment to role definition|
+|User Management|Add role from template|
+|User Management|Add scoped member to role|
+|User Management|Remove eligible member from role|
+|User Management|Remove member from role|
+|User Management|Remove role assignment from role definition|
+|User Management|Remove scoped member from role|
+|User Management|Update role|
+|User Management|AccessReview_Review|
+|User Management|AccessReview_Update|
+|User Management|ActivationAborted|
+|User Management|ActivationApproved|
+|User Management|ActivationCanceled|
+|User Management|ActivationRequested|
+|User Management|Added|
+|User Management|Assign|
 
 
-## <a name="identity-protection"></a>Identity Protection
+## <a name="identity-protection"></a>Identity protection
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|ディレクトリ管理|昇格|
-|ディレクトリ管理|削除済み|
-|ディレクトリ管理|ロール設定の変更|
-|その他|ScanAlertsNow|
-|その他|サインアップ|
-|その他|降格|
-|その他|UpdateAlertSettings|
-|その他|UpdateCurrentState|
-|ポリシー管理|終了したアクセス レビュー|
-|ポリシー管理|要求の承認に承認者を追加|
-|ポリシー管理|アクセス レビューにレビュー担当者を追加|
-|[ユーザー管理]|アクセス レビュー結果の適用|
-|[ユーザー管理]|アクセス レビューの作成|
+|Directory Management|Elevate|
+|Directory Management|Removed|
+|Directory Management|Role Setting changes|
+|Other|ScanAlertsNow|
+|Other|Signup|
+|Other|Unelevate|
+|Other|UpdateAlertSettings|
+|Other|UpdateCurrentState|
+|Policy Management|Access review ended|
+|Policy Management|Add approver to request approval|
+|Policy Management|Add reviewer to access review|
+|User Management|Apply access review|
+|User Management|Create access review|
 
 
-## <a name="invited-users"></a>招待されたユーザー
+## <a name="invited-users"></a>Invited users
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|その他|要求の承認の作成|
-|その他|アクセス レビューの削除|
-|[ユーザー管理]|アクセス レビューからレビュー担当者を削除|
-|[ユーザー管理]|レビュー結果の適用の要求|
-|[ユーザー管理]|レビューの停止を要求|
-|[ユーザー管理]|アプリの割り当てのレビュー|
-|[ユーザー管理]|グループ メンバーシップのレビュー|
-|[ユーザー管理]|Rbac ロール メンバーシップをレビュー|
+|Other|Create request approval|
+|Other|Delete access review|
+|User Management|Remove reviewer from access review|
+|User Management|Request apply review result|
+|User Management|Request Stop Review|
+|User Management|Review app assignment|
+|User Management|Review group membership|
+|User Management|Review Rbac Role membership|
 
 
 ## <a name="microsoft-identity-manager-mim"></a>Microsoft Identity Manager (MIM)
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|グループ管理|要求の承認要求のレビュー|
-|グループ管理|アクセス レビューの更新|
-|グループ管理|アクセス レビューのメール通知設定を更新|
-|グループ管理|アクセス レビューの繰り返し回数の設定の更新|
-|グループ管理|アクセス レビュー繰り返し期間 (日数) の設定の更新|
-|[ユーザー管理]|アクセス レビュー繰り返し終了の種類の設定の更新|
-|[ユーザー管理]|アクセス レビュー繰り返しの種類の設定の更新|
+|Group Management|Review request approval request|
+|Group Management|Update Access Review|
+|Group Management|Update access review mail notification settings|
+|Group Management|Update access review recurrence count setting|
+|Group Management|Update access review recurrence duration in days setting|
+|User Management|Update access review recurrence end type setting|
+|User Management|Update access review recurrence type setting|
 
 
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
 |PIM|ActivationAborted|
 |PIM|ActivationApproved|
 |PIM|ActivationCanceled|
 |PIM|ActivationDenied|
 |PIM|ActivationRequested|
-|PIM|追加済み|
+|PIM|Added|
 |PIM|AddedOutsidePIM|
-|PIM|割り当て|
+|PIM|Assign|
 |PIM|DismissAlert|
-|PIM|昇格|
+|PIM|Elevate|
 |PIM|ReactivateAlert|
-|PIM|削除済み|
+|PIM|Removed|
 |PIM|RemovedOutsidePIM|
-|PIM|レビューの停止を要求|
-|PIM|ロール設定の変更|
+|PIM|Request Stop Review|
+|PIM|Role Setting changes|
 |PIM|ScanAlertsNow|
-|PIM|サインアップ|
-|PIM|割り当て解除|
-|PIM|降格|
+|PIM|Signup|
+|PIM|Unassign|
+|PIM|Unelevate|
 |PIM|UpdateAlertSettings|
 |PIM|UpdateCurrentState|
 
 
-## <a name="self-service-group-management"></a>セルフサービスのグループ管理
+## <a name="self-service-group-management"></a>Self-service group management
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|グループ管理|ユーザー パスワードのリセット|
-|グループ管理|ユーザーの復元|
-|グループ管理|ユーザー パスワードの強制変更の設定|
-|グループ管理|ユーザー管理の設定|
-|グループ管理|ユーザーの oath トークン メタデータの有効化の設定|
-|グループ管理|StsRefreshTokenValidFrom タイムスタンプの更新|
-|グループ管理|外部シークレットを更新します。|
-|グループ管理|ユーザーの更新|
-|グループ管理|管理者が一時パスワードを生成する|
+|Group Management|Reset user password|
+|Group Management|Restore user|
+|Group Management|Set force change user password|
+|Group Management|Set user manager|
+|Group Management|Set users oath token metadata enabled|
+|Group Management|Update StsRefreshTokenValidFrom Timestamp|
+|Group Management|Update external secrets|
+|Group Management|Update user|
+|Group Management|Admin generates a temporary password|
 
 
-## <a name="self-service-password-management"></a>セルフサービスによるパスワード管理
+## <a name="self-service-password-management"></a>Self-service password management
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|ディレクトリ管理|管理者がユーザーにパスワードのリセットを要求する|
-|ディレクトリ管理|アプリケーションへの外部ユーザーの割り当て|
-|[ユーザー管理]|電子メールが送信されず、ユーザーがサブスクリプションを解除した|
-|[ユーザー管理]|外部ユーザーの招待|
-|[ユーザー管理]|外部ユーザーの招待の利用|
-|[ユーザー管理]|バイラル テナントの作成|
-|[ユーザー管理]|バイラル ユーザーの作成|
-|[ユーザー管理]|ユーザー パスワードの登録|
-|[ユーザー管理]|ユーザー パスワードのリセット|
-|[ユーザー管理]|セルフサービスによるパスワード リセットのブロック|
+|Directory Management|Admins requires the user to reset their password|
+|Directory Management|Assign external user to application|
+|User Management|Email not sent, user unsubscribed|
+|User Management|Invite external user|
+|User Management|Redeem external user invite|
+|User Management|Viral tenant creation|
+|User Management|Viral user creation|
+|User Management|User Password Registration|
+|User Management|User Password Reset|
+|User Management|Blocked from self-service password reset|
 
 
-## <a name="terms-of-use"></a>使用条件
+## <a name="terms-of-use"></a>Terms of use
 
-|監査のカテゴリ|アクティビティ|
+|Audit Category|Activity|
 |---|---|
-|使用条件|使用条件の同意|
-|使用条件|使用条件の作成|
-|使用条件|使用条件の拒否|
-|使用条件|同意の削除|
-|使用条件|使用条件の削除|
-|使用条件|使用条件の編集|
-|使用条件|使用条件の期限切れ|
-|使用条件|使用条件の物理的な削除|
-|使用条件|使用条件の公開|
-|使用条件|使用条件の公開の取り消し|
+|Terms Of Use|Accept Terms Of Use|
+|Terms Of Use|Create Terms Of Use|
+|Terms Of Use|Decline Terms Of Use|
+|Terms Of Use|Delete Consent|
+|Terms Of Use|Delete Terms Of Use|
+|Terms Of Use|Edit Terms Of Use|
+|Terms Of Use|Expire Terms Of Use|
+|Terms Of Use|Hard Delete Terms Of Use|
+|Terms Of Use|Publish Terms Of Use|
+|Terms Of Use|Unpublish Terms Of Use|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
-- [Azure AD レポートの概要](overview-reports.md)
-- [監査ログ レポート](concept-audit-logs.md) 
-- [Azure AD レポートへのプログラムによるアクセス](concept-reporting-api.md)
+- [Azure AD reports overview](overview-reports.md).
+- [Audit logs report](concept-audit-logs.md). 
+- [Programmatic access to Azure AD reports](concept-reporting-api.md)

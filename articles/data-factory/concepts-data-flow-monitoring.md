@@ -1,57 +1,57 @@
 ---
-title: Azure Data Factory の Mapping Data Flow の視覚的な監視
-description: Azure Data Factory のデータ フローを視覚的に監視する方法
+title: Azure Data Factory Mapping Data Flow Visual Monitoring
+description: How to visually monitor Azure Data Factory Data Flows
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 1497e6b85d3f577064b7a90fb1bcf5cbeb4a1f40
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 90aa6261aebb9d1f7da89c101854bad8061dd6ff
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56212644"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737860"
 ---
-# <a name="monitor-data-flows"></a>データ フローの監視
+# <a name="monitor-data-flows"></a>Monitor Data Flows
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-データ フローの作成とデバッグが完了したら、データ フローをスケジュールし、そのスケジュールに基づいて、パイプラインのコンテキスト内でデータ フローを実行する必要があります。 Azure Data Factory からパイプラインをスケジュールするときは、トリガーを使用します。 Azure Data Factory のパイプライン ビルダーから [Trigger Now]\(今すぐトリガー\) オプションを使用して単体実行を行い、パイプラインのコンテキスト内でデータ フローをテストすることもできます。
+After you have completed building and debugging your data flow, you will want to schedule your data flow to execute on a schedule within the context of a pipeline. You can schedule the pipeline from Azure Data Factory using Triggers. Or you can use the Trigger Now option from the Azure Data Factory Pipeline Builder to execute a single-run execution to test your data flow within the pipeline context.
 
-パイプラインを実行するときは、パイプラインとその中に含まれるすべてのアクティビティ (データ フロー アクティビティなど) を監視できます。 左側の Azure Data Factory UI パネル内にある監視アイコンをクリックします。 次のような画面が表示されます。 強調表示されているアイコンを使用して、パイプライン内のアクティビティ (データ フロー アクティビティなど) にドリルダウンできます。
+When you execute your pipeline, you will be able to monitor the pipeline and all of the activities contained in the pipeline including the Data Flow activity. Click on the monitor icon in the left-hand Azure Data Factory UI panel. You will see a screen similar to the one below. The highlighted icons will allow you to drill into the activities in the pipeline, including the Data Flow activity.
 
 <img src="media/data-flow/mon001.png" width="800">
 
-実行時間や状態など、このレベルの統計も表示されます。 アクティビティ レベルの実行 ID は、パイプライン レベルの実行 ID とは異なります。 以前のレベルの実行 ID は、パイプラインの実行 ID です。 眼鏡をクリックすると、データ フローの実行に関する詳細が表示されます。
+You will see stats at this level as well inculding the run times and status. The Run ID at the activity level is different that the Run ID at the pipeline level. The Run ID at the previous level is for the pipeline. Clicking the eyeglasses will give you deep details on your data flow execution.
 
 <img src="media/data-flow/mon002.png" width="800">
 
-グラフィカルなノード監視ビューを開いているときは、表示専用のシンプルなバージョンのデータ フロー グラフが表示されます。
+When you are in the graphical node monitoring view, you will see a simplified view-only version of your data flow graph.
 
 <img src="media/data-flow/mon003.png" width="800">
 
-## <a name="view-data-flow-execution-plans"></a>データ フローの実行プランの表示
+## <a name="view-data-flow-execution-plans"></a>View Data Flow Execution Plans
 
-データ フローが Databricks で実行されると、データ フロー全体に基づいて、最適なコード パスが決定されます。 実行パスが別のスケールアウト ノードやデータ パーティション上に出現する場合もあります。 したがって、監視グラフでは、変換の実行パスを考慮して、フローのデザインが表示されています。 個々 のノードをクリックすると、クラスター上で同時に実行されたコードを表す "グループ" が表示されます。 表示されるタイミングとカウントは、デザイン内の個々のステップではなく、それらのグループを表しています。
+When your Data Flow is executed in Databricks, Azure Data Factory determines optimal code paths based on the entirity of your data flow. Additionally, the execution paths may occur on different scale-out nodes and data partitions. Therefore, the monitoring graph represents the design of your flow, taking into account the execution path of your transformations. When you click on individual nodes, you will see "groupings" that represent code that was executed together on the cluster. The timings and counts that you see represent those groups as opposed to the individual steps in your design.
 
 <img src="media/data-flow/mon004.png" width="800"> 
 
-* 監視ウィンドウ内の空間をクリックすると、下部のウィンドウ内の統計に、各シンクのタイミングと行数、および変換系列のシンク データの基になる変換が表示されます。
+* When you click on the open space in the monitoring window, the stats in the bottom pane will display timing and row counts for each Sink and the transformations that led to the sink data for transformation lineage.
 
-* 個々の変換を選択すると、パーティションの統計、列数、歪度 (パーティション全体に分散されたデータの均等さ)、 および尖度 (データのスパイクの程度) を示す追加のフィードバックが右側のパネルに表示されます。
+* When you select individual transformations, you will receive additional feedback on the right-hand panel that shows partition stats, column counts, skewness (how evenly is the data distributed across partitions), and kurtosis (how spikey is the data).
 
-* ノード ビュー内で [シンク] をクリックすると、列の系列が表示されます。 データ フローを通じてシンクのランドに列が累積される方法には、3 種類あります。 次に例を示します。
+* When you click on the Sink in the node view, you will see column lineage. There are three different methods that columns are accumulated throughout your data flow to land in the Sink. They are:
 
-  * 計算:列は、条件付き処理、またはデータ フローの式内で使用しますが、シンク内には置かないでください。
-  * 派生:列は、フロー内で生成した新しい列です (ソース内には存在していなかったものです)。
-  * マップ:列は、ソースから発生しており、シンク フィールドにマッピングされています。
+  * Computed: You use the column for conditional processing or within an expression in your data flow, but do not land it in the Sink
+  * Derived: The column is a new column that you generated in your flow, i.e. it was not present in the Source
+  * Mapped: The column originated from the source and your are mapping it to a sink field
   
-## <a name="monitor-icons"></a>監視アイコン
+## <a name="monitor-icons"></a>Monitor Icons
 
-このアイコンは、変換データが既にクラスターにキャッシュされており、タイミングと実行パスでそのことが考慮されていることを示します。
+This icon means that the transformation data was already cached on the cluster, so the timings and execution path have taken that into account:
 
 <img src="media/data-flow/mon005.png" width="800"> 
 
-変換内には、緑色の円のアイコンも表示されます。 これは、データ送信先のシンク数のカウントを示しています。
+You will also see green circle icons in the transformation. They represent a count of the number of sinks that data is flowing into.

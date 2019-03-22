@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Media Services のシナリオとデータ センターにおける機能の可用性 | Microsoft Docs
-description: このトピックでは、Microsoft Azure Media Services のシナリオの概要のほか、データ センターにおける機能とサービスの可用性について説明します。
+title: Microsoft Azure Media Services scenarios and availability of features across datacenters | Microsoft Docs
+description: This topic gives an overview of Microsoft Azure Media Services scenarios and availability of features and services across datacenters.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -10,254 +10,254 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 731e8453c9735ef1e7819f1b851d0a13ceaec43a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f62e2d482ca6258821cb800d2650a5f0c6a27e7c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996204"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762522"
 ---
-# <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Media Services のシナリオとデータ センターにおける機能の可用性
+# <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenarios and availability of Media Services features across datacenters
 
-Microsoft Azure Media Services (AMS) を使用すると、各種クライアント (テレビ、PC、モバイル デバイスなど) へのオンデマンド ストリーミング配信とライブ ストリーミング配信の両方で、ビデオやオーディオのコンテンツを安全にアップロード、保存、エンコード、パッケージ化できます。
+Microsoft Azure Media Services (AMS) enables you to securely upload, store, encode, and package video or audio content for both on-demand and live streaming delivery to various clients (for example, TV, PC, and mobile devices).
 
-AMS は、世界中の複数のデータセンターで動作しています。 これらのデータセンターは、地理的なリージョンにグループ化されていて、アプリケーションの作成場所を選択するときの柔軟性を与えています。 [リージョンとその場所の一覧](https://azure.microsoft.com/regions/)をご確認ください。 
+AMS operates in multiple datacenters around the world. These datacenters are grouped in to geographic regions, giving you flexibility in choosing where to build your applications. You can review the [list of regions and their locations](https://azure.microsoft.com/regions/). 
 
-このトピックでは、コンテンツの[ライブ](#live_scenarios)配信またはオンデマンド配信の一般的なシナリオを紹介します。 また、データ センターにおけるメディア機能とサービスの可用性についても説明します。
+This topic shows common scenarios for delivering your content [live](#live_scenarios) or on-demand. The topic also provides details about availability of media features and services across datacenters.
 
-## <a name="overview"></a>概要
+## <a name="overview"></a>Overview
 
-### <a name="prerequisites"></a>前提条件
+### <a name="prerequisites"></a>Prerequisites
 
-Azure Media Services を使用するには、次が必要です。
+To start using Azure Media Services, you should have the following:
 
-* Azure アカウント。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com)を参照してください。
-* Azure Media Services アカウントを作成します。 詳細については、[アカウントの作成](media-services-portal-create-account.md)に関するページを参照してください。
-* コンテンツのストリーミング元のストリーミング エンドポイントは、**実行中**状態である必要があります。
+* An Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com).
+* An Azure Media Services account. For more information, see [Create Account](media-services-portal-create-account.md).
+* The streaming endpoint from which you want to stream content has to be in the **Running** state.
 
-    AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、ストリーミング エンドポイントが**実行中**状態である必要があります。
+    When your AMS account is created, a **default** streaming endpoint is added to your account in the **Stopped** state. To start streaming your content and take advantage of dynamic packaging and dynamic encryption, the streaming endpoint has to be in the **Running** state.
 
-### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>AMS OData モデルに対する開発時によく使用されるオブジェクト
+### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>Commonly used objects when developing against the AMS OData model
 
-次の図は、Media Services OData モデルに対する開発時に最もよく使用されるオブジェクトの一部を示しています。
+The following image shows some of the most commonly used objects when developing against the Media Services OData model.
 
-画像をクリックすると、フル サイズで表示されます。  
+Click the image to view it full size.  
 
 <a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
 
-モデル全体は、[こちら](https://media.windows.net/API/$metadata?api-version=2.15)で確認できます。  
+You can view the whole model [here](https://media.windows.net/API/$metadata?api-version=2.15).  
 
-## <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>ストレージのコンテンツを保護し、ストリーミング メディアを平文 (暗号化されていない) で配信する
+## <a name="protect-content-in-storage-and-deliver-streaming-media-in-the-clear-non-encrypted"></a>Protect content in storage and deliver streaming media in the clear (non-encrypted)
 
-![VoD ワークフロー](./media/scenarios-and-availability/scenarios-and-availability01.png)
+![VoD workflow](./media/scenarios-and-availability/scenarios-and-availability01.png)
 
-1. 高品質なメディア ファイルを資産にアップロードします。
+1. Upload a high-quality media file into an asset.
 
-    ストレージ暗号化オプションを資産に適用し、アップロード中のコンテンツとストレージ内のコンテンツを保護することをお勧めします。
-2. アダプティブ ビットレート MP4 ファイルのセットにエンコードする。
+    It is recommended to apply storage encryption option to your asset in order to protect your content during upload and while at rest in storage.
+2. Encode to a set of adaptive bitrate MP4 files.
 
-    ストレージ暗号化オプションを出力資産に適用し、保存されているコンテンツを保護することをお勧めします。
-3. 資産配信ポリシーを構成します (動的パッケージで使用)。
+    It is recommended to apply storage encryption option to the output asset in order to protect your content at rest.
+3. Configure asset delivery policy (used by dynamic packaging).
 
-    アセットがストレージで暗号化されている場合は、アセット配信ポリシーを構成する **必要があります** 。
-4. OnDemand ロケーターを作成して資産を発行します。
-5. 公開済みコンテンツをストリーミングします。
+    If your asset is storage encrypted, you **must** configure asset delivery policy.
+4. Publish the asset by creating an OnDemand locator.
+5. Stream published content.
 
-データ センターにおける可用性については、[可用性](#availability)に関するセクションを参照してください。
+For information about availability in datacenters, see the [Availability](#availability) section.
 
-## <a name="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media"></a>ストレージ内のコンテンツを保護し、動的に暗号化されたストリーミング メディアを配信する
+## <a name="protect-content-in-storage-deliver-dynamically-encrypted-streaming-media"></a>Protect content in storage, deliver dynamically encrypted streaming media
 
-![PlayReady による保護](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
+![Protect with PlayReady](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
-1. 高品質なメディア ファイルを資産にアップロードします。 ストレージ暗号化オプションを資産に適用します。
-2. アダプティブ ビットレート MP4 ファイルのセットにエンコードする。 ストレージ暗号化オプションを出力資産に適用します。
-3. 再生中に動的に暗号化する資産の、暗号化コンテンツ キーを作成します。
-4. コンテンツ キー承認ポリシーを構成します。
-5. 資産配信ポリシーを構成します (動的パッケージと動的暗号化で使用)。
-6. OnDemand ロケーターを作成して資産を発行します。
-7. 公開済みコンテンツをストリーミングします。
+1. Upload a high-quality media file into an asset. Apply storage encryption option to the asset.
+2. Encode to a set of adaptive bitrate MP4 files. Apply storage encryption option to the output asset.
+3. Create encryption content key for the asset you want to be dynamically encrypted during playback.
+4. Configure content key authorization policy.
+5. Configure asset delivery policy (used by dynamic packaging and dynamic encryption).
+6. Publish the asset by creating an OnDemand locator.
+7. Stream published content.
 
-データ センターにおける可用性については、[可用性](#availability)に関するセクションを参照してください。
+For information about availability in datacenters, see the [Availability](#availability) section.
 
-## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Media Analytics を使用して、ビデオから実用的な洞察を得る
+## <a name="use-media-analytics-to-derive-actionable-insights-from-your-videos"></a>Use Media Analytics to derive actionable insights from your videos
 
-Media Analytics は音声および視覚コンポーネントの集合体であり、組織や企業がこれを活用することで、ビデオ ファイルから実用的な洞察を簡単に引き出すことができます。 詳細については、「 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)」を参照してください。
+Media Analytics is a collection of speech and vision components that make it easier for organizations and enterprises to derive actionable insights from their video files. For more information, see [Azure Media Services Analytics Overview](media-services-analytics-overview.md).
 
-1. 高品質なメディア ファイルを資産にアップロードします。
-2. [Media Analytics の概要](media-services-analytics-overview.md)に関するセクションで説明されている Media Analytics サービスのいずれかを使用して、ビデオを処理します。
-3. Media Analytics のメディア プロセッサによって MP4 ファイルまたは JSON ファイルが生成されます。 メディア プロセッサによって MP4 ファイルが生成された場合は、そのファイルのプログレッシブ ダウンロードが可能です。 メディア プロセッサによって JSON ファイルが生成された場合は、そのファイルを Azure Blob Storage からダウンロードできます。
+1. Upload a high-quality media file into an asset.
+2. Process your videos with one of the Media Analytics services described in the [Media Analytics overview](media-services-analytics-overview.md) section.
+3. Media Analytics media processors produce MP4 files or JSON files. If a media processor produced an MP4 file, you can progressively download the file. If a media processor produced a JSON file, you can download the file from the Azure blob storage.
 
-データ センターにおける可用性については、[可用性](#availability)に関するセクションを参照してください。
+For information about availability in datacenters, see the [Availability](#availability) section.
 
-## <a name="deliver-progressive-download"></a>プログレッシブ ダウンロードの提供
+## <a name="deliver-progressive-download"></a>Deliver progressive download
 
-1. 高品質なメディア ファイルを資産にアップロードします。
-2. 単一 MP4 ファイルにエンコードする。
-3. OnDemand または SAS ロケーターを作成して資産を発行します。
+1. Upload a high-quality media file into an asset.
+2. Encode to a single MP4 file.
+3. Publish the asset by creating an OnDemand or SAS locator.
 
-    SAS ロケーターを使用する場合、コンテンツは Azure BLOB ストレージからダウンロードされます。 この場合、開始状態のストリーミング エンドポイントは必要ありません。
-4. コンテンツを徐々にダウンロードします。
+    If using SAS locator, the content is downloaded from the Azure blob storage. In this case, you do not need to have streaming endpoints in started state.
+4. Progressively download content.
 
-## <a id="live_scenarios"></a>ライブ ストリーミング イベントの配信 
+## <a id="live_scenarios"></a>Delivering live-streaming events 
 
-1. さまざまなライブ ストリーミング プロトコル (RTMP や Smooth Streaming など) を使用してライブ コンテンツを取り込みます。
-2. (省略可) ストリームをアダプティブ ビットレート ストリームにエンコードします。
-3. ライブ ストリームをプレビューします。
-4. コンテンツを一般的なストリーミング プロトコル (MPEG DASH、Smooth、HLS など) を介して顧客に直接配信したり、再配布のための Content Delivery Network (CDN) に配信したりします。
+1. Ingest live content using various live streaming protocols (for example RTMP or Smooth Streaming).
+2. (optionally) Encode your stream into adaptive bitrate stream.
+3. Preview your live stream.
+4. Deliver the content through common streaming protocols (for example, MPEG DASH, Smooth, HLS) directly to your customers, or to a Content Delivery Network (CDN) for further distribution.
 
-    または
+    -or-
 
-    後でストリーミングするために、取り込んだコンテンツを記録して保存します (ビデオ オン デマンド)。
+    Record and store the ingested content in order to be streamed later (Video-on-Demand).
 
-ライブ ストリーミングを実行する際には、次のいずれかのルートを選択できます。
+When doing live streaming, you can choose one of the following routes:
 
-### <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルを操作する (パススルー)
+### <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Working with channels that receive multi-bitrate live stream from on-premises encoders (pass-through)
 
-次の図は、 **パススルー** ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
+The following diagram shows the major parts of the AMS platform that are involved in the **pass-through** workflow.
 
-![ライブ ワークフロー](./media/scenarios-and-availability/media-services-live-streaming-current.png)
+![Live workflow](./media/scenarios-and-availability/media-services-live-streaming-current.png)
 
-詳細については、 [オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの操作](media-services-live-streaming-with-onprem-encoders.md)に関するページを参照してください。
+For more information, see [Working with Channels that Receive Multi-bitrate Live Stream from On-premises Encoders](media-services-live-streaming-with-onprem-encoders.md).
 
-### <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Azure Media Services による Live Encoding を実行できるチャネルを操作する
+### <a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Working with channels that are enabled to perform live encoding with Azure Media Services
 
-次の図は、Media Services による Live Encoding の実行が有効なチャネルのライブ ストリーミング ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
+The following diagram shows the major parts of the AMS platform that are involved in Live Streaming workflow where a Channel is enabled to perform live encoding with Media Services.
 
-![ライブ ワークフロー](./media/scenarios-and-availability/media-services-live-streaming-new.png)
+![Live workflow](./media/scenarios-and-availability/media-services-live-streaming-new.png)
 
-詳細については、「 [Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
+For more information, see [Working with Channels that are Enabled to Perform Live Encoding with Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
-データ センターにおける可用性については、[可用性](#availability)に関するセクションを参照してください。
+For information about availability in datacenters, see the [Availability](#availability) section.
 
-## <a name="consuming-content"></a>コンテンツの使用
+## <a name="consuming-content"></a>Consuming content
 
-Azure Media Services には、ほとんどのプラットフォーム (iOS デバイス、Android デバイス、Windows、Windows Phone、Xbox、セットトップ ボックスなど) 向けのリッチで動的なクライアント再生アプリケーションの作成に必要なツールが用意されています。 次のトピックには、Media Services からのストリーミング メディアを使用する独自のクライアント アプリケーションの開発に使用できる、SDK とプレーヤー フレームワークへのリンクがあります。 詳細については、「[ビデオ プレーヤー アプリケーションの開発](media-services-develop-video-players.md)」を参照してください。
+Azure Media Services provides the tools you need to create rich, dynamic client player applications for most platforms including: iOS Devices, Android Devices, Windows, Windows Phone, Xbox, and Set-top boxes. The following topic provides links to SDKs and Player Frameworks that you can use to develop your own client applications that can consume streaming media from Media Services. For more information, see [Developing video payer applications](media-services-develop-video-players.md)
 
-## <a name="enabling-azure-cdn"></a>Azure CDN を有効にする
+## <a name="enabling-azure-cdn"></a>Enabling Azure CDN
 
-Media Services では、Azure CDN との統合をサポートしています。 Azure CDN を有効にする方法については、「 [Media Services アカウントでストリーミング エンドポイントを管理する方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+Media Services supports integration with Azure CDN. For information on how to enable Azure CDN, see [How to Manage Streaming Endpoints in a Media Services Account](media-services-portal-manage-streaming-endpoints.md).
 
-## <a id="scaling"></a>Media Services アカウントのスケーリング
+## <a id="scaling"></a>Scaling a Media Services account
 
-AMS のお客様は、AMS アカウントのストリーミング エンドポイント、メディア処理、ストレージをスケーリングできます。
+AMS customers can scale streaming endpoints, media processing, and storage in their AMS accounts.
 
-* Media Services のお客様は、**Standard** と **Premium** のいずれかのストリーミング エンドポイントを選択できます。 **Standard** ストリーミング エンドポイントは、ほとんどのストリーミング ワークロードに適しています。 **Premium** ストリーミング エンドポイントと同じ機能が備わっており、送信帯域幅が自動的にスケーリングされます。 
+* Media Services customers can choose either a **Standard** streaming endpoint or a **Premium** streaming endpoint. A **Standard** streaming endpoint is suitable for most streaming workloads. It includes the same features as a **Premium** streaming endpoints and scales outbound bandwidth automatically. 
 
-    **Premium** ストリーミング エンドポイントは専用のスケーラブルな帯域幅の容量を提供するため、高度なワークロードに適しています。 **Premium** ストリーミング エンドポイントを持つユーザーは、既定で 1 つのストリーミング ユニット (SU) を取得します。 ストリーミング エンドポイントは、SU を追加することで拡張できます。 各 SU は、アプリケーションに追加の帯域幅の容量を提供します。 **Premium** ストリーミング エンドポイントのスケーリングの詳細については、[ストリーミング エンドポイントのスケーリング](media-services-portal-scale-streaming-endpoints.md)に関するトピックを参照してください。
+    **Premium** streaming endpoints are suitable for advanced workloads, providing dedicated and scalable bandwidth capacity. Customers that have a **Premium** streaming endpoint, by default get one streaming unit (SU). The streaming endpoint can be scaled by adding SUs. Each SU provides additional bandwidth capacity to the application. For more information about scaling **Premium** streaming endpoints, see the [Scaling streaming endpoints](media-services-portal-scale-streaming-endpoints.md) topic.
 
-* Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、以下から選択できます:**S1**、**S2**、**S3**。 たとえば、同じエンコード ジョブの場合に、予約ユニットの種類として **S1** よりも **S2** を使用する方が、ジョブの実行が高速になります。
+* A Media Services account is associated with a Reserved Unit Type, which determines the speed with which your media processing tasks are processed. You can pick between the following reserved unit types: **S1**, **S2**, or **S3**. For example, the same encoding job runs faster when you use the **S2** reserved unit type compare to the **S1** type.
 
-    予約ユニットの種類を指定するだけでなく、**予約ユニット** (RU) を使用したアカウントのプロビジョニングを指定することもできます。 プロビジョニングされた RU の数によって、所定のアカウントで並列処理できるメディア タスクの数が決まります。
+    In addition to specifying the reserved unit type, you can specify to provision your account with **Reserved Units** (RUs). The number of provisioned RUs determines the number of media tasks that can be processed concurrently in a given account.
 
     >[!NOTE]
-    >RU は、Azure Media Indexer を使用するインデックス作成ジョブを含む、すべてのメディア処理を並列化するために動作します。 ただし、エンコードとは異なり、インデックス作成ジョブでは高速予約ユニットを使用した高速処理は行われません。
+    >RUs work for parallelizing all media processing, including indexing jobs using Azure Media Indexer. However, unlike encoding, indexing jobs do not get processed faster with faster reserved units.
 
-    詳細については、[メディア処理のスケーリング](media-services-portal-scale-media-processing.md)に関するページを参照してください。
-* ストレージ アカウントを追加して、Media Services アカウントの規模を設定することもできます。 各ストレージ アカウントの上限は 500 TB (テラバイト) です。 既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一の Media Services アカウントにアタッチすることを選択できます。 詳細については、[ストレージ アカウントの管理](meda-services-managing-multiple-storage-accounts.md)に関するページを参照してください。
+    For more information see, [Scale media processing](media-services-portal-scale-media-processing.md).
+* You can also scale your Media Services account by adding storage accounts to it. Each storage account is limited to 500 TB. To expand your storage beyond the default limitations, you can choose to attach multiple storage accounts to a single Media Services account. For more information, see [Manage storage accounts](meda-services-managing-multiple-storage-accounts.md).
 
-## <a id="availability"></a> データ センターにおける Media Services 機能の可用性
+## <a id="availability"></a> Availability of Media Services features across datacenters
 
-このセクションでは、データ センターにおける Media Services 機能の可用性について詳しく説明します。
+This section provides details about availability of Media Services features across datacenters.
 
-### <a name="ams-accounts"></a>AMS アカウント
+### <a name="ams-accounts"></a>AMS accounts
 
-#### <a name="availability"></a>可用性
+#### <a name="availability"></a>Availability
 
-データ センターで Media Services が使用可能かどうかを確認するには、 https://azure.microsoft.com/status/ にアクセスして、「メディア」テーブルまでスクロールします。
+To determine if Media Services is available in a datacenter, browse to https://azure.microsoft.com/status/ and scroll to the MEDIA table.
 
-### <a name="streaming-endpoints"></a>ストリーミング エンドポイント 
+### <a name="streaming-endpoints"></a>Streaming endpoints 
 
-Media Services のお客様は、**Standard** と **Premium** のいずれかのストリーミング エンドポイントを選択できます。 詳細については、[スケーリング](#scaling)に関するセクションを参照してください。
+Media Services customers can choose either a **Standard** streaming endpoint or a **Premium** streaming endpoint. For more information, see the [scaling](#scaling) section.
 
-#### <a name="availability"></a>可用性
+#### <a name="availability"></a>Availability
 
-|Name|Status|データ センター
+|Name|Status|Datacenters
 |---|---|---|
-|Standard|一般公開|All|
-|Premium|一般公開|All|
+|Standard|GA|All|
+|Premium|GA|All|
 
-### <a name="live-encoding"></a>ライブ エンコード
+### <a name="live-encoding"></a>Live encoding
 
-#### <a name="availability"></a>可用性
+#### <a name="availability"></a>Availability
 
-以下を除く、すべてのデータ センターで利用できます:ドイツ、ブラジル南部、インド西部、インド南部、インド中部。 
+Available in all datacenters except: Germany, Brazil South, India West, India South, and India Central. 
 
-### <a name="encoding-media-processors"></a>Encoding メディア プロセッサ
+### <a name="encoding-media-processors"></a>Encoding media processors
 
-AMS には、**Media Encoder Standard** と **Media Encoder Premium ワークフロー**という 2 つのオンデマンド エンコーダーが用意されています。 詳細については、「[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md)」を参照してください。 
+AMS offers two on-demand encoders **Media Encoder Standard** and **Media Encoder Premium Workflow**. For more information, see [Overview and comparison of Azure on-demand media encoders](media-services-encode-asset.md). 
 
-#### <a name="availability"></a>可用性
+#### <a name="availability"></a>Availability
 
-|メディア プロセッサ名|Status|データ センター
+|Media processor name|Status|Datacenters
 |---|---|---|
-|メディア エンコーダー スタンダード|一般公開|All|
-|メディア エンコーダー Premium ワークフロー|一般公開|中国を除くすべて|
+|Media Encoder Standard|GA|All|
+|Media Encoder Premium Workflow|GA|All except China|
 
-### <a name="analytics-media-processors"></a>Analytics メディア プロセッサ
+### <a name="analytics-media-processors"></a>Analytics media processors
 
-Media Analytics は音声および視覚コンポーネントの集合体であり、組織や企業がこれを活用することで、ビデオ ファイルから実用的な洞察を簡単に引き出すことができます。 詳細については、「 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)」を参照してください。
+Media Analytics is a collection of speech and vision components that makes it easier for organizations and enterprises to derive actionable insights from their video files. For more information, see [Azure Media Services Analytics Overview](media-services-analytics-overview.md).
 
-#### <a name="availability"></a>可用性
+#### <a name="availability"></a>Availability
 
-|メディア プロセッサ名|Status|データ センター
+|Media processor name|Status|Datacenters
 |---|---|---|
-|Azure Media Face Detector|プレビュー|All|
-|Azure Media Hyperlapse|プレビュー|All|
-|Azure Media Indexer|一般公開|All|
-|Azure Media Motion Detector|プレビュー|All|
-|Azure Media OCR|プレビュー|All|
-|Azure Media Redactor|プレビュー|All|
-|Azure Media Stabilizer|プレビュー|All|
-|Azure Media Video Thumbnails|プレビュー|All|
-|Azure Media Indexer 2|プレビュー|中国および連邦政府リージョンを除くすべて|
+|Azure Media Face Detector|Preview|All|
+|Azure Media Hyperlapse|Preview|All|
+|Azure Media Indexer|GA|All|
+|Azure Media Motion Detector|Preview|All|
+|Azure Media OCR|Preview|All|
+|Azure Media Redactor|Preview|All|
+|Azure Media Stabilizer|Preview|All|
+|Azure Media Video Thumbnails|Preview|All|
+|Azure Media Indexer 2|Preview|All except China and Federal Government region|
 
-### <a name="protection"></a>保護
+### <a name="protection"></a>Protection
 
-Microsoft Azure Media Services を使用すると、メディアがコンピューターから離れてから、保存、処理、配信されるまでのセキュリティ保護が可能になります。 詳細については、[AMS コンテンツの保護](media-services-content-protection-overview.md)に関するページを参照してください。
+Microsoft Azure Media Services enables you to secure your media from the time it leaves your computer through storage, processing, and delivery. For more information, see [Protecting AMS content](media-services-content-protection-overview.md).
 
-#### <a name="availability"></a>可用性
+#### <a name="availability"></a>Availability
 
-|暗号化|Status|データ センター|
+|Encryption|Status|Datacenters|
 |---|---|---| 
-|Storage|一般公開|All|
-|AES-128 キー|一般公開|All|
-|FairPlay|一般公開|All|
-|PlayReady|一般公開|All|
-|Widevine|一般公開|ドイツ、連邦政府、中国を除くすべて
+|Storage|GA|All|
+|AES-128 keys|GA|All|
+|Fairplay|GA|All|
+|PlayReady|GA|All|
+|Widevine|GA|All except Germany, Federal Government and China.
 
-### <a name="reserved-units-rus"></a>予約ユニット (RU)
+### <a name="reserved-units-rus"></a>Reserved units (RUs)
 
-プロビジョニングされた予約ユニットの数によって、所定のアカウントで並列処理できるメディア タスクの数が決まります。 
+The number of provisioned reserved units determines the number of media tasks that can be processed concurrently in a given account. 
 
-詳細については、[スケーリング](#scaling)に関するセクションを参照してください。
+For more information, see the [scaling](#scaling) section.
 
-#### <a name="availability"></a>可用性
+#### <a name="availability"></a>Availability
 
-すべてのデータ センターで利用できます。
+Available in all datacenters.
 
-### <a name="reserved-unit-ru-type"></a>予約ユニット (RU) の種類
+### <a name="reserved-unit-ru-type"></a>Reserved unit (RU) type
 
-Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。 予約ユニットの種類は、以下から選択できます:S1、S2、S3。
+A Media Services account is associated with a Reserved unit type, which determines the speed with which your media processing tasks are processed. You can pick between the following reserved unit types: S1, S2, or S3.
 
-詳細については、[スケーリング](#scaling)に関するセクションを参照してください。
+For more information, see the [scaling](#scaling) section.
 
-#### <a name="availability"></a>可用性
+#### <a name="availability"></a>Availability
 
-|RU の種類の名前|Status|データ センター
+|RU type name|Status|Datacenters
 |---|---|---|
-|S1|一般公開|All|
-|S2|一般公開|ブラジル南部とインド西部を除くすべて|
-|S3|一般公開|インド西部を除くすべて|
+|S1|GA|All|
+|S2|GA|All except Brazil South, and India West|
+|S3|GA|All except India West|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
-Media Services のラーニング パスを確認します。
+Review Media Services learning paths.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>フィードバックの提供
+## <a name="provide-feedback"></a>Provide feedback
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
