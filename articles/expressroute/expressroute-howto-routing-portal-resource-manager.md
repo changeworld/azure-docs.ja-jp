@@ -1,4 +1,4 @@
----
+﻿---
 title: 回線のピアリングを構成する - ExpressRoute:Azure | Microsoft Docs
 description: この記事では、ExpressRoute 回線のプライベート、パブリックおよび Microsoft ピアリングを作成し、プロビジョニングする手順について説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
 services: expressroute
