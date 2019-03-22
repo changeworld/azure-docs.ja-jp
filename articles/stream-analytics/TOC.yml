@@ -73,6 +73,8 @@ items:
     items:
     - name: 資格情報の更新
       href: stream-analytics-login-credentials-inputs-outputs.md
+    - name: イベント順序ポリシーを構成する
+      href: event-ordering.md
     - name: アラートを構成する
       href: stream-analytics-set-up-alerts.md
     - name: ジョブを開始する
@@ -87,7 +89,7 @@ items:
       href: stream-analytics-job-reliability.md
     - name: マネージド ID による認証
       href: stream-analytics-managed-identities-adls.md
-    - name: SQL リファレンスを使用する
+    - name: SQL リファレンス データを使用する
       href: sql-reference-data.md
   - name: ソリューションを構築する
     items:
@@ -438,9 +440,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 127d7aa2588a47084dd43eb7f22adf9f73f90dce
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e9ef3d7ed841dd5bb2a9ad21f0dd4f71e528c374
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853013"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286059"

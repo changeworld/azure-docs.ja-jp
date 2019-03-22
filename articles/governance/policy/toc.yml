@@ -117,6 +117,11 @@ items:
     - name: Data Lake Store での暗号化の適用
       displayName: deny
       href: samples/enforce-data-lake-store-encryption.md
+  - name: ゲスト構成
+    items:
+    - name: Linux 上にインストールされているアプリケーションの監査
+      displayName: audit, vm
+      href: samples/guest-configuration-applications-installed-linux.md
   - name: キー コンテナー
     items:
     - name: 仮想ネットワーク エンドポイントがないコンテナーの監査
@@ -286,9 +291,9 @@ items:
       href: /powershell/module/az.resources/#policies
     - name: ポリシーの分析情報
       href: /powershell/module/az.policyinsights#policy_insights
-    - name: ゲスト構成 (プレビュー)
-      href: https://www.powershellgallery.com/packages/AzureRM.GuestConfiguration
-  - name: REST API
+    - name: ゲスト構成
+      href: https://www.powershellgallery.com/packages/Az.GuestConfiguration
+  - name: REST
     items:
     - name: events
       href: /rest/api/policy-insights/policyevents
@@ -304,7 +309,7 @@ items:
       href: /rest/api/policy-insights/policytrackedresources
     - name: 修復
       href: /rest/api/policy-insights/remediations
-    - name: ゲスト構成 (プレビュー)
+    - name: ゲスト構成
       href: /rest/api/guestconfiguration/
   - name: Resource Manager テンプレート
     items:
@@ -338,9 +343,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: c80c593f025511679cf0739f8f9f40a1097795b9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 730222484658019c78fb2dfef94c474f3031769b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900694"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226132"

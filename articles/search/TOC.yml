@@ -32,16 +32,12 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: Cognitive Search API の説明
-    href: cognitive-search-tutorial-blob.md
-  - name: Azure BLOB のインデックスを作成する
-    href: search-semi-structured-data.md
   - name: Azure SQL Database のインデックスを作成する
     href: search-indexer-tutorial.md
-  - name: .NET でシノニムを追加する
-    href: search-synonyms-tutorial-sdk.md
-  - name: .NET でオートコンプリートを追加する
-    href: search-autocomplete-tutorial.md
+  - name: Azure BLOB のインデックスを作成する
+    href: search-semi-structured-data.md
+  - name: AI を使ったインデックス作成 (Cognitive Services)
+    href: cognitive-search-tutorial-blob.md
 - name: サンプル
   items:
   - name: Azure のコード サンプル
@@ -120,12 +116,18 @@ items:
         href: index-add-language-analyzers.md
       - name: カスタム アナライザーの追加
         href: index-add-custom-analyzers.md
-    - name: 自動提案の追加
-      href: index-add-suggesters.md
-    - name: ファセット ナビゲーションの追加
-      href: search-faceted-navigation.md
-    - name: シノニムの追加
-      href: search-synonyms.md
+    - name: 入力候補の提示
+      items:
+      - name: 自動提案の追加
+        href: index-add-suggesters.md
+      - name: オートコンプリートの例
+        href: search-autocomplete-tutorial.md
+    - name: シノニム
+      items:
+      - name: シノニムの追加
+        href: search-synonyms.md
+      - name: シノニムの例
+        href: search-synonyms-tutorial-sdk.md
     - name: 複合データ型をモデル化する
       href: search-howto-complex-data-types.md
     - name: リレーショナル データをモデル化する
@@ -212,6 +214,8 @@ items:
       href: search-filters.md
     - name: ファセット フィルター
       href: search-filters-facets.md
+    - name: ファセット ナビゲーションの追加
+      href: search-faceted-navigation.md
     - name: フィルターと OrderBy 式の構文
       href: query-odata-filter-orderby-syntax.md
   - name: 関連性のチューニング
@@ -303,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 9127da44295defc522de45eb53ed7e6541287002
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a7b839de360f1c03e5496f058109b6ab239fe9df
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860425"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202777"

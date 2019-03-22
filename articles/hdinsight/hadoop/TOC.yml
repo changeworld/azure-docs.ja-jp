@@ -40,6 +40,9 @@ items:
   - name: ストレージ オプションの比較
     href: ../hdinsight-hadoop-compare-storage-options.md
     maintainContext: true
+  - name: マネージド ID とは
+    href: ../hdinsight-managed-identities.md
+    maintainContext: true
 - name: 方法
   items:
   - name: Apache Hadoop サンドボックスの使用
@@ -75,10 +78,6 @@ items:
         href: apache-hadoop-use-hive-powershell.md
       - name: .NET SDK の使用
         href: apache-hadoop-use-hive-dotnet-sdk.md
-      - name: リモート デスクトップを使用する
-        href: apache-hadoop-use-hive-remote-desktop.md
-      - name: クエリ コンソールを使用する
-        href: apache-hadoop-use-hive-query-console.md
     - name: Hive と Java UDF を使用する
       href: apache-hadoop-hive-java-udf.md
     - name: Apache Hadoop と MapReduce を使用する
@@ -159,15 +158,11 @@ items:
       href: apache-hadoop-connect-excel-hive-odbc-driver.md
     - name: Apache Hive JDBC ドライバーを使用して接続する
       href: apache-hadoop-connect-hive-jdbc-driver.md
-    - name: 格納されたセンサー データを分析する
-      href: apache-hive-analyze-sensor-data.md
     - name: 格納されたツイートを分析する
       href: ../hdinsight-analyze-twitter-data-linux.md
       maintainContext: true
     - name: Apache Mahout で推奨事項を生成する
       href: apache-hadoop-mahout-linux-mac.md
-    - name: Apache Hive を使用して Web サイトのログを分析する
-      href: apache-hive-analyze-website-log.md
     - name: Application Insights Telemetry ログを分析する
       href: ../spark/apache-spark-analyze-application-insight-logs.md
       maintainContext: true
@@ -207,9 +202,6 @@ items:
       maintainContext: true
     - name: Hue を使用する
       href: ../hdinsight-hadoop-hue-linux.md
-      maintainContext: true
-    - name: Apache Solr を使用する
-      href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
     - name: Apache Zeppelin を使用する
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
@@ -321,8 +313,11 @@ items:
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
-    - name: HDInsight クラスターのスケーリングを行う
+    - name: 手動によるクラスターのスケーリング
       href: ../hdinsight-scaling-best-practices.md
+      maintainContext: true
+    - name: クラスターの自動スケーリング
+      href: ../hdinsight-autoscale-clusters.md
       maintainContext: true
     - name: 外部のメタデータ ストアを使用する
       href: ../hdinsight-use-external-metadata-stores.md
@@ -495,9 +490,6 @@ items:
     - name: Apache Hadoop MapReduce サンプルを実行する
       href: ../hdinsight-run-samples.md
       maintainContext: true
-    - name: クラスターで Apache Solr を使用する
-      href: ../hdinsight-hadoop-solr-install-linux.md
-      maintainContext: true
     - name: Apache Giraph を使用して大規模なグラフを処理する
       href: ../hdinsight-hadoop-giraph-install.md
       maintainContext: true
@@ -510,26 +502,14 @@ items:
     - name: Apache Maven を使用して Java アプリケーションを構築する
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
-    - name: スクリプト アクションを使用してカスタマイズする
-      href: ../hdinsight-hadoop-customize-cluster.md
-      maintainContext: true
     - name: Apache Hadoop YARN アプリケーション ログにアクセスする
       href: ../hdinsight-hadoop-access-yarn-app-logs.md
       maintainContext: true
     - name: Apache Mahout を使用して映画のレコメンデーションを生成する
       href: ../hdinsight-mahout.md
       maintainContext: true
-    - name: フライト遅延データを分析する
-      href: ../hdinsight-analyze-flight-delay-data.md
-      maintainContext: true
     - name: スクリプト アクションを開発する
       href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Twitter データを分析する
-      href: ../hdinsight-analyze-twitter-data.md
-      maintainContext: true
-    - name: Azure Portal でクラスターを管理する
-      href: ../hdinsight-administer-use-management-portal.md
       maintainContext: true
     - name: Apache Ambari API を使用してクラスターを監視する
       href: ../hdinsight-monitor-use-ambari-api.md
@@ -556,9 +536,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: c679970484666a6087b33276eb545304a3b2793c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c2272c9ae3b5f26dc1c83b7af5850a44aed6abdc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887031"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224398"
