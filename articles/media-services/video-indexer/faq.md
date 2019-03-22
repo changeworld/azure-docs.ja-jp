@@ -1,4 +1,4 @@
----
+﻿---
 title: Video Indexer についてよく寄せられる質問 - Azure
 titlesuffix: Azure Media Services
 description: Video Indexer についてよく寄せられる質問とその回答を紹介します。
@@ -98,7 +98,7 @@ Video Indexer については Azure Media Service の SLA が適用されます�
 
 ビデオのプライバシー設定がパブリックになっているビデオやオーディオのコンテンツには、ビデオやオーディオのコンテンツとその分析情報へのリンクを持つすべてのユーザーがアクセスできます。 ビデオのプライバシー設定がプライベートになっているビデオやオーディオのコンテンツには、ビデオやオーディオのコンテンツのアカウントに招待されたユーザーのみがアクセスできます。 コンテンツのプライバシーの設定は、Video Indexer で抽出されるメタデータと分析情報にも適用されます。 プライバシーの設定は、ビデオ ファイルやオーディオ ファイルをアップロードするときに割り当てます。 また、インデックスの作成後にプライバシーの設定を変更することもできます。
 
-### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Video Indexer でインデックスを作成したり保存したりしたビデオ ファイルやオーディオ ファイルと、抽出されたメタデータと分析情報には、誰がアクセスできますか?
+### <a name="what-access-does-microsoft-have-to-my-video-or-audio-files-that-have-been-indexed-andor-stored-by-video-indexer-and-the-metadata-and-insights-that-were-extracted"></a>Video Indexer で索引付けまたは保存されたビデオやオーディオ ファイル、および抽出されたメタデータと分析情報にアクセスできるのは誰ですか?
 
 [Azure オンライン サービス条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) に従い、お客様はご自分のコンテンツを完全に所有し、Microsoft は、お客様のコンテンツと、OST と Microsoft のプライバシーに関する声明に従って Video Indexer でお客様のコンテンツから抽出するメタデータと分析情報のみにアクセスします。
 
@@ -114,9 +114,9 @@ Video Indexer については Azure Media Service の SLA が適用されます�
 
 Video Indexer には [Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement)が適用されます。 プライバシーに関する声明では、Microsoft が処理する個人データ、Microsoft がそれをどのように処理し、何の目的でそれを処理するかについて説明しています。 プライバシーについて詳しくは、[Microsoft Trust Center](https://www.microsoft.com/trustcenter) を参照してください。
 
-### <a name="what-certifications-does-video-indexer-have"></a>Video Indexer には、どのような認定資格はありますか?
+### <a name="what-certifications-does-video-indexer-have"></a>Video Indexer には、どのような認証がありますか?
 
-Video Indexer は、現在のところ SOC 認定資格を持っています。 Video Indexer の認定資格を確認するには、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure) を参照してください。
+Video Indexer は、現在のところ SOC 認証を取得しています。 Video Indexer の認証を確認するには、[Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings?product=Azure) を参照してください。
 
 ## <a name="api-questions"></a>API に関する質問
 
