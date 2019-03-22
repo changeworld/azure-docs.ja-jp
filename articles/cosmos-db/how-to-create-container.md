@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 445d9f220a215eb17436d52f637b57bd3492aaae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8ce890500c31c1966254e5bca9d23c8fcdd7bb67
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864776"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258294"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを作成する
 
@@ -23,9 +23,9 @@ ms.locfileid: "55864776"
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. [新しい Azure Cosmos DB アカウントを作成する](create-sql-api-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
+1. [新しい Azure Cosmos DB アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存のアカウントを選択します。
 
-1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいコレクション]** を選択します。 続けて、以下の詳細を指定してください。
+1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいコレクション]** を選択します。 次に、以下の詳細を指定します。
 
    * 新しいデータベースを作成するか、既存のデータベースを使用するかを指定します。
    * コレクション ID を入力します。
@@ -41,7 +41,7 @@ ms.locfileid: "55864776"
 
 1. [新しい Azure Cosmos DB アカウントを作成する](create-mongodb-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
 
-1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいコレクション]** を選択します。 続けて、以下の詳細を指定してください。
+1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいコレクション]** を選択します。 次に、以下の詳細を指定します。
 
    * 新しいデータベースを作成するか、既存のデータベースを使用するかを指定します。
    * コレクション ID を入力します。
@@ -198,7 +198,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-MongoDB ワイヤ プロトコルには、要求ユニットという概念はありません。 スループットを指定して新しいコレクションを作成する場合は、Azure portal または SQL API を使用してください。
+> MongoDB ワイヤ プロトコルには、要求ユニットという概念はありません。 スループットを指定して新しいコレクションを作成する場合は、Azure portal または SQL API を使用してください。
 
 ### <a id="dotnet-cassandra"></a>Cassandra API
 
