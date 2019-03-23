@@ -421,7 +421,7 @@ items:
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.hdinsight
+    href: /powershell/module/az.hdinsight
   - name: .NET SDK
     href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
   - name: Python SDK
@@ -461,9 +461,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 4671117d5a9531432b9fad3fdc90b2f77c7334a2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 06f432d9a80d21fe41514e899ebc31d92b50ed5d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202641"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360981"
