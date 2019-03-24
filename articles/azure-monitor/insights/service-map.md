@@ -374,7 +374,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 | プロパティ | 説明 |
 |:--|:--|
-| type | *ServiceMapComputer_CL* |
+| Type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | resourceId | ワークスペース内のマシンに対する一意識別子 |
 | ResourceName_s | ワークスペース内のマシンに対する一意識別子 |
@@ -399,7 +399,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 | プロパティ | 説明 |
 |:--|:--|
-| type | *ServiceMapProcess_CL* |
+| Type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | resourceId | ワークスペース内のプロセスに対する一意識別子 |
 | ResourceName_s | 実行中のマシン内のプロセスに対する一意識別子|
