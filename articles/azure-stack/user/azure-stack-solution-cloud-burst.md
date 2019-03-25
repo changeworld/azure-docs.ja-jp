@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a8c4ef5df586c87862ea8e1634e9a72356401d0b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bcb538cf2e546e4913ccb223e143c2343e114de7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247427"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896196"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>チュートリアル: Azure でクラウドの間スケーリング ソリューションを作成する
 
@@ -128,7 +128,7 @@ Azure Repos
 
 1. Azure Pipelines にログインして、ビルド定義を作成する機能を確認します。
 
-2. **-r win10-x64** コードを追加します。 これは、.Net Core を使用して自己完結型のデプロイをトリガーするために必要です。
+2. **-r win10-x64** コードを追加します。 これは、.NET Core を使用して自己完結型のデプロイをトリガーするために必要です。
 
     ![Alt text](media/azure-stack-solution-cloud-burst/image4.png)
 
@@ -266,7 +266,7 @@ Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成�
 
 Azure Repos から [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)を Web アプリ コードのように使用して両方のクラウドに対してデプロイします。
 
-### <a name="add-code-to-a-azure-repos-project"></a>Azure Repos プロジェクトにコードを追加する
+### <a name="add-code-to-an-azure-repos-project"></a>Azure Repos プロジェクトにコードを追加する
 
 1.  Azure Stack でのプロジェクト作成権限が付与されているアカウントを使用して、Azure Repos にサインインします。 次のキャプチャ画面は、HybridCICD プロジェクトへの接続方法を示しています。
 
@@ -286,7 +286,7 @@ Azure Repos から [Azure Resource Manager テンプレート](https://azure.mic
 
 2.  プロジェクトの **[Build Web Application]\(Web アプリケーションのビルド\)** ページに移動します。
 
-3.  **[引数]** に **-r win10-x64** コードを追加します。 これは、.Net Core を使用して自己完結型のデプロイをトリガーするために必要です。
+3.  **[引数]** に **-r win10-x64** コードを追加します。 これは、.NET Core を使用して自己完結型のデプロイをトリガーするために必要です。
 
 4.  ビルドを実行します。 [自己完結型のデプロイ ビルド](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)のプロセスにより、Azure および Azure Stack 上で実行できる成果物が発行されます。
 
