@@ -178,7 +178,7 @@ BLOB ストレージ エンドポイントのカスタム ドメインを登録�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-カスタム ドメインの登録を削除するには、[Set-AStorageAccount](/powershell/module/az.storage/set-azstorageaccount) PowerShell コマンドレットを使用して、`-CustomDomainName` 引数値に空の文字列 (`""`) を指定します。
+カスタム ドメインの登録を削除するには、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) PowerShell コマンドレットを使用して、`-CustomDomainName` 引数値に空の文字列 (`""`) を指定します。
 
 * コマンド形式:
 
