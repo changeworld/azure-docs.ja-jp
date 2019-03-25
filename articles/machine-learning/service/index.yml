@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b7765fc5506129cdf594ef3fd0424f8771de5ef4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: a97c11b49574d0014ea7fa97f42420b22f9568d7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651670"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371158"
 documentType: LandingData
 title: Azure Machine Learning サービスのドキュメント
 metadata:
@@ -36,12 +36,12 @@ sections:
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: このサービスを使用するには、ワークスペースと関連付けられているリソースが必要です。  以下を使ってみてください。
+    text: Azure Machine Learning service 用に  <a href="setup-create-workspace">ワークスペースを作成</a>すると、以下のクイック スタートを使用できるようになります。
   - type: list
     style: unordered
     items:
-    - html: '<a href="quickstart-get-started">Azure portal のクイック スタート</a>: 何もインストールせずにワークスペースを取得し、実験を実行します。'
-    - html: '<a href="quickstart-create-workspace-with-python">Python のクイック スタート</a>: ローカルの Notebook サーバーでメインの SDK のインストール、ワークスペースの作成、実験を実行します。'
+    - html: <a href="quickstart-run-cloud-notebook">クラウドで実験を実行する</a> (インストール不要)。
+    - html: <a href="quickstart-run-local-notebook">ローカルの Notebook サーバーを使用して実験を実行する</a> (SDK のローカル インストール)。
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph

@@ -116,10 +116,12 @@ items:
         href: index-add-language-analyzers.md
       - name: カスタム アナライザーの追加
         href: index-add-custom-analyzers.md
-    - name: 入力候補の提示
+    - name: 先行入力
       items:
-      - name: 自動提案の追加
+      - name: suggester の作成
         href: index-add-suggesters.md
+      - name: Autosuggest の例
+        href: search-autosuggest-example.md
       - name: オートコンプリートの例
         href: search-autocomplete-tutorial.md
     - name: シノニム
@@ -295,7 +297,7 @@ items:
       href: https://wolterskluwereap.azurewebsites.net/
     - name: JFK ファイルのデモ
       href: https://aka.ms/jfkfiles
-    - name: 求人情報アプリ
+    - name: NYC ジョブのデモ
       href: https://aka.ms/azjobsdemo
     - name: Search Analyzer のデモ
       href: https://alice.unearth.ai/
@@ -307,9 +309,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 660d15ad6a03bc0f6bca3dd1ae21fe1178146663
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: b6335584517e6da02e28d774ccdf9d608707f827
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285883"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370680"

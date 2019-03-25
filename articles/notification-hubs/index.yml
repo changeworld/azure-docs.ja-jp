@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 068bd70c8094c0c3d7a5e525042eb3682dc67f89
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ff8eb3c54b88361328dc245e58bed712e349228f
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243079"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400113"
 documentType: LandingData
 title: Azure Notification Hubs のドキュメント
 metadata:
@@ -46,21 +46,21 @@ sections:
 - title: サンプル
   items:
   - type: paragraph
-    text: 次のサンプルを使用した Notification Hubs の操作
+    text: Azure Notification Hubs のサンプル アプリは、複数のソースから入手できます。 Microsoft では、プラットフォーム固有のサンプルを個々の SDK (以下のリンク) にバンドルしており、スタンドアロンのサンプル リポジトリにはその他のプラットフォーム向けのサンプルが用意されています。
   - type: list
     style: unordered
-    className: spaced noBullet
     items:
+    - html: <a href="https://github.com/Azure/azure-notificationhubs-android">Android SDK</a>
+    - html: <a href="https://github.com/Azure/azure-notificationhubs-ios">iOS SDK</a>
+    - html: <a href="https://github.com/Azure/azure-notificationhubs-dotnet">.NET SDK</a>
+    - html: <a href="https://github.com/Azure/azure-notificationhubs-samples">サンプル リポジトリ (その他のプラットフォーム)</a>
     - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
 - title: リファレンス
   items:
   - type: list
-    style: cards
-    className: cardsD
+    style: unordered
     items:
-    - title: コマンド ライン
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api/microsoft.azure.notificationhubs">.NET</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/notificationhubs">REST API</a></p>
+    - html: <a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a>
+    - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">.NET SDK</a>
+    - html: <a href="https://docs.microsoft.com/previous-versions/azure/reference/dn223264(v%3dazure.100)">REST API</a>
+    - html: <a href="/rest/api/notificationhubs">Management API</a>

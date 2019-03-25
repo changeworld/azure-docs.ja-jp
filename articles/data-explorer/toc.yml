@@ -7,16 +7,18 @@ items:
     href: data-explorer-overview.md
 - name: クイック スタート
   items:
-  - name: クラスターを作成する - Azure portal
-    href: create-cluster-database-portal.md
-  - name: クラスターを作成する - Azure CLI
-    href: create-cluster-database-cli.md
-  - name: クラスターを作成する - PowerShell
-    href: create-cluster-database-powershell.md
-  - name: クラスターを作成する - C#
-    href: create-cluster-database-csharp.md
-  - name: クラスターを作成する - Python
-    href: create-cluster-database-python.md
+  - name: クラスターとデータベースの作成
+    items:
+    - name: Azure ポータル
+      href: create-cluster-database-portal.md
+    - name: Azure CLI
+      href: create-cluster-database-cli.md
+    - name: PowerShell
+      href: create-cluster-database-powershell.md
+    - name: C#
+      href: create-cluster-database-csharp.md
+    - name: Python
+      href: create-cluster-database-python.md
   - name: データの取り込み
     items:
     - name: データのストリーミング - イベント ハブ
@@ -133,9 +135,9 @@ items:
     href: https://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: 485a49d46e76c0e1db7d8d1297e126819ec6cd12
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: f3be712f345e603f3959c753ad3c81faaa1e00cf
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286484"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402662"
