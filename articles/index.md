@@ -448,6 +448,12 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/data-explorer">
+                                                <img src="media/index/azure_data_explorer.svg" alt="" />
+                                                <p>Azure データ エクスプローラー</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/azure-cache-for-redis/">
                                                 <img src="media/index/RedisCache.svg" alt="" />
                                                 <p>Azure Cache for Redis</p>
@@ -494,7 +500,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                                 <img src="media/index/database-migration.svg" alt="" />
                                                 <p>Azure Database Migration Service</p>
                                             </a>
-                                        </li>
+                                        </li>                                        
                                     </ul>
                                     <h3>Containers</h3>
                                     <ul>
@@ -1158,7 +1164,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                         </li>
                                         <li>
                                             <a href="/azure/data-explorer/">
-                                                <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="" />
+                                                <img src="media/index/azure_data_explorer.svg" alt="" />
                                                 <p>Azure データ エクスプローラー</p>
                                             </a>
                                         </li>
@@ -3086,6 +3092,25 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/data-explorer">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/azure_data_explorer.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure データ エクスプローラー</h3>
+                                                    <p>ログおよびテレメトリ データのためのスケーラビリティに優れた高速データ探索サービス</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/azure-cache-for-redis/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -3236,7 +3261,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                         </div>
                                     </div>
                                 </a>
-                            </li>
+                            </li>                            
                         </ul>
                     </li>
                     <li>
@@ -3325,7 +3350,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="" />
+                                                        <img src="media/index/azure_data_explorer.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
