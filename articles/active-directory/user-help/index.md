@@ -134,8 +134,11 @@ ms.collection: M365-identity-device-management
                     <div class="cardText">
                         <h3>マイ アプリ ポータルのヘルプ</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/active-directory-saas-access-panel-introduction">マイ アプリ ポータルとは</a><br/>
-                        <a href="/azure/active-directory/active-directory-saas-access-panel-user-help">トラブルシューティング</a>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-access">マイ アプリ ポータルにアクセスして使用する</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-update-profile">プロファイルとアカウント情報を更新する</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-groups">グループに関連する情報を更新する</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-access-reviews">自分のアクセス レビューを実行する</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-troubleshoot">トラブルシューティング</a>
                         </p>
                     </div>
                 </div>

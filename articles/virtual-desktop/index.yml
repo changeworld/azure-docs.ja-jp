@@ -1,0 +1,47 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 06b95c24914574a2aea59c6c597e3d9b3d5097cc
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58318737"
+documentType: LandingData
+title: Windows Virtual Desktop のドキュメント
+metadata:
+  title: Windows Virtual Desktop のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  description: Windows Virtual Desktop for Azure は、クラウドで仮想化されたマルチユーザー Windows 10 Enterprise エクスペリエンスです。
+  author: Heidilohr
+  manager: dansimp
+  ms.service: virtual-desktop
+  services: virtual-desktop
+  ms.topic: landing-page
+  ms.date: 02/20/2019
+  ms.author: helohr
+abstract:
+  description: 任意のデバイスに仮想デスクトップ エクスペリエンスとリモート アプリを提供します。 Microsoft 365 と Azure を連携させ、ユーザーに唯一のマルチセッション Windows 10 エクスペリエンス (優れたスケーリングと IT コストの削減) を提供します。
+sections:
+- title: 概要
+  items:
+  - type: paragraph
+    text: Windows Virtual Desktop とその使用方法について説明します。 チュートリアル、操作方法、リファレンス コンテンツなどによって、ホスト プールとテナントを設定し、Windows Virtual Desktop 環境のユーザーにロールを割り当てる方法が示されます。
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/virtual-desktop/overview">Windows Virtual Desktop とは (プレビュー)</a>
+- title: ステップバイステップのチュートリアル
+  items:
+  - type: paragraph
+    text: Windows Virtual Desktop をインストールして構成する方法のほか、準備ができたときにクライアントに接続する方法について説明します。
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/virtual-desktop/tenant-setup-azure-active-directory">Windows Virtual Desktop でテナントを作成する</a>
+    - html: <a href="/azure/virtual-desktop/create-host-pools-azure-marketplace">Azure Marketplace を使用してホスト プールを作成する</a>
+    - html: <a href="/azure/virtual-desktop/manage-app-groups">Windows Virtual Desktop のアプリ グループを管理する</a>
+    - html: <a href="/azure/virtual-desktop/create-service-principal-role-powershell">PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell (プレビュー)</a>

@@ -247,7 +247,7 @@ items:
       href: analyze-your-workload.md
   - name: 監視と調整
     items:
-    - name: ワークロードの監視
+    - name: DMV によるワークロードの監視
       href: sql-data-warehouse-manage-monitor.md
     - name: Gen2 へのアップグレード
       href: upgrade-to-latest-generation.md
@@ -310,7 +310,7 @@ items:
   - name: サポート
     href: sql-data-warehouse-get-started-create-support-ticket.md
   - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
+    href: sql-data-warehouse-videos.md
   - name: パートナー
     items:
     - name: Business intelligence
@@ -319,9 +319,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: データ管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 70ad58128b088a44f2e95626e6883645a947e629
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1ee4b1806047d93cbdbe0758b728dd4d835cf8eb
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884695"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309454"

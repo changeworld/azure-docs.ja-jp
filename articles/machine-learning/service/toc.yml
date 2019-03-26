@@ -94,8 +94,8 @@ items:
       href: how-to-transform-data.md
     - name: データを書き込む
       href: how-to-write-data.md
-  - name: データにアクセスする
-    displayName: blob get fileshare
+  - name: データストアのデータを取得する
+    displayName: blob get fileshare access storage
     href: how-to-access-data.md
   - name: モデルをトレーニングする
     items:
@@ -111,7 +111,7 @@ items:
     - name: ハイパーパラメーターを調整する
       displayName: parameter
       href: how-to-tune-hyperparameters.md
-    - name: 実験とメトリックを追跡する
+    - name: トレーニング実行のメトリックを記録する
       href: how-to-track-experiments.md
   - name: 機械学習の自動化
     displayName: automl, auto ml
@@ -193,9 +193,9 @@ items:
   - name: Microsoft の ML 製品の比較
     href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
     maintainContext: true
-ms.openlocfilehash: 43d3db426fa96fca9a35250a57725cc7513a05ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c022e3607466db482e37f1ace283577dad6a37b8
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181012"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338532"

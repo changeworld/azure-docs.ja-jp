@@ -24,6 +24,12 @@ items:
       href: azure-to-azure-tutorial-failover-failback.md
     - name: フェールバックを実行する
       href: azure-to-azure-tutorial-failback.md
+  - name: Azure VM の移動
+    items:
+    - name: Azure VM を別のリージョンに移動する
+      href: azure-to-azure-tutorial-migrate.md
+    - name: Azure VM を Availability Zones に移動する
+      href: move-Azure-VMs-AVset-Azone.md
   - name: Azure への VMware VM のディザスター リカバリー
     items:
     - name: Azure を準備する
@@ -60,19 +66,11 @@ items:
       href: migrate-tutorial-windows-server-2008.md
     - name: AWS インスタンスを Azure に移行する
       href: migrate-tutorial-aws-azure.md
-  - name: Azure VM の移動
-    items:
-    - name: 概要
-      href: azure-to-azure-move-overview.md
-    - name: Azure VM を別のリージョンに移動する
-      href: azure-to-azure-tutorial-migrate.md
-    - name: Azure VM を Availability Zones に移動する
-      href: move-Azure-VMs-AVset-Azone.md
 - name: 概念
   items:
   - name: Site Recovery に関する一般的な質問
     href: site-recovery-faq.md
-  - name: Azure への Azure VM のディザスター リカバリーについて
+  - name: Azure VM のディザスター リカバリーについて
     items:
     - name: Azure から Azure へのアーキテクチャ
       href: azure-to-azure-architecture.md
@@ -80,12 +78,14 @@ items:
       href: azure-to-azure-common-questions.md
     - name: Azure から Azure へのサポート マトリックス
       href: azure-to-azure-support-matrix.md
+    - name: Azure Site Recovery と Azure Backup の使用
+      href: site-recovery-backup-interoperability.md
     - name: Azure VM ディザスター リカバリーのための高速ネットワーク
       href: azure-vm-disaster-recovery-with-accelerated-networking.md
     - name: ExpressRoute と Azure VM ディザスター リカバリーを併用する
       href: azure-vm-disaster-recovery-with-expressroute.md
-    - name: Azure VM のディザスター リカバリーと Azure Backup の相互運用性
-      href: site-recovery-backup-interoperability.md
+  - name: Azure VM の移行について
+    href: azure-to-azure-move-overview.md
   - name: Azure への VMware VM のディザスター リカバリーについて
     items:
     - name: VMware のディザスター リカバリーの概要
@@ -468,9 +468,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 5286e3479561e6effd279978e84f045207a0a7a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 66b14ba7100b8bd8e4bb3a100e8fd10d226f555e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835301"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317104"
