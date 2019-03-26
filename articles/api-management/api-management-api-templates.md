@@ -353,7 +353,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |sampleUrl|string|現在の操作の URL。|  
 |operationMenu|[操作メニュー](api-management-template-data-model-reference.md#Menu)|この API の操作のメニュー。|  
 |consoleUrl|URI|**[試してみる]** ボタンの URI。|  
-|サンプル|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の操作のコード サンプル。|  
+|samples|[Code sample](api-management-template-data-model-reference.md#Sample) エンティティのコレクション。|現在の操作のコード サンプル。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
