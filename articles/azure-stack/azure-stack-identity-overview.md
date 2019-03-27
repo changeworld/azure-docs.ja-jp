@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 9fc53fd2539a39de4f01758704765392cc7e98a8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 665f8ac9a8b0738ed23649673c548bc6b1774d2d
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246968"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259960"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Azure Stack の ID の概要
 
@@ -60,12 +60,12 @@ Azure Stack 環境に依存するオプションの詳細については、以�
 
 Azure Stack では、ユーザー アカウントに次のような特徴があります。
 
-- *username@domain* という形式で作成されます。 AD FS はユーザー アカウントを Active Directory インスタンスにマッピングしますが、AD FS では "*\\\<ドメイン>\\\<エイリアス>*" 形式の使用がサポートされていません。
+- *username\@domain* の形式で作成されています。 AD FS はユーザー アカウントを Active Directory インスタンスにマッピングしますが、AD FS では "*\\\<ドメイン>\\\<エイリアス>*" 形式の使用がサポートされていません。
 - 多要素認証を使用するようにセットアップすることができます。
 - 最初に登録するディレクトリ、つまり組織のディレクトリに制限されています。
 - オンプレミスのディレクトリからインポートすることができます。 詳細については、「[オンプレミスのディレクトリと Azure Active Directory の統合](/azure/active-directory/connect/active-directory-aadconnect)」を参照してください。
 
-組織のテナント ポータルにサインインするときは、*https://portal.local.azurestack.external* URL を使用します。 Azure Stack の登録に使用したドメイン以外のドメインから Azure Stack ポータルにサインインする場合は、Azure Stack の登録に使用したドメイン名をポータルの URL に追加する必要があります。 たとえば、Azure Stack が fabrikam.onmicrosoft.com に登録されていて、ログインするユーザー アカウントが admin@contoso.com である場合、ユーザー ポータルへのログインに使用する URL は https://portal.local.azurestack.external/fabrikam.onmicrosoft.com になります。
+組織のテナント ポータルにサインインするときは、*https:\//portal.local.azurestack.external* URL を使用します。 Azure Stack の登録に使用したドメイン以外のドメインから Azure Stack ポータルにサインインする場合は、Azure Stack の登録に使用したドメイン名をポータルの URL に追加する必要があります。 たとえば、Azure Stack が fabrikam.onmicrosoft.com に登録されていて、ログインするユーザー アカウントが admin@contoso.com である場合、ユーザー ポータルへのログインに使用する URL は https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com になります。
 
 ### <a name="guest-users"></a>ゲスト ユーザー
 
@@ -73,7 +73,7 @@ Azure Stack では、ユーザー アカウントに次のような特徴があ�
 
 ゲスト ユーザーを招待するには、クラウド オペレーターおよびユーザーが [Azure AD B2B コラボレーション](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)を使用できます。 招待されたユーザーは、ディレクトリのドキュメント、リソース、およびアプリケーションにアクセスできるようになりますが、リソースおよびデータに対する制御は元の管理者が保持し続けます。 
 
-ゲスト ユーザーは、他の組織のディレクトリ テナントにサインインすることができます。 そうするには、その組織のディレクトリ名をポータル URL に追加します。 たとえば、Contoso 組織に所属していて、Fabrikam ディレクトリにサインインする場合は、 https://portal.local.azurestack.external/fabrikam.onmicrosoft.com を使用します。
+ゲスト ユーザーは、他の組織のディレクトリ テナントにサインインすることができます。 そうするには、その組織のディレクトリ名をポータル URL に追加します。 たとえば、Contoso という組織に属していて、Fabrikam ディレクトリにサインインする場合は、https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com を使用します。
 
 ### <a name="applications"></a>[アプリケーション]
 
@@ -156,10 +156,10 @@ Azure AD をマルチテナンシーでセットアップすると、一部の�
 
 ID プロバイダーで認証して JSON Web トークンを受け取るには、次の情報が必要です。
 
-1. **ID システム (機関) の URL**: ID プロバイダーに到達できる URL。 たとえば、*https://login.windows.net* です。
+1. **ID システム (機関) の URL**: ID プロバイダーに到達できる URL。 例: *https:\//login.windows.net*
 2. **Azure Resource Manager のアプリ ID URI**: ID プロバイダーに登録された、Azure Resource Manager の一意の識別子。 各 Azure Stack インストールに対しても固有です。
 3. **資格情報**:ID プロバイダーでの認証に使用する資格情報。
-4. **Azure Resource Manager の URL**: Azure Resource Manager サービスの場所を示す URL。 たとえば、*https://management.azure.com*、*https://management.local.azurestack.external* などです。
+4. **Azure Resource Manager の URL**: Azure Resource Manager サービスの場所を示す URL。 例: *https:\//management.azure.com* または *https:\//management.local.azurestack.external*
 
 プリンシパル (クライアント、アプリケーション、またはユーザー) がリソースにアクセスするために認証要求を行う場合、その要求には以下のものが含まれている必要があります。
 

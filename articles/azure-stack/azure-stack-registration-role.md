@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 02/13/2019
 ms.author: patricka
 ms.reviewer: rtiberiu
-ms.lastreviewed: 01/10/2019
-ms.openlocfilehash: 80caa470675a78a9c2e3d4c055333719f54fe64a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/13/2019
+ms.openlocfilehash: 4858e33023ff0f94bb9fb879b01846184df2491e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247886"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652146"
 ---
 # <a name="create-a-registration-role-for-azure-stack"></a>Azure Stack の登録ロールを作成する
 

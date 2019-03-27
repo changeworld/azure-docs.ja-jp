@@ -2,18 +2,18 @@
 title: Azure Site Recovery を使用してオンプレミス マシンのディザスター リカバリーを準備する | Microsoft Docs
 description: Azure Site Recovery を使用してオンプレミス マシンのディザスター リカバリーのために Azure を準備する方法について説明します。
 services: site-recovery
-author: rayne-wiselman
+author: mayurigupta13
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/08/2019
-ms.author: raynew
+ms.date: 03/03/2019
+ms.author: mayg
 ms.custom: MVC
-ms.openlocfilehash: da71857e84b27b9e9a063d707f75fdf33e5d6a96
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5168fc28952631f00c2415d6bc171a130dc85dfd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159011"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838563"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>オンプレミス マシンのディザスター リカバリーのために Azure リソースを準備する
 
@@ -28,7 +28,6 @@ ms.locfileid: "54159011"
 
 > [!div class="checklist"]
 > * お使いの Azure アカウントにレプリケーションのアクセス許可があることを確認します。
-> * Azure ストレージ アカウントを作成します。 レプリケートされたマシンのイメージはそこに保存されます。
 > * Recovery Services コンテナーを作成します。 コンテナーには、VM および他のレプリケーション コンポーネントのメタデータと構成情報が保持されます。
 > * Azure ネットワークをセットアップします。 フェールオーバー後に作成された Azure VM は、この Azure ネットワークに参加します。
 
@@ -36,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](http://portal.azure.com) にサインインします。
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="verify-account-permissions"></a>アカウントのアクセス許可を確認する
 
@@ -44,27 +43,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - 選択したリソース グループ内に VM を作成する。
 - 選択した仮想ネットワーク内に VM を作成する。
-- 選択したストレージ アカウントに書き込む。
+- ストレージ アカウントに書き込む。
+- マネージド ディスクに書き込む。
 
 これらのタスクを遂行するには、お使いのアカウントに、"仮想マシン共同作成者" 組み込みロールが割り当てられている必要があります。 また、Site Recovery 操作をコンテナーで管理するには、お使いのアカウントに、"Site Recovery 共同作成者" 組み込みロールが割り当てられている必要があります。
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-
-レプリケートされたマシンのイメージは Azure Storage に保存されます。 オンプレミスから Azure にフェールオーバーするとき、ストレージから Azure VM が作成されます。 ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。 このチュートリアルでは、西ヨーロッパを使用しています。
-
-1. [Azure portal](https://portal.azure.com) のメニューで、**[リソースの作成]** > **[Storage]** > **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
-2. **[ストレージ アカウントの作成]** で、アカウントの名前を入力します。 この一連のチュートリアルでは、**contosovmsacct1910171607** を使用します。 選択する名前は Azure 内で一意である必要があります。長さは 3 から 24 文字で、使用できるのは数字と小文字のみです。
-3. **[デプロイ モデル]** で、**[Resource Manager]** を選択します。
-4. **[アカウントの種類]** で **[ストレージ (汎用 v1)]** を選択します。 Blob ストレージを選択しないでください。
-5. **[レプリケーション]** では、ストレージの冗長性のために、既定の **[読み取りアクセス geo 冗長ストレージ]** を選択します。 **[安全な転送が必須]** は **[無効]** のままにしています。
-6. **[パフォーマンス]** には **[標準]** を選択し、**[アクセス層]** には既定のオプションの **[ホット]** を選択します。
-7. **[サブスクリプション]** で、新しいストレージ アカウントを作成するサブスクリプションを選択します。
-8. **[リソース グループ]** で、新しいリソース グループ名を入力します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この一連のチュートリアルでは、**ContosoRG** を使用します。
-9. **[場所]** で、ストレージ アカウントの地理的な場所を選択します。 
-
-   ![ストレージ アカウントの作成](media/tutorial-prepare-azure/create-storageacct.png)
-
-9. **[作成]** をクリックしてストレージ アカウントを作成します。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -81,7 +64,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップ
 
-フェールオーバー後にストレージから作成された Azure VM は、このネットワークに参加します。
+フェールオーバー後にマネージド ディスクから作成された Azure VM は、このネットワークに参加します。
 
 1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[ネットワーク]** > **[仮想ネットワーク]** の順に選択します。
 2. デプロイ モデルとして **[リソース マネージャー]** をそのまま選択します。
@@ -100,8 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="useful-links"></a>便利なリンク
 
 - [Azure ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)についての学習。
-- [Azure Storage の種類](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)についての学習。
-- [ストレージの冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage)についての詳細、およびストレージの[セキュリティで保護された転送](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)。
+- [マネージド ディスク](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview)についての学習。
 
 
 
