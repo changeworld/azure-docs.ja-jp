@@ -1,28 +1,28 @@
 ---
-title: カスタム イメージを使用して Linux で関数を作成する (プレビュー) | Microsoft Docs
+title: カスタム イメージを使用して Linux 上で Azure Functions を作成する
 description: カスタム Linux イメージで実行する Azure Functions を作成する方法について説明します。
 services: functions
 keywords: ''
 author: ggailey777
 ms.author: glenga
-ms.date: 10/19/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 2c80f988583571f3394a29747a6f452951cea878
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 976bab529dc77621ce92dff0d2ae665777023a01
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978036"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337576"
 ---
-# <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>カスタム イメージを使用して Linux で関数を作成する (プレビュー)
+# <a name="create-a-function-on-linux-using-a-custom-image"></a>カスタム イメージを使用して Linux で関数を作成する
 
-Azure Functions を使用して、独自のカスタム コンテナー内の Linux 上で関数をホストできます。 [既定の Azure App Service コンテナー上でホストする](functions-create-first-azure-function-azure-cli-linux.md)こともできます。 この機能は現在プレビュー段階であり、[Functions 2.0 ランタイム](functions-versions.md)が必要です。
+Azure Functions を使用して、独自のカスタム コンテナー内の Linux 上で関数をホストできます。 [既定の Azure App Service コンテナー上でホストする](functions-create-first-azure-function-azure-cli-linux.md)こともできます。 この機能には [Functions 2.x ランタイム](functions-versions.md)が必要です。
 
-このチュートリアルでは、関数をカスタム Docker イメージとして Azure にデプロイする方法について説明します。 このパターンは、組み込みの App Service コンテナー イメージをカスタマイズする必要がある場合に便利です。 特定の言語バージョン、特定の依存関係、または組み込みイメージで提供されない構成が関数に必要になるときに、カスタム イメージを使用することがあります。
+このチュートリアルでは、関数をカスタム Docker イメージとして Azure にデプロイする方法について説明します。 このパターンは、組み込みの App Service コンテナー イメージをカスタマイズする必要がある場合に便利です。 特定の言語バージョン、特定の依存関係、または組み込みイメージで提供されない構成が関数に必要になるときに、カスタム イメージを使用することがあります。 Azure Functions でサポートされている基本イメージについては、[Azure Functions 基本イメージ リポジトリ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。 [Python のサポート](functions-reference-python.md)は現時点でプレビュー段階です
 
 このチュートリアルでは、Azure Functions Core Tools を使用して、カスタム Linux イメージに関数を作成する方法について説明します。 このイメージを、Azure CLI を使用して作成された Azure の関数アプリに発行します。
 
@@ -36,6 +36,7 @@ Azure Functions を使用して、独自のカスタム コンテナー内の Li
 > * Linux App Service プランを作成します。
 > * Docker Hub から Function App をデプロイします。
 > * Function App にアプリケーション設定を追加します。
+> * 継続的配置を有効にする
 
 次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。  
 
@@ -67,6 +68,8 @@ func init MyFunctionProj --docker
 * `dotnet`: .NET クラス ライブラリ プロジェクト (.csproj) を作成します。
 * `node`: JavaScript プロジェクトを作成します。
 * `python`: Python プロジェクトを作成します。
+
+[!INCLUDE functions-python-preview-note]
 
 コマンドを実行すると、次のような出力が表示されます。
 
@@ -101,7 +104,7 @@ COPY . /home/site/wwwroot
 ```
 
 > [!NOTE]
-> プライベート コンテナー レジストリでイメージをホストする場合は、Dockerfile の **ENV** 変数を使用することで Function App に接続の設定を追加する必要があります。 このチュートリアルではプライベート レジストリが使用されると保証できないため、セキュリティのベスト プラクティスとして、接続の設定は[デプロイの後で Azure CLI を使用して追加されます](#configure-the-function-app)。
+> Azure Functions でサポートされている基本イメージの詳細な一覧については、[Azure Functions 基本イメージ ページ](https://hub.docker.com/_/microsoft-azure-functions-base)を参照してください。
 
 ### <a name="run-the-build-command"></a>`build` コマンドを実行します
 ルート フォルダーで、[docker build](https://docs.docker.com/engine/reference/commandline/build/) コマンドを実行し、名前に `mydockerimage`、タグに `v1.0.0` を指定します。 `<docker-id>` を Docker Hub アカウント ID で置換します。 このコマンドでは、コンテナーの Docker イメージがビルドされます。
@@ -223,20 +226,20 @@ Function App が作成されると、Azure CLI によって次の例のような
 }
 ```
 
-_deployment-container-image-name_ パラメーターは、Function App を作成するために使用する、Docker Hub でホストされているイメージを示します。
+_deployment-container-image-name_ パラメーターは、Function App を作成するために使用する、Docker Hub でホストされているイメージを示します。 デプロイに使用されているイメージに関する情報を表示するには、[az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) コマンドを使用します。 別のイメージからデプロイするには、[az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) コマンドを使用します。
 
 ## <a name="configure-the-function-app"></a>Function App を構成する
 
 関数が既定のストレージ アカウントに接続するには接続文字列が必要です。 カスタム イメージをプライベート コンテナー アカウントに発行するときは、[ENV 命令](https://docs.docker.com/engine/reference/builder/#env)などを使用して、代わりにこれらのアプリケーション設定を Dockerfile の環境変数として設定する必要があります。
 
-ここでは、`<storage_account>` は作成したストレージ アカウントの名前です。 [az storage account show-connection-string](/cli/azure/storage/account) コマンドで接続文字列を取得します。 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドで、これらのアプリケーション設定を Function App に追加します。
+ここでは、`<storage_name>` は作成したストレージ アカウントの名前です。 [az storage account show-connection-string](/cli/azure/storage/account) コマンドで接続文字列を取得します。 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドで、これらのアプリケーション設定を Function App に追加します。
 
 ```azurecli-interactive
-$storageConnectionString=$(az storage account show-connection-string \
---resource-group myResourceGroup --name <storage_account> \
+storageConnectionString=$(az storage account show-connection-string \
+--resource-group myResourceGroup --name <storage_name> \
 --query connectionString --output tsv)
 
-az functionapp config appsettings set --name <function_app> \
+az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
 --settings AzureWebJobsDashboard=$storageConnectionString \
 AzureWebJobsStorage=$storageConnectionString
@@ -252,6 +255,24 @@ AzureWebJobsStorage=$storageConnectionString
 これで、Linux 上で実行される関数を Azure でテストできます。
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+## <a name="enable-continuous-deployment"></a>継続的配置を有効にする
+
+コンテナーを使用する利点の 1 つは、コンテナーがレジストリで更新されたときに自動的に更新プログラムを配置できることです。 [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) コマンドを使用して、継続的配置を有効にします。
+
+```azurecli-interactive
+az functionapp deployment container config --enable-cd \
+--query CI_CD_URL --output tsv \
+--name <app_name> --resource-group myResourceGroup
+```
+
+継続的配置を有効にすると、このコマンドから配置 Webhook URL が返されます。 [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) コマンドを使用してこの URL を返すこともできます。 
+
+配置 URL をコピーし、DockerHub リポジトリを参照し、**[Webhook]** タブを選択し、Webhook の **[webhook 名]** を入力し、**[Webhook URL]** に URL を貼り付けます。次にプラス記号 (**+**) を選択します。
+
+![DockerHub リポジトリに Webhook を追加する](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+
+Webhook を設定して、DockerHub のリンクされたイメージを更新すると、関数アプリで最新のイメージがダウンロードされ、インストールされます。
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 

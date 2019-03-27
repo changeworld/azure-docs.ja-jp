@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67ea699a2082ec24d3ebe87dead9ddea6368b7ce
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2a559191bb4e84b3b60529bf20a25e381c72f42a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882758"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>チュートリアル:Azure Active Directory と TOPdesk - Secure の統合
 
@@ -166,7 +166,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     c. **X509Certificate** ノードの値をコピーします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 コピーした **X509Certificate** の値をコンピューター上のファイル内にローカルに保存します。
+    d. コピーした **X509Certificate** の値をコンピューター上のファイル内にローカルに保存します。
 
 7. **[Public]** セクションで、**[Add]** をクリックします。
 
@@ -182,7 +182,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     c. **[Private key(RSA, PKCS8, DER)]** では、独自の秘密キーをアップロードするか、[TOPdesk - Secure Client サポート チーム](http://www.topdesk.com/us/support)に問い合わせて秘密キーを取得できます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
+    d. TOPdesk サポート チームから入手したロゴのファイルをアップロードするには、**[Logo icon]** の下の **[Browse]** をクリックします。
 
     e. **[User name attribute]** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
 
@@ -208,7 +208,7 @@ TOPdesk - Secure で Azure AD シングル サインオンを構成するには�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -264,7 +264,7 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
     c. **[Location]** セクションでアカウントの **[Site]** を選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[TOPdesk Login]** セクションの **[Login Name]** テキストボックスに、ユーザーのログイン名を入力します。
+    d. **[TOPdesk Login]** セクションの **[Login Name]** テキストボックスに、ユーザーのログイン名を入力します。
 
     e. **[Save]** をクリックします。
 

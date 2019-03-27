@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb5a06aa4eb21ba374344623f9f96ce92a59ff5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 39f3f0954a271f3abd30e99e306ebfc940e20a7f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168819"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547811"
 ---
 # <a name="quickstart-download-a-sign-in-report-using-the-azure-portal"></a>クイック スタート:Azure portal を使用してサインイン レポートをダウンロードする
 
-このクイック スタートでは、過去 24 時間のテナントに関するサインイン データをダウンロードする方法について説明します。 レコードは Azure portal から 5000 個までダウンロードできます。 レコードは最新の順に並べ替えられており、既定では最新の 5,000 個のレコードが取得されます。 
+このクイック スタートでは、過去 24 時間のテナントに関するサインイン データをダウンロードする方法について説明します。 レコードは Azure portal から 250,000 個までダウンロードできます。 レコードは最新の順に並べ替えられており、既定では最新の 250,000 個のレコードが取得されます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "56168819"
 2. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** を選択し、**[ディレクトリの切り替え]** ボタンを使用して目的の Active Directory を選択します。
 3. ダッシュボードから **[Azure Active Directory]** を選択し、**[サインイン]** を選択します。 
 4. **[日付]** フィルター ドロップダウンで **[過去 24 時間]** を選択し、**[適用]** を選択して過去 24 時間のサインインを表示します。 
-5. **[ダウンロード]** ボタンを選択して、フィルター処理したレコードを含む CSV ファイルをダウンロードします。 
+5. **[ダウンロード]** ボタンを選択して、ファイル形式として **CSV** を選択し、ファイル名を指定して、フィルター処理したレコードを含む CSV ファイルをダウンロードします。 
 
 ![レポート](./media/quickstart-download-sign-in-report/download-sign-ins.png)
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 09/24/2018
 ms.author: deborahc
-ms.openlocfilehash: 221397030377b80c1c63baa3429610a218c5cd75
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: b5f79fccf040c893d02ed82a397f361ae9bf3fd2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699677"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537543"
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Azure Cosmos DB Node.js のサンプル
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
    > 
 
 ## <a name="database-examples"></a>データベースのサンプル
-[DatabaseManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/DatabaseManagement) プロジェクトの [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement/app.js) ファイルは、次のタスクを実行する方法を示しています。
+[DatabaseManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/DatabaseManagement) プロジェクトの [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement/app.js) ファイルは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos データベースについて知るために、[データベース、コンテナー、アイテムの操作](databases-containers-items.md)に関する概念記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -56,7 +56,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 | [データベースの削除](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/DatabaseManagement/app.js#L57-L60) |[Database.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/database?view=azure-node-latest) |
 
 ## <a name="container-examples"></a>コンテナーの例
-[ContainerManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) プロジェクトの [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement/app.js) ファイルは、次のタスクを実行する方法を示しています。
+[ContainerManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) プロジェクトの [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement/app.js) ファイルは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos のコレクションについて知るために、[データベース、コンテナー、アイテムの操作](databases-containers-items.md)に関する概念記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -66,7 +66,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 | [コンテナーの削除](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ContainerManagement/app.js#L54-L55) |[Container.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/container?view=azure-node-latest) |
 
 ## <a name="item-examples"></a>項目の例
-[ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) プロジェクトの [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement/app.js) ファイルは、次のタスクを実行する方法を示しています。
+[ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) プロジェクトの [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement/app.js) ファイルは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos のドキュメントについて知るために、[データベース、コンテナー、アイテムの操作](databases-containers-items.md)に関する概念記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -80,7 +80,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 | [項目の削除](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ItemManagement/app.js#L162-L164) |[Item.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/item?view=azure-node-latest) |
 
 ## <a name="indexing-examples"></a>インデックス作成のサンプル
-[IndexManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/IndexManagement) プロジェクトの [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement/app.js) ファイルは、次のタスクを実行する方法を示しています。
+[IndexManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/IndexManagement) プロジェクトの [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement/app.js) ファイルは、次のタスクを実行する方法を示しています。  以下のサンプルを実行する前に Azure Cosmos DB におけるインデックス作成について知るために、[インデックス作成ポリシー](index-policy.md)、[インデックスの種類](index-types.md)、[インデックスのパス](index-paths.md)に関する概念記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -92,11 +92,8 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 | [文字列のパスでの範囲インデックスの作成](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/IndexManagement/app.js#L281-L346) |[IndexKind.Range](https://docs.microsoft.com/javascript/api/%40azure/cosmos/indexkind?view=azure-node-latest)、[IndexingPolicy](https://docs.microsoft.com/javascript/api/%40azure/cosmos/indexingpolicy?view=azure-node-latest)、[Items.query](https://docs.microsoft.com/javascript/api/%40azure/cosmos/items?view=azure-node-latest) |
 | [既定の indexPolicy のコンテナーを作成し、オンラインで更新する](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/IndexManagement/app.js#L435-L507) |[Containers.create](https://docs.microsoft.com/javascript/api/%40azure/cosmos/containers?view=azure-node-latest)
 
-
-インデックス作成の詳細については、「[Azure Cosmos DB インデックス作成ポリシー](index-policy.md)」をご覧ください。
-
 ## <a name="server-side-programming-examples"></a>サーバー側プログラミングのサンプル
-[ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) プロジェクトの [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) ファイルは、次のタスクを実行する方法を示しています。
+[ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) プロジェクトの [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) ファイルは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos DB のサーバー側プログラミングについて知るために、「[ストアド プロシージャ、トリガー、およびユーザー定義関数](stored-procedures-triggers-udfs.md)」の概念記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |

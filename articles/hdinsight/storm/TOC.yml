@@ -74,21 +74,6 @@ items:
       - name: HDInsight アプリを Azure Marketplace に発行する
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: 発行したアプリのインストール - Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: セキュリティ保護
     items:
     - name: HDInsight で SSH を使用する
@@ -178,9 +163,6 @@ items:
       maintainContext: true
     - name: ワークフローに Apache Oozie を使用する
       href: ../hdinsight-use-oozie-linux-mac.md
-      maintainContext: true
-    - name: 時間ベースの Apache Oozie コーディネーターを使用する
-      href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: クラスターとサービスのポートと URI
       href: ../hdinsight-hadoop-port-settings-for-services.md
@@ -283,20 +265,6 @@ items:
     - name: .NET ソリューションを Linux クラスターに移行する
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
       maintainContext: true
-    - name: Apache Storm トポロジをデプロイおよび管理する
-      href: apache-storm-deploy-monitor-topology.md
-    - name: Apache Maven を使用して Java アプリケーションを構築する
-      href: ../hdinsight-hbase-build-java-maven.md
-      maintainContext: true
-    - name: Apache Hadoop YARN アプリケーション ログにアクセスする
-      href: ../hdinsight-hadoop-access-yarn-app-logs.md
-      maintainContext: true
-    - name: スクリプト アクションを開発する
-      href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Apache Ambari API を使用してクラスターを監視する
-      href: ../hdinsight-monitor-use-ambari-api.md
-      maintainContext: true
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -312,9 +280,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 2dd6ba413eaaad3e740c9c4dcc905f7384172f1a
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: b8a55191f78010bab759cf90880c3b7aaddab7ba
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359792"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444962"

@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2465dd6c22567a3d8b50a7cfad4e26491bbe773e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 384294dfcd443f0bdbb7a915069d2563bcc35ae4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885202"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533887"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル:Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -46,6 +46,9 @@ ms.locfileid: "54885202"
 
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
 * コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。 データ ファクトリを作成するには、CURL ツールと REST コマンドを使用します。
 * [この記事](../../active-directory/develop/howto-create-service-principal-portal.md) の手順に従って、次の操作を行います。
@@ -55,13 +58,13 @@ ms.locfileid: "54885202"
   4. **ADFGetStartedApp** アプリケーションを **Data Factory 共同作成者**ロールに割り当てます。
 * [Azure PowerShell](/powershell/azure/overview)をインストールします。
 * **PowerShell** を起動し、次のコマンドを実行します。 Azure PowerShell は、このチュートリアルが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。
-  1. **Connect-AzureRmAccount** を実行し、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
-  2. **Get-AzureRmSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
-  3. **Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext** を実行して、使用するサブスクリプションを選択します。 **NameOfAzureSubscription** を自分の Azure サブスクリプションの名前で置き換えます。
+  1. **Connect-AzAccount** を実行し、Azure portal へのサインインに使用するユーザー名とパスワードを入力します。
+  2. **Get-AzSubscription** を実行して、このアカウントのサブスクリプションをすべて表示します。
+  3. **Get-AzSubscription -SubscriptionName NameOfAzureSubscription | Set-AzContext** を実行して、使用するサブスクリプションを選択します。 **NameOfAzureSubscription** を自分の Azure サブスクリプションの名前で置き換えます。
 * PowerShell で次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
 
     ```PowerShell
-    New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
+    New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
    このチュートリアルの一部の手順は、ADFTutorialResourceGroup という名前のリソース グループを使用することを前提としています。 異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループの名前を使用する必要があります。
@@ -132,7 +135,7 @@ curl.exe があるフォルダーに、以下の JSON ファイルを作成し�
 * オンデマンド HDInsight クラスターの代わりに、 **独自の HDInsight クラスター** を使用できます。 詳細については、 [HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) に関するセクションを参照してください。
 * HDInsight クラスターは、JSON (**linkedServiceName**) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (**timeToLive**) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成され、処理が終了すると削除されます。
 
-    処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](http://storageexplorer.com/) などのツールを使用します。
+    処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、"adf**データ ファクトリ名**-**リンクされたサービス名**-日時スタンプ" というパターンに従います。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](https://storageexplorer.com/) などのツールを使用します。
 
 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 
@@ -325,12 +328,12 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
 
     ```PowerShell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
       Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
     ```PowerShell
-    Get-AzureRmResourceProvider
+    Get-AzResourceProvider
     ```
   * Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 87c5d24f0e9077acf66bacd97097cfc32bd49ead
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453054"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432109"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -42,12 +42,11 @@ Computer Vision は、アプリケーションからネイティブ SDK を使�
 |**[サムネイルの生成](concept-generating-thumbnails.md)**|イメージのコンテンツを分析して、そのイメージの適切なサムネイルを生成します。 Computer Vision では、最初に高品質のサムネイルを生成した後、画像内のオブジェクトを分析して "*関心領域*" を特定します。 Computer Vision では、その後、関心領域の要件に合わせて、画像がトリミングされます。 ユーザーのニーズに応じて、元のイメージの縦横比とは異なる縦横比を使用して、生成されたサムネイルを表示することができます。|
 |**[関心領域を取得する](concept-generating-thumbnails.md#area-of-interest)**|画像の内容が分析され、"*関心領域*" の座標が返されます。 これはサムネイルを生成するために使用される機能と同じですが、画像をクロップする代わりに、Computer Vision では領域の境界ボックスの座標が返されるため、呼び出し元のアプリケーションで必要に応じて元の画像を変更できます。|
 
-
 ## <a name="extract-text-from-images"></a>画像からテキストを抽出する
 
-Computer Vision を使用し、イメージからマシンが読み取り可能な文字のストリームへ、[光学式文字認識 (OCR) を使用してテキストを抽出](concept-extracting-text-ocr.md)します。 必要に応じて、OCR では、認識されたテキストの回転を修正し、各語句のフレーム座標を提供します。 OCR は 25 の言語をサポートし、認識されたテキストの言語を自動的に検出します。
+Computer Vision を使用し、画像からコンピューターが読み取り可能な文字のストリームへ、[光学式文字認識 (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) を使用してテキストを抽出します。 必要に応じて、OCR では、認識されたテキストの回転を修正し、各語句のフレーム座標を提供します。 OCR は 25 の言語をサポートし、認識されたテキストの言語を自動的に検出します。
 
-また、イメージ内の[印刷および手書きのテキストを認識](concept-recognizing-text.md)することもできます。 Computer Vision では、レシート、ポスター、名刺、手紙、およびホワイトボードなど、異なるサーフェスや背景を持つさまざまなオブジェクトのイメージから、印刷および手書き両方のテキストを検出して、抽出できます。 現時点では、印刷および手書きのテキストの認識はプレビュー段階であり、サポートされている言語は英語のみです。 
+[読み取り API](concept-recognizing-text.md#read-api) を使用して、印刷されたテキストと手書きのテキストの両方を画像やテキスト量の多いドキュメントから抽出することもできます。 読み取り API では更新されたモデルを使用しており、レシート、ポスター、名刺、手紙、ホワイトボードなど、異なるサーフェスや背景を持つさまざまなオブジェクトに対応します。 現時点では、読み取り API はプレビュー段階であり、サポートされている言語は英語のみです。
 
 ## <a name="moderate-content-in-images"></a>画像内のコンテンツを調整する
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cf39639c6b9e20337412b7b071f6d6840904ba6c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 32e92cb8cd6cd5d16ea8d38d178bb440420e6784
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738217"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546366"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で Windows 仮想マシンの監視と更新を行う
 
@@ -68,7 +68,7 @@ New-AzVm `
 
 ## <a name="view-boot-diagnostics"></a>ブート診断を表示する
 
-Windows 仮想マシンが起動すると、ブート診断エージェントは画面出力をキャプチャします。これをトラブルシューティングに使用することができます。 この機能は既定で有効になっています。 キャプチャしたスクリーン ショットは、既定で作成される Azure Storage アカウントに格納されます。
+Windows 仮想マシンが起動すると、ブート診断エージェントは画面出力をキャプチャします。これをトラブルシューティングに使用することができます。 この機能は既定で有効になっています。 キャプチャしたスクリーンショットは、既定で作成される Azure Storage アカウントに格納されます。
 
 [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata) コマンドを使用してブートの診断データを取得できます。 次の例では、ブート診断は *c:\* ドライブのルートにダウンロードされています。
 
@@ -142,7 +142,7 @@ VM から直接、利用可能な更新プログラムのステータスを迅�
 また、検証プロセスでは、VM が Microsoft Monitoring Agent (MMA) と Automation ハイブリッド Runbook worker でプロビジョニングされているかどうかが確認されます。
 このエージェントは VM との通信に使用され、更新ステータスに関する情報を取得します。
 
-Log Analytics ワークスペースおよび Automation アカウントを選択し、**[有効化]** をクリックして、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
+Log Analytics ワークスペースおよび Automation アカウントを選択し、**[有効にする]** をクリックして、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
 
 オンボード中に次の前提条件のいずれかを満たしていないことがわかった場合は、自動的に追加されます。
 
@@ -154,7 +154,7 @@ Log Analytics ワークスペースおよび Automation アカウントを選択
 
 ![Update Management ソリューションを有効にする](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
-ソリューションを有効にするには最大 15 分かかります。 この処理中はブラウザーのウィンドウは閉じないでください。 ソリューションが有効になると、VM 上の不足している更新プログラムの情報が Log Analytics に送られます。 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
+ソリューションを有効にするには最大 15 分かかります。 この処理中はブラウザーのウィンドウは閉じないでください。 ソリューションが有効になると、VM 上の不足している更新プログラムの情報が Azure Monitor ログに送られます。 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
 
 ### <a name="view-update-assessment"></a>更新の評価を確認する
 
@@ -282,7 +282,7 @@ Set-AzVMExtension -ResourceGroupName "myResourceGroupMonitor" `
 
 しばらくすると、Log Analytics ワークスペースに新しい VM が表示されます。
 
-![Log Analytics ブレード](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Log Analytics ワークスペース ブレード](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>次の手順
 

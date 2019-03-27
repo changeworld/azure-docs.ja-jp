@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/13/2019
+ms.date: 03/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: d275455f502cf20eaa573c1716c38023f8e7236e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 115b1fcd1b1e878a9b4a7efdf6f24d7391945619
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821902"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409852"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
 
@@ -51,7 +51,16 @@ Azure Resource Manager には、初めて使う方にとって、あまり馴染
 * タグをリソースに適用し、サブスクリプションのすべてのリソースを論理的に整理できます。
 * 同じタグを共有するリソース グループのコストを表示することで、組織の課金をわかりやすくすることができます。
 
+## <a name="understand-management-scope"></a>管理スコープの概要
+
+Azure には、管理グループ、サブスクリプション、リソース グループ、およびリソースという 4 つのレベルの管理スコープが用意されています。 現在、[管理グループ](../governance/management-groups/index.md)はプレビュー リリースです。 次の図に、これらのレイヤーの例を示します。
+
+![Scope (スコープ)](./media/resource-group-overview/scope-levels.png)
+
+これらのスコープ レベルのいずれかに管理設定を適用します。 選択するレベルで、設定の適用範囲が決まります。 上位レベルの設定が下位レベルに継承されます。 たとえば、サブスクリプションに[ポリシー](../governance/policy/overview.md)を適用すると、そのポリシーはサブスクリプション内のすべてのリソース グループとリソースに適用されます。 リソース グループにポリシーを適用すると、そのポリシーはリソース グループとそのすべてのリソースに適用されます。 ただし、別のリソース グループにそのポリシー割り当てはありません。
+
 ## <a name="guidance"></a>ガイダンス
+
 次の推奨事項は、ソリューションを操作する際に Resource Manager を最大限に活用するのに役立ちます。
 
 * インフラストラクチャを定義してデプロイする場合は、命令型コマンドではなく、Resource Manager テンプレートにある宣言型構文を使用します。

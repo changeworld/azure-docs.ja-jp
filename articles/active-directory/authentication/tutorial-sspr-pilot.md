@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe472a45d99f966c851934ea44a346326cb4201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b85284a5c2c3017e7ccc0a7e06a712e41c2a9561
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175151"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215593"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>チュートリアル:Azure AD のセルフ サービスによるパスワードのリセットのパイロット展開を完了する
 
@@ -42,8 +42,8 @@ ms.locfileid: "56175151"
       * 選択したグループ内のユーザーが適切にライセンスされていることを確認します。
    * **[保存]**
 1. **[認証方法]** ページで、次の操作を行います。
-   * **[Number of methods required to reset]\(リセットに必要な方法の数\)** を **2** に設定します。
-   * 組織が**ユーザーに許可する方法**を選択します。 このチュートリアルでは、**[メール]**、**[携帯電話]**、および **[会社電話]** を有効にするボックスをオンにします。
+   * **[リセットのために必要な方法の数]** を **1** に設定します。
+   * 組織が**ユーザーに許可する方法**を選択します。 このチュートリアルでは、**[メール]** と **[モバイル アプリ コード (プレビュー)]** を有効にするチェックボックスをオンにします。
    * **[保存]**
 1. **[登録]** ページで、次の操作を行います。
    * **[Require users to register when signing in]\(サインイン時にユーザーに登録を要求する\)** に対して **[はい]** を選択します。

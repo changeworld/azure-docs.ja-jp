@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 6b47d483-d3a3-442d-b123-171e3f0f7486
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6cb9de466410ee2f8bf311183f389c5c86148a8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b6d948542cfac8624d70dd37d37fa967f72f22bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873204"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842210"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Confluence by resolution GmbH の統合
 
@@ -174,7 +174,7 @@ SAML SSO for Confluence by resolution GmbH で Azure AD シングル サイン�
     
     c. ID プロバイダーの**説明** (たとえば Azure AD) を追加します。
     
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ]** をクリックします。
+    d. **[次へ]** をクリックします。
     
 12. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[次へ]** ボタンをクリックします。
 
@@ -190,7 +190,7 @@ SAML SSO for Confluence by resolution GmbH で Azure AD シングル サイン�
     
     c. インポートが成功するまでしばらく待ちます。
     
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ]** ボタンをクリックします。
+    d. **[次へ]** ボタンをクリックします。
     
 14. **[User ID attribute and transformation]\(ユーザーの ID 属性と変換\)** ページで、**[次へ]** ボタンをクリックします。
 
@@ -226,7 +226,7 @@ SAML SSO for Confluence by resolution GmbH で Azure AD シングル サイン�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -282,7 +282,7 @@ SAML SSO for Confluence by resolution GmbH の場合、プロビジョニング�
 
     c. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Password]\(パスワード\)** ボックスに、Britta Simon のパスワードを入力します。
+    d. **[Password]\(パスワード\)** ボックスに、Britta Simon のパスワードを入力します。
 
     e. **[Confirm Password]\(パスワードの確認\)** をクリックし、パスワードを再入力します。
     

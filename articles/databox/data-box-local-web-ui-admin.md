@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 12/27/2018
+ms.date: 02/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6df44afee26570dbdc5d64b449c4e33d6a0956ae
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d5b6949930161f78c6edf4213df98471e96b1d42
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885712"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404044"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>ローカル Web UI を使用して Data Box を管理する
 
@@ -25,6 +25,7 @@ Data Box のローカル Web UI は、デバイスの初期構成に使用され
 
 - サポート パッケージの生成
 - デバイスのシャットダウンと再起動
+- BOM またはマニフェスト ファイルのダウンロード
 - デバイスの使用可能な容量の表示
 - チェックサム検証のスキップ 
 
@@ -104,6 +105,8 @@ Data Box を再起動するには、次の手順を実行します。
     |databoxe2etest_AzFile-BOM.txt    |Azure Files         |SMB/NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |ページ blob         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |ブロック blob         |REST         |
+    |mydbmdrg1_MDisk-BOM.txt    |マネージド ディスク         |SMB/NFS         |
+    |mydbmdrg2_MDisk-BOM.txt     |マネージド ディスク         |SMB/NFS         |
 
 この一覧を使用して、Data Box が Azure データセンターに返送された後に Azure Storage アカウントにアップロードされたファイルを確認します。 マニフェスト ファイルの例を次に示します。
 

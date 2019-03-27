@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 02/15/2019
-ms.openlocfilehash: 6ec32a40cea4f95d9225134cfb36d4930245d1c5
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: e306245da2c76560ad447358fa1a57e491c370ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750601"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855692"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
@@ -40,6 +40,10 @@ ms.locfileid: "56750601"
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
+> [!Note]
+> **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
+> 無料アカウントを使用して Azure Databricks クラスターを作成するには、クラスターを作成する前に、プロファイルにアクセスし、サブスクリプションを**従量課金制**に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。
+     
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを始める前に、以下のタスクを完了します。
@@ -50,7 +54,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * Azure Blob Storage アカウントを作成し、そこにコンテナーを作成します。 また、ストレージ アカウントにアクセスするためのアクセス キーを取得します。 「[クイック スタート:Azure BLOB ストレージ アカウントの作成に関するクイック スタート](../storage/blobs/storage-quickstart-blobs-portal.md)を参照してください。
 
-* Azure Data Lake Storage Gen2 ストレージ アカウントを作成します。 [Azure Data Lake Storage Gen2 アカウントの作成](../storage/blobs/data-lake-storage-quickstart-create-account.md)に関するページを参照してください。
+* Azure Data Lake Storage Gen2 ストレージ アカウントを作成します。 「[Azure Data Lake Storage Gen2 アカウントを作成する](../storage/blobs/data-lake-storage-quickstart-create-account.md)」をご覧ください。
 
 *  サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
 
