@@ -81,7 +81,7 @@ ms.locfileid: "29378158"
 |--------------|----------|-----------------|  
 |Id|文字列|アプリケーションの一意の識別子。|  
 |Title|文字列|アプリケーションのタイトル。|  
-|[Description]|文字列|アプリケーションの説明。|  
+|Description|文字列|アプリケーションの説明。|  
 |Url|URI|アプリケーションの URI。|  
 |Version|文字列|アプリケーションのバージョン情報。|  
 |Requirements|文字列|アプリケーションの要件の説明。|  
@@ -89,7 +89,7 @@ ms.locfileid: "29378158"
 |RegistrationDate|Datetime|アプリケーションが登録された日時。|  
 |CategoryId|number|アプリケーションのカテゴリ (財務、エンターテイメントなど)|  
 |DeveloperId|文字列|アプリケーションを送信した開発者の一意の識別子。|  
-|[Attachments]|[Attachment](#Attachment) エンティティのコレクション。|アプリケーションの添付ファイル (スクリーンショット、アイコンなど)。|  
+|Attachments|[Attachment](#Attachment) エンティティのコレクション。|アプリケーションの添付ファイル (スクリーンショット、アイコンなど)。|  
 |Icon|[Attachment](#Attachment)|アプリケーションのアイコン。|  
   
 ##  <a name="Attachment"></a> Attachment  
@@ -137,12 +137,12 @@ ms.locfileid: "29378158"
 |Id|文字列|問題の一意の識別子。|  
 |ApiID|文字列|この問題が報告された API の ID。|  
 |Title|文字列|問題のタイトル。|  
-|[Description]|文字列|問題の説明。|  
+|Description|文字列|問題の説明。|  
 |SubscriptionDeveloperName|文字列|問題を報告した開発者の名。|  
 |IssueState|文字列|問題の現在の状態。 使用できる値は、Proposed、Opened、および Closed です。|  
 |ReportedOn|Datetime|問題が報告された日時。|  
 |Comments|[Comment](#Comment) エンティティのコレクション。|この問題に関するコメント。|  
-|[Attachments]|[Attachment](api-management-template-data-model-reference.md#Attachment) エンティティのコレクション。|問題に対する添付ファイル。|  
+|Attachments|[Attachment](api-management-template-data-model-reference.md#Attachment) エンティティのコレクション。|問題に対する添付ファイル。|  
 |Services|[API](#API) エンティティのコレクション。|問題を提出したユーザーがサブスクライブしている API。|  
   
 ##  <a name="Filtering"></a> Filtering  
@@ -250,7 +250,7 @@ ms.locfileid: "29378158"
 |--------------|----------|-----------------|  
 |Id|文字列|リソース識別子。 現在の API Management サービス インスタンス内の製品を一意に識別します。 値は `products/{pid}` 形式の有効な相対 URL です。ここで、`{pid}` は製品識別子です。 このプロパティは読み取り専用です。|  
 |Title|文字列|製品の名前。 空にしないでください。 最大長は 100 文字です。|  
-|[Description]|文字列|製品の説明。 空にしないでください。 HTML 書式設定タグを含めることができます。 最大長は 1,000 文字です。|  
+|Description|文字列|製品の説明。 空にしないでください。 HTML 書式設定タグを含めることができます。 最大長は 1,000 文字です。|  
 |Terms|文字列|製品の使用条件。 製品をサブスクライブしようとする開発者に提示される条件です。開発者は、サブスクリプション プロセスを完了する前にこれらの条件に同意する必要があります。|  
 |ProductState|number|製品が発行されているかどうかを指定します。 発行されている製品は、開発者ポータルで開発者に表示されます。 発行されていない製品は、管理者のみに表示されます。<br /><br /> 製品状態に使用できる値は次のとおりです。<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
 |AllowMultipleSubscriptions|ブール値|1 人のユーザーがこの製品に対して複数のサブスクリプションを同時に持つことができるかどうかを指定します。|  
@@ -261,7 +261,7 @@ ms.locfileid: "29378158"
   
 |プロパティ|type|[説明]|  
 |--------------|----------|-----------------|  
-|[Properties]|文字列辞書|この認証プロバイダーのプロパティ。|  
+|Properties|文字列辞書|この認証プロバイダーのプロパティ。|  
 |AuthenticationType|文字列|プロバイダーの種類  (Azure Active Directory、Facebook ログイン、Google アカウント、Microsoft アカウント、Twitter)。|  
 |Caption|文字列|プロバイダーの表示名。|  
   
