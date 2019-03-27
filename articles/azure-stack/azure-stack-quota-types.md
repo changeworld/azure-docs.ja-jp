@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: def9026fb0422d8868af098f12180617aefe7eff
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7872ed2c9d6f094907ae4d11adef6bc7a99be8e4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877947"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782889"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
 
@@ -44,7 +44,7 @@ ms.locfileid: "56877947"
 
 | **項目** | **既定値** | **説明** |
 | --- | --- | --- |
-| 最大容量 (GB) |2048 |1 つのサブスクリプションがこの場所で使用できる記憶域の最大容量です。 |
+| 最大容量 (GB) |2048 |1 つのサブスクリプションがこの場所で使用できるストレージの総容量です (BLOB と、関連付けられているすべてのスナップショット、テーブル、キューが含まれます)。 |
 | [Total number of storage accounts]\(ストレージ アカウントの合計数\) |20 |1 つのサブスクリプションでこの場所に作成できるストレージ アカウントの最大数です。 |
 
 > [!NOTE]  

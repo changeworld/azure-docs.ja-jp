@@ -1,6 +1,6 @@
 ---
-title: App Service on Azure Stack Update 4 のリリース ノート | Microsoft Docs
-description: App Service on Azure Stack Update 4 の内容、既知の問題、更新プログラムをダウンロードする場所について説明します。
+title: App Service on Azure Stack Update 5 のリリース ノート | Microsoft Docs
+description: App Service on Azure Stack Update 5 の内容、既知の問題、更新プログラムをダウンロードする場所について説明します。
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -12,37 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2018
+ms.date: 02/27/2019
 ms.author: anwestg
-ms.reviewer: anwestg
-ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 5108d4f65208f12875ad592e2e9222f8e1fdb130
+ms.reviewer: ''
+ms.openlocfilehash: 0a0eb9586e78442947138831dd774298906aaf9c
 ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991083"
+ms.locfileid: "56993449"
 ---
-# <a name="app-service-on-azure-stack-update-4-release-notes"></a>App Service on Azure Stack update 4 のリリース ノート
+# <a name="app-service-on-azure-stack-update-5-release-notes"></a>App Service on Azure Stack update 5 のリリース ノート
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-これらのリリース ノートでは、Azure App Service on Azure Stack Update 4 における機能強化と修正点、および既知の問題について説明します。 既知の問題は、デプロイおよび更新プロセスに直接関係する問題と、ビルド (インストール後) に関する問題に分けられています。
+これらのリリース ノートでは、Azure App Service on Azure Stack Update 5 における機能強化と修正点、および既知の問題について説明します。 既知の問題は、デプロイおよび更新プロセスに直接関係する問題と、ビルド (インストール後) に関する問題に分けられています。
 
 > [!IMPORTANT]
-> Azure App Service 1.4 をデプロイする前に、Azure Stack 統合システムに 1809 更新プログラムを適用するか、または最新の Azure Stack 開発キットをデプロイします。
->
->
+> Azure App Service 1.5 をデプロイする前に、Azure Stack 統合システムに 1901 更新プログラムを適用するか、最新の Azure Stack Development Kit をデプロイします。
+
 
 ## <a name="build-reference"></a>ビルドのリファレンス
 
-App Service on Azure Stack Update 4 のビルド番号は **78.0.13698.5** です。
+App Service on Azure Stack Update 5 のビルド番号は **80.0.2.15** です。
 
 ### <a name="prerequisites"></a>前提条件
 
 デプロイを開始する前に、[前提条件に関するドキュメント](azure-stack-app-service-before-you-get-started.md)をご覧ください。
 
-Azure App Service on Azure Stack の 1.4 へのアップグレードを開始する前に:
+Azure App Service on Azure Stack の 1.5 へのアップグレードを開始する前に:
 
 - Azure Stack 管理ポータルにおいて Azure App Service の [管理] ですべてのロールが [準備完了] になっていることを確認します。
 
@@ -53,57 +51,34 @@ Azure App Service on Azure Stack の 1.4 へのアップグレードを開始す
 
 - テナント アプリのコンテンツ ファイル共有をバックアップします。
 
-- Marketplace からカスタム スクリプト拡張機能バージョン 1.9 を配信します。
+- Marketplace から**カスタム スクリプト拡張機能**バージョン **1.9.1** を配信します。
 
 ### <a name="new-features-and-fixes"></a>新機能と修正
 
-Azure App Service on Azure Stack Update 4 には、次の機能強化と修正が含まれています。
-
-- [CVE 2018-8600](https://aka.ms/CVE20188600) クロスサイト スクリプトの脆弱性の解決策。
-
-- App Service 2018-02-01 API バージョンのサポートが追加されました。
+Azure App Service on Azure Stack Update 5 には、次の機能強化と修正が含まれています。
 
 - **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Portal SDK バージョンと一致しています。
+
+- **切断された** Azure Stack をお客様が操作する場合のスタイル設定と機能に関する問題を解決する、**Kudu ツール**の更新。 
 
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
 - **次のアプリケーション フレームワークとツールの更新**:
-  - NodeJS 10.6.0 を追加
-  - NPM 6.1.0 を追加
-  - Zulu OpenJDK 8.31.0.2 を追加
-  - Tomcat 8.5.34 と 9.0.12 を追加
-  - 次の PHP バージョンを追加
-    - 5.6.37
-    - 7.0.31
-    - 7.1.20
-    - 7.2.8
-  - Python バージョンの更新:
-    - 2.7.15
-    - 3.6.6
-  - Git for Windows を v 2.17.1.2 に更新
-  - Kudu を 78.11022.3613 に更新
+  - NodeJS 10.14.1 を追加
+  - NPM 6.4.1 を追加
+  - Kudu を 79.20129.3767 に更新
   
 - **すべてのロールの基になっているオペレーティング システムの更新プログラム**:
-  - [x64 ベース システム用 Windows Server 2016 に対する 2018-10 累積的更新プログラム (KB4462928)](https://support.microsoft.com/help/4462928/windows-10-update-kb4462928)
-
-- Wordpress、DNN、および Orchard CMS ギャラリー アイテムをデプロイする際のテンプレートの検証に関する問題が解決されました。
-
-- Azure Stack が Azure Resource Manager クライアント証明書をローテーションする際の構成の問題が解決されました。
-
-- App Service テナント ポータルでの [クロス オリジン リソース共有] 設定の機能が復元されました。
-
-- リソース プロバイダーのコントロール プレーンが構成済みの SQL Server インスタンスに接続できないとき、App Service 管理ポータル エクスペリエンスにエラー メッセージを表示します。
-
-- エンドポイントが新しい関数アプリケーションに指定されたとき、確実にカスタム ストレージ接続文字列にエンドポイントが指定されるようにします。
+  - [x64 ベース システム用 Windows Server 2016 に対する 2019-02 累積的更新プログラム (KB4487006)](https://support.microsoft.com/help/4487006/windows-10-update-kb4487006)
 
 ### <a name="post-deployment-steps"></a>デプロイ後の手順
 
 > [!IMPORTANT]  
 > SQL Always On インスタンスを使用して App Service RP を提供している場合は、データベースのフェールオーバー時にサービスの停止を防ぐために、[appservice_hosting と appservice_metering データベースを可用性グループに追加](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する必要があります。
 
-### <a name="post-update-steps-optional"></a>更新後の手順 (省略可)
+### <a name="post-update-steps"></a>更新後の手順
 
-既存の Azure App Service on Azure Stack デプロイに関して包含データベースへの移行を検討されている場合は、Azure App Service on Azure Stack 1.4 への更新が完了した後で、以下の手順を実行してください。
+既存の Azure App Service on Azure Stack デプロイに関して包含データベースへの移行を検討されている場合は、Azure App Service on Azure Stack 1.5 への更新が完了した後で、以下の手順を実行してください。
 
 > [!IMPORTANT]
 > 移行手順の所要時間は 5 分から 10 分程度です。  この手順には、既存のデータベース ログイン セッションを中止する作業が伴います。  Azure App Service on Azure Stack の移行とその後の検証に伴うダウンタイムを考慮してください。  Azure App Service on Azure Stack 1.3 に更新した後でこれらの手順を実行した場合、これらの手順は必要ありません。

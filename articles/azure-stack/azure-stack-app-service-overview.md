@@ -11,16 +11,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: a638d5cdfbd3af46335cfb8e4970306534fc1c3b
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: ba2a322cdbcf929bef586f9f35ec2dc394f7af53
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445986"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778520"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上の App Service の概要
 
@@ -53,7 +53,7 @@ App Service にはアプリの種類が複数用意されており、それぞ�
 - 1 つの Web アプリに両方 (フロントエンドと API) をデプロイする
 - フロントエンドのコードを Web アプリに、バックエンドのコードを API アプリにデプロイする
 
-   [ ![監視データを使用した App Service の概要](media/azure-stack-app-service-overview/image01.png "監視データを使用した App Service の概要") ](media/azure-stack-app-service-overview/image01.png#lightbox)
+   [![監視データを使用した App Service の概要](media/azure-stack-app-service-overview/image01.png "監視データを使用した App Service の概要")](media/azure-stack-app-service-overview/image01.png#lightbox)
 
 ## <a name="what-is-an-app-service-plan"></a>App Service プランとは
 

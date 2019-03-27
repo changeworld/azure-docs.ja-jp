@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 898fb12c4e38804cca71be6ef08b078f92633e32
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1e5154f4f6c77e9a024ced58f3b75a0111a614c3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240155"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769381"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Azure Stack PKI 証明書の検証
 
@@ -75,7 +75,7 @@ Azure Stack のデプロイに対して PKI 証明書を検証する前に、シ
     ```PowerShell  
     New-Item C:\Certificates -ItemType Directory
     
-    $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
+    $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
     
     $destination = 'c:\certificates'
     
@@ -83,7 +83,11 @@ Azure Stack のデプロイに対して PKI 証明書を検証する前に、シ
     ```
     
     > [!Note]  
-    > AD FS を ID システムとして使用している場合は、AD FS と Graph が必要です。
+    > AD FS を ID システムとして使用している場合は、AD FS と Graph が必要です。 例: 
+    >
+    > ```PowerShell  
+    > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
+    > ```
     
      - 前の手順で作成された適切なディレクトリに証明書を配置します。 例:   
         - `c:\certificates\ACSBlob\CustomerCertificate.pfx`
@@ -250,17 +254,17 @@ SQL/MySQL または App Services のデプロイを計画している場合は�
 
 | Directory | 証明書 |
 | ---    | ----        |
-| acsBlob | wildcard_blob_\< region>\< externalFQDN> |
-| ACSQueue  |  wildcard_queue\< region>\< externalFQDN> |
-| ACSTable  |  wildcard_table\< region>\< externalFQDN> |
-| 管理者拡張機能ホスト  |  wildcard_adminhosting\< region>\< externalFQDN> |
-| 管理ポータル  |  adminportal\< region>\< externalFQDN> |
-| ARM 管理  |  adminmanagement\< region>\< externalFQDN> |
-| ARM パブリック  |  management\< region>\< externalFQDN> |
-| KeyVault  |  wildcard_vault\< region>\< externalFQDN> |
-| KeyVaultInternal  |  wildcard_adminvault\< region>\< externalFQDN> |
-| パブリック拡張機能ホスト  |  wildcard_hosting\< region>\< externalFQDN> |
-| パブリック ポータル  |  portal\< region>_\< externalFQDN> |
+| acsBlob | wildcard_blob_\<region>_\<externalFQDN> |
+| ACSQueue  |  wildcard_queue_\<region>_\<externalFQDN> |
+| ACSTable  |  wildcard_table_\<region>_\<externalFQDN> |
+| 管理者拡張機能ホスト  |  wildcard_adminhosting_\<region>_\<externalFQDN> |
+| 管理ポータル  |  adminportal_\<region>_\<externalFQDN> |
+| ARM 管理  |  adminmanagement_\<region>_\<externalFQDN> |
+| ARM パブリック  |  management_\<region>_\<externalFQDN> |
+| KeyVault  |  wildcard_vault_\<region>_\<externalFQDN> |
+| KeyVaultInternal  |  wildcard_adminvault_\<region>_\<externalFQDN> |
+| パブリック拡張機能ホスト  |  wildcard_hosting_\<region>_\<externalFQDN> |
+| パブリック ポータル  |  portal_\<region>_\<externalFQDN> |
 
 ## <a name="using-validated-certificates"></a>検証済み証明書の使用
 

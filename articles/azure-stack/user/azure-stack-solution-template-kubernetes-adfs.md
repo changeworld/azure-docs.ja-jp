@@ -15,12 +15,12 @@ ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: c2ef0d34897171e04d0982405909183634ebb696
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7e11da971e86b605e3e17b07ebcdab97eef5b957
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115404"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122945"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Active Directory フェデレーション サービスを使用して Azure Stack に Kubernetes をデプロイする
 
@@ -55,105 +55,105 @@ AD FS を ID ソリューションとして使用する場合は、Azure Stack �
 
 1. Azure Stack の管理者は、証明書とサービス プリンシパルの情報を提供します。
 
-    - サービス プリンシパルの情報は次のようになります。
+   - サービス プリンシパルの情報は次のようになります。
 
-    ```Text  
-        ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
-        ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
-        Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
-        ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
-        PSComputerName        : azs-ercs01
-        RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
-    ```
+     ```Text  
+       ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
+       ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
+       Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
+       ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
+       PSComputerName        : azs-ercs01
+       RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
+     ```
 
-    - 証明書は拡張子が `.pfx` のファイルになります。 キー コンテナーにシークレットとして証明書を格納します。
+   - 証明書は拡張子が `.pfx` のファイルになります。 キー コンテナーにシークレットとして証明書を格納します。
 
 2. 新しいサービス プリンシパルにサブスクリプションの共同作成者としてのロールを割り当てます。 手順については、「[ロールの割り当て](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals)」を参照してください。
 
 3. デプロイの証明書を格納するためのキー コンテナーを作成します。 ポータルではなく、次の PowerShell スクリプトを使用します。
 
-    - 次の情報が必要です。
+   - 次の情報が必要です。
 
-        | 値 | 説明 |
-        | ---   | ---         |
-        | Azure Resource Manager エンドポイント | Microsoft Azure Resource Manager は、管理者が Azure リソースのデプロイ、管理、監視を行えるようにするための管理フレームワークです。 Azure Resource Manager では、これらのタスクを個別に処理するのではなく、グループとして単一の操作で処理することができます。<br>Azure Stack Development Kit (ASDK) のエンドポイント: `https://management.local.azurestack.external/`<br>統合システムのエンドポイント: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
-        | サブスクリプション ID | [サブスクリプション ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。 |
-        | ユーザー名 | ドメイン名とユーザー名ではなく、ユーザー名だけ (`azurestack\username` ではなく `username`) を使用します。 |
-        | リソース グループ名  | 新しいリソース グループの名前。または、既存のリソース グループを選択します。 リソース名は、英数字かつ小文字にする必要があります。 |
-        | KeyVault 名 | コンテナーの名前。<br> 正規表現パターン: `^[a-zA-Z0-9-]{3,24}$` |
-        | リソース グループの場所 | リソース グループの場所。 これは、Azure Stack のインストールに対して選択するリージョンです。 |
+       | 値 | 説明 |
+       | ---   | ---         |
+       | Azure Resource Manager エンドポイント | Microsoft Azure Resource Manager は、管理者が Azure リソースのデプロイ、管理、監視を行えるようにするための管理フレームワークです。 Azure Resource Manager では、これらのタスクを個別に処理するのではなく、グループとして単一の操作で処理することができます。<br>Azure Stack Development Kit (ASDK) のエンドポイント: `https://management.local.azurestack.external/`<br>統合システムのエンドポイント: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
+       | サブスクリプション ID | [サブスクリプション ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。 |
+       | ユーザー名 | ドメイン名とユーザー名ではなく、ユーザー名だけ (`azurestack\username` ではなく `username`) を使用します。 |
+       | リソース グループ名  | 新しいリソース グループの名前。または、既存のリソース グループを選択します。 リソース名は、英数字かつ小文字にする必要があります。 |
+       | KeyVault 名 | コンテナーの名前。<br> 正規表現パターン: `^[a-zA-Z0-9-]{3,24}$` |
+       | リソース グループの場所 | リソース グループの場所。 これは、Azure Stack のインストールに対して選択するリージョンです。 |
 
-    - 管理者特権のプロンプトで PowerShell を開き、[Azure Stack に接続](azure-stack-powershell-configure-user.md#connect-with-ad-fs)します。 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
+   - 管理者特権のプロンプトで PowerShell を開き、[Azure Stack に接続](azure-stack-powershell-configure-user.md#connect-with-ad-fs)します。 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
 
-    ```PowerShell  
-        $armEndpoint="<Azure Resource Manager Endpoint>"
-        $subscriptionId="<Your Subscription ID>"
-        $username="<your user name >"
-        $resource_group_name = "<the resource group name >"
-        $key_vault_name = "<keyvault name>"
-        $resource_group_location="<resource group location>"
+     ```PowerShell  
+       $armEndpoint="<Azure Resource Manager Endpoint>"
+       $subscriptionId="<Your Subscription ID>"
+       $username="<your user name >"
+       $resource_group_name = "<the resource group name >"
+       $key_vault_name = "<keyvault name>"
+       $resource_group_location="<resource group location>"
         
-        # Login Azure Stack Environment
-        Add-AzureRmEnvironment -ARMEndpoint $armEndpoint -Name t
-        $mycreds = Get-Credential
-        Login-AzureRmAccount -Credential $mycreds -Environment t -Subscription $subscriptionId
+       # Login Azure Stack Environment
+       Add-AzureRmEnvironment -ARMEndpoint $armEndpoint -Name t
+       $mycreds = Get-Credential
+       Login-AzureRmAccount -Credential $mycreds -Environment t -Subscription $subscriptionId
         
-        # Create new Resource group and key vault
-        New-AzureRmResourceGroup -Name $resource_group_name -Location $resource_group_location -Force
+       # Create new Resource group and key vault
+       New-AzureRmResourceGroup -Name $resource_group_name -Location $resource_group_location -Force
         
-        # Note, Do not omit -EnabledForTemplateDeployment flag
-        New-AzureRmKeyVault -VaultName $key_vault_name -ResourceGroupName $resource_group_name -Location $resource_group_location -EnabledForTemplateDeployment
+       # Note, Do not omit -EnabledForTemplateDeployment flag
+       New-AzureRmKeyVault -VaultName $key_vault_name -ResourceGroupName $resource_group_name -Location $resource_group_location -EnabledForTemplateDeployment
         
-        # Obtain the security identifier(SID) of the active directory user
-        $adUser = Get-ADUser -Filter "Name -eq '$username'" -Credential $mycreds
-        $objectSID = $adUser.SID.Value
-        # Set the key vault access policy
-        Set-AzureRmKeyVaultAccessPolicy -VaultName $key_vault_name -ResourceGroupName $resource_group_name -ObjectId $objectSID -BypassObjectIdValidation -PermissionsToKeys all -PermissionsToSecrets all
-    ```
+       # Obtain the security identifier(SID) of the active directory user
+       $adUser = Get-ADUser -Filter "Name -eq '$username'" -Credential $mycreds
+       $objectSID = $adUser.SID.Value
+       # Set the key vault access policy
+       Set-AzureRmKeyVaultAccessPolicy -VaultName $key_vault_name -ResourceGroupName $resource_group_name -ObjectId $objectSID -BypassObjectIdValidation -PermissionsToKeys all -PermissionsToSecrets all
+     ```
 
 4. 証明書をキー コンテナーにアップロードします。
 
-    - 次の情報が必要です。
+   - 次の情報が必要です。
 
-        | 値 | 説明 |
-        | ---   | ---         |
-        | 証明書パス | FQDN または証明書へのファイル パス。 |
-        | Certificate password | 証明書のパスワード。 |
-        | シークレット名 | コンテナーに格納されている証明書を参照するために使用するシークレット名。 |
-        | キー コンテナー名 | 前の手順で作成したキー コンテナーの名前。 |
-        | Azure Resource Manager エンドポイント | Azure Stack Development Kit (ASDK) のエンドポイント: `https://management.local.azurestack.external/`<br>統合システムのエンドポイント: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
-        | サブスクリプション ID | [サブスクリプション ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。 |
+       | 値 | 説明 |
+       | ---   | ---         |
+       | 証明書パス | FQDN または証明書へのファイル パス。 |
+       | Certificate password | 証明書のパスワード。 |
+       | シークレット名 | コンテナーに格納されている証明書を参照するために使用するシークレット名。 |
+       | キー コンテナー名 | 前の手順で作成したキー コンテナーの名前。 |
+       | Azure Resource Manager エンドポイント | Azure Stack Development Kit (ASDK) のエンドポイント: `https://management.local.azurestack.external/`<br>統合システムのエンドポイント: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
+       | サブスクリプション ID | [サブスクリプション ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。 |
 
-    - 管理者特権のプロンプトで PowerShell を開き、[Azure Stack に接続](azure-stack-powershell-configure-user.md#connect-with-ad-fs)します。 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
+   - 管理者特権のプロンプトで PowerShell を開き、[Azure Stack に接続](azure-stack-powershell-configure-user.md#connect-with-ad-fs)します。 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
 
-    ```PowerShell  
+     ```PowerShell  
         
-    # upload the pfx to key vault
-    $tempPFXFilePath = "<certificate path>"
-    $password = "<certificate password>"
-    $keyVaultSecretName = "<secret name>"
-    $keyVaultName = "<key vault name>"
-    $armEndpoint="<Azure Resource Manager Endpoint>"
-    $subscriptionId="<Your Subscription ID>"
-    # Login Azure Stack Environment
-    Add-AzureRmEnvironment -ARMEndpoint $armEndpoint -Name t
-    $mycreds = Get-Credential
-    Login-AzureRmAccount -Credential $mycreds -Environment t -Subscription $subscriptionId
+     # upload the pfx to key vault
+     $tempPFXFilePath = "<certificate path>"
+     $password = "<certificate password>"
+     $keyVaultSecretName = "<secret name>"
+     $keyVaultName = "<key vault name>"
+     $armEndpoint="<Azure Resource Manager Endpoint>"
+     $subscriptionId="<Your Subscription ID>"
+     # Login Azure Stack Environment
+     Add-AzureRmEnvironment -ARMEndpoint $armEndpoint -Name t
+     $mycreds = Get-Credential
+     Login-AzureRmAccount -Credential $mycreds -Environment t -Subscription $subscriptionId
     
-    $certContentInBytes = [io.file]::ReadAllBytes($tempPFXFilePath)
-    $pfxAsBase64EncodedString = [System.Convert]::ToBase64String($certContentInBytes)
-    $jsonObject = @"
-    {
-    "data": "$pfxAsBase64EncodedString",
-    "dataType" :"pfx",
-    "password": "$password"
-    }
-    "@
-    $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
-    $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
-    $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
-    $keyVaultSecret = Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName -SecretValue $secret 
-    ```
+     $certContentInBytes = [io.file]::ReadAllBytes($tempPFXFilePath)
+     $pfxAsBase64EncodedString = [System.Convert]::ToBase64String($certContentInBytes)
+     $jsonObject = @"
+     {
+     "data": "$pfxAsBase64EncodedString",
+     "dataType" :"pfx",
+     "password": "$password"
+     }
+     "@
+     $jsonObjectBytes = [System.Text.Encoding]::UTF8.GetBytes($jsonObject)
+     $jsonEncoded = [System.Convert]::ToBase64String($jsonObjectBytes)
+     $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText -Force
+     $keyVaultSecret = Set-AzureKeyVaultSecret -VaultName $keyVaultName -Name $keyVaultSecretName -SecretValue $secret 
+     ```
 
 ## <a name="deploy-kubernetes"></a>Kubernetes のデプロイ
 
@@ -226,3 +226,5 @@ AD FS を ID ソリューションとして使用する場合は、Azure Stack �
 ## <a name="next-steps"></a>次の手順
 
 [クラスターへの接続](azure-stack-solution-template-kubernetes-deploy.md#connect-to-your-cluster)
+
+[Kubernetes ダッシュボードの有効化](azure-stack-solution-template-kubernetes-dashboard.md)

@@ -8,82 +8,74 @@ items:
 - name: クイック スタート
   items:
   - name: Jenkins サーバーを作成する
-    href: /azure/jenkins/install-jenkins-solution-template
-    maintainContext: true
+    href: install-jenkins-solution-template.md
   expanded: true
 - name: チュートリアル
   items:
-  - name: App Service への CI/CD
-    href: /azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service
-  - name: Kubernetes への CI/CD
-    href: /azure/aks/jenkins-continuous-deployment
-    maintainContext: true
-  - name: Linux VM への CI/CD
-    href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
-    maintainContext: true
-  - name: パイプライン ジョブでの Azure リソースの作成
-    href: /azure/jenkins/execute-cli-jenkins-pipeline
-  - name: Azure VM エージェントでのスケーリング
-    href: /azure/jenkins/jenkins-azure-vm-agents
-  - name: Azure Container Instances を使用したビルド
-    href: /azure/container-instances/container-instances-jenkins
-    maintainContext: true
-  - name: 青/緑パターンを使用した AKS へのデプロイ
-    href: /azure/jenkins/jenkins-aks-blue-green-deployment
-  - name: Azure Functions へのデプロイ
-    href: ./jenkins-azure-functions-deploy.md
+  - name: 1. Install
+    items:
+    - name: Jenkins サーバーを作成する
+      href: install-jenkins-solution-template.md
+  - name: 2. 構成
+    items:
+    - name: Azure VM エージェントでのスケーリング
+      href: jenkins-azure-vm-agents.md
+  - name: 3. CI/CD の実装
+    items:
+    - name: AKS
+      items:
+      - name: Kubernetes への CI/CD
+        href: /azure/aks/jenkins-continuous-deployment
+        maintainContext: true
+      - name: 青/緑パターンを使用した AKS へのデプロイ
+        href: jenkins-aks-blue-green-deployment.md
+    - name: App Service
+      items:
+      - name: パイプライン ジョブでの Azure リソースの作成
+        href: execute-cli-jenkins-pipeline.md
+      - name: GitHub から App Service へのアプリのデプロイ
+        href: tutorial-jenkins-deploy-web-app-azure-app-service.md
+    - name: Azure Container Instances を使用したビルド
+      href: /azure/container-instances/container-instances-jenkins
+      maintainContext: true
+    - name: Azure DevOps での Jenkins の使用
+      href: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins
+      maintainContext: true
+    - name: Azure Functions へのデプロイ
+      href: jenkins-azure-functions-deploy.md
+    - name: Azure Storage に発行する
+      href: /azure/storage/storage-java-jenkins-continuous-integration-solution
+      maintainContext: true
+    - name: Linux VM への CI/CD
+      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+      maintainContext: true
+    - name: Service Fabric への CI/CD
+      href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
+      maintainContext: true
 - name: 操作方法
   items:
-  - name: Azure 上の Jenkins をセキュリティで保護する
-    href: https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/
   - name: Azure App Service プラグインを使用する
     href: deploy-jenkins-app-service-plugin.md
-  - name: Azure Storage に発行する
-    href: /azure/storage/storage-java-jenkins-continuous-integration-solution
-    maintainContext: true
-  - name: Azure DevOps での Jenkins の使用
-    href: https://www.visualstudio.com/docs/build/apps/jenkins/build-deploy-jenkins
-  - name: Service Fabric アプリのデプロイ
-    href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
-    maintainContext: true
 - name: サンプル
   items:
   - name: サンプルのジョブとスクリプト
     href: https://github.com/azure/jenkins
 - name: リソース
   items:
-  - name: プラグイン
-    items:
-    - name: Azure App Service プラグイン
-      href: https://plugins.jenkins.io/azure-app-service
-    - name: Azure AD プラグイン
-      href: https://plugins.jenkins.io/azure-ad
-    - name: Azure コンテナー エージェント プラグイン
-      href: https://plugins.jenkins.io/azure-container-agents
-    - name: Azure Container Service プラグイン
-      href: https://plugins.jenkins.io/azure-acs
-    - name: Azure 資格情報プラグイン
-      href: https://plugins.jenkins.io/azure-credentials
-    - name: Azure 関数プラグイン
-      href: https://plugins.jenkins.io/azure-function
-    - name: Azure Service Fabric プラグイン
-      href: https://plugins.jenkins.io/service-fabric
-    - name: Azure Storage プラグイン
-      href: https://plugins.jenkins.io/windows-azure-storage
-    - name: Azure VM エージェント プラグイン
-      href: https://plugins.jenkins.io/azure-vm-agents
-    - name: Azure VM スケール セット プラグイン
-      href: https://plugins.jenkins.io/azure-vmss
+  - name: Azure 用の Jenkins プラグイン
+    href: jenkins-plugins.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: Jenkins ホーム
     href: https://jenkins.io/
+  - name: Jenkins X ホーム
+    href: https://jenkins-x.io
   - name: Jenkins アーキテクチャ
     href: /azure/architecture/reference-architectures/jenkins/
     maintainContext: true
-ms.openlocfilehash: 4d6b7848d1eab5da3baa04f72add5f97256498b1
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 2cfd843c0a7fc11a98d2450cc5ec499cdc1f580e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819627"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438682"

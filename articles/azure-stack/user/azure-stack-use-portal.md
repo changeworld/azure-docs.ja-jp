@@ -10,16 +10,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 02/25/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 026e37534169fda8dbbf5a568f72046bc6ff55f7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 28b8971b61ff09346b2a2f89cd5ea8ae04e44079
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252049"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819362"
 ---
 # <a name="use-the-azure-stack-portal"></a>Azure Stack ポータルの使用
 
@@ -40,6 +40,10 @@ Azure Stack オペレーター (サービス プロバイダーまたは組織�
 ダッシュボードには、タイルの既定のセットが含まれています。 **[ダッシュボードの編集]** を選択して既定のダッシュボードを変更したり、**[新しいダッシュボード]** を選択してカスタムのダッシュボードを作成したりできます。 タイルを追加または削除して、ダッシュボードを簡単にカスタマイズすることができます。 たとえば、[コンピューティング] タイルを追加するには、**[+ リソースの作成]** を選択します。 **[コンピューティング]** を右クリックし、**[ダッシュボードにピン留め]** を選択します。
 
 ![Azure Stack ユーザー ポータルの画面キャプチャ](media/azure-stack-use-portal/userportal.png)
+
+ダッシュボードを元の設定に復元するには:
+1.  **[ダッシュボードの編集]** を選択します。 
+2.  右クリックし、**[既定の状態にリセット]** を選択します。
 
 ## <a name="create-subscription-and-browse-available-resources"></a>サブスクリプションの作成と使用可能リソースの参照
 

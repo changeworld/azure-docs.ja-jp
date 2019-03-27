@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/14/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
-ms.openlocfilehash: 5ececb2d3c52a1da8c1a537e6223f17a9b83921f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1c21cc778ed398c28077ef1a20ebbb7b295c2baa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207536"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012386"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムのデータ センター統合に関する考慮事項
 Azure Stack 統合システムに関心がある場合は、デプロイや、このシステムがデータセンターにどのように適合するかに関する計画の主な考慮事項を理解する必要があります。 この記事では、Azure Stack マルチノード システムに関するインフラストラクチャの重要な決定を行うときに役立つこれらの考慮事項の概要について説明します。 これらの考慮事項を理解していると、OEM ハードウェア ベンダーと協力して Azure Stack をデータセンターにデプロイする場合に役立ちます。  
@@ -162,7 +162,7 @@ Azure Stack ソリューションに含まれているハードウェア ライ�
 | 領域 | 外部の監視ソリューション |
 | -- | -- |
 | Azure Stack ソフトウェア | [Operations Manager 用 Azure Stack 管理パック](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Nagios プラグイン](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>REST ベースの API 呼び出し | 
-| 物理サーバー (IPMI 経由 BMC) | OEM ハードウェア - Operations Manager ベンダー管理パック<br>OEM ハードウェア ベンダー提供のソリューション<br>ハードウェア ベンダーの Nagios プラグイン | OEM パートナーがサポートしている監視ソリューション (含まれている) | 
+| 物理サーバー (IPMI 経由 BMC) | OEM ハードウェア - Operations Manager ベンダー管理パック<br>OEM ハードウェア ベンダー提供のソリューション<br>ハードウェア ベンダーの Nagios プラグイン<br>OEM パートナーがサポートしている監視ソリューション (含まれている) | 
 | ネットワーク デバイス (SNMP) | Operations Manager ネットワーク デバイスの検出<br>OEM ハードウェア ベンダー提供のソリューション<br>Nagios スイッチ プラグイン |
 | テナント サブスクリプションの正常性の監視 | [Windows Azure 用 System Center 管理パック](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 

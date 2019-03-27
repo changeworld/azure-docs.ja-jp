@@ -16,19 +16,19 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 28f8300b83f55f4b083aa1e740dcbf1db0f1dc31
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4683b6f63af9fe0081911db9914f04b1c90f9d23
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168144"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819447"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Azure Stack の VM の更新と管理
 以下の Azure Automation ソリューション機能を使用すると、Azure Stack を使用してデプロイされている Windows および Linux の VM を管理できます。
 
 - **[Update Management](https://docs.microsoft.com/azure/automation/automation-update-management)**. Update Management ソリューションでは、すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、Windows および Linux の VM に必要な更新プログラムをインストールするプロセスを管理できます。
 
-- **[Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. 監視対象サーバーにインストールされているソフトウェア、Windows サービス、および Windows レジストリとファイル、および Linux デーモンの変更が、クラウドの Log Analytics サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
+- **[Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. 監視対象サーバーにインストールされているソフトウェア、Windows サービス、Windows レジストリとファイル、および Linux デーモンの変更が、クラウドの Azure Monitor サービスに送信され、処理されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。 [変更の追跡] ダッシュボードの情報を使用して、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
 
 - **[Inventory](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. Azure Stack の仮想マシンを追跡する Inventory では、インベントリ コレクションを設定して構成するためのブラウザー ベースのユーザー インターフェイスが提供されます。 
 
@@ -44,7 +44,7 @@ Azure Stack の VM に対して Inventory、Change Tracking、Update Management 
 > [!TIP]
 > Azure VM に対してこれらの機能を既に有効にしてある場合は、Log Analytics ワークスペースの既存の資格情報を使用できます。 使用する Log Analytics のワークスペース ID とプライマリ キーが既にある場合は、[次のセクション](./vm-update-management.md#in-the-azure-stack-administration-portal)に進んでください。 それ以外の場合は、引き続きこのセクションで新しい Log Analytics ワークスペースと Automation アカウントを作成します。
 
-これらのソリューションを有効にする最初のステップは、Azure サブスクリプションで [Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)ことです。 Log Analytics ワークスペースは、独自のデータ リポジトリ、データ ソース、ソリューションを備えた固有の Log Analytics 環境です。 ワークスペースを作成した後、ワークスペース ID とキーを書き留めておいてください。 この情報は、ワークスペース ブレードに移動し、**[詳細設定]** をクリックして、**[ワークスペース ID]** と **[プライマリ キー]** で確認できます。 
+これらのソリューションを有効にする最初のステップは、Azure サブスクリプションで [Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)ことです。 Log Analytics ワークスペースは、独自のデータ リポジトリ、データ ソース、ソリューションを備えた固有の Azure Monitor ログ環境です。 ワークスペースを作成した後、ワークスペース ID とキーを書き留めておいてください。 この情報は、ワークスペース ブレードに移動し、**[詳細設定]** をクリックして、**[ワークスペース ID]** と **[プライマリ キー]** で確認できます。 
 
 次に、[Automation アカウントを作成する](https://docs.microsoft.com/azure/automation/automation-create-standalone-account)必要があります。 Automation アカウントは、Azure Automation リソースのコンテナーです。 お使いの環境を分離したり、Automation のワークフローとリソースをさらに整理したりする手段を提供します。 Automation アカウントを作成した後は、Inventory、Change Tracking、Update Management の各機能を有効にする必要があります。 そのためには、以下の手順のようにします。
 
@@ -52,7 +52,7 @@ Azure Stack の VM に対して Inventory、Change Tracking、Update Management 
 
 2. 有効にするソリューションを選択します (**[インベントリ]**、**[変更の追跡]**、または **[更新の管理]**)。
 
-3. **[ワークスペースの選択...]** ドロップダウン リストで、使用する Log Analytics ワークスペースを選択します。
+3. **[ワークスペースの選択]** ドロップダウン リストで、使用する Log Analytics ワークスペースを選択します。
 
 4. 残りのすべての情報が正しいことを確認し、**[有効化]** をクリックしてソリューションを有効にします。
 

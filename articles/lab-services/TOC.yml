@@ -91,6 +91,15 @@ items:
       href: personal-data-delete-export.md
     - name: 別のラボから仮想マシンをインポートする
       href: import-virtual-machines-from-another-lab.md
+    - name: イメージ ファクトリを作成する
+      href: image-factory-create.md
+      items:
+      - name: AzureDevOps からイメージ ファクトリを実行する
+        href: image-factory-set-up-devops-lab.md
+      - name: カスタム イメージを保存して複数のラボに配布する
+        href: image-factory-save-distribute-custom-images.md
+      - name: アイテム保持ポリシーを設定してクリーンアップ スクリプトを実行する
+        href: image-factory-set-retention-policy-cleanup.md
     - name: エンタープライズで DevTest Labs インフラストラクチャを設定する
       href: devtest-lab-guidance-prescriptive-adoption.md
       items:
@@ -132,6 +141,8 @@ items:
         href: devtest-lab-redeploy-vm.md
       - name: VM のインポート
         href: devtest-lab-import-vm.md
+      - name: PowerShell または CLI を使用して VM を開始/停止する
+        href: use-command-line-start-stop-virtual-machines.md
     - name: ラボでの環境の使用
       items:
       - name: 環境の作成
@@ -252,9 +263,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: よく寄せられる質問
       href: devtest-lab-faq.md
-ms.openlocfilehash: a0b21dfaa64b351e98b6f505568bdbc06c48dd1c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 03ae5399295c0f9fac29fb4cd88cea85130881f7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338379"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435636"

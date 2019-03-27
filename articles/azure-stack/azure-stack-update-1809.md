@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: a9cf502f169f4a9c4650545b1b37e11cc16a0a95
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: 58117bce8de667c9750b2e0c19992b99716945cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694382"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124203"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 更新プログラム
 
@@ -63,21 +63,21 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 - 次のマネージド ディスクの問題は 1809 で修正され、1808 [Azure Stack 修正プログラム 1.1808.9.117](https://support.microsoft.com/help/4481066/) でも修正されています。 
 
    <!--  2966665 – IS, ASDK --> 
-   - SSD データ ディスクをプレミアム サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチするときに次のエラーで失敗するという問題を修正しました。*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ (Standard_DS/Ds_V2/FS/Fs_v2)でサポートされていないため、要求された操作は実行できません。* 
+  - SSD データ ディスクをプレミアム サイズのマネージド ディスク仮想マシン (DS、DSv2、Fs、Fs_V2) にアタッチするときに次のエラーで失敗するという問題を修正しました。*仮想マシン 'vmname' のディスクを更新できませんでした。エラー: ストレージ アカウントの種類 'Premium_LRS' は VM サイズ (Standard_DS/Ds_V2/FS/Fs_v2)でサポートされていないため、要求された操作は実行できません。* 
    
-   - **createOption** を使用してマネージド ディスク VM を作成しています: **アタッチ**は次のエラーで失敗します: *長時間実行操作が状態 '失敗' で失敗しました。Additional Info:'An internal execution error occurred.' (追加情報:'内部実行エラーが発生しました。')*
-   ErrorCode:InternalExecutionError ErrorMessage: 内部実行エラーが発生しました。
+  - **createOption** を使用してマネージド ディスク VM を作成しています: **アタッチ**は次のエラーで失敗します: *長時間実行操作が状態 '失敗' で失敗しました。Additional Info:'An internal execution error occurred.' (追加情報:'内部実行エラーが発生しました。')*
+    ErrorCode:InternalExecutionError ErrorMessage: 内部実行エラーが発生しました。
    
-   この問題は修正されました。
+    この問題は修正されました。
 
-- <!-- 2702741 -  IS, ASDK --> 動的割り当てメソッドを使用してデプロイされているパブリック IP の固定された問題は、停止-割り当て解除が発行された後も保持される保証はありませんでした。 これらは保存されるようになりました。
+- <!-- 2702741 -  IS, ASDK --> 動的割り当てメソッドを使用してデプロイされたパブリック IP が、停止-割り当て解除の発行後に保持される保証がなかった問題を修正しました。 これらは保存されるようになりました。
 
 - <!-- 3078022 - IS, ASDK --> VM が 1808 の前に停止‐割り当て解除された場合、これは 1808 の更新後に再割り当てできませんでした。  この問題は 1809 で修正されています。 ここの状態にあり開始できなかったインスタンスは、この修正によって 1809 で開始できます。 また、修正プログラムにより、この問題は再発しないようになります。
 
 ### <a name="changes"></a>変更点
 
 <!-- 2635202 - IS, ASDK -->
-- インフラストラクチャ バックアップ サービスは、[パブリック インフラストラクチャ ネットワーク](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network)から[パブリック VIP ネットワーク](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network)に移動します。 お客様は、サービスがパブリック VIP ネットワークからバックアップ ストレージの場所にアクセスできることを確認する必要があります。  
+- インフラストラクチャ バックアップ サービスは、[パブリック インフラストラクチャ ネットワーク](https://docs.microsoft.com/azure/azure-stack/azure-stack-network)から[パブリック VIP ネットワーク](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network)に移動します。 お客様は、サービスがパブリック VIP ネットワークからバックアップ ストレージの場所にアクセスできることを確認する必要があります。  
 
 > [!IMPORTANT]  
 > パブリック VIP ネットワークからファイル サーバーへの接続を許可しないファイアウォールがある場合、この変更は、インフラストラクチャのバックアップが "エラー 53 ネットワーク パスが見つかりませんでした" で失敗する原因となります。 これは、妥当な回避策がない破壊的変更です。 お客様からのフィードバックに基づき、マイクロソフトでは、修正プログラム内でこの変更を元に戻します。 1809 に使用できる修正プログラムについて詳しくは、[「更新後の手順」セクション](#post-update-steps)をご覧ください。 修正プログラムが利用可能になったら、パブリック VIP ネットワークによるインフラストラクチャ リソースへのアクセスがネットワーク ポリシーによって許可されない場合にのみ、1809 への更新後に修正プログラムを適用してください。 1811 では、この変更はすべてのシステムに適用されます。 1809 に修正プログラムを適用した場合、他に必要な操作はありません。  
@@ -147,7 +147,9 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
   ```PowerShell
   Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
-  ``` 
+  ```
+
+- Azure Stack を System Center Operations Manager (SCOM) で管理している場合は、1809 を適用する前に、Microsoft Azure Stack 用の管理パックをバージョン 1.0.3.11 に更新してください。
 
 ### <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題
 
@@ -157,7 +159,7 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 
 - <!-- 2489559 - IS --> この更新プログラムのインストール中に仮想マシンを作成しようとしないでください。 更新プログラムの管理方法については、「[Azure Stack での更新プログラムの管理概要](azure-stack-updates.md#plan-for-updates)」を参照してください。
 
-- <!-- 3139614 | IS --> Azure Stack の更新を OEM から適用した場合は、Azure Stack 管理ポータルに「**利用可能な更新プログラムがあります**」の通知が表示されないことがあります。 Microsoft Update をインストールするには、こちらの「[Azure Stack で更新を適用する](azure-stack-apply-updates.md)」に記載されている手順を使用して、手動でダウンロードおよびインポートしてください。
+- <!-- 3139614 | IS --> Azure Stack の更新を OEM から適用した場合は、Azure Stack の管理者ポータルに "**利用可能な更新プログラムがあります**" の通知が表示されないことがあります。 Microsoft Update をインストールするには、こちらの「[Azure Stack で更新を適用する](azure-stack-apply-updates.md)」に記載されている手順を使用して、手動でダウンロードおよびインポートしてください。
 
 ### <a name="post-update-steps"></a>更新後の手順
 
@@ -295,10 +297,10 @@ Azure Stack 1809 更新プログラムのビルド番号は **1.1809.0.90** で�
 <!-- TBD - IS ASDK --> 
 - 更新プログラム 1809 の適用後、Managed Disks を使用した VM をデプロイするときに、次の問題が発生する可能性があります。
 
-   - 1808 更新の前にサブスクリプションが作成された場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
-      1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
-      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[AzureStack-DiskRP-Client]** ロールがリストに含まれていることを確認します。
-   2. マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、[この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
+  - 1808 更新の前にサブスクリプションが作成された場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
+     1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
+     2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[AzureStack-DiskRP-Client]** ロールがリストに含まれていることを確認します。
+  - マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、[この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
 
 - SSH の認可を有効にして作成した Ubuntu 18.04 VM では、SSH キーを使用してログインすることはできません。 回避策として、プロビジョニング後に Linux 拡張機能用の VM アクセスを使用して SSH キーを実装するか、パスワード ベースの認証を使用してください。
 

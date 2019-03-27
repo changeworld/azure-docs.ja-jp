@@ -11,28 +11,28 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
-ms.author: jeffgilb
+ms.date: 03/18/2019
+ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: a017e1c70658953e1c08cd92a7e1e5184fee0bb5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 1ea079373edc9b9f1dde6038f1e02e3d7036e052
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447397"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890493"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack を更新する
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 > [!IMPORTANT]  
-> Azure App Service 1.4 をデプロイする前に、Azure Stack 統合システムに 1809 以降の更新プログラムを適用するか、最新の Azure Stack 開発キットをデプロイします。 リソース プロバイダーを更新する前に、新しい機能、修正、およびデプロイに影響を与える可能性のある既知の問題に関する詳細については、リリース ノートを確認してください。
+> Azure App Service 1.5 をデプロイする前に、Azure Stack 統合システムに 1901 更新プログラムを適用するか、最新の Azure Stack Development Kit をデプロイします。
 
 この記事の手順に従うことによって、インターネットに接続されている Azure Stack 環境にデプロイされた [App Service リソース プロバイダー](azure-stack-app-service-overview.md)をアップグレードできます。
 
 > [!IMPORTANT]  
-> アップグレードを実行する前に、[Azure App Service on Azure Stack リソース プロバイダーのデプロイ](azure-stack-app-service-deploy.md)を既に完了していることを確認してください。
+> アップグレードを実行する前に、[Azure App Service on Azure Stack リソース プロバイダーのデプロイ](azure-stack-app-service-deploy.md)を既に完了していること、および 1.5 リリースに付属している[リリース ノート](azure-stack-app-service-release-notes-update-five.md)を読んで、新しい機能、修正、およびデプロイに影響を与える可能性のある既知の問題を把握していることを確認してください。
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>App Service リソースプロバイダーのインストーラーを実行する
 
@@ -52,7 +52,7 @@ ms.locfileid: "56447397"
 
 App Service on Azure Stack のデプロイをアップグレードするには、次の手順に従います。
 
-1. [App Service インストーラー](https://aka.ms/appsvcupdate4installer)をダウンロードする
+1. [App Service インストーラー](https://aka.ms/appsvcupdate5installer)をダウンロードする
 
 2. 管理者として appservice.exe を実行する
 
@@ -72,13 +72,13 @@ App Service on Azure Stack のデプロイをアップグレードするには�
 
    1. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスの横にある **[接続]** をクリックします。
         * Azure Active Directory (Azure AD) を使っている場合は、Azure Stack のデプロイ時に指定した、Azure AD の管理者アカウントとパスワードを入力します。 **[サインイン]** をクリックします。
-        * Active Directory フェデレーション サービス (AD FS) を使用している場合は、ご自分の管理者アカウントを指定します。 たとえば、*cloudadmin@azurestack.local* です。 パスワードを入力し、**[サインイン]** をクリックします。
+        * Active Directory フェデレーション サービス (AD FS) を使用している場合は、ご自分の管理者アカウントを指定します。 たとえば、*cloudadmin\@azurestack.local* です。 パスワードを入力し、**[サインイン]** をクリックします。
    2. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスで、**[Default Provider Subscription]\(既定のプロバイダー サブスクリプション\)** を選びます。
    3. **[Azure Stack Locations]\(Azure Stack の場所\)** ボックスで、デプロイしているリージョンに対応する場所を選びます。 たとえば、Azure Stack Development Kit にデプロイしている場合は、**[ローカル]** を選びます。
    4. 既存の App Service デプロイが検出された場合は、リソース グループとストレージ アカウントにデータが入力され、灰色表示されます。
    5. **[次へ]** をクリックして、アップグレードの概要を確認します。
 
-    ![検出された App Service インストール][3]
+      ![検出された App Service インストール][3]
 
 8. 概要ページで、次のことを行います。
    1. 選択した内容を確認します。 変更を加えるには、**[前へ]** を使って前のページに戻ります。

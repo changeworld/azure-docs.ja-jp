@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 03/11/2019
 ms.author: patricka
-ms.reviewer: unknown
-ms.lastreviewed: 12/06/2018
-ms.openlocfilehash: 03c1879c34a00bb09b5a4dee6af7da7b984045fc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.reviewer: fiseraci
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 3565bf4c4a19bcf1b136b4cbb781006658865a1c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241187"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767211"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Azure Stack のロールベースのアクセス制御でリソースへのアクセスを管理する
 
@@ -93,8 +93,8 @@ Azure の[ロールの割り当て](https://docs.microsoft.com/azure/role-based-
 2. 左側のナビゲーション ペインで、**[リソース グループ]** を選択します。
 3. アクセス許可を設定するリソース グループの名前を選択します。
 4. リソース グループのナビゲーション ペインで、**[アクセス制御 (IAM)]** を選択します。 **[ロールの割り当て]** ビューに、リソース グループへのアクセス権を持つ項目が一覧表示されます。 結果はフィルター処理してグループ化できます。
-5. **[アクセス制御]** メニュー バーで、**[ロールの割り当ての追加]** を選択します。
-6. **[ロールの割り当ての追加]** ウィンドウ:
+5. **[アクセス制御]** メニュー バーで、**[追加]** を選択します。
+6. **[アクセス許可の追加]** ウィンドウで:
 
    * 割り当てるロールを **[ロール]** ドロップダウン リストから選択します。
    * 割り当てるリソースを **[アクセスの割り当て先]** ドロップダウン リストから選択します。

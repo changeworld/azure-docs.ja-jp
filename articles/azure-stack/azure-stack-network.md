@@ -16,18 +16,18 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 97fcfa20e474edb8108474ef02c6542688d627ff
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 3705b2dda7da8df2e6e3c98d5f6003bd3d771daf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243488"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098578"
 ---
 # <a name="network-connectivity"></a>ネットワーク接続
 この記事では、Azure Stack を既存のネットワーク環境に統合する最善の方法を決定するために役立つ Azure Stack ネットワーク インフラストラクチャの情報を提供します。 
 
 > [!NOTE]
-> Azure Stack から外部の DNS 名を解決するには (たとえば www.bing.com)、DNS 要求を転送するための DNS サーバーを提供する必要があります。 Azure Stack の DNS 要件の詳細については、「[Azure Stack とデータセンターの統合 - DNS](azure-stack-integrate-dns.md)」をご覧ください。
+> Azure Stack から外部の DNS 名 (たとえば www\.bing.com) を解決するには、DNS 要求を転送するための DNS サーバーを提供する必要があります。 Azure Stack の DNS 要件の詳細については、「[Azure Stack とデータセンターの統合 - DNS](azure-stack-integrate-dns.md)」をご覧ください。
 
 ## <a name="physical-network-design"></a>物理ネットワークの設計
 Azure Stack ソリューションには、その操作やサービスをサポートするための回復性と可用性の高い物理インフラストラクチャが必要です。 ToR から境界スイッチへのアップリンクは、SFP + または SFP28 メディア、1 GB、10 GB、または 25 GB の速度に制限されます。 OEM (Original Equipment Manufacturer) ハードウェア ベンダーに可用性を確認してください。 推奨される設計を次の図に示します。

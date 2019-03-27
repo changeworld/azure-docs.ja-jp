@@ -26,10 +26,6 @@ items:
     href: gen2-migration-schedule.md
   - name: アーカイブされたリリース ノート
     items:
-    - name: 2018 年 12 月
-      href: release-notes-december-2018.md
-    - name: 2018 年 10 月
-      href: release-notes-october-2018.md
     - name: 2018 年 9 月
       href: release-notes-september-2018.md
     - name: 2018 年 8 月
@@ -245,16 +241,18 @@ items:
     items:
     - name: ワークロードの分析
       href: analyze-your-workload.md
-  - name: 監視と調整
+  - name: 管理および監視
     items:
-    - name: DMV によるワークロードの監視
-      href: sql-data-warehouse-manage-monitor.md
     - name: Gen2 へのアップグレード
       href: upgrade-to-latest-generation.md
-    - name: Gen2 キャッシュの監視
-      href: sql-data-warehouse-how-to-monitor-cache.md
     - name: データ ウェアハウスの復元
       href: sql-data-warehouse-restore.md
+    - name: ワークロードの監視 - ポータル
+      href: sql-data-warehouse-monitor-workload-portal.md
+    - name: ワークロードの監視 - DMV
+      href: sql-data-warehouse-manage-monitor.md
+    - name: Gen2 キャッシュの監視
+      href: sql-data-warehouse-how-to-monitor-cache.md
   - name: 統合
     items:
     - name: 機械学習の使用
@@ -319,9 +317,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: データ管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 1ee4b1806047d93cbdbe0758b728dd4d835cf8eb
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: e206a9a171736ac7755e670838ee4854dabcdffb
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309454"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402866"

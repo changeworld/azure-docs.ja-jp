@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
-ms.openlocfilehash: 5252eed66018cd2028545567dfe62ca7ba17be7e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 96325d7c21ccf7d93deaafbad974009004030157
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247818"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091989"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>サービスとしての検証のリリース ノート
 
@@ -28,14 +28,13 @@ ms.locfileid: "55247818"
 この記事には、Azure Stack のサービスとしての検証のリリース ノートが含まれています。
 
 ## <a name="version-405"></a>バージョン 4.0.5
+
 2019 年 1 月 17 日
 
--  Disk Identification Test (ディスク識別テスト) がストレージ プールの不整合を解決するために更新されました。 バージョン:5.1.14.0  -> 5.1.15.0
--  Azure Stack 月間更新検証が、承認済みソフトウェアおよびコンテンツの検証の不整合を解決するために更新されました。 バージョン:5.1.14.0  -> 5.1.15.0
--  OEM Extension Package Verification (OEM 拡張機能パッケージの検証) が、Azure Stack の更新手順の*前*に必要なチェックを実行するよう更新されました。 バージョン:5.1.14.0  -> 5.1.15.0
--  内部のバグ修正
-
-
+- Disk Identification Test (ディスク識別テスト) がストレージ プールの不整合を解決するために更新されました。 バージョン:5.1.14.0 -> 5.1.15.0
+- Azure Stack 月間更新検証が、承認済みソフトウェアおよびコンテンツの検証の不整合を解決するために更新されました。 バージョン:5.1.14.0 -> 5.1.17.0
+- OEM Extension Package Verification (OEM 拡張機能パッケージの検証) が、Azure Stack の更新手順の前に必要なチェックを実行するよう更新されました。 バージョン:5.1.14.0 -> 5.1.16.0
+- 内部のバグ修正
 
 ## <a name="version-402"></a>バージョン 4.0.2
 
@@ -43,10 +42,10 @@ ms.locfileid: "55247818"
 
 Azure Stack 月間更新検証ワークフローを実行しているとき、ご利用の OEM 更新プログラム パッケージのバージョンが 1810 以降でない場合、OEM 更新手順に進んだときにエラーが表示されます。 これはバグです。 修正プログラムを開発中です。軽減策の手順は次のとおりです。
 
-1.  OEM の更新プログラムを通常どおり実行します。
-2.  パッケージが正常に適用されたら Test-AzureStack を実行し、出力を保存します。
-3.  テストを取り消します。
-4.  保存した出力を VaaSHelp@microsoft.com に送信し、実行の合格結果を受け取ります。
+1. OEM の更新プログラムを通常どおり実行します。
+2. パッケージが正常に適用されたら Test-AzureStack を実行し、出力を保存します。
+3. テストを取り消します。
+4. 保存した出力を VaaSHelp@microsoft.com に送信し、実行の合格結果を受け取ります。
 
 ## <a name="version-402"></a>バージョン 4.0.2
 
@@ -77,7 +76,7 @@ Azure Stack 月間更新検証ワークフローを実行しているとき、�
 
 - VaaS の前提条件と VHD の更新
 
-    ソリューション検証時の問題に対処するために、`Install-VaaSPrerequisites` に、クラウド管理者の資格情報が必要になりました。 「[Download and install the agent (エージェントのダウンロードとインストール)](azure-stack-vaas-local-agent.md#download-and-install-the-agent)」のドキュメントが次のように更新されました。
+    パッケージ検証時の問題に対処するために、`Install-VaaSPrerequisites` に、クラウド管理者の資格情報が必要になりました。 「[Download and install the agent (エージェントのダウンロードとインストール)](azure-stack-vaas-local-agent.md#download-and-install-the-agent)」のドキュメントが次のように更新されました。
 
     ```PowerShell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -104,11 +103,11 @@ Azure Stack 月間更新検証ワークフローを実行しているとき、�
 
   - パッケージの署名の通知
 
-    ソリューション検証ワークフローの一環として OEM カスタマイズ パッケージが提出されると、パッケージ形式が検証され、公開されている仕様に従っているかどうかが確認されます。 パッケージが準拠していない場合、実行は失敗します。 テナントの登録済みの Azure Active Directory 連絡先の電子メール アドレスに電子メール通知が送信されます。
+    パッケージ検証ワークフローの一環として OEM カスタマイズ パッケージが提出されると、パッケージ形式が検証され、公開されている仕様に従っているかどうかが確認されます。 パッケージが準拠していない場合、実行は失敗します。 テナントの登録済みの Azure Active Directory 連絡先の電子メール アドレスに電子メール通知が送信されます。
 
   - 対話型テスト カテゴリ
 
-    **対話型**テスト カテゴリが追加されました。 これらのテストにより、パートナーは自動化されていない対話型の Azure Stack シナリオを実行できます。
+    **対話型**テスト カテゴリが追加されました。 これらのテストにより、自動化されていない対話型の Azure Stack シナリオが実行されます。
 
   - 対話型の機能検証
 
