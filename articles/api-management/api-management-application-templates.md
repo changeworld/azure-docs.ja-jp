@@ -81,8 +81,8 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 |プロパティ|type|説明|  
 |--------------|----------|-----------------|  
-|ページング|[ページング](api-management-template-data-model-reference.md#Paging) エンティティ。|アプリケーション コレクションのページング情報。|  
-|[アプリケーション]|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーに表示されるアプリケーション。|  
+|Paging|[ページング](api-management-template-data-model-reference.md#Paging) エンティティ。|アプリケーション コレクションのページング情報。|  
+|[Applications]|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーに表示されるアプリケーション。|  
 |CategoryName|string|アプリケーションのカテゴリ。|  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
