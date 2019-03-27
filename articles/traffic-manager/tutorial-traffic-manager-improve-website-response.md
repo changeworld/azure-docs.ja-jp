@@ -52,7 +52,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 #### <a name="create-vms-for-running-websites"></a>Web サイトを実行するための VM を作成する
 このセクションでは、2 台の VM (*myIISVMEastUS* と *myIISVMWEurope*) を、Azure リージョンの**米国東部**と**西ヨーロッパ**に作成します。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** >  を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
+1. Azure Portal の左上隅にある **[リソースの作成]** > を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
 2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
 
     |Setting|値|
@@ -112,7 +112,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from " + $env:computername)
     ```
 
-     ![IIS のインストールと Web ページのカスタマイズ](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
+    ![IIS のインストールと Web ページのカスタマイズ](./media/tutorial-traffic-manager-improve-website-response/deployiis.png)
 8. *myIISVMEastUS* との RDP 接続を閉じます。
 9. *myResourceGroupTM2* リソース グループ内の VM (*myIISVMWEurope*) への RDP 接続を作成し、手順 1 から 8 を繰り返して、IIS のインストールと既定の Web ページのカスタマイズを実行します。
 
@@ -129,7 +129,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 このセクションでは、VM (*mVMEastUS* と *myVMWestEurope*) を、該当する Azure リージョン (**米国東部**と**西ヨーロッパ**) 内に作成します。 これらの VM は、Web サイトが参照されるときに、Traffic Manager が最も近い IIS サーバーにトラフィックをルーティングすることをテストするために使用します。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** >  を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
+1. Azure Portal の左上隅にある **[リソースの作成]** > を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
 2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
 
     |Setting|値|
