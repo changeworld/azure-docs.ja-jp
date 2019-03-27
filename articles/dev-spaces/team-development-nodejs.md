@@ -1,21 +1,20 @@
 ---
-title: Node.js と VS Code を使用する Azure Dev Spaces でのチーム開発 | Microsoft Docs
+title: Node.js と VS Code を使用する Azure Dev Spaces でのチーム開発
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: bd2c58860ca51d6a137df656a4098dea1cfc48c1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
+ms.openlocfilehash: f0fc1e693f3eccd0b6f6b69339f210785df6ea69
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658557"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773234"
 ---
 [!INCLUDE [](../../includes/devspaces-team-development-1.md)]
 

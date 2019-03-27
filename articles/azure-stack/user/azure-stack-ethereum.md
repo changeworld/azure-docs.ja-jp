@@ -12,12 +12,12 @@ ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
 ms.lastreviewed: 02/04/2019
-ms.openlocfilehash: 6c9893aac349b05580f49a445bd088ed5c76044b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a1902ae2bf663c432876a0f73e2bb17616023b8a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697478"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006922"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Azure Stack 上に Ethereum ブロックチェーン ネットワークをデプロイする
 
@@ -39,7 +39,7 @@ Azure Stack テナント ポータルでわずかなユーザー入力とワン�
 - Linux 2.0 用のカスタム スクリプト
 - Windows でのカスタムのスクリプト拡張機能
 
-ブロックチェーン シナリオの詳細については、「[Ethereum プルーフオブワーク コンソーシアム ソリューション テンプレート](../../blockchain/templates/ethereum-deployment.md)」を参照してください。
+ブロックチェーン シナリオの詳細については、「[Ethereum Proof-of-Authority コンソーシアム ソリューション テンプレート](../../blockchain/templates/ethereum-poa-deployment.md)」を参照してください。
 
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 
@@ -97,7 +97,7 @@ Azure Stack テナント ポータルでわずかなユーザー入力とワン�
     ---------------|-------------|----------------|-------------
     サブスクリプション | コンソーシアム ネットワークをデプロイするサブスクリプション | | 消費サブスクリプション
     リソース グループ | コンソーシアム ネットワークをデプロイするリソース グループ | | EthereumResources
-    場所 | リソース グループの Azure リージョン。 | | local
+    Location | リソース グループの Azure リージョン。 | | local
 
 8. **作成**を選択します。
 
@@ -145,7 +145,7 @@ Azure Stack テナント ポータルでわずかなユーザー入力とワン�
     ---------------|-------------|----------------|-------------
     サブスクリプション | コンソーシアム ネットワークをデプロイするサブスクリプション | | 消費サブスクリプション
     リソース グループ | コンソーシアム ネットワークをデプロイするリソース グループ | | MemberResources
-    場所 | リソース グループの Azure リージョン。 | | local
+    Location | リソース グループの Azure リージョン。 | | local
 
 8. **作成**を選択します。
 
@@ -195,7 +195,7 @@ Azure Stack テナント ポータルでわずかなユーザー入力とワン�
     ---------------|-------------|----------------|-------------
     サブスクリプション | リーダーのサブスクリプション。 | | 消費サブスクリプション
     リソース グループ | リーダーのリソース グループ。 | | EthereumResources
-    場所 | リソース グループの Azure リージョン。 | | local
+    Location | リソース グループの Azure リージョン。 | | local
 
 8. **作成**を選択します。
 

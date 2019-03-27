@@ -10,44 +10,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 03/04/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: c866bb1ff5603f08377ed96ddd81eedf71e243bf
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 55c9120547472bb9a9a74533fe532d346844e89c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593236"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081765"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>チュートリアル:サービスとしての検証のためのリソースを設定する
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-お客様はソリューションを作成する必要があります。 サービスとしての検証 (VaaS) ソリューションは、特定のハードウェア部品表を含む Azure Stack ソリューションを表します。 このソリューションを使用して、お客様のハードウェアで Azure Stack の実行をサポートできるかどうかを確認します。 このチュートリアルに従って、ソリューションでサービスを使用する準備を行います。
+サービスとしての検証 (VaaS) は、マーケットで Azure Stack ソリューションを検証およびサポートするために使用される Azure サービスです。 ソリューションを検証するサービスを使用する前に、この記事に従ってください。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * Azure AD (Azure AD) インスタンスを設定して、VaaS を使用する準備を行う。
+> * Azure Active Directory (AD) を設定して VaaS を使用する準備をします。
 > * ストレージ アカウントを作成します。
 
 ## <a name="configure-an-azure-ad-tenant"></a>Azure AD テナントの構成
 
-VaaS での認証と登録には Azure AD テナントが必要です。 パートナーの組織内でだれが VaaS を使用できるかは、そのパートナーがテナントのロールベースのアクセス制御 (RBAC) 機能を使って管理します。
-
-(Azure Stack に使用される Azure AD テナント ディレクトリではなく) 組織の Azure AD テナント ディレクトリを登録し、その中でユーザー アカウントを管理するためのポリシーを確立します。 詳細については、[ご自身の Azure AD ディレクトリの管理](https://docs.microsoft.com/azure/active-directory/active-directory-administer)に関するページをご覧ください。
+Azure AD テナントは、組織を登録し、VaaS を使用してユーザーを認証します。 パートナーは、テナントのロールベースのアクセス制御 (RBAC) 機能を使って、パートナーの組織内でだれが VaaS を使用できるかを管理します。 詳細については、「[Azure Active Directory とは](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis)」を参照してください。
 
 ### <a name="create-a-tenant"></a>テナントの作成
 
-VaaS 専用のテナントを作成し、わかりやすい名前 (たとえば、`ContosoVaaS@onmicrosoft.com`) を付けます。
+組織が VaaS サービスへのアクセスに使用するテナントを作成します。 わかりやすい名前を付けます。例、`ContosoVaaS@onmicrosoft.com`。
 
 1. [Azure portal](https://portal.azure.com) で Azure AD テナントを作成するか、既存のテナントを使用します。 <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad). -->
 
 2. 組織のメンバーをテナントに追加します。 これらのユーザーは、サービスを使用してテストを表示またはスケジュール設定する責任を負います。 登録が完了したら、ユーザーのアクセス レベルを定義します。
- 
+
     次のいずれかのロールを割り当てることで、VaaS でアクションを実行する権限をテナント内のユーザーに付与します。
 
     | ロール名 | 説明 |
@@ -58,13 +56,13 @@ VaaS 専用のテナントを作成し、わかりやすい名前 (たとえば�
 
     **Azure Stack Validation Service** アプリケーションでロールを割り当てるには:
 
-    1. [Azure Portal](https://portal.azure.com) にサインインします。
-    2. **[すべてのサービス]** > **[ID]** セクションの下の **[Azure Active Directory]** を選択します。
-    3. **[エンタープライズ アプリケーション]** > **[Azure Stack Validation Service]** アプリケーションを選択します。
-    4. **[ユーザーとグループ]** を選択します。 **[Azure Stack Validation Service - Users and group]\(Azure Stack Validation Service - ユーザーとグループ\)** ブレードに、アプリケーションの使用を許可されたユーザーが一覧表示されます。
-    5. **+ [ユーザーの追加]** を選択し、テナントからユーザーを追加してロールを割り当てます。
-   
-    組織内の異なるグループ間で VaaS リソースとアクションを分離したい場合は、複数の Azure AD テナント ディレクトリを作成できます。
+   1. [Azure Portal](https://portal.azure.com) にサインインします。
+   2. **[すべてのサービス]** > **[ID]** セクションの下の **[Azure Active Directory]** を選択します。
+   3. **[エンタープライズ アプリケーション]** > **[Azure Stack Validation Service]** アプリケーションを選択します。
+   4. **[ユーザーとグループ]** を選択します。 **[Azure Stack Validation Service - Users and group]\(Azure Stack Validation Service - ユーザーとグループ\)** ブレードに、アプリケーションの使用を許可されたユーザーが一覧表示されます。
+   5. **+ [ユーザーの追加]** を選択し、テナントからユーザーを追加してロールを割り当てます。
+
+      組織内の異なるグループ間で VaaS リソースとアクションを分離したい場合は、複数の Azure AD テナント ディレクトリを作成できます。
 
 ### <a name="register-your-tenant"></a>テナントの登録
 
@@ -102,10 +100,7 @@ Azure ストレージ アカウントは、お客様の Azure Stack 環境では
 
 3. **[リソース グループ]** で、**[新規作成]** を選択します。 新しいリソース グループの名前を入力します。
 
-4. ストレージ アカウントの名前を入力します。 選択する名前は、以下の条件を満たしている必要があります。
-    - Azure 全体で一意であること
-    - 3 から 24 文字であること
-    - 数字と小文字のみを含むこと
+4. Azure Storage アカウントの [[名前付け規則]](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions#storage) をレビューします。 ストレージ アカウントの名前を入力します。
 
 5. ストレージ アカウントのリージョンとして **[米国西部]** を選択します。
 
@@ -119,7 +114,7 @@ Azure ストレージ アカウントは、お客様の Azure Stack 環境では
     - **[レプリケーション]** フィールドは、既定では **[ローカル冗長ストレージ (LRS)]** に設定されています。
     - **[アクセス レベル]** は、既定では **[ホット]** に設定されています。
 
-7. **[確認および作成]** をクリックして、ストレージ アカウントの設定を確認し、アカウントを作成します。
+7. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認し、アカウントを作成します。
 
 ## <a name="next-steps"></a>次の手順
 
