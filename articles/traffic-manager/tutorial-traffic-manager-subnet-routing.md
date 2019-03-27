@@ -24,7 +24,6 @@ ms.locfileid: "54478248"
 
 このチュートリアルでは、サブネットのルーティングを使用し、ユーザーのクエリの IP アドレスに応じて、トラフィックを内部 Web サイトまたは運用 Web サイトにルーティングします。
 
-
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
@@ -34,7 +33,6 @@ ms.locfileid: "54478248"
 > * ユーザーのサブネットに基づいてトラフィックをルーティングするための Traffic Manager プロファイルを作成する
 > * Traffic Manager プロファイルに VM エンドポイントを追加する
 > * Traffic Manager の動作確認
-
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -58,7 +56,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 #### <a name="create-vms-for-running-websites"></a>Web サイトを実行するための VM を作成する
 このセクションでは、2 台の VM (*InternalWebsite* と *ProdWebsite*) を、Azure リージョンの**米国東部**と**西ヨーロッパ**に作成します。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** >  を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
+1. Azure Portal の左上隅にある **[リソースの作成]** > を選択し、**[コンピューティング]** > **[Windows Server 2016 VM]** を選択します。
 2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
 
     |Setting|値|
@@ -139,7 +137,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
 このセクションでは、VM (*UserVMUS* と *UserVMEurope*) を、該当する Azure リージョン (**米国東部**と**西ヨーロッパ**) 内に作成します。 これらの VM は、Web サイトが参照されるときに、Traffic Manager が最も近い IIS サーバーにトラフィックをルーティングすることをテストするために使用します。
 
-1. Azure portal の左上隅にある **[リソースの作成]** >  を選択し、**[Compute]** > **[Windows Server 2016 Datacenter]** を選択します。
+1. Azure portal の左上隅にある **[リソースの作成]** > を選択し、**[Compute]** > **[Windows Server 2016 Datacenter]** を選択します。
 2. **[基本]** について次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[作成]** を選択します。
 
     |Setting|値|
