@@ -2,21 +2,21 @@
 title: SQL Server Integration Services パッケージを Azure に移行する | Microsoft Docs
 description: SQL Server Integration Services パッケージを Azure に移行する方法について説明します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/15/2018
-ms.openlocfilehash: 2fa37d31e984399c1b676cf6c6112617fac43fd9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 884af4624c1e92ee765353c90fd189220664381d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721939"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183426"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-azure"></a>SQL Server Integration Services パッケージを Azure に移行する
 SQL Server Integration Services (SSIS) を使用していて、その SSIS プロジェクト/パッケージを、SQL Server によってホストされている配置元の SSISDB から、Azure SQL Database サーバーまたは Azure SQL Database Managed Instance によってホストされている配置先の SSISDB に移行したい場合は、Integration Services 展開ウィザードを使用して、それらを再デプロイします。 そのウィザードは、SQL Server Management Studio (SSMS) 内から起動することができます。

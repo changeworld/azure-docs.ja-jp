@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/11/2018
+ms.date: 01/31/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fe6a1db295bc8fb1ab8e6c9d2d149be62871e733
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 9d4aee884e91c52be48c8a44f185f188b0c93ab5
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629817"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511141"
 ---
 # <a name="build-a-net-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での .NET Core および SQL Database のアプリの作成
 
@@ -250,7 +250,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-### <a name="browse-to-the-azure-app"></a>Azure アプリの参照
+### <a name="browse-to-the-azure-app"></a>Azure アプリを参照する
 
 Web ブラウザーを使用して、デプロイされたアプリを参照します。
 
@@ -360,7 +360,36 @@ git push azure master
 
 既存のすべての To Do 項目がまだ表示されています。 .NET Core アプリを再発行しても、SQL Database の既存のデータは消失しません。 また、Entity Framework Core Migrations によって変更されるのはデータ スキーマのみであり、既存のデータはそのまま残されます。
 
-## <a name="manage-your-azure-app"></a>Azure アプリの管理
+## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
+
+サンプル プロジェクトは既に、[Azure における ASP.NET Core のログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure)に関するページのガイダンスに従っています。ただし、次の 2 つの変更を構成に加えています。
+
+- *DotNetCoreSqlDb.csproj* で `Microsoft.Extensions.Logging.AzureAppServices` への参照を追加しています。
+- *Startup.cs* で `loggerFactory.AddAzureWebAppDiagnostics()` を呼び出します。
+
+> [!NOTE]
+> プロジェクトのログ レベルは、*appsettings.json* で `Information` に設定されています。
+> 
+
+App Service on Linux では、アプリは、既定の Docker イメージのコンテナー内で実行されます。 コンテナー内から生成されたコンソール ログにアクセスできます。 ログを取得するには、まず Cloud Shell で [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) コマンドを実行して、コンテナーのログ記録をオンにします。
+
+```azurecli-interactive
+az webapp log config --name <app_name> --resource-group myResourceGroup --docker-container-logging filesystem
+```
+
+コンテナーのログが有効になったら、Cloud Shell から [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) コマンドを実行してログ ストリームを観察します。
+
+```azurecli-interactive
+az webapp log tail --name <app_name> --resource-group myResourceGroup
+```
+
+ログのストリーミングが開始されたら、ブラウザーで Azure アプリを最新の情報に更新して、Web トラフィックを取得します。 ターミナルにパイプされたコンソール ログが表示されます。 コンソール ログがすぐに表示されない場合は、30 秒以内にもう一度確認します。
+
+任意のタイミングでログのストリーミングを停止するには、`Ctrl` + `C` キーを押します。
+
+ASP.NET Core のログのカスタマイズの詳細については、「[ASP.NET Core でのログ記録](https://docs.microsoft.com/aspnet/core/fundamentals/logging)」を参照してください。
+
+## <a name="manage-your-azure-app"></a>Azure アプリを管理する
 
 [Azure portal](https://portal.azure.com) に移動し、お客様が作成したアプリを表示します。
 
@@ -368,7 +397,7 @@ git push azure master
 
 ![Azure アプリへのポータル ナビゲーション](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
 
-既定では、ポータルはアプリの **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
+既定では、ポータルにはアプリの **[概要]** ページが表示されます。 このページでは、アプリの動作状態を見ることができます。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
 ![Azure Portal の [App Service] ページ](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
 
@@ -387,7 +416,7 @@ git push azure master
 > * Azure からターミナルにログをストリーミングする
 > * Azure Portal でアプリを管理する
 
-次のチュートリアルに進み、カスタム DNS 名をアプリにマップする方法を学習してください。
+次のチュートリアルに進んで、カスタム DNS 名をアプリにマップする方法を確認してください。
 
 > [!div class="nextstepaction"]
 > [既存のカスタム DNS 名を Azure App Service にマップする](../app-service-web-tutorial-custom-domain.md)

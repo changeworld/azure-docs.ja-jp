@@ -1,54 +1,57 @@
 ---
-title: 自動スケールの一般的なメトリック
-description: Cloud Services、Virtual Machines、Web Apps の自動スケールに一般的に使用されるメトリックについて説明します。
+title: Autoscale common metrics
+description: Learn which metrics are commonly used for autoscaling your Cloud Services, Virtual Machines and Web Apps.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
-ms.component: autoscale
-ms.openlocfilehash: d12edc2023deb69118d7c02e053cd2525f6ae684
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.subservice: autoscale
+ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437726"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312054"
 ---
-# <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor の自動スケールの一般的なメトリック
-Azure Monitor の自動スケールを使用すると、テレメトリ データ (メトリック) に基づいて、実行インスタンス数を増減してスケールすることができます。 このドキュメントでは、一般的なメトリックについて説明します。必要に応じて利用してください。 Azure portal で、スケールに使用するリソースのメトリックを選択できます。 ただし、スケールには、さまざまなリソースのメトリックを選択できます。
+# <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor autoscaling common metrics
 
-Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)にのみ適用されます。 他の Azure サービスでは、異なるスケーリング方法が使用されています。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="compute-metrics-for-resource-manager-based-vms"></a>Resource Manager ベースの VM のコンピューティング メトリック
-既定では、Resource Manager ベースの Virtual Machines と Virtual Machine Scale Sets によって基本 (ホスト レベル) メトリックが出力されます。 また、Azure VM と VMSS の診断データ収集を構成する場合は、Azure 診断拡張機能によってゲスト OS パフォーマンス カウンター (一般に「ゲスト OS メトリック」と呼ばれる) も出力されます。  自動スケールの規則では、これらすべてのメトリックを使用します。
+Azure Monitor autoscaling allows you to scale the number of running instances up or down, based on telemetry data (metrics). This document describes common metrics that you might want to use. In the Azure portal, you can choose the metric of the resource to scale by. However, you can also choose any metric from a different resource to scale by.
 
-VMSS リソースに使用できるメトリックを確認するには、`Get MetricDefinitions` API/PoSH/CLI を使用します。
+Azure Monitor autoscale applies only to [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/), and [API Management services](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Other Azure services use different scaling methods.
 
-VM Scale Sets を使用し、特定のメトリックが一覧に表示されない場合は、診断拡張機能で "*無効になっている*" 可能性があります。
+## <a name="compute-metrics-for-resource-manager-based-vms"></a>Compute metrics for Resource Manager-based VMs
+By default, Resource Manager-based Virtual Machines and Virtual Machine Scale Sets emit basic (host-level) metrics. In addition, when you configure diagnostics data collection for an Azure VM and VMSS,  the Azure diagnostic extension also emits guest-OS performance counters (commonly known as "guest-OS metrics").  You use all these metrics in autoscale rules.
 
-特定のメトリックが、目的の頻度でサンプリングまたは転送が行われない場合は、診断の構成を更新することができます。
+You can use the `Get MetricDefinitions` API/PoSH/CLI to view the metrics available for your VMSS resource.
 
-上記のいずれかに該当する場合は、「[PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする](../../virtual-machines/extensions/diagnostics-windows.md)」を参照し、PowerShell で Azure VM 診断拡張機能を構成してメトリックを有効に変更してください。 また、この記事には、診断構成ファイルの例も紹介されています。
+If you're using VM scale sets and you don't see a particular metric listed, then it is likely *disabled* in your diagnostics extension.
 
-### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Resource Manager ベースの Windows と Linux VM のホスト メトリック
-以下のホスト レベルのメトリックは、Windows と Linux の両方のインスタンスで Azure VM と VMSS に既定で出力されます。 以下のメトリックでは Azure VM について説明しますが、ゲスト VM にインストールされているエージェントを介してではなく、Azure VM ホストから収集されます。 自動スケールの規則では、以下のメトリックを使用する場合があります。
+If a particular metric is not being sampled or transferred at the frequency you want, you can update the diagnostics configuration.
 
-- [Resource Manager ベースの Windows と Linux VM のホスト メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
-- [Resource Manager ベースの Windows と Linux VM Scale Sets のホスト メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+If either preceding case is true, then review [Use PowerShell to enable Azure Diagnostics in a virtual machine running Windows](../../virtual-machines/extensions/diagnostics-windows.md) about PowerShell to configure and update your Azure VM Diagnostics extension to enable the metric. That article also includes a sample diagnostics configuration file.
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>ゲスト OS メトリック Resource Manager ベースの Windows VM
-診断拡張機能を使用して Azure で VM を作成すると、診断は有効になります。 診断拡張機能では、VM 内から取得した一連のメトリックを出力します。 これで、既定では出力されないメトリックから自動スケールができます。
+### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Host metrics for Resource Manager-based Windows and Linux VMs
+The following host-level metrics are emitted by default for Azure VM and VMSS in both Windows and Linux instances. These metrics describe your Azure VM, but are collected from the Azure VM host rather than via agent installed on the guest VM. You may use these metrics in autoscaling rules.
 
-メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
+- [Host metrics for Resource Manager-based Windows and Linux VMs](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
+- [Host metrics for Resource Manager-based Windows and Linux VM Scale Sets](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
+
+### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Guest OS metrics Resource Manager-based Windows VMs
+When you create a VM in Azure, diagnostics is enabled by using the Diagnostics extension. The diagnostics extension emits a set of metrics taken from inside of the VM. This means you can autoscale off of metrics that are not emitted by default.
+
+You can generate a list of the metrics by using the following command in PowerShell.
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-次のメトリックのアラートを作成できます。
+You can create an alert for the following metrics:
 
-| メトリックの名前 | 単位 |
+| Metric Name | Unit |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |Percent |
 | \Processor(_Total)\% Privileged Time |Percent |
@@ -72,24 +75,24 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \PhysicalDisk(_Total)\Disk Bytes/sec |BytesPerSecond |
 | \PhysicalDisk(_Total)\Disk Read Bytes/sec |BytesPerSecond |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |BytesPerSecond |
-| \PhysicalDisk(_Total)\Avg.ディスク キューの長さ |Count |
-| \PhysicalDisk(_Total)\Avg.Disk Read Queue Length |Count |
-| \PhysicalDisk(_Total)\Avg.Disk Write Queue Length |Count |
+| \PhysicalDisk(_Total)\Avg. Disk Queue Length |Count |
+| \PhysicalDisk(_Total)\Avg. Disk Read Queue Length |Count |
+| \PhysicalDisk(_Total)\Avg. Disk Write Queue Length |Count |
 | \LogicalDisk(_Total)\% Free Space |Percent |
 | \LogicalDisk(_Total)\Free Megabytes |Count |
 
-### <a name="guest-os-metrics-linux-vms"></a>ゲスト OS メトリック Linux VM
-診断拡張機能を使用して Azure で VM を作成すると、既定で診断は有効になります。
+### <a name="guest-os-metrics-linux-vms"></a>Guest OS metrics Linux VMs
+When you create a VM in Azure, diagnostics is enabled by default by using Diagnostics extension.
 
-メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
+You can generate a list of the metrics by using the following command in PowerShell.
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
- 次のメトリックのアラートを作成できます。
+ You can create an alert for the following metrics:
 
-| メトリックの名前 | 単位 |
+| Metric Name | Unit |
 | --- | --- |
 | \Memory\AvailableMemory |Bytes |
 | \Memory\PercentAvailableMemory |Percent |
@@ -130,19 +133,19 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \NetworkInterface\TotalTxErrors |Count |
 | \NetworkInterface\TotalCollisions |Count |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>一般的に使用される Web (サーバー ファーム) メトリック
-HTTP キューの長さなどの一般的な Web サーバー メトリックに基づいて、自動スケールを実行することもできます。 このメトリック名は **HttpQueueLength** です。  使用できるサーバー ファーム (Web Apps) メトリックで使用できる一覧については、次のセクションを参照してください。
+## <a name="commonly-used-web-server-farm-metrics"></a>Commonly used Web (Server Farm) metrics
+You can also perform autoscale based on common web server metrics such as the Http queue length. It's metric name is **HttpQueueLength**.  The following section lists available server farm (Web Apps) metrics.
 
-### <a name="web-apps-metrics"></a>Web Apps のメトリック
-Web Apps メトリックの一覧を生成するには、PowerShell で次のコマンドを実行します。
+### <a name="web-apps-metrics"></a>Web Apps metrics
+You can generate a list of the Web Apps metrics by using the following command in PowerShell.
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-これらのメトリックに基づいてアラートしたり、スケールすることができます。
+You can alert on or scale by these metrics.
 
-| メトリックの名前 | 単位 |
+| Metric Name | Unit |
 | --- | --- |
 | CpuPercentage |Percent |
 | MemoryPercentage |Percent |
@@ -151,12 +154,12 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | BytesReceived |Bytes |
 | BytesSent |Bytes |
 
-## <a name="commonly-used-storage-metrics"></a>一般的に使用される Storage のメトリック
-Storage キューの長さ (Storage キュー内のメッセージ数) に応じてスケールすることができます。 Storage キューの長さは特殊なメトリックであり、しきい値は、1 インスタンスあたりのメッセージ数です。 たとえば、2 つのインスタンスがあり、しきい値が 100 に設定されている場合、キュー内の合計メッセージ数が 200 になるとスケーリングが発生します。 インスタンスごとに 100 メッセージある場合や、120 と 80 メッセージ、またはその他の合計で最大 200 メッセージ以上となる組み合わせがあります。
+## <a name="commonly-used-storage-metrics"></a>Commonly used Storage metrics
+You can scale by Storage queue length, which is the number of messages in the storage queue. Storage queue length is a special metric and the threshold is the number of messages per instance. For example, if there are two instances and if the threshold is set to 100, scaling occurs when the total number of messages in the queue is 200. That can be 100 messages per instance, 120 and 80, or any other combination that adds up to 200 or more.
 
-この設定は、Azure Portal の **[設定]** ブレードで構成します。 VM Scale Sets の場合、Resource Manager テンプレートの [自動スケール] 設定で *ApproximateMessageCount* として *metricName* を使用するように更新し、*metricResourceUri* としてストレージ キューの ID を渡すことができます。
+Configure this setting in the Azure portal in the **Settings** blade. For VM scale sets, you can update the Autoscale setting in the Resource Manager template to use *metricName* as *ApproximateMessageCount* and pass the ID of the storage queue as *metricResourceUri*.
 
-たとえば、従来のストレージ アカウントを使用すると、自動スケール設定 metricTrigger は、次のようになります。
+For example, with a Classic Storage Account the autoscale setting metricTrigger would include:
 
 ```
 "metricName": "ApproximateMessageCount",
@@ -164,7 +167,7 @@ Storage キューの長さ (Storage キュー内のメッセージ数) に応じ
  "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
-(非従来の) ストレージ アカウントの場合、metricTrigger は、次のようになります。
+For a (non-classic) storage account, the metricTrigger would include:
 
 ```
 "metricName": "ApproximateMessageCount",
@@ -172,10 +175,10 @@ Storage キューの長さ (Storage キュー内のメッセージ数) に応じ
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.Storage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
 ```
 
-## <a name="commonly-used-service-bus-metrics"></a>一般的に使用される Service Bus のメトリック
-Service Bus キューの長さ (Service Bus キュー内のメッセージ数) に応じてスケールすることができます。 Service Bus キューの長さは特殊なメトリックであり、しきい値は、1 インスタンスあたりのメッセージ数です。 たとえば、2 つのインスタンスがあり、しきい値が 100 に設定されている場合、キュー内の合計メッセージ数が 200 になるとスケーリングが発生します。 インスタンスごとに 100 メッセージある場合や、120 と 80 メッセージ、またはその他の合計で最大 200 メッセージ以上となる組み合わせがあります。
+## <a name="commonly-used-service-bus-metrics"></a>Commonly used Service Bus metrics
+You can scale by Service Bus queue length, which is the number of messages in the Service Bus queue. Service Bus queue length is a special metric and the threshold is the number of messages per instance. For example, if there are two instances and if the threshold is set to 100, scaling occurs when the total number of messages in the queue is 200. That can be 100 messages per instance, 120 and 80, or any other combination that adds up to 200 or more.
 
-VM Scale Sets の場合、Resource Manager テンプレートの [自動スケール] 設定で *ApproximateMessageCount* として *metricName* を使用するように更新し、*metricResourceUri* としてストレージ キューの ID を渡すことができます。
+For VM scale sets, you can update the Autoscale setting in the Resource Manager template to use *metricName* as *ApproximateMessageCount* and pass the ID of the storage queue as *metricResourceUri*.
 
 ```
 "metricName": "MessageCount",
@@ -184,6 +187,7 @@ VM Scale Sets の場合、Resource Manager テンプレートの [自動スケ�
 ```
 
 > [!NOTE]
-> Service Bus の場合、リソース グループの概念は存在しませんが、Azure Resource Manager でリージョンごとに既定のリソース グループが作成されます。 通常、リソース グループは 'Default-ServiceBus-[region]' 形式です。 たとえば、'Default-ServiceBus-EastUS'、'Default-ServiceBus-WestUS'、'Default-ServiceBus-AustraliaEast' などです。
+> For Service Bus, the resource group concept does not exist but Azure Resource Manager creates a default resource group per region. The resource group is usually in the 'Default-ServiceBus-[region]' format. For example, 'Default-ServiceBus-EastUS', 'Default-ServiceBus-WestUS', 'Default-ServiceBus-AustraliaEast' etc.
 >
 >
+

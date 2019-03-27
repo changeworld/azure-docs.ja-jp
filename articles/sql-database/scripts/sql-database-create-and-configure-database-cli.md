@@ -11,13 +11,13 @@ author: CarlRabeler
 manager: craigg
 ms.author: carlrab
 ms.reviewer: ''
-ms.date: 09/20/2018
-ms.openlocfilehash: d239236e9e6f7133aa57eb617c3cc9e8626fc178
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 02/08/2019
+ms.openlocfilehash: 0dcbecfa9148c30b398e9b2b10f898045e08befd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055477"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989289"
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>CLI を使用して Azure SQL データベースを 1 つ作成し、ファイアウォール規則を構成する
 
@@ -45,12 +45,12 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | SQL Database をホストする論理サーバーを作成します。 |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | サーバー上のすべての SQL データベースに対する入力した IP アドレス範囲からのアクセスを許可するファイアウォール規則を作成します。 |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | 論理サーバー内に SQL Database を作成します。 |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | 単一のデータベースまたはエラスティック プールをホストする SQL Database サーバーを作成します。 |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | 入力された IP アドレス範囲から、SQL Database サーバー上のすべての単一のデータベースまたはエラスティック プールへのアクセスを許可するファイアウォール規則を作成します。 |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | 単一のデータベースまたはエラスティック プールを作成します。 |
 | [az group delete](/cli/azure/resource#az-resource-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順

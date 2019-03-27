@@ -5,11 +5,11 @@ services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,13 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 20a15bf94826df0b058be59ff242c46878ea26dd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 204fec96a58bf1dca55bb0fde14ce6f85c46e05b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630077"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185759"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Azure Portal での多要素認証が必要なクラシック ポリシーの移行 
 
@@ -113,7 +114,7 @@ ms.locfileid: "39630077"
 
     c. **[選択]** ページでクラウド アプリを選択し、**[選択]** をクリックします。
 
-    d. **[クラウド アプリ]** ページで、**[完了]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[クラウド アプリ]** ページで、**[完了]** をクリックします。
 
 
 

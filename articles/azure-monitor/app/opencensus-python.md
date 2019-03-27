@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 885f4da5ec9b360605a3e46ee8be8d338a638ede
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 22e58f31e2f891eb09c3d42a01763c68cdcd11a8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102671"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696185"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Python から分散トレースを収集する (プレビュー)
 
@@ -24,7 +24,7 @@ Application Insights は、[OpenCensus](https://opencensus.io) と Microsoft の
 
 - Azure サブスクリプションが必要です。
 - Python がインストールされている必要があります。この記事では [Python 3.7.0](https://www.python.org/downloads/) を使用していますが、以前のバージョンでも軽微な調整で使用できる可能性があります。
-- 手順に従って[ローカル フォワーダーを Windows サービスとしてインストールします](./../../azure-monitor/app/opencensus-local-forwarder.md#windows-service)
+- 手順に従って[ローカル フォワーダーを Windows サービスとしてインストールします](./../../azure-monitor/app/opencensus-local-forwarder.md)
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     | 設定        | 値           | [説明]  |
    | ------------- |:-------------|:-----|
-   | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
+   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
    | **アプリケーションの種類** | 全般 | 監視しているアプリの種類 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
    | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
@@ -57,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![インストルメンテーション キーのスクリーンショット](./media/opencensus-python/0003-instrumentation-key.png)
 
-2. `LocalForwarder.config` ファイルを編集し、インストルメンテーション キーを追加します。 [前提条件](./../../azure-monitor/app/opencensus-local-forwarder.md#windows-service)の手順に従った場合、このファイルは `C:\LF-WindowsServiceHost` にあります。
+2. `LocalForwarder.config` ファイルを編集し、インストルメンテーション キーを追加します。 [前提条件](./../../azure-monitor/app/opencensus-local-forwarder.md)の手順に従った場合、このファイルは `C:\LF-WindowsServiceHost` にあります。
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -158,7 +158,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 6. 上の手順から Python スクリプトを実行しても値を入力するように求められますが、今度は値のみがシェルに出力されています。
 
-7. **ローカル フォワーダー**がトレースを取得していることを確認するには、`LocalForwarder.config` ファイルを確認します。 [前提条件](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service)の手順に従った場合は、`C:\LF-WindowsServiceHost` にあります。
+7. **ローカル フォワーダー**がトレースを取得していることを確認するには、`LocalForwarder.config` ファイルを確認します。 [前提条件](https://docs.microsoft.com/azure/application-insights/local-forwarder)の手順に従った場合は、`C:\LF-WindowsServiceHost` にあります。
 
     ログ ファイルの以下の画像では、追加した 2 つ目のスクリプトを実行する前に、エクスポーター `OpenCensus input BatchesReceived` は 0 だったことがわかります。 更新されたスクリプトの実行を開始すると、増分された `BatchesReceived` が入力した値の数に等しくなります。
     

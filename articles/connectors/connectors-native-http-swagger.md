@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: de61443da41f1015b2890e9052f38e25d3bed86a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123174"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551978"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Azure Logic Apps で HTTP + Swagger コネクタを使用して REST エンドポイントを呼び出す
 
@@ -40,7 +40,7 @@ HTTP + Swagger トリガーおよびアクションは、[HTTP アクション](
 4. Swagger ドキュメントの URL を入力します。
    
    * ロジック アプリ デザイナーで使用するには、この URL が HTTPS エンドポイントであり、CORS が有効になっている必要があります。
-   * Swagger ドキュメントがこの要件を満たしていない場合は、 [CORS を有効にした Azure Storage](#hosting-swagger-from-storage) を使用してドキュメントを格納できます。
+   * Swagger ドキュメントがこの要件を満たしていない場合は、CORS を有効にした Azure Storage を使用してドキュメントを格納できます。
 5. **[次へ]** をクリックし、Swagger ドキュメントを読み込んで表示します。
 6. HTTP 呼び出しに必要なすべてのパラメーターを追加します。
    
@@ -60,7 +60,7 @@ Azure Storage で Swagger ドキュメントを作成、構成し、格納する
 
 3. Swagger ファイルを BLOB にアップロードします。 
 
-   この手順は、[Azure Portal](https://portal.azure.com) から、または [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールから実行できます。
+   この手順は、[Azure Portal](https://portal.azure.com) から、または [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールから実行できます。
 
 4. Azure BLOB ストレージ内のドキュメントへの HTTPS リンクを参照します  
 
@@ -81,7 +81,7 @@ Azure Storage で Swagger ドキュメントを作成、構成し、格納する
 ## <a name="http--swagger-actions"></a>HTTP + Swagger アクション
 アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 [アクションの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタには、使用可能なアクションが 1 つあります。
 
-| アクションを表示します。 | 説明 |
+| Action | 説明 |
 | --- | --- |
 | HTTP + Swagger |HTTP 呼び出しを実行し、応答コンテンツを返します |
 

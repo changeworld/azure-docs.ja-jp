@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -17,14 +17,15 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: 6581081f0f34f73c915f0b026a3ed50816f6731f
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 44feaecd42a8c3ce0ac0c712aa27b2480fd2a486
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51298945"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806931"
 ---
-# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法: すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
+# <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
 多くの組織にサービスとしてのソフトウェア (SaaS) アプリケーションを提供する場合、すべての Azure Active Directory (Azure AD) テナントからのサインインを受け入れるようにアプリケーションを構成できます。 この構成は "*アプリケーションのマルチテナント化*" と呼ばれます。 すべての Azure AD テナントのユーザーは、アプリケーションで自分のアカウントを使用することに同意すれば、そのアプリケーションにサインインできるようになります。 
 
@@ -38,7 +39,7 @@ ms.locfileid: "51298945"
 1. [アプリケーション登録をマルチテナントに更新する](#update-registration-to-be-multi-tenant)
 2. [/common エンドポイントに要求を送信するようにコードを更新する](#update-your-code-to-send-requests-to-common)
 3. [複数の issuer 値を処理するようにコードを更新する](#update-your-code-to-handle-multiple-issuer-values)
-4. [ユーザーおよび管理者の同意について理解し、コードに適切な変更を加える](#understanding-user-and-admin-consent)
+4. [ユーザーおよび管理者の同意について理解し、コードに適切な変更を加える](#understand-user-and-admin-consent)
 
 それでは、各手順の詳細を見ていきましょう。 すぐに、[こちらのマルチテナント サンプルの一覧][AAD-Samples-MT]を参照してもかまいません。
 
@@ -233,5 +234,5 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 [OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
-[OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
-[OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
+[OpenIDConnect]: https://openid.net/specs/openid-connect-core-1_0.html
+[OpenIDConnect-ID-Token]: https://openid.net/specs/openid-connect-core-1_0.html#IDToken

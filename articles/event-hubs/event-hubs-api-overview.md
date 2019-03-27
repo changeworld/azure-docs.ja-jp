@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 2523db3d817b4281b6435374ef0cca4e1d2da695
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: dcfc2480cd9a62b57255163132373998db328034
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005859"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075801"
 ---
 # <a name="available-event-hubs-apis"></a>使用可能な Event Hubs API
 
@@ -43,7 +43,7 @@ ms.locfileid: "40005859"
 
 #### <a name="net"></a>.NET
 
-.NET エコシステムには複数のランタイムがあるため、Event Hubs に対して複数の .NET ライブラリがあります。 .NET Standard ライブラリは、.NET Core または .NET Framework のいずれかを使用して実行できますが、.NET Framework ライブラリについては、.NET Framework 環境でのみ実行できます。 .NET Framework バージョンの詳細については、「[フレームワークのバージョン](https://docs.microsoft.com/dotnet/articles/standard/frameworks#framework-versions)」を参照してください。
+.NET エコシステムには複数のランタイムがあるため、Event Hubs に対して複数の .NET ライブラリがあります。 .NET Standard ライブラリは、.NET Core または .NET Framework のいずれかを使用して実行できますが、.NET Framework ライブラリについては、.NET Framework 環境でのみ実行できます。 .NET Framework バージョンの詳細については、「[フレームワークのバージョン](https://docs.microsoft.com/dotnet/articles/standard/frameworks)」を参照してください。
 
 #### <a name="node"></a>ノード
 
@@ -54,7 +54,7 @@ ms.locfileid: "40005859"
 現在使用できる管理専用ライブラリをの一覧を次の表に示します。 ここで示すライブラリは Event Hubs エンティティの管理専用で、ランタイム操作は含まれていません。
 
 | 言語/プラットフォーム | 管理パッケージ | リポジトリ |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
 
 ## <a name="next-steps"></a>次の手順

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: c4ccbe8a6f1e1923e83d2bdcbeb2d61429083aee
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 01/15/2019
+ms.openlocfilehash: 93ab8b2aca49fcd0d2f27ec17f7fc519b19bf563
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724200"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54305172"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-managed-instance-using-azure-powershell"></a>Azure PowerShell を使用してオンプレミスの SQL Server を Azure SQL Database Managed Instance に移行する
 この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2005 以上のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database Managed Instance に移行します。 データベースをオンプレミスの SQL Server インスタンスから Azure SQL Database Managed Instance に移行するには、Microsoft Azure PowerShell で `AzureRM.DataMigration` モジュールを使用します。
@@ -34,7 +34,7 @@ ms.locfileid: "53724200"
 - [SQL Server 2016 以上](https://www.microsoft.com/sql-server/sql-server-downloads) (任意のエディション)
 - TCP/IP プロトコルを有効にする (SQL Server Express のインストールでは既定で無効になっています)。 [サーバー ネットワーク プロトコルの有効化または無効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に関する記事の説明に従って、TCP/IP プロトコルを有効にする。
 - [データベース エンジン アクセス用の Windows Firewall](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) の構成。
-- Azure SQL Database インスタンス。 Azure SQL Database インスタンスを作成するには、「[Azure Portal で Azure SQL データベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)」にある手順に従ってください。
+- Azure SQL データベース インスタンス。 Azure SQL データベース インスタンスを作成するには、「[Azure Portal で Azure SQL データベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)」にある手順に従ってください。
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降。
 - Azure Resource Manager デプロイ モデルを使用して VNET を作成する。これにより、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用して、Azure Database Migration Service に、オンプレミス ソース サーバーへのサイト間接続が提供されます。
 - [SQL Server の移行の評価](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関する記事に従って、Data Migration Assistant を使用して、オンプレミスのデータベースおよびスキーマの移行の評価を完了させる
@@ -237,6 +237,13 @@ if (($mytask.ProjectTask.Properties.State -eq "Running") -or ($mytask.ProjectTas
 {
   write-host "migration task running"
 }
+```
+
+## <a name="deleting-the-dms-instance"></a>DMS インスタンスの削除
+移行が完了したら、Azure DMS インスタンスを削除できます。
+
+```powershell
+Remove-AzureRmDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 ```
 
 ## <a name="next-steps"></a>次の手順

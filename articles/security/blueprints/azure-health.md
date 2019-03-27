@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b7232a72a2090465dfd75ef6a4277930e45bf9ed
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315776"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103074"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 

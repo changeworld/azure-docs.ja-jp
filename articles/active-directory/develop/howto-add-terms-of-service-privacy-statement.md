@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 2195a43665f99e8388b13fc6dc3e528496bd3901
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a3687d0b50add3301fb8e15b9c70569554b91c04
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242689"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193511"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>登録済み Azure Active Directory アプリのサービス利用規約とプライバシーに関する声明
 
@@ -64,10 +65,10 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 
 Azure portal でアプリを登録した場合、次の手順に従います。
 
-1.  [Azure portal](https://portal.azure.com/) にサインインします。
-2. [ **アプリの登録**] セクションに移動して、自分のアプリを選択します。  
-3. アプリの **[プロパティ]** セクションを開きます。
-4. [ **サービス利用規約 URL** ]と **[プライバシーに関する声明 URL]** フィールドに入力します。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+2. **[アプリの登録]** セクションに移動して、自分のアプリを選択します。
+3. アプリの **[プロパティ]** セクションを開きます。
+4. **[サービス利用規約 URL]** と **[プライバシーに関する声明 URL]** フィールドを入力します。
 5. 変更を保存します。
 
     ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロパティ セクション](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
@@ -76,9 +77,9 @@ Azure portal でアプリを登録した場合、次の手順に従います。
 
 アプリケーション登録ポータルまたはデベロッパー センターでアプリを登録した場合、次の手順に従います。
 
-1.  [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)にサインインします。
-2. 自分のアプリを選択して、 **[プロファイル]**  セクションまでスクロールします。
-3. [ **サービス利用規約 URL** ]と **[プライバシーに関する声明 URL]** フィールドに入力します。
+1. [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)にサインインします。
+2. 自分のアプリを選択して、**[プロファイル]** セクションまでスクロールします。
+3. **[サービス利用規約 URL]** と **[プライバシーに関する声明 URL]** フィールドを入力します。
 4. 変更を保存します。
 
     ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロファイル セクション](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)

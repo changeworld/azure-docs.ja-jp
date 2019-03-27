@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: f135281ad8bfe8222fd799e3d18c4022c627d23c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 92d5d458615b029553dee2f8047c85e3fb5f9696
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051953"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892601"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK for SQL API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -30,20 +30,14 @@ ms.locfileid: "54051953"
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)</td></tr>
-
-<tr><td>**サンプル**</td><td>[.NET コード サンプル](sql-api-dotnet-samples.md)</td></tr>
-
-<tr><td>**作業開始**</td><td>[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)</td></tr>
-
-<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)</td></tr>
-
-<tr><td>**現在サポートされているフレームワーク**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**SDK のダウンロード**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)|
+|**API ドキュメント**|[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
+|**サンプル**|[.NET コード サンプル](sql-api-dotnet-samples.md)|
+|**作業開始**|[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)|
+|**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)|
+|**現在サポートされているフレームワーク**|[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)|
 
 ## <a name="release-notes"></a>リリース ノート
 
@@ -54,13 +48,19 @@ ms.locfileid: "54051953"
 * ストリームをサポートします。 
 * 状態コードを返し、応答が返されない場合にのみ例外を返すようにサーバーからの CosmosResponseMessage を更新しました。 
 
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+
+* 環境変数設定 "POCOSerializationOnly" を追加しました。
+
+* DocumentDB.Spatial.Sql.dll が削除され、Microsoft.Azure.Documents.ServiceInterop.dll に含まれるようになりました
+
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 
 * StoredProcedure 実行呼び出しに対するフェールオーバー中の再試行ロジックの改善。
 
-* Made DocumentClientEventSource シングルトンを作成しました。 
+* DocumentClientEventSource シングルトンを作成しました。 
 
-* ConnectionPolicy RequestTimeout を守っていない GatewayAddressCache タイムアウトを修正しました。
+* ConnectionPolicy RequestTimeout を守っていない、GatewayAddressCache タイムアウトを修正しました。
 
 ### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
 
@@ -265,7 +265,7 @@ ms.locfileid: "54051953"
 ### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
 * 複数リージョンのデータベース アカウントのサポートを追加しました。
 * 調整された要求での再試行のサポートを追加しました。  ユーザーは、ConnectionPolicy.RetryOptions プロパティを構成することで、再試行の回数と最大待機時間をカスタマイズできます。
-* すべての DocumenClient プロパティおよびメソッドの署名を定義できる新しい IDocumentClient インターフェイスを追加しました。  また、この変更の一環として、IQueryable と IOrderedQueryable を作成する拡張メソッドを DocumentClient クラス自体のメソッドに変更しました。
+* すべての DocumentClient プロパティおよびメソッドの署名を定義できる新しい IDocumentClient インターフェイスを追加しました。  また、この変更の一環として、IQueryable と IOrderedQueryable を作成する拡張メソッドを DocumentClient クラス自体のメソッドに変更しました。
 * 特定の Azure Cosmos DB エンドポイント URI の ServicePoint.ConnectionLimit を設定する構成オプションを追加しました。  ConnectionPolicy.MaxConnectionLimit を使用して既定値 (50) を変更できます。
 * IPartitionResolver とその実装が非推奨になりました。  IPartitionResolver のサポートは廃止されました。 大量のストレージとスループットを必要とする場合は、パーティション分割コレクションの使用をお勧めします。
 
@@ -357,6 +357,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.2](#2.2.2) |2019 年 2 月 5 日 |--- |
 | [2.2.1](#2.2.1) |2018 年 12 月 24 日 |--- |
 | [2.2.0](#2.2.0) |2018 年 12 月 7 日 |--- |
 | [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e44a02e2126e7b25f69999de34fe5cf42499a90c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: eb1c302bf1954492ba2a7a78d16fc697fdf4b687
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080439"
 ---
 # <a name="diagnose-and-troubleshoot"></a>診断とトラブルシューティング
 
@@ -43,16 +43,16 @@ ms.locfileid: "53556834"
 
 - イベント ソース キーに必要なアクセス許可がありません。
 
-    * IoT Hub の場合は、**サービス接続**アクセス許可を持つキーを指定する必要があります。
+  * IoT Hub の場合は、**サービス接続**アクセス許可を持つキーを指定する必要があります。
 
     ![構成][3]
 
-    * 上の図に示すように、ポリシー **iothubowner** と **service** は両方とも**サービス接続**アクセス許可が設定されているため、どちらも動作します。
-    * イベント ハブの場合は、**リッスン** アクセス許可を持つキーを指定する必要があります。
+  * 上の図に示すように、ポリシー **iothubowner** と **service** は両方とも**サービス接続**アクセス許可が設定されているため、どちらも動作します。
+  * イベント ハブの場合は、**リッスン** アクセス許可を持つキーを指定する必要があります。
   
     ![アクセス許可][4]
 
-    * 上の図に示すように、**read** ポリシーと **manage** ポリシーは両方とも**リッスン** アクセス許可が設定されているため、どちらも動作します。
+  * 上の図に示すように、**read** ポリシーと **manage** ポリシーは両方とも**リッスン** アクセス許可が設定されているため、どちらも動作します。
 
 - お使いのコンシューマー グループが Time Series Insights 専用ではありません。
 

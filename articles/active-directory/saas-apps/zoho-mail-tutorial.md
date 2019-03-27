@@ -4,7 +4,7 @@ description: Azure Active Directory と Zoho の間でシングル サインオ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9874e1f3-ade5-42e7-a700-e08b3731236a
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
-ms.openlocfilehash: bae52a16a73048355a327408bfb58b04cb5e4a55
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f5ca65ca74e24579f15512722dffd0900a231230
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976700"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>チュートリアル:Azure Active Directory と Zoho の統合
 
@@ -145,7 +146,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
    
     c. **[Change Password URL]\(パスワードの変更 URL\)** ボックスに、Azure Portal からコピーした**パスワードの変更 URL** を貼り付けます。
        
-    d. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[PublicKey]\(公開キー\)** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[PublicKey]\(公開キー\)** ボックスに貼り付けます。
    
     e. **[アルゴリズム]** として **[RSA]** を選択します。
    
@@ -229,7 +230,7 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
     c. **[Email ID]\(メール ID\)** ボックスに、ユーザーのメール ID (この例では **brittasimon@contoso.com**) を入力します。
 
-    d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
    
     e. Click **OK**.  
       
@@ -246,7 +247,7 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

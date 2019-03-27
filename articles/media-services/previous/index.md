@@ -5,21 +5,16 @@ services: media-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: ''
+ms.assetid: null
 ms.service: media-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
+ms.date: 03/14/2019
 ms.author: carolz
-ms.openlocfilehash: a38158467664eb12b388ad6bdc4bb5d783aa8762
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43283600"
 ---
-# <a name="media-services-documentation"></a>Media Services のドキュメント
+
+# <a name="media-services-documentation"></a>Media Services のドキュメント  
 
 拡張可能なクラウド プラットフォーム、Media Services を使用して、ブロードキャスト品質のビデオ ストリーミングを行う方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
 

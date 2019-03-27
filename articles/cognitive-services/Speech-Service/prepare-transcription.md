@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 音響モデルと言語モデルおよび音声フォントを Speech Service 用にカスタマイズするためにテキストを準備する方法を説明します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: 07b90942c8d231418888491fd47a9be3caff77ea
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 31813cbbe4bdb647d43e99e7585d1eb3bb6e8a5c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49467737"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857177"
 ---
 # <a name="transcription-guidelines-for-using-the-speech-service"></a>Speech Service を使用するための文字起こしガイドライン
 

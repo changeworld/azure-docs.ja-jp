@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: bd54ae2c82d3baf716784c39951c5cad7ec364b3
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 9b136c73afc08e05694aed99d57139f77466788d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730721"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490381"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
 
@@ -25,6 +25,8 @@ ms.locfileid: "53730721"
 Azure サブスクリプションを管理する方法に関する推奨事項については、「[Azure エンタープライズ スキャフォールディング:規範的なサブスクリプション ガバナンス](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)」を参照してください。
 
 すべての Azure クラウド環境で動作するテンプレートを作成する方法に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」を参照してください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="parameters"></a>parameters
 このセクションの情報は、[パラメーター](resource-manager-templates-parameters.md)を使用するときに役に立ちます。
@@ -82,7 +84,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 * `allowedValues` は慎重に使用してください。 許可されているオプションに、ある値が含まれていないことを確認する必要がある場合にのみ使用します。 `allowedValues` を盛大に使用しすぎると、ご自身の一覧が最新の状態に保たれなくなり、有効なデプロイをブロックしてしまう可能性があります。
 
-* お使いのテンプレートのパラメーター名と PowerShell デプロイ コマンドのパラメーターが同じ場合は、Resource Manager によって、ポストフィックス **FromTemplate** がテンプレート パラメーターに追加され、この名前の競合が解決されます。 たとえば、**ResourceGroupName** という名前のパラメーターをテンプレートに追加した場合、このパラメーターは、[New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合するため、 デプロイ中、**ResourceGroupNameFromTemplate** に値を指定するように求められます。
+* お使いのテンプレートのパラメーター名と PowerShell デプロイ コマンドのパラメーターが同じ場合は、Resource Manager によって、ポストフィックス **FromTemplate** がテンプレート パラメーターに追加され、この名前の競合が解決されます。 たとえば、**ResourceGroupName** という名前のパラメーターをテンプレートに追加した場合、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) コマンドレットの **ResourceGroupName** パラメーターと競合します。 デプロイ中、**ResourceGroupNameFromTemplate** に値を指定するように求められます。
 
 ### <a name="security-recommendations-for-parameters"></a>パラメーターに関するセキュリティの推奨事項
 

@@ -8,19 +8,20 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: a2f4f843-00d2-4522-a29d-6496cc5a781a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: jeedes
-ms.openlocfilehash: bed29e213c3a4ed81ec8736d40f33b35d7f069a5
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b61aece1b569e0e1022b9d239f2fe55a75c766d7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52730553"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161755"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>チュートリアル: Azure Active Directory と Infor CloudSuite の統合
 
@@ -179,7 +180,7 @@ Infor CloudSuite で Azure AD のシングル サインオンを構成してテ�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="creating-infor-cloudsuite-test-user"></a>Infor CloudSuite のテスト ユーザーの作成
 

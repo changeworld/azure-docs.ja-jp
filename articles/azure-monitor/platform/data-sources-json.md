@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor でのカスタム JSON データの収集 | Microsoft Docs
-description: カスタム JSON データ ソースは、Linux 用 Log Analytics エージェントを使用して Log Analytics に収集できます。  これらのカスタム データ ソースは、curl や FluentD の 300 を超えるプラグインのいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
+description: カスタム JSON データ ソースは、Linux 用 Log Analytics エージェントを使用して Azure Monitor に収集できます。  これらのカスタム データ ソースは、curl や FluentD の 300 を超えるプラグインのいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 36f914109d8d3879d23511cb37055d20db4d670c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 4d87f21b6312cad1a40e23f3a3b22fa8cc406186
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105221"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530027"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Azure Monitor での Linux 用 Log Analytics エージェントを使用したカスタム JSON データ ソースの収集
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-カスタム JSON データ ソースは、Linux 用 Log Analytics エージェントを使用して [Log Analytics](data-collection.md) に収集できます。  これらのカスタム データ ソースは、[curl](https://curl.haxx.se/) や [FluentD の 300 を超えるプラグイン](http://www.fluentd.org/plugins/all)のいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
+カスタム JSON データ ソースは、Linux 用 Log Analytics エージェントを使用して [Azure Monitor](data-collection.md) に収集できます。  これらのカスタム データ ソースは、[curl](https://curl.haxx.se/) や [FluentD の 300 を超えるプラグイン](https://www.fluentd.org/plugins/all)のいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
 
 
 > [!NOTE]
@@ -33,7 +33,7 @@ ms.locfileid: "54105221"
 
 ### <a name="configure-input-plugin"></a>入力プラグインを構成する
 
-Log Analytics で JSON データを収集するには、入力プラグイン内の FluentD タグの先頭に `oms.api.` を追加します。
+Azure Monitor で JSON データを収集するには、入力プラグイン内の FluentD タグの先頭に `oms.api.` を追加します。
 
 たとえば、`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` 内の個別の構成ファイル `exec-json.conf` を次に示します。  これは、FluentD プラグイン `exec` を使用して 30 秒ごとに curl コマンドを実行します。  このコマンドからの出力は、JSON 出力プラグインによって収集されます。
 
@@ -87,9 +87,9 @@ Log Analytics で JSON データを収集するには、入力プラグイン内
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>出力
-データは、`<FLUENTD_TAG>_CL` のレコードの種類を使用して Log Analytics で収集されます。
+データは、レコードの種類を `<FLUENTD_TAG>_CL` として、Azure Monitor に収集されます。
 
-たとえば、カスタム タグ `tag oms.api.tomcat` は `tomcat_CL` のレコードの種類を使用して Log Analytics で収集されます。  次のログ クエリを使用すると、この種類のすべてのレコードを取得できます。
+たとえば、カスタム タグ `tag oms.api.tomcat` は `tomcat_CL` のレコードの種類を使用して Azure Monitor で収集されます。  次のログ クエリを使用すると、この種類のすべてのレコードを取得できます。
 
     Type=tomcat_CL
 
@@ -106,4 +106,4 @@ Log Analytics で JSON データを収集するには、入力プラグイン内
 
 
 ## <a name="next-steps"></a>次の手順
-* [ログ クエリ](../../log-analytics/log-analytics-queries.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 

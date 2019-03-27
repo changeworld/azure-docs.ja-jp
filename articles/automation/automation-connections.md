@@ -3,18 +3,18 @@ title: Azure Automation での接続資産
 description: Azure Automation の接続資産には、Runbook または DSC 構成から外部サービスまたはアプリケーションに接続するために必要な情報が含まれます。 この記事では、接続の詳細およびテキスト作成とグラフィカル作成の両方で接続を使用する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1e9ca18d2075d40f6f55bc84723f79ae7e10850b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e00eb5756d34c7ca8cecc741b4832c583a6ed087
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261215"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54439019"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation での接続資産
 
@@ -23,7 +23,17 @@ Automation の接続資産には、Runbook または DSC 構成から外部サ�
 接続を作成するときは、 *接続の種類*を指定する必要があります。 接続の種類は、一連のプロパティを定義しているテンプレートです。 接続では、その接続の種類で定義されている各プロパティの値を定義します。 接続の種類は Azure Automation の統合モジュールに追加されるか、[Azure Automation API](https://msdn.microsoft.com/library/azure/mt163818.aspx) によって作成され (統合モジュールに接続の種類が含まれていない場合)、Automation アカウントにインポートされます。 それ以外の場合は、Automation の接続の種類を指定するメタデータ ファイルを作成する必要があります。  詳細については、「[Azure Automation 統合モジュール](automation-integration-modules.md)」を参照してください。  
 
 >[!NOTE]
->Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 このキーは Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、キーが Key Vault から読み込まれ、資産の暗号化に使われます。
+>Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 このキーは、システムで管理されたキー コンテナーに格納されます。 セキュリティで保護された資産を保存する前に、キーが Key Vault から読み込まれ、資産の暗号化に使われます。 このプロセスは、Azure Automation によって管理されます。
+
+## <a name="connection-types"></a>接続の種類
+
+Azure Automation では、3 種類の組み込み接続を使用できます。
+
+* **Azure** - この接続を使用すると、クラシック リソースを管理できます。
+* **AzureClassicCertificate** - この接続は、**AzureClassicRunAs** アカウントによって使用されます。
+* **AzureServicePrincipal** - この接続は、**AzureRunAs** アカウントによって使用されます。
+
+ほとんどの場合、接続リソースは [RunAs アカウント](manage-runas-account.md)を作成するときに作成されるので、接続リソースを作成する必要はありません。
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell コマンドレット
 
@@ -102,11 +112,11 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $
 
 グラフィカル エディターの [ライブラリ] ウィンドウで接続を右クリックして **[キャンバスに追加]** を選択することにより、**Get-AutomationConnection** アクティビティをグラフィカルな Runbook に追加します。
 
-![](media/automation-connections/connection-add-canvas.png)
+![キャンバスに追加](media/automation-connections/connection-add-canvas.png)
 
 次の図は、グラフィカルな Runbook で接続を使用する例を示したものです。  この例は、Run As アカウントを使用してテキストの Runbook を認証する上の例と同じです。  この例では、認証用の接続オブジェクトを使用する **Get RunAs Connection** アクティビティ用の**定数値**のデータ セットを使用します。  ServicePrincipalCertificate パラメーターが単一のオブジェクトを予期するように設定されているため、ここでは[パイプライン リンク](automation-graphical-authoring-intro.md#links-and-workflow)が使用されます。
 
-![](media/automation-connections/automation-get-connection-object.png)
+![接続の取得](media/automation-connections/automation-get-connection-object.png)
 
 ### <a name="python2-runbook-sample"></a>Python2 Runbook のサンプル
 次のサンプルでは、Python2 Runbook の Run As 接続を使用して認証する方法を示します。
@@ -154,3 +164,4 @@ azure_credential = get_automation_runas_credential(runas_connection)
 - [グラフィカル オーサリング内のリンク](automation-graphical-authoring-intro.md#links-and-workflow)に関する記事を参照して、Runbook のロジック フローを制御する方法を理解します。  
 
 - Azure Automation での PowerShell モジュールの使用方法と Azure Automation 内で統合モジュールとして動作する独自の PowerShell モジュールを作成するためのベスト プラクティスについては、「[Azure Automation 統合モジュール](automation-integration-modules.md)」を参照してください。  
+

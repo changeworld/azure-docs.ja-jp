@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics と OMS ポータルでワークスペースを管理する |Microsoft ドキュメント
-description: ユーザー、アカウント、ワークスペース、Azure アカウントにさまざまな管理タスクを実行して、Azure Log Analytics と OMS ポータルでワークスペースを管理できます。
+title: Azure Monitor で Log Analytics ワークスペースを管理する | Microsoft Docs
+description: ユーザー、アカウント、ワークスペース、Azure アカウントでのさまざまな管理タスクを使用して、Azure Monitor で Log Analytics ワークスペースを管理できます。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,18 +11,17 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 71987fcde08c5098d98d21405ce79e61d3094424
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4a777c2bd57d40b4bb6c8d36c996b655cb019e5f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186057"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005371"
 ---
-# <a name="manage-workspaces"></a>ワークスペースを管理する
-
-Log Analytics へのアクセスを管理するには、ワークスペースに関するさまざまな管理タスクを実行する必要があります。 この記事では、ワークスペースを管理するためのアドバイスと手順について説明します。 ワークスペースは基本的にはアカウント情報とアカウントの単純な構成情報が含まれるコンテナーです。 組織のメンバーは、複数のワークスペースを使用して、IT インフラストラクチャの一部またはすべてから収集されるデータのさまざまなセットを管理する場合があります。
+# <a name="manage-log-analytics-workspaces-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースを管理する
+Azure Monitor のログ データは、Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは基本的に、データと構成情報が含まれるコンテナーです。 ログ データへのアクセスを管理するには、ワークスペースに関するさまざまな管理タスクを実行します。 組織のメンバーは、複数のワークスペースを使用して、IT インフラストラクチャの一部またはすべてから収集されるデータのさまざまなセットを管理する場合があります。
 
 ワークスペースを作成するには、次のことを実行する必要があります。
 
@@ -32,19 +31,19 @@ Log Analytics へのアクセスを管理するには、ワークスペースに
 4. 地理的な場所を選択する。
 
 ## <a name="determine-the-number-of-workspaces-you-need"></a>必要なワークスペースの数を決定する
-ワークスペースは、Azure のリソースであり、収集、集計、分析され、Azure Portal に表示されるデータのコンテナーです。
+Log Analytics ワークスペースは、Azure のリソースであり、データが収集、集計、分析されて、Azure Monitor に表示されるコンテナーです。
 
-Azure サブスクリプションごとに複数のワークスペースを用意できるほか、複数のワークスペースにアクセスして、容易にクエリを実行できます。 このセクションでは、複数のワークスペースを作成すると便利な状況について説明します。
+1 つの Azure サブスクリプションで複数のワークスペースを使用でき、複数のワークスペースにアクセスして、容易にクエリを実行できます。 このセクションでは、複数のワークスペースを作成すると便利な状況について説明します。
 
-現時点では、ワークスペースに次の情報が示されます。
+Log Analytics ワークスペースには次の情報が示されます。
 
 * データ ストレージの地理的な場所
 * 異なるユーザー アクセス権を定義するためのデータの分離
-* 保有期間およびデータ キャッピングなどの設定の構成のスコープ
+* [価格レベル](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[リテンション期間](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)、[データ キャッピング](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)などの設定の構成のスコープ 
 
 消費の観点から、作成するワークスペースの数はできるだけ少なくすることをお勧めします。 これにより、管理とクエリのエクスペリエンスがより簡単かつ迅速になります。 ただし、上記の特性に基づき、次の条件に当てはまる場合は複数のワークスペースを作成してみてください。
 
-* 世界規模の企業が、データ主権またはコンプライアンス上の理由から特定のリージョンにデータを格納する必要がある。
+* 世界規模の企業が、データ主権またはコンプライアンス上の理由から特定のリージョンにログ データを格納する必要がある。
 * Azure を使用しているときに、管理対象の Azure リソースと同じリージョンにワークスペースを配置することによって送信データ転送の料金が生じるのを回避したい。
 * 独自の Azure サブスクリプション内の部門またはビジネス グループごとにワークスペースを作成することで、請求金額を使用量に基づいて異なる部門またはビジネス グループに割り当てたい。
 * マネージド サービス プロバイダーが、管理する各顧客の Log Analytics データを他の顧客のデータから切り離しておく必要がある。
@@ -55,16 +54,14 @@ Windows エージェントを使用してデータを収集する場合は、[1 
 System Center Operations Manager を使用している場合、各 Operations Manager 管理グループを 1 つのワークスペースのみに接続できます。 Operations Manager を使って管理するコンピューターに Microsoft Monitoring Agent をインストールし、Operations Manager と別の Log Analytics ワークスペースの両方にレポートを生成するようにエージェントを構成できます。
 
 ## <a name="workspace-information"></a>ワークスペース情報
+Log Analytics ワークスペース内のデータの分析は Azure portal の **[Azure Monitor]** メニューで行いますが、ワークスペースの作成と管理は **[Log Analytics ワークスペース]** メニューで行います。
+ 
 
-ワークスペースに関する詳細情報は Azure Portal で表示できます。 
-
-1. まだサインインしていない場合は、 [Azure ポータル](https://portal.azure.com)にサインインします。
-
-2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。  
+1. [Azure portal](https://portal.azure.com) にサインインし、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **Log Analytics** ワークスペースを選択します。  
 
     ![Azure ポータル](media/manage-access/azure-portal-01.png)  
 
-3. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択します。
+3. 一覧からお使いのワークスペースを選択します。
 
 4. ワークスペースのページに、作業開始と構成に関する詳細と、その他の情報へのリンクが表示されます。  
 
@@ -84,10 +81,10 @@ System Center Operations Manager を使用している場合、各 Operations Ma
 | Azure Portal でのワークスペースの作成                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
 
 
-### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Azure のアクセス許可を使用した Log Analytics へのアクセスの管理
+### <a name="managing-access-to-log-analytics-workspace-using-azure-permissions"></a>Azure のアクセス許可を使用した Log Analytics ワークスペースへのアクセスの管理
 Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセス権を付与するには、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../../role-based-access-control/role-assignments-portal.md)」の手順に従ってください。
 
-Azure には、Log Analytics 用に、次の 2 つの組み込みユーザー ロールがあります。
+Azure には、Log Analytics ワークスペース用に、次の 2 つの組み込みユーザー ロールがあります。
 - Log Analytics 閲覧者
 - Log Analytics 共同作成者
 
@@ -146,98 +143,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 
 正確なアクセス制御を行うために、割り当てをリソース レベル (ワークスペース) で実行することをお勧めします。  必要な特定のアクセス許可を持つロールを作成するには、[カスタム ロール](../../role-based-access-control/custom-roles.md)を使用します。
 
-## <a name="link-an-existing-workspace-to-an-azure-subscription"></a>既存のワークスペースを Azure サブスクリプションへリンクする
-2016 年 9 月 26 日より後に作成されたすべてのワークスペースは、作成時に Azure サブスクリプションにリンクする必要があります。 この日付より前に作成されたワークスペースは、サインインするときにワークスペースにリンクする必要があります。 Azure Portal からワークスペースを作成するか、Azure サブスクリプションにワークスペースをリンクすると、Azure Active Directory は組織のアカウントとしてリンクされます。
-
-### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>Azure Portal でワークスペースを Azure サブスクリプションにリンクするには
-1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。  
-
-2. Log Analytics サブスクリプション ウィンドウで、**[追加]** をクリックします。  
-
-    ![ワークスペースの一覧](./media/manage-access/workspace-link-existing-01.png)
-
-3. **[Log Analytics ワークスペース]** ウィンドウで、**[既存のものをリンクする]** をクリックします。  
-
-4. **[必要な設定の構成]** をクリックします。  
-
-5. ユーザーの Azure アカウントにまだリンクされていないワークスペースの一覧が表示されます。 ワークスペースを選択します。  
-   
-6. 必要に応じて、次の項目の値を変更できます。
-   * [サブスクリプション]
-   * リソース グループ
-   * 場所
-   * [価格レベル]   
-
-7. Click **OK**. これでワークスペースがユーザーの Azure アカウントにリンクされました。
-
-> [!NOTE]
-> リンクするワークスペースが表示されない場合、OMS ポータルで作成したワークスペースにアクセスする許可がユーザーの Azure サブスクリプションにありません。  OMS ポータルからこのアカウントへのアクセスを許可するには、「[既存のワークスペースへのユーザーの追加](#add-a-user-to-an-existing-workspace)」を参照してください。
->
->
-
-## <a name="upgrade-a-workspace-to-a-paid-plan"></a>有料プランへワークスペースをアップグレードする
-OMS のワークスペース プランには、**Free**、**Standalone**、**OMS** の 3 種類があります。  *Free* プランを利用している場合、Log Analytics に送信できるデータは 1 日あたり 500 MB が上限となります。  この量を超える場合は、この上限を超えるデータの収集漏れを防ぐためにワークスペースを有料プランに変更する必要があります。 プランの種類はいつでも変更できます。  OMS の価格の詳細については、[価格の詳細](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-pricing)に関する記述を参照してください。
-
-### <a name="using-entitlements-from-an-oms-subscription"></a>OMS サブスクリプションに付属する資格の使用
-OMS E1、OMS E2 OMS、OMS Add-On for System Center のいずれかを購入することによって得られる資格を使用するには、OMS Log Analytics の *OMS* プランを選択します。
-
-OMS サブスクリプションを購入すると、マイクロソフト エンタープライズ契約に資格が追加されます。 追加された資格は、この契約下で作成されたすべての Azure サブスクリプションで使用できます。 これらのサブスクリプションでは、すべてのワークスペースに OMS の資格が使用されます。
-
-ワークスペースの使用を OMS サブスクリプションからの資格に適用するには、次の作業が必要になります。
-
-1. OMS サブスクリプションを含むエンタープライズ契約に含まれる Azure サブスクリプションにワークスペースを作成する
-
-2. ワークスペースの *OMS* プランを選択する
-
-> [!NOTE]
-> ご利用のワークスペースが 2016 年 9 月 26 日より前に作成されており、かつ Log Analytics の料金プランが *Premium* である場合、このワークスペースには System Center 用 OMS アドオンの資格が使用されます。 *OMS* 料金レベルに変更することによって資格を使用することもできます。
->
->
-
-OMS サブスクリプションの資格は、Azure portal には表示されません。 資格と使用状況は、エンタープライズ ポータルで確認できます。  
-
-ワークスペースがリンクされている Azure サブスクリプションを変更する必要がある場合は、Azure PowerShell の [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) コマンドレットを使用します。
-
-### <a name="using-azure-commitment-from-an-enterprise-agreement"></a>エンタープライズ契約の Azure コミットメントを使用する
-OMS サブスクリプションがない場合、料金は OMS のコンポーネントごとに発生し、その使用状況が Azure の請求書に記載されます。
-
-Azure サブスクリプションがリンクされているエンタープライズ登録に Azure の年額コミットメントがある場合、Log Analytics の使用料金が残りの年額コミットメントから自動的に引き落とされます。
-
-ワークスペースがリンクされている Azure サブスクリプションを変更する必要がある場合は、Azure PowerShell の [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) コマンドレットを使用します。  
-
-### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>Azure Portal でワークスペースを有料の価格レベルに変更する
-1. Azure portal の Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択します。
-
-2. ワークスペース ウィンドウで、**[全般]** の **[価格レベル]** を選択します。  
-
-3. **[価格レベル]** で価格レベルを選択し、**[選択]** をクリックします。  
-    ![選択された料金プラン](./media/manage-access/workspace-pricing-tier-info.png)
-
-> [!NOTE]
-> ワークスペースが Automation アカウントにリンクされている場合は、"*スタンドアロン (GB 単位)*" 価格レベルを選択できるように、**Automation and Control** ソリューションをすべて削除し、Automation アカウントのリンクを解除しておく必要があります。 ワークスペース ブレードの **[全般]** で **[ソリューション]** をクリックし、ソリューションを表示して削除します。 Automation アカウントのリンクを解除するには、**[価格レベル]** ブレードで Automation アカウントの名前をクリックします。
->
->
-
-### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-oms-portal"></a>OMS ポータルでワークスペースを有料の価格レベルに変更する
-
-OMS ポータルを使用して価格レベルを変更するには、Azure サブスクリプションが必要です。
-
-1. OMS ポータルで、**[設定]** タイルをクリックします。
-
-2. **[アカウント]** タブをクリックしてから、**[Azure Subscription & Data Plan (Azure サブスクリプションとデータ プラン)]** タブをクリックします。
-
-3. 使用する価格レベルをクリックします。
-
-4. **[Save]** をクリックします。  
-
-    ![サブスクリプションとデータ プラン](./media/manage-access/subscription-tab.png)
-
-新しいデータ プランは、Web ページの上部にある OMS ポータル リボンに表示されます。
-
-![OMS リボン](./media/manage-access/data-plan-changed.png)
-
 ## <a name="next-steps"></a>次の手順
 * [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関するページを参照して、データセンターや他のクラウド環境内のコンピューターからデータを収集します。
 * 「[Azure Virtual Machines に関するデータの収集](../../azure-monitor/learn/quick-collect-azurevm.md)」を参照して、Azure VM からのデータ コレクションを構成します。  
-* [Add Log Analytics solutions from the Solutions Gallery](../../azure-monitor/insights/solutions.md) 」 (ソリューションギャラリーから Log Analytics ソリューションを追加する) を参照してください。
 

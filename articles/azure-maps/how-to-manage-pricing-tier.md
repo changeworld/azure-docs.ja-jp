@@ -3,17 +3,17 @@ title: Azure Maps アカウントの価格レベルを管理する | Microsoft D
 description: Azure portal を使用して、Azure Maps アカウントとその価格レベルを管理することができます。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/02/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f08f4cc74c37ccbbcab071b82f67f912e9fd9fd1
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 43f5c6ea42464a83d070775fae8c5befe35bf60d
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065326"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569921"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Azure Maps アカウントの価格レベルを管理する
 
@@ -34,7 +34,7 @@ Azure Maps アカウントを作成すると、Azure Maps アカウントの価�
 ![価格レベルの変更](./media/how-to-manage-pricing-tier/change-pricing-tier.png)
 
 > [!NOTE]
-> Azure Maps アカウントの価格レベルをアップグレードまたはダウングレードした場合、新しいサブスクリプション キーを生成する必要はありません。
+> Azure Maps アカウントの価格レベルをアップグレードまたはダウングレードした場合、新しいサブスクリプション キーやクライアント ID (Azure AD の認証用) を生成する必要はありません。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: af7f3b42aad41f103be6c86da84db2ff230ff226
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 5dda96786cde980fbec1b2f90bb7f755453b468a
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065222"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729661"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>クイック スタート:Azure CLI で Linux 仮想マシンを作成する
 
@@ -39,7 +39,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -47,7 +47,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成します。
+[az vm create](/cli/azure/vm) コマンドで VM を作成します。
 
 次の例では、*myVM* という名前の VM を作成し、*azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 (*~/.ssh*) に配置されます。 代わりに特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
@@ -79,7 +79,7 @@ VM とサポートするリソースを作成するには数分かかります�
 
 ## <a name="open-port-80-for-web-traffic"></a>Web トラフィック用にポート 80 を開く
 
-既定では、Azure において Linux VM を作成すると SSH 接続のみが開かれます。 NGINX Web サーバーで使うために TCP ポート 80 を開くには、[az vm open-port](/cli/azure/vm#az_vm_open_port) を使います。
+既定では、Azure において Linux VM を作成すると SSH 接続のみが開かれます。 NGINX Web サーバーで使うために TCP ポート 80 を開くには、[az vm open-port](/cli/azure/vm) を使います。
 
 ```azurecli-interactive
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -112,7 +112,7 @@ sudo apt-get -y install nginx
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。 
+必要がなくなったら、[az group delete](/cli/azure/group) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

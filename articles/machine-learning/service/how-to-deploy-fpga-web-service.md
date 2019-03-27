@@ -4,23 +4,27 @@ titleSuffix: Azure Machine Learning service
 description: 待機時間が極端に短い推論のために、FPGA 上で実行されるモデルを含む Web サービスを Azure Machine Learning service でデプロイする方法を説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 12/06/2018
+ms.date: 1/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3148d4d63ad1464dbd45c361237ac9cd4ffd485a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: d7403d4f791151b167f03ee79c30623bbd644008
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268242"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100690"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルを Web サービスとして FPGA 上に配置する
 
-モデルを [FPGA (field programmable gate arrays)](concept-accelerate-with-fpgas.md) 上の Web サービスとしてデプロイできます。  FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。   
+モデルを [FPGA (field programmable gate arrays)](concept-accelerate-with-fpgas.md) 上の Web サービスとしてデプロイできます。  FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。  現在使用できるのは、以下のモデルです。
+  - ResNet 50
+  - ResNet 152
+  - DenseNet-121
+  - VGG-16   
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,10 +38,20 @@ ms.locfileid: "53268242"
 
     ```shell
     pip install --upgrade azureml-sdk[contrib]
-    ```  
+    ```
+
+  - 現在、tensorflow バージョン 1.10 以下だけがサポートされているため、他のすべてのインストールが完了した後で、それをインストールしてください。
+
+    ```shell
+    pip install "tensorflow==1.10"
+    ```
+
+### <a name="get-the-notebook"></a>ノートブックを入手する
+
+便利なように、このチュートリアルは Jupyter Notebook として提供されています。 ここのコードに従うか、[クイック スタート ノートブック](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/project-brainwave-quickstart.ipynb)を実行します。
 
 ## <a name="create-and-deploy-your-model"></a>モデルを作成してデプロイする
-パイプラインを作成して入力イメージを処理し、FPGA 上で ResNet 50 を使用して入力イメージを抽出した後、ImageNet データ セットでトレーニング済みの分類子を使って機能を実行します。
+パイプラインを作成して入力イメージを前処理し、FPGA 上で ResNet 50 を使用して入力イメージを抽出した後、ImageNet データ セットでトレーニング済みの分類器を使って機能を実行します。
 
 手順に従って次の操作を行います。
 
@@ -69,7 +83,7 @@ print(image_tensors.shape)
 モデルを初期化して、特徴抽出器として使用される ResNet50 の量子化されたバージョンの TensorFlow チェックポイントをダウンロードします。
 
 ```python
-from azureml.contrib.brainwave.models import QuantizedResnet50, Resnet50
+from azureml.contrib.brainwave.models import QuantizedResnet50
 model_path = os.path.expanduser('~/models')
 model = QuantizedResnet50(model_path, is_frozen = True)
 feature_tensor = model.import_graph_def(image_tensors)
@@ -82,11 +96,11 @@ print(feature_tensor.shape)
 この分類子は ImageNet データ セットでトレーニングされています。
 
 ```python
-classifier_input, classifier_output = Resnet50.get_default_classifier(feature_tensor, model_path)
+classifier_output = model.get_default_classifier(feature_tensor)
 ```
 
 ### <a name="create-service-definition"></a>サービス定義を作成する
-これで、イメージの前工程、特徴抽出器、およびサービスを実行する分類子を定義できたので、サービス定義を作成することができます。 サービス定義は、FPGA サービスにデプロイされているモデルから生成されたファイルのセットです。 サービス定義はパイプラインで構成されています。 パイプラインは順番に実行される一連のステージです。  TensorFlow ステージ、Keras ステージ、および BrainWave ステージがサポートされています。  ステージは、各ステージにおける後続ステージへの入力と出力を使って、サービス上で順番に実行されます。
+これで、イメージの前工程、特徴抽出器、およびサービスで実行する分類器を定義できたので、サービス定義を作成することができます。 サービス定義は、FPGA サービスにデプロイされているモデルから生成されたファイルのセットです。 サービス定義はパイプラインで構成されています。 パイプラインは順番に実行される一連のステージです。  TensorFlow ステージ、Keras ステージ、および BrainWave ステージがサポートされています。  ステージは、各ステージにおける出力が後続ステージへの入力となって、サービス上で順番に実行されます。
 
 TensorFlow ステージを作成するには、グラフ (この場合は、既定のグラフが使用されます) およびこのステージへの入力テンソルと出力テンソルを含むセッションを指定します。  この情報は、サービス上で実行できるように、グラフを保存するために使用されます。
 
@@ -94,13 +108,13 @@ TensorFlow ステージを作成するには、グラフ (この場合は、既�
 from azureml.contrib.brainwave.pipeline import ModelDefinition, TensorflowStage, BrainWaveStage
 
 save_path = os.path.expanduser('~/models/save')
-model_def_path = os.path.join(save_path, 'service_def.zip')
+model_def_path = os.path.join(save_path, 'model_def.zip')
 
 model_def = ModelDefinition()
 with tf.Session() as sess:
     model_def.pipeline.append(TensorflowStage(sess, in_images, image_tensors))
     model_def.pipeline.append(BrainWaveStage(sess, model))
-    model_def.pipeline.append(TensorflowStage(sess, classifier_input, classifier_output))
+    model_def.pipeline.append(TensorflowStage(sess, feature_tensor, classifier_output))
     model_def.save(model_def_path)
     print(model_def_path)
 ```
@@ -129,7 +143,7 @@ except WebserviceException:
     image_config = BrainwaveImage.image_configuration()
     deployment_config = BrainwaveWebservice.deploy_configuration()
     service = Webservice.deploy_from_model(ws, service_name, [registered_model], image_config, deployment_config)
-    service.wait_for_deployment(true)
+    service.wait_for_deployment(True)
 ```
 
 ### <a name="test-the-service"></a>サービスをテストする
@@ -165,7 +179,7 @@ registered_model.delete()
 
 ## <a name="secure-fpga-web-services"></a>FPGA の Web サービスをセキュリティで保護する
 
-FPGA 上で実行されている Azure Machine Learning モデルでは、SSL のサポートとキー ベースの認証を提供します。 これにより、サービスへのアクセスを制限し、クライアントによって送信されるデータをセキュリティで保護できます。 [Web サービスをセキュリティで保護する方法についてはこちら](how-to-secure-web-service.md)を参照してください。
+FPGA の Web サービスのセキュリティ保護については、[Web サービスのセキュリティ保護](how-to-secure-web-service.md)に関するドキュメントを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

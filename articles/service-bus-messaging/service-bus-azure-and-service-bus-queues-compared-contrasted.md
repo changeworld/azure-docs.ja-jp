@@ -3,23 +3,23 @@ title: Azure Storage キューと Service Bus キューの比較 | Microsoft Doc
 description: Azure によって提供される 2 種類のキューの相違点と共通点について説明します。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: 0254762de49f37c591a7847fe9b40b3ecbabe1bd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: c59d79a7c6ac0590861c99daa01438b184cd71ff
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261062"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54852798"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。
@@ -131,7 +131,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 | 比較条件 | Storage キュー | Service Bus キュー |
 | --- | --- | --- |
 | 最大キュー サイズ |**500 TB**<br/><br/>([1 つのストレージ アカウントの容量](../storage/common/storage-introduction.md#queue-storage)に制限) |**1 GB ～ 80 GB**<br/><br/>(キューの作成時と[パーティション分割を有効化](service-bus-partitioning.md)するときに定義します。追加情報セクションをご覧ください) |
-| 最大メッセージ サイズ |**64 KB**<br/><br/>(**Base64** エンコードを使用する場合は 48 KB)<br/><br/>Azure では、キューと BLOB を組み合わせることでサイズの大きいメッセージをサポートし、1 つのアイテムに対して最大 200 GB までのメッセージをエンキューできます。 |**256 KB** ～ **1 MB**<br/><br/>(ヘッダーと本文の両方を含む。ヘッダーの最大サイズは 64 KB)<br/><br/>[サービス レベル](service-bus-premium-messaging.md)に依存します。 |
+| 最大メッセージ サイズ |**64 KB**<br/><br/>(**Base64** エンコードを使用する場合は 48 KB)<br/><br/>Azure では、キューと BLOB を組み合わせることでサイズの大きいメッセージをサポートし、1 つのアイテムに対して最大 200 GB までのメッセージをエンキューできます。 |**256 KB** ～ **1 MB**<br/><br/>(ヘッダーと本文の両方を含む。ヘッダーの最大サイズは 64 KB)。<br/><br/>[サービス レベル](service-bus-premium-messaging.md)に依存します。 |
 | メッセージの最大 TTL |**無限** (api-version 2017-07-27 の時点) |**TimeSpan.Max** |
 | キューの最大数 |**無制限** |**10,000**<br/><br/>(サービス名前空間あたり) |
 | 同時クライアントの最大数 |**無制限** |**無制限**<br/><br/>(最大 100 のコンカレント接続数の制限は TCP プロトコル ベースの通信にのみ適用されます) |

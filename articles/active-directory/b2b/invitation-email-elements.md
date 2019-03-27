@@ -3,19 +3,20 @@ title: B2B コラボレーションの招待メールの要素 - Azure Active Di
 description: Azure Active Directory B2B コラボレーションの招待メール テンプレート
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 8b6edcb70bca480ebe0d53c061c6461745f189e8
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6eaab50360269ac1231db2696ba095b6d8841f74
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321291"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163004"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
@@ -66,6 +67,14 @@ ms.locfileid: "53321291"
 
   ![受信者が招待を利用する必要がない場合](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
+## <a name="how-the-language-is-determined"></a>言語が決定される方法
+招待電子メール内のゲスト ユーザーに表示される言語は、次の設定によって決定されます。 これらの設定は、優先順位の順に一覧表示されています。 ある設定が構成されていない場合は、一覧内の次の設定によって言語が決定されます。 
+- 招待の作成 API が使用されている場合は、[invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) オブジェクトの **messageLanguage** プロパティ
+-   ゲストの[ユーザー オブジェクト](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)で指定されている **preferredLanguage** プロパティ
+-   ゲスト ユーザーのホーム テナントのプロパティで設定されている**通知言語** (Azure AD テナントの場合のみ)
+-   リソース テナントのプロパティで設定されている**通知言語**
+
+これらのいずれの設定も構成されていない場合、言語は既定で英語 (米国) になります。
 
 ## <a name="next-steps"></a>次の手順
 

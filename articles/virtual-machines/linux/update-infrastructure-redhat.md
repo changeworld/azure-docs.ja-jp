@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 1a1038bec66cd90e2cd0cbc8b125857403317d89
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: c5e67e581d3fc370710528609bf94b1110416c33
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078254"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311377"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -27,6 +27,8 @@ ms.locfileid: "54078254"
 Red Hat Enterprise Linux (RHEL) 従量課金制 (PAYG) イメージには、Azure RHUI にアクセスするための構成が事前に設定されています。 追加の構成は必要ありません。 最新の更新プログラムを取得するには、RHEL インスタンスの準備ができてから `sudo yum update` を実行します。 このサービスは、RHEL PAYG ソフトウェア料金の一部として含まれています。
 
 Azure での RHEL イメージに関する追加情報 (公開および保持ポリシーを含む) は[ここ](./rhel-images.md)で入手できます。
+
+すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
 
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI に関する重要な情報
 * 現時点では、Azure RHUI は、各 RHEL ファミリ (RHEL6 または RHEL7) の最新のマイナー リリースのみをサポートしています。 RHUI に接続された RHEL VM インスタンスを最新のミラー バージョンにアップグレードするには、`sudo yum update` を実行します。
@@ -49,12 +51,12 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 
 1. EUS 以外のリポジトリを無効にします。
     ```bash
-    sudo yum --disablerepo=* remove rhui-azure-rhel7
+    sudo yum --disablerepo='*' remove 'rhui-azure-rhel7'
     ```
 
 1. EUS リポジトリを追加します。
     ```bash
-    yum --config=https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config install rhui-azure-rhel7-eus
+    yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
 1. releasever 変数をロックします。
@@ -101,18 +103,13 @@ RHUI は、RHEL のオンデマンド イメージが提供されているすべ
 
 ### <a name="update-expired-rhui-client-certificate-on-a-vm"></a>VM 上の有効期限が切れた RHUI クライアント証明書を更新する
 
-RHEL 7.4 (イメージ URN: `RedHat:RHEL:7.4:7.4.2018010506`) などの古い RHEL VM イメージを使用している場合は、有効期限が切れた (2018 年 11 月 21 日時点) SSL クライアント証明書による RHUI への接続の問題が発生します。 この問題を解決するには、次のコマンドを使用して VM 上の RHUI クライアント パッケージを更新してください。
+RHEL 7.4 (イメージ URN: `RedHat:RHEL:7.4:7.4.2018010506`) などの古い RHEL VM イメージを使用している場合は、有効期限が切れた SSL クライアント証明書による RHUI への接続の問題が発生します。 _"SSL ピアは期限切れとして証明書を拒否しました"_ または _"エラー: リポジトリのリポジトリ メタデータ (repomd.xml) を取得できません: そのパスを確認し、もう一度お試しください"_ のようなエラーが表示される場合があります。 この問題を解決するには、次のコマンドを使用して VM 上の RHUI クライアント パッケージを更新してください。
 
 ```bash
-sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-azure-rhel7
+sudo yum update -y --disablerepo='*' --enablerepo='*microsoft*'
 ```
 
-RHEL VM が米国政府のクラウドに存在する場合は、次のコマンドを使用します。
-```bash
-sudo yum update -y --disablerepo=* --enablerepo=rhui-microsoft-* rhui-usgov-rhel7
-```
-
-別の方法として、`sudo yum update` を実行した場合も、他のリポジトリに関して "有効期限が切れた SSL 証明書" のエラーは表示されますが、クライアント証明書パッケージが更新されます。 この更新に従うと、他の RHUI リポジトリへの正常な接続が復元されるため、`sudo yum update` を正常に実行できるようになります。
+別の方法として、`sudo yum update` を実行した場合も、他のリポジトリに関して "有効期限が切れた SSL 証明書" のエラーは表示されますが、(RHEL バージョンに応じて) クライアント証明書パッケージが更新されることがあります。 この更新が成功した場合、他の RHUI リポジトリへの正常な接続が復元されるため、`sudo yum update` を正常に実行できるようになります。
 
 
 ### <a name="troubleshoot-connection-problems-to-azure-rhui"></a>Azure RHUI への接続に関する問題のトラブルシューティング
@@ -207,7 +204,7 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
        MD5 digest: OK (c04ff605f82f4be8c96020bf5c23b86c)
    ```
 
-   d. RPM をインストールします。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 RPM をインストールします。
 
     ```bash
     sudo rpm -U azureclient.rpm
@@ -218,4 +215,4 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
 ## <a name="next-steps"></a>次の手順
 * Azure Marketplace PAYG イメージから Red Hat Enterprise Linux VM を作成し、Azure でホストされる RHUI を使用する場合は、[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/) にアクセスしてください。
 * Azure での Red Hat イメージの詳細については、[ドキュメントのページ](./rhel-images.md)を参照してください。
-
+* すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。

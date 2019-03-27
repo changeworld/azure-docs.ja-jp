@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 16e135c1-a00a-4c6f-9302-6651a090571a
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ea781b5dbbf09c0a21fbcf781ae129295d02dbad
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 55d75bb0bae4bf3feb370b7fdf4d80dc43bdc0ca
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054793"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736891"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Service Fabric サービスのために Cluster Resource Manager の設定を構成する
 Service Fabric のクラスター リソース マネージャーを使用すると、すべての名前付きサービスを個別に制御するルールを非常にきめ細かく制御できます。 各名前付きサービスで、クラスター内の割り当て方法のルールを指定できます。 また、各名前付きサービスで、それらがサービスにとってどれだけ重要であるかを含め、レポートする一連のメトリックを定義できます。 サービスの構成は次の 3 つの異なるタスクに分かれます。

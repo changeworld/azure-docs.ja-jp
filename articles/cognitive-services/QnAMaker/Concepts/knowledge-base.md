@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペアと、各 QnA ペアに関連付けられている省略可能なメタデータで構成されます。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 62478eed2eb647a2f29e488e60e41dd9ae501273
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 2173bc46471fec6bfbacbda9362e5530075faf18
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605842"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857335"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースとは
 

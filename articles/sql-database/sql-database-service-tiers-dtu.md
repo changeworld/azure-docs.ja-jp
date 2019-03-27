@@ -1,9 +1,9 @@
 ---
-title: Azure SQL Database サービス レベル - DTU | Microsoft Docs
-description: 単一のデータベースとプールされたデータベースに対してコンピューティング サイズとストレージ サイズを提供するサービス レベルについて説明します。
+title: Azure SQL Database サービス レベル - DTU ベースの購入モデル | Microsoft Docs
+description: コンピューティング サイズやストレージ サイズを提供するための単一データベースとプールされたデータベースに対する DTU ベースの購入モデルでのサービス レベルについて説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,22 +11,22 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: 5e24ec6124b6a5f7dea66e33018dffc753966075
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.date: 02/08/2019
+ms.openlocfilehash: b960e0f670b66ea1759da441e7b1cf53151de7f6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141970"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993607"
 ---
-# <a name="dtu-based-service-tiers"></a>DTU ベースのサービス レベル
+# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 
-DTU ベースのサービス レベルは、固定の付属ストレージ容量、固定のバックアップ保有期間、固定の価格を持つさまざまなコンピューティング サイズによって区別されます。 すべてのサービス レベルで、ダウンタイムなしでコンピューティング サイズを柔軟に変更できます。 単一データベースとエラスティック プールは、サービス レベルとコンピューティング サイズに基づいて時間単位で課金されます。
+DTU ベースの購入モデルでのサービス レベルは、固定された量の付属ストレージ、固定されたバックアップ保有期間、および固定された価格を持つさまざまなコンピューティング サイズによって区別されます。 DTU ベースの購入モデルでのすべてのサービス レベルによって、ダウンタイムなしでコンピューティング サイズを変更する柔軟性が提供されます。 単一データベースとエラスティック プールは、サービス レベルとコンピューティング サイズに基づいて時間単位で課金されます。
 
 > [!IMPORTANT]
-> SQL Database Managed Instance は、現在、パブリック プレビュー段階であり、DTU ベースの購入モデルをサポートしていません。 詳細については、[Azure SQL Database Managed Instance に関するページ](sql-database-managed-instance.md)を参照してください。
+> SQL Database Managed Instance は、DTU ベースの購入モデルをサポートしていません。 詳細については、[Azure SQL Database Managed Instance に関するページ](sql-database-managed-instance.md)を参照してください。
 > [!NOTE]
-> 仮想コアベースのサービス レベルの詳細については、[仮想コアベースのサービス レベル](sql-database-service-tiers-vcore.md)に関するページを参照してください。 DTU ベースのサービス レベルと仮想コアベースのサービス レベルの違いの詳細については、[Azure SQL Database の購入モデル](sql-database-service-tiers.md)に関するページを参照してください。
+> 仮想コアベースのサービス レベルの詳細については、[仮想コアベースのサービス レベル](sql-database-service-tiers-vcore.md)に関するページを参照してください。 DTU ベースのサービス レベルと仮想コアベースのサービス レベルの違いの詳細については、[Azure SQL Database の購入モデル](sql-database-purchase-models.md)に関するページを参照してください。
 
 ## <a name="compare-the-dtu-based-service-tiers"></a>DTU ベースのサービス レベルを比較する
 
@@ -34,8 +34,8 @@ DTU ベースのサービス レベルは、固定の付属ストレージ容量
 
 ||Basic|標準|Premium|
 | :-- | --: |--:| --:| --:|
-|対象のワークロード|開発、運用|開発、運用|開発、運用||
-|アップタイム SLA|99.99%|99.99%|99.99%|プレビューは対象外|
+|対象のワークロード|開発、運用|開発、運用|開発、運用|
+|アップタイム SLA|99.99%|99.99%|99.99%|
 |バックアップ保有期間|7 日|35 日|35 日|
 |CPU|低|低、中、高|中、高|
 |IO スループット (概算) |DTU あたり 2.5 IOPS| DTU あたり 2.5 IOPS | DTU あたり 48 IOPS|
@@ -49,12 +49,12 @@ DTU ベースのサービス レベルは、固定の付属ストレージ容量
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Single Database の DTU と容量の上限
 
-コンピューティング サイズは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU ベースの購入モデル](sql-database-service-tiers.md#dtu-based-purchasing-model)に関するページを参照してください。
+コンピューティング サイズは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU ベースの購入モデル](sql-database-purchase-models.md#dtu-based-purchasing-model)に関するページを参照してください。
 
 ||Basic|標準|Premium|
 | :-- | --: | --: | --: | --: |
 | 最大ストレージ サイズ | 2 GB | 1 TB (テラバイト) | 4 TB  |
-| 最大 DTU | 5 | 3000 | 4000 | |
+| 最大 DTU | 5 | 3000 | 4000 | 
 ||||||
 
 > [!IMPORTANT]
@@ -88,7 +88,7 @@ DTU の各測定に関連付けられている物理的な特性 (CPU、メモ�
 
 ### <a name="benchmark-summary"></a>ベンチマークの概要
 
-ASDB は、オンライン トランザクション処理 (OLTP) ワークロードで最も頻繁に発生するさまざまな基本的データベース操作のパフォーマンスを測定します。 ベンチマークはクラウド コンピューティングを考慮して設計されていますが、データベース スキーマ、データの設定、およびトランザクションは、OLTP ワークロードでよく使用される基本的な要素を広く表すように設計されています。
+このベンチマークは、オンライン トランザクション処理 (OLTP) ワークロードで最も頻繁に発生する、混在した基本的なデータベース操作のパフォーマンスを測定します。 ベンチマークはクラウド コンピューティングを考慮して設計されていますが、データベース スキーマ、データの設定、およびトランザクションは、OLTP ワークロードでよく使用される基本的な要素を広く表すように設計されています。
 
 ### <a name="schema"></a>スキーマ
 
@@ -166,7 +166,7 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 | サービスのクラス | スループットの測定 | 応答時間の要件 |
 | --- | --- | --- |
 | Premium |1 秒あたりのトランザクション数 |0.5 秒で第 95 百分位数 |
-| 標準 |1 分あたりのトランザクション数 |1.0 秒で第 90 百分位数 |
+| Standard |1 分あたりのトランザクション数 |1.0 秒で第 90 百分位数 |
 | 基本 |1 時間あたりのトランザクション数 |2.0 秒で第 80 百分位数 |
 
 ## <a name="next-steps"></a>次の手順

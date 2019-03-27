@@ -1,4 +1,17 @@
-| Resource | 既定の制限 | 上限 |
+---
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jroth
+ms.openlocfilehash: cdebdf7258e99457191754cd73513fdb3744f8e9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56323416"
+---
+| リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
 | [リソース グループ](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) (リソースの種類) あたりのリソース数 |800 |リソースの種類ごとに異なる |
 | デプロイ履歴でのリソース グループあたりのデプロイ数 |800 |800 |
@@ -24,4 +37,4 @@
 
 入れ子になったテンプレートを使用すると、一部のテンプレートの制限を超過することができます。 詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートの使用](../articles/azure-resource-manager/resource-group-linked-templates.md)」を参照してください。 パラメーター、変数、出力の数を減らすために、いくつかの値を 1 つのオブジェクトに結合することができます。 詳しくは、[パラメーターとしてのオブジェクト](../articles/azure-resource-manager/resource-manager-objects-as-parameters.md)に関する記事をご覧ください。
 
-リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 Azure CLI の場合は [az group deployment delete](/cli/azure/group/deployment#az_group_deployment_delete) を、PowerShell では [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) を使用して、履歴からエントリを削除できます。 デプロイ履歴からエントリを削除しても、デプロイ リソースには影響しません。 
+リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 Azure CLI の場合は [az group deployment delete](/cli/azure/group/deployment) を、PowerShell では [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) を使用して、履歴からエントリを削除できます。 デプロイ履歴からエントリを削除しても、デプロイ リソースには影響しません。 

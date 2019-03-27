@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: jeffgo
-ms.openlocfilehash: 397f07c23d1c272e540741a339b57a8e1bcce198
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 08/15/2018
+ms.openlocfilehash: ad0419cee3fc5c838d6d81adf9040432b9feaf07
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104014"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242231"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Azure Stack 用の Red Hat ベースの仮想マシンの準備
 
@@ -670,6 +671,6 @@ initramfs を再構築します。
 
 ## <a name="next-steps"></a>次の手順
 
-これで、Red Hat Enterprise Linux 仮想ハード ディスクを使用して、Azure Stack に新しい仮想マシンを作成する準備が整いました。 初めて Azure Stack に VHD ファイルをアップロードする場合は、「[発行ツールを使用して Marketplace アイテムを追加する](azure-stack-marketplace-publisher.md)」を参照してください。
+これで、Red Hat Enterprise Linux 仮想ハード ディスクを使用して、Azure Stack に新しい仮想マシンを作成する準備が整いました。 初めて Azure Stack に VHD ファイルをアップロードする場合は、「[Marketplace アイテムを作成および発行する](azure-stack-create-and-publish-marketplace-item.md)」を参照してください。
 
 Red Hat Enterprise Linux の実行が認定されているハイパーバイザーの詳細については、[Red Hat の Web サイト](https://access.redhat.com/certified-hypervisors)を参照してください。

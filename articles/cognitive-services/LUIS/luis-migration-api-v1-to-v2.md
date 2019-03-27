@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: バージョン 1 のエンドポイントとオーサリング API は非推奨となりました。 このガイドでは、バージョン 2 のエンドポイントとオーサリング API に移行する方法について説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 980470c0f1d24bde52f29c4cd3579e2337898f88
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: dfd30ce148002e32986c58aff607e182033e02b3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138825"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859874"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
 バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://aka.ms/luis-endpoint-apis)と[オーサリング](https://aka.ms/luis-authoring-apis) API に移行する方法について説明します。 
@@ -112,7 +112,7 @@ v2 エンドポイントの成功応答:
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure Portal で Azure [エンドポイント キー](luis-how-to-azure-subscription.md) が生成されます。 そのキーは、**[[Publish]\(公開\)](luis-how-to-manage-keys.md)** ページで LUIS アプリに割り当てます。 実際のキー値を確認する必要はありません。 LUIS では、サブスクリプション名を使用して、割り当てが行われます。 
+Azure Portal で Azure [エンドポイント キー](luis-how-to-azure-subscription.md) が生成されます。 そのキーは、**[[Publish]\(公開\)](luis-how-to-azure-subscription.md)** ページで LUIS アプリに割り当てます。 実際のキー値を確認する必要はありません。 LUIS では、サブスクリプション名を使用して、割り当てが行われます。 
 
 ## <a name="new-versioning-route"></a>新しいバージョン管理ルート
 v2 モデルは、[バージョン](luis-how-to-manage-versions.md)に含まれています。 バージョン名は、ルートの 10 文字です。 既定のバージョンは "0.1" です。

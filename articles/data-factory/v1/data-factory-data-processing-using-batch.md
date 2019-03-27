@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e053fa52b7b7cea1c35b68a0f2079eb5a590a76a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021579"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822750"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "54021579"
 
 この記事では、大規模なデータセットの移動と処理をスケジュールに沿って自動的に行う、サンプル ソリューションのアーキテクチャについて説明します。 また、Data Factory と Azure Batch を使用してソリューションを実装する、エンドツーエンドのチュートリアルも提供します。
 
-この記事には、サンプル ソリューション全体のチュートリアルが含まれるため、通常の記事よりも長くなっています。 Batch と Data Factory のご使用が初めての方は、Batch と Data Factory のサービスについて知り、これらがどのように連携するかを学ぶことができます。 サービスについてある程度知識があり、ソリューションを設計、構築している場合は、この記事の[アーキテクチャのセクション](#architecture-of-sample-solution)に重点を置くこともできます。 プロトタイプまたはソリューションを開発してする場合は、[チュートリアル](#implementation-of-sample-solution)の詳細な手順を試すこともお勧めです。 内容に関するご意見や、ご利用法についてお聞かせください。
+この記事には、サンプル ソリューション全体のチュートリアルが含まれるため、通常の記事よりも長くなっています。 Batch と Data Factory のご使用が初めての方は、Batch と Data Factory のサービスについて知り、これらがどのように連携するかを学ぶことができます。 サービスについてある程度知識があり、ソリューションを設計、構築している場合は、この記事のアーキテクチャのセクションに重点を置くこともできます。 プロトタイプまたはソリューションを開発している場合は、チュートリアルの詳細な手順を試すこともお勧めです。 内容に関するご意見や、ご利用法についてお聞かせください。
 
 最初に、クラウドの大規模なデータセットの処理に、Data Factory と Batch のサービスがどのように役立つかについて説明します。     
 
@@ -114,7 +114,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
    c. **ノード価格レベル**を選択します。
 
-   d. **[ターゲットの専用数]** の設定値として、「**2**」と入力します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ターゲットの専用数]** の設定値として、「**2**」と入力します。
 
    e. **[ノードごとの最大タスク]** の設定値として、「**2**」と入力します。
 
@@ -183,7 +183,7 @@ public IDictionary<string, string> Execute(
 
    c. **[テンプレート]** を展開し、**[Visual C#]\#** を選択します。 このチュートリアルでは C\# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。
 
-   d. 右側にあるプロジェクトの種類の一覧から **[クラス ライブラリ]** を選択します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 右側にあるプロジェクトの種類の一覧から **[クラス ライブラリ]** を選択します。
 
    e. **[プロジェクト名]** に「**MyDotNetActivity**」と入力します。
 
@@ -574,7 +574,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    c. **poolName** プロパティにプールの ID を入力します。 このプロパティでは、プール名またはプール ID のいずれかを指定できます。
 
-   d. **batchUri** JSON プロパティにバッチ URI を入力します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **batchUri** JSON プロパティにバッチ URI を入力します。
 
       > [!IMPORTANT]
       > **[Batch アカウント]** ブレードの URL は、\<accountname\>.\<region\>.batch.azure.com という形式です。 JSON の **batchUri** プロパティでは、URL から a88"accountname."** を削除する必要があります。 例: `"batchUri": "https://eastus.batch.azure.com"`。

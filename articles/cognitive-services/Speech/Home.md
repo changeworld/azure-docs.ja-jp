@@ -6,16 +6,16 @@ services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
-ms.component: bing-speech
+ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 960d2d402f223b306aa6ff05b567d13525e3d525
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 9b462ba594122b86580b9d136a844db070eea92d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340360"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55217647"
 ---
 # <a name="what-is-bing-speech"></a>Bing Speech とは
 
@@ -28,17 +28,17 @@ ms.locfileid: "49340360"
 
 ## <a name="speech-to-text-speech-recognition"></a>Speech to Text (音声認識)
 
-Microsoft Speech Recognition API は、オーディオ ストリームを、アプリケーションでユーザーに表示できるテキストまたはコマンド入力として操作できるテキストに "書き起こします"。 Speech は、REST API **または** Websocket ベースのクライアント ライブラリを使用してアプリに追加できます。
+Microsoft Speech Recognition API は、オーディオ ストリームを、アプリケーションでユーザーに表示できるテキストまたはコマンド入力として操作できるテキストに "*書き起こします*"。 Speech は、REST API **または** Websocket ベースのクライアント ライブラリを使用してアプリに追加できます。
 
 - [REST API](GetStarted/GetStartedREST.md): アプリからサービスへの HTTP 呼び出しを使用して音声認識を行います。
-- [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md): 高度な機能を使用する場合は、Microsoft Speech クライアント ライブラリをダウンロードして、それらをアプリにリンクできます。  クライアント ライブラリは、各種言語 (C#、Java、JavaScript、ObjectiveC) を使用して、さまざまなプラットフォーム (Windows、Android、iOS) で使用できます。 REST API とは異なり、クライアント ライブラリは、Websocket ベースのプロトコルを利用します。
+- [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md):高度な機能を使用する場合は、Microsoft Speech クライアント ライブラリをダウンロードして、それらをアプリにリンクできます。  クライアント ライブラリは、各種言語 (C#、Java、JavaScript、ObjectiveC) を使用して、さまざまなプラットフォーム (Windows、Android、iOS) で使用できます。 REST API とは異なり、クライアント ライブラリは、Websocket ベースのプロトコルを利用します。
 
 | ユース ケース | [REST API](GetStarted/GetStartedREST.md) | [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| 短い発話音声を変換する。たとえば、中間結果を使用しないコマンド (15 秒以下の音声) など | [はい] | [はい] |
-| 長い音声 (15 秒以上) を変換する | いいえ  | [はい] |
-| 中間結果を使って音声をストリーミングする | いいえ  | [はい] |
-| LUIS を使用して、音声から変換されたテキストの意味を解釈する | いいえ  | [はい] |
+| 短い発話音声を変換する。たとえば、中間結果を使用しないコマンド (15 秒以下の音声) など | はい | はい |
+| 長い音声 (15 秒以上) を変換する | いいえ  | はい |
+| 中間結果を使って音声をストリーミングする | いいえ  | はい |
+| LUIS を使用して、音声から変換されたテキストの意味を解釈する | いいえ  | はい |
 
 いずれの手法 (REST API とクライアント ライブラリ) を使用する場合でも、Microsoft Speech Service は次をサポートします。
 

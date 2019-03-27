@@ -4,7 +4,7 @@ description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: ac4f826ed1d27ee39d8e35605a3baa7f94b33e64
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 6345eca674086801f8bb0f45476009f04a10f2e3
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "50035212"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58214075"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -43,9 +43,9 @@ Visual Studio で、お使いのプロジェクトを実行するには、**F5**
 
 |プロパティ  |形式  |説明 |
 |---------|---------|---------|
-|**名前** |ユーザーのフルネーム |ユーザーの姓と名。|
+|**Name** |ユーザーのフルネーム |ユーザーの姓と名。|
 |**ユーザー名** |<span>user@domain.com</span> |ユーザーの識別に使用されているユーザー名。|
-|**Token Expires** |Datetime |トークンの有効期限が切れる時刻。 MSAL は、必要に応じてトークンを更新することで、有効期限日を延長します。|
+|**Token Expires** |DateTime |トークンの有効期限が切れる時刻。 MSAL は、必要に応じてトークンを更新することで、有効期限日を延長します。|
 |**Access Token** |String |*Authorization ヘッダー*を必要とする HTTP 要求に送信されるトークン文字列。|
 
 <!--start-collapse-->

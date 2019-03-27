@@ -65,7 +65,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**Hdfs** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**Hdfs** |はい |
 | Url |HDFS への URL |はい |
 | authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 Kerberos 認証の場合は `<username>@<domain>.com` を指定します。 |あり (Windows 認証用) |

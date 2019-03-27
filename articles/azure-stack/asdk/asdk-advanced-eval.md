@@ -12,15 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 185c4685de0c889c3b6e7b173445546ed5b7d921
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/16/2018
+ms.openlocfilehash: d00eaf0ab24fbd754ba5ad2c79e9630d69d28eb7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955414"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200515"
 ---
 # <a name="advanced-azure-stack-development-kit-evaluation-tasks"></a>高度な Azure Stack Development Kit 評価タスク
 基本的な Azure Stack Development Kit (ASDK) サービスの機能について把握したら、より高度なシナリオをテストして Azure Stack の理解を深めることができます。 これらのより高度な評価タスクは、Azure Stack のオペレーター ドキュメントに詳しく記載されています。

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 64e041d61c628a54b7a55b11fceba0973f3f427b
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.subservice: files
+ms.openlocfilehash: 53f2b59032e7e9725b067ef472b2b6dcf94bcb72
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214965"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662464"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用した Azure ファイル共有の作成および管理 
 このガイドでは、PowerShell を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
@@ -120,8 +120,8 @@ Get-AzStorageFile -Context $storageAcct.Context -ShareName "myshare" -Path "myDi
 
 ```azurepowershell-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists because you've run this example before.
-Remove-Item 
-    `-Path "C:\Users\ContainerAdministrator\CloudDrive\SampleDownload.txt" `
+Remove-Item `
+     -Path "C:\Users\ContainerAdministrator\CloudDrive\SampleDownload.txt" `
      -Force `
      -ErrorAction SilentlyContinue
 

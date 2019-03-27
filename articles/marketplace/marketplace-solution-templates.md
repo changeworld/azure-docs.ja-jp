@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/15/2018
 ms.author: ellacroi
-ms.openlocfilehash: 660120a1314c0071aa5b1cf3eae668e1626813a1
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: bbf9ab56bd7e070e40e2454a69f0a5e313597f14
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073460"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215373"
 ---
 # <a name="azure-applications-solution-template-offer-publishing-guide"></a>Azure アプリケーション:ソリューション テンプレートのオファー発行ガイド
 
@@ -38,7 +38,6 @@ ms.locfileid: "54073460"
 |Azure と互換性がある仮想ハード ディスク (VHD)  |   VM は、Windows または Linux 上に構築されている必要があります。  詳細については、「[Azure と互換性のある VHD の作成](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)」をご覧ください。 |
 | 顧客の利用状況属性 | Azure Marketplace に発行されるすべてのソリューション テンプレートで、顧客の利用状況属性を有効にする必要があります。 顧客の利用状況属性とそれを有効にする方法の詳細については、「[Azure パートナーの顧客の利用状況の属性](./azure-partner-customer-usage-attribution.md)」をご覧ください。  |
 |  |  |
-
 
 ## <a name="next-steps"></a>次の手順
 まだ行っていない場合は、Marketplace で[登録](https://azuremarketplace.microsoft.com/sell)します。

@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Teamphoria の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Teamphoria の統合 | Microsoft Docs
 description: Azure Active Directory と Teamphoria の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: d569c705-6f0f-4ec1-b485-ba82526b5d32
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 554930b18a271a677aeb5e82c3e62a94965a8e7f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0f32a4ebd5a28c1054c19c578f3ba82e3b4951a9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439611"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184110"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>チュートリアル: Azure Active Directory と Teamphoria の統合
+# <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>チュートリアル:Azure Active Directory と Teamphoria の統合
 
 このチュートリアルでは、Teamphoria と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -87,7 +88,7 @@ Azure AD への Teamphoria の統合を構成するには、ギャラリーか�
 
 Teamphoria で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Teamphoria のテスト ユーザーの作成](#creating-a-teamphoria-test-user)** - Teamphoria で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -142,13 +143,13 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
 
     ![Configure single sign-on](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
-    a. **表示名**: 管理者ページでのプラグインの表示名を入力します。
+    a. **表示名**:管理者ページでのプラグインの表示名を入力します。
 
     b. **ボタン名**: SSO を使用してログインするためのログイン ページに表示されるタブの名前。
 
     c. **証明書**: Azure portal から先ほどダウンロードした証明書をメモ帳で開き、内容をコピーして、こちらのボックス内に貼り付けます。
 
-    d. **エントリ ポイント**: Azure portal から先ほどコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **エントリ ポイント**: Azure portal から先ほどコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
 
     e. オプションを **[ON (オン)]** に切り替え、**[保存]** をクリックします。
 
@@ -181,7 +182,7 @@ Teamphoria で Azure AD のシングル サインオンを構成およびテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="creating-a-teamphoria-test-user"></a>Teamphoria テスト ユーザーの作成
 
@@ -209,7 +210,7 @@ Azure AD ユーザーが Teamphoria にログインできるようにするに�
 
     c. **[姓]** ボックスに「**Simon**」と入力します。
 
-    d. **[INVITE 1 USER (1 ユーザーを招待)]** をクリックします。 ユーザーをシステムに作成するには、そのユーザーが招待を受け入れる必要があります。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[INVITE 1 USER (1 ユーザーを招待)]** をクリックします。 ユーザーをシステムに作成するには、そのユーザーが招待を受け入れる必要があります。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

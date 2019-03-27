@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: e21a3ae23ca6a856c9524e52e80f33362f53cae1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 7f99b6d2f6fc1c6d1c270bd66965d978749ac63f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040848"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55455934"
 ---
-# <a name="how-to-restore-azure-cosmos-db-data-from-a-backup"></a>バックアップから Azure Cosmos DB データを復元する方法
+# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Azure Cosmos DB でバックアップからデータを復元する 
 
 データベースまたはコンテナーを誤って削除した場合は、[サポート チケットを申請するか]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)、[Azure サポートに連絡して]( https://azure.microsoft.com/support/options/)、自動オンライン バックアップからデータを復元できます。 Azure サポートは、**Standard**、**Developer、またはそれよりも高度な特定のプランのみで利用可能です。 Azure サポートは、**Basic** プランでは利用できません。 さまざまなサポート プランについては、「[Azure のサポート プラン](https://azure.microsoft.com/support/plans/)」ページを参照してください。 
 

@@ -4,7 +4,7 @@ description: Azure Active Directory と CylancePROTECT の間でシングル サ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ea392d8c-c8aa-4475-99d0-b08524ef0f3a
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 2a9d5fb7d9ec150113a45b628b2b98c34146b8ab
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c0bdb8612294c07593abaf02e4c0e3ea02e72a00
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063524"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>チュートリアル:Azure Active Directory と CylancePROTECT の統合
 
@@ -207,7 +208,7 @@ CylancePROTECT で Azure AD シングル サインオンを構成するには、
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

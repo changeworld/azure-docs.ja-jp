@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 33869ed71cbcdef454c9fcee8b4e6279ad5dfe05
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: aba3c2eb925370704ea52364891502a7a09cc9ec
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796628"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55212541"
 ---
 # <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>Conversation Learner モデルに API 呼び出しを追加する方法
 

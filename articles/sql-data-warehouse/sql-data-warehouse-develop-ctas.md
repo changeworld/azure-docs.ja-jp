@@ -6,16 +6,16 @@ author: ckarst
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: dad0b1570f54cde1b1d474d8ebfc78f793724ef4
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 6b66b6018ed5f6f427896db00b5348983b76a0e5
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247755"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472152"
 ---
 # <a name="using-create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での CREATE TABLE AS SELECT (CTAS) の使用
 ソリューションの開発のために、Azure SQL Data Warehouse の CREATE TABLE AS SELECT (CTAS) T-SQL ステートメントでコーディングする際のヒントです。
@@ -276,7 +276,7 @@ WHERE NOT EXISTS
 ;
 
 RENAME OBJECT dbo.[DimProduct]          TO [DimProduct_old];
-RENAME OBJECT dbo.[DimpProduct_upsert]  TO [DimProduct];
+RENAME OBJECT dbo.[DimProduct_upsert]  TO [DimProduct];
 
 ```
 

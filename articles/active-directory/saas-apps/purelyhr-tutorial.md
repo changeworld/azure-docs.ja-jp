@@ -4,22 +4,23 @@ description: Azure Active Directory と PurelyHR の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 86a9c454-596d-4902-829a-fe126708f739
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 88388be1a0687c3e56fd39dde2f70e40cf578f2a
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6c1122fec5e8e092fc49e436ba2d9fb5b057d23e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841049"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179452"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>チュートリアル: Azure Active Directory と PurelyHR の統合
 
@@ -149,7 +150,7 @@ PurelyHR で Azure AD のシングル サインオンを構成してテストす
 
     c. **[Idp Endpoint URL]** ボックスに、Azure Portal でコピーした **SAML シングル サインオン サービス URL** を貼り付けます。 
 
-    d. **[Auto-Create Users]** チェック ボックスをオンにして、PurelyHR への自動ユーザー プロビジョニングを有効にします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Auto-Create Users]** チェック ボックスをオンにして、PurelyHR への自動ユーザー プロビジョニングを有効にします。
 
     e. **[Save Changes]** をクリックして設定を保存します。
 
@@ -186,7 +187,7 @@ PurelyHR で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-purelyhr-test-user"></a>PurelyHR テスト ユーザーの作成
 

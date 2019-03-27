@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1a8a31b34981b0e2b68caf3f5c4952d0ee59ac8e
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 69951693f9d3bacb556453aba954620815884d43
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53784464"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333919"
 ---
 ## <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
@@ -37,5 +37,5 @@ ms.locfileid: "53784464"
 <!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh --> [!code-azurecli-interactive[acr-sp-role-assign](~/cli_scripts/container-registry/service-principal-assign-role/service-principal-assign-role.sh)]
 
 <!-- LINKS - Internal -->
-[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
-[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac
+[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create

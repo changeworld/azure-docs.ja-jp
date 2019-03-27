@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Proxyclick の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Proxyclick の統合 | Microsoft Docs
 description: Azure Active Directory と Proxyclick の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5c58a859-71c2-4542-ae92-e5f16a8e7f18
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: jeedes
-ms.openlocfilehash: d93c5486d9c23558995742fc27e1222834cf4452
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 52d3e058c7e604a31493bf3b1972b39c9922fd90
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446315"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163517"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>チュートリアル: Azure Active Directory と Proxyclick の統合
+# <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>チュートリアル:Azure Active Directory と Proxyclick の統合
 
 このチュートリアルでは、Proxyclick と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -153,7 +154,7 @@ Proxyclick で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[SAML Request Method]\(SAML 要求メソッド\)** で **[HTTP Redirect]\(HTTP リダイレクト\)** を選択します。
 
-    d. **[Issuer]\(発行者\)** ボックスに、Azure portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Issuer]\(発行者\)** ボックスに、Azure portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     e. **[SAML 2.0 Endpoint URL]\(SAML 2.0 エンドポイント URL\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -191,7 +192,7 @@ Proxyclick で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-proxyclick-test-user"></a>Proxyclick テスト ユーザーの作成
 
@@ -219,7 +220,7 @@ Azure AD ユーザーが Proxyclick にログインできるようにするに�
 
     c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では Simon)。
 
-    d. **[ユーザーの追加]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザーの追加]** をクリックします。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -256,7 +257,7 @@ Azure AD ユーザーが Proxyclick にログインできるようにするに�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Proxyclick] タイルをクリックすると、自動的に Proxyclick アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -7,19 +7,20 @@ author: danieldobalian
 manager: mtillman
 ms.author: celested
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: ''
-ms.openlocfilehash: d6e70048f5c86ad18962237d7ffcc442c82bf035
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3e92c3b302ab18aaaf20d187d61a488603ce81a7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107652"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178024"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス
 

@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/08/2018
+ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: 3dc574b3aab3600895376c0271b5c6224a70d3b6
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fe1f08b7b597a2e521f2b13af1d0a4a4d7d4b7a2
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119217"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54214003"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
 
@@ -92,7 +92,7 @@ OMS ポータルを使用して新しいワークスペースを作成するこ�
 OMS モバイル アプリは、OMS ポータルと共に非推奨となります。 OMS モバイル アプリの代わりに、モバイル デバイスのブラウザーから直接 Azure portal にアクセスすることで、IT インフラストラクチャ、ダッシュ ボード、保存されたクエリに関する情報にアクセスできます。 アラートを取得するには、[Azure のアクション グループ](../../azure-monitor/platform/action-groups.md)を構成して、SMS または音声通話の形式で通知が届くようにする必要があります。
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights Connector と Application Insights ソリューション
-[Application Insights Connector](../../azure-monitor/platform/app-insights-connector.md) では、Application Insights のデータを Log Analytics のワークスペースに含めることができます。 このデータの重複は、インフラストラクチャとアプリケーションのデータ全体を視覚化するために必要でした。 Application Insights がデータ保有期間のサポートを 2019 年 3 月まで延長し、[リソース間のクエリ](../../azure-monitor/log-query/cross-workspace-query.md)を実行する機能が利用できることから、Application Insights リソースからのデータを複製して Log Analytics に送信する必要はありません。 さらに、Connector はアプリケーション プロパティのサブセットを Log Analytics に送信する一方、リソース間のクエリによって高い柔軟性が提供されます。  
+[Application Insights Connector](../../azure-monitor/platform/app-insights-connector.md) では、Application Insights のデータを Log Analytics のワークスペースに含めることができます。 このデータの重複は、インフラストラクチャとアプリケーションのデータ全体を視覚化するために必要でした。 Application Insights のデータ保有期間サポートが 2019 年 3 月まで延長されたこと、[リソース間のクエリ](../../azure-monitor/log-query/cross-workspace-query.md)を実行する機能が利用できること、[複数の Azure Monitor Application Insights リソースを表示できること](../log-query/unify-app-resource-data.md)から、Application Insights リソースからのデータを複製して Log Analytics に送信する必要はありません。 さらに、Connector はアプリケーション プロパティのサブセットを Log Analytics に送信する一方、リソース間のクエリによって高い柔軟性が提供されます。  
 
 そのため、Application Insights Connector は 2019 年 3 月 30 日の OMS ポータルの廃止と一緒に非推奨となり Azure Marketplace から除去されますが、既存の接続は 2019 年 6 月 30 日まで引き続き動作します。 OMS ポータルの廃止により、ポータルから既存の接続を構成および削除する方法がなくなります。 これは 2019 年 1 月に利用できる予定の REST API を使用してサポートされます。通知は [Azure の更新情報](https://azure.microsoft.com/updates/)に掲載されます。 
 

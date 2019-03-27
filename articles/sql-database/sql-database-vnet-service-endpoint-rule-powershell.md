@@ -1,5 +1,5 @@
 ---
-title: SQL で Virtual Network サービス エンドポイントと規則を記述するための PowerShell | Microsoft Docs
+title: Azure SQL の単一およびプール データベース用の VNet エンドポイントおよび規則のための PowerShell | Microsoft Docs
 description: PowerShell スクリプトを提供して、Azure SQL Database と SQL Data Warehouse.用 の Vertual Service エンドポイントを作成して管理します。
 services: sql-database
 ms.service: sql-database
@@ -11,27 +11,27 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: b841f985c758cb1e354d3c3537c532a253e81d92
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 02/11/2019
+ms.openlocfilehash: b30240620e3a8d3dea1849e895ec021c96fc11c6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945928"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117614"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: SQL の Virtual Service エンドポイントと VNet 規則を作成する
 
-[Azure SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、両方とも Virtual Service エンドポイントをサポートします。
+*仮想ネットワーク規則*は 1 つのファイアウォール セキュリティ機能であり、Azure [SQL Database](sql-database-technical-overview.md) 内の単一データベースおよびエラスティック プール用、または [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 内のデータベース用のデータベース サーバーが、仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御します。
 
-> [!NOTE]
-> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 Managed Instance サブネットに関連付けられているサービス エンドポイントがないため、この記事は **Azure SQL Database Managed Instance** には "*適用されません*"。
+> [!IMPORTANT]
+> この記事は Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。 関連付けられているサービス エンドポイントがないため、この記事は Azure SQL Database の**マネージド インスタンス** デプロイには*適用されません*。
 
 この記事では、次のアクションを行う PowerShell スクリプトについて説明します。
 
 1. サブネットに Microsoft Azure *仮想サービス エンドポイント*を作成します。
 2. ご利用の Azure SQL Database サーバーのファイアウォールにエンドポイントを追加し、*仮想ネットワーク規則*を作成します。
 
-規則を作成する理由については、[Virtual Service endpoints for Azure SQL Database (Azure SQL Database 用の仮想サービス エンドポイント)][sql-db-vnet-service-endpoint-rule-overview-735r] に関する記事で説明します。
+規則作成の動機については、[Azure SQL Database の仮想サービス エンドポイント][sql-db-vnet-service-endpoint-rule-overview-735r]に関する記事で説明しています。
 
 > [!TIP]
 > SQL Database 用の仮想サービス エンドポイントの*種類名*を評価したり、またはご利用のサブネットに追加したりすることだけが必要な場合は、次をスキップして、より[ダイレクトな PowerShell スクリプト](#a-verify-subnet-is-endpoint-ps-100)に進めます。
@@ -63,7 +63,7 @@ ms.locfileid: "49945928"
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>スクリプト 1: 変数
+### <a name="script-1-variables"></a>スクリプト 1: variables
 
 この最初の PowerShell スクリプトは、変数に値を割り当てます。 後続のスクリプトは、これらの変数によって決まります。
 

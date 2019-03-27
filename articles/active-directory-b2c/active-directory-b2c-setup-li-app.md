@@ -1,27 +1,27 @@
 ---
-title: Azure Active Directory B2C を使用して LinkedIn アカウントでのサインアップおよびサインインを設定する | Microsoft Docs
+title: LinkedIn アカウントでのサインアップとサインインを設定する - Azure Active Directory B2C | Microsoft Docs
 description: Azure Active Directory B2C を使用するアプリケーションで LinkedIn アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 1719da96a849bb5390745ec3df3ed11374bb8700
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.subservice: B2C
+ms.openlocfilehash: 6c340d6b410a289f8beca156f85472cb729b786a
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180497"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427821"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LinkedIn アカウントでのサインアップおよびサインインを設定する
 
 ## <a name="create-a-linkedin-application"></a>LinkedIn アプリケーションを作成する
 
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして LinkedIn アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ LinkedIn アカウントを持っていない場合は、[https://www.linkedin.com/](https://www.linkedin.com/) で取得できます。
+Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directory-b2c-reference-oauth-code.md)として LinkedIn アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ LinkedIn アカウントを持っていない場合は、[https://www.linkedin.com/](https://www.linkedin.com/) で取得できます。
 
 1. LinkedIn アカウントの資格情報を使用して、[LinkedIn 開発者の Web サイト](https://www.developer.linkedin.com/)にサインインします。
 2. **[マイ アプリ]** を選択し、**[アプリケーションの作成]** をクリックします。
@@ -33,7 +33,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして LinkedI
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>ID プロバイダーとして LinkedIn アカウントを構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-2. 上部のメニューの **[ディレクトリとサブスクリプション フィルター]** をクリックし、テナントを含むディレクトリを選択して、Azure AD B2C  テナントを含むディレクトリを使用しているかどうかを確認してください。
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
 4. **[ID プロバイダー]**、**[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*LinkedIn*」と入力します。

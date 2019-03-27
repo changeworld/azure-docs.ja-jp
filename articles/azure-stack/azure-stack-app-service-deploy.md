@@ -3,8 +3,8 @@ title: 'App Services をデプロイする: Azure Stack | Microsoft Docs'
 description: Azure Stack への App Service のデプロイに関する詳しいガイダンスです
 services: azure-stack
 documentationcenter: ''
-author: apwestgarth
-manager: stefsch
+author: jeffgilb
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: azure-stack
@@ -12,14 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 02/27/2019
 ms.author: anwestg
-ms.openlocfilehash: 504cd5a0bfbae1ff91f7914abe12aa35b699ee80
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.reviewer: anwestg
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: d66254cdad596e3b10482b2c937326162e2e075d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104762"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886832"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>App Service リソース プロバイダーを Azure Stack に追加する
 
@@ -28,7 +30,7 @@ ms.locfileid: "54104762"
 この記事のガイダンスを使用して、Azure Stack に App Service をデプロイします。
 
 > [!IMPORTANT]  
-> Azure App Service 1.4 をデプロイする前に、Azure Stack 統合システムに 1809 更新プログラムを適用するか、最新の Azure Stack Development Kit (ASDK) をデプロイしてください。
+> Azure App Service 1.5 をデプロイする前に、Azure Stack 統合システムに 1901 更新プログラムを適用するか、最新の Azure Stack Development Kit (ASDK) をデプロイしてください。
 
 Web および API アプリケーションを作成する機能をユーザーに提供できます。 これらのアプリケーションをユーザーが作成できるようにするには、次のことを行う必要があります。
 
@@ -36,16 +38,19 @@ Web および API アプリケーションを作成する機能をユーザー�
  - App Service リソース プロバイダーをインストールした後で、オファーやプランに含めることができます。 ユーザーはサブスクライブしてサービスを取得し、アプリケーションの作成を開始できます。
 
 > [!IMPORTANT]  
-> リソース プロバイダーのインストーラーを実行する前に、[開始前の準備](azure-stack-app-service-before-you-get-started.md)に関するページのガイダンスに従っていることを確認してください。
+> リソース プロバイダーのインストーラーを実行する前に、[開始前](azure-stack-app-service-before-you-get-started.md)のガイダンスに従っていて、1.5 リリースに付属している[リリース ノート](azure-stack-app-service-release-notes-update-five.md)を読んで、新しい機能、修正点、およびデプロイに影響を与える可能性のある既知の問題を把握していることを確認してください。
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>App Service リソースプロバイダーのインストーラーを実行する
 
 App Service リソース プロバイダーのインストールには少なくとも 1 時間かかります。 必要な時間の長さは、デプロイするロール インスタンスの数によって異なります。 デプロイ中に、インストーラーは次のタスクを実行します。
 
- - 指定された Azure Stack ストレージ アカウントに BLOB コンテナーを作成します。
- - App Service の DNS ゾーンとエントリを作成します。
- - App Service リソース プロバイダーを登録します。
- - App Service のギャラリー アイテムを登録します。
+- 指定された Azure Stack ストレージ アカウントに BLOB コンテナーを作成します。
+- App Service の DNS ゾーンとエントリを作成します。
+- App Service リソース プロバイダーを登録します。
+- App Service のギャラリー アイテムを登録します。
+
+  > [!IMPORTANT]
+  > リソース プロバイダーをデプロイする前に、新しい機能、修正、デプロイに影響を与える可能性のある既知の問題に関する詳細については、リリース ノートを確認してください。
 
 App Service リソースプロバイダーをデプロイするには、次の手順を実行します。
 
@@ -69,8 +74,8 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
     a. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** の横にある **[接続]** を選択します。
 
-     - Azure Active Directory (Azure AD) を使っている場合は、Azure Stack のデプロイ時に指定した、Azure AD の管理者アカウントとパスワードを入力します。 **[サインイン]** を選択します。
-     - Active Directory フェデレーション サービス (AD FS) を使用している場合は、ご自分の管理者アカウントを指定します。 たとえば、「 cloudadmin@azurestack.local 」のように入力します。 パスワードを入力し、**[サインイン]** を選択します。
+   - Azure Active Directory (Azure AD) を使っている場合は、Azure Stack のデプロイ時に指定した、Azure AD の管理者アカウントとパスワードを入力します。 **[サインイン]** を選択します。
+   - Active Directory フェデレーション サービス (AD FS) を使用している場合は、ご自分の管理者アカウントを指定します。 たとえば、「 cloudadmin@azurestack.local 」のように入力します。 パスワードを入力し、**[サインイン]** を選択します。
 
    b. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** で、**[Default Provider Subscription]\(既定のプロバイダー サブスクリプション\)** を選択します。
 
@@ -94,7 +99,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
    ![App Service インストーラー][4]
 
-8. ファイル共有の情報を入力してから、**[次へ]** を選択します。 ファイル共有のアドレスには、ファイル サーバーの完全修飾ドメイン名 (FQDN)、または IP アドレスを使用する必要があります。 たとえば、\\\appservicefileserver.local.cloudapp.azurestack.external\websites、または \\\10.0.0.1\websites を使用します。
+8. ファイル共有の情報を入力してから、**[次へ]** を選択します。 ファイル共有のアドレスには、ファイル サーバーの完全修飾ドメイン名 (FQDN)、または IP アドレスを使用する必要があります。 たとえば、\\\appservicefileserver.local.cloudapp.azurestack.external\websites、または \\\10.0.0.1\websites を使用します。  ドメインに参加しているファイル サーバーを使用している場合は、ドメインを含む完全なユーザー名 (例: myfileserverdomain\FileShareOwner) を指定する必要があります。
 
    >[!NOTE]
    >インストーラーは、続行する前にファイル共有への接続性をテストしようとします。 しかし、既存の仮想ネットワークにデプロイする場合、この接続テストが失敗する可能性があります。 警告と、続行するためのプロンプトが表示されます。 ファイル共有情報が正しい場合は、デプロイを続行します。
@@ -127,22 +132,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
     ![App Service インストーラー][10]
 
-11. App Service リソース プロバイダー データベースをホストするために使用するサーバー インスタンスについて、SQL Server の詳細を入力し、**[次へ]** を選択します。 インストーラーにより、SQL 接続のプロパティが検証されます。
-
-    > [!NOTE]
-    > インストーラーは、続行する前に SQL Server への接続性をテストしようとします。 しかし、既存の仮想ネットワークにデプロイする場合、この接続テストが失敗する可能性があります。 警告と、続行するためのプロンプトが表示されます。 SQL Server の情報が正しい場合は、デプロイを続行します。
-    >
-    > Azure App Service on Azure Stack 1.3 以降では、インストーラーは、SQL Server がデータベース包含を SQL Server レベルで有効にしているかどうかを確認します。  そうなっていない場合は、次の例外が表示されます。
-    > ```sql
-    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
-    >    ***********************************************************
-    >    sp_configure 'contained database authentication', 1;  
-    >    GO  
-    >    RECONFIGURE;  
-    >    GO
-    >    ***********************************************************
-    > ```
-    > 詳細については、[Azure App Service on Azure Stack 1.3 のリリース ノート](azure-stack-app-service-release-notes-update-three.md)を参照してください。
+11. App Service リソース プロバイダー データベースをホストするために使用するサーバー インスタンスについて、SQL Server の詳細を入力し、**[次へ]** を選択します。 インストーラーにより、SQL 接続のプロパティが検証されます。<br><br>App Service インストーラーは、続行する前に SQL Server への接続性をテストしようとします。 既存の仮想ネットワークにデプロイする場合、この接続テストが失敗する可能性があります。 警告と、続行するためのプロンプトが表示されます。 SQL Server の情報が正しい場合は、デプロイを続行します。
 
     ![App Service インストーラー][11]
 
@@ -155,7 +145,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
     | --- | --- | --- | --- |
     | コントローラー | 1 | Standard_A2 - (2 vCPU、3584 MB) | App Service クラウドの正常性を管理および維持します。 |
     | 管理 | 1 | Standard_A2 - (2 vCPU、3584 MB) | App Service Azure Resource Manager および API のエンドポイント、ポータル拡張機能 (管理、テナント、Functions ポータル)、データ サービスを管理します。 フェールオーバーをサポートする場合は、お勧めのインスタンス数は 2 つに増えます。 |
-    | 発行元 | 1 | Standard_A1 - (1 vCPU、1792 MB) | FTP および Web デプロイによってコンテンツを公開します。 |
+    | Publisher | 1 | Standard_A1 - (1 vCPU、1792 MB) | FTP および Web デプロイによってコンテンツを公開します。 |
     | FrontEnd | 1 | Standard_A1 - (1 vCPU、1792 MB) | App Service アプリケーションに要求をルーティングします。 |
     | 共有 Worker | 1 | Standard_A1 - (1 vCPU、1792 MB) | Web または API アプリケーション、および Azure Functions アプリをホストします。 より多くのインスタンスの追加が必要になる場合があります。 オペレーターは、サービスを定義することや任意の SKU レベルを選ぶことができます。 レベルには、少なくとも 1 つの vCPU が必要です。 |
 
@@ -194,6 +184,11 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
     ![App Service インストーラー][17]
 
+## <a name="post-deployment-steps"></a>デプロイ後の手順
+
+> [!IMPORTANT]  
+> SQL Always On インスタンスを使用して App Service RP を提供している場合は、データベースのフェールオーバー時にサービスの停止を防ぐために、[appservice_hosting と appservice_metering データベースを可用性グループに追加](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する必要があります。
+
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>App Service on Azure Stack インストールを検証する
 
 1. Azure Stack 管理ポータルで、**[Administration - App Service]\(管理 - App Service\)** に移動します。
@@ -207,7 +202,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
     - ソース:任意
     - 送信元ポート範囲: *
     - 変換先:IP アドレス
-    - 宛先 IP アドレス範囲:ファイルサーバーの IP の範囲
+    - 宛先 IP アドレス範囲:ファイル サーバーの IP の範囲
     - 送信先ポート範囲:445
     - プロトコル:TCP
     - アクション:ALLOW
@@ -248,9 +243,9 @@ App Service リソースプロバイダーをデプロイして登録したら�
 
 1. Azure Stack テナント ポータルで、**+** を選択して Azure Marketplace にアクセスし、Django Web サイトをデプロイして、デプロイが完了するまで待ちます。 Django Web プラットフォームでは、ファイル システム ベースのデータベースが使われます。 SQL や MySQL など、追加のリソース プロバイダーは必要ありません。
 
-2. MySQL リソース プロバイダーもデプロイした場合は、Marketplace から WordPress Web サイトをデプロイできます。 データベース パラメーターを求められたら、お好きなユーザー名とサーバー名で、ユーザー名を *User1@Server1* の形式で入力します。
+2. MySQL リソースプロバイダーも展開した場合は、Marketplace から WordPress Web サイトを展開できます。 データベース パラメーターを求められたら、お好きなユーザー名とサーバー名を使用して、ユーザー名を *User1\@Server1* として入力します。
 
-3. SQL Server リソース プロバイダーもデプロイした場合は、Marketplace から DNN Web サイトをデプロイできます。 データベース パラメーターを求められたら、使用しているリソース プロバイダーに接続された SQL Server を実行しているコンピューター内のデータベースを選びます。
+3. SQL Server リソースプロバイダーも展開した場合は、Marketplace から DNN Web サイトを展開できます。 データベース パラメーターを求められたら、使用しているリソース プロバイダーに接続された SQL Server を実行しているコンピューター内のデータベースを選びます。
 
 ## <a name="next-steps"></a>次の手順
 

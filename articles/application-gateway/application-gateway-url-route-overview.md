@@ -6,12 +6,13 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 1/8/2019
 ms.author: victorh
-ms.openlocfilehash: 1ada74f5c85ef327957ec4981e83f68bcafea858
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.topic: conceptual
+ms.openlocfilehash: 2f0bd0a20b866d342802014f1034a7ed9d939d53
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188761"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792244"
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
 
@@ -23,7 +24,7 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-http://contoso.com/video/* の要求は、VideoServerPool にルーティングされ、 http://contoso.com/images/* は ImageServerPool にルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
+http\://contoso.com/video/* に対する要求は VideoServerPool に、http\://contoso.com/images/* に対する要求は ImageServerPool に、それぞれルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
 
 > [!IMPORTANT]
 > 規則は、ポータルにおける表示順に処理されます。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。

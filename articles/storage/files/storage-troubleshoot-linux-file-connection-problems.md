@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
-ms.component: files
-ms.openlocfilehash: b8f77f404a8e5d2d1625a327a1e50c0e169b6135
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.subservice: files
+ms.openlocfilehash: ca7e89f4b7f976633d5f097b7e335fe9b7631985
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744430"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477745"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 

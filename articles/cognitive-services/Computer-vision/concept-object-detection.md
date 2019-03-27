@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用したオブジェクトの検出に関連する概念。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 89323e584b4020613fe3ff8411df50f2ab96f156
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: ee85e6bd171fc9415e5c7606d6e18a7a22fa6570
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582731"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866918"
 ---
 # <a name="object-detection"></a>オブジェクトの検出
 
@@ -87,6 +87,15 @@ Detect API は、画像内で特定されたオブジェクトや生物に応じ
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="limitations"></a>制限事項
 
-[イメージの分類](concept-categorizing-images.md)および[イメージの説明](concept-describing-images.md)に関する概念を確認します。
+検知漏れ (見落とされたオブジェクト) や詳細の利用制限の影響を回避または軽減できるように、オブジェクト検出機能の制限事項に注意することが重要です。
+* オブジェクトが非常に小さい (画像の 5 % 未満) 場合、通常、それらのオブジェクトは検出されません。
+* オブジェクトが非常に近くに配置されている場合 (積み重ねられた皿など)、通常、それらのオブジェクトは検出されません。
+* オブジェクトは、ブランド名や製品名 (店の棚にある各種のソーダなど) によって区別されません。 ただし、[ブランド検出](concept-brand-detection.md)機能を使用すると画像からブランド情報を取得できます。
+
+## <a name="use-the-api"></a>API の使用
+オブジェクト検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 完全な JSON 応答が得られたら、`"objects"` セクションのコンテンツを対象に文字列を解析します。
+
+* [クイック スタート:画像の分析 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [クイック スタート:画像の分析 (REST API)](./quickstarts/csharp-analyze.md)

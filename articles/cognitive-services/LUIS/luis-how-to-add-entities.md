@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) アプリにエンティティ (アプリケーションのドメイン内のキー データ) を追加します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: f95d7851241dfd5b077c215e2df893c6ba8ef36c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d98896ab86c1dbbc988d44e3c8cf6545ba5d5d3c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139488"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859795"
 ---
 # <a name="create-entities-without-utterances"></a>発話なしでエンティティを作成する
 

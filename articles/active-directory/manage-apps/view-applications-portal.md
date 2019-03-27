@@ -3,25 +3,25 @@ title: テナント アプリケーションの表示 - Azure Active Directory |
 description: Azure portal を使用して、Azure Active Directory (Azure AD) テナントのアプリケーションを表示します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/25/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: arvinh
 ms.custom: it-pro
-ms.openlocfilehash: bedd83426ecb24681fcfa292a049b8d4a3271d6a
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec039beecdcfa6dacd19e5910209c58f13543fce
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39266494"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199886"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>Azure Active Directory テナントのアプリケーションの表示
 

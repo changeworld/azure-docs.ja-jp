@@ -4,7 +4,7 @@ description: Visual Studio Code を使用して Azure SQL Database に接続す�
 keywords: SQL Database への接続
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/11/2019
-ms.openlocfilehash: 53c325e586aa96f96a51ce4dd8b320bb7b50b4b2
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.date: 02/12/2019
+ms.openlocfilehash: 7b932cf8a1623dfcff02baff409db26135e5aa20
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247794"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837560"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>クイック スタート: Visual Studio Code を使って Azure SQL Database に接続して照会する
 
@@ -26,18 +26,31 @@ ms.locfileid: "54247794"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、次のものが必要です。
+- Azure SQL Database。 以下のいずれかのクイック スタートを使用して、Azure SQL Database でデータベースを作成し、構成できます。
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+  || 単一データベース | マネージド インスタンス |
+  |:--- |:--- |:---|
+  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) |
+  | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|
+  |||[オンサイトからの接続](sql-database-managed-instance-configure-p2s.md)
+  |データを読み込む|クイック スタートごとに読み込まれる Adventure Works|[Wide World Importers を復元する](sql-database-managed-instance-get-started-restore.md)
+  |||[github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) の [BACPAC](sql-database-import.md) ファイルから Adventure Works を復元またはインポートする|
+  |||
 
-#### <a name="install-visual-studio-code"></a>Visual Studio Code のインストール
+  > [!IMPORTANT]
+  > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
+
+## <a name="install-visual-studio-code"></a>Visual Studio Code のインストール
 
 必ず最新の [Visual Studio Code](https://code.visualstudio.com/Download) をインストールして [mssql 拡張機能](https://aka.ms/mssql-marketplace)を読み込んでおきます。 mssql 拡張機能のインストールのガイダンスについては、「[Install VS Code (VS コードのインストール)](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code)」と「[mssql for Visual Studio Code (Visual Studio Code 用 mssql)](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)」を参照してください。
 
 ## <a name="configure-visual-studio-code"></a>Visual Studio Code を構成する 
 
 ### <a name="mac-os"></a>**Mac OS**
-macOS では、mssql 拡張機能で使用される .Net Core の前提条件として、OpenSSL をインストールする必要があります。 使用するターミナルを開き、次のコマンドを入力して、**brew** と **OpenSSL** をインストールします。 
+
+macOS では、mssql 拡張機能で使用される .NET Core の前提条件として、OpenSSL をインストールする必要があります。 使用するターミナルを開き、次のコマンドを入力して、**brew** と **OpenSSL** をインストールします。 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -56,9 +69,15 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 特別な構成は必要ありません。
 
-## <a name="sql-server-connection-information"></a>SQL Server の接続情報
+## <a name="get-sql-server-connection-information"></a>SQL サーバーの接続情報を取得する
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名またはホスト名、データベース名、およびログイン情報が必要になります。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+
+2. **[SQL データベース]** または **[SQL マネージド インスタンス]** ページに移動します。
+
+3. **[概要]** ページで、単一データベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、マネージド インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
 
 ## <a name="set-language-mode-to-sql"></a>言語モードを SQL に設定
 

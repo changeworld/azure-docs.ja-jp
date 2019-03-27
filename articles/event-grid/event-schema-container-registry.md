@@ -2,22 +2,22 @@
 title: Azure Event Grid の Container Registry イベント スキーマ
 description: Azure Event Grid で Container Registry イベント用に用意されているプロパティについて説明します
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/13/2018
-ms.author: tomfitz
-ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.date: 01/13/2019
+ms.author: spelluru
+ms.openlocfilehash: 6f00d4f249543ece0eb8db4a8e040300d55b2de8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145192"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462846"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Container Registry 用の Azure Event Grid イベント スキーマ
 
-この記事では、Container Registry イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
+この記事では、Container Registry イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
 ## <a name="available-event-types"></a>使用可能なイベントの種類
 

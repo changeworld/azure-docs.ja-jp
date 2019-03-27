@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 19a576440742684849ffc74092162be7008621ba
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 689ab38f2fc2d7643fb61c7137a4d88c297615db
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045020"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834185"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Power BI ワークスペース コレクションでレポートの表示モードと編集モードを切り替える
 
@@ -30,7 +30,7 @@ Power BI ワークスペース コレクションでレポートの表示モー�
 > [!NOTE]
 > これにより、既存のレポートを編集して変更を保存できます。 さらに、"**名前を付けて保存**" 操作をサポートする場合は、追加のアクセス許可を指定する必要があります。 詳細については、[Scopes](app-token-flow.md#scopes) に関するページを参照してください。
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -46,9 +46,10 @@ var token = embedToken.Generate("{access key}");
 
 JavaScript の例:
 
-```
+```html
    <div id="reportContainer"></div>
 
+    <script>
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
@@ -74,6 +75,7 @@ JavaScript の例:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
+    </script>
 ```
 
 これは、**models.ViewMode.View** に設定されている **viewMode** に基づいて表示モードでレポートを埋め込むことを示します。
@@ -82,7 +84,7 @@ JavaScript の例:
 
 次の JavaScript を使用すると、モードが編集モードのときに表示モードに切り替えることができます。
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
@@ -98,7 +100,7 @@ report.switchMode("view");
 
 次の JavaScript を使用すると、モードが表示モードのときに編集モードに切り替えることができます。
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
@@ -115,9 +117,9 @@ report.switchMode("edit");
 [Get started with Microsoft Power BI Embedded sample (Microsoft Power BI Embedded のサンプルの使用)](get-started-sample.md)  
 [レポートの埋め込み](embed-report.md)  
 [Power BI ワークスペース コレクションでの認証と承認](app-token-flow.md)  
-[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
+[CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)  
 [JavaScript による埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [PowerBI-CSharp Git リポジトリ](https://github.com/Microsoft/PowerBI-CSharp)  
 [PowerBI-Node Git リポジトリ](https://github.com/Microsoft/PowerBI-Node)  
 
-ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
+ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。

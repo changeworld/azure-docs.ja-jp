@@ -3,19 +3,19 @@ title: ローカライズ文字列 ID - Azure Active Directory B2C |Microsoft Do
 description: Azure Active Directory B2C のカスタム ポリシーに api.signuporsignin の ID を持つコンテンツ定義の ID を指定します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 7619ebf038e164c9e586118c70e34955ca7c4767
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.subservice: B2C
+ms.openlocfilehash: 3f72480aaa05c0f50179d4d330525b12525282bc
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222673"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55161870"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -45,7 +45,7 @@ ms.locfileid: "47222673"
 | **createaccount_link** | 今すぐサインアップ |
 | **divider_title** | または |
 | **cancel_message** | ユーザーがパスワードを忘れました |
-| **button_signin** | [サインイン] |
+| **button_signin** | サインイン |
 | **social_intro** | 自分のソーシャル アカウントでサインイン |
   **remember_me** |サインインしたままにする|
 | **unknown_error** | サインインで問題が発生しました。 後でもう一度やり直してください。 |
@@ -102,7 +102,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 | **cancel_message** | セルフ アサート情報の入力がユーザーによって取り消されました |
 | **preloader_alt** | お待ちください |
 | **ver_but_send** | 確認コードを送信する |
-| **alert_yes** | [はい] |
+| **alert_yes** | はい |
 | **error_fieldIncorrect** | 1 つ以上のフィールドが正しく入力されていません。 入力を確認してから、やり直してください。 |
 | **year** | 年 |
 | **verifying_blurb** | 情報の処理が終わるまでお待ちください。 |

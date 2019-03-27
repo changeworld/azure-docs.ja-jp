@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: b4c873e319dd611221c81deb948db3a64062631e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1bf65883ecf23f726aefd2cd889a2bcb08e9b6a6
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032603"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457651"
 ---
-# <a name="optimize-the-cost-for-multi-region-deployments-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョン デプロイにかかるコストを最適化する
+# <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB の複数リージョンのコストを最適化する
 
 お客様の Azure Cosmos アカウントのリージョンは、いつでも追加したり削除したりすることができます。 Azure Cosmos の各種のデータベースとコンテナーに対してお客様が構成したスループットは、お客様のアカウントに関連付けられている各リージョンで予約されます。 プロビジョニングされる 1 時間あたりのスループット (つまり、お客様の Azure Cosmos アカウントのすべてのデータベースとコンテナーに対して構成された RU/秒の合計) が `T` で、お客様のデータベース アカウントに関連付けられている Azure リージョンの数が `N` である場合、お客様の Cosmos アカウントにプロビジョニングされる 1 時間あたりの合計スループットは、以下に相当します。
 

@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Custom Vision SDK for Python を使って画像分類プロジェクトを作成する'
+title: クイック スタート:Custom Vision SDK for Python を使用して画像分類プロジェクトを作成する
 titlesuffix: Azure Cognitive Services
 description: Python SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、予測を行います。
 services: cognitive-services
 author: areddish
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 11/2/2018
 ms.author: areddish
-ms.openlocfilehash: b95adf3cb07ae98d4b690dbe29d72d30671c4a6a
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 66fc773dd354f80428d6fd65906610b901260a59
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52681213"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407036"
 ---
-# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>クイック スタート: Custom Vision Python SDK を使って画像分類プロジェクトを作成する
+# <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>クイック スタート:Custom Vision Python SDK を使用して画像分類プロジェクトを作成する
 
 この記事では、Custom Vision SDK と Python を使用して画像分類モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 この例は、独自の Python アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](getting-started-build-a-classifier.md)を参照してください。
 
@@ -49,7 +49,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 ```Python
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
-from azure.cognitiveservices.vision.customvision.training.models import ImageUrlCreateEntry
+from azure.cognitiveservices.vision.customvision.training.models import ImageFileCreateEntry
 
 ENDPOINT = "https://southcentralus.api.cognitive.microsoft.com"
 
@@ -84,14 +84,28 @@ cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 ```Python
 base_image_url = "<path to project>"
 
-print ("Adding images...")
-for image_num in range(1,10):
-    image_url = base_image_url + "Images/Hemlock/hemlock_{}.jpg".format(image_num)
-    trainer.create_images_from_urls(project.id, [ ImageUrlCreateEntry(url=image_url, tag_ids=[ hemlock_tag.id ] ) ])
+print("Adding images...")
 
-for image_num in range(1,10):
-    image_url = base_image_url + "Images/Japanese Cherry/japanese_cherry_{}.jpg".format(image_num)
-    trainer.create_images_from_urls(project.id, [ ImageUrlCreateEntry(url=image_url, tag_ids=[ cherry_tag.id ] ) ])
+image_entry = lambda image_path, tag_id: ImageFileCreateEntry(
+    name=image_path.split("/")[-1], contents=image_path, tag_ids=[tag_id]
+)
+
+image_list = [
+    image_entry(
+        base_image_url + "Images/Hemlock/hemlock_{}.jpg".format(image_num),
+        hemlock_tag.id,
+    )
+    for image_num in range(1, 10)
+] + [
+    image_entry(
+        base_image_url
+        + "Images/Japanese Cherry/japanese_cherry_{}.jpg".format(image_num),
+        cherry_tag.id,
+    )
+    for image_num in range(1, 10)
+]
+
+trainer.create_images_from_files(project.id, images=image_list)
 ```
 
 ### <a name="train-the-classifier"></a>分類子をトレーニングする

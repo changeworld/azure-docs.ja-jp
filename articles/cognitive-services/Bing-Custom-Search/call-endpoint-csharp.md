@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# で Bing Custom Search インスタンスに検索結果を要求します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: maheshb
-ms.openlocfilehash: 764a6a060a3ce2c7af9e4051b02ad45d14d27900
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ec0b1d95f5151d4aef45d4e02926d33ee71c5fbd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557820"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878325"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>クイック スタート:C# を使用して Bing Custom Search エンドポイントを呼び出す 
 

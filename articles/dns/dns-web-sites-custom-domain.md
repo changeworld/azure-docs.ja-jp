@@ -5,16 +5,16 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 7/20/2018
+ms.date: 2/19/2019
 ms.author: victorh
-ms.openlocfilehash: 2abe6c11b2a6fe9a9146f5c5689597fe3e29fa82
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 9ed0c8763835add485d6c60a43f4e4113ecde12e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41918365"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429283"
 ---
-# <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル: カスタム ドメインにおける Web アプリの DNS レコードの作成 
+# <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル:カスタム ドメインにおける Web アプリの DNS レコードの作成 
 
 Azure DNS を構成して、Web アプリ用にカスタム ドメインをホストすることができます。 たとえば、Azure Web アプリを作成し、www.contoso.com または contoso.com を完全修飾ドメイン名 (FQDN) として使用してユーザーがアクセスできるようにすることができます。
 
@@ -29,7 +29,7 @@ Azure DNS を構成して、Web アプリ用にカスタム ドメインをホ�
 
 Azure の Web アプリ用に A レコードを作成する場合、Web アプリの基になる IP アドレスが変更されると、A レコードを手動で更新する必要があることに注意してください。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * カスタム ドメインの A および TXT レコードの作成
@@ -44,6 +44,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [App Service アプリを作成する](../app-service/app-service-web-get-started-html.md)か、別のチュートリアルで作成したアプリを使用します。
 
@@ -71,9 +73,9 @@ Azure portal の App Services ページの左側のナビゲーションで、**
 ### <a name="create-the-a-record"></a>A レコードを作成する
 
 ```powershell
-New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
+New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
  -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 `
- -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "<your web app IP address>")
+ -DnsRecords (New-AzDnsRecordConfig -IPv4Address "<your web app IP address>")
 ```
 
 ### <a name="create-the-txt-record"></a>TXT レコードの作成
@@ -81,9 +83,9 @@ New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 App Services は、このレコードを、カスタム ドメインの所有者であることを検証するために構成時にのみ使用します。 App Service でカスタム ドメインが検証されて構成された後は、この TXT レコードを削除できます。
 
 ```powershell
-New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
- -Name `"@" -RecordType "txt" -Ttl 600 `
- -DnsRecords (New-AzureRmDnsRecordConfig -Value  "contoso.azurewebsites.net")
+New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
+ -Name "@" -RecordType "txt" -Ttl 600 `
+ -DnsRecords (New-AzDnsRecordConfig -Value  "contoso.azurewebsites.net")
 ```
 
 ## <a name="create-the-cname-record"></a>CNAME レコードを作成する
@@ -95,9 +97,9 @@ Azure PowerShell を開き、新しい CNAME レコードを作成します。 �
 ### <a name="create-the-record"></a>レコードの作成
 
 ```powershell
-New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
+New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
  -Name "www" -RecordType "CNAME" -Ttl 600 `
- -DnsRecords (New-AzureRmDnsRecordConfig -cname "contoso.azurewebsites.net")
+ -DnsRecords (New-AzDnsRecordConfig -cname "contoso.azurewebsites.net")
 ```
 
 次の例は応答です。
@@ -157,7 +159,7 @@ contoso.com text =
 ここで、Web アプリにカスタム ホスト名を追加できます。
 
 ```powershell
-set-AzureRmWebApp `
+set-AzWebApp `
  -Name contoso `
  -ResourceGroupName MyAzureResourceGroup `
  -HostNames @("contoso.com","www.contoso.com","contoso.azurewebsites.net")

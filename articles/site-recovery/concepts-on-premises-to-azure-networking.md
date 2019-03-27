@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7e682850d331770766a9b97c2b4b9102af143f2e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 334537e77d5f291dc38e008af7fed9a4ea973265
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836272"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108850"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための IP アドレス指定を設定する
 
@@ -49,8 +49,8 @@ Site Recovery には、サブネットのフェールオーバーを使用して
 - Woodgrove Bank は、オンプレミス サイトでそのビジネス アプリをホストします。 モバイル アプリは Azure でホストします。
 - オンプレミス エッジ ネットワークと Azure 仮想ネットワークとの間には、VPN サイト間接続が存在します。 VPN 接続により、Azure 内の仮想ネットワークはオンプレミス ネットワークの拡張として表示されます。
 - Woodgrove では、Site Recovery を使用して、オンプレミスのワークロードを Azure にレプリケートしたいと考えています。
- - Woodgrove には、ハード コーディングされた IP アドレスに依存するアプリがあるため、Azure にフェールオーバーした後、アプリの IP アドレスを保持する必要があります。
- - Azure で実行されているリソースが使用する IP アドレスの範囲は、 172.16.1.0/24、172.16.2.0/24 です。
+  - Woodgrove には、ハード コーディングされた IP アドレスに依存するアプリがあるため、Azure にフェールオーバーした後、アプリの IP アドレスを保持する必要があります。
+  - Azure で実行されているリソースが使用する IP アドレスの範囲は、 172.16.1.0/24、172.16.2.0/24 です。
 
 ![サブネットのフェールオーバー前](./media/site-recovery-network-design/network-design7.png)
 

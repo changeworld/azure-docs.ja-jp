@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2a72fade57b070ac2ac1aea28cbec92700c3797f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 04da80cd5c30d0556dc681b7bff412391aa2bcda
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452549"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107731"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 
@@ -34,7 +34,7 @@ ms.locfileid: "47452549"
 
 最良の結果を得るには、次の 2 種類のバックアップを実行する必要があります。
 
-- データベース バックアップ: 完全、増分、または差分バックアップ
+- データベースのバックアップ:完全、増分、または差分バックアップ
 - トランザクション ログのバックアップ
 
 アプリケーション レベルで実行されるデータベースの完全バックアップに加え、ストレージ スナップショットによるバックアップを実行することもできます。 ストレージ スナップショットはトランザクション ログ バックアップに代わるものではありません。 データベースを特定の時点に復元したり、既にコミットされたトランザクションのログを削除したりするために、トランザクション ログ バックアップが重要であることに変わりはありません。 ただし、ストレージ スナップショットでは、データベースのロールフォワード イメージが速やかに提供されるので復旧を迅速化できます。 
@@ -47,7 +47,7 @@ SAP HANA on Azure (L インスタンス) には、次の 2 つのバックアッ
 
 - インフラストラクチャのバックアップおよび復元機能。 SAP HANA on Azure (L インスタンス) の基になるインフラストラクチャによって提供されるバックアップと復元の機能を使用することもできます。 このオプションは、バックアップと高速復元のニーズに対応します。 このセクションの残りの部分では、HANA L インスタンスで提供されるバックアップと復元の機能について説明します。 ここでは、HANA L インスタンスが提供するディザスター リカバリー機能に対するリレーションシップのバックアップと復元についても説明します。
 
->   [!NOTE]
+> [!NOTE]
 >   HANA L インスタンスの基になるインフラストラクチャで使用されているスナップショット テクノロジには、SAP HANA スナップショットへの依存関係があります。 現在のところ、SAP HANA スナップショットは、SAP HANA マルチテナント データベース コンテナーの複数のテナントでは機能しません。 テナントが 1 つしかデプロイされていない場合は、SAP HANA スナップショットが機能するので、この方法を使用することができます。
 
 ## <a name="using-storage-snapshots-of-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) のストレージ スナップショットの使用
@@ -120,7 +120,7 @@ HANA L インスタンスでストレージ スナップショットを設定す
 1 つの HANA L インスタンス ユニット上の複数の SAP HANA インスタンスで [MCOD のシナリオ](https://launchpad.support.sap.com/#/notes/1681092)を実行している場合は、個々の SAP HANA インスタンスごとに個別のストレージ ボリュームがプロビジョニングされています。 現在のバージョンのセルフサービス スナップショット自動化では、すべての HANA インスタンス システム ID (SID) で個別のスナップショットを開始することはできません。 この機能では、構成ファイル内にあるサーバーの登録済み SAP HANA インスタンスが確認され (この記事で後述します)、ユニットに登録されているすべてのインスタンスのボリュームの同時スナップショットが実行されます。
  
 
-### <a name="step-1-install-the-sap-hana-hdb-client"></a>手順 1: SAP HANA HDB クライアントをインストールする
+### <a name="step-1-install-the-sap-hana-hdb-client"></a>手順 1:SAP HANA HDB クライアントをインストールする
 
 SAP HANA on Azure (L インスタンス) にインストールされている Linux オペレーティング システムには、バックアップとディザスター リカバリーの目的で SAP HANA ストレージ スナップショットを実行するために必要なフォルダーとスクリプトが含まれています。 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) に新しいリリースがあるかどうかを確認してください。 スクリプトの最新のリリース バージョンは 3.x です。 異なるスクリプトでは、同じメジャー リリースでもマイナー リリースが異なる可能性があります。
 
@@ -129,7 +129,7 @@ SAP HANA on Azure (L インスタンス) にインストールされている Li
 
 お客様ご自身で、SAP HANA のインストール時に、SAP HANA HDB クライアントを HANA L インスタンス ユニットにインストールする必要があります。
 
-### <a name="step-2-change-the-etcsshsshconfig"></a>手順 2: /etc/ssh/ssh\_config を変更する
+### <a name="step-2-change-the-etcsshsshconfig"></a>手順 2:/etc/ssh/ssh\_config を変更する
 
 次に示すように、_MACs hmac-sha1_ 行を追加して `/etc/ssh/ssh_config` を変更します。
 ```
@@ -163,7 +163,7 @@ MACs hmac-sha1
 #   ProxyCommand ssh -q -W %h:%p gateway.example.com
 ```
 
-### <a name="step-3-create-a-public-key"></a>手順 3. 公開キーを作成する
+### <a name="step-3-create-a-public-key"></a>手順 3:公開キーを作成する
 
 HANA L インスタンス テナントのストレージ スナップショット インターフェイスにアクセスできるようにするには、公開キーを使用したサインイン手順を確立する必要があります。 テナントの最初の SAP HANA on Azure (L インスタンス) サーバーで、ストレージ インフラストラクチャへのアクセスに使用される公開キーを作成します。 公開キーを使用すると、ストレージ スナップショット インターフェイスへのサインインにパスワードが不要になります。 また、公開キーを作成すると、パスワード資格情報を保持する必要がなくなります。 公開キーを生成するには、SAP HANA L インスタンス サーバーの Linux で、次のコマンドを実行します。
 ```
@@ -177,15 +177,15 @@ HANA L インスタンス テナントのストレージ スナップショッ�
 
 この時点で、SAP HANA on Azure サービス管理に連絡し、公開キーを提供します。 サービス担当者は、その公開キーを使用して、HANA L インスタンス テナント用に作成された基になるストレージ インフラストラクチャにそのキーを登録します。
 
-### <a name="step-4-create-an-sap-hana-user-account"></a>手順 4. SAP HANA ユーザー アカウントを作成する
+### <a name="step-4-create-an-sap-hana-user-account"></a>手順 4:SAP HANA ユーザー アカウントを作成する
 
-SAP HANA スナップショットの作成を開始するには、ストレージ スナップショット スクリプトで使用できるユーザー アカウントを SAP HANA に作成する必要があります。 そのために、SAP HANA Studio 内で SAP HANA ユーザー アカウントを作成します。 MDC の SID データベースではなく SYSTEMDB に、ユーザーを作成する必要があります。 単一のコンテナー環境では、テナント データベース以下にユーザーが設定されます。 このアカウントには、"**BACKUP ADMIN**" と "**CATALOG READ**" という権限を設定する必要があります。 この例では、**SCADMIN** というユーザー名です。 HANA Studio で作成されるユーザー アカウント名では大文字小文字が区別されます。 次回のサインイン時にパスワードを変更するようにユーザーに求めるには、**[いいえ]** を選択します。
+SAP HANA スナップショットの作成を開始するには、ストレージ スナップショット スクリプトで使用できるユーザー アカウントを SAP HANA に作成する必要があります。 そのために、SAP HANA Studio 内で SAP HANA ユーザー アカウントを作成します。 MDC の SID データベースではなく SYSTEMDB に、ユーザーを作成する必要があります。 単一のコンテナー環境では、テナント データベース以下にユーザーが設定されます。 このアカウントには、**バックアップ管理**および**カタログ読み取り**という特権が必要です。 この例では、**SCADMIN** というユーザー名です。 HANA Studio で作成されるユーザー アカウント名では大文字小文字が区別されます。 次回のサインイン時にパスワードを変更するようにユーザーに求めるには、**[いいえ]** を選択します。
 
 ![HANA Studio でのユーザーの作成](./media/hana-overview-high-availability-disaster-recovery/image3-creating-user.png)
 
 1 つのユニット上に複数の SAP HANA インスタンスがある MCOD デプロイを使う場合は、SAP HANA インスタンスごとにこのステップを繰り返す必要があります。
 
-### <a name="step-5-authorize-the-sap-hana-user-account"></a>手順 5. SAP HANA ユーザー アカウントを承認する
+### <a name="step-5-authorize-the-sap-hana-user-account"></a>手順 5:SAP HANA ユーザー アカウントを承認する
 
 この手順では、作成した SAP HANA ユーザー アカウントを承認します。これにより、スクリプトの実行時にパスワードを送信する必要がなくなります。 SAP HANA のコマンド `hdbuserstore` を使用して SAP HANA のユーザー キーを作成できます。これは 1 つ以上の SAP HANA ノードに格納されます。 ユーザー キーを使用すると、ユーザーはスクリプト プロセス内からパスワードを管理しなくても SAP HANA にアクセスできます。 スクリプト プロセスについてはこの記事で後述します。
 
@@ -218,7 +218,7 @@ hdbuserstore set SCADMIN01 lhanad02:30115 SCADMIN <password>
 hdbuserstore set SCADMIN01 lhanad03:30115 SCADMIN <password>
 ```
 
-### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>手順 6: スナップショット スクリプトを取得し、スナップショットを構成して、構成と接続をテストする
+### <a name="step-6-get-the-snapshot-scripts-configure-the-snapshots-and-test-the-configuration-and-connectivity"></a>手順 6:スナップショット スクリプトを取得し、スナップショットを構成して、構成と接続をテストする
 
 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) から最新バージョンのスクリプトをダウンロードします。 ダウンロードしたスクリプトとテキスト ファイルを、**hdbsql** の作業ディレクトリにコピーします。 現在の HANA インストールでは、このディレクトリは /hana/shared/D01/exe/linuxx86\_64/hdb のような形式になります。 
 ``` 
@@ -246,9 +246,9 @@ Perl スクリプトを処理する場合:
 
 個々のスクリプトとファイルの目的は次のとおりです。
 
-- **azure\_hana\_backup.pl**: このスクリプトは、HANA の data および shared ボリューム、/hana/logbackups ボリューム、またはオペレーティング システムに対してストレージ スナップショットを実行するように、Linux Cron Scheduling ユーティリティを使ってスケジュールされます。
-- **azure\_hana\_replication\_status.pl**: 運用サイトからディザスター リカバリー サイトへのレプリケーションの状態に関する基本的な詳細を提供するスクリプトです。 このスクリプトは、レプリケーションの実行状況を監視し、レプリケートされる項目のサイズを表示します。 また、レプリケーションに時間がかかりすぎている場合や、リンクがダウンしている場合にガイダンスを提供します。
-- **azure\_hana\_snapshot\_details.pl**: 環境内に存在するボリュームごとのすべてのスナップショットに関する基本的な詳細の一覧を提供するスクリプトです。 このスクリプトは、プライマリ サーバーで実行することも、ディザスター リカバリーの場所のサーバー ユニットで実行することもできます。 このスクリプトは、スナップショットを含むボリュームごとに分類して次の情報を提供します。
+- **azure\_hana\_backup.pl**:このスクリプトは、HANA の data および shared ボリューム、/hana/logbackups ボリューム、またはオペレーティング システムに対してストレージ スナップショットを実行するように、Linux Cron Scheduling ユーティリティを使ってスケジュールされます。
+- **azure\_hana\_replication\_status.pl**:このスクリプトでは、運用サイトからディザスター リカバリー サイトへのレプリケーションの状態に関する基本的な詳細を提供します。 このスクリプトは、レプリケーションの実行状況を監視し、レプリケートされる項目のサイズを表示します。 また、レプリケーションに時間がかかりすぎている場合や、リンクがダウンしている場合にガイダンスを提供します。
+- **azure\_hana\_snapshot\_details.pl**:このスクリプトでは、環境内に存在する、ボリュームごとのすべてのスナップショットに関する基本的な詳細のリストを提供します。 このスクリプトは、プライマリ サーバーで実行することも、ディザスター リカバリーの場所のサーバー ユニットで実行することもできます。 このスクリプトは、スナップショットを含むボリュームごとに分類して次の情報を提供します。
    * ボリュームの合計スナップショットのサイズ
    * そのボリュームの各スナップショットに関する次の詳細情報: 
       - スナップショット名 
@@ -256,13 +256,13 @@ Perl スクリプトを処理する場合:
       - スナップショットのサイズ
       - スナップショットの頻度
       - 該当する場合、そのスナップショットに関連付けられている HANA バックアップ ID
-- **azure\_hana\_snapshot\_delete.pl**: ストレージ スナップショットまたはスナップショットのセットを削除するスクリプトです。 HANA Studio に表示される SAP HANA バックアップ ID、またはストレージ スナップショット名を使用できます。 現在、バックアップ ID は、HANA の data/log/shared ボリュームに作成されたスナップショットにのみ関連付けられています。 それ以外の場合は、スナップショット ID を入力すると、入力されたスナップショット ID と一致するすべてのスナップショットが検索されます。  
-- **testHANAConnection.pl**: このスクリプトでは、SAP HANA インスタンスへの接続をテストします。ストレージ スナップショットを設定する際に、このスクリプトが必要となります。
-- **testStorageSnapshotConnection.pl**: このスクリプトには 2 つの目的があります。 1 つ目は、スクリプトを実行する HANA L インスタンス ユニットが、割り当てられているストレージ仮想マシンにアクセスでき、これによって HANA L インスタンスのストレージ スナップショット インターフェイスにもアクセスできることを確認することです。 もう 1 つの目的は、テスト対象の HANA インスタンスの一時的なスナップショットを作成することです。 バックアップ スクリプトが予想どおりに機能していることを確認するために、サーバー上の HANA インスタンスごとにこのスクリプトを実行する必要があります。
-- **removeTestStorageSnapshot.pl**: **testStorageSnapshotConnection.pl** スクリプトによって作成されたテスト スナップショットを削除するスクリプトです。
-- **azure\_hana\_dr\_failover.pl**: このスクリプトは、別のリージョンへの DR フェールオーバーを開始します。 このスクリプトは、DR リージョンの HANA L インスタンス ユニットか、フェールオーバー先のユニットで実行する必要があります。 このスクリプトは、プライマリ側からセカンダリ側へのストレージのレプリケーションを停止し、DR ボリュームで最新のスナップショットを復元して、DR ボリュームのマウント ポイントを提供します。
-- **azure\_hana\_test\_dr\_failover.pl**: このスクリプトは、DR サイトへのテスト フェールオーバーを実行します。 azure_hana_dr_failover.pl スクリプトとは異なり、この実行ではプライマリからセカンダリへのストレージのレプリケーションは中断されません。 代わりに、レプリケートされストレージ ボリュームの複製が DR 側に作成され、複製されたボリュームのマウント ポイントが提供されます。 
-- **HANABackupCustomerDetails.txt**: SAP HANA 構成に合わせて変更する必要がある、変更可能な構成ファイルです。 *HANABackupCustomerDetails.txt* ファイルは、ストレージ スナップショットを実行するスクリプトの管理および構成ファイルです。 このファイルは、目的とセットアップに合わせて調整します。 "**ストレージ バックアップ名**" と "**ストレージ IP アドレス**" は、インスタンスがデプロイされるときに SAP HANA on Azure サービス管理から受け取ります。 このファイル内のどの変数も、シーケンス、順序、またはスペースを変更することはできません。 変更すると、スクリプトが正常に動作しなくなります。 また、SAP HANA on Azure サービス管理からは、スケールアップ ノードまたはマスター ノード (スケールアウトの場合) の IP アドレスも通知されます。 さらに、SAP HANA のインストール時に取得する HANA インスタンス番号も通知されます。 情報を受け取ったら、バックアップ名を構成ファイルに追加する必要があります。
+- **azure\_hana\_snapshot\_delete.pl**:このスクリプトでは、ストレージ スナップショットまたはスナップショットのセットを削除します。 HANA Studio に表示される SAP HANA バックアップ ID、またはストレージ スナップショット名を使用できます。 現在、バックアップ ID は、HANA の data/log/shared ボリュームに作成されたスナップショットにのみ関連付けられています。 それ以外の場合は、スナップショット ID を入力すると、入力されたスナップショット ID と一致するすべてのスナップショットが検索されます。  
+- **testHANAConnection.pl**:このスクリプトでは、SAP HANA インスタンスへの接続をテストします。ストレージ スナップショットを設定する際に必要になります。
+- **testStorageSnapshotConnection.pl**:このスクリプトには 2 つの目的があります。 1 つ目は、スクリプトを実行する HANA L インスタンス ユニットが、割り当てられているストレージ仮想マシンにアクセスでき、これによって HANA L インスタンスのストレージ スナップショット インターフェイスにもアクセスできることを確認することです。 もう 1 つの目的は、テスト対象の HANA インスタンスの一時的なスナップショットを作成することです。 バックアップ スクリプトが予想どおりに機能していることを確認するために、サーバー上の HANA インスタンスごとにこのスクリプトを実行する必要があります。
+- **removeTestStorageSnapshot.pl**:このスクリプトでは、**testStorageSnapshotConnection.pl** スクリプトを使用して作成されたテスト スナップショットを削除すします。
+- **azure\_hana\_dr\_failover.pl**:このスクリプトでは、別のリージョンへの DR フェールオーバーを開始します。 このスクリプトは、DR リージョンの HANA L インスタンス ユニットか、フェールオーバー先のユニットで実行する必要があります。 このスクリプトは、プライマリ側からセカンダリ側へのストレージのレプリケーションを停止し、DR ボリュームで最新のスナップショットを復元して、DR ボリュームのマウント ポイントを提供します。
+- **azure\_hana\_test\_dr\_failover.pl**:このスクリプトでは、DR サイトへのテスト フェールオーバーを実行します。 azure_hana_dr_failover.pl スクリプトとは異なり、この実行ではプライマリからセカンダリへのストレージのレプリケーションは中断されません。 代わりに、レプリケートされストレージ ボリュームの複製が DR 側に作成され、複製されたボリュームのマウント ポイントが提供されます。 
+- **HANABackupCustomerDetails.txt**:このファイルは、SAP HANA 構成に合わせて変更する必要がある、変更可能な構成ファイルです。 *HANABackupCustomerDetails.txt* ファイルは、ストレージ スナップショットを実行するスクリプトの管理および構成ファイルです。 このファイルは、目的とセットアップに合わせて調整します。 "**ストレージ バックアップ名**" と "**ストレージ IP アドレス**" は、インスタンスがデプロイされるときに SAP HANA on Azure サービス管理から受け取ります。 このファイル内のどの変数も、シーケンス、順序、またはスペースを変更することはできません。 変更すると、スクリプトが正常に動作しなくなります。 また、SAP HANA on Azure サービス管理からは、スケールアップ ノードまたはマスター ノード (スケールアウトの場合) の IP アドレスも通知されます。 さらに、SAP HANA のインストール時に取得する HANA インスタンス番号も通知されます。 情報を受け取ったら、バックアップ名を構成ファイルに追加する必要があります。
 
 スケールアップ配置またはスケールアウト配置の場合、HANA L インスタンス ユニットの名前とサーバーの IP アドレスを入力した後、構成ファイルは次の例のようになります。 バックアップまたは復旧する SAP HANA SID ごとに、必要なすべてのフィールドを入力します。
 
@@ -381,14 +381,14 @@ Snapshot created successfully.
 スクリプトによってテスト スナップショットが正常に実行されたら、実際のストレージ スナップショットの構成を開始できます。 成功しなかった場合は、問題を調べてから次に進んでください。 実際の最初のスナップショットが完了するまで、テスト スナップショットは保持されます。
 
 
-### <a name="step-7-perform-snapshots"></a>手順 7: スナップショットを実行する
+### <a name="step-7-perform-snapshots"></a>手順 7:スナップショットを実行する
 
 準備手順が完了したら、実際のストレージ スナップショットの構成を開始できます。 スケジュールされたスクリプトは、SAP HANA のスケールアップ構成とスケールアウト構成で動作します。 バックアップ スクリプトを定期的に実行するには、cron ユーティリティを使ってスクリプトをスケジュールします。 
 
 作成できるスナップショット バックアップは次の 3 種類です。
-- **HANA**: /hana/data および /hana/shared (/usr/sap も含む) を含むボリュームに調整されたスナップショットで対応する結合スナップショット バックアップ。 このスナップショットから単一ファイル復元が可能です。
-- **Logs**: /hana/logbackups ボリュームのスナップショット バックアップ。 このストレージ スナップショットを実行する際に HANA スナップショットはトリガーされません。 このストレージ ボリュームは、SAP HANA トランザクション ログ バックアップを含めるためのものです。 これらは、ログの増加を制限し、データ損失の可能性を防ぐために、高い頻度で実行されます。 このスナップショットから単一ファイル復元が可能です。 頻度を 3 分未満にしないでください。
-- **Boot**: HANA L インスタンスのブート 論理ユニット番号 (LUN) を含むボリュームのスナップショット。 このスナップショット バックアップは、HANA L インスタンスの Type I SKU でのみ実行可能です。 ブート LUN を含むボリュームのスナップショットから単一ファイル復元を実行することはできません。
+- **HANA**:/hana/data および /hana/shared (/usr/sap も含む) を含むボリュームに調整されたスナップショットで対応する結合スナップショット バックアップ。 このスナップショットから単一ファイル復元が可能です。
+- **ログ**:/hana/logbackups ボリュームのスナップショット バックアップ。 このストレージ スナップショットを実行する際に HANA スナップショットはトリガーされません。 このストレージ ボリュームは、SAP HANA トランザクション ログ バックアップを含めるためのものです。 これらは、ログの増加を制限し、データ損失の可能性を防ぐために、高い頻度で実行されます。 このスナップショットから単一ファイル復元が可能です。 頻度を 3 分未満にしないでください。
+- **Boot**:HANA L インスタンスのブート論理ユニット番号 (LUN) を含むボリュームのスナップショット。 このスナップショット バックアップは、HANA L インスタンスの Type I SKU でのみ実行可能です。 ブート LUN を含むボリュームのスナップショットから単一ファイル復元を実行することはできません。
 
 
 >[!NOTE]
@@ -531,9 +531,9 @@ Command completed successfully.
 
 特定のストレージ ボリュームで、スナップショットの数とそれらのスナップショットによるストレージの使用量を監視できます。 `ls` コマンドでは、スナップショットのディレクトリまたはファイルが表示されません。 ただし、ストレージ スナップショットは同じボリュームに保存されているので、Linux OS コマンドの `du` を使用すると、それらのスナップショットの詳細が表示されます。 このコマンドは次のオプションと共に使用できます。
 
-- `du –sh .snapshot`: このオプションを使用すると、スナップショットのディレクトリ内にあるすべてのスナップショットの合計が表示されます。
-- `du –sh --max-depth=1`: このオプションを使用すると、**.snapshot** フォルダーに保存されているすべてのスナップショットと各スナップショットのサイズが一覧表示されます。
-- `du –hc`: このオプションを使用すると、すべてのスナップショットによって使用される合計サイズが表示されます。
+- `du –sh .snapshot`:このオプションでは、スナップショット ディレクトリ内にあるすべてのスナップショットの合計が提供されます。
+- `du –sh --max-depth=1`:このオプションでは、**.snapshot** フォルダーに保存されているすべてのスナップショットと、各スナップショットのサイズが一覧表示されます。
+- `du –hc`:このオプションでは、すべてのスナップショットによって使用される合計サイズが提供されます。
 
 作成および格納したスナップショットがボリューム上のストレージを使用し尽くしていないことを確認するには、上記のコマンドを使用します。
 
@@ -641,44 +641,44 @@ HANA インスタンスの SID を指定する必要があるスクリプトを�
 
 1. HANA インスタンスをシャットダウンします。
 
- ![HANA インスタンスをシャットダウンする](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
+   ![HANA インスタンスをシャットダウンする](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
 
 1. 各 HANA データベース ノードで、データ ボリュームのマウントを解除します。 データ ボリュームがオペレーティング システムに引き続きマウントされていると、スナップショットの復元は失敗します。
- ![各 HANA データベース ノードでデータ ボリュームのマウントを解除する](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
+   ![各 HANA データベース ノードでデータ ボリュームのマウントを解除する](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
 
 1. Azure サポート要求を開き、特定のスナップショットの復元に関する指示を記入します。
 
- - 復元中: SAP HANA on Azure サービス管理は、適切なストレージ スナップショットを確実に復元するための調整、検証、確認のために、電話会議への出席を依頼する場合があります。 
+   - 復元中:SAP HANA on Azure サービス管理では、適切なストレージ スナップショットを確実に復元するための調整、検証、確認のために、電話会議への出席を依頼する場合があります。 
 
- - 復元後: SAP HANA on Azure サービス管理から、ストレージ スナップショットの復元が完了した時点で通知が届きます。
+   - 復元後:SAP HANA on Azure サービス管理から、ストレージ スナップショットの復元が完了した時点で通知が届きます。
 
 1. 復元処理が完了したら、すべてのデータ ボリュームを再マウントします。
 
- ![すべてのデータ ボリュームを再マウントする](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
+   ![すべてのデータ ボリュームを再マウントする](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
 
 1. SAP HANA Studio で復旧オプションを選択します (SAP HANA Studio で HANA DB に再接続したときに自動的に選択されない場合)。 次の例は、最新の HANA スナップショットへの復元を示しています。 1 つのストレージ スナップショットには、1 つの HANA スナップショットが埋め込まれています。 最新のストレージ スナップショットに復元するには、最新の HANA スナップショットである必要があります  (それより前のストレージ スナップショットに復元している場合は、ストレージ スナップショットが作成された時刻に基づいて HANA スナップショットを探す必要があります)。
 
- ![SAP HANA Studio 内で復旧オプションを選択する](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
+   ![SAP HANA Studio 内で復旧オプションを選択する](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
 
 1. **[Recover the database to a specific data backup or storage snapshot (特定のデータ バックアップまたはストレージ スナップショットにデータベースを復旧する)]** を選択します。
 
- ![[Specify Recovery Type]\(復旧の種類を指定する\) ウィンドウ](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
+   ![[Specify Recovery Type]\(復旧の種類を指定する\) ウィンドウ](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
 
 1. **[Specify backup without catalog (カタログのないバックアップを指定する)]** を選択します。
 
- ![[Specify Backup Location]\(バックアップ場所を指定する\) ウィンドウ](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
+   ![[Specify Backup Location]\(バックアップ場所を指定する\) ウィンドウ](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
 
 1. **[Destination Type (復旧先の種類)]** の一覧で **[Snapshot (スナップショット)]** を選択します。
 
- ![[Specify the Backup to Recover]\(復旧するバックアップを指定する\) ウィンドウ](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
+   ![[Specify the Backup to Recover]\(復旧するバックアップを指定する\) ウィンドウ](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
 
 1. **[Finish]\(完了\)** をクリックして復旧処理を開始します。
 
- ![[Finish]\(完了\) をクリックして復旧処理を開始します](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
+    ![[Finish]\(完了\) をクリックして復旧処理を開始します](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
 
 1. HANA データベースが復元され、ストレージ スナップショットに含まれている HANA スナップショットに復旧されます。
 
- ![HANA データベースが復元され、HANA スナップショットに復旧される](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
+    ![HANA データベースが復元され、HANA スナップショットに復旧される](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
 
 ### <a name="recover-to-the-most-recent-state"></a>最新の状態への復旧
 
@@ -687,33 +687,33 @@ HANA インスタンスの SID を指定する必要があるスクリプトを�
 >[!IMPORTANT]
 >作業を進める前に、完全かつ連続した一連のトランザクション ログ バックアップがあることを確認します。 これらのバックアップがない場合、データベースの現在の状態を復元することはできません。
 
-1. 「[最新の HANA スナップショットへの復旧](#recovering-to-the-most-recent-hana-snapshot)」の手順 1 ～ 6 を完了します。
+1. 「最新の HANA スナップショットへの復旧」の手順 1 から 6 を完了します。
 
 1. **[Recover the database to its most recent state (データベースを最新の状態に復旧する)]** を選択します。
 
- ![[Recover the database to its most recent state (データベースを最新の状態に復旧する)] を選択する](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
+   ![[Recover the database to its most recent state (データベースを最新の状態に復旧する)] を選択する](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
 
 1. 最新の HANA ログ バックアップの場所を指定します。 この場所には、HANA スナップショットから最新の状態まで、すべての HANA トランザクション ログ バックアップが含まれている必要があります。
 
- ![最新の HANA ログ バックアップの場所を指定する](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
+   ![最新の HANA ログ バックアップの場所を指定する](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
 
 1. データベースを復旧するためのベースとなるバックアップを選択します。 この例では、スクリーンショットの HANA スナップショットは、ストレージ スナップショットに含まれていた HANA スナップショットです。 
 
- ![データベースを復旧するためのベースとなるバックアップを選択する](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
+   ![データベースを復旧するためのベースとなるバックアップを選択する](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
 
 1. HANA スナップショットの時刻から最新の状態までの間に差分がない場合は、**[Use Delta Backups (差分バックアップを使用する)]** チェック ボックスをオフにします。
 
- ![差分がない場合に [Use Delta Backups (差分バックアップを使用する)] チェック ボックスをオフにする](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
+   ![差分がない場合に [Use Delta Backups (差分バックアップを使用する)] チェック ボックスをオフにする](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
 
 1. 概要画面で **[Finish]\(完了\)** を選択して復元処理を開始します。
 
- ![概要画面で [Finish (完了)] をクリックする](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
+   ![概要画面で [Finish (完了)] をクリックする](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
 
 ### <a name="recover-to-another-point-in-time"></a>異なる特定の時点への復旧
 (ストレージ スナップショットに含まれている) HANA スナップショットから、HANA スナップショットによる特定の時点の復旧より後のスナップショットまでの時点に復旧する場合、次の手順を実行します。
 
 1. 復旧しようとしている時点について、HANA スナップショットからのすべてのトランザクション ログ バックアップがあることを確認します。
-1. 「[最新の状態への復旧](#recovering-to-the-most-recent-state)」の操作を開始します。
+1. 「最新の状態への復旧」の操作を開始します。
 1. 操作の手順 2 で、**[Specify Recovery Type (復旧の種類を指定する)]** ウィンドウの **[Recover the database to the following point in time]\(データベースを次の時点に復旧する\)** を選択し、特定の時点を指定します。 
 1. 手順 3 ～ 6 を完了します。
 

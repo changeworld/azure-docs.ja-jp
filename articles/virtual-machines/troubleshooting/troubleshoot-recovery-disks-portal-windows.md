@@ -3,7 +3,7 @@ title: Azure Portal でトラブルシューティング用 Windows VM を使用
 description: Azure Portal で OS ディスクを復旧 VM に接続して、Azure の Windows 仮想マシンの問題のトラブルシューティングを行う方法について説明します
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-windows
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/013/2018
+ms.date: 08/13/2018
 ms.author: genli
-ms.openlocfilehash: 0b6ade7a6031b957f2405e525d61c9ca1d2dac3d
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: ec2da7d9f659f32c40f7a2685ab08be4eec27ed5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809099"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780628"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure Portal で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う
 Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure Portal で仮想ハード ディスクを別の Windows VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。
@@ -37,12 +37,11 @@ Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク �
 ## <a name="determine-boot-issues"></a>起動の問題を特定する
 VM が正常に起動できない理由を特定するには、ブート診断と VM のスクリーンショットを調べます。 一般的な例として、失敗したアプリケーション更新や、基になる仮想ハード ディスクが削除または移動されている場合が挙げられます。
 
-ポータルで VM を選択し、下へスクロールして **[サポート + トラブルシューティング]** セクションを表示します。 **[ブート診断]** をクリックしてスクリーンショットを表示します。 VM で問題が発生している理由を判断するのに役立つ特定のエラー メッセージまたはエラー コードに注意してください。 次の例は、停止中のサービスを待機している VM を示しています。
+ポータルで VM を選択し、下へスクロールして **[サポート + トラブルシューティング]** セクションを表示します。 **[ブート診断]** をクリックしてスクリーンショットを表示します。 VM で問題が発生している理由を判断するのに役立つ特定のエラー メッセージまたはエラー コードに注意してください。 
 
 ![VM のブート診断のコンソール ログの表示](./media/troubleshoot-recovery-disks-portal-windows/screenshot-error.png)
 
-**[スクリーン ショット]** をクリックして、VM スクリーン ショットのキャプチャをダウンロードすることもできます。
-
+**[スクリーン ショットのダウンロード]** をクリックして、VM スクリーン ショットのキャプチャをダウンロードすることもできます。
 
 ## <a name="view-existing-virtual-hard-disk-details"></a>既存の仮想ハード ディスクの詳細を表示する
 仮想ハード ディスクを別の VM に接続するには、仮想ハード ディスク (VHD) の名前を確認しておく必要があります。 

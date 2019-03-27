@@ -4,7 +4,7 @@ description: Azure Security Center が Log Analytics 検索を使用してセキ
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 19aed3d3da1250e6ad47bf9266f2e57aa255156a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c02a9f61a4a8b88f8b6c4d861f1a6cbe904ad70d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963779"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110542"
 ---
 # <a name="azure-security-center-search"></a>Azure Security Center の検索機能
 Azure Security Center では、[Log Analytics 検索](../log-analytics/log-analytics-log-searches.md)を使用してセキュリティ データを取得し、分析します。 Log Analytics には、データをすばやく取得して統合するためのクエリ言語が用意されています。 Security Center から Log Analytics 検索を活用してクエリを作成し、収集したデータを分析できます。

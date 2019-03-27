@@ -4,7 +4,7 @@ description: PowerShell を使用して専用 HSM を既存の仮想ネットワ
 services: dedicated-hsm
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.service: key-vault
 ms.topic: tutorial
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 3f165b5d372168ef3ce6fea75547513a0148ae5b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fdda53172bef9fb7a4a09cbacfdc5fa4ec4c7509
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086309"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122354"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>チュートリアル - PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -255,8 +255,8 @@ HSM デバイスだけでの作業を完了したら、それをリソースと�
 9. `syslog rotate`
 
 
->[!NOTE]
-Gemalto デバイスの構成に問題がある場合は、[Gemalto カスタマー サポート](https://safenet.gemalto.com/technical-support/)に問い合わせる必要があります。
+> [!NOTE]
+> Gemalto デバイスの構成に問題がある場合は、[Gemalto カスタマー サポート](https://safenet.gemalto.com/technical-support/)に問い合わせる必要があります。
 
 このリソース グループ内のリソースでの作業が完了したら、次のコマンドでそれらをすべて削除できます。
 

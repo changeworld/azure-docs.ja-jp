@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: 1fcb72d75dca99b6670ca3ff536403a6268554a2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: ce6c3364c594bc515abd9f0c02bd69bf500e4f4e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50238150"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54436571"
 ---
 # <a name="set-environment-variables"></a>環境変数の設定
 
@@ -20,9 +20,9 @@ Container Instances で環境変数を設定すると、コンテナーによっ
 
 たとえば、[microsoft/aci-wordcount][aci-wordcount] コンテナー イメージを実行する場合は、次の環境変数を指定することによって動作を変更できます。
 
-*NumWords*: STDOUT に送信された単語の数。
+*NumWords*:STDOUT に送信された単語の数。
 
-*MinLength*: 単語内のカウントする文字の最小数。 数値を大きくすると、"of" や "the" のようなよく使用される単語は無視されます。
+*MinLength*:単語内のカウントする文字の最小数。 数値を大きくすると、"of" や "the" のようなよく使用される単語は無視されます。
 
 シークレットを環境変数として渡す必要がある場合、Azure Container Instances が Windows と Linux の両方のコンテナーの[セキュリティで保護された値](#secure-values)をサポートします。
 
@@ -38,7 +38,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-出力を変更するには、`--environment-variables` 引数を追加し、*NumWords* 変数と *MinLength* 変数の値を指定して 2 番目のコンテナーを開始します。
+出力を変更するには、`--environment-variables` 引数を追加し、*NumWords* 変数と *MinLength* 変数の値を指定して 2 番目のコンテナーを開始します。 (この例では、Bash シェルまたは Azure Cloud Shell で CLI を実行しているものとします。 Windows コマンド プロンプトを使用する場合は、`--environment-variables "NumWords"="5" "MinLength"="8"` のように、変数を二重引用符で囲んで指定します。)
 
 ```azurecli-interactive
 az container create \
@@ -255,6 +255,6 @@ my-secret-value
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/
 [azure-instance-log]: /powershell/module/azurerm.containerinstance/get-azurermcontainerinstancelog
-[azure-powershell-install]: /powershell/azure/install-azurerm-ps
+[azure-powershell-install]: /powershell/azure/azurerm/install-azurerm-ps
 [new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
 [portal]: https://portal.azure.com

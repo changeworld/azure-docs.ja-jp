@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と GetThere の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と GetThere の統合 | Microsoft Docs
 description: Azure Active Directory と GetThere の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: jeedes
-ms.openlocfilehash: bcefa3966a6c854f02ce7b3a75306b3d1c888ecd
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b132da4a763490fa6c7a73c80f8e2e3a11b42e9b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49433109"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173132"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-getthere"></a>チュートリアル: Azure Active Directory と GetThere の統合
+# <a name="tutorial-azure-active-directory-integration-with-getthere"></a>チュートリアル:Azure Active Directory と GetThere の統合
 
 このチュートリアルでは、GetThere と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -146,7 +147,7 @@ GetThere で Azure AD シングル サインオンを構成してテストする
 
     c. **[名前空間]** ボックスに、その行に表示される属性名前空間を入力します。
 
-    d. [ソース] として **[属性]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [ソース] として **[属性]** を選択します。
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
@@ -182,22 +183,22 @@ GetThere で Azure AD シングル サインオンを構成してテストする
 
     ![image](./media/getthere-tutorial/d_adduser.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. [ユーザーのプロパティ] で、次の手順のようにします。
 
     ![image](./media/getthere-tutorial/d_userproperties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに、「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
  
 ### <a name="create-a-getthere-test-user"></a>GetThere テスト ユーザーの作成
 
-このセクションでは、GetThere で Britta Simon というユーザーを作成します。 [GetThere クライアント サポート チーム](mailto:dataintegration@sabre.com)と協力して、GetThere プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、GetThere で Britta Simon というユーザーを作成します。  [GetThere クライアント サポート チーム](mailto:dataintegration@sabre.com)と協力して、GetThere プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -219,7 +220,7 @@ GetThere で Azure AD シングル サインオンを構成してテストする
 
     ![image](./media/getthere-tutorial/d_assign_user.png)
 
-4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
 5. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
     
@@ -228,7 +229,7 @@ GetThere で Azure AD シングル サインオンを構成してテストする
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [GetThere] タイルをクリックすると、自動的に GetThere アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

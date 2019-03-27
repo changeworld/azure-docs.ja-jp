@@ -6,24 +6,23 @@ items:
   - name: Azure Machine Learning サービスの概要
     displayName: AML services overview
     href: overview-what-is-azure-ml.md
-  - name: サービスのしくみ
-    displayName: architecture concepts definitions
-    href: concept-azure-machine-learning-architecture.md
-  - name: Workbench はどうなったか
+  - name: Workbench の変更点
     displayName: desktop ui Workbench upgrade update transfer
     href: overview-what-happened-to-workbench.md
-  - name: リリース ノート
-    displayName: what's new issues bugs
-    href: azure-machine-learning-release-notes.md
   expanded: true
+- name: セットアップ
+  items:
+  - name: ワークスペースの作成
+    displayName: install sdk workspace
+    href: setup-create-workspace.md
 - name: クイック スタート
   items:
-  - name: 作業の開始 - ポータル
-    displayName: install sdk workspace
-    href: quickstart-get-started.md
-  - name: 作業の開始 - Python
-    displayName: create workspace install sdk
-    href: quickstart-create-workspace-with-python.md
+  - name: クラウドのノートブックを使用した実験
+    displayName: workspace
+    href: quickstart-run-cloud-notebook.md
+  - name: ローカルのノートブックを使用した実験
+    displayName: workspace install sdk
+    href: quickstart-run-local-notebook.md
 - name: チュートリアル
   items:
   - name: 画像の分類 (MNIST データ)
@@ -36,6 +35,7 @@ items:
   - name: 回帰 (ニューヨーク市のタクシー データ)
     items:
     - name: 1. モデリング用にデータを準備する
+      displayName: data prep
       href: tutorial-data-prep.md
     - name: 2. ML モデルを自動トレーニングする
       displayName: automl, automated, auto ml,
@@ -45,6 +45,9 @@ items:
   href: samples-notebooks.md
 - name: 概念
   items:
+  - name: サービスのしくみ
+    displayName: architecture concepts definitions
+    href: concept-azure-machine-learning-architecture.md
   - name: 自動化された機械学習
     displayName: automl, auto ml
     href: concept-automated-ml.md
@@ -55,10 +58,26 @@ items:
     href: concept-accelerate-with-fpgas.md
   - name: 機械学習パイプライン
     href: concept-ml-pipelines.md
+  - name: セキュリティ
+    items:
+    - name: エンタープライズ セキュリティの概要
+      displayName: authorization authentication encryption
+      href: concept-enterprise-security.md
+    - name: 仮想ネットワークの使用
+      displayName: vnet
+      href: how-to-enable-virtual-network.md
+    - name: SSL を使用して Web サービスをセキュリティで保護する
+      href: how-to-secure-web-service.md
 - name: ハウツー ガイド
   items:
   - name: ワークスペースを管理する
-    href: how-to-manage-workspace.md
+    items:
+    - name: ワークスペースにポータルを使用する
+      href: how-to-manage-workspace.md
+    - name: Resource Manager テンプレートを使用する
+      href: how-to-create-workspace-template.md
+    - name: ユーザーとロールを管理する
+      href: how-to-assign-roles.md
   - name: 開発環境をセットアップする 
     items:
     - name: 開発環境を構成する
@@ -80,23 +99,24 @@ items:
       href: how-to-transform-data.md
     - name: データを書き込む
       href: how-to-write-data.md
+  - name: データストアのデータを取得する
+    displayName: blob get fileshare access storage
+    href: how-to-access-data.md
   - name: モデルをトレーニングする
     items:
     - name: トレーニング環境をセットアップする
       displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, Databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
-    - name: トレーニング中のデータにアクセスする
-      href: how-to-access-data.md
     - name: トレーニングでの推定器の作成
       href: how-to-train-ml-models.md
     - name: PyTorch の使用
       href: how-to-train-pytorch.md
-    - name: Tensorflow の使用
+    - name: TensorFlow と Keras の使用
       href: how-to-train-tensorflow.md
     - name: ハイパーパラメーターを調整する
       displayName: parameter
       href: how-to-tune-hyperparameters.md
-    - name: 実験とメトリックを追跡する
+    - name: トレーニング実行のメトリックを記録する
       href: how-to-track-experiments.md
   - name: 機械学習の自動化
     displayName: automl, auto ml
@@ -106,6 +126,8 @@ items:
     - name: リモート コンピューティング ターゲットを使用する
       displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
+    - name: 予測モデルを自動トレーニングする
+      href: how-to-auto-train-forecast.md
   - name: ONNX モデル
     href: how-to-build-deploy-onnx.md
   - name: モデルをデプロイする
@@ -117,14 +139,13 @@ items:
       href: how-to-deploy-fpga-web-service.md
     - name: トラブルシューティング
       href: how-to-troubleshoot-deployment.md
-    - name: SSL を使用して Web サービスをセキュリティで保護する
-      href: how-to-secure-web-service.md
   - name: Web サービスを使用する
     items:
     - name: リアルタイムで使用する
-      displayName: create client consume
+      displayName: create client consume request response synchronous
       href: how-to-consume-web-service.md
     - name: バッチ予測を実行する
+      displayName: score scoring asynchronous consume pipeline
       href: how-to-run-batch-predictions.md
   - name: Web サービスを監視する
     items:
@@ -135,12 +156,12 @@ items:
       href: how-to-enable-app-insights.md
   - name: 最初のパイプラインの作成
     href: how-to-create-your-first-pipeline.md
+  - name: ログの有効化
+    displayName: logging
+    href: how-to-enable-logging.md
   - name: リソース クォータを管理する
     displayName: limits
     href: how-to-manage-quotas.md
-  - name: 仮想ネットワークを使用してセキュリティ保護する
-    displayName: vnet
-    href: how-to-enable-virtual-network.md
   - name: Machine Learning CLI の使用
     displayName: cli extension command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
@@ -158,10 +179,11 @@ items:
   - name: Monitoring SDK
     displayName: api package python monitor
     href: https://aka.ms/aml-monitoring-sdk
-  - name: Resource Manager テンプレート
-    href: /azure/templates/microsoft.machinelearningservices/allversions
 - name: リソース
   items:
+  - name: リリース ノート
+    displayName: what's new issues bugs
+    href: azure-machine-learning-release-notes.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: 価格
@@ -174,10 +196,11 @@ items:
   - name: サポートを受ける
     href: support-for-aml-services.md
   - name: Microsoft の ML 製品の比較
-    href: overview-more-machine-learning.md
-ms.openlocfilehash: 81173503e3afc8a93ae897072111a42c04049d65
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+    href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
+    maintainContext: true
+ms.openlocfilehash: 0e40f17725cb56dbc346fffcce0f672f2394ca1d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390462"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359978"

@@ -9,12 +9,12 @@ ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 4be24b00c3ac4ffadf7eafdc7397f59113ec03b2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2f54f11ffc6db9af4c7d74ef6c0806a8b8b8fe74
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088365"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754763"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>クイック スタート: Service Fabric Mesh に Hello World をデプロイする
 
@@ -113,5 +113,5 @@ Service Fabric Mesh アプリケーションの作成とデプロイについて
 [sfm-app-browser]: ./media/service-fabric-mesh-quickstart-deploy-container/HelloWorld.png
 
 <!-- Links / Internal -->
-[az-group-delete]: /cli/azure/group#az_group_delete
+[az-group-delete]: /cli/azure/group
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest

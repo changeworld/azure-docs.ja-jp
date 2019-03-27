@@ -5,18 +5,19 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/02/2018
+ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.openlocfilehash: 1d0e04e4fbc964400e8b5c1544344864f7e757a7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.lastreviewed: 02/04/2019
+ms.openlocfilehash: a1902ae2bf663c432876a0f73e2bb17616023b8a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51019684"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006922"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Azure Stack 上に Ethereum ブロックチェーン ネットワークをデプロイする
 
@@ -24,7 +25,7 @@ Ethereum ソリューション テンプレートは、Azure と Ethereum の最
 
 Azure Stack テナント ポータルでわずかなユーザー入力とワンクリック デプロイを行うことで、各メンバーはネットワーク フットプリントをプロビジョニングできます。 各メンバーのネットワーク フットプリントは、アプリケーションまたはユーザーがトランザクションを送信するために対話できる一連の負荷分散型トランザクション ノード、トランザクションを記録する一連のマイニング ノード、および Network Virtual Appliance (NVA) から構成されます。 以降の接続手順では、NVA を接続して、完全に構成されたマルチメンバー ブロックチェーン ネットワークを作成します。
 
-これを設定するには、次のことを行います。
+設定するには:
 
 - デプロイ アーキテクチャを選択する
 - スタンドアロン、コンソーシアム リーダー、またはコンソーシアム メンバー ネットワークをデプロイする
@@ -38,7 +39,7 @@ Azure Stack テナント ポータルでわずかなユーザー入力とワン�
 - Linux 2.0 用のカスタム スクリプト
 - Windows でのカスタムのスクリプト拡張機能
 
-ブロックチェーン シナリオの詳細については、「[Ethereum プルーフオブワーク コンソーシアム ソリューション テンプレート](../../blockchain/templates/ethereum-deployment.md)」を参照してください。
+ブロックチェーン シナリオの詳細については、「[Ethereum Proof-of-Authority コンソーシアム ソリューション テンプレート](../../blockchain/templates/ethereum-poa-deployment.md)」を参照してください。
 
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 
@@ -156,7 +157,7 @@ Azure Stack テナント ポータルでわずかなユーザー入力とワン�
 
 ![メンバーのデプロイの概要](./media/azure-stack-ethereum/ethereum-node-status-2.png)
 
-図に示すように、メンバーのノード状態は **[実行されていない]** です。 これは、メンバーとリーダーの間の接続が確立されていないためです。 メンバーとリーダーの間の接続は、双方向の接続です。 メンバーをデプロイすると、テンプレートによってメンバーからリーダーへの接続が自動的に作成されます。 リーダーからメンバーへの接続を作成するには、次の手順に進みます。
+図に示すように、メンバーのノード状態は **[実行されていない]** です。 この状態は、メンバーとリーダーの間の接続が確立されていないためです。 メンバーとリーダーの間の接続は、双方向の接続です。 メンバーをデプロイすると、テンプレートによってメンバーからリーダーへの接続が自動的に作成されます。 リーダーからメンバーへの接続を作成するには、次の手順に進みます。
 
 ### <a name="connect-member-and-leader"></a>メンバーとリーダーを接続する
 

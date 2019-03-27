@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 80a2ed779fa65c669be81fdf8212b7d018325ee5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: ac30888c9f54c5dc88cb72aeec0f3db81d5a99dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634509"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004954"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -98,10 +98,10 @@ BLOB またはコンテナーが見つからないことが原因で、それら
 
 Azure の PowerShell を使用するには、 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。
 
-1. [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0) コマンドレットを使用して、Azure ユーザー アカウントを PowerShell ウィンドウに追加します。
+1. [Add-AzAccount](/powershell/module/servicemanagement/azure/add-azureaccount) コマンドレットを使用して、Azure ユーザー アカウントを PowerShell ウィンドウに追加します。
    
     ```powershell
-    Add-AzureAccount
+    Add-AzAccount
     ```
 
 2. **[Microsoft Azure へのサインイン]** ウィンドウで、アカウントに関連付けられた電子メール アドレスとパスワードを入力します。 Azure により資格情報が認証および保存され、ウィンドウが閉じます。
@@ -110,7 +110,7 @@ Azure の PowerShell を使用するには、 [Azure PowerShell のインスト�
     ```powershell
     $SubscriptionName = 'Your subscription name'
     $StorageAccountName = 'yourstorageaccount'
-    Set-AzureSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
+    Set-AzSubscription -CurrentStorageAccountName $StorageAccountName -SubscriptionName $SubscriptionName
     ```
 
 4. Blob service のストレージ ログを有効にします。
@@ -133,9 +133,9 @@ Azure の PowerShell を使用するには、 [Azure PowerShell のインスト�
 ストレージ クライアント ライブラリは、クライアント側のログ データをアプリケーションの構成ファイル (web.config または app.config) 内で指定した場所に格納します。
 
 ### <a name="collect-a-network-trace"></a>ネットワーク トレースを収集する
-Message Analyzer を使用して、クライアント アプリケーションの動作時の HTTP/HTTPS ネットワーク トレースを収集することができます。 Message Analyzer は、バックエンドで [Fiddler](http://www.telerik.com/fiddler) を使用します。 ネットワーク トレースを収集する前に、暗号化されていない HTTPS トラフィックを記録するよう、Fiddler を構成することをお勧めします。
+Message Analyzer を使用して、クライアント アプリケーションの動作時の HTTP/HTTPS ネットワーク トレースを収集することができます。 Message Analyzer は、バックエンドで [Fiddler](https://www.telerik.com/fiddler) を使用します。 ネットワーク トレースを収集する前に、暗号化されていない HTTPS トラフィックを記録するよう、Fiddler を構成することをお勧めします。
 
-1. [Fiddler](http://www.telerik.com/download/fiddler)をインストールします。
+1. [Fiddler](https://www.telerik.com/download/fiddler)をインストールします。
 2. Fiddler を起動します。
 3. **[Tools]、[Fiddler Options]** の順に選択します。
 4. Options ダイアログで、以下に示すように **[Capture HTTPS CONNECTs]** と **[Decrypt HTTPS Traffic]** が両方とも選択されている状態にします。

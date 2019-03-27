@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Text Analytics と Power BI'
+title: チュートリアル:Power BI を Text Analytics Cognitive Service と統合する
 titleSuffix: Azure Cognitive Services
 description: Text Analytics を使用して Power BI に格納されているテキストからキー フレーズを抽出する方法について説明します。
 services: cognitive-services
-author: luiscabrer
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: luisca
-ms.openlocfilehash: fe6bc384e4190cd17df00ddf285701db8c4199a6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 4489fc82f836d8c311fcd776e211670897618b54
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733331"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889479"
 ---
-# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>チュートリアル: Power BI を Text Analytics Cognitive Service と統合する
+# <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>チュートリアル:Power BI を Text Analytics Cognitive Service と統合する
 
 Microsoft Power BI Desktop は、データへの接続、データの変換、およびデータの視覚化を実行できる無料のアプリケーションです。 Microsoft Azure Cognitive Services の一部である Text Analytics サービスは、自然言語処理を提供します。 それは、与えられた未加工の構造化されていないテキストから、最も重要なフレーズの抽出、センチメントの分析、およびブランドなどのよく知られているエンティティの識別を行うことができます。 これらのツールを組み合わせることで、ユーザーが話している内容とそれに対する感情をすばやく確認できます。
 
@@ -94,7 +94,7 @@ Text Analytics サービスの [Key Phrases API](//westus.dev.cognitive.microsof
 | | |
 | - | - |
 | `id`  | 要求内のこのドキュメントの一意の識別子。 応答にもこのフィールドが含まれます。 そのため、複数のドキュメントを処理する場合、抽出されたキー フレーズを元のドキュメントと簡単に関連付けることができます。 このチュートリアルでは、要求ごとに 1 つのドキュメントのみを処理するため、各要求の `id` 値が同じになるようにハード コーディングできます。|
-| `text`  | 処理されるテキスト。 このフィールドの値は、[前のセクション](#PreparingData)で作成した `Merged` 列に基づきます。それには、結合された subject の行と comment のテキストが含まれています。 Key Phrases API では、このデータの文字数の上限は約 5,000 文字です。|
+| `text`  | 処理されるテキスト。 このフィールドの値は、[前のセクション](#PreparingData)で作成した `Merged` 列に基づきます。それには、結合された subject の行と comment のテキストが含まれています。 Key Phrases API では、このデータの文字数の上限は約 5,120 文字です。|
 | `language` | ドキュメントの記述に使用されている自然言語を表すコード。 サンプル データのすべてのメッセージは英語で記述されているため、このフィールドの値である `en` はハード コーディングできます。|
 
 ## <a name="create-a-custom-function"></a>カスタム関数を作成する

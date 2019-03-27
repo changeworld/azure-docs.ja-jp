@@ -5,20 +5,15 @@ title: Azure Virtual Machines のトラブルシューティングのドキュ�
 services: virtual-machines
 author: genlin
 manager: jeconnoc
-ms.assetid: ''
+ms.assetid: null
 ms.service: virtual-machines
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: fadff0e3cab98f7b0aa69a6fe29c3d9ace31face
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465493"
 ---
+
 # <a name="troubleshooting-azure-virtual-machines"></a>Azure Virtual Machines のトラブルシューティング
 
 - 割り当ての失敗
@@ -61,7 +56,7 @@ ms.locfileid: "49465493"
     - [Windows](troubleshoot-deploy-vm-windows.md)
 - [デバイス名が変更されている](troubleshoot-device-names-problems.md)
 - VM の復旧方法
-    - Windows
+    -  Windows
         - [PowerShell](troubleshoot-recovery-disks-windows.md)
         - [Azure Portal](troubleshoot-recovery-disks-portal-windows.md)
     - Linux

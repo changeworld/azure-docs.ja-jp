@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d90a4272f843cc9f2b66aa202ddefe54e7b1a361
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 2a282b76805ab91215d6b34ea30a7008d8c8244b
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632163"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467980"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
@@ -34,7 +34,6 @@ Azure Blob Storage インデクサーを設定するには、以下を使用し�
 
 > [!NOTE]
 > フィールド マッピングなど、機能によってはまだポータルで使用できないものがあります。こうした機能についてはプログラムで使用する必要があります。
->
 >
 
 ここでは、REST API を使用したフローについて説明します。

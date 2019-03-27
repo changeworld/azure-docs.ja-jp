@@ -3,19 +3,20 @@ title: Azure MFA のアクセスおよび使用状況レポート | Microsoft Do
 description: ここでは、Azure Multi-Factor Authentication 機能のレポートを使用する方法について説明します。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: dc4cd28fe61c422f65f47c74c7cbc4686d73ab77
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8e901f0e5fb1dc2840196bd6a739ff763b54ce8e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628836"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119226"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のレポート
 
@@ -35,7 +36,9 @@ Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、
 2. 左側で **[Azure Active Directory]** > **[MFA サーバー]** を選択します。
 3. 表示するレポートを選択します。
 
-   <center>![クラウド](./media/howto-mfa-reporting/report.png)</center>
+   <center>
+   
+   ![クラウド](./media/howto-mfa-reporting/report.png)</center>
 
 ## <a name="azure-ad-sign-ins-report"></a>Azure AD サインイン レポート
 
@@ -58,7 +61,7 @@ Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、
 
 MFA のサインイン アクティビティ レポートから、次の情報にアクセスできます。
 
-**MFA の必要性**: サインインに MFA が必要かどうか。 ユーザーごとの MFA、条件付きアクセス、または他の理由で、MFA を必須にすることができます。 指定できる値は、**はい**または**いいえ**です。
+**MFA の必要性:** サインインに MFA が必要かどうか。 ユーザーごとの MFA、条件付きアクセス、または他の理由で、MFA を必須にすることができます。 指定できる値は、**はい**または**いいえ**です。
 
 **MFA の結果:** MFA が満たされたか拒否されたかに関する詳細情報。
 

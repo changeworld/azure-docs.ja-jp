@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Pingboard を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Pingboard を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Pingboard に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -8,7 +8,7 @@ writer: asmalser-msft
 manager: sakula
 ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,14 +16,15 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: e96ea7d212f1a34bb6d10f8c49a15e1b34bfc469
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e36d0985aee53f2a7f701f9bf7887ae26a426b68
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348958"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203745"
 ---
-# <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>チュートリアル: Pingboard を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>チュートリアル:Pingboard を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure Active Directory (Azure AD) から Pingboard にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するために実行する必要がある手順について説明します。
 
@@ -77,7 +78,7 @@ Pingboard には、Azure AD ユーザーを 1 人だけ割り当てて、プロ�
 
     c. **[アドオン]** > **[統合]** > **[Azure Active Directory]** の順に選択します。
 
-    d. **[構成]** タブをクリックし、**[Enable user provisioning from Azure]\(Azure からのユーザー プロビジョニングを有効にする\)** に移動します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[構成]** タブをクリックし、**[Enable user provisioning from Azure]\(Azure からのユーザー プロビジョニングを有効にする\)** に移動します。
 
     e. **[OAuth Bearer Token]\(OAuth ベアラー トークン\)** からトークンをコピーして、**[シークレット トークン]** に入力します。
 

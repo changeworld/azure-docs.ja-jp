@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Reflektive の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Reflektive の統合 | Microsoft Docs
 description: Azure Active Directory と Reflektive の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 799a08b9-1ce6-46d1-9064-aa9f36f6604e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 228bcc2e43337876b211158f70fe1136de494c85
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3a4b94b158a566533d6461b282e9de30360e102c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041230"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200821"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-reflektive"></a>チュートリアル: Azure Active Directory と Reflektive の統合
+# <a name="tutorial-azure-active-directory-integration-with-reflektive"></a>チュートリアル:Azure Active Directory と Reflektive の統合
 
 このチュートリアルでは、Reflektive と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -136,7 +137,7 @@ Reflektive で Azure AD のシングル サインオンを構成してテスト�
 7. **Reflektive** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Reflektive サポート チーム](https://support@reflektive.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -168,11 +169,11 @@ Reflektive で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-reflektive-test-user"></a>Reflektive テスト ユーザーの作成
 
-このセクションでは、Reflektive で Britta Simon というユーザーを作成します。 [Reflektive サポート チーム](mailto:support@reflektive.com)と連携し、Reflektive プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Reflektive で Britta Simon というユーザーを作成します。  [Reflektive サポート チーム](mailto:support@reflektive.com) と連携し、Reflektive プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -209,7 +210,7 @@ Reflektive で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Reflektive] タイルをクリックすると、自動的に Reflektive アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

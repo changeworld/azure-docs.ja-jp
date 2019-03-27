@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: d7be248e49baf4e7fd10d6b37df1473e92ccfce7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d182d23bf4b3f4dc1ed42a737e8fe8b753c035ae
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651726"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340740"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>HDInsight で Apache HBase と Apache Phoenix に対するバックアップとレプリケーションを設定する
 
@@ -75,7 +75,11 @@ HDInsight の HBase では、クラスターの作成時に選択された既定
 
     wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
 
-Azure Data Lake Storage では、構文は次のとおりです。
+Azure Data Lake Storage Gen2 では、構文は次のとおりです。
+
+    abfs://<containername>@<accountname>.dfs.core.windows.net/<path>
+
+Azure Data Lake Storage Gen1 では、構文は次のとおりです。
 
     adl://<accountName>.azuredatalakestore.net:443/<path>
 

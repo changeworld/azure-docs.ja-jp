@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 6969744ff52e9aff9d486d2eab6fffc2c3ac8b74
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/19/2018
+ms.openlocfilehash: 15154844c954e53ca1add5d3fbaa3e9d02152ad2
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608002"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568245"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>AI を使用してデータベース パフォーマンスの監視とトラブルシューティングを行う Intelligent Insights
 

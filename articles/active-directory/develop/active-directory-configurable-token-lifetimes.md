@@ -16,12 +16,13 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 1fa5a2f9d63dfd9af006285beec256395d7ac668
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fa6a44a3fb92647ba74f865b2a1a46bdd79eb433
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069507"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174086"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (プレビュー)
 
@@ -48,7 +49,8 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 クライアントは保護されたリソースにアクセスするためにアクセス トークンを使用します。 アクセス トークンは、ユーザー、クライアント、およびリソースの特定の組み合わせに対してのみ使用できます。 アクセス トークンは取り消すことはできず、有効期限まで有効です。 悪意のあるアクターがアクセス トークンを取得した場合は、その有効期間にわたって使用される可能性があります。 アクセス トークンの有効期間の調整は、システム パフォーマンスの向上と、ユーザーのアカウントが無効になった後にクライアントがアクセスを保持する時間の増加との間で、トレードオフとなります。 システム パフォーマンスの向上は、クライアントが新しいアクセス トークンを取得しなければならない回数を減らすことで実現されます。  既定値は 1 時間です。この場合、クライアントは 1 時間後に更新トークンを使用して、新しい更新トークンとアクセス トークンを (通常は自動で) 取得する必要があります。 
 
 ### <a name="refresh-tokens"></a>更新トークン
-クライアントは保護されたリソースにアクセスするためのアクセス トークンを取得するときに、更新トークンも受け取ります。 更新トークンを使用して、現在のアクセス トークンの有効期限が切れたときに、新しいアクセス トークンと更新トークンのペアを取得します。 更新トークンは、ユーザーとクライアントの組み合わせにバインドされます。 更新トークンは[いつでも取り消す](access-tokens.md#token-revocation)ことができ、トークンが使用されるたびに、トークンの有効性がチェックされます。  
+
+クライアントは保護されたリソースにアクセスするためのアクセス トークンを取得するときに、更新トークンも受け取ります。 更新トークンを使用して、現在のアクセス トークンの有効期限が切れたときに、新しいアクセス トークンと更新トークンのペアを取得します。 更新トークンは、ユーザーとクライアントの組み合わせにバインドされます。 更新トークンは[いつでも取り消す](access-tokens.md#token-revocation)ことができ、トークンが使用されるたびに、トークンの有効性がチェックされます。  新しいアクセス トークンをフェッチするために使用した更新トークンは取り消されませんが、新しいトークンを取得する際に古いトークンを安全に削除することをお勧めします。 
 
 Confidential クライアントとパブリック クライアントを区別することは重要です。更新トークンを使用できる時間に影響するためです。 さまざまな種類のクライアントの詳細については、[RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1) を参照してください。
 
@@ -85,8 +87,6 @@ Azure AD は永続的と非永続的の 2 つの種類の SSO セッション �
 | Multi-Factor Session Token Max Age |MaxAgeSessionMultiFactor<sup>3</sup> |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>これらの属性に対して明示的に設定できる最大期間は 365 日です。
-* <sup>2</sup>**MaxAgeSessionSingleFactor** が設定されていない場合、この値には **MaxAgeSingleFactor** 値が使用されます。 どちらのパラメーターも設定されていない場合、このプロパティは既定値 (until-revoked) を使用します。
-* <sup>3</sup>**MaxAgeSessionMultiFactor** が設定されていない場合、この値には **MaxAgeMultiFactor** 値が使用されます。 どちらのパラメーターも設定されていない場合、このプロパティは既定値 (until-revoked) を使用します。
 
 ### <a name="exceptions"></a>例外
 | プロパティ | 影響 | 既定値 |
@@ -114,7 +114,7 @@ Azure AD は永続的と非永続的の 2 つの種類の SSO セッション �
 > [!NOTE]
 > シナリオの例を次に示します。
 >
-> ユーザーは 2 つの Web アプリケーション、Web アプリケーション A と Web アプリケーション B に接続したいとします。
+> ユーザーは次の 2 つの Web アプリケーションに接続したいものとします:Web アプリケーション A と Web アプリケーション B。
 > 
 > 考慮すべき要素:
 > * 両方の Web アプリケーションとも、同じ親組織にあります。
@@ -219,7 +219,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
     Get-AzureADPolicy
     ```
 
-### <a name="example-manage-an-organizations-default-policy"></a>例: 組織の既定のポリシーを管理する
+### <a name="example-manage-an-organizations-default-policy"></a>例:組織の既定のポリシーを管理する
 この例では、組織全体でユーザーがサインインする頻度を少なくするポリシーを作成します。 そのためには、組織全体に適用される単一要素の更新トークンに対してトークンの有効期間ポリシーを作成します。 このポリシーは、組織内のすべてのアプリケーションと、ポリシーがまだ設定されていない各サービス プリンシパルに適用されます。
 
 1. トークンの有効期間ポリシーを作成します。
@@ -256,7 +256,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
     Set-AzureADPolicy -Id <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
 
-### <a name="example-create-a-policy-for-web-sign-in"></a>例: Web サインインのポリシーを作成する
+### <a name="example-create-a-policy-for-web-sign-in"></a>例:Web サインインのポリシーを作成する
 
 この例では、ユーザーが、Web アプリで頻繁に認証を必要とするポリシーを作成します。 このポリシーは、アクセス トークンと ID トークンの有効期間と、多要素セッション トークンの最長有効期間を Web アプリのサービス プリンシパルに設定します。
 
@@ -287,7 +287,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
         ```
 
 
-### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>例: Web API を呼び出すネイティブ アプリのポリシーを作成する
+### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>例:Web API を呼び出すネイティブ アプリケーションのポリシーを作成する
 この例では、ユーザーに必要とする認証の頻度を少なくするポリシーを作成します。 ポリシーにより、ユーザーが再認証を必要とするまでの非アクティブでいられる時間も長くなります。 ポリシーは、Web API に適用されます。 ネイティブ アプリがリソースとして Web API を要求すると、このポリシーが適用されます。
 
 1. トークンの有効期間ポリシーを作成します。
@@ -313,7 +313,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
         ```
 
 
-### <a name="example-manage-an-advanced-policy"></a>例: 詳細なポリシーを管理する
+### <a name="example-manage-an-advanced-policy"></a>例:詳細なポリシーを管理する
 この例では、いくつかのポリシーを作成して、優先度システムのしくみを説明します。 複数のオブジェクトに適用される複数のポリシーを管理する方法も説明します。
 
 1. トークンの有効期間ポリシーを作成します。

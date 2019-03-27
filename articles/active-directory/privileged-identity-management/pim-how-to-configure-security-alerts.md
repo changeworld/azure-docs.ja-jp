@@ -9,16 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 0231eaad26fbc3e7157999c0023c5001f37d70d5
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d2cb78d048559a011756362b58848c5e91ca40dd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063287"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172384"
 ---
 # <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールに対するセキュリティの警告を構成する
 

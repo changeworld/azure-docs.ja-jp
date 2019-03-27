@@ -4,42 +4,105 @@ titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning service と Machine Learning および Data Prep Python SDK の最新情報について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 157591897adb7495382b540dc1517c4c652a2632
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: f02a44f41eba8cc4298b9fc730354799ca0aad0c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190730"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446768"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
 
-この記事では、Azure Machine Learning service の各リリースについて説明します。 
+この記事では、Azure Machine Learning service の各リリースについて説明します。  各 SDK の詳細については、以下に関するリファレンス ドキュメントを参照してください。
++ Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk)
++ Azure Machine Learning の[**Data Prep SDK**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-02-11"></a>2019-02-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Azure Machine Learning SDK for Python v1.0.15
+
++ **新機能**
+  + Azure Machine Learning パイプラインに、AzureBatchStep ([ノートブック](https://aka.ms/pl-azbatch))、HyperDriveStep ([ノートブック](https://aka.ms/pl-hyperdrive))、時間ベースのスケジューリング機能 ([ノートブック](https://aka.ms/pl-schedule)) が追加されました。
+  +  Azure SQL Server および PostgreSQL 用の Azure データベース ([ノートブック](https://aka.ms/pl-data-trans)) で機能するように DataTranferStep が更新されました。
+
++ **変更点**
+  + `PublishedPipeline.get` を優先して、`PublishedPipeline.get_published_pipeline` を非推奨にしました。
+  + `Schedule.get` を優先して、`Schedule.get_schedule` を非推奨にしました。
+
+### <a name="azure-machine-learning-data-prep-sdk-v1012"></a>Azure Machine Learning Data Prep SDK v1.0.12
+
++ **新機能**
+  + Data Prep で、データ ストアを使用した Azure SQL データベースからの読み取りがサポートされるようになりました。
+ 
++ **変更点**
+  + 大きなデータに対する特定の操作のメモリ パフォーマンスが大幅に向上しました。
+  + `read_pandas_dataframe()` では `temp_folder` を指定することが必要になりました。
+  + `ColumnProfile` での `name` プロパティは非推奨です。代わりに `column_name` を使用してください。
+
+## <a name="2019-01-28"></a>2019-01-28
+
+### <a name="azure-machine-learning-sdk-for-python-v1010"></a>Azure Machine Learning SDK for Python v1.0.10
+
++ **変更点**: 
+  + Azure ML SDK では、依存関係としての azure-cli パッケージは不要になりました。 具体的には、azureml-core から azure-cli-core 依存関係と azure-cli-profile 依存関係が削除されました。 ユーザーに影響がある変更を以下に示します。
+    + "az login" を実行し、その後 azureml-sdk を使用すると、この SDK はブラウザーまたはデバイス コードのログインをもう一度行います。 "az login" によって作成された資格情報の状態は使用されません。
+    + "az login" を使用するなどの Azure CLI 認証の場合、_azureml.core.authentication.AzureCliAuthentication_ クラスを使用します。 Azure CLI 認証では、azureml-sdk をインストールした Python 環境で _pip install azure-cli_ を実行します。
+    + 自動化のためのサービス プリンシパルを使用して "az login" を実行する場合、azureml-sdk では、azure CLI によって作成された資格情報の状態が使用されないため、_azureml.core.authentication.ServicePrincipalAuthentication_ クラスを使用することをお勧めします。 
+
++ **バグの修正**:このリリースには主に、軽微なバグの修正が含まれます
+
+### <a name="azure-machine-learning-data-prep-sdk-v108"></a>Azure Machine Learning Data Prep SDK v1.0.8
+
++ **バグの修正**
+  + データ プロファイルの取得におけるパフォーマンスが大幅に向上しました。
+  + エラー報告に関連する軽微なバグが修正されました。
+  
+### <a name="azure-portal-new-features"></a>Azure portal: 新機能
++ レポート作成のためのドラッグ アンド ドロップによる新しいグラフ作成エクスペリエンス。 ユーザーは、列または属性を元の場所からグラフ領域にドラッグできます。ドラッグすると、データの種類に基づき、ユーザーに対して適切なグラフの種類が自動的に選択されます。 ユーザーは、グラフの種類を別の適用可能な種類に変更することや、属性をさらに追加することができます。
+
+    サポートされるグラフの種類:
+    - 折れ線グラフ
+    - ヒストグラム
+    - 積み上げ横棒グラフ
+    - 箱ひげ図
+    - 散布図
+    - バブル プロット
++ ポータルでは、実験のレポートが動的に生成されるようになりました。 ユーザーが実験に対して実行を発行すると、ログに記録されたメトリックとグラフを含むレポートが自動的に生成され、異なる実行を比較できます。 
+
+## <a name="2019-01-14"></a>2019-01-14
+
+### <a name="azure-machine-learning-sdk-for-python-v108"></a>Azure Machine Learning SDK for Python v1.0.8
+
++ **バグの修正**:このリリースには主に、軽微なバグの修正が含まれます
+
+### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Azure Machine Learning Data Prep SDK v1.0.7
+
++ **新機能**
+  + データストアの機能強化 ([データストアのハウツーガイド](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb)参照)
+    + スケールアップ時に Azure ファイル共有と ADLS データストアに対する読み取りと書き込みを行う機能が追加されました。
+    + データストアの使用時に、データの準備で対話型認証ではなくサービス プリンシパル認証の使用がサポートされるようになりました。
+    + WASB URL と WASBS URL のサポートが追加されました。
+
+## <a name="2019-01-09"></a>2019-01-09
 
 ### <a name="azure-machine-learning-data-prep-sdk-v106"></a>Azure Machine Learning Data Prep SDK v1.0.6
-
-+ **SDK リファレンス ドキュメント**: https://aka.ms/data-prep-sdk
 
 + **バグの修正**
   + Spark 上のパブリックに読み取り可能な Azure BLOB コンテナーからの読み取りでのバグを修正しました
 
-## <a name="2018-12-20"></a>2018-12-20: 
+## <a name="2018-12-20"></a>2018-12-20 
 
 ### <a name="azure-machine-learning-sdk-for-python-v106"></a>Azure Machine Learning SDK for Python v1.0.6
-
-+ **SDK リファレンス ドキュメント**: https://aka.ms/aml-sdk
-
 + **バグの修正**:このリリースには主に、軽微なバグの修正が含まれます
 
 ### <a name="azure-machine-learning-data-prep-sdk-v104"></a>Azure Machine Learning Data Prep SDK v1.0.4
-
-+ **SDK リファレンス ドキュメント**: https://aka.ms/data-prep-sdk
 
 + **新機能**
   + `to_bool` 関数では、一致しない値を Error 値に変換できるようになりました。 これは、`to_bool` および `set_column_types` の新しい既定の不一致動作です。一方、以前の既定の動作では一致しない値を False に変換していました。
@@ -114,7 +177,7 @@ Azure Machine Learning コンピューティングは、Python、Azure portal、
   + [最初のパイプラインを作成する](how-to-create-your-first-pipeline.md)方法について
   + [パイプラインを使用してバッチ予測を実行](how-to-run-batch-predictions.md)する方法について
 + Azure Machine Learning コンピューティング ターゲット
-  + この新しいマネージド コンピューティングを使用するように [サンプル ノートブック]https://aka.ms/aml-notebooks) が更新されました。
+  + 新しいマネージド コンピューティングを使用するように[サンプル ノートブック](https://aka.ms/aml-notebooks)が更新されました。
   + [このコンピューティングについて](how-to-set-up-training-targets.md#amlcompute)
 
 ### <a name="azure-portal-new-features"></a>Azure portal: 新機能
@@ -135,7 +198,7 @@ Azure Machine Learning コンピューティングは、Python、Azure portal、
 
 + **重大な変更** 
   * *azureml.train.widgets* 名前空間は、*azureml.widgets* に移動されました。
-  * *azureml.core.compute.AmlCompute* では、*azureml.core.compute.BatchAICompute* クラスと *azureml.core.compute.DSVMCompute* クラスが非推奨になりました。 前者のクラスは、今後のリリースで削除されます。 現在、AmlCompute クラスには以前の定義があり、単に vm_size と max_nodes が必要で、ジョブが送信されたときにご利用のクラスターは 0 から max_nodes に自動的にスケーリングされます。 [サンプル ノートブック]https://github.com/Azure/MachineLearningNotebooks/tree/master/training) は、この情報で更新されており、使用方法の例が提供されます。 この単純化と今後のリリースで登場するより魅力あふれる多くの機能にご満足いただければ幸いです。
+  * *azureml.core.compute.AmlCompute* では、*azureml.core.compute.BatchAICompute* クラスと *azureml.core.compute.DSVMCompute* クラスが非推奨になりました。 前者のクラスは、今後のリリースで削除されます。 現在、AmlCompute クラスには以前の定義があり、単に vm_size と max_nodes が必要で、ジョブが送信されたときにご利用のクラスターは 0 から max_nodes に自動的にスケーリングされます。 [サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/training)は、この情報で更新されており、使用方法の例が提供されます。 この単純化と今後のリリースで登場するより魅力あふれる多くの機能にご満足いただければ幸いです。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure Machine Learning Data Prep SDK v0.5.1 
 

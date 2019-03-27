@@ -4,16 +4,16 @@ description: この記事では、Azure ファイル共有を保護する方法�
 services: backup
 author: rayne-wiselman
 ms.author: raynew
-ms.date: 2/21/2018
+ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 51952196bd2c44ba79e96266436860106a0753c4
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 91a0e1fd66861f8747c6c6da21f2c54ed40bd200
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793514"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492808"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 この記事では、Azure Files のバックアップについてよくある質問への回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -94,11 +94,14 @@ Azure ファイル共有を削除するときは、削除されるバックア�
 
 ## <a name="manage-backup"></a>バックアップの管理
 
+### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares-br"></a>PowerShell を使用して、Azure ファイル共有のバックアップを構成/管理/復元できますか。 <br/>
+はい。 詳細なドキュメントを[こちら](backup-azure-afs-automation.md)で参照してください
+
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it-br"></a>Azure Backup によって作成されたスナップショットにアクセスしてマウントできますか? <br/>
 Azure Backup によって作成されたスナップショットはすべて、ポータル、PowerShell、または CLI でスナップショットを表示することでアクセスできます。 Azure Files 共有スナップショットについて詳しくは、[Azure Files の共有スナップショット (プレビュー) の概要](../storage/files/storage-snapshots-files.md)に関するページを参照してください。
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups-br"></a>バックアップについて構成できる保持期間の上限はどの位ですか? <br/>
-Azure ファイル共有のバックアップにより、毎日のバックアップを最大 120 日間保持できます。
+Azure ファイル共有のバックアップでは、最大 180 日のリテンション期間でポリシーを構成できます。 ただし、[PowerShell の "オンデマンド バックアップ" オプション](backup-azure-afs-automation.md#trigger-an-on-demand-backup)を使用して、復旧ポイントを 10 年間でも保持することができます。
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share-br"></a>Azure ファイル共有のバックアップ ポリシーを変更した場合はどうなりますか。 <br/>
 新しいポリシーをファイル共有に適用すると、新しいポリシーのスケジュールと保持期間が適用されます。 リテンション期間が延長された場合、既にある復旧ポイントは、新しいポリシーに従って保存するようにマーキングされます。 リテンション期間が短縮された場合、次回のクリーンアップ ジョブで排除対象としてマーキングされて、その後削除されます。

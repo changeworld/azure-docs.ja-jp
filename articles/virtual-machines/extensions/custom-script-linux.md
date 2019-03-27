@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 87d15f7b351f2b8b6a8c010651d82faa66b28918
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: f8b0955afa1705dd8e3c01a943cc5e5d885f9c71
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276467"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456964"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
 
-カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合します。 また、Azure CLI、PowerShell、Azure Portal、または Azure Virtual Machines REST API を使って実行することもできます。
+カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合します。 また、Azure CLI、PowerShell、または Azure Virtual Machines REST API を使って実行することもできます。
 
 この記事では、Azure CLI からカスタム スクリプト拡張機能を使う方法と、Azure Resource Manager テンプレートを使って拡張機能を実行する方法について説明します。 また、Linux システムでのトラブルシューティング手順も示します。
 
@@ -110,16 +110,16 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 | Name | 値/例 | データ型 | 
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute.Extensions | string |
-| type | CustomScript | string |
+| publisher | Microsoft.Compute.Extensions | 文字列 |
+| type | CustomScript | 文字列 |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (例) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (例) | python MyPythonScript.py <my-param1> | string |
-| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
+| commandToExecute (例) | python MyPythonScript.py <my-param1> | 文字列 |
+| script | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | 文字列 |
 | skipDos2Unix (例:) | false | ブール値 |
 | timestamp (例:) | 123456789 | 32 ビットの整数 |
-| storageAccountName (例) | examplestorageacct | string |
-| storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (例) | examplestorageacct | 文字列 |
+| storageAccountKey (例) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | 文字列 |
 
 ### <a name="property-value-details"></a>プロパティ値の詳細
 * `skipDos2Unix`: (省略可能、ブール値) スクリプトベースのファイル URL またはスクリプトの dos2unix 変換を省略します。
@@ -196,7 +196,7 @@ CustomScript では、次のアルゴリズムを使用して、スクリプト�
 
  1. スクリプトの値の長さが 256 KB を超えないことをアサートします。
  1. スクリプトの値を base64 にデコードする
- 1. base64 にデコードされた値の GunZip 圧縮を _試行_ します。
+ 1. base64 にデコードされた値の GunZip 圧縮を_試行_します。
  1. デコード (および必要に応じて圧縮解除) された値をディスクに書き込む (/var/lib/waagent/custom-script/#/script.sh)
  1. _/bin/sh-c/var/lib/waagent/custom-script/#/script.sh を使用して、スクリプトを実行します。
 

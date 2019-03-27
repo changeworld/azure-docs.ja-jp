@@ -84,12 +84,12 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)の HDInsight
 ## <a name="syntax-details"></a>構文の詳細
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name |アクティビティの名前 |[はい] |
+| name |アクティビティの名前 |はい |
 | description |アクティビティの用途を説明するテキストです。 |いいえ  |
-| type |HDInsightPig |[はい] |
+| type |HDInsightPig |はい |
 | inputs |Pig のアクティビティによって使用される 1 つ以上の入力 |いいえ  |
-| outputs |Pig のアクティビティによって生成される 1 つ以上の出力 |[はい] |
-| linkedServiceName |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |[はい] |
+| outputs |Pig のアクティビティによって生成される 1 つ以上の出力 |はい |
+| linkedServiceName |Data Factory のリンクされたサービスとして登録されている HDInsight クラスターへの参照 |はい |
 | script |Pig スクリプトをインラインに指定します |いいえ  |
 | scriptPath |Pig スクリプトを Azure BLOB ストレージに格納し、ファイルへのパスを指定します。 'script' プロパティまたは 'scriptPath' プロパティを使用します。 両方を同時に使用することはできません。 ファイル名は大文字と小文字が区別されます。 |いいえ  |
 | defines |Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します |いいえ  |

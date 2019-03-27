@@ -1,23 +1,23 @@
 ---
 title: Python 開発環境をセットアップする
 titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で作業する場合の、開発環境を構成する方法について説明します。 この記事では、Conda 環境の使用、構成ファイルの作成、Jupyter Notebooks、Azure Notebooks、IDE、コード エディター、および Data Science Virtual Machine の構成方法を説明します。
+description: Azure Machine Learning service で作業する場合の、開発環境を構成する方法について説明します。 この記事では、Conda 環境の使用、構成ファイルの作成、Jupyter Notebooks、Azure Notebooks、Azure Databricks、IDE、コード エディター、および Data Science Virtual Machine の構成方法を説明します。
 services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 46a1872d2ac5d1670620148edf7ee273580826d3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 136a83c586b2f797269beff3cdd0afb9973cb7c8
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811275"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340520"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "53811275"
 
 この記事では、次の環境とツールに重点を置いています。
 
-* [Azure Notebooks](#aznotebooks):Azure クラウドでホストされている Jupyter Notebook サービスです。 これは、Azure Machine Learning SDK が既にインストールされているため、作業を開始する最も簡単な方法です。
+* Azure Notebooks:Azure クラウドでホストされている Jupyter Notebook サービスです。 これは、Azure Machine Learning SDK が既にインストールされているため、作業を開始する最も簡単な方法です。
 
 * [Data Science Virtual Machine (DSVM)](#dsvm):Azure クラウド内の事前構成済みの開発または実験環境です。データ サイエンスの作業のために設計されており、CPU のみの VM インスタンスまたは GPU ベースのインスタンスのいずれかにデプロイできます。 Python 3、Conda、Jupyter Notebooks、Azure Machine Learning SDK は既にインストールされています。 VM には、機械学習ソリューションを開発するための人気の機械学習およびディープ ラーニングのフレームワーク、ツール、エディターが備わっています。 これは、おそらく Azure プラットフォームにおいて機械学習用の最も包括的な開発環境です。
 
@@ -55,7 +55,7 @@ ms.locfileid: "53811275"
 
 - Windows の場合、コマンド プロンプトまたは Anaconda プロンプト (Anaconda および Miniconda によってインストール済み) が必要です。
 
-## <a id="anotebooks"></a>Azure Notebooks
+## <a id="aznotebooks"></a>Azure Notebooks
 
 [Azure Notebooks](https://notebooks.azure.com) (プレビュー) は、Azure クラウドにおける対話型開発環境です。 これは、Azure Machine Learning の開発を開始する最も簡単な方法です。
 
@@ -64,17 +64,21 @@ ms.locfileid: "53811275"
 
 Azure Notebooks を使用して開発を開始するには、[Azure Machine Learning service の基本操作](quickstart-get-started.md)に関するページを参照してください。
 
+既定では、Azure Notebooks は、4 GB のメモリと 1 GB のデータに制限されている無料のサービス層を使用します。 ただし、これらの制限は、Data Science Virtual Machine インスタンスを Azure Notebooks プロジェクトにアタッチすることで削除できます。 詳細については、[Azure Notebooks プロジェクトの管理と構成 - コンピューティング層](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)に関するページを参照してください。
+
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
 DSVM は、カスタマイズされた仮想マシン (VM) イメージです。 これは、以下の項目が事前に構成されているデータ サイエンスの作業向けに設計されています。
 
-  - TensorFlow、PyTorch、Scikit-learn、XGBoost、Azure Machine Learning SDK などのパッケージ。
-  - Spark スタンドアロンや Drill などの一般的なデータ サイエンス ツール。
-  - Azure CLI、AzCopy、Storage Explorer などの Azure ツール。
-  - Visual Studio Code、PyCharm、RStudio などの統合開発環境 (IDE)。
-  - Jupyter Notebook Server。 
+  - TensorFlow、PyTorch、Scikit-learn、XGBoost、Azure Machine Learning SDK などのパッケージ
+  - Spark スタンドアロンや Drill などの一般的なデータ サイエンス ツール
+  - Azure CLI、AzCopy、Storage Explorer などの Azure ツール
+  - Visual Studio Code や PyCharm などの統合開発環境 (IDE)
+  - Jupyter Notebook Server
 
-Azure Machine Learning SDK は、DSVM の Ubuntu バージョンまたは Windows バージョンで動作します。 DSVM を開発環境として使用するには、以下の手順を実行します。
+Azure Machine Learning SDK は、DSVM の Ubuntu バージョンまたは Windows バージョンで動作します。 ただし、DSVM をコンピューティング先としても使用することを計画している場合は、Ubuntu のみがサポートされます。
+
+DSVM を開発環境として使用するには、以下の手順を実行します。
 
 1. 次のいずれかの環境で、DSVM を作成します。
 
@@ -242,12 +246,55 @@ Visual Studio Code はクロス プラットフォーム コード エディタ�
 
 Databricks クラスターを準備し、サンプルのノートブックを取得するには:
 
-1. Python 3 で Databricks ランタイム バージョン 4.x (高同時実行性推奨) を使用して [Databricks クラスター](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を作成します。 
+1. 以下の設定で [Databricks クラスター](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を作成します。
 
-1. Azure Machine Learning SDK for Python `azureml-sdk[databricks]` PyPi パッケージをインストールしてクラスターにアタッチするには、[ライブラリを作成](https://docs.databricks.com/user-guide/libraries.html#create-a-library)します。  
-    完了すると、ライブラリは、次の図に示すようにアタッチされます。 [Databricks の一般的な問題](resource-known-issues.md#databricks)に注意してください。
+    | Setting | 値 |
+    |----|---|
+    | クラスター名 | yourclustername |
+    | Databricks ランタイム | ML 以外の任意のランタイム (ML 4.x、5.x 以外) |
+    | Python バージョン | 3 |
+    | ワーカー | 2 以上 |
 
-   ![Databricks にインストールされた SDK ](./media/how-to-azure-machine-learning-on-databricks/sdk-installed-on-databricks.jpg)
+    Databricks で自動化された機械学習を使用する予定の場合のみ、これらの設定を使用します。
+    
+    |   Setting | 値 |
+    |----|---|
+    | ワーカー ノードの VM の種類 | メモリ最適化 VM 優先 |
+    | 自動スケールの有効化 | オフ |
+    
+    Databricks クラスター内のワーカー ノードの数は、自動化された ML の設定で、同時実行反復処理の最大数を決定します。  
+
+    クラスターが作成されるまで数分かかります。 クラスターが実行中になるまで待機してから、次に進んでください。
+
+1. Azure Machine Learning SDK パッケージをインストールしてクラスターにアタッチします。  
+
+    * 以下の設定のいずれかを使用して[ライブラリを作成します](https://docs.databricks.com/user-guide/libraries.html#create-a-library) (_これらのオプションの 1 つだけを選択します_)。
+    
+        * 自動化された機械学習の機能を_含めずに_ Azure Machine Learning SDK をインストールする場合:
+            | Setting | 値 |
+            |----|---|
+            |ソース | Python Egg または PyPI のアップロード
+            |PyPi 名 | azureml-sdk[databricks]
+    
+        * 自動化された機械学習を_含めて_ Azure Machine Learning SDK をインストールする場合:
+            | Setting | 値 |
+            |----|---|
+            |ソース | Python Egg または PyPI のアップロード
+            |PyPi 名 | azureml-sdk[automl_databricks]
+    
+    * **すべてのクラスターに自動的にアタッチする** は選択しないでください
+
+    * クラスター名の横にある **アタッチ** を選択します
+
+    * 状態が **アタッチ済み** に変わるまで、エラーがないことを確認します。 このプロセスには数分かかることがあります。
+
+    古いバージョンの SDK がある場合は、クラスターのインストール済みライブラリでその SDK の選択を解除し、ごみ箱に移動します。 新しいバージョンの SDK をインストールし、クラスターを再起動します。 その後問題がある場合は、クラスターをデタッチし、再アタッチします。
+
+    完了すると、ライブラリは以下の図に示すようにアタッチされます。 [Databricks の一般的な問題](resource-known-issues.md#databricks)に注意してください。
+
+    * 自動化された機械学習を_含めず_に Azure Machine Learning SDK をインストールした場合 ![自動化された機械学習を含めずに Databricks にインストールされた SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+
+    * 自動化された機械学習を_含めて_に Azure Machine Learning SDK をインストールした場合 ![自動化された機械学習を含めて Databricks にインストールされた SDK](./media/how-to-configure-environment/automlonadb.jpg)
 
    この手順が失敗する場合は、以下の手順を実行してクラスターを再起動します。
 
@@ -257,13 +304,12 @@ Databricks クラスターを準備し、サンプルのノートブックを取
 
    c. **[ライブラリ]** タブで **[再起動]** を選択します。
 
-1. [Azure Databricks/Azure Machine Learning SDK ノートブック アーカイブ ファイル](https://github.com/Azure/MachineLearningNotebooks/blob/master/databricks/Databricks_AMLSDK_github.dbc)をダウンロードします。
+1. [Azure Databricks/Azure Machine Learning SDK ノートブック アーカイブ ファイル](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks/Databricks_AMLSDK_1-4_6.dbc)をダウンロードします。
 
    >[!Warning]
    > Azure Machine Learning service では多くのサンプル ノートブックを使用できます。 [これらのサンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)だけが Azure Databricks で動作します。
-   > 
 
-1.  Databricks クラスターに[このアーカイブ ファイルをインポート](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive)し、[Machine Learning のノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)に関するページで説明されているように探索を開始します。
+1.  Databricks クラスターに[アーカイブ ファイルをインポート](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-manage.html#import-an-archive)し、[Machine Learning のノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks)に関するページで説明されているように探索を開始します。
 
 
 ## <a id="workspace"></a>ワークスペース構成ファイルを作成する
@@ -311,6 +357,6 @@ Databricks クラスターを準備し、サンプルのノートブックを取
 
 ## <a name="next-steps"></a>次の手順
 
-- [MNIST データセットを使用して Azure Machine Learning でモデルをトレーニングする](tutorial-train-models-with-aml.md)
-- [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk)
-- [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk)
+- MNIST データセットを使用して Azure Machine Learning 上で[モデルをトレーニングする](tutorial-train-models-with-aml.md)
+- [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) リファレンスを表示する
+- [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) について確認する

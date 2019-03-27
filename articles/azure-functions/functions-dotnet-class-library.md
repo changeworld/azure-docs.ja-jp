@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 7e84e8e99000e9d8bd7a21d343588b1df777b56d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 55b4cf6e621bc1e5bd3d8ba4718e5714ea652c27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994536"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111482"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -50,7 +50,7 @@ Visual Studio では、**Azure Functions** プロジェクト テンプレート
  | - host.json
 ```
 
-このディレクトリは、Azure 上で関数アプリにデプロイされるディレクトリです。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は、[NuGet パッケージとしてプロジェクトに追加](functions-triggers-bindings.md#c-class-library-with-visual-studio-2017)されます。
+このディレクトリは、Azure 上で関数アプリにデプロイされるディレクトリです。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は、[NuGet パッケージとしてプロジェクトに追加](./functions-bindings-register.md#c-class-library-with-visual-studio-2017)されます。
 
 > [!IMPORTANT]
 > ビルド処理では、関数ごとに *function.json* ファイルが作成されます。 この *function.json* ファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 関数を無効にする方法については、[関数を無効にする方法](disable-function.md#functions-2x---c-class-libraries)に関するページをご覧ください。
@@ -83,7 +83,7 @@ public static class SimpleExample
 * 属性で修飾することによってそのようにマークした[入出力のバインド](functions-triggers-bindings.md)。  
 * [ログ記録](#logging)のための `ILogger` または `TraceWriter` ([バージョン 1.x のみ](functions-versions.md#creating-1x-apps)) パラメーター。
 * [グレースフル シャットダウン](#cancellation-tokens)のための `CancellationToken` パラメーター。
-* トリガー メタデータを取得するための[バインド式](functions-triggers-bindings.md#binding-expressions-and-patterns)パラメーター。
+* トリガー メタデータを取得するための[バインド式](./functions-bindings-expressions-patterns.md)パラメーター。
 
 関数シグネチャのパラメーターの順序は関係ありません。 たとえば、トリガー パラメーターは、他のバインドの前後に配置できます。また、ロガー パラメーターは、トリガー パラメーターまたはバインド パラメーターの前後に配置できます。
 
@@ -173,7 +173,7 @@ Functions ランタイムのバージョン 1.x と 2.x では同じパッケー
 
 ```xml
 <PropertyGroup>
-  <TargetFramework>netstandard2.0</TargetFramework>
+  <TargetFramework>netcoreapp2.1</TargetFramework>
   <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 </PropertyGroup>
 <ItemGroup>
@@ -205,7 +205,7 @@ npm を使用して Core Tools をインストールする場合、これは Vis
 
 ## <a name="binding-to-method-return-value"></a>メソッドの戻り値へのバインド
 
-出力バインドのメソッドの戻り値を使用するには、属性をメソッドの戻り値に適用します。 例については、[トリガーとバインディング](functions-triggers-bindings.md#using-the-function-return-value)に関するページを参照してください。 
+出力バインドのメソッドの戻り値を使用するには、属性をメソッドの戻り値に適用します。 例については、[トリガーとバインディング](./functions-bindings-return-value.md)に関するページを参照してください。 
 
 正常な関数の実行によって、常に戻り値が出力バインドに渡される場合のみ、戻り値を使用してください。 それ以外の場合は、次のセクションに示すように `ICollector` または `IAsyncCollector` を使用してください。
 

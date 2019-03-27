@@ -3,19 +3,21 @@ title: Azure AD で緊急アクセス用管アカウントを管理する | Micr
 description: この記事では、緊急アクセス用アカウントを使用して、Azure Active Directory (Azure AD) テナントから誤ってロックアウトされないようにする方法について説明します。
 services: active-directory
 author: markwahl-msft
-ms.author: billmath
+ms.author: curtand
 ms.date: 12/21/2018
 ms.topic: article-type-from-white-list
 ms.service: active-directory
+ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: ae23d7a3047a970c795c562b0b981c20068aeccb
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 974e00ce877dcf3b15dc7ce6d73f7d1331e20bb5
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974236"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429129"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管アカウントを管理する
 

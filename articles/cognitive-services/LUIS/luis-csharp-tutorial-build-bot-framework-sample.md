@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: C# を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このチャット ボットでは、ボット ソリューションをすばやく実装するため、事前構築済みの HomeAutomation ドメインを使用します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: c3e142c65cdfe00fb26694063f7733d62882cc0c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fc8283d85cf7d516edd78f20c9a47d806fbb827b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267370"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328964"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot Framework 3.x と Azure Web アプリ ボットを使用した C# の LUIS ボット
 
@@ -45,7 +45,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 
 3. [Web App Bot ]\(Web アプリ ボット\) ウィンドウで、**[作成]** をクリックします。
 
-4. **[ボット サービス]** で、必要な情報を指定し、**[作成]** をクリックします。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)を使用するには、ボットを作成する前に、[リージョンの要件](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming)を確認します。 
+4. **[ボット サービス]** で、必要な情報を指定し、**[作成]** をクリックします。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)を使用するには、ボットを作成する前に、[リージョンの要件](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming)を確認します。 
     * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
     * **Bot テンプレート**で、以下を選択します。
@@ -153,7 +153,7 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 > お使いのボットのコードを変更せずに、ご自身の LUIS アプリを再トレーニングできます。 [発話の例の追加](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances)に関するページ、および[ご自身の LUIS アプリのトレーニングとテスト](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test)に関するページをご覧ください。 
 
 ## <a name="download-the-bot-to-debug"></a>デバッグするボットのダウンロード
-ボットが機能していない場合は、プロジェクトをローカル コンピューターにダウンロードして、[デバッグ](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot)を続行します。 
+ボットが機能していない場合は、プロジェクトをローカル コンピューターにダウンロードして、[デバッグ](https://docs.microsoft.com/bot-framework/bot-service-debug-bot)を続行します。 
 
 ## <a name="learn-more-about-bot-framework"></a>Bot Framework の詳細
 [Bot Framework](https://dev.botframework.com/)、[3.x](https://github.com/Microsoft/BotBuilder) SDK、[4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK の詳細を確認します。

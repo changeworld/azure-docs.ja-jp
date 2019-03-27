@@ -19,6 +19,8 @@ items:
   items:
   - name: Video Indexer と Media Services のプリセットを比較する
     href: compare-video-indexer-with-media-services-presets.md
+  - name: 複数のテナントの管理
+    href: manage-multiple-tenants.md
   - name: コンテンツ モデルのカスタマイズ
     items:
     - name: ブランド
@@ -81,9 +83,11 @@ items:
     href: regions.md
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 6b3510a967a24232997e6394142348048769c507
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+  - name: コンプライアンス
+    href: https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942
+ms.openlocfilehash: 667aacd14c7bc3aada0acfa4968bd7155effc4d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306184"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57836999"

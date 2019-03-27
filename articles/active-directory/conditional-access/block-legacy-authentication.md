@@ -1,32 +1,34 @@
 ---
 title: 条件付きアクセスを利用して Azure Active Directory (Azure AD) へのレガシ認証をブロックする方法 | Microsoft Docs
-description: 信頼されていないネットワークからのアクセスの試行に対して、Azure Active Directory (Azure AD) で条件付きアクセス ポリシーを構成する方法を説明します。
+description: Azure AD 条件付きアクセスを使用してレガシ認証をブロックすることでセキュリティ体制を強化する方法について説明します。
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2018
+ms.date: 02/01/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2abf0afb3b6e1cd80168fa3f295297551b9bf7ce
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 644a2279f555af05d711e1455923795b5271e159
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755157"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191624"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>方法:条件付きアクセスを使用して Azure AD へのレガシ認証をブロックする   
 
 指定したユーザーがお使いのクラウド アプリに簡単にアクセスできるように、Azure Active Directory (Azure AD) ではレガシ認証を含め、幅広い認証プロトコルをサポートしています。 ただし、従来のプロトコルでは、多要素認証 (MFA) をサポートしていません。 MFA は多くの環境で、なりすましに対処するための一般的な要件になっています。 
+
 
 お使いの環境で、テナントの保護を向上させるためにレガシ認証をブロックする準備ができている場合は、条件付きアクセスによってこの目標を達成できます。 この記事では、テナントのレガシ認証をブロックする条件付きアクセス ポリシーを構成する方法について説明します。
 
@@ -119,7 +121,15 @@ Azure AD では、レガシ認証を含め、最も広く使用されている�
 
 その他のクライアント条件には、利用可能なすべての制御の許可を選択できます。ただし、エンドユーザーのエクスペリエンスは常に同じ、つまり、アクセスがブロックされます。
 
-その他のクライアント条件の横にあるその他の条件はすべて、構成可能です。
+他のクライアント条件を使用してレガシ認証をブロックする場合は、デバイスのプラットフォームと場所の条件も設定できます。 たとえば、モバイル デバイスに対する従来の認証をブロックすることだけが必要な場合は、以下を選択して**デバイス プラットフォーム**の条件を設定します。
+
+- Android
+
+- iOS
+
+- Windows Phone
+
+![サポートされていないポリシー構成](./media/block-legacy-authentication/06.png)
 
 
 

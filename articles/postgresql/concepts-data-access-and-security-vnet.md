@@ -6,12 +6,12 @@ ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 2f26c4ae352ea5385886abcaecba5f50d30c530a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f5c42b73b0452392cdd2a06619722b3f7de2cc27
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537224"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417484"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の Virtual Network のサービス エンドポイントとルールを使用する
 
@@ -23,6 +23,7 @@ ms.locfileid: "53537224"
 
 > [!NOTE]
 > この機能は、Azure Database for PostgreSQL が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure パブリック クラウドのすべてのリージョンで利用できます。
+> VNet ピアリングでは、トラフィックがサービス エンドポイントを含む共通 VNet Gateway を通過して、ピアにフローするようになっている場合は、ACL/VNet ルールを作成して、Gateway VNet 内の Azure Virtual Machines が Azure Database for PostgreSQL サーバーにアクセスできるようにしてください。
 
 <a name="anch-terminology-and-description-82f" />
 

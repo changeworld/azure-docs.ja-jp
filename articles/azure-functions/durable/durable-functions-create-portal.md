@@ -10,21 +10,21 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 3ad657fb695d88ffc75a37ee566ce59126906748
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038434"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108071"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal を使用して Durable Functions を作成する
 
 Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機能は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) に提供されます。 この拡張機能は、お使いの関数アプリにインストールする必要があります。 この記事では、Azure portal で Durable Functions を開発できるように、このパッケージをインストールする方法を示します。
 
->[!NOTE]
->
->* C# で Durable Functions を開発している場合は、代わりに [Visual Studio 2017 での開発](durable-functions-create-first-csharp.md)を検討してください。
-* JavaScript で Durable Functions を開発している場合は、代わりに [Visual Studio Code での開発](./quickstart-js-vscode.md)を検討してください。
+> [!NOTE]
+> 
+> * C# で Durable Functions を開発している場合は、代わりに [Visual Studio 2017 での開発](durable-functions-create-first-csharp.md)を検討してください。
+> * JavaScript で Durable Functions を開発している場合は、代わりに [Visual Studio Code での開発](./quickstart-js-vscode.md)を検討してください。
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
@@ -97,7 +97,7 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
     この例では、`{your-function-app-name}` は対象の関数アプリの名前であるドメインです。 応答メッセージには、実行を監視および管理するために使用できる、一連の URI エンドポイントが含まれます。次の例のようになります。
 
     ```json
-    {
+    {  
        "id":"10585834a930427195479de25e0b952d",
        "statusQueryGetUri":"https://...",
        "sendEventPostUri":"https://...",

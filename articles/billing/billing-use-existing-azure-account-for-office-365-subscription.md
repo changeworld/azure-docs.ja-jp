@@ -14,13 +14,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cwatson
-ms.openlocfilehash: d48b55af705eddb42853fb236e5eb6a214d1a0ff
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: banders
+ms.openlocfilehash: 0b5e7a36c89c594dd0a7ec681b112ea523884461
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394054"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904159"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Azure アカウントで Office 365 サブスクリプションにサインアップする
 Azure サブスクライバ―は、Azure アカウントを使用して、Office 365 サブスクリプションにサインアップできます。 Azure サブスクリプションがある組織に属している場合は、既存の Azure Active Directory (Azure AD) にユーザーの Office 365 サブスクリプションを作成できます。 Azure Active Directory テナントでグローバル管理者または課金管理者権限を持っているアカウントを使用して、Office 365 サブスクリプションにサインアップします。 詳細については、「[Azure AD でアカウントのアクセス許可を確認する](#RoleInAzureAD)」と「[Azure Active Directory の管理者ロールの割り当て](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
@@ -69,5 +69,6 @@ Azure サブスクライバ―は、Azure アカウントを使用して、Offic
 
     ![Azure ポータルでの課金管理者ディレクトリ ロールの表示のスクリーン ショット](./media/billing-use-existing-azure-account-office-365-subscription/billing-directoryrole-limited.png)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
+
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。 

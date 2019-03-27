@@ -7,18 +7,18 @@ author: bwren
 manager: jwhit
 editor: tysonn
 ms.assetid: 570b278c-2d47-4e5a-9828-7f01f31ddf8c
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 4bd8e4ea347c1b26cba831317bdc1d837701788b
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cefb83d5336bb99fd09001b5ea369a0b8fc4b942
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107397"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769132"
 ---
 # <a name="views-in-management-solutions-preview"></a>管理ソリューションのビュー (プレビュー)
 > [!NOTE]
@@ -93,7 +93,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
  次の表では、レガシ ワークスペースとアップグレードされたワークスペースでのビューに対する Log Analytics API のバージョンを指定します。 
 
-| ワークスペースのバージョン | API バージョン | クエリ |
+| ワークスペースのバージョン | API バージョン | Query |
 |:---|:---|:---|
 | v1 (レガシ)   | 2015-11-01-preview | レガシ形式。<br> 例:Type=Event EventLevelName=error  |
 | v2 (アップグレード) | 2015-11-01-preview | レガシ形式。  インストール時にアップグレードされた形式に変換されます。<br> 例:Type=Event EventLevelName=error<br>変換後:Event &#124; where EventLevelName == "Error"  |

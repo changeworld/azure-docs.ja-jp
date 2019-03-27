@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: ff512ac3bef1ce721860172dbaf9d9b68512a518
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.date: 02/2/2018
+ms.openlocfilehash: 7b724219750154c5ec1410af64175bc70f5cbd6c
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064697"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805817"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む
 
@@ -37,7 +37,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 このクイック スタートでは、サンプル データを生成してイベント ハブに送信します。 最初の手順は、イベント ハブの作成です。 Azure portal で Azure Resource Manager テンプレートを使用してこの処理を行います。
 
-1. イベント ハブを作成するには、次のボタンを使用してデプロイを開始します。 この記事の残りの手順を実行できるよう、リンクを右クリックして **[新しいウィンドウで開く]** を選択し、別のタブまたはウィンドウで開いてください。
+1. イベント ハブを作成するには、次のボタンを使用してデプロイを開始します。 この記事の残りの手順を実行できるよう、右クリックして **[新しいウィンドウで開く]** を選択してください。
 
     [![Azure へのデプロイ](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
@@ -59,7 +59,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     |---|---|---|
     | サブスクリプション | 該当するサブスクリプション | イベント ハブに使用する Azure サブスクリプションを選択します。|
     | リソース グループ | *test-hub-rg* | 新しいリソース グループを作成します。 |
-    | 場所 | *[米国西部]* | このクイック スタートでは *[米国西部]* を選択します。 運用システムでは、ニーズに最も適したリージョンを選択します。 最良のパフォーマンスを得るためには、Kusto クラスターと同じ場所にイベント ハブの名前空間を作成します (高スループットのイベント ハブの名前空間に最も重要です)。
+    | Location | *[米国西部]* | このクイック スタートでは *[米国西部]* を選択します。 運用システムでは、ニーズに最も適したリージョンを選択します。 最良のパフォーマンスを得るためには、Kusto クラスターと同じ場所にイベント ハブの名前空間を作成します (高スループットのイベント ハブの名前空間に最も重要です)。
     | 名前空間名 | 一意の名前空間名 | 名前空間を識別する一意の名前を選択します。 たとえば、*mytestnamespace* と指定します。 指定した名前にドメイン名 *servicebus.windows.net* が付加されます。 この名前には、文字、数字、ハイフンのみを含めることができます。 名前の先頭は英字、末尾は英字または数字にする必要があります。 値の長さは 6 から 50 文字にする必要があります。
     | イベント ハブ名 | *test-hub* | イベント ハブは、固有のスコープ コンテナーを提供する名前空間以下にあります。 イベント ハブ名は、名前空間内で一意にする必要があります。 |
     | コンシューマー グループ名 | *test-group* | コンシューマー グループを使用すると、複数の使用アプリケーションがそれぞれイベント ストリーム ビューを持つことができるようになります。 |
@@ -103,11 +103,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
     ![テスト データベースの選択](media/ingest-data-event-hub/select-test-database.png)
 
-1. **[データ インジェスト]**、**[データ接続の追加]** の順に選択します。
-
-    ![データの取り込み](media/ingest-data-event-hub/data-ingestion-create.png)
-
-1. フォームに次の情報を入力し、**[作成]** を選択します。
+1. **[データ インジェスト]**、**[データ接続の追加]** の順に選択します。 その後、フォームに次の情報を入力します。 終わったら **[作成]** を選択します。
 
     ![イベント ハブの接続](media/ingest-data-event-hub/event-hub-connection.png)
 
@@ -129,7 +125,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | テーブル | *TestTable* | **TestDatabase** に作成したテーブル。 |
-    | データ形式 | *JSON* | JSON 形式と CSV 形式がサポートされています。 |
+    | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOH、SCSV、TSV、および TXT です。 |
     | 列マッピング | *TestMapping* | **TestDatabase** に作成したマッピング。受信 JSON データを **TestTable** の列名とデータ型にマッピングします。|
     | | |
 
@@ -189,7 +185,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     ![メッセージの結果セット](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > ADX には、インジェスト プロセスを最適化することを目的とした、データ インジェストの集計 (バッチ処理) ポリシーがあります。 このポリシーは 5 分に構成されているため、待ち時間が生じることがあります。
+    > Azure Data Explorer には、インジェスト プロセスを最適化することを目的とした、データ インジェストの集計 (バッチ処理) ポリシーがあります。 このポリシーは 5 分に構成されているため、待ち時間が生じることがあります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

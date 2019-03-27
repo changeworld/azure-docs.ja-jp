@@ -1,5 +1,5 @@
 ---
-title: 準拠していないリソースを識別するポリシーを作成する
+title: 準拠していないリソースに対するポリシーを作成する
 description: この記事では、ポリシー定義を作成して、準拠していないリソースを特定する手順について説明します。
 services: azure-policy
 author: DCtheGeek
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: ddf30f6a7bc00be9ac24952adf0ba41e6151bd10
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: af14b242ae7578e1f9797895bd18c37231959ac9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311169"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342713"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources"></a>準拠していないリソースを識別するためのポリシー割り当てを作成する
 

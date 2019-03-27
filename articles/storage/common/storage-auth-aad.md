@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: a918a44042df13c8b799d823656c4cd878f8f618
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.subservice: common
+ms.openlocfilehash: 1a9283ad688c63642df880a74cca9189c7c59042
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426653"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55456699"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory-preview"></a>Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを認証する (プレビュー)
 

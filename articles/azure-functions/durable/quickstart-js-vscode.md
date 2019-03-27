@@ -1,4 +1,4 @@
-﻿---
+---
 title: JavaScript を使用して Azure で最初の Durable Functions を作成する
 description: Visual Studio Code を使用して Azure Durable Functions を作成して発行します。
 services: functions
@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: azfuncdf, cotresne, glenga
-ms.openlocfilehash: 0db76e80b2ff7400e7c2914efbd2bbcb24d9b005
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4ee1c9edf8cb10cae1a8a6e1c15f9bcf6e9a8ff8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034320"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359461"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
 
@@ -94,7 +94,7 @@ ms.locfileid: "54034320"
 
 ## <a name="create-an-activity-function"></a>アクティビティ関数を作成する
 
-1. 前のセクションの手順を繰り返し、HTTP トリガー テンプレートを使用して 3 つ目の関数を作成します。 ただし、今回は関数に `SayHello` と名前を付けます。
+1. 前のセクションの手順を繰り返し、HTTP トリガー テンプレートを使用して 3 つ目の関数を作成します。 ただし、今回は関数に `E1_SayHello` と名前を付けます。
 
 2. 新しい関数の index.js ファイルを開き、内容を次のコードに置き換えます。
 
@@ -108,7 +108,7 @@ ms.locfileid: "54034320"
 
 ## <a name="test-the-function-locally"></a>関数をローカルでテストする
 
-Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。
+Azure Functions Core Tools を使用すると、ローカルの開発用コンピューター上で Azure Functions プロジェクトを実行できます。 Visual Studio Code から初めて関数を起動すると、これらのツールをインストールするよう求めるメッセージが表示されます。  
 
 1. Windows コンピューターでは、Azure Storage Emulator を起動し、local.settings.json の **AzureWebJobsStorage** プロパティが `UseDevelopmentStorage=true` に設定されていることを確認します。 Mac または Linux コンピューターでは、既存の Azure ストレージ アカウントの接続文字列に **AzureWebJobsStorage** プロパティを設定する必要があります。 ストレージ アカウントの作成については、この記事で後述します。
 
@@ -121,9 +121,11 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
     ![Azure のローカル出力](../media/functions-create-first-function-vs-code/functions-vscode-f5.png)
 
-4. ブラウザーのアドレス バーに HTTP 要求の URL を貼り付け、オーケストレーションの状態を確認します。
+4. `{functionName}` を `OrchestratorFunction` で置き換え
 
-5. デバッグを停止するには、Shift キーを押しながら F1 キーを押します。
+5. [Postman](https://www.getpostman.com/) または [cURL](https://curl.haxx.se/) のようなツールを使用して、HTTP POST 要求を URL エンドポイントに送信します。
+
+6. デバッグを停止するには、VS Code で Shift キーを押しながら F1 キーを押します。
 
 関数がローカル コンピューター上で正常に動作することを確認したら、プロジェクトを Azure に発行します。
 

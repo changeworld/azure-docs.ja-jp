@@ -1,23 +1,24 @@
 ---
-title: クラウドに Kubernetes 開発空間を作成する | Microsoft Docs
+title: クラウドに Kubernetes 開発空間を作成する
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: eebec24702456ec1062a1ac4b3cb9bc6d6580c29
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
+ms.openlocfilehash: 972a3f86e08d60db5a16ea505cb3fe446516c87e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705074"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770120"
 ---
-# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>クイック スタート: Azure Dev Spaces を使用して Kubernetes 開発環境を作成する (.NET Core および Visual Studio)
+# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 開発環境を作成する (.NET Core および Visual Studio)
 
 このガイドでは、以下の方法について説明します。
 
@@ -30,9 +31,7 @@ ms.locfileid: "51705074"
 
 ## <a name="prerequisites"></a>前提条件
 
-- 米国東部、米国東部 2、米国中部、米国西部 2、西ヨーロッパ、東南アジア、カナダ中部、カナダ東部のいずれかのリージョンに存在し、HTTP アプリケーションのルーティングが有効になっていて、Kubernetes 1.9.6 以降が実行されている Kubernetes クラスター。
-
-  ![[Http アプリケーションのルーティング] が有効であることを確認してください。](media/common/Kubernetes-Create-Cluster-3.PNG)
+- 米国東部、米国東部 2、米国中部、米国西部 2、西ヨーロッパ、東南アジア、カナダ中部、カナダ東部のいずれかのリージョンに存在し、Kubernetes 1.9.6 以降が実行されている Kubernetes クラスター。
 
 - Web 開発ワークロードがインストールされている Visual Studio 2017。 インストールしていない場合は、[ここから](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)ダウンロードします。
 
@@ -116,4 +115,4 @@ Azure Dev Spaces は、Kubernetes でコードを実行するだけのもので�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [複数のコンテナーの操作とチーム開発](team-development-netcore-visualstudio.md)
+> [複数のコンテナーの操作とチーム開発](multi-service-netcore-visualstudio.md)

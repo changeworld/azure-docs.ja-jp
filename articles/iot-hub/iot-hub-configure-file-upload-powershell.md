@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: b99874ce87c6e161fcd62ec871c6aee277ec946e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e8f37adc07bffb8a1e770085ecee6f813d3c2932
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232296"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54425613"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>PowerShell を使用して IoT Hub ファイルのアップロードを構成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "51232296"
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
 
-* [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)。
+* [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)。
 
 * Azure IoT Hub。 IoT Hub がない場合は、[New-AzureRmIoTHub コマンドレット](https://docs.microsoft.com/powershell/module/azurerm.iothub/new-azurermiothub)を使用するか、ポータルを使用して [IoT Hub を作成](iot-hub-create-through-portal.md)できます。
 
@@ -96,15 +96,15 @@ Get-AzureRmStorageAccountKey `
 
 構成するには次の値が必要です。
 
-* **ストレージ コンテナー**: IoT Hub に関連付ける、現在の Azure サブスクリプションの Azure ストレージ アカウントの BLOB コンテナー。 必要なストレージ アカウント情報は、前のセクションで取得しました。 IoT Hub により、ファイルをアップロードするときにデバイスで使用する、この BLOB コンテナーへの書き込みアクセス許可を含む SAS URI が自動的に生成します。
+* **ストレージ コンテナー**:お使いの IoT ハブに関連付ける、現在の Azure サブスクリプション内の Azure ストレージ アカウントの BLOB コンテナー。 必要なストレージ アカウント情報は、前のセクションで取得しました。 IoT Hub により、ファイルをアップロードするときにデバイスで使用する、この BLOB コンテナーへの書き込みアクセス許可を含む SAS URI が自動的に生成します。
 
-* **Receive notifications for uploaded files (アップロードされたファイルに関する通知を受け取る)**: ファイルのアップロードに関する通知を有効または無効にします。
+* **アップロードされたファイルに関する通知を受け取る**:ファイルのアップロード通知を有効にするか無効にします。
 
-* **SAS TTL**: IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。 既定では 1 時間に設定されています。
+* **SAS TTL**:IoT Hub によりデバイスに返される SAS URI の有効期間を設定します。 既定では 1 時間に設定されています。
 
-* **File notification settings default TTL (ファイルの通知設定 既定の TTL)**: 有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定では 1 日に設定されています。
+* **File notification settings default TTL (ファイル通知設定の既定の TTL)**:有効期限が切れるまでのファイルのアップロード通知の有効期間です。 既定では 1 日に設定されています。
 
-* **File notification maximum delivery count (ファイルの通知設定 最大配信回数)**: IoT Hub がファイルのアップロード通知の配信を試行する回数です。 既定では 10 に設定されています。
+* **File notification maximum delivery count (ファイル通知設定の最大配信回数)**:IoT Hub がファイルのアップロード通知の配信を試行する回数です。 既定では 10 に設定されています。
 
 IoT Hub でファイルのアップロード設定を構成するには、次の PowerShell コマンドレットを使用します。
 

@@ -2,21 +2,21 @@
 title: データベース移行シナリオの状態 | Microsoft Docs
 description: Azure Database Migration Service によってサポートされる移行シナリオの状態について学習します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/15/2019
-ms.openlocfilehash: e9f1b1a3df92c08b913a56aadc8eb8a9e80c7fdf
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.date: 03/12/2019
+ms.openlocfilehash: b07f36055f9c0690450e8d4ab5abacb8c84d9bf2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320057"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182542"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 Azure Database Migration Service は、オフライン (1 回限り) とオンライン (継続的同期) 両方のさまざまな移行シナリオ (ソース/ターゲットのペア) をサポートするように設計されています。 Azure Database Migration Service が対応するシナリオの範囲は、徐々に広がっています。 定期的に新しいシナリオが追加されています。 この記事では、Azure Database Migration Service で現在サポートされている移行シナリオと、各シナリオの状態 (プライベート [または制限付き] プレビュー、パブリック プレビュー、一般公開) を示します。
@@ -25,7 +25,7 @@ Azure Database Migration Service は、オフライン (1 回限り) とオン�
 Azure Database Migration Service を使用してデータベースを Azure に移行するときは、オフライン移行またはオンライン移行を実行できます。 "*オフライン*" 移行では、移行開始と同時にアプリケーションのダウンタイムが始まります。 "*オンライン*" 移行のダウンタイムは、移行が完了して新しい環境への切り替えに必要な時間に限定されます。 オフライン移行をテストして、ダウンタイムが許容可能かどうかを判断することをお勧めします。許容できない場合は、オンライン移行を実行します。
 
 ## <a name="migration-scenario-status"></a>データベース移行シナリオの状態
-Azure Database Migration Service によってサポートされる各移行シナリオの状態は、時間とともに変化します。 一般に、シナリオは最初に**プライベート プレビュー**でリリースされ、機能を利用するには、お客様は [DMS プレビュー サイト](https://aka.ms/dms-preview)で申請を送信する必要があります。 プライベート プレビューが完了すると、シナリオの状態は**パブリック プレビュー**に変わります。 Azure Database Migration Service のすべてのユーザーが、パブリック プレビューで使用可能な移行シナリオを利用できます。 ただし、リージョンによっては移行シナリオを使用できない場合があり、最終リリースまでは機能の変更がさらに行われる可能性があります。 移行シナリオが最後のリリース済み状態である**一般公開**になると、機能は完成し、Azure Database Migration Service のすべてのユーザーがアクセスできるようになります。 
+Azure Database Migration Service によってサポートされる各移行シナリオの状態は、時間とともに変化します。 一般に、シナリオは最初に**プライベート プレビュー**でリリースされますが、機能を利用するには、お客様は [DMS プレビュー サイト](https://aka.ms/dms-preview)で申請を送信する必要があります。 プライベート プレビューが完了すると、シナリオの状態は**パブリック プレビュー**に変わります。 Azure Database Migration Service のすべてのユーザーが、パブリック プレビューで使用可能な移行シナリオを利用できます。 ただし、リージョンによっては移行シナリオを使用できない場合があり、最終リリースまでは機能の変更がさらに行われる可能性があります。 移行シナリオが最後のリリース済み状態である**一般公開**になると、機能は完成し、Azure Database Migration Service のすべてのユーザーがアクセスできるようになります。 
 
 ## <a name="migration-scenario-support"></a>移行シナリオのサポート
 
@@ -47,10 +47,10 @@ Azure Database Migration Service によってサポートされる各移行シ�
 |   | Oracle  | ✔  |
 | **Azure SQL VM**  | SQL Server | ✔ |
 |   | Oracle  |   |
-| **Cosmos DB**  | MongoDB | ✔ |
+| **Azure Cosmos DB**  | MongoDB | ✔ |
 | **Azure DB for MySQL**  | MySQL |  |
 |   | RDS MySQL  |  |
-| **Azure DB for PostgresSQL**  | PostgreSQL |  |
+| **Azure DB for PostgreSQL**  | PostgreSQL |  |
 |  | RDS PostgreSQL  |  |
 
 ### <a name="online-continuous-sync-migration-support"></a>オンライン (継続的同期) の移行のサポート
@@ -66,10 +66,10 @@ Azure Database Migration Service によってサポートされる各移行シ�
 |   | Oracle  | ✔  |
 | **Azure SQL VM**  | SQL Server  |   |
 |   | Oracle  | ✔  |
-| **Cosmos DB**  | MongoDB  | ✔ |
+| **Azure Cosmos DB**  | MongoDB  | ✔ |
 | **Azure DB for MySQL**  | MySQL | ✔ |
 |   | RDS MySQL  | ✔ |
-| **Azure DB for PostgresSQL**  | PostgreSQL | ✔ |
+| **Azure DB for PostgreSQL**  | PostgreSQL | ✔ |
 |  | RDS PostgreSQL  | ✔ |
 
 ## <a name="next-steps"></a>次の手順

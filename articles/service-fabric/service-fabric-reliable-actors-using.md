@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 89161f3dad68c4b208f4badc548e2057c7ed58c1
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 5ab967cbd630447132300b22da5c5deb31fd50e9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022051"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852360"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>アクター サービスでのサービス レベルの機能の実装
 
@@ -160,13 +160,13 @@ public class Program
 
 リモート処理 V2_1 スタックを使用するには、次の変更が必要です。
 
- 1. アクター インターフェイスで次の Assembly 属性を追加します。
+1. アクター インターフェイスで次の Assembly 属性を追加します。
   
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
    ```
 
- 2. ActorService とアクター クライアント プロジェクトをビルドしてアップグレードし、V2 スタックの使用を開始します。
+2. ActorService とアクター クライアント プロジェクトをビルドしてアップグレードし、V2 スタックの使用を開始します。
 
 ### <a name="actor-service-upgrade-to-remoting-v2-interface-compatible-stack-without-affecting-service-availability"></a>サービスの可用性に影響を与えずにアクター サービスをリモート処理 V2 (インターフェイスとの互換性あり) スタックにアップグレードする
 
@@ -174,12 +174,12 @@ public class Program
 
 1. アクター インターフェイスで次の Assembly 属性を追加します。 この属性は、ActorService 用の 2 つのリスナーである、V1 (既存) および V2_1 リスナーを開始します。 この変更で ActorService をアップグレードします。
 
-  ```csharp
-  [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
-  ```
+   ```csharp
+   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2_1,RemotingClientVersion = RemotingClientVersion.V2_1)]
+   ```
 
 2. 前のアップグレードを完了してから、アクター クライアントをアップグレードします。
-この手順により、アクター プロキシがリモート処理 V2_1 スタックを使用していることを確認します。
+   この手順により、アクター プロキシがリモート処理 V2_1 スタックを使用していることを確認します。
 
 3. この手順は省略可能です。 前の属性を変更して V1 リスナーを削除します。
 
@@ -193,13 +193,13 @@ public class Program
 
 リモート処理 V2 スタックを使用するには、次の変更が必要です。
 
- 1. アクター インターフェイスで次の Assembly 属性を追加します。
+1. アクター インターフェイスで次の Assembly 属性を追加します。
 
    ```csharp
    [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
    ```
 
- 2. ActorService とアクター クライアント プロジェクトをビルドしてアップグレードし、V2 スタックの使用を開始します。
+2. ActorService とアクター クライアント プロジェクトをビルドしてアップグレードし、V2 スタックの使用を開始します。
 
 ### <a name="upgrade-the-actor-service-to-the-remoting-v2-stack-without-affecting-service-availability"></a>サービスの可用性に影響を与えずにアクター サービスをリモート処理 V2 スタックにアップグレードする
 
@@ -207,12 +207,12 @@ public class Program
 
 1. アクター インターフェイスで次の Assembly 属性を追加します。 この属性は、ActorService 用の 2 つのリスナーである、V1 (既存) および V2 リスナーを開始します。 この変更で ActorService をアップグレードします。
 
-  ```csharp
-  [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
-  ```
+   ```csharp
+   [assembly:FabricTransportActorRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V1|RemotingListenerVersion.V2,RemotingClientVersion = RemotingClientVersion.V2)]
+   ```
 
 2. 前のアップグレードを完了してから、アクター クライアントをアップグレードします。
-この手順により、アクター プロキシがリモート処理 V2 スタックを使用していることを確認します。
+   この手順により、アクター プロキシがリモート処理 V2 スタックを使用していることを確認します。
 
 3. この手順は省略可能です。 前の属性を変更して V1 リスナーを削除します。
 
@@ -226,7 +226,7 @@ public class Program
 * [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
 * [アクターの API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [.NET サンプル コード](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java サンプル コード](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Java サンプル コード](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

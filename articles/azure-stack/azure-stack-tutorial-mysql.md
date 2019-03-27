@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: bee684409b2ef3fffeb9f175c2b469d3736b6484
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.lastreviewed: 10/23/2018
+ms.openlocfilehash: ff1b137fb6461c4ebd17451b89a180364d833d4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116794"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>チュートリアル: 高可用性 MySQL データベースの提供
 
@@ -66,7 +67,7 @@ Azure Stack マーケットプレースに項目を追加する方法につい�
 - MySQL クラスターをホストする 3 つの Linux VM
 
 1. 
-[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. **\+[** **リソースの作成]** > **[計算]** の順に選択し、**[MySQL with Replication]\(レプリケーション付き MySQL\)** を選択します。
 
@@ -167,7 +168,7 @@ MySQL クラスターが Azure Stack Operator によって Azure StackSQL ホス
 > これらの手順は、MySQL Server 機能 (Microsoft.MySQLAdapter サービス) を提供するサブスクリプションを持つテナント ユーザーとして、Azure Stack ユーザー ポータルから実行します。
 
 1. 
-[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. **\+[** **リソースの作成]** > **[データ \+ ストレージ]** の順に選択し、**[MySQL Database]** を選択します。<br><br>名前、照合順序、使用するサブスクリプション、デプロイに使用する場所などの必須のデータベースのプロパティを指定します。 
 

@@ -6,16 +6,16 @@ documentationcenter: .net
 author: basilhariri
 manager: timlt
 ms.service: event-hubs
-ms.topic: mirror-maker
+ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 83f51d2980e5cb5bc2e2a415bb3ee96778667ed7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a0f22e7940a2be442bdf836c0e76e29bad2e9b36
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095037"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769933"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Apache Kafka 用の Event Hubs で Kafka MirrorMaker を使用する
 
@@ -49,7 +49,7 @@ Azure Event Hubs Kafka エンドポイントでは、Kafka プロトコル (つ�
 * [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)
     * Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。
     * 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
-* Maven バイナリ アーカイブの[ダウンロード](http://maven.apache.org/download.cgi)と[インストール](http://maven.apache.org/install.html)
+* Maven バイナリ アーカイブの[ダウンロード](https://maven.apache.org/download.cgi)と[インストール](https://maven.apache.org/install.html)
     * Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
 * [Git](https://www.git-scm.com/downloads)
     * Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。

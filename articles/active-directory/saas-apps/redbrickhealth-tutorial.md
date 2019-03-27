@@ -4,7 +4,7 @@ description: Azure Active Directory と RedBrick Health の間でシングル �
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 26290c65-9aa3-42ab-8ba5-901b14dc8e73
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
-ms.openlocfilehash: b757da1f218d446c56c318d91d3c9015ed08c967
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f9d4c1a6f3dfd03cb5521c2c81522a0c950c502f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065462"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869821"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>チュートリアル:Azure Active Directory と RedBrick Health の統合
 
@@ -116,7 +117,7 @@ RedBrick Health との Azure AD シングル サインオンを構成するに�
 
     c. **[追加の URL を設定します]** をクリックします。
 
-    d. **[リレー状態]** ボックスに、`https://api-sso2.redbricktest.com/identity/sso/nbound?target=https://vanity9-sso2.redbrickdev.com/portal&connection=<companyname>conn1` のパターンで URL を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[リレー状態]** ボックスに、`https://api-sso2.redbricktest.com/identity/sso/nbound?target=https://vanity9-sso2.redbrickdev.com/portal&connection=<companyname>conn1` のパターンで URL を入力します。
 
     > [!NOTE]
     > リレー状態の値は実際のものではありません。 実際のリレー状態でこの値を更新します。 この値を取得するには、[RedBrick Health クライアント サポート チーム](https://home.redbrickhealth.com/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -237,7 +238,7 @@ RedBrick Health との Azure AD シングル サインオンを構成するに�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

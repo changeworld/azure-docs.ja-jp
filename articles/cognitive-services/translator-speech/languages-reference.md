@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Translator Speech API 言語メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-speech
+ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: ac8de247f09ba3b4e38cabb565fe332eba909ccc
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 12f989137c3aea57bdcde0d50315ad157898cd28
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118134"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862753"
 ---
 # <a name="translator-speech-api-languages"></a>Translator Speech API: Languages
 
@@ -141,8 +141,8 @@ X-RequestId|要求を識別するためにサーバーによって生成され�
 |:--|:--|:--|:--|
 |api-version    |クライアントによって要求される API のバージョン。 使用できる値: `1.0`。|クエリ|文字列|
 |scope  |クライアントに返す、サポートされている言語または音声のセット。 このパラメーターは、キーワードのコンマ区切り一覧として指定されます。 次のキーワードを使用できます。<ul><li>`speech`:音声の文字起こしにサポートされている言語のセットを提供します。</li><li>`tts`:テキスト音声変換にサポートされている音声のセットを提供します。</li><li>`text`:テキストの翻訳にサポートされている言語のセットを提供します。</li></ul>値が指定されていない場合、`scope` の既定値は `text` です。|query|文字列|
-|X-ClientTraceId    |クライアントによって生成される GUID であり、要求を追跡するのに使用されます。 問題のトラブルシューティングを容易にするため、クライアントは要求のたびに新しい値を指定し、それを記録する必要があります。|ヘッダー|文字列|
-|Accept-Language    |応答内のフィールドには、言語や地域の名前などがあります。 名前が返される言語を定義するには、このパラメーターを使用します。 言語は、整形式の BCP 47 言語タグを使用して指定します。 `text` スコープで返される言語識別子の一覧からタグを選択します。 サポートされていない言語の場合、名前は英語で提供されます。<br/>たとえば、フランス語の名前を要求するには値 `fr` を使用し、繁体字中国語の名前を要求するには値 `zh-Hant` を使用します。|ヘッダー|文字列|
+|X-ClientTraceId    |クライアントによって生成される GUID であり、要求を追跡するのに使用されます。 問題のトラブルシューティングを容易にするため、クライアントは要求のたびに新しい値を指定し、それを記録する必要があります。|header|文字列|
+|Accept-Language    |応答内のフィールドには、言語や地域の名前などがあります。 名前が返される言語を定義するには、このパラメーターを使用します。 言語は、整形式の BCP 47 言語タグを使用して指定します。 `text` スコープで返される言語識別子の一覧からタグを選択します。 サポートされていない言語の場合、名前は英語で提供されます。<br/>たとえば、フランス語の名前を要求するには値 `fr` を使用し、繁体字中国語の名前を要求するには値 `zh-Hant` を使用します。|header|文字列|
     
 ### <a name="response-messages"></a>応答メッセージ
 

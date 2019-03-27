@@ -1,21 +1,21 @@
 ---
 title: Azure Cosmos DB での Change Feed サポートの使用
 description: Azure Cosmos DB の Change Feed サポートを使用して、ドキュメントの変更を追跡し、トリガーなどのイベント ベースの処理を実行したり、キャッシュや分析システムを最新の状態に維持したりします。
-author: rafats
-ms.author: rafats
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 011bb74a10b12c5170579d3b4c507fcfe0fc01b1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 2224c798d0854aab2d3ec7fc2c03b51de58dbfc0
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040729"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244438"
 ---
-# <a name="change-feed-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード
+# <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB の変更フィード - 概要
 
 Azure Cosmos DB の変更フィードのサポートは、Azure Cosmos DB コンテナーの変更をリッスンすることで機能します。 変更されたドキュメントは、変更された順に並べ替えられた一覧に出力されます。 変更は保持され、非同期的に増分処理できます。また、出力を 1 つ以上のコンシューマーに分散させて並列処理することもできます。 
 
@@ -35,10 +35,10 @@ Azure Cosmos DB の変更フィードにより、次の図のようにこれら�
 
 | **クライアント ドライバー** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API**|**テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | NA | [はい] | いいえ  | いいえ  | はい | いいえ  |
-|Java|NA|[はい]|いいえ |いいえ |はい|いいえ |
-|Python|NA|[はい]|いいえ |いいえ |はい|いいえ |
-|Node/JS|NA|[はい]|いいえ |いいえ |はい|いいえ |
+| .NET | NA | はい | いいえ  | いいえ  | はい | いいえ  |
+|Java|NA|はい|いいえ |いいえ |はい|いいえ |
+|Python|NA|はい|いいえ |いいえ |はい|いいえ |
+|Node/JS|NA|はい|いいえ |いいえ |はい|いいえ |
 
 ## <a name="change-feed-and-different-operations"></a>変更フィードとさまざまな操作
 

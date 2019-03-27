@@ -3,19 +3,20 @@ title: Azure Multi-Factor Authentication によるユーザー データの収�
 description: Azure Multi-Factor Authentication によるユーザーの認証に役立つ情報としてどの情報が使用されますか。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 1b380bc20c9f80710ca62672b99649ce3498a8e8
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6a42a25afc03b07393234014d7237c5419095b2b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223764"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201501"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication によるユーザー データの収集
 
@@ -88,7 +89,7 @@ MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS �
 - 国番号
 - 電話番号
 - 書式化された電話番号
-- 内線番号
+- 拡張機能
 - クリーンな内線番号
 - Blocked
 - ブロックした理由
@@ -97,7 +98,7 @@ MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS �
 - アカウントのロックアウト
 - 不正アクセスのアラート
 - ブロックされなかった不正アクセス アラート
-- Language
+- 言語
 
 バイパス (レポートに使用):
 
@@ -108,7 +109,7 @@ MFA Server、NPS 拡張機能、および Windows Server 2016 Azure MFA AD FS �
 - 国番号
 - 電話番号
 - 書式化された電話番号
-- 内線番号
+- 拡張機能
 - クリーンな内線番号
 - バイパスの理由
 - 完了のタイムスタンプ

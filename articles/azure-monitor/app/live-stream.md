@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 01/28/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 403906a60d16a478dffd313b45aa1ce24e42196a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: b741528b2770314be7e851f38817611d6908352b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119236"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814947"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
@@ -36,19 +36,19 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 
 [![Live Metrics Stream 動画](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
+現在、Live Metrics は ASP.NET、ASP.NET Core、Azure Functions、および Java アプリでサポートされています。
+
 ## <a name="get-started"></a>作業開始
 
-1. ASP.NET Web アプリケーションまたは [Windows Server アプリケーション](../../azure-monitor/app/windows-services.md) に [Application Insights をインストール](../../azure-monitor/app/asp-net.md)していない場合は、今すぐインストールします。 
-2. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[更新プログラム]** タブを開き、**[リリース前のパッケージを含める]** をオンにし、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
+1. Web アプリに [Application Insights をインストール](../../azure-monitor/azure-monitor-app-hub.md)していない場合は、今すぐインストールしてください。
+2. Live Metrics ストリームを有効にするには、標準の Application Insights パッケージに加え、[Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) が必要です。
+3. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[更新プログラム]** タブを開き、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
 
     アプリケーションを再デプロイします。
 
 3. [Azure ポータル](https://portal.azure.com)で、アプリの Application Insights リソースを開いてから、Live Stream を開きます。
 
 4. フィルターに顧客名などの機密データを使用する場合は、[コントロール チャネルを保護](#secure-the-control-channel)します。
-
-
-![概要ブレードで、[Live Stream (ライブ ストリーム)] をクリックします](./media/live-stream/live-stream-2.png)
 
 ### <a name="no-data-check-your-server-firewall"></a>データが表示されない場合 サーバーのファイアウォールを確認
 
@@ -64,12 +64,12 @@ Live Metrics Stream を使用すると、次のことが可能になります。
 |オン デマンド|Live Metrics を開いている間、データはストリーミングされます|SDK がインストールされて有効になるたびに、データが送信されます|
 |無料|Live Stream データ用の料金は発生しません|[価格](../../azure-monitor/app/pricing.md)設定の対象
 |サンプリング|選択したすべてのメトリックとカウンターが送信されます。 失敗やスタック トレースがサンプリングされます。 TelemetryProcessors は適用されません。|イベントが[サンプリング](../../azure-monitor/app/api-filtering-sampling.md)されることがあります|
-|コントロール チャネル|フィルターの制御シグナルが SDK に送信されます。 [このチャネルをセキュリティで保護する](#secure-channel)ことをお勧めします。|通信はポータルへの一方向です|
+|コントロール チャネル|フィルターの制御シグナルが SDK に送信されます。 このチャネルをセキュリティで保護することをお勧めします。|通信はポータルへの一方向です|
 
 
 ## <a name="select-and-filter-your-metrics"></a>メトリックの選択とフィルタリング
 
-(最新の SDK を使用する従来の ASP.NET アプリで利用可能。)
+(ASP.NET、ASP.NET Core、Azure Functions (v2) で使用できます。)
 
 ポータルで Application Insights Telemetry に任意のフィルターを適用して、カスタム ライブ KPI を監視できます。 グラフをマウスでポイントしたときに表示されるフィルター コントロールをクリックします。 次のグラフは、URL 属性と期間属性にフィルターを適用して、カスタム要求数 KPI をプロットしています。 [ストリームのプレビュー] セクションでフィルターを検証します。このセクションには、指定した条件といずれかの時点で一致するテレメトリのライブ フィードが表示されます。 
 
@@ -111,7 +111,7 @@ Application Insights Telemetry だけでなく、Windows パフォーマンス �
 指定したカスタム フィルター条件は、Application Insights SDK の Live Metrics コンポーネントに送信されます。 フィルターに顧客 ID などの機密情報が含まれている可能性があります。 インストルメンテーション キーに加え、シークレット API キーを使用してチャネルをセキュリティで保護できます。
 ### <a name="create-an-api-key"></a>API キーを作成する
 
-![API キーの作成](./media/live-stream/live-metrics-apikeycreate.png)
+![API キーを作成する](./media/live-stream/live-metrics-apikeycreate.png)
 
 ### <a name="add-api-key-to-configuration"></a>API キーを構成に追加する
 
@@ -161,6 +161,12 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 ```
 
+### <a name="azure-function-apps"></a>Azure Function App
+
+Azure Function App (v2) の場合、API キーを使用してチャネルをセキュリティで保護するには、環境変数を使用します。 
+
+Application Insights リソース内から API キーを作成し、Function App の **[アプリケーションの設定]** に移動します。 **[新しい文字列の追加]** を選択し、`APPINSIGHTS_QUICKPULSEAUTHAPIKEY` の名前と、API キーに対応する値を入力します。
+
 ### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (Application Insights ASP.NET Core SDK 2.3.0-beta 以降が必要)
 
 startup.cs ファイルを次のように変更します。
@@ -176,7 +182,6 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 ``` C#
 services.ConfigureTelemetryModule<QuickPulseTelemetryModule> ((module, o) => module.AuthenticationApiKey = "YOUR-API-KEY-HERE");
 ```
-
 
 ただし、接続されているすべてのサーバーを認識し、信頼している場合は、認証済みチャネルなしにカスタム フィルターを試すことができます。 このオプションは 6 か月間使用できます。 このオーバーライドは、新しいセッションごとに 1 回、または新しいサーバーがオンラインになったときに必要になります。
 

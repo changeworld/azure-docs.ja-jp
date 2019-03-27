@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Go を使用して Text Analytics API を呼び出す'
+title: クイック スタート:Go を使用して Text Analytics API を呼び出す
 titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: noellelacharite
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 10/01/2018
-ms.author: nolachar
-ms.openlocfilehash: 10b6015a5d0755c77c787003e429c79f0e2669e5
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.date: 02/15/2019
+ms.author: aahi
+ms.openlocfilehash: b4778c87ca5da266858cd05c67e5f0a78af731bc
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283422"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330819"
 ---
-# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Go を使用して Text Analytics Cognitive Service を呼び出す 
+# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Go を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
 
 この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Go で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。

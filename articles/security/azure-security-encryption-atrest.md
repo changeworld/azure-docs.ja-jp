@@ -4,7 +4,7 @@ description: この記事では、Microsoft Azure の保存データの暗号化
 services: security
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 4796dc50447b94b01d9bb4625ca9a69a73850fcd
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4ced712b1b2716d85f0366ea892460053db598b8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994404"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076906"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -258,32 +258,32 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 |                                  |                    | **暗号化モデルとキーの管理** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **サービス管理キーを使用したサーバー側**     | **Key Vault でユーザー管理を使用したサーバー側**             | **クライアント管理を使用したクライアント側**      |
-| **ストレージとデータベース**        |                    |                    |                    |                    |
+| **ストレージとデータベース**        |                    |                    |                    |
 | ディスク (IaaS)                      | -                  | はい、RSA 2048 ビット  | -                  |
-| SQL Server (IaaS)                | [はい]                | はい、RSA 2048 ビット  | [はい]                |
-| Azure SQL (Database/Data Warehouse) | [はい]                | はい、RSA 2048 ビット  | [はい]                |
-| Azure SQL (Database Managed Instance) | [はい]                | プレビュー、RSA 2048 ビット  | [はい]                |
-| Azure Storage (ブロック/ページ Blob) | [はい]                | はい、RSA 2048 ビット  | [はい]                |
-| Azure Storage (ファイル)            | [はい]                | はい、RSA 2048 ビット  | -                  |
-| Azure Storage (テーブル、キュー)   | [はい]                | -                  | [はい]                |
-| Cosmos DB (ドキュメント DB)          | [はい]                | -                  | -                  |
-| StorSimple                       | [はい]                | -                  | [はい]                |
-| バックアップ                           | -                  | -                  | [はい]                |
+| SQL Server (IaaS)                | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure SQL (Database/Data Warehouse) | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure SQL (Database Managed Instance) | はい                | プレビュー、RSA 2048 ビット  | はい                |
+| Azure Storage (ブロック/ページ Blob) | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure Storage (ファイル)            | はい                | はい、RSA 2048 ビット  | -                  |
+| Azure Storage (テーブル、キュー)   | はい                | -                  | はい                |
+| Cosmos DB (ドキュメント DB)          | はい                | -                  | -                  |
+| StorSimple                       | はい                | -                  | はい                |
+| バックアップ                           | はい                | -                  | はい                |
 | **インテリジェンスおよび分析**   |                    |                    |                    |
-| Azure Data Factory               | [はい]                | -                  | -                  |
+| Azure Data Factory               | はい                | -                  | -                  |
 | Azure Machine Learning           | -                  | プレビュー、RSA 2048 ビット | -                  |
-| Azure Stream Analytics           | [はい]                | -                  | -                  |
-| HDInsight (Azure Blob Storage)   | [はい]                | -                  | -                  |
-| HDInsights (Data Lake Storage)    | [はい]                | -                  | -                  |
-| Apache Kafka for HDInsight       | [はい]                | プレビュー、RSA の長さすべて | -                  |
-| Azure Data Lake Store            | [はい]                | はい、RSA 2048 ビット  | -                  |
-| Azure Data Catalog               | [はい]                | -                  | -                  |
-| Power BI                         | [はい]                | -                  | -                  |
+| Azure Stream Analytics           | はい                | -                  | -                  |
+| HDInsight (Azure Blob Storage)   | はい                | -                  | -                  |
+| HDInsights (Data Lake Storage)    | はい                | -                  | -                  |
+| Apache Kafka for HDInsight       | はい                | プレビュー、RSA の長さすべて | -                  |
+| Azure Data Lake Store            | はい                | はい、RSA 2048 ビット  | -                  |
+| Azure Data Catalog               | はい                | -                  | -                  |
+| Power BI                         | はい                | -                  | -                  |
 | **IoT サービス**                 |                    |                    |                    |
-| IoT Hub                          | -                  | -                  | [はい]                |
-| Service Bus                      | [はい]                | -                  | [はい]                |
-| Event Hubs                       | [はい]                | -                  | -                  |
-| Event Grid                       | [はい]                | -                  | -                  |
+| IoT Hub                          | -                  | -                  | はい                |
+| Service Bus                      | はい                | -                  | はい                |
+| Event Hubs                       | はい                | -                  | -                  |
+| Event Grid                       | はい                | -                  | -                  |
 
 
 ## <a name="conclusion"></a>まとめ

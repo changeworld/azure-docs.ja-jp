@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 0cccef6a50d6e93a13f27b8585fe7e605c75deb9
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 70159b975fd38c918f0b21a384b76666957f058b
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025540"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593150"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする 
 このチュートリアルでは、ソース Azure SQL Database から**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
@@ -144,7 +144,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-[Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
+[Azure PowerShell のインストールと構成の方法](/powershell/azure/azurerm/install-azurerm-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
@@ -464,10 +464,10 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 
     
 ## <a name="next-steps"></a>次の手順
-次のチュートリアルに進み、Azure 上の Spark クラスターを使ってデータを変換する方法について学習しましょう。
+次のチュートリアルに進んで、LastModifiedDate に基づいて新規ファイルおよび変更されたファイルのみをコピーする方法について学習してください。
 
 > [!div class="nextstepaction"]
->[クラウド内の Spark クラスターを使用してデータを変換する](tutorial-transform-data-spark-portal.md)
+>[lastmodifieddate を基準に新しいファイルをコピーする](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
 
 
 

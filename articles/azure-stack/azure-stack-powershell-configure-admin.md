@@ -11,15 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/15/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 7a744520fe2a3b53b1306d4c80a5eca7d86258a7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: a0411e3aa8f4df1039a129fd73ebdad5a58c5a0c
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104541"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257586"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>オペレーターとして PowerShell を使用して Azure Stack に接続する
 
@@ -62,20 +63,12 @@ Azure Stack オペレーター環境に Active Directory フェデレーショ�
   # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
   Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external"
 
-  $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackAdmin").ActiveDirectoryAuthority.TrimEnd('/')
-  $tenantId = (invoke-restmethod "$($AuthEndpoint)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
-
   # Sign in to your environment
-
-  $cred = get-credential
-
-  Login-AzureRmAccount `
-    -EnvironmentName "AzureStackAdmin" `
-    -TenantId $tenantId `
-    -Credential $cred
+  Login-AzureRmAccount -EnvironmentName "AzureStackAdmin"
   ```
 
-
+> [!Note]  
+> AD FS でサポートされるのは、ユーザー ID を使用した対話型認証のみです。 資格情報オブジェクトが必要な場合は、サービス プリンシパル (SPN) を使用する必要があります。 Azure Stack と AD FS を ID 管理サービスとしてサービス プリンシパルを設定する方法の詳細については、「[AD FS のサービス プリンシパルの管理](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs)」を参照してください。
 
 ## <a name="test-the-connectivity"></a>接続のテスト
 
@@ -87,5 +80,6 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## <a name="next-steps"></a>次の手順
 
- - [Azure Stack のテンプレートの開発](user/azure-stack-develop-templates.md)
- - [PowerShell を使用したテンプレートのデプロイ](user/azure-stack-deploy-template-powershell.md)
+- [Azure Stack のテンプレートの開発](user/azure-stack-develop-templates.md)
+- [PowerShell を使用したテンプレートのデプロイ](user/azure-stack-deploy-template-powershell.md)
+  - [Azure Stack Module のリファレンス](https://docs.microsoft.com/powershell/azure/azure-stack/overview)  

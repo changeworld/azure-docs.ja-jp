@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: d3b039c30557499233eec72d7c560ad4bf49a776
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e5387f1e44a55b0a30f8620b49d237ac1e1ec2b6
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157209"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730598"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -34,12 +34,12 @@ IoT Hub には SQL に似た強力な言語が備わっており、[デバイス
     "deviceId": "myDeviceId",
     "etag": "AAAAAAAAAAc=",
     "status": "enabled",
-    "statusUpdateTime": "0001-01-01T00:00:00",    
-    "connectionState": "Disconnected",    
+    "statusUpdateTime": "0001-01-01T00:00:00",
+    "connectionState": "Disconnected",
     "lastActivityTime": "0001-01-01T00:00:00",
     "cloudToDeviceMessageCount": 0,
-    "authenticationType": "sas",    
-    "x509Thumbprint": {    
+    "authenticationType": "sas",
+    "x509Thumbprint": {
         "primaryThumbprint": null,
         "secondaryThumbprint": null
     },
@@ -174,8 +174,8 @@ SELECT * FROM devices.modules WHERE properties.reported.status = 'scanning'
 このクエリでは、スキャン中状態のすべてのモジュール ツインが返されますが、指定したデバイスのサブセット上のみです。
 
 ```sql
-SELECT * FROM devices.modules 
-  WHERE properties.reported.status = 'scanning' 
+SELECT * FROM devices.modules
+  WHERE properties.reported.status = 'scanning'
   AND deviceId IN ['device1', 'device2']
 ```
 
@@ -207,7 +207,7 @@ query オブジェクトは、クエリに必要な逆シリアル化オプシ�
 
 簡単なクエリの使用例を次に示します。
 
-```nodejs
+```javascript
 var query = registry.createQuery('SELECT * FROM devices', 100);
 var onResults = function(err, results) {
     if (err) {
@@ -361,7 +361,7 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**attribute_name** は、FROM コレクションの JSON ドキュメントのプロパティを参照します。 SELECT 句の例は、[デバイス ツインのクエリの概要](iot-hub-devguide-query-language.md#get-started-with-device-twin-queries)に関するセクションに記載されています。
+**attribute_name** は、FROM コレクションの JSON ドキュメントのプロパティを参照します。 SELECT 句の例は、デバイス ツインのクエリの概要に関するセクションに記載されています。
 
 現在のところ、**SELECT** * 以外の選択句は、デバイス ツインの集計クエリでのみサポートされています。
 

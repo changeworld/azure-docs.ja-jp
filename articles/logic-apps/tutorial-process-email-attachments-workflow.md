@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
-ms.openlocfilehash: 93894f9c45ac8b2cfcec23cf6a9ccd4d8e6f6824
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: aa534ca4fb29237de6377c7225a11f4758f39c55
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121726"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588383"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>チュートリアル: Azure Logic Apps を使用してメールと添付ファイルの処理を自動化する
 
@@ -60,15 +60,15 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | [説明] | 
    |---------|-------|-------------| 
-   | **名前** | attachmentstorageacct | ストレージ アカウントの名前 | 
+   | **Name** | attachmentstorageacct | ストレージ アカウントの名前 | 
    | **デプロイ モデル** | Resource Manager | リソースのデプロイを管理するための[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md) | 
    | **アカウントの種類** | 汎用 | [ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
    | **場所** | 米国西部 | ストレージ アカウントに関する情報の保存先となるリージョン | 
-   | **レプリケーション** | ローカル冗長ストレージ (LRS) | データのコピー、保存、管理、同期の方法は、この設定で指定します。 「[レプリケーション](../storage/common/storage-introduction.md#replication)」を参照してください。 | 
-   | **パフォーマンス** | 標準 | サポートされるデータの種類とデータの保存メディアは、この設定で指定します。 「[ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts)」を参照してください。 | 
+   | **レプリケーション** | ローカル冗長ストレージ (LRS) | データのコピー、保存、管理、同期の方法は、この設定で指定します。 「[ローカル冗長ストレージ (LRS): Azure Storage の低コストのデータ冗長性](../storage/common/storage-redundancy-lrs.md)」を参照してください。 | 
+   | **パフォーマンス** | Standard | サポートされるデータの種類とデータの保存メディアは、この設定で指定します。 「[ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts)」を参照してください。 | 
    | **安全な転送が必須** | Disabled | 接続先からの要求には、この設定でセキュリティを確保することができます。 [安全な転送の義務付け](../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
-   | **[リソース グループ]** | LA-Tutorial-RG | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 | 
+   | **リソース グループ** | LA-Tutorial-RG | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 | 
    | **仮想ネットワークの構成** | Disabled | このチュートリアルでは **[無効]** のままにしてください。 | 
    |||| 
 
@@ -82,7 +82,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![ストレージ アカウントの名前とキーをコピーして保存](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
-   ストレージ アカウントのアクセス キーは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccountkey) または [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) を使用して取得することもできます。 
+   ストレージ アカウントのアクセス キーは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/get-azstorageaccountkey) または [Azure CLI](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest.md#az-storage-account-keys-list) を使用して取得することもできます。 
 
 3. メールの添付ファイル用の Blob Storage コンテナーを作成します。
    
@@ -100,7 +100,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![完成したストレージ コンテナー](./media/tutorial-process-email-attachments-workflow/created-storage-container.png)
 
-   ストレージ コンテナーは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) または [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) を使用して作成することもできます。 
+   ストレージ コンテナーは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer) または [Azure CLI](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) を使用して作成することもできます。 
 
 次に、このストレージ アカウントに Storage Explorer を接続します。
 
@@ -178,24 +178,29 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 5. エディターが開いたら、テンプレートのコードを次のサンプル コードに置き換えます。このコードでは、HTML が削除され、その結果が呼び出し元に返されます。
 
    ``` CSharp
-   using System.Net;
-   using System.Text.RegularExpressions;
+    #r "Newtonsoft.Json"
 
-   public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
-   {
-      log.Info($"HttpWebhook triggered");
+    using System.Net;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
+    using Newtonsoft.Json;
+    using System.Text.RegularExpressions;
 
-      // Parse query parameter
-      string emailBodyContent = await req.Content.ReadAsStringAsync();
+    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
+    {
+        log.LogInformation("HttpWebhook triggered");
 
-      // Replace HTML with other characters
-      string updatedBody = Regex.Replace(emailBodyContent, "<.*?>", string.Empty);
-      updatedBody = updatedBody.Replace("\\r\\n", " ");
-      updatedBody = updatedBody.Replace(@"&nbsp;", " ");
+        // Parse query parameter
+        string emailBodyContent = await new StreamReader(req.Body).ReadToEndAsync();
 
-      // Return cleaned text
-      return req.CreateResponse(HttpStatusCode.OK, new { updatedBody });
-   }
+         // Replace HTML with other characters
+        string updatedBody = Regex.Replace(emailBodyContent, "<.*?>", string.Empty);
+        updatedBody = updatedBody.Replace("\\r\\n", " ");
+        updatedBody = updatedBody.Replace(@"&nbsp;", " ");
+
+        // Return cleaned text
+        return (ActionResult) new OkObjectResult(new { updatedBody });
+    }
    ```
 
 6. 完了したら、**[保存]** を選択します。 関数をテストするには、エディターの右端の矢印 (**<**) アイコンの下にある **[テスト]** を選択します。 
@@ -231,9 +236,9 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
-   | **名前** | LA-ProcessAttachment | ロジック アプリの名前 | 
+   | **Name** | LA-ProcessAttachment | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション | 
-   | **[リソース グループ]** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |
+   | **リソース グループ** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |
    | **場所** | 米国西部 | 先ほど使用したものと同じリージョン | 
    | **Log Analytics** | オフ | このチュートリアルでは、**[オフ]** を選択します。 | 
    |||| 
@@ -267,15 +272,15 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
       | ------- | ----- | ----------- | 
       | **フォルダー** | Inbox | チェックするメール フォルダー | 
       | **間隔** | 1 | チェックの間隔 (単位数) | 
-      | **頻度** | [分] | チェックの間隔に使う時間の単位 | 
+      | **頻度** | 分 | チェックの間隔に使う時間の単位 | 
       |  |  |  | 
   
    2. **[詳細オプションを表示する]** を選択し、次の設定を指定します。
 
       | Setting | 値 | 説明 | 
       | ------- | ----- | ----------- | 
-      | **添付ファイルあり** | [はい] | ファイルが添付されているメールのみ取得します。 <p>**注:** このトリガーは、お使いのアカウントからメールを削除することはありません。新着メッセージだけをチェックし、件名フィルターに一致するメールだけを処理します。 | 
-      | **添付ファイルを含める** | [はい] | 添付ファイルの有無をチェックするだけでなく、ワークフローの入力として添付ファイルを取得します。 | 
+      | **添付ファイルあり** | はい | ファイルが添付されているメールのみ取得します。 <p>**注:** このトリガーは、お使いのアカウントからメールを削除することはありません。新着メッセージだけをチェックし、件名フィルターに一致するメールだけを処理します。 | 
+      | **添付ファイルを含める** | はい | 添付ファイルの有無をチェックするだけでなく、ワークフローの入力として添付ファイルを取得します。 | 
       | **件名フィルター** | ```Business Analyst 2 #423501``` | メールの件名から探すテキスト | 
       |  |  |  | 
 

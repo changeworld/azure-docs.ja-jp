@@ -3,19 +3,20 @@ title: Azure AD B2B ユーザーとしてローカルで管理されているパ
 description: Azure AD B2B コラボレーションと同じ資格情報を使用して、ローカルで管理されている外部パートナーにローカル リソースとクラウド リソースの両方へのアクセス権を付与します。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 722ab51d0f591b8f16924d1d5661385267b7f0e6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 29f5deb8bd06d4001f1776765ea6824da9bd9802
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295157"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163786"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する
 

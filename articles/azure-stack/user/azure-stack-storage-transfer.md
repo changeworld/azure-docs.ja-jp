@@ -9,20 +9,21 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 12/03/2018
+ms.topic: conceptual
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 40df81d496e04ab2d549923cc0645afb8eddaf57
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/03/2018
+ms.openlocfilehash: 4e92f2aeec21ccef5a6a553b17e099d54de7266a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724455"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774339"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Azure Stack ストレージのデータ転送ツールの使用
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、およびアカウント管理機能のストレージ サービスのセットを提供します。 Azure Stack ストレージのデータを管理または移動する場合は、Azure ストレージ ツールのセットを使用することができます。 この記事では、使用可能なツールの概要について説明します。
 
@@ -44,7 +45,7 @@ Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、お
 
     ユーザー インターフェイスを備えた使いやすいスタンドアロンのアプリ。
 
-* [blobfuse](#blobfuse)
+* [Blobfuse](#blobfuse)
 
     ストレージ アカウント内の既存のブロック BLOB データに Linux ファイル システム経由でアクセスできるようにする、Azure Blob Storage 用の仮想ファイル システム ドライバーです。 
 
@@ -160,7 +161,7 @@ Azure Stack を使用するには、Azure Stack と互換性のある Azure Powe
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environment name
 $ARMEndPoint = "https://management.local.azurestack.external" 
-$GraphAudiance = "https://graph.windows.net/" 
+$GraphAudience = "https://graph.windows.net/" 
 $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com" 
 
 $SubscriptionName = "basic" # Update with the name of your subscription.
@@ -169,7 +170,7 @@ $StorageAccountName = "azsblobcontainer" # Give a name to your new storage accou
 $Location = "Local" # Choose "Local" as an example.
 $ContainerName = "photo" # Give a name to your new container.
 $ImageToUpload = "C:\temp\Hello.jpg" # Prepare an image file and a source directory in your local computer.
-$DestinationFolder = "C:\temp\downlaod" # A destination directory in your local computer.
+$DestinationFolder = "C:\temp\download" # A destination directory in your local computer.
 
 # Import the Connect PowerShell module"
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force

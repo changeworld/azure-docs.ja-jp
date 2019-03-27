@@ -6,17 +6,17 @@ author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
-ms.component: team-data-science-process
+ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a1bb841c1218be0a418583af8ca95b2dff2f67d9
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6017aa5172efa72bb708004e2c4aee7f9ae4acad
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309503"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733911"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する
 
@@ -68,8 +68,8 @@ ADF では、定期的にデータの移動を管理するシンプルな JSON �
 ## <a name="create-adf"></a> Azure Data Factory を作成する
 [Azure Portal](https://portal.azure.com/) で新しい Azure Data Factory とリソース グループを作成する手順については、「[Azure Data Factory を作成する](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory)」をご覧ください。 新しい ADF インスタンスに *adfdsp* という名前を付け、作成されたリソース グループに *adfdsprg* という名前を付けます。
 
-## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Data Factory Integration Runtime をインストールして構成する 
-Integration Runtime は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用される、マネージド データ統合インフラストラクチャです。 このランタイムは、以前は "Data Management Gateway" と呼ばれていました。 
+## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>Azure Data Factory Integration Runtime をインストールして構成する
+Integration Runtime は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用される、マネージド データ統合インフラストラクチャです。 このランタイムは、以前は "Data Management Gateway" と呼ばれていました。
 
 セットアップするには、[パイプラインの作成手順に従ってください](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
@@ -94,7 +94,7 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 テーブル内の JSON ベースの定義では、次の名前が使用されます。
 
 * オンプレミスの SQL サーバーでは、**テーブル名**は *nyctaxi_data* です。
-* the **コンテナー名** は *containername*  
+* the **コンテナー名** は *containername*
 
 この ADF パイプラインには、次の 3 つのテーブル定義が必要です。
 
@@ -110,30 +110,31 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 ### <a name="adf-table-onprem-sql"></a>オンプレミスの SQL テーブル
 オンプレミス SQL Server のテーブル定義は、次の JSON ファイルで指定されています。
 
+```json
+{
+    "name": "OnPremSQLTable",
+    "properties":
+    {
+        "location":
         {
-            "name": "OnPremSQLTable",
-            "properties":
+            "type": "OnPremisesSqlServerTableLocation",
+            "tableName": "nyctaxi_data",
+            "linkedServiceName": "adfonpremsql"
+        },
+        "availability":
+        {
+            "frequency": "Day",
+            "interval": 1,
+            "waitOnExternal":
             {
-                "location":
-                {
-                "type": "OnPremisesSqlServerTableLocation",
-                "tableName": "nyctaxi_data",
-                "linkedServiceName": "adfonpremsql"
-                },
-                "availability":
-                {
-                "frequency": "Day",
-                "interval": 1,   
-                "waitOnExternal":
-                {
                 "retryInterval": "00:01:00",
                 "retryTimeout": "00:10:00",
                 "maximumRetry": 3
-                }
-
-                }
             }
         }
+    }
+}
+```
 
 ここでは列名が含まれていません。 ここで列名を含めることで、列名を副選択できます (詳細については、 [ADF のドキュメント](../../data-factory/copy-activity-overview.md) をご覧ください)。
 
@@ -145,62 +146,66 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 ### <a name="adf-table-blob-store"></a>BLOB テーブル
 以下は、出力 BLOB の場所用のテーブル定義です (これはオンプレミスから取り込まれたデータを Azure BLOB にマップします)。
 
+```json
+{
+    "name": "OutputBlobTable",
+    "properties":
+    {
+        "location":
         {
-            "name": "OutputBlobTable",
-            "properties":
+            "type": "AzureBlobLocation",
+            "folderPath": "containername",
+            "format":
             {
-                "location":
-                {
-                "type": "AzureBlobLocation",
-                "folderPath": "containername",
-                "format":
-                {
                 "type": "TextFormat",
                 "columnDelimiter": "\t"
-                },
-                "linkedServiceName": "adfds"
-                },
-                "availability":
-                {
-                "frequency": "Day",
-                "interval": 1
-                }
-            }
+            },
+            "linkedServiceName": "adfds"
+        },
+        "availability":
+        {
+            "frequency": "Day",
+            "interval": 1
         }
+    }
+}
+```
 
 テーブルの JSON 定義を *bloboutputtabledef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\temp\bloboutputtabledef.json*)。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
 
-    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json  
+    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json
 
 ### <a name="adf-table-azure-sql"></a>SQL Azure テーブル
 以下は、SQL Azure 出力の場所用のテーブル定義です (このスキーマは BLOB からのデータをマップします)。
 
+```json
+{
+    "name": "OutputSQLAzureTable",
+    "properties":
     {
-        "name": "OutputSQLAzureTable",
-        "properties":
+        "structure":
+        [
+            { "name": "column1", "type": "String"},
+            { "name": "column2", "type": "String"}
+        ],
+        "location":
         {
-            "structure":
-            [
-                { "name": "column1", type": "String"},
-                { "name": "column2", type": "String"}                
-            ],
-            "location":
-            {
-                "type": "AzureSqlTableLocation",
-                "tableName": "your_db_name",
-                "linkedServiceName": "adfdssqlazure_linked_servicename"
-            },
-            "availability":
-            {
-                "frequency": "Day",
-                "interval": 1            
-            }
+            "type": "AzureSqlTableLocation",
+            "tableName": "your_db_name",
+            "linkedServiceName": "adfdssqlazure_linked_servicename"
+        },
+        "availability":
+        {
+            "frequency": "Day",
+            "interval": 1
         }
     }
+}
+```
 
 テーブルの JSON 定義を *AzureSqlTable.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\temp\AzureSqlTable.json*)。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にテーブルを作成します。
 
-    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json  
+    New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json
 
 
 ## <a name="adf-pipeline"></a>パイプラインを作成して定義する
@@ -216,72 +221,72 @@ Integration Runtime は、異なるネットワーク環境間でデータ統合
 
 前述のテーブル定義を使用して、ADF のパイプライン定義を次のように指定します。
 
-        {
-            "name": "AMLDSProcessPipeline",
-            "properties":
+```json
+{
+    "name": "AMLDSProcessPipeline",
+    "properties":
+    {
+        "description" : "This pipeline has one Copy activity that copies data from an on-premises SQL to Azure blob",
+        "activities":
+        [
             {
-                "description" : "This pipeline has one Copy activity that copies data from an on-premises SQL to Azure blob",
-                 "activities":
-                [
+                "name": "CopyFromSQLtoBlob",
+                "description": "Copy data from on-premises SQL server to blob",
+                "type": "CopyActivity",
+                "inputs": [ {"name": "OnPremSQLTable"} ],
+                "outputs": [ {"name": "OutputBlobTable"} ],
+                "transformation":
+                {
+                    "source":
                     {
-                        "name": "CopyFromSQLtoBlob",
-                        "description": "Copy data from on-premises SQL server to blob",     
-                        "type": "CopyActivity",
-                        "inputs": [ {"name": "OnPremSQLTable"} ],
-                        "outputs": [ {"name": "OutputBlobTable"} ],
-                        "transformation":
-                        {
-                            "source":
-                            {                               
-                                "type": "SqlSource",
-                                "sqlReaderQuery": "select * from nyctaxi_data"
-                            },
-                            "sink":
-                            {
-                                "type": "BlobSink"
-                            }   
-                        },
-                        "Policy":
-                        {
-                            "concurrency": 3,
-                            "executionPriorityOrder": "NewestFirst",
-                            "style": "StartOfInterval",
-                            "retry": 0,
-                            "timeout": "01:00:00"
-                        }       
-
-                     },
-
+                        "type": "SqlSource",
+                        "sqlReaderQuery": "select * from nyctaxi_data"
+                    },
+                    "sink":
                     {
-                        "name": "CopyFromBlobtoSQLAzure",
-                        "description": "Push data to Sql Azure",        
-                        "type": "CopyActivity",
-                        "inputs": [ {"name": "OutputBlobTable"} ],
-                        "outputs": [ {"name": "OutputSQLAzureTable"} ],
-                        "transformation":
-                        {
-                            "source":
-                            {                               
-                                "type": "BlobSource"
-                            },
-                            "sink":
-                            {
-                                "type": "SqlSink",
-                                "WriteBatchTimeout": "00:5:00",                
-                            }            
-                        },
-                        "Policy":
-                        {
-                            "concurrency": 3,
-                            "executionPriorityOrder": "NewestFirst",
-                            "style": "StartOfInterval",
-                            "retry": 2,
-                            "timeout": "02:00:00"
-                        }
-                     }
-                ]
+                        "type": "BlobSink"
+                    }
+                },
+                "Policy":
+                {
+                    "concurrency": 3,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 0,
+                    "timeout": "01:00:00"
+                }
+            },
+            {
+                "name": "CopyFromBlobtoSQLAzure",
+                "description": "Push data to Sql Azure",
+                "type": "CopyActivity",
+                "inputs": [ {"name": "OutputBlobTable"} ],
+                "outputs": [ {"name": "OutputSQLAzureTable"} ],
+                "transformation":
+                {
+                    "source":
+                    {
+                        "type": "BlobSource"
+                    },
+                    "sink":
+                    {
+                        "type": "SqlSink",
+                        "WriteBatchTimeout": "00:5:00",
+                    }
+                },
+                "Policy":
+                {
+                    "concurrency": 3,
+                    "executionPriorityOrder": "NewestFirst",
+                    "style": "StartOfInterval",
+                    "retry": 2,
+                    "timeout": "02:00:00"
+                }
             }
-        }
+        ]
+    }
+}
+```
 
 パイプラインのこの JSON 定義を *pipelinedef.json* というファイルにコピーし、それを既知の場所に保存します (ここでは、*C:\temp\pipelinedef.json*)。 次の Azure PowerShell コマンドレッドを使用して、ADF 内にパイプラインを作成します。
 

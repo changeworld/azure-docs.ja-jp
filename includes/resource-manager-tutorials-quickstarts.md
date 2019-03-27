@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/05/2018
+ms.date: 01/15/2019
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 711688b5b414e7b9a931190de3f7e6321d97ba3e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 11bcfa1b4719d6def5bfc4a6a189bd2b58896b5b
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729341"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54334313"
 ---
 ## <a name="quickstarts-and-tutorials"></a>クイック スタートとチュートリアル
 
@@ -48,5 +48,6 @@ ms.locfileid: "53729341"
     |[SQL 拡張機能のデプロイ](../articles/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac.md)|拡張機能を使用して、デプロイ後タスクを実行します。 このチュートリアルでは、仮想マシンに Web サーバーをインストールするために、カスタム スクリプト拡張機能をデプロイします。 |
     |[成果物のセキュリティ保護](../articles/azure-resource-manager/resource-manager-tutorial-secure-artifacts.md)|デプロイを完了するために必要な成果物をセキュリティで保護します。 このチュートリアルでは、SQL 拡張機能のデプロイに関するチュートリアルで使用した成果物をセキュリティで保護する方法について説明します。 |
     |[安全なデプロイ プラクティスの使用](../articles/azure-resource-manager/deployment-manager-tutorial.md)|Azure Deployment Manager を使用します。 |
+    |[チュートリアル:Resource Manager テンプレート デプロイのトラブルシューティング](../articles/azure-resource-manager/resource-manager-tutorial-troubleshoot.md)|テンプレートのデプロイに関する問題をトラブルシューティングします。|
 
 これらのチュートリアルは、Resource Manager テンプレート開発の主要な概念について、個別にまたはシリーズとして使用できます。

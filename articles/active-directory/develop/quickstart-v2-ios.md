@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,14 +16,15 @@ ms.workload: identity
 ms.date: 09/23/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 49ced3277a659ddacef239c7a1394cbe5ce06ac9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 30e80aa57896bec5e5b1ed68d754c0a838193042
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973611"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194064"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>クイック スタート: iOS ネイティブ アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>クイック スタート:iOS ネイティブ アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
@@ -33,8 +34,8 @@ ms.locfileid: "46973611"
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>登録とダウンロード
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>アプリケーションとコード サンプルの登録と構成
-> #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
+> ### <a name="register-and-configure-your-application-and-code-sample"></a>アプリケーションとサンプル コードの登録と構成
+> #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
 > 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します。
 > 1. **[アプリケーション名]** ボックスに、アプリケーションの名前を入力します。
@@ -42,7 +43,7 @@ ms.locfileid: "46973611"
 > 1. **[プラットフォームの追加]**、**[ネイティブ アプリケーション]**、**[保存]** の順に選択します。
 
 > [!div renderon="portal" class="sxs-lookup"]
-> #### <a name="step-1-configure-your-application"></a>手順 1: アプリケーションの構成
+> #### <a name="step-1-configure-your-application"></a>手順 1:アプリケーションの作成
 > このクイック スタートのコード サンプルを動作させるには、応答 URL として `msal<AppId>://auth` (msal<AppId> はこのアプリケーション ID) を追加する必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
@@ -50,11 +51,11 @@ ms.locfileid: "46973611"
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-ios/green-check.png) アプリケーションはこの属性で構成されています
 
-#### <a name="step-2-download-your-web-server-or-project"></a>手順 2: Web サーバーまたはプロジェクトのダウンロード
+#### <a name="step-2-download-your-web-server-or-project"></a>手順 2:Web サーバーまたはプロジェクトのダウンロード
 
 - [XCode プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-project"></a>手順 3: プロジェクトの構成
+#### <a name="step-3-configure-your-project"></a>手順 3:プロジェクトを構成する
 
 1. zip ファイルを解凍し、XCode でプロジェクトを開きます。
 1. **ViewController.swift** を編集し、'let kClientID' で始まる行を次のコード スニペットで置換します。

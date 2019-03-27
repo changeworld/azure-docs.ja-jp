@@ -3,19 +3,20 @@ title: Azure Active Directory B2B コラボレーションの招待の委任 | M
 description: Azure Active Directory B2B コラボレーション ユーザーのプロパティは構成できます
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 8abbbba0cdac783dd315cd1f0965e03c4e5a1a05
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 28ac32a97f4c42040d538829e9870a43b508f50e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434547"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164738"
 ---
 # <a name="delegate-invitations-for-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションの招待の委任
 

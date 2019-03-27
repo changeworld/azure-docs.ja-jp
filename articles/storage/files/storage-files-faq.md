@@ -6,13 +6,13 @@ author: RenaShahMSFT
 ms.service: storage
 ms.date: 01/02/2019
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: 70370db841a08ae8ee62bda83bec4b1b9e2e7cf2
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.subservice: files
+ms.openlocfilehash: 2a3c26c6a815cf934724fba4e8e0f9637803a4ce
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001534"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562387"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -104,7 +104,7 @@ ms.locfileid: "54001534"
 
 * <a id="afs-storage-redundancy"></a>
 **Azure File Sync では、geo 冗長ストレージはサポートされますか。**  
-    はい。Azure Files では、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) の両方がサポートされます。 ペアになっているリージョン間で GRS フェールオーバーが発生する場合、新しいリージョンはデータのバックアップとしてのみ扱うことをお勧めします。 Azure File Sync は、新しいプライマリ リージョンで自動的に同期を開始することはありません。 
+    はい。Azure Files では、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) の両方がサポートされます。 GRS 用に構成されたアカウントから、ペアになったリージョン間でストレージ アカウントのフェールオーバーを開始する場合は、新しいリージョンをデータのみのバックアップとして扱うことをお勧めします。 Azure File Sync は、新しいプライマリ リージョンで自動的に同期を開始することはありません。 
 
 * <a id="sizeondisk-versus-size"></a>
 **ファイルの "*ディスク上のサイズ*" プロパティが、Azure File Sync を使用した後の "*サイズ*" プロパティと一致しないのはどうしてですか。**  
@@ -116,7 +116,6 @@ ms.locfileid: "54001534"
 
 * <a id="afs-recall-file"></a>**使用したいファイルが階層化されています。ローカルで使用するためにこのファイルをディスクに再現するには、どうすればよいですか。**  
  「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-recall-file)」を参照してください。
-
 
 * <a id="afs-force-tiering"></a>
 **ファイルまたはディレクトリを強制的に階層化するには、どうすればよいですか。**  
@@ -149,7 +148,7 @@ ms.locfileid: "54001534"
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
 **階層化されたファイルがサーバー エンドポイント名前空間の外部に存在するのはなぜですか。**  
-    Azure File Sync エージェント バージョン 3 より前の Azure File Sync は、サーバー エンドポイントと同じボリューム上であってもサーバー エンドポイントの外部に存在する階層化されたファイルの移動をブロックしました。 他のボリュームに対する、コピー操作、階層化されていないファイルの移動、および階層化されたファイルの移動は、影響を受けませんでした。 このような動作の理由は、エクスプローラーおよび他の Windows API による同じボリューム上での移動操作は、(ほとんど) 瞬時の名前変更操作であるという、暗黙の仮定によるものでした。 これは、Azure File Sync がクラウドからデータを呼び戻している間、エクスプローラーや他の移動方法 (コマンド ラインや PowerShell など) が応答しないように見えることを意味します。 [Azure File Sync エージェント バージョン 3.0.12.0](storage-files-release-notes.md#supported-versions) 以降の Azure File Sync では、サーバー エンドポイントの外部にある階層化されたファイルを移動できます。 階層化されたファイルがサーバー エンドポイントの外部で階層化されたファイルとして存在できるようにし、バックグラウンドでファイルを呼び戻すことにより、上で説明したような悪影響を防ぎます。 つまり、同じボリューム上での移動は瞬時であり、移動が完了した後で、ファイルをディスクに呼び戻すためのすべての処理を行います。 
+    Azure File Sync エージェント バージョン 3 より前の Azure File Sync は、サーバー エンドポイントと同じボリューム上であってもサーバー エンドポイントの外部に存在する階層化されたファイルの移動をブロックしました。 他のボリュームに対する、コピー操作、階層化されていないファイルの移動、および階層化されたファイルの移動は、影響を受けませんでした。 このような動作の理由は、ファイル エクスプローラーおよび他の Windows の API による同じボリューム上での移動操作は、(ほとんど) 瞬時の名前変更操作であるという、暗黙の仮定によるものでした。 これは、Azure File Sync がクラウドからデータを呼び戻している間、エクスプローラーや他の移動方法 (コマンド ラインや PowerShell など) が応答しないように見えることを意味します。 [Azure File Sync エージェント バージョン 3.0.12.0](storage-files-release-notes.md#supported-versions) 以降の Azure File Sync では、サーバー エンドポイントの外部にある階層化されたファイルを移動できます。 階層化されたファイルがサーバー エンドポイントの外部で階層化されたファイルとして存在できるようにし、バックグラウンドでファイルを呼び戻すことにより、上で説明したような悪影響を防ぎます。 つまり、同じボリューム上での移動は瞬時であり、移動が完了した後で、ファイルをディスクに呼び戻すためのすべての処理を行います。 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
 **サーバーでの Azure File Sync に関して問題があります (同期、クラウド階層化など)。サーバー エンドポイントを削除して再作成する必要がありますか。**  
@@ -242,7 +241,7 @@ ms.locfileid: "54001534"
 * <a id="data-compliance-policies"></a>
 **Azure Files ではどのようなデータ コンプライアンス ポリシーがサポートされていますか。**  
 
-   Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、「[Azure Storage のコンプライアンス認証](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)」を参照するか、[Microsoft セキュリティ センター](https://microsoft.com/en-us/trustcenter/default.aspx)にアクセスできます。
+   Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、「[Azure Storage のコンプライアンス認証](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)」を参照するか、[Microsoft セキュリティ センター](https://microsoft.com/trustcenter/default.aspx)にアクセスできます。
 
 ## <a name="on-premises-access"></a>オンプレミスのアクセス
 * <a id="expressroute-not-required"></a>
@@ -298,7 +297,7 @@ ms.locfileid: "54001534"
     
     ファイル スナップショット機能が必要な場合は、[Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) までお知らせください。
 
-* <a id="encypted-snapshots"></a>
+* <a id="encrypted-snapshots"></a>
 **暗号化されたファイル共有の共有スナップショットを作成できますか。**  
     保存時の暗号化を有効にした Azure ファイル共有の共有スナップショットを取得できます。 共有スナップショットから暗号化されたファイル共有に、ファイルを復元できます。 お使いの共有が暗号化されている場合、共有スナップショットも暗号化されます。
 

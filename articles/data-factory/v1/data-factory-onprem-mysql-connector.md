@@ -68,14 +68,14 @@ Data Management Gateway で MySQL Database に接続するには、[MySQL コネ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OnPremisesMySql** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesMySql** |はい |
 | server |MySQL サーバーの名前です。 |はい |
 | database |MySQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ  |
 | authenticationType |MySQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。`Basic` |はい |
 | username |MySQL データベースに接続するユーザー名を指定します。 |はい |
 | password |指定したユーザー アカウントのパスワードを指定します。 |はい |
-| gatewayName |Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 |[はい] |
+| gatewayName |Data Factory サービスが、オンプレミスの MySQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
@@ -303,13 +303,13 @@ MySQL にデータを移動する場合、MySQL 型から .NET 型に対する�
 | --- | --- |
 | 符号なしの bigint |Decimal |
 | bigint |Int64 |
-| ビット |Decimal |
+| bit |Decimal |
 | BLOB |Byte[] |
 | bool |Boolean |
 | char |String |
 | date |DateTime |
 | Datetime |DateTime |
-| 小数点 |Decimal |
+| decimal |Decimal |
 | double precision |Double |
 | Double |Double |
 | enum |String |

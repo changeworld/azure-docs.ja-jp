@@ -26,7 +26,7 @@ items:
       href: data-box-gateway-system-requirements.md
     - name: 制限を理解する
       href: data-box-gateway-limits.md
-    - name: ユースケースを確認する
+    - name: ユース ケースを確認する
       href: data-box-gateway-use-cases.md
   - name: 方法
     items:
@@ -40,11 +40,13 @@ items:
         href: data-box-gateway-manage-bandwidth-schedules.md
       - name: アクセス、電源、接続性
         href: data-box-gateway-manage-access-power-connectivity-mode.md
+      - name: PowerShell から
+        href: data-box-gateway-connect-powershell-interface.md
     - name: トラブルシューティング
       href: data-box-gateway-troubleshoot.md
   - name: リリース ノート
     items:
-    - name: プレビュー
+    - name: 一般公開
       href: data-box-gateway-release-notes.md
 - name: Data Box Edge
   items:
@@ -68,10 +70,34 @@ items:
     items:
     - name: 要件を確認する
       href: data-box-edge-system-requirements.md
+    - name: 制限を理解する
+      href: data-box-edge-limits.md
+    - name: セキュリティの概要
+      href: data-box-edge-security.md
+    - name: 仕様の確認
+      href: data-box-edge-technical-specifications-compliance.md
   - name: 方法
     items:
+    - name: コンピューティングの管理
+      href: data-box-edge-manage-compute.md
     - name: C# モジュールの開発
       href: data-box-edge-create-iot-edge-module.md
+    - name: 共有の管理
+      href: data-box-edge-manage-shares.md
+    - name: ユーザーの管理
+      href: data-box-edge-manage-users.md
+    - name: 帯域幅スケジュールの管理
+      href: data-box-edge-manage-bandwidth-schedules.md
+    - name: 電源、アクセス、接続の管理
+      href: data-box-edge-manage-access-power-connectivity-mode.md
+    - name: PowerShell を通じた管理
+      href: data-box-edge-connect-powershell-interface.md
+    - name: トラブルシューティング
+      href: data-box-edge-troubleshoot.md
+  - name: リリース ノート
+    items:
+    - name: 一般公開
+      href: data-box-gateway-release-notes.md
 - name: リソース
   items:
   - name: Data Box Edge C# モジュールのサンプル (.NET)
@@ -80,9 +106,9 @@ items:
     href: https://azure.microsoft.com/services/storage/databox/edge/
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
-ms.openlocfilehash: d34e932f6a51db203bdf28672216838e50a970b4
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: ae1c076d22c6dba0486e0f949820cf0cd6e0b79a
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390802"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418085"

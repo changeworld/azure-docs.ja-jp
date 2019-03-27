@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 73c61c62a84642b93ed96cdd80e258a1128fef6a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 79ba32f85c608d98b29b235bf1417e74f7e2a4d4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077473"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313485"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -35,6 +35,7 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 
 * コンテナー グループをサブネットにデプロイする場合、サブネットに他の種類のリソースを含めることはできません。 コンテナー グループをデプロイする前に、既存のサブネットから既存のリソースをすべて削除するか、新しいサブネットを作成してください。
 * 現在のところ、仮想ネットワークにデプロイされたコンテナー グループでは、パブリック IP アドレスや DNS 名ラベルはサポートされません。
+* 仮想ネットワークにデプロイされたコンテナー グループ内で[マネージド ID](container-instances-managed-identity.md) を使用することはできません。
 * 仮想ネットワークにコンテナー グループをデプロイすると、追加のネットワーキング リソースが必要になるため、通常は、標準のコンテナー インスタンスをデプロイする場合よりも若干低速になります。
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
@@ -43,11 +44,11 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 
 **サポートされているリージョンとリソースの制限**
 
-| 場所 | OS | CPU | メモリ (GB) |
+| Location | OS | CPU | メモリ (GB) |
 | -------- | :---: | :---: | :-----------: |
-| 西ヨーロッパ |  Linux | 4 | 14 |
-| 米国東部、米国西部 |  Linux | 2 | 3.5 |
-| オーストラリア東部、北ヨーロッパ |  Linux | 1 | 1.5 |
+| 西ヨーロッパ | Linux | 4 | 14 |
+| 米国東部、米国西部 | Linux | 2 | 3.5 |
+| オーストラリア東部、北ヨーロッパ | Linux | 1 | 1.5 |
 
 コンテナーのリソース制限は、これらのリージョンでのネットワークに接続されていないコンテナー インスタンスに対する制限とは異なる場合があります。 現在、この機能でサポートされているのは、Linux コンテナーのみです。 Windows でのサポートは計画されています。
 

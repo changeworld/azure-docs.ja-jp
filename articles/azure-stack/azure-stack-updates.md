@@ -6,20 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 9b0781f4-2cd5-4619-a9b1-59182b4a6e43
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
-ms.openlocfilehash: ca09427de2f18612146ff03e4eef705006823ca8
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/22/2019
+ms.openlocfilehash: 6cddb513249b424ef0df2ed2d1b5609de17c0744
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302614"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894038"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack での更新プログラムの管理概要
 
@@ -46,11 +46,10 @@ Azure Stack には、Microsoft ソフトウェア更新プログラムの適用�
 
 メンテナンス操作についてユーザーに通知することと、通常のメンテナンス期間はできるだけ勤務時間外にスケジュールすることを強くお勧めします。 メンテナンス操作は、テナントのワークロードとポータル操作の両方に影響を及ぼす可能性があります。
 
-
 - この更新プログラムのインストールを開始する前に、次のパラメーターを指定して [Test-AzureStack](azure-stack-diagnostic-test.md) を実行して Azure Stack の状態を確認し、見つかったすべての操作上の問題 (すべての警告とエラーを含む) を解決します。 また、アクティブなアラートを確認し、アクションが必要なアラートを解決します。  
 
   ```PowerShell
-  Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
+  Test-AzureStack -Group UpdateReadiness
   ``` 
 
 ## <a name="using-the-update-tile-to-manage-updates"></a>[更新] タイルによる更新プログラムの管理

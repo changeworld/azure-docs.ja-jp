@@ -28,7 +28,7 @@ Service Fabric の名前でプロパティを格納およびクエリします�
 
 |コマンド|説明|
 | --- | --- |
-| 削除 | 指定した Service Fabric プロパティを削除します。 |
+| delete | 指定した Service Fabric プロパティを削除します。 |
 | get | 指定した Service Fabric プロパティを取得します。 |
 | list | 指定した名前の下にあるすべての Service Fabric プロパティに関する情報を取得します。 |
 | put | Service Fabric プロパティを作成または更新します。 |

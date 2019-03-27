@@ -4,20 +4,20 @@ description: Avere クラスターの管理方法 - ノードの追加または�
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: a47b18972e945e495e5a5d3dd90e383390612865
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189611"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745556"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Avere vFXT クラスターの管理
 
 クラスターを作成した後、クラスター ノードを追加したりクラスターを停止または再起動したりすることが必要になることがあります。 また、プロジェクトが完了したとき、クラスターを停止して完全に削除する方法を知っておく必要があります。 
 
-クラスターの管理タスクによっては、タスクを行うために Avere コントロール パネル、vfxt.py クラスター作成スクリプト、または Azure portal を使用する必要があります。 
+クラスターの管理タスクによっては、タスクを行うために Avere コントロール パネル、vfxt.py コマンド ライン クラスター作成スクリプト、または Azure portal を使用する必要があります。 
 
 以下のテーブルに、各タスクについて使用できるツールの概要を示します。 
 
@@ -71,7 +71,11 @@ Avere コントロール パネルには Web ブラウザーからアクセス�
 
 クラスターがシャットダウンするとき、最初に状態メッセージを **[ダッシュ ボード]** タブに表示します。 しばらくすると、Avere コントロール パネル セッションは応答を停止し、これはクラスターがシャットダウンしたことを意味します。
 
-## <a name="manage-the-cluster-with-vfxtpy"></a>vfxt.py でクラスターを管理する 
+## <a name="manage-the-cluster-with-vfxtpy"></a>vfxt.py でクラスターを管理する
+
+vfxt.py は、クラスターの作成と管理のためのコマンドライン ツールです。 
+
+vfxt.py は、クラスター コント ローラー VM に事前にインストールされています。 別のシステムにインストールする場合は、<https://github.com/Azure/AvereSDK> にあるドキュメントを参照してください。
 
 vfxt.py スクリプトは、以下のクラスター管理タスクに使用できます。
 
@@ -80,8 +84,6 @@ vfxt.py スクリプトは、以下のクラスター管理タスクに使用で
 * クラスターの破棄
 
 Avere コントロール パネルと同じように、vfxt.py は、クラスターまたはノードを破棄する前に、変更されたデータがバック エンド ストレージに永続的に保管されるように動作します。 これにより、Avere portal よりもより安全なオプションとなります。
-
-vfxt.py は、クラスター コント ローラー VM に事前にインストールされています。 <!-- (If you want to install it on another system, refer to https://github.com/Azure/AvereSDK) xxx change when this repo goes  public -->
 
 vfxt.py の使用に関する詳細なガイドが、GitHub の「[Cloud cluster management with vfxt.py](https://github.com/azure/averesdk/blob/master/docs/README.md)」(vfxt.py でのクラウド クラスター管理) で提供されています。
 

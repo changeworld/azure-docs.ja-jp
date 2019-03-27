@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ITRP の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ITRP の統合 | Microsoft Docs
 description: Azure Active Directory と ITRP の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: e09716a3-4200-4853-9414-2390e6c10d98
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 0af96b750c7e316d1d394a00781f727358f2c4e8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d7e6b5e297f3832656af6c96e0357f89cd71838a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428317"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211072"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-itrp"></a>チュートリアル: Azure Active Directory と ITRP の統合
+# <a name="tutorial-azure-active-directory-integration-with-itrp"></a>チュートリアル:Azure Active Directory と ITRP の統合
 
 このチュートリアルでは、ITRP と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -89,7 +90,7 @@ ITRP で、Azure AD の **[ユーザー名]** の値を **[Username]** の値と
 
 ITRP で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[ITRP テスト ユーザーの作成](#creating-an-itrp-test-user)** - ITRP で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -150,16 +151,16 @@ ITRP で Azure AD のシングル サインオンを構成してテストする�
 
     a. **[有効]** をクリックします。
 
-    b. **[Remote Log Out URL]\(リモート ログアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    b.  **[リモート ログアウト URL]** ボックスに、Azure portal からコピーした**サインアウト URL** の値を貼り付けます。
 
-    c. **[SAML SSO URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    c.  **[SAML SSO URL]** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     d. **[Certificate Fingerprint]\(証明書のフィンガープリント\)** ボックスに、Azure Portal からコピーした証明書の **[拇印]** の値を貼り付けます。 
       
 1. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -191,7 +192,7 @@ ITRP で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-an-itrp-test-user"></a>ITRP テスト ユーザーの作成
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Translator Text API と PHP を使って、文脈中における用語の例と翻訳の代替候補を探します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: ff1f0a97667260fa19c46bec6901113ff696aaab
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: b505f30f7cbbbda9cf6975fac95f50d218dcbc12
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156886"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541657"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-php"></a>クイック スタート:PHP を使用して 2 か国語辞書で単語を検索する
 
@@ -23,7 +23,7 @@ ms.locfileid: "54156886"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには、[PHP 5.6.x](http://php.net/downloads.php) が必要です。
+このコードを実行するには、[PHP 5.6.x](https://php.net/downloads.php) が必要です。
 
 Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
 
@@ -77,7 +77,7 @@ function DictionaryLookup ($host, $path, $key, $params, $content) {
         "X-ClientTraceId: " . com_create_guid() . "\r\n";
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
+    // https://php.net/manual/en/function.stream-context-create.php
     $options = array (
         'http' => array (
             'header' => $headers,
@@ -101,7 +101,7 @@ $result = DictionaryLookup ($host, $path, $key, $params, $content);
 
 // Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
 // We want to avoid escaping any Unicode characters that result contains. See:
-// http://php.net/manual/en/function.json-encode.php
+// https://php.net/manual/en/function.json-encode.php
 $json = json_encode(json_decode($result), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 echo $json;
 ?>
@@ -218,7 +218,7 @@ function DictionaryExamples ($host, $path, $key, $params, $content) {
         "X-ClientTraceId: " . com_create_guid() . "\r\n";
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
+    // https://php.net/manual/en/function.stream-context-create.php
     $options = array (
         'http' => array (
             'header' => $headers,
@@ -243,7 +243,7 @@ $result = DictionaryExamples ($host, $path, $key, $params, $content);
 
 // Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
 // We want to avoid escaping any Unicode characters that result contains. See:
-// http://php.net/manual/en/function.json-encode.php
+// https://php.net/manual/en/function.json-encode.php
 $json = json_encode(json_decode($result), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
 echo $json;
 ?>

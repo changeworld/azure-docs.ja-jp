@@ -3,25 +3,26 @@ title: Windows VM のシステム割り当てマネージド ID を使用して 
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2018
-ms.author: daveba
-ms.openlocfilehash: 4beaf9f1a4206f6840bdb3277770e1996dbc83e1
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: priyamo
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f20031b41d56e049670491a9aa9a41b21e0bfca4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623224"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197812"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする方法
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 

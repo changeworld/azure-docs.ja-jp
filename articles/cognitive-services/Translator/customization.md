@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Microsoft Translator Hub を利用し、適切な用語とスタイルを使用して、独自の機械翻訳システムを構築します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: f02c495c7448334529de2d5b42cda02206daea0d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: c2ff97c61cee1f2f773710103ac422fc6f1d8714
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877974"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876064"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 
@@ -50,10 +50,10 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 |:-----|:----:|:----:|
 |カスタマイズ機能の状態   | 一般公開  | 一般公開 |
 | Text API バージョン  | V2 のみ   | V3 のみ |
-| SMT のカスタマイズ | [はい]   | いいえ  |
-| NMT のカスタマイズ | いいえ     | [はい] |
-| 新しい統合 Speech Services のカスタマイズ | いいえ     | [はい] |
-| [トレースなし](https://www.aka.ms/notrace) | [はい]  | [はい] |
+| SMT のカスタマイズ | はい   | いいえ  |
+| NMT のカスタマイズ | いいえ     | はい |
+| 新しい統合 Speech Services のカスタマイズ | いいえ     | はい |
+| [トレースなし](https://www.aka.ms/notrace) | はい  | はい |
 
 ## <a name="collaborative-translations-framework"></a>コラボレーション翻訳フレームワーク
 

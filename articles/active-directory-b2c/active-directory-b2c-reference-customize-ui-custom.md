@@ -3,19 +3,19 @@ title: カスタム ポリシーでユーザー体験の UI をカスタマイ�
 description: Azure Active Directory B2C のカスタム ポリシーについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 8c3684f93bbf5b9fe9f5ea9167396b9822e70c48
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841627"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122928"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
@@ -66,7 +66,7 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 - コンテンツが HTML5 に準拠しており、アクセス可能であることを確認する。
 - コンテンツ サーバーで CORS が有効になっていることを確認する。
 - HTTPS を使用してコンテンツを配信する。
-- すべてのリンクと CSS コンテンツで、 https://yourdomain/content などの絶対 URL を使用する。
+- すべてのリンクと CSS コンテンツで、`https://yourdomain/content` などの絶対 URL を使用する。
 
 > [!TIP]
 > コンテンツをホストしているサイトで CORS が有効になっていることを確認し、CORS 要求をテストするには、サイト https://test-cors.org/ を使用します。 このサイトでは、(CORS がサポートされているかどうかをテストするために) CORS 要求をリモート サーバー、または (CORS の特定の機能を使ってみるために) テスト サーバーに送信できます。
@@ -121,16 +121,16 @@ Azure AD B2C でコンテンツの読み込みに使用するエンドポイン�
 
 1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、「 https://contoso369b2c.blob.core.windows.net/b2c/unified.html 」のように入力します。
 2. https://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
-<!--
-![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
--->
+   <!--
+   ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
+   -->
 
 3. **[リモート URL]** に、unified.html のコンテンツの完全な URL を入力し、**[要求の送信]** をクリックします。
 4. **[結果]** セクションの出力に *XHR status: 200* が含まれていることを確認します。これは、CORS が有効になっていることを示します。
-<!--
-![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
--->
-これで、ストレージ アカウントに、ここで説明した *b2c* という BLOB コンテナーが含まれるようになりました。このコンテナーには、*Starter-Pack* 内の次の wingtiptoys テンプレートが含まれます。
+   <!--
+   ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
+   -->
+   これで、ストレージ アカウントに、ここで説明した *b2c* という BLOB コンテナーが含まれるようになりました。このコンテナーには、*Starter-Pack* 内の次の wingtiptoys テンプレートが含まれます。
 
 <!--
 ![Correctly configured storage account](../../articles/active-directory-b2c/media/active-directory-b2c-reference-customize-ui-custom/storage-account-final.png)

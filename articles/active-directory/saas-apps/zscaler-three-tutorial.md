@@ -8,19 +8,20 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: f352e00d-68d3-4a77-bb92-717d055da56f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 442d7478669a206f04cb799cb86b807cfe7b0624
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5739c878812c09a8f2646320df4b1069dfa8810e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790164"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>チュートリアル:Azure Active Directory と Zscaler Three の統合
 
@@ -137,7 +138,7 @@ Zscaler Three で Azure AD のシングル サインオンを構成してテス�
 
     c. **[OK]** をクリックします。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
     > [!NOTE]
     > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)をクリックしてください
@@ -178,7 +179,7 @@ Zscaler Three で Azure AD のシングル サインオンを構成してテス�
 
     c. **アップロード** をクリックして、Azure portal からダウンロードした Azure SAML 署名証明書を **Public SSL Certificate\(パブリック SSL 証明書\)** にアップロードします。
 
-    d. **[SAML 自動プロビジョニングを有効にする]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML 自動プロビジョニングを有効にする]** を選択します。
 
     e. displayName 属性に SAML 自動プロビジョニングを有効にするには、**[User Display Name Attribute]\(ユーザー表示名属性\)** テキスト ボックスに **displayName** の値を入力します。
 
@@ -221,7 +222,7 @@ Zscaler Three で Azure AD のシングル サインオンを構成してテス�
 
     c. [ポート] ボックスに「 **80**」と入力します。
 
-    d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
 
     e. **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。
 
@@ -250,7 +251,7 @@ Zscaler Three で Azure AD のシングル サインオンを構成してテス�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="create-zscaler-three-test-user"></a>Zscaler Three テスト ユーザーの作成
 

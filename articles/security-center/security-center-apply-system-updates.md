@@ -4,7 +4,7 @@ description: このドキュメントでは、Azure Security Center の推奨事
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f3c055d55da06e6410520084a1c96baa78b91496
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: afd6ded48bc330032b77be4bc8cd186a6f71ee5f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341714"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105129"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Azure Security Center でシステムの更新プログラムを適用する
 Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows および Linux 仮想マシン (VM) およびコンピューターの監視が毎日行われています。 Security Center は、Windows コンピューターに構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムにおける最新の更新プログラムについても確認します。 VM またはコンピューターでシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。

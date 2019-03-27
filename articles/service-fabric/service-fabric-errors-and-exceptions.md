@@ -14,29 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/20/2018
 ms.author: ryanwi
-ms.openlocfilehash: e854ed42b6af8bc090950e8399e3229e202a2ed0
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: fae345530a28bc7fdb875570546b125b13a79310
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293414"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104034"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>FabricClient API の操作時に発生する一般的な例外とエラー
-Service Fabric のアプリケーションやサービス、クラスターに対する管理タスクは、クラスター アドミニストレーターやアプリケーション管理者が [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) API を使って実行できます。 管理タスクの例としては、アプリケーションのデプロイ、アップグレード、削除、クラスターの正常性のチェック、サービスのテストといった作業が挙げられます。 アプリケーション開発者やクラスター アドミニストレーターは、FabricClient API を使用して、Service Fabric クラスターや Service Fabric アプリケーションを管理するためのツールを開発できます。
+Service Fabric のアプリケーションやサービス、クラスターに対する管理タスクは、クラスター アドミニストレーターやアプリケーション管理者が [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API を使って実行できます。 管理タスクの例としては、アプリケーションのデプロイ、アップグレード、削除、クラスターの正常性のチェック、サービスのテストといった作業が挙げられます。 アプリケーション開発者やクラスター アドミニストレーターは、FabricClient API を使用して、Service Fabric クラスターや Service Fabric アプリケーションを管理するためのツールを開発できます。
 
-FabricClient を使用して実行できる操作の種類は多岐にわたります。  FabricClient のメソッドは、誤った入力やランタイム エラー、一過性のインフラストラクチャの問題などに起因するエラーによって例外をスローします。  特定のメソッドでどのような例外がスローされるかについては、API リファレンス ドキュメントを参照してください。 ただし、数ある [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) API に共通してスローされる例外もいくつかあります。 以下の表は、各種の FabricClient API に共通する例外を一覧にしたものです。
+FabricClient を使用して実行できる操作の種類は多岐にわたります。  FabricClient のメソッドは、誤った入力やランタイム エラー、一過性のインフラストラクチャの問題などに起因するエラーによって例外をスローします。  特定のメソッドでどのような例外がスローされるかについては、API リファレンス ドキュメントを参照してください。 ただし、数ある [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) API に共通してスローされる例外もいくつかあります。 以下の表は、各種の FabricClient API に共通する例外を一覧にしたものです。
 
 | 例外 | スローされるタイミング |
 | --- |:--- |
-| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception#System_Fabric_FabricObjectClosedException) |[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) オブジェクトがクローズ済みであるとき。 使用中の [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) オブジェクトを破棄したうえで、新しい [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) オブジェクトをインスタンス化してください。 |
-| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception#System_TimeoutException) |操作がタイムアウトしたとき。操作の完了前に MaxOperationTimeout に達すると、[OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) が返されます。 |
-| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception#System_UnauthorizedAccessException) |操作のアクセス チェックに失敗したとき。 E_ACCESSDENIED が返されます。 |
-| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) |操作の実行中にランタイム エラーが発生したとき。 FabricClient のいずれのメソッドも、[FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) をスローする可能性があります。例外の正確な原因は [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException_ErrorCode) プロパティによって示されます。 エラー コードは、[FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) 列挙体として定義されています。 |
-| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception#System_Fabric_FabricTransientException) |なんらかの一過性のエラー状態が原因で操作に失敗したとき。 たとえばレプリカのクォーラムが一時的に到達不能状態に陥ったことが原因で操作に失敗する可能性があります。 一過性の例外によって失敗した操作は、再試行することができます。 |
+| [System.Fabric.FabricObjectClosedException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricobjectclosedexception) |[FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) オブジェクトがクローズ済みであるとき。 使用中の [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) オブジェクトを破棄したうえで、新しい [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) オブジェクトをインスタンス化してください。 |
+| [System.TimeoutException](https://docs.microsoft.com/dotnet/core/api/system.timeoutexception) |操作がタイムアウトしたとき。操作の完了前に MaxOperationTimeout に達すると、[OperationTimedOut](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) が返されます。 |
+| [System.UnauthorizedAccessException](https://docs.microsoft.com/dotnet/core/api/system.unauthorizedaccessexception) |操作のアクセス チェックに失敗したとき。 E_ACCESSDENIED が返されます。 |
+| [System.Fabric.FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) |操作の実行中にランタイム エラーが発生したとき。 FabricClient のいずれのメソッドも、[FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) をスローする可能性があります。例外の正確な原因は [ErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception.ErrorCode) プロパティによって示されます。 エラー コードは、[FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) 列挙体として定義されています。 |
+| [System.Fabric.FabricTransientException](https://docs.microsoft.com/dotnet/api/system.fabric.fabrictransientexception) |なんらかの一過性のエラー状態が原因で操作に失敗したとき。 たとえばレプリカのクォーラムが一時的に到達不能状態に陥ったことが原因で操作に失敗する可能性があります。 一過性の例外によって失敗した操作は、再試行することができます。 |
 
-[FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception#System_Fabric_FabricException) で返される可能性のある一般的な [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode#System_Fabric_FabricErrorCode) エラーを次に示します。
+[FabricException](https://docs.microsoft.com/dotnet/api/system.fabric.fabricexception) で返される可能性のある一般的な [FabricErrorCode](https://docs.microsoft.com/dotnet/api/system.fabric.fabricerrorcode) エラーを次に示します。
 
-| エラー | 条件 |
+| Error | 条件 |
 | --- |:--- |
 | CommunicationError |操作の失敗の原因は通信エラーです。操作をやり直してください。 |
 | InvalidCredentialType |資格情報の種類が無効です。 |

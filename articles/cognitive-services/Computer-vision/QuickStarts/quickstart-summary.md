@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: これらのクイック スタートでは、Computer Vision API を使って、画像の分析やサムネイルの作成、印刷されたテキストの抽出、手書きテキストの抽出を行います。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 645c57c9bfeaefcfd2fc50b2dd431713fffaa42b
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 8fd27fc0038e91531fbf05942336ce7d6fc34e37
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578786"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310017"
 ---
 # <a name="quickstart-summary"></a>クイック スタート:まとめ
 

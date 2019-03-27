@@ -5,9 +5,9 @@ services: active-directory
 keywords: Enterprise State Roaming の設定, Windows クラウド, Enterprise State Roaming に関してよく寄せられる質問
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: curtand
-ms.component: devices
+ms.subservice: devices
 ms.assetid: c0824f5c-129b-4240-969f-921f6a64eae7
 ms.service: active-directory
 ms.workload: identity
@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
-ms.openlocfilehash: 9f3d171a8f0e353d5860f410a8c32149f8872338
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 96cb46135e82e9cad740a51ea7de5789e6b398b7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189390"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205785"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
 この記事では、IT 管理者が設定やアプリ データの同期に関して抱く可能性のあるいくつかの疑問に答えます。

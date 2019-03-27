@@ -3,18 +3,18 @@ title: Azure Maps を使った対話型のマップ検索 | Microsoft Docs
 description: Azure クイック スタート - Azure Maps を使用したデモ版の対話型マップ検索を作成する
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/02/2018
+ms.date: 03/07/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 681a76de02d91b39ee74d1e4fa764c06d79ff3ab
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: be6d9ab0011e3d6b5d8ae1da489fc60c316e2867
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065139"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095468"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Azure Maps を使用して対話形式の検索マップを作成する
 
@@ -34,20 +34,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. **[Marketplace を検索]** ボックスに「**Maps**」と入力します。
 3. **[結果]** から **[Maps]** を選択します。 マップの下に表示される **[作成]** ボタンを選択します。
 4. **[Azure Maps アカウントの作成]** ページで、次の値を入力します。
-    - 新しいアカウントの "**名前**"。
-    - このアカウントで使う "**サブスクリプション**"。
-    - このアカウントの "**リソース グループ**" です。 **[新規作成]** を選んで新しく作成することも、**[既存のものを使用]** を選んで既存のリソース グループを使うこともできます。
-    - 任意の **[価格レベル]** を選択します。
-    - **ライセンス**と**プライバシーに関する声明**を読みます。 チェックボックスをオンにして利用規約に同意します。
-    - 最後に **[作成]** ボタンを選択します。
+   - 新しいアカウントの "**名前**"。
+   - このアカウントで使う "**サブスクリプション**"。
+   - このアカウントの "**リソース グループ**" です。 **[新規作成]** を選んで新しく作成することも、**[既存のものを使用]** を選んで既存のリソース グループを使うこともできます。
+   - 任意の **[価格レベル]** を選択します。
+   - **ライセンス**と**プライバシーに関する声明**を読みます。 チェックボックスをオンにして利用規約に同意します。
+   - 最後に **[作成]** ボタンを選択します。
 
-    ![ポータルで Azure Maps アカウントを作成する](./media/quick-demo-map-app/create-account.png)
+     ![ポータルで Azure Maps アカウントを作成する](./media/quick-demo-map-app/create-account.png)
 
 5. アカウントが正常に作成されたら、アカウントを開いて、アカウント メニューの [設定] セクションに移動します。 **[キー]** を選択して Azure Maps アカウントのプライマリおよびセカンダリ キーを表示します。 次のセクションで使用する **[主キー]** の値をローカルのクリップボードにコピーします。
 
 ## <a name="download-the-application"></a>アプリケーションのダウンロード
 
-1. [interactiveSearch.html](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/interactiveSearch.html) ファイルの内容をコピーまたはダウンロードします。
+1. [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) ファイルの内容をコピーまたはダウンロードします。
 2. このファイルの内容を **AzureMapDemo.html** としてローカルに保存します。 それをテキスト エディターで開きます。
 3. `<insert-key>` という文字列を検索します。 これを前のセクションで取得した**主キー**の値に置き換えます。
 

@@ -3,7 +3,7 @@ title: ポータルで SQL Server Windows VM を作成する | Microsoft Docs
 description: このチュートリアルでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -12,15 +12,16 @@ ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
-ms.author: jroth
-ms.openlocfilehash: aeeee58242a5f6ea41b9ba354efc4f5d5087151c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 0a583a75b72286718b34b84e67ee5aff34726be0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38720126"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818240"
 ---
-# <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure Portal で SQL Server 2017 Windows 仮想マシンを作成する
+# <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure ポータルで SQL Server 2017 Windows 仮想マシンを作成する
 
 > [!div class="op_single_selector"]
 > * [Windows](quickstart-sql-vm-create-portal.md)
@@ -125,7 +126,7 @@ Azure Portal でデプロイを監視できます。 画面の上部にある **
    > [!TIP]
    > SQL Server Management Studio を保有していない場合は、[ここ](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)からダウンロードできます。
 
-1. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** の値を編集します。 VM のパブリック IP アドレスを入力します。 コンマを追加し、新しい VM を構成するときに指定したカスタム ポートの **1401** を追加します。 たとえば、「`11.22.33.444,1401`」のように入力します。
+1. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** の値を編集します。 VM のパブリック IP アドレスを入力します。 コンマを追加し、新しい VM を構成するときに指定したカスタム ポートの **1401** を追加します。 たとえば、「 `11.22.33.444,1401` 」のように入力します。
 
 1. **[認証]** ボックスで、**[SQL Server 認証]** を選択します。
 
@@ -149,7 +150,7 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-SQL VM を継続的に実行する必要がない場合は、使用中でないときに停止することで、不要な料金の発生を回避できます。 仮想マシンに関連付けらているすべてのリソースは、関連付けられているリソース グループをポータルで削除することで完全に削除することもできます。 これを行うと仮想マシンも完全に削除されるため、このコマンドは注意して使用してください。 詳細については、「 [ポータルを使用した Azure リソースの管理](../../../azure-resource-manager/resource-group-portal.md)」を参照してください。
+SQL VM を継続的に実行する必要がない場合は、使用中でないときに停止することで、不要な料金の発生を回避できます。 仮想マシンに関連付けらているすべてのリソースは、関連付けられているリソース グループをポータルで削除することで完全に削除することもできます。 これを行うと仮想マシンも完全に削除されるため、このコマンドは注意して使用してください。 詳細については、「 [ポータルを使用した Azure リソースの管理](../../../azure-resource-manager/manage-resource-groups-portal.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

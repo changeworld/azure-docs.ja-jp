@@ -6,16 +6,17 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/11/2019
 ms.author: patricka
-ms.reviewer: fiseraci
+ms.reviewer: thoroet
+ms.lastreviewed: 02/11/2019
 keywords: ''
-ms.openlocfilehash: 83177363803c8f5c505c083614000dfa8f0df60d
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 7e39370879884dc8900671d174fc6e0708907d83
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036905"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197353"
 ---
 # <a name="azure-stack-datacenter-integration---physical-device-auditing"></a>Azure Stack とデータセンターの統合 - 物理デバイスの監査
 

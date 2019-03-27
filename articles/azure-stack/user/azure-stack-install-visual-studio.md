@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 6bb3215e63e2fc672cde5746e6a9867df899ee88
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 274240aab54f27f36734516026e9feebf64ae4b5
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016700"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55248114"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Visual Studio をインストールして Azure Stack に接続する
 

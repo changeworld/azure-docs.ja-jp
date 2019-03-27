@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のカスタム ポリシー | Microsoft Docs
 description: Azure Active Directory B2C のカスタム ポリシーについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: a1457b2aa571b58502b7d819eb3bcf142c10dac1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.subservice: B2C
+ms.openlocfilehash: 92bd57822226e683f17582bb1534b84961f61032
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725065"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187166"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシー
 

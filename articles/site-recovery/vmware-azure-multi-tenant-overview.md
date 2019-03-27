@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 2e68ad6d999a5ff003abe35a0cce75bc5f2cebef
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723928"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104456"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>CSP を使用した Azure への VMware ディザスター リカバリーにおけるマルチテナント サポートの概要
 
@@ -75,21 +75,21 @@ ms.locfileid: "53723928"
 1. 定義済みの "*読み取り専用*" ロールを複製して新しいロールを作成し、ロールにわかりやすい名前を付けます (この例では Azure_Site_Recovery)。
 2. このロールに次のアクセス許可を割り当てます。
 
-    * **データストア**:領域の割り当て、データストアの参照、低レベルのファイル操作、ファイルの削除、仮想マシン ファイルの更新
-    * **ネットワーク**:ネットワークの割り当て
-    * **リソース**:リソース プールへの VM の割り当て、電源がオフの VM の移行、電源がオンの VM の移行
-    * **タスク**:タスクの作成、タスクの更新
-    * **VM - 構成**:All
-    - **VM - 相互作用** > 質問への回答、デバイス接続、CD メディアの構成、フロッピー メディアの構成、電源オフ、電源オン、VMware ツールのインストール
-    - **VM - インベントリ** > 既存のものから作成、新規作成、登録、登録解除
-    - **VM - プロビジョニング** > 仮想マシンのダウンロードの許可、仮想マシン ファイルのアップロードの許可
-    - **VM - スナップショットの管理** > スナップショットの削除
+   * **データストア**:領域の割り当て、データストアの参照、低レベルのファイル操作、ファイルの削除、仮想マシン ファイルの更新
+   * **ネットワーク**:ネットワークの割り当て
+   * **リソース**:リソース プールへの VM の割り当て、電源がオフの VM の移行、電源がオンの VM の移行
+   * **タスク**:タスクの作成、タスクの更新
+   * **VM - 構成**:All
+   * **VM - 相互作用** > 質問への回答、デバイス接続、CD メディアの構成、フロッピー メディアの構成、電源オフ、電源オン、VMware ツールのインストール
+   * **VM - インベントリ** > 既存のものから作成、新規作成、登録、登録解除
+   * **VM - プロビジョニング** > 仮想マシンのダウンロードの許可、仮想マシン ファイルのアップロードの許可
+   * **VM - スナップショットの管理** > スナップショットの削除
 
-        ![[ロールの編集] ダイアログ ボックス](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
+       ![[ロールの編集] ダイアログ ボックス](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
 
 3. 各種オブジェクトについて、(テナントの構成サーバーで使用される) vCenter アカウントにアクセス レベルを割り当てます。
 
->| オブジェクト | Role | 解説 |
+>| Object | Role | 解説 |
 >| --- | --- | --- |
 >| vCenter | 読み取り専用 | さまざまなオブジェクトを管理するために vCenter によるアクセスを許可する場合にのみ必要です。 このアカウントをテナントに提供することも、vCenter での管理操作に使用することもない場合は、このアクセス許可を削除できます。 |
 >| データセンター | Azure_Site_Recovery |  |

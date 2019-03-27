@@ -1,6 +1,4 @@
 items:
-- name: Azure IoT の基礎
-  href: ../iot-fundamentals/index.yml
 - name: Azure IoT Edge のドキュメント
   href: index.yml
 - name: 概要
@@ -20,7 +18,7 @@ items:
     href: tutorial-deploy-function.md
   - name: ASA を使用した平均値の検索
     href: tutorial-deploy-stream-analytics.md
-  - name: Azure ML を使用したデータへのスコア付け
+  - name: Azure Machine Learning service を使用したデータへのスコア付け
     href: tutorial-deploy-machine-learning.md
   - name: Custom Vision を使用したイメージの分類
     href: tutorial-deploy-custom-vision.md
@@ -96,6 +94,8 @@ items:
       href: how-to-install-iot-edge-linux-arm.md
     - name: Windows X64
       href: how-to-install-iot-edge-windows.md
+    - name: Ubuntu VM
+      href: how-to-install-iot-edge-ubuntuvm.md
     - name: ランタイム バージョンの更新
       href: how-to-update-iot-edge.md
   - name: DPS による自動プロビジョニング
@@ -138,10 +138,12 @@ items:
       href: how-to-store-data-blob.md
   - name: DevOps ツールを使用した管理
     items:
-    - name: IoT Edge の Azure DevOps Projects
+    - name: Azure DevOps Projects
       href: how-to-devops-project.md
-    - name: Azure DevOps における CI/CD
+    - name: Azure DevOps
       href: how-to-ci-cd.md
+    - name: Jenkins 用の IoT Edge プラグイン
+      href: how-to-devops-plugins.md
   - name: トラブルシューティング
     href: troubleshoot.md
 - name: 関連項目
@@ -183,7 +185,7 @@ items:
   - name: iOS プラットフォーム用 Azure IoT サンプル
     href: https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/
   - name: IoT デバイス カタログ向けの Azure 認定
-    href: https://catalog.azureiotsuite.com/
+    href: https://catalog.azureiotsolutions.com/
   - name: Azure IoT デベロッパー センター
     href: https://azure.microsoft.com/develop/iot/
   - name: Azure のロードマップ
@@ -205,14 +207,14 @@ items:
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=iot-hub
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-iot-hub
+    href: https://stackoverflow.com/questions/tagged/azure-iot-hub
   - name: 技術的なケース スタディ
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: a55b2a1ab6a814d97e750b8b17b20feb2a17e12f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a7fa87685aced399db04d2341cb021e7a9eab202
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790216"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549852"

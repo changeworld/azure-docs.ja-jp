@@ -10,16 +10,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 07/16/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: da974800e39a7b3a305af2a2d10b2174e017245a
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3cc807a5693b363445f85d0b45a70681f58c5275
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45606872"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198630"
 ---
 # <a name="review-your-access"></a>アクセス権をレビューする
 

@@ -7,12 +7,12 @@ manager: jhubbard
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: af067cabf312ec3c2556b84dc4d739e41ec0aacc
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: aef55660d07c8923a82baf7f8b6320abf3ccdd1d
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535286"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430218"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Azure Database for MySQL の Virtual Network のサービス エンドポイントと規則を使用する
 
@@ -24,6 +24,7 @@ ms.locfileid: "53535286"
 
 > [!NOTE]
 > この機能は、Azure Database for MySQL が汎用サーバーとメモリ最適化サーバー用にデプロイされている Azure のすべてのリージョンで利用できます。
+> VNet ピアリングでは、トラフィックがサービス エンドポイントを含む共通 VNet Gateway を通過して、ピアにフローするようになっている場合は、ACL/VNet ルールを作成して、Gateway VNet 内の Azure Virtual Machines が Azure Database for MySQL サーバーにアクセスできるようにしてください。
 
 <a name="anch-terminology-and-description-82f" />
 

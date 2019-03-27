@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 12/19/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0ae29146b1b44f3017d37b3cebf7ec4cf39115d0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5bc8a408ce247ad2980983c3eb32807074af599f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731761"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820826"
 ---
-# <a name="tutorial-move-azure-resources-to-another-resource-group-or-subscription"></a>チュートリアル:Azure リソースを別のリソース グループやサブスクリプションに移動する
+# <a name="tutorial-move-azure-resources-to-another-resource-group"></a>チュートリアル:Azure リソースを別のリソース グループに移動する
 
 Azure リソースを 1 つのリソース グループから別のリソース グループに移動する方法について説明します。 1 つの Azure サブスクリプションから別の Azure サブスクリプションに Azure リソースを移動することもできます。 このチュートリアルでは、リソース マネージャー テンプレートを使用して 2 つのリソース グループと 1 つのストレージ アカウントをデプロイします。 その後、ストレージ アカウントを 1 つのリソース グループから別のリソース グループに移動します。
 
@@ -63,7 +63,7 @@ JSON で定義されている場所に注意してください。2 つのリソ�
 
 ```azurepowershell-interactive
 $projectName = Read-Host -prompt "Enter a project name"
-New-AzureRmDeployment `
+New-AzDeployment `
     -Name $projectname `
     -Location "centralus" `
     -TemplateUri "https://armtutorials.blob.core.windows.net/moveresources/azuredeploy.json" `
@@ -95,14 +95,16 @@ New-AzureRmDeployment `
 
 ストレージ アカウントはソース リソース グループ (rg1) 内にあります。次の PowerShell スクリプトを実行して、リソースを移動先のリソース グループ (rg2) に移動します。 必ず、リソースのデプロイ時に使用したのと同じプロジェクト名を使用してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ```azurepowershell-interactive
 $projectName = Read-Host -prompt "Enter a project name"
 $resourceGroupSource = $projectName + "rg1"
 $resourceGroupDestination = $projectName + "rg2"
 $storageAccountName = $projectName + "store"
 
-$storageAccount = Get-AzureRmResource -ResourceGroupName $resourceGroupSource -ResourceName $storageAccountName
-Move-AzureRmResource -DestinationResourceGroupName $resourceGroupDestination -ResourceId $storageAccount.ResourceId
+$storageAccount = Get-AzResource -ResourceGroupName $resourceGroupSource -ResourceName $storageAccountName
+Move-AzResource -DestinationResourceGroupName $resourceGroupDestination -ResourceId $storageAccount.ResourceId
 ```
 
 [Azure portal](https://portal.azure.com) を開いて、ストレージ アカウントが他のリソース グループに移動したことと、ストレージ アカウントの場所が米国東部のままになっていることを確認します。

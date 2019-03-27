@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Translator Text API の Dictionary Lookup メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: b51067b9e854566991d49aeb1ff2b1ad13999a51
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e97d308bca585cdb26ccc2f20e125436707c481e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957744"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876336"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: 辞書検索
 

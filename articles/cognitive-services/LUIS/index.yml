@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 801fa50ea34da8ac40c559e77fb6c51c6422172e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 9d8433debd31176b4cf4096a4b80cfbd9ddcba82
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53166338"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737265"
 documentType: LandingData
 title: Language Understanding (LUIS) のドキュメント
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 01/23/2019
   ms.author: nitinme
 abstract:
   description: Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。 LUIS には機械学習が使用されており、開発者は、自然言語でユーザー入力を受け取ってその意味を正確に抽出できるアプリケーションを構築できます。
@@ -115,6 +115,6 @@ sections:
     - title: SDK
       html: <p><a href="https://aka.ms/luis-endpoint-sdk"> .NET エンドポイント SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk"> .NET 作成 SDK</a></p>
     - title: PowerShell
-      html: <p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+      html: <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
     - title: CLI
       html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>

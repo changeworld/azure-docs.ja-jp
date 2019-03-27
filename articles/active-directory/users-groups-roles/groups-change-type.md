@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory で静的なグループ メンバーシップの種類を動的に変更する | Microsoft Docs
+title: 静的なグループ メンバーシップの種類を動的に変更する - Azure Active Directory | Microsoft Docs
 description: グループを自動的に設定するメンバーシップ ルールと、ルール参照を作成する方法。
 services: active-directory
 documentationcenter: ''
@@ -8,18 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 4cc9c446c1a8ff7c82b08ba9787a40598a8b4cd4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3bf73708be8a8bc597b70d0cb50fc337efa72906
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450732"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211684"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Azure Active Directory で静的なグループメンバーシップを動的に変更する
 

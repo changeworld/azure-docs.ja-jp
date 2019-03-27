@@ -10,16 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8b7d2b6d2aef4567197fe18607cb50d1e9a4206b
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 30b7a5327a709fb35c3c3360f4bb0246e9a5f75f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247262"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771227"
 ---
 # <a name="best-practices-for-validation-as-a-service"></a>サービスとしての検証のベスト プラクティス
 
@@ -47,7 +48,7 @@ My Solution XYZ |  All Flash | My Switch X01 | MySolutionXYZ_AllFlash_MySwitchX0
 
 すべての VaaS ワークフロー実行に、一貫性のある名前付け規則を使用します。 たとえば、次のようにビルドのプロパティに基づいてワークフロー名を作成します。
 
-|ビルド番号 (メジャー) | 日付 | ソリューションのサイズ | ワークフロー名
+|ビルド番号 (メジャー) | Date | ソリューションのサイズ | ワークフロー名
 |---|---|---| ---|
 1808 | 081518 | 4NODE | 1808_081518_4NODE
 

@@ -1,26 +1,27 @@
 ---
-title: Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを安全に移行する方法 | Microsoft Docs
-description: グループベースのライセンスを使用して異なる製品ライセンス (Office 365 Enterprise E1 と E3 など) 間でユーザーを移行するために推奨されるプロセスについて説明します
+title: グループを使用して製品ライセンスにユーザーを移行する方法 - Azure Active Directory | Microsoft Docs
+description: グループベースのライセンスを使用して異なる製品ライセンス (Office 365 Enterprise E1 と E3) にグループ内のユーザーを移行するために推奨されるプロセスについて説明します
 services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
-author: piotrci
+author: curtand
 manager: mtillman
 editor: ''
-ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/29/2018
-ms.author: piotrci
-ms.openlocfilehash: 643339545dac6ec35ab44f2a05fbe417dea2bb71
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.subservice: users-groups-roles
+ms.date: 01/28/2019
+ms.author: curtand
+ms.reviewer: sumitp
+ms.custom: it-pro;seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3c81ab72be58cd223eb9b3fe9ec53d56574a94e8
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211793"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430303"
 ---
 # <a name="how-to-safely-migrate-users-between-product-licenses-by-using-group-based-licensing"></a>グループベースのライセンスを使用して製品ライセンス間でユーザーを安全に移行する方法
 
@@ -47,7 +48,7 @@ ms.locfileid: "50211793"
 -   グループが自身の環境でどのように管理されているかを把握している。 たとえば、グループをオンプレミスで管理し、それらを Azure AD Connect を介して Azure Active Directory (Azure AD) に同期している場合は、オンプレミス システムを使用してユーザーを追加または削除できます。 変更が Azure AD に同期され、グループ ベースのライセンスによって取得されるまでに時間がかかります。 Azure AD の動的グループのメンバーシップを使用している場合は、代わりに属性を使用してユーザーを追加または削除します。 ただし、移行プロセス全体は変わりません。 唯一の違いは、グループ メンバーシップに対してユーザーを追加または削除する方法です。
 
 ## <a name="migrate-users-between-products-that-dont-have-conflicting-service-plans"></a>競合するサービス プランがない製品間のユーザーの移行
-移行の目的は、グループ ベースのライセンスを使用して、ユーザー ライセンスを*ソース ライセンス* (この例では Office 365 Enterprise E3) から*ターゲット ライセンス* (この例では Office 365 Enterprise E5) に変更することです。 このシナリオの 2 つの製品は、競合するサービス プランを含まないため、競合することなく同時に完全に割り当てることができます。 移行中は常に、ユーザーがサービスまたはデータへのアクセスを失うことのないようにします。 移行は小規模な「バッチ」で行います。 各バッチの結果を検証し、処理中に発生するおそれのある問題の範囲を最小限に抑えることができます。 全体として、プロセスは次のとおりです。
+移行の目的は、グループベースのライセンスを使用して、ユーザー ライセンスを*ソース ライセンス* (この例では、Office 365 Enterprise E3) から*ターゲット ライセンス* (この例では、Office 365 Enterprise E5) に変更することです。 このシナリオの 2 つの製品は、競合するサービス プランを含まないため、競合することなく同時に完全に割り当てることができます。 移行中は常に、ユーザーがサービスまたはデータへのアクセスを失うことのないようにします。 移行は小規模な「バッチ」で行います。 各バッチの結果を検証し、処理中に発生するおそれのある問題の範囲を最小限に抑えることができます。 全体として、プロセスは次のとおりです。
 
 1.  ユーザーはソース グループのメンバーであり、そのグループから*ソース ライセンス*を継承しています。
 
@@ -66,15 +67,15 @@ ms.locfileid: "50211793"
 ### <a name="migrate-a-single-user-by-using-the-azure-portal"></a>Azure Portal の使用による単一ユーザーの移行
 これは、単一ユーザーを移行する方法を示す簡単なチュートリアルです。
 
-**手順 1**: ユーザーは、グループから継承された*ソース ライセンス*を持っています。 ライセンスの直接の割り当てはありません。
+**手順 1**:ユーザーは、グループから継承された*ソース ライセンス*を持っています。 ライセンスの直接の割り当てはありません。
 
 ![ソース ライセンスがグループから継承されているユーザー](./media/licensing-groups-change-licenses/UserWithSourceLicenseInherited.png)
 
-**手順 2**: ユーザーがターゲット グループに追加され、グループ ベースのライセンスによって変更が処理されます。 これでユーザーは、グループから継承された*ソース ライセンス*と*ターゲット ライセンス*の両方を持つことになります。
+**手順 2**:ユーザーがターゲット グループに追加され、グループベースのライセンスによって変更が処理されます。 これでユーザーは、グループから継承された*ソース ライセンス*と*ターゲット ライセンス*の両方を持つことになります。
 
 ![ソース ライセンスとターゲット ライセンスの両方がグループから継承されているユーザー](./media/licensing-groups-change-licenses/UserWithBothSourceAndTargetLicense.png)
 
-**手順 3**: ユーザーがソース グループから削除され、グループ ベースのライセンスによって変更が処理されます。 これで、ユーザーは*ターゲット ライセンス*のみを持つことになります。
+**手順 3**:ユーザーがソース グループから削除され、グループベースのライセンスによって変更が処理されます。 これで、ユーザーは*ターゲット ライセンス*のみを持つことになります。
 
 ![ターゲット ライセンスがグループから継承されているユーザー](./media/licensing-groups-change-licenses/UserWithTargetLicenseAssigned.png)
 
@@ -84,7 +85,7 @@ ms.locfileid: "50211793"
 > [!NOTE]
 > このサンプル コードでは、この記事の[最後のセクション](#powershell-automation-of-migration-and-verification-steps)に記載されている PowerShell 関数を使用します。
 
-```
+```powershell
 # A batch of users that we want to migrate in this iteration.
 # The batch can be specified as an array of User Principal Names (string) or ObjectIds (Guid).
 # Note: The batch can be loaded from a text file that represents a larger batch of users that we want to migrate.
@@ -127,7 +128,7 @@ ExecuteVerificationLoop ${function:VerifySourceLicenseRemovedAndTargetLicenseAss
 
 **サンプル出力 (2 人のユーザーの移行)**
 
-```
+```powershell
 Verifying initial assumptions:
 Enough TailspinOnline:ENTERPRISEPREMIUM licenses available (13) for users: 2.
 migrationuser@tailspinonline.com                OK
@@ -176,7 +177,7 @@ Check passed for all users. Exiting check loop.
 ```
 
 ## <a name="migrate-users-between-products-that-have-conflicting-service-plans"></a>競合するサービス プランがある製品間のユーザーの移行
-移行の目的は、グループベースのライセンスを使用して、ユーザー ライセンスを *ソース ライセンス* (この例では Office 365 Enterprise E1) から*ターゲット ライセンス* (この例では Office 365 Enterprise E3) に変更することです。 このシナリオの 2 つの製品には競合するサービス プランが含まれているため、ユーザーをシームレスに移行するには競合を回避する必要があります。 これらの競合に関する詳細については、 [Active Directory のライセンス グループの問題の解決: サービス プランの競合](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)についての記事を参照してください。 移行中は常に、ユーザーがサービスまたはデータへのアクセスを失うことのないようにします。 移行は小規模な「バッチ」で行います。 各バッチの結果を検証し、処理中に発生するおそれのある問題の範囲を最小限に抑えることができます。 全体として、プロセスは次のとおりです。
+移行の目的は、グループベースのライセンスを使用して、ユーザー ライセンスを*ソース ライセンス* (この例では、Office 365 Enterprise E1) から*ターゲット ライセンス* (この例では、Office 365 Enterprise E3) に変更することです。 このシナリオの 2 つの製品には競合するサービス プランが含まれているため、ユーザーをシームレスに移行するには競合を回避する必要があります。 これらの競合の詳細については、[Active Directory のライセンス グループの問題の解決に関する記事の「サービス プランの競合」](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-problem-resolution-azure-portal#conflicting-service-plans)を参照してください。 移行中は常に、ユーザーがサービスまたはデータへのアクセスを失うことのないようにします。 移行は小規模な「バッチ」で行います。 各バッチの結果を検証し、処理中に発生するおそれのある問題の範囲を最小限に抑えることができます。 全体として、プロセスは次のとおりです。
 
 1.  ユーザーはソース グループのメンバーであり、そのグループから*ソース ライセンス*を継承しています。
 
@@ -195,15 +196,15 @@ Check passed for all users. Exiting check loop.
 ### <a name="migrate-a-single-user-by-using-the-azure-portal"></a>Azure Portal の使用による単一ユーザーの移行
 これは、単一ユーザーを移行する方法を示す簡単なチュートリアルです。
 
-**手順 1**: ユーザーは、グループから継承された*ソース ライセンス*を持っています。 ライセンスの直接の割り当てはありません。
+**手順 1**:ユーザーは、グループから継承された*ソース ライセンス*を持っています。 ライセンスの直接の割り当てはありません。
 
 ![ソース ライセンスがグループから継承されているユーザー](./media/licensing-groups-change-licenses/UserWithSourceLicenseInheritedConflictScenario.png)
 
-**手順 2**: ユーザーがターゲット グループに追加され、グループ ベースのライセンスによって変更が処理されます。 ユーザーにまだ*ソース ライセンス*があるため、*ターゲット ライセンス*は競合によるエラー状態になっています。
+**手順 2**:ユーザーがターゲット グループに追加され、グループベースのライセンスによって変更が処理されます。 ユーザーにまだ*ソース ライセンス*があるため、*ターゲット ライセンス*は競合によるエラー状態になっています。
 
 ![ソース ライセンスがグループから継承され、ターゲット ライセンスがエラー状態のユーザー](./media/licensing-groups-change-licenses/UserWithSourceLicenseAndTargetLicenseInConflict.png)
 
-**手順 3**: ユーザーがソース グループから削除され、グループ ベースのライセンスによって変更が処理されます。 *ターゲット ライセンス*がユーザーに適用されます。
+**手順 3**:ユーザーがソース グループから削除され、グループベースのライセンスによって変更が処理されます。 *ターゲット ライセンス*がユーザーに適用されます。
 
 ![ターゲット ライセンスがグループから継承されているユーザー](./media/licensing-groups-change-licenses/UserWithTargetLicenseAssignedConflictScenario.png)
 
@@ -214,7 +215,7 @@ Check passed for all users. Exiting check loop.
 > [!NOTE]
 > このサンプル コードでは、この記事の[最後のセクション](#powershell-automation-of-migration-and-verification-steps)に記載されている PowerShell 関数を使用します。
 
-```
+```powershell
 # A batch of users that we want to migrate in this iteration.
 # The batch can be specified as an array of User Principal Names (string) or ObjectIds (Guid).
 # Note: The batch can be loaded from a text file that represents a larger batch of users that we want to migrate.
@@ -264,7 +265,7 @@ ExecuteVerificationLoop ${function:VerifySourceLicenseRemovedAndTargetLicenseAss
 
 **サンプル出力 (2 人のユーザーの移行)**
 
-```
+```powershell
 Verifying initial assumptions:
 Enough TailspinOnline:ENTERPRISEPACK licenses available (61) for users: 2.
 migrationuser@tailspinonline.com                OK
@@ -320,7 +321,7 @@ Check passed for all users. Exiting check loop.
 
 コードを実行するには、[Azure AD PowerShell v1.0 ライブラリ](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)の説明を使用してください。 スクリプトを実行する前に、`connect-msolservice`コマンドレットを実行してテナントにサインインします。
 
-```
+```powershell
 # BEGIN: Helper functions that are used in the scripts.
 
 # GetUserObject function
@@ -522,7 +523,7 @@ function IsExpectedLicenseStateForGroup
     # The license is expected to be fully assigned from the group and not in an error state.
     if([string]::IsNullOrEmpty($expectedError))
     {
-        # Check if the assigned license is inherted from the expected group and without an error on it.
+        # Check if the assigned license is inherited from the expected group and without an error on it.
         return (UserHasLicenseAssignedFromThisGroup $user $skuId $groupId)
     }
     # The license is expected to be in the specific error state on the specific group.
@@ -613,7 +614,7 @@ function VerifyAssumptionsForUser
         return $false
     }
 
-    # 2. The user does't have the same source license assigned from another group at the same time,
+    # 2. The user doesn't have the same source license assigned from another group at the same time,
     #    and the user doesn't have the source license assigned directly.
     [Guid[]]$otherObjectsAssigningLicense = GetObjectIdsAssigningLicense $user $sourceSkuId | Where {$_ -ne $sourceGroupId}
     foreach($otherObject in $otherObjectsAssigningLicense)

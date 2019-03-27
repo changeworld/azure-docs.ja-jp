@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 5a40e215c6dd5bf4dc1178595716f95ae21adcb4
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: dececc961e40d83cf44442dc61054bc8833208f0
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438202"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265031"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Azure 監視エージェントの概要 
 Microsoft Azure では、Azure、データセンター、または他のクラウド プロバイダーにホストされている、Microsoft Windows や Linux を実行する仮想マシンからの各種のデータをさまざまな方法で収集できます。 VM の監視に使用可能な 3 種類のエージェントがあります。
@@ -27,7 +27,7 @@ Microsoft Azure では、Azure、データセンター、または他のクラ�
 * Linux および Windows 用 Log Analytics エージェント
 * 依存関係エージェント
 
-この記事では、どれが IT サービス マネジメントや一般的な監視要件をサポートするかを判断するために、それぞれの違いや機能について説明します。  
+この記事では、それぞれの違いや機能について説明し、自分の IT サービス マネジメントや一般的な監視の要件をサポートするのはどれであるかを判断できるようにします。  
 
 ## <a name="azure-diagnostic-extension"></a>Azure 診断の拡張機能
 2010 年に一般公開されて以降、Azure Cloud Services 用に提供されている [Azure 診断拡張機能](../../azure-monitor/platform/diagnostics-extension-overview.md) (一般に、Windows Azure Diagnostic (WAD) または Linux Azure Diagnostic (LAD) 拡張機能と呼ばれる) は、VM などの Azure コンピューティング リソースから診断データを収集して、Azure ストレージに保持するエージェントです。 データがストレージに保持されたら、[Visual Studio のサーバー エクスプローラー](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)や [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) などの提供されているツールの 1 つで表示することができます。
@@ -48,11 +48,11 @@ Microsoft Azure では、Azure、データセンター、または他のクラ�
 * Azure Monitor にデータをアップロードして、Azure portal 上でメトリック グラフを作成するか、ほぼリアルタイムで[メトリック アラート](../../azure-monitor/platform/alerts-metric-overview.md)を作成する。 
 * 仮想マシン スケール セットと従来の Cloud Services をゲスト OS メトリックに基づいて自動スケーリングする。
 * [ブート診断](../../virtual-machines/troubleshooting/boot-diagnostics.md)を使用して VM ブートの問題を調査する。
-* ご利用のアプリケーションがどのように実行されているかを把握し、[Application Insights](../../azure-monitor/overview.md) に影響している問題点を事前に明らかにする。
+* [Application Insights](../../azure-monitor/overview.md) を使用して、ご利用のアプリケーションのパフォーマンスを把握し、影響している問題点を先を見越して特定する。
 * Cloud Services、従来の VM、および Azure ストレージ アカウントに格納されている Service Fabric ノードから収集したメトリックとログ データをインポートするように Log Analytics を構成する。
 
 ## <a name="log-analytics-agent"></a>Log Analytics エージェント
-メトリックやログのサブセット以外も収集する必要がある高度な監視を行う場合は、Log Analytics エージェント (Windows および Linux 用) が必要です。 Log Analytics エージェントは、オンプレミスの物理および仮想マシン、System Center Operations Manager によって監視されるコンピューター、その他のクラウドにホストされている VM を包括的に管理するために開発されました。 Windows および Linux エージェントは、監視ソリューション ベースのデータと、構成するカスタム データ ソースの両方を収集するために、Log Analytics ワークスペースに接続します。
+メトリックやログのサブセットを収集すること以上の作業が必要な高度な監視を行う場合は、Log Analytics エージェント (Windows および Linux 用) が必要です。 Log Analytics エージェントは、オンプレミスの物理および仮想マシン、System Center Operations Manager によって監視されるコンピューター、その他のクラウドにホストされている VM を包括的に管理するために開発されました。 Windows および Linux エージェントは、監視ソリューション ベースのデータと、自分で構成するカスタム データ ソースの両方を収集するために、Log Analytics ワークスペースに接続します。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -76,5 +76,5 @@ VM を監視するには、これらのエージェント組み合わせが必�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関する記事を参照して、Azure、データ センター、または他のクラウド環境にホストされているマシンにエージェントをデプロイするための要件とサポートされている方法を確認します。
+- [Log Analytics エージェントの概要](../../azure-monitor/platform/log-analytics-agent.md)に関する記事を参照して、Azure、データ センター、または他のクラウド環境でホストされているマシンにエージェントをデプロイするための要件とサポートされている方法を確認します。
 

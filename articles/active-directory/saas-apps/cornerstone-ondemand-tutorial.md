@@ -4,7 +4,7 @@ description: Azure Active Directory と Cornerstone OnDemand の間でシング�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f57c5fef-49b0-4591-91ef-fc0de6d654ab
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 40d5905764dbf139db28cd1c113d06981be8205d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 89e7301d0ecff3ae2c3156ba827ef16fbe40b89a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972330"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877182"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cornerstone-ondemand"></a>チュートリアル:Azure Active Directory と Cornerstone OnDemand の統合
 
@@ -202,7 +203,7 @@ Cornerstone OnDemand を使用して Azure AD シングル サインオンを構
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

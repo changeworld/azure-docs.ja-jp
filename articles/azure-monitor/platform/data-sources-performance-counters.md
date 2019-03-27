@@ -1,6 +1,6 @@
 ---
-title: Log Analytics でのパフォーマンス カウンターの収集と分析 | Microsoft Docs
-description: Log Analytics では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、ワークスペースに格納されたそれらの詳細、および Azure Portal でのそれらの分析方法について説明します。
+title: Azure Monitor でのパフォーマンス カウンターの収集と分析 | Microsoft Docs
+description: Azure Monitor では、Windows および Linux のエージェントのパフォーマンスを分析するためにパフォーマンス カウンターが収集されます。  この記事では、Windows および Linux の両方のエージェントでのパフォーマンス カウンターの収集の構成方法、ワークスペースに格納されたそれらの詳細、および Azure Portal でのそれらの分析方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,17 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018l
+ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 8359dda2521773145f9e3e870c3c21db1546004b
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 93f47529e3be44ff1db4e089bdcdca3eb1b4dea3
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103708"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728354"
 ---
-# <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics での Windows および Linux のパフォーマンス データ ソース
-Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Log Analytics は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
+# <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor での Windows および Linux のパフォーマンス データ ソース
+Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
 
 ![パフォーマンス カウンター](media/data-sources-performance-counters/overview.png)
 
@@ -88,7 +88,7 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 | interval | オブジェクトのカウンターを収集する頻度。 |
 
 
-次の表は、構成ファイルで指定できるオブジェクトとカウンターを一覧表示しています。  「[Log Analytics で Linux アプリケーションのパフォーマンス カウンターを収集する](data-sources-linux-applications.md)」に記載されているとおり、特定のアプリケーションで使用できる追加のカウンターがあります。
+次の表は、構成ファイルで指定できるオブジェクトとカウンターを一覧表示しています。  「[Collect performance counters for Linux applications in Azure Monitor (Azure Monitor で Linux アプリケーションのパフォーマンス カウンターを収集する)](data-sources-linux-applications.md)」に記載されているとおり、特定のアプリケーションで使用できる追加のカウンターがあります。
 
 | オブジェクト名 | カウンター名 |
 |:--|:--|
@@ -99,8 +99,8 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 | 論理ディスク | Disk Read Bytes/sec  |
 | 論理ディスク | Disk Reads/sec  |
 | 論理ディスク | Disk Transfers/sec |
-| 論理ディスク |  Disk Write Bytes/sec |
-| 論理ディスク |  Disk Writes/sec |
+| 論理ディスク | Disk Write Bytes/sec |
+| 論理ディスク | Disk Writes/sec |
 | 論理ディスク | Free Megabytes |
 | 論理ディスク | Logical Disk Bytes/sec |
 | メモリ | % Available Memory |
@@ -182,7 +182,7 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
     </source>
 
 ## <a name="data-collection"></a>データ収集
-Log Analytics は、カウンターがインストールされているすべてのエージェントについて、指定されたサンプル間隔ですべての指定されたパフォーマンス カウンターを収集します。  データは集計されず、サブスクリプションで指定した期間、すべてのログ クエリ ビューで生データを利用できます。
+Azure Monitor は、カウンターがインストールされているすべてのエージェントについて、指定されたサンプル間隔ですべての指定されたパフォーマンス カウンターを収集します。  データは集計されず、サブスクリプションで指定した期間、すべてのログ クエリ ビューで生データを利用できます。
 
 ## <a name="performance-record-properties"></a>パフォーマンス レコードのプロパティ
 パフォーマンス レコードには、 **Perf** の型と、次の表に示すプロパティがあります。
@@ -206,7 +206,7 @@ Log Analytics は、カウンターがインストールされているすべて
 ## <a name="log-queries-with-performance-records"></a>パフォーマンス レコードに対するログ クエリ
 次の表は、パフォーマンス レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | 説明 |
+| Query | 説明 |
 |:--- |:--- |
 | Perf |すべてのパフォーマンス データ |
 | Perf &#124; where Computer == "MyComputer" |特定のコンピューターからのすべてのパフォーマンス データ |

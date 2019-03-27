@@ -1,20 +1,20 @@
 ---
-title: Azure Policy を使用して、コンプライアンスを強制するポリシーを作成して管理する
+title: コンプライアンスを強制するポリシーの作成と管理
 description: Azure Policy を使用して、標準を強制し、規制遵守および監査の要件を満たし、コストを制御し、セキュリティとパフォーマンスの一貫性を維持し、企業全体の設計原則を適用します。
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7cfcb71567931b1581618cf8f2239fb004befff8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 32962e6d40103c23a0ec7fd1116aec8820f513bd
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087033"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780288"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
@@ -87,32 +87,32 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
       - ポリシー ルール/条件。この例では、VM SKU サイズが G シリーズと同じサイズです。
       - ポリシーの効果。この例では、**Deny** です。
 
-    JSON の作成例は次のとおりです。 変更後のコードを Azure Portal に貼り付けます。
+   JSON の作成例は次のとおりです。 変更後のコードを Azure Portal に貼り付けます。
 
-    ```json
-    {
-        "policyRule": {
-            "if": {
-                "allOf": [{
-                        "field": "type",
-                        "equals": "Microsoft.Compute/virtualMachines"
-                    },
-                    {
-                        "field": "Microsoft.Compute/virtualMachines/sku.name",
-                        "like": "Standard_G*"
-                    }
-                ]
-            },
-            "then": {
-                "effect": "deny"
-            }
-        }
-    }
-    ```
+   ```json
+   {
+       "policyRule": {
+           "if": {
+               "allOf": [{
+                       "field": "type",
+                       "equals": "Microsoft.Compute/virtualMachines"
+                   },
+                   {
+                       "field": "Microsoft.Compute/virtualMachines/sku.name",
+                       "like": "Standard_G*"
+                   }
+               ]
+           },
+           "then": {
+               "effect": "deny"
+           }
+       }
+   }
+   ```
 
-    ポリシー ルールの *field* プロパティは、Name、Type、Location、Tags、エイリアスのいずれかの値であることが必要です。 `"Microsoft.Compute/VirtualMachines/Size"` はエイリアスの 1 つの例です。
+   ポリシー ルールの *field* プロパティは、Name、Type、Location、Tags、エイリアスのいずれかの値であることが必要です。 `"Microsoft.Compute/VirtualMachines/Size"` はエイリアスの 1 つの例です。
 
-    Azure ポリシーの他のサンプルについては、「[Azure Policy のサンプル](../samples/index.md)」をご覧ください。
+   Azure ポリシーの他のサンプルについては、「[Azure Policy のサンプル](../samples/index.md)」をご覧ください。
 
 1. **[保存]** を選択します。
 
@@ -160,12 +160,12 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Micros
 
 PowerShell の例に進む前に、Azure PowerShell の最新バージョンがインストール済みであることを確認してください。 ポリシーのパラメーターは、バージョン 3.6.0 で追加されました。 以前のバージョンがインストールされていると、パラメーターが見つからないことを示すエラーが返されます。
 
-`New-AzureRmPolicyDefinition` コマンドレットを使用してポリシー定義を作成することができます。
+`New-AzPolicyDefinition` コマンドレットを使用してポリシー定義を作成することができます。
 
 ファイルからポリシー定義を作成するには、ファイルへのパスを渡します。 外部ファイルの場合は、次の例を使用します。
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
     -Name 'denyCoolTiering' `
     -DisplayName 'Deny cool access tiering for storage' `
     -Policy 'https://raw.githubusercontent.com/Azure/azure-policy-samples/master/samples/Storage/storage-account-access-tier/azurepolicy.rules.json'
@@ -174,7 +174,7 @@ $definition = New-AzureRmPolicyDefinition `
 ローカル ファイルの場合は、次の例を使用します。
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
     -Name 'denyCoolTiering' `
     -Description 'Deny cool access tiering for storage' `
     -Policy 'c:\policies\coolAccessTier.json'
@@ -183,7 +183,7 @@ $definition = New-AzureRmPolicyDefinition `
 インライン ルールでポリシー定義を作成するには、次の例を使用します。
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition -Name 'denyCoolTiering' -Description 'Deny cool access tiering for storage' -Policy '{
+$definition = New-AzPolicyDefinition -Name 'denyCoolTiering' -Description 'Deny cool access tiering for storage' -Policy '{
     "if": {
         "allOf": [{
                 "field": "type",
@@ -238,7 +238,7 @@ $parameters = '{
     }
 }'
 
-$definition = New-AzureRmPolicyDefinition -Name 'storageLocations' -Description 'Policy to specify locations for storage accounts.' -Policy $policy -Parameter $parameters
+$definition = New-AzPolicyDefinition -Name 'storageLocations' -Description 'Policy to specify locations for storage accounts.' -Policy $policy -Parameter $parameters
 ```
 
 ### <a name="view-policy-definitions-with-powershell"></a>PowerShell を使用したポリシー定義の表示
@@ -246,7 +246,7 @@ $definition = New-AzureRmPolicyDefinition -Name 'storageLocations' -Description 
 サブスクリプション内のすべてのポリシー定義を表示するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
-Get-AzureRmPolicyDefinition
+Get-AzPolicyDefinition
 ```
 
 組み込みのポリシーを含め、すべての使用可能なポリシー定義が返されます。 各ポリシーは、次の形式で返されます。
@@ -322,7 +322,7 @@ az policy definition list
 
 ## <a name="create-and-assign-an-initiative-definition"></a>イニシアチブ定義の作成と割り当て
 
-イニシアチブ定義では、複数のポリシー定義をグループ化して、1 つの包括的な目標を実現することができます。 イニシアチブ定義を作成して、定義のスコープ内にあるリソースが、イニシアチブ定義を構成するポリシー定義に準拠し続けることを確認します。 イニシアティブ定義の詳細については、[Azure Policy の概要](../overview.md)に関するページを参照してください。
+イニシアチブ定義では、複数のポリシー定義をグループ化して、1 つの包括的な目標を実現することができます。 イニシアチブは、割り当てのスコープ内のリソースについて、含まれているポリシーに準拠しているかどうかを評価します。 イニシアティブ定義の詳細については、[Azure Policy の概要](../overview.md)に関するページを参照してください。
 
 ### <a name="create-an-initiative-definition"></a>イニシアチブ定義を作成する
 
@@ -354,7 +354,7 @@ az policy definition list
 
    ![イニシアチブ定義](../media/create-and-manage/initiative-definition-2.png)
 
-1. イニシアチブに追加されているポリシー定義にパラメーターがある場合、ポリシー名の **[ポリシーとパラメーター]** 領域に表示されます。 _値_は、[値の設定] (このイニシアチブのすべての割り当てにハードコード) または [イニシアティブ パラメーターを使用する] (各イニシアチブの割り当て時に設定) のいずれかに設定できます。 [値の設定] を選択すると、_[値]_ の右に表示されるボックスで値を入力するか選択することができます。 [イニシアティブ パラメーターを使用する] を選択すると、新しい **[イニシアチブ パラメーター]** セクションが表示され、イニシアチブ割り当て中に設定されるパラメーターを定義できます。 このイニシアチブ パラメーターに許可される値によって、イニシアチブ割り当て時に設定できる値をさらに制限できます。
+1. イニシアチブに追加されているポリシー定義にパラメーターがある場合、ポリシー名の **[ポリシーとパラメーター]** 領域に表示されます。 _値_は、[値の設定] (このイニシアチブのすべての割り当てにハードコード) または [イニシアティブ パラメーターを使用する] (各イニシアチブの割り当て時に設定) のいずれかに設定できます。 [値の設定] を選択すると、_[値]_ の右に表示されるドロップダウンで値を入力するか選択することができます。 [イニシアティブ パラメーターを使用する] を選択すると、新しい **[イニシアチブ パラメーター]** セクションが表示され、イニシアチブ割り当て中に設定されるパラメーターを定義できます。 このイニシアチブ パラメーターに許可される値によって、イニシアチブ割り当て時に設定できる値をさらに制限できます。
 
    ![イニシアチブの定義パラメーター](../media/create-and-manage/initiative-definition-3.png)
 

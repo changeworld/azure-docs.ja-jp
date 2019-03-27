@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3dda16450f5454b4fae6d18235b05b7bb29a8b91
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4b622a5925aebd140fed2ac74eaf7cc186803b90
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018860"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113756"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory での Hive アクティビティを使用したデータ変換 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -39,7 +39,7 @@ ms.locfileid: "54018860"
 Data Factory [パイプライン](data-factory-create-pipelines.md) の HDInsight Hive アクティビティでは、[独自](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) または [オンデマンド](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) の Windows/Linux ベースの HDInsight クラスターで Hive クエリを実行します。 この記事は、データ変換とサポートされる変換アクティビティの概要を説明する、 [データ変換アクティビティ](data-factory-data-transformation-activities.md) に関する記事に基づいています。
 
 > [!NOTE] 
-> Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照し、「[最初のデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)」チュートリアルを実行してください。 
+> Azure Data Factory を初めて利用する場合は、この記事を読む前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してから、[初めてのデータ パイプラインの作成](data-factory-build-your-first-pipeline.md)に関するチュートリアルを完了してください。 
 
 ## <a name="syntax"></a>構文
 
@@ -242,7 +242,7 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
         SUM(Duration)
     FROM HiveSampleIn Group by ProfileID
     ```
-## <a name="see-also"></a>関連項目
+  ## <a name="see-also"></a>関連項目
 * [Pig アクティビティ](data-factory-pig-activity.md)
 * [MapReduce アクティビティ](data-factory-map-reduce.md)
 * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)

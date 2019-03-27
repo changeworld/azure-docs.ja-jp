@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6551eab45fdfb5070b29de4152cf2b3e3d008f69
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0138ea8dcbd780ca8aa87178dad41bdca1a72267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082152"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900660"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>Dynamics 365 for Customer Engagement アプリケーション オファーを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "54082152"
 
 ## <a name="new-offer-form"></a>[新しいプラン] フォーム
 
-[Cloud パートナー ポータル](http://cloudpartner.azure.com/)にサインインし、左側のメニュー バーで **[+ 新しいオファー]** を選択します。 [New offer]\(新しいオファー\) メニューで、**[Dynamics 365 for Customer Engagement]** を選択します。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)にサインインし、左側のメニュー バーで **[+ 新しいオファー]** を選択します。 [New offer]\(新しいオファー\) メニューで、**[Dynamics 365 for Customer Engagement]** を選択します。
 
 ![Dynamics 365 for Customer Engagement アプリケーションの [New offer]\(新しいオファー\) メニューの項目](./media/new-dyn365ce-menu-item.png)
 

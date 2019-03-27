@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 2ec2ac6508dfbf0c1a42f72dc393fa8b841ab877
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 09d43386b994ffc046f8c3e22c82f13ec15acd38
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822468"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428973"
 ---
-# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
+# <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
 
 ネットワーク セキュリティ グループ (NSG) により、仮想マシン (VM) への着信トラフィックと 送信トラフィックをフィルターできます。 Network Watcher の NSG フロー ログ機能により、NSG を通過するネットワーク トラフィックをログに記録できます。 このチュートリアルでは、以下の内容を学習します。
 
@@ -37,13 +37,10 @@ ms.locfileid: "51822468"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-> [!NOTE] 
-> フロー ログ バージョン 2 は、米国中西部リージョンでのみ利用できます。 構成は Azure portal と REST API を通じて行えます。 サポートされていないリージョンでバージョン 2 のログを有効にすると、バージョン 1 のログがお客様のストレージ アカウントに保存されることになります。
-
 ## <a name="create-a-vm"></a>VM の作成
 
 1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
-2. **[Compute]** を選択し、**[Windows Server 2016 Datacenter]** または **[Ubuntu Server 17.10 VM]** を選択します。
+2. **[Compute]** を選択し、**[Windows Server 2016 Datacenter]** またはいずれかのバージョンの **Ubuntu Server** を選択します。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[OK]** を選択します。
 
     |Setting|値|
@@ -209,10 +206,10 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 | 13.67.143.118     | 宛先 IP アドレス | フローが送信された宛先 IP アドレス。                                                                                  |
 | 44931        | 発信元ポート            | フローが発生したソース ポート。                                           |
 | 443         | 宛先ポート       | フローが送信された宛先ポート。 トラフィックの送信先はポート 443 であったため、ログ ファイルの **UserRule_default-allow-rdp** という規則によって、フローが処理されました。                                                |
-| T            | プロトコル               | フローのプロトコルが TCP (T) かまたは UDP (U) か。                                  |
+| T            | Protocol               | フローのプロトコルが TCP (T) かまたは UDP (U) か。                                  |
 | O            | 方向              | トラフィックが受信 (I) かまたは送信 (O) か。                                     |
 | A            | Action                 | トラフィックが許可された (A) かまたは拒否された (D) か。  
-| C            | フロー状態 (**バージョン 2 のみ**) | フローの状態をキャプチャします。 以下の状態があります。**B**: 開始。フローが作成された時点です。 統計は提供されません。 **C**: 継続中。フローが進行中です。 5 分間隔で統計が提供されます。 **E**: 終了。フローが終了した時点です。 統計が提供されます。 |
+| C            | フロー状態 (**バージョン 2 のみ**) | フローの状態をキャプチャします。 次の状態があります。**B**: 開始。フローが作成された時点です。 統計は提供されません。 **C**: 継続中。フローが進行中です。 5 分間隔で統計が提供されます。 **E**:終了。フローが終了した時点です。 統計が提供されます。 |
 | 30 | 送信済みパケット数 - 送信元から宛先 (**バージョン 2 のみ**) | 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットの総数。 |
 | 16978 | 送信済みバイト数 - 送信元から宛先 (**バージョン 2 のみ**) | 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。 | 
 | 24 | 送信済みパケット数 - 宛先から送信元 (**バージョン 2 のみ**) | 最後の更新以降に宛先から送信元に送信された TCP または UDP パケットの総数。 |

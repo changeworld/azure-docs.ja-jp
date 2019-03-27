@@ -1,25 +1,26 @@
 ---
-title: Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ | Microsoft Docs
+title: グループベースのライセンスが使用されるその他のシナリオ - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ
 services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: piotrci
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
-ms.date: 10/29/2018
+ms.subservice: users-groups-roles
+ms.date: 01/31/2019
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9b94bf4c499a5d6323e774df90304f0134bc5894
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.reviewer: sumitp
+ms.custom: it-pro
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ef3a0143b2fd536332cdae8ea0bb50cc0a93e6e9
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215414"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430431"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -69,7 +70,7 @@ ms.locfileid: "50215414"
 
 ユーザーは、ライセンスを持つ複数のグループのメンバーになることができます。 考慮事項をいくつか以下に示します。
 
-- 同じ製品の複数のライセンスが重複することがあり、その結果、有効になっているすべてのサービスがユーザーに適用されることがあります。 次の例は、2 つのライセンス グループを示します。"*E3 base services (E3 基本サービス)*" にはすべてのユーザーに先にデプロイする基本サービスが含まれています。 "*E3 extended services (E3 拡張サービス)*" には一部のユーザーにのみデプロイするその他のサービス (Sway と Planner) が含まれています。 この例では、ユーザーは両方のグループに追加されました。
+- 同じ製品の複数のライセンスが重複することがあり、その結果、有効になっているすべてのサービスがユーザーに適用されることがあります。 次の例は、2 つのライセンス グループを示しています。*E3 base services (E3 基本サービス)* にはすべてのユーザーに先にデプロイする基本サービスが含まれています。 "*E3 extended services (E3 拡張サービス)*" には一部のユーザーにのみデプロイするその他のサービス (Sway と Planner) が含まれています。 この例では、ユーザーは両方のグループに追加されました。
 
   ![有効になっているサービスのスクリーンショット](./media/licensing-group-advanced/view-enabled-services.png)
 
@@ -187,7 +188,7 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 > ```
 
 3. すべてのユーザー変更を含む、グループが処理された状況に関する完全なログを参照するには、次のフィルターを設定します。
-  - **[開始者 (アクター)]**: "Microsoft Azure AD グループベースのライセンス"
+  - **[開始者 (アクター)]**:"Microsoft Azure AD グループベースのライセンス"
   - **[期間]** (省略可能): 特定のグループが処理を開始した時と完了した時がわかっている場合、その期間を表すユーザー設定の範囲
 
 このサンプル出力は、処理の開始時、処理結果のユーザー変更すべて、処理の終了時を示します。

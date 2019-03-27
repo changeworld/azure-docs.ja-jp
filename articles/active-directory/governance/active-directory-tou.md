@@ -11,15 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
-ms.date: 01/10/2019
+ms.subservice: compliance
+ms.date: 02/09/2019
 ms.author: rolyon
-ms.openlocfilehash: 341565bf621fa63ad578489cd04bcfff3510265b
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 987b2b1ca028b816ed6909781f56c0b5174541bd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229474"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163769"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、利用規約の使用を開始する方法について説明します。
@@ -120,7 +121,7 @@ Azure AD Terms of use は、PDF 形式で内容を提示します。 この PDF 
 
     ![条件付きアクセス テンプレート](./media/active-directory-tou/conditional-access-templates.png)
 
-    | テンプレート | 説明 |
+    | Template | 説明 |
     | --- | --- |
     | **クラウド アプリへのアクセス (すべてのゲスト用)** | すべてのゲストとすべてのクラウド アプリに対して条件付きアクセス ポリシーが作成されます。 このポリシーは、Azure portal に影響します。 これが作成された後、サインアウトしてサインインし直さなければならないことがあります。 |
     | **クラウド アプリへのアクセス (すべてのユーザー用)** | すべてのユーザーとすべてのクラウド アプリに対して条件付きアクセス ポリシーが作成されます。 このポリシーは、Azure portal に影響します。 これが作成された後、サインアウトしてサインインし直す必要があります。 |
@@ -293,7 +294,7 @@ Chrome を使用している場合、[Windows 10 アカウント拡張機能](ht
 
 1. **[条件の削除]** をクリックします。
 
-1. 続行するかどうかを確認するメッセージが表示されたら、**[はい]** をクリックします。
+1. 続行するかどうかを確認するメッセージが表示されたら、**はい** をクリックします。
 
     ![使用条件の削除](./media/active-directory-tou/delete-tou.png)
 
@@ -334,10 +335,13 @@ Microsoft Intune Enrollment アプリの条件付きアクセス ポリシーを
 
 ![Microsoft Intune クラウド アプリ](./media/active-directory-tou/cloud-app-intune.png)
 
+> [!NOTE]
+> [デバイスごとの利用規約](#per-device-terms-of-use)では、Intune Enrollment アプリはサポートされていません。
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 **Q:ユーザーが利用規約に同意したかどうか、および同意した日時を確認するにはどうすればよいですか?**<br />
-A:[利用規約] ブレードで **[同意]** の下の数字をクリックします。 Azure AD 監査ログでも同意アクティビティを表示または検索できます。 詳しくは、「[同意したユーザーと拒否したユーザーのレポートの表示](#view-who-has-accepted-and-declined)」および「[Azure AD 監査ログの表示](#view-azure-ad-audit-logs)」をご覧ください。
+A:[利用規約] ブレードで **[同意]** の下の数字をクリックします。 Azure AD 監査ログでも同意アクティビティを表示または検索できます。 詳しくは、「同意したユーザーと拒否したユーザーのレポートの表示」および「[Azure AD 監査ログの表示](#view-azure-ad-audit-logs)」をご覧ください。
 
 **Q:情報はどのくらいの期間保存されますか?**<br />
 A:利用規約レポートのユーザーの数および同意したユーザーと拒否したユーザーの数は、利用規約が有効な間、保存されます。 Azure AD 監査ログは 30 日間保存されます。

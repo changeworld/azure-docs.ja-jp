@@ -10,28 +10,30 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5266959e3c08721b79af8c11eb50b7a659e70ffc
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: ddbd77cbc199e78e74324c87d49155f27d6edeea
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158858"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417093"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
-この記事では、Azure リソースを別の Azure サブスクリプションまたは同じサブスクリプションの別のリソース グループに移動する方法について説明します。 リソースの移動には、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用できます。
+この記事では、Azure リソースを別の Azure サブスクリプションまたは同じサブスクリプションの別のリソース グループに移動する方法について説明します。 リソースの移動には、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用できます。 チュートリアルについては、「[チュートリアル:Azure リソースを別のリソース グループやサブスクリプションに移動する](./resource-manager-tutorial-move-resources.md)」を参照してください。
 
 移動操作の間は、ソース グループとターゲット グループの両方がロックされます。 これらのリソース グループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。 このロックはリソース グループでリソースを追加、更新、削除できなくなることを意味しますが、リソースが停止されるわけではありません。 たとえば、SQL Server とそのデータベースを新しいリソース グループに移動する場合、そのデータベースを使用するアプリケーションにダウンタイムは発生しません。 これまでどおり、データベースの読み取りと書き込みを行うことができます。
 
 リソースを移動しても、新しいリソース グループに移動されるだけです。 移動操作でリソースの場所を変更することはできません。 新しいリソース グループは別の場所に存在する場合もありますが、リソース自体の場所は変更されません。
 
 > [!NOTE]
-> この記事では、既存の Azure アカウント プラン内のリソースを移動する方法について説明します。 実際に Azure アカウント プランを変更する場合 (無料から従量課金制へのアップグレードなど)、お使いのサブスクリプションを変換する必要があります。
+> この記事では、既存の Azure サブスクリプション間でリソースを移動する方法について説明します。 実際に Azure サブスクリプションをアップグレードする場合 (無料から従量課金制への切り替えなど)、お使いのサブスクリプションを変換する必要があります。
 > * 無料試用版をアップグレードするには、「[無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする](..//billing/billing-upgrade-azure-subscription.md)」をご覧ください。
 > * 従量課金制のアカウントを変更するには、「[Azure の従量課金制サブスクリプションを別のオファーに変更する](../billing/billing-how-to-switch-azure-offer.md)」をご覧ください。
 > * サブスクリプションを変換できない場合は、[Azure サポート要求を作成](../azure-supportability/how-to-create-azure-support-request.md)してください。 問題の種類として **[サブスクリプション管理]** を選択します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="when-to-call-azure-support"></a>Azure サポートに問い合わせる場合
 
@@ -53,9 +55,11 @@ ms.locfileid: "54158858"
 * API Management
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
 * App Service 証明書 - 「[App Service 証明書の制限事項](#app-service-certificate-limitations)」
-* Automation
+* Automation - Runbook は Automation アカウントと同じリソース グループに存在する必要があります。
 * Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure データ エクスプローラー
+* Azure Database for MariaDB
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
 * Azure DevOps - Microsoft 以外の拡張機能を購入している Azure DevOps 組織は、[それらの購入をキャンセル](https://go.microsoft.com/fwlink/?linkid=871160)してからでなければ、アカウントを異なるサブスクリプションに移動できません。
@@ -98,7 +102,7 @@ ms.locfileid: "54158858"
 * ポータルのダッシュボード
 * Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - Basic SKU のパブリック IP は移動できます。 Standard SKU のパブリック IP は移動できません。
-* Recovery Services コンテナー - [限定パブリック プレビュー](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)への登録が必要となります。
+* Recovery Services コンテナー - [プレビュー](#recovery-services-limitations)に登録します。
 * Azure Cache for Redis - 仮想ネットワークを使用して Azure Cache for Redis インスタンスが構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks の制限事項](#virtual-networks-limitations)を参照してください。
 * Scheduler
 * 検索 - 1 回の操作で異なるリージョンにあるいくつかの Search リソースを一度に移動することはできません。 代わりに、別の操作で移動します。
@@ -130,6 +134,7 @@ ms.locfileid: "54158858"
 * Azure Firewall
 * Azure Migrate
 * 証明書 - App Service 証明書は移動できますが、アップロードした証明書には[制限](#app-service-limitations)があります。
+* 従来のアプリケーション
 * Container Instances
 * Container Service
 * Data Box
@@ -166,6 +171,7 @@ ms.locfileid: "54158858"
 次のシナリオはまだサポートされていません。
 
 * 証明書が Key Vault に格納されている Virtual Machines は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
+* 可用性ゾーン内のマネージド ディスクを別のサブスクリプションに移動することはできません
 * Standard SKU Load Balancer または Standard SKU パブリック IP を使用した仮想マシン スケール セットを移動することはできません
 * プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
 
@@ -174,7 +180,7 @@ Azure Backup で構成された仮想マシンを移動するには、次の対�
 * 仮想マシンの場所を探します。
 * 名前付けパターン `AzureBackupRG_<location of your VM>_1` (たとえば、AzureBackupRG_westus2_1) を持つリソース グループを探します
 * Azure portal の場合、「非表示の型」を確認します
-* PowerShell の場合、`Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`コマンドレットを使用します
+* PowerShell の場合、`Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`コマンドレットを使用します
 * CLI の場合、`az resource list -g AzureBackupRG_<location of your VM>_1`を使用します
 * 名前付けパターン `AzureBackup_<name of your VM that you're trying to move>_###########` を持つタイプ `Microsoft.Compute/restorePointCollections` のリソースを探します
 * このリソースを削除します。 この操作では、インスタント復旧ポイントのみが削除され、コンテナー内のバックアップされたデータは削除されません。
@@ -234,7 +240,7 @@ Web App を _サブスクリプション間_ で移動する場合には、次�
 * 一度に移動できるストレージ アカウント (クラシック) は 1 つだけです。
 * ストレージ アカウント (クラシック) は、仮想マシンまたはクラウド サービスと同じ操作では移動できません。
 
-クラシック リソースを同じサブスクリプション内の新しリソース グループに移動する場合は、[ポータル](#use-portal)、[Azure PowerShell](#use-powershell)、[Azure CLI](#use-azure-cli)、または [REST API](#use-rest-api) の標準の移動操作を使用します。 Resource Manager のリソースの移動に使用した方法と同じ操作を使用します。
+クラシック リソースを同じサブスクリプション内の新しリソース グループに移動する場合は、[ポータル](#use-portal)、Azure PowerShell、Azure CLI、または REST API の標準の移動操作を使用します。 Resource Manager のリソースの移動に使用した方法と同じ操作を使用します。
 
 #### <a name="new-subscription"></a>新しいサブスクリプション
 
@@ -305,7 +311,7 @@ Web App を _サブスクリプション間_ で移動する場合には、次�
 
 ### <a name="recovery-services-limitations"></a>Recovery Services の制限事項
 
-Recovery Services コンテナーを移動するには、[限定パブリック プレビュー](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)への登録が必要となります。
+ Recovery Services コンテナーを移動するには、[限定パブリック プレビュー](../backup/backup-azure-move-recovery-services-vault.md)への登録が必要となります。
 
 現在、一度に移動できる Recovery Services コンテナーはリージョンごとに 1 つです。 Azure Files、Azure File Sync、SQL を IaaS 仮想マシンにバックアップするコンテナーは移動できません。
 
@@ -334,13 +340,15 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
 
 リソースを移動する前に行うべき重要な手順がいくつかあります。 これらの条件を確認することにより、エラーの発生を回避できます。
 
+1. 移動元と移動先のサブスクリプションがアクティブである必要があります。 無効になっているアカウントを有効にするときに問題がある場合は、[Azure サポート リクエストを作成します](../azure-supportability/how-to-create-azure-support-request.md)。 問題の種類として **[サブスクリプション管理]** を選択します。
+
 1. 移動元と移動先のサブスクリプションが同じ [Azure Active Directory テナント](../active-directory/develop/quickstart-create-new-tenant.md)内に存在している必要があります。 両方のサブスクリプションに同じテナント ID があることを確認するには、Azure PowerShell または Azure CLI を使用します。
 
   Azure PowerShell では、次を使用します。
 
   ```azurepowershell-interactive
-  (Get-AzureRmSubscription -SubscriptionName <your-source-subscription>).TenantId
-  (Get-AzureRmSubscription -SubscriptionName <your-destination-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-source-subscription>).TenantId
+  (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
   ```
 
   Azure CLI では、次を使用します。
@@ -360,14 +368,14 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
   PowerShell で登録状態を取得するには、次のコマンドを使用します。
 
   ```azurepowershell-interactive
-  Set-AzureRmContext -Subscription <destination-subscription-name-or-id>
-  Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
+  Set-AzContext -Subscription <destination-subscription-name-or-id>
+  Get-AzResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState
   ```
 
   リソース プロバイダーを登録するには、次のコマンドを使用します。
 
   ```azurepowershell-interactive
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
+  Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
   Azure CLI で登録状態を取得するには、次のコマンドを使用します。
@@ -471,12 +479,12 @@ Authorization: Bearer <access-token>
 
 ### <a name="by-using-azure-powershell"></a>Azure PowerShell を使用する方法
 
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、 [Move-AzureRmResource](/powershell/module/azurerm.resources/move-azurermresource) コマンドを使用します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[Move-AzResource](/powershell/module/az.resources/move-azresource) コマンドを使用します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。
 
 ```azurepowershell-interactive
-$webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
-$plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
-Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
+$webapp = Get-AzResource -ResourceGroupName OldRG -ResourceName ExampleSite
+$plan = Get-AzResource -ResourceGroupName OldRG -ResourceName ExamplePlan
+Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
 新しいサブスクリプションに移動する場合は、`DestinationSubscriptionId` パラメーターの値を含めます。

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 内の Office 365 グループの有効期限 | Microsoft Docs
+title: Office 365 グループの有効期限の設定 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory で Office 365 グループの有効期限を設定する方法
 services: active-directory
 documentationcenter: ''
@@ -8,18 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9e73a979950e856a7fc2bfa2193ea4ca0d59bac2
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0df176185bde104a2beb34ea64d54e4069643f69
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242230"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190094"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 グループの有効期限ポリシーの構成
 
@@ -53,15 +54,16 @@ User | 所有する Office 365 グループを更新できます<br>所有する
   
   ![[有効期限] ブレード](./media/groups-lifecycle/expiration-settings.png)
 
-4. **[有効期限]** ブレードで、次のことができます。
+3. **[有効期限]** ブレードで、次のことができます。
 
   * グループの有効期間を日数で設定する。 プリセット値かカスタム値 (31 日以上である必要があります) のいずれかを選択する。 
   * グループに所有者がいない場合に、更新と有効期限の通知を送信する電子メール アドレスを指定する。 
   * どの Office 365 グループを有効期限切れにするかを選択する。  **[すべて]**  を選択してすべての Office 365 グループの有効期限を有効にするか、**[選択済み]** を選択して、選択された Office 365 グループのみを有効にするか、 **[なし]**  を選択してすべてのグループの有効期限を無効にできます。
   * **[保存]** を選択して完了し、設定を保存する。
 
+## <a name="email-notifications"></a>電子メール通知
 
-次のような電子メール通知が、グループの有効期限の 30 日前、15 日前、1 日前に Office 365 グループの所有者に送信されます。
+次のような電子メール通知が、グループの有効期限の 30 日前、15 日前、1 日前に Office 365 グループの所有者に送信されます。 メールの言語は、グループ所有者の優先言語またはテナントの言語によって決まります。 グループの所有者が優先言語を定義している場合、または複数の所有者が同じ優先言語を持っている場合は、その言語が使用されます。 その他のすべてのケースでは、テナントの言語が使用されます。
 
 ![有効期限に関する電子メール通知](./media/groups-lifecycle/expiration-notification.png)
 
@@ -91,45 +93,45 @@ User | 所有する Office 365 グループを更新できます<br>所有する
 PowerShell コマンドレットを使用して、テナントの Office 365 グループの有効期限の設定を構成する方法の例を次に示します。
 
 1. PowerShell v2.0 プレビュー モジュール (2.0.0.137) をインストールし、PowerShell プロンプトでサインインします。
-  ````
+  ```
   Install-Module -Name AzureADPreview
   connect-azuread 
-  ````
-2. 有効期限の設定を構成する New-AzureADMSGroupLifecyclePolicy: 次のコマンドレットにより、テナント内のすべての Office 365 グループの有効期間が 365 日間に設定されます。 所有者がいない Office 365 グループの更新通知は、"emailaddress@contoso.com" に送信されます。
+  ```
+2. 有効期限の設定を構成する New-AzureADMSGroupLifecyclePolicy:このコマンドレットにより、テナント内のすべての Office 365 グループの有効期間が 365 日間に設定されます。 所有者がいない Office 365 グループの更新通知は、"emailaddress@contoso.com" に送信されます。
   
-  ````
+  ```
   New-AzureADMSGroupLifecyclePolicy -GroupLifetimeInDays 365 -ManagedGroupTypes All -AlternateNotificationEmails emailaddress@contoso.com
-  ````
-3. 既存のポリシーを取得する Get-AzureADMSGroupLifecyclePolicy: このコマンドレットにより、現在の構成済み Office 365 グループの有効期限の設定が取得されます。 この例では、次のものを確認できます。
+  ```
+3. 既存のポリシーを取得する Get-AzureADMSGroupLifecyclePolicy:このコマンドレットにより、現在の構成済み Office 365 グループの有効期限の設定が取得されます。 この例では、次のものを確認できます。
   * ポリシー ID 
   * テナント内のすべての Office 365 グループの有効期間が 365 日に設定されていること
   * 所有者がいない Office 365 グループの更新通知は、"emailaddress@contoso.com" に送信されます
   
-  ````
+  ```
   Get-AzureADMSGroupLifecyclePolicy
   
   ID                                    GroupLifetimeInDays ManagedGroupTypes AlternateNotificationEmails
   --                                    ------------------- ----------------- ---------------------------
   26fcc232-d1c3-4375-b68d-15c296f1f077  365                 All               emailaddress@contoso.com
-  ```` 
+  ``` 
    
-4. 既存のポリシーを更新する Set-AzureADMSGroupLifecyclePolicy: このコマンドレットは、既存のポリシーを更新するために使用します。 次の例では、グループの既存ポリシーの有効期間が 365 日から 180 日に変更されます。 
+4. 既存のポリシーを更新する Get-AzureADMSGroupLifecyclePolicy:このコマンドレットは、既存のポリシーの更新に使用されます。 次の例では、グループの既存ポリシーの有効期間が 365 日から 180 日に変更されます。 
   
-  ````
+  ```
   Set-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -GroupLifetimeInDays 180 -AlternateNotificationEmails "emailaddress@contoso.com"
-  ````
+  ```
   
-5. 特定のグループをポリシーに追加する Add-AzureADMSLifecyclePolicyGroup: このコマンドレットにより、グループがライフサイクル ポリシーに追加されます。 例 
+5. 特定のグループをポリシーに追加する Add-AzureADMSLifecyclePolicyGroup:このコマンドレットにより、グループがライフサイクル ポリシーに追加されます。 例 
   
-  ````
+  ```
   Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
-  ````
+  ```
   
-6. 既存のポリシーを削除する Remove-AzureADMSGroupLifecyclePolicy: このコマンドレットにより、Office 365 グループの有効期限の設定が削除されます。ただし、ポリシー ID が必要です。 これで、Office 365 グループの有効期限が無効になります。 
+6. 既存のポリシーを削除する Remove-AzureADMSGroupLifecyclePolicy:このコマンドレットにより、Office 365 グループの有効期限の設定が削除されます。ただし、ポリシー ID が必要です。 これで、Office 365 グループの有効期限が無効になります。 
   
-  ````
+  ```
   Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
-  ````
+  ```
   
 次のコマンドレットは、ポリシーをさらに細かく構成するために使用できます。 詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups)を参照してください。
 

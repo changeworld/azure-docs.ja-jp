@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 8714c91079d087b16a62af4af8b381edf6871f8b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 3d32b180f7d841c36f8ae03aa94956c6da00c6fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065734"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57883442"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>ロジック アプリをデプロイするための Azure Resource Manager テンプレートの作成
 
@@ -63,7 +63,7 @@ PowerShell モジュールを手動でインストールすることもできま
 1. [ロジック アプリのテンプレート作成機能](https://github.com/jeffhollan/LogicAppTemplateCreator/releases)の最新リリースをダウンロードします。  
 2. PowerShell モジュール フォルダー (通常は `%UserProfile%\Documents\WindowsPowerShell\Modules`) にフォルダーを解凍します。
 
-モジュールがあらゆるテナントやサブスクリプション アクセス トークンで機能するように、[ARMClient](https://github.com/projectkudu/ARMClient) コマンド ライン ツールの使用をお勧めします。  この[ブログの投稿](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)では、ARMClient についてさらに詳しく説明しています。
+モジュールがあらゆるテナントやサブスクリプション アクセス トークンで機能するように、[ARMClient](https://github.com/projectkudu/ARMClient) コマンド ライン ツールの使用をお勧めします。  この[ブログの投稿](https://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)では、ARMClient についてさらに詳しく説明しています。
 
 ### <a name="generate-a-logic-app-template-by-using-powershell"></a>PowerShell を使用したロジック アプリ テンプレートの生成
 PowerShell をインストールした後は、次のコマンドを使用してテンプレートを生成できます。

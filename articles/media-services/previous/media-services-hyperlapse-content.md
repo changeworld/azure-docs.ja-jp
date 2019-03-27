@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/28/2018
+ms.date: 03/18/2019
 ms.author: adsolank
-ms.openlocfilehash: 3b361202d2d80f879ae6d23ec29782bc6f837f96
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a57194a0c7b0cd82ce3d9426211b0cf6fc0d1182
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632876"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188052"
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Azure Media Hyperlapse を使用する Hyperlapse メディア ファイル
 
@@ -52,7 +52,7 @@ XML と JSON で準拠する構成ファイルの例を以下に示します。
 **XML プリセット:**
 ```xml
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
         <Sources>
             <Source StartFrame="0" NumFrames="10000" />
         </Sources>
@@ -219,5 +219,5 @@ XML と JSON で準拠する構成ファイルの例を以下に示します。
 ## <a name="related-links"></a>関連リンク
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
-[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/18/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 775de554f39df8359c3852a2d7fa876fd12199d2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 213a695d99c50cea5962237c6210e6efcdbc5f6a
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190838"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411681"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -107,7 +107,7 @@ SSMS、SSDT、および PowerShell、Azure 関数アプリ、AMO の接続文字
 
 **問題:** ユーザーに "**Cannot find server '\<Name of the server>' instance in connection mode 'ReadOnly'**" (接続モード 'ReadOnly' でサーバー '<サーバーの名前>' インスタンスが見つかりません) というエラーが表示されます。
 
-**解決策:****[処理中のサーバーと照会中のプールを分けてください]** オプションが選択されているとき、既定の接続文字列 (:rw なし) を利用するクライアント接続は、クエリ プールのレプリカにリダイレクトされます。 同期が完了していないため、クエリ プールのレプリカがオンラインになっていない場合、リダイレクトのクライアント接続は失敗することがあります。 接続の失敗を防ぐには、スケールアウト/同期操作が完了するまで、処理中のサーバーと照会中のプールを分けないことを選択してください。 メモリと QPU のメトリックを使用し、同期の状態を監視できます。
+**解決策:** **[処理中のサーバーと照会中のプールを分けてください]** オプションが選択されているとき、既定の接続文字列 (:rw なし) を利用するクライアント接続は、クエリ プールのレプリカにリダイレクトされます。 同期が完了していないため、クエリ プールのレプリカがオンラインになっていない場合、リダイレクトのクライアント接続は失敗することがあります。 接続の失敗を防ぐには、同期の実行時にクエリ プール内に少なくとも 2 台のサーバーが含まれている必要があります。 各サーバーは、他方のオンライン状態を維持したまま、個別に同期されます。 処理時にクエリ プール内の処理サーバーを使用しないことを選択した場合は、そのサーバーを処理用のプールから削除し、処理が完了した後、同期が行われる前にプールに戻すことができます。 同期の状態を監視するには、メモリと QPU のメトリックを使用します。
 
 ## <a name="related-information"></a>関連情報
 

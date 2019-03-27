@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 6254a32349a0f7c743c3fb4993080ca3437c8276
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 9112d50384aba288038343ff9a14ed55542fb722
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810272"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121351"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
@@ -53,7 +53,7 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
     ```
     search "[username goes here]"
     ```
-人間が判読できるユーザー名だけでなく、特定のユーザーまで直接追跡できる GUID も忘れずに検索してください。
+  人間が判読できるユーザー名だけでなく、特定のユーザーまで直接追跡できる GUID も忘れずに検索してください。
 * *デバイス ID*:ユーザー ID と同様、デバイス ID も "プライベート" と見なされる場合があります。 上に記載されているユーザー ID の場合と同じ方法を使用して、これが問題となるかもしれないテーブルを特定します。 
 * *カスタム データ*:Log Analytics では、カスタム ログとカスタム フィールド、[HTTP データ コレクター API](../../azure-monitor/platform/data-collector-api.md)、システムのイベント ログの一部として収集されるカスタム データなど、さまざまな方法による収集が可能です。 これらはすべてプライベート データを含んでいる可能性があり、そのようなデータが存在するかどうかを確認するために調べる必要があります。
 * *ソリューションによって収集されたデータ*: ソリューションのメカニズムは変更可能です。そのため、コンプライアンスを確保するために、ソリューションによって生成されたすべてのテーブルを確認することをお勧めします。

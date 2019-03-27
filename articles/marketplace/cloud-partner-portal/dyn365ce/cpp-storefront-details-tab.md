@@ -1,6 +1,6 @@
 ---
-title: Dynamics 365 for Customer Engagement オファーの [Storefront Details](ネットショップの詳細) タブ - Azure Marketplace | Microsoft Docs
-description: Dynamics 365 for Customer Engagement オファーに関する販売とマーケティングの情報を指定するには、[Storefront Details](ネットショップの詳細) タブを使用します。
+title: Dynamics 365 for Customer Engagement オファーの [ネットショップの詳細] タブ - Azure Marketplace | Microsoft Docs
+description: Dynamics 365 for Customer Engagement オファーに関する販売とマーケティングの情報を指定するには、[ネットショップの詳細] タブを使用します。
 services: Dynamics 365 for Customer Engagement, Azure, Marketplace, Cloud Partner Portal, AppSource
 documentationcenter: ''
 author: v-miclar
@@ -14,23 +14,23 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 62220104329e36fbb2e6f7d3b5b48bcaeaba3660
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 66119ffab8c6117e223468834b59e6d6b19409a0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082077"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445064"
 ---
-# <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 for Customer Engagement の [Storefront Details]\(ネットショップの詳細\) タブ
+# <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 for Customer Engagement の [ネットショップの詳細] タブ
 
-販売とマーケティングの情報およびアーティファクトを指定するには、**[Storefront Details]\(ネットショップの詳細\)** タブを使用します。  このタブには次の 6 つのセクションが含まれます:**[Offer Details]\(オファーの詳細\)**、**[一覧の詳細]**、**[Marketing Artifacts]\(マーケティングの成果物\)**、**[法的情報]**、**[Customer Support]\(カスタマー サポート\)**、**[リード管理]**。  アスタリスク (*) が付いているラベルは、必須項目であることを示します。
+販売とマーケティングの情報およびアーティファクトを指定するには、**[ネットショップの詳細]** タブを使用します。  このタブには次の 6 つのセクションが含まれます:**[オファーの詳細]**、**[一覧の詳細]**、**[マーケティングの成果物]**、**[法的情報]**、**[カスタマー サポート]**、**[リード管理]**。  アスタリスク (*) が付いているラベルは、必須項目であることを示します。
 
 
-## <a name="offer-details-section"></a>[Offer Details]\(オファーの詳細\) セクション
+## <a name="offer-details-section"></a>[オファーの詳細] セクション
 
 このセクションでは、オファーの概要と説明を指定します。  この情報は、マーケットプレースで目立つように表示されます。
  
-![[Storefront Details]\(ネットショップの詳細\) タブの [Offer Details]\(オファーの詳細\) セクション](./media/storefront-tab-offer-details.png)
+![[ネットショップの詳細] タブの [オファーの詳細] セクション](./media/storefront-tab-offer-details.png)
 
 次の表ではこのタブのフィールドについて説明します。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "54082077"
 
 このセクションでは、マーケットプレースの一覧に関する詳細を指定します。
 
-![[Storefront Details]\(ネットショップの詳細\) タブの [一覧の詳細] セクション](./media/storefront-tab-listing-details.png)
+![[ネットショップの詳細] タブの [一覧の詳細] セクション](./media/storefront-tab-listing-details.png)
 
 次の表ではこのタブのフィールドについて説明します。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "54082077"
 |  ---------------      |  ---------------               |
 |  業界           | アプリが最もよく当てはまる業界を (最大で 2 つ) 選択します。 該当するものがない場合は、何も選択しなくてもかまいません。  |
 |  Categories           | アプリに関連するカテゴリを選択します。 1 ～ 3 つのオプションを選択します。  |
-|  アプリの種類             | AppSource 上のアプリで有効にする試用版の種類を選択します。 **[無料]** は、料金なしでアプリを使用できることを示します。**[試用]** は、顧客が短期間無料でアプリを試すことができることを示します。**[Contact me]\(連絡を希望する\)** は、顧客が AppSource でアプリの試用を要求できることを示します。  |
+|  アプリの種類             | AppSource 上のアプリで有効にする試用版の種類を選択します。 **[無料]** は、料金なしでアプリを使用できることを示します。**[試用]** は、顧客が短期間無料でアプリを試すことができることを示します。**[連絡を希望する]** は、顧客が AppSource でアプリの試用を要求できることを示します。  |
 | アプリのヘルプ リンク | アプリのオンライン ドキュメントまたは他のヘルプ リソースの URL です。  |
 | サポートされている国/地域 | ポップアップ ダイアログで、アプリを提供する地理的な地域を選択できます。  世界全体での配布が既定値です。 |
 | サポートされている言語   | アプリがサポートする言語を選択します。 現在は、いくつかの言語オプションだけがサポートされています。  (アプリでこの一覧にない他の言語がサポートされている場合は、オファーの公開を継続し、この情報をメール appsource@microsoft.com でお知らせください。)  |
@@ -65,11 +65,11 @@ ms.locfileid: "54082077"
 |  |  |
 
 
-## <a name="marketing-artifacts-section"></a>[Marketing Artifacts]\(マーケティングの成果物\) セクション
+## <a name="marketing-artifacts-section"></a>[マーケティングの成果物] セクション
 
 このセクションでは、ロゴの画像、プロモーション ビデオや説明ビデオ、製品ドキュメント、ユーザー インターフェイスのスクリーンショットなど、マーケティング資料を提供します。
 
-![[Storefront Details]\(ネットショップの詳細\) タブの [Marketing Artifacts]\(マーケティングの成果物\) セクション](./media/storefront-tab-market-artifacts.png)
+![[ネットショップの詳細] タブの [マーケティングの成果物] セクション](./media/storefront-tab-market-artifacts.png)
 
 次の表ではこのタブのフィールドについて説明します。 
 
@@ -87,7 +87,7 @@ ms.locfileid: "54082077"
 
 このセクションでは、アプリの "*プライバシー ポリシー*" と "*使用条件*" を指定します。
 
-![[Storefront Details]\(ネットショップの詳細\) タブの [法的情報] セクション](./media/storefront-tab-legal.png)
+![[ネットショップの詳細] タブの [法的情報] セクション](./media/storefront-tab-legal.png)
 
 次の表ではこのタブのフィールドについて説明します。 
 
@@ -98,7 +98,7 @@ ms.locfileid: "54082077"
 |  |  |
 
 
-## <a name="customer-support-section"></a>[Customer Support]\(カスタマー サポート\) セクション
+## <a name="customer-support-section"></a>[カスタマー サポート] セクション
 
 このセクションでは、アプリの**サポート URL** を指定します。
 

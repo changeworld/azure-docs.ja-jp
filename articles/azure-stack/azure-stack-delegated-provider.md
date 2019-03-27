@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: 1efe64d2057a4dccc0d82a8a99bfbf3eaa719521
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.lastreviewed: 01/09/2019
+ms.openlocfilehash: 1211edde43d802a4c48cbd936473b1a6f83af705
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159113"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342090"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Azure Stack でのオファーの委任
 
@@ -75,6 +76,9 @@ Azure Stack オペレーターとして、ユーザーのサインアップと�
 | --- | --- |
 | 委任されたプロバイダー |User |
 | User |User |
+
+ > [!NOTE]
+ > CSP リセラーの場合、この委任されたプロバイダーを作成するには、テナント ディレクトリ内にこれらのユーザーが存在する必要があります (ユーザー AAD)。 Azure Stack オペレーターは、そのテナント AAD を[最初にオンボード](azure-stack-enable-multitenancy.md)してから、[こちらの手順](azure-stack-csp-howto-register-tenants.md)に従って使用量と課金を構成する必要があります。
 
 ### <a name="identify-the-delegated-provider"></a>委任されたプロバイダーを識別します。
 

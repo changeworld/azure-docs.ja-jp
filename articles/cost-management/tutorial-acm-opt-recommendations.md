@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 2b9702dbae0414ba597b6e1f6080d9de86f624fc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2255f14d026d406dc41802c321d0a673ee2f2f23
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077079"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766862"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル: 推奨事項に従ってコストを最適化する
 
@@ -29,7 +29,7 @@ Azure Cost Management は Azure Advisor と連携して、コストの最適化�
 > * アクションを検証して仮想マシンが確実にサイズ変更されたことを確認する
 
 ## <a name="prerequisites"></a>前提条件
-推奨事項は、すべての [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様が利用できます。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。
+推奨事項は、各種の Azure アカウント ([Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様を含む) を対象に公開されています。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management データの理解](understand-cost-mgt-data.md)」をご覧ください。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。
 
 - サブスクリプション
 - リソース グループ
@@ -53,7 +53,7 @@ Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コ�
 
 Azure Advisor は、仮想マシンの使用状況を 14 日間にわたって監視して、使用率が低い仮想マシンを識別します。 CPU 使用率が 5% 以下で、ネットワークの使用率が 7 MB 以下である日が 4 日以上ある仮想マシンは、使用率が低い仮想マシンと見なされます。
 
-5% 以下の CPU 使用率設定が既定値ですが、この設定は調整できます。 設定の調整の詳細については、[使用率が低い仮想マシンの推奨事項](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation)に関する[平均 CPU 使用率ルールの構成](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation)の記事を参照してください。
+5% 以下の CPU 使用率設定が既定値ですが、この設定は調整できます。 設定の調整について詳しくは、[使用率の低い仮想マシンの推奨事項について平均 CPU 使用率ルールを構成する](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation)方法についての記事をご覧ください。
 
 設計によっては使用率が低くなるシナリオもありますが、多くの場合、仮想マシンのサイズをより安価なサイズに変更することでコストを削減できます。 サイズ変更アクションを選択した場合の実際の節約額は異なる可能性があります。 それでは仮想マシンのサイズ変更の例を見てみましょう。
 

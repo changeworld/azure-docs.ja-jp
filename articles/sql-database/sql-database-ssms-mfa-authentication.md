@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 9837316cab503e6ade623e91a41176e6f4bfc84a
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.date: 10/08/2018
+ms.openlocfilehash: 938d1b820bbc85824138d77b81b0f922fd494d0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867670"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003382"
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)
 Azure SQL Database と Azure SQL Data Warehouse では、*Active Directory ユニバーサル認証*を使用して、SQL Server Management Studio (SSMS) からの接続をサポートするようになりました。 
-**最新の SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」から SSMS の最新版をダウンロードします。 この記事のすべての機能を使用するには、2017 年 7 月以降のバージョン 17.2 を使用してください。  最新の接続ダイアログ ボックスは、のように表示されます。 ![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "ユーザー名 ボックスに入力します。")  
+**最新の SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」から SSMS の最新版をダウンロードします。 この記事のすべての機能を使用するには、2017 年 7 月以降のバージョン 17.2 を使用してください。  最新の接続ダイアログ ボックスは次のように表示されます。![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "[ユーザー名] ボックスへの入力。")  
 
 ## <a name="the-five-authentication-options"></a>5 つの認証オプション  
 - Active Directory ユニバーサル認証は、2 つの非対話型の認証方式 (`Active Directory - Password` 認証と `Active Directory - Integrated` 認証) をサポートします。 非対話型 `Active Directory - Password` および `Active Directory - Integrated` 認証方式は、さまざまなアプリケーション (ADO.NET、JDBC、ODBC など) で使用できます。 これら 2 つの方式では、ポップアップ ダイアログ ボックスは表示されません。
@@ -46,14 +46,14 @@ Multi-Factor Authentication の説明については、 [Multi-Factor Authentica
 - SSMS バージョン 17.2 では、データベースのエクスポート/抽出/データの展開を支援する DacFx ウィザードが提供されています。 ユニバーサル認証を使用して、初期認証ダイアログ ボックスで特定のユーザーが認証されると、DacFx ウィザードは他のすべての認証方法についても同じように機能します。
 - SSMS テーブル デザイナーは、ユニバーサル認証をサポートしていません。
 - サポートされているバージョンの SSMS を使用する必要があることを除き、Active Directory ユニバーサル認証に関する追加のソフトウェア要件はありません。  
-- ユニバーサル認証用の Active Directory Authentication Library (ADAL) バージョンは、最新のリリース バージョン ADAL.dll 3.13.9 に更新されました。 「[Active Directory 認証ライブラリ 3.14.1](http://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)」を参照してください。  
+- ユニバーサル認証用の Active Directory Authentication Library (ADAL) バージョンは、最新のリリース バージョン ADAL.dll 3.13.9 に更新されました。 「[Active Directory 認証ライブラリ 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)」を参照してください。  
 
 
 ## <a name="next-steps"></a>次の手順
 
 - 構成手順については、「[SQL Server Management Studio 用に Azure SQL Database の多要素認証を構成する](sql-database-ssms-mfa-authentication-configure.md)」をご覧ください。
-- 他のユーザーへのデータベースへのアクセス権の付与: [SQL Database の認証と承認: アクセス権の付与](sql-database-manage-logins.md)  
-- 他のユーザーがファイアウォール経由で接続する手順は、「[Azure Portal を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings.md)」をご覧ください。  
+- 自分のデータベースへのアクセス権を他のユーザーに付与する:[SQL Database の認証と承認:アクセス権の付与](sql-database-manage-logins.md)  
+- 他のユーザーがファイアウォール経由で接続できるようにする:[Azure Portal を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings.md)  
 - [SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](sql-database-aad-authentication-configure.md)  
 - [Microsoft SQL Server Data-Tier Application Framework (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)  

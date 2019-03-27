@@ -1,30 +1,30 @@
 ---
-title: 'Azure 証明書認証用の P2S VPN クライアント構成ファイルを作成およびインストールする: Azure | Microsoft Docs'
+title: Azure 証明書認証用の P2S VPN クライアント構成ファイルを作成しインストールする:Azure | Microsoft Docs
 description: P2S 証明書認証のために、Windows、Linux、Linux (strongSwan)、および Mac OS X VPN クライアント構成ファイルを作成してインストールします。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 02/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 11d23102ca807ab1ddf41f1d0e72aed8a8513ac8
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: 48dad37ca5ea5a74f52c60b8734d0296757e94aa
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636647"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417552"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
-VPN クライアント構成ファイルは、ZIP ファイルに含まれています。 構成ファイルでは、Windows、Mac IKEv2 VPN、Linux のネイティブ クライアントが、ネイティブ Azure 証明書認証を使用するポイント対サイト接続を介して VNet に接続するために必要な設定を提供します。 ポイント対サイト接続について詳しくは、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。
+VPN クライアント構成ファイルは、ZIP ファイルに含まれています。 構成ファイルでは、Windows、Mac IKEv2 VPN、Linux のネイティブ クライアントが、ネイティブ Azure 証明書認証を使用するポイント対サイト接続を介して VNet に接続するために必要な設定を提供します。
+
+クライアント構成ファイルは、VNet の VPN 構成に固有です。 VPN プロトコルの種類や認証の種類など、VPN クライアント構成ファイルの生成後にポイント対サイト VPN 構成に対する変更があった場合は、ユーザー デバイス用に新しい VPN クライアント構成ファイルを生成してください。 
+
+* ポイント対サイト接続について詳しくは、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。
+* OpenVPN の取扱説明については、[P2S 向け OpenVPN を構成する](vpn-gateway-howto-openvpn.md)方法に関するページと [OpenVPN クライアントを構成する](vpn-gateway-howto-openvpn-clients.md)方法に関するページを参照してください。
 
 >[!IMPORTANT]
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
->
-
->[!NOTE]
->クライアント構成ファイルは、VNet の VPN 構成に固有です。 VPN プロトコルの種類や認証の種類など、VPN クライアント構成ファイルの生成後にポイント対サイト VPN 構成に対する変更があった場合は、ユーザー デバイス用に新しい VPN クライアント構成ファイルを生成してください。
->
 >
 
 ## <a name="generate"></a>VPN クライアント構成ファイルの生成
@@ -45,10 +45,12 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 
 ### <a name="zipps"></a>PowerShell を使用してファイルを生成する
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. VPN クライアント構成ファイルを生成する際、"-AuthenticationMethod" の値は "EapTls" です。 次のコマンドを使用して、VPN クライアント構成ファイルを生成します。
 
-  ```powershell
-  $profile=New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
+  ```azurepowershell-interactive
+  $profile=New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
 
   $profile.VPNProfileSASUrl
   ```

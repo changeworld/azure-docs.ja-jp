@@ -3,21 +3,22 @@ title: 最近削除されたユーザーを復元するか完全に削除する 
 description: Azure Active Directory を使用して、復元可能なユーザーを表示する方法、削除されたユーザーを復元する方法、およびユーザーを完全に削除する方法。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 066c9189e0c3cea409a99217e0ab4b46002df1f9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b98cc0141954a079b848bd9639b081499819b8ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556783"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877005"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Azure Active Directory を使用して最近削除されたユーザーを復元または削除する
 ユーザーを削除した後、アカウントは 30 日間、中断状態のままになります。 その 30 日の期間中は、ユーザー アカウントをそのすべてのプロパティと共に復元することができます。 30 日の期間が経過すると、ユーザーは自動的に完全に削除されます。
@@ -30,13 +31,13 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
 ## <a name="required-permissions"></a>必要なアクセス許可
 ユーザーの復元または完全な削除を行うには、次のいずれかのロールが必要です。
 
-- 会社の管理者
+- 全体管理者
 
 - パートナー レベル 1 のサポート
 
 - パートナー レベル 2 のサポート
 
-- ユーザー アカウント管理者
+- ユーザー管理者
 
 ## <a name="view-your-restorable-users"></a>復元可能なユーザーを表示する
 削除されてからまだ 30 日が経過していないユーザーはすべて表示することができます。 これらのユーザーは復元することができます。
@@ -59,9 +60,6 @@ Azure portal 内で Azure Active Directory (Azure AD) を使用して、復元�
 2. **[ユーザーの復元]** を選びます。
 
     ![[ユーザー - 削除済みユーザー] ページ上で強調表示されている [ユーザーの復元] オプション](media/active-directory-users-restore/users-deleted-users-restore-user.png)
-
->[!NOTE]
->これまでは、オンプレミスの同期範囲からユーザーが削除され、クラウドでも削除された場合、アカウントの DirSyncEnabled 状態が誤って "False" に設定されていました。 その後、そのユーザーが Azure AD のごみ箱から手動で復元された場合は、"Cloud-Only" という正しくない状態のアカウントとして表示されていました。 現在はこれは修正され、ユーザーが同期範囲から削除され、論理的に削除された後、Azure AD のごみ箱から手動で復元された場合でも、DirSyncEnabled 状態は、常に "True" で維持されるようになりました。
 
 ## <a name="permanently-delete-a-user"></a>ユーザーの完全な削除
 30 日経過してから自動削除されるのを待つことなく、ご利用のディレクトリからユーザーを完全に削除することができます。 完全に削除されたユーザーは、担当の管理者も、別の管理者も、Microsoft カスタマー サポートも復元することができません。

@@ -3,21 +3,21 @@ title: Azure Active Directory B2C で利用可能なリージョンとデータ�
 description: Azure Active Directory B2C テナントの種類に関するトピック。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 7c0348dad507b118af542c1bbc47f6ceb88ae7be
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.subservice: B2C
+ms.openlocfilehash: f72f75013d69533eeda0e69acbff1c4f7047f509
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443054"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55193685"
 ---
-# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: 利用可能なリージョンとデータの保存場所
+# <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C:利用可能なリージョンとデータの保存場所
 利用可能なリージョンとデータの保存場所は、まったく異なる 2 つの概念です。また、Azure AD B2C とそれ以外の Azure サービスとでは、利用可能なリージョンとデータの保存場所との関係が異なります。 この記事では、2 つの概念の違いについて説明するとともに、Azure AD B2C とそれ以外の Azure サービスに対するそれらの概念の意味合いを比較します。
 
 ## <a name="summary"></a>まとめ

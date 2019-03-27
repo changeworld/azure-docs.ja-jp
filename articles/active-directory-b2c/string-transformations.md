@@ -3,19 +3,19 @@ title: Azure Active Directory B2C の Identity Experience Framework スキーマ
 description: Azure Active Directory B2C の Identity Experience Framework スキーマの文字列要求変換の例
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: f2823ec32b6658aa22c38294c09c9738c9121c39
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.subservice: B2C
+ms.openlocfilehash: 32acee78b1aadbe5a461de6ea4475cf28503c325
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121585"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113029"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
@@ -78,10 +78,10 @@ ms.locfileid: "54121585"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputClaim1**: someone@contoso.com
-    - **inputClaim2**: someone@outlook.com
- - 入力パラメーター:
-    - **stringComparison**:  ordinalIgnoreCase
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
+    - 入力パラメーター:
+  - **stringComparison**:  ordinalIgnoreCase
 - 結果:エラーがスローされます
 
 ## <a name="changecase"></a>ChangeCase 
@@ -113,11 +113,11 @@ ms.locfileid: "54121585"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **email**: SomeOne@contoso.com
+  - **email**: SomeOne@contoso.com
 - 入力パラメーター:
     - **toCase**:LOWER
 - 出力要求:
-    - **email**: someone@contoso.com
+  - **email**: someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim 
 
@@ -181,8 +181,8 @@ ms.locfileid: "54121585"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **inputClaim1**: someone@contoso.com
-    - **inputClaim2**: someone@outlook.com
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
 - 入力パラメーター:
     - **operator**:NOT EQUAL
     - **ignoreCase**: true
@@ -321,7 +321,7 @@ ms.locfileid: "54121585"
 - 入力パラメーター:
     - **stringFormat**:  cpim_{0}@{RelyingPartyTenantId}
 - 出力要求:
-    - **outputClaim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+  - **outputClaim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
@@ -494,7 +494,7 @@ ms.locfileid: "54121585"
 ### <a name="example"></a>例
 
 - 入力要求:
-    - **emailAddress**: joe@outlook.com
+  - **emailAddress**: joe@outlook.com
 - 出力要求:
     - **domain**: outlook.com
 

@@ -8,19 +8,20 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: c1917375-08aa-445c-a444-e22e23fa19e0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: c727cddf41c269c214b541134cd9f688017ee687
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6f0a8f6ce325dd087aec5e055e09e20e7de62a40
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789723"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204833"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>チュートリアル: Azure Active Directory と Tableau Server の統合
 
@@ -127,7 +128,7 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
 
     c. **[名前空間]** 値を入力します。
 
-    d. [ソース] として **[属性]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [ソース] として **[属性]** を選択します。
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
@@ -172,7 +173,7 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
 
     c. [Tableau Server return URL]\(Tableau Server の戻り先 URL\): Tableau Server ユーザーがアクセスする URL (http://tableau_server など)。 http://localhost の使用は推奨されません。 末尾にスラッシュが付いている URL (例: http://tableau_server/) はサポートされていません。 **[Tableau Server return URL]\(Tableau Server の戻り先 URL\)** をコピーし、Azure AD の **[Tableau Server のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
 
-    d. [SAML entity ID]: IdP に対して Tableau Server のインストールを一意に識別するエンティティ ID。 必要に応じてこの欄にも Tableau Server URL を入力できますが、使用する Tableau Server URL にする必要はありません。 **[SAML entity ID]\(SAML エンティティ ID\)** をコピーし、Azure AD の **[Tableau Server のドメインと URL]** セクションにある **[識別子]** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [SAML entity ID]: IdP に対して Tableau Server のインストールを一意に識別するエンティティ ID。 必要に応じてこの欄にも Tableau Server URL を入力できますが、使用する Tableau Server URL にする必要はありません。 **[SAML entity ID]\(SAML エンティティ ID\)** をコピーし、Azure AD の **[Tableau Server のドメインと URL]** セクションにある **[識別子]** ボックスに貼り付けます。
 
     e. **[Download XML Metadata File]\(XML メタデータ ファイルのダウンロード\)** をクリックし、テキスト エディター アプリケーションで開きます。 Http Post で Index 0 の [Assertion Consumer Service URL] を探し、URL をコピーします。 Azure AD の **[Tableau Server のドメインと URL]** セクションにある **[応答 URL]** ボックスに貼り付けます。
 
@@ -209,13 +210,13 @@ Tableau Server で Azure AD のシングル サインオンを構成してテス
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
   
 ### <a name="create-tableau-server-test-user"></a>Tableau Server のテスト ユーザーの作成
 
 このセクションの目的は、Tableau Server で Britta Simon というユーザーを作成することです。 Tableau Server 内のすべてのユーザーをプロビジョニングする必要があります。 
 
-また、ユーザーのユーザー名は、Azure AD のカスタム属性 **username** で構成した値と一致する必要があります。 正しい対応付けがあれば、統合で「 [Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)」が機能します。
+また、ユーザーのユーザー名は、Azure AD のカスタム属性 **username** で構成した値と一致する必要があります。 正しい対応付けがあれば、統合で Azure AD シングル サインオンの構成が機能します。
 
 >[!NOTE]
 >ユーザーを手動で作成する必要がある場合は、組織の Tableau Server 管理者に問い合わせてください。

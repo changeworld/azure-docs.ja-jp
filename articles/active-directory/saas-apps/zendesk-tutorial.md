@@ -4,7 +4,7 @@ description: Azure Active Directory と Zendesk の間でシングル サイン�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9d7c91e5-78f5-4016-862f-0f3242b00680
 ms.service: Azure-Active-Directory
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/03/2018
+ms.date: 02/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 48e429c8ec95522e020d8d4cf9a9cbcfc38ea38f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3dab8781e5bfea60c749fe446ef38e072b98380e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062436"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876468"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>チュートリアル:Azure Active Directory と Zendesk の統合
 
@@ -108,7 +109,7 @@ Zendesk で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.zendesk.com`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`<subdomain>.zendesk.com`
+  b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.zendesk.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Zendesk クライアント サポート チーム](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -162,7 +163,7 @@ Zendesk で Azure AD シングル サインオンを構成するには、次の�
 
 11. ブラウザーに拡張機能を追加した後、**[Set up Zendesk]\(Zendesk のセットアップ\)** をクリックすると、Zendesk アプリケーションに移動します。 そこから、管理者資格情報を提供して Zendesk にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、「**Zendesk シングル サインオンの構成**」セクションが自動化されます。
 
-     ![image](./media/zendesk-tutorial/d2_saml.png)
+    ![image](./media/zendesk-tutorial/d2_saml.png)
 
 ### <a name="configure-zendesk-single-sign-on"></a>Zendesk のシングル サインオンの構成
 
@@ -184,13 +185,13 @@ Zendesk で Azure AD シングル サインオンを構成するには、次の�
 
     c. **[SAML SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. **[Remote Logout URL]\(リモート ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Remote Logout URL]\(リモート ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
     e. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
 
     f. **[Save]** をクリックします。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
@@ -274,9 +275,8 @@ Zendesk で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [[ユーザー プロビジョニングの構成]](zendesk-provisioning-tutorial.md) 
-
+- [[ユーザー プロビジョニングの構成]](zendesk-provisioning-tutorial.md)

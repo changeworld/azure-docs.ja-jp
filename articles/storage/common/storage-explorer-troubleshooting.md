@@ -7,13 +7,13 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.component: common
-ms.openlocfilehash: ec12da6ccd5b681c85da87d53f944fc4430149b5
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.subservice: common
+ms.openlocfilehash: c192b3e995cacd3085f343d1f6b2c243f1531acc
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51616199"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415512"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -21,7 +21,7 @@ Microsoft Azure Storage Explorer は、Windows、macOS、Linux で Azure Storage
 
 このガイドでは、Storage Explorer で確認されている一般的な問題の解決方法を紹介しています。
 
-## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>エラー: 証明書チェーンの自己署名証明書 (および同様のエラー)
+## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>エラー:証明書チェーンの自己署名証明書 (および同様のエラー)
 
 証明書のエラーは、次の 2 つの状況のいずれかで発生します。
 
@@ -53,6 +53,20 @@ Storage Explorer に自己署名証明書または信頼されない証明書が
 前述の手順で自己署名証明書が見つからない場合は、フィードバック ツールを使用して Microsoft にお問い合わせください。 また、Storage Explorer に `--ignore-certificate-errors` フラグを指定してコマンドラインから起動することも選択できます。 このフラグを指定して起動すると、Storage Explorer は証明書のエラーを無視します。
 
 ## <a name="sign-in-issues"></a>サインインの問題
+
+### <a name="blank-sign-in-dialog"></a>空白のサインイン ダイアログ
+サインイン ダイアログが空白になる原因で最もよくあるのは、Electron によってサポートされていないリダイレクトを実行するよう、ADFS が Storage Explorer に要求する場合です。 この問題を回避するには、サインインにデバイス コード フローを使用してみることができます。 そのためには、次の手順を実行します。
+1. [Go to Experimental]\(実験に移動\) -> [Use Device Code Sign-In]\(デバイス コード サインインを使用\)。
+2. [Connect]\(接続\) ダイアログを開きます (左側の垂直バーのプラグ アイコン、またはアカウント パネルの [Add Account]\(アカウントの追加\) を使用して)。
+3. サインインする環境を選択します。
+4. [サインイン] ボタンをクリックします。
+5. 次のパネルの手順に従います。
+
+注: 現在、この機能は 1.7.0 プレビューのみで使用できます。
+
+既定のブラウザーが別のアカウントに既にサインインしているために、使用するアカウントへのサインインで問題が発生する場合は、次のどちらかのようにすることができます。
+1. お使いのブラウザーのプライベート セッションに、リンクとコードを手動でコピーします。
+2. 別のブラウザーに、リンクとコードを手動でコピーします。
 
 ### <a name="reauthentication-loop-or-upn-change"></a>再認証ループまたは UPN の変更
 再認証ループに入った、またはアカウントのいずれかの UPN を変更されている場合は、以下を試してください。
@@ -90,7 +104,7 @@ macOS のキーチェーンが、Storage Explorer の認証ライブラリの問
 正常にサインインした後にサブスクリプションを取得できない場合は、次のトラブルシューティング方法を試してください。
 
 * お使いのアカウントに必要なサブスクリプションへのアクセス権があることを確認します。 使用しようとしている Azure 環境のポータルにサインインして、アクセス権があることを確認することができます。
-* 適切な Azure 環境 (Azure、Azure China、Azure Germany、Azure US Government、またはカスタム環境) を使用してサインインしていることを確認します。
+* 適切な Azure 環境 (Azure、Azure China 21Vianet、Azure Germany、Azure US Government、またはカスタム環境) を使用してサインインしていることを確認します。
 * プロキシの内側にいる場合は、Storage Explorer のプロキシが適切に構成されていることを確認します。
 * アカウントを削除してから再度追加します。
 * [詳細] リンクがある場合は、障害が発生しているテナントに対してどのようなエラー メッセージが報告されているかを確認します。 エラー メッセージを見てもどうすればいいかわからない場合は、[GitHub に問題を投稿](https://github.com/Microsoft/AzureStorageExplorer/issues)してください。
@@ -100,7 +114,7 @@ macOS のキーチェーンが、Storage Explorer の認証ライブラリの問
 接続されているアカウントまたはストレージ リソースを UI を使用して削除できない場合は、次のフォルダーを削除して、接続されているすべてのリソースを手動で削除できます。
 
 * Windows: `%AppData%/StorageExplorer`
-* macOS: `/Users/<your_name>/Library/Applicaiton Support/StorageExplorer`
+* macOS: `/Users/<your_name>/Library/Application Support/StorageExplorer`
 * Linux: `~/.config/StorageExplorer`
 
 > [!NOTE]
@@ -116,7 +130,7 @@ macOS のキーチェーンが、Storage Explorer の認証ライブラリの問
 * プロキシの URL とポート番号
 * プロキシで必要な場合はユーザー名とパスワード
 
-Storage Explorer では、プロキシ設定の構成に関して .pac ファイルがサポートされないことに注意してください。
+Storage Explorer では、プロキシ設定の構成にプロキシ自動構成ファイルがサポートされていないことに注意してください。
 
 ### <a name="common-solutions"></a>一般的な解決方法
 

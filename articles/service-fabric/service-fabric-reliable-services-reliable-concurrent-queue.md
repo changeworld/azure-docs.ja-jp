@@ -3,7 +3,7 @@ title: Azure Service Fabric の ReliableConcurrentQueue
 description: ReliableConcurrentQueue は、並列エンキューと並列デキューが利用できる高スループットのキューです。
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
+author: aljo-microsoft
 manager: timlt
 editor: raja,tyadam,masnider,vturecek
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: twhitney
-ms.openlocfilehash: 61b53a23fdbb08b226878d9b702ec6bb2879f8bc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: aljo
+ms.openlocfilehash: 6fefbd21a5c301111afdc27ec1d332d713c669ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185037"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119651"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric の ReliableConcurrentQueue の概要
 Reliable Concurrent Queue は、エンキュー操作とデキュー操作に関して高いコンカレンシーを備えた、非同期、トランザクショナル、レプリケートを特徴とするキューです。 [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx) の特徴である厳密な FIFO の順序付けを緩和し、ベストエフォートの順序付けを利用できるようにすることで、高いスループットと短い待ち時間が得られるように設計されています。
@@ -70,7 +70,7 @@ using (var txn = this.StateManager.CreateTransaction())
 このタスクが正常に完了し、このキューに変更を加える同時トランザクションが存在しなかったと仮定しましょう。 この場合キューには、次のいずれかの順序で要素が格納されていると考えられます。
 
 > 10、20
-
+> 
 > 20、10
 
 
@@ -165,7 +165,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 トランザクションを中止すると、次のいずれかの順序で要素がキューの先頭に戻されます。
 > 10、20
-
+> 
 > 20、10
 
 同じことは、トランザクションが正常に "*コミット*" されないすべてのケースに当てはまります。

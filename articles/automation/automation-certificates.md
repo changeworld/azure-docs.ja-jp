@@ -3,41 +3,42 @@ title: Azure Automation の証明書資産
 description: 証明書を Azure Automation に安全に保存し、Runbook または DSC 構成でアクセスして Azure およびサードパーティのリソースで認証できます。  この記事では、証明書の詳細およびテキスト作成とグラフィカル作成の両方で証明書を使用する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7aeb9a9557694f8773af4fe67f47950bf82afe87
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 3a1fd81f890e304c6bda75fad609cc8c98cd634d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621413"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880383"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Azure Automation の証明書資産
 
 証明書を Azure Automation に安全に保存し、Azure Resource Manager リソースの **Get-AzureRmAutomationCertificate** アクティビティを使用して、Runbook または DSC 構成でアクセスできます。 この機能により、認証に証明書を使用する Runbook および DSC 構成を作成したり、それらを Azure またはサードパーティのリソースに追加したりすることができます。
 
 >[!NOTE]
->Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 このキーは Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、キーが Key Vault から読み込まれ、資産の暗号化に使われます。
+>Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 このキーは、システムで管理されたキー コンテナーに格納されます。 セキュリティで保護された資産を保存する前に、キーが Key Vault から読み込まれ、資産の暗号化に使われます。 このプロセスは、Azure Automation によって管理されます。
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell コマンドレット
 AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [AzureRM.Automation モジュール](/powershell/azure/overview) に付属しています。
 
 |コマンドレット|説明|
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|Runbook または DSC 構成で使用する証明書についての情報を取得します。 Get-AutomationCertificate アクティビティから取得できるのは、証明書自体のみです。|
-|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|新しい証明書を Azure Automation に作成します。|
-[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|証明書を Azure Automation から削除します。|新しい証明書を Azure Automation に作成します。
+|[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|Runbook または DSC 構成で使用する証明書についての情報を取得します。 Get-AutomationCertificate アクティビティから取得できるのは、証明書自体のみです。| 
+|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|新しい証明書を Azure Automation に作成します。| 
+[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|証明書を Azure Automation から削除します。|
 |[Set-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationcertificate)|証明書ファイルのアップロードや .pfx のパスワードの設定など、既存の証明書のプロパティを設定します。|
 |[Add-AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|指定されたクラウド サービスのサービス証明書をアップロードします。|
 
-## <a name="activities"></a>アクティビティ
+
+## <a name="activities"></a>Activities
 Runbook および DSC 構成で証明書にアクセスするために、次の表のアクティビティが使用されます。
 
-| アクティビティ | 説明 |
+| Activities | 説明 |
 |:---|:---|
 |Get-AutomationCertificate|Runbook または DSC 構成で使用する証明書を取得します。 [System.Security.Cryptography.X509Certificates.X509Certificate2](https://msdn.microsoft.com/library/system.security.cryptography.x509certificates.x509certificate2.aspx) オブジェクトを返します。|
 
@@ -62,11 +63,11 @@ Runbook および DSC 構成で証明書にアクセスするために、次の�
 ### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>Azure ポータルで新しい証明書を作成するには
 
 1. Automation アカウントから、**[資産]** タイルをクリックして **[資産]** ブレードを開きます。
-1. **[証明書]** タイルをクリックして **[証明書]** ブレードを開きます。
-1. ブレード上部の **[証明書の追加]** をクリックします。
-1. Type a name for the certificate in the **Name** box.
-1. .cer または .pfx ファイルを参照するには、**[Upload a certificate file]\(証明書ファイルのアップロード\)** の **[ファイルの選択]** をクリックします。 .pfx ファイルを選択する場合は、パスワードおよびエクスポートを許可するかどうかを指定します。
-1. **[作成]** をクリックして、新しい証明書資産を保存します。
+2. **[証明書]** タイルをクリックして **[証明書]** ブレードを開きます。
+3. ブレード上部の **[証明書の追加]** をクリックします。
+4. Type a name for the certificate in the **Name** box.
+5. .cer または .pfx ファイルを参照するには、**[Upload a certificate file]\(証明書ファイルのアップロード\)** の **[ファイルの選択]** をクリックします。 .pfx ファイルを選択する場合は、パスワードおよびエクスポートを許可するかどうかを指定します。
+6. **[作成]** をクリックして、新しい証明書資産を保存します。
 
 ### <a name="to-create-a-new-certificate-with-windows-powershell"></a>Windows PowerShell で新しい証明書を作成するには
 
@@ -105,7 +106,7 @@ Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 
 次の図は、グラフィカルな Runbook で証明書を使用する例を示したものです。 これは、テキストの Runbook からクラウド サービスに証明書を追加する前述の例と同じです。
 
-![グラフィカル作成の例 ](media/automation-certificates/graphical-runbook-add-certificate.png)
+![グラフィカル作成の例](media/automation-certificates/graphical-runbook-add-certificate.png)
 
 ### <a name="python2-sample"></a>Python2 サンプル
 次の例では、Python2 Runbook の証明書にアクセスする方法を示します。
@@ -121,3 +122,4 @@ print cert
 ## <a name="next-steps"></a>次の手順
 
 - リンクを使用して、Runbook で実行するように設計されているアクティビティの論理フローを制御する方法については、「[グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)」をご覧ください。 
+

@@ -6,30 +6,30 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 0dc4fc31-ae1c-422c-ac34-7b025e6651b4
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b6d3cbd56182b8dba3738f38798efa378c6b49d0
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: eb162e51a6091b22abd4a8d12275423d726b1785
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53254828"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763947"
 ---
-# <a name="use-azure-machine-learning-services-in-a-notebook"></a>ノートブックで Azure Machine Learning Services を使用する
+# <a name="use-azure-machine-learning-service-in-a-notebook"></a>ノートブックで Azure Machine Learning service を使用する
 
-Azure Notebooks は、[Azure Machine Learning Services](/azure/machine-learning/service/) と連動するために必要な環境で事前構築されています。 サンプル プロジェクトを自分の Notebooks アカウントに複製し、さまざまな機械学習シナリオを試すことが簡単にできます。
+Azure Notebooks は、[Azure Machine Learning service](/azure/machine-learning/service/) と連動するために必要な環境で事前構築されています。 サンプル プロジェクトを自分の Notebooks アカウントに複製し、さまざまな機械学習シナリオを試すことが簡単にできます。
 
 ## <a name="clone-the-sample-into-your-account"></a>サンプルを自分のアカウントに複製する
 
 1. [Azure Notebooks](https://notebooks.azure.com/) にサインインします。
 1. **[マイ プロジェクト]** を選択し、プロジェクト ダッシュボードに移動します。
 1. **[Upload GitHub Repo]\(GitHub リポジトリのアップロード\)** (上向き矢印) ボタンを選択し、**[Upload GitHub Repository]\(GitHub リポジトリのアップロード\)** ポップアップを開きます。
-1. このポップアップで、**[GitHub リポジトリ]** に「`Azure/MachineLearningNotebooks`」と入力し、**[プロジェクト名]** にプロジェクトの名前を指定し ("Azure ML Services" など)、**[プロジェクト ID]** に識別子を指定し、必要であれば **[公開]** を選択解除し、**[インポート]** を選択します。
+1. このポップアップで、**[GitHub リポジトリ]** に「`Azure/MachineLearningNotebooks`」と入力し、**[プロジェクト名]** でプロジェクトの名前を指定し ("Azure Machine Learning service" など)、**[プロジェクト ID]** で識別子を指定し、必要であれば **[公開]** を選択解除して、**[インポート]** を選択します。
 
     ![Azure Machine Learning Notebook サンプルを自分の Notebooks アカウントにインポートする](media/azureml-import-project.png)
 

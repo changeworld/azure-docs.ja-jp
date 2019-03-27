@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 検索応答の文字飾りを有効にする方法を示します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 33a99a7007e522d0a39459c790d802d9feef0026
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 83c97069a9fad3bffde2f38dd33083ab02de2b87
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263834"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867904"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>装飾マーカーを使用してテキストを強調表示する
 

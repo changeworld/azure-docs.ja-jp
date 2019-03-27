@@ -4,26 +4,30 @@ description: この記事では、Application Gateway の Web アプリケーシ
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/7/2018
+ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 4b03065c59eed8f0d72e2724e60b6d8908518727
-ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
+ms.openlocfilehash: 9bccc9258a6bd9a6fef4956d0f32cb00dd3c542d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51219530"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454261"
 ---
 # <a name="web-application-firewall-waf"></a>Web アプリケーション ファイアウォール (WAF)
 
-Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する Application Gateway の機能です。 
+Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する Application Gateway の機能です。
 
-Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の的になるケースが増えています。 よくある攻撃の例として、SQL インジェクション攻撃やクロス サイト スクリプティング攻撃が挙げられます。 アプリケーション コードでこのような攻撃を防ぐことは困難な場合があり、厳格な保守、パッチの適用、アプリケーション トポロジの複数のレイヤーの監視が必要になることもあります。 Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、アプリケーション管理者にとっては侵入の脅威からより確実に保護されるようになります。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールに対応したアプリケーション ゲートウェイに簡単に変換できます。
+Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の的になるケースが増えています。 よくある攻撃の例として、SQL インジェクション攻撃やクロス サイト スクリプティング攻撃が挙げられます。 
+
+アプリケーション コードでこのような攻撃を防ぐことは困難な場合があり、厳格な保守、パッチの適用、アプリケーション トポロジの複数のレイヤーの監視が必要になることもあります。 Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、アプリケーション管理者にとっては侵入の脅威からより確実に保護されるようになります。 また、WAF のソリューションでは、個々の Web アプリケーションをセキュリティで保護するのではなく、1 か所に既知の脆弱性の修正プログラムを適用することで、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールに対応したアプリケーション ゲートウェイに簡単に変換できます。
 
 WAF は、[OWASP コア ルール セット](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 または 2.2.9 の規則に基づいています。 追加構成を必要とすることなく、新たな脆弱性に対する保護を含めるために自動的に更新します。
 
 ![imageURLroute](./media/waf-overview/WAF1.png)
 
-Application Gateway は、アプリケーション配信コントローラー (ADC) として動作し、SSL ターミネーション、Cookie ベースのセッション アフィニティ、ラウンドロビンの負荷分散、コンテンツ ベースのルーティング、複数の Web サイトをホストする機能、セキュリティ強化機能を提供します。 Application Gateway で実現するセキュリティの強化には、SSL ポリシーの管理、エンド ツー エンド SSL のサポートが含まれます。 アプリケーション セキュリティは、ADC 製品に直接統合された WAF (Web アプリケーション ファイアウォール) によって強化されるようになりました。 その結果、一般的な Web の脆弱性に対して Web アプリケーションを管理および保護するための構成を、1 か所で簡単に設定できます。
+Application Gateway は、アプリケーション配信コントローラー (ADC) として動作し、SSL ターミネーション、Cookie ベースのセッション アフィニティ、ラウンドロビンの負荷分散、コンテンツ ベースのルーティング、複数の Web サイトをホストする機能、セキュリティ強化機能を提供します。
+
+Application Gateway で実現するセキュリティの強化には、SSL ポリシーの管理、エンド ツー エンド SSL のサポートが含まれます。 アプリケーション セキュリティは、ADC 製品に直接統合された WAF (Web アプリケーション ファイアウォール) によって強化されるようになりました。 その結果、一般的な Web の脆弱性に対して Web アプリケーションを管理および保護するための構成を、1 か所で簡単に設定できます。
 
 ## <a name="benefits"></a>メリット
 
@@ -53,7 +57,7 @@ Application Gateway と Web アプリケーション ファイアウォールが
 - HTTP プロトコル違反に対する保護
 - HTTP プロトコル異常に対する保護 (ホスト ユーザー エージェントと承認ヘッダーが見つからない場合など)
 - ボット、クローラー、スキャナーの防止
-- 一般的なアプリケーション構成ミスの検出 (Apache、IIS など)
+- 一般的なアプリケーション構成ミスの検出 (Apache や IIS など)
 
 ### <a name="public-preview-features"></a>パブリック プレビュー機能
 
@@ -80,9 +84,9 @@ Web アプリケーション ファイアウォールは、既定で CRS 3.0 を
 - HTTP プロトコル違反に対する保護
 - HTTP プロトコル異常に対する保護 (ホスト ユーザー エージェントと承認ヘッダーが見つからない場合など)
 - ボット、クローラー、スキャナーの防止
-- 一般的なアプリケーション構成ミスの検出 (Apache、IIS など)
+- 一般的なアプリケーション構成ミスの検出 (Apache や IIS など)
 
-規則と保護の詳細な一覧については、「[コア ルール セット](#core-rule-sets)」をご覧ください。
+規則と保護の詳細な一覧については、「[コア ルール セット](#core-rule-sets)」を参照してください。
 
 
 #### <a name="owasp30"></a>OWASP_3.0
@@ -91,7 +95,7 @@ Web アプリケーション ファイアウォールは、既定で CRS 3.0 を
 
 |RuleGroup|説明|
 |---|---|
-|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|メソッド (PUT、PATCH< ..) をロックダウンする規則が含まれています。|
+|**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|メソッド (PUT、PATCH) をロックダウンする規則が含まれています。|
 |**[REQUEST-913-SCANNER-DETECTION](application-gateway-crs-rulegroups-rules.md#crs913)**| ポートや環境のスキャナーから保護するための規則が含まれています。|
 |**[REQUEST-920-PROTOCOL-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs920)**|プロトコルとエンコーディングの問題から保護するための規則が含まれています。|
 |**[REQUEST-921-PROTOCOL-ATTACK](application-gateway-crs-rulegroups-rules.md#crs921)**|ヘッダー インジェクション、要求スマグリング、応答分割から保護するための規則が含まれています。|
@@ -129,13 +133,13 @@ Application Gateway の WAF は、次の 2 つのモードで実行するよう�
 
 ### <a name="application-gateway-waf-reports"></a>WAF の監視
 
-Application Gateway の正常性を監視することは重要です。 Web アプリケーション ファイアウォールおよび保護対象のアプリケーションの正常性の監視は、ログ記録および Azure Monitor、Azure Security Center (近日対応予定)、および Log Analytics との統合によって実現されます。
+Application Gateway の正常性を監視することは重要です。 Web アプリケーション ファイアウォールおよび保護対象のアプリケーションの正常性の監視は、ログ記録および Azure Monitor、Azure Security Center、および Azure Monitor ログとの統合によって実現されます。
 
 ![診断](./media/waf-overview/diagnostics.png)
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-各アプリケーション ゲートウェイのログは、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) と統合されます。  そのため、WAF のアラートやログなどの診断情報を追跡できます。  この機能は、ポータルの Application Gateway リソース内の **[診断]** タブから、または Azure Monitor サービスから直接利用できます。 Application Gateway の診断ログの有効化について詳しくは、[Application Gateway の診断](application-gateway-diagnostics.md)に関する記事をご覧ください
+各アプリケーション ゲートウェイのログは、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) と統合されます。  そのため、WAF のアラートやログなどの診断情報を追跡できます。  この機能は、ポータルの Application Gateway リソース内の **[診断]** タブから、または Azure Monitor サービスから直接利用できます。 Application Gateway の診断ログの有効化の詳細については、[Application Gateway の診断](application-gateway-diagnostics.md)に関する記事を参照してください。
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
@@ -145,7 +149,7 @@ Application Gateway の正常性を監視することは重要です。 Web ア�
 
 #### <a name="logging"></a>ログの記録
 
-Application Gateway の WAF では、検出された脅威ごとに詳細なレポートが提供されます。 ログ記録は Azure 診断ログに統合されており、json 形式でアラートが記録されます。 これらのログは、[Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) と統合できます。
+Application Gateway の WAF では、検出された脅威ごとに詳細なレポートが提供されます。 ログ記録は Azure 診断ログに統合されており、json 形式でアラートが記録されます。 これらのログは、[Azure Monitor ログ](../azure-monitor/insights/azure-networking-analytics.md)と統合できます。
 
 ![imageURLroute](./media/waf-overview/waf2.png)
 
@@ -179,7 +183,9 @@ Application Gateway の WAF では、検出された脅威ごとに詳細なレ�
 
 ## <a name="application-gateway-waf-sku-pricing"></a>Application Gateway の WAF SKU の価格
 
-Web アプリケーション ファイアウォールは、新しい WAF SKU で利用できます。 この SKU を利用できるのは、クラシック デプロイ モデルではなく、Azure Resource Manager プロビジョニング モデルのみです。 また、WAF SKU には、Medium および Large のアプリケーション ゲートウェイ インスタンス サイズしかありません。 Application Gateway のすべての制限が WAF SKU にも適用されます。 料金は、1 時間あたりのゲートウェイ インスタンスの料金とデータ処理の料金に基づいています。 WAF SKU の 1 時間あたりのゲートウェイの料金は、Standard SKU の料金とは異なります。[Application Gateway の価格の詳細](https://azure.microsoft.com/pricing/details/application-gateway/)に関するページを参照してください。 データ処理の料金は同じです。 規則あたり、または規則グループあたりの料金は発生しません。 同じ Web アプリケーション ファイアウォールの背後にある複数の Web アプリケーションを保護できます。複数のアプリケーションをサポートするのに追加料金はかかりません。 
+Web アプリケーション ファイアウォールは、新しい WAF SKU で利用できます。 この SKU を利用できるのは、クラシック デプロイ モデルではなく、Azure Resource Manager プロビジョニング モデルのみです。 また、WAF SKU には、Medium および Large のアプリケーション ゲートウェイ インスタンス サイズしかありません。 Application Gateway のすべての制限が WAF SKU にも適用されます。
+
+料金は、1 時間あたりのゲートウェイ インスタンスの料金とデータ処理の料金に基づいています。 WAF SKU の 1 時間あたりのゲートウェイの料金は、Standard SKU の料金とは異なります。[Application Gateway の価格の詳細](https://azure.microsoft.com/pricing/details/application-gateway/)に関するページを参照してください。 データ処理の料金は同じです。 規則あたり、または規則グループあたりの料金は発生しません。 同じ Web アプリケーション ファイアウォールの背後にある複数の Web アプリケーションを保護できます。複数のアプリケーションをサポートするのに追加料金はかかりません。
 
 ## <a name="next-steps"></a>次の手順
 

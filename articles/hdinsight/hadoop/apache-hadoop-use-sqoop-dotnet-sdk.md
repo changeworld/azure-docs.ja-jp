@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3cd34bf67b0d796af71036e7d14834a061803973
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 2fecf300bb14132a2e02c81a8a0862adff6b46cc
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628085"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202760"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-net-sdk-for-apache-hadoop-in-hdinsight"></a>HDInsight で .NET SDK for Apache Hadoop を使用して Apache Sqoop ジョブを実行する
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -118,6 +118,5 @@ Linux ベースの HDInsight には次の制限事項があります。
 ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
 
 * [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie.md):Oozie ワークフローで Sqoop アクションを使用します。
-* [HDInsight を使用したフライト遅延データの分析](../hdinsight-analyze-flight-delay-data.md):Apache Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートします。
 * [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight または Azure Blob Storage にデータをアップロードするその他の方法を説明します。
 

@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と vxMaintain の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と vxMaintain の統合 | Microsoft Docs
 description: Azure Active Directory と vxMaintain の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1d0e8f8526d866c308be8684546397f282dcce51
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433996"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194106"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>チュートリアル: Azure Active Directory と vxMaintain の統合
+# <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>チュートリアル:Azure Active Directory と vxMaintain の統合
 
 このチュートリアルでは、vxMaintain と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -157,11 +158,11 @@ vxMaintain で Azure AD の SSO を構成してテストするには、次の構
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに生成された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
  
 ### <a name="create-a-vxmaintain-test-user"></a>vxMaintain テスト ユーザーの作成
 
-このセクションでは、vxMaintain で Britta Simon というテスト ユーザーを作成します。 vxMaintain プラットフォームにユーザーを追加するには、[vxMaintain サポート チーム](https://www.hubspot.com/company/contact)と連携してください。 SSO を使用する前に、ユーザーを作成してアクティブ化します。
+このセクションでは、vxMaintain で Britta Simon というテスト ユーザーを作成します。 vxMaintain プラットフォームにユーザーを追加するには、 [vxMaintain サポート チーム](https://www.hubspot.com/company/contact)と連携してください。 SSO を使用する前に、ユーザーを作成してアクティブ化します。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

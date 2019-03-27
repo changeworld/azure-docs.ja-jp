@@ -62,10 +62,10 @@ SharePoint は階層型トポロジーとサーバー ロールを使用して 1
 
 **シナリオ** | **セカンダリ サイトへ** | **Azure へ**
 --- | --- | ---
-**Hyper-V** | [はい] | [はい]
-**VMware** | [はい] | [はい]
-**物理サーバー** | [はい] | [はい]
-**Azure** | NA | [はい]
+**Hyper-V** | はい | はい
+**VMware** | はい | はい
+**物理サーバー** | はい | はい
+**Azure** | NA | はい
 
 ### <a name="sharepoint-versions"></a>SharePoint のバージョン
 次の SharePoint Server のバージョンがサポートされています。

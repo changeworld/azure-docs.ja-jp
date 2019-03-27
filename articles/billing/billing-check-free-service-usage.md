@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: cwatson
-ms.openlocfilehash: b37626fe899bf7ee49bd71021631e21dc36b3963
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.author: banders
+ms.openlocfilehash: e4dbcc9bad7e4912318931e9f91d311b8b058501
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315623"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903708"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Azure 無料アカウントで無料サービスの使用状況を確認する 
 

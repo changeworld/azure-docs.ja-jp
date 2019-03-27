@@ -9,17 +9,18 @@ ms.author: celested
 ms.reviewer: dadobali
 ms.date: 09/24/2018
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 24644faab85305f18fe4b657d3e982a306a41c16
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2be77cdc4a5ad38a7d8c125fd95256e77cd92019
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157076"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202946"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -77,7 +78,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ### <a name="prerequisites"></a>前提条件
 
-Azure AD の条件付きアクセスは、[Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis#choose-an-edition) に含まれている機能です。 ライセンス要件の詳細については、[ライセンスのないユーザーのレポート](../active-directory-conditional-access-unlicensed-usage-report.md)に関するページを参照してください。 開発者は、Azure AD Premium を含む Enterprise Mobility Suite に無料でサブスクリプションできる [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx) に参加できます。
+Azure AD の条件付きアクセスは、[Azure AD Premium](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) に含まれている機能です。 ライセンス要件の詳細については、[ライセンスのないユーザーのレポート](../active-directory-conditional-access-unlicensed-usage-report.md)に関するページを参照してください。 開発者は、Azure AD Premium を含む Enterprise Mobility Suite に無料でサブスクリプションできる [Microsoft Developer Network](https://msdn.microsoft.com/dn308572.aspx) に参加できます。
 
 ### <a name="considerations-for-specific-scenarios"></a>特定のシナリオの考慮事項
 

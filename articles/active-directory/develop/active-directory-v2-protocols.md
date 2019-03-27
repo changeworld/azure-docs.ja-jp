@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,13 @@ ms.date: 12/01/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2d0530e2d7b97c4b3fda84f796de1a0e2857e2ac
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ed27830aa1f4212e4bc26af8da4febc1b61a76cc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872001"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175103"
 ---
 # <a name="v20-protocols---oauth-20-and-openid-connect"></a>v2.0 プロトコル - OAuth 2.0 と OpenID Connect
 

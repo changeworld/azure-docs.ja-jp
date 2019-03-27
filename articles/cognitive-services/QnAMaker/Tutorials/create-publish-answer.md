@@ -4,30 +4,30 @@ titleSuffix: QnA Maker - Azure Cognitive Services
 description: この REST ベースのチュートリアルでは、プログラムでナレッジ ベースを作成して発行した後、そのナレッジ ベースから質問に回答する手順について説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 10/29/2018
+ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: f178256180cfc75467a3dea2c7ac8d53fe9dd26a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 42d53cee48be73a0d151b6f44d381463fa1c4e16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995169"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102164"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>チュートリアル: C# を使用してナレッジ ベースを作成し、質問に回答する
 
 このチュートリアルでは、プログラムでナレッジ ベース (KB) を作成、発行した後、そのナレッジ ベースを使用してユーザーの質問に回答する手順について説明します。 
 
 > [!div class="checklist"]
-* ナレッジ ベースの作成 
-* 作成の状態を確認する
-* ナレッジ ベースをトレーニングして発行する
-* エンドポイント情報を取得する
-* Curl を使用してナレッジ ベースを照会する
+> * ナレッジ ベースの作成 
+> * 作成の状態を確認する
+> * ナレッジ ベースをトレーニングして発行する
+> * エンドポイント情報を取得する
+> * Curl を使用してナレッジ ベースを照会する
 
 
 このクイック スタートで呼び出す QnA Maker API は次のとおりです。

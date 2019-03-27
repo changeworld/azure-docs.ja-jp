@@ -1,0 +1,85 @@
+items:
+- name: Data Catalog のドキュメント
+  href: index.md
+- name: 概要
+  items:
+  - name: Data Catalog とは
+    href: data-catalog-what-is-data-catalog.md
+  - name: 一般的なシナリオ
+    href: data-catalog-common-scenarios.md
+  - name: サポートされるデータ ソース
+    href: data-catalog-dsr.md
+- name: 作業の開始
+  items:
+  - name: Azure Data Catalog の概要
+    href: data-catalog-get-started.md
+  - name: Azure Data Catalog の導入
+    href: data-catalog-adopting-data-catalog.md
+  - name: 前提条件
+    href: data-catalog-prerequisites.md
+  - name: FAQ
+    href: data-catalog-frequently-asked-questions.md
+- name: 方法
+  items:
+  - name: データ ソースの登録
+    href: data-catalog-how-to-register.md
+  - name: データ ソースの検出
+    href: data-catalog-how-to-discover.md
+  - name: データ ソースの注釈付け
+    href: data-catalog-how-to-annotate.md
+  - name: データ ソースの文書化
+    href: data-catalog-how-to-documentation.md
+  - name: データ ソースへの接続
+    href: data-catalog-how-to-connect.md
+  - name: ビッグ データの操作
+    href: data-catalog-how-to-big-data.md
+  - name: データ ソースのプロファイリング
+    href: data-catalog-how-to-data-profile.md
+  - name: データ資産の管理
+    href: data-catalog-how-to-manage.md
+  - name: 検索条件を保存してデータ資産をピン留めする
+    href: data-catalog-how-to-save-pin.md
+  - name: ビジネス用語集を設定する
+    href: data-catalog-how-to-business-glossary.md
+  - name: データ カタログへのアクセスをセキュリティで保護する
+    href: data-catalog-how-to-secure-catalog.md
+  - name: 関連するデータ資産の表示
+    href: data-catalog-how-to-view-related-data-assets.md
+- name: リファレンス
+  items:
+  - name: コード サンプル
+    href: https://azure.microsoft.com/resources/samples/?service=data-catalog
+  - name: REST
+    href: /rest/api/datacatalog/
+  - name: Resource Manager テンプレート
+    href: /azure/templates/microsoft.datacatalog/catalogs
+  - name: 検索構文リファレンス
+    href: /rest/api/datacatalog/data-catalog-search-syntax-reference
+  - name: 開発者の概念
+    href: data-catalog-developer-concepts.md
+- name: リソース
+  items:
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
+  - name: Azure Data Catalog 用のキーボード ショートカット
+    href: data-catalog-keyboard-shortcuts.md
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/data-catalog/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: リリース ノート
+    href: ../active-directory/fundamentals/whats-new.md
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=data-catalog
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/azure-data-catalog
+  - name: 用語集
+    href: data-catalog-terminology.md
+ms.openlocfilehash: 47fef3cf68ca9ab34c0dd349106ed4ca8c8ad4f1
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340644"

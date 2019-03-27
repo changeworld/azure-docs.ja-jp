@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 06ecdf31c2627eda5bf651667703ddcf39c9d307
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 24ee0083ec79265f0ac4dfc0a2e235bc72522831
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604101"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813893"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成
 
@@ -57,7 +57,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
     > [!Note]
     > 前述の **[Access the Media Services API]\(Media Services API にアクセスする\)** セクションから取得した値で、アクセス変数を更新します。
 
-7. 選択されたファイルをダブルクリックして、[API へのアクセス](#access-the-media-services-api)に関する手順に従って取得した値を入力します。
+7. 選択されたファイルをダブルクリックして、API へのアクセスに関する手順に従って取得した値を入力します。
 8. ダイアログを閉じます。
 9. ドロップ ダウンから **[Azure Media Service v3 Environment]\(Azure Media Service v3 環境\)** 環境を選択します。
 

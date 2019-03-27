@@ -56,7 +56,7 @@ items:
       href: active-directory-groups-delete-group.md
     - name: 他のグループに対するメンバーの追加または削除
       href: active-directory-groups-membership-azure-portal.md
-    - name: グループ情報の編修
+    - name: グループ情報の編集
       href: active-directory-groups-settings-azure-portal.md
     - name: グループ所有者の追加または削除
       href: active-directory-accessmanagement-managing-group-owners.md

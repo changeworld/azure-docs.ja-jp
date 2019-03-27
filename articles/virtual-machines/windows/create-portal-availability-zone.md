@@ -10,18 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 3d3561cf1ad760930821fabeef9839c25d55f2a9
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 23d1e53785ece50943d732db12b4cf460ba6752a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30321990"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767483"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Azure Portal を使用して可用性ゾーン内に Windows 仮想マシンを作成する
 
@@ -55,9 +55,9 @@ Azure Portal (https://portal.azure.com) にログインします。
 
 7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。
 
-## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>管理ディスクのゾーンと IP アドレスを確認する
+## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>マネージド ディスクのゾーンと IP アドレスを確認する
 
-VM が可用性ゾーンに展開されると、その VM の管理ディスクが同じ可用性ゾーンに作成されます。 既定では、パブリック IP アドレスもそのゾーンに作成されます。
+VM が可用性ゾーンに展開されると、その VM のマネージド ディスクが同じ可用性ゾーンに作成されます。 既定では、パブリック IP アドレスもそのゾーンに作成されます。
 
 これらのリソースに対するゾーンの設定は、ポータルで確認できます。  
 
@@ -65,7 +65,7 @@ VM が可用性ゾーンに展開されると、その VM の管理ディスク�
 
 2. ディスク リソースの名前をクリックします。 **[概要]** ページには、リソースの場所と可用性ゾーンに関する詳細情報が含まれています。
 
-    ![管理ディスクの可用性ゾーン](./media/create-portal-availability-zone/create-windows-vm-portal-disk.png)
+    ![マネージド ディスクの可用性ゾーン](./media/create-portal-availability-zone/create-windows-vm-portal-disk.png)
 
 3. パブリック IP アドレス リソースの名前をクリックします。 **[概要]** ページには、リソースの場所と可用性ゾーンに関する詳細情報が含まれています。
 

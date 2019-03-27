@@ -5,10 +5,10 @@ services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー, 使用条件
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 3cb403b7f2ac529c79af5f83a1cbe436dc670a25
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5375f86e9ac9c26646e6e8560775d2dea3a2d1ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413372"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170974"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>クイック スタート:クラウド アプリにアクセスする前に利用規約への同意を要求する 
 
@@ -119,7 +120,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ポリシーに以下の内容を設定します。
 
-|設定 |値|
+|Setting |値|
 |---     | --- |
 |ユーザーとグループ | Isabella Simonsen |
 |クラウド アプリ | Microsoft Azure の管理 |

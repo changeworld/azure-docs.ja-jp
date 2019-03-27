@@ -1,21 +1,21 @@
 ---
-title: 'クイック スタート: Bing Autosuggest API (Java)'
+title: クイック スタート:Bing Autosuggest API (Java)
 titlesuffix: Azure Cognitive Services
 description: Bing Autosuggest API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: c19fa95bd5529f18a65ad466e9c6352b1be80657
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 75d451123441f543094143adfc1df5dfd0c5bdb9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421120"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875316"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-java"></a>Java での Bing Autosuggest API のクイック スタート
 

@@ -4,23 +4,24 @@ description: Azure Active Directory と Perception United States (非 UltiPro) �
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: b4a8f026-cb5f-41eb-9680-68eddc33565e
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 8c29d054f2e4e9ff4b57785a57e5c6ea512623a6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b9e208f899ff26135d3ce26bfa18096210513381
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840666"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192049"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>チュートリアル: Azure Active Directory と Perception United States (非 UltiPro) の統合
 
@@ -153,7 +154,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
     c. **[Default Reply-To Email]** ボックスに、有効な**電子メール**を入力します。
 
-    d. **[SSO Identity Provider]** として **[SAML 2.0]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SSO Identity Provider]** として **[SAML 2.0]** を選択します。
 
 1. **[SSO 構成]** ページで、次の手順を実行します。
 
@@ -165,7 +166,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
     
     c. **[Identity Provider Name]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
 
-    d. **[SAML Domain]** ボックスに「**@contoso.com**」のようにドメインを入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML Domain]** ボックスに「**@contoso.com**」のようにドメインを入力します。
 
     e. **[Upload Again]** をクリックして、**メタデータ XML** ファイルをアップロードします。
 
@@ -205,7 +206,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>Perception United States (非 UltiPro) のテスト ユーザーの作成
 

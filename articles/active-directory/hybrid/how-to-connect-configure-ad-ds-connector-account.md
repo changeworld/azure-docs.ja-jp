@@ -3,26 +3,27 @@ title: Azure AD Connect:AD DS コネクタ アカウントのアクセス許可�
 description: このドキュメントでは、新しい ADSyncConfig PowerShell モジュールを使用して AD DS コネクタ アカウントを構成する方法について詳しく説明します
 services: active-directory
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
-ms.date: 10/12/2018
-ms.component: hybrid
+ms.topic: conceptual
+ms.date: 01/14/2019
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b05b3fee5c49f69979f5e778f897d4be863a3715
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d39305b4a8fafbd2fe2f1ac101f92597d6a3e4a0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809881"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189050"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
-[ADSyncConfig.psm1](reference-connect-adsyncconfig.md) という名前の新しい PowerShell モジュールがビルド 1.1.880.0 (2018 年 8 月にリリース) に導入されました。これには、Azure AD Connect のデプロイ用の適切な Active Directory アクセス許可を構成するのに役立つコマンドレットのコレクションが含まれています。 
+[ADSyncConfig.psm1](reference-connect-adsyncconfig.md) という名前の PowerShell モジュールがビルド 1.1.880.0 (2018 年 8 月にリリース) に導入されました。これには、Azure AD Connect のデプロイ用の適切な Active Directory アクセス許可を構成するのに役立つコマンドレットのコレクションが含まれています。 
 
 ## <a name="overview"></a>概要 
-以下の PowerShell コマンドレットを使用すると、AD DS コネクタ アカウントの Active Directory アクセス許可を、Azure AD Connect で有効にするかのようにする機能ごとに設定することができます。 問題を防ぐため、フォレストに接続するためにカスタム ドメイン アカウントを使用して Azure AD Connect をインストールしたい場合は、必ず事前に Active Directory のアクセス許可を準備してください。 この ADSyncConfig モジュールは、Azure AD Connect のデプロイ後にアクセス許可を構成する場合も使用できます。
+以下の PowerShell コマンドレットを使用すると、AD DS コネクタ アカウントの Active Directory アクセス許可を、Azure AD Connect で有効にする機能ごとに設定することができます。 問題を防ぐため、フォレストに接続するためにカスタム ドメイン アカウントを使用して Azure AD Connect をインストールしたい場合は、必ず事前に Active Directory のアクセス許可を準備してください。 この ADSyncConfig モジュールは、Azure AD Connect のデプロイ後にアクセス許可を構成する場合も使用できます。
 
 ![](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 
@@ -205,21 +206,21 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 グループの書き戻しを使用しているときに、AD DS コネクタ アカウントのアクセス許可を設定するには、次のように実行します。 
 
 ``` powershell
-Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
 ```
 または、 
 
 ``` powershell
-Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
+Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [<CommonParameters>]
 ```
  
 このコマンドレットは、次のアクセス許可を設定します。 
 
 |type |Name |Access |適用対象|
 |-----|-----|-----|-----| 
-|ALLOW |AD DS コネクタ アカウント |汎用の読み取り/書き込み |グループの子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |子オブジェクトの作成/削除 |このオブジェクトとすべての子孫オブジェクト| 
-|ALLOW |AD DS コネクタ アカウント |オブジェクトとそのすべての子の作成/削除 |このオブジェクトとすべての子孫オブジェクト|
+|ALLOW |AD DS コネクタ アカウント |汎用の読み取り/書き込み |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
+|ALLOW |AD DS コネクタ アカウント |子オブジェクトの作成/削除 |オブジェクトの種類のグループとサブオブジェクトのすべての属性| 
+|ALLOW |AD DS コネクタ アカウント |削除/ツリー オブジェクトの削除|オブジェクトの種類のグループとサブオブジェクトのすべての属性|
 
 ### <a name="permissions-for-exchange-hybrid-deployment"></a>Exchange ハイブリッドのデプロイのアクセス許可 
 Exchange ハイブリッドのデプロイを使用しているときに、AD DS コネクタ アカウントのアクセス許可を設定するには、次のように実行します。 
@@ -280,7 +281,7 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 
 ``` powershell
 $credential = Get-Credential 
-Set-ADSyncRestrictedPermissions -ObjectDN 'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
+Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=Users,DC=Contoso,DC=com' -Credential $credential  
 ```
 
 このコマンドレットは、次のアクセス許可を設定します。 

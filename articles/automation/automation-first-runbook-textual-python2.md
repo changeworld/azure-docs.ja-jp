@@ -3,18 +3,18 @@ title: Azure Automation での初めての Python Runbook
 description: 簡単な Python Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b621c6b9af60637e8bb818545746923c22926ac4
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 13bb12c2c624bfd50933b624a28145172f521747
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984983"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427680"
 ---
 # <a name="my-first-python-runbook"></a>初めての Python Runbook
 

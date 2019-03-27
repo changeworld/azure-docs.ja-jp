@@ -7,20 +7,21 @@ author: navyasric
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 99ea7e7db9d0cc80bfd37a256fc1be388feaa530
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6a97e03f3c195b9fbd0ee7a09950414b7a940c7c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043891"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217481"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>クイック スタート:ユーザーをサインインし、JavaScript アプリケーションからアクセス トークンを取得する
 

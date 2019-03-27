@@ -4,11 +4,11 @@ description: マネージド ドメイン用のハイブリッド Azure Active D
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,13 @@ ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b87bc4387b7e979aaf3b79a42b81baecc530a8aa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ce91fc5418de2e93027a8cb3abf1dcc670be64a3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105136"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58166982"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -54,8 +55,6 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
   
 
 この記事のシナリオを構成するための要件を次に示します。
-
-- スキーマ レベルが 85 以降のオンプレミス Active Directory (AD)。 詳細については、「[Upgrade your Active Directory Schema (Active Directory スキーマをアップグレードする)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-device-based-conditional-access-on-premises#upgrade-your-active-directory-schema)」を参照してください。
 
 - [最新バージョンの Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 以降) がインストールされていること。 
 

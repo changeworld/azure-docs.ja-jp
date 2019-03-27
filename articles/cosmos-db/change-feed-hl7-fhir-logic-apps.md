@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: sngun
-ms.openlocfilehash: 0ff92ad58cc8b7206b7061c88f8aadbb701870f0
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 765596500e3ac294dc79f0785b12b03370fa652a
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044520"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354486"
 ---
 # <a name="notifying-patients-of-hl7-fhir-health-care-record-changes-using-logic-apps-and-azure-cosmos-db"></a>Logic Apps と Azure Cosmos DB を使用して HL7 FHIR 医療記録の変更を患者に通知する
 
@@ -130,11 +130,11 @@ Azure Cosmos DB SQL .NET API の [`CreateDocumentChangeFeedQuery`](https://msdn.
             /// <param name="maximumItemCount">-1 returns all (default)</param>
             /// <returns></returns>
             [Metadata("Get New or Modified FHIR Documents",
-                "Query for new or modifed FHIR Documents By Resource Type " +
+                "Query for new or modified FHIR Documents By Resource Type " +
                 "from Last Run Date or Beginning of Collection creation"
             )]
             [SwaggerResponse(HttpStatusCode.OK, type: typeof(Task<dynamic>))]
-            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modifed Documents found")]
+            [SwaggerResponse(HttpStatusCode.NotFound, "No New or Modified Documents found")]
             [SwaggerOperation("GetNewOrModifiedFHIRDocuments")]
             public async Task<dynamic> GetNewOrModifiedFhirDocuments(
                 [Metadata("Database Id", "Database Id")] string databaseId,

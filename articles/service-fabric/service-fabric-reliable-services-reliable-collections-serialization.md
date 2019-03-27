@@ -3,7 +3,7 @@ title: Azure Service Fabric での Reliable Collection オブジェクトのシ�
 description: Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
+author: aljo-microsoft
 manager: timlt
 editor: masnider,rajak
 ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/8/2017
-ms.author: twhitney
-ms.openlocfilehash: 52e4b22a0c4acebe99ab5b9d94eeb66e917a231a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: aljo
+ms.openlocfilehash: b02952cf82707966cb0f3b3473b2020e14e48931
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192024"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805851"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Azure Service Fabric での Reliable Collection オブジェクトのシリアル化
 Reliable Collection では項目がレプリケートおよび永続化されるため、コンピューターの不具合や電源障害が発生しても、これらの項目が影響を受けることはありません。
@@ -40,8 +40,8 @@ Reliable State Manager には、次の型用の組み込みのシリアライザ
 - sbyte
 - byte[]
 - char
-- string
-- 小数点
+- 文字列
+- decimal
 - double
 - float
 - int

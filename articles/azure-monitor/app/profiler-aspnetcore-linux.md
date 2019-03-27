@@ -3,20 +3,21 @@ title: Application Insights Profiler を使用して ASP.NET Core Azure Linux We
 description: Application Insights Profiler の使用方法についての概念の概要と、詳細な手順を説明したチュートリアルです。
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: cweining
 manager: carmonm
+ms.reviewer: mbullwin
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mbullwin
-ms.openlocfilehash: cb294f0a3c22d52bc40f30e1d8655aed185857c6
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.author: cweining
+ms.openlocfilehash: 5787db7e2b726a10891fcabb0b215399d0d4e0ae
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118491"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884309"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする
 

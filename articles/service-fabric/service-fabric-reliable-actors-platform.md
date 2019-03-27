@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: f8e6ad4b23eeaf46cccac9c8ff9d41f71511129d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f6594ccaa4d11361c3aacb8f774327600d3ffdde
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642854"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889252"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>高信頼アクターの Service Fabric プラットフォームの使用方法
 この記事では、Reliable Actors による Azure Service Fabric プラットフォームの使用方法について説明します。 Reliable Actors は、*アクター サービス*と呼ばれるステートフル リライアブル サービスの実装にホストされるフレームワークで実行されます。 アクター サービスには、アクターのライフサイクルとメッセージ ディスパッチを管理するうえで必要なコンポーネントがすべて含まれています。
@@ -99,9 +99,9 @@ GUID/UUID と文字列を使用している場合、値は Int64 にハッシュ
 ## <a name="next-steps"></a>次の手順
 * [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
 * [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
-* [アクターの API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [アクターの API リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
 * [.NET サンプル コード](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java サンプル コード](http://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Java サンプル コード](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

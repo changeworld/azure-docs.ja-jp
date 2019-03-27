@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: b21c378d58590e33c7b6aeffe627ce5602074fa2
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: de2cfbf2b4119daf965c95d8973b8528799c9502
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524622"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55454629"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー
 
@@ -23,7 +23,7 @@ ms.locfileid: "39524622"
 
 この例では、`mystorageaccount` という名前の Azure Storage アカウントに次のデータをインポートします。
 
-|Location|説明|データ サイズ|
+|場所|説明|データ サイズ|
 |--------------|-----------------|-----|
 |H:\Video\ |一連のビデオ|12 TB|
 |H:\Photo\ |一連の写真|30 GB|
@@ -70,7 +70,7 @@ K:\Temp\FavoriteVideo.ISO,favorite/FavoriteVideo.ISO,BlockBlob,rename,None,H:\my
 
 さらに、すべてのファイルの次のメタデータを設定できます。
 
-* **UploadMethod:** Windows Azure Import/Export サービス
+* **UploadMethod:** Microsoft Azure Import/Export サービス
 * **DataSetName:** SampleData
 * **CreationDate:** 10/1/2013
 

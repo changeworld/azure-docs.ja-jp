@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c9759b8900f0579ccd56d001d50d65aedce2b445
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1480032b7ff018081d9dc25038bf336740810079
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716040"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657567"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>チュートリアル:Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
 
@@ -37,6 +37,11 @@ ms.locfileid: "53716040"
 > * エラーをトラブルシューティングする
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="preview-feature-limitations"></a>プレビュー機能の制限
+マルチコンテナーは現在プレビュー段階です。次の App Service プラットフォーム機能はサポートされません。 一般提供 (GA) の前には、マルチコンテナー Web アプリでこれらの機能が使用できるようになる予定です。
+* 認証/認可
+* マネージド ID
 
 ## <a name="prerequisites"></a>前提条件
 

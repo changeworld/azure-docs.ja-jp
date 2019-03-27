@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: f0ae48cadf2e90dc685a24aff54d89f86a11c287
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 5d7e21661d7ee905ff77a4856544d358924cd9ea
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494295"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700878"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
@@ -51,7 +51,7 @@ Oracle Golden Gate のインストールを実行するには、同じ可用性�
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン 
 
-[az login](/cli/azure/reference-index#az_login) コマンドを使用して、Azure サブスクリプションにサインインします。 その後、画面の指示に従います。
+[az login](/cli/azure/reference-index) コマンドを使用して、Azure サブスクリプションにサインインします。 その後、画面の指示に従います。
 
 ```azurecli
 az login
@@ -59,7 +59,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、`myResourceGroup` という名前のリソース グループを `westus` の場所に作成します。
 
@@ -81,7 +81,7 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成します。 
+[az vm create](/cli/azure/vm) コマンドで VM を作成します。 
 
 次の例では、`myVM1` と `myVM2` という名前の 2 つの VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 

@@ -3,7 +3,7 @@ title: Business Critical レベル - Azure SQL Database サービス | Microsoft
 description: Azure SQL Database Business Critical レベルについて説明します
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ ms.author: jovanpop
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: aecbc9415fc7fe93b5df355c97a1a51a74f01e97
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2f18b51a07bb58f13673427f0acadb6b80d7a1c8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885917"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005320"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Business Critical レベル - Azure SQL Database
 
 > [!NOTE]
-> Business Critical レベルは DTU 購入モデルで Premium と呼ばれています。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](sql-database-service-tiers.md)に関する記事をご覧ください。
+> Business Critical レベルは DTU 購入モデルで Premium と呼ばれています。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](sql-database-purchase-models.md)に関する記事をご覧ください。
 
 Azure SQL Database は、インフラストラクチャに障害が発生した場合でも 99.99% の可用性を確保するために、クラウド環境に合わせて調整された SQL Server データベース エンジン アーキテクチャに基づいています。 Azure SQL Database で使用されているアーキテクチャ モデルは 3 つあります。
 - General Purpose/Standard 

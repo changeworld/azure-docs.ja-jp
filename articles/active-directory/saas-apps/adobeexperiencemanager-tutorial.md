@@ -4,7 +4,7 @@ description: Azure Active Directory と Adobe Experience Manager の間でシン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 88a95bb5-c17c-474f-bb92-1f80f5344b5a
 ms.service: Azure-Active-Directory
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/25/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 536db4e4927c03cafff35a3e811727a566c79dbd
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2ceab0ee0180a6888ef99a7aefb1e5d176ab6c05
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062810"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>チュートリアル:Azure Active Directory と Adobe Experience Manager の統合
 
@@ -80,8 +81,8 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Adobe Experience Manager のシングル サインオンの構成](#configure-adobe-experience-manager-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Adobe Experience Manager のテスト ユーザーの作成](#create-adobe-experience-manager-test-user)** - Adobe Experience Manager で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
-5. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Adobe Experience Manager のテスト ユーザーの作成](#create-adobe-experience-manager-test-user)** - Adobe Experience Manager で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
@@ -187,7 +188,7 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
     c. **[IDP Certificate Alias]\(IDP 証明書の別名\)** ボックスに、トラストストアに追加した**証明書の別名**の値を入力します。
 
-    d. **[Security Provided Entity ID]\(セキュリティ指定されたエンティティ ID\)** ボックスに、Azure portal で構成した **[Azure AD 識別子]** の一意の値を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Security Provided Entity ID]\(セキュリティ指定されたエンティティ ID\)** ボックスに、Azure portal で構成した **[Azure AD 識別子]** の一意の値を入力します。
 
     e. **[Assertion Consumer Service URL]** ボックスに、Azure Portal で構成した **[応答 URL]** の値を入力します。
 
@@ -268,7 +269,6 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

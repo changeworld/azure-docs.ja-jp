@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 502ccf15fe3e2f803febb711d4ea8850abbaea85
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0166622539a439a99aef7e476519881518baa0b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116587"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106340"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル:Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法を示します。 
@@ -181,8 +181,8 @@ Application Insights リソースの名前と iKey を取得するには、概�
 > 入力パスが正しく設定されていることを確認するには、Sample 関数を使用します。 失敗した場合:選択したサンプルの時間範囲でストレージにデータがあることを確認します。 入力定義を編集し、ストレージ アカウント、パスのプレフィックス、日付形式が正しく設定されていることを確認します。
 > 
 > 
-## <a name="set-query"></a>クエリの設定
-クエリ セクションを開きます。
+> ## <a name="set-query"></a>クエリの設定
+> クエリ セクションを開きます。
 
 既定のクエリを次のもので置き換えます。
 

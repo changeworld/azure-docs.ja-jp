@@ -4,24 +4,25 @@ description: デバイス管理を利用して、環境内のリソースにア�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/25/2018
+ms.date: 01/31/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f239b3ef6881f9ea1be043b7d27f061e015ae3be
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c3711f2b2901ddbe49b4d6a49cabef12ac5dab3e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037363"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192474"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Azure Active Directory のデバイス管理とは
 
@@ -36,6 +37,11 @@ ms.locfileid: "51037363"
 
 このトピックでは、Azure Active Directory でのデバイス管理のしくみについて説明します。
 
+
+
+> [!VIDEO https://www.youtube.com/embed/NeezfKhomQU]
+
+
 ## <a name="getting-devices-under-the-control-of-azure-ad"></a>デバイスを Azure AD の管理下におく
 
 デバイスを Azure AD の管理下におくには、次の 2 つのオプションがあります。
@@ -45,7 +51,7 @@ ms.locfileid: "51037363"
 
 デバイスを Azure AD に**登録**すると、デバイスの ID を管理できるようになります。 デバイスが登録されると、ユーザーが Azure AD にサインインしたときにデバイスを認証するために使用される ID が、Azure AD のデバイス登録によって指定されます。 この ID を使用して、デバイスを有効または無効にすることができます。
 
-Microsoft Intune などのモバイル デバイス管理 (MDM) ソリューションと組み合わせて使用すると、Azure AD 内のデバイスの属性は、デバイスに関する情報が追加されて更新されます。 これにより、条件付きアクセス規則を作成できます。この規則に従い、デバイスからのアクセス時にセキュリティおよび法令遵守の基準を満たす必要があります。 Microsoft Intune へのデバイスの登録の詳細については、[管理するデバイスの Intune への登録](https://docs.microsoft.com/intune/device-enrollment#supported-device-platforms)に関するページを参照してください。
+Microsoft Intune などのモバイル デバイス管理 (MDM) ソリューションと組み合わせて使用すると、Azure AD 内のデバイスの属性は、デバイスに関する情報が追加されて更新されます。 これにより、条件付きアクセス規則を作成できます。この規則に従い、デバイスからのアクセス時にセキュリティおよび法令遵守の基準を満たす必要があります。 Microsoft Intune へのデバイスの登録の詳細については、「[デバイス登録とは](https://docs.microsoft.com/intune/device-enrollment)」を参照してください。
 
 デバイスを**参加**させるオプションは、デバイスを登録するオプションの拡張版です。 つまり、デバイスを登録するオプションが持っているすべての利点に加え、デバイスのローカル状態を変更することもできます。 ローカル状態を変更することで、ユーザーが個人アカウントではなく、職場または学校アカウントを使用してデバイスにサインインできるようになります。
 
@@ -57,10 +63,10 @@ Azure AD 登録デバイス済みの目標は、**Bring Your Own Device (BYOD)**
 
 アクセスは、デバイスに入力されている職場または学校のアカウントに基づいて行われます。  
 たとえば、Windows 10 では、パーソナル コンピューター、タブレット、または電話に、ユーザーの職場または学校アカウントを追加できます。  
-ユーザーがデバイスに職場または学校アカウントを追加している場合、デバイスが Azure AD に登録され、必要に応じて、組織が構成したモバイル デバイス管理 (MDM) システムに登録されます。 組織のユーザーは、個人所有のデバイスに職場または学校アカウントを非常に簡単に追加できます。
+ユーザーがデバイスに職場または学校アカウントを追加している場合、デバイスが Azure AD に登録され、必要に応じて、組織が構成したモバイル デバイス管理 (MDM) システムに登録されます。 組織のユーザーは、次の方法で、個人所有のデバイスに職場または学校アカウントを非常に簡単に追加できます。
 
 - 初めて作業アプリケーションにアクセスするとき
-- Windows 10 の場合は、**[設定]** メニューを使用して手動で 
+- **[設定]** メニューを使用して手動で (Windows 10 の場合) 
 
 Windows 10、iOS、Android、および macOS で Azure AD 登録済みデバイスを構成できます。
 

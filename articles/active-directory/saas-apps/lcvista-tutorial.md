@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Moxtra の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Moxtra の統合 | Microsoft Docs
 description: Azure Active Directory と LCVista の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 8db80d6e-3275-419f-aa39-6115a7bc9800
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 1ec1783e6c9caabfbc5e03849b6d4c04b1f33d23
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a511e17785898f7c52d942c057a67914e6fdfbca
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448157"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174233"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>チュートリアル: Azure Active Directory と LCVista の統合
+# <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>チュートリアル:Azure Active Directory と LCVista の統合
 
 このチュートリアルでは、LCVista と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ Azure AD への LCVista の統合を構成するには、ギャラリーから�
 
 LCVista で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[LCVista テスト ユーザーの作成](#creating-a-lcvista-test-user)** - LCVista で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -143,7 +144,7 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
 
     c. Azure ポータルからダウンロードしたメタデータ (XML) から、値 **X509Certificate** をコピーして **[x509 Certificate (x509 証明書)]** セクションに貼り付けます。
 
-    d. **[First Name Attribute (名属性)]** ボックスに、値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[First Name Attribute (名属性)]** ボックスに、値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` を貼り付けます。
 
     e. **[Last Name Attribute (姓属性)]** ボックスに、値 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` を貼り付けます。
 
@@ -154,7 +155,7 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
     e. **[保存]** をクリックして設定を保存します。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -186,11 +187,11 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-lcvista-test-user"></a>LCVista テスト ユーザーの作成
 
-このセクションでは、LCVista で Britta Simon というユーザーを作成します。 LCVista アプリケーションにユーザーを追加するには、[LCVista クライアント サポート チーム](https://lcvista.com/contact)に問い合わせる必要があります。 
+このセクションでは、LCVista で Britta Simon というユーザーを作成します。 LCVista アプリケーションにユーザーを追加するには、[LCVista クライアント サポート チーム](https://lcvista.com/contact)に問い合わせる必要があります。 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -224,7 +225,7 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
     
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。 アクセス パネルの [LCVista] タイルをクリックすると、組織のサインオン ページにリダイレクトします。 ログインが成功すると、LCVista アプリケーションにサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。 アクセス パネルの [LCVista] タイルをクリックすると、組織のサインオン ページにリダイレクトします。 ログインが成功すると、LCVista アプリケーションにサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.author: rimman
-ms.openlocfilehash: c68d95f7eddfa98713f1af0786f82c1d633fbfff
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cc910359b5519d2cf1bd8a8bf019924dff660362
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044486"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852289"
 ---
-# <a name="build-a-web-app-using-azure-cosmos-dbs-api-for-mongodb-and-net-sdk"></a>Azure Cosmos DB の MongoDB 用 API と .NET SDK を使用して Web アプリを構築する
+# <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して .NET Web アプリを構築する 
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)

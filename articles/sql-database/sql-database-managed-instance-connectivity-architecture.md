@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 12/10/2018
-ms.openlocfilehash: e69f6869911555730fe723b340e224c0d5a1e4bb
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b709bbacce23a89b8c60b77a524018b50ca1ca5e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536051"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245669"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL Database Managed Instance の接続アーキテクチャ
 
@@ -108,9 +108,12 @@ Managed Instance は、仮想ネットワーク内にあって次の要件を満
 
 | Name       |ポート          |Protocol|ソース           |宛先|Action|
 |------------|--------------|--------|-----------------|-----------|------|
-|management  |80、443、12000|TCP     |任意              |任意        |ALLOW |
+|management  |80、443、12000|TCP     |任意              |インターネット   |ALLOW |
 |mi_subnet   |任意           |任意     |任意              |MI SUBNET  |ALLOW |
 
+  > [!Note]
+  > MI SUBNET は、10.x.x.x/y 形式でサブネットの IP アドレス範囲を参照します。 この情報は、Azure portal (サブネットのプロパティ) で確認できます。
+  
   > [!Note]
   > 必須の受信セキュリティ規則では、ポート 9000、9003、1438、1440、1452 で_任意_のソースからのトラフィックを許可しますが、これらのポートは組み込みのファイアウォールによって保護されます。 この[記事](sql-database-managed-instance-find-management-endpoint-ip-address.md)では、管理エンドポイントの IP アドレスを検索し、ファイアウォール規則を確認する方法を示しています。 
   

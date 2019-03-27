@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: f40d88df7a46c73981b6f20bee0b119743c08257
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 05/18/2018
+ms.openlocfilehash: d57b06a33421a94c4f849a1c1fd7cd6f1f4248dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714493"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848900"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service on Azure Stack update 2 のリリース ノート
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 これらのリリース ノートでは、Azure App Service on Azure Stack Update 2 における機能強化と修正点、および既知の問題について説明します。 既知の問題は、デプロイおよび更新プロセスに直接関係する問題と、ビルド (インストール後) に関する問題に分けられています。
 
@@ -55,7 +56,7 @@ Azure App Service on Azure Stack Update 2 には、次の機能強化と修正�
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
 - **次のアプリケーション フレームワークとツールの更新**:
-  - .Net Framework 4.7.1 の追加
+  - .NET Framework 4.7.1 の追加
   - **Node.js** の次のバージョンが追加されました。
     - NodeJS 6.12.3
     - NodeJS 8.9.4
@@ -63,7 +64,7 @@ Azure App Service on Azure Stack Update 2 には、次の機能強化と修正�
     - NodeJS 8.11.1
   - **NPM** の次のバージョンが追加されました。
     - 5.6.0
-  - パブリック クラウドで Azure App Service と一致するように更新された .Net コア コンポーネント。
+  - パブリック クラウドで Azure App Service と一致するように更新された .NET コア コンポーネント。
   - 更新された Kudu
 
 - デプロイ スロット機能の自動スワップを有効化: [自動スワップの構成](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap)
@@ -83,15 +84,15 @@ Azure App Service on Azure Stack Update 2 には、次の機能強化と修正�
 - App Service が既存の仮想ネットワークにデプロイされ、ファイル サーバーがプライベート ネットワークでしか使用できない場合、worker はファイル サーバーに到達することができません。
 
 ファイル サーバーに接続するために既存の仮想ネットワークと内部 IP アドレスへデプロイする場合は、送信セキュリティ規則を追加して、worker サブネットとファイル サーバー間の SMB トラフィックを有効にする必要があります。 これを行うには、管理者ポータルで WorkersNsg に移動し、次のプロパティを持つ送信セキュリティ規則を追加します。
- * ソース:任意
- * 送信元ポート範囲: *
- * 変換先:IP アドレス
- * 宛先 IP アドレス範囲:ファイル サーバーの IP の範囲
- * 送信先ポート範囲:445
- * プロトコル:TCP
- * アクション:ALLOW
- * 優先順位:700
- * 名前:Outbound_Allow_SMB445
+* ソース:任意
+* 送信元ポート範囲: *
+* 変換先:IP アドレス
+* 宛先 IP アドレス範囲:ファイル サーバーの IP の範囲
+* 送信先ポート範囲:445
+* プロトコル:TCP
+* アクション:ALLOW
+* 優先順位:700
+* 名前:Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack を運用するクラウド管理者に関する既知の問題
 

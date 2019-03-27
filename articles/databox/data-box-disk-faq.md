@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 01/09/2019
+ms.date: 02/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4320e56b04761c6adcae1db259eeecf332fbd781
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5f44e3c4a1b7f28133ecd232fc49a34931bddfa4
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158790"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729833"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
 
@@ -131,6 +131,9 @@ A. Data Box Disk で使用できるツールセットには、次の 3 つのツ
 このツールセットは、Windows と Linux の両方で使うことができます。 ツールセットは、次の場所からダウンロードできます。
  - [Windows 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolswin) 
  - [Linux 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolslinux)
+ 
+### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Q. Data Box Disk を使用して Azure Files にデータを転送した後、そのデータを Azure File Sync で使用することはできますか? 
+A. Data Box Disk では Azure Files がサポートされません。 また、そのファイルのデータを後から Azure File Sync で使用する場合、メタデータも維持されません。
 
 
 ## <a name="verify-and-upload"></a>確認とアップロード

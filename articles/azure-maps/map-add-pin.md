@@ -1,82 +1,74 @@
 ---
-title: Azure Maps を使用したシンボルとマーカーの追加 | Microsoft Docs
-description: Javascript のマップにシンボルとマーカーを追加する方法
-author: walsehgal
-ms.author: v-musehg
-ms.date: 10/30/2018
+title: Azure Maps にシンボル レイヤーを追加する | Microsoft Docs
+description: JavaScript マップにシンボルを追加する方法
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/2/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 92d80d9a4d39a3f21539e5e6e498fc52df213a19
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 718a679418790a6bf1207a96e5c204f7962de239
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50248814"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411256"
 ---
-# <a name="add-symbols-and-markers-to-a-map"></a>マップにシンボルとマーカーを追加する
+# <a name="add-a-symbol-layer-to-a-map"></a>マップにシンボル レイヤーを追加する
 
-この記事では、データ ソースを使用して、マップにシンボルとマーカーを追加する方法を示します。
+この記事では、データ ソースからのポイント データをマップ上にシンボル レイヤーとしてレンダリングする方法について説明します。 シンボル レイヤーは WebGL を使用してレンダリングされ、HTML マーカーよりはるかに多くのデータ ポイントをサポートしますが、従来の CSS と HTML 要素のスタイルはサポートしていません。  
 
-## <a name="add-a-symbol-marker"></a>シンボル マーカーを追加する
+> [!TIP]
+> シンボル レイヤーでは、既定ではデータ ソース内のすべてのジオメトリの座標がレンダリングされます。 ポイント ジオメトリ フィーチャーのみがレンダリングされるようにレイヤーを制限するには、レイヤーの `filter` プロパティを `['==', '$type', 'Point']` に設定します。
+
+## <a name="add-a-symbol-layer"></a>シンボル レイヤーを追加する
 
 <iframe height='500' scrolling='no' title='ピンの場所の切り替え' src='//codepen.io/azuremaps/embed/ZqJjRP/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/ZqJjRP/'>Switch pin location</a>」Pen を表示します。
 </iframe>
 
 上記のコードの最初のブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-2 番目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用して、データ ソース オブジェクトが作成されます。 ポイントが作成され、データ ソースに追加されます。 ポイントは、[Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) の [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) です。
+2 番目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用して、データ ソース オブジェクトが作成されます。 [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) ジオメトリを含む [フィーチャー] は、更新を容易にするために [Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) クラスによってラップされた後、データ ソースに追加されます。
 
-3 番目のコード ブロックでは、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)が作成され、マウス クリック時にシェイプ クラスの [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest#setcoordinates) メソッドを使用して、ポイントの座標が更新されます。
+3 番目のコード ブロックでは、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)が作成され、マウス クリック時にシェイプ クラスの [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) メソッドを使用して、ポイントの座標が更新されます。
 
 [シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。  データ ソース、クリック イベント リスナー、およびシンボル レイヤーが作成され、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが完全に読み込まれた後に、ポイントが表示されます。
 
-## <a name="add-a-custom-symbol"></a>カスタム シンボルを追加する
+## <a name="add-a-custom-icon-to-a-symbol-layer"></a>シンボル レイヤーにカスタム アイコンを追加する
 
-<iframe height='500' scrolling='no' title='HTML DataSource' src='//codepen.io/azuremaps/embed/qJVgMx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/qJVgMx/'>HTML DataSource</a>」Pen を表示します。
+シンボル レイヤーは WebGL を使用してレンダリングされます。 このため、アイコンの画像などのすべてのリソースを WebGL コンテキストに読み込む必要があります。 このサンプルでは、カスタム シンボル アイコンをマップ リソースに追加した後、それを使用してカスタム シンボルとポイント データをマップ上にレンダリングする方法を示します。 シンボル レイヤーの `textField` プロパティに式を指定する必要があります。 ここでは、ポイント フィーチャーの温度プロパティをテキスト値としてレンダリングします。 これは、この式 (`['get', 'temperature']`) で実現できます。 
+
+<br/>
+
+<iframe height='500' scrolling='no' title='カスタム シンボル画像アイコン' src='//codepen.io/azuremaps/embed/WYWRWZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/WYWRWZ/'>Custom Symbol Image Icon (カスタム シンボル画像アイコン)</a>」Pen を表示します。
 </iframe>
 
-上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
+## <a name="customize-a-symbol-layer"></a>シンボル レイヤーをカスタマイズする 
 
-2 番目のコード ブロックでは、[Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) クラスの [markers](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#markers) プロパティを使用して、マップに [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) が追加されます。 HtmlMarker は[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが完全に読み込まれた後に、HtmlMarker が表示されます。
+シンボル レイヤーには、利用できるさまざまなスタイル設定オプションがあります。 さまざまなスタイル設定オプションをテストするためのツールを次に示します。
 
-## <a name="add-bubble-markers"></a>バブル マーカーを追加する
+<br/>
 
-<iframe height='500' scrolling='no' title='BubbleLayer DataSource' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a>」Pen を表示します。
+<iframe height='700' scrolling='no' title='シンボル レイヤーのオプション' src='//codepen.io/azuremaps/embed/PxVXje/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/PxVXje/'>Symbol Layer Options (シンボル レイヤーのオプション)</a>」Pen を表示します。
 </iframe>
-
-上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
-
-2 番目のコード ブロックでは、位置の配列が定義され、[MultiPoint](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.multipoint?view=azure-iot-typescript-latest) オブジェクトが作成されます。 次に、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用して、データ ソース オブジェクトが作成され、MultiPoint オブジェクトがデータ ソースに追加されます。
-
-[バブル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)によって、[データ ソース](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)にラップされたポイントベースのデータが円としてマップにレンダリングされます。 最後のコード ブロックでは、バブル レイヤーが作成され、マップに追加されます。 バブル レイヤーのプロパティについては、[BubblerLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.bubblelayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。
-
-MultiPoint オブジェクト、データ ソース、および多角形レイヤーが作成され、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが完全に読み込まれた後に、円が表示されます。
-
-## <a name="add-bubble-markers-with-label"></a>ラベル付きのバブル マーカーを追加する
-
-<iframe height='500' scrolling='no' title='MultiLayer DataSource' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/rqbQXy/'>MultiLayer DataSource</a>」Pen を表示します。
-</iframe>
-
-上記のコードでは、マップ上のデータを視覚化し、ラベル付けする方法を示します。 上記のコードの最初のブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
-
-2 番目のコード ブロックでは、[point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) オブジェクトが作成されます。 次に、[データ ソース](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用して、データ ソース オブジェクトが作成され、そのデータ ソースにポイントが追加されます。
-
-[バブル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)によって、[データ ソース](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)にラップされたポイントベースのデータが円としてマップにレンダリングされます。 3 番目のコード ブロックでは、バブル レイヤーが作成され、マップに追加されます。 バブル レイヤーのプロパティについては、[BubblerLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.bubblelayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。
-
-[シンボル レイヤー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)は、テキストまたはアイコンを使用して、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたポイントベースのデータをシンボルとしてマップにレンダリングします。 最後のコード ブロックでは、シンボル レイヤーが作成され、マップに追加されて、バブルのテキスト ラベルがレンダリングされます。 シンボル レイヤーのプロパティについては、[SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.symbollayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。
-
-データ ソースとレイヤーが作成され、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが完全に読み込まれた後に、データが表示されます。
-
 
 ## <a name="next-steps"></a>次の手順
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [SymbolLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [TexTOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.textoptions?view=azure-iot-typescript-latest)
 
 マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 
@@ -84,4 +76,10 @@ MultiPoint オブジェクト、データ ソース、および多角形レイ�
 > [ポップアップを追加する](./map-add-popup.md)
 
 > [!div class="nextstepaction"]
-> [図形を追加する](./map-add-shape.md)
+> [シェイプを追加する](./map-add-shape.md)
+
+> [!div class="nextstepaction"]
+> [バブル レイヤーを追加する](./map-add-bubble-layer.md)
+
+> [!div class="nextstepaction"]
+> [HTML マーカーを追加する](./map-add-bubble-layer.md)

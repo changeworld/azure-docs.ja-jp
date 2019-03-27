@@ -4,7 +4,7 @@ description: Media Analytics のパブリック プレビュー (エンタープ
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: c56e3781-8510-4f7f-b5ff-a218c1bb6f4c
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 0ac8b9fad35267ceaec5b5acec4722b6005f68a9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0c090499ee6ae2aaaa14af18c3c38db28ecb2f3e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783591"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884729"
 ---
-# <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics
+# <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics 
+
 ## <a name="overview"></a>概要
 従業員のトレーニング、お客様への対応、およびビジネス機能のドキュメント化で優先的に利用するメディアとしてビデオを使用する組織が増えています。 クラウド コンピューティングでは、それらの大量のメディア ファイルを格納、ストリーミングしたり、それらのファイルにアクセスしたりできます。 しかし、企業のビデオ コンテンツのライブラリが大きくなると、コンテンツから洞察を引き出す効果的な手段も必要です。 
 
@@ -125,7 +126,7 @@ Media Analytics は、ビデオから新しい見識を収集する組織や企�
     }
 
 ## <a name="demos"></a>デモ
-[Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)を参照してください。
+[Azure Media Analytics デモ](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)を参照してください。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -3,19 +3,20 @@ title: Azure MFA サーバーまたは Azure MFA サービス (オンプレミ�
 description: Azure AD 管理者は、どちらのバージョンの MFA をデプロイすべきか把握する必要があります。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 696c331111fef9d6fc238b733e15230ab3ee1e56
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9fb7785487fc79daca56e35ce0c6a19efd5b0605
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378018"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56195755"
 ---
 # <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>所属する組織に適しているのはどちらのバージョンの Azure MFA であるかを確認しましょう。
 

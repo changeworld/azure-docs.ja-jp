@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 917a551b8a187db6645e523d0189533e333d5371
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a1b60bdf27e1a5f5cb6b9cfba72d78f8afa068eb
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075168"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768598"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -169,7 +169,7 @@ Event Hubs のスループット容量は、"*スループット ユニット*" 
 
 Azure サポートに連絡すれば、20 ブロック単位で最大 100 までスループット ユニットを購入できます。 さらに、100 ブロック単位でスループット ユニットを購入することができます。
 
-最適なスケールを実現するために、スループット ユニットとパーティションのバランスを保つことをお勧めします。 単一のパーティションの最大スケールは 1 つのスループット ユニットです。 スループット ユニットの数は、イベント ハブ内のパーティション数以下とする必要があります。
+最適なスケールを実現するために、スループット ユニットとパーティションのバランスを保つことをお勧めします。 単一のパーティションの最小スケールは 1 つのスループット ユニットです。 スループット ユニットの数は、イベント ハブ内のパーティション数以下とする必要があります。
 
 Event Hubs の価格の詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 

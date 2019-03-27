@@ -4,7 +4,7 @@ description: Azure Active Directory と GoodPractice Toolkit の間でシング�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 65b2979d-9e2f-4530-bc08-546975269ebc
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 699a46dbb404e39c1f2005140b88a773832eb50c
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ae010825e16178cdfb8544c7bd1c6fd0e9c57b90
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53797159"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874649"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>チュートリアル:Azure Active Directory と GoodPractice Toolkit の統合
 
@@ -192,7 +193,7 @@ GoodPractice Toolkit で Azure AD シングル サインオンを構成するに
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

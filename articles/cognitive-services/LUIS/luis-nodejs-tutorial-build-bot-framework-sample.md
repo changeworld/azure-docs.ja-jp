@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Bot Framework 3.x と Azure Web アプリ ボットを使用して、LUIS アプリケーションと統合されるボットを作成します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: b64db46da99e0db3d573dac3830c77a0be4f4d0d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 62a3169257001f64e3103cc079e544449ac59663
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726169"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328386"
 ---
 # <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot Framework 3.x と Azure Web アプリ ボットを備えた Node.js の LUIS ボット
 
@@ -44,7 +44,7 @@ Bot を作成する前に、[アプリの作成](./luis-get-started-create-app.m
 
     ![Web アプリ ボットを選択してリソース作成プロセスを開始する](./media/luis-tutorial-node-bot/bot-service-selection.png)
 
-3. **[ボット サービス]** ブレードで、必要な情報を指定し、**[作成]** を選択します。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)を使用するには、ボットを作成する前に、[リージョンの要件](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming)を確認します。 
+3. **[ボット サービス]** ブレードで、必要な情報を指定し、**[作成]** を選択します。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)を使用するには、ボットを作成する前に、[リージョンの要件](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming)を確認します。 
     * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
     * **Bot テンプレート**で、以下を選択します。
@@ -116,7 +116,7 @@ LUIS アプリ ID がない場合は、Azure へのログインに使用する�
 
 コード エディターで、`app.js` を開きます。 これには以下のコードが含まれます。
 
-```nodejs
+```javascript
 /*-----------------------------------------------------------------------------
 A simple Language Understanding (LUIS) bot for the Microsoft Bot Framework. 
 -----------------------------------------------------------------------------*/
@@ -207,7 +207,7 @@ app.js の既存の意図は無視されます。 これは、そのままにし
 
 次のコードをコピーし、`app.js` に追加します。
 
-```nodejs
+```javascript
 bot.dialog('TurnOn',
     (session) => {
         session.send('You reached the TurnOn intent. You said \'%s\'.', session.message.text);
@@ -224,7 +224,7 @@ bot.dialog('TurnOn',
 
 次のコードをコピーし、`app.js` に追加します。
 
-```nodejs
+```javascript
 bot.dialog('TurnOff',
     (session) => {
         session.send('You reached the TurnOff intent. You said \'%s\'.', session.message.text);

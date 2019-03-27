@@ -6,21 +6,21 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/28/2018
+ms.date: 3/4/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: b01e16f85eaccee4d765b4985769df670d4d35ca
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 4f95cbb6cb04f2215bb5cb89bb5e9afb4ca2628f
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413032"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342162"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
 Azure Firewall は、Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。 これは、組み込みの高可用性とクラウドによる無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。 
 
-![ファイアウォールの概要](media/overview/firewall-overview.png)
+![ファイアウォールの概要](media/overview/firewall-threat.png)
 
 サブスクリプションと仮想ネットワークをまたいでアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、記録できます。 Azure Firewall では、外部のファイアウォールが仮想ネットワークからのトラフィックを識別できるよう、仮想ネットワーク リソースに静的パブリック IP アドレスが使用されます。  サービスはログ記録と分析を行うために Azure Monitor と完全に統合されます。
 
@@ -29,9 +29,11 @@ Azure Firewall は、Azure Virtual Network リソースを保護するクラウ�
 Azure Firewall では次の機能が提供されます。
 
 ### <a name="built-in-high-availability"></a>組み込みの高可用性
+
 高可用性が組み込まれているため、ロード バランサーを追加する必要がなく、構成が必要なものはありません。
 
-### <a name="unrestricted-cloud-scalability"></a>クラウドによる無制限のスケーラビリティ 
+### <a name="unrestricted-cloud-scalability"></a>クラウドによる無制限のスケーラビリティ
+
 Azure Firewall では、必要に応じてスケールアップしてネットワーク トラフィック フローの変化に対応できるので、ピーク時のトラフィックを処理するために予算を立てる必要がありません。
 
 ### <a name="application-fqdn-filtering-rules"></a>アプリケーションの FQDN のフィルタリング規則
@@ -46,6 +48,14 @@ Azure Firewall では、必要に応じてスケールアップしてネット�
 
 FQDN のタグにより、ファイアウォール経由の既知の Azure サービスのネットワーク トラフィックを簡単に許可することができます。 たとえば、ファイアウォール経由の Windows Update のネットワーク トラフィックを許可したいとします。 アプリケーションの規則を作成して、Windows Update のタグを組み込みます。 これで、Windows Update からのネットワーク トラフィックをファイアウォール経由でフローできるようになります。
 
+### <a name="service-tags"></a>サービス タグ
+
+サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。 独自のサービス タグを作成したり、タグに含まれる IP アドレスを指定したりすることはできません。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。
+
+### <a name="threat-intelligence"></a>脅威インテリジェンス
+
+ファイアウォール用に脅威インテリジェンスベースのフィルター処理を有効にして、既知の悪意のある IP アドレスやドメインとの間のトラフィックの警告と拒否を行うことができます。 この IP アドレスとドメインのソースは、Microsoft の脅威インテリジェンス フィードです。
+
 ### <a name="outbound-snat-support"></a>送信 SNAT サポート
 
 仮想ネットワーク トラフィックの送信 IP アドレスはすべて Azure Firewall パブリック IP に変換されます (送信元ネットワーク アドレス変換)。 仮想ネットワークからインターネット上のリモートの送信先に向かうトラフィックを特定して許可できます。
@@ -56,7 +66,7 @@ FQDN のタグにより、ファイアウォール経由の既知の Azure サ�
 
 ### <a name="azure-monitor-logging"></a>Azure Monitor ログ記録
 
-すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Log Analytics に送信したりできます。
+すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Azure Monitor ログに送信したりできます。
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -72,11 +82,10 @@ TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク �
 |FQDN タグで port:protocol を設定する必要がある|FQDN タグを使用するアプリケーション ルールには、port:protocol の定義が必要です。|port:protocol 値として、**https** を使用できます。 FQDN タグが使用される場合にこのフィールドを省略可能にするため、取り組みを進めています。|
 |ファイアウォールを別のリソース グループまたはサブスクリプションへ移動することはサポートされていません|ファイアウォールを別のリソース グループまたはサブスクリプションへ移動することはサポートされていません。|この機能は今後サポートされる予定です。 ファイアウォールを別のリソース グループまたはサブスクリプションに移動するには、現在のインスタンスを削除して、新しいリソース グループまたはサブスクリプション内に再作成する必要があります。|
 |ネットワークおよびアプリケーション ルールのポート範囲|上位のポートは管理および正常性プローブ用に予約されているため、ポートは 64,000 に制限されています。 |現在、この制限を緩和するように取り組んでいます。|
-|
+|脅威インテリジェンス アラートがマスクされることがある|アラートのみのモードに構成されている場合、送信フィルター処理用の宛先 80/443 のネットワーク ルールによって脅威インテリジェンス アラートがマスクされます。|アプリケーション ルールを使用して 80/443 の送信フィルター処理を作成します。 または、脅威インテリジェンス モードを **[Alert and Deny]\(アラートと拒否\)** に変更します。|
 
 ## <a name="next-steps"></a>次の手順
 
 - [チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する](tutorial-firewall-deploy-portal.md)
 - [テンプレートを使用して Azure Firewall をデプロイする](deploy-template.md)
 - [Azure Firewall のテスト環境を作成する](scripts/sample-create-firewall-test.md)
-

@@ -1,21 +1,20 @@
 ---
-title: VS Code を使用してクラウドに Kubernetes Node.js 開発環境を作成する | Microsoft Docs
+title: VS Code を使用してクラウドに Kubernetes Node.js 開発環境を作成する
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 17ba5b9ecee2ee70d7622e9c49a5d51fbca44735
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
+ms.openlocfilehash: 063ea2392dcaa705436bfbd7ba5d429bb096651e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413423"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891037"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Azure Dev Spaces での Node.js の使用
 
@@ -63,7 +62,7 @@ az account set --subscription <subscription ID>
 
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaces 対応の Kubernetes クラスターを作成する
 
-コマンド プロンプトで、リソース グループを作成します。 現在サポートされているリージョン (EastUS、EastUS2、CentralUS、WestUS2、WestEurope、SoutheastAsia、CanadaCentral、または CanadaEast) のいずれかを使用します。
+[Azure Dev Spaces をサポートするリージョン](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)に、コマンド プロンプトでリソース グループを作成します。
 
 ```cmd
 az group create --name MyResourceGroup --location <region>
@@ -72,7 +71,7 @@ az group create --name MyResourceGroup --location <region>
 以下のコマンドを使用して Kubernetes クラスターを作成します。
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --enable-addons http_application_routing --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 クラスターの作成には数分かかります。
@@ -101,7 +100,7 @@ VS Code を使用する .NET Core および Node.js の開発者は、Kubernetes
 ### <a name="create-a-nodejs-web-app"></a>Node.js Web アプリを作成する
 https://github.com/Azure/dev-spaces に移動して GitHub からコードをダウンロードし、**[Clone or download]** クリックして GitHub リポジトリをローカル環境にダウンロードします。 このガイドのコードは、 `samples/nodejs/getting-started/webfrontend` にあります。
 
-## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Docker および Kubernetes 開発用コードの準備
+## <a name="prepare-code-for-docker-and-kubernetes-development"></a>Docker および Kubernetes 開発用コードの準備
 ここまでで、ローカルで実行できる基本的な Web アプリを用意しました。 ここで、アプリのコンテナーと、それを Kubernetes にデプロイする方法を定義するアセットを作成して、それをコンテナー化します。 このタスクは Azure Dev Spaces で行うのが容易です。 
 
 1. VS Code を起動し、`webfrontend` フォルダーを開きます。 (デバッグ アセットの追加やプロジェクトの復元を行うための既定のプロンプトはすべて無視できます。)
@@ -142,13 +141,13 @@ azds up
 
 ```
 (pending registration) Service 'webfrontend' port 'http' will be available at <url>
-Service 'webfrontend' port 80 (TCP) is available at http://localhost:<port>
+Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ```
 
 ブラウザー ウィンドウでこの URL を開くと、Web アプリ ロードが表示されるはずです。 コンテナーが実行されると、`stdout` と `stderr` の出力がターミナル ウィンドウにストリーミングされます。
 
 > [!Note]
-> 最初の実行では、パブリック DNS が準備されるまでに数分かかることがあります。 公開 URL が解決されない場合は、コンソール出力に表示される代替 http://localhost:<portnumber> URL を使用することができます。 localhost URL を使用する場合、コンテナーはローカルで実行されているように見えるかもしれませんが、実際には AKS で実行されています。 利便性を考慮し、また、ローカル コンピューターからのサービスとの対話を容易にするために、Azure Dev Spaces では、Azure で実行されているコンテナーへの一時的な SSH トンネルが作成されます。 後で DNS レコードが準備できたら、戻って公開 URL を試してみることができます。
+> 最初の実行では、パブリック DNS が準備されるまでに数分かかることがあります。 公開 URL が解決されない場合は、コンソール出力に表示される代替 `http://localhost:<portnumber>` URL を使用することができます。 localhost URL を使用する場合、コンテナーはローカルで実行されているように見えるかもしれませんが、実際には AKS で実行されています。 利便性を考慮し、また、ローカル コンピューターからのサービスとの対話を容易にするために、Azure Dev Spaces では、Azure で実行されているコンテナーへの一時的な SSH トンネルが作成されます。 後で DNS レコードが準備できたら、戻って公開 URL を試してみることができます。
 
 ### <a name="update-a-content-file"></a>コンテンツ ファイルを更新する
 Azure Dev Spaces は、Kubernetes でコードを実行するだけのものではありません。Azure Dev Spaces を使用すると、クラウドの Kubernetes 環境でコードの変更が有効になっていることをすぐに繰り返し確認できるようになります。
@@ -278,5 +277,5 @@ Azure Dev Spaces を使用すると、ローカルでの開発時と同じ開発
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [チーム開発について学ぶ](team-development-nodejs.md)
+> [マルチサービス開発について学習する](multi-service-nodejs.md)
 

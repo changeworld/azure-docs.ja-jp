@@ -5,23 +5,24 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
-ms.component: identity-protection
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 01/29/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 75d8503e6179b8ef3578a4a8c62ef1b288657a7b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eecdf4382fff441ca7c7d6bd4c63d12b87a73ccf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576818"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169702"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
 
@@ -46,9 +47,9 @@ Microsoft は 10 年以上にわたってクラウド ベースの ID を保護�
 
 - 侵害された ID が悪用されるのを事前に防止する
 
-侵害された ID を検出するのは簡単な作業はありません。 Azure Active Directory は、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ID が侵害された可能性があることを示す、異常と疑わしいインシデントを検出します。 Identity Protection は、このデータを使用してレポートとアラートを生成し、これにより、ユーザーは検出された問題を評価し、適切な修復または軽減のアクションを実行することができます。
+侵害された ID を検出するのは簡単な作業ではありません。 Azure Active Directory は、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ID が侵害された可能性があることを示す、異常と疑わしいインシデントを検出します。 Identity Protection は、このデータを使用してレポートとアラートを生成し、これにより、ユーザーは検出された問題を評価し、適切な修復または軽減のアクションを実行することができます。
 
-Azure Active Directory Identity Protection は単なる監視とレポート作成のツールではありません。 指定したリスク レベルに達したときに、検出された問題が自動的に対処されるようにリスク ベースのポリシーを構成することで、組織の ID を保護できます。 こうしたポリシーと、Azure Active Directory および EMS によって提供される他の条件付きアクセス コントロールにより、パスワードのリセットや多要素認証の適用などのアダプティブ修復アクションを自動的にブロックまたは開始できます。
+Azure Active Directory Identity Protection は単なる監視とレポート作成のツールではありません。 指定したリスク レベルに達したときに、検出された問題が自動的に対処されるようにリスク ベースのポリシーを構成することで、組織の ID を保護できます。 こうしたポリシーと、Azure Active Directory および [Enterprise Mobility + Security](https://docs.microsoft.com/enterprise-mobility-security/) (EMS) によって提供される他の条件付きアクセス コントロールにより、パスワードのリセットや多要素認証の適用などのアダプティブ修復アクションを自動的にブロックまたは開始できます。
 
 
 #### <a name="identity-protection-capabilities"></a>Identity Protection の機能
@@ -134,7 +135,7 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [Channel 9:Azure AD and Identity Show: Identity Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview) (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)
 
 - [Azure Active Directory Identity Protection の有効化](enable.md)
 

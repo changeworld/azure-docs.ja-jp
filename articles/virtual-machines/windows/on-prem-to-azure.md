@@ -3,8 +3,8 @@ title: AWS やその他のプラットフォームから Azure の Managed Disks
 description: AWS などの他のクラウドやその他の仮想化プラットフォームからアップロードされた VHD を使用して Azure で VM を作成し、Azure Managed Disks を活用します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2017
-ms.author: cynthn
+ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83e69cd488ab7e8b69895a25716350c8025c6c48
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 05e687ab31b6c19193076033e1350952549d26e0
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074905"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330751"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>アマゾン ウェブ サービス (AWS) やその他のプラットフォームから Azure の Managed Disks に移行する
 
@@ -46,11 +46,8 @@ AWS やオンプレミスの仮想化ソリューションから Azure に VHD �
 
 ## <a name="overview-of-managed-disks"></a>Managed Disks の概要
 
-Azure Managed Disks は、ストレージ アカウントを管理する必要をなくして VM 管理をシンプルにします。 Managed Disks では、可用性セット内の VM の信頼性の向上というメリットもあります。 単一障害点を避けるために、可用性セット内の異なる VM のディスクは相互に十分に分離されます。 可用性セット内の異なる VM のディスクは異なるストレージ スケール ユニット (スタンプ) に自動的に配置されるため、ハードウェアとソフトウェアの障害を原因とする単一のストレージ スケール ユニット障害の影響が限定されます。 ニーズに基づいて、2 種類のストレージ オプションから選ぶことができます。 
- 
-- [Premium Managed Disks](premium-storage.md) は、ソリッド ステート ドライブ (SSD) ベースのストレージ メディアで、I/O を集中的に行うワークロードを実行している仮想マシンに、高パフォーマンスで待ち時間の短いディスク サポートを提供します。 Premium Managed Disks に移行すると、これらのディスクの速度とパフォーマンスを最大限に高めることができます。  
-
-- [Standard Managed Disks](standard-storage.md) は、ハード ディスク ドライブ (HDD) ベースのストレージ メディアで、パフォーマンス変動の影響を受けにくい、開発/テスト ワークロードやアクセス頻度の少ないワークロードに最適です。  
+Azure Managed Disks は、ストレージ アカウントを管理する必要をなくして VM 管理をシンプルにします。 Managed Disks では、可用性セット内の VM の信頼性の向上というメリットもあります。 単一障害点を避けるために、可用性セット内の異なる VM のディスクは相互に十分に分離されます。 可用性セット内の異なる VM のディスクは異なるストレージ スケール ユニット (スタンプ) に自動的に配置されるため、ハードウェアとソフトウェアの障害を原因とする単一のストレージ スケール ユニット障害の影響が限定されます。
+ニーズに基づいて、4 種類のストレージ オプションから選ぶことができます。 使用できるディスクの種類の詳細については、[ディスクの種類の選択](disks-types.md)に関する記事を参照してください。
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Managed Disks への移行の計画
 
@@ -58,7 +55,7 @@ Azure Managed Disks は、ストレージ アカウントを管理する必要�
 
 管理されていないディスクからマネージド ディスクへの移行を計画している場合は、[仮想マシンの共同作成者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)ロールが割り当てられているユーザーは VM のサイズを変更できないことに注意してください (それらは事前に変換されている可能性があるためです)。 マネージド ディスクを持つ VM が OS ディスク上での Microsoft.Compute/disks/write 権限をユーザーに要求するのは、これが理由です。
 
-### <a name="location"></a>場所
+### <a name="location"></a>Location
 
 Azure Managed Disks を使用できる場所を選びます。 Premium Managed Disks に移行する場合は、移行を計画しているリージョンで Premium Storage が使用可能であることも確認します。 使用できる場所に関する最新情報については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/#services)」をご覧ください。
 

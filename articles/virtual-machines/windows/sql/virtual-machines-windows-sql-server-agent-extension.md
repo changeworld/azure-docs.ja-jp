@@ -3,7 +3,7 @@ title: SQL VM (Resource Manager) での管理タスクの自動化 | Microsoft D
 description: この記事では、SQL Server エージェント拡張機能を管理して、SQL Server の特定の管理機能を自動化する方法について説明します。 自動バックアップ、自動修正、および Azure Key Vault の統合が含まれます。
 services: virtual-machines-windows
 documentationcenter: ''
-author: rothja
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
-ms.author: jroth
-ms.openlocfilehash: 5ffee3bb5cbeff4e2222307e2a1afb4691ae93d5
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: 7cc65c0564b6171e66c4337ce02e1c2d6449e101
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053042"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55975417"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>SQL Server Agent 拡張機能 (Resource Manager) による Azure Virtual Machines での管理タスクの自動化
 > [!div class="op_single_selector"]
@@ -63,6 +64,8 @@ VM で SQL Server IaaS Agent 拡張機能を使用するための要件:
 
 * [最新の Azure PowerShell コマンドをダウンロードして構成します](/powershell/azure/overview)
 
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
 > 現時点で、Azure 上の SQL Server FCI では [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)がサポートされていません。 FCI に参加している VM からこの拡張機能をアンインストールすることをお勧めします。 エージェントのアンインストール後、この拡張機能によってサポートされる機能を SQL VM で使用することはできません。
 
@@ -70,11 +73,11 @@ VM で SQL Server IaaS Agent 拡張機能を使用するための要件:
 SQL Server IaaS Agent 拡張機能は、SQL Server 仮想マシン ギャラリー イメージのいずれかをプロビジョニングしたときに自動的にインストールされます。 これらの SQL Server VM の 1 つに拡張機能を手動で再インストール必要がある場合は、次の PowerShell コマンドを使用します。
 
 ```powershell
-Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension" -Version "2.0" -Location "East US 2"
+Set-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension" -Version "2.0" -Location "East US 2"
 ```
 
 > [!IMPORTANT]
-> 拡張機能がまだインストールされていない場合、拡張機能をインストールすると、SQL Server サービスが再起動されます。
+> 拡張機能がまだインストールされていない場合、拡張機能をインストールすると、SQL Server サービスが再起動されます。 ただし、SQL IaaS 拡張機能を更新しても、SQL Server サービスは再起動されません。 
 
 > [!NOTE]
 > SQL Server IaaS Agent 拡張機能は、[SQL Server VM ギャラリー イメージ](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (従量課金制またはライセンス持ち込み) でのみサポートされます。 SQL Server を OS のみの Windows Server 仮想マシンに手動でインストールする場合や、カスタマイズされた SQL Server VM VHD をデプロイする場合、この拡張機能はサポートされません。 そのような場合は、PowerShell を使用して拡張機能を手動でインストールおよび管理できる可能性がありますが、Azure Portal には SQL Server の構成設定が表示されません。 ただし、代わりに SQL Server VM ギャラリー イメージをインストールしてカスタマイズすることを強くお勧めします。
@@ -84,13 +87,13 @@ Set-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "
 
 ![Azure ポータルでの SQL Server IaaS Agent 拡張機能](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-portal.png)
 
-**Get-AzureRmVMSqlServerExtension** Azure PowerShell コマンドレットを使用することもできます。
+**Get-AzVMSqlServerExtension** Azure PowerShell コマンドレットを使用することもできます。
 
-    Get-AzureRmVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
+    Get-AzVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
 
 前のコマンドは、エージェントがインストールされていることを確認し、全般的なステータス情報を提供します。 次のコマンドを使用して、自動バックアップと自動修正に関する特定のステータス情報を取得することもできます。
 
-    $sqlext = Get-AzureRmVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
+    $sqlext = Get-AzVMSqlServerExtension -VMName "vmname" -ResourceGroupName "resourcegroupname"
     $sqlext.AutoPatchingSettings
     $sqlext.AutoBackupSettings
 
@@ -99,9 +102,9 @@ Azure Portal で拡張機能をアンインストールするには、仮想マ�
 
 ![Azure ポータルで SQL Server IaaS Agent 拡張機能をアンインストールする](./media/virtual-machines-windows-sql-server-agent-extension/azure-rm-sql-server-iaas-agent-uninstall.png)
 
-**Remove-AzureRmVMSqlServerExtension** PowerShell コマンドレットを使用することもできます。
+**Remove-AzVMSqlServerExtension** PowerShell コマンドレットを使用することもできます。
 
-    Remove-AzureRmVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
+    Remove-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
 
 ## <a name="next-steps"></a>次の手順
 拡張機能によってサポートされるいずれかのサービスの使用を開始します。 詳細については、この記事の「[サポートされているサービス](#supported-services) 」で参照されているトピックをご覧ください。

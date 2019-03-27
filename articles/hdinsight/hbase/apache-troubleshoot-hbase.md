@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4dc50de7a97055e336627e34f747a17fcedc7e58
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651607"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091547"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache HBase のトラブルシューティング
 
@@ -367,7 +367,7 @@ Apache Ambari UI から HBase リージョン サーバー上での再起動操�
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-強制シャットダウンにより、リージョン サーバー プロセスが停止されても、プロセスに関連付けられているポートが解放されない場合があります。 この状況により、次のログに示すように、リージョン サーバーの起動時に AddressBindException が発生する可能性があります。 これは、リージョン サーバーが起動に失敗したワーカー ノードの /var/log/hbase ディレクトリにある region-server.log で確認できます。 
+   強制シャットダウンにより、リージョン サーバー プロセスが停止されても、プロセスに関連付けられているポートが解放されない場合があります。 この状況により、次のログに示すように、リージョン サーバーの起動時に AddressBindException が発生する可能性があります。 これは、リージョン サーバーが起動に失敗したワーカー ノードの /var/log/hbase ディレクトリにある region-server.log で確認できます。 
 
    ```apache
 

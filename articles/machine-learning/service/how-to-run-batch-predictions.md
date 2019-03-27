@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning service を使用して大量のデータで非同期にバッチ予測を行う方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: adac498b2f1e3331497c08f41558575c06b5823c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 1e403ac0d2fbe9572a44fb3cde9d25e4df9b3db4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102943"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885001"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-service"></a>Azure Machine Learning service で大規模なデータ セットのバッチ予測を実行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "54102943"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) をお試しください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) をお試しください。
 
 - Azure Machine Learning SDK をインストールするための開発環境を構成します。 詳しくは、「[Azure Machine Learning のための開発環境を構成する](how-to-configure-environment.md)」をご覧ください。
 

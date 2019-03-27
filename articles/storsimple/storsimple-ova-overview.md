@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2018
 ms.author: alkohli
-ms.openlocfilehash: 78ed53e5e2f5d04943e6c32ddfedf037cb9e1f73
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: a7aace89ad4323d6fad6942fe03c4240fb53c8fd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480956"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811200"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array の概要
 
@@ -52,7 +52,7 @@ StorSimple Virtual Array の重要な機能を次の表にまとめます。
 | データのモビリティ |同じデバイスに復元することも、項目レベルの回復 (ファイル サーバー) を実行することも可能 |
 | ストレージ層 |ローカル ハイパーバイザー ストレージとクラウド |
 | 共有サイズ |階層化: 最大 20 TB、ローカル固定: 最大 2 TB |
-| ボリューム サイズ |階層化: 500 GB - 5 TB、ローカル固定: 50 GB - 200 GB <br> 階層化ボリュームに対する最大のローカル予約は 200 GB です。 |
+| ボリューム サイズ |階層化:500 GB - 5 TB、ローカル固定:50 GB - 200 GB <br> 階層化ボリュームに対する最大のローカル予約は 200 GB です。 |
 | スナップショット |クラッシュ整合性 |
 | 項目レベルの回復 |可能: ユーザーが共有から復元可能 |
 
@@ -169,7 +169,7 @@ Web ベースの UI の使用方法については、「 [Web UI を使用した
 
 * [自動ストレージ階層化](#automatic-storage-tiering) 
 * [ローカル固定共有/ボリューム](#locally-pinned-shares-and-volumes)
-* [クラウドに階層化またはバックアップされたデータの重複除去と圧縮](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud) 
+* クラウドに階層化またはバックアップされたデータの重複除去と圧縮 
 * [スケジュールされたバックアップとオンデマンド バックアップ](#scheduled-and-on-demand-backups)
 
 ### <a name="automatic-storage-tiering"></a>自動ストレージ階層化

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 613bf104f023b092016e6881dbc285e667453f92
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: 4af86b570dfb24f990f1d8b4ff501d1a222bd21d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628444"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55494291"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>Azure Storage クライアントのセキュリティで保護された TLS の有効化
 
@@ -56,7 +56,7 @@ Azure Storage に対するセキュリティで保護され、コンプライア
 # Enable TLS 1.2 before connecting to Azure Storage
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12;
 
-$resourceGroup = "{YourResourceGropuName}"
+$resourceGroup = "{YourResourceGroupName}"
 $storageAccountName = "{YourStorageAccountNme}"
 $prefix = "foo"
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cbrooks
-ms.component: common
-ms.openlocfilehash: e8e81ab81e33302b9a0da3e0230d1366cc90d208
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: ce682263663c0547d9e35a4d29037fd125d8bc6c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635512"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699178"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -241,7 +241,7 @@ IP ネットワーク ルールは、**パブリック インターネット**�
 
 IP ネットワーク ルールでオンプレミスのネットワークからストレージ アカウントへのアクセスを許可するには、ネットワークで使用するインターネット接続 IP アドレスを特定する必要があります。 サポートが必要な場合は、ネットワーク管理者にお問い合わせください。
 
-[ExpressRoute](/azure/expressroute/expressroute-introduction) を使用して、ネットワークを Azure ネットワークに接続できます。 その場合、各回線には 2 つのパブリック IP アドレスが構成されます。 それらは、Microsoft Edge で見つかり、[Azure パブリック ピアリング](/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) を使用して Azure Storage などの Microsoft サービスに接続できます。 Azure Storage との通信を許可するには、回線のパブリック IP アドレスに対する IP ネットワーク ルールを作成します。 ExpressRoute 回線のパブリック IP アドレスを確認するには、Azure portal から [ExpressRoute のサポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ください。
+[ExpressRoute](/azure/expressroute/expressroute-introduction) を使用して、ネットワークを Azure ネットワークに接続できます。 その場合、各回線には 2 つのパブリック IP アドレスが構成されます。 それらは、Microsoft Edge で見つかり、[Azure パブリック ピアリング](/azure/expressroute/expressroute-circuit-peerings) を使用して Azure Storage などの Microsoft サービスに接続できます。 Azure Storage との通信を許可するには、回線のパブリック IP アドレスに対する IP ネットワーク ルールを作成します。 ExpressRoute 回線のパブリック IP アドレスを確認するには、Azure portal から [ExpressRoute のサポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ください。
 
 ### <a name="managing-ip-network-rules"></a>IP ネットワーク ルールの管理
 
@@ -355,7 +355,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 |Azure Event Grid|Microsoft.EventGrid|Blob Storage のイベント発行を有効にし、ストレージ キューへの発行を Event Grid に許可します。 [Blob Storage イベント](/azure/event-grid/event-sources)と[キューへの発行](/azure/event-grid/event-handlers)について確認してください。|
 |Azure Event Hubs|Microsoft.EventHub|Event Hubs Capture を使用したアーカイブ データのキャプチャ [詳細情報](/azure/event-hubs/event-hubs-capture-overview)|
 |Azure のネットワーク|Microsoft.Networking|ネットワーク トラフィック ログの保存および分析 [詳細情報](/azure/network-watcher/network-watcher-packet-capture-overview)。|
-|Azure Monitor|Microsoft.Insights|セキュリティで保護されたストレージ アカウントに監視データを書き込めるようにします。[詳細情報](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks)。|
+|Azure Monitor|Microsoft.Insights|セキュリティで保護されたストレージ アカウントに監視データを書き込めるようにします。[詳細情報](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。|
 |Azure SQL Data Warehouse|Microsoft.Sql|PolyBase を使用したインポートとエクスポートのシナリオを許可します。 [詳細情報](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。|
 
 ### <a name="storage-analytics-data-access"></a>ストレージ分析データ アクセス

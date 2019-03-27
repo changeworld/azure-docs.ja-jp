@@ -12,16 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
-ms.openlocfilehash: 50ece9edbc4bee1dea2cc61f2cdd851b278aa7b0
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/18/2018
+ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720443"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809250"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Azure Stack へのアクセスをアプリケーションに提供する
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack 内の Azure Resource Manager を通じてリソースをデプロイまたは構成するためのアクセスがアプリケーションに必要な場合は、アプリケーションの資格情報であるサービス プリンシパルを作成します。 サービス プリンシパルには必要な権限のみを委任できます。  
 
@@ -37,10 +38,10 @@ Azure Stack 内の Azure Resource Manager を通じてリソースをデプロ�
 
 Azure Stack のデプロイ方法に応じて、サービス プリンシパルを作成して開始します。 このドキュメントでは、以下のもののサービス プリンシパルの作成について説明します。
 
-- [Azure Active Directory (Azure AD)](#create-service-principal-for-azure-ad)。 Azure AD は、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 Azure AD は、接続された Azure Stack で使用できます。
-- [Active Directory フェデレーション サービス (AD FS)](#create-service-principal-for-ad-fs)。 AD FS は、シンプルかつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 AD FS は、接続された Azure Stack インスタンスでも、切断された Azure Stack インスタンスでも使用できます。
+- Azure Active Directory (Azure AD)。 Azure AD は、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 Azure AD は、接続された Azure Stack で使用できます。
+- Active Directory フェデレーション サービス (AD FS)。 AD FS は、シンプルかつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 AD FS は、接続された Azure Stack インスタンスでも、切断された Azure Stack インスタンスでも使用できます。
 
-サービス プリンシパルを作成したら、AD FS と Azure Active Directory の両方に共通する一連の手順を実行して、ロールに[アクセス許可を委任](#assign-role-to-service-principal)します。
+サービス プリンシパルを作成したら、AD FS と Azure Active Directory の両方に共通する一連の手順を実行して、ロールにアクセス許可を委任します。
 
 ## <a name="manage-service-principal-for-azure-ad"></a>Azure AD のサービス プリンシパルの管理
 
@@ -62,9 +63,9 @@ ID 管理サービスとして Azure Active Directory (Azure AD) を使用して
 
 1. Active Directory の **[アプリの登録]** で、アプリケーションを選択します。
 
-2. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。 「[サンプル アプリケーション](#sample-applications)」の各アプリケーションでは、この値をクライアント ID と呼んでいます。
+2. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。 サンプル アプリケーションの各アプリケーションでは、この値をクライアント ID と呼んでいます。
 
-     ![[クライアント ID]](./media/azure-stack-create-service-principal/image12.png)
+     ![クライアント ID](./media/azure-stack-create-service-principal/image12.png)
 3. Web アプリ/API に対して認証キーを生成するには、**[設定]** > **[キー]** の順に選択します。 
 
 4. キーの説明を入力し、キーの期間を指定します。 操作が完了したら、**[保存]** をクリックします。
@@ -73,7 +74,7 @@ ID 管理サービスとして Azure Active Directory (Azure AD) を使用して
 
 ![保存されたキー](./media/azure-stack-create-service-principal/image15.png)
 
-完了したら、[アプリケーションにロールを割り当てる](#assign-role-to-service-principal)ことができます。
+完了したら、アプリケーションにロールを割り当てることができます。
 
 ## <a name="manage-service-principal-for-ad-fs"></a>AD FS のサービス プリンシパルの管理
 
@@ -125,19 +126,19 @@ ID のために AD FS を使用した状態でサービス プリンシパルを
 
    ```PowerShell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
-    $creds = Get-Credential
+    $Creds = Get-Credential
 
     # Creating a PSSession to the ERCS PrivilegedEndpoint
-    $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+    $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
     # If you have a managed certificate use the Get-Item command to retrieve your certificate from your certificate location.
     # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
-    # $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
-    $cert = Get-Item "<yourcertificatelocation>"
+    # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
+    $Cert = Get-Item "<YourCertificateLocation>"
     
-    $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}
-    $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
-    $session|remove-pssession
+    $ServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name '<YourAppName>' -ClientCertificates $using:cert}
+    $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
+    $Session | Remove-PSSession
 
     # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. This is read from the AzureStackStampInformation output of the ERCS VM.
     $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
@@ -159,7 +160,7 @@ ID のために AD FS を使用した状態でサービス プリンシパルを
     -GraphAudience $GraphAudience `
     -EnableAdfsAuthentication:$true
 
-    Add-AzureRmAccount -EnvironmentName "azurestackuser" `
+    Add-AzureRmAccount -EnvironmentName "AzureStackUser" `
     -ServicePrincipal `
     -CertificateThumbprint $ServicePrincipal.Thumbprint `
     -ApplicationId $ServicePrincipal.ClientId `
@@ -173,7 +174,7 @@ ID のために AD FS を使用した状態でサービス プリンシパルを
    > 検証を目的として、次の例を使用して自己署名証明書を作成できます。
 
    ```PowerShell  
-   $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+   $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
    ```
 
 
@@ -214,14 +215,14 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
 
      ```powershell
           # Creating a PSSession to the ERCS PrivilegedEndpoint
-          $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+          $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
           # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
-          $Newcert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+          $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
 
-          $RemoveServicePrincipal = Invoke-Command -Session $session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ClientCertificates $Newcert}
+          $RemoveServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ClientCertificates $NewCert}
 
-          $session|remove-pssession
+          $Session | Remove-PSSession
      ```
 
 2. 自動化が完了したら、SPN の認証に必要な、更新済みの拇印の値が表示されます。
@@ -255,15 +256,15 @@ ERCS 仮想マシン上で、特権エンドポイントからこれらのスク
 
      ```PowerShell  
       # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
-     $creds = Get-Credential
+     $Creds = Get-Credential
 
      # Creating a PSSession to the ERCS PrivilegedEndpoint
-     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+     $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
      # Creating a SPN with a secre
-     $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -GenerateClientSecret}
-     $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
-     $session|remove-pssession
+     $ServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name '<YourAppName>' -GenerateClientSecret}
+     $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
+     $Session | Remove-PSSession
 
      # Output the SPN details
      $ServicePrincipal
@@ -299,20 +300,20 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
 
 ##### <a name="example-of-updating-a-client-secret-for-ad-fs"></a>AD FS のクライアント シークレットの更新の例
 
-この例では **resetclientsecret** パラメーターを使用します。これにより、クライアント シークレットはすぐに変更されます。
+この例では **ResetClientSecret** パラメーターを使用します。これにより、クライアント シークレットはすぐに変更されます。
 
 1. Windows PowerShell セッションを管理者特権で開き、次のコマンドレットを実行します。
 
      ```PowerShell  
           # Creating a PSSession to the ERCS PrivilegedEndpoint
-          $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+          $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
           # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
-          $Newcert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+          $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
 
-          $UpdateServicePrincipal = Invoke-Command -Session $session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ResetClientSecret}
+          $UpdateServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ResetClientSecret}
 
-          $session|remove-pssession
+          $Session | Remove-PSSession
      ```
 
 2. 自動化が完了したら、SPN の認証に必要な、新しく生成されたシークレットが表示されます。 新しいクライアント シークレットは必ず保存してください。
@@ -348,19 +349,19 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
 
 ```powershell  
      Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
-     $creds = Get-Credential
+     $Creds = Get-Credential
 
      # Creating a PSSession to the ERCS PrivilegedEndpoint
-     $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+     $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
-     $UpdateServicePrincipal = Invoke-Command -Session $session -ScriptBlock { Remove-GraphApplication -ApplicationIdentifier S-1-5-21-1634563105-1224503876-2692824315-2119}
+     $UpdateServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Remove-GraphApplication -ApplicationIdentifier S-1-5-21-1634563105-1224503876-2692824315-2119}
 
-     $session|remove-pssession
+     $Session | Remove-PSSession
 ```
 
 ## <a name="assign-a-role"></a>ロールの割り当て
 
-サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 アプリケーションにとって適切なアクセス許可を表すのはどのロールであるかを判断します。 利用可能なロールについては、[RBAC: 組み込みロール](../role-based-access-control/built-in-roles.md)に関する記事を参照してください。
+サブスクリプション内のリソースにアクセスするには、アプリケーションをロールに割り当てる必要があります。 アプリケーションにとって適切なアクセス許可を表すのはどのロールであるかを判断します。 利用可能なロールについては、「[RBAC: 組み込みロール](../role-based-access-control/built-in-roles.md)」を参照してください。
 
 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます。 たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます。
 
@@ -368,11 +369,11 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
 
 2. アプリケーションを割り当てる特定のサブスクリプション (リソース グループまたはリソース) を選択します。
 
-     ![割り当てのためのサブスクリプションの選択](./media/azure-stack-create-service-principal/image16.png)
+     ![割り当てのためのサブスクリプションを選択する](./media/azure-stack-create-service-principal/image16.png)
 
 3. **[アクセス制御 (IAM)]** を選択します。
 
-     ![アクセスの選択](./media/azure-stack-create-service-principal/image17.png)
+     ![アクセスを選択する](./media/azure-stack-create-service-principal/image17.png)
 
 4. **[ロールの割り当ての追加]** を選択します。
 

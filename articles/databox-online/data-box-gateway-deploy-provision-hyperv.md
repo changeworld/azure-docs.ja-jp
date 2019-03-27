@@ -8,14 +8,14 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 3187c516ef22a97d2af89e08d5b99ad7a00d875d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: cf47919ead890f0ad0e89646dde26276ebfb1127
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166459"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109743"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>チュートリアル: Hyper-V で Azure Data Box Gateway をプロビジョニングする (プレビュー)
+# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>チュートリアル:Hyper-V で Azure Data Box Gateway をプロビジョニングする (プレビュー)
 
 ## <a name="overview"></a>概要
 
@@ -66,7 +66,7 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 
 作業を開始する前に、次のことを行います。
 
-- Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-requirements)に関する記事を参照してください。
+- Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-port-requirements)に関する記事を参照してください。
 - インターネットの最小帯域幅が、デバイスの最適動作を可能にする 20 Mbps であることを確認します。
 
 

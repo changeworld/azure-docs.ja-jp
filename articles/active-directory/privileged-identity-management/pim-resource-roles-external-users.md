@@ -10,16 +10,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 11/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 561fccd3e0baee481937954cc65601576a4fd60f
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a90d0d3d3f484044a0ffbab7a3c24a76c40aa74c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52730554"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208278"
 ---
 # <a name="invite-external-users-and-assign-azure-resource-roles-in-pim"></a>PIM で外部ユーザーを招待して Azure リソース ロールを割り当てる
 

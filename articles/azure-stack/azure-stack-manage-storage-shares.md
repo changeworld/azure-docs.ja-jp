@@ -10,20 +10,21 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
-ms.topic: get-started-article
-ms.date: 09/28/2018
+ms.topic: conceptual
+ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 00fa1a78155e1add547b8b165f52cf3c1fba2dfe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 617696c842ab90fc36c68e74831ffd1d79d14bc4
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249899"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225707"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Azure Stack のストレージ容量を管理する 
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 この記事の情報は、Azure Stack クラウド オペレーターが、Azure Stack 展開のストレージ容量を監視して管理するために役立ちます。 Azure Stack ストレージ インフラストラクチャは、Azure Stack 展開の合計ストレージ容量のサブセットを、**ストレージ サービス**で使用されるストレージ容量として割り当てます。 ストレージ サービスは、展開のノードに対応するボリューム上の共有にテナント データを格納します。
 
@@ -50,7 +51,7 @@ Azure Stack ではストレージ容量の拡張はサポートされないた�
 
 ボリューム上の共有がテナント データを保持します。 テナント データには、ページ BLOB、ブロック BLOB、追加 BLOB、テーブル、キュー、データベース、および関連するメタデータ ストアが含まれます。 ストレージ オブジェクト (BLOB など) は、1 つの共有内に個別に格納されるため、各オブジェクトの最大サイズは、共有のサイズを超えることはできません。 新しいオブジェクトの最大サイズは、新しいオブジェクトの作成時に共有内に未使用の領域として残っている容量によって決まります。
 
-共有の空き領域が少ないときに、領域を[回収](#reclaim-capacity)するためのアクションが成功しないか使用できない場合、Azure Stack クラウド オペレーターは、ある共有から別の共有に BLOB コンテナーを[移行](#migrate-a-container-between)できます。
+共有の空き領域が少ないときに、領域を[回収](#reclaim-capacity)するためのアクションが成功しないか使用できない場合、Azure Stack クラウド オペレーターは、ある共有から別の共有に BLOB コンテナーを移行できます。
 
 - コンテナーと BLOB の詳細については、「Azure Stack の主要な機能と概念」の記事の「[BLOB ストレージ](azure-stack-key-features.md#blob-storage)」を参照してください。
 - テナント ユーザーによる Azure Stack 内での BLOB ストレージの操作方法については、「[Azure Stack Storage サービス](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services)」を参照してください。
@@ -79,7 +80,7 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 
 ### <a name="use-powershell"></a>PowerShell の使用
 クラウド オペレーターは、PowerShell の **Get AzsStorageShare** コマンドレットを使用して、共有のストレージ容量を監視できます。 Get AzsStorageShare コマンドレットは、各共有の合計領域、割り当て済み領域、および空き領域をバイト単位で返します。   
-![例: 共有の空き領域を返す](media/azure-stack-manage-storage-shares/free-space.png)
+![例:共有の空き領域を返す](media/azure-stack-manage-storage-shares/free-space.png)
 
 - **合計容量**は、共有で使用できるバイト単位の合計領域です。 この領域は、ストレージ サービスによって保持されるデータとメタデータ用に使用されます。
 - **使用済み容量**は、テナント データとそれに関連付けられているメタデータを格納するファイルのすべてのエクステントで使用されるバイト単位のデータの量です。
@@ -88,12 +89,12 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 クラウド オペレーターは、管理者ポータルを使用して、すべての共有のストレージ容量を確認できます。
 
 1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
-2. **[すべてのサービス]** > **[ストレージ]** を選択してファイル共有の一覧を開きます。そこで使用状況情報を確認できます。 
+2. **[すべてのサービス]** > **[ストレージ]** > **[ファイル共有]** を選択してファイル共有の一覧を開きます。そこで使用状況情報を確認できます。 
 
-  ![例: ストレージのファイル共有](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+    ![例:ストレージ ファイル共有](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
-  - **[合計]** は、共有で使用できるバイト単位の合計領域です。 この領域は、ストレージ サービスによって保持されるデータとメタデータ用に使用されます。
-  - **[使用済み]** は、テナント データとそれに関連付けられているメタデータを格納するファイルのすべてのエクステントで使用されるバイト単位のデータの量です。
+   - **[合計]** は、共有で使用できるバイト単位の合計領域です。 この領域は、ストレージ サービスによって保持されるデータとメタデータ用に使用されます。
+   - **[使用済み]** は、テナント データとそれに関連付けられているメタデータを格納するファイルのすべてのエクステントで使用されるバイト単位のデータの量です。
 
 ### <a name="storage-space-alerts"></a>記憶域スペースのアラート
 管理者ポータルを使用しているときは、領域が少なくなっている共有に関するアラートを受信します。
@@ -101,10 +102,10 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 > [!IMPORTANT]
 > クラウド オペレーターは、共有が完全に使用されないようにする必要があります。 共有が 100% 使用されると、その共有に対するストレージ サービスは機能しなくなります。 使用率が 100% である共有で空き領域を復旧して操作を復元するには、Microsoft サポートに問い合わせる必要があります。
 
-**警告**: ファイル共有の使用率が 80% を超えると、管理者ポータルで "*警告*" アラートを受信します。![例: 警告アラート](media/azure-stack-manage-storage-shares/alert-warning.png)
+**警告**:ファイル共有の使用率が 80% を超えると、管理者ポータルで "*警告*" アラートを受信します。![例: 警告アラート](media/azure-stack-manage-storage-shares/alert-warning.png)
 
 
-**重大**: ファイル共有の使用率が 90% を超えると、管理者ポータルで "*重大*" アラートを受信します。![例: 重大アラート](media/azure-stack-manage-storage-shares/alert-critical.png)
+**[高]**:ファイル共有の使用率が 90% を超えると、管理者ポータルで "*重大*" アラートを受信します。![例: 重大アラート](media/azure-stack-manage-storage-shares/alert-critical.png)
 
 **詳細の表示**: 管理者ポータルでアラートの詳細を開いて、軽減策を確認できます。![例: アラートの詳細の表示](media/azure-stack-manage-storage-shares/alert-details.png)
 
@@ -139,68 +140,68 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 
 #### <a name="to-migrate-containers-using-powershell"></a>PowerShell を使用してコンテナーを移行するには
 1. [Azure PowerShell のインストールと構成](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)が行われていることを確認します。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](https://go.microsoft.com/fwlink/?LinkId=394767)をご覧ください。
-2.  コンテナーを調べて、移行する予定の共有にどのようなデータがあるかを把握します。 ボリューム内の移行に最適な候補コンテナーを識別するには、**Get AzsStorageContainer** コマンドレットを使用します。
+2. コンテナーを調べて、移行する予定の共有にどのようなデータがあるかを把握します。 ボリューム内の移行に最適な候補コンテナーを識別するには、**Get AzsStorageContainer** コマンドレットを使用します。
 
-    ````PowerShell  
-    $farm_name = (Get-AzsStorageFarm)[0].name
-    $shares = Get-AzsStorageShare -FarmName $farm_name
-    $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
-    ````
-    $containers を確認します。
+   ```PowerShell  
+   $farm_name = (Get-AzsStorageFarm)[0].name
+   $shares = Get-AzsStorageShare -FarmName $farm_name
+   $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
+   ```
+   $containers を確認します。
 
-    ````PowerShell
-    $containers
-    ````
+   ```PowerShell
+   $containers
+   ```
 
-    ![例: $Containers](media/azure-stack-manage-storage-shares/containers.png)
+   ![例: $Containers](media/azure-stack-manage-storage-shares/containers.png)
 
-3.  移行するコンテナーを保持できる最善の共有を識別します。
+3. 移行するコンテナーを保持できる最善の共有を識別します。
 
-    ````PowerShell
-    $destinationshares = Get-AzsStorageShare -SourceShareName
-    $shares[0].ShareName -Intent ContainerMigration
-    ````
+   ```PowerShell
+   $destinationshares = Get-AzsStorageShare -SourceShareName
+   $shares[0].ShareName -Intent ContainerMigration
+   ```
 
-    $destinationshares を確認します。
+   $destinationshares を確認します。
 
-    ````PowerShell 
-    $destinationshares
-    ````
+   ```PowerShell 
+   $destinationshares
+   ```
 
-    ![例: $destination 共有](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
+   ![例: $destination 共有](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
 
 4. コンテナーの移行を開始します。 移行は非同期です。 最初の移行が完了する前に、別のコンテナーの移行を開始する場合は、ジョブ ID を使用してそれぞれの状態を追跡します。
 
-  ````PowerShell
-  $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
-  ````
+   ```PowerShell
+   $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
+   ```
 
-  $jobId を調べます。 次の例の *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* を、調べるジョブ ID に置き換えてください。
+   $jobId を調べます。 次の例の *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* を、調べるジョブ ID に置き換えてください。
 
-  ````PowerShell
-  $jobId
-  d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
-  ````
+   ```PowerShell
+   $jobId
+   d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
+   ```
 
 5. ジョブ ID を使用して、移行ジョブの状態を確認します。 コンテナーの移行が完了すると、**MigrationStatus** が **Completed** に設定されます。
 
-  ````PowerShell 
-  Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
-  ````
+   ```PowerShell 
+   Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
+   ```
 
-  ![例: 移行の状態](media/azure-stack-manage-storage-shares/migration-status1.png)
+   ![例:移行の状態](media/azure-stack-manage-storage-shares/migration-status1.png)
 
-6.  実行中の移行ジョブを取り消すことができます。 取り消された移行ジョブは、非同期的に処理されます。 $Jobid を使用して、取り消しを追跡できます。
+6. 実行中の移行ジョブを取り消すことができます。 取り消された移行ジョブは、非同期的に処理されます。 $Jobid を使用して、取り消しを追跡できます。
 
-  ````PowerShell
-  Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
-  ````
+   ```PowerShell
+   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
+   ```
 
-  ![例: ロールバック状態](media/azure-stack-manage-storage-shares/rollback.png)
+   ![例:ロールバック状態](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. 移行ジョブの状態が **Canceled**になるまで、手順 6 のコマンドをもう一度実行できます。  
 
-    ![例: 取り消し済みの状態](media/azure-stack-manage-storage-shares/cancelled.png)
+    ![例:取り消し済みの状態](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### <a name="move-vm-disks"></a>VM ディスクを移動する
 "*このオプションは、マルチノード展開のみに適用されます。*"

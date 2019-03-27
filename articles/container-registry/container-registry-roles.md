@@ -7,18 +7,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: 5dabab02758b4ade0f668adddf7644a654e1804b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: a4b9b382755e73b6218432624c471346e9698752
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53756099"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193392"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
 
 Azure Container Registry サービスでは、Azure コンテナー レジストリにさまざまなレベルのアクセス許可を提供する Azure のロールのセットがサポートされています。 Azure の[ロールベースのアクセス制御](../role-based-access-control/index.yml) (RBAC) を使用して、レジストリと対話する必要のあるユーザーまたはサービス プリンシパルに特定のアクセス許可を割り当てます。
 
-| ロール/アクセス許可       | [Resource Manager へのアクセス](#access-resource-manage)| [レジストリの作成/削除](#create/delete-registry) | [イメージのプッシュ](#push-image) | [イメージのプル](#pull-image) | [ポリシーの変更](#change-polices) |   [イメージの署名](#sign-images)  |
+| ロール/アクセス許可       | [Resource Manager へのアクセス](#access-resource-manager)| [レジストリの作成/削除](#create-and-delete-registry) | [イメージのプッシュ](#push-image) | [イメージのプル](#pull-image) | [ポリシーの変更](#change-policies) |   [イメージの署名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- |
 | Owner | X | X | X | X | X |  |  
 | Contributor | X | X | X | X | X |  |  
@@ -45,19 +45,19 @@ Visual Studio Code [Docker 拡張機能](https://code.visualstudio.com/docs/azur
 
 ## <a name="access-resource-manager"></a>Resource Manager へのアクセス
 
-Azure portal と [Azure CLI](/cli/azure/) には、Azure Resource Manager へのアクセスが必要です。 たとえば、`az acr list` コマンドを使用してレジストリの一覧を取得するには、このアクセス許可セットが必要です。 
+Azure portal と [Azure CLI](/cli/azure/) によるレジストリ管理には、Azure Resource Manager へのアクセスが必要です。 たとえば、`az acr list` コマンドを使用してレジストリの一覧を取得するには、このアクセス許可セットが必要です。 
 
-## <a name="createdelete-registry"></a>レジストリの作成/削除
+## <a name="create-and-delete-registry"></a>レジストリの作成と削除
 
 Azure コンテナー レジストリを作成および削除する権限です。
 
 ## <a name="push-image"></a>イメージのプッシュ
 
-レジストリに対してイメージの `docker push` を行う、または別のサポートされている成果物をプッシュする権限です。 承認された ID を使用してレジストリで[認証](container-registry-authentication.md)を行う必要があります。 
+レジストリに対して、イメージの `docker push` を行う、または Helm Chart などの別の[サポートされている成果物](container-registry-image-formats.md)をプッシュする権限です。 承認された ID を使用してレジストリで[認証](container-registry-authentication.md)を行う必要があります。 
 
 ## <a name="pull-image"></a>イメージのプル
 
-レジストリから検疫されていないイメージの `docker pull` を行う、または別のサポートされている成果物をプルする権限です。 承認された ID を使用してレジストリで[認証](container-registry-authentication.md)を行う必要があります。
+レジストリから検疫されていないイメージの `docker pull` を行う、または Helm Chart などの別の[サポートされている成果物](container-registry-image-formats.md)をプルする権限です。 承認された ID を使用してレジストリで[認証](container-registry-authentication.md)を行う必要があります。
 
 ## <a name="change-policies"></a>ポリシーの変更
 

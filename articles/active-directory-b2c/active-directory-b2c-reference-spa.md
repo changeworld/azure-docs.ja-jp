@@ -3,19 +3,19 @@ title: Azure Active Directory B2C で暗黙的フローを使用するシング�
 description: Azure Active Directory B2C で OAuth 2.0 暗黙的フローを使用して、シングルページ アプリケーションを直接構築する方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 9e72eafc49167848996328774f7d18198667aa3d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 82483d8d84349a929ef4892d5e9571ea65b9a88a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845248"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104840"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C:OAuth 2.0 暗黙的フローを使用したシングルページ アプリへのサインイン
 
@@ -30,7 +30,7 @@ ms.locfileid: "52845248"
 Azure AD B2C によって、標準の OAuth 2.0 暗黙的フローが、単純な認証と承認以上まで拡張されます。 Azure AD B2C には、[ポリシー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 ポリシー パラメーターと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理のユーザー フローなどのポリシーをアプリに追加できます。 この記事では、暗黙的フローと Azure AD を使用して、シングルページ アプリケーションにこれらの各エクスペリエンスを実装する方法を説明します。 作業の開始に役立てるために、[Node.JS](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) や [.NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) のサンプルを参照してください。
 
 この記事の HTTP 要求例では、サンプルの Azure AD B2C ディレクトリ **fabrikamb2c.onmicrosoft.com** を使用します。 また、独自のサンプル アプリケーションとユーザー フローも使用します。 それらの値を利用して、要求を試すことができます。または、独自の値で置き換えることもできます。
-[独自の Azure AD B2C ディレクトリ、アプリケーション、ユーザー フローの取得方法](#use-your-own-b2c-tenant)について学習してください。
+[独自の Azure AD B2C ディレクトリ、アプリケーション、ユーザー フローの取得方法](#use-your-own-azure-ad-b2c-tenant)について学習してください。
 
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム

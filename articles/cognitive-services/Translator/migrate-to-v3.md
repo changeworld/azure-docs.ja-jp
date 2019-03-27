@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Translator Text API を V2 から V3 に移行する方法について説明します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/27/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: ce6446caf74e16f69369d5ee8ee7b6342870e826
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 04d7bfcf0527b490bc18f6d85977d899823d5e69
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52682597"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301878"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API を V2 から V3 に移行する
 
@@ -41,19 +41,19 @@ V2 メソッドと V3 メソッドについてまとめた次のリストで、V
 
 | V2 API メソッド   | V3 API 互換性 |
 |:----------- |:-------------|
-| Translate     | [Translate](reference/v3-0-translate.md)          |
-| TranslateArray      | [Translate](reference/v3-0-translate.md)        |
-| GetLanguageNames      | [言語](reference/v3-0-languages.md)         |
-| GetLanguagesForTranslate     | [言語](reference/v3-0-languages.md)       |
-| GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| Speak     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Detect     | [Detect](reference/v3-0-detect.md)         |
-| DetectArray     | [Detect](reference/v3-0-detect.md)         |
-| AddTranslation     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| AddTranslationArray    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
-| BreakSentences      | [BreakSentence](reference/v3-0-break-sentence.md)       |
-| GetTranslations      | この機能は現在サポートされていません         |
-| GetTranslationsArray      | Feature は現在サポートされていません         |
+| `Translate`     | [Translate](reference/v3-0-translate.md)          |
+| `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
+| `GetLanguageNames`      | [Languages](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [Languages](reference/v3-0-languages.md)       |
+| `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
+| `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `Detect`     | [Detect](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
+| `AddTranslation`     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
+| `AddTranslationArray`    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
+| `GetTranslations`      | この機能は現在サポートされていません         |
+| `GetTranslationsArray`      | この機能は現在サポートされていません         |
 
 ## <a name="move-to-json-format"></a>JSON 形式に移行
 
@@ -75,12 +75,12 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 
 | V3 メソッド   | 課金対象となる文字数 |
 |:----------- |:-------------|
-| Languages     | いかなる文字も送信されず、何も数えられず、何も課金されません。          |
-| 翻訳     | 翻訳のために送信された文字の数と文字の翻訳先となる言語の数に基づいて数えられます。 50 文字が送信され、5 か国語が要求された場合、50x5 で計算されます。           |
-| Transliterate     | 音訳のために送信された文字数が数えられます。         |
-| Dictionary の lookup と example     | Dictionary の lookup と examples のために送信された文字数が数えられます。         |
-| BreakSentence     | 課金はありません。       |
-| Detect     | 課金はありません。      |
+| `Languages`     | いかなる文字も送信されず、何も数えられず、何も課金されません。          |
+| `Translate`     | 翻訳のために送信された文字の数と文字の翻訳先となる言語の数に基づいて数えられます。 50 文字が送信され、5 か国語が要求された場合、50x5 で計算されます。           |
+| `Transliterate`     | 音訳のために送信された文字数が数えられます。         |
+| `Dictionary lookup & example`     | Dictionary の lookup と examples のために送信された文字数が数えられます。         |
+| `BreakSentence`     | 課金はありません。       |
+| `Detect`     | 課金はありません。      |
 
 ## <a name="v3-end-points"></a>V3 エンド ポイント
 
@@ -88,33 +88,32 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 
 * api.cognitive.microsofttranslator.com
 
-
 ## <a name="v3-api-text-translations-methods"></a>V3 API テキスト翻訳メソッド
 
-[言語](reference/v3-0-languages.md)
+[`Languages`](reference/v3-0-languages.md)
 
-[Translate](reference/v3-0-translate.md)
+[`Translate`](reference/v3-0-translate.md)
 
-[Transliterate](reference/v3-0-transliterate.md)
+[`Transliterate`](reference/v3-0-transliterate.md)
 
-[BreakSentence](reference/v3-0-break-sentence.md)
+[`BreakSentence`](reference/v3-0-break-sentence.md)
 
-[Detect](reference/v3-0-detect.md)
+[`Detect`](reference/v3-0-detect.md)
 
-[Dictionary/lookup](reference/v3-0-dictionary-lookup.md)
+[`Dictionary/lookup`](reference/v3-0-dictionary-lookup.md)
 
-[Dictionary/example](reference/v3-0-dictionary-examples.md)
+[`Dictionary/example`](reference/v3-0-dictionary-examples.md)
 
 ## <a name="compatibility-and-customization"></a>互換性とカスタマイズ
 
 Microsoft Translator V3 では、ニューラル機械翻訳が既定で使用されます。 そのため、Microsoft Translator Hub では使用できません。 Translator Hub は、従来の統計的な機械翻訳のみをサポートしています。 ニューラル翻訳のカスタマイゼーションは、Custom Translator を使用してご利用いただけるようになりました。 [ニューラル機械翻訳のカスタマイゼーションに関する詳細](custom-translator/overview.md)
 
-V3 テキスト API によるニューラル翻訳では、標準カテゴリ (SMT、speech、text、generalnn) を使用できません。
+V3 テキスト API によるニューラル翻訳では、標準カテゴリ (SMT、speech、tech、generalnn) を使用できません。
 
 | |エンドポイント|    GDPR のプロセッサ準拠|  Translator Hub の使用| カスタム トランスレーター (プレビュー) の使用|
 |:-----|:-----|:-----|:-----|:-----|
 |Translator Text API Version 2| api.microsofttranslator.com|    いいえ   |はい    |いいえ |
-|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  [はい]|    いいえ | [はい]|
+|Translator Text API Version 3| api.cognitive.microsofttranslator.com|  はい|    いいえ | はい|
 
 **Translator Text API Version 3**
 * 一般提供されており完全にサポートされます。
@@ -132,7 +131,6 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 * 使用しているエンドポイントが api.microsofttranslator.com である場合、ご使用の Translator Text API のバージョンは 2 です。
 
 どのバージョンの Translator API でも、翻訳の記録は作成されません。 翻訳はだれとも共有されません。 詳細については、[Translator の「トレースなし」](http://www.aka.ms/NoTrace)という Web ページを参照してください。
-
 
 ## <a name="links"></a>リンク
 

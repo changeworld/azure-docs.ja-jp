@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 87c3633bb3ed3537d1e258b9d8d50fd6d6356d81
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 02/20/2019
+ms.openlocfilehash: ced83fc31e9e4944f7392169b703056dc5b4fd98
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960032"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454839"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL による Azure Active Directory 認証の構成と管理
 
@@ -143,7 +143,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
     管理者を変更する処理には数分かかる場合があります。 処理が完了すると、 [Active Directory 管理者] ボックスに新しい管理者が表示されます。
 
-Managed Instance に Azure AD 管理者をプロビジョニングしたら、<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 構文を利用し、Azure AD ログイン (**パブリック プレビュー**) の作成を開始できます。 詳細については、[Managed Instance の概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。
+Managed Instance に Azure AD 管理者をプロビジョニングしたら、<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 構文を利用し、Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) の作成を開始できます。 詳細については、[Managed Instance の概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。
 
 > [!TIP]
 > 後で管理者を削除するには、[Active Directory 管理者] ページの上部にある **[管理者の削除]** を選択し、**[保存]** を選択します。
@@ -238,7 +238,7 @@ Azure Active Directory 管理者は、REST API を使用してプロビジョニ
 ### <a name="cli"></a>CLI  
 
 以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングすることもできます。
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[az sql server ad-admin create](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします  (現在のサブスクリプションから実行する必要があります)。 |
 |[az sql server ad-admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
@@ -264,7 +264,7 @@ Azure AD の ID を使用して Azure SQL Database または Azure SQL Data Ware
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成する
 
 >[!IMPORTANT]
->Managed Instance で Azure AD ログイン (**パブリック プレビュー**) がサポートされたので、Azure AD ユーザー、グループ、アプリケーションからログインを作成できます。 Azure AD ログインでは、包含データベース ユーザーとしてデータベース ユーザーを作成することを要求せずに Managed Instance で認証を受ける機能が提供されます。 詳細については、[Managed Instance の概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD ログインの作成の構文については、「<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>」を参照してください。
+>Managed Instance で Azure AD サーバー プリンシパル (ログイン) (**パブリック プレビュー**) がサポートされたので、Azure AD ユーザー、グループ、アプリケーションからログインを作成できます。 Azure AD サーバー プリンシパル (ログイン) では、包含データベース ユーザーとしてデータベース ユーザーを作成することを要求せずに Managed Instance で認証を受ける機能が提供されます。 詳細については、[Managed Instance の概要](sql-database-managed-instance.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>」を参照してください。
 
 Azure Active Directory 認証では、データベース ユーザーを包含データベース ユーザーとして作成することが必要です。 Azure AD の ID に基づく包含データベース ユーザーは、master データベースにログインを持たないデータベース ユーザーで、そのデータベースに関連付けられている Azure AD ディレクトリの ID にマップされています。 Azure AD の ID には、個々のユーザー アカウントにもグループ アカウントにもなります。 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 
@@ -323,14 +323,11 @@ Azure AD 管理者が正しく設定されていることを確認するには�
 Azure AD ベースの包含データベース ユーザー (データベースを所有しているサーバー管理者以外) をプロビジョニングするには、そのデータベースへのアクセス権を持つ Azure AD の ID を使用してデータベースに接続します。
 
 > [!IMPORTANT]
-> Azure Active Directory 認証は、[SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) および Visual Studio 2015 の [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) でサポートされています。 SSMS の 2016 年 8 月のリリースには、Active Directory Universal 認証のサポートも含まれます。これにより、管理者は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、またはモバイル アプリ通知を使用する Multi-Factor Authentication を要求できます。 現在のところ、SSDT と共に Azure AD のログインとユーザー (**パブリック プレビュー**) を使用することはできません。
+> Azure Active Directory 認証は、[SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) および Visual Studio 2015 の [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) でサポートされています。 SSMS の 2016 年 8 月のリリースには、Active Directory Universal 認証のサポートも含まれます。これにより、管理者は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、またはモバイル アプリ通知を使用する Multi-Factor Authentication を要求できます。
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Azure AD の ID で SSMS または SSDT を利用して接続する
 
 次の手順は、SQL Server Management Studio または SQL Server Database Tools で Azure AD の ID を使用して SQL Database に接続する方法を示しています。
-
->[!IMPORTANT]
->現在のところ、SSDT と共に Azure AD のログインとユーザー (**パブリック プレビュー**) を使用することはできません。
 
 ### <a name="active-directory-integrated-authentication"></a>Active Directory 統合認証
 

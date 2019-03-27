@@ -8,24 +8,28 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: d14b8c9c752c9d41a42f092662c5f3aa88840dc5
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: eb0f73d31abced8decbed31e5604a2056584eb98
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157719"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549427"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>クイック スタート:Azure Application Gateway による Web トラフィックの転送 - Azure CLI
 
-このクイック スタートでは、Azure CLI を使用して、そのバックエンド プール内の 2 つの仮想マシンで、アプリケーション ゲートウェイをすばやく作成する方法を示します。 さらに、それをテストし、正しく動作していることを確認します。 Azure Application Gateway では、ポートにリスナーを割り当て、ルールを作成し、バックエンド プールにリソースを追加することによって、お客様のアプリケーション Web トラフィックを特定のリソースに転送します。
+このクイック スタートでは、Azure portal を使用して、アプリケーション ゲートウェイを作成する方法を示します。  アプリケーション ゲートウェイを作成してから、それをテストして正しく動作していることを確認します。 Azure Application Gateway では、ポートにリスナーを割り当て、ルールを作成し、バックエンド プールにリソースを追加することによって、お客様のアプリケーション Web トラフィックを特定のリソースに転送します。 わかりやすくするために、この記事では、パブリック フロントエンド IP、このアプリケーション ゲートウェイで単一サイトをホストするための基本リスナー、バックエンド プールに使用される 2 つの仮想マシン、および基本要求ルーティング規則を使用する簡単な設定を使用します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
+## <a name="prerequisites"></a>前提条件
+
+### <a name="azure-powershell-module"></a>Azure PowerShell モジュール
+
 CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0.4 以降を実行してください。 バージョンを確認するには、**az --version** を実行します。 インストールまたはアップグレードについては、「[Azure CLI のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="resource-group"></a>リソース グループ
 
 Azure で、関連するリソースをリソース グループに割り当てます。 [az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成します。 
 
@@ -35,11 +39,11 @@ Azure で、関連するリソースをリソース グループに割り当て�
 az group create --name myResourceGroupAG --location eastus
 ```
 
-## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
+### <a name="required-network-resources"></a>必要なネットワーク リソース 
 
-仮想ネットワークを作成すると、アプリケーション ゲートウェイが他のリソースと通信できるようになります。 仮想ネットワークは、アプリケーション ゲートウェイを作成するときに同時に作成できます。 この例では、2 つのサブネットを作成します。1 つはアプリケーション ゲートウェイ用で、もう 1 つは仮想マシン用です。 アプリケーション ゲートウェイ サブネットには、アプリケーション ゲートウェイのみを含めることができます。 その他のリソースは許可されません。
+お客様が作成するリソースの間で Azure による通信が行われるには、仮想ネットワークが必要です。  アプリケーション ゲートウェイ サブネットには、アプリケーション ゲートウェイのみを含めることができます。 その他のリソースは許可されません。  Application Gateway 用に新しいサブネットを作成するか、既存のサブネットを使用することができます。 2 つのサブネットを作成します。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。 ユース ケースに従って、Application Gateway のフロントエンド IP を [パブリック] または [プライベート] に設定できます。 この例では、パブリック フロントエンド IP を選択します。
 
-仮想ネットワークとサブネットを作成するには、[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用します。 パブリック IP アドレスを作成するには、[az network public-ip create](/cli/azure/network/public-ip#az-public-ip-create) を実行します。
+仮想ネットワークとサブネットを作成するには、[az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) を使用します。 パブリック IP アドレスを作成するには、[az network public-ip create](/cli/azure/network/public-ip) を実行します。
 
 ```azurecli-interactive
 az network vnet create \
@@ -59,11 +63,11 @@ az network public-ip create \
   --name myAGPublicIPAddress
 ```
 
-## <a name="create-backend-servers"></a>バックエンド サーバーの作成
+### <a name="backend-servers"></a>バックエンド サーバー
 
-この例では、Azure がアプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 
+バックエンドは、NIC、仮想マシン スケール セット、パブリック IP、内部 IP、完全修飾ドメイン名 (FQDN)、および Azure App Service などのマルチテナント バックエンドで構成できます。 この例では、Azure によってアプリケーション ゲートウェイのバックエンド サーバーとして使用される 2 つの仮想マシンを作成します。 また、仮想マシンに IIS をインストールして、Azure によってアプリケーション ゲートウェイが正常に作成されたことを確認します。
 
-### <a name="create-two-virtual-machines"></a>2 つの仮想マシンの作成
+#### <a name="create-two-virtual-machines"></a>2 つの仮想マシンの作成
 
 アプリケーション ゲートウェイが正常に作成されたことを確認するには、仮想マシンに [NGINX Web サーバー](https://docs.nginx.com/nginx/)をインストールします。 cloud-init 構成ファイルを使って、NGINX をインストールし、Linux 仮想マシンで "Hello World" Node.js アプリを実行することができます。 cloud-init の詳細については、「[Azure での仮想マシンに対する cloud-init のサポート](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)」を参照してください。
 
@@ -133,7 +137,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-[az network application-gateway create](/cli/azure/network/application-gateway#az-application-gateway-create) を使用して、アプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 すると、Azure により、ネットワーク インターフェイスのプライベート IP アドレスが、アプリケーション ゲートウェイのバックエンド プールにサーバーとして追加されます。
+[az network application-gateway create](/cli/azure/network/application-gateway) を使用して、アプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときは、容量、SKU、HTTP 設定などの構成情報を指定します。 すると、Azure により、ネットワーク インターフェイスのプライベート IP アドレスが、アプリケーション ゲートウェイのバックエンド プールにサーバーとして追加されます。
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -169,13 +173,13 @@ az network public-ip show \
   --name myAGPublicIPAddress \
   --query [ipAddress] \
   --output tsv
-``` 
+```
 
 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
     
 ![アプリケーション ゲートウェイのテスト](./media/quick-create-cli/application-gateway-nginxtest.png)
 
-ブラウザーを更新すると、2 番目の VM の名前が表示されるはずです。
+ブラウザーを更新すると、2 番目の VM の名前が表示されるはずです。 応答が有効であれば、アプリケーション ゲートウェイが正常に作成され、バックエンドと正常に接続できることが保証されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -184,7 +188,7 @@ az network public-ip show \
 ```azurecli-interactive 
 az group delete --name myResourceGroupAG
 ```
- 
+
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]

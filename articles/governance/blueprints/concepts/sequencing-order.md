@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: bd12aabf0ca8f82261e6b3c677d7306ee46c4171
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b3adec799da582dc30ecd716a530ca6032f5c2e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308619"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990565"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
 
@@ -112,8 +112,8 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 ## <a name="next-steps"></a>次の手順
 
-- [ブループリントのライフサイクル](lifecycle.md)を参照する
-- [静的および動的パラメーター](parameters.md)の使い方
-- [ブループリントによるリソース ロック](resource-locking.md)の使い方
-- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する
+- [ブループリントのライフサイクル](lifecycle.md)を参照する。
+- [静的および動的パラメーター](parameters.md)の使用方法を理解する。
+- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる。
+- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

@@ -4,18 +4,18 @@ titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 0a89b4a5898a624a50d4d79aa86d64735a1796f8
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 98c6d092f7c0a2310745496d95cf45d60ea26c7e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413532"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817628"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 開発環境を作成する (.NET Core および VS Code)
 
@@ -33,11 +33,11 @@ ms.locfileid: "53413532"
 - Azure サブスクリプション。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/free)ことができます。
 - [Visual Studio Code](https://code.visualstudio.com/download)。
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) バージョン 2.0.43 以上。
-- 米国東部、米国東部 2、米国中部、米国西部 2、西ヨーロッパ、東南アジア、カナダ中部、カナダ東部のいずれかのリージョンに存在し、**HTTP アプリケーションのルーティング**が有効になっていて、Kubernetes 1.9.6 以降が実行されている Kubernetes クラスター。
+- 米国東部、米国東部 2、米国中部、米国西部 2、西ヨーロッパ、東南アジア、カナダ中部、カナダ東部のいずれかのリージョンに存在し、Kubernetes 1.9.6 以降が実行されている Kubernetes クラスター。
 
     ```cmd
     az group create --name MyResourceGroup --location <region>
-    az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --enable-addons http_application_routing --generate-ssh-keys
+    az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.10.9 --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>Azure Dev Spaces をセットアップする
@@ -147,4 +147,4 @@ public IActionResult About()
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。 
 
 > [!div class="nextstepaction"]
-> [複数のコンテナーの操作とチーム開発](team-development-netcore.md)
+> [複数のコンテナーの操作とチーム開発](multi-service-netcore.md)

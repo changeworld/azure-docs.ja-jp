@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1491068248d20a917e28db5a75dee3d4b3753f5c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 18fc86e8d9b9622f11faad0f11dc57a83124a857
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730298"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417512"
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
 [Azure App Service](overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。 
@@ -52,7 +52,7 @@ App Service によって、アプリで使用するようにユーザーが構�
 ## <a name="requirements-and-restrictions"></a>要件および制限
 * バックアップと復元の機能には、**Standard** レベルまたは **Premium** レベル以上のレベルにある App Service プランが必要です。 上位レベルを使用するための App Service プランの拡張の詳細については、 [Azure でのアプリのスケールアップ](web-sites-scale.md)に関するページを参照してください。  
   **Premium** レベルでは、**Standard** レベルよりも多くの回数の日次バックアップが可能です。
-* バックアップするアプリと同じサブスクリプション内に Azure ストレージ アカウントとコンテナーが必要です。 Azure のストレージ アカウントの詳細については、この記事の末尾に示されている [リンク](#moreaboutstorage) を参照してください。
+* バックアップするアプリと同じサブスクリプション内に Azure ストレージ アカウントとコンテナーが必要です。 Azure ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」をご覧ください。
 * 最大 10 GB のアプリとデータベースのコンテンツをバックアップできます。 バックアップのサイズがこの制限を超えた場合、エラーが発生します。
 * SSL が有効な Azure Database for MySQL はサポートされていません。 バックアップが構成されている場合は、バックアップが失敗したと表示されます。
 * SSL が有効な Azure Database for PostgreSQL はサポートされていません。 バックアップが構成されている場合は、バックアップが失敗したと表示されます。

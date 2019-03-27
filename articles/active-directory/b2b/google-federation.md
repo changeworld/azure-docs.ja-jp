@@ -3,25 +3,26 @@ title: Google を Azure Active Directory B2B の ID プロバイダーとして�
 description: Google とのフェデレーションを行って、ゲスト ユーザーが独自の Gmail アカウントを使用して Azure AD アプリにサインインできるようにします
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: 295b7eeebf8d9815aef0b862ee2b3cccbee15ed6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3d565d2215ac84d42b6682f4c4a52dd87278a70a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546744"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206839"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google を B2B ゲスト ユーザーの ID プロバイダーとして追加する
 
 Google とのフェデレーションを設定することで、招待されたユーザーが Microsoft アカウント (MSA) または Azure AD アカウントを作成することなく、独自の Google アカウントを使用して共有アプリおよびリソースにサインインできるようにできます。  
 > [!NOTE]
-> Google ゲスト ユーザーは、テナント コンテキストが含まれたリンク (例: `https://myapps.microsoft.com/<tenant id>`) を使用してサインインする必要があります。 アプリケーションとリソースへの直接リンクも、テナント コンテキストが含まれている限り機能します。 ゲスト ユーザーは現在、テナント コンテキストが含まれていないエンドポイントを使用してサインインできません。 たとえば、`https://myapps.microsoft.com`、`https://portal.azure.com`、またはチームの共有エンドポイントを使用すると、エラーが発生します。
+> Google ゲスト ユーザーは、テナント コンテキストが含まれたリンク (例: `https://myapps.microsoft.com/?tenantid=<tenant id>` または `https://portal.azure.com/<tenant id>`、または検証済みのドメインの場合は `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`) を使用してサインインする必要があります。 アプリケーションとリソースへの直接リンクも、テナント コンテキストが含まれている限り機能します。 ゲスト ユーザーは現在、テナント コンテキストが含まれていないエンドポイントを使用してサインインできません。 たとえば、`https://myapps.microsoft.com`、`https://portal.azure.com`、またはチームの共有エンドポイントを使用すると、エラーが発生します。
  
 ## <a name="what-is-the-experience-for-the-google-user"></a>Google ユーザーのエクスペリエンスの内容
 Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザーは、テナント コンテキストが含まれているリンクを使用して共有アプリまたはリソースにアクセスする必要があります。 Google に既にサインインしているかどうかによって、エクスペリエンスが異なります。
@@ -32,7 +33,7 @@ Google Gmail ユーザーに招待を送信すると、そのゲスト ユーザ
 
 ![Google でサインイン](media/google-federation/google-sign-in.png)
 
-## <a name="step-1-configure-a-google-developer-project"></a>ステップ 1:Google 開発者プロジェクトを構成する
+## <a name="step-1-configure-a-google-developer-project"></a>手順 1:Google 開発者プロジェクトを構成する
 最初に、Google Developers Console で新しいプロジェクトを作成して、Azure AD に後で追加するクライアント ID とクライアント シークレットを取得します。 
 1. https://console.developers.google.com で Google API に移動し、Google アカウントでサインインします。 共有のチーム Google アカウントを使用することをお勧めします。
 2. 新しいプロジェクトを作成します。ダッシュボードで **[プロジェクトを作成]**、**[作成]** の順に選択します。 [新しいプロジェクト] ページで、**[プロジェクト名]** に入力を行ってから **[作成]** を選択します。

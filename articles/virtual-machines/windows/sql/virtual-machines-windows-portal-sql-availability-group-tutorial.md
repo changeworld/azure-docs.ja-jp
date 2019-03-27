@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 42a4ea1e4dc352e56fbd65f69c9ed71e3b0c1038
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "51238077"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359716"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
 
@@ -51,6 +51,9 @@ ms.locfileid: "51238077"
 
 
 チュートリアルを始める前に、[Azure Virtual Machines で Always On 可用性グループを作成するための前提条件を満たす](virtual-machines-windows-portal-sql-availability-group-prereq.md)必要があります。 これらの前提条件が既に満たされている場合は、「[クラスターを作成する](#CreateCluster)」に進んでかまいません。
+
+  >[!NOTE]
+  > このチュートリアルの手順の多くは、Azure クイックスタート テンプレートを使用して自動化できます。 詳しくは、「[WSFC、リスナーを作成し、Azure クイックスタート テンプレートを使用して、SQL Server VM に Always On 可用性グループ用の ILB を構成する](virtual-machines-windows-sql-availability-group-quickstart-template.md)」をご覧ください。
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -296,7 +299,7 @@ Repeat these steps on the second SQL Server.
 
     ![新しい可用性グループ ウィザード、最初のデータの同期を選択](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/66-endpoint.png)
 
-8. **[最初のデータ同期を選択]** ページで、**[完全]** を選び、共有ネットワークの場所を指定します。 この場所としては、[先に作成したバックアップ共有](#backupshare)を使います。 この例では、 **\\\\\<1 番目の SQL Server\>\Backup\\** でした。 **[次へ]** をクリックします。
+8. **[最初のデータ同期を選択]** ページで、**[完全]** を選び、共有ネットワークの場所を指定します。 この場所としては、[先に作成したバックアップ共有](#backupshare)を使います。 この例では、**\\\\\<1 番目の SQL Server\>\Backup\\\** でした。 **[次へ]** をクリックします。
 
    >[!NOTE]
    >完全同期では、SQL Server の 1 番目のインスタンスにあるデータベースの完全バックアップが作成されて、2 番目のインスタンスに復元されます。 大規模なデータベースの場合、完全同期は長い時間がかかることがあるのでお勧めできません。 手動でデータベースのバックアップを作成し、`NO RECOVERY` で復元することにより、この時間を短縮できます。 可用性グループを構成する前に 2 番目の SQL Server のデータベースが `NO RECOVERY` で既に復元されている場合は、**[参加のみ]** を選びます。 可用性グループを構成した後でバックアップを作成する場合は、**[最初のデータ同期をスキップ]** を選びます。
@@ -355,8 +358,8 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 
    | Setting | フィールド |
    | --- | --- |
-   | **名前** |ロード バランサーのテキスト名を使います (例: **sqlLB**)。 |
-   | **種類** |内部 |
+   | **Name** |ロード バランサーのテキスト名を使います (例: **sqlLB**)。 |
+   | **Type** |内部 |
    | **Virtual Network** |Azure 仮想ネットワークの名前を使います。 |
    | **サブネット** |仮想マシンが存在するサブネットの名前を使います。  |
    | **IP アドレスの割り当て** |静的 |
@@ -399,7 +402,7 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 
    | Setting | 説明 | 例
    | --- | --- |---
-   | **名前** | Text | SQLAlwaysOnEndPointProbe |
+   | **Name** | Text | SQLAlwaysOnEndPointProbe |
    | **プロトコル** | TCP を選びます | TCP |
    | **ポート** | 未使用の任意のポート | 59999 |
    | **間隔**  | プローブの試行の間隔 (秒単位) |5 |
@@ -414,7 +417,7 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 1. 次のようにリスナーの負荷分散規則を設定します。
    | Setting | 説明 | 例
    | --- | --- |---
-   | **名前** | Text | SQLAlwaysOnEndPointListener |
+   | **Name** | Text | SQLAlwaysOnEndPointListener |
    | **フロントエンド IP アドレス** | アドレスを選びます |ロード バランサーの作成時に作成したアドレスを使います。 |
    | **プロトコル** | TCP を選びます |TCP |
    | **ポート** | 可用性グループ リスナーのポートを使用する | 1433 |
@@ -441,7 +444,7 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
 
    | Setting | 説明 | 例
    | --- | --- |---
-   | **名前** | Text | WSFCEndPointProbe |
+   | **Name** | Text | WSFCEndPointProbe |
    | **プロトコル** | TCP を選びます | TCP |
    | **ポート** | 未使用の任意のポート | 58888 |
    | **間隔**  | プローブの試行の間隔 (秒単位) |5 |
@@ -454,7 +457,7 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
 1. クラスターのコア IP アドレスの負荷分散規則を次のように設定します。
    | Setting | 説明 | 例
    | --- | --- |---
-   | **名前** | Text | WSFCEndPoint |
+   | **Name** | Text | WSFCEndPoint |
    | **フロントエンド IP アドレス** | アドレスを選びます |WSFC の IP アドレスの構成時に作成したアドレスを使用します。 これはリスナーの IP アドレスとは異なります |
    | **プロトコル** | TCP を選びます |TCP |
    | **ポート** | クラスター IP アドレスのポートを使用します。 これは、リスナー プローブ ポートには使用されない使用可能なポートです。 | 58888 |

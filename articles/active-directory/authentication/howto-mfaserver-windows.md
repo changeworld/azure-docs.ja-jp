@@ -3,19 +3,20 @@ title: Windows 認証と Azure MFA Server | Microsoft Docs
 description: Windows 認証と Azure Multi-Factor Authentication Server のデプロイ。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: b61ecf1019442b29a4cf8120dbdd7ce9c1b4a51a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 857e256b0fb2cd726e38232c96f7ce0750681245
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160088"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197200"
 ---
 # <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows 認証と Azure Multi-Factor Authentication Server
 

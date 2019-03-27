@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c5667d5fafdc01e8568f459b675d91ace9b8869a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: deca97b0749ceab9f2dfaf3c3940ac6b02b9c104
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023755"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822189"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>ネットワーク インターフェイスの作成、変更、削除
 
@@ -31,14 +31,14 @@ ms.locfileid: "54023755"
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使用する場合は、 https://portal.azure.com を開き、Azure アカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.4.1 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.4.1 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.28 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
 Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧に記載されている適切なアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てられている必要があります。
 
 ## <a name="create-a-network-interface"></a>ネットワーク インターフェイスの作成
 
-Azure Portal を使用して仮想マシンを作成すると、既定の設定で自動的にネットワーク インターフェイスが作成されます。 その代わりにすべてのネットワーク インターフェイス設定を指定する場合は、カスタム設定を使用してネットワーク インターフェイスを作成し、仮想マシンを作成するときにそのネットワーク インターフェイスを仮想マシンにアタッチすることができます (PowerShell または Azure CLI を使用)。 ネットワーク インターフェイスを作成して、それを既存の仮想マシンに追加することもできます (PowerShell または Azure CLI を使用)。 既存のネットワーク インターフェイスを使用して仮想マシンを作成する方法や、既存の仮想マシンに対してネットワーク インターフェイスを追加または削除する方法については、[ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md)に関するページをご覧ください。 ネットワーク インターフェイスを作成する前に、ネットワーク インターフェイスを作成するのと同じ場所およびサブスクリプションに[仮想ネットワーク](manage-virtual-network.md#create-a-virtual-network)が作成されている必要があります。
+Azure Portal を使用して仮想マシンを作成すると、既定の設定で自動的にネットワーク インターフェイスが作成されます。 その代わりにすべてのネットワーク インターフェイス設定を指定する場合は、カスタム設定を使用してネットワーク インターフェイスを作成し、仮想マシンを作成するときにそのネットワーク インターフェイスを仮想マシンにアタッチすることができます (PowerShell または Azure CLI を使用)。 ネットワーク インターフェイスを作成して、それを既存の仮想マシンに追加することもできます (PowerShell または Azure CLI を使用)。 既存のネットワーク インターフェイスを使用して仮想マシンを作成する方法や、既存の仮想マシンに対してネットワーク インターフェイスを追加または削除する方法については、[ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md)に関するページをご覧ください。 ネットワーク インターフェイスを作成する前に、ネットワーク インターフェイスを作成するのと同じ場所およびサブスクリプションに[仮想ネットワーク](manage-virtual-network.md)が作成されている必要があります。
 
 1. Azure Portal 上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに "*ネットワーク インターフェイス*" と入力します。 検索結果に **[ネットワーク インターフェイス]** が表示されたら、それを選択します。
 2. **[ネットワーク インターフェイス]** で **[+ 追加]** を選択します。
@@ -52,7 +52,7 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
     |プライベート IP アドレスの割り当て|はい| この設定では、IPv4 アドレスの割り当て方法を選択します。 次の割り当て方法から選択します。**動的:** このオプションを選択すると、選択したサブネットのアドレス空間から使用可能な次のアドレスが自動的に割り当てられます。 **静的:** このオプションを選択した場合は、選択したサブネットのアドレス空間内から使用可能な IP アドレスを手動で割り当てる必要があります。 静的および動的アドレスは、ユーザーが変更するか、ネットワーク インターフェイスが削除されるまで変化しません。 ネットワーク インターフェイスの作成後に、割り当て方法を変更することができます。 このアドレスは Azure DHCP サーバーによって、仮想マシンのオペレーティング システム内のネットワーク インターフェイスに割り当てられます。|
     |ネットワーク セキュリティ グループ|いいえ | **[なし]** に設定されたままにするか、既存の[ネットワーク セキュリティ グループ](security-overview.md)を選択するか、[ネットワーク セキュリティ グループを作成する](tutorial-filter-network-traffic.md)ことができます。 ネットワーク セキュリティ グループによって、ネットワーク インターフェイスから送受信されるネットワーク トラフィックをフィルター処理できます。 ネットワーク インターフェイスには、0 個または 1 個のネットワーク セキュリティ グループを適用できます。 0 個または 1 つのネットワーク セキュリティ グループは、ネットワーク インターフェイスの割り当て先サブネットにも適用できます。 ネットワーク セキュリティ グループを、ネットワーク インターフェイスと、その割り当て先のサブネットに適用すると、予期しない結果が発生する場合があります。 ネットワーク インターフェイスとサブネットに適用したネットワーク セキュリティ グループのトラブルシューティングを行うには、[ネットワーク セキュリティ グループのトラブルシューティング](diagnose-network-traffic-filter-problem.md)に関する記事をご覧ください。|
     |サブスクリプション|はい|ご利用の Azure [サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)を 1 つ選択します。 ネットワーク インターフェイスのアタッチ先の仮想マシンと、接続先の仮想ネットワークは、同じサブスクリプション内に存在する必要があります。|
-    |[プライベート IP アドレス (IPv6)]|いいえ | このチェック ボックスをオンにすると、ネットワーク インターフェイスに割り当てられた IPv4 アドレスに加えて、IPv6 アドレスがネットワーク インターフェイスに割り当てられます。 ネットワーク インターフェイスでの IPv6 の使用に関する重要な情報については、この記事の [IPv6](#IPv6) についてのセクションを参照してください。 IPv6 アドレスの割り当て方法を選択することはできません。 IPv6 アドレスを割り当てることを選択した場合、動的な方法で割り当てが行われます。
+    |[プライベート IP アドレス (IPv6)]|いいえ | このチェック ボックスをオンにすると、ネットワーク インターフェイスに割り当てられた IPv4 アドレスに加えて、IPv6 アドレスがネットワーク インターフェイスに割り当てられます。 ネットワーク インターフェイスでの IPv6 の使用に関する重要な情報については、この記事の IPv6 についてのセクションを参照してください。 IPv6 アドレスの割り当て方法を選択することはできません。 IPv6 アドレスを割り当てることを選択した場合、動的な方法で割り当てが行われます。
     |[IPv6 名] \(**[プライベート IP アドレス (IPv6)]** チェック ボックスがオンの場合にのみ表示されます) |はい (**[プライベート IP アドレス (IPv6)]** チェック ボックスがオンの場合)。| この名前は、ネットワーク インターフェイスのセカンダリ IP 構成に割り当てられます。 IP 構成の詳細については、「[ネットワーク インターフェイス設定の表示](#view-network-interface-settings)」を参照してください。|
     |リソース グループ|はい|既存の[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)を選択するか、新しく作成することができます。 ネットワーク インターフェイスは、アタッチ先の仮想マシンや接続先の仮想ネットワークと同じリソース グループに存在することも、違うリソース グループに存在することも可能です。|
     |場所|はい|ネットワーク インターフェイスのアタッチ先の仮想マシンと接続先の仮想ネットワークは、リージョンとも呼ばれる同じ[場所](https://azure.microsoft.com/regions)の中に存在する必要があります。|
@@ -68,8 +68,8 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
-|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface#create)|
+|CLI|[az network nic create](/cli/azure/network/nic)|
+|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>ネットワーク インターフェイス設定の表示
 
@@ -85,7 +85,7 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
     - **プロパティ:** ネットワーク インターフェイスの MAC アドレスやネットワーク インターフェイスが存在するサブスクリプションなど、ネットワーク インターフェイスに関する重要な設定が表示されます (ネットワーク インターフェイスが仮想マシン接続されていない場合は空白です)。
     - **有効なセキュリティ規則:** セキュリティ規則が一覧表示されるのは、ネットワーク インターフェイスが実行中の仮想マシンにアタッチされ、NSG がネットワーク インターフェイスまたはその接続先サブネット (あるいは両方) に関連付けられている場合です。 表示内容の詳細については、「[有効なセキュリティ規則を表示する](#view-effective-security-rules)」を参照してください。 NSG の詳細については、[ネットワーク セキュリティ グループ](security-overview.md)に関するページをご覧ください。
     - **有効なルート:** 実行中の仮想マシンにネットワーク インターフェイスがアタッチされている場合には、ルートが一覧表示されます。 ルートは、Azure の既定のルート、ユーザー定義ルート、およびネットワーク インターフェイスの割り当て先サブネットのために存在する場合がある BGP ルートの組み合わせです。 表示される内容の詳細については、「[有効なルートを表示する](#view-effective-routes)」を参照してください。 Azure の既定のルートとユーザー定義ルートの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)に関する記事をご覧ください。
-    - **Azure Resource Manager の一般的な設定:** Azure Resource Manager の一般的な設定については、[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)、[Access Control (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)、[タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、および [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)に関する各記事を参照してください。
+    - **Azure Resource Manager の一般的な設定:** Azure Resource Manager の一般的な設定については、[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)、[Access Control (IAM)](../role-based-access-control/overview.md)、[タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、[ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)、および [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)に関する各記事を参照してください。
 
 <a name="view-settings-commands"></a>**コマンド**
 
@@ -93,7 +93,7 @@ IPv6 アドレスがネットワーク インターフェイスに割り当て�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic list](/cli/azure/network/nic#az_network_nic_list) ではサブスクリプションのネットワーク インターフェイスを表示します。[az network nic show](/cli/azure/network/nic#az_network_nic_show) ではネットワーク インターフェイスの設定を表示します。|
+|CLI|[az network nic list](/cli/azure/network/nic) ではサブスクリプションのネットワーク インターフェイスを表示します。[az network nic show](/cli/azure/network/nic) ではネットワーク インターフェイスの設定を表示します。|
 |PowerShell|[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) では、サブスクリプションのネットワーク インターフェイスまたはネットワーク インターフェイスの設定を表示します。|
 
 ## <a name="change-dns-servers"></a>DNS サーバーの変更
@@ -112,7 +112,7 @@ DNS サーバーは Azure DHCP サーバーによって、仮想マシンのオ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>IP 転送の有効化と無効化
@@ -133,7 +133,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="change-subnet-assignment"></a>サブネットの割り当ての変更
@@ -153,12 +153,12 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>アプリケーション セキュリティ グループに対して追加または削除を実行する
 
-ポータルを使用して、アプリケーション セキュリティ グループに対してネットワーク インターフェイスを追加または削除できるのは、ネットワーク インターフェイスが仮想マシンに接続されている場合のみです。 PowerShell や Azure CLI を使用すれば、ネットワーク インターフェイスが仮想マシンに接続されているかどうかに関係なく、アプリケーション セキュリティ グループに対してネットワーク インターフェイスを追加または削除することができます。 [アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)と[アプリケーション セキュリティ グループの作成](manage-network-security-group.md#create-an-application-security-group)方法の詳細を参照してください。
+ポータルを使用して、アプリケーション セキュリティ グループに対してネットワーク インターフェイスを追加または削除できるのは、ネットワーク インターフェイスが仮想マシンに接続されている場合のみです。 PowerShell や Azure CLI を使用すれば、ネットワーク インターフェイスが仮想マシンに接続されているかどうかに関係なく、アプリケーション セキュリティ グループに対してネットワーク インターフェイスを追加または削除することができます。 [アプリケーション セキュリティ グループ](security-overview.md#application-security-groups)と[アプリケーション セキュリティ グループの作成](manage-network-security-group.md)方法の詳細を参照してください。
 
 1. ポータルの上部にある *[リソース、サービス、ドキュメントの検索]* ボックスに、まず、アプリケーション セキュリティ グループに対して追加または削除するネットワーク インターフェイスを持つ仮想マシンの名前を入力します。 検索結果にご利用の VM の名前が表示されたら、それを選択します。
 2. **[設定]** で、**[ネットワーク]** を選択します。  **[Configure the application security groups]\(アプリケーション セキュリティ グループの構成\)** を選択し、ネットワーク インターフェイスを追加するアプリケーション ネットワーク グループを選びます。または、ネットワーク インターフェイスを削除するアプリケーション セキュリティ グループの選択を解除します。次に、**[保存]** を選択します。 同じアプリケーション セキュリティ グループに追加できるのは、同じ仮想ネットワークに存在するネットワーク インターフェイスのみです。 アプリケーション セキュリティ グループは、ネットワーク インターフェイスと同じ場所に存在している必要があります。
@@ -167,7 +167,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic update](/cli/azure/network/nic#az_network_nic_update)|
+|CLI|[az network nic update](/cli/azure/network/nic)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
 
 ## <a name="associate-or-dissociate-a-network-security-group"></a>ネットワーク セキュリティ グループを関連付けるか関連付けを解除する
@@ -199,7 +199,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic delete](/cli/azure/network/nic#az_network_nic_delete)|
+|CLI|[az network nic delete](/cli/azure/network/nic)|
 |PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
 
 ## <a name="resolve-connectivity-issues"></a>接続に関する問題を解決する

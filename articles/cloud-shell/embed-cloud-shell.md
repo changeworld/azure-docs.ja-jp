@@ -3,7 +3,7 @@ title: Azure Cloud Shell の埋め込み | Microsoft Docs
 description: Azure Cloud Shell を埋め込む方法について説明します。
 services: cloud-shell
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
-ms.author: juluk
-ms.openlocfilehash: 37ad0adf01172fadc6d9845576045a4542bdae19
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.author: damaerte
+ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497792"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995987"
 ---
 # <a name="embed-azure-cloud-shell"></a>Azure Cloud Shell の埋め込み
 
@@ -49,6 +49,7 @@ Cloud Shell を埋め込むことで、開発者やコンテンツ作成者は�
 ## <a name="customize-experience"></a>エクスペリエンスをカスタマイズする
 
 URL を拡張して、特定のシェル エクスペリエンスを設定します。
+
 |エクスペリエンス   |URL   |
 |---|---|
 |最近使用したシェル   |[shell.azure.com](https://shell.azure.com)           |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: c85aa2f7a41511d809405f3b92c9ded2eb0693ad
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: da195f414da032b5274a9dc1a184b66094f245f2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319865"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493450"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合
 
@@ -32,6 +32,8 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 * 内部コンシューマーと外部コンシューマーの両方における消費用に同一の API Management リソースを使用する。
 * 単一の API Management リソースを使用しながら、API Management 内で定義した API の一部を外部コンシューマーが利用できるようにする。
 * ターンキーを使用して、パブリック インターネットから API Management へのアクセスのオン/オフを切り替える。
+
+[!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,12 +60,12 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 ## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>API Management と Application Gateway の統合作成に必要なもの
 
 * **バックエンド サーバー プール:** これは、API Management サービスの内部仮想 IP アドレスです。
-* **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。 これらの設定は、プール内のすべてのサーバーに適用されます。
-* **フロントエンド ポート:** これは、Application Gateway で開かれたパブリック ポートです。 このポートにヒットしたトラフィックは、バックエンド サーバーのいずれかにリダイレクトされます。
+* **バックエンド サーバー プール設定:** すべてのプールには、ポート、プロトコル、cookie ベースのアフィニティなどの設定があります。 これらの設定は、プール内のすべてのサーバーに適用されます。
+* **フロントエンド ポート:** これは、Application Gateway でオープンしているパブリック ポートです。 このポートにヒットしたトラフィックは、バックエンド サーバーのいずれかにリダイレクトされます。
 * **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https で、値には大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。
-* **ルール:** このルールによって、リスナーがバックエンド サーバー プールにバインドされます。
+* **ルール:** このルールは、リスナーをバックエンド サーバー プールにバインドします。
 * **カスタムの正常性プローブ:** 既定では、Application Gateway は、IP アドレス ベースのプローブを使用して、BackendAddressPool 内でアクティブなサーバーを見つけます。 API Management サービスは適切なホスト ヘッダーを持つ要求だけに応答するため、既定のプローブでは失敗します。 サービスが有効であり要求を転送する必要があることを Application Gateway が判定できるようにするには、カスタムの正常性プローブを定義する必要があります。
-* **カスタムのドメイン証明書:** インターネットから API Management にアクセスするには、ホスト名と Application Gateway のフロントエンド DNS 名との間の CNAME マッピングを作成する必要があります。 これにより、API Management に転送される、Application Gateway に送信されたホスト名のヘッダーと証明書を、APIM が有効であると識別できるようになります。 この例では、2 つの証明書 (バックエンド用と開発者ポータル用) を使用します。  
+* **カスタム ドメイン証明書:** インターネットから API Management にアクセスするには、ホスト名と Application Gateway のフロントエンド DNS 名との間の CNAME マッピングを作成する必要があります。 これにより、API Management に転送される、Application Gateway に送信されたホスト名のヘッダーと証明書を、APIM が有効であると識別できるようになります。 この例では、2 つの証明書 (バックエンド用と開発者ポータル用) を使用します。  
 
 ## <a name="overview-steps"> </a> API Management と Application Gateway を統合するために必要な手順
 
@@ -80,7 +82,7 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 このガイドでは、Application Gateway を使用して**開発者ポータル**を外部の対象ユーザーにも公開します。 開発者ポータルのリスナー、プローブ、設定、およびルールを作成するには、追加の手順が必要です。 詳細はすべて、それぞれの手順で示されます。
 
 > [!WARNING]
-> Application Gateway からアクセスされている開発者ポータルで示されたセットアップでは、AAD とサード パーティの認証の問題が発生する可能性があります。
+> Azure AD またはサード パーティの認証を使用している場合は、Application Gateway で [cookie ベースのセッション アフィニティ](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity)機能を有効にしてください。
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>リソース マネージャーのリソース グループの作成
 

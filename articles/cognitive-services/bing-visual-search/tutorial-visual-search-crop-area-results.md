@@ -3,18 +3,18 @@ title: チュートリアル:Bing Visual Search SDK で画像をトリミング�
 description: Bing Visual Search SDK を使用して、画像の特定の範囲から分析情報を取得します。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: c3a06eef594ef3a7b2dda146ad76f648c07dc666
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 6444a49a95ee53fb624501bc464f6378423e6e26
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742152"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863025"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>チュートリアル:C# 用の Bing Visual Search SDK で画像をトリミングする
 
@@ -113,4 +113,4 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](tutorial-bing-visual-search-single-page-app.md)
 
-[Visual Search 応答](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)
+[Visual Search 応答](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)

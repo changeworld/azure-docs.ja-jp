@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 47a957453bf5962f59518719895edc0f13fe7dc8
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: ''
+ms.openlocfilehash: 4ca5803ca410e3250e025eb60b5c1ff9fc7216b1
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584379"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465243"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
 チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、開発エンジニアなど) がいる場合、またはマネージド サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
@@ -187,4 +187,5 @@ New-AzureRmRoleDefinition -Role $role
 ## <a name="next-steps"></a>次の手順
 * [Resource Manager で RBAC とアクセス許可を確認します](../../role-based-access-control/overview.md)
 * [Azure で監視の概要を確認します](../../azure-monitor/overview.md)
+
 

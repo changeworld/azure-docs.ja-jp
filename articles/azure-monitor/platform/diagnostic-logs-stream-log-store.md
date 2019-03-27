@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: 009ad79e6e0bddaa5d736e7375fad80ae015f8c5
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: logs
+ms.openlocfilehash: 3d187851fda9054bbfbae245ef34440b66ad017e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578708"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309317"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Azure 診断ログの Log Analytics へのストリーミング
 
@@ -65,10 +65,13 @@ Azure Log Analytics は、ログの検索と分析に対応したフレキシブ
 しばらくすると、このリソースの設定一覧に新しい設定が表示され、新しいイベント データが生成されるとすぐに、診断ログがそのワークスペースにストリーミングされます。 イベントが生成されてから、それが Log Analytics に表示されるまでに 15 分ほどかかる場合があるので注意してください。
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell コマンドレットの使用
-[Azure PowerShell コマンドレット](../../azure-monitor/platform/powershell-quickstart-samples.md)を使用してストリーミングを有効にするには、次のパラメーターを指定して `Set-AzureRmDiagnosticSetting` コマンドレットを使用します。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[Azure PowerShell コマンドレット](../../azure-monitor/platform/powershell-quickstart-samples.md)を使用してストリーミングを有効にするには、次のパラメーターを指定して `Set-AzDiagnosticSetting` コマンドレットを使用します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resource ID of the Log Analytics workspace] -Categories [list of log categories] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resource ID of the Log Analytics workspace] -Categories [list of log categories] -Enabled $true
 ```
 
 workspaceID プロパティに指定するのは、ワークスペースの完全な Azure リソース ID です。Log Analytics ポータルに表示されるワークスペース ID/キーではないので注意してください。
@@ -101,3 +104,4 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 ## <a name="next-steps"></a>次の手順
 
 * [Azure 診断ログの詳細を確認する](diagnostic-logs-overview.md)
+

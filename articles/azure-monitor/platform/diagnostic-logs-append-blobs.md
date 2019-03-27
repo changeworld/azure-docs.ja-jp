@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: ba163b797cfaaf73c660f1ef3d8da18758e8139a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.subservice: logs
+ms.openlocfilehash: f626ef4cfb385a62f68ab611b77dd0c307cd3820
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542001"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54882381"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor 診断ログの形式変更のための準備
 
@@ -31,7 +31,7 @@ Azure Monitor では、Azure ストレージ アカウント、Event Hubs 名前
 * 今から 11 月 1 日までの間に診断設定が行われた場合、11 月 1 日までは現在の形式で引き続きデータが出力されます。
 * この変更はすべてのパブリック クラウド リージョンで一度に行われます。 Azure 中国、Azure ドイツ、Azure Government クラウドではまだこの変更は行われません。
 * この変更は次のデータの種類に影響します。
-  * [Azure リソース診断ログ](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([このリソースの一覧を参照してください](./../../azure-monitor/platform/tutorial-dashboards.md))
+  * [Azure リソース診断ログ](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([このリソースの一覧を参照してください](./../../azure-monitor/platform/diagnostic-logs-schema.md))
   * [診断設定でエクスポートされる Azure リソース メトリック](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
   * [ログ プロファイルでエクスポートされる Azure アクティビティ ログ データ](./../../azure-monitor/platform/archive-activity-log.md)
 * この変更は以下のものには影響しません。
@@ -137,3 +137,4 @@ Azure BLOB ストレージ内の PT1H.json ファイルの現在の形式では�
 
 * [ストレージ アカウントへのリソース診断ログのアーカイブ](./../../azure-monitor/platform/archive-diagnostic-logs.md)について確認します。
 * [ストレージ アカウントへのアクティビティ ログ データのアーカイブ](./../../azure-monitor/platform/archive-activity-log.md)について確認します。
+

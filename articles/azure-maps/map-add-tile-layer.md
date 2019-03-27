@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a9decacc3b22676d94726e3cf979198b3486d270
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8e18822fff852a82b367acfa45e3d55048b4e54c
+ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104643"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54232602"
 ---
 # <a name="add-a-tile-layer-to-a-map"></a>マップにタイル レイヤーを追加する
 
@@ -68,7 +68,7 @@ ms.locfileid: "54104643"
 > [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayeroptions?view=azure-iot-typescript-latest)
+> [TileLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.tilelayeroptions?view=azure-iot-typescript-latest)
 
 マップに追加できる他のコード サンプルについては、次の記事をご覧ください。
 

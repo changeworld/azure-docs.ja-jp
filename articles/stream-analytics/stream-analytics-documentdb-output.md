@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: c5017817c0f823a149dd0f9bced48ecca9f3c488
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4be3de8de4332e8ffb0e88e612a3041829ccd606
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106568"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658574"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -49,7 +49,7 @@ Stream Analytics では、オプティミスティック アップサート手�
 重複した ID を持つドキュメントを含め、<i>すべて</i>のドキュメントを保存する場合は、(AS キーワードを使用して) クエリ内の ID フィールドの名前を変更し、Cosmos DB により ID フィールドを作成するか、(AS キーワードか 'ドキュメント ID' 設定を使用して) 別の列の値と ID を置き換えます。
 
 ## <a name="data-partitioning-in-cosmos-db"></a>Cosmos DB でのデータ パーティション分割
-Azure Cosmos DB はワークロードに基づいてパーティションを自動的にスケーリングされるので、データのパーティション分割には[無制限](../cosmos-db/partition-data.md)の Azure Cosmos DB がお勧めです。 無制限コンテナーに書き込む場合、Stream Analytics は以前のクエリ手順または入力のパーティション分割スキームと同数の並列ライターを使用します。
+Azure Cosmos DB ではワークロードに基づいてパーティションが自動的にスケーリングされるので、データのパーティション分割には[無制限](../cosmos-db/partition-data.md)の Azure Cosmos DB コンテナーがお勧めです。 無制限コンテナーに書き込む場合、Stream Analytics は以前のクエリ手順または入力のパーティション分割スキームと同数の並列ライターを使用します。
 > [!Note]
 > 現時点で、Azure Stream Analytics は最上位のパーティション キーを使用した無制限のコレクションのみをサポートしています。 たとえば、`/region` がサポートされています。 入れ子になったパーティション キー (たとえば、`/region/name`) はサポートされていません。 
 
@@ -58,16 +58,17 @@ Azure Cosmos DB はワークロードに基づいてパーティションを自�
 複数の固定コンテナーへの書き込みは非推奨です。また、Stream Analytics ジョブのスケールアウトに推奨される方法ではありません。 この詳細については、[Cosmos DB でのパーティション分割とスケーリング](../cosmos-db/sql-api-partition-data.md)に関する記事を参照してください。
 
 ## <a name="cosmos-db-settings-for-json-output"></a>JSON 出力の Cosmos DB 設定
-Stream Analytics で Cosmos DB を出力として作成すると、情報の入力を求めるプロンプトが以下のように表示されます。 このセクションでは、各プロパティの定義について説明します。
 
+Stream Analytics で Cosmos DB を出力として作成すると、情報の入力を求めるプロンプトが以下のように表示されます。 このセクションでは、各プロパティの定義について説明します。
 
 ![documentdb stream analytics 出力画面](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-1.png)
 
-フィールド           | 説明 
--------------   | -------------
-出力のエイリアス    | ASA クエリ内でこの出力を意味するエイリアス。   
-アカウント名    | Azure Cosmos DB アカウントの名前またはエンドポイント URI 
-アカウント キー     | Azure Cosmos DB アカウントの共有アクセス キー
-Database        | Azure Cosmos DB データベース名
-コレクション名 | 使用するコレクションのコレクション名。 `MyCollection` は有効な入力の例です。`MyCollection` という 1 つのコレクションが存在する必要があります。  
-ドキュメント ID     | 省略可能。 挿入操作または更新操作の基にする必要がある固有キーとして使用される出力イベント内の列名。 空のままにすると、更新オプションはなく、すべてのイベントが挿入されます。
+|フィールド           | 説明|
+|-------------   | -------------|
+|出力エイリアス    | ASA クエリ内でこの出力を意味する別名。|
+|サブスクリプション    | 対象の Azure サブスクリプションを選択します。|
+|Account ID      | Azure Cosmos DB アカウントの名前またはエンドポイント URI。|
+|アカウント キー     | Azure Cosmos DB アカウントの共有アクセス キー。|
+|Database        | Azure Cosmos DB データベース名。|
+|コレクション名のパターン | 使用するコレクションのコレクション名。 `MyCollection` は有効な入力の例です。`MyCollection` という 1 つのコレクションが存在する必要があります。  |
+|ドキュメント ID     | 省略可能。 挿入操作または更新操作の基にする必要がある固有キーとして使用される出力イベント内の列名。 空のままにすると、更新オプションはなく、すべてのイベントが挿入されます。|

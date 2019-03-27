@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: 7f11579988d965723fedb3d7900f12979ad0feb1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b0c09c5b425beef6badff7fb6ec298f96591abc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043908"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990533"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 
@@ -96,7 +96,12 @@ function tradePlayers(playerId1, playerId2) {
     var player1Document, player2Document;
 
     // query for players
-    var filterQuery = 'SELECT * FROM Players p where p.id  = "' + playerId1 + '"';
+    var filterQuery = 
+    {     
+        'query' : 'SELECT * FROM Players p where p.id = @playerId1',
+        'parameters' : [{'name':'@playerId1', 'value':playerId1}] 
+    };
+            
     var accept = container.queryDocuments(container.getSelfLink(), filterQuery, {},
         function (err, items, responseOptions) {
             if (err) throw new Error("Error" + err.message);
@@ -104,7 +109,11 @@ function tradePlayers(playerId1, playerId2) {
             if (items.length != 1) throw "Unable to find both names";
             player1Item = items[0];
 
-            var filterQuery2 = 'SELECT * FROM Players p where p.id = "' + playerId2 + '"';
+            var filterQuery2 = 
+            {     
+                'query' : 'SELECT * FROM Players p where p.id = @playerId2',
+                'parameters' : [{'name':'@playerId2', 'value':playerId2}] 
+            };
             var accept2 = container.queryDocuments(container.getSelfLink(), filterQuery2, {},
                 function (err2, items2, responseOptions2) {
                     if (err2) throw new Error("Error" + err2.message);
@@ -277,9 +286,9 @@ function updateMetadataCallback(err, items, responseOptions) {
 
 ```json
 {
-   name = "Satya Nadella",
-   country = "USA",
-   income = 70000
+   "name": "Satya Nadella",
+   "country": "USA",
+   "income": 70000
 }
 ```
 

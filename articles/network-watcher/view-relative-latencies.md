@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 6ac37c3a53b0cc71bdab85fb86e0e85d998867aa
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 0b6baec08470754c04aaa0bea2a3e6defe7fd91f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300610"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117864"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>特定の場所から Azure リージョンへの相対待機時間を確認する
 
@@ -119,8 +119,8 @@ Get-AzureRmNetworkWatcherReachabilityReport `
   -EndTime "2017-12-15"
 ```
 
->[!NOTE]
-単一の場所を指定する場合とは異なり、場所を指定しない場合や、複数の場所 ("米国西部 2"、"米国西部" など) を指定する場合は、コマンドの実行時にインターネット サービス プロバイダーを指定する必要があります。 
+> [!NOTE]
+> 単一の場所を指定する場合とは異なり、場所を指定しない場合や、複数の場所 ("米国西部 2"、"米国西部" など) を指定する場合は、コマンドの実行時にインターネット サービス プロバイダーを指定する必要があります。 
 
 ## <a name="view-available"></a>使用できる国、州、市区町村、プロバイダーを表示する
 
@@ -138,7 +138,7 @@ Get-AzureRmNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWa
 Get-AzureRmNetworkWatcherReachabilityProvidersList `
   -NetworkWatcherName NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG `
-  -City seattle `
+  -City Seattle `
   -Country "United States" `
   -State washington
 ```

@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: 予測スコアは、予測結果についての LUIS の信頼度を示します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: d082f8ee4d516e3c9571ec63653f39723cad8c77
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9386285ae7c8692e16e8c476ad59f119ecb149b6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141987"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870862"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>意図とエンティティの予測精度を示す予測スコア
 予測スコアは、予測結果についての LUIS の信頼度を示します。 

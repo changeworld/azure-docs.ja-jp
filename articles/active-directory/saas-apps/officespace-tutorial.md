@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と OfficeSpace Software の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と OfficeSpace Software の統合 | Microsoft Docs
 description: Azure Active Directory と OfficeSpace Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 95d8413f-db98-4e2c-8097-9142ef1af823
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 7162645f41d26f1496bdec9c4d694e749bfec6a1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2d1c48c10d2c58e5cb2ffd7df296390bfaf765bd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449531"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206397"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>チュートリアル: Azure Active Directory と OfficeSpace Software の統合
+# <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>チュートリアル:Azure Active Directory と OfficeSpace Software の統合
 
 このチュートリアルでは、OfficeSpace Software と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -140,7 +141,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
  
 1. **[SAML 署名証明書]** セクションで、証明書の **[拇印]** の値をコピーします。
 
@@ -174,11 +175,11 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
 
     c. Azure Portal からコピーした **[拇印]** の値を **[Client IDP certificate fingerprint]\(クライアント IDP 証明書フィンガープリント\)** ボックスに貼り付けます。 
 
-    d. **[設定の保存]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[設定の保存]** をクリックします。
 
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -211,7 +212,7 @@ OfficeSpace Software で Azure AD のシングル サインオンを構成して
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-officespace-software-test-user"></a>OfficeSpace Software のテスト ユーザーの作成
 

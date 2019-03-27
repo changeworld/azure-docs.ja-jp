@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell と CLI: SQL TDE の有効化 - 独自のキー - Azure SQL Database | Microsoft Docs'
+title: PowerShell と CLI:SQL TDE を有効にする - Azure Key Vault の使用 - Bring Your Own Key - Azure SQL Database | Microsoft Docs
 description: PowerShell または CLI を使用して、保存時の暗号化に Transparent Data Encryption (TDE) を使用するように Azure SQL Database と Data Warehouse を構成する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,17 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 0fad0cd32e8df38c5a9c06ecf01a14340f1bc9ef
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 02/15/2019
+ms.openlocfilehash: f2c7fde7b4834457f84ecaa3ce0fdd5f65dd03b5
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165077"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430320"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell と CLI: Azure Key Vault の独自のキーを使用して Transparent Data Encryption を有効にする
+# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 
-この記事では、SQL Database または Data Warehouse で、Transparent Data Encryption (TDE) に Azure Key Vault のキーを使用する方法について説明します。 Bring Your Own Key (BYOK) をサポートする TDE の詳細については、[Azure SQL の TDE Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md) に関する記事をご覧ください。 
+この記事では、SQL Database または Data Warehouse で、Transparent Data Encryption (TDE) に Azure Key Vault のキーを使用する方法について説明します。 Bring Your Own Key (BYOK) のサポートのため、Azure Key Vault と統合される TDE の詳細については、[Azure Key Vault のユーザー管理キーを使用する TDE](transparent-data-encryption-byok-azure-sql.md) に関するページを参照してください。 
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell の前提条件
 
@@ -29,8 +29,8 @@ ms.locfileid: "47165077"
 - [推奨されますが、必須ではありません] TDE 保護機能のキー マテリアルのローカル コピーを作成するためのハードウェア セキュリティ モジュール (HSM) またはローカル キー ストアを用意します。
 - Azure PowerShell バージョン 4.2.0 以降がインストールされ、実行されている必要があります。 
 - TDE に使用する Azure Key Vault とキーを作成します。
-   - [PowerShell を使用した Key Vault の操作](../key-vault/key-vault-get-started.md)
-   - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](../key-vault/key-vault-get-started.md#HSM)
+   - [PowerShell を使用した Key Vault の操作](../key-vault/key-vault-overview.md)
+   - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](../key-vault/key-vault-hsm-protected-keys.md)
  - TDE に使用するには、キー コンテナーに次のプロパティが必要です。
    - [論理的な削除](../key-vault/key-vault-ovw-soft-delete.md)
    - [PowerShell で Key Vault の論理的な削除を使用する方法](../key-vault/key-vault-soft-delete-powershell.md) 
@@ -186,8 +186,8 @@ ms.locfileid: "47165077"
 
 ## <a name="next-steps"></a>次の手順
 
-- セキュリティ要件に準拠するためにサーバーの TDE 保護機能を交換する方法を確認する: [PowerShell を使用して Transparent Data Encryption 保護機能を交換する](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-- セキュリティ リスクが発生した場合に備えて、侵害された可能性のある TDE 保護機能を削除する方法を確認する: [侵害された可能性のあるキーを削除する](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
+- セキュリティ要件に準拠するためにサーバーの TDE 保護機能をローテーションする方法を確認する:[PowerShell を使用して Transparent Data Encryption (TDE) 保護機能をローテーションする](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- セキュリティ リスクに備えて、侵害された可能性のある TDE 保護機能を削除する方法を確認する:[侵害された可能性のあるキーを削除する](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
 
 ## <a name="prerequisites-for-cli"></a>CLI の前提条件
 
@@ -196,7 +196,7 @@ ms.locfileid: "47165077"
 - コマンドライン インターフェイス バージョン 2.0 以降。 最新バージョンをインストールして Azure サブスクリプションに接続するには、「[Azure クロスプラットフォーム コマンド ライン インターフェイス 2.0 のインストールと構成](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。 
 - TDE に使用する Azure Key Vault とキーを作成します。
    - [CLI 2.0 を使用した Key Vault の管理](../key-vault/key-vault-manage-with-cli2.md)
-   - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](../key-vault/key-vault-get-started.md#HSM)
+   - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](../key-vault/key-vault-hsm-protected-keys.md)
  - TDE に使用するには、キー コンテナーに次のプロパティが必要です。
    - [論理的な削除](../key-vault/key-vault-ovw-soft-delete.md)
    - [CLI で Key Vault の論理的な削除を使用する方法](../key-vault/key-vault-soft-delete-cli.md) 
@@ -205,55 +205,59 @@ ms.locfileid: "47165077"
    - 無効化されていない
    - "*取得*"、"*キーのラップ*"、"*キーのラップ解除*" の各操作を実行できる
    
-## <a name="step-1-create-a-server-and-assign-an-azure-ad-identity-to-your-server"></a>手順 1. サーバーを作成し、Azure AD ID をサーバーに割り当てる
+## <a name="step-1-create-a-server-with-an-azure-ad-identity"></a>手順 1. Azure AD の ID でサーバーを作成する
       cli
       # create server (with identity) and database
-      az sql server create -n "ServerName" -g "ResourceGroupName" -l "westus" -u "cloudsa" -p "YourFavoritePassWord99@34" -I 
-      az sql db create -n "DatabaseName" -g "ResourceGroupName" -s "ServerName" 
-      
-
+      az sql server create --name <servername> --resource-group <rgname>  --location <location> --admin-user <user> --admin-password <password> --assign-identity
+      az sql db create --name <dbname> --server <servername> --resource-group <rgname>  
  
-## <a name="step-2-grant-key-vault-permissions-to-your-server"></a>手順 2. Key Vault アクセス許可をサーバーに付与する
+ 
+>[!Tip]
+>"principalID" ではサーバーを作成しないようにします。これは、次の手順で Key Vault のアクセス許可を割り当てるために使用するオブジェクト ID です
+>
+ 
+## <a name="step-2-grant-key-vault-permissions-to-the-logical-sql-server"></a>手順 2. Key Vault のアクセス許可を論理 SQL サーバーに付与する
       cli
       # create key vault, key and grant permission
-      az keyvault create -n "VaultName" -g "ResourceGroupName" 
-      az keyvault key create -n myKey -p software --vault-name "VaultName" 
-      az keyvault set-policy -n "VaultName" --object-id "ServerIdentityObjectId" -g "ResourceGroupName" --key-permissions wrapKey unwrapKey get list 
-      
+       az keyvault create --name <kvname> --resource-group <rgname> --location <location> --enable-soft-delete true
+       az keyvault key create --name <keyname> --vault-name <kvname> --protection software
+       az keyvault set-policy --name <kvname>  --object-id <objectid> --resource-group <rgname> --key-permissions wrapKey unwrapKey get 
 
+
+>[!Tip]
+>次の手順のために新しいキーのキー URI または keyID を保持します (例: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h)
+>
  
+       
 ## <a name="step-3-add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>手順 3. Key Vault キーをサーバーに追加し、TDE 保護機能を設定する
   
      cli
      # add server key and update encryption protector
-      az sql server key create -g "ResourceGroupName" -s "ServerName" -t "AzureKeyVault" -u "FullVersionedKeyUri 
-      az sql server tde-key update -g "ResourceGroupName" -s "ServerName" -t AzureKeyVault -u "FullVersionedKeyUri" 
-      
-  
+     az sql server key create --server <servername> --resource-group <rgname> --kid <keyID>
+     az sql server tde-key set --server <servername> --server-key-type AzureKeyVault  --resource-group <rgname> --kid <keyID>
+
+        
   > [!Note]
 > キー コンテナー名とキー名を組み合わせた長さは 94 文字以下である必要があります。
 > 
 
->[!Tip]
->Key Vault の KeyId の例: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
->
   
 ## <a name="step-4-turn-on-tde"></a>手順 4. TDE を有効にする 
       cli
       # enable encryption
-      az sql db tde create -n "DatabaseName" -g "ResourceGroupName" -s "ServerName" --status Enabled 
+      az sql db tde set --database <dbname> --server <servername> --resource-group <rgname> --status Enabled 
       
 
-データベースまたはデータ ウェアハウスで、Key Vault の暗号化キーを使用して TDE が有効になりました。
+データベースまたはデータ ウェアハウスで、Azure Key Vault の顧客マネージド暗号化キーにより TDE が有効になりました。
 
 ## <a name="step-5-check-the-encryption-state-and-encryption-activity"></a>手順 5. 暗号化の状態と暗号化アクティビティを確認する
 
      cli
       # get encryption scan progress
-      az sql db tde show-activity -n "DatabaseName" -g "ResourceGroupName" -s "ServerName" 
+      az sql db tde list-activity --database <dbname> --server <servername> --resource-group <rgname>  
 
       # get whether encryption is on or off
-      az sql db tde show-configuration -n "DatabaseName" -g "ResourceGroupName" -s "ServerName" 
+      az sql db tde show --database <dbname> --server <servername> --resource-group <rgname> 
 
 ## <a name="sql-cli-references"></a>SQL CLI リファレンス
 

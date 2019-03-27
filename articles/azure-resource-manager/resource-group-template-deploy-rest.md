@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2018
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 058d6d398f6bb54e8569e727f118a325c338049d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: bd574eb2d3537d3e5c0774f57e37283817cc7879
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154744"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112026"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ
 
@@ -38,32 +38,32 @@ ms.locfileid: "50154744"
 
 1. 既存のリソース グループがない場合は、リソース グループを作成します。 ソリューションに必要なサブスクリプション ID、新しいリソース グループの名前、場所を指定します。 詳細については、「[リソース グループの作成](/rest/api/resources/resourcegroups/createorupdate)」を参照してください。
 
-  ```HTTP
-  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2018-05-01
-  ```
+   ```HTTP
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2018-05-01
+   ```
 
-  次のような要求本文を使用します。
-  ```json
-  {
+   次のような要求本文を使用します。
+   ```json
+   {
     "location": "West US",
     "tags": {
       "tagname1": "tagvalue1"
     }
-  }
-  ```
+   }
+   ```
 
 1. [テンプレート デプロイを検証する](/rest/api/resources/deployments/validate)操作を実行して、デプロイを実行する前に検証します。 デプロイをテストする場合、(次の手順で示すように) デプロイの実行時に必要なパラメーターを正確に指定します。
 
 1. デプロイを作成します。 サブスクリプション ID、リソース グループの名前、デプロイの名前、テンプレートへのリンクを指定します。 テンプレート ファイルについては、「[パラメーター ファイル](#parameter-file)」を参照してください。 リソース グループを作成する REST API の詳細については、「[テンプレートのデプロイを作成する](/rest/api/resources/deployments/createorupdate)」を参照してください。 **[モード]** が **[増分]** に設定されていることに注意してください。 完全デプロイメントを実行するには、**[モード]** を **[完全]** に設定します。 テンプレートにないリソースを誤って削除する可能性があるため、完全モードを使用する際は注意してください。
 
-  ```HTTP
-  PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
-  ```
+   ```HTTP
+   PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
+   ```
 
-  次のような要求本文を使用します。
+   次のような要求本文を使用します。
 
    ```json
-  {
+   {
     "properties": {
       "templateLink": {
         "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
@@ -75,23 +75,36 @@ ms.locfileid: "50154744"
         "contentVersion": "1.0.0.0"
       }
     }
-  }
-  ```
+   }
+   ```
 
     応答の内容、要求の内容、またはその両方を記録するには、要求に **debugSetting** を含めます。
 
-  ```json
-  "debugSetting": {
-    "detailLevel": "requestContent, responseContent"
-  }
-  ```
+   ```json
+   {
+    "properties": {
+      "templateLink": {
+        "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "mode": "Incremental",
+      "parametersLink": {
+        "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "debugSetting": {
+        "detailLevel": "requestContent, responseContent"
+      }
+    }
+   }
+   ```
 
     ストレージ アカウントを設定して、Shared Access Signature (SAS) トークンを使用することができます。 詳細については、「[Delegating Access with a Shared Access Signature (Shared Access Signature を使用したアクセスの委任)](https://docs.microsoft.com/rest/api/storageservices/delegating-access-with-a-shared-access-signature)」を参照してください。
 
 1. テンプレートとパラメーターのファイルにリンクするのではなく、それらを要求本文に含めることができます。
 
-  ```json
-  {
+   ```json
+   {
       "properties": {
       "mode": "Incremental",
       "template": {
@@ -148,33 +161,61 @@ ms.locfileid: "50154744"
         }
       }
     }
-  }
-  ```
+   }
+   ```
 
 5. テンプレートのデプロイの状態を取得します。 詳細については、「[テンプレートのデプロイに関する情報を取得](/rest/api/resources/deployments/get)」を参照してください。
 
-  ```HTTP
-  GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
-  ```
+   ```HTTP
+   GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
+   ```
 
 ## <a name="redeploy-when-deployment-fails"></a>デプロイに失敗したときに再デプロイする
 
-失敗したデプロイについては、デプロイ履歴の以前のデプロイが自動的に再デプロイされるように指定できます。 このオプションを使用するには、ご自身のデプロイを履歴で特定できるように、デプロイの名前は一意でなければなりません。 一意の名前が付いていないと、失敗した現在のデプロイによって、履歴にある以前の成功したデプロイが上書きされる可能性があります。 このオプションは、ルート レベルのデプロイでのみ使用できます。 入れ子になったテンプレートのデプロイを再デプロイに使用することはできません。
+デプロイに失敗した場合、デプロイ履歴から以前に成功したデプロイを自動的に再デプロイすることができます。 再デプロイを指定するには、要求本文内で `onErrorDeployment` プロパティを使用します。
+
+このオプションを使用するには、ご自身のデプロイを履歴で特定できるように、デプロイの名前は一意でなければなりません。 一意の名前が付いていないと、失敗した現在のデプロイによって、履歴にある以前の成功したデプロイが上書きされる可能性があります。 このオプションは、ルート レベルのデプロイでのみ使用できます。 入れ子になったテンプレートのデプロイを再デプロイに使用することはできません。
 
 現在のデプロイが失敗した場合、前回の成功したデプロイを再デプロイするには、次を使用します。
 
 ```json
-"onErrorDeployment": {
-  "type": "LastSuccessful",
-},
+{
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "mode": "Incremental",
+    "parametersLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "onErrorDeployment": {
+      "type": "LastSuccessful",
+    }
+  }
+}
 ```
 
 現在のデプロイが失敗した場合、特定のデプロイを再デプロイするには、次を使用します。
 
 ```json
-"onErrorDeployment": {
-  "type": "SpecificDeployment",
-  "deploymentName": "<deploymentname>"
+{
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "mode": "Incremental",
+    "parametersLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "onErrorDeployment": {
+      "type": "SpecificDeployment",
+      "deploymentName": "<deploymentname>"
+    }
+  }
 }
 ```
 
@@ -215,7 +256,7 @@ ms.locfileid: "50154744"
 パラメーターに機密性の高い値(パスワードなど) を提供する必要がある場合は、その値を Key Vault に追加します。 前の例で示したように、デプロイ中に Key Vault を取得します。 詳細については、「 [デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
-* リソース グループに存在するが、テンプレートで定義されていないリソースの処理方法を指定するには、「[Azure Resource Manager deployment modes](deployment-modes.md)」(Azure Resource Manager デプロイ モード) を参照してください。
+* リソース グループに存在するが、テンプレートで定義されていないリソースの処理方法を指定するには、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」を参照してください。
 * 非同期 REST 操作の処理の詳細については、「[Track asynchronous Azure operations (非同期の Azure 操作の追跡)](resource-manager-async-operations.md)」を参照してください。
 * .NET クライアント ライブラリを使用したリソースのデプロイの例については、「 [Deploy resources using .NET libraries and a template](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」 (.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ) を参照してください。
 * テンプレートのパラメーターの定義については、 [テンプレートの作成](resource-group-authoring-templates.md#parameters)に関する記事を参照してください。

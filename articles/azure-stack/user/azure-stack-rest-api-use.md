@@ -13,12 +13,13 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: fe516d1d34496d190ae45e00893deb646fc08408
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 1773083a5d02f3bb988ac3e5cef6528a5d49b94e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306558"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100396"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -65,25 +66,25 @@ grant_type=password
 
 各値:
 
- - **grant_type**  
-    使用する認証スキームの種類。 この例では、値は `password` です
+- **grant_type**  
+   使用する認証スキームの種類。 この例では、値は `password` です
 
- - **resource**  
-    トークンがアクセスするリソース。 リソースを見つけるには、Azure Stack 管理メタデータ エンドポイントにクエリを実行します。 **audiences** セクションを確認します
+- **resource**  
+   トークンがアクセスするリソース。 リソースを見つけるには、Azure Stack 管理メタデータ エンドポイントにクエリを実行します。 **audiences** セクションを確認します
 
- - **Azure Stack 管理エンドポイント**  
-    ```
-    https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
-    ```
+- **Azure Stack 管理エンドポイント**  
+   ```
+   https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
+   ```
 
   > [!NOTE]  
   > 管理者がテナント API へのアクセスを試みる場合は、必ずテナント エンドポイント (`https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011` など) を使用する必要があります。  
 
   たとえば、エンドポイントとして Azure Stack Development Kit を使用するとします。
 
-    ```bash
-    curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
-    ```
+   ```bash
+   curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
+   ```
 
   応答:
 
@@ -93,9 +94,9 @@ grant_type=password
   "graphEndpoint":"https://graph.windows.net/",
   "portalEndpoint":"https://adminportal.local.azurestack.external/",
   "authentication":{
-      "loginEndpoint":"https://login.windows.net/",
-      "audiences":["https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155"]
-      }
+     "loginEndpoint":"https://login.windows.net/",
+     "audiences":["https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155"]
+     }
   }
   ```
 

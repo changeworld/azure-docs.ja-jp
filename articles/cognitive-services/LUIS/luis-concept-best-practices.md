@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: LUIS アプリのモデルから最良の結果を得るための LUIS のベスト プラクティスについて説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: e6bda6775d8d3f6fb7b9e411c9e590f1b5107d27
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973935"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428909"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Cognitive Services を使用して Language Understanding アプリを構築するためのベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。 
@@ -59,6 +59,12 @@ LUIS アプリのベスト プラクティスを次に示します。
 
 この "Book a flight" と "Book a hotel" で使用されている共通のボキャブラリが "book a " です。 この形式は同じであるため、flight (フライト) および hotel (ホテル) という異なる単語を抽出されたエンティティとして含む同じ意図として定義する必要があります。 
 
+詳細:
+* 概念: [LUIS アプリにおける意図の概念](luis-concept-intent.md)
+* チュートリアル:[ユーザーの意図を特定する LUIS アプリを構築する](luis-quickstart-intents-only.md)
+* 方法:[ユーザーの発話意図を判断する意図を追加する](luis-how-to-add-intents.md)
+
+
 ## <a name="do-find-sweet-spot-for-intents"></a>すべきこと: 意図のスイート スポットを見つける
 LUIS の予測データを使用して、意図が重複していないかどうかを判断します。 意図が重複していると LUIS が混乱します。 その結果、上位スコアの意図と他の意図が非常に近くなります。 LUIS では、トレーニング用のデータから毎回同じパスを使用するわけではないため、重複している意図は、トレーニングで 1 位または 2 位になる可能性があります。 各意図の発話のスコアは、このフリップフロップが発生しないように、それぞれ差をつける必要があります。 意図が適切に区別されていれば、最上位の意図は毎回最上位にくるはずです。 
  
@@ -67,14 +73,37 @@ LUIS の予測データを使用して、意図が重複していないかどう
 
 開発者には 3 つのデータ セットが必要です。 1 つ目は、モデルを構築するための発話の例です。 2 つ目は、エンドポイントでモデルをテストするためのデータ セットです。 3 つ目は、[バッチ テスト](luis-how-to-batch-test.md)で使われているブラインド テスト データです。 この最後のセットは、エンドポイントでの送信やアプリケーションのトレーニングには使用されません。  
 
+詳細:
+* 概念: [LUIS アプリの作成サイクル](luis-concept-app-iteration.md)
+
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>すべきこと: 後のイテレーションでフレーズ リストとパターンを追加する
-[フレーズ リスト](luis-concept-feature.md)を使用すると、お使いのアプリ ドメインに関連する単語のディクショナリを定義できます。 いくつかの単語を使ってフレーズ リストをシード処理し、提案機能を使用することで、LUIS によって、アプリに固有のボキャブラリの単語がさらに詳しく認識されるようになります。 フレーズ リストは完全一致ではないため、ボキャブラリにはすべての単語は追加しないでください。 
+
+アプリのテストが済むまではこれらのプラクティスを適用しないのがベスト プラクティスです。 フレーズ リストとパターンを追加する前に、アプリがどのように動作するかを理解する必要があります。 これらがないときにアプリがどのように動作するかを理解したら、これらの機能がアプリに適用されるときに各機能を追加します。 これらの機能を[繰り返し](luis-concept-app-iteration.md)のたびに追加したり、バージョンが変わるたびに変更したりする必要はありません。 
+
+それらをモデル設計の開始時に追加しても害はありませんが、モデルを発話でテストした後、各機能変更がどのような結果になるかを確認することが容易になります。 
+
+ベスト プラクティスは、[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md)の追加されたベネフィットを得られるよう、[エンドポイント](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)を介してテストすることです。 [対話型テスト ウィンドウ](luis-interactive-test.md)も有効なテスト手法になります。 
+ 
+
+### <a name="phrase-lists"></a>フレーズ リスト
+
+[フレーズ リスト](luis-concept-feature.md)を使用すると、お使いのアプリ ドメインに関連する単語のディクショナリを定義できます。 いくつかの単語を使ってフレーズ リストをシード処理し、提案機能を使用することで、LUIS によって、アプリに固有のボキャブラリの単語がさらに詳しく認識されるようになります。 フレーズ リストを使用すると、アプリにとって重要な語句に関連付けられているシグナルをブーストすることで、意図の検出とエンティティの分類が向上します。 
+
+フレーズ リストは完全一致ではないため、ボキャブラリにはすべての単語は追加しないでください。 
+
+詳細:
+* 概念: [LUIS アプリのフレーズ リストのフィーチャー](luis-concept-feature.md)
+* 方法: [フレーズ リストを使用して単語リストのシグナルをブーストする](luis-how-to-add-features.md)
+
+### <a name="patterns"></a>パターン
 
 エンドポイントからの実際のユーザーの発話で、非常によく似ているものにより、単語の選択と配置のパターンが明らかになる可能性があります。 [パターン](luis-concept-patterns.md)機能では、この単語の選択と配置および正規表現を使って、ご自身の予測精度を向上させます。 パターン内の正規表現を使用すると、単語や句読点を無視して、パターンを一致させることができます。 
 
 句読点を無視するには、パターンの[省略可能な句読点の構文](luis-concept-patterns.md)を使用します。 [明示的なリスト](luis-concept-patterns.md#explicit-lists)を使用して、pattern.any 構文の問題を補正します。 
 
-これらのプラクティスは、エンドポイントの要求がご自身のアプリに届く前には適用しないでください。適用すると、信頼度にずれが生じます。  
+詳細:
+* 概念: [パターンは予測精度を改善する](luis-concept-patterns.md)
+* 方法: [パターンを追加して予測精度を改善する方法](luis-how-to-model-intent-pattern.md)
 
 ## <a name="balance-your-utterances-across-all-intents"></a>すべての意図の間で発話のバランスを取る
 
@@ -86,9 +115,17 @@ LUIS による予測を正確に行うには、各意図 (None 意図を除く) 
 
 この意図は代替用の意図で、お使いのアプリケーション外のものすべてを示していました。 ご自身の残りの LUIS アプリでは、発話の例 10 個それぞれに 1 つの発話の例を None 意図に追加してください。
 
+詳細:
+* 概念: [LUIS アプリに対して良い発話を理解する](luis-concept-utterance.md)
+
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>すべきこと: アクティブ ラーニングの提案機能を活用する
 
 発話の例をさらに多く意図に追加するのではなく、[アクティブ ラーニング](luis-how-to-review-endoint-utt.md)の**エンドポイントの発話の確認**を定期的に使用します。 アプリでは常にエンドポイント発話を受信しているため、このリストは拡大および変化し続けています。
+
+詳細:
+* 概念: [エンドポイント発話のレビューによるアクティブ ラーニング実現の概念](luis-concept-review-endpoint-utterances.md)
+* チュートリアル:[チュートリアル:エンドポイントの発話を確認して不確かな予測を修正する](luis-tutorial-review-endpoint-utterances.md)
+* 方法: [エンドポイント発話を LUIS ポータルで確認する方法](luis-how-to-review-endoint-utt.md)
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>すべきこと: ご自身のアプリのパフォーマンスを監視する
 
@@ -133,6 +170,11 @@ LUIS では、意図の発話にバリエーションが必要です。 発話�
 ## <a name="do-use-versions-for-each-app-iteration"></a>アプリのイテレーションごとにバージョンを使用する
 
 各作成サイクルは、既存のバージョンから複製された新しい[バージョン](luis-concept-version.md)内にある必要があります。 LUIS にはバージョンの制限がありません。 バージョン名は API ルートの一部として使用されるので、バージョンには URL で許可されている文字を選び、10 文字以内にすることが重要です。 バージョンを整理するためのバージョン名戦略を策定してください。 
+
+詳細:
+* 概念: [LUIS バージョンを使用する方法とタイミングを理解する](luis-concept-version.md)
+* 方法: [バージョンを使用してステージング アプリまたは運用環境アプリに影響を与えることなく編集とテストを行う](luis-how-to-manage-versions.md)
+
 
 ## <a name="next-steps"></a>次の手順
 

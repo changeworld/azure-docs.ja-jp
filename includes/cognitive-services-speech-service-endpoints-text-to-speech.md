@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: wolfma
-ms.openlocfilehash: e0a00ffac1921adab3ce120d65fcccaa8b2d231f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 933ee0ce6885960d5b35f67a0a4ee50602fe55c8
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53381551"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55148005"
 ---
 ### <a name="neural-voices"></a>ニューラル音声
 
@@ -20,6 +20,9 @@ ms.locfileid: "53381551"
 | 米国東部 | https://eastus.tts.speech.microsoft.com/cognitiveservices/v1 |
 | 東南アジア | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
 | 西ヨーロッパ | https://westeurope.tts.speech.microsoft.com/cognitiveservices/v1 |
+
+> [!IMPORTANT]
+> Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural) は、東南アジア エンドポイント https://southeastasia.tts.speech.microsoft.com/cognitiveservices/v1 経由でのみ使用できます。 ニューラル音声の全一覧については、[言語のサポート](../articles/cognitive-services/speech-service/language-support.md)に関する記事を参照してください。
 
 ### <a name="standard-voices"></a>標準音声
 

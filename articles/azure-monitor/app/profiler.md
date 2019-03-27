@@ -3,21 +3,21 @@ title: Application Insights を使用したライブ Azure App Service アプリ
 description: Application Insights Profiler を使用して Azure App Service でライブ アプリをプロファイルします。
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: cweining
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: cawa
+ms.reviewer: mbullwin
 ms.date: 08/06/2018
-ms.author: mbullwin
-ms.openlocfilehash: daba72639e190bb255dd515237d25c20df433901
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.author: cweining
+ms.openlocfilehash: f3ec10a970406cbb1bb6a1a52ffa8508e37fc516
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075024"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414169"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
@@ -25,8 +25,8 @@ ms.locfileid: "54075024"
 
 ## <a id="installation"></a> アプリの Profiler を有効にする
 アプリで Profiler を有効にするには、次の手順に従います。 別の種類の Azure サービスを実行している場合、以下のサポートされている他のプラットフォームで Profiler を有効にする手順を参照してください。
-* [Cloud Services](../../azure-monitor/app/profiler-cloudservice.md ?toc=/azure/azure-monitor/toc.json)
-* [Service Fabric アプリケーション](../../azure-monitor/app/profiler-servicefabric.md ?toc=/azure/azure-monitor/toc.json)
+* [Cloud Services](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Service Fabric アプリケーション](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Virtual Machines](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler は App Services ランタイムの一部としてプレインストールされますが、App Service アプリのプロファイルを取得するには、有効にする必要があります。 ソース コードに App Insights SDK を含めている場合でも、アプリをデプロイした後にプロファイラーを有効にするには、次の手順に従います。

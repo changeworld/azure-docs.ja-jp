@@ -3,24 +3,25 @@ title: Azure Active Directory v2.0 Android の概要 | Microsoft Docs
 description: Android アプリがアクセス トークンを取得し、Microsoft Graph API またはアクセス トークンを必要とする API を、Azure Active Directory v2.0 エンドポイントから呼び出す方法。
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 613e1f733e8b4115149b3109b059d66b4f2ebbae
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e7fc71ab63be053402adcb9fae452acf38b8c67f
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984380"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201587"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-android-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-android-setup.md)]

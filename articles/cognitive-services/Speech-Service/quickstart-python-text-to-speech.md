@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Text to Speech REST API を使用してテキストを音声に変換する方法について説明します。 このガイドに含まれているサンプル テキストは、音声合成マークアップ言語 (SSML) として構成されています。 そのため、音声応答の音声と言語を選択することができます。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 2828330a0b00bb0695dcf91a84d0099d30c43183
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 36ff3f4b73db8889349e977aaf80a754894d75ae
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360124"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857340"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>クイック スタート: Python を使用してテキストを音声に変換する
 

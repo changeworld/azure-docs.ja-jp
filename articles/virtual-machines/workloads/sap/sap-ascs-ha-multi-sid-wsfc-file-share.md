@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e21357eeb795a26874cddb90b4d3a6303b83ac0
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 0ce4391e8fb2047320c4d84ac18ce0b1f8c8eaad
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189635"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745020"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -196,10 +196,10 @@ ms.locfileid: "43189635"
 
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Azure での Windows Server フェールオーバー クラスタリングとファイル共有による SAP ASCS/SCS インスタンスのマルチ SID 高可用性
 
-> ![Windows][Logo_Windows] Windows
+> ![ Windows][Logo_Windows]  Windows
 >
 
-[Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できる機能が 2016 年 9 月にリリースされました。 この機能は、Azure 外部ロード バランサーに既に存在しているものです。
+[Azure 内部ロード バランサー][load-balancer-multivip-overview]を使用して複数の仮想 IP アドレスを管理できます。 
 
 SAP がデプロイされている場合は、内部ロード バランサーを使って SAP Central Services (ASCS/SCS) インスタンスの Windows クラスター構成を作成できます。
 
@@ -213,14 +213,16 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 >
 >1 つの WSFC クラスターにおける SAP ASCS/SCS インスタンスの最大数は、Azure 内部ロード バランサーあたりのプライベート フロントエンド IP の最大数と等しくなります。
 >
+> このドキュメントで紹介されている構成を [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) で使用することはまだサポートされていません
+> 
 
-ロード バランサーの制限について詳しくは、「[ネットワークの制限 - Azure Resource Manager][networking-limits-azure-resource-manager]」でロード バランサーごとのプライベート フロントエンド IP に関する説明をご覧ください。
+ロード バランサーの制限の詳細については、[ネットワークの制限:Azure Resource Manager][networking-limits-azure-resource-manager] のセクションで "ロード バランサーごとのプライベート フロント エンド IP" をご覧ください。 Azure Load Balancer の Basic SKU の代わりに、[Azure Standard Load Balancer SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) を使用することも検討してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 次の図に示すように、**ファイル共有**を使って 1 つの SAP ASCS/SCS インスタンスに使う WSFC クラスターを構成済みであることが必要です。
 
-![図 1: 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスと SOFS][sap-ha-guide-figure-8007]
+![図 1:2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスと SOFS][sap-ha-guide-figure-8007]
 
 _**図 1:** 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスと SOFS_
 
@@ -235,7 +237,7 @@ _**図 1:** 2 つのクラスターにデプロイされた SAP ASCS/SCS イン�
 
 次の例のように、複数の SAP Advanced Business Application Programming (ASCS) または SAP Java (SCS) クラスター化インスタンスを同じ WSFC クラスター内にインストールすることが目標です。 
 
-![図 2: 2 つのクラスターの SAP マルチ SID 構成][sap-ha-guide-figure-8008]
+![図 2:2 つのクラスターの SAP マルチ SID 構成][sap-ha-guide-figure-8008]
 
 _**図 2:** 2 つのクラスターの SAP マルチ SID 構成_
 
@@ -261,7 +263,7 @@ _**図 2:** 2 つのクラスターの SAP マルチ SID 構成_
 
 1 番目の SAP <SID1> システムの既存の \<SAPGlobalHost> と Volume1 を再利用できます。
 
-![図 3: マルチ SID の SOFS は SAP グローバル ホスト名と同じ][sap-ha-guide-figure-8014]
+![図 3:マルチ SID の SOFS は SAP グローバル ホスト名と同じ][sap-ha-guide-figure-8014]
 
 _**図 3:** マルチ SID の SOFS は SAP グローバル ホスト名と同じ_
 
@@ -327,7 +329,7 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 2 つ目の SOFS を構成できます (たとえば、2 つ目の SOFS クラスター ロールを **\<SAPGlobalHost2>** に設定し、2 つ目の **\<SID2>** に異なる **Voulme2** を設定します)。
 
-![図 4: マルチ SID の SOFS は SAP グローバル ホスト名 2 と同じ][sap-ha-guide-figure-8015]
+![図 4:マルチ SID の SOFS は SAP グローバル ホスト名 2 と同じ][sap-ha-guide-figure-8015]
 
 _**図 4:** マルチ SID の SOFS は SAP グローバル ホスト名 2 と同じ_
 
@@ -345,7 +347,7 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![図 5: マルチ SID の SOFS は SAP グローバル ホスト名 2 と同じ][sap-ha-guide-figure-8016]
+![図 5:マルチ SID の SOFS は SAP グローバル ホスト名 2 と同じ][sap-ha-guide-figure-8016]
 
 _**図 5:** フェールオーバー クラスター マネージャーでの 2 つ目の Volume2_
 
@@ -396,27 +398,27 @@ Set-Acl $UsrSAPFolder $Acl -Verbose
 
 **saoglobal2** SOFS クラスター グループを右クリックして、**[ファイル共有の追加]** を選びます。
 
-![図 6: [ファイル共有の追加] ウィザードを起動する][sap-ha-guide-figure-8017]
+![図 6:[ファイル共有の追加] ウィザードを起動する][sap-ha-guide-figure-8017]
 
-_**図 6:** [ファイル共有の追加] ウィザードを起動する_
-
-<br>
-![図 7: [SMB 共有 - 簡易] を選ぶ][sap-ha-guide-figure-8018]
-
-_**図 7:** [SMB 共有 - 簡易] を選ぶ_
+_**図 6:**[ファイル共有の追加] ウィザードを起動する_
 
 <br>
-![図 8: "sapglobalhost2" を選んで Volume2 のパスを指定する][sap-ha-guide-figure-8019]
+![図 7:[SMB 共有 - 簡易] を選ぶ][sap-ha-guide-figure-8018]
 
-_**図 8:** "sapglobalhost2" を選んで Volume2 のパスを指定する_
+_**図 7:**[SMB 共有 - 簡易] を選ぶ_
 
 <br>
-![図 9: ファイルの共有名を "sapmnt" に設定する][sap-ha-guide-figure-8020]
+![図 8:"sapglobalhost2" を選んで Volume2 のパスを指定する][sap-ha-guide-figure-8019]
+
+_**図 8:**"sapglobalhost2" を選んで Volume2 のパスを指定する_
+
+<br>
+![図 9:ファイルの共有名を "sapmnt" に設定する][sap-ha-guide-figure-8020]
 
 _**図 9:** ファイルの共有名を "sapmnt" に設定する_
 
 <br>
-![図 10: すべての設定を無効にする][sap-ha-guide-figure-8021]
+![図 10:すべての設定を無効にする][sap-ha-guide-figure-8021]
 
 _**図 10:** すべての設定を無効にする_
 
@@ -425,17 +427,17 @@ _**図 10:** すべての設定を無効にする_
 * **SAP_\<SID>_GlobalAdmin** ドメイン ユーザー グループ
 * ASCS/SCS クラスター ノード **ascs-1$** および **ascs-2$** のコンピューター オブジェクト
 
-![図 11: ユーザー グループとコンピューター アカウントにフル コントロール アクセス許可を割り当てる][sap-ha-guide-figure-8022]
+![図 11:ユーザー グループとコンピューター アカウントにフル コントロール アクセス許可を割り当てる][sap-ha-guide-figure-8022]
 
 _**図 11:** ユーザー グループとコンピューター アカウントに "フル コントロール" を割り当てる_
 
 <br>
-![図 12: [作成] を選ぶ][sap-ha-guide-figure-8023]
+![図 12:[作成] を選ぶ][sap-ha-guide-figure-8023]
 
-_**図 12:** [作成] を選ぶ_
+_**図 12:**[作成] を選ぶ_
 
 <br>
-![図 13: sapglobal2 ホストと Volume2 にバインドされた 2 つ目の sapmnt が作成される][sap-ha-guide-figure-8024]
+![図 13:sapglobal2 ホストと Volume2 にバインドされた 2 つ目の sapmnt が作成される][sap-ha-guide-figure-8024]
 
 _**図 13:** sapglobal2 ホストと Volume2 にバインドされた 2 つ目の sapmnt が作成される_
 
@@ -451,7 +453,7 @@ DBMS と SAP アプリケーション サーバーを、既に説明したとお
 
 ## <a name="next-steps"></a>次の手順
 
-* [共有ディスクなしでフェールオーバー クラスターに ASCS/SCS インスタンスをインストールする][sap-official-ha-file-share-document]: HA ファイル共有向け公式 SAP ガイドライン
+* [共有ディスクなしでフェールオーバー クラスターに ASCS/SCS インスタンスをインストールする][sap-official-ha-file-share-document]:HA ファイル共有向け公式 SAP ガイドライン
 
 * [Windows Server 2016 での記憶域スペース ダイレクト][s2d-in-win-2016]
 

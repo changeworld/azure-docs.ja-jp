@@ -4,19 +4,19 @@ titleSuffix: Azure Dev Spaces
 author: stepro
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.component: azds-kubernetes
+ms.subservice: azds-kubernetes
 ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: mmontwil
-ms.openlocfilehash: d7f9609fa9eef7d478604db4543862af57826218
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: c8c85c9220574a3e18e5549e1607dafe1aec03ab
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437165"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818172"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-java-and-vs-code"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 開発環境を作成する (Java および VS Code)
 
@@ -27,18 +27,18 @@ ms.locfileid: "53437165"
 - VS Code から開発空間のコードをデバッグする。
 
 > [!Note]
-> **問題が発生した場合は**いつでも、「[トラブルシューティング](troubleshooting.md)」セクションを参照するか、このページでコメントを投稿してください。 より詳細な[チュートリアル](get-started-netcore.md)を試すこともできます。
+> **問題が発生した場合は**いつでも、「[トラブルシューティング](troubleshooting.md)」セクションを参照するか、このページでコメントを投稿してください。 より詳細な[チュートリアル](get-started-java.md)を試すこともできます。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/free)ことができます。
 - [Visual Studio Code](https://code.visualstudio.com/download)。
 - [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) バージョン 2.0.43 以上。
-- 米国東部、米国東部 2、米国中部、米国西部 2、西ヨーロッパ、東南アジア、カナダ中部、カナダ東部のいずれかのリージョンに存在し、**HTTP アプリケーションのルーティング**が有効になっていて、Kubernetes 1.10.3 以降が実行されている Kubernetes クラスター。
+- 米国東部、米国東部 2、米国中部、米国西部 2、西ヨーロッパ、東南アジア、カナダ中部、カナダ東部のいずれかのリージョンに存在し、Kubernetes 1.10.3 以降が実行されている Kubernetes クラスター。
 
     ```cmd
     az group create --name MyResourceGroup --location <region>
-    az aks create -g MyResourceGroup -n myAKS --location <region> --kubernetes-version 1.10.9 --enable-addons http_application_routing --generate-ssh-keys
+    az aks create -g MyResourceGroup -n myAKS --location <region> --kubernetes-version 1.10.9 --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>Azure Dev Spaces をセットアップする
@@ -137,4 +137,4 @@ public String greeting()
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
 
 > [!div class="nextstepaction"]
-> [複数のコンテナーの操作とチーム開発](team-development-java.md)
+> [複数のコンテナーの操作とチーム開発](multi-service-java.md)

@@ -1,22 +1,23 @@
 ---
-title: Azure Content Moderator の資格情報 | Microsoft Docs
-description: API で使用する Content Moderator 資格情報を管理します。
+title: Azure Content Moderator の資格情報の管理 - Content Moderator
+titlesuffix: Azure Cognitive Services
+description: API を使用するために必要な Content Moderator 資格情報を管理します。
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
-ms.date: 06/25/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 5910961ee54c953ea241baf9bce78b79b0dfeaea
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f3138a9d0fe201a9486c34c08b8cdb3cca47e1d7
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260093"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207549"
 ---
-# <a name="manage-credentials"></a>資格情報を管理する
+# <a name="manage-content-moderator-service-credentials"></a>Content Moderator サービスの資格情報を管理する
 
 Content Moderator 資格情報は、次の場所で作成されます。
 

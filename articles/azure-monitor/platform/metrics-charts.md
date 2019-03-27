@@ -5,23 +5,23 @@ author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 01/22/2019
 ms.author: vitalyg
-ms.component: metrics
-ms.openlocfilehash: 457c7e8904797955854c4c3e16a631cf6537e2b8
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.subservice: metrics
+ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330077"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310938"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor メトリックス エクスプローラー
 
-Azure Monitor メトリックス エクスプローラーは、グラフの描画、傾向の視覚的な相関付け、およびメトリック内の値の急上昇と急降下をしらべることができる Microsoft Azure ポータルのコンポーネントです。 メトリックス エクスプローラーは、Azure でホストされているか Azure Monitor サービスによって監視されているアプリケーションとインフラストラクチャのさまざまなパフォーマンスと可用性の問題を調査するための重要な出発点です。
+Azure Monitor メトリックス エクスプローラーは、グラフの描画、傾向の視覚的な相関付け、およびメトリック内の値の急上昇と急降下を調べることができる Microsoft Azure portal のコンポーネントです。 メトリックス エクスプローラーは、Azure でホストされているか Azure Monitor サービスによって監視されているアプリケーションとインフラストラクチャのさまざまなパフォーマンスと可用性の問題を調査するための重要な出発点です。
 
 ## <a name="metrics-in-azure"></a>Azure のメトリック
 
-Microsoft Azure におけるメトリックは、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 一方、カスタム メトリックは、アプリケーションが[カスタム イベント用の Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) を使用して、Azure に送信します。 カスタム メトリックは、他のアプリケーション固有のメトリックと共に Application Insights リソース内に格納されます。
+[Azure Monitor におけるメトリック](data-collection.md#metrics)は、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 一方、カスタム メトリックは、アプリケーションが[カスタム イベント用の Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) を使用して、Azure に送信します。 カスタム メトリックは、他のアプリケーション固有のメトリックと共に Application Insights リソース内に格納されます。
 
 ## <a name="create-a-new-chart"></a>新しいグラフを作成する
 
@@ -100,20 +100,6 @@ Microsoft Azure におけるメトリックは、時間をかけて収集して�
    > [!NOTE]
    > シナリオとは無関係のセグメントを非表示にしてグラフを読みやすくするには、同じディメンションでフィルター処理と分割の両方を使用します。
 
-### <a name="new-alert-rule"></a>新しいアラート ルール
-
-メトリック ベースのアラート ルールの基になるロジックの基準として、メトリックを視覚化するために設定した条件を使用することもできます。 
-
-**[新しいアラート ルール]** をクリックすると、
-
-![赤色で強調表示されている [新しいアラート ルール] ボタン](./media/metrics-charts/015.png)
-
-カスタムのアラート ルールを生成しやすくするために、事前に設定されたグラフからの基になるメトリック ディメンションを含むアラート ルール作成ウィンドウが表示されます。
-
-![アラート ルールの作成](./media/metrics-charts/016.png)
-
-メトリック アラートの設定の詳細については、こちらの[記事](alerts-metric.md)を確認してください。
-
 ## <a name="lock-boundaries-of-chart-y-axis"></a>グラフの Y 軸の境界をロックする
 
 大きな値のわずかな変動をグラフで示す場合、Y 軸の範囲をロックすることが重要となります。 
@@ -139,6 +125,31 @@ Y 軸の範囲を制御するには、 グラフの […] メニューを使用�
 
 ![メトリックの画像](./media/metrics-charts/00013.png)
 
+## <a name="create-alert-rules"></a>アラート ルールの作成
+
+メトリック ベースのアラート ルールの基準として、メトリックを視覚化するために設定した条件を使用できます。 新しいアラート ルールにはターゲット リソース、メトリック、分割、およびグラフからのフィルター ディメンションが含まれます。 これらの設定は、アラート ルールの作成ウィンドウで後で変更できます。
+
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>新しいアラート ルールを作成するには、**[新しいアラート ルール]** をクリックします。
+
+![赤色で強調表示されている [新しいアラート ルール] ボタン](./media/metrics-charts/015.png)
+
+カスタムのアラート ルールを生成しやすくするために、事前に設定されたグラフからの基になるメトリック ディメンションを含むアラート ルール作成ウィンドウが表示されます。
+
+![アラート ルールの作成](./media/metrics-charts/016.png)
+
+メトリック アラートの設定の詳細については、こちらの[記事](alerts-metric.md)を確認してください。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+*グラフにデータが表示されない。*
+
+* フィルターは、ウィンドウのすべてのグラフに適用されます。 あるグラフに注目するときに、別のグラフですべてのデータを除外するフィルターを設定していないことを確認します。
+
+* グラフごとに異なるフィルターを設定する場合は、それぞれ異なるブレードでグラフを作成し、個別のお気に入りとして保存します。 その場合、グラフを並べて表示できるように、グラフをダッシュボードに固定できます。
+
+* メトリックで定義されていないプロパティでグラフをセグメント化すると、グラフに何も表示されなくなります。 セグメント化 (分割) を削除するか、別のプロパティを選択してください。
+
 ## <a name="next-steps"></a>次の手順
 
   [カスタム KPI ダッシュボードの作成](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards)に関する記事で、メトリックを使用した実用的なダッシュボードを作成するためのベスト プラクティスを確認します。
+

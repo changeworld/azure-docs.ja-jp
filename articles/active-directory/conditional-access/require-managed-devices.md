@@ -4,11 +4,11 @@ description: クラウド アプリへのアクセスにマネージド デバ�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,14 +16,15 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b59e4898f85de7ad93d9172cdb3c551a17799194
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0c468f149a8005f2452ba49afbb447c3304c3d4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630485"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170532"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法 - 条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
 
 モバイル ファースト、クラウド ファーストの世界では、Azure Active Directory (Azure AD) を使用して、アプリおよびサービスにどこからでもシングル サインオンできます。 承認されたユーザーはモバイル デバイスと個人デバイスを含むさまざまなデバイスからクラウド アプリにアクセスできます。 ただし、多くの環境では、セキュリティとコンプライアンスの基準を満たすデバイスのみがアクセスする必要があるアプリが少なくともいくつかはあります。 これらのデバイスはマネージド デバイスとも呼ばれます。 
 

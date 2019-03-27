@@ -88,6 +88,8 @@ items:
       href: security-center-adaptive-application.md
     - name: ファイルの整合性の監視
       href: security-center-file-integrity-monitoring.md
+    - name: アダプティブ ネットワークのセキュリティ強化機能
+      href: security-center-adaptive-network-hardening.md
   - name: 脅威を検出する
     href: security-center-detection-capabilities.md
     items:
@@ -95,7 +97,7 @@ items:
       href: security-center-managing-and-responding-alerts.md
     - name: セキュリティ インシデント
       href: security-center-incident.md
-    - name: アラートの種類
+    - name: セキュリティ アラートについて
       href: security-center-alerts-type.md
     - name: アラートの検証
       href: security-center-alert-validation.md
@@ -180,7 +182,7 @@ items:
   - name: 準備のロードマップ
     href: security-center-readiness-roadmap.md
   - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-    href: http://blogs.msdn.com/b/azuresecurity/
+    href: https://blogs.msdn.com/b/azuresecurity/
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/search?q=security-center
   - name: ビデオ
@@ -191,9 +193,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: トラブルシューティング
     href: security-center-troubleshooting-guide.md
-ms.openlocfilehash: 7aaca2a30fb130c3d7d68faf9f353539be044315
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: b0acd0948589e4045e7c9dbd9cc423bfd0ae1e3d
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259157"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201179"

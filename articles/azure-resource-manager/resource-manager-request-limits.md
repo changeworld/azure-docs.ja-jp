@@ -13,14 +13,15 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 0ba4a1a4119db515e10c0b704b0a10501fe79682
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 0a4be349bfd8ce546ee2a27c206a7bd86306c27a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53136891"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493561"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
+
 Resource Manager では、Azure のサブスクリプションおよびテナントごとに、最大で 1 時間あたり 12,000 件の読み取り要求と 1 時間あたり 1,200 件の書き込み要求が許可されています。 これらの制限は、要求を行うプリンシパル ID と、サブスクリプション ID またはテナント ID の範囲に設定されます。 複数のプリンシパル ID から要求が発信されると、サブスクリプションまたはテナント全体の制限は、1 時間あたり 12,000 件および 1,200 件を超えます。
 
 要求は、サブスクリプションまたはテナントに適用されます。 サブスクリプション要求 (サブスクリプション内のリソース グループの取得など) では、サブスクリプション ID を渡す必要があります。 テナント要求 (有効な Azure の場所の取得など) には、サブスクリプション ID は含まれません。
@@ -30,6 +31,8 @@ Resource Manager では、Azure のサブスクリプションおよびテナン
 アプリケーションまたはスクリプトがこれらの上限に達した場合、要求をスロットルする必要があります。 この記事では、上限に達する前に残りの要求数を確認する方法と、上限に達したときの対処方法について説明します。
 
 上限に達すると、HTTP 状態コード **429 Too many requests** が返されます。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="remaining-requests"></a>残りの要求数
 残りの要求数を確認するには、応答ヘッダーを調べます。 各要求には、残りの読み取り要求と書き込み要求の数を示す値が含まれています。 これらの値を確認できる応答ヘッダーを次の表に示します。
@@ -66,7 +69,7 @@ $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 デバッグのために残りの要求数を確認する場合は、**PowerShell** コマンドレットで **-Debug** パラメーターを指定します。
 
 ```powershell
-Get-AzureRmResourceGroup -Debug
+Get-AzResourceGroup -Debug
 ```
 
 次の応答値を含む多くの値が返されます。
@@ -85,7 +88,7 @@ x-ms-ratelimit-remaining-subscription-reads: 14999
 書き込み制限数を取得するには、書き込み操作を使用します。 
 
 ```powershell
-New-AzureRmResourceGroup -Name myresourcegroup -Location westus -Debug
+New-AzResourceGroup -Name myresourcegroup -Location westus -Debug
 ```
 
 次の値を含む多くの値が返されます。

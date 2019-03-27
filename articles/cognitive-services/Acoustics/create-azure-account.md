@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: 音響の操作に必要な Azure Batch および Storage アカウントを設定するには、このガイドに従ってください。
 services: cognitive-services
 author: ashtat
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 05f7c435ca61930da6270c54e71c784f1b7aebcc
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: b8735c0c5d05f2ee4bd17dc41fc90d1f5aa5128a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900626"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876693"
 ---
 # <a name="create-an-azure-batch-account"></a>Azure Batch アカウントを作成する
 音響の操作に必要な Azure Batch および Storage アカウントを設定するには、このガイドに従ってください。 Project Acoustics の一部として開発された Unity プラグインについては、[音響の概要](what-is-acoustics.md)に関するページを参照してください。 Unity プロジェクトに音響を組み込む方法については、[使用の開始](getting-started.md)に関するページを参照してください。  

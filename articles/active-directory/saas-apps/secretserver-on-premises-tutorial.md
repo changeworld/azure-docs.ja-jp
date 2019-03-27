@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Secret Server (On-Premises) の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Secret Server (On-Premises) の統合 | Microsoft Docs
 description: Azure Active Directory と Secret Server (On-Premises) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: be4ba84a-275d-4f71-afce-cb064edc713f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 30a1498ab41f263c77656400c4200313048cc331
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5e18c58aafd4aa56a27f5e4a97c9dcc9dcd0fdbd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436167"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199784"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>チュートリアル: Azure Active Directory と Secret Server (On-Premises) の統合
+# <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>チュートリアル:Azure Active Directory と Secret Server (On-Premises) の統合
 
 このチュートリアルでは、Secret Server (On-Premises) と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -172,11 +173,11 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-secret-server-on-premises-test-user"></a>Secret Server (On-Premises) テスト ユーザーを作成する
 
-このセクションでは、Secret Server (On-Premises) で Britta Simon というユーザーを作成します。 [Secret Server (On-Premises) サポート チーム](https://thycotic.force.com/support/s/)と連携しながら、Secret Server (On-Premises) プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Secret Server (On-Premises) で Britta Simon というユーザーを作成します。  [Secret Server (On-Premises) サポート チーム](https://thycotic.force.com/support/s/) と連携しながら、Secret Server (On-Premises) プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -213,7 +214,7 @@ Secret Server (On-Premises) で Azure AD のシングル サインオンを構�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Secret Server (On-Premises)] タイルをクリックすると、Secret Server (On-Premises) アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

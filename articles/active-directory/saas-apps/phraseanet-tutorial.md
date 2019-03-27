@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Phraseanet の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Phraseanet の統合 | Microsoft Docs
 description: Azure Active Directory と Phraseanet の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2018
 ms.author: jeedes
-ms.openlocfilehash: cfeadbf1d46d9e36f8619cafe29d9dd69aad6eec
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 49a311b74fbc48f414f530e962af39d17a346353
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49118328"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175542"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-phraseanet"></a>チュートリアル: Azure Active Directory と Phraseanet の統合
+# <a name="tutorial-azure-active-directory-integration-with-phraseanet"></a>チュートリアル:Azure Active Directory と Phraseanet の統合
 
 このチュートリアルでは、Phraseanet と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -116,7 +117,7 @@ Phraseanet で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Phraseanet サポート チーム](mailto:support@alchemy.fr)にお問い合わせください。
  
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードして、コンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードし、コンピューターに保存します。
 
     ![image](./media/phraseanet-tutorial/tutorial_phraseanet_certificate.png) 
 
@@ -134,22 +135,22 @@ Phraseanet で Azure AD のシングル サインオンを構成してテスト�
 
     ![image](./media/phraseanet-tutorial/d_adduser.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. [ユーザーのプロパティ] で、次の手順のようにします。
 
     ![image](./media/phraseanet-tutorial/d_userproperties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
  
 ### <a name="create-a-phraseanet-test-user"></a>Phraseanet テスト ユーザーを作成する
 
-このセクションでは、Phraseanet で Britta Simon というユーザーを作成します。 [Phraseanet サポート チーム](mailto:support@alchemy.fr)と連携し、Phraseanet システムにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Phraseanet で Britta Simon というユーザーを作成します。  [Phraseanet サポート チーム](mailto:support@alchemy.fr)と連携し、Phraseanet システムにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -180,7 +181,7 @@ Phraseanet で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Phraseanet] タイルをクリックすると、自動的に Phraseanet アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

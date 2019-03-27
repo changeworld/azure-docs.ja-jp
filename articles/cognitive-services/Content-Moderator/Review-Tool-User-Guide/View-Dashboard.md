@@ -1,22 +1,23 @@
 ---
-title: Content Moderator ダッシュボードの表示 | Microsoft Docs
+title: Content Moderator ダッシュボードの表示 - Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Content Moderator ダッシュボードには、ツールによってレビューされたすべてのコンテンツのメトリックが表示されます。
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 639bee6a4eb132a79fd9343bab1f0834406a2964
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b9d57709bd671f839bea86c974b17e2a10e7adbf
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372813"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55228068"
 ---
-# <a name="view-dashboard"></a>ダッシュボードの表示 #
+# <a name="view-dashboard"></a>ダッシュボードの表示
 
 **[ダッシュボード]** タブをクリックして、ツール内で実行されたすべてのコンテンツ レビューの主要なメトリックを表示します。 画像とテキストの合計、完了、および実行中のレビューを表示できます。 既定のチームとサブチームのメトリックを表示できます。
 

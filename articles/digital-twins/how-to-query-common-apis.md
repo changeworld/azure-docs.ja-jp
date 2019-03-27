@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 1/7/2019
 ms.author: dkshir
-ms.openlocfilehash: 0112853bf36c6b7b594400d303234d204b2ea24a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ff8638042fa10c939ff9c5fa7af99a660fcdc753
+ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109357"
+ms.lasthandoff: 01/10/2019
+ms.locfileid: "54198645"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>一般的なタスクについて Azure Digital Twins API をクエリする方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "54109357"
 
 このセクションでは、プロビジョニングされたスペースについての詳細情報を取得するサンプル クエリを示します。 サンプル クエリを使用して認証済みの GET HTTP 要求を行い、プレースホルダーをセットアップからの値に置き換えます。 
 
-- ルート ノードを取得します。
+- ルート ノードであるスペースを取得します。
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?$filter=ParentSpaceId eq null
@@ -38,7 +38,7 @@ ms.locfileid: "54109357"
     YOUR_MANAGEMENT_API_URL/spaces?name=Focus Room A1&includes=fullpath,devices,sensors,values,sensorsvalues
     ```
 
-- 親が所定のスペース ID を持つスペースを取得し、依存関係を含めます。 
+- 親が指定されたスペース ID であり、[指定されたスペースに対する相関関係](how-to-navigate-apis.md#api-navigation)がレベル 2 から 5 となるスペースとそのデバイス/センサー情報を取得します。 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?spaceId=YOUR_SPACE_ID&includes=fullpath,devices,sensors,values,sensorsvalues&traverse=Down&minLevel=1&minRelative=true&maxLevel=5&maxRelative=true
@@ -91,7 +91,7 @@ ms.locfileid: "54109357"
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/A_SPATIAL_PATH
     ```
 
-## <a name="queries-for-device-management"></a>デバイス管理に対するクエリ
+## <a name="queries-for-devices"></a>デバイスに関するクエリ
 
 このセクションでは、デバイスに関する特定の情報を取得するために、Management API を使用する方法の例をいくつか示します。 すべての API 呼び出しは、認証された GET HTTP 要求である必要があります。
 
@@ -167,7 +167,7 @@ ms.locfileid: "54109357"
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true
     ```
 
-- 特定のデバイスについての IoT Hub 接続文字列を取得します。
+- お使いのデバイスの IoT Hub 接続文字列を取得します。
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID?includes=ConnectionString

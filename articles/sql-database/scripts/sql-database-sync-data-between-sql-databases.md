@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 4d343520ebfb7820cf1de769233e262f89862f14
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.date: 01/25/2019
+ms.openlocfilehash: 32dfe8a8aaba078b192183f0611719993fa3094d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754239"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471523"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>PowerShell を使用した複数の SQL Database 間の同期
  
@@ -26,7 +26,7 @@ ms.locfileid: "53754239"
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 SQL データ同期の概要については、[Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベース間でのデータの同期](../sql-database-sync-data.md)に関する記事を参照してください。
 
@@ -37,9 +37,9 @@ SQL データ同期の概要については、[Azure SQL データ同期を使�
 
 ```powershell-interactive
 # prerequisites: 
-# 1. Create an Azure Database from AdventureWorksLT sample database as hub database
-# 2. Create an Azure Database in the same region as sync database
-# 3. Create an Azure Database as member database
+# 1. Create an Azure SQL Database from AdventureWorksLT sample database as hub database
+# 2. Create an Azure SQL Database in the same region as sync database
+# 3. Create an Azure SQL Database as member database
 # 4. Update the parameters below before running the sample
 #
 using namespace Microsoft.Azure.Commands.Sql.DataSync.Model

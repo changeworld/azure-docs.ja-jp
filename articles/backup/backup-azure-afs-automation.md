@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: pullabhk
 ms.assetid: 80da8ece-2cce-40dd-8dce-79960b6ae073
-ms.openlocfilehash: 4ead84ef415dcb85682b15414380055d8799b54c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 912336d697e8f7b5d9c71080ec9a052ca562da4b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051222"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101144"
 ---
 # <a name="use-powershell-to-back-up-and-restore-azure-file-shares"></a>PowerShell を使用して Azure ファイル共有をバックアップおよび復元する
 
@@ -34,7 +34,7 @@ PowerShell を効果的に使用するには、オブジェクトの階層およ
 ## <a name="setup-and-registration"></a>セットアップと登録
 
 > [!NOTE]
-> 「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.13.0)」に記載されているように、AzureRM モジュールの新機能のサポートは 2018 年 11 月に終了します。 一般公開になった新しい Az PowerShell モジュールでは、Azure ファイル共有のバックアップのサポートが提供されます。
+> 「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0)」に記載されているように、AzureRM モジュールの新機能のサポートは 2018 年 11 月に終了します。 一般公開になった新しい Az PowerShell モジュールでは、Azure ファイル共有のバックアップのサポートが提供されます。
 
 開始するには、次の手順に従います。
 
@@ -292,17 +292,17 @@ BackupManagementType : AzureStorage
 
 restore コマンドにこれらのパラメーターを指定して、バックアップされたファイル共有を代わりの場所に復元します。
 
-````powershell
+```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
-````
+```
 
 このコマンドでは、次の例に示すように、追跡する必要がある ID を持つジョブが返されます。
 
-````powershell
+```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
 ------------     ---------            ------               ---------                 -------                   -----
 testAzureFS        Restore              InProgress           12/10/2018 9:56:38 AM                               9fd34525-6c46-496e-980a-3740ccb2ad75
-````
+```
 
 #### <a name="restore-an-azure-file"></a>Azure ファイルを復元する
 

@@ -11,13 +11,13 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: a1ad976be258c418c115d0dbd79d4d6700a15b31
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.date: 01/19/2019
+ms.openlocfilehash: fad9437a631254d6c60d6d97267ae111d195040f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158416"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567453"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database のエラスティック クエリの概要 (プレビュー)
 

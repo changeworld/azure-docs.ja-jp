@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Spacio の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Spacio の統合 | Microsoft Docs
 description: Azure Active Directory と Spacio の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 9df8d199-b955-483c-aa4e-cabad1a0b9d6
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: aa5c91265a832ef8a66948086b407688fdcbbbc2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 335310074758198ca917157c2d7b64bc12ca3916
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435476"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197251"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spacio"></a>チュートリアル: Azure Active Directory と Spacio の統合
+# <a name="tutorial-azure-active-directory-integration-with-spacio"></a>チュートリアル:Azure Active Directory と Spacio の統合
 
 このチュートリアルでは、Spacio と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -155,11 +156,11 @@ Spacio で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-spacio-test-user"></a>Spacio テスト ユーザーを作成する
 
-このセクションでは、Spacio で Britta Simon というユーザーを作成します。 [Spacio サポート チーム](mailto:support@spac.io)と連携し、Spacio プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、Spacio で Britta Simon というユーザーを作成します。  [Spacio サポート チーム](mailto:support@spac.io)と連携し、Spacio プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -196,7 +197,7 @@ Spacio で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Spacio のタイルをクリックすると、自動的に Spacio アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

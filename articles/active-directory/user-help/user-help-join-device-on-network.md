@@ -3,21 +3,22 @@ title: 職場のデバイスを組織のネットワークに参加させる - A
 description: 職場のデバイスを組織のネットワークに参加させる方法について説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 34d3c12c83aeac7e92aa019abc38d9c4109883bd
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b433d8556377206ea53ece2764e251dcb266eb95
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180590"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192355"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>職場のデバイスを組織のネットワークに参加させる
 制限されている可能性があるリソースにアクセスできるように、職場所有の Windows 10 デバイスを組織のネットワークに参加させます。

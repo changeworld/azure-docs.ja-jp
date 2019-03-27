@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 8010d7cbf960c3e2f6528687be97a47d31270696
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 0d9f13003a9b81085fda9635fc8b07566a1c0c66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997214"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107527"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(非推奨) Log Analytics による Azure Container Service クラスターの監視
 
@@ -91,37 +91,37 @@ $ kubectl create -f oms-daemonset.yaml
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>Kubernetes シークレットを使用した Log Analytics エージェントのインストール
 Log Analytics ワークスペースの ID とキーを保護するには、DaemonSet YAML ファイルの一部とし Kubernetes シークレットを使うことができます。
 
- - スクリプト、シークレット テンプレート ファイル、DaemonSet YAML ファイルを ([リポジトリ](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)から) コピーし、それらが同じディレクトリにあることを確認します。
-      - シークレット生成スクリプト: secret-gen.sh
-      - シークレット テンプレート: secret-template.yaml
-   - DaemonSet YAML ファイル: omsagent-ds-secrets.yaml
- - スクリプトを実行します。 スクリプトでは、Log Analytics ワークスペースの ID と主キーの指定を求められます。 それを挿入すると、スクリプトによってシークレット YAML ファイルが作成されるので、それを実行します。
-   ```
-   #> sudo bash ./secret-gen.sh
-   ```
+- スクリプト、シークレット テンプレート ファイル、DaemonSet YAML ファイルを ([リポジトリ](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)から) コピーし、それらが同じディレクトリにあることを確認します。
+  - シークレット生成スクリプト: secret-gen.sh
+  - シークレット テンプレート: secret-template.yaml
+    - DaemonSet YAML ファイル: omsagent-ds-secrets.yaml
+- スクリプトを実行します。 スクリプトでは、Log Analytics ワークスペースの ID と主キーの指定を求められます。 それを挿入すると、スクリプトによってシークレット YAML ファイルが作成されるので、それを実行します。
+  ```
+  #> sudo bash ./secret-gen.sh
+  ```
 
-   - 次のコマンドを実行して、シークレット ポッドを作成します。``` kubectl create -f omsagentsecret.yaml ```
+  - 次のコマンドを実行して、シークレット ポッドを作成します。``` kubectl create -f omsagentsecret.yaml ```
 
-   - 確認するには、次のコマンドを実行します。
+  - 確認するには、次のコマンドを実行します。
 
-   ```
-   root@ubuntu16-13db:~# kubectl get secrets
-   NAME                  TYPE                                  DATA      AGE
-   default-token-gvl91   kubernetes.io/service-account-token   3         50d
-   omsagent-secret       Opaque                                2         1d
-   root@ubuntu16-13db:~# kubectl describe secrets omsagent-secret
-   Name:           omsagent-secret
-   Namespace:      default
-   Labels:         <none>
-   Annotations:    <none>
+  ```
+  root@ubuntu16-13db:~# kubectl get secrets
+  NAME                  TYPE                                  DATA      AGE
+  default-token-gvl91   kubernetes.io/service-account-token   3         50d
+  omsagent-secret       Opaque                                2         1d
+  root@ubuntu16-13db:~# kubectl describe secrets omsagent-secret
+  Name:           omsagent-secret
+  Namespace:      default
+  Labels:         <none>
+  Annotations:    <none>
 
-   Type:   Opaque
+  Type:   Opaque
 
-   Data
-   ====
-   WSID:   36 bytes
-   KEY:    88 bytes
-   ```
+  Data
+  ====
+  WSID:   36 bytes
+  KEY:    88 bytes
+  ```
 
   - ``` kubectl create -f omsagent-ds-secrets.yaml ``` を実行して、omsagent daemon-set を作成します。
 

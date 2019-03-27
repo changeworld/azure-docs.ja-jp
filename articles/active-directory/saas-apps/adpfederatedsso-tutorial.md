@@ -4,7 +4,7 @@ description: Azure Active Directory と ADP の間でシングル サインオ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 7be5331b-0481-48f7-9d6b-619dfec657e1
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 487c9cb145000b92a4aa664ea2bd159026104b6b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fb6943ef6c75f634cdb68557ed2339574bdc2602
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065156"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>チュートリアル:Azure Active Directory と ADP の統合
 
@@ -98,7 +99,7 @@ ADP で Azure AD シングル サインオンを構成するには、次の手�
 
     c. **[ユーザーの割り当てが必要]** フィールドの値を **[はい]** に設定します。
 
-    d. **[ユーザーに表示しますか?]** フィールドの値を **[いいえ]** に設定します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザーに表示しますか?]** フィールドの値を **[いいえ]** に設定します。
 
 2. [Azure portal](https://portal.azure.com/) の **ADP** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
@@ -305,7 +306,7 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

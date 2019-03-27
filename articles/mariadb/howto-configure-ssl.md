@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4bf18a44255903df09aae3382c0eb35a2a55eea5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/24/2019
+ms.openlocfilehash: 2966a2733904200f404d67c4e825d6b9deffdea2
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541814"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903028"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>Azure Database for MariaDB に安全に接続するためにご利用のアプリケーション内で SSL 接続を構成する
 Azure Database for MariaDB では、Secure Sockets Layer (SSL) を使用して、クライアント アプリケーションにご利用の Azure Database for MariaDB サーバーを接続することがサポートされています。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
@@ -26,10 +26,14 @@ SSL 経由で安全に接続するように MySQL Workbench を構成します�
 ![カスタマイズされたタイル保存](./media/howto-configure-ssl/mysql-workbench-ssl.png) 既存の接続に SSL をバインドするには、接続アイコンを右クリックして編集を選択します。 次に **[SSL]** タブに移動して証明書ファイルをバインドします。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>MySQL CLI による SSL 経由でのサーバーへの接続
-SSL 証明書をバインドする別の方法として、次のコマンドを実行して MySQL コマンド ライン インターフェイスを使用します。
+SSL 証明書をバインドする別の方法として、次のコマンドを実行して MySQL コマンド ライン インターフェイスを使用します。 
+
 ```bash
-mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
+mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-mode=REQUIRED --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
+
+> [!NOTE]
+> Windows 上で MySQL コマンド ライン インターフェイスを使用しているときに、エラー `SSL connection error: Certificate signature check failed` が表示されることがあります。 この場合、`--ssl-mode=REQUIRED --ssl-ca={filepath}` パラメーターを `--ssl` で置き換えます。
 
 ## <a name="enforcing-ssl-connections-in-azure"></a>Azure 内で SSL 接続を適用する 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
@@ -47,7 +51,7 @@ SSL 経由でご利用の MariaDB サーバーに接続されていることを�
 ```sql
 status
 ```
-接続が暗号化されていることを確認します。そのためには、出力に "**SSL: Cipher in use is AES256-SHA**" (SSL: 使用中の暗号は AES256-SHA) と表示されていることを確認します 
+出力を確認することで、接続が暗号化されていることを確認します。次のように表示されます:**SSL:Cipher in use is AES256-SHA (SSL: 使用中の暗号は AES256 SHA です)** 
 
 ## <a name="sample-code"></a>サンプル コード
 ご利用のアプリケーションから Azure Database for MariaDB へのセキュリティで保護された接続を SSL 経由で確立するためには、次のコード サンプルを参照してください。

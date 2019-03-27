@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: 00fc04afd26da2ef5741eec308835bb8c897c26b
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5567b774171a63cc4d329daf6429cfc78e140dd3
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077343"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455077"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>クラスターに Log Analytics を設定する
 
@@ -95,11 +95,11 @@ Azure Resource Manager は、このコマンドが既存のリソースに対す
 
 ## <a name="deploy-log-analytics-with-azure-powershell"></a>Azure PowerShell を使用して Log Analytics をデプロイする
 
-`New-AzureRmOperationalInsightsWorkspace` コマンドを使って、PowerShell で Log Analytics リソースをデプロイすることもできます。 この方法を使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1) がインストールされていることを確認します。 このスクリプトを使って、新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションを追加します。 
+`New-AzureRmOperationalInsightsWorkspace` コマンドを使って、PowerShell で Log Analytics リソースをデプロイすることもできます。 この方法を使用するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.1.1) がインストールされていることを確認します。 このスクリプトを使って、新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションを追加します。 
 
 ```PowerShell
 
-$SubscriptionName = "<Name of your subscription>"
+$SubID = "<subscription ID>"
 $ResourceGroup = "<Resource group name>"
 $Location = "<Resource group location>"
 $WorkspaceName = "<Log Analytics workspace name>"

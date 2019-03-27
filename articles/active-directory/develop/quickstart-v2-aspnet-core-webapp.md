@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 12/05/2018
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3e571958daa72c0cb3e80bfac81d022c2f223f11
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 35cf4fbe17df05b6d55f3ce309ff8cecbb47d455
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993586"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204714"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>クイック スタート: ASP.NET Core Web アプリに Microsoft サインインを追加する
 
@@ -139,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 
 `.AddAzureAd` を含む行によって、Azure AD 認証がアプリケーションに追加されます。 さらに、Azure AD v2.0 エンドポイントを使用してサインインするように構成されます。
 
-> |各値の説明:  |  |
+> |Where  |  |
 > |---------|---------|
 > | ClientId  | Azure portal に登録されているアプリケーションのアプリケーション (クライアント) ID。 |
 > | Authority | ユーザーが認証するための STS エンドポイント。 パブリック クラウドでは、通常は https://login.microsoftonline.com/{tenant}/v2.0。{tenant} はテナントの名前、テナント ID、または共通エンドポイントへの参照を表す *common* (マルチテナント アプリケーションで使用) です |

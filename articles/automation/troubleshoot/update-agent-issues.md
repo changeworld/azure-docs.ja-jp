@@ -7,14 +7,14 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 9a16498c527af2d23840c53af11103f7580d80bb
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: d4331942526b3dbda376605db2618ceeaec3f60a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582560"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58166000"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Update Management での Windows エージェント チェック結果について
 
@@ -39,7 +39,7 @@ Azure マシンの場合は、ポータルの **[Update エージェントの準
 
 ![「Update エージェントのトラブルシューティング」のページ](../media/update-agent-issues/troubleshoot-page.png)
 
-準備ができると、結果がページに表示されます。 [チェックのセクション](#prerequisiste-checks)には、各チェックに含まれる内容が表示されます。
+準備ができると、結果がページに表示されます。 チェックのセクションには、各チェックに含まれる内容が表示されます。
 
 ![「Update エージェントのトラブルシューティング」のチェック](../media/update-agent-issues/update-agent-checks.png)
 
@@ -119,7 +119,7 @@ CheckResultMessageArguments : {}
 
 RuleId                      : DotNetFrameworkInstalledCheck
 RuleGroupId                 : prerequisites
-RuleName                    : .Net Framework 4.5+
+RuleName                    : .NET Framework 4.5+
 RuleGroupName               : Prerequisite Checks
 RuleDescription             : .NET Framework version 4.5 or higher is required
 CheckResult                 : Passed
@@ -201,3 +201,4 @@ CheckResultMessageArguments : {}
 ## <a name="next-steps"></a>次の手順
 
 Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください。
+

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: バージョン 7 を使用するために更新する必要のあるアプリケーションの部分を識別します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-autosuggest
+ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: 8ada9ab6622ea12e48475230787168d90e95ec0d
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: e164e02f3e7458e0c8d4fdf8d2a88cf4ab8a17b3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829870"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874500"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Autosuggest API のアップグレード ガイド
 

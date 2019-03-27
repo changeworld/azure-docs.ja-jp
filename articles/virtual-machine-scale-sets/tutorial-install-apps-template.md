@@ -3,7 +3,7 @@ title: チュートリアル - Azure テンプレートを使用したスケー�
 description: Azure Resource Manager テンプレートとカスタム スクリプト拡張機能を使用して、仮想マシン スケール セットにアプリケーションをインストールする方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: zarhoads
+ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dddd8ba98e2825d0e0396963e0f8c23059b97c55
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 262d7a6a4399a72e762c4ad3c87a878c54e22af4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468638"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750394"
 ---
-# <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>チュートリアル: Azure テンプレートを使用した仮想マシン スケール セットへのアプリケーションのインストール
+# <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>チュートリアル:Azure テンプレートを使用した仮想マシン スケール セットへのアプリケーションのインストール
 スケール セット内の仮想マシン (VM) インスタンスでアプリケーションを実行する　には、まず、アプリケーション コンポーネントと必要なファイルをインストールする必要があります。 前のチュートリアルでは、カスタム VM イメージを作成および使用して VM インスタンスをデプロイする方法について学習しました。 このカスタム イメージには、手動によるアプリケーションのインストールと構成が含まれていました。 このほか、各 VM インスタンスがデプロイされた後のスケール セットへのアプリケーションのインストールを自動化したり、既にスケール セットで実行されているアプリケーションを更新したりできます。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
@@ -77,13 +77,13 @@ Azure テンプレートを使用して仮想マシン スケール セットを
 
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
-サンプル テンプレートを使用してスケール セットを作成し、カスタム スクリプト拡張機能を適用しましょう。 最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+サンプル テンプレートを使用してスケール セットを作成し、カスタム スクリプト拡張機能を適用しましょう。 最初に、[az group create](/cli/azure/group) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-ここでは、[az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使用して仮想マシン スケール セットを作成します。 メッセージが表示されたら、独自のユーザー名と、各 VM インスタンスの資格情報として使用するパスワードを入力します。
+ここでは、[az group deployment create](/cli/azure/group/deployment) を使用して仮想マシン スケール セットを作成します。 メッセージが表示されたら、独自のユーザー名と、各 VM インスタンスの資格情報として使用するパスワードを入力します。
 
 ```azurecli-interactive
 az group deployment create \
@@ -97,7 +97,7 @@ az group deployment create \
 
 
 ## <a name="test-your-scale-set"></a>スケール セットのテスト
-Web サーバーが動いていることを確認するには、[az network public-ip show](/cli/azure/network/public-ip#show) でロード バランサーのパブリック IP アドレスを取得します。 次の例では、スケール セットの一部として作成された *myScaleSetPublicIP* の IP アドレスを取得します。
+Web サーバーが動いていることを確認するには、[az network public-ip show](/cli/azure/network/public-ip) でロード バランサーのパブリック IP アドレスを取得します。 次の例では、スケール セットの一部として作成された *myScaleSetPublicIP* の IP アドレスを取得します。
 
 ```azurecli-interactive
 az network public-ip show \
@@ -141,7 +141,7 @@ az network public-ip show \
 }
 ```
 
-[az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使用して、もう一度カスタム スクリプト拡張機能構成をスケール セット内の VM インスタンスに適用します。 この *azuredeployv2.json* テンプレートは、アプリケーションの更新されたバージョンを適用するために使用されています。 実際には、前のセクションに示すように、既存の *azuredeploy.json* テンプレートを編集して更新されたインストール スクリプトを参照します。 メッセージが表示されたら、スケール セットを最初に作成したときと同じユーザー名とパスワードの資格情報を入力します。
+[az group deployment create](/cli/azure/group/deployment) を使用して、もう一度カスタム スクリプト拡張機能構成をスケール セット内の VM インスタンスに適用します。 この *azuredeployv2.json* テンプレートは、アプリケーションの更新されたバージョンを適用するために使用されています。 実際には、前のセクションに示すように、既存の *azuredeploy.json* テンプレートを編集して更新されたインストール スクリプトを参照します。 メッセージが表示されたら、スケール セットを最初に作成したときと同じユーザー名とパスワードの資格情報を入力します。
 
 ```azurecli-interactive
 az group deployment create \
@@ -155,7 +155,7 @@ az group deployment create \
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-スケール セットと追加のリソースを削除するには、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのすべてのリソースを削除します。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
+スケール セットと追加のリソースを削除するには、[az group delete](/cli/azure/group) を使用して、リソース グループとそのすべてのリソースを削除します。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

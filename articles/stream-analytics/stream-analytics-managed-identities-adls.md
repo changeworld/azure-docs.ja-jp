@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: bb25f237450a83a34645ad4dfd9a2839c5525c6f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 194f43a0005f17a22b3a60d6decd049444e56c20
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090433"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745778"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>マネージド ID を使用して Azure Data Lake Storage Gen1 に対して Stream Analytics を認証する (プレビュー)
 
@@ -21,9 +21,9 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 
 ブログ記事「[Eight new features in Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/)」(Azure Stream Analytics の 8 つの新機能) で、このプレビューにサインアップする方法と新機能の詳細を参照してください。
 
-この記事では、Azure Data Lake Storage Gen1 に出力する Azure Stream Analytics ジョブでマネージド ID を有効にする 2 つの方法 (Azure portal による方法と Azure Resource Manager テンプレートのデプロイによる方法) を示します。
+この記事では、Azure Data Lake Storage Gen1 に出力する Azure Stream Analytics ジョブのマネージド ID を有効にする 3 つの方法を示します。Azure portal による方法、Azure Resource Manager テンプレートのデプロイによる方法、そして Visual Studio 用の Azure Stream Analytics ツールによる方法があります。
 
-## <a name="enable-managed-identity-with-azure-portal"></a>Azure portal でマネージド ID を有効にする
+## <a name="azure-portal"></a>Azure ポータル
 
 1. Azure portal で、新しい Stream Analytics ジョブを作成するか既存のジョブを開くことから始めます。 画面の左側にあるメニュー バーで、**[構成]** の下にある **[マネージド ID (プレビュー)]** を選択します。
 
@@ -64,6 +64,28 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
    ![ポータルの Stream Analytics アクセス リスト](./media/stream-analytics-managed-identities-adls/stream-analytics-access-list.png)
 
    Data Lake Storage Gen1 ファイル システムのアクセス許可の詳細については、「[Azure Data Lake Store Gen1 のアクセス制御](../data-lake-store/data-lake-store-access-control.md)」を参照してください。
+
+## <a name="stream-analytics-tools-for-visual-studio"></a>Visual Studio 用の Stream Analytics ツール
+
+1. JobConfig.json 内で、**[システム割り当て ID を使用]** を **[True]** に設定します。
+
+   ![Stream Analytics ジョブ構成のマネージド ID](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
+
+2. ADLS Gen1 出力シンクの [出力プロパティ] ウィンドウで、[認証モード] ドロップダウンをクリックし、**[マネージド ID (プレビュー)]** を選択します。
+
+   ![ADLS 出力のマネージド ID](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
+
+3. 残りのプロパティを入力して、**[保存]** をクリックします。
+
+4. クエリ エディターで **[Azure に送信]** をクリックします。
+
+   ジョブを送信するときに、ツールでは次の 2 つの操作を行います。
+
+   * Azure Active Directory 内に Stream Analytics ジョブの ID に対応するサービス プリンシパルを自動的に作成します。 新しく作成された ID のライフ サイクルは、Azure によって管理されます。 Stream Analytics ジョブが削除されると、関連付けられた ID (つまりサービス プリンシパル) も Azure によって自動的に削除されます。
+
+   * ジョブ内で使用される ADLS Gen1 プレフィックス パスへの**書き込み**と**実行**のアクセス許可を自動的に設定し、このフォルダーおよびすべての子に割り当てます。
+
+5. [Stream Analytics CI.CD Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) バージョン 1.5.0 以上をビルド コンピューター上 (Visual Studio 外部) で使用して、次のプロパティによって Resource Manager テンプレートを生成できます。 次のセクションの Resource Manager テンプレートのデプロイに関する手順に従って、サービス プリンシパルを取得し、PowerShell によってサービス プリンシパルへのアクセスを付与します。
 
 ## <a name="resource-manager-template-deployment"></a>Resource Manager テンプレートの展開
 
@@ -153,3 +175,5 @@ Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力での
 ## <a name="next-steps"></a>次の手順
 
 * [Stream Analytics を使用して Data Lake Store 出力を作成する](../data-lake-store/data-lake-store-stream-analytics.md)
+* [Visual Studio で Stream Analytics クエリをローカルでテストする](stream-analytics-vs-tools-local-run.md)
+* [Visual Studio 用の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする](stream-analytics-live-data-local-testing.md) 

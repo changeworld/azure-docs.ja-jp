@@ -3,19 +3,20 @@ title: Azure AD SSPR データ要件 |Microsoft Docs
 description: Azure AD のセルフ サービスによるパスワード リセットのデータ要件とそれらを満たす方法
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: eb3c1177f86f4c595280521f4dbcbe8081f68895
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ccf665147c8fea0e2ce44161ef0b5df085649a0b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296246"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179045"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする
 
@@ -75,7 +76,7 @@ PowerShell を使用して、次のフィールドを設定することができ
 
 * **連絡用メール アドレス**
 * **携帯電話**
-* **会社電話** - オンプレミス ディレクトリと同期していない場合にのみ設定できます
+* **会社電話**:オンプレミス ディレクトリと同期していない場合にのみ設定できます
 
 ### <a name="use-powershell-version-1"></a>PowerShell バージョン 1 を使う
 

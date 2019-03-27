@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 19600ccbc2a424d210c686d7027b52bc6254de57
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bd6c592f0d3d073ec2a05c8f4636086df01ddb06
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352021"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54450747"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS アプリケーションのオファー発行ガイド
 
@@ -39,9 +39,9 @@ SaaS アプリケーションは、両方の Azure ネットショップで入�
 
 | SaaS アプリのオファー | ビジネス要件 | 技術的な要件 |  
 | --- | --- | --- |  
-| **お問い合わせ** | [はい] | いいえ  |  
-| **PowerBI/Dynamics** | [はい] | あり (Azure AD の統合) |  
-| **SaaS アプリ**| [はい] | あり (Azure AD の統合) |     
+| **お問い合わせ** | はい | いいえ  |  
+| **PowerBI/Dynamics** | はい | あり (Azure AD の統合) |  
+| **SaaS アプリ**| はい | あり (Azure AD の統合) |     
 
 ## <a name="saas-list"></a>SaaS のリスト
 
@@ -140,7 +140,7 @@ SaaS ベースの技術的ソリューションをサブスクリプションと
 | 要件 | 詳細 |  
 |:--- |:--- |  
 |請求/メータリング | オファーについては、毎月均一料金で課金されます。 使用量ベースの価格と使用量ベースの "補正発注" 機能は、現時点でサポートされていません。 |  
-|解約 | オファーは、いつでも顧客が解約できます。 |  
+|キャンセル | オファーは、いつでも顧客が解約できます。 |  
 |トランザクションのランディング ページ | Azure の共同ブランドのトランザクションのランディング ページをホストします。ここでは、ユーザーが自身の SaaS サービス アカウントを作成して管理します。 |   
 | サブスクリプション API | SaaS サブスクリプションと対話できるサービスを公開して、ユーザー アカウントとサービス プランを作成、更新、および削除します。 重要な API の変更には、24 時間以内に対応する必要があります。 重要でない API の変更は定期的にリリースされます。 |  
 

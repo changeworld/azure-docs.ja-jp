@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 214abd64232130dd3fd5fdde510f7545732ac82e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1dd488c2eb419b5e210a48d7a94f7d0bb423a2b1
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082067"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731482"
 ---
 # <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Dynamics 365 for Customer Engagement の [技術情報] タブ
 
@@ -58,7 +58,7 @@ ms.locfileid: "54082067"
 |  パッケージのファイル名     |  パッケージ (.zip) のファイル名です。  この名前は公開 "*されず*"、Dynamics 365 認定チームによって内部的に使用されます。  |
 |  Url                          |  アップロードされたパッケージ ファイルを含む Azure Storage アカウントの URL です。 チームが検証用にパッケージを取得できるよう、この URL には読み取り専用の SAS キーが含まれている必要があります。  |
 | 複数の CRM パッケージ     | 異なるパッケージで CRM の複数のバージョンをサポートしている場合にのみ、[はい] を選択します。  バージョンごとに、対応するパッケージ ファイルを個別に作成する必要があります。  |
-| シナリオとユース ケースのアセット   | Dynamics 365 の検証チームが使用するため、アプリケーションの機能仕様ドキュメントのアップロードを有効にします。  この仕様の推奨される形式は、[E2E ユーザー シナリオ テンプレート](http://download.microsoft.com/download/5/1/8/51812AC9-BCD8-489F-937C-5D439C494EC1/E2E%20User%20Scenario%20Template.docx)です。  |
+| シナリオとユース ケースのアセット   | Dynamics 365 の検証チームが使用するため、アプリケーションの機能仕様ドキュメントのアップロードを有効にします。  この仕様の推奨される形式は、[E2E ユーザー シナリオ テンプレート](https://isvdocumentation.blob.core.windows.net/d365documentation/Power%20Platform%20E2E%20document.docx)です。  |
 |  |  |
 
 
@@ -67,7 +67,7 @@ ms.locfileid: "54082067"
 このセクションでは、顧客がアプリケーションを利用できる地理的なリージョンを選択します。  次のソブリン リージョンにデプロイするには、認定プロセスの間に "*特別なアクセス許可と検証が必要*" です:[ドイツ](https://docs.microsoft.com/azure/germany/)、[米国政府クラウド](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)、TIP。
 
 
-## <a name="marketing-artifacts-section"></a>[Marketing Artifacts]\(マーケティングの成果物\) セクション
+## <a name="marketing-artifacts-section"></a>[マーケティングの成果物] セクション
 
 このセクションでは、AppSource Marketplace でパッケージを表すために使用されるアプリケーション ロゴをアップロードする必要があります。  ロゴの画像は、PNG 形式で、サイズ 255 x 115 ピクセルにする必要があります。
 

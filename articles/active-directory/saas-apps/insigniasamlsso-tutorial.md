@@ -4,23 +4,24 @@ description: Azure Active Directory と Insignia SAML SSO の間でシングル 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 828c981c-c3dd-4eb2-8699-0f732baa43f6
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
-ms.openlocfilehash: afc2d52044a294af0ead373dfce283d0ec994d1e
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8ee74c5caed04d2626fea27d3419d0b0d685d675
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840624"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840343"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>チュートリアル: Azure Active Directory と Insignia SAML SSO の統合
 
@@ -111,6 +112,7 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
     ![[Insignia SAML SSO のドメインと URL] のシングル サインオン情報](./media/insigniasamlsso-tutorial/tutorial_insigniasamlsso_url.png)
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+    
     | |
     |--|
     | `https://<customername>.insigniails.com/ils` |

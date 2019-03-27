@@ -3,18 +3,18 @@ title: Azure Automation でファイル コンテンツの変更を表示する
 description: Change Tracking のファイル コンテンツの変更機能を使用して、変更されたファイルのコンテンツを表示できます。
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 07/03/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0582505d66bbef3064359fa4047676c4ba60b4e9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ad011d778ab575c146c202a7940e03a4451979fb
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37871128"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438003"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Change Tracking で追跡されているファイルのコンテンツを表示する
 
@@ -76,3 +76,4 @@ ms.locfileid: "37871128"
 > [環境の変更に関する問題を解決する](automation-tutorial-troubleshoot-changes.md)
 
 * [Log Analytics のログ検索機能](../log-analytics/log-analytics-log-searches.md) を使用して、詳細な変更追跡データを確認してください。
+

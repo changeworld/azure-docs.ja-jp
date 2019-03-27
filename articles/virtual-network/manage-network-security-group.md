@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 8bca4c67c7698564cd87e6b56e048a508863999a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 21a3efb67f837a05f3c070d0805aa033f86efbd5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023704"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822444"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>ネットワーク セキュリティ グループの作成、変更、削除
 
@@ -29,7 +29,7 @@ ms.locfileid: "54023704"
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使用する場合は、 https://portal.azure.com を開き、Azure アカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.4.1 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.4.1 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI バージョン 2.0.28 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
 Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧で示されている適切なアクセス許可を割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に、割り当てられている必要があります。
@@ -66,7 +66,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 2. 詳細を表示するネットワーク セキュリティ グループを一覧から選択します。 **[設定]** の下で、**受信セキュリティ規則**と**送信セキュリティ規則**、ネットワーク セキュリティ グループが関連付けられている**ネットワーク インターフェイス**と**サブネット**を確認できます。 **診断ログ**の有効化または無効化、**有効なセキュリティ規則**の表示を行うこともできます。 詳細については、[診断ログ](virtual-network-nsg-manage-log.md)に関する記事と[有効なセキュリティ規則の表示](diagnose-network-traffic-filter-problem.md)に関する記事を参照してください。
 3. Azure の一般的な設定の詳細については、次の記事を参照してください。
     *   [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)
-    *   [アクセス制御 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+    *   [アクセス制御 (IAM)](../role-based-access-control/overview.md)
     *   [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
@@ -92,7 +92,7 @@ Azure の場所およびサブスクリプションごとに作成できるネ�
 
 ### <a name="delete-a-network-security-group"></a>ネットワーク セキュリティ グループを削除する
 
-ネットワーク セキュリティ グループは、いずれかのサブネットまたはネットワーク インターフェイスに関連付けられている場合は削除できません。 ネットワーク セキュリティ グループを削除する前に、すべてのサブネットとネットワーク インターフェイスからネットワーク セキュリティ グループの[関連付けを解除](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource)してください。
+ネットワーク セキュリティ グループは、いずれかのサブネットまたはネットワーク インターフェイスに関連付けられている場合は削除できません。 ネットワーク セキュリティ グループを削除する前に、すべてのサブネットとネットワーク インターフェイスからネットワーク セキュリティ グループの関連付けを解除してください。
 
 1. ポータルの上部にある検索ボックスに、「*ネットワーク セキュリティ グループ*」と入力します。 検索結果に **[ネットワーク セキュリティ グループ]** が表示されたら、それを選択します。
 2. 削除するネットワーク セキュリティ グループを一覧から選択します。

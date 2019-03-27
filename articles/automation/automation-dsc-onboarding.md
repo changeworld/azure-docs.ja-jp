@@ -3,18 +3,18 @@ title: Azure Automation State Configuration による管理のためのマシン
 description: Azure Automation State Configuration による管理のためのマシンの設定方法
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: fea0a0dfd2e138fa4f33f4f489be74f5038b4ca6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f9a1076ddfb840ba845718c5ca0deea8c5788e7d
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244527"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100331"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンのオンボード
 
@@ -24,7 +24,8 @@ ms.locfileid: "51244527"
 
 以下のさまざまなマシンを管理する際に、Azure Automation State Configuration を使用できます。
 
-- Azure 仮想マシン (クラシック デプロイ モデルと Azure Resource Manager デプロイ モデルの両方にデプロイ)
+- Azure Virtual Machines
+- Azure Virtual Machines (クラシック)
 - アマゾン ウェブ サービス (AWS) EC2 インスタンス
 - オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン
 - オンプレミス、Azure、または Azure 以外のクラウド内の物理/仮想 Linux マシン
@@ -36,13 +37,38 @@ ms.locfileid: "51244527"
 
 次のセクションでは、各種類のマシンを Azure Automation State Configuration にオンボードできる方法の概要を示します。
 
+## <a name="azure-virtual-machines"></a>Azure Virtual Machines
+
+Azure Automation State Configuration では、Azure Portal、Azure Resource Manager テンプレート、または PowerShell を使用して、構成管理用に Azure Virtual Machines (クラシック) を簡単にオンボードすることができます。 Azure VM Desired State Configuration 拡張機能を使用することで、管理者が VM にリモート接続しなくても、内部で VM を Azure Automation State Configuration に登録できます。
+Azure VM Desired State Configuration 拡張機能は非同期に実行されるため、その進行状況の追跡またはトラブルシューティングの手順については、後述の「[**Azure 仮想マシンのオンボードに関するトラブルシューティング**](#troubleshooting-azure-virtual-machine-onboarding)」を参照してください。
+
+### <a name="azure-portal"></a>Azure ポータル
+
+[Azure ポータル](https://portal.azure.com/)で、仮想マシンをオンボードする Azure Automation アカウントに移動します。 [状態の構成] ページの **[ノード]** タブで **[+ 追加]** をクリックします。
+
+オンボードする Azure 仮想マシンを選択します。
+
+マシンに PowerShell Desired State 拡張機能がインストールされておらず、[電源の状態] が [実行中] の場合は、**[接続]** をクリックします。
+
+**[登録]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](/powershell/dsc/metaconfig4)、および必要に応じて VM に割り当てるノード構成を入力します。
+
+![オンボード](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+
+### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
+
+Azure Virtual Machines は、Azure Resource Manager テンプレートを使用して Azure Automation State Configuration にデプロイおよびオンボードできます。 Azure Automation State Configuration に既存の VM をオンボードする例のテンプレートについては、「[DSC 拡張機能と Azure Automation DSC を使用して VM を構成する](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/)」を参照してください。 このテンプレートに入力する際に使用する登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
+
+### <a name="powershell"></a>PowerShell
+
+[Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) コマンドレットを使用して、Azure ポータルで PowerShell を介して仮想マシンをオンボードすることができます。
+
 ## <a name="azure-virtual-machines-classic"></a>Azure Virtual Machines (クラシック)
 
 Azure Automation State Configuration では、Azure Portal または PowerShell を使用して、構成管理用に Azure Virtual Machines (クラシック) を簡単にオンボードすることができます。 Azure VM Desired State Configuration 拡張機能を使用することで、管理者が VM にリモート接続しなくても、内部で VM を Azure Automation State Configuration に登録できます。 Azure VM Desired State Configuration 拡張機能は非同期に実行されるため、その進行状況の追跡またはトラブルシューティングの手順については、後述の「[**Azure 仮想マシンのオンボードに関するトラブルシューティング**](#troubleshooting-azure-virtual-machine-onboarding)」を参照してください。
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-[Azure Portal](http://portal.azure.com/) で、**[参照]**  ->  **[仮想マシン (クラシック)]** の順にクリックします。 オンボードする Windows VM を選択します。 仮想マシンのダッシュボード ブレードで、**[すべての設定]**  ->  **[拡張機能]**  ->  **[追加]**  ->  **[Azure Automation DSC]**  ->  **[作成]** の順にクリックします。
+[Azure Portal](https://portal.azure.com/) で、**[参照]**  ->  **[仮想マシン (クラシック)]** の順にクリックします。 オンボードする Windows VM を選択します。 仮想マシンのダッシュボード ブレードで、**[すべての設定]**  ->  **[拡張機能]**  ->  **[追加]**  ->  **[Azure Automation DSC]**  ->  **[作成]** の順にクリックします。
 ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](/powershell/dsc/metaconfig4)、Automation アカウントの登録キーと登録 URL、また必要に応じて、VM に割り当てるノード構成を入力します。
 
 ![DSC への Azure VM 拡張機能](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
@@ -117,31 +143,6 @@ $VM | Update-AzureVM
 > [!NOTE]
 > ポータルでは、State Configuration ノード構成名の大文字と小文字が区別されます。 大文字と小文字が一致しない場合、ノードは **[ノード]** タブ下に表示されません。
 
-## <a name="azure-virtual-machines"></a>Azure Virtual Machines
-
-Azure Automation State Configuration では、Azure Portal、Azure Resource Manager テンプレート、または PowerShell を使用して、構成管理用に Azure Virtual Machines (クラシック) を簡単にオンボードすることができます。 Azure VM Desired State Configuration 拡張機能を使用することで、管理者が VM にリモート接続しなくても、内部で VM を Azure Automation State Configuration に登録できます。
-Azure VM Desired State Configuration 拡張機能は非同期に実行されるため、その進行状況の追跡またはトラブルシューティングの手順については、後述の「[**Azure 仮想マシンのオンボードに関するトラブルシューティング**](#troubleshooting-azure-virtual-machine-onboarding)」を参照してください。
-
-### <a name="azure-portal"></a>Azure ポータル
-
-[Azure ポータル](https://portal.azure.com/)で、仮想マシンをオンボードする Azure Automation アカウントに移動します。 [状態の構成] ページの **[ノード]** タブで **[+ 追加]** をクリックします。
-
-オンボードする Azure 仮想マシンを選択します。
-
-マシンに PowerShell Desired State 拡張機能がインストールされておらず、[電源の状態] が [実行中] の場合は、**[接続]** をクリックします。
-
-**[登録]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](/powershell/dsc/metaconfig4)、および必要に応じて VM に割り当てるノード構成を入力します。
-
-![](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
-
-### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
-
-Azure Virtual Machines は、Azure Resource Manager テンプレートを使用して Azure Automation State Configuration にデプロイおよびオンボードできます。 Azure Automation State Configuration に既存の VM をオンボードする例のテンプレートについては、「[DSC 拡張機能と Azure Automation DSC を使用して VM を構成する](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/)」を参照してください。 このテンプレートに入力する際に使用する登録キーと登録 URL を見つける場合は、後述の「[**セキュリティで保護された登録**](#secure-registration)」を参照してください。
-
-### <a name="powershell"></a>PowerShell
-
-[Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) コマンドレットを使用して、Azure ポータルで PowerShell を介して仮想マシンをオンボードすることができます。
-
 ## <a name="amazon-web-services-aws-virtual-machines"></a>Amazon Web Services (AWS) 仮想マシン
 
 AWS DSC Toolkit を使用して Azure Automation State Configuration による構成管理のためのアマゾン ウェブ サービス仮想マシンを簡単にオンボードできます。 ツールキットの詳細については、 [こちら](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/)を参照してください。
@@ -168,7 +169,7 @@ AWS DSC Toolkit を使用して Azure Automation State Configuration による�
 1. Azure Automation State Configuration にオンボードするマシンに最新バージョンの [PowerShell Desired State Configuration for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) がインストールされていることを確認します。
 1. [PowerShell DSC Local Configuration Manager の既定値](/powershell/dsc/metaconfig4) がユース ケースに適しており、 **両方とも** Azure Automation State Configuration とデータをやり取りするマシンをオンボードするには、次のようにします。
 
-   - Azure Automation State Configuration にオンボードする各 Linux マシンで、`Register.py` を使用し、PowerShell DSC Local Configuration Manager の既定値を使用してオンボードします。
+   - Azure Automation State Configuration にオンボードする各 Linux マシンで、`Register.py` と PowerShell DSC Local Configuration Manager の既定値を使用してオンボードします。
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 

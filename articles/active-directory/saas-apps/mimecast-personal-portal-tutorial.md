@@ -4,7 +4,7 @@ description: Azure Active Directory と Mimecast Personal Portal の間でシン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 345b22be-d87e-45a4-b4c0-70a67eaf9bfd
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: dbc9b3f4d32dec44b695ef90f1dce4e88000b2b7
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6fd08de2711e8584b9f2bbe17716fe14400c8bf7
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065666"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871383"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>チュートリアル: Azure Active Directory と Mimecast Personal Portal の統合
 
@@ -177,7 +178,7 @@ Mimecast Personal Portal で Azure AD シングル サインオンを構成す�
    
     c. **[プロバイダー]** で **[Azure Active Directory]** を選択します。
    
-    d. **[発行者の URL]** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[発行者の URL]** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
    
     e. **[ログイン URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
    
@@ -287,7 +288,7 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: efca5c4155372456100126671e7d5cd1ccf0cbbc
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d8ada53082b0ccc95d472b43a0ae2ff63cd76a3e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53027923"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125047"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
@@ -59,8 +59,8 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
  Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。 次の表は、現時点において Azure プラットフォームで利用できる cloud-init 対応イメージの概要を示したものです。
 
-| 発行元 | プラン | SKU | Version | cloud-init 対応
-|:--- |:--- |:--- |:--- |:--- |:--- |
+| Publisher | プラン | SKU | Version | cloud-init 対応
+|:--- |:--- |:--- |:--- |:--- 
 |Canonical |UbuntuServer |16.04 LTS |latest |はい | 
 |Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
 |CoreOS |CoreOS |安定版 |latest |はい |

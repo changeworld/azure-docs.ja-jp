@@ -14,16 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1fe847bd0cdceec7eccab8218ccf787d8f4366ba
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b3f978635127ef6aabb123d1c95b76ed06fccbbf
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195822"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097792"
 ---
 # <a name="azure-application-prerequisites"></a>Azure アプリケーションの前提条件
 
-この記事では、Azure Marketplace でマネージド アプリケーション オファーを発行するための技術面/ビジネス面の前提条件について説明します。
+この記事では、Azure Marketplace でマネージド アプリケーション オファーを発行するための技術面/ビジネス面の前提条件について説明します。  「[Azure Marketplace 向けのソリューション テンプレートとマネージド アプリケーションの作成](https://channel9.msdn.com/Events/Build/2018/BRK3603)」のビデオをご覧ください。
+
 
 ## <a name="technical-requirements"></a>技術的な要件
 
@@ -36,6 +37,7 @@ ms.locfileid: "53195822"
   * [GitHub:Azure Resource Manager のクイックスタート テンプレート](https://github.com/azure/azure-quickstart-templates)。 このリポジトリには、コミュニティから提供され、現在利用できる Azure Resource Manager テンプレートがすべて含まれています。 検索可能なテンプレート索引が https://azure.microsoft.com/en-us/documentation/templates/ にあります。
 * UI 定義を作成する<br>
 詳細については、「[マネージド アプリケーション用の Azure portal のユーザー インターフェイスを作成する](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)」を参照してください。 この記事では、createUiDefinition.json ファイルの主要な概念について説明します。 Azure ポータルは、このファイルを使用して、マネージド アプリケーションを作成するためのユーザー インターフェイスを生成します。
+
 
 ## <a name="business-requirements"></a>ビジネス要件
 
@@ -54,6 +56,7 @@ ms.locfileid: "53195822"
 * Microsoft Azure Marketplace 参加ポリシーと発行者契約の条項に同意する必要があります。
 * Microsoft Azure Web サイト使用条件、Microsoft のプライバシーに関する声明、Microsoft Azure 認定プログラム契約に従う必要があります。
 
+
 ## <a name="publishing-requirements"></a>発行要件
 
 新しい Azure アプリケーション オファーを発行するには、次の前提条件を満たす必要があります。
@@ -61,11 +64,13 @@ ms.locfileid: "53195822"
 * メタデータの使用準備ができていること。 次の一覧 (一部) は、このメタデータの例を示すものです。
   * タイトル
   * (HTML 形式) での説明
-  * PNG 形式のロゴ画像であり、40 x 40 ピクセル、90 x 90 ピクセル、115 x 115 ピクセル、255 x 115 ピクセルの固定サイズがあります。
-* 利用規約とプライバシー ポリシー
+  * PNG 形式で次の固定画像サイズのロゴ画像:40 x 40 ピクセル、90 x 90 ピクセル、115 x 115 ピクセル、255 x 115 ピクセル。
+* *利用規約*と*プライバシー ポリシー*
 * ドキュメント
 * サポートの連絡先
 
+
 ## <a name="next-steps"></a>次の手順
 
-[Azure アプリケーション オファーを作成する](./cpp-create-offer.md) 
+すべての要件を満たしたら、[Azure アプリケーション オファーを作成](./cpp-create-offer.md)する準備ができます。 
+ 

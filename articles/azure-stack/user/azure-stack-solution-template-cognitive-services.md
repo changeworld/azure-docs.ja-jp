@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
-ms.openlocfilehash: 5af508714b5eae5cdd23c940af0ae21300c0c5b8
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.lastreviewed: 12/11/2018
+ms.openlocfilehash: 8080355bebf00c9f37c28ae8ed54bba092f8dc17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195171"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099935"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Azure Cognitive Services を Azure Stack にデプロイする
 
@@ -66,12 +67,12 @@ Cognitive Services のコンテナーの詳細については、「[Azure Cognit
 
 それぞれ、Face、LUIS、またはテキスト認識コンテナーをプレビューする Cognitive Service リソースを Azure で作成します。 Cognitive Services コンテナーをインスタンス化するために、リソースからのサブスクリプション キーとエンドポイント URL を使用する必要があります。
 
-1.  Azure portal で Azure リソースを作成します。 Face コンテナーをプレビューする場合、まず Azure portal で対応する Face リソースを作成する必要があります。 詳細については、「[クイック スタート: Azure portal で Cognitive Services アカウントを作成する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)」を参照してください。
+1. Azure portal で Azure リソースを作成します。 Face コンテナーをプレビューする場合、まず Azure portal で対応する Face リソースを作成する必要があります。 詳細については、「[クイック スタート: Azure portal で Cognitive Services アカウントを作成する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)」を参照してください。
 
-    >  [!Note]  
-    >  Face または Computer Vision リソースでは、F0 価格レベルを使用する必要があります。
+   > [!Note]
+   >  Face または Computer Vision リソースでは、F0 価格レベルを使用する必要があります。
 
-2.  Azure リソースのエンドポイント URL とサブスクリプション キーを取得します。 Azure リソースを作成したら、そのリソースからのサブスクリプション キーとエンドポイント URL を使用して、対応する Face、LUIS、またはテキスト認識コンテナーをプレビュー用にインスタンス化する必要があります。
+2. Azure リソースのエンドポイント URL とサブスクリプション キーを取得します。 Azure リソースを作成したら、そのリソースからのサブスクリプション キーとエンドポイント URL を使用して、対応する Face、LUIS、またはテキスト認識コンテナーをプレビュー用にインスタンス化する必要があります。
 
 ## <a name="create-a-kubernetes-secret"></a>Kubernetes シークレットを作成する 
 
@@ -143,7 +144,7 @@ spec:
 | ImageLocation | ACR での特定の Cognitive Service コンテナー イメージの場所を示します。 たとえば、顔サービスの場合は次のようになります: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
 | BillingURL |[Azure リソースの作成](#create-azure-resources) のステップで書き留めたエンドポイント URL |
 | ApiKey | [Azure リソースの作成](#create-azure-resources) の手順で書き留めたサブスクリプション キー |
-| SecretName | [プライベート コンテナー レジストリにアクセスするシークレットの作成](#create-secrete-to-access-the-private-container-registry) の手順で書き留めたシークレット名 |
+| SecretName | プライベート コンテナー レジストリにアクセスするシークレットの作成の手順で書き留めたシークレット名 |
 
 ## <a name="deploy-the-cognitive-service"></a>Cognitive Services のデプロイ
 
@@ -204,7 +205,7 @@ print(faces)
 
 [Computer Vision API コンテナーをインストールして実行する方法](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
 
-[Face API コンテナーをインストールして実行する方法](https://docs.microsoft.com/azure/cognitive-services/face/face-how-to-install-containers#create-a-face-resource-on-azure)
+[Face API コンテナーをインストールして実行する方法](https://docs.microsoft.com/azure/cognitive-services/face/face-how-to-install-containers)
 
 [Text Analytics API コンテナーをインストールして実行する方法](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers)
 

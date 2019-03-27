@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 5afb607f0410b428d8e67fdff043a4e376dd60a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d41ad3232fef57d1008f1e15d5d7d5ee1e106e9b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956355"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312650"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Azure CLI を使用した DNS ゾーン ファイルのインポートとエクスポート 
 
@@ -68,7 +68,7 @@ Azure DNS に DNS ゾーン ファイルをインポートするには、事前�
 * `$TTL` ディレクティブは省略可能であり、サポートされています。 `$TTL` ディレクティブを指定しなかった場合、明示的な TTL を持たないレコードは、既定の TTL である 3600 秒が設定されてインポートされます。 同じレコード セット内の 2 つのレコードで別々の TTL を指定した場合は、小さい方の値が使用されます。
 * `$ORIGIN` ディレクティブは省略可能であり、サポートされています。 `$ORIGIN` を設定しないと、コマンドラインで指定したゾーン名 (に加えて接尾辞 ".") が既定値として使用されます。
 * `$INCLUDE` と `$GENERATE` ディレクティブはサポートされていません。
-* A、AAAA、CNAME、MX、NS、SOA、SRV、および TXT のレコード タイプはサポートされています。
+* 次のレコードの種類がサポートされています。A、AAAA、CAA、CNAME、MX、NS、SOA、SRV、TXT。
 * ゾーンの作成時には、Azure DNS によって SOA レコードが自動的に作成されます。 ゾーン ファイルのインポート時には、`host` パラメーターを "*除き*"、すべての SOA パラメーターがゾーン ファイルから取得されます。 このパラメーターは Azure DNS から提供された値を使用します。 ‘host’ パラメーターは、Azure DNS で指定されたプライマリ ネーム サーバーを参照する必要があるからです。
 * ゾーンの作成時には、ゾーンの頂点のネーム サーバー レコード セットも Azure DNS によって自動的に作成されます。 このレコード セットの TTL のみがインポートされます。 これらのレコードには、Azure DNS によって提供されたネーム サーバー名が格納されています。 レコード データは、インポートされたゾーン ファイルに含まれる値によって上書きされることはありません。
 * パブリック プレビュー時、Azure DNS では単一行文字列の TXT レコードしかサポートしません。 複数行文字列の TXT レコードは連結され、255 文字に切り捨てられます。
@@ -116,11 +116,11 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
     az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
-* PowerShell コマンドレット `Get-AzureRmDnsRecordSet`でレコードを一覧表示できます。
+* Azure CLI コマンド `az network dns record-set ns list` を使用してレコードを一覧表示できます。
 * `nslookup` を使用し、レコードの名前解決を確認できます。 ゾーンはまだ委任されていないので、適切な Azure DNS ネーム サーバーを明示的に指定する必要があります。 次の例では、ゾーンに割り当てられているネーム サーバー名を取得する方法を示します。 `nslookup` を使用して "www" レコードを照会する方法も示します。
 
     ```azurecli
-    az network dns record-set ns list -g myresourcegroup -z  --output json 
+    az network dns record-set ns list -g myresourcegroup -z contoso.com  --output json 
     ```
 
     ```json
@@ -188,6 +188,6 @@ az network dns zone export -g <resource group> -n <zone name> -f <zone file name
 
 リソース グループ **myresourcegroup** 内の既存の Azure DNS ゾーン **contoso.com** をファイル **contoso.com.txt** (現在のフォルダーにある) にエクスポートするには、`azure network dns zone export` を実行します。 このコマンドは、Azure DNS サービスを呼び出すことで、ゾーン内のレコード セットを列挙し、その結果を BIND と互換性のあるゾーン ファイルにエクスポートします。
 
-    ```
-    az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
-    ```
+```
+az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
+```

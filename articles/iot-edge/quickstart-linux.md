@@ -9,14 +9,14 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: dcfbc014eaa191c7992a2da195f9bcd10b44194f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 455b0bb0cb6c53200edb7a0f3540006408329321
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191485"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453234"
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux x64 デバイスに展開する
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux デバイスに展開する
 
 Azure IoT Edge は、クラウドの機能をご使用のモノのインターネット (IoT) デバイスでも利用できるようにします。 このクイック スタートでは、クラウド インターフェイスを使用して、事前作成されたコードを IoT Edge デバイスにリモートで展開する方法について説明します。
 
@@ -29,7 +29,7 @@ Azure IoT Edge は、クラウドの機能をご使用のモノのインター�
 
 ![図 - デバイスとクラウドのクイック スタートのアーキテクチャ](./media/quickstart-linux/install-edge-full.png)
 
-このクイック スタートでは、Linux コンピューターまたは仮想マシンを IoT Edge デバイスに変えます。 その後、モジュールを Azure portal からご自身のデバイスに展開できます。 このクイック スタートで展開するモジュールは、温度、湿度、および圧力のデータを生成するシミュレートされたセンサーです。 その他の Azure IoT Edge チュートリアルは、ここで行う作業を基盤としており、ビジネスに関する分析情報を得るためにシミュレートされたデータを分析するモジュールを展開します。
+このクイック スタートでは、IoT Edge デバイスとして構成された Azure 仮想マシンを作成する手順について説明します。 その後、モジュールを Azure portal からご自身のデバイスに展開できます。 このクイック スタートで展開するモジュールは、温度、湿度、および圧力のデータを生成するシミュレートされたセンサーです。 その他の Azure IoT Edge チュートリアルは、ここで行う作業を基盤としており、ビジネスに関する分析情報を得るためにシミュレートされたデータを分析するモジュールを展開します。
 
 アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free)を作成してください。
 
@@ -55,15 +55,19 @@ Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
 
 IoT Edge デバイス: 
 
-* IoT Edge デバイスとして機能する Linux デバイスまたは仮想マシン。 Azure で仮想マシンを作成する場合、すぐに作業を開始できるよう、次のコマンドを使用してください。
+* IoT Edge デバイスとして機能する Linux デバイスまたは仮想マシン。 Microsoft 提供の [Azure IoT Edge を Ubuntu](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) 仮想マシン上で使用することをお勧めします。そうすることで、デバイス上で IoT Edge を実行するために必要なものがすべて事前にインストールされます。 次のコマンドを使用してこの仮想マシンを作成します。
 
    ```azurecli-interactive
-   az vm create --resource-group IoTEdgeResources --name EdgeVM --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
 
    新しい仮想マシンを作成して起動するまでに数分かかる場合があります。 
+   
+   この時点で、`MarketplacePurchaseEligibilityFailed` エラーが発生することがあります。 その場合は、[Azure IoT Edge on Ubuntu](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu) に移動して [`Get It Now`] をクリックし、ご契約条件に同意する必要があります。 サインインしてご契約条件に同意してから、コマンドを再試行してください。
 
    新しい仮想マシンを作成するときは、create コマンドの出力内容に含まれる **publicIpAddress** を書き留めておいてください。 このクイック スタートの中で、後からこのパブリック IP アドレスを使用して仮想マシンに接続します。
+
+* Azure IoT Edge ランタイムを自分のデバイスで実行したい場合は、「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」の手順に従います。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -84,9 +88,10 @@ IoT Edge デバイス:
 ## <a name="register-an-iot-edge-device"></a>IoT Edge デバイスを登録する
 
 新しく作成された IoT ハブに IoT Edge デバイスを登録します。
+
 ![図 - IoT ハブ ID でデバイスを登録する](./media/quickstart-linux/register-device.png)
 
-お使いの IoT ハブと通信できるようにシミュレートされたデバイスのデバイス ID を作成します。 デバイス ID はクラウドに置かれるので、デバイスの一意の接続文字列を使用して、物理デバイスとデバイス ID とを関連付けることになります。 
+お使いの IoT ハブと通信できるように、IoT Edge デバイスのデバイス ID を作成します。 デバイス ID はクラウドに置かれるので、デバイスの一意の接続文字列を使用して、物理デバイスとデバイス ID とを関連付けることになります。 
 
 IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作をし、別に管理できるため、この ID は IoT Edge デバイス用として `--edge-enabled` フラグで宣言します。 
 
@@ -104,103 +109,39 @@ IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作を
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. JSON 出力から接続文字列をコピーして保存します。 次のセクションで、IoT Edge ランタイムを構成するときにこの値を使用します。
+3. JSON 出力から `cs` キーの値をコピーして保存します。 この値はデバイスの接続文字列です。 次のセクションでは、この接続文字列を使用して IoT Edge ランタイムを構成します。
 
    ![CLI の出力から接続文字列を取得する](./media/quickstart/retrieve-connection-string.png)
 
-## <a name="install-and-start-the-iot-edge-runtime"></a>IoT Edge ランタイムをインストールして開始する
+## <a name="configure-your-iot-edge-device"></a>IoT Edge デバイスを構成する
 
-Azure IoT Edge ランタイムを IoT Edge デバイスにインストールして開始します。 
-![図 - デバイスでランタイムを開始する](./media/quickstart-linux/start-runtime.png)
+IoT Edge デバイス上で Azure IoT Edge ランタイムを開始します。 
+
+![図 - デバイス上でランタイムを開始する](./media/quickstart-linux/start-runtime.png)
 
 IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 3 つのコンポーネントで構成されます。 **IoT Edge セキュリティ デーモン**は、Edge デバイスが起動するたびに開始され、IoT Edge エージェントを起動してデバイスをブートストラップします。 **IoT Edge エージェント**は、IoT Edge ハブなど、IoT Edge デバイス上のモジュールの展開と監視を容易にします。 **IoT Edge ハブ**は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を管理します。 
 
 ランタイムの構成中に、デバイスの接続文字列を入力します。 Azure CLI から取得した文字列を使用してください。 この文字列によって、Azure 内の IoT Edge デバイス ID と物理デバイスとが関連付けられます。 
 
-### <a name="connect-to-your-iot-edge-device"></a>IoT Edge デバイスに接続する
+### <a name="set-the-connection-string-on-the-iot-edge-device"></a>IoT Edge デバイスに接続文字列を設定する
 
-このセクションの手順はすべて、お使いの IoT Edge デバイスで行います。 独自のマシンを IoT Edge デバイスとして使用している場合、次のセクションに進んでかまいません。 仮想マシンまたはセカンダリ ハードウェアを使用している場合、ここでそのマシンに接続する必要があります。 
+前提条件で推奨されたように Azure IoT Edge を Ubuntu 仮想マシン上で使用している場合、デバイスには IoT Edge ランタイムが既にインストールされています。 必要なのは、前のセクションで取得したデバイスの接続文字列を使用してデバイスを構成することだけです。 これは、仮想マシンに接続しなくてもリモートで行えます。 次のコマンドを実行します。**{device_connection_string}** は実際の文字列に置き換えてください。 
 
-このクイック スタート用に Azure 仮想マシンを作成した場合は、creation コマンドから出力されたパブリック IP アドレスを取得します。 パブリック IP アドレスは、Azure portal の仮想マシンの概要ページでも確認できます。 次のコマンドを使用して、仮想マシンに接続します。 **{publicIpAddress}** は、実際のマシンのアドレスに置き換えてください。 
-
-```azurecli-interactive
-ssh azureuser@{publicIpAddress}
-```
-
-### <a name="register-your-device-to-use-the-software-repository"></a>デバイスを登録してソフトウェア リポジトリを使用する
-
-IoT Edge ランタイムの実行に必要なパッケージは、ソフトウェア リポジトリで管理されます。 このリポジトリにアクセスできるようにご自身の IoT Edge デバイスを構成します。 
-
-このセクションの手順は、**Ubuntu 16.04** が実行されている x64 デバイスを対象としています。 その他のバージョンの Linux またはデバイス アーキテクチャでソフトウェア リポジトリにアクセスするには、「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」を参照してください。
-
-1. IoT Edge デバイスとして使用しているマシンで、リポジトリの構成をインストールします。
-
-   ```bash
-   curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
-   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
+   ```azurecli-interactive
+   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
    ```
 
-2. リポジトリにアクセスするための公開キーをインストールします。
-
-   ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-   ```
-
-### <a name="install-a-container-runtime"></a>コンテナー ランタイムをインストールする
-
-IoT Edge ランタイムは一連のコンテナーであり、ご自身の IoT Edge デバイスに展開するロジックは、コンテナーとしてパッケージ化されています。 これらのコンポーネント用にデバイスを準備するには、コンテナー ランタイムをインストールします。
-
-1. **apt-get** を更新します。
-
-   ```bash
-   sudo apt-get update
-   ```
-
-2. コンテナー ランタイムの **Moby** をインストールします。
-
-   ```bash
-   sudo apt-get install moby-engine
-   ```
-
-3. Moby の CLI コマンドをインストールします。 
-
-   ```bash
-   sudo apt-get install moby-cli
-   ```
-
-### <a name="install-and-configure-the-iot-edge-security-daemon"></a>IoT Edge セキュリティ デーモンをインストールして構成する
-
-デバイスが起動するたび IoT Edge ランタイムが起動するように、セキュリティ デーモンは、システム サービスとしてインストールされます。 インストールには **hsmlib** バージョンも含まれるため、このセキュリティ デーモンは、デバイスのハードウェア セキュリティと対話できます。 
-
-1. IoT Edge セキュリティ デーモンをダウンロードしてインストールします。 
-
-   ```bash
-   sudo apt-get update
-   sudo apt-get install iotedge
-   ```
-
-2. IoT Edge 構成ファイルを開きます。 このファイルは保護されているため、アクセスするには昇格された特権の使用が必要になる場合があります。
-   
-   ```bash
-   sudo nano /etc/iotedge/config.yaml
-   ```
-
-3. IoT Edge デバイスの接続文字列を追加します。 変数 **device_connection_string** を見つけて、値をデバイスの登録後にコピーした文字列に更新します。 この文字列によって、物理デバイスと、Azure で作成したデバイス ID とが関連付けられます。
-
-4. ファイルを保存して閉じます。 
-
-   `CTRL + X`、`Y`、`Enter`
-
-5. IoT Edge セキュリティ デーモンを再起動して、変更を適用します。
-
-   ```bash
-   sudo systemctl restart iotedge
-   ```
+IoT Edge をローカル コンピューター上または ARM32 デバイス上で実行している場合、IoT Edge ランタイムとその前提条件をデバイスにインストールする必要があります。 「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」の手順に従ってインストールしたら、このクイック スタートに戻ります。 
 
 ### <a name="view-the-iot-edge-runtime-status"></a>IoT Edge ランタイムの状態を確認する
 
-ランタイムが正常にインストールされ、構成されていることを確認します。
+このクイック スタートの残りのコマンドは、IoT Edge デバイス自体で実行します。これにより、デバイスの動作を実際に確認することができます。 仮想マシンを使用している場合は、creation コマンドによって出力されたパブリック IP アドレスを使って今すぐそのマシンに接続してください。 パブリック IP アドレスは、Azure portal の仮想マシンの概要ページでも確認できます。 次のコマンドを使用して、仮想マシンに接続します。 前提条件で推奨されたユーザー名とは別の名前を使用している場合は、**{azureuser}** を置き換えます。 **{publicIpAddress}** は、実際のマシンのアドレスに置き換えてください。 
+
+   ```azurecli-interactive
+   ssh azureuser@{publicIpAddress}
+   ```
+
+IoT Edge デバイスにランタイムが正常にインストールされ、構成されていることを確認します。 
 
 >[!TIP]
 >`iotedge` コマンドの実行には、昇格された特権が必要です。 IoT Edge ランタイムのインストール後に初めてマシンにサインインし直すと、アクセス許可は自動的に更新されます。 それまでは、コマンドの前に **sudo** を使用します。 
@@ -242,7 +183,7 @@ Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統
 
 この場合は、プッシュしたモジュールによって、テストに使用できるサンプル データが作成されます。 シミュレートされた温度センサー モジュールによって、後でテストに使用できる環境データが生成されます。 シミュレートされたセンサーは、マシンと、マシンの周囲の環境の両方を監視します。 たとえば、このセンサーは、サーバー ルーム、工場のフロア、または風力タービンに配置されている可能性があります。 メッセージには、周囲の温度と湿度、機械の温度と圧力、タイムスタンプが含まれます。 IoT Edge のチュートリアルでは、このモジュールによって作成されたデータを分析用のテスト データとして使用します。
 
-IoT Edge デバイスでコマンド プロンプトをもう一度開きます。 IoT Edge デバイスで、クラウドからデプロイされたモジュールが実行されていることを確認します。
+再び IoT Edge デバイスでコマンド プロンプトを開くか、Azure CLI から SSH 接続を使用します。 IoT Edge デバイスで、クラウドからデプロイされたモジュールが実行されていることを確認します。
 
    ```bash
    sudo iotedge list

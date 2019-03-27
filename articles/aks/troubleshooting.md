@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: fd3d1c464c6f2d4cbecd715db0689581ca141769
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 8164e2db064523fe648ec9ef0c72754be846dff6
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53654072"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327563"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -34,7 +34,11 @@ Azure CLI で AKS クラスターをデプロイする場合、ノードあた�
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>高度なネットワークで AKS クラスターをデプロイしているときに、insufficientSubnetSize エラーが発生します。 どうすればよいですか。
 
-AKS 作成時のネットワークのカスタム Azure 仮想ネットワーク オプションでは、Azure コンテナー ネットワーク インターフェイス (CNI) が IP アドレス管理 (IPAM) に使用されます。 AKS クラスター内では、1 個から 100 個までの範囲で、いくつでもノードを使用できます。 前のセクションに基づくと、サブネットのサイズは、ノードとノードあたりの最大ポッド数の積より大きくする必要があります。 関係は次のように表すことができます: サブネットのサイズ > クラスター内のノードの数 * ノードごとの最大ポッド数。
+Azure CNI (高度なネットワーク) を使用した場合、構成された 1 ノードあたりの "最大ポッド数" に基づいて、AKS によって IP アドレスが事前に割り当てられます。 AKS クラスター内では、1 個から 110 個までの範囲で、いくつでもノードを使用できます。 ノードあたりの構成された最大ポッド数に基づくと、サブネットのサイズは、"ノード数とノードあたりの最大ポッド数の積" より大きくする必要があります。 これを表した基本的な式は次のようになります。
+
+サブネットのサイズ > クラスター内のノードの数 (今後のスケーリングの要件を考慮して) * ノードあたりの最大ポッド数。
+
+詳しくは、「[クラスターの IP アドレス指定を計画する](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)」を参照してください。
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>ポッドが CrashLoopBackOff モードでスタックします。 どうすればよいですか。
 
@@ -66,28 +70,3 @@ Kubernetes ダッシュボードが表示されない場合は、`kube-proxy` �
 ## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-problem"></a>アップグレードまたはスケーリングを行おうとすると、"メッセージ:プロパティ 'imageReference' は変更できませ" というエラーが発生します。  この問題を解決するにはどうすればよいですか。
 
 AKS クラスター内のエージェント ノードのタグを変更したことが原因で、このエラーが発生している可能性があります。 MC_* リソース グループのリソースのタグやその他のプロパティを変更または削除すると、予期しない結果につながる可能性があります。 AKS クラスターの MC_* グループでリソースを変更すると、サービス レベル目標 (SLO) が中断されます。
-
-## <a name="how-do-i-renew-the-service-principal-secret-on-my-aks-cluster"></a>AKS クラスターでサービス プリンシパルのシークレットを更新するにはどうすればよいですか?
-
-既定では、有効期限が 1 年のサービス プリンシパルと共に AKS クラスターが作成されます。 期限が近づいたら、資格情報をリセットしてサービス プリンシパルの期限を延長することができます。
-
-この手順を実行する例を次に示します。
-
-1. [az aks show](/cli/azure/aks#az-aks-show) コマンドを使用して、クラスターのサービス プリンシパル ID を取得します。
-1. [az ad sp credential list](/cli/azure/ad/sp/credential#az-ad-sp-credential-list) を使用して、サービス プリンシパルのクライアント シークレットを一覧表示します。
-1. [az ad sp credential-reset](/cli/azure/ad/sp/credential#az-ad-sp-credential-reset) コマンドを使用して、サービス プリンシパルの期限を 1 年間延長します。 AKS クラスターが正しく動作するためには、サービス プリンシパルのクライアント シークレットが同じままである必要があります。
-
-```azurecli
-# Get the service principal ID of your AKS cluster.
-sp_id=$(az aks show -g myResourceGroup -n myAKSCluster \
-    --query servicePrincipalProfile.clientId -o tsv)
-
-# Get the existing service principal client secret.
-key_secret=$(az ad sp credential list --id $sp_id --query [].keyId -o tsv)
-
-# Reset the credentials for your AKS service principal and extend for one year.
-az ad sp credential reset \
-    --name $sp_id \
-    --password $key_secret \
-    --years 1
-```

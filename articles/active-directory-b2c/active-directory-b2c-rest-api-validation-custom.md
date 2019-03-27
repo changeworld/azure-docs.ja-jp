@@ -3,19 +3,19 @@ title: Azure Active Directory B2C での検証としての REST API 要求の交
 description: Azure Active Directory B2C のカスタム ポリシーに関するトピック。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 8af8e4b7844feb785600ef683891642ea89bccaf
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.subservice: B2C
+ms.openlocfilehash: b08c5e6f2bc7d7970c47e14db84f4172e92eb820
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556902"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55203659"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>チュートリアル:ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する
 
@@ -41,7 +41,7 @@ IEF では、要求を介してデータが送受信されます。 API との�
 - [概要](active-directory-b2c-get-started-custom.md)に関するページに記載されたローカル アカウントのサインアップ/サインインを完了するように構成された Azure AD B2C テナント。
 - 対話する REST API エンドポイント。 このチュートリアルでは、REST API サービスを使用する [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) という名前のデモ サイトを設定します。
 
-## <a name="step-1-prepare-the-rest-api-function"></a>ステップ 1:REST API 関数を準備する
+## <a name="step-1-prepare-the-rest-api-function"></a>手順 1:REST API 関数を準備する
 
 > [!NOTE]
 > REST API 関数の設定は、この記事の範囲外です。 [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) に、クラウドで RESTful サービスを作成するための優れたツールキットが用意されています。

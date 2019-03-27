@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Tableau Online の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Tableau Online の統合 | Microsoft Docs
 description: Azure Active Directory と Tableau Online の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 1d4b1149-ba3b-4f4e-8bce-9791316b730d
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: b0aaa27164c84a06c6fad92d5036a00ca5a319f8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: eee7adb7c4c0efc8a455d8dc74bc723644d006f3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421733"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169022"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>チュートリアル: Azure Active Directory と Tableau Online の統合
+# <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>チュートリアル:Azure Active Directory と Tableau Online の統合
 
 このチュートリアルでは、Tableau Online と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ Tableau Online で、Azure AD の **[ユーザー名]** の値を **[Username]**
 
 Tableau Online で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Tableau Online のテスト ユーザーの作成](#creating-a-tableau-online-test-user)** - Tableau Online で Britta Simon に対応するユーザーを作成し、Azure AD のBritta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -148,7 +149,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
    ![Azure AD Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_10.png)
     
-    d. **user.givenname** 値をクリックします 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **user.givenname** 値をクリックします 
     
     e. **[名前空間]** ボックスから値をコピーします。
 
@@ -192,7 +193,7 @@ Tableau Online で Azure AD のシングル サインオンを構成してテス
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-tableau-online-test-user"></a>Tableau Online のテスト ユーザーの作成
 

@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 12023216575b08732f3ef2d04bac9e825621f720
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: cae02627c539e543d27ea188d521605f187ea8a0
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44376971"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475348"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 6 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 6 月に導入された新しい機能と変更点について説明します。 

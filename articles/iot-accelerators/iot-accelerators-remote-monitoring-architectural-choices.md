@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9140739e1c9610cb4cbefb611546fe9588512d06
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050593"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54464223"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>リモート監視のアーキテクチャの選択
 
@@ -61,7 +61,7 @@ IoT デバイスの接続性のために、以下を使用できます。
 
 ### <a name="storage"></a>Storage
 
-ストレージに対しては、リモート監視ソリューション アクセラレータは Azure Time Series Insights と Azure Cosmos DB の両方を使用します。 Azure Time Series Insights は、接続されたデバイスから IoT Hub を介して送信されるメッセージを格納します。 このソリューション アクセラレータでは、コールド ストレージ、ルール定義、アラーム、構成設定など、その他のすべてのストレージに Azure Cosmos DB を使用します。
+ストレージに対しては、リモート監視ソリューション アクセラレータは Azure Time Series Insights と Azure Cosmos DB の両方を使用します。 Azure Time Series Insights は、接続されたデバイスから IoT Hub を介して送信されるメッセージを格納します。 このソリューション アクセラレータでは、コールド ストレージ、ルール定義、アラート、構成設定など、その他のすべてのストレージに Azure Cosmos DB を使用します。
 
 Azure Cosmos DB は、IoT アプリケーション向けの推奨される汎用ウォーム ストレージ ソリューションです。 ただし、多くのユース ケースには Azure Time Series Insights や Azure Data Lake などのソリューションが適しています。 Azure Time Series Insights を使用すると、傾向や異常を特定して時系列のセンサー データの詳細な分析情報を得ることができます。 この機能により、根本原因を分析し、コストのかかるダウンタイムを回避できます。
 
@@ -70,7 +70,7 @@ Azure Cosmos DB は、IoT アプリケーション向けの推奨される汎用
 
 ### <a name="business-integration"></a>ビジネス統合
 
-リモート監視ソリューションのビジネス統合は、ウォーム ストレージに配置されるアラームの生成に制限されています。 より深いビジネス統合シナリオを実装するには、ソリューションを Azure Logic Apps と接続します。
+リモート監視ソリューションのビジネス統合は、ウォーム ストレージに配置されるアラートの生成に制限されています。 より深いビジネス統合シナリオを実装するには、ソリューションを Azure Logic Apps と接続します。
 
 ### <a name="user-interface"></a>ユーザー インターフェイス
 

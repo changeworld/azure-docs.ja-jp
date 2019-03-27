@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: b13e92369168a43f529ed0b83c10bc65893da83d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 79539e05e1623b153a8fad817918cfb56a521db1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193316"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814165"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Configuration Manager を Log Analytics に接続する
 お使いの System Center Configuration Manager 環境を Azure Log Analytics に接続して、デバイス コレクション データを同期し、Log Analytics と Azure Automation でこれらのコレクションを参照することができます。  
@@ -32,8 +32,8 @@ Log Analytics では、System Center Configuration Manager の現在のブラン
 
 1. Azure Portal で Configuration Manager を Web アプリケーションまたは Web API アプリとして登録し、Azure Active Directory への登録によるクライアント ID およびクライアント秘密鍵を持っていることを確認します。 この手順の詳細については、「[リソースにアクセスできる Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」を参照してください。
 2. Azure Portal で、[Configuration Manager (登録した Web アプリ) に Log Analytics へのアクセス許可を付与](#grant-configuration-manager-with-permissions-to-log-analytics)します。
-3. Configuration Manager で、[OMS 接続の追加ウィザードを使用して接続を追加](#add-an-oms-connection-to-configuration-manager)します。
-4. パスワードまたはクライアント秘密鍵が期限切れになるか、それらを紛失した場合は、Configuration Manager で、[接続プロパティを更新](#update-oms-connection-properties)します。
+3. Configuration Manager で、OMS 接続の追加ウィザードを使用して接続を追加します。
+4. パスワードまたはクライアント秘密鍵が期限切れになるか、それらを紛失した場合は、Configuration Manager で、接続プロパティを更新します。
 5. Configuration Manager サービス接続ポイントのサイト システムの役割を実行しているコンピューターに、[Microsoft Monitoring Agent をダウンロードしてインストール](#download-and-install-the-agent)します。 エージェントは、Configuration Manager のデータを Log Analytics ワークスペースに送信します。
 6. Log Analytics で、コンピューター グループとして [Configuration Manager からコレクションをインポート](#import-collections)します。
 7. Log Analytics で、Configuration Manager からのデータを[コンピューター グループ](../../azure-monitor/platform/computer-groups.md)として表示します。

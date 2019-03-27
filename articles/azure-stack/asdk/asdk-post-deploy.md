@@ -12,19 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 02/15/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 756d07562503fa94ea2ea737a5f610d8bf3101aa
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.lastreviewed: 10/10/2018
+ms.openlocfilehash: b1b11dc27b279173ede4498ca353aea4018ea8f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260364"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102436"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>ASDK インストール後の構成タスク
 
-[Azure Stack Development Kit (ASDK) をインストール](asdk-install.md)した後、ASDK ホスト コンピューターで AzureStack\AzureStackAdmin としてログイン中に、推奨されるインストール後の構成変更をいくつか行う必要があります。 
+[Azure Stack Development Kit (ASDK) をインストール](asdk-install.md)した後、ASDK ホスト コンピューターで AzureStack\AzureStackAdmin としてログイン中に、いくつかのインストール後の構成変更を行う必要があります。 
 
 ## <a name="install-azure-stack-powershell"></a>Azure Stack PowerShell のインストール
 
@@ -45,7 +46,31 @@ ASDK ホスト コンピューターへのインターネット接続の有無�
 
 - ASDK ホスト コンピューターからの**インターネット接続がある場合**。 次の PowerShell スクリプトを実行して、これらのモジュールを開発キット インストールにインストールします。
 
-  - Azure Stack 1808 以降:
+- Azure Stack 1901 以降:
+
+    ```PowerShell
+    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+    Install-Module AzureRM -RequiredVersion 2.4.0
+    Install-Module -Name AzureStack -RequiredVersion 1.7.0
+    ```
+
+    > [!Note]  
+    > Azure Stack モジュール バージョン 1.7.0 は互換性に影響する変更です。 Azure Stack 1.6.0 から移行するには、[移行ガイド](https://aka.ms/azspshmigration170)を参照してください。
+
+  - Azure Stack 1811:
+
+    ``` PowerShell
+    # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
+    Install-Module -Name AzureRm.BootStrapper
+
+    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+    Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
+
+    # Install Azure Stack Module Version 1.6.0.
+    Install-Module -Name AzureStack -RequiredVersion 1.6.0
+    ```
+
+  - Azure Stack 1810 以前:
 
     ``` PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
@@ -58,32 +83,6 @@ ASDK ホスト コンピューターへのインターネット接続の有無�
     Install-Module -Name AzureStack -RequiredVersion 1.5.0
     ```
 
-  - Azure Stack 1807 以前:
-
-    ``` PowerShell
-    # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
-    Install-Module -Name AzureRm.BootStrapper
-
-    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-    Use-AzureRmProfile -Profile 2017-03-09-profile -Force
-    
-    # Install Azure Stack Module Version 1.4.0.
-    Install-Module -Name AzureStack -RequiredVersion 1.4.0
-    ```
-
-  - Azure Stack 1803 以前:
-
-    ``` PowerShell
-    # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
-      Install-Module -Name AzureRm.BootStrapper
-
-      # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-      Use-AzureRmProfile -Profile 2017-03-09-profile -Force
-
-      # Install Azure Stack Module Version 1.2.11
-      Install-Module -Name AzureStack -RequiredVersion 1.2.11 
-    ```
-
   インストールに成功した場合、出力に AzureRM および AzureStack モジュールが表示されます。
 
 - ASDK ホスト コンピューターからの**インターネット接続がない場合**。 接続が切断されたシナリオでは、まず次の PowerShell コマンドを使って、インターネット接続が確立されたマシンに PowerShell モジュールをダウンロードします。
@@ -91,11 +90,9 @@ ASDK ホスト コンピューターへのインターネット接続の有無�
   ```PowerShell
   $Path = "<Path that is used to save the packages>"
 
-  # AzureRM for 1808 requires 2.3.0, for prior versions use 1.2.11
   Save-Package `
     -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
   
-  # AzureStack requires 1.5.0 for version 1808, 1.4.0 for versions after 1803, and 1.2.11 for versions before 1803
   Save-Package `
     -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
   ```
@@ -175,7 +172,7 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 
 Azure AD を使用したデプロイでは、ASDK のインストール用に[マルチ テナント機能を有効にする](../azure-stack-enable-multitenancy.md#enable-multi-tenancy)必要があります。
 
-> [!NOTE]  
+> [!NOTE]
 > Azure Stack の登録に使用したドメイン以外のドメインからの管理者またはユーザー アカウントを使用して Azure Stack ポータルにログインする場合は、Azure Stack の登録に使用したドメイン名をポータルの URL に追加する必要があります。 たとえば、Azure Stack が fabrikam.onmicrosoft.com に登録されていて、ログインするユーザー アカウントが admin@contoso.com である場合、ユーザー ポータルへのログインに使用する URL は https://portal.local.azurestack.external/fabrikam.onmicrosoft.com になります。
 
 ## <a name="next-steps"></a>次の手順

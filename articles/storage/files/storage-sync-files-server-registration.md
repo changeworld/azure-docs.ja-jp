@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: a296576d3d7983b710727923043091f5660b693d
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.subservice: files
+ms.openlocfilehash: 493f6f3380dee4ed70bb6e0bc9bba24f93071097
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002554"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165333"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Azure File Sync に登録されたサーバーの管理
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -165,7 +165,10 @@ Azure File Sync がデータセンターで実行されている唯一のサー�
 > 制限の設定が低すぎると、Azure File Sync の同期と回収のパフォーマンスに影響を及ぼします。
 
 ### <a name="set-azure-file-sync-network-limits"></a>Azure File Sync のネットワークの制限を設定する
-Azure File Sync のネットワーク使用率は、`StorageSyncNetworkLimit` コマンドレットを使用して調整できます。 
+Azure File Sync のネットワーク使用率は、`StorageSyncNetworkLimit` コマンドレットを使用して調整できます。
+
+> [!Note]  
+> ネットワークの制限は、階層化されたファイルへのアクセス時または Invoke-StorageSyncFileRecall コマンドレットの使用時には適用されません。
 
 たとえば、営業日の午前 9 時～午後 5 時 (17 時) に、Azure File Sync が 10 Mbps 以上使用しないようにするためのスロットルの新しい制限を作成できます。 
 
@@ -191,5 +194,6 @@ Windows Server 仮想化ホストで実行されている仮想マシンで Azur
 
 ## <a name="see-also"></a>関連項目
 - [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
-- [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md) 
+- [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
+- [Azure File Sync の監視](storage-sync-files-monitoring.md)
 - [Azure File Sync のトラブルシューティング](storage-sync-files-troubleshoot.md)

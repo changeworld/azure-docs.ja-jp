@@ -7,19 +7,20 @@ author: asmalser
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
-ms.openlocfilehash: aa7169e29ec46abc1c7de2858a118745e7363411
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8fc326c1ba529bc394a5ce5a059e3fe91baa7a9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53587361"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124085"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 
@@ -36,10 +37,10 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 | **SCIM 2.0 へのコンプライアンスに関する問題** |  **修正済みである** | **修正日付**  |  
 |---|---|---|
-| Azure AD で、"/scim" がアプリケーションの SCIM エンドポイント URL のルート内にある必要がある  | はい|  2018 年 12 月 18 日 | 
-| 拡張属性で、属性名の前にコロン ":" 表記ではなくドット "." 表記が使用されている |  はい| 2018 年 12 月 18 日  | 
-|  複数値属性のパッチ要求に無効なパス フィルター構文が含まれている | はい|  2018 年 12 月 18 日  | 
-|  グループの作成要求に無効なスキーマ URI が含まれている | はい|  2018 年 12 月 18 日  |  
+| Azure AD で、"/scim" がアプリケーションの SCIM エンドポイント URL のルート内にある必要がある  | はい  |  2018 年 12 月 18 日 | 
+| 拡張属性で、属性名の前にコロン ":" 表記ではなくドット "." 表記が使用されている |  はい  | 2018 年 12 月 18 日  | 
+|  複数値属性のパッチ要求に無効なパス フィルター構文が含まれている | はい  |  2018 年 12 月 18 日  | 
+|  グループの作成要求に無効なスキーマ URI が含まれている | はい  |  2018 年 12 月 18 日  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>説明されているサービス修正プログラムは、既存の SCIM アプリに自動的に適用されていますか。
 
@@ -58,36 +59,36 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
  
 1. Azure portal (https://portal.azure.com) にサインインします。
 2. Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション]** セクションで、既存の SCIM アプリケーションを検索して選択します。
-3.  既存 SCIM アプリの **[プロパティ]** セクションで、**[オブジェクト ID]** をコピーします。
-4.  新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/en-us/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
+3. 既存 SCIM アプリの **[プロパティ]** セクションで、**[オブジェクト ID]** をコピーします。
+4. 新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
 5. Graph エクスプローラーで次のコマンドを実行して、プロビジョニング ジョブの ID を確認します。 "[object-id]" を、手順 3 でコピーしたサービス プリンシパル ID (オブジェクト ID) に置き換えます。
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
- ![ジョブの取得](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "ジョブの取得") 
+   ![ジョブの取得](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "ジョブの取得") 
 
 
 6. 結果内で、"customappsso" または "scim" のいずれかで始まる完全な "ID" 文字列をコピーします。
 7. バックアップを作成するために、次のコマンドを実行して属性マッピング構成を取得します。 前と同じ [object-id] を使用し、[job-id] を、最後の手順でコピーしたプロビジョニング ジョブ ID に置き換えます。
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
- ![スキーマの取得](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "スキーマの取得") 
+   ![スキーマの取得](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "スキーマの取得") 
 
 8. 最後の手順から JSON 出力をコピーし、テキスト ファイルに保存します。 これには、古いアプリに追加したすべてのカスタム属性マッピングが含まれており、およそ数千行の JSON となります。
 9. 次のコマンドを実行して、プロビジョニング ジョブを削除します。
  
- `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
+   `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
 10. 次のコマンドを実行して、最新のサービス修正プログラムを含む新しいプロビジョニング ジョブを作成します。
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
- `{   templateId: "scim"   } `
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
+    `{   templateId: "scim"   } `
    
 11. 最後の手順の結果内で、"scim" で始まる完全な "ID" 文字列をコピーします。 必要に応じて、[new-job-id] を、先ほどコピーした新しいジョブ ID に置き換え、要求本文として手順 7 の JSON 出力を入力して、次のコマンドを実行して、古い属性マッピングを再適用します。
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
- `{   <your-schema-json-here>   }`
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
+    `{   <your-schema-json-here>   }`
 
 12. 最初の Web ブラウザー ウィンドウに戻り、アプリケーション用の **[プロビジョニング]** タブを選択します。
 13. 構成を確認し、プロビジョニング ジョブを開始します。 
@@ -96,15 +97,15 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 はい。 修正よりも前に存在していた古い動作用にアプリケーションをコード化していて、その新しいインスタンスをデプロイする必要がある場合は、次の手順に従います。 この手順では、Microsoft Graph API および Microsoft Graph API エクスプローラーを使用して、古い動作を使用する SCIM プロビジョニング ジョブを作成する方法について説明します。
  
-1.  Azure portal (https://portal.azure.com) にサインインします。
+1. Azure portal (https://portal.azure.com) にサインインします。
 2. Azure portal の **[Azure Active Directory] > [エンタープライズ アプリケーション] > [アプリケーションの作成]** セクションで、**ギャラリー以外の**新しいアプリケーションを作成します。
-3.  新しいカスタム アプリの **[プロパティ]** セクションで、**[オブジェクト ID]** をコピーします。
-4.  新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/en-us/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
+3. 新しいカスタム アプリの **[プロパティ]** セクションで、**[オブジェクト ID]** をコピーします。
+4. 新しい Web ブラウザー ウィンドウで https://developer.microsoft.com/graph/graph-explorer に移動し、アプリの追加先の Azure AD テナントの管理者としてサインインします。
 5. Graph エクスプローラーで次のコマンドを実行して、アプリのプロビジョニング構成を初期化します。
-"[object-id]" を、手順 3 でコピーしたサービス プリンシパル ID (オブジェクト ID) に置き換えます。
+   "[object-id]" を、手順 3 でコピーしたサービス プリンシパル ID (オブジェクト ID) に置き換えます。
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
- `{   templateId: "customappsso"   }`
+   `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
+   `{   templateId: "customappsso"   }`
  
 6. 最初の Web ブラウザー ウィンドウに戻り、アプリケーション用の **[プロビジョニング]** タブを選択します。
 7. 通常どおりにユーザー プロビジョニング構成を完了します。

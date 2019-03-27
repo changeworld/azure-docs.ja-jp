@@ -4,7 +4,7 @@ description: Azure Active Directory と FreshDesk の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
-ms.openlocfilehash: bdfe06c52a6fd4afa513821923581cd28713d872
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7a9357cda51a9d658849dbec872258061171fa90
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063066"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867985"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル:Azure Active Directory と FreshDesk の統合
 
@@ -176,7 +177,7 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
     c. **[SAML Login URL]** \(SAML ログイン URL\) テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d. **[ログアウト URL]** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ログアウト URL]** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
     e. **[セキュリティ証明書フィンガープリント]** テキストボックスに、先ほど得た **Cert ハッシュ (sha256)** の値を貼り付けます。
   
@@ -264,7 +265,7 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
     c. **[タイトル]** ボックスに、プロビジョニングする Azure AD アカウントのタイトルを入力します。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
     >[!NOTE]
     >Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
@@ -282,7 +283,7 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

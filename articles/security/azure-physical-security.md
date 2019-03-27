@@ -4,7 +4,7 @@ description: この記事では、物理インフラストラクチャ、セキ�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 69a54640ae3b4e71d7782712ad1764babab7104a
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 5f8378de18796fd679354c88880942df83399ad5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170679"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112046"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure の施設、建物、および物理上のセキュリティ
 Azure は、何千ものオンライン サービスをサポートし、世界中に安全性の高い 100 以上の施設を展開している、[グローバルに分散したデータセンター インフラストラクチャ](https://azure.microsoft.com/global-infrastructure/)から成り立っています。
@@ -72,7 +72,7 @@ Azure インフラストラクチャは、ISO 27001、HIPAA、FedRAMP、SOC 1、
 Azure が準拠しているコンプライアンス標準の完全な一覧については、「[コンプライアンス認証](https://www.microsoft.com/trustcenter/compliance/complianceofferings)」をご覧ください。 
 
 ## <a name="next-steps"></a>次の手順
-Microsoft が Azure インフラストラクチャのセキュリティ保護を支援するために行っていることの詳細については、次を参照してください。
+Microsoft が Azure インフラストラクチャのセキュリティ保護を支援するために行っていることの詳細については、以下を参照してください。
 
 - [Azure インフラストラクチャの可用性](azure-infrastructure-availability.md)
 - [Azure 情報システムのコンポーネントと境界](azure-infrastructure-components.md)

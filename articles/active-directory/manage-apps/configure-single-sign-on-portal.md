@@ -2,21 +2,22 @@
 title: シングル サインオンの構成 - Azure Active Directory | Microsoft Docs
 description: このチュートリアルでは、Azure portal を使って、Azure Active Directory (Azure AD) による SAML ベースのシングル サインオンをアプリケーションに構成します。
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.topic: tutorial
 ms.workload: identity
 ms.date: 12/06/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: aceacdea8b3c86a5c4f26a5f082f4c6cf0b3805d
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 037f5b554889d89fc0b50983d3d85d38f4345311
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011979"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571407"
 ---
 # <a name="tutorial-configure-saml-based-single-sign-on-for-an-application-with-azure-active-directory"></a>チュートリアル:Azure Active Directory による SAML ベースのシングル サインオンをアプリケーションに構成する
 
@@ -188,6 +189,6 @@ Azure AD は、アプリケーションに送信する SAML トークンに対�
 社内の他のユーザーについてもアプリケーションをロールアウトする場合は、自動ユーザー プロビジョニングの使用をお勧めします。
 
 > [!div class="nextstepaction"]
->[自動プロビジョニングを使ってユーザーを割り当てる方法について](configure-automatic-user-provisioning-portal.md)
+> [自動プロビジョニングを使ってユーザーを割り当てる方法について](configure-automatic-user-provisioning-portal.md)
 
 

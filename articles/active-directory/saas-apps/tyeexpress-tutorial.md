@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と T&E Express の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と T&E Express の統合 | Microsoft Docs
 description: Azure Active Directory と T&E Express の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: B42374E5-2559-4309-8EF2-820BEE7EBB0C
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
-ms.openlocfilehash: ff4d634fb7f6f8057e5f370a694e46ca5e0d772d
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 97e294a8b0e34e1fac24d0cbe01791e2eb290a43
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114075"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162580"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-te-express"></a>チュートリアル: Azure Active Directory と T&E Express の統合
+# <a name="tutorial-azure-active-directory-integration-with-te-express"></a>チュートリアル:Azure Active Directory と T&E Express の統合
 
 このチュートリアルでは、T&E Express と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -55,7 +56,7 @@ T&E Express と Azure AD の統合を構成するには、次のものが必要�
 1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-te-express-from-the-gallery"></a>ギャラリーから T&E Express を追加する
-Azure AD への T&amp;E Express の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に T&amp;E Express を追加する必要があります。
+Azure AD への T&E Express の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に T&amp;amp;E Express を追加する必要があります。
 
 **ギャラリーから T&E Express を追加するには、次の手順に従います。**
 
@@ -169,7 +170,7 @@ T&E Express で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-te-express-test-user"></a>T&E Express テスト ユーザーの作成
 

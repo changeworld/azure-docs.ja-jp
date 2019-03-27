@@ -10,18 +10,18 @@ manager: cgronlun
 ms.custom: seodec18
 ms.assetid: 3bab0ab9-3ea5-41a6-a62a-8c44fdbae43b
 ms.service: machine-learning
-ms.component: data-science-vm
+ms.subservice: data-science-vm
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: e3f17dd3717a57d184be7c9b8c73855c3fd2a768
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bbd73035993d3a981744eb5377fe0bf2c9d55b63
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106772"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268857"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
@@ -31,7 +31,7 @@ Linux データ サイエンス仮想マシンは Ubuntu ベースの仮想マ�
   * [Caffe2](https://github.com/caffe2/caffe2): Caffe のクロス プラットフォーム バージョン
   * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): Microsoft Research のディープ ラーニング ソフトウェア ツールキット
   * [H2O](https://www.h2o.ai/): オープン ソースのビッグ データ プラットフォームとグラフィカル ユーザー インターフェイス
-  * [Keras](https://keras.io/): Python で書かれた Theano と TensorFlow 用の高度なニューラル ネットワーク API
+  * [Keras](https://keras.io/): TensorFlow、Microsoft Cognitive Toolkit、および Theano 向けの Python の高度なニュートラル ネットワーク API
   * [MXNet](http://mxnet.io/): 多くの言語バインディングを含む、柔軟で効率的なディープ ラーニング ライブラリ
   * [NVIDIA DIGITS](https://developer.nvidia.com/digits): 一般的なディープ ラーニング タスクを簡略化するグラフィカル システム
   * [PyTorch](http://pytorch.org/): 動的ネットワークをサポートする高度な Python ライブラリ
@@ -105,7 +105,7 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    
    * ほとんどの場合は、既定値を使用できます。 既定値以外の値を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
    
-   d. **概要**:
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **概要**:
    
    * 入力したすべての情報が正しいことを確認します。 使用条件へのリンクが表示されます。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 プロビジョニングを開始するには、**[作成]** をクリックします。 
    
@@ -177,7 +177,7 @@ JupyterHub でいくつかの Notebook サンプルを入手できます。
 H2O は、高速でインメモリの分散型機械学習と予測分析のプラットフォームです。 Python パッケージは、ルートと py35 両方の Anaconda 環境にインストールされます。 また、R パッケージもインストールされます。 コマンド ラインから H2O を起動するには、`java -jar /dsvm/tools/h2o/current/h2o.jar` を実行します。多様な[コマンド ライン オプション](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line)があり、必要に応じて構成できます。 Flow Web UI にアクセスするには、まず http://localhost:54321 にアクセスします。 サンプルの Notebook は、JupyterHub でも利用できます。
 
 #### <a name="keras"></a>Keras
-Keras は、TensorFlow または Theano で実行可能であり、Python で記述された高度なニュートラル ネットワーク API です。 ルートと py35 の Python 環境で使用できます。 
+Keras は、TensorFlow、Microsoft Cognitive Toolkit、または Theano で実行可能であり、Python で記述された高度なニュートラル ネットワーク API です。 ルートと py35 の Python 環境で使用できます。 
 
 #### <a name="mxnet"></a>MXNet
 MXNet は、効率性と柔軟性の両方のために設計されたディープ ラーニング フレームワークです。 また MXNet には、DSVM に含まれている R バインディングと Python バインディングもあります。 サンプル Notebook は JupyterHub に含まれており、サンプル コードは /dsvm/samples/mxnet で入手できます。
@@ -220,7 +220,7 @@ py35 環境を再度アクティブ化するには:
 
 シェルで「 **python** 」と入力するだけで、Python の対話型セッションを呼び出すことができます。 
 
-```conda``` または ````pip```` を使って追加の Python ライブラリをインストールします。 PIP の場合、既定値が必要ないときは、最初に正しい環境をアクティブ化します。
+```conda``` または ```pip``` を使って追加の Python ライブラリをインストールします。 PIP の場合、既定値が必要ないときは、最初に正しい環境をアクティブ化します。
 
     source activate root
     pip install <package>
@@ -271,7 +271,7 @@ Microsoft R Server で Spark コンテキストで実行する前に、1 回限�
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Hadoop 関連サービスが不要な場合は、````systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```` を実行してサービスを停止することができます。MRS をリモート Spark コンテキスト (つまり DSVM 上のスタンドアロン Spark インスタンス) で開発およびテストする方法を示したサンプルは、`/dsvm/samples/MRS` ディレクトリで入手して使用することができます。 
+Hadoop 関連サービスが不要な場合は、```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` を実行してサービスを停止することができます。MRS をリモート Spark コンテキスト (つまり DSVM 上のスタンドアロン Spark インスタンス) で開発およびテストする方法を示したサンプルは、`/dsvm/samples/MRS` ディレクトリで入手して使用することができます。 
 
 ### <a name="ides-and-editors"></a>IDE とエディター
 コード エディターには、いくつかの選択肢があります。 これには vi/VIM、Emacs、PyCharm、RStudio、IntelliJ が含まれます。 IntelliJ、RStudio、PyCharm はグラフィカル エディターであり、使用するにはグラフィカル デスクトップにサインインする必要があります。 これらのエディターには、起動するためのデスクトップとアプリケーションのメニューのショートカットが用意されています。

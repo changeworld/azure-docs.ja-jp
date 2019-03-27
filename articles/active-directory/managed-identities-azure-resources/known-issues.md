@@ -3,24 +3,25 @@ title: Azure リソースのマネージド ID に関する FAQ と既知の問�
 description: Azure リソースのマネージド ID に関する既知の問題。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
-ms.author: daveba
-ms.openlocfilehash: b535939e200b533c06c97686897e283fb6cf57bc
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: priyamo
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dbd8ff1e8574b9465d4acc366bf0b64bbfd11e20
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720186"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179724"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -90,7 +91,7 @@ CentOS 6.9 では拡張機能が機能します。 ただし、6.9 はシステ�
 Windows と特定のバージョンの Linux で拡張機能が停止した場合は、次のコマンドレットを使用して手動で再起動できます。
 
 ```powershell
-Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
+Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
 各値の説明: 
@@ -154,8 +155,8 @@ VM 拡張機能のプロビジョニングは、DNS 検索エラーが原因で�
 
 ## <a name="known-issues-with-user-assigned-managed-identities"></a>ユーザー割り当てマネージド ID に関する既知の問題
 
-- 名前に特殊文字 (アンダースコアなど) が含まれるユーザー割り当てマネージド ID の作成はサポートされていません。
-- ユーザー割り当て ID の名前は 24 文字に制限されています。 名前が 24 文字より長い場合、ID のリソース (つまり仮想マシン) への割り当ては失敗します。
+- ユーザー割り当て ID 名は、最小 3 文字、最大 128 文字に制限されています。 名前が 128 文字より長い場合、リソース (つまり仮想マシン) への ID の割り当ては失敗します。
+- ユーザー割り当て ID 名には、次の文字を使用できます: a-z、A-Z、-、\_、0-9。 この文字セット以外に含まれていない文字 (アスタリスクなど) を使用したユーザー割り当てマネージド ID の作成はサポートされていません。
 - マネージド ID 仮想マシン拡張機能 (2019 年 1 月に非推奨になる予定) を使用している場合にサポートされるユーザー割り当てマネージド ID の制限値は 32 個です。 マネージド ID 仮想マシン拡張機能を使用していない場合にサポートされる制限値は 512 です。  
 - ユーザー割り当てマネージド ID を異なるリソース グループに移動すると、ID の破損が発生します。 結果として、その ID のトークンを要求できなくなります。 
 - サブスクリプションを別のディレクトリに転送すると、既存のユーザー割り当てマネージド ID は破損します。 

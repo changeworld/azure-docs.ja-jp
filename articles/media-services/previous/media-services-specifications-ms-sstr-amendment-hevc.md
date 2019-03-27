@@ -4,7 +4,7 @@ description: この仕様では、Azure Media Services での HEVC による Fra
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: f27d85de-2cb8-4269-8eed-2efb566ca2c6
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 02/08/2019
 ms.author: johndeu;
-ms.openlocfilehash: 038eee18adf94f34a2e10d9ff7be76409c8c4322
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: e13995ccdc609951f908b4a1779eaefcfdc596bb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53317425"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005218"
 ---
-# <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC のための Smooth Streaming Protocol (MS-SSTR) の変更
+# <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC のための Smooth Streaming Protocol (MS-SSTR) の変更 
 
 ## <a name="1-introduction"></a>1 Introduction (はじめに) 
 

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: d2940e1d8328ffaea799ddff4afc9669aaa85a2f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.subservice: common
+ms.openlocfilehash: 430aa6e60efe63e6741436e53152126bc15798fc
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065632"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327852"
 ---
 # <a name="azure-storage-account-overview"></a>Azure ストレージ アカウントの概要
 
@@ -29,7 +29,7 @@ Azure ストレージ アカウントの作成方法については、「[スト
 
 汎用 v2 ストレージ アカウントは、最新の Azure Storage の機能をサポートし、汎用 v1 と BLOB ストレージ アカウントのすべての機能が組み込まれています。 汎用 v2 アカウントは、Azure Storage に対してギガバイトあたり最低のキャパシティ価格で提供されます。これは業界内の他社に勝るトランザクション料金でもあります。 汎用 v2 ストレージ アカウントは、次の Azure Storage サービスをサポートします。
 
-- BLOB (すべての種類: ブロック、追加、ページ)
+- BLOB (すべての種類:ブロック、追加、ページ)
 - ファイル
 - ディスク
 - キュー
@@ -78,7 +78,7 @@ BLOB ストレージ アカウントには、使用パターンに基づいて�
 汎用ストレージ アカウントは、次のパフォーマンス レベルのいずれか向けに構成できます。
 
 * BLOB、ファイル、テーブル、キュー、および Azure 仮想マシン ディスクを格納するための Standard パフォーマンス レベル。
-* Azure 仮想マシン ディスクのみを格納するための Premium パフォーマンス レベル。 Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md) をご覧ください。
+* アンマネージド仮想マシン ディスクのみを格納するための Premium パフォーマンス レベル。
 
 ## <a name="access-tiers-for-block-blob-data"></a>ブロック BLOB 用のデータ アクセス層
 
@@ -94,7 +94,7 @@ Azure Storage では、使用パターンに基づいて、ブロック BLOB デ
 * **アーカイブ**層は、個々のブロック BLOB 用にのみ使用できます。 この層は、数時間の取得待機時間が許容され、少なくとも 180 日以上アーカイブ層に保持されるデータ用に最適化されています。 アーカイブ層は、データの格納オプションとしては費用対効果が最も高くなりますが、データへのアクセスは、ホット層またはクール層でのアクセスよりも高くなります。 
 
 
-データの使用パターンが変化した場合は、いつでもこれらのアクセス層を切り替えることができます。 アクセス層の詳細については、[Azure Blob Storage: Premium 層 (プレビュー)、ホット層、クール層、およびアーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)に関する記事を参照してください。
+データの使用パターンが変化した場合は、いつでもこれらのアクセス層を切り替えることができます。 アクセス層の詳細については、「[Azure Blob ストレージ:Premium ストレージ層 (プレビュー)、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
 
 > [!IMPORTANT]
 > 既存のストレージ アカウントまたは BLOB のアクセス レベルを変更すると、追加料金が発生する場合があります。 詳しくは、「[ストレージ アカウントの課金](#storage-account-billing)」セクションをご覧ください。

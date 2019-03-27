@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: fb3e61b2b43194cb550a7c87c6841e91b4025560
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a919d10bbb7def8f81e68d95c03d95309483df59
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002758"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210388"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -683,7 +683,7 @@ ms.locfileid: "54002758"
 |PropertyWriteBatch |string、既定値は "Admin" |動的|名前付けプロパティの書き込み操作のセキュリティ構成。 |
 |ProvisionApplicationType |string、既定値は "Admin" |動的| アプリケーションの種類をプロビジョニングするためのセキュリティ構成。 |
 |ProvisionFabric |string、既定値は "Admin" |動的| MSI またはクラスター マニフェストをプロビジョニングするためのセキュリティ構成。 |
-|クエリ |string、既定値は "Admin\|\|User" |動的| クエリのセキュリティ構成。 |
+|Query |string、既定値は "Admin\|\|User" |動的| クエリのセキュリティ構成。 |
 |RecoverPartition |string、既定値は "Admin" | 動的|パーティションを復旧するためのセキュリティ構成。 |
 |RecoverPartitions |string、既定値は "Admin" | 動的|複数のパーティションを復旧するためのセキュリティ構成。 |
 |RecoverServicePartitions |string、既定値は "Admin" |動的| サービス パーティションを復旧するためのセキュリティ構成。 |

@@ -3,21 +3,21 @@ title: Azure Active Directory B2C で Graph API を使用する | Microsoft Docs
 description: アプリケーション ID を使用して B2C テナント用の Graph API を呼び出してプロセスを自動化する方法。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 0f53d71cca70f9340689d3d01fb9c67090f917c5
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.subservice: B2C
+ms.openlocfilehash: d1f1ec45e1d4fc2fc6091a2f946caf6bc59441a9
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51277549"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417059"
 ---
-# <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API を使用する
+# <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C:Azure AD Graph API を使用する
 
 >[!NOTE]
 > Azure AD B2C ディレクトリのユーザーを管理するには、[Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) を使用する必要があります。 これは、Microsoft Graph API とは異なります。 [こちら](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)をご覧ください。
@@ -62,7 +62,7 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 これで B2C テナントに対してユーザーの作成、読み取り、更新を実行する権限を持つアプリケーションが用意されました。
 
 > [!NOTE]
-> アクセス許可を付与する処理は、完了するまでに数分間かかります。
+> アクセス許可を付与する処理は、完了するまでに数分間かかることがあります。
 > 
 > 
 
@@ -271,7 +271,7 @@ Content-Type: application/json
 Content-Length: 37
 
 {
-    "displayName": "Joe Consumer",                // this request updates only the user's displayName
+    "displayName": "Joe Consumer"                // this request updates only the user's displayName
 }
 ```
 

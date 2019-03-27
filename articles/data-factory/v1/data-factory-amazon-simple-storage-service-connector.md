@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fda80455cf3504bf992fabc3018be2d5c05612ae
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1f5064cece32cfc38f149816961e5156ff20974a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019148"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536710"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Azure Data Factory を使用した Amazon Simple Storage Service からのデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +38,7 @@ Amazon S3 からデータをコピーするには、次のアクセス許可が�
 * Amazon S3 オブジェクトの操作には `s3:GetObject` と `s3:GetObjectVersion`。
 * Amazon S3 バケットの操作には `s3:ListBucket`。 Data Factory コピー ウィザードを使用している場合は、`s3:ListAllMyBuckets` も必要です。
 
-Amazon S3 のアクセス許可の完全な一覧については、「[ポリシーでのアクセス許可の指定](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)」を参照してください。
+Amazon S3 のアクセス許可の完全な一覧については、「[ポリシーでのアクセス許可の指定](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)」を参照してください。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールや API を使用して、Amazon S3 ソースからデータを移動するコピー アクティビティを含むパイプラインを作成できます。
@@ -69,7 +69,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 | secretAccessKey |シークレット アクセス キー自体。 |暗号化された秘密文字列 |はい |
 
 >[!NOTE]
->IAM アカウントが Amazon S3 からデータをコピーするには、このコネクタにアクセス キーが必要です。 [一時的なセキュリティ資格情報](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)はサポートされていません。
+>IAM アカウントが Amazon S3 からデータをコピーするには、このコネクタにアクセス キーが必要です。 [一時的なセキュリティ資格情報](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html)はサポートされていません。
 >
 
 たとえば次のようになります。
@@ -248,7 +248,7 @@ Amazon S3 のアクセス許可の完全な一覧については、「[ポリシ
 
 ### <a name="azure-blob-output-dataset"></a>Azure BLOB の出力データセット
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```json
 {

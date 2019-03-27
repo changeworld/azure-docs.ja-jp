@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b9174d98dd6d4dfb5353d6976d074bb4c91373dc
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 16455719f05688793e2aee6f10fa00a707d553c0
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678323"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54469539"
 ---
 # <a name="interact-with-the-map---mouse-events"></a>マップの連動 – マウス イベント
 
-この記事では、[マップ クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [イベント](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener)のプロパティを使用して、マップ上とマップの別のレイヤー上のイベントを強調表示する方法を説明します。 マップ クラス イベント プロパティを使用して、HTML マーカーの操作時にイベントを強調表示する方法も説明します。
+この記事では、[マップ クラス](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) [イベント](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)のプロパティを使用して、マップ上とマップの別のレイヤー上のイベントを強調表示する方法を説明します。 マップ クラス イベント プロパティを使用して、HTML マーカーの操作時にイベントを強調表示する方法も説明します。
 
 ## <a name="interact-with-the-map"></a>マップの操作
 

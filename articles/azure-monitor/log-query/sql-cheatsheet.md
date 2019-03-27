@@ -1,6 +1,6 @@
 ---
-title: SQL と Azure Log Analytics のクエリ言語チート シート | Microsoft Docs
-description: Log Analytics クエリのさまざまなシナリオでよく使用される関数です。
+title: SQL から Azure Monitor ログ クエリへのチート シート | Microsoft Docs
+description: SQL を使い慣れているユーザーが Azure Monitor でログ クエリを記述する助けとなります。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 35438644842d5280bd789efa135805ba9943cb8b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 76c9e143a4127807bfffa879103fca42d2d27e71
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183049"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268330"
 ---
-# <a name="sql-to-log-analytics-query-language-cheat-sheet"></a>SQL と Log Analytics のクエリ言語チート シート 
+# <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL から Azure Monitor ログ クエリへのチート シート 
 
-次の表は、SQL をよく知っているユーザーが Log Analytics クエリ言語について学習するときに役立ちます。 一般的なシナリオを解決するための T-SQL コマンドと Log Analytics の同等の使用方法を確認してください。
+下の表は、SQL を使い慣れているユーザーが、Azure Monitor でログ クエリを記述するための Kusto クエリ言語を学習する助けになります。 一般的なシナリオを解決する場合の、T-SQL コマンドと、Azure Monitor ログ クエリでの同等の使用方法を確認してください。
 
-## <a name="sql-to-log-analytics"></a>SQL と Log Analytics の対応
+## <a name="sql-to-azure-monitor"></a>SQL から Azure Monitor へ
 
-説明                             |SQL クエリ                                                                                          |Azure Log Analytics クエリ
+説明                             |SQL クエリ                                                                                          |Azure Monitor ログ クエリ
 ----------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------
 テーブルからすべてのデータを選択する            |`SELECT * FROM dependencies`                                                                       |<code>dependencies</code>
 テーブルから特定の列を選択する    |`SELECT name, resultCode FROM dependencies`                                                        |<code>dependencies <br>&#124; project name, resultCode</code>
@@ -45,9 +45,9 @@ null 値の評価                         |`SELECT * FROM dependencies WHERE res
 メジャーによる上位 n レコード                |`SELECT TOP 100 name, COUNT(*) as Count FROM dependencies GROUP BY name ORDER BY Count asc`        |<code>dependencies <br>&#124; summarize Count=count() by name <br>&#124; top 100 by Count asc</code>
 和集合                                   |`SELECT * FROM dependencies UNION SELECT * FROM exceptions`                                        |<code>union dependencies, exceptions</code>
 和集合: 条件付き                  |`SELECT * FROM dependencies WHERE value > 4 UNION SELECT * FROM exceptions value < 5`              |<code>dependencies <br>&#124; where value > 4 <br>&#124; union (exceptions <br>&#124; where value < 5)</code>
-Join                                    |`SELECT * FROM dependencies JOIN exceptions ON dependencies.operation_Id = exceptions.operation_Id`|<code>dependencies <br>&#124; join (exceptions) on operation_Id == operation_Id</code>
+結合                                    |`SELECT * FROM dependencies JOIN exceptions ON dependencies.operation_Id = exceptions.operation_Id`|<code>dependencies <br>&#124; join (exceptions) on operation_Id == operation_Id</code>
 
 
 ## <a name="next-steps"></a>次の手順
 
-- [Log Analytics でのクエリの記述](get-started-queries.md)に関するレッスンをご覧ください。
+- [Azure Monitor でのログ クエリの記述](get-started-queries.md)に関するレッスンをご覧ください。

@@ -1,28 +1,28 @@
 ---
 title: API リファレンス - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: コンテンツ モデレーションについて学習し、Content Moderator の API を確認します。
+description: さまざまなコンテンツ モデレーションについて学習し、Content Moderator の各種 API を確認します。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: reference
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: ecc22b097c14fc7597d8ee0e31f9691098a2211d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a6bd92a675885cb343b07ef981c38571af0a931c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229749"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862464"
 ---
 # <a name="content-moderator-api-reference"></a>Content Moderator API リファレンス
 
-Azure Content Moderator API を使用するには次の方法で開始します (「[資格情報を管理する](review-tool-user-guide/credentials.md)」も参照してください)。
+Azure Content Moderator API シリーズを使用するには次の方法で開始します ([資格情報の管理](review-tool-user-guide/credentials.md)に関するページも参照してください)。
 
 - Azure Portal で、[Content Moderator API をサブスクライブ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)します。
-- [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)にサインアップします。 [クイック スタート](quick-start.md)を参照してください。
+- [Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)にサインアップします。 「[Try Content Moderator on the web (Web 上で Content Moderator を試す)](quick-start.md)」を参照してください。
 
 ## <a name="moderation-apis"></a>モデレート API
 

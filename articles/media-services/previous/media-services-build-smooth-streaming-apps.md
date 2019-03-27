@@ -4,7 +4,7 @@ description: Azure Media Services を使用して、スムーズ ストリーム
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0fa5d8c5-3d5f-4886-ae55-fb6de4f5256d
 ms.service: media-services
@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 953cd536c390e571ee4c40dc670316197718eff2
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 92fc63ed45b6f1ea377138744d19137645c916e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279196"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57882728"
 ---
-# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法
+# <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法  
 
-Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。 スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。 サポートされている機能の詳細については、 [リリース ノート](http://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)を参照してください。 詳細については、 [Windows 8 用プレーヤー フレームワークに関する記事](http://playerframework.codeplex.com/)を参照してください。 
+Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマンドおよびライブ スムーズ ストリーミング コンテンツの再生が可能な Windows ストア アプリケーションを作成できます。 スムーズ ストリーミング コンテンツの基本再生機能に加えて、SDK では、Microsoft PlayReady Protection、品質レベル制限、ライブ DVR、オーディオ ストリーム切り替え、ステータス更新 (品質レベルの変化など) のリスニング、エラー イベントなどの豊富な機能が提供されます。 サポートされている機能の詳細については、 [リリース ノート](https://www.iis.net/learn/media/smooth-streaming/smooth-streaming-client-sdk-for-windows-8-release-notes)を参照してください。 詳細については、 [Windows 8 用プレーヤー フレームワークに関する記事](https://playerframework.codeplex.com/)を参照してください。 
 
 このチュートリアルには、次の 4 つのレッスンが含まれています。
 
@@ -38,7 +38,7 @@ Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマン�
 
 * Windows 8 32 ビットまたは 64 ビット。
 * Visual Studio バージョン 2012 から 2015。
-* [Windows 8 用 Microsoft Smooth Streaming Client SDK](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home)。
+* [Windows 8 用 Microsoft Smooth Streaming Client SDK](https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home https://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home)。
 
 各レッスンの完成したソリューションは、MSDN デベロッパー サンプル コード集 (コード ギャラリー) からダウンロードできます: 
 
@@ -69,7 +69,7 @@ Windows ストア アプリケーションの開発の詳細については、�
 | Name | 値 |
 | --- | --- |
 | テンプレート グループ |インストール済み/テンプレート/Visual C#/Windows ストア |
-| テンプレート |新しいアプリケーション (XAML) |
+| Template |新しいアプリケーション (XAML) |
 | Name |SSPlayer |
 | Location |C:\SSTutorials |
 | ソリューション名 |SSPlayer |
@@ -95,7 +95,7 @@ Windows ストア アプリケーションの開発の詳細については、�
 
 1. ソリューション エクスプローラーで、 **MainPage.xaml** をダブルクリックしてデザイン ビューを開きます。
 2. XAML ファイル内で **&lt;Grid&gt;** タグと **&lt;/Grid&gt;** タグを探し、2 つのタグの間に次のコードを貼り付けます。
-```xml
+   ```xml
          <Grid.RowDefinitions>
 
             <RowDefinition Height="20"/>    <!-- spacer -->
@@ -107,7 +107,7 @@ Windows ストア アプリケーションの開発の詳細については、�
 
          <StackPanel Name="spMediaControl" Grid.Row="1" Orientation="Horizontal">
             <TextBlock x:Name="tbSource" Text="Source :  " FontSize="16" FontWeight="Bold" VerticalAlignment="Center" />
-            <TextBox x:Name="txtMediaSource" Text="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" FontSize="10" Width="700" Margin="0,4,0,10" />
+            <TextBox x:Name="txtMediaSource" Text="https://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" FontSize="10" Width="700" Margin="0,4,0,10" />
             <Button x:Name="btnSetSource" Content="Set Source" Width="111" Height="43" Click="btnSetSource_Click"/>
             <Button x:Name="btnPlay" Content="Play" Width="111" Height="43" Click="btnPlay_Click"/>
             <Button x:Name="btnPause" Content="Pause"  Width="111" Height="43" Click="btnPause_Click"/>
@@ -138,11 +138,11 @@ Windows ストア アプリケーションの開発の詳細については、�
                FontSize="16" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" />
             <TextBox x:Name="txtStatus" FontSize="10" Width="700" VerticalAlignment="Center"/>
          </StackPanel>
-```
+   ```
    MediaElement コントロールは、メディアの再生に使用します。 次のレッスンでは、sliderProgress という名前のスライダー コントロールを使用して、メディアの進行を制御します。
 3. **Ctrl + S** キーを押して、ファイルを保存します。
 
-MediaElement コントロールは、そのままではスムーズ ストリーミング コンテンツをサポートしていません。 スムーズ ストリーミング サポートを有効にするには、スムーズ ストリーミング バイトストリーム ハンドラーをファイル名拡張子と MIME タイプで登録する必要があります。  登録するには、Windows.Media 名前空間の MediaExtensionManager.RegisterByteStremHandler メソッドを使用します。
+MediaElement コントロールは、そのままではスムーズ ストリーミング コンテンツをサポートしていません。 スムーズ ストリーミング サポートを有効にするには、スムーズ ストリーミング バイトストリーム ハンドラーをファイル名拡張子と MIME タイプで登録する必要があります。  登録するには、Windows.Media 名前空間の MediaExtensionManager.RegisterByteStreamHandler メソッドを使用します。
 
 この XAML ファイル内で、いくつかのイベント ハンドラーがコントロールに関連付けられています。  これらのイベント ハンドラーを定義する必要があります。
 
@@ -160,7 +160,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "text/xml");
         extensions.RegisterByteStreamHandler("Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler", ".ism", "application/vnd.ms-sstr+xml");
 5. **MainPage** クラスの末尾に、次のコードを貼り付けます。
-```csharp
+   ```csharp
          # region UI Button Click Events
          private void btnPlay_Click(object sender, RoutedEventArgs e)
          {
@@ -202,8 +202,8 @@ MediaElement コントロールは、そのままではスムーズ ストリー
          mediaElement.Position = new TimeSpan(0, 0, (int)(sliderProgress.Value));
          }
          # endregion
-```
-ここでは sliderProgress_PointerPressed イベント ハンドラーが定義されています。  正しく機能させるには他の作業も必要ですが、これらについては次のレッスンで説明します。
+   ```
+   ここでは sliderProgress_PointerPressed イベント ハンドラーが定義されています。  正しく機能させるには他の作業も必要ですが、これらについては次のレッスンで説明します。
 6. **Ctrl + S** キーを押して、ファイルを保存します。
 
 完成したコード ビハインド ファイルは次のようになります。
@@ -242,25 +242,29 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. ファイルの先頭に次の using ステートメントを追加します。
-```csharp
+
+   ```csharp
         using Microsoft.Media.AdaptiveStreaming;
-```
+   ```
 3. MainPage クラスの先頭に、次のデータ メンバーを追加します。
-```csharp
+
+   ```csharp
          private Windows.Foundation.Collections.PropertySet propertySet = new Windows.Foundation.Collections.PropertySet();             
          private IAdaptiveSourceManager adaptiveSourceManager;
-```
+   ```
 4. **MainPage** コンストラクター内で、**this.Initialize Components();** という行と前のレッスンで記述した登録コード行の後に、次のコードを追加します。
-```csharp
+
+   ```csharp
         // Gets the default instance of AdaptiveSourceManager which manages Smooth 
         //Streaming media sources.
         adaptiveSourceManager = AdaptiveSourceManager.GetDefault();
         // Sets property key value to AdaptiveSourceManager default instance.
         // {A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}" must be hardcoded.
         propertySet["{A5CE1DE8-1D00-427B-ACEF-FB9A3C93DE2D}"] = adaptiveSourceManager;
-```
+   ```
 5. **MainPage** コンストラクター内で、2 つの RegisterByteStreamHandler メソッドを変更して、4 つ目のパラメーターを追加します。
-```csharp
+
+   ```csharp
          // Registers Smooth Streaming byte-stream handler for ".ism" extension and, 
          // "text/xml" and "application/vnd.ms-ss" mime-types and pass the propertyset. 
          // http://*.ism/manifest URI resources will be resolved by Byte-stream handler.
@@ -276,18 +280,20 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             ".ism", 
             "application/vnd.ms-sstr+xml", 
          propertySet);
-```
+   ```
 6. **Ctrl + S** キーを押して、ファイルを保存します。
 
 **アダプティブ ソース マネージャー レベルのイベント ハンドラーを追加するには**
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. **MainPage** クラス内で、次のデータ メンバーを追加します。
-```csharp
+
+   ```csharp
      private AdaptiveSource adaptiveSource = null;
-```
+   ```
 3. **MainPage** クラスの末尾に、次のイベント ハンドラーを追加します。
-```csharp
+
+   ```csharp
          # region Adaptive Source Manager Level Events
          private void mediaElement_AdaptiveSourceOpened(AdaptiveSource sender, AdaptiveSourceOpenedEventArgs args)
          {
@@ -296,24 +302,27 @@ MediaElement コントロールは、そのままではスムーズ ストリー
          }
 
          # endregion Adaptive Source Manager Level Events
-```
+   ```
 4. AdaptiveSourceOpenedEvent をサブスクライブするために、 **MainPage** コンストラクターの末尾に次の行を追加します。
-```csharp
+
+   ```csharp
          adaptiveSourceManager.AdaptiveSourceOpenedEvent += 
            new AdaptiveSourceOpenedEventHandler(mediaElement_AdaptiveSourceOpened);
-```
+   ```
 5. **Ctrl + S** キーを押して、ファイルを保存します。
 
 **アダプティブ ソース レベルのイベント ハンドラーを追加するには**
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. **MainPage** クラス内で、次のデータ メンバーを追加します。
-```csharp
+
+   ```csharp
      private AdaptiveSourceStatusUpdatedEventArgs adaptiveSourceStatusUpdate; 
      private Manifest manifestObject;
-```
+   ```
 3. **MainPage** クラスの末尾に、次のイベント ハンドラーを追加します。
-```csharp
+
+   ```csharp
          # region Adaptive Source Level Events
          private void mediaElement_ManifestReady(AdaptiveSource sender, ManifestReadyEventArgs args)
          {
@@ -335,8 +344,10 @@ MediaElement コントロールは、そのままではスムーズ ストリー
          }
 
          # endregion Adaptive Source Level Events
-4. At the end of the **mediaElement AdaptiveSourceOpened** method, add the following code to subscribe to the events:
-   
+   ```
+4. 各イベントをサブスクライブするために、 **mediaElement AdaptiveSourceOpened** メソッドの末尾に次のコードを追加します。
+
+   ```csharp
          adaptiveSource.ManifestReadyEvent +=
 
                     mediaElement_ManifestReady;
@@ -346,7 +357,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
          adaptiveSource.AdaptiveSourceFailedEvent += 
 
             mediaElement_AdaptiveSourceFailed;
-```
+   ```
 5. **Ctrl + S** キーを押して、ファイルを保存します。
 
 アダプティブ ソース マネージャー レベルにも同じイベントがあり、これらは、アプリケーション内ですべてのメディア要素に共通した機能の処理に使用できます。 各 AdaptiveSource には独自のイベントがあり、すべての AdaptiveSource イベントは AdaptiveSourceManager からカスケード処理されます。
@@ -355,7 +366,8 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. **MainPage** クラスの末尾に、次のイベント ハンドラーを追加します。
-```csharp
+
+   ```csharp
          # region Media Element Event Handlers
          private void MediaOpened(object sender, RoutedEventArgs e)
          {
@@ -376,35 +388,40 @@ MediaElement コントロールは、そのままではスムーズ ストリー
          }
 
          # endregion Media Element Event Handlers
-```
+   ```
 3. 各イベントをサブスクライブするために、 **MainPage** コンストラクターの末尾に次のコードを追加します。
-```csharp
+
+   ```csharp
          mediaElement.MediaOpened += MediaOpened;
          mediaElement.MediaEnded += MediaEnded;
          mediaElement.MediaFailed += MediaFailed;
-```
+   ```
 4. **Ctrl + S** キーを押して、ファイルを保存します。
 
 **スライダー関連コードを追加するには**
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. ファイルの先頭に次の using ステートメントを追加します。
-```csharp
+
+   ```csharp
         using Windows.UI.Core;
-```
+   ```
 3. **MainPage** クラス内で、次のデータ メンバーを追加します。
-```csharp
+
+   ```csharp
          public static CoreDispatcher _dispatcher;
          private DispatcherTimer sliderPositionUpdateDispatcher;
-```
+   ```
 4. **MainPage** コンストラクターの末尾に、次のコードを追加します。
-```csharp
+
+   ```csharp
          _dispatcher = Window.Current.Dispatcher;
          PointerEventHandler pointerpressedhandler = new PointerEventHandler(sliderProgress_PointerPressed);
          sliderProgress.AddHandler(Control.PointerPressedEvent, pointerpressedhandler, true);    
-```
+   ```
 5. **MainPage** クラスの末尾に、次のコードを追加します。
-```csharp
+
+   ```csharp
          # region sliderMediaPlayer
          private double SliderFrequency(TimeSpan timevalue)
          {
@@ -486,30 +503,32 @@ MediaElement コントロールは、そのままではスムーズ ストリー
          }
 
          # endregion sliderMediaPlayer
-```
+   ```
 
->[!NOTE]
->CoreDispatcher は、非 UI スレッドから UI スレッドへの変更を行うために使用します。 開発者は、ディスパッチャー スレッドでボトルネックが発生した場合に備えて、更新する UI 要素によって提供されるディスパッチャーの使用を選択できます。  例: 
+   > [!NOTE]
+   > CoreDispatcher は、非 UI スレッドから UI スレッドへの変更を行うために使用します。 開発者は、ディスパッチャー スレッドでボトルネックが発生した場合に備えて、更新する UI 要素によって提供されるディスパッチャーの使用を選択できます。  例: 
 
-```csharp
+   ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
 
          timespan = new TimeSpan(adaptiveSourceStatusUpdate.EndTime); 
          double absvalue  = (int)Math.Round(timespan.TotalSeconds, MidpointRounding.AwayFromZero); 
 
          sliderProgress.Maximum = absvalue; }); 
-```
+   ```
 6. **mediaElement_AdaptiveSourceStatusUpdated** メソッドの末尾に、次のコードを追加します。
-```csharp
+
+   ```csharp
          setSliderStartTime(args.StartTime);
          setSliderEndTime(args.EndTime);
-```
+   ```
 7. **MediaOpened** メソッドの末尾に、次のコードを追加します。
-```csharp
+
+   ```csharp
          sliderProgress.StepFrequency = SliderFrequency(mediaElement.NaturalDuration.TimeSpan);
          sliderProgress.Width = mediaElement.Width;
          setupTimer();
-```
+   ```
 8. **Ctrl + S** キーを押して、ファイルを保存します。
 
 **アプリケーションのコンパイルとテストを行うには**
@@ -533,7 +552,8 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[デザイナーの表示]** をクリックします。
 2. &lt;Grid.RowDefinitions&gt; を探し、次のように各 RowDefinition を変更します。
-```xml
+
+   ```xml
          <Grid.RowDefinitions>            
             <RowDefinition Height="20"/>
             <RowDefinition Height="50"/>
@@ -541,9 +561,10 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             <RowDefinition Height="80"/>
             <RowDefinition Height="50"/>
          </Grid.RowDefinitions>
-```
+   ```
 3. &lt;Grid&gt;&lt;/Grid&gt; タグ内に次のコードを追加して、リストボックス コントロールを定義します。これによりユーザーは、使用できるストリームの一覧を確認し、ストリームを選択できます。
-```xml
+
+   ```xml
          <Grid Name="gridStreamAndBitrateSelection" Grid.Row="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="300"/>
@@ -567,14 +588,15 @@ MediaElement コントロールは、そのままではスムーズ ストリー
                 </ListBox>
             </StackPanel>
          </Grid>
-```
+   ```
 4. **Ctrl + S** キーを押して、変更を保存します。
 
 **コード ビハインド ファイルを変更するには**
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. SSPlayer 名前空間内に、新しいクラスを追加します。
-```csharp
+
+   ```csharp
         #region class Stream
    
         public class Stream
@@ -619,16 +641,17 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             }
         }
         #endregion class Stream
-```
+   ```
 3. MainPage クラスの先頭に、次の変数定義を追加します。
-```csharp
+
+   ```csharp
          private List<Stream> availableStreams;
          private List<Stream> availableAudioStreams;
          private List<Stream> availableTextStreams;
          private List<Stream> availableVideoStreams;
-```
+   ```
 4. MainPage クラス内に、次の #region ブロックを追加します。
-```csharp
+   ```csharp
         #region stream selection
         ///<summary>
         ///Functionality to select streams from IManifestStream available streams
@@ -764,15 +787,15 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             }
         }
         #endregion stream selection
-```
+   ```
 5. mediaElement_ManifestReady メソッドを探して、関数の末尾に次のコードを追加します。
-```csharp
+   ```csharp
         getStreams(manifestObject);
         refreshAvailableStreamsListBoxItemSource();
-```
-    So when MediaElement manifest is ready, the code gets a list of the available streams, and populates the UI list box with the list.
+   ```
+    これにより、MediaElement マニフェストの準備が完了すると、コードは使用可能なストリームのリストを取得し、このリストを UI リスト ボックスに設定します。
 6. MainPage クラス内で "UI buttons click events" という #region ブロックを探し、次の関数定義を追加します。
-```csharp
+   ```csharp
         private void btnChangeStream_Click(object sender, RoutedEventArgs e)
         {
             List<IManifestStream> selectedStreams = new List<IManifestStream>();
@@ -783,8 +806,8 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             // Change streams on the presentation
             changeStreams(selectedStreams);
         }
-```
-**アプリケーションのコンパイルとテストを行うには**
+   ```
+   **アプリケーションのコンパイルとテストを行うには**
 
 1. **F6** キーを押して、プロジェクトをコンパイルします。 
 2. **F5** キーを押してアプリケーションを実行します。
@@ -805,7 +828,7 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[デザイナーの表示]** をクリックします。
 2. Name 属性が **gridStreamAndBitrateSelection** である &lt;Grid&gt; タグを探し、タグの末尾に次のコードを追加します。
-```xml
+   ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
              <TextBlock Name="tbBitRate" Text="Available Bitrates:" FontSize="16" VerticalAlignment="Center"/>
@@ -820,14 +843,14 @@ MediaElement コントロールは、そのままではスムーズ ストリー
              </ListBox.ItemTemplate>
          </ListBox>
          </StackPanel>
-```
+   ```
 3. **Ctrl + S** キーを押して、変更を保存します。
 
 **コード ビハインド ファイルを変更するには**
 
 1. ソリューション エクスプローラーで **MainPage.xaml** を右クリックし、**[コードの表示]** をクリックします。
 2. SSPlayer 名前空間内に、新しいクラスを追加します。
-```csharp
+   ```csharp
         #region class Track
         public class Track
         {
@@ -864,13 +887,13 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             //public Track() { }
         }
         #endregion class Track
-```
+   ```
 3. MainPage クラスの先頭に、次の変数定義を追加します。
-```csharp
+   ```csharp
         private List<Track> availableTracks;
-```
+   ```
 4. MainPage クラス内に、次の #region ブロックを追加します。
-```csharp
+   ```csharp
         #region track selection
         /// <summary>
         /// Functionality to select video streams
@@ -967,14 +990,14 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             }
         }
         #endregion track selection
-```
+   ```
 5. mediaElement_ManifestReady メソッドを探して、関数の末尾に次のコードを追加します。
-```csharp
+   ```csharp
          getTracks(manifestObject);
          refreshAvailableTracksListBoxItemSource();
-```
+   ```
 6. MainPage クラス内で "UI buttons click events" という #region ブロックを探し、次の関数定義を追加します。
-```csharp
+   ```csharp
          private void btnChangeStream_Click(object sender, RoutedEventArgs e)
          {
             List<IManifestStream> selectedStreams = new List<IManifestStream>();
@@ -985,8 +1008,8 @@ MediaElement コントロールは、そのままではスムーズ ストリー
             // Change streams on the presentation
             changeStreams(selectedStreams);
          }
-```
-**アプリケーションのコンパイルとテストを行うには**
+   ```
+   **アプリケーションのコンパイルとテストを行うには**
 
 1. **F6** キーを押して、プロジェクトをコンパイルします。 
 2. **F5** キーを押してアプリケーションを実行します。
@@ -1003,8 +1026,8 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="other-resources"></a>その他のリソース:
-* [How to build a Smooth Streaming Windows 8 JavaScript application with advanced features (高度な機能を備えたスムーズ ストリーミング用の Windows 8 JavaScript アプリケーションを作成する方法)](http://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
-* [Smooth Streaming Technical Overview (スムーズ ストリーミングの技術概要)](http://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
+* [How to build a Smooth Streaming Windows 8 JavaScript application with advanced features (高度な機能を備えたスムーズ ストリーミング用の Windows 8 JavaScript アプリケーションを作成する方法)](https://blogs.iis.net/cenkd/archive/2012/08/10/how-to-build-a-smooth-streaming-windows-8-javascript-application-with-advanced-features.aspx)
+* [Smooth Streaming Technical Overview (スムーズ ストリーミングの技術概要)](https://www.iis.net/learn/media/on-demand-smooth-streaming/smooth-streaming-technical-overview)
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png

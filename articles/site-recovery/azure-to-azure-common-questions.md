@@ -7,21 +7,36 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 20311f904356f16b34f64d0aaf6ed438ba692857
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 555c8b0b4046fd20583597ae4f0215a815806b8e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155152"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860409"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>一般的な質問:Azure から Azure へのレプリケーション
 
 この記事では、Azure Site Recovery を使用して Azure VM のディザスター リカバリー (DR) を別の Azure リージョンにデプロイするときによくある質問に回答します。 この記事の内容について質問がある場合は、[Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
 
+## <a name="in-this-article"></a>この記事の内容 
+1.  **[Azure から Azure に関する一般的な質問](#general)** 
+1.  **[レプリケーション](#replication)** 
+1.  **[レプリケーション ポリシー](#replication-policy)** 
+1.  **[マルチ VM 整合性](#multi-vm-consistency)** 
+1.  **[復旧計画](#recovery-plan)** 
+1.  **[再保護とフェールバック](#reprotection-and-failback)** 
+1.  **[セキュリティ](#security)** 
+
+
 ## <a name="general"></a>全般
+
 ### <a name="how-is-site-recovery-priced"></a>Site Recovery の価格
 詳しくは、「[Site Recovery の価格](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)」をご覧ください。
+### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Azure Site Recovery の Free レベルの課金はどのように行われますか?
+Azure Site Recovery で保護されるすべてのインスタンスは、保護を開始してから 31 日間は無料になります。 32 日目以降は、インスタンスの保護に対して上記の料金が課金されます。
+###<a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>最初の 31 日間に、他の Azure 料金は発生しますか?
+はい。Azure Site Recovery は保護されたインスタンスに対して最初の 31 日間無料ですが、Azure Storage、ストレージ トランザクション、データ転送について課金が発生する場合があります。 仮想マシンの復旧も、Azure の通常の課金の対象になる場合があります。 価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery)からご確認ください
 
 ### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>Azure VM で Site Recovery を構成するためのベスト プラクティスは何ですか?
 1. [Azure から Azure へのアーキテクチャを理解する](azure-to-azure-architecture.md)
@@ -59,7 +74,11 @@ Site Recovery を使用して、同じ地理クラスター内の 2 つのリー
 
 いいえ、Site Recovery にはインターネット接続は必要ありません。 ただし、[こちらの記事](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)で説明されているように、Site Recovery の URL と IP 範囲にアクセスする必要があります。
 
-## <a name="replication-policy"></a>Replication policy
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>階層ごとに個別のリソース グループを使用してアプリケーションをレプリケートすることはできますか? 
+はい、アプリケーションをレプリケートし、ディザスター リカバリー構成を個別のリソース グループに保持することは可能です。
+たとえば、各階層のアプリ、データベース、および Web が個別のリソース グループに属するアプリケーションがある場合は、[レプリケーション ウィザード](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)を 3 回クリックして、すべての階層を保護することができます。 ASR は、これら 3 つの階層を、3 つの異なるリソース グループにレプリケートします。
+
+## <a name="replication-policy"></a>レプリケーション ポリシー
 
 ### <a name="what-is-a-replication-policy"></a>レプリケーション ポリシーとは何ですか?
 復旧ポイントの保持履歴と、アプリ整合性スナップショットの頻度の設定が定義されています。 既定では、次のような既定の設定の新しいレプリケーション ポリシーが Azure Site Recovery で作成されます。
@@ -74,10 +93,19 @@ Site Recovery を使用して、同じ地理クラスター内の 2 つのリー
 
 現在、ほとんどのアプリケーションは、クラッシュ整合性のスナップショットから十分に復旧できます。 クラッシュ整合性復旧ポイントは通常、データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションにとっては十分です。
 
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>クラッシュ整合性復旧ポイントはどのくらいの頻度で生成されますか?
+Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。
+
 ### <a name="what-is-an-application-consistent-recovery-point"></a>アプリケーション整合性復旧ポイントとは何ですか? 
-アプリケーション整合性復旧ポイントは、アプリケーション整合性スナップショットから作成されます。 アプリケーション整合性スナップショットでは、クラッシュ整合性スナップショットと同じデータがキャプチャされ、メモリ内のすべてのデータと処理中のすべてのトランザクションが追加されます。 
+アプリケーション整合性復旧ポイントは、アプリケーション整合性スナップショットから作成されます。 アプリケーション整合性復旧ポイントでは、クラッシュ整合性スナップショットと同じデータがキャプチャされ、メモリ内のすべてのデータと処理中のすべてのトランザクションが追加されます。 
 
 これらの追加コンテンツのため、アプリケーション整合性スナップショットは、最も複雑で実行時間も最も長くかかります。 アプリケーション整合性の復旧ポイントは、SQL Server などのデータベース オペレーティング システムで推奨されます。
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>アプリケーション整合性復旧ポイントがアプリケーション パフォーマンスにもたらす影響について教えてください。
+アプリケーション整合性復旧ポイントでは、メモリ内やプロセス内のすべてのデータが取得されます。またその際、Windows 上の VSS などのフレームワークで、アプリケーションを停止する必要があります。 これをあまり頻繁に行うと、既にワークロードがビジー状態の場合に、パフォーマンスに影響が出る可能性があります。 通常、データベース以外のワークロードについては、アプリ整合性復旧ポイントの間隔を短くしないことを推奨します。また、データベース ワークロードについても、1 時間で十分です。 
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>アプリケーション整合性復旧ポイントが生成される最小の頻度はどのくらいですか?
+Site Recovery では、アプリケーション整合性復旧ポイントを 1 時間という最小の頻度で作成できます。
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>復旧ポイントはどのように生成されて保存されますか?
 Site Recovery で復旧ポイントがどのように生成されるかを理解するため、レプリケーション ポリシーの例を見てみましょう。このポリシーには、24 時間の復旧ポイントの保有期間と 1 時間のアプリ整合性の頻度のスナップショットが設定されています。
@@ -95,8 +123,8 @@ Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイント�
 ### <a name="how-far-back-can-i-recover"></a>過去のどの時点まで遡って復旧できますか?
 使用できる最も古い復旧ポイントは 72 時間です。
 
-### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-pruned"></a>24 時間のレプリケーション ポリシーがあり、問題により 24 時間より長く Site Recovery で復旧ポイントが生成されなかった場合はどうなりますか? 以前の復旧ポイントは取り除かれますか?
-いいえ、この場合、以前のすべての復旧ポイントが Site Recovery によって保持されます。 
+### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>24 時間のレプリケーション ポリシーがあり、問題により 24 時間より長く Site Recovery で復旧ポイントが生成されなかった場合はどうなりますか? 以前の復旧ポイントはなくなりますか?
+いいえ、以前のすべての復旧ポイントが Site Recovery によって保持されます。 復旧ポイントのリテンション期間 (この場合は 24 時間) によって異なりますが、Site Recovery が最も古いポイントを置き換えるのは新しいポイントが生成される場合のみです。 このケースでは、問題があるために新しい復旧ポイントは生成されないため、リテンション期間が終了しても古いポイントはすべて保持されます。
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>VM でレプリケーションを有効にした後で、レプリケーション ポリシーを変更するにはどうしたらよいですか? 
 **[Site Recovery コンテナー]** > **[Site Recovery インフラストラクチャ]** > **[レプリケーション ポリシー]** の順に移動します。 編集するポリシーを選択し、変更を保存します。 変更は既存のすべてのレプリケーションにも適用されます。 
@@ -154,6 +182,9 @@ Site Recovery では、フェールオーバー時に IP アドレスの指定�
 ### <a name="if-im-replicating-between-two-azure-regions-what-happens-if-my-primary-region-experiences-an-unexpected-outage"></a>2 つの Azure リージョン間でレプリケートしているときに、プライマリ リージョンに予期しない障害が発生するとどうなりますか?
 停止後、フェールオーバーをトリガーできます。 Site Recovery では、フェールオーバーを実行するためにプライマリ リージョンからの接続を必要としません。
 
+### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>仮想マシンのフェールオーバーの RTO はどのくらいですか?
+Site Recovery の [RTO の SLA は 2 時間](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/)です。 ただし、ほとんどの場合、Site Recovery による仮想マシンのフェールオーバーは、数分以内に行われます。 VM を起動するまでにかかった時間を示すフェールオーバー ジョブに移動することで、RTO を計算できます。 復旧計画の RTO については、以下のセクションを参照してください。 
+
 ## <a name="recovery-plan"></a>復旧計画
 
 ### <a name="what-is-a-recovery-plan"></a>復旧計画とは何ですか?
@@ -189,7 +220,7 @@ Site Recovery での復旧計画は、VM のフェールオーバーの復旧を
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>フェールバックにはどのくらい時間がかかりますか?
 再保護の後、フェールバックにかかる時間は、通常、プライマリ リージョンからセカンダリ リージョンへのフェールオーバーの時間と同程度です。 
 
-## <a name="security"></a>セキュリティ
+## <a name="a-namesecuritysecurity"></a><a name="security">セキュリティ
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
 いいえ。Site Recovery は、レプリケートされたデータをインターセプトすることも、仮想マシンでの実行内容に関するどのような情報を持つこともありません。 レプリケーションとフェールオーバーを調整するために必要なメタデータのみが、Site Recovery サービスに送信されます。  
 Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けており、SOC2 および FedRAMP JAB の評価が進行中です。

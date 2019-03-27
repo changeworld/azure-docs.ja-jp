@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 962c1cff91a5ac3f52dc67c30bd2c7a4e2e22b9d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 8ec6a6a24629f72199d5f5afa86200acf53aba01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631840"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58136548"
 ---
 # <a name="lucene-syntax-query-examples-for-building-advanced-queries-in-azure-search"></a>Azure Search で高度なクエリを作成するための Lucene 構文のクエリの例
 Azure Search のクエリを構築するときは、既定の[単純なクエリ パーサー](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)をより拡張性の高い [Azure Search の Lucene Query Parser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) に置き換えることにより、特殊化された高度なクエリ定義を作成することができます。 
@@ -206,7 +206,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 自分のコードに Lucene Query Parser を指定してみてください。 次のリンクでは、.NET と REST API の両方の検索クエリを設定する方法について説明しています。 これらのリンクでは、既定の単純な構文を使用しています。**queryType** を指定するには、この記事で学習したことを応用する必要があります。
 
 * [.NET SDK を使用した Azure Search インデックスの照会](search-query-dotnet.md)
-* [REST API を使用した Azure Search インデックスの照会](search-query-rest-api.md)
+* [REST API を使用した Azure Search インデックスの照会](search-create-index-rest-api.md)
 
 追加の構文リファレンス、クエリ アーキテクチャ、およびサンプルについては、次のリンク先を参照してください。
 

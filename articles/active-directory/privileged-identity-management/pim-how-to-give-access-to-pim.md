@@ -9,16 +9,17 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9d5fce5a80ac1f281fdbe6afe7f9a97816807ccc
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c0d8cb77cda97c3141987fa8b0ea39541ace6db3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287089"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191737"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-pim"></a>PIM を管理する他の管理者にアクセス権を付与する
 

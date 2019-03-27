@@ -4,23 +4,24 @@ description: Azure Active Directory と Predictix Price Reporting の間でシ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 691d0c43-3aa1-4220-9e46-e7a88db234ad
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: a7b6122638636193b363d0ac57aae22a9c7da57a
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 50f7275f1bccbb19a535e2bbafec2591229359ea
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014754"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217617"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>チュートリアル: Azure Active Directory と Predictix Price Reporting の統合
 
@@ -170,7 +171,7 @@ Predictix Price Reporting で Azure AD のシングル サインオンを構成�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-predictix-price-reporting-test-user"></a>Predictix Price Reporting テスト ユーザーの作成
 

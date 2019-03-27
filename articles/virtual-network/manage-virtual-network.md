@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2018
+ms.date: 01/10/2019
 ms.author: jdial
-ms.openlocfilehash: 3f158d040654b251faebceaa2e89d0462f13c217
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 34dc6fbd1cca30f86b3fa825932983a01c4c8250
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016030"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730188"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -29,7 +29,7 @@ ms.locfileid: "54016030"
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使用する場合は、 https://portal.azure.com を開き、Azure アカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI のバージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 - Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧に記載されている適切なアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てられている必要があります。
 
@@ -43,7 +43,7 @@ ms.locfileid: "54016030"
         - 255.255.255.255/32 (ブロードキャスト)
         - 127.0.0.0/8 (ループバック)
         - 169.254.0.0/16 (リンク ローカル)
-        - 168.63.129.16/32 (内部 DNS)
+        - 168.63.129.16/32 (内部 DNS、DHCP、および Azure Load Balancer の[正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md#probesource))
 
       仮想ネットワークを作成する際に定義できるアドレス範囲は 1 つだけですが、仮想ネットワークの作成後にアドレス範囲をアドレス空間に追加することができます。 既存の仮想ネットワークにアドレス範囲を追加する方法については、「[アドレス範囲の追加または削除](#add-or-remove-an-address-range)」を参照してください。
 
@@ -87,25 +87,31 @@ ms.locfileid: "54016030"
     - **ダイアグラム**:このダイアグラムには、仮想ネットワークに接続されているすべてのデバイスを視覚的に表現したものが表示されます。 ダイアグラムには、デバイスに関する重要な情報が含まれます。 このビューでダイアグラム内のデバイスを管理するには、デバイスを選択します。
     - **Azure の一般的な設定**:Azure の一般的な設定の詳細については、次の情報を参照してください。
         *   [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)
-        *   [アクセス制御 (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
+        *   [アクセス制御 (IAM)](../role-based-access-control/overview.md)
         *   [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Automation スクリプト](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group)
 
 **コマンド**
 
-- Azure CLI: [az network vnet show](/cli/azure/network/vnet#az_network_vnet_show)
+- Azure CLI: [az network vnet show](/cli/azure/network/vnet)
 - PowerShell:[Get-AzureRmVirtualNetwork](/powershell/module/azurerm.network/get-azurermvirtualnetwork)
 
 ## <a name="add-or-remove-an-address-range"></a>アドレス範囲の追加または削除
 
-仮想ネットワークのアドレス範囲を追加および削除することができます。 アドレス範囲は CIDR 表記で指定する必要があり、同じ仮想ネットワーク内で他のアドレス範囲と重複することはできません。 定義するアドレス範囲は、パブリックとプライベート (RFC 1918 に準拠) のどちらでもかまいません。 パブリックとプライベートのどちらのアドレス範囲を定義する場合でも、そのアドレス範囲に到達できるのは、仮想ネットワーク内から、相互接続された仮想ネットワークから、および仮想ネットワークに接続したオンプレミス ネットワークからだけです。 次のアドレス範囲は追加できません。
+仮想ネットワークのアドレス範囲を追加および削除することができます。 アドレス範囲は CIDR 表記で指定する必要があり、同じ仮想ネットワーク内で他のアドレス範囲と重複することはできません。 定義するアドレス範囲は、パブリックとプライベート (RFC 1918 に準拠) のどちらでもかまいません。 パブリックとプライベートのどちらのアドレス範囲を定義する場合でも、そのアドレス範囲に到達できるのは、仮想ネットワーク内から、相互接続された仮想ネットワークから、および仮想ネットワークに接続したオンプレミス ネットワークからだけです。 
+
+サブネットが関連付けられていない場合、仮想ネットワークのアドレス範囲を縮小できます。 関連付けられている場合、/16 を /8 に変更するなど、アドレス範囲の拡張のみが可能になります。 小規模のアドレス範囲から始め、後で拡大したり、追加したりすることができます。
+
+<!-- the last two sentences above are added per GitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/20572 -->
+
+次のアドレス範囲は追加できません。
 
 - 224.0.0.0/4 (マルチキャスト)
 - 255.255.255.255/32 (ブロードキャスト)
 - 127.0.0.0/8 (ループバック)
 - 169.254.0.0/16 (リンク ローカル)
-- 168.63.129.16/32 (内部 DNS)
+- 168.63.129.16/32 (内部 DNS、DHCP、および Azure Load Balancer の[正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md#probesource))
 
 アドレス範囲を追加または削除するには、次のようにします。
 
@@ -119,7 +125,7 @@ ms.locfileid: "54016030"
 
 **コマンド**
 
-- Azure CLI: [az network vnet update](/cli/azure/network/vnet#az_network_vnet_update)
+- Azure CLI: [az network vnet update](/cli/azure/network/vnet)
 - PowerShell:[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork)
 
 ## <a name="change-dns-servers"></a>DNS サーバーの変更
@@ -141,7 +147,7 @@ ms.locfileid: "54016030"
 
 **コマンド**
 
-- Azure CLI: [az network vnet update](/cli/azure/network/vnet#az_network_vnet_update)
+- Azure CLI: [az network vnet update](/cli/azure/network/vnet)
 - PowerShell:[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork)
 
 ## <a name="delete-a-virtual-network"></a>仮想ネットワークの削除
@@ -156,7 +162,7 @@ ms.locfileid: "54016030"
 
 **コマンド**
 
-- Azure CLI: [azure network vnet delete](/cli/azure/network/vnet#az_network_vnet_delete)
+- Azure CLI: [azure network vnet delete](/cli/azure/network/vnet)
 - PowerShell:[Remove-AzureRmVirtualNetwork](/powershell/module/azurerm.network/remove-azurermvirtualnetwork)
 
 ## <a name="permissions"></a>アクセス許可

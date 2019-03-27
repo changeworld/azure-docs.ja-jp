@@ -3,23 +3,23 @@ title: Azure Service Bus キューの使用 | Microsoft Docs
 description: Service Bus メッセージング キューを使った C# コンソール アプリケーションを作成します。
 services: service-bus-messaging
 documentationcenter: .net
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: 68a34c00-5600-43f6-bbcc-fea599d500da
 ms.service: service-bus-messaging
 ms.devlang: tbd
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 09/07/2018
-ms.author: spelluru
-ms.openlocfilehash: 1dd47dea86478c76ed5bf6f8b393964f97231908
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: dfdea9f8d50c467bf0e4317c8d95135afefa765f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226959"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778010"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
 
@@ -40,20 +40,10 @@ ms.locfileid: "51226959"
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="create-a-namespace-using-the-azure-portal"></a>Azure Portal を使用した名前空間の作成
-
-> [!NOTE] 
-> [PowerShell](/powershell/azure/get-started-azureps) を使用して Service Bus 名前空間とメッセージング エンティティを作成することもできます。 詳細については、「[PowerShell モジュールで Service Bus リソースを管理する](service-bus-manage-with-ps.md)」を参照してください。
-
-Service Bus メッセージング名前空間を既に作成している場合は、「[Azure Portal を使用したキューの作成](#2-create-a-queue-using-the-azure-portal)」セクションに進んでください。
-
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="create-a-queue-using-the-azure-portal"></a>Azure Portal を使用したキューの作成
-
-Service Bus キューを既に作成している場合は、「[キューへのメッセージの送信](#3-send-messages-to-the-queue)」セクションに進んでください。
-
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
+
 
 ## <a name="send-messages-to-the-queue"></a>キューへのメッセージの送信
 

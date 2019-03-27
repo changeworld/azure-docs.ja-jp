@@ -4,17 +4,17 @@ description: Azure Policy でゲスト構成を使用して、Azure の仮想マ
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 01/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 1ea87dc01048a2747a668db7a5b1f22b37ed9213
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ca8066caf77852c3ec1a8bd7cb534e8d74704bf2
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310064"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447278"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成を理解します。
 
@@ -22,6 +22,8 @@ Azure のリソースを監査し、[修復](../how-to/remediate-resources.md)�
 
 > [!IMPORTANT]
 > 現時点では、ゲスト構成で**組み込み**ポリシーのみがサポートされます。
+
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="extension-and-client"></a>拡張機能とクライアント
 
@@ -48,8 +50,8 @@ Azure portal からゲストの構成用のリソース プロバイダを登録
 PowerShell を使ってゲスト構成用にリソース プロバイダーを登録するには、次のコマンドを実行します。
 
 ```azurepowershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
-Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
+# Login first with Connect-AzAccount if not using Cloud Shell
+Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 ```
 
 ### <a name="validation-tools"></a>検証ツール
@@ -61,13 +63,23 @@ Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguratio
 |オペレーティング システム|検証ツール|メモ|
 |-|-|-|
 | Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
-| Linux|[Chef InSpec](https://www.chef.io/inspec/)| ゲスト構成拡張機能によって、Ruby、Python がインストールされます。 |
+|Linux|[Chef InSpec](https://www.chef.io/inspec/)| ゲスト構成拡張機能によって、Ruby、Python がインストールされます。 |
+
+### <a name="validation-frequency"></a>検証の頻度
+
+ゲスト構成クライアントは、新しいコンテンツを 5 分ごとにチェックします。
+ゲスト割り当てを受信すると、設定が 15 分間隔でチェックされます。
+監査が完了するとすぐに、結果がゲスト構成リソース プロバイダーに送信されます。
+ポリシー[評価トリガー](../how-to/get-compliance-data.md#evaluation-triggers)が発生すると、マシンの状態がゲスト構成リソース プロバイダーに書き込まれます。
+これにより、Azure Policy が Azure Resource Manager のプロパティを評価します。
+オンデマンドのポリシー評価により、ゲスト構成リソース プロバイダーから、最新の値が取得されます。
+ただし、仮想マシン内の構成の新しい監査はトリガーされません。
 
 ### <a name="supported-client-types"></a>サポートされているクライアントの種類
 
 次の表は、Azure イメージでサポートされているオペレーティング システムの一覧を示します。
 
-|発行元|Name|バージョン|
+|Publisher|Name|バージョン|
 |-|-|-|
 |Canonical|Ubuntu Server|14.04、16.04、18.04|
 |Credativ|Debian|8、9|
@@ -90,23 +102,23 @@ Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguratio
 
 ## <a name="guest-configuration-definition-requirements"></a>ゲスト構成定義の要件
 
-ゲスト構成によって実行される各監査には、**DeployIfNotExists** と **AuditIfNotExists** の 2 つのポリシー定義が必要です。 **DeployIfNotExists** は、[検証ツール](#validation-tools)をサポートするためにゲスト構成エージェントおよびその他のコンポーネントを使用して仮想マシンを準備するために使用されます。
+ゲスト構成によって実行される各監査には、**DeployIfNotExists** と **Audit** の 2 つのポリシー定義が必要です。 **DeployIfNotExists** は、[検証ツール](#validation-tools)をサポートするためにゲスト構成エージェントおよびその他のコンポーネントを使用して仮想マシンを準備するために使用されます。
 
 **DeployIfNotExists** ポリシー定義が検証し、次の項目を修正します。
 
 - 仮想マシンに、評価する構成が割り当てられていることを検証します。 割り当てが現在存在しない場合は、割り当てを取得し、次を実行して、仮想マシンを準備します。
   - [マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) を使用して、仮想マシンへの認証を行う
-  -  **Microsoft.GuestConfiguration** 拡張機能の最新バージョンをインストールする
+  - **Microsoft.GuestConfiguration** 拡張機能の最新バージョンをインストールする
   - 必要とする場合、[検証ツール](#validation-tools)と依存関係をインストールする
 
- **DeployIfNotExists** が準拠している場合は、 **AuditIfNotExists** ポリシー定義はローカル検証ツールを使用して、割り当てられた構成の割り当てが準拠しているかどうかを決定します。 この検証ツールは、結果をゲスト構成クライアントに提供します。 クライアントは、その結果をゲストの拡張機能に転送します。それにより、その結果がゲスト構成のリソース プロバイダー全体で使用可能になります。
+**DeployIfNotExists** が準拠している場合は、 **Audit** ポリシー定義はローカル検証ツールを使用して、割り当てられた構成の割り当てが準拠しているかどうかを判断します。 この検証ツールは、結果をゲスト構成クライアントに提供します。 クライアントは、その結果をゲストの拡張機能に転送します。それにより、その結果がゲスト構成のリソース プロバイダー全体で使用可能になります。
 
 Azure Policy は、ゲスト構成リソースプロバイダーの **complianceStatus** プロパティを使用して**コンプライアンス** ノードでコンプライアンスを報告します。 詳細については、[コンプライアンス データを取得する](../how-to/getting-compliance-data.md)を参照してください。
 
 > [!NOTE]
-> 各ゲスト構成定義のために、 **DeployIfNotExists** と **AuditIfNotExists** ポリシーの両方が存在する必要があります。
+> 各ゲスト構成定義に、**DeployIfNotExists** と **Audit** ポリシーの両方が存在する必要があります。
 
-割り当てで使用するための定義をグループ化するためのイニシアティブには、ゲストの構成のすべての組み込みポリシーが含まれます。 *[プレビュー]: Linux および Windows の仮想マシン内での監査のパスワード セキュリティ設定*という名前の組み込みイニシアティブには 18 のポリシーが含まれています。 Windows のために **DeployIfNotExists** と **AuditIfNotExists** の 6  つのペアがあって、Linux 用に 3 つのペアがあります。 いずれの場合も、定義内のロジックは、[ポリシー規則](definition-structure.md#policy-rule)の定義に基づいてターゲット オペレーティング システムのみが評価されることを検証します。
+割り当てで使用するための定義をグループ化するためのイニシアティブには、ゲストの構成のすべての組み込みポリシーが含まれます。 *[プレビュー]: Linux および Windows の仮想マシン内での監査のパスワード セキュリティ設定*という名前の組み込みイニシアティブには 18 のポリシーが含まれています。 Windows 用に **DeployIfNotExists** と **Audit** の 6 つのペアがあり、Linux 用に 3 つのペアがあります。 いずれの場合も、定義内のロジックは、[ポリシー規則](definition-structure.md#policy-rule)の定義に基づいてターゲット オペレーティング システムのみが評価されることを検証します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -115,5 +127,5 @@ Azure Policy は、ゲスト構成リソースプロバイダーの **compliance
 - [ポリシーの効果について](effects.md)確認する
 - [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解する
 - [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)ための方法を学びます。
-- [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習する
+- [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を確認する
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/index.md)」で、管理グループとは何かを確認します。

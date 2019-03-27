@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9f3fe36eab7dc7fd1921c4e225b5a173fe2e9243
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 9b8ae86a5c13573fbe80c8f06d5ce97c72d8e341
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364875"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257672"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 ```
 
-[Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、ストリームをテストできます。
+[Azure Media Services Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、ストリームをテストできます。
 
 ## <a id="client_request"></a>クライアントが配信サービスにキーを要求する方法
 以前の手順で、マニフェスト ファイルを参照する URL を構成しました。 クライアントは、キー配信サービスへの要求を実行するために、ストリーミング マニフェスト ファイルから必要な情報を抽出する必要があります。

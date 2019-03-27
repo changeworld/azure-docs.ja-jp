@@ -12,15 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/19/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 66a2871e0c4b36959ccd8f08df5b6b7edd09f624
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 9a07a829aac9659ac7ab8d04b64a1ea1a9a2de78
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227826"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428059"
 ---
 # <a name="asdk-administration-basics"></a>ASDK の管理の基本 
 Azure Stack Development Kit (ASDK) の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイダンスでは、評価環境での Azure Stack オペレーターとしての役割の概要と、テスト ユーザーの生産性を迅速に向上させる方法を示します。
@@ -35,8 +36,8 @@ Azure Stack を管理する場合に注意するいくつかのアカウント�
 |Account|Azure AD|AD FS|
 |-----|-----|-----|
 |ローカル管理者 (.\Administrator)|ASDK ホスト管理者|ASDK ホスト管理者|
-|AzureStack\AzureStackAdmin|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルにログインできます<br><br>Service Fabric リングを表示および管理するためのアクセス権|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルへのアクセス権なし<br><br>Service Fabric リングを表示および管理するためのアクセス権<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者ではなくなりました|
-|AzureStack\CloudAdmin|特権エンドポイント内で許可されたコマンドにアクセス、実行できます|特権エンドポイント内で許可されたコマンドにアクセス、実行できます<br><br>ASDK ホストにログインできません<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者|
+|AzureStack\AzureStackAdmin|ASDK ホスト管理者<br><br>Azure Stack 管理ポータルにサインインするために使用できます<br><br>Service Fabric リングを表示および管理するためのアクセス権|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルへのアクセス権なし<br><br>Service Fabric リングを表示および管理するためのアクセス権<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者ではなくなりました|
+|AzureStack\CloudAdmin|特権エンドポイント内で許可されたコマンドにアクセス、実行できます|特権エンドポイント内で許可されたコマンドにアクセス、実行できます<br><br>ASDK ホストにサインインできません<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者|
 |Azure AD 全体管理者|インストール時に使用<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者|適用不可|
 |
 

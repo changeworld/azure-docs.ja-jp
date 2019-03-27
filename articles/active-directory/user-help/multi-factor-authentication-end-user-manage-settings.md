@@ -4,21 +4,22 @@ description: 連絡先情報の変更やデバイスの構成などの Azure Mul
 services: active-directory
 keywords: 多要素認証のクライアント, 認証の問題, 関連付け ID
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: richagi
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
 ms.workload: identity
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
-ms.openlocfilehash: c3fd74731dbed2c2f36d97b3cb42b383f8e4ca0f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8a29da9e87c09ad157babf1e1a391fb967859d73
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345091"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210511"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>2 段階認証設定の管理
 この記事では、2 段階認証または多要素認証の設定の更新方法に関する質問に回答しています。 アカウントへのサインインで問題が発生している場合のトラブルシューティング ヘルプについては、「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」をご覧ください。
@@ -74,7 +75,7 @@ ms.locfileid: "39345091"
 2. 任意のデバイスで次回サインインするときに、2 段階認証を実行するよう求められます。
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>古いデバイスから Microsoft Authenticator をクリーンアップして新しいデバイスに移行する場合
-デバイスからアプリをアンインストールしたり、デバイスをリセットしても、アクティブ化はバック エンドで削除されません。 詳細については、「[Microsoft Authenticator](microsoft-authenticator-app-how-to.md)」参照してください。
+デバイスからアプリをアンインストールしたり、デバイスをリセットしても、アクティブ化はバック エンドで削除されません。 詳細については、「[Microsoft Authenticator](user-help-auth-app-download-install.md)」参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * 「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」でトラブルシューティングのヒントとヘルプを習得します。

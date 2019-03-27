@@ -4,7 +4,7 @@ description: Azure Security Center 内におけるテナント全体の可視性
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: b85c0e93-9982-48ad-b23f-53b367f22b10
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: f05c0469dffa074501a301802412901ead3d1e69
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 76239f80076cbe0f86d6e091a29b008a5a5d06c1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720817"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116645"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Security Center に対するテナント全体の可視性を確保する
 この記事では、いくつかのアクションを実行して、Azure Security Center が提供するメリットを最大化する方法について説明します。 これらのアクションを実行することで、自分の Azure Active Directory テナントにリンクされているすべての Azure サブスクリプションへの可視性を確保できると共に、複数のサブスクリプションに対してセキュリティ ポリシーを集合的に適用することで、組織のセキュリティ体制を広範囲にわたって効果的に管理することができます。
@@ -108,7 +108,7 @@ Azure Active Directory テナント管理者には、Azure サブスクリプシ
 
 
 #### <a name="assign-rbac-roles-to-users-with-powershell"></a>PowerShell を使用してユーザーに RBAC ロールを割り当てます。 
-1. [Azure PowerShell](/powershell/azure/install-azurerm-ps)をインストールします。
+1. [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)をインストールします。
 2. 次のコマンドを実行します。 
 
     ```azurepowershell

@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 02/13/2019
 ms.author: raynew
-ms.openlocfilehash: b6713eabec62b1658b54dcb29231ddbfb2faceb7
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8115065afcbd81da1527e09c07ca89ce89100d7d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107500"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236993"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -63,7 +63,8 @@ Site Recovery は、サポートされているマシンで実行されている
 **コンポーネント** | **詳細**
 --- | ---
 マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
-Windows オペレーティング システム | 64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。 </br></br>  [Windows Server 2008 SP2 以降 - 32 ビットおよび 64 ビット](migrate-tutorial-windows-server-2008.md) (移行のみ)。 </br></br> Windows 2016 の Nano Server はサポートされていません。
+マシンのワークロード | Site Recovery は、サポートされているマシンで実行されている任意のワークロード (たとえば Active Directory、SQL サーバーなど) のレプリケーションをサポートします。 詳細については、[ここ](https://aka.ms/asr_workload)をクリックしてください。
+Windows オペレーティング システム | 64 ビット Windows Server 2019、64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。 </br></br>  [Windows Server 2008 SP2 以降 - 32 ビットおよび 64 ビット](migrate-tutorial-windows-server-2008.md) (移行のみ)。 </br></br> Windows 2016 の Nano Server はサポートされていません。
 Linux オペレーティング システム | Red Hat Enterprise Linux:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>CentOS:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [ (サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b> または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) を実行している Oracle Linux 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5 <br/><br/></br>-レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。</br></br> - Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。 Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> - Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> - 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> - Azure でマシンが起動するには、Red Hat Enterprise Linux 5.2 から 5.11 または CentOS 5.2 から 5.11 を実行しているサーバーに [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu カーネルのバージョン
@@ -71,36 +72,35 @@ Linux オペレーティング システム | Red Hat Enterprise Linux:5.2 か�
 
 **サポートされているリリース** | **Azure Site Recovery モビリティ サービスのバージョン** | **カーネル バージョン** |
 --- | --- | --- |
+14.04 LTS | [9.22][9.22 UR] | 3.13.0-24-generic から 3.13.0-164-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-140-generic、<br/>4.15.0-1023-azure から 4.15.0-1036-azure |
 14.04 LTS | [9.21][9.21 UR] | 3.13.0-24-generic から 3.13.0-163-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-140-generic、<br/>4.15.0-1023-azure から 4.15.0-1035-azure |
 14.04 LTS | [9.20][9.20 UR] | 3.13.0-24-generic から 3.13.0-153-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-138-generic、<br/>4.15.0-1023-azure から 4.15.0-1025-azure |
 14.04 LTS | [9.19][9.19 UR] | 3.13.0-24-generic から 3.13.0-153-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-131-generic |
-14.04 LTS | [9.18][9.18 UR] | 3.13.0-24-generic から 3.13.0-153-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-130-generic |
 |||
+16.04 LTS | [9.22][9.22 UR] | 4.4.0-21-generic から 4.4.0-140-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-43-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1036-azure|
 16.04 LTS | [9.21][9.21 UR] | 4.4.0-21-generic から 4.4.0-140-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-42-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1035-azure|
 16.04 LTS | [9.20][9.20 UR] | 4.4.0-21-generic から 4.4.0-138-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-38-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1025-azure|
 16.04 LTS | [9.19][9.19 UR] | 4.4.0-21-generic ～ 4.4.0-131-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic ～ 4.15.0-30-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure ～ 4.15.0-1019-azure|
-16.04 LTS | [9.18][9.18 UR] | 4.4.0-21-generic から 4.4.0-130-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic |
 
 ### <a name="debian-kernel-versions"></a>Debian カーネルのバージョン
 
 
 **サポートされているリリース** | **Azure Site Recovery モビリティ サービスのバージョン** | **カーネル バージョン** |
 --- | --- | --- |
-Debian 7 | [9.18][9.18 UR]、[9.19][9.19 UR]、[9.20][9.20 UR]、[9.21][9.21 UR] | 3.2.0-4-amd64 から 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 7 | [9.19][9.19 UR]、[9.20][9.20 UR]、[9.21][9.21 UR]、[9.22][9.22 UR]| 3.2.0-4-amd64 から 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | [9.20][9.20 UR]、[9.21][9.21 UR] | 3.16.0-4-amd64 から 3.16.0-7-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.8-amd64 |
+Debian 8 | [9.20][9.20 UR]、[9.21][9.21 UR]、[9.22][9.22 UR] | 3.16.0-4-amd64 から 3.16.0-7-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.8-amd64 |
 Debian 8 | [9.19][9.19 UR] | 3.16.0-4-amd64 から 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.7-amd64 |
-Debian 8 | [9.18][9.18 UR] | 3.16.0-4-amd64 から 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.6-amd64 |
 
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 のサポートされるカーネルのバージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.22][9.22 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.21][9.21 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.156-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.20][9.20 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default から 4.4.156-94.64-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.19][9.19 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.96-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.85-default</br></br>SP3 4.4.73-5-default から 4.4.140-94.42-default |
-SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.18][9.18 UR] | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.96-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.85-default</br></br>SP3 4.4.73-5-default から 4.4.138-94.39-default |
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux ファイル システム/ゲストのストレージ
 
@@ -112,7 +112,8 @@ SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | [9.18][9.18 UR] | SP1 3.12.4
 マルチ キュー ブロック IO デバイス | サポートされていません。
 HP CCISS ストレージ コントローラーを使用する物理サーバー | サポートされていません。
 デバイス/マウント ポイントの名前付け規則 | デバイス名またはマウント ポイント名は、一意である必要があります。 大文字と小文字の区別なしで同じ名前を持つデバイス/マウント ポイントが複数存在しないことを確認します。 </br> 例:同じ仮想マシンの 2 つのデバイスに *device1* および *Device1* という名前を付けることは許可されません。
-ディレクトリ | [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) より前 <br/> 1./ (ルート)、/boot、/usr、/usr/local、/var、/etc の各ディレクトリ (個別のパーティション/ファイルシステムとしてセットアップされた場合) はすべて、ソース サーバーの同じ OS ディスク上に存在する必要があります。</br>2. /boot はディスク パーティション上にあり、LVM ボリュームではないことが必要です。<br/><br/> [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) 以降では、上記の制限は適用されません。
+ディレクトリ | [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) より前 <br/> 1./ (ルート)、/boot、/usr、/usr/local、/var、/etc の各ディレクトリ (個別のパーティション/ファイルシステムとしてセットアップされた場合) はすべて、ソース サーバーの同じ OS ディスク上に存在する必要があります。</br>2. /boot はディスク パーティション上にあり、LVM ボリュームではないことが必要です。<br/><br/> [バージョン 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) 以降では、上記の制限は適用されません。 複数のディスクにまたがる LVM ボリュームでの /boot はサポートされていません。
+ブート ディレクトリ | 仮想マシン上の複数のブート ディスクは、サポートされていません <br/><br/> ブート ディスクのないマシンは保護できません
 
 空き領域要件 | /root パーティションで 2 GB <br/><br/> インストール フォルダー XFSv5 で 250 MB | メタデータ チェックサムなど、XFS ファイル システム上の XFSv5 機能は、モビリティ サービスのバージョン 9.10 以降でサポートされます。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 ftype が 1 に設定されている場合は、XFSv5 の機能が使用されます。
 
@@ -143,39 +144,41 @@ HP CCISS ストレージ コントローラーを使用する物理サーバー 
 
 **コンポーネント** | **サポートされています**
 --- | ---
-Azure ExpressRoute | [はい]
-ILB | [はい]
-ELB | [はい]
-Azure の Traffic Manager | [はい]
-マルチ NIC | [はい]
-予約済み IP アドレス | [はい]
-IPv4 | [はい]
-送信元 IP アドレスを保持する | [はい]
-Azure Virtual Network サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | [はい]
+Azure ExpressRoute | はい
+ILB | はい
+ELB | はい
+Azure の Traffic Manager | はい
+マルチ NIC | はい
+予約済み IP アドレス | はい
+IPv4 | はい
+送信元 IP アドレスを保持する | はい
+Azure Virtual Network サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | はい
 高速ネットワーク | いいえ 
 
 ## <a name="storage"></a>Storage
 **コンポーネント** | **サポートされています**
 --- | ---
+ダイナミック ディスク | オペレーティング システム ディスクは、ベーシック ディスクである必要があります。 <br/><br/>データ ディスクは、ダイナミック ディスクにすることができます
+Docker ディスク構成 | いいえ 
 ホスト NFS | VMware = はい<br/><br/> 物理サーバー = いいえ
-ホスト SAN (iSCSI/FC) | [はい]
+ホスト SAN (iSCSI/FC) | はい
 ホスト vSAN | VMware = はい<br/><br/> 物理サーバー = 該当なし
 ホスト マルチパス (MPIO) | はい - テスト環境: Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON
 ホストの仮想ボリューム (VVols) | VMware = はい<br/><br/> 物理サーバー = 該当なし
-ゲスト/サーバー VMDK | [はい]
+ゲスト/サーバー VMDK | はい
 ゲスト/サーバー EFI/UEFI| 一部 (Windows Server 2012 以降の Azure への移行) <br/><br/> この表の下部の注意事項をご覧ください
 ゲスト/サーバー共有クラスター ディスク | いいえ 
 ゲスト/サーバー暗号化ディスク | いいえ 
 ゲスト/サーバー NFS | いいえ 
 ゲスト/サーバー SMB 3.0 | いいえ 
-ゲスト/サーバー RDM | [はい]<br/><br/> 物理サーバー = 該当なし
-ゲスト/サーバー ディスク > 1 TB | [はい]<br/><br/>最大 4,095 GB<br/><br/> ディスクは 1024 MB 以上である必要があります。
-4K 論理および 4K 物理セクター サイズのゲスト/サーバー ディスク | [はい]
-4K 論理および 512 バイト物理セクター サイズのゲスト/サーバー ディスク | [はい]
-ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB <br/><br/>論理ボリューム管理 (LVM)| [はい]
+ゲスト/サーバー RDM | はい<br/><br/> 物理サーバー = 該当なし
+ゲスト/サーバー ディスク > 1 TB | はい<br/><br/>最大 4,095 GB<br/><br/> ディスクは 1024 MB 以上である必要があります。
+4K 論理および 4K 物理セクター サイズのゲスト/サーバー ディスク | はい
+4K 論理および 512 バイト物理セクター サイズのゲスト/サーバー ディスク | はい
+ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB <br/><br/>論理ボリューム管理 (LVM)| はい
 ゲスト/サーバー - 記憶域スペース | いいえ 
 ゲスト/サーバー ディスクのホット アド/削除 | いいえ 
-ゲスト/サーバー - ディスクの除外 | [はい]
+ゲスト/サーバー - ディスクの除外 | はい
 ゲスト/サーバー マルチパス (MPIO) | いいえ 
 
 > [!NOTE]
@@ -189,14 +192,14 @@ Azure Virtual Network サービス エンドポイント<br/> (Azure Storage フ
 
 **コンポーネント** | **サポートされています**
 --- | ---
-ローカル冗長ストレージ | [はい]
-geo 冗長ストレージ | [はい]
-読み取りアクセス geo 冗長ストレージ | [はい]
+ローカル冗長ストレージ | はい
+geo 冗長ストレージ | はい
+読み取りアクセス geo 冗長ストレージ | はい
 クール ストレージ | いいえ 
 ホット ストレージ| いいえ 
 ブロック blob | いいえ 
-保存時の暗号化 (Storage サービスの暗号化)| [はい]
-Premium Storage | [はい]
+保存時の暗号化 (Storage サービスの暗号化)| はい
+Premium Storage | はい
 インポート/エクスポート サービス | いいえ 
 ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成された仮想ネットワークの Azure Storage ファイアウォール | いいえ 
 汎用目的 V2 ストレージ アカウント (ホット層とクール層の両方) | いいえ 
@@ -205,9 +208,9 @@ Premium Storage | [はい]
 
 **機能** | **サポートされています**
 --- | ---
-可用性セット | [はい]
-ハブ | [はい]
-マネージド ディスク | [はい]
+可用性セット | はい
+ハブ | はい
+マネージド ディスク | はい
 
 ## <a name="azure-vm-requirements"></a>Azure VM の要件
 
@@ -238,9 +241,9 @@ VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文
 
 ## <a name="download-latest-azure-site-recovery-components"></a>Azure Site Recovery コンポーネントのダウンロード
 
-**名前** | **説明** | **最新バージョンのダウンロード手順**
+**Name** | **説明** | **最新バージョンのダウンロード手順**
 --- | --- | --- | --- | ---
-構成サーバー | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/>  オンプレミスの VMware サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-deploy-configuration-server.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をクリックしてください。
+構成サーバー | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/> オンプレミスの VMware サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-deploy-configuration-server.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をクリックしてください。
 プロセス サーバー|構成サーバーに既定でインストールされます。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。 デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立したプロセス サーバーを追加できます。| 新規インストールについては、[こちら](vmware-azure-set-up-process-server-scale.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-process-server.md#upgrade-a-process-server)をクリックしてください。
 モビリティ サービス | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-install-mobility-service.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-physical-mobility-service-overview.md#update-the-mobility-service)をクリックしてください。
 
@@ -250,6 +253,7 @@ VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文
 ## <a name="next-steps"></a>次の手順
 VMware VM のディザスター リカバリーのために Azure を準備する[方法を学びます](tutorial-prepare-azure.md)。
 
+[9.22 UR]: https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery
 [9.21 UR]: https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery
 [9.20 UR]: https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery
 [9.19 UR]: https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30

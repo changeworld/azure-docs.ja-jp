@@ -4,8 +4,8 @@ description: Azure App Service on Linux で SSH を使用する方法につい�
 keywords: Azure App Service, Web アプリ, Linux, OSS
 services: app-service
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.service: app-service
@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: wesmc
+ms.date: 02/25/2019
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ff5c18b08a2921efe72a35b9bd982986c1867812
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: a56c4b0bac61bd2039138ffed554130c6e520821
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251308"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167135"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Azure App Service on Linux での SSH のサポート
 
@@ -58,7 +58,7 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
     > [!NOTE]
     > この構成では、コンテナーへの外部接続は許可されません。 SSH は Kudu/SCM サイト経由でのみアクセスでき、公開されている資格情報を使用して認証されます。
 
-    ```docker
+    ```Dockerfile
     # ------------------------
     # SSH Server support
     # ------------------------
@@ -67,20 +67,20 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
         && echo "root:Docker!" | chpasswd
     ```
 
-2. [sshd_config](https://man.openbsd.org/sshd_config) ファイルを */etc/ssh/* ディレクトリにコピーする [`COPY` 命令](https://docs.docker.com/engine/reference/builder/#copy)を Dockerfile に 追加します。 構成ファイルは、GitHub レポジトリに格納されている Azure App Service の sshd_config ファイルに基づいている必要があります ([こちら](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config)を参照してください)。
+2. [sshd_config](https://man.openbsd.org/sshd_config) ファイルを */etc/ssh/* ディレクトリにコピーする [`COPY` 命令](https://docs.docker.com/engine/reference/builder/#copy)を Dockerfile に 追加します。 構成ファイルは、GitHub レポジトリに格納されている Azure App Service の sshd_config ファイルに基づいている必要があります ([こちら](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config)を参照してください)。
 
     > [!NOTE]
     > *sshd_config* ファイルには次の項目を指定する必要があります。指定がない場合、接続は失敗します。 
     > * `Ciphers` には次の値を少なくとも 1 つ指定する必要あります。`aes128-cbc,3des-cbc,aes256-cbc`
     > * `MACs` には次の値を少なくとも 1 つ指定する必要あります。`hmac-sha1,hmac-sha1-96`
 
-    ```docker
+    ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
 3. Dockerfile の [`EXPOSE` 命令](https://docs.docker.com/engine/reference/builder/#expose)に、ポート 2222 を含めます。 ルート パスワードはわかっていますが、ポート 2222 はインターネットからアクセスすることはできません。 それはプライベート仮想ネットワークのブリッジ ネットワーク内でコンテナーのみがアクセスできる内部専用ポートです。
 
-    ```docker
+    ```Dockerfile
     EXPOSE 2222 80
     ```
 
@@ -93,7 +93,7 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
 
 Dockerfile では、[`ENTRYPOINT` 命令](https://docs.docker.com/engine/reference/builder/#entrypoint)を使用してスクリプトを実行します。
 
-    ```docker
+    ```Dockerfile
     COPY init_container.sh /opt/startup
     ...
     RUN chmod 755 /opt/startup/init_container.sh
@@ -110,18 +110,6 @@ Dockerfile では、[`ENTRYPOINT` 命令](https://docs.docker.com/engine/referen
 TCP トンネリングを使用して、認証済みの WebSocket 接続経由で開発用マシンと Web App for Containers 間にネットワーク接続を作成できます。 これにより、任意のクライアントから App Service で実行されているコンテナーとの SSH セッションを開くことができます。
 
 最初に、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールする必要があります。 Azure CLI をインストールしないとどのように動作するかを確認するには、[Azure Cloud Shell](../../cloud-shell/overview.md) を開きます。 
-
-[az extension add](/cli/azure/extension?view=azure-cli-latest#az-extension-add) を実行して、最新の App Service 拡張機能を追加します。
-
-```azurecli-interactive
-az extension add --name webapp
-```
-
-`az extension add` を以前に実行した場合は、代わりに [az extension update](/cli/azure/extension?view=azure-cli-latest#az-extension-update) を実行します。
-
-```azurecli-interactive
-az extension update --name webapp
-```
 
 [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 アプリの _\<subscription\_id>_、_\<group\_name>_、および \_<app\_name> を指定します。
 
@@ -167,7 +155,7 @@ A P P   S E R V I C E   O N   L I N U X
 0e690efa93e2:~#
 ```
 
-これでコネクタに接続されました。 
+これでコネクタに接続されました。  
 
 [top](https://ss64.com/bash/top.html) コマンドを実行してみます。 プロセスの一覧にアプリのプロセスが表示されます。 次の出力例では、`PID 263` のものです。
 

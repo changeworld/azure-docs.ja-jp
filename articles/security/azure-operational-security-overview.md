@@ -4,7 +4,7 @@ description: この記事では、Azure で運用可能なセキュリティの�
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 478228ccb12fbfe3ca527bf4d16af05735b7ba92
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238541"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116475"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -139,15 +139,15 @@ Network Watcher を使用すると、Azure ネットワークの監視と診断�
 
 現在、Network Watcher が備える機能は次のとおりです。
 
-- [トポロジ](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): リソース グループ内のネットワーク リソース間のさまざまな相互接続および関係を確認できます。
-- [可変パケット キャプチャ](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): 仮想マシンで送受信されるパケット データをキャプチャします。 時間やサイズの制限を設定する機能など、詳細なフィルター オプションときめ細やかなコントロールにより、多様なキャプチャを行えます。 パケット データは、.cap 形式で BLOB ストアまたはローカル ディスクに保管できます。
-- [IP フロー検証](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): フロー情報の 5 タプル パケット パラメーター (宛先 IP、発信元 IP、宛先ポート、発信元ポート、プロトコル) に基づいてパケットが許可されたか拒否されたかを確認します。 パケットがセキュリティ グループによって拒否された場合は、そのパケットを拒否した規則とグループが返されます。
-- [次のホップ](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Azure ネットワーク ファブリックにおけるルーティング対象パケットの次のホップを特定します。これにより、誤って構成されたユーザー定義のルーティングがあるかどうかを診断できます。
-- [セキュリティ グループ ビュー](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) - VM に適用されている有効な適用セキュリティ規則を確認できます。
-- [ネットワーク セキュリティ グループの NSG フロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview): そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (送信元 IP、宛先 IP送信元ポート、宛先ポート、プロトコル) で定義されます。
-- [仮想ネットワーク ゲートウェイと接続のトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): 仮想ネットワーク ゲートウェイと接続に関する問題をトラブルシューティングできます。
-- [ネットワーク サブスクリプションの制限](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
-- [診断ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): 1 つのウィンドウで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
+- [トポロジ](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview):リソース グループ内のネットワーク リソース間のさまざまな相互接続および関係を確認できます。
+- [可変パケット キャプチャ](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview):仮想マシンで送受信されるパケット データをキャプチャします。 時間やサイズの制限を設定する機能など、詳細なフィルター オプションときめ細やかなコントロールにより、多様なキャプチャを行えます。 パケット データは、.cap 形式で BLOB ストアまたはローカル ディスクに保管できます。
+- [IP フロー検証](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview):フロー情報の 5 タプル パケット パラメーター (宛先 IP、発信元 IP、宛先ポート、発信元ポート、プロトコル) に基づいてパケットが許可されたか拒否されたかを確認します。 パケットがセキュリティ グループによって拒否された場合は、そのパケットを拒否した規則とグループが返されます。
+- [次ホップ](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview):Azure ネットワーク ファブリックにおけるルーティング対象パケットの次のホップを特定します。これにより、誤って構成されたユーザー定義のルーティングがあるかどうかを診断できます。
+- [セキュリティ グループ ビュー](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview):VM に適用されている有効な適用セキュリティ規則を確認できます。
+- [ネットワーク セキュリティ グループの NSG フロー ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview):そのグループのセキュリティ規則で許可または拒否されるトラフィックに関係するログを記録できます。 フローは 5 タプル情報 (送信元 IP、宛先 IP送信元ポート、宛先ポート、プロトコル) で定義されます。
+- [Virtual Network ゲートウェイと接続のトラブルシューティング](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest):仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う機能を提供します。
+- [ネットワーク サブスクリプションの制限](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview):ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
+- [診断ログ](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview):1 つのウィンドウで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
 
 詳しくは、[Network Watcher の構成](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)に関する記事をご覧ください。
 

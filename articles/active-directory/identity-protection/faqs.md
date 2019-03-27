@@ -4,23 +4,24 @@ description: Azure AD Identity Protection についてよく寄せられる質�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 14f7fc83-f4bb-41bf-b6f1-a9bb97717c34
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: f3123ed9a6d4898889b36e29c34c6c6a7496ea0d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.reviewer: raluthra
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f275794a07d8ea620479b9e4ee5432b82cc13fcb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005452"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198917"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection の FAQ
 
@@ -46,6 +47,6 @@ ms.locfileid: "40005452"
 
 ## <a name="how-can-i-sort-users-in-users-flagged-for-risk"></a>"リスクのフラグ付きユーザー" でユーザーを並べ替えるにはどうすればよいですか。
 
-**A:** **[リスクのフラグ付きユーザー]** ページの上部にある **[ダウンロード]** をクリックして、リスクのフラグ付きユーザー レポートをダウンロードします。 [最終更新日時 (UTC)] など、使用可能なフィールドに基づいて、ダウンロードされたデータを並べ替えることができます。
+**A:** **[リスクのフラグ付きユーザー]** ページの上部にある **[ダウンロード]** をクリックして、リスクのフラグ付きユーザー レポートをダウンロードします。  [最終更新日時 (UTC)] など、使用可能なフィールドに基づいて、ダウンロードされたデータを並べ替えることができます。
 
 ---

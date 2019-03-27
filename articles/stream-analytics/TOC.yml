@@ -32,21 +32,25 @@ items:
 - name: 概念
   items:
   - name: ジョブの入力の種類
-    href: stream-analytics-add-inputs.md
     items:
+    - name: 入力の概要
+      href: stream-analytics-add-inputs.md
     - name: ストリーミング データの入力
       href: stream-analytics-define-inputs.md
     - name: 参照データ入力
       href: stream-analytics-use-reference-data.md
   - name: ジョブの出力の種類
-    href: stream-analytics-define-outputs.md
     items:
+    - name: 出力の概要
+      href: stream-analytics-define-outputs.md
     - name: Cosmos DB に出力する
       href: stream-analytics-documentdb-output.md
     - name: Azure SQL DB に出力する
       href: stream-analytics-sql-output-perf.md
     - name: BLOB のカスタム パス パターン
       href: stream-analytics-custom-path-patterns-blob-storage-output.md
+  - name: ジョブの状態
+    href: job-states.md
   - name: ウィンドウ関数
     href: stream-analytics-window-functions.md
   - name: 地理空間の関数
@@ -57,8 +61,8 @@ items:
     href: stream-analytics-stream-analytics-query-patterns.md
   - name: JSON および AVRO データの解析
     href: stream-analytics-parsing-json.md
-  - name: イベントの順序に関する考慮事項
-    href: stream-analytics-out-of-order-and-late-events.md
+  - name: 時間の処理に関する考慮事項
+    href: stream-analytics-time-handling.md
   - name: チェックポイントと再生
     href: stream-analytics-concepts-checkpoint-replay.md
   - name: エラー ポリシー
@@ -69,8 +73,12 @@ items:
     items:
     - name: 資格情報の更新
       href: stream-analytics-login-credentials-inputs-outputs.md
+    - name: イベント順序ポリシーを構成する
+      href: event-ordering.md
     - name: アラートを構成する
       href: stream-analytics-set-up-alerts.md
+    - name: ジョブを開始する
+      href: start-job.md
     - name: ジョブをテストする
       href: stream-analytics-test-query.md
     - name: ダッシュボードに結果を表示する
@@ -81,6 +89,8 @@ items:
       href: stream-analytics-job-reliability.md
     - name: マネージド ID による認証
       href: stream-analytics-managed-identities-adls.md
+    - name: SQL リファレンス データを使用する
+      href: sql-reference-data.md
   - name: ソリューションを構築する
     items:
     - name: Twitter センチメントの分析
@@ -116,9 +126,10 @@ items:
     items:
     - name: ストリーミング ユニットを利用したスケーリング
       href: stream-analytics-streaming-unit-consumption.md
-    - name: クエリ並列処理を使用したスケーリング
-      href: stream-analytics-parallelization.md
+    - name: 並列処理を使用したスケーリング
       items:
+      - name: クエリ並列処理
+        href: stream-analytics-parallelization.md
       - name: スループットの向上
         href: stream-analytics-scale-jobs.md
     - name: ML 関数を利用したスケーリング
@@ -129,7 +140,7 @@ items:
       href: stream-analytics-dotnet-management-sdk.md
     - name: Azure PowerShell の使用
       href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
-    - name: API の使用
+    - name: Edge ジョブへの API の使用
       href: stream-analytics-cicd-api.md
   - name: Visual Studio Tools
     items:
@@ -155,7 +166,7 @@ items:
       href: stream-analytics-troubleshoot-output.md
     - name: クエリ ロジック
       href: stream-analytics-troubleshoot-query.md
-    - name: 診断ログ
+    - name: アクティビティ ログと診断ログ
       href: stream-analytics-job-diagnostic-logs.md
   - name: Machine Learning との統合
     items:
@@ -210,14 +221,16 @@ items:
       items:
       - name: 分析関数の概要
         href: /stream-analytics-query/analytic-functions-azure-stream-analytics
+      - name: AnomalyDetection_SpikeAndDip
+        href: /stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+      - name: AnomalyDetection_ChangePoint
+        href: /stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics
       - name: ISFIRST
         href: /stream-analytics-query/isfirst-azure-stream-analytics
       - name: LAG
         href: /stream-analytics-query/lag-azure-stream-analytics
       - name: LAST
         href: /stream-analytics-query/last-azure-stream-analytics
-      - name: AnomalyDetection
-        href: /stream-analytics-query/anomaly-detection-azure-stream-analytics
     - name: 配列関数
       items:
       - name: 配列関数の概要
@@ -394,7 +407,7 @@ items:
 - name: リファレンス
   items:
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.streamanalytics
+    href: /powershell/module/az.streamanalytics
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.streamanalytics
   - name: REST
@@ -420,16 +433,16 @@ items:
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=stream-analytics
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-stream-analytics
+    href: https://stackoverflow.com/questions/tagged/azure-stream-analytics
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
   - name: お客様導入事例
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: a66aa2ae82ab9862de7a6a6be425268462c61755
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e9ef3d7ed841dd5bb2a9ad21f0dd4f71e528c374
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352769"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286059"

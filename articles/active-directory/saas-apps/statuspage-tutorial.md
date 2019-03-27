@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と StatusPage の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と StatusPage の統合 | Microsoft Docs
 description: Azure Active Directory と StatusPage の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: f6ee8bb3-df43-4c0d-bf84-89f18deac4b9
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: e79eb2473760fd1eb7ccc3816ac73cce7c801f3e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4494996ed54b25be71367dd3e3043023d0958074
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445366"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224041"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>チュートリアル: Azure Active Directory と StatusPage の統合
+# <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>チュートリアル:Azure Active Directory と StatusPage の統合
 
 このチュートリアルでは、StatusPage と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ StatusPage で、Azure AD の **[ユーザー名]** の値を **[Username]** の
 
 StatusPage で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[StatusPage のテスト ユーザーの作成](#creating-a-statuspage-test-user)** - StatusPage で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -113,23 +114,25 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
     ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_url.png)
 
     a. **[識別子]** ボックスに、次のパターンで URL を入力します。
+
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/` |
     | `https://<subdomain>.statuspage.io/` |
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 
+    
     | |
     |--|
     | `https://<subdomain>.statuspagestaging.com/sso/saml/consume` |
     | `https://<subdomain>.statuspage.io/sso/saml/consume` |
 
-    > [!NOTE]
-    > シングル サインオンを構成するために必要なメタデータは、StatusPage サポート チーム ( [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io)) に連絡して入手してください。 
-    >
-    >a. メタデータから発行者の値をコピーし、**[識別子]** ボックスに貼り付けます。
-    >
-    >b. メタデータから応答 URL をコピーし、**[応答 URL]** ボックスに貼り付けます。
+   > [!NOTE]
+   > シングル サインオンを構成するために必要なメタデータは、StatusPage サポート チーム ( [SupportTeam@statuspage.io](mailto:SupportTeam@statuspage.io)) に連絡して入手してください。 
+   > 
+   > a. メタデータから発行者の値をコピーし、**[識別子]** ボックスに貼り付けます。
+   > 
+   > b. メタデータから応答 URL をコピーし、**[応答 URL]** ボックスに貼り付けます。
 
 1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -155,18 +158,18 @@ StatusPage で Azure AD のシングル サインオンを構成してテスト�
 
 1. [SSO Setup] ページで、次の手順に従います。
    
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
+      ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_08.png) 
 
-    ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
+      ![Configure single sign-on](./media/statuspage-tutorial/tutorial_statuspage_09.png) 
  
-    a. **[SSO ターゲット URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+      a. **[SSO ターゲット URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    b. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Certificate]** ボックスに貼り付けます。 
+      b. ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Certificate]** ボックスに貼り付けます。 
 
-    c. **[構成の保存]** をクリックします。
+      c. **[構成の保存]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成

@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と UserVoice の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と UserVoice の統合 | Microsoft Docs
 description: Azure Active Directory と UserVoice の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 684a405b-8932-46f6-b43a-4d97a42b6b87
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: f69955cb3e5419659e358e738c28f214fb7015b7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 94e077e07796fc111c35b6571459a5e316096ebc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429150"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206635"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>チュートリアル: Azure Active Directory と UserVoice の統合
+# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>チュートリアル:Azure Active Directory と UserVoice の統合
 
 このチュートリアルでは、UserVoice と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -149,12 +150,12 @@ UserVoice で Azure AD のシングル サインオンを構成してテスト�
 
     c. Azure Portal からコピーした **[サインアウト URL]** の値を **[SSO Remote Sign-Out]\(SSO リモート サインアウト\)** ボックスに貼り付けます。
  
-    d. Azure Portal からコピーした **[拇印]** の値を **[Current certificate SHA1 fingerprint]\(現在の証明書 SHA1 のフィンガープリント\)** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure Portal からコピーした **[拇印]**  の値を  **[Current certificate SHA1 fingerprint]\(現在の証明書 SHA1 のフィンガープリント\)**  ボックスに貼り付けます。
     
     e. **[認証設定の保存]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -187,7 +188,7 @@ UserVoice で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-uservoice-test-user"></a>UserVoice テスト ユーザーの作成
 

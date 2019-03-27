@@ -4,7 +4,7 @@ description: App Service on Linux のカスタム Docker コンテナーのデ�
 keywords: Azure App Service, Web アプリ, Linux, OSS
 services: app-service
 documentationCenter: ''
-authors: msangapu
+author: msangapu
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6ebcbc5b716f20cbc1d826899769e5629559675b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 079bfae19a4960ef5ab95c9d48d5603423407a9e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543106"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772876"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>カスタム イメージか、複数コンテナーか、組み込みのプラットフォーム イメージか
 
@@ -47,7 +47,7 @@ ms.locfileid: "53543106"
 ## <a name="multi-container-apps-supportability"></a>複数コンテナー アプリのサポート
 
 ### <a name="supported-docker-compose-configuration-options"></a>サポートされている Docker Compose 構成オプション
-- コマンド
+- command
 - entrypoint
 - 環境
 - image
@@ -68,7 +68,7 @@ ms.locfileid: "53543106"
 
 ### <a name="supported-kubernetes-configuration-options"></a>サポートされている Kubernetes 構成オプション
 - args
-- コマンド
+- command
 - containers
 - image
 - name

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7f90fccd062826493b7add1a90406fa9244e00b2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5e9104f59173c3d39ef2f2232ed2a9c6864cf84f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002043"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892560"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム: 機密データ | 軽減策 
 | 製品/サービス | 記事 |
@@ -130,7 +130,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [方法: DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
+| **参照**              | [方法:DPAPI を使用して ASP.NET 2.0 内の構成セクションを暗号化する方法](https://msdn.microsoft.com/library/ff647398.aspx)、[保護された構成プロバイダーの指定](https://msdn.microsoft.com/library/68ze1hb2.aspx)、[Azure Key Vault を使用してアプリケーション シークレットを保護する](https://azure.microsoft.com/documentation/articles/guidance-multitenant-identity-keyvault/) |
 | **手順** | Web.config、appsettings.json などの構成ファイルは、一般的に、ユーザー名、パスワード、データベース接続文字列、暗号化キーなどの機密情報の保持に使用されます。 この情報を保護しないと、アプリケーションは、アカウントのユーザー名とパスワード、データベース名、サーバー名などの機密情報を取得する、攻撃者や悪意のあるユーザーに対して脆弱になります。 構成ファイルの重要なセクションは、デプロイメント タイプ (azure/on-prem) に基づいて、DPAPI または Azure Key Vault などのサービスを使用して暗号化してください。 |
 
 ## <a id="autocomplete-input"></a>機密性の高いフォームおよび入力の autocomplete HTML 属性を明示的に無効にする
@@ -349,7 +349,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、Xamarin  |
 | **属性**              | 該当なし  |
-| **参照**              | [Microsoft Intune ポリシーを使用してデバイスの設定と機能を管理する](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies#create-a-configuration-policy)、[Keychain Valet](https://components.xamarin.com/view/square.valet) |
+| **参照**              | [Microsoft Intune ポリシーを使用してデバイスの設定と機能を管理する](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies)、[Keychain Valet](https://components.xamarin.com/view/square.valet) |
 | **手順** | <p>アプリケーションがユーザーの PII (メール アドレス、電話番号、名、姓、個人設定など) のような機密情報をモバイル デバイスのファイル システムに書き込む場合、ローカル ファイル システムに書き込む前に暗号化する必要があります。 アプリケーションがエンタープライズ アプリケーションの場合は、Windows Intune を使ってアプリケーションを発行する可能性を調査します。</p>|
 
 ### <a name="example"></a>例

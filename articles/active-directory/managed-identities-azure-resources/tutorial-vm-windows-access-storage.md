@@ -3,25 +3,26 @@ title: Windows VM のシステム割り当てマネージド ID を使用して 
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: daveba
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
-ms.author: daveba
-ms.openlocfilehash: 9c2280d2b571bf9f08adb69b67992376a71c1463
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.author: priyamo
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 220c419142f31261a193795da85eedd841183db9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52723637"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202708"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 

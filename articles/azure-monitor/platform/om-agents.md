@@ -61,15 +61,15 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 |リソース | ポート番号| バイパス HTTP 検査|  
 |---------|------|-----------------------|  
 |**エージェント**|||  
-|\*.ods.opinsights.azure.com| 443 |[はい]|  
-|\*.oms.opinsights.azure.com| 443|[はい]|  
-|\*.blob.core.windows.net| 443|[はい]|  
-|\*.azure-automation.net| 443|[はい]|  
+|\*.ods.opinsights.azure.com| 443 |はい|  
+|\*.oms.opinsights.azure.com| 443|はい|  
+|\*.blob.core.windows.net| 443|はい|  
+|\*.azure-automation.net| 443|はい|  
 |**管理サーバー**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| [はい]|  
-|\*.ods.opinsights.azure.com| 443| [はい]|  
-|*.azure-automation.net | 443| [はい]|  
+|\*.blob.core.windows.net| 443| はい|  
+|\*.ods.opinsights.azure.com| 443| はい|  
+|*.azure-automation.net | 443| はい|  
 |**Log Analytics に対する Operations Manager コンソール**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -226,7 +226,7 @@ Operations Manager との統合のために有効にされたソリューショ�
     > **[削除]** リンクは、接続された管理グループからアクティビティが検出されない場合、14 日後までは使用できません。  
     > 
 
-1. 削除操作を続行するかどうかを確認するためのウィンドウが表示されます。  **[はい]** をクリックして続行します。 
+1. 削除操作を続行するかどうかを確認するためのウィンドウが表示されます。  **はい** をクリックして続行します。 
 
 Microsoft.SystemCenter.Advisor.DataConnector と Advisor Connector の 2 つのコネクタを削除するには、次の PowerShell スクリプトを自分のコンピューターに保存した後、次の例に従って実行します。
 

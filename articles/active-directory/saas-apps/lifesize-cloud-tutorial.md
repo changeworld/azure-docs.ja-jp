@@ -4,7 +4,7 @@ description: Azure Active Directory と Lifesize Cloud の間でシングル サ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 75fab335-fdcd-4066-b42c-cc738fcb6513
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 312d1c8a1fdeb202d137b32a92e275b42c9934ee
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1be975a7a0e004e29aaee9433c727d1d456ff03c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064272"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>チュートリアル:Azure Active Directory と Lifesize Cloud の統合
 
@@ -112,7 +113,7 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
 
     c. **[追加の URL を設定します]** をクリックします。
 
-    d. **[リレー状態]** ボックスに、`https://webapp.lifesizecloud.com/?ent=<identifier>` のパターンで URL を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[リレー状態]** ボックスに、`https://webapp.lifesizecloud.com/?ent=<identifier>` のパターンで URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL、識別子、リレー状態でこれらの値を更新します。 サインオン URL と識別子の値は、[Lifesize Cloud クライアント サポート チーム](https://www.lifesize.com/en/support)に問い合わせます。リレー状態の値は、このチュートリアルで後述する SSO 構成から取得できます。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -153,7 +154,7 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
 
     c. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X.509 証明書]** ボックスに貼り付けます。
   
-    d. [名] ボックスの SAML 属性マッピングに、値を「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [名] ボックスの SAML 属性マッピングに、値を「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
 
     e. **[姓]** ボックスの SAML 属性マッピングに、値を「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
 
@@ -235,6 +236,6 @@ Lifesize Cloud との Azure AD シングル サインオンを構成するには
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

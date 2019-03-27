@@ -4,7 +4,7 @@ description: この記事では、パスワード ハッシュ同期の問題の
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 036933c6b6e86856871c5f59f08fea20a0343ad7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 56fda1110218910f8fbd8aa9597195f37444e01c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310021"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193329"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング
 このトピックでは、パスワード ハッシュ同期の問題のトラブルシューティングを行う手順を示します。 パスワードが想定どおりに同期しない場合、そのパスワードが、ユーザーのサブセット、またはすべてのユーザーを対象している可能性があります。
@@ -224,7 +225,7 @@ Azure AD テナントに対応するオブジェクトがないため、この�
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>パスワードが同期されない: 手動によるトラブルシューティング手順
 パスワードが同期されない理由を確認するには、次の手順に従います。
 
-1. Connect サーバーは[ステージング モード](how-to-connect-sync-operations.md#staging-mode)ですか。 ステージング モードのサーバーは、パスワードを同期しません。
+1. Connect サーバーは[ステージング モード](how-to-connect-sync-staging-server.md)ですか。 ステージング モードのサーバーは、パスワードを同期しません。
 
 2. 「[パスワード同期設定の状態の取得](#get-the-status-of-password-sync-settings)」セクションにあるスクリプトを実行してください。 これにより、パスワード同期の構成の概要が示されます。  
 
@@ -233,11 +234,11 @@ Azure AD テナントに対応するオブジェクトがないため、この�
 3. この機能が Azure AD で有効ではない場合、または同期チャネルの状態が有効ではない場合は、Connect のインストール ウィザードを実行してください。 **[同期オプションのカスタマイズ]** を選択し、パスワード同期の選択を解除します。この変更により、一時的に機能が無効になります。 その後、もう一度ウィザードを実行し、パスワード同期を再度有効にします。スクリプトを再実行して、構成が正しいことを確認します。
 
 4. イベント ログでエラーを調べます。 問題を示す次のイベントを探します。
-    * "Source: "Directory synchronization" ID: 0, 611, 652, 655" イベントが表示されている場合は、接続に問題があります。 イベント ログ メッセージに、問題のあるフォレストの情報が含まれています。 詳細については、「[接続に関する問題](#connectivity problem)」を参照してください。
+    * ソース:"Directory synchronization" ID: 0, 611, 652, 655" イベントが表示されている場合は、接続に問題があります。 イベント ログ メッセージに、問題のあるフォレストの情報が含まれています。 詳細については、「[接続に関する問題](#connectivity problem)」を参照してください。
 
 5. ハートビートが表示されない場合、または他に何も動作していない場合は、「[すべてのパスワードの完全同期の開始](#trigger-a-full-sync-of-all-passwords)」を実行します。 スクリプトは 1 回のみ実行してください。
 
-6. 「[パスワードを同期していない 1 つのオブジェクトのトラブルシューティング](#one-object-is-not-synchronizing-passwords)」セクションをお読みください。
+6. 「パスワードを同期していない 1 つのオブジェクトのトラブルシューティング」セクションをお読みください。
 
 ### <a name="connectivity-problems"></a>接続に関する問題
 
@@ -303,7 +304,7 @@ Azure AD との接続がありますか。
 
     ![オブジェクト ログの詳細](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    オブジェクト ログが空の場合、Azure AD Connect は Active Directory からパスワード ハッシュを読み取ることができていません。 [接続エラー](#connectivity-errors)のトラブルシューティングに進みます。 **[成功]** 以外の値が表示される場合は、「[パスワード同期ログ](#password-sync-log)」の表をご覧ください。
+    オブジェクト ログが空の場合、Azure AD Connect は Active Directory からパスワード ハッシュを読み取ることができていません。 接続エラーのトラブルシューティングに進みます。 **[成功]** 以外の値が表示される場合は、「[パスワード同期ログ](#password-sync-log)」の表をご覧ください。
 
     h. **[系列]** タブを選択し、**[PasswordSync]** 列の少なくとも 1 つの同期規則が **True** であることを確認します。 既定の構成では、同期規則の名前は **[In from AD - User AccountEnabled]\(AD からの受信 - ユーザー AccountEnabled)** です。  
 
@@ -417,5 +418,5 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 
 ## <a name="next-steps"></a>次の手順
 * [Azure AD Connect Sync によるパスワード ハッシュ同期の導入](how-to-connect-password-hash-synchronization.md)
-* [Azure AD Connect Sync: 同期オプションのカスタマイズ](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同期: 同期オプションをカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

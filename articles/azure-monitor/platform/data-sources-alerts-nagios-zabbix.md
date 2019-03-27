@@ -1,6 +1,6 @@
 ---
-title: Log Analytics での Nagios と Zabbix のアラートの収集 | Microsoft Docs
-description: Nagios と Zabbix は、オープン ソースの監視ツールです。 他のソースからのアラートと共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
+title: Azure Monitor で Nagios と Zabbix のアラートを収集する | Microsoft Docs
+description: Nagios と Zabbix は、オープン ソースの監視ツールです。 他のソースからのアラートと共に分析するために、これらのツールからのアラートを Azure Monitor 内に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 1ae719237cb1afee6d2340e1734d008799da8a86
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: f0f156568eed5a1e8f3296ff7c37df7f050dbc33
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107533"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540047"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントから Azure Monitor 内に Nagios と Zabbix からのアラートを収集する 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-[Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 他のソースからのログ データと共に分析するために、これらのツールからのアラートを Log Analytics 内に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
+[Nagios](https://www.nagios.org/) と [Zabbix](https://www.zabbix.com/) は、オープン ソースの監視ツールです。 他のソースからのログ データと共に分析するために、これらのツールからのアラートを Azure Monitor 内に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
 
 
 > [!NOTE]
-> [Azure Monitor によって作成されたアラート](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)はログ データとは別に格納され、ログ クエリからアクセスすることはできません。
+> [Azure Monitor によって作成されたアラート](alerts-overview.md)はログ データとは別に格納され、ログ クエリからアクセスすることはできません。
 
  
 ## <a name="prerequisites"></a>前提条件
@@ -84,7 +84,7 @@ Zabbix サーバーからのアラートを収集するには、ユーザーと�
 
 
 ## <a name="alert-records"></a>アラート レコード
-Log Analytics で[ログ クエリ](../log-query/log-query-overview.md)を使用して、Nagios と Zabbix からアラート レコードを取得できます。
+Azure Monitor で[ログ検索](../log-query/log-query-overview.md)を使用して、Nagios と Zabbix からアラート レコードを取得できます。
 
 ### <a name="nagios-alert-records"></a>Nagios のアラート レコード
 
@@ -122,5 +122,5 @@ Zabbix によって収集されたアラート レコードには、**アラー�
 
 
 ## <a name="next-steps"></a>次の手順
-* Azure Monitor の[アラート](../../monitoring-and-diagnostics/monitoring-overview-alerts.md)について確認します。
+* Azure Monitor の[アラート](alerts-overview.md)について確認します。
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 

@@ -1,25 +1,26 @@
 ---
 title: ギャラリー以外のアプリケーションの追加時に関する問題 |Microsoft Docs
-description: ギャラリー以外のカスタム アプリケーションを追加する場合に直面する、一般的な問題について理解します。
+description: ギャラリー以外のカスタム アプリケーションを追加するときに直面する一般的な問題について説明します
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: barbkess
-ms.openlocfilehash: 01f213f0a02913c2d0b632542160b25c97fec989
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6a07ca553aee2a6267af5a33836e85b2a12d8ae3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713376"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182291"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>ギャラリー以外のアプリケーションの追加時に関する問題
 
@@ -121,12 +122,12 @@ ms.locfileid: "44713376"
 
 -   **詳細** – 操作の結果として発生した内容についての詳細な説明
 
-   *  例 - **内部 URL "http://bing.com/" は既に使用中のため無効です**
+   *  例 - **内部 URL "https://bing.com/" は既に使用中のため無効です**
 
 -   **エラーのコピー** – **[エラーのコピー]** ボックスの右にある**コピー アイコン**をクリックしてすべての通知の詳細をコピーし、サポートまたは製品グループと共有します 
 -   エンジニア
 
-   *  例 ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'http://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'http://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+   *  例 ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 
 

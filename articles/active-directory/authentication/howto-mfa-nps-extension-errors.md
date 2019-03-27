@@ -3,19 +3,20 @@ title: Azure MFA NPS 拡張機能のエラー コードのトラブルシュー�
 description: Azure Multi-Factor Authentication の NPS 拡張機能の問題を解決するためのヘルプを得る
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 3820aae1e926e51ffa88fabc94e3572b286162de
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4c831a5a939e946d7189e4d35eaf051508e904a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634228"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999527"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する
 
@@ -41,8 +42,8 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 | エラー コード | エラー メッセージ | トラブルシューティングの手順 |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | エラー: userObjectSid の検索に失敗しました | ユーザーがオンプレミスの Active Directory インスタンスに存在することを確認します。 フォレスト間の信頼を使用している場合、詳細については、[サポートにお問い合わせください](#contact-microsoft-support)。 |
-| **ALTERNATE_LOGIN_ID_ERROR** | エラー: 代替 LoginId の検索に失敗しました | LDAP_ALTERNATE_LOGINID_ATTRIBUTE が[有効な Active Directory 属性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)に設定されていることを確認します。 <br><br> LDAP_FORCE_GLOBAL_CATALOG が True に設定されているか、LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、グローバル カタログが構成され、それに AlternateLoginId 属性が追加されていることを確認します。 <br><br> LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、値が正しいことを確認します。 複数のフォレスト名がある場合、名前はスペースではなくセミコロンで区切る必要があります。 <br><br> これらの手順で問題が解決されない場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
-| **ALTERNATE_LOGIN_ID_ERROR** | エラー: 代替 LoginId 値が空です | ユーザーの AlternateLoginId 属性が構成されていることを確認します。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | エラー:代替 LoginId の検索に失敗しました | LDAP_ALTERNATE_LOGINID_ATTRIBUTE が[有効な Active Directory 属性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)に設定されていることを確認します。 <br><br> LDAP_FORCE_GLOBAL_CATALOG が True に設定されているか、LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、グローバル カタログが構成され、それに AlternateLoginId 属性が追加されていることを確認します。 <br><br> LDAP_LOOKUP_FORESTS が空でない値で構成されている場合は、値が正しいことを確認します。 複数のフォレスト名がある場合、名前はスペースではなくセミコロンで区切る必要があります。 <br><br> これらの手順で問題が解決されない場合は、[サポートにお問い合わせください](#contact-microsoft-support)。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | エラー:代替 LoginId 値が空です | ユーザーの AlternateLoginId 属性が構成されていることを確認します。 |
 
 ## <a name="errors-your-users-may-encounter"></a>ユーザー側で発生する可能性があるエラー
 
@@ -67,7 +68,7 @@ Azure Multi-Factor Authentication の NPS 拡張機能でエラーが発生し�
 
 | エラー コード | エラー メッセージ | 推奨される手順 | 
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | 誤ったコードが入力されました\OATH コードが正しくありません | エラーではありません。ユーザーが誤ったコードを入力しました。 | ユーザーが誤ったコードを入力しました。 新しいコードを要求するか、サインインし直したうえで、もう一度試すようユーザーに指示します。 | 
+| **OathCodeIncorrect** | 誤ったコードが入力されました\OATH コードが正しくありません | ユーザーが誤ったコードを入力しました。 新しいコードを要求するか、サインインし直したうえで、もう一度試すようユーザーに指示します。 | 
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | 許可されている最大コード再試行回数に達しました | ユーザーが何回も検証チャレンジに失敗しました。 設定によっては、管理者によるブロック解除が必要になることがあります。  |
 | **SMSAuthFailedWrongCodeEntered** | 誤ったコードが入力されました/テキスト メッセージ OTP が正しくありません | ユーザーが誤ったコードを入力しました。 新しいコードを要求するか、サインインし直したうえで、もう一度試すようユーザーに指示します。 |
 

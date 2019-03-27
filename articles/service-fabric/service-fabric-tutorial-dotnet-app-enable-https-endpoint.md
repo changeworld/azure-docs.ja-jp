@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/12/2018
+ms.date: 01/17/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2e631a0605385f8d55c652a26739b23a0945674f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5308fc024a53fdbbef12b409622cc35adaea1e2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077252"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857710"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル:Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
@@ -83,8 +83,8 @@ Visual Studio を**管理者**として起動し、投票ソリューション�
 <ServiceManifest Name="VotingWebPkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <StatelessServiceType ServiceTypeName="VotingWebType" />
   </ServiceTypes>
@@ -158,7 +158,9 @@ serviceContext =>
         }))
 ```
 
-さらに、次のメソッドを追加して、Kestrel がサブジェクトを使用して `Cert:\LocalMachine\My` ストア内の証明書を見つけることができるようにします。  前の PowerShell コマンドを使用して自己署名証明書を作成した場合は、"&lt;your_CN_value&gt;" を "mytestcert" に置き換えます。または、証明書の CN を使用します。
+さらに、次のメソッドを追加して、Kestrel がサブジェクトを使用して `Cert:\LocalMachine\My` ストア内の証明書を見つけることができるようにします。  
+
+前の PowerShell コマンドを使用して自己署名証明書を作成した場合は、"&lt;your_CN_value&gt;" を "mytestcert" に置き換えます。または、証明書の CN を使用します。
 
 ```csharp
 private X509Certificate2 GetCertificateFromStore()
@@ -191,8 +193,8 @@ private X509Certificate2 GetCertificateFromStore()
 <ServiceManifest Name="VotingWebPkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <StatelessServiceType ServiceTypeName="VotingWebType" />
   </ServiceTypes>
@@ -295,7 +297,7 @@ if ($cert -eq $null)
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="VotingType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="VotingData_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="VotingData_PartitionCount" DefaultValue="1" />
@@ -339,7 +341,7 @@ if ($cert -eq $null)
 
 ## <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
 
-ソリューション エクスプローラーで、**Voting** アプリケーションを選択し、**Application URL** プロパティを "https://localhost:443" に設定します。
+ソリューション エクスプローラーで、**Voting** アプリケーションを選択し、**Application URL** プロパティを "<https://localhost:443>" に設定します。
 
 すべてのファイルを保存した後、F5 キーを押してアプリケーションをローカルで実行します。  アプリケーションのデプロイ後、Web ブラウザーで [https://localhost:443](https://localhost:443) が開かれます。 自己署名証明書を使用している場合、この Web サイトのセキュリティが PC によって信頼されていないことを示す警告が表示されます。  Web ページに進みます。
 
@@ -347,7 +349,7 @@ if ($cert -eq $null)
 
 ## <a name="install-certificate-on-cluster-nodes"></a>クラスター ノードに証明書をインストールする
 
-アプリケーションを Azure にデプロイする前に、リモート クラスター ノードの `Cert:\LocalMachine\My` ストアに証明書をインストールします。  フロントエンド Web サービスがクラスター ノードで開始されると、スタートアップ スクリプトによって証明書が参照され、アクセス許可が構成されます。
+アプリケーションを Azure にデプロイする前に、すべてのリモート クラスター ノードの `Cert:\LocalMachine\My` ストアに証明書をインストールします。  サービスは、クラスターの別のノードに移動することができます。  フロントエンド Web サービスがクラスター ノードで開始されると、スタートアップ スクリプトによって証明書が参照され、アクセス許可が構成されます。
 
 最初に、証明書を PFX ファイルにエクスポートします。 certlm.msc アプリケーションを開き、**[個人]**>**[証明書]** の順に移動します。  *[mytestcert]* 証明書を右クリックし、**[すべてのタスク]**>**[エクスポート]** の順に選択します。
 

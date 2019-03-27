@@ -3,19 +3,20 @@ title: Azure AD SSPR のパスワード ライトバックを構成する方法
 description: Azure AD と Azure AD Connect を使って、オンプレミスのディレクトリにパスワードを書き戻します
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: ce1bcb26b3a3510b22ced57471016999156bb0cf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4543352fc87216458aa247f5eea0c8ff5980d0e8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54040661"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209338"
 ---
 # <a name="how-to-configure-password-writeback"></a>方法: パスワード ライトバックを構成する
 
@@ -52,6 +53,7 @@ ms.locfileid: "54040661"
 * Microsoft 365 E3 または A3
 * Microsoft 365 E5 または A5
 * Microsoft 365 F1
+* Microsoft 365 Business
 
 > [!WARNING]
 > スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービスによるパスワードのリセット/変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、上記プランのいずれかが必要になります。

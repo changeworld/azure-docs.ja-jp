@@ -11,15 +11,16 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/05/2019
 ms.author: sethm
-ms.openlocfilehash: a0867399ab00910950598bb83309d1862b407d34
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: 87c93f77011082d3e43b1c7d238999441f1b90c1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192576"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57783008"
 ---
 # <a name="introduction-to-key-vault-in-azure-stack"></a>Azure Stack での Key Vault の概要
 

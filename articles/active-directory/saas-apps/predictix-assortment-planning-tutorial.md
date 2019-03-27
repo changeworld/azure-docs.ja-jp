@@ -4,23 +4,24 @@ description: Azure Active Directory と Predictix Assortment Planning の間で�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 37e686ff-f8e5-40b1-9d7e-f64b076917b7
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 6040300b4cb569d0e78503d7e5a36507e79de67c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c104f36345c33c93b8db2cbbc1442d4bccf02460
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017442"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184400"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>チュートリアル: Azure Active Directory と Predictix Assortment Planning の統合
 
@@ -177,7 +178,7 @@ Predictix Assortment Planning で Azure AD のシングル サインオンを構
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-predictix-assortment-planning-test-user"></a>Predictix Assortment Planning テスト ユーザーの作成
 

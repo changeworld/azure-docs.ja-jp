@@ -6,16 +6,16 @@ author: craigshoemaker
 ms.author: cshoe
 manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions; cosmos-db
+ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 19a6ebaeb0c643c82277656ebade576c79ed0211
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 0421ec62d25bbfaba2909d16498cac5afd038a53
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001959"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776327"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 
@@ -33,7 +33,7 @@ ms.locfileid: "54001959"
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> Azure Cosmos DB のバインドは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API シリーズについては、[Azure Cosmos DB for MongoDB API](../cosmos-db/mongodb-introduction.md)](../cosmos-db/mongodb-introduction.md)、[Cassandra API](../cosmos-db/cassandra-introduction.md)、[Gremlin API](../cosmos-db/graph-introduction.md)、[Table API](../cosmos-db/table-introduction.md) などの API 用の静的クライアントを使用して、関数からデータベースにアクセスする必要があります。
+> Azure Cosmos DB のバインドは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API については、[Azure Cosmos DB の MongoDB 用 API](../cosmos-db/mongodb-introduction.md)、[Cassandra API](../cosmos-db/cassandra-introduction.md)、[Gremlin API](../cosmos-db/graph-introduction.md)、[Table API](../cosmos-db/table-introduction.md) など、API 用の静的クライアントを使用して関数からデータベースにアクセスする必要があります。
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
@@ -1166,7 +1166,7 @@ F# コードを次に示します。
 |**name**     || 関数のドキュメントを表すバインド パラメーターの名前。  |
 |**databaseName** |**DatabaseName** |ドキュメントを含むデータベース。        |
 |**collectionName** |**CollectionName** | ドキュメントを含むコレクションの名前。 |
-|**id**    | **Id** | 取得するドキュメントの ID。 このプロパティは、[バインド式](functions-triggers-bindings.md#binding-expressions-and-patterns)をサポートしています。 **id** プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。 |
+|**id**    | **Id** | 取得するドキュメントの ID。 このプロパティは、[バインド式](./functions-bindings-expressions-patterns.md)をサポートしています。 **id** プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。 |
 |**sqlQuery**  |**SqlQuery**  | 複数のドキュメントを取得するときに使用する Azure Cosmos DB SQL クエリ。 このプロパティは、次の例のように実行時のバインドをサポートします。`SELECT * FROM c where c.departmentId = {departmentId}` **id** プロパティと **sqlQuery** プロパティの両方は設定しないでください。 いずれも設定しない場合は、コレクション全体が取得されます。|
 |**connection**     |**ConnectionStringSetting**|Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
 |**partitionKey**|**PartitionKey**|参照用のパーティション キー値を指定します。 バインディング パラメーターを含めることもできます。|

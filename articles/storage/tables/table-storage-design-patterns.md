@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
-ms.component: tables
-ms.openlocfilehash: d055ea9b30732e1cc0fc4ae5471bae26adc08b35
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: tables
+ms.openlocfilehash: f2f4fb04ac483f7716c0b7a0fb1f87843d8b817f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238898"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995301"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
@@ -73,7 +73,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 
 * [パーティション内セカンダリ インデックス パターン](#inter-partition-secondary-index-pattern)
 * [複合キー パターン](#compound-key-pattern)
-* [エンティティ グループ トランザクション](#entity-group-transactions)
+* エンティティ グループ トランザクション
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)
 
 ## <a name="inter-partition-secondary-index-pattern"></a>パーティション内のセカンダリ インデックス パターン
@@ -128,7 +128,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern)  
 * [パーティション内のセカンダリ インデックス パターン](#intra-partition-secondary-index-pattern)  
 * [複合キー パターン](#compound-key-pattern)  
-* [エンティティ グループ トランザクション](#entity-group-transactions)  
+* エンティティ グループ トランザクション  
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)  
 
 ## <a name="eventually-consistent-transactions-pattern"></a>最終的に一貫性のあるトランザクション パターン
@@ -172,7 +172,7 @@ Table サービスと Queue サービスのエラーには一時的なエラー�
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
-* [エンティティ グループ トランザクション](#entity-group-transactions)  
+* エンティティ グループ トランザクション  
 * [マージまたは置換](#merge-or-replace)  
 
 > [!NOTE]
@@ -197,11 +197,11 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * 従業員エンティティと同じパーティションにインデックス エンティティを作成する。  
 * 別のパーティションまたはテーブルにインデックス エンティティを作成する。  
 
-<u>オプション 1: BLOB ストレージの使用</u>  
+<u>オプション 1:Blob ストレージを使用する</u>  
 
 最初のオプションでは、すべての一意の姓について Blob を作成し、その姓の従業員用の各 Blob には **PartitionKey** (部署) と **RowKey** (従業員 ID) 値が格納されます。 従業員を追加または削除した場合は、関連する BLOB の内容と従業員エンティティの一貫性が最終的に確保されていることを確認する必要があります。  
 
-<u>オプション 2:</u> 同じパーティション内のインデックス エンティティの作成  
+<u>オプション 2:</u>同じパーティション内でインデックス エンティティを作成する  
 
 2 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
@@ -212,7 +212,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 次の手順は、2 番目の方法を使用した場合に、新しい従業員を追加するときに従う必要がある手順の概要を示しています。 この例では、Sales 部署で ID が 000152、姓が Jones の従業員を追加します。  
 
 1. **PartitionKey** 値 "Sales" と **RowKey** 値 "Jones"　を持つインデックスのエンティティを取得します。 このエンティティの ETag を、手順 2. で使用するために保存します。  
-2. 新しい従業員エンティティを挿入するエンティティ グループ トランザクション、つまり、バッチ操作 (**PartitionKey** 値 "Sales" と **RowKey** 値 "000152") を作成し、新しい従業員 ID を従業員 ID フィールドに追加することでインデックス エンティティ (**PartitionKey** 値 "Sales" と **RowKey** 値 "Jones") を更新します。 エンティティ グループ トランザクションの詳細については、「 [エンティティ グループ トランザクション](#entity-group-transactions)」をご覧ください。  
+2. 新しい従業員エンティティを挿入するエンティティ グループ トランザクション、つまり、バッチ操作 (**PartitionKey** 値 "Sales" と **RowKey** 値 "000152") を作成し、新しい従業員 ID を従業員 ID フィールドに追加することでインデックス エンティティ (**PartitionKey** 値 "Sales" と **RowKey** 値 "Jones") を更新します。 エンティティ グループ トランザクションの詳細については、「エンティティ グループ トランザクション」をご覧ください。  
 3. オプティミスティック コンカレンシー エラー (他のユーザーがインデックス エンティティを変更したこと) が原因でエンティティ グループ トランザクションが失敗した場合は、手順 1. からまたやり直す必要があります。  
 
 2 番目の方法を使用する場合は、同じような方法で従業員を削除できます。 従業員の姓を変更するのは、3 つのエンティティ (従業員エンティティ、元の姓のインデックス エンティティ、新しい姓のインデックス エンティティ) を更新するエンティティ グループ トランザクションを実行する必要があるため、少し複雑です。 変更を加える前に、各エンティティを取得して、ETag 値を取得する必要があります。その ETag 値を使用して、オプティミスティック コンカレンシーで更新を実行できます。  
@@ -223,7 +223,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 2. EmployeeIDs フィールドで従業員 ID の一覧を解析します。  
 3. 各従業員に関する追加情報(電子メール アドレスなど) が必要な場合は、手順 2 で取得した従業員リストから **PartitionKey** 値 "Sales" と **RowKey** 値を使用して各従業員のエンティティを取得します。  
 
-<u>オプション 3:</u> 別のパーティションまたはテーブルにインデックス エンティティを作成する  
+<u>オプション 3:</u>別のパーティションまたはテーブルにインデックス エンティティを作成する  
 
 3 番目の方法では、以下のデータを格納するインデックス エンティティを使用します。  
 
@@ -251,7 +251,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 
 * [複合キー パターン](#compound-key-pattern)  
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern)  
-* [エンティティ グループ トランザクション](#entity-group-transactions)  
+* エンティティ グループ トランザクション  
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)  
 
 ## <a name="denormalization-pattern"></a>非正規化パターン
@@ -282,7 +282,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
 * [複合キー パターン](#compound-key-pattern)  
-* [エンティティ グループ トランザクション](#entity-group-transactions)  
+* エンティティ グループ トランザクション  
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)
 
 ## <a name="compound-key-pattern"></a>複合キー パターン
@@ -325,7 +325,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
-* [エンティティ グループ トランザクション](#entity-group-transactions)  
+* エンティティ グループ トランザクション  
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)  
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern)  
 
@@ -394,7 +394,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
-* [エンティティ グループ トランザクション](#entity-group-transactions)
+* エンティティ グループ トランザクション
 * [エンティティの変更](#modifying-entities)  
 
 ## <a name="data-series-pattern"></a>データ系列のパターン
@@ -454,7 +454,7 @@ Table service を使用すると、複数のエンティティを格納して、
 ### <a name="related-patterns-and-guidance"></a>関連のあるパターンとガイダンス
 このパターンを実装する場合は、次のパターンとガイダンスも関連している可能性があります。  
 
-* [エンティティ グループ トランザクション](#entity-group-transactions)
+* エンティティ グループ トランザクション
 * [マージまたは置換](#merge-or-replace)
 
 ## <a name="large-entities-pattern"></a>大型エンティティ パターン
@@ -556,7 +556,7 @@ Storage Analytics は内部のバッファーにログ メッセージを保管�
 このセクションでは、ここまでのセクションで説明したパターンを実装する際に念頭に置く必要がある点をいくつか説明します。 このセクションで示したコード例は、ほとんどが C# で書かれ、ストレージ クライアント ライブラリ (本稿執筆時点のバージョンは 4.3.0) を使用しています。  
 
 ## <a name="retrieving-entities"></a>エンティティの取得
-「 [クエリに対応した設計](#design-for-querying)」で説明したように、最も効率的なクエリはポイント クエリです。 ただ、時として多数のエンティティを同時に取得することも必要になります。 このセクションでは、ストレージ クライアント ライブラリを使ってエンティティを取得するときによく使用される方法をいくつか紹介します。  
+「クエリに対応した設計」で説明したように、最も効率的なクエリはポイント クエリです。 ただ、時として多数のエンティティを同時に取得することも必要になります。 このセクションでは、ストレージ クライアント ライブラリを使ってエンティティを取得するときによく使用される方法をいくつか紹介します。  
 
 ### <a name="executing-a-point-query-using-the-storage-client-library"></a>ストレージ クライアント ライブラリを使ってポイント クエリを実行する
 ポイント クエリを実行する最も簡単な方法は、次の c# コード スニペットに表示された、**PartitionKey** 値 "Sales" と **RowKey** 値 "212" を持つエンティティを取得する**取得** テーブル操作の使用です。  
@@ -588,7 +588,7 @@ var employees = query.Execute();
 
 パフォーマンスを確保するため、クエリで **RowKey** と **PartitionKey** の両方をどのように指定するか注意してください。  
 
-次のコード サンプルは、Fluent API を使用したのと同等の機能を示しています (一般的な Fluent API の詳細について、 [Fluent API を設計するためのベスト プラクティス](http://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)を参照してください)。  
+次のコード サンプルは、Fluent API を使用したのと同等の機能を示しています (一般的な Fluent API の詳細について、 [Fluent API を設計するためのベスト プラクティス](https://visualstudiomagazine.com/articles/2013/12/01/best-practices-for-designing-a-fluent-api.aspx)を参照してください)。  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = new TableQuery<EmployeeEntity>().Where(

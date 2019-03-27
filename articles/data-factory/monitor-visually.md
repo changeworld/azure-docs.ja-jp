@@ -10,31 +10,31 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/11/2018
+ms.date: 01/19/2018
 ms.author: shlo
-ms.openlocfilehash: c2967de97e9cc3b6f59eb742ecbfef9acbe64d20
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: df684860cd3d1b6a002a300682ca4c6398461ba6
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019777"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54409964"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure Data Factory を視覚的に監視する
 Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。
-このクイック スタートでは、Data Factory v2 パイプラインを視覚的に監視する方法について説明します。コードの記述は一切必要ありません。
+
+このクイック スタートでは、Data Factory パイプラインを視覚的に監視する方法について説明します。コードの記述は一切必要ありません。
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="monitor-data-factory-pipelines"></a>Data Factory パイプラインを監視する
+
+単純なリスト ビュー インターフェイスでパイプラインとアクティビティの実行を監視します。 すべての実行はローカル ブラウザーのタイム ゾーンで表示されます。 タイム ゾーンは変更できます。すべての日時フィールドは選択したタイム ゾーンにスナップされます。  
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 2. [Azure Portal](https://portal.azure.com/) にログインします。
 3. Azure portal で、作成した Data Factory ブレードに移動し、[Monitor & Manage]\(監視と管理\) タイルをクリックして Data Factory ビジュアル監視エクスペリエンスを起動します。
 
-## <a name="list-view-monitoring"></a>リスト ビューの監視
-
-単純なリスト ビュー インターフェイスでパイプラインとアクティビティの実行を監視します。 すべての実行はローカル ブラウザーのタイム ゾーンで表示されます。 タイム ゾーンは変更できます。すべての日時フィールドは選択したタイム ゾーンにスナップされます。  
-
-### <a name="monitoring-pipeline-runs"></a>パイプラインの実行の監視
+## <a name="monitor-pipeline-runs"></a>パイプラインの実行を監視する
 リスト ビューには、Data Factory v2 パイプラインの各パイプラインの実行が表示されます。 次のような列があります。
 
 | **列名** | **説明** |
@@ -51,7 +51,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![パイプラインの実行を監視する](media/monitor-visually/pipeline-runs.png)
 
-### <a name="monitoring-activity-runs"></a>アクティビティ実行の監視
+## <a name="monitor-activity-runs"></a>アクティビティの実行を監視する
 リスト ビューには、各パイプラインの実行に対応するアクティビティの実行が表示されます。 **[アクション]** 列の **[アクティビティの実行]** アイコンをクリックして、各パイプラインの実行のアクティビティの実行を表示します。 次のような列があります。
 
 | **列名** | **説明** |
@@ -69,18 +69,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!IMPORTANT]
 > パイプラインとアクティビティの実行一覧を更新するには、上部の **[更新]** アイコンをクリックする必要があります。 現在、自動更新はサポートされていません。
->
 
 ![更新](media/monitor-visually/refresh.png)
 
-## <a name="monitoring-features"></a>監視機能
-
-### <a name="select-a-data-factory-to-monitor"></a>監視するデータ ファクトリの選択
+## <a name="select-a-data-factory-to-monitor"></a>監視するデータ ファクトリの選択
 左上の **[Data Factory]** アイコンにマウス ポインターを移動します。 [矢印] アイコンをクリックすると、監視できる Azure サブスクリプションと Data Factory のリストが表示されます。
 
 ![データ ファクトリの選択](media/monitor-visually/select-datafactory.png)
 
-### <a name="rich-ordering-and-filtering"></a>高度な並べ替えとフィルター処理
+## <a name="configure-the-list-view"></a>リスト ビューを構成する
+
+### <a name="apply-rich-ordering-and-filtering"></a>高度な並べ替えとフィルター処理を適用する
 
 パイプラインの実行順序は、[Run Start]\(実行の開始\) で昇順または降順で並べ替えます。パイプラインの実行は次の列でフィルターします。
 
@@ -92,15 +91,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![filter](media/monitor-visually/filter.png)
 
-### <a name="addremove-columns-in-list-view"></a>リスト ビューへの列の追加と削除
+### <a name="add-or-remove-columns"></a>列を追加または削除する
 リスト ビューの見出しを右クリックし、リスト ビューに表示する列を選択します。
 
 ![列](media/monitor-visually/columns.png)
 
-### <a name="reorder-column-widths-in-list-view"></a>リスト ビューの列幅を変更する
+### <a name="adjust-column-widths"></a>列幅を調整する
 リスト ビューの列幅を増減するには、列見出しにマウス ポインターを移動します。
 
-### <a name="user-properties"></a>ユーザー プロパティ
+## <a name="promote-user-properties-to-monitor"></a>監視対象のユーザー プロパティを昇格する
 
 監視可能なエンティティになるように、任意のパイプラインのアクティビティ プロパティをユーザー プロパティとして昇格できます。 たとえば、パイプラインのコピー アクティビティの **Source** プロパティと **Destination** プロパティをユーザー プロパティとして昇格できます。 また、**[自動生成]** を選択して、コピー アクティビティの **Source** および **Destination** ユーザー プロパティを生成することもできます。
 
@@ -117,21 +116,43 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![アクティビティ実行の一覧とユーザー プロパティの列](media/monitor-visually/monitor-user-properties-image4.png)
 
-### <a name="guided-tours"></a>ガイド ツアー
+## <a name="rerun-activities-inside-a-pipeline"></a>パイプライン内のアクティビティを再実行する
+
+パイプライン内のアクティビティを再実行できる状態になりました。 **[View activity runs]\(アクティビティの実行の表示\)** をクリックし、パイプラインからその再実行の起点となるアクティビティを選択します。
+
+![アクティビティの実行の表示](media/monitor-visually/rerun-activities-image1.png)
+
+![アクティビティの実行の選択](media/monitor-visually/rerun-activities-image2.png)
+
+### <a name="view-rerun-history"></a>再実行履歴を表示する
+
+パイプラインの全実行の再実行履歴は、リスト ビューで確認することができます。
+
+![履歴を表示する](media/monitor-visually/rerun-history-image1.png)
+
+特定のパイプラインの実行について、再実行履歴を確認することもできます。
+
+![パイプラインの実行履歴の表示](media/monitor-visually/rerun-history-image2.png)
+
+## <a name="guided-tours"></a>ガイド ツアー
 左下の [情報] アイコンをクリックし、[Guided Tours]\(ガイド ツアー\) をクリックすると、パイプラインとアクティビティの実行を監視する方法に関する手順が表示されます。
 
 ![ガイド ツアー](media/monitor-visually/guided-tours.png)
 
-### <a name="feedback"></a>フィードバック
+## <a name="feedback"></a>フィードバック
 [フィードバック] アイコンをクリックして、さまざまな機能や、発生している問題についてフィードバックをお寄せください。
 
 ![フィードバック](media/monitor-visually/feedback.png)
 
 ## <a name="alerts"></a>アラート
 
-Data Factory で、サポートされるメトリックに対してアラートを生成できます。 Data Factory の [監視] ページで [監視]、[Alerts & Metrics]\(アラートとメトリック\) の順に選択して開始します。
+Data Factory で、サポートされるメトリックに対してアラートを生成できます。 Data Factory の [監視] ページで **[監視]、[Alerts & Metrics]\(アラートとメトリック\)**  の順に選択して開始します。
 
 ![](media/monitor-visually/alerts01.png)
+
+この機能の概要とデモンストレーションについては、以下の 7 分間の動画を視聴してください。
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Monitor-your-Azure-Data-Factory-pipelines-proactively-with-alerts/player]
 
 ### <a name="create-alerts"></a>アラートを作成する
 

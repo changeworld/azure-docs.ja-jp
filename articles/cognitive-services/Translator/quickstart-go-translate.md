@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Translator Text API と Go を使って、10 分以内でテキストを別の言語に翻訳します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/05/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 21794d0a728e7baed7ec392fa448c98eb519576c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a1218442aedf94028fe1e08f02f13ce1c0d05008
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000401"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738115"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-go"></a>クイック スタート: Go で Translator Text API を使用して文字列を翻訳する
 

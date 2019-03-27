@@ -29,7 +29,7 @@ Azure Service Fabric Mesh アプリケーションを削除および管理しま
 | --- | --- |
 | [app](service-fabric-sfctl-mesh-app.md) | アプリケーション リソースを取得および削除します。 |
 | [code-package-log](service-fabric-sfctl-mesh-code-package-log.md) | 特定のサービス レプリカの指定されたコード パッケージのコンテナーのログを取得します。 |
-| [デプロイ](service-fabric-sfctl-mesh-deployment.md) | Service Fabric Mesh リソースを作成します。 |
+| [deployment](service-fabric-sfctl-mesh-deployment.md) | Service Fabric Mesh リソースを作成します。 |
 | [gateway](service-fabric-sfctl-mesh-gateway.md) | メッシュ ゲートウェイ リソースを取得および削除します。 |
 | [network](service-fabric-sfctl-mesh-network.md) | メッシュ ネットワーク リソースを取得および削除します。 |
 | [secret](service-fabric-sfctl-mesh-secret.md) | メッシュ シークレット リソースを取得および削除します。 |

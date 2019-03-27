@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go で Translator Text API を使ってソース テキストの言語を認識します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/05/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 84522612dbd31d406537b9679887e0f82a971b1c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5b9b8632a16989b3451677aeab8a97109894969c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000509"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736138"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-go"></a>クイック スタート: Translator Text API と Go を使用してテキストの言語を検出する
 

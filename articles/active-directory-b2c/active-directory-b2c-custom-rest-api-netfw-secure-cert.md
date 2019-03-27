@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のクライアント証明書を使用して 
 description: クライアント証明書を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 89663db23962cbc82ead331f05cb39c0ef5d2e87
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: B2C
+ms.openlocfilehash: 502b769e1a25874bfa5a9e8f082361605a52ccf6
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722568"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55165678"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>クライアント証明書を使用して RESTful サービスをセキュリティで保護する
 
@@ -37,7 +37,7 @@ ms.locfileid: "53722568"
 * [REST API 要求交換を統合](active-directory-b2c-custom-rest-api-netfw.md)する記事の手順を完了している。
 * 有効な証明書 (秘密キーを備えた .pfx ファイル) がある。
 
-## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>ステップ 1:Web アプリのクライアント証明書認証を構成する
+## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>手順 1:Web アプリのクライアント証明書認証を構成する
 クライアント証明書を要求するように **Azure App Service** を設定するには、Web アプリの `clientCertEnabled` サイト設定を *true* に設定します。 この変更を行うには、Azure portal で Web アプリのページを開きます。 左側のナビゲーションの **[設定]** で **[SSL 設定]** を選択します。 **[クライアント証明書]** セクションで、**[着信クライアント証明書]** オプションをオンにします。
 
 >[!NOTE]

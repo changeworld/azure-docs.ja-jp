@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/17/2019
 ms.author: douglasl
-ms.openlocfilehash: 23114a1d2fff081c802ddedc7bf5430938c45b3b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0d7c8640cb2a3f6d4d1a32a555c03dc2eca48b9a
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191787"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901226"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)
 
@@ -727,7 +727,7 @@ Azure Pipelines にインポートできるサンプル デプロイ テンプ�
 
 ## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>トリガーの停止と再起動およびクリーンアップを行うサンプル スクリプト
 
-デプロイ前にトリガーを停止し、デプロイ後に再起動するサンプル スクリプトを次に示します。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。 最新バージョンの Azure PowerShell をインストールするには、「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.9.0)」を参照してください。
+デプロイ前にトリガーを停止し、デプロイ後に再起動するサンプル スクリプトを次に示します。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。 最新バージョンの Azure PowerShell をインストールするには、「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.9.0)」を参照してください。
 
 ```powershell
 param
@@ -748,7 +748,7 @@ Write-Host "Getting triggers"
 $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 $triggersTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
 $triggerNames = $triggersTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
-$activeTriggerNames = $triggersTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and $_.properties.pipelines.Count -gt 0} | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
+$activeTriggerNames = $triggersTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
 $deletedtriggers = $triggersADF | Where-Object { $triggerNames -notcontains $_.Name }
 $triggerstostop = $triggerNames | where { ($triggersADF | Select-Object name).name -contains $_ }
 
@@ -853,7 +853,7 @@ Resource Manager テンプレートにカスタム パラメーターを定義�
 
 カスタム パラメーター ファイルの作成時に使用するいくつかのガイドラインを次に示します。 この構文の例を確認するには、下記の「[サンプルのカスタム パラメーター ファイル](#sample)」セクションを参照してください。
 
-1. 定義ファイルに配列を指定した場合、テンプレート内の一致するプロパティが配列であることを指示します。 Data Factory は、配列の最初のオブジェクトに指定された定義を使用して、配列内のすべてのオブジェクトを反復処理します。 2 番目のオブジェクトである文字列は、各反復処理のパラメーターの名前として使用されるプロパティ名です。
+1. 定義ファイルに配列を指定した場合、テンプレート内の一致するプロパティが配列であることを指示します。 Data Factory は、配列の Integration Runtime オブジェクトに指定された定義を使用して、配列内のすべてのオブジェクトを反復処理します。 2 番目のオブジェクトである文字列は、各反復処理のパラメーターの名前として使用されるプロパティ名です。
 
     ```json
     ...

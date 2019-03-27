@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: サイトおよび垂直検索サービスを作成する方法について説明します
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: ac5ba80740c47dd71a30bb20aab4a54829eac822
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: c4cb93e39a67e13646a339af6ac999a8fd96b383
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53597802"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234817"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Custom Search エクスペリエンスを構成する
 

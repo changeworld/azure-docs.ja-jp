@@ -4,7 +4,7 @@ description: Azure Active Directory と Innoverse の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: d72e4da0-0123-409b-96c2-e613f3f83fb1
 ms.service: Azure-Active-Directory
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/14/2018
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 293c08a81ba675d42cd0e9f715e988b2186deb3d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 28c916fa96de4fd1c5aae612f67377199cf0a2f3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794075"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871613"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innoverse"></a>チュートリアル:Azure Active Directory と Innoverse の統合
 
@@ -79,8 +80,8 @@ Innoverse で Azure AD のシングル サインオンを構成してテスト�
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Innoverse シングル サインオンの構成](#configure-innoverse-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Innoverse テスト ユーザーの作成](#create-innoverse-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Innoverse で作成します。
-5. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[Innoverse テスト ユーザーの作成](#create-innoverse-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Innoverse で作成します。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
@@ -114,7 +115,7 @@ Innoverse で Azure AD シングル サインオンを構成するには、次�
     ![[Innoverse のドメインと URL] のシングル サインオン情報](common/metadata_upload_additional_signon.png)
 
     **[サインオン URL]** ボックスに、`https://<domainname>.innover.se/auth/saml2/login` という形式で URL を入力します。
-    
+
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Innoverse クライアント サポート チーム](mailto:support@readify.net)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
@@ -138,7 +139,7 @@ Innoverse で Azure AD シングル サインオンを構成するには、次�
 
     c. **[名前空間]** を入力します。
 
-    d. [ソース] として **[属性]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [ソース] として **[属性]** を選択します。
 
     e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
 
@@ -219,6 +220,6 @@ Innoverse で Azure AD シングル サインオンを構成するには、次�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

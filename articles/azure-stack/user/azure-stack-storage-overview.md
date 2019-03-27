@@ -10,15 +10,16 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
-ms.openlocfilehash: 5df10ce2bb7508aad0abe7f9972ffc9b886a098d
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: d31066e52e8c8f7856cce5651ae7e491029f328b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302359"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782464"
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Azure Stack Storage の概要
 

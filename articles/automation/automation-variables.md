@@ -3,18 +3,18 @@ title: Azure Automation での変数アセット
 description: 変数アセットとは、Azure Automation のすべての Runbook と DSC 構成に使用できる値です。  この記事では、変数の詳細およびテキスト作成とグラフィカル作成の両方で変数を使用する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: shared-capabilities
+ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ea6aae349bfbec0d1b6538010df42e7a0fb22d8e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e60c5eee20caafc1c5ad41e3ccf568f4bd944745
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196102"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434429"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Automation での変数アセット
 
@@ -31,7 +31,7 @@ Automation 変数は、Runbook または DSC 構成でエラーが発生した�
 変数が作成されると、暗号化して保存するように指定できます。 変数が暗号化されると、Azure Automation に安全に保存され、その値は Azure PowerShell モジュールに含まれている [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) コマンドレットからは取得できません。 暗号化された値は、Runbook または DSC 構成の **Get-AutomationVariable** アクティビティからのみ取得できます。
 
 >[!NOTE]
->Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 このキーは Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、キーが Key Vault から読み込まれ、資産の暗号化に使われます。
+>Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 このキーは、システムで管理されたキー コンテナーに格納されます。 セキュリティで保護された資産を保存する前に、キーが Key Vault から読み込まれ、資産の暗号化に使われます。 このプロセスは、Azure Automation によって管理されます。
 
 ## <a name="variable-types"></a>変数の型
 
@@ -50,7 +50,7 @@ Automation で使用できる変数の型の一覧を次に示します。
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell コマンドレット
 AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [AzureRM.Automation モジュール](/powershell/azure/overview) に付属しています。
 
-| コマンドレット | [説明] |
+| コマンドレット | 説明 |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|既存の変数の値を取得します。|
 |[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|新しい変数を作成し、その値を設定します。|
@@ -60,7 +60,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 ## <a name="activities"></a>アクティビティ
 次の表のアクティビティは、Runbook および DSC 構成で資格情報にアクセスするために使用されます。
 
-| アクティビティ | [説明] |
+| アクティビティ | 説明 |
 |:---|:---|
 |Get-AutomationVariable|既存の変数の値を取得します。|
 |Set-AutomationVariable|既存の変数の値を設定します。|
@@ -70,7 +70,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 次の表の関数を使用して、Python2 Runbook の変数にアクセスしてそれを取得します。 
 
-|Python2 関数|[説明]|
+|Python2 関数|説明|
 |:---|:---|
 |automationassets.get_automation_variable|既存の変数の値を取得します。 |
 |automationassets.set_automation_variable|既存の変数の値を設定します。 |
@@ -201,3 +201,4 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 * グラフィカル作成でアクティビティを接続する方法については、 [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md) 
+

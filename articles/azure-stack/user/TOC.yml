@@ -148,6 +148,8 @@ items:
           href: azure-stack-solution-template-kubernetes-azuread.md
         - name: AD FS を使用した Kubernetes のデプロイ
           href: azure-stack-solution-template-kubernetes-adfs.md
+        - name: Kubernetes ダッシュボードの有効化
+          href: azure-stack-solution-template-kubernetes-dashboard.md
         - name: Kubernetes クラスターのトラブルシューティング
           href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Cognitive Services のデプロイ
@@ -179,7 +181,7 @@ items:
           href: azure-stack-version-profiles-powershell.md
         - name: Azure CLI
           href: azure-stack-version-profiles-azurecli2.md
-        - name: GO
+        - name: Go
           href: azure-stack-version-profiles-go.md
         - name: Ruby
           href: azure-stack-version-profiles-ruby.md
@@ -230,12 +232,12 @@ items:
   - name: 料金情報
     href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-stack
+    href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 0a573a5e9c79ffc2a9db52705cf229b3b776df65
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: df2db5b5a0e402aaaf0cd8d52c3dfa443225dfaf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411698"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539056"

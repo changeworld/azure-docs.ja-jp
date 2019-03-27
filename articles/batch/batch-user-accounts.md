@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: b59bb835c9858c6e47b8bb3a3518086e887d0d84
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ba64ecc334d93c8ff973345cfd10ed12436d3fb6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542834"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813910"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
 
@@ -66,7 +66,7 @@ Azure Batch には、タスクを実行するためのユーザー アカウン�
 
 既定では、タスクは自動ユーザー アカウントのもとで、Batch で実行されます。このユーザーは特権アクセスのない標準ユーザーで、タスク スコープがあります。 自動ユーザーの仕様がタスク スコープで構成されている場合、Batch サービスはそのタスク専用の自動ユーザー アカウントを作成します。
 
-タスク スコープのほかに、プール スコープというものがあります。 タスクの自動ユーザーの仕様がプール スコープで構成されている場合は、プール内のどのタスクでも利用可能な自動ユーザー アカウントでタスクが実行されます。 プール スコープの詳細については、[プール スコープのある自動ユーザーとしてのタスクの実行](#run-a-task-as-the-autouser-with-pool-scope)に関するセクションを参照してください。   
+タスク スコープのほかに、プール スコープというものがあります。 タスクの自動ユーザーの仕様がプール スコープで構成されている場合は、プール内のどのタスクでも利用可能な自動ユーザー アカウントでタスクが実行されます。 プール スコープの詳細については、プール スコープのある自動ユーザーとしてのタスクの実行に関するセクションを参照してください。   
 
 既定のスコープは、Windows ノードと Linux ノードとで異なります。
 

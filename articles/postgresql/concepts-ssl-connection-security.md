@@ -1,17 +1,17 @@
 ---
 title: Azure Database for PostgreSQL での SSL 接続の構成
 description: SSL 接続を適切に使用できるように、Azure Database for PostgreSQL と関連アプリケーションを構成するための手順と情報。
-author: JasonMAnderson
-ms.author: janders
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: bcb6f1da78cfccb4914f1f4008609f002a7b8c2d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 13a1ed626e7741c90cf902c9ed01911985ca8424
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545435"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453445"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL での SSL 接続の構成
 Azure Database for PostgreSQL では、クライアント アプリケーションを PostgreSQL サービスに接続する際、Secure Sockets Layer (SSL) の使用が優先されます。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。

@@ -1,24 +1,24 @@
 ---
 title: Azure Key Vault とは - Azure Key Vault | Microsoft Docs
-description: Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Azure Key Vault を使用すると、キーとシークレット (認証キー、ストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードなど) をハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して暗号化できます。
+description: Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 ユーザーは、ハードウェア セキュリティ モジュール (HSM) で保護されたキーを使用して、認証キーやストレージ アカウント キー、データ暗号化キー、PFX ファイル、パスワードを暗号化することができます。
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: e759df6f-0638-43b1-98ed-30b3913f9b82
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: f3c198ab8a17df019f1735a9b62e27f1051f64c5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: cf45aeb88d9638dd2f0c93bbae0b8ff79b293435
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076333"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108111"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -76,11 +76,14 @@ Azure サブスクリプションを持つユーザーはだれでも、Key Vaul
 
 この管理者は、開発者にアプリケーションから呼び出す URI を提供し、セキュリティ管理者にキーの使用状況のログ情報を提供します。 
 
-![Azure Key Vault の概要][1]
+![Azure Key Vault の動作の概要][1]
 
 開発者は、API を使用してキーを直接管理することもできます。 詳細については、「 [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-[コンテナーをセキュリティで保護する](key-vault-secure-your-key-vault.md)方法について学ぶ
-<!--Image references--> [1]: ./media/key-vault-whatis/AzureKeyVault_overview.png Azure Key Vault はほとんどのリージョンで利用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
+[コンテナーをセキュリティで保護する](key-vault-secure-your-key-vault.md)方法を学習する
+
+<!--Image references-->
+[1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
+Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。

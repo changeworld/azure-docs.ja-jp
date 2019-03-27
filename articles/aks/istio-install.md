@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/3/2018
 ms.author: pabouwer
-ms.openlocfilehash: 33a72b6e8fdd4a66425405ff15d7cc31461c0bf3
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: f34d8c547738921374eaf5edcfcec4911423d9dc
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52893050"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699213"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
 
-[Istio][istio-github] は Kubernetes クラスターのマイクロサービス全体で重要な一連の機能を提供するオープンソースのサービス メッシュです。 一連の機能には、トラフィック管理、サービスの ID とセキュリティ、ポリシー適用、可観測性などがあります。 Istio の詳細については、公式ドキュメント「[What is Istio?][istio-docs-concepts]」 (Istio とは何か) を参照してください。
+[Istio][istio-github] は Kubernetes クラスターのマイクロサービス全体で重要な一連の機能を提供するオープンソースのサービス メッシュです。 これらの機能には、トラフィック管理、サービスの ID とセキュリティ、ポリシー適用、可観測性などがあります。 Istio の詳細については、公式ドキュメント「[What is Istio?][istio-docs-concepts]」 (Istio とは何か) を参照してください。
 
 この記事では、Istio をインストールする方法について説明します。 Istio `istioctl` クライアント バイナリはクライアント コンピューターにインストールされます。それから、Istio コンポーネントが AKS の Kubernetes クラスターにインストールされます。 これらの手順は Istio バージョン *1.0.4* を参考にしています。 他の Istio バージョンは [GitHub - Istio Releases][istio-github-releases] で確認できます。
 
@@ -98,7 +98,7 @@ Istio `istioctl` クライアント バイナリに対してコマンドライ�
 
 ```bash
 # Generate the bash completion file and source it in your current shell
-istioctl collateral --bash -o ~/completions
+mkdir -p ~/completions && istioctl collateral --bash -o ~/completions
 source ~/completions/istioctl.bash
 
 # Source the bash completion file in your .bashrc so that the command-line completions
@@ -122,7 +122,7 @@ Istio `istioctl` クライアント バイナリに対してコマンドライ�
 
 ```bash
 # Generate the bash completion file and source it in your current shell
-istioctl collateral --bash -o ~/completions
+mkdir -p ~/completions && istioctl collateral --bash -o ~/completions
 source ~/completions/istioctl.bash
 
 # Source the bash completion file in your .bashrc so that the command-line completions
@@ -132,7 +132,7 @@ echo "source ~/completions/istioctl.bash" >> ~/.bashrc
 
 次は [Istio Kubernetes コンポーネントをインストールする](#install-the-istio-kubernetes-components)セクションに移ります。
 
-### <a name="windows"></a> Windows
+### <a name="windows"></a>Windows
 
 Windows で PowerShell ベースのシェルで Istio `istioctl` クライアント バイナリをインストールするには、次のコマンドを使用します。 これらのコマンドによって、新しいユーザー プログラムの場所に `istioctl` クライアント バイナリがコピーされ、`PATH` 経由で利用できるようになります。
 
@@ -141,7 +141,7 @@ cd istio-$ISTIO_VERSION
 New-Item -ItemType Directory -Force -Path "C:/Program Files/Istio"
 mv ./bin/istioctl.exe "C:/Program Files/Istio/"
 $PATH = [environment]::GetEnvironmentVariable("PATH", "User")
-[environment]::SetEnvironmentVariable("PATH", $PATH + "; C:/Program Files/Istio/", "User")
+[environment]::SetEnvironmentVariable("PATH", $PATH + "; C:\Program Files\Istio\", "User")
 ```
 
 ## <a name="install-the-istio-kubernetes-components"></a>Istio Kubernetes コンポーネントをインストールする

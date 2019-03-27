@@ -6,22 +6,22 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0d2cca335206ee59b922a31ed3cf3ba24ef4ecd7
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c46ffe2076d4b1491a3b27958dfbf5ed09115eaa
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790777"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55221286"
 ---
 # <a name="what-is-conversation-learner"></a>Conversation Learner とは
 
 Conversation Learner を使用して、対話例から学習する対話型インターフェイスを構築して学習させることができます。 
 
-従来のアプローチとは異なり、Conversation Learner は、対話の始めから終わりまで、その文脈を考慮して応答を向上させることで、説得力のあるユーザー エクスペリエンスを提供します。 タスク志向の幅広い使用例にわたって、Conversation Learner は、舞台裏で機械学習を適用して、ボットとインテリジェント エージェントがユーザーをいらつかせる可能性を減らし、追加のカスタマー サービス コストを負担し、より直観的に対話できるようにします。
+従来のアプローチとは異なり、Conversation Learner は、対話の始めから終わりまで、その文脈を考慮して応答を向上させることで、説得力のあるユーザー エクスペリエンスを提供します。 タスク志向の幅広い使用例にわたって、Conversation Learner は、舞台裏で機械学習を適用して、ボットとインテリジェント エージェントがユーザーをいらだたせる可能性を減らし、追加のカスタマー サービス コストを負担し、より直観的に対話できるようにします。
 
 最初に、開発者は、模倣する典型的な対話を入力します。 対話をさらに入力して、モデルの学習を行います。 モデルが十分に機能したら、ボットをエンドユーザーに展開できます。 Conversation Learner はユーザーとの対話を記録し、開発者はそれらをレビューできます。 誤りが見つかった場合、開発者はその場で修正を行うことができ、モデルはすぐに再トレーニングされ、使用可能になります。
 

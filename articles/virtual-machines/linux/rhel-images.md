@@ -11,17 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2018
+ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: f178ac06b4ebfeef534233c2782423a7358f0c10
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d42349de4324428103ccca3ef270ceb9109ca0c7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719631"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011667"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure の Red Hat Enterprise Linux イメージ
-この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します
+この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace 内で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します。
+
+すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
+
+>[!Important]
+> Azure マーケットプレースで現在使用可能な RHEL イメージは、BYOS (Bring-Your-Own-Subscription)または従量課金制 (PAYG) ライセンス モデルをサポートしています。 [Azure ハイブリッド特典](../windows/hybrid-use-benefit-licensing.md)と、BYOS と PAYG の動的な切り替えはサポートされていません。 ライセンス モードの切り替えには、対応するイメージから VM を再デプロイする必要があります。
+
+>[!Note]
+> Azure マーケットプレース ギャラリーの RHEL イメージに関する問題については、Microsoft にサポート チケットを提出してください。
 
 ## <a name="images-available-in-the-ui"></a>UI で利用可能なイメージ
 Marketplace で "Red Hat" を検索するときや、Azure portal の UI でリソースを作成するときに、利用可能な RHEL イメージと関連する Red Hat 製品のサブセットが表示されます。 Azure CLI/PowerShell/API を使用して、利用可能な VM イメージの完全なセットをいつでも取得することができます。
@@ -32,7 +40,7 @@ Azure で利用可能な Red Hat イメージの完全なセットを表示す�
 az vm image list --publisher RedHat --all
 ```
 
-## <a name="naming-convention"></a>名前付け規則
+## <a name="naming-convention"></a>命名規則
 Azure の VM イメージは、発行元、プラン、SKU、バージョンごとに整理されます。 発行元:プラン:SKU:バージョンの組み合わせはイメージ URN であり、使用されるイメージを一意に識別します。
 
 たとえば、`RedHat:RHEL:7-RAW:7.6.2018103108` は、2018 年 10 月 31 日に構築された RHEL 7.6 の未加工のパーティション イメージを表します。
@@ -66,6 +74,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 > RHEL 6 イメージ セットは、新しい名前付け規則には移動されませんでした。
 
 現在、一般的に使用できるプランと SKU は以下のとおりです。
+
 プラン| SKU | パーティション分割 | プロビジョニング | メモ
 :----|:----|:-------------|:-------------|:-----
 RHEL | 7-RAW | RAW | Linux エージェント | RHEL 7 イメージ ファミリ
@@ -108,3 +117,4 @@ Microsoft および Red Hat では、新しいマイナー バージョンのリ
 
 ## <a name="next-steps"></a>次の手順
 * Azure Red Hat Update Infrastructure の詳細については、[こちら](https://aka.ms/rhui-update)を参照してください。
+* すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle (Red Hat Enterprise Linux のライフ サイクル)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。

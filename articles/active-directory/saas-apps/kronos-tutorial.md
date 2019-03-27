@@ -4,22 +4,23 @@ description: Azure Active Directory と Kronos の間でシングル サイン�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: e28d6191-c375-43c6-b2df-22daa88d9939
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 68c2883346316787970225d76328244ca25777a1
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 126d5b501b9c4239fbdbe06318604bcfaf861150
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065598"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838356"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kronos"></a>チュートリアル:Azure Active Directory と Kronos の統合
 
@@ -67,7 +68,7 @@ Azure AD への Kronos の統合を構成するには、ギャラリーから管
 4. 検索ボックスに「**Kronos**」と入力し、結果ウィンドウで **[Kronos]** を選択してから、**[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の Kronos](common/search-new-app.png)
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+   ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
 このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Kronos で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Kronos 内の関連ユーザー間にリンク関係が確立されている必要があります。
@@ -154,7 +155,7 @@ Kronos で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -201,7 +202,7 @@ Kronos で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

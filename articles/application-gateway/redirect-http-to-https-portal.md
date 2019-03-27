@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/7/2018
 ms.author: victorh
-ms.openlocfilehash: a10314d4c396298f018459e56252d0d0d1656f08
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c27c31bc2f21cfae9036849973301a66a437de42
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107788"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54435245"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトするアプリケーション ゲートウェイを作成する
 
@@ -29,7 +29,7 @@ Azure portal を使用し、SSL 終了の証明書を使って[アプリケー�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルでは、証明書を作成して IIS をインストールするために、Azure PowerShell モジュール バージョン 3.6 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 このチュートリアルでコマンドを実行するには、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+このチュートリアルでは、証明書を作成して IIS をインストールするために、Azure PowerShell モジュール バージョン 3.6 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 このチュートリアルでコマンドを実行するには、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 

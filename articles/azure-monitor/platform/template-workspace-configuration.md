@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
-ms.openlocfilehash: 4a56812a8a10e890f50afb669a54291ea064098d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 46be596cbd2641b9ecd3206f44a6e7de7beed255
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102717"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417509"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics を管理する
 [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
@@ -54,9 +54,9 @@ ms.locfileid: "54102717"
 * 場所 - 既定値は米国東部
 * SKU - 既定値は、2018 年 4 月の価格モデルでリリースされた新しい 1 GB あたりの価格レベル
 
->[!WARNING]
->新しい 2018 年 4 月の価格モデルを選択したサブスクリプションで Log Analytics ワークスペースを作成または構成する場合、有効な Log Analytics 価格レベルは **PerGB2018** のみです。 
->
+> [!NOTE]
+>新しい 2018 年 4 月の価格モデルを選択したサブスクリプションで Log Analytics ワークスペースを作成または構成する場合、有効な Log Analytics 価格レベルは **PerGB2018** のみです。  
+>[2018 年 4 月より前の価格モデル](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model)のサブスクリプションがある場合、**スタンドアロン**価格レベルを指定できます。これは、2018 年 4 月の価格モデルのサブスクリプションと、新価格でのサブスクリプションの両方に対して行えます。 新しい価格モデルを採用したサブスクリプション内のワークスペースの場合、価格レベルは **PerGB2018** に設定されます。 
 
 ### <a name="create-and-deploy-template"></a>テンプレートの作成とデプロイ
 

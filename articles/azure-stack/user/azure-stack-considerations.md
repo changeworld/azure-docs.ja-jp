@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 12/27/2018
 ms.author: sethm
-ms.openlocfilehash: 91966bf2958b1670559aa57076eae7a62214fec5
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.lastreviewed: 12/27/2018
+ms.openlocfilehash: 158f22ec2ab07bfc2f893d4b0c55d862e0b19de0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53809805"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106663"
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>主な考慮事項:Azure Stack でのサービスの使用またはアプリの作成
 
@@ -42,7 +43,7 @@ Azure に関する技術的な内容は、Azure Stack ではなく、Azure サ�
 
 次の表では、Azure Stack と Azure の違いの概要を示します。 Azure Stack 向けに開発する場合や、Azure Stack サービスを使用する場合は以下の相違点に注意してください。
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 | 領域 | Azure (グローバル) | Azure Stack |
 | -------- | ------------- | ----------|
@@ -75,8 +76,8 @@ Azure Stack では、特定のバージョンの Azure PowerShell と Azure サ�
 
 正しいバージョンの Azure PowerShell を使用していることを確認するには、[API バージョン プロファイル](azure-stack-version-profiles.md)を使用します。 使用可能な最新の API バージョン プロファイルを確認するには、使用している Azure Stack のビルドを調べます。 この情報は、Azure Stack 管理者から取得できます。
 
->[!NOTE]
- Azure Stack Development Kit を使用されていて、管理アクセス権がある場合は、「[現在のバージョンの判断](../azure-stack-updates.md#determine-the-current-version)」セクションを参照して、Azure Stack のビルドを確認してください。
+> [!NOTE]
+>  Azure Stack Development Kit を使用されていて、管理アクセス権がある場合は、「[現在のバージョンの判断](../azure-stack-updates.md#determine-the-current-version)」セクションを参照して、Azure Stack のビルドを確認してください。
 
 その他の API の場合は、次の PowerShell コマンドを実行し、名前空間、リソースの種類、および Azure Stack サブスクリプションでサポートされている API のバージョンを出力します。 プロパティ レベルでも違いがある可能性があることに注意してください  このコマンドを機能させるには、Azure Stack 環境用に PowerShell が既に[インストール](azure-stack-powershell-install.md)され、[構成](azure-stack-powershell-configure-user.md)されている必要があります。 Azure Stack オファーのサブスクリプションも必要です。
 

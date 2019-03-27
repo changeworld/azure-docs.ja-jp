@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/25/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 664a2c6bfc4a73b7d792b71c4b81df54b05fcd74
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 373312b4c7f05fe41c9ca8165b8ff6f1b0e56f1b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082277"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454971"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 for Customer Engagement アプリケーションの [体験版] タブ
 
-顧客向けの試用エクスペリエンスを作成するには、**[体験版]** タブを使用します。  実際の実装シナリオの中でオファーの主な機能や利点を体験できる、実践的なセルフガイド型の試用版を顧客に提供します。  使用できる試用オプションのうち、高品質のリードを生成し、それらのリードからのコンバージョン率を高めるうえで体験版は最も効果的です。  詳細については、「[体験版とは](../../cloud-partner-portal-orig/what-is-test-drive.md)」を参照してください。
+顧客向けの試用エクスペリエンスを作成するには、**[体験版]** タブを使用します。  実際の実装シナリオの中でオファーの主な機能や利点を体験できる、実践的なセルフガイド型の試用版を顧客に提供します。  使用できる試用オプションのうち、高品質のリードを生成し、それらのリードからのコンバージョン率を高めるうえで体験版は最も効果的です。  詳細については、「[体験版とは](../test-drive/what-is-test-drive.md)」を参照してください。
 
-Dynamics 365 アプリケーションの体験版エクスペリエンスは、Microsoft ホスト ソリューションとして自動的に実行されます。  詳しくは、「[ホストされた体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/hosted-test-drive)」をご覧ください。
+Dynamics 365 アプリケーションの体験版エクスペリエンスは、Microsoft ホスト ソリューションとして自動的に実行されます。  詳しくは、「[ホストされた体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)」をご覧ください。
 
 [体験版] タブには、次の 3 つのセクションが表示される可能性があります:**[体験版]**、**[詳細]**、**[Technical Configuration]\(技術構成\)**。  最後の 2 つのセクションは、体験版の機能を有効にした後でのみ表示されます。  フィールド名に付いているアスタリスク (*) は、それが必須であることを示します。 
 

@@ -71,8 +71,8 @@ Azure SQL Data Warehouse との間でデータをコピーするパイプライ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**AzureSqlDW** |[はい] |
-| connectionString |connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**AzureSqlDW** |はい |
+| connectionString |connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 |はい |
 
 > [!IMPORTANT]
 > [サーバーへのアクセスを Azure サービスに許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) とデータベース サーバーを構成します。 さらに、Azure の外部から (たとえば、Data Factory ゲートウェイのあるオンプレミスのデータ ソースから) Azure SQL Data Warehouse にデータをコピーする場合は、Azure SQL Data Warehouse にデータを送信するマシンに適切な IP アドレス範囲を設定します。
@@ -84,7 +84,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Azure SQL Data Warehouse データベースのテーブルまたはビューの名前です。 |[はい] |
+| tableName |リンクされたサービスが参照する Azure SQL Data Warehouse データベースのテーブルまたはビューの名前です。 |はい |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
@@ -323,7 +323,7 @@ Data Factory は、コピー元データ ストアのテーブルと同じ名前
 | SmallDateTime | SmallDateTime |
 | Text | Varchar (最大 8000) |
 | NText | NVarChar (最大 4000) |
-| イメージ | VarBinary (最大 8000) |
+| Image | VarBinary (最大 8000) |
 | UniqueIdentifier | UniqueIdentifier |
 | Char | Char |
 | NChar | NChar |
@@ -347,7 +347,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| ビット |ブール |
+| bit |Boolean |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -361,7 +361,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | money |Decimal |
 | nchar |String、Char[] |
 | ntext |String、Char[] |
-| 数値 |Decimal |
+| numeric |Decimal |
 | nvarchar |String、Char[] |
 | real |Single |
 | rowversion |Byte[] |
@@ -369,7 +369,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| テキスト |String、Char[] |
+| text |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
 | tinyint |Byte |

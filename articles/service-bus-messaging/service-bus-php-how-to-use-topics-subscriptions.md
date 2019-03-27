@@ -3,9 +3,9 @@ title: Service Bus トピックの使用方法 (PHP) | Microsoft Docs
 description: Azure 上の PHP で Service Bus トピックを使用する方法について説明します。
 services: service-bus-messaging
 documentationcenter: php
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: faaa4bbd-f6ef-42ff-aca7-fc4353976449
 ms.service: service-bus-messaging
 ms.workload: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 09/06/2018
-ms.author: spelluru
-ms.openlocfilehash: 8b2cd62d9f1c2010956604a9f3c753d893f7c2ad
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: aschhab
+ms.openlocfilehash: 4862377a8441d5ec920d6b52dbed8ad405144227
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407282"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857965"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>PHP で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -29,11 +29,13 @@ ms.locfileid: "47407282"
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
 Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP](../php-download-sdk.md) のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
 
 > [!NOTE]
-> PHP のインストールでは、[OpenSSL 拡張機能](http://php.net/openssl)をインストールして有効にしておく必要もあります。
+> PHP のインストールでは、[OpenSSL 拡張機能](https://php.net/openssl)をインストールして有効にしておく必要もあります。
 > 
 > 
 
@@ -105,7 +107,7 @@ use WindowsAzure\ServiceBus\Models\TopicInfo;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try    {        
+try {
     // Create topic.
     $topicInfo = new TopicInfo("mytopic");
     $serviceBusRestProxy->createTopic($topicInfo);
@@ -141,7 +143,7 @@ use WindowsAzure\ServiceBus\Models\SubscriptionInfo;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try    {
+try {
     // Create subscription.
     $subscriptionInfo = new SubscriptionInfo("mysubscription");
     $serviceBusRestProxy->createSubscription("mytopic", $subscriptionInfo);
@@ -157,7 +159,7 @@ catch(ServiceException $e){
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>フィルターを適用したサブスクリプションの作成
-トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージを指定できるフィルターを設定することもできます。 サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter) です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SqlFilter について詳しくは、「[SqlFilter.SqlExpression プロパティ][sqlfilter]」をご覧ください。
+トピックに送信されたメッセージのうち、特定のトピック サブスクリプション内に表示されるメッセージを指定できるフィルターを設定することもできます。 サブスクリプションでサポートされるフィルターのうち、最も柔軟性の高いものが、SQL92 のサブセットを実装する [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) です。 SQL フィルターは、トピックに発行されるメッセージのプロパティに対して適用されます。 SqlFilter について詳しくは、「[SqlFilter.SqlExpression プロパティ][sqlfilter]」をご覧ください。
 
 > [!NOTE]
 > サブスクリプションのルールごとに受信メッセージが個別に処理され、処理後のメッセージがサブスクリプションに追加されます。 さらに、新しいサブスクリプションにはそれぞれ、既定の**ルール** オブジェクトがあり、トピックからのすべてのメッセージをサブスクリプションに追加するフィルターが設定されています。 独自のフィルターに一致するメッセージのみ受信するには、この既定のルールを削除する必要があります。 `ServiceBusRestProxy->deleteRule` メソッドを使用して既定のルールを削除できます。
@@ -207,7 +209,7 @@ use WindowsAzure\ServiceBus\Models\BrokeredMessage;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try    {
+try {
     // Create message.
     $message = new BrokeredMessage();
     $message->setBody("my message");
@@ -244,7 +246,7 @@ for($i = 0; $i < 5; $i++){
 Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピック サイズの上限は 5 GB です。 クォータについて詳しくは、「[Service Bus のクォータ][Service Bus quotas]」をご覧ください。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
-サブスクリプションからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveSubscriptionMessage` メソッドを使用する方法です。 メッセージは、[*ReceiveAndDelete* と *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) の 2 つの異なるモードで受信できます。 **PeekLock** が既定値です。
+サブスクリプションからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveSubscriptionMessage` メソッドを使用する方法です。 メッセージは 2 つの異なるモードで受信できます。[*ReceiveAndDelete* と *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) です。 **PeekLock** が既定値です。
 
 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) モードを使用する場合、受信は 1 回ずつの動作になります。つまり、Service Bus は、サブスクリプション内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode)* モードは最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークしているため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされます。
 
@@ -262,7 +264,7 @@ use WindowsAzure\ServiceBus\Models\ReceiveMessageOptions;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try    {
+try {
     // Set receive mode to PeekLock (default is ReceiveAndDelete)
     $options = new ReceiveMessageOptions();
     $options->setPeekLock();
@@ -313,7 +315,7 @@ use WindowsAzure\Common\ServiceException;
 // Create Service Bus REST proxy.
 $serviceBusRestProxy = ServicesBuilder::getInstance()->createServiceBusService($connectionString);
 
-try    {        
+try {
     // Delete topic.
     $serviceBusRestProxy->deleteTopic("mytopic");
 }
@@ -338,6 +340,6 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
-[sqlfilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter
-[require-once]: http://php.net/require_once
+[sqlfilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
+[require-once]: https://php.net/require_once
 [Service Bus quotas]: service-bus-quotas.md

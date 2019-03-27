@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing に画像をアップロードしてその画像の分析情報を取得してから、応答を解析および表示するプロセスを解説します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 23e6d044a1c08fb585e01d61a97deaf87e24cbb9
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 919690dcef69bd6c142a692e992bfff45b995605
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743104"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858572"
 ---
 # <a name="tutorial-uploading-images-to-the-bing-visual-search-api"></a>チュートリアル:Bing Visual Search API に画像をアップロードする
 
@@ -628,7 +628,7 @@ function addDivContent(div, tag, json) {
 
 ### <a name="products-insights"></a>Products 分析情報
 
-`addProducts()` 関数では、`Products` アクションの一覧を反復処理し、それぞれについて `<img>` タグを外部の `<div>` に追加することで、返されるショッピング結果のリンクが作成されます。
+`addProducts()` 関数では、`Products` アクションの一覧を反復処理し、それぞれについて `<img>` タグを外部の `<div>` に追加することで、返される製品の結果のリンクが作成されます。
 
 ```javascript
 
@@ -773,4 +773,4 @@ function addDivContent(div, tag, json) {
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル: ImageInsightsToken を使って以前の検索から似た画像を見つける](./tutorial-visual-search-insights-token.md)。
+* [チュートリアル:ImageInsightsToken を使って以前の検索から似た画像を見つける](./tutorial-visual-search-insights-token.md)。

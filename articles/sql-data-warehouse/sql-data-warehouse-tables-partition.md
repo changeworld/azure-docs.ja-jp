@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 04e489e6b6841f1038830d0b160e88111be8d838
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 60f475afd8e9d599d3771b875f15a29e8a082fb7
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301962"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245890"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのパーティション分割
 Azure SQL Data Warehouse でのテーブル パーティションの使用に関する推奨事項と例。
@@ -70,7 +70,7 @@ WITH
 ## <a name="migrating-partitioning-from-sql-server"></a>SQL Server からのパーティション分割の移行
 SQL Server のパーティション定義を SQL Data Warehouse に単純に移行するには、次の操作を行います。
 
-- SQL Server の[パーティション構成](/sql/t-sql/statements/create-partition-scheme-transact-sql)を除去します。
+- SQL Server の [パーティション構成](/sql/t-sql/statements/create-partition-scheme-transact-sql)を除去します。
 - [パーティション関数](/sql/t-sql/statements/create-partition-function-transact-sql)の定義を CREATE TABLE に追加します。
 
 パーティション分割されたテーブルを SQL Server インスタンスから移行する場合、各パーティションに含まれる行数を調べるうえで以下の SQL が役立つ場合があります。 SQL Data Warehouse で同じパーティション分割の粒度を使用する場合、パーティションごとの行数が 60 の倍数で減少することに注意してください。  
@@ -110,7 +110,7 @@ GROUP BY    s.[name]
 ```
 
 ## <a name="workload-management"></a>ワークロード管理
-テーブル パーティションを決定する際の最後の考慮事項として、[ワークロード管理](resource-classes-for-workload-management.md)があります。 SQL Data Warehouse のワークロード管理は、主にメモリと同時実行の管理です。 SQL Data Warehouse では、リソース クラスによって、クエリの実行中に各ディストリビューションに割り当てられる最大メモリが管理されます。 理論的には、パーティションは、クラスター化列ストア インデックスの作成に必要なメモリなどのその他の要因を考慮してサイズ変更されます。 多くのメモリを割り当てると、クラスター化列ストア インデックスのメリットが大きくなります。 したがって、パーティション インデックスの再構築でメモリ不足にならないようにする必要があります。 クエリで使用できるメモリの量を増やすには、既定のロール smallrc から largerc などの他のいずれかのロールに切り替えます。
+テーブル パーティションを決定する際の最後の考慮事項として、[ワークロード管理](resource-classes-for-workload-management.md)があります。 SQL Data Warehouse のワークロード管理は、主にメモリとコンカレンシーの管理です。 SQL Data Warehouse では、リソース クラスによって、クエリの実行中に各ディストリビューションに割り当てられる最大メモリが管理されます。 理論的には、パーティションは、クラスター化列ストア インデックスの作成に必要なメモリなどのその他の要因を考慮してサイズ変更されます。 多くのメモリを割り当てると、クラスター化列ストア インデックスのメリットが大きくなります。 したがって、パーティション インデックスの再構築でメモリ不足にならないようにする必要があります。 クエリで使用できるメモリの量を増やすには、既定のロール smallrc から largerc などの他のいずれかのロールに切り替えます。
 
 ディストリビューションごとのメモリの割り当てに関する情報は、Resource Governor の動的管理ビューを照会することで入手できます。 実際には、メモリ許可は次のクエリの結果よりも少なくなります。 ただし、データ管理操作のためにパーティションのサイズを設定するときに、このクエリがある程度の目安になります。 非常に大きなリソース クラスで提供されるメモリ許可を上回るパーティション サイズに設定しないようにしてください。 パーティションのサイズがこの数値を上回ると、メモリ負荷のリスクが生じ、最適に圧縮できなくなります。
 

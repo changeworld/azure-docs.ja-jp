@@ -3,19 +3,20 @@ title: Azure MFA のバージョンと従量制の料金プラン | Microsoft Do
 description: Multi-Factor Authentication クライアント、各種認証方法、利用可能なバージョンに関する情報。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 15a528bfdc1f23c932d1206dbca4b05af8bd58ba
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2a8cfb39c26813b605d69fb3a2b3057ec2b0d897
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186703"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217464"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
 
@@ -31,7 +32,7 @@ ms.locfileid: "53186703"
 
 | Version | 説明 |
 | --- | --- |
-| Office 365 の多要素認証 |このバージョンは、Office 365 アプリケーション専用に動作し、Office 365 ポータルから管理されます。 管理者は [2 段階認証を使用して Office 365 リソースを保護](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)することができます。 このバージョンは、Office 365 サブスクリプションの一部です。 |
+| Office 365 の多要素認証 <br> Microsoft 365 Business |このバージョンは、Office 365 アプリケーション専用に動作し、Office 365 または Microsoft 365 ポータルから管理されます。 管理者は [2 段階認証を使用して Office 365 リソースを保護](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6)することができます。 このバージョンは、Office 365 または Microsoft 365 Business サブスクリプションの一部です。 |
 | Azure AD 管理者用の Multi-Factor Authentication | Azure AD テナントの Azure AD グローバル管理者ロールを割り当てられているユーザーは、追加費用なしで 2 段階認証を適用できます。|
 | Azure Multi-Factor Authentication | "完全" バージョンとも呼ばれる Azure Multi-Factor Authentication は、最も豊富な機能を備えています。 [Azure Portal](https://portal.azure.com) を介した追加の構成オプション、高度なレポート、および一連のオンプレミスおよびクラウド アプリケーションのサポートを提供します。 Azure Multi-Factor Authentication は、[Azure Active Directory Premium プラン](https://www.microsoft.com/cloud-platform/azure-active-directory-features)の機能であり、クラウドとオンプレミスのどちらにでもデプロイできます。 |
 

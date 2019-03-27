@@ -2,13 +2,15 @@
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/19/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
-ms.openlocfilehash: c682747877bcc66dd2ee3249e2755b5db1fd02fc
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.reviewer: johnhas
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: f7ce66fceb411d0de4b2785399b2db753dcb4d25
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650972"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57786347"
 ---
-*適用対象: Azure Stack 統合システム*
+*適用対象:Azure Stack 統合システム*

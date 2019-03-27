@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: fabb44f9369dd7b7050ae353ab94263f140aae48
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: f2636720f6f1faeffb9a63052efdf009668d806f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346407"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752077"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric Azure Files ボリューム ドライバー (プレビュー)
 Azure Files ボリューム プラグインは、Docker コンテナーに [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)です。 この Docker ボリューム プラグインは、Service Fabric クラスターにデプロイ可能な Service Fabric アプリケーションとしてパッケージ化されています。 その目的は、クラスターにデプロイされている他の Service Fabric コンテナー アプリケーション用に Azure ファイル ベースのボリュームを提供することです。
@@ -185,7 +185,7 @@ Azure Files ボリューム プラグインのドライバー名は **sfazurefil
     ```
 
 ## <a name="using-your-own-volume-or-logging-driver"></a>独自のボリュームまたはログ ドライバーの使用
-Service Fabric では、独自のカスタム [ボリューム](https://docs.docker.com/engine/extend/plugins_volume/)または[ログ](https://docs.docker.com/engine/admin/logging/overview/) ドライバーを使用することもできます。 Docker ボリューム/ログ ドライバーがクラスターにインストールされていない場合は、RDP/SSH プロトコルを使って手動でインストールできます。 これらのプロトコルによるインストールは、[仮想マシン スケール セット スタートアップ スクリプト](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)または [SetupEntryPoint スクリプト](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service)を使って実行できます。
+Service Fabric では、独自のカスタム [ボリューム](https://docs.docker.com/engine/extend/plugins_volume/)または[ログ](https://docs.docker.com/engine/admin/logging/overview/) ドライバーを使用することもできます。 Docker ボリューム/ログ ドライバーがクラスターにインストールされていない場合は、RDP/SSH プロトコルを使って手動でインストールできます。 これらのプロトコルによるインストールは、[仮想マシン スケール セット スタートアップ スクリプト](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/)または [SetupEntryPoint スクリプト](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)を使って実行できます。
 
 [Azure 用 Docker ボリューム ドライバー](https://docs.docker.com/docker-for-azure/persistent-data-volumes/)をインストールするスクリプトの例を次に示します。
 

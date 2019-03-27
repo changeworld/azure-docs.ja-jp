@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Docker コンテナーを使用して Cognitive Services をデータに近い場所に配置する方法について説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 4ee98c2d8170df5ef5878f5b534b545eb105667e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a60013bce63ed234e15dfddb13c07fbdc33a4073
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543918"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339625"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーのサポート
 

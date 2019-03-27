@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: e9b66721135456320134f41c614b194d1e22b10f
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b4c74a67c66b12e3a7333f3e679e7c61a750cf7e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380787"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002393"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Azure Media Services v3 プリセットと Video Indexer の比較 
 
@@ -30,15 +30,15 @@ ms.locfileid: "49380787"
 
 |機能|Video Indexer API |ビデオ アナライザーとオーディオ アナライザーのプリセット<br/>(Media Services v3 API)|
 |---|---|---|
-|メディア分析情報|[拡張](../../cognitive-services/video-indexer/video-indexer-output-json-v2.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json) |[基礎](../latest/intelligence-concept.md)|
-|エクスペリエンス|サポートされている機能の完全な一覧を参照: <br/> [概要](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)|ビデオの分析情報のみを返す|
+|メディア分析情報|[拡張](video-indexer-output-json-v2.md) |[基礎](../latest/intelligence-concept.md)|
+|エクスペリエンス|サポートされている機能の完全な一覧を参照: <br/> [概要](video-indexer-overview.md)|ビデオの分析情報のみを返す|
 |課金|[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|コンプライアンス|TBD|Media Services は多くの認証に準拠しています。 [Azure Compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) を入手し、"Media Services" を検索して、関心がある認証に準拠しているかどうかを確認します。|
+|コンプライアンス|[Azure のコンプライアンス](https://aka.ms/AzureCompliance)|Media Services は多くの認証に準拠しています。 [Azure Compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf) を入手し、"Media Services" を検索して、関心がある認証に準拠しているかどうかを確認します。|
 |無料試用版|米国東部|使用できません。|
 |可用性 |米国西部、東アジア、北ヨーロッパ|[Azure の状態](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)を参照。|
 
 ## <a name="next-steps"></a>次の手順
 
-[Video Indexer の概要](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)
+[Video Indexer の概要](video-indexer-overview.md)
 
-[Media Services v3 の概要](../../media-services/latest/media-services-overview.md)
+[Media Services v3 の概要](../latest/media-services-overview.md)

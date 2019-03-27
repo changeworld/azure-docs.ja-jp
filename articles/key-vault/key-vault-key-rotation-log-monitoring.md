@@ -4,7 +4,7 @@ description: キー ローテーションとキー コンテナー ログの監�
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: ''
 ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
 ms.service: key-vault
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 4dbfd993a8464c569d30f11e305d4bae000a778f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: deb50a71b179c3cb03d5da22e336c42b26fe0bfa
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077710"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106122"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>キー ローテーションと監査で Azure Key Vault を設定する
 
 ## <a name="introduction"></a>はじめに
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 キー コンテナーを作成したら、以後はそのキー コンテナーを使用してキーとシークレットを保存できます。 アプリケーションでキーやシークレットを保持する必要がなくなり、必要に応じてコンテナーから要求することができます。 これによりアプリケーションの動作に影響を与えずにキーとシークレットを更新できるため、キーおよびシークレット管理を取り巻く可能性の幅が広がります。
 
@@ -36,7 +38,7 @@ ms.locfileid: "54077710"
 - キー コンテナー監査ログを監視し、予期しない要求が行われたときにアラートを生成する方法を示します。
 
 > [!NOTE]
-> このチュートリアルの目的は、Key Vault の初期設定について詳しく説明することではありません。 詳細については、「 [Azure Key Vault の概要](key-vault-get-started.md)」を参照してください。 クロスプラットフォーム コマンド ライン インターフェイスの手順については、「[Manage Key Vault using CLI](key-vault-manage-with-cli2.md)」(CLI を使用した Key Vault の管理) を参照してください。
+> このチュートリアルの目的は、Key Vault の初期設定について詳しく説明することではありません。 この情報については、「[Azure Key Vault とは](key-vault-overview.md)」を参照してください。 クロスプラットフォーム コマンド ライン インターフェイスの手順については、「[Manage Key Vault using CLI](key-vault-manage-with-cli2.md)」(CLI を使用した Key Vault の管理) を参照してください。
 >
 >
 
@@ -45,7 +47,7 @@ ms.locfileid: "54077710"
 アプリケーションが Key Vault からシークレットを取得できるようにするには、最初にシークレットを作成し、それをコンテナーにアップロードする必要があります。 これを行うため、Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。 PowerShell は、このアカウントに関連付けられているすべてのサブスクリプションを取得します。 PowerShell は既定で最初のサブスクリプションを使用します。
@@ -53,19 +55,19 @@ Connect-AzureRmAccount
 複数のサブスクリプションをお持ちの場合は、Key Vault を作成するときに使用した 1 つを指定することが必要なことがあります。 アカウントのサブスクリプションを確認するには、次を入力します。
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 ログ記録する Key Vault に関連付けられているサブスクリプションを指定するには、次を入力します。
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscriptionID>
+Set-AzContext -SubscriptionId <subscriptionID>
 ```
 
 この記事では、ストレージ アカウント キーをシークレットとして格納しているため、そのストレージ アカウント キーを取得する必要があります。
 
 ```powershell
-Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
+Get-AzStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
 自分のシークレット (ここではストレージ アカウント キー) を取得したら、それをセキュリティで保護された文字列に変換し、その値を使ってシークレットをキー コンテナーに作成します。
@@ -73,13 +75,13 @@ Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <stora
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 
-Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
+Set-AzKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
 
 次に、作成したシークレットの URI を取得します。 これは、後で Key Vault を呼び出して、自分のシークレットを取得するときに使用します。 次の PowerShell コマンドを実行し、ID の値をメモします。これが、シークレットの URI です。
 
 ```powershell
-Get-AzureKeyVaultSecret –VaultName <vaultName>
+Get-AzKeyVaultSecret –VaultName <vaultName>
 ```
 
 ## <a name="set-up-the-application"></a>アプリケーションの設定
@@ -110,7 +112,7 @@ Get-AzureKeyVaultSecret –VaultName <vaultName>
 Key Vault へのアプリケーションからの呼び出しを確立する前に、アプリケーションとそのアクセス許可について Key Vault に指定する必要があります。 次のコマンドは、Azure Active Directory アプリからコンテナーの名前とアプリケーション ID を取得し、アプリケーションのキー コンテナーに対する **Get** アクセスを許可します。
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
 この時点で、アプリケーション呼び出しの構築をいつでも開始できます。 アプリケーションでは、Azure Key Vault および Azure Active Directory との対話に必要な NuGet パッケージをインストールする必要があります。 Visual Studio パッケージ マネージャー コンソールで、次のコマンドを入力します。 この記事が書かれた時点で、 Azure Active Directory パッケージの最新バージョンは 3.10.305231913 です。したがって、現在の最新のバージョンを確認し、必要に応じて更新してください。
@@ -188,7 +190,7 @@ Azure Automation でキー コンテナーのシークレット値を設定で�
 Azure Automation 接続のアプリケーション ID を取得したら、このアプリケーションにコンテナー内のシークレットを更新するアクセス権があることを、Key Vault に通知する必要があります。 これを行うには、次の PowerShell コマンドを使用します。
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
 次に、Azure Automation インスタンスで **[Runbook]** を選択し、**[Runbook の追加]** を選択します。 **[簡易作成]** を選択します。 Runbook に名前を付けて、Runbook の種類として **[PowerShell]** を選択します。 説明を追加するオプションがあります。 最後に、**[作成]** をクリックします。
@@ -205,7 +207,7 @@ try
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -230,12 +232,12 @@ $VaultName = <keyVaultName>
 $SecretName = <keyVaultSecretName>
 
 #Key name. For example key1 or key2 for the storage account
-New-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
-$SAKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
+New-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
+$SAKeys = Get-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
 
 $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 
-$secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
+$secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
 エディター ペインで **[テスト ウィンドウ]** を選択して、スクリプトをテストします。 エラーなしでスクリプトが実行されると、**[発行]** を選択できます。その後、Runbook 構成ウィンドウに戻って、Runbook のスケジュールを適用できます。
@@ -246,9 +248,9 @@ Key Vault を設定するときに、監査をオンにして、Key Vault への
 最初に、Key Vault へのログオンを有効にする必要があります。 これを行うには、次の PowerShell コマンドを使用します (詳細については、[key-vault-logging](key-vault-logging.md) をご覧ください)。
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
-$kv = Get-AzureRmKeyVault -VaultName '<vaultName>'
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+$sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
+$kv = Get-AzKeyVault -VaultName '<vaultName>'
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
 ログオンを有効にすると、監査ログによって、指定されたストレージ アカウントへの収集が開始されます。 こうしたログには、いつ、だれが、どのような方法で Key Vault にアクセスしたかに関するイベントが含まれます。
@@ -269,7 +271,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id
 
 Azure 関数を作成するには、**[リソースの作成]** を選択し、"_関数アプリ_" のマーケットプレースを検索してから、**[作成]** をクリックします。 作成中、既存のホスティング プランを使用するか、新しいプランを作成できます。 動的ホスティングを選択することもできます。 関数のホスティング オプションの詳細については、「[Azure Functions のスケーリング方法](../azure-functions/functions-scale.md)」をご覧ください。
 
-Azure 関数を作成するときに、この画面にアクセスしてタイマー関数と C\# を選択します。 次に **[この関数を作成する] をクリックします。
+Azure 関数を作成するときに、この画面にアクセスしてタイマー関数と C\# を選択します。 次に **[この関数を作成する]** をクリックします。
 
 ![Azure Functions スタート ブレード](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 

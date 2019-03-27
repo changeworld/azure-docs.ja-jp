@@ -4,7 +4,7 @@ description: アプリケーションの正常性拡張機能を使用して、�
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
-manager: rajraj
+manager: drewm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,21 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 404d983474d6d8705838d288aaa280478043be11
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745793"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084397"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>アプリケーションの正常性拡張機能と仮想マシン スケール セットの使用
 お使いのアプリケーションの正常性の監視は、ご自身のデプロイを管理およびアップグレードするための重要なシグナルです。 Azure 仮想マシン スケール セットでは、[OS イメージの自動アップグレード](virtual-machine-scale-sets-automatic-upgrade.md)などの[ローリング アップグレード](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)がサポートされ、個々のインスタンスの正常性を監視することで、ご自身のデプロイをアップグレードします。
 
 この記事では、アプリケーションの正常性拡張機能を使用して、仮想マシン スケール セットにデプロイされたご自身のアプリケーションの正常性を監視する方法について説明します。
 
-## <a name="pre-requisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 この記事では、次の内容を熟知していることを前提としています。
 -   Azure 仮想マシン[拡張機能](../virtual-machines/extensions/overview.md)
 -   仮想マシン スケール セットの[変更](virtual-machine-scale-sets-upgrade-scale-set.md)
@@ -35,7 +35,7 @@ ms.locfileid: "53745793"
 ## <a name="when-to-use-the-application-health-extension"></a>アプリケーションの正常性拡張機能を使用するタイミング
 アプリケーションの正常性拡張機能は、仮想マシン スケール セットのインスタンス内にデプロイされ、スケール セット インスタンス内から VM の正常性についてレポートします。 拡張機能は、アプリケーション エンドポイントでプローブを実行し、そのインスタンスでアプリケーションの状態を更新するように構成することができます。 このインスタンスの状態は Azure によってチェックされ、インスタンスがアップグレード操作の対象となるかどうかが判断されます。
 
-拡張機能は VM 内から正常性をレポートするため、(カスタム Azure Load Balancer [プローブ](../load-balancer/load-balancer-custom-probe-overview.md)を使用する) アプリケーションの正常性プローブなどの外部プローブが利用できない状況で使用できます。
+拡張機能は VM 内から正常性をレポートするため、(カスタム Azure Load Balancer [プローブ](../load-balancer/load-balancer-custom-probe-overview.md)を使用する) アプリケーションの正常性プローブなどの外部プローブが使用できない状況で使用できます。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
@@ -64,26 +64,26 @@ ms.locfileid: "53745793"
 ### <a name="property-values"></a>プロパティ値
 
 | Name | 値/例 | データ型
-| ---- | ---- | ---- | ----
+| ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
-| publisher | `Microsoft.ManagedServices` | string |
-| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
+| publisher | `Microsoft.ManagedServices` | 文字列 |
+| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | 文字列 |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>設定
 
 | Name | 値/例 | データ型
 | ---- | ---- | ----
-| protocol | `http` または `tcp` | string |
+| protocol | `http` または `tcp` | 文字列 |
 | port | プロトコルが `http` の場合は省略可能、プロトコルが `tcp` の場合は必須 | int |
-| requestPath | プロトコルが `http` の場合は必須、プロトコルが `tcp` の場合は許可されていません | string |
+| requestPath | プロトコルが `http` の場合は必須、プロトコルが `tcp` の場合は許可されていません | 文字列 |
 
 ## <a name="deploy-the-application-health-extension"></a>アプリケーションの正常性拡張機能をデプロイする
 次の例で詳しく示すように、アプリケーションの正常性拡張機能をお使いのスケール セットにデプロイする方法は複数あります。
 
 ### <a name="rest-api"></a>REST API
 
-次の例は、Windows ベースのスケール セットのスケール セット モデルで extensionProfile に (myHealthExtension という名前の) アプリケーションの正常性拡張機能 を追加しています。
+次の例は、Windows ベースのスケール セットのスケール セット モデルで extensionProfile に (myHealthExtension という名前の) アプリケーションの正常性拡張機能を追加しています。
 
 ```
 PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/myHealthExtension?api-version=2018-10-01`
@@ -109,9 +109,9 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-[Add-AzureRmVmssExtension](/powershell/module/azurerm.compute/add-azurermvmssextension) コマンドレットを使用して、アプリケーションの正常性拡張機能をスケール セット モデルの定義に追加します。
+[Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) コマンドレットを使用して、アプリケーションの正常性拡張機能をスケール セット モデルの定義に追加します。
 
-次の例は、Windows ベースのスケール セットのスケール セット モデルで `extensionProfile` にアプリケーションの正常性拡張機能 を追加しています。
+次の例は、Windows ベースのスケール セットのスケール セット モデルの `extensionProfile` にアプリケーションの正常性拡張機能を追加しています。 この例では、新しい Az PowerShell モジュールが使用されます。
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -125,12 +125,12 @@ $extensionType = "ApplicationHealthWindows"
 $publisher = "Microsoft.ManagedServices"
 
 # Get the scale set object
-$vmScaleSet = Get-AzureRmVmss `
+$vmScaleSet = Get-AzVmss `
   -ResourceGroupName $vmScaleSetResourceGroup `
   -VMScaleSetName $vmScaleSetName
 
 # Add the Application Health extension to the scale set model
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmScaleSet `
+Add-AzVmssExtension -VirtualMachineScaleSet $vmScaleSet `
   -Name $extensionName `
   -Publisher $publisher `
   -Setting $publicConfig `
@@ -139,10 +139,12 @@ Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmScaleSet `
   -AutoUpgradeMinorVersion $True
 
 # Update the scale set
-Update-AzureRmVmss -ResourceGroupName $vmScaleSetResourceGroup `
+Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
   -Name $vmScaleSetName `
   -VirtualMachineScaleSet $vmScaleSet
 ```
+
+
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
 [az vmss 拡張機能セット](/cli/azure/vmss/extension#az-vmss-extension-set) を使用して、アプリケーションの正常性拡張機能をスケール セット モデルの定義に追加します。

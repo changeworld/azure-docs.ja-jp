@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 84e56610cb0f9090d8cacc461a73bf41d05f2251
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 7cc8e46c841b6e385d1a3b442fdb63d465486af8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033487"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55477728"
 ---
-# <a name="ip-firewall-for-azure-cosmos-accounts"></a>Azure Cosmos アカウントの IP ファイアウォール
+# <a name="ip-firewall-in-azure-cosmos-db"></a>Azure Cosmos DB の IP ファイアウォール
 
 アカウントに保存されているデータを保護するために、Azure Cosmos DB では、強固なハッシュベースのメッセージ認証コード (HMAC) を利用したシークレット ベースの承認モデルをサポートしています。 さらに、Azure Cosmos DB では、受信ファイアウォールをサポートするための IP ベースのアクセス制御に対応しています。 このモデルは、従来型データベース システムのファイアウォール規則に似ていますが、アカウントのセキュリティ水準がさらに高くなっています。 ファイアウォールを利用して、承認されているコンピューターのグループやクラウド サービスからのみアクセスできるように Azure Cosmos アカウントを構成することができます。 ただし、承認されているコンピューターのグループやサービスから Azure Cosmos データベースに格納されているデータにアクセスするためには、呼び出し側が有効な承認トークンを提示する必要がある点は変わりません。
 
 ## <a id="ip-access-control-overview"></a>IP アクセス制御の概要
 
-既定では、有効な承認トークンと共に要求が送信されれば、Azure Cosmos アカウントにインターネットからアクセスすることができます。 IP ポリシー ベースのアクセス制御を構成するためには、特定の Azure Cosmos アカウントにアクセスするクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR (Classless Inter-Domain Routing) 形式でユーザーが指定する必要があります。 この構成を適用すると、この許可リストにないマシンを発信元とする要求はすべて、404 (見つかりません) 応答を受信します。 IP ファイアウォールを使用している場合は、Azure portal からアカウントへのアクセスを許可することをお勧めします。 データ エクスプローラーの使用を許可するため、また、Azure portal に表示されるアカウントのメトリックを取得するために、アクセスが必要になります。
+既定では、有効な承認トークンと共に要求が送信されれば、Azure Cosmos アカウントにインターネットからアクセスすることができます。 IP ポリシー ベースのアクセス制御を構成するためには、特定の Azure Cosmos アカウントにアクセスするクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR (Classless Inter-Domain Routing) 形式でユーザーが指定する必要があります。 この構成を適用すると、この許可リストにないマシンを発信元とするすべての要求で、403 (禁止) 応答が受信されます。 IP ファイアウォールを使用している場合は、Azure portal からアカウントへのアクセスを許可することをお勧めします。 データ エクスプローラーの使用を許可するため、また、Azure portal に表示されるアカウントのメトリックを取得するために、アクセスが必要になります。
 
 IP ベースのファイアウォールと、サブネットおよび VNET のアクセス制御を組み合わせることができます。 これらを組み合わせることで、パブリック IP を保持する任意のソースへのアクセスや、VNET 内の特定のサブネットからのアクセスを制限できます。 サブネットおよび VNET ベースのアクセス制御に関する詳細については、[仮想ネットワークから Azure Cosmos DB リソースへのアクセス](vnet-service-endpoint.md)に関するページを参照してください。
 

@@ -3,21 +3,22 @@ title: グループ情報の編集 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory を使用してグループ情報を編集する方法を説明します。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: c63872ce19cc7076929785cc7bd150c1599c5705
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5802634fe070f5d71fae01706c3cb4e83e04a72e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063051"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192066"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Azure Active Directory を使用してグループ情報を編集する
 
@@ -50,7 +51,7 @@ Azure Active Directory (Azure AD) を使用すると、名前、説明、また�
 
     - **[グループの種類]。** グループの種類が作成されると、変更することはできません。 **[グループの種類]** を変更するには、グループを削除して、新しいグループを作成する必要があります。
     
-    - **[メンバーシップの種類]。** メンバーシップの種類を変更します。 利用可能なさまざまなメンバーシップの種類については、「[方法:Azure Active Directory ポータルを使用して基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)」を参照してください。
+    - **[メンバーシップの種類]。** メンバーシップの種類を変更します。 利用可能なさまざまなメンバーシップの種類については、「[How to:Azure Active Directory ポータルを使用して基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)」を参照してください。
     
     - **[オブジェクト ID]。** オブジェクト ID は変更できませんが、コピーして PowerShell コマンドでグループに対して使用できます。 PowerShell コマンドレットの使用に関する詳細については、[グループ設定の構成用の Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-v2-cmdlets.md)に関するページをご覧ください。
 

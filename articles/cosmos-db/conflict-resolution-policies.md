@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB での競合解決の種類と解決ポリシー
+title: Azure Cosmos DB での競合解決の種類と複数の書き込みリージョンを使用した解決ポリシー
 description: この記事では、Azure Cosmos DB の競合カテゴリと競合解決ポリシーについて説明します。
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4af3f4c60f186c34d0f5522461ba70c68b59d1ab
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6b168efc2314e21f381d55f6ac79cda8b426e66d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033895"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110304"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>競合のタイプと解決ポリシー
 
@@ -50,6 +50,7 @@ Azure Cosmos DB では、更新の競合を解決するための柔軟なポリ�
 
 競合解決ポリシーを構成する方法について学習します。 次の記事を参照してください。
 
+* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
 * [LWW 競合解決ポリシーを使用する](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
 * [カスタム競合解決ポリシーを使用する](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
 * [競合フィードを使用する](how-to-manage-conflicts.md#read-from-conflict-feed)

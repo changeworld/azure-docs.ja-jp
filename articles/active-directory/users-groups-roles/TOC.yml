@@ -126,8 +126,12 @@ items:
       href: directory-assign-admin-roles.md
     - name: ロールの表示と割り当て
       href: directory-manage-roles-portal.md
+    - name: アプリの管理者ロールを委任する
+      href: roles-delegate-app-roles.md
     - name: タスク別の最小特権ロール
       href: roles-delegate-by-task.md
+    - name: Microsoft 365 のロール
+      href: roles-m365-workload-docs.md
     - name: 管理者ロールのセキュリティ
       items:
       - name: ロール セキュリティの計画
@@ -161,9 +165,9 @@ items:
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
   - name: Azure AD サービスの制約
     href: directory-service-limits-restrictions.md
-ms.openlocfilehash: 5556185bfad0cebf409b5f95fa5c26f6779d5903
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 34c4dcef7b986fdec7a3d611c6f42917542b4271
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329941"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509254"

@@ -23,7 +23,9 @@ items:
     href: tutorial-register-applications.md
   - name: 3 - ユーザー フローの作成
     href: tutorial-create-user-flows.md
-  - name: 4 - UI のカスタマイズ
+  - name: ID プロバイダーの追加
+    href: tutorial-add-identity-providers.md
+  - name: UI のカスタマイズ
     href: tutorial-customize-ui.md
   - name: アカウントの認証
     items:
@@ -69,13 +71,19 @@ items:
     href: manage-user-data.md
   - name: ユーザー フロー
     href: active-directory-b2c-reference-policies.md
+  - name: JavaScript を使用したユーザー フロー
+    href: user-flow-javascript-overview.md
   - name: ユーザー インターフェイスのカスタマイズ
     href: customize-ui-overview.md
 - name: ハウツー ガイド
   items:
   - name: 監査ログにアクセスする
     href: active-directory-b2c-reference-audit-logs.md
-  - name: 年齢制限
+  - name: Web API アプリケーションを追加する
+    href: add-web-application.md
+  - name: ネイティブ クライアント アプリケーションを追加する
+    href: add-native-application.md
+  - name: 年齢制限を構成する
     href: basic-age-gating.md
   - name: トークンを構成する
     href: active-directory-b2c-token-session-sso.md
@@ -93,7 +101,7 @@ items:
     items:
     - name: Application Insights を使用したログの収集
       href: active-directory-b2c-troubleshoot-custom.md
-    - name: ROPC を構成する
+    - name: ROPC の構成
       href: ropc-custom.md
     - name: ユーザー入力の構成
       href: active-directory-b2c-configure-signup-self-asserted-custom.md
@@ -230,7 +238,7 @@ items:
           href: relyingparty.md
       - name: JavaScript のサンプル
         href: javascript-samples.md
-      - name: リリース ノート
+      - name: 開発者向けのメモ
         href: active-directory-b2c-developer-notes-custom.md
       - name: 信頼フレームワークの定義
         href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
@@ -290,8 +298,6 @@ items:
       href: active-directory-b2c-how-to-enable-billing.md
     - name: 脅威管理
       href: active-directory-b2c-reference-threat-management.md
-    - name: ディレクトリを作成する際の問題
-      href: active-directory-b2c-support-create-directory.md
     - name: Extensions アプリ
       href: active-directory-b2c-reference-extensions-app.md
     - name: ユーザー フローのバージョン
@@ -318,9 +324,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: c7f7036e52c5c9d0f9d7c51a882474028ba63aef
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 81e58beb53ec818555f47c24fb21dcecf553878b
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244394"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418807"

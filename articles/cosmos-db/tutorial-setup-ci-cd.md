@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 58b97dd2df29a829b843d20c14cdb15644357653
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b4d8214608e8193172da078fc352c66145253ada
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053706"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878967"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -45,7 +45,7 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 
 2. 目的の**ソース**、**チーム プロジェクト**、**リポジトリ**、および**手動のビルドとスケジュールされたビルドの既定のブランチ**を選択します。 必要なオプションを選択した後、**[続行]** を選択します
 
-   ![ビルド パイプラインのチーム プロジェクト、リポジトリ、およびブランチを選択する ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
+   ![ビルド パイプラインのチーム プロジェクト、リポジトリ、およびブランチを選択する](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
 3. 最後に、ビルド パイプラインに使用したいテンプレートを選択します。 このチュートリアルでは、**ASP.NET** テンプレートを選択します。 
 

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
-ms.openlocfilehash: 759ace67c2adb02003103934c4d5d363470b3068
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 01/09/2019
+ms.openlocfilehash: 4b9b91c17a9199c7890d17a2b721ce0803e6bd6c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247488"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243336"
 ---
 # <a name="sql-resource-provider-11330-release-notes"></a>SQL リソース プロバイダー 1.1.33.0 のリリース ノート
 

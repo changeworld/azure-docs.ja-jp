@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/03/2018
+ms.date: 01/29/2019
 ms.author: kumud
-ms.openlocfilehash: 0b3e8fc72eb22a67c0672be19f60d4956d3377b7
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 18e4a7ae5010730054dd110828c63e8418b93f39
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53257298"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296921"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>アイドル時に TCP リセットを使用するロード バランサー (パブリック プレビュー)
 
-[Standard Load Balancer](load-balancer-standard-overview.md) を使用して、各構成可能なアイドル タイムアウトに対して双方向 TCP リセット (TCP RST パケット) を使用することで、シナリオに合わせたさらに予測可能なアプリケーションの動作を作成できます。  ロード バランサーの既定の動作では、フローのアイドル タイムアウトに達したときに、警告なしでフローを削除します。
+[Standard Load Balancer](load-balancer-standard-overview.md) を使用して、特定の規則のアイドル時の TCP リセットを有効にすることにより、シナリオのより予測可能なアプリケーション動作を作成します。 ロード バランサーの既定の動作では、フローのアイドル タイムアウトに達したときに、警告なしでフローを削除します。  この機能を有効にすると、ロード バランサーがアイドル タイムアウト時に双方向 TCP リセット (TCP RST パケット) を送信します。  これは、接続がタイムアウトしたため、使用できなくなったことをアプリケーション エンドポイントに通知します。  エンドポイントは、必要に応じて直ちに新しい接続を確立できます。
 
 ![ロード バランサー TCP リセット](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
@@ -69,31 +69,10 @@ API バージョン 2018-07-01 を使用して、規則ごとにアイドル タ
 
 ## <a name="regions"></a>利用可能なリージョン。
 
-このパラメーターは、以下のリージョンで現在有効です。  ここに記載されていないリージョンでは、このパラメーターには効果がありません。
-
-| リージョン |
-|---|
-| 東南アジア |
-| ブラジル南部 |
-| カナダ中部 |
-| 西ヨーロッパ |
-| インド中部 |
-| インド西部 |
-| 西日本 |
-| 韓国中部 |
-| 韓国南部 |
-| 英国北部 |
-| 英国南部 2 |
-| 米国東部 |
-| 米国東部 2 |
-| 英国北部 |
-| 米国西部 |
-
-プレビューが他のリージョンにも展開されると、この表は更新されます。  
+すべてのリージョンで利用できます。
 
 ## <a name="limitations"></a>制限事項
 
-- [利用可能なリージョン](#regions)は限定されています。
 - ポータルは、TCP リセットを構成または表示するためには使用できません。  代わりに、テンプレート、REST API、Az CLI 2.0、または PowerShell を使用します。
 
 ## <a name="next-steps"></a>次の手順

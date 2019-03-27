@@ -1,14 +1,18 @@
 items:
-- name: Azure Table Storage のドキュメント
+- name: Azure Storage のドキュメント
+  href: /azure/storage/
+- name: 概要
   items:
   - name: Azure Table Storage の概要
     href: table-storage-overview.md
   - name: Table Storage またはテーブル API の選択
     href: /azure/cosmos-db/table-support
     maintainContext: true
+  expanded: true
 - name: クイック スタート
   items:
   - name: ストレージ アカウントの作成
+    displayName: resource manager, resource manager template, template, ARM
     href: /azure/storage/common/storage-quickstart-create-account
     maintainContext: true
   - name: Azure portal でのテーブルの作成
@@ -78,14 +82,16 @@ items:
       href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: AzCopy on Linux (v8)
       href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+  - name: アカウントのフェールオーバーを開始する
+    href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
 - name: リソース
   items:
   - name: Table Storage REST API
     href: https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api
     maintainContext: true
-ms.openlocfilehash: 229677b65ac833e3cd7b599c0111798f95ae61f3
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: de554dc0e15e351eb7ba5b36e38fc32f01b700b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428642"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894106"

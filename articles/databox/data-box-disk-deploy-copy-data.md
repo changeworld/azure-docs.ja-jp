@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 10750b5005810ec9034d2b4c7907578949ca6821
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 75a78e303991e5426c97b8ceb0eb1375e03be2a2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155203"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868189"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル:Azure Data Box Disk にデータをコピーして確認する
 
@@ -161,7 +161,7 @@ ms.locfileid: "54155203"
     
     Robocopy コマンドについて詳しくは、「[Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx)」(Robocopy といくつかの例) をご覧ください。
 
-6. コピー先フォルダーを開いて、コピー済みのファイルを表示し、確認します。 コピー処理中にエラーが発生した場合は、トラブルシューティングのためにログ ファイルをダウンロードしてください。 ログ ファイルは、robobopy コマンドで指定した場所に格納されます。
+6. コピー先フォルダーを開いて、コピー済みのファイルを表示し、確認します。 コピー処理中にエラーが発生した場合は、トラブルシューティングのためにログ ファイルをダウンロードしてください。 ログ ファイルは、robocopy コマンドで指定した場所に格納されます。
  
 > [!IMPORTANT]
 > - データはお客様の責任で、適切なデータ形式に対応するフォルダーにコピーする必要があります。 たとえば、ブロック BLOB データは、ブロック BLOB 用のフォルダーにコピーしてください。 データ形式が適切なフォルダー (ストレージの種類) と一致しない場合、後続の手順で、Azure へのデータのアップロードに失敗します。
@@ -178,20 +178,20 @@ ms.locfileid: "54155203"
 1. Windows コンピューターで、Data Box 分割コピー ツールがダウンロードされ、ローカル フォルダーに抽出されていることを確認します。 このツールは、Windows 用の Data Box Disk ツールセットをダウンロードしたときにダウンロードされました。
 2. エクスプローラーを開きます。 Data Box Disk に割り当てられたデータ ソース ドライブと ドライブ文字をメモしておきます。 
 
-     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-1.png)
+     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-1.png)
  
 3. コピーするソース データを特定します。 たとえば、この場合:
     - 以下のブロック BLOB データが特定されました。
 
-         ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+         ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
 
     - 以下のページ BLOB データが特定されました。
 
-         ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+         ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
 4. ソフトウェアが抽出されるフォルダーに移動します。 そのフォルダーで `SampleConfig.json` ファイルを見つけます。 これは、変更して保存できる読み取り専用ファイルです。
 
-   ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+   ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
 5. `SampleConfig.json` ファイルを変更します。
  
@@ -200,11 +200,11 @@ ms.locfileid: "54155203"
     - ターゲット ディスクに対応するドライブ文字を入力します。 データはソース パスから取得され、複数のディスクにコピーされます。
     - ログ ファイルのパスを指定します。 既定では、`.exe` がある現在のディレクトリに送信されます。
 
-     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
 6. ファイル形式を検証するには、`JSONlint` に移動します。 ファイルを `ConfigFile.json`という名前で保存します。 
 
-     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. コマンド プロンプト ウィンドウを開きます。 
 
@@ -212,15 +212,15 @@ ms.locfileid: "54155203"
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
-     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-7.png)
  
 9. Enter キーを押してスクリプトを続行します。
 
-    ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+    ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-8.png)
   
 10. データセットを分割してコピーすると、コピー セッションの分割コピー ツールの概要が表示されます。 サンプル出力を次に示します。
 
-    ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+    ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-9.png)
  
 11. データがターゲット ディスク間で分割されていることを確認します。 
  
@@ -229,7 +229,7 @@ ms.locfileid: "54155203"
      
     `n:` ドライブの内容をさらに調べると、ブロック BLOB およびページ BLOB 形式データに対応して 2 つのサブフォルダーが作成されていることがわかります。
     
-     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+     ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
 12. コピー セッションが失敗した場合、復旧して再開するには、次のコマンドを使用します。
 

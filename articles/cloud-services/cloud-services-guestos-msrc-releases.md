@@ -11,17 +11,69 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/7/2019
+ms.date: 2/5/2019
 ms.author: raiye
-ms.openlocfilehash: 154b925cc173a1a8fac697e347759764807a3052
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 4c1b1b376493c77ae0f197d800ee0d00434b19c6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107907"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752111"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="january-2019-guest-os"></a>2019 年 1 月のゲスト OS
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 19-01 | [4480116] | Windows 10 セキュリティ | 6.3 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480961] | Windows 10 セキュリティ | 5.27 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480964] | Windows セキュリティ | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480972] | Windows セキュリティ | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480960] | Windows セキュリティ | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480056] | .Net セキュリティ | 6.3 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480074] | .NET 4.x セキュリティ | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480075] | .NET 4.x セキュリティ | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480076] | .NET 4.x セキュリティ | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480086] | .NET 3.x セキュリティ | 4.62 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480083] | .NET 3.x セキュリティ | 3.69 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480085] | .NET 3.x セキュリティ | 2.82 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480979] | 点滅 | 3.69、4.62、5.27、6.3 | 2019 年 1 月 8 日 |
+| Rel 19-01 | [4480965] | Internet Explorer | 2.82、3.69、4.62 | 2019 年 1 月 8 日 |
+| 該当なし | [4471318] | 12 月のセキュリティ以外のロールアップ | 2.82 | 2018 年 12 月 11 日 |
+| 該当なし | [4470641] | 12 月のセキュリティ以外のロールアップ .NET 3.x | 2.82 | 2018 年 12 月 11 日 |
+| 該当なし | [4470637] | 12 月のセキュリティ以外のロールアップ .NET 4.x | 2.82 | 2018 年 12 月 11 日 |
+| 該当なし | [4471330] | 12 月のセキュリティ以外のロールアップ | 3.69 | 2018 年 12 月 11 日 |
+| 該当なし | [4470629] | 12 月のセキュリティ以外のロールアップ .NET 3.x | 3.69 | 2018 年 12 月 11 日 |
+| 該当なし | [4470623] | 12 月のセキュリティ以外のロールアップ .NET 4.x | 3.69 | 2018 年 12 月 11 日 |
+| 該当なし | [4471320] | 12 月のセキュリティ以外のロールアップ | 4.62 | 2018 年 12 月 11 日 |
+| 該当なし | [4470630] | 12 月のセキュリティ以外のロールアップ .NET 3.x | 4.62 | 2018 年 12 月 11 日 |
+| 該当なし | [4470622] | 12 月のセキュリティ以外のロールアップ .NET 4.x | 4.62 | 2018 年 12 月 11 日 |
+
+[4480116]: http://support.microsoft.com/kb/4480116
+[4480961]: http://support.microsoft.com/kb/4480961
+[4480964]: http://support.microsoft.com/kb/4480964
+[4480972]: http://support.microsoft.com/kb/4480972
+[4480960]: http://support.microsoft.com/kb/4480960
+[4480056]: http://support.microsoft.com/kb/4480056
+[4480074]: http://support.microsoft.com/kb/4480074
+[4480075]: http://support.microsoft.com/kb/4480075
+[4480076]: http://support.microsoft.com/kb/4480076
+[4480086]: http://support.microsoft.com/kb/4480086
+[4480083]: http://support.microsoft.com/kb/4480083
+[4480085]: http://support.microsoft.com/kb/4480085
+[4480979]: http://support.microsoft.com/kb/4480979
+[4480965]: http://support.microsoft.com/kb/4480965
+[4471318]: http://support.microsoft.com/kb/4471318
+[4470641]: http://support.microsoft.com/kb/4470641
+[4470637]: http://support.microsoft.com/kb/4470637
+[4471330]: http://support.microsoft.com/kb/4471330
+[4470629]: http://support.microsoft.com/kb/4470629
+[4470623]: http://support.microsoft.com/kb/4470623
+[4471320]: http://support.microsoft.com/kb/4471320
+[4470630]: http://support.microsoft.com/kb/4470630
+[4470622]: http://support.microsoft.com/kb/4470622
 
 ## <a name="december-2018-guest-os"></a>2018 年 12 月のゲスト OS
 

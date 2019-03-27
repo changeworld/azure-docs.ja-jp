@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と MyWorkDrive の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と MyWorkDrive の統合 | Microsoft Docs
 description: Azure Active Directory と MyWorkDrive の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 4d049778-3c7b-46c0-92a4-f2633a32334b
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 7644a8517840b4fdffe0bc47c5a9bb97d48f6322
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 14cd7bea6707e6f724829a28b57604553e7405c0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686798"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199767"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>チュートリアル: Azure Active Directory と MyWorkDrive の統合
+# <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>チュートリアル:Azure Active Directory と MyWorkDrive の統合
 
 このチュートリアルでは、MyWorkDrive と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -147,7 +148,7 @@ MyWorkDrive で Azure AD のシングル サインオンを構成してテスト
 
     c. **[Azure App Federation Metadata Url]\(Azure アプリのフェデレーション メタデータ URL\)** テキスト ボックスに、Azure portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
 
-    d. **[保存]**
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[保存]**
 
     >[!NOTE]
     >追加情報については、[MyWorkDrive の Azure AD サポートに関する記事](https://www.myworkdrive.com/support/saml-single-sign-on-azure-ad/)をご覧ください。
@@ -175,7 +176,7 @@ MyWorkDrive で Azure AD のシングル サインオンを構成してテスト
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="creating-a-myworkdrive-test-user"></a>MyWorkDrive テスト ユーザーの作成
 

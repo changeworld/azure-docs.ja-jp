@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Central で新しいデバイスの種類を定義する | Microsoft Docs
 description: このチュートリアルでは、作成者向けに Azure IoT Central アプリケーションで新しいデバイスの種類を定義する方法について説明します。 種類のテレメトリ、状態、プロパティ、設定を定義します。
-author: tbhagwat3
-ms.author: tanmayb
+author: dominicbetts
+ms.author: dobett
 ms.date: 10/30/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: dd81c10bcda6665de7ffabe94a4c1be991687797
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+manager: philmea
+ms.openlocfilehash: 1ed1790d9fe1cdaa8d00b45e0684531984906c7f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50963599"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661821"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>チュートリアル: Azure IoT Central アプリケーションで新しいデバイスの種類を定義する
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションで新しいデバイスの種類を定義する
 
 このチュートリアルでは、作成者向けに、デバイス テンプレートを使用して、Microsoft Azure IoT Central アプリケーションでデバイスの新しい種類を定義する方法について説明します。 デバイス テンプレートでは、デバイスの種類のテレメトリ、状態、プロパティ、設定を定義します。
 
@@ -42,6 +42,8 @@ ms.locfileid: "50963599"
 > * 設定とプロパティ
 > * コマンドの使用
 > * シミュレートされたデバイスのダッシュボード表示
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -75,7 +77,7 @@ ms.locfileid: "50963599"
 
 ## <a name="create-a-new-custom-device-template"></a>新しいカスタム デバイス テンプレートの作成
 
-作成者は、アプリケーションでデバイス テンプレートを作成および編集できます。 デバイス テンプレートを作成すると、Azure IoT Central により、テンプレートからシミュレートされたデバイスが生成されます。 シミュレートされたデバイスは、物理デバイスを接続する前にアプリケーションの動作をテストできるように、テレメトリを生成します。
+作成者は、アプリケーションでデバイス テンプレートを作成および編集できます。 デバイス テンプレートを作成すると、Azure IoT Central により、テンプレートからシミュレートされたデバイスが生成されます。 シミュレートされたデバイスは、実デバイスを接続する前にアプリケーションの動作をテストできるように、テレメトリを生成します。
 
 新しいデバイス テンプレートをアプリケーションに追加するには、**[Application Builder]\(アプリケーション ビルダー\)** ページに移動する必要があります。 そのためには、左側のナビゲーション メニューで **[Application Builder]\(アプリケーション ビルダー\)** を選択します。
 
@@ -155,7 +157,7 @@ ms.locfileid: "50963599"
 
 ## <a name="define-event-measurement"></a>イベントの測定の定義
 
-[イベント] を使用して、エラーやコンポーネントの障害など、重要なイベントを表すためにデバイスが送信する特定の時点のデータを定義できます。 テレメトリの測定と同様に、Azure IoT Central では、物理デバイスを接続する前に、デバイスのイベントをシミュレートして、アプリケーションの動作をテストすることができます。 **[Measurements]\(測定\)** ビューでデバイスの種類のイベント測定を定義します。
+[イベント] を使用して、エラーやコンポーネントの障害など、重要なイベントを表すためにデバイスが送信する特定の時点のデータを定義できます。 テレメトリの測定と同様に、Azure IoT Central では、実デバイスを接続する前に、デバイスのイベントをシミュレートして、アプリケーションの動作をテストすることができます。 **[Measurements]\(測定\)** ビューでデバイスの種類のイベント測定を定義します。
 
 1. **Fan Motor Error** イベント測定を追加するには、**[New Measurement]\(新しい測定\)** を選択します。 次に、測定の種類として **[イベント]** を選択します。
 
@@ -191,7 +193,7 @@ ms.locfileid: "50963599"
 
 ## <a name="define-state-measurement"></a>状態の測定の定義
 
-[状態] を使用して、一定期間にわたるデバイスまたはそのコンポーネントの状態を定義および視覚化します。 テレメトリの測定と同様に、Azure IoT Central では、物理デバイスを接続する前に、デバイスの状態をシミュレートして、アプリケーションの動作をテストすることができます。 **[Measurements]\(測定\)** ビューでデバイスの種類の状態測定を定義します。
+[状態] を使用して、一定期間にわたるデバイスまたはそのコンポーネントの状態を定義および視覚化します。 テレメトリの測定と同様に、Azure IoT Central では、実デバイスを接続する前に、デバイスの状態をシミュレートして、アプリケーションの動作をテストすることができます。 **[Measurements]\(測定\)** ビューでデバイスの種類の状態測定を定義します。
 
 1. **Fan Mode** 測定を追加するために、**[New Measurement]\(新しい測定\)** を選択します。 次に、測定の種類として **[状態]** を選択します。
 
@@ -296,7 +298,7 @@ ms.locfileid: "50963599"
 
     | フィールド                | 値                |
     | -------------------- | -------------------- |
-    | 表示名         | Location             |
+    | 表示名         | 場所             |
     | フィールド名           | location             |
     | 初期値        | ワシントン州シアトル          |
     | 説明          | デバイスの場所      |

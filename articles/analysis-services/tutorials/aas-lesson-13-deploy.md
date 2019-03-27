@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 780853644125c8fa6d5edcef642cfad724516ef2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 72fa9bf211139b971afa443af812d644c76062fc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188387"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123472"
 ---
 # <a name="deploy"></a>デプロイ
 
@@ -49,15 +49,15 @@ ms.locfileid: "54188387"
   
 #### <a name="to-deploy-the-adventure-works-internet-sales"></a>Adventure Works Internet Sales をデプロイする
   
-1.  **Solution Explorer** で **AW Internet Sales** プロジェクトを右クリックし､ **Build** を選択します｡  
+1. **Solution Explorer** で **AW Internet Sales** プロジェクトを右クリックし､ **Build** を選択します｡  
 
-2.  **AW Internet Sales** プロジェクトを右クリックし､**Deploy** を選択します｡
+2. **AW Internet Sales** プロジェクトを右クリックし､**Deploy** を選択します｡
 
-    Azure Analysis Services へのデプロイでは､アカウントの入力を求められることがあります｡ 社内でのアカウントとパスワードを入力します (例: nancy@adventureworks.com)｡ このアカウントは､サーバーの管理者である必要があります。
+   Azure Analysis Services へのデプロイでは､アカウントの入力を求められることがあります｡ 社内でのアカウントとパスワードを入力します (例: nancy@adventureworks.com)｡ このアカウントは､サーバーの管理者である必要があります。
   
-    [Deploy] ダイアログ ボックスにモデルに含まれるメタデータと各テーブルのデプロイ状況が表示されます｡  
+   [Deploy] ダイアログ ボックスにモデルに含まれるメタデータと各テーブルのデプロイ状況が表示されます｡  
     
-    ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
+   ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
   
 3. デプロイが正常に終了したら､**[Close]** をクリックします｡  
   

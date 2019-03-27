@@ -9,16 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 12/14/2018
+ms.topic: conceptual
+ms.date: 02/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 6ab2d92e2a3c62719af1c8ab6d6eda935fc49505
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386776"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763369"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Azure Stack サブスクリプションまたはストレージ アカウントにストレージ エクスプローラーを接続する
 
@@ -29,7 +30,7 @@ ms.locfileid: "53386776"
 > [!NOTE]  
 > Azure Stack ストレージからデータを移動するために利用できるツールは、いくつかあります。 詳細については、「[Data transfer tools for Azure Stack storage](azure-stack-storage-transfer.md)」 (Azure Stack Storage のデータ転送ツール) を参照してください。
 
-ストレージ エクスプローラーをまだインストールしていない場合は、[ストレージ エクスプローラーをダウンロード](http://www.storageexplorer.com/)し、インストールしてください。
+ストレージ エクスプローラーをまだインストールしていない場合は、[ストレージ エクスプローラーをダウンロード](https://www.storageexplorer.com/)し、インストールしてください。
 
 Azure Stack サブスクリプションまたはストレージ アカウントに接続したら、[Azure ストレージ エクスプローラーの記事](../../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用し、Azure Stack データを操作できます。 
 
@@ -37,24 +38,22 @@ Azure Stack サブスクリプションまたはストレージ アカウント�
 
 ストレージ エクスプローラーから Azure Stack サブスクリプションにアクセスするには、Azure Stack への直接アクセスまたは VPN 接続が必要です。 Azure Stack への VPN 接続を設定する方法の詳細については、[VPN を使用した Azure Stack への接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)に関するページを参照してください。
 
-Azure Stack Development Kit 用に、Azure Stack の証明機関のルート証明書をエクスポートする必要があります。
+Azure Stack Development Kit (ASDK) 用に、Azure Stack の証明機関のルート証明書をエクスポートする必要があります。
+
+> [!Note]  
+> ASDK では、VPN 経由で ASDK に接続している場合、VPN 設定プロセス中に作成されたルート証明書 (CA.cer) を使用しないでください。  これは DER でエンコードされた証明書であり、ストレージ エクスプローラーが Azure Stack サブスクリプションを取得できません。 以下の手順に従って、ストレージ エクスプローラーで使用するための Base-64 エンコード証明書をエクスポートしてください。
 
 ### <a name="export-and-then-import-the-azure-stack-certificate"></a>Azure Stack の証明書をエクスポートしインポートする
+
+ASDK 用の Azure Stack 証明書をエクスポートしてからインポートします。 統合システムの場合、証明書はパブリックに署名されています。 そのため、Azure Stack 統合システムへの Storage Explorer の接続を設定するときには、このステップは必要ありません。
 
 1. Azure Stack に VPN 接続された、Azure Stack のホスト コンピューターまたはローカル コンピューターで `mmc.exe` を開きます。 
 
 2. **[ファイル]** の **[スナップインの追加と削除]** を選択し、**[ユーザー アカウント]** を管理するための **[証明書]** を追加します。
 
-3.  **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** 以下。
+3.  **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** 以下。 **AzureStackSelfSignedRootCert** を探します。
 
-    - ASDK の場合は、**AzureStackSelfSignedRootCert** を探します。
-
-        ![Azure Stack のルート証明書を mmc.exe で読み込む](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
-
-    - 統合システムの場合は、外部証明書のルート証明書を探します。 
-    
-        ![Azure Stack のルート証明書を mmc.exe で読み込む](./media/azure-stack-storage-connect-se/azure-stack-storage-cert-location-is.png)
-        
+    ![Azure Stack のルート証明書を mmc.exe で読み込む](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
 4. 証明書を右クリックし、**[すべてのタスク]** > **[エクスポート]** の順に選択したら、表示される手順に従って **Base-64 encoded X.509 (.CER)** で証明書をエクスポートします。
 

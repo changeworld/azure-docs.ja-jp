@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 12/11/2018
-ms.author: mayg
-ms.openlocfilehash: 1efbd6bfb6f3bc3e5deae058b542f665b3153cdb
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 02/05/2018
+ms.author: ramamill
+ms.openlocfilehash: b7454226b96ff2f6a76285d708a7ce2ad1c3a6de
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794356"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235888"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -67,13 +67,16 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 3. **[Select source]\(ソースの選択\)** で、ダウンロードした OVF の場所を入力します。
 4. **[Review details]\(詳細の確認\)** で、**[Next]\(次へ\)** を選択します。
 5. **[Select name and folder]\(名前とフォルダーの選択\)** および **[Select configuration]\(構成の選択\)** は、既定の設定のままにします。
-6. **[Select storage]\(ストレージの選択\)** で、パフォーマンスを最大にするために、**[Select virtual disk format]\(仮想ディスクの形式の選択\)** の **[Thick Provision Eager Zeroed]\(シック プロビジョニング Eager Zeroed\)** を選びます。
+6. **[Select storage]\(ストレージの選択\)** で、パフォーマンスを最大にするために、**[Select virtual disk format]\(仮想ディスクの形式の選択\)** の **[Thick Provision Eager Zeroed]\(シック プロビジョニング Eager Zeroed\)** を選びます。 シン プロビジョニングのオプションの使用は、構成サーバーのパフォーマンスに影響を及ぼす場合があります。
 7. ウィザードの残りのページでは、既定の設定をそのまま使います。
 8. **[Ready to complete]\(完了の準備\)** で、次の操作を行います。
 
     * 既定の設定で VM をセットアップするには、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** > **[Finish]\(完了\)** の順に選びます。
 
     * 追加のネットワーク インターフェイスを追加するには、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** をオフにし、**[Finish]\(完了\)** を選びます。 既定でデプロイされる構成サーバー テンプレートの NIC は 1 つだけですが、 デプロイ後にさらに NIC を追加することができます。
+
+> [!IMPORTANT]
+> デプロイ後は、リソースの構成 (CPU/メモリ/コアの制限) を変更したり、構成サーバーにインストールされているサービスやファイルを変更または削除したりしないでください。 これは、Azure サービスへの構成サーバーの登録と構成サーバーのパフォーマンスに影響を及ぼします。
 
 ## <a name="add-an-additional-adapter"></a>さらにアダプターを追加する
 
@@ -119,7 +122,7 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 
 ## <a name="upgrade-the-configuration-server"></a>構成サーバーをアップグレードする
 
-構成サーバーを最新バージョンにアップグレードするには、こちらの[手順](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)に従ってください。
+構成サーバーを最新バージョンにアップグレードするには、こちらの[手順](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)に従ってください。 すべての Site Recovery コンポーネントをアップグレードする方法の詳細な手順については、[こちら](service-updates-how-to.md)をクリックしてください。
 
 ## <a name="manage-the-configuration-server"></a>構成サーバーの管理
 
@@ -127,34 +130,46 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 
 ## <a name="faq"></a>FAQ
 
-1. 構成サーバーがインストールされている VM をさまざまな目的で使用することはできますか?
+1. OVF を使用してデプロイされた構成サーバーで提供されているライセンスはどれくらいの期間有効ですか? ライセンスを再アクティブ化しないとどうなりますか?
+
+    OVA テンプレートに付属するライセンスは、180 日間有効な評価版ライセンスです。 有効期限が切れる前に、ライセンスをアクティブ化する必要があります。 そうしないと、構成サーバーが頻繁にシャットダウンされ、それによりレプリケーション アクティビティが妨げられることがあります。
+
+2. 構成サーバーがインストールされている VM をさまざまな目的で使用することはできますか?
 
     **いいえ**。VM は構成サーバー専用にすることをお勧めします。 ディザスター リカバリーを効率的に管理するため、必ず、[前提条件](#prerequisites)に記述されているすべての仕様に従ってください。
-2. 構成サーバーに既に登録されているコンテナーを、新しく作成されたコンテナーに切り替えることはできますか? 
+3. 構成サーバーに既に登録されているコンテナーを、新しく作成されたコンテナーに切り替えることはできますか? 
 
     **いいえ**。コンテナーは、構成サーバーに登録した後に変更することはできません。
-3. 物理マシンと仮想マシンの両方を保護するために同じ構成サーバーを使用することはできますか? 
+4. 物理マシンと仮想マシンの両方を保護するために同じ構成サーバーを使用することはできますか? 
 
     **はい**。物理マシンと仮想マシンをレプリケートするために同じ構成サーバーを使用することができます。 ただし、物理マシンをフェールバックできるのは、VMware VM にのみです。
-4. 構成サーバーの目的は何ですか? また、どこで使用されるのですか?
+5. 構成サーバーの目的は何ですか? また、どこで使用されるのですか?
 
     構成サーバーとその機能の詳細については、[Azure レプリケーション アーキテクチャに対する VMware ](vmware-azure-architecture.md)を参照してください。
-5. 構成サーバーの最新バージョンはどこで入手できますか? 
+6. 構成サーバーの最新バージョンはどこで入手できますか? 
 
-    ポータルを使用して構成サーバーをアップグレードする手順については、[構成サーバーのアップグレード](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)を参照してください。 [Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードすることもできます。
-6. 構成サーバーのパスフレーズはどこでダウンロードできますか?
+    ポータルを使用して構成サーバーをアップグレードする手順については、[構成サーバーのアップグレード](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)を参照してください。 すべての Site Recovery コンポーネントをアップグレードする方法の詳細な手順については、[こちら](https://aka.ms/asr_how_to_upgrade)を参照してください。
+7. 構成サーバーのパスフレーズはどこでダウンロードできますか?
 
     パスフレーズをダウンロードする場合は、[こちらの記事](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)を参照してください。
-7. コンテナー登録キーはどこでダウンロードできますか?
+8. パスフレーズは変更できますか?
+
+    **いいえ**、構成サーバーの**パスフレーズは変更しないことを強くお勧めします**。 パスフレーズ変更すると、保護されているマシンのレプリケーションが中断されて、重大な正常性状態につながります。
+9. コンテナー登録キーはどこでダウンロードできますか?
 
     **[Recovery Services コンテナー]** で、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** の順に移動します。 [サーバー] で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
-8. 既存の構成サーバーを複製してレプリケーション オーケストレーションに使用することはできますか?
+10. 既存の構成サーバーを複製してレプリケーション オーケストレーションに使用することはできますか?
 
     **いいえ**。複製された Configuration Server コンポーネントは使用できません。
 
-9. 構成サーバーの IP を変更することはできますか?
+11. 構成サーバーの IP を変更することはできますか?
 
     **いいえ**、構成サーバーの IP アドレスは変更しないことを強くお勧めします。 構成サーバーに割り当てられているすべての IP は、DHCP IP ではなく確実に静的 IP にします。
+12. Azure で構成サーバーを設定できますか?
+
+    v-Center との直接の通信経路を使ってオンプレミス環境の構成サーバーを設定することと、データ転送の待機時間を最小限に抑えることをお勧めします。 [フェールバックの目的](vmware-azure-manage-configuration-server.md#failback-requirements)で、構成サーバーのスケジュールされたバックアップを作成することができます。
+
+構成サーバーのよくあるご質問については、[構成サーバーについてよく寄せられる質問のドキュメント](vmware-azure-common-questions.md#configuration-server)を参照してください。
 
 ## <a name="troubleshoot-deployment-issues"></a>デプロイに関する問題のトラブルシューティング
 

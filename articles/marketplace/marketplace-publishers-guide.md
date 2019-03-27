@@ -7,26 +7,26 @@ author: ellacroi
 manager: nunoc
 editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
-ms.service: Marketplace
+ms.service: marketplace
 ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 487872b1e9344aaefad5ca0953c41b59f01027b0
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 5c53545a6a5421bd20622fd132bb5c0b2c0940d9
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753967"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731142"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace と AppSource の公開ガイド
 
 この Marketplace 公開ガイドでは、[Azure Marketplace](https://azuremarketplace.microsoft.com) と [Microsoft AppSource](https://appsource.microsoft.com) のネットショップを使い、アプリケーションとサービスを登録することによって、Microsoft と連携してそのビジネスを成長させる方法を、新しいパブリッシャーと既存のパブリッシャー向けにわかりやすく説明しています。
 
 >[!Note]
->Marketplace はここでは、Azure Marketplace と AppSource の両方のことを指します。  詳細については、[1 つのマーケットプレース、2 つのネットショップ](https://docs.microsoft.com/en-us/azure/marketplace/comparing-appsource-azure-marketplace)に関するページを参照してください。
+>Marketplace はここでは、Azure Marketplace と AppSource の両方のことを指します。  詳細については、[1 つのマーケットプレース、2 つのネットショップ](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)に関するページを参照してください。
 
 このガイドでは、次のトピックについて説明します。 
 *   Marketplace の概要とそのしくみ 

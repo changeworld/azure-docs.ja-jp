@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 5a97a683e7f25029199ba68ce3d5cee410c3cf29
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.lastreviewed: 09/28/2018
+ms.openlocfilehash: eef9e45d71dd5a8c29112f74deaf8342dc0d1406
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886826"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101501"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Azure Stack での Java による API バージョンのプロファイルの使用
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack Resource Manager 向けの Java SDK には､インフラストラクチャの構築と管理に役立つツールが用意されています。 SDK のリソース プロバイダーには、コンピューティング、ネットワーク、ストレージ、アプリ サービス、および [KeyVault](../../key-vault/key-vault-whatis.md) が含まれます。 Java SDK は、.java ファイルに適切なモジュールを読み込む Pom.xml ファイルに依存関係を含めることで、API プロファイルを組み込みます。 ただし、依存関係として複数のプロファイル (**2018-03-01-hybrid** など) を追加したり、Azure プロファイルとして **latest** を追加したりできます。 これらの依存関係を使用すると適切なモジュールが読み込まれるため、リソースの種類を作成するときに、それらのプロファイルから使用したい API バージョンを選択することができます。 これにより、Azure Stack の最新の API バージョンに対する開発の際に、Azure で最新バージョンを使用することができます。 Java SDK を使用すると、真のハイブリッド クラウド開発者エクスペリエンスを実現できます。 Java SDK に含まれている API プロファイルを使用すると、グローバルな Azure リソースと Azure Stack 上のリソース間を切り替えることで、ハイブリッド クラウド開発を行うことができます。
 
@@ -61,11 +62,11 @@ API プロファイルは、リソース プロバイダーと API バージョ�
 
 次の手順を使用して Java SDK をインストールします。
 
-1.  正式な指示に従って、Git をインストールします。 手順については、「[Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)」 (はじめに - Git をインストールする) をご覧ください。
+1. 正式な指示に従って、Git をインストールします。 手順については、「[Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)」 (はじめに - Git をインストールする) をご覧ください。
 
-2.  正式な指示に従って、[Java SDK](http://zulu.org/download/) と [Maven](https://maven.apache.org/) をインストールします。 適切なバージョンは、Java Developer Kit のバージョン 8 です。 適切な Apache Maven はバージョン 3.0 以降です。 このクイック スタートを完了するには、JAVA_HOME 環境変数を Java Development Kit のインストール場所に設定する必要があります。 詳細については、「[Java と Maven を使用して初めての関数を作成する](../../azure-functions/functions-create-first-java-maven.md)」を参照してください。
+2. 正式な指示に従って、[Java SDK](https://zulu.org/download/) と [Maven](https://maven.apache.org/) をインストールします。 適切なバージョンは、Java Developer Kit のバージョン 8 です。 適切な Apache Maven はバージョン 3.0 以降です。 このクイック スタートを完了するには、JAVA_HOME 環境変数を Java Development Kit のインストール場所に設定する必要があります。 詳細については、「[Java と Maven を使用して初めての関数を作成する](../../azure-functions/functions-create-first-java-maven.md)」を参照してください。
 
-3.  適切な依存関係パッケージをインストールするには、Java アプリケーションで Pom.xml ファイルを開きます。 次のコードに示されているように、依存関係を追加します。
+3. 適切な依存関係パッケージをインストールするには、Java アプリケーションで Pom.xml ファイルを開きます。 次のコードに示されているように、依存関係を追加します。
 
    ```xml  
    <dependency>
@@ -75,17 +76,17 @@ API プロファイルは、リソース プロバイダーと API バージョ�
    </dependency>
    ```
 
-4.  インストールする必要があるパッケージは、使用したいプロファイル バージョンによって異なります。 プロファイル バージョンのパッケージ名は次のとおりです。
+4. インストールする必要があるパッケージは、使用したいプロファイル バージョンによって異なります。 プロファイル バージョンのパッケージ名は次のとおりです。
     
    - **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**
    - **com.microsoft.azure**
-      - **latest**
+     - **latest**
 
-5.  使用できない場合は、サブスクリプションを作成し、後で使用するためにサブスクリプション ID を保存します。 サブスクリプションの作成方法については、「[Azure Stack でオファーのサブスクリプションを作成する](../azure-stack-subscribe-plan-provision-vm.md)」を参照してください。
+5. 使用できない場合は、サブスクリプションを作成し、後で使用するためにサブスクリプション ID を保存します。 サブスクリプションの作成方法については、「[Azure Stack でオファーのサブスクリプションを作成する](../azure-stack-subscribe-plan-provision-vm.md)」を参照してください。
 
-6.  サービス プリンシパルを作成し、クライアント ID とクライアント シークレットを保存します。 Azure Stack 用のサービス プリンシパルの作成方法については、「[Azure Stack へのアクセスをアプリケーションに提供する](../azure-stack-create-service-principals.md)」を参照してください。 クライアント ID は、サービス プリンシパルの作成時にはアプリケーション ID とも呼ばれることに注意してください。
+6. サービス プリンシパルを作成し、クライアント ID とクライアント シークレットを保存します。 Azure Stack 用のサービス プリンシパルの作成方法については、「[Azure Stack へのアクセスをアプリケーションに提供する](../azure-stack-create-service-principals.md)」を参照してください。 クライアント ID は、サービス プリンシパルの作成時にはアプリケーション ID とも呼ばれることに注意してください。
 
-7.  サブスクリプションでサービス プリンシパルのロールが共同作成者/所有者であることを確認します。 サービス プリンシパルへのロールの割り当て手順については、「[Azure Stack へのアクセスをアプリケーションに提供する](../azure-stack-create-service-principals.md)」を参照してください。
+7. サブスクリプションでサービス プリンシパルのロールが共同作成者/所有者であることを確認します。 サービス プリンシパルへのロールの割り当て手順については、「[Azure Stack へのアクセスをアプリケーションに提供する](../azure-stack-create-service-principals.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -116,6 +117,22 @@ Unix ベースのシステムでは、次のコマンドを使用できます。
 
 ```shell
 Export AZURE_TENANT_ID=<Your_Tenant_ID>
+```
+
+### <a name="trust-the-azure-stack-ca-root-certificate"></a>Azure Stack の CA ルート証明書を信頼する
+
+ASDK を使用する場合は、リモート マシン上で CA ルート証明書を信頼する必要があります。 統合システムではそれを行う必要はありません。
+
+#### <a name="windows"></a> Windows
+
+1. Azure Stack の自己署名証明書を自分のデスクトップにエクスポートします。
+
+1. コマンド シェルでディレクトリを %JAVA_HOME%\bin に変更します。
+
+1. 次のジョブを実行します。
+
+```shell
+      .\keytool.exe -importcert -noprompt -file <location of the exported certificate here> -alias root -keystore %JAVA_HOME%\lib\security\cacerts -trustcacerts -storepass changeit
 ```
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack Resource Manager エンドポイント
@@ -149,9 +166,9 @@ Microsoft Azure Resource Manager は、管理者が Azure リソースのデプ�
 
 ## <a name="existing-api-profiles"></a>既存の API プロファイル
 
-1.  **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Azure Stack 用にビルドされた最新のプロファイル。 1808 以降のスタンプを使用している限り、Azure Stack との互換性に優れたサービスには、このプロファイルを使用します。
+1.  **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**:Azure Stack 用に作成された最新のプロファイル。 1808 以降のスタンプを使用している限り、Azure Stack との互換性に優れたサービスには、このプロファイルを使用します。
 
-2.  **com.microsoft.azure**: すべてのサービスの最新バージョンで構成されているプロファイル。 すべてのサービスの最新バージョンを使用してください。
+2.  **com.microsoft.azure**:すべてのサービスの最新バージョンで構成されているプロンプトファイル。 すべてのサービスの最新バージョンを使用してください。
 
 Azure Stack および API プロファイルについて詳しくは、「[API プロファイルの概要](../user/azure-stack-version-profiles.md#summary-of-api-profiles)」をご覧ください。
 
@@ -161,10 +178,10 @@ Azure Stack および API プロファイルについて詳しくは、「[API �
 
 ```java
 AzureTokenCredentials credentials = new ApplicationTokenCredentials(client, tenant, key, AZURE_STACK)
-                    .withDefaultSubscriptionId(subscriptionId);
+                    .withDefaultSubscriptionID(subscriptionID);
 Azure azureStack = Azure.configure()
                     .withLogLevel(com.microsoft.rest.LogLevel.BASIC)
-                    .authenticate(credentials, credentials.defaultSubscriptionId());
+                    .authenticate(credentials, credentials.defaultSubscriptionID());
 ```
 
 これにより、API プロファイルの依存関係を使用して、アプリケーションを Azure Stack に正常にデプロイすることができます。
@@ -180,8 +197,8 @@ AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>(
                     put("resourceManagerEndpointUrl", armEndpoint);
                     put("galleryEndpointUrl", settings.get("galleryEndpoint"));
                     put("activeDirectoryEndpointUrl", settings.get("login_endpoint"));
-                    put("activeDirectoryResourceId", settings.get("audience"));
-                    put("activeDirectoryGraphResourceId", settings.get("graphEndpoint"));
+                    put("activeDirectoryResourceID", settings.get("audience"));
+                    put("activeDirectoryGraphResourceID", settings.get("graphEndpoint"));
                     put("storageEndpointSuffix", armEndpoint.substring(armEndpoint.indexOf('.')));
                     put("keyVaultDnsSuffix", ".vault" + armEndpoint.substring(armEndpoint.indexOf('.')));
                 }
@@ -225,33 +242,33 @@ HttpResponse response = httpClient.execute(getRequest);
 
 ### <a name="sample-unit-test-project"></a>単体テスト プロジェクトのサンプル 
 
-1.  次のコマンドを使用して、リポジトリを複製します。
+1. 次のコマンドを使用して、リポジトリを複製します。
     
-    `git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
+   `git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
 
-2.  Azure サービス プリンシパルを作成し、サブスクリプションにアクセスするロールを割り当てます。 サービス プリンシパルの作成方法については、「[Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する](../azure-stack-create-service-principals.md)」をご覧ください。
+2. Azure サービス プリンシパルを作成し、サブスクリプションにアクセスするロールを割り当てます。 サービス プリンシパルの作成方法については、「[Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する](../azure-stack-create-service-principals.md)」をご覧ください。
 
-3.  次の必要な環境変数値を取得します。
+3. 次の必要な環境変数値を取得します。
     
-    -  AZURE_TENANT_ID
-    -  AZURE_CLIENT_ID
-    -  AZURE_CLIENT_SECRET
-    -  AZURE_SUBSCRIPTION_ID
-    -  ARM_ENDPOINT
-    -  RESOURCE_LOCATION
+   -  AZURE_TENANT_ID
+   -  AZURE_CLIENT_ID
+   -  AZURE_CLIENT_SECRET
+   -  AZURE_SUBSCRIPTION_ID
+   -  ARM_ENDPOINT
+   -  RESOURCE_LOCATION
 
-4.  コマンド プロンプトを使用して作成したサービス プリンシパルから取得した情報を使用して、次の環境変数を設定します。
+4. コマンド プロンプトを使用して作成したサービス プリンシパルから取得した情報を使用して、次の環境変数を設定します。
     
-    - export AZURE_TENANT_ID={ご使用のテナント ID}
-    - export AZURE_CLIENT_ID={ご使用のクライアント ID}
-    - export AZURE_CLIENT_SECRET={ご使用のクライアント シークレット}
-    - export AZURE_SUBSCRIPTION_ID={ご使用のサブスクリプション ID}
-    - export ARM_ENDPOINT={ご使用の Azure Stack Resource Manager URL}
-    - export RESOURCE_LOCATION={Azure Stack の場所}
+   - export AZURE_TENANT_ID={ご使用のテナント ID}
+   - export AZURE_CLIENT_ID={ご使用のクライアント ID}
+   - export AZURE_CLIENT_SECRET={ご使用のクライアント シークレット}
+   - export AZURE_SUBSCRIPTION_ID={ご使用のサブスクリプション ID}
+   - export ARM_ENDPOINT={ご使用の Azure Stack Resource Manager URL}
+   - export RESOURCE_LOCATION={Azure Stack の場所}
 
    Windows では、**export** ではなく **set** を使用します。
 
-5.  `getactivedirectorysettings` コードを使用して ARM メタデータ エンドポイントを取得し、HTTP クライアントを使用してエンドポイント情報を設定します。
+5. `getactivedirectorysettings` コードを使用して ARM メタデータ エンドポイントを取得し、HTTP クライアントを使用してエンドポイント情報を設定します。
 
    ```java
    public static HashMap<String, String> getActiveDirectorySettings(String armEndpoint) {
@@ -273,7 +290,7 @@ HttpResponse response = httpClient.execute(getRequest);
    HttpResponse response = httpClient.execute(getRequest);
    ```
 
-6.  pom.xml ファイルで、Azure Stack 用の 2018-03-01-hybrid プロファイルを使用するために下の依存関係を追加します。 この依存関係は、コンピューティング、ネットワーク、ストレージ、KeyVault、App Services のリソース プロバイダー用の、このプロファイルに関連付けられているモジュールをインストールします。
+6. pom.xml ファイルで、Azure Stack 用の 2018-03-01-hybrid プロファイルを使用するために下の依存関係を追加します。 この依存関係は、コンピューティング、ネットワーク、ストレージ、KeyVault、App Services のリソース プロバイダー用の、このプロファイルに関連付けられているモジュールをインストールします。
       
    ```xml
    <dependency>
@@ -283,7 +300,7 @@ HttpResponse response = httpClient.execute(getRequest);
    </dependency>
    ```
 
-8.  環境変数を設定するために開いていたコマンド プロンプトで、次の行を入力します。
+8. 環境変数を設定するために開いていたコマンド プロンプトで、次の行を入力します。
     
    ```shell
    mvn clean compile exec:java

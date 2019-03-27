@@ -3,19 +3,20 @@ title: Azure AD でパスワードを禁止する方法
 description: Azure AD でのパスワードの動的禁止を使用して環境の脆弱なパスワードを禁止する
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: c4a289d1aeefc35f07e7598adf3780620b11f0da
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 30627994a8fe8cfe73e7945dadf2153ea60860b8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252203"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175134"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>カスタムの禁止パスワード リストを構成する
 

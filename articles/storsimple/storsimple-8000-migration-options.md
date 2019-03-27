@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/30/2018
+ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: 5166e154e1a67cea777933b6bf8757661a9c3ad5
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: e3412e31ae976efc8164076b30ad61360a030db4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242961"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511940"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 シリーズのデータを移行するためのオプション 
 
@@ -29,21 +29,31 @@ ms.locfileid: "50242961"
 
 ## <a name="migration-options"></a>移行オプション
 
-StorSimple 5000-7000 シリーズをご使用のお客様には、次のオプションがあります。
+StorSimple 5000-7000 シリーズをご使用のお客様には、Azure またはサード パーティのオプションがあります。
 
-- **Azure オプション**:
+### <a name="azure-options"></a>Azure のオプション
 
-    - **StorSimple 8000 シリーズへのアップグレード**: StorSimple 8000 シリーズにアップグレードして、StorSimple プラットフォームを引き続き使用します。  このアップグレード パスでは、お客様は 5000-7000 シリーズ デバイスを 8000 シリーズで置き換える必要があります。 データは、移行ツールを使用して、5000-7000 シリーズ デバイスから移行されます。 移行が正常に完了すると、StorSimple 8000 シリーズ デバイスにより、Azure Blob Storage にデータが引き続き格納されます。 
+#### <a name="upgrade-to-storsimple-8000-series"></a>StorSimple 8000 シリーズにアップロードする
 
-    StorSimple 8000 シリーズを使用してデータを移行する方法の詳細については、「[StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する](storsimple-8000-migrate-from-5000-7000.md)」を参照してください。
+StorSimple 8000 シリーズにアップグレードして、StorSimple プラットフォームを引き続き使用します。  このアップグレード パスでは、お客様は 5000-7000 シリーズ デバイスを 8000 シリーズで置き換える必要があります。 データは、移行ツールを使用して、5000-7000 シリーズ デバイスから移行されます。 移行が正常に完了すると、StorSimple 8000 シリーズ デバイスにより、Azure Blob Storage にデータが引き続き格納されます。 
 
-    - **Azure File Sync に移行**: この新しい移行オプションを使用すると、お客様が自分の組織のファイル共有を Azure Files に格納できます。 その後、これらのファイル共有は、オンプレミス アクセスのために Azure File Sync (AFS) を使用して一元化されます。 AFS は Windows Server ホストにデプロイできます。 以降、実際のデータ移行は、ホスト コピーとして、または移行ツールを使用して実行されます。
+StorSimple 8000 シリーズを使用してデータを移行する方法の詳細については、「[StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する](storsimple-8000-migrate-from-5000-7000.md)」を参照してください。
 
-    Azure File Sync にデータを移行する方法の詳細については、[StorSimple 5000-7000 シリーズから Azure File Sync へのデータの移行](https://aka.ms/StorSimpleMigrationAFS)に関するページをご覧ください。
+#### <a name="migrate-to-azure-file-sync"></a>Azure File Sync に移行する
 
-- **サード パーティのオプション**:
+この新しい移行オプションを使用すると、お客様は、所属する組織のファイル共有を Azure Files に格納することができます。 その後、これらのファイル共有は、オンプレミス アクセスのために Azure File Sync (AFS) を使用して一元化されます。 AFS は Windows Server ホストにデプロイできます。 以降、実際のデータ移行は、ホスト コピーとして、または移行ツールを使用して実行されます。
 
-    - **Panzura Freedom NAS への移行** - StorSimple 5000-7000 をご使用のお客様は、Azure でデータを保持するため、Panzura Freedom NAS への移行を選択できます。 Panzura Freedom ソリューションには、データセンター、オフィス、パブリック クラウドおよびプライベート クラウドにまたがる NAS ソリューションが用意されています。 このソリューションにより、NFS、SMB、およびモバイル クライアントのローカル、ハイブリッド、およびクラウド内のデータ ワークフローが有効になります。 この移行は Panzura によってサポートされており、お客様は [Panzura Web サイト](https://panzura.com/storsimple-migration/)から移行サポートを要求することで開始することができます。
+Azure File Sync にデータを移行する方法の詳細については、[StorSimple 5000-7000 シリーズから Azure File Sync へのデータの移行](https://aka.ms/StorSimpleMigrationAFS)に関するページをご覧ください。
+
+### <a name="third-party-options"></a>サード パーティのオプション
+
+#### <a name="migrate-to-panzura-freedom-nas"></a>Panzura Freedom NAS に移行する
+
+StorSimple 5000-7000 をご使用のお客様は、Azure でのデータを保持するために、Panzura Freedom NAS への移行を選択できます。 Panzura Freedom ソリューションには、データセンター、オフィス、パブリック クラウドおよびプライベート クラウドにまたがる NAS ソリューションが用意されています。 このソリューションにより、NFS、SMB、およびモバイル クライアントのローカル、ハイブリッド、およびクラウド内のデータ ワークフローが有効になります。 この移行は Panzura によってサポートされており、お客様は [Panzura Web サイト](https://panzura.com/storsimple-migration/)から移行サポートを要求することで開始することができます。
+
+#### <a name="migrate-to-cohesity"></a>Cohesity に移行する
+
+Cohesity を使用すると、現在の StorSimple 5000–7000 から Azure の Cohesity Data Platform にデータを移行できます。 Cohesity Data Platform はソフトウェアによる Web スケール ソリューションであり、ファイル、バックアップ、オブジェクト、VM を 1 つのクラウドネイティブ ソリューションに統合します。 このデータ プラットフォームに移行後、1 か所からデータやアプリを管理し、保護し、クラウドからコアにプロビジョニングできます。 Cohesity は、3 つという少ない数のノードから始められます。 詳細については、[Cohesity DataPlatform への移行](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html)に関するページを参照してください。
 
 ## <a name="migration---frequently-asked-questions"></a>移行 - よく寄せられる質問
 
@@ -68,8 +78,8 @@ A. サービスは動作し続ける可能性がありますが、Microsoft で�
 
 A. StorSimple 5000-7000 シリーズのユーザーは、それぞれのシナリオに応じて、次の移行オプションを使用できます。 
 
- - **8000 シリーズへのアップグレード**: このオプションは、StorSimple プラットフォームを使用し続ける場合に使用します。 
- - **Azure File Sync に移行**: このオプションは、Azure ネイティブ形式に切り替える場合に使用します。 Azure File Sync を使用すると、ファイル共有を一元管理できます。 
+ - **8000 シリーズへのアップグレード**:このオプションは、StorSimple プラットフォームを使用し続ける場合に使用します。 
+ - **Azure File Sync に移行**:このオプションは、Azure ネイティブ形式に切り替える場合に使用します。 Azure File Sync を使用すると、ファイル共有を一元管理できます。 
 
 ここで紹介していない移行オプションについては、Microsoft サポートにお問い合わせください。
 

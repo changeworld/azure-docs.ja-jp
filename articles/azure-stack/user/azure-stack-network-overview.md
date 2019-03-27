@@ -5,16 +5,17 @@ services: azure-stack
 author: mattbriggs
 manager: femila
 ms.service: azure-stack
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: f70b60d73b542065d4f737faf515679386cc69a7
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 67465a64f38ce4767b384cf5395179c0dbcb99fe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303175"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769900"
 ---
 # <a name="introduction-to-azure-stack-networking"></a>Azure Stack ネットワークの概要
 

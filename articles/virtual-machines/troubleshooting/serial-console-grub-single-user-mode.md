@@ -14,32 +14,37 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: f22e5159acc93d9632c8cd268e24e8f972cbd7dd
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: ca2523a1101a21740a318a304f9bec491d4de2f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580146"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106238"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする
-GRUB は、GRand Unified Bootloader の略です。 GRUB からは、特にシングル ユーザー モードで起動するようにブート構成を変更することができます。
+GRUB とは GRand Unified Bootloader です。これは、VM を起動したときにおそらく最初に表示されるものです。 オペレーティング システムが起動する前に表示されるため、SSH からはアクセスできません。 GRUB からは、特にシングル ユーザー モードで起動するようにブート構成を変更することができます。
 
 シングル ユーザー モードは、最小限の機能を持つ最小限の環境です。 ブートの問題やファイルシステムの問題、ネットワークの問題を調査するのに役立ちます。 バックグラウンドで実行されるサービスが少なくなり、実行レベルによっては、ファイルシステムが自動的にマウントされないこともあります。
 
-シングル ユーザー モードはまた、ログインのために SSH キーを受け入れるためだけに VM を構成できる状況でも役立ちます。 この場合は、パスワード認証を使用するアカウントを作成するためにシングル ユーザー モードを使用することができます。
+シングル ユーザー モードはまた、ログインのために SSH キーを受け入れるためだけに VM を構成できる状況でも役立ちます。 この場合は、パスワード認証を使用するアカウントを作成するためにシングル ユーザー モードを使用することができます。 シリアル コンソール サービスでは、ユーザーが VM のシリアル コンソールにアクセスするには、共同作成者レベル以上のアクセス権を持っている必要がある点に注意してください。
 
-シングル ユーザー モードに入るには、VM の起動時に GRUB に入り、GRUB でブート構成を変更する必要があります。 これは VM のシリアル コンソールを使用して行えます。
+シングル ユーザー モードに入るには、VM の起動時に GRUB に入り、GRUB でブート構成を変更する必要があります。 ここでは、GRUB に入る詳細な手順を説明します。 一般的に、VM が GRUB を表示するように構成されている場合は、VM シリアル コンソール内の再起動ボタンを使用して VM を再起動すると、GRUB が表示されます。
+
+![Linux シリアル コンソールの [再起動] ボタン](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-bar.png)
 
 ## <a name="general-grub-access"></a>GRUB の一般的なアクセス
 GRUB にアクセスするには、シリアル コンソール ブレードを開いた状態で VM を再起動する必要があります。 一部のディストリビューションでは GRUB を表示するのにキーボード入力が必要ですが、それ以外のディストリビューションでは数秒で GRUB が自動的に表示され、タイムアウトをキャンセルするためにユーザーにキーボード入力を許可します。
 
 シングル ユーザー モードにアクセスできるようにするには、VM 上で GRUB が有効なことを確認する必要があります。 ディストリビューションによっては、GRUB が有効なことを確認するための設定作業があります。 ディストリビューションに固有の情報は、以下と[こちらのリンク](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)で入手できます。
 
-### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>シリアル コンソールで VM を再起動して GRUB にアクセスする
-シリアル コンソール ブレードを開いたまま VM を再起動するには、SysRq `'b'` コマンドを使用 ([SysRq](./serial-console-nmi-sysrq.md) が有効になっている場合) するか、[概要] ブレードで [再起動] ボタンをクリックします (新しいブラウザー タブで VM を開いてシリアル コンソール ブレードを閉じずに再起動します)。 以下のディストリビューションに固有の手順に従って、再起動したときに GRUB でどのようなことが期待できるかを確認してください。
+### <a name="restart-your-vm-to-access-grub-in-serial-console"></a>シリアル コンソールで VM を再起動して GRUB にアクセスする
+電源ボタンに移動して [Restart VM]\(VM の再起動\) をクリックすると、シリアル コンソール内で VM を再起動できます。 これにより VM の再起動が始まり、Azure portal 内に再起動に関する通知が表示されます。
+[SysRq](./serial-console-nmi-sysrq.md) が有効な場合は、SysRq `'b'` コマンドを使用して VM を再起動することもできます。 以下のディストリビューションに固有の手順に従って、再起動したときに GRUB でどのようなことが期待できるかを確認してください。
+
+![Linux シリアル コンソールでの再起動](./media/virtual-machines-serial-console/virtual-machine-serial-console-restart-button-ubuntu.gif)
 
 ## <a name="general-single-user-mode-access"></a>シングル ユーザー モードの一般的なアクセス
-パスワード認証を使用してアカウントを構成していない場合には、シングル ユーザー モードに手動でアクセスする必要がある場合があります。 シングル ユーザー モードに手動で入るには、GRUB 構成を変更する必要があります。 これを完了したら、その後の手順について「[シングル ユーザー モードを使用してパスワードをリセットまたは追加する](#-Use-Single-User-Mode-to-reset-or-add-a-password)」を参照してください。
+パスワード認証を使用してアカウントを構成していない場合には、シングル ユーザー モードに手動でアクセスする必要がある場合があります。 シングル ユーザー モードに手動で入るには、GRUB 構成を変更する必要があります。 これを完了したら、その後の手順について「シングル ユーザー モードを使用してパスワードをリセットまたは追加する」を参照してください。
 
 VM を起動できない場合、ディストリビューションは多くの場合、ユーザーを自動的にシングル ユーザー モードまたは緊急モードにします。 ただし、それ以外の場合では、ユーザーを自動的にシングル ユーザー モードまたは緊急モードにする前に、追加のセットアップが必要です (root パスワードの設定など)。
 
@@ -182,7 +187,7 @@ SLES が正常に起動できない場合は、自動的に緊急シェルが開
 1. `linux` で始まるカーネル行を探します
 1. `systemd.unit=emergency.target` を行末に追加します
 1. Ctrl キーを押しながら X キーを押してこれらの設定で再起動し、緊急シェルを開始します
-> 緊急シェルは、_読み取り専用_ファイルシステムで開始される点に注意してください。 任意のファイルを編集する場合は、読み取り/書き込みアクセス許可でファイルシステムを再マウントする必要があります。 これを行うには、シェルに `mount -o remount,rw /` と入力します
+   > 緊急シェルは、_読み取り専用_ファイルシステムで開始される点に注意してください。 任意のファイルを編集する場合は、読み取り/書き込みアクセス許可でファイルシステムを再マウントする必要があります。 これを行うには、シェルに `mount -o remount,rw /` と入力します
 
 ## <a name="access-for-oracle-linux"></a>Oracle Linux へのアクセス
 Red Hat Enterprise Linux と同様に、Oracle Linux のシングル ユーザー モードを使用するには、GRUB が必要であり、root ユーザーを有効にする必要があります。

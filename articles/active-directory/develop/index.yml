@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 030739b9c0c026d208790dce3a32a5fbc920de72
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: ab6fd4a2becde56ed538581561eb170f25c57278
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232653"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728913"
 documentType: LandingData
 title: Microsoft ID プラットフォーム (開発者向け Azure Active Directory)
 metadata:
@@ -14,7 +14,7 @@ metadata:
   author: CelesteDG
   manager: mtillman
   ms.service: active-directory
-  ms.component: develop
+  ms.subservice: develop
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
@@ -183,7 +183,7 @@ sections:
     rows:
     - title: v1.0
       values:
-      - href: sample-v1-code.md#server-or-daemon-application-to-web-api
+      - href: sample-v1-code.md
     - title: v2.0
       values:
       - href: quickstart-v2-netcore-daemon.md

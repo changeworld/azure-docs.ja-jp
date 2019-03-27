@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: d5bb914de1cded7c70516bfb4bfdaa93c83fe0e4
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: c4eeb73e3b0abfe2558fc387953023254952a515
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188676"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296870"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>RecoveryManager クラスを使用したシャード マップに関する問題の解決
 
@@ -52,7 +52,7 @@ Azure SQL Database の Elastic Database ツール、geo レプリケーション
 最初の手順は、RecoveryManager インスタンスの作成です。 [GetRecoveryManager メソッド](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager)を実行すると、現在の [ShardMapManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager) インスタンスのリカバリ マネージャーが返されます。 シャード マップ内の不整合を解決するには、最初に、特定のシャード マップの RecoveryManager を取得する必要があります。
 
    ```java
-    ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString,  
+    ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnectionString,  
              ShardMapManagerLoadPolicy.Lazy);
              RecoveryManager rm = smm.GetRecoveryManager();
    ```

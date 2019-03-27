@@ -12,18 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 03/14/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 3cbe7c1d458e95aa27c51f0d1c9f61326888a5ab
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 09/12/2018
+ms.openlocfilehash: 1c21cc778ed398c28077ef1a20ebbb7b295c2baa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962683"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012386"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムのデータ センター統合に関する考慮事項
-Azure Stack 統合システムに関心がある場合は、デプロイや、このシステムがデータセンターにどのように適合するかに関する計画のいくつかの主な考慮事項を理解する必要があります。 この記事では、Azure Stack マルチノード システムに関するインフラストラクチャの重要な決定を行うときに役立つこれらの考慮事項の概要について説明します。 これらの考慮事項を理解していると、OEM ハードウェア ベンダーと協力して Azure Stack をデータセンターにデプロイする場合に役立ちます。  
+Azure Stack 統合システムに関心がある場合は、デプロイや、このシステムがデータセンターにどのように適合するかに関する計画の主な考慮事項を理解する必要があります。 この記事では、Azure Stack マルチノード システムに関するインフラストラクチャの重要な決定を行うときに役立つこれらの考慮事項の概要について説明します。 これらの考慮事項を理解していると、OEM ハードウェア ベンダーと協力して Azure Stack をデータセンターにデプロイする場合に役立ちます。  
 
 > [!NOTE]
 > Azure Stack マルチノード システムは、承認されたハードウェア ベンダーからのみ購入できます。 
@@ -52,8 +53,6 @@ Azure Stack は、アクセス許可とネットワークの両方の観点か�
 
 ### <a name="choose-identity-provider"></a>ID プロバイダーの選択
 Azure Stack のデプロイに Azure AD と AD FS のどちらの ID プロバイダーを使用するかを検討する必要があります。 デプロイ後に ID プロバイダーを切り替えるには、システム全体を再デプロイする必要があります。 Azure AD アカウントを持っておらず、クラウド サービス プロバイダーから提供されたアカウントを使用している場合、プロバイダーを切り替えて別の Azure AD アカウントを使用するには、ソリューション プロバイダーに連絡し、有料でソリューションの再展開を依頼する必要があります。
-
-
 
 ID プロバイダーの選択は、テナントの仮想マシン、ID システム、使用するアカウント、Active Directory ドメインに参加できるかどうかなどには関係しません。この選択とは独立しています。
 
@@ -109,7 +108,7 @@ Azure Stack をデプロイするために必要な PKI 証明書、およびそ
 
 
 ## <a name="time-synchronization"></a>時刻同期
-Azure Stack を同期するために使用される特定のタイム サーバーを選択する 必要があります。  時間の記号化は、内部サービスを互いに認証するために使用される Kerberos チケットの生成に使用されるため、Azure Stack とそのインフラストラクチャ ロールにとって重要です。
+Azure Stack を同期するために使用される特定のタイム サーバーを選択する 必要があります。  時刻同期は、内部サービスを互いに認証するために使用される Kerberos チケットの生成に使用されるため、Azure Stack とそのインフラストラクチャ ロールにとって重要です。
 
 時刻同期サーバーの IP を指定する必要があります。インフラストラクチャ内のほとんどのコンポーネントは URL を解決できますが、一部は IP アドレスしかサポートできません。 切断されたデプロイのオプションを使用している場合は、Azure Stack のインフラストラクチャ ネットワークから確実に到達できる企業ネットワーク上のタイム サーバーを指定する必要があります。
 
@@ -163,7 +162,7 @@ Azure Stack ソリューションに含まれているハードウェア ライ�
 | 領域 | 外部の監視ソリューション |
 | -- | -- |
 | Azure Stack ソフトウェア | [Operations Manager 用 Azure Stack 管理パック](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Nagios プラグイン](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>REST ベースの API 呼び出し | 
-| 物理サーバー (IPMI 経由 BMC) | OEM ハードウェア - Operations Manager ベンダー管理パック<br>OEM ハードウェア ベンダー提供のソリューション<br>ハードウェア ベンダーの Nagios プラグイン | OEM パートナーがサポートしている監視ソリューション (含まれている) | 
+| 物理サーバー (IPMI 経由 BMC) | OEM ハードウェア - Operations Manager ベンダー管理パック<br>OEM ハードウェア ベンダー提供のソリューション<br>ハードウェア ベンダーの Nagios プラグイン<br>OEM パートナーがサポートしている監視ソリューション (含まれている) | 
 | ネットワーク デバイス (SNMP) | Operations Manager ネットワーク デバイスの検出<br>OEM ハードウェア ベンダー提供のソリューション<br>Nagios スイッチ プラグイン |
 | テナント サブスクリプションの正常性の監視 | [Windows Azure 用 System Center 管理パック](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 

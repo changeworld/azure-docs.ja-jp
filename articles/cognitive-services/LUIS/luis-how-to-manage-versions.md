@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: バージョンを使用して、さまざまなモデルを構築および公開できます。 モデルに変更を加える前に、現在のアクティブなモデルをアプリの別のバージョンに複製することをお勧めします。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: f5f31ddee58d1d609d0ff4b2901aa38abf3147a0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 73f962cc8e0d4605c0c5f0bace79553033ebe082
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599101"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110904"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>バージョンを使用してステージング アプリまたは運用環境アプリに影響を与えることなく編集とテストを行う
 
@@ -26,7 +26,7 @@ ms.locfileid: "53599101"
 
 バージョンの一覧には、公開されているバージョン、公開されている場所、現在アクティブであるバージョンが表示されます。 
 
-[![[管理] セクションの [バージョン] ページ](./media/luis-how-to-manage-versions/versions-import.png "[管理] セクションの [バージョン] ページ")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+[![管理 セクションの バージョン ページ](./media/luis-how-to-manage-versions/versions-import.png "管理 セクションの バージョン ページ")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>バージョンを複製する
 
@@ -39,13 +39,13 @@ ms.locfileid: "53599101"
      > [!NOTE]
      > バージョン ID は、文字、数字、または '.' のみで構成できます。文字数は 10 文字までです。
  
- 指定した名前の新しいバージョンが作成され、アクティブなバージョンとして設定されます。
+   指定した名前の新しいバージョンが作成され、アクティブなバージョンとして設定されます。
 
 ## <a name="set-active-version"></a>アクティブなバージョンを設定する
 
 一覧からバージョンを選択し、ツール バーから **[Make Active]\(アクティブにする\)** を選択します。 
 
-[![[管理] セクションの [バージョン] ページ、バージョンの作成アクション](./media/luis-how-to-manage-versions/versions-other.png "[管理] セクションの [バージョン] ページ、バージョンの作成アクション")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+[![管理 セクションの バージョン ページ、バージョンの作成アクション](./media/luis-how-to-manage-versions/versions-other.png "[管理] セクションの [バージョン] ページ、バージョンの作成アクション")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>バージョンをインポートする
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: d05d8c39ae393d62969967c2ce09a97ec6a6710f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 1978f4a2afa2e22eb4182c01d3005f9e5daf5e57
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103011"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-powershell"></a>クイック スタート:PowerShell を使用して HDInsight 内に Apache Spark クラスターを作成する
 Azure HDInsight で [Apache Spark](https://spark.apache.org/) クラスターを作成し、[Apache Hive](https://hive.apache.org/) テーブルに対して Spark SQL クエリを実行する方法を説明します。 Apache Spark により、メモリ内処理を使用した、高速のデータ分析とクラスター コンピューティングが可能になります。 HDInsight 上のSpark については、[Azure HDInsight 上の Apache Spark に関する概要](apache-spark-overview.md)をご覧ください。
@@ -39,7 +39,7 @@ HDInsight クラスターの作成には、次の Azure オブジェクトとリ
 |パラメーター|値|
 |------|------|
 |Azure リソース グループ名 | リソース グループの一意名を指定します。|
-|場所| Azure リージョンを指定します (例: "米国中部")。 |
+|Location| Azure リージョンを指定します (例: "米国中部")。 |
 |既定のストレージ アカウント名 | ストレージ アカウントに一意の名前を指定してください。 |
 |クラスター名 | HDInsight Spark クラスターの一意名を指定します。|
 |クラスター ログイン資格情報 | このクイック スタートでは後で、このアカウントを使ってクラスター ダッシュボードに接続します。|
@@ -114,7 +114,7 @@ HDInsight クラスターの作成には、次の Azure オブジェクトとリ
     
     Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
     ```
-クラスターの作成には約 20 分かかります。 次のセッションに進む前に、クラスターを作成する必要があります。
+   クラスターの作成には約 20 分かかります。 次のセッションに進む前に、クラスターを作成する必要があります。
 
 HDInsight クラスターを作成する際に問題が発生した場合は、適切なアクセス許可がない可能性があります。 詳細については、「[アクセス制御の要件](../hdinsight-hadoop-create-linux-clusters-portal.md)」を参照してください。
 

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: danlep
-ms.openlocfilehash: 70ca1b88c653601e077c55a847c13f67efc3e300
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 5d8904b5906adbdab68989b3a5cf9c3975c23533
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754205"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697587"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>サービス プリンシパルによる Azure Container Registry 認証
 
@@ -47,9 +47,7 @@ Azure CLI の以前のサンプル スクリプトを GitHub 上で検索でき�
 
 ## <a name="next-steps"></a>次の手順
 
-コンテナー レジストリへのアクセスが許可されたサービス プリンシパルを持っている場合は、アプリケーションおよびサービスでその資格情報を使ってレジストリと通信できます。
-
-サービス プリンシパルの資格情報を使う個々のアプリケーションの構成はこの記事では取り上げませんが、一部の特定のサービスとプラットフォームの手順については、以下をご覧ください。
+コンテナー レジストリへのアクセスが許可されたサービス プリンシパルを持っている場合は、その資格情報をアプリケーションやサービスから使用して、ヘッドレスでレジストリを操作することができます。 サービス プリンシパルの資格情報は、Azure コンテナー レジストリに対して認証を行うことができるあらゆる Azure サービスから使用できます。 たとえば、次のようになります。
 
 * [Azure Kubernetes Service (AKS) から Azure Container Registry の認証を受ける](container-registry-auth-aks.md)
 * [Azure Container Instances (ACI) から Azure Container Registry の認証を受ける](container-registry-auth-aci.md)

@@ -2,18 +2,18 @@
 title: Azure Virtual WAN を使用して Azure へのポイント対サイト接続を作成する | Microsoft Docs
 description: このチュートリアルでは、Azure Virtual WAN を使用して Azure へのポイント対サイト VPN 接続を作成する方法を学習します。
 services: virtual-wan
-author: cherylmc
+author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 01/07/2019
-ms.author: cherylmc
+ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 9d5533932ef9ab521b623c18a0c3a27b663c56f8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 87b8543d8cb658b46ab5e589a310a17a69508a47
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077404"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54411392"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>チュートリアル:Azure Virtual WAN (プレビュー) を使用してポイント対サイト接続を作成する
 
@@ -117,7 +117,7 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 4. **[ポイント対サイト ゲートウェイを含める]** チェック ボックスをオンにします。
 5. **ゲートウェイ スケール ユニット**のほか、クライアントの**アドレス プール**と共に**ポイント対サイト構成**を選択します。
 6. **[Confirm]\(確認\)** をクリックします。 
-7. 操作の完了には最長で 30 分かかる場合があります。
+7. この操作は、完了するまで最大 30 分かかることがあります。
 
 ## <a name="vnet"></a>6.VNet をハブに接続する
 

@@ -8,16 +8,21 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: e120c10468ca95b604ef8f857959607d3a066ea0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: fdeef8be1cfaabde326f68a1207f7c38d037a502
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973555"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313298"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 
 この記事では、リージョン間で Azure 仮想マシンをレプリケートおよび復旧するときに、Azure Site Recovery で発生する一般的な問題と、そのトラブルシューティング方法について説明します。 サポートされる構成の詳細については、[Azure VM をレプリケートするためのサポート マトリックス](site-recovery-support-matrix-azure-to-azure.md)に関するページをご覧ください。
+
+## <a name="list-of-errors"></a>エラー一覧
+- **[Azure リソースのクォータに関する問題 (エラー コード 150097)](#azure-resource-quota-issues-error-code-150097)** 
+- **[信頼されたルート証明書 (エラー コード 151066)](#trusted-root-certificates-error-code-151066)** 
+- **[Site Recovery の送信接続 (エラー コード 151195)](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)** 
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Azure リソースのクォータに関する問題 (エラー コード 150097)
 ディザスター リカバリー リージョンとして使用するターゲット リージョンで Azure VM を作成するには、サブスクリプションを有効にする必要があります。 また、特定のサイズの VM を作成するには、サブスクリプションで十分なクォータが有効になっている必要もあります。 Site Recovery では、既定で、ソース VM と同じサイズがターゲット VM に対して選択されます。 同じサイズを使用できない場合は、最も近いサイズが自動的に取得されます。 このエラー メッセージは、ソース VM 構成をサポートするサイズと一致するものがない場合に表示されます。
@@ -92,7 +97,7 @@ SuSE Linux ではシンボリック リンクを使用して証明書リスト�
 
 8.  シンボリック リンクとしてのサブジェクト ハッシュが証明書用に作成されているかどうかを確認します。
 
-    - コマンド
+    - command
 
       ``# ls -l | grep Baltimore``
 
@@ -101,7 +106,7 @@ SuSE Linux ではシンボリック リンクを使用して証明書リスト�
       ``lrwxrwxrwx 1 root root   29 Jan  8 09:48 3ad48a91.0 -> Baltimore_CyberTrust_Root.pem
       -rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem``
 
-    - コマンド
+    - command
 
       ``# ls -l | grep VeriSign_Class_3_Public_Primary_Certification_Authority_G5``
 
@@ -110,7 +115,7 @@ SuSE Linux ではシンボリック リンクを使用して証明書リスト�
       ``-rw-r--r-- 1 root root 1774 Jun  5  2014 VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem
       lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem``
 
-    - コマンド
+    - command
 
       ``# ls -l | grep DigiCert_Global_Root``
 
@@ -134,7 +139,7 @@ SuSE Linux ではシンボリック リンクを使用して証明書リスト�
 
 14. これらのファイルが存在するかどうかを確認します。  
 
-    - コマンド
+    - command
 
       ``# ls -l 653b494a.0 b204d74a.0 3513523f.0``
 
@@ -149,7 +154,7 @@ SuSE Linux ではシンボリック リンクを使用して証明書リスト�
 
 Site Recovery レプリケーションを動作させるには、VM から特定の URL または IP 範囲への送信接続が必要です。 VM がファイアウォールの内側にあるか、ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御している場合は、次のいずれかの問題に直面することがあります。
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>問題 1:Azure 仮想マシンを Site Recovery に登録できませんでした (151195) </br>
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>問題 1: Azure 仮想マシンを Site Recovery に登録できませんでした (151195) </br>
 - **考えられる原因** </br>
   - DNS を解決できないため、Site Recovery エンドポイントへの接続を確立できません。
   - これが頻繁に発生するのは、仮想マシンをフェールオーバーして再保護を行っているときに、DR リージョンから DNS サーバーに到達できない場合です。
@@ -231,6 +236,10 @@ Azure Site Recovery では現在、ソース リージョンのリソース グ�
 
 ### <a name="fix-the-problem"></a>問題の解決
 
+>[!NOTE] 
+>
+>以下のスクリプトを使用する前に、""AzureRM.Resources"" モジュールを必ず更新するようにしてください。 
+
 [古い ASR 構成を削除するスクリプト](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412)を使用して、Azure VM で古い Site Recovery 構成を削除できます。 古い構成を削除すると、VM が表示されます。
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>保護対象の仮想マシンを選択できない 
@@ -284,8 +293,72 @@ VM でレプリケーションを有効にするには、プロビジョニン�
 
 **エラー コード** | **考えられる原因** | **Recommendations (推奨事項)**
 --- | --- | ---
-150172<br></br>**メッセージ**:10 GB のサポートされている最小サイズ未満のサイズ (DiskSize) を持つ (DiskName) が存在するため、仮想マシンの保護を有効にできませんでした。 | - このディスクは 1024 MB のサポートされているサイズ未満です| ディスク サイズがサポートされているサイズの範囲内にあることを確認し、操作を再試行してください。 
+150172<br></br>**メッセージ**:1024 MB のサポートされている最小サイズ未満のサイズ (DiskSize) を持つ (DiskName) が存在するため、仮想マシンの保護を有効にできませんでした。 | - このディスクは 1024 MB のサポートされているサイズ未満です| ディスク サイズがサポートされているサイズの範囲内にあることを確認し、操作を再試行してください。 
+
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>GRUB 構成で UUID ではなくデバイス名が指定されているため、保護を有効にできなかった (エラー コード 151126)
+
+**考えられる原因:** </br>
+GRUB 構成ファイル ("/boot/grub/menu.lst"、"/boot/grub/grub.cfg"、"/boot/grub2/grub.cfg"、または "/etc/default/grub") で、**root** パラメーターと **resume** パラメーターの値として、UUID でなく、実際のデバイス名が含まれている可能性があります。 デバイス名は VM のリブートによって変更される可能性があり、フェールオーバー時に VM が同じ名前で起動されないことで問題が発生するため、Site Recovery では UUID を使用する必要があります。 例:  </br>
 
 
-## <a name="next-steps"></a>次の手順
-[Azure 仮想マシンのレプリケート](site-recovery-replicate-azure-to-azure.md)
+- GRUB ファイル **/boot/grub2/grub.cfg** の次の行。 <br>
+*linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
+
+
+- GRUB ファイル **/boot/grub/menu.lst** の次の行。
+*kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+
+上記の太字の文字列がある場合、GRUB では、UUID ではなく、"resume" パラメーターと "root" パラメーターの実際のデバイス名が使用されています。
+ 
+**修正方法:**<br>
+デバイス名を対応する UUID に置き換える必要があります。<br>
+
+
+1. "blkid <device name>" コマンドを実行して、デバイスの UUID を検出します。 例: <br>
+```
+blkid /dev/sda1 
+```<br>
+```/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap" ```<br>
+```blkid /dev/sda2```<br> 
+```/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+```<br>
+
+
+
+1. Now replace the device name with its UUID in the format like "root=UUID=<UUID>". For example, if we replace the device names with UUID for root and resume parameter mentioned above in the files "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub: then the lines in the files looks like. <br>
+*kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+1. Restart the protection again
+
+## Enable protection failed as device mentioned in the GRUB configuration doesn't exist(error code 151124)
+**Possible Cause:** </br>
+The GRUB configuration files ("/boot/grub/menu.lst", "/boot/grub/grub.cfg", "/boot/grub2/grub.cfg" or "/etc/default/grub") may contain the parameters "rd.lvm.lv" or "rd_LVM_LV" to indicate the LVM device that should be discovered at the time of booting. If these LVM devices doesn't exist, then the protected system itself will not boot and stuck in the boot process. Even the same will be observed with the failover VM. Below are few examples: 
+
+Few examples: </br>
+
+1. The following line is from the GRUB file **"/boot/grub2/grub.cfg"** on RHEL7. </br>
+*linux16 /vmlinuz-3.10.0-957.el7.x86_64 root=/dev/mapper/rhel_mup--rhel7u6-root ro crashkernel=128M@64M **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet LANG=en_US.UTF-8*</br>
+Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
+1. The following line is from the GRUB file **"/etc/default/grub"** on RHEL7 </br>
+ *GRUB_CMDLINE_LINUX="crashkernel=auto **rd.lvm.lv=rootvg/root rd.lvm.lv=rootvg/swap** rhgb quiet"*</br>
+Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg". 
+1. The following line is from the GRUB file **"/boot/grub/menu.lst"** on RHEL6 </br>
+*kernel /vmlinuz-2.6.32-754.el6.x86_64 ro root=UUID=36dd8b45-e90d-40d6-81ac-ad0d0725d69e rd_NO_LUKS LANG=en_US.UTF-8 rd_NO_MD SYSFONT=latarcyrheb-sun16 crashkernel=auto rd_LVM_LV=rootvg/lv_root  KEYBOARDTYPE=pc KEYTABLE=us rd_LVM_LV=rootvg/lv_swap rd_NO_DM rhgb quiet* </br>
+ Here the highlighted portion shows that the GRUB has to detect two LVM devices with names **"root"** and **"swap"** from the volume group "rootvg".<br>
+
+**How to Fix:**<br>
+
+If the LVM device doesn't exist, fix either by creating it or remove the parameter for the same from the GRUB configuration files and then retry the enable protection. </br>
+
+## Site recovery mobility service update completed with warnings ( error code 151083)
+Site Recovery mobility service has many components, one of which is called filter driver. Filter driver gets loaded into system memory only at a time of system reboot. Whenever there are  site recovery mobility service updates that has filter driver changes, we update the machine but still gives you warning that some fixes require a reboot. It means that the filter driver fixes can only be realized when a new filter driver is loaded which can happen only at the time of system reboot.<br>
+**Please note** that this is just a warning and existing replication keeps on working even after the new agent update. You can choose to reboot anytime you want to get the benefits of new filter driver but if you don't reboot than also old filter driver keeps on working. Apart from filter driver, **benefits of  any other enhancements and fixes in mobility service get realized without any reboot when the agent gets updated.**  
+
+
+## Protection couldn't be enabled as replica managed disk 'diskname-replica' already exists without expected tags in the target resource group( error code 150161
+
+**Cause**: It can occur if the  virtual machine was protected earlier in the past and during disabling the replication, replica disk was not cleaned due to some reason.</br>
+**How to fix:** 
+Delete the mentioned replica disk in the error message and restart the failed protection job again. 
+
+## Next steps
+[Replicate Azure virtual machines](site-recovery-replicate-azure-to-azure.md)

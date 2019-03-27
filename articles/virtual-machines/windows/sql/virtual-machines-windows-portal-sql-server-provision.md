@@ -3,7 +3,7 @@ title: Azure Portal での Windows SQL Server VM のプロビジョニング ガ
 description: このハウツー ガイドでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成するためのオプションについて説明します。
 services: virtual-machines-windows
 documentationcenter: na
-author: rothja
+author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
@@ -13,13 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 05/04/2018
-ms.author: jroth
-ms.openlocfilehash: d2bcabf845a2178abbebe8f2998d58b462e37c78
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: mathoma
+ms.reviewer: jroth
+ms.openlocfilehash: ee6c05b2da4347ed034ae6e7318d6f5d90ea7884
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704540"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099646"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal で Windows SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -54,7 +55,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 
 1. 使用可能な SQL Server イメージを確認します。 各イメージは、SQL Server のバージョンとオペレーティング システムを示しています。
 
-1. **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016** という名前のイメージを選択します。
+1. **Free SQL Server License:SQL Server 2017 Developer on Windows Server 2016** という名前のイメージを選択します。
 
    > [!TIP]
    > このチュートリアルでは Developer エディションを使用しています。これは、開発テスト用に SQL Server のフル機能を使用できる無償エディションです。 ユーザーは VM を実行するコストに対してのみ課金されます。 ただし、このチュートリアルでは、任意のイメージを選択してかまいません。 使用可能なイメージの説明は、[SQL Server Windows 仮想マシンの概要](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)に関する記事をご覧ください。
@@ -129,7 +130,7 @@ SQL Server 仮想マシンを構成するための 5 つのウィンドウがあ
 * **[ストレージ]** で、**[Managed Disks を使用]** の下の **[はい]** を選択します。
 
    > [!NOTE]
-   > SQL Server には、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳しくは、「Azure Managed Disks の概要」(../managed-disks-overview.md) をご覧ください。 可用性セットの管理ディスクの詳細については、「[可用性セット内の VM に管理ディスクを使用する](../manage-availability.md)」を参照してください。
+   > SQL Server には、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳しくは、「Azure Managed Disks の概要」(../managed-disks-overview.md) をご覧ください。 可用性セットのマネージド ディスクの詳細については、「[可用性セット内の VM にマネージド ディスクを使用する](../manage-availability.md)」を参照してください。
 
 * **[ネットワーク]** で、**[Select public inbound ports]\(パブリック受信ポートの選択\)** の一覧からいずれかの受信ポートを選びます。 たとえば、VM へのリモート デスクトップの場合は、**[RDP (3389)]** ポートを選びます。
 
@@ -177,7 +178,7 @@ SQL Server 仮想マシンを構成するための 5 つのウィンドウがあ
 
 一般的に、シナリオで許容される最も制限の厳しい接続を選択すると、セキュリティが向上します。 ただし、ネットワーク セキュリティ グループの規則と SQL 認証または Windows 認証を使用すると、すべてのオプションをセキュリティで保護できます。 VM が作成された後、ネットワーク セキュリティ グループを編集することができます。 詳細については、「 [Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)」をご覧ください。
 
-### <a name="authentication"></a>認証
+### <a name="authentication"></a>Authentication
 
 SQL Server 認証が必要な場合は、 **[有効]** under **[有効]** にアクセスしてください。
 
@@ -246,10 +247,10 @@ SQL の自動バックアップを有効にするときは、以下の設定の�
 
 | パラメーター | Description | 例 |
 | --- | --- | --- |
-| **Key Vault の URL** |Key Vault の場所。 |https://contosokeyvault.vault.azure.net/ |
+| **Key Vault の URL** |Key Vault の場所。 |<https://contosokeyvault.vault.azure.net/> |
 | **プリンシパル名** |Azure Active Directory サービスのプリンシパル名。 クライアント ID とも呼ばれます。 |fde2b411-33d5-4e11-af04eb07b669ccf2 |
 | **プリンシパル シークレット** |Azure Active Directory サービスのプリンシパル シークレット。 クライアント シークレットとも呼ばれます。 |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
-| **資格情報名** |**資格情報名**: AKV 統合により SQL Server 内に資格情報が作成されます。VM に Key Vault にアクセスする許可が与えられます。 この資格情報の名前を選択します。 |mycred1 |
+| **資格情報名** |**資格情報名**:AKV 統合により SQL Server 内に資格情報が作成されます。VM に Key Vault にアクセスする許可が与えられます。 この資格情報の名前を選択します。 |mycred1 |
 
 詳細については、 [Azure VM 上の SQL Server に関する Azure Key Vault 統合の構成](virtual-machines-windows-ps-sql-keyvault.md)に関するページを参照してください。
 

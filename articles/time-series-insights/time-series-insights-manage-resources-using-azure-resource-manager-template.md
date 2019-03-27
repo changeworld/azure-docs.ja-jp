@@ -11,18 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: 282a20beb11172aa3a1d2c7326dc38ce8a7acfcf
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: fe348daa4613e0b515244686e48ed63a41991d81
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062657"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009380"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
 
 この記事では、Azure Resource Manager テンプレート、PowerShell、Time Series Insights リソースプロバイダーを使用して Time Series Insights リソースを作成し、デプロイする方法について説明します。
 
 Time Series Insights は、次のリソースをサポートしています。
+
    | リソース | 説明 |
    | --- | --- |
    | 環境 | Time Series Insights 環境とは、イベント ブローカーから読み取って保存したイベントを論理的にグループ化し、クエリで使用できるようにしたものです。 詳細については、「[Azure Time Series Insights 環境の計画](time-series-insights-environment-planning.md)」を参照してください。 |
@@ -65,7 +66,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "eventHubNamespaceName": {
@@ -116,7 +117,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "eventHubNamespaceName": {
@@ -268,7 +269,7 @@ Outputs                 :
 GitHub のクイックスタート テンプレートのホーム ページには、**[Deploy to Azure]\(Azure へのデプロイ\)** ボタンもあります。 このボタンをクリックすると、Azure Portal の [カスタム デプロイ] ページが開きます。 このページで、各パラメーターの値を入力したり、[[必要なパラメーター]](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) テーブルまたは [[省略可能なパラメーター]](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) テーブルから選択したりできます。 設定に値を入力し、**[購入]** ボタンをクリックすると、テンプレートのデプロイが開始されます。
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
+    <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
 
 ## <a name="next-steps"></a>次の手順

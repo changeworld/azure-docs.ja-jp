@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Skillport の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Skillport の統合 | Microsoft Docs
 description: Azure Active Directory と Skillport の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 4df349b2-a73f-4b88-a077-ec0fbfc26527
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 71a2b7186c77c6c1872870a594b287479c292472
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0facd15d8bc0701448707f48b5a1e93fe3ac592c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448307"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200729"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skillport"></a>チュートリアル: Azure Active Directory と Skillport の統合
+# <a name="tutorial-azure-active-directory-integration-with-skillport"></a>チュートリアル:Azure Active Directory と Skillport の統合
 
 このチュートリアルでは、Skillport と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ Azure AD への Skillport の統合を構成するには、ギャラリーから
 
 Skillport で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Skillport テスト ユーザーの作成](#creating-a-skillport-test-user)** - Skillport で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -169,7 +170,7 @@ Skillport で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-skillport-test-user"></a>Skillport テスト ユーザーの作成
 
@@ -210,7 +211,7 @@ Skillport で Azure AD のシングル サインオンを構成してテスト�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Skillport] タイルをクリックすると、自動的に Skillport アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、 [アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

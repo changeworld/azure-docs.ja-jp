@@ -1,31 +1,31 @@
 ---
-title: Azure 診断ログをイベント ハブにストリーミングする
-description: Azure 診断ログをイベント ハブにストリーミングする方法について説明します。
+title: Stream Azure Diagnostic Logs to an event hub
+description: Learn how to stream Azure diagnostic logs to an event hub.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
-ms.component: ''
-ms.openlocfilehash: 2143ebdddc71973b64b8b77be55b4d0c2b84df64
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: ''
+ms.openlocfilehash: b5299af375646e7759d0770139df2cd6d7ce105c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578990"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314080"
 ---
-# <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Azure 診断ログをイベント ハブにストリーミングする
-**[Azure 診断ログ](diagnostic-logs-overview.md)** は、ポータルに組み込まれた [Event Hubs にエクスポート] オプションを使用するか、Azure PowerShell コマンドレットまたは Azure CLI を使用して診断設定でイベント ハブ承認規則 ID を有効にすることによって、任意のアプリケーションにほぼリアルタイムでストリーミングできます。
+# <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream Azure Diagnostic Logs to an event hub
+**[Azure diagnostic logs](diagnostic-logs-overview.md)** can be streamed in near real time to any application using the built-in “Export to Event Hubs” option in the Portal, or by enabling the Event Hub Authorization Rule ID in a diagnostic setting via the Azure PowerShell Cmdlets or Azure CLI.
 
-## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>診断ログと Event Hubs で実行できること
-診断ログでストリーミング機能を使用する場合、次のような方法があります。
+## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>What you can do with diagnostics logs and Event Hubs
+Here are just a few ways you might use the streaming capability for Diagnostic Logs:
 
-* **サードパーティ製のログ記録およびテレメトリ システムへのログのストリーミング** – すべての診断ログを単一のイベント ハブにストリーミングして、ログ データをサードパーティ製の SIEM またはログ分析ツールにパイプできます。
-* **"ホットパス" データを Power BI にストリーミングしてサービスの正常性を表示する** - Event Hubs、Stream Analytics、Power BI を使用して、診断データを Azure サービスに関するほぼリアルタイムの洞察に簡単に変換できます。 Event Hubs をセットアップし、Stream Analytics でデータを処理して、Power BI を出力として使用する方法の概要については、[こちらの記事](../../stream-analytics/stream-analytics-power-bi-dashboard.md)をご覧ください。 診断ログを設定する際のヒントを次に示します。
+* **Stream logs to 3rd party logging and telemetry systems** – You can stream all of your diagnostic logs to a single event hub to pipe log data to a third-party SIEM or log analytics tool.
+* **View service health by streaming “hot path” data to Power BI** – Using Event Hubs, Stream Analytics, and Power BI, you can easily transform your diagnostics data in to near real-time insights on your Azure services. [This documentation article gives a great overview of how to set up Event Hubs, process data with Stream Analytics, and use Power BI as an output](../../stream-analytics/stream-analytics-power-bi-dashboard.md). Here are a few tips for getting set up with diagnostic logs:
 
-  * オプションをポータルで有効にするか、PowerShell を使用して有効にすると、診断ログの特定のカテゴリのイベント ハブが自動的に作成されます。そのため、名前が **insights-** で始まる名前空間のイベント ハブを選択できます。
-  * 次の SQL コードは、Power BI テーブルのすべてのログ データの解析に使用できる Stream Analytics クエリの一例です。
+  * An event hub for a category of diagnostic logs is created automatically when you check the option in the portal or enable it through PowerShell, so you want to select the event hub in the namespace with the name that starts with **insights-**.
+  * The following SQL code is a sample Stream Analytics query that you can use to parse all the log data in to a Power BI table:
 
     ```sql
     SELECT
@@ -37,63 +37,65 @@ ms.locfileid: "53578990"
     CROSS APPLY GetArrayElements(e.records) AS records
     ```
 
-* **カスタムのテレメトリおよびログ プラットフォームを構築する** - カスタム構築されたテレメトリ プラットフォームが既にある場合や構築を検討している場合は、Event Hubs の非常にスケーラブルな発行/サブスクライブの特性により、診断ログを柔軟に取り込むことができます。 グローバル規模のテレメトリ プラットフォームで Event Hubs を使用する方法については、[Dan Rosanova によるガイド](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)をご覧ください。
+* **Build a custom telemetry and logging platform** – If you already have a custom-built telemetry platform or are just thinking about building one, the highly scalable publish-subscribe nature of Event Hubs allows you to flexibly ingest diagnostic logs. [See Dan Rosanova’s guide to using Event Hubs in a global scale telemetry platform here](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
-## <a name="enable-streaming-of-diagnostic-logs"></a>診断ログのストリーミングの有効化
+## <a name="enable-streaming-of-diagnostic-logs"></a>Enable streaming of diagnostic logs
 
-診断ログのストリーミングは、プログラム、ポータル、または [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) を使用して有効にすることができます。 どの方法でも、Event Hubs 名前空間と、名前空間に送信するログ カテゴリおよびメトリックを指定する診断設定を作成します。 有効にしたログ カテゴリごとにイベント ハブがその名前空間に作成されます。 診断**ログ カテゴリ**とは、リソースで収集できるログの種類です。
+You can enable streaming of diagnostic logs programmatically, via the portal, or using the [Azure Monitor REST APIs](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings). Either way, you create a diagnostic setting in which you specify an Event Hubs namespace and the log categories and metrics you want to send in to the namespace. An event hub is created in the namespace for each log category you enable. A diagnostic **log category** is a type of log that a resource may collect.
 
 > [!WARNING]
-> コンピューティング リソース (VM や Service Fabric など) の診断ログを有効にし、ストリーミングするには、 [別の手順が必要](../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)となります。
+> Enabling and streaming diagnostic logs from Compute resources (for example, VMs or Service Fabric) [requires a different set of steps](../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md).
 
-設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っており、さらに両方のサブスクリプションが同じ AAD テナントに含まれている限り、Event Hubs 名前空間は、ログを出力するリソースと同じサブスクリプションに属している必要はありません。
+The Event Hubs namespace does not have to be in the same subscription as the resource emitting logs as long as the user who configures the setting has appropriate RBAC access to both subscriptions and both subscriptions are part of the same AAD tenant.
 
 > [!NOTE]
-> 診断設定を使用した多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
+> Sending multi-dimensional metrics via diagnostic settings is not currently supported. Metrics with dimensions are exported as flattened single dimensional metrics, aggregated across dimension values.
 >
-> *例*: イベント ハブの "受信メッセージ" メトリックは、キュー単位のレベルで調査およびグラフ化できます。 ただし、診断設定を使用してエクスポートすると、メトリックは、イベント ハブ内のすべてのキューのすべての受信メッセージとして表されます。
+> *For example*: The 'Incoming Messages' metric on an Event Hub can be explored and charted on a per queue level. However, when exported via diagnostic settings the metric will be represented as all incoming messages across all queues in the Event Hub.
 >
 >
 
-## <a name="stream-diagnostic-logs-using-the-portal"></a>ポータルを使用して診断ログをストリーミングする
+## <a name="stream-diagnostic-logs-using-the-portal"></a>Stream diagnostic logs using the portal
 
-1. ポータルで、Azure Monitor に移動し、**[診断設定]** をクリックします。
+1. In the portal, navigate to Azure Monitor and click on **Diagnostic Settings**
 
-    ![Azure Monitor の [監視] セクション](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-blade.png)
+    ![Monitoring section of Azure Monitor](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-blade.png)
 
-2. 必要に応じて、リソース グループまたはリソースの種類で一覧をフィルタリングして、診断設定を行うリソースをクリックします。
+2. Optionally filter the list by resource group or resource type, then click on the resource for which you would like to set a diagnostic setting.
 
-3. 選択したリソースの設定が存在しない場合は、設定を作成するように求められます。 [診断を有効にする] をクリックします。
+3. If no settings exist on the resource you have selected, you are prompted to create a setting. Click "Turn on diagnostics."
 
-   ![診断設定の追加 - 既存の設定が存在しない](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-none.png)
+   ![Add diagnostic setting - no existing settings](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-none.png)
 
-   リソースに既存の設定が存在する場合は、このリソースで構成済みの設定の一覧が表示されます。 [診断設定の追加] をクリックします。
+   If there are existing settings on the resource, you will see a list of settings already configured on this resource. Click "Add diagnostic setting."
 
-   ![診断設定の追加 - 既存の設定が存在する](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-multiple.png)
+   ![Add diagnostic setting - existing settings](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-multiple.png)
 
-3. 設定に名前をつけて **[イベント ハブへのストリーム]** のチェック ボックスをオンにしてから、Event Hubs 名前空間を選択します。
+3. Give your setting a name and check the box for **Stream to an event hub**, then select an Event Hubs namespace.
 
-   ![診断設定の追加 - 既存の設定が存在する](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-configure.png)
+   ![Add diagnostic setting - existing settings](media/diagnostic-logs-stream-event-hubs/diagnostic-settings-configure.png)
 
-   診断ログを初めてストリーミングする場合は、選択した名前空間にイベント ハブが作成されます。そのログ カテゴリを選択した名前空間にストリーミングするリソースが既に存在する場合は、その名前空間にイベント ハブがストリーミングされます。また、ストリーミング メカニズムで使用するアクセス許可をポリシーで定義します。 現在、イベント ハブにストリーミングするには、管理、送信、リッスンの各アクセス許可が必要です。 Event Hubs 名前空間の共有アクセス ポリシーは、ポータルの名前空間の [構成] タブで作成または変更できます。 これらの診断設定のいずれかを更新するには、クライアントに Event Hubs の承認規則に対する ListKey アクセス許可が必要です。 また、必要に応じて、イベント ハブの名前を指定できます。 イベント ハブの名前を指定した場合、ログは、新しく作成されたログ カテゴリごとのイベント ハブではなく、名前を指定したイベント ハブにルーティングされます。
+   The namespace selected will be where the event hub is created (if this is your first time streaming diagnostic logs) or streamed to (if there are already resources that are streaming that log category to this namespace), and the policy defines the permissions that the streaming mechanism has. Today, streaming to an event hub requires Manage, Send, and Listen permissions. You can create or modify Event Hubs namespace shared access policies in the portal under the Configure tab for your namespace. To update one of these diagnostic settings, the client must have the ListKey permission on the Event Hubs authorization rule. You can also optionally specify an event hub name. If you specify an event hub name, logs are routed to that event hub rather than to a newly created event hub per log category.
 
-4. **[Save]** をクリックします。
+4. Click **Save**.
 
-しばらくすると、このリソースの設定一覧に新しい設定が表示され、新しいイベント データが生成されるとすぐに、診断ログがそのイベント ハブにストリーミングされます。
+After a few moments, the new setting appears in your list of settings for this resource, and diagnostic logs are streamed to that event hub as soon as new event data is generated.
 
-### <a name="via-powershell-cmdlets"></a>PowerShell コマンドレットの使用
+### <a name="via-powershell-cmdlets"></a>Via PowerShell Cmdlets
 
-[Azure PowerShell コマンドレット](../../azure-monitor/platform/powershell-quickstart-samples.md)を使用してストリーミングを有効にするには、次のパラメーターを指定して `Set-AzureRmDiagnosticSetting` コマンドレットを使用します。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+To enable streaming via the [Azure PowerShell Cmdlets](../../azure-monitor/platform/powershell-quickstart-samples.md), you can use the `Set-AzDiagnosticSetting` cmdlet with these parameters:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
 ```
 
-イベント ハブ承認規則 ID は、`{Event Hub namespace resource ID}/authorizationrules/{key name}` という形式の文字列です。たとえば、`/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey` のようになります。 現時点では、PowerShell を使って特定のイベント ハブ名を選択することはできません。
+The Event Hub Authorization Rule ID is a string with this format: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, for example, `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. You cannot currently select a particular event hub name with PowerShell.
 
-### <a name="via-azure-cli"></a>Azure CLI の使用
+### <a name="via-azure-cli"></a>Via Azure CLI
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) を使ってストリーミングを有効にするには、[az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) コマンドを使います。
+To enable streaming via the [Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest), you can use the [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) command.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -108,13 +110,13 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     ]'
 ```
 
-`--logs` パラメーターとして渡された JSON 配列にディクショナリを追加することによって、診断ログに他のカテゴリを追加できます。
+You can add additional categories to the diagnostic log by adding dictionaries to the JSON array passed as the `--logs` parameter.
 
-`--event-hub-rule` 引数は、PowerShell コマンドレットで説明したようにイベント ハブ承認規則 ID と同じ形式を使います。
+The `--event-hub-rule` argument uses the same format as the Event Hub Authorization Rule ID as explained for the PowerShell Cmdlet.
 
-## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Event Hubs からログ データを使用する方法
+## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>How do I consume the log data from Event Hubs?
 
-Event Hubs からのサンプル出力データを次に示します。
+Here is sample output data from Event Hubs:
 
 ```json
 {
@@ -177,24 +179,25 @@ Event Hubs からのサンプル出力データを次に示します。
 }
 ```
 
-| 要素名 | 説明 |
+| Element Name | Description |
 | --- | --- |
-| records |このペイロード内のすべてのログ イベントの配列。 |
-| time |イベントが発生した時刻。 |
-| category |このイベントのログ カテゴリ。 |
-| resourceId |このイベントを生成したリソースのリソース ID。 |
-| operationName |操作の名前。 |
-| level |省略可能。 ログ イベントのレベル。 |
-| properties |イベントのプロパティ。 |
+| records |An array of all log events in this payload. |
+| time |Time at which the event occurred. |
+| category |Log category for this event. |
+| resourceId |Resource ID of the resource that generated this event. |
+| operationName |Name of the operation. |
+| level |Optional. Indicates the log event level. |
+| properties |Properties of the event. |
 
-Event Hubs へのストリーミングをサポートするすべてのリソース プロバイダーの一覧については、[こちら](diagnostic-logs-overview.md)をご覧ください。
+You can view a list of all resource providers that support streaming to Event Hubs [here](diagnostic-logs-overview.md).
 
-## <a name="stream-data-from-compute-resources"></a>Compute リソースからのデータのストリーミング
+## <a name="stream-data-from-compute-resources"></a>Stream data from Compute resources
 
-診断ログは、Windows Azure 診断エージェントを使用して Compute リソースからストリーミングすることもできます。 その設定方法については、[この記事を参照してください](../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md)。
+You can also stream diagnostic logs from Compute resources using the Windows Azure Diagnostics agent. [See this article](../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md) for how to set that up.
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
-* [Azure Monitor による Azure Active Directory ログのストリーム](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
-* [Azure 診断ログの詳細を確認する](diagnostic-logs-overview.md)
-* [Event Hubs の使用](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* [Stream Azure Active Directory logs with Azure Monitor](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
+* [Read more about Azure Diagnostic Logs](diagnostic-logs-overview.md)
+* [Get started with Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+

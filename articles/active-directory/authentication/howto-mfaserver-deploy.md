@@ -3,23 +3,26 @@ title: Azure Multi-Factor Authentication Server の概要 | Microsoft Docs
 description: オンプレミスで Azure MFA Server を使い始めるための詳細な手順
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: d69addac0647513e00663110ac82eef343b77983
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b1cf1d5bb87eea8054d2797634756d1b6c38464d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364620"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075971"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
-<center>![オンプレミスでの MFA](./media/howto-mfaserver-deploy/server2.png)</center>
+<center>
+
+![オンプレミスでの MFA](./media/howto-mfaserver-deploy/server2.png)</center>
 
 オンプレミスの Multi-Factor Authentication Server を使用することに決めました。次に進みましょう。 このページでは、新しいサーバーのインストールや、オンプレミスの Active Directory を使用したそのサーバーのセットアップについて説明します。 MFA サーバーを既にインストールしており、アップグレードを検討している場合、「[Upgrade to the latest Azure Multi-Factor Authentication Server (最新の Azure Multi-factor Authentication Server へのアップグレード)](howto-mfaserver-deploy-upgrade.md)」を参照してください。 Web サービスをインストールする方法については、[Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](howto-mfaserver-deploy-mobileapp.md)に関する記事を参照してください。
 

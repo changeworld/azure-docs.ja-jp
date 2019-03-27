@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 事前に定義された項目の一覧に一致するデータを取得します。 一覧の各項目には、同様に完全に一致するシノニムを含めることができます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: bf4fd5d2a3a9bb06882dcd1b4674ccdf8ad894ee
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5417c1c008b5abaada158530c7c29c67e0dc1ca0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971411"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119668"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>チュートリアル:発話から完全なテキスト一致データを取得する
 
@@ -134,7 +134,7 @@ ms.locfileid: "53971411"
 
 1. アドレスの URL の末尾に移動し、「`shift Joe Smith to IT`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 ラベル付けされた発話に、この発話と一致するものはありません。したがって、テストは適切で、`TransferEmployeeToDepartment` 意図が返され `Department` が抽出されるはずです。
 
-  ```json
+   ```json
     {
       "query": "shift Joe Smith to IT",
       "topScoringIntent": {
@@ -165,7 +165,7 @@ ms.locfileid: "53971411"
         }
       ]
     }
-  ```
+   ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

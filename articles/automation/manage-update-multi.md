@@ -3,18 +3,18 @@ title: 複数の Azure 仮想マシンの更新を管理する
 description: この記事では、Azure 仮想マシンの更新プログラムを管理する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3897225ef6ed7fcc0db75e82058e5b5b273ccbd4
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: ac2d1c1fb59988c8b95fda6b92bb9ae0332fc0e0
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214030"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54427425"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -106,9 +106,9 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 
 | 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| Windows エージェント |[はい] |Update Management は、Windows エージェントからシステムの更新プログラムに関する情報を収集した後、必要な更新プログラムのインストールを開始します。 |
-| Linux エージェント |[はい] |Update Management は、Linux エージェントからシステムの更新プログラムに関する情報を収集した後、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
-| Operations Manager 管理グループ |[はい] |Update Management は、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。 |
+| Windows エージェント |はい |Update Management は、Windows エージェントからシステムの更新プログラムに関する情報を収集した後、必要な更新プログラムのインストールを開始します。 |
+| Linux エージェント |はい |Update Management は、Linux エージェントからシステムの更新プログラムに関する情報を収集した後、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
+| Operations Manager 管理グループ |はい |Update Management は、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。 |
 | Azure ストレージ アカウント |いいえ  |Azure Storage には、システムの更新プログラムに関する情報は含まれません。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
@@ -198,3 +198,4 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 ## <a name="next-steps"></a>次の手順
 
 - ログ、出力、エラーを含む Update Management の詳細については、「[Azure の Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)」をご覧ください。
+

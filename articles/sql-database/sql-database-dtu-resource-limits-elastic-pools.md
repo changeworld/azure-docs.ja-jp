@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: e3b46620d15f8c08d0da69aef3d8c0920e5ad4ec
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 02/07/2019
+ms.openlocfilehash: 7ce752fcee99b3f85099d83ab11451c427dea91e
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653053"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964017"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルを使用したエラスティック プールのリソース制限 
 
@@ -126,12 +126,11 @@ ms.locfileid: "53653053"
 | データベースあたりの最大ストレージ容量 |プール内のデータベースに対してユーザーによって設定される最大データベース サイズ。 ただし、プールされるデータベースは、割り当てられたプール ストレージを共有します。 "*データベースあたりの*" 最大ストレージの合計が、利用可能な "*プールのストレージ容量*" の合計を超えるように設定されている場合でも、すべてのデータベースによって実際に使用される容量の合計が利用可能なプールの制限を超えることはありません。 最大データベース サイズとはデータ ファイルの最大サイズのことであり、ログ ファイルによって使用される領域は含まれません。 |
 |||
  
-
-
 ## <a name="next-steps"></a>次の手順
 
-- よく寄せられる質問の回答については、「[SQL Database に関する FAQ](sql-database-faq.md)」を参照してください。
-- サーバーおよびサブスクリプション レベルの制限については、[論理サーバー上のリソース制限の概要](sql-database-resource-limits-logical-server.md)に関するページをご覧ください。
+- 単一データベースに対する仮想コア リソースの制限については、[仮想コア ベースの購入モデルを使用した単一データベースに対するリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページを参照してください
+- 単一データベースに対する DTU リソースの制限については、[DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](sql-database-dtu-resource-limits-single-databases.md)に関するページを参照してください
+- エラスティック プールに対する仮想コア リソースの制限については、「[仮想コア ベースの購入モデルを使用したエラスティック プールに対するリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)」を参照してください
+- マネージド インスタンスに対するリソース制限については、[マネージド インスタンスのリソース制限](sql-database-managed-instance-resource-limits.md)に関するページを参照してください。
 - Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
-- DTU と eDTU については、「[データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) の説明](sql-database-service-tiers.md#dtu-based-purchasing-model)」をご覧ください。
-- tempdb のサイズ制限については、 https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database を参照してください。
+- データベース サーバーでのリソース制限については、サーバーおよびサブスクリプション レベルの制限に関する情報が記載された、[SQL Database サーバー上のリソース制限の概要](sql-database-resource-limits-database-server.md)に関するページを参照してください。

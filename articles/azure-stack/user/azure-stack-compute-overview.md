@@ -5,16 +5,17 @@ services: azure-stack
 author: sethmanheim
 manager: femila
 ms.service: azure-stack
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: 61b923b278d13bdcf97e05859c36b14bf9edba6e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: bf075372da4cd23c89c24dcb30ffbcfac6775fe4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050998"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775086"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Azure Stack 仮想マシンの概要
 

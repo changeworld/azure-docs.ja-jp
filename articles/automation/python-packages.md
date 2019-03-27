@@ -3,18 +3,18 @@ title: Azure Automation で Python 2 パッケージを管理する
 description: この記事では、Azure Automation での Python 2 パッケージの管理方法について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5974a8e622ca0969b2a7b5ee9500766ac95398c9
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: de0998dffeac54db5311bbcde1c9499488b23556
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45987223"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54434974"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Azure Automation で Python 2 パッケージを管理する
 

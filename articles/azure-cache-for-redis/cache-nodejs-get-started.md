@@ -1,26 +1,26 @@
 ---
 title: 'クイック スタート: Node.js で Azure Cache for Redis を使用する方法 | Microsoft Docs'
 description: このクイック スタートでは、Node.js と node_redis で Azure Cache for Redis を使用する方法について説明します。
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: v-lincan
 ms.assetid: 06fddc95-8029-4a8d-83f5-ebd5016891d9
 ms.service: cache
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 05/21/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: f47b1d35ada061601233506222903742393c6830
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 739f0bd6381e872b5f989f9ecb4dd97fdbdb52c9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101753"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238098"
 ---
 # <a name="quickstart-how-to-use-azure-cache-for-redis-with-nodejs"></a>クイック スタート: Node.js で Azure Cache for Redis を使用する方法
 

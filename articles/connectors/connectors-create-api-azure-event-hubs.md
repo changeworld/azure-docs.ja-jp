@@ -128,7 +128,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    | プロパティ | 必須 | 説明 | 
    |----------|----------|-------------|
-   | イベント ハブ名 | [はい] | イベントの送信先イベント ハブを選択します | 
+   | イベント ハブ名 | はい | イベントの送信先イベント ハブを選択します | 
    | イベント コンテンツ | いいえ  | 送信するイベントのコンテンツ | 
    | Properties | いいえ  | 送信するアプリのプロパティと値 | 
    |||| 
@@ -149,8 +149,8 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    | プロパティ | 必須 | 値 | 説明 | 
    |----------|----------|-------|-------------|
-   | 接続名 | [はい] | <*connection-name*> | 作成する接続の名前 |
-   | Event Hubs 名前空間 | [はい] | <*event-hubs-namespace*> | 使用する場合は、Event Hubs 名前空間を選択します。 | 
+   | 接続名 | はい | <*connection-name*> | 作成する接続の名前 |
+   | Event Hubs 名前空間 | はい | <*event-hubs-namespace*> | 使用する場合は、Event Hubs 名前空間を選択します。 | 
    |||||  
 
    例: 

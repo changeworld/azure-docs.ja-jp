@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: PHP を使用して Text Analytics API を呼び出す'
+title: クイック スタート:PHP を使用して Text Analytics API を呼び出す
 titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: noellelacharite
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 10/01/2018
-ms.author: nolachar
-ms.openlocfilehash: 6ce4dda4a8a927ea904d241d63eed3483468961e
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.date: 02/15/2019
+ms.author: aahi
+ms.openlocfilehash: 35c929d508f0a4f29b1c5038446d27e62ddbfbe2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52282823"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535689"
 ---
-# <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: PHP を使用して Text Analytics Cognitive Service を呼び出す
+# <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:PHP を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
 
 この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を PHP で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
@@ -74,7 +74,7 @@ function DetectLanguage ($host, $path, $key, $data) {
     $data = json_encode ($data);
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
+    // https://php.net/manual/en/function.stream-context-create.php
     $options = array (
         'http' => array (
             'header' => $headers,
@@ -193,7 +193,7 @@ function GetSentiment ($host, $path, $key, $data) {
     $data = json_encode ($data);
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
+    // https://php.net/manual/en/function.stream-context-create.php
     $options = array (
         'http' => array (
             'header' => $headers,
@@ -285,7 +285,7 @@ function GetKeyPhrases ($host, $path, $key, $data) {
     $data = json_encode ($data);
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
+    // https://php.net/manual/en/function.stream-context-create.php
     $options = array (
         'http' => array (
             'header' => $headers,
@@ -399,7 +399,7 @@ function GetEntities ($host, $path, $key, $data) {
     $data = json_encode ($data);
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
+    // https://php.net/manual/en/function.stream-context-create.php
     $options = array (
         'http' => array (
             'header' => $headers,

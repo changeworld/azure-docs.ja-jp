@@ -3,18 +3,18 @@ title: Azure Automation State Configuration での構成のコンパイル
 description: この記事では、Azure Automation の Desired State Configuration (DSC) 構成をコンパイルする方法について説明します。
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca3c29101e17a7970ba782b5c49267bf9f18482e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d49ab32ace1ad0900c4867a41aba56900ef2bcaa
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257158"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54423410"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration での DSC 構成のコンパイル
 
@@ -130,7 +130,7 @@ PSCredentials をパラメーターとして渡す方法の詳細については
 
 ## <a name="composite-resources"></a>複合リソース
 
-**複合リソース**の利点は、構成の内側に入れ子のリソースとして DSC 構成を使用できることです。 これにより、1 つのリソースに複数の構成を適用することができます。 **複合リソース**の詳細については、「[複合リソース: リソースとしての DSC 構成の使用](/powershell/dsc/authoringresourcecomposite)」を参照してください。
+**複合リソース**の利点は、構成の内側に入れ子のリソースとして DSC 構成を使用できることです。 これにより、1 つのリソースに複数の構成を適用することができます。 「[Composite resources: Using a DSC configuration as a resource (複合リソース: DSC 構成をリソースとして使用する)](/powershell/dsc/authoringresourcecomposite)」を参照して、**複合リソース**の詳細について確認してください。
 
 > [!NOTE]
 > **複合リソース**を正常にコンパイルするには、まず、その複合リソースが依存する DSC リソースを先に Azure Automation アカウント モジュール リポジトリにインストールしておく必要があります。そうしないとインポートが適切に実行されません。
@@ -197,7 +197,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-PowerShell を使用して上記の DSC 構成をコンパイルできます。 以下の PowerShell では、**ConfigurationDataSample.MyVM1** と **ConfigurationDataSample.MyVM3** という 2 つのノード構成が Azure Automation State Configuration プル サーバーに追加されます。
+PowerShell を使用して上記の DSC 構成をコンパイルできます。 以下の PowerShell では、2 つのノード構成が Azure Automation State Configuration プル サーバーに追加されます (**ConfigurationDataSample.MyVM1** と **ConfigurationDataSample.MyVM3**)。
 
 ```powershell
 $ConfigData = @{
@@ -239,7 +239,7 @@ Azure Automation の DSC 構成は、`Get-AutomationPSCredential` コマンド�
 
 ノード構成 (MOF 構成ドキュメント) で資格情報を安全に保持するには、ノード構成 MOF ファイルで資格情報を暗号化する必要があります。 ただし、現時点では、ノード構成 MOF 作成時に資格情報をプレーンテキストで出力することを許可するように PowerShell DSC に指定する必要があります。PowerShell DSC は、コンパイル ジョブによって生成された MOF ファイル全体を Azure Automation が暗号化することを認識していないためです。
 
-[**ConfigurationData**](#configurationdata)をクリックします。 DSC 構成に表示され、資格情報を使用する各ノード ブロックの名前に対して、**ConfigurationData** を使用して `PSDscAllowPlainTextPassword = $true` を渡す必要があります。
+ [**ConfigurationData**](#configurationdata)をクリックします。 DSC 構成に表示され、資格情報を使用する各ノード ブロックの名前に対して、**ConfigurationData** を使用して `PSDscAllowPlainTextPassword = $true` を渡す必要があります。
 
 次の例は、Automation 資格情報資産を使用する DSC 構成の例です。
 
@@ -261,7 +261,7 @@ Configuration CredentialSample
 }
 ```
 
-PowerShell を使用して上記の DSC 構成をコンパイルできます。 以下の PowerShell では、**CredentialSample.MyVM1** と **CredentialSample.MyVM2** という 2 つのノード構成が Azure Automation State Configuration プル サーバーに追加されます。
+PowerShell を使用して上記の DSC 構成をコンパイルできます。 以下の PowerShell では、2 つのノード構成が Azure Automation State Configuration プル サーバーに追加されます (**CredentialSample.MyVM1** と **CredentialSample.MyVM2**)。
 
 ```powershell
 $ConfigData = @{
@@ -283,7 +283,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 ```
 
 > [!NOTE]
-> コンパイルが完了すると、"**"Microsoft.PowerShell.Management" スナップインが既にインポートされているため、"Microsoft.PowerShell.Management" モジュールがインポートされませんでした。**" というエラーが表示される場合があります。 この警告は無視してかまいません。
+> コンパイルが完了すると、次のようなエラーが表示される可能性があります。"**"Microsoft.PowerShell.Management" スナップインが既にインポートされているため、"Microsoft.PowerShell.Management" モジュールがインポートされませんでした。**" この警告は無視してかまいません。
 
 ## <a name="importing-node-configurations"></a>ノード構成のインポート
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7f964397b476d5a97ecdde0ae22bd6662a435e1a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998092"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456522"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
@@ -52,7 +52,7 @@ AKS クラスターを作成すると、クラスター マスターが自動的
 
 AKS は、専用の API サーバー、スケジューラなど、単一のテナント クラスター マスターを提供します。ノードの数とサイズを定義すると、Azure プラットフォームはクラスター マスターとノード間にセキュアな通信を構成します。 クラスター マスターの操作は、`kubectl` や Kubernetes ダッシュボードなどの、Kubernetes API を介して行われます。
 
-このマネージド クラスター マスターによって、高可用性を備えた *etcd* ストアなどのコンポーネントを構成する必要はなくなりますが、それと同時に、クラスター マスターには直接アクセスできないことがわかります。 Kubernetes のアップグレードは、Azure CLI または Azure portal 経由で調整され、クラスター マスターの次にノードのアップグレードが、順番に行われます。 想定される問題をトラブルシューティングするために、Azure Log Analytics からクラスター マスター ログを確認できます。
+このマネージド クラスター マスターによって、高可用性を備えた *etcd* ストアなどのコンポーネントを構成する必要はなくなりますが、それと同時に、クラスター マスターには直接アクセスできないことがわかります。 Kubernetes のアップグレードは、Azure CLI または Azure portal 経由で調整され、クラスター マスターの次にノードのアップグレードが、順番に行われます。 想定される問題をトラブルシューティングするために、Azure Monitor ログからクラスター マスター ログを確認できます。
 
 クラスター マスターを特定の方法で構成する必要がある場合や、クラスター マスターに直接アクセスする必要がある場合は、[aks-engine][aks-engine] を使用して、独自の Kubernetes クラスターをデプロイできます。
 
@@ -70,7 +70,7 @@ AKS は、専用の API サーバー、スケジューラなど、単一のテ�
 
 AKS では、クラスター内のノードに対する VM イメージは現在、Ubuntu Linux に基づいています。 AKS クラスターを作成するか、またはノード数をスケールアップすると、Azure プラットフォームが、要求された数の VM を作成して構成します。 手動の構成を実行する必要はありません。
 
-別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目して、AKS クラスターで公式にサポートされる前に構成オプションを提供しています。 たとえば、Docker 以外のWindows コンテナーまたはコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
+別のホスト OS、コンテナー ランタイムを使用する必要がある場合や、クラスター パッケージを組み入れる必要がある場合、[aks-engine][aks-engine] を使用して独自の Kubernetes クラスターをデプロイできます。 アップストリームの `aks-engine` リリースでは構成オプションに注目し、AKS クラスターで公式にサポートされる前にそれらを提供しています。 たとえば、Docker 以外のWindows コンテナーまたはコンテナー ランタイムの使用を検討している場合、`aks-engine` を使用して、現在のニーズに合った Kubernetes クラスターを構成してデプロイできます。
 
 ### <a name="resource-reservations"></a>リソース予約
 
@@ -203,7 +203,7 @@ AKS クラスターを作成すると、次の名前空間が利用可能にな�
 
 - *既定* - この名前空間は、何も指定されない場合に、既定でポッドおよびデプロイが作成される場所です。 より小規模な環境では、追加の論理分割を作成せずに、既定の名前空間にアプリケーションを直接デプロイできます。 `kubectl get pods` などの Kubernetes API を操作する場合、何も指定しないと、既定の名前空間が使用されます。
 - *kube-system* - この名前空間は、DNS とプロキシ、または Kubernetes ダッシュボードのようなネットワーク機能など、重要なリソースが置かれている場所です。 通常は、この名前空間に独自のアプリケーションをデプロイしません。
-- *kube-public* - この名前空間は、通常は使用されませんが、クラスター全体でリソースを表示可能にするために使用したり、任意のユーザーによる表示を可能にしたりします。
+- *kube-public* - この名前空間は、通常は使用されませんが、クラスター全体でリソースを表示可能にして、ユーザーが確認できるようにするために使用できます。
 
 詳細については、[Kubernetes の名前空間][kubernetes-namespaces] に関するページをご覧ください。
 

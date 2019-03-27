@@ -7,14 +7,14 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: danlep
-ms.openlocfilehash: de543798702137905ee5243c6ca8e502152f9c44
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: c9b4a27ff1b5467eb752e8cfc09f697ca1a966ba
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634381"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820387"
 ---
-# <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照: YAML
+# <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
 
 ACR タスクでの複数ステップのタスク定義では、コンテナーのビルド、テスト、および修正プログラムの適用に重点を置いたコンテナーを中心としたコンピューティング プリミティブを提供します。 この記事では、複数ステップのタスクを定義する YAML ファイルのコマンド、パラメーター、プロパティ、および構文について説明します。
 
@@ -83,10 +83,10 @@ az configure --defaults acr=myregistry
 
 タスク プロパティは通常、`acr-task.yaml` ファイルの上部に表示されます。これらは、タスクの完全な実行を通じて適用されるグローバル プロパティです。 これらのグローバル プロパティの一部は、個々のステップ内でオーバーライドできます。
 
-| プロパティ | 型 | 省略可能 | 説明 | オーバーライドのサポート | 既定値 |
+| プロパティ | type | 省略可能 | 説明 | オーバーライドのサポート | 既定値 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | string | いいえ  | ACR タスク サービスによって解析される `acr-task.yaml` ファイルのバージョン。 ACR タスクは、下位互換性の維持に努めていますが、この値により ACR タスクが定義されたバージョン内で互換性を維持することが可能になります。 | いいえ  | なし |
-| `stepTimeout` | int (秒) | はい | ステップが実行できる最大秒数。 このプロパティは、ステップの [timeout](#timeout) プロパティを設定することで、ステップ内でオーバーライドできます。 | はい | 600 (10 分) |
+| `version` | 文字列 | いいえ  | ACR タスク サービスによって解析される `acr-task.yaml` ファイルのバージョン。 ACR タスクは、下位互換性の維持に努めていますが、この値により ACR タスクが定義されたバージョン内で互換性を維持することが可能になります。 | いいえ  | なし |
+| `stepTimeout` | int (秒) | はい | ステップが実行できる最大秒数。 このプロパティは、ステップの timeout プロパティを設定することで、ステップ内でオーバーライドできます。 | はい | 600 (10 分) |
 | `totalTimeout` | int (秒) | はい | タスクが実行できる最大秒数。 "実行" には、成功か失敗かにかかわらず、タスク内のすべてのステップを実行して完了するまでが含まれます。 また、検出されたイメージの依存関係とタスクの実行状態など、タスク出力の印刷も含まれています。 | いいえ  | 3600 (1 時間) |
 
 ## <a name="task-step-types"></a>タスク ステップの種類
@@ -127,15 +127,15 @@ steps:
 | | | |
 | -------- | ---- | -------- |
 | `detach` | bool | 省略可能 |
-| `entryPoint` | string | 省略可能 |
+| `entryPoint` | 文字列 | 省略可能 |
 | `env` | [string, string, ...] | 省略可能 |
-| `id` | string | 省略可能 |
+| `id` | 文字列 | 省略可能 |
 | `ignoreErrors` | bool | 省略可能 |
 | `keep` | bool | 省略可能 |
 | `startDelay` | int (秒) | 省略可能 |
 | `timeout` | int (秒) | 省略可能 |
 | `when` | [string, string, ...] | 省略可能 |
-| `workingDirectory` | string | 省略可能 |
+| `workingDirectory` | 文字列 | 省略可能 |
 
 ### <a name="examples-build"></a>例: build
 
@@ -188,7 +188,7 @@ steps:
 | | | |
 | -------- | ---- | -------- |
 | `env` | [string, string, ...] | 省略可能 |
-| `id` | string | 省略可能 |
+| `id` | 文字列 | 省略可能 |
 | `ignoreErrors` | bool | 省略可能 |
 | `startDelay` | int (秒) | 省略可能 |
 | `timeout` | int (秒) | 省略可能 |
@@ -231,15 +231,15 @@ steps:
 | | | |
 | -------- | ---- | -------- |
 | `detach` | bool | 省略可能 |
-| `entryPoint` | string | 省略可能 |
+| `entryPoint` | 文字列 | 省略可能 |
 | `env` | [string, string, ...] | 省略可能 |
-| `id` | string | 省略可能 |
+| `id` | 文字列 | 省略可能 |
 | `ignoreErrors` | bool | 省略可能 |
 | `keep` | bool | 省略可能 |
 | `startDelay` | int (秒) | 省略可能 |
 | `timeout` | int (秒) | 省略可能 |
 | `when` | [string, string, ...] | 省略可能 |
-| `workingDirectory` | string | 省略可能 |
+| `workingDirectory` | 文字列 | 省略可能 |
 
 これらプロパティの詳細については、この記事の「[タスク ステップ プロパティ](#task-step-properties)」を参照してください。
 
@@ -315,20 +315,20 @@ steps:
 
 各ステップの種類は、その種類に適した複数のプロパティをサポートしています。 次の表では、利用可能なすべてのステップのプロパティを定義します。 すべてのステップの種類が、すべてのプロパティをサポートしているわけではありません。 各ステップの種類でこれらのプロパティが利用可能かどうかを確認するには、「[cmd](#cmd)」、「[build](#build)」、「[push](#push)」 のステップの種類の参照セクションを参照してください。
 
-| プロパティ | 型 | 省略可能 | 説明 |
+| プロパティ | type | 省略可能 | 説明 |
 | -------- | ---- | -------- | ----------- |
 | `detach` | bool | はい | 実行時にコンテナーをデタッチする必要があるかどうか。 |
-| `entryPoint` | string | はい | ステップのコンテナーの `[ENTRYPOINT]` をオーバーライドします。 |
+| `entryPoint` | 文字列 | はい | ステップのコンテナーの `[ENTRYPOINT]` をオーバーライドします。 |
 | `env` | [string, string, ...] | はい | ステップの環境変数を定義する `key=value` 形式での文字列の配列。 |
-| [`id`](#example-id) | string | はい | タスク内のステップを一意に識別します。 タスク内のその他のステップでは、`when` での依存関係のチェックなどのために、ステップの `id` を参照できます。<br /><br />`id` は実行中のコンテナーの名前でもあります。 タスク内のその他のコンテナーで実行されているプロセスは、その DNS ホスト名として、または docker ログ [id] などでアクセスするために `id` を参照できます。 |
+| [`id`](#example-id) | 文字列 | はい | タスク内のステップを一意に識別します。 タスク内のその他のステップでは、`when` での依存関係のチェックなどのために、ステップの `id` を参照できます。<br /><br />`id` は実行中のコンテナーの名前でもあります。 タスク内のその他のコンテナーで実行されているプロセスは、その DNS ホスト名として、または docker ログ [id] などでアクセスするために `id` を参照できます。 |
 | `ignoreErrors` | bool | はい | `true` に設定すると、実行中にエラーが発生したかどうかに関係なく、ステップは完了としてマークされます。 既定値: `false`。 |
 | `keep` | bool | はい | 実行後にステップのコンテナーを保持する必要があるかどうか。 |
 | `startDelay` | int (秒) | はい | ステップの実行を遅らせる秒数。 |
 | `timeout` | int (秒) | はい | ステップが終了されるまでに実行できる最大秒数。 |
 | [`when`](#example-when) | [string, string, ...] | はい | タスク内で 1 つ以上のその他のステップに対するステップの依存関係を構成します。 |
-| `workingDirectory` | string | はい | ステップ用の作業ディレクトリを設定します。 既定では、ACR タスクは作業ディレクトリとしてルート ディレクトリを作成します。 ただし、ビルドに複数のステップがある場合は、同じ作業ディレクトリを指定することで、前のステップは後のステップと成果物を共有することができます。 |
+| `workingDirectory` | 文字列 | はい | ステップ用の作業ディレクトリを設定します。 既定では、ACR タスクは作業ディレクトリとしてルート ディレクトリを作成します。 ただし、ビルドに複数のステップがある場合は、同じ作業ディレクトリを指定することで、前のステップは後のステップと成果物を共有することができます。 |
 
-### <a name="examples-task-step-properties"></a>例: タスク ステップ プロパティ
+### <a name="examples-task-step-properties"></a>次に例を示します。タスク ステップ プロパティ
 
 #### <a name="example-id"></a>例: id
 
@@ -428,5 +428,5 @@ steps:
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
-[az-acr-run]: /cli/azure/acr/run#az-acr-run
+[az-acr-run]: /cli/azure/acr#az-acr-run
 [az-configure]: /cli/azure/reference-index#az-configure

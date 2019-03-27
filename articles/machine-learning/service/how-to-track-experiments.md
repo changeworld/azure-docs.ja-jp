@@ -6,17 +6,17 @@ services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c45023a462a5c01dfde806d7abbb9714aaf09b85
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2d528d26fa2597c35c16e50cecffcd10971bdcd5
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189474"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447119"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Azure Machine Learning で実験とトレーニング メトリックを追跡する
 
@@ -128,10 +128,10 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 
 この例は、上記の基本的な sklearn Ridge モデルを拡張します。 単純なパラメーター スイープを行ってモデルのアルファ値をスイープし、実行でのメトリックとトレーニング済みモデルを実験にキャプチャします。 例は、ユーザー管理の環境に対してローカルに実行します。 
 
-1. トレーニング スクリプトを作成します。 このコードでは、```%%writefile%%``` を使用して、トレーニング コードを ```train.py``` としてスクリプト フォルダーに書き出します。
+1. トレーニング スクリプト `train.py` を作成します。
 
   ```python
-  %%writefile $project_folder/train.py
+  # train.py
 
   import os
   from sklearn.datasets import load_diabetes
@@ -182,10 +182,11 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
   
   ```
 
-2. ```train.py``` スクリプトは ```mylib.py``` を参照しています。 このファイルにより、Ridge モデルで使用するアルファ値の一覧を取得できます。
+2. `train.py` スクリプトは、Ridge モデルで使用するアルファ値の一覧を取得できる `mylib.py` を参照します。
 
   ```python
-  %%writefile $script_folder/mylib.py
+  # mylib.py
+  
   import numpy as np
 
   def get_alphas():
@@ -216,7 +217,37 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
   run = experiment.submit(src)
   ```
+
+## <a name="cancel-a-run"></a>実行をキャンセルする
+実行の送信後、実験名と実行 ID を知っていれば、オブジェクト参照を失った場合でも、キャンセルできます。 
+
+```python
+from azureml.core import Experiment
+exp = Experiment(ws, "my-experiment-name")
+
+# if you don't know the run id, you can list all runs under an experiment
+for r in exp.get_runs():  
+    print(r.id, r.get_status())
+
+# if you know the run id, you can "rehydrate" the run
+from azureml.core import get_run
+r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
   
+# check the returned run type and status
+print(type(r), r.get_status())
+
+# you can cancel a run if it hasn't completed or failed
+if r.get_status() not in ['Complete', 'Failed']:
+    r.cancel()
+```
+現在、ScriptRun および PipelineRun 型のみがキャンセル操作をサポートしていることに注意してください。
+
+さらに、次のコマンドを使用して、CLI での実行を取り消すことができます。
+```shell
+az ml run cancel -r <run_id> -p <project_path>
+```
+
+
 ## <a name="view-run-details"></a>実行の詳細を表示する
 
 ### <a name="monitor-run-with-jupyter-notebook-widgets"></a>Jupyter Notebook ウィジェットで実行を監視する
@@ -234,7 +265,7 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 2. **[自動化された機械学習の実行の場合]** 前回の実行のグラフにアクセスするには。 `<<experiment_name>>` は適切な実験名に置き換えてください。
 
    ``` 
-   from azureml.train.widgets import RunDetails
+   from azureml.widgets import RunDetails
    from azureml.core.run import Run
 
    experiment = Experiment (workspace, <<experiment_name>>)

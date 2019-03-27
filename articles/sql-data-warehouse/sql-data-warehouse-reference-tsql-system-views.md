@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 06/13/2018
 ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: c4663c71bb3aee3547174345cfe9fb1d06c4015e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6e68fe624a92d0a2d5a8accd3f34b1c5c10f2868
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256206"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472169"
 ---
 # <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でサポートされるシステム ビュー
 Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。

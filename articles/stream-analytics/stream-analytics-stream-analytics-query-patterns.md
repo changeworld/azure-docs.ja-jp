@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: ffcf81ee8637c2ce01b3a7822d179609bd9dbfaa
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 9c9a5f219af0d474e1608f98595abe027b894117
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794534"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001734"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>一般的 Stream Analytics 使用状況パターンのクエリ例
 
@@ -108,7 +108,7 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
 **出力**:
 
 | CarsPassed | Time |
-| --- | --- | --- |
+| --- | --- |
 | 1 Honda |2015-01-01T00:00:10.0000000Z |
 | 2 Toyotas |2015-01-01T00:00:10.0000000Z |
 
@@ -609,6 +609,7 @@ WHERE
 
 
 **入力**:
+
 | LicensePlate | Make | Time | TollID |
 | --- | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
@@ -621,6 +622,7 @@ WHERE
 | YZK 5704 |Ford |2015-07-27T00:00:07.0000000Z | 3 |
 
 **出力**:
+
 | TollID | Count |
 | --- | --- |
 | 1 | 2 |
@@ -687,7 +689,7 @@ FROM Temp
 GROUP BY DeviceId,TumblingWindow(minute, 5)
 ```
 
-**説明**:[COUNT(DISTINCT Time)](https://docs.microsoft.com/en-us/stream-analytics-query/count-azure-stream-analytics) は、特定の時間枠内での、Time 列の個別の値の数を返します。 その後、このステップの出力を使用し、重複を除去することによって、デバイスあたりの平均を計算できます。
+**説明**:[COUNT(DISTINCT Time)](https://docs.microsoft.com/stream-analytics-query/count-azure-stream-analytics) は、特定の時間枠内での、Time 列の個別の値の数を返します。 その後、このステップの出力を使用し、重複を除去することによって、デバイスあたりの平均を計算できます。
 
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。

@@ -73,7 +73,7 @@ using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, 
 
 管理者の資格情報と同じように、"username@server" という形式の値は使わないでください。 代わりに "username" のみを使用します。  接続文字列にはサーバー名とデータベース名が含まれていないことにも注意してください。 これは、**OpenConnectionForKey** の呼び出しによって接続がキーに基づいた正しいシャードに自動的に転送されるためです。 そのため、データベース名とサーバー名を指定しないでください。
 
-## <a name="see-also"></a>「
+## <a name="see-also"></a>関連項目
 
 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)
 

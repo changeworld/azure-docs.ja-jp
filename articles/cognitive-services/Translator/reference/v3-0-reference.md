@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Translator Text API V3.0 のリファレンス ドキュメント。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5c952370908919deb6531e0b175063dc2657ae98
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 767021772fc86013cd8192216eb03840f1160807
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870405"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878699"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 

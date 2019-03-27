@@ -12,22 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: knithinc
-ms.openlocfilehash: 1b5d5a2934205877f0e0c2ac891e62c90e960b3d
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: 42b67ae9b715670f1a0c6e0fed004487a52817d3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085151"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206473"
 ---
 # <a name="connect-to-the-asdk"></a>ASDK に接続する
 
 リソースを管理するにはまず、Azure Stack Development Kit (ASDK) に接続する必要があります。 この記事では、次の接続オプションを使用して ASDK に接続するために必要な手順を説明します。
 
 * [リモート デスクトップ接続 (RDP)](#connect-with-rdp)。 リモート デスクトップ接続を使用して接続する場合、単一のユーザーが開発キットにすばやく接続できます。
-* [仮想プライベート ネットワーク (VPN)](#connect-with-vpn)。 VPN を使用して接続する場合、Azure Stack インフラストラクチャの外部のクライアントから複数のユーザーが同時に接続できます。 VPN 接続には、いくつかのセットアップが必要です。
+* [仮想プライベート ネットワーク (VPN)](#connect-with-vpn)。 VPN を使用して接続する場合、Azure Stack インフラストラクチャの外部のクライアントから複数のユーザーが同時に Azure Stack ポータルに接続できます。 VPN 接続には、いくつかのセットアップが必要です。
 
 <a name="connect-with-rdp"></a>
 ## <a name="connect-to-azure-stack-using-rdp"></a>RDP を使用して Azure Stack に接続する

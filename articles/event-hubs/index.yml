@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 84bac57a763bf7089ac7e6af22247bc981eb7e43
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: f44dc587c2fb092986d8422fe06739192100b8e9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53161204"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56231621"
 documentType: LandingData
 title: Azure Event Hubs のドキュメント
 metadata:
@@ -188,7 +188,7 @@ sections:
     className: cardsD
     items:
     - title: コマンド ライン
-      html: <p><a href="/powershell/module/azurerm.eventhub/">Azure PowerShell</a></p><p><a href="/cli/azure/eventhubs">Azure CLI</a></p>
+      html: <p><a href="/powershell/module/az.eventhub/">Azure PowerShell</a></p><p><a href="/cli/azure/eventhubs">Azure CLI</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api/microsoft.servicebus.messaging">.NET Framework</a></p><p><a href="/dotnet/api/microsoft.azure.eventhubs">.NET Standard</a></p><p><a href="/java/api/overview/azure/eventhub">Java</a></p>
     - title: REST

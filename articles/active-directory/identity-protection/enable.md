@@ -5,10 +5,10 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: f7a7ffaf-76bf-4cc7-96a1-86c944275c82
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 2629af5aed0cd1178ddf8d5baaf5259ff4ec0aa5
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5f203a85bba1998d630091ab8e5493ccd712446f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40002895"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185028"
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection の有効化
 

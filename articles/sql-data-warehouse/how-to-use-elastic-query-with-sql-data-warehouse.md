@@ -6,16 +6,16 @@ author: hirokib
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: d861e1d4cd891e1f1e1be3209ae4dfdbf4420165
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4a45d00559a84c178ab760acf8616f97ce7bb57c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718300"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55466287"
 ---
 # <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Azure SQL Database でエラスティック クエリを使用し、Azure SQL Data Warehouse のデータにアクセスするときのベスト プラクティス
 エラスティック クエリを使用して Azure SQL Data Warehouse のデータに Azure SQL Database からアクセスするときのベスト プラクティスについて説明します。 
@@ -36,7 +36,7 @@ ms.locfileid: "44718300"
 2. セキュリティの分離 - 特定のスキーマを使用して選択的に、承認されたデータ サブセットを分離します。
 3. サンドボックス - データのサンプル セットを、実稼働クエリなどを探索するための "プレイグラウンド" として提供します。
 
-エラスティック クエリを使用すると、簡単に SQL Data Warehouse データのサブセットを選択して SQL Database インスタンスに移動できます。 さらに、この分離はリモート クエリ実行を有効にする機能を妨害しないため、より興味深い "キャッシュ" のシナリオが可能になります。
+エラスティック クエリを使用すると、簡単に SQL Data Warehouse データのサブセットを選択して SQL データベース インスタンスに移動できます。 さらに、この分離はリモート クエリ実行を有効にする機能を妨害しないため、より興味深い "キャッシュ" のシナリオが可能になります。
 
 ### <a name="remote-query-execution"></a>リモート クエリ実行
 
@@ -51,7 +51,7 @@ ms.locfileid: "44718300"
 > 
 > ユーザーは、ALTER ANY EXTERNAL DATA SOURCE アクセス許可を所有している必要があります。 このアクセス許可は、ALTER DATABASE アクセス許可に含まれています。 ALTER ANY EXTERNAL DATA SOURCE アクセス許可は、リモート データ ソースを参照するために必要です。
 
-次に、SQL Database インスタンスに、SQL Data Warehouse 内のリモート テーブルをポイントするリモート外部テーブル定義を作成します。 クエリで外部テーブルが利用されると、クエリの外部テーブルを参照する部分が SQL Data Warehouse インスタンスに送信されて処理されます。 クエリが完了すると、呼び出し元の SQL Database インスタンスに結果セットが返されます。 SQL Database と SQL Data Warehouse 間のエラスティック クエリを設定する簡単なチュートリアルについては、「[SQL Data Warehouse のエラスティック クエリの構成][Configure Elastic Query with SQL Data Warehouse]」をご覧ください。
+次に、SQL データベース インスタンスに、SQL Data Warehouse 内のリモート テーブルをポイントするリモート外部テーブル定義を作成します。 クエリで外部テーブルが利用されると、クエリの外部テーブルを参照する部分が SQL Data Warehouse インスタンスに送信されて処理されます。 クエリが完了すると、呼び出し元の SQL データベース インスタンスに結果セットが返されます。 SQL Database と SQL Data Warehouse 間のエラスティック クエリを設定する簡単なチュートリアルについては、「[SQL Data Warehouse のエラスティック クエリの構成][Configure Elastic Query with SQL Data Warehouse]」をご覧ください。
 
 SQL Database のエラスティック クエリの詳細については、「[Azure SQL Database のエラスティック クエリの概要][Azure SQL Database elastic query overview]」をご覧ください。
 
@@ -72,7 +72,7 @@ SQL Database のエラスティック クエリの詳細については、「[Az
 
 - テーブルの一部分はパフォーマンスのためにキャッシュ データとして SQL Database 内に格納され、残りのデータは SQL Data Warehouse に格納される、一種のストレッチ テーブルを管理することがよくあります。 この場合、SQL Database に 2 つのオブジェクトが必要になります。1 つは SQL Data Warehouse のベース テーブルを参照する SQL Database 内の外部テーブルであり、もう 1 つは SQL Database 内のテーブルの "キャッシュされた" 部分です。 そして、テーブルのキャッシュされた部分と外部テーブルの上位に両方のテーブルの和集合となるビューを作成し、SQL Database 内で具体化されているデータと、外部テーブルによって公開される SQL Data Warehouse のデータを分離するフィルターを適用することを検討します。
 
-  たとえば、最も新しい年のデータを SQL Database インスタンスに保持する場合について考えてみましょう。 **ext.Orders** テーブルは、データ ウェアハウスの Orders (注文) テーブルを参照します。 **dbo.Orders** は、SQL Database インスタンス内の最も新しい年のデータを表します。 どちらのテーブルに対してクエリを実行するかをユーザーに判断してもらう代わりに、両方のテーブルの最も新しい年のパーティション ポイントの上にビューを作成します。
+  たとえば、最も新しい年のデータを SQL データベース インスタンスに保持する場合について考えてみましょう。 **ext.Orders** テーブルは、データ ウェアハウスの Orders (注文) テーブルを参照します。 **dbo.Orders** は、SQL Database インスタンス内の最も新しい年のデータを表します。 どちらのテーブルに対してクエリを実行するかをユーザーに判断してもらう代わりに、両方のテーブルの最も新しい年のパーティション ポイントの上にビューを作成します。
 
   ```sql
   CREATE VIEW dbo.Orders_Elastic AS
@@ -99,7 +99,7 @@ SQL Database のエラスティック クエリの詳細については、「[Az
 
   このような方法で生成されたビューにより、クエリ コンパイラは、ユーザーのクエリに応答するためにデータ ウェアハウス インスタンスを使用する必要があるかどうかを判断できます。 
 
-  データ ウェアハウス インスタンスに対する各エラスティック クエリでは、送信、コンパイル、実行、および関連データの移動のオーバーヘッドが発生します。 各エラスティック クエリが同時実行スロットにカウントされ、リソースを使用することに注意してください。  
+  データ ウェアハウス インスタンスに対する各エラスティック クエリでは、送信、コンパイル、実行、および関連データの移動のオーバーヘッドが発生します。 各エラスティック クエリがコンカレンシー スロットにカウントされ、リソースを使用することに注意してください。  
 
 
 - データ ウェアハウス インスタンスからの結果セットをさらにドリルダウンする場合は、パフォーマンスを確保し不要なリソースの使用を回避するために、結果セットを SQL Database の一時テーブルで具体化することを検討してください。
@@ -125,29 +125,29 @@ SQL Database のエラスティック クエリの詳細については、「[Az
 
 ## <a name="faq"></a>FAQ
 
-Q: エラスティック プール内のデータベースをエラスティック クエリに使用できますか?
+Q:エラスティック プール内のデータベースをエラスティック クエリに使用できますか?
 
-A: はい。 エラスティック プール内の SQL Database にエラスティック クエリを使用できます。 
+A:はい。 エラスティック プール内の SQL Database にエラスティック クエリを使用できます。 
 
-Q: エラスティック クエリに使用できるデータベースの数に上限はありますか?
+Q:エラスティック クエリに使用できるデータベースの数に上限はありますか?
 
-A: エラスティック クエリに使用できるデータベースの数にハード キャップはありません。 ただし、各エラスティック クエリ (SQL Data Warehouse にヒットするクエリ) は、通常の同時実行制限に加算されます。
+A:エラスティック クエリに使用できるデータベースの数にハード キャップはありません。 ただし、各エラスティック クエリ (SQL Data Warehouse にヒットするクエリ) は、通常のコンカレンシー制限に加算されます。
 
-Q: エラスティック クエリに関係する DTU 制限はありますか?
+Q:エラスティック クエリに関係する DTU 制限はありますか?
 
-A: エラスティック クエリにだけ特別に DTU 制限が適用されることはありません。 標準ポリシーとして、論理サーバーにはお客様の偶発的な使いすぎを防ぐために DTU の上限が設けられています。 SQL Data Warehouse インスタンスと共に多数のデータベースを有効にした場合、予期せずにこの上限に達することがあります。 そのような場合には、論理サーバーの DTU の上限を引き上げる要求を送信してください。 [サポート チケットを作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)し、要求の種類として *[クォータ]* を選択することでクォータを引き上げることができます。
+A:エラスティック クエリにのみ特別に DTU 制限が適用されることはありません。 標準ポリシーとして、論理サーバーにはお客様の偶発的な使いすぎを防ぐために DTU の上限が設けられています。 SQL Data Warehouse インスタンスと共に多数のデータベースを有効にした場合、予期せずにこの上限に達することがあります。 そのような場合には、論理サーバーの DTU の上限を引き上げる要求を送信してください。 [サポート チケットを作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket)し、要求の種類として *[クォータ]* を選択することでクォータを引き上げることができます。
 
-Q: エラスティック クエリに行レベルのセキュリティや動的データ マスクを使用することはできますか?
+Q:エラスティック クエリに行レベルのセキュリティや動的データ マスクを使用することはできますか?
 
-A: SQL Database の高度なセキュリティ機能を使用するには、最初にデータを SQL Database に移動して格納していただく必要があります。 現時点では、外部テーブルを通じてクエリされるデータに行レベルのセキュリティや DDM を適用することはできません。 
+A:SQL Database のより高度なセキュリティ機能を使用するには、最初にデータを SQL Database に移動して格納していただく必要があります。 現時点では、外部テーブルを通じてクエリされるデータに行レベルのセキュリティや DDM を適用することはできません。 
 
-Q: SQL Database インスタンスからデータ ウェアハウス インスタンスへの書き込みはできますか?
+Q:SQL データベース インスタンスからデータ ウェアハウス インスタンスへの書き込みはできますか?
 
-A: 現時点では、そのような機能はサポートされていません。 将来にそのような機能を希望される場合は、[フィードバック ページ][Feedback page]でこの機能に関するフィードバックを作成していただくか、フィードバックにご投票ください。 
+A:現時点では、そのような機能はサポートされていません。 将来にそのような機能を希望される場合は、[フィードバック ページ][Feedback page]でこの機能に関するフィードバックを作成していただくか、フィードバックにご投票ください。 
 
-Q: geometry や geography などの空間型は使用できますか?
+Q:geometry や geography などの空間型は使用できますか?
 
-A: 空間型は、varbinary(max) 値として SQL Data Warehouse に格納できます。 エラスティック クエリを使用してこれらの列のクエリを実行する場合は、実行時に適切な型に変換できます。
+A:空間型は、varbinary(max) 値として SQL Data Warehouse に格納できます。 エラスティック クエリを使用してこれらの列のクエリを実行する場合は、実行時に適切な型に変換できます。
 
 ![空間型](./media/sql-data-warehouse-elastic-query-with-sql-database/geometry-types.png)
 

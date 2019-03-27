@@ -3,7 +3,7 @@ title: Azure SQL Database Hyperscale の概要 | Microsoft Docs
 description: この記事では、Azure SQL Database における仮想コアベースの購入モデルでのハイパースケール サービス レベル、およびそれが General Purpose および Business Critical サービス レベルと異なる点について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,17 +11,18 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/17/2018
-ms.openlocfilehash: 80e807a8fcbd6c087ad0995a4481180fa28ef42f
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 01/25/2019
+ms.openlocfilehash: 49c41b436e0d935d1f9fce5ba2de10e0f2d0c99d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872892"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991228"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>最大 100 TB のハイパースケール サービス レベル (プレビュー)
 
 Azure SQL Database は、インフラストラクチャに障害が発生した場合でも 99.99% の可用性を確保するために、クラウド環境に合わせて調整された SQL Server データベース エンジン アーキテクチャに基づいています。 Azure SQL Database で使用されているアーキテクチャ モデルは 3 つあります。
+
 - General Purpose/Standard 
 - Business Critical/Premium
 - ハイパースケール
@@ -31,7 +32,7 @@ Azure SQL Database の Hyperscale サービス レベルは、仮想コアベー
 > [!IMPORTANT]
 > ハイパースケール サービス レベルは現在パブリック プレビュー段階であり、一部の Azure リージョンのみで使用できます。 完全なリージョンの一覧については、[ハイパースケール サービス レベル対応リージョン](#available-regions)をご覧ください。 ハイパースケール データベースで本番用のワークロードを実行することは、現時点ではお勧めしません。 ハイパースケール データベースを他のサービス レベルに更新することはできません。 テスト用として、現在のデータベースのコピーを作成し、そのコピーをハイパースケール サービス レベルに更新することをお勧めします。
 > [!NOTE]
-> 仮想コアベースの購入モデルでの General Purpose サービス レベルと Business Critical サービス レベルの詳細については、[General Purpose](sql-database-service-tier-general-purpose.md) サービス レベルと [Business Critical](sql-database-service-tier-business-critical.md) サービス レベルの記事を参照してください。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](sql-database-service-tiers.md)に関する記事をご覧ください。
+> 仮想コアベースの購入モデルでの General Purpose サービス レベルと Business Critical サービス レベルの詳細については、[General Purpose](sql-database-service-tier-general-purpose.md) サービス レベルと [Business Critical](sql-database-service-tier-business-critical.md) サービス レベルの記事を参照してください。 仮想コアベースの購入モデルと DTU ベースの購入モデルとの比較については、[Azure SQL Database の購入モデルとリソース](sql-database-purchase-models.md)に関する記事をご覧ください。
 > [!IMPORTANT]
 > ハイパースケール サービス レベルは現在パブリック プレビュー段階です。 ハイパースケール データベースで本番用のワークロードを実行することは、現時点ではお勧めしません。 ハイパースケール データベースを他のサービス レベルに更新することはできません。 テスト用として、現在のデータベースのコピーを作成し、そのコピーをハイパースケール サービス レベルに更新することをお勧めします。
 
@@ -40,7 +41,7 @@ Azure SQL Database の Hyperscale サービス レベルは、仮想コアベー
 Azure SQL Database の Hyperscale サービス レベルでは、次の追加機能が提供されます。
 
 - 最大 100 TB のデータベース サイズのサポート
-- サイズに関係なく、コンピューティングに対する IO の影響もなく、ほぼ瞬間的に行われるデータベース バックアップ (Azure BLOB Storage に格納されたファイル スナップショットに基づく)
+- サイズに関係なく、コンピューティングに対する IO の影響もなく、ほぼ瞬間的に行われるデータベース バックアップ (Azure BLOB Storage に格納されたファイル スナップショットに基づく)   
 - 数時間あるいは数日かからずに数分間で行われる迅速なデータベース復元 (ファイル スナップショットに基づく) (データ操作の規模ではない)
 - データ ボリュームに関係なく、高いログ スループットと速いトランザクション コミット時間による、全体的に高いパフォーマンス
 - 迅速なスケールアウト - 読み取りワークロードのオフロード用と、ホット スタンバイ用に、1 つ以上の読み取り専用ノードをプロビジョニングできます。
@@ -133,9 +134,6 @@ ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen
 GO
 ```
 
-> [!IMPORTANT]
-> ハイパースケール以外のデータベースをハイパースケールに変更する前に、[Transparent Database Encryption (TDE)](transparent-data-encryption-azure-sql.md) をオフにする必要があります。
-
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>ハイパースケール データベースの読み取りスケールへの接続
 
 ハイパースケール データベースでは、クライアントによって提供された接続文字列の `ApplicationIntent` 引数により、接続が書き込みレプリカと読み取り専用セカンダリ レプリカのどちらにルーティングされるかが指定されます。 `ApplicationIntent` が `READONLY` に設定され、データベースにセカンダリ レプリカがない場合、接続はプライマリ レプリカにルーティングされ、既定で `ReadWrite` の動作になります。
@@ -153,17 +151,18 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 | 問題 | 説明 |
 | :---- | :--------- |
-| [バックアップの管理] ウィンドウに、ハイパースケール データベースが表示されません。"SQL server" でフィルター処理すると表示されます。  | ハイパースケールは別の方法でバックアップを管理しています。そのため、長期的な保有期間と特定の時点のバックアップなどの保有設定が適用されず、無効になります。 したがって、ハイパースケールのデータベースは、[バックアップの管理] ウィンドウに表示されません。 |
+| SQL Database サーバーの [バックアップの管理] ウィンドウに、ハイパースケール データベースが表示されません。"SQL server" でフィルター処理すると表示されます。  | ハイパースケールは別の方法でバックアップを管理しています。そのため、長期的な保有期間と特定の時点のバックアップなどの保有設定が適用されず、無効になります。 したがって、ハイパースケールのデータベースは、[バックアップの管理] ウィンドウに表示されません。 |
 | ポイントインタイム リストア | データベースがハイパースケール サービス レベルに移行された後で、移行よりも前の特定の時点への復元はサポートされません。|
 | データベース ファイルが移行時にアクティブなワークロードのために大きくなり、ファイル境界が 1 TB を超えると、移行が失敗する | 軽減策: <br> - 可能であれば、更新ワークロードが実行されていないときに、データベースを移行します。<br> - 移行を再試行します。移行時に 1 TB の境界を越えない限り、成功します。|
 | マネージド インスタンスが現在サポートされない | 現在、サポートされていません |
 | ハイパースケールへの移行は現在一方向 | データベースがハイパースケールにいったん移行されると、ハイパースケール以外のサービス レベルに直接移行することはできません。 現時点では、ハイパースケールからハイパースケール以外にデータベースを移行するには、BACPAC ファイルを使用してエクスポート/インポートするしかありません。|
-| メモリ内オブジェクトを含むデータベースの移行が現在サポートされない | データベースがハイパースケール サービス レベルに移行される前に、メモリ内オブジェクトは削除され、メモリ内ではないオブジェクトとして再作成されます。
+| メモリ内オブジェクトを含むデータベースの移行が現在サポートされない | データベースがハイパースケール サービス レベルに移行される前に、メモリ内オブジェクトは削除され、メモリ内ではないオブジェクトとして再作成されます。|
+| 変更データ追跡は現在サポートされていません。 | ハイパースケール データベースでは、変更データ追跡を使用できません。
 
 ## <a name="next-steps"></a>次の手順
 
 - ハイパースケールの FAQ については、[ハイパースケールに関するよくあるご質問](sql-database-service-tier-hyperscale-faq.md)をご覧ください。
-- サービス レベルについては、[サービス レベル](sql-database-service-tiers.md)に関するページをご覧ください
-- サーバーおよびサブスクリプション レベルの制限については、[論理サーバー上のリソース制限の概要](sql-database-resource-limits-logical-server.md)に関するページをご覧ください。
+- サービス レベルについては、[サービス レベル](sql-database-purchase-models.md)に関するページをご覧ください
+- サーバーおよびサブスクリプション レベルの制限については、[SQL Database サーバー上のリソース制限の概要](sql-database-resource-limits-database-server.md)に関するページをご覧ください。
 - 単一データベースの購入モデルの制限について詳しくは、「[Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限](sql-database-vcore-resource-limits-single-databases.md)」をご覧ください。
 - 機能比較一覧については、[SQL 共通機能](sql-database-features.md)に関する記事をご覧ください。

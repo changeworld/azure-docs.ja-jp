@@ -32,7 +32,7 @@ ms.locfileid: "44049951"
 ![Service Fabric プロジェクトと Cloud Services プロジェクトの比較][3]
 
 ## <a name="worker-role-to-stateless-service"></a>worker ロールからステートレス サービスへ
-概念上、worker ロールは、ステートレス ワークロードを表しています。つまり、ワークロードのすべてのインスタンスは同じであり、要求はいつでも任意のインスタンスにルーティングできます。 各インスタンスは、前の要求を記憶しません。 ワークロードが処理する状態は、Azure Table Storage、Azure Document DB などの外部の状態ストアが管理します。 Service Fabric の場合、この種類のワークロードはステートレス サービスで表されます。 worker ロールを Service Fabric に移行する最も簡単なアプローチは、worker ロール コードをステートフル サービスに変換する方法です。
+概念上、worker ロールは、ステートレス ワークロードを表しています。つまり、ワークロードのすべてのインスタンスは同じであり、要求はいつでも任意のインスタンスにルーティングできます。 各インスタンスは、前の要求を記憶しません。 ワークロードが処理する状態は、Azure Table Storage、Azure Document DB などの外部の状態ストアが管理します。 Service Fabric の場合、この種類のワークロードはステートレス サービスで表されます。 worker ロールを Service Fabric に移行する最も簡単なアプローチは、worker ロール コードをステートレス サービスに変換する方法です。
 
 ![worker ロールからステートレス サービスへ][4]
 
@@ -44,7 +44,7 @@ worker ロールと同様に、Web ロールもステートレス ワークロ�
 | ASP.NET Web Forms |いいえ  |ASP.NET Core 1 MVC への変換 |
 | ASP.NET MVC |移行あり |ASP.NET Core 1 MVC にアップグレードする |
 | ASP.NET Web API |移行あり |自己ホスト型サーバーまたは ASP.NET Core 1 を使用する |
-| ASP.NET Core 1 |[はい] |該当なし |
+| ASP.NET Core 1 |はい |該当なし |
 
 ## <a name="entry-point-api-and-lifecycle"></a>エントリ ポイントの API とライフサイクル
 worker ロールと Service Fabric サービス API には、同様のエントリ ポイントが用意されています。 

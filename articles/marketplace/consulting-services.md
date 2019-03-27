@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 53281af4cf3ce49272ffe9fc48ab0f85cea276b2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213623"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078763"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketplace および AppSource 向けコンサルティング サービス
 Azure Marketplace および AppSource のコンサルティング サービスは、お客様とサービスを結ぶという目標を Microsoft パートナーに提供し、Azure の使用と業務目標を支援して拡張します。 
@@ -41,12 +41,12 @@ Azure Marketplace および AppSource では、Microsoft のシステム イン�
 
 Microsoft Dynamics 365、Office 365、Power BI に基づくサービス プランは、AppSource に掲載される資格があります。 詳細については、[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)を参照してください。 
 
->[!Note]
->Azure Marketplace のコンサルティング サービスでは、*Azure の技術的なソリューションとサービス*に焦点を当て、**技術者を対象にしたサービスを活用する必要があります。 * * AppSource のコンサルティング サービスでは、Dynamics 365、Power BI、または PowerApps の品質ソリューションを提供する専門家に向けたプランを活用し、AppSouce 上でのコンサルティング サービス プランの一覧を示しています
-
-
->[!TIP]
->Azure Marketplace ネットショップに公開するには、Microsoft Cloud パートナー ポータルの [Primary Product] (基本製品) ドロップダウン メニューから [Azure] を選択します。 AppSource に公開する場合は、Microsoft Cloud パートナー ポータルの [Primary Product] (基本製品) ドロップダウン メニューから [Dynamics 365]、[Power BI]、または [Power Apps] を選択します。
+> [!Note]
+> Azure Marketplace のコンサルティング サービスでは、*Azure の技術的なソリューションとサービス*に焦点を当て、**技術者を対象にしたサービスを活用する必要があります。 * * AppSource のコンサルティング サービスでは、Dynamics 365、Power BI、または PowerApps の品質ソリューションを提供する専門家に向けたプランを活用し、AppSouce 上でのコンサルティング サービス プランの一覧を示しています
+> 
+> 
+> [!TIP]
+> Azure Marketplace ネットショップに公開するには、Microsoft Cloud パートナー ポータルの [Primary Product] (基本製品) ドロップダウン メニューから [Azure] を選択します。 AppSource に公開する場合は、Microsoft Cloud パートナー ポータルの [Primary Product] (基本製品) ドロップダウン メニューから [Dynamics 365]、[Power BI]、または [Power Apps] を選択します。
 
 ## <a name="eligible-partners-and-supported-countries"></a>対象となるパートナーとサポートされる国
 

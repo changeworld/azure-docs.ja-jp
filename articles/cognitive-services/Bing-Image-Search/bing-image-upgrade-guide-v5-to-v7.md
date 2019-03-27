@@ -4,21 +4,21 @@ titleSuffix: Azure Cognitive Services
 description: このアップグレード ガイドでは、Bing Image Search API のバージョン 5 とバージョン 7 の間の変更点について説明します。 このガイドは、バージョン 7 を使用するために更新する必要のあるアプリケーションの部分を識別するのに役立ちます。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: 7F78B91F-F13B-40A4-B8A7-770FDB793F0F
 ms.service: cognitive-services
-ms.component: bing-image-search
+ms.subservice: bing-image-search
 ms.topic: article
-ms.date: 04/15/2017
+ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2192e3d2a344a31717c59c813123ed0c807a2841
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: b3675821cd5565df409fac209b6763845460df1c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256555"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163378"
 ---
-# <a name="bing-image-search-api-upgrade-guide"></a>Bing Image Search API のアップグレード ガイド
+# <a name="bing-image-search-api-v7-upgrade-guide"></a>Bing Image Search API v7 のアップグレード ガイド
 
 このアップグレード ガイドでは、Bing Image Search API のバージョン 5 とバージョン 7 の間の変更点を示します。 このガイドは、バージョン 7 を使用するために更新する必要のあるアプリケーションの部分を識別するのに役立ちます。
 
@@ -74,9 +74,9 @@ Blocked|InvalidRequest.Blocked
 
 ### <a name="query-parameters"></a>クエリ パラメーター
 
-- `modulesRequested` クエリ パラメーターの名前が [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules) に変更されました。  
+- `modulesRequested` クエリ パラメーターの名前が [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) に変更されました。  
 
-- Annotations の名前が Tags に変更されました。 Tags に対する [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules) クエリ パラメーターについての説明を参照してください。  
+- Annotations の名前が Tags に変更されました。 Tags に対する [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) クエリ パラメーターについての説明を参照してください。  
 
 - ShoppingSources フィルター値をサポートしている市場の一覧が、en-US のみに変更されました。 [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype) に関する説明を参照してください。  
 
@@ -98,7 +98,7 @@ Blocked|InvalidRequest.Blocked
 - 次のクエリ文字列パラメーターは、`/images/details` エンドポイントでのみ有効となりました。  
 
     -   [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken)  
-    -   [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modules)  
+    -   [modules](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)  
     -   [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl)  
     -   [cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)  
     -   [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  

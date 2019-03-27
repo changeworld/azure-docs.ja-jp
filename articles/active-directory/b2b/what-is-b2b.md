@@ -1,21 +1,22 @@
 ---
-title: Azure Active Directory B2B コラボレーションとは | Microsoft Docs
+title: Azure Active Directory B2B コラボレーションとは - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションでは、リソースを外部パートナーと安全に共有してコラボレーションできるように、ゲスト ユーザー アクセスをサポートしています。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: overview
 ms.date: 09/14/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: 992abf97751695c10f28f355e1086a12530b9456
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6fa36ab67957dcba7b5282e219706e442be9dc97
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53165233"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674482"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B のゲスト ユーザー アクセスとは
 

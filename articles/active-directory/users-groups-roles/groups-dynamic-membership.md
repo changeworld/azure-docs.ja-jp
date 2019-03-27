@@ -1,25 +1,25 @@
 ---
-title: Azure Active Directory の動的グループ メンバーシップ ルール参照 | Microsoft Docs
-description: グループとルール参照に自動的にデータを入力するメンバーシップ ルールを作成する方法。
+title: 動的で自動的なグループ メンバーシップ ルール - Azure Active Directory | Microsoft Docs
+description: グループを自動的に設定するメンバーシップ ルールと、ルール参照を作成する方法。
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 148a657b1a5db5b1b33c94e27d695e7c24dfb265
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f8d5ecd33f0bc67b6e0ec2e559a8475da490369e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214643"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210664"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 

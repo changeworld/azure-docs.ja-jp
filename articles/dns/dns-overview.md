@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: df890eb0e07c13d0757c706a3cabbbad67b6eac2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 07230b061f9b18e1efe6ce8c65abe0f7e7f73b34
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716278"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893496"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
@@ -30,9 +30,9 @@ Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Az
 
  Azure DNS は、Azure Resource Manager に基づいており、次のような機能が利用できます。
 
-* [ロールベースのアクセス制御](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control): 組織のユーザーがアクセスできるアクションを制御できます。
+* [ロールベースのアクセス制御](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織のユーザーがアクセスできるアクションを制御できます。
 
-* [アクティビティ ログ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs): 組織のユーザーどのようにリソースを変更したかを監視したり、トラブルシューティング時にエラーを見つけたりできます。
+* [アクティビティ ログ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview): 組織のユーザーどのようにリソースを変更したかを監視したり、トラブルシューティング時にエラーを見つけたりできます。
 
 * [リソースのロック](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources): サブスクリプション、リソース グループ、またはリソースをロックできます。 ロックすることによって、組織内の他のユーザーが重要なリソースを誤って削除したり変更したりするのを防ぎます。
 

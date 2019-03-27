@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7eb18b5560e849796770ce9d24574d7a3d0db262
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b35c5073f2b19523010528800c2a989d5de5b448
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716142"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848015"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -109,11 +109,11 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 1. ページの左下にある **[ヘルプとサポート]** をクリックします。
 1. **[新しいサポート要求]** をクリックします。
 1. **[新しいサポート要求]** ページの **[基本]** タブで、次のオプションを選択します。
-    - **問題の種類**: **サービスとサブスクリプションの制限 (クォータ)**
-    - **サブスクリプション**: 使用するサブスクリプション
-    - **クォータの種類**: **HDInsight**
+   - **問題の種類**: **サービスとサブスクリプションの制限 (クォータ)**
+   - **サブスクリプション**: 使用するサブスクリプション
+   - **クォータの種類**: **HDInsight**
     
-    ![HDInsight コア クォータを増やすためのサポート要求を作成します。](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
+     ![HDInsight コア クォータを増やすためのサポート要求を作成します。](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. **[次へ]** をクリックします。
 1. **[詳細]** ページで、問題に関する説明を入力し、問題の重大度を選択し、希望する連絡方法を選択します。
@@ -125,7 +125,7 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 [サポートに連絡してクォータの引き上げを要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)できます。
 
-ただし、固定のクォータ制限もいくつかあります。たとえば、1 つの Azure サブスクリプションで使用できるコア数は最大 10,000 コアです。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager)」をご覧ください。
+ただし、固定のクォータ制限もいくつかあります。たとえば、1 つの Azure サブスクリプションで使用できるコア数は最大 10,000 コアです。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

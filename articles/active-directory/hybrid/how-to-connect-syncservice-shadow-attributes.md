@@ -4,23 +4,24 @@ description: Azure AD Connect 同期サービスのシャドウ属性の機能�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 62278fa031c28fb32f882e438df0194c4db04efd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 564a0948d09e4726800d19858b4c23924fc56973
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310561"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187340"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同期サービスのシャドウ属性
 Azure AD のほとんどの属性は、オンプレミスの Active Directory の場合と同じように表現されます。 ただし、一部の属性には特別な処理が必要であるため、Azure AD の属性値が Azure AD Connect で同期された値と異なる場合があります。

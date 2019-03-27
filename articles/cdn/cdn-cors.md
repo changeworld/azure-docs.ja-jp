@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f9429e88525e27c0b6bad29d1927d53d05dfbcc8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c8fab85d71f5f81bbf81bc3dd7a22d6c0b7f11b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765366"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551842"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
-CORS (クロス オリジン リソース共有) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 クロスサイト スクリプティング攻撃の可能性を低減させるために、すべての最新の Web ブラウザーには [同一オリジン ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。  これにより、Web ページは他のドメイン内の API を呼び出すことができません。  CORS を使用すれば、あるオリジン (オリジン ドメイン) から他のオリジン内の API を安全に呼び出すことができます。
+CORS (クロス オリジン リソース共有) は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 クロスサイト スクリプティング攻撃の可能性を低減させるために、すべての最新の Web ブラウザーには [同一オリジン ポリシー](https://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。  これにより、Web ページは他のドメイン内の API を呼び出すことができません。  CORS を使用すれば、あるオリジン (オリジン ドメイン) から他のオリジン内の API を安全に呼び出すことができます。
 
 ## <a name="how-it-works"></a>動作のしくみ
 CORS 要求には、"*簡単な要求*" と "*複雑な要求*" の 2 種類があります。
@@ -76,7 +76,7 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Azure CDN Premium from Verizon** では、正規表現を作成するエンジンとして [Perl Compatible Regular Expressions](http://pcre.org/) を使用します。  正規表現を検証するには、[Regular Expressions 101](https://regex101.com/) などのツールを使用できます。  スラッシュ (/) は正規表現で有効であり、エスケープする必要はありません。ただし、この文字のエスケープはベスト プラクティスだと考えられており、一部の正規表現検証ツールではエスケープするよう想定されていることに注意してください。
+> **Azure CDN Premium from Verizon** では、正規表現を作成するエンジンとして [Perl Compatible Regular Expressions](https://pcre.org/) を使用します。  正規表現を検証するには、[Regular Expressions 101](https://regex101.com/) などのツールを使用できます。  スラッシュ (/) は正規表現で有効であり、エスケープする必要はありません。ただし、この文字のエスケープはベスト プラクティスだと考えられており、一部の正規表現検証ツールではエスケープするよう想定されていることに注意してください。
 > 
 > 
 

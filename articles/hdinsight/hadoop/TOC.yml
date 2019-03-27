@@ -18,7 +18,8 @@ items:
   items:
   - name: Apache Hadoop クラスターの作成 - ポータル
     href: apache-hadoop-linux-create-cluster-get-started-portal.md
-  - name: Apache Hadoop クラスターの作成 - Resource Manager
+  - name: Apache Hadoop クラスターの作成 - Resource Manager テンプレート
+    displayName: resource manager template, arm template, resource manager group
     href: apache-hadoop-linux-tutorial-get-started.md
 - name: チュートリアル
   items:
@@ -36,8 +37,11 @@ items:
   - name: 高可用性と信頼性
     href: ../hdinsight-high-availability-linux.md
     maintainContext: true
-  - name: Data Lake Storage Gen2
-    href: ../hdinsight-hadoop-data-lake-storage-gen2.md
+  - name: ストレージ オプションの比較
+    href: ../hdinsight-hadoop-compare-storage-options.md
+    maintainContext: true
+  - name: マネージド ID とは
+    href: ../hdinsight-managed-identities.md
     maintainContext: true
 - name: 方法
   items:
@@ -48,7 +52,10 @@ items:
     - name: Azure Storage を使用する
       href: ../hdinsight-hadoop-use-blob-storage.md
       maintainContext: true
-    - name: Azure Data Lake Storage を使用する
+    - name: Azure Data Lake Storage Gen2 の使用
+      href: ../hdinsight-hadoop-use-data-lake-storage-gen2.md
+      maintainContext: true
+    - name: Azure Data Lake Storage Gen1 の使用
       href: ../hdinsight-hadoop-use-data-lake-store.md
       maintainContext: true
   - name: バッチ クエリへの Apache Hadoop の使用
@@ -71,10 +78,6 @@ items:
         href: apache-hadoop-use-hive-powershell.md
       - name: .NET SDK の使用
         href: apache-hadoop-use-hive-dotnet-sdk.md
-      - name: リモート デスクトップを使用する
-        href: apache-hadoop-use-hive-remote-desktop.md
-      - name: クエリ コンソールを使用する
-        href: apache-hadoop-use-hive-query-console.md
     - name: Hive と Java UDF を使用する
       href: apache-hadoop-hive-java-udf.md
     - name: Apache Hadoop と MapReduce を使用する
@@ -86,8 +89,6 @@ items:
         href: apache-hadoop-use-mapreduce-curl.md
       - name: Azure PowerShell の使用
         href: apache-hadoop-use-mapreduce-powershell.md
-      - name: リモート デスクトップを使用する
-        href: apache-hadoop-use-mapreduce-remote-desktop.md
       - name: .NET SDK の使用
         href: apache-hadoop-use-mapreduce-dotnet-sdk.md
       - name: MapReduce サンプルの実行
@@ -103,8 +104,6 @@ items:
         href: apache-hadoop-use-pig-dotnet-sdk.md
       - name: cURL の使用
         href: apache-hadoop-use-pig-curl.md
-      - name: リモート デスクトップを使用する
-        href: apache-hadoop-use-pig-remote-desktop.md
     - name: Apache DataFu と Apache Pig を使用する
       href: apache-hadoop-use-pig-datafu-udf.md
     - name: Apache Hadoop ジョブを送信する
@@ -128,8 +127,6 @@ items:
       href: apache-hadoop-streaming-python.md
     - name: JSON ドキュメントを処理および分析する
       href: using-json-in-hive.md
-    - name: Avro Library でデータをシリアル化する
-      href: apache-hadoop-dotnet-avro-serialization.md
     - name: C# ユーザー定義関数を使用する
       href: apache-hadoop-hive-pig-udf-dotnet-csharp.md
     - name: Apache Hive と Apache Pig で Python を使用する
@@ -161,15 +158,11 @@ items:
       href: apache-hadoop-connect-excel-hive-odbc-driver.md
     - name: Apache Hive JDBC ドライバーを使用して接続する
       href: apache-hadoop-connect-hive-jdbc-driver.md
-    - name: 格納されたセンサー データを分析する
-      href: apache-hive-analyze-sensor-data.md
     - name: 格納されたツイートを分析する
       href: ../hdinsight-analyze-twitter-data-linux.md
       maintainContext: true
     - name: Apache Mahout で推奨事項を生成する
       href: apache-hadoop-mahout-linux-mac.md
-    - name: Apache Hive を使用して Web サイトのログを分析する
-      href: apache-hive-analyze-website-log.md
     - name: Application Insights Telemetry ログを分析する
       href: ../spark/apache-spark-analyze-application-insight-logs.md
       maintainContext: true
@@ -210,9 +203,6 @@ items:
     - name: Hue を使用する
       href: ../hdinsight-hadoop-hue-linux.md
       maintainContext: true
-    - name: Apache Solr を使用する
-      href: ../hdinsight-hadoop-solr-install-linux.md
-      maintainContext: true
     - name: Apache Zeppelin を使用する
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
       maintainContext: true
@@ -225,21 +215,6 @@ items:
         href: https://msdn.microsoft.com/library/mt706515.aspx
       - name: HDInsight アプリを Azure Marketplace に発行する
         href: ../hdinsight-apps-publish-applications.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
         maintainContext: true
   - name: セキュリティ保護
     items:
@@ -296,6 +271,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-portal.md
         maintainContext: true
       - name: Azure リソース マネージャー テンプレートの使用
+        displayName: resource manager template, arm template, resource manager group
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
       maintainContext: true
@@ -322,8 +298,11 @@ items:
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
-    - name: HDInsight クラスターのスケーリングを行う
+    - name: 手動によるクラスターのスケーリング
       href: ../hdinsight-scaling-best-practices.md
+      maintainContext: true
+    - name: クラスターの自動スケーリング
+      href: ../hdinsight-autoscale-clusters.md
       maintainContext: true
     - name: 外部のメタデータ ストアを使用する
       href: ../hdinsight-use-external-metadata-stores.md
@@ -356,9 +335,6 @@ items:
       maintainContext: true
     - name: ワークフローに Apache Oozie を使用する
       href: ../hdinsight-use-oozie-linux-mac.md
-      maintainContext: true
-    - name: 時間ベースの Apache Oozie コーディネーターを使用する
-      href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: クラスターとサービスのポートと URI
       href: ../hdinsight-hadoop-port-settings-for-services.md
@@ -407,9 +383,6 @@ items:
       - name: Apache Hive の設定によるメモリ不足エラーの解決
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
         maintainContext: true
-      - name: Apache Ambari ビューを使用した Apache Tez ジョブのデバッグ
-        href: ../hdinsight-debug-ambari-tez-view.md
-        maintainContext: true
       - name: Apache Hive クエリの最適化
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
@@ -447,12 +420,12 @@ items:
     - name: HDInsight とオンプレミス ネットワークの接続
       href: ../connect-on-premises-network.md
       maintainContext: true
-  - name: Log Analytics を使用した監視
+  - name: Azure Monitor ログを使用した監視
     items:
-    - name: Azure Log Analytics の使用
+    - name: Azure Monitor ログの使用
       href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
       maintainContext: true
-    - name: Log Analytics でのクエリの使用
+    - name: Azure Monitor ログでのクエリの使用
       href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
       maintainContext: true
     - name: クラスター パフォーマンスの監視
@@ -465,7 +438,7 @@ items:
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.hdinsight
+    href: /powershell/module/az.hdinsight
   - name: .NET SDK
     href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
   - name: Python SDK
@@ -476,13 +449,12 @@ items:
     href: ../hdinsight-go-sdk-overview.md
   - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
-  - name: .NET (Avro)
-    href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
   - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
   - name: Resource Manager テンプレート
+    displayName: resource manager template, arm template, resource manager group
     href: /azure/templates/microsoft.hdinsight/allversions
 - name: 関連項目
   items:
@@ -493,51 +465,6 @@ items:
       maintainContext: true
     - name: .NET ソリューションを Linux クラスターに移行する
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
-      maintainContext: true
-    - name: Apache Hadoop MapReduce サンプルを実行する
-      href: ../hdinsight-run-samples.md
-      maintainContext: true
-    - name: クラスターで Apache Solr を使用する
-      href: ../hdinsight-hadoop-solr-install-linux.md
-      maintainContext: true
-    - name: Apache Giraph を使用して大規模なグラフを処理する
-      href: ../hdinsight-hadoop-giraph-install.md
-      maintainContext: true
-    - name: ワークフローに Apache Oozie を使用する
-      href: ../hdinsight-use-oozie.md
-      maintainContext: true
-    - name: Apache Storm トポロジをデプロイおよび管理する
-      href: ../storm/apache-storm-deploy-monitor-topology.md
-      maintainContext: true
-    - name: Apache Maven を使用して Java アプリケーションを構築する
-      href: ../hdinsight-hbase-build-java-maven.md
-      maintainContext: true
-    - name: Apache Tez UI を使用して Tez ジョブをデバッグする
-      href: ../hdinsight-debug-tez-ui.md
-      maintainContext: true
-    - name: スクリプト アクションを使用してカスタマイズする
-      href: ../hdinsight-hadoop-customize-cluster.md
-      maintainContext: true
-    - name: Apache Hadoop YARN アプリケーション ログにアクセスする
-      href: ../hdinsight-hadoop-access-yarn-app-logs.md
-      maintainContext: true
-    - name: Apache Mahout を使用して映画のレコメンデーションを生成する
-      href: ../hdinsight-mahout.md
-      maintainContext: true
-    - name: フライト遅延データを分析する
-      href: ../hdinsight-analyze-flight-delay-data.md
-      maintainContext: true
-    - name: スクリプト アクションを開発する
-      href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Twitter データを分析する
-      href: ../hdinsight-analyze-twitter-data.md
-      maintainContext: true
-    - name: Azure Portal でクラスターを管理する
-      href: ../hdinsight-administer-use-management-portal.md
-      maintainContext: true
-    - name: Apache Ambari API を使用してクラスターを監視する
-      href: ../hdinsight-monitor-use-ambari-api.md
       maintainContext: true
 - name: リソース
   items:
@@ -561,9 +488,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 45797e5440f0d01ec3049fff2ff5f7fdf5858d5b
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 3dfbd1844f463efa9d99aa39dde86391ec773408
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321704"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449404"

@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: 15f358f76504436dd6a3cf6a39b10531a9e1b376
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: ddcf3428f32698c9825f13975929bc4677139acf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055168"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081051"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新プログラム
 
@@ -40,9 +41,9 @@ Azure Stack 1811 更新プログラムのビルド番号は **1.1811.0.101** で
 Azure Stack では、修正プログラムが定期的にリリースされます。 Azure Stack を 1811 に更新する前に、必ず 1809 用の[最新の Azure Stack 修正プログラム](#azure-stack-hotfixes)をインストールしてください。
 
 > [!TIP]  
-> 以下の *RRS* または *Atom* フィードに登録して、Azure Stack 修正プログラムの最新情報を入手してください。
-> - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
-> - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
+> 以下の *RSS* または *Atom* フィードに登録して、Azure Stack 修正プログラムの最新情報を入手してください。
+> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
 
 ### <a name="azure-stack-hotfixes"></a>Azure Stack 修正プログラム
 
@@ -82,9 +83,11 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
     then resume the update.
     Exception: The Certificate path does not exist: [certificate path here]` 
  
-    拡張機能ホストの必須の証明書を適切にインポートしたら、管理者ポータルから 1811 の更新を再開することができます。 Microsoft では、Azure Stack のオペレーターに対し、更新プロセス中はスケール ユニットをメンテナンス モードにするよう推奨していますが、拡張機能ホストの証明書が存在しないことに起因するエラーが、既存のワークロードやサービスに影響することはないと考えられます。  
+    拡張機能ホストの必須の証明書を適切にインポートしたら、管理者ポータルから 1811 の更新を再開することができます。 Microsoft では、Azure Stack のオペレーターに対し、更新プロセス中にメンテナンス期間をスケジュールするよう推奨していますが、拡張機能ホストの証明書が存在しないことに起因するエラーが、既存のワークロードやサービスに影響することはないと考えられます。  
 
     この更新プログラムのインストール中、拡張機能ホストが構成されている間、Azure Stack ユーザー ポータルは利用できません。 拡張機能ホストの構成には最大で 5 時間かかる場合があります。 その間、[Azure Stack 管理者 PowerShell または特権エンドポイント](azure-stack-monitor-update.md)を使用して、更新プログラムの状態を確認したり、失敗した更新プログラムのインストールを再開したりできます。
+
+- Azure Stack を System Center Operations Manager (SCOM) で管理している場合は、1811 を適用する前に、Microsoft Azure Stack 用の管理パックをバージョン 1.0.3.11 に更新してください。
 
 ## <a name="new-features"></a>新機能
 
@@ -117,6 +120,18 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 - Azure Stack ポータルを使用して仮想マシンを作成するときに、今後は Managed Disks が既定で有効になります。 Managed Disks で VM 作成エラーを回避するために必要な追加の手順については、[既知の問題](#known-issues-post-installation)に関するセクションを参照してください。
 
 - このリリースでは、Azure Stack オペレーター向けにアラートの**修復**操作が採用されています。 1811 のいくつかのアラートには、**[修復]** ボタンが表示され、そのボタンを選択することで問題を解決できます。 詳細については、「[Azure Stack での正常性およびアラートの監視](azure-stack-monitor-health.md)」を参照してください。
+
+- Azure Stack で更新プログラムのエクスペリエンスに更新します。 更新プログラムの機能強化には以下が含まれます。 
+  - 進行中の更新および完了した更新の追跡向上のために、更新履歴から更新を分割するタブ。
+  - 現在のバージョンと OEM バージョンおよび最終更新日に対する新しいアイコンとレイアウトによる、要点セクションの強化された状態の視覚化。
+  - リリース ノート列の **[表示]** リンクでは、一般的な更新プログラム ページではなく、その更新プログラムに固有のドキュメントに直接移動します。
+  - 各更新プログラムの実行日時を特定するために使用される **[更新の履歴]** タブと、強化されたフィルター処理機能。  
+  - オンラインの Azure Stack スケール ユニットでは、更新プログラムが利用可能になると**利用可能な更新プログラム**を自動的に受け取ります。
+  - オフラインの Azure Stack スケール ユニットでは、前と同じように、更新プログラムをインポートできます。 
+  - ポータルから JSON ログをダウンロードするプロセスに変更はありません。 Azure Stack オペレーターは、手順を展開して進行状況を見ることができます。
+
+    詳しくは、「[Azure Stack で更新を適用する](azure-stack-apply-updates.md)」をご覧ください。
+
 
 ## <a name="fixed-issues"></a>修正された問題
 
@@ -153,6 +168,9 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 <!-- 3190553 - IS ASDK -->
 - インフラストラクチャ ロール インスタンスが利用できない、またはスケール ユニットがオフラインであることを示すわずらわしいアラートが表示される問題を修正しました。
 
+<!-- 2724961 - IS ASDK -->
+- VM の概要ページに VM のメトリック グラフが正しく表示されない問題が修正されました。 
+
 ## <a name="changes"></a>変更点
 
 - 1811 では、プランのクォータを表示したり編集したりするための新しい方法が導入されました。 詳細については、「[[View an existing quota]\(既存のクォータの表示\)](azure-stack-quota-types.md#view-an-existing-quota)」を参照してください。
@@ -186,10 +204,11 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 - [CVE-2018-8566](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8566)
 - [CVE-2018-8584](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8584)
 
-
-これらの脆弱性の詳細については、上記のリンクをクリックするか、Microsoft サポート技術情報の記事 [4467684](https://support.microsoft.com/help/4467684) を参照してください。
+これらの脆弱性の詳細については、上記のリンクをクリックするか、Microsoft サポート技術情報の記事 [4478877](https://support.microsoft.com/help/4478877) を参照してください。
 
 ## <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題
+
+- 同じ特権エンドポイント (PEP) セッションで、**Test-AzureStack** の実行後に **Get-AzureStackLog** PowerShell コマンドレットを実行すると、**Get-AzureStackLog** が失敗します。 この問題を回避するには、**Test-AzureStack** を実行した PEP セッションを閉じてから、新しいセッションを開いて、**Get-AzureStackLog** を実行します。
 
 - 1811 更新プログラムのインストール中は、その間、管理者ポータルのすべてのインスタンスを必ず閉じておいてください。 ユーザー ポータルは開いたままでかまいませんが、管理ポータルは閉じる必要があります。
 
@@ -201,9 +220,9 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 
 - [Test-AzureStack](azure-stack-diagnostic-test.md) を実行すると、ベースボード管理コントローラー (BMC) からの警告メッセージが表示されます。 この警告は無視してかまいません。
 
-- <!-- 2468613 - IS --> この更新プログラムのインストール中、`Error – Template for FaultType UserAccounts.New is missing.` というタイトルのアラートが表示されることがありますが、これらのアラートは無視してかまいません。 この更新プログラムのインストールが完了した後、これらのアラートは自動的に閉じられます。
+- <!-- 2468613 - IS --> この更新プログラムのインストール中に、`Error – Template for FaultType UserAccounts.New is missing.` というタイトルのアラートが表示されることがありますが、これらのアラートは無視してかまいません。 この更新プログラムのインストールが完了した後、これらのアラートは自動的に閉じられます。
 
-- <!-- 3139614 | IS --> Azure Stack の更新をお客様の OEM から適用した場合は、Azure Stack 管理者ポータルに**利用可能な更新プログラムがあります**の通知が表示されないことがあります。 Microsoft Update をインストールするには、こちらの「[Azure Stack で更新を適用する](azure-stack-apply-updates.md)」に記載されている手順を使用して、手動でダウンロードおよびインポートしてください。
+- <!-- 3139614 | IS --> Azure Stack の更新をお客様の OEM から適用した場合は、Azure Stack 管理者ポータルに「**利用可能な更新プログラムがあります**」という通知が表示されないことがあります。 Microsoft Update をインストールするには、こちらの「[Azure Stack で更新を適用する](azure-stack-apply-updates.md)」に記載されている手順を使用して、手動でダウンロードおよびインポートしてください。
 
 ## <a name="post-update-steps"></a>更新後の手順
 
@@ -237,23 +256,39 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 <!-- 1264761 - IS ASDK -->  
 - 以下の詳細情報の**正常性コントローラー** コンポーネントのアラートが表示されることがあります:  
 
-    - アラート #1:
-       - 名前: インフラストラクチャ ロールの異常
-       - 重大度: 警告
-       - コンポーネント: 正常性コントローラー
-       - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
+  - アラート #1:
+     - 名前: インフラストラクチャ ロールの異常
+     - 重大度: 警告
+     - コンポーネント: 正常性コントローラー
+     - 説明: 正常性コントローラーのハートビート スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。  
 
-    - アラート #2:
-       - 名前: インフラストラクチャ ロールの異常
-       - 重大度: 警告
-       - コンポーネント: 正常性コントローラー
-       - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
+  - アラート #2:
+     - 名前: インフラストラクチャ ロールの異常
+     - 重大度: 警告
+     - コンポーネント: 正常性コントローラー
+     - 説明: 正常性コントローラーの障害スキャナーは使用できません。 これは、正常性レポートとメトリックに影響する可能性があります。
 
     いずれのアラートも無視してかまいません。 時間が経つと自動的に閉じられます。  
 
 ### <a name="compute"></a>Compute
 
 - 新しい Windows 仮想マシン (VM) を作成するとき、作業を続行するために **[設定]** ブレードでパブリック受信ポートを選択するよう要求されます。 1811 では、この設定が必須ですが、作用はありません。 この機能は Azure Firewall に依存していますが、Azure Stack には Azure Firewall が実装されていないためです。 **[パブリック受信ポートなし]** または他の任意のオプションを選択して、VM の作成を続行できます。 この設定には一切作用がありません。
+
+- 新しい Windows 仮想マシン (VM) を作成するときに、次のエラーが表示されることがあります。
+
+   `'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'`
+
+   このエラーは、VM でブート診断を有効にしても、ブート診断ストレージ アカウントを削除した場合に発生します。 この問題を回避するには、以前使用したものと同じ名前のストレージ アカウントを再作成します。
+
+- [Dv2 シリーズ VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes) を作成するときは、D11 14v2 VM ではそれぞれ 4、8、16、32 のデータ ディスクを作成することができます。 ただし、VM の作成ウィンドウには、8、16、32、および 64 のデータ ディスクが表示されます。
+
+- Azure Stack の使用状況記録には、予期しない大文字が含まれている場合があります。たとえば、次のとおりです。
+
+   `{"Microsoft.Resources":{"resourceUri":"/subscriptions/<subid>/resourceGroups/ANDREWRG/providers/Microsoft.Compute/
+   virtualMachines/andrewVM0002","location":"twm","tags":"null","additionalInfo":
+   "{\"ServiceType\":\"Standard_DS3_v2\",\"ImageType\":\"Windows_Server\"}"}}`
+
+   この例では、リソース グループの名前は **AndrewRG** である必要があります。 この不一致は無視してかまいません。
 
 <!-- 3235634 – IS, ASDK -->
 - **v2** サフィックスを含むサイズ (**Standard_A2_v2** など) で VM をデプロイするには、サフィックスを **Standard_A2_v2** (小文字の v) と指定してください。 **Standard_A2_V2** (大文字の V) は使用しないでください。 これは、グローバル Azure で動作し、Azure Stack では不整合になります。
@@ -280,11 +315,6 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 <!-- 1662991 IS ASDK --> 
 - Linux の VM 診断は、Azure Stack でサポートされていません。 VM 診断を有効にして Linux VM を展開すると、展開が失敗します。 診断設定で Linux VM の基本メトリックを有効にした場合も、展開が失敗します。  
 
-<!-- 2724961- IS ASDK --> 
-- サブスクリプション設定で **Microsoft.Insight** リソース プロバイダーを登録し、ゲスト OS 診断を有効にした Windows VM を作成すると、VM の概要ページの CPU 使用率グラフにメトリック データが表示されません。
-
-   VM の CPU 使用率グラフなどのメトリック データを表示するには、**[メトリック]** ウィンドウに移動して、サポートされているすべての Windows VM ゲスト メトリックを表示します。
-
 <!-- 3507629 - IS, ASDK --> 
 - Managed Disks では、2 つの新しい[コンピューティング クォータの種類](azure-stack-quota-types.md#compute-quota-types)を作成して、プロビジョニングできるマネージド ディスクの最大容量を制限します。 既定では、2,048 GiB がマネージド ディスク クォータの種類ごとに割り当てられます。 ただし、次の問題が発生する可能性があります。
 
@@ -296,7 +326,7 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 
    - 1808 更新の前にサブスクリプションが作成された場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
       1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** を選択し、**[Microsoft.Compute]** を選択してから、**[再登録]** をクリックします。
-      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
+      2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[AzureStack-DiskRP-Client]** ロールがリストに含まれていることを確認します。
    - マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、[この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
 
 - SSH の認可を有効にして作成した Ubuntu 18.04 VM では、SSH キーを使用してログインすることはできません。 回避策として、プロビジョニング後に Linux 拡張機能用の VM アクセスを使用して SSH キーを実装するか、パスワードベースの認証を使用してください。
@@ -316,7 +346,7 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 - Azure Stack の "*シークレット ローテーション*" 中は、2 分から 5 分、パブリック IP アドレスが到達不能になる期間があります。
 
 <!-- 2664148 - IS ASDK --> 
--   テナントが S2S VPN トンネルを使用して仮想マシンにアクセスするシナリオでは、ゲートウェイが既に作成された後でオンプレミスのサブネットがローカル ネットワーク ゲートウェイに追加された場合、接続しようとしても失敗するシナリオが発生する可能性があります。 
+- テナントが S2S VPN トンネルを使用して仮想マシンにアクセスするシナリオでは、ゲートウェイが既に作成された後でオンプレミスのサブネットがローカル ネットワーク ゲートウェイに追加された場合、接続しようとしても失敗するシナリオが発生する可能性があります。 
 
 - Azure Stack ポータルで、VM インスタンスにアタッチされたネットワーク アダプターにバインドされている IP 構成の静的 IP アドレスを変更すると、次の内容の警告メッセージが表示されます。 
 
@@ -328,13 +358,15 @@ Azure Stack では、修正プログラムが定期的にリリースされま�
 
 - ポータルで受信セキュリティ規則を追加し、**[Service Tag]\(サービス タグ\)** をソースとして選択すると、Azure Stack では利用できないオプションがいくつか **[Source Tag]\(ソース タグ\)** リストに表示されます。 Azure Stack で有効なのは次のオプションだけです。
 
-    - **Internet**
-    - **VirtualNetwork**
-    - **AzureLoadBalancer**
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
   
     その他のオプションについては、Azure Stack ではソース タグとしてサポートされません。 同様に、送信セキュリティ規則を追加し、**[Service Tag]\(サービス タグ\)** を宛先として選択した場合も、**[Source Tag]\(ソース タグ\)** のリストに同じオプションが表示されます。 有効なオプションは、前述のリストで説明した **[Source Tag]\(ソース タグ\)** と同じものに限られます。
 
 - **New-AzureRmIpSecPolicy** PowerShell コマンドレットの `DHGroup` パラメーターでは、**DHGroup24** 設定がサポートされません。
+
+- ネットワーク セキュリティ グループ (NSG) は、Azure Stack ではグローバル Azure と同様に機能しません。 Azure では、1 つの NSG ルールに複数のポートを設定できます (ポータル、PowerShell、Resource Manager テンプレートを使用)。 Azure Stack では、ポータルを介して、1 つの NSG ルールに複数のポートを設定できません。 この問題を回避するには、Resource Manager テンプレートを使用して、これらの追加ルールを設定します。
 
 ### <a name="infrastructure-backup"></a>Infrastructure Backup
 

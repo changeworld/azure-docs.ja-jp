@@ -3,7 +3,7 @@ title: Azure で課金を管理して予想外のコストを防ぐ | Microsoft 
 description: Azure の課金内容が予想外の金額となるのを防ぐ方法について説明します。 Microsoft Azure サブスクリプションに対して、コスト管理機能を使用します。
 services: ''
 documentationcenter: ''
-author: tonguyen10
+author: bandersmsft
 manager: alherz
 editor: ''
 tags: billing
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
-ms.author: cwatson
-ms.openlocfilehash: 98ce2127cc9f60128767f8e4409134f2393ac84f
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.author: banders
+ms.openlocfilehash: 732ac5e1e82c67d2f4a0a3443b85c67712f4f651
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582431"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55101653"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -64,6 +64,24 @@ Azure にサインアップしたら、支出を把握するために行える�
 
 バナーをクリックし、画面の指示に従って使用制限を削除します。 サインアップ時にクレジット カード情報を入力しなかった場合、使用制限を削除するには、この情報を入力する必要があります。 詳細については、「[Azure 使用制限 - しくみと有効化または削除する方法](https://azure.microsoft.com/pricing/spending-limits/)」をご覧ください。
 
+[Cloudyn](https://www.cloudyn.com/) サービスを使用すると、異常な支出や浪費のリスクについて、関係者に自動的に通知するアラートを作成できます。 予算やコストのしきい値に基づくアラートをサポートするレポートを使用することで、アラートを作成できます。 Cloudyn の使用の詳細については、「[チュートリアル: 使用状況とコストを確認する](../cost-management/tutorial-review-usage.md)」を参照してください。
+
+この例では、**実績経過コスト** レポートを使用して、Azure VM の支出が合計予算に近づいたときに通知を送信します。 このシナリオでは、合計予算が 20,000 ドルで、コストが予算の半分 (9,000 ドル) に近づいたときに通知を受け取り、コストが 10,000 ドルに達したときに追加のアラートを受け取ります。
+
+1. Cloudyn ポータルの上部にあるメニューで、**[コスト]** > **[コスト分析]** > **[実績経過コスト]** の順に選択します。 
+2. **[グループ]** を **[サービス]** に設定し、**[Filter on the service]\(サービスのフィルター\)** を **[Azure/VM]** に設定します。 
+3. レポートの右上にある **[アクション]** を選択してから **[レポートのスケジュール]** を選択します。
+4. スケジュールされた間隔でレポートのメールを自分に送信するには、**[Save or Schedule this report]\(このレポートを保存またはスケジュールする\)** ダイアログの **[スケジューリング]** タブを選択します。 必ず **[メールで送信]** を選択してください。 使用するタグ、グループ、およびフィルターは、メールで送信されるレポートに含まれます。 
+5. **[しきい値]** タブを選択して、**[Actual Cost vs.Threshold]\(実際のコスト対しきい値\)** を選択します。 
+   1. **[Red alert]\(赤色のアラート\)** しきい値ボックスに、「10000」と入力します。 
+   2. **[Yellow alert]\(黄色のアラート\)** しきい値ボックスに、「9000」と入力します。 
+   3. **[Number of consecutive alerts]\(連続アラートの回数\)** ボックスに、受信する連続アラートの回数を入力します。 指定したアラートの合計数に達すると、それ以上アラートは送信されません。 
+6. **[保存]** を選択します。
+
+    ![支出しきい値に基づいて赤色と黄色のアラートが示された例](./media/billing-getting-started/schedule-alert01.png)
+
+**原価率対予算**のしきい値メトリックを選択して、アラートを作成することもできます。 これにより、しきい値を通貨値ではなく予算の割合として指定できます。
+
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>Azure サービス使用時にコストを監視する方法
 
 ### <a name="tags"></a>リソースにタグを追加して課金データをグループ化する
@@ -90,7 +108,7 @@ Azure にサインアップしたら、支出を把握するために行える�
 
     ![Azure Portal のコスト分析ビューのスクリーンショット](./media/billing-getting-started/cost-analysis.PNG)
 
-4. [タグ](#tags)、リソース グループ、期間などのさまざまなプロパティでフィルター処理できます。 ビューをコンマ区切り値 (.csv) ファイルにエクスポートする場合は、**[適用]** をクリックしてフィルターを確認し、**[ダウンロード]** をクリックします。
+4. [タグ](#tags)、リソースの種類、リソース グループ、期間などのさまざまなプロパティでフィルター処理できます。 ビューをコンマ区切り値 (.csv) ファイルにエクスポートする場合は、**[適用]** をクリックしてフィルターを確認し、**[ダウンロード]** をクリックします。
 
 5. また、リソースをクリックして、毎日の支出の履歴とリソースのコストを確認できます。
 

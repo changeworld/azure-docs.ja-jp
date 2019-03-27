@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 0f5dc5cc7d981eb162ba101671b1e967ddf4bfff
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: 1d350cae379c5ec790413775138225b60b9c5e32
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868465"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564937"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベース間のデータ移動
 
@@ -242,7 +242,7 @@ NuGet パッケージで提供される Web ロール用と worker ロール用�
 
 ![構成][3]
 
-## <a name="performance"></a>[パフォーマンス]
+## <a name="performance"></a>パフォーマンス
 
 一般に、Azure SQL Database の上位のより高パフォーマンスのサービス階層ほど、より高いパフォーマンスを期待できます。 上位のサービス階層で提供されるより優れた IO、CPU、およびメモリ割り当ては、Split-Merge サービスが使用する一括コピーおよび削除操作に役立ちます。 そのため、定義された一定期間のデータベースに対してのみサービス階層を増やします。
 

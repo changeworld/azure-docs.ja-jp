@@ -8,20 +8,20 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 12/03/2018
-ms.openlocfilehash: 2b11d74436907380811acda3b7427ebe8011afb4
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.date: 02/12/2019
+ms.openlocfilehash: 204138e7b8b3846e2d50607b3c5ec0836abefe24
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54061025"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162375"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
 > [!NOTE]
-> この機能は*プライベート プレビュー*段階です。 アクセスを要求するには、[参加要求をここで作成](https://aka.ms/iseprivatepreview)します。
+> この機能は*プライベート プレビュー*段階です。 プライベート プレビューに参加するには、[ここで要求を作成します](https://aka.ms/iseprivatepreview)。
 
-場合によって、ご利用のロジック アプリと統合アカウントで、仮想マシン (VM) や [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内の他のシステムまたはサービスのようなセキュリティで保護されたリソースにアクセスする必要があります。 このアクセスを設定するため、自分のロジック アプリと統合アカウントを実行するための ["*統合サービス環境*" (ISE) を作成する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)ことができます。 
+場合によって、ご利用のロジック アプリと統合アカウントで、仮想マシン (VM) や [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内の他のシステムまたはサービスのようなセキュリティで保護されたリソースにアクセスする必要があります。 このアクセスを設定するため、自分のロジック アプリと統合アカウントを実行するための ["*統合サービス環境*" (ISE) を作成する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)ことができます。
 
 ![統合サービス環境を選択する](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
@@ -33,10 +33,10 @@ ISE を作成すると、プライベートの分離された Logic Apps のイ�
 
 ## <a name="isolated-versus-global"></a>分離とグローバル
 
-Azure で統合サービス環境 (ISE) を作成するときは、ISE を "*挿入*" する Azure 仮想ネットワークを選択します。 Azure では、Logic Apps サービスのプライベート インスタンスが仮想ネットワークにデプロイされます。 このアクションにより、専用リソースでロジック アプリを作成して実行できる分離環境が作成されます。 ロジック アプリを作成するときは、アプリの場所としてこの環境を選択し、ロジック アプリで仮想ネットワークのリソースに直接アクセスできるようになります。 
+Azure で統合サービス環境 (ISE) を作成するときは、ISE を "*挿入*" する Azure 仮想ネットワークを選択します。 Azure では、Logic Apps サービスのプライベート インスタンスが仮想ネットワークにデプロイされます。 このアクションにより、専用リソースでロジック アプリを作成して実行できる分離環境が作成されます。 ロジック アプリを作成するときは、アプリの場所としてこの環境を選択し、ロジック アプリで仮想ネットワークのリソースに直接アクセスできるようになります。
 
 ISE のロジック アプリはグローバルな Logic Apps サービスとユーザー操作が同じで、同様の機能を提供しています。 グローバルな Logic Apps サービスで同じ組み込みアクションとコネクタを使用できるだけでなく、ISE 固有のコネクタも使用できます。 たとえば、次のような標準コネクタは ISE で実行されるバージョンを提供しています。
- 
+
 * Azure Blob Storage、Azure File Storage、Azure Table Storage
 * Azure キュー、Azure Service Bus、Azure Event Hubs、IBM MQ
 * FTP、SFTP-SSH
@@ -45,15 +45,15 @@ ISE のロジック アプリはグローバルな Logic Apps サービスとユ
 
 ISE と ISE 以外のコネクタには、トリガーとアクションが実行される場所に違いがあります。
 
-* ISE では、組み込みトリガーと HTTP などのアクションは常に、ロジック アプリと同じ ISE 内で動作します。 
+* ISE では、組み込みトリガーと HTTP などのアクションは常に、ロジック アプリと同じ ISE 内で動作します。
 
 * 2 つのバージョンを提供するコネクタの場合、1 つのバージョンは ISE で実行され、もう一方のバージョンはグローバルな Logic Apps サービスで実行されます。  
 
-  **ISE** ラベルがあるコネクタは、常にご利用のロジック アプリと同じ ISE で実行されます。 **ISE** ラベルがないコネクタはグローバルな Logic Apps サービスで実行されます。 
+  **ISE** ラベルがあるコネクタは、常にご利用のロジック アプリと同じ ISE で実行されます。 **ISE** ラベルがないコネクタはグローバルな Logic Apps サービスで実行されます。
 
   ![ISE のコネクタを選択する](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
 
-* ISE 内で実行されるコネクタは、もグローバルな Logic Apps サービスでも使用できます。 
+* ISE 内で実行されるコネクタは、もグローバルな Logic Apps サービスでも使用できます。
 
 > [!IMPORTANT]
 > ご利用の ISE で実行されるロジック アプリ、組み込みアクション、コネクタは、使用量ベースの料金プランではなく、異なる料金プランを使用します。 詳細については、「[Logic Apps の価格](../logic-apps/logic-apps-pricing.md)」をご覧ください。
@@ -62,13 +62,13 @@ ISE と ISE 以外のコネクタには、トリガーとアクションが実�
 
 ## <a name="permissions-for-virtual-network-access"></a>仮想ネットワーク アクセスのアクセス許可
 
-統合サービス環境 (ISE) を作成する場合、ご利用の環境を "*挿入する*" 場所として Azure 仮想ネットワークを選択することができます。 挿入では、Logic Apps サービスのプライベート インスタンスが仮想ネットワークにデプロイされます。 このアクションにより、専用リソースでロジック アプリを作成して実行できる分離環境が作成されます。 ロジック アプリを作成するときは、アプリの場所としてお使いの ISE を選択します。 その後、これらのロジック アプリでは、お使いの仮想ネットワークに直接アクセスして、そのネットワーク内のリソースに接続できます。 
+統合サービス環境 (ISE) を作成する場合、ご利用の環境を "*挿入する*" 場所として Azure 仮想ネットワークを選択することができます。 挿入では、Logic Apps サービスのプライベート インスタンスが仮想ネットワークにデプロイされます。 このアクションにより、専用リソースでロジック アプリを作成して実行できる分離環境が作成されます。 ロジック アプリを作成するときは、アプリの場所としてお使いの ISE を選択します。 その後、これらのロジック アプリでは、お使いの仮想ネットワークに直接アクセスして、そのネットワーク内のリソースに接続できます。
 
-仮想ネットワークに接続されているシステムの場合は、その仮想ネットワークに ISE を挿入できるので、次のいずれかを使用することで、ロジック アプリからそれらのシステムに直接アクセスできます。 
+仮想ネットワークに接続されているシステムの場合は、その仮想ネットワークに ISE を挿入できるので、次のいずれかを使用することで、ロジック アプリからそれらのシステムに直接アクセスできます。
 
 * そのシステムの ISE コネクタ (SQL Server など)
 
-* HTTP アクション 
+* HTTP アクション
 
 * カスタム コネクタ
 

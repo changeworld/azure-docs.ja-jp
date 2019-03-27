@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: c9f0707f6d24ba899c89bf19066994ae860a69d5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ec3952f2bb0b4180f5c72d948d1835a903152f0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620989"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181828"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク
 この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 スタートアップ タスクを使用して、ロールを開始する前の操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
@@ -93,7 +93,7 @@ REM   *** Add a compression section to the Web.config file. ***
 %windir%\system32\inetsrv\appcmd set config /section:urlCompression /doDynamicCompression:True /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 
 REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. This error is expected if this
-REM   batch file were executed twice. This can occur and must be accounted for in a Azure startup
+REM   batch file were executed twice. This can occur and must be accounted for in an Azure startup
 REM   task. To handle this situation, set the ERRORLEVEL to zero by using the Verify command. The Verify
 REM   command will safely set the ERRORLEVEL to zero.
 IF %ERRORLEVEL% EQU 183 DO VERIFY > NUL
@@ -186,7 +186,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 これにより、Web ロールが初期化されるたびに **startup.cmd** バッチ ファイルが実行され、必要な **ipSecurity** セクションのロックが解除されます。
 
-最後に、お使いの Web ロールの [web.config](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) ファイルの **system.webServer セクション** を変更し、次の例に示すようにアクセス許可が付与された IP アドレスの一覧を追加します。
+最後に、お使いの Web ロールの [web.config](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) ファイルの **system.webServer セクション** を変更し、次の例に示すようにアクセス許可が付与された IP アドレスの一覧を追加します。
 
 このサンプル構成では、定義した 2 つ以外のすべての IP についてサーバーへのアクセスを **許可** します。
 

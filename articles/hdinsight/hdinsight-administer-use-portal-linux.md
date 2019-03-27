@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: hrasheed
-ms.openlocfilehash: ce30b752ecf1d5413ae534fa03907cbf11b1c694
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a0da4339586982f5210834bcec5acfe463bc1a9a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794483"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816443"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -124,7 +124,7 @@ HDInsight クラスターを別の Azure リソース グループまたは別�
 クラスターのスケール設定機能を使うと、Azure HDInsight クラスターによって使われる worker ノードの数を、クラスターを再作成することなく、変更できます。
 
 > [!NOTE]  
-> HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。 クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。  「[クラスターの一覧と表示](#list-and-show-clusters)」を参照してください。
+> HDInsight バージョン 3.1.3 以降を使用しているクラスターのみがサポートされます。 クラスターのバージョンがわからない場合、[プロパティ] ページを確認できます。  「クラスターの一覧と表示」を参照してください。
 
 [クラスター ホーム ページ](#homePage)から:
 
@@ -223,7 +223,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
 
 [クラスター ホーム ページ](#homePage)から:
 1. **[設定]** で **[SSH およびクラスターのログイン]** を選択します。
-2. **[Reset credential](資格情報のリセット)** を選択します。
+2. **[資格情報のリセット]** を選択します。
 3. テキスト ボックスに新しいパスワードを入力し、確認します。
 4. **[OK]** を選択します。
 
@@ -283,7 +283,7 @@ HDInsight クラスターは、Azure Storage アカウントまたは Azure Data
 
 
 ## <a name="monitor-cluster-usage"></a>クラスターの使用状況の監視
-HDInsight クラスター ブレードの **[使用状況]** セクションには、サブスクリプションで HDInsight 用に使用できるコアの数、このクラスターに割り当てられているコアの数、およびこのクラスター内のノードへのコアの割り当て方法に関する情報が表示されます。 「 [クラスターの一覧と表示](#list-and-show-clusters)」をご覧ください。
+HDInsight クラスター ブレードの **[使用状況]** セクションには、サブスクリプションで HDInsight 用に使用できるコアの数、このクラスターに割り当てられているコアの数、およびこのクラスター内のノードへのコアの割り当て方法に関する情報が表示されます。 「クラスターの一覧と表示」を参照してください。
 
 > [!IMPORTANT]  
 > HDInsight クラスターによって提供されるサービスを監視するには、Ambari Web または Ambari REST API を使用する必要があります。 Ambari の使用について詳しくは、[Apache Ambari を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)に関するページをご覧ください

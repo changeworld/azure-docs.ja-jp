@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 3dc602589dc3a909ea2a2cf2925d37df0a97605b
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 763ff0d5f619d2808fb06c05d5b266160b3a7069
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436247"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868567"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>チュートリアル: ソース コードのコミット時にクラウドでコンテナー イメージ ビルドを自動化する
 
@@ -51,6 +51,8 @@ ACR タスクでは、現在以下のトリガーがサポートされていま�
 
 * Git リポジトリへのコミット
 * 基本イメージの更新
+
+このチュートリアルの ACR タスクでは、Dockerfile で指定されている単一のコンテナー イメージをビルドしてプッシュします。 ACR タスクでは、[複数ステップ タスク](container-registry-tasks-multi-step.md) (現在プレビュー中) を実行することもできます。その場合、YAML ファイルを使用して、複数のコンテナーをビルド、プッシュ、および (必要に応じて) テストする手順を定義します。
 
 ## <a name="create-a-build-task"></a>ビルド タスクを作成する
 
@@ -99,7 +101,7 @@ az acr task create \
 > [!IMPORTANT]
 > 以前、プレビュー期間中に `az acr build-task` コマンドを使用してタスクを作成した場合、それらのタスクは [az acr task][az-acr-task] コマンドを使用して再作成する必要があります。
 
-このタスクでは、`--context` で指定されているリポジトリの *master* ブランチにコードがコミットされたら常に、ACR タスクがそのブランチのコードからコンテナー イメージをビルドすることが指定されています。 リポジトリ ルートから `--file` で指定された Dockerfile が使用されます。 `--image` 引数では、イメージのタグのバージョン部分に対する `{{.Run.ID}}` のパラメーター化された値が指定されており、ビルドされたイメージが特定のビルドに関連付けられ、一意にタグ付けされることを保証します。
+このタスクでは、`--context` で指定されているリポジトリの *master* ブランチにコードがコミットされたら常に、ACR タスクがそのブランチのコードからコンテナー イメージをビルドすることが指定されています。 `--file` によって指定されているリポジトリ ルートの Dockerfile を使用して、イメージがビルドされます。 `--image` 引数では、イメージのタグのバージョン部分に対する `{{.Run.ID}}` のパラメーター化された値が指定されており、ビルドされたイメージが特定のビルドに関連付けられ、一意にタグ付けされることを保証します。
 
 [az acr task create][az-acr-task-create] コマンドが成功した場合、出力は次のようになります。
 
@@ -324,10 +326,10 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-task]: /cli/azure/acr#az-acr-task
-[az-acr-task-create]: /cli/azure/acr#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr#az-acr-task-run
-[az-acr-task-list-runs]: /cli/azure/acr#az-acr-task-list-runs
+[az-acr-task]: /cli/azure/acr
+[az-acr-task-create]: /cli/azure/acr
+[az-acr-task-run]: /cli/azure/acr
+[az-acr-task-list-runs]: /cli/azure/acr
 [az-login]: /cli/azure/reference-index#az-login
 
 <!-- IMAGES -->

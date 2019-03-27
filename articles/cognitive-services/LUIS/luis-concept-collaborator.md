@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: LUIS アプリには、1 人の所有者が必要です。さらに任意でコラボレーターを追加すれば、複数のユーザーで 1 つのアプリを作成することができます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 38989c7c2d36c761327d79c345648728d12a5495
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 9229a583dac526d09d7c5046c4bb81d30c9d4c3f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264514"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873565"
 ---
 # <a name="collaborating-with-other-authors"></a>他の作成者との共同作業
 

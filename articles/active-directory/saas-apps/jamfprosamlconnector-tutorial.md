@@ -4,7 +4,7 @@ description: Azure Active Directory と Jamf Pro の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 35e86d08-c29e-49ca-8545-b0ff559c5faf
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.openlocfilehash: e30ede3e69711fefcf5026202ed7b004d00cb02e
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 78949ad5eeae9b497d9703b5a79616d755f12c6d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810816"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>チュートリアル:Azure Active Directory と Jamf Pro の統合
 
@@ -151,11 +152,11 @@ Jamf Pro で Azure AD シングル サインオンを構成するには、次の
 
     c. **[NameID]** オプションを **[USER MAPPING:SAML]\(ユーザー マッピング: SAML\)** で選択します。 既定では、この設定は **[NameID]** に設定されていますが、カスタム属性を定義することもできます。
 
-    d. **[Email]\(電子メール\)** を **[USER MAPPING:JAMF PRO]\(ユーザー マッピング: JAMF PRO\)** で選択します。 Jamf Pro は、IdP によって送信された SAML 属性を次の方法でマップします: ユーザー別およびグループ別。 ユーザーが Jamf Pro にアクセスしようとすると、既定では、Jamf Pro がユーザーに関する情報を ID プロバイダーから取得し、それを Jamf Pro のユーザー アカウントと照合します。 受信したユーザー アカウントが Jamf Pro 内に存在しない場合は、グループ名のマッチングが発生します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Email]\(電子メール\)** を **[USER MAPPING:JAMF PRO]\(ユーザー マッピング: JAMF PRO\)** で選択します。 Jamf Pro は、IdP によって送信された SAML 属性を次の方法でマップします: ユーザー別およびグループ別。 ユーザーが Jamf Pro にアクセスしようとすると、既定では、Jamf Pro がユーザーに関する情報を ID プロバイダーから取得し、それを Jamf Pro のユーザー アカウントと照合します。 受信したユーザー アカウントが Jamf Pro 内に存在しない場合は、グループ名のマッチングが発生します。
 
     e. 値 `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` を **[GROUP ATTRIBUTE NAME]\(グループ属性名\)** テキスト ボックスに貼り付けます。
 
-7. 同じページで、**[シングル サインオン]** セクションの下の **[IDENTITY PROVIDER]\(ID プロバイダー\)** まで下にスクロールし、次の手順に従います。
+7. 同じページで、**[シングル サインオン]** セクションの下の **[ID プロバイダー]** までスクロールし、次の手順に従います。
 
     ![Jamf Pro の構成](./media/jamfprosamlconnector-tutorial/configure3.png)
 
@@ -165,7 +166,7 @@ Jamf Pro で Azure AD シングル サインオンを構成するには、次の
 
     c. **[メタデータ URL]** を **[IDENTITY PROVIDER METADATA SOURCE]\(ID プロバイダーのメタデータ ソース\)** ドロップダウンからオプションとして選択し、次のテキストボックスに、Azure portal からコピーした **[アプリのフェデレーション メタデータ URL]** の値を貼り付けます。
 
-    d. **エンティティ ID** の値をコピーし、Azure portal の **[Jamf Pro Domain and URLs]\(Jamf Pro のドメインと URL\)** セクションの **[識別子 (エンティティ ID)]** テキストボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **エンティティ ID** の値をコピーし、Azure portal の **[Jamf Pro Domain and URLs]\(Jamf Pro のドメインと URL\)** セクションの **[識別子 (エンティティ ID)]** テキストボックスに貼り付けます。
 
     > [!NOTE]
     > ここで、隠されている値はサブドメインの部分です。この値を使用して、Azure portal 上で、**[Jamf Pro Domain and URLs]\(Jamf Pro ドメインおよび URL\)** セクションのサインオン URL と応答 URL を完了します。
@@ -257,7 +258,7 @@ Azure AD ユーザーが Jamf Pro にログインできるようにするには�
 
     c. **[FULL NAME]\(フル ネーム\)** テキストボックスに、フル ネームの「Britta Simon」を入力します。
 
-    d. **[メール アドレス]** テキストボックスに、Britta Simon アカウントのメール アドレスを入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[メール アドレス]** テキストボックスに、Britta Simon アカウントのメール アドレスを入力します。
 
     e. **[パスワード]** テキストボックスに、そのユーザーのパスワードを入力します。
 
@@ -275,6 +276,6 @@ Azure AD ユーザーが Jamf Pro にログインできるようにするには�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -4,7 +4,7 @@ description: このトピックでは、Azure Media Services を使用したコ�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 89ede54a-6a9c-4814-9858-dcfbb5f4fed5
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ae0ff36c7e83120a9571e0f87788c25193027616
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 51d0c7ade46143ecbf6fe46bc54e5d383d50b382
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240139"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58173078"
 ---
 # <a name="deliver-content-to-customers"></a>顧客へのコンテンツ配信
 ストリーミング コンテンツまたはビデオ オン デマンド コンテンツを顧客に配信するときの目標は、さまざまなネットワーク条件にある多様なデバイスに高品質のビデオを配信することにあります。
@@ -61,7 +61,7 @@ Media Services を使用すると、資産にフィルターを定義できま�
 * OnDemandOrigin ロケーターは、 メディアのストリーミング (MPEG-DASH、HLS、Smooth Streaming など) やファイルのプログレッシブ ダウンロードに使用します。
 * Shared Access Signature (SAS) URL ロケーターは、 メディア ファイルをローカル コンピューターにダウンロードする際に使用します。
 
-*アクセス ポリシー* は、アクセス許可 (読み取り、書き込み、一覧表示など) や、クライアントが特定の資産にアクセスできる期間を定義するために使用します。 一覧表示のアクセス許可 (AccessPermissions.List) は、OnDemandOrigin ロケーターを作成するときには使用しないでください。
+*アクセス ポリシー* は、アクセス許可 (読み取り、書き込み、一覧表示など) や、クライアントが特定の資産にアクセスできる期間を定義するために使用します。 一覧表示のアクセス許可 (AccessPermissions.List) は、OnDemandOrigin ロケーターの作成に使用しないでください。
 
 ロケーターには有効期限があります。 Azure ポータルにより、ロケーターの有効期限の日付が 100 年後に設定されます。
 
@@ -77,7 +77,7 @@ Media Services を使用すると、資産にフィルターを定義できま�
 ロケーターを作成する際、Azure Storage に必要な記憶域や伝達プロセスの関係上 30 秒の遅延が生じる場合があります。
 
 ## <a name="adaptive-streaming"></a>アダプティブ ストリーミング
-アダプティブ ビットレート テクノロジにより、ビデオ再生アプリケーションでネットワークの状態を判断し、複数のビットレートから選択することができます。 ネットワーク通信のパフォーマンスが低下した場合、低い画質レベルでビデオの再生を継続できるように、クライアントは以前より低いビットレートを選択することができます。 ネットワークの状態が改善したら、クライアントはより高画質なより高いビットレートに切り替えることができます。 Azure Media Services でサポートされるアダプティブ ビットレート テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG-DASH です。
+アダプティブ ビットレート テクノロジにより、ビデオ再生アプリケーションでネットワークの状態を判断し、複数のビットレートから選択することができます。 ネットワーク通信のパフォーマンスが低下した場合、低い画質レベルでビデオの再生を継続できるように、クライアントは以前より低いビットレートを選択することができます。 ネットワークの状態が改善したら、クライアントはより高画質なより高いビットレートに切り替えることができます。 Azure Media Services は、次のアダプティブ ビットレート テクノロジをサポートしています: HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH。
 
 ユーザーにストリーミング URL を提供するには、最初に OnDemandOrigin ロケーターを作成する必要があります。 ロケーターを作成すると、ストリーミングするコンテンツが含まれている資産の基本パスが提供されます。 ただし、このコンテンツをストリーミングするためには、このパスをさらに変更する必要があります。 ストリーミング マニフェスト ファイルの完全な URL を構築するには、ロケーターのパスの値とマニフェスト ファイル (filename.ism) の名前を連結する必要があります。 その後、 **/Manifest** と適切な形式 (必要な場合) をロケーターのパスに付加します。
 
@@ -134,7 +134,7 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 
 プログレッシブ ダウンロードで元のサービスからストリーミングするには、ストレージで暗号化された資産の暗号化を解除する必要があります。
 
-## <a name="download"></a>[ダウンロード]
+## <a name="download"></a>ダウンロード
 クライアント デバイスにコンテンツをダウンロードするには、SAS ロケーターを作成する必要があります。 SAS ロケーターでは、ファイルが配置されている Azure ストレージ コンテナーにアクセスできます。 ダウンロード URL を作成するには、ホストと SAS 署名の間にファイル名を埋め込む必要があります。
 
 次の例は、SAS ロケーターに基づいている URL を示しています。

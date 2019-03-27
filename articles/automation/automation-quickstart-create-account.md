@@ -4,17 +4,17 @@ description: Azure Automation アカウントを作成し、Runbook を実行す
 services: automation
 author: csand-msft
 ms.author: csand
-ms.date: 10/18/2018
+ms.date: 01/15/2019
 ms.topic: quickstart
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 6d473d8874208297e905a5d90a08ffd870ffa8a6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 5fd29c47f87dc65d67961224d1e2c103871d4b06
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50091826"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592453"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Automation アカウントを作成する
 
@@ -32,14 +32,14 @@ https://portal.azure.com で Azure にサインインします
 
 1. **[管理ツール]**、**[Automation]** の順に選択します。
 
-1. アカウント情報を入力します。 **[Azure 実行アカウントの作成]** で **[はい]** を選択し、Azure に対する認証が簡単になるアーティファクトが自動的に有効になるようにします。 Automation アカウントの作成時には、選択後に名前を変更できないことに注意してください。 1 つの Automation アカウントで、特定のテナントのすべてのリージョンおよびサブスクリプションにわたってリソースを管理できます。 完了したら、**[作成]** をクリックして、Automation アカウントの展開を開始します。
+1. アカウント情報を入力します。 **[Azure 実行アカウントの作成]** で **[はい]** を選択し、Azure に対する認証が簡単になるアーティファクトが自動的に有効になるようにします。 Automation アカウントの作成時には、選択後に名前を変更できないことに注意してください。 "*Automation アカウント名は、リージョンおよびリソース グループごとに一意です。削除された Automation アカウントの名前はすぐには使用できない場合があります。*" 1 つの Automation アカウントで、特定のテナントのすべてのリージョンおよびサブスクリプションにわたってリソースを管理できます。 完了したら、**[作成]** をクリックして、Automation アカウントの展開を開始します。
 
     ![このページに Automation アカウントに関する情報を入力します](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
     > [!NOTE]
     > Automation アカウントをデプロイできる場所の最新の一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=automation&regions=all)」を参照してください。
 
-1. デプロイが完了したら、** **[すべてのサービス]** をクリックし、**[Automation アカウント]** を選択して、作成した Automation アカウントを選択します。
+1. デプロイが完了したら、**[すべてのサービス]** をクリックし、**[Automation アカウント]** を選択し、作成した Automation アカウントを選択します。
 
     ![Automation アカウントの概要](./media/automation-quickstart-create-account/automation-account-overview.png)
 
@@ -71,3 +71,4 @@ https://portal.azure.com で Azure にサインインします
 
 > [!div class="nextstepaction"]
 > [Automation クイックスタート - Runbook を作成する](./automation-quickstart-create-runbook.md)
+

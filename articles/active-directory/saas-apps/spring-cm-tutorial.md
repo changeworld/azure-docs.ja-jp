@@ -4,22 +4,23 @@ description: Azure Active Directory と SpringCM の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 4a42f797-ac58-4aca-a8e6-53bfe5529083
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 777586bc24c0962ec1f0ba3913397bfe26d0d0d5
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 64aebaedd9221b2570b66bdb8550bff36b54492c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52841066"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>チュートリアル: Azure Active Directory と SpringCM の統合
 
@@ -211,9 +212,9 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
 
 1. **[Save]** をクリックします。
 
-  >[!NOTE]
-  >SpringCM から提供されている他の SpringCM ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。  
-  > 
+   >[!NOTE]
+   >SpringCM から提供されている他の SpringCM ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。  
+   > 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -248,7 +249,7 @@ Azure Active Directory ユーザーが SpringCM にログインできるよう�
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
- 
+ 
 アクセス パネルで SpringCM のタイルをクリックすると、自動的に SpringCM アプリケーションにサインオンします。
 
 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 

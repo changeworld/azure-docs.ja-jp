@@ -3,24 +3,25 @@ title: フェデレーション シングル サインオン用に構成され�
 description: Azure AD での SAML ベースのフェデレーション シングル サインオン用に構成されたアプリケーションにサインインするときに発生する可能性のある特定の問題のためのガイダンス
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 17114818105935d8d6a7ac647f1d98c097e78efd
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a6908951452e135fd87e3214d285042f72e00403
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355438"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169634"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>フェデレーション シングル サインオン用に構成されたギャラリー以外のアプリケーションへのサインインに関する問題
 
@@ -34,7 +35,7 @@ ms.locfileid: "44355438"
 
 ## <a name="application-not-found-in-directory"></a>アプリケーションがディレクトリ内に見つからない
 
-*エラー AADSTS70001: 識別子 'https://contoso.com' を持つアプリケーションがディレクトリ内に見つかりませんでした*。
+*エラー AADSTS70001:識別子 'https://contoso.com' を持つアプリケーションがディレクトリに見つかりませんでした*。
 
 **考えられる原因**
 
@@ -66,7 +67,7 @@ Azure AD で識別子の値を更新し、それが SAML 要求でアプリケ�
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>応答アドレスが、アプリケーションに対して構成されている応答アドレスと一致しない。 
 
-*Error AADSTS50011: 応答アドレス 'https://contoso.com' は、アプリケーションに対して構成されている応答アドレスと一致しません*。 
+*エラー AADSTS50011:応答アドレス 'https://contoso.com' が、アプリケーション用に構成された応答アドレスと一致しません* 
 
 **考えられる原因** 
 
@@ -100,7 +101,7 @@ Azure AD で応答 URL の値を更新し、その URL 値が、アプリケー�
 
 ## <a name="user-not-assigned-a-role"></a>ユーザーにロールが割り当てられていない
 
-*エラー AADSTS50105: サインインしているユーザー 'brian@contoso.com' にアプリケーションのロールが割り当てられていません*。
+*エラー AADSTS50105:サインインしているユーザー 'brian@contoso.com' にアプリケーションのロールが割り当てられていません*
 
 **考えられる原因**
 
@@ -146,7 +147,7 @@ Azure AD で応答 URL の値を更新し、その URL 値が、アプリケー�
 
 ## <a name="not-a-valid-saml-request"></a>有効な SAML 要求ではない
 
-*エラー AADSTS75005: この要求は有効な Saml2 プロトコル メッセージではありません。*
+*エラー AADSTS75005:この要求は有効な Saml2 プロトコル メッセージではありません。*
 
 **考えられる原因**
 
@@ -170,7 +171,7 @@ Azure AD は、シングル サインオン用のアプリケーションによ�
 
 ## <a name="no-resource-in-requiredresourceaccess-list"></a>requiredResourceAccess リスト内にリソースがない
 
-*エラー AADSTS65005: クライアント アプリケーションがリソース '00000002-0000-0000-c000-000000000000' へのアクセスを要求しました。クライアントが requiredResourceAccess リスト内にこのリソースを指定していないため、この要求は失敗しました*。
+*エラー AADSTS65005:クライアント アプリケーションがリソース '00000002-0000-0000-c000-000000000000' へのアクセスを要求しました。クライアントが requiredResourceAccess リスト内にこのリソースを指定していないため、この要求は失敗しました*。
 
 **考えられる原因**
 
@@ -202,7 +203,7 @@ Azure AD は、シングル サインオン用のアプリケーションによ�
 
 ## <a name="certificate-or-key-not-configured"></a>証明書またはキーが構成されていない
 
-エラー AADSTS50003: 署名キーが構成されていません。
+エラー AADSTS50003:署名キーが構成されていません。
 
 **考えられる原因**
 

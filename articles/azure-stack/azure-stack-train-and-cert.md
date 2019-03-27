@@ -8,12 +8,13 @@ ms.service: azure-stack
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: cf0cc5290f0757723ee067ee8ea84e8d6e7ba845
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.lastreviewed: 12/12/2018
+ms.openlocfilehash: d4f7ec8f4b6960650b98d8f2d2f051c0873c9754
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323407"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55242503"
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure Stack のトレーニングと認定
 

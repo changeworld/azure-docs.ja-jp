@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1558d8e8392ff49e2661e9f8bc41e41c5bbc6dd5
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: f7d7b7f470f43d8a7a1cd94b4b1ce79503f0dfca
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189850"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301028"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Application Insights Status Monitor を使用した実行時の Web アプリのインストルメント化
 
@@ -27,16 +27,18 @@ Status Monitor は、オンプレミスまたは VM の IIS でホストされ�
 
 - お客様のアプリが Azure のアプリ サービスにデプロイされている場合、[こちらの手順](azure-web-apps.md)に従ってください。
 - お客様のアプリが Azure VM にデプロイされている場合は、Azure コントロール パネルから Application Insights の監視を有効にすることができます 
-- ([ライブ J2EE Web アプリ](java-live.md)と [Azure Cloud Services](../../azure-monitor/app/cloudservices.md) のインストルメント化については、個別の記事もあります)。
+- ([ライブ Java EE Web アプリ](java-live.md)と [Azure Cloud Services](../../azure-monitor/app/cloudservices.md) のインストルメント化については、個別の記事もあります)。
 
 
 ![App Insights の概要グラフ (失敗した要求、サーバー応答時間、サーバー要求に関する情報) のスクリーンショット](./media/monitor-performance-live-website-now/overview-graphs.png)
 
-Application Insights を .NET Web アプリケーションに適用する方法には、次の 3 つがあります。
+Application Insights を .NET Web アプリケーションに適用する方法には、次の 2 つがあります。
 
 * **ビルド時:** Web アプリ コードに [Application Insights SDK を追加][greenbrown]します。
 * **実行時:** 後述するように、コードのリビルドと再デプロイを行うことなく、サーバー上の Web アプリをインストルメント化します。
-* **両方:** SDK を Web アプリ コードの中にビルドします。また、実行時の拡張機能を適用します。 両方のオプションの長所を活かせます。
+
+> [!NOTE]
+> ビルド時のインストルメンテーションを使用すると、実行時のインストルメンテーションはオンにしても機能しません。
 
 各方法の特徴について概要を次に示します。
 
@@ -96,14 +98,14 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
 - applicationInsights.config ファイルがターゲット アプリ ディレクトリ内に存在し、お客様の ikey を含んでいることを確認します。
 
 - データがないと思われる場合は、[Analytics](../log-query/get-started-portal.md) で単純なクエリを実行して、現在テレメトリを送信中のクラウド ロールをすべて一覧表示できます。
-
 ```Kusto
 union * | summarize count() by cloud_RoleName, cloud_RoleInstance
 ```
 
 - Application Insights が正常にアタッチされたことを確認する必要がある場合は、コマンド ウィンドウで [Sysinternals の Handle](https://docs.microsoft.com/sysinternals/downloads/handle) を実行して、applicationinsights.dll が IIS によって読み込まれたことを確認できます。
-
-`handle.exe /p w3wp.exe`
+```cmd
+handle.exe /p w3wp.exe
+```
 
 
 ### <a name="cant-connect-no-telemetry"></a>接続できない テレメトリが見つかりませんか?
@@ -112,9 +114,10 @@ union * | summarize count() by cloud_RoleName, cloud_RoleInstance
 
 ### <a name="unable-to-login"></a>ログインできない
 
-* Status Monitor でログインできない場合は、代わりにコマンド ライン インストールを行ってください。 お客様の ikey を収集するために Status Monitor によってログインが試行されますが、これはコマンドを使用して手動で指定できます。 
-```
-Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll
+* Status Monitor でログインできない場合は、代わりにコマンド ライン インストールを行ってください。 お客様の ikey を収集するために Status Monitor によってログインが試行されますが、これはコマンドを使用して手動で指定できます。
+
+```powershell
+Import-Module 'C:\Program Files\Microsoft Application Insights\Status Monitor\PowerShell\Microsoft.Diagnostics.Agent.StatusMonitor.PowerShell.dll'
 Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-000-000-000-0000000
 ```
 
@@ -123,7 +126,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 Application Insights を有効にした後にこのエラーが発生する場合があります。 これは、インストーラーによってお客様の bin ディレクトリ内の dll が置き換えられるためです。
 修正するには、お客様の web.config を更新します。
 
-```
+```xml
 <dependentAssembly>
     <assemblyIdentity name="System.Diagnostics.DiagnosticSource" publicKeyToken="cc7b13ffcd2ddd51"/>
     <bindingRedirect oldVersion="0.0.0.0-4.*.*.*" newVersion="4.0.2.1"/>

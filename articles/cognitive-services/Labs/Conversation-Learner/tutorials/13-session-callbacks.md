@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 5458d83fcc9fad50a2a52273ea6b5573ed90a97e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 246b87e46029c2bf4d7361540939181b3b209acc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796542"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219133"
 ---
 # <a name="how-to-use-session-callbacks-with-a-conversation-learner-model"></a>Conversation Learner モデルでセッション コールバックを使用する方法
 

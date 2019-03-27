@@ -6,16 +6,16 @@ author: twounder
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 06/13/2018
 ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: fa497979349346016e1c176ace98407d98eebdca
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4cec5dd38d41f354f4d1430240a23f0b328cbb7b
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43310568"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452432"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でサポートされる T-SQL ステートメント
 Azure SQL Data Warehouse でサポートされる T-SQL ステートメントのドキュメントにリンクします。
@@ -86,7 +86,7 @@ Azure SQL Data Warehouse でサポートされる T-SQL ステートメントの
 * [サブクエリ](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>セキュリティ ステートメント
-* 権限: [GRANT](https://msdn.microsoft.com/library/ms187965.aspx)、[DENY](https://msdn.microsoft.com/library/ms188338.aspx)、[REVOKE](https://msdn.microsoft.com/library/ms187728.aspx)
+* アクセス許可:[GRANT](https://msdn.microsoft.com/library/ms187965.aspx)、[DENY](https://msdn.microsoft.com/library/ms188338.aspx)、[REVOKE](https://msdn.microsoft.com/library/ms187728.aspx)
 * [ALTER AUTHORIZATION](https://msdn.microsoft.com/library/ms187359.aspx)
 * [ALTER CERTIFICATE](https://msdn.microsoft.com/library/ms189511.aspx)
 * [ALTER DATABASE ENCRYPTION KEY](https://msdn.microsoft.com/library/bb630389.aspx)

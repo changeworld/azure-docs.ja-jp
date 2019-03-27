@@ -4,25 +4,25 @@ titleSuffix: Azure Cognitive Services
 description: Bing Visual Search API で画像の分析情報トークンを使用して、画像に関する分析情報を取得する方法を説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 76fb61f0f1dd3c1f72c4c6132d1bfdc8b516477a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b01b68964600f6162512d4405fddbaf125e7e76d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955549"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082725"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>分析情報トークンを使用して画像についての分析情報を取得する
 
 Bing Visual Search API は、提供された画像に関する情報を返します。 画像を提供するには、画像の URL または分析情報トークンを使用するか、画像をアップロードします。 これらのオプションについて詳しくは、「[Bing Visual Search API とは](overview.md)」をご覧ください。 この記事では、分析情報トークンの使用方法を示します。 画像をアップロードして分析情報を取得する方法の例については、クイック スタート ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)) をご覧ください。
 
 
-画像のトークンまたは URL を Visual Search に送信する場合は、次に示すフォーム データを POST の本文に含める必要があります。 フォーム データには Content-Disposition ヘッダーが含まれ、その `name` パラメーターは "knowledgeRequest" に設定されている必要があります。 `imageInfo` オブジェクトについて詳しくは、「[要求](#the-request)」をご覧ください。
+画像のトークンまたは URL を Visual Search に送信する場合は、次に示すフォーム データを POST の本文に含める必要があります。 フォーム データには Content-Disposition ヘッダーが含まれ、その `name` パラメーターは "knowledgeRequest" に設定されている必要があります。 `imageInfo` オブジェクトの詳細については、「要求」を参照してください。
 
 ```json
 {
@@ -286,7 +286,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-// http://hc.apache.org/downloads.cgi (HttpComponents Downloads) HttpClient 4.5.5
+// https://hc.apache.org/downloads.cgi (HttpComponents Downloads) HttpClient 4.5.5
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -373,19 +373,19 @@ public class InsightsToken {
 1. プロジェクト用のフォルダーを作成します (または、お気に入りの IDE やエディターを使用)。
 2. コマンド プロンプトまたはターミナルから、先ほど作成したフォルダーに移動します。
 3. request モジュールをインストールします。  
-  ```  
-  npm install request  
-  ```  
+   ```  
+   npm install request  
+   ```  
 3. form-data モジュールをインストールします。  
-  ```  
-  npm install form-data  
-  ```  
+   ```  
+   npm install form-data  
+   ```  
 4. GetVisualInsights.js という名前のファイルを作成し、次のコードを追加します。
 5. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
 7. プログラムを実行します。  
-  ```
-  node GetVisualInsights.js
-  ```
+   ```
+   node GetVisualInsights.js
+   ```
 
 ```javascript
 var request = require('request');

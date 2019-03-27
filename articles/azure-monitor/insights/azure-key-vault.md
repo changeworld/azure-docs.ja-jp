@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 785ccba6766b6a4f7400f3fdacf7ac24a234adf5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b2c43ff2ae45b4adccb8f19873070a4c3a9dbe99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192772"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078767"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics の Azure Key Vault Analytics ソリューション
 
 ![Key Vault のシンボル](media/azure-key-vault/key-vault-analytics-symbol.png)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Log Analytics の Azure Key Vault ソリューションを使用して、Azure Key Vault の AuditEvent ログを調査することができます。
 
@@ -55,13 +57,13 @@ Azure Key Vault ソリューションのインストールと構成は、次の�
 8. *[保存]* をクリックして Log Analytics の診断ログを有効にします。
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>PowerShell を使用して Key Vault 診断を有効にする
-次の PowerShell スクリプトは、`Set-AzureRmDiagnosticSetting` を使用して Key Vault の診断ログを有効にする方法の例を示しています。
+次の PowerShell スクリプトは、`Set-AzDiagnosticSetting` を使用して Key Vault の診断ログを有効にする方法の例を示しています。
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
-$kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
+$kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
 
@@ -136,13 +138,13 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
 1. [Key Vault から Log Analytics に診断が直接送信されるように構成します。](#enable-key-vault-diagnostics-in-the-portal)  
 2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](../../azure-monitor/insights/solutions.md)」に説明されている手順に従って Azure Key Vault ソリューションを有効にします。
 3. 新しいデータ型を使用するように、保存されたクエリ、ダッシュボード、またはアラートを更新します。
-  + 型をKeyVaults から AzureDiagnostics に変更します。 ResourceType を使用して、Key Vault のログをフィルター処理できます。
-  - `KeyVaults` の代わりに `AzureDiagnostics | where ResourceType'=="VAULTS"` を使用してください。
-  + フィールド:(フィールド名は大文字小文字が区別されます)
-  - 名前に \_s、\_d、または \_g のサフィックスがあるフィールドについては、最初の文字を小文字に変更します。
-  - 名前に \_o のサフィックスがあるフィールドについては、入れ子になったフィールド名に基づき、データは個別のフィールドに分割されます。 例: 呼び出し元の UPN を `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` のフィールドに格納する
-   - フィールド CallerIpAddress は CallerIPAddress に変更されます。
-   - フィールド RemoteIPCountry は存在しません。
+   + 型をKeyVaults から AzureDiagnostics に変更します。 ResourceType を使用して、Key Vault のログをフィルター処理できます。
+   + `KeyVaults` の代わりに `AzureDiagnostics | where ResourceType'=="VAULTS"` を使用してください。
+   + フィールド:(フィールド名は大文字小文字が区別されます)
+   + 名前に \_s、\_d、または \_g のサフィックスがあるフィールドについては、最初の文字を小文字に変更します。
+   + 名前に \_o のサフィックスがあるフィールドについては、入れ子になったフィールド名に基づき、データは個別のフィールドに分割されます。 例: 呼び出し元の UPN を `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` のフィールドに格納する
+   + フィールド CallerIpAddress は CallerIPAddress に変更されます。
+   + フィールド RemoteIPCountry は存在しません。
 4. *Key Vault Analytics (非推奨)* ソリューションを削除します。 PowerShell を使用している場合は、次のコードを使用します。`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "KeyVault" -Enabled $false`
 
 変更前に収集されたデータは、新しいソリューションには表示されません。 元の型とフィールド名を使用して、このデータのクエリを続行できます。

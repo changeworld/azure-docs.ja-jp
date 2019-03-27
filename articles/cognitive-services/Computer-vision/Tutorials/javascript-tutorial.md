@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Microsoft Cognitive Services の Computer Vision API を使用する基本的な JavaScript アプリを探索します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 46e19476999af8c481e093513ec81bec7aa2cc6a
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 7ac8b9e28996c14e702730b72265fd6165798227
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332491"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865075"
 ---
 # <a name="tutorial-computer-vision-api-javascript"></a>チュートリアル:Computer Vision API JavaScript
 

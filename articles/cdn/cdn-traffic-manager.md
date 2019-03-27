@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 2d184cc849eb3da60bbf0c387655da9fdf878853
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 4c072ef63c0d4961fba695fc8d9be1d12b4b0e8b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091608"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749216"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した複数の Azure CDN エンドポイント間でのフェールオーバーの設定
 
@@ -42,7 +42,7 @@ Azure Content Delivery Network (CDN) を構成するときに、お客様のニ�
 ## <a name="set-up-azure-traffic-manager"></a>Azure Traffic Manager を設定する
 Azure Traffic Manager プロファイルを作成し、CDN エンドポイント間での負荷分散を設定します。 
 
-1. 「[Traffic Manager プロファイルの作成](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#create-a-traffic-manager-profile-1)」の手順に従って、Azure Traffic Manager プロファイルを作成します。 
+1. 「[Traffic Manager プロファイルの作成](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile)」の手順に従って、Azure Traffic Manager プロファイルを作成します。 
 
     **[ルーティング方法]** で、**[優先度]** を選択します。
 

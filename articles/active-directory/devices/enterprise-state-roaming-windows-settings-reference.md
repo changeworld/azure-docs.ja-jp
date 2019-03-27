@@ -5,23 +5,24 @@ services: active-directory
 keywords: Enterprise State Roaming, Windows クラウド
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: curtand
-ms.component: devices
+ms.subservice: devices
 ms.assetid: 17cffc3e-2928-4235-91f7-a685bd6bdcbf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/30/2019
 ms.author: markvi
-ms.openlocfilehash: 45bf554e457e48704684fe8ac3b32c29f3f646b2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 92d08d12571236276ad6e3d6f3705139ea050a8d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189286"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184501"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
 以下に示したのは、Windows 10 でローミングまたはバックアップされる全設定の一覧です。 
@@ -50,15 +51,15 @@ Windows 10 デバイス上の設定に対する同期操作は、エンド ユ�
 * その他の Windows 設定: 「Windows 設定の詳細」を参照
 * Microsoft Edge ブラウザーの設定: Microsoft Edge のお気に入り、リーディング リスト、その他の設定
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
+![設定の同期](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
 Microsoft Edge ブラウザーの設定グループ (お気に入り、リーディング リスト) の同期は、Microsoft Edge ブラウザーの [設定] メニュー オプションを通じてエンド ユーザーが有効/無効にできます。
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
+![Account](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-edge.png)
 
 Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer の設定グループ (お気に入り、入力された URL) の同期を、Internet Explorer の [設定] メニュー オプションを使ってエンドユーザーが有効または無効にすることができます。 
 
-![](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
+![設定](./media/enterprise-state-roaming-windows-settings-reference/active-directory-enterprise-state-roaming-ie.png)
 
 ## <a name="windows-settings-details"></a>Windows 設定の詳細
 以下の表で "設定" の "グループ" 列に記載した "その他" という項目は、[設定]、[アカウント]、[設定の同期]、[その他の Windows の設定] の順にアクセスして無効にできる設定を表します。 

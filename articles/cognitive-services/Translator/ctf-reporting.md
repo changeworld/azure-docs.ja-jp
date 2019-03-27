@@ -4,27 +4,27 @@ titlesuffix: Azure Cognitive Services
 description: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: aa59ce89bf8c2c4b31d85c572dcdfb3645f06884
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: a2f8a9c5ceaac6209391df17f4ec08027991382b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49646012"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123421"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
 
 > [!NOTE]
 > このメソッドは非推奨です。 これは Translator Text API の V3.0 では使用できません。
-
+> 
 > コラボレーション翻訳フレームワーク (CTF) は、以前 Translator Text API の V2.0 で利用可能でしたが、2018 年 2 月 1 日をもって廃止されました。 AddTranslation と AddTranslationArray 関数により、ユーザーは、コラボレーション翻訳フレームワークによる修正を有効にできます。 2018 年 1 月 31 日以降、これら 2 つの関数は、新しい文の送信を受け付けなくなり、ユーザーにはエラー メッセージが表示されます。 これらの関数は廃止されており、置き換えられることはありません。
-
->同様の機能は Translator Hub API で利用可能で、自身の用語およびスタイルでカスタム翻訳システムをビルドできます。これは、Translator Text API でカテゴリ ID を使用して呼び出すことができます。 Translator Hub: [https://hub.microsofttranslator.com](https://hub.microsofttranslator.com)。 Translator Hub API: [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
+> 
+> 同様の機能は Translator Hub API で利用可能で、自身の用語およびスタイルでカスタム翻訳システムをビルドできます。これは、Translator Text API でカテゴリ ID を使用して呼び出すことができます。 Translator Hub: [https://hub.microsofttranslator.com](https://hub.microsofttranslator.com)。 Translator Hub API: [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
 
 コラボレーション翻訳フレームワーク (CTF) レポート API は、CTF ストア内の統計情報と実際のコンテンツを返します。 この API は、次の理由により、GetTranslations() メソッドと異なります。
 * ユーザーのアカウント (appId または Azure Marketplace アカウント) からのみ、翻訳されたコンテンツとその合計数を返します。
@@ -32,7 +32,7 @@ ms.locfileid: "49646012"
 * 自動翻訳 (機械翻訳) は返しません。
 
 ## <a name="endpoint"></a>エンドポイント
-CTF Reporting API のエンドポイントは http://api.microsofttranslator.com/v2/beta/ctfreporting.svc です。
+CTF Reporting API のエンドポイントは https://api.microsofttranslator.com/v2/beta/ctfreporting.svc です。
 
 
 ## <a name="methods"></a>メソッド
@@ -56,21 +56,21 @@ CTF Reporting API のエンドポイントは http://api.microsofttranslator.com
 **構文**
 
 > [!div class="tabbedCodeSnippets"]
-```cs
-UserTranslationCount[]GetUserTranslationCounts(
-           string appId,
-           string uriPrefix,
-           string from,
-           string to,
-           int? minRating,
-           int? maxRating,
-           string user,
-           string category
-           DateTime? minDateUtc,
-           DateTime? maxDateUtc,
-           int? skip,
-           int? take);
-```
+> ```cs
+> UserTranslationCount[]GetUserTranslationCounts(
+>            string appId,
+>            string uriPrefix,
+>            string from,
+>            string to,
+>            int? minRating,
+>            int? maxRating,
+>            string user,
+>            string category
+>            DateTime? minDateUtc,
+>            DateTime? maxDateUtc,
+>            int? skip,
+>            int? take);
+> ```
 
 **パラメーター**
 
@@ -127,21 +127,21 @@ UserTranslationCount[]GetUserTranslationCounts(
 **構文**
 
 > [!div class="tabbedCodeSnippets"]
-```cs
-UserTranslation[] GetUserTranslations (
-            string appId,
-            string uriPrefix,
-            string from,
-            string to,
-            int? minRating,
-            int? maxRating,
-            string user,
-            string category
-            DateTime? minDateUtc,
-            DateTime? maxDateUtc,
-            int? skip,
-            int? take);
-```
+> ```cs
+> UserTranslation[] GetUserTranslations (
+>             string appId,
+>             string uriPrefix,
+>             string from,
+>             string to,
+>             int? minRating,
+>             int? maxRating,
+>             string user,
+>             string category
+>             DateTime? minDateUtc,
+>             DateTime? maxDateUtc,
+>             int? skip,
+>             int? take);
+> ```
 
 **パラメーター**
 

@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: ed7e8346cba2a2243ef71cb9782219fb26481dc7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.date: 01/25/2019
+ms.openlocfilehash: 35759f03d7cf09a4114ca6dca74bd3ee92fdcbfa
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190071"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55462173"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Elastic Database ツールを使用したマルチシャード クエリ
 
@@ -59,7 +59,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 }
 ```
 
-主な相違点は、マルチシャード接続の構築です。 **SqlConnection** が単一のデータベースに作用する一方、**MultiShardConnection** は入力として***シャードのコレクション***を受け取ります。 シャードのコレクションは、シャード マップから設定します。 次に、 **UNION ALL** セマンティクスを使用してシャードのコレクションに対するクエリを実行して、単一の全体的な結果を生成します。 必要に応じて、コマンドの **ExecutionOptions** プロパティを使用して、行の元になっているシャードの名前を出力に追加できます。
+主な相違点は、マルチシャード接続の構築です。 **SqlConnection** が 1 つのデータベースに作用する一方、**MultiShardConnection** は入力として***シャードのコレクション***を受け取ります。 シャードのコレクションは、シャード マップから設定します。 次に、 **UNION ALL** セマンティクスを使用してシャードのコレクションに対するクエリを実行して、単一の全体的な結果を生成します。 必要に応じて、コマンドの **ExecutionOptions** プロパティを使用して、行の元になっているシャードの名前を出力に追加できます。
 
 ここで、 **myShardMap.GetShards()** の呼び出しに注目してください。 このメソッドは、シャード マップからすべてのシャードを取得し、すべての関連データベースを対象にクエリを実行する簡単な方法を提供します。 マルチシャード クエリのためのシャードのコレクションは、 **myShardMap.GetShards()** 呼び出しから返されたコレクションに対して LINQ クエリを実行することによって、さらに絞り込むことができます。 部分的な結果のポリシーとの組み合わせにおいて、マルチシャード クエリ実行の現在の機能は、数十から最大で数百のシャードで適切に動作するように設計されています。
 

@@ -5,17 +5,17 @@ description: Key Vault の仮想ネットワーク サービス エンドポイ�
 services: key-vault
 author: amitbapat
 ms.author: ambapat
-manager: mbaldwin
+manager: barbkess
 ms.date: 01/02/2019
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: 1d53fc6cef022f627bb1cd1f832ebf65698207a9
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 9848ed6baab240556e9eda59fbc3815c0767e899
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002427"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108583"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -74,6 +74,7 @@ Azure Key Vault の仮想ネットワーク サービス エンドポイント�
 |Azure SQL Database|[Azure SQL Database と Data Warehouse のに対する Transparent Data Encryption での Bring Your Own Key のサポート](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)。|
 |Azure Storage|[Azure Key Vault で顧客が管理するキーを Storage Service Encryption に使用する](../storage/common/storage-service-encryption-customer-managed-keys.md)。|
 |Azure Data Lake Store|顧客が管理するキーによる [Azure Data Lake Store 内のデータの暗号化](../data-lake-store/data-lake-store-encryption.md)。|
+|Azure Databricks|[高速で使いやすい、コラボレーション対応の Apache Spark ベースの分析サービス](../azure-databricks/what-is-azure-databricks.md)|
 
 
 

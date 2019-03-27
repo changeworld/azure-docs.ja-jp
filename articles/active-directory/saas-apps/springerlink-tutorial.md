@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Springer Link の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Springer Link の統合 | Microsoft Docs
 description: Azure Active Directory と Springer Link の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 58cdf029-bdc0-43c4-a469-b921c2a669bd
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 8138c7605b0024dfe4569e33843cb1e9d169271f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: acd5b23aec8c7c55d807060bc279569fb1d515fe
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438768"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162733"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>チュートリアル: Azure Active Directory と Springer Link の統合
+# <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>チュートリアル:Azure Active Directory と Springer Link の統合
 
 このチュートリアルでは、Springer Link と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -159,7 +160,7 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

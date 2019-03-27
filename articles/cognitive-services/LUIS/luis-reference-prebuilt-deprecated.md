@@ -5,18 +5,18 @@ description: この記事には、Language Understanding (LUIS) での非推奨�
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 7b294b9c528d0b7a93a3e287b37124a26d0851dd
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 6dfba843f9f265100a9ecf9c6f4f0e5003171826
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138060"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863290"
 ---
 # <a name="deprecated-prebuilt-entities-in-a-luis-app"></a>LUIS アプリにおける非推奨の作成済みエンティティ
 以下の作成済みエンティティは非推奨であり、新しい LUIS アプリに追加することはできません。
@@ -121,7 +121,7 @@ encyclopedia 組み込みエンティティには、次の表に示す 100 を�
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.american_football.team  ```| ``` green bay packers  ```|
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.ice_hockey.team  ```| ``` hamilton bulldogs  ```|
 ```builtin.encyclopedia.organization.organization```| ```builtin.encyclopedia.soccer.team  ```| ``` fc bayern munich  ```|
-```builtin.encyclopedia.organization.organization |builtin.encyclopedia.government.political_party|pertubuhan kebangsaan melayu singapura```|
+```builtin.encyclopedia.organization.organization``` |```builtin.encyclopedia.government.political_party```|```pertubuhan kebangsaan melayu singapura```|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.time.event  ```| ``` 1740 batavia massacre   ```|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.sports.championship_event  ```| ``` super bowl xxxix  ```|
 ```builtin.encyclopedia.time.event  ```| ``` builtin.encyclopedia.award.competition  ```| ``` eurovision song contest 2003  ```|

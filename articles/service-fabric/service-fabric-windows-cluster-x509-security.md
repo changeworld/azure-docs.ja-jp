@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: b23b2c46098fb53a3a08ff86c46cc6b6c9b936bb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 17dd2a8cf58066fda7f82ba53b048df8e9b89da8
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228574"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285247"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X.509 証明書を使用して Windows 上のスタンドアロン クラスターを保護する
 この記事では、スタンドアロン Windows クラスターの多様なノード間で行われる通信をセキュリティで保護する方法について説明します。 また、X.509 証明書を使用して、そのクラスターに接続しているクライアントを認証する方法についても説明します。 認証により、許可されたユーザーのみがクラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。 証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
@@ -175,7 +175,7 @@ ms.locfileid: "51228574"
         "storeType": "FileShare",
         "IsEncrypted": "false",
         "connectionstring": "c:\\ProgramData\\SF\\DiagnosticsStore"
-        }
+        },
         "security": {
             "metadata": "The Credential type X509 indicates this cluster is secured by using X509 certificates. The thumbprint format is d5 ec 42 3b 79 cb e5 07 fd 83 59 3c 56 b9 d5 31 24 25 42 64.",
             "ClusterCredentialType": "X509",
@@ -261,7 +261,7 @@ ms.locfileid: "51228574"
 
 テスト目的で使用するクラスターの場合は、自己署名証明書を選択することができます。
 
-## <a name="optional-create-a-self-signed-certificate"></a>省略可能: 自己署名証明書の作成
+## <a name="optional-create-a-self-signed-certificate"></a>省略可能:自己署名証明書の作成
 正しく保護できる自己署名証明書を作成する方法の 1 つが、C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure ディレクトリの Service Fabric SDK フォルダーにある CertSetup.ps1 スクリプトを使用する方法です。 このファイルを編集して証明書の既定の名前を変更します。 (値 CN=ServiceFabricDevClusterCert を探します。)このスクリプトを `.\CertSetup.ps1 -Install` として実行します。
 
 次に、保護されたパスワードを含む .pfx ファイルにその証明書をエクスポートします。 まず、証明書の拇印を取得します。 

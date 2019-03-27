@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e9a99fcbe161e0b6cdabf1363ab3121a77869df7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9fb63ae141665dbeb64ee7046427098d4482aa55
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024860"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111324"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>テンプレートを使用して Azure Data Factory のエンティティを作成する
 > [!NOTE]
@@ -236,7 +236,7 @@ dataFactoryName は以下のように "変数" で定義します。
 * 設定は環境によって異なります (例: 開発、テスト、運用)
 * シークレット情報 (パスワードなど)
 
-テンプレートを使用した Azure Data Factory エンティティのデプロイ時にシークレットを [Azure Key Vault](../../key-vault/key-vault-get-started.md) から取得する必要がある場合は、次の例で示されているように **Key Vault** と**シークレット名**を指定します。
+テンプレートを使用した Azure Data Factory エンティティのデプロイ時にシークレットを [Azure Key Vault](../../key-vault/key-vault-overview.md) から取得する必要がある場合は、次の例で示されているように **Key Vault** と**シークレット名**を指定します。
 
 ```JSON
 "parameters": {

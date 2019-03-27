@@ -1,72 +1,92 @@
 ---
-title: 'クイック スタート: Bing Spell Check API (Python)'
+title: クイック スタート:Bing Spell Check REST API と Python を使用してスペルをチェックする
 titlesuffix: Azure Cognitive Services
-description: Bing Spell Check API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
+description: Bing Spell Check REST API を使用してスペルと文法をチェックしてみましょう。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-spell-check
+ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 0c805dbb058e2cdf422d6797b5e7f55e38fc30e0
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: e95006c6448bf1179d33bcd00c16d6e4246db148
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52316363"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887320"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-python"></a>Bing Spell Check API のクイック スタート (Python) 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>クイック スタート:Bing Spell Check REST API と Python を使用してスペルをチェックする
 
-この記事では、Python で [Bing Spell Check API](https://azure.microsoft.com/services/cognitive-services/spell-check/)  を使用する方法について説明します。 Spell Check API は、認識できない単語のリストを置換候補と共に返します。 一般に、この API にテキストを送信し、テキスト内の単語を置換候補に置き換えるか、その判断をユーザー自身が行えるように置換候補をアプリケーションのユーザーに表示することになるでしょう。 この記事では、"Hollo, wrld!" というテキストを含んだ要求を送信する方法について説明します。 置換候補は "Hello" と "world" です。
+このクイック スタートを使用して、Bing Spell Check の REST API を呼び出してみましょう。 このシンプルな Python アプリケーションは、API に要求を送信して、一連の修正候補を返します。 このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このアプリケーションのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには、[Python 3.x](https://www.python.org/downloads/) が必要です。
+* Python [3.x](https://www.python.org)
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Spell Check API v7** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/#lang)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。 「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」も参照してください。
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="get-spell-check-results"></a>スペル チェックの結果を取得する
 
-1. 適切な IDE で新しい Python プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+## <a name="initialize-the-application"></a>アプリケーションを初期化する
 
-```python
-import http.client, urllib.parse, json
+1. お気に入りの IDE またはエディターで新しい Python ファイルを作成し、次の import ステートメントを追加します。
 
-text = 'Hollo, wrld!'
+   ```python
+   import requests
+   import json
+   ```
 
-data = {'text': text}
+2. スペル チェックの対象となるテキスト、サブスクリプション キー、Bing Spell Check エンドポイントに使用する変数を作成します。
 
-# NOTE: Replace this example key with a valid subscription key.
-key = 'ENTER KEY HERE'
+    ```python
+    api_key = "enter-your-key-here"
+    example_text = "Hollo, wrld" # the text to be spell-checked
+    endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/SpellCheck"
+    ```
 
-host = 'api.cognitive.microsoft.com'
-path = '/bing/v7.0/spellcheck?'
-params = 'mkt=en-us&mode=proof'
+## <a name="create-the-parameters-for-the-request"></a>要求のパラメーターを作成する
 
-headers = {'Ocp-Apim-Subscription-Key': key,
-'Content-Type': 'application/x-www-form-urlencoded'}
+1. `text` をキーとし、対象のテキストを値とする新しいディクショナリを作成します。
 
-# The headers in the following example 
-# are optional but should be considered as required:
-#
-# X-MSEdge-ClientIP: 999.999.999.999  
-# X-Search-Location: lat: +90.0000000000000;long: 00.0000000000000;re:100.000000000000
-# X-MSEdge-ClientID: <Client ID from Previous Response Goes Here>
+    ```python
+    data = {'text': example_text}
+    ```
 
-conn = http.client.HTTPSConnection(host)
-body = urllib.parse.urlencode (data)
-conn.request ("POST", path + params, body, headers)
-response = conn.getresponse ()
-output = json.dumps(json.loads(response.read()), indent=4)
-print (output)
-```
+2. 要求のパラメーターを追加します。 `mkt` パラメーターを該当する市場に、`mode` を `proof` に設定します。 
 
-**応答**
+    ```python
+    params = {
+        'mkt':'en-us',
+        'mode':'proof'
+        }
+    ```
+
+3. `Content-Type` ヘッダーを追加し、サブスクリプション キーを `Ocp-Apim-Subscription-Key` ヘッダーに追加します。
+
+    ```python
+    headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Ocp-Apim-Subscription-Key': api_key,
+        }
+    ```
+
+## <a name="send-the-request-and-read-the-response"></a>要求を送信して応答を読み取ります。
+
+1. 要求ライブラリを使用して POST 要求を送信します。
+
+    ```python
+    response = requests.post(endpoint, headers=headers, params=params, data=data)
+    ```
+
+2. JSON 応答を取得して出力します。
+    
+    ```python
+    json_response = response.json()
+    print(json.dumps(json_response, indent=4))
+    ```
+
+## <a name="example-json-response"></a>JSON の応答例
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -111,9 +131,7 @@ print (output)
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Bing Spell Check のチュートリアル](../tutorials/spellcheck.md)
+> [シングル ページ Web アプリを作成する](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>関連項目
-
-- [Bing Spell Check の概要](../proof-text.md)
+- [Bing Spell Check API とは](../overview.md)
 - [Bing Spell Check API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

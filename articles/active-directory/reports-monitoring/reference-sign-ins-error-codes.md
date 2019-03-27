@@ -4,7 +4,7 @@ description: サインイン アクティビティ レポートのエラー コ�
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6f8d3c3017a914f261c7e4f8bbe0e42d1edf8a9
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e7f3c50a272ef5cc0d4980cb4a623ac043d764dd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622433"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190910"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>サインイン アクティビティ レポートのエラー コード 
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: ba82aeff1ce699efaa850e50d6840fa0d5483f20
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: d4ff009c11b3a0f2ebe97e5c452f078eaa529fc3
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321094"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301725"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -665,10 +665,10 @@ az webapp log tail --resource-group <resource group name> --name <function app n
 Azure PowerShell では、次のコマンドを使用して、ご使用の Azure アカウントの追加、サブスクリプションの選択、ログ ファイルのストリーミングを行います。
 
 ```powershell
-PS C:\> Add-AzureAccount
-PS C:\> Get-AzureSubscription
-PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-AzureSubscription
-PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
+Add-AzAccount
+Get-AzSubscription
+Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
+Get-AzWebSiteLog -Name <function app name> -Tail
 ```
 
 詳細については、[Azure App Service の Web アプリの診断ログの有効化](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)に関するページをご覧ください。

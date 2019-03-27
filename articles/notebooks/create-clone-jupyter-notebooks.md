@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 151d945bbeda9f7dd496f8469f8f858e8369da8f
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 8961a863f1b268a034310554230096cc0f9d5260
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164417"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54844060"
 ---
 # <a name="create-and-clone-projects"></a>プロジェクトの作成と複製
 
@@ -30,7 +30,7 @@ Azure Notebooks では、Jupyter ノートブックや関連するファイル�
 
 `https://notebooks.azure.com/<userID>/projects` の **[マイ プロジェクト]** は、プロジェクトの表示、管理、および作成を行う場所です。
 
-[![](media/my-projects-dashboard.png "Azure Notebooks の [マイ プロジェクト] ダッシュボード")](media/my-projects-dashboard.png#lightbox)
+[![Azure Notebooks の [マイ プロジェクト] ダッシュボード](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 ダッシュボードで実行できることは、ユーザー ID を所有するアカウントでサインインしているかどうかによって変わります。
 
@@ -106,8 +106,8 @@ GitHub からリポジトリをインポートすると、その履歴もイン�
 
 - [サンプル ノートブックの調査](azure-notebooks-samples.md)
 - [方法:プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
-- [方法:ノートブック内からのパッケージのインストール](install-packages-jupyter-notebook.md)
+- [方法: ノートブック内からのパッケージのインストール](install-packages-jupyter-notebook.md)
 - [方法:スライド ショーの表示](present-jupyter-notebooks-slideshow.md)
 - [方法:データ ファイルの操作](work-with-project-data-files.md)
-- [方法:データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
-- [方法:Azure Machine Learning Services の使用](use-machine-learning-services-jupyter-notebooks.md)
+- [方法: データ リソースへのアクセス](access-data-resources-jupyter-notebooks.md)
+- [方法: Azure Machine Learning Services の使用](use-machine-learning-services-jupyter-notebooks.md)

@@ -1,19 +1,19 @@
 ---
 title: 管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する
-description: 管理イベントに関するアラートは 10 月 1 日に削除されます。 既存に関するアラートを移行して準備してください。
+description: 管理イベントに関するアラートは 10 月 1 日に削除されます。 既存のアラートを移行して準備してください。
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
-ms.component: alerts
-ms.openlocfilehash: 8fd7161208f6303e03deaacca6a1e2fad24ec45e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.subservice: alerts
+ms.openlocfilehash: 55d0269aaa330f928a9d037eec6a3445825a5ed3
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580878"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54470343"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する
 
@@ -116,3 +116,4 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 * [アクティビティ ログ アラート webhook スキーマ](../../azure-monitor/platform/activity-log-alerts-webhook.md) の確認
 * [サービス通知](../../azure-monitor/platform/service-notifications.md) の詳細
 * [アクション グループ](../../azure-monitor/platform/action-groups.md)の詳細については、こちらをご覧ください。
+

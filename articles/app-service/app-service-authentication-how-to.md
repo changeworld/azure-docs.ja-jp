@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f3e30309b230ec44ddf39648b943f3f76dc7805d
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 97764db40807214e756f119ca95fd640164f0cf2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722653"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877309"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -27,7 +27,7 @@ ms.locfileid: "53722653"
 
 すぐに開始するには、以下のチュートリアルのいずれかをご覧ください。
 
-* [チュートリアル: Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および承認する](app-service-web-tutorial-auth-aad.md)
+* [チュートリアル: Azure App Service (Windows) でユーザーをエンド ツー エンドで認証および認可する](app-service-web-tutorial-auth-aad.md)
 * [チュートリアル: Linux 用 Azure App Service でユーザーをエンド ツー エンドで認証および承認する](containers/tutorial-auth-aad.md)
 * [Azure Active Directory ログインを使用するようにアプリを構成する方法](configure-authentication-provider-aad.md)
 * [Facebook ログインを使用するようにアプリを構成する方法](configure-authentication-provider-facebook.md)
@@ -174,11 +174,11 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 クライアント コード (モバイル アプリやブラウザー内の JavaScript など) から、HTTP `GET` 要求を `/.auth/me` に送信します。 返される JSON にはプロバイダー固有のトークンがあります。
 
 > [!NOTE]
-> アクセス トークンはプロバイダー リソースへのアクセス用であるため、クライアント シークレットを使用してプロバイダーを構成する場合にのみ存在します。 更新トークンの取得方法については、「[更新アクセス トークン](#refresh-access-tokens)」をご覧ください。
+> アクセス トークンはプロバイダー リソースへのアクセス用であるため、クライアント シークレットを使用してプロバイダーを構成する場合にのみ存在します。 更新トークンを取得する方法を確認するには、「更新アクセス トークン」を参照してください。
 
-## <a name="refresh-access-tokens"></a>更新アクセス トークン
+## <a name="refresh-identity-provider-tokens"></a>ID プロバイダー トークンの更新
 
-プロバイダーのアクセス トークンが期限切れになった場合は、ユーザーを再認証する必要があります。 アプリケーションの `/.auth/refresh` エンドポイントに `GET` 呼び出しを行って、トークンの期限切れを回避することができます。 呼び出されると、App Service は認証されたユーザーのトークン ストア内のアクセス トークンを自動的に更新します。 アプリ コードによる後続のトークン要求で、更新トークンを取得します。 ただし、トークンの更新が動作するためには、トークン ストアにプロバイダーの[更新トークン](https://auth0.com/learn/refresh-tokens/)が含まれている必要があります。 更新トークンの取得方法は各プロバイダーによって文書化されていますが、次の一覧に概要を示します。
+プロバイダーのアクセス トークン ([セッション トークン](#extend-session-token-expiration-grace-period)ではなく) が期限切れになった場合は、そのトークンを再度使用する前に、ユーザーを再認証する必要があります。 アプリケーションの `/.auth/refresh` エンドポイントに `GET` 呼び出しを行って、トークンの期限切れを回避することができます。 呼び出されると、App Service は認証されたユーザーのトークン ストア内のアクセス トークンを自動的に更新します。 アプリ コードによる後続のトークン要求で、更新トークンを取得します。 ただし、トークンの更新が動作するためには、トークン ストアにプロバイダーの[更新トークン](https://auth0.com/learn/refresh-tokens/)が含まれている必要があります。 更新トークンの取得方法は各プロバイダーによって文書化されていますが、次の一覧に概要を示します。
 
 - **Google**: `access_type=offline` クエリ文字列パラメーターを `/.auth/login/google` API 呼び出しに追加します。 Mobile Apps SDK を使用している場合は、`LogicAsync` オーバーロードの 1 つにパラメーターを追加できます ([Google 更新トークン](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)に関するページをご覧ください)。
 - **Facebook**: 更新トークンを提供しません。 長期間維持されるトークンの有効期限は 60 日間です ([Facebook のアクセス トークンの有効期限と延長](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)に関するページをご覧ください)。
@@ -202,7 +202,7 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 
 ```JavaScript
 function refreshTokens() {
-  var refreshUrl = "/.auth/refresh";
+  let refreshUrl = "/.auth/refresh";
   $.ajax(refreshUrl) .done(function() {
     console.log("Token refresh completed successfully.");
   }) .fail(function() {
@@ -213,9 +213,9 @@ function refreshTokens() {
 
 ユーザーがアプリに許可されている権限を取り消すと、`/.auth/me` の呼び出しは `403 Forbidden` 応答で失敗する可能性があります。 エラーを診断するには、アプリケーション ログで詳細を確認します。
 
-## <a name="extend-session-expiration-grace-period"></a>セッションの有効期限の猶予期間の延長
+## <a name="extend-session-token-expiration-grace-period"></a>セッション トークンの有効期限の猶予期間の延長
 
-認証されたセッションの期限が切れた後、既定で 72 時間の猶予期間があります。 この猶予期間内は、ユーザーを再認証せずにセッション Cookie またはセッション トークンを App Service で更新できます。 セッション Cookie またはセッション トークンが無効になったときに `/.auth/refresh` を呼び出すことができ、トークンの有効期限を自分で追跡する必要はありません。 72 時間の猶予期間が経過した後、ユーザーはもう一度サインインして有効なセッション Cookie またはセッション トークンを取得する必要があります。
+認証されたセッションは、8 時間後に期限切れになります。 認証されたセッションの期限が切れた後、既定で 72 時間の猶予期間があります。 この猶予期間内は、ユーザーを再認証せずにセッション トークンを App Service で更新できます。 セッション トークンが無効になったときに `/.auth/refresh` を呼び出すことができ、トークンの有効期限を自分で追跡する必要はありません。 72 時間の猶予期間が経過した後、ユーザーはもう一度サインインして有効なセッション トークンを取得する必要があります。
 
 72 時間が十分な時間でない場合は、この有効期間を延長することができます。 有効期限を長期に延長すると、セキュリティに大きく影響する可能性があります (認証トークンが漏洩または盗難にあった場合など)。 したがって、既定の 72 時間のままにするか、延長期間を最小限の値に設定する必要があります。
 

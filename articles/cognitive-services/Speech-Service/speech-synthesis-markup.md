@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: 音声合成マークアップ言語を使用して、テキスト読み上げの発音と韻律を制御します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: f6a2d6a35200bc4dec169aae72415c1c2904c465
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f721c91c828b5c7c8497c07bb0cfe79646daf0f8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341135"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868839"
 ---
 # <a name="speech-synthesis-markup-language"></a>音声合成マークアップ言語
 

@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 03/07/2018
-ms.openlocfilehash: e488fc7e568fc94f9a0744c12122b605f37f8152
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.date: 12/13/2018
+ms.openlocfilehash: 02c64fcd51862d8ff9f107adb0ca5cfda5812a88
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339673"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567113"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>ネットワーク構成を Azure App Service のホスティング プラン用に同期する
 

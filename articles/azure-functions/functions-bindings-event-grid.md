@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 3d0c72f0178cddd668c0ac029c803ff339a1f6f4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810936"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311615"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
@@ -46,7 +46,7 @@ Event Grid トリガーは、[Microsoft.Azure.WebJobs.Extensions.EventGrid](http
 
 Event Grid トリガーの言語固有の例をご覧ください。
 
-* [C#](#c-example)
+* C#
 * [C# スクリプト (.csx)](#c-script-example)
 * [Java](#trigger---java-examples)
 * [JavaScript](#javascript-example)
@@ -103,7 +103,7 @@ namespace Company.Function
 }
 ```
 
-詳しくは、「[パッケージ](#packages)」、「[属性](#attributes)」、「[構成](#configuration)」、および「[使用法](#usage)」をご覧ください。
+詳しくは、「パッケージ」、「[属性](#attributes)」、「[構成](#configuration)」、および「[使用法](#usage)」をご覧ください。
 
 ### <a name="c-script-example"></a>C# スクリプトの例
 
@@ -155,7 +155,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-詳しくは、「[パッケージ](#packages)」、「[属性](#attributes)」、「[構成](#configuration)」、および「[使用法](#usage)」をご覧ください。
+詳しくは、「パッケージ」、「[属性](#attributes)」、「[構成](#configuration)」、および「[使用法](#usage)」をご覧ください。
 
 ### <a name="javascript-example"></a>JavaScript の例
 
@@ -314,7 +314,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 }
 ```
 
-完全な例については、「[C# の例](#c-example)」を参照してください。
+完全な例については、「C# の例」を参照してください。
 
 ## <a name="configuration"></a>構成
 

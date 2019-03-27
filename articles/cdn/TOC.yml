@@ -13,6 +13,8 @@ items:
     href: cdn-create-new-endpoint.md
   - name: ストレージ アカウントの統合
     href: cdn-create-a-storage-account-with-cdn.md
+  - name: Azure Resource Manager テンプレートを使用したプロファイルの作成
+    href: create-profile-resource-manager-template.md
 - name: チュートリアル
   items:
   - name: Web アプリに Azure CDN を追加する
@@ -39,8 +41,8 @@ items:
     href: cdn-http2.md
   - name: Verizon POP リストの取得
     href: cdn-pop-list-api.md
-  - name: Standard Verizon から Premium Verizon への移行
-    href: cdn-migrate.md
+  - name: DDoS Protection
+    href: cdn-ddos.md
 - name: ハウツー ガイド
   items:
   - name: コンテンツの最適化
@@ -148,7 +150,7 @@ items:
     - name: X-EC-Debug ヘッダー
       href: cdn-http-debug-headers.md
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.cdn
+    href: /powershell/module/az.cdn
   - name: .NET
     href: /dotnet/api/microsoft.azure.management.cdn
   - name: Java
@@ -178,12 +180,12 @@ items:
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=cdn
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-cdn
+    href: https://stackoverflow.com/questions/tagged/azure-cdn
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=cdn
-ms.openlocfilehash: 654405e764e7f37dd4d12b2bf55ddb035861f01f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: fa51844618c4036465813b55edd9b8ec03f41abd
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103657"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371725"

@@ -4,25 +4,25 @@ titleSuffix: Azure Cognitive Services
 description: Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTful サービスです。 検索結果は、Web ページ、画像、ビデオ、ニュース、翻訳などを含むように簡単に構成できます。 結果は JSON として提供され、検索の関連性と Bing Web Search のサブスクリプションに基づいています。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b11e7117143dea6db71b1c60d89054477e94227d
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2cf135cc984ce032113de65bead210bd4c5e95ce
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255994"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861801"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Search API とは
 
 Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTful サービスです。 検索結果は、Web ページ、画像、ビデオ、ニュース、翻訳などを含むように簡単に構成できます。 結果は JSON として提供され、検索の関連性と Bing Web Search のサブスクリプションに基づいています。
 
-この API は、ユーザーの検索クエリに関連するすべてのコンテンツにアクセスする必要があるアプリケーションに最適です。 特定の種類の結果のみを必要とするアプリケーションを構築する場合は、[Bing Image Search API](../Bing-Image-Search/overview.md)、[Bing Video Search API](../Bing-Video-Search/search-the-web.md)、または [Bing News Search API](../Bing-News-Search/search-the-web.md) を使用することを検討してください。 Bing Search API の詳細な一覧については、[Cognitive Services APIs](https://docs.microsoft.com/azure/cognitive-services#cognitive-services-apis) を参照してください。
+この API は、ユーザーの検索クエリに関連するすべてのコンテンツにアクセスする必要があるアプリケーションに最適です。 特定の種類の結果のみを必要とするアプリケーションを構築する場合は、[Bing Image Search API](../Bing-Image-Search/overview.md)、[Bing Video Search API](../Bing-Video-Search/search-the-web.md)、または [Bing News Search API](../Bing-News-Search/search-the-web.md) を使用することを検討してください。 Bing Search API の詳細な一覧については、[Cognitive Services APIs](https://docs.microsoft.com/azure/cognitive-services) を参照してください。
 
 しくみを確認するには、 [Bing Web Search API のデモ](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)を試してください。
 

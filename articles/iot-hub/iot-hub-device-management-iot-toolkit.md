@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: ec19045892b975fed7611c7747fa7b2bb4b1515c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 9b739fe3a8bd068d55009498b56f315b197769b1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051138"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727538"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Tools を使用する
 
@@ -33,6 +33,8 @@ ms.locfileid: "54051138"
 
 デバイス ツインは、デバイスの状態に関する情報 (メタデータ、構成、状態) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 デバイス ツインの詳細については、「[デバイス ツインの使用](iot-hub-node-node-twin-getstarted.md)」を参照してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="what-you-learn"></a>学習内容
 
 さまざまな管理オプションを指定して、開発マシンに対して Visual Studio Code 用 Azure IoT Tools を使用する方法について学びます。
@@ -46,7 +48,7 @@ ms.locfileid: "54051138"
 * 有効な Azure サブスクリプション
 * サブスクリプションの Azure IoT Hub。
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [VS Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+* [VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>サインインして IoT ハブにアクセスする
 

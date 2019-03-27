@@ -4,7 +4,7 @@ description: サブスクリプションを別のテナントに移行した後�
 services: key-vault
 documentationcenter: ''
 author: amitbapat
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 46d7bc21-fa79-49e4-8c84-032eef1d813e
 ms.service: key-vault
@@ -13,14 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: ea6fc4b155075084150d5bb732f3f8a08846974f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a83bff5a494ce338f43b6e967df5fe67cacfab01
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074310"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112191"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>サブスクリプション移行後のキー コンテナー テナント ID の変更
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="q-my-subscription-was-moved-from-tenant-a-to-tenant-b-how-do-i-change-the-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>Q:テナント A からテナント B にサブスクリプションを移行しました。既存のキー コンテナーのテナント ID を変更し、テナント B 内のプリンシパルに正しい ACL を設定する方法を教えてください。
 
@@ -33,17 +35,17 @@ ms.locfileid: "54074310"
 たとえば、テナント A からテナント B に移行したサブスクリプションに "myvault" というキー コンテナーがあるとすると、このキー コンテナーのテナント ID を変更して古いアクセス ポリシーを削除する方法は、次のようになります。
 
 <pre>
-Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
-$vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId
-$vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties
-$vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId
+Select-AzSubscription -SubscriptionId YourSubscriptionID
+$vaultResourceId = (Get-AzKeyVault -VaultName myvault).ResourceId
+$vault = Get-AzResource –ResourceId $vaultResourceId -ExpandProperties
+$vault.Properties.TenantId = (Get-AzContext).Tenant.TenantId
 $vault.Properties.AccessPolicies = @()
-Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
+Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>
 
-このコンテナーは移行前にテナント A にあったため、**$vault.Properties.TenantId** の元の値はテナント A です。一方、**(Get-AzureRmContext).Tenant.TenantId** の値はテナント B になります。
+このコンテナーは移行前にテナント A にあったため、**$vault.Properties.TenantId** の元の値はテナント A です。一方、**(Get-AzContext).Tenant.TenantId** の値はテナント B になります。
 
-これで、コンテナーが正しいテナント ID に関連付けられ、古いアクセス ポリシー エントリが削除されたので、[Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) で新しいアクセス ポリシー エントリを設定します。
+これで、コンテナーが正しいテナント ID に関連付けられ、古いアクセス ポリシー エントリが削除されたので、[Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) で新しいアクセス ポリシー エントリを設定します。
 
 ## <a name="next-steps"></a>次の手順
 

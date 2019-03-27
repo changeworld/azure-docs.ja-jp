@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6b02714c3a62e8d11512c1cc2dfc7a75a422441d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: e81f2b42e725e50473c09622a486586fb6721ad5
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076384"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214845"
 ---
 # <a name="containers-offer-publishing-guide"></a>Containers のオファー発行ガイド
 
@@ -42,7 +42,6 @@ Microsoft は現在、無料およびライセンス持ち込み (BYOL) のラ�
 | Dockerfile からビルドされたイメージ | コンテナー イメージは、Docker イメージの仕様に基づき、Dockerfile からビルドされる必要があります。<ul> <li>Docker イメージの作成の詳細については、[docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage) にある使用方法のセクションを参照してください。</li> </ul> |  
 | ACR でのホスティング | コンテナー イメージは、Azure Container Registry (ACR) リポジトリでホストされる必要があります。<ul> <li>ACR の扱いの詳細については、「クイック スタート:Azure Portal を使用したコンテナー レジストリの作成」 ([docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)) をご覧ください。</li> </ul> |  
 | イメージのタグ付け | コンテナー イメージには、少なくとも 1 つのタグを含める必要があります (タグの最大数:16)。<ul> <li>画像のタグ付けの詳細については、[docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag) にある Docker タグのページを参照してください。</li> </ul> |  
-
 
 ## <a name="next-steps"></a>次の手順
 

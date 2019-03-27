@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Bing Visual Search SDK を使用して、ImageInsightsToken で指定されている画像の URL を取得します。
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: 609e164209bb2c920a36f293cee146cfece15fb5
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: c3ceb8f130118ee7abdbe801cd3931e9f870ec4c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742611"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538886"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>ImageInsightsToken を使用して以前の検索から似た画像を見つける
 
@@ -26,7 +26,7 @@ Visual Search SDK を使用すると、前に実行された `ImageInsightsToken
 ## <a name="prerequisites"></a>前提条件
 
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
-* Linux/macOS を使用している場合、このアプリケーションは [Mono](http://www.mono-project.com/) を使用して実行できます。
+* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 * NuGet Visual Search パッケージと Image Search パッケージ。 
     - Visual Studio でソリューション エクスプ ローラーから、プロジェクトを右クリックして、メニューから `Manage NuGet Packages` を選択します。 `Microsoft.Azure.CognitiveServices.Search.CustomSearch` パッケージと `Microsoft.Azure.CognitiveServices.Search.ImageSearch` パッケージをインストールします。 NuGet パッケージをインストールすると、次のものもインストールされます。
         - Microsoft.Rest.ClientRuntime

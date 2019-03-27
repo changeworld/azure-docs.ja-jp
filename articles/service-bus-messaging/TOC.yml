@@ -143,8 +143,6 @@ items:
         href: service-bus-auto-forwarding.md
       - name: トランザクション処理
         href: service-bus-transactions.md
-      - name: ペアの名前空間の実装
-        href: service-bus-paired-namespaces.md
     - name: エンドツーエンドのトレースと診断
       href: service-bus-end-to-end-tracing.md
     - name: 多層 Service Bus アプリケーションを構築する
@@ -188,8 +186,16 @@ items:
       href: /dotnet/api/microsoft.azure.servicebus
   - name: Java
     href: /java/api/overview/azure/servicebus
+  - name: Python
+    href: /python/api/overview/azure/servicebus?view=azure-python
   - name: Node.js
     href: /javascript/api/overview/azure/service-bus
+  - name: PHP
+    href: https://github.com/Azure/azure-sdk-for-php
+  - name: Ruby
+    href: https://github.com/Azure/azure-sdk-for-ruby
+  - name: Go
+    href: https://github.com/Azure/azure-service-bus-go
   - name: Azure PowerShell
     href: /powershell/module/azurerm.servicebus
   - name: REST
@@ -218,21 +224,19 @@ items:
     href: https://azure.microsoft.com/pricing/details/service-bus/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
-  - name: 価格の詳細
-    href: service-bus-pricing-billing.md
-  - name: ServiceBus360
-    href: https://www.servicebus360.com/
+  - name: Serverless360
+    href: https://www.serverless360.com/
   - name: サービス バス Explorer
     href: https://github.com/paolosalvatori/ServiceBusExplorer
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=service-bus
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azureservicebus
+    href: https://stackoverflow.com/questions/tagged/azureservicebus
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: 6fd3d46596380360332366f600b84c82e0c75937
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 35f2c03243229b4e7d4a741bc2a5a86cadca3105
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260320"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496687"

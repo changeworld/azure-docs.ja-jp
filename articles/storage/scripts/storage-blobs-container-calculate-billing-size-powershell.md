@@ -15,18 +15,18 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 5e1505794097ac6d67997841cade46013686377f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 805abec84b26a6b2b9af3dfe318f877f4edb9547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53627761"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080898"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Blob コンテナーの合計課金サイズを計算する
 
 このスクリプトは、請求額を見積もるために Azure Blob ストレージ内のコンテナーのサイズを計算します。 スクリプトは、コンテナー内の Blob のサイズを合計します。
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -85,7 +85,7 @@ For-Each Signed Identifier[512 bytes]
 
 * BLOB 毎に 124 のバイトのオーバーヘッドがありますが、これには次のものが含まれます。
     - 最終変更時刻
-    - サイズ
+    - Size
     - Cache-Control
     - Content-Type
     - Content-Language
@@ -101,17 +101,17 @@ For-Each Signed Identifier[512 bytes]
 * 格納されているメタデータのブロックごとに、名前 (ASCII 形式) の長さを加え、文字列値の長さを足します。
 
 * ブロック BLOB の場合:
-    * ブロック一覧の 8 バイト。
-    * ブロックの数にブロック ID のサイズ (バイト単位) を掛けたもの。
-    * コミットされたブロックとコミットされていないブロックすべてのデータのサイズ。
+  * ブロック一覧の 8 バイト。
+  * ブロックの数にブロック ID のサイズ (バイト単位) を掛けたもの。
+  * コミットされたブロックとコミットされていないブロックすべてのデータのサイズ。
 
     >[!NOTE]
     >スナップショットが使用されている場合、このサイズは、ベース BLOB またはスナップショット BLOB の一意のデータだけを含みます。 コミットされていないブロックが 1 週間後に使用されていなければ、ガベージ コレクションされます。 その後は、課金対象ではありません。
 
 * ページ BLOB の場合:
-    * 連続しないデータのあるページ範囲の数に 12 バイトを掛けます。 これは **GetPageRanges** API を呼び出すときに表示される一意のページ範囲の数です。
+  * 連続しないデータのあるページ範囲の数に 12 バイトを掛けます。 これは **GetPageRanges** API を呼び出すときに表示される一意のページ範囲の数です。
 
-    * 保存されているすべてのページのデータのサイズ (バイト単位)。
+  * 保存されているすべてのページのデータのサイズ (バイト単位)。
 
     >[!NOTE]
     >スナップショットを使用すると、計算中のベース BLOB またはスナップショット BLOB の一意のページだけがこのサイズに含まれます。

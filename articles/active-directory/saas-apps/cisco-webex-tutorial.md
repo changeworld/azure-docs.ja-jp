@@ -1,33 +1,34 @@
 ---
-title: チュートリアル:Azure Active Directory と Cisco Webex の統合 | Microsoft Docs
-description: Azure Active Directory と Cisco Webex の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と Cisco Webex Meetings の統合 | Microsoft Docs
+description: Azure Active Directory と Cisco Webex Meetings の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 26704ca7-13ed-4261-bf24-fd6252e2072b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/4/2019
+ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 61ea0874f76fb054ddb1ae23d42a7161bea2f96b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 308f745489fba2e2b539a2f2615b65228565dcf9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064321"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850011"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>チュートリアル:Azure Active Directory と Cisco Webex の統合
+# <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory と Cisco Webex Meetings の統合
 
-このチュートリアルでは、Cisco Webex と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Cisco Webex と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Cisco Webex Meetings と Azure Active Directory (Azure AD) を統合する方法について説明します。
+Cisco Webex Meetings と Azure AD の統合には、次の利点があります。
 
-* Cisco Webex にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントで Cisco Webex に自動的にサインイン (シングル サインオン) するように設定できます。
+* Cisco Webex Meetings にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントで Cisco Webex Meetings に自動的にサインイン (シングル サインオン) するように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -35,26 +36,24 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-Cisco Webex と Azure AD の統合を構成するには、次のものが必要です。
+Cisco Webex Meetings と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Cisco Webex でのシングル サインオンが有効なサブスクリプション
+* Cisco Webex Meetings でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Cisco Webex では、**SP** によって開始される SSO がサポートされます
+* Cisco Webex Meetings では、**SP** によって開始される SSO がサポートされます
 
-* Cisco Webex では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Cisco Webex Meetings では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
-* Cisco Webex では、**自動化された**ユーザー プロビジョニングがサポートされます
+## <a name="adding-cisco-webex-meetings-from-the-gallery"></a>ギャラリーからの Cisco Webex Meetings の追加
 
-## <a name="adding-cisco-webex-from-the-gallery"></a>ギャラリーからの Cisco Webex の追加
+Azure AD への Cisco Webex Meetings の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Cisco Webex Meetings を追加する必要があります。
 
-Azure AD への Cisco Webex の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Cisco Webex を追加する必要があります。
-
-**ギャラリーから Cisco Webex を追加するには、次の手順に従います。**
+**ギャラリーから Cisco Webex Meetings を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -68,31 +67,31 @@ Azure AD への Cisco Webex の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Cisco Webex**」と入力して、結果パネルから **[Cisco Webex]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Cisco Webex Meetings**」と入力して、結果パネルから **[Cisco Webex Meetings]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
-     ![結果リストの Cisco Webex](common/search-new-app.png)
+     ![結果リストの Cisco Webex Meetings](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Cisco Webex で Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Cisco Webex 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Cisco Webex Meetings で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Cisco Webex Meetings 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
-Cisco Webex で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Cisco Webex Meetings で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Cisco Webex のシングル サインオンの構成](#configure-cisco-webex-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+2. **[Cisco Webex Meetings のシングル サインオンの構成](#configure-cisco-webex-meetings-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Cisco Webex のテスト ユーザーの作成](#create-cisco-webex-test-user)** - Cisco Webex で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Cisco Webex Meetings のテスト ユーザーの作成](#create-cisco-webex-meetings-test-user)** - Cisco Webex Meetings で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-Cisco Webex で Azure AD シングル サインオンを構成するには、次の手順に従います。
+Cisco Webex Meetings で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) の **Cisco Webex** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **Cisco Webex Meetings** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -100,29 +99,14 @@ Cisco Webex で Azure AD シングル サインオンを構成するには、次
 
     ![シングル サインオン選択モード](common/select-saml-option.png)
 
-3. 別の Web ブラウザー ウィンドウで、Cisco Webex 企業サイトに管理者としてサインインします。
-
-4. メニューの左側の **[Settings]\(設定\)** をクリックします。
-
-    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_cisco_webex_10.png)
-
-5. [Settings]\(設定\) ページで、**[Authentication]\(認証\)** セクションまでスクロールし、**[Modify]\(変更\)** をクリックします。
-
-    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_cisco_webex_14.png)
-
-6. **[Integrate a 3rd-party identity provider.(Advanced)] \(サード パーティの ID プロバイダーを統合する。(詳細))** を選択して、次の画面に移動します。
-
-    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_cisco_webex_15.png)
-
-7. **[Export Directory Metadata]\(ディレクトリ メタデータのエクスポート\)** ページで、**[Download Metadata File]\(メタデータ ファイルのダウンロード\)** をクリックしてメタデータ ファイルをダウンロードします。
-
-    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_cisco_webex_16.png)
-
-8. Azure portal の **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+3. Azure portal の **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-9. **[基本的な SAML 構成]** セクションで、ダウンロードした**サービス プロバイダー メタデータ ファイル**をアップロードし、次の手順を実行してアプリケーションを構成します。
+4. **[基本的な SAML 構成]** セクションで、ダウンロードした**サービス プロバイダー メタデータ ファイル**をアップロードし、次の手順を実行してアプリケーションを構成します。
+
+    >[!Note]
+    >チュートリアルの **[Cisco Webex Meetings シングル サインオンの構成]** セクションで後述するサービス プロバイダー メタデータ ファイルを取得します。 
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
@@ -134,28 +118,26 @@ Cisco Webex で Azure AD シングル サインオンを構成するには、次
 
     c. サービス プロバイダー メタデータ ファイルのアップロードが正常に完了すると、次のように、**識別子**と**応答 URL** の値が **[基本的な SAML 構成]** セクションに自動的に入力されます。
 
-    ![[Cisco Webex のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
+    ![[Cisco Webex Meetings のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.webex.com/` という形式で URL を入力します。
+    **[サインオン URL]** テキストボックスに、SP メタデータ ファイルのアップロードによって自動入力される **[応答 URL]** の値を貼り付けます。
 
-    > [!Note]
-    > サインオン URL は実際の値ではありません。 この値は実際のサインオン URL で更新します。 この値を取得するには、[Cisco Webex クライアント サポート チーム](https://www.webex.co.in/support/support-overview.html)に問い合わせてください。
-
-10. Cisco Webex アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+5. Cisco Webex Meetings アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして属性を追加します。
 
     ![image](common/edit-attribute.png)
 
-11. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+6. **[ユーザーの要求]** セクションからデフォルト属性を削除します。Cisco Webex Meetings アプリケーションでは、さらにいくつかの属性が SAML 応答で返されます。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
     
     | Name | ソース属性|
-    | ---------------| --------------- | --------- |
+    | ---------------|  --------- |
     |   firstname    | User.givenname |
     |   lastname    | User.surname |
+    |   email       | User.mail |
     |   uid    | User.mail |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    ![image](common/new-save-attribute.png)
+    ![image](./media/cisco-webex-tutorial/tutorial-cisco-webex-addnewclaim.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -171,11 +153,11 @@ Cisco Webex で Azure AD シングル サインオンを構成するには、次
 
     g. **[Save]** をクリックします。
 
-12. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-13. **[Cisco Webex のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+8. **[Cisco Webex Meetings のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -185,15 +167,32 @@ Cisco Webex で Azure AD シングル サインオンを構成するには、次
 
     c. ログアウト URL
 
-### <a name="configure-cisco-webex-single-sign-on"></a>Cisco Webex シングル サインオンの構成
+### <a name="configure-cisco-webex-meetings-single-sign-on"></a>Cisco Webex Meetings シングル サインオンの構成
 
-1. Cisco Webex 企業サイトの管理者ページで、ファイル ブラウザー オプションを使用して Azure AD メタデータファイルを探してアップロードします。 次に、**[Require certificate signed by a certificate authority in Metadata (more secure)]\(証明機関の署名付き証明書がメタデータに必要 (高セキュリティ)\)** を選択し、次の画面に進みます。 
+1. 管理者権限を備えた資格情報を使って [Cisco Cloud Collaboration Management](https://www.webex.com/go/connectadmin) に移動します。
 
-    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_cisco_webex_11.png)
+2. **[Security Settings]** に進み、**[フェデレーション Web SSO 構成]** にナビゲートします。
+ 
+    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
-2. **[Test SSO Connection (SSO 接続のテスト)]** を選択し、ブラウザーの新しいタブが開いたら、サインインして Azure AD で認証します。
+3. **[Federated Web SSO Configuration]** で、次の手順を実行します。
 
-3. ブラウザーの**Cisco Cloud Collaboration Management** タブに戻ります。テストが成功した場合は、**This test was successful.Enable Single Sign-On option\(このテストは正常に完了しました。シングル サインオン オプションを有効にします\)** を選択し、**Save\(保存\)** をクリックします。
+    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+
+    a. [フェデレーション プロトコル] ボックスに、プロトコルの名前を入力します。
+
+    b. **[SAML メタデータのインポート]** リンクをクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
+
+    c. **[エクスポート]** ボタンをクリックしてサービス プロバイダー メタデータ ファイルをダウンロードし、Azure Portal の **[基本 SAML 構成]** セクションにアップロードします。
+
+    d. **[AuthContextClassRef]** テキストボックスに `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified` と入力し、Azure AD を使用して MFA を有効にする場合は `urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport;urn:oasis:names:tc:SAML:2.0:ac:classes:X509` のように 2 つの値を入力します
+
+    e. **[アカウントの自動作成]** を選択します。
+
+    >[!NOTE]
+    >**Just-In-Time** ユーザー プロビジョニングを有効にするには、**[アカウントの自動作成]** をチェックする必要があります。 さらに、SAML トークン属性を、SAML 応答で渡す必要があります。
+
+    f. **[Save]** をクリックします。 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -213,7 +212,7 @@ Cisco Webex で Azure AD シングル サインオンを構成するには、次
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -222,15 +221,15 @@ Cisco Webex で Azure AD シングル サインオンを構成するには、次
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Cisco Webex へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に Cisco Webex Meetings へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Cisco Webex]** を選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Cisco Webex Meetings]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で **[Cisco Webex]** を選択します。
+2. アプリケーションの一覧で **[Cisco Webex Meetings]** を選択します。
 
-    ![アプリケーションの一覧の [Cisco Webex] リンク](common/all-applications.png)
+    ![アプリケーションの一覧の [Cisco Webex Meetings] リンク](common/all-applications.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
@@ -246,21 +245,21 @@ Cisco Webex で Azure AD シングル サインオンを構成するには、次
 
 7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
 
-### <a name="create-cisco-webex-test-user"></a>Cisco Webex のテスト ユーザーの作成
+### <a name="create-cisco-webex-meetings-test-user"></a>Cisco Webex Meetings のテスト ユーザーの作成
 
-このセクションの目的は、Cisco Webex で Britta Simon というユーザーを作成することです。 Cisco Webex は、ジャストイン タイム プロビジョニングと自動ユーザー プロビジョニングをサポートします (これらは既定で有効です)。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ Cisco Webex に存在しない場合は、Cisco Webex にアクセスしようとしたときに新しいユーザーが作成されます。
+このセクションの目的は、Cisco Webex Meetings で Britta Simon というユーザーを作成することです。 Cisco Webex Meetings では、**Just-In-Time** プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ Cisco Webex Meetings に存在しない場合は、Cisco Webex Meetings にアクセスしようとしたときに新しいユーザーが作成されます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Cisco Webex] タイルをクリックすると、SSO を設定した Cisco Webex に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Cisco Webex Meetings] タイルをクリックすると、SSO を設定した Cisco Webex Meetings に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

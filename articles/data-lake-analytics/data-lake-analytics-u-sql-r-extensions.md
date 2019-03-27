@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: b7e6c4911081d3b83ed99ab7316cb6fd810a0d60
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5d10d4d603312b3c75760a5d7c17a9028ddecea8
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048727"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401217"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics で R コードを使用した U-SQL スクリプトの拡張
 
@@ -173,7 +173,7 @@ U-SQL の高度な分析拡張機能をインストールした後は、Data Lak
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
 
     DECLARE @IrisData string =  @"/usqlext/samples/R/iris.csv";
-    DECLARE @OutputFileModelSummary string = @"/R/Output/CustomePackages.txt";
+    DECLARE @OutputFileModelSummary string = @"/R/Output/CustomPackages.txt";
 
     // R script to run
     DECLARE @myRScript = @"
@@ -208,5 +208,5 @@ U-SQL の高度な分析拡張機能をインストールした後は、Data Lak
 
 ## <a name="next-steps"></a>次の手順
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-* [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
+* [Data Lake Tools for Visual Studio を使用して U-SQL スクリプトを開発する](data-lake-analytics-data-lake-tools-get-started.md)
 * [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)

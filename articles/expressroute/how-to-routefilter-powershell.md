@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 30388185c415346b298dbada715b17e631c66769
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fc2cfcce57ad15d2bbad3242351492e184e7fd33
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096298"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415298"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft ピアリングにルート フィルターを構成する:PowerShell
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "53096298"
 
 ルート フィルターとは、Microsoft ピアリングでサポートされるサービスの一部だけを利用する手段です。 この記事の手順を通じて、ExpressRoute 回線にルート フィルターを構成し、管理することができます。
 
-Dynamics 365 サービスと Office 365 サービス (Exchange Online、SharePoint Online、Skype for Business など) および Azure パブリック サービス (ストレージ、SQL DB など) には、Microsoft ピアリングを介してアクセスすることができます。 Azure パブリック サービスはリージョンごとに選択でき、パブリック サービスごとに定義することはできません。 
+Dynamics 365 サービスと Office 365 サービス (Exchange Online、SharePoint Online、Skype for Business など) および Azure パブリック サービス (ストレージ、SQL DB など) には、Microsoft ピアリングを介してアクセスすることができます。 Azure パブリック サービスはリージョンごとに選択でき、パブリック サービスごとに定義することはできません。
 
 ExpressRoute 回線に Microsoft ピアリングを構成してルート フィルターをアタッチすると、これらのサービス用に選択されたすべてのプレフィックスが、確立された BGP セッションを通じてアドバタイズされます。 提供されているサービスをプレフィックスで識別するために、すべてのプレフィックスには BGP コミュニティ値がアタッチされます。 BGP コミュニティ値とサービスのマッピング一覧については、[BGP コミュニティ](expressroute-routing.md#bgp)に関するページを参照してください。
 

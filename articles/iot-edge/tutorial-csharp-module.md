@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2acf30a9f71accb4780d473ce51b3ff640f12dac
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: f4afd83e31cf724e734b4e86045f8404e65753c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54303516"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088028"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>チュートリアル: C# IoT Edge モジュールを開発して、シミュレートされたデバイスにデプロイする
 
@@ -99,7 +99,7 @@ Azure IoT Edge デバイス:
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
    | Select module template (モジュール テンプレートの選択) | **C# モジュール**を選択します。 |
    | Provide a module name (モジュール名の指定) | ご自身のモジュールに **CSharpModule** と名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 コンテナー イメージは、前の手順で事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 最終的には、\<registry name\>.azurecr.io/csharpmodule のような文字列になります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリのログイン サーバーの値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/csharpmodule のようになります。 |
  
    ![Docker イメージ リポジトリを指定する](./media/tutorial-csharp-module/repository.png)
 
@@ -277,15 +277,15 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 
 10. **CSharpModule** モジュール ツインを配置マニフェストに追加します。 次の JSON コンテンツを **modulesContent** セクションの下部、**$edgeHub** モジュール ツインの後に挿入します。 
 
-   ```json
+    ```json
        "CSharpModule": {
            "properties.desired":{
                "TemperatureThreshold":25
            }
        }
-   ```
+    ```
 
-   ![モジュール ツインをデプロイ テンプレートに追加する](./media/tutorial-csharp-module/module-twin.png)
+    ![モジュール ツインをデプロイ テンプレートに追加する](./media/tutorial-csharp-module/module-twin.png)
 
 11. deployment.template.json ファイルを保存します。
 
@@ -306,6 +306,12 @@ VS Code ウィンドウによって、ご自身の IoT Edge ソリューショ�
 ソリューションのビルドを指示すると、最初に Visual Studio Code によって配置テンプレートの情報が読み取られて、**config** という名前の新しいフォルダーに deployment.json ファイルが生成されます。次に、`docker build` と `docker push` の 2 つのコマンドが統合ターミナルで実行されます。 この 2 つのコマンドによって、ご自身のコードがビルドされ、CSharpModule.dll がコンテナー化されたうえで、ソリューションを初期化したときに指定したコンテナー レジストリにコードがプッシュされます。 
 
 タグを含む完全なコンテナー イメージ アドレスは、VS Code 統合ターミナルで確認できます。 イメージ アドレスは、\<リポジトリ\>:\<バージョン\>-\<プラットフォーム\> の形式で、module.json ファイルの情報から作成されます。 このチュートリアルでは、registryname.azurecr.io/csharpmodule:0.0.1-amd64 になります。
+
+>[!TIP]
+>モジュールをビルドしてプッシュしようとするときにエラーが発生した場合は、次の点を確認してください。
+>* Visual Studio Code からお使いのコンテナー レジストリの資格情報を使用して Docker にサインインしているか。 これらの資格情報は、Azure portal にサインインする際に使用する情報とは異なります。
+>* コンテナー リポジトリは正しいか。 **[modules]** > **[cmodule]** > **[module.json]** の順に開いて、**[repository]** フィールドを見つけます。 イメージ リポジトリは、**\<registryname\>.azurecr.io/csharpmodule** のようになっている必要があります。 
+>* 開発マシンで実行されているものと同じタイプのコンテナーをビルドしているか。 Visual Studio Code の既定のコンテナーは Linux amd64 です。 お使いの開発マシンで Windows コンテナーまたは Linux arm32v7 コンテナーが実行されている場合は、実際のコンテナーのプラットフォームに合わせて、VS Code ウィンドウ下部の青色のステータス バーでプラットフォームを更新してください。
 
 ## <a name="deploy-and-run-the-solution"></a>ソリューションの配置と実行
 

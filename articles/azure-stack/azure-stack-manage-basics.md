@@ -12,23 +12,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
-ms.openlocfilehash: f22754a16c4765989b5773d099fc3ecda73040db
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: ba1e7d7f9226b3ca42d4117be33b9c236f0557b0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972390"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867322"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack の管理の基本
-Azure Stack の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイドでは、Azure Stack オペレーターとしての役割の概要と、ユーザーがすばやく生産的になれるようにユーザーに伝える必要があることを説明します。
+Azure Stack の管理経験がない場合は、知っておく必要があることがいくつかあります。 この記事では、Azure Stack オペレーターとしての役割の概要と、ユーザーがすばやく生産的になれるようにユーザーに伝える必要があることを説明します。
 
 ## <a name="understand-the-builds"></a>ビルドを理解する
 
 ### <a name="integrated-systems"></a>統合システム
 
-Azure Stack 統合システムを使用している場合、Azure Stack の更新バージョンは更新プログラム パッケージを通して配布されます。 これらのパッケージをインポートして、管理者ポータルの [更新] タイルでパッケージを適用できます。
+Azure Stack 統合システムを使用している場合、Azure Stack の更新バージョンは更新プログラム パッケージを通して配布されます。 これらのパッケージをインポートして、管理者ポータルの [更新] タイルでパッケージを適用できます。 ASDK のインストールを更新する目的にはサポートされていません。 
  
 ### <a name="development-kit"></a>開発キット
 

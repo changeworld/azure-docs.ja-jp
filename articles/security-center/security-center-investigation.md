@@ -4,7 +4,7 @@ description: このドキュメントは、Azure Security Center の調査機能
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: d097c1e37a47f9f832d053fa57fb0031288999f8
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7763807fdb5fcff7e93d54bf5a851cd4443427d3
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52962802"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107193"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Azure Security Center でのインシデントとアラートの調査 (プレビュー)
 このドキュメントは、Azure Security Center の調査機能を使用して、セキュリティ インシデントとアラートを調査する際に役立ちます。

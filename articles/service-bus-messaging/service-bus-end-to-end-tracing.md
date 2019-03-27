@@ -3,22 +3,22 @@ title: Azure Service Bus のエンドツーエンド トレースと診断 | Mic
 description: Service Bus のクライアント診断とエンドツーエンド トレースの概要
 services: service-bus-messaging
 documentationcenter: ''
-author: lmolkova
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
-ms.author: lmolkova
-ms.openlocfilehash: 12f9f55544f46bc9c88cab7234f78ad7ee7de2d2
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790896"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107037"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus メッセージングを介した分散トレースおよび相関付け
 
@@ -213,7 +213,7 @@ serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, D
 
 1. `IsEnabled(<OperationName>, string entity, null)` を、たとえば、`IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")` と指定します。 最後に 'Start' も 'Stop' もないことに注意してください。 これを使用して、特定の操作またはキューをフィルター処理で除外します。 コールバックから `false` が返されると、その操作のイベントは送信されません。
 
-  * 'Process' 操作および 'ProcessSession' 操作では `IsEnabled(<OperationName>, string entity, Activity activity)` コールバックも受け取ります。 これを使用して、`activity.Id` または Tags プロパティに基づいてイベントをフィルター処理します。
+   * 'Process' 操作および 'ProcessSession' 操作では `IsEnabled(<OperationName>, string entity, Activity activity)` コールバックも受け取ります。 これを使用して、`activity.Id` または Tags プロパティに基づいてイベントをフィルター処理します。
   
 2. `IsEnabled(<OperationName>.Start)` を、たとえば `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")` と指定します。 'Start' イベントが起動されるかどうかを確認します。 この結果は 'Start' イベントのみに影響し、それ以降のインストルメンテーションが依存することはありません。
 

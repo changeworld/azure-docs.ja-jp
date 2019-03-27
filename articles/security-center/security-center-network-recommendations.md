@@ -4,7 +4,7 @@ description: このドキュメントでは、Azure Security Center 上の推奨
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3bb8d4796d23b84f815d28efa45af619efe19af3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 55318f40918833688e0c516924642c781141438c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338235"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118005"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Azure Security Center 上のネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -131,7 +131,7 @@ Security Center Standard レベルがない場合、このセクションでは�
 |リソースの種類|セキュリティ スコア|推奨|説明|
 |----|----|----|----|
 |マシン|40|仮想マシン上でネットワーク セキュリティ グループを有効にする|仮想マシンのネットワーク アクセスを制御するネットワーク セキュリティ グループを有効にします。|
-|サブネット|35|サブネット上のネットワーク セキュリティ グループを有効にする |サブネットにデプロイされたリソースのネットワーク アクセスを制御するネットワーク セキュリティ グループを有効にします。|
+|Subnet|35|サブネット上のネットワーク セキュリティ グループを有効にする |サブネットにデプロイされたリソースのネットワーク アクセスを制御するネットワーク セキュリティ グループを有効にします。|
 |マシン|30|Just-In-Time ネットワーク アクセス制御の適用|ジャスト イン タイム VM アクセス制御を適用して、選択したポートへのアクセスを完全にロックダウンし、承認されたユーザーが同じメカニズムを使用して限られた時間だけそれらのポートを開けるようにします。|
 |マシン|20|インターネットに接続するエンドポイント経由のアクセスの制限|既存の許可ルールのアクセスを制限することで、インターネットに接続する VM のネットワーク セキュリティ グループを強化します。|
 |マシン|10|次世代ファイアウォールを追加する|インターネットに接続する VM の保護を強化するために次世代ファイアウォール (NGFW) ソリューションを追加します。|

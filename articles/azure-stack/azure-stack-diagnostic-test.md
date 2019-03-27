@@ -10,21 +10,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 63a198b082c7486de2392153291a11be5bcb2f9e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 12/03/2018
+ms.openlocfilehash: eca66bc2e737b0f9a9954cad21a446e82d753f84
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103225"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203813"
 ---
 # <a name="validate-azure-stack-system-state"></a>Azure Stack システムの状態を検証する
 
 *適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
-Azure Stack オペレーターは、システムの正常性と状態をオンデマンドで把握できることが不可欠です。 Azure Stack の検証ツール (**Test-azurestack**) は PowerShell コマンドレットであり、システム上で一連のテストを実行して、障害があればそれを特定できます。 通常このツールは、Microsoft カスタマー サービス サポート (CSS) にアクセスして問題について問い合わせるときに、[特権エンドポイント (PEP)](azure-stack-privileged-endpoint.md) から実行することが求められます。 手元にシステム全体の正常性および状態情報があれば、CSS は詳細ログを収集して分析し、エラーが発生した領域に焦点を当て、お客様と連携して問題を解決できます。
+Azure Stack オペレーターは、システムの正常性と状態をオンデマンドで判断できることが不可欠です。 Azure Stack の検証ツール (**Test-azurestack**) は PowerShell コマンドレットであり、システム上で一連のテストを実行して、障害があればそれを特定できます。 通常このツールは、Microsoft カスタマー サービス サポート (CSS) にアクセスして問題について問い合わせるときに、[特権エンドポイント (PEP)](azure-stack-privileged-endpoint.md) から実行することが求められます。 手元にシステム全体の正常性および状態情報があれば、CSS は詳細ログを収集して分析し、エラーが発生した領域に焦点を当て、お客様と連携して問題を解決できます。
 
 ## <a name="running-the-validation-tool-and-accessing-results"></a>検証ツールを実行して結果にアクセスする
 
@@ -92,7 +93,6 @@ Azure Stack オペレーターは、システムの正常性と状態をオン�
 
 上記のインフラストラクチャ テストだけでなく、インフラストラクチャ コンポーネント全体で機能をチェックするための、クラウド シナリオのテストを実行する機能もあります。 リソースのデプロイが関係するため、これらのテストを実行するは、クラウド管理者の資格情報が必要です。 
     > [!NOTE]
-    >
     > Currently you cannot run cloud scenario tests using Active Directory Federated Services (AD FS) credentials. 
 
 検証ツールでは、次のクラウドのシナリオがテストされます。

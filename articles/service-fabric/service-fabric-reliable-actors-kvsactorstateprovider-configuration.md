@@ -7,19 +7,19 @@ author: sumukhs
 manager: timlt
 editor: ''
 ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 81c09d61a5213319fa01ef5cc7070ffe385bbab1
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a512bb4adc4e410ef2300811ffa4142348d5ee33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049512"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871820"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors の構成 - KVSActorStateProvider
 KVSActorStateProvider の既定の構成を変更するには、指定されたアクターの Config フォルダーの下にある Microsoft Visual Studio パッケージ ルートで生成された settings.xml ファイルを変更します。
@@ -75,7 +75,7 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 ## <a name="sample-configuration-file"></a>サンプル構成ファイル
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Section Name="MyActorServiceReplicatorConfig">
       <Parameter Name="ReplicatorEndpoint" Value="MyActorServiceReplicatorEndpoint" />
       <Parameter Name="BatchAcknowledgementInterval" Value="0.05"/>

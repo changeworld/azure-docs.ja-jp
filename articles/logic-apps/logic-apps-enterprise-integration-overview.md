@@ -10,14 +10,14 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.openlocfilehash: d37d5cb2b89b82bd9741dee0946b3a77d456b22a
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c9733346d091a6829bd5b42c80201df3a1357fe3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405754"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243112"
 ---
-# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>概要: Azure Logic Apps での Enterprise Integration Pack を使用した B2B エンタープライズ統合シナリオ
+# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>概要:Azure Logic Apps での Enterprise Integration Pack を使用した B2B エンタープライズ統合シナリオ
 
 Azure Logic Apps での企業間 (B2B) のワークフローとシームレスな通信を実現するために、Microsoft のクラウド ベースのソリューションである Enterprise Integration Pack を使用して、エンタープライズ統合シナリオを有効にすることができます。 組織は、異なるプロトコルと形式を使用している組織ともメッセージを電子的に交換することができます。 Enterprise Integration Pack により、メッセージの形式が組織のシステムで解釈して処理できる形式に変換されます。 メッセージの交換には、[AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、[EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) などの業界標準のプロトコルを使用できます。 暗号化とデジタル署名を使用して、メッセージをセキュリティで保護することもできます。
 
@@ -33,7 +33,7 @@ Enterprise Integration Pack のアーキテクチャは、"統合アカウント
 
 ## <a name="how-to-get-started-with-enterprise-integration"></a>Enterprise Integration の使用を開始する方法
 
-**Azure Portal** のロジック アプリ デザイナーを利用して、Enterprise Integration Pack を使用した B2B アプリを構築、管理できます。 ロジック アプリの管理に [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp "ロジック アプリの PowerShell") を使用することもできます。
+**Azure Portal** のロジック アプリ デザイナーを利用して、Enterprise Integration Pack を使用した B2B アプリを構築、管理できます。 ロジック アプリの管理に [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) を使用することもできます。
 
 Azure Portal でアプリを作成する前に必要な手順の概要は、次のとおりです。
 

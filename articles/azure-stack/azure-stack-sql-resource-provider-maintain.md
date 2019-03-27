@@ -11,19 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: quying
-ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.reviewer: jiahan
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: 85c3e27171ad0e760c6c7aab39ac923bba8cbcaf
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364097"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250733"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL リソース プロバイダーの保守操作
 
-SQL リソース プロバイダーは、ロック ダウンされた仮想マシン上で実行されます。 保守操作を有効にするには、仮想マシンのセキュリティを更新する必要があります。 最小権限の原則を使用してそれを行うには、[PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) エンドポイント *DBAdapterMaintenance* を使用できます。 リソース プロバイダーのインストール パッケージには、この操作のためのスクリプトが含まれています。
+SQL リソース プロバイダーは、ロック ダウンされた仮想マシン上で実行されます。 保守操作を有効にするには、仮想マシンのセキュリティを更新する必要があります。 最小限の特権の原則を使用してそれを行うには、[PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) エンドポイント *DBAdapterMaintenance* を使用できます。 リソース プロバイダーのインストール パッケージには、この操作のためのスクリプトが含まれています。
 
 ## <a name="patching-and-updating"></a>修正プログラム適用と更新
 
@@ -32,16 +33,6 @@ SQL リソース プロバイダーはアドオン コンポーネントであ�
 ### <a name="provider-virtual-machine"></a>プロバイダー仮想マシン
 
 リソース プロバイダーは "*ユーザー*" 仮想マシン上で実行されているので、必要な修正プログラムおよび更新プログラムがリリースされたら、それらを適用する必要があります。 修正プログラム適用と更新のサイクルの一環で提供される Windows 更新プログラム パッケージを使用して、VM に更新プログラムを適用できます。
-
-## <a name="backuprestoredisaster-recovery"></a>バックアップ/復元/ディザスター リカバリー
-
- SQL リソース プロバイダーはアドオン コンポーネントであるため、Azure Stack ビジネス継続性ディザスター リカバリー (BCDR) プロセスの一環として、そのバックアップは行われません。 次の操作に対してスクリプトが提供されます。
-
-- 状態情報のバックアップ (Azure Stack ストレージ アカウントに格納されている)。
-- スタックをすべて回復する必要がある場合のリソース プロバイダーの復元。
-
->[!NOTE]
->回復を行う必要がある場合は、データベース サーバーを回復してから、リソース プロバイダーを復元する必要があります。
 
 ## <a name="updating-sql-credentials"></a>SQL 資格情報の更新
 
@@ -122,7 +113,7 @@ Azure Stack 統合システムで SQL および MySQL リソース プロバイ�
 
 ### <a name="known-issues"></a>既知の問題
 
-**問題**: シークレット ローテーション ログ。<br>
+**問題**:シークレット ローテーション ログ。<br>
 シークレット ローテーションのカスタム スクリプトが実行され、失敗した場合、シークレット ローテーションのログは自動的に収集されません。
 
 **対処法**: <br>

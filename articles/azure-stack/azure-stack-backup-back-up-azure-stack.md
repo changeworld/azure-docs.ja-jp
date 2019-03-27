@@ -12,21 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 08335f676437a32aa2240298be4680633eff16ba
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.lastreviewed: 09/05/2018
+ms.openlocfilehash: 685183f61c1574d8c533efad8a7e0c46b1e2d23c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432972"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870314"
 ---
 # <a name="back-up-azure-stack"></a>Azure Stack のバックアップ
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-Azure Stack でバックアップを設定してオンデマンド バックアップを実行します。 PowerShell 環境の構成方法については、「[PowerShell for Azure Stack をインストールする](azure-stack-powershell-install.md)」をご覧ください。 Azure Stack にサインインするには、「[Azure Stack の管理者ポータルの使用](azure-stack-manage-portals.md)」をご覧ください。
+Azure Stack でオンデマンド バックアップを実行します。 PowerShell 環境の構成方法については、「[PowerShell for Azure Stack をインストールする](azure-stack-powershell-install.md)」をご覧ください。 Azure Stack にサインインするには、「[Azure Stack の管理者ポータルの使用](azure-stack-manage-portals.md)」をご覧ください。
 
 ## <a name="start-azure-stack-backup"></a>Azure Stack のバックアップを開始する
 
@@ -120,4 +121,4 @@ Azure Stack 管理ポータルを使用して、以下の手順でバックア�
 
 ## <a name="next-steps"></a>次の手順
 
-データ損失イベントから復旧するためのワークフローについて学びます。 「[致命的なデータの損失からの復旧](azure-stack-backup-recover-data.md)」を参照してください。
+[データ損失イベントから復旧する](azure-stack-backup-recover-data.md)ためのワークフローについて学びます。

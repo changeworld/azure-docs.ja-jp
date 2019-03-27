@@ -1,25 +1,26 @@
 ---
-title: Azure Active Directory のグループのライセンスに関する問題を解決する | Microsoft Docs
+title: グループに対するライセンスの割り当てに関する問題を解決する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory でグループベースのライセンスを使用している場合にライセンス割り当ての問題を特定して解決する方法
 services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 10/29/2018
+ms.date: 01/31/2019
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee441a8c9a0d8a70a2797f090a143189cdb6872a
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.reviewer: sumitp
+ms.custom: it-pro
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c09df2a15fbd0bdfdd1478fad587e6a18695002c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50211538"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207502"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -53,7 +54,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 ## <a name="not-enough-licenses"></a>ライセンス数の不足
 
-**問題:** グループに指定されたいずれかの製品について、利用できるライセンスの数が不足しています。 該当する製品のライセンスを追加で購入するか、他のユーザーかグループから未使用のライセンスを解放する必要があります。
+**問題**:グループに指定されたいずれかの製品について、利用できるライセンスの数が不足しています。 該当する製品のライセンスを追加で購入するか、他のユーザーかグループから未使用のライセンスを解放する必要があります。
 
 利用できるライセンスの数を確認するには、**[Azure Active Directory]** > **[ライセンス]** > **[すべての製品]** を選択します。
 
@@ -63,7 +64,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 ## <a name="conflicting-service-plans"></a>サービス プランの競合
 
-**問題:** グループに指定されたいずれかの製品に含まれているサービス プランが、他の製品でユーザーに既に割り当てられている別のサービス プランと競合しています。 一部のサービス プランは、関連する他のサービス プランと同じユーザーに割り当てられないように構成されています。
+**問題**:グループに指定されたいずれかの製品に含まれているサービス プランが、他の製品でユーザーに既に割り当てられている別のサービス プランと競合しています。 一部のサービス プランは、関連する他のサービス プランと同じユーザーに割り当てられないように構成されています。
 
 各データ メンバー フィールドが JSON オブジェクトにマップされ、フィールド名がオブジェクトの "key" 部分にマップされ、"value" 部分がオブジェクトの値の部分に再帰的にマップされます。 すべてのプランを有効にした Office 365 Enterprise *E1* のライセンスがユーザーに直接割り当てられているとします。 このユーザーが、Office 365 Enterprise *E3* 製品を割り当てられたグループに追加された場合、 この E3 製品には E1 に含まれているプランと重複できないサービス プランが含まれているため、グループのライセンス割り当ては、"競合するサービス プラン" エラーで失敗します。 この例では、競合しているサービス プランは次のとおりです。
 
@@ -78,7 +79,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 ## <a name="other-products-depend-on-this-license"></a>特定のライセンスに依存する他の製品
 
-**問題:** グループに指定されたいずれかの製品に、他の製品の他のサービス プランが機能するうえで有効である必要があるサービス プランが含まれています。 このエラーは、Azure AD がサービス プランを削除しようとしたときに発生します。 たとえば、ユーザーをグループから削除したときに、発生する可能性があります。
+**問題**:グループに指定されたいずれかの製品に、他の製品の他のサービス プランが機能するうえで有効である必要があるサービス プランが含まれています。 このエラーは、Azure AD がサービス プランを削除しようとしたときに発生します。 たとえば、ユーザーをグループから削除したときに、発生する可能性があります。
 
 この問題を解決するには、他の方法を使用して目的のプランがユーザーに引き続き割り当てられていること、または依存するサービスがこれらのユーザーに対して無効になっていることを確認する必要があります。 その後、ユーザーからグループ ライセンスを問題なく削除できます。
 
@@ -86,7 +87,7 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 ## <a name="usage-location-isnt-allowed"></a>利用場所が許可されていない
 
-**問題:** 一部の Microsoft サービスは、地域の法律と規制が理由ですべての場所で利用することはできません。 ライセンスをユーザーに割り当てる前に、ユーザーの **[利用場所]** プロパティを指定する必要があります。 場所は、Azure Portal の **[ユーザー]**  >  **[プロファイル]**  >  **[設定]** セクションで指定できます。
+**問題**:一部の Microsoft サービスは、地域の法律と規制が理由ですべての場所で利用することはできません。 ライセンスをユーザーに割り当てる前に、ユーザーの **[利用場所]** プロパティを指定する必要があります。 場所は、Azure Portal の **[ユーザー]**  >  **[プロファイル]**  >  **[設定]** セクションで指定できます。
 
 利用場所がサポートされていないユーザーへのグループ ライセンスの割り当てが Azure AD により試行されると、その操作は失敗し、エラーがユーザーに記録されます。
 
@@ -118,6 +119,12 @@ Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.co
 
 割り当てられなかったユーザーと、どの製品がその問題の影響を受けているかを確認できます。
 
+## <a name="what-happens-when-a-group-with-licenses-assigned-is-deleted"></a>ライセンスが割り当てられているグループを削除するとどうなりますか。
+
+グループを削除する前に、グループに割り当てられているすべてのライセンスを削除する必要があります。 ただし、グループ内のすべてのユーザーからライセンスを削除する処理には時間がかかることがあります。 グループからライセンスの割り当てを削除するときに、ユーザーに依存ライセンスが割り当てられている場合、またはライセンスの削除を禁止するプロキシ アドレスの競合の問題がある場合にエラーが発生する可能性があります。 グループの削除のために削除処理中のライセンスに依存しているライセンスをユーザーが持っている場合、そのユーザーへのライセンスの割り当ては継承から直接に変換されます。
+
+たとえば、Skype for Business サービス プランが有効な Office 365 E3/E5 が割り当てられたグループがあるとします。 また、グループの一部のメンバーに電話会議ライセンスが直接割り当てられているとします。 このグループが削除されると、グループベースのライセンスではすべてのユーザーから Office 365 E3/E5 の削除が試行されます。 電話会議は Skype for Business に依存しているため、電話会議が割り当てられているユーザーの場合、グループベースのライセンスによって Office 365 E3/E5 ライセンスが直接のライセンス割り当てに変換されます。
+
 ## <a name="how-do-you-manage-licenses-for-products-with-prerequisites"></a>前提条件のある製品のライセンスを管理する方法
 
 Microsoft Online 製品の中には "*アドオン*" であるものがあります。 ユーザーやグループにライセンスを割り当てるには、前提条件のサービス プランをユーザーまたはグループに対して有効にする必要があります。 グループごとにライセンスを付与する場合は、前提条件とアドオンのサービス プランが同じグループに存在する必要があります。 この措置によって、そのグループに追加されたユーザーに、完全に動作する製品が与えられます。 次の例について考察してみましょう。
@@ -146,8 +153,6 @@ Microsoft Workplace Analytics はアドオン製品です。 同じ名前の単�
 
 > [!TIP]
 > 前提条件のサービス プランごとに複数のグループを作成できます。 たとえば、Office 365 Enterprise E1 と Office 365 Enterprise E3 の両方をユーザーに使用する場合、2 つのグループを作成して Microsoft Workplace Analytics にライセンスを付与できます。1 つは前提条件として E1 を利用するグループ、もう 1 つは E3 を利用するグループです。 これにより、追加のライセンスを使用せずに、E1 ユーザーと E3 ユーザーにアドオンを配布できます。
-
-
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>グループでライセンスの処理を強制してエラーを解決する方法
 

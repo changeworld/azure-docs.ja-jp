@@ -4,7 +4,7 @@ description: このドキュメントは、Azure Security Center でカスタム
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f335d8c4-0234-4304-b386-6f1ecda07833
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 48fcaca94e2a71ace66e5ea2d3e905962a9ced42
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 5af778ff23c9b3f9188ac2e7b38767e4693f64a1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956280"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107618"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Azure Security Center のカスタム アラート ルール (プレビュー)
 このドキュメントは、Azure Security Center でカスタム アラート ルールを作成する際に役立ちます。
@@ -61,7 +61,7 @@ Security Center のカスタム アラート ルールを使用すると、環�
 
     このクエリの結果によってアラートがトリガーされます。 有効なクエリを入力すると、このフィールドの右隅に緑色のチェック マークが表示されることに注意してください。
 
-    ![クエリ](./media/security-center-custom-alert/security-center-custom-alert-fig3.png)
+    ![Query](./media/security-center-custom-alert/security-center-custom-alert-fig3.png)
 
 10. **[期間]** フィールドで、上記のクエリが実行される期間を選択します。 選択する期間に応じて、このフィールドの下部にある検索結果が変わることに注意してください。
 

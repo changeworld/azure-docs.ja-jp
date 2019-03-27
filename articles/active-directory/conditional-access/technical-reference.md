@@ -4,23 +4,24 @@ description: Azure Active Directory の条件付きアクセス ポリシーで�
 services: active-directory.
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/13/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 46dfb96df7b16fe03bd5c2c69fd9e2e33b04bbd2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7687cb4eb6cacd604a05a820e04f71755e0b66b1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408580"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201416"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -53,6 +54,8 @@ Microsoft から、次のクラウド アプリに条件付きアクセス ポ�
 - Azure Information Protection - [詳細](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 
 - Azure RemoteApp
+
+- Azure SQL Database - [詳細](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
 
 - Microsoft Dynamics 365
 
@@ -94,7 +97,7 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 - Windows Phone
 
--  Windows
+- Windows
 
 - macOS
 
@@ -109,7 +112,7 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 条件付きアクセス ポリシー内で、[クライアント アプリ](conditions.md#client-apps)の条件を構成して、アクセス試行を開始したクライアント アプリにポリシーを関連付けることができます。 クライアント アプリの条件を設定し、次の種類のクライアント アプリからアクセス試行が行われたときに、アクセスを許可またはブロックします。
 
-- [ブラウザー] ボタンを
+- ブラウザー
 - モバイル アプリとデスクトップ アプリ
 
 ![クライアント アプリのアクセスの制御](./media/technical-reference/03.png)
@@ -175,24 +178,27 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 この設定は、以下のモバイル アプリおよびデスクトップ クライアントからのアクセス試行に影響を与えます。 
 
 
-|クライアント アプリ|対象サービス|プラットフォーム|
-|---|---|---|
-|Azure リモート アプリ|Azure Remote App サービス|Windows 10、Windows 8.1、Windows 7、iOS、Android、Mac OS X|
-|Dynamics CRM アプリ|Dynamics CRM|Windows 10、Windows 8.1、iOS、Android|
-|メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 |Office 365 Exchange Online|Windows 10|
-|アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。 |任意のマイ アプリ アプリ サービス|Android および iOS|
-|Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する|Microsoft Teams|Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS |
-|Office 2016 アプリ、Office 2013、OneDrive 同期クライアント ([メモ](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)|Office 365 SharePoint Online|Windows 8.1、Windows 7|
-|Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013、OneDrive 同期クライアント ([メモ](https://support.office.com/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定|Office 365 SharePoint Online|Windows 10|
-|Office 2016 for macOS (Word、Excel、PowerPoint、OneNote のみ)。 OneDrive for Business は将来サポート予定|Office 365 SharePoint Online|Mac OS X|
-|Office モバイル アプリ|Office 365 SharePoint Online|Android、iOS|
-|Office Yammer アプリ|Office 365 Yammer|Windows 10、iOS、Android|
-|Outlook 2016 (Office for macOS)|Office 365 Exchange Online|Mac OS X|
-|Outlook 2016、Outlook 2013、Skype for Business|Office 365 Exchange Online|Windows 8.1、Windows 7|
-|Outlook Mobile アプリ|Office 365 Exchange Online|Android、iOS|
-|PowerBI アプリ|PowerBI サービス|Windows 10、Windows 8.1、Windows 7、Android、iOS|
-|Skype for Business|Office 365 Exchange Online|Android、IOS |
-|Azure DevOps アプリ|Azure DevOps|Windows 10、Windows 8.1、Windows 7、iOS、Android|
+| クライアント アプリ| 対象サービス| プラットフォーム |
+| --- | --- | --- |
+| Azure リモート アプリ| Azure Remote App サービス| Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS|
+| Dynamics CRM アプリ| Dynamics CRM| Windows 10、Windows 8.1、iOS、Android|
+| メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)| Office 365 Exchange Online| Windows 10|
+| アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。| 任意のマイ アプリ アプリ サービス| Android および iOS|
+| Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS|
+| Office 2016 アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)| Office 365 SharePoint Online| Windows 8.1、Windows 7|
+| Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定| Office 365 SharePoint Online| Windows 10|
+| Office 2016 (Word、Excel、PowerPoint、OneNote のみ)。 OneDrive for Business は将来サポート予定| Office 365 SharePoint Online| macOS|
+| Office 2019| Office 365 SharePoint Online| Windows 10、macOS|
+| Office モバイル アプリ| Office 365 SharePoint Online| Android、iOS|
+| Office Yammer アプリ| Office 365 Yammer| Windows 10、iOS、Android|
+| Outlook 2019| Office 365 SharePoint Online| Windows 10、macOS|
+| Outlook 2016 (Office for macOS)| Office 365 Exchange Online| macOS|
+| Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)| Office 365 Exchange Online| Windows 8.1、Windows 7|
+| Outlook Mobile アプリ| Office 365 Exchange Online| Android、iOS|
+| PowerBI アプリ| PowerBI サービス| Windows 10、Windows 8.1、Windows 7、Android、iOS|
+| Skype for Business| Office 365 Exchange Online| Android、IOS|
+| Visual Studio Team Services アプリ| Visual Studio Team Services| Windows 10、Windows 8.1、Windows 7、iOS、Android|
+
 
 
 ## <a name="support-for-legacy-authentication"></a>レガシ認証のサポート
@@ -212,27 +218,33 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 この設定は、以下のクライアント アプリに適用されます。
 
 
-- Microsoft Intune Managed Browser
-- Microsoft PowerBI
-- Microsoft Invoicing
-- Microsoft Launcher
+
 - Microsoft Azure Information Protection
+- Microsoft Edge
 - Microsoft Excel
+- Microsoft Flow
+- Microsoft Intune Managed Browser
+- Microsoft Invoicing
 - Microsoft Kaizala 
+- Microsoft Launcher
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
+- Microsoft PowerApps
+- Microsoft PowerBI
 - Microsoft PowerPoint
 - Microsoft SharePoint
 - Microsoft Skype for Business
 - Microsoft StaffHub
+- Microsoft Stream
 - Microsoft Teams
+- Microsoft To-Do
 - Microsoft Visio
 - Microsoft Word
-- Microsoft To-Do
-- Microsoft Stream
-- Microsoft Edge
+- Microsoft Yammer
+
+
 
 
 
@@ -242,7 +254,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 
 - **[承認されたクライアント アプリが必要です]** 要件:
 
-    - [デバイス プラットフォームの条件](#device-platforms-condition)については iOS と Android のみをサポートしています。
+    - [デバイス プラットフォームの条件](#device-platform-condition)については iOS と Android のみをサポートしています。
 
 
 ## <a name="next-steps"></a>次の手順

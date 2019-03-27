@@ -3,23 +3,24 @@ title: Azure リソースのマネージド ID
 description: Azure リソースのマネージド ID の概要。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
-ms.author: daveba
-ms.openlocfilehash: 3b9c8ea3dba5fdbd3e25293873ab1ae6854b3b83
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.author: priyamo
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4dc56384d550854c05a813157b32ac36f5ebfb76
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728110"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211922"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 
@@ -102,6 +103,9 @@ Azure AD Authentication をサポートするサービスのアクセス トー�
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID を使用する方法
 
 マネージド ID を使って各種 Azure リソースにアクセスする方法については、以下のチュートリアルを参考にしてください。
+
+> [!NOTE]
+> マネージド ID の詳細については、「[Implementing Managed Identities for Microsoft Azure Resources (Microsoft Azure リソースのマネージド ID を導入する)](https://www.pluralsight.com/courses/microsoft-azure-resources-managed-identities-implementing)」コースをご覧ください。サポートされるいくつかのシナリオについて、詳しいビデオ チュートリアルも用意されています。
 
 Windows VM でマネージド ID を使用する方法については、以下のページをご覧ください。
 

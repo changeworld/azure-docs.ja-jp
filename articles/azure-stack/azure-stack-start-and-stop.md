@@ -12,18 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/19/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6da81ab90a87285f9e1874e3f10eff4570124192
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 6b14f5e8967567030ce854d05c53a8d26027e9a6
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344015"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428841"
 ---
 # <a name="start-and-stop-azure-stack"></a>Azure Stack の開始および停止
-この記事の手順に従い、正しくシャットダウンして Azure Stack サービスを再起動してください。 シャットダウンは、Azure Stack 環境全体の電源を物理的に切ります。 スタートアップは、すべてのインフラストラクチャ ロールの電源を入れ、テナントのリソースをシャットダウン前の電源状態に戻します。
+この記事の手順に従い、正しくシャットダウンして Azure Stack サービスを再起動してください。 シャットダウンは、Azure Stack 環境全体の電源を物理的に切ります。 スタートアップでは、すべてのインフラストラクチャ ロールの電源が入れられ、テナントのリソースがシャットダウン前の電源状態に戻されます。
 
 ## <a name="stop-azure-stack"></a>Azure Stack の停止 
 

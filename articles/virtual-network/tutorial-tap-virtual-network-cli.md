@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kaanan
-ms.openlocfilehash: 36de5ec6f7384663106bfb88ee9f236cced6930a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 48ccbedd6e3a7da0ec487f27709a47f9364f7da3
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997949"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100059"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク TAP の作業を行う
 
@@ -79,7 +79,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
    - Azure 内部ロード バランサーのフロントエンド IP 構成を変数に取得し、後の手順で使用します。 ID は、TAP のトラフィックを集約するエンド ポイントです。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myInternalLoadBalancer* という名前のロード バランサーに対する *frontendipconfig1* フロントエンド IP 構成の ID を取得しています。
 
       ```azurecli-interactive
-      FrondendIpConfigId=$(az network lb fronend-ip show \
+      FrontendIpConfigId=$(az network lb frontend-ip show \
       --name frontendipconfig1 \
       --lb-name myInternalLoadBalancer \
       --resource-group myResourceGroup \
@@ -110,7 +110,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 1. 既存の仮想ネットワーク TAP リソースの ID を取得します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myTap* という名前の仮想ネットワーク TAP を取得しています。
 
    ```azurecli-interactive
-   tapId=$(az network tap show show \
+   tapId=$(az network vnet tap show \
    --name myTap \
    --resource-group myResourceGroup \
    --query id \
@@ -144,7 +144,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
    az network nic vtap-config delete \
    --resource-group myResourceGroup \
    --nic myNetworkInterface \
-   --tap-configuration-name myTapConfig \
+   --name myTapConfig \
    --subscription subscriptionId
    ```
 

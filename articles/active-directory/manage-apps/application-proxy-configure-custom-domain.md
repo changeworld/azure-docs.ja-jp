@@ -3,28 +3,29 @@ title: Azure AD アプリケーション プロキシでのカスタム ドメ�
 description: Azure AD アプリケーション プロキシでカスタム ドメインを管理して、ユーザーがアクセスする場所に関係なくアプリの URL が同じになるようにします。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/31/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: b0ad4aa63dbeefce6b55e099fd51d3608ae3abb8
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 05c537b061619aa458663a9dcfcc97155d8a6614
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133351"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106799"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでのカスタム ドメインの使用
 
-Azure Active Directory アプリケーション プロキシ経由でアプリケーションを公開するとき、離れた場所で作業しているユーザーのために外部 URL を作成します。 この URL には、既定のドメインである *yourtenant-msappproxy.net* が与えられます。 たとえば Expenses という名前のアプリを発行し、テナントの名前が Contoso である場合、外部 URL は https://expenses-contoso.msappproxy.net となります。 独自のドメイン名を使用する場合、アプリケーションのカスタム ドメインを構成します。 
+Azure Active Directory アプリケーション プロキシ経由でアプリケーションを公開するとき、離れた場所で作業しているユーザーのために外部 URL を作成します。 この URL には、既定のドメインである *yourtenant-msappproxy.net* が与えられます。 たとえば Expenses という名前のアプリを発行し、テナントの名前が Contoso である場合、外部 URL は `https://expenses-contoso.msappproxy.net` となります。 独自のドメイン名を使用する場合、アプリケーションのカスタム ドメインを構成します。 
 
 可能な限り、アプリケーションのカスタム ドメインを設定することが推奨されます。 カスタム ドメインには次のような長所があります。
 

@@ -21,18 +21,18 @@ ms.locfileid: "51572369"
 
 Azure Storage のアカウント キーを表示またはコピーする手順については、[アクセス キー](../articles/storage/common/storage-account-manage.md#access-keys)に関する次のセクションを参照してください。
 
-**例:**
+**例:**  
 
 ```json
-{
-    "name": "StorageLinkedService",
-    "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-        }
-    }
-}
+{  
+    "name": "StorageLinkedService",  
+    "properties": {  
+        "type": "AzureStorage",  
+        "typeProperties": {  
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"  
+        }  
+    }  
+}  
 ```
 
 ### <a name="azure-storage-sas-linked-service"></a>Azure Storage SAS のリンクされたサービス
@@ -45,7 +45,7 @@ Shared Access Signature (SAS) を使用すると、ストレージ アカウン�
 > 以下の PowerShell コマンドを使用して、ストレージ アカウント用のサービス SAS を生成できます (プレースホルダーを置き換え、必要なアクセス許可を付与します): `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
-Azure Storage SAS のリンクされたサービスを利用すると、Shared Access Signature (SAS) を使用して Azure ストレージ アカウントを Azure Data Factory にリンクできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソース (BLOB/コンテナー) へのアクセスが制限付きまたは期限付きになります。 次の表は、Azure Storage SAS のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+Azure Storage SAS のリンクされたサービスを利用すると、Shared Access Signature (SAS) を使用して Azure ストレージ アカウントを Azure Data Factory にリンクできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソース (BLOB/コンテナー) へのアクセスが制限付きまたは期限付きになります。 次の表は、Azure Storage SAS のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。 
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -55,19 +55,20 @@ Azure Storage SAS のリンクされたサービスを利用すると、Shared A
 **例:**
 
 ```json
-{
-    "name": "StorageSasLinkedService",
-    "properties": {
-        "type": "AzureStorageSas",
-        "typeProperties": {
-            "sasUri": "<Specify SAS URI of the Azure Storage resource>"
-        }
-    }
-}
+{  
+    "name": "StorageSasLinkedService",  
+    "properties": {  
+        "type": "AzureStorageSas",  
+        "typeProperties": {  
+            "sasUri": "<Specify SAS URI of the Azure Storage resource>"   
+        }  
+    }  
+}  
 ```
 
-**SAS URI**を作成する際は、次の点を考慮してください。
+**SAS URI**を作成する際は、次の点を考慮してください。  
 
 * リンクされたサービス (読み取り、書き込み、読み取り/書き込み) がデータ ファクトリ内でどのように使用されているかに応じて、オブジェクトに対する適切な読み取り/書き込み**アクセス許可**を設定します。
 * **有効期限**を適切に設定します。 Azure Storage オブジェクトへのアクセスがパイプラインのアクティブな期間内に期限切れにならないことを確認します。
-* URI は、必要に応じて、適切なコンテナーや BLOB またはテーブル レベルで作成する必要があります。 Azure BLOB への SAS URI を使用すると、Data Factory サービスから特定の BLOB にアクセスできます。 Azure BLOB コンテナーへの SAS URI を使用すると、Data Factory サービスはそのコンテナー内の BLOB に対して反復処理を行うことができます。 アクセスするオブジェクトの数を後で変更する必要がある場合、または SAS URI を更新する必要がある場合は、リンクされたサービスを新しい URI で更新することを忘れないでください。
+* URI は、必要に応じて、適切なコンテナーや BLOB またはテーブル レベルで作成する必要があります。 Azure BLOB への SAS URI を使用すると、Data Factory サービスから特定の BLOB にアクセスできます。 Azure BLOB コンテナーへの SAS URI を使用すると、Data Factory サービスはそのコンテナー内の BLOB に対して反復処理を行うことができます。 アクセスするオブジェクトの数を後で変更する必要がある場合、または SAS URI を更新する必要がある場合は、リンクされたサービスを新しい URI で更新することを忘れないでください。   
+

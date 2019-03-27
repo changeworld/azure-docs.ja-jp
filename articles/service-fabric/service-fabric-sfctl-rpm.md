@@ -29,7 +29,7 @@ ms.locfileid: "53275314"
 |コマンド|説明|
 | --- | --- |
 | approve-force | 指定した修復タスクの承認を強制します。 |
-| 削除 | 完了した修復タスクを削除します。 |
+| delete | 完了した修復タスクを削除します。 |
 | list | 指定されたフィルターに一致する修復タスクの一覧を取得します。 |
 
 ## <a name="sfctl-rpm-approve-force"></a>sfctl rpm approve-force

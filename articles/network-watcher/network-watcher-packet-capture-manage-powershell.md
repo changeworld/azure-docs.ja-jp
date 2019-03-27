@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: d768367b8e35c30b1e8cb1646e6cbfceb6151dec
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 01efbd928630b491419f6231007590c4f0fb0b22
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888487"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>PowerShell を使用して Azure Network Watcher でパケット キャプチャを管理する
 
@@ -78,7 +78,7 @@ Linux 仮想マシンの場合:
 $AzureNetworkWatcherExtension = Get-AzureRmVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentLinux -Version 1.4.13.0
 $ExtensionName = "AzureNetworkWatcherExtension"
 Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
-````
+```
 
 次の例は、`Set-AzureRmVMExtension` コマンドレットの実行後の正常な応答を示しています。
 
@@ -266,7 +266,7 @@ Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -Packe
 
 ## <a name="download-a-packet-capture"></a>パケット キャプチャをダウンロードする
 
-パケット キャプチャ セッションが完了すると、BLOB ストレージまたは VM 上のローカル ファイルにキャプチャ ファイルをアップロードできます。 パケット キャプチャの格納場所は、セッションの作成時に定義されます。 ストレージ アカウントに保存されているこれらのキャプチャ ファイルにアクセスする際の便利なツールが Microsoft Azure Storage Explorer です。このツールは、 http://storageexplorer.com/ からダウンロードできます。
+パケット キャプチャ セッションが完了すると、BLOB ストレージまたは VM 上のローカル ファイルにキャプチャ ファイルをアップロードできます。 パケット キャプチャの格納場所は、セッションの作成時に定義されます。 ストレージ アカウントに保存されているこれらのキャプチャ ファイルにアクセスする際の便利なツールが Microsoft Azure Storage Explorer です。このツールは、 https://storageexplorer.com/ からダウンロードできます。
 
 ストレージ アカウントが指定されている場合、パケット キャプチャ ファイルは、次の場所にあるストレージ アカウントに保存されます。
 
@@ -278,7 +278,7 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 [アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する
 
-[IP flow verify のチェック](diagnose-vm-network-traffic-filtering-problem.md)に関するページを参照して、VM に着信するか発信される特定のトラフィックが許可されたかどうかを調べる
+[IP フロー検証の確認](diagnose-vm-network-traffic-filtering-problem.md)に関する記事を参照して、VM で送受信される特定のトラフィックが許可されているかどうかを調べる
 
 <!-- Image references -->
 

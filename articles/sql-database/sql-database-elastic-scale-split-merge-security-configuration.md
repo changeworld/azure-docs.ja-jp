@@ -11,33 +11,38 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: de758d38626107f28211f79a4772c3e887085776
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: a3ba80ce7b5abcb2f112880c4fef5ed3f067f691
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599834"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563220"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
+
 Split/Merge サービスを使用するには、セキュリティが正しく構成されていなければなりません。 このサービスは、Microsoft Azure SQL Database の Elastic Scale 機能の一部です。 詳しくは、「 [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」をご覧ください。
 
 ## <a name="configuring-certificates"></a>証明書の構成
+
 証明書は次の 2 つの方法で構成されます。 
 
 1. [SSL 証明書を構成するには](#to-configure-the-ssl-certificate)
 2. [クライアント証明書を構成するには](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>証明書を取得するには
+
 証明書はパブリック証明機関 (CA) または [Windows Certificate Service](https://msdn.microsoft.com/library/windows/desktop/aa376539.aspx)から取得できます。 これは証明書を取得するための推奨方法です。
 
 これらの方法が利用可能でない場合は、 **自己署名証明書**を生成できます。
 
 ## <a name="tools-to-generate-certificates"></a>証明書を生成するツール
+
 * [makecert.exe](https://msdn.microsoft.com/library/bfsktky3.aspx)
 * [pvk2pfx.exe](https://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>ツールを実行するには
+
 * Visual Studio の開発者コマンド プロンプトで、「 [Visual Studio コマンド プロンプト](https://msdn.microsoft.com/library/ms229859.aspx) 
   
     インストールされている場合は、次のように参照します。
@@ -46,9 +51,11 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 * 「[Windows 8.1:キットとツールのダウンロード](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)」から WDK を取得します
 
 ## <a name="to-configure-the-ssl-certificate"></a>SSL 証明書を構成するには
+
 通信の暗号化やサーバーの認証には SSL 証明書が必要です。 以下の 3 つのシナリオから最適なものを選択し、すべての手順を実行します。
 
 ### <a name="create-a-new-self-signed-certificate"></a>新しい自己署名証明書を作成する
+
 1. [自己署名証明書を作成する](#create-a-self-signed-certificate)
 2. [自己署名 SSL 証明書用の PFX ファイルを作成する](#create-pfx-file-for-self-signed-ssl-certificate)
 3. [クラウド サービスに SSL 証明書をアップロードする](#upload-ssl-certificate-to-cloud-service)

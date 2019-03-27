@@ -4,7 +4,7 @@ description: Azure Active Directory と Mimecast Admin Console の間でシン�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 81c50614-f49b-4bbc-97d5-3cf77154305f
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 7d1280525560c5333a5764ac9f962f79bd2284ad
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: beccce5c7d2378533bdeb9f2fbcee1c742ef6bd4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54061625"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881313"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>チュートリアル:Azure Active Directory と Mimecast Admin Console の統合
 
@@ -153,7 +154,7 @@ Mimecast Admin Console で Azure AD シングル サインオンを構成する�
     
     c. **[プロバイダー]** で **[Azure Active Directory]** を選択します。
     
-    d. **[Issuer URL]\(発行者 URL\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Issuer URL]\(発行者 URL\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** を貼り付けます。
     
     e. **[Login URL]\(ログイン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** を貼り付けます。
 
@@ -262,7 +263,7 @@ Azure AD ユーザーが Mimecast Admin Console にログインできるよう�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

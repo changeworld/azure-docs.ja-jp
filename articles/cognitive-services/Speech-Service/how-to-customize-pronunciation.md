@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Speech Service で発音をカスタマイズする方法について説明します。 カスタムの発音を使用すると、発音形式と単語または用語の表示を定義できます。 製品名や頭字語などのカスタマイズされた用語を処理する場合に便利です。 始めるにあたって必要なのは、発音ファイル (単純な .txt ファイル) のみです。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 6d57bdd8444f5bd6d763400c4df4395bb33a7bdd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0a3dfce10fc8ea76bc8f99e2459295bc637017dc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100006"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878410"
 ---
 # <a name="enable-custom-pronunciation"></a>カスタムの発音を有効にする
 

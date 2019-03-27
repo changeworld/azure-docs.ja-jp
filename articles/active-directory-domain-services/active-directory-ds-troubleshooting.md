@@ -1,26 +1,26 @@
 ---
-title: 'Azure Active Directory Domain Services: トラブルシューティング ガイド | Microsoft Docs'
+title: Azure Active Directory Domain Services:トラブルシューティング ガイド | Microsoft Docs
 description: Azure AD ドメイン サービスのトラブルシューティング ガイド
 services: active-directory-ds
 documentationcenter: ''
 author: eringreenlee
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
-ms.component: domain-services
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: ergreenl
-ms.openlocfilehash: e2b7eb4f5be5e73e70f883f9510e7fc6a13d6bea
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 963ee7e952e566952a80903a739b093dbd9f0c21
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50156088"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55184191"
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - トラブルシューティング ガイド
 この記事では、Azure Active Directory (AD) ドメイン サービスの設定や管理の際に生じる可能性のある問題をトラブルシューティングするためのヒントを提供します。
@@ -128,7 +128,7 @@ Domain Services could not be enabled in this Azure AD tenant. (この Azure AD �
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>ユーザーが Azure AD Domain Services のマネージド ドメインにサインインできない
 Azure AD テナントの 1 人または複数のユーザーが、新しく作成されたマネージド ドメインにサインインすることができない場合、次のトラブルシューティングの手順を実行します。
 
-* **UPN 形式でのサインイン:** SAMAccountName 形式 (CONTOSO\joeuser) ではなく UPN 形式 ('joeuser@contoso.com' など) でサインインを試みます。 UPN プレフィックスが極端に長いか、マネージド ドメイン上の別のユーザーと同じであるユーザーに対して SAMAccountName を自動的に生成できます。 UPN 形式は、Azure AD テナント内で一意であることが保証されています。
+* **UPN 形式を使用してサインインします。** SAMAccountName 形式 ("CONTOSO\joeuser") ではなく UPN 形式 ("joeuser@contoso.com" など) でサインインを試みます。 UPN プレフィックスが極端に長いか、マネージド ドメイン上の別のユーザーと同じであるユーザーに対して SAMAccountName を自動的に生成できます。 UPN 形式は、Azure AD テナント内で一意であることが保証されています。
 
 > [!NOTE]
 > UPN 形式を使用して、Azure AD Domain Services のマネージド ドメインにサインインすることをお勧めします。
@@ -146,7 +146,7 @@ Azure AD テナントの 1 人または複数のユーザーが、新しく作�
 
     1. net stop 'Microsoft Azure AD Sync'
     2. net start 'Microsoft Azure AD Sync'
-* **クラウド専用のアカウント**: 影響を受けているユーザー アカウントがクラウド専用のユーザー アカウントの場合は、Azure AD ドメイン サービスを有効にした後でユーザーが自分のパスワードを変更していることを確認します。 この手順によって、Azure AD ドメイン サービスに必要な資格情報ハッシュが生成されます。
+* **クラウド専用アカウント**: 影響を受けているユーザー アカウントがクラウド専用のユーザー アカウントの場合は、Azure AD Domain Services を有効にした後でユーザーが自分のパスワードを変更していることを確認します。 この手順によって、Azure AD ドメイン サービスに必要な資格情報ハッシュが生成されます。
 
 ## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>マネージド ドメインに 1 つまたは複数のアラートがある
 

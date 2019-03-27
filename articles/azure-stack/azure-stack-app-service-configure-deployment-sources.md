@@ -3,7 +3,7 @@ title: Azure Stack 上の App Services のデプロイ ソースを構成する 
 description: サービス管理者が Azure Stack 上の App Services のデプロイ ソース (Git、GitHub、BitBucket、DropBox、および OneDrive) を構成する方法
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
-ms.author: sethm
+ms.date: 03/11/2019
+ms.author: jeffgilb
 ms.reviewer: anwestg
-ms.openlocfilehash: 3e8e1626987f7418fee9fc36515131650d865201
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 776648fd5bab2dd4ef51ff4c26936f38d9987e94
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213078"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769814"
 ---
 # <a name="configure-deployment-sources"></a>デプロイ ソースを構成する
 

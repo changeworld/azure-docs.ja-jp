@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SignalFx の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SignalFx の統合 | Microsoft Docs
 description: Azure Active Directory と SignalFx の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6d5ab4b0-29bc-4b20-8536-d64db7530f32
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0d21a409669cc7d7fceeec9787efbe31d880597c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a73fbfe96382437c3cf605a5b042e7ddccaad92d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437850"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217923"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>チュートリアル: Azure Active Directory と SignalFx の統合
+# <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>チュートリアル:Azure Active Directory と SignalFx の統合
 
 このチュートリアルでは、SignalFx と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -138,7 +139,7 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]** は空白のままにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** は空白のままにします。
     
     e. **[OK]** をクリックします。
  
@@ -178,7 +179,7 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
 
     c. **[ファイルのアップロード]** をクリックし、**[証明書]** テキストボックスで、Azure Portal からダウンロードした **Base64 エンコード証明書**をアップロードします。
 
-    d. **[発行者の URL]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[発行者の URL]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     e. **[メタデータ URL]** テキスト ボックスに、Azure Portal からコピーした **[アプリのフェデレーション メタデータ URL]** を貼り付けます。
 
@@ -214,7 +215,7 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-signalfx-test-user"></a>SignalFx テスト ユーザーを作成する
 
@@ -223,7 +224,7 @@ SignalFx で Azure AD のシングル サインオンを構成してテストす
 SAML SSO から SignalFx に初めてサインインするとき、[SignalFx サポート チーム](mailto:kmazzola@signalfx.com)からメールが届きます。そのメールに記載されているリンクから認証する必要があります。 これは初めてサインインするときにのみ行われます。その後のログインではメールからの検証は要求されません。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[SignalFx サポート チーム](mailto:kmazzola@signalfx.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [SignalFx サポート チーム](mailto:kmazzola@signalfx.com)にお問い合わせください
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -260,7 +261,7 @@ SAML SSO から SignalFx に初めてサインインするとき、[SignalFx サ
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [SignalFx] タイルをクリックすると、自動的に SignalFx アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

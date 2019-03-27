@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 20e96ad7a99fdb8c90f3b7990965d7225aef8be0
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.lastreviewed: 12/07/2018
+ms.openlocfilehash: e335f4cb112c0f029768ccf050f888e00a6efdc1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555015"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250624"
 ---
 # <a name="use-api-version-profiles-with-net-in-azure-stack"></a>Azure Stack での .NET による API バージョンのプロファイルの使用
 

@@ -7,17 +7,17 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 18b2b3df2748392b12b60517604478b120871754
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 95c495bf3a8ad7b82c42d4071899d045cb49f27b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256062"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247546"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
@@ -89,7 +89,7 @@ DSVM の名前には次の制限があります。
 from azureml.core.compute import ComputeTarget, RemoteCompute 
 
 attach_config = RemoteCompute.attach_configuration(username='<username>',
-                                                   address='<ip_adress_or_fqdn>',
+                                                   address='<ip_address_or_fqdn>',
                                                    ssh_port=22,
                                                    private_key_file='./.ssh/id_rsa')
 compute_target = ComputeTarget.attach(workspace=ws,

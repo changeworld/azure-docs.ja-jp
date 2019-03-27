@@ -3,7 +3,7 @@ title: Azure での Linux VM の時刻同期 | Microsoft Docs
 description: Linux 仮想マシンの時刻同期。
 services: virtual-machines-linux
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: zarhoads
-ms.openlocfilehash: aec36b8ea0f342b133e6844e5a96314c6348289b
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.author: cynthn
+ms.openlocfilehash: 58fd3afa37d965cfbe21dcf23823ddb8425442b9
+ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465473"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54887565"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: f0ce189ebbec6991a1ec316219d45b96cc85f202
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 8d0e00223fcd55a1049900b502b52745837bf8fc
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845945"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54462558"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して、Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する
 
@@ -276,4 +276,4 @@ Azure PowerShell を使用する準備が整っていることを確認します
 
 ## <a name="next-steps"></a>次の手順
 
-Site Recovery と Resource Manager PowerShell コマンドレットの詳細については、[こちら](/powershell/module/azurerm.recoveryservices.backup/#recovery)を参照してください。
+Site Recovery と Resource Manager PowerShell コマンドレットの詳細については、[こちら](/powershell/module/azurerm.recoveryservices.backup/)を参照してください。

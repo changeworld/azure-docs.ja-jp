@@ -11,15 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: ced6e2edb570e12b17d14e0552030902161b5d53
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 01/22/2019
+ms.openlocfilehash: 24c500251c8e91b7542c5c9d3e77676205c88c1f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725254"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090969"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack でのスケール ユニット ノードの操作
 
@@ -41,15 +42,15 @@ ms.locfileid: "53725254"
 3. 結果画面で、スケール ユニットを選択します。
 4. 左側の **[全般]** で、**[ノード]** を選択します。
 
-  次の情報を確認します。
+   次の情報を確認します。
 
-  - 個々のノードの一覧
-  - 動作状態 (以下の一覧を参照)
-  - 電源の状態 (実行中または停止)
-  - サーバー モデル
-  - ベースボード管理コントローラー (BMC) の IP アドレス
-  - コアの合計数
-  - メモリの総量
+   - 個々のノードの一覧
+   - 動作状態 (以下の一覧を参照)
+   - 電源の状態 (実行中または停止)
+   - サーバー モデル
+   - ベースボード管理コントローラー (BMC) の IP アドレス
+   - コアの合計数
+   - メモリの総量
 
 ![スケール ユニットの状態](media/azure-stack-node-actions/multinodeactions.png)
 
@@ -148,10 +149,26 @@ Azure Stack PowerShell モジュールをインストールする必要があり
 
 修復アクションを実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
-  ````PowerShell
+  ```PowerShell
   Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPv4Address <BMCIPv4Address>
-  ````
+  ```
+
+## <a name="shutdown"></a>Shutdown
+
+**シャットダウン**操作では最初に、すべてのアクティブなワークロードを、同じスケール ユニット内の残りのノードに移動します。 操作では次に、スケール ユニット ノードを適切にシャットダウンします。
+
+シャットダウンされたノードの開始後は、[再開](#resume)操作を実行する必要があります。 ノードで実行されていた以前のワークロードはフェールバックしません。
+
+シャットダウン操作に失敗する場合は、シャットダウン操作の前に[ドレイン](#drain)操作を試行します。
+
+シャットダウン操作を実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
+
+  ```PowerShell
+  Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -Shutdown
+  ```
+
+
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Stack Fabric 管理者モジュールの詳細については、「[Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.5.0)」を参照してください。
+Azure Stack Fabric 管理者モジュールの詳細については、「[Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0)」を参照してください。

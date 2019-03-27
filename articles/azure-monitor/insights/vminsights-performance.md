@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 9502c0b5c3ea4b25b7a49448b75fdd43ff28762a
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5fd5d551290c113e9001328562fd99282548ce3c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54186990"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55464298"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs を使用してパフォーマンスをグラフ化する方法 (プレビュー)
 VM 用 Azure Monitor には、仮想マシンがどの程度効果的に実行されているかを判定するのに役立ついくつかの主要業績評価指標 (KPI) を対象とする一連のパフォーマンス グラフが含まれています。 グラフには一定期間にわたるリソース使用率が表示されるので、ボトルネックまたは異常を識別することができます。あるいは、各マシンを一覧表示するパースペクティブに切り替えて、選択したメトリックに基づくリソース使用率を表示することもできます。 パフォーマンスを扱うときに考慮すべき要素は数多くありますが、VM 用 Azure Monitor では、プロセッサ、メモリ、ネットワーク アダプター、およびディスクの視点からオペレーティング システムに重点を置いています。 パフォーマンスによって正常性の監視機能が補完されます。さらに、システム コンポーネントに障害がある可能性を示す問題を明らかにしたり、効率化のためのチューニングや最適化をサポートしたり、容量計画をサポートしたりするのにパフォーマンスは役立ちます。  
@@ -102,8 +102,8 @@ Azure Monitor のパフォーマンス機能では、ご利用のサブスクリ
 
 ![VM から直接表示した VM Insights パフォーマンスビュー](./media/vminsights-performance/vminsights-performance-directvm-01.png)
 
-## <a name="alerting-and-alert-management"></a>アラートの生成とアラートの管理 
-Azure Monitor for VMs の構成要素として有効にされたパフォーマンス メトリックには、事前構成済みのアラート ルールが含まれていません。 Azure VM 上で検出されたパフォーマンスの問題 (CPU 使用率の上昇、使用可能なメモリの不足、ディスク I/O、ディスク領域不足など) に対応する[正常性アラート](vminsights-health.md#alerting-and-alert-management)は存在しますが、これらのアラートが適用されるのは、同じ Log Analytics ワークスペースに接続されたすべての VM のうち、Azure Monitor for VMs が有効にされている VM に限られます。 
+## <a name="alerts"></a>アラート 
+Azure Monitor for VMs の構成要素として有効にされたパフォーマンス メトリックには、事前構成済みのアラート ルールが含まれていません。 Azure VM 上で検出されたパフォーマンスの問題 (CPU 使用率の上昇、使用可能なメモリの不足、ディスク I/O、ディスク領域不足など) に対応する[正常性アラート](vminsights-health.md#alerts)は存在しますが、これらのアラートが適用されるのは、同じ Log Analytics ワークスペースに接続されたすべての VM のうち、Azure Monitor for VMs が有効にされている VM に限られます。 
 
 しかし、Log Analytics ワークスペースに収集して格納する可能性があるのは、必要なパフォーマンス メトリックの一部だけです。 実際の監視戦略上、仮想マシンの容量や正常性を有効に評価するために、他のパフォーマンス メトリックを含んだ分析またはアラートが必要な場合、あるいは独自のアラート基準やロジックを柔軟に指定する必要がある場合は、Log Analytics で[それらのパフォーマンス カウンターのコレクション](../../azure-monitor/platform/data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json)を構成し、[ログ アラート](../../azure-monitor/platform/alerts-log.md?toc=/azure/azure-monitor/toc.json)を定義することができます。 Log Analytics では、他の種類のデータを使った複雑な分析を実行でき、また、傾向分析をサポートするために保持期間もより長くなります。これに対して、メトリックは軽量であり、ほぼリアルタイムのシナリオに対応することができます。 これらは [Azure 診断エージェント](../../virtual-machines/windows/monitor.md)によって収集されて、Azure Monitor のメトリック ストアに格納されるため、アラート作成に伴う待ち時間が短縮され、コストも低くなります。
 

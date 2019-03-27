@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e53d77c4faea5b9461395a0098261866bdf6252f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156904"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430432"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Azure Portal を使用して Azure SQL Database および Data Warehouse のアラートを作成する
 
@@ -106,7 +106,6 @@ ms.locfileid: "54156904"
 ||||||               
 | SQL Data Warehouse | cpu_percent | CPU の割合 | 平均 | 10 分 |
 | SQL Data Warehouse | physical_data_read_percent | データ IO の割合 | 平均 | 10 分 |
-| SQL Data Warehouse | storage | 合計データベース サイズ | 最大値 | 10 分 |
 | SQL Data Warehouse | connection_successful | 成功した接続 | 合計 | 10 分 |
 | SQL Data Warehouse | connection_failed | 失敗した接続 | 合計 | 10 分 |
 | SQL Data Warehouse | blocked_by_firewall | ファイアウォールによってブロックされる | 合計 | 10 分 |

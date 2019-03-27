@@ -5,22 +5,23 @@ services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/14/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 54b614e49bc7c03325ebeada60232fca861874e0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5217f21449efeb2086770f040fb781765ea819eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193078"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083939"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン:技術的な詳細情報
 
@@ -59,7 +60,7 @@ Web ブラウザーでのサインインのフローは次のとおりです。
 3. ユーザーが、Azure AD サインイン ページにユーザー名を入力します。
 
    >[!NOTE]
-   >[特定のアプリケーション](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso)では、手順 2. と 3. をスキップします。
+   >[特定のアプリケーション](./how-to-connect-sso-faq.md#what-applications-take-advantage-of-domain_hint-or-login_hint-parameter-capability-of-seamless-sso)では、手順 2. と 3. をスキップします。
 
 4. Azure AD が JavaScript をバックグラウンドで使用して、Kerberos チケットを提供するよう、401 認証エラーを通じてクライアントに要求します。
 5. ブラウザーは、代わりに Active Directory から (Azure AD を表す) `AZUREADSSOACC` コンピューター アカウント用にチケットを要求します。

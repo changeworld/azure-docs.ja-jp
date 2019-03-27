@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 10/23/2018
+ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 84333b26ac70db4b400f7236d4255f4b57a6ca7d
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: e4fa42b6c32c3eb383eea4489ea109c0d496bdb9
+ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572388"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54392729"
 ---
 次の表は、Azure Storage の既定の制限について説明しています。 *受信*制限は、ストレージ アカウントに送信されるすべてのデータ (要求) を指します。 *送信*制限は、ストレージ アカウントから受信するすべてのデータ (応答) を指します。
 
@@ -29,15 +29,20 @@ ms.locfileid: "51572388"
 | 汎用 v1 ストレージ アカウントの最大エグレス (米国リージョン) | RA-GRS/GRS が有効な場合は 20 Gbps、LRS/ZRS の場合は 30 Gbps <sup>2</sup> |
 | 汎用 v1 ストレージ アカウントの最大送信速度 (米国以外のリージョン) | RA-GRS/GRS が有効な場合は 10 Gbps、LRS/ZRS の場合は 15 Gbps <sup>2</sup> |
 
-<sup>1</sup> Azure ストレージ アカウントでは、要求によりさらに高いイングレス制限がサポートされます。 イングレスのアカウント制限の引き上げを要求する場合は、[Azure サポートにお問い合わせください](https://azure.microsoft.com/support/faq/)。
+<sup>1</sup> Azure Standard ストレージ アカウントでは、要求によりさらに高いイングレス制限がサポートされます。 イングレスのアカウント制限の引き上げを要求する場合は、[Azure サポートにお問い合わせください](https://azure.microsoft.com/support/faq/)。
 
-<sup>2</sup>[Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)には次のオプションがあります。
-* **RA-GRS**: 読み取りアクセス地理冗長ストレージ。 RA-GRS が有効な場合、2 次拠点への送信ターゲットは、1 次拠点と同じになります。
-* **GRS**: 地理冗長ストレージ。 
+<sup>2</sup> [Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)には次のオプションがあります。
+* **RA-GRS**: 読み取りアクセス geo 冗長ストレージ。 RA-GRS が有効な場合、2 次拠点への送信ターゲットは、1 次拠点と同じになります。
+* **GRS**: geo 冗長ストレージ。 
 * **ZRS**: ゾーン冗長ストレージ。
 * **LRS**: ローカル冗長ストレージ。 
 
+> [!NOTE]
+> Microsoft では、ほとんどのシナリオで汎用 v2 ストレージ アカウントを使用することをお勧めしています。 汎用 v1 または BLOB ストレージ アカウントは汎用 v2 アカウントに簡単にアップグレードできます。そのとき、ダウンタイムは発生せず、データをコピーする必要はありません。
+>
+> Azure Storage アカウントの詳細については、[Storage アカウントの概要](../articles/storage/common/storage-account-overview.md)に関するページを参照してください。 
+
 アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合は、複数のストレージ アカウントを使用するようにアプリケーションを構築できます。 その後、それらのストレージ アカウント間でデータをパーティション分割できます。 ボリューム価格については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/) 」をご覧ください。
 
-すべてのストレージ アカウントはフラット ネットワーク トポロジで実行され、ストレージ アカウントがいつ作成されたかにかかわらず、この記事で概要を説明するスケーラビリティとパフォーマンスのターゲットがサポートされます。 のフラット ネットワーク アーキテクチャおよびスケーラビリティの詳細については、 [Microsoft Azure Storage の高い整合性を持つ高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)に関するページを参照してください。
+すべてのストレージ アカウントはフラット ネットワーク トポロジで実行され、ストレージ アカウントがいつ作成されたかにかかわらず、この記事で概要を説明するスケーラビリティとパフォーマンスのターゲットがサポートされます。 Azure Storage フラット ネットワークのアーキテクチャとスケーラビリティの詳細については、[Microsoft Azure Storage: 強力な一貫性を備えた高使用可能なクラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)を参照してください。
 

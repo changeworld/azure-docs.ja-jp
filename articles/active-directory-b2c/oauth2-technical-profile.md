@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで OAuth2 技�
 description: Azure Active Directory B2C 内のカスタム ポリシーで OAuth2 技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: cc09998a982f319cfc1d60924d2175a3c17c8465
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 86682525ae5246f9335e64e7dd3a812eaaf3c273
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836681"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55157722"
 ---
 # <a name="define-a-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 
@@ -23,7 +23,7 @@ ms.locfileid: "52836681"
 
 Azure Active Directory (Azure AD) B2C では、OAuth2 プロトコルの ID プロバイダーにサポートを提供しています。 これは、認可および委任された認証のための主要なプロトコルです。 詳細については、「[RFC 6749 The OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749)」を参照してください。 OAuth2 技術プロファイルを使用すると、Facebook や Live.com などの OAuth2 ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
 
-## <a name="protocol"></a>プロトコル
+## <a name="protocol"></a>Protocol
 
 **Protocol** 要素の **Name** 属性は `OAuth2` に設定する必要があります。 たとえば、**Facebook-OAUTH** 技術プロファイル用のプロトコルは `OAuth2` です。
 

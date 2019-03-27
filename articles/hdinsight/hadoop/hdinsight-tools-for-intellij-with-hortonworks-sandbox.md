@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: aaebad004e5d426ca1c593941b15a2515c4476de
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 98f22f531ca15bf88cd7d0a9add2851651e2eec7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635665"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118325"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する
 
@@ -53,20 +53,20 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
    1. **[HDInsight]** > **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
    2. **[Build tool]\(ビルド ツール\)** ボックスの一覧で、実際のシナリオに基づいて次のいずれかを選択します。
 
-    * **Maven**: Scala プロジェクト作成ウィザードをサポートする場合。
-    * **SBT**: 依存関係を管理し、Scala プロジェクトをビルドする場合。
+      * **Maven**: Scala プロジェクト作成ウィザードをサポートする場合。
+      * **SBT**: 依存関係を管理し、Scala プロジェクトをビルドする場合。
 
    ![[New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
 2. **[次へ]** を選択します。
 3. 次の **[New Project]\(新しいプロジェクト\)** ダイアログ ボックスで、以下の手順を実行します。
 
-    1. **[Project name]\(プロジェクト名\)** ボックスにプロジェクト名を入力します。
-    2. **[Project location]\(プロジェクトの場所\)** ボックスにプロジェクトの場所を入力します。
-    3. **[Project SDK]\(プロジェクト SDK\)** ドロップダウン リストの横の **[New]\(新規\)** をクリックし、**[JDK]** を選択して、Java JDK バージョン 1.7 以降のフォルダーを指定します。 Spark 2.x クラスターに **[Java 1.8]** を選択します。 Spark 1.x クラスターに **[Java 1.7]** を選択します。 既定の場所は、C:\Program Files\Java\jdk1.8.x_xxx です。
-    4. **[Spark version]\(Spark のバージョン\)** ボックスの一覧には、Scala プロジェクト作成ウィザードによって Spark SDK と Scala SDK の適切なバージョンが統合されています。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この例では、Spark 1.6.2 (Scala 2.10.5) を使用します。 **Scala 2.10.x** と示されているリポジトリを使用してください。 Scala 2.11.x と示されているレポジトリは使用しないでください。
+   1. **[Project name]\(プロジェクト名\)** ボックスにプロジェクト名を入力します。
+   2. **[Project location]\(プロジェクトの場所\)** ボックスにプロジェクトの場所を入力します。
+   3. **[Project SDK]\(プロジェクト SDK\)** ドロップダウン リストの横の **[New]\(新規\)** をクリックし、**[JDK]** を選択して、Java JDK バージョン 1.7 以降のフォルダーを指定します。 Spark 2.x クラスターに **[Java 1.8]** を選択します。 Spark 1.x クラスターに **[Java 1.7]** を選択します。 既定の場所は、C:\Program Files\Java\jdk1.8.x_xxx です。
+   4. **[Spark version]\(Spark のバージョン\)** ボックスの一覧には、Scala プロジェクト作成ウィザードによって Spark SDK と Scala SDK の適切なバージョンが統合されています。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この例では、Spark 1.6.2 (Scala 2.10.5) を使用します。 **Scala 2.10.x** と示されているリポジトリを使用してください。 Scala 2.11.x と示されているレポジトリは使用しないでください。
     
-    ![IntelliJ Scala プロジェクトのプロパティを作成する](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
+      ![IntelliJ Scala プロジェクトのプロパティを作成する](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
 
 4. **[完了]** を選択します。

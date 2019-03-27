@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: c99d5e9d64e9e9715589ecf2c0de57ce660917aa
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 703b8a7a094d0ea6f5b5dedaf02a218b407269d3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103691"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813808"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -28,7 +28,7 @@ Azure Functions Core Tools を使用すると、ローカル コンピュータ�
 
 Azure Functions Core Tools には、2 つのバージョンがあります。 使用するバージョンは、ローカル開発環境、[選択した言語](supported-languages.md)、および必要なサポートのレベルによって異なります。
 
-+ [バージョン 1.x](#v1): ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://docs.npmjs.com/getting-started/what-is-npm)からインストールされます。 このバージョンでは、正式にサポートされていない試験段階の言語で関数を作成できます。 詳細については、「[Azure Functions でサポートされている言語](supported-languages.md)」を参照してください
++ バージョン 1.x: ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://docs.npmjs.com/getting-started/what-is-npm)からインストールされます。 このバージョンでは、正式にサポートされていない試験段階の言語で関数を作成できます。 詳細については、「[Azure Functions でサポートされている言語](supported-languages.md)」を参照してください
 
 + [バージョン 2.x](#v2): [ランタイムのバージョン 2.x](functions-versions.md) をサポートします。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux) に対応しています。 インストールには、プラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
 
@@ -40,13 +40,13 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 ### <a name="v2"></a>バージョン 2.x
 
-バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux)など、.NET Core 2.x が対応しているすべてのプラットフォームでサポートされます。
+バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux)など、.NET Core 2.x が対応しているすべてのプラットフォームでサポートされます。 .NET Core 2.x SDK を先にインストールしておく必要があります。
 
 #### <a name="windows-npm"></a>Windows
 
 次の手順では、npm を使用して Windows 上に Core Tools をインストールします。 また、[Chocolatey](https://chocolatey.org/) を使用することもできます。 詳細については、[Core Tools の readme ](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)に関するページを参照してください。
 
-1. [Windows 用 .NET Core 2.1](https://www.microsoft.com/net/download/windows) をインストールします。
+1. [Windows 用 .NET Core 2.x SDK](https://www.microsoft.com/net/download/windows) をインストールします。
 
 2. [Node.js]をインストールします。これには、npm が同梱されています。 2x バージョンのツールの場合、Node.js 8.5 以降のバージョンのみがサポートされています。
 
@@ -60,7 +60,7 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 次の手順では、Homebrew を使用して macOS 上に Core Tools をインストールします。
 
-1. [macOS 用 .NET Core 2.1](https://www.microsoft.com/net/download/macos) をインストールします。
+1. [macOS 用 .NET Core 2.x SDK](https://www.microsoft.com/net/download/macos) をインストールします。
 
 2. まだインストールしていない場合は、[Homebrew](https://brew.sh/) をインストールします。
 
@@ -75,7 +75,7 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 次の手順では [APT ](https://wiki.debian.org/Apt)を使用して、Ubuntu/Debian Linux ディストリビューションに Core Tools をインストールします。 他の Linux ディストリビューションについては、[Core Tools の readme](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux) に関するページを参照してください。
 
-1. [Linux 用 .NET Core 2.1](https://www.microsoft.com/net/download/linux) をインストールします。
+1. [Linux 用 .NET Core 2.x SDK](https://www.microsoft.com/net/download/linux) をインストールします。
 
 2. 次のコマンドを使って、Microsoft プロダクト キーを信頼済みとして登録します。
 
@@ -371,7 +371,7 @@ HTTP トリガーと webhook を除く、あらゆる種類の関数の場合、
 {
     "input": "<trigger_input>"
 }
-````
+```
 
 `<trigger_input>` 値には、関数が必要とする形式でデータが含まれています。 次の cURL の例は、`QueueTriggerJS` 関数に対する POST です。 この場合、入力は、キューにあることが期待されるメッセージに相当する文字列です。
 

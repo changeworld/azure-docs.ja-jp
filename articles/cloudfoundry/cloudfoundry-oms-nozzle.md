@@ -2,25 +2,22 @@
 title: Cloud Foundry 監視向けの Azure Log Analytics Nozzle のデプロイ | Microsoft Docs
 description: Cloud Foundry loggregator Nozzle for Azure Log Analytics をデプロイする手順について説明します。 Nozzle を使用して、Cloud Foundry システムの正常性とパフォーマンス メトリックを監視します。
 services: virtual-machines-linux
-documentationcenter: ''
 author: ningk
 manager: jeconnoc
-editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
-ms.service: virtual-machines-linux
-ms.devlang: NA
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 0039536caf917a051f0ddabd6be7cf2b1be90ba2
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6f23b103f1715d567792e162d62d69f13fc08968
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404904"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243877"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry システム監視向けの Azure Log Analytics Nozzle のデプロイ
 
@@ -63,11 +60,11 @@ Log Analytics ワークスペースは、手動で、またはテンプレート
 1. Azure Portal で Azure Marketplace でサービスの一覧を検索し、[Log Analytics] を選択します。
 2. **[作成]** を選択し、次の項目について選択します。
 
-   * **Log Analytics ワークスペース**: ワークスペースの名前を入力します。
-   * **サブスクリプション**: 複数のサブスクリプションがある場合、CF デプロイと同じものを選択します。
-   * **リソース グループ**: 新しいリソース グループを作成するか、CF デプロイと同じリソース グループを使用します。
-   * **場所**: 場所を入力します。
-   * **価格レベル**: 完了するには **[OK]** を選択します。
+   * **Log Analytics ワークスペース**:ワークスペースの名前を入力します。
+   * **サブスクリプション**:複数のサブスクリプションがある場合、CF デプロイと同じものを選択します。
+   * **[リソース グループ]**:新しいリソース グループを作成するか、CF デプロイと同じリソース グループを使用します。
+   * **[場所]**:場所を入力します。
+   * **価格レベル**:完了するには **[OK]** を選択します。
 
 詳細については、「[Log Analytics の起動と開始](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)」を参照してください。
 
@@ -78,13 +75,13 @@ Log Analytics ワークスペースは、手動で、またはテンプレート
 3. 検索ウィンドウに「Cloud Foundry」と入力し、[Cloud Foundry 監視ソリューション] を選択します。
 4. Cloud Foundry 監視ソリューション テンプレートのフロントページが読み込まれたら、[作成] をクリックしてテンプレート ブレードを起動します。
 5. 必要なパラメーターを入力します。
-    * **サブスクリプション**: Log Analytics ワークスペースの Azure サブスクリプションを選択します。通常は Cloud Foundry デプロイと同じです。
-    * **リソース グループ**: 既存のリソース グループを選択するか、Log Analytics ワークスペース用の新しいグループを作成します。
-    * **リソース グループの場所**: リソース グループの場所を選択します。
-    * **OMS_Workspace_Name**: ワークスペース名を入力します。ワークスペースが存在しない場合は、テンプレートによって新しいワークスペースが作成されます。
-    * **OMS_Workspace_Region**: ワークスペースの場所を選択します。
-    * **OMS_Workspace_Pricing_Tier**: Log Analytics ワークスペース SKU を選択します。 [料金ガイダンス](https://azure.microsoft.com/pricing/details/log-analytics/)を参考にしてください。
-    * **法律条項**: [法律条項] をクリックし、[作成] をクリックして法律条項に同意します。
+    * **サブスクリプション**:Log Analytics ワークスペースの Azure サブスクリプションを選択します。通常は Cloud Foundry デプロイと同じです。
+    * **[リソース グループ]**:既存のリソース グループを選択するか、Log Analytics ワークスペース用の新しいグループを作成します。
+    * **リソース グループの場所**:リソース グループの場所を選択します。
+    * **OMS_Workspace_Name**:ワークスペース名を入力します。ワークスペースが存在しない場合は、テンプレートによって新しいワークスペースが作成されます。
+    * **OMS_Workspace_Region**:ワークスペースの場所を選択します。
+    * **OMS_Workspace_Pricing_Tier**:Log Analytics ワークスペース SKU を選択します。 [料金ガイダンス](https://azure.microsoft.com/pricing/details/log-analytics/)を参考にしてください。
+    * **法律条項**:[法律条項] をクリックし、[作成] をクリックして法律条項に同意します。
 - すべてのパラメーターを指定したら、[作成] をクリックしてテンプレートをデプロイします。 デプロイが完了すると、通知タブに状態が表示されます。
 
 

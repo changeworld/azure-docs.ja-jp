@@ -6,19 +6,19 @@ author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: bdcc0510503e48caf70f4f0d91d7602d767ca9ab
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 254d1faf0d846cc6a0e165b68db11ac0314eab33
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092480"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430575"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのバックアップと復元
-Azure SQL Data Warehouse でバックアップと復元がどのように機能するかを説明します。 データ ウェアハウスをプライマリ リージョンの以前の復元ポイントに復旧またはコピーするには、データ ウェアハウスのスナップショットを使用します。 異なる地理的リージョンに復元するには、データ ウェアハウスの geo 冗長バックアップを使用します。 
+Azure SQL Data Warehouse でバックアップと復元がどのように機能するかを説明します。 データ ウェアハウスをプライマリ リージョンの以前の状態に復旧またはコピーするには、データ ウェアハウスの復元ポイントを使用します。 異なる地理的リージョンに復元するには、データ ウェアハウスの geo 冗長バックアップを使用します。 
 
 ## <a name="what-is-a-data-warehouse-snapshot"></a>データ ウェアハウスのスナップショットとは
 "*データ ウェアハウスのスナップショット*" では、データ ウェアハウスの以前の状態を復旧またはコピーするために利用できる復元ポイントが作成されます。  SQL Data Warehouse は分散システムなので、データ ウェアハウスのスナップショットは Azure Storage に配置されている多くのファイルで構成されます。 スナップショットでは、データ ウェアハウスに格納されたデータの増分の変更がキャプチャされます。
@@ -62,18 +62,18 @@ order by run_id desc
 > 論理的な SQL Server インスタンスを削除すると、そのインスタンスに属するデータベースもすべて削除されます。これを回復することはできません。 削除されたサーバーを復元することはできません。
 >
 
-## <a name="geo-backups"></a>geo バックアップ
+## <a name="geo-backups-and-disaster-recovery"></a>geo バックアップとディザスター リカバリー
 SQL Data Warehouse は、1 日に 1 回、[ペアのデータ センター](../best-practices-availability-paired-regions.md)に geo バックアップを実行します。 geo 復元の RPO は 24 時間です。 geo バックアップは、SQL Data Warehouse がサポートされているその他の任意のリージョン内のサーバーに復元することができます。 geo バックアップにより、プライマリ リージョンの復元ポイントにアクセスできない場合でも、データ ウェアハウスを復元できます。
 
 geo バックアップは既定で有効です。 データ ウェアハウスが Gen1 である場合は、必要に応じて[オプトアウト](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy)することができます。 データ保護は組み込み保証であるため、Gen2 の geo バックアップからオプトアウトすることはできません。
 
 > [!NOTE]
-> geo バックアップ用にさらに短い RPO が必要な場合は、[こちら](https://feedback.azure.com/forums/307516-sql-data-warehouse)でこの機能に投票してください。 ユーザー定義の復元ポイントを作成し、新しく作成された復元ポイントを異なるリージョンの新しいデータ ウェアハウスに復元することもできます。 復元が済むと、データ ウェアハウスはオンラインになるので、無期限に一時停止してコンピューティング コストを節約することができます。 一時停止したデータベースについては、Azure Premium Storage レートでストレージに対して課金されます。 それから一時停止します。 データ ウェアハウスのアクティブなコピーが必要な場合は、わずか数分で再開できます。
+> geo バックアップ用にさらに短い RPO が必要な場合は、[こちら](https://feedback.azure.com/forums/307516-sql-data-warehouse)でこの機能に投票してください。 ユーザー定義の復元ポイントを作成し、新しく作成された復元ポイントを異なるリージョンの新しいデータ ウェアハウスに復元することもできます。 復元が済むと、データ ウェアハウスはオンラインになるので、無期限に一時停止してコンピューティング コストを節約することができます。 一時停止したデータベースについては、Azure Premium Storage レートでストレージに対して課金されます。 それから一時停止します。<!-- should this be removed or is something missing? --> データ ウェアハウスのアクティブなコピーが必要な場合は、わずか数分で再開できます。
 >
 
 
 ## <a name="backup-and-restore-costs"></a>バックアップと復元のコスト
-Azure の課金には、ストレージの明細項目とディザスター リカバリー ストレージの明細項目があることがわかります。 ストレージの料金は、プライマリ リージョンでのデータの格納と、スナップショットによってキャプチャされた増分変更のコストの合計です。 スナップショットの現在の取得方法について詳しくは、こちらの[ドキュメント](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios)をご覧ください。 geo 冗長の料金には、geo バックアップを格納するコストが含まれます。  
+Azure の課金には、ストレージの明細項目とディザスター リカバリー ストレージの明細項目があることがわかります。 ストレージの料金は、プライマリ リージョンでのデータの格納と、スナップショットによってキャプチャされた増分変更のコストの合計です。 スナップショットの課金方法については、「[Understanding how Snapshots Accrue Charges](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios)」 (スナップショットの料金が発生するしくみについて) を参照してください。 geo 冗長の料金には、geo バックアップを格納するコストが含まれます。  
 
 プライマリ データ ウェアハウスと 7 日間のスナップショット変更の総コストは、TB 単位で四捨五入されます。 たとえば、データ ウェアハウスが 1.5 TB で、スナップショットが 100 GB をキャプチャする場合、Azure Premium Storage の料金で 2 TB のデータが課金されます。 
 
@@ -86,7 +86,7 @@ SQL Data Warehouse の価格の詳細については、「[SQL Data Warehouse �
 
 復元されたデータ ウェアハウスと現在のデータ ウェアハウスの両方を保持するか、いずれか 1 つを削除することができます。 現在のデータ ウェアハウスを、復元されたデータ ウェアハウスで置換する場合は、MODIFY NAME オプションを指定して [ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse) を使用し、名前を変更できます。 
 
-データ ウェアハウスを復元する場合は、[Azure Portal を使用したデータ ウェアハウスの復元](sql-data-warehouse-restore-database-portal.md)、 [PowerShell を使用したデータ ウェアハウスを復元](sql-data-warehouse-restore-database-powershell.md)、または [T-SQL を使用したデータ ウェアハウスの復元](sql-data-warehouse-restore-database-rest-api.md)を参照してください。
+データ ウェアハウスを復元する場合は、[Azure portal を使用したデータ ウェアハウスの復元](sql-data-warehouse-restore-database-portal.md)、 [PowerShell を使用したデータ ウェアハウスの復元](sql-data-warehouse-restore-database-powershell.md)、または [REST API を使用したデータ ウェアハウスの復元](sql-data-warehouse-restore-database-rest-api.md)に関する記事を参照してください。
 
 削除済みまたは一時停止中のデータ ウェアハウスを復元する場合は、[サポート チケットを作成](sql-data-warehouse-get-started-create-support-ticket.md)できます。 
 

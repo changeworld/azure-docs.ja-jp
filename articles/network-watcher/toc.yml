@@ -52,7 +52,7 @@ items:
       items:
       - name: " Windows"
         href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
-      - name: " Linux"
+      - name: Linux
         href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
     - name: ルーティングに関する問題を診断する
       items:
@@ -111,6 +111,8 @@ items:
         items:
         - name: よく寄せられる質問
           href: traffic-analytics-faq.md
+        - name: スキーマとデータ収集
+          href: traffic-analytics-schema.md
       - name: Power BI を使用する
         href: network-watcher-visualize-nsg-flow-logs-power-bi.md
       - name: Elastic Stack を使用する
@@ -158,7 +160,7 @@ items:
   - name: Java
     href: /java/api/com.microsoft.azure.management.network
   - name: Ruby
-    href: http://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher
+    href: https://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher
   - name: Python
     href: /python/api/overview/azure/network
   - name: .NET
@@ -181,9 +183,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/network-watcher
-ms.openlocfilehash: 69b4efb5adc0b6c3c7766b7c9178ccefb816711d
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7f79116e7638cc1c4e6b5263cf61ff064d443fbb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391642"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012175"

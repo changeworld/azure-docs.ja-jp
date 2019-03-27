@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: overview
 ms.date: 12/18/2018
 ms.author: sngun
-ms.openlocfilehash: b384bc51ac371ef75f5128c92f7e4b8d7f45ecc6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 68ed21489cb97ff23a252ecc5287ad79aeeb210e
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034949"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54429544"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
 現在のアプリケーションは、応答性に優れていて、常にオンラインである必要があります。 待機時間の短縮と高可用性を実現するには、これらのアプリケーションのインスタンスをそのユーザーの近くにあるデータ センターにデプロイする必要があります。 アプリケーションには、ピーク時の使用量の大きな変化に即応し、増え続けるデータを格納し、ミリ秒単位でユーザーがこのデータを利用できるようにすることが求められます。
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB では、ボタンを 1 つクリックするだけで Azure のリージョンをいくつでもまたいでスループットとストレージを柔軟かつ個別にスケールできます。 スループットとストレージを弾力的にスケーリングし、SQL、MongoDB、Cassandra、Tables、Gremlin の中から好みの API を使用して、1 桁ミリ秒の高速データ アクセスを利用できます。 Cosmos DB では、包括的な[サービス レベル アグリーメント](https://aka.ms/acdbsla) (SLA) が提供され、スループット、待ち時間、可用性、整合性が保証されています。この点は、他のどのデータベース サービスにもないメリットです。
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Cosmos DB では、ボタンを 1 つクリックするだけで Azure のリージョンをいくつでもまたいでスループットとストレージを柔軟かつ個別にスケーリングできます。 スループットとストレージを弾力的にスケーリングし、SQL、MongoDB、Cassandra、Tables、Gremlin の中から好みの API を使用して、1 桁ミリ秒の高速データ アクセスを利用できます。 Cosmos DB では、包括的な[サービス レベル アグリーメント](https://aka.ms/acdbsla) (SLA) が提供され、スループット、待ち時間、可用性、整合性が保証されています。この点は、他のどのデータベース サービスにもないメリットです。
 
 Azure サブスクリプションを必要とせず、課金や契約もなしに [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
 
@@ -32,11 +32,9 @@ Azure サブスクリプションを必要とせず、課金や契約もなし�
 
 Cosmos DB を使用すると、応答性と可用性が高いアプリケーションを世界的な規模で構築できます。 Cosmos DB では、ユーザーがどこにいてもデータが透過的にレプリケートされるので、ユーザーは最も近い場所にあるデータのレプリカと対話できます。
 
-Cosmos DB では、いつでもボタンをクリックするだけで、Cosmos アカウントに Azure リージョン追加したり、アカウントからリージョンを削除したりできます。 Cosmos アカウントに関連付けられたすべてのリージョンにデータがシームレスにレプリケートされ、アプリケーションではサービスのマルチホーム機能のおかげで高可用性を維持できます。
+Cosmos DB では、いつでもボタンをクリックするだけで、Cosmos アカウントに Azure リージョン追加したり、アカウントからリージョンを削除したりできます。 Cosmos アカウントに関連付けられたすべてのリージョンにデータがシームレスにレプリケートされ、アプリケーションではサービスのマルチホーム機能のおかげで高可用性を維持できます。 詳しくは、[グローバル分散](distribute-data-globally.md)に関する記事をご覧ください。
 
-詳しくは、[グローバル分散](distribute-data-globally.md)に関する記事をご覧ください。
-
-### <a name="always-on"></a>常時 "接続"
+### <a name="always-on"></a>常時接続
 
 Azure インフラストラクチャとの緊密な統合と、[透過的なマルチマスター レプリケーション](global-dist-under-the-hood.md)により、Cosmos DB では読み取りと書き込みの両方に対して 99.999% の[高可用性](high-availability.md)が実現されます。 Cosmos DB では、Cosmos アカウントのリージョン間フェールオーバーをプログラムで (またはポータルを使用して) 呼び出す機能も提供されています。 この機能を使用すると、Cosmos データベースが自動的にフェールオーバーできるだけでなく、アプリケーションの残りの部分もリージョン規模の災害が発生した場合にフェールオーバーするよう設計するのに役立ちます。
 
@@ -50,11 +48,11 @@ Cosmos DB を使用すると、応答性に優れた世界規模のアプリケ�
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>明確に定義された複数の整合性の選択肢
 
-極端な[整合性、可用性、待機時間、プログラミングのトレードオフ](consistency-levels-tradeoffs.md)を行う必要がなくなりました。 Cosmos DB のマルチマスター レプリケーション プロトコルは、強固、有界整合性制約、一貫性のあるプレフィックス、セッション、最終という [5 つの明確な整合性の選択肢](consistency-levels.md)を提供するよう慎重に設計されており、グローバル分散アプリケーションでも、待機時間が短く可用性に優れた直感的なプログラミング モデルを実現できます。
+極端な[整合性、可用性、待ち時間、スループットのトレードオフ](consistency-levels-tradeoffs.md)を行う必要がなくなりました。 Cosmos DB のマルチマスター レプリケーション プロトコルは、強固、有界整合性制約、セッション、一貫性のあるプレフィックス、最終という [5 つの明確な整合性の選択肢](consistency-levels.md)を提供するよう慎重に設計されており、グローバル分散アプリケーションでも、待ち時間が短く可用性に優れた直感的なプログラミング モデルを実現できます。
 
 ### <a name="no-schema-or-index-management"></a>スキーマやインデックスの管理が不要
 
-グローバル分散型アプリでは、データベースのスキーマやインデックスとアプリケーションのスキーマの同期に特に手間がかかります。 しかし、Cosmos DB では、スキーマやインデックスに対応する必要はありません。 データベース エンジンがスキーマにまったく依存しないためです。  スキーマとインデックスの管理が必要ないため、スキーマ移行中のアプリケーションのダウンタイムを心配する必要もありません。 Cosmos DB では、[すべてのデータのインデックス付けが自動的に行われ](index-policy.md) (スキーマもインデックスも不要です)、高速クエリが提供されます。
+グローバル分散型アプリでは、データベースのスキーマやインデックスとアプリケーションのスキーマの同期に特に手間がかかります。 しかし、Cosmos DB では、スキーマやインデックスの管理に対応する必要はありません。 データベース エンジンがスキーマにまったく依存しないためです。  スキーマとインデックスの管理が必要ないため、スキーマ移行中のアプリケーションのダウンタイムを心配する必要もありません。 Cosmos DB では、[すべてのデータのインデックス付けが自動的に行われ](index-policy.md)、高速クエリが提供されます。
 
 ### <a name="battle-tested-database-service"></a>厳しくテストされたデータベース サービス
 
@@ -78,7 +76,7 @@ Cosmos DB は、99.999% の高可用性、99 パーセンタイルでの読み�
 
 ### <a name="apache-spark--cosmos-db--operational-analytics-at-global-scale"></a>Apache Spark + Cosmos DB = 世界的な規模での運用分析
 
-Cosmos DB に格納されたデータに対して [Spark](spark-connector.md) を実行することができます。 この機能を使用すると、Cosmos DB を直接使用するトランザクション ワークロードに影響を与えることなく、世界的な規模で低遅延の運用分析を行うことができます。
+Cosmos DB の格納データに対して [Spark](spark-connector.md) を直接実行することができます。 この機能を使用すると、Cosmos DB を直接使用するトランザクション ワークロードに影響を与えることなく、世界的な規模で低遅延の運用分析を行うことができます。
 
 ### <a name="develop-applications-for-cosmos-db-using-popular-nosql-apis"></a>人気のある NoSQL API を使用した Cosmos DB 用アプリケーションの開発
 
@@ -93,11 +91,11 @@ Cosmos DB では、[Cassandra](cassandra-introduction.md)、[MongoDB](mongodb-in
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Azure Cosmos DB の恩恵を受けるソリューション
 
-さまざまなデータについて、リアルタイムに近い応答時間と[グローバル](distribute-data-globally.md)な規模で膨大な量の読み書きを処理する必要のある [Web、モバイル、ゲーム、IoT アプリケーション](use-cases.md)は、Azure Cosmos DB の [保証された](https://azure.microsoft.com/support/legal/sla/cosmos-db/)高可用性、高スループット、短い待機時間、調整可能な整合性の恩恵を受けます。 Azure Cosmos DB を [IoT とテレマティック](use-cases.md#iot-and-telematics)、[小売りとマーケティング](use-cases.md#retail-and-marketing)、[ゲーム](use-cases.md#gaming)、および [Web アプリとモバイル アプリ](use-cases.md#web-and-mobile-applications)にどのように適用できるかをご確認ください。
+さまざまなデータについて、リアルタイムに近い応答時間と[グローバル](distribute-data-globally.md)な規模で膨大な量の読み書きを処理する必要のある [Web、モバイル、ゲーム、IoT アプリケーション](use-cases.md)は、Cosmos DB の [保証された](https://azure.microsoft.com/support/legal/sla/cosmos-db/)高可用性、高スループット、低遅延、調整可能な整合性の恩恵を受けます。 [IoT とテレマティック](use-cases.md#iot-and-telematics)、[小売りとマーケティング](use-cases.md#retail-and-marketing)、[ゲーム](use-cases.md#gaming)、[Web アプリとモバイル アプリ](use-cases.md#web-and-mobile-applications)の作成に Azure Cosmos DB をどのように適用できるかをご確認ください。
 
 ## <a name="next-steps"></a>次の手順
 
-Cosmos DB の[グローバル分散](distribute-data-globally.md)と[パーティション分割](partitioning-overview.md)機能の詳細を参照してください。
+Cosmos DB の[ターンキー グローバル分散](distribute-data-globally.md)と[パーティション分割](partitioning-overview.md)機能の詳細を参照してください。
 
 以下のクイック スタートのいずれかに従って、実際に Azure Cosmos DB を使ってみましょう。
 

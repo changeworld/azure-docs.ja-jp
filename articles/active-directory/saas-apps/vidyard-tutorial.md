@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Vidyard の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Vidyard の統合 | Microsoft Docs
 description: Azure Active Directory と Vidyard の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bed7df23-6e13-4e7c-b4cc-53ed4804664d
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 871942db15d6a3cff45584e33b2191e21d2281a0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4d25520f88869025f7e262d81295ee64f8e12d21
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426457"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163596"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>チュートリアル: Azure Active Directory と Vidyard の統合
+# <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>チュートリアル:Azure Active Directory と Vidyard の統合
 
 このチュートリアルでは、Vidyard と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -153,7 +154,7 @@ Vidyard で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[ACS URL]** の値をコピーして、Azure portal の **[Vidyard のドメインと URL]** セクションにある **[応答 URL]** ボックスに貼り付けます。
 
-    d. **[Issuer/Metadata URL]\(発行者/メタデータ URL\)** の値をコピーして、Azure portal の **[Vidyard のドメインと URL]** セクションにある **[識別子]** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Issuer/Metadata URL]\(発行者/メタデータ URL\)** の値をコピーして、Azure portal の **[Vidyard のドメインと URL]** セクションにある **[識別子]** ボックスに貼り付けます。
 
     e. Azure portal からダウンロードした証明書ファイルをメモ帳で開き、**[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
 
@@ -209,13 +210,13 @@ Vidyard で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-vidyard-test-user"></a>Vidyard テスト ユーザーの作成
 
 このセクションの目的は、Vidyard で Britta Simon というユーザーを作成することです。 Vidyard では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ存在しない場合、Vidyard にアクセスしようとすると、新しいユーザーが作成されます。
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Vidyard サポート チーム](mailto:support@vidyard.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Vidyard サポート チーム](mailto:support@vidyard.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -252,7 +253,7 @@ Vidyard で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Vidyard] タイルをクリックすると、自動的に Vidyard アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

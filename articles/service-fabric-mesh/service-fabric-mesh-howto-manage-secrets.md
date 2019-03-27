@@ -3,18 +3,18 @@ title: Azure Service Fabric Mesh アプリケーションのシークレット�
 description: アプリケーション シークレットを管理して、Service Fabric Mesh アプリケーションの作成やデプロイを安全に行えるようにします。
 services: service-fabric-mesh
 keywords: secrets
-author: aljo
+author: aljo-microsoft
 ms.author: aljo
 ms.date: 11/28/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: d92726ebc2cd4c6c44afdb2d2a9f53ab5441ac32
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 06d8519836129a557ec69d59d15eb12129e8099b
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891917"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55236753"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Azure Service Fabric Mesh アプリケーションのシークレットを管理する
 Service Fabric Mesh では、Azure リソースとしてシークレットがサポートされています。 Service Fabric Mesh のシークレットには、格納や送信を安全に行う必要がある、機密性の高いテキスト情報を指定できます (ストレージ接続文字列やパスワードなど)。 この記事では、Service Fabric Secure Store Service を使用して、シークレットをデプロイし、保持する方法について説明します。
@@ -183,7 +183,7 @@ Mesh のシークレット/値リソースは、前の手順で定義した Mesh
 
 ## <a name="modify-mesh-application-to-reference-mesh-secret-values"></a>Mesh のシークレット値を参照するように Mesh アプリケーションを変更する
 Service Fabric Mesh アプリケーションでは、Secure Store Service のシークレット値を使用するために、次の 2 つの文字列を認識する必要があります。
-1. Micrsoft.ServiceFabricMesh/Secrets.name。これにはファイルの名前が格納されます。シークレット値はプレーンテキストで格納されます。
+1. Microsoft.ServiceFabricMesh/Secrets.name。これにはファイルの名前が格納されます。シークレット値はプレーンテキストで格納されます。
 2. Windows または Linux の環境変数 "Fabric_SettingPath"。この変数には、Secure Store Service のシークレット値が格納されたファイルにアクセスできるようになる場所へのディレクトリ パスが格納されます。 Windows でホストされた Mesh アプリケーションの場合は "C:\Settings"、Linux でホストされた Mesh アプリケーションの場合は "/var/settings" となります。
 
 ## <a name="deploy-or-use-a-rolling-upgrade-for-mesh-application-to-consume-secret-values"></a>Mesh アプリケーションをデプロイするかローリング アップグレードして、シークレット値が使用されるようにする

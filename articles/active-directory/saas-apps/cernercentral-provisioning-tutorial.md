@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Cerner Central を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Cerner Central を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、Cerner Central のリストに自動でユーザーをプロビジョニングする方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: asmalser-msft
 writer: asmalser-msft
-manager: mtillman
+manager: daveba
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: bc215061d5f2f139c5912f29f709346cb681ee86
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b9c6b1e77b6fce8bedb8f035fcb18acb8c56ad5a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346633"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200728"
 ---
-# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>チュートリアル: Cerner Central を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>チュートリアル:Cerner Central を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から Cerner Central のユーザー リストにユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除するために Cerner Central と Azure AD で実行する必要がある手順について説明します。 
 
@@ -130,7 +131,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Cerner Central: Azure AD を使用して ID データを公開する](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
-* [チュートリアル: Cerner Central を構成して Azure Active Directory を使ったシングル サインオンに対応する](cernercentral-tutorial.md)
+* [チュートリアル:Cerner Central を構成して Azure Active Directory を使ったシングル サインオンに対応する](cernercentral-tutorial.md)
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 

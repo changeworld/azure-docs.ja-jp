@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 01/16/2019
 ms.author: sethm
-ms.openlocfilehash: 570c1adc2f4615e78cbe5656c13b0e22b863baf7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.lastreviewed: 01/16/2019
+ms.openlocfilehash: d4bc560a1c607d4a12cfb3d08ffeacf9b5d2196a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192697"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244285"
 ---
 # <a name="store-service-principal-credentials-in-key-vault"></a>サービス プリンシパルの資格情報を Key Vault に格納する
 
@@ -83,7 +84,7 @@ Azure Stack の Key Vault には、クラウド アプリケーションやク�
 
 2. **[シークレット]** ウィンドウで **[生成/インポート]** を選択します。
 
-3. **[シークレットの作成]** ウィンドウで、オプションの一覧から **[手動]** を選択します。
+3. **[シークレットの作成]** ウィンドウで、オプションの一覧から **[手動]** を選択します。 証明書を使用してサービス プリンシパルを作成した場合、ドロップダウン リストから証明書を選択し、ファイルをアップロードします。
 
 4. キーの名前として、サービス プリンシパルからコピーした**アプリケーション ID** を入力します。 キーの名前には、英数字とハイフン (-) 文字のみを含めることができます。
 

@@ -3,18 +3,18 @@ title: Azure Automation Desired State Configuration (DSC) の問題をトラブ�
 description: この記事では、Desired State Configuration (DSC) のトラブルシューティングに関する情報を説明します。
 services: automation
 ms.service: automation
-ms.component: ''
+ms.subservice: ''
 author: georgewallace
 ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d2eae67fcff74a7016f7f6125e31a9c8c2bda97
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 997f332e14fd1accf32d8cc3f51557fe005acab5
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064633"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54421647"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする
 
@@ -22,7 +22,7 @@ ms.locfileid: "37064633"
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) の使用時に発生する一般的なエラー
 
-### <a name="failed-not-found"></a>シナリオ: ノードが失敗状態になり、「見つかりません」というエラーが表示される
+### <a name="failed-not-found"></a>シナリオ:ノードが失敗状態になり、「見つかりません」というエラーが表示される
 
 #### <a name="issue"></a>問題
 
@@ -44,7 +44,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
   * Azure Portal を使用してノードにノード構成を割り当てるには、**[DSC ノード]** ページを開き、ノードを選択し、**[ノード構成の割り当て]** ボタンをクリックします。  
   * PowerShell コマンドレットを使用してノードにノード構成を割り当てるには、 **Set-AzureRmAutomationDscNode** コマンドレットを使用します。
 
-### <a name="no-mof-files"></a>シナリオ: 構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった
+### <a name="no-mof-files"></a>シナリオ:構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった
 
 #### <a name="issue"></a>問題
 
@@ -65,7 +65,7 @@ DSC 構成の **Node** キーワードに続く式の評価結果が `$null` の
 * 構成定義内の **Node** キーワードに続く式の評価結果が $null になっていないことを確認します。
 * 構成のコンパイル時に ConfigurationData を渡す場合は、 [ConfigurationData](../automation-dsc-compile.md#configurationdata)から、構成に必要な期待値を渡すようにしてください。
 
-### <a name="dsc-in-progress"></a>シナリオ: DSC ノードのレポートが "処理中" の状態で停止する
+### <a name="dsc-in-progress"></a>シナリオ:DSC ノードのレポートが "処理中" の状態で停止する
 
 #### <a name="issue"></a>問題
 
@@ -83,7 +83,7 @@ WMF のバージョンをアップグレードした結果、WMI が破損して
 
 この問題を解決するには、[DSC の既知の問題と制限](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc)に関する記事にある手順に従ってください。
 
-### <a name="issue-using-credential"></a>シナリオ: DSC 構成で資格情報が使用できない
+### <a name="issue-using-credential"></a>シナリオ:DSC 構成で資格情報が使用できない
 
 #### <a name="issue"></a>問題
 

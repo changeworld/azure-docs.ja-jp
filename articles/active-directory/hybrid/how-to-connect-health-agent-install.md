@@ -4,22 +4,23 @@ description: このページでは、Azure AD Connect Health for AD FS と for S
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 1cc8ae90-607d-4925-9c30-6770a4bd1b4e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: a7c1941bbb44d4d165b70e032f39129a642d0c65
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a52b78b62395f571e448a73b8c34847ef16b2613
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605966"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429538"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 このドキュメントでは、Azure AD Connect Health エージェントをインストールして構成する手順を紹介します。 エージェントは [こちら](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent)からダウンロードできます。
@@ -35,19 +36,19 @@ ms.locfileid: "53605966"
 | Azure サービスのエンドポイントに対する送信接続 | エージェントをインストールしたり実行したりするためには、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。 ファイアウォールを使用して送信接続がブロックされている場合は、確実に以下のエンドポイントを許可リストに追加してください。 [送信接続エンドポイント](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)に関するセクションをご覧ください。 |
 |IP アドレスに基づく送信接続 | ファイアウォールでの IP アドレスに基づくフィルタリングについては、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページをご覧ください。|
 | 送信トラフィックの SSL 検査がフィルタリングまたは無効化されていること | ネットワーク層で送信トラフィックの SSL 検査または SSL 終了が設定されている場合、エージェントの登録手順が失敗する可能性があります。 詳細については、[SSL 検査のセットアップ方法](https://technet.microsoft.com/library/ee796230.aspx)に関するページをご覧ください |
-| エージェントを実行するサーバー上のファイアウォール ポート |エージェントが Azure AD Health サービス エンドポイントと通信するには、次のファイアウォール ポートが開いている必要があります。<br /><br /><li>TCP ポート 443</li><li>TCP ポート 5671</li> <br />詳細については、[ファイアウォール ポートの有効化](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx)に関するページを参照してください。 |
+| エージェントを実行するサーバー上のファイアウォール ポート |エージェントが Azure AD Health サービス エンドポイントと通信するには、次のファイアウォール ポートが開いている必要があります。<br /><br /><li>TCP ポート 443</li><li>TCP ポート 5671</li> <br />ポート 5671 は最新バージョンのエージェントでは必要なくなったことに注意してください。 ポート 443 のみが必要なように、最新バージョンにアップグレードしてください。 詳細については、[ファイアウォール ポートの有効化](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx)に関するページを参照してください。 |
 | IE セキュリティ強化が有効になっている場合は以下の Web サイトが許可されていること |エージェントのインストール対象となるサーバーで IE セキュリティ強化が有効になっている場合、次の Web サイトを許可する必要があります。<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>Azure Active Directory によって信頼されている組織のフェデレーション サーバー  例: https:\//sts.contoso.com</li> 詳細については、[IE の構成方法](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing)に関するページを参照してください。 |
 | PowerShell v4.0 以降がインストールされていること | <li>Windows Server 2008 R2 には PowerShell v2.0 が付属しますが、それだけではエージェントの要件が満たされません。 後出の「[Windows Server 2008 R2 サーバーへのエージェントのインストール](#agent-installation-on-windows-server-2008-r2-servers)」の説明に従って PowerShell を更新してください。</li><li>Windows Server 2012 には PowerShell v3.0 が付属しますが、それだけではエージェントの要件が満たされません。  Windows Management Framework を[更新](https://www.microsoft.com/download/details.aspx?id=40855)します。</li><li>Windows Server 2012 R2 以降には、要件を満たした新しいバージョンの PowerShell が付属します。</li>|
 |FIPS の無効化|FIPS は Azure AD Connect Health エージェントでサポートされていません。|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Azure サービスのエンドポイントに対する送信接続
- エージェントをインストールしたり実行したりするためには、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。 ファイアウォールを使用して送信接続がブロックされている場合は、確実に以下のエンドポイントを許可リストに追加してください。 詳細については、[送信接続の確認](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)に関するページを参照してください。
+ エージェントをインストールしたり実行したりするためには、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。 ファイアウォールを使用して送信接続がブロックされている場合は、次の URL が既定でブロックされないことを確認します。 これらの URL のセキュリティ監視または検査を無効にしてはなりませんが、他のインターネット トラフィックと同様に許可します。 それらにより、Azure AD Connect Health サービス エンドポイントとの通信が許可されます。 詳細については、[送信接続の確認](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)に関するページを参照してください。
 
 | ドメイン環境 | 必要な Azure サービス エンドポイント |
 | --- | --- |
-| 一般 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.queue.core.windows.net </li><li>&#42;.servicebus.windows.net - ポート:5671 </li><li>&#42;.table.core.windows.net </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *このエンドポイントは、登録時の検出目的でのみ使用されます。</li> |
-| Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.queue.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li><li>&#42;.table.core.cloudapi.de </li><li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *このエンドポイントは、登録時の検出目的でのみ使用されます。</li> |
-| Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li><li>&#42;.queue.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.table.core.usgovcloudapi.net </li><li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *このエンドポイントは、登録時の検出目的でのみ使用されます。</li> |
+| 一般 | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net - ポート:5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *このエンドポイントは、登録時の検出目的でのみ使用されます。</li> |
+| Azure Germany | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *このエンドポイントは、登録時の検出目的でのみ使用されます。</li> |
+| Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *このエンドポイントは、登録時の検出目的でのみ使用されます。</li> |
 
 
 ## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>Azure AD Connect Health エージェントのダウンロードとインストール
@@ -118,7 +119,7 @@ Windows Server 2008 R2 サーバーでの手順:
 1. **[スタート]** ボタンをクリックし、**[プログラム]**、**[管理ツール]** の順にポイントして、**[ローカル セキュリティ ポリシー]** をクリックします。
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS 2.0 サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、**[OK]** をクリックします。
-4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
+4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable</code>
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
 6. **AD FS 管理**スナップインを開きます。 AD FS 管理スナップインを開くには、**[スタート]** ボタンをクリックし、**[プログラム]**、**[管理ツール]** の順にポイントして、**[AD FS 2.0 管理]** をクリックします。
@@ -131,7 +132,7 @@ Windows Server 2008 R2 サーバーでの手順:
 1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、**[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、**[OK]** をクリックします。
-4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。```auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable```
+4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。```auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable```
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
 6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
@@ -143,7 +144,7 @@ Windows Server 2008 R2 サーバーでの手順:
 1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、**[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックして AD FS サービス アカウントをリストに追加し、**[OK]** をクリックします。
-4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
+4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable.</code>
 5. **[ローカル セキュリティ ポリシー]** を閉じます。
 <br />   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- <br />
 6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
@@ -171,10 +172,6 @@ Windows Server 2008 R2 サーバーでの手順:
 
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-sync"></a>Azure AD Connect Health エージェント for Sync のインストール
-> [!NOTE]
-> 同期サーバーは、AD FS サーバーと異なる必要があります。 AD FS サーバーに同期エージェントをインストールしないでください。
->
-
 Azure AD Connect Health エージェント for Sync は、最新ビルドの Azure AD Connect に自動的にインストールされます。 Azure AD Connect for Sync を使用するには、最新バージョンの Azure AD Connect をダウンロードし、インストールする必要があります。 最新バージョンは [こちら](https://www.microsoft.com/download/details.aspx?id=47594)からダウンロードできます。
 
 エージェントがインストール済みであることを確認するには、サーバーで以下のサービスを探します。 構成が完了していれば、これらのサービスが既に実行されているはずです。 そうでない場合は、構成が完了するまで停止しています。

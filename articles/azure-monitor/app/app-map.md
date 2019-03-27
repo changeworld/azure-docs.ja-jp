@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 238b75681ec525187ea27f60ac8b21b05b13954d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 777bf38fbc8a90335af79bbd0fb2ce74310bd991
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063116"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006798"
 ---
 # <a name="application-map-triage-distributed-applications"></a>アプリケーション マップ:分散アプリケーションのトリアージ
 
@@ -42,13 +42,13 @@ ms.locfileid: "54063116"
 
 すべてのコンポーネントが 1 つの Application Insights リソース内のロールである場合、この検出ステップは不要です。 そのようなアプリケーションでは、そのすべてのコンポーネントが初回読み込みで認識されます。
 
-![アプリケーション マップのスクリーンショット](media/app-map/001.png)
+![アプリケーション マップのスクリーンショット](media/app-map/app-map-001.png)
 
 このエクスペリエンスが目指す主な目的の 1 つは、何百というコンポーネントを含む複雑なトポロジを視覚化することです。
 
 いずれかのコンポーネントをクリックすると、関連する分析情報を表示したり、そのコンポーネントについてのパフォーマンスと障害のトリアージ機能にアクセスしたりすることができます。
 
-![ポップアップ](media/app-map/application-map-001.png)
+![ポップアップ](media/app-map/application-map-002.png)
 
 ### <a name="investigate-failures"></a>エラーを調査する
 
@@ -199,7 +199,7 @@ cloud_RoleName プロパティをテレメトリ初期化子でオーバーラ�
 
 3. C# で Azure Functions を使用している場合は、[Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions) にアップグレードします。
 
-4. [cloud_RoleName](app-map.md#Set-cloud-RoleName) が正しく構成されていることを確認します。
+4. [cloud_RoleName](app-map.md#set-cloudrolename) が正しく構成されていることを確認します。
 
 5. 依存関係が欠落している場合は、[自動収集された依存関係](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)の一覧にあることを確認します。 ない場合でも、[TrackDependency 呼び出し](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)を使えば手動で追跡することができます。
 

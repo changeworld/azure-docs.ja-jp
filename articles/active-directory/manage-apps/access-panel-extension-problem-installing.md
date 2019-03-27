@@ -3,24 +3,25 @@ title: アプリケーション アクセス パネルのブラウザー拡張�
 description: アクセス パネルのブラウザー拡張機能のインストール時に発生する一般的なエラーを修正します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/4/18
-ms.author: barbkess
+ms.date: 5/4/2018
+ms.author: celested
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 46f1d49e210a483b8e7645d7eba84ad21ed477da
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 216568ac43c8e1b04c91d9a8f611a0ceb2e430af
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190522"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674006"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>アクセス パネルのブラウザー拡張機能のインストール
 

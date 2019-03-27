@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
-ms.openlocfilehash: 20b1c8673bfdb3b2207ed63749f79539c396642c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 304399905e9dfd37557a342248c829c1f940452b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167754"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167584"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 

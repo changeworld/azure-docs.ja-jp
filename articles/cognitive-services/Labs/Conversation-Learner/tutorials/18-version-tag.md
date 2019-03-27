@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d596c4c614119caa4078df1ed569e685031e9c7c
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5073d3ab967c4c4e1b90636c247839875a6aa0d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796554"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086311"
 ---
 # <a name="how-to-use-version-tagging"></a>バージョンのタグ付けを使用する方法
 
@@ -67,9 +67,9 @@ ms.locfileid: "53796554"
 
 次に、これにモデルの "バージョン 1" としてタグを付けます。
 
-4. 左側のパネルで [settings]\(設定\) をクリックし、![](../media/tutorial18_version_tags.PNG) [Version Tags]\(バージョン タグ\) アイコンをクリックして [`New Tag`]\(新しいタグ\) ボタンを表示して、それをクリックします。
+1. 左側のパネルで [settings]\(設定\) をクリックし、![](../media/tutorial18_version_tags.PNG) [Version Tags]\(バージョン タグ\) アイコンをクリックして [`New Tag`]\(新しいタグ\) ボタンを表示して、それをクリックします。
     - "Version 1" という名前を付けます
-4. [Live Tag]\(ライブ タグ\) ドロップ ダウンで、"Version 1" を選択します。  
+1. [Live Tag]\(ライブ タグ\) ドロップ ダウンで、"Version 1" を選択します。  
     - このボットを使用するチャネルが、このモデルの "Version 1" を使用するようになります。
     - この Version 1 モデルのエンティティ、アクション、トレーニング会話は変更できなくなります。
     - [Editing Tag]\(タグの編集\) として "Version 1" を選択した場合、モデルを表示することだけができ、編集はできません。

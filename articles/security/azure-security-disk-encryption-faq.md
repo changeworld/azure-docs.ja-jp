@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 12/21/2018
+ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f940170168147e4e778714e947ab6b558cb2bd5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: fda7d6d3fddf2f4529a983ce2d4991797a5c8448
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076673"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55661838"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 
@@ -42,8 +42,8 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 
 | Linux ディストリビューション | Version | 暗号化がサポートされているボリュームの種類|
 | --- | --- |--- |
-| Ubuntu | 16.04-DAILY-LTS | OS とデータ ディスク |
-| Ubuntu | 14.04.5-DAILY-LTS | OS とデータ ディスク |
+| Ubuntu | 16.04| OS とデータ ディスク |
+| Ubuntu | 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS とデータ ディスク |
 | RHEL | 7.5 | OS とデータ ディスク* |
 | RHEL | 7.4 | OS とデータ ディスク* |
 | RHEL | 7.3 | OS とデータ ディスク* |
@@ -59,13 +59,9 @@ Azure Disk Encryption は、以下の Linux サーバーのディストリビュ
 | CentOS | 6.7 | データ ディスク |
 | CentOS | 6.6 | データ ディスク |
 | CentOS | 6.5 | データ ディスク |
-| openSUSE | 13.2 | データ ディスク |
-| SLES | 12 SP1 | データ ディスク |
-| SLES | 優先順位:12-SP1 | データ ディスク |
-| SLES | HPC 12 | データ ディスク |
-| SLES | 優先順位:11-SP4 | データ ディスク |
-| SLES | 11 SP4 | データ ディスク |
-
+| openSUSE | 42.3 | データ ディスク |
+| SLES | 12-SP4 | データ ディスク |
+| SLES | 12-SP3 | データ ディスク |
 
 *__RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい ADE の実装がサポートされます。RHEL の BYOS (Bring-Your-Own-Subscription) イメージについては、現在 ADE はサポートされません。詳細については、[Linux での Azure Disk Encryption](azure-security-disk-encryption-linux.md) に関する記事も参照してください。__
 
@@ -137,7 +133,7 @@ Windows の "Bek ボリューム" または Linux の "/mnt/azure_bek_disk" は�
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Azure Disk Encryption はどのような暗号化方法を使用しますか。
 
-Windows では、ADE は Bitlocker AES256 暗号化方法を使用します (Windows Server 2012 より前のバージョンでは AES256WithDiffuser)。 Linux では、ADE は dmcrypt の既定値である 256 ビット ボリューム マスター キーの aes-xts-plain64 を使用します。
+Windows では、ADE は BitLocker AES256 暗号化方法を使用します (Windows Server 2012 より前のバージョンでは AES256WithDiffuser)。 Linux では、ADE は dmcrypt の既定値である 256 ビット ボリューム マスター キーの aes-xts-plain64 を使用します。
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>EncryptFormatAll を使用して、すべてのボリュームの種類を指定した場合、既に暗号化したデータ ドライブ上のデータは消去されますか。
 いいえ、Azure Disk Encryption を使用して既に暗号化されているデータ ドライブのデータは消去されません。 EncryptFormatAll で、OS ドライブが再暗号化されなかったのと同様に、既に暗号化されているデータ ドライブは再暗号化されません。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。        

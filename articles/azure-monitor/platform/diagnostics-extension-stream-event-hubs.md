@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: robb
-ms.component: diagnostic-extension
-ms.openlocfilehash: 200f36ee5312c92bed7dc9a7ffa29a0ee4993c43
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.subservice: diagnostic-extension
+ms.openlocfilehash: c2d577bd4c89046136a3465ff554e9662dd0ce19
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103368"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478129"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Event Hubs を利用してホット パスの Azure 診断データをストリーム配信する
 Azure 診断では柔軟な方法でクラウド サービスの仮想マシン (VM) からメトリックとログを収集し、その結果を Azure Storage に転送できます。 2016 年 3 月 (SDK 2.9) の期間から、診断をカスタムのデータ ソースに送信し、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) を利用してホット パス データを数秒で転送できるようになりました。
@@ -35,7 +35,7 @@ Azure 診断では柔軟な方法でクラウド サービスの仮想マシン 
 * 接続のトラブルシューティング方法  
 
 ## <a name="prerequisites"></a>前提条件
-Azure 診断からデータを受け取る Event Hubs は、Azure SDK 2.9 以降の Cloud Services、VM、仮想マシン スケール セット、および Service Fabric と、これに対応する Azure Tools for Visual Studio でサポートされます。
+Azure 診断からデータを受け取る Event Hubs は、Azure SDK 2.9 以降の Cloud Services、VM、Virtual Machine Scale Sets、および Service Fabric と、これに対応する Azure Tools for Visual Studio でサポートされます。
 
 * Azure 診断拡張 1.6 ([Azure SDK for .NET 2.9 以降](https://azure.microsoft.com/downloads/) では既定でこれが対象となります)
 * [Visual Studio 2013 以降](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
@@ -514,3 +514,4 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 
 <!-- Images. -->
 [0]: ../../event-hubs/media/event-hubs-streaming-azure-diags-data/dashboard.png
+

@@ -4,7 +4,7 @@ description: Azure サブスクリプションを請求書で支払う方法に�
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jlian
+manager: jureid
 editor: ''
 tags: billing
 ms.service: billing
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: cwatson
-ms.openlocfilehash: 27d84748e932ae438f68ca7b84004c98c26e42d7
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.author: banders
+ms.openlocfilehash: 4cac603b0d575a4cf70cf4c5df6924be19bdfa2e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393895"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100280"
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払いの要求を送信する
 
@@ -44,12 +44,12 @@ Azure サポートに要求を送信して、Azure サブスクリプション�
 
     * 会社名
     * 請求先の住所
-    * [アカウント管理者の電子メール アドレス](billing-add-change-azure-subscription-administrator.md#check-the-account-administrator-of-the-subscription)
+    * [アカウント管理者の電子メール アドレス](../role-based-access-control/classic-administrators.md#view-the-account-administrator)
 
 1. 連絡先情報と優先連絡方法を確認し、**[作成]** をクリックします。
 
 必要とするクレジット総額によっては与信審査が必要になることがあります。この場合は、カスタマー サポートから与信審査申込書をお送りします。 与信審査の処理には、お申し込みから 5 ～ 7 営業日かかる可能性があります。
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
+## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。

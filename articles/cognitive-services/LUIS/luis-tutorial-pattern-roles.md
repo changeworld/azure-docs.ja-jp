@@ -5,18 +5,18 @@ description: パターンを使用して、正しい形式のテンプレート�
 ms.custom: seodec18
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 8b66895e1ae37947c995ffc643505d466c42b93b
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: dc1be0d1d00ae64f38690f019580119b03debedf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753117"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106595"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>チュートリアル:ロールを使って文脈的に関連するパターンを抽出する
 
@@ -369,7 +369,7 @@ ms.locfileid: "53753117"
         "label": "neutral",
         "score": 0.5
       }
-}
+   }
     ```
 
 意図スコアは大きく向上し、ロール名がエンティティの応答に含まれるようになりました。

@@ -1,5 +1,5 @@
 ---
-title: 検索ボックスにオートコンプリートを追加するチュートリアル - Azure Search
+title: 検索ボックスへのオートコンプリートの追加に関するチュートリアル - Azure Search
 description: データ中心アプリケーションのエンド ユーザー エクスペリエンスを Azure Search のオートコンプリート API と検索候補 API を使用して向上させる方法の例。
 manager: pablocas
 author: mrcarter8
@@ -10,18 +10,23 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 10f86a482fbb35e7276f8f689a7eba184a7b624b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: de48f3129beba31f80f5bd4d0c131b28f2b1c91a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316184"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997166"
 ---
-# <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>チュートリアル: Azure Search を使用して検索ボックスにオートコンプリートを追加する
+# <a name="tutorial-add-autocomplete-to-your-search-box-using-azure-search"></a>チュートリアル:Azure Search を使用して検索ボックスにオートコンプリートを追加する
 
-このチュートリアルでは、[Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) の[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions)、[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)、および[ファセット](search-faceted-navigation.md)を使用して、パワフルな検索ボックスを作成します。 "*検索候補*" は、その時点までにユーザーが入力した内容に基づく実際の検索結果を候補として提示します。 Azure Search の[新しいプレビュー機能](search-api-preview.md)である "*オートコンプリート*" は、インデックスから取得した用語を提示して、ユーザーが現在入力している内容を補完します。 ここでは、ユーザーの入力時に豊富な方法で検索できるようにすることで、ユーザーの生産性を向上させ、ユーザーが探しているものをすばやく簡単に見つけるための複数のテクニックを比較していきます。
+このチュートリアルでは、[Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/) と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) の[検索候補](https://docs.microsoft.com/rest/api/searchservice/suggestions)、[オートコンプリート](https://docs.microsoft.com/rest/api/searchservice/autocomplete)、および[ファセット](search-faceted-navigation.md)を使用して、パワフルな検索ボックスを作成します。 
 
-このチュートリアルでは、C# を使用して [Azure Search .NET クライアント ライブラリ](https://aka.ms/search-sdk) を呼び出し、JavaScript を使用して Azure Search REST API を直接呼び出す ASP.NET MVC ベースのアプリケーションについて説明します。 このチュートリアルのアプリケーションは、[NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) サンプル インデックスを対象にしています。 NYCJobs デモに既に構成されているインデックスを使用するか、NYCJobs サンプル ソリューションのデータ ローダーを使用して独自のインデックスにデータを入力できます。 このサンプルでは、JavaScript ライブラリの [jQuery UI](https://jqueryui.com/autocomplete/) と [XDSoft](https://xdsoft.net/jqplugins/autocomplete/)を使用して、オートコンプリートをサポートする検索ボックスを作成します。 これらのコンポーネントを Azure Search と共に使用して、検索ボックスでの先行入力によるオートコンプリートをサポートする方法の複数の例を確認します。
++ "*検索候補*" は、その時点までにユーザーが入力した内容に基づく実際の検索結果を候補として提示します。 
++ Azure Search の[新しいプレビュー機能](search-api-preview.md)である "*オートコンプリート*" では、ユーザーが現在入力している内容を完成させるための用語がインデックスから提供されます。 
+
+ここでは、ユーザーの入力時に豊富な方法で検索できるようにすることで、ユーザーの生産性を向上させるための複数のテクニックを比較します。
+
+このチュートリアルでは、C# を使用して [Azure Search .NET クライアント ライブラリ](https://aka.ms/search-sdk) を呼び出し、JavaScript を使用して Azure Search REST API を直接呼び出す ASP.NET MVC ベースのアプリケーションについて説明します。 このチュートリアルのアプリケーションは、[NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) サンプル インデックスを対象にしています。 NYCJobs デモに既に構成されているインデックスを使用するか、NYCJobs サンプル ソリューションのデータ ローダーを使用して独自のインデックスにデータを入力できます。 このサンプルでは、JavaScript ライブラリの [jQuery UI](https://jqueryui.com/autocomplete/) と [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) を使用して、オートコンプリートをサポートする検索ボックスを作成します。 これらのコンポーネントを Azure Search と共に使用して、検索ボックスでの先行入力によるオートコンプリートをサポートする方法の複数の例を確認します。
 
 以下のタスクを実行します。
 
@@ -78,7 +83,7 @@ NYCJobs サンプル アプリケーションのデータを独自のインデ�
 
 ### <a name="javascript-code-c"></a>JavaScript コード (C#)
 
-C# 言語のサンプルでは、Index.cshtml 内の JavaScript を使用して、jQuery UI Autocomplete ライブラリを利用します。  このライブラリは、MVC コントローラーに対する非同期呼び出しを実行して検索候補を取得することで、検索ボックスにオートコンプリート エクスペリエンスを追加します。  最初の例の JavaScript コードを見てみましょう。
+C# 言語のサンプルでは、Index.cshtml 内の JavaScript を使用して、jQuery UI Autocomplete ライブラリを利用します。  このライブラリでは、MVC コントローラーに対する非同期呼び出しを実行して検索候補を取得することで、検索ボックスにオートコンプリート エクスペリエンスが追加されます。  最初の例の JavaScript コードを見てみましょう。
 
 ```javascript
 $(function () {
@@ -99,7 +104,7 @@ $(function () {
 source: "/home/suggest?highlights=false&fuzzy=false&",
 ```
 
-この行は、検索ボックスの下に表示する項目の一覧をどこから取得するかをオートコンプリート API に通知します。  これは MVC プロジェクトであるため、それは HomeController.cs 内の Suggest 関数を呼び出します。  これについては、次のセクションで説明します。  強調表示、あいまい一致、および用語を制御するいくつかのパラメーターも渡します。  オートコンプリート JavaScript API は、term パラメーターを追加します。
+この行では、検索ボックスの下に表示する項目の一覧をどこから取得するかが、オートコンプリート API に通知されます。  これは MVC プロジェクトであるため、それは HomeController.cs 内の Suggest 関数を呼び出します。  これについては、次のセクションで説明します。  強調表示、あいまい一致、および用語を制御するいくつかのパラメーターも渡します。  オートコンプリート JavaScript API では、term パラメーターが追加されます。
 
 #### <a name="extending-the-sample-to-support-fuzzy-matching"></a>あいまい一致をサポートするようにサンプルを拡張する
 
@@ -164,7 +169,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 Suggest 関数は、ヒットの強調表示が返されるかどうか、および入力された検索用語に加えてあいまい一致も使用するかどうかを決定する 2 つのパラメーターを使用します。  このメソッドは、検索候補 API に渡される SuggestParameters オブジェクトを作成します。 結果は、クライアントに表示できるように JSON に変換されます。
 (省略可能) Suggest 関数の始めにブレークポイントを追加し、コードをステップ実行します。  SDK によって返される応答と、メソッドから返される結果に変換される様子に注目します。
 
-ページ上のその他の例も、同じパターンに従って、ヒットの強調表示、オートコンプリートの先行入力、およびオートコンプリートの結果のクライアント側のキャッシュをサポートするファセットを追加しています。  これらを見直してそのしくみを理解し、検索エクスペリエンスでどのように活用するかを判断してください。
+ページ上のその他の例でも、同じパターンに従って、ヒットの強調表示、オートコンプリートの先行入力、およびオートコンプリートの結果のクライアント側のキャッシュをサポートするファセットが追加されています。  これらを見直してそのしくみを理解し、検索エクスペリエンスでどのように活用するかを判断してください。
 
 ### <a name="javascript-language-example"></a>JavaScript 言語の例
 

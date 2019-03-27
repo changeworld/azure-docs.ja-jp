@@ -4,22 +4,23 @@ description: このドキュメントでは、Azure AD Connect Health のリリ�
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: mtillman
+manager: daveba
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 08d1589b8b215471983dc76a836dd89f83fd8204
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 37d34d6df23b22466f3016841685ec2797a5c9ea
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053400"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177961"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。

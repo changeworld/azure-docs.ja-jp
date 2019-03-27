@@ -1,23 +1,23 @@
 ---
-title: '例: 画像内の顔を検出する - Face API'
+title: 例:画像内の顔を検出する - Face API
 titleSuffix: Azure Cognitive Services
 description: Face API を使用して画像内の顔を検出します。
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: a4c74ff70a4426abf97562bf997479a91afbf17a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 30d5294defe02ca6c8cfd588648429859bdf19ad
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124050"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856396"
 ---
-# <a name="example-how-to-detect-faces-in-image"></a>例: 画像内の顔を検出する方法
+# <a name="example-how-to-detect-faces-in-image"></a>例:画像内の顔を検出する方法
 
 このガイドでは、性別、年齢、または姿勢などの顔の属性を抽出して、画像から顔を検出する方法を説明します。 サンプルは Face API クライアント ライブラリを使用して C# で記述されています。 
 
@@ -40,7 +40,7 @@ ms.locfileid: "46124050"
 
 これらの機能を実行するには、少なくとも 1 つの明瞭な顔がある画像を準備する必要があります。 
 
-## <a name="step-1-authorize-the-api-call"></a>手順 1: API 呼び出しを承認する
+## <a name="step-1-authorize-the-api-call"></a>手順 1:API 呼び出しを承認する
 
 Face API を呼び出すたびに、サブスクリプション キーが必要です。 このキーは、クエリ文字列パラメーターによって渡すか、要求ヘッダー内で指定する必要があります。 クエリ文字列を介してサブスクリプション キーを渡すには、例として[画面 - 検出](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)の要求 URL を参照してください。
 
@@ -49,12 +49,12 @@ https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&retu
 &subscription-key=<Subscription Key>
 ```
 
-代替手段として、HTTP 要求のヘッダーでサブスクリプション キーを指定することもできます (**ocp-apim-subscription-key: &lt;サブスクリプション キー&gt;**)。クライアント ライブラリを使用する場合は、サブスクリプション キーは、FaceServiceClient クラスのコンストラクターを介して渡されます。 例: 
+その代わりに、HTTP 要求ヘッダー内でサブスクリプション キーを指定することもできます (**ocp-apim-subscription-key:&lt;サブスクリプション キー&gt;**)。クライアント ライブラリを使用するとき、サブスクリプション キーが FaceServiceClient クラスのコンストラクターを介して渡されます。 例: 
 ```CSharp
 faceServiceClient = new FaceServiceClient("<Subscription Key>");
 ```
 
-## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>手順 2: サービスに画像をアップロードし、顔検出を実行する
+## <a name="step-2-upload-an-image-to-the-service-and-execute-face-detection"></a>手順 2:サービスに画像をアップロードし、顔検出を実行する
 
 顔検出を実行する最も基本的な方法は、画像を直接アップロードすることです。 この処理を行うには、コンテンツの種類を application/octet-stream と指定し、JPEG 画像から読み取られたデータと指定して、"POST" 要求を送信します。 画像の最大サイズは 4 MB です。
 
@@ -90,7 +90,7 @@ foreach (var face in faces)
 
 検出された顔と共に返される FaceRectangle プロパティは、基本的には顔上のピクセル単位の位置です。 通常、この四角形には目、眉、鼻、口が含まれています。頭の上部、耳、あごは含まれていません。 頭部全体または中距離から撮影されたポートレート (写真 ID の種類の画像) をトリミングする場合、アプリケーションによっては顔の面積が小さすぎるために、四角形の顔フレームの領域を拡大したいことがあります。 顔の位置をより正確に特定するには、次のセクションで説明する顔のランドマーク (顔の特徴や顔の向きのメカニズムの特定) を使用すると便利です。
 
-## <a name="step-3-understanding-and-using-face-landmarks"></a>手順 3: 顔のランドマークを理解して使用する
+## <a name="step-3-understanding-and-using-face-landmarks"></a>手順 3:顔のランドマークを理解して使用する
 
 顔のランドマークとは、顔面上の一連の細かい点です。通常は、瞳孔、眼窩、鼻などの顔の構成要素の点です。 顔のランドマークは、顔検出中に分析できる省略可能な属性です。 [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) を呼び出すときに、returnFaceLandmarks クエリ パラメーターにブール値として true を渡すことができます。また、検索結果に顔のランドマークを含めるために、FaceServiceClient クラスの DetectAsync メソッドに省略可能なパラメーター returnFaceLandmarks を使用することもできます。
 
@@ -145,7 +145,7 @@ Vector faceDirection = new Vector(
 
 顔が向いている方向がわかると、顔に合わせて四角形の顔フレームを回転させることができます。 顔のランドマークを使用すると、より詳細で利便性が高くなります。
 
-## <a name="step-4-using-other-face-attributes"></a>手順 4: その他の顔属性を使用する
+## <a name="step-4-using-other-face-attributes"></a>手順 4:その他の顔属性を使用する
 
 Face - Detect API では、顔のランドマークだけでなく、顔のその他の属性を分析することもできます。 以下のような属性があります。
 

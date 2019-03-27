@@ -7,14 +7,14 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: b309d0969eb313c90e94af0a32123b7d45b4bef0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: c4ccc189c0f8ed3de868c9965d7068ad9670cbcb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53601391"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004096"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>Video Indexer で言語モデルをカスタマイズする
 

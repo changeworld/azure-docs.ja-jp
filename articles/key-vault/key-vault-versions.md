@@ -3,8 +3,8 @@ title: Key Vault のバージョン
 description: Azure Key Vault のさまざまなバージョンです
 services: key-vault
 documentationcenter: ''
-author: bryanla
-manager: mbaldwin
+author: msmbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: e8622dcc-59a3-4f4b-9f63-cd2232515a65
 ms.service: key-vault
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: bryanla
-ms.openlocfilehash: 7671452e8b5226d3c3779bbe86e23b8cffe1a769
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.author: mbaldwin
+ms.openlocfilehash: b7e3aca133e2e9614ab83be83c20a4dbc2ae5fe2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079053"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542388"
 ---
 # <a name="key-vault-versions"></a>Key Vault のバージョン
 
@@ -48,7 +48,7 @@ ms.locfileid: "54079053"
 
 ## <a name="2015-02-01-preview"></a>2015-02-01-preview 
 
-2 番目のプレビュー バージョン 2015-02-01-preview が、2015 年 4 月 20 日に発表されました。 詳しくは、[REST API の更新](http://blogs.technet.com/b/kv/archive/2015/04/20/empty-3.aspx)に関するブログ記事をご覧ください。
+2 番目のプレビュー バージョン 2015-02-01-preview が、2015 年 4 月 20 日に発表されました。 詳しくは、[REST API の更新](https://blogs.technet.com/b/kv/archive/2015/04/20/empty-3.aspx)に関するブログ記事をご覧ください。
 
 次のタスクが更新されました。
 

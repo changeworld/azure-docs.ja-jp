@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/15/2019
-ms.openlocfilehash: 145273d48060955005f1d93f30e79014244cf4ba
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.date: 02/01/2019
+ms.openlocfilehash: ff5890dcaf642d51c53b054e986689290be773ca
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321383"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699246"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 
@@ -126,5 +126,5 @@ Azure Database for MySQL サーバーは、次の 3 つの価格レベルのい�
 ## <a name="next-steps"></a>次の手順
 
 - [ポータルで MySQL サーバーを作成](howto-create-manage-server-portal.md)する方法を確認します。
-- [Azure CLI で Azure Database for MySQL サーバーの監視とスケーリングを行う](scripts/sample-scale-server.md)方法を確認します。
-- [サービスの制限事項](concepts-limits.md)を確認します。
+- [サービスの制限](concepts-limits.md)について確認します。
+- [読み取りレプリカを使用してスケールアウトする](howto-read-replicas-portal.md)方法を確認します。

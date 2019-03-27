@@ -3,25 +3,26 @@ title: Linux VM のシステム割り当てマネージド ID を使用して Az
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
-ms.author: daveba
-ms.openlocfilehash: 07e13930b5778c94bc85097668b9a793fae8773f
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: priyamo
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 08184b8b1cddbc456b70c74e57729e4d95fb261d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51625557"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187986"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする 
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Cosmos DB にアクセスする 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -87,7 +88,7 @@ az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE 
 
 Cosmos DB は、ネイティブでは Azure AD 認証をサポートしていません。 ただし、マネージド ID を使用して Resource Manager から Cosmos DB のアクセス キーを取得し、そのキーを使用して Cosmos DB にアクセスできます。 この手順では、システム割り当てマネージド ID に Cosmos DB アカウントのキーへのアクセス権を付与します。
 
-Azure Resource Manager で Azure CLI を使用してシステム割り当てマネージド ID に Cosmos DB アカウントへのアクセス権を付与するには、`<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<COSMOS DB ACCOUNT NAME>` の値を環境に合わせて更新します。 `<MI PRINCIPALID>` は、[Linux VM の MI の principalID の取得](#retrieve-the-principalID-of-the-linux-VM's-system-assigned-identity)に関するセクションの `az resource show` コマンドによって返された `principalId` プロパティに置き換えます。  Cosmos DB は、アクセス キーを使用する場合、アカウントへの読み取り/書き込みアクセス権と、アカウントへの読み取り専用アクセス権という 2 レベルの粒度をサポートしています。  アカウントの読み取り/書き込みキーを取得する場合は `DocumentDB Account Contributor` ロールを割り当て、アカウントの読み取り専用キーを取得する場合は `Cosmos DB Account Reader Role` ロールを割り当てます。
+Azure Resource Manager で Azure CLI を使用してシステム割り当てマネージド ID に Cosmos DB アカウントへのアクセス権を付与するには、`<SUBSCRIPTION ID>`、`<RESOURCE GROUP>`、`<COSMOS DB ACCOUNT NAME>` の値を環境に合わせて更新します。 `<MI PRINCIPALID>` は、Linux VM の MI の principalID の取得で `az resource show` コマンドによって返された `principalId` プロパティに置き換えます。  Cosmos DB は、アクセス キーを使用する場合、アカウントへの読み取り/書き込みアクセス権と、アカウントへの読み取り専用アクセス権という 2 レベルの粒度をサポートしています。  アカウントの読み取り/書き込みキーを取得する場合は `DocumentDB Account Contributor` ロールを割り当て、アカウントの読み取り専用キーを取得する場合は `Cosmos DB Account Reader Role` ロールを割り当てます。
 
 ```azurecli-interactive
 az role assignment create --assignee <MI PRINCIPALID> --role '<ROLE NAME>' --scope "/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.DocumentDB/databaseAccounts/<COSMODS DB ACCOUNT NAME>"

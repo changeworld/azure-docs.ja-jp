@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/01/2016
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 0aee18115f34c86e84054f1aeddcc99d563f5f64
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5a7fbeafe74926c7d89ac76dc2964756b3582d61
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116519"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671150"
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>開発者分析: 言語、プラットフォーム、統合
 以下は、これまでに把握している [Application Insights](../../azure-monitor/app/app-insights-overview.md) の実装です (サード パーティによるものも含む)。
@@ -51,8 +51,7 @@ ms.locfileid: "54116519"
 * [iOS](../../azure-monitor/learn/mobile-center-quickstart.md) (App Center)
 * [Ionic](https://github.com/SoftwarePioniere/ionic-application-insights)
 * [iOS](https://github.com/Microsoft/ApplicationInsights-iOS) (App Center)
-* [J2EE](../../azure-monitor/app/java-get-started.md)
-* [J2EE - 既にライブとなっているアプリ用](../../azure-monitor/app/java-live.md)
+* [Java EE](../../azure-monitor/app/java-get-started.md)
 * [Node.JS](https://www.npmjs.com/package/applicationinsights)
 * [OSX](https://github.com/Microsoft/ApplicationInsights-OSX)
 * [SAFE スタック](https://safe-stack.github.io/docs/template-azure-ai/)
@@ -68,9 +67,9 @@ ms.locfileid: "54116519"
 * [セマンティック ログ (SLAB)](https://github.com/fidmor89/SLAB_AppInsights) - [セマンティック ログ アプリケーション ブロック](https://msdn.microsoft.com/library/dn440729.aspx)と統合
 * [クラウド ベースのロード テスト](https://blogs.msdn.com/b/visualstudioalm/archive/2015/07/30/getting-application-insights-counters-with-cloud-based-load-testing.aspx)
 * [LogStash プラグイン](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-output-applicationinsights)
-* [Log Analytics](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 * [Logary](https://www.nuget.org/packages/Logary.Targets.AppInsights/)
 * [Logrus](https://github.com/jjcollinge/logrus-appinsights)
+* [Azure Monitor](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)
 
 ## <a name="content-management-systems"></a>コンテンツ管理システム
 * [Concrete](https://github.com/fidmor89/appInsights-Concrete)

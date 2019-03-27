@@ -9,46 +9,48 @@ manager: twooley
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 64c0a42ac3cc074e5fd9e2824180009431b11e1e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fe095b8f5a0080c0f28ec570303c9dc23962dfc8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231973"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57869814"
 ---
-# <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>クイック スタート: Azure portal を使用してパブリック Basic Load Balancer を作成する
+# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Basic Load Balancer を作成する
 
 負荷分散では、着信要求を仮想マシン (VM) に分散させることで、より高いレベルの可用性とスケールを実現します。 Azure portal を使用して、ロード バランサーを作成し、トラフィックを VM 間で分散させることができます。 このクイック スタートでは、Basic 価格レベルで、ロード バランサー、バックエンド サーバー、およびネットワーク リソースを作成および構成する方法について説明します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
-このクイック スタートのタスクを実行するには、[Azure portal](http://portal.azure.com) にサインインする必要があります。
+このクイック スタートのタスクを実行するには、[Azure portal](https://portal.azure.com) にサインインする必要があります。
 
 ## <a name="create-a-basic-load-balancer"></a>Basic Load Balancer を作成する
 
-最初に、ポータルを使用してパブリック Basic ロード バランサーを作成します。 作成する名前とパブリック IP アドレスは、ロード バランサーのフロント エンドとして自動的に構成されます。
+最初に、ポータルを使用してパブリック Basic Load Balancer を作成します。 作成する名前とパブリック IP アドレスは、ロード バランサーのフロント エンドとして自動的に構成されます。
 
-1. ポータルの左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。
-   
-1. **[ロード バランサーの作成]** ウィンドウで次の値を入力または選択します。
-   
-   - **[名前]**:「*MyLoadBalancer*」と入力します。
-   - **[種類]**: **[パブリック]** を選択します。 
-   - **[SKU]**: **[Basic]** を選択します。
-   - **[パブリック IP アドレス]**: **[新規作成]** を選択します。 
-     - **[パブリック IP アドレス]** フィールド: 「*MyPublicIP*」と入力します。
-     - **[パブリック IP アドレスを構成する]** > **[割り当て]**: **[動的]** を選択します。
-   - **ResourceGroup**:**[新規作成]** を選択してから「*MyResourceGroupLB*」と入力し、**[OK]** を選択します。 
-   
-1. **作成**を選択します。
-   
-![ロード バランサーの作成](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
+1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[ロード バランサー]** の順にクリックします。
+2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[確認と作成]** を選択します。
+
+    | Setting                 | 値                                              |
+    | ---                     | ---                                                |
+    | サブスクリプション               | サブスクリプションを選択します。    |    
+    | リソース グループ         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
+    | Name                   | *myLoadBalancer*                                   |
+    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | type          | **[パブリック]** を選択します。                                        |
+    | SKU           | **[Basic]** を選択します。                          |
+    | パブリック IP アドレス | **[新規作成]** を選択します。 |
+    | パブリック IP アドレス名              | *MyPublicIP*   |
+    | 割り当て| 静的|
+
+3. **[確認と作成]** タブで、**[作成]** をクリックします。   
+
 
 ## <a name="create-back-end-servers"></a>バックエンド サーバーを作成する
 
@@ -205,7 +207,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
 1. **[OK]** を選択します。
    
-  ![ロード バランサー規則の追加](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
+   ![ロード バランサー規則の追加](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
 
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
 
@@ -257,6 +259,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![IIS Web サーバー](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 
+アプリを実行している 3 つの VM すべての間で、ロード バランサーがトラフィックを負荷分散していることを確認するには、Web ブラウザーを強制的に最新の情報に更新します。
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 不要になったときにロード バランサーと関連するすべてのリソースを削除するには、**MyResourceGroupLB** リソース グループを開き、**[リソース グループの削除]** を選択します。

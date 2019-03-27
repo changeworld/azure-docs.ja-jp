@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Azure SQL Data Warehouse のエラスティック クエリ | Microsoft Docs'
+title: チュートリアル:Azure SQL Data Warehouse のエラスティック クエリ | Microsoft Docs
 description: このチュートリアルでは、エラスティック クエリ機能を使用して、Azure SQL Database から Azure SQL Data Warehouse を照会します。
 services: sql-data-warehouse
 author: hirokib
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/14/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: 355ae1c27d0af8f77c2c9bda61c3581562050fc4
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: b1ac2edd39ac2e5a765eaf6223ba01c9f9e5df91
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307094"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238342"
 ---
-# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>チュートリアル: エラスティック クエリを使用して Azure SQL Data Warehouse のデータに Azure SQL Database からアクセスする
+# <a name="tutorial-use-elastic-query-to-access-data-in-azure-sql-data-warehouse-from-azure-sql-database"></a>チュートリアル:エラスティック クエリを使用して Azure SQL Data Warehouse のデータに Azure SQL Database からアクセスする
 
 このチュートリアルでは、エラスティック クエリ機能を使用して、Azure SQL Database から Azure SQL Data Warehouse を照会します。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "43307094"
    GRANT SELECT ON SCHEMA :: [dbo] TO SalesDBUser;
    ```
 
-6. SSMS または別のクエリ クライアントを使用して、論理サーバー上の**SQL Database インスタンス**に対する新しいクエリを開きます。
+6. SSMS または別のクエリ クライアントを使用して、論理サーバー上の**SQL データベース インスタンス**に対する新しいクエリを開きます。
 
 7. マスター キーがまだない場合は、作成します。 
 

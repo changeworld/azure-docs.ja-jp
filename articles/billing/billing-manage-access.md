@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2018
-ms.author: cwatson
+ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: a15d055505ca0f28ad28b477e90e6fe859cc9ac7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 516d8e9116bbdcd421897b5a5c2d9755e7e636c8
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094289"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54903555"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Asure の課金情報へのアクセスの管理
 

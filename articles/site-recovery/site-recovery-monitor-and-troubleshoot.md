@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: e34409490f9e120cb39daf99b280cc52c59f54e2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 48e53bcc542b9a0e00a544f80ec796082fa71f7b
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52845647"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55210422"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Site Recovery の監視とトラブルシューティング
 
@@ -98,9 +98,9 @@ Healthy | レプリケーションは正常に進行しています。 エラー
     **シナリオ** | **State**  | **表示可能**
     --- |--- | ---
     **オンプレミス サイト間のレプリケーション** | すべての状態 | いいえ  
-    **Azure リージョン間の Azure VM レプリケーション**  | レプリケーション有効/初期レプリケーション進行中 | [はい]
+    **Azure リージョン間の Azure VM レプリケーション**  | レプリケーション有効/初期レプリケーション進行中 | はい
     **Azure リージョン間の Azure VM レプリケーション** | フェールオーバー済み/フェールバック | いいえ    
-    **Azure への VMware レプリケーション** | レプリケーション有効/初期レプリケーション進行中 | [はい]     
+    **Azure への VMware レプリケーション** | レプリケーション有効/初期レプリケーション進行中 | はい     
     **Azure への VMware レプリケーション** | フェールオーバー済み/フェールバック | いいえ       
     **Azure への Hyper-V のレプリケーション** | フェールオーバー済み/フェールバック | いいえ 
 

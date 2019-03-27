@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: 6cd42675fa70f338fd4e1223d6a48bf8c6773915
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 1a8bfbe12156156944d4527ebb11fa6f1a1de544
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579313"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977237"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットを使用した垂直方向の自動スケール
+
 この記事では、再プロビジョニングありまたはなしで Azure [仮想マシン スケール セット](https://azure.microsoft.com/services/virtual-machine-scale-sets/) を垂直方向にスケーリングする方法について説明します。 スケール セットにない VM の垂直方向のスケーリングについては、「[Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 *スケール アップ*および*スケール ダウン*とも呼ばれる垂直スケーリングとは、ワークロードに応じて仮想マシン (VM) のサイズを増減させることを意味します。 この動作を、*スケール アウト*および*スケール イン*とも呼ばれる、VM の数がワークロードに応じて変更される[水平方向のスケーリング](virtual-machine-scale-sets-autoscale-overview.md)と比較してください。
@@ -87,8 +88,8 @@ Runbook をインポートしたら、仮想マシン スケール セットか�
 仮想マシン スケール セットにアラートを追加する方法を説明する PowerShell スクリプトを以下に示します。 アラートを発生させるメトリックの名前を取得するには、「[Azure Monitor の自動スケールの一般的なメトリック](../azure-monitor/platform/autoscale-common-metrics.md)」をご覧ください。
 
 ```
-$actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
-$actionWebhook = New-AzureRmAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
+$actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
+$actionWebhook = New-AzAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
 $threshold = <value-of-the-threshold>
 $rg = <resource-group-name>
 $id = <resource-id-to-add-the-alert-to>
@@ -99,7 +100,7 @@ $timeWindow = <time-window-in-hh:mm:ss-format>
 $condition = <condition-for-the-threshold> # Other valid values are LessThanOrEqual, GreaterThan, GreaterThanOrEqual
 $description = <description-for-the-alert>
 
-Add-AzureRmMetricAlertRule  -Name  $alertName `
+Add-AzMetricAlertRule  -Name  $alertName `
                             -Location  $location `
                             -ResourceGroup $rg `
                             -TargetResourceId $id `

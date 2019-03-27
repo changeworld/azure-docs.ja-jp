@@ -4,23 +4,24 @@ description: Azure Active Directory レポートに関するよく寄せられ�
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 98a1dd3fb3fd733cc17ac9c6ccf9d0dfc77737e1
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b6b8587313a4e98bfefa6489d9698052d312a6d3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868023"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194548"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 
@@ -114,7 +115,7 @@ ms.locfileid: "52868023"
 
 **Q:Azure portal でサインインまたはユーザーにリスクのフラグが付けられた理由はどうすれば調べることができますか。**
 
-**A:****Azure AD Premium** サブスクリプションをお持ちの場合は、**[リスクのフラグ付きユーザー]** でユーザーを選択するか、または **[危険なサインイン]** レポートでレコードを選択して、基になるリスク イベントに関する詳細を確認できます。 **Free** または **Basic** サブスクリプションをお持ちの場合は、危険レポートや危険なサインイン レポートでユーザーを表示できますが、基になる危険なイベント情報は確認できません。
+**A:** **Azure AD Premium** サブスクリプションをお持ちの場合は、 **[リスクのフラグ付きユーザー]** でユーザーを選択するか、または **[危険なサインイン]** レポートでレコードを選択して、基になるリスク イベントに関する詳細を確認できます。 **Free** または **Basic** サブスクリプションをお持ちの場合は、危険レポートや危険なサインイン レポートでユーザーを表示できますが、基になる危険なイベント情報は確認できません。
 
 ---
 

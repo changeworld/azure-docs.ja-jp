@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Insight4GRC の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Insight4GRC の統合 | Microsoft Docs
 description: Azure Active Directory と Insight4GRC の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 256550dc6aaa832599747f6fe39c2ca77ed3f8d7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 08913fc2e12026d70976ea8e2169c190378f4054
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441583"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193732"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>チュートリアル: Azure Active Directory と Insight4GRC の統合
+# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>チュートリアル:Azure Active Directory と Insight4GRC の統合
 
 このチュートリアルでは、Insight4GRC と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -160,14 +161,14 @@ Insight4GRC で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-insight4grc-test-user"></a>Insight4GRC テスト ユーザーの作成
 
 このセクションの目的は、Insight4GRC で Britta Simon というユーザーを作成することです。 Insight4GRC では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Insight4GRC にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Insight4GRC クライアント サポート チーム](mailto:support.ss@rsmuk.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Insight4GRC クライアント サポート チーム](mailto:support.ss@rsmuk.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -204,7 +205,7 @@ Insight4GRC で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Insight4GRC] タイルをクリックすると、自動的に Insight4GRC アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

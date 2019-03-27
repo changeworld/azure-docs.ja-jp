@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB のグローバル配信 - 内部のしくみ
+title: Azure Cosmos DB でのグローバル分散 - 内部のしくみ
 description: この記事では、Azure Cosmos DB のグローバル配信に関する技術的な詳細について説明します
 author: dharmas-cosmos
 ms.service: cosmos-db
@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: e1c84bb28747cf1799b39c70b6df3dc0cb9f8d78
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 86e4441174fa89fc688fa4e411ead0a7b3ebc8ee
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038944"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55475382"
 ---
-# <a name="azure-cosmos-db-global-distribution---under-the-hood"></a>Azure Cosmos DB のグローバル配信 - 内部のしくみ
+# <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB でのグローバル データ分散 - 内部のしくみ
 
 Azure Cosmos DB は Azure の基本的サービスの 1 つなので、パブリック クラウド、ソブリン クラウド、国防総省 (DoD) クラウド、政府機関クラウドなど世界中の Azure リージョンすべてでデプロイできます。 1 つのデータセンターで、専用のローカル ストレージをそれぞれのマシンで使用して大量のスタンプで Azure Cosmos DB をデプロイおよび管理します。 Azure Cosmos DB は 1 つのデータセンターの多数のクラスターでデプロイされます。各クラスターは、さまざまな世代のハードウェアを実行する可能性があります。 通常、特定のクラスター内のマシンは 10 から 20 の範囲の障害ドメインにまたがります。 次の図は、Cosmos DB グローバル分散システムのトポロジを示したものです。
 

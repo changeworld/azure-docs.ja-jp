@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 038c273806188d04223f1e455c158249a3e17718
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 72b7bd722bc7634a707e10cbcd45768140ed527a
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164443"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55757524"
 ---
 | リソース | Standard ファイル共有 | Premium ファイル共有 (プレビュー) |
 |----------|---------------|------------------------------------------|
@@ -22,3 +22,5 @@ ms.locfileid: "50164443"
 | 単一ファイル共有のターゲット スループット | 最大 60 MiB/秒 | 最大 612 MiB/秒 (プロビジョニング) |
 | 開くことができるハンドルの 1 ファイルあたりの最大数 | 2,000 オープン ハンドル | 2,000 オープン ハンドル |
 | 共有スナップショットの最大数 | 200 共有スナップショット | 200 共有スナップショット |
+| オブジェクト (ディレクトリとファイル) の名前の最大長 | 2048 文字 | 2048 文字 |
+| 最大パス名コンポーネント (パス \A\B\C\D 内。各文字はコンポーネント) | 255 文字 | 255 文字 |

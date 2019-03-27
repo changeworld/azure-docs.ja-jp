@@ -4,17 +4,17 @@ description: 静的パラメーターと動的パラメーターについて、�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0eef85fe92682eb3a6fd1dbc036cf547b163db97
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9166d5d552df4854a4d00c2211a273a06198877a
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310319"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567487"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>パラメーターを使用して動的ブループリントを作成する
 
@@ -82,7 +82,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 - REST API URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2017-11-11-preview
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
   ```
 
 - 要求本文
@@ -115,7 +115,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 - REST API URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2017-11-11-preview
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/roleOwner?api-version=2018-11-01-preview
   ```
 
 - 要求本文
@@ -140,7 +140,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 - REST API URI
 
   ```http
-  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2017-11-11-preview
+  PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint/artifacts/policyStorageTags?api-version=2018-11-01-preview
   ```
 
 - 要求本文
@@ -188,7 +188,7 @@ REST API を使用してブループリントを作成するときに、[ブル�
 - REST API URI
 
   ```http
-  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2017-11-11-preview
+  PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
 - 要求本文

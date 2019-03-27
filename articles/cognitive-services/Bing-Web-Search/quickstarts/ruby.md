@@ -4,33 +4,31 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Ruby を使って Bing Web Search REST API に要求を送信し、JSON 応答を受信します
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-web-search
+ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 8/16/2018
+ms.date: 2/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 911d90229473d6972f07ed0a75af487a27008fa5
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 117271b0a952090bf8af2416206652972ae274ff
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249670"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210834"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>クイック スタート:Ruby を使用して Bing Web Search API を呼び出す  
 
-このクイック スタートを使用すると、10 分未満で、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。  
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
-
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
+このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Ruby アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは Ruby で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを実行するには、以下のものが必要です。
 
 * [Ruby 2.4 以降](https://www.ruby-lang.org/en/downloads/)
 * サブスクリプション キー
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-declare-required-modules"></a>プロジェクトの作成と必要なモジュールの宣言
 

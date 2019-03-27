@@ -3,7 +3,7 @@ title: クイック スタート - Azure テンプレートを使用して Linux
 description: サンプル アプリのデプロイと自動スケール ルールの構成を行う Azure Resource Manager テンプレートを使用して Linux 仮想マシン スケール セットをすばやく作成する方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/27/18
-ms.author: zarhoads
-ms.openlocfilehash: 315281124a1fa9af575d1423f66595d297961848
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 03/27/2018
+ms.author: cynthn
+ms.openlocfilehash: 5361dc41aeaab0d44ee9a28ad0d7e40d98b17b8a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037329"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013010"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>クイック スタート:Azure テンプレートを使用して Linux 仮想マシン スケール セットを作成する
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure Resource Manager テンプレートを使用して、仮想マシン スケール セットを作成し、サンプル アプリケーションをデプロイします。
@@ -104,7 +104,7 @@ Azure Resource Manager テンプレートを使用して、関連するリソー
 - 構成またはインストール スクリプトの場所
 - VM インスタンスで実行するコマンド
 
-[Linux 上の Python HTTP サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) テンプレートでは、カスタム スクリプト拡張機能を使用して、[Bottle](http://bottlepy.org/docs/dev/)、Python Web フレームワーク、および単純な HTTP サーバーをインストールします。 
+[Linux 上の Python HTTP サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) テンプレートでは、カスタム スクリプト拡張機能を使用して、[Bottle](https://bottlepy.org/docs/dev/)、Python Web フレームワーク、および単純な HTTP サーバーをインストールします。 
 
 **fileUris** には 2 つのスクリプト  - *installserver.sh*と *workserver.py*が定義されます。 これらのファイルが GitHub からダウンロードされた後、*commandToExecute*によって、アプリをインストールして構成する `bash installserver.sh` が実行されます。
 
@@ -137,7 +137,7 @@ Azure Resource Manager テンプレートを使用して、関連するリソー
 
 [![テンプレートを Azure にデプロイする](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
-Linux では､次のように Azure CLI で [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使用して、Python HTTP サーバー インストールすることもできます。
+Linux では､次のように Azure CLI で [az group deployment create](/cli/azure/group/deployment) を使用して、Python HTTP サーバー インストールすることもできます。
 
 ```azurecli-interactive
 # Create a resource group
@@ -153,7 +153,7 @@ az group deployment create \
 
 
 ## <a name="test-your-scale-set"></a>スケール セットのテスト
-動作中のスケール セットを表示するには、Web ブラウザーでサンプル Web アプリケーションにアクセスします。 次のように [az network public-ip list](/cli/azure/network/public-ip#show) を使用してロード バランサーのパブリック IP アドレスを取得します。
+動作中のスケール セットを表示するには、Web ブラウザーでサンプル Web アプリケーションにアクセスします。 次のように [az network public-ip list](/cli/azure/network/public-ip) を使用してロード バランサーのパブリック IP アドレスを取得します。
 
 ```azurecli-interactive
 az network public-ip list \
@@ -167,7 +167,7 @@ az network public-ip list \
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-必要がなくなったら、次のように [az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループ、スケール セット、およびすべての関連リソースを削除できます。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
+必要がなくなったら、次のように [az group delete](/cli/azure/group) を使用して、リソース グループ、スケール セット、およびすべての関連リソースを削除できます。 `--no-wait` パラメーターは、操作の完了を待たずにプロンプトに制御を戻します。 `--yes` パラメーターは、追加のプロンプトを表示せずにリソースの削除を確定します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

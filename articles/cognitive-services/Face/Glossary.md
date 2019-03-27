@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 用語集では、Face API サービスの使用中に目にする可能性のある用語について説明します。
 services: cognitive-services
 author: SteveMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 215b780bc403ab2df40567c3eb5a7ae86c9fe130
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: ad3ea9b0cde16d5c9645e7eacee9ba7f9a08ed2d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127365"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859167"
 ---
 # <a name="glossary"></a>用語集
 
@@ -23,14 +23,14 @@ ms.locfileid: "46127365"
 
 #### <a name="attributes"></a>属性
 
-[年齢](#Age-Attribute)、[性別](#Gender-Attribute)、[頭部姿勢](#Head-Pose-Attribute)、[髭](#Facial-Hair-Attribute)、[笑顔](#Smile-Attribute)などの属性は[検出](#Detection-Face-Detection)結果から省略可能です。
-これらはクエリ パラメーター returnFaceAttributes を指定することで、[検出](#Detection-Face-Detection) API から取得できます。 属性は[顔 ID](#Face-ID) と[四角形](#Face-Rectangle)に加えて、選択した[顔](#Face)に関する追加情報を提供します。
+属性は検出結果から省略可能です ([年齢](#Age-Attribute)、[性別](#Gender-Attribute)、[頭部姿勢](#Head-Pose-Attribute)、[髭](#Facial-Hair-Attribute)、[笑顔](#Smile-Attribute)など)。
+これらはクエリ パラメーター returnFaceAttributes を指定することによって検出 API から取得できます。 属性は[顔 ID](#Face-ID) と[四角形](#Face-Rectangle)に加えて、選択した[顔](#Face)に関する追加情報を提供します。
 
 詳しくは、ガイド「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出) をご覧ください。
 
 #### <a name="age-attribute"></a>年齢 (属性)
 
-年齢は、特定の顔の年齢を表す[属性](#Attributes)の 1 つです。 年齢属性は[検出](#Detection-Face-Detection)結果から省略可能で、returnFaceAttributes パラメーターを指定することで[検出](#Detection-Face-Detection)要求で制御できます。
+年齢は、特定の顔の年齢を表す[属性](#Attributes)の 1 つです。 年齢属性は検出結果から省略可能であり、returnFaceAttributes パラメーターを指定することによって検出要求で制御できます。
 
 詳しくは、ガイド「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出) をご覧ください。
 
@@ -48,7 +48,7 @@ ms.locfileid: "46127365"
 
 信頼度は、[顔](#Face)や[人物](#Person)の類似性を数値化したもので、[特定](#Identification)や[検証](#Verification)において、検索、識別、検証された結果の類似性を示します。
 
-詳しくは、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)」(顔 - 検証)」の各ガイドをご覧ください。
+詳細については、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)」(顔 - 検証) の各ガイドを参照してください。
 
 ## <a name="d"></a>D
 
@@ -64,15 +64,15 @@ ms.locfileid: "46127365"
 
 #### <a name="face"></a>Face
 
-顔とは、検出された顔に関連する、Face API から派生した結果を表す統一用語のことです。 最終的には、顔は統一 ID ([顔 ID](#Face-ID))、イメージ内の指定されたリージョン ([顔四角形](#Face-Rectangle))、顔に関連する追加の[属性](#Face-Attributes-Facial-Attributes) ([年齢](#Age-Attribute)、[性別](#Gender-Attribute)、[ランドマーク](#Face-Landmarks-Facial-Landmarks)、[頭部姿勢](#Head-Pose-Attribute)など) で表されます。 さらに、顔は[検出](#Detection-Face-Detection)から返されることがあります。
+顔とは、検出された顔に関連する、Face API から派生した結果を表す統一用語のことです。 最終的に、顔は統一 ID ([顔 ID](#Face-ID))、イメージ内の指定されたリージョン ([顔四角形](#Face-Rectangle))、および顔に関連する追加の属性 ([年齢](#Age-Attribute)、[性別](#Gender-Attribute)、ランドマーク、[頭部姿勢](#Head-Pose-Attribute)など) で表されます。 さらに、顔は検出から返される場合があります。
 
 詳しくは、ガイド「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出) をご覧ください。
 
 #### <a name="face-api"></a>Face API
 
-Face API は、顔検出および認証の最も高度なアルゴリズムを提供するクラウド ベースの API です。 Face API の主な機能は、[属性](#Face-Attributes-Facial-Attributes)による顔の[検出](#Detection-Face-Detection)と顔の[認識](#Recognition)の 2 つのカテゴリに分類できます。
+Face API は、顔検出および認証の最も高度なアルゴリズムを提供するクラウド ベースの API です。 Face API の主な機能は、属性による顔検出と顔の[認識](#Recognition)の 2 つのカテゴリに分類できます。
 
-詳しくは、[Face API の概要](./Overview.md)に関するページ、「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出)、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[Face - Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238)」(顔 - グループ)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)」(顔 - 検証)」の各ガイドをご覧ください。
+詳細については、[Face API の概要](./Overview.md)に関するページ、「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出)、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[Face - Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238)」(顔 - グループ)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)」(顔 - 検証) の各ガイドを参照してください。
 
 #### <a name="face-attributesfacial-attributes"></a>顔の属性
 
@@ -80,13 +80,13 @@ Face API は、顔検出および認証の最も高度なアルゴリズムを�
 
 #### <a name="face-id"></a>顔 ID
 
-顔 ID は[検出](#Detection-Face-Detection)結果から派生し、文字列は [Face API](#Face-API) 内の[顔](#Face)を表します。
+顔 ID は検出結果から派生します。ここでは、文字列が [Face API](#Face-API) で[顔](#Face)を表します。
 
 詳しくは、ガイド「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出) をご覧ください。
 
 #### <a name="face-landmarksfacial-landmarks"></a>顔のランドマーク
 
-ランドマークは[検出](#Detection-Face-Detection)結果から省略可能です。これは、次の図に示すように、目、鼻、口など、顔のセマンティック ポイントを示します。 ランドマークは、ブール値 returnFaceLandmarks によって、[検出](#Detection-Face-Detection)要求で制御できます。 returnFaceLandmarks が true に設定されると、返される顔にはランドマーク属性があります。
+ランドマークは、顔のセマンティック ポイント (目、鼻、口など) である検出結果から省略可能です (次の図に示します)。 ランドマークは、ブール値 returnFaceLandmarks によって検出要求で制御できます。 returnFaceLandmarks が true に設定されると、返される顔にはランドマーク属性があります。
 
 詳しくは、ガイド「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出) をご覧ください。
 
@@ -94,39 +94,39 @@ Face API は、顔検出および認証の最も高度なアルゴリズムを�
 
 #### <a name="face-rectangle"></a>顔四角形
 
-顔四角形は[検出](#Detection-Face-Detection)結果から派生し、イメージ内の矩形 (左、上、幅、高さ) をピクセル単位で表します。 [顔](#Face)の左上隅 (左、上 ) の、幅と高さの隣は、x 軸 と y 軸でそれぞれ顔のサイズを示します。
+顔四角形は検出結果から派生し、イメージ内の矩形 (左、上、幅、高さ) をピクセル単位で表します。 [顔](#Face)の左上隅 (左、上 ) の、幅と高さの隣は、x 軸 と y 軸でそれぞれ顔のサイズを示します。
 
 詳しくは、ガイド「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出) をご覧ください。
 
 #### <a name="facial-hair-attribute"></a>髭 (属性)
 
-髭は、対象の顔の髭の長さを表すのに使用される[属性](#Attributes)の 1 つです。 髭属性は[検出](#Detection-Face-Detection)結果から省略可能で、returnFaceAttributes によって[検出](#Detection-Face-Detection)要求で制御できます。 returnFaceAttributes に 'facialHair' が含まれていると、返される顔には髭属性が指定されます。
+髭は、対象の顔の髭の長さを表すのに使用される[属性](#Attributes)の 1 つです。 髭属性は検出結果から省略可能であり、returnFaceAttributes によって検出要求で制御できます。 returnFaceAttributes に 'facialHair' が含まれていると、返される顔には髭属性が指定されます。
 
 詳しくは、ガイド「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出) をご覧ください。
 
 #### <a name="facelist"></a>FaceList
 
-FaceList は [PersistedFace](#PersistedFace) のコレクションで、[類似検索](#Find-Similar)のユニットです。 FaceList には [FaceList ID](#FaceList-ID) のほか、[名前](#Name)や[ユーザー データ](#UserData-User-Data)などの属性が付属します。
+FaceList は [PersistedFace](#PersistedFace) のコレクションで、[類似検索](#Find-Similar)のユニットです。 FaceList には、[FaceList ID](#FaceList-ID) のほか、名前やユーザー データなどのその他の属性が付属します。
 
-詳しくは、「[FaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)」(FaceList - 作成)、「[FaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)」(FaceList - 取得) の各ガイドをご覧ください。
+詳細については、「[FaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)」(FaceList - 作成)、「[FaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)」(FaceList - 取得) の各ガイドを参照してください。
 
 #### <a name="facelist-id"></a>FaceList ID
 
 FaceList ID は、[FaceList](#FaceList) の識別子として使用される、ユーザー指定の ID です。 FaceList ID は、サブスクリプション内で一意である必要があります。
 
-詳しくは、「[FaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)」(FaceList - 作成)、「[FaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)」(FaceList - 取得) の各ガイドをご覧ください。
+詳細については、「[FaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)」(FaceList - 作成)、「[FaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c)」(FaceList - 取得) の各ガイドを参照してください。
 
 #### <a name="find-similar"></a>類似検索
 
-この API は、顔のコレクションに基づいて類似の顔の検索/クエリに使用されます。 顔や顔のコレクションのクエリは、要求内で[顔 ID](#Face-ID) または [FceList ID](#FaceList-ID)/[LargeFaceList ID](#LargeFaceList-ID) で表されます。 返される結果は、[顔 ID](#Face-ID) や [PersistedFace ID](#PersistedFace-ID) で表される、検索された類似の顔になります。
+この API は、顔のコレクションに基づいて類似の顔の検索/クエリに使用されます。 顔や顔のコレクションのクエリは、要求内で[顔 ID](#Face-ID) または [FceList ID](#FaceList-ID)/[LargeFaceList ID](#LargeFaceList-ID) で表されます。 返される結果は、[顔 ID](#Face-ID) または PersistedFace IDで表される、検索された類似の顔になります。
 
-詳しくは、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[LargeFaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)」(LargeFaceList - 作成)、「[FaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)」(FaceList - 作成) の各ガイドをご覧ください。
+詳細については、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[LargeFaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)」(LargeFaceList - 作成)、「[FaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)」(FaceList - 作成) の各ガイドを参照してください。
 
 ## <a name="g"></a>G
 
 #### <a name="gender-attribute"></a>性別 (属性)
 
-性別は、対象の顔の性別を表すのに使用される[属性](#Attributes)の 1 つです。 性別属性は[検出](#Detection-Face-Detection)結果から省略可能で、returnFaceAttributes によって[検出](#Detection-Face-Detection)要求で制御できます。 returnFaceAttributes に 'gender' が含まれていると、返される顔には性別属性が指定されます。
+性別は、対象の顔の性別を表すのに使用される[属性](#Attributes)の 1 つです。 性別属性は検出結果から省略可能であり、returnFaceAttributes によって検出要求で制御できます。 returnFaceAttributes に 'gender' が含まれていると、返される顔には性別属性が指定されます。
 
 詳しくは、ガイド「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出) をご覧ください。
 
@@ -146,7 +146,7 @@ FaceList ID は、[FaceList](#FaceList) の識別子として使用される、�
 
 #### <a name="head-pose-attribute"></a>頭部姿勢 (属性)
 
-頭部姿勢は、次の図に示すように、ロール、ピッチ、ヨー角に基づいて、3D 空間における顔の向きを表す[属性](#Attributes)の 1 つです。 ロールとヨー角の値の範囲は、[-180, 180] と [-90, 90] です。 最新バージョンでは、検出から返されるピッチの値は常に 0 です。 頭部姿勢属性は[検出](#Detection-Face-Detection)結果から省略可能で、returnFaceAttributes パラメーターによって[検出](#Detection-Face-Detection)要求で制御できます。 returnFaceAttributes パラメーターに 'headPose' が含まれていると、返される顔には頭部姿勢属性が指定されています。
+頭部姿勢は、次の図に示すように、ロール、ピッチ、ヨー角に基づいて、3D 空間における顔の向きを表す[属性](#Attributes)の 1 つです。 ロールとヨー角の値の範囲は、[-180, 180] と [-90, 90] です。 最新バージョンでは、検出から返されるピッチの値は常に 0 です。 頭部姿勢属性は検出結果から省略可能であり、returnFaceAttributes パラメーターによって検出要求で制御できます。 returnFaceAttributes パラメーターに 'headPose' が含まれていると、返される顔には頭部姿勢属性が指定されています。
 
 詳しくは、ガイド「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出) をご覧ください。
 
@@ -166,7 +166,7 @@ FaceList ID は、[FaceList](#FaceList) の識別子として使用される、�
 > LargePersonGroup/PersonGroup は、識別の前に正常にトレーニングが行われている必要があります。 LargePersonGroup/PersonGroup がトレーニングを受けていない場合や、トレーニングの[状態](#Status-Train)が 'succeeded' と表示されていない (つまり、'running'、'failed'、または 'timeout' と表示されている) 場合、要求の応答は 400 になります。
 > 
 
-詳しくは、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[LargePersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)」(LargePersonGroup の人物 - 作成)、「[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)」(LargePersonGroup - 作成)、「[LargePersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)」(LargePersonGroup - トレーニング)、「[PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)」(PersonGroup の人物 - 作成)、「[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)」(PersonGroup - 作成)、「[PersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)」(PersonGroup - トレーニング) の各ガイドをご覧ください。
+詳細については、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[LargePersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)」(LargePersonGroup の人物 - 作成)、「[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)」(LargePersonGroup - 作成)、「[LargePersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)」(LargePersonGroup - トレーニング)、「[PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)」(PersonGroup の人物 - 作成)、「[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)」(PersonGroup - 作成)、「[PersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)」(PersonGroup - トレーニング) の各ガイドを参照してください。
 
 #### <a name="isidentical"></a>IsIdentical
 
@@ -182,31 +182,31 @@ IsIdentical は[検証](#Verification)結果のブール値フィールドで、
 
 #### <a name="landmarks"></a>ランドマーク
 
-「[顔のランドマーク](#Face-Landmarks-Facial-Landmarks)」をご覧ください。
+「顔のランドマーク」を参照してください。
 
 #### <a name="largefacelist"></a>LargeFaceList
 
-LargeFaceList は [PersistedFace](#PersistedFace) のコレクションで、[類似検索](#Find-Similar)のユニットです。 LargeFaceList には [LargeFaceList ID](#LargeFaceList-ID) のほか、[名前](#Name)や[ユーザー データ](#UserData-User-Data)などの属性が付属します。
+LargeFaceList は [PersistedFace](#PersistedFace) のコレクションで、[類似検索](#Find-Similar)のユニットです。 LargeFaceList には、[LargeFaceList ID](#LargeFaceList-ID) のほか、名前やユーザー データなどのその他の属性が付属します。
 
-詳しくは、「[LargeFaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)」(LargeFaceList - 作成)、「[LargeFaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a15827cd2de3616c086f2ce)」(LargeFaceList - 取得)、「[LargeFaceList - List Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158db4d2de3616c086f2d6)」(FaceList - 顔のリスト) の各ガイドをご覧ください。
+詳細については、「[LargeFaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)」(LargeFaceList - 作成)、「[LargeFaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a15827cd2de3616c086f2ce)」(LargeFaceList - 取得)、「[LargeFaceList - List Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158db4d2de3616c086f2d6)」(FaceList - 顔のリスト) の各ガイドを参照してください。
 
 #### <a name="largefacelist-id"></a>LargeFaceList ID
 
 LargeFaceList ID は、[LargeFaceList](#LargeFaceList) の識別子として使用される、ユーザー指定の ID です。 LargeFaceList ID は、サブスクリプション内で一意である必要があります。
 
-詳しくは、「[LargeFaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)」(LargeFaceList - 作成)、「[LargeFaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a15827cd2de3616c086f2ce)」(LargeFaceList - 取得) の各ガイドをご覧ください。
+詳細については、「[LargeFaceList - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)」(LargeFaceList - 作成)、「[LargeFaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a15827cd2de3616c086f2ce)」(LargeFaceList - 取得) の各ガイドを参照してください。
 
 #### <a name="largepersongroup"></a>LargePersonGroup
 
-LargePersonGroup は[人物](#Person)のコレクションで、[識別](#Identification)のユニットです。 LargePersonGroup には [LargePersonGroup ID](#LargePersonGroup-ID) のほか、[名前](#Name)や[ユーザー データ](#UserData-User-Data)などの属性が付属します。
+LargePersonGroup は[人物](#Person)のコレクションで、[識別](#Identification)のユニットです。 LargePersonGroup には、[LargePersonGroup ID](#LargePersonGroup-ID) のほか、名前やユーザー データなどのその他の属性が付属します。
 
-詳しくは、「[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)」(LargePersonGroup - 作成)、「[LargePersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acebb6ac60f11b48b5a9e)」(LargePersonGroup - 取得)、「[LargePersonGroup Person - List](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adda06ac60f11b48b5aa1)」(LargePersonGroup の人物 - リスト) の各ガイドをご覧ください。
+詳細については、「[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)」(LargePersonGroup - 作成)、「[LargePersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acebb6ac60f11b48b5a9e)」(LargePersonGroup - 取得)、「[LargePersonGroup Person - List](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adda06ac60f11b48b5aa1)」(LargePersonGroup の人物 - リスト) の各ガイドを参照してください。
 
 #### <a name="largepersongroup-id"></a>LargePersonGroup ID
 
 LargePersonGroup ID は、[LargePersonGroup](#LargePersonGroup) の識別子として使用される、ユーザー指定の文字列です。 LargePersonGroup ID は、サブスクリプション内で一意である必要があります。
 
-詳しくは、「[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)」(LargePersonGroup - 作成)、「[LargePersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acebb6ac60f11b48b5a9e)」(LargePersonGroup - 取得) の各ガイドをご覧ください。
+詳細については、「[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)」(LargePersonGroup - 作成)、「[LargePersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acebb6ac60f11b48b5a9e)」(LargePersonGroup - 取得) の各ガイドを参照してください。
 
 ## <a name="m"></a>M
 
@@ -222,13 +222,13 @@ LargePersonGroup ID は、[LargePersonGroup](#LargePersonGroup) の識別子と�
 
 名前は、[人物](#Person)をわかりやすく説明する文字列です。 [人物 ID](#Person-ID) とは異なり、人物の名前はグループ内で重複してかまいません。
 
-詳しくは、「[LargePersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)」(LargePersonGroup の人物 - 作成)、「[LargePersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599add376ac60f11b48b5aa0)」(LargePersonGroup の人物 - 取得)、「[PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)」(PersonGroup の人物 - 作成)、「[PersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523f)」(PersonGroup の人物 - 取得) の各ガイドをご覧ください。
+詳細については、「[LargePersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)」(LargePersonGroup の人物 - 作成)、「[LargePersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599add376ac60f11b48b5aa0)」(LargePersonGroup の人物 - 取得)、「[PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)」(PersonGroup の人物 - 作成)、「[PersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523f)」(PersonGroup の人物 - 取得) の各ガイドを参照してください。
 
 #### <a name="name-largepersongrouppersongroup"></a>名前 (LargePersonGroup/PersonGroup)
 
 名前は、[LargePersonGroup](#LargePersonGroup)/[PersonGroup](#PersonGroup) をわかりやすく説明する文字列です。 [LargePersonGroup ID](#LargePersonGroup-ID)/[PersonGroup ID](#PersonGroup-ID) とは異なり、LargePersonGroup/PersonGroup の名前はサブスクリプション内で重複してかまいません。
 
-詳しくは、「[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)」(LargePersonGroup - 作成)、「[LargePersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acebb6ac60f11b48b5a9e)」(LargePersonGroup - 取得)、「[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)」(PersonGroup - 作成)、「[PersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246)」(PersonGroup - 取得) の各ガイドをご覧ください。
+詳細については、「[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)」(LargePersonGroup - 作成)、「[LargePersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acebb6ac60f11b48b5a9e)」(LargePersonGroup - 取得)、「[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)」(PersonGroup - 作成)、「[PersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246)」(PersonGroup - 取得) の各ガイドを参照してください。
 
 ## <a name="o"></a>O
 
@@ -236,39 +236,39 @@ LargePersonGroup ID は、[LargePersonGroup](#LargePersonGroup) の識別子と�
 
 #### <a name="persistedface"></a>PersistedFace
 
-PersistedFace は、Face API のデータ構造です。 PersistedFace には [PersistedFace ID](#PersistedFace-ID) のほか、[名前](#Name)や[ユーザー データ](#UserData-User-Data)などの属性が付属します。
+PersistedFace は、Face API のデータ構造です。 PersistedFace には、PersistedFace ID のほか、名前やユーザー データなどのその他の属性が付属します。
 
-詳しくは、「[LargeFaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)」(LargeFaceList - 顔の追加)、「[FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)」(FaceList - 顔の追加)、「[LargePersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)」(LargePersonGroup の人物 - 顔の追加)、「[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)」(PersonGroup の人物 - 顔の追加) の各ガイドをご覧ください。
+詳細については、「[LargeFaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)」(LargeFaceList - 顔の追加)、「[FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)」(FaceList - 顔の追加)、「[LargePersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)」(LargePersonGroup の人物 - 顔の追加)、「[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)」(PersonGroup の人物 - 顔の追加) の各ガイドを参照してください。
 
 #### <a name="person-id"></a>人物 ID
 
 人物 ID は、[PersistedFace](#PersistedFace) が正常に作成されると生成されます。 [Face API](#Face-API) でこの顔を表す文字列が作成されます。
 
-詳しくは、「[LargeFaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)」(LargeFaceList - 顔の追加)、「[FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)」(FaceList - 顔の追加)、「[LargePersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)」(LargePersonGroup の人物 - 顔の追加)、「[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)」(PersonGroup の人物 - 顔の追加) の各ガイドをご覧ください。
+詳細については、「[LargeFaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)」(LargeFaceList - 顔の追加)、「[FaceList - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)」(FaceList - 顔の追加)、「[LargePersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)」(LargePersonGroup の人物 - 顔の追加)、「[PersonGroup Person - Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)」(PersonGroup の人物 - 顔の追加) の各ガイドを参照してください。
 
 #### <a name="person"></a>Person
 
-人物は、Face API で管理されるデータ構造です。 人物には [人物 ID](#Person-ID) のほか、[名前](#Name)、[PersistedFace](#PersistedFace) のコレクション、[ユーザー データ](#UserData-User-Data)などの属性が付属します。
+人物は、Face API で管理されるデータ構造です。 人物には、[人物 ID](#Person-ID) のほか、名前、[PersistedFace](#PersistedFace) のコレクション、ユーザー データなどのその他の属性が付属します。
 
-詳しくは、「[LargePersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)」(LargePersonGroup の人物 - 作成)、「[LargePersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599add376ac60f11b48b5aa0)」(LargePersonGroup の人物 - 取得)、「[PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)」(PersonGroup の人物 - 作成)、「[PersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523f)」(PersonGroup の人物 - 取得) の各ガイドをご覧ください。
+詳細については、「[LargePersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)」(LargePersonGroup の人物 - 作成)、「[LargePersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599add376ac60f11b48b5aa0)」(LargePersonGroup の人物 - 取得)、「[PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)」(PersonGroup の人物 - 作成)、「[PersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523f)」(PersonGroup の人物 - 取得) の各ガイドを参照してください。
 
 #### <a name="person-id"></a>人物 ID
 
 人物 ID は、[人物](#Person)が正常に作成されると生成されます。 [Face API](#Face-API) でこの人物を表す文字列が作成されます。
 
-詳しくは、「[LargePersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)」(LargePersonGroup の人物 - 作成)、「[LargePersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599add376ac60f11b48b5aa0)」(LargePersonGroup の人物 - 取得)、「[PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)」(PersonGroup の人物 - 作成)、「[PersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523f)」(PersonGroup の人物 - 取得) の各ガイドをご覧ください。
+詳細については、「[LargePersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)」(LargePersonGroup の人物 - 作成)、「[LargePersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599add376ac60f11b48b5aa0)」(LargePersonGroup の人物 - 取得)、「[PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)」(PersonGroup の人物 - 作成)、「[PersonGroup Person - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523f)」(PersonGroup の人物 - 取得) の各ガイドを参照してください。
 
 #### <a name="persongroup"></a>PersonGroup
 
-PersonGroup は[人物](#Person)のコレクションで、[識別](#Identification)のユニットです。 PersonGroup には [PersonGroup ID](#PersonGroup-ID) のほか、[名前](#Name)や[ユーザー データ](#UserData-User-Data)などの属性が付属します。
+PersonGroup は[人物](#Person)のコレクションで、[識別](#Identification)のユニットです。 PersonGroup には、[PersonGroup ID](#PersonGroup-ID) のほか、名前やユーザー データなどのその他の属性が付属します。
 
-詳しくは、「[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)」(PersonGroup - 作成)、「[PersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246)」(PersonGroup - 取得)、「[PersonGroup Person - List](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241)」(PersonGroup の人物 - リスト) の各ガイドをご覧ください。
+詳細については、「[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)」(PersonGroup - 作成)、「[PersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246)」(PersonGroup - 取得)、「[PersonGroup Person - List](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241)」(PersonGroup の人物 - リスト) の各ガイドを参照してください。
 
 #### <a name="persongroup-id"></a>PersonGroup ID
 
 PersonGroup ID は、[PersonGroup](#PersonGroup) の識別子として使用される、ユーザー指定の文字列です。 グループ ID は、サブスクリプション内で一意である必要があります。
 
-詳しくは、「[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)」(PersonGroup - 作成)、「[PersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246)」(PersonGroup - 取得) の各ガイドをご覧ください。
+詳細については、「[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)」(PersonGroup - 作成)、「[PersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246)」(PersonGroup - 取得) の各ガイドを参照してください。
 
 #### <a name="pose-attribute"></a>姿勢 (属性)
 
@@ -282,7 +282,7 @@ PersonGroup ID は、[PersonGroup](#PersonGroup) の識別子として使用さ�
 
 認識は、[類似検索](#Find-Similar)、[グループ化](#Grouping)、[識別](#Identification)、[2 つの顔が同じであるかどうかの検証](#Verification)など、顔認識テクノロジにおいて一般的なアプリケーション領域です。
 
-詳しくは、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[Face - Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238)」(顔 - グループ)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)」(顔 - 検証) の各ガイドをご覧ください。
+詳細については、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 - 類似検索)、「[Face - Group](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238)」(顔 - グループ)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別)、「[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)」(顔 - 検証) の各ガイドを参照してください。
 
 #### <a name="rectangle-face"></a>四角形 (顔)
 
@@ -290,19 +290,25 @@ PersonGroup ID は、[PersonGroup](#PersonGroup) の識別子として使用さ�
 
 ## <a name="s"></a>S
 
-#### <a name="smile-attribute"></a>笑顔 (属性)
-
-笑顔は、対象の顔の笑顔を表すのに使用される[属性](#Attributes)の 1 つです。 笑顔属性は[検出](#Detection-Face-Detection)結果から省略可能で、returnFaceAttributes によって[検出](#Detection-Face-Detection)要求で制御できます。 returnFaceAttributes に 'smile' が含まれていると、返される顔には笑顔属性が指定されます。
-
-詳しくは、ガイド「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出) をご覧ください。
-
 #### <a name="similar-face-searching"></a>類似した顔の検索
 
 「[類似検索](#Find-Similar)」をご覧ください。
 
+#### <a name="smile-attribute"></a>笑顔 (属性)
+
+笑顔は、対象の顔の笑顔を表すのに使用される[属性](#Attributes)の 1 つです。 笑顔属性は検出結果から省略可能であり、returnFaceAttributes によって検出要求で制御できます。 returnFaceAttributes に 'smile' が含まれていると、返される顔には笑顔属性が指定されます。
+
+詳しくは、ガイド「[Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)」(顔 - 検出) をご覧ください。
+
+#### <a name="snapshot"></a>スナップショット
+
+スナップショットは、特定の顔データ型のための一時的なリモート ストレージです。 これは、あるサブスクリプションから別のサブスクリプションにデータをコピーするための一種のクリップボードとして機能します。 最初に、ユーザーはソース サブスクリプション内のデータのスナップショットを "取得" し、次にそれをターゲット サブスクリプション内の新しいデータ オブジェクトに "適用" します。 
+
+詳細については、[顔の移行ガイド](./face-api-how-to-topics/how-to-migrate-face-data.md)のほか、「[Snapshot - Take](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot/take)」(スナップショット - 作成) および「[Snapshot - Apply](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot/apply)」(スナップショット - 適用) のリファレンス ドキュメント (REST) を参照してください。
+
 #### <a name="status-train"></a>状態 (トレーニング)
 
-状態は、'notstarted'、'running'、'succeeded'、'failed' など、[LargeFaceList/LargePersonGroup/PersonGroup のトレーニング](#Train)の段階や状況を示す文字列です。
+状態は、'notstarted'、'running'、'succeeded'、'failed' などの、LargeFaceList/LargePersonGroups/PersonGroups をトレーニングするための手順を記述するために使用される文字列です。
 
 詳しくは、「[LargeFaceList - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1)」(LargeFaceList - トレーニング)、「[LargePersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)」(LargePersonGroup - トレーニング)、「[PersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)」(PersonGroup - トレーニング) の各ガイドをご覧ください。
 
@@ -316,7 +322,7 @@ PersonGroup ID は、[PersonGroup](#PersonGroup) の識別子として使用さ�
 
 この API は、[Find Similar](#Find-Similar)/[Identification](#Identification) のパフォーマンスを確保するために、[LargeFaceList](#LargeFaceList)/[LargePersonGroup](#LargePersonGroup)/[PersonGroup](#PersonGroup) を事前処理するために使用されます。 トレーニングを行わない、または[トレーニングの状態](#Status-Train)が成功と表示されていない場合、この PersonGroup の識別は失敗します。
 
-詳しくは、「[LargeFaceList - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1)」(LargeFaceList - トレーニング)、「[LargePersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)」(LargePersonGroup - トレーニング)、「[PersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)」(PersonGroup - トレーニング)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 特定) の各ガイドをご覧ください。
+詳細については、「[LargeFaceList - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1)」(LargeFaceList - トレーニング)、「[LargePersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4)」(LargePersonGroup - トレーニング)、「[PersonGroup - Train](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249)」(PersonGroup - トレーニング)、「[Face - Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)」(顔 - 識別) の各ガイドを参照してください。
 
 ## <a name="u"></a>U
 
@@ -324,19 +330,19 @@ PersonGroup ID は、[PersonGroup](#PersonGroup) の識別子として使用さ�
 
 ユーザー データは、[人物](#Person)や [PersonGroup](#PersonGroup)/[LargePersonGroup](#LargePersonGroup) に関連付けられている追加情報です。 ユーザー データはユーザーが設定することで、データの使用、理解、記憶がより簡単になります。
 
-詳しくは、「[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)」(LargePersonGroup - 作成)、「[LargePersonGroup - Update](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acfc83a7b9412a4d53f3f)」(LargePersonGroup - 更新)、「[LargePersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)」(LargePersonGroup の人物- 作成)、「[LargePersonGroup Person - Update](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ade043a7b9412a4d53f41)」(LargePersonGroup の人物 - 更新)、「[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)」(PersonGroup - 作成)、「[PersonGroup - Update](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524a)」(PersonGroup - 更新)、「[PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)」(PersonGroup の人物 - 作成)、「[PersonGroup Person - Update](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395242)」(PersonGroup の人物 - 更新) の各ガイドをご覧ください。
+詳細については、「[LargePersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)」(LargePersonGroup - 作成)、「[LargePersonGroup - Update](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acfc83a7b9412a4d53f3f)」(LargePersonGroup - 更新)、「[LargePersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40)」(LargePersonGroup の人物 - 作成)、「[LargePersonGroup Person - Update](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ade043a7b9412a4d53f41)」(LargePersonGroup の人物 - 更新)、「[PersonGroup - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)」(PersonGroup - 作成)、「[PersonGroup - Update](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524a)」(PersonGroup - 更新)、「[PersonGroup Person - Create](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c)」(PersonGroup の人物 - 作成)、「[PersonGroup Person - Update](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395242)」(PersonGroup の人物 - 更新) の各ガイドを参照してください。
 
 ## <a name="v"></a>V
 
 #### <a name="verification"></a>確認
 
-この API は、2 つの顔が同じであるかどうかを検証します。 両方の顔は、その要求内で顔 ID として表されます。 検証された結果には、ブール値フィールド ([isIdentical](#Is-Identical)) が含まれており、true の場合は同じであることを示し、数値フィールド ([confidence](#Confidence)) は信頼度レベルを示します。
+この API は、2 つの顔が同じであるかどうかを検証します。 両方の顔は、その要求内で顔 ID として表されます。 検証された結果には、true の場合は同じであることを示すブール値フィールド (isIdentical) と、信頼のレベルを示す数値フィールド ([confidence](#Confidence)) が含まれています。
 
 詳しくは、ガイド「[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)」(顔 - 検証) をご覧ください。
 
 ## <a name="w"></a>W
 
-## <a name="x"></a>○
+## <a name="x"></a>X
 
 ## <a name="y"></a>Y
 

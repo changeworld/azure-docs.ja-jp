@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 0269a8ea460667d44b6173e4504a9ccb5695d722
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 12/04/2018
+ms.openlocfilehash: ff7e15579bfb0edfe9229238c6a4d5672700d0ef
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52863535"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567011"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Elastic Database ジョブの概要
 
@@ -261,18 +261,18 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
 * 名前:実行ポリシーの識別子。
 * ジョブのタイムアウト:Elastic Database ジョブによってジョブが取り消されるまでの合計時間。
 * 初期再試行間隔:最初の再試行する前に待機する間隔。
-* 最大再試行間隔: 使用する再試行間隔の上限。
-* 再試行間隔のバックオフ係数: 次回の再試行間隔の計算に使用される係数。  (初期再試行間隔) * Math.pow((間隔のバックオフ係数), (再試行回数) - 2) という式が使用されます。
-* 最大試行回数: 1 つのジョブ内で実行する最大再試行回数。
+* 最大再試行間隔:使用する再試行間隔の上限。
+* 再試行間隔のバックオフ係数:次回の再試行間隔の計算に使用される係数。  (初期再試行間隔) * Math.pow((間隔のバックオフ係数), (再試行回数) - 2) という式が使用されます。
+* 最大試行回数:1 つのジョブ内で実行する最大再試行回数。
 
 既定の実行ポリシーでは、次の値を使用します。
 
 * 名前:既定の実行ポリシー
 * ジョブのタイムアウト:1 週間
 * 初期再試行間隔:100 ミリ秒
-* 最大再試行間隔: 30 分
-* 再試行間隔係数: 2
-* 最大試行回数: 2,147,483,647
+* 最大再試行間隔:30 分
+* 再試行間隔係数:2
+* 最大試行回数:2,147,483,647
 
 必要な実行ポリシーを作成します。
 

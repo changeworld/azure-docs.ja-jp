@@ -5,15 +5,15 @@ services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 01/11/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 5dde36bb8710190627a8780ed740957e62a57da0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d3d4bbb0b9007ef61c96f980b9f3c3ee19dd11b5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994583"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539124"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -91,10 +91,10 @@ Microsoft ピアリング パスを使用して、Microsoft クラウド サー�
 * [ARIN](https://www.arin.net/)
 * [APNIC](https://www.apnic.net/)
 * [AFRINIC](https://www.afrinic.net/)
-* [LACNIC](http://www.lacnic.net/)
+* [LACNIC](https://www.lacnic.net/)
 * [RIPENCC](https://www.ripe.net/)
-* [RADB](http://www.radb.net/)
-* [ALTDB](http://altdb.net/)
+* [RADB](https://www.radb.net/)
+* [ALTDB](https://altdb.net/)
 
 上記のレジストリでプレフィックスと AS 番号が自分に割り当てられていない場合は、プレフィックスと ASN を手動で検証するためにサポート ケースを開く必要があります。 サポートを受けるには、リソースの使用が許可されていることを証明するドキュメント (たとえば、承認状) が必要になります。
 
@@ -215,7 +215,7 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 | Azure Global Services* | 12076:5050 |
 | その他の Office 365 Online サービス | 12076:5100 |
 
-***Azure Global Services には Azure DevOps が含まれる**
+*現在のところ、Azure Global Services には、Azure DevOps のみが含まれています。
 
 
 > [!NOTE]

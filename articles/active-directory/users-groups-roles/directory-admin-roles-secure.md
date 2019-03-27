@@ -1,28 +1,29 @@
 ---
-title: Azure AD での管理アクセスのセキュリティ保護に関するベスト プラクティス | Microsoft Docs
+title: 管理アクセスをセキュリティで保護するためのベスト プラクティス - Azure Active Directory | Microsoft Docs
 description: 組織の管理アクセスと管理者アカウントがセキュリティで保護されるようにします。 システム設計者および Azure AD、Azure、Microsoft Online Services を構成する IT 担当者向けです。
 services: active-directory
 keywords: ''
 author: curtand
 manager: mtillman
 ms.author: curtand
-ms.date: 06/25/2018
+ms.date: 01/31/2019
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.custom: it-pro
-ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: da53fa7d20c66b09e06c70222f29f060fa5803c8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.reviewer: martincoetzer; MarkMorow
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d2d58ea2a7b25648dbecfefb882f71137096bff7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387082"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170004"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
-現代の組織内のほとんどまたはすべてのビジネス資産のセキュリティは、IT システムを管理する特権アカウントの整合性に依存します。 多くの場合、サイバー攻撃者を含む悪意のあるアクターは、管理者アカウントやその他の特権アクセスの要素をターゲットとして、資格情報盗用攻撃を使用して機密データやシステムにすばやくアクセスしようとします。 クラウド サービスの場合、防止と対応は、クラウド サービス プロバイダーと顧客の共同責任です。 エンドポイントとクラウドに対する最新の脅威について詳しくは、[Microsoft セキュリティ インテリジェンス レポート](https://www.microsoft.com/security/sir/default.aspx)のページをご覧ください。 この記事は、現在のプランとここで説明しているガイダンス間のギャップを埋めるためのロードマップの作成に役立ちます。
+現代の組織内のほとんどまたはすべてのビジネス資産のセキュリティは、IT システムを管理する特権アカウントの整合性に依存します。 多くの場合、サイバー攻撃者を含む悪意のあるアクターは、管理者アカウントやその他の特権アクセスの要素をターゲットとして、資格情報盗用攻撃を使用して機密データやシステムにすばやくアクセスしようとします。 クラウド サービスの場合、防止と対応は、クラウド サービス プロバイダーと顧客の共同責任です。 エンドポイントとクラウドに対する最新の脅威について詳しくは、[Microsoft セキュリティ インテリジェンス レポート](https://www.microsoft.com/security/operations/security-intelligence-report)のページをご覧ください。 この記事は、現在のプランとここで説明しているガイダンス間のギャップを埋めるためのロードマップの作成に役立ちます。
 
 > [!NOTE] 
 > Microsoft は、最高レベルの信頼、透過性、標準への準拠、規制コンプライアンスに努めています。 Microsoft のグローバルのインシデント対応チームがクラウド サービスへの攻撃の影響をどのように軽減するか、また Microsoft のビジネス製品とクラウド サービスにセキュリティがどのように組み込まれているかについて詳しくは、「[Microsoft Trust Center - セキュリティ](https://www.microsoft.com/trustcenter/security)」をご覧ください。Microsoft コンプライアンス ターゲットについては、「[Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/trustcenter/compliance)」をご覧ください。

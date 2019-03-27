@@ -28,14 +28,14 @@ ms.locfileid: "54077557"
 
 |  | 登録手順 | duration | 詳細 |  
 |:--- |:--- |:--- |:--- |  
-| 1 | Microoft Partner Network に登録する | 15 分 | [Microsoft Partner Network に登録する](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
+| 1 | Microsoft Partner Network に登録する | 15 分 | [Microsoft Partner Network に登録する](https://docs.microsoft.com/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
 | 2 | Microsoft アカウントを作成する <ul>(Azure Marketplace トランザクションのオファーでは必須、それ以外では推奨)</ul> | 15 分 | [Microsoft ID を作成する](https://docs.microsoft.com/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
 | 3 | Marketplace 登録フォームを送信する | 15 分 | [Marketplace 申請フォームを送信する](https://docs.microsoft.com/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
 | 4 |  Cloud パートナー ポータルにサインインする | 1 ～ 3 日 | [Cloud パートナー ポータルにサインインする](https://docs.microsoft.com/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
 | 5 | Microsoft デベロッパー センター (デベロッパー センター) に登録する (Azure Marketplace トランザクション オファーの場合) | 5 ～ 10 日 | [デベロッパー センターに登録する](https://docs.microsoft.com/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
 
 
-## <a name="1-register-in-microsoft-partner-network"></a>1.Microoft Partner Network に登録する  
+## <a name="1-register-in-microsoft-partner-network"></a>1.Microsoft Partner Network に登録する  
 | 15 分 |  
 Microsoft のクラウド マーケットプレースへの参加には、Microsoft Partner Network (MPN) のメンバーシップが必要です。このメンバーシップで、主な利点、プログラム、パートナー パフォーマンスの追跡機能も利用できるようになります。 所属する組織がまだメンバーになっていない場合は、Microsoft Partner Network (MPN) に参加して正式な Microsoft パートナーになり、マーケットプレースに公開するための追加の利点とサポートを受けてください。 
 

@@ -4,19 +4,19 @@ titleSuffix: QnA Maker - Azure Cognitive Services
 description: QnA Maker ポータルを使用して、おしゃべり機能を備えるナレッジ ベースを作成します。 これにより、アプリが魅力的になります。 上位の事前設定済みのおしゃべりのセットをボットのおしゃべりの開始点として KB に追加すると、最初から作成するよりもコストと時間を節約することができます。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/11/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 4a4f3d44454e7851f74bbeb072a9d4dcd600a6ef
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4ba744c3d8cc3a785c04bbbb1b476a857859e244
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338126"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876867"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-portal"></a>クイック スタート:QnA Maker ポータルを使用してナレッジ ベースを作成する
 

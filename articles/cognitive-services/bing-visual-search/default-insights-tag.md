@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 画像に関して Bing Visual Search が返す既定の分析情報の詳細について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: cf0b53d13e65b0815c0501a70570788f7be599b1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 4805b36c48476727938840672a9cdf82506f1d13
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883400"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862872"
 ---
 # <a name="default-insights-tag"></a>既定の分析情報タグ
 
@@ -432,4 +432,4 @@ DocumentLevelSuggestions 分析情報は、画像のコンテンツに基づい�
 
 視覚化された分析情報の Bing での表示例を確認します ([Bing 分析情報の使用例](bing-insights-usage.md)に関するページを参照)。
 
-実際に要求を送信してみるには、クイック スタートを参照してください。[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。
+実際に要求を送信してみるには、クイック スタートを参照してください:[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)。

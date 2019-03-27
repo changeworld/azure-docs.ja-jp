@@ -9,16 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: ee247dcadd7ba8574bbdae1e25b0e39ca1ebc2da
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 10/22/2018
+ms.openlocfilehash: 3f23f62554ce7f4b90b4116fdd6085027e71650d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246230"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770171"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Azure ExpressRoute を使用して Azure Stack を Azure に接続する
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Skytap の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Skytap の統合 | Microsoft Docs
 description: Azure Active Directory と Skytap の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d6cb7ab2-da1a-4015-8e6f-c0c47bb6210f
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 754697682470ac3c1f982e6cb1fc5f6043f3b92c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec6d34ec82d5239af653e69532703a931f9cb12a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438132"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182750"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skytap"></a>チュートリアル: Azure Active Directory と Skytap の統合
+# <a name="tutorial-azure-active-directory-integration-with-skytap"></a>チュートリアル:Azure Active Directory と Skytap の統合
 
 このチュートリアルでは、Skytap と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -118,7 +119,7 @@ Skytap で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[サインオン URL]** ボックスに、`https://sso.connect.pingidentity.com/sso/sp/initsso?saasid=<saasid>&idpid=<idpid>` のパターンを使用して URL を入力します。
      
-    d. **[リレー状態]** ボックスに、`https://pingone.com/1.0/<custom ID>` のパターンで URL を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[リレー状態]** ボックスに、`https://pingone.com/1.0/<custom ID>` のパターンで URL を入力します。
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、サインオン URL、リレー状態でこれらの値を更新します。 これらの値を取得するには、[Skytap クライアント サポート チーム](mailto:support@skytap.com)に連絡してください。 
@@ -163,11 +164,11 @@ Skytap で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-skytap-test-user"></a>Skytap テスト ユーザーの作成
 
-このセクションでは、Skytap で Britta Simon というユーザーを作成します。 [Skytap サポート チーム](mailto:support@skytap.com)と連携して、Skytap プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
+このセクションでは、Skytap で Britta Simon というユーザーを作成します。  [Skytap サポート チーム](mailto:support@skytap.com)と協力して、Skytap プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -204,7 +205,7 @@ Skytap で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Skytap] タイルをクリックすると、Skytap アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

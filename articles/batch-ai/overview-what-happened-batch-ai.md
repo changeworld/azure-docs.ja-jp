@@ -1,18 +1,18 @@
 ---
 title: Azure Batch AI の現状 | Microsoft Docs
 description: Azure Batch AI と Azure Machine Learning service のコンピューティング オプションの現状について説明します。
-services: batch-ai
-author: garyericson
 ms.service: batch-ai
+services: batch-ai
 ms.topic: overview
-ms.date: 12/14/2018
-ms.author: garye
-ms.openlocfilehash: 6803a47ae77c072eff05df65e37156c90aabf3e6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.author: jmartens
+author: j-martens
+ms.date: 2/28/2019
+ms.openlocfilehash: edd6a7e5f385d766d51631d77f5889233af2469a
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436877"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194504"
 ---
 # <a name="whats-happening-to-azure-batch-ai"></a>Azure Batch AI の現状
 
@@ -22,31 +22,115 @@ ms.locfileid: "53436877"
 
 ## <a name="support-timeline"></a>サポートのタイムライン
 
-| 日付 | Batch AI サービスのサポートの詳細 |
-| ---- |-----------------|
-| 2018&nbsp;年 12 月&nbsp;14 日| 以前と同じように、既存の Azure Batch AI サブスクリプションを引き続き使用できます。 ただし、**新規サブスクリプション**は登録できなくなります。また、このサービスに新しい投資は行われなくなります。|
-| 2019&nbsp;年 3 月&nbsp;31 日 | この日付を過ぎると、既存の Batch AI サブスクリプションは機能しなくなります。 |
+今回は、以前と同じように既存の Azure Batch AI サブスクリプションを使用できます。 ただし、**新しいサブスクリプション**は作成できず、新しい投資は行われていません。
+
+2019 年 3 月 31 日以降、既存の Batch AI サブスクリプションは機能しなくなります。&nbsp;&nbsp;
+
+## <a name="compare-to-azure-machine-learning"></a>Azure Machine Learning との比較
+機械学習モデルのトレーニング、デプロイ、自動化、管理を行うためのクラウド サービスであり、これらの操作のすべてをクラウドによって提供される幅広い規模で行うことができます。 [Azure Machine Learning service の概要についてはこちら](../machine-learning/service/overview-what-is-azure-ml.md)をご覧ください。
+ 
+
+一般的なモデル開発ライフサイクルは、データの準備、トレーニングと実験、およびデプロイ フェーズで構成されます。 このエンド ツー エンドのサイクルは、Machine Learning パイプラインを使用して調整できます。
+
+![フロー図](./media/overview-what-happened-batch-ai/lifecycle.png)
+
+
+[サービスの動作方法とその主要な概念の詳細についてはこちら](../machine-learning/service/concept-azure-machine-learning-architecture.md)をご覧ください。 モデル トレーニング ワークフローの概念の多くは、Batch AI の既存の概念に似ています。 
+
+具体的には、次の対応をご覧ください。
+ 
+|Batch AI サービス|  Azure Machine Learning サービス|
+|:--:|:---:|
+|ワークスペース|ワークスペース|
+|クラスター|   `AmlCompute` 型のコンピューティング|
+|ファイル サーバー|データストア|
+|実験|実験|
+|[ジョブ]|実行 (入れ子の実行も可能)|
+ 
+同じ表をさらに視覚化した別のビューを次に示します。
+ 
+### <a name="batch-ai-hierarchy"></a>Batch AI の階層
+![フロー図](./media/overview-what-happened-batch-ai/batchai-heirarchy.png) 
+ 
+### <a name="azure-machine-learning-service-hierarchy"></a>Azure Machine Learning service の階層
+![フロー図](./media/overview-what-happened-batch-ai/azure-machine-learning-service-heirarchy.png) 
+
+## <a name="platform-capabilities"></a>プラットフォームの機能
+Azure Machine Learning service には、エンド ツー エンドのトレーニングから、Azure リソースを管理する必要なく AI 開発に使用できるデプロイ スタックまで、優れた新機能のセットが含まれます。 次の表では、2 つのサービスのトレーニング機能のサポートを比較します。
+
+|機能|Batch AI サービス|Azure Machine Learning サービス|
+|-------|:-------:|:-------:|
+|VM サイズの選択 |CPU/GPU    |CPU/GPU。 推論用に FPGA もサポートされいます|
+|AI 対応のクラスター (ドライバー、Docker など)|  はい |はい|
+|ノードの準備| はい|    いいえ |
+|OS ファミリの選択   |部分的    |いいえ |
+|専用 VM と LowPriority VM  |はい    |はい|
+|自動スケーリング   |はい    |はい (既定)|
+|自動スケーリングの待機時間  |いいえ  |はい|
+|SSH    |はい|   はい|
+|クラスター レベルのマウント |はい (ファイル共有、BBLOB、NFS、カスタム)   |はい (データストアのマウントまたはダウンロード)|
+|分散トレーニング|  はい |はい|
+|ジョブ実行モード|    VM またはコンテナー|    コンテナー|
+|カスタム コンテナー イメージ|    はい |はい|
+|任意のツールキット    |はい    |はい (Python スクリプトを実行)|
+|JobPreparation|    はい |まだ、いいえ|
+|ジョブ レベルのマウント |はい (ファイル共有、BBLOB、NFS、カスタム)   |はい (ファイル共有、BBLOB)|
+|ジョブ監視     |GetJob 経由|    実行履歴 を使用 (より詳細な情報、さらにメトリックをプッシュするカスタム ランタイム)|
+|ジョブ ログとファイル/モデルの取得 |   ListFiles API および Storage API 経由  |Artifact サービス経由|
+ |Tensorboard のサポート   |いいえ |    はい|
+|VM ファミリ レベルのクォータ |はい    |はい (以前の容量を引き継ぎ)|
+ 
+前の表に加えて、Azure Machine Learning service には従来は BatchAI でサポートされていなかった機能があります。
+
+|機能|Batch AI サービス|Azure Machine Learning サービス|
+|-------|:-------:|:-------:|
+|環境の準備    |いいえ  |はい (Conda の準備と ACR へのアップロード)|
+|ハイパーパラメーターの調整  |いいえ |    はい|
+|モデル管理   |いいえ  |はい|
+|運用化/デプロイ| いいえ   |AKS と ACI 経由|
+|データの準備   |いいえ  |はい|
+|コンピューティング先    |Azure VM  |ローカル、BatchAI (AmlCompute として)、DataBricks、HDInsight|
+|自動化された機械学習 |いいえ |    はい|
+|パイプライン  |いいえ  |はい|
+|バッチ スコアリング  |はい    |はい|
+|ポータル/CLI のサポート|    はい |はい|
+
+
+## <a name="programming-interfaces"></a>プログラミング インターフェイス
+
+次の表では、各サービスで使用できるさまざまなプログラミング インターフェイスを示します。
+    
+|機能|BatchAI サービス|Azure Machine Learning サービス|
+|-------|:-------:|:-------:|
+|SDK    |Java、C#、Python、Nodejs   |Python (一般的なフレームワークに対する実行構成ベースと推定ベースの両方)|
+|CLI    |はい    |まだ、いいえ|
+|Azure ポータル   |はい    |はい (ジョブ送信を除く)|
+|REST API   |はい    |はい、ただしマイクロサービス間に分散|
+
+
+プレビューの BatchAI から GA の Azure Machine Learning service にアップグレードすると、Estimator やデータストアなどの使いやすい概念によるより優れたエクスペリエンスが提供されます。 また、GA レベルの Azure サービスの SLA とカスタマー サポートが保証されます。
+
+Azure Machine Learning service では、機械学習の自動化、ハイパーパラメーターの調整、ML パイプラインなどの新しい機能も提供され、ほとんどの大規模な AI ワークロードで役に立ちます。 別のサービスに切り替えずにトレーニング済みモデルをデプロイする機能は、データの準備 (Data Prep SDK を使用) から、運用化とモデルの監視までの、完全なデータ サイエンス ループを作成するのに役立ちます。
 
 <a name="migrate"></a>
-## <a name="how-do-i-migrate"></a>移行する方法
+## <a name="migrate"></a>移行
 
-アプリケーションの中断を回避し、最新の機能を利用するには、2019 年 3 月 31 日より前に次の手順を実行します。
+移行方法と、使用するコードが Azure Machine Learning service のコードにどのようにマッピングされるかについては、[Azure Machine Learning service への移行](how-to-migrate.md)に関する記事を参照してください。
 
-1. Azure Machine Learning service のワークスペースを作成し、次を開始します。
-    + [Python ベースのクイック スタート](../machine-learning/service/quickstart-create-workspace-with-python.md)
-    + [Azure portal ベースのクイック スタート](../machine-learning/service/quickstart-get-started.md)
+## <a name="get-support"></a>サポートを受ける
 
-1. モデルのトレーニング用に [Azure Machine Learning コンピューティング](../machine-learning/service/how-to-set-up-training-targets.md#amlcompute)を設定します。
+Batch AI は 3 月 31 日に廃止が予定されており、サポートを通して例外を上げることによりホワイトリストに登録されている場合を除き、サービスに対して新しいサブスクリプションを登録することは既にできなくなっています。  Azure Machine Learning service への移行に関して質問やフィードバックがある場合は、[Azure Batch AI Training Preview](mailto:AzureBatchAITrainingPreview@service.microsoft.com) でお問い合わせください。
 
-1. Azure Machine Learning コンピューティングを使用するようにスクリプトを更新します。
+Azure Machine Learning service は一般提供のサービスです。 これは、コミットされた SLA があり、さまざまなサポート プランから選択できることを意味します。
 
-## <a name="support"></a>サポート
+基になっているコンピューティングの料金が変更されただけなので、Batch AI サービスと Azure Machine Learning service のどちらでも、Azure インフラストラクチャを使用する料金は変わらないはずです。 詳しくは、[料金計算ツール](https://azure.microsoft.com/pricing/details/machine-learning-service/)に関するページをご覧ください。
 
-より包括的な [Azure Machine Learning service](https://aka.ms/aml-docs) に移行する既存のお客様向けにサポートが提供されています。
+Azure portal で 2 つのサービスを利用できるリージョンについては、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=batch-ai,machine-learning-service&regions=all)をご覧ください。
 
-サポートされている機能が Batch AI サービスに存在し、Azure Machine Learning service がお客様のニーズを満たしていない場合は、サポート チームに対して Batch AI サポート リクエストを開き、お客様のサブスクリプションをホワイトリストに登録して、サービスの終了まで Batch AI を使用できるように依頼してください。
 
 ## <a name="next-steps"></a>次の手順
+
++ [移行方法](how-to-migrate.md)と、使用するコードが Azure Machine Learning service のコードにどのようにマッピングされるかについて学習します。
 
 + 「[Azure Machine Learning サービスの概要](../machine-learning/service/overview-what-is-azure-ml.md)」を読みます。
 

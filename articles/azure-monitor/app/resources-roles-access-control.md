@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 023f0e560900aa582be1f28e553358adb0c87b1e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 36b49002a5e947f2803e00974f242e49eb26d45b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118474"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309252"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
 
@@ -113,6 +113,32 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 ## <a name="related-content"></a>関連コンテンツ
 
 * [Azure の役割基準のアクセス制御](../../role-based-access-control/role-assignments-portal.md)
+
+## <a name="powershell-query-to-determine-role-membership"></a>ロール メンバーシップを特定する PowerShell クエリ
+
+特定のロールを通知や電子メール アラートとリンクできるため、特定のロールに属すユーザーの一覧の生成に役立ちます。 このような一覧の生成に役立つように、ニーズに応じて調整できる次のサンプル クエリを用意しました。
+
+### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>管理者ロール + 共同作成者ロールについてサブスクリプション全体にクエリを実行する
+
+```powershell
+(Get-AzureRmRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
+
+### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>所有者と共同作成者について特定の Application Insights リソースのコンテキスト内でクエリを実行する
+
+```powershell
+$resourceGroup = “RGNAME”
+$resourceName = “AppInsightsName”
+$resourceType = “microsoft.insights/components”
+(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
+
+### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>所有者と共同作成者について特定の Application Insights リソースのコンテキスト内でクエリを実行する
+
+```powershell
+$resourceGroup = “RGNAME”
+(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
 
 <!--Link references-->
 

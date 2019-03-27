@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と FirmPlay - Employee Advocacy for Recruiting の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と FirmPlay - Employee Advocacy for Recruiting の統合 | Microsoft Docs
 description: Azure Active Directory と FirmPlay - Employee Advocacy for Recruiting の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: a6799629-7546-43f8-a966-956db32864b1
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: abc29480e5f5531857cbf973d5386727c3d7f2ac
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e2eb3085c652be1b86b6343850c5cad3dcdc4c14
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114530"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168525"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>チュートリアル: Azure Active Directory と FirmPlay - Employee Advocacy for Recruiting の統合
+# <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>チュートリアル:Azure Active Directory と FirmPlay - Employee Advocacy for Recruiting の統合
 
 このチュートリアルでは、FirmPlay - Employee Advocacy for Recruiting と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -95,7 +96,7 @@ FirmPlay - Employee Advocacy for Recruiting で Azure AD のシングル サイ�
 
 1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[FirmPlay - Employee Advocacy for Recruiting のテスト ユーザーの作成](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)** - FirmPlay - Employee Advocacy for Recruiting で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+1. **[FirmPlay - Employee Advocacy for Recruiting のテスト ユーザーの作成](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)** - FirmPlay:Employee Advocacy for Recruiting で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
 1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
@@ -186,7 +187,7 @@ FirmPlay - Employee Advocacy for Recruiting で Azure AD のシングル サイ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。 
 
 
 

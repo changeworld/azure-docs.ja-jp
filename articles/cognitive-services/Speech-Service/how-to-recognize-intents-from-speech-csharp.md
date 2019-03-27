@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Speech SDK for C# を使用して音声から意図を認識する'
+title: チュートリアル:Speech SDK for C# を使用して音声から意図を認識する
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Speech SDK for C# を使用して音声から意図を認識する方法を学習します。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 64fa194225c7e9fa4c272ca8a9e95b44282ec1df
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 680c10d8402853f1ac2f519b8f07f81b9718ab9e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466479"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866999"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>チュートリアル: Speech SDK for C# を使用して音声から意図を認識する
+# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>チュートリアル:C# 用の Speech SDK を使用して音声の意図を認識する
 
 [!INCLUDE [Article selector](../../../includes/cognitive-services-speech-service-how-to-recognize-intents-from-speech-selector.md)]
 
@@ -77,7 +77,7 @@ Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS �
 
 ## <a name="create-a-speech-project-in-visual-studio"></a>Visual Studio での Speech プロジェクトの作成
 
-[!INCLUDE [Create project ](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
+[!INCLUDE [Create project](../../../includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 
 ## <a name="add-the-code"></a>コードの追加
 

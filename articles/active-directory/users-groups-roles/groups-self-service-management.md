@@ -1,5 +1,5 @@
 ---
-title: アプリケーション アクセス管理のセルフ サービス化に必要な Azure Active Directory の設定 | Microsoft Docs
+title: セルフサービス グループ管理の設定 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory にセキュリティ グループまたは Office 365 グループを作成して管理したり、セキュリティ グループまたは Office 365 グループのメンバーシップを要求したりすることができます。
 services: active-directory
 documentationcenter: ''
@@ -8,23 +8,25 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: get-started-article
-ms.date: 09/11/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
-ms.custom: it-pro
-ms.openlocfilehash: 7966705df2a352f2011d5f7611277e92d8e2d11a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.custom: it-pro;seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 059746d0e3a277016f5d6b98fe0d0f90c9ee2b96
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294239"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217991"
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>セルフサービス グループ管理に必要な Azure Active Directory の設定
+
 Azure Active Directory (Azure AD) では、管理下のユーザーが自分でセキュリティ グループまたは Office 365 グループを作成して管理することができます。 ユーザーはセキュリティ グループまたは Office 365 グループのメンバーシップを要求することもできます。要求されたメンバーシップは、グループの所有者が承認または拒否できます。 グループの業務上の趣旨を理解している人物に日常的なメンバーシップ管理を委任することができます。 セルフサービスによるグループ管理機能を使用できるのはセキュリティ グループと Office 365 グループだけであり、メールを有効にしたセキュリティ グループまたは配布リストでは使用できません。
 
-セルフサービス型のグループ管理には現在、グループ管理の委任とセルフサービス化という基本的な 2 つの使い方が考えられます。
+セルフサービス グループ管理は、次の 2 つのシナリオに対応します。 
 
 * **グループ管理の委任** 管理者が、社内で利用している SaaS アプリケーションへのアクセスを管理しているとします。 それらのアクセス権を管理する負担が大きくなってきたことから、この管理者はビジネス オーナーに依頼して新しいグループを作成してもらいます。 管理者はアプリケーションへのアクセス権を新しいグループに割り当て、既にアプリケーションにアクセスしているすべてのユーザーをそのグループに追加します。 これ以降はビジネス オーナーがユーザーをさらに追加できます。追加されたユーザーはアプリケーションへと自動的にプロビジョニングされます。 ビジネス オーナーは、管理者によるユーザーのアクセス管理が行われるまで待つ必要がありません。 管理者が同じ権限を別のビジネス グループのマネージャーに付与した場合、その人物も自分のユーザーのアクセス管理ができるようになります。 ビジネス オーナーもマネージャーも、互いのユーザーを表示または管理することはできません。 管理者は依然として、そのアプリケーションへのアクセス権を持ったすべてのユーザーを表示でき、必要に応じてアクセス権をブロックすることができます。
 * **グループ管理のセルフサービス化** たとえば、2 人のユーザーが別々に SharePoint Online サイトを設定しているとします。 この 2 人のユーザーは、自分のサイトへのアクセス権を互いのチームに付与しようとしています。 これを実現するには、Azure AD に 1 つのグループを作成し、SharePoint Online で両者がそのグループを選択して、それぞれのサイトへのアクセス権を付与します。 アクセス権を必要とする人がいれば、その人物がアクセス パネルからアクセス権を要求します。承認が下りればその人物は自動的に、両方の SharePoint Online サイトにアクセスできるようになります。 後日、2 人のうち一方が、サイトにアクセスしているすべてのユーザーに、特定の SaaS アプリケーションへのアクセス権も付与することに決めたとします。 SaaS アプリケーションの管理者は、アプリケーションによる SharePoint Online サイトへのアクセス権を追加することができます。 それ以後は、要求が承認されると、2 つの SharePoint Online サイトへのアクセス権に加え、この SaaS アプリケーションへのアクセス権も付与されるようになります。

@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) アプリケーションでパターン テンプレートを追加して予測精度を改善する方法を説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: ae0fdb17680f415a1dacce1738fa53fcda943788
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 9d3352017723f5beac318d461a537820b6593bef
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135000"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881674"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>パターンを追加して予測精度を改善する方法
 LUIS アプリでエンドポイント発話を受信したら、パターンの[概念](luis-concept-patterns.md)を使用して、単語の順序や選択にパターンが現れる発話の予測精度を改善します。 パターンでは[エンティティ](luis-concept-entity-types.md)とそのロールを使用して、特定のパターン構文によってデータが抽出されます。 

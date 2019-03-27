@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: ea548b55bc216b815b5f49f1e0405f1a90d05d08
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 02/07/2019
+ms.openlocfilehash: 4e4de6d487aaad8a0d036928fe59b47f25157bf6
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275620"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963847"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 
@@ -34,6 +34,9 @@ SaaS 開発者は、複数のデータベースで構成される大規模なデ
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
+
+> [!IMPORTANT]
+> エラスティック プールでは、データベース単位の請求はありません。 課金は、使用量やプールがアクティブであったのが 1 時間に満たないということに関係なく、プールが存在していた時間の最上位の eDTU または仮想コアを使用して 1 時間単位で行われます。
 
 エラスティック プールを使用することで、開発者は、複数のデータベースで共有されるプールのリソースを購入でき、個々のデータベースの使用期間が予測しづらい場合にも対応できます。 [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)または [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のいずれかに基づいて、プールのリソースを構成できます。 プールのリソース要件は、そのデータベースの使用量の合計によって決まります。 プールで使用可能なリソースの量は、開発者の予算に応じて決められます。 開発者は、単純にプールにデータベースを追加し、データベースに対する最小および最大のリソース (選択したリソース モデルに応じて、最小および最大の DTU、または最小および最大の仮想コアのいずれか) を設定してから、予算に基づいてプールのリソースを設定します。 開発者はプールを使用することで、リーン スタートアップの段階から成熟企業の段階に至るまで、サービスをシームレスに拡大し続けることができます。
 

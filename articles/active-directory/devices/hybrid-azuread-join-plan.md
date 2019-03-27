@@ -4,24 +4,25 @@ description: ハイブリッド Azure Active Directory 参加済みデバイス�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
-ms.component: devices
+ms.subservice: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: bddd183c517c611373afd1df64f22bfcd6a0cea8
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 17b7f7fa4889742989a61f8cc076224d46f8eac2
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102280"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234104"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -111,7 +112,7 @@ Windows デスクトップ オペレーティング システムを実行する�
 
 ハイブリッド Azure AD 参加は、オンプレミスのドメインに参加しているデバイスを Azure AD に自動的に登録するプロセスです。 場合によっては、すべてのデバイスを自動的に登録したくないことがあります。 このような場合は、「[デバイスのハイブリッド Azure AD Join を制御する方法](hybrid-azuread-join-control.md)」を参照してください。
 
-Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices)である場合、Hybrid Azure AD 参加を有効にする前に、その状態の削除を検討する必要があります。 デバイスが Hybrid Azure AD 参加と Azure AD 登録済みの両方の状態になることは、サポートされていません。 Windows 10 1809 リリース以降では、この二重状態を回避するために次の変更が行われています。 
+Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azure AD 登録済み](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices)である場合、Hybrid Azure AD 参加を有効にする前に、その状態の削除を検討することを強くお勧めします。 Windows 10 1809 リリース以降では、この二重状態を回避するために次の変更が行われています。 
  - デバイスが Hybrid Azure AD 参加済みになった後、既存の Azure AD 登録済み状態は自動的に削除されます。 
  - レジストリ キー HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001 を追加することで、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます
 
@@ -145,20 +146,20 @@ Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azur
 - [マネージド ドメイン用のハイブリッド Azure Active Directory Join の構成](hybrid-azuread-join-managed-domains.md)
 
 
- Azure AD Connect の必要なバージョンをインストールすることができない場合は、[デバイス登録を手動で構成する方法](../device-management-hybrid-azuread-joined-devices-setup.md)に関するページを参照してください。 
+ Azure AD Connect の必要なバージョンをインストールすることができない場合は、[デバイス登録を手動で構成する方法](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual)に関するページを参照してください。 
 
 
-## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Hybrid Azure AD 参加における代替ログイン ID のサポート
+## <a name="on-premises-ad-upn-support-in-hybrid-azure-ad-join"></a>Hybrid Azure AD 参加でのオンプレミスの AD UPN のサポート
 
-Windows 10 の Hybrid Azure AD 参加では、代替ログイン ID、[認証方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、ドメインの種類、および Windows 10 のバージョンに基づいて、[代替ログイン ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) の限定的なサポートが提供されます。 環境内に存在できる代替ログイン ID は 2 種類あります。
+ときには、オンプレミスの AD UPN が Azure AD UPN と異なる場合があります。 このような場合、Windows 10 の Hybrid Azure AD 参加では、[認証方法](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)、ドメインの種類、および Windows 10 のバージョンに基づいて、オンプレミスの AD UPN のサポートが提供されます。 環境内に存在できるオンプレミスの AD UPN は 2 種類あります。
 
- - ルーティング可能な代替ログイン ID:ルーティング可能な代替ログイン ID には、ドメイン レジストラーに登録されている有効な確認済みドメインがあります。 たとえば、contoso.com がプライマリ ドメインの場合、contoso.org および contoso.co.uk は、Contoso 社によって所有され、[Azure AD で確認](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)されている有効なドメインです
+ - ルーティング可能な UPN:ルーティング可能な UPN には、ドメイン レジストラーに登録されている有効な確認済みドメインがあります。 たとえば、contoso.com が Azure AD 内のプライマリ ドメインの場合、contoso.org は、Contoso 社によって所有され、[Azure AD で確認](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)されているオンプレミスの AD 内のプライマリ ドメインです。
  
- - ルーティング不可能な代替ログイン ID:ルーティング不可能な代替ログイン ID には、確認済みドメインはありません。 組織のプライベート ネットワーク内でのみ適用されます。 たとえば、contoso.com がプライマリ ドメインの場合、contoso.local はインターネットで確認済みのドメインではありませんが、Contoso 社のネットワーク内で使用されます。
+ - ルーティング不可能な UPN:ルーティング不可能な UPN には、確認済みドメインはありません。 組織のプライベート ネットワーク内でのみ適用されます。 たとえば、contoso.com が Azure AD 内のプライマリ ドメインの場合、contoso.local はオンプレミスの AD 内のプライマリ ドメインですが、インターネットで確認可能なドメインではなく、Contoso 社のネットワーク内でのみ使用されます。
  
-次の表は、Windows 10 の Hybrid Azure AD 参加における、これらの代替ログイン ID のいずれかのサポートに関する詳細を示しています
+次の表は、Windows 10 の Hybrid Azure AD 参加における、これらのオンプレミスの AD UPN のサポートに関する詳細を示しています
 
-|代替ログイン ID の種類|ドメインの種類|Windows 10 のバージョン|説明|
+|オンプレミスの AD UPN の種類|ドメインの種類|Windows 10 のバージョン|説明|
 |-----|-----|-----|-----|
 |ルーティング可能|フェデレーション |1703 リリースから|一般公開|
 |ルーティング可能|管理者常駐型|1709 リリースから|現在はプライベート プレビューの段階です。 Azure AD SSPR はサポートされていません |

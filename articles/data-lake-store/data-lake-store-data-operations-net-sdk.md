@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 57f4485e70bf91713539b3398fc93d6810c3c28e
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 0a6cfc5ca9a0b788075f4472649a6e1bcdf87637
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163237"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119498"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ ms.locfileid: "53163237"
       * `Microsoft.Azure.DataLake.Store` - このチュートリアルでは、v1.0.0 を使用します。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - このチュートリアルでは、v2.3.1 を使用します。
     
-    **NuGet パッケージ マネージャー**を閉じます。
+      **NuGet パッケージ マネージャー**を閉じます。
 
 6. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
 

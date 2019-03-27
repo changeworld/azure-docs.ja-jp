@@ -31,7 +31,7 @@ ms.locfileid: "53276878"
 | app-name | サービスの Service Fabric アプリケーションの名前を取得します。 |
 | code-package-list | Service Fabric ノードにデプロイされているコード パッケージの一覧を取得します。 |
 | create | 指定された Service Fabric サービスを作成します。 |
-| 削除 | 既存の Service Fabric サービスを削除します。 |
+| delete | 既存の Service Fabric サービスを削除します。 |
 | deployed-type | Service Fabric クラスター内のノードにデプロイされたアプリケーションの指定されたサービスの種類に関する情報を取得します。 |
 | deployed-type-list | Service Fabric クラスター内のノードにデプロイされたアプリケーションからサービスの種類に関する情報を含む一覧を取得します。 |
 | description | 既存の Service Fabric サービスの説明を取得します。 |

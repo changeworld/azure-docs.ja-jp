@@ -7,20 +7,23 @@ author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
-ms.service: monitoring
+ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 75ed69d749e23f39c03afb09f70a18cc1aed600b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078577"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102586"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Azure Automation の Runbook を使用して Log Analytics でデータを収集する
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 エージェントの[データ ソース](../../azure-monitor/platform/agent-data-sources.md)や [Azure から収集されたデータ](../../azure-monitor/platform/collect-azure-metrics-logs.md)など、Log Analytics ではさまざまなソースから大量のデータを収集できます。 しかし、これらの標準的なソースではアクセスできないデータの収集が必要なシナリオがあります。 このような場合は、[HTTP データ コレクター API](../../azure-monitor/platform/data-collector-api.md) を使って、REST API クライアントから Log Analytics にデータを書き込むことができます。 このデータ収集を実行する一般的な方法は、Azure Automation で Runbook を使うものです。
 
 この記事では、Log Analytics にデータを書き込むために Azure Automation で Runbook を作成してスケジュールを設定する手順について説明します。
@@ -92,7 +95,7 @@ ms.locfileid: "54078577"
     # Code copied from the runbook AzureAutomationTutorial.
     $connectionName = "AzureRunAsConnection"
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -109,7 +112,7 @@ ms.locfileid: "54078577"
     $logType = "AutomationJob"
     
     # Get the jobs from the past hour.
-    $jobs = Get-AzureRmAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
+    $jobs = Get-AzAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
     
     if ($jobs -ne $null) {
         # Convert the job data to json
@@ -128,13 +131,13 @@ Azure Automation には、発行する前に [Runbook をテストする](../../
 
 ![Runbook をテストする](media/runbook-datacollect/test-runbook.png)
 
-6. **[保存]** をクリックして Runbook を保存します。
+1. **[保存]** をクリックして Runbook を保存します。
 1. **[テスト ウィンドウ]** をクリックして、テスト環境で Runbook を開きます。
-3. Runbook にはパラメーターがあるので、それらの値を入力するように求められます。 ジョブ情報を収集するリソース グループの名前と Automation アカウントを入力します。
-4. **[開始]** をクリックして Runbook を開始します。
-3. Runbook は **[キューに登録済み]** の状態で開始した後、**[実行中]** に移行します。
-3. Runbook は、Json 形式で収集されたジョブの詳細出力を表示します。 ジョブが表示されない場合は、過去 1 時間の間に Automation アカウントでジョブが作成されていない可能性があります。 Automation アカウントで Runbook を開始してみた後、テストをもう一度実行します。
-4. Log Analytics への post コマンドでエラーが何も表示されないことを出力で確認します。 次のようなメッセージが表示されます。
+1. Runbook にはパラメーターがあるので、それらの値を入力するように求められます。 ジョブ情報を収集するリソース グループの名前と Automation アカウントを入力します。
+1. **[開始]** をクリックして Runbook を開始します。
+1. Runbook は **[キューに登録済み]** の状態で開始した後、**[実行中]** に移行します。
+1. Runbook は、Json 形式で収集されたジョブの詳細出力を表示します。 ジョブが表示されない場合は、過去 1 時間の間に Automation アカウントでジョブが作成されていない可能性があります。 Automation アカウントで Runbook を開始してみた後、テストをもう一度実行します。
+1. Log Analytics への post コマンドでエラーが何も表示されないことを出力で確認します。 次のようなメッセージが表示されます。
 
     ![Post の出力](media/runbook-datacollect/post-output.png)
 
@@ -186,9 +189,9 @@ Runbook が正しく動作していることを確認した後、運用環境で
 
 スケジュールを作成した後、このスケジュールが Runbook を開始するたびに使われるパラメーター値を設定する必要があります。
 
-6. **[パラメータと実行設定を構成する]** をクリックします。
-7. **[ResourceGroupName]** と **[AutomationAccountName]** に値を入力します。
-8. Click **OK**.
+1. **[パラメータと実行設定を構成する]** をクリックします。
+1. **[ResourceGroupName]** と **[AutomationAccountName]** に値を入力します。
+1. Click **OK**.
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9.スケジュールに従って Runbook が開始することを確認する
 Runbook が開始されるたびに、[ジョブが作成](../../automation/automation-runbook-execution.md)されて、出力がログに記録されます。 実際、これらは Runbook が収集している同じジョブです。 スケジュールの開始時刻が経過した後、Runbook のジョブをチェックして、Runbook が意図したように開始していることを確認できます。

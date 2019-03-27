@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 5c7e6a4da9880677fbc4aad76b820ba596058bb6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1aca53c876b6cc982c141d74cdf727f9c966adfe
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025251"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233865"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から SQL データベースにデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から SQL データベースにデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
@@ -36,7 +36,7 @@ ms.locfileid: "54025251"
 > * パイプラインとアクティビティの実行を監視します。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+* **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 * **Azure ストレージ アカウント**。 Blob Storage を "*ソース*" データ ストアとして使用します。 ストレージ アカウントがない場合の作成手順については、[Azure のストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)に関するページを参照してください。
 * **Azure SQL データベース**。 データベースを "*シンク*" データ ストアとして使用します。 SQL データベースがない場合の作成手順については、「[SQL Database の作成](../sql-database/sql-database-get-started-portal.md)」を参照してください。
 
@@ -82,30 +82,30 @@ ms.locfileid: "54025251"
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 この手順では、データ ファクトリを作成するほか、Data Factory UI を起動してそのデータ ファクトリにパイプラインを作成します。 
 
-1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を開きます。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. 左側のメニューで、**[新規]** > **[データ + 分析]** > **[Data Factory]** を選択します。 
+1. **Microsoft Edge** または **Google Chrome** を開きます。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+2. 左側のメニューで、**[リソースの作成]** > **[分析]** > **[Data Factory]** の順に選択します。 
   
    ![新しいデータ ファクトリの作成](./media/tutorial-copy-data-portal/new-azure-data-factory-menu.png)
-1. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
+3. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
      ![新しいデータ ファクトリ](./media/tutorial-copy-data-portal/new-azure-data-factory.png)
  
    Azure データ ファクトリの名前は *グローバルに一意*にする必要があります。 名前フィールドで次のエラー メッセージが発生した場合は、データ ファクトリの名前を変更してください (yournameADFTutorialDataFactory など)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
   
    ![エラー メッセージ](./media/tutorial-copy-data-portal/name-not-available-error.png)
-1. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
-1. **[リソース グループ]** で、次の手順のいずれかを行います。
+4. データ ファクトリを作成する Azure **サブスクリプション**を選択します。 
+5. **[リソース グループ]** で、次の手順のいずれかを行います。
      
     a. **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。
 
     b. **[新規作成]** を選択し、リソース グループの名前を入力します。 
          
     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。 
-1. **[バージョン]** で、**[V2]** を選択します。
-1. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
-1. **[ダッシュボードにピン留めする]** をオンにします。 
-1. **作成**を選択します。 
-1. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 
+6. **[バージョン]** で、**[V2]** を選択します。
+7. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
+8. **[ダッシュボードにピン留めする]** をオンにします。 
+9. **作成**を選択します。 
+10. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-copy-data-portal/deploying-data-factory.png)
 1. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
@@ -127,7 +127,7 @@ ms.locfileid: "54025251"
    ![パイプラインの作成](./media/tutorial-copy-data-portal/create-pipeline-tile.png)
 1. パイプラインの **[全般]** タブで、パイプラインの**名前**として「**CopyPipeline**」と入力します。
 
-1. **[アクティビティ]** ツール ボックスで **[Data Flow]\(データ フロー\)** カテゴリを展開し、ツール ボックスからパイプライン デザイナー画面に **[コピー]** アクティビティをドラッグ アンド ドロップします。 **[名前]** に「**CopyFromBlobToSql**」と指定します。
+1. **[アクティビティ]** ツール ボックスで **[Move and Transform]\(移動と変換\)** カテゴリを展開し、ツール ボックスからパイプライン デザイナー画面に **[データのコピー]** アクティビティをドラッグ アンド ドロップします。 **[名前]** に「**CopyFromBlobToSql**」と指定します。
 
     ![コピー アクティビティ](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
 
@@ -193,7 +193,7 @@ ms.locfileid: "54025251"
 
     c. **[データベース名]** で、使用する SQL データベースを選択します。
 
-    d. **[ユーザー名]** に、ユーザーの名前を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザー名]** に、ユーザーの名前を入力します。
 
     e. **[パスワード]** に、ユーザーのパスワードを入力します。
 
@@ -269,7 +269,7 @@ Data Factory または独自の Azure Repos Git リポジトリにアーティ�
 
     c. **[End On]\(終了日\)** のドロップダウン リストを選択します。
 
-    d. **現在の日付**のオプションを選択します。 既定では、終了日は翌日に設定されています。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **現在の日付**のオプションを選択します。 既定では、終了日は翌日に設定されています。
 
     e. **分**の部分を現在の日時の数分後に変更します。 トリガーは、変更を発行した後にのみアクティブ化されます。 これをわずか数分後に設定し、それまでに発行しなかった場合、トリガー実行は表示されません。
 

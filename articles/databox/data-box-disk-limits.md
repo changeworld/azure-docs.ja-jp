@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 412727d79c194172f2855d014d1eaf18f44167f6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 6a7f7943e9d567a953c0e21697dfe4fdedd6e8f0
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159351"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744791"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk の制限
 
@@ -66,8 +66,8 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 
 | Azure オブジェクトの種類 | 既定の制限                                             |
 |-------------------|-----------------------------------------------------------|
-| ブロック BLOB        | 8 TB 以下                                                 |
-| ページ BLOB         | 1 TB (テラバイト) <br> (ページ BLOB 形式でアップロードするファイルには 512 バイトをアライン (整数倍) する必要があります。そうでないと、アップロードが失敗します。 <br> VHD と VHDX には 512 バイトがアラインされます。) |
+| ブロック BLOB        | ~ 4.75 TiB                                                 |
+| ページ BLOB         | 8 TiB <br> (ページ BLOB 形式でアップロードするファイルには 512 バイトをアライン (整数倍) する必要があります。そうでないと、アップロードが失敗します。 <br> VHD と VHDX には 512 バイトがアラインされます。) |
 
 
 ## <a name="azure-block-blob-and-page-blob-naming-conventions"></a>Azure ブロック BLOB とページ BLOB の名前付け規則

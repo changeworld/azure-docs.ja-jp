@@ -1,21 +1,23 @@
 ---
-title: Microsoft Authenticator アプリを使用したパスワードなしの Azure AD サインイン (パブリック プレビュー)
+title: Microsoft Authenticator アプリを使用したパスワードなしの Azure AD サインイン (プレビュー)
 description: パスワードを使用せずに、Microsoft Authenticator アプリを使用して Azure AD にサインインする (パブリック プレビュー)
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: librown
-ms.openlocfilehash: b09bb65cdb571c9df95d1922f4132abe5b77907c
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.custom: seo-update-azuread-jan
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 247e772873cf467b371b4aea45f8ceb43bce16e3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963949"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180524"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしの電話によるサインイン (パブリック プレビュー)
 
@@ -37,16 +39,21 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ### <a name="steps-to-enable"></a>有効にする手順
 
-Azure Active Directory V2 PowerShell モジュールのパブリック プレビューのリリースが最新バージョンであることを確認します。 パブリック プレビューをアンインストールおよび再インストールして最新バージョンにするには、次のコマンドを実行します。
+1. Azure Active Directory V2 PowerShell モジュールのパブリック プレビューのリリースを確実に最新バージョンにします。 パブリック プレビューをアンインストールおよび再インストールして最新バージョンにするには、次のコマンドを実行します。
+    ```powershell
+    Uninstall-Module -Name AzureADPreview
+    Install-Module -Name AzureADPreview
+    ```
 
-1. `Uninstall-Module -Name AzureADPreview`
-2. `Install-Module -Name AzureADPreview`
+2. Azure AD テナントで認証を受け、Azure AD V2 PowerShell モジュールを使用します。 使用されるアカウントは、セキュリティ管理者またはグローバル管理者のいずれかでなければなりません。
+    ```powershell
+    Connect-AzureAD
+    ```
 
-パスワードを入力せずに電話でプレビューにサインインできるようにするには、次の PowerShell コマンドを使用します。
-
-1. `Connect-AzureAD`
-   1. 認証ダイアログで、テナントのアカウントでサインインします。 このアカウントは、セキュリティ管理者またはグローバル管理者のいずれかでなければなりません。
-1. `New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn`
+3. Authenticator サインイン ポリシーの作成:
+    ```powershell
+    New-AzureADPolicy -Type AuthenticatorAppSignInPolicy -Definition '{"AuthenticatorAppSignInPolicy":{"Enabled":true}}' -isOrganizationDefault $true -DisplayName AuthenticatorAppSignIn
+    ```
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>エンド ユーザーは電話によるサインインをどのように有効にするのですか。
 

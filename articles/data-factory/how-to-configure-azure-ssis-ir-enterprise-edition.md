@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: c475a9c820e577a321491b87d806ed08ddff8693
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d2b06d044f68972ef72dd9b53401980e84ef779f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013879"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440932"
 ---
 # <a name="provision-enterprise-edition-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime の Enterprise Edition をプロビジョニングする
 
@@ -44,19 +44,21 @@ Azure SSIS 統合ランタイムの Enterprise Edition では、次の高度な�
 
 ## <a name="instructions"></a>Instructions
 
-1.  [Azure PowerShell (バージョン 5.4 以降)](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) をダウンロードしてインストールします。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-2.  PowerShell を使用して Azure-SSIS IR をプロビジョニングまたは再構成するときは、Azure-SSIS IR を開始する前に、**Edition** パラメーターの値として **Enterprise** を指定して `Set-AzureRmDataFactoryV2IntegrationRuntime` を実行します。 スクリプトのサンプルを次に示します。
+1.  [Azure PowerShell](/powershell/azure/install-az-ps)をダウンロードしてインストールします。
+
+2.  PowerShell を使用して Azure-SSIS IR をプロビジョニングまたは再構成するときは、Azure-SSIS IR を開始する前に、**Edition** パラメーターの値として **Enterprise** を指定して `Set-AzDataFactoryV2IntegrationRuntime` を実行します。 スクリプトのサンプルを次に示します。
 
     ```powershell
     $MyAzureSsisIrEdition = "Enterprise"
 
-    Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName
+    Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName
                                                -Name $MyAzureSsisIrName
                                                -ResourceGroupName $MyResourceGroupName
                                                -Edition $MyAzureSsisIrEdition
 
-    Start-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName
+    Start-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName
                                                  -Name $MyAzureSsisIrName
                                                  -ResourceGroupName $MyResourceGroupName
     ```

@@ -10,16 +10,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a4aecd276df8e5453f0c35d6290bbe8a8d156ffa
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b8f793ee22796497b96a1acbd998397dbe2ac40d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669365"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162137"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>PIM で Azure リソース ロールの設定を構成する
 

@@ -7,12 +7,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 4b37b6cd35526d6a76625dd03d1325f1688e698e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4532962b6fd9f40fad625ab000116e5a617682e5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044469"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258779"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Qlik Sense を Azure Cosmos DB に接続してデータを可視化する
 
@@ -42,9 +42,9 @@ Qlik Sense は、さまざまなソースからのデータを 1 つのビュー
 
 * [ビデオ ゲーム データ](https://www.kaggle.com/gregorut/videogamesales)をダウンロードします。このサンプル データは CSV 形式です。 あとでこのデータを Cosmos DB アカウントに保存して Qlik Sense で視覚化します。
 
-* クイック スタート記事の「[アカウントの作成](create-sql-api-dotnet.md#create-a-database-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。
+* クイック スタート記事の「[アカウントの作成](create-sql-api-dotnet.md#create-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。
 
-* [データベースとコレクションを作成](create-sql-api-dotnet.md#add-a-collection)します。コレクションのスループット値を 1000 RU/秒に設定できます。 
+* [データベースとコレクションを作成](create-sql-api-dotnet.md#create-collection-database)します。コレクションのスループット値を 1000 RU/秒に設定できます。 
 
 * サンプル ビデオ ゲームの売上データを Cosmos DB アカウントに読み込みます。 データをインポートするには Azure Cosmos DB データ移行ツールを使用できます。[順次](import-data.md#SQLSeqTarget)または[一括](import-data.md#SQLBulkTarget)のデータ インポートが可能です。 データが Cosmos DB アカウントにインポートされるまでに 3 分から 5 分かかります。
 

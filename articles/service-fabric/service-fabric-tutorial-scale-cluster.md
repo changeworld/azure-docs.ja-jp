@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 010/01/2018
+ms.date: 10/01/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 54433aa9e618bdde7badec3be8a786f943f88198
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 975b4558c0501423211553c1c2e330bced2c74a6
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236915"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674148"
 ---
-# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターをスケーリングする
+# <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 
 このチュートリアルはシリーズ第 2 部で、既存のクラスターをスケールアウトおよびスケールインする方法を示します。 このチュートリアルを終了すると、クラスターをスケールする方法や残ったリソースをクリーンアップする方法について知ることができます。
 
@@ -35,7 +35,7 @@ ms.locfileid: "51236915"
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
-> * テンプレートを使用して、セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成する
+> * テンプレートを使用して Azure にセキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成する
 > * クラスターをスケールインまたはスケールアウトする
 > * [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
 > * [クラスターの削除](service-fabric-tutorial-delete-cluster.md)
@@ -44,11 +44,10 @@ ms.locfileid: "51236915"
 
 このチュートリアルを開始する前に
 
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
-* [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
-* セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成します。
-* Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
-* Linux クラスターをデプロイする場合は、Java 開発環境を [Linux](service-fabric-get-started-linux.md) または [MacOS](service-fabric-get-started-mac.md) にセットアップします。  [Service Fabric CLI](service-fabric-cli.md) をインストールします。
+* Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
+* [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
+* セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を Azure に作成します
+* Windows 開発環境を設定します。 [Visual Studio 2017](https://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

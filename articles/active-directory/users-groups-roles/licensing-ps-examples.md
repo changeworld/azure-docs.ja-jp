@@ -1,24 +1,25 @@
 ---
-title: Azure AD のグループベースのライセンスの PowerShell と Microsoft Graph の例 | Microsoft Docs
+title: グループベースのライセンス用の PowerShell と Graph の例 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory のグループベースのライセンスが使用される PowerShell のシナリオ
 services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 10/29/2018
+ms.date: 01/31/2019
 ms.author: curtand
-ms.openlocfilehash: 9e0e1a70926127389101c79121ffab03e411f56a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.reviewer: sumitp
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b98f7a11e37cd75a21ecc8c2b9dda1ecd634f39b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265146"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191930"
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD のグループベースのライセンスの PowerShell の例
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: da8fd886afa6028959247caa0c6e007df20fdd1b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 66f850225faba8d45eaa07493a0817c9ed0ed52b
+ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077744"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55075586"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -32,11 +32,17 @@ Microsoft パートナーは、顧客に代わって、プロビジョニング�
 - Azure Resource Manager テンプレート:パートナーのソフトウェアを実行する Azure サービスをデプロイするための Resource Manager テンプレートまたはソリューション テンプレート。 パートナーは、Azure ソリューションのインフラストラクチャと構成を定義する Resource Manager テンプレートを作成できます。 Resource Manager テンプレートにより、貴社とその顧客は、貴社のソリューションをそのライフサイクルを通じていつでもデプロイすることができます。 リソースが一貫した状態でデプロイされることへの確信を得ることが可能です。 
 - Azure Resource Manager API:パートナーは Resource Manager API を直接呼び出して、Resource Manager テンプレートをデプロイするか、API 呼び出しを生成して Azure サービスを直接プロビジョニングすることができます。 
 
-Azure Marketplace に発行されるすべての[ソリューション テンプレート](./cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish.md)には、顧客の利用状況属性が必要です。 
+Azure Marketplace に発行される [Azure アプリケーション オファー](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)には、顧客の利用状況属性が必要です。
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager テンプレートを使用する
 
-多くのパートナー ソリューションは、Resource Manager テンプレートを使用して顧客のサブスクリプションに対してデプロイされます。 Azure Marketplace や GitHub で提供されている Resource Manager テンプレートがある場合、またはクイック スタートとして利用できる Resource Manager テンプレートがある場合は、簡単な手順で、その既存のテンプレートに変更を加えて新しい追跡方法を有効にすることができます。 詳しくは、「[初めての Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)」をご覧ください。
+多くのパートナー ソリューションは、Resource Manager テンプレートを使用して顧客のサブスクリプションに対してデプロイされます。 Azure Marketplace や GitHub で提供されている Resource Manager テンプレートがある場合、またはクイック スタートとして利用できる Resource Manager テンプレートがある場合は、簡単な手順で、その既存のテンプレートに変更を加えて新しい追跡方法を有効にすることができます。
+
+ソリューション テンプレートの作成と公開に関して詳しくは、以下をご覧ください。
+
+* [初めての Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+* [Azure アプリケーション オファー](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)。
+* ビデオ:[Azure Marketplace 向けのソリューション テンプレートとマネージド アプリケーションの作成](https://channel9.msdn.com/Events/Build/2018/BRK3603)。
 
 
 ## <a name="add-a-guid-to-your-template"></a>テンプレートに GUID を追加する

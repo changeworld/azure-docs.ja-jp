@@ -4,23 +4,23 @@ description: Service Bus の診断ログを設定する方法について説明�
 keywords: ''
 documentationcenter: .net
 services: service-bus-messaging
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 09/05/2018
-ms.author: spelluru
-ms.openlocfilehash: 7f50d6f6417764a20125f85398dd9cbf93f3a4a1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 6ac36fed8f9d3220e6caf6eba94a62d1ec8372c7
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542112"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54846661"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus の診断ログ
 

@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 4df96d0c3d1ec9cb64f2394fb97d46178906d916
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b1fc52ac46a6cdb73b9210833e437765398781ef
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434819"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819129"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
 HDInsight Enterprise セキュリティ パッケージ (ESP) でのユーザーとロール、および ESP クラスターを管理する方法について説明します。
@@ -215,7 +215,7 @@ HDInsight Enterprise セキュリティ パッケージには次のロールが�
 6. **[Add User (ユーザーの追加)]** または **[Add Group (グループの追加)]** をクリックし、Hive ビューを使用するユーザーまたはグループを指定します。
 
 ## <a name="configure-users-for-the-roles"></a>ロールのユーザーの構成
- ロールとそのアクセス許可の一覧を表示するには、「[ESP を使用する HDInsight クラスターのロール](#roles-of-domain---joined-hdinsight-clusters)」を参照してください。
+ ロールとそのアクセス許可の一覧を表示するには、「ESP を使用する HDInsight クラスターのロール」を参照してください。
 
 1. Ambari Management UI を開きます。  「[Ambari Management UI を開く](#open-the-ambari-management-ui)」を参照してください。
 2. 左側のメニューで **[Roles (ロール)]** をクリックします。

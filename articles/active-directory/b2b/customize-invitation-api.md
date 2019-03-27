@@ -3,19 +3,20 @@ title: Azure Active Directory B2B コラボレーションの API とカスタ�
 description: Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: reference
 ms.date: 04/11/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: a2a869c04034f8ca38e80e1bf10518d22e38bcbc
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a475c9032d2c4062b506c1e6ebcadd1901c946b6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286998"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177429"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B コラボレーションの API とカスタマイズ
 

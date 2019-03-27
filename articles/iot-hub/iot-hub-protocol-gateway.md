@@ -1,19 +1,19 @@
 ---
 title: Azure IoT プロトコル ゲートウェイ | Microsoft Docs
 description: Azure IoT プロトコル ゲートウェイを使用して IoT Hub の機能およびプロトコルのサポートを拡張し、IoT Hub ではネイティブでサポートされていないプロトコルを使用してデバイスとハブの接続を有効にする方法。
-author: fsautomata
-manager: ''
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: elioda
-ms.openlocfilehash: 2c90ee899d0002d41ca21ed4a4927470ee53b2e1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 91d61ffecc0e5345d02db88af73aee4586f7099e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635306"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009853"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>IoT Hub に対するその他のプロトコルのサポート
 Azure IoT Hub は MQTT、AMQP、および HTTPS プロトコルを介した通信をネイティブでサポートします。 場合によっては、デバイスまたはフィールド ゲートウェイでこれらの標準プロトコルをいずれも使用できず、プロトコルの適応が必要になることがあります。 このような場合は、カスタム ゲートウェイを使用できます。 カスタム ゲートウェイによって IoT Hub との間のトラフィックをブリッジすることにより、IoT Hub エンドポイントにプロトコルを適応できます。 IoT Hub に対するプロトコルの適用を可能にするには、 [Azure IoT プロトコル ゲートウェイ](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) をカスタム ゲートウェイとして使用します。

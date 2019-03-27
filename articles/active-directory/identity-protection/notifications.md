@@ -5,11 +5,11 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 65ca79b9-4da1-4d5b-bebd-eda776cc32c7
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,13 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 0a546acd05246e011fa66abea8a667d0b3513588
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c0368c57d25372f7f4a33130d70abd95ccfbd5f8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005900"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175355"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection の通知
 

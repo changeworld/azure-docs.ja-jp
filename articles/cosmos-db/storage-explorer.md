@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: d19aaa6e486732cb1453e3299c8e598e8fd2f507
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8700d0988927b221ace82a492e9902f1f36a562b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044622"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731372"
 ---
-# <a name="manage-azure-cosmos-db-resources-using-azure-storage-explorer"></a>Azure Storage Explorer を使用した Azure Cosmos DB リソースの管理
+# <a name="work-with-data-using-azure-storage-explorer"></a>Azure Storage Explorer を使ってデータを操作する
 
 Azure Cosmos DB を Azure Storage Explorer で使用することで、ストレージ BLOB やキューなどの他の Azure エンティティと一緒に Azure Cosmos DB エンティティの管理、データの操作、ストアド プロシージャとトリガーの更新を実行できます。 さまざまな Azure エンティティを、同じツールを使用して 1 か所で管理できるようになりました。 Azure Storage Explorer では現在、SQL、MongoDB、Graph、Table API に構成された Cosmos アカウントがサポートされます。
 
@@ -59,7 +59,7 @@ Azure Cosmos DB に接続する別の方法では、接続文字列を使用し�
 
     ![接続文字列で Cosmos DB に接続する](./media/storage-explorer/connect-to-db-by-connection-string.png)
 
-2. 現在は SQL API とテーブル API のみサポートします。 API を選択して **接続文字列**を貼り付け、**アカウント ラベル**を入力して **[次へ]** をクリックし、概要をチェックしたら、**[接続]** をクリックして Azure Cosmos DB アカウントに接続します。 接続文字列の取得については、「[接続文字列を取得する](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string)」を参照してください。
+2. 現在は SQL API とテーブル API のみサポートします。 API を選択して **接続文字列**を貼り付け、**アカウント ラベル**を入力して **[次へ]** をクリックし、概要をチェックしたら、**[接続]** をクリックして Azure Cosmos DB アカウントに接続します。 接続文字列の取得については、「[接続文字列を取得する](https://docs.microsoft.com/azure/cosmos-db/manage-account)」を参照してください。
 
     ![接続文字列](./media/storage-explorer/connection-string.png)
 
@@ -73,7 +73,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
     ![エミュレーターで Cosmos DB に接続する](./media/storage-explorer/emulator-entry.png)
 
-3. 現在は SQL API のみサポートします。 **接続文字列**を貼り付け、**アカウント ラベル**を入力して **[次へ]** をクリックし、概要をチェックしたら、**[接続]** をクリックして Azure Cosmos DB アカウントに接続します。 接続文字列の取得については、「[接続文字列を取得する](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string)」を参照してください。
+3. 現在は SQL API のみサポートします。 **接続文字列**を貼り付け、**アカウント ラベル**を入力して **[次へ]** をクリックし、概要をチェックしたら、**[接続]** をクリックして Azure Cosmos DB アカウントに接続します。 接続文字列の取得については、「[接続文字列を取得する](https://docs.microsoft.com/azure/cosmos-db/manage-account)」を参照してください。
 
     ![エミュレーターで Cosmos DB に接続するためのダイアログ](./media/storage-explorer/emulator-dialog.png)
 
@@ -266,7 +266,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
   - .extaccounts
 - SAS にアタッチされたストレージ リソースを削除する場合、次を削除します。
   - %AppData%/StorageExplorer フォルダー (Windows の場合)
-  - /Users/<your_name>/Library/Applicaiton SUpport/StorageExplorer (Mac の場合)
+  - /Users/<your_name>/Library/Application SUpport/StorageExplorer (Mac の場合)
   - ~/.config/StorageExplorer (Linux の場合)
   - これらのファイルを削除すると、**すべての資格情報を再入力する必要があります**
 

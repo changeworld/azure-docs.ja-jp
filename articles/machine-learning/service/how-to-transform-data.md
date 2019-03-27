@@ -4,7 +4,7 @@ titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning データ準備 SDK を利用したデータの変換と整理について説明します。 変換メソッドを使用して､列の追加や不要な行または列の除去､欠損値対処を行います｡
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: cforbe
 author: cforbe
@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: d32244cd49ebd42192b2388215f79a64cacb3caa
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4291f6083cfe07d689ef9377df57c3e9a41772fc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186142"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812210"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning データ準備 SDK を使ってデータを変換する
 
@@ -25,7 +25,7 @@ ms.locfileid: "53186142"
 
 現在は次のタスク用の関数があります。
 
-- [式による列の追加](#column)
+- 式による列の追加
 - [欠損値の補完](#impute-missing-values)
 - [例による列の派生](#derive-column-by-example)
 - [Filtering](#filtering)
@@ -43,7 +43,7 @@ dataflow = dprep.read_csv(path=r'data\crime0-10.csv')
 dataflow.head(3)
 ```
 
-||ID|事件番号|日付|ブロック|IUCR|プライマリ タイプ|説明|場所の説明|逮捕|国内|...|区|コミュニティ エリア|FBI コード|X 座標|Y 座標|年|更新日|Latitude|Longitude|場所|
+||ID|事件番号|Date|ブロック|IUCR|プライマリ タイプ|説明|場所の説明|逮捕|国内|...|区|コミュニティ エリア|FBI コード|X 座標|Y 座標|年|更新日|Latitude|Longitude|場所|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
 |0|10140490|HY329907|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 |12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
 |1|10139776|HY329265|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
@@ -60,7 +60,7 @@ case_category = dataflow.add_column(new_column_name='Case Category',
 case_category.head(3)
 ```
 
-||ID|事件番号|事件分類|日付|ブロック|IUCR|プライマリ タイプ|説明|場所の説明|逮捕|...|区|コミュニティ エリア|FBI コード|X 座標|Y 座標|年|更新日|Latitude|Longitude|場所|
+||ID|事件番号|事件分類|Date|ブロック|IUCR|プライマリ タイプ|説明|場所の説明|逮捕|...|区|コミュニティ エリア|FBI コード|X 座標|Y 座標|年|更新日|Latitude|Longitude|場所|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|------|
 |0|10140490|HY329907|HY|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 |12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
 |1|10139776|HY329265|HY|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
@@ -79,7 +79,7 @@ case_id = case_id.to_number('Case Id')
 case_id.head(3)
 ```
 
-||ID|事件番号|事件 ID|日付|ブロック|IUCR|プライマリ タイプ|説明|場所の説明|逮捕|...|区|コミュニティ エリア|FBI コード|X 座標|Y 座標|年|更新日|Latitude|Longitude|場所|
+||ID|事件番号|事件 ID|Date|ブロック|IUCR|プライマリ タイプ|説明|場所の説明|逮捕|...|区|コミュニティ エリア|FBI コード|X 座標|Y 座標|年|更新日|Latitude|Longitude|場所|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|------|
 |0|10140490|HY329907|329907.0|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 |12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
 |1|10139776|HY329265|329265.0|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|

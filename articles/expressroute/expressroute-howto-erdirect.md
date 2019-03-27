@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: be20f01511990ef8de6ce6e0e13ddfa99b004dcd
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 05eb75c77cef5b975d0122714bb0ec9fba1d09a3
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076219"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55463976"
 ---
 # <a name="how-to-configure-expressroute-direct-preview"></a>ExpressRoute Direct (プレビュー) を構成する方法
 
@@ -99,7 +99,7 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
   > 
  
   ```powershell 
-  $ERDirect = New-AzureRMExpressRoutePort -Name $Name -ResourceGroupName -$RGName -PeeringLocation $PeeringLocationName -BandwidthInGbps 100.0 -Encapsulation QinQ | Dot1Q -Location $AzureRegion
+  $ERDirect = New-AzureRMExpressRoutePort -Name $Name -ResourceGroupName $ResourceGroupName -PeeringLocation $PeeringLocationName -BandwidthInGbps 100.0 -Encapsulation QinQ | Dot1Q -Location $AzureRegion
   ```
 
   > [!NOTE]

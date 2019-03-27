@@ -16,12 +16,13 @@ ms.workload: infrastructure
 ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2716838b28bc6dc5155ab7fbb6e1b4966b63f4dc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.subservice: disks
+ms.openlocfilehash: e483df4e3392d64619cc074d21ee560ef3c5df5d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266112"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459199"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>チュートリアル - Azure CLI を使用した Azure ディスクの管理
 

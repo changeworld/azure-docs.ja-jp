@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 840c9f4115c13052c65e5975ed22aab7737ea2fe
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 5d725cdac93ebdb39437c0b9bcb619488fade0f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543912"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090663"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 
@@ -48,7 +48,7 @@ VNet を作成し、それにサブネットを割り当てたら、その VNet 
 6. **[ノード サイズ]**、**[ターゲットの専用ノード数]**、**[低優先度ノード]** など、残りの必須の設定ほか、オプションの設定も必要に応じて指定します。
 7. **[仮想ネットワーク]** で、使用する予定の仮想ネットワークとサブネットを選択します。
   
-  ![仮想ネットワークを含むプールを追加する](./media/batch-virtual-network/add-vnet-pool.png)
+   ![仮想ネットワークを含むプールを追加する](./media/batch-virtual-network/add-vnet-pool.png)
 
 ## <a name="user-defined-routes-for-forced-tunneling"></a>強制トンネリングのユーザー定義ルート
 

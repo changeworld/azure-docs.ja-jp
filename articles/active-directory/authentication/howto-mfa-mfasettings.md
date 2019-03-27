@@ -3,19 +3,20 @@ title: Azure Multi-Factor Authentication の構成
 description: この記事では、Azure Portal で Azure Multi-Factor Authentication 設定を構成する方法について説明します
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 7bd63dc991500f1d7f68169342b9612c1b303a07
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ee6c6559b5dd6c6a6e357ff2f258bad79d57205c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320660"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192644"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 

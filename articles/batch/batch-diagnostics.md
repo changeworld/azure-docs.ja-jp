@@ -3,7 +3,7 @@ title: メトリック、アラート、および診断ログ - Azure Batch | Mi
 description: プールやタスクなど Azure Batch アカウント リソースの診断ログ イベントを記録して分析します。
 services: batch
 documentationcenter: ''
-author: dlepow
+author: laurenhughes
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 12/05/2018
-ms.author: danlep
+ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: cd3e671a00f7f8b0a13ed95bfd43795a24244a66
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6fb8166893f0dada019ca633933833d17b95fee9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537105"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811462"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -37,7 +37,7 @@ ms.locfileid: "53537105"
 
 * 各 Batch アカウントで追加構成なしで既定で有効になります。
 * 1 分ごとに生成されます。
-* 自動的に保存されることはありませんが、30 日間のローリング履歴があります。 [診断ログ](#work-with-diagnostic-logs)の一部として、アクティビティ メトリックを保存できます。
+* 自動的に保存されることはありませんが、30 日間のローリング履歴があります。 診断ログの一部として、アクティビティ メトリックを保存できます。
 
 ### <a name="view-metrics"></a>メトリックを表示する
 

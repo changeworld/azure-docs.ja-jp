@@ -10,17 +10,20 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/08/2017
+ms.date: 01/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 752f28eed3a6be5f7f136999c66e405bf7785a42
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5c659ca2f40d47450227d16963499a6b27c9e313
+ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120973"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54817119"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Application Insights を使用したメトリックの探索
 [Application Insights][start] のメトリックとは、アプリケーションからのテレメトリとして送信される測定値とイベントの数を表します。 メトリックは、パフォーマンスの問題を検出し、アプリケーションの利用に関する傾向を把握するのに役立ちます。 さまざまな標準メトリックが用意されているほか、独自にカスタムのメトリックとイベントを作成することもできます。
+
+> [!NOTE]
+> この記事では、現在非推奨で、最終的に廃止されるクラシック メトリック エクスプローラー エクスペリエンスについて説明します。 [この記事](../platform/metrics-charts.md)で説明されている新しいエクスペリエンスを確認することをお勧めします。
 
 メトリックとイベントの数は、合計、平均、カウントなどの集計値のグラフに表示されます。
 

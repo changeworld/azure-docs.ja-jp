@@ -10,16 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/07/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5b20e170388aa6e9b73b7c5c26a286ec51b52209
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: d3db8ea8639f73f3522ddaa358195e7c9ef2f9a9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245839"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766004"
 ---
 # <a name="interactive-feature-verification-testing"></a>対話型機能検証テスト  
 
@@ -29,116 +30,87 @@ ms.locfileid: "54245839"
 
 この記事では、シンプルな手動シナリオについて説明します。 Azure Stack におけるディスクの交換がテストでチェックされます。 フレームワークによって、各ステップの診断ログが収集されます。 問題が見つかったら、それらをデバッグできます。 このフレームワークでは、他のツールやプロセスによって生成されたログの共有もできるほか、シナリオに関するフィードバックを送ることができます。
 
-## <a name="overview-of-a-test-pass"></a>テスト パスの概要
+> [!Important]  
+> この記事では、ディスク識別を実行する手順を参照します。 テスト成功ワークフローから収集された結果は、新しいソリューションの検証には使用できない可能性があるため、これは単なるデモンストレーションです。
 
-ディスク交換に関するテストは一般的なシナリオです。 この例では、テストに 7 つのステップが含まれています。
+## <a name="overview-of-interactive-testing"></a>対話型テストの概要
 
-1.  新しい**テスト パス** ワークフローを作成する。
-2.  **Disk Identification Test** を選択する。
-3.  テストを開始する。
-4.  対話型検証シナリオでのアクションを選択する。
-5.  シナリオの結果をチェックする。
-6.  テスト結果を Microsoft に送信する。
-7.  VaaS ポータルで状態をチェックする。
+ディスク交換に関するテストは一般的なシナリオです。 この例では、テストに 5 つのステップが含まれています。
+
+1. 新しい**テスト パス** ワークフローを作成する。
+2. **Disk Identification Test** を選択する。
+3. メッセージが表示されたら、手動の手順を完了する。
+4. シナリオの結果をチェックする。
+5. テスト結果を Microsoft に送信する。
 
 ## <a name="create-a-new-test-pass"></a>新しいテスト パスの作成
 
-1.  [Azure Stack 検証ポータル](https://www.azurestackvalidation.com)に移動して、サインインします。
+既存のテスト成功が利用できない場合は、[テストのスケジュール設定](azure-stack-vaas-schedule-test-pass.md)の指示に従ってください。
 
-2.  新しいソリューションを作成するか、既存のものを選択します。
+## <a name="schedule-the-test"></a>テストのスケジュール設定
 
-3.  **[テスト パス]** タイルで **[開始]** を選択します。
-
-    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image1.png)
-
-4.  **テスト パス** ワークフローの名前を入力します。
-
-5.  「[Azure Stack のサービスとしての検証のワークフロー共通パラメーター](azure-stack-vaas-parameters.md)」という記事の手順に従って、環境パラメーターと共通テスト パラメーターを入力します。
-
-6.  診断接続文字列は、[ワークフロー共通パラメーター](azure-stack-vaas-parameters.md)に関する記事の「[テスト パラメーター](azure-stack-vaas-parameters.md#test-parameters)」セクションで指定されている形式にする必要があります。
-
-7.  テストに必須のパラメーターを入力します。
-
-8.  対話型テストを実行するエージェントを選択します。
-
-> [!Note]  
-> ディスク識別の対話型機能検証テストに対して、ドメイン管理者ユーザーとパスワードを指定する必要があります。
-
-![Alt text](media/azure-stack-vaas-interactive-feature-verification/image2.png)
-
-## <a name="select-the-test"></a>テストの選択
-
-1.  **Disk Identification Test \<バージョン>** を選択します。
+1. **[Disk Identification Test]\(ディスク識別テスト\)** を選択します。
 
     > [!Note]  
     > テストのバージョン番号は、2 次テストの改良が行われると増加します。 Microsoft による別段の指示がない限り、常に最新バージョンを使用することが推奨されます。
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image4.png)
 
-2.  **[編集]** を選択して、ドメイン管理者ユーザーとパスワードを指定します。
+1. **[編集]** を選択して、ドメイン管理者ユーザー名とパスワードを指定します。
 
-3.  テストの起動先として適切なテスト実行エージェントまたは DVM を選択します。
+1. テストの起動先として適切なテスト実行エージェントまたは DVM を選択します。
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image5.png)
 
-4.  **[送信]** を選択してテストを開始します。
+1. **[送信]** を選択してテストを開始します。
 
-![Alt text](media/azure-stack-vaas-interactive-feature-verification/image6.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image6.png)
 
-## <a name="start-the-test"></a>テストの開始
+1. 前の手順で選択したエージェントから対話型テストの UI にアクセスします。
 
-Disk Identification Test のプロンプトが、VaaS エージェントが実行されるコンピューターに表示されます。 これは通常、Azure Stack インスタンス用の DVM またはジャンプボックスです。
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image8.png)
 
-![Alt text](media/azure-stack-vaas-interactive-feature-verification/image8.png)
-
-## <a name="choose-the-actions"></a>アクションの選択
-
-1.  **[ドキュメント]** と **[検証]** のリンク先に移動して、このシナリオの実施方法に関する Microsoft からの指示を確認します。
+1. **[ドキュメント]** と **[検証]** のリンク先に移動して、このシナリオの実施方法に関する Microsoft からの指示を確認します。
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image9.png)
 
-2.  **[次へ]** を選択します。
+1. **[次へ]** を選択します。
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image10.png)
 
-3.  手順に従って事前チェック スクリプトを実行します。
+1. 手順に従って事前チェック スクリプトを実行します。
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image11.png)
 
-4.  事前チェック スクリプトが正常に完了したら、**[情報]** タブの **[ドキュメント]** リンクと **[検証]** リンクのとおりに、手動シナリオ (ディスク交換) を実行します。
+1. 事前チェック スクリプトが正常に完了したら、**[情報]** タブの **[ドキュメント]** リンクと **[検証]** リンクのとおりに、手動シナリオ (ディスク交換) を実行します。
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image12.png)
 
-5.  手動シナリオを実施している際中は、ダイアログ ボックスを閉じないでください。
+    > [!Important]  
+    > 手動シナリオを実施している際中は、ダイアログ ボックスを閉じないでください。
 
-6.  手動シナリオを実施し終えたら、手順に従って事後チェック スクリプトを実行します。
+1. 手動シナリオを実施し終えたら、手順に従って事後チェック スクリプトを実行します。
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image13.png)
 
-7.  手動シナリオ (ディスク交換) が正常に完了した後、**[次へ]** を選択します。
+1. 手動シナリオ (ディスク交換) が正常に完了した後、**[次へ]** を選択します。
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image14.png)
 
-> [!Important]  
-> ウィンドウを閉じると、テストは完了する前に停止します。
+    > [!Important]  
+    > ウィンドウを閉じると、テストは完了する前に停止します。
 
-## <a name="check-the-status"></a>状態をチェックする
-
-1.  テストが完了したら、フィードバックを送るよう求められます。
+1. 実行したテストについてのフィードバックを送信します。 これらの質問は、Microsoft がシナリオの成功率とリリース品質を評価するのに役立てられます。
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image15.png)
 
-2.  これらの質問は、Microsoft がシナリオの成功率とリリース品質を評価するのに役立てられます。
-
-## <a name="send-the-test-result"></a>結果の送信
-
-1.  Microsoft に送信したいログ ファイルを添付します。
+1. Microsoft に送信したいログ ファイルを添付します。
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image16.png)
 
-2.  フィードバック送信の EULA に同意します。
+1. フィードバック送信の EULA に同意します。
 
-3.  **[送信]** を選択して、結果を Microsoft に送信します。
+1. **[送信]** を選択して、結果を Microsoft に送信します。
 
 ## <a name="next-steps"></a>次の手順
 

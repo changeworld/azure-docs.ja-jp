@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: REST API を使用してカスタム ビジョン モデルを作成、トレーニング、テスト、およびエクスポートします。
 services: cognitive-services
 author: blackmist
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/07/2018
 ms.author: larryfr
-ms.openlocfilehash: 5e5cf04bb631585c14d2ec7403bf0332f41dc626
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: e33eb58dd4228bb1093c239bae960f71c0f3788c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054211"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884985"
 ---
 # <a name="tutorial-use-the-custom-vision-rest-api"></a>チュートリアル:Custom Vision REST API を使用する
 

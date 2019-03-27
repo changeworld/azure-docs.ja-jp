@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 8ceae771f1a66f6d999dd0dc2b1f298d4aae8f86
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 845544a2062b43f0d9f883ddecbc2589b3357221
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997939"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -167,6 +167,7 @@ dependsOn | このプロパティを使用して、アクティビティの依�
     }
 }
 ```
+
 JSON での名前 | 説明 | 使用できる値 | 必須
 --------- | ----------- | -------------- | --------
 timeout | アクティビティの実行に関するタイムアウトを指定します。 | Timespan | いいえ。 既定のタイムアウトは 7 日間です。

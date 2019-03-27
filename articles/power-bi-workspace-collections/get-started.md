@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: c736a9b4962de26f43dc79773149e834c37cbe85
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 944f008d0243d974a5d439438a5a645b7f3ca248
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233407"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856792"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Microsoft Power BI ワークスペース コレクションの概要
 
@@ -37,7 +37,7 @@ ms.locfileid: "51233407"
 
 ここでは、Azure Portal を使用して **ワークスペース コレクション** を作成する手順について説明します。
 
-1. **Azure Portal** を開き、サインインします ([http://portal.azure.com](http://portal.azure.com))。
+1. **Azure Portal** を開き、サインインします ([https://portal.azure.com](https://portal.azure.com))。
 2. 上のパネルの **[+ 新規]** を選択します。
    
    ![Azure Portal の [+ 新規]](media/get-started/create-workspace-1.png)
@@ -105,7 +105,7 @@ Power BI REST API を呼び出すために必要な最も重要な情報の 1 �
 
 REST API を使用して Power BI ワークスペース コレクション内にデータセットを作成できます。 次に、そのデータセットにデータをプッシュできます。 これを使用すると、Power BI Desktop を使用せずにデータを処理できます。 詳細については、「[Post Datasets (データセットのポスト)](https://msdn.microsoft.com/library/azure/mt778875.aspx)」を参照してください。
 
-### <a name="reports"></a>レポート
+### <a name="reports"></a>Reports
 
 JavaScript API を使用して、アプリケーションで直接データセットからレポートを作成できます。 詳細については、「[Create a new report from a dataset in Power BI Embedded](create-report-from-dataset.md) (Power BI ワークスペース コレクションにおけるデータセットからの新しいレポートの作成)」を参照してください。
 
@@ -119,5 +119,5 @@ JavaScript API を使用して、アプリケーションで直接データセ�
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript による埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
+ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。
 

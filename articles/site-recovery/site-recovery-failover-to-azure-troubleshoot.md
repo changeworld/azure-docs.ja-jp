@@ -1,26 +1,22 @@
 ---
 title: Azure へのフェールオーバー障害のトラブルシューティング | Microsoft Docs
 description: この記事では、Azure へのフェールオーバー時の一般的なエラーをトラブルシューティングする方法を説明します。
-services: site-recovery
-documentationcenter: ''
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
+services: site-recovery
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/11/2018
+ms.date: 1/29/2019
 ms.author: mayg
-ms.openlocfilehash: 742e7891ec9c7151f23f1ad6eb57e728dd2a1ddd
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 62b69364f0b3d3e14d0b2d877604cecfcc346dce
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255093"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55207498"
 ---
-# <a name="troubleshoot-errors-when-failing-over-a-virtual-machine-to-azure"></a>仮想マシンから Azure へのフェールオーバー時のエラーをトラブルシューティングする
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM または物理マシンから Azure へのフェールオーバー時のエラーをトラブルシューティングする
 
 仮想マシンから Azure へフェールオーバーを実行中に、次のいずれかのエラーを受け取る可能性があります。 トラブルシューティングするには、各エラー条件に説明されている手順に従います。
 
@@ -48,7 +44,9 @@ Site Recovery は、フェールオーバーした従来の仮想マシンを Az
 
 Site Recovery は、フェールオーバーした仮想マシンを Azure に作成できませんでした。 これは、オンプレミスの仮想マシンでハイドレーションの内部アクティビティが失敗したために発生します。
 
-Azure でマシンを起動するには、Azure 環境で、いくつかのドライバーがブート開始状態であり、DHCP などのサービスが自動開始状態である必要があります。 そのため、ハイドレーション アクティビティは、フェールオーバーの時点で、**atapi、intelide、storflt、vmbus、および storvsc ドライバー**のスタートアップの種類をブート開始に変換します。 また、DHCP などのいくつかのサービスのスタートアップの種類も自動開始に変換します。 このアクティビティは、環境固有の問題が原因で失敗する可能性があります。 ドライバーのスタートアップの種類を手動で変更するには、次の手順に従ってください。
+Azure でマシンを起動するには、Azure 環境で、いくつかのドライバーがブート開始状態であり、DHCP などのサービスが自動開始状態である必要があります。 そのため、ハイドレーション アクティビティは、フェールオーバーの時点で、**atapi、intelide、storflt、vmbus、および storvsc ドライバー**のスタートアップの種類をブート開始に変換します。 また、DHCP などのいくつかのサービスのスタートアップの種類も自動開始に変換します。 このアクティビティは、環境固有の問題が原因で失敗する可能性があります。 
+
+**Windows Guest OS** 用のドライバーのスタートアップの種類を手動で変更するには、次の手順に従ってください。
 
 1. 次のように、no-hydration スクリプトを[ダウンロード](http://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1)して実行します。 このスクリプトは、VM にハイドレーションが必要かどうかを確認します。
 

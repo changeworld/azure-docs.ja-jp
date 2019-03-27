@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b6f968bef3708ca311bc5a41fe029ea9a10f62b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 8ac17c00f635c4c14c0e4752847aff941f81804a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015850"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111618"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>チュートリアル:コピー アクティビティがあるパイプラインを Visual Studio で作成する
 > [!div class="op_single_selector"]
@@ -47,6 +47,9 @@ ms.locfileid: "54015850"
 > このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換するパイプラインを作成する方法のチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 1. 「 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。       
 2. Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。
 3. コンピューターに以下がインストールされている必要があります。 
@@ -129,8 +132,8 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 2. **[新しい項目の追加]** ダイアログ ボックスで、**[Azure BLOB]** をクリックし、**[追加]** をクリックします。   
 3. JSON テキストを次のテキストで置き換え、 **AzureBlobLocation1.json** ファイルを保存します。 
 
-  ```json   
-  {
+   ```json   
+   {
     "name": "InputDataset",
     "properties": {
       "structure": [
@@ -158,8 +161,8 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
         "interval": 1
       }
     }
-  }
-  ``` 
+   }
+   ``` 
     次の表に、このスニペットで使用される JSON プロパティの説明を示します。
 
     | プロパティ | 説明 |
@@ -182,7 +185,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 2. **[新しい項目の追加]** ダイアログ ボックスで、**[Azure SQL]** を選択し、**[追加]** をクリックします。 
 3. JSON テキストを次の JSON テキストで置き換え、 **AzureSqlTableLocation1.json** ファイルを保存します。
 
-  ```json
+   ```json
     {
      "name": "OutputDataset",
      "properties": {
@@ -230,7 +233,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 2. **[新しい項目の追加]** ダイアログ ボックスで **[データ パイプラインのコピー]** を選択し、**[追加]** をクリックします。 
 3. JSON テキストを次の JSON テキストで置き換え、 **CopyActivity1.json** ファイルを保存します。
 
-  ```json   
+   ```json   
     {
      "name": "ADFTutorialPipeline",
      "properties": {
@@ -274,19 +277,19 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
      }
     }
     ```   
-    - activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。 Data Factory ソリューションでは、[データ変換アクティビティ](data-factory-data-transformation-activities.md)を使用することもできます。
-    - アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。 
-    - **typeProperties** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの完全な一覧については、[サポートされるデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 サポートされているデータ ストアをソースおよびシンクとして使用する方法については、表内のリンクをクリックしてください。  
+   - activities セクションに、**type** が **Copy** に設定されたアクティビティが 1 つだけあります。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。 Data Factory ソリューションでは、[データ変換アクティビティ](data-factory-data-transformation-activities.md)を使用することもできます。
+   - アクティビティの入力を **InputDataset** に設定し、出力を **OutputDataset** に設定します。 
+   - **typeProperties** セクションでは、ソースの種類として **BlobSource** が指定され、シンクの種類として **SqlSink** が指定されています。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの完全な一覧については、[サポートされるデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 サポートされているデータ ストアをソースおよびシンクとして使用する方法については、表内のリンクをクリックしてください。  
      
-    **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。 日付の部分のみを指定し、時刻の部分をスキップすることもできます。 たとえば、"2016-02-03" と "2016-02-03T00:00:00Z" は同じです。
+     **start** プロパティの値を現在の日付に置き換え、**end** プロパティの値を翌日の日付に置き換えます。 日付の部分のみを指定し、時刻の部分をスキップすることもできます。 たとえば、"2016-02-03" と "2016-02-03T00:00:00Z" は同じです。
      
-    start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 例: 2016-10-14T16:32:41Z。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。 
+     start と end の日時は、いずれも [ISO 形式](https://en.wikipedia.org/wiki/ISO_8601)である必要があります。 例: 2016-10-14T16:32:41Z。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。 
      
-    **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。
+     **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 パイプラインを無期限に実行する場合は、**9999-09-09** を **end** プロパティの値として指定します。
      
-    前の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
+     前の例では、各データ スライスが 1 時間ごとに生成されるため、データ スライスは 24 個になります。
 
-    パイプライン定義内の JSON プロパティの説明については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 コピー アクティビティ定義内の JSON プロパティの説明については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。 BlobSource でサポートされる JSON プロパティの説明については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md)に関する記事を参照してください。 SqlSink でサポートされる JSON プロパティの説明については、[Azure SQL Database コネクタ](data-factory-azure-sql-connector.md)に関する記事を参照してください。
+     パイプライン定義内の JSON プロパティの説明については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 コピー アクティビティ定義内の JSON プロパティの説明については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。 BlobSource でサポートされる JSON プロパティの説明については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md)に関する記事を参照してください。 SqlSink でサポートされる JSON プロパティの説明については、[Azure SQL Database コネクタ](data-factory-azure-sql-connector.md)に関する記事を参照してください。
 
 ## <a name="publishdeploy-data-factory-entities"></a>Data Factory エンティティの発行/デプロイ
 この手順では、先ほど作成した Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) を発行します。 また、これらのエンティティを保持するために、新しいデータ ファクトリの名前を指定して作成します。  
@@ -333,12 +336,12 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。 
 
     ```PowerShell    
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
     Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。 
     
     ```PowerShell
-    Get-AzureRmResourceProvider
+    Get-AzResourceProvider
     ```
   * Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
 * データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
@@ -441,7 +444,7 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
     }
     ```
 
-    この例で構成しているのは、Azure Storage のリンクされたサービスと Azure SQL のリンクされたサービスの connectionString プロパティです。 名前を指定するための構文が [JsonPath](http://goessner.net/articles/JsonPath/)であることに注目してください。   
+    この例で構成しているのは、Azure Storage のリンクされたサービスと Azure SQL のリンクされたサービスの connectionString プロパティです。 名前を指定するための構文が [JsonPath](https://goessner.net/articles/JsonPath/)であることに注目してください。   
 
     ここで、JSON のプロパティが、次のコードのように値の配列になっているとします。  
 

@@ -7,12 +7,12 @@ ms.author: andrela
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 11/14/2018
-ms.openlocfilehash: 9385ccf61f8cb8de0b3a459ac00c05b32d2630e4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 99039c4d6abb8a839886e9d623e92c9fb2c41787
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536884"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54353330"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Azure Database for MySQL とは - 
 Azure Database for MySQL は、Microsoft クラウドにおける、[MySQL Community Edition](https://www.mysql.com/products/community/) のデータベース エンジン バージョン 5.6 と 5.7 をベースとしたリレーショナル データベース サービスです。 Azure Database for MySQL には、次の特長があります。
@@ -47,7 +47,7 @@ Microsoft が管理するデータセンターのグローバル ネットワー
 ## <a name="secure-your-data"></a>データのセキュリティ保護
 Azure データベース サービスは、アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能を備えた Azure Database for MySQL によって、データ セキュリティを維持してきました。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/en-us/trustcenter/security)をご覧ください。
 
-Azure Database for MySQL サービスでは、保存されるデータにストレージ暗号化が使用されます。 バックアップを含むデータはディスク上で暗号化されます (ただし、クエリの実行中にエンジンによって作成された一時ファイルを除きます)。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
+Azure Database for MySQL サービスは、保存データにストレージ暗号化を使用し、FIPS 140-2 に準拠しています。 バックアップを含むデータはディスク上で暗号化されます (ただし、クエリの実行中にエンジンによって作成された一時ファイルを除きます)。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
 
 Azure Database for MySQL サービスは、既定で、ネットワーク上で転送されるデータに [SSL 接続セキュリティ](./concepts-ssl-connection-security.md)を要求するように構成されています。 データベース サーバーとクライアント アプリケーションの間に SSL 接続を適用すると、サーバーとアプリケーションの間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。 クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要求を無効にできます。
 

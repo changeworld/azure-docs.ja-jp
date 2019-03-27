@@ -10,16 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4107b18046b57d5b02fcd9d88be1752922735a08
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 9b64631b274423edda35189a942e2f142ae591f1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245584"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761176"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>VaaS ポータルでのテストの監視と管理
 
@@ -39,7 +40,7 @@ Azure Stack ソリューションに対するテストをスケジュールす�
 
 ## <a name="change-workflow-parameters"></a>ワークフロー パラメーターを変更する
 
-ワークフローの種類ごとに、ワークフローの作成中に指定した[テスト パラメーター](azure-stack-vaas-parameters.md#test-parameters)を編集できます。
+ワークフローの任意の種類について、ワークフローの作成中に指定した[テスト パラメーター](azure-stack-vaas-parameters.md#test-parameters)を編集できます。
 
 1. テストの概要ページで **[編集]** ボタンを選択します。
 
@@ -90,7 +91,7 @@ Azure Stack ソリューションに対するテストをスケジュールす�
 | -- | -- |
 | テスト名 | テストの名前。 |
 | テスト バージョン | テストのバージョン。 |
-| 発行元 | テストの発行元。 |
+| Publisher | テストの発行元。 |
 | Category |  テストの目的。 |
 | Target services (ターゲット サービス) | テストされている Azure Stack サービス。 |
 | 説明 | テストの説明。 |

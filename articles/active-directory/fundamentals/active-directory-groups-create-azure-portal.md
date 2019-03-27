@@ -3,21 +3,22 @@ title: 基本グループを作成してメンバーを追加する - Azure Acti
 description: Azure Active Directory を使用した基本グループの作成方法に関する手順です。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: quickstart
 ms.date: 08/22/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 22ed8abe436a7419b0b95afb8249b8ff07daa39c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 037638367da4b34868befa9934d3b1fbb1b9420d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062198"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161559"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Azure Active Directory を使用して基本グループを作成してメンバーを追加する
 Azure Active Directory (Azure AD) ポータルを使用して、基本グループを作成できます。 この記事の目的に合わせて、基本グループは、リソース所有者 (管理者) によって単一リソースに追加され、そのリソースにアクセスする必要がある特定のメンバー (従業員) を含みます。 動的なメンバーシップやルールの作成など、より複雑なシナリオについては、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
@@ -36,17 +37,17 @@ Azure Active Directory (Azure AD) ポータルを使用して、基本グルー�
 
     ![情報の例が入力されている新しいグループ ページ](media/active-directory-groups-create-azure-portal/new-group-blade.png)
 
-    - **[グループの種類] (必須)。** 事前に定義されたグループの種類を選択します。 次のトピックがあります。
+    - **[グループの種類]\(必須)。** 事前に定義されたグループの種類を選択します。 次のトピックがあります。
         
         - **セキュリティ**。 メンバーを管理し、グループ ユーザーの共有リソースへのコンピューター アクセスを管理するために、使用されます。 たとえば、特定のセキュリティ ポリシーのセキュリティ グループを作成できます。 この方法で作成すると、すべてのメンバーに一連のアクセス許可を一度に付与でき、各メンバーにアクセス許可を個別に追加する必要はありません。 リソースへのアクセス管理の詳細については、[Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)に関するページを参照してください。
         
         - **Office 365**。 共有メールボックス、カレンダー、ファイル、SharePoint サイトなどへのアクセスをメンバーに付与することで、共同作業の機会を提供します。 また、このオプションでは、組織外のユーザーにグループへのアクセス権を付与することもできます。 Office 365 グループの詳細については、「[Office 365 グループの概要](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)」を参照してください。
 
-    - **[グループ名] (必須)。** グループの名前を追加します。覚えやすい、意味のある名前にします。
+    - **[グループ名]\(必須)。** グループの名前を追加します。覚えやすい、意味のある名前にします。
 
     - **[グループの説明]。** 任意で、グループに説明を追加します。
 
-    - **[メンバーシップの種類] (必須)。** 事前に定義されたメンバーシップの種類を選択します。 次のトピックがあります。
+    - **[メンバーシップの種類]\(必須)。** 事前に定義されたメンバーシップの種類を選択します。 次のトピックがあります。
 
         - **[割り当て済み]。** このグループのメンバーとなり、一意のアクセス許可を保持するように、特定のメンバーを追加できます。 この記事の目的に合わせて、このオプションを使用しています。
 

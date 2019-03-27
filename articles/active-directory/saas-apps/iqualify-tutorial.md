@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と iQualify LMS の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と iQualify LMS の統合 | Microsoft Docs
 description: Azure Active Directory と iQualify LMS の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 8a3caaff-dd8d-4afd-badf-a0fd60db3d2c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: d1161480bfd7a4cfeeb81f02234586a515fdffed
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 25711bd09adf17fa82f9177f4badad723e590b12
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446146"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184195"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル: Azure Active Directory と iQualify LMS の統合
+# <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル:Azure Active Directory と iQualify LMS の統合
 
 このチュートリアルでは、iQualify LMS と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -158,7 +159,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
 
     e. 表の次の行についても "a" ～ "d" の手順を繰り返します。 
 
@@ -200,14 +201,14 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
     
     c. ダウンロードした証明書ファイルをメモ帳で開き、その内容をコピーして、**[Public Certificate]\(パブリック証明書\)** ボックスに貼り付けます。
     
-    d. **[LOGIN BUTTON LABEL]\( ログイン ボタン ラベル\)** に、ログイン ページに表示するボタンの名前を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[LOGIN BUTTON LABEL]\( ログイン ボタン ラベル\)** に、ログイン ページに表示するボタンの名前を入力します。
     
     e. **[保存]** をクリックします。
 
     f. **[Update]\(更新\)** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -239,7 +240,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-iqualify-lms-test-user"></a>IQualify LMS テスト ユーザーを作成する
 
@@ -287,7 +288,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
 **[Sign in with Azure AD]\(Azure AD でサインイン\)** ボタンをクリックすると、iQualify LMS アプリケーションに自動的にサインオンします。
 
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

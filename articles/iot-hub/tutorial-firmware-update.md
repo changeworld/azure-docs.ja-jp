@@ -2,24 +2,24 @@
 title: Azure IoT Hub を使用したデバイス ファームウェアの更新 | Microsoft Docs
 description: ジョブとデバイス ツインを使用してデバイス ファームウェアの更新プロセスを実装します。
 services: iot-hub
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
-ms.author: dobett
+ms.date: 02/22/2019
 ms.custom: mvc
-ms.openlocfilehash: bc1887ef3cdbc56732317aea15be7a618c35847e
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: faccebbd00b4ee9c8ecc257722ab87f0494d9466
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003578"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116692"
 ---
-# <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル: デバイス ファームウェアの更新プロセスを実装する
+# <a name="tutorial-implement-a-device-firmware-update-process"></a>チュートリアル:デバイス ファームウェアの更新プロセスを実装する
 
 場合によっては、IoT ハブに接続されているデバイスのファームウェアを更新する必要があります。 たとえば、ファームウェアに新しい機能を追加したり、セキュリティ パッチを適用したりできます。 多くの IoT シナリオでは、対象のデバイスに物理的にアクセスして、手動でファームウェア更新を適用することは現実的ではありません。 このチュートリアルでは、ハブに接続されたバックエンド アプリケーションを介してファームウェアの更新プロセスをリモートで開始および監視する方法を示します。
 
@@ -73,7 +73,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later
-az iot hub show-connection-string --hub-name $hub-name -o table
+az iot hub show-connection-string --name $hubname -o table
 
 ```
 
@@ -94,7 +94,8 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ```
 
-これらのコマンドを Windows コマンド プロンプトまたは PowerShell プロンプトで実行する場合は、JSON 文字列を引用符で囲む方法について、[azure-iot-cli-extension のヒント](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
+> [!TIP]
+> これらのコマンドを Windows コマンド プロンプトまたは PowerShell プロンプトで実行する場合は、JSON 文字列を引用符で囲む方法について、[azure-iot-cli-extension のヒント](https://github.com/Azure/azure-iot-cli-extension/wiki/Tips
 )に関するページを参照してください。
 
 ## <a name="start-the-firmware-update"></a>ファームウェアの更新を開始する
@@ -208,4 +209,4 @@ az group delete --name tutorial-iot-hub-rg
 このチュートリアルでは、接続されたデバイスのファームウェア更新プロセスを実装する方法を学習しました。 Azure IoT Hub ポータル ツールと Azure CLI コマンドを使用してデバイス接続をテストする方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-[シミュレートされたデバイスを使用して IoT ハブとの接続をテストする](tutorial-connectivity.md)
+> [シミュレートされたデバイスを使用して IoT ハブとの接続をテストする](tutorial-connectivity.md)

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: 03d307a324826a4805da5ed6ff8b995b7c3eab62
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.subservice: common
+ms.openlocfilehash: d28ea2972b8b73921bb078d8570afe9a6dffce8f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019307"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55461771"
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>AzCopy on Windows を使ったデータの転送
 AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage、File Storage、および Table Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  

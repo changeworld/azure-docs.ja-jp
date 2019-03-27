@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6362b243bff91233c3cd08f26904866dd7be9ebd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9610256ac68b6c1be12ca22220e317752c068b85
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248879"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730835"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
 
@@ -124,7 +124,7 @@ VM は、実行されている場合、物理サーバーにデプロイされ�
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>可用性セットに既存のクラシック VM を追加できますか?
 
-はい。 既存のクラシック VM を、新規または既存の可用性セットに追加することができます。 詳細については、「[既存の仮想マシンを可用性セットに追加する](../windows/classic/configure-availability-classic.md#addmachine)」を参照してください。
+はい。 既存のクラシック VM を、新規または既存の可用性セットに追加することができます。 詳細については、「[既存の仮想マシンを可用性セットに追加する](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine)」を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

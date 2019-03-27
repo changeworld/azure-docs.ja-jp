@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Fluxx Labs の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Fluxx Labs の統合 | Microsoft Docs
 description: Azure Active Directory と Fluxx Labs の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 367310527619d4bdb5f84a80c567a9d83698846e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3c48e41318ff5ba189e4cc8b8529bb3b81911052
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433774"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204391"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>チュートリアル: Azure Active Directory と Fluxx Labs の統合
+# <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>チュートリアル:Azure Active Directory と Fluxx Labs の統合
 
 このチュートリアルでは、Fluxx Labs と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -158,7 +159,7 @@ Fluxx Labs で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[Callback Path]\(コールバック パス\)** ボックスに、「**/auth/saml/callback**」と入力します。
 
-    d. **[Assertion Consumer Service Url(Single Sign-On URL)]\(Assertion Consumer Service URL (シングル サインオン URL)\)** テキストボックスに、Azure portal で入力した **[応答 URL]** の値を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Assertion Consumer Service Url(Single Sign-On URL)]\(Assertion Consumer Service URL (シングル サインオン URL)\)** テキストボックスに、Azure portal で入力した **[応答 URL]** の値を入力します。
 
     e. **[Audience(SP Entity ID)]\(対象 (SP エンティティ ID)\)** テキストボックスに、Azure portal で入力した **[ID]** の値を入力します。
 
@@ -203,7 +204,7 @@ Fluxx Labs で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-a-fluxx-labs-test-user"></a>Fluxx Labs テスト ユーザーを作成する
 

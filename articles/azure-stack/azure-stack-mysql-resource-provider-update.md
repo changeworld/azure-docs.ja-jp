@@ -11,30 +11,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 01/11/2019
 ms.author: jeffgilb
-ms.reviewer: georgel
-ms.openlocfilehash: 790a8bfed693f03cdadd036cab17eb94dee1c1ed
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.reviewer: jiahan
+ms.lastreviewed: 01/11/2019
+ms.openlocfilehash: f38d27c6f82533265705ff5483bfe835c81c9ce6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119293"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817293"
 ---
 # <a name="update-the-mysql-resource-provider"></a>MySQL リソース プロバイダーを更新する 
 
 *適用対象: Azure Stack 統合システム*
 
-Azure Stack ビルドの更新時に、新しい SQL リソース プロバイダー アダプターがリリースされる場合があります。 既存のアダプターが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。 
+Azure Stack ビルドの更新時に、新しい MySQL リソース プロバイダー アダプターがリリースされる場合があります。 既存のアダプターが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。 
 
-> [!IMPORTANT]
-> 更新プログラムは、リリースされた順序でインストールする必要があります。 バージョンをスキップすることはできません。 [リソース プロバイダーを展開するための前提条件](./azure-stack-mysql-resource-provider-deploy.md#prerequisites)の一覧を参照してください。
+MySQL リソース プロバイダー バージョン 1.1.33.0 リリース以降の更新プログラムは累積的であり、バージョン 1.1.24.0 以降から開始する限り、リリースされた順序でインストールする必要はありません。 たとえば、バージョン 1.1.24.0 の MySQL リソース プロバイダーを実行している場合、最初にバージョン 1.1.30.0 をインストールしなくても、バージョン 1.1.33.0 以降にアップグレードできます。 使用可能なリソース プロバイダーのバージョンと、それらがサポートされる Azure Stack のバージョンを確認するには、[リソース プロバイダーのデプロイの前提条件に関する記事](./azure-stack-mysql-resource-provider-deploy.md#prerequisites)で、バージョンの一覧を参照してください。
 
-## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>MySQL リソース プロバイダー アダプター の更新 (統合システムのみ)
+リソース プロバイダーの更新には **UpdateMySQLProvider.ps1** スクリプトを使用します。 プロセスは、この記事のリソース プロバイダーのデプロイに関するセクションに記述されている、リソース プロバイダーをインストールするプロセスと類似しています。 スクリプトはリソース プロバイダーのダウンロードに含まれています。 
 
-Azure Stack ビルドの更新時に、新しい SQL リソース プロバイダー アダプターがリリースされる場合があります。 既存のアダプターが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。  
- 
-リソース プロバイダーの更新には **UpdateMySQLProvider.ps1** スクリプトを使用します。 プロセスは、この記事の[リソース プロバイダーをデプロイする](#deploy-the-resource-provider)セクションに記述されている、リソース プロバイダーをインストールするプロセスと類似しています。 スクリプトはリソース プロバイダーのダウンロードに含まれています。 
+ > [!IMPORTANT]
+ > リソース プロバイダーをアップグレードする前に、リリース ノートを確認し、新しい機能、修正、およびデプロイに影響を与える可能性のある既知の問題について確認してください。
+
+## <a name="update-script-processes"></a>更新スクリプトのプロセス
 
 **UpdateMySQLProvider.ps1** スクリプトは、最新のリソース プロバイダーのコードを使って新しい VM を作成し、古い VM から新しい VM に設定を移行します。 移行される設定には、データベースおよびホスティング サーバーの情報や、必要な DNS レコードが含まれます。 
 
@@ -43,7 +44,27 @@ Azure Stack ビルドの更新時に、新しい SQL リソース プロバイ�
 
 スクリプトでは、DeployMySqlProvider.ps1 スクリプト用に記述されているものと同じ引数の使用が必要になります。 証明書も同様に指定します。  
 
-次に、PowerShell プロンプトから実行することができる *UpdateMySQLProvider.ps1* スクリプトの例を示します。 必要に応じてアカウント情報とパスワードを変更してください。  
+
+## <a name="update-script-parameters"></a>更新スクリプトのパラメーター 
+**UpdateMySQLProvider.ps1** PowerShell スクリプトを実行するときに、コマンド ラインから以下のパラメーターを指定できます。 必須パラメーターの指定がない場合、またはいずれかのパラメーターの検証が失敗した場合は、指定することを求められます。 
+
+| パラメーター名 | 説明 | コメントまたは既定値 | 
+| --- | --- | --- | 
+| **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。 | _必須_ | 
+| **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ | 
+| **VMLocalCredential** |SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報。 | _必須_ | 
+| **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ | 
+| **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 Azure AD のデプロイでのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure AD を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
+| **DependencyFilesLocalPath** | 証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 | _省略可能_ (マルチノードでは _必須_) | 
+| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ | 
+| **MaxRetryCount** | 障害がある場合に各操作を再試行する回数。| 2 | 
+| **RetryDuration** | 再試行間のタイムアウト間隔 (秒単位)。 | 120 | 
+| **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します (以下のメモを参照してください)。 | いいえ  | 
+| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ  | 
+| **AcceptLicense** | GPL ライセンスに同意するためのプロンプトをスキップします。  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
+
+## <a name="update-script-example"></a>更新スクリプトの例
+管理者特権の PowerShell コンソールから実行できる *UpdateMySQLProvider.ps1* スクリプトの使用例を次に示します。 変数情報とパスワードは、必要に応じて変更してください。  
 
 > [!NOTE] 
 > 更新プロセスは、統合システムにのみに適用されます。 
@@ -92,26 +113,7 @@ $tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds `
 -DefaultSSLCertificatePassword $PfxPass ` 
 -DependencyFilesLocalPath $tempDir\cert ` 
 -AcceptLicense 
-``` 
- 
-### <a name="updatemysqlproviderps1-parameters"></a>UpdateMySQLProvider.ps1 パラメーター 
-これらのパラメーターをコマンド ラインで指定できます。 必須パラメーターの指定がない場合、またはいずれかのパラメーター検証が失敗した場合は、指定することを求められます。 
-
-| パラメーター名 | 説明 | コメントまたは既定値 | 
-| --- | --- | --- | 
-| **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。 | _必須_ | 
-| **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ | 
-| **VMLocalCredential** |SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報。 | _必須_ | 
-| **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ | 
-| **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 Azure AD のデプロイでのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure AD を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
-| **DependencyFilesLocalPath** | 証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 | _省略可能_ (マルチノードでは _必須_) | 
-| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ | 
-| **MaxRetryCount** | 障害がある場合に各操作を再試行する回数。| 2 | 
-| **RetryDuration** | 再試行間のタイムアウト間隔 (秒単位)。 | 120 | 
-| **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します (以下のメモを参照してください)。 | いいえ  | 
-| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ  | 
-| **AcceptLicense** | GPL ライセンスに同意するためのプロンプトをスキップします。  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
- 
+```  
 
 ## <a name="next-steps"></a>次の手順
 [MySQL リソース プロバイダーの維持](azure-stack-mysql-resource-provider-maintain.md)

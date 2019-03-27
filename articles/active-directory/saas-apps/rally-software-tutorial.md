@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Rally Software の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Rally Software の統合 | Microsoft Docs
 description: Azure Active Directory と Rally Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: ba25fade-e152-42dd-8377-a30bbc48c3ed
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 2bb9df9fe0cb20cdd50d7ba716ee5cba562f3e1b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ba4f1d41497af8f57a343eacc92c5da7d2488d07
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448259"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163701"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>チュートリアル: Azure Active Directory と Rally Software の統合
+# <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>チュートリアル:Azure Active Directory と Rally Software の統合
 
 このチュートリアルでは、Rally Software と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -150,7 +151,7 @@ Rally Software で Azure AD のシングル サインオンを構成し、テス
     c. **[SSO ログアウト]** ボックスに、Azure Portal からコピーした **サインアウト URL** の値を貼り付けます。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -183,7 +184,7 @@ Rally Software で Azure AD のシングル サインオンを構成し、テス
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-rally-software-test-user"></a>Rally Software テスト ユーザーの作成
 
@@ -209,7 +210,7 @@ Azure AD ユーザーがサインインできるように、Azure Active Directo
 
     c. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
 
-    d. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **Simon**)。
 
     e. **[Save & Close]** をクリックします。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 61c01e8ea3b4cbe7b5f7ab83ab35383d74df3105
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 888f9e04e048e3da4c9809ac4f8570f020030335
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51234938"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855837"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors の診断とパフォーマンス監視
 Reliable Actors ランタイムは、[EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントおよび[パフォーマンス カウンター](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)を出力します。 これらは、ランタイムがどのように動作するかを示し、トラブルシューティングとパフォーマンス監視に役立ちます。
@@ -27,7 +27,7 @@ Reliable Actors ランタイムは、[EventSource](https://msdn.microsoft.com/li
 ## <a name="eventsource-events"></a>EventSource イベント
 Reliable Actors ランタイムの EventSource プロバイダー名は "Microsoft-ServiceFabric-Actors" です。 このイベント ソースのイベントは、アクター アプリケーションが [Visual Studio でデバッグ](service-fabric-debugging-your-application.md)されているときに、[[診断イベント](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio)] ウィンドウに表示されます。
 
-EventSource イベントの収集または表示に役立つツールとテクノロジの例には、[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md)、[セマンティック ログ記録](https://msdn.microsoft.com/library/dn774980.aspx)、[Microsoft TraceEvent ライブラリ](http://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
+EventSource イベントの収集または表示に役立つツールとテクノロジの例には、[PerfView](https://www.microsoft.com/download/details.aspx?id=28567)、[Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md)、[セマンティック ログ記録](https://msdn.microsoft.com/library/dn774980.aspx)、[Microsoft TraceEvent ライブラリ](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)があります。
 
 ### <a name="keywords"></a>キーワード
 Reliable Actors EventSource に属しているすべてのイベントは、1 つまたは複数のキーワードに関連付けられます。 これにより、収集されたイベントをフィルター処理できます。 次のキーワードのビットが定義されています。

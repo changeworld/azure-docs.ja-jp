@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e0d6fe79d23f3d3d0679445f5120a3ec17ddd67
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ca6040bb74839f30a2f1b13297f6037f05240c67
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013776"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562220"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Data Factory を使用して MongoDB のデータをコピーする
 
@@ -48,9 +48,9 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります:**MongoDbV2** |[はい] |
-| connectionString |MongoDB 接続文字列 (例: `mongodb://[username:password@]host[:port][/[database][?options]]`) を指定します。 詳細については、[MongoDB のマニュアルの接続文字列に関するページ](https://docs.mongodb.com/manual/reference/connection-string/)を参照してください。 <br/><br />Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 |[はい] |
-| database | アクセスするデータベースの名前。 | [はい] |
+| type |type プロパティは、次のように設定する必要があります:**MongoDbV2** |はい |
+| connectionString |MongoDB 接続文字列 (例: `mongodb://[username:password@]host[:port][/[database][?options]]`) を指定します。 詳細については、[MongoDB のマニュアルの接続文字列に関するページ](https://docs.mongodb.com/manual/reference/connection-string/)を参照してください。 <br/><br />Data Factory に安全に格納するには、このフィールドを **SecureString** 型として指定します。 [Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 |はい |
+| database | アクセスするデータベースの名前。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
@@ -81,14 +81,14 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**MongoDbV2Collection** | [はい] |
-| collectionName |MongoDB データベースのコレクション名前。 |[はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**MongoDbV2Collection** | はい |
+| collectionName |MongoDB データベースのコレクション名前。 |はい |
 
 **例:**
 
 ```json
 {
-     "name":  "MongoDbDataset",
+    "name": "MongoDbDataset",
     "properties": {
         "type": "MongoDbV2Collection",
         "linkedServiceName": {
@@ -112,12 +112,12 @@ MongoDB のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**MongoDbV2Source** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**MongoDbV2Source** | はい |
 | filter | クエリ演算子を使用して選択フィルターを指定します。 コレクション内のすべてのドキュメントを返すには、このパラメーターを省略するか、空のドキュメント ({}) を渡します。 | いいえ  |
-| cursorMethods.project | プロジェクションのドキュメントで返されるフィールドを指定します。 一致するドキュメントですべてのフィールドを返すには、このパラメーターを省略します。 | いいえ  |
-| cursorMethods.sort | 一致するドキュメントがクエリによって返される順序を指定します。 [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort) を参照してください。 | いいえ  |
-| cursorMethods.limit | サーバーが返すドキュメントの最大数を指定します。 [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit) を参照してください。  | いいえ  | 
-| cursorMethods.skip | スキップするドキュメントの数と、MongoDB が結果を返すときの開始位置を指定します。 [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip) を参照してください。 | いいえ  |
+| cursorMethods.project | プロジェクションのドキュメントで返されるフィールドを指定します。 一致するドキュメント内のすべてのフィールドを返すには、このパラメーターを省略します。 | いいえ  |
+| cursorMethods.sort | 一致するドキュメントがクエリによって返される順序を指定します。 「[cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort)」を参照してください。 | いいえ  |
+| cursorMethods.limit | サーバーが返すドキュメントの最大数を指定します。 「[cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit)」を参照してください。  | いいえ  |
+| cursorMethods.skip | スキップするドキュメントの数と、MongoDB が結果を返すときの開始位置を指定します。 「[cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip)」を参照してください。 | いいえ  |
 | batchSize | MongoDB インスタンスからの応答の各バッチで返されるドキュメントの数を指定します。 ほとんどの場合、バッチ サイズを変更しても、ユーザーまたはアプリケーションへの影響はありません。 Cosmos DB では各バッチのサイズが 40 MB を超過しないように制限されていますが、これはドキュメントが batchSize の数だけ存在するときの合計サイズなので、ドキュメントのサイズが大きくなる場合はこの値を減らしてください。 | いいえ <br/>(既定値は **100**) |
 
 >[!TIP]

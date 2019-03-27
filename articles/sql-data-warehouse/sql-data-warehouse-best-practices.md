@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
-ms.date: 04/18/2018
+ms.subservice: implement
+ms.date: 11/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 81fd5ea082fe05c9908b2eb0689aba9a4fe4e789
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4d61176030285556545e5619669d07c62d908a4e
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307134"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471455"
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のベスト プラクティス
 この記事には、Azure SQL Data Warehouse で最適なパフォーマンスを実現するのに役立つベスト プラクティスがまとめられています。  この記事で取り上げている概念には、基本的なため、簡単に説明できるものから、高度なため、この記事では軽く紹介するだけのものまであります。  この記事の目的は、基本的なガイダンスを提供し、データ ウェアハウスを構築するときに重視する必要がある重要な領域に対する認識を高めることです。  各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
@@ -39,7 +39,7 @@ INSERT ステートメントで小さなテーブルに 1 回だけ読み込む�
 [INSERT][INSERT] に関するページもご覧ください。
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>PolyBase を使用して、データの読み込みとエクスポートをすばやく実行する
-SQL Data Warehouse では、Azure Data Factory、PolyBase、BCP など、さまざまなツールを使用したデータの読み込みとエクスポートをサポートしています。  パフォーマンスが重要でない少量のデータについては、どのツールでもニーズに十分応えることができます。  ただし、大量のデータを読み込んだり、エクスポートしたりする場合や、高速なパフォーマンスが必要な場合は、PolyBase が最適な選択肢です。  PolyBase は、SQL Data Warehouse の MPP (超並列処理) アーキテクチャを活用するように設計されています。そのため、他のツールよりも速く大量のデータを読み込むことや、エクスポートすることができます。  PolyBase の読み込みは、CTAS または INSERT INTO を使用して実行できます。  **CTAS を使用すると、トランザクション ログが最小限に抑えられ、データを一番速く読み込むことができます。**  Azure Data Factory では、PolyBase の読み込みもサポートしています。  PolyBase では、Gzip ファイルなど、さまざまなファイル形式をサポートしています。  **gzip テキスト ファイルを使用する場合にスループットを最大限引き上げるには、ファイルを 60 個以上に分割して、読み込みの並列処理を最大化します。**  全体のスループットを引き上げるには、データを同時に読み込むことを検討してください。
+SQL Data Warehouse では、Azure Data Factory、PolyBase、BCP など、さまざまなツールを使用したデータの読み込みとエクスポートをサポートしています。  パフォーマンスが重要でない少量のデータについては、どのツールでもニーズに十分応えることができます。  ただし、大量のデータを読み込んだり、エクスポートしたりする場合や、高速なパフォーマンスが必要な場合は、PolyBase が最適な選択肢です。  PolyBase は、SQL Data Warehouse の MPP (超並列処理) アーキテクチャを活用するように設計されています。そのため、他のツールよりも速く大量のデータを読み込むことや、エクスポートすることができます。  PolyBase の読み込みは、CTAS または INSERT INTO を使用して実行できます。  **CTAS を使用すると、トランザクション ログが最小限に抑えられ、データを一番速く読み込むことができます。**  Azure Data Factory では PolyBase の読み込みもサポートされ、CTAS と同様のパフォーマンスを実現できます。  PolyBase では、Gzip ファイルなど、さまざまなファイル形式をサポートしています。  **gzip テキスト ファイルを使用する場合にスループットを最大限引き上げるには、ファイルを 60 個以上に分割して、読み込みの並列処理を最大化してください。**  全体のスループットを引き上げるには、データを同時に読み込むことを検討してください。
 
 [データのロード][Load data]に関するページ、[PolyBase の使用ガイド][Guide for using PolyBase]、「[Azure SQL Data Warehouse loading patterns and strategies (Azure SQL Data Warehouse の読み込みパターンと戦略)][Azure SQL Data Warehouse loading patterns and strategies]」、[Azure Data Factory を使用したデータの読み込み][Load Data with Azure Data Factory]、[Azure Data Factory を使用したデータ移動][Move data with Azure Data Factory]、[CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT]、[Create table as select (CTAS)][Create table as select (CTAS)] に関するページもご覧ください。
 
@@ -83,12 +83,12 @@ DDL を定義するときに、データをサポートする最小のデータ�
 [テーブル インデックス][Table indexes]、[列ストア インデックス][Columnstore indexes guide]、[列ストア インデックスの再構築][Rebuilding columnstore indexes]に関するページもご覧ください。
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>大きなリソース クラスを使用して、クエリのパフォーマンスを向上させる
-SQL Data Warehouse では、クエリにメモリを割り当てる方法としてリソース グループを使用します。  既定では、ディストリビューションごとに 100 MB のメモリが与えられる小規模リソース クラスにすべてのユーザーが割り当てられます。  常に 60 個のディストリビューションが存在し、各ディストリビューションに最低 100 MB が割り当てられるため、システム全体のメモリの割り当ての合計は 6,000 MB (6 GB 弱) です。  大規模な結合やクラスター化列ストア テーブルへの読み込みなど、特定のクエリについては、割り当てるメモリを増やすと効果的です。  純粋なスキャンなどのクエリでは、効果はありません。  一方で、より大きなリソース クラスを利用すると、同時実行に影響します。そのため、すべてのユーザーをより大きなリソース クラスに移行する前に、その点を考慮する必要があります。
+SQL Data Warehouse では、クエリにメモリを割り当てる方法としてリソース グループを使用します。  既定では、ディストリビューションごとに 100 MB のメモリが与えられる小規模リソース クラスにすべてのユーザーが割り当てられます。  常に 60 個のディストリビューションが存在し、各ディストリビューションに最低 100 MB が割り当てられるため、システム全体のメモリの割り当ての合計は 6,000 MB (6 GB 弱) です。  大規模な結合やクラスター化列ストア テーブルへの読み込みなど、特定のクエリについては、割り当てるメモリを増やすと効果的です。  純粋なスキャンなどのクエリでは、効果はありません。  一方で、より大きなリソース クラスを利用すると、コンカレンシーに影響します。そのため、すべてのユーザーをより大きなリソース クラスに移行する前に、その点を考慮する必要があります。
 
 「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」も参照してください。
 
-## <a name="use-smaller-resource-class-to-increase-concurrency"></a>小さいリソース クラスを使用して、同時実行を増やす
-ユーザー クエリの遅延が長いと感じている場合は、ユーザーが大きなリソース クラスで実行しており、同時実行スロットを大量に使用していることが原因で、他のクエリがキューに配置されている可能性があります。  ユーザー クエリがキューに配置されているかどうかを確認するには、 `SELECT * FROM sys.dm_pdw_waits` を実行して、行が返されるかどうかを確認します。
+## <a name="use-smaller-resource-class-to-increase-concurrency"></a>小さいリソース クラスを使用して、コンカレンシーを増やす
+ユーザー クエリの遅延が長いと感じている場合は、ユーザーが大きなリソース クラスで実行しており、コンカレンシー スロットを大量に使用していることが原因で、他のクエリがキューに配置されている可能性があります。  ユーザー クエリがキューに配置されているかどうかを確認するには、 `SELECT * FROM sys.dm_pdw_waits` を実行して、行が返されるかどうかを確認します。
 
 「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」と [sys.dm_pdw_waits][sys.dm_pdw_waits] に関するページも参照してください。
 

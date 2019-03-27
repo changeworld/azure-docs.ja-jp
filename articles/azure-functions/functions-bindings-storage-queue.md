@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 565b4c66c98d62fdcbd23f6446f522b810db1430
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 61752ad9feda7ad6b8d91f1b996b68f27f24b2c6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999468"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821985"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 
@@ -38,6 +38,9 @@ Queue ストレージ バインディングは [Microsoft.Azure.WebJobs](https:/
 Queue ストレージ バインディングは [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
+
+## <a name="encoding"></a>エンコード
+Azure Functions で想定されているのは *base64* でエンコードされた文字列です。 (データを *base64* でエンコードされた文字列として準備するために) エンコードの種類を調整する場合、それらはすべて呼び出し元のサービスに実装する必要があります。
 
 ## <a name="trigger"></a>トリガー
 
@@ -496,7 +499,7 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 
 完全な例については、「[出力 - C# の例](#output---c-example)」を参照してください。
 
-`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[トリガー - 属性](#trigger---attribute)をご覧ください。
+`StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、「トリガー - 属性」をご覧ください。
 
 ## <a name="output---configuration"></a>出力 - 構成
 

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Replicon の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Replicon の統合 | Microsoft Docs
 description: Azure Active Directory と Replicon の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 02a62f15-917c-417c-8d80-fe685e3fd601
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 7edfe5a115caf4ee6e4677e5fd7f324b8f3873ee
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 46466ac85a8be1dec273440751489833f12c00db
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159046"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166813"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-replicon"></a>チュートリアル: Azure Active Directory と Replicon の統合
+# <a name="tutorial-azure-active-directory-integration-with-replicon"></a>チュートリアル:Azure Active Directory と Replicon の統合
 
 このチュートリアルでは、Replicon と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -141,7 +142,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
    c. **+** をクリックして、**[metaDataConfiguration]** セクションを展開します。
 
-   d. **[Choose File]** をクリックして、ID プロバイダー メタデータ XML ファイルを選択し、**[送信]** をクリックします。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Choose File]** をクリックして、ID プロバイダー メタデータ XML ファイルを選択し、**[送信]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -173,7 +174,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-replicon-test-user"></a>Replicon テスト ユーザーの作成
 
@@ -201,7 +202,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
     c. **[Department]** テキストボックスに、ユーザーの所属を入力します。
 
-    d. **[Employee Type]** として **[Administrator]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Employee Type]** として **[Administrator]** を選択します。
 
     e. **[Save User Profile]** をクリックします。
 

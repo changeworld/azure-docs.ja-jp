@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 8243130fc9752a47661b4c80826000d573da35c8
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 2cd3fdc9387952277c25fa07c62a0faae2993089
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053076"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54478248"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
 
-この記事では、サブネット トラフィックのルーティング方法を構成する方法について説明します。 **サブネット** トラフィックのルーティング方法を使用すると、一連の IP アドレス範囲を特定のエンドポイントにマップできます。Traffic Manager で要求が受信されると、要求の送信元 IP アドレスが検査されて、それに関連付けられているエンドポイントが返されます。 
+この記事では、サブネット トラフィックのルーティング方法を構成する方法について説明します。 **サブネット** トラフィックのルーティング方法を使用すると、一連の IP アドレス範囲を特定のエンドポイントにマップできます。Traffic Manager で要求が受信されると、要求の送信元 IP アドレスが検査されて、それに関連付けられているエンドポイントが返されます。
 
 このチュートリアルでは、サブネットのルーティングを使用し、ユーザーのクエリの IP アドレスに応じて、トラフィックを内部 Web サイトまたは運用 Web サイトにルーティングします。
 
@@ -39,11 +39,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、Traffic Manager の動作を確認するために、以下をデプロイする必要があります。
 - 異なる Azure リージョン (**米国東部** (内部 Web サイトとして機能) と**西ヨーロッパ** (運用 Web サイトとして機能)) で実行している 2 つの基本的な Web サイト。
-- Traffic Manager をテストするための 2 台の VM (1 台は**米国東部**内、2 台目は**西ヨーロッパ**内)。 
+- Traffic Manager をテストするための 2 台の VM (1 台は**米国東部**内、2 台目は**西ヨーロッパ**内)。
 
 テスト VM を使用して、ユーザー クエリの送信元サブネットに基づいて、Traffic Manager でユーザー トラフィックが内部 Web サイトまたは運用 Web サイトにルーティングされる方法を示します。
 
-### <a name="sign-in-to-azure"></a>Azure へのサインイン 
+### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal ( https://portal.azure.com ) にサインインします。
 
@@ -94,8 +94,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 このセクションでは、2 台の VM (*myIISVMEastUS* & *myIISVMWEurope*) に IIS サーバーをインストールした後、既定の Web サイト ページを更新します。 カスタマイズする Web サイト ページには、Web ブラウザーからその Web サイトにアクセスするときに接続する VM の名前が表示されます。
 
 1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で *myResourceGroupTM1* リソース グループにある *myIISVMEastUS* をクリックします。
-2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、**[RDP ファイルのダウンロード]** を選択します。 
-3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。 
+2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、**[RDP ファイルのダウンロード]** を選択します。
+3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。
 4. **[OK]** を選択します。
 5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。
 6. サーバーのデスクトップで、**[Windows 管理ツール]**>**[サーバー マネージャー]** の順に移動します。
@@ -183,12 +183,12 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     | リソース グループ          | **[既存]** を選択し、「*myResourceGroupTM1*」と入力します。 |
     | |                              |
     |
-  
+
     ![Traffic Manager プロファイルの作成](./media/tutorial-traffic-manager-subnet-routing/create-traffic-manager-profile.png)
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 
-ユーザーのクエリのサブネットに基づいてユーザー トラフィックをルーティングするために、IIS サーバーを実行する 2 つの VM *InternalWebsite* & と *ProdWebsite* を追加します。
+ユーザーのクエリのサブネットに基づいてユーザー トラフィックをルーティングするために、IIS サーバーを実行する 2 つの VM *InternalWebsite* &  と *ProdWebsite* を追加します。
 
 1. ポータルの検索バーで、前のセクションで作成した Traffic Manager プロファイルの名前を検索し、表示された結果からそのプロファイルを選択します。
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで **[エンドポイント]** をクリックし、**[追加]** をクリックします。
@@ -205,7 +205,6 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 4. ステップ 2 と 3 を繰り返して、*ProdWebsite* という名前の IIS サーバー VM に関連付けられた パブリック IP アドレス *ProdWebsite-ip* に対する *ProdWebsiteEndpoint* という名前の別のエンドポイントを追加します。 **[Subnet routing settings]\(サブネット ルーティングの設定\)** で、テスト VM *UserVMEurope* の IP アドレスを追加します。 このテスト VM からのすべてのユーザー クエリは、エンドポイント *myProdWebsiteEndpoint* にルーティングされます。
 5. 両方のエンドポイントは、追加が完了すると、**[Traffic Manager プロファイル]** に、監視ステータスが **[オンライン]** の状態で表示されます。
 
- 
 ## <a name="test-traffic-manager-profile"></a>Traffic Manager プロファイルのテスト
 このセクションでは、Traffic Manager によって特定のサブネットからのユーザー トラフィックが特定のエンドポイントにどのようにルーティングされるかをテストします。 動作中の Traffic Manager を表示するには、次の手順を完了します。
 1. Traffic Manager プロファイルの DNS 名を判別します。
@@ -214,7 +213,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     - **西ヨーロッパ** リージョン内のテスト VM (*UserVMEurope*) から、Web ブラウザーで、Traffic Manager プロファイルの DNS 名を参照します。
 
 ### <a name="determine-dns-name-of-traffic-manager-profile"></a>Traffic Manager プロファイルの DNS 名を判別する
-このチュートリアルでは、わかりやすくするために、Traffic Manager プロファイルの DNS 名を使用して Web サイトにアクセスします。 
+このチュートリアルでは、わかりやすくするために、Traffic Manager プロファイルの DNS 名を使用して Web サイトにアクセスします。
 
 次のように、Traffic Manager プロファイルの DNS 名を判別できます。
 
@@ -223,13 +222,13 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 2. **[Traffic Manager プロファイル]** に、新しく作成した Traffic Manager プロファイルの DNS 名が表示されます。 運用環境のデプロイでは、DNS CNAME レコードを使用して、Traffic Manager のドメイン名をポイントするバニティ ドメイン名を構成します。
 
 ### <a name="view-traffic-manager-in-action"></a>Traffic Manager の動作確認
-このセクションでは、Traffic Manager が動作していることを確認します。 
+このセクションでは、Traffic Manager が動作していることを確認します。
 
 1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で *myResourceGroupTM1* リソース グループにある *myUserVMUS* をクリックします。
-2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、**[RDP ファイルのダウンロード]** を選択します。 
-3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。 
+2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、**[RDP ファイルのダウンロード]** を選択します。
+3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。
 4. **[OK]** を選択します。
-5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。 
+5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。
 1. VM *UserVMUS* の Web ブラウザーで、Traffic Manager プロファイルの DNS 名を入力して、Web サイトを表示します。 VM *UserVMUS* の IP アドレスはエンドポイント *myInternalWebsiteEndpoint* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *InternalWebsite* が起動されます。
 
 2. 次に、ステップ 1 から 5 を使用して**西ヨーロッパ**にある VM *UserVMEurope* に接続し、その VM から Traffic Manager プロファイルのドメイン名を参照します。 VM *UserVMEurope* の IP アドレスはエンドポイント *myProductionWebsiteEndpoint* と関連付けられているので、Web ブラウザーではテスト Web サイト サーバー *ProdWebsite* が起動されます。

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: a7f09341c1362850409a940810a4e2dd20aa7f74
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: c5c3f498f62d6399534333f8166a514a10f044c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745042"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310163"
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップ アラートの監視
 
@@ -42,7 +42,7 @@ ms.locfileid: "53745042"
 
     ![イベントの詳細](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
-    一覧に表示される属性をカスタマイズするには、「 [追加のイベント属性の表示](backup-azure-monitor-vms.md#view-additional-event-attributes)
+    一覧に表示される属性をカスタマイズするには、「 [追加のイベント属性の表示](backup-azure-monitor-vms.md)
 
 ## <a name="configure-notifications"></a>通知の構成
 
@@ -132,6 +132,6 @@ Azure Portal にログインし、関連する Azure Recovery Services コンテ
 
 復旧ポイントからの仮想マシンの再作成については、 [Azure VM の復元](backup-azure-arm-restore-vms.md)に関するページをご覧ください。
 
-仮想マシンの保護については、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。
+仮想マシンの保護に関する情報については、[Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。
 
 VM バックアップの管理タスクについては、[Azure 仮想マシンのバックアップの管理](backup-azure-manage-vms.md)に関するページをご覧ください。

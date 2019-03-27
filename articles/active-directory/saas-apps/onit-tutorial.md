@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Onit の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Onit の統合 | Microsoft Docs
 description: Azure Active Directory Onit の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: bc479a28-8fcd-493f-ac53-681975a5149c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2017
 ms.author: jeedes
-ms.openlocfilehash: a93acc79fc447018b5cf63b2e2456bc394c1f78e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b856227733fcc65e12eb43ea1f6b704502a7b29a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425971"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169345"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-onit"></a>チュートリアル: Azure Active Directory と Onit の統合
+# <a name="tutorial-azure-active-directory-integration-with-onit"></a>チュートリアル:Azure Active Directory と Onit の統合
 
 このチュートリアルでは、Onit と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -142,7 +143,7 @@ Onit で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]** は空白のままにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** は空白のままにします。
     
     e. **[OK]** をクリックします。
 
@@ -177,10 +178,10 @@ Onit で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[Idp logout URL]\(Idp ログアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
-    d. **[Idp Cert Fingerprint (SHA1)]\(Idp 証明書のフィンガープリント (SHA1)\)** テキスト ボックスに、Azure Portal からコピーした証明書の **[拇印]** 値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Idp Cert Fingerprint (SHA1)]\(Idp 証明書のフィンガープリント (SHA1)\)** テキスト ボックスに、Azure Portal からコピーした証明書の **[拇印]** 値を貼り付けます。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -213,7 +214,7 @@ Onit で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-onit-test-user"></a>Onit テスト ユーザーを作成する
 
@@ -272,7 +273,7 @@ Onit の場合、プロビジョニングは手動で行います。
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Onit のタイルをクリックすると、自動的に Onit アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

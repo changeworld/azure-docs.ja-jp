@@ -1,6 +1,6 @@
 ---
-title: マネージド ID 概要 - Azure App Service | Microsoft Docs
-description: Azure App Service と Azure Functions でのマネージド ID の概念と設定に関するガイドです
+title: Managed identities overview - Azure App Service | Microsoft Docs
+description: Conceptual reference and setup guide for managed identities in Azure App Service and Azure Functions
 services: app-service
 author: mattchenderson
 manager: cfowler
@@ -11,61 +11,61 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 5e09401c37d40c99d3f8bbb643d104c0105812f4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: bc5c4648a5efe53e3aa645bf1d6b121008eb86dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854927"
 ---
-# <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
+# <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>How to use managed identities for App Service and Azure Functions
 
 > [!NOTE] 
-> App Service on Linux と Web App for Containers のマネージド ID のサポートは、現在プレビューの段階です。
+> Managed identity support for App Service on Linux and Web App for Containers is currently in preview.
 
 > [!Important] 
-> アプリがサブスクリプションやテナント間で移行された場合、App Service と Azure Functions でのマネージド ID は想定されたとおりに動作しません。 アプリでは、機能を無効にしてから再度有効にすることで、新しい ID を取得する必要があります。 以下の「[ID の削除](#remove)」を参照してください。 また、ダウンストリーム リソースでは、新しい ID を使用するようにアクセス ポリシーを更新する必要があります。
+> Managed identities for App Service and Azure Functions will not behave as expected if your app is migrated across subscriptions/tenants. The app will need to obtain a new identity, which can be done by disabling and re-enabling the feature. See [Removing an identity](#remove) below. Downstream resources will also need to have access policies updated to use the new identity.
 
-このトピックでは、App Service と Azure Functions アプリケーションでマネージド ID を作成し、それを使用して他のリソースにアクセスする方法を説明します。 アプリで Azure Active Directory のマネージド ID を使用すると、他の AAD で保護されたリソース (Azure Key Vault など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 AAD のマネージド ID については、「[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
+This topic shows you how to create a managed identity for App Service and Azure Functions applications and how to use it to access other resources. A managed identity from Azure Active Directory allows your app to easily access other AAD-protected resources such as Azure Key Vault. The identity is managed by the Azure platform and does not require you to provision or rotate any secrets. For more about managed identities in AAD, see [Managed identities for Azure resources](../active-directory/managed-identities-azure-resources/overview.md).
 
-アプリケーションには 2 種類の ID を付与できます。 
-- **システム割り当て ID** はアプリケーションに関連付けられているため、アプリが削除されると削除されます。 アプリは 1 つのシステム割り当て ID しか持つことはできません。 システム割り当て ID のサポートは、Windows アプリで一般公開されています。 
-- **ユーザー割り当て ID** は、アプリに割り当てることができるスタンドアロン Azure リソースです。 アプリは複数のユーザー割り当て ID を持つことができます。 ユーザー割り当て ID のサポートは、すべてのアプリの種類でプレビュー段階です。
+Your application can be granted two types of identities: 
+- A **system-assigned identity** is tied to your application and is deleted if your app is deleted. An app can only have one system-assigned identity. System-assigned identity support is generally available for Windows apps. 
+- A **user-assigned identity** is a standalone Azure resource which can be assigned to your app. An app can have multiple user-assigned identities. User-assigned identity support is in preview for all app types.
 
-## <a name="adding-a-system-assigned-identity"></a>システム割り当て ID の追加
+## <a name="adding-a-system-assigned-identity"></a>Adding a system-assigned identity
 
-システム割り当て ID を持つアプリを作成するには、アプリケーションで追加のプロパティを設定する必要があります。
+Creating an app with a system-assigned identity requires an additional property to be set on the application.
 
-### <a name="using-the-azure-portal"></a>Azure ポータルの使用
+### <a name="using-the-azure-portal"></a>Using the Azure portal
 
-ポータルでマネージド ID を設定するには、最初に通常の方法でアプリケーションを作成した後、機能を有効にします。
+To set up a managed identity in the portal, you will first create an application as normal and then enable the feature.
 
-1. ポータルを使って通常の方法でアプリを作成します。 ポータルでアプリに移動します。
+1. Create an app in the portal as you normally would. Navigate to it in the portal.
 
-2. 関数アプリを使っている場合は、**[プラットフォーム機能]** に移動します。 他のアプリの種類の場合は、左側のナビゲーションを下にスクロールして **[設定]** グループに移動します。
+2. If using a function app, navigate to **Platform features**. For other app types, scroll down to the **Settings** group in the left navigation.
 
-3. **[マネージド ID]** を選択します。
+3. Select **Managed identity**.
 
-4. **[システム割り当て済み]** タブで、**[状態]** を **[オン]** に切り替えます。 **[Save]** をクリックします。
+4. Within the **System assigned** tab, switch **Status** to **On**. Click **Save**.
 
-![App Service のマネージド ID](media/app-service-managed-service-identity/msi-blade-system.png)
+![Managed identity in App Service](media/app-service-managed-service-identity/msi-blade-system.png)
 
-### <a name="using-the-azure-cli"></a>Azure CLI の使用
+### <a name="using-the-azure-cli"></a>Using the Azure CLI
 
-Azure CLI を使用してマネージド ID を設定するには、既存のアプリケーションに対して `az webapp identity assign` コマンドを使用する必要があります。 このセクションの例を実行するためのオプションとして次の 3 つがあります。
+To set up a managed identity using the Azure CLI, you will need to use the `az webapp identity assign` command against an existing application. You have three options for running the examples in this section:
 
-- Azure Portal から [Azure Cloud Shell](../cloud-shell/overview.md) を使用する。
-- 以下の各コード ブロックの右上隅にある [試してみる] を利用して、埋め込まれた Azure Cloud Shell シェルを使用します。
-- ローカル CLI コンソールを使用する場合、[Azure CLI の最新バージョン (2.0.31 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 
+- Use [Azure Cloud Shell](../cloud-shell/overview.md) from the Azure portal.
+- Use the embedded Azure Cloud Shell via the "Try It" button, located in the top right corner of each code block below.
+- [Install the latest version of Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 or later) if you prefer to use a local CLI console. 
 
-次の手順では、CLI を使用して、Web アプリを作成し、ID を割り当てる方法について説明します。
+The following steps will walk you through creating a web app and assigning it an identity using the CLI:
 
-1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/reference-index#az-login) を使用して Azure にサインインします。 次のように、アプリケーションをデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
+1. If you're using the Azure CLI in a local console, first sign in to Azure using [az login](/cli/azure/reference-index#az-login). Use an account that is associated with the Azure subscription under which you would like to deploy the application:
 
     ```azurecli-interactive
     az login
     ```
-2. CLI を使用して Web アプリケーションを作成します。 App Service で CLI を使用する方法の他の例については、[App Service の CLI のサンプル](../app-service/samples-cli.md)に関するページを参照してください。
+2. Create a web application using the CLI. For more examples of how to use the CLI with App Service, see [App Service CLI samples](../app-service/samples-cli.md):
 
     ```azurecli-interactive
     az group create --name myResourceGroup --location westus
@@ -73,42 +73,44 @@ Azure CLI を使用してマネージド ID を設定するには、既存のア
     az webapp create --name myApp --resource-group myResourceGroup --plan myPlan
     ```
 
-3. `identity assign` コマンドを実行してこのアプリケーションの ID を作成します。
+3. Run the `identity assign` command to create the identity for this application:
 
     ```azurecli-interactive
     az webapp identity assign --name myApp --resource-group myResourceGroup
     ```
 
-### <a name="using-azure-powershell"></a>Azure PowerShell の使用
+### <a name="using-azure-powershell"></a>Using Azure PowerShell
 
-次の手順では、Azure PowerShell を使用して、Web アプリを作成し、ID を割り当てる方法について説明します。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Login-AzureRmAccount` を実行して、Azure との接続を作成します。
+The following steps will walk you through creating a web app and assigning it an identity using Azure PowerShell:
 
-2. Azure PowerShell を使用して Web アプリケーションを作成します。 App Service で Azure PowerShell を使用する方法の他の例については、[App Service の PowerShell のサンプル](../app-service/samples-powershell.md)に関するページを参照してください。
+1. If needed, install the Azure PowerShell using the instruction found in the [Azure PowerShell guide](/powershell/azure/overview), and then run `Login-AzAccount` to create a connection with Azure.
+
+2. Create a web application using Azure PowerShell. For more examples of how to use Azure PowerShell with App Service, see [App Service PowerShell samples](../app-service/samples-powershell.md):
 
     ```azurepowershell-interactive
     # Create a resource group.
-    New-AzureRmResourceGroup -Name myResourceGroup -Location $location
+    New-AzResourceGroup -Name myResourceGroup -Location $location
     
     # Create an App Service plan in Free tier.
-    New-AzureRmAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
     
     # Create a web app.
-    New-AzureRmWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
     ```
 
-3. `Set-AzureRmWebApp -AssignIdentity` コマンドを実行してこのアプリケーションの ID を作成します。
+3. Run the `Set-AzWebApp -AssignIdentity` command to create the identity for this application:
 
     ```azurepowershell-interactive
-    Set-AzureRmWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
     ```
 
-### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
+### <a name="using-an-azure-resource-manager-template"></a>Using an Azure Resource Manager template
 
-Azure Resource Manager テンプレートを使って、Azure リソースのデプロイを自動化できます。 App Service および Functions へのデプロイについて詳しくは、「[Automating resource deployment in App Service](../app-service/deploy-complex-application-predictably.md)」(App Service でのリソースのデプロイの自動化) および「[Azure Functions の関数アプリのリソース デプロイを自動化](../azure-functions/functions-infrastructure-as-code.md)」をご覧ください。
+An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to App Service and Functions, see [Automating resource deployment in App Service](../app-service/deploy-complex-application-predictably.md) and [Automating resource deployment in Azure Functions](../azure-functions/functions-infrastructure-as-code.md).
 
-種類が `Microsoft.Web/sites` であるすべてのリソースは、リソース定義に次のプロパティを含めることにより、ID を使って作成できます。
+Any resource of type `Microsoft.Web/sites` can be created with an identity by including the following property in the resource definition:
 ```json
 "identity": {
     "type": "SystemAssigned"
@@ -116,11 +118,11 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 ```
 
 > [!NOTE] 
-> アプリケーションは、システム割り当て ID とユーザー割り当て ID の両方を同時に持つことができます。 この場合、`type` プロパティは `SystemAssigned,UserAssigned` になります
+> An application can have both system-assigned and user-assigned identities at the same time. In this case, the `type` property would be `SystemAssigned,UserAssigned`
 
-システム割り当てタイプを追加すると、Azure に対してアプリケーション用の ID を作成して管理するように指示されます。
+Adding the system-assigned type tells Azure to create and manage the identity for your application.
 
-たとえば、Web アプリは次のようになります。
+For example, a web app might look like the following:
 ```json
 {
     "apiVersion": "2016-08-01",
@@ -143,7 +145,7 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 }
 ```
 
-作成されるサイトには、次の追加プロパティが設定されます。
+When the site is created, it has the following additional properties:
 ```json
 "identity": {
     "type": "SystemAssigned",
@@ -152,42 +154,42 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 }
 ```
 
-`<TENANTID>` と `<PRINCIPALID>` は GUID に置き換えられます。 tenantId プロパティは、ID が属している AAD テナントを示します。 principalId は、アプリケーションの新しい ID の一意識別子です。 AAD でのサービス プリンシパルの名前は、App Service または Azure Functions のインスタンスに指定したものと同じです。
+Where `<TENANTID>` and `<PRINCIPALID>` are replaced with GUIDs. The tenantId property identifies what AAD tenant the identity belongs to. The principalId is a unique identifier for the application's new identity. Within AAD, the service principal has the same name that you gave to your App Service or Azure Functions instance.
 
 
-## <a name="adding-a-user-assigned-identity-preview"></a>ユーザー割り当て ID の追加 (プレビュー)
-
-> [!NOTE] 
-> ユーザー割り当て ID は、現在プレビューの段階です。 ソブリン クラウドはまだサポートされていません。
-
-ユーザー割り当て ID を持つアプリを作成するには、ID を作成してから、そのリソース ID をアプリ構成に追加する必要があります。
-
-### <a name="using-the-azure-portal"></a>Azure ポータルの使用
+## <a name="adding-a-user-assigned-identity-preview"></a>Adding a user-assigned identity (preview)
 
 > [!NOTE] 
-> このポータルのエクスペリエンスはデプロイ中であり、まだすべてのリージョンでは利用できない可能性があります。
+> User-assigned identities are currently in preview. Sovereign clouds are not yet supported.
 
-最初に、ユーザー割り当て ID リソースを作成する必要があります。
+Creating an app with a user-assigned identity requires that you create the identity and then add its resource identifier to your app config.
 
-1. [以下の手順](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)に従って、ユーザー割り当てマネージド ID リソースを作成します。
+### <a name="using-the-azure-portal"></a>Using the Azure portal
 
-2. ポータルを使って通常の方法でアプリを作成します。 ポータルでアプリに移動します。
+> [!NOTE] 
+> This portal experience is being deployed and may not yet be available in all regions.
 
-3. 関数アプリを使っている場合は、**[プラットフォーム機能]** に移動します。 他のアプリの種類の場合は、左側のナビゲーションを下にスクロールして **[設定]** グループに移動します。
+First, you'll need to create a user-assigned identity resource.
 
-4. **[マネージド ID]** を選択します。
+1. Create a user-assigned managed identity resource according to [these instructions](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
 
-5. **[割り当て済みユーザー (プレビュー)]** タブで **[追加]** をクリックします。
+2. Create an app in the portal as you normally would. Navigate to it in the portal.
 
-6. 先ほど作成した ID を検索して選択します。 **[追加]** をクリックします。
+3. If using a function app, navigate to **Platform features**. For other app types, scroll down to the **Settings** group in the left navigation.
 
-![App Service のマネージド ID](media/app-service-managed-service-identity/msi-blade-user.png)
+4. Select **Managed identity**.
 
-### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
+5. Within the **User assigned (preview)** tab, click **Add**.
 
-Azure Resource Manager テンプレートを使って、Azure リソースのデプロイを自動化できます。 App Service および Functions へのデプロイについて詳しくは、「[Automating resource deployment in App Service](../app-service/deploy-complex-application-predictably.md)」(App Service でのリソースのデプロイの自動化) および「[Azure Functions の関数アプリのリソース デプロイを自動化](../azure-functions/functions-infrastructure-as-code.md)」をご覧ください。
+6. Search for the identity you created earlier and select it. Click **Add**.
 
-種類が `Microsoft.Web/sites` であるリソースは、リソース定義に次のブロックを含めて、`<RESOURCEID>` を目的の ID のリソース ID と置き換えることで、ID を使って作成できます。
+![Managed identity in App Service](media/app-service-managed-service-identity/msi-blade-user.png)
+
+### <a name="using-an-azure-resource-manager-template"></a>Using an Azure Resource Manager template
+
+An Azure Resource Manager template can be used to automate deployment of your Azure resources. To learn more about deploying to App Service and Functions, see [Automating resource deployment in App Service](../app-service/deploy-complex-application-predictably.md) and [Automating resource deployment in Azure Functions](../azure-functions/functions-infrastructure-as-code.md).
+
+Any resource of type `Microsoft.Web/sites` can be created with an identity by including the following block in the resource definition, replacing `<RESOURCEID>` with the resource ID of the desired identity:
 ```json
 "identity": {
     "type": "UserAssigned",
@@ -198,11 +200,11 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 ```
 
 > [!NOTE] 
-> アプリケーションは、システム割り当て ID とユーザー割り当て ID の両方を同時に持つことができます。 この場合、`type` プロパティは `SystemAssigned,UserAssigned` になります
+> An application can have both system-assigned and user-assigned identities at the same time. In this case, the `type` property would be `SystemAssigned,UserAssigned`
 
-ユーザー割り当てタイプを追加すると、Azure に対してアプリケーション用の ID を作成して管理するように指示されます。
+Adding the user-assigned type and a cotells Azure to create and manage the identity for your application.
 
-たとえば、Web アプリは次のようになります。
+For example, a web app might look like the following:
 ```json
 {
     "apiVersion": "2016-08-01",
@@ -229,7 +231,7 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 }
 ```
 
-作成されるサイトには、次の追加プロパティが設定されます。
+When the site is created, it has the following additional properties:
 ```json
 "identity": {
     "type": "UserAssigned",
@@ -242,25 +244,25 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 }
 ```
 
-`<PRINCIPALID>` と `<CLIENTID>` は GUID に置き換えられます。 principalId は、AAD の管理に使用される ID の一意識別子です。 clientId は、ランタイム呼び出し中に使用する ID を指定するために使用されるアプリケーションの新しい ID の一意識別子です。
+Where `<PRINCIPALID>` and `<CLIENTID>` are replaced with GUIDs. The principalId is a unique identifier for the identity which is used for AAD administration. The clientId is a unique identifier for the application's new identity that is used for specifying which identity to use during runtime calls.
 
 
-## <a name="obtaining-tokens-for-azure-resources"></a>Azure リソースのトークンの取得
+## <a name="obtaining-tokens-for-azure-resources"></a>Obtaining tokens for Azure resources
 
-アプリは、その ID を使って、AAD で保護されている他のリソース (Azure Key Vault など) へのトークンを取得できます。 これらのトークンは、アプリケーションの特定のユーザーではなく、リソースにアクセスしているアプリケーションを表します。 
+An app can use its identity to get tokens to other resources protected by AAD, such as Azure Key Vault. These tokens represent the application accessing the resource, and not any specific user of the application. 
 
 > [!IMPORTANT]
-> アプリケーションからのアクセスを許可するように、対象のリソースを構成することが必要な場合があります。 たとえば、Key Vault に対するトークンを要求する場合、アプリケーションの ID を含むアクセス ポリシーを追加する必要があります。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 Azure Active Directory トークンをサポートしているリソースの詳細については、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
+> You may need to configure the target resource to allow access from your application. For example, if you request a token to Key Vault, you need to make sure you have added an access policy that includes your application's identity. Otherwise, your calls to Key Vault will be rejected, even if they include the token. To learn more about which resources support Azure Active Directory tokens, see [Azure services that support Azure AD authentication](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication).
 
-App Service と Azure Functions には、トークンを取得するための簡単な REST プロトコルがあります。 .NET アプリケーションの場合は、Microsoft.Azure.Services.AppAuthentication ライブラリがこのプロトコルの抽象化を提供し、ローカル開発エクスペリエンスをサポートします。
+There is a simple REST protocol for obtaining a token in App Service and Azure Functions. For .NET applications, the Microsoft.Azure.Services.AppAuthentication library provides an abstraction over this protocol and supports a local development experience.
 
-### <a name="asal"></a>.NET 用の Microsoft.Azure.Services.AppAuthentication ライブラリの使用
+### <a name="asal"></a>Using the Microsoft.Azure.Services.AppAuthentication library for .NET
 
-.NET アプリケーションと Functions の場合、マネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](/cli/azure)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス]に関するページをご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
+For .NET applications and functions, the simplest way to work with a managed identity is through the Microsoft.Azure.Services.AppAuthentication package. This library will also allow you to test your code locally on your development machine, using your user account from Visual Studio, the [Azure CLI](/cli/azure), or Active Directory Integrated Authentication. For more on local development options with this library, see the [Microsoft.Azure.Services.AppAuthentication reference]. This section shows you how to get started with the library in your code.
 
-1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) とその他の必要な NuGet パッケージに対する参照をアプリケーションに追加します。 下の例では [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) も使用されています。
+1. Add references to the [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) and any other necessary NuGet packages to your application. The below example also uses [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault).
 
-2.  次のコードをアプリケーションに追加し、正しいリソースが対象となるように変更します。 この例では、Azure Key Vault と連携動作するための 2 つの方法が示されています。
+2. Add the following code to your application, modifying to target the correct resource. This example shows two ways to work with Azure Key Vault:
 
 ```csharp
 using Microsoft.Azure.Services.AppAuthentication;
@@ -272,53 +274,54 @@ string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https:
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
 ```
 
-Microsoft.Azure.Services.AppAuthentication およびそれによって公開される操作について詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス]に関するページおよび「[App Service and KeyVault with MSI .NET sample](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)」(MSI .NET での App Service と KeyVault のサンプル) をご覧ください。
+To learn more about Microsoft.Azure.Services.AppAuthentication and the operations it exposes, see the [Microsoft.Azure.Services.AppAuthentication reference] and the [App Service and KeyVault with MSI .NET sample](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
-### <a name="using-the-rest-protocol"></a>REST プロトコルの使用
+### <a name="using-the-rest-protocol"></a>Using the REST protocol
 
-マネージド ID を使用するアプリでは、2 つの環境変数を定義します。
-- MSI_ENDPOINT
-- MSI_SECRET
+An app with a managed identity has two environment variables defined:
 
-**MSI_ENDPOINT** は、アプリがトークンを要求できるローカル URL です。 リソースのトークンを取得するには、次のパラメーターを指定して、このエンドポイントに HTTP GET 要求を行います。
+- MSI_ENDPOINT - the URL to the local token service.
+- MSI_SECRET - a header used to help mitigate server-side request forgery (SSRF) attacks. The value is rotated by the platform.
 
-> [!div class="mx-tdBreakAll"]
-> |パラメーター名|イン|説明|
+The **MSI_ENDPOINT** is a local URL from which your app can request tokens. To get a token for a resource, make an HTTP GET request to this endpoint, including the following parameters:
+
+> |Parameter name|In|Description|
 > |-----|-----|-----|
-> |resource|クエリ|トークンを取得する必要のあるリソースの AAD リソース URI。 これは [Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication)の 1 つか、その他のリソース URI になります。|
-> |api-version|クエリ|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
-> |secret|ヘッダー|MSI_SECRET 環境変数の値。|
-> |clientid|クエリ|(省略可能) 使用するユーザー割り当て ID のID。 省略すると、システム割り当て ID が使用されます。|
+> |resource|Query|The AAD resource URI of the resource for which a token should be obtained. This could be one of the [Azure services that support Azure AD authentication](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) or any other resource URI.|
+> |api-version|Query|The version of the token API to be used. "2017-09-01" is currently the only version supported.|
+> |secret|Header|The value of the MSI_SECRET environment variable. This header is used to help mitigate server-side request forgery (SSRF) attacks.|
+> |clientid|Query|(Optional) The ID of the user-assigned identity to be used. If omitted, the system-assigned identity is used.|
 
+A successful 200 OK response includes a JSON body with the following properties:
 
-正常終了の応答である 200 OK には、JSON 本文と次のプロパティが含まれています。
-
-> [!div class="mx-tdBreakAll"]
-> |プロパティ名|説明|
+> |Property name|Description|
 > |-------------|----------|
-> |access_token|要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。|
-> |expires_on|アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。|
-> |resource|受信側の Web サービスのアプリケーション ID URI。|
-> |token_type|トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。|
+> |access_token|The requested access token. The calling web service can use this token to authenticate to the receiving web service.|
+> |expires_on|The time when the access token expires. The date is represented as the number of seconds from 1970-01-01T0:0:0Z UTC until the expiration time. This value is used to determine the lifetime of cached tokens.|
+> |resource|The App ID URI of the receiving web service.|
+> |token_type|Indicates the token type value. The only type that Azure AD supports is Bearer. For more information about bearer tokens, see [The OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
+This response is the same as the [response for the AAD service-to-service access token request](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
-この応答は、[AAD のサービス間アクセス トークン要求に対する応答](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)と同じです。
+> [!NOTE]
+> Environment variables are set up when the process first starts, so after enabling a managed identity for your application, you may need to restart your application, or redeploy its code, before `MSI_ENDPOINT` and `MSI_SECRET` are available to your code.
 
-> [!NOTE] 
-> 環境変数はプロセスが初めて開始されるときに設定されます。そのため、アプリケーションのマネージド ID を有効にした後、場合によってはアプリケーションを再起動するか、アプリケーションのコードを再デプロイしないと `MSI_ENDPOINT` と `MSI_SECRET` をコードで利用できません。
+### <a name="rest-protocol-examples"></a>REST protocol examples
 
-### <a name="rest-protocol-examples"></a>REST プロトコルの例
-要求の例を次に示します。
+An example request might look like the following:
+
 ```
 GET /MSI/token?resource=https://vault.azure.net&api-version=2017-09-01 HTTP/1.1
 Host: localhost:4141
 Secret: 853b9a84-5bfa-4b22-a3f3-0b9a43d9ad8a
 ```
-応答の例は次のようになります。
+
+And a sample response might look like the following:
+
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json
- 
+
 {
     "access_token": "eyJ0eXAi…",
     "expires_on": "09/14/2017 00:00:00 PM +00:00",
@@ -327,8 +330,10 @@ Content-Type: application/json
 }
 ```
 
-### <a name="code-examples"></a>コード例
-<a name="token-csharp"></a>この要求を C# で行うには:
+### <a name="code-examples"></a>Code examples
+
+<a name="token-csharp"></a>To make this request in C#:
+
 ```csharp
 public static async Task<HttpResponseMessage> GetToken(string resource, string apiversion)  {
     HttpClient client = new HttpClient();
@@ -336,14 +341,16 @@ public static async Task<HttpResponseMessage> GetToken(string resource, string a
     return await client.GetAsync(String.Format("{0}/?resource={1}&api-version={2}", Environment.GetEnvironmentVariable("MSI_ENDPOINT"), resource, apiversion));
 }
 ```
-> [!TIP]
-> .NET 言語では、この要求を自作する代わりに、[Microsoft.Azure.Services.AppAuthentication](#asal) を使うこともできます。
 
-<a name="token-js"></a>Node.JS の例:
+> [!TIP]
+> For .NET languages, you can also use [Microsoft.Azure.Services.AppAuthentication](#asal) instead of crafting this request yourself.
+
+<a name="token-js"></a>In Node.JS:
+
 ```javascript
 const rp = require('request-promise');
 const getToken = function(resource, apiver, cb) {
-    var options = {
+    let options = {
         uri: `${process.env["MSI_ENDPOINT"]}/?resource=${resource}&api-version=${apiver}`,
         headers: {
             'Secret': process.env["MSI_SECRET"]
@@ -354,7 +361,8 @@ const getToken = function(resource, apiver, cb) {
 }
 ```
 
-<a name="token-powershell"></a>PowerShell の例:
+<a name="token-powershell"></a>In PowerShell:
+
 ```powershell
 $apiVersion = "2017-09-01"
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -363,24 +371,24 @@ $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SEC
 $accessToken = $tokenResponse.access_token
 ```
 
-## <a name="remove"></a>ID の削除
+## <a name="remove"></a>Removing an identity
 
-システム割り当て ID は、ポータル、PowerShell、または CLI を使用して、作成時と同じ方法で機能を無効にすることで、削除できます。 ユーザー割り当て ID は個別に削除することはできません。 すべての ID を削除するには、REST/ARM テンプレート プロトコルでは、種類を "なし" に設定することでこの削除を実行します。
+A system-assigned identity can be removed by disabling the feature using the portal, PowerShell, or CLI in the same way that it was created. User-assigned identities can be removed individually. To remove all identities, in the REST/ARM template protocol, this is done by setting the type to "None":
 
 ```json
 "identity": {
     "type": "None"
-}    
+}
 ```
 
-この方法でシステム割り当て ID を削除すると、AAD からも削除されます。 システム割り当て ID は、アプリ リソースが削除されると、AAD からも自動的に削除されます。
+Removing a system-assigned identity in this way will also delete it from AAD. System-assigned identities are also automatically removed from AAD when the app resource is deleted.
 
-> [!NOTE] 
-> また、単純にローカル トークン サービスを無効にする、設定可能なアプリケーション設定 WEBSITE_DISABLE_MSI もあります。 ただし、ID はその場所に残り、ツールには引き続きマネージド ID が "オン" または "有効" と表示されます。 そのため、この設定の使用は推奨しません。
+> [!NOTE]
+> There is also an application setting that can be set, WEBSITE_DISABLE_MSI, which just disables the local token service. However, it leaves the identity in place, and tooling will still show the managed identity as "on" or "enabled." As a result, use of this setting is not recommended.
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>Next steps
 
 > [!div class="nextstepaction"]
-> [マネージド ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)
+> [Access SQL Database securely using a managed identity](app-service-web-tutorial-connect-msi.md)
 
-[Microsoft.Azure.Services.AppAuthentication のリファレンス]: https://go.microsoft.com/fwlink/p/?linkid=862452
+[Microsoft.Azure.Services.AppAuthentication reference]: https://go.microsoft.com/fwlink/p/?linkid=862452

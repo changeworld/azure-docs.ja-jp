@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/18/2018
+ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f617be79cb61932f79728feef76f056ce72ae0ab
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: d27cc555a8cf96a07818e83b342cf145d9e98a96
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891131"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265909"
 ---
-# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>チュートリアル: Service Fabric Mesh で実行されている Service Fabric アプリケーションをアップグレードする
+# <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>チュートリアル:Service Fabric Mesh で実行されている Service Fabric アプリケーションをアップグレードする
 
 このチュートリアルは、シリーズの第 3 部です。 割り当てられている CPU リソースを増やすことによって、[以前に Service Fabric Mesh にデプロイ](service-fabric-mesh-tutorial-template-deploy-app.md)された Service Fabric アプリケーションをアップグレードする方法について学習します。  完了すると、Web フロントエンド サービスがより多くの CPU リソースで実行するようになります。
 

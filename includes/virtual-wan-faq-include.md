@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 10/05/2018
+ms.date: 10/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 761b68ca99df8ae5b4d379b95e7d2a300f7e6238
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c0da70426d8962999fd8d2cf2852a9bd8d255fc8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48874039"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736105"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Azure 仮想ネットワーク ゲートウェイ (VPN Gateway) と Azure Virtual WAN vpngateway の違いは何ですか。
 
@@ -57,7 +57,7 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>仮想ハブに接続されているスポーク VNet は相互に通信できますか。
 
-はい。 仮想ハブに接続されているスポーク間で VNet ピアリングを直接行うことができます。 詳細については、「[仮想ネットワーク ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)」を参照してください。
+はい。 スポーク VNet は、仮想ネットワーク ピアリングを介して直接通信できます。 ただし、ハブを通じて推移的に通信する VNet はサポートされていません。 詳細については、「[仮想ネットワーク ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
 ### <a name="can-i-deploy-and-use-my-favorite-network-virtual-appliance-in-an-nva-vnet-with-azure-virtual-wan"></a>Azure Virtual WAN で (NVA VNet 内に) 好みのネットワーク仮想アプライアンスをデプロイして使用できますか。
 

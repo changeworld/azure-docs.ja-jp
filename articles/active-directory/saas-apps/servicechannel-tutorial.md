@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ServiceChannel の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ServiceChannel の統合 | Microsoft Docs
 description: Azure Active Directory と ServiceChannel の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c3546eab-96b5-489b-a309-b895eb428053
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: 22e72d454626941b932cef2750cba008da20a214
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e7d8f42b49fe3dbdecec163ab47579346b71f0bf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114962"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190502"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>チュートリアル: Azure Active Directory と ServiceChannel の統合
+# <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>チュートリアル:Azure Active Directory と ServiceChannel の統合
 
 このチュートリアルでは、ServiceChannel と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -144,7 +145,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
     
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
     
 1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -187,7 +188,7 @@ ServiceChannel で Azure AD シングル サインオンを構成およびテス
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。 
 
 ### <a name="creating-a-servicechannel-test-user"></a>ServiceChannel テスト ユーザーの作成
 

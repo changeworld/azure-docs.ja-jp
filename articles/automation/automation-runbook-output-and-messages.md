@@ -3,18 +3,18 @@ title: Azure Automation での Runbook の出力とメッセージ
 description: Azure Automation で Runbook から出力とエラー メッセージを作成および取得する方法を説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cc1ef2a3ab09ec5b86d1dc0b4c139afd43ba356d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 82382ecc3adf0d0621f51438a082f7807b031fc9
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969126"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54431216"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 ほとんどの Azure Automation Runbook は、何らかの形式の出力があります。 この出力には、ユーザーへのエラー メッセージや別の Runbook で使用することを目的とした複雑なオブジェクトなどがあります。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](/powershell/module/microsoft.powershell.core/about/about_redirection) が提供されます。 Azure Automation は、これらの各ストリームで異なる動作をします。 Runbook を作成するときに、それぞれの使用方法のベスト プラクティスに従ってください。
@@ -234,4 +234,5 @@ Log Analytics との統合を構成して、ジョブ データを収集、操�
 ## <a name="next-steps"></a>次の手順
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、 [Runbook ジョブの追跡](automation-runbook-execution.md)
 * 子 Runbook を設計および使用する方法については、「 [Azure Automation での子 Runbook](automation-child-runbooks.md)
+
 

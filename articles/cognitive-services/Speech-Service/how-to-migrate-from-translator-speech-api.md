@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: アプリケーションを Translator Speech API から Speech Service に移行する方法について説明します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: aahi
-ms.openlocfilehash: dec903d8557145701e06ddd588a58eb11fef96f5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: de9727df9255fb880403e0409055b73db240e882
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879311"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868117"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Translator Speech API から Speech Service に移行する
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning service
 description: Machine Learning Workbench アプリケーションの変更点、Azure Machine Learning service の変更箇所、およびサポートのタイムラインの概要について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: overview
 ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6fee4a3f360cd05a620975af4fc7ea450239bc43
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 4ebc9b83c3aa135c90f18ff982621e862cb01d72
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155135"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879615"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 

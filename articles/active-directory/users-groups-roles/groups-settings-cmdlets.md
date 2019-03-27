@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory で PowerShell を使用したグループ設定の構成 | Microsoft Docs
+title: PowerShell を使用したグループ設定の構成 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory コマンドレットを使用して、グループの設定を管理する方法です
 services: active-directory
 documentationcenter: ''
@@ -8,18 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 6a175fb888237e5e4de445df6331ffb370839b8c
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 456a094ed961b24e3db3944fe4ae2b9ff661d896
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163023"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190876"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 この記事では、Azure Active Directory (Azure AD) PowerShell コマンドレットを使用して、グループを作成し、更新する手順を説明します。 このコンテンツは、Office 365 グループ (統合グループと呼ばれることもあります) にのみ適用されます。 
@@ -94,20 +95,20 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 
 | **設定** | **説明** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>次のコマンドを入力します: Boolean<li>既定値はTrue |ディレクトリで管理者以外のユーザーによる Office 365 グループの作成を許可するかどうかを示すフラグ。 この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
-|  <ul><li>GroupCreationAllowedGroupId<li>次のコマンドを入力します: String<li>既定値: “” |EnableGroupCreation == false の場合でも Office 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
-|  <ul><li>UsageGuidelinesUrl<li>次のコマンドを入力します: String<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
-|  <ul><li>ClassificationDescriptions<li>次のコマンドを入力します: String<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。
+|  <ul><li>EnableGroupCreation<li>型: Boolean<li>既定値はTrue |ディレクトリで管理者以外のユーザーによる Office 365 グループの作成を許可するかどうかを示すフラグ。 この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
+|  <ul><li>GroupCreationAllowedGroupId<li>型: String<li>既定値: “” |EnableGroupCreation == false の場合でも Office 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
+|  <ul><li>UsageGuidelinesUrl<li>型: String<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
+|  <ul><li>ClassificationDescriptions<li>型: String<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。
   $setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"。ここで、Classification は ClassificationList 内の文字列に一致します。|
-|  <ul><li>DefaultClassification<li>次のコマンドを入力します: String<li>既定値: “” | 何も指定されていない場合にグループの既定の分類として使用される分類。|
-|  <ul><li>PrefixSuffixNamingRequirement<li>次のコマンドを入力します: String<li>既定値: “” | Office 365 グループ用に構成された名前付け規則を定義する文字列。最大文字数は 64 文字です。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
-| <ul><li>CustomBlockedWordsList<li>次のコマンドを入力します: String<li>既定値: “” | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
-| <ul><li>EnableMSStandardBlockedWords<li>次のコマンドを入力します: Boolean<li>既定値は"False" | 使用しないでください
-|  <ul><li>AllowGuestsToBeGroupOwner<li>次のコマンドを入力します: Boolean<li>既定値はFalse | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
-|  <ul><li>AllowGuestsToAccessGroups<li>次のコマンドを入力します: Boolean<li>既定値はTrue | ゲスト ユーザーが Office 365 グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
-|  <ul><li>GuestUsageGuidelinesUrl<li>次のコマンドを入力します: String<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
-|  <ul><li>AllowToAddGuests<li>次のコマンドを入力します: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。|
-|  <ul><li>ClassificationList<li>次のコマンドを入力します: String<li>既定値: “” |Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 |
+|  <ul><li>DefaultClassification<li>型: String<li>既定値: “” | 何も指定されていない場合にグループの既定の分類として使用される分類。|
+|  <ul><li>PrefixSuffixNamingRequirement<li>型: String<li>既定値: “” | Office 365 グループ用に構成された名前付け規則を定義する文字列。最大文字数は 64 文字です。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
+| <ul><li>CustomBlockedWordsList<li>型: String<li>既定値: “” | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
+| <ul><li>EnableMSStandardBlockedWords<li>型: Boolean<li>既定値は"False" | 使用しないでください
+|  <ul><li>AllowGuestsToBeGroupOwner<li>型: Boolean<li>既定値はFalse | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
+|  <ul><li>AllowGuestsToAccessGroups<li>型: Boolean<li>既定値はTrue | ゲスト ユーザーが Office 365 グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
+|  <ul><li>GuestUsageGuidelinesUrl<li>型: String<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
+|  <ul><li>AllowToAddGuests<li>型: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。|
+|  <ul><li>ClassificationList<li>型: String<li>既定値: “” |Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 |
 
 ## <a name="read-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の読み取り
 次の手順では、ディレクトリ内のすべての Office グループに適用される設定をディレクトリ レベルで読み取ります。

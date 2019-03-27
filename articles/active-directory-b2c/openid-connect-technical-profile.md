@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 内のカスタム ポリシーで OpenId Conn
 description: Azure Active Directory B2C 内のカスタム ポリシーで OpenId Connect 技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 9a20b8df1f0d9cddbde4c4886e11967bc8c04160
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.subservice: B2C
+ms.openlocfilehash: 730d32fd5b9451c2b4edfe0fb1e50c06c2156815
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842417"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55159473"
 ---
 # <a name="define-a-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenId Connect 技術プロファイルを定義する
 
@@ -23,7 +23,7 @@ ms.locfileid: "52842417"
 
 Azure Active Directory (Azure AD) B2C では、[OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/) プロトコルの ID プロバイダーにサポートを提供しています。 OpenID Connect 1.0 は OAuth 2.0 の上に ID レイヤーを定義し、現在の認証プロトコルにおいて最先端のものとなっています。  OpenId Connect 技術プロファイルを使用すると、Azure AD などの OpenId Connect ベースの ID プロバイダーと連携することができ、ユーザーは既存のソーシャル ID またはエンタープライズ ID でサインインできるようになります。
 
-## <a name="protocol"></a>プロトコル
+## <a name="protocol"></a>Protocol
 
 **Protocol** 要素の **Name** 属性は `OpenIdConnect` に設定する必要があります。 たとえば、**MSA-OIDC** 技術プロファイル用のプロトコルは `OpenIdConnect` です。
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: a0d697438c1265b8c4e6802dc2dad62a33f51855
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: fd8fa690c508b8bf748490668c1e9aaa811ac247
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548597"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300280"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions の継続的なデプロイ
 Azure Functions を利用すると、App Service の継続的インテグレーションを使用して、関数アプリを簡単にデプロイできます。 Functions は、BitBucket、Dropbox、GitHub、および Azure DevOps と統合されています。 これにより、関数コードの更新がこれらの統合されたサービスのいずれかを使用して行われるワークフローで、Azure へのデプロイをトリガーできるようになります。 Azure Functions に慣れていない場合は、「 [Azure Functions の概要](functions-overview.md)」から始めてください。
@@ -29,7 +29,7 @@ Azure Functions を利用すると、App Service の継続的インテグレー�
 * [Git ローカル リポジトリ](../app-service/deploy-local-git.md)
 * [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
-* [Azure DevOps Services](https://www.visualstudio.com/team-services/)
+* [Azure DevOps](https://azure.microsoft.com/services/devops/)
 
 デプロイは関数アプリごとに構成されます。 継続的なデプロイが有効になると、 ポータル内の関数コードへのアクセスは、 *読み取り専用*に設定されます。
 

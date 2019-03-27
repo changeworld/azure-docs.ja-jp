@@ -12,17 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2018
+ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 50f5662fa574b512ab607e17dbdfcf1861e2f5c6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.lastreviewed: 10/23/2018
+ms.openlocfilehash: b61bf4f05f52b9d28ee09bb6c0de30544396e815
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954914"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091598"
 ---
-# <a name="tutorial-offer-highly-available-sql-databases"></a>チュートリアル: 高可用性 SQL データベースの提供
+# <a name="tutorial-offer-highly-available-sql-databases"></a>チュートリアル:高可用性 SQL データベースの提供
 
 Azure Stack オペレーターとして、SQL Server データベースをホストするようにサーバー VM を構成できます。 SQL ホスティング サーバーが正常に作成され、Azure Stack によって管理されていると、SQL サービスにサブスクライブしているユーザーは SQL データベースを簡単に作成できます。
 
@@ -43,7 +44,7 @@ Azure Stack オペレーターとして、SQL Server データベースをホス
 > Azure Stack クイック スタート テンプレートを使用するには、以下のすべてが必要です。
 
 - [Windows Server 2016 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) マーケットプレース イメージ。
-- Windows Server 2016 サーバー イメージ上の SQL Server 2016 SP1 または SP2 (Enterprise、Standard、または Developer) このチュートリアルでは、[Windows Server 2016 マーケットプレース イメージ上で SQL Server 2016 SP2 Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.sqlserver2016sp2enterprisewindowsserver2016) を使用します。
+- Windows Server 2016 サーバー イメージ上の SQL Server 2016 SP1 または SP2 (Enterprise、Standard、または Developer) このチュートリアルでは、[Windows Server 2016 マーケットプレース イメージ上で SQL Server 2016 SP2 Enterprise](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) を使用します。
 - [SQL Server IaaS Extension](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) バージョン 1.2.30 以降 SQL IaaS 拡張機能を使用して、すべての Windows バージョンの Marketplace SQL Server 項目に必要なコンポーネントをインストールします。 SQL 仮想マシン上で SQL 固有の設定を構成することができます。 拡張機能がローカルの Marketplace にインストールされていない場合、SQL のプロビジョニングは失敗します。
 - [Windows バージョン 1.9.1 以降のカスタム スクリプト拡張機能](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.CustomScriptExtension)。 カスタム スクリプト拡張機能は、デプロイ後の VM カスタマイズ タスクを自動的に起動するために使用できるツールです。
 - [PowerShell Desired State Configuration (DSC)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.DSC-arm) バージョン 2.76.0.0 以降。 DSC は、Windows PowerShell の管理プラットフォームであり、ソフトウェア サービスの構成データのデプロイと管理、これらのサービスが実行される環境の管理を行うことができます。
@@ -64,7 +65,7 @@ Azure Stack マーケットプレースに項目を追加する方法につい�
 - SQL およびファイル共有監視 VM を含む 1 つの可用性セット  
 
 1. 
-[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. **\+[** **リソースの作成]** > **[カスタム]** の順に選択し、**[テンプレートのデプロイ]** を選択します。
 
@@ -141,7 +142,7 @@ SQL Server AlwayOn 可用性グループが作成され、適切に構成され�
 > [!NOTE]
 > この手順は、Azure Stack Operator が Azure Stack 管理ポータルから実行する必要があります。
 
-Azure Stack Operator は、SQL AlwaysOn 可用性グループのロード バランサー リスナーのパブリック IP と SQL 認証ログイン情報を使用し、[SQL AlwaysOn 可用性グループを使用して SQL ホスティング サーバーを作成](azure-stack-sql-resource-provider-hosting-servers.md#provide-high-availability-using-sql-always-on-availability-groups)することができます。 
+Azure Stack Operator は、SQL AlwaysOn 可用性グループのロード バランサー リスナーのパブリック IP と SQL 認証ログイン情報を使用し、[SQL AlwaysOn 可用性グループを使用して SQL ホスティング サーバーを作成](azure-stack-sql-resource-provider-hosting-servers.md#provide-high-availability-using-sql-always-on-availability-groups)できるようになりました。 
 
 また、SQL AlwaysOn データベースをユーザーが作成できるようにするプランとオファーが作成してあることも確認してください。 Operator は **Microsoft.SqlAdapter** サービスをプランに追加し、高可用性データベース専用の新しいクォータを作成する必要があります。 プランの作成の詳細については、「[プラン、オファー、クォータ、サブスクリプションの概要](azure-stack-plan-offer-quota-overview.md)」を参照してください。
 
@@ -155,7 +156,7 @@ SQL AlwaysOn 可用性グループが Azure Stack Operator によって Azure St
 > これらの手順は、SQL Server 機能 (Microsoft.SQLAdapter サービス) を提供するサブスクリプションを持つテナント ユーザーとして、Azure Stack ユーザー ポータルから実行します。
 
 1. 
-[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. **\+[** **リソースの作成]** > **[データ \+ ストレージ]** の順に選択し、**[SQL Database]** を選択します。<br><br>名前、照合順序、最大サイズ、サブスクリプションなどの必須のデータベースのプロパティと、リソース グループ、およびデプロイに使用する場所を指定します。 
 

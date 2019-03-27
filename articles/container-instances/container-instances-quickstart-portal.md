@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8f547977e544854e281e1c6be442607d55149e5e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d6a1d442eca0cf5e433a82fb52ed54b09b56c779
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190290"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566099"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>クイック スタート:Azure portal を使って Azure Container Instances でコンテナー アプリケーションを実行する
 
@@ -35,13 +35,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **[Container name] (コンテナー 名)**、**[Container image] (コンテナー イメージ)**、および **[Resource group] (リソース グループ)** テキスト ボックスに次の値を入力します。 その他の値は既定値のままにして、**OK** をクリックします。
 
-* [Container name](コンテナー 名): `mycontainer`
-* [Container image](コンテナー イメージ): `microsoft/aci-helloworld`
+* [コンテナー 名]: `mycontainer`
+* [コンテナー イメージ]: `microsoft/aci-helloworld`
 * リソース グループ:**新規作成** > `myResourceGroup`
 
 ![Azure ポータルで新しいコンテナー インスタンスの基本設定を構成][aci-portal-03]
 
-Azure Container Instances では、Windows コンテナーと Linux コンテナーの両方を作成できます。 このクイック スタートでは、**Linux** の既定の設定をそのまま使用して、Linux ベースの `microsoft/aci-helloworld` イメージをデプロイします。
+このクイック スタートでは、既定の設定である **[パブリック]** のままにして、パブリックの Docker Hub レジストリから `microsoft/aci-helloworld` イメージをデプロイします。 このイメージには、静的な HTML ページを返す、Node.js で作成された小さな Web アプリがパッケージされています。
 
 **[構成]** で、コンテナーの **DNS 名ラベル**を指定します。 この名前は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コンテナーには、`<dns-name-label>.<region>.azurecontainer.io` でパブリックに到達できます。
 

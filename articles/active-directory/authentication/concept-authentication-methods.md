@@ -3,19 +3,20 @@ title: Azure AD の認証方法
 description: Azure AD で MFA および SSPR として使用できる認証方法
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d8d7850e7d5253cfec4431fed3e09f4007995494
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1d57e3d647acfe9400d7b575f5635e2ab5254352
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249695"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162222"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
@@ -171,6 +172,8 @@ CSV ファイルとして適切な形式が整ったら、管理者は Azure por
 CSV ファイルのサイズによって異なりますが、この処理には数分間かかることがあります。 **[最新の情報に更新]** ボタンをクリックして、現在の状態を取得します。 ファイルにエラーがある場合、修正するために、エラーが含まれる CSV ファイルをダウンロードできます。
 
 すべてのエラーが修正されたら、管理者は各キーをアクティブにすることができます。アクティブにするトークンの **[アクティブ化]** をクリックし、トークンに表示されている OTP を入力します。
+
+ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された Microsoft Authenticator アプリなどの認証アプリケーションを組み合わせている場合があります。
 
 ## <a name="mobile-phone"></a>携帯電話
 

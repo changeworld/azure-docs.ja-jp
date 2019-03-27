@@ -3,25 +3,26 @@ title: Linux VM のシステム割り当てマネージド ID を使用して Az
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: daveba
-ms.openlocfilehash: 212e0cf390f7a67325b111d4028e0908c772b081
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.author: priyamo
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 24d050cbfbe3def0e6475b807f88102f3edfe4f7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622723"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204663"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 

@@ -13,19 +13,19 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1940908cc0120ed5a69ae6603ec101d020b0ef3f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 08897b2085c2a8f0eafb90b77486d60a0edce190
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722077"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54359869"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
 Azure Functions は、2 つの異なるモードで実行できます。従量課金プランと Azure App Service プランです。 従量課金プランでは、コードの実行時にコンピューティング能力が自動的に割り当てられます。 アプリは、負荷を処理する必要があるときはスケールアウトし、コードが実行していないときはスケールダウンします。 アイドル状態の VM に対して課金されることはなく、事前に容量を予約する必要もありません。
 
 > [!NOTE]  
-> [Linux ホスティング](functions-create-first-azure-function-azure-cli-linux.md)は現在、App Service プランでのみ利用可能です。
+> Linux 向け従量課金プランは、[現在パブリック プレビュー](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/)段階にあります。
 
 Azure Functions に慣れていない場合は、「[Azure Functions の概要](functions-overview.md)」を参照してください。
 
@@ -46,7 +46,7 @@ App Service プランの階層間で拡大縮小して、さまざまな量の�
 > [!NOTE]
 > 従量課金プランの関数に対する既定のタイムアウトは 5 分です。 [host.json](functions-host-json.md#functiontimeout) プロジェクト ファイルの `functionTimeout` プロパティを変更することにより、Function App に対するこの値を最大 10 分まで増やすことができます。
 
-課金は、実行数、実行時間、およびメモリの使用量に基づいて行われ、 関数アプリ内のすべての関数にわたって集計されます。 詳細については、[Azure Functions の価格に関するページ]に関するページを参照してください。
+課金は、実行数、実行時間、およびメモリの使用量に基づいて行われ、 関数アプリ内のすべての関数にわたって集計されます。 詳細については、[Azure Functions の価格に関するページ]を参照してください。
 
 従量課金プランは既定のホスティング プランであり、次の利点があります。
 
@@ -137,7 +137,7 @@ Azure Functions は "*スケール コントローラー*" と呼ばれるコン
 
 ### <a name="billing-model"></a>課金モデル
 
-従量課金プランの課金の詳細については、[Azure Functions の価格に関するページ]に関するページをご覧ください。 使用量は Function App レベルで集計され、関数コードが実行されている期間のみカウントされます。 課金の単位は、次のとおりです。
+従量課金プランの課金の詳細については、[Azure Functions の価格に関するページ]をご覧ください。 使用量は Function App レベルで集計され、関数コードが実行されている期間のみカウントされます。 課金の単位は、次のとおりです。
 
 * **ギガバイト/秒 (GB/秒) 単位でのリソース使用量**。 メモリ サイズと、関数アプリ内の全関数の実行時間の組み合わせとして計算されます。 
 * **実行回数**。 イベント トリガーに応じて関数が実行されるたびにカウントされます。

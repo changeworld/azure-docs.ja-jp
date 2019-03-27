@@ -1,7 +1,7 @@
 ---
 title: フルテキスト検索用に Azure Table Storage のコンテンツのインデックスを作成する - Azure Search
 description: Azure Table Storage に格納されているデータのインデックスを Azure Search インデクサーで作成する方法について説明します。
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9532f4331b4dbbc8d687778b29f63179cca6b4d4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: e1b411ab54a5b666849893ba9d246eff85e7e54e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632961"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306886"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Azure Table Storage のインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Table Storage に格納されているデータのインデックスを作成する方法を示します。

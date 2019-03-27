@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 175fa625a94626cde4d782abd1e9629530cab8b4
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: aeffe172fd422f18e2828c5274e9a2ed13cc546a
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408524"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103362"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でエグレス トラフィックに静的パブリック IP アドレスを使用する
 
@@ -24,7 +24,7 @@ ms.locfileid: "47408524"
 
 この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
 
-また、Azure CLI バージョン 2.0.46 以降がインストール、構成されていること必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
+また、Azure CLI バージョン 2.0.46 以降がインストール、構成されていること必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
 ## <a name="egress-traffic-overview"></a>エグレス トラフィックの概要
 
@@ -63,7 +63,7 @@ az network public-ip create \
     "ipAddress": "40.121.183.52",
     [..]
   }
-````
+```
 
 このパブリック IP アドレスは､後で [az network public ip list][ az-network-public-ip-list]コマンド を使用して取得することができます｡ 次の例に示すように､ノードのリソース グループ名を指定して、*ipAddress* に対するクエリを指定します｡
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e0ad51bd2370cd8b7569d76e5d91b606928eea6d
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: a48a2ebc64d156d2755a2bef32672bc58b57ad00
+ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189356"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54911255"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>クイック スタート:初めての IoT Edge モジュールを Azure portal から Windows デバイスに展開する - プレビュー
 
@@ -104,7 +104,7 @@ IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作を
    az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
-3. JSON 出力から接続文字列をコピーして保存します。 次のセクションで、IoT Edge ランタイムを構成するときにこの値を使用します。
+3. JSON 出力から `cs` キーの値をコピーして保存します。 この値はデバイスの接続文字列です。 次のセクションでは、この接続文字列を使用して IoT Edge ランタイムを構成します。
 
    ![CLI の出力から接続文字列を取得する](./media/quickstart/retrieve-connection-string.png)
 
@@ -170,6 +170,8 @@ PowerShell を使用して IoT Edge ランタイムをダウンロードし、�
    ```
 
    ![ご自身のデバイス上の 1 つのモジュールを表示する](./media/quickstart/iotedge-list-1.png)
+
+インストールが完了し、IoT Edge エージェント モジュールが起動するまでに数分かかる場合があります。容量またはインターネット アクセスが制限されているデバイスを使用している場合は特にそうです。 
 
 IoT Edge デバイスの構成はこれで完了です。 クラウドからモジュールをデプロイして実行することができます。
 

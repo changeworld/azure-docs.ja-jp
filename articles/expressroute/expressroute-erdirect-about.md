@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/01/2018
-ms.author: mialdrid
+ms.date: 02/11/2019
+ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 2f984eb8cb09e5d65c4a366b827f695c739003f3
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 3124e98dd035080c2989849232b978c5d4a563ea
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163829"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100739"
 ---
 # <a name="about-expressroute-direct-preview"></a>ExpressRoute Direct (プレビュー) について
 
@@ -58,7 +58,7 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 
 ## <a name="circuit-skus"></a>回線 SKU
 
-ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps** の回線 SKU がサポートされるようになりました。
+ExpressRoute Direct では、Azure Storage やその他のビッグ データ サービスへの大量のデータ インジェスト シナリオがサポートされます。 また、ExpressRoute Direct の ExpressRoute 回線でも、**40 Gbps** および **100 Gbps** の回線 SKU がサポートされるようになりました。 物理ポートのペアは **100 Gbps** のみであり、5 Gbps、10 Gbps、40 Gbps、100 Gbps の帯域幅で、任意の組み合わせで最大 200 Gbps まで複数の仮想回線を持つことができます。 
 
 ## <a name="vlan-tagging"></a>VLAN タグ付け
 
@@ -70,7 +70,7 @@ ExpressRoute Direct では、QinQ と Dot1Q の両方の VLAN タグ付けがサ
 
 ## <a name="workflow"></a>ワークフロー
 
-![workflow](./media/expressroute-erdirect-about/workflow1.png)
+[ ![ワークフロー](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 

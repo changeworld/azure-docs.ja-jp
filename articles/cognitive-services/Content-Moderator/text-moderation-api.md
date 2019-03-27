@@ -3,20 +3,20 @@ title: テキストのモデレート - Content Moderator
 description: 混入が考えられる不要なテキスト、PII、および条件のカスタム一覧に対して、テキストのモデレートを使用します。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/30/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 0948251c18ad8eece974914ee33dff18b5930553
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8ca6c73d6ccdab3acb4ebb18af9b4aa82683e026
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535805"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864300"
 ---
-# <a name="text-moderation"></a>テキストのモデレート
+# <a name="learn-text-moderation-concepts"></a>テキスト モデレーションの概念を確認する
 
 Content Moderator のコンピューター支援型のテキスト モデレーションと[目視レビュー](Review-Tool-User-Guide/human-in-the-loop.md)機能を使用して、テキスト コンテンツをモデレートします。
 

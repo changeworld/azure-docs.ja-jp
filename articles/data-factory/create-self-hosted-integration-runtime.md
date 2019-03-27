@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: 9a3e061902de53859ea98791048453db8cf00085
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021120"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493594"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)に関するページを参照してください。
@@ -86,7 +86,7 @@ ms.locfileid: "54021120"
 ## <a name="install-and-register-self-hosted-ir-from-the-download-center"></a>ダウンロード センターからセルフホステッド IR をインストールして登録する
 
 1. [Microsoft Integration Runtime のダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=39717)に移動します。
-2. **[ダウンロード]** を選択します。次に、適切なバージョン (**32 ビット**または **64 ビット**) を選んでから **[次へ]** を選択します。
+2. **[ダウンロード]** を選択します。次に、64 ビット バージョン (32 ビットはサポートされていません) を選んでから **[次へ]** を選択します。
 3. MSI ファイルを直接実行するか、ハード ディスクに保存してから実行します。
 4. **[ようこそ]** ページで言語を選び、**[次へ]** を選択します。
 5. マイクロソフト ソフトウェア ライセンス条項に同意して、**[次へ]** を選択します。
@@ -141,6 +141,9 @@ ms.locfileid: "54021120"
 - サブジェクトの別名 (SAN) の最後の項目のみが使用され、現行の制限に起因してその他はすべて無視されるため、SAN 証明書はお勧めしません。 たとえば、SAN が **node1.domain.contoso.com** と **node2.domain.contoso.com** の SAN 証明書がある場合、FQDN が **node2.domain.contoso.com** のコンピューターでのみこの証明書を使用できます。
 - 証明書では、SSL 証明書のために Windows Server 2012 R2 でサポートされている任意のキー サイズがサポートされます。
 - CNG キーを使用する証明書はサポートされません。  
+
+> [!NOTE]
+> この証明書は、セルフホステッド IR ノード上のポートの暗号化、 **ノード間通信** (状態の同期用)、およびローカル ネットワークからの**リンクされたサービス資格情報の設定に対する PowerShell コマンドレットの使用**の際に使用します。 プライベート ネットワーク環境が安全でない場合、またはプライベート ネットワーク内のノード間の通信をセキュリティで保護したい場合は、この証明書を使用することをお勧めします。 セルフホステッド IR から他のデータ ストアへの転送におけるデータ移動は、この証明書の設定に関係なく、常に暗号化チャネルを使用して行われます。 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>複数のデータ ファクトリでセルフホステッド統合ランタイムを共有する
 

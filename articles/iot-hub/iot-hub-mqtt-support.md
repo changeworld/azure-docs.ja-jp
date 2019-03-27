@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: rezas
-ms.openlocfilehash: a50fca059331b28c46adb65903be4e7ba018a36c
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 89c14f783cd4e46809cb4cae2dcc4c0853a10993
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052038"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552046"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -60,17 +60,17 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 * AMQP では、MQTT 接続を終了するときに、多くの条件のエラーが返されます。 そのため、例外処理のロジックを一部変更する必要が生じることがあります。
 * MQTT は、[クラウドからデバイスへのメッセージ][lnk-messaging]の受信時の "*拒否*" 操作をサポートしていません。 バックエンド アプリでデバイス アプリからの応答を受信する必要がある場合は、[ダイレクト メソッド][lnk-methods]の使用をご検討ください。
 
-## <a name="using-the-mqtt-protocol-directly"></a>MQTT プロトコルの直接使用
+## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>MQTT プロトコルの直接使用 (デバイスとして)
 
 デバイスでデバイス SDK を使用できない場合でも、MQTT プロトコルをポート 8883 で使用して、デバイスをパブリックのデバイス エンドポイントに接続できます。 **接続** パケットで、デバイスは次の値を使用する必要があります。
 
 * **ClientId** フィールドには、**deviceId** を使用します。
 
-* **[Usename]** フィールドには、`{iothubhostname}/{device_id}/api-version=2018-06-30` を使用します。`{iothubhostname}` は IoT Hub の完全な CName です。
+* **[Usename]** フィールドには、`{iothubhostname}/{device_id}/?api-version=2018-06-30` を使用します。`{iothubhostname}` は IoT Hub の完全な CName です。
 
     たとえば、IoT Hub の名前が **contoso.azure-devices.net** であり、デバイスの名前が **MyDevice01** であるとすると、**Username** フィールドの内容は 次のようになります。
 
-    `contoso.azure-devices.net/MyDevice01/api-version=2018-06-30`
+    `contoso.azure-devices.net/MyDevice01/?api-version=2018-06-30`
 
 * **[Password]** フィールドには、SAS トークンを使用します。 SAS トークンの形式は、HTTPS プロトコルや AMQP プロトコルの場合と同じです。
 
@@ -108,6 +108,16 @@ Azure IoT Tools の場合:
 MQTT の接続パケットおよび切断パケットの場合、IoT Hub は **操作の監視** チャネルでイベントを発行します。 このイベントには、接続の問題をトラブルシューティングするために役立つ追加情報があります。
 
 デバイス アプリは、**CONNECT** パケットに **Will** メッセージを指定できます。 また、デバイス アプリは、`devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を **Will** トピック名として使用することで、テレメトリ メッセージとして転送される **Will** メッセージ を定義する必要があります。 この場合、ネットワーク接続が閉じているが、**DISCONNECT** パケットがデバイスからまだ受信されていなければ、IoT Hub は、**CONNECT** パケットで提供される **Will** メッセージをテレメトリ チャネルに送信します。 テレメトリ チャネルは、既定の**イベント** エンドポイントにすることも、IoT Hub ルーティングで定義されるカスタム エンドポイントにすることもできます。 メッセージには **iothub-MessageType** プロパティが含まれており、その値には **Will** が割り当てられています。
+
+## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>MQTT プロトコルの直接使用 (モジュールとして)
+
+モジュール ID を使用して MQTT を介して IoT Hub に接続するのは、デバイス ([上](#using-the-mqtt-protocol-directly-as-a-device)で説明されています) と類似していますが、以下を使用する必要があります。
+* クライアント ID を `{device_id}/{module_id}` に設定します。
+* ユーザー名とパスワードを使用して認証する場合、ユーザー名を `<hubname>.azure-devices.net/{device_id}/{module_id}/?api-version=2018-06-30` に設定し、パスワードとしてモジュール ID に関連付けられている SAS トークンを使用します。
+* 利用統計情報を公開するためのトピックとして `devices/{device_id}/modules/{module_id}/messages/events/` を使用します。
+* WILL トピックとして `devices/{device_id}/modules/{module_id}/messages/events/` を使用します。
+* ツインの GET トピックと PATCH トピックは、モジュールとデバイスと同じです。
+* ツインの状態トピックは、モジュールとデバイスと同じです。
 
 ### <a name="tlsssl-configuration"></a>TLS または SSL の構成
 
@@ -198,20 +208,18 @@ IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` �
 
 要求 ID には、[IoT Hub メッセージング開発者ガイド][lnk-messaging]に従って、メッセージ プロパティ値として有効な任意の値を指定できます。ステータスは、整数として検証されます。
 
-応答本文には、デバイス ツインのプロパティ セクションが含まれます。 次のスニペットは、"properties" メンバーに限定された ID レジストリ エントリの本文を示します。以下に例を示します。
+次の応答の例で示されているように、応答本文にはデバイス ツインのプロパティ セクションが含まれます。
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "telemetrySendFrequency": "5m",
-            "$version": 12
-        },
-        "reported": {
-            "telemetrySendFrequency": "5m",
-            "batteryLevel": 55,
-            "$version": 123
-        }
+    "desired": {
+        "telemetrySendFrequency": "5m",
+        "$version": 12
+    },
+    "reported": {
+        "telemetrySendFrequency": "5m",
+        "batteryLevel": 55,
+        "$version": 123
     }
 }
 ```
@@ -220,7 +228,7 @@ IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` �
 
 |Status | 説明 |
 | ----- | ----------- |
-| 200 | Success |
+| 204 | 成功 (コンテンツは返されません) |
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル][lnk-quotas]に関するページを参照してください。 |
 | 5** | サーバー エラー |
 
@@ -320,8 +328,8 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 * [Azure IoT Edge でエッジ デバイスに AI をデプロイする][lnk-iotedge]
 
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks
-[lnk-mqtt-org]: http://mqtt.org/
-[lnk-mqtt-docs]: http://mqtt.org/documentation
+[lnk-mqtt-org]: https://mqtt.org/
+[lnk-mqtt-docs]: https://mqtt.org/documentation
 [lnk-sample-node]: https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js
 [lnk-sample-java]: https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java
 [lnk-sample-c]: https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm
@@ -331,7 +339,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-sas-tokens]: iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app
 [lnk-azure-protocol-gateway]: iot-hub-protocol-gateway.md
 
-[lnk-devices]: https://catalog.azureiotsuite.com/
+[lnk-devices]: https://catalog.azureiotsolutions.com/
 [lnk-protocols]: iot-hub-protocol-gateway.md
 [lnk-compare]: iot-hub-compare-event-hubs.md
 [lnk-scaling]: iot-hub-scaling.md

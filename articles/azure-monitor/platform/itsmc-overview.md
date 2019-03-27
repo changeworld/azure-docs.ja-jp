@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: cd27a4d43333674ec1928fbd873e873afe84d26d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f0d3641800d8ec2f9fd403b006e81af04444c143
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262882"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813128"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -44,7 +44,7 @@ ITSMC を使用すると、次のことができます
 ITSM Connector の使用を開始するには、次の手順を使用します。
 
 1.  [ITSM Connector ソリューションを追加する](#adding-the-it-service-management-connector-solution)
-2.  [ITSM 接続を作成する](#creating-an-itsm-connection)
+2.  ITSM 接続を作成する
 3.  [接続を使用する](#using-the-solution)
 
 

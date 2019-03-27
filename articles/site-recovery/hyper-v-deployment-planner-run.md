@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b5f0a2a418c53a5049ebff9bba9188219a9aeb13
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 776523bb001848e6ecc153f670a96e3143e2ac0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321179"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006336"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Hyper-V の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する
 
 Site Recovery Deployment Planner のコマンドライン ツール (ASRDeploymentPlanner.exe) は、次の 4 つのモードのいずれかで実行できます。 
--   [仮想マシン (VM) の一覧の取得](#get-vm-list-for-profiling-hyper-v-vms)
+-   仮想マシン (VM) の一覧の取得
 -   [プロファイル](#profile-hyper-v-vms)
--   [レポートの生成](#generate-report)
+-   レポートの生成
 -   [スループットの取得](#get-throughput)
 
 まずツールを実行して、1 つまたは複数の Hyper-V ホストから VM のリストを取得します。 次にプロファイリング モードでツールを実行し、VM のデータ変更頻度と IOPS を取得します。 そのうえでツールを実行してレポートを生成し、ネットワーク帯域幅やストレージの要件を把握してください。
@@ -34,6 +34,7 @@ Site Recovery Deployment Planner のコマンドライン ツール (ASRDeployme
 ```
 ASRDeploymentPlanner.exe -Operation GetVMList /?
 ```
+
 | パラメーター名 | 説明 |
 |---|---|
 | -Operation | GetVMList |
@@ -74,7 +75,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList -Directory "E:\Hyper-V_ProfiledDat
 クラスターのノード間における VM の移行とホスト内のストレージの移行がシームレスに処理されます。
 
 ### <a name="getting-the-vm-list-to-profile"></a>プロファイリング対象 VM リストの取得
-プロファイリングする VM のリストを作成する方法については、[GetVMList](#get-vm-list-for-profiling-hyper-v-vms) 操作を参照してください。
+プロファイリングする VM のリストを作成する方法については、GetVMList 操作を参照してください。
 
 プロファイリングの対象となる VM のリストを作成したら、プロファイリング モードでツールを実行できます。 
 
@@ -83,6 +84,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList -Directory "E:\Hyper-V_ProfiledDat
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
+
 | パラメーター名 | 説明 |
 |---|---|
 | -Operation | StartProfiling |
@@ -164,6 +166,7 @@ Deployment Planner ツールでは、マクロ有効 Microsoft Excel ファイ�
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
+
 | パラメーター名 | 説明 |
 |---|---|
 | -Operation | GenerateReport |
@@ -271,6 +274,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Dire
 ```
 ASRDeploymentPlanner.exe -Operation GetThroughput /?
 ```
+
  パラメーター名 | 説明 |
 |---|---|
 | -Operation | GetThroughput |

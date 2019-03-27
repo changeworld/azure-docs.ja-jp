@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: 53aa40c047b2b5201cd74c0409d56e97d2880eb0
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9f4bbf91b09abeb917fd9f49482881e33bf788ec
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602853"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54413936"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 
@@ -156,7 +156,7 @@ Azure AD を使用する場合、API 自体に対して、または、カスタ�
 
 - API の登録を構成するには、[App Service の認証と承認の構成](../app-service/configure-authentication-provider-aad.md)機能を使用してください。
 
-- コネクタの登録を構成するには、[Azure AD アプリケーションを追加する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application)ための手順に従います。 登録には、API および `https://msmanaged-na.consent.azure-apim.net/redirect` の応答 URL への委任アクセス許可が含まれている必要があります。 
+- コネクタの登録を構成するには、[Azure AD アプリケーションを追加する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)ための手順に従います。 登録には、API および `https://msmanaged-na.consent.azure-apim.net/redirect` の応答 URL への委任アクセス許可が含まれている必要があります。 
 
 詳細については、[PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) および [Microsoft Flow](https://flow.microsoft.com/documentation/customapi-azure-resource-manager-tutorial/) の Azure AD 登録の例をご覧ください。 これらの例では、API として Azure Resource Manager を使用しています。手順に従う場合は、API を置き換えてください。
 

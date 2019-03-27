@@ -3,7 +3,7 @@ title: Azure SQL Database サービス - 仮想コア | Microsoft Docs
 description: 仮想コア ベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,25 +11,25 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/08/2019
-ms.openlocfilehash: 9d5a1493316fbfa9a703655f37a40276ee3ffaf7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.date: 02/07/2019
+ms.openlocfilehash: a9a38d30ec2a8e9139470531960d47fef1025269
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156818"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328624"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>仮想コア サービス層、Azure ハイブリッド特典、および移行
 
 仮想コア ベースの購入モデルでは、コンピューティングおよびストレージ リソースを個別にスケーリングし、オンプレミスのパフォーマンスを一致させて、コストを最適化できます。 ハードウェアの世代を選択することもできます。
 
-- Gen 4 - Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサに基づく最大 24 個の論理 CPU、仮想コア = 1 PP (物理コア)、7 GB/コア、接続されている SSD
-- Gen 5 - Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサに基づく最大 80 個の論理 CPU、仮想コア = 1 LP (ハイパースレッド)、5.1 GB/コア、高速 eNVM SSD
+- Gen4 - Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサに基づく最大 24 個の論理 CPU、仮想コア = 1 PP (物理コア)、7 GB/コア、接続されている SSD
+- Gen5 - Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサに基づく最大 80 個の論理 CPU、仮想コア = 1 LP (ハイパースレッド)、5.1 GB/コア、高速 eNVM SSD
 
-また、仮想コア モデルでは、[SQL Server 向けの Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を使用して、コストを削減することもできます。
+Gen4 ハードウェアでは、仮想コアあたり大幅に多くのメモリが提供されます。 一方、Gen5 ハードウェアでは、コンピューティング リソースをはるかに高くまでスケールアップできます。
 
 > [!NOTE]
-> DTU ベースのサービス レベルの詳細については、[DTU ベースのサービス レベル](sql-database-service-tiers-dtu.md)に関するページを参照してください。 DTU ベースのサービス レベルと仮想コアベースのサービス レベルの違いの詳細については、[Azure SQL Database の購入モデル](sql-database-service-tiers.md)に関するページを参照してください。
+> DTU ベースのサービス レベルの詳細については、[DTU ベースのサービス レベル](sql-database-service-tiers-dtu.md)に関するページを参照してください。 DTU ベースのサービス レベルと仮想コアベースのサービス レベルの違いの詳細については、[Azure SQL Database の購入モデル](sql-database-purchase-models.md)に関するページを参照してください。
 
 ## <a name="service-tier-characteristics"></a>サービス レベルの特性
 
@@ -42,7 +42,7 @@ ms.locfileid: "54156818"
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視のスケーラブルでバランスの取れたコンピューティングおよびストレージ オプションを提供します。|IO 要件の高いビジネス アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|高度にスケーラブルなストレージと読み取りスケールの要件を持つほとんどのビジネス ワークロード|
 |Compute|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|Gen4:1 ～ 24 仮想コア<br/>Gen5:1 ～ 80 仮想コア|
 |メモリ|Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB | Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB |Gen4:コアあたり 7 GB<br>Gen5:コアあたり 5.1 GB|
-|Storage|[Premium リモート ストレージ](../virtual-machines/windows/premium-storage.md)の使用:<br/>単一データベース:5 GB – 4 TB<br/>Managed Instance:32 GB ～ 8 TB |ローカル SSD ストレージの使用:<br/>単一データベース:5 GB – 4 TB<br/>Managed Instance:32 GB ～ 4 TB |柔軟性が高く、必要に応じて自動拡張されるストレージ。 最大 100 TB のストレージなどをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージ用のローカル SSD ストレージ。 最終的な長期データ ストアとしての Azure リモート ストレージ。 |
+|Storage|リモート ストレージの使用:<br/>単一データベース:5 GB – 4 TB<br/>Managed Instance:32 GB ～ 8 TB |ローカル SSD ストレージの使用:<br/>単一データベース:5 GB – 4 TB<br/>Managed Instance:32 GB ～ 4 TB |柔軟性が高く、必要に応じて自動拡張されるストレージ。 最大 100 TB のストレージなどをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージ用のローカル SSD ストレージ。 最終的な長期データ ストアとしての Azure リモート ストレージ。 |
 |IO スループット (概算)|単一データベース:仮想コアあたり 500 IOPS (最大 7000 IOPS)</br>Managed Instance:[ファイル サイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存|コアあたり 5000 IOPS (最大 200,000 IOPS)|TBD|
 |可用性|1 レプリカ、読み取りスケールなし|3 レプリカ、1 [読み取りスケール レプリカ](sql-database-read-scale-out.md)、<br/>ゾーン冗長 HA|?|
 |バックアップ|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|Azure リモート ストレージおよび復元のスナップショットベースのバックアップは、高速復旧のためにこのようなスナップショットを使用します。 バックアップは瞬時に行われ、Compute の IO パフォーマンスには影響しません。 復元は非常に高速で、データ操作のサイズにはなりません (数時間 ～ 数日ではなく、分単位で行われます)。|
@@ -58,8 +58,6 @@ ms.locfileid: "54156818"
 
 > [!IMPORTANT]
 > 必要なコンピューティング能力が仮想コア 1 つ分を下回る場合は、DTU ベースの購入モデルを使用します。
-
-よく寄せられる質問の回答については、「[SQL Database に関する FAQ](sql-database-faq.md)」を参照してください。
 
 ## <a name="azure-hybrid-benefit"></a>Azure ハイブリッド特典
 

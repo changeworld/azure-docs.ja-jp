@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 63eb894c64919826922fa60f4e12894542a97c69
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: e6cfd9e72dc1a38e4ed0c11320336ccc4b44a2c0
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994167"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54447362"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Twilio を使用して音声通話と SMS を実行する方法 (Python)
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -47,8 +47,8 @@ API では、Twilio 動詞を使用します。たとえば、**&lt;Say&gt;** �
 Twilio 動詞の一覧を次に示します。 他の動詞と機能については、 [Twilio Markup Language のドキュメント][twiml]を参照してください。
 
 * **&lt;Dial&gt;**:呼び出し元を別の電話に接続します。
-* **&lt;Gather&gt;**:電話キーパッドで入力された数字を収集します。
-* **&lt;Hangup&gt;**:通話を終了します。
+* **&lt;Gather&gt;**: 電話キーパッドで入力された数字を収集します。
+* **&lt;Hangup&gt;**: 通話を終了します。
 * **&lt;Pause&gt;**:指定された秒数だけ静かに待ちます。
 * **&lt;Play&gt;**:オーディオ ファイルを再生します。
 * **&lt;Queue&gt;**:呼び出し元のキューに追加します。
@@ -56,7 +56,7 @@ Twilio 動詞の一覧を次に示します。 他の動詞と機能について
 * **&lt;Redirect&gt;**:通話または SMS の制御を別の URL に存在する TwiML に転送します。
 * **&lt;Reject&gt;**:Twilio 番号への受信通話を、課金することなく拒否します。
 * **&lt;Say&gt;**:テキストを通話で流れる音声に変換します。
-* **&lt;Sms&gt;**:SMS メッセージを送信します。
+* **&lt;Sms&gt;**: SMS メッセージを送信します。
 
 ### <a id="TwiML"></a>TwiML
 TwiML は、Twilio 動詞に基づいた XML ベースの命令のセットで、通話または SMS をどのように処理するかを Twilio に通知します。
@@ -88,8 +88,8 @@ Twilio サービスを利用し、Azure 上で実行される Python アプリ�
   3. **ポート 80** の **[Outgoing Rule (発信ルール)]** を追加します。 すべてのアドレスからの着信を許可してください。
 
 ### <a name="set-the-dns-name-label"></a>DNS 名のラベルの設定
-  1. [パブリック IP アドレス] ページに移動します。
-  2. 仮想マシンに対応するパブリック IP を選択します。
+  1. [パブリック IP アドレス][azure_ips] ページに移動します。
+  2. 目的の仮想マシンに対応するパブリック IP を選択します。
   3. **[構成]** セクションで **[DNS 名ラベル]** を設定します。 この例では、*your-domain-label*.centralus.cloudapp.azure.com のようになります。
 
 SSH から仮想マシンに接続できるようになると、任意の Web フレームワークをインストールできます (Python でよく知られている Web フレームワークは [Flask](http://flask.pocoo.org/) や [Django](https://www.djangoproject.com) です)。 いずれも `pip install` コマンドを実行するだけでインストールできます。

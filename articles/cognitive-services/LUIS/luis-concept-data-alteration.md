@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Language Understanding (LUIS) での予測前にデータを変更する方法について説明します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: a075e266a9b7b1537876237438743462ab85f3da
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c43d3738b23037432ecdfe3aa872950f6a7b863e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260944"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860594"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>予測前または予測中に発話データに変更を加える
 LUIS では、予測前または予測中に発話を操作する方法が用意されています。 これらには、スペルの修正や、事前構築済み datetimeV2 でのタイム ゾーンの問題の修正が含まれます。 

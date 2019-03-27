@@ -1,21 +1,21 @@
 ---
 title: レプリケート テーブルの設計ガイダンス - Azure SQL Data Warehouse | Microsoft Docs
-description: Azure SQL Data Warehouse スキーマでレプリケート テーブルを設計するための推奨事項。
+description: Azure SQL Data Warehouse スキーマでレプリケート テーブルを設計するための推奨事項。 
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/23/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: dfbfc61b9088535d6b50a9897b908572d88d6676
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5c791dc8216a4c905b4147f59a42d52091f14aae
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302764"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55465981"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でレプリケート テーブルを使用するための設計ガイダンス
 この記事では、SQL Data Warehouse スキーマでレプリケート テーブルを設計するための推奨事項を紹介します。 これらの推奨事項を使用すると、データの移動が少なくなり、クエリの複雑さが軽減されることでクエリ パフォーマンスが向上します。
@@ -23,13 +23,13 @@ ms.locfileid: "43302764"
 > [!VIDEO https://www.youtube.com/embed/1VS_F37GI9U]
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、読者が SQL Data Warehouse のデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、[アーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。 
+この記事では、読者が SQL Data Warehouse のデータ分散とデータ移動の概念を理解していることを前提としています。  詳細については、[アーキテクチャ](massively-parallel-processing-mpp-architecture.md)に関する記事を参照してください。 
 
-テーブル設計の一環として、ご利用のデータと、そのデータを照会する方法についてできる限り理解してください。  たとえば、次のような質問を考えてみます。
+テーブル設計の一環として、ご利用のデータと、そのデータを照会する方法についてできる限り理解してください。  たとえば、次のような質問を考えてみます。
 
-- テーブルの大きさはどの程度か。   
-- どの程度の頻度でテーブルが更新されるか。   
-- データ ウェアハウス内にファクト テーブルとディメンション テーブルがあるか。   
+- テーブルの大きさはどの程度か。   
+- どの程度の頻度でテーブルが更新されるか。   
+- データ ウェアハウス内にファクト テーブルとディメンション テーブルがあるか。   
 
 ## <a name="what-is-a-replicated-table"></a>レプリケート テーブルとは
 レプリケート テーブルには、各コンピューティング ノード上でアクセスできるテーブルの完全なコピーがあります。 テーブルをレプリケートすると、結合または集計の前に、コンピューティング ノード内のデータを転送する必要がなくなります。 テーブルには複数のコピーが含まれているため、テーブルのサイズが 2 GB 未満に圧縮されている場合にレプリケート テーブルが最も効果的に機能します。
@@ -44,10 +44,9 @@ ms.locfileid: "43302764"
 
 - ディスク上のテーブル サイズが、行数には関係なく、2 GB 未満である。 テーブルのサイズを調べるには、次のように [DBCC PDW_SHOWSPACEUSED](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql) コマンドを使用することができます。`DBCC PDW_SHOWSPACEUSED('ReplTableCandidate')` 
 - データ移動を必要とする結合でテーブルが使用されている。 ハッシュ分散テーブルなど同じ列で分散されていないテーブルを結合して､1 つのラウンドロビン テーブルにする場合､クエリを完了するにはデータの移動が必要です｡  テーブルの 1 つが小さい場合は、レプリケート テーブルを検討してください。 ほとんどの場合、ラウンド ロビン テーブルの代わりにレプリケート テーブルを使用することをお勧めします。 クエリ プランでのデータ移動操作を表示するには、[sys.dm_pdw_request_steps](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) を使用してください。  BroadcastMoveOperation は､レプリケート テーブルを使用することで不要にできる代表的なデータ移動操作です｡  
- 
-次の場合、レプリケート テーブルでは最適なクエリ パフォーマンスが得られない可能性があります。
+ 次の場合、レプリケート テーブルでは最適なクエリ パフォーマンスが得られない可能性があります。
 
-- テーブルで、頻繁な挿入、更新、削除操作が行われる。 これらのデータ操作言語 (DML) 操作では、レプリケート テーブルの再構築が必要となります。 頻繁に再構築すると、パフォーマンスが低下する場合があります。
+- テーブルで、頻繁な挿入、更新、削除操作が行われる。 これらのデータ操作言語 (DML) 操作では、レプリケート テーブルの再構築が必要となります。 頻繁に再構築すると、パフォーマンスが低下する場合があります。
 - データ ウェアハウスが頻繁にスケーリングされる。 データ ウェアハウスをスケーリングすると、コンピューティング ノードの数が変わるため、再構築が発生します。
 - テーブルに多数の列があっても、通常、データ操作でアクセスする列はごく少数である。 このシナリオでは、テーブル全体をレプリケートするのではなく、テーブルを分散し、頻繁にアクセスする列にインデックスを作成する方が効果的であると考えられます｡ クエリでデータ移動が必要な場合、SQL Data Warehouse は要求された列のデータを移動するだけです。 
 
@@ -70,7 +69,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 ```
 
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>既存のラウンド ロビン テーブルをレプリケート テーブルに変換する
-既にラウンド ロビン テーブルがある場合、この記事に記載されている条件を満たしているのであれば、レプリケート テーブルに変換することをお勧めします。 レプリケート テーブルは、データ移動の必要がなくなるため、ラウンド ロビン テーブルよりもパフォーマンスが高くなります。  ラウンド ロビン テーブルでは、常に、結合のためにデータ移動が必要になります。 
+既にラウンド ロビン テーブルがある場合、この記事に記載されている条件を満たしているのであれば、レプリケート テーブルに変換することをお勧めします。 レプリケート テーブルは、データ移動の必要がなくなるため、ラウンド ロビン テーブルよりもパフォーマンスが高くなります。  ラウンド ロビン テーブルでは、常に、結合のためにデータ移動が必要になります。 
 
 この例では [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) を使用して、DimSalesTerritory テーブルをレプリケート テーブルに変更します。 この例は、DimSalesTerritory がハッシュ分散かラウンド ロビンかに関係なく動作します。
 
@@ -103,7 +102,7 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 レプリケート テーブルでは、結合のためのデータ移動は必要ありません。これは、テーブル全体が既に各コンピューティング ノード上に存在するためです。 ディメンション テーブルがラウンド ロビン分散の場合、結合によって、ディメンション テーブル全体が各コンピューティング ノードにコピーされます。 データを移動するために、クエリ プランには BroadcastMoveOperation と呼ばれる操作が含まれています。 この種類のデータ移動操作では、クエリのパフォーマンスが低下します。レプリケート テーブルを使用すると、この操作は使用されなくなります。 クエリ プランのステップを表示するには、[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) システム カタログ ビューを使用します。 
 
 たとえば、AdventureWorks スキーマに対する次のクエリでは、` FactInternetSales` テーブルがハッシュ分散です。 `DimDate` テーブルと `DimSalesTerritory` テーブルは、小さいディメンション テーブルです。 このクエリでは、会計年度 2004 年の北米における売上合計が返されます。
- 
+ 
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
 FROM dbo.FactInternetSales s
@@ -139,7 +138,7 @@ SQL Data Warehouse は、テーブルのマスター バージョンを保持す
 
 ### <a name="use-indexes-conservatively"></a>インデックスは控えめに使用する
 標準的なインデックス作成方法は、レプリケート テーブルにも当てはまります。 SQL Data Warehouse は、再構築の一環として、各レプリケート テーブル インデックスを再構築します。 インデックスを使用するのは、インデックスの再構築にかかるコストよりもパフォーマンスの向上が重要な場合のみにしてください。  
- 
+ 
 ### <a name="batch-data-loads"></a>データの読み込みをバッチ処理する
 レプリケート テーブルにデータを読み込む場合、複数の読み込みをバッチ処理することで、再構築を最小限に抑えるようにします。 select ステートメントを実行する前に、バッチ処理された読み込みすべてを実行します。
 
@@ -168,23 +167,23 @@ SQL Data Warehouse は、テーブルのマスター バージョンを保持す
 
 次のクエリでは、[sys.pdw_replicated_table_cache_state](/sql/relational-databases/system-catalog-views/sys-pdw-replicated-table-cache-state-transact-sql) DMV を使用して、変更されたものの再構築されていないレプリケート テーブルの一覧を表示します。
 
-```sql 
+```sql 
 SELECT [ReplicatedTable] = t.[name]
-  FROM sys.tables t  
-  JOIN sys.pdw_replicated_table_cache_state c  
-    ON c.object_id = t.object_id 
-  JOIN sys.pdw_table_distribution_properties p 
-    ON p.object_id = t.object_id 
+  FROM sys.tables t  
+  JOIN sys.pdw_replicated_table_cache_state c  
+    ON c.object_id = t.object_id 
+  JOIN sys.pdw_table_distribution_properties p 
+    ON p.object_id = t.object_id 
   WHERE c.[state] = 'NotReady'
     AND p.[distribution_policy_desc] = 'REPLICATE'
 ```
- 
+ 
 再構築をトリガーするには、前の出力に含まれる各テーブルに対して次のステートメントを実行します。 
 
 ```sql
 SELECT TOP 1 * FROM [ReplicatedTable]
 ``` 
- 
+ 
 ## <a name="next-steps"></a>次の手順 
 レプリケート テーブルを作成するには、次のいずれかのステートメントを使用します。
 

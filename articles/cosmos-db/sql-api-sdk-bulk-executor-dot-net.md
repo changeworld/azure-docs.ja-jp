@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 11/19/2018
 ms.author: ramkris
-ms.openlocfilehash: 8675c5ff90f7be2dc0b3ac80eb593adb613ba860
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4f2d8b3246901f139695998224dfe036cccb9833
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039760"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855786"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET Bulk Executor ライブラリ:ダウンロード情報 
 
@@ -31,20 +31,14 @@ ms.locfileid: "54039760"
 > * [Bulk Executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**説明**</td><td>Bulk Executor ライブラリを使うと、クライアント アプリケーションは、Azure Cosmos DB アカウント上で一括操作を実行できます。 Bulk Executor ライブラリは、BulkImport、BulkUpdate、および BulkDelete 名前空間を提供します。 BulkImport モジュールは、コレクションに対してプロビジョニングされているスループットを最大限まで消費するように最適化された方法で、ドキュメントを一括して取り込むことができます。 BulkUpdate モジュールは、Azure Cosmos DB コンテナー内の既存のデータを、パッチとして一括更新できます。 BulkDelete モジュールは、コレクションに対してプロビジョニングされているスループットを最大限まで消費するように最適化された方法で、ドキュメントを一括削除できます。</td></tr>
-
-<tr><td>**SDK のダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/)</td></tr>
-
-<tr><td>**GitHub の BulkExecutor ライブラリ**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[.NET API リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)</td></tr>
-
-<tr><td>**作業開始**</td><td>[Bulk Executor ライブラリ .NET SDK の概要](bulk-executor-dot-net.md)</td></tr>
-
-<tr><td>**現在サポートされているフレームワーク**</td><td>Microsoft .NET Framework 4.5.2、4.6.1、.NET Standard 2.0 </td></tr>
-</table></br>
+| |  |
+|---|---|
+| **説明**| Bulk Executor ライブラリを使うと、クライアント アプリケーションは、Azure Cosmos DB アカウント上で一括操作を実行できます。 Bulk Executor ライブラリは、BulkImport、BulkUpdate、および BulkDelete 名前空間を提供します。 BulkImport モジュールは、コレクションに対してプロビジョニングされているスループットを最大限まで消費するように最適化された方法で、ドキュメントを一括して取り込むことができます。 BulkUpdate モジュールは、Azure Cosmos DB コンテナー内の既存のデータを、パッチとして一括更新できます。 BulkDelete モジュールは、コレクションに対してプロビジョニングされているスループットを最大限まで消費するように最適化された方法で、ドキュメントを一括削除できます。|
+|**SDK のダウンロード**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
+| **GitHub の BulkExecutor ライブラリ**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
+|**API ドキュメント**|[.NET API リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
+|**作業開始**|[Bulk Executor ライブラリ .NET SDK の概要](bulk-executor-dot-net.md)|
+| **現在サポートされているフレームワーク**| Microsoft .NET Framework 4.5.2、4.6.1、.NET Standard 2.0 |
 
 ## <a name="release-notes"></a>リリース ノート
 

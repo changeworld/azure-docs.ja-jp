@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: ramkris
-ms.openlocfilehash: 3add2b6800463cf9320d2fcfdd87897d2e38d32d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4d6d26bd142a62d57b55caa290a2a94a3988737d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039811"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008711"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 
@@ -42,7 +42,7 @@ ms.locfileid: "54039811"
 ## <a id="Prerequisites"></a>この Java Web アプリケーション チュートリアルの前提条件
 このアプリケーション開発チュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-*  Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+* Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
@@ -722,7 +722,7 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
 3. これで WAR ファイルを Azure Web サイトの **webapps** ディレクトリにアップロードできます。 ファイルのアップロード手順については、「[Azure App Service Web Apps への Java アプリケーションの追加](../app-service/web-sites-java-add-app.md)」を参照してください。
    
     WAR ファイルを webapps ディレクトリにアップロードすると、ランタイム環境により WAR ファイルの追加が検出され、WAR ファイルが自動的に読み込まれます。
-4. 完成した製品を表示するには、 http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/ に移動し、タスクの追加を開始します。
+4. 完成した製品を表示するには、`http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/` に移動し、タスクの追加を開始します。
 
 ## <a id="GetProject"></a>GitHub からのプロジェクトの入手
 このチュートリアルのサンプルはすべて、GitHub の [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) プロジェクトに含まれています。 todo プロジェクトを Eclipse にインポートするには、「 [前提条件](#Prerequisites) 」セクションに記載されているソフトウェアおよびリソースがあることを確認したうえで、以下の手順に従います。
@@ -747,6 +747,6 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
 18. 画面の下部の **[Servers]** タブで、**[Tomcat v7.0 Server at localhost]** を右クリックし、**[Add and Remove]** をクリックします。
 19. **[Add and Remove]** ウィンドウで、**[azure-documentdb-java-sample]** を **[Configured]** ボックスに移動し、**[Finish]** をクリックします。
 20. **[Servers]\(サーバー\)** タブで、**[Tomcat v7.0 Server at localhost]\(ローカルホストの Tomcat v7.0 サーバー\)** を右クリックし、**[Restart]\(再起動\)** をクリックします。
-21. ブラウザーで http://localhost:8080/azure-documentdb-java-sample/ に移動し、タスク一覧への追加を開始します。 既定のポート値を変更している場合は、8080 に代えて、使用している値を指定してください。
+21. ブラウザーで `http://localhost:8080/azure-documentdb-java-sample/` に移動し、タスク一覧への追加を開始します。 既定のポート値を変更している場合は、8080 に代えて、使用している値を指定してください。
 22. プロジェクトを Azure Web サイトにデプロイする方法については、「[手順 6: Azure Web Sites にアプリケーションをデプロイする](#Deploy)」を参照してください。
 

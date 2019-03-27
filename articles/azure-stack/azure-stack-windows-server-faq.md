@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: bf70f9a74b58758e03800d7f6fb92a8f8754828a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.lastreviewed: 11/12/2018
+ms.openlocfilehash: b498283ee117935438c55e5162e92acdb0f5ebfe
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51613097"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649902"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Azure Stack Marketplace の Windows Server に関する FAQ
 
@@ -37,10 +38,10 @@ ms.locfileid: "51613097"
 
 Microsoft は、次の 2 つのバージョンの Windows Server イメージを Azure Stack Marketplace で提供しています。
 
-- **従量課金制**: これらのイメージでは、正規の価格の Windows メーターが実行されます。 
-   "*使用量課金モデル*" を利用するマイクロソフト エンタープライズ契約 (EA) のお客様や、SPLA ライセンスの使用を希望しない CSP にお勧めします。
+- **従量課金制**: これらのイメージでは、正規の価格の Windows メーターが実行されます。
+   対象ユーザーとしては、"*使用量課金モデル*" を利用するマイクロソフト エンタープライズ契約 (EA) のお客様や、SPLA ライセンスの使用を希望しない CSP にお勧めします。
 - **ライセンス持ち込み (BYOL)**: これらのイメージでは、基本メーターが実行されます。
-   Windows Server ライセンスを所有する EA のお客様や、SPLA ライセンスを使用する CSP にお勧めします。
+   対象ユーザーとしては、Windows Server ライセンスを所有する EA のお客様や、SPLA ライセンスを使用する CSP にお勧めします。
 
 Azure Stack では、Azure ハイブリッド使用特典 (AHUB) はサポートされません。 "容量" モデルを通じてライセンスを受けるお客様は、BYOL イメージを使用する必要があります。 Azure Stack Development Kit (ASDK) を使ってテストを行う場合は、どちらのオプションを使用してもかまいません。
 
@@ -62,7 +63,7 @@ Azure Stack では、Azure ハイブリッド使用特典 (AHUB) はサポート
 
 ### <a name="i-have-an-enterprise-agreement-ea-and-will-be-using-my-ea-windows-server-license-how-do-i-make-sure-images-are-billed-correctly"></a>私はマイクロソフト エンタープライズ契約 (EA) を所有しており、EA Windows Server ライセンスを使う予定です。イメージに対して正しく課金されるようにするには、どうすればよいですか?
 
-Azure Resource Manager テンプレートに **licenseType: Windows_Server** を追加してください。 この設定は、個々の仮想マシンのリソース ブロックに追加する必要があります。
+**licenseType: Windows_Server** を Azure Resource Manager テンプレートに追加してください。 この設定は、個々の仮想マシンのリソース ブロックに追加する必要があります。
 
 ## <a name="activation"></a>アクティブ化
 
@@ -73,20 +74,20 @@ Azure Stack で Windows Server 仮想マシンのライセンス認証を行う�
 
 ### <a name="how-can-i-verify-that-my-virtual-machine-is-activated"></a>自分の仮想マシンがライセンス認証されたことは、どのようにして確認できますか?
 
-管理者特権でのコマンド プロンプトで、次のコマンドを実行します。 
+管理者特権でのコマンド プロンプトで、次のコマンドを実行します。
 
 ```shell
 slmgr /dlv
-``` 
+```
 
 正しくライセンス認証されていれば、`slmgr` の出力にその旨が明記され、ホスト名が表示されます。 ディスプレイ上の透かしに頼らないようにしてください。これらは最新ではない可能性があるほか、ご利用のものとは異なる仮想マシンからの表示である可能性もあります。
 
 ### <a name="my-vm-is-not-set-up-to-use-avma-how-can-i-fix-it"></a>私の VM は AVMA を使用するように設定されていません。解決方法を教えてください。
 
-管理者特権でのコマンド プロンプトで、次のコマンドを実行します。 
+管理者特権でのコマンド プロンプトで、次のコマンドを実行します。
 
 ```shell
-slmgr /ipk <AVMA key> 
+slmgr /ipk <AVMA key>
 ```
 
 イメージに使用するキーについては、記事「[Automatic Virtual Machine Activation (仮想マシンの自動ライセンス認証)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11))」を参照してください。

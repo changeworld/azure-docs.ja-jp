@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/16/2018
+ms.date: 02/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: aac5010ca6b0ed958a849bf203f1d2f80bcdb81c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4269f4ac24a842bf203456026234182934f1732f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119824"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878467"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -168,7 +168,7 @@ namespace User.Namespace.Example01
 {
     using System;
     using Microsoft.ApplicationInsights;
-    using TraceSeveretyLevel = Microsoft.ApplicationInsights.DataContracts.SeverityLevel;
+    using TraceSeverityLevel = Microsoft.ApplicationInsights.DataContracts.SeverityLevel;
 
     /// <summary>
     /// Most simple cases are one-liners.
@@ -209,7 +209,7 @@ namespace User.Namespace.Example01
             // You can control the maximum number of number data series per metric (and thus your resource usage and cost).
             // The default limits are no more than 1000 total data series per metric, and no more than 100 different values per dimension.
             // We discuss elsewhere how to change them.
-            // We use a common .Net pattern: TryXxx(..) to make sure that the limits are observed.
+            // We use a common .NET pattern: TryXxx(..) to make sure that the limits are observed.
             // If the limits are already reached, Metric.TrackValue(..) will return False and the value will not be tracked. Otherwise it will return True.
             // This is particularly useful if the data for a metric originates from user input, e.g. a file:
 
@@ -220,7 +220,7 @@ namespace User.Namespace.Example01
             if (!animalsSold.TrackValue(count, species))
 
             {
-                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", TraceSeveretyLevel.Error);
+                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", TraceSeverityLevel.Error);
             }
 
             // You can inspect a metric object to reason about its current state. For example:
@@ -249,7 +249,7 @@ namespace User.Namespace.Example01
 ## <a name="trackmetric"></a>TrackMetric
 
 > [!NOTE]
-> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric は、.NET SDK では非推奨です。 メトリックは送信される前に必ず、ある期間にわたって事前に集計される必要があります。 GetMetric(..) オーバーロードのいずれかを使用して、SDK の事前集計機能にアクセスするためのメトリック オブジェクトを取得します。 独自の事前集計ロジックを実装する場合は、Track(ITelemetry metricTelemetry) メソッドを使用して集計結果を送信できます。 アプリケーションで、一定時間にわたる集計を行わず、すべての機会に個別のテレメトリ項目を送信する必要がある場合は、おそらくイベント テレメトリのユース ケースに該当します。TelemetryClient.TrackEvent (Microsoft.Applicationlnsights.DataContracts.EventTelemetry) を参照してください。
+> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric は、.NET SDK では非推奨です。 メトリックは送信される前に必ず、ある期間にわたって事前に集計される必要があります。 GetMetric(..) オーバーロードのいずれかを使用して、SDK の事前集計機能にアクセスするためのメトリック オブジェクトを取得します。 独自の事前集計ロジックを実装する場合は、Track(ITelemetry metricTelemetry) メソッドを使用して集計結果を送信できます。 アプリケーションで、一定時間にわたる集計を行わず、すべての機会に個別のテレメトリ項目を送信する必要がある場合は、おそらくイベント テレメトリのユース ケースに該当します。TelemetryClient.TrackEvent (Microsoft.ApplicationInsights.DataContracts.EventTelemetry) を参照してください。
 
 Application Insights では、特定のイベントに関連付けられていないメトリックをグラフ化できます。 たとえば、一定の間隔でキューの長さを監視できます。 メトリックでは、個々の測定値は変化と傾向よりも関心が薄いため、統計グラフが役に立ちます。
 
@@ -400,7 +400,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
 ## <a name="operation-context"></a>操作コンテキスト
 
-テレメトリ項目を操作コンテキストと関連付けることで、それらの項目を互いに相関させることができます。 標準の要求追跡モジュールでは、HTTP 要求の処理中に送信される例外や他のイベントに対してこの関連付けが行われます。 [Search](../../azure-monitor/app/diagnostic-search.md) および [Analytics](analytics.md) では、操作 ID を使用して、要求に関連付けられたイベントを簡単に見つけることができます。
+テレメトリ項目を操作コンテキストと関連付けることで、それらの項目を互いに相関させることができます。 標準の要求追跡モジュールでは、HTTP 要求の処理中に送信される例外や他のイベントに対してこの関連付けが行われます。 [検索](../../azure-monitor/app/diagnostic-search.md)と[分析](analytics.md)では、操作 ID を使用して、要求に関連付けられたイベントを簡単に見つけることができます。
 
 相関の詳細については、「[Application Insights におけるテレメトリの相関付け](../../azure-monitor/app/correlation.md)」を参照してください。
 
@@ -508,7 +508,7 @@ catch (ex)
 SDK が多数の例外を自動的にキャッチするため、常に TrackException を明示的に呼び出す必要はありません。
 
 * ASP.NET:[例外をキャッチするコードを記述します](../../azure-monitor/app/asp-net-exceptions.md)。
-* J2EE:[例外は自動的にキャッチされます](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures)。
+* Java EE:[例外は自動的にキャッチされます](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures)。
 * JavaScript:例外は自動的にキャッチされます。 自動コレクションを無効にする場合は、Web ページに挿入するコード スニペットに次の行を追加します。
 
 ```javascript
@@ -572,6 +572,20 @@ telemetry.trackTrace({
     properties: properties
 });
 ```
+
+*クライアント/ブラウザー側の JavaScript*
+
+```javascript
+trackTrace(message: string, properties?: {[string]:string}, severityLevel?: AI.SeverityLevel)
+```
+
+メソッドの出入りなどの診断イベントをログに記録します。
+
+ パラメーター | 説明
+---|---
+`message` | 診断データ。 名前よりはるかに長くなることがあります。
+`properties` | 文字列と文字列のマップ:ポータルで、[例外のフィルター](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)に使用される追加のデータ。 既定値は空です。
+`severityLevel` | サポートされる値:[SeverityLevel.ts](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/JavaScript/JavaScriptSDK.Interfaces/Contracts/Generated/SeverityLevel.ts)
 
 メッセージ コンテンツで検索できますが、(プロパティ値とは異なり) フィルター処理はできません。
 
@@ -718,7 +732,7 @@ Thread.sleep(5000);
 telemetry.flush();
 ```
 
-[サーバー テレメトリ チャネル](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/)の場合、この関数は非同期であることに注意してください。
+[サーバー テレメトリ チャネル](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/)の場合、この関数は非同期です。
 
 理想的には、アプリケーションのシャットダウン アクティビティで flush() メソッドを使用する必要があります。
 
@@ -774,7 +788,7 @@ appInsights.setAuthenticatedUserContext(validatedId, accountId);
 
 *プロパティ* は、利用状況レポートでテレメトリをフィルター処理するのに使用できる文字列値です。 たとえば、アプリケーションで複数のゲームを提供する場合、各イベントにゲームの名前を結び付けることで人気のあるゲームを確認できます。
 
-文字列の長さには 8,192 の制限があります。 (データの大きなチャンクを送信する場合は、[TrackTrace](#track-trace) のメッセージ パラメーターを使用します。)
+文字列の長さには 8,192 の制限があります。 (データの大きなチャンクを送信する場合は、TrackTrace のメッセージ パラメーターを使用します。)
 
 *メトリックス*はグラフィカルに表示できる数値です。 たとえば、ゲーマーが達成するスコアに漸増があるかどうかを確認できます。 イベントともに送信されるプロパティ別にグラフをセグメント化し、ゲームごとの個別のグラフや積み重ねグラフを表示できます。
 
@@ -992,7 +1006,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 個別のテレメトリの呼び出しはプロパティ ディクショナリの既定値をオーバーライドできます。
 
-*JavaScript Web クライアント*の場合、 [JavaScript テレメトリ初期化子](#js-initializer)を使用します。
+*JavaScript Web クライアントの場合*、JavaScript テレメトリ初期化子を使用します。
 
 標準コレクション モジュールのデータなど、*すべてのテレメトリにプロパティを追加する*には、[`ITelemetryInitializer` を実装します](../../azure-monitor/app/api-filtering-sampling.md#add-properties)。
 
@@ -1002,7 +1016,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 テレメトリに[プロパティを追加する](../../azure-monitor/app/api-filtering-sampling.md#add-properties)には、`ITelemetryInitializer` を実装します。 たとえば、バージョン番号や、他のプロパティから算出された値を追加できます。
 
-`ITelemetryProcesor` を実装すると、テレメトリが SDK から送信される前に[フィルタリング](../../azure-monitor/app/api-filtering-sampling.md#filtering)によってテレメトリを変更または破棄することができます。 送信対象や破棄対象を指定できますが、メトリックへの影響を考慮する必要があります。 項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
+`ITelemetryProcessor` を実装すると、テレメトリが SDK から送信される前に[フィルタリング](../../azure-monitor/app/api-filtering-sampling.md#filtering)によってテレメトリを変更または破棄することができます。 送信対象や破棄対象を指定できますが、メトリックへの影響を考慮する必要があります。 項目を破棄する方法によっては、関連する項目間を移動する機能が失われる可能性があります。
 
 [サンプリング](../../azure-monitor/app/api-filtering-sampling.md)は、アプリからポータルに送信されるデータの量を減らすためのパッケージ化ソリューションです。 これにより、表示されるメトリックに影響をあたえることなくデータ量を削減できます。 また、サンプリングを行った場合でも、変わらずに例外、要求、ページ ビューなどの関連する項目間を移動して問題を診断できます。
 
@@ -1130,7 +1144,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 * **InstrumentationKey**:テレメトリが表示される Azure 内の Application Insights リソース。 通常、ApplicationInsights.config から取得されます。
 * **Location**:デバイスの地理的な場所。
 * **Operation**:Web アプリでは現在の HTTP 要求。 他の種類のアプリケーションでは、イベントをグループ化するために、これを設定できます。
-  * **Id**:診断検索でイベントを調べるときに関連項目を見つけることができるように、さまざまなイベントを関連付けるために生成される値。
+  * **ID**:診断検索でイベントを調べるときに関連項目を見つけることができるように、さまざまなイベントを関連付けるために生成される値。
   * **Name**:識別子。通常は HTTP 要求の URL です。
   * **SyntheticSource**:null 値または空ではない場合に、要求元がロボットまたは Web テストとして識別されたことを示す文字列。 既定で、メトリックス エクスプローラーの計算から除外されます。
 * **Properties**:すべてのテレメトリ データとともに送信されるプロパティ。 個々 の Track* 呼び出しでオーバーライドできます。

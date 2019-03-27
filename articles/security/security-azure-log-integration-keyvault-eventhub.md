@@ -3,25 +3,25 @@ title: Event Hubs を使用して Azure Key Vault からのログを統合する
 description: このチュートリアルには、Azure ログ統合を利用して Key Vault ログを SIEM で使用できるようにするための必要な手順が用意されています。
 services: security
 author: barclayn
-manager: MBaldwin
+manager: barbkess
 editor: TomShinder
 ms.assetid: ''
 ms.service: security
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 8b03c3627d476ec83fda402545c7a7d73346385f
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 21a1cd6d0326c834a05681ffe98555ea52858e6e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063915"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106564"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure Log Integration のチュートリアル:Event Hubs を使用して Azure Key Vault のイベントを処理する
 
 >[!IMPORTANT]
-> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月27 日で無効になります。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
+> Azure ログの統合機能は、2019 年 6 月 1 日までに廃止される予定です。 AzLog ダウンロードは、2018 年 6 月 27 日に無効になりました。 今後必要な対応のガイダンスについては、[Azure 監視を使って SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)方法に関する投稿を確認してください。 
 
 Azure ログ統合を使用すると、ログに記録されたイベントを取得し、Security Information and Event Management (SIEM) システムで使用できます。 このチュートリアルでは、Azure Event Hubs で取得されるログの処理に Azure ログ統合を使用する方法の例を説明しています。
 
@@ -56,25 +56,25 @@ Azure ログを統合する場合は、SIEM ベンダーの Azure Monitor コネ
  
 1. Azure ログ統合のインストール要件を満たす、インターネットにアクセス可能なシステム。 このシステムは、クラウド サービスでも、オンプレミスでホストされていても構いません。
 
-1. [Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324)がインストールされている。 インストールするには:
+1. Azure Log Integration がインストールされている。 インストールするには:
 
    a. リモート デスクトップを使用して、手順 2 で説明したシステムに接続します。   
-   b. Azure ログ統合のインストーラーをシステムにコピーします。 [ここからインストール ファイルをダウンロード](https://www.microsoft.com/download/details.aspx?id=53324)できます。   
-   c. インストーラーを起動し、マイクロソフト ソフトウェア ライセンス条項に同意します。   
-   d. 利用統計情報を提供する場合は、チェック ボックスをオンのままにします。 使用状況に関する情報をマイクロソフトに送信しない場合は、チェック ボックスをオフにします。
-   
+   b. Azure ログ統合のインストーラーをシステムにコピーします。 c. インストーラーを起動し、マイクロソフト ソフトウェア ライセンス条項に同意します。
+
+1. 利用統計情報を提供する場合は、チェック ボックスをオンのままにします。 使用状況に関する情報をマイクロソフトに送信しない場合は、チェック ボックスをオフにします。
+
    Azure ログ統合とインストール方法について詳しくは、「[Azure 診断ログおよび Windows イベント転送による Azure ログ統合](security-azure-log-integration-get-started.md)」をご覧ください。
 
 1. 最新の PowerShell バージョン。
- 
+
    Windows Server 2016 がインストールされている場合は、PowerShell 5.0 以上が必要です。 その他のバージョンの Windows Server を使用している場合は、それ以前のバージョンの PowerShell がインストールされている可能性があります。 PowerShell ウィンドウで ```get-host``` と入力すると、バージョンを確認できます。 PowerShell 5.0 がインストールされていない場合は、こちらから[ダウンロード](https://www.microsoft.com/download/details.aspx?id=50395)できます。
 
    PowerShell 5.0 以上がインストールされていれば、最新バージョンのインストールに進むことができます。
-   
+
    a. PowerShell ウィンドウで、```Install-Module Azure``` コマンドを入力します。 インストール手順を完了します。    
    b. ```Install-Module AzureRM``` コマンドを入力します。 インストール手順を完了します。
 
-   詳しくは、[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0)に関する記事をご覧ください。
+   詳しくは、[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.0.0)に関する記事をご覧ください。
 
 
 ## <a name="create-supporting-infrastructure-elements"></a>サポート インフラストラクチャ要素を作成する

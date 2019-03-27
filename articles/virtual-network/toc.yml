@@ -98,6 +98,9 @@ items:
         href: tutorial-create-route-table-powershell.md
       - name: Azure CLI
         href: tutorial-create-route-table-cli.md
+      - name: Ansible
+        href: /azure/ansible/ansible-create-configure-route-table
+        maintainContext: true
     - name: サービス エンドポイント
       items:
       - name: Azure PowerShell
@@ -128,7 +131,7 @@ items:
       href: deploy-container-networking.md
     - name: 仮想マシン
       items:
-      - name: 静的パブリック IP アドレスを持つ VM を作成する
+      - name: VM の作成 - 静的パブリック IP アドレス
         items:
         - name: Azure ポータル
           href: virtual-network-deploy-static-pip-arm-portal.md
@@ -136,6 +139,8 @@ items:
           href: virtual-network-deploy-static-pip-arm-ps.md
         - name: Azure CLI
           href: virtual-network-deploy-static-pip-arm-cli.md
+      - name: 既存の VM へのパブリック IP アドレスの追加
+        href: associate-public-ip-address-vm.md
       - name: VM の作成 - 静的プライベート IP アドレス
         items:
         - name: Azure ポータル
@@ -247,6 +252,8 @@ items:
       href: virtual-network-troubleshoot-nva.md
     - name: 送信 SMTP 接続のトラブルシューティング
       href: troubleshoot-outbound-smtp-connectivity.md
+    - name: IP アドレス 168.63.129.16 について
+      href: what-is-ip-address-168-63-129-16.md
   - name: クラシック
     items:
     - name: 仮想ネットワークの作成と管理
@@ -348,7 +355,7 @@ items:
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=networking
   - name: ネットワークのブログ
-    href: http://azure.microsoft.com/blog/topics/networking
+    href: https://azure.microsoft.com/blog/topics/networking
   - name: ネットワークのフォーラム
     href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork
   - name: 価格
@@ -356,12 +363,12 @@ items:
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-virtual-network
+    href: https://stackoverflow.com/questions/tagged/azure-virtual-network
   - name: FAQ
     href: virtual-networks-faq.md
-ms.openlocfilehash: 0e992cd928597e93d57ec89cae440e7081520c54
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 028be4695de7d8e36bd76127523ef0f3155828ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321431"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998472"

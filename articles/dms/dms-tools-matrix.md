@@ -2,21 +2,21 @@
 title: データ移行のサービスとツールのマトリックス - Azure | Microsoft Docs
 description: データベースを移行したりそのプロセスのさまざまなフェーズを支援したりする目的で提供されているサービスとツールについて説明します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/13/2018
-ms.openlocfilehash: 9887860470632c37a586cb3029e2ef7d455a3a9c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 3b3bbe45c4850d1bb37a4d991e323d5f6d9a8a0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713287"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180774"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>データ移行のシナリオで利用できるサービスとツール
 

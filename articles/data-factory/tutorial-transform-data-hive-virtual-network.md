@@ -3,20 +3,20 @@ title: Azure Virtual Network で Hive を使用してデータを変換する | 
 description: このチュートリアルでは、Azure Data Factory で Hive アクティビティを使用してデータを変換するための詳細な手順を説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: douglasl
-ms.openlocfilehash: e062495b9a16474cef70e9a19bdd62b6e9e13752
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 8ab647a7d97ace0d0f67fa462ada06901184933f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013901"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102994"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 このチュートリアルでは、Azure PowerShell を使用して Data Factory パイプラインを作成します。このパイプラインで、Azure Virtual Network (VNet) にある HDInsight クラスター上の Hive アクティビティを使用してデータを変換します。 このチュートリアルでは、以下の手順を実行します。
@@ -33,6 +33,9 @@ ms.locfileid: "54013901"
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 - **Azure Storage アカウント**。 Hive スクリプトを作成し、Azure ストレージにアップロードします。 Hive スクリプトからの出力は、このストレージ アカウントに格納されます。 このサンプルでは、この Azure ストレージ アカウントがプライマリ ストレージとして HDInsight クラスターによって使用されます。 
 - **Azure Virtual Network。** Azure 仮想ネットワークを持っていない場合は、[こちらの手順](../virtual-network/quick-create-portal.md)に従って作成してください。 このサンプルでは、HDInsight は Azure 仮想ネットワーク内にあります。 Azure Virtual Network の構成例を次に示します。 
 
@@ -40,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - **HDInsight クラスター。** HDInsight クラスターを作成し、前の手順で作成した仮想ネットワークに参加させます。手順については、「[Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight/hdinsight-extend-hadoop-virtual-network.md)」を参照してください。 仮想ネットワークでの HDInsight の構成例を次に示します。 
 
     ![仮想ネットワークでの HDInsight](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
-- **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。
+- **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページに記載されている手順に従います。
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Hive スクリプトを BLOB ストレージ アカウントにアップロードする
 
@@ -64,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **hivescripts** という名前のフォルダーを作成します。
 4. **hivescript.hql** ファイルを **hivescripts** サブフォルダーにアップロードします。
 
- 
+  
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
@@ -93,27 +96,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
         
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```        
     次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
     次のコマンドを実行して、使用するサブスクリプションを選択します。 **SubscriptionId** は、実際の Azure サブスクリプションの ID に置き換えてください。
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"    
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```  
 3. リソース グループを作成します。サブスクリプションにまだ ADFTutorialResourceGroup が存在しない場合は作成します。 
 
     ```powershell
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location "East Us" 
+    New-AzResourceGroup -Name $resourceGroupName -Location "East Us" 
     ```
 4. データ ファクトリを作成します。 
 
     ```powershell
-     $df = Set-AzureRmDataFactoryV2 -Location EastUS -Name $dataFactoryName -ResourceGroupName $resourceGroupName
+     $df = Set-AzDataFactoryV2 -Location EastUS -Name $dataFactoryName -ResourceGroupName $resourceGroupName
     ```
 
     次のコマンドを実行して、出力を表示します。 
@@ -128,13 +131,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. セルフホステッド統合ランタイムを作成します。 他の統合ランタイムと競合しない一意の名前を使用してください。
 
    ```powershell
-   Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted
+   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted
    ```
     このコマンドでは、セルフホステッド統合ランタイムの論理登録が作成されます。 
 2. PowerShell を使用して、セルフホステッド統合ランタイムを登録するための認証キーを取得します。 セルフホステッド統合ランタイムの登録に使用するいずれかのキーをコピーします。
 
    ```powershell
-   Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName | ConvertTo-Json
+   Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName | ConvertTo-Json
    ```
 
    出力例を次に示します。 
@@ -233,12 +236,12 @@ PowerShell で、JSON ファイルを作成したフォルダーに移動し、�
 2. 次のコマンドを実行して、Azure Storage のリンクされたサービスを作成します。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
     ```
 3. 次のコマンドを実行して、Azure HDInsight のリンクされたサービスを作成します。 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyHDInsightLinkedService" -File "MyHDInsightLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyHDInsightLinkedService" -File "MyHDInsightLinkedService.json"
     ```
 
 ## <a name="author-a-pipeline"></a>パイプラインを作成する
@@ -284,7 +287,7 @@ JSON ファイルを作成したフォルダーに移動し、次のコマンド
 
 
 ```powershell
-Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name $pipelineName -File "MyHivePipeline.json"
+Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name $pipelineName -File "MyHivePipeline.json"
 ```
 
 ## <a name="start-the-pipeline"></a>パイプラインを開始する 
@@ -292,13 +295,13 @@ Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGrou
 1. パイプラインの実行を開始します。 将来の監視のために、パイプラインの実行の ID もキャプチャされます。
 
     ```powershell
-    $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
+    $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
    ```
 2. 次のスクリプトを実行し、パイプラインの実行の状態を、完了するまで継続的にチェックします。
 
     ```powershell
     while ($True) {
-        $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+        $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
         if(!$result) {
             Write-Host "Waiting for pipeline to start..." -foregroundcolor "Yellow"

@@ -1,10 +1,10 @@
 ---
-title: Azure Monitor (プレビュー) を使用して Azure Active Directory のログを Splunk と統合する方法 | Microsoft Docs
+title: Azure Monitor (プレビュー) を使用して Azure Active Directory のログを Splunk にストリーミングする | Microsoft Docs
 description: Azure Monitor (プレビュー) を使用して Azure Active Directory のログを Splunk と統合する方法について説明します
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: c4b605b6-6fc0-40dc-bd49-101d03f34665
 ms.service: active-directory
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e45b175b97b7f395199dbc4521054fa69a4bb4a7
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 31a4f5028cc6711ec92a495b19a17e8a0fbf11aa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51623805"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170461"
 ---
 # <a name="integrate-azure-ad-logs-with-splunk-using-azure-monitor-preview"></a>Azure Monitor (プレビュー) を使用して Azure AD のログを Splunk と統合する
 

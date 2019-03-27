@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: b7208943a27bcd184100ae426721a2fe8f6e1c72
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 54c4d58dc881ffc7c1f5ecc2242b64e5b61fa68f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970486"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730749"
 ---
 # <a name="use-azure-managed-service-identity-in-azure-api-management"></a>Azure API Management で Azure 管理対象サービス ID を使用する
 
@@ -38,7 +38,7 @@ ms.locfileid: "52970486"
 
 ### <a name="using-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
-ID を持った API Management インスタンスは、リソース定義に次のプロパティを含めることによって作成できます。 
+ID を持った API Management インスタンスは、リソース定義に次のプロパティを含めることによって作成できます。
 
 ```json
 "identity" : {
@@ -46,7 +46,7 @@ ID を持った API Management インスタンスは、リソース定義に次�
 }
 ```
 
-これは、API Management インスタンスの ID を作成して管理するよう Azure に命令するものです。 
+これは、API Management インスタンスの ID を作成して管理するよう Azure に命令するものです。
 
 たとえば、Azure Resource Manager テンプレート全体は次のようになります。
 
@@ -70,8 +70,8 @@ ID を持った API Management インスタンスは、リソース定義に次�
                 "publisherEmail": "admin@contoso.com",
                 "publisherName": "Contoso"
             },
-            "identity": { 
-                "type": "systemAssigned" 
+            "identity": {
+                "type": "systemAssigned"
             }
         }
     ]
@@ -81,14 +81,14 @@ ID を持った API Management インスタンスは、リソース定義に次�
 
 > [!NOTE]
 > 現時点では、管理サービス ID を使用して、API Management のカスタム ドメイン名用に Azure Key Vault から証明書を取得できます。 より多くのシナリオがまもなくサポートされます。
-> 
+>
 >
 
 
 ### <a name="obtain-a-certificate-from-azure-key-vault"></a>Azure Key Vault から証明書を取得する
 
 #### <a name="prerequisites"></a>前提条件
-1. pfx 証明書を含む Key Vault は、API Management サービスと同じ Azure サブスクリプション、同じリソース グループに属している必要があります。 これは Azure Resource Manager テンプレートの要件です。 
+1. pfx 証明書を含む Key Vault は、API Management サービスと同じ Azure サブスクリプション、同じリソース グループに属している必要があります。 これは Azure Resource Manager テンプレートの要件です。
 2. シークレットのコンテンツ タイプは *application/x-pkcs12* にする必要があります。 証明書をアップロードするには、次のスクリプトを使用します。
 
 ```powershell
@@ -106,7 +106,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 ```
 
 > [!Important]
-> 証明書のオブジェクト バージョンを指定しなかった場合、より新しいバージョンの証明書が Key Vault にアップロードされると、その後 API Management によって自動的に取得されます。 
+> 証明書のオブジェクト バージョンを指定しなかった場合、より新しいバージョンの証明書が Key Vault にアップロードされると、その後 API Management によって自動的に取得されます。
 
 次の例では、次の手順を含む Azure Resource Manager テンプレートを示します。
 
@@ -180,7 +180,6 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
         "type": "Microsoft.ApiManagement/service",
         "location": "[resourceGroup().location]",
         "tags": {
-            
         },
         "sku": {
             "name": "[parameters('sku')]",
@@ -197,10 +196,10 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
     {
         "type": "Microsoft.KeyVault/vaults/accessPolicies",
         "name": "[concat(parameters('keyVaultName'), '/add')]",
-        "apiVersion": "2015-06-01",        
-      "dependsOn": [
-        "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
-      ],
+        "apiVersion": "2015-06-01",
+        "dependsOn": [
+            "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
+        ],
         "properties": {
             "accessPolicies": [{
                 "tenantId": "[reference(variables('apimServiceIdentityResourceId'), '2015-08-31-PREVIEW').tenantId]",
@@ -211,28 +210,28 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
             }]
         }
     },
-    { 
-      "apiVersion": "2017-05-10", 
-      "name": "apimWithKeyVault", 
-      "type": "Microsoft.Resources/deployments",
-      "dependsOn": [
+    {
+        "apiVersion": "2017-05-10",
+        "name": "apimWithKeyVault",
+        "type": "Microsoft.Resources/deployments",
+        "dependsOn": [
         "[resourceId('Microsoft.ApiManagement/service', variables('apiManagementServiceName'))]"
-      ],
-      "properties": { 
-        "mode": "incremental", 
-        "templateLink": {
-          "uri": "https://raw.githubusercontent.com/solankisamir/arm-templates/master/basicapim.keyvault.json",
-          "contentVersion": "1.0.0.0"
-        }, 
-        "parameters": {
-            "publisherEmail": { "value": "[parameters('publisherEmail')]"},
-            "publisherName": { "value": "[parameters('publisherName')]"},
-            "sku": { "value": "[parameters('sku')]"},
-            "skuCount": { "value": "[parameters('skuCount')]"},
-            "proxyCustomHostname1": {"value" : "[parameters('proxyCustomHostname1')]"},
-            "keyVaultIdToCertificate": {"value" : "[parameters('keyVaultIdToCertificate')]"}
+        ],
+        "properties": {
+            "mode": "incremental",
+            "templateLink": {
+                "uri": "https://raw.githubusercontent.com/solankisamir/arm-templates/master/basicapim.keyvault.json",
+                "contentVersion": "1.0.0.0"
+            },
+            "parameters": {
+                "publisherEmail": { "value": "[parameters('publisherEmail')]"},
+                "publisherName": { "value": "[parameters('publisherName')]"},
+                "sku": { "value": "[parameters('sku')]"},
+                "skuCount": { "value": "[parameters('skuCount')]"},
+                "proxyCustomHostname1": {"value" : "[parameters('proxyCustomHostname1')]"},
+                "keyVaultIdToCertificate": {"value" : "[parameters('keyVaultIdToCertificate')]"}
+            }
         }
-      } 
     }]
 }
 ```
@@ -243,4 +242,3 @@ Azure 管理対象サービス ID の詳細を確認します。
 
 * [Azure リソースの管理対象サービス ID](../active-directory/msi-overview.md)
 * [Azure リソース マネージャーのテンプレート](https://github.com/Azure/azure-quickstart-templates)
-

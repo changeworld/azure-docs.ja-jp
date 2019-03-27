@@ -4,7 +4,7 @@ description: このトピックでは、Azure Portal を使用して Media Analy
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: d8c3bb07c88dc96b7ca779ca0f4dfe09052ab290
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 7a303b9d27b3708bd4f59517452fa232cc38c923
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666172"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259688"
 ---
-# <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する
+# <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する 
 > [!NOTE]
 > このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
 > 
@@ -50,7 +50,7 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
 
-### <a name="language"></a>Language
+### <a name="language"></a>言語
 マルチメディア ファイル内で認識される自然言語。 たとえば、英語やスペイン語です。 
 
 ### <a name="captions"></a>字幕

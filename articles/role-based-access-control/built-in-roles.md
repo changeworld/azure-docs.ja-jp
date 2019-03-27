@@ -11,24 +11,26 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/05/2018
+ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b2d834c5f9f46f2ebe3c997c75dc50f30ed4bda7
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d730efe8b09f167aaba2a4aa8e33446d44171c53
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558925"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340850"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
-[ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
 
-組み込みロールは、常に進化しています。 最新のロールの定義を取得するには、[Get AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) または [az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用してください。
+[ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパル、マネージド ID に割り当てることのできる Azure リソースの組み込みロールがいくつかあります。 ロールの割り当ては、Azure リソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自に [Azure リソースに対するカスタム ロール](custom-roles.md)を作成することができます。
+
+この記事では、常に進化している Azure リソースの組み込みロールについて説明します。 最新のロールを取得するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) または [az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用してください。 Azure Active Directory の管理者ロールについては、「[Azure Active Directory での管理者ロールのアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
 ## <a name="built-in-role-descriptions"></a>組み込みのロールの説明
-次の表に、組み込みのロールについての簡単な説明を示します。 ロール名をクリックすると、各ロールの `Actions`、`NotActions`、`DataActions`、`NotDataActions` の一覧が表示されます。
+
+次の表に、各組み込みロールの簡単な説明を示します。 ロール名をクリックすると、各ロールの `Actions`、`NotActions`、`DataActions`、`NotDataActions` の一覧が表示されます。 これらのアクションの意味と、管理プレーンとデータ プレーンへの適用方法については、[Azure リソースのロール定義の概要](role-definitions.md)に関するページを参照してください。
 
 
 | 組み込みのロール | 説明 |
@@ -37,6 +39,8 @@ ms.locfileid: "53558925"
 | [Contributor](#contributor) | リソースへのアクセス以外のすべてを管理できます。 |
 | [Reader](#reader) | すべてを表示できますが、変更することはできません。 |
 | [AcrImageSigner](#acrimagesigner) | ACR イメージ署名者 |
+| [AcrPull](#acrpull) | acr のプル |
+| [AcrPush](#acrpush) | acr のプッシュ |
 | [AcrQuarantineReader](#acrquarantinereader) | ACR 検査データ閲覧者 |
 | [AcrQuarantineWriter](#acrquarantinewriter) | ACR 検査データ作成者 |
 | [API Management Service Contributor](#api-management-service-contributor) | サービスと API を管理できます |
@@ -66,6 +70,7 @@ ms.locfileid: "53558925"
 | [Cognitive Services 共同作成者](#cognitive-services-contributor) | Cognitive Services のキーの作成、読み取り、更新、削除、管理を行うことができます。 |
 | [Cognitive Services ユーザー](#cognitive-services-user) | Cognitive Services のキーの読み取りおよび一覧表示を行うことができます。 |
 | [Cosmos DB アカウントの閲覧者ロール](#cosmos-db-account-reader-role) | Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。 |
+| [CosmosBackupOperator](#cosmosbackupoperator) | Cosmos DB データベースまたはアカウントのコンテナーの復元要求を送信できます |
 | [Cost Management 共同作成者](#cost-management-contributor) | コストを表示し、コストの構成 (予算、エクスポートなど) を管理することができます。 |
 | [Cost Management 閲覧者](#cost-management-reader) | コストのデータと構成 (予算、エクスポートなど) を表示することができます。 |
 | [Data Box Contributor](#data-box-contributor) | Data Box サービスですべてを管理できます (他のユーザーに対するアクセス権の付与を除く)。 |
@@ -76,8 +81,8 @@ ms.locfileid: "53558925"
 | [DevTest Labs User](#devtest-labs-user) | Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャットダウンができます。 |
 | [DNS Zone Contributor](#dns-zone-contributor) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
 | [DocumentDB Account Contributor](#documentdb-account-contributor) | Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。 |
-| [EventGrid EventSubscription 共同作成者 (プレビュー)](#eventgrid-eventsubscription-contributor-preview) | EventGrid のイベント サブスクリプション操作を管理できます。 |
-| [EventGrid EventSubscription 閲覧者 (プレビュー)](#eventgrid-eventsubscription-reader-preview) | EventGrid のイベント サブスクリプションを読み取ることができます。 |
+| [EventGrid EventSubscription 共同作成者](#eventgrid-eventsubscription-contributor) | EventGrid のイベント サブスクリプション操作を管理できます。 |
+| [EventGrid EventSubscription 閲覧者](#eventgrid-eventsubscription-reader) | EventGrid のイベント サブスクリプションを読み取ることができます。 |
 | [HDInsight ドメイン サービス共同作成者](#hdinsight-domain-services-contributor) | HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、削除を行うことができます。 |
 | [Intelligent Systems Account Contributor](#intelligent-systems-account-contributor) | Intelligent Systems のアカウントを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Key Vault Contributor](#key-vault-contributor) | キー コンテナーを管理できますが、アクセスすることはできません。 |
@@ -98,7 +103,7 @@ ms.locfileid: "53558925"
 | [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [New Relic APM Account Contributor](#new-relic-apm-account-contributor) | New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 |
-| [Azure Cache for Redis の共同作成者](#redis-cache-contributor) | Azure Cache for Redis を管理できますが、アクセスすることはできません。 |
+| [Redis Cache Contributor](#redis-cache-contributor) | Azure Cache for Redis を管理できますが、アクセスすることはできません。 |
 | [リソース ポリシーの共同作成者 (プレビュー)](#resource-policy-contributor-preview) | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 |
 | [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) | スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 |
@@ -114,7 +119,7 @@ ms.locfileid: "53558925"
 | [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントを管理できますが、アクセスすることはできません。 |
 | [ストレージ アカウント キー オペレーターのサービス ロール](#storage-account-key-operator-service-role) | ストレージ アカウント キー オペレーターは、ストレージ アカウントでのキーの一覧表示と再生成を行うことができます |
 | [ストレージ BLOB データ共同作成者 (プレビュー)](#storage-blob-data-contributor-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
-| [ストレージ BLOB データ所有者 (プレビュー)](#storage-blob-data-owner-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセス、POSIX スーパーユーザー アクセスを許可します |
+| [ストレージ BLOB データ所有者 (プレビュー)](#storage-blob-data-owner-preview) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を許可します。 |
 | [ストレージ BLOB データ閲覧者 (プレビュー)](#storage-blob-data-reader-preview) | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセスを許可します |
 | [ストレージ キュー データ共同作成者 (プレビュー)](#storage-queue-data-contributor-preview) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します |
 | [ストレージ キュー データ閲覧者 (プレビュー)](#storage-queue-data-reader-preview) | Azure Storage キューおよびキュー メッセージに対する読み取りアクセスを許可します |
@@ -136,6 +141,12 @@ ms.locfileid: "53558925"
 > | **Id** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | **アクション** |  |
 > | * | あらゆる種類のリソースの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="contributor"></a>Contributor
 > [!div class="mx-tableFixed"]
@@ -146,11 +157,15 @@ ms.locfileid: "53558925"
 > | **アクション** |  |
 > | * | あらゆる種類のリソースの作成と管理 |
 > | **NotActions** |  |
-> | Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
-> | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
+> | Microsoft.Authorization/*/Delete | ロールとロール割り当ての削除 |
+> | Microsoft.Authorization/*/Write | ロールとロール割り当ての作成 |
 > | Microsoft.Authorization/elevateAccess/Action | テナント スコープで、ユーザー アクセス管理者のアクセス権を呼び出し元に付与します。 |
 > | Microsoft.Blueprint/blueprintAssignments/write | 任意のブループリント アーティファクトを作成または更新します |
 > | Microsoft.Blueprint/blueprintAssignments/delete | 任意のブループリント アーティファクトを削除します |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="reader"></a>Reader
 > [!div class="mx-tableFixed"]
@@ -160,6 +175,12 @@ ms.locfileid: "53558925"
 > | **Id** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="acrimagesigner"></a>AcrImageSigner
 > [!div class="mx-tableFixed"]
@@ -169,6 +190,43 @@ ms.locfileid: "53558925"
 > | **Id** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **アクション** |  |
 > | Microsoft.ContainerRegistry/registries/sign/write | コンテナー レジストリのコンテンツの信頼メタデータをプッシュ/プルします。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="acrpull"></a>AcrPull
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | acr のプル |
+> | **Id** | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
+> | **アクション** |  |
+> | Microsoft.ContainerRegistry/registries/pull/read | コンテナー レジストリからイメージをプルまたは取得します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="acrpush"></a>AcrPush
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | acr のプッシュ |
+> | **Id** | 8311e382-0749-4cb8-b61a-304f252e45ec |
+> | **アクション** |  |
+> | Microsoft.ContainerRegistry/registries/pull/read | コンテナー レジストリからイメージをプルまたは取得します。 |
+> | Microsoft.ContainerRegistry/registries/push/write | コンテナー レジストリにイメージをプッシュするか書き込みます。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
@@ -178,6 +236,12 @@ ms.locfileid: "53558925"
 > | **Id** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **アクション** |  |
 > | Microsoft.ContainerRegistry/registries/quarantineRead/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 > [!div class="mx-tableFixed"]
@@ -188,6 +252,12 @@ ms.locfileid: "53558925"
 > | **アクション** |  |
 > | Microsoft.ContainerRegistry/registries/quarantineRead/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
 > | Microsoft.ContainerRegistry/registries/quarantineWrite/write | 検疫済みイメージの検疫状態を書き込むか変更します |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="api-management-service-contributor"></a>API Management Service Contributor
 > [!div class="mx-tableFixed"]
@@ -203,6 +273,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="api-management-service-operator-role"></a>API Management Service Operator Role
 > [!div class="mx-tableFixed"]
@@ -228,6 +304,10 @@ ms.locfileid: "53558925"
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | **NotActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | ユーザー キーの一覧を取得します。 |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="api-management-service-reader-role"></a>API Management Service Reader Role
 > [!div class="mx-tableFixed"]
@@ -246,6 +326,10 @@ ms.locfileid: "53558925"
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | **NotActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | ユーザー キーの一覧を取得します。 |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="application-insights-component-contributor"></a>Application Insights Component Contributor
 > [!div class="mx-tableFixed"]
@@ -262,6 +346,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="application-insights-snapshot-debugger"></a>Application Insights Snapshot Debugger
 > [!div class="mx-tableFixed"]
@@ -276,6 +366,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="automation-job-operator"></a>Automation ジョブ オペレーター
 > [!div class="mx-tableFixed"]
@@ -297,6 +393,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="automation-operator"></a>Automation Operator
 > [!div class="mx-tableFixed"]
@@ -326,6 +428,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Automation/automationAccounts/jobs/output/read | ジョブの出力を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="automation-runbook-operator"></a>Automation Runbook オペレーター
 > [!div class="mx-tableFixed"]
@@ -340,6 +448,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="azure-kubernetes-service-cluster-admin-role"></a>Azure Kubernetes Service クラスター管理者ロール
 > [!div class="mx-tableFixed"]
@@ -349,6 +463,12 @@ ms.locfileid: "53558925"
 > | **Id** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **アクション** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | 管理対象クラスターの clusterAdmin 資格情報を一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="azure-kubernetes-service-cluster-user-role"></a>Azure Kubernetes Service クラスター ユーザー ロール
 > [!div class="mx-tableFixed"]
@@ -358,6 +478,12 @@ ms.locfileid: "53558925"
 > | **Id** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | **アクション** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="azure-stack-registration-owner"></a>Azure Stack Registration Owner
 > [!div class="mx-tableFixed"]
@@ -369,6 +495,12 @@ ms.locfileid: "53558925"
 > | Microsoft.AzureStack/registrations/products/listDetails/action | Azure Stack Marketplace の製品の拡張詳細を取得します |
 > | Microsoft.AzureStack/registrations/products/read | Azure Stack Marketplace の製品のプロパティを取得します |
 > | Microsoft.AzureStack/registrations/read | Azure Stack の登録のプロパティを取得します |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="backup-contributor"></a>Backup Contributor
 > [!div class="mx-tableFixed"]
@@ -385,7 +517,7 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | "ジョブのエクスポート" 操作の結果を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/* | バックアップの管理に関連するメタ データの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | バックアップ管理操作の結果の作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/* | バックアップ ポリシーの作成および管理 |
@@ -420,6 +552,12 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="backup-operator"></a>Backup Operator
 > [!div class="mx-tableFixed"]
@@ -445,8 +583,8 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | "ジョブのエクスポート" 操作の結果を返します。 |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Recovery Services コンテナーのバックアップ管理メタデータを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
+> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | バックアップ管理操作の結果の作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |
@@ -486,6 +624,12 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="backup-reader"></a>Backup Reader
 > [!div class="mx-tableFixed"]
@@ -506,8 +650,8 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | ジョブ操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | すべてのジョブ オブジェクトを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | "ジョブのエクスポート" 操作の結果を返します。 |
-> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Recovery Services コンテナーのバックアップ管理メタデータを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read |  |
+> | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Recovery Services コンテナーに対するバックアップ操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |
@@ -533,6 +677,12 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="billing-reader"></a>Billing Reader
 > [!div class="mx-tableFixed"]
@@ -548,6 +698,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
 > | Microsoft.CostManagement/*/read |  |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="biztalk-contributor"></a>BizTalk Contributor
 > [!div class="mx-tableFixed"]
@@ -563,6 +719,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="cdn-endpoint-contributor"></a>CDN Endpoint Contributor
 > [!div class="mx-tableFixed"]
@@ -579,6 +741,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="cdn-endpoint-reader"></a>CDN Endpoint Reader
 > [!div class="mx-tableFixed"]
@@ -595,6 +763,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="cdn-profile-contributor"></a>CDN Profile Contributor
 > [!div class="mx-tableFixed"]
@@ -611,6 +785,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="cdn-profile-reader"></a>CDN Profile Reader
 > [!div class="mx-tableFixed"]
@@ -627,6 +807,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="classic-network-contributor"></a>Classic Network Contributor
 > [!div class="mx-tableFixed"]
@@ -642,6 +828,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="classic-storage-account-contributor"></a>Classic Storage Account Contributor
 > [!div class="mx-tableFixed"]
@@ -657,6 +849,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="classic-storage-account-key-operator-service-role"></a>従来のストレージ アカウント キー オペレーターのサービス ロール
 > [!div class="mx-tableFixed"]
@@ -667,6 +865,12 @@ ms.locfileid: "53558925"
 > | **アクション** |  |
 > | Microsoft.ClassicStorage/storageAccounts/listkeys/action | ストレージ アカウントのアクセス キーを一覧表示します。 |
 > | Microsoft.ClassicStorage/storageAccounts/regeneratekey/action | ストレージ アカウントの既存のアクセス キーを再生成します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="classic-virtual-machine-contributor"></a>Classic Virtual Machine Contributor
 > [!div class="mx-tableFixed"]
@@ -692,6 +896,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="cognitive-services-contributor"></a>Cognitive Services 共同作成者
 > [!div class="mx-tableFixed"]
@@ -717,6 +927,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="cognitive-services-user"></a>Cognitive Services ユーザー
 > [!div class="mx-tableFixed"]
@@ -738,6 +954,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="cosmos-db-account-reader-role"></a>Cosmos DB アカウントの閲覧者ロール
 > [!div class="mx-tableFixed"]
@@ -753,6 +975,28 @@ ms.locfileid: "53558925"
 > | Microsoft.Insights/Metrics/read | メトリックを読み取ります。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="cosmosbackupoperator"></a>CosmosBackupOperator
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Cosmos DB データベースまたはアカウントのコンテナーの復元要求を送信できます |
+> | **Id** | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
+> | **アクション** |  |
+> | Microsoft.DocumentDB/databaseAccounts/backup/action | バックアップを構成するための要求を送信します |
+> | Microsoft.DocumentDB/databaseAccounts/restore/action | 復元要求を送信します |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="cost-management-contributor"></a>Cost Management 共同作成者
 > [!div class="mx-tableFixed"]
@@ -767,6 +1011,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="cost-management-reader"></a>Cost Management 閲覧者
 > [!div class="mx-tableFixed"]
@@ -781,6 +1031,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="data-box-contributor"></a>Data Box Contributor
 > [!div class="mx-tableFixed"]
@@ -795,6 +1051,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | Microsoft.Databox/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="data-box-reader"></a>Data Box 閲覧者
 > [!div class="mx-tableFixed"]
@@ -810,6 +1072,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Databox/locations/availableSkus/action | このメソッドは、使用可能な SKU の一覧を返します。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="data-factory-contributor"></a>Data Factory Contributor
 > [!div class="mx-tableFixed"]
@@ -826,6 +1094,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="data-lake-analytics-developer"></a>Data Lake Analytics Developer
 > [!div class="mx-tableFixed"]
@@ -857,6 +1131,10 @@ ms.locfileid: "53558925"
 > | Microsoft.DataLakeAnalytics/accounts/firewallRules/Delete | ファイアウォール規則を削除します。 |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Write | コンピューティング ポリシーを作成または更新します。 |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Delete | コンピューティング ポリシーを削除します。 |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="data-purger"></a>Data Purger
 > [!div class="mx-tableFixed"]
@@ -869,6 +1147,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Insights/components/purge/action | Application Insights からデータを削除します。 |
 > | Microsoft.OperationalInsights/workspaces/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/purge/action | ワークスペースから指定されたデータを削除します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="devtest-labs-user"></a>DevTest Labs User
 > [!div class="mx-tableFixed"]
@@ -909,6 +1193,10 @@ ms.locfileid: "53558925"
 > | Microsoft.Storage/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | **NotActions** |  |
 > | Microsoft.Compute/virtualMachines/vmSizes/read | 仮想マシンを更新する際に使用できるサイズを一覧表示します。 |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="dns-zone-contributor"></a>DNS Zone Contributor
 > [!div class="mx-tableFixed"]
@@ -924,6 +1212,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="documentdb-account-contributor"></a>DocumentDB Account Contributor
 > [!div class="mx-tableFixed"]
@@ -939,8 +1233,14 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
-## <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid EventSubscription 共同作成者 (プレビュー)
+## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription 共同作成者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -956,8 +1256,14 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
-## <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid EventSubscription 閲覧者 (プレビュー)
+## <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription 閲覧者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -970,6 +1276,12 @@ ms.locfileid: "53558925"
 > | Microsoft.EventGrid/locations/eventSubscriptions/read | リージョンのイベント サブスクリプションを一覧表示します |
 > | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | リージョンのイベント サブスクリプションを topictype ごとに一覧表示します |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="hdinsight-domain-services-contributor"></a>HDInsight ドメイン サービス共同作成者
 > [!div class="mx-tableFixed"]
@@ -981,6 +1293,12 @@ ms.locfileid: "53558925"
 > | Microsoft.AAD/*/read |  |
 > | Microsoft.AAD/domainServices/*/read |  |
 > | Microsoft.AAD/domainServices/oucontainer/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="intelligent-systems-account-contributor"></a>Intelligent Systems Account Contributor
 > [!div class="mx-tableFixed"]
@@ -996,6 +1314,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="key-vault-contributor"></a>Key Vault Contributor
 > [!div class="mx-tableFixed"]
@@ -1013,6 +1337,10 @@ ms.locfileid: "53558925"
 > | **NotActions** |  |
 > | Microsoft.KeyVault/locations/deletedVaults/purge/action | 論理的に削除された Key Vault を消去します。 |
 > | Microsoft.KeyVault/hsmPools/* |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="lab-creator"></a>Lab Creator
 > [!div class="mx-tableFixed"]
@@ -1028,6 +1356,12 @@ ms.locfileid: "53558925"
 > | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | ラボ アカウントの下で構成されたサイズ カテゴリ別のリージョン別の提供状況を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="log-analytics-contributor"></a>Log Analytics 共同作成者
 > [!div class="mx-tableFixed"]
@@ -1049,6 +1383,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="log-analytics-reader"></a>Log Analytics 閲覧者
 > [!div class="mx-tableFixed"]
@@ -1063,6 +1403,10 @@ ms.locfileid: "53558925"
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | **NotActions** |  |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/read | ワークスペースの共有キーを取得します。 これらのキーを使用して、Microsoft Operational Insights エージェントをワークスペースに接続します。 |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="logic-app-contributor"></a>Logic App Contributor
 > [!div class="mx-tableFixed"]
@@ -1091,6 +1435,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | App Service プランのプロパティを取得します。 |
 > | Microsoft.Web/sites/functions/listSecrets/action | Web アプリの関数のシークレットを一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="logic-app-operator"></a>Logic App Operator
 > [!div class="mx-tableFixed"]
@@ -1115,6 +1465,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Web/connections/*/read | 接続を読み取ります。 |
 > | Microsoft.Web/customApis/*/read | カスタム API を読み取ります。 |
 > | Microsoft.Web/serverFarms/read | App Service プランのプロパティを取得します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="managed-application-operator-role"></a>Managed Application Operator Role
 > [!div class="mx-tableFixed"]
@@ -1125,6 +1481,12 @@ ms.locfileid: "53558925"
 > | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | Microsoft.Solutions/applications/read | アプリケーションの一覧を取得します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="managed-applications-reader"></a>Managed Applications 閲覧者
 > [!div class="mx-tableFixed"]
@@ -1136,6 +1498,12 @@ ms.locfileid: "53558925"
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Solutions/jitRequests/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="managed-identity-contributor"></a>Managed Identity Contributor
 > [!div class="mx-tableFixed"]
@@ -1152,6 +1520,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="managed-identity-operator"></a>Managed Identity Operator
 > [!div class="mx-tableFixed"]
@@ -1167,6 +1541,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="management-group-contributor"></a>管理グループ共同作成者
 > [!div class="mx-tableFixed"]
@@ -1180,6 +1560,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Management/managementGroups/subscriptions/delete | 管理グループからサブスクリプションの関連付けを解除します。 |
 > | Microsoft.Management/managementGroups/subscriptions/write | 既存のサブスクリプションと管理グループを関連付けます。 |
 > | Microsoft.Management/managementGroups/write | 管理グループを作成または更新します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="management-group-reader"></a>管理グループ閲覧者
 > [!div class="mx-tableFixed"]
@@ -1189,6 +1575,12 @@ ms.locfileid: "53558925"
 > | **Id** | ac63b705-f282-497d-ac71-919bf39d939d |
 > | **アクション** |  |
 > | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="monitoring-contributor"></a>Monitoring Contributor
 > [!div class="mx-tableFixed"]
@@ -1201,6 +1593,7 @@ ms.locfileid: "53558925"
 > | Microsoft.AlertsManagement/alerts/* |  |
 > | Microsoft.AlertsManagement/alertsSummary/* |  |
 > | Microsoft.Insights/actiongroups/* |  |
+> | Microsoft.Insights/activityLogAlerts/* |  |
 > | Microsoft.Insights/AlertRules/* | アラート ルールの読み取り/書き込み/削除を実行します。 |
 > | Microsoft.Insights/components/* | Application Insights コンポーネントの読み取り/書き込み/削除を実行します。 |
 > | Microsoft.Insights/DiagnosticSettings/* | 診断設定の読み取り/書き込み/削除を実行します。 |
@@ -1220,6 +1613,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="monitoring-metrics-publisher"></a>監視メトリック パブリッシャー
 > [!div class="mx-tableFixed"]
@@ -1231,8 +1630,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Insights/Register/Action | Microsoft Insights プロバイダーを登録します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.Insights/Metrics/Write | メトリックを書き込みます。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="monitoring-reader"></a>Monitoring Reader
 > [!div class="mx-tableFixed"]
@@ -1244,6 +1647,12 @@ ms.locfileid: "53558925"
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | Microsoft.OperationalInsights/workspaces/search/action | 検索クエリを実行します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="network-contributor"></a>Network Contributor
 > [!div class="mx-tableFixed"]
@@ -1259,6 +1668,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="new-relic-apm-account-contributor"></a>New Relic APM Account Contributor
 > [!div class="mx-tableFixed"]
@@ -1274,6 +1689,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | NewRelic.APM/accounts/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="reader-and-data-access"></a>Reader and Data Access
 > [!div class="mx-tableFixed"]
@@ -1284,8 +1705,14 @@ ms.locfileid: "53558925"
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
-## <a name="azure-cache-for-redis-contributor"></a>Azure Cache for Redis の共同作成者
+## <a name="redis-cache-contributor"></a>Redis Cache Contributor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1299,6 +1726,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="resource-policy-contributor-preview"></a>リソース ポリシーの共同作成者 (プレビュー)
 > [!div class="mx-tableFixed"]
@@ -1313,6 +1746,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Authorization/policysetdefinitions/* | ポリシー セットの作成と管理 |
 > | Microsoft.PolicyInsights/* |  |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="scheduler-job-collections-contributor"></a>Scheduler Job Collections Contributor
 > [!div class="mx-tableFixed"]
@@ -1328,6 +1767,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Scheduler/jobcollections/* | ジョブ コレクションの作成と管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="search-service-contributor"></a>Search Service Contributor
 > [!div class="mx-tableFixed"]
@@ -1343,6 +1788,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Search/searchServices/* | 検索サービスの作成と管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="security-admin"></a>セキュリティ管理者
 > [!div class="mx-tableFixed"]
@@ -1370,7 +1821,14 @@ ms.locfileid: "53558925"
 > | Microsoft.Security/pricings/delete | スコープの価格設定を削除します。 |
 > | Microsoft.Security/securityContacts/delete | セキュリティ連絡先を削除します。 |
 > | Microsoft.Security/securityContacts/write | セキュリティ連絡先を更新します。 |
+> | Microsoft.Security/InformationProtectionPolicies/write | リソースの情報保護ポリシーを更新します |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="security-manager-legacy"></a>セキュリティ マネージャー (レガシ)
 > [!div class="mx-tableFixed"]
@@ -1389,6 +1847,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Security/* | セキュリティ コンポーネントおよびポリシーの作成と管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="security-reader"></a>セキュリティ閲覧者
 > [!div class="mx-tableFixed"]
@@ -1405,6 +1869,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Security/*/read | セキュリティ コンポーネントとポリシーの読み取り |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="site-recovery-contributor"></a>Site Recovery Contributor
 > [!div class="mx-tableFixed"]
@@ -1430,7 +1900,7 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/* | レプリケーション ポリシーの作成と管理 |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/* | 復旧計画の作成と管理 |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/* | Recovery Services コンテナーのストレージ構成の作成と管理 |
-> | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Recovery Services コンテナーのトークン情報を返します。 |
+> | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Recovery Services コンテナーのアラートの読み取り |
@@ -1440,6 +1910,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="site-recovery-operator"></a>Site Recovery Operator
 > [!div class="mx-tableFixed"]
@@ -1497,7 +1973,7 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/* | Recovery Services コンテナーのアラートの読み取り |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
-> | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Recovery Services コンテナーのトークン情報を返します。 |
+> | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
@@ -1505,6 +1981,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="site-recovery-reader"></a>Site Recovery Reader
 > [!div class="mx-tableFixed"]
@@ -1540,10 +2022,16 @@ ms.locfileid: "53558925"
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/read | ポリシーを読み取ります |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | 復旧計画を読み取ります |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
-> | Microsoft.RecoveryServices/Vaults/tokenInfo/read | Recovery Services コンテナーのトークン情報を返します。 |
+> | Microsoft.RecoveryServices/Vaults/tokenInfo/read |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="sql-db-contributor"></a>SQL DB Contributor
 > [!div class="mx-tableFixed"]
@@ -1565,19 +2053,25 @@ ms.locfileid: "53558925"
 > | Microsoft.Insights/metricDefinitions/read | メトリック定義を読み取ります。 |
 > | **NotActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | 監査ポリシーを編集することはできません |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | 監査設定を編集することはできません |
+> | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | 監査ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | 監査設定の編集 |
 > | Microsoft.Sql/servers/databases/auditRecords/read | データベースの BLOB 監査レコードを取得します。 |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | 接続ポリシーを編集することはできません |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | データ マスク ポリシーを編集することはできません |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | 接続ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | データ マスク ポリシーの編集 |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | セキュリティの警告のポリシーを編集することはできません |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | セキュリティ基準を編集することはできません |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | セキュリティ警告ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | セキュリティ基準の編集 |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
+> | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="sql-security-manager"></a>SQL Security Manager
 > [!div class="mx-tableFixed"]
@@ -1593,6 +2087,7 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーの作成と管理 |
 > | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定の作成と管理 |
 > | Microsoft.Sql/servers/extendedAuditingSettings/read | 指定されたサーバーで構成されている拡張サーバー BLOB 監査ポリシーの詳細を取得します。 |
@@ -1616,7 +2111,14 @@ ms.locfileid: "53558925"
 > | Microsoft.Sql/servers/firewallRules/* |  |
 > | Microsoft.Sql/servers/read | サーバーの一覧を返すか、指定されたサーバーのプロパティを取得します。 |
 > | Microsoft.Sql/servers/securityAlertPolicies/* | SQL サーバー セキュリティの警告のポリシーの作成と管理 |
+> | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="sql-server-contributor"></a>SQL Server Contributor
 > [!div class="mx-tableFixed"]
@@ -1637,23 +2139,29 @@ ms.locfileid: "53558925"
 > | Microsoft.Insights/metricDefinitions/read | メトリック定義を読み取ります。 |
 > | **NotActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
-> | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーは編集できません |
-> | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定は編集できません |
-> | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーは編集できません |
-> | Microsoft.Sql/servers/databases/auditingSettings/* | SQL サーバー データベース監査設定は編集できません |
-> | Microsoft.Sql/servers/databases/auditRecords/read | 監査レコードを読み取ることはできません |
-> | Microsoft.Sql/servers/databases/connectionPolicies/* | SQL サーバー データベース接続ポリシーは編集できません |
-> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | SQL サーバー データベース データ マスク ポリシーは編集できません |
+> | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
+> | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーの編集 |
+> | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定の編集 |
+> | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/auditingSettings/* | SQL サーバー データベース監査設定の編集 |
+> | Microsoft.Sql/servers/databases/auditRecords/read | 監査レコードの読み取り |
+> | Microsoft.Sql/servers/databases/connectionPolicies/* | SQL サーバー データベース接続ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/dataMaskingPolicies/* | SQL サーバー データベース データ マスク ポリシーの編集 |
 > | Microsoft.Sql/servers/databases/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
-> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | SQL サーバー データベース セキュリティの警告のポリシーは編集できません |
-> | Microsoft.Sql/servers/databases/securityMetrics/* | SQL サーバー データベース セキュリティ基準は編集できません |
+> | Microsoft.Sql/servers/databases/securityAlertPolicies/* | SQL サーバー データベースのセキュリティ警告ポリシーの編集 |
+> | Microsoft.Sql/servers/databases/securityMetrics/* | SQL サーバー データベースのセキュリティ基準の編集 |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/extendedAuditingSettings/* |  |
-> | Microsoft.Sql/servers/securityAlertPolicies/* | SQL サーバー セキュリティの警告のポリシーは編集できません |
+> | Microsoft.Sql/servers/securityAlertPolicies/* | SQL サーバーのセキュリティ警告ポリシーの編集 |
+> | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="storage-account-contributor"></a>Storage Account Contributor
 > [!div class="mx-tableFixed"]
@@ -1671,6 +2179,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/* | ストレージ アカウントの作成と管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="storage-account-key-operator-service-role"></a>ストレージ アカウント キー オペレーターのサービス ロール
 > [!div class="mx-tableFixed"]
@@ -1681,6 +2195,12 @@ ms.locfileid: "53558925"
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/listkeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | 指定されたストレージ アカウントのアクセス キーを再生成します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="storage-blob-data-contributor-preview"></a>ストレージ BLOB データ共同作成者 (プレビュー)
 > [!div class="mx-tableFixed"]
@@ -1690,27 +2210,31 @@ ms.locfileid: "53558925"
 > | **Id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | コンテナーを削除した結果を返します。 |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/write | BLOB コンテナーの設定またはリースの結果を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーの一覧を返します |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/write | BLOB コンテナーのプット結果を返します |
+> | **NotActions** |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | BLOB の書き込みの結果を返します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="storage-blob-data-owner-preview"></a>ストレージ BLOB データ所有者 (プレビュー)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセス、書き込みアクセス、削除アクセス、POSIX スーパーユーザー アクセスを許可します |
+> | **説明** | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を許可します。 |
 > | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **アクション** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/delete | コンテナーを削除した結果を返します。 |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/write | BLOB コンテナーの設定またはリースの結果を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/* |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | BLOB を削除した結果を返します |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | BLOB の書き込みの結果を返します |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/* |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="storage-blob-data-reader-preview"></a>ストレージ BLOB データ閲覧者 (プレビュー)
 > [!div class="mx-tableFixed"]
@@ -1719,9 +2243,13 @@ ms.locfileid: "53558925"
 > | **説明** | Azure Storage Blob コンテナーおよびデータに対する読み取りアクセスを許可します |
 > | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **アクション** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーまたはコンテナーの一覧を返します。 |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/read | コンテナーの一覧を返します |
+> | **NotActions** |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
-> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | BLOB または BLOB の一覧を返します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="storage-queue-data-contributor-preview"></a>ストレージ キュー データ共同作成者 (プレビュー)
 > [!div class="mx-tableFixed"]
@@ -1733,10 +2261,14 @@ ms.locfileid: "53558925"
 > | Microsoft.Storage/storageAccounts/queueServices/queues/delete | キューを削除した結果を返します。 |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | キューまたはキューの一覧を返します。 |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/write | キューの書き込みの結果を返します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | メッセージを削除した結果を返します |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | メッセージを返します |
-> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | メッセージの書き込みの結果を返します |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | メッセージの書き込みの結果を返します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="storage-queue-data-reader-preview"></a>ストレージ キュー データ閲覧者 (プレビュー)
 > [!div class="mx-tableFixed"]
@@ -1746,8 +2278,12 @@ ms.locfileid: "53558925"
 > | **Id** | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **アクション** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | キューまたはキューの一覧を返します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | メッセージを返します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="support-request-contributor"></a>Support Request Contributor
 > [!div class="mx-tableFixed"]
@@ -1759,6 +2295,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Authorization/*/read | 承認の読み取り |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="traffic-manager-contributor"></a>Traffic Manager Contributor
 > [!div class="mx-tableFixed"]
@@ -1774,6 +2316,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="user-access-administrator"></a>User Access Administrator
 > [!div class="mx-tableFixed"]
@@ -1785,6 +2333,12 @@ ms.locfileid: "53558925"
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
 > | Microsoft.Authorization/* | 承認の管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="virtual-machine-administrator-login"></a>Virtual Machine Administrator Login
 > [!div class="mx-tableFixed"]
@@ -1798,9 +2352,13 @@ ms.locfileid: "53558925"
 > | Microsoft.Network/loadBalancers/read | ロード バランサー定義を取得します。 |
 > | Microsoft.Network/networkInterfaces/read | ネットワーク インターフェイスの定義を取得します。  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.Compute/virtualMachines/login/action | 仮想マシンに通常のユーザーとしてログインします。 |
 > | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Windows 管理者または Linux のルート ユーザーの権限で仮想マシンにログインします。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="virtual-machine-contributor"></a>Virtual Machine Contributor
 > [!div class="mx-tableFixed"]
@@ -1847,6 +2405,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Storage/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="virtual-machine-user-login"></a>Virtual Machine User Login
 > [!div class="mx-tableFixed"]
@@ -1860,8 +2424,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Network/loadBalancers/read | ロード バランサー定義を取得します。 |
 > | Microsoft.Network/networkInterfaces/read | ネットワーク インターフェイスの定義を取得します。  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **NotActions** |  |
+> | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.Compute/virtualMachines/login/action | 仮想マシンに通常のユーザーとしてログインします。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="web-plan-contributor"></a>Web Plan Contributor
 > [!div class="mx-tableFixed"]
@@ -1877,6 +2445,12 @@ ms.locfileid: "53558925"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | Microsoft.Web/serverFarms/* | サーバー ファームの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="website-contributor"></a>Website Contributor
 > [!div class="mx-tableFixed"]
@@ -1897,9 +2471,15 @@ ms.locfileid: "53558925"
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | App Service プランのプロパティを取得します。 |
 > | Microsoft.Web/sites/* | Web サイトの作成と管理 (サイト作成では、関連付けられた App Service プランに対する書き込みアクセス許可も必要です) |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
 
 ## <a name="next-steps"></a>次の手順
 
-- [カスタム ロール](custom-roles.md)
-- [Azure Portal を使用してロール割り当てを管理する](role-assignments-portal.md)
+- [Azure リソースのカスタム ロール](custom-roles.md)
+- [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
 - [Azure Security Center におけるアクセス許可](../security-center/security-center-permissions.md)

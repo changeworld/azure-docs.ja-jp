@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: 064d73aa3d1a9183eddd53b1a1b8ddbf02afb04d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 373bcecfb1780aa567b1250e53096b9eed0d0f21
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792851"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858741"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -69,12 +69,12 @@ SDK のみが必要な場合は、次のパッケージをインストールす�
 * [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
 
 現在のバージョンは次のとおりです。
-* Service Fabric SDK および Tools 3.3.622
-* Service Fabric ランタイム 6.4.622
+* Service Fabric SDK および Tools 3.3.637
+* Service Fabric ランタイム 6.4.637
 * Service Fabric Tools for Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 には、Service Fabric Tools for Visual Studio 2.4.11024.1 が含まれています 
 
-サポートされているバージョンの一覧については、[Service Fabric のサポート](service-fabric-support.md)に関するページを参照してください。
+サポートされているバージョンの一覧については、[Service Fabric のバージョン](service-fabric-versions.md)に関するページを参照してください
 
 > [!NOTE]
 > アプリケーションまたはクラスターのアップグレードには、1 台のマシンのクラスター (OneBox) はサポートされていません。クラスターのアップグレードを実行する必要がある場合や、アプリケーションのアップグレードの実行で問題がある場合は、OneBox クラスターを削除し再作成します。 
@@ -91,8 +91,7 @@ Service Fabric は、マシン クラスター全体にマイクロサービス�
 ## <a name="next-steps"></a>次の手順
 開発環境のセットアップが完了したので、アプリのビルドと実行を開始してください。
 
-* [Visual Studio で最初の Service Fabric アプリケーションを作成する](service-fabric-create-your-first-application-in-visual-studio.md)
-* [ローカル クラスター上でアプリケーションをデプロイし管理する方法](service-fabric-get-started-with-a-local-cluster.md)
+* [アプリケーションを作成、デプロイ、および管理する方法](service-fabric-tutorial-create-dotnet-app.md)
 * [プログラミング モデル Reliable Services と Reliable Actors について学びます](service-fabric-choose-framework.md)
 * [GitHub での Service Fabric コード サンプルの確認](https://aka.ms/servicefabricsamples)
 * [Service Fabric エクスプローラーを使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)

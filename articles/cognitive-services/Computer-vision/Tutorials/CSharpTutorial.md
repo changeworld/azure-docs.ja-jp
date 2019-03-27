@@ -1,24 +1,24 @@
 ---
-title: チュートリアル:画像処理アプリをビルドする - C#
+title: サンプル:画像処理アプリの探索 (C#)
 titleSuffix: Computer Vision - Cognitive Services - Azure
 description: Microsoft Cognitive Services で Computer Vision API を使用する基本的な Windows アプリについて説明します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
 author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
-ms.component: computer-vision
-ms.topic: article
-ms.date: 08/28/2018
+ms.subservice: computer-vision
+ms.topic: sample
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f4f588ad9123ec98cbae9f9bf03c08ec551a31a5
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: a23e45cb1e75305f41c81077c90282352327b72d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232755"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310945"
 ---
-# <a name="tutorial-build-an-image-processing-app---c35"></a>チュートリアル:画像処理アプリをビルドする - C&#35;
+# <a name="sample-explore-an-image-processing-app-with-c"></a>サンプル:画像処理アプリの探索 (C#)
 
 Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマートにトリミングされたサムネイルを作成するほか、画像内の視覚的な特徴 (顔など) を検出、分類、タグ付け、および記述する、基本的な Windows アプリケーションについて詳しく説明します。 下の例では、イメージ URL またはローカルに保存されたファイルを送信できます。 このオープン ソースの例をテンプレートとして使用し、Computer Vision API と、.NET Framework の一部である Windows Presentation Foundation (WPF) を使用して、Windows 用の独自アプリをビルドできます。
 

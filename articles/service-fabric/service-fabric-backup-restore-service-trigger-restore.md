@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ad89acb63057ff260332384372bcb7719cc8e4f3
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 66df926eaaf771fdde4d2eb59772b9d38a87edf0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064833"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313230"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Azure Service Fabric でのバックアップの復元
 
@@ -156,7 +156,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/1
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-[TrackRestoreProgress](service-fabric-backup-restore-service-trigger-restore.md#tracking-restore-progress) を使用して復元の進行状況を追跡できます。
+TrackRestoreProgress を使用して復元の進行状況を追跡できます。
 
 ### <a name="data-restore-for-data-corruptiondata-loss"></a>"_データ破損_/_データ損失_" の場合のデータ復元
 
@@ -196,7 +196,7 @@ $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Partitions/9
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json' -CertificateThumbprint '1b7ebe2174649c45474a4819dafae956712c31d3'
 ```
 
-[TrackRestoreProgress](service-fabric-backup-restore-service-trigger-restore.md#tracking-restore-progress) を使用して復元の進行状況を追跡できます。
+TrackRestoreProgress を使用して復元の進行状況を追跡できます。
 
 ## <a name="track-restore-progress"></a>復元の進行状況を追跡する
 
@@ -229,7 +229,7 @@ $restoreResponse | Format-List
     ```
     
 3. **成功**、**失敗**、または**タイムアウト**:要求された復元は、次の状態のいずれかで完了する可能性があります。 各状態の重要性と応答の詳細は次のとおりです。
-    - **成功**:"_成功_" の復元状態は、回復したパーティション状態を示します。 パーティションは、_RestoreEpoch_ および _RestordLSN_ の状態を UTC 時刻とともに報告します。
+    - **成功**:"_成功_" の復元状態は、回復したパーティション状態を示します。 パーティションは、_RestoredEpoch_ および _RestoredLSN_ の状態を UTC 時刻とともに報告します。
 
         ```
         RestoreState  : Success

@@ -1,9 +1,9 @@
 ---
-title: 移行後の管理 - Azure SQL Database | Microsoft Docs
+title: 移行後に単一データベースとプールされたデータベースを管理する - Azure SQL Database | Microsoft Docs
 description: Azure SQL Database への移行後のデータベースの管理方法について説明します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,28 +11,31 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: 30ee4f1f56a3c8df44e7a14a131371acfebc6c9e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.date: 02/13/2019
+ms.openlocfilehash: 148dff16d56755755f71e24e658e29c116ac5df1
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052719"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417637"
 ---
-# <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
+# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database での単一データベースとプールされたデータベースの管理
 
-従来の自己管理型で自己制御型の環境から PaaS 環境への移行は、最初は少し面倒に思えるかもしれません。 アプリの開発者や DBA であれば、常に、アプリケーションの高い可用性、パフォーマンス、セキュリティ、回復力を維持するのに役立つプラットフォームのコア機能を知りたいと思うでしょう。 この記事の目的はまさにそれです。 この記事では、リソースを簡潔に整理すると共に、アプリケーションの効率的な実行を管理および維持し、クラウドで最善の結果を得るために、SQL Database の主要な機能を最大限に活用する方法のガイダンスを示します。 この記事は、主に以下のような読者を対象に書かれています。
+従来の自己管理型で自己制御型の環境から PaaS 環境への移行は、最初は少し面倒に思えるかもしれません。 アプリの開発者や DBA であれば、常に、アプリケーションの高い可用性、パフォーマンス、セキュリティ、回復力を維持するのに役立つプラットフォームのコア機能を知りたいと思うでしょう。 この記事の目的はまさにそれです。 この記事では、リソースを簡潔に整理すると共に、アプリケーションの効率的な実行を管理および維持し、クラウドで最善の結果を得るために、単一データベースとプールされたデータベースで SQL Database の主要な機能を最大限に活用する方法のガイダンスを示します。 この記事は、主に以下のような読者を対象に書かれています。
 
-- Azure SQL DB へのアプリケーションの移行を評価している – アプリケーションの現代化。
+- Azure SQL Database へのアプリケーションの移行を評価している – アプリケーションの現代化。
 - アプリケーションの移行を行っている – 進行中の移行シナリオ。
 - Azure SQL DB への移行を最近完了した – クラウドの新しい DBA。
 
-この記事では、すぐに利用できるプラットフォームとしての Azure SQL DB の中核となる特性について説明します。 次のような内容です。
+この記事では、単一データベースおよびエラスティック プール内のプールされたデータベースを使用するときにすぐに利用できる、プラットフォームとしての Azure SQL Database の主要な特性の一部について説明します。 次のような内容です。
 
 - ビジネス継続性とディザスター リカバリー (BCDR)
 - セキュリティとコンプライアンス
 - インテリジェントなデータベースの監視とメンテナンス
 - データの移動
+
+> [!NOTE]
+> この記事は、Azure SQL Database での次のデプロイ オプションに適用されます: 単一データベースとエラスティック プール。 SQL Database のマネージド インスタンスのデプロイ オプションには適用されません。
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>ビジネス継続性とディザスター リカバリー (BCDR)
 
@@ -45,7 +48,7 @@ Azure SQL DB ではバックアップを作成しません。なぜなら必要�
 |サービス階層|保有期間の日数|
 |---|:---:|
 |Basic|7|
-|標準|35|
+|Standard|35|
 |Premium|35|
 |||
 
@@ -83,7 +86,7 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 - [Azure Active Directory 認証](sql-database-aad-authentication.md)
 - SQL 認証
 
-従来の Windows 認証はサポートされていません。 Azure Active Directory (AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 AAD は [MFA (多要素認証)](sql-database-ssms-mfa-authentication.md) をサポートし、[数クリック](../active-directory/hybrid/how-to-connect-install-express.md)で AAD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定の論理サーバーの任意のデータベースでユーザーを認証できます。 このサービスを使用すると、SQL Database および SQL Data Warehouse で、Azure AD ドメイン内において多要素認証とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
+従来の Windows 認証はサポートされていません。 Azure Active Directory (AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 AAD は [MFA (多要素認証)](sql-database-ssms-mfa-authentication.md) をサポートし、[数クリック](../active-directory/hybrid/how-to-connect-install-express.md)で AAD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定の SDL Database サーバーの任意のデータベースでユーザーを認証できます。 このサービスを使用すると、SQL Database および SQL Data Warehouse で、Azure AD ドメイン内において多要素認証とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
 
 |**ユーザーの条件**|**SQL Database/SQL Data Warehouse**|
 |---|---|
@@ -106,9 +109,9 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 
 #### <a name="firewall"></a>ファイアウォール
 
-ファイアウォールは、論理サーバーへのアクセスを特定のエンティティだけに許可することで、外部エンティティからサーバーへのアクセスを防ぎます。 既定では、他の Azure サービスからの接続を除き、論理サーバー内の接続とデータベースはすべて拒否されます。 ファイアウォール ルールでは、ファイアウォールを通過できるコンピューターの IP アドレスを設定することで、特定のエンティティ (たとえば、開発者コンピューター) にのみサーバーへのアクセスを開くことができます。 また、論理サーバーへのアクセスを許可する IP の範囲を指定することもできます。 たとえば、ファイアウォール設定ページで範囲を指定することにより、組織内の開発者コンピューターの IP アドレスを一度に追加できます。
+ファイアウォールは、SDL Database サーバーへのアクセスを特定のエンティティだけに許可することで、外部エンティティからサーバーへのアクセスを防ぎます。 既定では、他の Azure サービスからの接続を除き、SDL Database サーバー内の接続とデータベースはすべて拒否されます。 ファイアウォール ルールでは、ファイアウォールを通過できるコンピューターの IP アドレスを設定することで、特定のエンティティ (たとえば、開発者コンピューター) にのみサーバーへのアクセスを開くことができます。 また、SDL Database サーバーへのアクセスを許可する IP の範囲を指定することもできます。 たとえば、ファイアウォール設定ページで範囲を指定することにより、組織内の開発者コンピューターの IP アドレスを一度に追加できます。
 
-サーバー レベルまたはデータベース レベルで、ファイアウォール ルールを作成できます。 サーバー レベルのファイアウォール ルールは、Azure portal または SSMS で作成できます。 サーバー レベルとデータベース レベルでファイアウォール ルールを設定する方法について詳しくは、[SQL Database でのファイアウォール ルールの作成](sql-database-security-tutorial.md#create-firewall-rules)に関するページをご覧ください。
+サーバー レベルまたはデータベース レベルで、ファイアウォール ルールを作成できます。 サーバー レベルの IP ファイアウォール ルールは、Azure portal または SSMS で作成できます。 サーバー レベルとデータベース レベルでファイアウォール ルールを設定する方法について詳しくは、[SQL Database での IP ファイアウォール ルールの作成](sql-database-security-tutorial.md#create-firewall-rules)に関するページをご覧ください。
 
 #### <a name="service-endpoints"></a>サービス エンドポイント
 
@@ -134,7 +137,7 @@ SQL Database では、監査を有効にしてデータベース イベントを
 
 #### <a name="threat-detection"></a>脅威の検出
 
-[脅威検出](sql-database-threat-detection.md)を使うと、監査によって発見されたセキュリティやポリシーの違反に、とても簡単に対処できます。 セキュリティの専門化でなくても、システム内の潜在的な脅威や違反に対処できます。 脅威検出には、SQL インジェクションの検出など、組み込み機能もいくつかあります。 SQL インジェクションとは、データを変更または侵害する試みであり、データベース アプリケーションを攻撃する非常に一般的な手段です。 SQL Database の脅威検出機能では、潜在的な脆弱性と SQL インジェクション攻撃、および異常なデータベース アクセス パターン (通常とは異なる場所または未知のプリンシパルからのアクセスなど) を検出するアルゴリズムを複数セット実行します。 データベースで脅威が検出された場合、セキュリティ責任者またはその他の指定された管理者に電子メール通知が送られます。 各通知には、不審なアクティビティの詳細情報と、脅威に対して推奨されるさらなる調査方法や軽減策が記載されています。 脅威検出を有効にする方法については、「[SQL Database の脅威の検出を有効にする](sql-database-security-tutorial.md#enable-security-features)」を参照してください。
+[脅威検出](sql-database-threat-detection.md)を使うと、監査によって発見されたセキュリティやポリシーの違反に、とても簡単に対処できます。 セキュリティの専門化でなくても、システム内の潜在的な脅威や違反に対処できます。 脅威検出には、SQL インジェクションの検出など、組み込み機能もいくつかあります。 SQL インジェクションとは、データを変更または侵害する試みであり、データベース アプリケーションを攻撃する非常に一般的な手段です。 脅威検出機能では、潜在的な脆弱性と SQL インジェクション攻撃、および異常なデータベース アクセス パターン (通常とは異なる場所または未知のプリンシパルからのアクセスなど) を検出するアルゴリズムを複数セット実行します。 データベースで脅威が検出された場合、セキュリティ責任者またはその他の指定された管理者に電子メール通知が送られます。 各通知には、不審なアクティビティの詳細情報と、脅威に対して推奨されるさらなる調査方法や軽減策が記載されています。 脅威検出を有効にする方法については、[脅威検出の有効化](sql-database-security-tutorial.md#enable-security-features)に関するページを参照してください。
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>一般に SQL Database 上のデータを保護するにはどうすればよいですか
 
@@ -220,7 +223,7 @@ Query Performance Insight を使うと、データベースのワークロード
 
 ### <a name="security-optimization"></a>セキュリティの最適化
 
-SQL Database では、データの保護に役立つ実践的なセキュリティの推奨事項と、データベースに対する潜在的な脅威になる可能性のある不審なデータベース アクティビティを識別して調査する脅威検出が提供されます。 [SQL 脆弱性評価](sql-vulnerability-assessment.md): データベース スキャンおよびレポート サービスであり、大規模なデータベースのセキュリティ状態を監視して、セキュリティ上のリスクおよびユーザーが定義したセキュリティ ベースラインからのずれを特定します。 各スキャン後には、ユーザーに合わせた実行可能な手順の一覧と修復スクリプト、およびコンプライアンス要件に準拠するために使用可能な評価レポートが提供されます。
+SQL Database では、データの保護に役立つ実践的なセキュリティの推奨事項と、データベースに対する潜在的な脅威になる可能性のある不審なデータベース アクティビティを識別して調査する脅威検出が提供されます。 [脆弱性評価](sql-vulnerability-assessment.md): データベース スキャンおよびレポート サービスであり、大規模なデータベースのセキュリティ状態を監視して、セキュリティ上のリスクおよびユーザーが定義したセキュリティ ベースラインからのずれを特定します。 各スキャン後には、ユーザーに合わせた実行可能な手順の一覧と修復スクリプト、およびコンプライアンス要件に準拠するために使用可能な評価レポートが提供されます。
 
 Azure Security Center では、全体的なセキュリティ推奨事項を確認し、シングル クリックでそれらを適用できます。
 
@@ -240,7 +243,7 @@ SQL Database では、プラットフォームのインテリジェントな洞�
 
 #### <a name="azure-portal"></a>Azure ポータル
 
-Azure portal でデータベースを選択し [概要] ペインのグラフをクリックすると、単一データベースの使用率が表示されます。 このグラフは、CPU 使用率、DTU の割合、データ IO の割合、セッションの割合、データベース サイズの割合など、複数のメトリックを表示するように変更できます。
+Azure portal でデータベースを選択し [概要] ペインのグラフをクリックすると、データベースの使用率が表示されます。 このグラフは、CPU 使用率、DTU の割合、データ IO の割合、セッションの割合、データベース サイズの割合など、複数のメトリックを表示するように変更できます。
 
 ![監視グラフ](./media/sql-database-manage-after-migration/monitoring-chart.png)
 
@@ -250,7 +253,7 @@ Azure portal でデータベースを選択し [概要] ペインのグラフを
 
 #### <a name="dynamic-management-views"></a>動的管理ビュー
 
-リソース使用率の統計について、[sys.dm_db_resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 動的管理ビューでクエリを実行すると過去 1 時間における履歴を確認でき、sys.resource_stats システム カタログ ビューでクエリを実行すると過去 14 日間の履歴を確認できます。
+リソース使用率の統計について、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 動的管理ビューでクエリを実行すると過去 1 時間における履歴を確認でき、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) システム カタログ ビューでクエリを実行すると過去 14 日間の履歴を確認できます。
 
 #### <a name="query-performance-insight"></a>Query Performance Insight
 
@@ -287,7 +290,7 @@ SQL Database には、Basic、Standard、Premium というさまざまなサー�
 
 コンピューティング サイズが適切であることを確認するには、「SQL Database のパフォーマンスとリソース使用率を監視するにはどうすればよいですか?」で説明したいずれかの方法で、クエリとデータベース リソース使用量を監視できます。 クエリ/データベースによるCPU/メモリ使用量が一貫して高い場合は、上位のコンピューティング サイズへのスケールアップを検討します。 同様に、ピーク時間帯でもリソースがあまり使われていない場合は、現在のコンピューティング サイズからのスケールダウンを検討します。
 
-SaaS アプリ パターンまたはデータベース統合シナリオがある場合は、エラスティック プールを使ってコストを最適化することを検討します。 エラスティック プールは、データベースの統合とコストの最適化を実現する優れた方法です。 Elastic Pool を使った複数のデータベースの管理については、[プールとデータベースの管理](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)に関するページをご覧ください。
+SaaS アプリ パターンまたはデータベース統合シナリオがある場合は、エラスティック プールを使ってコストを最適化することを検討します。 エラスティック プールは、データベースの統合とコストの最適化を実現する優れた方法です。 エラスティック プールを使った複数のデータベースの管理については、[プールとデータベースの管理](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)に関するページをご覧ください。
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>どのくらいの頻度でデータベースの整合性チェックを実行する必要がありますか
 
@@ -299,18 +302,18 @@ SQL Database では、特定のクラスのデータ破損にデータを失う�
 
 - **エクスポート**:Azure portal から Azure SQL データベースを BACPAC ファイルとしてエクスポートできます。
 
-   ![データベースのエクスポート](./media/sql-database-export/database-export.png)
+   ![データベースのエクスポート](./media/sql-database-export/database-export1.png)
 
 - **インポート**:Azure portal を使って、データを BACPAC ファイルとしてデータベースにインポートすることもできます。
 
-   ![データベースのインポート](./media/sql-database-import/import.png)
+   ![データベースのインポート](./media/sql-database-import/import1.png)
 
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>SQL Database と SQL Server の間でデータを同期するにはどうすればよいですか
 
 これを行うには、いくつかの方法があります。
 
 - **[データ同期](sql-database-sync-data.md)** – この機能を使うと、複数のオンプレミス SQL Server データベースと SQL Database の間でデータを双方向に同期することができます。 オンプレミスの SQL Server データベースと同期するには、ローカル コンピューターに同期エージェントをインストールして構成し、発信 TCP ポート 1433 を開く必要があります。
-- **[トランザクション レプリケーション](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – トランザクション レプリケーションを使うと、オンプレミスをパブリッシャー、Azure SQL DB をサブスクライバーにして、オンプレミスから Azure SQL DB にデータを同期できます。 現時点では、このセットアップのみがサポートされています。 最小限のダウンタイムでオンプレミスから Azure SQL にデータを移行する方法の詳細については、「[トランザクション レプリケーションの使用](sql-database-cloud-migrate.md#method-2-use-transactional-replication)」を参照してください。
+- **[トランザクション レプリケーション](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – トランザクション レプリケーションを使うと、オンプレミスをパブリッシャー、Azure SQL DB をサブスクライバーにして、オンプレミスから Azure SQL DB にデータを同期できます。 現時点では、このセットアップのみがサポートされています。 最小限のダウンタイムでオンプレミスから Azure SQL にデータを移行する方法の詳細については、「[トランザクション レプリケーションの使用](sql-database-single-database-migrate.md#method-2-use-transactional-replication)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

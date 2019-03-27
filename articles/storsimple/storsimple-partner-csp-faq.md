@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 76b89c15a12810f98e6324ca93cf581f9b852c88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f2c726fd4159bcb47088e814fd60e054e50a1315
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259940"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814284"
 ---
-# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>クラウド ソリューション プロバイダー プログラムの StorSimple: よく寄せられる質問
+# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>クラウド ソリューション プロバイダー プログラムの StorSimple:よく寄せられる質問
 
 
 ## <a name="overview"></a>概要
@@ -31,7 +31,7 @@ StorSimple パートナーが Azure Portal で StorSimple Virtual Array をデ�
 
  - [StorSimple とクラウド ソリューション プロバイダー プログラム (CSP) モデル](#storsimple-and-csp-model)
  - [パートナーによる Virtual Array のデプロイと管理](#deploy-and-manage-storsimple-as-a-partner)
- - [CSP の StorSimple パートナーのサポート](#support-for-storsimple-partners)
+ - CSP の StorSimple パートナーのサポート
 
 ## <a name="storsimple-and-csp-model"></a>StorSimple と CSP モデル
 

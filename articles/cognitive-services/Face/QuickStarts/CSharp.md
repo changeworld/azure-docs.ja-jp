@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Azure REST API と C# を使って画像から顔を検出する'
+title: クイック スタート:Azure REST API と C# を使用して画像から顔を検出する
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Azure Face REST API と C# を使用して、画像から顔を検出します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: face-api
+ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 11/09/2018
+ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 24b506b0dd22b388a57f88f1105742660b02269c
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 8ccc5664ab06fe23266915196b98a8dac4f71880
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854018"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311921"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>クイック スタート: Face REST API と C# を使って画像から顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>クイック スタート:Face REST API と C# を使用して画像から顔を検出する
 
 このクイック スタートでは、Azure Face REST API と C# を使用して、画像から人の顔を検出します。
 

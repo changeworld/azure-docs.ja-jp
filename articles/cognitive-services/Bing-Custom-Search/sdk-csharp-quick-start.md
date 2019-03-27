@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Custom Search SDK C# コンソール アプリケーションの設定。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 09/06/2018
 ms.author: scottwhi
-ms.openlocfilehash: f5ede8d8dc2950551655e7e0331a68b15ba13cf8
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 2b9aa109161b68a3ed23473becee5d5f7783b956
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555780"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859676"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>クイック スタート:C# SDK を使用して Bing Custom Search エンドポイントを呼び出す 
 

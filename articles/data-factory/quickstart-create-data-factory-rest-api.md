@@ -11,16 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3fc09255c38b4bbe8d416b97ea14a77a4b3014a0
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: c3a7c089bcc6dca2379c84330d3b937b9c7f1167
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54305589"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450292"
 ---
-# <a name="create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>REST API を使用して Azure データ ファクトリとパイプラインを作成する
+# <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>クイック スタート:REST API を使用して Azure データ ファクトリとパイプラインを作成する
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [現在のバージョン](quickstart-create-data-factory-rest-api.md)
@@ -33,10 +34,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * **Azure サブスクリプション**。 サブスクリプションがない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)アカウントを作成できます。
 * **Azure Storage アカウント**。 BLOB ストレージを、**ソース**と**シンク**のデータ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。
 * Blob Storage に **BLOB コンテナー**を作成し、コンテナーに入力**フォルダー**を作成して、フォルダーにいくつかのファイルをアップロードします。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、Azure Blob Storage への接続、BLOB コンテナーの作成、入力ファイルのアップロード、出力ファイルの検証を行うことができます。
-* **Azure PowerShell**をインストールします。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。 このクイックスタートでは、PowerShell を使用して、REST API 呼び出しを実行します。
+* **Azure PowerShell**をインストールします。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページに記載されている手順に従います。 このクイックスタートでは、PowerShell を使用して、REST API 呼び出しを実行します。
 * [この手順](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)に従って、**Azure Active Directory にアプリケーションを作成します**。 **アプリケーション ID**、**認証キー**、**テナント ID** の値をメモしておいてください。後の手順で使用します。 アプリケーションを "**共同作成者**" ロールに割り当てます。
 
 ## <a name="set-global-variables"></a>グローバル変数の設定
@@ -46,17 +49,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
     
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
     次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
     次のコマンドを実行して、使用するサブスクリプションを選択します。 **SubscriptionId** は、実際の Azure サブスクリプションの ID に置き換えてください。
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
 2. プレースホルダーを独自の値に置き換えた後、次のコマンドを実行して、後の手順で使用するグローバル変数を設定します。
 
@@ -67,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     $subsId = "<your subscription ID to create the factory>"
     $resourceGroup = "<your resource group to create the factory>"
     $dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>"
-    $apiVersion = "2017-09-01-preview"
+    $apiVersion = "2018-06-01"
     ```
 
 ## <a name="authenticate-with-azure-ad"></a>Azure AD による認証
@@ -125,7 +128,7 @@ $response | ConvertTo-Json
         "provisioningState":  "Succeeded",
         "loggingStorageAccountKey":  "**********",
         "createTime":  "2017-09-14T06:22:59.9106216Z",
-        "version":  "2017-09-01-preview"
+        "version":  "2018-06-01"
     },
     "identity":  {
         "type":  "SystemAssigned",
@@ -437,13 +440,13 @@ Azure Storage Explorer を使用して、パイプラインの実行を作成し
 
 次のコマンドを実行して、リソース グループ全体を削除します。
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
+Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 次のコマンドを実行して、データ ファクトリだけを削除します。
 
 ```powershell
-Remove-AzureRmDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<NameOfResourceGroup>"
+Remove-AzDataFactoryV2 -Name "<NameOfYourDataFactory>" -ResourceGroupName "<NameOfResourceGroup>"
 ```
 
 ## <a name="next-steps"></a>次の手順

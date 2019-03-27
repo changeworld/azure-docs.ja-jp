@@ -9,13 +9,8 @@ layout: LandingPage
 ms.service: power-bi-embedded
 ms.topic: landing-page
 ms.date: 07/31/2018
-ms.openlocfilehash: 051b7d725a121b3160e8a572c5fab91e8289f44b
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678238"
 ---
+
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded のドキュメント
 
 Power BI Embedded を使用して、データの視覚化と対話型のレポートをアプリケーションに埋め込む方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Power BI のレポートとダッシュボードをアプリにシームレスに埋め込む方法を紹介します。
@@ -105,7 +100,7 @@ Power BI Embedded を使用して、データの視覚化と対話型のレポ�
                 <div class="card">
                     <div class="cardText">
                         <h3>PowerShell</h3>
-                        <p><a href="https://docs.microsoft.com/powershell/module/azurerm.powerbiembedded/?view=azurermps-6.5.0#power_bi_embedded_capacity">PowerShell</a></p>
+                        <p><a href="https://docs.microsoft.com/powershell/module/azurerm.powerbiembedded/#power_bi_embedded_capacity">PowerShell</a></p>
                     </div>
                 </div>
             </div>

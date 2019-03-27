@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 1a3855b7b95224e0f872764f6710f9fa907780a7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
+ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025455"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54358713"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマ マッピング
 この記事では、Azure Data Factory のコピー アクティビティが、データ コピーの実行時にソース データからシンク データへのスキーマ マッピングとデータ型のマッピングをどのように行うかについて説明します。
@@ -142,12 +142,12 @@ ms.locfileid: "54025455"
 
 ## <a name="schema-mapping"></a>スキーマ マッピング
 
-スキーマ マッピングは、階層形式の整形データと表形式の整形データ間でデータをコピーするときに適用されます。たとえば、MongoDB/REST からテキスト ファイルにコピーしたり、SQL から Azure Cosmos DB MongoDB API にコピーしたりする場合です。 コピー アクティビティの `translator` セクションでは、次のプロパティがサポートされます。
+スキーマ マッピングは、階層形式の整形データと表形式の整形データ間でデータをコピーするときに適用されます。たとえば、MongoDB/REST からテキスト ファイルにコピーしたり、SQL から Azure Cosmos DB の MongoDB 用 API にコピーしたりする場合です。 コピー アクティビティの `translator` セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのトランスレーターの type プロパティは**TabularTranslator** に設定する必要があります。 | [はい] |
-| schemaMapping | キーと値のペアのコレクション。表形式の側から階層形式の側へのマッピングの関係を表します。<br/>- **キー:** データセット構造に定義される表形式データの列名。<br/>- **値:** 抽出とマッピングのための各フィールドの JSON パス式。 ルート オブジェクトの直下のフィールドの場合、ルートの $ から記述します。`collectionReference` プロパティによって選択された配列内のフィールドの場合、配列要素から記述します。  | [はい] |
+| type | コピー アクティビティのトランスレーターの type プロパティは**TabularTranslator** に設定する必要があります。 | はい |
+| schemaMapping | キーと値のペアのコレクション。表形式の側から階層形式の側へのマッピングの関係を表します。<br/>- **キー:** データセット構造に定義される表形式データの列名。<br/>- **値:** 抽出とマッピングのための各フィールドの JSON パス式。 ルート オブジェクトの直下のフィールドの場合、ルートの $ から記述します。`collectionReference` プロパティによって選択された配列内のフィールドの場合、配列要素から記述します。  | はい |
 | collectionReference | 同じパターンを持つ**配列フィールド内**のオブジェクトからのデータの反復処理と抽出を行って、オブジェクトごとの行ごとに変換する場合は、その配列の JSON のパスを指定してクロス適用を行います。 このプロパティは、階層形式のデータがソースであるときにのみサポートされます。 | いいえ  |
 
 **例: MongoDB から SQL にコピーする:**

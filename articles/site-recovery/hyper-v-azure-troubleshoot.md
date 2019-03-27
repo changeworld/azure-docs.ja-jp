@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 2f9c4c0b973efe26e6ece2235f2d0c7a6878ebef
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e79ffba90f0812d79bcb7ab808e2b6ba80e1c61b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52844993"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756667"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 
@@ -115,7 +115,7 @@ Hyper-V VM の保護を有効にしたときに問題が発生する場合は、
         - カウンター:"Write Bytes / Sec"</br>
         - このデータ チャーン レートは、VM またはそのアプリがどれだけビジー状態にあるかに応じて、上昇するか、または高いレベルにとどまります。
         - ソース ディスクの平均データ チャーンは、Site Recovery の標準ストレージで 2 MB/秒です。 [詳細情報](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - さらに、[ストレージのスケーラビリティ ターゲットを確認](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account)できます。
+    - さらに、[ストレージのスケーラビリティ ターゲットを確認](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)できます。
 8. [Deployment Planner](hyper-v-deployment-planner-run.md) を実行します。
 9. [ネットワーク](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)と[ストレージ](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input)の推奨事項を確認してください。
 

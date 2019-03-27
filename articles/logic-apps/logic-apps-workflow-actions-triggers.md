@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 27c074b12d2b151015e6946c483302387726dfc5
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 066c8bc3edfc2bf36b4d96f787d6db6f16daec9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190827"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856826"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類に関するリファレンス
 
@@ -148,16 +148,16 @@ ms.locfileid: "54190827"
 | <*max-runs*> | 整数 | 既定では、ロジック アプリ ワークフローのインスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
 | <*max-runs-queue*> | 整数 | ロジック アプリで既に最大数のインスタンスを実行している場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
 | <*splitOn-expression*> | String | 配列を返すトリガーの場合、使用する配列をこの式で参照すると、"for each" ループを使わずに、配列の項目ごとにワークフローを作成して実行することができます。 <p>たとえば、`@triggerbody()?['value']` という式は、トリガー本文の内容の中に返される配列の項目を表します。 |
-| <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
+| <*operation-option*> | String | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 |
 ||||
 
 *Outputs*
  
 | 要素 | type | 説明 |
-|---------|------|-------------| 
-| headers | JSON オブジェクト | 応答のヘッダー | 
-| body | JSON オブジェクト | 応答の本文 | 
-| 状態コード | 整数 | 応答の状態コード | 
+|---------|------|-------------|
+| headers | JSON オブジェクト | 応答のヘッダー |
+| body | JSON オブジェクト | 応答の本文 |
+| 状態コード | 整数 | 応答の状態コード |
 |||| 
 
 *例*
@@ -171,7 +171,7 @@ ms.locfileid: "54190827"
       "host": {
          "connection": {
             "name": "@parameters('$connections')['office365']['connectionId']"
-         }     
+         }
       },
       "method": "get",
       "path": "/Mail/OnNewEmail",
@@ -339,7 +339,7 @@ ms.locfileid: "54190827"
   
 | Response | 必須 | 説明 | 
 |----------|----------|-------------| 
-| 状態コード | [はい] | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
+| 状態コード | はい | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
 | Retry-after ヘッダー | いいえ  | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数 | 
 | Location ヘッダー | いいえ  | 次のポーリング間隔で呼び出す URL です。 指定されていない場合は、元の URL が使われます。 | 
 |||| 
@@ -788,7 +788,7 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 
 | 値 | type | 説明 | 
 |-------|------|-------------|
-| <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](#retry-policies)」をご覧ください。 | 
+| <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「再試行ポリシー」を参照してください。 | 
 | <*runtime-config-options*> | JSON オブジェクト | 一部のアクションについては、`runtimeConfiguration` プロパティを設定してアクションのビヘイビアーを実行時に変更できます。 詳細については、「[ランタイム構成の設定](#runtime-config-options)」を参照してください。 | 
 | <*operation-option*> | String | 一部のアクションについては、`operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
 |||| 
@@ -2557,7 +2557,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 <a name="connector-authentication"></a>
 
-## <a name="authenticate-triggers-or-actions"></a>トリガーまたはアクションを認証する
+## <a name="authenticate-http-triggers-and-actions"></a>HTTP トリガーとアクションを認証する
 
 HTTP エンドポイントはさまざまな認証をサポートしています。 次の HTTP トリガーとアクションに対して認証を設定できます。
 
@@ -2571,27 +2571,30 @@ HTTP エンドポイントはさまざまな認証をサポートしています
 * [クライアント証明書認証](#client-certificate-authentication)
 * [Azure Active Directory (Azure AD) OAuth 認証](#azure-active-directory-oauth-authentication)
 
+> [!IMPORTANT]
+> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
+
 <a name="basic-authentication"></a>
 
 ### <a name="basic-authentication"></a>基本認証
 
-この認証の種類の場合、トリガーまたはアクション定義には、次のプロパティがある `authentication` JSON オブジェクトを含めることができます。
+Azure Active Directory を使用する[基本認証](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md)では、トリガーまたはアクションの定義に、`authentication` JSON オブジェクトを含めることができます。このオブジェクトには、以下の表で指定されたプロパティがあります。 実行時にパラメーター値にアクセスする場合は、[ワークフロー定義言語](https://aka.ms/logicappsdocs)で提供される `@parameters('parameterName')` 式を使用できます。 
 
 | プロパティ | 必須 | 値 | 説明 | 
 |----------|----------|-------|-------------| 
-| **type** | [はい] | "Basic" | 使用する認証の種類。ここでは "Basic" です | 
-| **username** | [はい] | "@parameters('userNameParam')" | ターゲット サービス エンドポイントにアクセスするために認証するユーザー名を渡すパラメーター |
-| **password** | [はい] | "@parameters('passwordParam')" | ターゲット サービス エンドポイントにアクセスするために認証するパスワードを渡すパラメーター |
+| **type** | はい | "Basic" | 使用する認証の種類。ここでは "Basic" です | 
+| **username** | はい | "@parameters('userNameParam')" | ターゲット サービス エンドポイントへのアクセスを認証するためのユーザー名 |
+| **password** | はい | "@parameters('passwordParam')" | ターゲット サービス エンドポイントへのアクセスを認証するためのパスワード |
 ||||| 
 
-たとえば、トリガーまたはアクション定義の `authentication` オブジェクトの形式は次のとおりです。 パラメーターのセキュリティ保護の詳細については、[機密情報のセキュリティ保護](#secure-info)に関するページを参照してください。 
+この HTTP アクション定義の例では、`authentication` セクションで `Basic` 認証が指定されます。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
-```javascript
+```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "GET",
-      "uri": "http://www.microsoft.com",
+      "uri": "https://www.microsoft.com",
       "authentication": {
          "type": "Basic",
          "username": "@parameters('userNameParam')",
@@ -2601,112 +2604,85 @@ HTTP エンドポイントはさまざまな認証をサポートしています
   "runAfter": {}
 }
 ```
+
+> [!IMPORTANT]
+> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
 <a name="client-certificate-authentication"></a>
 
 ### <a name="client-certificate-authentication"></a>クライアント証明書認証
 
-この認証の種類の場合、トリガーまたはアクション定義には、次のプロパティがある `authentication` JSON オブジェクトを含めることができます。
+Azure Active Directory を使用する[証明書ベース認証](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)では、トリガーまたはアクションの定義に `authentication` JSON オブジェクトを含めることができます。このオブジェクトには、以下の表で指定されたプロパティがあります。 実行時にパラメーター値にアクセスする場合は、[ワークフロー定義言語](https://aka.ms/logicappsdocs)で提供される `@parameters('parameterName')` 式を使用できます。 使用できるクライアント証明書の数の制限については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。
 
-| プロパティ | 必須 | 値 | 説明 | 
-|----------|----------|-------|-------------| 
-| **type** | [はい] | "ClientCertificate" | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類 | 
-| **pfx** | [はい] | <*base64-encoded-pfx-file*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
-| **password** | [はい] | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワードに関するパラメーター |
+| プロパティ | 必須 | 値 | 説明 |
+|----------|----------|-------|-------------|
+| **type** | はい | "ClientCertificate" | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類。 自己署名証明書はサポートされていますが、SSL 用の自己署名証明書はサポートされていません。 |
+| **pfx** | はい | "@parameters('pfxParam') | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
+| **password** | はい | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワード |
 ||||| 
 
-たとえば、トリガーまたはアクション定義の `authentication` オブジェクトの形式は次のとおりです。 パラメーターのセキュリティ保護の詳細については、[機密情報のセキュリティ保護](#secure-info)に関するページを参照してください。 
+この HTTP アクション定義の例では、`authentication` セクションで `ClientCertificate` 認証が指定されます。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
-```javascript
-"authentication": {
-   "password": "@parameters('passwordParam')",
-   "pfx": "aGVsbG8g...d29ybGQ=",
-   "type": "ClientCertificate"
+```json
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "https://www.microsoft.com",
+      "authentication": {
+         "type": "ClientCertificate",
+         "pfx": "@parameters('pfxParam')",
+         "password": "@parameters('passwordParam')"
+      }
+   },
+   "runAfter": {}
 }
 ```
+
+> [!IMPORTANT]
+> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
 ### <a name="azure-active-directory-ad-oauth-authentication"></a>Azure Active Directory (AD) OAuth 認証
 
-この認証の種類の場合、トリガーまたはアクション定義には、次のプロパティがある `authentication` JSON オブジェクトを含めることができます。
+[Azure AD OAuth 認証](../active-directory/develop/authentication-scenarios.md)では、トリガーまたはアクションの定義に `authentication` JSON オブジェクトを含めることができます。このオブジェクトには、以下の表で指定されたプロパティがあります。 実行時にパラメーター値にアクセスする場合は、[ワークフロー定義言語](https://aka.ms/logicappsdocs)で提供される `@parameters('parameterName')` 式を使用できます。
 
-| プロパティ | 必須 | 値 | 説明 | 
-|----------|----------|-------|-------------| 
-| **type** | [はい] | `ActiveDirectoryOAuth` | 使用する認証の種類 (Azure AD OAuth の場合は "ActiveDirectoryOAuth") | 
-| **authority** | いいえ  | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL |  
-| **tenant** | [はい] | <*tenant-ID*> | Azure AD テナントのテナント ID | 
-| **audience** | [はい] | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) | 
-| **clientId** | [はい] | <*client-ID*> | 承認を要求しているアプリのクライアント ID | 
-| **credentialType** | [はい] | "Secret" または "Certificate" | クライアントが承認を要求するために使用する資格情報の種類。 このプロパティと値は基の定義には出現しませんが、その資格情報の種類に必要なパラメーターが決まります。 | 
-| **password** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワードに関するパラメーター | 
-| **pfx** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | <*base64-encoded-pfx-file*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
-| **secret** | はい (ただし資格情報の種類が "Secret" の場合のみ) | <*secret-for-authentication*> | クライアントが承認を要求するために使用する base64 でエンコードされたシークレット |
-||||| 
+| プロパティ | 必須 | 値 | 説明 |
+|----------|----------|-------|-------------|
+| **type** | はい | `ActiveDirectoryOAuth` | 使用する認証の種類 (Azure AD OAuth の場合は "ActiveDirectoryOAuth") |
+| **authority** | いいえ  | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL |
+| **tenant** | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
+| **audience** | はい | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) |
+| **clientId** | はい | <*client-ID*> | 承認を要求しているアプリのクライアント ID |
+| **credentialType** | はい | "Certificate" または "Secret" | クライアントが承認を要求するために使用する資格情報の種類。 このプロパティと値は基の定義には出現しませんが、その資格情報の種類に必要なパラメーターが決まります。 |
+| **pfx** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('pfxParam') | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
+| **password** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワード |
+| **secret** | はい (ただし資格情報の種類が "Secret" の場合のみ) | "@parameters('secretParam')" | 承認を要求しているクライアント シークレット |
+|||||
 
-たとえば、トリガーまたはアクションの定義で資格情報の種類 "Secret" を使用する場合の `authentication` オブジェクトの形式は次のとおりです。パラメーターのセキュリティ保護の詳細については、[機密情報のセキュリティ保護](#secure-info)に関するページを参照してください。 
+この HTTP アクション定義の例では、`authentication` セクションで `ActiveDirectoryOAuth` 認証と "Secret" 資格情報の種類が指定されます。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
-```javascript
-"authentication": {
-   "audience": "https://management.core.windows.net/",
-   "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-   "secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
-   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-   "type": "ActiveDirectoryOAuth"
-}
-```
-
-<a name="secure-info"></a>
-
-## <a name="secure-sensitive-information"></a>機密情報のセキュリティ保護
-
-トリガーとアクションの定義でユーザー名やパスワードなどの認証に使用する機密情報を保護するために、パラメーターと `@parameters()` 式を使用して、ロジック アプリを保存した後に機密情報が表示されないようにすることができます。 
-
-たとえば、トリガーまたはアクションの定義で "Basic" 認証を使用しているとします。 ユーザー名とパスワードを指定する例の `authentication` オブジェクトを次に示します。
-
-```javascript
+```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "GET",
-      "uri": "http://www.microsoft.com",
+      "uri": "https://www.microsoft.com",
       "authentication": {
-         "type": "Basic",
-         "username": "@parameters('userNameParam')",
-         "password": "@parameters('passwordParam')"
-      }
-  },
-  "runAfter": {}
+         "type": "ActiveDirectoryOAuth",
+         "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+         "audience": "https://management.core.windows.net/",
+         "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
+         "secret": "@parameters('secretParam')"
+     }
+   },
+   "runAfter": {}
 }
 ```
 
-ロジック アプリ定義の `parameters` セクションで、トリガーまたはアクションの定義で使用したパラメーターを定義します。
-
-```javascript
-"definition": {
-   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-   "actions": {
-      "HTTP": {
-      }
-   },
-   "parameters": {
-      "passwordParam": {
-         "type": "securestring"
-      },
-      "userNameParam": {
-         "type": "securestring"
-      }
-   },
-   "triggers": {
-      "HTTP": {
-      }
-   },
-   "contentVersion": "1.0.0.0",
-   "outputs": {}
-},
-```
-
-Azure Resource Manager デプロイ テンプレートを作成または使用している場合は、テンプレート定義の外側の `parameters` セクションも含める必要があります。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリに対するアクセスのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するセクションを参照してください。 
+> [!IMPORTANT]
+> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

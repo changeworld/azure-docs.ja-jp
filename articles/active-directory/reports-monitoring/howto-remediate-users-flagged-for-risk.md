@@ -3,23 +3,24 @@ title: Azure Active Directory ポータルのリスクのフラグ付きユー�
 description: Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポートについて説明します。
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e81b87a6cbaddf61492fa1fc41e66950eb7ce1d7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4db4c2fc0781225af6cc59df72467a69e0ba73e1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191633"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189560"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
@@ -68,7 +69,7 @@ Office 365 管理センターで**リスクのフラグ付きユーザー**の�
 
     c. 外部ドメインへのメール転送ルールを無効にします。
 
-    d. メールボックスのグローバル メール転送プロパティを削除します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 メールボックスのグローバル メール転送プロパティを削除します。
 
     e. ユーザーのアカウントで MFA を有効にします。
 

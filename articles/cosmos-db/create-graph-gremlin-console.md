@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: e94d52cc920759b0ddf462b7fb5d20b86ab61e6c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b431d1b739342c54cbc218efdfded1ee516ecaa7
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54032178"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586394"
 ---
-# <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB は:Gremlin コンソールでのグラフの作成、クエリ、走査
+# <a name="quickstart-create-query-and-traverse-a-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>クイック スタート:Gremlin コンソールを使用して Azure Cosmos DB グラフ データベースを作成、クエリ、および走査する
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -78,6 +78,8 @@ connectionPool: {
 }
 serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV1d0, config: { serializeResultToString: true }}
 ```
+
+hosts パラメーターの値は、必ず角かっこ ([]) で囲んでください。 
 
 3. ご使用のターミナルで、`bin/gremlin.bat` または `bin/gremlin.sh` を実行して [Gremlin コンソール](https://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/)を起動します。
 4. ご使用のターミナルで、`:remote connect tinkerpop.server conf/remote-secure.yaml` を実行して目的の App Service に接続します。

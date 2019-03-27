@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: edea614065d67bab23de29e5cef3b56c69905a90
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 99c6e7dc589a94880976a9c7abcde12377e4e5d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188611"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101535"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する #
 
@@ -80,11 +80,11 @@ ILB ASE を作成する方法は次のとおりです。
 
    [既存の DNS 名をアプリにマップ][customdomain]することができます。 アプリで使用するカスタム ドメイン名と、ご使用の ASE によって使用されるドメイン名を重複させることはできません。 ILB ASE のドメイン名が _contoso.com_ である場合、次のようなカスタム ドメイン名はご使用のアプリで使用できません。
 
-    * www.contoso.com
+   * www\.contoso.com
 
-    * abcd.def.contoso.com
+   * abcd.def.contoso.com
 
-    * abcd.contoso.com
+   * abcd.contoso.com
 
    ご使用のアプリのカスタム ドメイン名がわかっている場合は、これらのカスタム ドメイン名と競合しない ILB ASE のドメインを選択します。 この例では、ASE のドメインに *contoso-internal.com* のようなものを使用できます。これは、*.contoso.com* で終わるカスタム ドメイン名と重複しないためです。
 
@@ -222,9 +222,14 @@ ILB ASE と WAF デバイスを構成する方法について詳しくは、「[
 ## <a name="get-started"></a>作業開始 ##
 
 * ASE の使用を開始するには、「[App Service 環境の概要][Intro]」をご覧ください。
- 
+ 
+
 <!--Image references-->
-[1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png [2]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png [3]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate.png [4]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png [5]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
+[1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png
+[2]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-webapp.png
+[3]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate.png
+[4]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-certificate2.png
+[5]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-ipaddresses.png
 
 <!--Links-->
 [Intro]: ./intro.md

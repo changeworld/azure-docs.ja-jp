@@ -44,13 +44,13 @@ Amazon Marketplace Web Service のリンクされたサービスでは、次の�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります。**AmazonMWS** | [はい] |
-| endpoint | Amazon MWS サーバーのエンドポイント (つまり、mws.amazonservices.com)  | [はい] |
-| marketplaceID | データを取得する Amazon Marketplace ID。 複数の Marketplace ID からデータを取得するには、コンマ (`,`) で区切って指定します。 (つまり、A2EUQ1WTGCTBG2)  | [はい] |
-| sellerID | Amazon の販売者 ID。  | [はい] |
-| mwsAuthToken | Amazon MWS 認証トークン。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
-| accessKeyId | データのアクセスに使用されるアクセス キー ID。  | [はい] |
-| secretKey | データのアクセスに使用されるシークレット キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**AmazonMWS** | はい |
+| endpoint | Amazon MWS サーバーのエンドポイント (つまり、mws.amazonservices.com)  | はい |
+| marketplaceID | データを取得する Amazon Marketplace ID。 複数の Marketplace ID からデータを取得するには、コンマ (`,`) で区切って指定します。 (つまり、A2EUQ1WTGCTBG2)  | はい |
+| sellerID | Amazon の販売者 ID。  | はい |
+| mwsAuthToken | Amazon MWS 認証トークン。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| accessKeyId | データのアクセスに使用されるアクセス キー ID。  | はい |
+| secretKey | データのアクセスに使用されるシークレット キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -88,7 +88,7 @@ Amazon Marketplace Web Service からデータをコピーするには、デー�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**AmazonMWSObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります。**AmazonMWSObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -118,7 +118,7 @@ Amazon Marketplace Web Service からデータをコピーするには、コピ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**AmazonMWSSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**AmazonMWSSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

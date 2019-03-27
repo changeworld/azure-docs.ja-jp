@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: f0f929e7caece9bea10dbe09e237bc987ad93d44
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5a72c0539cabec3bf4168280c85a2afb92569b25
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159657"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234002"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する 
 コンテナーの Azure Monitor を使用している場合、パフォーマンスのグラフと正常性状態を使用して、AKS クラスターから直接、または Azure Monitor からサブスクリプション内のすべての AKS クラスターという 2 つの観点から Azure Kubernetes Service (AKS) クラスターのワークロードを監視することができます。 Azure Container Instances (ACI) の表示は、特定の AKS クラスターを監視するときにも可能です。
@@ -275,5 +275,5 @@ Log Analytics に転送されるコンテナーのログ出力は STDOUT およ�
 | **[折れ線] グラフの表示オプションを選択する**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | コンテナー CPU | 
 | **[折れ線] グラフの表示オプションを選択する**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | コンテナー メモリ |
 
-## <a name="alerting"></a>アラート
-コンテナーの Azure Monitor には、サポートしているプロセスや手順に従ってコピーおよび変更できる定義済みのアラートのセットは含まれていません。 そのため、[Azure Monitor でログ アラートを作成する](../../azure-monitor/platform/alerts-log.md?toc=/azure/azure-monitor/toc.json)方法のページを確認し、独自のアラート セットを作成する方法を学んでください。  
+## <a name="next-steps"></a>次の手順
+コンテナーの Azure Monitor には、サポートしているプロセスや手順に従ってコピーおよび変更する、定義済みのアラートのセットは含まれていません。 「[コンテナーの Azure Monitor を使用してパフォーマンス アラートを作成する](container-insights-alerts.md)」を見直して、CPU やメモリの使用率が高い場合に推奨されるアラートを作成する方法について学習します。  

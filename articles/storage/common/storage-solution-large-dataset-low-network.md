@@ -4,16 +4,16 @@ description: ご利用の環境が、ネットワーク帯域幅がない状態�
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 54a51f5f124857419727ed7ca574f717e17b125a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: a6505232066d7a2e63c3e9508cb16cb9a31f8e35
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263217"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776667"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>ネットワーク帯域幅が低速またはない場合の大規模なデータセットのデータ転送
  
@@ -51,8 +51,8 @@ ms.locfileid: "53263217"
 |    データ型                        |    Azure BLOB                  |    Azure BLOB<br>Azure Files                    |    Azure BLOB<br>Azure Files            |    Azure BLOB<br>Azure Files          |
 |    フォーム ファクター                      |    注文ごとに 5 つの SSD             |    1 X 50 lbs。 1 回の注文ごとにデスクトップ サイズのデバイス    |    1 X 最大 500-lbs。 1 回の注文ごとに大容量のデバイス    |    1 回の注文ごとに最大 10 台の HDD/SSD        |
 |    初期セットアップ時間               |    低 <br>(15 分)            |    低から中 <br> (30 分未満)               |    中<br>(1 ～ 2 時間)               |    中から難<br>(可変) |
-|    データを Azure に送信する               |    [はい]                          |    はい                                           |    はい                                   |    [はい]                                 |
-|    Azure からデータをエクスポートする           |    いいえ                            |    いいえ                                             |    いいえ                                     |    [はい]                                 |
+|    データを Azure に送信する               |    はい                          |    はい                                           |    はい                                   |    はい                                 |
+|    Azure からデータをエクスポートする           |    いいえ                            |    いいえ                                             |    いいえ                                     |    はい                                 |
 |    暗号化                       |    AES 128 ビット                  |    AES 256 ビット                                   |    AES 256 ビット                           |    AES 128 ビット                         |
 |    ハードウェア                         |     Microsoft による提供          |    Microsoft による提供                            |    Microsoft による提供                    |    お客様による提供                   |
 |    Linux                |    USB 3.1/SATA                 |    RJ 45、SFP+                                   |    RJ45、QSFP+                           |    SATA II/SATA III                    |
@@ -66,6 +66,6 @@ ms.locfileid: "53263217"
 
 - 以下の方法を理解します
 
-    - [Data Box Disk を使用してデータを転送する](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal)。
+    - [Data Box Edge を使用してデータを転送する](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal)。
     - [Data Box を使用してデータを転送する](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal)。
     - [Import/Export を使用してデータを転送する](/azure/storage/common/storage-import-export-data-to-blobs)。

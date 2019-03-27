@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1fde06f483821b0e9958c25bf5ce37aae4c8f61d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022021"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541929"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Redshift からデータを移動する
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-amazon-redshift-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-amazon-redshift.md)
 
@@ -36,7 +36,7 @@ ms.locfileid: "54022021"
 > Amazon Redshift から大量のデータをコピーするときに最適なパフォーマンスを得るには、Amazon Simple Storage Service (Amazon S3) 経由で組み込みの Redshift **UNLOAD** コマンドを使用することを検討してください。 詳細については、「[Amazon Redshift からのデータ コピーで UNLOAD を使用する](#use-unload-to-copy-data-from-amazon-redshift)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-* データをオンプレミスのデータ ストアに移動する場合は、オンプレミス コンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。 オンプレミスのマシンの IP アドレスを使用してゲートウェイが Amazon Redshift クラスターにアクセスすることを許可します。 手順については、「[Authorize access to the cluster (クラスターへのアクセスの許可)](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)」を参照してください。
+* データをオンプレミスのデータ ストアに移動する場合は、オンプレミス コンピューターに [Data Management Gateway](data-factory-data-management-gateway.md) をインストールする必要があります。 オンプレミスのマシンの IP アドレスを使用してゲートウェイが Amazon Redshift クラスターにアクセスすることを許可します。 手順については、「[Authorize access to the cluster (クラスターへのアクセスの許可)](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html)」を参照してください。
 * Azure データ ストアにデータを移動する場合は、[Microsoft Azure データセンターで使用されるコンピューティング IP アドレスと SQL 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。
 
 ## <a name="getting-started"></a>使用の開始
@@ -52,7 +52,7 @@ ms.locfileid: "54022021"
 2. コピー操作用の入力データと出力データを表すデータセットを作成します。
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。
 
-コピー ウィザードを使用すると、これらの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 [JSON の使用例:Amazon Redshift から Azure Blob Storage へのデータのコピー](#json-example-copy-data-from-amazon-redshift-to-azure-blob)のページに、Amazon Redshift データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
+コピー ウィザードを使用すると、これらの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 JSON の使用例:「Amazon Redshift から Azure Blob Storage へのデータのコピー」のページに、Amazon Redshift データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
 
 次のセクションでは、Amazon Redshift 用の Data Factory エンティティの定義に使用される JSON プロパティについて説明します。
 
@@ -62,12 +62,12 @@ ms.locfileid: "54022021"
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |[はい] |
-| **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |[はい] |
+| **type** |このプロパティを **AmazonRedshift** に設定する必要があります。 |はい |
+| **server** |Amazon Redshift サーバーの IP アドレスまたはホスト名。 |はい |
 | **port** |Amazon Redshift サーバーがクライアント接続のリッスンに使用する TCP ポートの数。 |いいえ (既定値は 5439) |
-| **database** |Amazon Redshift データベースの名前。 |[はい] |
-| **username** |データベースへのアクセス権があるユーザーの名前。 |[はい] |
-| **password** |ユーザー アカウントのパスワードです。 |[はい] |
+| **database** |Amazon Redshift データベースの名前。 |はい |
+| **username** |データベースへのアクセス権があるユーザーの名前。 |はい |
+| **password** |ユーザー アカウントのパスワードです。 |はい |
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
@@ -100,7 +100,7 @@ ms.locfileid: "54022021"
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Amazon Redshift からのデータ コピーで UNLOAD を使用する
 
-Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) コマンドでは、クエリの結果が Amazon S3 上の 1 つ以上のファイルにアンロードされます。 このコマンドは、Redshift から大きなデータセットをコピーするための方法として Amazon から推奨されています。
+Amazon Redshift の [**UNLOAD**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) コマンドでは、クエリの結果が Amazon S3 上の 1 つ以上のファイルにアンロードされます。 このコマンドは、Redshift から大きなデータセットをコピーするための方法として Amazon から推奨されています。
 
 **例:Amazon Redshift から Azure SQL Data Warehouse へのデータのコピー**
 
@@ -162,7 +162,7 @@ Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r
         "typeProperties":
         {
             "server": "< The IP address or host name of the Amazon Redshift server >",
-            "port": <The number of the TCP port that the Amazon Redshift server uses to listen for client connections.>,
+            "port": "<The number of the TCP port that the Amazon Redshift server uses to listen for client connections.>",
             "database": "<The database name of the Amazon Redshift database>",
             "username": "<username>",
             "password": "<password>"
@@ -339,8 +339,8 @@ Amazon Redshift の [**UNLOAD**](http://docs.aws.amazon.com/redshift/latest/dg/r
 | BOOLEAN |String |
 | CHAR |String |
 | VARCHAR |String |
-| DATE |Datetime |
-| TIMESTAMP |Datetime |
+| DATE |DateTime |
+| TIMESTAMP |DateTime |
 | TEXT |String |
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ

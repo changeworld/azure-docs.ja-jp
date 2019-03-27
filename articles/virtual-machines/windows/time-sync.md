@@ -3,7 +3,7 @@ title: Azure での Windows VM の時刻同期 | Microsoft Docs
 description: Windows 仮想マシンの時刻同期。
 services: virtual-machines-windows
 documentationcenter: ''
-author: zr-msft
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/017/2018
-ms.author: zarhoads
-ms.openlocfilehash: ad5ceeef170e38bf6368c54894b20245d10b74ee
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.date: 09/17/2018
+ms.author: cynthn
+ms.openlocfilehash: d7363c3d1cd3aaf6aae8cadbea232c909000f214
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578197"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669604"
 ---
 # <a name="time-sync-for-windows-vms-in-azure"></a>Azure での Windows VM の時刻同期
 

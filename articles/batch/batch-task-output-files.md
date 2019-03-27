@@ -10,15 +10,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 11/14/2018
+ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 0aa0be7ae9658259b327014c5678777c963e6cb5
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 1d2d53213af34377d23c9ea140bab15822fc1b2e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302818"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444771"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
 
@@ -36,9 +36,6 @@ Azure Batch は、タスクの出力を保持するために複数の方法を�
 - 仮想マシンの構成で作成されたプール内の Batch タスクおよびジョブ マネージャー タスクからの出力を保持する。
 - 任意の名前の Azure Storage コンテナーに出力を保持する。
 - [Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)に準拠した名前の Azure Storage コンテナーに出力を保持する。 
-
-> [!NOTE]
-> Batch サービス API は、クラウド サービスの構成で作成されたプール内で実行されているタスクからのデータの保持はサポートしていません。 クラウド サービス構成が実行されているプールからの出力を保持するタスクについては、[保持のための .NET 用 Batch ファイル規則ライブラリを使用してジョブやタスクのデータを Azure Storage に保持する](batch-task-output-file-conventions.md)方法に関するページを参照してください。
 
 検討しているシナリオが上記のシナリオと異なる場合は、別のアプローチを考慮する必要があります。 たとえば、Batch サービス API は現時点で、タスクの実行中に Azure Storage に出力をストリーミングする機能をサポートしていません。 出力をストリーミングするには、.NET の場合に利用可能な Batch ファイル規則ライブラリの使用をご検討ください。 その他の言語の場合には、開発者が自分で独自のソリューションを実装する必要があります。 タスクの出力を保持するために利用できるその他のオプションの詳細については、「[ジョブやタスクからの出力を Azure Storage に保存する](batch-task-output.md)」を参照してください。
 

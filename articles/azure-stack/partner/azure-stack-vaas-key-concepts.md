@@ -10,16 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/07/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5b0c15fe5e4740a06af5de8a47b79c6d7528a2c
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 3830dc15cebe24a8fb910b641b7b986437aeec52
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243816"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768980"
 ---
 # <a name="validation-as-a-service-key-concepts"></a>サービスとしての検証の主要概念
 
@@ -45,18 +46,18 @@ VaaS ワークフローは、VaaS ソリューションのコンテキスト内�
 ![VaaS ワークフロー タイル](media/tile_all-workflows.png)
 
 > [!NOTE]
-> 現在、**ソリューション検証**ワークフローでは 2 つのシナリオがサポートされています。[OEM パッケージの検証](azure-stack-vaas-validate-oem-package.md)と [Microsoft のソフトウェア更新プログラムの検証](azure-stack-vaas-validate-microsoft-updates.md)です。
+> 現在、**パッケージ検証**ワークフローでは 2 つのシナリオがサポートされています。[OEM パッケージの検証](azure-stack-vaas-validate-oem-package.md)と [Microsoft のソフトウェア更新プログラムの検証](azure-stack-vaas-validate-microsoft-updates.md)です。
 
 ワークフローの種類の詳細については、「[Azure Stack のサービスとしての検証の概要](azure-stack-vaas-overview.md)」をご覧ください。
 
 ### <a name="getting-started-with-vaas-workflows"></a>VaaS ワークフローの作業を開始する
 
-1. ソリューション ダッシュボードで、新しいソリューションを作成するか、既存のソリューションを選択します。 これにより、ワークフロー タイルが更新されます。
+1. ソリューション ダッシュボードで、新しいソリューションを作成するか、既存のソリューションを選択します。 これにより、ワークフロー タイルが最新の情報に更新され、アクティブになります。
 2. 新しいワークフローを作成するには、任意のタイルで **[開始]** を選択します。 各ワークフローに固有の情報については、次の記事をご覧ください。
     - テスト成功:[クイック スタート:サービスとしての検証ポータルを使用して初めてのテストをスケジュールする](azure-stack-vaas-schedule-test-pass.md)
     - ソリューション検証:[新しい Azure Stack ソリューションの検証](azure-stack-vaas-validate-solution-new.md)
-    - ソリューション検証:[Microsoft のソフトウェア更新プログラムの検証](azure-stack-vaas-validate-microsoft-updates.md)
-    - ソリューション検証:[OEM パッケージの検証](azure-stack-vaas-validate-oem-package.md)
+    - パッケージ検証 (毎月の更新プログラム):[Microsoft のソフトウェア更新プログラムの検証](azure-stack-vaas-validate-microsoft-updates.md)
+    - パッケージ検証 (パッケージの署名):[OEM パッケージの検証](azure-stack-vaas-validate-oem-package.md)
 
 3. 既存のワークフローを管理または監視するには、ワークフロー タイルで **[管理]** を選択します。 ワークフローの名前を選択し、**[編集]** ボタンを使用してプロパティを表示するか、共通のテスト パラメーターを変更します。
 
@@ -64,7 +65,7 @@ VaaS ワークフローは、VaaS ソリューションのコンテキスト内�
 
 ## <a name="tests"></a>テスト
 
-VaaS でのテストは、Azure Stack ソリューションに対して実行される一連のアクションで構成されます。 テストには、機能や信頼性などのカテゴリで識別されるさまざまな目的があり、Azure Stack の 1 つ以上のサービスを対象としています。 各テストでは独自のパラメーター セットが定義されており、その一部はテストが含まれているワークフローの共通パラメーターによって指定されています。
+VaaS でのテストは、Azure Stack ソリューションに対して実行される一連の操作で構成されます。 テストには、機能や信頼性などのカテゴリで識別されるさまざまな目的があり、Azure Stack の 1 つ以上のサービスを対象としています。 各テストでは独自のパラメーター セットが定義されており、その一部はテストが含まれているワークフローの共通パラメーターによって指定されています。
 
 テストの管理と監視の詳細については、「[Monitor and manage tests in the VaaS portal (VaaS ポータルでのテストの監視と管理)](azure-stack-vaas-monitor-test.md)」をご覧ください。
 
@@ -75,7 +76,7 @@ VaaS でのテストは、Azure Stack ソリューションに対して実行さ
 テストは VaaS エージェントによって実行されます。 VaaS テストを実行するエージェントには、次の 2 種類があります。
 
 - **クラウド エージェント**:  これは、VaaS で使用できる既定のエージェントです。 セットアップは不要ですが、環境へのインバウンド接続が必要であり、Azure Stack エンドポイントはインターネットから解決できる必要があります。 クラウド エージェントと互換性がないテストもあります。
-- **ローカル エージェント**:  このエージェントを使用すると、環境へのインバウンド接続を実現できないシナリオで検証を実行できます。 一部のテストは、ローカル エージェントを使用して実行する必要があります。
+- **ローカル エージェント**:  これを使用すると、環境へのインバウンド接続を実現できないシナリオで検証を実行できます。 一部のテストは、ローカル エージェントを使用して実行する必要があります。
 
 ローカル エージェントは、特定の Azure Stack または VaaS ソリューションに関連付けられているわけではありません。 ベスト プラクティスとして、Azure Stack 環境の外部で実行してください。
 

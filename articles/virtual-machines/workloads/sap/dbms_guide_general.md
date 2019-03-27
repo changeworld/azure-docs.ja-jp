@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e514f35567f4be0932c7bcc591cbd0f05cd9814
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 54511ac4dfdc05ec1880695b1ae2360f0b5e8162
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606760"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328369"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -106,12 +106,12 @@ IaaS の説明では、一般的に、Windows、Linux、および DBMS のイン
 
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>RDBMS デプロイの VM のストレージの構造
-以降の章に進むにあたって、「[デプロイ ガイド][deployment-guide]」の[この章][deployment-guide-3]で説明した内容を理解しておく必要があります。 この章を読む前に、別の VM シリーズとその相違点、および Azure Standard と [Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) の違いについて理解しておく必要があります。
+以降の章に進むにあたって、「[デプロイ ガイド][deployment-guide]」の[この章][deployment-guide-3]で説明した内容を理解しておく必要があります。 この章を読む前に、別の VM シリーズとその相違点、Standard ストレージと Premium ストレージの違いについて理解しておく必要があります。 次に
 
 Azure VM 用の Azure Storage については、以下の記事の内容を理解している必要があります。
 
-- [Azure Windows VM 用のディスク ストレージについて](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds)
-- [Azure Linux VM 用のディスク ストレージについて](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds)
+- [Azure Windows VM のマネージド ディスクの概要](../../windows/managed-disks-overview.md)
+- [Azure Linux VM のマネージド ディスクの概要](../../linux/managed-disks-overview.md)
 
 基本的な構成では、通常、オペレーティング システム、DBMS、および最終的に導入する SAP バイナリとデータベース ファイルとを分けたデプロイ構造にすることをお勧めしています。 このため、Microsoft は、Azure Virtual Machines で実行する SAP システムに、オペレーティング システムとともにインストールされるベース VHD (またはディスク)、データベース管理システムの実行可能ファイル、および SAP の実行可能ファイルを含めることを推奨しています。 DBMS のデータとログ ファイルは別のディスク ファイルの Azure Storage (Standard または Premium Storage) に格納され、元の Azure オペレーティング システム イメージ VM に論理ディスクとして接続されます。 特に Linux のデプロイでは、記載されている推奨事項以外の推奨事項があります。 特に SAP HANA については注意してください。
 
@@ -133,7 +133,9 @@ Azure はデータ ディスクごとに IOPS クォータを適用します。 
 
 > [!NOTE]
 > Azure 独自の[単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) のメリットを十分活用するためには、ベース VHD を含め、アタッチされているすべてのディスクが Azure Premium Storage タイプである必要があります。
->
+
+> [!NOTE]
+> SAP データベースが配置されているストレージ ハードウェアが、Azure データセンターに隣接して併置されているサード パーティ データセンター内にある場合は、その SAP データベースのメイン データベース ファイル (データおよびログ ファイル) をホストすることがサポートされません。 SAP ワークロードの場合、SAP データベースのデータおよびトランザクション ログ ファイル用にサポートされるストレージは、ネイティブ Azure サービスとして表現されるストレージに限られます。
 
 データベース ファイルやログ/再実行ファイルの配置および使用する Azure Storage の種類は、IOPS、待機時間、およびスループットの要件に従って定義する必要があります。 十分な IOPS を確保するためには、複数のディスクを使用するか、大容量の Premium Storage ディスクを使用する必要がある場合があります。 複数のディスクを使用する場合、データ ファイルまたはログ/再実行ファイルが含まれたディスク全体にソフトウェア ストライプを構築します。 この場合、基になる Premium Storage ディスクの IOPS およびディスク スループット SLA、または Azure Standard Storage ディスクの達成可能な最大 IOPS が累積された結果としてストライプ セットが構築されます。
 
@@ -219,11 +221,11 @@ M シリーズの展開では、DBMS のデプロイに Azure 書き込みアク
 Azure VM は、VM をデプロイした後に非永続ディスクを提供します。 VM が再起動された場合、非永続ドライブ上のすべてのコンテンツは消去されます。そのため、データ ファイルとデータベースのログ/再実行ファイルが、どんな状況でも、非永続ドライブ上にないことが条件になります。 例外として、データベースによっては、tempdb や temp tablespaces などにこれらの非永続ドライブが適している場合があります。 ただし、非永続ドライブのスループットは、その VM ファミリーで制限されているために、A シリーズ VM にはこれらのドライブを使用しないでください。 詳しくは、「[Understanding the temporary drive on Windows VMs in Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)」(Azure での Windows VM 上の一時ドライブ) をご覧ください
 
 - - -
-> ![ Windows][Logo_Windows]  Windows
+> ![Windows][Logo_Windows] Windows
 >
 > Azure VM の D:\ ドライブは、Azure の計算ノード上のいくつかのローカル ディスクによってサポートされる非永続ドライブです。 非永続であるということは、VM が再起動されると、D:\ ドライブ上のコンテンツに加えられた変更が失われることを意味します。 "変更" とは、保存されたファイル、作成されたディレクトリ、インストールされたアプリケーションなどを指します。
 >
-> ![ Linux][Logo_Linux] Linux
+> ![Linux][Logo_Linux] Linux
 >
 > Linux Azure VM は、Azure の計算ノード上のローカル ディスクによってサポートされる非永続ドライブである /mnt/resource ドライブを自動的にマウントします。 非永続であるということは、VM が再起動されると、/mnt/resource ドライブ上のコンテンツに加えられた変更が失われることを意味します。 変更とは、保存されたファイル、作成されたディレクトリ、インストールされたアプリケーションなどを指します。
 >

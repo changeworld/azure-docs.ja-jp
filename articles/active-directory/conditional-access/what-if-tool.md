@@ -5,24 +5,25 @@ services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 11/20/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: d9bdc35e732a84920800424a260610fd6f068c94
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7ec279b9c3333c365e5e516fb61fc10016fefe80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626092"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170124"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの what if ツールの概要
 
@@ -51,9 +52,6 @@ what if ツールは、特定のユーザーに適用されるポリシーをす
 
 評価が完了すると、ツールは、影響を受けたポリシーのレポートを生成します。
 
-
-> [!NOTE]
-> 現時点では、What If ツールは入れ子になったグループをサポートしていません。 ユーザーがグループに含まれ、そのグループが、条件付きアクセス ポリシーで使用されている別のグループのメンバーである場合、what-if ツールは、そのポリシーの効果をユーザーに正しく表示しません。 
 
 
 ## <a name="running-the-tool"></a>ツールの実行

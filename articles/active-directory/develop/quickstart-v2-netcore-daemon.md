@@ -8,20 +8,21 @@ manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/28/2018
+ms.date: 1/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3e5e364e9c3327e9d666a9a3096573267d0e1983
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 27cc0334e8332e3bc09ae4302e0b0efdda8067f1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727610"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194446"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -69,7 +70,7 @@ ms.locfileid: "53727610"
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>クイックスタート アプリをダウンロードして構成する
 > 
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>ステップ 1:Azure portal でのアプリケーションの構成
+> #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
 > このクイック スタート用サンプル コードを動作させるには、クライアント シークレットを作成し、Graph API の **User.Read.All** アプリケーションのアクセス許可を追加します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
@@ -107,7 +108,7 @@ ms.locfileid: "53727610"
     
 #### <a name="step-4-admin-consent"></a>手順 4:管理者の同意
 
-すべての "*アプリ専用のアクセス許可*" には管理者の同意が必要です。これは、ディレクトリのグローバル管理者にお使いのアプリケーションに同意してもらう必要があることを意味します。 ご自身のロールに応じて、次のオプションのいずれかを選択します。
+この時点でアプリケーションを実行すると、*HTTP 403 - Forbidden* エラー "`Insufficient privileges to complete the operation`" が表示されます。 これは、すべての "*アプリ専用のアクセス許可*" には管理者の同意が必要であるために発生します。これは、ディレクトリのグローバル管理者にお使いのアプリケーションに同意してもらう必要があることを意味します。 ご自身のロールに応じて、次のオプションのいずれかを選択します。
 
 ##### <a name="global-tenant-administrator"></a>グローバル テナント管理者
 
@@ -149,6 +150,9 @@ dotnet run
 
 結果として、Azure AD ディレクトリ内のユーザーの一覧が表示されます。
 
+> [!IMPORTANT]
+> このクイック スタート アプリケーションは、クライアント シークレットを使用して、それ自体を機密クライアントとして識別します。 クライアント シークレットはプロジェクト ファイルにプレーン テキストとして追加されるため、セキュリティ上の理由から、アプリケーションを運用アプリケーションと見なす前に、クライアント シークレットの代わりに証明書を使用することをお勧めします。 証明書の使用方法の詳細については、このサンプルの GitHub リポジトリにある[これらの手順](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/#variation-daemon-application-using-client-credentials-with-certificates)を参照してください。
+
 ## <a name="more-information"></a>詳細情報
 
 ### <a name="msalnet"></a>MSAL.NET
@@ -158,7 +162,13 @@ MSAL ([Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Ident
  MSAL.NET は、Visual Studio の**パッケージ マネージャー コンソール**で次のコマンドを実行することでインストールできます。
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client
+```
+
+または、Visual Studio を使用していない場合は、次のコマンドを実行して MSAL をプロジェクトに追加できます。
+
+```console
+dotnet add package Microsoft.Identity.Client
 ```
 
 ### <a name="msal-initialization"></a>MSAL の初期化
@@ -194,7 +204,7 @@ var app = new ConfidentialClientApplication(
 > | `userTokenCache`  | ユーザー用のトークン キャッシュのインスタンス。 このアプリは、ユーザーのコンテキストではなくアプリのコンテキストで実行されるため、ここではこの値は null になります。|
 > | `appTokenCache`  | アプリ用のトークン キャッシュのインスタンス。|
 
-詳細については、[`ConfidentialClientApplication` 用の参照ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.-ctor?view=azure-dotnet#Microsoft_Identity_Client_ConfidentialClientApplication__ctor_System_String_System_String_System_String_Microsoft_Identity_Client_ClientCredential_Microsoft_Identity_Client_TokenCache_Microsoft_Identity_Client_TokenCache)をご覧ください。
+詳細については、[`ConfidentialClientApplication` 用の参照ドキュメント](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.-ctor?view=azure-dotnet)をご覧ください。
 
 ### <a name="requesting-tokens"></a>トークンの要求
 

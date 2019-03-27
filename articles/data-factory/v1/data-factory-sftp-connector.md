@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2aa272c126e06b758dc3903a8ec71b7043491057
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 55a829f2ed32152d14ef637c8079f7af8c487bea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017652"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097646"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用した SFTP サーバーからのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +32,7 @@ ms.locfileid: "54017652"
 Data Factory が現在サポートしているのは、SFTP サーバーから他のデータ ストアへのデータの移動だけで、他のデータ ストアから SFTP サーバーへの移動はサポートしていません。 オンプレミスとクラウド SFTP サーバーの両方をサポートします。
 
 > [!NOTE]
-> コピー アクティビティでは、コピー先にコピーされた後にソース ファイルが削除されることはありません。 コピー後にソース ファイルを削除する必要がある場合、カスタム アクティビティを作成してファイルを削除し、パイプラインのアクティビティを使用します。 
+> コピー アクティビティでは、コピー先にコピーされた後にソース ファイルが削除されることはありません。 コピー後にソース ファイルを削除する必要がある場合、カスタム アクティビティを作成してファイルを削除し、パイプラインのアクティビティを使用します。
 
 ## <a name="supported-scenarios-and-authentication-types"></a>サポートされているシナリオと認証の種類
 この SFTP コネクタを使用すると、データをコピーする**クラウド SFTP サーバーとオンプレミスの SFTP サーバーの両方**からデータをコピーできます。 SFTP サーバーに接続するときにサポートされる認証の種類は、**基本**認証と **SshPublicKey** 認証です。
@@ -50,7 +50,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 次の表は、FTP のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
 | プロパティ | 説明 | 必須 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | type | type プロパティを `Sftp` に設定する必要があります。 |はい |
 | host | SFTP サーバーの名前または IP アドレス。 |はい |
 | port |SFTP サーバーがリッスンしているポート。 既定値は21 |いいえ  |
@@ -65,7 +65,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 基本認証を使用するには、`authenticationType` を `Basic` に設定し、前のセクションで導入した一般的な SFTP コネクタ プロパティのほかに、次のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | username | SFTP サーバーにアクセスできるユーザー。 |はい |
 | password | ユーザー (username) のパスワード。 | はい |
 
@@ -115,7 +115,7 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 SSH 公開キー認証を使用するには、`authenticationType` を `SshPublicKey` に設定し、前のセクションで導入した一般的な SFTP コネクタ プロパティのほかに、次のプロパティを指定します。
 
 | プロパティ | 説明 | 必須 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | username |SFTP サーバーにアクセスできるユーザー |はい |
 | privateKeyPath | ゲートウェイがアクセスできる秘密キー ファイルへの絶対パスを指定します。 | `privateKeyPath` または `privateKeyContent` を指定します。 <br><br> オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
 | privateKeyContent | 秘密キーのコンテンツのシリアル化された文字列。 コピー ウィザードでは、秘密キー ファイルを読み取り、秘密キーのコンテンツを自動的に抽出できます。 その他のツール/SDK を使用している場合は、代わりに privateKeyPath プロパティを使用します。 | `privateKeyPath` または `privateKeyContent` を指定します。 |
@@ -172,7 +172,7 @@ SSH 公開キー認証を使用するには、`authenticationType` を `SshPubli
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| folderPath |フォルダーへのサブ パス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
+| folderPath |フォルダーへのサブ パス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>データ.<Guid>.txt (例:Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |いいえ  |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> fileFilter は FileShare 入力データセットに適用されます。 このプロパティは、HDFS ではサポートされません。 |いいえ  |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ  |
@@ -205,7 +205,7 @@ SSH 公開キー認証を使用するには、`authenticationType` を `SshPubli
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },
@@ -308,7 +308,7 @@ SSH 公開キー認証を使用するには、`authenticationType` を `SshPubli
 
 **Azure BLOB の出力データセット**
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```JSON
 {

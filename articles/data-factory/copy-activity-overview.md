@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 36c94a035c7585d655f4482239de70cd2e1a5cc6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 154e0dcefab6d5bcdfc9532ba4258d09593f0970
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014133"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311134"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -129,12 +129,12 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティの type プロパティは**Copy** に設定する必要があります | [はい] |
-| inputs | ソース データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの入力のみをサポートします。 | [はい] |
-| outputs | シンク データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの出力のみをサポートします。 | [はい] |
-| typeProperties | コピー アクティビティを構成するためのプロパティのグループ。 | [はい] |
-| source | コピー ソースの型と、データを取得する方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | [はい] |
-| sink | コピー シンクの型と、データを書き込む方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | [はい] |
+| type | コピー アクティビティの type プロパティは**Copy** に設定する必要があります | はい |
+| inputs | ソース データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの入力のみをサポートします。 | はい |
+| outputs | シンク データを指す、前に作成したデータセットを指定します。 コピー アクティビティは、1 つの出力のみをサポートします。 | はい |
+| typeProperties | コピー アクティビティを構成するためのプロパティのグループ。 | はい |
+| source | コピー ソースの型と、データを取得する方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | はい |
+| sink | コピー シンクの型と、データを書き込む方法に関する対応するプロパティを指定します。<br/><br/>「[サポートされるデータ ストアと形式](#supported-data-stores-and-formats)」に一覧表示されているコネクタの記事にある「コピー アクティビティのプロパティ」セクションで詳細を学習してください。 | はい |
 | translator | ソースからシンクへの明示的な列マッピングを指定します。 既定のコピー動作が要求を満足できない場合に適用されます。<br/><br/>「[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)」で詳細を学習してください。 | いいえ  |
 | dataIntegrationUnits | データ コピーを機能強化するために、[Azure 統合ランタイム](concepts-integration-runtime.md)の強力な機能を指定します。 以前はクラウド データ移動単位 (DMU) と呼ばれていました。 <br/><br/>詳しくは、[データ統合単位](copy-activity-performance.md#data-integration-units)に関するページをご覧ください。 | いいえ  |
 | parallelCopies | ソースからのデータの読み取り時やシンクへのデータの書き込み時にコピー アクティビティで使用する並列処理を指定します。<br/><br/>「[並列コピー](copy-activity-performance.md#parallel-copy)」で詳細を学習してください。 | いいえ  |
@@ -155,7 +155,10 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 
 ![アクティビティの実行を監視する](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
 
-**[アクション]** にある **[詳細]** リンクをクリックして、コピー アクティビティ実行の詳細とパフォーマンス特性を確認します。 source から sink にコピーされた volume/rows/files のデータ、スループット、対応する期間に処理されるステップ、お使いのコピー シナリオで使用される構成などの情報が表示されます。
+**[アクション]** にある **[詳細]** リンクをクリックして、コピー アクティビティ実行の詳細とパフォーマンス特性を確認します。 source から sink にコピーされた volume/rows/files のデータ、スループット、対応する期間に処理されるステップ、お使いのコピー シナリオで使用される構成などの情報が表示されます。 
+
+>[!TIP]
+>一部のシナリオでは、コピーの監視ページの上部に "**パフォーマンス チューニングに関するヒント**" も表示されます。これは、特定されたボトルネックを示しています。このヒントを参考にして、コピーのスループットを強化するために変更すべき点を把握することができます。詳しい情報と例については、[こちら](#performance-and-tuning)を参照してください。
 
 **例: Amazon S3 から Azure Data Lake Store へコピーする**
 ![アクティビティ実行の詳細を監視する](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
@@ -232,6 +235,14 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、「 [コピー アクティビティのパフォーマンスとチューニングに関するガイド](copy-activity-performance.md)」をご覧ください。 このガイドでは、内部テスト実行時の実際のパフォーマンスを一覧表示すると共に、コピー アクティビティのパフォーマンスを最適化するさまざまな方法についても説明します。
+
+場合によっては、ADF でコピー アクティビティを実行すると、次の例に示されているように、[コピー アクティビティの監視ページ](#monitor-visually)の上部に "**パフォーマンス チューニングに関するヒント**" が直接表示されます。 これにより、特定のコピーの実行で特定されたボトルネックが提示されるだけでなく、コピーのスループットを向上させるために変更すべき点も示されます。 パフォーマンスのチューニングに関するヒントは、現在、Azure SQL Data Warehouse にデータをコピーするときは PolyBase を使用すること、データ ソース側のリソースがボトルネックである場合はAzure Cosmos DB の RU または Azure SQL DB の DTU を増やすこと、不要なステージング済みを削除することといった提案を示しています。パフォーマンスのチューニングのルールも、徐々に強化されていきます。
+
+**例: パフォーマンスのチューニングに関するヒントを使用した Azure SQL DB へのコピー**
+
+このサンプルでは、コピーの実行中に ADF が、シンク Azure SQL DB が書き込み操作を遅くする高 DTU 使用率に達したため、より多くの DTU のある Azure SQL DB 層を増やすという提案を通知します。 
+
+![パフォーマンスのチューニングに関するヒントを使用したコピーの監視](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
 ## <a name="incremental-copy"></a>増分コピー 
 Data Factory では、ソース データ ストアからコピー先データ ストアに差分データを増分コピーするシナリオをサポートしています。 [データの増分コピーに関するチュートリアル](tutorial-incremental-copy-overview.md)を参照してください。 

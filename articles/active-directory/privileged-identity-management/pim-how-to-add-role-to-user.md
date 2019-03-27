@@ -9,21 +9,22 @@ editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 2b099e1377536b46229b75f25d04ab2c1beb5c11
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4acabd4b583766ac730558fd07c424ce97a1299a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724946"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192514"
 ---
 # <a name="assign-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールを割り当てる
 
 全体管理者は、Azure Active Directory (Azure AD) を使用して、**永続的**なディレクトリ ロールの割り当てを行うことができます。 こうしたロールの割り当ては、[Azure portal](../users-groups-roles/directory-assign-admin-roles.md) または [PowerShell のコマンド](/powershell/module/azuread#directory_roles) を使用して作成できます。
 
-永続的なディレクトリ ロールの割り当ては、特権ロール管理者が Azure AD Privileged Identity Management (PIM) サービスを使用して行うこともできます。 さらに、特権ロール管理者は、ユーザーをディレクトリ ロールの**候補**にすることもできます。 管理者候補は必要なときにロールをアクティブ化できます。作業が完了すると、そのアクセス許可は期限切れになります。 PIM を使って管理できるロールについては、「[PIM で管理できる Azure AD のディレクトリ ロール](pim-roles.md)」をご覧ください。
+永続的なディレクトリ ロールの割り当ては、特権ロール管理者が Azure AD Privileged Identity Management (PIM) サービスを使用して行うこともできます。 さらに、特権ロール管理者は、ユーザーをディレクトリ ロールの**候補**にすることもできます。 管理者候補は必要なときにロールをアクティブ化できます。作業が完了すると、そのアクセス許可は期限切れになります。
 
 ## <a name="make-a-user-eligible-for-a-role"></a>ユーザーをロールの候補にする
 

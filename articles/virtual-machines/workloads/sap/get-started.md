@@ -3,8 +3,8 @@ title: Azure VM で SAP を使用する | Microsoft Docs
 description: Microsoft Azure 上の仮想マシン (VM) で実行される SAP ソリューションについて説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: RicksterCDN
-manager: jeconnoc
+author: msjuergent
+manager: patfilot
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,19 +14,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/07/2019
-ms.author: rclaus
+ms.date: 03/015/2019
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d3256fcf33a9ad1eb34ec5dbb0c701c8166a49e2
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 91228074e13453ce53c0b4a7606479d45e8a90ac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075177"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182780"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Azure を使用して SAP ワークロードをホストして実行するシナリオ
 
-Microsoft Azure を選択することで、ミッション クリティカルな SAP ワークロードとシナリオを、拡張性が高く、SAP に準拠した、エンタープライズで実証済みのプラットフォームで確実に実行できます。  Azure を使用して、拡張性と柔軟性、そしてコストの削減を実現しましょう。 Microsoft と SAP のパートナーシップの拡大により、Azure で開発/テストから運用までのシナリオを通じて SAP アプリケーションを実行できるうえ、そのすべてがサポートされます。 SAP NetWeaver から SAP S4/HANA、SAP BI、Linux から Windows、SAP HANA から SQL まで対応しています。
+Microsoft Azure を選択することで、ミッション クリティカルな SAP ワークロードとシナリオを、拡張性が高く、SAP に準拠した、エンタープライズで実証済みのプラットフォームで確実に実行できます。  Azure を使用して、拡張性と柔軟性、そしてコストの削減を実現しましょう。 Microsoft と SAP のパートナーシップの拡大により、Azure で開発/テストから運用までのシナリオを通じて SAP アプリケーションを実行できるうえ、そのすべてがサポートされます。 SAP NetWeaver から SAP S/4HANA、SAP BI、Linux から Windows、SAP HANA から SQL まで対応しています。
 
 SAP NetWeaver シナリオをさまざまな DBMS を使用して Azure でホストすることに加え、その他の SAP ワークロード シナリオ (SAP BI など) も Azure でホストできます。 
 
@@ -35,6 +35,8 @@ Azure for SAP HANA の独自性は、Azure を他社と一線を画すものに�
 Azure で SAP ワークロードをホストするシナリオでは、さまざまな SAP コンポーネントと SAP SaaS または PaaS 製品に対する Activity Directory を使用した ID 統合要件とシングル サインオンを構成できます。 Azure Active Directory (AAD) と SAP のエンティティを使用したこのような統合とシングル サインオンのシナリオについては、「AAD SAP ID 統合およびシングル サインオン」セクションに一覧と説明があります。
 
 ## <a name="latest-changes"></a>最新の変更
+
+[Azure Availability Zones での SAP ワークロードの構成](sap-ha-availability-zones.md)のリリース
 
 [SAP ワークロードの計画とデプロイ チェックリスト](sap-deployment-checklist.md)のリリース
 

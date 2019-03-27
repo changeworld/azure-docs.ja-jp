@@ -41,11 +41,11 @@ ServiceNow のリンクされたサービスでは、次のプロパティがサ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります。**ServiceNow** | [はい] |
-| endpoint | ServiceNow サーバーのエンドポイント (`http://<instance>.service-now.com`)。  | [はい] |
-| authenticationType | 使用する認証の種類。 <br/>使用できる値は、以下のとおりです。**Basic**、**OAuth2** | [はい] |
-| username | Basic および OAuth2 認証で ServiceNow サーバーへの接続に使用されるユーザー名。  | [はい] |
-| password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**ServiceNow** | はい |
+| endpoint | ServiceNow サーバーのエンドポイント (`http://<instance>.service-now.com`)。  | はい |
+| authenticationType | 使用する認証の種類。 <br/>使用できる値は、以下のとおりです。**Basic**、**OAuth2** | はい |
+| username | Basic および OAuth2 認証で ServiceNow サーバーへの接続に使用されるユーザー名。  | はい |
+| password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | clientId | OAuth2 認証のクライアント ID。  | いいえ  |
 | clientSecret | OAuth2 認証のクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -80,7 +80,7 @@ ServiceNow からデータをコピーするには、データセットの type 
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**ServiceNowObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります。**ServiceNowObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -109,7 +109,7 @@ ServiceNow からデータをコピーするには、コピー アクティビ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**ServiceNowSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**ServiceNowSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Actual.alm_asset"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 クエリで ServiceNow のスキーマと列を指定するときは、次のことに注意してください。また、**コピーのパフォーマンスの影響について、「[パフォーマンスに関するヒント](#performance-tips)」を参照してください**。

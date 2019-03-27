@@ -17,16 +17,16 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 1802df4e6cbe77b4bc7ee2ee49f24d8dc51de015
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6d5c159d030303b90128513d3521a19419e4277e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32180523"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429232"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して仮想マシン ネットワーク トラフィック フィルターの問題を診断する
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
-このクイック スタートでは、仮想マシン (VM) を展開してから、IP アドレスと URL への通信および IP アドレスからの通信をチェックします。 通信障害の原因を特定し、その解決方法を決定します。
+このクイック スタートでは、仮想マシン (VM) を展開してから、IP アドレスと URL への通信および IP アドレスからの通信をチェックします。 通信障害の原因と解決方法を特定します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -37,7 +37,7 @@ Azure Portal (https://portal.azure.com) にログインします。
 ## <a name="create-a-vm"></a>VM の作成
 
 1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
-2. **[Compute]** を選択し、**[Windows Server 2016 Datacenter]** または **[Ubuntu Server 17.10 VM]** を選択します。
+2. **[Compute]** を選択し、**[Windows Server 2016 Datacenter]** またはいずれかのバージョンの **Ubuntu Server** を選択します。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[OK]** を選択します。
 
     |Setting|値|
@@ -45,9 +45,9 @@ Azure Portal (https://portal.azure.com) にログインします。
     |Name|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |[サブスクリプション]| サブスクリプションを選択します。|
+    |サブスクリプション| サブスクリプションを選択します。|
     |リソース グループ| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
-    |場所| **[米国東部]** を選択します。|
+    |Location| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、**[選択]** を選択します。
 5. **[設定]** で、すべての既定値をそのままにして、**[OK]** を選択します。
@@ -81,7 +81,7 @@ VM を作成すると、Azure は既定に従って、VM との間でやり取�
     | リソース グループ    | myResourceGroup を選択する                                                                            |
     | 仮想マシン   | myVm を選択する                                                                                       |
     | Linux | myvm - VM を作成したときにポータルが作成したネットワーク インターフェイスの名前は異なります。 |
-    | プロトコル          | TCP                                                                                               |
+    | Protocol          | TCP                                                                                               |
     | 方向         | 送信                                                                                          |
     | ローカル IP アドレス  | 10.0.0.4                                                                                          |
     | ローカル ポート      | 60000                                                                                                |

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6d7c8aa73f72f6db93c6ef78c333c36e1d26b74e
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 8ae55028bbc44a9383be6723f9bc6d39787cca45
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995067"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767305"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できるさまざまな種類の出力について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、データのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。
@@ -73,6 +73,8 @@ Stream Analytics からの Azure Data Lake Store 出力は、現在、Azure 中�
 | ユーザー名 | データベースに書き込むためのアクセス権を持つユーザー名です。 Stream Analytics では、SQL 認証のみがサポートされます。 |
 | パスワード | データベースに接続するためのパスワード。 |
 | テーブル | 出力の書き込み先のテーブル名です。 テーブル名は大文字小文字が区別されます。このテーブルのスキーマは、ジョブの出力によって生成されるフィールドの数とその型に正確に一致する必要があります。 |
+|パーティション構成を継承する| これによって、以前のクエリ ステップのパーティション構成を継承でき、テーブルへの複数のライターによる完全な並列トポロジを有効にすることができます。 詳細については、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」を参照してください。|
+|最大バッチ カウント| 各一括挿入トランザクションで送信されるレコードの推奨上限数。|
 
 > [!NOTE]
 > 現在、Azure SQL Database は Stream Analytics の出力ジョブでサポートされています。 ただし、データベースに接続された SQL Server を実行する Azure 仮想マシンはサポートされていません。 これは、今後のリリースで変更されることがあります。
@@ -89,7 +91,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 | ストレージ アカウント     | 出力を送信するストレージ アカウントの名前。               |
 | ストレージ アカウント キー | ストレージ アカウントに関連付けられている秘密キー。                              |
 | ストレージ コンテナー   | コンテナーにより、Microsoft Azure Blob service に格納される BLOB が論理的にグループ化されます。 BLOB を Blob service にアップロードするとき、その BLOB のコンテナーを指定する必要があります。 |
-| パスのパターン | 省略可能。 指定したコンテナー内の BLOB を書き込むために使用されるファイル パス パターン。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />この [Azure Portal リンク](https://portal.azure.com/?microsoft_azure_streamanalytics_bloboutputpathpartitioning=true&Microsoft_Azure_StreamAnalytics_bloboutputcontainerpartitioning=true)を使用してカスタム BLOB のパーティション分割プレビューにアクセスする場合は、BLOB をパーティション分割するためにイベント データの 1 つのカスタム {field} 名を指定できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>大文字小文字を区別しない (列 "ID" と列 "id" を区別できません)</li><li>入れ子になったフィールドを使用できない (代わりに、ジョブ クエリで別名を使用して、フィールドを "フラット化" します)</li><li>式はフィールド名として使用できません。</li></ul> <br /><br /> プレビューではまた、パスでカスタム日付/時刻書式指定子の構成も使用できます。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 使用可能な入力の \<specifier> は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 {datetime:\<specifier>} キーワードは、カスタム日付/時刻の構成を形成するために、パスで複数回使用できます。 <br /><br />次に例を示します。 <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3 (プレビュー): cluster1/{client_id}/{date}/{time}</li><li>例 4 (プレビュー): cluster1/{datetime:ss}/{myField} (この場合、クエリは SELECT data.myField AS myField FROM Input;</li><li>例 5 (プレビュー): cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br /><br />作成されたフォルダー構造のタイムスタンプでは、現地時刻ではなく、UTC に従います。<br /><br />ファイルの名前付けは、次の規則に従います。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br />出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br /><br /> このプレビューの詳細については、「[Azure Stream Analytics の BLOB ストレージ出力用のカスタム DateTime パス パターン (プレビュー)](stream-analytics-custom-path-patterns-blob-storage-output.md)」を参照してください。 |
+| パスのパターン | 省略可能。 指定したコンテナー内の BLOB を書き込むために使用されるファイル パス パターン。 <br /><br /> パス パターン内では、BLOB が書き込まれる頻度を指定するために、日付と時刻の変数のインスタンスを 1 つまたは複数使用できます。 <br /> {date}、{time} <br /><br />カスタム BLOB パーティション分割を使用して、イベント データの 1 つのカスタム {field} 名を指定することで、BLOB をパーティション分割できます。 このフィールド名は英数字であり、スペース、ハイフン、およびアンダースコアを含めることができます。 カスタム フィールドには次の制限事項が含まれます。 <ul><li>大文字小文字を区別しない (列 "ID" と列 "id" を区別できません)</li><li>入れ子になったフィールドを使用できない (代わりに、ジョブ クエリで別名を使用して、フィールドを "フラット化" します)</li><li>式はフィールド名として使用できません。</li></ul> <br /><br /> この機能により、パスでカスタム日付/時刻書式指定子の構成を使用できるようになります。 カスタム日時書式は、一度に 1 つを {datetime:\<specifier>} キーワードで囲んで指定する必要があります。 使用可能な入力の \<specifier> は、yyyy、MM、M、dd、d、HH、H、mm、m、ss、または s です。 {datetime:\<specifier>} キーワードは、カスタム日付/時刻の構成を形成するために、パスで複数回使用できます。 <br /><br />次に例を示します。 <ul><li>例 1: cluster1/logs/{date}/{time}</li><li>例 2: cluster1/logs/{date}</li><li>例 3: cluster1/{client_id}/{date}/{time}</li><li>例 4: cluster1/{datetime:ss}/{myField}。この場合、クエリは次のようになります。SELECT data.myField AS myField FROM Input;</li><li>例 5: cluster1/year={datetime:yyyy}/month={datetime:MM}/day={datetime:dd}</ul><br /><br />作成されたフォルダー構造のタイムスタンプでは、現地時刻ではなく、UTC に従います。<br /><br />ファイルの名前付けは、次の規則に従います。 <br /><br />{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension<br /><br />出力ファイル例:<ul><li>Myoutput/20170901/00/45434_gguid_1.csv</li>  <li>Myoutput/20170901/01/45434_gguid_1.csv</li></ul> <br /><br /> この機能の詳細については、[Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割](stream-analytics-custom-path-patterns-blob-storage-output.md)に関するページを参照してください。 |
 | 日付の形式 | 省略可能。 日付トークンがプレフィックス パスで使用されている場合、ファイルを編成する日付形式を選択できます。 例:YYYY/MM/DD |
 | 時刻の形式 | 省略可能。 時刻トークンがプレフィックス パスで使用されている場合、ファイルを編成する時刻形式を指定します。 現在唯一サポートされている値は HH です。 |
 | イベントのシリアル化の形式 | 出力データのシリアル化形式。 JSON、CSV、Avro がサポートされています。 |
@@ -298,7 +300,7 @@ Azure Stream Analytics では、Azure 関数から 413 ("HTTP 要求エンティ
 | --- | --- | --- | --- |
 | Azure Data Lake Store | はい | Path プレフィックス パターンに {date} および {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
 | Azure SQL Database | はい | クエリの PARTITION BY 句に基づいています。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 SQL Azure Database にデータを読み込む場合の書き込みスループット パフォーマンスの向上の詳細については、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」を参照してください。 |
-| Azure BLOB ストレージ | はい | パス パターンでイベント フィールドからの {date} トークンと {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 [プレビュー](https://aka.ms/ASApreview1)の一部として、BLOB 出力を 1 つのカスタム イベント属性 {fieldname} または {datetime:\<specifier>} でパーティション分割できます。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
+| Azure BLOB ストレージ | はい | パス パターンでイベント フィールドからの {date} トークンと {time} トークンを使用します。 YYYY/MM/DD、DD/MM/YYYY、MM-DD-YYYY などの日付形式を選択します。 時間形式には HH を使用します。 BLOB 出力を 1 つのカスタム イベント属性 {fieldname} または {datetime:\<specifier>} でパーティション分割できます。 | [完全並列化可能なクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
 | Azure Event Hub | はい | はい | パーティションの配置によって異なります。<br /> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数は出力イベント ハブのパーティションの数と等しくなります。 各ライターは、EventHub の [EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)を使用して、特定のパーティションにイベントを送信します。 <br /> 出力イベント ハブのパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されていない場合、ライターの数は前のステップのパーティションの数と等しくなります。 各ライターは、EventHubClient の [SendBatchAsync クラス](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)を使用して、すべての出力パーティションにイベントを送信します。 |
 | Power BI | いいえ  | なし | 適用不可。 |
 | Azure Table Storage | はい | 任意の出力列。  | [完全に並列化されたクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |

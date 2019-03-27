@@ -6,15 +6,15 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: seodec18
-ms.openlocfilehash: 36f4caac38f2f4891af6f61b78b55c7eff15eae4
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ffd7d71c33b569b396b9f8babf8105968ee525b9
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116740"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54263069"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure Digital Twins 内のオブジェクトに BLOB を追加する
 
@@ -24,7 +24,7 @@ Azure Digital Twins では、デバイス、スペース、ユーザーへの BL
 
 [!INCLUDE [Digital Twins Management API familiarity](../../includes/digital-twins-familiarity.md)]
 
-## <a name="uploading-blobs-an-overview"></a>BLOB のアップロード: 概要
+## <a name="uploading-blobs-overview"></a>BLOB のアップロードの概要
 
 マルチパート要求を使用して、特定のエンドポイントとそれぞれの機能に BLOB をアップロードできます。
 
@@ -38,13 +38,94 @@ Azure Digital Twins では、デバイス、スペース、ユーザーへの BL
 
 ![JSON スキーマ][1]
 
+JSON BLOB のメタデータは、次のモデルに準拠しています。
+
+```JSON
+{
+    "parentId": "00000000-0000-0000-0000-000000000000",
+    "name": "My First Blob",
+    "type": "Map",
+    "subtype": "GenericMap",
+    "description": "A well chosen description",
+    "sharing": "None"
+  }
+```
+
+| Attribute | type | 説明 |
+| --- | --- | --- |
+| **parentId** | String | BLOB を (スペース、デバイス、またはユーザー) と関連付ける親エンティティ |
+| **name** |String | BLOB のわかりやすい名前 |
+| **type** | String | BLOB の種類。*type* と *typeId* は使用できません  |
+| **typeId** | 整数 | BLOB の種類の ID。*type* と *typeId* は使用できません |
+| **subtype** | String | BLOB のサブタイプ。*subtype* と *subtypeId* は使用できません |
+| **subtypeId** | 整数 | BLOB のサブタイプ ID。*subtype* と *subtypeId* は使用できません |
+| **description** | String | BLOB のカスタマイズした説明 |
+| **sharing** | String | BLOB を共有できるかどうか - 列挙型 [`None`、`Tree`、`Global`] |
+
+BLOB のメタデータは常に最初のチャンクとして指定されます。**Content-type** `application/json` で、または `.json` ファイルとして指定されます。 ファイル データは 2 番目のチャンクで供給され、サポートされているいずれかの MIME の種類である可能性があります。
+
 Swagger のドキュメントでは、これらのモデル スキーマが詳細に説明されています。
 
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 参照ドキュメントの使用については、[Swagger の使用方法](./how-to-use-swagger.md)に関する記事をご覧ください。
 
-### <a name="examples"></a>例
+<div id="blobModel"></div>
+
+### <a name="blobs-response-data"></a>BLOB の応答データ
+
+個々に返される BLOB は、次の JSON スキーマに準拠します。
+
+```JSON
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "name": "string",
+  "parentId": "00000000-0000-0000-0000-000000000000",
+  "type": "string",
+  "subtype": "string",
+  "typeId": 0,
+  "subtypeId": 0,
+  "sharing": "None",
+  "description": "string",
+  "contentInfos": [
+    {
+      "type": "string",
+      "sizeBytes": 0,
+      "mD5": "string",
+      "version": "string",
+      "lastModifiedUtc": "2019-01-12T00:58:08.689Z",
+      "metadata": {
+        "additionalProp1": "string",
+        "additionalProp2": "string",
+        "additionalProp3": "string"
+      }
+    }
+  ],
+  "fullName": "string",
+  "spacePaths": [
+    "string"
+  ]
+}
+```
+
+| Attribute | type | 説明 |
+| --- | --- | --- |
+| **id** | String | BLOB の一意識別子 |
+| **name** |String | BLOB のわかりやすい名前 |
+| **parentId** | String | BLOB を (スペース、デバイス、またはユーザー) と関連付ける親エンティティ |
+| **type** | String | BLOB の種類。*type* と *typeId* は使用できません  |
+| **typeId** | 整数 | BLOB の種類の ID。*type* と *typeId* は使用できません |
+| **subtype** | String | BLOB のサブタイプ。*subtype* と *subtypeId* は使用できません |
+| **subtypeId** | 整数 | BLOB のサブタイプ ID。*subtype* と *subtypeId* は使用できません |
+| **sharing** | String | BLOB を共有できるかどうか - 列挙型 [`None`、`Tree`、`Global`] |
+| **description** | String | BLOB のカスタマイズした説明 |
+| **contentInfos** | Array | バージョンを含む構造化されていないメタデータ情報を指定します |
+| **fullName** | String | BLOB の完全な名前 |
+| **spacePaths** | String | スペース パス |
+
+BLOB のメタデータは常に最初のチャンクとして指定されます。**Content-type** `application/json` で、または `.json` ファイルとして指定されます。 ファイル データは 2 番目のチャンクで供給され、サポートされているいずれかの MIME の種類である可能性があります。
+
+### <a name="blob-multipart-request-examples"></a>BLOB マルチパート要求の例
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
@@ -92,6 +173,7 @@ var metadataContent = new StringContent(JsonConvert.SerializeObject(metaData), E
 metadataContent.Headers.ContentType = MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
 multipartContent.Add(metadataContent, "metadata");
 
+//MY_BLOB.txt is the String representation of your text file
 var fileContents = new StringContent("MY_BLOB.txt");
 fileContents.Headers.ContentType = MediaTypeHeaderValue.Parse("text/plain");
 multipartContent.Add(fileContents, "contents");
@@ -99,15 +181,27 @@ multipartContent.Add(fileContents, "contents");
 var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 ```
 
-いずれの例でも、次のことを確認してください。
+最後に、[cURL](https://curl.haxx.se/) ユーザーは、同じ方法でマルチパート フォーム要求を行うことができます。
 
-1. ヘッダーに `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"` が含まれていることを確認します。
-1. 本文がマルチパートであることを確認します。
+![デバイスの BLOB][5]
 
-   - 最初の部分には、必須の BLOB メタデータが含まれています。
-   - 2 番目の部分には、テキスト ファイルが含まれています。
+```bash
+curl
+ -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs"
+ -H "Authorization: Bearer YOUR_TOKEN"
+ -H "Accept: application/json"
+ -H "Content-Type: multipart/form-data"
+ -F "meta={\"ParentId\": \"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\": \"A well chosen description\", \"Sharing\": \"None\"};type=application/json"
+ -F "text=PATH_TO_FILE;type=text/plain"
+```
 
-1. テキスト ファイルが `Content-Type: text/plain` としてを提供されていることを確認します。
+| 値 | 置換後の文字列 |
+| --- | --- |
+| YOUR_TOKEN | 有効な OAuth 2.0 トークン |
+| YOUR_SPACE_ID | BLOB を関連付けるスペースの ID |
+| PATH_TO_FILE | テキスト ファイルへのパス |
+
+POST が成功すると、新しい BLOB の ID が返されます (前に赤で強調表示)。
 
 ## <a name="api-endpoints"></a>API エンドポイント
 
@@ -129,15 +223,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | 目的の BLOB ID |
 
-要求が成功すると、応答内で **DeviceBlob** JSON オブジェクトが返されます。 **DeviceBlobs** オブジェクトは、次の JSON スキーマに準拠します。
-
-| Attribute | type | 説明 | 例 |
-| --- | --- | --- | --- |
-| **DeviceBlobType** | String | デバイスにアタッチできる BLOB カテゴリ | `Model` と `Specification` |
-| **DeviceBlobSubtype** | String | **DeviceBlobType** より具体的な BLOB サブカテゴリ | `PhysicalModel`、`LogicalModel`、`KitSpecification`、および `FunctionalSpecification` |
-
-> [!TIP]
-> 上の表を使用して、正常に返された要求データを処理します。
+要求が成功すると、[前述](#blobModel)のように JSON オブジェクトが返されます。
 
 ### <a name="spaces"></a>スペース
 
@@ -155,14 +241,9 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | 目的の BLOB ID |
 
-同じエンドポイントに対して PATCH 要求を実行すると、メタデータの説明が更新され、新しいバージョンの BLOB が作成されます。 HTTP 要求は、必要なメタデータ、およびマルチパート フォーム データと共に PATCH メソッドを使って実行されます。
+要求が成功すると、[前述](#blobModel)のように JSON オブジェクトが返されます。
 
-操作が成功すると、次のスキーマに準拠している **SpaceBlob** オブジェクトが返されます。 それを使用して、返されたデータを使用できます。
-
-| Attribute | type | 説明 | 例 |
-| --- | --- | --- | --- |
-| **SpaceBlobType** | String | スペースにアタッチできる BLOB カテゴリ | `Map` と `Image` |
-| **SpaceBlobSubtype** | String | **SpaceBlobType** より具体的な BLOB サブカテゴリ | `GenericMap`、`ElectricalMap`、`SatelliteMap`、および `WayfindingMap` |
+同じエンドポイントに対して PATCH 要求を実行すると、メタデータの説明が更新され、BLOB のバージョンが作成されます。 HTTP 要求は、必要なメタデータ、およびマルチパート フォーム データと共に PATCH メソッドを使って実行されます。
 
 ### <a name="users"></a>ユーザー
 
@@ -180,16 +261,11 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | 目的の BLOB ID |
 
-返される JSON (**UserBlobs** オブジェクト) は、次の JSON モデルに準拠しています。
-
-| Attribute | type | 説明 | 例 |
-| --- | --- | --- | --- |
-| **UserBlobType** | String | ユーザーにアタッチできる BLOB カテゴリ | `Image` と `Video` |
-| **UserBlobSubtype** |  String | **UserBlobType** より具体的な BLOB サブカテゴリ | `ProfessionalImage`、`VacationImage`、`CommercialVideo` |
+要求が成功すると、[前述](#blobModel)のように JSON オブジェクトが返されます。
 
 ## <a name="common-errors"></a>一般的なエラー
 
-一般的なエラーには、適切なヘッダー情報が含まれていません。
+一般的なエラーでは、正確なヘッダー情報が提供されません。
 
 ```JSON
 {
@@ -200,12 +276,22 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 }
 ```
 
+このエラーを解決するには、要求全体が、適切な **Content-type** ヘッダーを持っていることを確認します。
+
+* `multipart/mixed`
+* `multipart/form-data`
+
+また、それぞれのマルチパート チャンクが、必要とされる、対応する **Content-type** になっていることを確認します。
+
 ## <a name="next-steps"></a>次の手順
 
 - Azure Digital Twins に関する Swagger の参照ドキュメントについて詳しくは、[Azure Digital Twins Swagger の使用方法](how-to-use-swagger.md)に関する記事をご覧ください。
+
+- Postman を通して BLOB をアップロードする場合は、[Postman を構成する方法](./how-to-configure-postman.md)に関するページを参照してください。
 
 <!-- Images -->
 [1]: media/how-to-add-blobs/blob-models.PNG
 [2]: media/how-to-add-blobs/blobs-device-api.PNG
 [3]: media/how-to-add-blobs/blobs-space-api.PNG
 [4]: media/how-to-add-blobs/blobs-users-api.PNG
+[5]: media/how-to-add-blobs/curl.PNG

@@ -1,17 +1,17 @@
 ---
 title: Azure Site Recovery による Azure への VMware ディザスター リカバリーのために VMware VM のレプリケーションを有効にする | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用した Azure へのディザスター リカバリーのために VMware VM のレプリケーションを有効にする方法について説明します。
-author: asgang
+author: mayurigupta13
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 1/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: 51470e9f8e0bffe18d1dc4007433246d084a5cb2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: mayg
+ms.openlocfilehash: be6823486490ca6bc414e89c62a22f996aa27089
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846668"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329951"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -56,10 +56,10 @@ VMware 仮想マシンをレプリケートする場合:
     >   * Premium または Standard ストレージ アカウントを選択できます。 Premium アカウントを選択した場合は、継続的なレプリケーション ログ用に追加の Standard ストレージ アカウントを指定する必要があります。 アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
     >   * 異なるストレージ アカウントを使用する場合は、[作成](../storage/common/storage-create-storage-account.md)できます。 Resource Manager を使用してストレージ アカウントを作成する場合は、**[新規作成]** をクリックします。 
 
-8. フェールオーバー後に Azure VM がスピンアップされたときに接続する Azure ネットワークとサブネットを選択します。 ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、**[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、**[後で構成する]** を選択します。 ネットワークがない場合は、[作成する](#set-up-an-azure-network)必要があります。 Resource Manager を使用してネットワークを作成する場合は、**[新規作成]** をクリックします。 該当する場合は、サブネットを選択し、**[OK]** をクリックします。
+8. フェールオーバー後に Azure VM がスピンアップされたときに接続する Azure ネットワークとサブネットを選択します。 ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。 保護の対象として選択したすべてのマシンにネットワーク設定を適用する場合は、**[選択したマシン用に今すぐ構成します。]** を選択します。 マシンごとに Azure ネットワークを選択する場合は、**[後で構成する]** を選択します。 ネットワークがない場合は、作成する必要があります。 Resource Manager を使用してネットワークを作成する場合は、**[新規作成]** をクリックします。 該当する場合は、サブネットを選択し、**[OK]** をクリックします。
 
     ![レプリケーション ターゲットの設定を有効にする](./media/vmware-azure-enable-replication/enable-rep3.png)
-9. **[Virtual Machines]** > **[仮想マシンの選択]** で、レプリケートする各マシンを選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 次に、 **[OK]** をクリックします
+9. **[Virtual Machines]** > **[仮想マシンの選択]** で、レプリケートする各マシンを選択します。 選択できるのは、レプリケーションを有効にできるマシンのみです。 次に、 **[OK]** をクリックします 特定の仮想マシンを表示または選択できない場合は、[こちら](https://aka.ms/doc-plugin-VM-not-showing)をクリックして問題を解決してください。
 
     ![[レプリケーションを有効にする] で仮想マシンを選択する](./media/vmware-azure-enable-replication/enable-replication5.png)
 10. **[プロパティ]** > **[プロパティの構成]** で、モビリティ サービスをマシンに自動的にインストールするためにプロセス サーバーが使用するアカウントを選択します。  
@@ -86,18 +86,20 @@ VMware 仮想マシンをレプリケートする場合:
 
 1. **[設定]** > **[レプリケートされたアイテム]** の順にクリックし、マシンを選択します。 **[要点]** ページにマシンの設定と状態に関する情報が表示されます。
 2. **[プロパティ]** で、VM のレプリケーションとフェールオーバーの情報を確認できます。
-3. **[コンピューティングとネットワーク]** > **[コンピューティングのプロパティ]** で、Azure VM の名前とターゲットのサイズを指定できます。 必要に応じて、Azure の要件に準拠するように名前を変更します。
+3. **[コンピューティングとネットワーク]** > **[コンピューティングのプロパティ]** で、複数の VM を変更することができます。
+* Azure VM 名 - 必要に応じて、Azure の要件に準拠するように名前を変更します
+* ターゲット VM のサイズまたは種類 - 既定の VM サイズは、ソース VM のサイズに基づいて選択されます。 必要に応じて、フェールオーバーの前にいつでも、別の VM サイズを選択することができます。 VM ディスクのサイズは、ソース ディスクのサイズにも基づいていて、フェールオーバー後にしか変更できないことに注意してください。 ディスクのサイズと IOPS の詳細については、[ディスクのスケーラビリティ ターゲット](../virtual-machines/windows/disk-scalability-targets.md)に関する記事を参照してください。
 
     ![コンピューティングとネットワークのプロパティ](./media/vmware-azure-enable-replication/vmproperties.png)
 
-4.  フェールオーバー後にマシンが属する[リソース グループ](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、マシンを別のリソース グループに移行すると、マシンの保護設定が解除されます。
-5. マシンがフェールオーバー後に[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
+*  リソース グループ - フェールオーバー後にマシンが属する[リソース グループ](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、マシンを別のリソース グループに移行すると、マシンの保護設定が解除されます。
+* 可用性セット - マシンがフェールオーバー後に[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
 
     * 指定されたリソース グループに属している可用性セットだけが一覧表示されます。  
     * 異なる仮想ネットワークに属するマシンが同じ可用性セットに属することはできません。
     * 同じサイズの仮想マシンだけが同じ可用性セットに属することができます。
-5. Azure VM に割り当てられるターゲット ネットワーク、サブネット、および IP アドレスに関する情報を表示および追加することもできます。
-6. **[ディスク]** で、レプリケートされる VM のオペレーティング システム ディスクとデータ ディスクを確認できます。
+4. Azure VM に割り当てられるターゲット ネットワーク、サブネット、および IP アドレスに関する情報を表示および追加することもできます。
+5. **[ディスク]** で、レプリケートされる VM のオペレーティング システム ディスクとデータ ディスクを確認できます。
 
 ### <a name="configure-networks-and-ip-addresses"></a>ネットワークと IP アドレスを構成する
 
@@ -120,7 +122,7 @@ Azure ハイブリッド特典の詳細については[こちら](https://aka.ms
 
 ## <a name="common-issues"></a>一般的な問題
 
-* 各ディスクのサイズは 1 TB 未満である必要があります。
+* 各ディスクのサイズは 4 TB 未満である必要があります。
 * OS ディスクは、ダイナミック ディスクではなく、ベーシック ディスクである必要があります。
 * 第 2 世代/UEFI 対応仮想マシンでは、オペレーティング システム ファミリは Windows である必要があります。また、ブート ディスクは 300 GB 未満である必要があります。
 
@@ -128,4 +130,5 @@ Azure ハイブリッド特典の詳細については[こちら](https://aka.ms
 
 保護を完了し、マシンが保護された状態になったら、[フェールオーバー](site-recovery-failover.md)を実行して、アプリケーションが Azure で動作するかどうかを確認できます。
 
-保護を無効にする場合は、[登録と保護の設定をクリーンアップ](site-recovery-manage-registration-and-protection.md)する方法を確認します。
+* 保護を無効にする場合は、[登録と保護の設定をクリーンアップ](site-recovery-manage-registration-and-protection.md)する方法を確認してください。
+* [PowerShell を使用して仮想マシンのレプリケーションを自動化する](vmware-azure-disaster-recovery-powershell.md)方法を確認してください

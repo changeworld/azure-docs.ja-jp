@@ -6,7 +6,7 @@ author: CelesteDG
 documentationcenter: na
 manager: mtillman
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +15,13 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 388337fa80d174cb17dae12fa9d5f2fbdfe7e737
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 53c31e4ee11c11c816f9fb243a88240cd78522aa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347785"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198900"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする
 
@@ -32,7 +33,7 @@ ms.locfileid: "44347785"
 マイ アプリによるセキュリティで保護されたサインイン拡張機能ををダウンロードしてインストールするには、次のいずれかのリンクを使用します。
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
-- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
 - [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 
@@ -75,7 +76,7 @@ AAD と対象アプリケーションの間の、SAML に基づいたシング�
     - 問題の根本原因を明らかにしている文章。
 2.  Azure AD に戻り、**[シングル サインオンのテスト]** ブレードを見つけます。
 3.  **[Get resolution guidance]**(解決ガイダンスの取得) の上にあるテキスト ボックスに、エラー メッセージを貼り付けます。
-3.  **[Get resolution guidance]**(解決ガイダンスの取得) をクリックし、問題を解決するための手順を表示します。 ガイダンスには、SAML 要求または SAML 応答からの情報が必要な場合があります。 マイ アプリによるセキュリティで保護されたサインイン拡張機能をを使用していない場合は、SAML の要求や応答を取得するために [Fiddler](http://www.telerik.com/fiddler) などのツールが必要なことがあります。
+3.  **[Get resolution guidance]**(解決ガイダンスの取得) をクリックし、問題を解決するための手順を表示します。 ガイダンスには、SAML 要求または SAML 応答からの情報が必要な場合があります。 マイ アプリによるセキュリティで保護されたサインイン拡張機能をを使用していない場合は、SAML の要求や応答を取得するために [Fiddler](https://www.telerik.com/fiddler) などのツールが必要なことがあります。
 4.  SAML 要求に含まれる送信先が、Azure Active Directory から取得した SAML シングル サインオン サービス URL に対応していることを確認します。
 5.  SAML 要求に含まれる発行者は、Azure Active Directory のアプリケーションのために構成した識別子と同じです。 Azure AD は、発行者を使用してディレクトリ内のアプリケーションを検索します。
 6.  AssertionConsumerServiceURL は、アプリケーションが Azure Active Directory から SAML トークンを受け取ることになっている場所であることを確認します。 この値は Azure Active Directory 内で構成できますが、SAML 要求の一部としては必須の値ではありません。
@@ -90,7 +91,7 @@ AAD と対象アプリケーションの間の、SAML に基づいたシング�
 1. アプリケーションが Azure AD ギャラリー内にある場合は、アプリケーションを Azure AD と統合するすべての手順に従ったことを確認します。 アプリケーションの統合手順については、[SaaS アプリケーションの統合に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)を参照してください。
 2. SAML 応答を取得します。
     - マイ アプリによるセキュリティで保護されたサインイン拡張機能がインストールされている場合、**[シングル サインオンのテスト]** ブレードで、**[download the SAML response]**(SAML 応答のダウンロード) をクリックします。
-    - この拡張機能がインストールされていない場合は、[Fiddler](http://www.telerik.com/fiddler) などのツールを使用して SAML 応答を取得します。 
+    - この拡張機能がインストールされていない場合は、[Fiddler](https://www.telerik.com/fiddler) などのツールを使用して SAML 応答を取得します。 
 3. SAML 応答トークン内の以下の要素に注目します。
     - ユーザーの一意の識別子である NameID の値形式
     - そのトークンで発行された要求

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: aa0d209cf3da65bb3d50a6458ecc33cfcd85eecb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6a568fa724d0d403833e938ae8b01556fe96cf1f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240598"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428639"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
 Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。 承認されていないユーザーが接続できないように、クラスターをセキュリティで保護する必要があります。 クラスターで実稼働ワークロードを実行している場合、セキュリティで保護されたクラスターは特に重要です。 セキュリティで保護されていないクラスターを作成することはできますが、パブリック インターネットに管理エンドポイントを公開している場合に、匿名ユーザーがそのクラスターに接続できるようになります。 セキュリティで保護されていないクラスターは、運用ワークロードでサポートされません。 
@@ -73,7 +73,12 @@ Service Fabric クラスターでは、Web ベースの [Service Fabric Explorer
 Azure で実行されているクラスターの場合、Azure Active Directory (Azure AD) を使用して管理エンドポイントへのアクセスをセキュリティで保護することもできます。 必要な Azure AD アーティファクトを作成する方法と、クラスターを作成するときにそれらに値を設定する方法については、[クライアントを認証するための Azure AD の設定](service-fabric-cluster-creation-setup-aad.md)に関するページを参照してください。
 
 ## <a name="security-recommendations"></a>セキュリティに関する推奨事項
-Azure クラスターについては、クライアントの認証に Azure AD セキュリティ、ノード間のセキュリティに証明書を使用することをお勧めします。
+Azure でホストされているパブリック ネットワークにデプロイされた Service Fabric クラスターの場合、クライアントとノードの間の相互認証は次のようにすることを推奨します。
+*   クライアント ID には Azure Active Directory を使用する
+*   サーバー ID および http 通信の SSL 暗号化には証明書
+
+Azure でホストされているパブリック ネットワークにデプロイされた Service Fabric クラスターの場合、ノード間のセキュリティではクラスター証明書を使用してノードを認証することをお勧めします。 
+
 
 スタンドアロン Windows Server クラスターについては、Windows Server 2012 R2 と Windows Active Directory を使用している場合、グループ管理サービス アカウントで Windows セキュリティを使用することをお勧めします。 それ以外の場合は、Windows アカウントで Windows セキュリティを使用してください。
 
@@ -85,7 +90,7 @@ Azure クラスターについては、クライアントの認証に Azure AD �
 クラスターを作成するときに、管理者およびユーザー クライアント ロールを設定します。 ロールを割り当てるには、ロールの種類ごとに別の ID を指定します (たとえば、証明書または Azure AD を使用します)。 既定のアクセス制御の設定と、既定の設定を変更する方法の詳細については、「[ロール ベースのアクセス制御 (Service Fabric クライアント用)](service-fabric-cluster-security-roles.md)」を参照してください。
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 証明書と Service Fabric
-一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証に使用されています。 また、メッセージの暗号化やデジタル署名にも使用されます。 Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。 X.509 デジタル証明書の詳細については、「[証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx)」を参照してください。 [Key Vault](../key-vault/key-vault-get-started.md) を使用して、Azure の Service Fabric クラスターの証明書を管理します。
+一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証に使用されています。 また、メッセージの暗号化やデジタル署名にも使用されます。 Service Fabric では、X.509 証明書を使用してクラスターをセキュリティで保護し、アプリケーションのセキュリティ機能を提供します。 X.509 デジタル証明書の詳細については、「[証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx)」を参照してください。 [Key Vault](../key-vault/key-vault-overview.md) を使用して、Azure の Service Fabric クラスターの証明書を管理します。
 
 次のような、考慮すべき重要な点がいくつかあります。
 

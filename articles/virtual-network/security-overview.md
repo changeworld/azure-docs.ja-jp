@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: jdial
-ms.openlocfilehash: 52cac856fbec79842cc4661f38342cb972ea40df
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7ba0cd37ea4c26485b154663fa4a99e98e3ec64e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159062"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430133"
 ---
 # <a name="security-groups"></a>セキュリティ グループ
 <a name="network-security-groups"></a>
@@ -35,7 +35,7 @@ ms.locfileid: "54159062"
 |Name|ネットワーク セキュリティ グループ内で一意の名前。|
 |優先順位 | 100 ～ 4096 の数値。 規則は、優先順位に従って処理され、数値が小さいほど優先順位が高いために、大きい数値の前に小さい数値が処理されます。 トラフィックが規則に一致すると、処理が停止します。 この結果、優先順位低く (数値が大きい)、優先順位が高い規則と同じ属性を持つ規則は処理されません。|
 |ソース/ターゲット| IP アドレス、クラスレス ドメイン間ルーティング (CIDR) ブロック (例: 10.0.0.0/24)、[サービス タグ](#service-tags)、または[アプリケーション セキュリティ グループ](#application-security-groups)。 Azure リソースのアドレスを指定する場合は、そのリソースに割り当てられているプライベート IP アドレスを指定します。 受信トラフィックの場合、ネットワーク セキュリティ グループが処理されるタイミングは、Azure でパブリック IP アドレスがプライベート IP アドレスに変換された後です。送信トラフィックの場合は、Azure でプライベート IP アドレスがパブリック IP アドレスに変換される前になります。 Azure IP アドレスの詳細については、[こちら](virtual-network-ip-addresses-overview-arm.md)を参照してください。 範囲、サービス タグ、またはアプリケーション セキュリティ グループを指定すると、作成するセキュリティ規則の数を減らせます。 規則内で複数の個別 IP アドレスと範囲 (複数のサービス タグまたはアプリケーション グループは指定できません) を指定する機能は、[拡張セキュリティ規則](#augmented-security-rules)と呼ばれています。 拡張セキュリティ規則は、Resource Manager デプロイ モデルで作成されたネットワーク セキュリティ グループでのみ作成できます。 クラシック デプロイ モデルで作成されたネットワーク セキュリティ グループで、複数の IP アドレスおよび IP アドレス範囲を指定することはできません。 Azure のデプロイ モデルの詳細については、[こちら](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。|
-|プロトコル     | TCP、UDP、または Any。Any には TCP、UDP、ICMP が含まれます。 ICMP だけを指定することはできないので、ICMP が必要な場合は、Any を使用します。 |
+|Protocol     | TCP、UDP、または Any。Any には TCP、UDP、ICMP が含まれます (これらだけではありません)。 ICMP だけを指定することはできないので、ICMP が必要な場合は、Any を使用します。 |
 |方向| 規則が受信トラフィックまたは送信トラフィックに適用されるかどうか。|
 |ポートの範囲     |個別のポートまたはポートの範囲を指定できます。 たとえば、80 や 10000-10005 などと指定できます。 範囲を指定すると、作成するセキュリティ規則の数を減らすことができます。 拡張セキュリティ規則は、Resource Manager デプロイ モデルで作成されたネットワーク セキュリティ グループでのみ作成できます。 クラシック デプロイ モデルで作成されたネットワーク セキュリティ グループで、複数のポートまたはポート範囲を指定することはできません。   |
 |Action     | 許可または拒否        |
@@ -58,7 +58,7 @@ ms.locfileid: "54159062"
  セキュリティ規則の定義で使うことができるサービス タグは次のとおりです。 サービス タグの名前は、[Azure のデプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)により若干異なります。
 
 * **VirtualNetwork** (Resource Manager) (クラシックの場合は **VIRTUAL_NETWORK**):このタグには、仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての CIDR 範囲)、すべての接続されたオンプレミスのアドレス空間、および[ピアリング](virtual-network-peering-overview.md)された仮想ネットワークまたは[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に接続された仮想ネットワークが含まれます。
-* **AzureLoadBalancer** (Resource Manager) (クラシックの場合は **AZURE_LOADBALANCER**):このタグは、Azure のインフラストラクチャのロード バランサーを表します。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md##azure-platform-considerations) (168.63.129.16) に変換されます。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。
+* **AzureLoadBalancer** (Resource Manager) (クラシックの場合は **AZURE_LOADBALANCER**):このタグは、Azure のインフラストラクチャのロード バランサーを表します。 このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。
 * **Internet** (Resource Manager) (クラシックの場合は **INTERNET**):このタグは、パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。 [Azure に所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)がこのアドレス範囲に含まれます。
 * **AzureCloud** (Resource Manager のみ):このタグは、すべての[データセンターのパブリック IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)を含む Azure の IP アドレス空間を表します。 値として *AzureCloud* を指定した場合、Azure パブリック IP アドレスへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の AzureCloud に対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure AzureCloud へのアクセスのみを許可する場合は、サービス タグとして *AzureCloud.EastUS* と指定できます。 
 * **AzureTrafficManager** (Resource Manager のみ):このタグは、Azure Traffic Manager プローブ IP アドレスに対する IP アドレス空間を表します。 Traffic Manager プローブ IP アドレスについて詳しくは、[Azure Traffic Manager の FAQ](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs) に関するページをご覧ください。 

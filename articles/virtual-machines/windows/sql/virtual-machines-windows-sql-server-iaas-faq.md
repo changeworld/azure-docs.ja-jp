@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 0956d9bdbf6390f2d64f15ca267545ca15289a46
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 46d51e787a388f0963788c6419a2d9e3af89bc4f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339401"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456658"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
@@ -49,13 +49,19 @@ ms.locfileid: "53339401"
 
    はい。 Azure では、メジャー バージョンとエディションごとに 1 つのイメージのみを保持します。 たとえば、新しい SQL Server Service Pack がリリースされると、Azure はその Service Pack 用の新しいイメージをギャラリーに追加します。 前の Service Pack 用の SQL Server イメージは、Azure ポータルからただちに削除されます。 ただし、PowerShell からプロビジョニングする場合は、次の 3 か月間は引き続き使用できます。 3 か月が経過すると、前の Service Pack イメージは使用できなくします。 この削除ポリシーは、SQL Server のバージョンがそのライフサイクルの終わりに達した時点でサポートされなくなった場合にも適用されます。
 
+
+1. **Azure Portal に表示されない SQL Server の古いイメージをデプロイすることはできますか。**
+
+   はい、PowerShell を使用します。 PowerShell を使用して SQL Server VM をデプロイする方法の詳細については、「[Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法](virtual-machines-windows-ps-sql-create.md)」をご覧ください。
+
 1. **SQL Server VM から VHD イメージを作成できますか。**
 
    はい。ただし、考慮事項がいくつかあります。 この VHD を Azure の新しい VM にデプロイした場合は、ポータルに SQL Server の構成セクションが表示されません。 その場合は、PowerShell を使用して SQL Server の構成オプションを管理する必要があります。 また、そのイメージの基になった SQL VM のレートで課金されます。 これは、デプロイの前に VHD から SQL Server を削除した場合にも当てはまります。 
 
 1. **仮想マシン ギャラリーに表示されていない構成 (Windows 2008 R2  + SQL Server 2012 など) をセットアップすることはできますか?**
 
-   いいえ。 SQL Server を含む仮想マシン ギャラリー イメージでは、提供されているイメージのいずれかを選択する必要があります。
+   いいえ。 SQL Server を含む仮想マシン ギャラリー イメージでは、Azure portal または [PowerShell](virtual-machines-windows-ps-sql-create.md) を使用して、提供されているイメージのいずれかを選択する必要があります。 
+
 
 ## <a name="creation"></a>作成
 
@@ -80,7 +86,10 @@ ms.locfileid: "53339401"
 
 1. **従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
 
-   はい。 最初にデプロイされたイメージに関係なく、2 つのライセンス モデル間を簡単に移動することができます。 詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。
+   はい。 従量課金ギャラリー イメージを最初に使用した場合、2 つのライセンス モデルを簡単に切り替えることができます。 ただし、BYOL イメージを最初に使用した場合、ライセンスを PAYG に切り替えることはできません。 詳細については、[SQL Server VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。
+
+   > [!Note]
+   > 現時点では、この機能は、パブリック クラウドのお客様だけが利用できます。
 
 1. **新しい SQL VM を作成するには、BYOL イメージまたは SQL VM RP を使用する必要がありますか。**
 
@@ -88,11 +97,11 @@ ms.locfileid: "53339401"
 
 1. **ライセンス モデルの切り替えには、SQL Server のダウンタイムが必要ですか。**
 
-   いいえ。 [ライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 
+   いいえ。 [ライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)は、即座に有効になり、VM を再起動する必要はないため、SQL Server のダウンタイムは必要ありません。 ただし、SQL Server VM を SQL VM リソース プロバイダーに登録するには、[SQL IaaS 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)が前提条件です。SQL IaaS 拡張機能をインストールすると、SQL Server サービスが再起動します。 このため、SQL IaaS 拡張機能をインストールする必要がある場合、メンテナンス期間中に行う必要があります。 
 
 1. **CSP サブスクリプションで Azure ハイブリッド特典をアクティブ化できますか。**
 
-   はい。 [ライセンス モデルの変更](virtual-machines-windows-sql-ahb.md)は、CSP サブスクリプションで使用できます。 
+   はい。CSP サブスクリプションで Azure ハイブリッド特典を利用できます。 CSP のお客様は、最初に従量課金イメージをデプロイし、次にライセンス持ち込みに[ライセンス モデルを変更する](virtual-machines-windows-sql-ahb.md)必要があります。  
 
 1. **新しい SQL VM リソース プロバイダーへの VM の登録には、追加のコストがかかりますか。**
 
@@ -122,7 +131,7 @@ ms.locfileid: "53339401"
 
 1. **SQL Server の既定のインスタンスをアンインストールできますか?**
 
-   はい。ただし、考慮事項がいくつかあります。 直前の回答で述べたように、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存する機能は既定のインスタンスでしか動作しません。 この拡張機能は、アンインストールされた既定のインスタンスを探し続けるため、イベント ログ エラーが生成される可能性があります。 これらのエラーの発生源となるのは、**Microsoft SQL Server Credential Management** と **Microsoft SQL Server IaaS Agent** の 2 つです。 エラーの例を次に示します。
+   はい。ただし、考慮事項がいくつかあります。 直前の回答で述べたように、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存する機能は既定のインスタンスでしか動作しません。 この拡張機能は、アンインストールされた既定のインスタンスを探し続けるため、イベント ログ エラーが生成される可能性があります。 これらのエラーは次の 2 つのソースから発生します:**Microsoft SQL Server Credential Management**、**Microsoft SQL Server IaaS Agent**。 エラーの例を次に示します。
 
       SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました。 サーバーが見つからないかアクセスできません。
 
@@ -153,7 +162,7 @@ ms.locfileid: "53339401"
 
 1. **SQL VM と SQL Database サービスの違いは何ですか?**
 
-   概念上、Azure 仮想マシンで SQL Server を実行することは、リモート データ センターで SQL Server を実行することと違いません。 これに対し、 [SQL Database](../../../sql-database/sql-database-technical-overview.md) はサービスとしてデータベースを提供します。 SQL Database では、データベースをホストするマシンにアクセスできません。 完全な比較については、「[クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)」をご覧ください。
+   概念上、Azure 仮想マシンで SQL Server を実行することは、リモート データ センターで SQL Server を実行することと違いません。 これに対し、 [SQL Database](../../../sql-database/sql-database-technical-overview.md) はサービスとしてデータベースを提供します。 SQL Database では、データベースをホストするマシンにアクセスできません。 詳細な比較については、[クラウド SQL Server オプションであるAzure SQL (PaaS) Database および Azure VM (IaaS) の SQL Server の選択](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)に関するページを参照してください。
 
 1. **Azure VM に SQL データ ツールをインストールするにはどうすればよいですか?**
 

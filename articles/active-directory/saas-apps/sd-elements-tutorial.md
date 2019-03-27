@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と SD Elements の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と SD Elements の統合 | Microsoft Docs
 description: Azure Active Directory と SD Elements の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: f0386307-bb3b-4810-8d4b-d0bfebda04f4
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 4d5c830df47ff212d2f4d93eb48001ce3a3e2207
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7c09947e6d34c5314e8ed4bc2744f07b199278a6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446926"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188105"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>チュートリアル: Azure Active Directory と SD Elements の統合
+# <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>チュートリアル:Azure Active Directory と SD Elements の統合
 
 このチュートリアルでは、SD Elements と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ SD Elements で、Azure AD の**ユーザー名 (user name)** の値を**ユー�
 
 SD Elements で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[SD Elements テスト ユーザーの作成](#creating-a-sd-elements-test-user)** - SD Elements で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -141,7 +142,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
  
 1. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -173,10 +174,10 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
    
     c. **[Identity Provider Single Sign-On Service]\(ID プロバイダー シングル サインオン サービス\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。 
    
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -208,7 +209,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-sd-elements-test-user"></a>SD Elements テスト ユーザーの作成
 
@@ -236,7 +237,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
    
     c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
    
-    d. **[ロール]** として **[ユーザー]** を選びます。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ロール]** として **[ユーザー]** を選びます。 
    
     e. **[Create User]** をクリックします。
 

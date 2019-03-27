@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: e2cb1a76bfde5bea7707cf3cc6658e3fc82163c5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cb85d09a1d5dee6cb54254baac4698cdad093785
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043092"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55457668"
 ---
-# <a name="optimize-the-cost-required-to-run-queries-in-azure-cosmos-db"></a>Azure Cosmos DB でクエリを実行するために必要なコストを最適化する
+# <a name="optimize-query-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのクエリ コストを最適化する
 
 Azure Cosmos DB では、コンテナー内の項目を操作するリレーショナル クエリや階層クエリなど、豊富なデータベース操作が提供されます。 これらの操作のそれぞれに関連付けられたコストは、操作を完了するために必要な CPU、IO、およびメモリに応じて異なります。 ハードウェア リソースについて考えて管理する代わりに、要求ユニット (RU) を、さまざまなデータベース操作を実行して要求を処理するのに必要なリソースの 1 つの測定単位として考えることができます。 この記事では、クエリの要求ユニット使用量を評価し、パフォーマンスとコストの観点からクエリを最適化する方法について説明します。 
 

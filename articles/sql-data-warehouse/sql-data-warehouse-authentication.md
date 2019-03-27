@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse に対して認証する | Microsoft Docs
 description: Azure Active Directory (AAD) または SQL Server 認証を使用して Azure SQL Data Warehouse に対して認証する方法について説明します。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: security
 ms.date: 04/12/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d082ba8bd2819450609a8a6e4ab41b4320158d4b
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ab439566da38a537534fc10e70058ab57005ce22
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43310794"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183800"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse に対して認証する
 Azure Active Directory (AAD) または SQL Server 認証を使用して Azure SQL Data Warehouse に対して認証する方法について説明します。
@@ -67,7 +67,7 @@ Azure Active Directory には次のような利点があります。
 Azure Active Directory 認証を構成するには、次の手順に従います。
 
 1. Azure Active Directory を作成して設定する
-2. 省略可能: Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更する
+2. 省略可能:Active Directory を関連付けるか、現在 Azure サブスクリプションに関連付けられている Active Directory を変更する
 3. Azure SQL Data Warehouse 用に Azure Active Directory 管理者を作成する
 4. クライアント コンピューターを構成する
 5. Azure AD の ID にマップされている包含データベース ユーザーをデータベースに作成する

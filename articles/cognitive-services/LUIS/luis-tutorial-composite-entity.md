@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 18a32f5e07470f71ba276fbe3a2633150b1bf188
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 0d78c365b171ea80d208c447f4746fe80b965ef2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754666"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883306"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>チュートリアル:関連するデータのグループ化と抽出
 このチュートリアルでは、さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。

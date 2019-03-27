@@ -8,13 +8,13 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.component: common
-ms.openlocfilehash: a62af881efd4f6f3422db19850a0ce9987c6ae7b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 431a4ef4e84c88467dc7e36bb12d406309f9a8b7
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245122"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55467834"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -144,10 +144,10 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 ## <a name="components-used-by-the-blob-service"></a>Blob service が使用するコンポーネント
 以下では、Blob service コンポーネントの概要を説明します。
 
-* **ストレージ アカウント**: Azure Storage にアクセスするときは必ずストレージ アカウントを使用します。 これは、アクセスする BLOB の名前空間の中でも最高レベルに位置するものです。 アカウントに格納できるコンテナーの数は、コンテナーの合計サイズが 100 TB (テラバイト) 未満である限り無制限です。
-* **コンテナー**: コンテナーは、一連の BLOB をグループ化します。 すべての BLOB はコンテナーに格納されている必要があります。 1 つのアカウントに格納できるコンテナーの数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。
-* **BLOB** : 任意の種類およびサイズのファイルです。 Azure Storage に格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。 ほとんどのファイルはブロック BLOB です。 1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。 このチュートリアルでは、 ブロック BLOB を使用します。 もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。 BLOB の詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。
-* **URL 形式**: BLOB は、次の URL 形式を使用してアドレス指定できます。
+* **ストレージ アカウント**: Azure のストレージにアクセスする場合には必ず、ストレージ アカウントを使用します。 これは、アクセスする BLOB の名前空間の中でも最高レベルに位置するものです。 アカウントに格納できるコンテナーの数は、コンテナーの合計サイズが 100 TB (テラバイト) 未満である限り無制限です。
+* **コンテナー**:コンテナーは、BLOB のセットをグループ化します。 すべての BLOB はコンテナーに格納されている必要があります。 1 つのアカウントに格納できるコンテナーの数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。
+* **BLOB**:任意の種類およびサイズのファイルです。 Azure Storage に格納できる BLOB には、ブロック BLOB とページ BLOB の 2 種類があります。 ほとんどのファイルはブロック BLOB です。 1 つのブロック BLOB には、最大で 200 GB までのデータを格納できます。 このチュートリアルでは、 ブロック BLOB を使用します。 もう 1 つの種類の BLOB であるページ BLOB には、最大 1 TB までのデータを格納できます。ファイルのバイト数の範囲が頻繁に変更される場合には、こちらの方が効率的です。 BLOB の詳細については、「[ブロック BLOB、追加 BLOB、ページ BLOB について](https://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。
+* **URL 形式**:BLOB は、次の URL 形式を使用してアドレスを指定し、アクセスできます。
   
     `http://storageaccount.blob.core.windows.net/container_name/blob_name`
   

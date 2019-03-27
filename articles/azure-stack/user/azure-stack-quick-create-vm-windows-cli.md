@@ -11,19 +11,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: be4e16b1d20aa07e4851174e982e2f1f2a23d893
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: 15dd878b7ff322ac8243b37649f16fed4e068af4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44376988"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091717"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-azure-cli-in-azure-stack"></a>クイック スタート: Azure Stack で Azure CLI を使用して Windows Server 仮想マシンを作成する
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+"*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure CLI を使用して Windows Server 2016 仮想マシンを作成できます。 この記事の手順に従って仮想マシンを作成し、使用します。 この記事では、以下の手順についても説明します。
 
@@ -41,8 +42,8 @@ Azure CLI を使用して Windows Server 2016 仮想マシンを作成できま�
 
 リソース グループは、Azure Stack リソースのデプロイと管理を行うことができる論理コンテナーです。 Azure Stack 環境から、[az group create](/cli/azure/group#az-group-create) コマンドを実行してリソース グループを作成します。
 
->[!NOTE]
- 値は、コード例のすべての変数に割り当てられます。 ただし、必要に応じて新しい値を割り当てることができます。
+> [!NOTE]
+>  値は、コード例のすべての変数に割り当てられます。 ただし、必要に応じて新しい値を割り当てることができます。
 
 次の例では、myResourceGroup という名前のリソース グループをローカルの場所に作成します。
 
@@ -71,7 +72,7 @@ VM が作成されると、出力の **PublicIPAddress** パラメーターに�
 
 この VM は IIS Web サーバーを実行することになるので、インターネット トラフィックに対してポート 80 を開く必要があります。
 
-[az vm open-port](/cli/azure/vm#open-port) コマンドを使用して、ポート 80 を開きます。
+[az vm open-port](/cli/azure/vm) コマンドを使用して、ポート 80 を開きます。
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM

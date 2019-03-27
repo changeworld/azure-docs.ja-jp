@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 9c574d5e5cecaa4618bbd44fae8a2200930ab2e3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 09f0416e5a03527613e7c353961d81de39c4fe0e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019454"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566841"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Azure Data Factory を使用して HBase からデータをコピーする 
 
@@ -41,11 +41,11 @@ HBase のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **HBase** | [はい] |
-| host | HBase サーバーの IP アドレスまたはホスト名。 (つまり、`[clustername].azurehdinsight.net`、192.168.222.160)  | [はい] |
+| type | type プロパティは、次のように設定する必要があります: **HBase** | はい |
+| host | HBase サーバーの IP アドレスまたはホスト名。 (つまり、`[clustername].azurehdinsight.net`、192.168.222.160·) | はい |
 | port | HBase インスタンスがクライアント接続のリッスンに使用する TCP ポート。 既定値は 9090 です。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | いいえ  |
 | httpPath | `/hbaserest0`HDInsights クラスターを使用している場合など、HBase サーバーに対応する部分的な URL。 | いいえ  |
-| authenticationType | HBase サーバーへの接続に使用する認証メカニズム。 <br/>使用できる値は、以下のとおりです。**Anonymous**、**Basic** | [はい] |
+| authenticationType | HBase サーバーへの接続に使用する認証メカニズム。 <br/>使用できる値は、以下のとおりです。**Anonymous**、**Basic** | はい |
 | username | HBase インスタンスへの接続に使用されるユーザー名。  | いいえ  |
 | password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ  |
@@ -71,8 +71,8 @@ HBase のリンクされたサービスでは、次のプロパティがサポ�
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             },
             "enableSsl" : true
         },
@@ -98,8 +98,8 @@ HBase のリンクされたサービスでは、次のプロパティがサポ�
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {
-                 "type": "SecureString",
-                 "value": "<password>"
+                "type": "SecureString",
+                "value": "<password>"
             },
             "enableSsl" : true,
             "trustedCertPath" : "<trustedCertPath>",
@@ -122,7 +122,7 @@ HBase からデータをコピーするには、データセットの type プ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります: **HBaseObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります: **HBaseObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -151,7 +151,7 @@ HBase からデータをコピーするは、コピー アクティビティの�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **HBaseSource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **HBaseSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

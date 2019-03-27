@@ -5,18 +5,15 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.openlocfilehash: 82b72b45f9577c83e2c6619220b26e26d696c4f1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/26/2019
+ms.openlocfilehash: fdf2d3aeea32beba0b8e95c1816a80140d7cf6be
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540256"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958917"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Virtual Network のサービス エンドポイントと規則を Azure Database for MariaDB に対して使用する
-
-> [!IMPORTANT]
-> VNet サービス エンドポイント機能は、パブリック プレビューの段階です。
 
 *仮想ネットワーク規則*は、Azure Database for MariaDB サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure Database for MariaDB サーバーへの通信を安全に許可するための最善の選択になる理由を説明します。
 

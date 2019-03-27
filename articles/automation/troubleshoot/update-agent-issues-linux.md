@@ -7,14 +7,14 @@ ms.author: gwallace
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: dff24fb28a4129aa7f29d5f9ed1db10d533d005e
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: aafed492e83066be20b4728a2617527351291a5b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53578854"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813111"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Update Management での Linux エージェントのチェック結果について
 
@@ -22,13 +22,13 @@ Update Management でコンピューターに**準備完了**が表示されな�
 
 次の一覧は、マシンが取り得る 3 つの準備状態です。
 
-* **Ready (準備完了)** - 更新プログラム エージェントが展開され、最後に表示してから 1 時間以内である。
-* **Disconnected (切断)** -  更新プログラム エージェントが展開され、最後に表示してから 1 時間以上になった。
-* **Not configured (未構成)** - 更新プログラム エージェントが見つからないか、オンボードを終了していない。
+* **Ready (準備完了)** - Update エージェントがデプロイされ、最後に表示されてから 1 時間以内である。
+* **Disconnected (切断)** -  Update エージェントがデプロイされ、最後に表示されてから 1 時間以上になった。
+* **Not configured (未構成)** - Update エージェントが見つからないか、オンボードを終了していない。
 
 ## <a name="start-the-troubleshooter"></a>トラブルシューティングの開始
 
-Azure マシンの場合は、ポータルの **[Update エージェントの準備]** 列にある **[トラブルシューティング]** リンクをクリックすると、**[Update エージェントのトラブルシューティング]** ページが起動されます。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のコンピューターをトラブルシューティングするには、[オフラインの手順](#offline)を参照してください。
+Azure マシンの場合は、ポータルの **[Update エージェントの準備]** 列にある **[トラブルシューティング]** リンクをクリックすると、**[Update エージェントのトラブルシューティング]** ページが起動されます。 Azure 以外のマシンの場合は、リンクをクリックすると、この記事が表示されます。 Azure 以外のマシンをトラブルシューティングするには、オフラインの手順を参照してください。
 
 ![VM リスト ページ](../media/update-agent-issues-linux/vm-list.png)
 
@@ -39,7 +39,7 @@ Azure マシンの場合は、ポータルの **[Update エージェントの準
 
 ![トラブルシューティング ページ](../media/update-agent-issues-linux/troubleshoot-page.png)
 
-完了すると、結果がウィンドウに返されます。 [チェック セクション](#pre-requisistes-checks)には、各チェックの対象が示されます。
+完了すると、結果がウィンドウに返されます。 チェック セクションには、各チェックの対象が示されます。
 
 ![Update エージェントのチェック ページ](../media/update-agent-issues-linux/update-agent-checks.png)
 
@@ -177,3 +177,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 ## <a name="next-steps"></a>次の手順
 
 Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください
+

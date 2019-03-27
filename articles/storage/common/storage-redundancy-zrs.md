@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: jeking
-ms.component: common
-ms.openlocfilehash: 1b39de45d5046ce5a59dcaf0648b87aca2a5c6f5
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.subservice: common
+ms.openlocfilehash: 11891153f1ffce438597dc4f2799a9f25d76c2f5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868346"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992604"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>ゾーン冗長ストレージ (ZRS):高可用 Azure Storage アプリケーション
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
@@ -25,19 +25,21 @@ ZRS は、ブロック BLOB、非ディスク ページ BLOB、ファイル、�
 
 ZRS は、次のリージョンで一般公開されています。
 
+- 東南アジア
+- 西ヨーロッパ
+- 北ヨーロッパ
+- フランス中部
+- 東日本
+- 英国南部
 - 米国東部
 - 米国東部 2
 - 米国西部 2
 - 米国中部
-- 北ヨーロッパ
-- 西ヨーロッパ
-- フランス中部
-- 東南アジア
 
 Microsoft は、今後も ZRS が有効な Azure リージョンを増やす予定です。 新しいリージョンの情報については、[Azure サービスの更新情報](https://azure.microsoft.com/updates/)に関するページを定期的に参照してください。
 
 ## <a name="what-happens-when-a-zone-becomes-unavailable"></a>ゾーンが利用不可になった場合
-データは、ゾーンが使用できなくなった場合でもアクセスできます。 一時的な障害の処理の方法に従うことをお勧めします。 これらの方法には、指数バックオフを使用した再試行ポリシーの実行などがあります。
+データは、ゾーンが使用できなくなった場合でも読み取り操作と書き込み操作の両方にアクセスできます。 一時的な障害の処理の方法に従うことをお勧めします。 これらの方法には、指数バックオフを使用した再試行ポリシーの実行などがあります。
 
 ゾーンが利用不可になると、Azure は DNS の再指定などのネットワークの更新を実行します。 このような更新は、更新が完了する前にデータにアクセスしている場合、アプリケーションに影響を与える可能性があります。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/08/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 25f68b011d1fcba450903e9a691b98dfe9e87281
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7764b0ceee1b540e9650d232b7087811d7376f28
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726121"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54452090"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>チュートリアル:Edge のデプロイを準備する  
 

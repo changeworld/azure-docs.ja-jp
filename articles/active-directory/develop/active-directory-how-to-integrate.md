@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,13 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: d3b2edefd602a90ff28b8e0645d3c48932ba44dd
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 086aee5aba5bd35faecde61c34735d2db5c3a320
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410314"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189941"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 

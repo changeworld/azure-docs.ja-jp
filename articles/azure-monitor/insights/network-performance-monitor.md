@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 7f7fe545c10d80fc5a201923679b7d61623786fb
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: cff96ecb4f4b20e7e3542f6ae6e3e7740b750235
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193792"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729797"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -52,14 +52,14 @@ NPM は、次のリージョンのいずれかでホストされているワー�
 * 英国南部
 * 米国政府バージニア州
 
-ExpressRoute モニターのサポート対象リージョンの一覧は、[こちらのドキュメント](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117#regions)で確認できます。
+ExpressRoute モニターのサポート対象リージョンの一覧は、[こちらのドキュメント](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117)で確認できます。
 
 
 ## <a name="set-up-and-configure"></a>セットアップと構成
 
 ### <a name="install-and-configure-agents"></a>エージェントのインストールと構成 
 
-「[Windows コンピューターを Azure Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」と「[Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」にある、エージェントをインストールするための基本的な手順に従ってください。
+「[Windows コンピューターを Azure Log Analytics に接続する](../../azure-monitor/platform/agent-windows.md)」と「[Operations Manager を Log Analytics に接続する](../../azure-monitor/platform/om-agents.md)」にある、エージェントをインストールするための基本的な手順に従ってください。
 
 ### <a name="where-to-install-the-agents"></a>エージェントをインストールする場所 
 
@@ -270,7 +270,7 @@ Azure Portal を介してアラートを作成する NPM ユーザーの場合:
 4. アラートが正常に作成されると、[アラートの管理] リンクを使用してアラートを管理できます。 
 
 アラートを作成するたびに NPM によって Azure Monitor 上でクエリ ベースのログ アラート ルールが作成されます。 このクエリは、既定では 5 分ごとにトリガーされます。 Azure Monitor では、最初に作成された 250 件のログ アラート ルールには課金されず、250 件のログ アラート ルール制限を超えるアラート ルールは [Azure Monitor の価格ページのアラートの価格](https://azure.microsoft.com/en-us/pricing/details/monitor/)に従って課金されます。
-通知は、[Azure Monitor の価格ページの通知の価格](https://azure.microsoft.com/en-us/pricing/details/monitor/)に従って個別に課金されます。
+通知は、[「Azure Monitor の価格」ページに記載されている通知の料金](https://azure.microsoft.com/en-us/pricing/details/monitor/)に従って個別に課金されます。
 
 
 ## <a name="pricing"></a>価格

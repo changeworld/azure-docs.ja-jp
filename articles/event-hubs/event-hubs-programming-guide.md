@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3aa5a1c640cc46d677a66f5179f9f07a81e62b15
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 60c709108da041dc1e54ba69d3b1b153accebc19
+ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138077"
+ms.lasthandoff: 01/18/2019
+ms.locfileid: "54401403"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Azure Event Hubs のプログラミング ガイド
 この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](event-hubs-what-is-event-hubs.md)」を参照してください。
@@ -92,7 +92,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 
 イベントをバッチ送信すると、スループット向上の役に立ちます。 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API を使用して、[SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) 呼び出し用のデータ オブジェクトを後で追加できるバッチを作成できます。
 
-単一のバッチは、イベントの 256 KB 制限を超えてはなりません。 また、バッチの各メッセージでは同じ発行元 ID が使用されます。 バッチが最大イベント サイズを超えないようにすることは送信元の責任となります。 超えた場合、クライアント **送信** エラーが生成されます。 ヘルパー メソッド [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) を使用して、バッチが 256 KB を超えないようにします。 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API から空の [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) を取得し、[TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) を使用してイベントを追加し、バッチを構築します。 
+単一のバッチは、イベントの 1 MB 制限を超えてはなりません。 また、バッチの各メッセージでは同じ発行元 ID が使用されます。 バッチが最大イベント サイズを超えないようにすることは送信元の責任となります。 超えた場合、クライアント **送信** エラーが生成されます。 ヘルパー メソッド [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) を使用して、バッチが 1 MB を超えないようにします。 [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) API から空の [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch) を取得し、[TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd) を使用してイベントを追加し、バッチを構築します。 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>非同期送信と大規模送信
 

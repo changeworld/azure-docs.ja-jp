@@ -2,17 +2,17 @@
 title: Azure Event Grid の概念
 description: Azure Event Grid とその概念について説明します。 Event Grid のいくつかの主要コンポーネントを定義します。
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: tomfitz
-ms.openlocfilehash: 89f0f5847f157cff59a57f7958508e4f260355c3
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.author: spelluru
+ms.openlocfilehash: 40c749adee08e66319bed88f26c3c898428a41ad
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50747560"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54474355"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Azure Event Grid の概念
 

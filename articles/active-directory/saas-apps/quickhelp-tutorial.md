@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と QuickHelp の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と QuickHelp の統合 | Microsoft Docs
 description: Azure Active Directory と QuickHelp の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 655c9ad3-2076-4e2c-8e47-9ed3bf04be56
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: jeedes
-ms.openlocfilehash: c99be60301085dddfd5c658ee1eed81b88238e54
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 013504fefd927d2e970c5b07a0e9c61afc715d7c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421594"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186915"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>チュートリアル: Azure Active Directory と QuickHelp の統合
+# <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>チュートリアル:Azure Active Directory と QuickHelp の統合
 
 このチュートリアルでは、QuickHelp と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ QuickHelp で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 
 QuickHelp で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[QuickHelp テスト ユーザーの作成](#creating-a-quickhelp-test-user)** - QuickHelp で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -149,7 +150,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
    
     c. **[電子メール]** ボックスに「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」と入力します。
    
-    d. **[名]** ボックスに「`type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名]** ボックスに「`type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`」と入力します。
    
     e. **[姓]** ボックスに「`type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`」と入力します。
    
@@ -184,7 +185,7 @@ QuickHelp で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-quickhelp-test-user"></a>QuickHelp テスト ユーザーの作成
 

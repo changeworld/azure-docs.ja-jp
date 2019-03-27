@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: この記事を使用して、Bing Custom Search 用のホステッド UI を構成して統合します。
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-custom-search
+ms.subservice: bing-custom-search
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: e30c36cbde3bf112b012526e6268dfc4414f64a9
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555474"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084134"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>ホステッド UI エクスペリエンスを構成する
 
@@ -43,10 +43,10 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
     
 5. 配色テーマを選択します。 **[テーマのカスタマイズ]** をクリックして、ご自身のアプリに合うように色をカスタマイズできます。 色を変更するには、色の RGB 16 進値 (例: `#366eb8`) を入力するか、色プレビューをクリックします。
 
-  ポータルの右側で、変更の結果をプレビューできます。 **[既定値にリセット]** をクリックすることで、選択したテーマの既定の色に戻すことができます。
+   ポータルの右側で、変更の結果をプレビューできます。 **[既定値にリセット]** をクリックすることで、選択したテーマの既定の色に戻すことができます。
 
-  > [!NOTE]
-  > 色を選択するときは、アクセシビリティを考慮してください。
+   > [!NOTE]
+   > 色を選択するときは、アクセシビリティを考慮してください。
 
 6. **[追加の構成]** で、実際のアプリにとって適切な値を指定します。 これらの設定は省略可能です。 適用または削除の影響を確認するには、右側のプレビュー ウィンドウを参照します。 使用できる構成は次のとおりです。  
 
@@ -143,8 +143,8 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
 
 | |  |
 |---------|---------|
-|[ページ タイトル]   | 検索結果ページのタイトル領域に表示されるテキストです (ポップオーバー レイアウトの場合は表示されません)。        |
-|[ツール バーのテーマ]    | 検索結果ページのタイトル領域の背景色を指定します。 |
+|Page title (ページ タイトル)   | 検索結果ページのタイトル領域に表示されるテキストです (ポップオーバー レイアウトの場合は表示されません)。        |
+|Toolbar theme (ツール バーのテーマ)    | 検索結果ページのタイトル領域の背景色を指定します。 |
 
 **[Show advanced configurations]\(構成の詳細を表示\)** をクリックすると、次の構成が表示されます。  
 
@@ -152,7 +152,7 @@ Web アプリ用にホステッド UI を構成するには、次の手順に従
 |---------|---------|
 |[Search box text placeholder]\(検索ボックスのテキスト プレース ホルダー\)   | 入力されるまで検索ボックスに表示されるテキスト。        |
 |[Title link url]\(タイトル リンク URL\)    |タイトル リンクのターゲット。         |
-|[ロゴ の URL]     | タイトルの横に表示される画像。         |
+|Logo URL (ロゴ URL)     | タイトルの横に表示される画像。         |
 |[お気に入りアイコン]    | ブラウザーのタイトル バーに表示されるアイコン。          |
 
 次の構成は、HTML エンドポイントを通してホステッド UI を使用する場合にのみ適用されます (JavaScript のスニペットを使用する場合は適用されません)。

@@ -3,19 +3,20 @@ title: Azure Active Directory B2B コラボレーション ユーザーのプロ
 description: Azure Active Directory B2B コラボレーション ユーザーのプロパティは構成できます
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/5/2018
+ms.date: 02/12/2019
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 01693f16b0af59881c22fefb6ec8abe0c4fb3874
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d7ef27b1365078ea2c5a7b92338a6c10f8d05de0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996622"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209253"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
@@ -99,7 +100,7 @@ PowerShell を使用して、UserType をメンバーからゲストに、また
 ![ゲスト ユーザー制限の削除](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Exchange のグローバル アドレス一覧にゲスト ユーザーを表示できますか。
-はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳しくは、「[Office 365 グループのゲスト アクセス](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ)」の「**グローバル アドレス一覧にゲスト オブジェクトを表示することはできますか?**」をご覧ください。 
+はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、「[Office 365 グループでゲスト アクセスを管理する](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq)」の「**グローバル アドレス一覧にゲスト オブジェクトを表示できますか?**」を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 
