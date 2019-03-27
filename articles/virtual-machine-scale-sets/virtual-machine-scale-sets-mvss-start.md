@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: a476af9ceb1b664a458f7f07a5a7b3945b1ad881
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d4a3dd6ae390fd48a8085cca33063a6bb74bd96c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036564"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008422"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>仮想マシン スケール セット テンプレートの詳細情報
 [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment)は、関連するリソースのグループをデプロイするための優れた方法です。 このチュートリアル シリーズでは、実行可能な最小のスケール セット テンプレートを作成する方法と、そのテンプレートをさまざまなシナリオに適合するように変更する方法を示します。 すべての例は、こちらの [GitHub リポジトリ](https://github.com/gatneil/mvss)を基にしています。 
@@ -40,7 +40,7 @@ GitHub を使用して、実行可能な最小のスケール セット テン�
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
 ```
 ## <a name="define-parameters"></a>パラメーターを定義する
@@ -70,7 +70,7 @@ Resource Manager テンプレートでは、テンプレート内で後ほど使
    "resources": [
 ```
 
-すべてのリソースのプロパティ `type`、`name`、`apiVersion`、`location` を指定する必要があります。 この例の最初のリソースには、type [Microsft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)、name `myVnet`、および apiVersion `2016-03-30` が含まれています。 (リソースの種類に対する最新の API バージョンを確認するには、[Azure Resource Manager テンプレートのリファレンス](/azure/templates/)を参照してください。)
+すべてのリソースのプロパティ `type`、`name`、`apiVersion`、`location` を指定する必要があります。 この例の最初のリソースには、type [Microsoft.Network/virtualNetwork](/azure/templates/microsoft.network/virtualnetworks)、name `myVnet`、apiVersion `2016-03-30` が含まれています。 (リソースの種類に対する最新の API バージョンを確認するには、[Azure Resource Manager テンプレートのリファレンス](/azure/templates/)を参照してください。)
 
 ```json
      {

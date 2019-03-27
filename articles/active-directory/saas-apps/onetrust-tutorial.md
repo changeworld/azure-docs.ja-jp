@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と OneTrust Privacy Management Software の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と OneTrust Privacy Management Software の統合 | Microsoft Docs
 description: Azure Active Directory と OneTrust Privacy Management Software の間のシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 71c2b6d0-3d28-4130-a2c8-1e72ab3d5814
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeedes
-ms.openlocfilehash: f8e06a4578d2f11331b87fdfb493e2bba4edb8cf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d907ec5cc40bcf9127fc20fbbc8e2e0aca476c3b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421692"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56195857"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>チュートリアル: Azure Active Directory と OneTrust Privacy Management Software の統合
+# <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>チュートリアル:Azure Active Directory と OneTrust Privacy Management Software の統合
 
 このチュートリアルでは、OneTrust Privacy Management Software と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -134,7 +135,7 @@ OneTrust Privacy Management Software で Azure AD のシングル サインオ�
 1. **OneTrust Privacy Management Software** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [OneTrust Privacy Management Software サポート チーム](mailto:support@onetrust.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -166,14 +167,14 @@ OneTrust Privacy Management Software で Azure AD のシングル サインオ�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-onetrust-privacy-management-software-test-user"></a>OneTrust Privacy Management Software テスト ユーザーの作成
 
 このセクションの目的は、OneTrust Privacy Management Software で Britta Simon というユーザーを作成することです。 OneTrust Privacy Management Software では、ジャスト イン タイム プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーが存在しない場合は、OneTrust Privacy Management Software へのアクセスを試みたときに、新しいユーザーが自動的に作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[OneTrust Privacy Management Software サポート チーム](mailto:support@onetrust.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [OneTrust Privacy Management Software サポート チーム](mailto:support@onetrust.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -210,7 +211,7 @@ OneTrust Privacy Management Software で Azure AD のシングル サインオ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [OneTrust Privacy Management Software] タイルをクリックすると、OneTrust Privacy Management Software アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

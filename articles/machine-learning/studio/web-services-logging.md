@@ -1,6 +1,6 @@
 ---
 title: Web サービスのログ記録 - Azure Machine Learning Studio | Microsoft Docs
-description: Machine Learning Web サービスのログ記録を有効にする方法について説明します。 ログ記録では、API のトラブルシューティングに役立つ追加情報を提供します。
+description: Machine Learning Studio Web サービスのログ記録を有効にする方法について説明します。 ログ記録では、API のトラブルシューティングに役立つ追加情報を提供します。
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -9,27 +9,27 @@ ms.author: amlstudiodocs
 editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 8e9d6d006589e443329059c3f153e7925a88cd1f
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 53eedd4d00b212879389d29541c4ca55ea1bfde6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53249789"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270098"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Azure Machine Learning Studio Web サービスのログ記録を有効にする
-このドキュメントは、Machine Learning Web サービスのログ記録機能について説明します。 ログ機能を使用すると、エラー番号とメッセージの他に追加の情報を得ることができ、Machine Learning API の呼び出しをトラブルシューティングするときに役立ちます。  
+このドキュメントでは、Machine Learning Studio Web サービスのログ記録機能について説明します。 ログ機能を使用すると、エラー番号とメッセージの他に追加の情報を得ることができ、Machine Learning Studio API の呼び出しをトラブルシューティングするときに役立ちます。  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Web サービスでのログ記録を有効にする方法
 
-[Azure Machine Learning Web Services](https://services.azureml.net) ポータルからログ記録を有効にすることができます。 
+[Azure Machine Learning Studio Web サービス](https://services.azureml.net) ポータルからログ記録を有効にすることができます。 
 
-1. Azure Machine Learning Web サービス ポータル （[https://services.azureml.net](https://services.azureml.net)） にサインインします。 クラシック Web サービスの場合は、Machine Learning Studio の Machine Learning Web サービス ページで **[New Web Services Experience] \(新しい Web サービス エクスペリエンス\)** をクリックします。
+1. Azure Machine Learning Studio Web サービス ポータル ([https://services.azureml.net](https://services.azureml.net)) にサインインします。 クラシック Web サービスの場合は、Machine Learning Studio の [Machine Learning Studio Web サービス] ページで **[New Web Services Experience]\(新しい Web サービス エクスペリエンス\)** をクリックすることで、ポータルにアクセスすることもできます。
 
    ![[New Web Services Experience] \(新しい Web サービス エクスペリエンス\) リンク](./media/web-services-logging/new-web-services-experience-link.png)
 

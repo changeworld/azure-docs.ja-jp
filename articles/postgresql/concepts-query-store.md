@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 86b6c4284cccb183ac9f19911abd4b6cb1d308e5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 01/01/2019
+ms.openlocfilehash: a6b31933f7170006046846c458e21efd8c54034c
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546914"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55660732"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
@@ -83,7 +83,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 次のオプションは、クエリ ストア パラメーターを構成するために使用できます。
 | **パラメーター** | **説明** | **既定値** | **Range**|
 |---|---|---|---|
-| pg_qs.query_capture_mode | 追跡対象のステートメントを設定します。 | top | none、top、all |
+| pg_qs.query_capture_mode | 追跡対象のステートメントを設定します。 | なし | none、top、all |
 | pg_qs.max_query_text_length | 保存できるクエリの最大長を設定します。 これより長いクエリは切り詰められます。 | 6000 | 100 - 10K |
 | pg_qs.retention_period_in_days | 保有期間を設定します。 | 7 | 1 - 30 |
 | pg_qs.track_utility | ユーティリティ コマンドを追跡するかどうかを設定します | on | on、off |
@@ -108,7 +108,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="querystoreqsview"></a>query_store.qs_view
 このビューでは、クエリ ストア内のすべてのデータが返されます。 個別のデータベース ID、ユーザー ID、クエリ ID ごとに 1 つの行があります。 
 
-|**名前**   |**種類** | **参照**  | **説明**|
+|**Name**   |**Type** | **参照**  | **説明**|
 |---|---|---|---|
 |runtime_stats_entry_id |bigint | | runtime_stats_entries テーブルからの ID|
 |user_id    |oid    |pg_authid.oid  |ステートメントを実行したユーザーの OID|
@@ -141,7 +141,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="querystorequerytextsview"></a>query_store.query_texts_view
 このビューでは、クエリ ストア内のクエリ テキスト データが返されます。 個別の query_text ごとに 1 つの行があります。
 
-|**名前**|  **種類**|   **説明**|
+|**Name**|  **種類**|   **説明**|
 |---|---|---|
 |query_text_id  |bigint     |query_texts テーブルの ID|
 |query_sql_text |Varchar(10000)     |代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
@@ -149,7 +149,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="querystorepgmswaitsamplingview"></a>query_store.pgms_wait_sampling_view
 このビューでは、クエリ ストア内の待機イベント データが返されます。 個別のデータベース ID、ユーザー ID、クエリ ID、イベントごとに 1 つの行があります。
 
-|**名前**|  **種類**|   **参照**| **説明**|
+|**Name**|  **Type**|   **参照**| **説明**|
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |ステートメントを実行したユーザーの OID|
 |db_id  |oid    |pg_database.oid    |ステートメントが実行されたデータベースの OID|

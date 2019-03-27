@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: vainolo
-ms.author: vainolo
+ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 598d2b86e7aeeac9525f37b1ab9422d854e75392
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 02/07/2019
+ms.openlocfilehash: 08c71ac1aba659a2e0fbb6655b6ee0a21576bf5d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034031"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339789"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -43,8 +43,11 @@ SQL Database 監査を使用して、以下を行うことができます。
 > [!IMPORTANT]
 > 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。
 >
-> - **Premium Storage** は現在、追加 BLOB では**サポートされていません**。
+> - すべてのストレージの種類 (v1、v2、BLOB) がサポートされています。
+> - すべてのストレージ レプリケーション構成がサポートされています。
+> - **Premium Storage** は現在**サポートされていません**。
 > - **VNet 内の Storage** は現在**サポートされていません**。
+> - **ファイアウォールの背後にある Storage** は現在**サポートされていません**。
 
 ## <a id="subheading-8"></a>サーバー レベルおよびデータベース レベルの監査ポリシーを定義する
 
@@ -125,6 +128,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 監査ログをイベント ハブに書き込む場合:
 
 - イベント ハブの監査ログ データを使用するには、イベントを処理し、そのイベントをターゲットに書き込むようにストリームを設定する必要があります。 詳細については、「[Azure Event Hubs のドキュメント](https://docs.microsoft.com/azure/event-hubs/)」を参照してください。
+- イベント ハブの監査ログは [Apache Avro](http://avro.apache.org/) イベントの本体でキャプチャされ、UTF-8 エンコードの JSON 形式を使用して格納されます。 監査ログを読み取るために、[Avro Tools](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) またはこの形式を処理する同様のツールを使用できます。
 
 監査ログを Azure ストレージ アカウントに書き込むことを選択すると、複数の方法でログを表示できるようになります。
 
@@ -154,7 +158,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 
     4. 統合されたファイルを SSMS で開くと、ファイルを表示および分析し、XEL または CSV ファイルまたはテーブルにエクスポートすることができます。
 
-- Power BI を使用します。 Power BI で監査ログのデータを表示および分析できます。 ダウンロード可能なテンプレートの詳細、およびテンプレートへのにアクセスについては、[Power BI での監査ログ データの分析](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/)に関するページをご覧ください。
+- Power BI を使用します。 Power BI で監査ログのデータを表示および分析できます。 ダウンロード可能なテンプレートの詳細と、テンプレートへのアクセスについては、[Power BI での監査ログ データの分析](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/)に関するページを参照してください。
 - ポータル経由で、あるいは [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを利用して Azure Storage BLOB コンテナーからログ ファイルをダウンロードします。
   - ログ ファイルをローカルでダウンロードした後に、ファイルをダブルクリックし、SSMS でログを開き、表示し、分析します。
   - また、Azure ストレージ エクスプ ローラーを使用して、同時に複数のファイルをダウンロードすることもできます。 それには、特定のサブフォルダーを右クリックし、**[名前を付けて保存]** を選択してローカル フォルダーに保存します。

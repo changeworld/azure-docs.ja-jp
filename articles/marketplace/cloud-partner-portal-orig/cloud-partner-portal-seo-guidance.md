@@ -1,6 +1,6 @@
 ---
-title: Azure Marketplace SEO パブリッシャー ガイド | Microsoft Docs
-description: 検索エンジンの最適化 (SEO) を最大化するためのガイダンスを提供します。
+title: Azure Marketplace SEO Publisher Guide | Microsoft Docs
+description: Provides guidance on maximizing search engine optimization (SEO).
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: v-miclar
@@ -14,36 +14,36 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b8ca5fc5348818a7d0f1075557d4fe5c7e3bef44
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cacc7c0b269e8006903961049caf3cd7e3bee449
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807826"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834338"
 ---
-<a name="azure-marketplace-seo-publisher-guide"></a>Azure Marketplace SEO パブリッシャー ガイド
+<a name="azure-marketplace-seo-publisher-guide"></a>Azure Marketplace SEO Publisher Guide
 =======================================
 
-### <a name="general-explanation-of-algorithm"></a>アルゴリズムの一般的な説明
+### <a name="general-explanation-of-algorithm"></a>General explanation of algorithm
 
-マーケットプレースでは、サイトの検索機能を強化するための Azure Search が使用されます。 アルゴリズムは、用語の出現頻度/逆文書頻度 ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)) に基づきます。 標準の [Lucene アナライザー](http://lucene.apache.org/core/)が使用されます。
+The marketplace utilizes Azure Search for powering the site's search capabilities. The algorithm is based on term frequency–inverse document frequency ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf)). The standard [Lucene Analyzer](https://lucene.apache.org/core/) is used.
 
-一般的に、すべてのテキスト フィールド、カテゴリ、および業界が適合性の重み付けに加味されます。 他のアプリではあまり使用されないももの、お客様のアプリで頻繁に使用される特殊な用語は、検索でより高い一致スコアが付けられます。 "VM" などの用語が含まれる場合、あまり効果が上がらないかもしれませんが、"Azure search" のような用語は大きな効果を発揮します。
-以下に、考慮すべき重要なフィールドを示します。
+In general, all text fields, categories, and industries and included into the weightage of the relevance. Specialized terms that are used infrequently by apps but frequently in your app will generate a higher match score with search. So including terms like "VM" would offer little benefit whereas "Azure search" would be much more specialized.
+Below are the most relevant fields to consider.
 
  
-|  フィールド                   | 重要度 | ガイダンス                                                                                            |
+|  Field                   | Importance | Guidance                                                                                            |
 |  --------------------    | ----------                   | ---------------                                                                   |
-| プラン名               |  高      | 検索クエリが完全に一致する、または完全一致に近い場合に、高いランクが付けられます。                       |
-| 発行元の名前           |  高      | 検索クエリが完全に一致する、または完全一致に近い場合に、高いランクが付けられます。                       |
-| 簡単な説明        |  Medium    | アプリと発行元の名前を指定するとほぼ確実に高いランクが付けられる点を考慮すると、それでは最適な結果が得られない可能性があります。 このような場合、簡単な説明が重要になります。 テキストを簡潔にし、的を射たものとします。 最適な結果を得るために、キーワードや予想される検索語句を含めます。  たとえば、"This is the best Retail POS built fully on top of Dynamics 365"\(これは Dynamics 365 上に完全に構築された最適な Retail POS です\) とすると、"Retail POS (point of sale) for Dynamics 365"\(Dynamics 365 向けの Retail POS (Point of Sale)\) とした場合よりも効果が下がります。  | 
-| 長い説明         |  低       | 説明では、さらに詳しい内容を示すことができます。 最も効果的な説明は、妥当な長さで、キーワードが使用されているものです。  キーワードを使用した的を射た説明は、長い、冗長なテキストよりも効果が上がります。 "IoT" などの重要な用語を説明で使用するようにしてください。  |
-| 製品カテゴリ       | Medium     |  製品カテゴリは、発行元の選択と Microsoft の組み合わせによって決定されます。 ユーザーが適切なカテゴリで、アプリを簡単に見つけることができるように、これらのカテゴリを適切に選択します。 |
+| Offer Name               |  High      | Exact or close to a complete match with search query will yield high ranking.                       |
+| Publisher Name           |  High      | Exact or close to a complete match with search query will yield high ranking.                       |
+| Short Description        |  Medium    | Given naming of apps and publisher names will almost guarantee a high ranking, it may not be the most relevant. In this case,a short description is critical. Keep the text concise and to the point. Keywords and expected search terms should be included for best result.  For example "This is the best Retail POS built fully on top of Dynamics 365" is less effective than "Retail POS (point of sale) for Dynamics 365".  | 
+| Long Description         |  Low       | Description offers a way to go into more depth. The most effective descriptions are of reasonable length and keywords are used.  A to-the-point descriptions using keywords will benefit more than long, lengthy text. Make sure key terms, such as "IoT", are present in description.  |
+| Product Categories       | Medium     |  Product categories are determined by a combination of publisher choices and Microsoft. Select these categories appropriately so that users can easily find the apps in the correct category. |
 |  |  |  |
 
 
-### <a name="other-tips"></a>その他のヒント
+### <a name="other-tips"></a>Other Tips
 
--   検索の提案は、ユーザー アクティビティの負荷を高めます。 アプリの名前/発行元に対する一致を優先します。 簡単な説明は、検索語句が発行元/アプリの名前に完全に一致しない場合に重要なフィールドになります。
--   ダウンロード用の文書には、検索の重み付けは含めません。
--   アプリの実際の購入と使用状況も、検索順位に影響します。 たとえば、同等の 2 つのアプリがあり、一方がはるかに多くのユーザーを持つ場合は、そちらにより高いランクが付けられます。
+-   Search suggests gets heavy user activity. It prioritizes matches against app name/publisher. Short description becomes the key field for when the search term is not an exact match with publisher/app name.
+-   Documents for download are not included in search weightage.
+-   Your apps actual acquisition and usage will impact search ranking as well. For example, two equivalent apps where one has vastly more users will get a higher ranking.

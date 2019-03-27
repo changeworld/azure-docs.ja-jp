@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 12/18/2018
 ms.topic: conceptual
-ms.openlocfilehash: 54e21e0b5f522b226ec1abb71a1c5ab5b245df05
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3c2bca45a7927689992cf44fb70199e246641760
+ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635529"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54445424"
 ---
 # <a name="understand-the-device-model-schema"></a>デバイス モデル スキーマについて
 
@@ -22,7 +22,7 @@ ms.locfileid: "53635529"
 この記事では、シミュレートされたデバイスの機能と動作を指定するデバイス モデル スキーマについて説明します。 デバイス モデルは JSON ファイルに格納されます。
 
 > [!NOTE]
-> このデバイス モデル スキーマは、デバイス シミュレーション サービスでホストされているシミュレートされたデバイスに対してのみ有効です。 物理デバイスを作成する場合は、「[デバイスをリモート監視ソリューション アクセラレータに接続する](iot-accelerators-connecting-devices.md)」を参照してください。
+> このデバイス モデル スキーマは、デバイス シミュレーション サービスでホストされているシミュレートされたデバイスに対してのみ有効です。 実際のデバイスを作成する場合は、「[デバイスをリモート監視ソリューション アクセラレータに接続する](iot-accelerators-connecting-devices.md)」を参照してください。
 
 次の記事は、現在の記事に関連しています。
 

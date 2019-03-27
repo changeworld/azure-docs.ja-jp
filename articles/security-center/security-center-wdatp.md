@@ -4,7 +4,7 @@ description: このドキュメントでは、Azure Security Center と Windows 
 services: security-center
 documentationcenter: na
 author: barclayn
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.service: security-center
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: barclayn
-ms.openlocfilehash: b73bf3e542801e58fbda6232eb063305785ce643
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ee5ed8871ea5c021ad8c87e35f45e42ad641a324
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536272"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124175"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender Advanced Threat Protection と Azure Security Center
 
@@ -64,11 +64,11 @@ Standard サービス レベルのサブスクリプションのサーバーの�
 1. **[オンボード]** ブレードで、データを保存するワークスペースを選択または作成します。 <br>
 2. すべてのワークスペースが表示されない場合は、アクセス許可が不足している可能性があります。ワークスペースが Azure Security Standard レベルに設定されていることを確認してください。 詳細については、「[Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化](security-center-pricing.md)」を参照してください。
     
-3.  **[サーバーの追加]** を選択すると、Microsoft Monitoring Agent をインストールする手順が表示されます。 
+3. **[サーバーの追加]** を選択すると、Microsoft Monitoring Agent をインストールする手順が表示されます。 
 
-4.  オンボード後は、**[計算とアプリ]** でマシンを監視できます。
+4. オンボード後は、**[計算とアプリ]** でマシンを監視できます。
 
-  ![コンピューターをオンボードする](media/security-center-wdatp/onboard-computers.png)
+   ![コンピューターをオンボードする](media/security-center-wdatp/onboard-computers.png)
 
 
 ## <a name="enable-windows-defender-atp-integration"></a>Windows Defender ATP の統合を有効にする

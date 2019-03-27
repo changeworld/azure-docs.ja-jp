@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: 81ffd384602218aa3b08441ae9f6fe2262e7e542
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 35159a1630c7f1268119cd55cc6e0ac99dfd7b5f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041426"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119209"
 ---
-# <a name="build-a-flask-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API を使用して Flask アプリを構築する
+# <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>クイック スタート:Azure Cosmos DB の MongoDB 用 API を使用して Python アプリをビルドする
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -37,10 +37,10 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 - Visual Studio Code をまだインストールしていない場合は、お使いのプラットフォーム (Windows、Mac、Linux) 用の [VS Code](https://code.visualstudio.com/Download) をすばやくインストールできます。
 
 - 一般的な Python 拡張機能のいずれかをインストールして Python 言語サポートを必ず追加してください。
-    1. 拡張機能を選びます。
-    2. 「`ext install`」と入力して、拡張機能をコマンド パレット `Ctrl+Shift+P` にインストールします。
+  1. 拡張機能を選びます。
+  2. 「`ext install`」と入力して、拡張機能をコマンド パレット `Ctrl+Shift+P` にインストールします。
 
-    このドキュメントの例では、Don Jayamanne の人気のある機能豊富な [Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python)を使用します。
+     このドキュメントの例では、Don Jayamanne の人気のある機能豊富な [Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=donjayamanne.python)を使用します。
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 

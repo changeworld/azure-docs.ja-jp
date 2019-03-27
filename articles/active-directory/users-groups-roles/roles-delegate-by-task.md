@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory でタスク別の最小特権ロールを委任する | Microsoft Docs
+title: 管理タスク別の最小特権ロールを委任する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory で ID タスク用に委任するロール
 services: active-directory
 documentationcenter: ''
@@ -8,20 +8,21 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: b4704e9f078b248ef1835babb3b63c378b011c4e
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6ea25510596903e4020e8237bc5bd389c584ead9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516589"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268433"
 ---
-# <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Azure Active Directory における ID タスク別の管理者ロール
+# <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
 この記事では、Azure Active Directory (Azure AD) で最小特権ロールを割り当てることによってユーザーの管理者アクセス許可を制限するうえで必要な情報を取り上げます。 機能領域ごとの管理者タスクと、各タスクを実行するために必要な最小特権ロールのほか、そのタスクを実行できる非グローバル管理者ロールも別途記載しています。
 
@@ -34,7 +35,7 @@ ms.locfileid: "51516589"
 アプリケーションの登録を作成する (すべてのユーザーについて権限が無効になっている場合) | アプリケーション開発者 | クラウド アプリケーション管理者、アプリケーション管理者
 コネクタ グループを作成する | アプリケーション管理者 | 
 コネクタ グループを削除する | アプリケーション管理者 | 
-アプリケーション プロキシを無効にする | アプリケーション管理者 | 
+アプリケーション プロキシの無効化 | アプリケーション管理者 | 
 コネクタ サービスをダウンロードする | アプリケーション管理者 | 
 すべての構成を読み取る | アプリケーション管理者 | 
 
@@ -147,7 +148,7 @@ Microsoft Graph または Azure AD Graph に対するアプリケーションの
 グループを作成する | ユーザー アカウント管理者 | 
 グループまたはアプリのアクセス レビューを作成、更新、削除する | ユーザー アカウント管理者 | 
 グループの有効期限を管理する | ユーザー アカウント管理者 | 
-グループ設定の管理 | ユーザー アカウント管理者 | 
+グループ設定の管理 | グローバル管理者 | 
 すべての構成を読み取る (非表示のメンバーシップを除く) | ディレクトリ閲覧者 | 既定のユーザー ロール ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 非表示のメンバーシップを読み取る | グループ メンバー | グループ所有者、パスワード管理者、Exchange 管理者、SharePoint 管理者、Teams 管理者、ユーザー アカウント管理者
 非表示のメンバーシップを含むグループのメンバーシップを読み取る | ヘルプデスク管理者 | ユーザー アカウント管理者、Teams 管理者
@@ -201,8 +202,8 @@ MFA ポリシーを構成し、有効または無効にする| セキュリテ�
 MFA を無効にする | グローバル管理者 | 
 MFA の有効化 | グローバル管理者 | 
 MFA サービスの設定を管理する | グローバル管理者 | 
-選択したユーザーについて連絡方法の再指定を必須にする | グローバル管理者 | 
-記憶されているすべてのデバイスで多要素認証を復元する  | グローバル管理者 | 
+選択したユーザーについて連絡方法の再指定を必須にする | 認証管理者 | 
+記憶されているすべてのデバイスで多要素認証を復元する  | 認証管理者 | 
 
 ## <a name="mfa-server"></a>MFA サーバー
 

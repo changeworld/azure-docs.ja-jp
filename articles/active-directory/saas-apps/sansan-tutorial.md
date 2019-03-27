@@ -4,22 +4,23 @@ description: Azure Active Directory と Sansan の間でシングル サイン�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: f653a0f2-c44a-4670-b936-68c136b578ea
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e14f923b1e25f5fbc522cd39763ac53ddf37617
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8a4e640ba87adf54363611a708b1fec9b00b99e3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872256"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168225"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sansan"></a>チュートリアル:Azure Active Directory と Sansan の統合
 
@@ -146,11 +147,11 @@ Sansan で Azure AD のシングル サインオンを構成してテストす�
     >[!NOTE] 
     > Azure AD モジュールをインストールする必要があります (`Install-Module -Name AzureAD` コマンドを使用してください)。 NuGet モジュールまたは新しい Azure Active Directory V2 PowerShell モジュールをインストールするように求められたら「Y」と入力し、ENTER キーを押します。
 
-    d. `Connect-AzureAD` を実行してグローバル管理者ユーザー アカウントでサインインします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 `Connect-AzureAD` を実行してグローバル管理者ユーザー アカウントでサインインします。
 
     e. 次のスクリプトを使用して、アプリケーションの複数の URL を更新します。
 
-    ```poweshell
+    ```powershell
      Param(
     [Parameter(Mandatory=$true)][guid]$ServicePrincipalObjectId,
     [Parameter(Mandatory=$false)][string[]]$ReplyUrls,
@@ -230,7 +231,7 @@ Sansan で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-sansan-test-user"></a>Sansan のテスト ユーザーの作成
 

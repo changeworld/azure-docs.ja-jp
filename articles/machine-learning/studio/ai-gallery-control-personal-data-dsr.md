@@ -1,21 +1,22 @@
 ---
-title: Azure AI Gallery からデータを管理する - Azure Machine Learning Studio | Microsoft Docs
+title: Azure AI Gallery からデータを管理する
+titleSuffix: Azure Machine Learning Studio
 description: インターフェイスまたは AI Gallery Catalog API を使用して、Azure AI Gallery から製品内ユーザー データをエクスポートおよび削除することができます。 この記事では、その方法について説明します。
 services: machine-learning
-author: ericlicoding
-ms.custom: seodec18
-ms.author: amlstudiodocs
-ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.topic: conceptual
+author: xiaoharper
+ms.author: amlstudiodocs
+ms.custom: seodec18
 ms.date: 05/25/2018
-ms.openlocfilehash: 2fc2d8a21a4090a02822607eac1695ed192eac27
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.reviewer: jmartens, mldocs
+ms.openlocfilehash: 1b1583731f9b95bea7fe64efe628b05bb7b9a476
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53250248"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118035"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Azure AI Gallery からの製品内ユーザー データの表示と削除
 
@@ -44,7 +45,7 @@ Catalog の応答は JSON 形式で返されます。
 
 1.  [Azure AI Gallery](https://gallery.azure.ai/) にサインインします。
 2.  右上隅にあるプロファイル画像をクリックします。次に、アカウント名をクリックして、プロファイル ページを読み込みます。
-3.  アドレス バーの URL には、`authorId=` の後に英数字の ID が表示されます。 たとえば、次のような URL があるとします。`https://gallery.cortanaintelligence.com/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+3.  アドレス バーの URL には、`authorId=` の後に英数字の ID が表示されます。 たとえば、次のような URL があるとします。`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     この場合、作成者 ID は `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA` となります。
 

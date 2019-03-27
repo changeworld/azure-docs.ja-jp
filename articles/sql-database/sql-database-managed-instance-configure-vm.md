@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
-ms.date: 12/13/2018
-ms.openlocfilehash: 79dbaf98f953a9cb72a7fa7cf9facc2b17fad504
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.date: 02/18/2019
+ms.openlocfilehash: 640182b50492ed21cd604423fe1cef7301095941
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410066"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408801"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>クイック スタート: Azure SQL Database Managed Instance に接続するように Azure VM を構成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "53410066"
 
    | Setting| 推奨値 | Description |
    | ---------------- | ----------------- | ----------- | 
-   | **名前** | 有効な名前|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
+   | **Name** | 有効な名前|有効な名前については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
    | **アドレス範囲 (CIDR ブロック)** | 有効な範囲 | このクイック スタートでは既定値で問題ありません。|
    | **ネットワーク セキュリティ グループ** | なし | このクイック スタートでは既定値で問題ありません。|
    | **ルート テーブル** | なし | このクイック スタートでは既定値で問題ありません。|
@@ -97,7 +97,8 @@ SQL マネージド インスタンスはプライベート仮想ネットワー
 4. **[購入]** を選択して、ネットワークに Azure VM をデプロイします。
 5. **[通知]** アイコンを選択してデプロイの状態を表示します。
 
-Azure 仮想マシンが作成されるまで続行しないでください。 
+> [!IMPORTANT]
+> 仮想マシンが作成されてから約 15 分経過するまでは、作成後のスクリプトで SQL Server Management Studio をインストールするための時間を確保するために、次の処理に進まないでください。
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 

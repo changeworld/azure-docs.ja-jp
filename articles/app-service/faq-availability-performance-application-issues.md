@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2bb6237e53f945b645f1ee757a53ef67270e2416
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721565"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268381"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -43,7 +43,7 @@ CPU 使用量が多い一部のシナリオでは、アプリが実際により�
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>PowerShell を使用して App Service Web アプリを自動化するにはどうすればよいですか?
 
-PowerShell コマンドレットを使用すると、App Service Web アプリを管理および維持できます。 ブログの投稿「[Automate web apps hosted in Azure App Service by using PowerShell (PowerShell を使用して Azure App Service でホストされた Web アプリを自動化する)](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)」では、Azure Resource Manager ベースの PowerShell コマンドレットを使用して一般的なタスクを自動化する方法について説明しています。 このブログの投稿にはまた、さまざまな Web アプリ管理タスクのサンプル コードも含まれています。 すべての App Service Web アプリ コマンドレットの説明と構文については、「[AzureRM.Websites](https://docs.microsoft.com/powershell/module/azurerm.websites/?view=azurermps-4.0.0)」を参照してください。
+PowerShell コマンドレットを使用すると、App Service Web アプリを管理および維持できます。 ブログの投稿「[Automate web apps hosted in Azure App Service by using PowerShell (PowerShell を使用して Azure App Service でホストされた Web アプリを自動化する)](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/)」では、Azure Resource Manager ベースの PowerShell コマンドレットを使用して一般的なタスクを自動化する方法について説明しています。 このブログの投稿にはまた、さまざまな Web アプリ管理タスクのサンプル コードも含まれています。 すべての App Service Web アプリ コマンドレットの説明と構文については、「[Az.Websites](/powershell/module/az.websites)」を参照してください。
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Web アプリのイベント ログを表示するにはどうすればよいですか?
 
@@ -113,7 +113,7 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
 10. **Web.config** を選択します。
 11. system.webServer で、この構成を追加します (特定の URL をキャプチャする場合)。
 
-    ```
+    ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
     <remove path="*api*" />
@@ -129,7 +129,7 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
     </tracing>
     ```
 12. 低速なパフォーマンスの問題をトラブルシューティングするには、この構成を追加します (キャプチャ要求が 30 秒を超える場合)。
-    ```
+    ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
     <remove path="*" />

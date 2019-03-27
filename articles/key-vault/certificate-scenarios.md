@@ -3,8 +3,8 @@ title: Key Vault 証明書の概要
 description: 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
 services: key-vault
 documentationcenter: ''
-author: bryanla
-manager: mbaldwin
+author: msmbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: a788b958-3acb-4bb6-9c94-4776852aeea1
 ms.service: key-vault
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: bryanla
-ms.openlocfilehash: 1441e16e141bd33acfdfe4087f74afbc7b47bc77
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.author: mbaldwin
+ms.openlocfilehash: 8b56151ae56de44cbab3003743ce6df33ec89612
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118287"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075631"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -50,12 +50,12 @@ ms.locfileid: "54118287"
 
 **手順 3** - Contoso 管理者と証明書を所有する Contoso 従業員 (Key Vault ユーザー) は、CA に応じて、証明書を管理者から取得するか、CA のアカウントから直接取得できます。  
 
--   [証明書の発行者](/rest/api/keyvault/setcertificateissuer/setcertificateissuer)リソースを設定することで、キー コンテナーへの資格情報の追加操作を開始します。 証明書の発行者は、Azure Key Vault (KV) で CertificateIssuer リソースとして表示されるエンティティです。 これは、KV 証明書のソースに関する情報 (発行者名、プロバイダー、資格情報、その他の管理ための詳細情報) の提供に使用されます。
-    -   例: MyDigiCertIssuer  
-        -   プロバイダー  
-        -   資格情報 - CA アカウント資格情報。 各 CA が固有の特定のデータを持ちます。  
+- [証明書の発行者](/rest/api/keyvault/setcertificateissuer/setcertificateissuer)リソースを設定することで、キー コンテナーへの資格情報の追加操作を開始します。 証明書の発行者は、Azure Key Vault (KV) で CertificateIssuer リソースとして表示されるエンティティです。 これは、KV 証明書のソースに関する情報 (発行者名、プロバイダー、資格情報、その他の管理ための詳細情報) の提供に使用されます。
+  - 例: MyDigiCertIssuer  
+    -   プロバイダー  
+    -   資格情報 - CA アカウント資格情報。 各 CA が固有の特定のデータを持ちます。  
 
-     CA プロバイダーでのアカウントの作成について詳しくは、[Key Vault のブログ](https://aka.ms/kvcertsblog)で関連する投稿をご覧ください。  
+    CA プロバイダーでのアカウントの作成について詳しくは、[Key Vault のブログ](https://aka.ms/kvcertsblog)で関連する投稿をご覧ください。  
 
 **手順 3.1** - 通知用の[証明書連絡先](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts)を設定します。 これは、Key Vault ユーザーの連絡先です。 Key Vault はこの手順を適用しません。  
 

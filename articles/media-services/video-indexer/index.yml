@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c15eba9db8e50cc738d8f0450e5ba543735df6e6
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 7372c3010f31a43dc91a33de08f059a5a60d5ba4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290855"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55988003"
 documentType: LandingData
 title: Video Indexer のドキュメント
 metadata:
@@ -18,7 +18,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11-19-2018
+  ms.date: 02/10/2019
   ms.author: juliako
 abstract:
   description: Video Indexer には、ビデオから分析情報を簡単に抽出するためのメディア AI テクノロジが組み込まれています。

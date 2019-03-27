@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: cecf7f7fb79b6d7ebeed051b018a1e18375d68b2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6eb08af9cdd19bc83d44d29874f6ac58b41ed8c8
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045400"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302042"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts"></a>Durable Functions のパターンおよび技術的概念
 

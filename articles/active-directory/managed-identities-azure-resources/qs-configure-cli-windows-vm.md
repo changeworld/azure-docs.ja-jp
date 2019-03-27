@@ -3,23 +3,24 @@ title: Azure CLI を使用して Azure VM 上でシステム割り当てマネ�
 description: Azure CLI を使用して、Azure VM 上にシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成する順を追った説明。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/10/2018
-ms.author: daveba
-ms.openlocfilehash: b6d4bcd609fd57349067a40584a86af14e7807af
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.author: priyamo
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4782afa71919a3545bd023f33f873969c86b6cc6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51578605"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208352"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Azure CLI を使用して Azure VM 上に Azure リソースのマネージド ID を構成する
 
@@ -82,7 +83,7 @@ VM でシステム割り当てマネージド ID を有効にするには、お�
    az login
    ```
 
-2. [az vm identity assign](/cli/azure/vm/identity/#az-vm-identity-assign) と `identity assign` コマンドを使用して、既存の VM に対するシステム割り当て ID を有効にします。
+2. [az vm identity assign](/cli/azure/vm/identity/) と `identity assign` コマンドを使用して、既存の VM に対するシステム割り当て ID を有効にします。
 
    ```azurecli-interactive
    az vm identity assign -g myResourceGroup -n myVm
@@ -107,7 +108,7 @@ az vm update -n myVM -g myResourceGroup --set identity.type='UserAssigned'
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Azure リソースのマネージド ID VM 拡張機能 (2019 年 1 月に非推奨になる予定) を削除するには、[az vm extension delete](https://docs.microsoft.com/cli/azure/vm/#assign-identity) で、(VM の種類に応じて) `-n ManagedIdentityExtensionForWindows` または `-n ManagedIdentityExtensionForLinux` スイッチを使用します。
+Azure リソースのマネージド ID VM 拡張機能 (2019 年 1 月に非推奨になる予定) を削除するには、[az vm extension delete](https://docs.microsoft.com/cli/azure/vm/) で、(VM の種類に応じて) `-n ManagedIdentityExtensionForWindows` または `-n ManagedIdentityExtensionForLinux` スイッチを使用します。
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -186,7 +187,7 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
    }
    ```
 
-2. [az vm identity assign](/cli/azure/vm#az-vm-identity-assign) を使用して、ユーザー割り当て ID を VM に割り当てます。 `<RESOURCE GROUP>` と `<VM NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY NAME>` は、前の手順で作成されたユーザー割り当てマネージド ID のリソース `name` プロパティです。
+2. [az vm identity assign](/cli/azure/vm) を使用して、ユーザー割り当て ID を VM に割り当てます。 `<RESOURCE GROUP>` と `<VM NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY NAME>` は、前の手順で作成されたユーザー割り当てマネージド ID のリソース `name` プロパティです。
 
     ```azurecli-interactive
     az vm identity assign -g <RESOURCE GROUP> -n <VM NAME> --identities <USER ASSIGNED IDENTITY>

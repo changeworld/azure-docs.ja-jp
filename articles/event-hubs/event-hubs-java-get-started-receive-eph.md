@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e29cf43f490bf5e8bac5e5c36b16476f93d80bfa
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0fc9b8b6a8bcd62aafda7c04697ab8b9c096b17e
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081963"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55296581"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs からイベントを受信する
 
@@ -45,7 +45,7 @@ EventProcessorHost を使用するには、[Azure ストレージ アカウン�
 1. [Azure Portal][Azure portal] にログインし、画面左側の **[+ リソースの作成]** をクリックします。
 2. **[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。 **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 残りのフィールドを完了し、目的の地域を選択し、**[作成]** をクリックします。
    
-    ![[ストレージ アカウントの作成]](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![ストレージ アカウントの作成](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
 
 3. 新しく作成したストレージ アカウントをクリックし、**[アクセス キー]** をクリックします。
    
@@ -55,18 +55,18 @@ EventProcessorHost を使用するには、[Azure ストレージ アカウン�
 
 ### <a name="create-a-java-project-using-the-eventprocessor-host"></a>EventProcessor ホストを使用した Java プロジェクトの作成
 
-Event Hubs の Java クライアント ライブラリは、[Maven Central Repository][Maven Package] の Maven プロジェクトで利用でき、Maven プロジェクト ファイル内の以下の依存関係宣言を使用して参照できます。 アーティファクト azure-eventhubs-eph の現在のバージョンは 2.0.1 で、アーティファクト azure-eventhubs の現在のバージョンは 1.0.2 です。    
+Event Hubs の Java クライアント ライブラリは、 [Maven セントラル リポジトリ][Maven Package]の Maven プロジェクトで利用でき、Maven プロジェクト ファイル内の以下の依存関係宣言を使用して参照できます。 
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>1.0.2</version>
+    <version>2.2.0</version>
 </dependency>
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs-eph</artifactId>
-    <version>2.0.1</version>
+    <version>2.4.0</version>
 </dependency>
 ```
 

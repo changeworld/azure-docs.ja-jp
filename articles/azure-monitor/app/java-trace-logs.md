@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: e1575afde326875558cea437de775515b8606f01
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: d8344177fc5895451cf876f5aa581baa1fed52e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53981911"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001861"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights を使用した Java トレース ログの探索
 トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
@@ -158,7 +158,7 @@ Application Insights のアペンダーは、上記のコード サンプルに�
 
 ロガー経由で送信された例外は、例外のテレメトリとしてポータルに表示されます。
 
-![Application Insights ポータルで [検索] を開きます](./media/java-trace-logs/10-diagnostics.png)
+![Application Insights ポータルで [検索] を開きます](./media/java-trace-logs/01-diagnostics.png)
 
 ## <a name="next-steps"></a>次の手順
 [診断検索][diagnostic]

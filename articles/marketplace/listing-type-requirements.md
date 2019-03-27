@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: c02bc75a978325f8cb0dc8733fb8d296e8710975
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f88c7b9350d104241524284950865e1f2ca6f559
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264684"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729408"
 ---
 # <a name="requirements-by-listing-type"></a>登録リストの要件  
 技術要件とマーケティング コンテンツ要件は、ネットショップ、オファーの種類、登録リストの種類によって異なります。 次の仕様を再確認して、要件を満たしているか確認してください。  
@@ -64,10 +64,10 @@ ms.locfileid: "54264684"
 
 | プランの種類 | ネットショップ | 詳細 |  
 |:---        |:---        |:---     |  
-| コンサルティング サービス | AppSource | [要件:AppSource:リスト:コンサルティング サービス](#requirements-appsource-list-consulting-services) |  
-| コンサルティング サービス | Azure Marketplace | [要件:Azure Marketplace:リスト:コンサルティング サービス](#requirements-azure-marketplace-list-consulting-services) |  
+| コンサルティング サービス | AppSource | 要件:AppSource:リスト:コンサルティング サービス |  
+| コンサルティング サービス | Azure Marketplace | 要件:Azure Marketplace:リスト:コンサルティング サービス |  
 | 連絡する | AppSource | [](#) |  
-| 連絡する | Azure Marketplace | [要件:AppSource:リスト:連絡する](#requirements-azure-marketplace-list-contact-me) |  
+| 連絡する | Azure Marketplace | 要件:AppSource:リスト:連絡する |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>要件:AppSource:リスト:コンサルティング サービス  
 
@@ -85,17 +85,17 @@ ms.locfileid: "54264684"
 
 <!-- #### Requirements: Azure Marketplace: List: Contact Me -->
 
----   
+---
 
 ### <a name="trial"></a>試用版  
 
 | プランの種類 | ネットショップ | 詳細 |  
 |:---        |:---        |:---     |  
-| 無料/SaaS 試用版 | AppSource | [登録リストの種類の要件:試用版](#listing-type-requirements-trial) |  
-| 無料/SaaS 試用版 | Azure Marketplace | [要件:Azure Marketplace:試用版:無料試用版/SaaS 試用版](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
-| 対話型デモ | AppSource | [登録リストの種類の要件:試用版](#listing-type-requirements-trial) |  
+| 無料/SaaS 試用版 | AppSource | 登録リストの種類の要件:試用版 |  
+| 無料/SaaS 試用版 | Azure Marketplace | 要件:Azure Marketplace:試用版:無料試用版/SaaS 試用版 |  
+| 対話型デモ | AppSource | 登録リストの種類の要件:試用版 |  
 | 対話型デモ | Azure Marketplace | [要件:Azure Marketplace:試用版:対話型デモ](#requirements-azure-marketplace-trial-interactive-demo) |  
-| 体験版 | AppSource | [登録リストの種類の要件:試用版](#listing-type-requirements-trial) |  
+| 体験版 | AppSource | 登録リストの種類の要件:試用版 |  
 | 体験版 | Azure Marketplace | [要件:Azure Marketplace:試用版:体験版](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>要件:Azure Marketplace:試用版  
@@ -133,8 +133,8 @@ ms.locfileid: "54264684"
 
 | プランの種類 | ネットショップ | 詳細 |   
 |:---        |:---        | :--- |  
-| Azure アプリ:マネージド アプリ | Azure Marketplace | [要件:Azure Marketplace:トランザクション:Azure アプリ:マネージド アプリ](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
-| Azure アプリ:ソリューション テンプレート | Azure Marketplace | [要件:Azure Marketplace:トランザクション:Azure アプリ:ソリューション テンプレート](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Azure アプリ:マネージド アプリ | Azure Marketplace | 要件:Azure Marketplace:トランザクション:Azure アプリ:マネージド アプリ |  
+| Azure アプリ:ソリューション テンプレート | Azure Marketplace | 要件:Azure Marketplace:トランザクション:Azure アプリ:ソリューション テンプレート |  
 | Containers | Azure Marketplace | [要件:Azure Marketplace:トランザクション:コンテナー](#requirements-azure-marketplace-transact-container) |  
 | SaaS アプリ  | Azure Marketplace | [要件:Azure Marketplace:トランザクション:Saas アプリ](#requirements-azure-marketplace-transact-saas-app) |  
 | 仮想マシン | Azure Marketplace | [要件:Azure Marketplace:トランザクション:仮想マシン](#requirements-azure-marketplace-transact-virtual-machine) |  

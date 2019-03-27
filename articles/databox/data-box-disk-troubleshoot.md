@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 02/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 8e75aa31941fe7368ef56f344db14d9b376e6238
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 24af2150438d3db13323aaecdfd89302b8152fa9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191702"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879124"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Azure Data Box Disk の問題のトラブルシューティング
 
@@ -96,12 +96,11 @@ ms.locfileid: "54191702"
 
 クリーンでないファイル システムが原因である可能性があります。 
 
-- ドライブを読み取りとして再マウントしても、Data Box Disks は機能しません。 このシナリオは、dislocker によって暗号化解除されたドライブではサポートされていません。 
-- 読み取り/書き込みとして再マウントしても、機能しません。 次のコマンドを使用して、デバイスを正常に再マウントできた可能性があります。 
+Data Box Disk でドライブを読み取り/書き込み用として再マウントできません。 このシナリオは、dislocker によって暗号化解除されたドライブではサポートされていません。 次のコマンドを使用して、デバイスを正常に再マウントできた可能性があります。 
 
-    `# mount -o remount, rw / mnt / DataBoxDisk / mountVol1 ß`
+    `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
 
-   ただし、再マウントが成功しても、データは保持されません。
+ただし、再マウントが成功しても、データは保持されません。
 
 **解決策**
 
@@ -125,11 +124,11 @@ ms.locfileid: "54191702"
  
 その場合は、「[ドライブが読み取り専用としてマウントされる](#issue-drive-getting-mounted-as-read-only)」の解決方法を参照してください。
 
-そうでない場合は、システムから[診断ログをダウンロード](#download-diagnostic-logs)して、[Microsoft サポートにお問い合わせください](data-box-disk-contact-microsoft-support.md)。
+上記の方法が該当しない場合は、Data Box Disk ロック解除ツールが入っているフォルダーからログをコピーし、[Microsoft サポートにお問い合わせください](data-box-disk-contact-microsoft-support.md)。
 
 ## <a name="deployment-issues-for-windows"></a>Windows でのデプロイの問題
 
-このセクションでは、データ コピーに Linux クライアントを使用して Data Box Disk をデプロイする際に直面するいくつかの重要な問題について詳しく説明します
+このセクションでは、データ コピーに Windows クライアントを使用して Data Box Disk をデプロイする際に直面するいくつかの重要な問題について詳しく説明します
 
 ### <a name="issue-could-not-unlock-drive-from-bitlocker"></a>問題: BitLocker のドライブのロックを解除できませんでした
  
@@ -139,7 +138,7 @@ BitLocker ダイアログでパスワードを使用し、BitLocker のドライ
 
 **解決策**
 
-Data Box Disks のロックを解除するには、Data Box Disk ロック解除ツールを使用し、Azure portal でパスワードを指定する必要があります。
+Data Box Disks のロックを解除するには、Data Box Disk ロック解除ツールを使用し、Azure portal でパスワードを指定する必要があります。 詳細については、「[チュートリアル: Azure Data Box Disk の開梱、接続、ロック解除](data-box-disk-deploy-set-up.md#connect-to-disks-and-get-the-passkey)」をご覧ください。
  
 ### <a name="issue-could-not-unlock-or-verify-some-volumes-contact-microsoft-support"></a>問題: いくつかのボリュームのロックの解除または確認を行えませんでした。 Microsoft サポートにお問い合わせください。
  
@@ -155,7 +154,7 @@ Data Box Disks のロックを解除するには、Data Box Disk ロック解除
 
 [Windows PowerShell v 5.0](https://www.microsoft.com/download/details.aspx?id=54616) をインストールして、操作を再試行することができます。
  
-それでもボリュームのロックを解除できない場合は、[Microsoft サポートにお問い合わせください](data-box-disk-contact-microsoft-support.md)。
+この方法を試してもロックを解除できない場合は、Data Box Disk ロック解除ツールが入っているフォルダーからログをコピーし、[Microsoft サポートにお問い合わせください](data-box-disk-contact-microsoft-support.md)。
 
 ## <a name="next-steps"></a>次の手順
 

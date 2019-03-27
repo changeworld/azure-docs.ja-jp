@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/5/2018
 ms.author: raynew
-ms.openlocfilehash: ff1aaadd77df9cb7678ad71141d15c96f2f12dc0
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 006d47d397bab0869ae8a75d6c17d239e71608c3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788397"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310577"
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルで Windows Server または Windows クライアントを Azure にバックアップする
 この記事では、Resource Manager デプロイ モデルを使用して、Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする方法について説明します。
@@ -48,9 +48,9 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 
 6. **[リソース グループ]** セクションで、次のことを行います。
 
-    * 新しいリソース グループを作成する場合は、**[新規作成]** を選択します。
+    * **[既存のものを選択]**   ドロップダウン メニューをクリックして、使用可能なリソース グループの一覧を表示します。
     または
-    * 使用可能なリソース グループの一覧を表示するには、**[既存のものを使用]** を選択し、ドロップダウン メニューをクリックします。
+    * 新しいリソース グループを作成する場合は、**[新規作成]** を選択します。
 
   リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
@@ -70,21 +70,21 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 
 1. **[Recovery Services コンテナー]** ブレードで、新しいコンテナーをクリックします。
 
-    ![Recovery Services コンテナーの一覧から新しいコンテナーを選択する](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
+    ![Recovery Services コンテナーの一覧から新しいコンテナーを選択する](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault.png)
 
-    コンテナーを選択すると、**[Recovery Services コンテナー]** ブレードが縮小され、"*上部にコンテナー名が表示された*" 設定ブレードとコンテナーの詳細ブレードが開きます。
+    コンテナーを選択すると、[Recovery Services コンテナー] ブレードが縮小され、("*上部にコンテナー名が表示された*") **[概要]** ブレードとコンテナーの詳細ブレードが開きます。
 
-    ![新しいコンテナーのストレージ構成を表示する](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
+    ![新しいコンテナーのストレージ構成を表示する](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-overview.png)
 
-2. 新しいコンテナーの設定ブレードで、垂直スライドを使って下へスクロールして [管理] セクションに移動し、**[バックアップ インフラストラクチャ]** をクリックします。
+2. 新しいコンテナーの **[設定]** セクションで、**[プロパティ]** に移動します。
 
-  [バックアップ インフラストラクチャ] ブレードが開きます。
+  **[プロパティ]** ブレードが開きます。
 
-3. [バックアップ インフラストラクチャ] ブレードで、**[バックアップ構成]** をクリックして **[バックアップ構成]** ブレードを開きます。
+3. **[プロパティ]** ブレードで、**[バックアップ構成]** ブレードの **[更新]** をクリックします。 **[バックアップ構成]** ブレードが開きます。
 
-  ![新しいコンテナーのストレージ構成を設定する](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
+  ![新しいコンテナーのストレージ構成を設定する](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-4. コンテナーの適切なストレージ レプリケーション オプションを選択します。
+4. コンテナーに適切なストレージ レプリケーション オプションを選択し、**[保存]** をクリックします。
 
   ![ストレージ構成の選択](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
@@ -183,7 +183,7 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 
 ### <a name="to-create-a-backup-schedule"></a>バックアップ スケジュールを作成するには
 
-バックアップするマシンでバックアップのスケジュールを設定します。 Azure Backup では夏時間 (DST) が考慮されないため、バックアップ用に設定された時間は、ローカル コンピューターの時間と異なる可能性があることに注意してください。 
+バックアップするマシンでバックアップのスケジュールを設定します。 Azure Backup では夏時間 (DST) が考慮されないため、バックアップ用に設定された時間は、ローカル コンピューターの時間と異なる可能性があることに注意してください。
 1. Microsoft Azure Backup エージェントを開きます  エージェントは、コンピューターで **Microsoft Azure Backup**を検索すると見つかります。
 
     ![Launch the Azure Backup agent](./media/backup-configure-vault/snap-in-search.png)

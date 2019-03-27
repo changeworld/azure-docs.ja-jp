@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariagrigoriu
 ms.custom: seodec18
-ms.openlocfilehash: 3d1821ccc3f3bc16bffd8a19d3014b5ea4876768
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fc3749a9ebfbf0319a57b471b6fce9f62042ba27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715607"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849782"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service のベスト プラクティス
 この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)を使用するためのベスト プラクティスを概説します。 
@@ -51,8 +51,8 @@ Node.js と多数の送信 http 要求を処理する場合は、HTTP - Keep-Ali
 
 `http` または `https` パッケージの処理例を次に示します。
 
-```
-var request = https.request(options, function(response) {
+```javascript
+const request = https.request(options, function(response) {
     response.on('data', function() { /* do nothing */ });
 });
 ```

@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 2/7/2019
 ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 76bec0f0e924fe193519f47effb8dd45f6262697
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: files
+ms.openlocfilehash: c032961bf89ba470a38ebccfd846659b080f9fab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630327"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013225"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -132,6 +132,7 @@ CSV で結果を表示するには:
 - NTFS ファイル システムでフォーマットされたローカルに接続されたボリューム。
 
 ### <a name="file-system-features"></a>ファイル システムの機能
+
 | 機能 | サポートの状態 | メモ |
 |---------|----------------|-------|
 | アクセス制御リスト (ACL) | 完全にサポートされます | Windows ACL は、Azure File Sync に保持され、サーバー エンドポイント上の Windows Server によって適用されます。 クラウドでファイルに直接アクセスする場合、Azure Files は Windows ACL を (まだ) サポートしていません。 |
@@ -148,6 +149,7 @@ CSV で結果を表示するには:
 > NTFS ボリュームのみがサポートされます。 ReFS、FAT、FAT32 などのファイル システムはサポートされていません。
 
 ### <a name="files-skipped"></a>スキップされるファイル
+
 | ファイル/フォルダー | Note |
 |-|-|
 | Desktop.ini | システムに固有のファイル |
@@ -167,10 +169,14 @@ Windows Server フェールオーバー クラスタリングは、Azure ファ�
 > 同期が適切に機能するには、フェールオーバー クラスターのすべてのノードに Azure File Sync エージェントをインストールする必要があります。
 
 ### <a name="data-deduplication"></a>データ重複除去
-クラウドの階層化が有効ではないボリュームでは、Azure File Sync は、そのボリュームでの Windows Server のデータ重複除去の有効化をサポートします。 現時点では、クラウドの階層化が有効な Azure File Sync とデータ重複除去間の相互運用性はサポートされていません。
+**エージェント バージョン 5.0.2.0**   
+データ重複除去は、Windows Server 2016 および Windows Server 2019 でクラウドを使った階層化が有効になっているボリュームでサポートされます。 クラウドを使った階層化が有効なボリュームで重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。
+
+**Windows Server 2012 R2 またはそれよりも古いエージェント バージョン**  
+クラウドの階層化が有効ではないボリュームでは、Azure File Sync は、そのボリュームでの Windows Server のデータ重複除去の有効化をサポートします。
 
 ### <a name="distributed-file-system-dfs"></a>分散ファイル システム (DFS)
-[Azure File Sync エージェント 1.2](https://go.microsoft.com/fwlink/?linkid=864522) 以降の Azure File Sync は、DFS 名前空間 (DFS-N) および DFS レプリケーション (DFS-R) との相互運用をサポートします。
+Azure File Sync は、DFS 名前空間 (DFS-N) および DFS レプリケーション (DFS-R) との相互運用をサポートします。
 
 **DFS 名前空間 (DFS-N)**:Azure File Sync は DFS-N サーバーで完全にサポートされます。 1 つまたは複数の DFS-N メンバーに Azure File Sync をインストールして、サーバー エンドポイントとクラウド エンドポイントの間でデータを同期できます。 詳しくは、「[DFS 名前空間の概要](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)」をご覧ください。
  
@@ -206,6 +212,9 @@ Microsoft の社内ウイルス対策ソリューションである Windows Defe
 > [!Note]  
 > ベアメタル (BMR) 復元は予期しない結果が生じることがあるため、現在サポートされていません。
 
+> [!Note]  
+> VSS スナップショット ([以前のバージョン] タブを含む) は、クラウドの階層化が有効なボリュームでは現在サポートされていません。 クラウドの階層化が有効になっている場合、Azure ファイル共有のスナップショットを使用して、バックアップからファイルを復元します。
+
 ### <a name="encryption-solutions"></a>暗号化ソリューション
 暗号化ソリューションのサポートは、実装方法によって変わります。 Azure ファイル同期は次のソリューションと連携することが確認されています。
 
@@ -228,6 +237,7 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 |--------|---------------------|
 | オーストラリア東部 | ニュー サウス ウェールズ州 |
 | オーストラリア南東部 | ビクトリア州 |
+| ブラジル南部 | サンパウロ州 |
 | カナダ中部 | トロント |
 | カナダ東部 | ケベック シティ |
 | インド中部 | プネー |
@@ -235,6 +245,8 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 | 東アジア | 香港特別行政区 |
 | 米国東部 | バージニア州 |
 | 米国東部 2 | バージニア州 |
+| 東日本 | 東京、埼玉 |
+| 西日本 | 大阪 |
 | 米国中北部 | イリノイ州 |
 | 北ヨーロッパ | アイルランド |
 | 米国中南部 | テキサス |
@@ -249,6 +261,9 @@ Azure File Sync は、ストレージ同期サービスと同じリージョン�
 
 ### <a name="azure-disaster-recovery"></a>Azure ディザスター リカバリー
 Azure リージョンの損失を防ぐため、Azure File Sync には [geo 冗長ストレージの冗長性](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) オプションが統合されています。 GRS ストレージは、プライマリ リージョンのストレージ (通常、操作している) と、ペアのセカンダリ リージョンとの間でブロックの非同期レプリケーションを使用することで機能します。 Azure リージョンが一時的または永続的にオフラインになる障害が発生した場合、Microsoft はペアのリージョンにストレージをフェールオーバーします。 
+
+> [!Warning]  
+> Azure ファイル共有を GRS ストレージ アカウントのクラウド エンドポイントとして使用している場合は、ストレージ アカウントのフェールオーバーを開始しないでください。 それを行うと、同期の動作が停止し、新しく階層化されたファイルの場合は予期せずデータが失われる可能性があります。 Azure リージョンが失われた場合は、Azure File Sync との互換性のある方法でストレージ アカウントのフェールオーバーがトリガーされます。
 
 geo 冗長ストレージと Azure File Sync との間のフェールオーバーの統合をサポートするため、すべての Azure File Sync リージョンが、ストレージで使用されるセカンダリ リージョンと一致するセカンダリ リージョンとペアになります。 これらのペアは次のとおりです。
 
@@ -280,3 +295,4 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 * [Azure Files のデプロイの計画](storage-files-planning.md)
 * [Azure Files をデプロイする](storage-files-deployment-guide.md)
 * [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)
+* [Azure File Sync の監視](storage-sync-files-monitoring.md)

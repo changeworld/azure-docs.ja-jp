@@ -4,7 +4,7 @@ description: この記事は、Azure で運用可能なセキュリティに関�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 7c6d373fd294645605815d8a8d380259982d90e7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e2678eb7d75921f43a1e51b6a8cefc9925a9adc1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118185"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104603"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 Azure で運用可能なセキュリティとは、ユーザーが Azure 内のデータ、アプリケーション、その他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、[セキュリティ開発ライフサイクル (SDL)](https://www.microsoft.com/sdl)、[Microsoft セキュリティ レスポンス センター](https://www.microsoft.com/msrc?rtc=1) プログラム、サイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有の機能から得られた知識が組み込まれたフレームワークを基盤としています。
@@ -102,7 +102,7 @@ Azure の DDoS 回復性のサービスをビルドするためのベスト プ�
 アプリケーション自体を対象とするサービス拒否攻撃に対処するのに十分な回復力をアプリケーションに持たせることが、最も重要です。 Azure プラットフォームには、[セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)](https://www.microsoft.com/en-us/sdl) からセキュリティとプライバシーが組み込まれるようになっています。 SDL は、すべての開発段階でセキュリティに対処し、Azure がいっそう安全になるように継続的に更新されることを保証します。
 
 **ベスト プラクティス**: [水平方向にスケーリングする](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out)ようにアプリケーションを設計し、増加した負荷の需要を満たす (特に、DDoS 攻撃の場合)。 アプリケーションがサービスの 1 つのインスタンスに依存する場合は、単一障害点が発生します。 複数のインスタンスをプロビジョニングすると、システムの回復力と拡張性が高まります。  
-**詳細**: Azure App Service の場合は、複数のインスタンスを提供する [App Service プラン](../app-service/overview-hosting-plans.md)を選択してください。
+**詳細**: [Azure App Service](../app-service/app-service-value-prop-what-is.md) の場合は、複数のインスタンスを提供する [App Service プラン](../app-service/overview-hosting-plans.md)を選択してください。
 
 Azure Cloud Services の場合は、[複数インスタンス](../cloud-services/cloud-services-choose-me.md)を使用するように各ロールを構成してください。
 

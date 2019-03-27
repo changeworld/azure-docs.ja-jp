@@ -1,21 +1,21 @@
 ---
 title: 'チュートリアル: Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する'
-description: このチュートリアルでは、Azure portal を使用して Azure Firewall をデプロイおよび構成する方法を学習します。
+description: このチュートリアルでは、Azure PowerShell を使用して Azure Firewall をデプロイおよび構成する方法を学習します。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 12/14/2018
+ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: abbbec05dfb6d81a65941619a36b7f3afcdc1fba
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: cf3c691553f2bc7ae8f10345daee92a8380aba25
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435567"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815746"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>チュートリアル: Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
+# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
 オンプレミス ネットワークを Azure 仮想ネットワークに接続してハイブリッド ネットワークを作成する場合、ご利用の Azure ネットワーク リソースへのアクセスを制御する機能が、全体的なセキュリティ プランの中で重要な役割を果たします。
 
@@ -45,22 +45,24 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、PowerShell をローカルで実行する必要があります。 Azure PowerShell モジュール バージョン 6.12.0 以降がインストールされている必要があります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzureRmAccount` を実行して Azure との接続を作成します。
+このチュートリアルでは、PowerShell をローカルで実行する必要があります。 Azure PowerShell モジュール バージョン 6.12.0 以降がインストールされている必要があります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzureRmAccount` を実行して Azure との接続を作成します。
 
 このシナリオが正しく機能するために重要な要件が 3 つあります。
 
-- スポーク サブネット上のユーザー定義ルートが、Azure Firewall IP アドレスを既定のゲートウェイとして指すこと。 このルート テーブルでは BGP ルート伝達を**無効**にする必要があります。
-- ハブ ゲートウェイ サブネット上のユーザー定義ルートが、スポーク ネットワークへの次のホップとしてファイアウォール IP アドレスを指すこと。
-- Azure Firewall サブネット上にユーザー定義ルートは必要ありません。BGP からルートを学習するためです。
+- スポーク サブネット上のユーザー定義ルート (UDR) が、Azure Firewall IP アドレスを既定のゲートウェイとして指すこと。 このルート テーブルでは BGP ルート伝達を**無効**にする必要があります。
+- ハブ ゲートウェイ サブネット上の UDR が、スポーク ネットワークへの次のホップとしてファイアウォール IP アドレスを指すこと。
+- Azure Firewall サブネット上に UDR は必要ありません。BGP からルートを学習するためです。
 - VNet-Hub を VNet-Spoke にピアリングするときは **AllowGatewayTransit** を設定し、VNet-Spoke を VNet-Hub にピアリングするときは **UseRemoteGateways** を設定してください。
 
-これらのルートの作成方法については、このチュートリアルの「[ルートを作成する](#create-routes)」セクションをご覧ください。
+これらのルートの作成方法については、このチュートリアルの「ルートを作成する」セクションをご覧ください。
 
 >[!NOTE]
 >Azure Firewall には、インターネットへの直接接続が必要です。 ExpressRoute または Application Gateway 経由でのオンプレミスへの強制トンネリングを有効にしている場合は、UDR 0.0.0.0/0 を構成して **NextHopType** の値を **Internet** に設定し、それを **AzureFirewallSubnet** に割り当てる必要があります。
 
 >[!NOTE]
->直接ピアリングされた VNets 間のトラフィックは、UDE が既定のゲートウェイとして Azure Firewall をポイントしている場合でも、直接ルーティングされます。 このシナリオでサブネット間トラフィックをファイアウォールに送信するには、UDR に両方のサブネットのターゲットのサブネット ネットワーク プレフィックスを明示的に含める必要があります。
+>直接ピアリングされた VNets 間のトラフィックは、UDR が既定のゲートウェイとして Azure Firewall をポイントしている場合でも、直接ルーティングされます。 このシナリオでサブネット間トラフィックをファイアウォールに送信するには、UDR に両方のサブネットのターゲットのサブネット ネットワーク プレフィックスを明示的に含める必要があります。
+
+関連する Azure PowerShell リファレンス ドキュメントを確認するには、[Azure PowerShell リファレンス](https://docs.microsoft.com/powershell/module/az.network/new-azfirewall)を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: 191471d3538a9151827ee24a5887aa559383345b
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: f6f4858740288facb1e206eed3a8cd4ee1854daa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785666"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111448"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>拇印ではなく証明書共通名を使用する Service Fabric クラスターをデプロイする
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  証明書共通名を使用するクラスターにより、証明書の管理が大幅に単純化されます。 この記事では、Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するようにデプロイする方法について説明します。
  
 ## <a name="get-a-certificate"></a>証明書を取得する
-最初に、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から証明書を取得します。  証明書共通名は、クラスターのホスト名にする必要があります。  たとえば、"myclustername.southcentralus.cloudapp.azure.com" とします。  
+最初に、[証明機関 (CA)](https://wikipedia.org/wiki/Certificate_authority) から証明書を取得します。  証明書の共通名は、貴社が所有するカスタム ドメインを対象とし、かつドメイン レジストラーから購入したものであることが必要です。 たとえば、"azureservicefabricbestpractices.com" とします。Microsoft の従業員以外は、MS ドメインの証明書をプロビジョニングできません。そのため、ご利用の LB や Traffic Manager の DNS 名を証明書の共通名として使用することはできません。また、カスタム ドメインを Azure で解決可能にするためには、[Azure DNS ゾーン](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns)をプロビジョニングする必要があります。 また、ご利用のクラスターのカスタム ドメイン エイリアスをポータルに反映したい場合は、貴社が所有するカスタム ドメインをクラスターの "managementEndpoint" として宣言する必要があります。
 
 テスト目的の場合は、無料またはオープンな証明機関から CA の署名証明書を取得できます。
 
 > [!NOTE]
-> Azure Portal で、Service Fabric クラスターをデプロイするときに生成されるものを含め、自己署名証明書はサポートされません。
+> Azure Portal で、Service Fabric クラスターをデプロイするときに生成されるものを含め、自己署名証明書はサポートされません。 
 
 ## <a name="upload-the-certificate-to-a-key-vault"></a>キー コンテナーに証明書をアップロードする
 Azure 内で、Service Fabric クラスターは仮想マシン スケール セットにデプロイされます。  キー コンテナーに証明書をアップロードします。  クラスターがデプロイされると、クラスターが実行されている仮想マシン スケール セットに証明書がインストールされます。
@@ -158,32 +158,36 @@ Write-Host "Common Name              :"  $CommName
           },
     ```
 
-4.  **Microsoft.ServiceFabric/clusters** リソースで、API バージョンを "2018-02-01" に更新します。  次の例のように、**certificateCommonNames** の設定 (**commonNames** プロパティを含む) の追加と、**certificate** の設定 (thumbprint プロパティを含む) の削除も行います。
-    ```json
-    {
-        "apiVersion": "2018-02-01",
-        "type": "Microsoft.ServiceFabric/clusters",
-        "name": "[parameters('clusterName')]",
-        "location": "[parameters('clusterLocation')]",
-        "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
-        ],
-        "properties": {
-        "addonFeatures": [
-            "DnsService",
-            "RepairManager"
-        ],        
-        "certificateCommonNames": {
-            "commonNames": [
-            {
-                "certificateCommonName": "[parameters('certificateCommonName')]",
-                "certificateIssuerThumbprint": ""
-            }
-            ],
-            "x509StoreName": "[parameters('certificateStoreValue')]"
-        },
-        ...
-    ```
+4. **Microsoft.ServiceFabric/clusters** リソースで、API バージョンを "2018-02-01" に更新します。  次の例のように、**certificateCommonNames** の設定 (**commonNames** プロパティを含む) の追加と、**certificate** の設定 (thumbprint プロパティを含む) の削除も行います。
+   ```json
+   {
+       "apiVersion": "2018-02-01",
+       "type": "Microsoft.ServiceFabric/clusters",
+       "name": "[parameters('clusterName')]",
+       "location": "[parameters('clusterLocation')]",
+       "dependsOn": [
+       "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
+       ],
+       "properties": {
+       "addonFeatures": [
+           "DnsService",
+           "RepairManager"
+       ],        
+       "certificateCommonNames": {
+           "commonNames": [
+           {
+               "certificateCommonName": "[parameters('certificateCommonName')]",
+               "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprint')]"
+           }
+           ],
+           "x509StoreName": "[parameters('certificateStoreValue')]"
+       },
+       ...
+   ```
+   > [!NOTE]
+   > 'certificateIssuerThumbprint' フィールドには、想定される証明書の発行者を、特定のサブジェクトの共通名を使用して指定できます。 このフィールドでは、SHA1 サムプリントのコンマ区切りの列挙を使用できます。 これは、証明書の検証の強化であることに注意してください。発行者が指定されていないか空の場合でも、証明書チェーンの構築が可能であり、検証者によって信頼されているルートに最終的に到達すれば、証明書は認証用に受け入れられます。 発行者が指定されている場合は、証明書の直接的な発行者のサムプリントがこのフィールドに指定されている値のいずれかと一致すれば、ルートが信頼されているかどうかに関係なく、証明書は受け入れられます。 PKI では、同じサブジェクトの証明書が異なる証明機関を使用して発行される場合があるため、特定のサブジェクトの想定される発行者のサムプリントをすべて指定することが重要であることに注意してください。
+   >
+   > 発行者の指定はベスト プラクティスとみなされています。省略しても、信頼されたルートに到達する証明書チェーンによって機能は続行されますが、この動作には制限があり、近い将来、段階的に廃止される可能性があります。 さらに、Azure にデプロイされたクラスターで、プライベート PKI によって発行され、サブジェクトによって宣言されている X509 証明書を使用してセキュリティ保護されているクラスターでは、PKI の証明書ポリシーの検出、使用、およびアクセスを実行できなければ、(クラスター対サービス間通信での) Azure Service Fabric サービスによる検証を実行できない可能性があることに注意してください。 
 
 ## <a name="deploy-the-updated-template"></a>更新したテンプレートをデプロイする
 変更を加えた後、更新したテンプレートを再度デプロイします。

@@ -1,25 +1,26 @@
 ---
 title: Azure Stack の拡張機能ホストを準備する | Microsoft Docs
-description: 今後の Azure Stack 更新プログラム パッケージを通じて自動的に有効になる拡張機能ホストを準備する方法について説明します。
+description: 今後の Azure Stack 更新プログラム パッケージによって自動的に有効になる拡張機能ホストを準備する方法について説明します。
 services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 11/27/2018
+ms.date: 03/07/2019
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: fcd5137792e573c3077a4b9d5e815b9bf20774f6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.lastreviewed: 03/07/2019
+ms.openlocfilehash: 47cc7d9f09b7fb22cf99ad010f1dc75e6388c314
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155071"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731928"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure Stack の拡張機能ホストを準備する
 
-拡張機能ホストは、必要とされる TCP/IP ポートの数を減らすことで Azure Stack をセキュリティで保護します。 この記事では、Azure Stack で拡張機能ホストの準備を行う方法について説明します。この拡張機能ホストは、1808 更新プログラムより後の Azure Stack 更新プログラム パッケージを通じて自動的に有効になります。
+拡張機能ホストは、必要とされる TCP/IP ポートの数を減らすことで Azure Stack をセキュリティで保護します。 この記事では、Azure Stack で拡張機能ホストの準備を行う方法について説明します。この拡張機能ホストは、1808 更新プログラムより後の Azure Stack 更新プログラム パッケージを通じて自動的に有効になります。 この記事は、Azure Stack の更新プログラム、1808、1809 および 1811 に該当します。
 
 ## <a name="certificate-requirements"></a>証明書の要件
 
@@ -65,15 +66,14 @@ Azure Stack 適合性チェッカー ツールを使用すると、必要とさ�
     > [!Note]  
     > Active Directory フェデレーション サービス (AD FS) を使用してデプロイする場合、スクリプトの **$directories** に `ADFS` および `Graph` というディレクトリを追加する必要があります。
 
-4. 次のコマンドレットを実行して、証明書の確認を開始します。
+4. 現在 Azure Stack で使用している既存の証明書を適切なディレクトリに配置します。 たとえば、**管理者の ARM** 証明書を `Arm Admin` フォルダーに配置します。 その後、新しく作成されたホスティング証明書を `Admin extension host` と `Public extension host` ディレクトリに配置します。
+5. 次のコマンドレットを実行して、証明書の確認を開始します。
 
     ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
     ```
-
-5. 証明書を適切なディレクトリに配置します。
 
 6. 出力を確認し、すべての証明書がすべてのテストに合格していることを確認します。
 
@@ -140,7 +140,7 @@ Azure Stack エンドポイントを公開するよう個別のホスト A レ�
 
 ### <a name="publish-new-endpoints"></a>新しいエンドポイントの公開
 
-ファイアウォール経由で 2 つの新しいエンドポイントを公開する必要があります。 パブリック VIP プールから割り当てられた IP は、Azure Stack [環境の特権エンドポイント](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-privileged-endpoint)を使用して実行する必要のある次のコードを使用して取得できます。
+ファイアウォール経由で 2 つの新しいエンドポイントを公開する必要があります。 パブリック VIP プールから割り当てられた IP は、Azure Stack [環境の特権エンドポイント](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)から実行する必要のある次のコードを使用して取得できます。
 
 ```PowerShell
 # Create a PEP Session
@@ -186,8 +186,8 @@ The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn
 
 | エンドポイント (VIP) | Protocol | ポート |
 |----------------|----------|-------|
-| AdminHosting | HTTPS | 443 |
-| ホスティング | HTTPS | 443 |
+| 管理者ホスティング | HTTPS | 443 |
+| Hosting | HTTPS | 443 |
 
 ### <a name="update-existing-publishing-rules-post-enablement-of-extension-host"></a>既存の公開規則の更新 (拡張機能ホストの今後の有効化)
 
@@ -201,8 +201,8 @@ The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn
 
 | エンドポイント (VIP) | Protocol | ポート |
 |----------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| ポータル (管理者) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13020<br>13021<br>13026<br>30015 |
-| ポータル (ユーザー) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13020<br>13021<br>30015<br>13003 |
+| ポータル (管理者) | HTTPS | 12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015 |
+| ポータル (ユーザー) | HTTPS | 12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003 |
 | Azure Resource Manager (管理者) | HTTPS | 30024 |
 | Azure Resource Manager (ユーザー) | HTTPS | 30024 |
 

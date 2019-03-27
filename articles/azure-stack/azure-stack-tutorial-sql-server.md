@@ -12,16 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
+ms.lastreviewed: 11/05/2018
 ms.custom: mvc
-ms.openlocfilehash: ae32138dffa296a4aad9917897e180d364f189fc
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: aba9014e74b8ba0cd1b528cf570d3651950c6d5f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037835"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207060"
 ---
 # <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>チュートリアル: SQL データベースを Azure Stack ユーザーから使用できるようにする
 
@@ -66,10 +67,10 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が自�
 
 1. **+** > **[データ + ストレージ]** > **[SQL Database]** の順に選択します。
 2. 次のフィールドについては、既定値のままにするか、これらの例を使用します。
-    - **[データベース名]**: SQLdb
-    - **[Max Size in MB] \(最大サイズ (MB))**: 100
-    - **[サブスクリプション]**: TestSQLOffer
-    - **[リソース グループ]**: SQL-RG
+    - **データベース名**: SQLdb
+    - **最大サイズ (MB)**: 100
+    - **サブスクリプション**:TestSQLOffer
+    - **リソース グループ**:SQL-RG
 3. **[Login Settings]\(ログイン設定\)** を選択し、データベースの資格情報を入力して、**[OK]** をクリックします。
 4. **[SKU]** で、SQL ホスティング サーバーに対して作成した SQL SKU を選択して、**[OK]** をクリックします。
 5. **作成**を選択します。

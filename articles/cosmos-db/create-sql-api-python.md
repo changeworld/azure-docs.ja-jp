@@ -8,14 +8,14 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: sngun
-ms.openlocfilehash: b9ea87b3a56c4759a0d96b7d01e33087c64ccd91
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 269a66441529efee358cea22bb4f98b81a4b2f23
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037558"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586326"
 ---
-# <a name="azure-cosmos-db-build-a-sql-api-app-with-python-and-the-azure-portal"></a>Azure Cosmos DB は:Python と Azure Portal による SQL API アプリの構築
+# <a name="azure-cosmos-db-build-a-python-application-using-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB は:Azure Cosmos DB SQL API アカウントを使用して Python アプリケーションを構築する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -75,7 +75,27 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-python-getting-started.git
     ```  
-    
+
+## <a name="update-your-connection-string"></a>接続文字列を更新する
+
+ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
+
+1. [Azure Portal](https://portal.azure.com/) で Azure Cosmos DB アカウントにアクセスし、左側のナビゲーションにある **[キー]** をクリックします。 次の手順では、画面の右側にあるコピー ボタンを使用して、**[URI]** と **[主キー]** を `CosmosGetStarted.py` ファイルにコピーします。
+
+    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-dotnet/keys.png)
+
+2. Visual Studio Code で C:\git-samples\azure-cosmos-db-python-getting-started 内の `CosmosGetStarted.py` ファイルを開きます。
+
+3. ポータルから (コピー ボタンを使用して) **URI** 値をコピーし、それを ``CosmosGetStarted.py`` 内の **endpoint** キーの値にします。 
+
+    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
+
+4. 次に、ポータルから **PRIMARY KEY** 値をコピーし、それを ``CosmosGetStarted.py`` 内の **config.PRIMARYKEY** の値にします。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
+
+    `'PRIMARYKEY': 'FILLME',`
+
+5. ``CosmosGetStarted.py`` ファイルを保存します。
+
 ## <a name="review-the-code"></a>コードの確認
 
 この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
@@ -84,7 +104,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 次のスニペットはすべて、`CosmosGetStarted.py` ファイルからのものです。
 
-* CosmosClient が初期化されます。
+* CosmosClient が初期化されます。 「[接続文字列を更新する](#update-your-connection-string)」セクションの説明に従って "Endpoint" と "master key" の値を更新します。 
 
     ```python
     # Initialize the Cosmos client
@@ -146,27 +166,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     for item in iter(result_iterable):
         print(item['message'])
     ```
-
-## <a name="update-your-connection-string"></a>接続文字列を更新する
-
-ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
-
-1. [Azure Portal](https://portal.azure.com/) で Azure Cosmos DB アカウントにアクセスし、左側のナビゲーションにある **[キー]** をクリックします。 次の手順では、画面の右側にあるコピー ボタンを使用して、**[URI]** と **[主キー]** を `CosmosGetStarted.py` ファイルにコピーします。
-
-    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-dotnet/keys.png)
-
-2. Visual Studio Code で C:\git-samples\azure-cosmos-db-python-getting-started 内の `CosmosGetStarted.py` ファイルを開きます。
-
-3. ポータルから (コピー ボタンを使用して) **URI** 値をコピーし、それを ``CosmosGetStarted.py`` 内の **endpoint** キーの値にします。 
-
-    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
-
-4. 次に、ポータルから **PRIMARY KEY** 値をコピーし、それを ``CosmosGetStarted.py`` 内の **config.PRIMARYKEY** の値にします。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
-
-    `'PRIMARYKEY': 'FILLME',`
-
-5. ``CosmosGetStarted.py`` ファイルを保存します。
-    
+   
 ## <a name="run-the-app"></a>アプリの実行
 
 1. Visual Studio Code で、**[ビュー]**>**[コマンド パレット]** の順に選択します。 

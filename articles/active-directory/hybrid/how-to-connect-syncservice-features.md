@@ -4,23 +4,24 @@ description: Azure AD Connect 同期サービスのサービス側の機能に�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 213aab20-0a61-434a-9545-c4637628da81
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/25/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8d351e41eac3c820b9295b3b5cf314428bebc746
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f7b3da5b2340b6bd4dd49dd6f8278f2fced477bc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242995"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190723"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
 Azure AD Connect の同期機能には 2 つのコンポーネントがあります。
@@ -55,8 +56,8 @@ Azure AD ディレクトリ内の構成を確認するには、 `Get-MsolDirSync
 
 | DirSyncFeature | Comment (コメント) |
 | --- | --- |
-| DeviceWriteback |[Azure AD Connect: デバイスの書き戻しの有効化](how-to-connect-device-writeback.md) |
-| DirectoryExtensions |[Azure AD Connect 同期: ディレクトリ拡張機能](how-to-connect-sync-feature-directory-extensions.md) |
+| DeviceWriteback |[Azure AD Connect:デバイス ライトバックの有効化](how-to-connect-device-writeback.md) |
+| DirectoryExtensions |[Azure AD Connect 同期:ディレクトリ拡張機能](how-to-connect-sync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |エクスポート時に、別のオブジェクトとの重複がある場合、オブジェクト全体が失敗するのではなく、属性を検疫できます。 |
 | パスワード ハッシュの同期 |[Azure AD Connect Sync によるパスワード ハッシュ同期の導入](how-to-connect-password-hash-synchronization.md) |
 |パススルー認証|[Azure Active Directory パススルー認証によるユーザー サインイン](how-to-connect-pta.md)|

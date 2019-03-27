@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 74132c436670247f3eb84859216274d3e1363d07
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: b5e3e84ce8f8b4b364b2fa69dda0b0091db25b6d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338704"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329781"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 Windows 仮想マシン (VM) をオンプレミスから Microsoft Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの**第 1 世代の VM のみ**がサポートされています。 VHD のサイズの上限は、1,023 GB です。 第 1 世代の VM は、VHDX ファイル システムから VHD ファイル システムに、また容量可変ディスクから容量固定ディスクに変換できます。 ただし、VM の世代を変更することはできません。 詳細については、[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成する必要があるか](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)に関するページを参照してください。
@@ -293,7 +293,7 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
     ```PowerShell
     winmgmt /verifyrepository
     ```
-    リポジトリが破損している場合は、「[WMI: Repository Corruption, or Not? (WMI: リポジトリの破損かどうかの確認)](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)」を参照してください。
+    リポジトリが破損している場合は、「[WMI:Repository Corruption, or Not (WMI: リポジトリが破損しているかどうか)](https://blogs.technet.microsoft.com/askperf/2014/08/08/wmi-repository-corruption-or-not)」を参照してください。
 
 5. 他のアプリケーションでポート 3389 を使用していないことを確認します。 このポートは、Azure の RDP サービスに使用します。 **netstat -anob** を実行して、VM でどのポートが使用されているかを確認できます。
 
@@ -387,7 +387,7 @@ sysrep は、Windows インストールに組み込むことができるプロ�
 - [特殊化されたディスクからの VM の作成](create-vm-specialized.md)
 - [特殊化された VHD ディスクからの VM の作成](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
-一般化されたイメージを作成する場合は、sysprep を実行する必要があります。 Sysprep の詳細については、「[Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。 
+一般化されたイメージを作成する場合は、sysprep を実行する必要があります。 Sysprep の詳細については、「[How to Use Sysprep:An Introduction (Sysprep の使用方法: 紹介)](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。 
 
 Windows ベースのコンピューターにインストールされているロールまたはアプリケーションには、この一般化をサポートしていないものもあります。 そのため、この手順を実行する前に、以下の記事を参照して、そのコンピューターのロールが sysprep でサポートされていることを確認してください。 詳しくは、「[Sysprep Support for Server Roles (サーバー ロールの sysprep サポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」を参照してください。
 
@@ -406,6 +406,10 @@ Windows ベースのコンピューターにインストールされているロ
 5. Click **OK**.
 6. sysprep が完了したら、VM をシャットダウンします。 VM をシャットダウンするために **[再起動]** を使用しないでください。
 7. これで VHD をアップロードする準備ができました。 一般化されたディスクから VM を作成する方法の詳細については、[一般化した VHD のアップロードと Azure での新しい VM の作成](sa-upload-generalized.md)に関するページをご覧ください。
+
+
+>[!NOTE]
+> custom unattend.xml はサポートされていません。 additionalUnattendContent プロパティはサポートされていますが、Azure プロビジョニング エージェントが使用する unattend.xml に [microsoft-windows-shell-setup](https://docs.microsoft.com/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) オプションを追加するためのサポートは限られています。 例:   FirstLogonCommands と LogonCommands を追加するには、[additionalUnattendContent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) を使用できます。 「[additionalUnattendContent FirstLogonCommands example (additionalUnattendContent FirstLogonCommands の例)](https://github.com/Azure/azure-quickstart-templates/issues/1407)」も参照してください。
 
 
 ## <a name="complete-recommended-configurations"></a>推奨される構成を完了する

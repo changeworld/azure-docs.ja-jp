@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 74ee04fb3d4044573a98535a9bdc26d5c593a222
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e3a84bfa643ebe74983bcef0d0ea72c701ffa589
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796612"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170498"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Conversation Learner モデルで会話を記録する方法
 
@@ -55,6 +55,8 @@ Web UI で、[Import Tutorials]\(チュートリアルのインポート\) を�
 9. 応答 "The weather in Austin is probably sunny.」(オースティンの天気はたぶん晴れです。) を選択します
 10. [Save As Train Dialog]\(トレーニング会話として保存\) ボタンをクリックします。
     - トレーニングはすぐに開始されます
+
+![](../media/T11_logdialog.png)
 
 最後に 1 つ注意事項があります。 ビジネス上必要な場合は、[Settings]\(設定\) に移動して [Log Conversations]\(会話記録\) をオフにすることで、会話記録機能をオフにできます。
 

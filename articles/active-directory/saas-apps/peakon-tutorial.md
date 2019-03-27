@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Peakon の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Peakon の統合 | Microsoft Docs
 description: Azure Active Directory と Peakon の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: a944c397-ed3f-4d45-b9b2-6d4bcb6b0a09
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
-ms.openlocfilehash: af3402aab6e4a3a1b0401d66d42e82e449552867
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e32f0ac6fcc6839bad973c3d014436d08ae43896
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51978121"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211310"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>チュートリアル: Azure Active Directory と Peakon の統合
+# <a name="tutorial-azure-active-directory-integration-with-peakon"></a>チュートリアル:Azure Active Directory と Peakon の統合
 
 このチュートリアルでは、Peakon と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -165,11 +166,11 @@ Peakon で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[Choose a File]\(ファイルの選択\)** を選択して、Azure portal からダウンロードした証明書を [Certificate]\(証明書\) ボックスにアップロードします。
 
-    d.  **アイコン** をクリックして **[Entity ID]\(エンティティ ID\)** をコピーし、Azure portal で  **[基本的な SAML 構成]**  セクションの  **[識別子]** ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。  **アイコン** をクリックして **[Entity ID]\(エンティティ ID\)** をコピーし、Azure portal で  **[基本的な SAML 構成]**  セクションの  **[識別子]** ボックスに貼り付けます。
 
     e.  **アイコン** をクリックして **[Reply URL (ACS)]\(応答 URL (ACS)\)** をコピーし、Azure portal で  **[基本的な SAML 構成]**  セクションの  **[応答 URL]** ボックスに貼り付けます。
 
-    f. **[保存]** をクリックします。
+    f. **[保存]**
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -194,7 +195,7 @@ Peakon で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="creating-a-peakon-test-user"></a>Peakon テスト ユーザーの作成
 

@@ -78,9 +78,9 @@ SQL Server でサポートされているエディションと機能の詳細に
 
 | SQL Server BI 機能 | ギャラリー イメージにインストールされているかどうか | メモ |
 | --- | --- | --- |
-| **Reporting Services ネイティブ モード** |[はい] |インストールされていますが、レポート マネージャー URL などの構成が必要です。 「 [Reporting Services の構成](#configure-reporting-services)」をご覧ください。 |
+| **Reporting Services ネイティブ モード** |はい |インストールされていますが、レポート マネージャー URL などの構成が必要です。 「 [Reporting Services の構成](#configure-reporting-services)」をご覧ください。 |
 | **Reporting Services SharePoint モード** |いいえ  |Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。 <sup>1</sup> |
-| **Analysis Services 多次元およびデータ マイニング (OLAP)** |[はい] |インストールされ、既定の Analysis Services インスタンスとして構成されています。 |
+| **Analysis Services 多次元およびデータ マイニング (OLAP)** |はい |インストールされ、既定の Analysis Services インスタンスとして構成されています。 |
 | **Analysis Services 表形式** |いいえ  |SQL Server 2012、2014、および 2016 のイメージでサポートされていますが、既定ではインストールされていません。 Analysis Services の別のインスタンスをインストールします。 このトピックの「SQL Server のその他のサービスと機能のインストール」をご覧ください。 |
 | **Analysis Services Power Pivot for SharePoint** |いいえ  |Microsoft Azure 仮想マシン ギャラリー イメージには、SharePoint も SharePoint インストール ファイルも含まれていません。 <sup>1</sup> |
 

@@ -9,12 +9,12 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: fc732065f328f653082286508db74cc29107854e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e1e4628a1c777ecc54fdf9a26b334a10b7ab8cb3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232010"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810586"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Azure Data Lake Analytics .NET アプリを管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -130,7 +130,7 @@ Azure リソース グループをまだ作成していない場合は、Data La
 var resourceGroup = new ResourceGroup { Location = location };
 resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, rg);
 ```
-詳細については、「[Azure リソース グループと Data Lake Analytics](#Azure-Resource-Groups-and-Data-Lake-Analytics)」を参照してください。
+詳細については、「Azure リソース グループと Data Lake Analytics」を参照してください。
 
 ### <a name="create-a-data-lake-store-account"></a>Data Lake Store アカウントを作成する
 

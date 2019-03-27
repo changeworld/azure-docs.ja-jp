@@ -1,25 +1,25 @@
 ---
-title: Azure Active Directory での動的グループの作成と状態チェックを行う | Microsoft Docs
+title: 動的グループの作成と状態チェックを行う - Azure Active Directory | Microsoft Docs
 description: Azure Portal でグループ メンバーシップ ルールの作成と状態チェックを行う方法。
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: be880b937f254cbf8115d1a5129069069a0c7eea
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5651d5e37613abcef8c8f5448af38637f91ebe30
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249674"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193630"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>動的グループの作成と状態チェックを行う
 
@@ -54,17 +54,17 @@ Azure Active Directory (Azure AD) では、ユーザーまたはデバイスの�
 
 **[メンバーシップの処理]** の状態には、次の状態メッセージが表示される場合があります。
 
-* **評価中**: グループの変更が受信され、更新プログラムが評価されています。
-* **処理中**: 更新プログラムが処理されています。
-* **更新の完了**: 処理が完了し、該当するすべての更新が行われました。
-* **処理エラー**: メンバーシップ規則の評価中にエラーが発生し、処理を完了できませんでした。
-* **更新の一時停止**: 動的メンバーシップ規則の更新プログラムが管理者によって一時停止されました。 MembershipRuleProcessingState は、"一時停止" に設定されます。
+* **評価中**:グループの変更が受信され、更新プログラムが評価されています。
+* **処理中**:更新プログラムが処理されています。
+* **更新の完了**:処理が完了し、該当するすべての更新が行われました。
+* **処理エラー**:メンバーシップ規則の評価中にエラーが発生し、処理を完了できませんでした。
+* **更新の一時停止**:動的メンバーシップ規則の更新プログラムが管理者によって一時停止されました。 MembershipRuleProcessingState は、"一時停止" に設定されます。
 
 **[メンバーシップの最終更新日時]** の状態には、次の状態メッセージが表示される場合があります。
 
-* &lt;**日付と時刻**&gt;: メンバーシップが最後に更新された日時。
+* &lt;**日付と時刻**&gt;:メンバーシップが最後に更新された日時。
 * **進行中**: 更新は現在進行中です。
-* **不明**: 最終更新時刻を取得することができません。 新しく作成されるグループが原因の可能性があります。
+* **不明**:最終更新時刻を取得することができません。 新しく作成されるグループが原因の可能性があります。
 
 特定のグループのメンバーシップ規則の処理中にエラーが発生すると、そのグループの **[概要]** ページの上部にアラートが表示されます。 24 時間以上、テナント内のすべてのグループに対して保留中の動的メンバーシップの更新が処理できない場合は、**[すべてグループ]** の上部にアラートが表示されます。
 

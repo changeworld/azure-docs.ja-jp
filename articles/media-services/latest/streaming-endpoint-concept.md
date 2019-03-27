@@ -9,20 +9,29 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 01/16/2019
 ms.author: juliako
-ms.openlocfilehash: 8f3bcc3c631f17880c66e482234effcc4ea6424d
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 18c5e48b5f7dbf664b607b8b83473a914256590b
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53744551"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55104567"
 ---
 # <a name="streaming-endpoints"></a>ストリーミング エンドポイント
 
-Microsoft Azure Media Services (AMS) では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) エンティティは、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 ストリーミング エンドポイント サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやビデオ オンデマンドの資産があります。 Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定**のストリーミング エンドポイントは削除できません。 アカウントで追加のストリーミング エンドポイントを作成できます。 ビデオのストリーミングを開始するには、ビデオをストリーミングするストリーミング エンドポイントを開始する必要があります。 
+Microsoft Azure Media Services (AMS) では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints) エンティティは、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 **ストリーミング エンドポイント** サービスからの送信ストリームには、Media Services アカウントのライブ ストリームやビデオ オンデマンドの資産があります。 Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定**のストリーミング エンドポイントは削除できません。 アカウントで追加のストリーミング エンドポイントを作成できます。 
 
-## <a name="streamingendpoint-types"></a>StreamingEndpoint の型  
+> [!NOTE]
+> ビデオのストリーミングを開始するには、ビデオをストリーミングする**ストリーミング エンドポイント**を開始する必要があります。 
+
+## <a name="naming-convention"></a>命名規則
+
+既定のエンドポイントの場合: `{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+
+追加エンドポイントの場合: `{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+
+## <a name="types"></a>型  
 
 **StreamingEndpoint** には**Standard** と **Premium** の 2 つの型があります。 型は、ストリーミング エンドポイントに割り当てられたスケール ユニットの数 (`scaleUnits`) によって定義されます。 
 
@@ -37,13 +46,16 @@ Microsoft Azure Media Services (AMS) では、[ストリーミング エンド�
 
 CDN はほとんどのケースで有効にしておくことをお勧めします。 ただし、CDN はコンカレンシーに合わせて最適なスケーリングを行うため、最大コンカレンシーが 500 に満たないことが予想される場合は、CDN を無効にすることをお勧めします。
 
+> [!NOTE]
+> CDN を有効にするかどうかを問わず、ストリーミング エンドポイント `hostname` とストリーミング URL は同じままにします。
+
 ### <a name="detailed-explanation-of-how-caching-works"></a>キャッシュのしくみに関する詳しい説明
 
 CDN を追加するケースに、具体的な帯域幅の値はありません。CDN が有効なストリーミング エンドポイントに必要な帯域幅の量は場合によって変わるためです。 多くはコンテンツの種類、その人気、ビットレート、プロトコルによって変わります。 CDN は要求されたもののみをキャッシュします。 つまり、ビデオ フラグメントがキャッシュされている限り、人気のコンテンツは CDN から直接配信されます。 通常、多くのユーザーがまったく同じものを視聴するライブ コンテンツは、キャッシュされる可能性が高くなります。 人気のコンテンツもあればそうでないものもあるオンデマンドのコンテンツは、やや複雑になる場合があります。 あまり人気のない (視聴者が週に 1 人か 2 人) ビデオ アセットが何百万もあるものの、何千ものユーザーが全員異なるビデオを視聴している場合、CDN はほとんど効力を発揮しません。 このキャッシュ ミスにより、ストリーミング エンドポイントの負荷が高くなります。
  
 また、アダプティブ ストリーミングの動作も考慮する必要があります。 個々のビデオ フラグメントはそれぞれのエンティティとしてキャッシュされます。 たとえば、ある特定のビデオが初めて視聴され、そのユーザーがあちこち数秒ずつ見てスキップすることを繰り返している場合、そのユーザーが視聴したビデオに関連するビデオ フラグメントのみが CDN にキャッシュされます。 アダプティブ ストリーミングでは通常、5 から 7 の異なるビットレートのビデオがあります。 あるユーザーがあるビットレートで視聴しており、別のユーザーが異なるビットレートで視聴している場合、CDN ではそれぞれ別個にキャッシュされます。 2 人が同じビットレートで視聴していても、異なるプロトコルでストリーミングしている可能性もあります。 各プロトコル (HLS、MPEG-DASH、スムーズ ストリーミング) は別個にキャッシュされます。 つまり、各ビットレートやプロトコルは別個にキャッシュされ、要求されたビデオ フラグメントのみがキャッシュされます。
  
-## <a name="streamingendpoint-properties"></a>StreamingEndpoint のプロパティ 
+## <a name="properties"></a>Properties 
 
 このセクションでは、StreamingEndpoint の一部のプロパティについて説明します。 新しいストリーミング エンドポイントを作成する方法の例と全プロパティの説明については、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)に関する記事をご覧ください。 
 

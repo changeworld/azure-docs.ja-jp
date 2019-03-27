@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と OrgChart Now の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と OrgChart Now の統合 | Microsoft Docs
 description: Azure Active Directory と OrgChart Now の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 50a1522f-81de-4d14-9b6b-dd27bb1338a4
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
-ms.openlocfilehash: e23d76074f4b428b672e0cd5aeeaba99d080a4cf
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9f044b6fcefc0c0345ea6c83212da31c7c03c11f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435936"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202895"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>チュートリアル: Azure Active Directory と OrgChart Now の統合
+# <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>チュートリアル:Azure Active Directory と OrgChart Now の統合
 
 このチュートリアルでは、OrgChart Now と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -163,7 +164,7 @@ OrgChart Now で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-orgchart-now-test-user"></a>OrgChart Now のテスト ユーザーの作成
 
@@ -183,7 +184,7 @@ Azure AD ユーザーが OrgChart Now にログインできるようにするに
 
     ![OrgChart Now のフォルダー](./media/orgchartnow-tutorial/tutorial_orgchartnow_chart.png)
 
-    d. 管理者ユーザーのみが変更できるようにフォルダーを**ロックします**。 **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 管理者ユーザーのみが変更できるようにフォルダーを**ロックします**。 **[OK]** をクリックします。
 
     ![OrgChart Now のロック機能](./media/orgchartnow-tutorial/tutorial_orgchartnow_lock.png)
 
@@ -240,7 +241,7 @@ Azure AD ユーザーが OrgChart Now にログインできるようにするに
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [OrgChart Nowt] タイルをクリックすると、自動的に OrgChart Now アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

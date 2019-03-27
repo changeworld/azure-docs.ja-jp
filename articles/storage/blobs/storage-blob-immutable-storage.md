@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 01/21/2019
 ms.author: hux
-ms.component: blobs
-ms.openlocfilehash: 53c719fbeb31d605bd9dff170a798b262d44698a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: blobs
+ms.openlocfilehash: d8ed2c770d6d9a6208f3be10de9266702ef07ae0
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634271"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55250063"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 
@@ -197,7 +197,7 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 
 **この機能は国内のクラウドや政府機関のクラウドで利用できますか?**
 
-現在、不変ストレージは、Azure パブリック リージョンでのみ利用できます。 国内の特定のクラウドに関心がおありの場合は、azurestoragefeedback@microsoft.com までメールにてお問い合わせください。
+不変ストレージは、Azure パブリック、中国、および Government リージョンで利用可能です。 お客様のリージョンで不変ストレージをご利用いただけない場合は、azurestoragefeedback@microsoft.com を電子メールで送信してください。
 
 ## <a name="sample-powershell-code"></a>PowerShell コードの例
 

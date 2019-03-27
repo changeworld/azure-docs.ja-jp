@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.openlocfilehash: b2520864589558a530f4f9dbfed83a9f3b8c727a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.lastreviewed: 01/08/2019
+ms.openlocfilehash: 81f06e0f5d5201b902504d8275f356f9a1731065
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104099"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098901"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Marketplace アイテムを作成および発行する
 
@@ -68,19 +69,19 @@ ms.locfileid: "54104099"
 
 10. **My Marketplace Items** を Marketplace アイテムを表示するカテゴリの一覧に置き換えます。
 
-   ```json
-   "categories":[
-   "My Marketplace Items"
-   ],
-   ```
+    ```json
+    "categories":[
+    "My Marketplace Items"
+    ],
+    ```
 
 11. Manifest.json に対するその他の編集については、「[リファレンス: Marketplace アイテム manifest.json](#reference-marketplace-item-manifestjson)」を参照してください。
 
 12. フォルダーを .azpkg ファイルにパッケージ化するには、コマンド プロンプトを開き、次のコマンドを実行します。
 
-   ```shell
-   AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
-   ```
+    ```shell
+    AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+    ```
 
     > [!NOTE]
     > 出力パッケージへの完全パスが存在している必要があります。 たとえば、出力パスが C:\MarketPlaceItem\yourpackage.azpkg の場合は、C:\MarketPlaceItem フォルダーが存在する必要があります。
@@ -98,9 +99,9 @@ ms.locfileid: "54104099"
    https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
    ```
 
-   | パラメーター | 説明 |
+   | パラメーター | Description |
    | --- | --- |
-   | サブスクリプション ID |管理者のサブスクリプション ID。 PowerShell を使用して取得できます。 ポータルで取得する場合は、プロバイダーのサブスクリプションに移動し、サブスクリプション ID をコピーします。 |
+   | SubscriptionID |管理者のサブスクリプション ID。 PowerShell を使用して取得できます。 ポータルで取得する場合は、プロバイダーのサブスクリプションに移動し、サブスクリプション ID をコピーします。 |
    | GalleryItemUri |ストレージに既にアップロードされた、ギャラリー パッケージの BLOB URI。 |
    | ApiVersion |**2015-04-01** と設定します。 |
 
@@ -128,22 +129,22 @@ ms.locfileid: "54104099"
 
 ### <a name="identity-information"></a>ID 情報
 
-| Name | 必須 | type | 制約 | 説明 |
+| Name | 必須 | type | 制約 | Description |
 | --- | --- | --- | --- | --- |
 | Name |X |String |[A-Za-z0-9]+ | |
-| 発行元 |X |String |[A-Za-z0-9]+ | |
+| Publisher |X |String |[A-Za-z0-9]+ | |
 | Version |X |String |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Metadata
 
-| Name | 必須 | type | 制約 | 説明 |
+| Name | 必須 | type | 制約 | Description |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |推奨 80 文字 |80 文字より長い場合、ポータルでアイテム名が適切に表示されないことがあります。 |
 | PublisherDisplayName |X |String |推奨 30 文字 |30 文字より長い場合、ポータルで発行者名が適切に表示されないことがあります。 |
 | PublisherLegalName |X |String |最大 256 文字 | |
-| まとめ |X |String |60 ～ 100 文字 | |
+| Summary |X |String |60 ～ 100 文字 | |
 | LongSummary |X |String |140 ～ 256 文字 |Azure Stack ではまだ適用なし。 |
-| 説明 |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 ～ 5,000 文字 | |
+| Description |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 ～ 5,000 文字 | |
 
 ### <a name="images"></a>イメージ
 
@@ -151,11 +152,11 @@ Marketplace では、次のアイコンを使用します。
 
 | Name | 幅 | 高さ | メモ |
 | --- | --- | --- | --- |
-| ワイド |255 px |115 px |常に必要 |
+| Wide |255 px |115 px |常に必要 |
 | Large |115 px |115 px |常に必要 |
 | Medium |90 px |90 px |常に必要 |
 | Small |40 px |40 px |常に必要 |
-| スクリーンショット |533 px |32 px |省略可能 |
+| Screenshot |533 px |32 px |省略可能 |
 
 ### <a name="categories"></a>Categories
 
@@ -165,7 +166,7 @@ Marketplace の各アイテムは、そのアイテムのポータル UI にお�
 
 各 Marketplace アイテムには、追加コンテンツへのさまざまなリンクを含めることができます。 これらのリンクは、次の名前と URI の一覧として指定されます。
 
-| Name | 必須 | type | 制約 | 説明 |
+| Name | 必須 | type | 制約 | Description |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最大 64 文字 | |
 | Uri |X |URI | | |
@@ -174,10 +175,10 @@ Marketplace の各アイテムは、そのアイテムのポータル UI にお�
 
 前述のメタデータに加えて、Marketplace 作成者は次の形式でカスタムのキー/値のペアでデータを指定することができます。
 
-| Name | 必須 | type | 制約 | 説明 |
+| Name | 必須 | type | 制約 | Description |
 | --- | --- | --- | --- | --- |
 | DisplayName |X |String |最大 25 文字 | |
-| 値 |X |String |最大 30 文字 | |
+| Value |X |String |最大 30 文字 | |
 
 ### <a name="html-sanitization"></a>HTML のサニタイズ
 
@@ -191,8 +192,8 @@ Azure Stack ポータルで表示される Marketplace アイテムのアイコ�
 
 ### <a name="create-blade"></a>[作成] ブレード
 
-![[作成] ブレード](media/azure-stack-marketplace-item-ui-reference/image1.png)
+![[作成] ブレード](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### <a name="marketplace-item-details-blade"></a>[Marketplace item details (Marketplace アイテムの詳細)] ブレード
 
-![[Marketplace item details (Marketplace アイテムの詳細)] ブレード](media/azure-stack-marketplace-item-ui-reference/image3.png)
+![[Marketplace item details (Marketplace アイテムの詳細)] ブレード](media/azure-stack-create-and-publish-marketplace-item/image3.png)

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9dafe7df3c488dbc6d0c2f27a6265e86eebad41c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 4bef785a08d7482468630bc690d6c19b05bdf770
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718930"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202964"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -72,10 +72,10 @@ HDInsight 3.4 と 3.5 のもう 1 つの重要な違いは `JAVA_HOME` が Java 
 ```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
     HUE_TARFILE=hue-binaries-14-04.tgz
 elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
     HUE_TARFILE=hue-binaries-16-04.tgz
 fi
 ...
@@ -142,7 +142,7 @@ Linux ベースの HDInsight クラスターは、クラスター内でアクテ
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-この例では、`hdfs` コマンドは、既定のクラスター ストレージを透過的に使用します。 一部の操作では、URI を指定しなければならない場合があります。 たとえば、Data Lake Storage には `adl:///example/jars`、Azure Storage には `wasb:///example/jars` を指定します。
+この例では、`hdfs` コマンドは、既定のクラスター ストレージを透過的に使用します。 一部の操作では、URI を指定しなければならない場合があります。 たとえば、Azure Data Lake Storage Gen1 の場合は `adl:///example/jars`、Data Lake Storage Gen2 の場合は`abfs:///example/jars`、Azure Storage の場合は `wasb:///example/jars` です。
 
 ### <a name="bPS7"></a>STDOUT および STDERR に情報を書き込む
 
@@ -299,10 +299,10 @@ Azure Storage account または Azure Data Lake Storage にファイルを格納
 ```bash
 OS_VERSION=$(lsb_release -sr)
 if [[ $OS_VERSION == 14* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-14-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-14-04."
     HUE_TARFILE=hue-binaries-14-04.tgz
 elif [[ $OS_VERSION == 16* ]]; then
-    echo "OS verion is $OS_VERSION. Using hue-binaries-16-04."
+    echo "OS version is $OS_VERSION. Using hue-binaries-16-04."
     HUE_TARFILE=hue-binaries-16-04.tgz
 fi
 ```
@@ -332,7 +332,6 @@ fi
 Microsoft は、HDInsight クラスターにコンポーネントをインストールするサンプル スクリプトを提供しています。 その他のスクリプト アクションの例については、次のリンクを参照してください。
 
 * [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)
-* [HDInsight クラスターに Apache Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)
 * [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)
 * [HDInsight クラスターでの Mono のインストールまたはアップグレード](hdinsight-hadoop-install-mono.md)
 
@@ -351,7 +350,7 @@ Windows の多くのテキスト エディターでは CRLF が一般的な行�
 > [!NOTE]  
 > CRLF 行の終わりが LF に変更されるという点で、次のコマンドはほぼ同等です。 システムで使用できるユーティリティに基づいて、いずれかを選択します。
 
-| コマンド | メモ |
+| command | メモ |
 | --- | --- |
 | `unix2dos -b INFILE` |元のファイルは .BAK 拡張子でバックアップされます |
 | `tr -d '\r' < INFILE > OUTFILE` |OUTFILE には改行が LF のみのバージョンが含まれます |

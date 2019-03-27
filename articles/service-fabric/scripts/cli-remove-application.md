@@ -3,7 +3,7 @@ title: Azure Service Fabric CLI (sfctl) スクリプトの削除のサンプル
 description: Azure Service Fabric CLI を使用した Azure Service Fabric クラスターからのアプリケーションの削除
 services: service-fabric
 documentationcenter: ''
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 tags: azure-service-management
@@ -13,14 +13,14 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 12/06/2017
-ms.author: twhitney
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 24b645552212c502c06cc4df725e77c1d017340e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 47f0636437fb903d43c0aaa439bb41309b56dcc9
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069313"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804418"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster"></a>Service Fabric クラスターからのアプリケーションの削除
 

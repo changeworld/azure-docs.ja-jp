@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2019
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 7ffceaf761d459667e4118e3e10b733898ea2710
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b41d086c092f3b18715d8fb70cd1a487a97c6869
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053978"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814046"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -35,7 +35,9 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure EA のすべてのお客様が予算を利用できます。 予算を表示するには Azure EA サブスクリプションに対する読み取りアクセスが必要です。 予算を作成し、管理するには、共同作成者のアクセス許可が必要です。 EA サブスクリプションとリソース グループ用に個別の予算を作成できます。 ただし、EA の請求先アカウントの予算を作成することはできません。
+予算は、さまざまな Azure アカウントの種類でサポートされています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 予算を表示するには、少なくとも Azure アカウントの読み取りアクセス権が必要です。
+
+ Azure EA サブスクリプションの場合、予算を表示するには読み取りアクセス権が必要です。 予算を作成し、管理するには、共同作成者のアクセス許可が必要です。 EA サブスクリプションとリソース グループ用に個別の予算を作成できます。 ただし、EA の請求先アカウントの予算を作成することはできません。
 
 ユーザーおよびグループによる予算については、サブスクリプションに従い、次の Azure のアクセス許可がサポートされています。
 
@@ -59,7 +61,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ![Azure portal に表示される Cost Management 予算](./media/tutorial-acm-create-budgets/budgets01.png)
 
-**[予算を作成する]** ウィンドウで、予算の名前と金額を入力します。 次に、期間を月、四半期、年から選択します。 次に、終了日を選択します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、8 時間以内に電子メールの通知が届きます。
+**[予算を作成する]** ウィンドウで、予算の名前と金額を入力します。 次に、期間を月、四半期、年から選択します。 次に、終了日を選択します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、8 時間以内に電子メールの通知が届きます。 通知の詳細については、[コスト アラートの使用](cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。
 
 この例では、毎月の予算を 4,500 ドルで作成します。 予算の 90% に達すると、メール アラートが生成されます。
 

@@ -65,7 +65,7 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 | server |DB2 サーバーの名前です。 サーバー名に続けて、コロンで区切ってポート番号を指定できます (例: `server:port`)。 |はい |
 | database |DB2 データベースの名前です。 |はい |
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値:**Basic**。 |はい |
-| username |DB2 データベースに接続するユーザー名を指定します。 |[はい] |
+| username |DB2 データベースに接続するユーザー名を指定します。 |はい |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
@@ -102,7 +102,7 @@ DB2 からデータをコピーするには、データセットの type プロ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**RelationalTable** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**RelationalTable** | はい |
 | tableName | DB2 データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -178,7 +178,7 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 | BLOB |Byte[] |
 | Char |String |
 | Clob |String |
-| 日付 |DateTime |
+| Date |DateTime |
 | DB2DynArray |String |
 | DbClob |String |
 | Decimal |Decimal |
@@ -186,7 +186,7 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 | Double |Double |
 | Float |Double |
 | Graphic |String |
-| 整数 |Int32 |
+| Integer |Int32 |
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |

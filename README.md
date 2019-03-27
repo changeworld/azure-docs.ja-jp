@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 2b1d75b4b32ebfffbddfaddf45b0c08fb1132995
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58168555"
+---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure のドキュメント
 
 [Microsoft Azure](https://azure.microsoft.com) のオープン ソース [ドキュメント](https://docs.microsoft.com/azure)にようこそ。 この README ファイルを読み、Microsoft Azure のドキュメントの共同作成に参加する方法をよく理解しておくようにしてください。

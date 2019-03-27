@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services で REST を使用して Computer Vision API を呼び出す方法について説明します。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: sample
 ms.date: 01/20/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 9520d4bcec0e170700aacc5ef4bc69100e333af1
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: abbdda96acabb44a225ce16b4750726d37ff86b0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581710"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882864"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>例:Computer Vision API を呼び出す方法
 
@@ -152,12 +152,12 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=cele
 ```
 フィールド   | type  | コンテンツ
 ------|------|------|
-タグ    | オブジェクト    | tags 配列の最上位オブジェクト
-tags[].Name | string    | タグ分類子からのキーワード
+Tags    | オブジェクト    | tags 配列の最上位オブジェクト
+tags[].Name | 文字列    | タグ分類子からのキーワード
 tags[].Score    | number    | 信頼度スコア (0 と 1 の間)。
 description  | オブジェクト   | description の最上位オブジェクト。
-description.tags[] |    string  | タグの一覧。  キャプションを生成する機能で信頼度が不足している場合、おそらく呼び出し元が入手できる情報はタグのみになります。
-description.captions[].text | string    | 画像を説明する語句。
+description.tags[] |    文字列  | タグの一覧。  キャプションを生成する機能で信頼度が不足している場合、おそらく呼び出し元が入手できる情報はタグのみになります。
+description.captions[].text | 文字列    | 画像を説明する語句。
 description.captions[].confidence   | number    | 語句の信頼度。
 
 ### <a name="Step4">手順 4:ドメイン固有モデルの JSON 出力を取得して解釈する</a>
@@ -213,7 +213,7 @@ categories フィールドは、元の分類内の[86 カテゴリ](../Category-
 フィールド   | type  | コンテンツ
 ------|------|------|
 categories | オブジェクト | 最上位レベルのオブジェクト
-categories[].name    | string   | 86カテゴリ分類の名前
+categories[].name    | 文字列   | 86カテゴリ分類の名前
 categories[].score  | number    | 信頼度スコア (0 と 1 の間)。
 categories[].detail  | オブジェクト?      | 省略可能な詳細オブジェクト
 

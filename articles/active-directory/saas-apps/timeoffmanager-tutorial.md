@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と TimeOffManager の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と TimeOffManager の統合 | Microsoft Docs
 description: Azure Active Directory と TimeOffManager の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 3685912f-d5aa-4730-ab58-35a088fc1cc3
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: e7f0f6bb778dedeea61b74b5ca0c2edbadd5279b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8d80312acfa90690a0b0fe7b212a614945e1e5b1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430289"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200396"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>チュートリアル: Azure Active Directory と TimeOffManager の統合
+# <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>チュートリアル:Azure Active Directory と TimeOffManager の統合
 
 このチュートリアルでは、TimeOffManager と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -140,7 +141,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
     
     c.  **[属性値]** テキスト ボックスで、その行に対して表示される属性値を選択します。
     
-    d.  **[OK]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。  **[OK]** をクリックします。
     
 1. **[保存]** ボタンをクリックします。
 
@@ -165,7 +166,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
    
    c. **[IdP Endpoint URL]\(IdP エンドポイント URL\)** テキスト ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
-   d. **[Enforce SAML]** で **[No]** を選択します。
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Enforce SAML]** で **[No]** を選択します。
    
    e. **[Auto-Create Users]** で **[Yes]** を選択します。
    
@@ -178,7 +179,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
       ![Single Sign-On Settings](./media/timeoffmanager-tutorial/ic795915.png "Single Sign-On Settings")
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -210,7 +211,7 @@ TimeOffManager で Azure AD のシングル サインオンを構成してテス
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-timeoffmanager-test-user"></a>TimeOffManager のテスト ユーザーの作成
 
@@ -258,7 +259,7 @@ TimeOffManager は、ジャストインタイム ユーザー プロビジョニ
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [TimeOffManager] タイルをクリックすると、TimeOffManager アプリケーションに自動的にサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+アクセス パネルで [TimeOffManager] タイルをクリックすると、TimeOffManager アプリケーションに自動的にサインオンします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

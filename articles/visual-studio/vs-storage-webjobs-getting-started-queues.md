@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 74aea3ad4c3dda8abc69275ad4d683fbcf485ccc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722908"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999535"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "53722908"
 
 この記事では、Azure Web ジョブ SDK バージョン 1.x を Azure キュー ストレージ サービスとともに使用する方法を示す C# コード サンプルについて説明します。
 
-Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。 キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。 詳細については、「 [.NET を使用して Azure Queue Storage を使用する](../storage/queues/storage-dotnet-how-to-use-queues.md) 」をご覧ください。 ASP.NET の詳細については、 [ASP.NET](http://www.asp.net)に関するページを参照してください。
+Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。 キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。 詳細については、「 [.NET を使用して Azure Queue Storage を使用する](../storage/queues/storage-dotnet-how-to-use-queues.md) 」をご覧ください。 ASP.NET の詳細については、 [ASP.NET](https://www.asp.net)に関するページを参照してください。
 
 ## <a name="how-to-trigger-a-function-when-a-queue-message-is-received"></a>キュー メッセージを受信したときに関数をトリガーする方法
 キュー メッセージを受信したときに WebJobs SDK が呼び出す関数を記述するには、 **QueueTrigger** 属性を使用します。 属性コンストラクターは、ポーリングのためにキューの名前を指定する文字列パラメーター受け取ります。 キューの名前を動的に設定する方法については、「 [構成オプションの設定方法](#how-to-set-configuration-options)」をご覧ください。
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 **string** だけでなく、パラメーターにはバイト配列、**CloudQueueMessage** オブジェクト、または自分で定義した POCO があります。
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO ( [Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 次の例では、**BlobName** プロパティを持つ **BlobInformation** オブジェクトの JSON がキュー メッセージに含まれています。 SDK は自動的にオブジェクトを逆シリアル化します。
 
 ```csharp
@@ -54,7 +54,7 @@ public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobI
 }
 ```
 
-SDK は [Newtonsoft.Json NuGet パッケージ](http://www.nuget.org/packages/Newtonsoft.Json) を使用してメッセージのシリアル化と逆シリアル化を行います。 キュー メッセージを Web ジョブ SDK を使用しないプログラムで作成する場合は、SDK が解析できる POCO キュー メッセージを作成する次の例のようなコードを記述できます。
+SDK は [Newtonsoft.Json NuGet パッケージ](https://www.nuget.org/packages/Newtonsoft.Json) を使用してメッセージのシリアル化と逆シリアル化を行います。 キュー メッセージを Web ジョブ SDK を使用しないプログラムで作成する場合は、SDK が解析できる POCO キュー メッセージを作成する次の例のようなコードを記述できます。
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
@@ -72,7 +72,7 @@ public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] str
 }
 ```
 
-Async 関数は、BLOB をコピーする次の例が示すように、[キャンセル トークン](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)を必要とする場合があります。 (**queueTrigger** プレースホルダーの説明については、「[BLOB](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message)」セクションをご覧ください。)
+Async 関数は、BLOB をコピーする次の例が示すように、[キャンセル トークン](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)を必要とする場合があります。 (**queueTrigger** プレースホルダーの説明については、「[BLOB](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message)」セクションをご覧ください。)
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO ( [Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 文字列ではなく POCO オブジェクトを含むキュー メッセージを作成するには、出力パラメーターとして POCO 型を **Queue** 属性のコンス トラクターに渡します。
 
 ```csharp
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO ( [Plain Old CLR Object](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO ( [Plain Old CLR Object](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) キュー メッセージ
 キュー メッセージ内に JSON として格納される POCO については、プレースホルダーを使用して、**Queue** 属性の **blobPath** パラメーター内でオブジェクトのプロパティを指定できます。 また、キュー メタデータのプロパティ名もプレースホルダーとして使用できます。 「 [キューまたはキュー メッセージ メタデータの取得](#get-queue-or-queue-message-metadata)」をご覧ください。
 
 次の例では、BLOB を別の拡張子を持つ新しい BLOB にコピーします。 キュー メッセージは、**BlobName** および **BlobNameWithoutExtension** プロパティを含む **BlobInformation** オブジェクトです。 プロパティの名前は、 **Blob** 属性の BLOB パスのプレース ホルダーとして使用されます
@@ -311,7 +311,7 @@ public static void CopyBlobPOCO(
 }
 ```
 
-SDK は [Newtonsoft.Json NuGet パッケージ](http://www.nuget.org/packages/Newtonsoft.Json) を使用してメッセージのシリアル化と逆シリアル化を行います。 キュー メッセージを Web ジョブ SDK を使用しないプログラムで作成する場合は、SDK が解析できる POCO キュー メッセージを作成する次の例のようなコードを記述できます。
+SDK は [Newtonsoft.Json NuGet パッケージ](https://www.nuget.org/packages/Newtonsoft.Json) を使用してメッセージのシリアル化と逆シリアル化を行います。 キュー メッセージを Web ジョブ SDK を使用しないプログラムで作成する場合は、SDK が解析できる POCO キュー メッセージを作成する次の例のようなコードを記述できます。
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };

@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 78b7668dee892841ced1a06626ff09a534a88b69
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 29e6215358eaf544f32f585744ed36f30822d134
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714302"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446751"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
-このチュートリアルでは、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に App Service 証明書を作成 (購入) することによって Web アプリをセキュリティで保護し、それを App Service アプリにバインドする方法を示します。
+このチュートリアルでは、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に App Service 証明書を作成 (購入) し、それを App Service アプリにバインドすることによって、[App Service アプリ](https://docs.microsoft.com/azure/app-service/)または[関数アプリ](https://docs.microsoft.com/azure/azure-functions/)をセキュリティで保護する方法を示します。
 
 > [!TIP]
 > App Service 証明書はあらゆる Azure Service と Azure ではないサービスで利用できます。App Service に限定されません。 そのためには、任意の場所で利用できるように、App Service 証明書のローカル PFX コピーを作成する必要があります。 詳しくは、[App Service 証明書のローカル PFX コピーの作成](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)に関する記事をご覧ください。
@@ -35,7 +35,7 @@ ms.locfileid: "53714302"
 この攻略ガイドに従うには:
 
 - [App Service アプリを作成する](/azure/app-service/)
-- [ドメイン名を Web アプリにマップ](app-service-web-tutorial-custom-domain.md)するか、[購入し、Azure で構成する](manage-custom-dns-buy-domain.md)
+- [ドメイン名をアプリにマップする](app-service-web-tutorial-custom-domain.md)か、[Azure で購入して構成する](manage-custom-dns-buy-domain.md)
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
@@ -50,7 +50,7 @@ ms.locfileid: "53714302"
 | Setting | 説明 |
 |-|-|
 | Name | App Service 証明書のフレンドリ名。 |
-| ネイキッド ドメインのホスト名 | この手順は、購入プロセスの最も重要な部分の 1 つです。 アプリにマップしたルート ドメイン名を使用します。 ドメイン名の先頭に `www` を "_付けない_" でください。 |
+| ネイキッド ドメインのホスト名 | ここでルート ドメインを指定する場合は、ルート ドメインと `www` サブドメインの*両方*をセキュリティで保護する証明書を取得します。 任意のサブドメインのみをセキュリティで保護するには、ここでサブドメインの完全修飾ドメイン名 を指定します (例: `mysubdomain.contoso.com`)。 |
 | サブスクリプション | Web アプリがホストされているデータ センターです。 |
 | リソース グループ | 証明書が含まれるリソース グループ。 新しいリソース グループを使用するか、App Service アプリと同じリソース グループなどを選択できます。 |
 | 証明書 SKU | 作成する証明書の種類 (標準の証明書または[ワイルドカード証明書](https://wikipedia.org/wiki/Wildcard_certificate)) を決定します。 |
@@ -72,7 +72,7 @@ ms.locfileid: "53714302"
 |-|-|
 | Name | 英数字とダッシュで構成される一意の名前。 |
 | リソース グループ | 推奨事項として、App Service 証明書と同じリソース グループを選択します。 |
-| 場所 | App Service アプリと同じ場所を選択します。 |
+| Location | App Service アプリと同じ場所を選択します。 |
 | 価格レベル  | 詳しくは、[Azure Key Vault の価格の詳細](https://azure.microsoft.com/pricing/details/key-vault/)に関するページをご覧ください。 |
 | アクセス ポリシー| コンテナー リソースに対するアプリケーションと許可されるアクセス権を定義します。 後で「[さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する](../key-vault/key-vault-group-permissions-for-apps.md)」の手順に従って構成できます。 |
 | 仮想ネットワーク アクセス | 特定の Azure 仮想ネットワークへのコンテナー アクセスを制限します。 後で「[Azure Key Vault のファイアウォールと仮想ネットワークを構成する](../key-vault/key-vault-network-security.md)」の手順に従って構成できます |
@@ -115,7 +115,7 @@ ms.locfileid: "53714302"
 |-|-|
 | ホスト名 | SSL バインディングを追加するドメイン名。 |
 | プライベート証明書のサムプリント | バインドする証明書。 |
-| SSL の種類 | <ul><li>**SNI SSL** - 複数の SNI ベースの SSL バインディングを追加できます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後、「[IP SSL の A レコードの再マップ](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)」の手順に従います。 </li></ul> |
+| SSL の種類 | <ul><li>**SNI SSL** - 複数の SNI ベースの SSL バインディングを追加できます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。</li><li>**IP ベースの SSL** - IP ベースの SSL バインドを 1 つだけ追加することができます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 バインディングを構成した後は、「[IP SSL の A レコードの再マップ](app-service-web-tutorial-custom-ssl.md#remap-a-record-for-ip-ssl)」の手順に従います。 </li></ul> |
 
 ## <a name="verify-https-access"></a>HTTPS アクセスを確認する
 

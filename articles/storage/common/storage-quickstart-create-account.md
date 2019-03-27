@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: 5086c0758e7c535b65c877917dc790dafa46f763
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.subservice: common
+ms.openlocfilehash: 5266ca3f50a2d8163dbab95109cb967fb5a63ed8
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994724"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55474583"
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 

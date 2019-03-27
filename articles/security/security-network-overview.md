@@ -4,7 +4,7 @@ description: この記事では、ネットワーク セキュリティの中核
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: bedf411a-0781-47b9-9742-d524cf3dbfc1
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: a5943c1d2e6b04564e1de732b8f3924a67393753
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 30a7eea751a9fbfa0ee95a7edb039a13860be7f8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065683"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115472"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 
@@ -84,7 +84,7 @@ NSG はアプリケーション層検査も、認証済みのアクセス制御�
 
 詳細情報:
 
-* [Azure Security Center の Just In Time](../security-center/security-center-just-in-time.md)
+* [Azure Security Center の Just In Time アクセス](../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>サービス エンドポイント
 
@@ -316,7 +316,7 @@ Azure は、Azure DNS という形で可用性とパフォーマンスの高い�
 分散型サービス拒否 (DDoS) 攻撃は、アプリケーションをクラウドに移行している顧客が直面する可用性とセキュリティに関する最大の関心事の一部です。 DDoS 攻撃では、アプリケーションのリソースを使い果たし、正当なユーザーがアプリケーションを使用できなくなるようにすることが試みられます。 DDoS 攻撃は、インターネット経由で一般に到達可能なすべてのエンドポイントで実行できます。
 Microsoft では、Azure Platform の一部として、**Basic** と呼ばれる DDoS Protection を提供しています。 これは無料で提供され、一般的なネットワーク レベル攻撃の監視とリアルタイムの対応策に常に含まれています。 DDoS Protection **Basic** に含まれている保護に加え、**Standard** オプションを有効にできます。 DDoS Protection Standard の機能には、次のものが含まれます。
 
-* **ネイティブのプラットフォーム統合:** Azure にネイティに統合します。 Azure Portal による構成が含まれます。 DDoS Protection Standard は、ユーザーのリソースおよびリソース構成を理解しています。
+* **ネイティブのプラットフォーム統合:** Azure にネイティブに統合します。 Azure Portal による構成が含まれます。 DDoS Protection Standard は、ユーザーのリソースおよびリソース構成を理解しています。
 * **ターンキー保護:** DDoS Protection Standard が有効になるとすぐに、簡略化された構成によって、仮想ネットワーク上のすべてのリソースが直ちに保護されます。 ユーザーが介入したり、ユーザーが定義したりする必要はありません。 DDoS Protection Standard では、攻撃が検出されるとすぐに自動で軽減されます。
 * **常時接続のトラフィック監視:** DDoS 攻撃の兆候を検出するために、アプリケーションのトラフィック パターンが 24 時間 365 日監視されます。 軽減策は、保護ポリシーを超えた場合に実行されます。
 * **攻撃の軽減策レポート:** 攻撃の軽減策レポートでは、集約されたネットワーク フロー データを使用して、リソースを対象とした攻撃に関する詳細な情報を提供します。

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 37cc7dcb3157459f6f6387323cc44d6f97954e92
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4511ef81ccfa7008cd21a22b09459fb122d46327
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035816"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55452942"
 ---
-# <a name="access-azure-cosmos-db-resources-from-virtual-networks"></a>仮想ネットワークから Azure Cosmos DB リソースへのアクセス
+# <a name="configure-access-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からのアクセスの構成
 
 Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワークの特定のサブネットのみからアクセスを許可するよう構成できます。 Azure Cosmos DB アカウントへの仮想ネットワーク内のサブネットからの接続をアクセス制限するには、次を実行します。
  
@@ -87,7 +87,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 Azure PowerShell を使用して、Azure Cosmos DB アカウントへのサービス エンドポイントを構成するには、次の手順を実行します。  
 
-1. [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) をインストールして Azure に[サインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。  
+1. [Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) をインストールして Azure に[サインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。  
 
 1. 仮想ネットワークにある、既存のサブネット用のサービス エンドポイントを有効にします。  
 

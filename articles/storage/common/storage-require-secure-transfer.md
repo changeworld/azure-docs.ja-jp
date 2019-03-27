@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 6f17cb4540feea6400c60c8032d071d6a922c871
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: e75cd873b780f514b24ee254dd491b6aa779c420
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101926"
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Azure Storage で安全な転送が必要
 
@@ -35,7 +35,7 @@ SDK を使用してストレージ アカウントを作成した場合、既定
 1. Azure Portal で **[ストレージ アカウントの作成]** ウィンドウを開きます。
 1. **[安全な転送が必須]** で、**[有効]** を選択します。
 
-  ![[ストレージ アカウントの作成] ブレード](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
+   ![[ストレージ アカウントの作成] ブレード](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_1.png)
 
 ### <a name="require-secure-transfer-for-an-existing-storage-account"></a>既存のストレージ アカウントの安全な転送が必須
 
@@ -43,7 +43,7 @@ SDK を使用してストレージ アカウントを作成した場合、既定
 1. ストレージ アカウント メニュー ウィンドウの **[設定]** で、**[構成]** を選択します。
 1. **[安全な転送が必須]** で、**[有効]** を選択します。
 
-  ![ストレージ アカウント メニュー ウィンドウ](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
+   ![ストレージ アカウント メニュー ウィンドウ](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
 
 ## <a name="enable-secure-transfer-required-programmatically"></a>プログラムを使用して [安全な転送が必須] を有効にする
 

@@ -8,12 +8,12 @@ ms.assetid: ef497a54-dc4d-4820-b5bf-c361b64b964d
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 5d05371d9b948dc2f7d6f834eb9431af80fc6365
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 788e7a453e9879d9c901448659ff1c8cfa7201ff
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406874"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548316"
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Azure Data Catalog の前提条件
 
@@ -30,7 +30,7 @@ Data Catalog をセットアップするには、Azure Active Directory (Azure A
 Azure AD は、企業がクラウドとオンプレミス環境の両方で ID とアクセスを簡単に管理できるサービスです。 ユーザーは、任意のクラウドおよびオンプレミス Web アプリケーションへのシングル サインインのために、1 つの職場または学校アカウントを使用できます。 Data Catalog は、Azure AD を使用してサインインを認証します。 詳細については、「[Azure Active Directory とは](../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
 
 > [!NOTE]
-> [Azure Portal](http://portal.azure.com/) を使用すると、個人の Microsoft アカウント、または Azure Active Directory の職場や学校のアカウントを使用してサインインできます。 Azure Portal または [Data Catalog ポータル](http://www.azuredatacatalog.com) を使用して Data Catalog を設定するには、個人用アカウントではなく、Azure Active Directory アカウントを使用してサインインする必要があります。
+> [Azure Portal](https://portal.azure.com/) を使用すると、個人の Microsoft アカウント、または Azure Active Directory の職場や学校のアカウントを使用してサインインできます。 Azure Portal または [Data Catalog ポータル](https://www.azuredatacatalog.com) を使用して Data Catalog を設定するには、個人用アカウントではなく、Azure Active Directory アカウントを使用してサインインする必要があります。
 >
 >
 

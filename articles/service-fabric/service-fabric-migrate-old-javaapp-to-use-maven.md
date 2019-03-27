@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: b880a80e19c5a85a35d5e1d78022fe4acc74f0e1
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 75a3f8e6c872e0bbb9fde8c5776d99ba0cf2c3d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999171"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116599"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Maven から Java ライブラリをフェッチするよう以前の Java Service Fabric アプリケーションを更新する
 最近、Service Fabric Java バイナリが Service Fabric Java SDK から Maven ホスティングに移行されました。 これで、**mavencentral** を使用して最新の Service Fabric Java 依存関係をフェッチできるようになりました。 このクイック スタートでは、以前に Service Fabric Java SDK と共に使用するように作成した既存の Java アプリケーションを更新します。Maven ベースのビルドに対応するように、Yeoman テンプレートまたは Eclipse を使用します。
@@ -27,17 +27,17 @@ ms.locfileid: "53999171"
 ## <a name="prerequisites"></a>前提条件
 1. 最初に既存の Java SDK をアンインストールする必要があります。
 
-  ```bash
-  sudo dpkg -r servicefabricsdkjava
-  ```
+   ```bash
+   sudo dpkg -r servicefabricsdkjava
+   ```
 2. [ここ](service-fabric-cli.md)に記載されている手順に従って、最新の Service Fabric CLI をインストールします。
 
 3. Service Fabric Java アプリケーションをビルドして操作するには、必ず JDK 1.8 と Gradle がインストールされている必要があります。 まだインストールしていない場合は、以下を実行して、JDK 1.8 (openjdk-8-jdk) と Gradle をインストールすることができます。
 
- ```bash
- sudo apt-get install openjdk-8-jdk-headless
- sudo apt-get install gradle
- ```
+   ```bash
+   sudo apt-get install openjdk-8-jdk-headless
+   sudo apt-get install gradle
+   ```
 4. [ここ](service-fabric-application-lifecycle-sfctl.md)に記載されている手順に従って、新しい Service Fabric CLI を使用するようにアプリケーションのインストール/アンインストール スクリプトを更新します。 参考にするために、入門用の[例](https://github.com/Azure-Samples/service-fabric-java-getting-started)を参照することができます。
 
 >[!TIP]

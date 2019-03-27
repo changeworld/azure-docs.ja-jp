@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: a42f5f441dd63f8d6a7f5bd1cfdf0452d025816e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7937836daad5ad299f3e5b7b6b7994ae40a833fd
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017686"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446888"
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory サービス ID
 
@@ -44,7 +44,7 @@ Data Factory サービス ID は、次の機能に役立ちます。
 
 - [PowerShell を使用したサービス ID の生成](#generate-service-identity-using-powershell)
 - [REST API を使用したサービス ID の生成](#generate-service-identity-using-rest-api)
-- [Azure Resource Manager テンプレートを使用してサービス ID を生成する](#generate-service-identity-using-azure-resource-manager-template)
+- Azure Resource Manager テンプレートを使用してサービス ID を生成する
 - [SDK を使用したサービス ID の生成](#generate-service-identity-using-sdk)
 
 >[!NOTE]
@@ -73,7 +73,7 @@ ProvisioningState : Succeeded
 要求本文の "identity" セクションを使用して、次の API を呼び出します。
 
 ```
-PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2017-09-01-preview
+PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
 **要求本文**: add "identity": { "type":"SystemAssigned" } を追加します。
@@ -99,7 +99,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
         "provisioningState": "Succeeded",
         "loggingStorageAccountKey": "**********",
         "createTime": "2017-09-26T04:10:01.1135678Z",
-        "version": "2017-09-01-preview"
+        "version": "2018-06-01"
     },
     "identity": {
         "type": "SystemAssigned",
@@ -192,4 +192,4 @@ Type                  : ServicePrincipal
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)
 - [Azure リソース認証用のマネージド ID を使用して Azure Data Lake Store との間でデータを双方向にコピーする](connector-azure-data-lake-store.md)
 
-データ ファクトリ サービス ID の基になっている Azure リソースのマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](~/articles/active-directory/msi-overview.md)」をご覧ください。 
+データ ファクトリ サービス ID の基になっている Azure リソースのマネージド ID の詳細については、「[Azure リソースのマネージド ID とは](/azure/active-directory/managed-identities-azure-resources/overview)」をご覧ください。 

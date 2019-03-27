@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: 52bcedace5d8a039be4a72dcfcc3cdeb653b3e0c
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: c8dfbe7fbeacdb42fd9b96b62e7da25084c4aabe
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354367"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105741"
 ---
-# <a name="manage-conflicts-between-regions"></a>リージョン間の競合の管理
+# <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB での競合解決ポリシーの管理
 
 複数リージョンの書き込みでは、データ競合が発生した際に、さまざまな競合解決ポリシーを使用して競合を解決できます。 この記事では、さまざまな言語プラットフォームを使用して競合解決ポリシーを管理する方法について説明します。
 
@@ -278,6 +278,6 @@ while conflict:
 
 Azure Cosmos DB の次の概念について学習しましょう。
 
+* [アプリケーションでマルチマスターを構成する方法](how-to-multi-master.md)
 * [パーティション分割とデータ分散](partition-data.md)
 * [Azure Cosmos DB のインデックス作成](indexing-policies.md)
-

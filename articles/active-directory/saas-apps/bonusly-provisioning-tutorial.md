@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory による自動ユーザー プロビジョニングに対応するように Bonusly を構成する | Microsoft Docs'
+title: チュートリアル:Azure Active Directory による自動ユーザー プロビジョニングに対応するように Bonusly を構成する | Microsoft Docs
 description: Bonusly に対するユーザー アカウントのプロビジョニングとプロビジョニング解除を自動的に実行するように Azure Active Directory を構成する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 9d9ad137ed8b42c388fdb2dac63846e27f884d56
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 74c14de0d09006aefb342590f613edb129ab5016
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348992"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173710"
 ---
-# <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するように Bonusly を構成する
+# <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Bonusly を構成する
 
 このチュートリアルの目的は、Bonusly に対するユーザーまたはグループのプロビジョニングまたはプロビジョニング解除を自動的に実行するように Azure Active Directory (Azure AD) を構成するために、Bonusly と Azure AD で実行される手順を示すことです。
 

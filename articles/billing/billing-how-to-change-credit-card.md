@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: cwatson
-ms.openlocfilehash: 69c24e08ce2434c39b8bb67cb53173f9ceaee51b
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.author: banders
+ms.openlocfilehash: 4e3c04d0cf53b53f3221effca8c8ae534990fdb3
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52581444"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901175"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Azure のクレジット カードまたはデビット カードを追加、更新、または削除する
 
@@ -32,7 +32,7 @@ ms.locfileid: "52581444"
 
 ## <a name="add-a-new-credit-or-debit-card"></a>クレジット カードまたはデビット カードを追加する
 
-1. アカウント管理者として[アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
+1. [アカウント管理者](billing-subscription-transfer.md#whoisaa)として[アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
 1. サブスクリプションを選択します。
 1. ページの右側にある **[Manage payment methods (支払方法の管理)]** を選択します。
 
@@ -49,7 +49,7 @@ ms.locfileid: "52581444"
 
 クレジット カードを更新しても、番号が元のままである場合は、有効期限など、既存のクレジット カードの詳細情報を更新します。 カードの紛失、盗難、期限切れなどの理由でクレジット カード番号が変更された場合は、[支払い方法としてクレジット カードを追加する](#addcard)セクションの手順に従います。 CVV を更新する必要はありません。
 
-1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
+1. [アカウント管理者](billing-subscription-transfer.md#whoisaa)として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
 1. カードにリンクされているサブスクリプションを選択します。
 1. **[支払い方法の管理]** を選択します。
 1. 更新するカードの横にある **[編集]** を選択します。
@@ -58,14 +58,14 @@ ms.locfileid: "52581444"
 
 ## <a name="use-a-different-credit-card-for-the-azure-subscription"></a>Azure サブスクリプションに別のクレジット カードを使用する
 
-1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
+1. [アカウント管理者](billing-subscription-transfer.md#whoisaa)として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
 1. カードにリンクされているサブスクリプションを選択します。
 1. ページの右側にある **[Manage payment methods (支払方法の管理)]** を選択します。
 1. 使用するカードの横にある **[代替使用]** をクリックします。 これにより、このカードに現在関連付けられている他のサブスクリプションも更新されます。 
 
 ## <a name="remove-a-credit-or-debit-card-from-the-account"></a>クレジット カードまたはデビットカードをアカウントから削除する
 
-1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
+1. [アカウント管理者](billing-subscription-transfer.md#whoisaa)として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
 1. カードにリンクされているサブスクリプションを選択します。
 3. ページの右側にある **[Manage payment methods (支払方法の管理)]** を選択します。
 4. 削除するクレジット カードの **[削除]** をクリックします。

@@ -1,6 +1,6 @@
 ---
-title: Log Analytics の IIS ログ | Microsoft Docs
-description: インターネット インフォメーション サービス (IIS) は、Log Analytics によって収集されるログ ファイルにユーザーの利用状況を格納します。  この記事では、IIS ログの収集を構成する方法、および Log Analytics で作成されるレコードの詳細について説明します。
+title: Azure Monitor での IIS ログ | Microsoft Docs
+description: インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集できるログ ファイル内にユーザー アクティビティを格納します。  この記事では、IIS ログの収集を構成する方法、および Azure Monitor で作成されるレコードの詳細について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,28 +13,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: cd63c63344f322f7d761a2907f52e97f1009e3b8
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ca951c813554ae253cbd572e03c53b8687499af9
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101957"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000167"
 ---
-# <a name="collect-iis-logs-in-log-analytics"></a>Log Analytics で IIS ログを収集する
-インターネット インフォメーション サービス (IIS) では、Log Analytics が収集して[ログ データ](data-collection.md)として格納できるログ ファイル内に、ユーザー アクティビティが格納されます。
+# <a name="collect-iis-logs-in-azure-monitor"></a>Azure Monitor での IIS ログを収集する
+インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集して[ログ データ](data-collection.md)として格納できるログ ファイル内にユーザー アクティビティを格納します。
 
 ![IIS ログ](media/data-sources-iis-logs/overview.png)
 
 ## <a name="configuring-iis-logs"></a>IIS ログの構成
-Log Analytics は IIS によって作成されたログ ファイルからエントリを収集するため、[ログを収集するように IIS を構成](https://technet.microsoft.com/library/hh831775.aspx)する必要があります。
+Azure Monitor は IIS によって作成されたログ ファイルからエントリを収集するため、[ログを記録するように IIS を構成する](https://technet.microsoft.com/library/hh831775.aspx)必要があります。
 
-Log Analytics でサポートされるのは、W3C 形式で保存された IIS ログ ファイルのみです。カスタム フィールドや IIS 詳細ログはサポートされません。 ログは NCSA または IIS のネイティブ形式では収集されません。
+Azure Monitor は W3C 形式で格納された IIS ログ ファイルのみをサポートし、カスタム フィールドや IIS 詳細ログはサポートしていません。 ログは NCSA または IIS のネイティブ形式では収集されません。
 
-Log Analytics での IIS ログは、[[詳細設定] メニュー](agent-data-sources.md#configuring-data-sources)から構成します。  必要な構成は、 **[Collect W3C format IIS log files]**(W3C 形式の IIS ログ ファイルを収集する) を選択することのみです。
+Azure Monitor での IIS ログは、[[詳細設定] メニュー](agent-data-sources.md#configuring-data-sources)から構成します。  必要な構成は、 **[Collect W3C format IIS log files]**(W3C 形式の IIS ログ ファイルを収集する) を選択することのみです。
 
 
 ## <a name="data-collection"></a>データ収集
-Log Analytics は、ログが閉じられ、新しいログが作成されるたびに、各エージェントから IIS ログ エントリを収集します。 この頻度は、IIS サイトの **[Log File Rollover Schedule]\(ログ ファイルのロールオーバー スケジュール\)** 設定によって制御されます。この設定の既定値は 1 日に 1 回です。 たとえば、設定が **[毎時]** の場合、Log Analytics は毎時間ログを収集します。  たとえば、設定が **[日単位]** の場合、Log Analytics は 24 時間ごとにログを収集します。
+Azure Monitor は、ログが閉じられ、新しいログが作成されるたびに、各エージェントから IIS ログ エントリを収集します。 この頻度は、IIS サイトの **[Log File Rollover Schedule]\(ログ ファイルのロールオーバー スケジュール\)** 設定によって制御されます。この設定の既定値は 1 日に 1 回です。 たとえば、設定が **[毎時]** である場合、Azure Monitor は 1 時間ごとにログを収集します。  設定が **[毎日]** である場合、Azure Monitor は 24 時間ごとにログを収集します。
 
 
 ## <a name="iis-log-record-properties"></a>IIS ログ レコードのプロパティ
@@ -67,7 +67,7 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 ## <a name="log-queries-with-iis-logs"></a>IIS ログでのログ クエリ
 次の表は、IIS ログ レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | 説明 |
+| Query | 説明 |
 |:--- |:--- |
 | W3CIISLog |IIS ログのすべてのレコード。 |
 | W3CIISLog &#124; where scStatus==500 |戻り状態が 500 であるすべての IIS ログ レコード。 |
@@ -76,5 +76,5 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |各 IIS コンピューターによって受信された合計バイト数。 |
 
 ## <a name="next-steps"></a>次の手順
-* 分析のために別の [データ ソース](agent-data-sources.md) を収集するように Log Analytics を構成します。
-* [ログ クエリ](../../log-analytics/log-analytics-queries.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。
+* 分析のために他の[データ ソース](agent-data-sources.md)を収集するように Azure Monitor を構成します。
+* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。

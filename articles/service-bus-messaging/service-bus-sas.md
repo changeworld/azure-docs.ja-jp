@@ -3,9 +3,9 @@ title: Shared Access Signature による Azure Service Bus のアクセスの制
 description: Shared Access Signature を使用して Service Bus のアクセスの制御を行う方法と、Azure Service Bus における SAS 承認の詳細について説明します。
 services: service-bus-messaging
 documentationcenter: na
-author: spelluru
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
-ms.author: spelluru
-ms.openlocfilehash: ef1b8b2dd96a89a553239168d412d84e63a29f2a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: aschhab
+ms.openlocfilehash: d70b7acb906c60001ad005a0fe9361950bc029b7
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254589"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895858"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -31,7 +31,7 @@ SAS は、承認規則に基づいて Service Bus へのアクセスを保護し
 
 Shared Access Signature は、簡単なトークンを使う要求ベースの承認メカニズムです。 SAS を使うと、ネットワーク経由でキーが渡されることがなくなります。 キーは、後でサービスによって検証が可能な情報に暗号で署名するために使われます。 SAS は、承認規則と照合キーをクライアントが直接所有しているユーザー名とパスワードの方式と同じように使うことができます。 また、SAS は使用できます、フェデレーション セキュリティ モデルと同じように使うこともできます。その場合、クライアントは時間制限のある署名されたアクセス トークンをセキュリティ トークン サービスから受け取り、署名キーを所有することはありません。
 
-Service Bus での SAS 認証は、アクセス権が関連付けられている名前付きの [Shared Access Authorization 規則](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)と、プライマリおよびセカンダリの暗号化キーのペアによって構成されます。 キーは、Base64 で表された 256 ビットの値です。 規則の構成は、名前空間レベルおよび Service Bus の[リレー](../service-bus-relay/relay-what-is-it.md)、[キュー](/service-bus-messaging/service-bus-messaging-overview.md#queues)、[トピック](/service-bus-messaging/service-bus-messaging-overview.md#topics)で行うことができます。
+Service Bus での SAS 認証は、アクセス権が関連付けられている名前付きの [Shared Access Authorization 規則](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)と、プライマリおよびセカンダリの暗号化キーのペアによって構成されます。 キーは、Base64 で表された 256 ビットの値です。 規則の構成は、名前空間レベルおよび Service Bus の[リレー](../service-bus-relay/relay-what-is-it.md)、[キュー](service-bus-messaging-overview.md#queues)、[トピック](service-bus-messaging-overview.md#topics)で行うことができます。
 
 [Shared Access Signature](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) のトークンには、選択された承認規則、アクセスする必要があるリソースの URI、有効期限、および選択された承認規則のプライマリまたはセカンダリ暗号化キーを使ってこれらのフィールドについて計算された HMAC-SHA256 暗号化署名が含まれます。
 
@@ -96,13 +96,13 @@ SAS トークンは、`signature-string` で使われている `<resourceURI>` �
 
 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) オブジェクトで使用されるキーは、定期的に再生成することをお勧めします。 ときどきキーをローテーションできるように、主キーとセカンダリ キーのスロットが存在します。 お使いのアプリケーションが通常は主キーを使っている場合は、主キーをセカンダリ キー スロットにコピーし、主キーだけを再生成できます。 その後、セカンダリ スロットの古い主キーを使ってアクセスを続けてきたクライアント アプリケーションに、新しい主キーの値を構成します。 すべてのクライアントが更新されたら、セカンダリ キーを再生成して、最終的に古い主キーの使用を終了できます。
 
-キーが侵害されたことがはっきりしているか疑わしく、キーを取り消す必要がある場合は、[SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) と [SecondaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_SecondaryKey) の両方を再生成し、それらを新しいキーに置き換えることができます。 この手順により、古いキーで署名されたすべてのトークンが無効になります。
+キーが侵害されたことがはっきりしているか疑わしく、キーを取り消す必要がある場合は、[SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) と [SecondaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) の両方を再生成し、それらを新しいキーに置き換えることができます。 この手順により、古いキーで署名されたすべてのトークンが無効になります。
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>Service Bus による Shared Access Signature 認証
 
 以下で説明するシナリオには、承認規則の構成、SAS トークンの生成、クライアントの承認などが含まれます。
 
-構成を説明して SAS 承認を使用する、Service Bus アプリケーションの完全に動作するサンプルについては、 [Service Bus による Shared Access Signature 認証](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)に関するページを参照してください。 Service Bus サブスクリプションをセキュリティで保護するために名前空間またはトピックに構成された SAS 承認規則の使用を示す関連のサンプルについては、 [Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)に関するページを参照してください。
+構成を説明して SAS 承認を使用する、Service Bus アプリケーションの完全に動作するサンプルについては、 [Service Bus による Shared Access Signature 認証](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)に関するページを参照してください。 Service Bus サブスクリプションをセキュリティで保護するために、名前空間またはトピックに構成される SAS 承認規則の使い方を示した関連サンプルについては、[Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)に関するページを参照してください。
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>エンティティの共有アクセス承認規則へのアクセス
 

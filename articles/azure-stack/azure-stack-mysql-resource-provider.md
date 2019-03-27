@@ -11,19 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 635948c28ffe5d5eaece372976e58d26e17214e3
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 10/25/2018
+ms.openlocfilehash: e610f946868940f9fde66932bedec1dc998f390b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50084232"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203881"
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で MySQL データベースを使用する
 
-MySQL データベースは、Web サイトで一般的であり、多くの Web サイト プラットフォームをサポートしています。 たとえば、Web Apps プラットフォームをサービス (PaaS) アドオンとして使って、WordPress Web サイトを作成できます。
+MySQL データベースは、Web サイトでよく使用されており、多くの Web サイト プラットフォームをサポートしています。 たとえば、App Services リソース プロバイダー (PaaS) アドオンを使用して WordPress Web サイトを作成できます。
 
 リソース プロバイダーをデプロイした後は、次のことができます。
 

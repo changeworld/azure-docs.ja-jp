@@ -3,19 +3,20 @@ title: LUIS アプリのテスト
 titleSuffix: Language Understanding - Azure Cognitive Services
 description: テストは、LUIS にサンプル発話を提供し、LUIS が認識した意図およびエンティティの応答を取得するプロセスです。
 author: diberry
-manager: cgronlun
+manager: nitinme
+services: cognitive-services
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: a5e0a75c27dc660b5ce7f7ee4841ce2da65bac5f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 55284318a627186b7a20d6d36dff1953e80d5020
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259701"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958560"
 ---
 # <a name="testing-example-utterances-in-luis"></a>LUIS での発話の例のテスト
 

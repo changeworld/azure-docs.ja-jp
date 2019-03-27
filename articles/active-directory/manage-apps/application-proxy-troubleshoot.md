@@ -3,24 +3,25 @@ title: アプリケーション プロキシのトラブルシューティング
 description: Azure AD アプリケーション プロキシのエラーのトラブルシューティングを行う方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 2904de3243e37d7ee575a504934d5975789c00ef
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ee78516cbed46174e98c483970a21d740eac6829
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53135068"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209627"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 発行されたアプリケーションへのアクセス中、またはアプリケーションの発行中にエラーが発生する場合は、Microsoft Azure AD アプリケーション プロキシが正しく機能しているかどうかを次のオプションで確認します。
@@ -54,7 +55,7 @@ Azure AD のトラブルシューティング ツールについて詳しくは�
 | コネクタの登録に失敗しました:Microsoft Azure 管理ポータルでアプリケーション プロキシを有効化したことと、Active Directory ユーザー名とパスワードを正しく入力したことを確認してください。 エラー:'AADSTS50059:テナントを識別する情報が要求内に見つからず、指定されたどの資格情報でも暗黙的に示されなかったため、サービス プリンシパル URI による検索が失敗しました。 | Microsoft アカウントと、アクセスしようとしているディレクトリの組織 ID の一部であるドメイン以外を使用して、サインインしようとしています。 admin がテナント ドメインと同じドメイン名の一部であることを確認します。たとえば、Azure AD ドメインが contoso.com である場合、admin は admin@contoso.com である必要があります。 |
 | PowerShell スクリプトを実行するための現在の実行ポリシーを取得できませんでした。 | コネクタのインストールに失敗した場合は、PowerShell 実行ポリシーが無効になっていないことを確認します。 <br><br>1.グループ ポリシー エディターを開きます。<br>2.**[コンピューターの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[Windows PowerShell]** の順に移動して、**[スクリプトの実行を有効にする]** をダブルクリックします。<br>手順 3.実行ポリシーは、**[未構成]** または **[有効]** に設定できます。 **[有効]** に設定した場合は、[オプション] で実行ポリシーが **[ローカル スクリプトおよびリモートの署名済みスクリプトを許可する]** または **[すべてのスクリプトを許可する]** に設定されていることを確認します。 |
 | コネクタが構成のダウンロードに失敗しました。 | 認証に使用される、コネクタのクライアント証明書が期限切れです。 このエラーは、コネクタをプロキシの背後にインストールした場合にも発生することがあります。 その場合、コネクタはインターネットにアクセスできず、リモート ユーザーにアプリケーションを提供できません。 Windows PowerShell で `Register-AppProxyConnector` コマンドレットを使用して、手動で信頼を更新します。 コネクタがプロキシの背後にある場合は、コネクタ アカウントの "ネットワーク サービス" および "ローカル システム" にインターネットへのアクセスを許可する必要があります。 そうするには、プロキシへのアクセスを許可するか、プロキシをバイパスするように設定します。 |
-| コネクタの登録に失敗しました:コネクタを登録する Active Directory のグローバル管理者であることを確認してください。 エラー:'登録要求が拒否されました。' | ログインに使用しようとしているエイリアスは、このドメインの管理者ではありません。 コネクタは必ず、ユーザーのドメインを所有しているディレクトリ用にインストールされます。 サインインに使用している管理者アカウントが、Azure AD テナントに対するグローバル アクセス許可を持っていることを確認してください。 |
+| コネクタの登録に失敗しました:コネクタを登録する Active Directory のアプリケーション管理者であることを確認してください。 エラー:'登録要求が拒否されました。' | ログインに使用しようとしているエイリアスは、このドメインの管理者ではありません。 コネクタは必ず、ユーザーのドメインを所有しているディレクトリ用にインストールされます。 サインインに使用している管理者アカウントが、Azure AD テナントに対して少なくともアプリケーション管理者のアクセス許可を持っていることを確認してください。 |
 
 ## <a name="kerberos-errors"></a>Kerberos のエラー
 

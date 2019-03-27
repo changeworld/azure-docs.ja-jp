@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: cc1f9ea18d425679a4db9c7b91a1c0a3c4451d4b
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: e6a671470a87f4509e466bcdfe7845b7bf7ec8dc
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796658"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55209165"
 ---
 # <a name="entity-resolvers"></a>エンティティ リゾルバー
 

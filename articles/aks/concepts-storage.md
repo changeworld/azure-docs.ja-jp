@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: c3a737bdd9978e6cb02e3e8b7a34407eb1dd8fb6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: fd301967800f67d95c12f1689981b2dfd8eb2d80
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380767"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452765"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのストレージ オプション
 
@@ -29,7 +29,7 @@ Azure Kubernetes Service (AKS) で実行されるアプリケーションで、�
 
 ## <a name="volumes"></a>ボリューム
 
-多くの場合、アプリケーションではデータの格納と取得を行う必要があります。 通常、Kubernetes は、破棄できる短期的なリソースとして個々のポッドを扱うため、アプリケーションが必要に応じてデータを使用したり保存したりする際にさまざまなアプローチが提供されます。 "*ボリューム*" とは、複数のポッドにまたがり、アプリケーション ライフサイクルを通じて、データを格納、取得および保存する手段です。
+多くの場合、アプリケーションではデータの格納と取得を行う必要があります。 通常、Kubernetes では、破棄できる短期的なリソースとして個々のポッドが扱われるため、アプリケーションで必要に応じてデータを使用したり保存したりするためのさまざまなアプローチが提供されています。 "*ボリューム*" とは、複数のポッドにまたがり、アプリケーション ライフサイクルを通じて、データを格納、取得および保存する手段です。
 
 データを格納して取得するための従来のボリュームは、Azure Storage を基盤とする Kubernetes リソースとして作成されます。 これらのデータ ボリュームを手動で作成してポッドに直接割り当てることも、Kubernetes で自動的に作成することもできます。 これらのデータ ボリュームには、Azure ディスクまたは Azure Files を使用できます。
 
@@ -44,7 +44,7 @@ Kubernetes におけるボリュームは、情報を格納して取得するだ
 
 ## <a name="persistent-volumes"></a>永続ボリューム
 
-ボリュームは、ポッド ライフサイクルの一部として定義および作成され、そのポッドが削除されるまでしか存在しません。 メンテナンス イベントでポッドが別のホストに再スケジュールされた場合でも、多くの場合、ポッドはストレージがそのまま存在することを予期しています (特に StatefulSets)。 "*永続ボリューム*" (PV) は、Kubernetes API によって作成および管理されるストレージ リソースであり、個々のポッドの有効期間が終了しても存在できます。
+ポッド ライフサイクルの一部として定義および作成されるボリュームは、そのポッドが削除されるまでしか存在しません。 メンテナンス イベントでポッドが別のホストに再スケジュールされた場合でも、多くの場合、ポッドはストレージがそのまま存在することを予期しています (特に StatefulSets)。 "*永続ボリューム*" (PV) は、Kubernetes API によって作成および管理されるストレージ リソースであり、個々のポッドの有効期間が終了しても存在できます。
 
 PersistentVolume を提供するために Azure ディスクまたは Azure Files が使用されます。 前の「ボリューム」のセクションで説明したように、多くの場合、ディスクまたは Files の選択はデータへの同時アクセスの必要性またはパフォーマンス レベルによって決まります。
 

@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 8ccd2bfe78ca7b0fabac2b8c9bfd6ba002782a41
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d4204d4937b8eca2dcb3f656659f185f30c8bddf
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352810"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755029"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
 
-Log Analytics を使用して、ローカル データ センターやその他のクラウド環境内にある仮想マシンや物理コンピューターを監視、および管理するには、Microsoft Monitoring Agent (MMA) をデプロイし、1 つ以上の Log Analytics ワークスペースにレポートを送信するように構成する必要があります。  エージェントでは、Azure Automation 用の Hybrid Runbook Worker ロールもサポートされます。  
+Log Analytics を使用して、ローカル データ センターやその他のクラウド環境内にある仮想マシンや物理コンピューターを監視、および管理するには、Log Analytics エージェント (別名 Microsoft Monitoring Agent (MMA)) をデプロイし、1 つ以上の Log Analytics ワークスペースにレポートを送信するように構成する必要があります。 エージェントでは、Azure Automation 用の Hybrid Runbook Worker ロールもサポートされます。  
 
 監視対象の Windows コンピューターでは、エージェントは Microsoft Monitoring Agent サービスとしてリストされます。 Microsoft Monitoring Agent サービスは、ログ ファイル、Windows イベント ログ、パフォーマンス データ、およびその他のテレメトリからイベントを収集します。 エージェントは、レポート送信先の Log Analytics サービスと通信できないときにも常時実行され、収集したデータを監視対象コンピューターのディスク キューに配置します。 接続が復元されると、Microsoft Monitoring Agent サービスは収集したデータをサービスに送信します。
 
@@ -36,7 +36,7 @@ Log Analytics を使用して、ローカル データ センターやその他�
 サポートされている構成を確認するには、「[サポートされている Windows オペレーティング システム](log-analytics-agent.md#supported-windows-operating-systems)」と「[ネットワーク ファイアウォールの構成](log-analytics-agent.md#network-firewall-requirements)」をご覧ください。
 
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
-Microsoft Monitoring Agent for Windows をインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Log Analytics と正常に通信できるようにするために必要です。  
+Windows 用 Log Analytics エージェントをインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Log Analytics と正常に通信できるようにするために必要です。  
 
 1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、エージェントのレポート送信先にするワークスペースを選択します。
@@ -64,7 +64,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 5. 設定を有効にするためにシステムを再起動します。 
 
 ## <a name="install-the-agent-using-setup-wizard"></a>セットアップ ウィザードを使用してエージェントをインストールする
-次の手順では、コンピューター上の Microsoft Monitoring Agent 用のセットアップ ウィザードを使用して、Azure クラウドと Azure Government クラウド内にある Log Analytics 用のエージェントをインストールし、構成します。 System Center Operations Manager 管理グループにも報告をするようエージェントを構成する方法を知るには、「[エージェント セットアップ ウィザードを使用して Operations Manager エージェントを展開するには](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard)」を参照してください。
+次の手順では、コンピューター上のエージェント用のセットアップ ウィザードを使用して、Azure クラウドと Azure Government クラウド内にある Log Analytics 用のエージェントをインストールし、構成します。 System Center Operations Manager 管理グループにも報告をするようエージェントを構成する方法を知るには、「[エージェント セットアップ ウィザードを使用して Operations Manager エージェントを展開するには](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-manually#to-deploy-the-operations-manager-agent-with-the-agent-setup-wizard)」を参照してください。
 
 1. ご使用の Log Analytics ワークスペースで、先の手順で移動した **[Windows サーバー]** ページの **[Windows エージェントのダウンロード]** から、Windows オペレーティング システムのプロセッサ アーキテクチャに応じた適切なバージョンを選択します。   
 2. セットアップを実行して、コンピューターにエージェントをインストールします。
@@ -87,7 +87,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 >[!NOTE]
 >エージェントをアップグレードするには、Log Analytics スクリプト API を使用する必要があります。 詳しくは、「[Windows および Linux での Log Analytics エージェントの管理とメンテナンス](agent-manage.md)」をご覧ください。
 
-次の表は、エージェントのセットアップ (Automation DSC を使用してデプロイする場合を含む) でサポートされる、Log Analytics パラメーターを示したものです。
+次の表は、エージェントのセットアップ (Automation DSC を使用してデプロイする場合を含む) でサポートされる、特定パラメーターを示したものです。
 
 |MMA 固有のオプション                   |メモ         |
 |---------------------------------------|--------------|

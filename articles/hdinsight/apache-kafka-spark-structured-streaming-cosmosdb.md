@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e964e00cd326d924a77a53348942f91ebbdbdea4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 9d29608ded920b14af1be6d4d68ab1d77c3c8cb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630162"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099156"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Apache Kafka と Azure Cosmos DB で Apache Spark 構造化ストリーミングを使用する
 
@@ -52,19 +52,19 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
     このテンプレートでは、次のリソースを作成します。
 
-    * HDInsight 3.6 クラスター上の Kafka。
+   * HDInsight 3.6 クラスター上の Kafka。
 
-    * HDInsight 3.6 クラスター上の Spark
+   * HDInsight 3.6 クラスター上の Spark
 
-    * Azure Virtual Network (HDInsight クラスターを含む)
+   * Azure Virtual Network (HDInsight クラスターを含む)
 
-        > [!NOTE]  
-        > テンプレートによって作成された仮想ネットワークは、10.0.0.0/16 アドレス空間を使用します。
+       > [!NOTE]  
+       > テンプレートによって作成された仮想ネットワークは、10.0.0.0/16 アドレス空間を使用します。
 
-    * Azure Cosmos DB: SQL API データベース
+   * Azure Cosmos DB: SQL API データベース
 
-    > [!IMPORTANT]  
-    > この例で使用する構造化ストリーミングのノートブックでは、HDInsight 3.6 上に Spark が必要です。 HDInsight 上で以前のバージョンの Spark を使用している場合は、ノートブックを使用するとエラーを受信します。
+     > [!IMPORTANT]  
+     > この例で使用する構造化ストリーミングのノートブックでは、HDInsight 3.6 上に Spark が必要です。 HDInsight 上で以前のバージョンの Spark を使用している場合は、ノートブックを使用するとエラーを受信します。
 
 2. 以下の情報を使用して、**[カスタム デプロイ]** セクションに各エントリを入力します。
    

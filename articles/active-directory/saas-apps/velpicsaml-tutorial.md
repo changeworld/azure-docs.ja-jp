@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Velpic SAML の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Velpic SAML の統合 | Microsoft Docs
 description: Azure Active Directory と Velpic SAML の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a8fe814801d00b3f27e52484d742cbe6c7b0770
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8328fc5582fa9ebe38a23e5916ac0c3127575529
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114008"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166098"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>チュートリアル: Azure Active Directory と Velpic SAML の統合
+# <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>チュートリアル:Azure Active Directory と Velpic SAML の統合
 
 このチュートリアルでは、Velpic SAML と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -157,7 +158,7 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
     c. **[Provider Metadata Config] \(Provider メタデータ構成)** で、Azure Portal からダウンロードしたメタデータ XML ファイルをアップロードします。
 
-    d. **Auto create new users \(新規ユーザーの自動作成)** チェックボックスをオンにして、SAML のジャストインタイム プロビジョニングを有効にすることもできます。 Velpic にユーザーが存在せず、このチェックボックスがオンになっていない場合は、Azure からのログインに失敗します。 このチェックボックスがオンになっている場合、ユーザーは、ログイン時に Velpic に自動的にプロビジョニングされます。 
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Auto create new users \(新規ユーザーの自動作成)** チェックボックスをオンにして、SAML のジャストインタイム プロビジョニングを有効にすることもできます。 Velpic にユーザーが存在せず、このチェックボックスがオンになっていない場合は、Azure からのログインに失敗します。 このチェックボックスがオンになっている場合、ユーザーは、ログイン時に Velpic に自動的にプロビジョニングされます。 
 
     e. テキストボックスから**シングル サインオン URL** をコピーして、Azure Portal に貼り付けます。
     
@@ -192,7 +193,7 @@ Velpic SAML で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-velpic-saml-test-user"></a>Velpic SAML のテスト ユーザーの作成
 
@@ -214,7 +215,7 @@ Velpic SAML 企業サイトに管理者としてログインし、次の手順�
 
     c. **[User Name] \(ユーザー名)** テキストボックスに、Britta Simon のユーザーを入力します。
 
-    d. **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Email (電子メール)]** ボックスに、Britta Simon アカウントの電子メール アドレスを入力します。
 
     e. その他の情報は省略可能です。必要に応じて入力してください。
     

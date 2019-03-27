@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
-ms.component: files
-ms.openlocfilehash: 5e36a41c1678ac38c7ebee5b47fd88076fa3fb70
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: files
+ms.openlocfilehash: 4361ec72f5f9cff924900ddd712aa1aa029c5ef4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629698"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509022"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -24,15 +24,15 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 | Windows のバージョン        | SMB のバージョン | Azure VM でマウント可能 | オンプレミスでマウント可能 |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 2019    | SMB 3.0 | [はい] | [はい] |
-| Windows 10<sup>1</sup> | SMB 3.0 | [はい] | [はい] |
-| Windows Server 半期チャネル<sup>2</sup> | SMB 3.0 | [はい] | [はい] |
-| Windows Server 2016    | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows 8.1            | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows Server 2012 R2 | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows Server 2012    | SMB 3.0     | [はい]                   | [はい]                  |
-| Windows 7              | SMB 2.1     | [はい]                   | いいえ                    |
-| Windows Server 2008 R2 | SMB 2.1     | [はい]                   | いいえ                    |
+| Windows Server 2019    | SMB 3.0 | はい | はい |
+| Windows 10<sup>1</sup> | SMB 3.0 | はい | はい |
+| Windows Server 半期チャネル<sup>2</sup> | SMB 3.0 | はい | はい |
+| Windows Server 2016    | SMB 3.0     | はい                   | はい                  |
+| Windows 8.1            | SMB 3.0     | はい                   | はい                  |
+| Windows Server 2012 R2 | SMB 3.0     | はい                   | はい                  |
+| Windows Server 2012    | SMB 3.0     | はい                   | はい                  |
+| Windows 7              | SMB 2.1     | はい                   | いいえ                    |
+| Windows Server 2008 R2 | SMB 2.1     | はい                   | いいえ                    |
 
 <sup>1</sup>Windows 10 バージョン 1507、1607、1703、1709、1803、1809。  
 <sup>2</sup>Windows Server バージョン 1709 および 1803。
@@ -40,14 +40,12 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 > [!Note]  
 > 常に、各 Windows バージョンの最新のサポート技術情報を参照することをお勧めします。
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>前提条件 
 * **ストレージ アカウント名**: Azure ファイル共有をマウントするには、ストレージ アカウントの名前が必要です。
 
 * **ストレージ アカウント キー**: Azure ファイル共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
 
-* **ポート 445 が開いていることを確認する**: SMB プロトコルでは、TCP ポート 445 が開いている必要があります。ポート 445 がブロックされている場合は、接続が失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 次の PowerShell コードは、AzureRM PowerShell モジュールがインストール済みであることを想定しています。詳細については、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resoure-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
+* **ポート 445 が開いていることを確認する**: SMB プロトコルでは、TCP ポート 445 が開いている必要があります。ポート 445 がブロックされている場合は、接続が失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 次の PowerShell コードは、AzureRM PowerShell モジュールがインストール済みであることを想定しています。詳細については、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resource-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
 
     ```PowerShell
     $resourceGroupName = "<your-resource-group-name>"
@@ -55,12 +53,12 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
     # This command requires you to be logged into your Azure account, run Login-AzureRmAccount if you haven't
     # already logged in.
-    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
 
     # The ComputerName, or host, is <storage-account>.file.core.windows.net for Azure Public Regions.
     # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
     # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-    Test-NetConnection -ComputerName [System.Uri]::new($storageAccount.Context.FileEndPoint).Host -Port 445
+    Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
     ```
 
     接続に成功した場合、次の出力結果が表示されます。
@@ -85,7 +83,7 @@ Windows Server や Linux Samba サーバー、NAS デバイスをホストとす
 SMB ファイル共有が想定されている基幹業務 (LOB) アプリケーションを Azure にリフトアンドシフトする一般的なパターンは、専用の Windows ファイル サーバーを Azure VM で実行する代わりとして Azure ファイル共有を使うことです。 基幹業務アプリケーションで Azure ファイル共有を使うための移行に関して、その作業を成功させるうえで重要な考慮事項があります。多くの基幹業務アプリケーションは、VM の管理者アカウントではなく、制限されたシステム アクセス許可を与えられた専用のサービス アカウントのコンテキストで実行されるということです。 そのため、Azure ファイル共有の資格情報をマウント/保存する際は、自分の管理者アカウントからではなく、必ずサービス アカウントのコンテキストから行う必要があります。
 
 ### <a name="persisting-azure-file-share-credentials-in-windows"></a>Azure ファイル共有の資格情報を Windows で保持する  
-ストレージ アカウントの資格情報は、[cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) ユーティリティを使って Windows 内に保持することができます。 つまり Azure ファイル共有に UNC パスでアクセスしたり Azure ファイル共有をマウントしたりする際に、資格情報を指定する必要はありません。 ストレージ アカウントの資格情報を保存するには、次の PowerShell コマンドを実行します。`<your-storage-account-name>` と `<your-resoure-group-name>` は、実際の値に置き換えてください。
+ストレージ アカウントの資格情報は、[cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) ユーティリティを使って Windows 内に保持することができます。 つまり Azure ファイル共有に UNC パスでアクセスしたり Azure ファイル共有をマウントしたりする際に、資格情報を指定する必要はありません。 ストレージ アカウントの資格情報を保存するには、次の PowerShell コマンドを実行します。`<your-storage-account-name>` と `<your-resource-group-name>` は、実際の値に置き換えてください。
 
 ```PowerShell
 $resourceGroupName = "<your-resource-group-name>"
@@ -101,8 +99,8 @@ $storageAccountKeys = Get-AzStorageAccountKey -ResourceGroupName $resourceGroupN
 # cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
 # Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign 
 # clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
-Invoke-Expression -Command "cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
-    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)"
+Invoke-Expression -Command ("cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
+    "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)")
 ```
 
 ストレージ アカウントの資格情報が cmdkey ユーティリティによって保存されたことを確認するには、次のように list パラメーターを使用します。

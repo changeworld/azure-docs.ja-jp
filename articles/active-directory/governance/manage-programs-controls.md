@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: b62a150160daa1d6708dbf5edaa6772688e2ffa1
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 78f4c978a04a7589e71ba39676e06ca5cc37f579
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45606952"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170671"
 ---
 # <a name="manage-programs-and-their-controls"></a>プログラムとそのコントロールの管理 
 

@@ -46,7 +46,7 @@ items:
       href: tutorial-install-apps-cli.md
     - name: Azure PowerShell
       href: tutorial-install-apps-powershell.md
-    - name: テンプレート
+    - name: Template
       href: tutorial-install-apps-template.md
   - name: 5 - スケール セットの自動スケーリング
     items:
@@ -54,7 +54,7 @@ items:
       href: tutorial-autoscale-cli.md
     - name: Azure PowerShell
       href: tutorial-autoscale-powershell.md
-    - name: テンプレート
+    - name: Template
       href: tutorial-autoscale-template.md
 - name: サンプル
   items:
@@ -120,19 +120,15 @@ items:
     href: ../virtual-machines/windows/maintenance-and-updates.md
     maintainContext: true
   - name: Disk Storage
-    href: ../virtual-machines/windows/about-disks-and-vhds.md
     items:
     - name: Managed Disks
       href: ../virtual-machines/windows/managed-disks-overview.md
       maintainContext: true
-    - name: Premium Storage
-      href: ../virtual-machines/windows/premium-storage.md
+    - name: ディスクの種類の選択
+      href: ../virtual-machines/windows/disks-types.md
       maintainContext: true
     - name: Premium Storage のパフォーマンス
       href: ../virtual-machines/windows/premium-storage-performance.md
-      maintainContext: true
-    - name: Standard Storage
-      href: ../virtual-machines/windows/standard-storage.md
       maintainContext: true
     - name: ディスクのスケーラビリティ ターゲット
       href: ../virtual-machines/windows/disk-scalability-targets.md
@@ -140,7 +136,6 @@ items:
     - name: ディスクのバックアップとディザスター リカバリー
       href: ../virtual-machines/windows/backup-and-disaster-recovery-for-azure-iaas-disks.md
       maintainContext: true
-    maintainContext: true
   - name: ネットワーク
     href: ../virtual-machines/windows/network-overview.md
     maintainContext: true
@@ -152,9 +147,6 @@ items:
     maintainContext: true
   - name: 監視
     href: ../virtual-machines/windows/monitor.md
-    maintainContext: true
-  - name: ハイ パフォーマンス コンピューティング
-    href: ../virtual-machines/windows/high-performance-computing.md
     maintainContext: true
   - name: デプロイに関する考慮事項
     items:
@@ -181,14 +173,6 @@ items:
       href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
   - name: デプロイ
     items:
-    - name: Ansible
-      items:
-      - name: スケール セットを作成および管理する
-        href: /azure/ansible/ansible-create-configure-vmss
-        maintainContext: true
-      - name: スケール セットへのアプリのデプロイ
-        href: /azure/ansible/ansible-deploy-app-vmss
-        maintainContext: true
     - name: Visual Studio で作成する
       href: virtual-machine-scale-sets-vs-create.md
     - name: Availability Zones を使用する
@@ -204,6 +188,8 @@ items:
       href: virtual-machine-scale-sets-deploy-app.md
     - name: スケール セット上の拡張機能
       items:
+      - name: スケール セットにおける拡張機能の実行順序
+        href: virtual-machine-scale-sets-extension-sequencing.md
       - name: アプリケーション正常性拡張機能
         href: virtual-machine-scale-sets-health-extension.md
     - name: スケール セットでデータ ディスクを使用する
@@ -251,6 +237,17 @@ items:
       href: virtual-machine-scale-sets-convert-template-to-md.md
     - name: Azure の計画メンテナンス
       href: virtual-machine-scale-sets-maintenance-notifications.md
+  - name: Ansible の使用
+    items:
+    - name: スケール セットを作成および管理する
+      href: /azure/ansible/ansible-create-configure-vmss
+      maintainContext: true
+    - name: スケール セットへのアプリのデプロイ
+      href: /azure/ansible/ansible-deploy-app-vmss
+      maintainContext: true
+    - name: スケール セットの自動スケーリングを行う
+      href: /azure/ansible/ansible-auto-scale-vmss
+      maintainContext: true
   - name: トラブルシューティング
     items:
     - name: 自動スケール
@@ -282,10 +279,10 @@ items:
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-vm-scale-set
-ms.openlocfilehash: de2352105b178a91e47934db5b2c2d6b82a12b94
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+    href: https://stackoverflow.com/questions/tagged/azure-vm-scale-set
+ms.openlocfilehash: 75b5a36505f56f71a7a5cbf3addb96085e823b2b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231582"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014619"

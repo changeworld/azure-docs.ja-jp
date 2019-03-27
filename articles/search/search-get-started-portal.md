@@ -1,21 +1,21 @@
 ---
 title: Azure portal を使用したインデックス作成とクエリのクイック スタート チュートリアル - Azure Search
-description: このクイック スタート チュートリアルでは、Azure portal と組み込みのサンプル データを使用して Azure Search のインデックスを生成します。 フルテキスト検索、フィルター、ファセット、あいまい検索、地理空間検索などについて確認します。
+description: Azure portal のデータ インポート ウィザードと組み込みのサンプル データを使用して、初めてのインデックスを Azure Search に作成し、照会する方法について説明します。
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9bdc2e197b4d7aea270c954305a96a01a1371945
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 260dfc829d0869b1fc4f58ae399351c5f68dd926
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121551"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270336"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>クイック スタート:ポータルのビルトイン ツールを使用した Azure Search のインポート、インデックス作成、クエリ
 
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="step-3---configure-index"></a>手順 3 - インデックスを構成する
 
-通常、インデックスの作成はコード ベースの作業であり、データの読み込み前に完了しています。 ただし、このチュートリアルで示すように、ウィザードではクロール可能なデータ ソースを想定して、基本インデックスを生成できます。 インデックスには少なくとも、名前とフィールド コレクションが必要です。さらに、各ドキュメントを一意に識別するためのドキュメント キーとして、いずれかのフィールドがマークされている必要があります。 さらに、オートコンプリートやクエリ候補が必要な場合は、言語アナライザーまたはサジェスターを指定できます。
+通常、インデックスの作成はコード ベースの作業であり、データの読み込み前に完了しています。 ただし、このチュートリアルで示すように、ウィザードではクロール可能なデータ ソースを想定して、基本インデックスを生成できます。 インデックスには少なくとも、名前とフィールド コレクションが必要です。さらに、各ドキュメントを一意に識別するためのドキュメント キーとして、いずれかのフィールドがマークされている必要があります。 さらに、オートコンプリートやクエリ候補が必要な場合は、言語アナライザーまたは suggester を指定できます。
 
 フィールドには、データ型と属性があります。 上部に並んだチェック ボックスは、フィールドがどのように使用されるかを制御する "*インデックスの属性*" です。
 
@@ -94,15 +94,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ストレージ要件は、選択の結果によって変わりません。 たとえば、複数のフィールドで **[取得可能]** 属性を設定した場合、ストレージ要件は上昇しません。
 
-既定では、ウィザードは一意の識別子のデータ ソースをキー フィールドの基準としてスキャンします。 文字列は、取得可能かつ検索可能です。 整数は、取得可能、フィルター可能、ソート可能、ファセット可能です。
+既定では、ウィザードは一意の識別子のデータ ソースをキー フィールドの基準としてスキャンします。 "*文字列*" は、**取得可能**かつ**検索可能**です。 "*整数*" は、**取得可能**、**フィルター可能**、**ソート可能**、**ファセット可能**です。
 
-1. 既定値をすべてそのまま使用します。
+1. 既定値を受け入れます。 
 
-  ![生成された realestate インデックス](media/search-get-started-portal/realestateindex2.png)
+   既存の realestate データ ソースを使用してウィザードを 2 回目に再実行した場合は、インデックスが既定の属性で構成されることはありません。 以降のインポートでは、属性を手動で選択する必要があります。
+
+   ![生成された realestate インデックス](media/search-get-started-portal/realestateindex2.png)
 
 2. 次のページに進みます。
 
-  ![次のページでインデクサーを作成](media/search-get-started-portal/next-button-create-indexer.png)
+   ![次のページでインデクサーを作成](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>手順 4 - インデクサーを構成する
 

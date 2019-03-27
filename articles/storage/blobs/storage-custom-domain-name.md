@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 47ce2b39f1733c99ef8c15926d42aa62e1fcd44c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: blobs
+ms.openlocfilehash: edd011509c9129e95bcf7ea49f5a84e17fffd176
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634560"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310552"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Azure Storage アカウントのカスタム ドメイン名の構成
 
@@ -56,7 +56,7 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 
 カスタム ドメインを BLOB エンドポイントにマッピングすると、[Azure portal](https://portal.azure.com) でのドメインの登録中に短時間のダウンタイムが発生する可能性があります。 ドメインが現在、ダウンタイムが発生しないことを必要とするサービス レベル アグリーメント (SLA) があるアプリケーションをサポートしている場合は、Azure *asverify* サブドメインを中間登録ステップとして使用できます。 このステップにより、ユーザーは、DNS マッピングの実行中、ドメインにアクセスすることができます。
 
-中間の方法については、「[*asverify* サブドメインを使用したカスタム ドメインの登録](#register-a-custom-domain-using-the-asverify-subdomain)」を参照してください。
+中間の方法については、「*asverify* サブドメインを使用したカスタム ドメインの登録」を参照してください。
 
 ## <a name="register-a-custom-domain"></a>カスタム ドメインの登録
 次のステートメントが当てはまる場合、このセクションの手順を使用して、ドメインを登録します。
@@ -65,7 +65,7 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 
 Azure DNS を使用して、Azure BLOB のカスタム DNS 名を構成できます。 詳細については、「[Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage)」をご覧ください。
 
-カスタム ドメインが現在、いかなるダウンタイムの発生も許容されないアプリケーションをサポートしている場合は、「[*asverify* サブドメインを使用したカスタム ドメインの登録](#register-a-custom-domain-using-the-asverify-subdomain)」の手順を使用してください。
+カスタム ドメインが現在、いかなるダウンタイムの発生も許容されないアプリケーションをサポートしている場合は、「*asverify* サブドメインを使用したカスタム ドメインの登録」にある手順を使用してください。
 
 カスタム ドメイン名を構成するには、DNS で新しい CNAME レコードを作成します。 CNAME レコードによって、ドメイン名のエイリアスが指定されます。 この例では、カスタム ドメインのアドレスが、ストレージ アカウントの Blob ストレージ エンドポイントにマッピングされます。
 
@@ -154,7 +154,7 @@ BLOB ストレージ エンドポイントのカスタム ドメインを登録�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-カスタム ドメインの登録を削除するには、[az storage account update](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_update) CLI コマンドを使用して、`--custom-domain` 引数値に空の文字列 (`""`) を指定します。
+カスタム ドメインの登録を削除するには、[az storage account update](https://docs.microsoft.com/cli/azure/storage/account) CLI コマンドを使用して、`--custom-domain` 引数値に空の文字列 (`""`) を指定します。
 
 * コマンド形式:
 
@@ -178,7 +178,7 @@ BLOB ストレージ エンドポイントのカスタム ドメインを登録�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-カスタム ドメインの登録を削除するには、[Set-AStorageAccount](/powershell/module/az.storage/set-azstorageaccount) PowerShell コマンドレットを使用して、`-CustomDomainName` 引数値に空の文字列 (`""`) を指定します。
+カスタム ドメインの登録を削除するには、[Set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) PowerShell コマンドレットを使用して、`-CustomDomainName` 引数値に空の文字列 (`""`) を指定します。
 
 * コマンド形式:
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa6f891cc68d19e638bb2b7281f4b332de26bd26
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332644"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084608"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
 
@@ -56,11 +56,11 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 この Oracle コネクタでは、2 つのバージョンのドライバーがサポートされます。
 
 - **Oracle 用 Microsoft ドライバー (推奨)**: Data Management Gateway バージョン 2.7 から、Oracle 用 Microsoft ドライバーがゲートウェイと共に自動的にインストールされます。 Oracle との接続を確立するためにドライバーをインストールまたは更新する必要はありません。 また、このドライバーを使用すると、コピーのパフォーマンスも改善されます。 サポートされている Oracle データベースのバージョンは、以下のとおりです。
-    - Oracle 12c R1 (12.1)
-    - Oracle 11g R1、R2 (11.1、11.2)
-    - Oracle 10g R1、R2 (10.1、10.2)
-    - Oracle 9i R1、R2 (9.0.1、9.2)
-    - Oracle 8i R3 (8.1.7)
+  - Oracle 12c R1 (12.1)
+  - Oracle 11g R1、R2 (11.1、11.2)
+  - Oracle 10g R1、R2 (10.1、10.2)
+  - Oracle 9i R1、R2 (9.0.1、9.2)
+  - Oracle 8i R3 (8.1.7)
 
     > [!NOTE]
     > Oracle プロキシ サーバーはサポートされていません。
@@ -69,7 +69,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
     > 現在、Oracle 用 Microsoft ドライバーは、Oracle からのデータのコピーのみをサポートしています。 このドライバーは Oracle への書き込みをサポートしていません。 Data Managemetn Gateway の **[診断]** タブのテスト接続機能では、このドライバーはサポートされていません。 代わりに、コピー ウィザードを使用して接続を確認できます。
     >
 
-- **Oracle Data Provider for .NET**: Oracle Data Provider を使用すると、Oracle との間でデータをコピーできます。 このコンポーネントは、 [Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/)に含まれます。 ゲートウェイがインストールされているマシンに、関連するバージョン (32 ビットまたは 64 ビット) をインストールしてください。 [Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降のバージョンにアクセスできます。
+- **Oracle Data Provider for .NET**: Oracle Data Provider を使用すると、Oracle との間でデータをコピーできます。 このコンポーネントは、 [Oracle Data Access Components for Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/)に含まれます。 ゲートウェイがインストールされているマシンに、関連するバージョン (32 ビットまたは 64 ビット) をインストールしてください。 [Oracle Data Provider .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降のバージョンにアクセスできます。
 
     **[XCopy Installation]\(XCopy のインストール\)** を選択した場合は、readme.htm ファイルに記載されている手順を実行します。 (XCopy のインストーラーではなく) UI があるインストーラーを選択することをお勧めします。
 
@@ -92,7 +92,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 前述の手順の例では、データセットを作成して入力データを含む Oralce データベース内のテーブルを指定します。 もう 1 つのデータセットを作成して、BLOB コンテナーと Oralce データベースからコピーされたデータを保持するフォルダーを指定します。 Oralce に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」を参照してください。
 4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティがある**パイプライン**を作成します。 前述の例では、コピー アクティビティのソースとして **OracleSource** を、シンクとして **BlobSink** を使用します。 同様に、Azure BLOB ストレージから Oracle データベースにコピーする場合は、**BlobSource** と **OracleSink** をコピー アクティビティで使います。 Oracle データベースに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」を参照してください。 データ ストアをソースまたはシンクとして使用する方法の詳細については、前のセクションに記載されているデータ ストアのリンクを選択してください。
 
-ウィザードを使用すると、リンクされたサービス、データ セット、パイプラインでなどの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 オンプレミスの Oracle データベースとの間でデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、[JSON の例](#json-examples-for-copying-data-to-and-from-oracle-database)を参照してください。
+ウィザードを使用すると、リンクされたサービス、データ セット、パイプラインでなどの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 オンプレミスの Oracle データベースとの間でデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、JSON の例を参照してください。
 
 次のセクションでは、Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -102,10 +102,10 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |**type** プロパティを **OnPremisesOracle** に設定する必要があります。 |[はい] |
+| type |**type** プロパティを **OnPremisesOracle** に設定する必要があります。 |はい |
 | driverType | Oracle データベースとの間でデータをコピーするときに使用するドライバーを指定します。 使用できる値は **Microsoft** と **ODP** (既定値) です。 ドライバーの詳細については、「[サポートされているバージョンとインストール](#supported-versions-and-installation)」を参照してください。 | いいえ  |
-| connectionString | **connectionString** プロパティの Oracle データベース インスタンスに接続するために必要な情報を指定します。 | [はい] |
-| gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です |[はい] |
+| connectionString | **connectionString** プロパティの Oracle データベース インスタンスに接続するために必要な情報を指定します。 | はい |
+| gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です |はい |
 
 **例:Microsoft ドライバーの使用**
 
@@ -183,7 +183,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |**timespan**<br/><br/> 例:00:30:00 (30 分) |いいえ  |
 | writeBatchSize |バッファー サイズが **writeBatchSize** の値に達したら、SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 100) |
 | sqlWriterCleanupScript |特定のスライスのデータを消去するようにコピー アクティビティのクエリを指定します。 |クエリ ステートメント。 |いいえ  |
-| sliceIdentifierColumnName |コピー アクティビティの列名を指定して、自動生成されたスライス識別子を入力します。  **sliceIdentifierColumnName** の値は、再実行時に特定のスライスのデータを消去するために使用されます。 |データ型が **binary(32)** の列の列名。 |いいえ  |
+| sliceIdentifierColumnName |コピー アクティビティの列名を指定して、自動生成されたスライス識別子を入力します。 **sliceIdentifierColumnName** の値は、再実行時に特定のスライスのデータを消去するために使用されます。 |データ型が **binary(32)** の列の列名。 |いいえ  |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Oracle データベースとの間でのデータのコピーに関する JSON の例
 
@@ -557,7 +557,7 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 **エラー メッセージ**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed.
+    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
 
 **考えられる原因**
 
@@ -566,10 +566,10 @@ Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracl
 
 **解決策**
 
-* Oracle 用の .NET Provider をインストールしていない場合は [インストール](http://www.oracle.com/technetwork/topics/dotnet/downloads/) した後、シナリオをやり直します。
+* Oracle 用の .NET Provider をインストールしていない場合は [インストール](https://www.oracle.com/technetwork/topics/dotnet/downloads/) した後、シナリオをやり直します。
 * プロバイダーのインストール後もこのエラー メッセージが表示される場合は、次の手順を実行します。
-   1. フォルダー <システム ディスク\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config から .NET 2.0 のマシン構成ファイルを開きます。
-   2. **Oracle Data Provider for .NET** を検索します。 **system.data** > **DbProviderFactories** 以下に次のサンプルのようなエントリが見つかります。`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+    1. フォルダー <システム ディスク\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config から .NET 2.0 のマシン構成ファイルを開きます。
+    2. **Oracle Data Provider for .NET** を検索します。 **system.data** > **DbProviderFactories** 以下に次のサンプルのようなエントリが見つかります。`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
 * v4.0 フォルダー <システム ディスク\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config 内の machine.config ファイルに、このエントリをコピーします。次に、バージョンを 4.xxx.x.x に変更します。
 * **gacutil /i [プロバイダーのパス]** を実行して、グローバル アセンブリ キャッシュ (GAC) に <ODP.NET がインストールされているパス\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll をインストールします。
 
@@ -601,7 +601,7 @@ Oracle からデータを移行すると、Oracle データ型から .NET 型へ
 | BLOB |Byte[]<br/>(Microsoft ドライバーを使用する場合は、Oracle 10g 以降のバージョンでのみサポートされています) |
 | CHAR |String |
 | CLOB |String |
-| DATE |Datetime |
+| DATE |DateTime |
 | FLOAT |Decimal、String (有効桁数が 28 を超える場合) |
 | INTEGER |Decimal、String (有効桁数が 28 を超える場合) |
 | INTERVAL YEAR TO MONTH |Int32 |
@@ -614,9 +614,9 @@ Oracle からデータを移行すると、Oracle データ型から .NET 型へ
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| TIMESTAMP |Datetime |
-| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
-| TIMESTAMP WITH TIME ZONE |Datetime |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
+| TIMESTAMP WITH TIME ZONE |DateTime |
 | 符号なし INTEGER |NUMBER |
 | VARCHAR2 |String |
 | XML |String |

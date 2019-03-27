@@ -20,7 +20,7 @@ ms.lasthandoff: 01/04/2019
 ms.locfileid: "54019395"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブルからデータをコピーする
-> [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-web-table-connector.md)
 > * [現在のバージョン](connector-web-table.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "54019395"
 
 - **Web テーブル コネクタ**では、HTML Web ページからテーブルの内容を抽出します。
 - **REST コネクタ**では、具体的には RESTful API からのデータのコピーがサポートされます。
-- **HTTP コネクタ**では一般的に、HTTP エンドポイントからデータを取得します (たとえば、ファイルをダウンロードします)。
+- **HTTP コネクタ**では一般的に、HTTP エンドポイントからデータを取得します (たとえば、ファイルをダウンロードします)。 
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -54,10 +54,10 @@ Web テーブルのリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**Web** |[はい] |
+| type | type プロパティは、次のように設定する必要があります:**Web** |はい |
 | url | Web ソースへの URL |はい |
-| authenticationType | 使用可能な値:**Anonymous**。 |[はい] |
-| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
+| authenticationType | 使用可能な値:**Anonymous**。 |はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
 
 **例:**
 
@@ -86,9 +86,9 @@ Web テーブルからデータをコピーするには、データセットの 
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**WebTable** に設定する必要があります | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**WebTable** に設定する必要があります | はい |
 | path |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
-| Index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |[はい] |
+| Index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |はい |
 
 **例:**
 
@@ -163,10 +163,10 @@ Web テーブルからデータをコピーするには、コピー アクティ
     この例で使用される URL は https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies です。
 4. **[Web コンテンツへのアクセス]** ダイアログ ボックスが表示された場合、適切な **URL** と**認証**を選択し、**[接続]** をクリックします。
 
-    ![[Access Web コンテンツ] ダイアログ ボックス](./media/copy-data-from-web-table/AccessWebContentDialog.png)
-5. ツリー ビューの**テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** をクリックします。
+   ![[Access Web コンテンツ] ダイアログ ボックス](./media/copy-data-from-web-table/AccessWebContentDialog.png)
+5. ツリー ビューの**テーブル** アイテムをクリックしてテーブルのコンテンツを表示し、一番下にある **[編集]** をクリックします。  
 
-    ![[ナビゲーター] ダイアログ](./media/copy-data-from-web-table/Navigator-DialogBox.png)
+   ![[ナビゲーター] ダイアログ](./media/copy-data-from-web-table/Navigator-DialogBox.png)
 6. **[クエリ エディター]** ウィンドウで、ツール バーの **[詳細エディター]** をクリックします。
 
     ![[詳細エディター] ボタン](./media/copy-data-from-web-table/QueryEditor-AdvancedEditorButton.png)
@@ -175,6 +175,7 @@ Web テーブルからデータをコピーするには、コピー アクティ
     ![詳細エディター - インデックス](./media/copy-data-from-web-table/AdvancedEditor-Index.png)
 
 Excel 2013 を使用している場合、 [Microsoft Power Query for Excel](https://www.microsoft.com/download/details.aspx?id=39379) を使用してインデックスを取得します。 詳細については、「 [Web ページに接続する](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) 」を参照してください。 [Microsoft Power BI for Desktop](https://powerbi.microsoft.com/desktop/)の使用時と手順は同じです。
+
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

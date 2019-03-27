@@ -10,19 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 01/31/2019
 ms.author: lagayhar
-ms.openlocfilehash: b662f5c4baa9c4c6e7689f3f463761dbd456f33f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 7ad8b96efeef2a5bb5543ee08150376862abb27f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074179"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699324"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 [パフォーマンスの問題や例外を検出および診断](../../azure-monitor/app/detect-triage-diagnose.md)したり、アプリケーションで何が実行されているかを追跡する[コードを記述][api]したりすることができます。
+[Application Insights](https://azure.microsoft.com/services/application-insights/) は、ライブ アプリケーションのパフォーマンスと使用状況を把握するのに役立つ、Web 開発者向けの拡張可能な分析サービスです。 [要求の自動的なインストルメント化、依存関係の追跡、パフォーマンス カウンターの収集](auto-collect-dependencies.md#java)、[パフォーマンスの問題と例外の診断](../../azure-monitor/app/detect-triage-diagnose.md)、ユーザーがアプリで行っていることを追跡するための[コードの作成][api]に使用します。 
 
 ![概要サンプル データのスクリーンショット](./media/java-get-started/overview-graphs.png)
 
@@ -75,7 +75,7 @@ Spring フレームワークの方がよければ、[Spring Boot 初期化子ア
 ```
 
 * *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `<version>2.0.n</version>`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
-* *新しい SDK に更新する必要がありますか?*  プロジェクトの依存関係を更新します。
+* *新しい SDK に更新する必要がありますか?* プロジェクトの依存関係を更新します。
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Gradle を使用している場合: <a name="gradle-setup" />
 プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、build.gradle ファイルに次のコードをマージします。
@@ -359,6 +359,14 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 ## <a name="monitor-method-calls-and-external-dependencies"></a>メソッドの呼び出しと外部依存関係の監視
 [Java エージェントをインストール](java-agent.md) して、JDBC を通じて指定された内部メソッドと実行された呼び出しをタイミング データと共にログに記録します。
 
+## <a name="w3c-distributed-tracing"></a>W3C 分散トレース
+
+Application Insights Java SDK では、[W3C 分散トレース](https://w3c.github.io/trace-context/)がサポートされるようになりました。
+
+受信 SDK の構成の詳細については、[相関関係](correlation.md#w3c-distributed-tracing)に関する記事をご覧ください。
+
+送信 SDK の構成は、[AI-Agent.xml](java-agent.md) ファイル内で定義されます。
+
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 **[設定]**、**[サーバー]** の順に開くと、一連のパフォーマンス カウンターが表示されます。
 
@@ -433,7 +441,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 </Channel>
 ```
 
-SpringBoot スターターを使用する場合は、構成ファイル (application.properies) に次を追加します。
+SpringBoot スターターを使用する場合は、構成ファイル (application.properties) に以下を追加します。
 
 ```yml
 azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->

@@ -1,21 +1,21 @@
 ---
-title: Azure で管理グループを変更、削除、または管理する方法
-description: 管理グループ階層をメンテナンスおよび更新する方法を説明します。
+title: Azure で管理グループを変更、削除、または管理する方法 - Azure のガバナンス
+description: 管理グループ階層を表示、保守、更新、および削除する方法について説明します。
 author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
 ms.devlang: na
-ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2018
+ms.date: 11/20/2018
 ms.author: rithorn
-ms.openlocfilehash: a3de0df8fde3b271b7ba9bb9aab01dbcd5c3bf08
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.topic: conceptual
+ms.openlocfilehash: dbfb6ecb9f29a82a8871922982a64dbefc338969
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991223"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342587"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
@@ -39,11 +39,11 @@ ms.locfileid: "46991223"
 
 1. ページの上部にある **[グループ名の変更]** オプションを選択します。
 
-   ![グループ名の変更](./media/detail_action_small.png)
+   ![[グループ名の変更] オプション](./media/detail_action_small.png)
 
 1. メニューが開いたら、表示する新しい名前を入力します。
 
-   ![グループ名の変更](./media/rename_context.png)
+   ![[グループ名の変更] ウィンドウ](./media/rename_context.png)
 
 1. **[保存]** を選択します。
 
@@ -87,11 +87,11 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
    - アイコンが無効になっている場合は、アイコンの上にマウス セレクターを置くと理由が表示されます。
 
-   ![グループの削除](./media/delete.png)
+   ![[グループの削除] オプション](./media/delete.png)
 
 1. 管理グループを削除することを確認するウィンドウが開きます。
 
-   ![グループの削除](./media/delete_confirm.png)
+   ![グループの削除の確認ウィンドウ](./media/delete_confirm.png)
 
 1. **[はい]** を選択します。
 
@@ -195,19 +195,19 @@ az account management-group show --name 'Contoso'
 
 1. 一覧内で移動するサブスクリプションの行末にある省略記号を選択します。
 
-   ![Move](./media/move_small.png)
+   ![[移動] オプション](./media/move_small.png)
 
 1. **[移動]** を選択します。
 
 1. 開かれたメニューで、**親管理グループ**を選択します。
 
-   ![Move](./media/move_small_context.png)
+   ![[移動] ウィンドウ](./media/move_small_context.png)
 
 1. **[保存]** を選択します。
 
 ### <a name="move-subscriptions-in-powershell"></a>PowerShell でのサブスクリプションの移動
 
-PowerShell でサブスクリプションを移動するには、Add-AzureRmManagementGroupSubscription コマンドを使用します。  
+PowerShell でサブスクリプションを移動するには、New-AzureRmManagementGroupSubscription コマンドを使用します。  
 
 ```azurepowershell-interactive
 New-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
@@ -272,12 +272,26 @@ Azure CLI で管理グループを移動するには update コマンドを使�
 az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
 ```
 
+## <a name="audit-management-groups-using-activity-logs"></a>アクティビティ ログを使用した監査管理グループ
+
+この API を使用してサブスクリプションを追跡するには、[Tenant Activity Log API](/rest/api/monitor/tenantactivitylogs) を使用します。 現時点では、PowerShell、CLI、または Azure portal を使用して管理グループのアクティビティを追跡することはできません。
+
+1. Azure AD テナントのテナント管理者は、[アクセス権限を昇格](../../role-based-access-control/elevate-access-global-admin.md)してから、スコープ内の監査ユーザーに閲覧者ロールを割り当てます`/providers/microsoft.insights/eventtypes/management`。
+1. 監査ユーザーは、[Tenant Activity Log API](/rest/api/monitor/tenantactivitylogs) を呼び出して、管理グループのアクティビティを確認します。 管理グループのアクティビティすべてを対象としてリソース プロバイダーの **Microsoft.Management** でフィルター処理を行います。  例:
+
+```xml
+GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
+```
+
+> [!NOTE]
+> コマンドラインからこの API を簡単に呼び出すには、[ARMClient](https://github.com/projectkudu/ARMClient) を使用します。
+
 ## <a name="next-steps"></a>次の手順
 
 管理グループについて詳しくは、以下をご覧ください。
 
-- [Azure 管理グループでリソースを整理する](overview.md)
 - [管理グループを作成して Azure リソースを整理する](create.md)
-- [Azure PowerShell モジュールのインストール](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups)
-- [REST API 仕様の確認](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Azure CLI 拡張機能のインストール](/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)
+- [管理グループを変更、削除、または管理する方法](manage.md)
+- [Azure PowerShell Resources モジュールで管理グループを確認する](https://aka.ms/mgPSdocs)
+- [REST API で管理グループを確認する](https://aka.ms/mgAPIdocs)
+- [Azure CLI で管理グループを確認する](https://aka.ms/mgclidoc)

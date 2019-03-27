@@ -11,26 +11,27 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.openlocfilehash: c5b3be1d5b047e77b12d22fd5d24cbc42d88f783
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 12/07/2018
+ms.openlocfilehash: 7872ed2c9d6f094907ae4d11adef6bc7a99be8e4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715655"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782889"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 [クォータ](azure-stack-plan-offer-quota-overview.md#plans)は、ユーザー サブスクリプションがプロビジョニングまたは使用できるリソースの制限を定義します。 たとえば、1 つのクォータでユーザー 1 人に最大 5 つの仮想マシンの作成を許可できます。 各リソースは、独自のクォータの種類を持つことが可能です。
 
 ## <a name="compute-quota-types"></a>Compute クォータの種類 
 
-| **種類** | **既定値** | **説明** |
+| **Type** | **既定値** | **説明** |
 | --- | --- | --- |
 | [Maximum number of virtual machines]\(仮想マシンの最大数\) | 50 | 1 つのサブスクリプションでこの場所に作成できる仮想マシンの最大数です。 |
 | [Maximum number of virtual machine cores]\(仮想マシン コアの最大数\) | 100 | 1 つのサブスクリプションでこの場所に作成できるコアの最大数です (たとえば、A3 VM のコア数は 4 です)。 |
@@ -43,7 +44,7 @@ ms.locfileid: "53715655"
 
 | **項目** | **既定値** | **説明** |
 | --- | --- | --- |
-| 最大容量 (GB) |2048 |1 つのサブスクリプションがこの場所で使用できる記憶域の最大容量です。 |
+| 最大容量 (GB) |2048 |1 つのサブスクリプションがこの場所で使用できるストレージの総容量です (BLOB と、関連付けられているすべてのスナップショット、テーブル、キューが含まれます)。 |
 | [Total number of storage accounts]\(ストレージ アカウントの合計数\) |20 |1 つのサブスクリプションでこの場所に作成できるストレージ アカウントの最大数です。 |
 
 > [!NOTE]  
@@ -73,7 +74,7 @@ ms.locfileid: "53715655"
 3.  表示されたブレードで、**[サービスとクォータ]** を選択します。
 4.  表示するクォータの **[名前]** 列をクリックして選択します。
 
-    [ ![クォータ](media/azure-stack-quota-types/quotas1sm.png "クォータの表示") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![クォータ](media/azure-stack-quota-types/quotas1sm.png "クォータの表示")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 ### <a name="resource-providers"></a>リソース プロバイダー
 
@@ -91,7 +92,7 @@ ms.locfileid: "53715655"
 2.  編集するプランの名前をクリックして選択します。
 3.  表示されたブレードで、**[サービスとクォータ]** を選択します。
 4.  編集するクォータの **[名前]** 列をクリックして選択します。
-    [ ![クォータ](media/azure-stack-quota-types/quotas1sm.png "クォータの表示") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![クォータ](media/azure-stack-quota-types/quotas1sm.png "クォータの表示")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 5.  表示されたブレードで、**[Edit in Compute]\(コンピューティングで編集\)**、**[Edit in Network]\(ネットワークで編集\)**、または **[Edit in Storage]\(\)** を選択します。
     ![クォータ](media/azure-stack-quota-types/quotas3.png "クォータの表示")    

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c7a3893c35031d05ea8aade0ad5d30b5a56176fd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015136"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311530"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -72,7 +72,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 2. コピー操作用の入力データと出力データを表すデータセットを作成します。 
 3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティが含まれたパイプラインを作成します。 
 
-コピー ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 「[JSON の使用例:DB2 から Azure Blob Storage へのデータのコピー](#json-example-copy-data-from-db2-to-azure-blob)」に、オンプレミスの DB2 データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
+コピー ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。 JSON の例の「DB2 から Azure Blob Storage にデータをコピーする」に、オンプレミスの DB2 データ ストアからデータをコピーするときに使用する Data Factory エンティティの JSON 定義が紹介されています。
 
 次の各セクションでは、DB2 データ ストアに固有の Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
@@ -116,7 +116,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
-- DB2 の [OnPremisesDb2](data-factory-onprem-db2-connector.md#linked-service-properties) 型のリンクされたサービス
+- DB2 の [OnPremisesDb2](data-factory-onprem-db2-connector.md) 型のリンクされたサービス
 - Azure Blob Storage の [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) 型のリンクされたサービス
 - [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)
 - [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)
@@ -309,7 +309,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | DB2 データベース型 | .NET Framework 型 |
 | --- | --- |
 | SmallInt |Int16 |
-| Integer |Int32 |
+| 整数 |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -317,8 +317,8 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |Datetime |
-| Time |timespan |
+| Date |DateTime |
+| Time |TimeSpan |
 | Timestamp |Datetime |
 | xml |Byte[] |
 | Char |String |
@@ -335,7 +335,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | BLOB |Byte[] |
 | DbClob |String |
 | SmallInt |Int16 |
-| Integer |Int32 |
+| 整数 |Int32 |
 | BigInt |Int64 |
 | Real |Single |
 | Double |Double |
@@ -343,8 +343,8 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Numeric |Decimal |
-| Date |Datetime |
-| Time |timespan |
+| Date |DateTime |
+| Time |TimeSpan |
 | Timestamp |Datetime |
 | xml |Byte[] |
 | Char |String |

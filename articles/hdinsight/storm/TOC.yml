@@ -74,21 +74,6 @@ items:
       - name: HDInsight アプリを Azure Marketplace に発行する
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: 発行したアプリのインストール - Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: セキュリティ保護
     items:
     - name: HDInsight で SSH を使用する
@@ -121,6 +106,7 @@ items:
         href: ../hdinsight-hadoop-create-linux-clusters-portal.md
         maintainContext: true
       - name: Azure リソース マネージャー テンプレートの使用
+        displayName: resource manager template, arm template, resource manager group
         href: ../hdinsight-hadoop-create-linux-clusters-arm-templates.md
         maintainContext: true
       maintainContext: true
@@ -177,9 +163,6 @@ items:
       maintainContext: true
     - name: ワークフローに Apache Oozie を使用する
       href: ../hdinsight-use-oozie-linux-mac.md
-      maintainContext: true
-    - name: 時間ベースの Apache Oozie コーディネーターを使用する
-      href: ../hdinsight-use-oozie-coordinator-time.md
       maintainContext: true
     - name: クラスターとサービスのポートと URI
       href: ../hdinsight-hadoop-port-settings-for-services.md
@@ -238,12 +221,12 @@ items:
     - name: HDInsight とオンプレミス ネットワークの接続
       href: ../connect-on-premises-network.md
       maintainContext: true
-  - name: Log Analytics を使用した監視
+  - name: Azure Monitor ログを使用した監視
     items:
-    - name: Azure Log Analytics の使用
+    - name: Azure Monitor ログの使用
       href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
       maintainContext: true
-    - name: Log Analytics でのクエリの使用
+    - name: Azure Monitor ログでのクエリの使用
       href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
       maintainContext: true
     - name: クラスター パフォーマンスの監視
@@ -254,7 +237,7 @@ items:
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.hdinsight
+    href: /powershell/module/az.hdinsight
   - name: .NET SDK
     href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
   - name: Python SDK
@@ -265,13 +248,12 @@ items:
     href: ../hdinsight-go-sdk-overview.md
   - name: .NET (Apache HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
-  - name: .NET (Avro)
-    href: https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library
   - name: REST
     href: /rest/api/hdinsight/
   - name: REST (Apache Spark)
     href: /rest/api/hdinsightspark/
   - name: Resource Manager テンプレート
+    displayName: resource manager template, arm template, resource manager group
     href: /azure/templates/microsoft.hdinsight/allversions
 - name: 関連項目
   items:
@@ -282,26 +264,6 @@ items:
       maintainContext: true
     - name: .NET ソリューションを Linux クラスターに移行する
       href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
-      maintainContext: true
-    - name: Apache Storm トポロジをデプロイおよび管理する
-      href: apache-storm-deploy-monitor-topology.md
-    - name: Apache Maven を使用して Java アプリケーションを構築する
-      href: ../hdinsight-hbase-build-java-maven.md
-      maintainContext: true
-    - name: スクリプト アクションを使用してカスタマイズする
-      href: ../hdinsight-hadoop-customize-cluster.md
-      maintainContext: true
-    - name: Apache Hadoop YARN アプリケーション ログにアクセスする
-      href: ../hdinsight-hadoop-access-yarn-app-logs.md
-      maintainContext: true
-    - name: スクリプト アクションを開発する
-      href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Azure Portal でクラスターを管理する
-      href: ../hdinsight-administer-use-management-portal.md
-      maintainContext: true
-    - name: Apache Ambari API を使用してクラスターを監視する
-      href: ../hdinsight-monitor-use-ambari-api.md
       maintainContext: true
 - name: リソース
   items:
@@ -318,9 +280,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 7429b43ad4e617b1d92247f80ffeaacaa0f12c9a
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: b8a55191f78010bab759cf90880c3b7aaddab7ba
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320754"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444962"

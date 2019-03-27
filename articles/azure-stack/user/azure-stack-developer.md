@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 60336a56437b3d5c5d39d8c1584d91c909ac47ff
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: 2f0d311851abe1c0fb01ec08dc82626805b35eb1
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246196"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55251420"
 ---
 # <a name="develop-for-azure-stack"></a>Azure Stack 向けの開発
 

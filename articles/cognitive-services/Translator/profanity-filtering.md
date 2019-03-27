@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Translator Text API で不適切な表現のフィルターを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 12/14/2017
+ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4154950cf8d8b6ec2e47a9f8100cb7983ac127bf
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: ab54f34dbdbda5af94c6ebc2bc8c1818ebf3d601
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49648039"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729884"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Translator Text API で不適切な表現のフィルターを追加する
 
@@ -26,7 +26,7 @@ ms.locfileid: "49648039"
 Translate() メソッドは "options" パラメーターを取り、ここには "ProfanityAction" の新しい要素が含まれます。 ProfanityAction に指定できる値は、"NoAction"、"Marked"、および "Deleted" です。
 
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>ProfanityAction に指定できる値と例
-|ProfanityAction 値 | Action | 例: ソース - 日本語 | 例: ターゲット - 英語|
+|ProfanityAction 値 | Action | 例:ソース - 日本語 | 例:ターゲット - 英語|
 | :---|:---|:---|:---|
 | NoAction | [既定]。 オプションを設定しない場合と同じです。 不適切な表現はソースからターゲットに渡されます。 | 彼は変態です。 | He is a jerk. |
 | Marked | 不適切な表現は XML タグ \<profanity> ... \</profanity> で囲まれます。 | 彼は変態です。 | He is a \<profanity>jerk\</profanity>. |

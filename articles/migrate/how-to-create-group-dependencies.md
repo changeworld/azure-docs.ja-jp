@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9f01e94eb23083ab25dd2cbd41e8bad1297abb54
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 5c4d16ff85972bc4b608e6ce2006912fb27d49d2
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53255263"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895433"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>グループの依存関係マッピングを使用したグループの絞り込み
 
@@ -52,6 +52,8 @@ Azure Migrate は、マシンの依存関係を視覚化できるように Log A
 
 ### <a name="install-the-mma"></a>MMA をインストールする
 
+#### <a name="install-the-agent-on-a-windows-machine"></a>Windows マシンにエージェントをインストールする
+
 Windows マシンにエージェントをインストールするには、次の手順に従います。
 
 1. ダウンロードしたエージェントをダブルクリックします。
@@ -60,6 +62,9 @@ Windows マシンにエージェントをインストールするには、次の
 4. **[エージェントのセットアップ オプション]** で、**[Azure Log Analytics]** > **[次へ]** の順にクリックします。
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
+エージェントのインストールは、コマンド ラインから、または Azure Automation DSC や System Center Configuration Manager などの自動化された方法を使用して行うことができます。データセンターに Microsoft Azure Stack が配置されている場合は、Azure Resource Manager テンプレートも使用できます。 このような方法を使用して MMA エージェントをインストールする方法については、[詳細](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent)のページを参照してください。
+
+#### <a name="install-the-agent-on-a-linux-machine"></a>Linux マシンにエージェントをインストールする
 
 Linux マシンにエージェントをインストールするには、次の手順に従います。
 
@@ -68,6 +73,10 @@ Linux マシンにエージェントをインストールするには、次の�
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
+#### <a name="install-the-agent-on-a-machine-monitored-by-system-center-operations-manager"></a>System Center Operations Manager によって監視されているマシンにエージェントをインストールする
+
+Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は、Operations Manager MMA を利用して必要な依存関係データを収集する Operations Manager と統合されています。 統合を有効にする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)のガイダンスを参照してください。 ただし、このようなマシンには、依存関係エージェントをインストールする必要がある点に注意してください。
+
 ### <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 1. Windows マシンに依存関係エージェントをインストールするには、セットアップ ファイルをダブルクリックし、ウィザードに従います。
 2. Linux マシンに依存関係エージェントをインストールするには、次のコマンドを使用してルートとしてインストールします。
@@ -75,6 +84,8 @@ Linux マシンにエージェントをインストールするには、次の�
     ```sh InstallDependencyAgent-Linux64.bin```
 
 [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) および [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) オペレーティング システムの依存関係エージェントのサポートに関する詳細を確認してください。
+
+スクリプトを使用して依存関係エージェントをインストールする方法については、[こちら](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)をご覧ください。
 
 ## <a name="refine-the-group-based-on-dependency-visualization"></a>依存関係視覚化に基づいてグループを絞り込む
 グループのすべてのマシンにエージェントをインストールしたら、次の手順に従って、グループの依存関係を視覚化してグループを絞り込みます。
@@ -91,6 +102,10 @@ Linux マシンにエージェントをインストールするには、次の�
      ![グループの依存関係の表示](./media/how-to-create-group-dependencies/view-group-dependencies.png)
 
 3. さらに細かい依存関係を表示するには、時間の範囲をクリックして変更します。 既定では、範囲は 1 時間です。 時間の範囲を変更することも、開始日と終了日および期間を指定することもできます。
+
+    > [!NOTE]
+      現在、依存関係の視覚化 UI は、1 時間を超える時間の範囲の選択をサポートしていません。 長期間にわたって[依存関係データのクエリを実行する](https://docs.microsoft.com/azure/migrate/how-to-create-a-group)には、Log Analytics を使用してください。
+
 4. 依存マシンと、各マシン内で実行しているプロセスを確認し、グループに対して追加または削除する必要があるマシンを特定します。
 5. グループにマシンを追加またはグループから削除するには、Ctrl キーを押しながらクリックしてマップ上でマシンを選択します。
     - 追加できるのは、検出済みのマシンだけです。
@@ -101,6 +116,20 @@ Linux マシンにエージェントをインストールするには、次の�
     ![マシンの追加または削除](./media/how-to-create-group-dependencies/add-remove.png)
 
 グループの依存関係マップに表示されている特定のマシンの依存関係を確認する場合は、[マシンの依存関係マッピング](how-to-create-group-machine-dependencies.md)を設定します。
+
+## <a name="query-dependency-data-from-log-analytics"></a>Log Analytics から依存関係データのクエリを実行する
+
+Service Map によってキャプチャされた依存関係データは、Azure Migrate プロジェクトに関連付けられている Log Analytics ワークスペースでのクエリに使用できます。 Log Analytics 内でクエリを実行する Service Map データ テーブルの[詳細についてはこちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)を参照してください。 
+
+Log Analytics クエリを実行するには:
+
+1. エージェントをインストールしたら、ポータルに移動し、**[概要]** をクリックします。
+2. **[概要]** で、プロジェクトの **[基本]** セクションに移動し、**[OMS ワークスペース]** の横にあるワークスペース名をクリックします。
+3. Log Analytics ワークスペース ページで **[全般]**、**[ログ]** の順にクリックします。
+4. Log Analytics を使用して依存関係データを収集するクエリを作成します。 依存関係データを収集するサンプル クエリについては、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)を参照してください。
+5. [実行] をクリックしてクエリを実行します。 
+
+Log Analytics クエリの作成方法の[詳細についてはこちら](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)を参照してください。 
 
 
 ## <a name="next-steps"></a>次の手順

@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 01/28/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: 87e3f03ce5d4c65d5c4b1754300f5d57feca2a49
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.lastreviewed: 01/28/2019
+ms.openlocfilehash: 2200b9a48d7f83d6785c8dbb4a7b02be52fca75a
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416513"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55241068"
 ---
 # <a name="validate-ad-fs-integration-for-azure-stack"></a>Azure Stack の AD FS 統合を検証する
 
@@ -29,7 +30,7 @@ Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用�
 適合性チェッカーは以下を検証します。
 
 * "*フェデレーション メタデータ*" にフェデレーションに有効な XML 要素が含まれている。
-* *AD FS SSL 証明書*を取得し、信頼チェーンを構築できる。 スタンプで、AD FS は SSL 証明書チェーンを信頼する必要があります。 証明書は、Azure Stack デプロイ証明書と同じ "*証明機関*" か、信頼されたルート証明機関パートナーによって署名されている必要があります。 信頼されたルート証明機関パートナーの完全な一覧については、[TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca) を参照してください。
+* *AD FS SSL 証明書*を取得し、信頼チェーンを構築できる。 スタンプで、AD FS は SSL 証明書チェーンを信頼する必要があります。 証明書は、Azure Stack デプロイ証明書に使用される同じ*証明機関*か、信頼されたルート証明機関パートナーによって署名されている必要があります。 信頼されたルート証明機関パートナーの完全な一覧については、[TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca) を参照してください。
 * *AD FS 署名証明書*が信頼され、有効期限が迫っていない。
 
 Azure Stack とデータ センターの統合の詳細については、「[Azure Stack とデータセンターの統合 - ID](azure-stack-integrate-identity.md)」を参照してください。
@@ -101,8 +102,8 @@ Azure Stack とデータ センターの統合の詳細については、「[Azu
 
 次のコマンドを使用します。
 
-* **-OutputPath**: 別のレポートの場所を指定するには、実行コマンドの末尾に *path* パラメーターを使用します。
-* **-CleanReport**: 前のレポート情報から AzsReadinessCheckerReport.json をクリアするには、実行コマンドの末尾にこのパラメーターを使用します。 詳細については、「[Azure Stack 検証レポート](azure-stack-validation-report.md)」を参照してください。
+* **-OutputPath**:別のレポートの場所を指定するには、実行コマンドの末尾に *path* パラメーターを使用します。
+* **-CleanReport**:前のレポート情報から AzsReadinessCheckerReport.json をクリアするために、実行コマンドの末尾に付けるパラメーターです。 詳細については、「[Azure Stack 検証レポート](azure-stack-validation-report.md)」を参照してください。
 
 ## <a name="validation-failures"></a>検証エラー
 
@@ -114,9 +115,9 @@ Azure Stack とデータ センターの統合の詳細については、「[Azu
 
 `Invoke-AzsADFSValidation : The term 'Invoke-AzsADFSValidation' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.`
 
-**原因**: PowerShell Autoload で、適合性チェッカー モジュールを正しく読み込めませんでした。
+**原因**:PowerShell Autoload で、適合性チェッカー モジュールを正しく読み込めませんでした。
 
-**解決方法**: 適合性チェッカー モジュールを明示的にインポートします。 次のコードをコピーして PowerShell に貼り付け、\<version\> を現在インストールされているバージョンの番号に更新します。
+**解決方法**:適合性チェッカー モジュールを明示的にインポートします。 次のコードをコピーして PowerShell に貼り付け、\<version\> を現在インストールされているバージョンの番号に更新します。
 
 `Import-Module "c:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\<version>\Microsoft.AzureStack.ReadinessChecker.psd1" -Force`
 

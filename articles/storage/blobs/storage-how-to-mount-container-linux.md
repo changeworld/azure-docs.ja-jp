@@ -5,14 +5,14 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 2/1/2019
 ms.author: seguler
-ms.openlocfilehash: 2374875512bba55409ef43906acb20238c77158f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1e26eb213ad2613877c46758299c2e962894d358
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268463"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698004"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
@@ -100,7 +100,7 @@ containerName mycontainer
 
 このファイルを作成したら、他のユーザーが読み取れないように、アクセスを制限するようにしてください。
 ```bash
-chmod 700 fuse_connection.cfg
+chmod 600 fuse_connection.cfg
 ```
 
 > [!NOTE]

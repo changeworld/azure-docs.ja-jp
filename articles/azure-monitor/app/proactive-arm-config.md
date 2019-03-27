@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 02/07/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: b1f4d278079b81b4a224dc4712426d1f078de110
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020406"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962232"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Application Insights スマート検出ルールを管理する
 
@@ -31,6 +31,7 @@ Application Insights のスマート検出ルールは、[Azure Resource Manager
 - ルールが有効になっているかどうか (既定値は **true**)。
 - 検出が見つかったときに、サブスクリプションの所有者、共同作成者、閲覧者に電子メールを送信する必要があるかどうか (既定値は**true**)。
 - 検出が見つかったときに通知を受ける必要があるその他の電子メール受信者。
+- * 電子メールの構成は、_プレビュー_とマークされたスマート検出ルールで使用できません。
 
 Azure Resource Manager を使用してルールの設定を構成できるように、スマート検出ルールの構成は、Application Insights リソース内で **ProactiveDetectionConfigs** という名前の内部リソースとして使用できるようになりました。
 柔軟性を最大化するために、各スマート検出ルールを一意の通知設定で構成できます。
@@ -154,6 +155,17 @@ Azure Resource Manager テンプレートで使用する必要がある、ポー
 | Potential memory leak detected (潜在的なメモリ リークの検出) (プレビュー) | extension_memoryleakextension |
 | Potential security issue detected (潜在的なセキュリティの問題の検出) (プレビュー) | extension_securityextensionspackage |
 | Resource utilization issue detected (リソース使用率の問題の検出) (プレビュー) | extension_resourceutilizationextensionspackage |
+
+## <a name="who-receives-the-classic-alert-notifications"></a>(クラシック) アラート通知は誰が受け取りますか。
+
+このセクションは、スマート検出クラシック アラートにのみ適用され、目的の受信者だけが通知を受け取るように、アラート通知を最適化するために役立ちます。 [クラシック アラート](../platform/alerts-classic.overview.md)と新しいアラート エクスペリエンスの違いの詳細については、[アラートの概要の記事](../platform/alerts-overview.md)を参照してください。 現在スマート検出アラートは、クラシック アラート エクスペリエンスのみをサポートしています。 この 1 つの例外は、[Azure クラウド サービスのスマート検出アラート](./proactive-cloud-services.md)です。 Azure クラウド サービスのスマート検出アラートのアラート通知を制御するには、[アクション グループ](../platform/action-groups.md)を使用します。
+
+* スマート検出/クラシック アラート通知には、特定の受信者の使用をお勧めします。
+
+* スマート検出アラートの場合、**一括/グループ** チェックボックス オプションが有効にされていれば、サブスクリプション内の所有者、共同作成者、または閲覧者ロールを持つユーザーに送信されます。 実際には、サブスクリプションの Application Insights リソースにアクセスできる_すべて_のユーザーが範囲内になり、通知を受け取ります。 
+
+> [!NOTE]
+> 現在、**一括/グループ** チェックボックス オプションを使用しており、それを無効にすると、変更を元に戻すことはできません。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,7 +3,7 @@ title: .NET を使用した Azure Key Vault に対するサービス間認証
 description: .NET を使用して Azure Key Vault の認証を受けるために Microsoft.Azure.Services.AppAuthentication ライブラリを使用します。
 keywords: Azure Key Vault 認証 ローカル資格情報
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 services: key-vault
 ms.author: bryanla
 ms.date: 01/04/2019
@@ -12,12 +12,12 @@ ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: e3239d57b34af396ee4b23f3b9b01b367eb3daa6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 3b9f401a4fbbbf6cc6a66e257b0186e33966c321
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050117"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116441"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -55,7 +55,7 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 `AzureServiceTokenProvider` クラスは、トークンをメモリ内にキャッシュし、有効期限の直前に Azure AD から取得します。 このため、`GetAccessTokenAsync` メソッドを呼び出す前に有効期限を確認する必要がなくなります。 トークンが必要になった時点で、いつでもメソッドを呼び出すことができます。 
 
-`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 詳細については、「[ Azure サービスはAzure リソースの管理 ID をサポートしますか](https://docs.microsoft.com/azure/active-directory/msi-overview#which-azure-services-support-managed-service-identity)」を参照してください。
+`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 詳細については、「[ Azure サービスはAzure リソースの管理 ID をサポートしますか](https://docs.microsoft.com/azure/active-directory/msi-overview)」を参照してください。
 
 
 <a name="samples"></a>
@@ -232,4 +232,4 @@ Azure AD の共有シークレット資格情報を使用してサインイン�
 ## <a name="next-steps"></a>次の手順
 
 - 詳細については、「[Azure リソースの管理 ID について](/azure/active-directory/managed-identities-azure-resources/)」を参照してください。
-- [Azure AD の認証シナリオ](/azure/active-directory/develop/active-directory-authentication-scenarios#web-browser-to-web-application)について詳細を参照する。
+- [Azure AD の認証シナリオ](/azure/active-directory/develop/active-directory-authentication-scenarios)について詳細を参照する。

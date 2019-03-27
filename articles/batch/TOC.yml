@@ -48,6 +48,8 @@ items:
     href: batch-quota-limit.md
   - name: サポートされる VM のサイズ
     href: batch-pool-vm-sizes.md
+  - name: 高可用性と障害復旧
+    href: high-availability-disaster-recovery.md
 - name: ハウツー ガイド
   items:
   - name: Batch アカウントの管理
@@ -158,7 +160,7 @@ items:
   - name: Azure CLI
     href: /cli/azure/batch
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.batch
+    href: /powershell/module/az.batch
   - name: .NET
     href: /dotnet/api/overview/azure/batch
   - name: Java
@@ -206,8 +208,8 @@ items:
     href: https://github.com/Azure/batch-shipyard
   - name: ブログ
     href: https://blogs.technet.microsoft.com/windowshpc/
-  - name: Azure の HPC ソリューション
-    href: ../virtual-machines/linux/high-performance-computing.md?toc=%2fazure%2fbatch%2ftoc.json
+  - name: Azure での HPC
+    href: https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/batch/
   - name: 料金計算ツール
@@ -217,12 +219,12 @@ items:
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-batch
+    href: https://stackoverflow.com/questions/tagged/azure-batch
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=batch
-ms.openlocfilehash: 6782617e7aa4f05938d8602d8b618d0a9ee8e619
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c3a3bdf7de26fca6a7a4b4b54102621ec46ce9dc
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101991"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729169"

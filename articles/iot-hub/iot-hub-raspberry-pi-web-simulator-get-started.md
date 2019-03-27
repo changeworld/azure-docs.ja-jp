@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 6844fb9b6e85e77ad9c7a869a989214fffd05ece
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0167665684bc4fc8b29dce70c53033dcbb007555
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438746"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113783"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Raspberry Pi オンライン シミュレーターの Azure IoT Hub への接続 (Node.js)
 
@@ -56,7 +56,7 @@ ms.locfileid: "53438746"
 Raspberry Pi オンライン シミュレーターを起動するボタンをクリックします。
 
 > [!div class="button"]
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Raspberry Pi シミュレーターの起動</a>
+> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Raspberry Pi シミュレーターの起動</a>
 
 Web シミュレーターには3 つの領域があります。
 
@@ -70,8 +70,8 @@ Web シミュレーターには3 つの領域があります。
    * **[リセット]** - コーディング領域を既定のサンプル アプリケーションにリセットします。
    * **[折りたたむ/展開する]** - 右側には、コンソール ウィンドウの折りたたみおよび展開を行うボタンがあります。
 
-> [!NOTE] 
-Raspberry Pi Web シミュレーターは、プレビュー バージョンで使用できるようになりました。 「[Gitter チャット ルーム](https://gitter.im/Microsoft/raspberry-pi-web-simulator)」にご意見をお寄せください。 ソース コードは [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator) から入手できます。
+> [!NOTE]
+> Raspberry Pi Web シミュレーターは、プレビュー バージョンで使用できるようになりました。 「[Gitter チャット ルーム](https://gitter.im/Microsoft/raspberry-pi-web-simulator)」にご意見をお寄せください。 ソース コードは [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator) から入手できます。
 
 ![Pi オンライン シミュレーターの概要](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
 

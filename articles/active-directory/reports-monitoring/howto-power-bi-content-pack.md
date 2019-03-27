@@ -3,23 +3,24 @@ title: Azure Active Directory Power BI コンテンツ パックの使用方法 
 description: Azure Active Directory Power BI コンテンツ パックの使用方法について説明します。
 services: active-directory
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 16026adc2eb0179cd2b42f449494cbbc6547b946
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8adcbe4245a8b8cb6e422b31b3ed23ed42f55575
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651454"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180796"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Azure Active Directory Power BI コンテンツ パックの使用方法
 
@@ -58,7 +59,7 @@ Azure AD Power BI コンテンツ パックには、次のレポートが付属�
 
 - ユーザー名
 - IP アドレス
-- 場所 
+- Location 
 - サインインの状態 
 
 **SSPR じょうご**:このレポートでは、組織内での SSPR ツールの使用状況を把握できます。 SSPR ツールを使ったパスワード リセットが試行された回数と、その中で成功した回数を確認できます。 また、パスワード リセットの失敗の詳細を調べ、具体的な失敗の理由を把握できます。 
@@ -101,13 +102,45 @@ Power BI レポートの日次更新をスケジュールするには、**[デ�
 
 新しいバージョンのコンテンツ パックが期待どおりに動作していることが確認できたら、必要に応じてコンテンツ パックに関連付けられている基になるレポートとデータセットを削除して、以前のバージョンは削除してかまいません。
 
-## <a name="still-having-issues"></a>まだ問題がある場合 
+## <a name="troubleshoot-content-pack-errors"></a>コンテンツ パックのエラーをトラブルシューティングする
 
-[トラブルシューティング ガイド](troubleshoot-content-pack.md)を参照してください。 Power BI 全般のヘルプ情報については、こちらの[ヘルプ記事](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)を参照してください。
+コンテンツ パックを操作しているときに、次のエラーが発生する可能性があります。 
+
+- [更新が失敗しました](#refresh-failed) 
+- [データ ソースの資格情報を更新できませんでした](#failed-to-update-data-source-credentials) 
+- [データのインポートに時間がかかっています](#data-import-is-too-slow) 
+
+Power BI 全般のヘルプ情報については、こちらの[ヘルプ記事](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/)を参照してください。
+
+### <a name="refresh-failed"></a>更新が失敗しました 
+ 
+**このエラーがどのように表面化するか**:Power BI からの電子メールまたは更新履歴の失敗状態。 
+
+
+| 原因 | 修正方法 |
+| ---   | ---        |
+| 更新失敗エラーは、コンテンツ パックに接続するユーザーの資格情報がリセットされたが、コンテンツ パックの接続設定が更新されていないときに発生することがあります。 | Power BI で、Azure Active Directory アクティビティ ログ ダッシュボード (**Azure Active Directory のアクティビティ ログ**) に対応するデータセットを検索し、[更新のスケジュール設定] を選択し、Azure AD 資格情報を入力します。 |
+| 更新は、基になるコンテンツ パックのデータの問題が原因で失敗することがあります。 | [サポート チケットを提出](../fundamentals/active-directory-troubleshooting-support-howto.md)します。|
  
+ 
+### <a name="failed-to-update-data-source-credentials"></a>データ ソースの資格情報を更新できませんでした 
+ 
+**このエラーがどのように表面化するか**:Power BI で、Azure AD アクティビティ ログ コンテンツ パックに接続するとき。 
+
+| 原因 | 修正方法 |
+| ---   | ---        |
+| 接続するユーザーが、グローバル管理者、セキュリティ閲覧者、またはセキュリティ管理者のいずれでもありません。 | コンテンツ パックにアクセスするには、グローバル管理者、セキュリティ閲覧者、またはセキュリティ管理者のいずれかのアカウントを使用します。 |
+| テナントが Premium テナントでないか、Premium ライセンス ファイルに少なくとも 1 人のユーザーが登録されていません。 | [サポート チケットを提出](../fundamentals/active-directory-troubleshooting-support-howto.md)します。|
  
+### <a name="data-import-is-too-slow"></a>データのインポートが遅すぎます 
+ 
+**このエラーがどのように表面化するか**:Power BI でコンテンツ パックに接続した後、Azure AD アクティビティ ログ用のダッシュボードを準備するためのデータ インポート処理が開始されます。 次のメッセージが表示されます。**[データをインポートしています...]**。これ以上は進みません。  
+
+| 原因 | 修正方法 |
+| ---   | ---        |
+| テナントのサイズに応じて、この手順は数分から 30 分かかることがあります。 | 1 時間以内にメッセージがダッシュボードの表示に変わらない場合は、[サポート チケットを提出](../fundamentals/active-directory-troubleshooting-support-howto.md)してください。|
+  
 ## <a name="next-steps"></a>次の手順
 
 * [Power BI コンテンツ パックをインストールする](quickstart-install-power-bi-content-pack.md)。
-* [コンテンツ パックのエラーをトラブルシューティングする](troubleshoot-content-pack.md)。
 * [Azure AD レポートとは](overview-reports.md)。

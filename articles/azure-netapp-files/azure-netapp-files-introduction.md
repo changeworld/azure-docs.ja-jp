@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: eb7354f8e099f28f4a3476b16c11f5f2d8feda00
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 84ab433f5de8a62f33aca01e60bc2dbd1d8e68f8
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412489"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761431"
 ---
 # <a name="introduction-to-azure-netapp-files"></a>Azure NetApp Files の概要
 Azure NetApp Files サービスは、エンタープライズ クラスでハイパフォーマンスの従量制課金ファイル ストレージ サービスです。 Azure NetApp Files は、既定で高い可用性を備え、あらゆる種類のワークロードをサポートします。 保証されたサービス レベルとパフォーマンス レベルを選び、サービスを通じてスナップショットを設定することができます。 
@@ -30,10 +30,6 @@ Azure NetApp Files サービスは、エンタープライズ クラスでハイ
 > このドキュメントで説明されているすべてのタスクでは、パブリック プレビュー プログラムに参加しており、Microsoft.NetApp Azure リソース プロバイダーにアクセスするためのホワイトリストに登録されていることが必要です。 パブリック プレビュー プログラムへの参加を要求するには、「[Azure NetApp Files に登録する](azure-netapp-files-register.md)」を参照してください。 
 
 **作業開始** 
-1. [Azure NetApp Files に登録する](azure-netapp-files-register.md)
-1. [NetApp アカウントを作成する](azure-netapp-files-create-netapp-account.md)
-1. [容量プールを設定する](azure-netapp-files-set-up-capacity-pool.md)
-1. [Azure NetApp Files のボリュームを作成する](azure-netapp-files-create-volumes.md)
-1. [ボリュームのエクスポート ポリシーを構成する (省略可能)](azure-netapp-files-configure-export-policy.md)
 
-
+* [Azure NetApp Files のストレージ階層を理解する](azure-netapp-files-understand-storage-hierarchy.md) 
+* [クイック スタート:Azure NetApp Files を設定し、ボリュームを作成する](azure-netapp-files-quickstart-set-up-account-create-volumes.md)

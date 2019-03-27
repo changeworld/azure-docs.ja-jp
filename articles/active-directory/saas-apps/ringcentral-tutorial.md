@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と RingCentral の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と RingCentral の統合 | Microsoft Docs
 description: Azure Active Directory と RingCentral の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 35033e52fb54177428f8869ebcc462bd9465ad4c
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e01b06b2031da20ee9349588bd4a7ee757fbc22c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48872321"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173302"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>チュートリアル: Azure Active Directory と RingCentral の統合
+# <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>チュートリアル:Azure Active Directory と RingCentral の統合
 
 このチュートリアルでは、RingCentral と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -125,7 +126,7 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 
     ![image](./media/ringcentral-tutorial/b21-domains_and_urls.png)
 
-    d. **[サインオン URL]** テキスト ボックスに、URL を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[サインオン URL]** テキスト ボックスに、URL を入力します。
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -188,7 +189,7 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 
     c. **[Attribute Mapping]\(属性マッピング\)** セクションの **[Map Email Attribute to]\(メール属性のマップ先\)** で `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を選択します
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
     e. **[Step 2]\(ステップ 2\)** の **[Download]\(ダウンロード\)** をクリックして**サービス プロバイダー メタデータ ファイル**をダウンロードし、Azure portal でそれを **[基本的な SAML 構成]** セクションにアップロードして、**[識別子]** と **[応答 URL]** を自動的に設定します。
 
@@ -216,22 +217,22 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 
     ![image](./media/ringcentral-tutorial/d_adduser.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. [ユーザーのプロパティ] で、次の手順のようにします。
 
     ![image](./media/ringcentral-tutorial/d_userproperties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
  
 ### <a name="create-a-ringcentral-test-user"></a>RingCentral テスト ユーザーを作成する
 
-このセクションでは、RingCentral で Britta Simon というユーザーを作成します。 [RingCentral クライアント サポート チーム](https://success.ringcentral.com/RCContactSupp)と連携し、RingCentral プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、RingCentral で Britta Simon というユーザーを作成します。  [RingCentral クライアント サポート チーム](https://success.ringcentral.com/RCContactSupp)と連携し、RingCentral プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -262,7 +263,7 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [RingCentral] タイルをクリックすると、自動的に RingCentral アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

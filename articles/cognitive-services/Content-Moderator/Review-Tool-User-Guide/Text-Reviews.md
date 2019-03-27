@@ -1,22 +1,22 @@
 ---
-title: Azure Content Moderator でのテキストのレビュー | Microsoft Docs
+title: Azure Content Moderator でのテキストのレビュー - Content Moderator
 description: Content Moderator でテキストをレビューして、そのスコアおよび検出されたタグを確認する方法について説明します。 情報を使用して、コンテンツが適切かどうかを判断します。
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
-ms.date: 02/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: cb8774395b7374677e8de3b80630a2d4abf490f9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 896956653ed924b7e30e63c1ae5cfa90dd0cc94d
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372917"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55219789"
 ---
-# <a name="review-text"></a>テキストのレビュー
+# <a name="let-human-reviewers-review-text"></a>人間のレビュー担当者にテキストをレビューさせます
 
 Azure Content Moderator を使用し、スコアおよび検出されたタグを使用してテキストをレビューできます。 情報を使用して、コンテンツが適切かどうかを判断します。 
 
@@ -32,4 +32,4 @@ Content Moderator で、**[Try]\(試す\)** タブを選択します。次に、
 
 ウィンドウに詳細な結果が表示されます。 結果には、検出されたタグと、Text Moderation API によって返された用語が含まれます。 タグの選択状態を切り替えるには、タグを選択します。 また、作成したカスタム タグを操作することもできます。
 
-![テキスト結果をレビューする](images/3-review-text-2.png)
+![Chrome ブラウザー ウィンドウにフラグが付けられたテキストが表示されたレビュー ツールのスクリーンショット](../images/reviewresults_text.png)

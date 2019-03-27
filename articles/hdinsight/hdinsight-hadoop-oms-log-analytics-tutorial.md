@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2af68c0b9deb9d5b065f5fae42cf4bf927f0c671
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: cd129ea68315223516ac1cd3e7577b5ee4bf92e5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386456"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005116"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics を使用して Azure HDInsight クラスターを監視する
 
@@ -46,9 +46,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ここでは、ジョブやデバッグ ログなどを監視するために、Azure Log Analytics ワークスペースを使用するよう既存の HDInsight Hadoop クラスターを構成します。
 
-1. Azure Portal で HDInsight クラスターを開きます。
-2. 左側のウィンドウで、**[監視]** を選択します。
-3. 右側のウィンドウで **[有効化]** を選択し、既存の Log Analytics ワークスペースを選択して、**[保存]** を選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+
+2. 左側のメニューから、**[すべてのサービス]** を選択します。
+
+3. **[ANALYTICS]** で **[HDInsight クラスター]** を選択します。
+
+4. 左側から、**[監視]** の下にある **[Operations Management Suite]** を選択します。
+
+5. メイン ビューから、**[OMS 監視]** の下にある **[有効化]** を選択します。
+
+6. **[ワークスペースを選択]** ドロップダウン リストから、既存の Log Analytics ワークスペースを選択します。
+
+7. **[保存]** を選択します。
 
     ![HDInsight クラスターの監視の有効化](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "HDInsight クラスターの監視の有効化")
 
@@ -91,7 +101,7 @@ HDInsight では、Azure Log Analytics に追加できるクラスター固有�
 * HDInsight Spark Monitoring
 * HDInsight Storm Monitoring
 
-管理ソリューションをインストールする手順については、「[Azure の管理ソリューション](../azure-monitor/insights/solutions.md#install-a-management-solution)」をご覧ください。 テスト用に HDInsight Hadoop Monotiring ソリューションをインストールします。 インストールが完了すると、**[概要]** の下に **HDInsightHadoop** タイルが表示されます。 **HDInsightHadoop** タイルを選択します。 HDInsightHadoop ソリューションは次のようになります。
+管理ソリューションをインストールする手順については、「[Azure の管理ソリューション](../azure-monitor/insights/solutions.md#install-a-monitoring-solution)」をご覧ください。 テスト用に HDInsight Hadoop Monotiring ソリューションをインストールします。 インストールが完了すると、**[概要]** の下に **HDInsightHadoop** タイルが表示されます。 **HDInsightHadoop** タイルを選択します。 HDInsightHadoop ソリューションは次のようになります。
 
 ![HDInsight 監視ソリューションのビュー](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 

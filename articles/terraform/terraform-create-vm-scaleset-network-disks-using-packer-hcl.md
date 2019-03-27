@@ -2,19 +2,19 @@
 title: Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する
 description: Terraform を使用して、Packer で生成されたカスタム イメージから Azure 仮想マシン スケール セットを構成し、バージョンを管理します (仮想ネットワークおよび接続された管理ディスクを使用)。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, DevOps, スケール セット, 仮想マシン, ネットワーク, ストレージ, モジュール, カスタム イメージ, Packer
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/29/2017
-ms.openlocfilehash: 12c6ebc9b29c356ad169dbd921e71c7aa0c273b7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077506"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001993"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する
 
@@ -180,7 +180,7 @@ terraform apply
 - Azure バックエンド アドレス プール (ロード バランサーに割り当てます) 
 - アプリケーションで使用する正常性プローブ ポート (ロード バランサー上に構成します) 
 - ロード バランサーの背後に構成される仮想マシン スケール セット (前述の手順でデプロイした VNET 上で実行されます)
-- カスタム イメージからインストールした仮想マシン スケールのノード上の [nginx](http://nginx.org/)
+- カスタム イメージからインストールした仮想マシン スケールのノード上の [nginx](https://nginx.org/)
 
 
 `vmss.tf` ファイルの末尾に次のコードを追加します。

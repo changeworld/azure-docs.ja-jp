@@ -5,18 +5,18 @@ description: 照明やアプライアンスの電源をオンにしたりオフ�
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 86a09d3d11f9b713bb6228498c072d80e7c45d6b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 347de9b575e3b47ee795026115fd2452c28b866b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261079"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877339"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート: 事前構築済みの Home Automation アプリを使用する
 
@@ -63,7 +63,7 @@ ms.locfileid: "54261079"
 
 **[HomeAutomation.TurnOff]** 意図を選択します。 意図には、エンティティでラベル付けされている発話の一覧が含まれていることがわかります。
 
-[![意図のスクリーンショット](media/luis-quickstart-new-app/home-automation-turnon.png "HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnon.png)
+[![意図のスクリーンショット](media/luis-quickstart-new-app/home-automation-turnon.png "Screenshot of HomeAutomation.TurnOff intent")](media/luis-quickstart-new-app/home-automation-turnon.png)
 
 ## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
 

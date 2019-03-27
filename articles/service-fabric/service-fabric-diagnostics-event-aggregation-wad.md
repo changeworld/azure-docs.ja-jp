@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: baa86fe70c394aaea31a6fa775073bb26d062c49
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 89cd8e85c9902bb1caeedd80240811f59ebec409
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002401"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55187438"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -187,7 +187,7 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 
 ### <a name="update-storage-quota"></a>ストレージ クォータを更新する
 
-拡張機能によってデータが入力されるテーブルは、クォータに達するまで大きくなり続けるため、クォータ サイズの縮小を検討できます。 既定値は 50 GB です。この値は、テンプレートの `DiagnosticMonitorConfiguration` の下の `overallQuotainMB` フィールドで構成可能です。
+拡張機能によってデータが入力されるテーブルは、クォータに達するまで大きくなり続けるため、クォータ サイズの縮小を検討できます。 既定値は 50 GB です。この値は、テンプレートの `DiagnosticMonitorConfiguration` の下の `overallQuotaInMB` フィールドで構成可能です。
 
 ```json
 "overallQuotaInMB": "50000",

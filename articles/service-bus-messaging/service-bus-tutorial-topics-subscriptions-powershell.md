@@ -9,14 +9,14 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: fdf97234e840de5fdd2811f3cdae8dd4cdc76a22
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 21dcf522f00f1991ecb2a92d6dc0925baadbdcc6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229154"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081272"
 ---
-# <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>チュートリアル: PowerShell とトピック/サブスクリプションを使用して在庫を更新する
+# <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>チュートリアル:PowerShell とトピック/サブスクリプションを使用して在庫を更新する
 
 Microsoft Azure Service Bus は、アプリケーションとサービスの間で情報を送信するマルチテナント クラウド メッセージング サービスです。 非同期操作により、柔軟なブローカー メッセージング、構造化された先入れ先出し型 (FIFO) のメッセージング、および発行/購読機能が可能になります。 
 
@@ -111,13 +111,13 @@ Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespac
    ```azurepowershell-interactive
    Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
    ```
-5.  PowerShell プロンプトで、次のコマンドを入力します。
+5. PowerShell プロンプトで、次のコマンドを入力します。
 
    ```shell
    dotnet build
    ```
-6.  `\bin\Debug\netcoreapp2.0` フォルダーに移動します。
-7.  次のコマンドを入力してプログラムを実行します。 `myConnectionString` を以前に取得した値に、`myQueueName` を作成したキューの名前に置き換えます。
+6. `\bin\Debug\netcoreapp2.0` フォルダーに移動します。
+7. 次のコマンドを入力してプログラムを実行します。 `myConnectionString` を以前に取得した値に、`myQueueName` を作成したキューの名前に置き換えます。
 
    ```shell
    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
@@ -286,4 +286,4 @@ Service Bus の公開/サブスクライブ機能の使用方法の詳細につ�
 > [PowerShell とトピック/サブスクリプションを使用して在庫を更新する](service-bus-tutorial-topics-subscriptions-cli.md)
 
 [無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Azure PowerShell モジュールのインストールと構成]: /powershell/azure/install-azurerm-ps
+[Azure PowerShell モジュールのインストールと構成]: /powershell/azure/azurerm/install-azurerm-ps

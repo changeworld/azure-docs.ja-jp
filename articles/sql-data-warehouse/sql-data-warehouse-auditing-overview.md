@@ -2,20 +2,20 @@
 title: Azure SQL Data Warehouse での監査 | Microsoft Docs
 description: 監査と、Azure SQL Data Warehouse で監査を設定する方法について説明します。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: manage
+ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 199095c3cffc8df7f9755f1f2c4bb5a1acba3748
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 701c5c175e22556aefa95d1ac3836d52cd19b845
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260382"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342306"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での監査
 
@@ -74,10 +74,13 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
     ![ナビゲーション ウィンドウ][8]
 
     > [!IMPORTANT]
-    > サーバーレベルの監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。
+    > 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。
     >
-    > * **Premium Storage** は現在、追加 BLOB では**サポートされていません**。
-    > * **VNet 内の Storage** は現在**サポートされていません**。
+    > - すべてのストレージの種類 (v1、v2、BLOB) がサポートされています。
+    > - すべてのストレージ レプリケーション構成がサポートされています。
+    > - **Premium Storage** は現在**サポートされていません**。
+    > - **VNet 内の Storage** は現在**サポートされていません**。
+    > - **ファイアウォールの背後にある Storage** は現在**サポートされていません**。
 
 8. **[Save]** をクリックします。
 
@@ -107,7 +110,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
 5. **[OK]** ボタンをクリックして、記憶域の詳細構成を保存します。
 6. **[イベントごとのログ記録]** で、**[成功]** および **[失敗]** を、すべてのイベントについて、または個別のイベント カテゴリについて記録します。
-7. データベースの監査を構成している場合は、データの監査が正しくキャプチャされるように、クライアントの接続文字列を変更する必要がある場合があります。 ダウンレベル クライアントの接続については、 [接続文字列でのサーバーの FDQN の変更](sql-data-warehouse-auditing-downlevel-clients.md) に関するトピックを参照してください。
+7. データベースの監査を構成している場合は、データの監査が正しくキャプチャされるように、クライアントの接続文字列を変更する必要がある場合があります。 ダウンレベル クライアントの接続については、[接続文字列でのサーバーの FQDN の変更](sql-data-warehouse-auditing-downlevel-clients.md)に関するトピックを参照してください。
 8. Click **OK**.
 
 ## <a id="subheading-3"></a>監査ログとレポートを分析する

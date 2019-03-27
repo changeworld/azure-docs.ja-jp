@@ -4,17 +4,18 @@ description: Azure Stack ストレージの開発ツールの使用方法の概�
 services: azure-stack
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 12/03/2018
-ms.topic: get-started-article
+ms.date: 02/27/2019
+ms.topic: conceptual
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 56814cc44874fe0c169e5fb51dc6cbff5a225231
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 02/27/2019
+ms.openlocfilehash: 1640e06d2d6eec19d516fb3ddf0e98c579e667a7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727855"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080796"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack ストレージの開発ツールの概要
 
@@ -24,7 +25,7 @@ Microsoft Azure Stack には、Blob Storage、Table Storage、Queue Storage な�
 
 この記事は、Azure Stack ストレージの開発ツールを初めて使うときのガイドとしてご利用ください。 より詳細な情報とサンプル コードについては、該当する Azure ストレージのチュートリアルでご覧いただけます。
 
-> [!NOTE]
+> [!NOTE]  
 > Azure Stack ストレージと Azure ストレージには、プラットフォームごとの固有の要件など、既知の違いがあります。 たとえば、Azure Stack には、クライアント ライブラリとエンドポイント サフィックスにある特定の要件があります。 詳しくは、「[Azure Stack Storage:違いと考慮事項](azure-stack-acs-differences.md)」をご覧ください。
 
 ## <a name="azure-client-libraries"></a>Azure のクライアント ライブラリ
@@ -35,12 +36,12 @@ Microsoft Azure Stack には、Blob Storage、Table Storage、Queue Storage な�
 
 | クライアント ライブラリ | Azure Stack でサポートされるバージョン | Link | エンドポイントの指定 |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
-| .NET | 8.7.0 | NuGet パッケージ:<br>https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0 | app.config ファイル |
-| Java | 6.1.0 | Maven パッケージ:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | 接続文字列の設定 |
-| Node.js | 2.7.0 | NPM リンク:<br>https://www.npmjs.com/package/azure-storage<br>(次のコマンドを実行: `npm install azure-storage@2.7.0`)<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0 | サービス インスタンスの宣言 |
-| C++ | 3.1.0 | NuGet パッケージ:<br>https://www.nuget.org/packages/wastorage.v140/3.1.0<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0 | 接続文字列の設定 |
-| PHP | 1.0.0 | GitHub リリース:<br>共通: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>BLOB: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>キュー:<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>テーブル: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>Composer 経由でインストールする ([詳細については以下を参照](#install-php-client-via-composer---current)) | 接続文字列の設定 |
-| Python | 1.0.0 | GitHub リリース:<br>共通:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common<br>BLOB:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob<br>キュー:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-queue | サービス インスタンスの宣言 |
+| .NET | 9.2.0 | NuGet パッケージ:<br>https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0 | app.config ファイル |
+| Java | 7.0.0 | Maven パッケージ:<br>https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/7.0.0<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0 | 接続文字列の設定 |
+| Node.js | 2.8.3 | NPM リンク:<br>https://www.npmjs.com/package/azure-storage<br>(次のコマンドを実行: `npm install azure-storage@2.8.3`)<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3 | サービス インスタンスの宣言 |
+| C++ | 5.2.0 | NuGet パッケージ:<br>https://www.nuget.org/packages/Microsoft.Azure.Storage.CPP.v140/5.2.0<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0 | 接続文字列の設定 |
+| PHP | 1.2.0 | GitHub リリース:<br>共通: https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common<br>BLOB: https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob<br>キュー:<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.1.1-queue<br>テーブル: https://github.com/Azure/azure-storage-php/releases/tag/v1.1.0-table<br> <br>Composer 経由でインストールする (詳細については[下記参照](#install-php-client-via-composer---current)) | 接続文字列の設定 |
+| Python | 1.1.0 | GitHub リリース:<br>共通:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-common<br>BLOB:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob<br>キュー:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-queue | サービス インスタンスの宣言 |
 | Ruby | 1.0.1 | RubyGems パッケージ:<br>共通:<br>https://rubygems.org/gems/azure-storage-common/versions/1.0.1<br>BLOB: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1<br>キュー: https://rubygems.org/gems/azure-storage-queue/versions/1.0.1<br>テーブル: https://rubygems.org/gems/azure-storage-table/versions/1.0.1<br> <br>GitHub リリース:<br>共通: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common<br>BLOB: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob<br>キュー: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue<br>テーブル: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table | 接続文字列の設定 |
 
 #### <a name="install-php-client-via-composer---current"></a>Composer 経由で PHP クライアントをインストールする (現在)
@@ -57,20 +58,20 @@ Composer 経由でインストールするには (BLOB の例):
     }
     ```
 
-2. [composer.phar](http://getcomposer.org/composer.phar) をプロジェクトのルートにダウンロードします。
+2. [composer.phar](https://getcomposer.org/composer.phar) をプロジェクトのルートにダウンロードします。
 3. `php composer.phar install` を実行します。
 
 ### <a name="previous-versions-1802-to-1809-update"></a>以前のバージョン (1802 から 1809 までの更新プログラム)
 
-|クライアント ライブラリ|Azure Stack でサポートされるバージョン|Link|エンドポイントの指定|
-|---------|---------|---------|---------|
-|.NET     |6.2.0|NuGet パッケージ:<br>[https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0](https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0)<br><br>GitHub リリース:<br>[https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1](https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1)|app.config ファイル|
-|Java|4.1.0|Maven パッケージ:<br>[http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0)<br><br>GitHub リリース:<br> [https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0](https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0)|接続文字列の設定|
-|Node.js     |1.1.0|NPM リンク:<br>[https://www.npmjs.com/package/azure-storage](https://www.npmjs.com/package/azure-storage)<br>(実行: `npm install azure-storage@1.1.0)`<br><br>GitHub リリース:<br>[https://github.com/Azure/azure-storage-node/releases/tag/1.1.0](https://github.com/Azure/azure-storage-node/releases/tag/1.1.0)|サービス インスタンスの宣言||C++|2.4.0|NuGet パッケージ:<br>[https://www.nuget.org/packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>GitHub リリース:<br>[https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|接続文字列の設定|
-|C++|2.4.0|NuGet パッケージ:<br>[https://www.nuget.org/packages/wastorage.v140/2.4.0](https://www.nuget.org/packages/wastorage.v140/2.4.0)<br><br>GitHub リリース:<br>[https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0](https://github.com/Azure/azure-storage-cpp/releases/tag/v2.4.0)|接続文字列の設定|
-|PHP|0.15.0|GitHub リリース:<br>[https://github.com/Azure/azure-storage-php/releases/tag/v0.15.0](https://github.com/Azure/azure-storage-php/releases/tag/v0.15.0)<br><br>Composer 経由でインストールする (下記参照)|接続文字列の設定|
-|Python     |0.30.0|PIP パッケージ:<br> [https://pypi.python.org/pypi/azure-storage/0.30.0](https://pypi.python.org/pypi/azure-storage/0.30.0)<br>(実行: `pip install -v azure-storage==0.30.0)`<br><br>GitHub リリース:<br> [https://github.com/Azure/azure-storage-python/releases/tag/v0.30.0](https://github.com/Azure/azure-storage-python/releases/tag/v0.30.0)|サービス インスタンスの宣言|
-|Ruby|0.12.1<br>プレビュー|RubyGems パッケージ:<br> [https://rubygems.org/gems/azure-storage/versions/0.12.1.preview](https://rubygems.org/gems/azure-storage/versions/0.12.1.preview)<br><br>GitHub リリース:<br> [https://github.com/Azure/azure-storage-ruby/releases/tag/v0.12.1](https://github.com/Azure/azure-storage-ruby/releases/tag/v0.12.1)|接続文字列の設定|
+| クライアント ライブラリ | Azure Stack でサポートされるバージョン | Link | エンドポイントの指定 |
+|----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
+| .NET | 8.7.0 | NuGet パッケージ:<br>https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0 | app.config ファイル |
+| Java | 6.1.0 | Maven パッケージ:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | 接続文字列の設定 |
+| Node.js | 2.7.0 | NPM リンク:<br>https://www.npmjs.com/package/azure-storage<br>(次のコマンドを実行: `npm install azure-storage@2.7.0`)<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0 | サービス インスタンスの宣言 |
+| C++ | 3.1.0 | NuGet パッケージ:<br>https://www.nuget.org/packages/wastorage.v140/3.1.0<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0 | 接続文字列の設定 |
+| PHP | 1.0.0 | GitHub リリース:<br>共通: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>BLOB: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>キュー:<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>テーブル: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>Composer 経由でインストールする (下記参照) | 接続文字列の設定 |
+| Python | 1.0.0 | GitHub リリース:<br>共通:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common<br>BLOB:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-blob<br>キュー:<br>https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-queue | サービス インスタンスの宣言 |
+| Ruby | 1.0.1 | RubyGems パッケージ:<br>共通:<br>https://rubygems.org/gems/azure-storage-common/versions/1.0.1<br>BLOB: https://rubygems.org/gems/azure-storage-blob/versions/1.0.1<br>キュー: https://rubygems.org/gems/azure-storage-queue/versions/1.0.1<br>テーブル: https://rubygems.org/gems/azure-storage-table/versions/1.0.1<br> <br>GitHub リリース:<br>共通: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common<br>BLOB: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob<br>キュー: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue<br>テーブル: https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table | 接続文字列の設定 |
 
 #### <a name="install-php-client-via-composer---previous"></a>Composer 経由で PHP クライアントをインストールする (以前)
 
@@ -78,15 +79,15 @@ Composer 経由でインストールするには (BLOB の例):
 
 1. プロジェクトのルートに **composer.json** という名前のファイルを次のコードを使用して作成します。
 
-  ```json
+   ```json
     {
       "require": {
       "Microsoft/azure-storage-blob":"1.0.0"
       }
     }
-  ```
+   ```
 
-2. [composer.phar](http://getcomposer.org/composer.phar) をプロジェクトのルートにダウンロードします。
+2. [composer.phar](https://getcomposer.org/composer.phar) をプロジェクトのルートにダウンロードします。
 3. `php composer.phar install` を実行します。
 
 ## <a name="endpoint-declaration"></a>エンドポイントの宣言

@@ -4,93 +4,58 @@ titleSuffix: Azure Machine Learning service
 description: Python 内で Azure Machine Learning service を探索するための Jupyter Notebook の例を検索し、使用します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: sample
 author: sdgilley
 ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0d74f731d0a7eca25238344e36838dc6c806c788
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 961983aad0775f9b9d728269e8a57137ff508f02
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434530"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451792"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Jupyter Notebook を使用して Azure Machine Learning service を探索する
-
 
 作業を容易にするために、Azure Machine Learning service の探索に使用できる一連の Jupyter Python Notebook を開発しました。 
 
 このサイトのドキュメントでサービスの使用方法を確認し、これらのノートブックを使用して、それらを自分の状況に合わせてカスタマイズします。 
 
-## <a name="prerequisite"></a>前提条件
+以下のいずれかのパスを使用して、これらのサンプル ノートブックと共にノートブック サーバーを稼働します。  サーバーを稼働したら、**tutorials** フォルダーでチュートリアル ノートブックを見つけます。または、**how-to-use-azureml** フォルダーでさまざまな機能を確認します。
 
-ワークスペースを作成して Azure Notebooks を起動するには、[Azure Machine Learning Python のクイック スタート](quickstart-get-started.md)を完了してください。
 
 ## <a name="try-azure-notebooks-free-jupyter-notebooks-in-the-cloud"></a>Azure Notebooks を試す:クラウド上の無料の Jupyter Notebook
 
-Azure Notebooks の利用を開始するのは簡単です。 Azure Notebooks には [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。 インストールと今後の更新プログラムは、Azure サービスを介して自動的に管理されます。
+Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](https://notebooks.azure.com/) には [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) が既にインストールされて構成されています。 インストールと今後の更新プログラムは、Azure サービスを介して自動的に管理されます。
   
-+ **コア チュートリアル ノートブック**を実行するには:
-  1. [Azure Notebooks](https://notebooks.azure.com/) に移動します。
-    
-  1. 前提条件のクイック スタートで作成した **Getting Started** ライブラリ内で **tutorials** フォルダーを探します。
-    
-  1. 実行するノートブックを開きます。
-    
-+ **その他のノートブック**を実行するには:
-
-  1. [サンプル ノートブックを Azure Notebooks にインポート](https://aka.ms/aml-clone-azure-notebooks)します。
-
-  1. 次のいずれかの方法を使用して、ワークスペース構成ファイルをライブラリに追加します。
-     + **config.json** ファイルを **Getting Started** ライブラリから新しい複製ライブラリにコピーします。
-
-     + [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) 内のコードを使用して新しいワークスペースを作成します。
-    
-  1. 実行するノートブックを開きます。     
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
 
 
 ## <a name="use-a-data-science-virtual-machine-dsvm"></a>Data Science Virtual Machine (DSVM) を使用する
 
-DSVM には [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) とノートブック サーバーが既にインストールされて構成されています。 次の手順を使用してノートブックを実行します。
+DSVM には [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) とノートブック サーバーが既にインストールされて構成されています。 
 
-1. [DSVM を作成](how-to-configure-environment.md#dsvm)します。
+[DSVM を作成](how-to-configure-environment.md#dsvm)した後、DSVM でこれらの手順を使用してノートブックを実行します。
 
-1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
+[!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
 
-1. 次のいずれかの方法を使用して、ワークスペース構成ファイルをライブラリに追加します。
-    * 前提条件のクイック スタートを使用して作成した **aml_config\config.json** ファイルを複製されたディレクトリにコピーします。
-
-    * [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) 内のコードを使用して新しいワークスペースを作成します。
-
-1. 複製したディレクトリから、Notebook サーバーを起動します。
 
 ## <a name="use-your-own-jupyter-notebook-server"></a>自分の Jupyter Notebook サーバーを使用する
 
 次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。
 
-1. Azure Machine Learning SDK をインストールする前提条件のクイック スタートを完了したことを確認します。
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
+このクイック スタートの各手順では、クイック スタートとチュートリアルのノートブックを実行するために必要なパッケージをインストールします。  他のサンプル ノートブックでは、さらに別のコンポーネントのインストールが必要になることがあります。  これらのコンポーネントの詳細については、「[Install the Azure Machine Learning SDK for Python (Azure Machine Learning SDK for Python をインストールする)](https://docs.microsoft.com/python/api/overview/azure/ml/install)」を参照してください。
 
-1. 次のいずれかの方法を使用して、ワークスペース構成ファイルをライブラリに追加します。
-    * 前提条件のクイック スタートを使用して作成した **aml_config\config.json** ファイルを複製されたディレクトリにコピーします。
-    
-    * [configuration.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/configuration.ipynb) 内のコードを使用して新しいワークスペースを作成します。
+<a name="automated-ml-setup"></a>
 
-1. 複製したディレクトリから、Notebook サーバーを起動します。
+## <a name="automated-machine-learning-setup"></a>自動化された機械学習の設定 
 
-1. ノートブックが格納されているフォルダーに移動します。
-
-1. ノートブックを開きます。
-
-<a name="auto"></a>
-
-## <a name="automated-ml-setup"></a>自動化された ML セットアップ 
-
-**これらの手順は、`automated-machine-learning` フォルダー内のノートブックにのみ適用されます。**
+"_以下の手順は、**how-to-use-azureml/automated-machine-learning** フォルダーにあるノートブックにのみ適用されます。_"
 
 上記のオプションのどれでも使用できますが、次の手順に従って、環境のインストールとワークスペースの作成を同時に行うこともできます。 
 
@@ -106,7 +71,7 @@ DSVM には [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) と�
    
    1. ローカル コンピューターに抽出したファイルに移動します。
    
-   1. `automated-machine-learning` フォルダーを開きます。
+   1. **automated-machine-learning** フォルダーを開きます。
    
    1. Windows の conda プロンプトまたはオペレーティング システムの `.sh` ファイル内で `automl_setup.cmd` を実行します。 実行には約 10 分かかることがあります。
 
@@ -123,7 +88,7 @@ DSVM には [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) と�
 
 1. ノートブックを保存したパスに移動します。 
 
-1. 自動化された機械学習のフォルダーを開き、`configuration.ipynb` ノートブックを開きます。 
+1. 自動化された機械学習のフォルダーを開き、**configuration.ipynb** ノートブックを開きます。 
 
 1. ノートブック内のセルを実行して、Machine Learning Services リソース プロバイダーを登録し、ワークスペースを作成します。
 

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 68517c83-1279-4cc7-a7c1-c7ccc3dbe146
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,12 +17,13 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: da681500ccff24e6e9bfa6b7bb9e5a14a725f158
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3f4a04f1598b3ab0efd9ff95a707d3837bb37503
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51279636"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196027"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能 
 
@@ -46,27 +47,27 @@ ms.locfileid: "51279636"
 
 ### <a name="authorization-codes-can-no-longer-be-reused"></a>認証コードを再利用できなくなりました
 
-**有効日**: 2018 年 11 月 15 日
+**発効日**:2018 年 11 月 15 日
 
-**影響を受けるエンドポイント**: v1.0 と v2.0 の両方
+**影響を受けるエンドポイント**:v1.0 と v2.0 の両方
 
-**影響を受けるプロトコル**: [コード フロー](v2-oauth2-auth-code-flow.md)
+**影響を受けるプロトコル**:[コード フロー](v2-oauth2-auth-code-flow.md)
 
 2018 年 11 月 15 日以降、Azure AD では、以前使用されていた、アプリの認証コードの受け入れが停止されます。 このセキュリティの変更により、Azure AD と OAuth の仕様が一致するようになります。この変更は、v1 と v2 両方のエンドポイントに適用されます。
 
 お使いのアプリで承認コードを再利用して複数のリソースに対するトークンを取得している場合は、コードを使用して更新トークンを取得した後、その更新トークンを使用して他のリソース用のトークンを追加取得することお勧めします。 承認コードは 1 回しか使用できませんが、更新トークンは複数のリソースで複数回使用できます。 OAuth コード フローの使用時に新しいアプリで認証コードを再利用しようとすると、invalid_grant エラーが発生します。
 
-更新トークンについて詳しくは、「[アクセス トークンの更新](v1-protocols-oauth-code.md#refreshing-the-access-tokens)」をご覧ください。
+更新トークンについて詳しくは、「[アクセス トークンの更新](v1-protocols-oauth-code.md#refreshing-the-access-tokens)」をご覧ください。  ADAL または MSAL を使用する場合、これはライブラリによって処理され、'AcquireTokenByAuthorizationCodeAsync' の 2 つ目のインスタンスを 'AcquireTokenSilentAsync' に置き換えます。 
 
 ## <a name="may-2018"></a>2018 年 5 月
 
 ### <a name="id-tokens-cannot-be-used-for-the-obo-flow"></a>ID トークンは OBO フローに使用できません
 
-**日付**: 2018 年 5 月 1 日
+**日付**:2018 年 5 月 1 日
 
-**影響を受けるエンドポイント**: v1.0 と v2.0 の両方
+**影響を受けるエンドポイント**:v1.0 と v2.0 の両方
 
-**影響を受けるプロトコル**: 暗黙のフローと [OBO フロー](v1-oauth2-on-behalf-of-flow.md)
+**影響を受けるプロトコル**:暗黙的フローと [OBO フロー](v1-oauth2-on-behalf-of-flow.md)
 
 2018 年 5 月 1 日以降、id_tokens は新しいアプリケーションの OBO フローでアサーションとして使用できません。 代わりに、アクセス トークンを使用して、同じアプリケーションのクライアントと中間層の間でも、API のセキュリティを確保する必要があります。 2018 年 5 月 1 日より前に登録されたアプリは、引き続き動作し、id_tokens をアクセス トークンに交換することができますが、このパターンはベスト プラクティスとは見なされません。
 

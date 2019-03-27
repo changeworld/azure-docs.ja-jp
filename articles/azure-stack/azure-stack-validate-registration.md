@@ -11,16 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: cbce1e1aa9ba89d6d46cfaa60ef4de7e6392d924
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/04/2018
+ms.openlocfilehash: a4f41f5cf4e2775e3c300a2e83794e35d7328965
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245805"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104235"
 ---
 # <a name="validate-azure-registration"></a>Azure の登録の検証
  
@@ -66,6 +67,8 @@ Azure Stack 登録の詳細については、「[Azure を使用した Azure Sta
    ```powershell
    $registrationCredential = Get-Credential subscriptionowner@contoso.onmicrosoft.com -Message "Enter Credentials for Subscription Owner"
    ```
+   > [!NOTE]
+   > CSP として、共有サービスまたは IUR サブスクリプションを使用する場合は、それぞれの AAD のユーザーの資格情報を指定する必要があります。 これは、通常、`subscriptionowner@iurcontoso.onmicrosoft.com` のようになります。 前に説明したように、そのユーザーは適切な資格情報を持っている必要があります。
 
 3. PowerShell プロンプトから次を実行して、`$subscriptionID` を、使用する Azure サブスクリプションとして設定します。 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` をお使いのサブスクリプション ID に置き換えます。
    ```powershell

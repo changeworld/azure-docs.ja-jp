@@ -3,7 +3,7 @@ title: Azure Stack での Azure App Service サーバー ロールのキャパ�
 description: Azure Stack での Azure App Service サーバー ロールのキャパシティ プランニング
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,19 +12,20 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
-ms.author: sethm
+ms.date: 03/13/2019
+ms.author: anwestg
 ms.reviewer: anwestg
-ms.openlocfilehash: a769bb4cce84fe78f442cce8440e6e828ed7f76d
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.lastreviewed: 03/13/2019
+ms.openlocfilehash: 06bafbcf3e668ba17b1245b9352e942e02569997
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354140"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852367"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Azure Stack での Azure App Service サーバー ロールのキャパシティ プランニング
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 稼働準備済みの Azure App Service on Azure Stack のデプロイを設定するには、システムでサポートするキャパシティについて計画する必要があります。  
 
@@ -37,7 +38,7 @@ ms.locfileid: "49354140"
 | コントローラー | 2 | A1 |
 | フロントエンド | 2 | A1 |
 | 管理 | 2 | A3 |
-| 発行元 | 2 | A1 |
+| Publisher | 2 | A1 |
 | Web Worker - 共有 | 2 | A1 |
 | Web Worker - 専用 | 層ごとに 2 個 | A1 |
 
@@ -80,7 +81,7 @@ Azure App Service 管理ロールでは、App Service Azure Resource Manager お
 
 使用する共有 Web worker ロールの数を決定する場合、次の考慮事項を検討します。
 
-- **メモリ**: メモリは Web worker ロールの最も重要なリソースです。 メモリが不足していると、仮想メモリがディスクからスワップされるときの Web サイトのパフォーマンスに影響します。 各サーバーで、オペレーティング システム用に約 1.2 GB の RAM が必要となります。 このしきい値を超える RAM を Web サイトの実行で使用できます。
+- **メモリ**:メモリは Web worker ロールの最も重要なリソースです。 メモリが不足していると、仮想メモリがディスクからスワップされるときの Web サイトのパフォーマンスに影響します。 各サーバーで、オペレーティング システム用に約 1.2 GB の RAM が必要となります。 このしきい値を超える RAM を Web サイトの実行で使用できます。
 - **アクティブな Web サイトの割合**: 通常は、Azure App Service on Azure Stack デプロイ内のアプリケーションの約 5% がアクティブです。 ただし、特定の時点でのアクティブなアプリケーションの割合は、それよりも高い場合も低い場合もあります。 アクティブなアプリケーションの割合が 5% の場合、Azure App Service on Azure Stack のデプロイに配置するアプリケーションの最大数は、アクティブな Web サイトの数の 20 倍 (5 x 20 = 100) より少なくする必要があります。
 - **平均メモリ占有領域**: 運用環境で計測されるアプリケーションの平均メモリ占有領域は約 70 MB です。 この占有領域を使用して、すべての Web worker ロールのコンピューターまたは VM 全体で割り当てられるメモリは、次のように計算できます。
 
@@ -92,9 +93,17 @@ Azure App Service 管理ロールでは、App Service Azure Resource Manager お
 
    さらに worker インスタンスを追加する方法については、[worker ロールの追加](azure-stack-app-service-add-worker-roles.md)に関する記事をご覧ください。
 
+### <a name="additional-considerations-for-dedicated-workers-during-upgrade-and-maintenance"></a>アップグレードおよびメンテナンス中の専用 worker に関する追加の考慮事項
+
+worker のアップグレードおよびメンテナンス中、Azure App Service on Azure Stack は常に各 worker 層の 20% に対してメンテナンスを実行します。  そのため、クラウド管理者は、アップグレード中およびメンテナンス中にテナントでサービスが停止しないように、worker 層ごとに常に 20% の未割り当て worker のプールを維持する必要があります。  たとえば、1 つの worker 層に 10 個の worker がある場合、アップグレードおよびメンテナンスを可能にするために 2 個を未割り当てにする必要があります。10 個すべてが割り当て済みになった場合は、未割り当て worker のプールを維持するために、worker 層をスケールアップする必要があります。 アップグレードおよびメンテナンス中、Azure App Service はワークロードが確実に動作し続けるようにワークロードを未割り当ての worker に移動します。ただし、アップグレード中に未割り当ての worker を利用できない場合、テナント ワークロードのダウンタイムが発生する可能性があります。  共有 worker に関しては、高可用性を実現するために、利用可能な worker 内でテナント アプリケーションがサービスによって自動的に割り当てられるため、お客様が追加の worker をプロビジョニングする必要はありません。ただし、この層に 2 個の worker があることが最小要件です。
+
+クラウド管理者は、Azure Stack 管理ポータルの App Service 管理領域で worker 層の割り当てを監視できます。  App Service に移動し、左側のウィンドウにある [worker 層] を選択します。  [worker 層] テーブルには、worker 層の名前、サイズ、使用されているイメージ、利用可能な worker (未割り当て) の数、各層の worker の合計数、および worker 層の全体的な状態が表示されます。
+
+![App Service 管理 - [worker 層]][1]
+
 ## <a name="file-server-role"></a>ファイル サーバー ロール
 
-ファイル サーバー ロールでは、開発とテスト用にスタンドアロン ファイル サーバーを使用できます。たとえば Azure Stack Development Kit (ASDK) で Azure App Service をデプロイするときに、 https://aka.ms/appsvconmasdkfstemplate のテンプレートを使用できます。 運用環境では、事前構成済みの Windows ファイル サーバーか、事前構成済みの Windows 以外のファイル サーバーを使用する必要があります。
+ファイル サーバー ロールでは、開発とテスト用にスタンドアロンのファイル サーバーを使用できます。たとえば Azure Stack Development Kit (ASDK) で Azure App Service をデプロイするときに、この[テンプレート](https://aka.ms/appsvconmasdkfstemplate)を使用できます。  運用環境では、事前構成済みの Windows ファイル サーバーか、事前構成済みの Windows 以外のファイル サーバーを使用する必要があります。
 
 運用環境では、ファイル サーバー ロールで集中的なディスク I/O が行なわれます。 ユーザー Web サイトのコンテンツとアプリケーション ファイルすべてが保存されるため、このロール用に次のリソースのいずれかを事前に構成しておく必要があります。
 
@@ -104,10 +113,13 @@ Azure App Service 管理ロールでは、App Service Azure Resource Manager お
 - Windows 以外のファイル サーバー クラスター
 - NAS (ネットワーク接続ストレージ) デバイス
 
-詳細については、[ファイル サーバーのプロビジョニング](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server)に関する記述を参照してください。
+詳細については、[ファイル サーバーのプロビジョニング](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 詳細については、次の記事を参照してください。
 
 [Azure Stack 上の App Service を開始する前に](azure-stack-app-service-before-you-get-started.md)
+
+<!--Image references-->
+[1]: ./media/azure-stack-app-service-capacity-planning/worker-tier-allocation.png

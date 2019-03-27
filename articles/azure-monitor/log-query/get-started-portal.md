@@ -1,30 +1,25 @@
 ---
-title: Azure portal で Log Analytics の使用を開始する | Microsoft Docs
+title: Azure Monitor ログ分析の使用を開始する | Microsoft Docs
 description: この記事では、Azure portal で Log Analytics を使用してクエリを記述する方法を説明します。
 services: log-analytics
-documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 6ed8906066d66b6e16ec482a53137f9ca70ae9c7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2adb23b63c3a8be56dc55293c7bb06534d9305c4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000046"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242109"
 ---
-# <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Azure portal で Log Analytics の使用を開始する
+# <a name="get-started-with-azure-monitor-log-analytics"></a>Azure Monitor ログ分析の使用を開始する
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-このチュートリアルでは、Azure portal の [Log Analytics] ページ (現在プレビュー段階) を使用して Log Analytics クエリを作成する方法について説明します。 以下の方法について説明します。
+このチュートリアルでは、Azure portal で Azure Monitor ログ分析を使用して、Azure Monitor ログ クエリを記述する方法について説明します。 以下の方法について説明します。
 
 - 単純なクエリを作成する
 - データのスキーマの概要
@@ -35,8 +30,8 @@ ms.locfileid: "53000046"
 - クエリのエクスポートと共有
 
 
-## <a name="meet-the-log-analytics-page"></a>[Log Analytics] ページの紹介 
-[Log Analytics] ページは、Azure Log Analytics クエリの作成と実行に使用される Web ツールです。 [Log Analytics] メニューの **[ログ]** (プレビュー) を選択して開きます。 新しい空のクエリから開始されます。
+## <a name="meet-log-analytics"></a>ログ分析について
+ログ分析は、Azure Monitor ログ クエリの記述と実行に使用される Web ツールです。 Azure Monitor のメニューで **[ログ]** を選択し、これを開きます。 新しい空のクエリから開始されます。
 
 ![ホーム ページ](media/get-started-portal/homepage.png)
 
@@ -83,7 +78,7 @@ search in (Event) "error"
 Event
 ```
 
-[Log Analytics] ページでは、以下の条件で結果が自動的に絞り込まれます。
+ログ分析では、以下によって結果の範囲が自動的に調整されます。
 
 - 時間の範囲:既定で、クエリは過去 24 時間に制限されます。
 - 結果の数:結果は最大 10,000 レコードに制限されます。
@@ -121,7 +116,7 @@ Event
 
 
 ## <a name="select-a-time-range"></a>時間の範囲を選択する
-[Log Analytics] ページの既定では_過去 24 時間_の時間の範囲が適用されます。 別の範囲を使用するには、時刻の選択ツールで別の値を選択し、**[実行]** をクリックします。 事前設定されている値に加えて、_[カスタムの時間の範囲]_ オプションを使用して、クエリの絶対範囲を選択することができます。
+既定では、ログ分析では_過去 24 時間_の時間範囲が適用されます。 別の範囲を使用するには、時刻の選択ツールで別の値を選択し、**[実行]** をクリックします。 事前設定されている値に加えて、_[カスタムの時間の範囲]_ オプションを使用して、クエリの絶対範囲を選択することができます。
 
 ![時刻の選択ツール](media/get-started-portal/time-picker.png)
 
@@ -175,7 +170,7 @@ x 軸や y 軸などのビューのさまざまなプロパティ、またはグ
 
 ![関数を保存する](media/get-started-portal/save-function.png)
 
-Log Analytics のクエリは、常に選択したワークスペースに保存され、そのワークスペースの他のユーザーと共有されます。
+ログ分析のクエリは、選択されているワークスペースに常に保存され、そのワークスペースの他のユーザーと共有されます。
 
 ## <a name="load-queries"></a>クエリを読み込む
 クエリ エクスプローラー アイコンは、右上の領域にあります。 クリックすると、すべての保存済みクエリがカテゴリ別に一覧表示されます。 また、後で見つけやすいように、特定のクエリを [お気に入り] にマークすることもできます。 保存済みクエリをダブルクリックすると、現在のウィンドウに追加されます。
@@ -183,12 +178,12 @@ Log Analytics のクエリは、常に選択したワークスペースに保存
 ![クエリ エクスプローラー](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>エクスポートとリンクとしての共有
-[Log Analytics] ページは、いくつかのエクスポート方法をサポートしています。
+ログ分析では、いくつかのエクスポート方法がサポートされています。
 
 - Excel:結果を CSV ファイルとして保存します。
-- Power BI:結果を Power BI にエクスポートします。 詳細については、「[Azure Log Analytics データを Power BI にインポートする](../../azure-monitor/platform/powerbi.md)」を参照してください。
+- Power BI:結果を Power BI にエクスポートします。 詳細については、[Azure Monitor ログ データを Power BI にインポートする](../../azure-monitor/platform/powerbi.md)ことに関するページを参照してください。
 - リンクの共有:クエリ自体をリンクとして共有できます。そのリンクは、同じワークスペースにアクセスできる他のユーザーが送信および実行することができます。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Log Analytics クエリの記述方法](get-started-queries.md)を参照してください。
+- [Azure Monitor ログ クエリの記述](get-started-queries.md)についてさらに学習します。

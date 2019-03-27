@@ -3,17 +3,17 @@ title: Azure Cosmos DB の SQL クエリ
 description: Azure Cosmos DB の SQL 構文、データベースの概念、および SQL クエリについて説明します。 Azure Cosmos DB では、JSON クエリ言語として SQL を使用できます。
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 2a88b130c92f7b9074fd248afc97f0ea6b4c13bb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 185ff9c7f50fa08ba952f1519bf406d9017982e0
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042140"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455961"
 ---
-# <a name="sql-query-examples-to-query-data-from-azure-cosmos-db"></a>Azure Cosmos DB からのデータのクエリを実行するための SQL クエリの例
+# <a name="sql-query-examples-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL クエリの例
 
 Azure Cosmos DB では、SQL API アカウントで JSON クエリ言語として SQL (構造化照会言語) を使用する項目のクエリがサポートされています。 Azure Cosmos DB 用のクエリ言語を設計では、次の 2 つの目標が考慮されています。
 
@@ -403,12 +403,12 @@ WHERE 句 (**`WHERE <filter_condition>`**) はオプションです。 これに
 
 以下の表は、SQL API の 2 つの JSON 型で等値比較を実行した結果を示しています。
 
-| **演算子** | **Undefined** | **Null** | **Boolean** | **数値** | **文字列** | **Object** | **Array** |
+| **演算子** | **Undefined** | **Null** | **Boolean** | **Number** | **文字列** | **Object** | **Array** |
 |---|---|---|---|---|---|---|---|
 | **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
 | **Null** | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined | Undefined |
 | **Boolean** | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined | Undefined |
-| **数値** | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined |
+| **Number** | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined | Undefined |
 | **文字列** | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined | Undefined |
 | **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** | Undefined |
 | **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **Ok** |
@@ -506,7 +506,7 @@ IN キーワードを使用すると、指定した値がリスト内の任意�
 
 他のクエリ演算子と同様に、すべての項目で条件式の参照先のプロパティが見つからない場合、または比較対象となる型が異なる場合、これらの項目はクエリの結果で除外されます。
 
-合体 (??) 演算子を使用すると、ドキュメントにプロパティが存在するかどうか (つまり 定義されているかどうか) を効率的に確認できます。 この演算子は、半構造化されたデータや混合型のデータに対してクエリを実行するときに役立ちます。 たとえば、次のクエリは、存在する場合に "lastName" を返し、存在しない場合に "surname" を返します。
+合体 (??) 演算子を使用すると、特定の項目にプロパティが存在するかどうかを効率的に確認できます。 この演算子は、半構造化されたデータや混合型のデータに対してクエリを実行するときに役立ちます。 たとえば、次のクエリは、存在する場合に "lastName" を返し、存在しない場合に "surname" を返します。
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -1365,29 +1365,29 @@ Cosmos DB では、ユーザー定義関数 (UDF) のようにクエリ内で使
 
 | 使用法 | 説明 |
 |----------|--------|
-| [[ABS (num_expr)](#bk_abs) | 指定された数値式の絶対値 (正の値) を返します。 |
-| [CEILING (num_expr)](#bk_ceiling) | 指定された数値式以上の最小の整数値を返します。 |
-| [FLOOR (num_expr)](#bk_floor) | 指定された数値式未満の最大の整数を返します。 |
-| [EXP (num_expr)](#bk_exp) | 指定された数値式の指数を返します。 |
-| [LOG (num_expr [,base])](#bk_log) | 指定された数値式の自然対数、または指定された基数を使用して自然対数を返します。 |
-| [LOG10 (num_expr)](#bk_log10) | 指定された数値式の底 10 の対数値を返します。 |
-| [ROUND (num_expr)](#bk_round) | 最も近い整数値に丸められた数値を返します。 |
-| [TRUNC (num_expr)](#bk_trunc) | 最も近い整数値に切り捨てられた数値を返します。 |
-| [SQRT (num_expr)](#bk_sqrt) | 指定された数値式の平方根を返します。 |
-| [SQUARE (num_expr)](#bk_square) | 指定された数値式の 2 乗を返します。 |
-| [POWER (num_expr, num_expr)](#bk_power) | 指定された値の指定された数値式のべき乗を返します。 |
-| [SIGN (num_expr)](#bk_sign) | 指定された数値式の符号値 (-1、0、1) を返します。 |
-| [ACOS (num_expr)](#bk_acos) | コサインが指定された数値式となる角度をラジアン単位で返します。アークコサインとも呼ばれます。 |
-| [ASIN (num_expr)](#bk_asin) | サインが指定された数値式となる角度をラジアン単位で返します。 この関数はアークサインとも呼ばれます。 |
-| [ATAN (num_expr)](#bk_atan) | タンジェントが指定された数値式となる角度をラジアン単位で返します。 アークタンジェントとも呼ばれます。 |
-| [ATN2 (num_expr)](#bk_atn2) | 正の x 軸と、原点から点 (y, x) までの斜線との間の角度をラジアン単位で返します。ここで x と y は、2 つの指定された float 型の式の値です。 |
-| [COS (num_expr)](#bk_cos) | 式で指定されたラジアン単位の角度の三角関数コサインを返します。 |
-| [COT (num_expr)](#bk_cot) | 数値式で指定されたラジアン単位の角度の三角関数コタンジェントを返します。 |
-| [DEGREES (num_expr)](#bk_degrees) | ラジアン単位で指定された角度に対応する度数単位の角度を返します。 |
-| [PI ()](#bk_pi) | 円周率の定数値を返します。 |
-| [RADIANS (num_expr)](#bk_radians) | 数値式が度数単位で入力されると、ラジアンを返します。 |
-| [SIN (num_expr)](#bk_sin) | 式で指定されたラジアン単位の角度の三角関数サインを返します。 |
-| [TAN (num_expr)](#bk_tan) | 指定された式で入力された式のタンジェントを返します。 |
+| ABS (num_expr) | 指定された数値式の絶対値 (正の値) を返します。 |
+| CEILING (num_expr) | 指定された数値式以上の最小の整数値を返します。 |
+| FLOOR (num_expr) | 指定された数値式未満の最大の整数を返します。 |
+| EXP (num_expr) | 指定された数値式の指数を返します。 |
+| LOG (num_expr ,base) | 指定された数値式の自然対数、または指定された基数を使用して自然対数を返します。 |
+| LOG10 (num_expr) | 指定された数値式の底 10 の対数値を返します。 |
+| ROUND (num_expr) | 最も近い整数値に丸められた数値を返します。 |
+| TRUNC (num_expr) | 最も近い整数値に切り捨てられた数値を返します。 |
+| SQRT (num_expr) | 指定された数値式の平方根を返します。 |
+| SQUARE (num_expr) | 指定された数値式の 2 乗を返します。 |
+| POWER (num_expr, num_expr) | 指定された値の指定された数値式のべき乗を返します。 |
+| SIGN (num_expr) | 指定された数値式の符号値 (-1、0、1) を返します。 |
+| ACOS (num_expr) | コサインが指定された数値式となる角度をラジアン単位で返します。アークコサインとも呼ばれます。 |
+| ASIN (num_expr) | サインが指定された数値式となる角度をラジアン単位で返します。 この関数はアークサインとも呼ばれます。 |
+| ATAN (num_expr) | タンジェントが指定された数値式となる角度をラジアン単位で返します。 アークタンジェントとも呼ばれます。 |
+| ATN2 (num_expr) | 正の x 軸と、原点から点 (y, x) までの斜線との間の角度をラジアン単位で返します。ここで x と y は、2 つの指定された float 型の式の値です。 |
+| COS (num_expr) | 式で指定されたラジアン単位の角度の三角関数コサインを返します。 |
+| COT (num_expr) | 数値式で指定されたラジアン単位の角度の三角関数コタンジェントを返します。 |
+| DEGREES (num_expr) | ラジアン単位で指定された角度に対応する度数単位の角度を返します。 |
+| PI () | 円周率の定数値を返します。 |
+| RADIANS (num_expr) | 数値式が度数単位で入力されると、ラジアンを返します。 |
+| SIN (num_expr) | 式で指定されたラジアン単位の角度の三角関数サインを返します。 |
+| TAN (num_expr) | 指定された式で入力された式のタンジェントを返します。 |
 
 たとえば、次の例に示すようなクエリを実行できます。
 

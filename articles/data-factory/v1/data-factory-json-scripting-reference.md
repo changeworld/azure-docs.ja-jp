@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 32e0be682d5d216df6741fa38bb0a16e4b323ef6
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: f65b9904b15815c997c1608940109ad296ee6007
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354197"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822869"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -103,10 +103,10 @@ ms.locfileid: "54354197"
 | コンカレンシー |整数 <br/><br/>最大値: 10 |1 |アクティビティの同時実行の数。<br/><br/>異なるスライスで実行できる並列アクティビティ実行の数を決定します。 たとえば、アクティビティが大量のデータを処理する必要がある場合、コンカレンシーの値を大きくするとデータ処理が速くなります。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |処理されるデータ スライスの順序を決定します。<br/><br/>たとえば、2 個のスライス (午後 4 時と午後 5 時の実行) があり、どちらも実行が保留されているとします。 executionPriorityOrder を NewestFirst に設定すると、午後 5 時のスライスが最初に処理されます。 同様に、executionPriorityORder を OldestFIrst に設定すると、午後 4 時のスライスが処理されます。 |
 | retry |整数<br/><br/>最大値は 10 |0 |スライスのデータ処理が失敗としてマークされるまでの再試行回数。 データ スライスのアクティビティの実行は、指定された再試行回数まで再試行されます。 再試行は、障害発生後にできるだけ早く行われます。 |
-| timeout |timespan |00:00:00 |アクティビティのタイムアウト。 例:00:10:00 (10 分のタイムアウトを示す)<br/><br/>値が指定されていない場合、または値が 0 の場合は、タイムアウトは無期限です。<br/><br/>スライスのデータ処理時間がタイムアウト値を超えた場合、処理は取り消され、システムは処理の再試行を試みます。 再試行の回数は、retry プロパティで指定します。 タイムアウトが発生すると、ステータスは TimedOut に設定されます。 |
-| delay |timespan |00:00:00 |スライスのデータ処理を開始する前の遅延時間を指定します。<br/><br/>データ スライスのアクティビティの実行は、予想実行時刻を Delay だけ過ぎてから開始します。<br/><br/>例:00:10:00 (10 分の遅延を示す) |
+| timeout |TimeSpan |00:00:00 |アクティビティのタイムアウト。 例:00:10:00 (10 分のタイムアウトを示す)<br/><br/>値が指定されていない場合、または値が 0 の場合は、タイムアウトは無期限です。<br/><br/>スライスのデータ処理時間がタイムアウト値を超えた場合、処理は取り消され、システムは処理の再試行を試みます。 再試行の回数は、retry プロパティで指定します。 タイムアウトが発生すると、ステータスは TimedOut に設定されます。 |
+| delay |TimeSpan |00:00:00 |スライスのデータ処理を開始する前の遅延時間を指定します。<br/><br/>データ スライスのアクティビティの実行は、予想実行時刻を Delay だけ過ぎてから開始します。<br/><br/>例:00:10:00 (10 分の遅延を示す) |
 | longRetry |整数<br/><br/>最大値: 10 |1 |スライスの実行が失敗になるまでの、長い再試行の回数。<br/><br/>longRetry の試行は longRetryInterval の間隔で行われます。 再試行間隔の時間を指定する必要がある場合は、longRetry を使用します。 Retry と longRetry の両方を指定すると、各 longRetry に Retry が含まれ、最大再試行回数は Retry * longRetry になります。<br/><br/>たとえば、アクティビティ ポリシーに次のような設定があるとします。<br/>Retry: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>実行するスライスは 1 つだけ (ステータスは Waiting)、アクティビティ実行は毎回失敗するとします。 最初に 3 つの連続する試行があります。 試行するたびに、スライスの状態は Retry になります。 最初の 3 つの試行が終わると、スライスの状態は LongRetry になります。<br/><br/>1 時間 (longRetryInteval の値) が経過した後、再度 3 回連続して試行されます。 その後、スライスの状態は Failed になり、それ以上再試行は行われません。 したがって、全部で 6 回試行されます。<br/><br/>いずれかの実行が成功すると、スライスの状態は Ready になり、それ以上再試行は行われません。<br/><br/>longRetry は、依存するデータがいつ到着するかわからない場合、またはデータ処理が行われる環境全体が当てにならない場合などに使用します。 このような場合、連続して再試行しても意味がなく、時間をおくと成功することがあります。<br/><br/>注意: longRetry または longRetryInterval に大きい値を設定しないでください。 通常、大きな値は、その他のシステムの問題があることを意味します。 |
-| longRetryInterval |timespan |00:00:00 |長い再試行の間の遅延 |
+| longRetryInterval |TimeSpan |00:00:00 |長い再試行の間の遅延 |
 
 ### <a name="typeproperties-section"></a>typeProperties セクション
 typeProperties セクションは、アクティビティごとに異なります。 変換アクティビティには type プロパティのみが存在します。 パイプラインの変換アクティビティを定義する JSON サンプルについては、この記事の[データ変換アクティビティ](#data-transformation-activities)に関するセクションを参照してください。
@@ -247,7 +247,7 @@ typeProperties セクションは、アクティビティごとに異なりま�
 | -------- | ----------- | -------- |
 | name | リンクされたサービスの名前。 | はい |
 | properties - type | リンクされたサービスの種類  例: Azure Storage、Azure SQL Database。 |
-| typeProperties | typeProperties セクション内の要素は、データ ストアまたはコンピューティング環境ごとに異なります。 データ ストアのリンクされたサービスすべてについては「[データ ストア](#datastores)」、コンピューティングのリンクされたサービスすべてについては、「[コンピューティング環境](#compute-environments)」を参照してください。 |
+| typeProperties | typeProperties セクション内の要素は、データ ストアまたはコンピューティング環境ごとに異なります。 データ ストアのリンクされたすべてのサービスについては「データ ストア」セクション、コンピューティングのリンクされたすべてのサービスについては、「[コンピューティング環境](#compute-environments)」を参照してください。 |
 
 ## <a name="dataset"></a>Dataset
 Azure Data Factory のデータセットは次のように定義されます。
@@ -290,7 +290,7 @@ Azure Data Factory のデータセットは次のように定義されます。
 | typeProperties | 選択された型に対応するプロパティ。 サポートされている型とそのプロパティについては、「[データ ストア](#data-stores)」セクションを参照してください。 |はい |NA |
 | 外部 | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 |いいえ  |false |
 | availability | データセット生成の処理時間枠またはスライシング モデルを定義します。 データセットのスライシング モデルの詳細については、 [スケジュール設定と実行](data-factory-scheduling-and-execution.md) に関する記事を参照してください。 |はい |NA |
-| policy |データセット スライスで満たさなければならない基準または条件を定義します。 <br/><br/>詳細については、「 [データセット ポリシー](#Policy) 」セクションを参照してください。 |いいえ  |NA |
+| policy |データセット スライスで満たさなければならない基準または条件を定義します。 <br/><br/>詳細については、「データセット ポリシー」セクションを参照してください。 |いいえ  |NA |
 
 **structure** セクションの各列には次のプロパティが含まれます。
 
@@ -316,8 +316,8 @@ structure:
 
 | プロパティ | 説明 | 必須 | 既定値 |
 | --- | --- | --- | --- |
-| frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |[はい] |NA |
-| interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>メモ</b>:frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |[はい] |NA |
+| frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |はい |NA |
+| interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>メモ</b>:frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |はい |NA |
 | style |スライスを間隔の始めまたは終わりに生成するかどうかを指定します。<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>frequency を Month に設定し、style を EndOfInterval に設定すると、スライスは月の最終日に生成されます。 style が StartOfInterval に設定されていると、スライスは月の最初の日に生成されます。<br/><br/>frequency を Day に設定し、style を EndOfInterval に設定すると、スライスは 1 日の最後の 1 時間に生成されます。<br/><br/>frequency を Hour に設定し、style を EndOfInterval に設定すると、スライスは時間の終わりに生成されます。 たとえば、午後 1 時 ～ 午後 2 時のスライスの場合、午後 2 時にスライスが生成されます。 |いいえ  |EndOfInterval |
 | anchorDateTime |データセット スライスの境界を計算するためにスケジューラによって使用される時間の絶対位置を定義します。 <br/><br/><b>メモ</b>:AnchorDateTime に frequency より細かい日付部分が含まれている場合、そのより細かい部分は無視されます。 <br/><br/>たとえば、<b>間隔</b>が<b>時間単位</b> (frequency が Hour で interval が 1) で、<b>AnchorDateTime</b> に<b>分と秒</b>が含まれる場合、AnchorDateTime の<b>分と秒</b>部分は無視されます。 |いいえ  |01/01/0001 |
 | offset |すべてのデータセット スライスの開始と終了がシフトされる時間帯です。 <br/><br/><b>メモ</b>:anchorDateTime と offset の両方が指定されている場合は、結果としてシフトが結合されます。 |いいえ  |NA |
@@ -374,7 +374,7 @@ structure:
 | Category | データ ストア
 |:--- |:--- |
 | **Azure** |[Azure BLOB Storage](#azure-blob-storage) |
-| &nbsp; |[Azure Data Lake Store](#azure-datalake-store) |
+| &nbsp; |Azure Data Lake Store |
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL Database](#azure-sql-database) |
 | &nbsp; |[Azure SQL Data Warehouse](#azure-sql-data-warehouse) |
@@ -401,7 +401,7 @@ structure:
 | &nbsp; |[OData](#odata) |
 | &nbsp; |[ODBC](#odbc) |
 | &nbsp; |[Salesforce](#salesforce) |
-| &nbsp; |[Web テーブル](#web-table) |
+| &nbsp; |Web テーブル |
 
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
@@ -590,7 +590,7 @@ Azure Data Lake Store のリンクされたサービスを定義するには、�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**AzureDataLakeStore** | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**AzureDataLakeStore** | はい |
 | dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。 `https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` という形式で指定します。 | はい |
 | subscriptionId | Data Lake Store が所属する Azure サブスクリプション ID。 | シンクでは必須 |
 | resourceGroupName | Data Lake Store が所属する Azure リソース グループの名前。 | シンクでは必須 |
@@ -936,7 +936,7 @@ Azure SQL Database のリンクされたサービスを定義するには、リ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| connectionString |connectionString プロパティの Azure SQL Database インスタンスに接続するために必要な情報を指定します。 |はい |
+| connectionString |connectionString プロパティの Azure SQL データベース インスタンスに接続するために必要な情報を指定します。 |はい |
 
 #### <a name="example"></a>例
 ```json
@@ -958,7 +958,7 @@ Azure SQL Database データセットを定義するには、データセット�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Azure SQL Database インスタンスのテーブルまたはビューの名前です。 |はい |
+| tableName |リンクされたサービスが参照する Azure SQL データベース インスタンスのテーブルまたはビューの名前です。 |はい |
 
 #### <a name="example"></a>例
 
@@ -1398,7 +1398,7 @@ Azure Search インデックスにデータをコピーする場合は、コピ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります:**AzureStorage** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorage** |はい |
 | connectionString |connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 |はい |
 
 **例:**
@@ -1420,7 +1420,7 @@ Azure Storage SAS のリンクされたサービスを利用すると、Shared A
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**AzureStorageSas** |はい |
 | sasUri |BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。 |はい |
 
 **例:**
@@ -1616,7 +1616,7 @@ Amazon Redshift のリンクされたサービスを定義するには、リン�
 }
 ```
 
-詳細については、[Amazon Redshift コネクタ](#data-factory-amazon-redshift-connector.md#linked-service-properties)に関する記事を参照してください。
+詳細については、Amazon Redshift コネクタに関する記事を参照してください。
 
 ### <a name="dataset"></a>Dataset
 Amazon Redshift データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
@@ -1645,7 +1645,7 @@ Amazon Redshift データセットを定義するには、データセットの 
     }
 }
 ```
-詳細については、[Amazon Redshift コネクタ](#data-factory-amazon-redshift-connector.md#dataset-properties)に関する記事を参照してください。
+詳細については、Amazon Redshift コネクタに関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
 Amazon Redshift からデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
@@ -1695,7 +1695,7 @@ Amazon Redshift からデータをコピーする場合は、コピー アクテ
     }
 }
 ```
-詳細については、[Amazon Redshift コネクタ](#data-factory-amazon-redshift-connector.md#copy-activity-properties)に関する記事を参照してください。
+詳細については、Amazon Redshift コネクタに関する記事を参照してください。
 
 ## <a name="ibm-db2"></a>IBM DB2
 
@@ -1707,7 +1707,7 @@ IBM DB2 のリンクされたサービスを定義するには、リンクされ
 | server |DB2 サーバーの名前です。 |はい |
 | database |DB2 データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
-| authenticationType |DB2 データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |[はい] |
+| authenticationType |DB2 データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの DB2 データベースへの接続に使用するゲートウェイの名前です。 |はい |
@@ -1730,7 +1730,7 @@ IBM DB2 のリンクされたサービスを定義するには、リンクされ
     }
 }
 ```
-詳細については、[IBM DB2 コネクタ](#data-factory-onprem-db2-connector.md#linked-service-properties)に関する記事を参照してください。
+詳細については、IBM DB2 コネクタに関する記事を参照してください。
 
 ### <a name="dataset"></a>Dataset
 DB2 データセットを定義するには、データセットの **type** を **RelationalTable** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
@@ -1763,7 +1763,7 @@ DB2 データセットを定義するには、データセットの **type** を
 }
 ```
 
-詳細については、[IBM DB2 コネクタ](#data-factory-onprem-db2-connector.md#dataset-properties)に関する記事を参照してください。
+詳細については、IBM DB2 コネクタに関する記事を参照してください。
 
 ### <a name="relational-source-in-copy-activity"></a>コピー アクティビティのリレーショナル ソース
 IBM DB2 からデータをコピーする場合は、コピー アクティビティの **source type** を **RelationalSource** に設定し、**source** セクションで以下のプロパティを指定します。
@@ -1811,7 +1811,7 @@ IBM DB2 からデータをコピーする場合は、コピー アクティビ�
     }
 }
 ```
-詳細については、[IBM DB2 コネクタ](#data-factory-onprem-db2-connector.md#copy-activity-properties)に関する記事を参照してください。
+詳細については、IBM DB2 コネクタに関する記事を参照してください。
 
 ## <a name="mysql"></a>MySQL
 
@@ -1942,7 +1942,7 @@ Oracle のリンクされたサービスを定義するには、リンクされ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| driverType | Oracle Database との間でデータをコピーするときに使用するドライバーを指定します。 使用できる値は **Microsoft** または **ODP** (既定値) です。 ドライバーの詳細については、「[サポートされているバージョンとインストール](#supported-versions-and-installation)」を参照してください。 | いいえ  |
+| driverType | Oracle Database との間でデータをコピーするときに使用するドライバーを指定します。 使用できる値は **Microsoft** または **ODP** (既定値) です。 ドライバーの詳細については、「サポートされているバージョンとインストール」セクションを参照してください。 | いいえ  |
 | connectionString | connectionString プロパティの Oracle Database インスタンスに接続するために必要な情報を指定します。 | はい |
 | gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です |はい |
 
@@ -2114,7 +2114,7 @@ PostgreSQL のリンクされたサービスを定義するには、リンクさ
 | server |PostgreSQL サーバーの名前です。 |はい |
 | database |PostgreSQL データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
-| authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |[はい] |
+| authenticationType |PostgreSQL データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの PostgreSQL データベースへの接続に使用するゲートウェイの名前です。 |はい |
@@ -2452,7 +2452,7 @@ SAP HANA データ ストアからデータをコピーする場合は、コピ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |[はい] |
+| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
 | connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
 | gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
@@ -2610,8 +2610,8 @@ SQL Server データベースにデータをコピーする場合は、コピー
 | --- | --- | --- | --- |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例:"00:30:00" (30 分)。 |いいえ  |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値:10000) |
-| sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳細については、 [再現性に関するセクション](#repeatability-during-copy) をご覧ください。 |クエリ ステートメント。 |いいえ  |
-| sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳細については、 [再現性に関するセクション](#repeatability-during-copy) をご覧ください。 |バイナリ (32) のデータ型の列の列名。 |いいえ  |
+| sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 詳細については、「再現性」セクションを参照してください。 |クエリ ステートメント。 |いいえ  |
+| sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 詳細については、「再現性」セクションを参照してください。 |バイナリ (32) のデータ型の列の列名。 |いいえ  |
 | sqlWriterStoredProcedureName |対象テーブルにデータをアップサート (更新/挿入) するストアド プロシージャの名前。 |ストアド プロシージャの名前。 |いいえ  |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ  |
 | sqlWriterTableType |ストアド プロシージャで使用するテーブル型の名前を指定します。 コピー アクティビティでは、このテーブル型の一時テーブルでデータを移動できます。 その後、ストアド プロシージャのコードにより、コピーされたデータを既存のデータと結合できます。 |テーブルの種類の名前。 |いいえ  |
@@ -2672,7 +2672,7 @@ Sybase のリンクされたサービスを定義するには、リンクされ�
 | server |Sybase サーバーの名前です。 |はい |
 | database |Sybase データベースの名前です。 |はい |
 | schema |データベース内のスキーマの名前です。 |いいえ  |
-| authenticationType |Sybase データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |[はい] |
+| authenticationType |Sybase データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの Sybase データベースへの接続に使用するゲートウェイの名前です。 |はい |
@@ -2790,7 +2790,7 @@ Teradata のリンクされたサービスを定義するには、リンクさ�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | server |Teradata のサーバーの名前です。 |はい |
-| authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |[はい] |
+| authenticationType |Teradata データベースへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous、Basic、および Windows。 |はい |
 | username |Basic または Windows 認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、オンプレミスの Teradata データベースへの接続に使用するゲートウェイの名前です。 |はい |
@@ -3316,7 +3316,7 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティが **OnPremisesFileServer** に設定されていることを確認します。 |はい |
-| host |コピーするフォルダーのルート パスを指定します。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「[サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions)」をご覧ください。 |はい |
+| host |コピーするフォルダーのルート パスを指定します。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。 |はい |
 | userid |サーバーにアクセスするユーザーの ID を指定します。 |No (encryptedCredential を選択する場合) |
 | password |ユーザー (userid) のパスワードを指定します。 |いいえ (encryptedCredential を選択する場合) |
 | encryptedCredential |New-AzureRmDataFactoryEncryptValue コマンドレットを実行して取得できる暗号化された資格情報を指定します。 |いいえ (プレーン テキストでユーザー ID とパスワードを指定する場合) |
@@ -3369,7 +3369,7 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| folderPath |フォルダーへのサブパスを指定します。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
+| folderPath |フォルダーへのサブパスを指定します。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ  |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。 <br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: "fileFilter": "*.log"<br/>例 2: "fileFilter": 2016-1-?.txt"<br/><br/>fileFilter は FileShare 入力データセットに適用されることに注意してください。 |いいえ  |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath/fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ  |
@@ -3634,7 +3634,7 @@ FTP データセットを定義するには、データセットの **type** を
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| folderPath |フォルダーへのサブ パス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい
+| folderPath |フォルダーへのサブ パス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ  |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter は FileShare 入力データセットに適用されます。 このプロパティは、HDFS ではサポートされません。 |いいえ  |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ  |
@@ -3726,9 +3726,9 @@ HDFS のリンクされたサービスを定義するには、リンクされた
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**Hdfs** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**Hdfs** |はい |
 | Url |HDFS への URL |はい |
-| authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |はい |
+| authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、こちらのセクションを参照して、オンプレミス環境を設定します。 |はい |
 | userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 |あり (Windows 認証用) |
 | gatewayName |Data Factory サービスが、HDFS への接続に使用するゲートウェイの名前。 |はい |
@@ -3769,7 +3769,7 @@ HDFS のリンクされたサービスを定義するには、リンクされた
 }
 ```
 
-詳細については、[HDFS コネクタ](#data-factory-hdfs-connector.md#linked-service-properties)に関する記事を参照してください。
+詳細については、HDFS コネクタに関する記事を参照してください。
 
 ### <a name="dataset"></a>Dataset
 HDFS データセットを定義するには、データセットの **type** を **FileShare** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
@@ -3805,7 +3805,7 @@ HDFS データセットを定義するには、データセットの **type** �
 }
 ```
 
-詳細については、[HDFS コネクタ](#data-factory-hdfs-connector.md#dataset-properties)に関する記事を参照してください。
+詳細については、HDFS コネクタに関する記事を参照してください。
 
 ### <a name="file-system-source-in-copy-activity"></a>コピー アクティビティのファイル システム ソース
 HDFS からデータをコピーする場合は、コピー アクティビティの **source type** を **FileSystemSource** に設定し、**source** セクションで以下のプロパティを指定します。
@@ -3852,7 +3852,7 @@ HDFS からデータをコピーする場合は、コピー アクティビテ�
 }
 ```
 
-詳細については、[HDFS コネクタ](#data-factory-hdfs-connector.md#copy-activity-properties)に関する記事を参照してください。
+詳細については、HDFS コネクタに関する記事を参照してください。
 
 ## <a name="sftp"></a>SFTP
 
@@ -3864,7 +3864,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 | --- | --- | --- | --- |
 | host | SFTP サーバーの名前または IP アドレス。 |はい |
 | port |SFTP サーバーがリッスンしているポート。 既定値は21 |いいえ  |
-| authenticationType |認証の種類を指定します。 使用できる値は以下の通りです。**Basic**、**SshPublicKey**。 <br><br> プロパティと JSON サンプルの詳細については、「[基本認証を使用する](#using-basic-authentication)」および「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」をそれぞれ参照してください。 |はい |
+| authenticationType |認証の種類を指定します。 使用できる値は以下の通りです。**Basic**、**SshPublicKey**。 <br><br> プロパティと JSON サンプルの詳細については、「基本認証を使用する」セクションと「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」セクションをそれぞれ参照してください。 |はい |
 | skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。 | いいえ。 既定値: false |
 | hostKeyFingerprint | ホスト キーの指紋を指定します。 | はい (`skipHostKeyValidation` が false に設定されている場合)。  |
 | gatewayName |オンプレミスの SFTP サーバーに接続するための Data Management Gateway の名前。 | はい (オンプレミスの SFTP サーバーからデータをコピーする場合)。 |
@@ -3877,7 +3877,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- | --- |
 | username | SFTP サーバーにアクセスできるユーザー。 |はい |
-| password | ユーザー (username) のパスワード。 | [はい] |
+| password | ユーザー (username) のパスワード。 | はい |
 
 ```json
 {
@@ -3976,7 +3976,7 @@ SFTP データセットを定義するには、データセットの **type** �
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| folderPath |フォルダーへのサブ パス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「 [サンプルのリンクされたサービスとデータセットの定義](#sample-linked-service-and-dataset-definitions) 」ご覧ください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
+| folderPath |フォルダーへのサブ パス。 文字列内の特殊文字にはエスケープ文字 "\" を使用します。 例については、「サンプルのリンクされたサービスとデータセットの定義」を参照してください。<br/><br/>このプロパティを **partitionBy** と組み合わせて、スライスの開始/終了日時に基づくフォルダー パスを使用できます。 |はい |
 | fileName |テーブルでフォルダー内の特定のファイルを参照するには、**folderPath** にファイルの名前を指定します。 このプロパティの値を設定しない場合、テーブルはフォルダー内のすべてのファイルを参照します。<br/><br/>出力データセットに fileName が指定されていない場合、生成されるファイルの名前は次の形式になります。 <br/><br/>`Data.<Guid>.txt` (例: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |いいえ  |
 | fileFilter |すべてのファイルではなく、folderPath 内のファイルのサブセットを選択するために使用するフィルターを指定します。<br/><br/>使用可能な値: `*` (複数の文字) および `?` (単一の文字)。<br/><br/>例 1: `"fileFilter": "*.log"`<br/>例 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter は FileShare 入力データセットに適用されます。 このプロパティは、HDFS ではサポートされません。 |いいえ  |
 | partitionedBy |partitionedBy を使用して時系列データに動的な folderPath と fileName を指定できます。 たとえば、1 時間ごとのデータに対して folderPath がパラメーター化されます。 |いいえ  |
@@ -4081,7 +4081,7 @@ HTTP のリンクされたサービスを定義するには、リンクされた
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | username | HTTP エンドポイントにアクセスするためのユーザー名。 | はい |
-| password | ユーザー (username) のパスワード。 | [はい] |
+| password | ユーザー (username) のパスワード。 | はい |
 
 ```json
 {
@@ -4439,7 +4439,7 @@ ODBC のリンクされたサービスを定義するには、リンクされた
 | --- | --- | --- |
 | connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 |はい |
 | credential |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |いいえ  |
-| authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |[はい] |
+| authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 次のいずれかの値になります。Anonymous および Basic。 |はい |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |いいえ  |
 | password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ  |
 | gatewayName |Data Factory サービスが、ODBC データ ストアへの接続に使用するゲートウェイの名前。 |はい |
@@ -4741,9 +4741,9 @@ Web データセットを定義するには、データセットの **type** を
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type |データセットの型。  **データセット** |はい |
+| type |データセットの型。 **データセット** |はい |
 | path |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
-| Index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |はい |
+| Index |リソースのテーブルのインデックス。 HTML ページでテーブルのインデックスを取得する手順については、「HTML ページのテーブルのインデックスを取得する」セクションを参照してください。 |はい |
 
 #### <a name="example"></a>例
 
@@ -4820,14 +4820,14 @@ Web テーブルからデータをコピーする場合は、コピー アクテ
 
 | Compute 環境 | アクティビティ |
 | --- | --- |
-| [On-demand HDInsight クラスター](#on-demand-azure-hdinsight-cluster)または[独自の HDInsight クラスター](#existing-azure-hdinsight-cluster) |[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、[Hadoop ストリーミング アクティビティ](#hdinsight-streaming-activityd)、[Spark アクティビティ](#hdinsight-spark-activity) |
+| [On-demand HDInsight クラスター](#on-demand-azure-hdinsight-cluster)または[独自の HDInsight クラスター](#existing-azure-hdinsight-cluster) |[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、Hadoop ストリーミング アクティビティ、[Spark アクティビティ](#hdinsight-spark-activity) |
 | [Azure Batch](#azure-batch) |[.NET カスタム アクティビティ](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Machine Learning バッチ実行アクティビティ](#machine-learning-batch-execution-activity)、[Machine Learning 更新リソース アクティビティ](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
 | [Azure SQL Database](#azure-sql-database-1)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse-1)、[SQL Server](#sql-server-1) |[ストアド プロシージャ](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>オンデマンド Azure HDInsight クラスター
-Azure Data Factory サービスは、データを処理するための Windows/Linux ベースのオンデマンド HDInsight クラスターを自動的に作成します。 このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。 このリンクされたサービスでは、変換アクティビティとして、[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、[Hadoop ストリーミング アクティビティ](#hdinsight-streaming-activityd)、[Spark アクティビティ](#hdinsight-spark-activity)を実行することができます。
+Azure Data Factory サービスは、データを処理するための Windows/Linux ベースのオンデマンド HDInsight クラスターを自動的に作成します。 このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。 このリンクされたサービスでは、変換アクティビティとして、[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、Hadoop ストリーミング アクティビティ、[Spark アクティビティ](#hdinsight-spark-activity)を実行することができます。
 
 ### <a name="linked-service"></a>リンクされたサービス
 次の表は、オンデマンド HDInsight のリンクされたサービスの Azure JSON 定義で使用されるプロパティの説明です。
@@ -4865,7 +4865,7 @@ Azure Data Factory サービスは、データを処理するための Windows/L
 詳細については、[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md)に関する記事を参照してください。
 
 ## <a name="existing-azure-hdinsight-cluster"></a>既存の Azure HDInsight クラスター
-Azure HDInsight の「リンクされたサービス」を作成し、独自の HDInsight クラスターを Data Factory に登録できます。 このリンクされたサービスでは、データ変換アクティビティとして、[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、[Hadoop ストリーミング アクティビティ](#hdinsight-streaming-activityd)、[Spark アクティビティ](#hdinsight-spark-activity)を実行することができます。
+Azure HDInsight の「リンクされたサービス」を作成し、独自の HDInsight クラスターを Data Factory に登録できます。 このリンクされたサービスでは、データ変換アクティビティとして、[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、Hadoop ストリーミング アクティビティ、[Spark アクティビティ](#hdinsight-spark-activity)を実行することができます。
 
 ### <a name="linked-service"></a>リンクされたサービス
 次の表は、Azure HDInsight のリンクされたサービスの Azure JSON 定義で使用されるプロパティの説明です。
@@ -4937,7 +4937,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。**AzureML**。 |[はい] |
+| type |type プロパティは次の値に設定されます。**AzureML**。 |はい |
 | mlEndpoint |バッチ スコアリング URL です。 |はい |
 | apiKey |公開されたワークスペース モデルの API です。 |はい |
 
@@ -4965,7 +4965,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |[はい] |
+| type |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
 | accountName |Azure Data Lake Analytics アカウント名。 |はい |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |いいえ  |
 | authorization |Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 |はい |
@@ -5002,7 +5002,7 @@ Azure SQL Database のリンクされたサービスを定義するには、リ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| connectionString |connectionString プロパティの Azure SQL Database インスタンスに接続するために必要な情報を指定します。 |はい |
+| connectionString |connectionString プロパティの Azure SQL データベース インスタンスに接続するために必要な情報を指定します。 |はい |
 
 #### <a name="json-example"></a>JSON の例
 
@@ -5056,7 +5056,7 @@ SQL Server のリンクされたサービスを作成し、 [ストアド プロ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |[はい] |
+| type |type プロパティは次の値に設定されます。**OnPremisesSqlServer** |はい |
 | connectionString |SQL 認証または Windows 認証を使用して、オンプレミス SQL Server データベースに接続するために必要な connectionString 情報を指定します。 |はい |
 | gatewayName |Data Factory サービスが、オンプレミスの SQL Server データベースへの接続に使用するゲートウェイの名前です。 |はい |
 | username |Windows 認証を使用している場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ  |
@@ -5216,7 +5216,7 @@ Pig アクティビティの JSON 定義では、以下のプロパティを指�
 }
 ```
 
-詳細については、[Pig アクティビティ](#data-factory-pig-activity.md)に関する記事を参照してください。
+詳細については、Pig アクティビティに関する記事を参照してください。
 
 ## <a name="hdinsight-mapreduce-activity"></a>HDInsight MapReduce アクティビティ
 MapReduce アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **HDInsightMapReduce** である必要があります。 HDInsight のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を HDInsightMapReduce に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
@@ -5385,9 +5385,9 @@ Spark アクティビティの JSON 定義では、以下のプロパティを�
 以下の点に注意してください。
 
 - **type** プロパティは **HDInsightSpark** に設定されます。
-- **rootPath** は **adfspark\\pyFiles** に設定されます。ここで、adfspark は Azure BLOB コンテナー、pyFiles はそのコンテナーのファイル フォルダーです。 この例では、Azure Blob Storage は、Spark クラスターに関連付けられています。 ファイルは、別の Azure Storage にアップロードできます。 これを行う場合は、ストレージ アカウントをデータ ファクトリにリンクする Azure Storage のリンクされたサービスを作成します。 次に、リンクされたサービスの名前を、**sparkJobLinkedService** プロパティの値として指定します。 このプロパティと、Spark アクティビティでサポートされている他のプロパティの詳細については、「[Spark アクティビティのプロパティ](#spark-activity-properties)」を参照してください。
+- **rootPath** は **adfspark\\pyFiles** に設定されます。ここで、adfspark は Azure BLOB コンテナー、pyFiles はそのコンテナーのファイル フォルダーです。 この例では、Azure Blob Storage は、Spark クラスターに関連付けられています。 ファイルは、別の Azure Storage にアップロードできます。 これを行う場合は、ストレージ アカウントをデータ ファクトリにリンクする Azure Storage のリンクされたサービスを作成します。 次に、リンクされたサービスの名前を、**sparkJobLinkedService** プロパティの値として指定します。 このプロパティと、Spark アクティビティでサポートされている他のプロパティの詳細については、「Spark アクティビティのプロパティ」を参照してください。
 - **entryFilePath** は、python ファイルである **test.py** に設定されます。
-- **getDebugInfo** プロパティは **Always** に設定されます。つまり、ログ ファイルが常に生成されます (成功または失敗)。  
+- **getDebugInfo** プロパティは **Always** に設定されます。つまり、ログ ファイルが常に生成されます (成功または失敗)。
 
     > [!IMPORTANT]
     > 問題のトラブルシューティングを行う場合を除き、運用環境でこのプロパティを Always に設定しないことをお勧めします。
@@ -5396,13 +5396,13 @@ Spark アクティビティの JSON 定義では、以下のプロパティを�
 このアクティビティの詳細については、[Spark アクティビティ](data-factory-spark.md)に関する記事を参照してください。
 
 ## <a name="machine-learning-batch-execution-activity"></a>Machine Learning バッチ実行アクティビティ
-Azure ML バッチ実行アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLBatchExecution** である必要があります。 Azure Machine Learning のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLBatchExecution に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
+Azure Machine Learning Studio バッチ実行アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLBatchExecution** である必要があります。 Azure Machine Learning のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLBatchExecution に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-webServiceInput | Azure ML Web サービスの入力として渡すデータセット。 アクティビティの入力にも、このデータセットを含める必要があります。 |webServiceInput または webServiceInputs を使用します。 |
-webServiceInputs | Azure ML Web サービスの入力として渡す複数のデータセットを指定します。 Web サービスが複数の入力を受け取る場合は、webServiceInput プロパティではなく、webServiceInputs プロパティを使用します。 **webServiceInputs** から参照されているデータセットもアクティビティの **inputs** に含める必要があります。 | webServiceInput または webServiceInputs を使用します。 |
-webServiceOutputs | Azure ML Web サービスの出力として割り当てられるデータセット。 このデータセットで Web サービスの出力データが返されます。 | はい |
+webServiceInput | Azure Machine Learning Studio Web サービスの入力として渡すデータセット。 アクティビティの入力にも、このデータセットを含める必要があります。 |webServiceInput または webServiceInputs を使用します。 |
+webServiceInputs | Azure Machine Learning Studio Web サービスの入力として渡す複数のデータセットを指定します。 Web サービスが複数の入力を受け取る場合は、webServiceInput プロパティではなく、webServiceInputs プロパティを使用します。 **webServiceInputs** から参照されているデータセットもアクティビティの **inputs** に含める必要があります。 | webServiceInput または webServiceInputs を使用します。 |
+webServiceOutputs | Azure Machine Learning Studio Web サービスの出力として割り当てられるデータセット。 このデータセットで Web サービスの出力データが返されます。 | はい |
 globalParameters | このセクションの Web サービス パラメーターの値を指定します。 | いいえ  |
 
 ### <a name="json-example"></a>JSON の例
@@ -5452,7 +5452,7 @@ globalParameters | このセクションの Web サービス パラメーター�
 > AzureMLBatchExecution アクティビティの入力および出力だけを、パラメーターとして Web サービスに渡すことができます。 たとえば、上の JSON スニペットでは、MLSqlInput は AzureMLBatchExecution アクティビティへの入力であり、webServiceInput パラメーターを使用して Web サービスに入力として渡されます。
 
 ## <a name="machine-learning-update-resource-activity"></a>Machine Learning 更新リソース アクティビティ
-Azure ML 更新リソース アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLUpdateResource** である必要があります。 Azure Machine Learning のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLUpdateResource に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
+Azure Machine Learning Studio 更新リソース アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **AzureMLUpdateResource** である必要があります。 Azure Machine Learning のリンクされたサービスを先に作成し、その名前を **linkedServiceName** プロパティの値として指定してください。 アクティビティの種類を AzureMLUpdateResource に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
@@ -5460,7 +5460,7 @@ trainedModelName | 再トレーニング済みモデルの名前。 | はい |
 trainedModelDatasetName | 再トレーニング操作から返される iLearner ファイルを指すデータセット。 | はい |
 
 ### <a name="json-example"></a>JSON の例
-パイプラインには、**AzureMLBatchExecution** と **AzureMLUpdateResource** の 2 つのアクティビティが含まれています。 Azure ML バッチ実行アクティビティはトレーニング データを入力として使用し、.iLearner ファイルを出力として作成します。 このアクティビティは、トレーニング Web サービス (Web サービスとして公開されたトレーニング実験) と入力トレーニング データを呼び出し、Web サービスから ilearner ファイルを受け取ります。 placeholderBlob は、パイプラインを実行するために、Azure Data Factory サービスで必要とされるダミーの出力データセットです。
+パイプラインには、**AzureMLBatchExecution** と **AzureMLUpdateResource** の 2 つのアクティビティが含まれています。 Azure Machine Learning Studioバッチ実行アクティビティはトレーニング データを入力として使用し、iLearner ファイルを出力として作成します。 このアクティビティは、トレーニング Web サービス (Web サービスとして公開されたトレーニング実験) と入力トレーニング データを呼び出し、Web サービスから ilearner ファイルを受け取ります。 placeholderBlob は、パイプラインを実行するために、Azure Data Factory サービスで必要とされるダミーの出力データセットです。
 
 
 ```json
@@ -5636,9 +5636,9 @@ U-SQL アクティビティの JSON 定義では、以下のプロパティを�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| AssemblyName | アセンブリの名前。 この例では、それは **MyDotnetActivity.dll**. です。 | [はい] |
-| EntryPoint |IDotNetActivity インターフェイスを実装するクラスの名前。 この例では、それは **MyDotNetActivityNS.MyDotNetActivity** です。ここで、MyDotNetActivityNS は名前空間であり、MyDotNetActivity はクラスです。  | [はい] |
-| PackageLinkedService | カスタム アクティビティの zip ファイルが格納された Blob Storage を指す、Azure Storage のリンクされたサービスの名前。 この例では、それは **AzureStorageLinkedService** を作成します。| [はい] |
+| AssemblyName | アセンブリの名前。 この例では、それは **MyDotnetActivity.dll**. です。 | はい |
+| EntryPoint |IDotNetActivity インターフェイスを実装するクラスの名前。 この例では、それは **MyDotNetActivityNS.MyDotNetActivity** です。ここで、MyDotNetActivityNS は名前空間であり、MyDotNetActivity はクラスです。  | はい |
+| PackageLinkedService | カスタム アクティビティの zip ファイルが格納された Blob Storage を指す、Azure Storage のリンクされたサービスの名前。 この例では、それは **AzureStorageLinkedService** を作成します。| はい |
 | PackageFile | zip ファイルの名前。 この例では **customactivitycontainer/MyDotNetActivity.zip** が該当します。 | はい |
 | extendedProperties | 独自に定義して .NET コードに渡すことができる拡張プロパティ。 この例では、**SliceStart** 変数に、SliceStart というシステム変数に基づいた値が設定されます。 | いいえ  |
 

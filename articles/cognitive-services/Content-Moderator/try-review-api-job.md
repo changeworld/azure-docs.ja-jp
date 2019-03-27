@@ -1,21 +1,21 @@
 ---
 title: API コンソールでコンテンツ モデレーション ジョブを実行する - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: API コンソールでコンテンツ モデレーション ジョブを実行する方法を説明します。
+description: Review API のジョブ操作を使用して、Azure Content Moderator で画像コンテンツまたはテキスト コンテンツの徹底的なコンテンツ モデレーション ジョブを開始します。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 08/03/2017
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 240b26cd86a6985825e3145c5bc43ef31524d7b7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 9fac80ff152b0f7b9c36c182759d41245364fff9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227111"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862430"
 ---
 # <a name="start-a-moderation-job-from-the-api-console"></a>API コンソールでモデレーション ジョブを開始する
 
@@ -32,9 +32,9 @@ Review API の[ジョブ操作](https://westus.dev.cognitive.microsoft.com/docs/
 ## <a name="use-the-api-console"></a>API コンソールを使用する
 オンライン コンソールを使用して API を試験的に運用するには、次のいくつかの値をコンソールに入力する必要があります。
     
-- `teamName`: レビュー ツールの資格情報画面の `Id` フィールドを使用します。 
-- `ContentId`: この文字列は API に渡され、コールバックで返されます。 **ContentId** は、内部識別子またはメタデータをモデレーション ジョブの結果に関連付ける際に役立ちます。`Workflowname`: 前のセクションで[作成したワークフロー](Review-Tool-User-Guide/Workflows.md)の名前。
-- `Ocp-Apim-Subscription-Key`: **[設定]** タブにあります。詳細については、[概要](overview.md)に関するページをご覧ください。
+- `teamName`:レビュー ツールの資格情報画面の `Id` フィールドを使用します。 
+- `ContentId`:この文字列は API に渡され、コールバックで返されます。 **ContentId** は、内部識別子またはメタデータをモデレーション ジョブの結果に関連付けるために役立ちます。- `Workflowname`: 前のセクションで[作成したワークフロー](Review-Tool-User-Guide/Workflows.md)の名前。
+- `Ocp-Apim-Subscription-Key`:**[設定]** タブにあります。詳細については、[概要](overview.md)に関するページをご覧ください。
 
 **[資格情報]** ウィンドウから API コンソールにアクセスします。
 

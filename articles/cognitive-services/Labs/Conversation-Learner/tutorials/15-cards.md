@@ -6,16 +6,16 @@ services: cognitive-services
 author: v-jaswel
 manager: nolachar
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 16381a9529f516dcb9ffd39022a658a7dd17ff57
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a2db74e4c5688c0a2a3975ff828caf20c3cf7904
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796649"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55222578"
 ---
 # <a name="how-to-use-cards-part-1-of-2"></a>カードを使用する方法 (パート 1/2)
 
@@ -81,7 +81,7 @@ Web UI で、[Import Tutorials]\(チュートリアルのインポート\) を�
 ### <a name="train-dialog-using-an-adaptive-card"></a>アダプティブ カードを使用したトレーニング会話
 
 1. 左側のパネルで、[Train Dialogs]\(トレーニング会話\) をクリックしてから、[New Train Dialog]\(新しいトレーニング会話\) ボタンをクリックします。
-2. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルで、「hi」(やあ) と入力します
+2. [Type your message...]\(メッセージを入力...\) と表示されているチャット パネルで、「hi」(こんにちは) と入力します
 3. [Score Actions]\(アクションのスコア付け\) ボタンをクリックします。
 4. 応答 "prompt: question:Go left or right?" (プロンプト: 質問:左または右に移動?) を選択します
     - 目のアイコンを使用して、カードのプレビューを表示できます

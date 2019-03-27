@@ -7,18 +7,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 4c8fcc403b274d161893194109dee4bc8d0cb369
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: e1a928711a596c159ac920f11c123b73b72d3aa2
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974366"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313417"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 
-*このトピックが適用されるコネクタは、[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、[SFTP](connector-sftp.md) です。*
+*この記事は、次のコネクターに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。*
 
 ファイルベースのストア間で**ファイルをそのままコピー** (バイナリ コピー) する場合は、入力と出力の両方のデータセット定義で format セクションをスキップします。 **特定の形式でファイルを解析または生成する**場合、Azure Data Factory では次の種類のファイル形式がサポートされています。
 
@@ -414,15 +414,26 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 }
 ```
 
-> [!IMPORTANT]
-> オンプレミスとクラウド データ ストア間のセルフホステッド Integration Runtime などによって強化されたコピーの場合に、Parquet ファイルを**そのまま**コピーしていないなら、自分の IR マシンに JRE 8 (Java Runtime Environment) をインストールする必要があります。 64 ビット IR には、64 ビット JRE が必要です。 どちらのバージョンも [こちらのページ](https://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。
->
-
 以下の点に注意してください。
 
 * 複雑なデータ型はサポートされていません (MAP、LIST)。
 * 列名では、空白はサポートされません。
 * Parquet ファイルには、圧縮関連のオプションとして、NONE、SNAPPY、GZIP、LZO があります。 Data Factory では、LZO を除く、これらすべての圧縮形式の Parquet ファイルからデータを読み取ることができます。データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で Parquet ファイルに書き込むときは、Parquet 形式の既定の動作である SNAPPY が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
+
+> [!IMPORTANT]
+> セルフホステッド統合ランタイム を利用するコピー (たとえば、オンプレミスとクラウド データ ストア間) では、Parquet ファイルを**そのまま**コピーしない場合、IR マシン上に **64 ビット JRE 8 (Java Runtime Environment) または OpenJDK** をインストールする必要があります。 詳細については、次の段落を参照してください。
+
+Parquet ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。 
+
+- **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
+- **OpenJDK を使用する場合**: IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
+
+>[!TIP]
+>セルフホステッド統合ランタイムを使用して、 Parquet 形式をコピー元またはコピー先にしてデータをコピーしたときに、[An error occurred when invoking java, message: **java.lang.OutOfMemoryError:Java heap space** (java の呼び出し中にエラーが発生しました。メッセージ: java.lang.OutOfMemoryError:Java heap space)] というエラーが発生する場合は、まず、セルフホステッド IR のホストであるマシン内に環境変数 `_JAVA_OPTIONS` を追加してください。次に、JVM の最小/最大ヒープ サイズを調整し、コピーを行えるようにしてから、パイプラインを再実行してください。 
+
+![セルフホステッド IR 上での JVM ヒープ サイズの設定](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+
+例: 変数 `_JAVA_OPTIONS` を設定して、値 `-Xms256m -Xmx16g` を指定します。 フラグ `Xms` では、Java 仮想マシン (JVM) の初期メモリ割り当てプールを指定します。`Xmx` では、最大メモリ割り当てプールを指定します。 これは、JVM 起動時のメモリ量が `Xms`、使用可能なメモリ量が最大で `Xmx` であることを意味します。 既定では、ADF では、最小で 64MB、最大で 1G が使用されます。
 
 ### <a name="data-type-mapping-for-parquet-files"></a>Parquet ファイルのデータ型マッピング
 
@@ -441,8 +452,8 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 | Double | Double | 該当なし | 該当なし |
 | Decimal | Binary | Decimal | Decimal |
 | String | Binary | Utf8 | Utf8 |
-| Datetime | Int96 | 該当なし | 該当なし |
-| timespan | Int96 | 該当なし | 該当なし |
+| DateTime | Int96 | 該当なし | 該当なし |
+| TimeSpan | Int96 | 該当なし | 該当なし |
 | DateTimeOffset | Int96 | 該当なし | 該当なし |
 | ByteArray | Binary | 該当なし | 該当なし |
 | Guid | Binary | Utf8 | Utf8 |
@@ -460,15 +471,19 @@ ORC ファイルを解析するか、ORC 形式でデータを書き込む場合
 }
 ```
 
-> [!IMPORTANT]
-> オンプレミスとクラウド データ ストア間のセルフホステッド Integration Runtime などによって強化されたコピーの場合に、ORC ファイルを**そのまま**コピーしていないなら、自分の IR マシンに JRE 8 (Java Runtime Environment) をインストールする必要があります。 64 ビット IR には、64 ビット JRE が必要です。 どちらのバージョンも [こちらのページ](https://go.microsoft.com/fwlink/?LinkId=808605)で入手できます。
->
-
 以下の点に注意してください。
 
 * 複雑なデータ型はサポートされていません (STRUCT、MAP、LIST、UNION)。
 * 列名では、空白はサポートされません。
 * ORC ファイルには、[圧縮関連のオプション](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)として、NONE、ZLIB、SNAPPY の 3 つがあります。 Data Factory では、これらすべての圧縮形式の ORC ファイルからデータを読み取ることができます。 データの読み取りには、メタデータ内の圧縮コーデックが使用されます。 ただし、Data Factory で ORC ファイルに書き込むときは、ORC の既定の動作である ZLIB が選択されます。 現時点でこの動作をオーバーライドするオプションはありません。
+
+> [!IMPORTANT]
+> セルフホステッド統合ランタイム を利用するコピー (たとえば、オンプレミスとクラウド データ ストア間) では、Parquet ファイルを**そのまま**コピーしない場合、IR マシン上に **64 ビット JRE 8 (Java Runtime Environment) または OpenJDK** をインストールする必要があります。 詳細については、次の段落を参照してください。
+
+ORC ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。 
+
+- **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
+- **OpenJDK を使用する場合**: IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
 
 ### <a name="data-type-mapping-for-orc-files"></a>ORC ファイルデータ型マッピング
 
@@ -487,9 +502,9 @@ ORC ファイルを解析するか、ORC 形式でデータを書き込む場合
 | Double | Double |
 | Decimal | Decimal |
 | String | String |
-| Datetime | Timestamp |
+| DateTime | Timestamp |
 | DateTimeOffset | Timestamp |
-| timespan | Timestamp |
+| TimeSpan | Timestamp |
 | ByteArray | Binary |
 | Guid | String |
 | Char | Char(1) |

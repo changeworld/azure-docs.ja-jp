@@ -3,31 +3,31 @@ title: Azure Active Directory B2C でリソース所有者のパスワード資�
 description: Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する方法を説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 7de41e4e904452d01cc0c7902d411070f7384a51
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.subservice: B2C
+ms.openlocfilehash: 816d25473bfe5f9dc61d6d6f2e50d6cd82ace50c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53756123"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562193"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C では、リソース所有者パスワード資格情報 (ROPC) フローが OAuth の標準的な認証フローです。 このフローでは、アプリケーション (証明書利用者とも呼ばれます) によって有効な資格情報がトークンと交換されます。 資格情報には、ユーザー ID とパスワードが含まれます。 返されるトークンは、ID トークン、アクセス トークン、および更新トークンです。 
+Azure Active Directory (Azure AD) B2C では、リソース所有者パスワード資格情報 (ROPC) フローが OAuth の標準的な認証フローです。 このフローでは、アプリケーション (証明書利用者とも呼ばれます) によって有効な資格情報がトークンと交換されます。 資格情報には、ユーザー ID とパスワードが含まれます。 返されるトークンは、ID トークン、アクセス トークン、および更新トークンです。
 
 ROPC フローでは次のオプションがサポートされています。
 
 - **ネイティブ クライアント** - ユーザー側のデバイスでコードが実行されると、認証の間にユーザー操作が発生します。
 - **パブリック クライアント フロー** - アプリケーションによって収集されたユーザーの資格情報のみが、API 呼び出しで送信されます。 アプリケーションの資格情報は送信されません。
-- **新しい要求の追加** - 新しい要求を追加するために、ID トークンの内容を変更することができます。 
+- **新しい要求の追加** - 新しい要求を追加するために、ID トークンの内容を変更することができます。
 
 次のフローはサポートされていません。
 
@@ -43,7 +43,7 @@ ROPC フローでは次のオプションがサポートされています。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。 
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
 4. **[アプリケーション]** を選択し、**[追加]** を選択します。
 5. *ROPC_Auth_app* などのアプリケーションの名前を入力します。
 6. **[Web App/Web API]\(Web アプリ/Web API\)** に対して **[いいえ]** を選択し、次に **[Native client]\(ネイティブ クライアント\)** に対して **[はい]** を選択します。
@@ -193,7 +193,7 @@ ROPC フローでは次のオプションがサポートされています。
           </Metadata>
         </TechnicalProfile>
       </TechnicalProfiles>
-    </ClaimsProvider>    
+    </ClaimsProvider>
     ```
 
 6. **UserJourneys** 要素とその子要素を、**TrustFrameworkPolicy** 要素に追加します。
@@ -201,7 +201,7 @@ ROPC フローでは次のオプションがサポートされています。
     ```XML
     <UserJourney Id="ResourceOwnerPasswordCredentials">
       <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
-        <OrchestrationSteps>
+      <OrchestrationSteps>
         <OrchestrationStep Order="1" Type="ClaimsExchange">
           <ClaimsExchanges>
             <ClaimsExchange Id="ResourceOwnerFlow" TechnicalProfileReferenceId="ResourceOwnerPasswordCredentials-OAUTH2" />
@@ -278,7 +278,7 @@ ROPC フローでは次のオプションがサポートされています。
 
 - `user-account` は、テナント内のユーザー アカウントの名前に置き換えます。
 - `password1` は、ユーザー アカウントのパスワードに置き換えます。
-- `application-id` は、*ROPC_Auth_app* 登録のアプリケーション ID に置き換えます。 
+- `application-id` は、*ROPC_Auth_app* 登録のアプリケーション ID に置き換えます。
 - 更新トークンを受信する場合、*Offline_access* は省略可能です。
 
 実際の POST 要求は次の例のようになります。
@@ -291,17 +291,16 @@ Content-Type: application/x-www-form-urlencoded
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
 ```
 
-
 オフライン アクセスで成功した応答は、次の例のようになります。
 
 ```JSON
-{ 
-    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...", 
-    "token_type": "Bearer", 
-    "expires_in": "3600", 
-    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6Ij...", 
-    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki..." 
-} 
+{
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...",
+    "token_type": "Bearer",
+    "expires_in": "3600",
+    "refresh_token": "eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3REVk1EVFBLbUJLb0FUcWQ1ZWFja1hBIiwidmVyIjoiMS4wIiwiemlwIjoiRGVmbGF0ZSIsInNlciI6Ij...",
+    "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki..."
+}
 ```
 
 ## <a name="redeem-a-refresh-token"></a>更新トークンを利用する
@@ -322,7 +321,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 | refresh_token | `refresh-token` |
 
 - `application-id` は、*ROPC_Auth_app* 登録のアプリケーション ID に置き換えます。
-- `refresh-token` は、前の応答で返送された **refresh_token** に置き換えます。 
+- `refresh-token` は、前の応答で返送された **refresh_token** に置き換えます。
 
 成功した応答は、次の例のようになります。
 
@@ -350,5 +349,3 @@ Azure AD B2C は、パブリック クライアント リソース所有者の�
 
 - このシナリオの完全な例については、「[Azure Active Directory B2C custom policy starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc)」(Azure Active Directory B2C custom policy starter pack (Azure Active Directory B2C カスタム ポリシー スターター パック)) をご覧ください。
 - 「[トークンのリファレンス](active-directory-b2c-reference-tokens.md)」で、Azure Active Directory B2C によって使用されるトークンについてさらに理解してください。
-
-

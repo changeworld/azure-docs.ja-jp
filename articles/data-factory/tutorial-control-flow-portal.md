@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 037dafcfc60c629841e326cecc38bb2b3250d77c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 092a346d8303bb9e88a53b6fa529bb820635c554
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015425"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099544"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合、成功したコピー操作の詳細 (書き込まれたデータの量など) がパイプラインによって成功電子メールで送信されます。 コピー アクティビティが失敗した場合、コピー失敗の詳細 (エラー メッセージなど) がパイプラインによって失敗電子メールで送信されます。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
@@ -52,7 +52,7 @@ ms.locfileid: "54015425"
     John,Doe
     Jane,Doe
     ```
-2. [Azure Storage Explorer](http://storageexplorer.com/) などのツールを使用して、次の手順を実行します。 
+2. [Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用して、次の手順を実行します。 
     1. **adfv2branch** コンテナーを作成します。
     2. **adfv2branch** コンテナーに **input** フォルダーを作成します。
     3. **input.txt** ファイルをコンテナーにアップロードします。
@@ -199,10 +199,10 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
    ![新しい Azure Storage のリンクされたサービス](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. フォルダーには「`@pipeline().parameters.sourceBlobContainer`」、ファイル名には「`emp.txt`」と入力します。 sourceBlobContainer パイプライン パラメーターを使用して、データセットのフォルダー パスを設定します。 
 
-    ![ソース データセットの設定](./media/tutorial-control-flow-portal/source-dataset-settings.png)
+   ![ソース データセットの設定](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 13. **パイプライン**のタブに切り替えるか、またはツリービューにあるパイプラインをクリックします。 **[Source Dataset]\(ソース データセット\)** で **SourceBlobDataset** が選択されていることを確認します。 
 
-   ![ソース データセット](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+    ![ソース データセット](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 13. プロパティ ウィンドウで **[シンク]** タブに切り替えて、**[Sink Dataset]\(シンク データセット\)** の **[+ 新規]** をクリックします。 ソース データセットの作成と同様のこの手順では、コピー アクティビティのシンク データセットを作成します。 
 
     ![新しいシンク データセットのボタン](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)
@@ -217,7 +217,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ![シンク データセットの設定](./media/tutorial-control-flow-portal/sink-dataset-settings.png)
 17. 上部にある**パイプライン**のタブに切り替えます。 **[アクティビティ]** ツール ボックスの **[General]\(一般\)** を展開し、**[Web]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティの名前を「**SendSuccessEmailActivity**」に設定します。 Web アクティビティでは、任意の REST エンドポイントを呼び出すことができます。 このアクティビティの詳細については、[Web アクティビティ](control-flow-web-activity.md)に関する記事を参照してください。 このパイプラインでは、Web アクティビティを使用して Logic Apps 電子メール ワークフローを呼び出します。 
 
-   ![最初の Web アクティビティのドラッグ アンド ドロップ](./media/tutorial-control-flow-portal/success-web-activity-general.png)
+    ![最初の Web アクティビティのドラッグ アンド ドロップ](./media/tutorial-control-flow-portal/success-web-activity-general.png)
 18. **[General]\(一般\)** タブから **[設定]** タブに切り替えて、次の手順を実行します。 
     1. **[URL]** で、成功電子メールを送信するロジック アプリ ワークフローの URL を指定します。  
     2. **[メソッド]** に **[POST]** を選択します。 
@@ -235,12 +235,12 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         ```
         メッセージの本文には次のプロパティが含まれます。
 
-        - Message – `@{activity('Copy1').output.dataWritten` から渡される値。 前のコピー アクティビティのプロパティにアクセスし、dataWritten の値を渡します。 失敗の場合、`@{activity('CopyBlobtoBlob').error.message` の代わりにエラー出力を渡します。
-        - Data Factory Name – `@{pipeline().DataFactory}` から渡される値。これはシステム変数であり、対応するデータ ファクトリ名へのアクセスを可能にします。 サポートされているシステム変数の一覧については、「[システム変数](control-flow-system-variables.md)」の記事を参照してください。
-        - Pipeline Name – `@{pipeline().Pipeline}` から渡される値。 これもシステム変数であり、対応するパイプライン名へのアクセスを可能にします。 
-        - Receiver – "\@pipeline().parameters.receiver") から渡される値。 パイプライン パラメーターにアクセスします。
+       - Message – `@{activity('Copy1').output.dataWritten` から渡される値。 前のコピー アクティビティのプロパティにアクセスし、dataWritten の値を渡します。 失敗の場合、`@{activity('CopyBlobtoBlob').error.message` の代わりにエラー出力を渡します。
+       - Data Factory Name – `@{pipeline().DataFactory}` から渡される値。これはシステム変数であり、対応するデータ ファクトリ名へのアクセスを可能にします。 サポートされているシステム変数の一覧については、「[システム変数](control-flow-system-variables.md)」の記事を参照してください。
+       - Pipeline Name – `@{pipeline().Pipeline}` から渡される値。 これもシステム変数であり、対応するパイプライン名へのアクセスを可能にします。 
+       - Receiver – "\@pipeline().parameters.receiver") から渡される値。 パイプライン パラメーターにアクセスします。
     
-        ![最初の Web アクティビティの設定](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
+         ![最初の Web アクティビティの設定](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
 19. コピー アクティビティの横にある緑のボタンを Web アクティビティにドラッグ アンド ドロップして、**[コピー]** アクティビティを **[Web]** アクティビティに接続します。 
 
     ![コピー アクティビティと最初の Web アクティビティの接続](./media/tutorial-control-flow-portal/connect-copy-web-activity1.png)

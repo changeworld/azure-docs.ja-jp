@@ -3,19 +3,20 @@ title: Azure AD B2B コラボレーションのユーザー トークンにつ�
 description: Azure Active Directory B2B コラボレーションのユーザー トークン リファレンス
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: df6250da5f7f989ccb2082c448786cce68abe22b
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d35d53cc75970f01f54a8d94b6111ed730a61c4b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981798"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217651"
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションのユーザー トークンについて
 

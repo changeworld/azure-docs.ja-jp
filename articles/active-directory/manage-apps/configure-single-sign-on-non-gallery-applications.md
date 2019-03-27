@@ -2,21 +2,22 @@
 title: シングル サインオン - 非ギャラリー アプリケーション - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) の非ギャラリー アプリケーションへのシングル サインオンを構成する
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
 ms.date: 01/08/2019
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser,luleon
-ms.openlocfilehash: bb2fcbad3d415a8ac7a8e0c3237fcb97042defd7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2804ebdbeb72bd35c7e63553184157066f9cfd32
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121347"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177301"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Azure Active Directory の非ギャラリー アプリケーションへのシングル サインオンを構成する
 

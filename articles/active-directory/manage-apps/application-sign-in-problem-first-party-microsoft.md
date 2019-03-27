@@ -3,24 +3,25 @@ title: Microsoft アプリケーションへのサインインに関する問題
 description: Azure AD を使用したファースト パーティの Microsoft アプリケーション (Office 365 など) にサインインする際に直面する一般的な問題をトラブルシューティングする
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: ab0face3c211a8ea1477f40167f80330f0423498
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3bc5143803c7d031071cccbb9c6c3842bbdacd9c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379266"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177191"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft アプリケーションへのサインインに関する問題
 
@@ -34,11 +35,11 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 -   Microsoft またはサード パーティが誰でも使用できるよう無料で公開するアプリケーションでは、**管理者の同意**によってユーザーにアクセス権を付与することもできます。 つまり、管理者は組織の全員がそのアプリケーションを使用する可能性があると判断しているため、グローバル管理者アカウントを使用してアプリケーションにサインインし、組織の全員にアクセス権を付与します。
 
-問題をトラブルシューティングする方法の詳細については、最初に「[アプリケーション アクセスに関して考慮すべき一般的問題](#general-problem-areas-with-application-access-to-consider)」を参照してから、「[チュートリアル: Microsoft アプリケーション アクセスをトラブルシューティングする手順](#walkthrough-steps-to-troubleshoot-microsoft-application-access)」を参照してください。
+問題をトラブルシューティングする方法の詳細については、最初に「[アプリケーション アクセスに関して考慮すべき一般的問題](#general-problem-areas-with-application-access-to-consider)」を参照してから、「チュートリアル:Microsoft アプリケーション アクセスをトラブルシューティングする手順」を参照してください。
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>アプリケーション アクセスに関して考慮すべき一般的問題
 
-一般的な問題領域の一覧を次に示します。どこから始めるべきかわかっている場合は、そこから詳細をご覧ください。ただし、お急ぎの場合は「[チュートリアル: Microsoft アプリケーション アクセスをトラブルシューティングする手順](#walkthrough-steps-to-troubleshoot-microsoft-application-access)」を参照してください。
+一般的な問題領域の一覧を次に示します。どこから始めるべきかわかっている場合は、そこから詳細をご覧ください。ただし、お急ぎの場合はチュートリアル:「Microsoft アプリケーション アクセスをトラブルシューティングする手順」を参照してください。
 
 -   [ユーザーのアカウントに関する問題](#problems-with-the-users-account)
 
@@ -178,9 +179,9 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 セルフ サービスのパスワード リセットを有効にするには、次のデプロイ手順を実行します。
 
--   [Azure Active Directory パスワードをユーザーがリセットできるようにする](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
+-   [Azure Active Directory パスワードをユーザーがリセットできるようにする](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
--   [オンプレミス Active Directory パスワードをユーザーがリセットまたは変更できるようにする](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
+-   [オンプレミス Active Directory パスワードをユーザーがリセットまたは変更できるようにする](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>ユーザーの多要素認証の状態を確認する
 
@@ -204,7 +205,7 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 9.  ユーザーの一覧からユーザーを選択し、多要素認証を必要に応じて**有効**、**無効**、または**適用**します。
 
-  * **注**: ユーザーが**適用**状態の場合は、一時的に**無効**に設定してユーザーが自分のアカウントに戻れるようにできます。 ユーザーがアカウントに戻ったら、ユーザーの状態を再度**有効**に変更して、ユーザーの連絡先情報を次のサインイン時に再登録するように要求します。 あるいは、[ユーザーの認証の連絡先情報を確認する](#check-a-users-authentication-contact-info)の手順に従って、このユーザーのデータを検証または設定することができます。
+  * **メモ**:ユーザーが適用状態の場合は、一時的に**無効**に設定してユーザーが自分のアカウントに戻れるようにできます。 ユーザーがアカウントに戻ったら、ユーザーの状態を再度**有効**に変更して、ユーザーの連絡先情報を次のサインイン時に再登録するように要求します。 あるいは、[ユーザーの認証の連絡先情報を確認する](#check-a-users-authentication-contact-info)の手順に従って、このユーザーのデータを検証または設定することができます。
 
 ### <a name="check-a-users-authentication-contact-info"></a>ユーザーの認証の連絡先情報を確認する
 

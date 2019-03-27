@@ -1,3 +1,16 @@
+---
+author: rothja
+ms.service: billing
+ms.topic: include
+ms.date: 11/09/2018
+ms.author: jroth
+ms.openlocfilehash: 9cd5a63b5b1d7000605f90752be755356d40bb4a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56213109"
+---
 >[!NOTE]
 >固定されていないリソースについては、サポート チケットを開いてクォータの増加を依頼できます。 上限を高くするために追加の Azure Media Services アカウントを作成することは**しないでください**。
 
@@ -14,7 +27,7 @@
 | AMS アカウントあたりのライブ チャネル数 |5|
 | チャネルあたりの停止状態のプログラム数 |50|
 | チャネルあたりの実行状態のプログラム数  |3|
-| AMS アカウントあたりの実行状態のストリーミング エンドポイント数|2|
+| Media Services アカウントあたりのストリーミング エンドポイント (停止済みまたは実行中)|2|
 | ストリーミング エンドポイントあたりのストリーミング ユニット数  |10 |
 | ストレージ アカウント | 1,000<sup>(5)</sup> (固定) |
 | ポリシー | 1,000,000<sup>(6)</sup> |

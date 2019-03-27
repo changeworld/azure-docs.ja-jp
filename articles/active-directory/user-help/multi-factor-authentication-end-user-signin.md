@@ -4,21 +4,22 @@ description: このページでは、Azure MFA で利用可能な各種サイン
 keywords: ユーザー認証, サインイン エクスペリエンス, 携帯電話でのサインイン, 会社の電話でのサインイン
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
 ms.workload: identity
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: e7886d3c8aa1ef9ee1e392030aabf0d187568e24
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2545e85ff466ed7455161eb725b824da465457bd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343068"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177313"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用したサインイン エクスペリエンス
 > [!NOTE]
@@ -31,8 +32,8 @@ ms.locfileid: "39343068"
 | --- |
 | [携帯電話また職場の電話の呼び出しを使用してサインインする](#signing-in-with-a-phone-call) |
 | [携帯電話へのテキストを使用してサインインする](#signing-in-with-a-text-message)
-| [Microsoft Authenticator アプリの通知を使用してサインインする](#signing-in-with-the-microsoft-authenticator-app-using-notification) |
-| [Microsoft Authenticator アプリの確認コードを使用してサインインする](#signing-in-with-the-microsoft-authenticator-app-using-verification-code) |
+| Microsoft Authenticator アプリの通知を使用してサインインする |
+| Microsoft Authenticator アプリの確認コードを使用してサインインする |
 | [通常の方法を使用できないので、別の方法でサインインする](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>電話の呼び出しを使用してサインインする
@@ -87,4 +88,4 @@ Microsoft Authenticator アプリを使用して確認コードを取得する�
 
 2 段階認証設定を管理する方法については、「[2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)」を参照してください。
 
-SMS や電話を受ける代わりに通知を使用してサインインする方法については、「[Get started with the Microsoft Authenticator app (Microsoft Authenticator アプリの概要)](microsoft-authenticator-app-how-to.md)」を参照してください。
+SMS や電話を受ける代わりに通知を使用してサインインする方法については、「[Get started with the Microsoft Authenticator app (Microsoft Authenticator アプリの概要)](user-help-auth-app-download-install.md)」を参照してください。

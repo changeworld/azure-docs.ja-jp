@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 434f0639baa45dc83ee2fae4ec8b67a80517db14
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b49df76bc5b9c4d5f469e702b65ffd5762e49a39
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035926"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455838"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
 オプションのシステム サービスである DNS サービスをクラスターで有効にし、DNS プロトコルを使用して他のサービスを検出できます。 
@@ -53,7 +53,7 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
 ポータルを使用してクラスターを作成していないか、または既存のクラスターを更新している場合は、テンプレートで DNS サービスを有効にする必要があります。
 
 - 新しいクラスターをデプロイするには、[サンプル テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype)を使用するか、または独自の Resource Manager テンプレートを作成できます。 
-- 既存のクラスターを更新するには、ポータルでそのクラスターのリソース グループに移動し、**[Automation スクリプト]** をクリックして、グループ内のクラスターやその他のリソースの現在の状態が反映されたテンプレートを操作できます。 詳細については、「[リソース グループからのテンプレートのエクスポート](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template#export-the-template-from-resource-group)」を参照してください。
+- 既存のクラスターを更新するには、ポータルでそのクラスターのリソース グループに移動し、**[Automation スクリプト]** をクリックして、グループ内のクラスターやその他のリソースの現在の状態が反映されたテンプレートを操作できます。 詳細については、「[リソース グループからのテンプレートのエクスポート](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template)」を参照してください。
 
 テンプレートが用意されたら、次の手順で DNS サービスを有効にできます。
 

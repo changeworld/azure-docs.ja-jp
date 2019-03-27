@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: aad31e72682e15c49fb3d6dce64e7ef46525cb66
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 323de505bc1bfa9747f372033392a9fd6e08462c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051854"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898858"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
@@ -90,7 +90,7 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-変更を監視する対象となるファイルの一覧です (セミコロン区切り)。 ファイルを変更すると、アプリケーションのリサイクルが発生します。 各エントリは、省略可能なディレクトリ名と必須のファイル名で構成されます。これらの名前は、アプリケーションのメイン エントリ ポイントがあるディレクトリからの相対位置になります。 ワイルドカードは、ファイル名部分のみに使用できます。 既定値は `*.js;web.config` です。
+変更を監視する対象となるファイルの一覧です (セミコロン区切り)。 ファイルを変更すると、アプリケーションのリサイクルが発生します。 各エントリは、省略可能なディレクトリ名と必須のファイル名で構成されます。これらの名前は、アプリケーションのメイン エントリ ポイントがあるディレクトリからの相対位置になります。 ワイルドカードは、ファイル名部分のみに使用できます。 既定値は `*.js;iisnode.yml` です。
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
@@ -118,7 +118,7 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (実稼働の運用サイトでは有効にしないでください)
 
-この設定は、デバッグ機能を制御します。 iisnode は、node-inspector と統合されています。 この設定を有効にすることで、ノード アプリケーションのデバッグが有効になります。 この設定が有効になると、ノード アプリケーションへの最初のデバッグ要求の際に、iisnode によって、node-inspector ファイルが 'debuggerVirtualDir' ディレクトリに作成されます。 http://yoursite/server.js/debug に要求を送信することによって、node-inspector を読み込むことができます。 デバッグ URL セグメントは、"debuggerPathSegment" 設定で制御できます。 既定では、debuggerPathSegment = 'debug' です。 他のユーザーによる検出が難しくなるように、たとえば GUID に `debuggerPathSegment` を設定できます。
+この設定は、デバッグ機能を制御します。 iisnode は、node-inspector と統合されています。 この設定を有効にすることで、ノード アプリケーションのデバッグが有効になります。 この設定が有効になると、ノード アプリケーションへの最初のデバッグ要求の際に、iisnode によって、node-inspector ファイルが 'debuggerVirtualDir' ディレクトリに作成されます。 `http://yoursite/server.js/debug` に要求を送信することによって、node-inspector を読み込むことができます。 デバッグ URL セグメントは、"debuggerPathSegment" 設定で制御できます。 既定では、debuggerPathSegment = 'debug' です。 他のユーザーによる検出が難しくなるように、たとえば GUID に `debuggerPathSegment` を設定できます。
 
 デバッグの詳細については、[Windows での node.js アプリケーションのデバッグ](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html)に関するページを参照してください。
 
@@ -133,7 +133,7 @@ agentkeepalive モジュールは、Azure の Web WebApp VM でソケットが�
 [agentKeepALive](https://www.npmjs.com/package/agentkeepalive) 構成の例:
 
 ```nodejs
-var keepaliveAgent = new Agent({
+let keepaliveAgent = new Agent({
     maxSockets: 40,
     maxFreeSockets: 10,
     timeout: 60000,
@@ -155,9 +155,9 @@ var keepaliveAgent = new Agent({
 たとえば、以下のような hello world アプリをプロファイリングするとします。
 
 ```nodejs
-var http = require('http');
+const http = require('http');
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }
@@ -173,7 +173,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-デバッグ コンソール サイト (https://yoursite.scm.azurewebsites.net/DebugConsole) に移動します。
+デバッグ コンソール サイト (`https://yoursite.scm.azurewebsites.net/DebugConsole`) に移動します。
 
 site/wwwroot ディレクトリに移動します。 次の図のようなコマンド プロンプトが表示されます。
 
@@ -185,12 +185,12 @@ site/wwwroot ディレクトリに移動します。 次の図のようなコマ
 ここで、アプリケーションをプロファイリングするように server.js を編集します。
 
 ```nodejs
-var http = require('http');
-var profiler = require('v8-profiler');
-var fs = require('fs');
+const http = require('http');
+const profiler = require('v8-profiler');
+const fs = require('fs');
 
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Computer Vision API の画像タグ付け機能に関連する概念について説明します。
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: caf4d8a4ee3ccee181d233716e0a645150a201c3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: aeb03566a650fe46286d77913e0d36dcbb19f436
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582934"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311071"
 ---
 # <a name="applying-content-tags-to-images"></a>コンテンツ タグの画像への適用
 
@@ -28,7 +28,7 @@ Computer Vision では、数千個の認識可能なオブジェクト、生物�
 
 次の JSON 応答は、サンプル イメージで検出された視覚的特徴のタグを付けるときに、Computer Vision から返される内容を示します。
 
-![青い家と前庭](./Images/house_yard.png).
+![青い家と前庭](./Images/house_yard.png)。
 
 ```json
 {

@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
-ms.openlocfilehash: 3e88e0a3337eafdd25c9c0cc655912a4cdbd3b68
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.lastreviewed: 08/20/2018
+ms.openlocfilehash: 765701188de6375a5dfe0c9a6c04afe1ee9f6740
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079533"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886441"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service on Azure Stack update 3 のリリース ノート
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 これらのリリース ノートでは、Azure App Service on Azure Stack Update 3 における機能強化と修正点、および既知の問題について説明します。 既知の問題は、デプロイおよび更新プロセスに直接関係する問題と、ビルド (インストール後) に関する問題に分けられています。
 
@@ -58,7 +59,7 @@ Azure App Service on Azure Stack Update 3 には、次の機能強化と修正�
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
 - **次のアプリケーション フレームワークとツールの更新**:
-  - ASP.Net Core 2.1.2 を追加
+  - ASP.NET Core 2.1.2 を追加
   - NodeJS 10.0.0 を追加
   - Zulu OpenJDK 8.30.0.1 を追加
   - Tomcat 8.5.31 と 9.0.8 を追加
@@ -184,19 +185,19 @@ Azure App Service on Azure Stack Update 3 には、次の機能強化と修正�
 - App Service が既存の仮想ネットワークにデプロイされ、ファイル サーバーがプライベート ネットワークでしか使用できない場合、worker はファイル サーバーに到達することができません。  これは Azure Stack デプロイでの Azure App Service の関するドキュメントでも言及されています。
 
 ファイル サーバーに接続するために既存の仮想ネットワークと内部 IP アドレスへデプロイする場合は、送信セキュリティ規則を追加して、worker サブネットとファイル サーバー間の SMB トラフィックを有効にする必要があります。 これを行うには、管理者ポータルで WorkersNsg に移動し、次のプロパティを持つ送信セキュリティ規則を追加します。
- * 送信元: 任意
+ * ソース:任意
  * 送信元ポート範囲: *
- * 送信先: IP アドレス
- * 送信先 IP アドレス範囲: ファイル サーバーの IP の範囲
- * 送信先ポート範囲: 445
- * プロトコル: TCP
- * アクション: 許可
- * 優先順位: 700
- * 名前: Outbound_Allow_SMB445
+ * 変換先:IP アドレス
+ * 宛先 IP アドレス範囲:ファイル サーバーの IP の範囲
+ * 送信先ポート範囲:445
+ * プロトコル:TCP
+ * アクション:ALLOW
+ * 優先順位:700
+ * 名前:Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack を運用するクラウド管理者に関する既知の問題
 
-[Azure Stack 1807 リリース ノート](azure-stack-update-1807.md)内のドキュメントをご覧ください。
+Azure Stack 1807 リリース ノート内のドキュメントをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

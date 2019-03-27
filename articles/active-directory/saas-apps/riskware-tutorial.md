@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Riskware の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Riskware の統合 | Microsoft Docs
 description: Azure Active Directory と Riskware の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 81866167-b163-4695-8978-fd29a25dac7a
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 4c664fac99e93e94b46f5d917a63aa6530b695bd
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cab9750620d6d7c34de1d6e3404b4ea721f330ed
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39437775"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203915"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル: Azure Active Directory と Riskware の統合
+# <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル:Azure Active Directory と Riskware の統合
 
 このチュートリアルでは、Riskware と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -111,17 +112,17 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
     | 環境| URL パターン|
     |--|--|
-    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
-    | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
+    | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
+    | PROD| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
+    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. **[識別子 (エンティティ ID)]** ボックスに、URL を入力します。
     | 環境| URL パターン|
     |--|--|
-    | UAT| `https://riskcloud.net/uat` |
-    | PROD| `https://riskcloud.net/prod` |
-    | DEMO| `https://riskcloud.net/demo` |
+    | UAT| `https://riskcloud.net/uat` |
+    | PROD| `https://riskcloud.net/prod` |
+    | DEMO| `https://riskcloud.net/demo` |
     |||
 
     > [!NOTE]
@@ -159,7 +160,7 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
 
     c. **[Description]\(説明\)** ボックスに説明を入力します (例:SSO 用 AZURE 構成)。
 
-    d. **[Single Sign On Page]\(シングル サインオン ページ\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Single Sign On Page]\(シングル サインオン ページ\)** ボックスに、Azure portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     e. **[Sign out Page]\(サインアウト ページ\)** ボックスに、Azure portal からコピーした**サインアウト URL** の値を貼り付けます。
 
@@ -167,7 +168,7 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
 
     g. **[XML Identity Tag Name]\(XML ID タグ名\)** ボックスに、SAML 応答内の一意の識別子を含む属性を入力します (例: NameID)。
 
-    h. Azure Portal からダウンロードした**メタデータ Xml** をメモ帳で開き、メタデータ ファイルから証明書をコピーして **[証明書]\(Certificate\)** ボックスに貼り付けます
+    h. Azure portal からダウンロードした **メタデータ Xml**  をメモ帳で開き、メタデータ ファイルから証明書をコピーして **[Certificate]\(証明書\)** ボックスに貼り付けます
 
     i. **[Consumer URL]\(コンシューマー URL\)** ボックスに、サポート チームから入手した**応答 URL** の値を貼り付けます。
 
@@ -212,7 +213,7 @@ Riskware で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-riskware-test-user"></a>Riskware のテスト ユーザーの作成
 
@@ -297,7 +298,7 @@ Azure AD ユーザーが Riskware にサインインできるようにするに�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Riskware のタイルをクリックすると、自動的に Riskware アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

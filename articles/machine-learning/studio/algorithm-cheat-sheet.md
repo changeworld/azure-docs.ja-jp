@@ -4,22 +4,22 @@ titleSuffix: Azure Machine Learning Studio
 description: 印刷可能な機械学習アルゴリズム チート シートは、Azure Machine Learning Studio で予測モデルに適したアルゴリズムを選択するのに役立ちます。
 services: machine-learning
 ms.service: machine-learning
-ms.component: studio
+ms.subservice: studio
 ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 69b085faf10b9e22618fa248460d269bd2efdb73
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 77cd485b7ca7f9965a8baf9026b68060067d6ebe
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264310"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453938"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio の機械学習アルゴリズム チート シート
 
-**Azure Machine Learning アルゴリズム チート シート**を使用すると、予測分析モデルに最適なアルゴリズムを選択できます。
+**Azure Machine Learning Studio アルゴリズム チート シート**を使用すると、予測分析モデルに最適なアルゴリズムを選択できます。
 
 [Azure Machine Learning Studio](https://studio.azureml.net/) には、***regression***、***classification***、***clustering***、***anomaly detection*** ファミリの多様なアルゴリズムのライブラリがあります。 各アルゴリズムは、異なる種類の機械学習の問題に対処するために設計されています。
 
@@ -27,14 +27,12 @@ ms.locfileid: "54264310"
 
 **チート シートをダウンロードする: [機械学習アルゴリズム チート シート (11 x 17 in.)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
-![機械学習アルゴリズム チート シート: 機械学習アルゴリズムの選択方法について説明します。][cheat-sheet]
-
-[cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
+![機械学習アルゴリズム チート シート: 機械学習アルゴリズムの選択方法について説明します。](./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png)
 
 Machine Learning Studio アルゴリズム チート シートをダウンロードし、タブロイド サイズで印刷すると、手元に保管しやすくなり、アルゴリズムを選択するときに役立ちます。
 
 > [!NOTE]
-> このチート シートを使用して適切なアルゴリズムを選ぶ方法や、各種機械学習アルゴリズムの詳細と使用方法については、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](algorithm-choice.md)」をご覧ください。
+> このチート シートを使用して適切なアルゴリズムを選ぶ方法や、各種機械学習アルゴリズムの詳細と使用方法については、「[Azure Machine Learning Studio のアルゴリズムの選択方法](algorithm-choice.md)」をご覧ください。
 
 ## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>Machine Learning Studio アルゴリズム チート シートの注意事項と用語の定義
 
@@ -44,11 +42,11 @@ Machine Learning Studio アルゴリズム チート シートをダウンロー
 
 * 機械学習には、主に 3 つのカテゴリ (**教師あり学習**、**教師なし学習**、**強化学習**) があります。
 
-  * **教師あり学習**では、各データ ポイントに、カテゴリや関心のある値がラベル付けまたは関連付けられています。  カテゴリのラベルには、たとえば '猫' または '犬' のいずれかの画像を割り当てています。  値のラベルの例は、中古車に関連付けられている販売価格です。 教師あり学習の目的は、このような多くのラベルの付いた例を学習し、将来のデータ ポイントを予測して、 たとえば、新しい写真の動物を正しく識別したり、他の中古車に正しい販売価格を割り当てることができるようになることです。 これは、人気のある便利な機械学習の種類です。 Azure Machine Learning のモジュールは、[K 平均法クラスタリング][k-means-clustering]を除いて、すべて教師あり学習アルゴリズムです。
+  * **教師あり学習**では、各データ ポイントに、カテゴリや関心のある値がラベル付けまたは関連付けられています。  カテゴリのラベルには、たとえば '猫' または '犬' のいずれかの画像を割り当てています。  値のラベルの例は、中古車に関連付けられている販売価格です。 教師あり学習の目的は、このような多くのラベルの付いた例を学習し、将来のデータ ポイントを予測して、 たとえば、新しい写真の動物を正しく識別したり、他の中古車に正しい販売価格を割り当てることができるようになることです。 これは、人気のある便利な機械学習の種類です。 Azure Machine Learning Studio のモジュールは、[K 平均法クラスタリング][k-means-clustering]を除いて、すべて教師あり学習アルゴリズムです。
 
   * **教師なし学習**では、データ ポイントにラベルが関連付けられていません。 代わりに、教師なし学習アルゴリズムの目的は、いくつかの方法でデータを整理したり、その構造を記述することです。 これは、K 平均法と同様にクラスターにグループ化したり、複雑なデータを簡単に表示できるようにさまざまな表示方法を検索することを意味します。
 
-  * **強化学習**では、アルゴリズムが各データ ポイントへの応答を基にしてアクションを選択します。 これはロボット工学の一般的な手法です。ある時点での一連のセンサーの読み取りがデータ ポイントになり、アルゴリズムがロボットの次の動作を選択します。 モノのインターネット アプリケーションにも自然に適合します。 学習アルゴリズムでは、短時間で報酬信号を受信し、その決定がいかに優れていたかを示します。 アルゴリズムはこれに基に、最大の報酬を実現するために、戦略を変更します。 現時点で、Azure ML には強化学習アルゴリズム モジュールはありません。
+  * **強化学習**では、アルゴリズムが各データ ポイントへの応答を基にしてアクションを選択します。 これはロボット工学の一般的な手法です。ある時点での一連のセンサーの読み取りがデータ ポイントになり、アルゴリズムがロボットの次の動作を選択します。 モノのインターネット アプリケーションにも自然に適合します。 学習アルゴリズムでは、短時間で報酬信号を受信し、その決定がいかに優れていたかを示します。 アルゴリズムはこれを基に戦略を変更し、最大の報酬を実現しようとします。 現時点で、Azure Machine Learning Studio には強化学習アルゴリズム モジュールはありません。
 
 * **ベイズ法**は、統計的に独立したデータ ポイントについて仮定を立てます。 これは、1 つのデータ ポイントでモデル化されていない変動性は、他と相関関係がないことを意味するため、予測できません。 たとえば、記録されているデータが、次の地下鉄が到着するまでの分単位の時間である場合は、1 日の間に行われた 2 つの測定値は統計的に独立しています。 ただし、1 分間に行われた 2 つの測定値は統計的に独立していません。一方の値は他の値の高い予測です。
 
@@ -67,8 +65,6 @@ Machine Learning Studio アルゴリズム チート シートをダウンロー
 * Machine Learning Studio で使用可能な機械学習アルゴリズムのカテゴリ別の一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの[モデルの初期化][initialize-model]に関するページを参照してください。
 
 * Machine Learning Studio で使用できるすべてのアルゴリズムとモジュールの一覧 (アルファベット順) については、Machine Learning Studio アルゴリズムとモジュールのヘルプの「[Machine Learning Studio モジュールの一覧 (アルファベット順)][a-z-list]」をご覧ください。
-
-* Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「 [Azure Machine Learning Studio 機能の概要図](studio-overview-diagram.md)」ご覧ください。
 
 
 

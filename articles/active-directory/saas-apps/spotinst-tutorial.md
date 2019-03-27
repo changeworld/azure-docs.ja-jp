@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Spotinst の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Spotinst の統合 | Microsoft Docs
 description: Azure Active Directory と Spotinst の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 7edf1cbc5cc351e25a9ae7b319768376ea9968a3
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 679284783ac93662c1c96e813f9f028fffb434f0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39267540"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173659"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>チュートリアル: Azure Active Directory と Spotinst の統合
+# <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>チュートリアル:Azure Active Directory と Spotinst の統合
 
 このチュートリアルでは、Spotinst と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -138,7 +139,7 @@ Spotinst で Azure AD のシングル サインオンを構成してテストす
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]** は空白のままにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** は空白のままにします。
 
     e. **[OK]** をクリックします。
 
@@ -196,7 +197,7 @@ Spotinst で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-spotinst-test-user"></a>Spotinst テスト ユーザーを作成する
 
@@ -214,7 +215,7 @@ Spotinst で Azure AD のシングル サインオンを構成してテストす
 
     ![Spotinst の設定](./media/spotinst-tutorial/adduser1.png)
 
-    d. ユーザーの追加セクションで、次の手順を実行します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ユーザーの追加セクションで、次の手順を実行します。
 
     ![Spotinst の設定](./media/spotinst-tutorial/adduser2.png)
 
@@ -261,7 +262,7 @@ Spotinst で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Spotinst] タイルをクリックすると、自動的に Spotinst アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

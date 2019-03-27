@@ -12,15 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/14/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 0b1affb708a8d481a1378fa691b6547865b0b214
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: b821c5cfa0dd9ea605d0d0a73e0b98a64a7502b7
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963591"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268653"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Azure Stack Development Kit (ASDK) の起動と終了
 ASDK ホスト コンピューターをただ再起動することはお勧めしません。 この記事の手順に従い、正しくシャット ダウンして ASDK サービスを再起動してください。 
@@ -28,7 +29,7 @@ ASDK ホスト コンピューターをただ再起動することはお勧め�
 ## <a name="stop-azure-stack"></a>Azure Stack の停止 
 次の PowerShell コマンドを使用し、Azure Stack サービス、および ASDK ホスト コンピューターを正しくシャット ダウンします。
 
-1. ASDK ホスト コンピューターで AzureStack\CloudAdmin としてログインします。
+1. ASDK ホスト コンピューターで AzureStack\AzureStackAdmin としてログインします。
 2. PowerShell を (PowerShell ISE ではなく) 管理者として開きます。
 3. 次のコマンドを実行し、特権エンドポイント (PEP) セッションを確立します。 
 
@@ -48,7 +49,7 @@ ASDK サービスは、ホスト コンピューターが起動したときに�
 ASDK のシャット ダウン方法に関係なく、次のステップを実行して、ホスト コンピューターの電源投入後に、すべての Azure Stack サービスが起動し完全に動作していることを確認する必要があります。 
 
 1. ASDK ホスト コンピューターの電源を投入します。 
-2. ASDK ホスト コンピューターで AzureStack\CloudAdmin としてログインします。
+2. ASDK ホスト コンピューターで AzureStack\AzureStackAdmin としてログインします。
 3. PowerShell を (PowerShell ISE ではなく) 管理者として開きます。
 4. 次のコマンドを実行し、特権エンドポイント (PEP) セッションを確立します。
 
@@ -67,7 +68,7 @@ Microsoft Azure Stack サービスの正しいシャットダウンと再起動�
 ## <a name="troubleshoot-startup-and-shutdown"></a>スタートアップおよびシャットダウンのトラブルシューティング 
 ASDK ホスト コンピューターの電源投入後 2 時間以内に Azure Stack サービスが正常に起動しない場合は、次の手順を実行します。
 
-1. ASDK ホスト コンピューターで AzureStack\CloudAdmin としてログインします。
+1. ASDK ホスト コンピューターで AzureStack\AzureStackAdmin としてログインします。
 2. PowerShell を (PowerShell ISE ではなく) 管理者として開きます。
 3. 次のコマンドを実行し、特権エンドポイント (PEP) セッションを確立します。
 

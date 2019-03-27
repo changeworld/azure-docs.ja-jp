@@ -4,19 +4,20 @@ description: Azure Active Directory B2B コラボレーションの招待を利�
 services: active-directory
 documentationcenter: ''
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: e7d76138f9d3701fa7e3177227fbeb4386434126
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 90e156f1d1d7bbbb6c4f65a4762977d28a5a0b89
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983803"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182597"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>招待を使用せずに B2B コラボレーション ゲスト ユーザーを追加する
 

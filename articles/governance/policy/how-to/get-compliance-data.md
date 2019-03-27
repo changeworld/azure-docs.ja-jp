@@ -4,17 +4,17 @@ description: Azure Policy の評価と効果によって、コンプライアン
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/06/2018
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 3bbd9bc7f213f117b2389f0a2526a75fef6f0234
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 40d0250101e4653cd5ab2a3610473d9c577d8998
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53318393"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114112"
 ---
 # <a name="getting-compliance-data"></a>コンプライアンス データの取得
 
@@ -30,6 +30,8 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 > [!WARNING]
 > コンプライアンス状態が**未登録**と報告されている場合は、**Microsoft.PolicyInsights** リソース プロバイダーが登録されていること、ユーザーに適切なロールベースのアクセス制御 (RBAC) アクセス許可があることを確認します (詳細については[こちら](../overview.md#rbac-permissions-in-azure-policy)をご覧ください)。
 
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+
 ## <a name="evaluation-triggers"></a>評価のトリガー
 
 完了した評価サイクルの結果は、`PolicyStates` および `PolicyEvents` 操作を通じて `Microsoft.PolicyInsights` リソース プロバイダーで使用可能です。 Policy Insights REST API の操作の詳細については、「[Policy Insights](/rest/api/policy-insights/)」を参照してください。
@@ -43,6 +45,8 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 - Resource Manager、REST、Azure CLI、または Azure PowerShell を介した割り当てで、リソースがスコープにデプロイされる。 このシナリオでは、個々のリソースに対する効果的なイベント (追加、監査、拒否、展開) とコンプライアンス ステータスの情報が、約 15 分後にポータルおよび SDKで利用可能です。 このイベントによって、他のリソースの評価が行われることはありません。
 
 - 標準コンプライアンス評価サイクル。 24 時間に 1 回、割り当てが自動的に再評価されます。 多くのリソースの大きなポリシーまたはイニシアティブでは時間がかかることがあるため、評価サイクルがいつ完了するかを事前に予想することはできません。 完了すると、更新されたコンプライアンス結果をポータルと SDK で使用できるようになります。
+
+- [ゲスト構成](../concepts/guest-configuration.md)リソース プロバイダーは、管理対象リソースによってコンプライアンスの詳細で更新されます。
 
 - オンデマンド スキャン
 
@@ -113,8 +117,8 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ポリシーでは、定義にある**型**および**名前**フィールドを使用して、リソースの一致が判別されます。 リソースが一致している場合、適用可能と見なされ、**準拠**または**非準拠**のどちらかの状態になります。 **型**または**名前**のどちらかが定義の唯一のプロパティである場合は、すべてのリソースが適用可能と見なされ、評価されます。
 
-コンプライアンス対応率は、**準拠している**リソースを_リソース合計_で割って算出されます。
-_リソース合計_は、**準拠**、**非準拠**、**競合**の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠**している個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが**非準拠**です。 全体的なリソース コンプライアンスは 95% (19/20) となります。
+コンプライアンス対応率は、**準拠している**リソースを _リソース合計_ で割って算出されます。
+_リソース合計_ は、**準拠**、**非準拠**、**競合**の各リソースの合計と定義されています。 全体的なコンプライアンスの数値は、**準拠**している個別のリソースの合計を、すべての個別のリソースの合計で除算したものです。 次の図では、適用可能な個別のリソースが 20 個あり、そのうち 1 つだけが**非準拠**です。 全体的なリソース コンプライアンスは 95% (19/20) となります。
 
 ![シンプルなコンプライアンスの例](../media/getting-compliance-data/simple-compliance.png)
 
@@ -138,6 +142,26 @@ Azure portal には、環境のコンプライアンス状態を視覚化して�
 
 ![ポリシー コンプライアンスのアクティビティ ログ](../media/getting-compliance-data/compliance-activitylog.png)
 
+### <a name="change-history-preview"></a>変更履歴 (プレビュー)
+
+新しい**パブリック プレビュー**の一部として、過去 14 日間の変更履歴を非準拠リソースに対して利用できます。 変更履歴では、変更が検出された日時についての詳細と、各変更の "_差分表示_" が提供されます。 変更の検出は、非準拠リソースの Resource Manager のプロパティが追加、削除、または変更されるとトリガーされます。
+
+1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
+
+1. **[概要]** ページまたは **[コンプライアンス]** ページで、"_準拠していない_" ポリシーを選択します。
+
+1. **[ポリシーへの準拠]** ページの **[リソース コンプライアンス]** タブで、"_準拠していない_" リソースを選択します。
+
+1. **[リソース コンプライアンス]** ページで **[Change History (preview)]\(変更履歴 (プレビュー)\)** タブを選択します。 検出された変更がある場合は、その一覧が表示されます。
+
+   ![ポリシー変更履歴 - タブ](../media/getting-compliance-data/change-history-tab.png)
+
+1. 検出された変更のいずれかを選択します。 準拠していないリソースの "_差分表示_" が、**[変更履歴]** ページに表示されます。
+
+   ![ポリシー変更履歴 - 差分表示](../media/getting-compliance-data/change-history-visual-diff.png)
+
+"_差分表示_" は、リソースの変更を識別するのに役立ちます。 検出された変更は、選択したポリシーに対してリソースが準拠しなくなった原因とは無関係である可能性があります。
+
 ## <a name="command-line"></a>コマンド ライン
 
 ポータルで利用できるのと同じ情報は、REST API を使用して ([ARMClient](https://github.com/projectkudu/ARMClient) を含めて)、または Azure PowerShell を使用して取得することができます。 REST API の完全な詳細情報については、[Policy Insights](/rest/api/policy-insights/) リファレンスを参照してください。 REST API のリファレンス ページには、各操作に緑色の [使ってみる] ボタンがあり、ブラウザーで直接試すことができます。
@@ -145,9 +169,9 @@ Azure portal には、環境のコンプライアンス状態を視覚化して�
 Azure PowerShell で次の例を使用するには、この例のコードを使用して認証トークンを構築します。 次に、後で解析できる JSON オブジェクトを取得するために、例の $restUri を文字列に置き換えます。
 
 ```azurepowershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
+# Login first with Connect-AzAccount if not using Cloud Shell
 
-$azContext = Get-AzureRmContext
+$azContext = Get-AzContext
 $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
 $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
 $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
@@ -283,29 +307,33 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Policy 用の Azure PowerShell モジュールは PowerShell ギャラリーで [AzureRM.PolicyInsights](https://www.powershellgallery.com/packages/AzureRM.PolicyInsights) として入手することができます。 PowerShellGet では、`Install-Module -Name AzureRM.PolicyInsights` を使用してモジュールをインストールできます (最新の [Azure PowerShell](/powershell/azure/install-azurerm-ps) がインストールされていることを確認してください)。
+Policy 用の Azure PowerShell モジュールは PowerShell ギャラリーで [Az.PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights) として入手することができます。 PowerShellGet では、`Install-Module -Name Az.PolicyInsights` を使用してモジュールをインストールできます (最新の [Azure PowerShell](/powershell/azure/install-az-ps) がインストールされていることを確認してください)。
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
-Install-Module -Name AzureRM.PolicyInsights
+Install-Module -Name Az.PolicyInsights
 
 # Import the downloaded module
-Import-Module AzureRM.PolicyInsights
+Import-Module Az.PolicyInsights
 
-# Login with Connect-AzureRmAccount if not using Cloud Shell
-Connect-AzureRmAccount
+# Login with Connect-AzAccount if not using Cloud Shell
+Connect-AzAccount
 ```
 
-モジュールには次の 3 つのコマンドレットがあります。
+モジュールには次のコマンドレットがあります。
 
-- `Get-AzureRmPolicyStateSummary`
-- `Get-AzureRmPolicyState`
-- `Get-AzureRmPolicyEvent`
+- `Get-AzPolicyStateSummary`
+- `Get-AzPolicyState`
+- `Get-AzPolicyEvent`
+- `Get-AzPolicyRemediation`
+- `Remove-AzPolicyRemediation`
+- `Start-AzPolicyRemediation`
+- `Stop-AzPolicyRemediation`
 
 例:準拠していないリソースの数が最も多い、最上位の割り当てられているポリシーの状態の要約を取得する。
 
 ```azurepowershell-interactive
-PS> Get-AzureRmPolicyStateSummary -Top 1
+PS> Get-AzPolicyStateSummary -Top 1
 
 NonCompliantResources : 15
 NonCompliantPolicies  : 1
@@ -316,7 +344,7 @@ PolicyAssignments     : {/subscriptions/{subscriptionId}/resourcegroups/RG-Tags/
 例:直前に評価されたリソースの状態レコードを取得する (既定では降順のタイムスタンプに基づく)。
 
 ```azurepowershell-interactive
-PS> Get-AzureRmPolicyState -Top 1
+PS> Get-AzPolicyState -Top 1
 
 Timestamp                  : 5/22/2018 3:47:34 PM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -342,7 +370,7 @@ PolicyDefinitionCategory   : tbd
 例:準拠していないすべての仮想ネットワーク リソースの詳細情報を取得する。
 
 ```azurepowershell-interactive
-PS> Get-AzureRmPolicyState -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'"
+PS> Get-AzPolicyState -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'"
 
 Timestamp                  : 5/22/2018 4:02:20 PM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -368,7 +396,7 @@ PolicyDefinitionCategory   : tbd
 例:特定の日付以降に発生した、準拠していない仮想ネットワーク リソースに関連するイベントを取得する。
 
 ```azurepowershell-interactive
-PS> Get-AzureRmPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
+PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'
 
 Timestamp                  : 5/19/2018 5:18:53 AM
 ResourceId                 : /subscriptions/{subscriptionId}/resourceGroups/RG-Tags/providers/Mi
@@ -393,18 +421,18 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-**PrincipalOid** フィールドは、Azure PowerShell コマンドレット `Get-AzureRmADUser` を使用して特定のユーザーを取得するために使用できます。 **{principalOid}** を、前の例で取得した応答に置き換えます。
+**PrincipalOid** フィールドは、Azure PowerShell コマンドレット `Get-AzADUser` を使用して特定のユーザーを取得するために使用できます。 **{principalOid}** を、前の例で取得した応答に置き換えます。
 
 ```azurepowershell-interactive
-PS> (Get-AzureRmADUser -ObjectId {principalOid}).DisplayName
+PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
 Trent Baker
 ```
 
-## <a name="log-analytics"></a>Log Analytics
+## <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-サブスクリプションに関連付けられた `AzureActivity` ソリューションを持つ [Log Analytics](../../../log-analytics/log-analytics-overview.md) ワークスペースがある場合は、単純な Kusto クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Log Analytics で詳細情報を使用すると、非準拠を監視するようにアラートを構成できます。
+サブスクリプションに関連付けられた `AzureActivity` ソリューションを持つ [Log Analytics ワークスペース](../../../log-analytics/log-analytics-overview.md)がある場合は、単純な Azure Data Explorer クエリと `AzureActivity` テーブルを使用して、評価サイクルでの非準拠の結果を表示することもできます。 Azure Monitor ログの詳細情報を使用して、非準拠を監視するようにアラートを構成できます。
 
-![Log Analytics を使用したポリシーのコンプライアンス](../media/getting-compliance-data/compliance-loganalytics.png)
+![Azure Monitor ログを使用したポリシーのコンプライアンス](../media/getting-compliance-data/compliance-loganalytics.png)
 
 ## <a name="next-steps"></a>次の手順
 

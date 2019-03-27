@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 84cc99bac9ae5fa1743ed151e5bf8c3043cf5869
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f4da0a4672bc50688d0a25bbd2db1f3be984ee8b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851020"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821390"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 
@@ -31,10 +31,10 @@ SharePoint、Dynamics AX、SAP などのエンタープライズ アプリケー
 
 ## <a name="replicate-the-domain-controller"></a>ドメイン コントローラーのレプリケート
 
-- ドメイン コントローラーまたは DNS をホストする少なくとも 1 つの VM で、[Site Recovery レプリケーション](#enable-protection-using-site-recovery)をセットアップする必要があります。
-- 環境に[複数のドメイン コントローラー](#environment-with-multiple-domain-controllers)がある場合は、ターゲット サイトで[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をセットアップする必要もあります。 追加のドメイン コントローラーは、Azure またはオンプレミス データセンターに配置できます。
+- ドメイン コントローラーまたは DNS をホストする少なくとも 1 つの VM で、Site Recovery レプリケーションをセットアップする必要があります。
+- 環境に複数のドメイン コントローラーがある場合は、ターゲット サイトで追加のドメイン コントローラーをセットアップする必要もあります。 追加のドメイン コントローラーは、Azure またはオンプレミス データセンターに配置できます。
 - アプリケーションの数が少なく、ドメイン コントローラーが 1 つしかない場合は、サイト全体をまとめてフェールオーバーするとよいでしょう。 このケースでは、Site Recovery を使用して、ターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にドメイン コントローラーをレプリケートすることをお勧めします。 レプリケートされた同じドメイン コントローラーまたは DNS 仮想マシンを、[テスト フェールオーバー](#test-failover-considerations)にも使用できます。
-- - 環境に多数のアプリケーションと複数のドメイン コントローラーがある場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にセットアップすることをお勧めします。 [テスト フェールオーバー](#test-failover-considerations)には、Site Recovery によってレプリケートされたドメイン コントローラーを使用できます。 フェールオーバーには、ターゲット サイト上の追加のドメイン コントローラーを使用できます。
+- - 環境に多数のアプリケーションと複数のドメイン コントローラーがある場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、追加のドメイン コントローラーをターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にセットアップすることをお勧めします。 [テスト フェールオーバー](#test-failover-considerations)には、Site Recovery によってレプリケートされたドメイン コントローラーを使用できます。 フェールオーバーには、ターゲット サイト上の追加のドメイン コントローラーを使用できます。
 
 ## <a name="enable-protection-with-site-recovery"></a>Site Recovery による保護の有効化
 

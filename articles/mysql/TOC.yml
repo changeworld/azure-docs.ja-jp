@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: 概要
   items:
-  - name: Azure DB for MySQL
+  - name: Azure DB for MySQL とは
     href: overview.md
 - name: クイック スタート
   items:
@@ -11,6 +11,8 @@ items:
     href: quickstart-create-mysql-server-database-using-azure-portal.md
   - name: DB の作成 - Azure CLI
     href: quickstart-create-mysql-server-database-using-azure-cli.md
+  - name: DB の作成 - Azure CLI アップコマンド
+    href: quickstart-create-server-up-azure-cli.md
   - name: 接続とクエリ
     items:
     - name: PHP
@@ -44,12 +46,12 @@ items:
       href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
   - name: 2 - Web アプリの作成
     items:
-    - name: Wordpress - ポータル
-      href: https://portal.azure.com/#create/WordPress.WordPress
+    - name: コンテナーでの Wordpress と MySQL
+      href: ../app-service/containers/tutorial-multi-container-app.md
+      maintainContext: true
     - name: PHP と MySQL
-      href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
-    - name: Java と MySQL
-      href: ../app-service/app-service-web-tutorial-java-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
+      href: ../app-service/app-service-web-tutorial-php-mysql.md
+      maintainContext: true
 - name: サンプル
   items:
   - name: Azure CLI
@@ -102,6 +104,12 @@ items:
       href: concepts-connectivity.md
     - name: Azure Kubernetes Service (AKS) を使用した開発
       href: concepts-aks.md
+    - name: Java
+      items:
+      - name: Spring Data JDBC の構成
+        href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-mysql
+      - name: Spring Data JPA の構成
+        href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-mysql
   - name: レプリケーション
     items:
     - name: データイン レプリケーション
@@ -238,9 +246,9 @@ items:
     href: partners-migration-mysql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: c825a777affaabf6db04307de9c0f96efafc3d27
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 32343d73c18be4ddd7823ba710bed0eaad6d07ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191736"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900813"

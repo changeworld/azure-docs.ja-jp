@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4a50cb5dc204a209c2b9d899c50ae7def55f4deb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 17c493568953265ac12ebccc680652ed5da6ae4d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118168"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312993"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
 [Power BI](https://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
@@ -26,7 +26,7 @@ Application Insights のデータを Power BI にエクスポートする場合�
 
 * [**Analytics クエリのエクスポート**](#export-analytics-queries)。 可能であればこの方法の使用をお勧めします。 必要なクエリを作成し、Power BI にエクスポートします。 このクエリは、他のデータと共にダッシュボードに配置できます。
 * [**連続エクスポートと Azure Stream Analytics**](../../azure-monitor/app/export-stream-analytics.md)。 この方法は、データを長期間保存する必要がある場合に便利です。 長期にわたるデータ保有要件がない場合は、Analytics クエリのエクスポートの方法を使用します。 連続エクスポートと Stream Analytics では、多くの設定作業と追加のストレージ オーバーヘッドが必要になります。
-* [**Power BI アダプター**](#power-pi-adapter)。 グラフ セットが事前定義されていますが、他のソースの独自のクエリを追加できます。
+* **Power BI アダプター**。 グラフ セットが事前定義されていますが、他のソースの独自のクエリを追加できます。
 
 > [!NOTE]
 > 現在、Power BI アダプターは**非推奨**となっています。 このソリューションの定義済みのグラフは、編集できない静的なクエリによって入力されます。 これらのクエリを編集することはできません。データの特定のプロパティによっては、Power BI への接続が成功する可能性がありますが、データは入力されません。 これは、ハードコードされたクエリ内で設定されている除外条件によるものです。 一部のお客様はこのソリューションをまだ利用できる場合がありますが、アダプターの柔軟性が不足しているため、[**Analytics クエリのエクスポート**](#export-analytics-queries)機能を使用するというソリューションをお勧めします。

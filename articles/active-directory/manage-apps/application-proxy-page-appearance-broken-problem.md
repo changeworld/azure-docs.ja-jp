@@ -3,23 +3,24 @@ title: アプリケーション プロキシ アプリケーションでアプ�
 description: Azure AD と統合されたアプリケーション プロキシ アプリケーションで、ページが正しく表示されない場合のガイダンス
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 21634c5eeacd9a52c6a970d24b0f8afa3a0d9345
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 950a349506f32405261d90c05312d24aa3deadc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191634"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089949"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーションでアプリケーション ページが正しく表示されない
 
@@ -30,7 +31,7 @@ ms.locfileid: "54191634"
 
 ネットワーク トラッカー (Fiddler や Internet Explorer/Microsoft Edge で F12 キーを押すなどのツール) を開き、ページを読み込み、404 エラーを見つけることにより、リソースが見つからないことが問題かどうかを確認できます。 これは、現在見つけることができず、発行する必要があるページを示します。
 
-この場合の例として、内部 URL http://myapps/expenses を使用して経費アプリケーションを発行したが、アプリではスタイルシート http://myapps/style.css を使用していると仮定します。 この場合、スタイル シートがアプリケーションでは発行されていないため、経費アプリケーションが style.css を読み込もうとするときに 404 エラーをスローします。 この例では、内部 URL http://myapp/ を使用してアプリケーションを発行することにより、問題が解決されます。
+この場合の例として、内部 URL `http://myapps/expenses` を使用して経費アプリケーションを発行したが、アプリではスタイルシート `http://myapps/style.css` を使用していると仮定します。 この場合、スタイル シートがアプリケーションでは発行されていないため、経費アプリケーションが style.css を読み込もうとするときに 404 エラーをスローします。 この例では、内部 URL `http://myapp/` を使用してアプリケーションを発行することにより、問題が解決されます。
 
 ## <a name="problems-with-publishing-as-one-application"></a>1 つのアプリケーションとしての発行による問題
 

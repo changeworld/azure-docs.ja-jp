@@ -7,8 +7,10 @@ items:
     href: traffic-manager-overview.md
 - name: クイック スタート
   items:
-  - name: Traffic Manager プロファイルの作成
+  - name: Traffic Manager プロファイルの作成 - ポータル
     href: quickstart-create-traffic-manager-profile.md
+  - name: Traffic Manager プロファイルの作成 - PowerShell
+    href: quickstart-create-traffic-manager-profile-powershell.md
 - name: チュートリアル
   items:
   - name: トラフィックをルーティングして待ち時間を削減する
@@ -23,6 +25,8 @@ items:
     href: tutorial-traffic-manager-weighted-endpoint-routing.md
   - name: ユーザーのサブネットに基づいてトラフィックをルーティングする
     href: tutorial-traffic-manager-subnet-routing.md
+  - name: Traffic Manager のエイリアス レコード
+    href: ../dns/tutorial-alias-tm.md?toc=%2fazure%2ftraffic-manager%2ftoc.json
 - name: サンプル
   items:
   - name: Azure CLI
@@ -78,6 +82,8 @@ items:
     href: traffic-manager-load-balancing-azure.md
   - name: Traffic Manager のパフォーマンスの測定
     href: traffic-manager-performance-considerations.md
+  - name: Azure App Service の Web アプリの診断ログの有効化
+    href: traffic-manager-diagnostic-logs.md
   - name: Azure PowerShell を使用して Traffic Manager を管理する
     href: traffic-manager-powershell-arm.md
   - name: インターネット ドメインが Traffic Manager を指すように指定する
@@ -97,7 +103,7 @@ items:
   - name: Java
     href: /java/api/com.microsoft.azure.management.trafficmanager
   - name: Node.js
-    href: http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/
+    href: https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/
   - name: Ruby
     href: http://www.rubydoc.info/gems/azure_mgmt_traffic_manager
   - name: Python
@@ -134,9 +140,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla/traffic-manager/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=traffic-manager
-ms.openlocfilehash: ab7f91c93ee513dcd8139e525e14cf5c84747772
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 5b85231337e2e28a5cd4955999e4fde4bae573f5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354248"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006904"

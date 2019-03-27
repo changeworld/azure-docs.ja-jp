@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: c3aef8c0c05c8f018a3218e15fd102163b89084f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 5e3ef7782f805e07e24783a987f2753e4e889946
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214744"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313035"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
 この Microsoft FAQ は、Microsoft Azure の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -49,13 +49,13 @@ A:現在、カスタム フィールドの抽出はクラシック ログ エク
 
 A:リスト ビューは新しいログではご利用いただけません。 結果テーブルの各レコードの左側に矢印があります。 この矢印をクリックすると、そのレコードの詳細が表示されます。 
 
-### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>Q. クエリを実行した後、推奨されるフィルターのリストが表示されますが、一部のフィルターが含まれていません。 残りのフィルターを表示するにはどうすればよいですか? 
+### <a name="q-after-running-a-query-a-list-of-suggested-filters-are-available-how-can-i-see-filters"></a>Q. クエリの実行後、推奨されるフィルターの一覧が使用できるようになります。 どうすればフィルターを表示できますか? 
 
-A:現在表示されるのは、新しいフィルター実装のプレビューです。 現在、これは完全な結果セットに基づいており、UI のレコードの上限数 (10,000) によって制限されません。 現時点では、これが最もよく使用されているフィルターのリストであり、フィルターごとに最も一般的な値が 10 個表示されます。 
+A:左ウィンドウで [フィルター] をクリックすると、新しいフィルター実装のプレビューが表示されます。 現在、これは完全な結果セットに基づいており、UI のレコードの上限数 (10,000) によって制限されません。 現時点では、これが最もよく使用されているフィルターのリストであり、フィルターごとに最も一般的な値が 10 個表示されます。 
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>Q. エラーが発生する理由:VM からドリルインした後、ログに "このサブスクリプションのリソース プロバイダー 'Microsoft.Insights' を登録してこのクエリを有効にしてください" というエラーが表示されるのはなぜですか? 
 
-A:既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 これにより、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md#portal)」を参照してください。
+A:既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 これにより、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)」を参照してください。
 
 ### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>Q. VM ページからログにアクセスするときに、アクセス権なしというエラー メッセージが表示されるのはなぜですか? 
 

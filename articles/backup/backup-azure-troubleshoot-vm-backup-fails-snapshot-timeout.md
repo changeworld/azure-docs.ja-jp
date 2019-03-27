@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a0f002266764ace07482023a0412366b90acec63
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: a73dab8a0df642e439e8519c404423c6689418f5
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789859"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236976"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -52,19 +52,19 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 * この問題は、1 日に複数のバックアップがトリガーされる場合にも発生することがあります。 現時点では、インスタント RP は 7 日間保持され、任意の時点で VM に関連付けることができるインスタント RP は 18 個だけであるため、1 日に 1 つだけのバックアップを推奨します。 <br>
 
 推奨される操作:<br>
-この問題を解決するには、VM のリソース グループに対するロックを解除して、クリーンアップをトリガーする操作を再試行します。 
+この問題を解決するには、VM のリソース グループに対するロックを解除して、クリーンアップをトリガーする操作を再試行します。
 > [!NOTE]
     > Backup サービスでは、復元ポイント コレクションを格納する VM のリソース グループとは別のリソース グループが作成されます。 Backup サービスに使用するために作成されたリソース グループはロックしないことをお勧めします。 Backup サービスによって作成されるリソース グループの名前付け形式は次のとおりです。AzureBackupRG_`<Geo>`_`<number>` 例:AzureBackupRG_northeurope_1
 
 **手順 1:[復元ポイントのリソース グループのロックを解除する](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **手順 2:[復元ポイント コレクションをクリーンアップする](#clean_up_restore_point_collection)**<br>
 
-## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionNotConfigured - Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするのに十分ではありません。
+## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured - Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするには十分ではありません
 
 **エラー コード**:UserErrorKeyvaultPermissionsNotConfigured <br>
 **エラー メッセージ**:Backup のキー コンテナーに対するアクセス許可は、暗号化された VM をバックアップするのに十分ではありません。 <br>
 
-暗号化された VM のバックアップ操作を正常に完了するには、キー コンテナーへのアクセス許可が必要です。 これを行うには、[Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#provide-permissions-to-backup) または [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection) を使用します。
+暗号化された VM のバックアップ操作を正常に完了するには、キー コンテナーへのアクセス許可が必要です。 これを行うには、[Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) または [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection) を使用します。
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork - Snapshot operation failed due to no network connectivity on the virtual machine (仮想マシンがネットワークに接続していないためにスナップショット操作が失敗しました)
 
@@ -97,7 +97,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **原因 2:[VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **原因 3:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 4:[バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
-**原因 5:[リソース グループのロックが原因で、バックアップ サービスに古い復元ポイントを削除するためのアクセス許可がない](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)** <br>
+**原因 5:リソース グループのロックが原因で、バックアップ サービスに古い復元ポイントを削除するためのアクセス許可がない** <br>
 **原因 6:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
 
 ## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-1023gb"></a>UserErrorUnsupportedDiskSize - 現在、Azure Backup では 1023 GB を超えるディスク サイズはサポートされていません
@@ -105,14 +105,33 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **エラー コード**:UserErrorUnsupportedDiskSize <br>
 **エラー メッセージ**:現在、Azure Backup では 1023 GB を超えるディスク サイズはサポートされていません <br>
 
-コンテナーが Azure VM バックアップ スタック V2 にアップグレードされていないため、ディスク サイズが 1023 GB を超える VM をバックアップすると、バックアップ操作が失敗します。 Azure VM バックアップ スタック V2 にアップグレードすると、最大 4 TB がサポートされます。 これらの[利点](backup-upgrade-to-vm-backup-stack-v2.md)と[考慮事項](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)を確認し、こちらの[指示](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)に従ってアップグレードに進んでください。  
+コンテナーがインスタント リストアにアップグレードされていないため、ディスク サイズが 1023 GB を超える VM をバックアップすると、バックアップ操作が失敗します。 インスタント リストアにアップグレードすると、最大 4 TB がサポートされます。こちらの[記事](backup-instant-restore-capability.md#upgrading-to-instant-restore)を参照してください。 アップグレード後に、サブスクリプションでこの機能を利用できるようになるまでには最大 2 時間かかります。 操作を再試行する前に十分なバッファーを用意してください。  
 
 ## <a name="usererrorstandardssdnotsupported---currently-azure-backup-does-not-support-standard-ssd-disks"></a>UserErrorStandardSSDNotSupported - 現在、Azure Backup では Standard SSD ディスクはサポートされていません
 
 **エラー コード**:UserErrorStandardSSDNotSupported <br>
 **エラー メッセージ**:現在、Azure Backup では Standard SSD ディスクはサポートされていません <br>
 
-現在、Azure Backup では、Azure VM バックアップ スタック V2 にアップグレードされたコンテナーについてのみ、Standard SSD ディスクがサポートされています。 これらの[利点](backup-upgrade-to-vm-backup-stack-v2.md)と[考慮事項](backup-upgrade-to-vm-backup-stack-v2.md#considerations-before-upgrade)を確認し、こちらの[指示](backup-upgrade-to-vm-backup-stack-v2.md#upgrade)に従ってアップグレードに進んでください。
+現在、Azure Backup では、[インスタント リストア](backup-instant-restore-capability.md)にアップグレードされたコンテナーについてのみ、Standard SSD ディスクがサポートされています。
+
+## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 別のバックアップ操作が進行中であるためバックアップを開始できません
+
+**エラー コード**:UserErrorBackupOperationInProgress <br>
+**エラー メッセージ**:別のバックアップ操作が進行中であるためバックアップを開始できません<br>
+
+進行中のバックアップ ジョブがあるため、最新のバックアップ ジョブが失敗しました。 新しいバックアップ ジョブは、現在のジョブが完了するまで開始できません。 他のバックアップ操作をトリガーまたはスケジュールする前に、進行中のバックアップ操作が完了していることを確認します。 バックアップ ジョブの状態を確認するには、以下の手順を実行します。
+
+1. Azure portal にサインインし、**[すべてのサービス]** をクリックします。 「Recovery Services」と入力し、**[Recovery Services コンテナー]** をクリックします。 Recovery Services コンテナーの一覧が表示されます。
+2. Recovery Services コンテナーの一覧から、バックアップの構成先のコンテナーを選択します。
+3. コンテナーのダッシュボード メニューの **[バックアップ ジョブ]** をクリックすると、すべてのバックアップ ジョブが表示されます。
+
+    * バックアップ ジョブが進行中の場合は、そのジョブが完了するまで待機する、そのバックアップ ジョブを取り消します。
+        * バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0) を使用します。
+    * 別のコンテナーでバックアップを再構成した場合は、その後、古いコンテナーで実行されているバックアップ ジョブがないことを確認します。 存在する場合は、バックアップ ジョブを取り消します。
+        * バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.backup/stop-azurermbackupjob?view=azurermps-6.13.0&viewFallbackFrom=azurermps-6.12.0) を使用します
+4. バックアップ操作を再試行してください。
+
+スケジュールしたバックアップ操作に長い時間がかかり、次のバックアップの構成と競合している場合は、[ベスト プラクティス](backup-azure-vms-introduction.md#best-practices)、[バックアップ パフォーマンス](backup-azure-vms-introduction.md#backup-performance)、[復元に関する考慮事項](backup-azure-vms-introduction.md#restore-considerations)について確認してください。
 
 
 ## <a name="causes-and-solutions"></a>原因とソリューション
@@ -122,33 +141,8 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 バックアップ拡張機能が正常に機能するには、Azure のパブリック IP アドレスへの接続が必要です。 この拡張機能が、VM のスナップショットを管理するコマンドを、Azure Storage エンドポイント (HTTP URL) に送信するためです。 拡張機能がパブリック インターネットにアクセスできない場合は、最終的にバックアップが失敗します。
 
-VM トラフィックのルーティングに、プロキシ サーバーをデプロイすることもできます。
-##### <a name="create-a-path-for-https-traffic"></a>HTTP トラフィック用のパスを作成する
-
-1. ネットワーク制限 (ネットワーク セキュリティ グループなど) を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。
-2. HTTP プロキシ サーバーからインターネットへのアクセスを許可するには、規則をネットワーク セキュリティ グループに追加します (ネットワーク セキュリティ グループがある場合)。
-
-VM バックアップの HTTP プロキシを設定する方法については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-arm-vms-prepare.md#establish-network-connectivity)」を参照してください。
-
-バックアップ VM またはトラフィックがルーティングされるプロキシ サーバーのいずれかに、Azure のパブリック IP アドレスへのアクセスが必要です。
-
 ####  <a name="solution"></a>解決策
-この問題を解決するには、次の方法のいずれかを試してください。
-
-##### <a name="allow-access-to-azure-storage-that-corresponds-to-the-region"></a>リージョンに対応する Azure Storage へのアクセスを許可する
-
-[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用し、特定のリージョンのストレージに接続できます。 ストレージ アカウントへのアクセスを許可するルールが、インターネット アクセスをブロックするルールよりも優先度が高いことを確認してください。
-
-![リージョンのストレージ タグが与えられたネットワーク セキュリティ グループ](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
-
-サービス タグを構成する詳細な手順については、[こちらのビデオ](https://youtu.be/1EjLQtbKm1M)をご覧ください。
-
-> [!WARNING]
-> ストレージ サービスのタグはプレビュー版であり、 特定のリージョンでのみ利用できます。 リージョンの一覧については、[ストレージのサービス タグ](../virtual-network/security-overview.md#service-tags)に関するページを参照してください。
-
-Azure Managed Disks を使用する場合、ファイアウォールで別途ポート (ポート 8443) が開放されている必要があります。
-
-さらに、ご利用のサブネットにインターネット送信トラフィックのルートが含まれない場合は、サービス タグ "Microsoft.Storage" を含むサービス エンドポイントをサブネットに追加する必要があります。
+ネットワークの問題を解決するには、「[ネットワーク接続を確立する](backup-azure-arm-vms-prepare.md#establish-network-connectivity)」を参照してください。
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>エージェントが VM にインストールされているが応答しない (Windows VM の場合)
 
@@ -259,3 +253,6 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 
 5. **[削除]** をクリックして、復元ポイント コレクションを消去します。
 6. バックアップ操作を再試行します。
+
+> [!NOTE]
+ >リソース (RP コレクション) に多数の復元ポイントがある場合、同じものをポータルから削除するとタイムアウトして失敗する可能性があります。 これは既知の CRP 問題であり、規定の時間内にすべての復元ポイントが削除されず、操作がタイムアウトします。ただし、削除操作は通常、2 ～ 3 回の再試行後に成功します。

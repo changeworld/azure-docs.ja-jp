@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3671f6a3e3832a384e968fbf38128aff6bfb2252
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ae57fc5366e1ed99febcd9a9d08e7f95f3bbf196
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247675"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487355"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central のデバイス接続機能
 
@@ -56,7 +56,7 @@ SAS を使用して 1 つのデバイスを IoT Central に接続するのは簡
 
     *   **C 言語:** C を使う場合は、[この C サンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)に従ってサンプル デバイスを接続します。 サンプルの次の設定を使います。   
 
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
@@ -118,7 +118,7 @@ CSV ファイルには次の列 (とヘッダー) が必要です
 他の言語を使用する場合の参照を以下に示します。
 
    *   **C 言語:** C を使う場合は、[この C サンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)に従ってサンプル デバイスを接続します。 サンプルの次の設定を使います。   
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
@@ -163,7 +163,7 @@ X509 証明書を使用してデバイスを IoT Central に接続するには�
 
     スイッチを入れたときに接続詳細と IoT Central アプリ割り当てを取得するようにプロビジョニング サービス情報でデバイスをプログラムします。    
 
-    **詳細参照** 
+    **他の参考資料** 
     *   [RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases) のサンプル実装。  
 
     *   [C のサンプル デバイス クライアント](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)。
@@ -211,12 +211,12 @@ IoT Central によって有効になる主要シナリオの 1 つは、OEM が�
 
 1. **IoT Central へのデバイスの接続:** オンになったデバイスは登録のために DPS/IoT Central に接続します。
 
-1. **テンプレートをデバイスに関連付け:** 接続されたデバイスは、**Device Explorer** の **[UnAssociated Devices]\(関連付けられていないデバイス\)** の下に表示されます。 デバイスのプロビジョニング状態は **[登録済み]** です。 デバイスを適切なデバイス テンプレートに**関連付け**て、デバイスが IoT Central アプリに接続するのを承認します。 デバイスは IoT Central アプリに対する接続の詳細を取得し、接続して、データの送信を開始します。 デバイスのプロビジョニングが完了し、*[プロビジョニング状態]* が **[プロビジョニング済み]** になります。
+1. **テンプレートをデバイスに関連付け:** 接続されたデバイスは、**Device Explorer** の **[UnAssociated Devices]\(関連付けられていないデバイス\)** の下に表示されます。 デバイスのプロビジョニング状態は **[登録済み]** です。 デバイスを適切なデバイス テンプレートに**関連付け**て、デバイスが IoT Central アプリに接続するのを承認します。 デバイスは IoT Central アプリに対する接続の詳細を取得した後、接続を行ってデータの送信を開始します。 デバイスのプロビジョニングが完了し、*[プロビジョニング状態]* が **[プロビジョニング済み]** になります。
 
 ## <a name="device-provisioning-status"></a>デバイスのプロビジョニング状態
 実際のデバイスが Azure IoT Central に接続するときは、一連の手順があります 
 1. **登録済み**: デバイスは最初に**登録済み**になります。これは、デバイスが IoT Central で作成され、デバイスのデバイス ID があることを意味します。
-デバイスは次のときに登録済みになります  
+デバイスは、以下の場合に登録されます。  
     *   1 台の新しい実際のデバイスが **Explorer** で追加された
     *   一連のデバイスが **Explorer** で **[インポート]** を使用して追加された
     *   デバイスは登録されていないが、有効な資格情報で接続しており、**関連付けられていない**デバイスに表示されている 
@@ -233,7 +233,7 @@ IoT Central によって有効になる主要シナリオの 1 つは、OEM が�
 
     ![接続の詳細](media/concepts-connectivity/device-connect.PNG)
 
-1. 以下のコマンド ライン ツールを使用してデバイスの接続文字列を取得します。
+1. 以下のコマンドライン ツールを使用してデバイスの接続文字列を取得します。
     デバイスの接続文字列を取得するには次の命令を使用します  
 
     ```cmd/sh

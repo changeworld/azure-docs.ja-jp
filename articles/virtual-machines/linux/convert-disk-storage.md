@@ -15,23 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ed4becee5eeab258585eb7d9b406dd66d79c9ff
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.subservice: disks
+ms.openlocfilehash: 10dc7a2c7e4de44979ec72b1d292c69866e1faae
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077880"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326410"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Azure マネージド ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する
 
-Managed Disks には、[Premium SSD](../windows/premium-storage.md)、Standard SSD、および [Standard HDD](../windows/standard-storage.md) の 3 つのストレージ オプションが用意されています。 パフォーマンス上のニーズに基づいて、これらのオプションを最小限のダウンタイムで簡単に切り替えることができます。 これはアンマネージド ディスクではサポートされていません。 ディスクの種類を簡単に切り替えるために、簡単に[マネージド ディスクに変換](convert-unmanaged-to-managed-disks.md)できます。
+マネージド ディスクには、4 種類の[ディスク タイプ](disks-types.md) オプションがあります:Ultra ソリッド ステート ドライブ (SSD)、Premium SSD、Standard SSD、Standard ハード ディスク ドライブ (HDD)。 パフォーマンス上のニーズに基づいて、これらのオプションを最小限のダウンタイムで簡単に切り替えることができます。 これはアンマネージド ディスクではサポートされていません。 ディスクの種類を簡単に切り替えるために、簡単に[マネージド ディスクに変換](convert-unmanaged-to-managed-disks.md)できます。
 
 この記事では、マネージド ディスクを Azure CLI を使用して Standard から Premium に (または Premium から Standard に) 変換する方法を示します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="before-you-begin"></a>開始する前に
 
 * 変換作業は VM の再起動を伴うので、既に設定されているメンテナンス期間中に ディスク ストレージの移行をスケジュールしてください。 
-* 管理されていないディスクを使用している場合は、まず[マネージド ディスクに変換](convert-unmanaged-to-managed-disks.md)してから、この記事を参照してストレージ オプションを切り替えてください。 
+* 管理されていないディスクを使用している場合は、まず[マネージド ディスクに変換](convert-unmanaged-to-managed-disks.md)してから、この記事を参照してストレージ オプションを切り替えてください。
 
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>VM のすべてのマネージド ディスクを Standard から Premium に (または Premium から Standard に) 変換する

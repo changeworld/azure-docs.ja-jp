@@ -7,14 +7,14 @@ ms.author: dastanfo
 ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
-ms.component: blobs
+ms.subservice: blobs
 ms.custom: seodec18
-ms.openlocfilehash: 852b7a32bc27b0aa67d66c25d3b54ab864ee1612
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 3e1a482cc59d951fbe6b25fcf0bfc4a967222839
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53628257"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55246417"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>クイック スタート: PowerShell を使用してストレージ イベントを Web エンドポイントにルーティングする
 

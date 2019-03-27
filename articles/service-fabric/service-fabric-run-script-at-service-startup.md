@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric サービスの開始時にスクリプトを実行する | Microsoft Docs
-description: Service Fabric サービス セットアップ エントリ ポイントのポリシーを構成し、サービスの開始時にスクリプトを実行する方法について説明します。
+title: Run a script when an Azure Service Fabric service starts | Microsoft Docs
+description: Learn how to configure a policy for a Service Fabric service setup entry point and run a script at service start up time.
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: 3fe22d8bb52fa5f45ce5f1cdc7b860d1ce295a71
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3ae43f7427996f8be15b22fec4406bbdfe8aa4fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210496"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838444"
 ---
-# <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する
-Service Fabric サービス実行可能ファイルを開始する前に、構成またはセットアップ作業が必要になることがあります。  たとえば、環境変数の構成です。 サービスのサービス マニフェストでは、サービス実行可能ファイルが開始される前に実行するスクリプトを指定できます。 セットアップ実行可能ファイルの実行アカウントは、サービス セットアップ エントリ ポイントの RunAs ポリシーを構成することで変更できます。  個別のセットアップ エントリ ポイントを使用すると、高い権限を持つ構成を短時間実行できるため、サービス ホスト実行可能ファイルは、長時間にわたって高い権限で実行する必要がありません。
+# <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Run a service startup script as a local user or system account
+Before a Service Fabric service executable starts up it may be necessary to run some configuration or setup work.  For example, configuring environment variables. You can specify a script to run before the service executable starts up in the service manifest for the service. By configuring a RunAs policy for the service setup entry point you can change which account the setup executable runs under.  A separate setup entry point allows you to run high-privileged configuration for a short period of time so the service host executable doesn't need to run with high privileges for extended periods of time.
 
-セットアップ エントリ ポイント ([サービス マニフェスト](service-fabric-application-and-service-manifests.md)の **SetupEntryPoint**) は特権エントリ ポイントで、既定では、他のエントリポイントの前に、Service Fabric と同じ資格情報で実行されます (通常は *NetworkService* アカウント)。 **EntryPoint** によって指定された実行可能ファイルは、通常は実行時間の長いサービス ホストです。 **EntryPoint** 実行可能ファイルは、**SetupEntryPoint** 実行可能ファイルが正常に終了した後に実行されます。 結果のプロセスは監視されて再起動され、終了またはクラッシュした場合に、**SetupEntryPoint** でもう一度開始されます。 
+The setup entry point (**SetupEntryPoint** in the [service manifest](service-fabric-application-and-service-manifests.md)) is a privileged entry point that by default runs with the same credentials as Service Fabric (typically the *NetworkService* account) before any other entry point. The executable that is specified by **EntryPoint** is typically the long-running service host. The **EntryPoint** executable is run after the **SetupEntryPoint** executable exits successfully. The resulting process is monitored and restarted, and begins again with **SetupEntryPoint** if it ever terminates or crashes. 
 
-## <a name="configure-the-service-setup-entry-point"></a>サービス セットアップ エントリ ポイントを構成する
-**SetupEntryPoint** サービスで *MySetup.bat* セットアップ スクリプトを指定する、ステートレス サービスの簡単なサービス マニフェストの例を次に示します。  **Arguments** は、実行時に引数をスクリプトに渡すときに使用されます。
+## <a name="configure-the-service-setup-entry-point"></a>Configure the service setup entry point
+The following is a simple service manifest example for a stateless service that specifies a setup script *MySetup.bat* in the service **SetupEntryPoint**.  **Arguments** is used to pass arguments to the script when it runs.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceManifest Name="MyStatelessServicePkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <Description>An example service manifest.</Description>
   <ServiceTypes>
     <StatelessServiceType ServiceTypeName="MyStatelessServiceType" />
@@ -66,15 +66,15 @@ Service Fabric サービス実行可能ファイルを開始する前に、構�
   </Resources>
 </ServiceManifest>
 ```
-## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>エントリ ポイント セットアップ サービスのポリシーを構成する
-既定では、サービス セットアップ エントリ ポイント実行可能ファイルは、Service Fabric と同じ資格情報で実行されます (通常は *NetworkService* アカウント)。  アプリケーション マニフェストでは、ローカル システム アカウントまたは管理者アカウントで、スタートアップ スクリプトを実行するセキュリティのアクセス許可を変更できます。
+## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>Configure the policy for a service setup entry point
+By default, the service setup entry point executable runs under the same credentials as Service Fabric (typically the *NetworkService* account).  In the application manifest, you can change the security permissions to run the startup script under a local system account or an administrator account.
 
-### <a name="configure-the-policy-by-using-a-local-system-account"></a>ローカル システム アカウントを使用してポリシーを構成する
-次のアプリケーション マニフェストの例は、ユーザー管理者アカウント (SetupAdminUser) で実行されるようにサービス セットアップ エントリ ポイントを構成する方法を示しています。
+### <a name="configure-the-policy-by-using-a-local-system-account"></a>Configure the policy by using a local system account
+The following application manifest example shows how to configure the service setup entry point to run under user administrator account (SetupAdminUser).
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="MyStatelessService_InstanceCount" DefaultValue="-1" />
   </Parameters>
@@ -104,16 +104,16 @@ Service Fabric サービス実行可能ファイルを開始する前に、構�
 </ApplicationManifest>
 ```
 
-最初に、SetupAdminUser などのユーザー名で **Principals** セクションを作成します。 SetupAdminUser ユーザー アカウントは、Administrators システム グループのメンバーです。
+First, create a **Principals** section with a user name, such as SetupAdminUser. The SetupAdminUser user account is a member of the Administrators system group.
 
-次に、**ServiceManifestImport** セクションで、このプリンシパルを **SetupEntryPoint** に適用するためのポリシーを構成します。 このポリシーでは、**MySetup.bat** ファイルは、(管理者特権を持つ) SetupAdminUser として実行する必要があることを Service Fabric に通知します。 メイン エントリ ポイントに対してポリシーを適用 "*しない*" ため、**MyServiceHost.exe** のコードは、システム **NetworkService** アカウントで実行されます。 これはすべてのサービス エントリ ポイントが RunAs で実行する既定のアカウントです。
+Next, under the **ServiceManifestImport** section, configure a policy to apply this principal to **SetupEntryPoint**. This policy tells Service Fabric that when the **MySetup.bat** file is run it should run as SetupAdminUser ( with administrator privileges). Since you have *not* applied a policy to the main entry point, the code in **MyServiceHost.exe** runs under the system **NetworkService** account. This is the default account that all service entry points are run as.
 
-### <a name="configure-the-policy-by-using-local-system-accounts"></a>ローカル システム アカウントを使用してポリシーを構成する
-多くの場合、管理者アカウントではなく、ローカル システム アカウントを使用して起動スクリプトを実行することが推奨されます。 管理者グループのメンバーとして RunAs ポリシーを実行すると、コンピューターでユーザー アクセス制御 (UAC) が既定で有効になっているため、通常はうまく動作しません。 このような場合、ローカル ユーザーを管理者グループに追加するのではなく、SetupEntryPoint を LocalSystem として実行することが推奨されます。 次の例では、LocalSystem として実行するように SetupEntryPoint を設定します。
+### <a name="configure-the-policy-by-using-local-system-accounts"></a>Configure the policy by using local system accounts
+Often, it's preferable to run the startup script using a local system account rather than an administrator account. Running the RunAs policy as a member of the Administrators group typically doesn’t work well because computers have User Access Control (UAC) enabled by default. In such cases, the recommendation is to run the SetupEntryPoint as LocalSystem, instead of as a local user added to Administrators group. The following example shows setting the SetupEntryPoint to run as LocalSystem:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="MyStatelessService_InstanceCount" DefaultValue="-1" />
   </Parameters>
@@ -140,18 +140,18 @@ Service Fabric サービス実行可能ファイルを開始する前に、構�
 ```
 
 > [!NOTE]
-> Linux クラスターの場合、サービスまたはセットアップ エントリ ポイントを**ルート**として実行するには、**AccountType** を **LocalSystem** として指定します。
+> For Linux clusters, to run a service or the setup entry point as **root**, you can specify the  **AccountType** as **LocalSystem**.
 
-## <a name="run-a-script-from-the-setup-entry-point"></a>セットアップ エントリ ポイントからスクリプトを実行する
-次は、スタートアップ スクリプトをプロジェクトに追加して、管理者特権で実行します。 
+## <a name="run-a-script-from-the-setup-entry-point"></a>Run a script from the setup entry point
+Now add a start up script to the project to run under administrator privileges. 
 
-Visual Studio でサービス プロジェクトを右クリックし、*MySetup.bat* という名前の新しいファイルを追加します。
+In Visual Studio, right-click the service project and add a new file called *MySetup.bat*.
 
-次に、サービス パッケージに *MySetup.bat* ファイルが含まれていることを確認します。 既定では、含まれていません。 ファイルを選択し、右クリックしてコンテキスト メニューを表示し、 **[プロパティ]** を選択します。 [プロパティ] ダイアログ ボックスで、**[出力ディレクトリにコピー]** が **[新しい場合はコピーする]** に設定されていることを確認します。 次のスクリーンショットをご覧ください。
+Next, ensure that the *MySetup.bat* file is included in the service package. By default, it is not. Select the file, right-click to get the context menu, and choose **Properties**. In the Properties dialog box, ensure that **Copy to Output Directory** is set to **Copy if newer**. See the following screenshot.
 
-![SetupEntryPoint バッチ ファイルの Visual Studio CopyToOutput][image1]
+![Visual Studio CopyToOutput for SetupEntryPoint batch file][image1]
 
-ここで *MySetup.bat* ファイルを編集し、次のコマンドを追加して、システム環境変数を設定します。また、テキスト ファイルを出力します。
+Now edit the *MySetup.bat* file and add the following commands set a system environment variable and output a text file:
 
 ```
 REM Set a system environment variable. This requires administrator privilege
@@ -163,29 +163,29 @@ REM To delete this system variable us
 REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
 ```
 
-次に、ソリューションをビルドして、開発用のローカル クラスターにデプロイします。 サービスが開始した後、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) で示されるように、MySetup.bat ファイルが成功したことを 2 つの方法で確認できます。 PowerShell コマンド プロンプトを起動し、次を入力します。
+Next, build and deploy the solution to a local development cluster. After the service has started, as shown in [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), you can see that the MySetup.bat file was successful in a two ways. Open a PowerShell command prompt and type:
 
 ```
 PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ```
 
-サービスがデプロイされ、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) で開始したノードの名前をメモします。 たとえば、Node 2 です。 次に、アプリケーション インスタンスの作業フォルダーに移動し、 **TestVariable**の値を示す out.txt ファイルを探します。 たとえば、このサービスが Node 2 にデプロイされた場合は、**MyApplicationType** の次のパスに移動します。
+Then, note the name of the node where the service was deployed and started in [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). For example, Node 2. Next, navigate to the application instance work folder to find the out.txt file that shows the value of **TestVariable**. For example, if this service was deployed to Node 2, then you can go to this path for the **MyApplicationType**:
 
 ```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
-## <a name="run-powershell-commands-from-a-setup-entry-point"></a>セットアップ エントリ ポイント から PowerShell コマンドを実行する
-**SetupEntryPoint** ポイントから PowerShell を実行するには、PowerShell ファイルを指し示すバッチ ファイルで **PowerShell.exe** を実行します。 最初に、PowerShell ファイルをサービス プロジェクトに追加します (**MySetup.ps1** など)。 このファイルがサービス パッケージにも含まれるように、 *[新しい場合はコピーする]* プロパティを忘れずに設定します。 次の例では、システム環境変数 **TestVariable** を設定する PowerShell ファイル MySetup.ps1 を開始するバッチ ファイルを示します。
+## <a name="run-powershell-commands-from-a-setup-entry-point"></a>Run PowerShell commands from a setup entry point
+To run PowerShell from the **SetupEntryPoint** point, you can run **PowerShell.exe** in a batch file that points to a PowerShell file. First, add a PowerShell file to the service project--for example, **MySetup.ps1**. Remember to set the *Copy if newer* property so that the file is also included in the service package. The following example shows a sample batch file that starts a PowerShell file called MySetup.ps1, which sets a system environment variable called **TestVariable**.
 
-PowerShell ファイルを開始するための MySetup.bat。
+MySetup.bat to start a PowerShell file:
 
 ```
 powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
 ```
 
-PowerShell ファイルで、システム環境変数を設定するために次を追加します。
+In the PowerShell file, add the following to set a system environment variable:
 
 ```
 [Environment]::SetEnvironmentVariable("TestVariable", "MyValue", "Machine")
@@ -193,7 +193,7 @@ PowerShell ファイルで、システム環境変数を設定するために次
 ```
 
 > [!NOTE]
-> 既定では、バッチ ファイルが実行されると、**work** と呼ばれるアプリケーション フォルダーでファイルを検索します。 この場合、MySetup.bat を実行するときに、アプリケーションの **コード パッケージ** フォルダーである同じフォルダー内に MySetup.ps1 ファイルを見つける必要があります。 このフォルダーを変更するには、次の作業フォルダーを設定します。
+> By default, when the batch file runs, it looks at the application folder called **work** for files. In this case, when MySetup.bat runs, we want this to find the MySetup.ps1 file in the same folder, which is the application **code package** folder. To change this folder, set the working folder:
 > 
 > 
 
@@ -206,15 +206,15 @@ PowerShell ファイルで、システム環境変数を設定するために次
 </SetupEntryPoint>
 ```
 
-## <a name="debug-a-startup-script-locally-using-console-redirection"></a>コンソール リダイレクトを使用してローカルでスタートアップ スクリプトをデバッグする
-場合によっては、デバッグ目的でセットアップ スクリプトの実行結果をコンソールに出力し、確認すると便利です。 サービス マニフェストのセットアップ エントリ ポイントでは、コンソール リダイレクト ポリシーを設定できます。これにより出力がファイルに書き込まれます。 ファイル出力はアプリケーションがデプロイおよび実行されるクラスター ノード上の **log** と呼ばれるアプリケーション フォルダーに書き込まれます。 
+## <a name="debug-a-startup-script-locally-using-console-redirection"></a>Debug a startup script locally using console redirection
+Occasionally, it's useful for debugging purposes to see the console output from running a setup script. You can set a console redirection policy on the setup entry point in the service manifest, which writes the output to a file. The file output is written to the application folder called **log** on the cluster node where the application is deployed and run. 
 
 > [!WARNING]
-> アプリケーションのフェールオーバーに影響する可能性があるため、運用環境でデプロイされたアプリケーションのコンソール リダイレクト ポリシーは決して使用しないでください。 これは、ローカル デプロイおよびデバッグの目的のため "*だけ*" に使用します。  
+> Never use the console redirection policy in an application that is deployed in production because this can affect the application failover. *Only* use this for local development and debugging purposes.  
 > 
 > 
 
-次のサービス マニフェストの例は、FileRetentionCount 値を使用したコンソール リダイレクトの設定を示しています。
+The following service manifest example shows setting the console redirection with a FileRetentionCount value:
 
 ```xml
 <SetupEntryPoint>
@@ -226,22 +226,22 @@ PowerShell ファイルで、システム環境変数を設定するために次
 </SetupEntryPoint>
 ```
 
-ここで **Echo** コマンドを書き込むように、MySetup.ps1 ファイルを変更すると、これはデバッグのために出力ファイルに書き込みます。
+If you now change the MySetup.ps1 file to write an **Echo** command, this will write to the output file for debugging purposes:
 
 ```
 Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"
 ```
 
 > [!WARNING]
-> 自分のスクリプトをデバッグしたら、すぐにこのコンソール リダイレクト ポリシーを削除してください。
+> After you debug your script, immediately remove this console redirection policy.
 
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次の手順
-* [アプリケーションとサービスのセキュリティについて確認する](service-fabric-application-and-service-security.md)
-* [アプリケーション モデルを理解する](service-fabric-application-model.md)
-* [サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)
-* [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)
+## <a name="next-steps"></a>Next steps
+* [Learn about application and service security](service-fabric-application-and-service-security.md)
+* [Understand the application model](service-fabric-application-model.md)
+* [Specify resources in a service manifest](service-fabric-service-manifest-resources.md)
+* [Deploy an application](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

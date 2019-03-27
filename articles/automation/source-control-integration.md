@@ -3,18 +3,18 @@ title: Azure Automation でのソース管理の統合
 description: この記事では、Azure Automation での GitHub とのソース管理の統合について説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/26/2018
+ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 95355a6d1a0aff9829d75789df86f37768d25e22
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 400cf53172fbd1ce5803cf3de298749afbf45cd4
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342240"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54430196"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
@@ -59,6 +59,9 @@ Automation アカウント内で、**[Source Control (preview)] (ソース管理
 |説明     | 詳細情報を入力するテキスト フィールド        |
 
 ![ソース管理の概要](./media/source-control-integration/source-control-summary.png)
+
+> [!NOTE]
+> ソース管理を構成する際は、確実に正しいアカウントでログインします。 正しいかどうかが不明な場合、ブラウザーで新しいタブを開き、visualstudio.com または github.com からログアウトし、ソース管理にもう一度接続してみてください。
 
 ## <a name="syncing"></a>同期中
 
@@ -141,3 +144,4 @@ Source Control Sync Summary:
 ## <a name="next-steps"></a>次の手順
 
 Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
+

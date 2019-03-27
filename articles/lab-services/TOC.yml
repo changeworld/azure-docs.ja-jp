@@ -5,16 +5,12 @@ items:
   items:
   - name: Lab Services について
     href: lab-services-overview.md
-  - name: ラボの種類を比較する
-    href: compare-lab-types.md
+  - name: クラスルーム ラボについて
+    href: classroom-labs/classroom-labs-overview.md
+  - name: DevTest ラボについて
+    href: devtest-lab-overview.md
 - name: チュートリアル
   items:
-  - name: DevTest Labs
-    items:
-    - name: 1. ラボを設定する
-      href: tutorial-create-custom-lab.md
-    - name: 2. ラボにアクセスする
-      href: tutorial-use-custom-lab.md
   - name: クラスルーム ラボ
     items:
     - name: 1. ラボ アカウントを設定する
@@ -25,6 +21,12 @@ items:
       href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
     - name: 4. クラスルーム ラボの使用状況を追跡する
       href: classroom-labs/tutorial-track-usage.md
+  - name: DevTest Labs
+    items:
+    - name: 1. ラボを設定する
+      href: tutorial-create-custom-lab.md
+    - name: 2. ラボにアクセスする
+      href: tutorial-use-custom-lab.md
 - name: サンプル
   items:
   - name: DevTest Labs
@@ -37,17 +39,26 @@ items:
       href: samples-cli.md
 - name: 概念
   items:
-  - name: DevTest Labs
-    href: devtest-lab-concepts.md
+  - name: クラスルーム ラボ
     items:
-    - name: 開発者向けのラボの使用
-      href: devtest-lab-developer-lab.md
-    - name: テスト環境でのラボの使用
-      href: devtest-lab-test-env.md
-    - name: トレーニングでのラボの使用
-      href: devtest-lab-training-lab.md
-    - name: DevTest Labs の概要
-      href: devtest-lab-overview.md
+    - name: クラスルーム ラボの概念
+      href: classroom-labs/classroom-labs-concepts.md
+    - name: シナリオ
+      items:
+      - name: クラスを実施するためのラボの使用
+        href: classroom-labs/classroom-labs-scenarios.md
+  - name: DevTest Labs
+    items:
+    - name: DevTest ラボの概念
+      href: devtest-lab-concepts.md
+    - name: シナリオ
+      items:
+      - name: 開発者向けのラボの使用
+        href: devtest-lab-developer-lab.md
+      - name: テスト環境でのラボの使用
+        href: devtest-lab-test-env.md
+      - name: トレーニングでのラボの使用
+        href: devtest-lab-training-lab.md
 - name: ハウツー ガイド
   items:
   - name: クラスルーム ラボ
@@ -62,14 +73,14 @@ items:
       href: classroom-labs/how-to-configure-student-usage.md
     - name: クラスルーム ラボへのアクセス
       href: classroom-labs/how-to-use-classroom-lab.md
-  - name: DevTest ラボ
+    - name: スケジュールの作成と管理
+      href: classroom-labs/how-to-create-schedules.md
+    - name: テンプレート VM 内に複数の VM を備えた環境を作成する
+      href: classroom-labs/how-to-enable-multi-vm-environment.md
+  - name: DevTest Labs
     items:
-    - name: ラボを作成する
-      href: devtest-lab-create-lab.md
-    - name: ラボで VM を作成する
-      href: devtest-lab-create-first-vm.md
-    - name: ラボまたはラボ内の VM を削除する
-      href: devtest-lab-delete-lab-vm.md
+    - name: ラボ仮想マシンのリソース グループを指定する
+      href: resource-group-control.md
     - name: ラボのポリシーを設定する
       href: devtest-lab-get-started-with-lab-policies.md
     - name: Azure Key Vault にシークレットを格納する
@@ -78,6 +89,17 @@ items:
       href: test-app-azure.md
     - name: 個人データをエクスポートまたは削除する
       href: personal-data-delete-export.md
+    - name: 別のラボから仮想マシンをインポートする
+      href: import-virtual-machines-from-another-lab.md
+    - name: イメージ ファクトリを作成する
+      href: image-factory-create.md
+      items:
+      - name: AzureDevOps からイメージ ファクトリを実行する
+        href: image-factory-set-up-devops-lab.md
+      - name: カスタム イメージを保存して複数のラボに配布する
+        href: image-factory-save-distribute-custom-images.md
+      - name: アイテム保持ポリシーを設定してクリーンアップ スクリプトを実行する
+        href: image-factory-set-retention-policy-cleanup.md
     - name: エンタープライズで DevTest Labs インフラストラクチャを設定する
       href: devtest-lab-guidance-prescriptive-adoption.md
       items:
@@ -99,6 +121,10 @@ items:
           href: devtest-lab-guidance-governance-application-migration-integration.md
     - name: ラボでの VM の使用
       items:
+      - name: ラボを作成する
+        href: devtest-lab-create-lab.md
+      - name: ラボまたはラボ内の VM を削除する
+        href: devtest-lab-delete-lab-vm.md
       - name: VM の作成
         href: devtest-lab-add-vm.md
       - name: クレーム可能 VM の作成と管理
@@ -115,12 +141,16 @@ items:
         href: devtest-lab-redeploy-vm.md
       - name: VM のインポート
         href: devtest-lab-import-vm.md
+      - name: PowerShell または CLI を使用して VM を開始/停止する
+        href: use-command-line-start-stop-virtual-machines.md
     - name: ラボでの環境の使用
       items:
       - name: 環境の作成
         href: devtest-lab-create-environment-from-arm.md
       - name: パブリックな環境の構成と使用
         href: devtest-lab-configure-use-public-environments.md
+      - name: Service Fabric クラスターを含む環境の作成
+        href: create-environment-service-fabric-cluster.md
     - name: ラボへのアクセスのセキュリティ保護
       items:
       - name: ラボの所有者とユーザーを追加する
@@ -171,6 +201,8 @@ items:
         href: devtest-lab-mandatory-artifacts.md
       - name: カスタム アーティファクトを作成する
         href: devtest-lab-artifact-author.md
+      - name: アーティファクト リポジトリをラボに追加する
+        href: add-artifact-repository.md
       - name: アーティファクトの失敗の診断
         href: devtest-lab-troubleshoot-artifact-failure.md
     - name: 仮想ネットワークの管理
@@ -193,37 +225,47 @@ items:
       href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
 - name: リファレンス
   items:
-  - name: CLI
-    href: /cli/azure/lab
-  - name: PowerShell
-    href: /powershell/module/azurerm.devtestlabs/#devtest_labs
-  - name: REST API
-    href: https://docs.microsoft.com/rest/api/dtl/
-  - name: Resource Manager テンプレート
-    href: /azure/templates/microsoft.devtestlab/allversions
+  - name: クラスルーム ラボ
+    items:
+    - name: REST API
+      href: https://docs.microsoft.com/rest/api/labservices/
+  - name: DevTest Labs
+    items:
+    - name: CLI
+      href: /cli/azure/lab
+    - name: PowerShell
+      href: /powershell/module/azurerm.devtestlabs/#devtest_labs
+    - name: REST API
+      href: https://docs.microsoft.com/rest/api/dtl/
+    - name: Resource Manager テンプレート
+      href: /azure/templates/microsoft.devtestlab/allversions
 - name: リソース
   items:
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?category=developer-tools
-  - name: 料金計算ツール
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: DevTest Labs - FAQ
-    href: devtest-lab-faq.md
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=devtest-lab
-  - name: MSDN フォーラム
-    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs
-  - name: チーム ブログ
-    href: https://blogs.msdn.microsoft.com/devtestlab/
-  - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-devtest-labs
-  - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: 58617af180ba908568377b7572449701e1e0df30
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+  - name: クラスルーム ラボ
+    items:
+    - name: Azure の更新情報
+      href: https://azure.microsoft.com/updates/?product=lab-services
+    - name: 価格
+      href: https://azure.microsoft.com/pricing/details/lab-services/
+    - name: スタック オーバーフロー
+      href: https://stackoverflow.com/questions/tagged/azure-lab-services
+  - name: DevTest Labs
+    items:
+    - name: Azure の更新情報
+      href: https://azure.microsoft.com/updates/?product=devtest-lab
+    - name: 価格
+      href: https://azure.microsoft.com/pricing/details/devtest-lab/
+    - name: MSDN フォーラム
+      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs
+    - name: スタック オーバーフロー
+      href: https://stackoverflow.com/questions/tagged/azure-devtest-labs
+    - name: ビデオ
+      href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
+    - name: よく寄せられる質問
+      href: devtest-lab-faq.md
+ms.openlocfilehash: 03ae5399295c0f9fac29fb4cd88cea85130881f7
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118457"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435636"

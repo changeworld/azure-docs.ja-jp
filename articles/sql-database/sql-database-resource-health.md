@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 36a448a861bdfdcd85e532578383b14e56f54b1a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 02/26/2019
+ms.openlocfilehash: c3b9fecd3ad404385732e55a9cf3aa65a6e388b8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039097"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889377"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Resource Health を使用して、Azure SQL Database の接続をトラブルシューティングする
 
@@ -53,9 +53,9 @@ Resource Health では、リソースへのログインの成功と失敗を調�
 
 ### <a name="unknown"></a>Unknown
 
-**不明**状態は、Resource Health がこのリソースに関する情報を 10 分以上受け取っていないことを示します。 この状態はリソースの状態を明確に示すものではありませんが、トラブルシューティング プロセスにおいて重要なデータ ポイントです。
-リソースが想定したとおりに実行されている場合、リソースの状態は数分後に [使用可能] に変わります。
-リソースで問題が発生している場合、[不明] 状態は、プラットフォーム内のイベントによってリソースが影響を受けていることを示唆している可能性があります。
+**不明**状態は、Resource Health がこのリソースに関する情報を 10 分以上受け取っていないことを示します。 この状態はリソースの状態を明確に示すものではありませんが、トラブルシューティング プロセスにおいて重要なデータ ポイントです。 リソースが想定したとおりに実行されている場合、リソースの状態は数分後に [使用可能] に変わります。 リソースで問題が発生している場合、[不明] 状態は、プラットフォーム内のイベントによってリソースが影響を受けていることを示唆している可能性があります。
+
+![Unknown](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 
 ## <a name="historical-information"></a>履歴情報
 

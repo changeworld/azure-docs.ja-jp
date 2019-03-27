@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 3e40dbb96b27df4b228c52e7a8f70d047a556c31
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198527"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55103430"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Application Gateway で HTTP ヘッダーを書き換える (パブリック プレビュー)
 
@@ -94,8 +94,6 @@ http ヘッダーの書き換えルール セットを複数作成し、それ�
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | クライアントでサポートされている暗号の一覧を返します          |
 | ciphers_used               | 確立された SSL 接続で使用される暗号の文字列を返します |
-| client_latitude            | クライアントの IP アドレスに応じて国、地域、および市区町村を特定します |
-| client_longitude           | クライアントの IP アドレスに応じて国、地域、および市区町村を特定します |
 | client_port                | クライアント ポート                                                  |
 | client_tcp_rtt             | クライアントの TCP 接続に関する情報。TCP_INFO ソケット オプションをサポートするシステムで使用できます |
 | client_user                | HTTP 認証の使用時に、認証のために提供されるユーザー名 |

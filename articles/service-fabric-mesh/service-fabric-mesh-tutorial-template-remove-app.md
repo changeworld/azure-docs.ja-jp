@@ -12,17 +12,17 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/15/2018
+ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9b72ca2a166e805d960eab47835f449e0f5b991e
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: d3ac0f6f8f6811117a515236de81eca1dc3d0e4d
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52889516"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54264140"
 ---
-# <a name="tutorial-remove-an-application-and-resources"></a>チュートリアル: アプリケーションとリソースを削除します
+# <a name="tutorial-remove-an-application-and-resources"></a>チュートリアル:アプリケーションとリソースを削除する
 
 このチュートリアルは、シリーズの第 4 部です。 [Service Fabric Mesh に対し事前に展開されていた](service-fabric-mesh-tutorial-template-deploy-app.md)実行中のアプリケーションを削除する方法について説明します。 
 

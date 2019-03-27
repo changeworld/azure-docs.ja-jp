@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d13f97ff7ec25fd638b92dc1c057afcaeecc2bf9
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 55e4ce4a59a498c5c22fe6e701e3140aa65e7a10
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434071"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895246"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Node.js を使用して Azure Event Hubs からイベントを受信する
 
@@ -49,7 +49,7 @@ GitHub から[サンプル](https://github.com/Azure/azure-event-hubs-node/tree/
 ## <a name="install-the-eventprocessorhost"></a>EventProcessorHost をインストールする
 Event Hubs モジュール用の EventProcessorHost をインストールします。 
 
-```nodejs
+```shell
 npm install @azure/event-processor-host
 ```
 
@@ -61,20 +61,20 @@ npm install @azure/event-processor-host
 3. 自分のイベント ハブの接続文字列、イベント ハブ名、およびストレージ エンドポイントを構成します。 Azure portal 内のイベント ハブ ページの **RootManageSharedAccessKey** の下にある **[接続文字列 – プライマリ]** からご自分のイベント ハブ用の接続文字列をコピーできます。 詳細な手順については、[接続文字列の取得](event-hubs-create.md#create-an-event-hubs-namespace)に関するページを参照してください。
 4. ご利用の Azure CLI で、**processor** フォルダー パスに移動します。 次のコマンドを実行して、ノード パッケージをインストールし、プロジェクトをビルドします。
 
-    ```nodejs
+    ```shell
     npm i
     npm run build
     ```
 5. 次のコマンドを実行して、ご利用のイベント プロセッサ ホストでイベントを受信します。
 
-    ```nodejs
+    ```shell
     node dist/examples/singleEph.js
     ```
 
 ## <a name="review-the-sample-code"></a>サンプル コードを確認する 
 Node.js を使用してイベント ハブからイベントを受信するサンプル コードを次に示します。 手動で sampleEph.js ファイルを作成して実行し、イベント ハブへのイベントを受信できます。 
 
-  ```nodejs
+  ```javascript
   const { EventProcessorHost, delay } = require("@azure/event-processor-host");
 
   const path = process.env.EVENTHUB_NAME;
@@ -83,18 +83,18 @@ Node.js を使用してイベント ハブからイベントを受信するサ�
   const storageContainerName = "test-container";
   
   async function main() {
-    // Create the Event Processo Host
+    // Create the Event Processor Host
     const eph = EventProcessorHost.createFromConnectionString(
       EventProcessorHost.createHostName("my-host"),
       storageCS,
       storageContainerName,
       ehCS,
       {
-        eventHubPath: path
-      },
-      onEphError: (error) => {
-        console.log("This handler will notify you of any internal errors that happen " +
-        "during partition and lease management: %O", error);
+        eventHubPath: path,
+        onEphError: (error) => {
+          console.log("This handler will notify you of any internal errors that happen " +
+          "during partition and lease management: %O", error);
+        }
       }
     );
     let count = 0;
@@ -127,7 +127,7 @@ Node.js を使用してイベント ハブからイベントを受信するサ�
 
 スクリプトを実行する前に、環境変数を設定することを忘れないでください。 次の例に示すように、コマンド ラインでこれを構成するか、[dotenv パッケージ](https://www.npmjs.com/package/dotenv#dotenv)を使用することができます。 
 
-```
+```shell
 // For windows
 set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
 set EVENTHUB_NAME="<your-event-hub-name>"

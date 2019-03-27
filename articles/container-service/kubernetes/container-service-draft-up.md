@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 42bd12b9479cd1b4f57a7f3ae73f3c32061fed65
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 36e765d439d616ec165a2b53d2044586e73cde76
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996499"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809216"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(非推奨) Azure Container Service と Azure Container Registry で Draft を使用して、アプリケーションを構築し Kubernetes にデプロイする
 
@@ -98,7 +98,7 @@ waiting for AAD role to propagate.done
 }
 ```
 
-クラスターが作成されたところで、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) コマンドを使用して資格情報をインポートできます。 現在、クラスターのローカル構成ファイルがあり、Helm と Draft が処理を行うためにこれが必要です。
+クラスターが作成されたところで、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes) コマンドを使用して資格情報をインポートできます。 現在、クラスターのローカル構成ファイルがあり、Helm と Draft が処理を行うためにこれが必要です。
 
 ## <a name="install-and-configure-draft"></a>Draft をインストールして構成する
 
@@ -191,7 +191,7 @@ stable/traefik  1.3.0   A Traefik based Kubernetes ingress controller w...
 
 $ helm install stable/traefik --name ingress
 ```
-ここで、`ingress` コントローラーにウォッチを設定して、デプロイ時に外部 IP 値をキャプチャするようにします。 この IP アドレスは、次のセクションで[デプロイ ドメインにマップされる](#wire-up-deployment-domain)ものです。
+ここで、`ingress` コントローラーにウォッチを設定して、デプロイ時に外部 IP 値をキャプチャするようにします。 この IP アドレスは、次のセクションでデプロイ ドメインにマップされるものです。
 
 ```bash
 $ kubectl get svc -w

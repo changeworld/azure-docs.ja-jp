@@ -2,17 +2,17 @@
 title: Azure Event Grid による配信と再試行
 description: Azure Event Grid がイベントをどのように配信し、未配信メッセージをどのように処理するかについて説明します。
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/10/2018
-ms.author: tomfitz
-ms.openlocfilehash: 4d53c33daefaadb4c58ce500a5d564af7988b606
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.date: 01/01/2019
+ms.author: spelluru
+ms.openlocfilehash: b69215a76b332db9b994827705d6bbc3b48af5c8
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077090"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54465515"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid によるメッセージの配信と再試行
 

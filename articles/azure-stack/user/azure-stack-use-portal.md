@@ -10,19 +10,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 02/25/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 4ec9affa78d1f244208a24bcf8a6603e867d4c08
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: 28b8971b61ff09346b2a2f89cd5ea8ae04e44079
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50086507"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819362"
 ---
 # <a name="use-the-azure-stack-portal"></a>Azure Stack ポータルの使用
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack ポータルを使用して、パブリック プランをサブスクライブしたり、これらのプランで提供されるサービスを使用したりできます。 グローバル Azure portal を使用したことがあれば、サイトのしくみには既になじみがあります。
 
@@ -39,6 +40,10 @@ Azure Stack オペレーター (サービス プロバイダーまたは組織�
 ダッシュボードには、タイルの既定のセットが含まれています。 **[ダッシュボードの編集]** を選択して既定のダッシュボードを変更したり、**[新しいダッシュボード]** を選択してカスタムのダッシュボードを作成したりできます。 タイルを追加または削除して、ダッシュボードを簡単にカスタマイズすることができます。 たとえば、[コンピューティング] タイルを追加するには、**[+ リソースの作成]** を選択します。 **[コンピューティング]** を右クリックし、**[ダッシュボードにピン留め]** を選択します。
 
 ![Azure Stack ユーザー ポータルの画面キャプチャ](media/azure-stack-use-portal/userportal.png)
+
+ダッシュボードを元の設定に復元するには:
+1.  **[ダッシュボードの編集]** を選択します。 
+2.  右クリックし、**[既定の状態にリセット]** を選択します。
 
 ## <a name="create-subscription-and-browse-available-resources"></a>サブスクリプションの作成と使用可能リソースの参照
 
@@ -60,7 +65,7 @@ Azure Stack オペレーター (サービス プロバイダーまたは組織�
 
     特に、作業を開始するにあたって次の記事を確認することをお勧めします。
 
-    - [主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成](azure-stack-considerations.md)
+    - [重要な考慮事項: Azure Stack でのサービスの使用またはアプリの作成](azure-stack-considerations.md)
     - ドキュメントの**サービスの使用**に関するセクションには、サービスごとの考慮事項の記事があります。 考慮事項に関するページでは、Azure で提供されるサービスと Azure Stack で提供される同じサービス間の相違点を説明しています。 例については、「[VM に関する考慮事項](azure-stack-vm-considerations.md)」を参照してください。 **サービスの使用**に関するセクションには、Azure Stack に固有であるその他の情報が含まれている場合があります。
 
       サービスの一般的なリファレンスとして Azure のドキュメントを使用できますが、これらの相違点を把握しておく必要があります。 **[Quickstart tutorials] (クイックスタート チュートリアル)** タイル上のドキュメント リンクが Azure のドキュメントを指していることを理解します。
@@ -73,4 +78,4 @@ Azure Stack Development Kit を使用している場合、[Azure Stack フォー
 
 ## <a name="next-steps"></a>次の手順
 
-[主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成](azure-stack-considerations.md)
+[重要な考慮事項: Azure Stack でのサービスの使用またはアプリの作成](azure-stack-considerations.md)

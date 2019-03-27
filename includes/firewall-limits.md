@@ -5,22 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 12/14/2018
+ms.date: 2/4/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 7d905550114bb76a0a091146b3972bab4a652022
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 9097f2b70a80431cf3302555ad2c835338cf8d8e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53429998"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736047"
 ---
 | リソース | 既定の制限 |
 | --- | --- |
 | データ処理量 |1000 TB/ファイアウォール/月<sup>1</sup> |
 |ルール|10k - すべての規則の種類が結合される|
 |グローバル ピアリング|サポートされていません。 リージョンごとに少なくとも 1 つのファイアウォールを展開する必要があります。|
-|1 つのネットワーク ルールの最大ポート|15<br>ポートの範囲 (例: 2 - 10) は 2 とカウントされます。
 |AzureFirewallSubnet の最小サイズ |/26|
 |ネットワークおよびアプリケーション ルールのポート範囲|0-64,000。 現在、この制限を緩和するように取り組んでいます。|
 |

@@ -4,18 +4,20 @@ description: Resource Manager テンプレートを使用して Windows 仮想�
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
-ms.component: metrics
-ms.openlocfilehash: a4581ec70c5d13f215b115c51493a1994ffa8fd4
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.subservice: metrics
+ms.openlocfilehash: 63b134ab9bfdac3617c845da7a14ee6b9234c84d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412896"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782022"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Resource Manager テンプレートを使用して Windows 仮想マシンのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Monitor [診断拡張機能](diagnostics-extension-overview.md)を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として実行されているゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、[多くの異なる場所](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)にテレメトリを送信できます。
 
@@ -27,9 +29,9 @@ Resource Manager テンプレートを初めて利用する場合は、[テン�
 
 ## <a name="prerequisites"></a>前提条件
 
-- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal) に登録する必要があります
+- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) に登録する必要があります
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) がインストールされている必要があります。
+- [Azure PowerShell](/powershell/azure) または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) がインストールされている必要があります。
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitor をデータ シンクとして設定する
@@ -237,17 +239,17 @@ Azure 診断拡張機能では、"データ シンク" と呼ばれる機能を�
 Resource Manager テンプレートをデプロイするために、Azure PowerShell を利用します。
 
 1. PowerShell を起動します。
-1. `Login-AzureRmAccount` を使用して、Azure にログインします。
-1. `Get-AzureRmSubscription` を使用して、サブスクリプションの一覧を取得します。
+1. `Login-AzAccount` を使用して、Azure にログインします。
+1. `Get-AzSubscription` を使用して、サブスクリプションの一覧を取得します。
 1. 仮想マシンを作成または更新するために使用しているサブスクリプションを設定します。
 
    ```PowerShell
-   Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>"
+   Select-AzSubscription -SubscriptionName "<Name of the subscription>"
    ```
 1. デプロイする VM の新しいリソース グループを作成するために、次のコマンドを実行します。
 
    ```PowerShell
-    New-AzureRmResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
+    New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
    > 必ず、[カスタム メトリックに対して有効になっている Azure リージョンを使用してください](metrics-custom-overview.md)。
@@ -257,7 +259,7 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
    > 既存の VM を更新するには、*-Mode Incremental* を以下のコマンドの末尾に追加するだけです。
 
    ```PowerShell
-   New-AzureRmResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
+   New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
    ```
 
 1. デプロイが成功した後、Azure portal に VM が表示されるようになります。この VM によって、メトリックが Azure Monitor に出力されます。
@@ -286,3 +288,4 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 ## <a name="next-steps"></a>次の手順
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
+

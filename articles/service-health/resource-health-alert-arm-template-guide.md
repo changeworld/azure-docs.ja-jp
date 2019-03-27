@@ -1,25 +1,17 @@
 ---
 title: Resource Manager テンプレートを使用して Azure Resource Health アラートを構成する | Microsoft Docs
 description: Azure リソースが利用不可になったときに通知するアラートをプログラムで作成します。
-author: shawntabrizi
-manager: scotthit
-editor: ''
-services: service-health
-documentationcenter: service-health
-ms.assetid: ''
+author: stephbaron
+ms.author: stbaron
+ms.topic: conceptual
 ms.service: service-health
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
 ms.date: 9/4/2018
-ms.author: shtabriz
-ms.openlocfilehash: dcc978c8e169cca2e2cd91a63ef1814a8c3bd87c
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7bfd94cb4940c33cb72a39827f67d04a5540ccdb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184102"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859693"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
 
@@ -31,7 +23,7 @@ Azure Resource Health では、Azure リソースの現在および過去の正�
 
 このページの指示に従うには、事前にいくつかの項目を設定する必要があります。
 
-1. [Azure PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (`AzureRm`) をインストールする必要があります。
+1. [Azure PowerShell モジュール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) (`AzureRm`) をインストールする必要があります。
 2. 通知を行うよう構成された[アクション グループを作成または再利用する](../azure-monitor/platform/action-groups.md)必要があります。
 
 ## <a name="instructions"></a>Instructions

@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory を使用して Azure Data Lake Storage Gen2 (プレビュー) にデータを読み込む
-description: Azure Data Factory を使用して Azure Data Lake Storage Gen2 (プレビュー) にデータをコピーします
+title: Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータを読み込む
+description: Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータをコピーします
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -9,18 +9,18 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 108ced5416eb7cd6826f4f96d4f62fd33e8f5653
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: ad6fd4a75ca139c4943ca0d079a2d041ccb46d09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52680856"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101093"
 ---
-# <a name="load-data-into-azure-data-lake-storage-gen2-preview-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 (プレビュー) にデータを読み込む
+# <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータを読み込む
 
-Azure Data Lake Storage Gen2 プレビューは、ビッグ データ分析専用の機能セットで、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
+Azure Data Lake Storage Gen2 は、ビッグ データ分析専用の機能セットであり、[Azure BLOB ストレージ](../storage/blobs/storage-blobs-introduction.md)に組み込まれます。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。
 
 Azure Data Factory は、フル マネージドのクラウドベースのデータ統合サービスです。 このサービスを使用して、オンプレミスとクラウドベースのデータストアの豊富なセットからのデータをレイクに入力し、分析ソリューションをビルドする際の時間を節約できます。 サポートされるコネクタの詳細な一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
 
@@ -77,12 +77,12 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
     
 4. **[Amazon S3 接続の指定]** ページで、次の手順を実行します。
 
-    1. **[アクセス キー ID]** の値を指定します。
-    2. **[シークレット アクセス キー]** の値を指定します。
-    3. **[テスト接続]** をクリックして設定を検証し、**[完了]** を選択します。
-    4. 新しい接続が作成されたことを確認します。 **[次へ]** を選択します。
+   1. **[アクセス キー ID]** の値を指定します。
+   2. **[シークレット アクセス キー]** の値を指定します。
+   3. **[テスト接続]** をクリックして設定を検証し、**[完了]** を選択します。
+   4. 新しい接続が作成されたことを確認します。 **[次へ]** を選択します。
    
-    ![Amazon S3 アカウントの指定](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
+      ![Amazon S3 アカウントの指定](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       
 5. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで、コピーするフォルダーとファイルを参照します。 フォルダーまたはファイルを選択し、**[選択]** を選択します。
 
@@ -92,7 +92,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
     ![出力フォルダーの指定](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
-7. **[配布先データ ストア]** ページで、**[+ 新しい接続の作成]** をクリックし、**[Azure Data Lake Storage Gen2 (Preview)]\(Azure Data Lake Storage Gen2 (プレビュー)\)** を選択して、**[続行]** を選択します。
+7. **[配布先データ ストア]** ページで、**[+ 新しい接続の作成]** をクリックし、**[Azure Data Lake Storage Gen2]** を選択して、**[続行]** を選択します。
 
     ![[Destination data store]\(コピー先データ ストア\) ページ](./media/load-azure-data-lake-storage-gen2/destination-data-storage-page.png)
 

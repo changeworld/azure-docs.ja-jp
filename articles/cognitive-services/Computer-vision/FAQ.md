@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services の Computer Vision API についてよく寄せられる質問とその回答を紹介します。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 3146650280af80923a4ed9cbb78a5ce6d43e5bce
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0155a601a0b1e1ed0a89773540d48ff79c38be73
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584277"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726296"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API についてよく寄せられる質問
 
@@ -55,7 +55,7 @@ ms.locfileid: "53584277"
 
 -----
 
-**質問:***手書き認識ではどの言語がサポートされますか?*
+**質問**: *手書き認識ではどの言語がサポートされますか?*
 
 **回答**: 現時点では、英語のみがサポートされています。
 

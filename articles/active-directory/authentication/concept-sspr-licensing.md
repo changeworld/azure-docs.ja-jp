@@ -3,19 +3,20 @@ title: Azure Active Directory セルフ サービス パスワードのライセ
 description: Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 01/11/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 6da0bddc3f6c90d0ecd3a554988f510e1063caac
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 13f8d04a5e59092ee5173e8c1a446385b71faac2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043041"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201586"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Azure AD のセルフ サービスによるパスワード リセットのライセンス要件
 
@@ -33,15 +34,15 @@ Azure Active Directory (Azure AD) には、Free、Basic、Premium P1、および
 * クラウド ユーザーに対するセルフサービスのパスワード リセット
    * 私は**クラウド限定ユーザー**で、自分のパスワードを忘れてしまいました。
       * 自分が把握しているパスワードに**リセット**したいと考えています。
-   * この機能は、Azure AD Basic、Premium P1、Premium P2 の各エディションに備わっています。
+   * この機能は、Azure AD の Basic、Premium P1、または Premium P2、あるいは Microsoft 365 Business に備わっています。
 
 * セルフサービスによるパスワードのリセット/変更/ロック解除 (**オンプレミスの書き戻しが可能**)
    * 私は**ハイブリッド ユーザー**です。オンプレミスの Active Directory ユーザー アカウントは、Azure AD Connect を使用して Azure AD アカウントと同期されています。 パスワードを変更したいと思っています/パスワードを忘れてしまいました/ロック アウトされてしまいました。
       * パスワードを変更するか、自分が把握しているパスワードにリセットするか、アカウントのロックを解除して、**なおかつ**、その変更をオンプレミスの Active Directory に同期させたいと考えています。
-   * この機能は、Azure AD Premium P1 と Azure AD Premium P2 の各エディションに備わっています。
+   * この機能は、Azure AD の Premium P1 または Premium P2、あるいは Microsoft 365 Business に備わっています。
 
 > [!WARNING]
-> スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービスによるパスワードのリセット/変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、Azure AD Premium P1 または Premium P2 を含むプランが必要になります。
+> スタンドアロンの Office 365 ライセンス プランでは、"*セルフサービスによるパスワードのリセット/変更/ロック解除 (オンプレミスの書き戻しが可能) をサポートしていません*"。この機能を動作させるには、Azure AD の Premium P1 または Premium P2、あるいは Microsoft 365 Business を含むプランが必要になります。
 >
 
 追加のライセンス情報 (コストを含む) については、以下のページをご覧ください。
@@ -50,6 +51,7 @@ Azure Active Directory (Azure AD) には、Free、Basic、Premium P1、および
 * [Azure Active Directory の機能と働き](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
+* [Microsoft 365 Business サービスの説明](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>グループまたはユーザー ベースのライセンスの有効化
 

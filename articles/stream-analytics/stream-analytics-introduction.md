@@ -10,12 +10,12 @@ ms.topic: overview
 ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: e14da7dff62d85c730034b620a6168b3d9b3dde7
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: d08fb915870355b49fafa91752cdd4264cbe6ad8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752692"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887541"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics とは
 
@@ -76,11 +76,18 @@ Azure Stream Analytics では、クラウドとインテリジェント エッ�
 
 クラウド サービスである Stream Analytics は、コストに最適化されています。 初期費用はかかりません。課金の対象となるのは、[利用ストリーミング ユニット](stream-analytics-streaming-unit-consumption.md)と処理したデータの量だけです。 コミットメントやクラスターのプロビジョニングは不要です。 実際のビジネス ニーズに応じてストリーミング ジョブをスケールアップしたりスケールダウンしたりすることができます。 
 
-## <a name="reliability"></a>信頼性 
+## <a name="mission-critical-ready"></a>ミッション クリティカル対応
+Azure Stream Analytics は世界中の複数のリージョンで使用でき、信頼性、セキュリティ、コンプライアンスの要件をサポートすることで、ミッション クリティカルなワークロードを実行するように設計されています。
+### <a name="reliability"></a>信頼性
+厳密には、Azure Stream Analytics で保証されるイベントの処理は 1 回、イベントの配信は 1 回以上となります。そのため、イベントが失われることはありません。 「[イベント配信の保証](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)」で説明されているように、選択した出力が提供される厳密に 1 回だけの処理が保証されます。 Azure Stream Analytics には、イベントの配信に失敗した場合のために、組み込みの回復機能が備わっています。 また、Stream Analytics では、ジョブの状態を保持するために組み込みのチェックポイント機能が提供され、反復可能な結果が提供されます。
 
-厳密には、Stream Analytics で保証されるイベントの処理は 1 回、イベントの配信は 1 回以上となります。そのため、イベントが失われることはありません。 イベントの配信に失敗した場合のために、組み込みの回復機能が備わっています。 また、Stream Analytics では、ジョブの状態を保持するために組み込みのチェックポイント機能が提供され、反復可能な結果が提供されます。
+Stream Analytics はマネージド サービスとして、分レベルで 99.9% の可用性のイベント処理が証されます。 詳細については、「[Stream Analytics の SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)」を参照してください。 
 
-Stream Analytics はマネージド サービスとして、イベント処理に 99.9% の可用性を保証します。 詳細については、「[Stream Analytics の SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)」を参照してください。 
+### <a name="security"></a>セキュリティ
+セキュリティに関しては、Azure Stream Analytics では、すべての着信および発信の通信が暗号化され、TLS 1.2 がサポートされています。 組み込みのチェックポイントも暗号化されます。 Stream Analytics では、すべての処理はメモリ内で実行されるため、受信データが格納されることはありません。 
+
+### <a name="compliance"></a>コンプライアンス
+「[Overview of Microsoft Azure compliance (Microsoft Azure のコンプライアンスの概要)](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」で説明されているように、Azure Stream Analytics は複数のコンプライアンス認定に従っています。 
 
 ## <a name="performance"></a>パフォーマンス
 

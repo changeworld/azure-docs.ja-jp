@@ -10,16 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 1/14/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: bcb56789b2781cd1d081af8c112222a1f1269a74
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: ad9d5057c18d316dcf3254dc57a3184c1b75fc50
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304892"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780841"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>Microsoft のソフトウェア更新プログラムの検証
 
@@ -27,25 +28,35 @@ ms.locfileid: "54304892"
 
 Microsoft は、Azure Stack ソフトウェアの更新プログラムを定期的にリリースします。 これらの更新プログラムは、Azure Stack 共同エンジニアリング パートナーに提供されます。 更新プログラムの一般公開より前に提供されます。 独自のソリューションに対して更新プログラムのチェックを行い、Microsoft にフィードバックを返すことができます。
 
-[!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
+Azure Stack を対象とした Microsoft のソフトウェア更新プログラムは名前付け規則を使って指定されます。たとえば 1803 は、2018 年 3 月の更新プログラムであることを示します。 Azure Stack の更新ポリシー、周期、リリース ノートについては、「[Azure Stack サービス ポリシー](https://docs.microsoft.com/azure/azure-stack/azure-stack-servicing-policy)」を参照してください。
 
-## <a name="apply-monthly-update"></a>毎月の更新プログラムの適用
+## <a name="prerequisites"></a>前提条件
 
-[!INCLUDE [azure-stack-vaas-workflow-section_update-azs](includes/azure-stack-vaas-workflow-section_update-azs.md)]
+VaaS で月次更新プログラムのプロセスを実行する前に、以下の項目に理解しておく必要があります。
 
-## <a name="create-a-workflow"></a>ワークフローを作成する
+- [サービスとしての検証の主要概念](azure-stack-vaas-key-concepts.md)
+- [対話型機能検証テスト](azure-stack-vaas-interactive-feature-verification.md)
 
-更新プログラムの検証では、**ソリューションの検証**と同じワークフローを使用します。
+## <a name="required-tests"></a>必須のテスト
 
-## <a name="run-tests"></a>テストの実行
+月次ソフトウェア検証のためには、以下のテストを以下の順序で実行する必要があります。
 
-1. 更新プログラムの検証では、**ソリューションの検証**と同じワークフローを使用します。 
+1. Monthly Azure Stack Update Verification (月次 Azure Stack 更新プログラムの検証)
+2. Cloud Simulation Engine (クラウド シミュレーション エンジン)
 
-2. [ソリューションの検証テストの実行](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests)に関する手順に従ってください。 代わりに、以下のテストを選択します。
-    - Monthly Azure Stack Update Verification (月次 Azure Stack 更新プログラムの検証)
-    - Cloud Simulation Engine (クラウド シミュレーション エンジン)
+## <a name="validating-software-updates"></a>ソフトウェア更新プログラムの検証
 
-更新プログラムの検証のためにパッケージの署名を要求する必要はありません。
+1. 新しい**パッケージの検証**ワークフローを作成します。
+1. 上記の必須テストについては、「[Run Package Validation tests (パッケージ検証テストの実行)](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests)」の手順に従ってください。 **Monthly Azure Stack Update Verification (月次 Azure Stack 更新プログラムの検証)** テストの詳細な手順については、後のセクションを参照してください。
+
+### <a name="apply-the-monthly-update"></a>毎月の更新プログラムの適用
+
+1. テストの実行対象のエージェントを選択します。
+1. **Monthly Azure Stack Update Verification (月次 Azure Stack 更新プログラムの検証)** をスケジュールします。
+1. スタンプに現在デプロイされている OEM 拡張パッケージの場所と、更新中に適用される OEM 拡張パッケージの場所を指定します。 これらのパッケージの URL を構成するには、[検証用のパッケージの管理](azure-stack-vaas-validate-oem-package.md#managing-packages-for-validation)に関するページを参照してください。
+1. 選択したエージェントの UI で、手順を実行します。
+
+質問や懸念事項がある場合は、[VaaS ヘルプ](mailto:vaashelp@microsoft.com)にお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
 

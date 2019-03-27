@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: コンテキストに基づいて関連するデータを検索します。 たとえば、あるビルやオフィスから別のビルやオフィスへの物理的な移動の出発地と到着地が関連します。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 91a9646e88adbfaf6d3c3fc0b06b341c647e773f
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: c17a74c81d9c9d2ac3f585ab17f0b7d2acc628f6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753695"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873926"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>チュートリアル:コンテキストが関連するデータを発話から抽出する
 
@@ -74,7 +74,7 @@ ms.locfileid: "53753695"
     |Steve Standish をサンディエゴからベルビューへ転任させる |
     |カンザスシティの Tanner Thompson を昇進させてシカゴへ移す|
 
-    [ ![MoveEmployee 意図で新しい発話が指定された LUIS のスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
+    [![MoveEmployee 意図で新しい発話が指定された LUIS のスクリーンショット](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
 
 ## <a name="create-a-location-entity"></a>場所エンティティを作成する
 発話で出発地と目的地にラベルを付けて、LUIS に場所を認識させる必要があります。 トークン (未加工) のビューで発話を表示する必要がある場合は、発話の上にあるバーで、**[Entities view]\(エンティティ ビュー\)** というラベルが付いた切り替えコントロールを選択します。 スイッチを切り替えると、コントロールのラベルは **[Tokens View]\(トークン ビュー)** になります。
@@ -91,7 +91,7 @@ move John W. Smith leaving Seattle headed to Dallas
 
 1. 発話 `move John W. Smith leaving Seattle headed to Dallas` において、単語 `Seattle` を選びます。 上部にテキスト ボックスがあるドロップダウン メニューが表示されます。 テキスト ボックスにエンティティ名「`Location`」を入力し、を選択し、ドロップダウン メニューで **[Create new entity]\(新しいエンティティの作成\)** を選択します。 
 
-    [![意図ページの新しいエンティティ作成のスクリーンショット](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png "意図ページの新しいエンティティ作成のスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/create-location-hierarchical-entity-from-example-utterance.png#lightbox)
+    [![意図ページの新しいエンティティ作成のスクリーンショット](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-1.png "意図ページの新しいエンティティ作成のスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-1.png#lightbox)
 
 1. ポップアップ ウィンドウで、**[Hierarchical]\(階層\)** エンティティ タイプを選択し、子エンティティとして `Origin` と `Destination` を選択します。 **[完了]** を選択します。
 
@@ -99,7 +99,7 @@ move John W. Smith leaving Seattle headed to Dallas
 
 1. LUIS には用語が出発地か、到着地か、どちらでもないかわからないので、`Seattle` のラベルは `Location` とマークされています。 `Seattle` を選択し、**[Location]\(場所\)** を選択した後、右側のメニューに従って `Origin` を選択します。
 
-    [![場所のエンティティの子を変更するためのエンティティ ラベル付けのポップアップ ダイアログのスクリーンショット](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png "場所のエンティティの子を変更するためのエンティティ ラベル付けのポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/choose-hierarchical-child-entity-from-example-utterance.png#lightbox)
+    [![場所のエンティティの子を変更するためのエンティティ ラベル付けのポップアップ ダイアログのスクリーンショット](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-2.png "場所のエンティティの子を変更するためのエンティティ ラベル付けのポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-intent-and-hier-entity/tutorial-hierarichical-entity-labeling-2.png#lightbox)
 
 1. 他のすべての発話内の他の場所にラベルを付けます。 すべての場所にマークが付くと、発話は次のように表示されます。 
 

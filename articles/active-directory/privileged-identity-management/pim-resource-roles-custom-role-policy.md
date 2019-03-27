@@ -10,15 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.component: pim
+ms.subservice: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: b01e785ac85c71b2982561e8b5e118775750fc69
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f2767d817d6f15d38aeef4c669b2b11c3d8a8a6b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189875"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168019"
 ---
 # <a name="use-custom-roles-for-azure-resources-in-pim"></a>PIM で Azure リソースにカスタム ロールを使用する
 

@@ -3,19 +3,19 @@ title: Azure Active Directory B2C でカスタム ポリシーを使用してア
 description: Azure Active Directory B2C でカスタム ポリシーを使用してユーザー インターフェイスをカスタマイズする方法について説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: 1c2f7b46daf7b96d3a6f47dac647d5ed90461e8e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.subservice: B2C
+ms.openlocfilehash: 4cf7c0cdd066879edccf7869ae3c8de0191f1d2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156257"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818874"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -86,7 +86,7 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 5. **$root** をクリックして、新しいコンテナーを開きます。
 6. **[アップロード]** をクリックします。
 7. **[ファイルの選択]** の横にあるフォルダー アイコンをクリックします。
-8. 先ほど「[ページ UI のカスタマイズ](#the-page-ui-customization-feature)」セクションで作成した **customize-ui.html** に移動します。
+8. 先ほど「ページ UI のカスタマイズ」セクションで作成した **customize-ui.html** に移動します。
 9. **[アップロード]** をクリックします。
 10. アップロードした customize-ui.html BLOB を選択します。
 11. **[URL]** の横にある **[コピー]** をクリックします。
@@ -175,7 +175,7 @@ sample_templates/wingtip フォルダーには、次の HTML ファイルが含�
 | *unified.html* | このファイルは、統合されたサインアップ ページまたはサインイン ページのテンプレートとして使用します。 |
 | *updateprofile.html* | このファイルは、プロファイルの更新ページのテンプレートとして使用します。 |
 
-「[サインアップまたはサインイン カスタム ポリシーを変更する](#modify-your-sign-up-or-sign-in-custom-policy)」セクションでは、`api.idpselections` のコンテンツ定義を構成しました。 次の表には、Azure AD B2C Identity Experience Framework で検出されるすべてのコンテンツ定義 ID とその説明を示します。
+「サインアップまたはサインイン カスタム ポリシーを変更する」セクションでは、`api.idpselections` のコンテンツ定義を構成しました。 次の表には、Azure AD B2C Identity Experience Framework で検出されるすべてのコンテンツ定義 ID とその説明を示します。
 
 | コンテンツ定義 ID | 説明 | 
 |-----------------------|-------------|

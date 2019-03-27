@@ -4,16 +4,16 @@ description: REST API を使用して Azure リソースのカスタム メト�
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
-ms.component: metrics
-ms.openlocfilehash: 4765ea62623278b4ee125c9d7201492ec887ef7f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: metrics
+ms.openlocfilehash: c7ec3ba960929250f2d23d09b9a5ab06e3f6cd38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095417"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -78,13 +78,13 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
     ``` 
 
 1. コマンド プロンプト ウィンドウで、メトリック データを送信します。 
-    - **azureRegion**。 メトリック出力対象のリソースのデプロイ リージョンと一致する必要があります。 
-    - **resourceID**。  メトリック追跡対象の Azure リソースのリソース ID。  
-    - **AccessToken**。 以前に取得したトークンを貼り付けます。
+   - **azureRegion**。 メトリック出力対象のリソースのデプロイ リージョンと一致する必要があります。 
+   - **resourceID**。  メトリック追跡対象の Azure リソースのリソース ID。  
+   - **AccessToken**。 以前に取得したトークンを貼り付けます。
 
-    ```Shell 
-    curl -X POST curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
-    ```
+     ```Shell 
+     curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
+     ```
 1. JSON ファイルのタイムスタンプと値を変更します。 
 1. 前の 2 つの手順を何回か繰り返して、数分間のデータを用意します。
 
@@ -119,3 +119,4 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
  
 ## <a name="next-steps"></a>次の手順
 - [カスタム メトリック](../../azure-monitor/platform/metrics-custom-overview.md)の詳細を確認します。
+

@@ -3,17 +3,17 @@ title: Azure Automation アカウントで監視タスクを作成する
 description: Azure Automation アカウントで監視タスクを作成してフォルダーに作成された新しいファイルを監視する方法を説明します。
 services: automation
 ms.service: automation
-ms.component: process-automation
+ms.subservice: process-automation
 author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 2786de150307b21b06b624914d5fea55ded6e3c7
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 7d7ebc7493ff8e272e35abafeedd8fbc52b986ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249817"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002154"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>ローカル マシンでのファイル変更を追跡する Azure Automation 監視タスクを作成する
 
@@ -89,8 +89,8 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 1. **[アクションを構成]** を選択し、“Process-NewFile” Runbook を選びます。
 1. パラメーターに次の値を入力します。
 
-   ***EVENTDATA** - 空白のままにします。 監視 Runbook からデータが渡されます。  
-   ***Run Settings** - この Runbook は Automation サービスで実行するので、Azure のままにします。
+   * **EVENTDATA** - 空白のままにします。 監視 Runbook からデータが渡されます。  
+   * **Run Settings** - この Runbook は Automation サービスで実行するので、Azure のままにします。
 
 1. **[OK]** をクリックし、[監視] ページに戻るように選択します。
 1. **[OK]** をクリックして監視タスクを作成します。
@@ -103,13 +103,13 @@ Azure Automation では、PowerShell Runbook で監視タスクを使用して�
 
 ハイブリッド ワーカーにリモート接続します。 **PowerShell** を開き、テスト対象のフォルダーにテスト ファイルを作成します。
   
-   ```PowerShell-interactive
-   New-Item -Name ExampleFile1.txt
-   ```
+```azurepowerShell-interactive
+New-Item -Name ExampleFile1.txt
+```
 
 次の例で、想定される出力を示します。
 
-```
+```output
     Directory: D:\examplefiles
 
 
@@ -129,7 +129,7 @@ Mode                LastWriteTime         Length Name
 
 新しいファイルが検出された場合に想定される出力は、次の例のようになります。
 
-```
+```output
 Message is Process new file...
 
 
@@ -153,3 +153,4 @@ Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 
 > [!div class="nextstepaction"]
 > [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
+

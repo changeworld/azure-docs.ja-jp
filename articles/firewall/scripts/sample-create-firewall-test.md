@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: 5100c5723cf3442520d969e3db6aa65439855551
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3b55767a4375d41b1dc9c4357ca25e562a3cfabe
+ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230881"
+ms.lasthandoff: 01/22/2019
+ms.locfileid: "54438254"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Azure Firewall のテスト環境を作成する
 
@@ -32,7 +32,7 @@ PowerShell をローカルで実行する場合、このスクリプトでは最
 > [!NOTE]
 >他の Windows バージョンでは、使用する前に `PowerShellGet` をインストールする必要があります。 `Get-Module -Name PowerShellGet -ListAvailable | Select-Object -Property Name,Version,Path` を実行すると、このツールがシステムにインストールされているかどうかを確認できます。 出力が空白の場合は、最新の [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616) をインストールする必要があります。
 
-詳細については、「[Install Azure PowerShell on Windows with PowerShellGet (PowerShellGet を使用した Windows への Azure PowerShell のインストール)](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0)」を参照してください
+詳細については、「[Install Azure PowerShell on Windows with PowerShellGet (PowerShellGet を使用した Windows への Azure PowerShell のインストール)](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.4.0)」を参照してください
 
 Web Platform Installer を使用してインストールされた既存の Azure PowerShell は PowerShellGet のインストールと競合するため、削除する必要があります。
 

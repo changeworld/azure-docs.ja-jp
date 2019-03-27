@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/08/2018
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 3f30b46138fc7753a1a4282497cbb06b6a4defbc
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: befef76e19640683ba3219374702a049bdecb43b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608359"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58184174"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>クイック スタート:クラウドベースのリモート監視ソリューションを試す
 
@@ -45,7 +45,7 @@ Azure アカウントの資格情報を使用して、[azureiotsolutions.com](ht
 ソリューション アクセラレータのデプロイに使用する**サブスクリプション**と**リージョン**を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは**米国東部**を使用します。
 **[Visual Studio Enterprise]** を選択できますが、そのためには[全体管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
 
-デプロイを開始するには、**[ソリューションの作成]** をクリックします。 このプロセスを実行するには、少なくとも 5 分かかります。
+デプロイを開始するには、**[作成]** をクリックします。 このプロセスを実行するには、少なくとも 5 分かかります。
 
 ![リモート監視ソリューションの詳細](./media/quickstart-remote-monitoring-deploy/createform.png)
 
@@ -57,7 +57,7 @@ Azure サブスクリプションへのデプロイが完了すると、ソリ�
 
 ![新しいソリューションの選択](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-表示されるパネルで、リモート監視ソリューション アクセラレータに関する情報を確認できます。 **[ソリューション ダッシュボード]** を選択して、リモート監視ソリューション アクセラレータを表示します。
+表示されるパネルで、リモート監視ソリューション アクセラレータに関する情報を確認できます。 **[Go to your solution accelerator]\(ソリューション アクセラレータに移動\)** を選択して、リモート監視ソリューション アクセラレータを表示します。
 
 ![ソリューション パネル](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 
@@ -135,6 +135,9 @@ Contoso のオペレーターは、ソリューション ダッシュボード�
 
 ![ソリューションを削除する](media/quickstart-remote-monitoring-deploy/deletesolution.png)
 
+
+![ソリューションを削除する](media/quickstart-remote-monitoring-deploy/deletesolution-page.png)
+
 ## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、リモート監視ソリューション アクセラレータをデプロイし、既定の Contoso デプロイのシミュレートされたデバイスを使用して監視タスクを完了しました。
@@ -142,4 +145,4 @@ Contoso のオペレーターは、ソリューション ダッシュボード�
 シミュレートされたデバイスを使ったソリューション アクセラレータについて詳しくは、引き続き次のチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: IoT デバイスの監視](iot-accelerators-remote-monitoring-monitor.md)
+> [チュートリアル:IoT デバイスの監視](iot-accelerators-remote-monitoring-monitor.md)

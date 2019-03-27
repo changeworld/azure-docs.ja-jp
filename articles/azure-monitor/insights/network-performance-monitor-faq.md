@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: c792881b02eba7207b20c4b4807d8afbc1adb87f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543990"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734557"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -134,7 +134,7 @@ NPM は、[サポートされるリージョン](../../azure-monitor/insights/ne
 NPM は、[サポートされるリージョン](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)のいずれかでホストされているワークスペースから、世界のあらゆる地域でのサービスへの接続を監視できます
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>NPM の ExpressRoute モニターではどのリージョンがサポートされていますか。
-NPM は、Azure のすべてのリージョンにある ExpressRoute 回線を監視できます。 NPM をオンボードする場合、[サポートされているリージョン](/azure/expressroute/how-to-npm#regions)のいずれかでホストする必要がある Log Analytics ワークスペースが必要です
+NPM は、Azure のすべてのリージョンにある ExpressRoute 回線を監視できます。 NPM をオンボードする場合、[サポートされているリージョン](/azure/expressroute/how-to-npm)のいずれかでホストする必要がある Log Analytics ワークスペースが必要です
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 

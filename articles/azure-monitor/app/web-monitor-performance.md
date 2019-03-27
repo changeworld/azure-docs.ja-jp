@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 6f34e1a611ddb477f38a703a49aeb8a178157671
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 8f5a0a22ecea0b5df0f4108984b2a65d4add2bf8
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120276"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301776"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
 
@@ -35,7 +35,7 @@ Application Insights は、Java と ASP.NET の Web アプリケーションと�
 * [ASP.NET Web アプリ](../../azure-monitor/app/asp-net.md)
   * [例外の監視を追加する](../../azure-monitor/app/asp-net-exceptions.md)
   * [依存関係の監視を追加する](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [J2EE Web アプリ](../../azure-monitor/app/java-get-started.md)
+* [Java EE Web アプリ](../../azure-monitor/app/java-get-started.md)
   * [依存関係の監視を追加する](../../azure-monitor/app/java-agent.md)
 
 ## <a name="view"></a>パフォーマンス メトリックの監視

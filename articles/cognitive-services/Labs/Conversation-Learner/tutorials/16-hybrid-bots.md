@@ -6,16 +6,16 @@ services: cognitive-services
 author: mattm
 manager: larsliden
 ms.service: cognitive-services
-ms.component: conversation-learner
+ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0e2a9918108012e0d0ef1defbff044d7ab9bd83d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: b90fc42aa56bfc813ec464670336dea75cff0f0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53796617"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117440"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>Conversation Learner を他のボット構築技術と共に使用する方法
 
@@ -119,11 +119,11 @@ Conversation Learner モデルによって処理された内容しか表示で�
 2. 「hello」と入力します。  `isOpen` 値が設定されていないため、ボットは「申し訳ありません。閉店中です」と答えてセッションを終了します。
 
 #### <a name="scenario-2-store-is-open"></a>シナリオ 2:ストアが開いている
-3. 「open store」と入力します。  これは `isOpen` を true に設定します。
-4. 「shop」と入力します。
-5. 「hello」と入力します。  `isOpen` 値が true に設定されているため、ボットは「何をお求めですか?」と答えます。
-6. 「chair」と入力します。 'chair' が CL メモリにエンティティ `purchaseItem` として保存されます。 セッション終了コールバックが呼び出され、コールバックはこの値を会話ストアにコピーします。
-7. 「history」と入力します。  最後の `purchaseItem` が chair だったので、ボットは「お客様は椅子を購入しました」と答えます。
+1. 「open store」と入力します。  これは `isOpen` を true に設定します。
+1. 「shop」と入力します。
+1. 「hello」と入力します。  `isOpen` 値が true に設定されているため、ボットは「何をお求めですか?」と答えます。
+1. 「chair」と入力します。 'chair' が CL メモリにエンティティ `purchaseItem` として保存されます。 セッション終了コールバックが呼び出され、コールバックはこの値を会話ストアにコピーします。
+1. 「history」と入力します。  最後の `purchaseItem` が chair だったので、ボットは「お客様は椅子を購入しました」と答えます。
 
 ## <a name="conclusion"></a>まとめ
 

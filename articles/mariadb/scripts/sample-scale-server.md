@@ -42,4 +42,4 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 ## <a name="next-steps"></a>次の手順
 - Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)
 - さらに他のスクリプトも試す: [Azure Database for MariaDB 用の Azure CLI サンプル](../sample-scripts-azure-cli.md)
-- スケーリングの詳細については、[価格の詳細](../concepts-pricing-tiers.md)に関するページを参照してください。
+- スケーリングの詳細については、[価格の詳細]\(../concepts-pricing-tiers.md)に関するページを参照してください。

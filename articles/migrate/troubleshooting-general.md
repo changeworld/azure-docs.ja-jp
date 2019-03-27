@@ -4,14 +4,14 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: 9a6b40aa86d4d81482d9c3724f0e230e0b811276
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: bb9d22b45011f5156a63444ec8e1651f148993b6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189498"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751907"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -28,6 +28,18 @@ ms.locfileid: "54189498"
    ![検出の停止](./media/troubleshooting-general/stop-discovery.png)
 
 - VM の削除:アプライアンスの設計方法のため、検出を停止して開始しても VM の削除は反映されません。 これは、後続の検出のデータが古い検出に追加され、上書きされないためです。 この場合、VM をグループから削除し、評価を再計算して、ポータルの VM は単に無視することができます。
+
+### <a name="deletion-of-azure-migrate-projects-and-associated-log-analytics-workspace"></a>Azure Migrate プロジェクトと関連 Log Analytics ワークスペースの削除
+
+Azure Migrate プロジェクトを削除すると、移行プロジェクトと共にグループと評価がすべて削除されます。 ただし、Log Analytics ワークスペースをプロジェクトに関連付けている場合は、Log Analytics ワークスペースが自動的に削除されることはありません。 これは、同じ Log Analytics ワークスペースが複数のユース ケースで使用される可能性があるためです。 Log Analytics ワークスペースも削除する場合、それは手動で行う必要があります。
+
+1. プロジェクトに関連付けられている Log Analytics ワークスペースを参照します。
+   a. 移行プロジェクトをまだ削除していない場合、[Essentials] セクションのプロジェクト概要ページにワークスペースのリンクがあります。
+
+   ![LA ワークスペース](./media/troubleshooting-general/LA-workspace.png)
+
+   b. 移行プロジェクトを既に削除している場合、Azure portal の左側ウィンドウにある **[リソース グループ]** をクリックし、ワークスペースが作成されたリソース グループに移動し、それを参照します。
+2. [こちらの記事](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace)にある指示に従い、ワークスペースを削除します。
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>"*要求にはユーザー ID ヘッダーが含まれていなければなりません*" というエラーが表示されて、移行プロジェクトの作成が失敗しました
 
@@ -80,13 +92,13 @@ esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/conto
 
    ![プロジェクトの場所](./media/troubleshooting-general/geography-location.png)
 
-## <a name="collector-errors"></a>コレクターのエラー
+## <a name="collector-issues"></a>コレクターの問題
 
 ### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Azure Migrate Collector のデプロイが次のエラーで失敗しました: 指定されたマニフェスト ファイルが無効です: 無効な OVF マニフェストのエントリ。
 
 1. ハッシュ値をチェックして、Azure Migrate Collector の OVA ファイルが正常にダウンロードされているかどうかを確認します。 ハッシュ値の確認については、こちらの[記事](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)を参照してください。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
 2. それでも失敗する場合、および、OVF をデプロイするのに VMware vSphere クライアントを使用している場合は、vSphere Web クライアントでデプロイしてみてください。 それでも失敗する場合は、別の Web ブラウザーをお試しください。
-3. vSphere Web クライアントを使用しており、vCenter Server 6.5 にそれをデプロイしようとしている場合は、次の手順に従って ESXi ホストに直接 OVA をデプロイしてみてください。
+3. vSphere Web クライアントを使用しており、vCenter Server 6.5 または 6.7 にそれをデプロイしようとしている場合は、次の手順に従って ESXi ホストに直接 OVA をデプロイしてみてください。
   - Web クライアント (https:// <*ホスト IP アドレス*>/ui) を使用して、(vCenter Server ではなく) ESXi ホストに直接接続する
   - [ホーム] > [インベントリ] に移動する
   - [ファイル] > [OVF テンプレートのデプロイ] > [OVA を参照] をクリックして、デプロイを完了する
@@ -105,7 +117,7 @@ URL ベースのファイアウォール プロキシを使用して送信接続
 
 **証明書の検証に失敗したためコレクターがインターネットに接続できない**
 
-この問題は、インターネットへの接続にインターセプト プロキシを使用していて、かつプロキシの証明書をまだコレクター VM にインポートしていない場合に発生することがあります。 プロキシの証明書は、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity)に説明されている手順でインポートできます。
+この問題は、インターネットへの接続にインターセプト プロキシを使用していて、かつプロキシの証明書をまだコレクター VM にインポートしていない場合に発生することがあります。 プロキシの証明書は、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector)に説明されている手順でインポートできます。
 
 **ポータルからコピーしたプロジェクト ID とキーを使用しても、コレクターがプロジェクトに接続できません。**
 
@@ -141,14 +153,26 @@ PowerCLI は、Azure Migrate Collector によってダウンロードされ、�
 VMware PowerCLI のインストールに関する問題が原因で発生する可能性があります。 この問題を解決するには、以下の手順に従ってください。
 
 1. コレクターアプライアンスのバージョンが最新でない場合は、コレクターを[最新バージョン](https://aka.ms/migrate/col/checkforupdates)にアップグレードして、問題が解決されるかどうかを確認します。
-2. 既にコレクターの最新バージョンを使用している場合は、[VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) を手動でインストールして、問題が解決されるかどうかを確認します。
-3. 上記によって問題が解決されなければ、C:\Program Files\ProfilerService フォルダーに移動し、フォルダーにある VMware.dll  と VimService65.dll ファイルを削除し、Windows Services Manager で 「Azure Migrate Collector」サービスを再起動します ( Windows Services Manager を開くには、「実行」を開き、 「services.msc」を入力する)。
+2. 最新のコレクター バージョンを既にお持ちの場合は、次の手順に従って PowerCLI をクリーン インストールします。
+
+   a. アプライアンスで Web ブラウザーを閉じます。
+
+   b. Windows サービス マネージャーに移動して、'Azure Migrate Collector' サービスを停止します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[停止] をクリックします。
+
+   c. 次の場所から 'VMware' で始まるすべてのフォルダーを削除します。C:\Program Files\WindowsPowerShell\Modules  
+        C:\Program Files (x86)\WindowsPowerShell\Modules
+
+   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Windows サービス マネージャーで 'Azure Migrate Collector' サービスを再開します (Windows サービス マネージャーを開くには、[ファイル名を指定して実行] を開き、「services.msc」と入力します)。 Azure Migrate Collector サービスを右クリックし、[開始] をクリックします。
+   
+   e. デスクトップのショートカット [コレクターの実行] をダブルクリックしてコレクター アプリケーションを起動します。 コレクター アプリケーションでは、PowerCLI に必要なバージョンのダウンロードとインストールが自動的に実行されます。
+
+3. 上の方法で問題が解決しない場合は、手動で [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) をインストールし、問題が解決されるかどうかを確認します。
 
 ### <a name="error-unabletoconnecttoserver"></a>エラー UnableToConnectToServer
 
 vCenter Server "Servername.com:9443" に接続できません。原因となったエラー: メッセージを受信できる https://Servername.com:9443/sdk でリッスンしているエンドポイントがありませんでした。
 
-コレクター アプライアンスの最新バージョンが実行されているかどうかを確認します。そうでない場合は、アプライアンスを[最新バージョン](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector)にアップグレードしてください。
+コレクター アプライアンスの最新バージョンが実行されているかどうかを確認します。そうでない場合は、アプライアンスを[最新バージョン](https://docs.microsoft.com/azure/migrate/concepts-collector)にアップグレードしてください。
 
 最新バージョンでも引き続き問題が発生する場合は、指定された vCenter Server 名をコレクター マシンで解決できないか、または指定されたポートが間違っている可能性があります。 ポートが指定されていない場合、コレクターは既定でポート番号 443 に接続を試みます。
 
@@ -156,6 +180,17 @@ vCenter Server "Servername.com:9443" に接続できません。原因となっ�
 2. 手順 1. が失敗した場合は、IP アドレスで vCenter サーバーへの接続を再試行してください。
 3. 正しいポート番号を識別して vCenter に接続します。
 4. 最後に、vCenter サーバーが起動されていて実行中かどうかを確認します。
+
+### <a name="antivirus-exclusions"></a>ウイルス対策の除外
+
+Azure Migrate アプライアンスを強化するには、アプライアンスの次のフォルダーをウイルス対策スキャンから除外する必要があります。
+
+- Azure Migrate サービスのバイナリを含むフォルダー。 サブフォルダーはすべて除外します。
+  %ProgramFiles%\ProfilerService  
+- Azure Migrate Web アプリケーション。 サブフォルダーはすべて除外します。
+  %SystemDrive%\inetpub\wwwroot
+- データベースのローカル キャッシュとログ ファイル。 Azure Migrate サービスでは、このフォルダーへの読み取り/書き込みアクセスが必要です。
+  %SystemDrive%\Profiler
 
 ## <a name="dependency-visualization-issues"></a>依存関係の視覚化の問題
 
@@ -187,7 +222,7 @@ MMA でサポートされる Linux オペレーティング システムの一�
 依存関係エージェントでサポートされる Linux オペレーティング システムの一覧は[ここ](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)にあります。
 
 ### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>1 時間以上経っても、Azure Migrate で依存関係を視覚化することができません。
-Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間です。 Azure Migrate を使用すると、過去 1 か月までの特定の日付に戻ることができますが、依存関係を視覚化できる期間は最大 1 時間です。 たとえば、依存関係マップにある期間機能を使用して、昨日の依存関係を表示することが可能ですが、1 時間ウィンドウの表示のみできます。
+Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間です。 Azure Migrate を使用すると、過去 1 か月までの特定の日付に戻ることができますが、依存関係を視覚化できる期間は最大 1 時間です。 たとえば、依存関係マップにある期間機能を使用して、昨日の依存関係を表示することが可能ですが、1 時間ウィンドウの表示のみできます。 ただし、Log Analytics を使用すると、長期間にわたって[依存関係データのクエリを実行する](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics)ことができます。
 
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>10 個を超える VM を持つグループの依存関係の視覚化ができません。
 最大 10 個 の VM を含むグループについて[依存関係を視覚化](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)できます。グループに含まれる VM が 10 個 を超える場合は、そのグループを小さなグループに分割して、依存関係を視覚化することをお勧めします。
@@ -263,7 +298,7 @@ Windows イベント トレーシング を収集するには、次の操作を�
 | 751       | UnableToConnectToServer        | vCenter Server '%Name;' に接続できません。原因となったエラー: %ErrorMessage;     | 詳細については、エラー メッセージを確認してください。                                                             | 問題を解決してから、操作をやり直してください。                                                                                                           |
 | 752       | InvalidvCenterEndpoint         | サーバー '%Name;' は vCenter Server ではありません。                                  | vCenter Server の詳細を指定してください。                                                                       | 正しい vCenter Server の詳細を指定してから、操作を再試行してください。                                                                                   |
 | 753       | InvalidLoginCredentials        | 次のエラーが原因で vCenter Server '%Name;' に接続できません: %ErrorMessage; | ログイン資格情報が無効であるため、vCenter Server への接続に失敗しました。                             | 指定されたログイン資格情報が正しいことを確認してください。                                                                                    |
-| 754       | NoPerfDataAvaialable           | パフォーマンス データは利用できません。                                               | vCenter Server で統計情報のレベルを確認してください。 パフォーマンス データを利用するには 3 に設定されている必要があります。 | 統計情報のレベルを 3 (5 分、30 分、2 時間間隔) に変更し、少なくとも 1 日待ってからやり直してください。                   |
+| 754       | NoPerfDataAvailable           | パフォーマンス データは利用できません。                                               | vCenter Server で統計情報のレベルを確認してください。 パフォーマンス データを利用するには 3 に設定されている必要があります。 | 統計情報のレベルを 3 (5 分、30 分、2 時間間隔) に変更し、少なくとも 1 日待ってからやり直してください。                   |
 | 756       | NullInstanceUUID               | InstanceUUID が null のマシンを検出しました                                  | vCenter Server に不適切なオブジェクトがある可能性があります。                                                      | 問題を解決してから、操作をやり直してください。                                                                                                           |
 | 757       | VMNotFound                     | 仮想マシンが見つかりません                                                  | 仮想マシンが削除されている可能性があります: %VMID;                                                                | 検出中に、vCenter のインベントリのスコーピングで選択した仮想マシンが存在することを確認してください                                      |
 | 758       | GetPerfDataTimeout             | VCenter の要求がタイムアウトしました。メッセージ %Message;                                  | vCenter Server の資格情報が正しくありません                                                              | VCenter Server の資格情報をチェックし、その vCenter Server が到達可能であることを確認して、 操作をやり直してください。 問題が解決しない場合は、サポートにお問い合わせください。 |

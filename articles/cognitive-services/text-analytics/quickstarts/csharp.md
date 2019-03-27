@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Text Analytics API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: ashmaka
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: 7c26117c9c36b3004df0d85b1a739fcebd9a1e4e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 9b56104934c1ddcc60222c988efdf173ca33d77b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119409"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871011"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:C# を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
@@ -181,6 +181,40 @@ namespace ConsoleApp1
         }
     }
 }
+```
+
+## <a name="application-output"></a>アプリケーションの出力
+
+このアプリケーションには次の情報が表示されます。
+
+```console
+===== LANGUAGE EXTRACTION ======
+Document ID: 1 , Language: English
+Document ID: 2 , Language: Spanish
+Document ID: 3 , Language: Chinese_Simplified
+
+
+===== KEY-PHRASE EXTRACTION ======
+Document ID: 1
+         Key phrases:
+                幸せ
+Document ID: 2
+         Key phrases:
+                Stuttgart
+                Hotel
+Document ID: 3
+         Key phrases:
+                cat
+                rock
+Document ID: 4
+         Key phrases:
+                fútbol
+
+===== SENTIMENT ANALYSIS ======
+Document ID: 0 , Sentiment Score: 0.87
+Document ID: 1 , Sentiment Score: 0.11
+Document ID: 2 , Sentiment Score: 0.44
+Document ID: 3 , Sentiment Score: 1.00
 ```
 
 ## <a name="next-steps"></a>次の手順

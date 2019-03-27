@@ -12,15 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
+ms.date: 02/26/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.openlocfilehash: 3445974cf832b7ed594f704615482e1d9b0e351c
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.lastreviewed: 02/26/2019
+ms.openlocfilehash: c1a0e77f98d269185bc065c86a367c3ed6519fb5
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159368"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961977"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack Managed Disks: 相違点と考慮事項
 
@@ -31,13 +32,12 @@ ms.locfileid: "54159368"
 > [!Note]  
 > Azure Stack の Managed Disks は 1808 更新プログラムから使用できます。 1811 更新プログラムから Azure Stack ポータルを使用して仮想マシンを作成すると、既定で有効になります。
   
-
 ## <a name="cheat-sheet-managed-disk-differences"></a>チート シート:マネージド ディスクの相違点
 
 | 機能 | Azure (グローバル) | Azure Stack |
 | --- | --- | --- |
 |保存データの暗号化 |Azure Storage Service Encryption (SSE)、Azure Disk Encryption (ADE)     |BitLocker 128 ビット AES 暗号化      |
-|イメージ          | マネージド カスタム イメージのサポート |まだサポートされていません|
+|Image          | マネージド カスタム イメージのサポート |サポートされています|
 |バックアップ オプション |Azure Backup サービスのサポート |まだサポートされていません |
 |ディザスター リカバリーのオプション |Azure Site Recovery のサポート |まだサポートされていません|
 |ディスクの種類     |Premium SSD、Standard SSD (プレビュー)、および Standard HDD |Premium SSD、Standard HDD |
@@ -64,16 +64,143 @@ ms.locfileid: "54159368"
 Azure Stack のマネージド ディスクは次の API バージョンをサポートしています。
 
 - 2017-03-30
+- 2017-12-01
 
-## <a name="known-issues"></a>既知の問題
+## <a name="convert-to-managed-disks"></a>マネージド ディスクへの変換
 
-1808 より後の更新プログラムを適用した後、Managed Disks を使用した VM をデプロイすると、次の問題が発生する可能性があります。
+次のスクリプトを使用して、現在プロビジョニングされている VM をアンマネージド ディスクからマネージド ディスクに変換できます。 プレースホルダーを実際の値に置き換えてください。
 
-- 1808 更新の前にサブスクリプションが作成された場合、Managed Disks を使用した VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、サブスクリプションごとに次の手順に従ってください。
+```powershell
+$subscriptionId = 'subid'
+
+# The name of your resource group
+$resourceGroupName ='rgmgd'
+
+# The name of the managed disk
+$diskName = 'unmgdvm'
+
+# The size of the disks in GB. It should be greater than the VHD file size.
+$diskSize = '50'
+
+# The URI of the VHD file that will be used to create the managed disk.
+# The VHD file can be deleted as soon as the managed disk is created.
+$vhdUri = 'https://rgmgddisks347.blob.local.azurestack.external/vhds/unmgdvm20181109013817.vhd' 
+
+# The storage type for the managed disk; PremiumLRS or StandardLRS.
+$accountType = 'StandardLRS'
+
+# The Azure Stack location where the managed disk is located.
+# The location should be the same as the location of the storage account in which VHD file is stored.
+$location = 'local'
+$virtualMachineName = 'mgdvm'
+$virtualMachineSize = 'Standard_D1'
+$pipname = 'unmgdvm-ip'
+$virtualNetworkName = 'rgmgd-vnet'
+$nicname = 'unmgdvm295'
+
+# Set the context to the subscription ID in which the managed disk will be created
+Select-AzureRmSubscription -SubscriptionId $SubscriptionId
+
+$diskConfig = New-AzureRmDiskConfig -AccountType $accountType  -Location $location -DiskSizeGB $diskSize -SourceUri $vhdUri -CreateOption Import
+
+# Create managed disk
+New-AzureRmDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGroupName
+$disk = get-azurermdisk -DiskName $diskName -ResourceGroupName $resourceGroupName
+$VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
+
+# Use the managed disk resource ID to attach it to the virtual machine.
+# Change the OS type to Linux if the OS disk has Linux OS.
+$VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $disk.Id -CreateOption Attach -Linux
+
+# Create a public IP for the VM
+$publicIp = Get-AzureRmPublicIpAddress -Name $pipname -ResourceGroupName $resourceGroupName 
+
+# Get the virtual network where the virtual machine will be hosted
+$vnet = Get-AzureRmVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName
+
+# Create NIC in the first subnet of the virtual network
+$nic = Get-AzureRmNetworkInterface -Name $nicname -ResourceGroupName $resourceGroupName
+
+$VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $nic.Id
+
+# Create the virtual machine with managed disk
+New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $resourceGroupName -Location $location
+```
+
+## <a name="managed-images"></a>マネージド イメージ
+
+Azure Stack では*マネージド イメージ*がサポートされています。これにより、汎用化された VM (アンマネージドとマネージドの両方) でマネージド イメージ オブジェクトを作成できます。以降、このオブジェクトではマネージド ディスク VM のみを作成できます。 マネージド イメージにより、次の 2 つのシナリオが可能になります。
+
+- 汎用化されたアンマネージド VM があり、今後はマネージド ディスクを使用する。
+- 汎用化されたマネージド VM があり、同様のマネージド VM を複数作成する。
+
+### <a name="migrate-unmanaged-vms-to-managed-disks"></a>アンマネージド VM をマネージド ディスクに移行する
+
+[こちら](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account)の指示に従い、ストレージ アカウントで、汎用化された VHD からマネージド イメージを作成します。 以降、このイメージはマネージド VM の作成に使用できます。
+
+### <a name="create-managed-image-from-vm"></a>VM からマネージド イメージを作成する
+
+[こちら](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell)のスクリプトを使って既存のマネージド ディスク VM からイメージを作成した後、次のサンプル スクリプトで、既存のイメージ オブジェクトから類似の Linux VM を作成します。
+
+```powershell
+# Variables for common values
+$resourceGroup = "myResourceGroup"
+$location = "redmond"
+$vmName = "myVM"
+$imagerg = "managedlinuxrg"
+$imagename = "simplelinuxvmm-image-2019122"
+
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a resource group
+New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+
+# Create a subnet configuration
+$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+
+# Create a virtual network
+$vnet = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+
+# Create a public IP address and specify a DNS name
+$pip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+
+# Create an inbound network security group rule for port 3389
+$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+
+# Create a network security group
+$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+
+# Create a virtual network card and associate with public IP address and NSG
+$nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Location $location `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+$image = get-azurermimage -ResourceGroupName $imagerg -ImageName $imagename
+# Create a virtual machine configuration
+$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
+Set-AzureRmVMOperatingSystem -Linux -ComputerName $vmName -Credential $cred | `
+Set-AzureRmVMSourceImage -Id $image.Id | `
+Add-AzureRmVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+```
+
+詳細については、Azure マネージド イメージに関する記事「[Azure で汎用化された VM のマネージド イメージを作成する](../../virtual-machines/windows/capture-image-resource.md)」および「[マネージド イメージから VM を作成する](../../virtual-machines/windows/create-vm-generalized-managed.md)」を参照してください。
+
+## <a name="configuration"></a>構成
+
+1808 以降の更新プログラムを適用した後、Managed Disks を使用する前に次の構成を実行する必要があります。
+
+- 1808 更新プログラムの前にサブスクリプションが作成された場合は、次の手順に従ってサブスクリプションを更新します。 そうでないと、このサブスクリプションに VM をデプロイする操作がエラー メッセージ "ディスク マネージャーでの内部エラーです" で失敗することがあります。
    1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
    2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
-- マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、[この記事](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
-
+- マルチテナント環境を使用している場合は、[この記事](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)の次の手順に従って、各ゲスト ディレクトリを再構成するように (お客様の組織内またはサービス プロバイダーからの) クラウド オペレーターに依頼してください。 そうでないと、そのゲスト ディレクトリに関連付けられているサブスクリプションに VM をデプロイする操作がエラー メッセージ "ディスク マネージャーでの内部エラーです" で失敗することがあります。
 
 ## <a name="next-steps"></a>次の手順
 

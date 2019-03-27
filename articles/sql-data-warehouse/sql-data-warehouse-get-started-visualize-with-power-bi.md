@@ -2,20 +2,20 @@
 title: SQL Data Warehouse のデータを Power BI で視覚化する | Microsoft Azure
 description: SQL Data Warehouse のデータを Power BI で視覚化します。
 services: sql-data-warehouse
-author: kavithaj
+author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: consume
+ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 0fbb389120857a167867a5804c670e181f5232b6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b2377466ba830eed9fed0e9a4033b3eca3d351c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051443"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834608"
 ---
 # <a name="visualize-data-with-power-bi"></a>Power BI でデータを視覚化する
 このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
@@ -93,4 +93,4 @@ Azure SQL Database の場合と同様、SQL Data Warehouse の直接接続を使
 これらの制限および注意事項は、エクスペリエンスの改善に伴って変更される場合があります。
 
 ## <a name="next-steps"></a>次の手順
-いくつかサンプル データを挙げて、どのようにして[開発](sql-data-warehouse-overview-develop.md)、[読み込み](design-elt-data-loading.md)、[移行](sql-data-warehouse-overview-migrate.md)するかを確認しながらウォーミングアップしていきます。 または、[Power BI の Web サイト](http://www.powerbi.com/)を参照してください。
+いくつかサンプル データを挙げて、どのようにして[開発](sql-data-warehouse-overview-develop.md)、[読み込み](design-elt-data-loading.md)、[移行](sql-data-warehouse-overview-migrate.md)するかを確認しながらウォーミングアップしていきます。 または、[Power BI の Web サイト](https://www.powerbi.com/)を参照してください。

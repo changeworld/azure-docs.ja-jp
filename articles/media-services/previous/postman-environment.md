@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 037bdc233090e79695c17df197bb4c7adb517b20
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 99ed30809e49e36012263255c8cd0884cf6bbce8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229798"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992060"
 ---
-# <a name="import-the-postman-environment"></a>Postman 環境のインポート 
+# <a name="import-the-postman-environment"></a>Postman 環境のインポート  
 
 この記事には、Media Services REST API を呼び出す、グループ化された HTTP 要求を含む [Postman コレクション](postman-collection.md)で使用される **Postman** 環境変数の定義が示されています。 環境およびコレクション ファイルは「[Configure Postman for Media Services REST API calls (Media Services REST API のための Postman の構成)](media-rest-apis-with-postman.md)」チュートリアルで使用されます。
 

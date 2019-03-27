@@ -3,7 +3,7 @@ title: Azure クイックスタート - DSC を使用して VM を構成する |
 description: Desired State Configuration を使用して Linux 仮想マシンで LAMP スタックを構成する
 services: automation
 ms.service: automation
-ms.component: dsc
+ms.subservice: dsc
 keywords: dsc, 構成, オートメーション
 author: KrisBash
 ms.author: krbash
@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7a9e394213ef40b995cb048c71f14a190e5e7970
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8bb035a02b8ab684bc1efb7accd785518cb151c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243694"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107612"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Desired State Configuration を使用して Linux 仮想マシンを構成する
 
@@ -108,7 +108,7 @@ configuration LAMPServer {
 
 ## <a name="compile-a-configuration"></a>構成をコンパイルする
 
-ノードに割り当てる前に、DSC 構成をノード構成 (MOF ドキュメント) にコンパイルする必要があります。 コンパイルでは構成が検証されます。また、パラメーター値を入力できます。 構成のコンパイルの詳細については、「[Azure Automation DSC での構成のコンパイル](https://docs.microsoft.com/azure/automation/automation-dsc-compile)」を参照してください。
+ノードに割り当てる前に、DSC 構成をノード構成 (MOF ドキュメント) にコンパイルする必要があります。 コンパイルでは構成が検証されます。また、パラメーター値を入力できます。 構成のコンパイルについて詳しくは、[Azure Automation DSC での構成のコンパイル](https://docs.microsoft.com/azure/automation/automation-dsc-compile)に関するページを参照してください。
 
 構成をコンパイルするには：
 
@@ -144,4 +144,5 @@ Automation アカウントの **[状態の構成 (DSC)]** の **[ノード]** �
 
 * PowerShell Desired State Configuration の詳細については、「[Windows PowerShell Desired State Configuration の概要](https://docs.microsoft.com/powershell/dsc/overview)」を参照してください。
 * PowerShell から Automation DSC を管理する方法の詳細については、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0) に関するページを参照してください。
-* レポートとアラートのために DSC レポートを Log Analytics に転送する方法については、[DSC レポートを Log Analytics に転送する方法](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics)に関するページを参照してください。 
+* レポートとアラートのために DSC レポートを Azure Monitor ログに転送する方法については、[Azure Monitor ログへの DSC レポートの転送](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics)に関する記事をご覧ください。 
+

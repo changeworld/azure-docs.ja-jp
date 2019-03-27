@@ -53,7 +53,7 @@ Azure Database for MySQL は、Azure Monitor の診断ログと統合されま�
 | TenantId | テナント ID |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | ログが記録されたときのタイムスタンプ (UTC) |
-| type | ログの種類。 常に `AzureDiagnostics` |
+| Type | ログの種類。 常に `AzureDiagnostics` |
 | SubscriptionId | サーバーが属するサブスクリプションの GUID |
 | ResourceGroup | サーバーが属するリソース グループの名前 |
 | ResourceProvider | リソース プロバイダーの名前。 常に `MICROSOFT.DBFORMYSQL` |

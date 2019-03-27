@@ -1,5 +1,5 @@
 ---
-title: Log Analytics での Linux アプリケーション パフォーマンスの収集 | Microsoft Docs
+title: Azure Monitor での Linux アプリケーション パフォーマンスの収集 | Microsoft Docs
 description: この記事では、MySQL および Apache HTTP Server のパフォーマンス カウンターを収集するように Linux 用 Log Analytics エージェントを構成するための詳細について説明します。
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: bf14e06f52f1b5a32ea3922083cc1f9bdbfb2aae
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 453e66934b93ab4368c4d3816d3db1a4588ae660
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104847"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001332"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Log Analytics で Linux アプリケーションのパフォーマンス カウンターを収集する 
+# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Monitor で Linux アプリケーションのパフォーマンス カウンターを収集する 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-この記事では、特定のアプリケーションのパフォーマンス カウンターを Log Analytics に収集するように [Linux 用 Log Analytics エージェント](https://github.com/Microsoft/OMS-Agent-for-Linux)を構成するための詳細について説明します。  この記事に含まれるアプリケーションは次のとおりです。  
+この記事では、特定のアプリケーションのパフォーマンス カウンターを Azure Monitor に収集するように [Linux 用 Log Analytics エージェント](https://github.com/Microsoft/OMS-Agent-for-Linux)を構成することの詳細について説明します。  この記事に含まれるアプリケーションは次のとおりです。  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
@@ -114,7 +114,7 @@ MySQL ユーザーにはまた、次の既定のテーブルへの SELECT アク
 
 ### <a name="define-performance-counters"></a>パフォーマンス カウンターを定義する
 
-Log Analytics にデータを送信するように Linux 用 Log Analytics エージェントを構成したら、収集するパフォーマンス カウンターを構成する必要があります。  次の表のカウンターには、「[Log Analytics での Windows および Linux パフォーマンス データ ソース](data-sources-performance-counters.md)」の手順を使用します。
+Azure Monitor にデータを送信するように Linux 用 Log Analytics エージェントを構成したら、収集するパフォーマンス カウンターを構成する必要があります。  次の表のカウンターには、[Azure Monitor での Windows および Linux パフォーマンス データ ソース](data-sources-performance-counters.md)に関するページの手順を使用します。
 
 | オブジェクト名 | カウンター名 |
 |:--|:--|
@@ -150,7 +150,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>パフォーマンス カウンターを定義する
 
-Log Analytics にデータを送信するように Linux 用 Log Analytics エージェントを構成したら、収集するパフォーマンス カウンターを構成する必要があります。  次の表のカウンターには、「[Log Analytics での Windows および Linux パフォーマンス データ ソース](data-sources-performance-counters.md)」の手順を使用します。
+Azure Monitor にデータを送信するように Linux 用 Log Analytics エージェントを構成したら、収集するパフォーマンス カウンターを構成する必要があります。  次の表のカウンターには、[Azure Monitor での Windows および Linux パフォーマンス データ ソース](data-sources-performance-counters.md)に関するページの手順を使用します。
 
 | オブジェクト名 | カウンター名 |
 |:--|:--|
@@ -168,4 +168,4 @@ Log Analytics にデータを送信するように Linux 用 Log Analytics エ�
 
 ## <a name="next-steps"></a>次のステップ
 * Linux エージェントから[パフォーマンス カウンターを収集します](data-sources-performance-counters.md)。
-* [ログ クエリ](../../log-analytics/log-analytics-queries.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 
+* [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。 

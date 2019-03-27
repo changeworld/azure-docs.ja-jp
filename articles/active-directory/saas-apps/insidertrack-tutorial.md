@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Insider Track の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Insider Track の統合 | Microsoft Docs
 description: Azure Active Directory と Insider Track の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 53b6a928-e8a4-4cf1-9952-50cd3f013b7c
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 09f0e38dc8eab2042a28e6816155ad14b185a034
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 28ea99f7e672339e45730e80294455931573d62a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047265"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169992"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insider-track"></a>チュートリアル: Azure Active Directory と Insider Track の統合
+# <a name="tutorial-azure-active-directory-integration-with-insider-track"></a>チュートリアル:Azure Active Directory と Insider Track の統合
 
 このチュートリアルでは、Insider Track と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -127,10 +128,10 @@ Insider Track で Azure AD のシングル サインオンを構成してテス�
 
     ![Insider Track 構成](./media/insidertrack-tutorial/tutorial_insidertrack_configure.png) 
 
-7. **Insider Track** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML、サインアウト URL、SAML エンティティ ID、****SAML シングル サインオン サービス URL** を [Insider Track サポート チーム](https://cytecsolutions.com/contact/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+7. **Insider Track** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML、サインアウト URL、SAML エンティティ ID、** **SAML シングル サインオン サービス URL** を [Insider Track サポート チーム](https://cytecsolutions.com/contact/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -163,11 +164,11 @@ Insider Track で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-an-insider-track-test-user"></a>Insider Track テスト ユーザーの作成
 
-このセクションでは、Insider Track で Britta Simon というユーザーを作成します。[Insider Track サポート チーム](https://cytecsolutions.com/contact/)と連携し、Insider Track プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Insider Track で Britta Simon というユーザーを作成します。 [Insider Track サポート チーム](https://cytecsolutions.com/contact/) と協力して、Insider Track プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -204,7 +205,7 @@ Insider Track で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Insider Track] タイルをクリックすると、自動的に Insider Track アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

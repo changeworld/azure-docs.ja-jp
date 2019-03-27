@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: cwatson
+ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: b1f3d6ec2a8563ccfffd1e1c3c7cf1869a42769a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c34b25be622cb04a2e9b8f571f60bd57d8331726
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090858"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54904235"
 ---
 # <a name="view-your-organizations-azure-enterprise-agreement-pricing"></a>組織の Azure Enterprise Agreement の価格を表示する 
 

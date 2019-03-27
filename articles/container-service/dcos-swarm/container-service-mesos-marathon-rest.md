@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 157d70b628ca3583cb8134ec1cccc185c6ff4c8d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 567890f3beec1eff30effeec0ce23284c5fee141
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52991739"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109292"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(非推奨) Marathon REST API を使用した DC/OS コンテナー管理
 
@@ -124,8 +124,6 @@ Marathon API を利用して、アプリケーションのデプロイをスケ�
 
 > [!NOTE]
 > URI は、 http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
-> 
-> 
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -183,14 +181,12 @@ Marathon API を利用して、アプリケーションのデプロイをスケ�
 
 > [!NOTE]
 > URI は、 http://localhost/marathon/v2/apps/ に、スケールするアプリケーションの ID が追加されたものになります。 ここで示す Nginx サンプルを使用する場合、URI は http://localhost/marathon/v2/apps/nginx になります。
-> 
-> 
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
 ## <a name="next-steps"></a>次の手順
-* [Mesos HTTP エンドポイントの詳細](http://mesos.apache.org/documentation/latest/endpoints/)
+* [Mesos HTTP エンドポイントの詳細](https://mesos.apache.org/documentation/latest/endpoints/)
 * [Marathon REST API の詳細](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

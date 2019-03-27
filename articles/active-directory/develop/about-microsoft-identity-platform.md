@@ -7,7 +7,7 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 7b96ee362f6169d386a58ee48878e40a42fc9ede
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6f3fcbda160d84e41fd2244a4d58766ae3991e52
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987598"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197659"
 ---
 # <a name="about-microsoft-identity-platform"></a>Microsoft ID プラットフォームについて
 

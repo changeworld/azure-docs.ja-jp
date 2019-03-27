@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 01/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 3096fa77913ef1dd4eb491b3c0e5d7fa236f6c65
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 835ba407fb72a8cb512425e59cf56ba1a1cc8a4b
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020889"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301273"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 ## <a name="performance-reference"></a>パフォーマンス リファレンス
 
-参考として、社内テストに基づいて、**1 回のコピー アクティビティの実行**での特定のソースとシンクのペアにおけるコピー スループット (**Mbps 単位**) を次の表に示します。 比較のために、[データ統合単位](#data-integration-units)または[セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime) (複数のノード) の異なる設定によって、コピーのパフォーマンスがどのように変化するかも示しています。
+参考として、社内テストに基づいて、**1 回のコピー アクティビティの実行**での特定のソースとシンクのペアにおけるコピー スループット (**MBps 単位**) を次の表に示します。 比較のために、[データ統合単位](#data-integration-units)または[セルフホステッド統合ランタイムのスケーラビリティ](concepts-integration-runtime.md#self-hosted-integration-runtime) (複数のノード) の異なる設定によって、コピーのパフォーマンスがどのように変化するかも示しています。
 
 ![パフォーマンス マトリックス](./media/copy-activity-performance/CopyPerfRef.png)
 
@@ -241,7 +241,17 @@ Data Factory サービスとコピー アクティビティのパフォーマン
 
 1. **ベースラインを確立する**。 開発フェーズでは、代表的なデータ サンプルに対してコピー アクティビティを使用して、パイプラインをテストします。 [コピー アクティビティの監視](copy-activity-overview.md#monitoring)の後に、実行の詳細とパフォーマンス特性を収集します。
 
-2. **パフォーマンスを診断して最適化する**。 観測したパフォーマンスが予測どおりでない場合は、パフォーマンスのボトルネックを特定する必要があります。 次に、パフォーマンスを最適化して、ボトルネックの影響を除去するか軽減します。 この記事では、パフォーマンスの診断に関する詳細な説明は省略しますが、いくつかの一般的な考慮事項を次に示します。
+2. **パフォーマンスを診断して最適化する**。 観測したパフォーマンスが予測どおりでない場合は、パフォーマンスのボトルネックを特定する必要があります。 次に、パフォーマンスを最適化して、ボトルネックの影響を除去するか軽減します。 
+
+    場合によっては、ADF でコピー アクティビティを実行すると、次の例に示されているように、[コピー アクティビティの監視ページ](copy-activity-overview.md#monitor-visually)の上部に "**パフォーマンス チューニングに関するヒント**" が直接表示されます。 これにより、特定のコピーの実行で特定されたボトルネックが提示されるだけでなく、コピーのスループットを向上させるために変更すべき点も示されます。 パフォーマンスのチューニングに関するヒントは、現在のところ、Azure SQL Data Warehouse にデータをコピーするときは PolyBase を使用すること、データ ソース側のリソースがボトルネックである場合は Azure Cosmos DB の RU または Azure SQL DB の DTU を増やすこと、不要なステージング済みを削除することといった提案を示しています。パフォーマンスのチューニングのルールも、徐々に強化されていきます。
+
+    **例: パフォーマンスのチューニングに関するヒントを使用した Azure SQL DB へのコピー**
+
+    このサンプルでは、コピーの実行中に ADF が、シンク Azure SQL DB が書き込み操作を遅くする高 DTU 使用率に達したため、より多くの DTU のある Azure SQL DB 層を増やすという提案を通知します。 
+
+    ![パフォーマンスのチューニングに関するヒントを使用したコピーの監視](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+
+    さらに、いくつかの一般的な考慮事項を次に示します。 この記事では、パフォーマンスの診断に関する詳細な説明は省略します。
 
    * パフォーマンス機能:
      * [並列コピー](#parallel-copy)

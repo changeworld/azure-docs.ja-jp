@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート : Content Moderator の概要'
+title: クイック スタート:Web 上で Content Moderator を試す - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Content Moderator を使い始める方法。
+description: このクイック スタートでは、オンライン Content Moderator レビュー ツールを使用して、コードを記述せずに Content Moderator の基本的な機能をテストします。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 79fe761bc6d8bb9561701fd11b06b010bf3454f6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cfaf0bf20449262fcebb6cefc1b0a499c6190ae8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260008"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861172"
 ---
-# <a name="quickstart-get-familiar-with-content-moderator"></a>クイック スタート : Content Moderator の概要
+# <a name="quickstart-try-content-moderator-on-the-web"></a>クイック スタート:Web 上で Content Moderator を試す
 
 このクイック スタートでは、オンライン Content Moderator レビュー ツールを使用して、コードを記述せずに Content Moderator の基本的な機能をテストします。 このサービスをより迅速にアプリに統合する場合、[次のステップ](#next-steps)のセクションのその他のクイック スタートを参照してください。
 
@@ -58,7 +58,7 @@ Content Moderator レビュー ツールは、レビューア担当者が意思�
 
 ## <a name="learn-more-about-the-review-tool"></a>レビュー ツールについてさらに学習する
 
-Content Moderator レビュー ツールを使用する方法についてさらに学習するには、[Human-in-the-loop](Review-Tool-User-Guide/human-in-the-loop.md) ガイドを参照し、レビュー ツール API を参照して人間のレビュー エクスペリエンスを微調整する方法について学習します。
+Content Moderator レビュー ツールを使用する方法についてさらに学習するには、[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md) ガイドを参照し、レビュー ツール API を参照して人間のレビュー エクスペリエンスを微調整する方法について学習します。
 - [ジョブ API](try-review-api-job.md) は、モデレーション API を使用することによりコンテンツをスキャンし、レビュー ツールでレビューを生成します。 
 - [レビュー API](try-review-api-review.md) は、最初にコンテンツをスキャンすることなく、人間の モデレーター用の画像、テキスト、またはビデオ レビューを直接作成します。 
 - [ワークフロー API](try-review-api-workflow.md) は、自分のチームが作成するカスタム ワークフローに関する詳細を作成、更新、取得します。

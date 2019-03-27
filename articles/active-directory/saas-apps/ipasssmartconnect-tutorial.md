@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と iPass SmartConnect の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と iPass SmartConnect の統合 | Microsoft Docs
 description: Azure Active Directory と iPass SmartConnect の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: ecfdd3fae1d394e3b57fcd325f44cad0d1a98534
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 91a68a208496904fcc8bfe13a227c61bf313214f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444896"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198169"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>チュートリアル: Azure Active Directory と iPass SmartConnect の統合
+# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>チュートリアル:Azure Active Directory と iPass SmartConnect の統合
 
 このチュートリアルでは、iPass SmartConnect と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -136,7 +137,7 @@ iPass SmartConnect で Azure AD のシングル サインオンを構成して�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. その行の名前空間値は空白のままにしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 その行の名前空間値は空白のままにしてください。
 
     e. **[OK]** をクリックします。
 
@@ -180,11 +181,11 @@ iPass SmartConnect で Azure AD のシングル サインオンを構成して�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-an-ipass-smartconnect-test-user"></a>iPass SmartConnect テスト ユーザーを作成する
 
-このセクションでは、iPass SmartConnect で Britta Simon というユーザーを作成します。 [iPass SmartConnect サポート チーム](mailto:help@ipass.com)と協力して、iPass SmartConnect プラットフォームでホワイトリストに追加する必要のあるユーザーまたはドメインを追加します。 ドメインがチームによって追加された場合、ユーザーは iPass SmartConnect プラットフォームに自動的にプロビジョニングされます。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、iPass SmartConnect で Britta Simon というユーザーを作成します。  [iPass SmartConnect サポート チーム](mailto:help@ipass.com) と協力して、iPass SmartConnect プラットフォームでホワイトリストに追加する必要のあるユーザーまたはドメインを追加します。 ドメインがチームによって追加された場合、ユーザーは iPass SmartConnect プラットフォームに自動的にプロビジョニングされます。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -232,7 +233,7 @@ c. **[開始]** をクリックします。
 
 ![[アプリケーション] 一覧の iPass SmartConnect リンク](./media/ipasssmartconnect-tutorial/testing1.png) 
 
-d. Azure ユーザー名とドメインを入力します。 **[続行]** をクリックします。 これは Azure ログイン ページにリダイレクトされます。
+d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure ユーザー名とドメインを入力します。 **[続行]** をクリックします。 これは Azure ログイン ページにリダイレクトされます。
 
 ![[アプリケーション] 一覧の iPass SmartConnect リンク](./media/ipasssmartconnect-tutorial/testing2.png) 
 
@@ -248,7 +249,7 @@ c. SSA ページが表示されます。**[Download App for Windows]\(Windows �
 
 ![[アプリケーション] 一覧の iPass SmartConnect リンク](./media/ipasssmartconnect-tutorial/testing4.png)
 
-d. インストール後、最初に起動したクライアントは、利用規約に同意するとアクティブ化を自動的に開始します。
+d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 インストール後、最初に起動したクライアントは、利用規約に同意するとアクティブ化を自動的に開始します。
 
 e. アクティブ化が開始しない場合、SSA ページの [アクティブ化] ボタンをクリックしてアクティブ化を開始してください。
 

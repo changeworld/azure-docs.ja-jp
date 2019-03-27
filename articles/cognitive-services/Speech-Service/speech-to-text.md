@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Speech to Text API は、オーディオ ストリームを、アプリで表示できるテキストまたは入力として操作できるテキストに書き起こします。 このサービスは、SDK および RESTful エンドポイントを介して利用できます。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 050d395614fa4a08e6d0d0967200029e8fc36010
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5012245a79295f1e05079f6c0a368ac832b8974a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094714"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978580"
 ---
 # <a name="about-the-speech-to-text-api"></a>Speech to Text API について
 
@@ -44,17 +44,17 @@ ms.locfileid: "53094714"
 
 | ユース ケース | REST | SDK |
 |-----|-----|-----|----|
-| コマンド (15 秒未満の長さ) などの短い発話を書き起こします。中間結果はありません | [はい] | [はい] |
-| 長い発話 (15 秒を超える) を書き起こします | いいえ  | [はい] |
-| ストリーミング オーディオを書き起こします。中間結果は省略可能です | いいえ  | [はい] |
-| LUIS を介して話者の意図を理解します | いいえ\* | [はい] |
-| 正確性テストを作成します | [はい] | いいえ  |
-| モデル適応のためのデータセットをアップロードします | [はい] | いいえ  |
-| 音声モデルを作成および管理します | [はい] | いいえ  |
-| モデル デプロイを作成および管理します | [はい] | いいえ  |
-| サブスクリプションの管理 | [はい] | いいえ  |
-| モデル デプロイを作成および管理します | [はい] | いいえ  |
-| モデル デプロイを作成および管理します | [はい] | いいえ  |
+| コマンド (15 秒未満の長さ) などの短い発話を書き起こします。中間結果はありません | はい | はい |
+| 長い発話 (15 秒を超える) を書き起こします | いいえ  | はい |
+| ストリーミング オーディオを書き起こします。中間結果は省略可能です | いいえ  | はい |
+| LUIS を介して話者の意図を理解します | いいえ\* | はい |
+| 正確性テストを作成します | はい | いいえ  |
+| モデル適応のためのデータセットをアップロードします | はい | いいえ  |
+| 音声モデルを作成および管理します | はい | いいえ  |
+| モデル デプロイを作成および管理します | はい | いいえ  |
+| サブスクリプションの管理 | はい | いいえ  |
+| モデル デプロイを作成および管理します | はい | いいえ  |
+| モデル デプロイを作成および管理します | はい | いいえ  |
 
 > [!NOTE]
 > REST API で、API 要求を 5 秒ごとに 25 個までに制限するスロットリングを実装します。 この制限はメッセージ ヘッダーで通知されます

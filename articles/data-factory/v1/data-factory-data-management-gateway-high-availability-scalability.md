@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bc8cacd6d52de0367a0ea14748e548b9d32f47ef
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016769"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092193"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
 > [!NOTE]
@@ -29,8 +29,8 @@ ms.locfileid: "54016769"
 
 > [!NOTE]
 > この記事では、Integration Runtime (初期の Data Management Gateway) の基本を理解していることを前提とします。 まだ理解が不十分な場合は、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。
-
->**このプレビュー機能は、Data Management Gateway バージョン 2.12.xxxx.x 以降で正式にサポートされています**。 バージョン 2.12.xxxx.x またはそれ以降を使用していることを確認してください。 Data Management Gateway の最新バージョンは、[こちら](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードできます。
+> 
+> **このプレビュー機能は、Data Management Gateway バージョン 2.12.xxxx.x 以降で正式にサポートされています**。 バージョン 2.12.xxxx.x またはそれ以降を使用していることを確認してください。 Data Management Gateway の最新バージョンは、[こちら](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードできます。
 
 ## <a name="overview"></a>概要
 ポータルから、1 つの論理ゲートウェイを複数のオンプレミス コンピューターにインストールされているデータ管理ゲートウェイと関連付けることができます。 これらのコンピューターは、**ノード**と呼ばれます。 最大で **4 つのノードを**を 1 つの論理ゲートウェイに関連付けできます。 1 つの論理ゲートウェイと複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を関連付ける利点は次のとおりです。  
@@ -163,8 +163,8 @@ ms.locfileid: "54016769"
 
 - 証明書は必ず、公的に信頼されている X509 v3 証明書とします。 公的 (第三者) 証明機関 (CA) によって発行された証明書を使用することを推奨します。
 - 統合ランタイムの各ノードは、資格情報マネージャー アプリケーションを実行するクライアント マシンだけでなく、この証明書を信頼する必要があります。 
-> [!NOTE]
-> Copy Wizard/ Azure Portal から資格情報を安全に設定するとき、資格情報マネージャー アプリケーションが使用されます。 また、オンプレミス/プライベート データ ストアと同じネットワークにあるあらゆるマシンから起動できます。
+  > [!NOTE]
+  > Copy Wizard/ Azure Portal から資格情報を安全に設定するとき、資格情報マネージャー アプリケーションが使用されます。 また、オンプレミス/プライベート データ ストアと同じネットワークにあるあらゆるマシンから起動できます。
 - ワイルドカード証明書がサポートされます。 FQDN 名が **node1.domain.contoso.com** の場合、証明書のサブジェクト名として ***.domain.contoso.com** を使用できます。
 - サブジェクトの別名の最後の項目のみが使用され、現行の制限に起因してその他はすべて無視されるため、SAN 証明書は推奨されません。 例:  SAN が **node1.domain.contoso.com** と **node2.domain.contoso.com** の SAN 証明書がある場合、FQDN が **node2.domain.contoso.com** のマシンでのみこの証明書を使用できます。
 - SSL 証明書のために、Windows Server 2012 R2 でサポートされている任意のキー サイズをサポートします。
@@ -201,7 +201,7 @@ CPU 使用率 | ゲートウェイ ノードの CPU 使用率。 この値は、
 
 次の表は、**ゲートウェイ ノード**の状態を示しています。 
 
-状態  | コメント/シナリオ
+Status  | コメント/シナリオ
 :------- | :------------------
 オンライン | ノードはデータ ファクトリ サービスに接続されています。
 オフライン | ノードはオフラインです。
@@ -212,7 +212,7 @@ CPU 使用率 | ゲートウェイ ノードの CPU 使用率。 この値は、
 
 次の表は、**論理ゲートウェイ**の状態を示しています。 ゲートウェイの状態は、ゲートウェイ ノードの状態に依存します。 
 
-状態 | 説明
+Status | 説明
 :----- | :-------
 Needs Registration\(登録が必要\) | この論理ゲートウェイには、まだ登録されたノードがありません。
 オンライン | ゲートウェイ ノードはオンラインです。

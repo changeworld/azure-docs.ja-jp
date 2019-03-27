@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory でユーザー ライセンス ユーザーをグループベースのライセンスに移行する | Microsoft Docs
+title: ユーザーをグループベースのライセンスに移行する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory を使用して個別のユーザー ライセンスをグループベースのライセンスに切り替える方法
 services: active-directory
 keywords: Azure AD のライセンス
@@ -10,16 +10,18 @@ editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
-ms.date: 10/29/2018
+ms.subservice: users-groups-roles
+ms.date: 01/31/2019
 ms.author: curtand
-ms.custom: seohack1
-ms.openlocfilehash: 4272d16a2acba992f05bb0874a40affa7d30abb5
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.reviewer: sumitp
+ms.custom: seohack1;it-pro
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b4067a54326d0a4a8ab9029dd4afceea384cf6aa
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50213646"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188632"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Azure Active Directory でライセンスを付与するためにライセンスを持つユーザーをグループに追加する方法
 

@@ -10,16 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 55c84fb982d078d5163c105f5af938d0c1a10356
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: f66f57799e1e6b6d0e27624e3dc08b4de5d09cac
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246383"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766202"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Azure Stack のサービスとしての検証のワークフロー共通パラメーター
 
@@ -39,8 +40,9 @@ ms.locfileid: "54246383"
 
 ### <a name="generate-the-stamp-information-file"></a>スタンプ情報ファイルを生成する
 
-1. DVM または Azure Stack 環境にアクセスできる任意のマシンにログインします。
+1. DVM または Azure Stack 環境にアクセスできる任意のマシンにサインインします。
 2. 管理者特権の PowerShell ウィンドウで次のコマンドを実行します。
+
     ```PowerShell  
     $CloudAdminUser = "<cloud admin username>"
     $CloudAdminPassword = ConvertTo-SecureString "<cloud admin password>" -AsPlainText -Force

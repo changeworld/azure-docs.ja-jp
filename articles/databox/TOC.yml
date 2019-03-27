@@ -27,6 +27,10 @@ items:
           href: data-box-deploy-copy-data-via-nfs.md
         - name: REST 経由
           href: data-box-deploy-copy-data-via-rest.md
+        - name: データ コピー サービス経由
+          href: data-box-deploy-copy-data-via-copy-service.md
+        - name: マネージド ディスクへ
+          href: data-box-deploy-copy-data-from-vhds.md
       - name: 4 - 返却、アップロード、確認
         href: data-box-deploy-picked-up.md
     - name: 概念
@@ -57,6 +61,14 @@ items:
         href: data-box-cable-options.md
       - name: サポートに問い合わせる
         href: data-box-disk-contact-microsoft-support.md
+      - name: 移行
+        items:
+        - name: SharePoint Online へ
+          href: https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox
+        - name: Azure File Sync へ
+          href: https://docs.microsoft.com/azure/storage/files/storage-sync-offline-data-transfer
+        - name: HDFS ストアから
+          href: https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster
   - name: Data Box Disk
     items:
     - name: 概要
@@ -110,9 +122,9 @@ items:
       href: https://azure.microsoft.com/pricing/details/storage/databox/
     - name: Data Box Disk の価格
       href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
-ms.openlocfilehash: 06605ce958b32acafdc33f23d41fd0abc635d1ea
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: cd18f6ccbe2115500f19e3bf27e99924c780ccb6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214948"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439300"

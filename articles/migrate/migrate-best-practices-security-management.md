@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 6238d3d7a64816df01be69458d784114368d9e17
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: eaef1c904b5404339c476d86c5b8c2a1740e5a3e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53141341"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700079"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Azure に移行されたワークロードのセキュリティ保護と管理に関するベスト プラクティス
 
@@ -400,8 +400,7 @@ Azure VM は、Azure Storage にページ BLOB として格納されます。
 - BLOB スナップショットを作成する[方法を学習する](https://docs.microsoft.com/azure/storage/blobs/storage-blob-snapshots)。
 - BLOB ストレージ バックアップの[サンプル シナリオを確認する](https://azure.microsoft.com/blog/microsoft-azure-block-blob-storage-backup)。
 - 論理的な削除について[読む](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)。
-- Azure Storage の停止が発生した場合の対処方法を[確認する](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
-
+- [Azure Storage でのディザスター リカバリーと強制フェールオーバー (プレビュー)](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 #### <a name="third-party-backup"></a>サード パーティのバックアップ
 
@@ -517,7 +516,7 @@ PaaS ワークロードの例に対するディザスター リカバリーの�
 - ディザスター リカバリーのための Azure SQL Database 101 を[読む](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)。
 - アクティブ geo レプリケーションとフェールオーバー グループの[概要を理解する](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)。
 - ディザスター リカバリーのための設計[について学習する](https://docs.microsoft.com/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery)。
-- フェールオーバー グループに関する[ベスト プラクティスを知る](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview#best-practices-of-using-failover-groups-for-business-continuity)。
+- フェールオーバー グループに関する[ベスト プラクティスを知る](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)。
 - geo リストアまたはフェールオーバーの後のセキュリティに関する[ベスト プラクティスを知る](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-security-config)。
 - ゾーン冗長性[について学習する](https://docs.microsoft.com/azure/sql-database/sql-database-high-availability#zone-redundant-configuration)
 - SQL データベースのディザスター リカバリー訓練を実施する[方法を学習する](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery-drills)。

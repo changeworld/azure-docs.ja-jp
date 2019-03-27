@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
-ms.date: 10/22/2018
-ms.openlocfilehash: a7289ba5ab1f4e94adc099978591d69cac6ff786
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 12/20/2018
+ms.openlocfilehash: cd4c5dc877bf565e5218d431506bbeccd5dc6382
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721599"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567271"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL データ同期のベスト プラクティス 
 
@@ -55,9 +55,9 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 
 ### <a name="database-considerations-and-constraints"></a>データベースの考慮事項と制約
 
-#### <a name="sql-database-instance-size"></a>SQL Database インスタンスのサイズ
+#### <a name="sql-database-instance-size"></a>SQL データベース インスタンスのサイズ
 
-新しい SQL Database インスタンスを作成するときは、デプロイするデータベースよりも常に大きいサイズになるように最大サイズを設定します。 デプロイするデータベースより大きい最大サイズを設定していない場合、同期は失敗します。 SQL データ同期では自動拡張が行われませんが、`ALTER DATABASE` コマンドを実行して、作成後にデータベースのサイズを増やすことができます。 SQL Database インスタンスのサイズの制限を超えないようにしてください。
+新しい SQL データベース インスタンスを作成するときは、デプロイするデータベースよりも常に大きいサイズになるように最大サイズを設定します。 デプロイするデータベースより大きい最大サイズを設定していない場合、同期は失敗します。 SQL データ同期では自動拡張が行われませんが、`ALTER DATABASE` コマンドを実行して、作成後にデータベースのサイズを増やすことができます。 SQL データベース インスタンスのサイズの制限を超えないようにしてください。
 
 > [!IMPORTANT]
 > SQL データ同期では、各データベースで追加のメタデータを格納します。 必要な領域を計算するときに、このメタデータを必ず考慮してください。 追加されるオーバーヘッドの量は、テーブルの幅 (たとえば、幅が狭いテーブルでは必要なオーバーヘッドが増えます) とトラフィックの量に関係しています。
@@ -196,7 +196,7 @@ SQL データ同期には、自動プロビジョニングについて次のよ�
 
 #### <a name="scenario"></a>シナリオ
 
-1. SQL Database インスタンスと、ローカル エージェント 1 に関連付けられているオンプレミスの SQL Server データベースを使用して、同期グループ A が作成されました。
+1. SQL データベース インスタンスと、ローカル エージェント 1 に関連付けられているオンプレミスの SQL Server データベースを使用して、同期グループ A が作成されました。
 2. 同じオンプレミス データベースがローカル エージェント 2 に登録されています (このエージェントは、どの同期グループにも関連付けられていません)。
 3. ローカル エージェント 2 からオンプレミス データベースの登録を解除すると、オンプレミス データベースの同期グループ A の追跡およびメタ テーブルが削除されます。
 4. 同期グループ A の操作は、"The current operation could not be completed because the database is not provisioned for sync or you do not have permissions to the sync configuration tables" (データベースが同期用にプロビジョニングされていないか、同期構成テーブルへのアクセス許可がないため、現在の操作を完了できませんでした) というエラーが表示されて失敗します。

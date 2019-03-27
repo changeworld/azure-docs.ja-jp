@@ -11,19 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/18/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: e4da34be5b1e9eb2675f540fe4069cfd3dc1d056
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.reviewer: anajod
+ms.lastreviewed: 01/25/2019
+ms.openlocfilehash: 336a2a3fd98f7829694eb095ff2646d9d361afd3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409950"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097322"
 ---
-# <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack を使用してハイブリッド クラウド ソリューションをデプロイする
+# <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>チュートリアル:Azure と Azure Stack を使用してハイブリッド クラウド ソリューションをデプロイする
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 このチュートリアルでは、Azure パブリック クラウドと Azure Stack プライベート クラウドを使用するハイブリッド クラウド ソリューションのデプロイ方法について説明します。
 
@@ -64,7 +65,7 @@ ms.locfileid: "49409950"
   - Windows Server 2016 イメージ
   - Microsoft SQL Server を含んだ Windows Server 2016 のイメージ
   - 適切なプランとオファー
- - Web アプリケーションのドメイン名。 ドメイン名がない場合は、GoDaddy、Bluehost、InMotion などのドメイン プロバイダーから購入できます。
+  - Web アプリケーションのドメイン名。 ドメイン名がない場合は、GoDaddy、Bluehost、InMotion などのドメイン プロバイダーから購入できます。
 - 信頼のおける証明機関 (LetsEncrypt など) から取得したドメインの SSL 証明書。
 - SQL Server データベースと通信し、Application Insights をサポートする Web アプリケーション。 GitHub から [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) サンプル アプリをダウンロードできます。
 - Azure 仮想ネットワークと Azure Stack 仮想ネットワークの間のハイブリッド ネットワーク。 詳細な手順については、[Azure と Azure Stack を使用したハイブリッド クラウド接続の構成](azure-stack-solution-hybrid-connectivity.md)に関するページを参照してください。
@@ -77,7 +78,7 @@ ms.locfileid: "49409950"
 
 2. **[ダッシュボード]** の **[Marketplace]** を選択します。
 
-    ![Auzure Stack Marketplace](media/azure-stack-solution-hybrid-cloud/image1.png)
+    ![Azure Stack Marketplace](media/azure-stack-solution-hybrid-cloud/image1.png)
 
 3. **[Marketplace]** で **[Compute]\(計算\)** を選択し、**[More]\(その他\)** を選択します。 **[More]\(その他\)** から **[Free SQL Server License: SQL Server 2017 Developer on Windows Server]** イメージを選択します。
 
@@ -93,19 +94,19 @@ ms.locfileid: "49409950"
 
 7. **[設定] > [オプション機能の構成]** で、次の設定を構成します。
 
-    - **[ストレージ アカウント]**。 新しいアカウントが必要な場合は、作成します。
-    - **Virtual Network**
+   - **[ストレージ アカウント]**。 新しいアカウントが必要な場合は、作成します。
+   - **Virtual Network**
 
-      > [!Important]  
-      > SQL Server VM が VPN ゲートウェイと同じ仮想ネットワーク上にデプロイされていることを確認してください。
+     > [!Important]  
+     > SQL Server VM が VPN ゲートウェイと同じ仮想ネットワーク上にデプロイされていることを確認してください。
 
-    - **パブリック IP アドレス**。 既定の設定を使用できます。
-    - **ネットワーク セキュリティ グループ** (NSG)。 新しい NSG を作成します。
-    - **拡張機能と監視**。 既定の設定のままにします。
-    - **診断ストレージ アカウント**。 新しいアカウントが必要な場合は、作成します。
-    - **[OK]** を選択して構成を保存します。
+   - **パブリック IP アドレス**。 既定の設定を使用できます。
+   - **ネットワーク セキュリティ グループ** (NSG)。 新しい NSG を作成します。
+   - **拡張機能と監視**。 既定の設定のままにします。
+   - **診断ストレージ アカウント**。 新しいアカウントが必要な場合は、作成します。
+   - **[OK]** を選択して構成を保存します。
 
-    ![オプション機能を構成する](media/azure-stack-solution-hybrid-cloud/image4.png)
+     ![オプション機能を構成する](media/azure-stack-solution-hybrid-cloud/image4.png)
 
 1. **[SQL Server の設定]** で、次の設定を構成します。
    - **[SQL 接続]** で **[パブリック (インターネット)]** を選択します。
@@ -117,7 +118,7 @@ ms.locfileid: "49409950"
 
    - その他の設定は、既定値のままにしてください。 **[OK]** を選択します。
 
-    ![SQL Server の設定を構成する](media/azure-stack-solution-hybrid-cloud/image5.png)
+     ![SQL Server の設定を構成する](media/azure-stack-solution-hybrid-cloud/image5.png)
 
 9. **[概要]** で仮想マシンの構成を確認し、**[OK]** を選択してデプロイを開始します。
 
@@ -390,7 +391,7 @@ Azure で Traffic Manager プロファイルを作成し、エンドポイント
 
     ![Traffic Manager プロファイルを作成する](media/azure-stack-solution-hybrid-cloud/image19.png)
 
- Traffic Manager プロファイルのグローバル デプロイが完了すると、その作成先となったリソース グループのリソース一覧にそのプロファイルが表示されます。
+   Traffic Manager プロファイルのグローバル デプロイが完了すると、その作成先となったリソース グループのリソース一覧にそのプロファイルが表示されます。
 
 ### <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 

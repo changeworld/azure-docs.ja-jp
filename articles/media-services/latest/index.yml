@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fdda67921db38b912679d27bf5a8c897775ad82b
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: d4e80fd18de40c7df806f0a72612cec7bb71e2d2
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53137992"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339183"
 documentType: LandingData
 title: Azure Media Services v3 のドキュメント
 metadata:
@@ -18,11 +18,27 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10-15-2018
+  ms.date: 03/20/2019
   ms.author: juliako
 abstract:
   description: Media Services v3 を使用してビデオをオンデマンドでストリーミングし、ライブ データをブロードキャストし、ビデオを分析する方法を説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。 <br/> SDK は <a href="https://aka.ms/ams-v3-rest-sdk">Media Services v3 OpenAPI の仕様 (Swagger)</a> に基づいています。
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
+    items:
+    - image:
+        src: 
+      html: <p>Media Services の基本的な概念について説明します。</p>
+      href: /azure/media-services/latest/concepts-overview/
+      title: 概念についての説明
+    - image:
+        src: 
+      html: <p>現在、Azure portal を使用して v3 リソースを管理することはできません。 REST API、CLI、サポートされている SDK のいずれかを使用します。</p>
+      href: /azure/media-services/latest/developers-guide/
+      title: v3 API を使用した開発
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph

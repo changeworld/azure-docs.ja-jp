@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と PingBoard の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と PingBoard の統合 | Microsoft Docs
 description: Azure Active Directory と PingBoard の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 794e3f6fe568d76f0687caa36709185f2a538270
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 084a921123badb786503ce6696eb4ace14dd59b8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436102"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170484"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>チュートリアル: Azure Active Directory と PingBoard の統合
+# <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>チュートリアル:Azure Active Directory と PingBoard の統合
 
 このチュートリアルでは、PingBoard と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -181,7 +182,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-pingboard-test-user"></a>PingBoard テスト ユーザーを作成する
 
@@ -205,7 +206,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[Job Title]** ボックスに、Britta Simon の役職を入力します。
 
-    d. **[Location]** ドロップダウン リストで、Britta Simon の場所を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Location]** ドロップダウン リストで、Britta Simon の場所を選択します。
 
     e. **[追加]** をクリックします。
 

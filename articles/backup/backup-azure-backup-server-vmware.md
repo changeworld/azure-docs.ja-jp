@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: ee7ebb151653b611c652c072b8cb4c07754d9b68
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5e5a6f32eeac674a6527d333b981bbdac20a9958
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269704"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309763"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
@@ -39,7 +39,7 @@ ms.locfileid: "53269704"
 
 ### <a name="before-you-start"></a>開始する前に
 
-- HTTPS を使用したくない場合は、[既定の設定を無効にする](backup-azure-backup-server-vmware.md#disable-secure-communication-protocol)ことができます。
+- HTTPS を使用したくない場合は、[既定の設定を無効にする](backup-azure-backup-server-vmware.md)ことができます。
 - 通常は、Azure Backup Server マシン上のブラウザーから、vSphere Web Client を使用して、vCenter/ESXi サーバーに接続します。 初めてこれを行う場合、接続はセキュリティで保護されておらず、次のように表示されます。
 - Azure Backup Server がバックアップを処理する方法を理解しておくことが重要です。
     - 最初のステップとして、Azure Backup Server はローカル ディスク ストレージにデータをバックアップします。 Azure Backup Server ではストレージ プールが使用されます。ストレージ プールとは、保護対象データに対するディスク復旧ポイントを Azure Backup Server が格納するディスクとボリュームのセットです。 ストレージ プールには、直接接続ストレージ (DAS)、ファイバー チャネル SAN、iSCSI ストレージ デバイスまたは SAN を使用できます。 VMware VM データのローカル バックアップ用に十分なストレージがあることを確認することが重要です。

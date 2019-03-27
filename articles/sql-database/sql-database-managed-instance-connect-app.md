@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: fe73d5a2aa63cf127f5df835484cfcc75ef702aa
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.date: 11/09/2018
+ms.openlocfilehash: 9d47e3fb821e9ad64beecd62c274a33e7fa14041
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514963"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887325"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にアプリケーションを接続する
 
@@ -143,7 +143,7 @@ Azure App Service をマネージド インスタンスに接続する場合の�
 |JDBC ドライバー    | 6.4.0 |
 |Node.js ドライバー | 2.1.1 |
 |OLEDB ドライバー   | 18.0.2.0 |
-|SSMS   | 17.8.1 [以上](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
+|SSMS   | 17.8.1 [以上](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 
 ## <a name="next-steps"></a>次の手順
 

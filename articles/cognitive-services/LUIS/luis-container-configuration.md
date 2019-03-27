@@ -4,23 +4,23 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: LUIS コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 LUIS には、いくつかの必須の設定と省略可能な設定があります。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: e8e838fae0da3a47fe1b3ec8d412f956f5f28034
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: ee08f5e15180a618d1a9c48b7d59b9e1f8bc90ae
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975511"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329117"
 ---
-# <a name="configure-language-understanding-docker-containers"></a>Language Understanding の docker コンテナーの構成 
+# <a name="configure-language-understanding-docker-containers"></a>Language Understanding の Docker コンテナーの構成 
 
-Language Understanding (LUIS) コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 LUIS には、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、入力[マウント設定](#mount-settings)と課金設定です。 
+**Language Understanding** (LUIS) コンテナーのランタイム環境は、`docker run` コマンドの引数を使用して構成されます。 LUIS には、いくつかの必須の設定と省略可能な設定があります。 いくつかのコマンドの[例](#example-docker-run-commands)をご覧ください。 このコンテナーに固有の設定は、入力[マウント設定](#mount-settings)と課金設定です。 
 
 コンテナーの設定は[階層](#hierarchical-settings)になっていて、[環境変数](#environment-variable-settings)または Docker の[コマンドライン引数](#command-line-argument-settings)を使用して設定できます。
 
@@ -30,13 +30,14 @@ Language Understanding (LUIS) コンテナーのランタイム環境は、`dock
 
 |必須|Setting|目的|
 |--|--|--|
-|[はい]|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
+|はい|[ApiKey](#apikey-setting)|課金情報の追跡に使用されます。|
 |いいえ |[ApplicationInsights](#applicationinsights-setting)|[Azure Application Insights](https://docs.microsoft.com/azure/application-insights) テレメトリ サポートをお客様のコンテナーに追加できます。|
-|[はい]|[課金](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
-|[はい]|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
+|はい|[課金](#billing-setting)|Azure 上のサービス リソースのエンドポイント URI を指定します。|
+|はい|[Eula](#eula-setting)| コンテナーのライセンスに同意していることを示します。|
 |いいえ |[Fluentd](#fluentd-settings)|ログと (必要に応じて) メトリック データを Fluentd サーバーに書き込みます。|
-|いいえ |[ログ](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
-|[はい]|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
+|いいえ |[HTTP プロキシ](#http-proxy-credentials-settings)|送信要求を行うために、HTTP プロキシを構成します。|
+|いいえ |[Logging](#logging-settings)|ASP.NET Core のログ サポートをお客様のコンテナーに提供します。 |
+|はい|[Mounts](#mount-settings)|ホスト コンピューターからコンテナーに、またコンテナーからホスト コンピューターにデータを読み取ったり書き込んだりします。|
 
 > [!IMPORTANT]
 > [`ApiKey`](#apikey-setting)、[`Billing`](#billing-setting)、[`Eula`](#eula-setting) の各設定は一緒に使用されるため、それらの 3 つすべてに有効な値を指定する必要があります。そうしないと、お客様のコンテナーは起動しません。 これらの構成設定を使用してコンテナーをインスタンス化する方法の詳細については、「[課金](luis-container-howto.md#billing)」を参照してください。
@@ -58,7 +59,7 @@ Language Understanding (LUIS) コンテナーのランタイム環境は、`dock
 
 ## <a name="billing-setting"></a>Billing 設定
 
-`Billing` 設定では、コンテナーの課金情報を測定するために使用される Azure の _Language Understanding_ リソースのエンドポイント URI を指定します。 この構成設定の値は指定する必要があり、値は Azure の _Language Understanding_ リソースの有効なエンドポイント URI である必要があります。
+`Billing` 設定では、コンテナーの課金情報を測定するために使用される Azure の _Language Understanding_ リソースのエンドポイント URI を指定します。 この構成設定の値は指定する必要があり、値は Azure の _Language Understanding_ リソースの有効なエンドポイント URI である必要があります。 コンテナーから、約 10 ～ 15 分ごとに使用状況が報告されます。
 
 この設定は次の場所で確認できます。
 
@@ -67,7 +68,7 @@ Language Understanding (LUIS) コンテナーのランタイム環境は、`dock
 
 |必須| Name | データ型 | 説明 |
 |--|------|-----------|-------------|
-|[はい]| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
+|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westus.api.cognitive.microsoft.com/luis/v2.0` |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -77,6 +78,10 @@ Language Understanding (LUIS) コンテナーのランタイム環境は、`dock
 
 
 [!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-fluentd.md)]
+
+## <a name="http-proxy-credentials-settings"></a>Http プロキシ資格情報設定
+
+[!INCLUDE [Container shared configuration fluentd settings](../../../includes/cognitive-services-containers-configuration-shared-settings-http-proxy.md)]
 
 ## <a name="logging-settings"></a>Logging の設定
  
@@ -95,7 +100,7 @@ LUIS コンテナーでは、トレーニングやサービスのデータを格
 
 |必須| Name | データ型 | 説明 |
 |-------|------|-----------|-------------|
-|[はい]| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
+|はい| `Input` | String | 入力マウントのターゲット。 既定値は `/input` です。 これは LUIS パッケージ ファイルの保存先です。 <br><br>例:<br>`--mount type=bind,src=c:\input,target=/input`|
 |いいえ | `Output` | String | 出力マウントのターゲット。 既定値は `/output` です。 これはログの保存先です。 LUIS のクエリ ログやコンテナー ログが含まれます。 <br><br>例:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="hierarchical-settings"></a>階層的な設定
@@ -188,4 +193,5 @@ ApiKey={APPLICATION_ID} \
 ## <a name="next-steps"></a>次の手順
 
 * [コンテナーのインストール方法と実行方法](luis-container-howto.md)を確認する。
-* [よくあるご質問 (FAQ)](luis-resources-faq.md) を参照して、LUIS 機能に関連する問題を解決する。
+* [トラブルシューティング](troubleshooting.md)に関するページを参照して、LUIS 機能に関連する問題を解決する。
+* さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

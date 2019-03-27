@@ -2,21 +2,22 @@
 title: オンプレミス アプリへのリモート アクセス - Azure Active Directory アプリケーション プロキシ | Microsoft Docs
 description: Azure Active Directory アプリケーション プロキシは、オンプレミス Web アプリケーションへのセキュリティ保護されたリモート アクセスを提供します。 Azure AD にシングル サインオンした後、ユーザーは、外部の URL または内部のアプリケーション ポータルから、クラウド アプリケーションとオンプレミス アプリケーションの両方にアクセスできます。 たとえば、アプリケーション プロキシでは、リモート デスクトップ、SharePoint、Teams、Tableau、Qlik、および基幹業務 (LOB) アプリケーションへのリモート アクセスとシングル サインオンを提供できます。
 services: active-directory
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 94330c9d53b69d86ff05fe2f0164cb7559e9d389
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ac94574ac297da7b3555be8d92ba3c5b62a990c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159130"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174760"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Azure Active Directory アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス 
 
@@ -28,7 +29,7 @@ Azure AD アプリケーション プロキシの特徴:
 
 - **セキュリティ保護**。 オンプレミスのアプリケーションは、Azure の承認制御とセキュリティ分析を使用できます。 たとえば、オンプレミス アプリケーションでは、条件付きアクセスと 2 段階認証を使用できます。 アプリケーション プロキシでは、ファイアウォールを介した受信接続を開く必要がありません。
  
-- **高いコスト効率**。 オンプレミスのソリューションでは、通常、非武装地帯 (DMV)、エッジ サーバー、またはその他の複雑なインフラストラクチャを設定し維持する必要があります。 アプリケーション プロキシはクラウドで実行するので簡単に使用することができます。 アプリケーション プロキシを使用するために、ネットワーク インフラストラクチャを変更することも、オンプレミス環境に追加のアプライアンスをインストールすることも必要ありません。
+- **高いコスト効率**。 オンプレミスのソリューションでは、通常、非武装地帯 (DMZ)、エッジ サーバー、またはその他の複雑なインフラストラクチャを設定し維持する必要があります。 アプリケーション プロキシはクラウドで実行するので簡単に使用することができます。 アプリケーション プロキシを使用するために、ネットワーク インフラストラクチャを変更することも、オンプレミス環境に追加のアプライアンスをインストールすることも必要ありません。
 
 ## <a name="what-is-application-proxy"></a>アプリケーション プロキシとは
 アプリケーション プロキシとは、ユーザーがリモート クライアントからオンプレミス Web アプリケーションにアクセスできるようにする Azure AD の機能です。 アプリケーション プロキシには、クラウドで実行されるアプリケーション プロキシ サービスと、オンプレミス サーバーで実行されるアプリケーション プロキシ コネクタの両方が含まれています。 Azure AD、アプリケーション プロキシ サービス、およびアプリケーション プロキシ コネクタは連携して、Azure AD から Web アプリケーションにユーザーのシングル サインオン トークンを安全に渡します。
@@ -66,7 +67,7 @@ Azure AD アプリケーション プロキシの特徴:
 | オンプレミスのアプリケーション | 最終的にユーザーは、オンプレミス アプリケーションにアクセスできます。 
 
 ## <a name="next-steps"></a>次の手順
-アプリケーション プロキシの使用を開始するには、「[チュートリアル: Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)」を参照してください。 
+アプリケーション プロキシの使用を開始するには、[アプリケーション プロキシを使用したリモート アクセスを行うためのオンプレミス アプリケーションの追加に関するチュートリアル](application-proxy-add-on-premises-application.md)を参照してください。 
 
 最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](https://blogs.technet.com/b/applicationproxyblog/)を参照してください。
 

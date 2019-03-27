@@ -4,17 +4,17 @@ description: ブループリントが経過するライフサイクルと各ス�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309808"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563713"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Azure Blueprint のライフサイクルの概要
 
@@ -33,8 +33,7 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 
 ## <a name="creating-and-editing-a-blueprint"></a>ブループリントの作成と編集
 
-ブループリントを作成するときは、成果物を追加し、管理グループに保存し、一意の名前と一意のバージョンを指定します。 この時点で、ブループリントは**ドラフト** モードであり、まだ割り当てることはできません。
-**ドラフト** モードの間でも、更新と変更を続けることはできます。
+ブループリントを作成するときは、成果物を追加し、管理グループまたはサブスクリプションに保存し、一意の名前と一意のバージョンを指定します。 この時点で、ブループリントは**ドラフト** モードであり、まだ割り当てることはできません。 **ドラフト** モードの間でも、更新と変更を続けることはできます。
 
 発行されていない**ドラフト** モードのブループリントには、**[ブループリントの定義]** ページで、**発行済み**のブループリントとは異なるアイコンが表示されます。 これらの未発行ブループリントについては、**[最新バージョン]** も **[ドラフト]** と表示されます。
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/12/2018
+ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4de4a5a659f38577c1261b169a43df560bf05495
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 73f8b1323f6cd22ef215fba4ec45714f099032f6
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52971268"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415835"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Azure VPN Gateway 用に OpenVPN クライアントを構成する (プレビュー)
 
@@ -24,12 +24,14 @@ ms.locfileid: "52971268"
 
 ## <a name="before-you-begin"></a>開始する前に
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 VPN ゲートウェイ用に OpenVPN を構成する手順を完了していることを確認します。 詳細については、[Azure VPN Gateway 用に OpenVPN を構成する方法](vpn-gateway-howto-openvpn.md)に関するページを参照してください。
 
 ## <a name="windows"></a>Windows クライアント
 
 1. 公式の [OpenVPN Web サイト](https://openvpn.net/index.php/open-source/downloads.html)から OpenVPN クライアントをダウンロードしてインストールします。
-2. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブまたは PowerShell の 'New-AzureRmVpnClientConfiguration' で実行できます。
+2. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブまたは PowerShell の "New-AzVpnClientConfiguration" で実行できます。
 3. プロファイルを展開します。 次に、メモ帳を使って OpenVPN フォルダーの *vpnconfig.ovpn* 構成ファイルを開きます。
 4. 作成してゲートウェイ上の P2S 構成にアップロードした P2S クライアント証明書を[エクスポート](vpn-gateway-certificates-point-to-site.md#clientexport)します。
 5. *.pfx* から秘密キーと base64 のサムプリントを抽出します。 これには複数の方法があります。 1 つの方法として、コンピューター上で OpenSSL を使用します。 *profileinfo.txt* ファイルには、CA およびクライアント証明書の秘密キーとサムプリントが含まれています。 必ず、クライアント証明書のサムプリントを使用してください。
@@ -64,7 +66,7 @@ VPN ゲートウェイ用に OpenVPN を構成する手順を完了している�
 ## <a name="mac"></a>Mac クライアント
 
 1. [TunnelBlik](https://tunnelblick.net/downloads.html) などの OpenVPN クライアントをダウンロードしてインストールします。 
-2. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブから、または PowerShell の 'New-AzureRmVpnClientConfiguration' を使用して実行できます。
+2. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブから、または PowerShell の "New-AzVpnClientConfiguration" を使用して、実行できます。
 3. プロファイルを展開します。 メモ帳で OpenVPN フォルダーから vpnconfig.ovpn 構成ファイルを開きます。
 4. P2S クライアント証明書セクションに、base64 の P2S クライアント証明書の公開キーを指定します。 PEM 形式の証明書の場合、.cer ファイルを開き、証明書ヘッダー間にある base64 キーを上書きしてコピーします。 エンコードされた公開キーを取得する証明書をエクスポートする方法については、[公開キーのエクスポート](vpn-gateway-certificates-point-to-site.md#cer)に関するページを参照してください。
 5. 秘密キー セクションに、base64 の P2S クライアント証明書の秘密キーを指定します。 秘密キーの抽出方法については、[秘密キーのエクスポート](https://openvpn.net/community-resources/how-to/#pki)に関するページを参照してください。
@@ -72,6 +74,10 @@ VPN ゲートウェイ用に OpenVPN を構成する手順を完了している�
 7. プロファイル ファイルをダブルクリックして tunnelblik にプロファイルを作成します。
 8. アプリケーション フォルダーから Tunnelblik を起動します。
 9. システム トレイの Tunnelblik アイコンをクリックし、[接続] を選択します。
+
+> [!IMPORTANT]
+>OpenVPN プロトコルでは、iOS 11.0 以降と MacOS 10.13 以降のみがサポートされます。
+>
 
 ## <a name="linux"></a>Linux クライアント
 

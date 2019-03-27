@@ -3,18 +3,18 @@ title: Azure の更新管理デプロイで事前および事後スクリプト�
 description: この記事では、更新プログラムの展開のための事前および事後スクリプトを構成および管理する方法について説明します。
 services: automation
 ms.service: automation
-ms.component: update-management
+ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/18/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edbb953111fb4589539369bd9b2519b48b9b70eb
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 7278eba1c9039c180f75cdd2dfd1e18a77baf423
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121313"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416787"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>事前および事後スクリプトを管理する (プレビュー)
 
@@ -22,11 +22,11 @@ ms.locfileid: "54121313"
 
 ## <a name="runbook-requirements"></a>Runbook の要件
 
-Runbook が事前または事後スクリプトとして使用されるようにするには、その Runbook をオートメーション アカウントにインポートして発行する必要があります。 このプロセスの詳細については、「[Runbook の発行](automation-creating-importing-runbook.md#publishing-a-runbook)」を参照してください。
+Runbook が事前または事後スクリプトとして使用されるようにするには、その Runbook をオートメーション アカウントにインポートして発行する必要があります。 このプロセスの詳細については、「[Runbook の発行](manage-runbooks.md#publish-a-runbook)」を参照してください。
 
 ## <a name="using-a-prepost-script"></a>事前および事後スクリプトの使用
 
-更新プログラムの展開で事前または事後スクリプトを使用するには、単純に更新プログラムの展開の作成から始めます。 **[Pre-scripts + Post Scripts (Preview)] (事前スクリプト + 事後スクリプト (プレビュー))** を選択します。 これにより、**[Select Pre-scripts + Post-scripts] (事前スクリプト + 事後スクリプトの選択)** ページが開きます。  
+更新プログラムの展開で事前または事後スクリプトを使用するには、更新プログラムの展開の作成から始めます。 **[Pre-scripts + Post Scripts (Preview)] (事前スクリプト + 事後スクリプト (プレビュー))** を選択します。 この操作で、**[Select Pre-scripts + Post-scripts] (事前スクリプト + 事後スクリプトの選択)** ページが開きます。  
 
 ![スクリプトを選択する](./media/pre-post-scripts/select-scripts.png)
 
@@ -52,7 +52,21 @@ Runbook が事前または事後スクリプトとして使用されるように
 
 ## <a name="passing-parameters"></a>パラメーターを渡す
 
-事前および事後スクリプトを構成する場合、Runbook のスケジュール設定のように、パラメーターを渡すことができます。 パラメーターは、更新プログラムの展開の作成の時点で定義されます。 標準の Runbook パラメーターに加えて、追加のパラメーターが表示されます。 このパラメーターは **SoftwareUpdateConfigurationRunContext** です。 このパラメーターは JSON 文字列であるため、事前または事後スクリプトで定義すると、このパラメーターは更新プログラムの展開によって自動的に渡されます。 このパラメーターには、更新プログラムの展開に関する情報が含まれています。これは、[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) によって返される情報のサブセットです。次の表に、この変数で提供されるプロパティを示します。
+事前および事後スクリプトを構成する場合、Runbook のスケジュール設定のように、パラメーターを渡すことができます。 パラメーターは、更新プログラムの展開の作成の時点で定義されます。 事前および事後スクリプトでは次の型がサポートされます。
+
+* [char]
+* [byte]
+* [int]
+* [long]
+* [decimal]
+* [single]
+* [double]
+* [DateTime]
+* [string]
+
+別のオブジェクト型が必要な場合は、Runbook 内の独自のロジックで別の方にキャストできます。
+
+標準の Runbook パラメーターに加えて、追加のパラメーターが表示されます。 このパラメーターは **SoftwareUpdateConfigurationRunContext** です。 このパラメーターは JSON 文字列であるため、事前または事後スクリプトで定義すると、このパラメーターは更新プログラムの展開によって自動的に渡されます。 このパラメーターには、更新プログラムの展開に関する情報が含まれています。これは、[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) によって返される情報のサブセットです。次の表に、この変数で提供されるプロパティを示します。
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext プロパティ
 
@@ -70,7 +84,7 @@ Runbook が事前または事後スクリプトとして使用されるように
 |azureVirtualMachines     | 更新プログラムの展開での Azure VM の resourceId の一覧        |
 |nonAzureComputerNames|更新プログラムの展開での Azure 以外のコンピューターの FQDN の一覧|
 
-**SoftwareUpdateConfigurationRunContext** パラメーターに渡される JSON 文字列の例を次に示します。
+次の例は、**SoftwareUpdateConfigurationRunContext** パラメーターに渡される JSON 文字列です。
 
 ```json
 "SoftwareUpdateConfigurationRunContext":{
@@ -100,7 +114,7 @@ Runbook が事前または事後スクリプトとして使用されるように
    }
 ```
 
-すべてのプロパティの完全な例は、[ソフトウェア更新構成 (名前で取得)](/rest/api/automation/softwareupdateconfigurations/getbyname#examples) に関するページにあります。
+すべてのプロパティの完全な例は、[ソフトウェア更新構成 (名前で取得)](/rest/api/automation/softwareupdateconfigurations/getbyname#examples) に関するページにあります
 
 ## <a name="samples"></a>サンプル
 
@@ -119,7 +133,7 @@ Runbook が事前または事後スクリプトとして使用されるように
 > [!IMPORTANT]
 > Runbook をインポートした後、使用できるようにするには、それらを**発行する**必要があります。 それを行うには、Automation アカウントで Runbook を見つけ、**[編集]** を選択して **[発行]** をクリックします。
 
-これらのサンプルはすべて、次の例で定義されている基本的なテンプレートに基づいています。 このテンプレートを使用すると、事前および事後スクリプトで使用する独自の Runbook を作成できます。 Azure に対して認証したり、`SoftwareUpdateConfigurationRunContext` パラメーターを処理したりするための必要なロジックが含まれています。
+これらのサンプルはすべて、次の例で定義されている基本的なテンプレートに基づいています。 このテンプレートを使用すると、事前および事後スクリプトで使用する独自の Runbook を作成できます。 Azure に対して認証したり、`SoftwareUpdateConfigurationRunContext` パラメーターを処理したりするために必要なロジックが含まれています。
 
 ```powershell
 <# 
@@ -224,3 +238,4 @@ if ($summary.Type -eq "Error")
 
 > [!div class="nextstepaction"]
 > [Azure Windows VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)
+

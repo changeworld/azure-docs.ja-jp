@@ -7,16 +7,16 @@ items:
     href: overview.md
 - name: クイック スタート
   items:
-  - name: Web トラフィックを管理する - ポータル
+  - name: アプリケーション ゲートウェイの作成 - ポータル
     href: quick-create-portal.md
-  - name: Web トラフィックを管理する - PowerShell
+  - name: アプリケーション ゲートウェイの作成 - PowerShell
     href: quick-create-powershell.md
-  - name: Web トラフィックを管理する - Azure CLI
+  - name: アプリケーション ゲートウェイの作成 - Azure CLI
     href: quick-create-cli.md
   expanded: true
 - name: チュートリアル
   items:
-  - name: Web トラフィックを管理する
+  - name: 単一のサイトをホストする
     href: tutorial-manage-web-traffic-cli.md
   - name: Web アプリケーション ファイアウォールを有効にする
     href: tutorial-restrict-web-traffic-cli.md
@@ -40,63 +40,97 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
-  - name: エンド ツー エンド SSL
-    href: ssl-overview.md
-  - name: SSL ポリシーの概要
-    href: application-gateway-ssl-policy-overview.md
-  - name: Web アプリケーション ファイアウォール
-    href: waf-overview.md
-  - name: WAF 構成
-    href: application-gateway-waf-configuration.md
-  - name: URL ルーティング
-    href: url-route-overview.md
-  - name: 複数サイトのホスティング
-    href: multiple-site-overview.md
+  - name: 基本
+    items:
+    - name: Application Gateway のしくみ
+      href: how-application-gateway-works.md
+    - name: Application Gateway のコンポーネント
+      href: application-gateway-components.md
+    - name: 構成の概要
+      href: configuration-overview.md
+  - name: ルーティング
+    items:
+    - name: 複数サイトのホスティング
+      href: multiple-site-overview.md
+    - name: URL ルーティング
+      href: url-route-overview.md
+    - name: リダイレクト
+      href: redirect-overview.md
+    - name: HTTP ヘッダーを書き換える
+      href: rewrite-http-headers.md
+    - name: カスタム エラー ページ
+      href: custom-error.md
+  - name: SSL
+    items:
+    - name: SSL 終了とエンド ツー エンド SSL
+      href: ssl-overview.md
+    - name: SSL ポリシーの概要
+      href: application-gateway-ssl-policy-overview.md
+  - name: WAF
+    items:
+    - name: Web アプリケーション ファイアウォール
+      href: waf-overview.md
+    - name: WAF 構成
+      href: application-gateway-waf-configuration.md
+  - name: 正常性の監視
+    items:
+    - name: 正常性プローブ
+      href: application-gateway-probe-overview.md
+    - name: 診断
+      href: application-gateway-diagnostics.md
   - name: 自動スケールとゾーン冗長性
     href: application-gateway-autoscaling-zone-redundant.md
-  - name: リダイレクトのサポート
-    href: redirect-overview.md
-  - name: HTTP ヘッダーを書き換える
-    href: rewrite-http-headers.md
-  - name: マルチテナントのサポート
+  - name: App Service Web アプリとマルチテナントのサポート
     href: application-gateway-web-app-overview.md
-  - name: 正常性の監視
-    href: application-gateway-probe-overview.md
   - name: WebSocket のサポート
     href: application-gateway-websocket.md
   - name: FAQ
     href: application-gateway-faq.md
 - name: ハウツー ガイド
   items:
-  - name: Web トラフィックを管理する
+  - name: 単一のサイトをホストする
     items:
-    - name: Azure PowerShell
+    - name: Azure ポータル
       href: tutorial-manage-web-traffic-powershell.md
-    - name: テンプレート
+    - name: Template
       href: create-vmss-template.md
   - name: 内部 Load Balancer を構成する
     items:
+    - name: Azure ポータル
+      href: configure-application-gateway-with-private-frontend-ip.md
     - name: Azure PowerShell
       href: application-gateway-ilb-arm.md
-  - name: SSL 終了を構成する
+  - name: SSL の構成
     items:
-    - name: SSL 終了 - ポータル
-      href: create-ssl-portal.md
-    - name: SSL 終了 - PowerShell
-      href: tutorial-ssl-powershell.md
-    - name: エンド ツー エンド SSL - PowerShell
-      href: application-gateway-end-to-end-ssl-powershell.md
-    - name: 証明書の更新
-      href: renew-certificates.md
-    - name: SSL ポリシーを構成する
-      href: application-gateway-configure-ssl-policy-powershell.md
+    - name: SSL 終了
+      items:
+      - name: SSL 終了 - ポータル
+        href: create-ssl-portal.md
+      - name: SSL 終了 - PowerShell
+        href: tutorial-ssl-powershell.md
+    - name: エンドツーエンド SSL
+      items:
+      - name: エンドツーエンド SSL - ポータル
+        href: end-to-end-ssl-portal.md
+      - name: エンドツーエンド SSL - PowerShell
+        href: application-gateway-end-to-end-ssl-powershell.md
+    - name: 証明書の管理
+      items:
+      - name: バックエンドのホワイトリスト登録のための証明書を作成する
+        href: certificates-for-backend-authentication.md
+      - name: 証明書の更新
+        href: renew-certificates.md
+    - name: SSL ポリシー
+      items:
+      - name: SSL ポリシーを構成する
+        href: application-gateway-configure-ssl-policy-powershell.md
   - name: Web アプリケーション ファイアウォールを構成する
     items:
     - name: Azure ポータル
       href: application-gateway-web-application-firewall-portal.md
     - name: Azure PowerShell
       href: tutorial-restrict-web-traffic-powershell.md
-  - name: WAF ルールをカスタマイズする
+  - name: WAF 規則セットを構成する
     items:
     - name: Azure ポータル
       href: application-gateway-customize-waf-rules-portal.md
@@ -144,11 +178,13 @@ items:
     items:
     - name: Azure PowerShell
       href: add-http-header-rewrite-rule-powershell.md
-  - name: マルチテナントのサポート
+  - name: App Service Web アプリとマルチテナント サービスを構成する
     items:
-    - name: マルチテナントのサポートを構成する
+    - name: ポータル
+      href: configure-web-app-portal.md
+    - name: Azure PowerShell
       href: create-web-app.md
-  - name: カスタム プローブ
+  - name: カスタム プローブの構成
     items:
     - name: ポータル
       href: application-gateway-create-probe-portal.md
@@ -158,14 +194,14 @@ items:
       href: application-gateway-create-probe-ps.md
   - name: トラブルシューティング
     items:
-    - name: アプリケーション ゲートウェイのトラブルシューティング - ILB ASE
+    - name: ILB と App Service Environment
       href: create-gateway-internal-load-balancer-app-service-environment.md
-    - name: Bad Gateway (502) エラーのトラブルシューティング
+    - name: App Service の URL へのリダイレクト
+      href: troubleshoot-app-service-redirection-app-service-url.md
+    - name: セッション アフィニティの問題
+      href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
+    - name: 無効なゲートウェイ (502) エラー
       href: application-gateway-troubleshooting-502.md
-    - name: 診断
-      href: application-gateway-diagnostics.md
-  - name: カスタム エラー ページ
-    href: custom-error.md
 - name: リファレンス
   items:
   - name: CRS ルール
@@ -200,9 +236,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: 3eb1167d496a5b509eec923564c072142bce3c91
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: cd08a1ac880bb4242f4f57882d0e45133cf26748
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382979"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350761"

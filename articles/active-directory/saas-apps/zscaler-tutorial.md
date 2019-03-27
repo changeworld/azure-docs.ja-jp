@@ -8,19 +8,20 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 68c453f7-aff1-4614-92d3-9b86f3ad99dc
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeedes
-ms.openlocfilehash: af7489147c85eadd17a2f0849e630d89ec52151b
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 74c1465169ccbd2e6a6901566d8eb4fafb7d5c09
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790743"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182767"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler"></a>チュートリアル:Azure Active Directory と Zscaler の統合
 
@@ -139,7 +140,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[OK]** をクリックします。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
     > [!NOTE]
     > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)をクリックしてください
@@ -178,7 +179,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
 
     c. **アップロード** をクリックして、Azure portal からダウンロードした Azure SAML 署名証明書を **Public SSL Certificate\(パブリック SSL 証明書\)** にアップロードします。
 
-    d. **[SAML 自動プロビジョニングを有効にする]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML 自動プロビジョニングを有効にする]** を選択します。
 
     e. displayName 属性に SAML 自動プロビジョニングを有効にするには、**[User Display Name Attribute]\(ユーザー表示名属性\)** テキスト ボックスに **displayName** の値を入力します。
 
@@ -221,7 +222,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
 
     c. [ポート] ボックスに「 **80**」と入力します。
 
-    d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
 
     e. **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。
 
@@ -250,7 +251,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
 
 ### <a name="creating-a-zscaler-test-user"></a>Zscaler テスト ユーザーの作成
 

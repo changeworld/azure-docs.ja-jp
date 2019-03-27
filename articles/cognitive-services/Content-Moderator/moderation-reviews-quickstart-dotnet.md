@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Azure Content Moderator SDK for .NET を使用してレビューを作成する方法。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8a5c11df1b6353a100dd5f1cf388308b9c048932
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d6563441285380d0fea468caaacb0130cb259976
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258886"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884358"
 ---
 # <a name="quickstart-create-reviews-using-net"></a>クイック スタート:.NET を使用してレビューを作成する
 

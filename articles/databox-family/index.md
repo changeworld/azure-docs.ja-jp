@@ -11,19 +11,13 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 09e0debba88ed87ab84b567e797d3ae63ec32a81
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157107"
 ---
+<div id="main" class="v2">
 <h1>Azure Data Box</h1>
 <p>Azure Data Box ファミリには、信頼性が高く、迅速かつ安価な方法で数テラバイト (TB) のデータを Azure に送信できる、ストレージ容量が異なる製品が用意されています。 Microsoft は、オフラインまたはネットワーク経由のデータ転送を可能にする独自のストレージ デバイスをお客様に届けることで、安全なデータ転送を促進しています。</p>
-
 <h2>オフライン データ転送</h2>
 <p>ネットワーク帯域幅が制限されている場合</p>
-<ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
+<ul class="cardsA panelContent singlePanelContent cols cols3">
     <li>
         <a href="/azure/databox/data-box-disk-overview">
             <div class="cardSize">
@@ -71,7 +65,7 @@ ms.locfileid: "54157107"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Heavy <SUP>プレビュー</SUP></b>: 500 TB を超えるデータ サイズに対応します。 データをコピーして返送するための、1 ペタバイト (PB) のデバイスが配送業者を介して発送されます。</p>
+                            <p><b>Data Box Heavy</b>: 500 TB を上回るデータ サイズに対応します。 データをコピーして返送するための、1 ペタバイト (PB) のデバイスが配送業者を介して発送されます。</p>
                         </div>
                     </div>
                 </div>
@@ -79,7 +73,6 @@ ms.locfileid: "54157107"
         </a>
     </li>
 </ul>
-
 <h2>オンライン データ転送</h2>
 <p>ネットワーク経由の転送</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -94,7 +87,7 @@ ms.locfileid: "54157107"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Gateway <SUP>プレビュー</SUP></b>: ストレージ機能を備えた仮想デバイス。 データをネットワーク経由で Azure に送信する場合は、このデバイスを使用します。</p>
+                            <p><b>Data Box Gateway</b>: ストレージを備えた仮想デバイスです。 データをネットワーク経由で Azure に送信する場合は、このデバイスを使用します。</p>
                         </div>
                     </div>
                 </div>
@@ -112,7 +105,7 @@ ms.locfileid: "54157107"
                             </div>
                         </div>
                         <div class="cardText">
-                            <p><b>Data Box Edge <SUP>プレビュー</SUP></b> ストレージ機能とコンピューティング機能を備えた物理デバイス。 データを Azure に移動するときに、データの分析、変換、またはフィルター処理を行う場合は、このデバイスを使用します。</p>
+                            <p><b>Data Box Edge</b>: ストレージとコンピューティングを備えた物理デバイスです。 データを Azure に移動するときに、データの分析、変換、またはフィルター処理を行う場合は、このデバイスを使用します。</p>
                         </div>
                     </div>
                 </div>
@@ -120,3 +113,4 @@ ms.locfileid: "54157107"
         </a>
     </li>
 </ul>
+</div>

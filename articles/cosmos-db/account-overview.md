@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 7c4c1a5991445448f015dc0912383baf53f4e38c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbc11e2fc54ecffbea22a66354f334f3562e3339
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034932"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459215"
 ---
-# <a name="working-with-azure-cosmos-account"></a>Azure Cosmos アカウントの使用
+# <a name="work-with-azure-cosmos-account"></a>Azure Cosmos アカウントの使用
 
 Azure Cosmos DB はフルマネージドのサービスとしてのプラットフォーム (PaaS) です。 Azure Cosmos DB を使い始めるには、まず Azure サブスクリプションで Azure Cosmos アカウントを作成する必要があります。 Azure Cosmos アカウントには固有の DNS 名が含まれており、Azure portal、Azure CLI、または別の言語固有の SDK を使用してアカウントを管理できます。 詳細については、[Azure Cosmos アカウントの管理方法](how-to-manage-database-account.md)に関するページを参照してください。
 

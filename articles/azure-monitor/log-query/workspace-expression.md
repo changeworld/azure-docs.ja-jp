@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics クエリの workspace() 式 | Microsoft Docs
-description: workspace 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定のワークスペースからデータを取得するために、Log Analytics クエリで使用します。
+title: Azure Monitor ログ クエリの workspace() 式 | Microsoft Docs
+description: workspace 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定のワークスペースからデータを取得するために、Azure Monitor ログ クエリで使用します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: 24a737a728b0a249fda76cbff481bea284ac24aa
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 933d37f576d0b8507d2311a3e31e34182a0a2e69
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53182946"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269837"
 ---
-# <a name="workspace-expression-in-log-analytics-query"></a>Log Analytics クエリの workspace() 式
+# <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor ログ クエリの workspace() 式
 
-`workspace` 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定のワークスペースからデータを取得するために、Log Analytics クエリで使用します。 これは、Application Insights クエリにログ データを含めたり、ログ クエリで複数のワークスペースのデータをクエリしたりする場合に便利です。
+`workspace` 式は、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定のワークスペースからデータを取得するために、Azure Monitor クエリで使用されます。 これは、Application Insights クエリにログ データを含めたり、ログ クエリで複数のワークスペースのデータをクエリしたりする場合に便利です。
 
 
 ## <a name="syntax"></a>構文
@@ -71,5 +71,6 @@ union
 
 ## <a name="next-steps"></a>次の手順
 
-- Application Insights アプリを参照するには、[アプリ式](workspace-expression.md)に関するページを参照してください。
-- [Log Analytics データ](../../azure-monitor/log-query/log-query-overview.md)の格納方法に関するページをご覧ください。
+- Application Insights アプリに触れている、[app 式](app-expression.md)に関するページを参照してください。
+- [Azure Monitor データ](log-query-overview.md)の格納方法を確認します。
+- [Kusto クエリ言語](/azure/kusto/query/)の完全なドキュメントにアクセスします。

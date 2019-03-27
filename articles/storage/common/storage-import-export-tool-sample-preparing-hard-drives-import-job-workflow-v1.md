@@ -7,20 +7,20 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: ae792df428d897277e15df9db3ff6f99a5b8859e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: e183ed5ecda3053ed052952f4db5adfb016bfa68
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527290"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55459047"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー
 このトピックでは、インポート ジョブ用のドライブを準備するプロセスの手順について説明します。  
   
 この例では、`mystorageaccount` という名前の Microsoft Azure Storage アカウントに次のデータをインポートします。  
   
-|Location|説明|  
+|場所|説明|  
 |--------------|-----------------|  
 |H:\Video|一連のビデオ (合計 5 TB)。|  
 |H:\Photo|一連の写真 (合計 30 GB)。|  
@@ -44,7 +44,7 @@ ms.locfileid: "39527290"
   
 この例では、3-TB のハード ドライブが 2 つあれば十分です。 ただし、ソース ディレクトリ `H:\Video` には 5 TB のデータがあり、1 つのハード ドライブの容量は 3 TB しかないため、Microsoft Azure Import/Export ツールを実行する前に、`H:\Video` を `H:\Video1` と `H:\Video2` の 2 つの小さなディレクトリに分割する必要があります。 この手順により、次のソース ディレクトリが作成されます。  
   
-|Location|サイズ|インポート先の仮想ディレクトリまたは BLOB|  
+|場所|サイズ|インポート先の仮想ディレクトリまたは BLOB|  
 |--------------|----------|-------------------------------------------|  
 |H:\Video1|2.5 TB|https://mystorageaccount.blob.core.windows.net/video|  
 |H:\Video2|2.5 TB|https://mystorageaccount.blob.core.windows.net/video|  
@@ -169,4 +169,4 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 ## <a name="next-steps"></a>次の手順
 
 * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [頻繁に使用するコマンドのクイック リファレンス](../storage-import-export-tool-quick-reference-v1.md) 
+* [頻繁に使用するコマンドのクイック リファレンス](../storage-import-export-tool-quick-reference-v1.md) 

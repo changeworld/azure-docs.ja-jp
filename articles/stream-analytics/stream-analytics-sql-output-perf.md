@@ -9,18 +9,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/21/2018
-ms.openlocfilehash: 623d03c96866392ef245fb924cbf6600e7850ffe
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 794e2f3db44c29707400f96970159578d9e83f2d
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47057818"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54303277"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL Database への Azure Stream Analytics の出力
 
 この記事では、Azure Stream Analytics を使用して SQL Azure Database にデータを読み込むときに、よりよい書き込みスループット パフォーマンスを実現するためのヒントについて説明します。
 
-Azure Stream Analytics の SQL 出力では、オプションとして並列書き込みがサポートされます。 このオプションでは[完全に並列](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs)なジョブ トポロジが可能で、複数の出力パーティションが書き込み先テーブルに並列で書き込まれます。 ただし、Azure Stream Analytics でこのオプションを有効にするだけでは、より高いスループットを実現するのに十分ではありません。スループットは、SQL Azure データベースの構成とテーブル スキーマに大きく依存しているためです。 インデックス、クラスタリング キー、インデックスの FILL FACTOR、および圧縮の選択が、テーブルを読み込む時間に影響します。 内部ベンチマークに基づいて SQL Azure データベースを最適化してクエリと読み込みのパフォーマンスを向上させる方法について詳しくは、[SQL データベースのパフォーマンス ガイダンス](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance)に関するページをご覧ください。
+Azure Stream Analytics の SQL 出力では、オプションとして並列書き込みがサポートされます。 このオプションでは[完全に並列](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs)なジョブ トポロジが可能で、複数の出力パーティションが書き込み先テーブルに並列で書き込まれます。 ただし、Azure Stream Analytics でこのオプションを有効にするだけでは、より高いスループットを実現するのに十分ではありません。スループットは、SQL Azure データベースの構成とテーブル スキーマに大きく依存しているためです。 インデックス、クラスタリング キー、インデックスの FILL FACTOR、および圧縮の選択が、テーブルを読み込む時間に影響します。 内部ベンチマークに基づいて SQL Azure データベースを最適化してクエリと読み込みのパフォーマンスを向上させる方法について詳しくは、[SQL データベースのパフォーマンス ガイダンス](https://docs.microsoft.com/azure/sql-database/sql-database-performance-guidance)に関するページをご覧ください。 SQL Azure データベースに並列で書き込む場合、書き込みの順序は保証されません。
 
 ここでは、ソリューションの全体的なスループットの向上に役立つ各サービス内のいくつかの構成を示します。
 

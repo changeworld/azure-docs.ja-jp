@@ -1,25 +1,26 @@
 ---
-title: Azure Active Directory でのグループへのライセンス割り当て | Microsoft Docs
+title: グループにライセンスを割り当てる - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory のグループへのライセンスによってユーザーにライセンスを割り当てる方法
 services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
-ms.component: users-groups-roles
-ms.date: 10/29/2018
+ms.subservice: users-groups-roles
+ms.date: 01/31/2019
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e08ca3453cc43fa0f35102ca5563b4b07ce45dea
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.reviewer: sumitp
+ms.custom: it-pro
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 92fc46dd3fe3c6526a9a85fd13ec7297bf270976
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215006"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208896"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーシップによるユーザーへのライセンスの割り当て
 
@@ -32,7 +33,7 @@ ms.locfileid: "50215006"
 
 > グループ ライセンスの割り当ての際、利用場所が指定されていないユーザーは、ディレクトリの場所を継承します。 ユーザーが複数の場所にいる場合は、Azure AD でのユーザー作成フローの一環として利用場所を常に設定することをお勧めします (AAD Connect 構成など)。これにより、ライセンス割り当ての結果が常に正しいことが保証され、ユーザーは許可されていない場所でサービスを受けられなくなります。
 
-## <a name="step-1-assign-the-required-licenses"></a>手順 1. 必要なライセンスの割り当て
+## <a name="step-1-assign-the-required-licenses"></a>手順 1:必要なライセンスを割り当てる
 
 1. Administrator アカウントを使用して、[**Azure Portal**](https://portal.azure.com) にサインインします。 ライセンスを管理するアカウントは、グローバル管理者ロールまたはユーザー アカウント管理者である必要があります。
 
@@ -59,9 +60,9 @@ ms.locfileid: "50215006"
 これで、人事部グループのライセンス テンプレートの指定が完了しました。 開始された Azure AD のバックグラウンド プロセスによって、このグループの既存のメンバー全員が処理されます。 グループの現在の規模によっては、この初期操作に時間がかかる場合があります。 次の手順では、プロセスの終了を確認する方法と、問題の解決にさらなる注意が必要かどうかを確認する方法について説明します。
 
 > [!NOTE]
-> Azure AD の **[ユーザーとグループ]** からでも同様に割り当てを開始できます。 **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのグループ]** に移動します。 次にグループを検索して選択し、**[ライセンス]** タブに移動します。ウィンドウの上部にある **[割り当て]** をクリックすると、ライセンス割り当てのウィンドウが開きます。
+> 同様の割り当ては、Azure AD の **[ユーザーとグループ]** からでも開始できます。 **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのグループ]** に移動します。 次にグループを検索して選択し、**[ライセンス]** タブに移動します。ウィンドウの上部にある **[割り当て]** をクリックすると、ライセンス割り当てのウィンドウが開きます。
 
-## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>手順 2. 最初の割り当てが終了したことの確認
+## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>手順 2:最初の割り当てが終了したことを確認する
 
 1. **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのグループ]** に移動します。 ライセンスを割り当てた "**人事部**" グループを見つけます。
 
@@ -77,13 +78,13 @@ ms.locfileid: "50215006"
 
 3. ライセンスの処理に関する詳細情報は、**[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  "*グループ名*"  >  **[監査ログ]** の順に移動して入手できます。 次のアクティビティに注意してください。
 
-   - アクティビティ: **ユーザーに対するグループ ベースのライセンスの適用を開始する**。 このログは、システムによってグループでのライセンス割り当ての変更が検出され、すべてのユーザー メンバーに対するその変更の適用が開始されたときに、記録されます。 ここには、行われた変更の情報が含まれます。
+   - アクティビティ:**ユーザーに対してグループ ベースのライセンスの適用を開始する**。 このログは、システムによってグループでのライセンス割り当ての変更が検出され、すべてのユーザー メンバーに対するその変更の適用が開始されたときに、記録されます。 ここには、行われた変更の情報が含まれます。
 
-   - アクティビティ: **ユーザーに対するグループ ベースのライセンスの適用を終了する**。 このログは、システムによるグループ内のユーザー全員の処理が完了したときに記録されます。 ここには、処理が正常に完了したユーザーの数とグループ ライセンスを割り当てることができなかったユーザーの数の概要が含まれます。
+   - アクティビティ:**ユーザーに対してグループ ベースのライセンスの適用を終了する**。 このログは、システムによるグループ内のユーザー全員の処理が完了したときに記録されます。 ここには、処理が正常に完了したユーザーの数とグループ ライセンスを割り当てることができなかったユーザーの数の概要が含まれます。
 
    [このセクション](licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity)では、グループ ベースのライセンスによって行われた変更を、監査ログを使用して分析する方法を説明しています。
 
-## <a name="step-3-check-for-license-problems-and-resolve-them"></a>手順 3. ライセンスに関する問題のチェックと解決
+## <a name="step-3-check-for-license-problems-and-resolve-them"></a>手順 3:ライセンスに関する問題をチェックして解決する
 
 1. **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのグループ]** の順に移動して、ライセンスを割り当てた "**人事部**" グループを見つけます。
 2. **人事部**グループのウィンドウで **[ライセンス]** を選択します。 ウィンドウの上部の通知で、ライセンスを割り当てられなかったユーザーが 10 人いることが示されます。 これをクリックすると、このグループでライセンスがエラー状態である全ユーザーの一覧が表示されます。

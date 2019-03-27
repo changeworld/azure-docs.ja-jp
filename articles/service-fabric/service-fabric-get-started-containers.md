@@ -3,8 +3,8 @@ title: Azure Service Fabric コンテナー アプリケーションを作成す
 description: Azure Service Fabric で初めての Windows コンテナー アプリケーションを作成します。 Python アプリケーションで Docker イメージを作成して、そのイメージをコンテナー レジストリにプッシュし、Service Fabric コンテナー アプリケーションをビルドおよびデプロイします。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
-manager: timlt
+author: aljo-microsoft
+manager: jpconnock
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -12,26 +12,28 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/18/2018
-ms.author: twhitney
-ms.openlocfilehash: 13637e4de0d555bdd0e70c69097b204c286eb24c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.date: 01/25/2019
+ms.author: aljo
+ms.openlocfilehash: 4133379ff7c1c0a64bd2d9aefdafdd5cdb530491
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063830"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875070"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
+
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-get-started-containers.md)
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
-既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、Service Fabric クラスターにデプロイする方法について説明します。 また、[Azure Container Registry](/azure/container-registry/) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。 この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
+既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 この記事では、Python の [Flask](http://flask.pocoo.org/) Web アプリケーションが含まれた Docker イメージを作成し、ローカル マシン上で実行している Service Fabric クラスターにデプロイする方法について説明します。 また、[Azure Container Registry](/azure/container-registry/) を使用して、コンテナー化されたアプリケーションを共有する方法についても説明します。 この記事では、Docker の基本的な理解ができていることを前提としています。 Docker の詳細は、「[Docker Overview (Docker の概要)](https://docs.docker.com/engine/understanding-docker/)」で確認できます。
 
 > [!NOTE]
 > この記事は Windows 開発環境に適用されます。  Service Fabric クラスター ランタイムと Docker ランタイムが同じ OS で実行されている必要があります。  Linux クラスターで Windows コンテナーを実行することはできません。
 
 ## <a name="prerequisites"></a>前提条件
+
 * 次のものを実行している開発コンピューター。
   * Visual Studio 2015 または Visual Studio 2017。
   * [Service Fabric SDK およびツール](service-fabric-get-started.md)。
@@ -41,10 +43,10 @@ ms.locfileid: "54063830"
 
   この記事では、クラスター ノードで実行されている Windows Server with Containers のバージョン (ビルド) を、お使いの開発コンピューターのバージョンと一致させる必要があります。 これは、お使いの開発用コンピューターで Docker イメージをビルドしており、コンテナー OS のバージョンとデプロイ先のホスト OS のバージョンとの間に互換性の制約があるからです。 詳細については、「[Windows Server コンテナーの OS とホスト OS の互換性](#windows-server-container-os-and-host-os-compatibility)」を参照してください。 
   
-  クラスターに必要な Windows Server with Containers のバージョンを確認するには、開発用コンピューターで Windows コマンド プロンプトから `ver` コマンドを実行します。
+クラスターに必要な Windows Server with Containers のバージョンを確認するには、開発用コンピューターで Windows コマンド プロンプトから `ver` コマンドを実行します。
 
-  * バージョンに *x.x.14323.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServer 2016-Datacenter-with-Containers* を選択します。 また、Party Cluster に参加して [Service Fabric を無料で試す](https://aka.ms/tryservicefabric)こともできます。
-  * バージョンに *x.x.16299.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* を選択します。 ただし、パーティ クラスターを使用することはできません。
+* バージョンに *x.x.14323.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServer 2016-Datacenter-with-Containers* を選択します。
+  * バージョンに *x.x.16299.x* が含まれている場合は、[クラスターの作成](service-fabric-cluster-creation-via-portal.md) 時にオペレーティング システムに *WindowsServerSemiAnnual Datacenter-Core-1709-with-Containers* を選択します。
 
 * Azure Container Registry のレジストリ。Azure サブスクリプションに[コンテナー レジストリを作成します](../container-registry/container-registry-get-started-portal.md)。
 
@@ -57,6 +59,7 @@ ms.locfileid: "54063830"
 > 
 
 ## <a name="define-the-docker-container"></a>Docker コンテナーを定義する
+
 Docker Hub にある [Python イメージ](https://hub.docker.com/_/python/)を基にしてイメージをビルドします。
 
 Dockerfile で Docker コンテナーを指定します。 Dockerfile は、コンテナー内で環境をセットアップし、実行するアプリを読み込み、ポートを割り当てるための手順で構成されています。 Dockerfile はイメージを作成する `docker build` コマンドへの入力です。
@@ -150,7 +153,7 @@ docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 docker inspect my-web-site
 ```
 
-実行中のコンテナーに接続します。 Web ブラウザーでその IP アドレスを開きます ("http://172.31.194.61" など)。 "Hello World!" という見出しが ブラウザーに表示されます。
+実行中のコンテナーに接続します。 Web ブラウザーでその IP アドレスを開きます ("<http://172.31.194.61>" など)。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 コンテナーを停止するには、次を実行します。
 
@@ -166,6 +169,7 @@ docker rm my-web-site
 
 <a id="Push-Containers"></a>
 ## <a name="push-the-image-to-the-container-registry"></a>コンテナー レジストリにイメージをプッシュする
+
 コンテナーが開発コンピューターで実行されることを確認したら、イメージを Azure Container Registry のレジストリにプッシュします。
 
 [レジストリの資格情報](../container-registry/container-registry-authentication.md)を使用してコンテナー レジストリにログインするには、``docker login`` を実行します。
@@ -257,6 +261,7 @@ Service Fabric は、エンドポイントを定義することによって、�
 > 適用可能なプロパティ値を持つ追加の PortBinding 要素を宣言することで、サービスの追加の PortBinding を追加できます。
 
 ## <a name="configure-container-registry-authentication"></a>コンテナー レジストリの認証を構成する
+
 コンテナー レジストリの認証は、ApplicationManifest.xml ファイルの `ContainerHostPolicies` に `RepositoryCredentials` を追加することによって構成します。 myregistry.azurecr.io コンテナー レジストリのアカウントとパスワードを追加することで、サービスがコンテナー イメージをリポジトリからダウンロードできるようになります。
 
 ```xml
@@ -414,7 +419,7 @@ Service Fabric では、バージョン 6.1 以降、[Docker HEALTHCHECK](https:
 
 ![HealthCheckHealthy][3]
 
-![HealthCheckUnealthyApp][4]
+![HealthCheckUnhealthyApp][4]
 
 ![HealthCheckUnhealthyDsp][5]
 
@@ -448,7 +453,8 @@ Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する
 ブラウザーを開き、 http://containercluster.westus2.cloudapp.azure.com:8081 に移動します。 "Hello World!" という見出しが ブラウザーに表示されます。
 
 ## <a name="clean-up"></a>クリーンアップ
-クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-cluster-delete.md)を検討してください。 [パーティ クラスター](https://try.servicefabric.azure.com/)は数時間後に自動的に削除されます。
+
+クラスターの実行中は、料金が継続的に発生します。[クラスターの削除](service-fabric-cluster-delete.md)を検討してください。
 
 コンテナー レジストリにイメージをプッシュした後は、開発コンピューターからローカルのイメージを削除できます。
 
@@ -521,8 +527,8 @@ VM 上の基になる OS がビルド 16299 (バージョン 1709) である場�
 <ServiceManifest Name="Guest1Pkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <ServiceTypes>
     <!-- This is the name of your ServiceType.
          The UseImplicitHost attribute indicates this is a guest service. -->
@@ -548,7 +554,7 @@ VM 上の基になる OS がビルド 16299 (バージョン 1709) である場�
 
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
+  <!-- Config package is the contents of the Config directory under PackageRoot that contains an
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
@@ -568,8 +574,8 @@ VM 上の基になる OS がビルド 16299 (バージョン 1709) である場�
 <ApplicationManifest ApplicationTypeName="MyFirstContainerType"
                      ApplicationTypeVersion="1.0.0"
                      xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                     xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                     xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <Parameters>
     <Parameter Name="Guest1_InstanceCount" DefaultValue="-1" />
   </Parameters>

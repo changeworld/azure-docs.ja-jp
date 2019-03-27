@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 02/07/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e1a001a60151136be6bde9de38f971807cf0c288
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: eeb3b2098cf477004ba7ad85a903f1a8e2267392
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188404"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117831"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -23,17 +23,21 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 
 |データソース  |メモリ内  |DirectQuery  |
 |---------|---------|---------|
-|Azure SQL Database     |   はい      |    はい      |
+|Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   はい      |    はい      |
 |Azure SQL Data Warehouse     |   はい      |   はい       |
-|Azure Blob Storage*     |   はい       |    いいえ       |
-|Azure Table Storage*    |   はい       |    いいえ       |
-|Azure Cosmos DB*     |  はい        |  いいえ         |
-|Azure Data Lake Store*     |   はい       |    いいえ       |
-|Azure HDInsight HDFS*     |     はい     |   いいえ        |
-|Azure HDInsight Spark*     |   はい       |   いいえ        |
+|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   はい       |    いいえ       |
+|Azure Table Storage<sup>[1](#tab1400a)</sup>    |   はい       |    いいえ       |
+|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  はい        |  いいえ         |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>、<sup>[4](#gen2)</sup>      |   はい       |    いいえ       |
+|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     はい     |   いいえ        |
+|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>、<sup>[3](#databricks)</sup>     |   はい       |   いいえ        |
 ||||
 
-\* 表形式 1400 モデルのみ。
+<a name="tab1400a">1</a> - 1400 以上の表形式モデルのみ。   
+<a name="azsqlmanaged">2</a> - Azure SQL Database Managed Instance がサポートされています。 マネージ インスタンスはプライベート IP アドレスを持つ Azure VNet 内で実行されるため、オンプレミス データ ゲートウェイが必要です。   
+<a name="databricks">3</a> - Spark コネクタを使用する Azure Databricks は現在サポートされていません。   
+<a name="gen2">4</a> - ADLS Gen2 は現在サポートされていません。
+
 
 **プロバイダー**   
 Azure データ ソースに接続するメモリ内モデルおよび DirectQuery モデルは、.NET Framework SQL Server 用データ プロバイダーを使います。
@@ -48,40 +52,40 @@ Azure AS サーバーからオンプレミスのデータ ソースに接続す�
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework SQL Server 用データ プロバイダー | SQL Server 用の .NET Framework データ プロバイダー |
 | SQL Server Data Warehouse |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework SQL Server 用データ プロバイダー | SQL Server 用の .NET Framework データ プロバイダー |
-| Oracle |Microsoft OLE DB Provider for Oracle、Oracle Data Provider for .NET |Oracle Data Provider for .NET | |
-| Teradata |OLE DB Provider for Teradata、Teradata Data Provider for .NET |Teradata Data Provider for .NET | |
+| Oracle |Microsoft OLE DB Provider for Oracle、Oracle Data Provider for .NET |Oracle Data Provider for .NET |
+| Teradata |OLE DB Provider for Teradata、Teradata Data Provider for .NET |Teradata Data Provider for .NET |
 | | | |
 
 ### <a name="in-memory-only"></a>メモリ内のみ
 
 |データソース  |  
-|---------|---------|
+|---------|
 |Access データベース     |  
-|Active Directory*     |  
+|Active Directory<sup>[1](#tab1400b)</sup>     |  
 |Analysis Services     |  
 |Analytics Platform System     |  
-|Dynamics CRM*     |  
+|Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
 |Excel ブック     |  
-|Exchange*     |  
-|フォルダー*     |
-|IBM Informix* (ベータ) |
-|JSON ドキュメント*     |  
-|バイナリからの行*     | 
+|Exchange<sup>[1](#tab1400b)</sup>     |  
+|Folder<sup>[1](#tab1400b)</sup>     |
+|IBM Informix<sup>[1](#tab1400b)</sup> (ベータ) |
+|JSON ドキュメント<sup>[1](#tab1400b)</sup>     |  
+|バイナリからの行<sup>[1](#tab1400b)</sup>     | 
 |MySQL Database     | 
-|OData フィード*     |  
+|OData フィード<sup>[1](#tab1400b)</sup>     |  
 |ODBC クエリ     | 
 |OLE DB     |   
-|Postgre SQL データベース*    | 
-|Salesforce オブジェクト* |  
-|Salesforce レポート* |
-|SAP HANA*    |  
-|SAP Business Warehouse*    |  
-|SharePoint*     |   
+|Postgre SQL データベース<sup>[1](#tab1400b)</sup>    | 
+|Salesforce オブジェクト<sup>[1](#tab1400b)</sup> |  
+|Salesforce レポート<sup>[1](#tab1400b)</sup> |
+|SAP HANA<sup>[1](#tab1400b)</sup>    |  
+|SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
+|SharePoint<sup>[1](#tab1400b)</sup>     |   
 |Sybase データベース     |  
-|XML テーブル*    |  
-|||
+|XML テーブル<sup>[1](#tab1400b)</sup>    |  
+||
  
-\* 表形式 1400 モデルのみ。
+<a name="tab1400b">1</a> 1400 以上の表形式モデルのみ。
 
 ## <a name="specifying-a-different-provider"></a>別のプロバイダーを指定する
 

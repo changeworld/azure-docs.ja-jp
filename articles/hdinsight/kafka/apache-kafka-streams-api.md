@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: cb959bd74322534573f83c2b3258ff28d4c324ff
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3c40e00d55af49b1b040d3fe706f08af719b2238
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584158"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112791"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>チュートリアル:Apache Kafka Streams API
 
@@ -199,13 +199,13 @@ public class Stream
 
     トピックは、次の目的で使用されます。
 
-    * `test`:このトピックは、レコードが受信される場所です。 ストリーミング アプリケーションはここから読み取ります。
-    * `wordcounts`:このトピックは、ストリーミング アプリケーションがその出力を格納する場所です。
-    * `RekeyedIntermediateTopic`:このトピックは、`countByKey` 演算子によってカウントが更新される場合にデータ パーティションを再作成するために使用されます。
-    * `wordcount-example-Counts-changelog`:このトピックは、`countByKey` 演算で使用される状態ストアです
+   * `test`:このトピックは、レコードが受信される場所です。 ストリーミング アプリケーションはここから読み取ります。
+   * `wordcounts`:このトピックは、ストリーミング アプリケーションがその出力を格納する場所です。
+   * `RekeyedIntermediateTopic`:このトピックは、`countByKey` 演算子によってカウントが更新される場合にデータ パーティションを再作成するために使用されます。
+   * `wordcount-example-Counts-changelog`:このトピックは、`countByKey` 演算で使用される状態ストアです
 
-    > [!IMPORTANT]  
-    > HDInsight 上の Kafka は、トピックを自動的に作成するように構成することもできます。 詳細については、[自動トピック作成の構成](apache-kafka-auto-create-topics.md)に関するドキュメントをご覧ください。
+     > [!IMPORTANT]  
+     > HDInsight 上の Kafka は、トピックを自動的に作成するように構成することもできます。 詳細については、[自動トピック作成の構成](apache-kafka-auto-create-topics.md)に関するドキュメントをご覧ください。
 
 ## <a name="run-the-code"></a>コードの実行
 

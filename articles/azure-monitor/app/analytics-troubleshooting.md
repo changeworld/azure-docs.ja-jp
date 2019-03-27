@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/11/2016
+ms.date: 02/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf999e15c04a64f717bcd7bac87e357d5ccc92e6
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ecf0638aa999208331603ac30ccf4eb17b3c4500
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189934"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960685"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Application Insights の Analytics のトラブルシューティング
 [Application Insights Analytics](analytics.md)で問題が発生しましたか? ここから開始します。 Analytics は、Azure Application Insights の強力な検索ツールです。
@@ -36,7 +36,7 @@ ms.locfileid: "54189934"
 
 ポータルの実行時に内部エラー (未処理の例外) が発生しました。
 
-* ブラウザーのキャッシュを削除します。 
+* ブラウザーのキャッシュを削除します。
 
 ## <a name="e-b"></a>403 ... 再読み込みしてください
 ![403 ... 再読み込みしてください](media/analytics-troubleshooting/020.png)

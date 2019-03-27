@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning service
 description: Azure Machine Learning for Visual Studio Code をインストールし、Azure Machine Learning で簡単な実験を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
 ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 902c659d2c51d69f2e9d0ef3a7401326e0e530eb
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 5e7e405bdb251bbebc5da81253eea2414b434cb8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013147"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838316"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code の使用を開始する
 
@@ -23,10 +23,10 @@ ms.locfileid: "54013147"
 
 Visual Studio Code で Azure Machine Learning 拡張機能を使用して、Azure Machine Learning service を使用し、データの準備、ローカルとリモートのコンピューティング ターゲットでの機械学習モデルのトレーニングとテスト、それらのモデルのデプロイ、カスタム メトリックと実験の追跡を行います。
 
-## <a name="prerequisite"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 
-+ Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
++ Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 + Visual Studio Code をインストールする必要があります。 VS Code とは、デスクトップ上で実行される、軽量にもかかわらず強力なソース コード エディターです。 Python などの組み込みサポートが付属します。  [VS Code のインストール方法を確認](https://code.visualstudio.com/docs/setup/setup-overview)してください。
 
@@ -60,19 +60,17 @@ Azure Machine Learning を使用するには、VS Code を Python IDE に変換�
 > [!Tip] 
 > [VS Code の IntelliCode 拡張機能 (プレビュー)](https://go.microsoft.com/fwlink/?linkid=2006060) を確認してください。 IntelliCode は、現在のコード コンテキストに基づいた最も関連性の高いオートコンプリートの推測など、Python における IntelliSense に一連の AI 支援機能を提供します。
 
-## <a name="install-the-sdk"></a>SDK のインストール
+## <a name="azure-ml-sdk-installation"></a>Azure ML SDK のインストール
 
 1. Python 3.5 以上をインストールし、VS Code によって認識されていることを確認してください。 ここでインストールする場合は、VS Code を再起動し、 https://code.visualstudio.com/docs/python/python-tutorial の手順に従って Python インタープリターを選択します。
-
-1. VS Code でコマンド パレットを開きます (**Ctrl + Shift + P**)。
-
-1. 「Install Azure ML SDK」と入力して、SDK の pip インストール コマンドを探します。 Azure Machine Learning を使用するための Visual Studio Code の前提条件を備えた、ローカルのプライベート Python 環境が作成されます。
-
-   ![Azure Machine Learning SDK for Python をインストールする](./media/vscode-tools-for-ai/install-sdk.png)
 
 1. 統合ターミナル ウィンドウで、使用する Python インタープリターを指定します。または、**Enter** キーを押すと既定の Python インタープリターを使用できます。
 
    ![インタープリターを選択する](./media/vscode-tools-for-ai/python.png)
+
+1. ウィンドウの右下隅に、Azure ML SDK が自動的にインストールされていることを示す通知が表示されます。    Azure Machine Learning を使用するための Visual Studio Code の前提条件を備えた、ローカルのプライベート Python 環境が作成されます。
+
+   ![Azure Machine Learning SDK for Python をインストールする](./media/vscode-tools-for-ai/runtimedependencies.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>Azure Machine Learning の利用を開始
 

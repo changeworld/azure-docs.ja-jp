@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: shlo
-ms.openlocfilehash: e733b82e1b5870d98de5d65771bd621d9bffdf44
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4188fb413cc1001b6e4813fe69518a016c8c0656
+ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024894"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54354265"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory の GetMetadata アクティビティ
 GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータの**メタデータ**を取得できます。 このアクティビティは、次のシナリオで使用できます。
@@ -33,7 +33,7 @@ GetMetadata アクティビティを使用すると、Azure Data Factory で任�
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-GetMetadata アクティビティは必須の入力としてデータセットを受け取り、使用可能なメタデータ情報をアクティビティ出力として出力します。 現時点では、対応する取得可能なメタデータを持つ次のコネクターがサポートされ、サポートされるメタデータの最大サイズは **1 MB** です。
+GetMetadata アクティビティは必須の入力としてデータセットを受け取り、使用可能なメタデータ情報をアクティビティ出力として出力します。 現時点では、対応する取得可能なメタデータを持つ次のコネクタがサポートされ、サポートされるメタデータの最大サイズは **1 MB** です。
 
 >[!NOTE]
 >セルフホステッドの Integration Runtime で GetMetadata アクティビティを実行する場合、最新の機能はバージョン 3.6 以降でサポートされます。 
@@ -130,8 +130,8 @@ GetMetadata アクティビティのフィールド リストで、次のメタ�
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-fieldList | 必要なメタデータ情報のタイプを一覧表示します。 サポートされているメタデータに関する詳細は、[メタデータ オプション](#metadata-options) セクションをご覧ください。 | [はい] 
-dataset | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 サポートされているコネクタに関する詳細は、[サポートされる機能](#supported-capabilities)セクションをご覧になり、データセット構文の詳細に関するコネクタ トピックを参照してください。 | [はい]
+fieldList | 必要なメタデータ情報のタイプを一覧表示します。 サポートされているメタデータに関する詳細は、[メタデータ オプション](#metadata-options) セクションをご覧ください。 | はい 
+dataset | GetMetadata アクティビティによってメタデータ アクティビティが取得される参照データセット。 サポートされているコネクタに関する詳細は、[サポートされる機能](#supported-capabilities)セクションをご覧になり、データセット構文の詳細に関するコネクタ トピックを参照してください。 | はい
 
 ## <a name="sample-output"></a>サンプル出力
 

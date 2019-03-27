@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 9ed7655600749118423ae2a46fed7c0ac13cfb15
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: b71fd64692f564c693ced48ca19afd1f5f2d0179
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245040"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238807"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Azure Resource Manager テンプレートに関する考慮事項
 

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 890ca3abf08e280dcf0a48355ab1dea87331805b
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: c6bee5c66661f59a6287d624bf5a55428ebbe56e
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063461"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55238120"
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>Azure Stack での PowerShell による API バージョンのプロファイルの使用
 
@@ -42,6 +43,7 @@ Install-Module -Name AzureRm.BootStrapper
 
 | バージョン番号 | API バージョンのプロファイル | PS 管理者モジュール モニカー |
 | --- | --- | --- |
+| 1811 以降 | 2018-03-01-hybrid | 1.6.0 |
 | 1808 以降 | 2018-03-01-hybrid | 1.5.0 |
 | 1804 以降 | 2017-03-09-profile | 1.4.0 |
 | 1804 より前のバージョン | 2017-03-09-profile | 1.2.11 |

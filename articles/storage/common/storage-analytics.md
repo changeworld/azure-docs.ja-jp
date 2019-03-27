@@ -8,13 +8,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 0f237b4d742c0c7de1e836e2b9d83502cfe1a30d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 1b27bbaa3d8e570c8431708934edee564e994487
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231013"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745658"
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -28,7 +28,7 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 
 Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 
-## <a name="about-storage-analytics-logging"></a>Storage Analytics Logging について
+## <a name="about-storage-analytics-logging"></a>Storage Analytics のログ記録について
 Storage Analytics は、ストレージ サービスに対する要求の成功と失敗についての詳細な情報をログに記録します。 この情報を使って個々の要求を監視したり、ストレージ サービスに関する問題を診断したりできます。 要求は、ベスト エフォートでログに記録されます。
 
 ログ エントリが作成されるのは、ストレージ サービス アクティビティが存在する場合に限られます。 たとえば、ストレージ アカウントの Blob service にはアクティビティが存在するが、Table service や Queue サービスにはアクティビティが存在しない場合、Blob service に関連したログだけが作成されます。
@@ -43,7 +43,7 @@ Storage Analytics Logging は、Azure Files では使用できません。
 * Shared Access Signature (SAS) を使用した要求 (失敗した要求と成功した要求を含む)
 * データの分析要求
 
-Storage Analytics そのものによる要求 (ログの作成/削除など) は記録されません。 ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)」および「[Storage Analytics のログの形式](https://msdn.microsoft.com/library/hh343259.aspx)」をご覧ください。
+Storage Analytics そのものによる要求 (ログの作成/削除など) は記録されません。 ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。
 
 ### <a name="logging-anonymous-requests"></a>匿名要求のログ記録
 次のタイプの匿名要求が記録されます。
@@ -53,7 +53,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 * クライアントとサーバーの両方のタイムアウト エラー
 * エラー コード 304 (Not Modified) で失敗した GET 要求
 
-その他の失敗した匿名要求は一切記録されません。 ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)」および「[Storage Analytics のログの形式](https://msdn.microsoft.com/library/hh343259.aspx)」をご覧ください。
+その他の失敗した匿名要求は一切記録されません。 ログに記録されるデータの一覧については、「[Storage Analytics によって記録される操作およびステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」および「[Storage Analytics のログの形式](/rest/api/storageservices/storage-analytics-log-format)」をご覧ください。
 
 ### <a name="how-logs-are-stored"></a>ログの保存方法
 すべてのログは、Storage Analytics をストレージ アカウントに対して有効にしたときに自動的に作成される $logs という名前のコンテナー内のブロック BLOB に格納されます。 $logs コンテナーは、ストレージ アカウントの BLOB 名前空間にあります (例: `http://<accountname>.blob.core.windows.net/$logs`)。 Storage Analytics を有効にした後は、このコンテナーを削除することはできません。ただし、コンテナーの内容を削除することはできます。
@@ -61,8 +61,8 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 > [!NOTE]
 > コンテナーの一覧作成操作 ( [ListContainers](https://msdn.microsoft.com/library/azure/dd179352.aspx) メソッドなど) を実行しても、$logs コンテナーは表示されません。 直接アクセスする必要があります。 たとえば、[ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx) メソッドを使用して、`$logs` コンテナー内の BLOB にアクセスできます。
 > 要求がログに記録されると、Storage Analytics は、中間結果をブロックとしてアップロードします。 これらのブロックを定期的にコミットし、BLOB として利用できるようにします。
-> 
-> 
+>
+>
 
 同じ時間内に作成されたログについて、重複するレコードが存在する場合があります。 レコードが重複しているかどうかは、**RequestId** と **Operation** の数をチェックすることによって確認できます。
 
@@ -76,12 +76,12 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 | Attribute | 説明 |
 | --- | --- |
 | <service-name> |ストレージ サービスの名前。 例: blob、table、または queue |
-| YYYY |ログの 4 桁表記の年。 例: 2011 |
-| MM |ログの 2 桁表記の月。 例: 07 |
-| DD |ログの 2 桁表記の月。 例: 07 |
-| hh |ログの開始時刻 (時) を示す 2 桁の数字 (24 時間制 UTC 形式)。 例: 18 |
+| YYYY |ログの 4 桁表記の年。 例: 2011。 |
+| MM |ログの 2 桁表記の月。 例: 07。 |
+| DD |ログの 2 桁表記の月。 例: 07。 |
+| hh |ログの開始時刻 (時) を示す 2 桁の数字 (24 時間制 UTC 形式)。 例: 18. |
 | MM |ログの開始時刻 (分) を示す 2 桁の数字。 現在のバージョンの Storage Analytics ではこの値はサポートされず、常に 00 になります。 |
-| <counter> |1 時間おきにストレージ サービスに対して生成されるログ BLOB の数を示す 0 から始まる 6 桁のカウンター。 このカウンターの初期値は 000000 です。 例: 000001 |
+| <counter> |1 時間おきにストレージ サービスに対して生成されるログ BLOB の数を示す 0 から始まる 6 桁のカウンター。 このカウンターの初期値は 000000 です。 例: 000001。 |
 
 以上の例をすべて組み合わせたサンプルのログ名は、次のようになります。
 
@@ -99,8 +99,8 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 | Attribute | 説明 |
 | --- | --- |
 | LogType |読み取り、書き込み、削除の各操作に関連した情報がログに含まれているかどうかを表します。 この値には、操作の種類が 1 つだけ含まれている場合もあれば、3 つすべてがコンマ区切りで記録されている場合もあります。 例 1: write 例 2: read,write 例 3: read,write,delete |
-| StartTime |ログに含まれる最も古いエントリの時刻です (YYYY-MM-DDThh:mm:ssZ 形式)。 例: 2011-07-31T18:21:46Z |
-| EndTime |ログに含まれる最も新しいエントリの時刻です (YYYY-MM-DDThh:mm:ssZ 形式)。 例: 2011-07-31T18:22:09Z |
+| StartTime |ログに含まれる最も古いエントリの時刻です (YYYY-MM-DDThh:mm:ssZ 形式)。 例: 2011-07-31T18:21:46Z。 |
+| EndTime |ログに含まれる最も新しいエントリの時刻です (YYYY-MM-DDThh:mm:ssZ 形式)。 例: 2011-07-31T18:22:09Z。 |
 | LogVersion |ログのフォーマットのバージョン。 現在サポートされている値: 1.0 |
 
 以上の例を使用したサンプル メタデータを次に示します。
@@ -129,17 +129,17 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 
 ### <a name="capacity-metrics"></a>容量メトリック
 > [!NOTE]
-> 現在、容量メトリックは、Blob service に対してのみ利用できます。 Table service と Queue サービスに関する容量メトリックは、Storage Analytics の将来のバージョンでの提供を予定しています。
-> 
-> 
+> 現在、容量メトリックは、Blob service に対してのみ利用できます。
+>
+>
 
 容量データはストレージ アカウントの Blob service に対して毎日記録され、2 つのテーブル エンティティが書き込まれます。 一方のエンティティは、ユーザー データの統計情報です。もう一方のエンティティは、Storage Analytics によって使用される `$logs` BLOB コンテナーに関する統計情報です。 `$MetricsCapacityBlob` テーブルには、次の統計情報が含まれています。
 
-* **Capacity**: ストレージ アカウントの Blob service によって使用されているストレージの量 (バイト単位)。
-* **ContainerCount**: ストレージ アカウントの Blob service 内の BLOB コンテナーの数。
-* **ObjectCount**: ストレージ アカウントの Blob service 内のコミット済みとコミット前のブロック BLOB またはページ BLOB の数。
+* **Capacity**:ストレージ アカウントの Blob service によって使われているストレージの量 (バイト単位)。
+* **ContainerCount**:ストレージ アカウントの Blob service 内のコンテナーの数。
+* **ObjectCount**:ストレージ アカウントの Blob service 内のコミット済みとコミット前のブロック BLOB またはページ BLOB の数。
 
-容量メトリックの詳細については、「 [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx)」をご覧ください。
+容量メトリックの詳細については、「 [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/storage-analytics-metrics-table-schema)」をご覧ください。
 
 ### <a name="how-metrics-are-stored"></a>メトリックの保存
 各ストレージ サービスのすべてのメトリック データはそのサービスに予約された次の 3 つのテーブルに格納されます。トランザクション情報用に 1 つ、分単位のトランザクション情報用に 1 つ、容量情報用に 1 つのテーブルです。 トランザクション情報と分単位のトランザクション情報は、要求データと応答データから構成されます。容量情報は、ストレージ使用量データから構成されます。 ストレージ アカウントの Blob service に関する時間単位のメトリック、分単位のメトリック、容量は、次の表に示す名前のテーブルで利用できます。
@@ -163,7 +163,7 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 
 Storage Analytics によって実行される次の操作には料金が発生します。
 
-* ログの BLOB の作成要求 
+* ログの BLOB の作成要求
 * メトリックのテーブル エンティティの作成要求
 
 データ保持ポリシーを構成した場合、Storage Analytics が古いログ データやメトリック データを削除しますが、その際の削除トランザクションに対する料金は発生しません。 ただし、クライアントからの削除トランザクションは課金対象となります。 保持ポリシーの詳細については、「 [Storage Analytics のデータ保持ポリシーの設定](https://msdn.microsoft.com/library/azure/hh343263.aspx)」をご覧ください。
@@ -171,20 +171,9 @@ Storage Analytics によって実行される次の操作には料金が発生�
 ### <a name="understanding-billable-requests"></a>課金の対象となる要求について
 アカウントのストレージ サービスに対して実行されるそれぞれの要求は、課金対象の要求とそうでない要求とに分けられます。 Storage Analytics は、サービスに対するすべての要求をそれぞれログに記録します。たとえば、要求がどのように処理されたかを示すステータス メッセージも記録されます。 同様に、Storage Analytics は、サービスに対するメトリックと、そのサービスの API 操作に対するメトリックを保存しています (特定のステータス メッセージの数やパーセンテージなど)。 これらの機能をうまく組み合わせて利用すると、課金対象の要求を分析したり、アプリケーションを改善したり、サービスに対する要求の問題を診断したりできます。 課金の詳細については、「[Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity (Azure Storage の課金について - 帯域幅、トランザクション、容量)](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)」をご覧ください。
 
-Storage Analytics のデータで課金対象の要求を調べるときには、「 [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/azure/hh343260.aspx) 」の表が参考になります。 手元のログ データとメトリック データをステータス メッセージと照らし合わせながら、特定の要求が課金対象であったかどうかを確認できます。 この表は、ストレージ サービスまたは特定の API 操作の可用性を調べるときにも利用できます。
+Storage Analytics のデータで課金対象の要求を調べるときには、「 [Storage Analytics によって記録される操作やステータス メッセージ](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) 」の表が参考になります。 手元のログ データとメトリック データをステータス メッセージと照らし合わせながら、特定の要求が課金対象であったかどうかを確認できます。 この表は、ストレージ サービスまたは特定の API 操作の可用性を調べるときにも利用できます。
 
 ## <a name="next-steps"></a>次の手順
-### <a name="setting-up-storage-analytics"></a>Storage Analytics の設定
 * [Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)
-* [Storage Analytics の有効化と構成](https://msdn.microsoft.com/library/hh360996.aspx)
-
-### <a name="storage-analytics-logging"></a>Storage Analytics Logging
-* [Storage Analytics Logging について](https://msdn.microsoft.com/library/hh343262.aspx)
-* [Storage Analytics のログの形式](https://msdn.microsoft.com/library/hh343259.aspx)
-* [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)
-
-### <a name="storage-analytics-metrics"></a>Storage Analytics Metrics
-* [Storage Analytics Metrics について](https://msdn.microsoft.com/library/hh343258.aspx)
-* [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx)
-* [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)  
-
+* [Storage Analytics のログ記録](https://msdn.microsoft.com/library/hh343262.aspx)
+* [Storage Analytics のメトリック](https://msdn.microsoft.com/library/hh343258.aspx)

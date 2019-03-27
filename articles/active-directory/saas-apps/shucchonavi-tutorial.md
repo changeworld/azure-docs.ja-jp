@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Shuccho Navi の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Shuccho Navi の統合 | Microsoft Docs
 description: Azure Active Directory と Shuccho Navi の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: jeedes
-ms.openlocfilehash: f90af5b57fcb9ed7f02bba0a184dacb17570136b
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1709abdf1d5e90cb253e67b29c0e48f6aa29a712
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311938"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209678"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>チュートリアル: Azure Active Directory と Shuccho Navi の統合
+# <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>チュートリアル:Azure Active Directory と Shuccho Navi の統合
 
 このチュートリアルでは、Shuccho Navi と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -116,7 +117,7 @@ Shuccho Navi で Azure AD のシングル サインオンを構成してテス�
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Shuccho Navi サポート チーム](mailto:sys_ntabtm@nta.co.jp)にお問い合わせください。
  
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードして、コンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードし、コンピューターに保存します。
 
     ![image](./media/shucchonavi-tutorial/tutorial_shucchonavi_certificate.png) 
 
@@ -134,22 +135,22 @@ Shuccho Navi で Azure AD のシングル サインオンを構成してテス�
 
     ![image](./media/shucchonavi-tutorial/d_adduser.png)
 
-3. [ユーザーのプロパティ] で、次の手順を実行します。
+3. [ユーザーのプロパティ] で、次の手順のようにします。
 
     ![image](./media/shucchonavi-tutorial/d_userproperties.png)
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
  
 ### <a name="create-a-shuccho-navi-test-user"></a>Shuccho Navi テスト ユーザーの作成
 
-このセクションでは、Shuccho Navi で Britta Simon というユーザーを作成します。 [Shuccho Navi サポート チーム](mailto:sys_ntabtm@nta.co.jp)と協力して、Shuccho Navi プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Shuccho Navi で Britta Simon というユーザーを作成します。  [Shuccho Navi サポート チーム](mailto:sys_ntabtm@nta.co.jp)と協力して、Shuccho Navi プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -180,7 +181,7 @@ Shuccho Navi で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Shuccho Navi] タイルをクリックすると、自動的に Shuccho Navi アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

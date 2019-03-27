@@ -7,17 +7,17 @@ ms.service: storage
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: rogarana
-ms.component: common
-ms.openlocfilehash: 93e09f3ab6780eb9ce7fa29b4554b53d796b6837
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.subservice: common
+ms.openlocfilehash: 2f00b01bb07aafca847897f0c31d24d4add7cdbf
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51564955"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328879"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-standard-storage-accounts"></a>Standard ストレージ アカウントでの Azure Storage のスケーラビリティとパフォーマンスのターゲット
 
-この記事では、Standard Azure ストレージ アカウントでのスケーラビリティとパフォーマンスのターゲットについて詳しく説明します。 ここで示すスケーラビリティおよびパフォーマンスのターゲットは、ハイエンドのターゲットですが、達成可能です。 いかなる場合でも、ストレージ アカウントで達成される要求レートおよび帯域幅は、格納されたオブジェクトのサイズ、使用されているアクセス パターン、およびアプリケーションで実行されているワークロードの種類によって異なります。 
+この記事では、Azure ストレージ アカウントでのスケーラビリティとパフォーマンスのターゲットについて詳しく説明します。 ここで示すスケーラビリティおよびパフォーマンスのターゲットは、ハイエンドのターゲットですが、達成可能です。 いかなる場合でも、ストレージ アカウントで達成される要求レートおよび帯域幅は、格納されたオブジェクトのサイズ、使用されているアクセス パターン、およびアプリケーションで実行されているワークロードの種類によって異なります。 
 
 必ずサービスをテストして、パフォーマンスがユーザー要件を満たしているかどうかを確認してください。 可能であれば、トラフィック量の急増を回避し、トラフィックがパーティション間でうまく分散されるようにしてください。
 
@@ -26,7 +26,10 @@ ms.locfileid: "51564955"
 ## <a name="standard-storage-account-scale-limits"></a>Standard ストレージ アカウントのスケールの上限
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
-## <a name="storage-resource-provider-scale-limits"></a>ストレージ リソース プロバイダーのスケールの上限 
+## <a name="premium-storage-account-scale-limits"></a>Premium ストレージ アカウントのスケールの上限
+[!INCLUDE [azure-premium-limits](../../../includes/azure-storage-limits-premium.md)]
+
+## <a name="storage-resource-provider-scale-limits"></a>ストレージ リソース プロバイダーのスケールの上限
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 

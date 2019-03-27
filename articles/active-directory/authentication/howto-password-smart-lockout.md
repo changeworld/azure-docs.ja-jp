@@ -3,19 +3,20 @@ title: Azure AD のスマート ロックアウトを使用してブルート �
 description: Azure Active Directory のスマート ロックアウトを使用すると、パスワードを推測するブルート フォース攻撃から組織を守れます
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 80b1896c55d00a4ac8e5dea62afc08ace1a84249
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e44b6a8232bcd0bc72c4faa0f7116d42cec79111
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078526"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172418"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -23,7 +24,7 @@ ms.locfileid: "54078526"
 
 既定のスマート ロックアウトでは、10 回試行に失敗した後、アカウントによるサインインの試行が 1 分間ロックされます。 後続のサインインの試行が失敗するたびに、アカウントは再度ロックされます。最初は 1 分間、後続の試行ではより長い時間ロックされます。
 
-スマート ロックアウトでは、直近 3 つの無効なパスワードのハッシュを追跡して、ロックアウト カウンターの再増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロックアウトされることはありません。
+スマート ロックアウトでは、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロックアウトされることはありません。
 
  > [!NOTE]
  > 認証はクラウドではなくオンプレミスで行われるため、パススルー認証を有効にしているお客様はハッシュ追跡機能を利用できません。
@@ -75,7 +76,7 @@ ms.locfileid: "54078526"
 
 Smartlockout のしきい値がトリガーされると、アカウントがロックされているときに次のメッセージが表示されます。
 
-**承認されていない使用を防ぐためにアカウントが一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は、管理者にお問い合わせください。**
+**ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は管理者にお問い合わせください。**
 
 
 ## <a name="next-steps"></a>次の手順

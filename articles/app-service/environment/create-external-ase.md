@@ -14,14 +14,17 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5ab5c769280bdd91a15e6107df8c9c6b7814571c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 4a2c90accaafea0c17456f8e6c5eae41199b17ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599912"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105167"
 ---
-# <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成 #
+> [!NOTE]
+> 各 App Service Enviornment には仮想 IP (VIP) があり、これを使用して App Service Environment と通信できます。
+> 
+> # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成 #
 
 Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内のサブネットに Azure App Service をデプロイしたものです。 App Service Environment (ASE) をデプロイするには、次の 2 つの方法があります。
 
@@ -34,7 +37,7 @@ Azure App Service Environment は、Azure 仮想ネットワーク (VNet) 内の
 
 ASE を作成した後は、次の変更は行えません。
 
-- 場所
+- Location
 - サブスクリプション
 - リソース グループ
 - 使用する VNet

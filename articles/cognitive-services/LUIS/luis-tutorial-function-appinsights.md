@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Node.js を使用して LUIS アプリケーションおよび Application Insights と統合されるボットを構築する
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 0ab9e4a3d129243ec069031c5e7233f341b545e4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1c44d2e41d37a9236ee6d6936c349acf5ca5e44c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713966"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098774"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>LUIS の結果を Application Insights と Azure Functions に追加する
 このチュートリアルでは、LUIS 要求と応答の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 データを用意したら、Kusto 言語または PowerBi を使用して、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートすることができます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
@@ -26,9 +26,9 @@ ms.locfileid: "53713966"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-* Application Insights ライブラリを Web アプリ ボットに追加する
-* LUIS クエリの結果をキャプチャし、Application Insights に送信する
-* Application Insights で最上位の意図、スコア、および発話のクエリを実行する
+> * Application Insights ライブラリを Web アプリ ボットに追加する
+> * LUIS クエリの結果をキャプチャし、Application Insights に送信する
+> * Application Insights で最上位の意図、スコア、および発話のクエリを実行する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,11 +51,11 @@ LUIS 要求と応答をキャプチャするために、Web アプリ ボット�
 
 1. Azure ポータルの Web アプリ ボット サービスで、**[Bot Management]\(ボットの管理\)** セクションの **[ビルド]** を選択します。 
 
-    ![Azure portal の Web アプリ ボット サービスで、[Bot Management]\(ボットの管理\) セクションの [ビルド] を選択します。 ](./media/luis-tutorial-appinsights/build.png)
+    ![Azure portal の Web アプリ ボット サービスで、[Bot Management]\(ボットの管理\) セクションの [ビルド] を選択します。](./media/luis-tutorial-appinsights/build.png)
 
 2. App Service エディターで新しいブラウザー タブを開きます。 上部のバーでアプリの名前を選択し、**[Open Kudu Console]\(Kudu コンソールを開く\)** を選択します。 
 
-    ![上部のバーでアプリの名前を選択し、[Open Kudu Console]\(Kudu コンソールを開く\) を選択します。 ](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![上部のバーでアプリの名前を選択し、[Open Kudu Console]\(Kudu コンソールを開く\) を選択します。](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. コンソールで、次のコマンドを入力して、Application Insights と Underscore パッケージをインストールします。
 

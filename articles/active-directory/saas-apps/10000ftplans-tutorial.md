@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と 10,000ft Plans の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と 10,000ft Plans の統合 | Microsoft Docs
 description: Azure Active Directory と 10,000ft Plans の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: b60c955e-8fa3-4872-a897-c4e81fd7beac
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: cc6b1036d98aca62360ed8a935d2d1719c7f4069
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bb6f0645f1a12566f05b5f44688e4f86ab1b9725
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230354"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178262"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>チュートリアル: Azure Active Directory と 10,000ft Plans の統合
+# <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>チュートリアル:Azure Active Directory と 10,000ft Plans の統合
 
 このチュートリアルでは、10,000ft Plans と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -102,15 +103,15 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
 1. Azure Portal の **10,000ft Plans** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[Configure Single Sign-On]][4]
+    ![Configure single sign-on][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[Configure Single Sign-On]](./media/10000ftplans-tutorial/tutorial_10,000ftplans_samlbase.png)
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_10,000ftplans_samlbase.png)
 
 3. **[10,000ft Plans のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[Configure Single Sign-On]](./media/10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_10,000ftplans_url.png)
 
     a. **[サインオン URL]** ボックスに、URL として「`https://app.10000ft.com`」を入力します。
 
@@ -121,20 +122,20 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate(Raw)] \(証明書 (Raw))** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![[Configure Single Sign-On]](./media/10000ftplans-tutorial/tutorial_10,000ftplans_certificate.png) 
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_10,000ftplans_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[Configure Single Sign-On]](./media/10000ftplans-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_general_400.png)
 
 6. **[10,000ft Plans Configuration (10,000ft Plans 構成)]** セクションで、**[Configure 10,000ft Plans (10,000ft Plans を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[Configure Single Sign-On]](./media/10000ftplans-tutorial/tutorial_10,000ftplans_configure.png) 
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_10,000ftplans_configure.png) 
 
 7. **10,000ft Plans** 側にシングル サインオンを構成するには、ダウンロードされた**証明書 (未加工)、サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** を [10,000ft Plans サポート チーム](https://www.10000ft.com/plans/support)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -165,7 +166,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-10000ft-plans-test-user"></a>10,000ft Plans のテスト ユーザーの作成
 
@@ -188,7 +189,7 @@ Azure AD への 10,000ft Plans の統合を構成するには、ギャラリー�
 
 2. アプリケーションの一覧で **[10,000ft Plans]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/10000ftplans-tutorial/tutorial_10,000ftplans_app.png) 
+    ![Configure single sign-on](./media/10000ftplans-tutorial/tutorial_10,000ftplans_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: オーサリング アクセスは、所有者とコラボレーターが利用できます。 プライベート アプリについては、エンドポイント アクセスは所有者とコラボレーターが利用できます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 3de58f244012ee0460812fba1ceb5ab12f60aa51
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 4465488dc02568932e839d3234bdb672d59e6804
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602581"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089847"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>オーサリングとエンドポイントのユーザー アクセス
 オーサリング アクセスは、所有者とコラボレーターが利用できます。 プライベート アプリについては、エンドポイント アクセスは所有者とコラボレーターが利用できます。 パブリック アプリについては、エンドポイント アクセスは、自分の LUIS アカウントを持ち、パブリック アプリの ID を持つすべてのユーザーが利用できます。 
@@ -53,7 +53,7 @@ ms.locfileid: "53602581"
 プライベート アプリのエンドポイントは、次の場合のみ使用できます。
 
 |キーとユーザー|説明|
-|--|--|--|
+|--|--|
 |所有者のオーサリング キー| 最大で 1,000 エンドポイント ヒット|
 |コラボレーターのオーサリング キー| 最大で 1,000 エンドポイント ヒット|
 |作成者またはコラボレーターによって LUIS に割り当てられた任意のキー|キー使用法のレベルに基づく|

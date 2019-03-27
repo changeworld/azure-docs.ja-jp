@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 529c130f5694856f99f5d49e5b2f3628a4c3818f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6399fe3e53a572c8aea6b804c0e82ffed41cab77
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074997"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873956"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>QnA Maker に関してよく寄せられる質問
 

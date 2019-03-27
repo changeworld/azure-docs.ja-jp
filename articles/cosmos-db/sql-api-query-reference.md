@@ -4,18 +4,18 @@ description: この記事では、Azure Cosmos DB で使用される SQL クエ�
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 9e589c582e52aafb9bdd93f80a702b581b883a59
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: de50c18fa8e2bebcb584fcd5763f0428637df484
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044384"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455791"
 ---
-# <a name="azure-cosmos-db-sql-language-reference"></a>Azure Cosmos DB SQL 言語リファレンス 
+# <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB 用の SQL 言語リファレンス 
 
 Azure Cosmos DB は、明示的なスキーマまたはセカンダリ インデックスの作成を必要とせずに、階層型 JSON ドキュメントに対する文法などの使い慣れた SQL (構造化照会言語) を使用したドキュメンのクエリ実行をサポートします。 この記事では、SQL クエリ言語の構文のドキュメントを提供します。これは、SQL API アカウントと互換性があります。 SQL クエリの例のチュートリアルについては、[Cosmos DB の SQL クエリ](how-to-sql-query.md)に関するページを参照してください。  
   
@@ -481,7 +481,7 @@ ORDER BY <sort_specification>
   
  **単項演算子**  
   
-|**名前**|**演算子**|**詳細**|  
+|**Name**|**演算子**|**詳細**|  
 |-|-|-|  
 |**算術**|+<br /><br /> -|数値を返します。<br /><br /> ビットごとの否定。 否定された数値を返します。|  
 |**ビット演算子**|~|1 の補数。 数値の補数を返します。|  
@@ -489,11 +489,11 @@ ORDER BY <sort_specification>
   
  **二項演算子:**  
   
-|**名前**|**演算子**|**詳細**|  
+|**Name**|**演算子**|**詳細**|  
 |-|-|-|  
 |**算術**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|加算。<br /><br /> 減算。<br /><br /> 乗算。<br /><br /> 除算。<br /><br /> 比率。|  
 |**ビット演算子**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|ビット演算子 OR。<br /><br /> ビット演算子 AND。<br /><br /> ビット演算子 XOR。<br /><br /> 左シフト。<br /><br /> 右シフト。<br /><br /> 0 埋め右シフト。|  
-|**論理**|**AND**<br /><br /> **OR**|論理積。 両方の引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 論理積。 両方の引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。|  
+|**論理**|**AND**<br /><br /> **OR**|論理積。 両方の引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 論理和。 いずれかの引数が **true** である場合、**true** を返します。それ以外の場合は **false** を返します。|  
 |**比較**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|等しい。 両方の引数が等しい場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> 等しくない。 両方の引数が等しくない場合、**true** を返します。それ以外の場合は **false** を返します。<br /><br /> より大きい。 1 番目の引数が 2 番目の引数より大きい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以上。 1 番目の引数が 2 番目の引数以上の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> より小さい。 1 番目の引数が 2 番目の引数より小さい場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 以下。 1 番目の引数が 2 番目の引数以下の場合、**true** を返します。それ以外の場合、**false** を返します。<br /><br /> 結合。 最初の引数が **undefined** 値である場合、2 番目の引数を返します。|  
 |**文字列**|**&#124;&#124;**|連結。 両方の引数の連結を返します。|  
   
@@ -504,11 +504,11 @@ ORDER BY <sort_specification>
   
  **比較の値の順序付け**  
   
-|**種類**|**値の順序**|  
+|**Type**|**値の順序**|  
 |-|-|  
 |**Undefined**|比較できません。|  
 |**Null**|単一の値: **Null**|  
-|**数値**|実数。<br /><br /> 負の無限大の値は、他のどの数値よりも小さくなります。<br /><br /> 正の無限大の値は、他のどの数値よりも大きくなります。**NaN** 値は比較できません。 **NaN** と比較すると、結果は **undefined** 値になります。|  
+|**Number**|実数。<br /><br /> 負の無限大の値は、他のどの数値よりも小さくなります。<br /><br /> 正の無限大の値は、他のどの数値よりも大きくなります。**NaN** 値は比較できません。 **NaN** と比較すると、結果は **undefined** 値になります。|  
 |**文字列**|辞書の順序。|  
 |**Array**|順序付けがなく平等に扱われます。|  
 |**Object**|順序付けがなく平等に扱われます。|  
@@ -532,12 +532,12 @@ ORDER BY <sort_specification>
   
  **サポートされるスカラー データ型:**  
   
-|**種類**|**値の順序**|  
+|**Type**|**値の順序**|  
 |-|-|  
 |**Undefined**|単一の値: **undefined**|  
 |**Null**|単一の値: **Null**|  
 |**Boolean**|値: **false**、**true**。|  
-|**数値**|倍精度浮動小数点数、IEEE 754 標準。|  
+|**Number**|倍精度浮動小数点数、IEEE 754 標準。|  
 |**String**|0 個以上の Unicode 文字のシーケンス。 文字列は、一重引用符または二重引用符で囲む必要があります。|  
 |**Array**|0 個以上の要素のシーケンス。 各要素には、Undefined を除く、任意のスカラー データ型の値を指定できます。|  
 |**Object**|0 個以上の名前/値ペアの順序なしのセット。 名前は Unicode 文字列で、値は **Undefined** 以外の任意のスカラー データ型を指定できます。|  
@@ -620,7 +620,7 @@ ORDER BY <sort_specification>
 |-|-|-|  
 |\\'|アポストロフィ (')|U+0027|  
 |\\"|引用符 (")|U+0022|  
-|\\\|逆斜線 (\\)|U+005C|  
+|\\\ |逆斜線 (\\)|U+005C|  
 |\\/|斜線 (/)|U+002F|  
 |\b|バックスペース|U+0008|  
 |\f|フォーム フィード|U+000C|  
@@ -2169,7 +2169,10 @@ REPLICATE(<str_expr>, <num_expr>)
   
 -   `num_expr`  
   
-     任意の有効な数値式です。  
+     任意の有効な数値式です。 num_expr が負の数値である場合、または有限の数値でない場合、結果は未定義になります。
+
+  > [!NOTE]
+  > 結果の最大長は 10,000 文字、つまり (length(str_expr) * num_expr) <= 10,000 です。
   
  **戻り値の型**  
   
@@ -2331,7 +2334,7 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
  **構文**  
   
 ```  
-SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])  
+SUBSTRING(<str_expr>, <num_expr>, <num_expr>)  
 ```  
   
  **引数**  
@@ -2342,7 +2345,7 @@ SUBSTRING(<str_expr>, <num_expr> [, <num_expr>])
   
 -   `num_expr`  
   
-     任意の有効な数値式です。  
+     開始および終了文字を示す任意の有効な数値式です。    
   
  **戻り値の型**  
   
@@ -2543,7 +2546,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
-配列に指定された値が含まれているかどうかを示すブール値を返します。 一致が完全か部分的かを指定できます。 
+配列に指定された値が含まれているかどうかを示すブール値を返します。 コマンド内でブール式を使用して、オブジェクトの部分一致または完全一致を確認できます。 
 
  **構文**  
   
@@ -2563,7 +2566,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
 
 -   `bool_expr`  
   
-     任意のブール式です。       
+     任意のブール式です。 'true' に設定されていて、指定された検索値がオブジェクトである場合、このコマンドで部分一致が確認されます (検索オブジェクトは、いずれかのオブジェクトのサブセットです)。 'false' に設定されている場合、このコマンドで配列内のすべてのオブジェクトの完全一致が確認されます。 指定しない場合の既定値は false です。 
   
  **戻り値の型**  
   
@@ -2723,7 +2726,7 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
  **例**  
   
- 次の例では、指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST_DISTANCE 組み込み関数で取得する方法を示します。 にも掲載されています。  
+ 次の例では、指定された場所の 30 km 圏内に存在するすべての世帯ドキュメントを ST_DISTANCE 組み込み関数で取得する方法を示します。 。  
   
 ```  
 SELECT f.id   

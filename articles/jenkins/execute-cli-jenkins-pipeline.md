@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 6/7/2017
-ms.openlocfilehash: 05e21083b060e00602f58e1a17f52f40ced7d34e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5728a9ab70c5b7db10a123d6964b498e70f96588
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075211"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546145"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Jenkins と Azure CLI を使用して Azure App Service にデプロイする
 Java Web アプリを Azure にデプロイするには、[Jenkins パイプライン](https://jenkins.io/doc/book/pipeline/)で Azure CLI を使用します。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
@@ -115,9 +115,9 @@ Web アプリ定義の準備が完了すると、Azure CLI によって次の例
 
 ### <a name="configure-java"></a>Java を構成する 
 
-[az appservice web config update](/cli/azure/webapp/config#az-appservice-web-config-update) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
+[az appservice web config update](/cli/azure/webapp/config) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
 
-次のコマンドでは、最新の Java 8 JDK および [Apache Tomcat](http://tomcat.apache.org/) 8.0 で動作するように Web アプリを構成します。
+次のコマンドでは、最新の Java 8 JDK および [Apache Tomcat](https://tomcat.apache.org/) 8.0 で動作するように Web アプリを構成します。
 
 ```azurecli-interactive
 az webapp config set \ 

@@ -9,8 +9,9 @@ items:
 - name: コンポーネントとサービス
   items:
   - name: 管理グループ
-    href: management-groups/overview.md
     items:
+    - name: 概要
+      href: management-groups/index.md
     - name: Create
       href: management-groups/create.md
     - name: 管理
@@ -53,9 +54,9 @@ items:
     href: https://www.youtube.com/watch?v=MhGbKjlmuRs
   - name: ガバナンスに関する YouTube チャンネル
     href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-ms.openlocfilehash: 73aa088f5b661766caab46f15b443e2a8331cf5f
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 1d6a62a682762060898d8599c5cee18929ef86e1
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321694"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673906"

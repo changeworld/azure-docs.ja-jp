@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: e4bc5de9345bcb65f82ca7ac0095b3e0fd3907e9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: aefbe4265cb97a003b908c5631e1f9ed4e0192cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166000"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102120"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway の帯域幅のスケジュールを管理する  
 
@@ -24,7 +24,7 @@ Azure portal を使用して Data Box Gateway の帯域幅スケジュールを�
 > [!IMPORTANT]
 > - Data Box Gateway はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
 
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * スケジュールの追加
@@ -43,13 +43,13 @@ Azure portal を使用して Data Box Gateway の帯域幅スケジュールを�
 
 3. **[スケジュールの追加]** で、以下の操作を行います。 
 
-    1. スケジュールの **[開始日]**、**[終了日]**、**[開始時刻]**、および **[終了時刻]** を指定します。 
-    2. このスケジュールを 1 日中実行する場合は、**[終日]** オプションをオンにすることができます。 
-    3. **[帯域幅のレート]** は、クラウドに関連する操作 (アップロードとダウンロード) でデバイスが使用する帯域幅 (メガビット/秒 (Mbps)) です。 1 ～ 1,000 の値をこのフィールドで指定します。 
-    4. アップロードとダウンロードの日付を調整しない場合は、**[無制限の帯域幅]** をオンにします。 
-    5. **[追加]** をクリックします。
+   1. スケジュールの **[開始日]**、**[終了日]**、**[開始時刻]**、および **[終了時刻]** を指定します。 
+   2. このスケジュールを 1 日中実行する場合は、**[終日]** オプションをオンにすることができます。 
+   3. **[帯域幅のレート]** は、クラウドに関連する操作 (アップロードとダウンロード) でデバイスが使用する帯域幅 (メガビット/秒 (Mbps)) です。 1 ～ 1,000 の値をこのフィールドで指定します。 
+   4. アップロードとダウンロードの日付を調整しない場合は、**[無制限の帯域幅]** をオンにします。 
+   5. **[追加]** をクリックします。
 
-    ![[ユーザーの追加] をクリックする](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![[ユーザーの追加] をクリックする](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. 指定したパラメーターでスケジュールが作成されます。 このスケジュールは、ポータルで、帯域幅のスケジュールの一覧に表示されます。
 

@@ -66,7 +66,7 @@ Azure Data Factory サービスをオンプレミスの MongoDB データベー�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**OnPremisesMongoDb** |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**OnPremisesMongoDb** |はい |
 | server |MongoDB サーバーの IP アドレスまたはホスト名。 |はい |
 | port |MongoDB サーバーがクライアント接続のリッスンに使用する TCP ポート。 |省略可能、既定値: 27017 |
 | authenticationType |Basic または Anonymous。 |はい |
@@ -297,14 +297,14 @@ MongoDB にデータを移動する場合、MongoDB 型から .NET 型に対す�
 | --- | --- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| 日付 |Datetime |
+| Date |Datetime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |String |
 | String |String |
 | UUID |Guid |
-| オブジェクト |入れ子の区切り文字に "_" を使用してフラット化された列に再正規化されます。 |
+| Object |入れ子の区切り文字に "_" を使用してフラット化された列に再正規化されます。 |
 
 > [!NOTE]
 > 仮想テーブルを使用した配列に対するサポートの詳細については、下の「 [仮想テーブルを使用した複合型のサポート](#support-for-complex-types-using-virtual-tables) 」セクションをご覧ください。

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 13e00acaf287a9e153aaa8e5ce7d630f8d198f02
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a7789f9a3f3da46305a9d8cd7cda24019658f2ad
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330417"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811485"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,8 +65,8 @@ Azure SQL のリンクされたサービスは、Azure SQL データベースを
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります:**AzureSqlDatabase** |[はい] |
-| connectionString |connectionString プロパティの Azure SQL Database インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 |[はい] |
+| type |type プロパティは、次のように設定する必要があります:**AzureSqlDatabase** |はい |
+| connectionString |connectionString プロパティの Azure SQL データベース インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 |はい |
 
 > [!IMPORTANT]
 > [サーバーへのアクセスを Azure サービスに許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) データベース サーバーを構成します。 また、Azure の外部から (たとえば、Data Factory ゲートウェイのあるオンプレミスのデータ ソースから) Azure SQL Database にデータをコピーする場合、Azure SQL Database にデータを送信するマシンに適切な IP アドレス範囲を設定します。
@@ -80,7 +80,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Azure SQL Database インスタンスのテーブルまたはビューの名前です。 |[はい] |
+| tableName |リンクされたサービスが参照する Azure SQL データベース インスタンスのテーブルまたはビューの名前です。 |はい |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
@@ -199,7 +199,7 @@ GO
   }
 }
 ```
-このリンクされたサービスでサポートされているプロパティの一覧については、「 [Azure SQL のリンクされたサービス](#linked-service) 」を参照してください。
+このリンクされたサービスでサポートされているプロパティの一覧については、「Azure SQL のリンクされたサービス」を参照してください。
 
 **Azure BLOB ストレージのリンクされたサービス:**
 
@@ -248,7 +248,7 @@ GO
 }
 ```
 
-このデータセット型でサポートされているプロパティの一覧については、「 [Azure SQL データセットの type プロパティ](#dataset) 」を参照してください。
+このデータセット型でサポートされているプロパティの一覧については、「Azure SQL データセットの type プロパティ」セクションを参照してください。
 
 **Azure BLOB の出力データセット:**
 
@@ -391,7 +391,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
   }
 }
 ```
-このリンクされたサービスでサポートされているプロパティの一覧については、「 [Azure SQL のリンクされたサービス](#linked-service) 」を参照してください。
+このリンクされたサービスでサポートされているプロパティの一覧については、「Azure SQL のリンクされたサービス」を参照してください。
 
 **Azure BLOB ストレージのリンクされたサービス:**
 
@@ -499,7 +499,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
   }
 }
 ```
-このデータセット型でサポートされているプロパティの一覧については、「 [Azure SQL データセットの type プロパティ](#dataset) 」を参照してください。
+このデータセット型でサポートされているプロパティの一覧については、「Azure SQL データセットの type プロパティ」セクションを参照してください。
 
 **BLOB ソースおよび SQL シンクを使用するパイプラインでのコピー アクティビティ:**
 
@@ -639,7 +639,7 @@ Azure SQL Database との間でデータを移動するとき、SQL 型から .N
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| ビット |ブール |
+| bit |Boolean |
 | char |String、Char[] |
 | date |Datetime |
 | DateTime |Datetime |
@@ -653,7 +653,7 @@ Azure SQL Database との間でデータを移動するとき、SQL 型から .N
 | money |Decimal |
 | nchar |String、Char[] |
 | ntext |String、Char[] |
-| 数値 |Decimal |
+| numeric |Decimal |
 | nvarchar |String、Char[] |
 | real |Single |
 | rowversion |Byte[] |
@@ -661,7 +661,7 @@ Azure SQL Database との間でデータを移動するとき、SQL 型から .N
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| テキスト |String、Char[] |
+| text |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
 | tinyint |Byte |

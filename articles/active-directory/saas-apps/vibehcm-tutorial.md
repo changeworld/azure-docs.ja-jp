@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Vibe HCM の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Vibe HCM の統合 | Microsoft Docs
 description: Azure Active Directory と Vibe HCM の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 395f99c986e0a51e8dd2c440d258724e862f275c
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 79787045f0379e6b672350206740297000f298c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48020703"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185572"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>チュートリアル: Azure Active Directory と Vibe HCM の統合
+# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>チュートリアル:Azure Active Directory と Vibe HCM の統合
 
 このチュートリアルでは、Vibe HCM と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -156,11 +157,11 @@ Vibe HCM で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-vibe-hcm-test-user"></a>Vibe HCM テスト ユーザーを作成する
 
-このセクションでは、Vibe HCM で Britta Simon というユーザーを作成します。 [Vibe HCM サポート チーム](mailto:support@vibehcm.com)と連携して、Vibe HCM プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Vibe HCM で Britta Simon というユーザーを作成します。  [Vibe HCM サポート チーム](mailto:support@vibehcm.com)と連携して、Vibe HCM プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -197,7 +198,7 @@ Vibe HCM で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Vibe HCM] タイルをクリックすると、ご利用の Vibe HCM アプリケーションに自動的にサインオンされます。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: c679d2e6b7dc8998016e79d265f368504d6def3d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f2ba1a6fef944911c0706ca4e71be6a55bc4b16a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038415"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961841"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>Studio 3T を使用して Cosmos アカウントに接続する
 
@@ -32,10 +32,10 @@ Studio 3T 接続マネージャーに Cosmos アカウントを追加するに�
 2. **[Connect (接続)]** をクリックして接続マネージャーを開き、**[New Connection (新しい接続)]** をクリックします。
 
     ![Studio 3T 接続マネージャーのスクリーンショット](./media/mongodb-mongochef/ConnectionManager.png)
-3. **[New Connection] (新しい接続)** ウィンドウの **[Server] (サーバー)** タブで、Azure Cosmos DB アカウントのホスト (FQDN) とポートを入力します。
+3. **[New Connection]\(新しい接続)** ウィンドウの **[Server]\(サーバー)** タブで、Azure Cosmos DB アカウントのホスト (FQDN) とポートを入力します。
 
     ![Studio 3T 接続マネージャーの [Server] (サーバー) タブのスクリーンショット](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
-4. **[New Connection] (新しい接続)** ウィンドウの **[認証]** タブで、**[Basic (MONGODB-CR or SCARM-SHA-1)] (基本 (MONGODB-CR または SCARM-SHA-1))** の認証モードを選択し、ユーザー名とパスワードを入力します。  既定の認証データベース (admin) をそのまま使用するか、または独自の値を指定します。
+4. **[New Connection]\(新しい接続)** ウィンドウの **[認証]** タブで、**[Basic (MONGODB-CR or SCARM-SHA-1)] (基本 (MONGODB-CR または SCARM-SHA-1))** の認証モードを選択し、ユーザー名とパスワードを入力します。  既定の認証データベース (admin) をそのまま使用するか、または独自の値を指定します。
 
     ![Studio 3T 接続マネージャーの [認証] タブのスクリーンショット](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
 5. **[New Connection (新しい接続)]** ウィンドウの **[SSL]** タブで、**[Use SSL protocol to connect (SSL プロトコルを使用して接続する)]** チェック ボックスをオンにし、**[Accept server self-signed SSL certificates (サーバー自己署名 SSL 証明書を受け付ける)]** オプション ボタンをオンにします。

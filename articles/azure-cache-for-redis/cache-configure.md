@@ -1,25 +1,25 @@
 ---
 title: Azure Cache for Redis の構成方法 | Microsoft Docs
 description: Azure Cache for Redis の既定の Redis 構成について説明し、Azure Cache for Redis インスタンスの構成方法について説明します
-services: azure-cache-for-redis
+services: cache
 documentationcenter: na
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: tysonn
 ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
 ms.service: cache
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 08/22/2017
-ms.author: wesmc
-ms.openlocfilehash: 8a78823a208a5310e62714de7b1a3cd2e35eaa8f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: 67a093068df30460a1b2cf17c04164bf8b1dc6a0
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104677"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234902"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。
@@ -57,7 +57,7 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
     * [プロパティ](#properties)
     * [ロック](#locks)
     * [Automation スクリプト](#automation-script)
-* [管理](#administration)
+* 管理
     * [データのインポート](#importexport)
     * [データのエクスポート](#importexport)
     * [Reboot](#reboot)
@@ -65,7 +65,7 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
     * [Redis メトリック](#redis-metrics)
     * [アラート ルール](#alert-rules)
     * [診断](#diagnostics)
-* [サポートおよびトラブルシューティング設定](#support-amp-troubleshooting-settings)
+* サポートおよびトラブルシューティング設定
     * [リソース ヘルス](#resource-health)
     * [新しいサポート要求](#new-support-request)
 
@@ -82,7 +82,7 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
 
 **[アクセス制御 (IAM)]** セクションでは、Azure Portal でのロールベースのアクセス制御 (RBAC) のサポートが提供されます。 この構成により、組織は簡単かつ正確にアクセス管理要件を満たすことができます。 詳細については、 [Azure ポータルでのロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
-### <a name="tags"></a>タグ
+### <a name="tags"></a>Tags
 
 **[タグ]** セクションでは、リソースを整理できます。 詳細については、 [タグを使用した Azure リソースの整理](../azure-resource-manager/resource-group-using-tags.md)に関するページを参照してください。
 
@@ -134,7 +134,7 @@ Azure Cache for Redis の設定の表示と構成は、**[Azure Cache for Redis]
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
 #### <a name="memory-policies"></a>メモリ ポリシー
-**[詳細設定]** ブレードの **[Maxmemory ポリシー]****[maxmemory-reserved]****[maxfragmentationmemory-reserved]** の設定によって、キャッシュのメモリ ポリシーが構成されます。
+**[詳細設定]** ブレードの **[Maxmemory ポリシー]** **[maxmemory-reserved]** **[maxfragmentationmemory-reserved]** の設定によって、キャッシュのメモリ ポリシーが構成されます。
 
 ![Azure Cache for Redis の Maxmemory ポリシー](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
@@ -429,7 +429,7 @@ Export では、Azure Cache for Redis に格納されたデータを、Redis と
 データベースの詳細については、「[What are Redis databases? (Redis データベースとは)](cache-faq.md#what-are-redis-databases)」を参照してください
 
 > [!NOTE]
-> `databases` の設定は、キャッシュの作成中にのみ構成できます。また、PowerShell、CLI、その他の管理クライアントを使用する必要があります。 PowerShell を使用して、キャッシュの作成中に `databases` を構成する例については、[New-AzureRmRedisCache](cache-howto-manage-redis-cache-powershell.md#databases) に関するページをご覧ください。
+> `databases` の設定は、キャッシュの作成中にのみ構成できます。また、PowerShell、CLI、その他の管理クライアントを使用する必要があります。 PowerShell を使用して、キャッシュの作成中に `databases` を構成する例については、[New-AzRedisCache](cache-howto-manage-redis-cache-powershell.md#databases) に関するページをご覧ください。
 > 
 > 
 

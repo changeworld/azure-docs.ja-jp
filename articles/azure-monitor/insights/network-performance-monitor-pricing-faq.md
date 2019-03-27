@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: a4e5440a9b8b6ce36d8472463b35201f39d3ac5a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d2d1ca3e41de36d423de24fdbade8c17507642b5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192789"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734302"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure Network Performance Monitor の価格の変更
 
@@ -27,7 +27,7 @@ ms.locfileid: "53192789"
 
 Network Performance Monitor は 3 つのコンポーネントで構成されます。
 * [パフォーマンス モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
-* [サービス エンドポイント モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview#service-endpoint-monitor)
+* [サービス エンドポイント モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
 * [ExpressRoute モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
 以降のセクションで、NPM コンポーネントの価格の変更について説明します。

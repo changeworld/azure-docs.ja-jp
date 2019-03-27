@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: LUIS コンテナーでは、お客様のトレーニング済みアプリまたは発行済みアプリを Docker コンテナーに読み込んで、コンテナーの API エンドポイントからクエリ予測を利用することができます。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 1398db59199c62e90f8cf5654586bda1c24f2541
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 99647770df9a8ca194559863a1d7212faf1c83a1
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055049"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328216"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -40,11 +40,7 @@ LUIS コンテナーを実行するには、以下が必要です。
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
-**ホスト**とは、Docker コンテナーを実行するコンピューターのことです。 お客様のオンプレミス上のコンピューターを使用できるほか、次のような Azure 内の Docker ホスティング サービスを使用することもできます。
-
-* [Azure Kubernetes Service](../../aks/index.yml)
-* [Azure Container Instances](../../container-instances/index.yml)
-* [Azure Stack](../../azure-stack/index.yml) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスター。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](../../azure-stack/user/azure-stack-solution-template-kubernetes-deploy.md)」をご覧ください。
+[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
 
@@ -52,9 +48,11 @@ LUIS コンテナーを実行するには、以下が必要です。
 
 |Setting| 最小値 | 推奨 |
 |-----------|---------|-------------|
-|コア<BR>`--cpus`|1 コア<BR>2.6 ギガヘルツ (GHz) 以上|1 コア|
+|コア<BR>`--cpus`|1 コア|1 コア|
 |メモリ<BR>`--memory`|2 GB|4 GB|
 |1 秒あたりのトランザクション数<BR>(TPS)|20 TPS|40 TPS|
+
+各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上の必要があります。
 
 `--cpus` と `--memory` の設定は、`docker run` コマンドの一部として使用されます。
 
@@ -62,21 +60,16 @@ LUIS コンテナーを実行するには、以下が必要です。
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して `mcr.microsoft.com/azure-cognitive-services/luis` リポジトリからコンテナー イメージをダウンロードします。
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
+[`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
+
 上記のコマンドで使用されている `latest` など、利用可能なタグの詳細な説明については、Docker Hub の [LUIS](https://go.microsoft.com/fwlink/?linkid=2043204) に関するページを参照してください。
 
-> [!TIP]
-> [docker images](https://docs.docker.com/engine/reference/commandline/images/) コマンドを使用して、ダウンロードしたコンテナー イメージを一覧表示できます。 たとえば、次のコマンドは、ダウンロードした各コンテナー イメージの ID、リポジトリ、およびタグが表として書式設定されて表示されます。
->
->  ```Docker
->  docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
->
->  IMAGE ID            REPOSITORY                                                                TAG
->  ebbee78a6baa        mcr.microsoft.com/azure-cognitive-services/luis                           latest
->  ``` 
+[!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
+
 
 ## <a name="how-to-use-the-container"></a>コンテナーを使用する方法
 
@@ -113,7 +106,8 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 |ステージング|Get、Post|Azure とコンテナー|`{APPLICATION_ID}_STAGING.gz`|
 |Production|Get、Post|Azure とコンテナー|`{APPLICATION_ID}_PRODUCTION.gz`|
 
->**重要:** LUIS パッケージ ファイルの名前変更や改変、展開は行わないでください。
+> [!IMPORTANT]
+> LUIS パッケージ ファイルの名前変更や改変、展開は行わないでください。
 
 ### <a name="packaging-prerequisites"></a>パッケージの前提条件
 
@@ -258,7 +252,7 @@ ApiKey={ENDPOINT_KEY}
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 発行済み (ステージングまたは運用) アプリのエンドポイントには、トレーニング済みアプリのエンドポイントとは "_異なる_" ルートがあります。 
 
-コンテナーの API のホストとしては https://localhost:5000 を使用します。 
+コンテナーの API のホストとしては `https://localhost:5000` を使用します。 
 
 |パッケージの種類|方法|ルート|クエリ パラメーター|
 |--|--|--|--|
@@ -324,31 +318,13 @@ LUIS ポータルから、お客様のアプリを選択し、**[Import endpoint
 
 ## <a name="containers-api-documentation"></a>コンテナーの API ドキュメント
 
-コンテナーには、エンドポイントの完全なドキュメント一式のほか、`Try it now` 機能が用意されています。 この機能を使用すると、コードを一切記述することなく、お客様の設定を Web ベースの HTML フォームに入力したりクエリを実行したりすることができます。 クエリから戻ると、HTTP ヘッダーと HTTP 本文の必要な形式を示すサンプル CURL コマンドが得られます。 
-
-> [!TIP]
-> [OpenAPI 仕様](https://swagger.io/docs/specification/about/)は、`/swagger` という相対 URI からご覧いただけます。コンテナーでサポートされる API 操作が説明されています。 例: 
->
->  ```http
->  http://localhost:5000/swagger
->  ```
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>課金
 
 LUIS コンテナーでは、お客様の Azure アカウントの _Language Understanding_ リソースを使用して課金情報が Azure に送信されます。 
 
-Cognitive Services コンテナーは、計測のために Azure に接続していないと、実行のライセンスが許可されません。 お客様は、コンテナーが常に計測サービスに課金情報を伝えられるようにする必要があります。 Cognitive Services のコンテナーから Microsoft に顧客データ (発話) が送信されることはありません。 
-
-`docker run` では、次の引数が課金の目的に使用されます。
-
-| オプション | 説明 |
-|--------|-------------|
-| `ApiKey` | 課金情報を追跡するために使用される _Language Understanding_ リソースの API キー。<br/>このオプションの値には、`Billing` に指定されたプロビジョニング済みの LUIS Azure リソースの API キーが設定されている必要があります。 |
-| `Billing` | 課金情報を追跡するために使用される _Language Understanding_ リソースのエンドポイント。<br/>このオプションの値には、プロビジョニング済みの LUIS Azure リソースのエンドポイント URI が設定されている必要があります。|
-| `Eula` | コンテナーのライセンスに同意していることを示します。<br/>このオプションの値は `accept` に設定する必要があります。 |
-
-> [!IMPORTANT]
-> 3 つすべてのオプションに有効な値が指定されている必要があります。そうでないと、コンテナーが起動しません。
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 これらのオプションの詳細については、「[コンテナーの構成](luis-container-configuration.md)」を参照してください。
 
@@ -382,4 +358,5 @@ LUIS アプリケーションは、次の依存関係を一切**含んでいな�
 ## <a name="next-steps"></a>次の手順
 
 * 構成設定について、[コンテナーの構成](luis-container-configuration.md)を確認する
-* [よくあるご質問 (FAQ)](luis-resources-faq.md) を参照して、LUIS 機能に関連する問題を解決する。
+* [トラブルシューティング](troubleshooting.md)に関するページを参照して、LUIS 機能に関連する問題を解決する。
+* さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

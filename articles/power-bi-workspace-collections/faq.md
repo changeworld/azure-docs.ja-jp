@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: 83f4ebd9c3f5ad05173b045b3fa15804ddc88df6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 08d0a446fc29bf58da2583cbee8576831914ac09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157566"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862718"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Power BI ワークスペース コレクションに関するよくある質問
 
@@ -77,7 +77,7 @@ Power BI ワークスペース コレクション モデルでは、Azure AD テ
 アプリケーションの開発に取り組んでいる開発者や従業員は、Azure Portal を使用して Azure サブスクリプションとワークスペース コレクションを管理する場合に、AAD ユーザー アカウントが必要になります。 プログラムの API を使用すると、開発者はレポートをインポートし、接続文字列を変更することができます。また、代わりに、埋め込み用 URL を取得し、認証にアプリケーション トークンを利用することもできます。そのため、AAD は不要になります。
 
 ## <a name="where-can-i-learn-more"></a>詳細情報を得るには?
-[Power BI ワークスペース コレクションのドキュメント ページ](get-started.md)をご覧ください。 このサービスの最新情報については、[Power BI のブログ](https://powerbi.microsoft.com/blog/)または Power BI デベロッパー センター (dev.powerbi.com) をご覧ください。 また、[Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi) で質問することもできます。
+[Power BI ワークスペース コレクションのドキュメント ページ](get-started.md)をご覧ください。 このサービスの最新情報については、[Power BI のブログ](https://powerbi.microsoft.com/blog/)または Power BI デベロッパー センター (dev.powerbi.com) をご覧ください。 また、[Stack Overflow](https://stackoverflow.com/questions/tagged/powerbi) で質問することもできます。
 
 ## <a name="how-do-i-get-started"></a>開始するには?
 今すぐ無料で開始できます。 Azure サブスクリプションを所有している場合は、Azure Portal から直接 Power BI ワークスペース コレクションをプロビジョニングできます。 また、[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成することも可能です。 Power BI ワークスペース コレクション サービスをプロビジョニングしたら、簡単に Power BI REST API を直接使用したり、[GitHub](https://go.microsoft.com/fwlink/?LinkID=746472) で提供されている Developer SDK を使用したりできます。 Developer SDK を活用する方法については、サンプルが提供されます。
@@ -89,5 +89,5 @@ Power BI ワークスペース コレクション モデルでは、Azure AD テ
 [サンプルの使用](get-started-sample.md)   
 [JavaScript による埋め込みのサンプル](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-ご質問は、 [Power BI コミュニティ](http://community.powerbi.com/)で尋ねてみてください。
+ご質問は、 [Power BI コミュニティ](https://community.powerbi.com/)で尋ねてみてください。
 

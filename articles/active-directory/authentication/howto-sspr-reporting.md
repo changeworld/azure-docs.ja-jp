@@ -3,19 +3,20 @@ title: セルフサービスによるパスワード リセット レポート -
 description: Azure AD のセルフサービスによるパスワード リセット イベントのレポート
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 7d7de02c96b9a17144b446b9ed86ebcbacd51162
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3f8411cf2aebf5ab3e25239d1cb1a9b81cfda4c2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025007"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163899"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -63,8 +64,8 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 
 次の一覧では、Azure Portal でのレポートの各列について詳細に説明します。
 
-* **ユーザー**: パスワード リセット登録操作を試みたユーザー。
-* **ロール**: ディレクトリ内のユーザーの役割。
+* **User**:パスワード リセット登録操作を試行したユーザー。
+* **ロール**: ディレクトリ内のユーザーのロール。
 * **日付と時刻**: 試行の日付と時刻。
 * **登録データ**: パスワード リセット登録中にユーザーが入力した認証データ。
 
@@ -74,21 +75,21 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 
 | 列 | 使用できる値とその意味 |
 | --- | --- |
-| 登録データ |**連絡用メール アドレス**: ユーザーが、認証のために連絡用メールまたは認証用メールを使用しました。<p><p>**会社電話**: ユーザーが、認証のために会社電話を使用しました。<p>**携帯電話**: ユーザーが、認証のために携帯電話または認証用の電話を使用しました。<p>**秘密の質問**: ユーザーが、認証のために秘密の質問を使用しました。<p>**前述の方法の任意の組み合わせ (連絡用メール アドレス + 携帯電話など)**: 2 ゲート ポリシーを指定した場合に発生し、パスワード リセット要求を認証するためにユーザーがどの方法を使用したかを示します。 |
+| 登録データ |**連絡用メール アドレス**: ユーザーが、認証のために連絡用メールまたは認証用メールを使用しました。<p><p>**会社電話**: ユーザーが、認証のために会社電話を使用しました。<p>**携帯電話**: ユーザーが、認証のために携帯電話または認証用の電話を使用しました。<p>**セキュリティの質問**: ユーザーが、認証のためにセキュリティの質問を使用しました。<p>**前述の方法の任意の組み合わせ (連絡用メール アドレスと携帯電話など)**: 2 ゲート ポリシーが指定された場合に発生し、パスワード リセット要求を認証するためにユーザーがどの方法を使用したかを示します。 |
 
 ## <a name="self-service-password-management-activity-types"></a>[Self-Service Password Management]\(セルフサービスのパスワード管理\) のアクティビティの種類
 
 **[Self-Service Password Management]\(セルフサービスのパスワード管理\)** 監査イベント カテゴリには、次のアクティビティの種類が表示されます。
 
-* [Blocked from self-service password reset (セルフサービスによるパスワードのリセットのブロック)](#activity-type-blocked-from-self-service-password-reset): ユーザーが 24 時間以内に合計 5 回を超えて、パスワードのリセット、特定のゲートの使用、または電話番号の確認を試行したことを示します。
+* [Blocked from self-service password reset (パスワード リセットのセルフサービスのブロック)](#activity-type-blocked-from-self-service-password-reset): ユーザーが 24 時間以内に合計 5 回を超えて、パスワードのリセット、特定のゲートの使用、または電話番号の確認を試行したことを示します。
 * [Change password (self-service) (パスワードの変更 (セルフサービス))](#activity-type-change-password-self-service): ユーザーが自発的または (期限切れにより) 強制的にパスワードの変更を実行したことを示します。
-* [Reset password (by admin) (パスワードのリセット (管理者))](#activity-type-reset-password-by-admin): 管理者が Azure Portal からユーザーに代わってパスワードのリセットを実行したことを示します。
-* [Reset password (self-service) (パスワードのリセット (セルフサービス))](#activity-type-reset-password-self-service): ユーザーが [Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)から自分のパスワードのリセットに成功したことを示します。
-* [Self-service password reset flow activity progress (セルフサービスのパスワード リセット フロー アクティビティの進行状況)](#activity-type-self-serve-password-reset-flow-activity-progress): ユーザーがパスワード リセット プロセスの一環として実行する個々の特定の手順 (特定のパスワード リセット認証ゲートの通過など) を示します。
-* [Unlock user account (self-service) (ユーザー アカウントのロック解除 (セルフサービス))](#activity-type-unlock-user-account-self-service): ユーザーが [Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)から、リセットなしのアカウント ロック解除の Active Directory 機能を使用して、自分のパスワードをリセットせずに自分の Active Directory アカウントのロック解除に成功したことを示します。
-* [User registered for self-service password reset (セルフサービスによるパスワードのリセットを登録したユーザー)](#activity-type-user-registered-for-self-service-password-reset): ユーザーが、現在指定されているテナント パスワード リセット ポリシーに従って、自分のパスワードをリセットするために必要なすべての情報を登録したことを示します。
+* [Reset password (by admin) (パスワードのリセット (管理者)):](#activity-type-reset-password-by-admin) 管理者が Azure portal でユーザーに代わってパスワードのリセットを実行したことを示します。
+* [Reset password (self-service) (パスワードのリセット (セルフサービス))](#activity-type-reset-password-self-service): ユーザーが [Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)で自分のパスワードのリセットに成功したことを示します。
+* [Self serve password reset flow activity progress (パスワード リセットのセルフサービスのフロー アクティビティ進行状況)](#activity-type-self-serve-password-reset-flow-activity-progress): ユーザーがパスワード リセット プロセスの一環として実行する個々の特定の手順 (特定のパスワード リセット認証ゲートの通過など) を示します。
+* [Unlock user account (self-service) (ユーザー アカウントのロック解除 (セルフサービス))](#activity-type-unlock-a-user-account-self-service):ユーザーが [Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)から、リセットなしのアカウント ロック解除の Active Directory 機能を使用して、自分のパスワードをリセットせずに自分の Active Directory アカウントのロック解除に成功したことを示します。
+* [User registered for self-service password reset (セルフサービスのパスワード リセットを登録したユーザー)](#activity-type-user-registered-for-self-service-password-reset): ユーザーが、現在指定されているテナント パスワード リセット ポリシーに従って、自分のパスワードをリセットするために必要なすべての情報を登録したことを示します。
 
-### <a name="activity-type-blocked-from-self-service-password-reset"></a>アクティビティの種類: Blocked from self-service password reset (セルフサービスのパスワード リセットのブロック)
+### <a name="activity-type-blocked-from-self-service-password-reset"></a>アクティビティの種類: セルフサービスによるパスワード リセットのブロック
 
 このアクティビティの詳しい説明は次のとおりです。
 
@@ -96,10 +97,10 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * **アクティビティのアクター**: 追加のリセット操作の実行を禁止されたユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **アクティビティのターゲット**: 追加のリセット操作の実行を禁止されたユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **アクティビティの状態**:
-  * _成功_: ユーザーが今後 24 時間の間、追加のリセットの実行、追加の認証方法の試行、または追加の電話番号の確認を禁止されたことを示します。
-* **アクティビティの状態が失敗になった理由**: 該当なし。
+  * _成功_:ユーザーが今後 24 時間の間、追加のリセットの実行、追加の認証方法の試行、または追加の電話番号の確認を禁止されたことを示します。
+* **アクティビティの状態が失敗になった理由**:適用不可。
 
-### <a name="activity-type-change-password-self-service"></a>アクティビティの種類: Change password (self-service) (パスワードの変更 (セルフサービス))
+### <a name="activity-type-change-password-self-service"></a>アクティビティの種類: パスワードの変更 (セルフサービス)
 
 このアクティビティの詳しい説明は次のとおりです。
 
@@ -107,36 +108,36 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * **アクティビティのアクター**: 自分のパスワードを変更したユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **アクティビティのターゲット**: 自分のパスワードを変更したユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **アクティビティの状態**:
-  * _成功_: ユーザーが自分のパスワードの変更に成功したことを示します。
-  * _失敗_: ユーザーが自分のパスワードの変更に失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
-* **アクティビティの状態が失敗になった理由**: 
+  * _成功_:ユーザーが自分のパスワードの変更に成功したことを示します。
+  * _失敗_:ユーザーが自分のパスワードの変更に失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
+* **アクティビティの状態が失敗になった理由**:
   * _FuzzyPolicyViolationInvalidPassword_: ユーザーが選択したパスワードが、Microsoft 禁止パスワード検出機能によって一般的すぎるパスワードまたは特に脆弱なパスワードと見なされたため、自動的に禁止されました。
 
-### <a name="activity-type-reset-password-by-admin"></a>アクティビティの種類: Reset password (by admin) (パスワードのリセット (管理者))
+### <a name="activity-type-reset-password-by-admin"></a>アクティビティの種類: パスワードのリセット (管理者)
 
 このアクティビティの詳しい説明は次のとおりです。
 
-* **アクティビティの説明**: 管理者が Azure Portal からユーザーに代わってパスワードのリセットを実行したことを示します。
+* **アクティビティの説明**: 管理者が Azure portal でユーザーに代わってパスワードのリセットを実行したことを示します。
 * **アクティビティのアクター**: 別のエンド ユーザーまたは管理者に代わってパスワードのリセットを実行した管理者。 グローバル管理者、パスワード管理者、ユーザー管理者、ヘルプデスク管理者のいずれかである可能性があります。
 * **アクティビティのターゲット**: 自分のパスワードがリセットされたユーザー。 このユーザーは、エンド ユーザーまたは別の管理者である可能性があります。
 * **アクティビティの状態**:
-  * _成功_: 管理者がユーザーのパスワードのリセットに成功したことを示します。
-  * _失敗_: 管理者がユーザーのパスワードの変更に失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
+  * _成功_:管理者がユーザーのパスワードのリセットに成功したことを示します。
+  * _失敗_:管理者がユーザーのパスワードの変更に失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
 
-### <a name="activity-type-reset-password-self-service"></a>アクティビティの種類: Reset password (self-service) (パスワードのリセット (セルフサービス))
+### <a name="activity-type-reset-password-self-service"></a>アクティビティの種類: パスワードのリセット (セルフサービス)
 
 このアクティビティの詳しい説明は次のとおりです。
 
-* **アクティビティの説明**: ユーザーが[Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)から自分のパスワードのリセットに成功したことを示します。
+* **アクティビティの説明**: ユーザーが [Azure AD のパスワード リセット ポータル](https://passwordreset.microsoftonline.com)で自分のパスワードのリセットに成功したことを示します。
 * **アクティビティのアクター**: 自分のパスワードをリセットしたユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **アクティビティのターゲット**: 自分のパスワードをリセットしたユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **アクティビティの状態**:
-  * _成功_: ユーザーが自分のパスワードのリセットに成功したことを示します。
-  * _失敗_: ユーザーが自分のパスワードのリセットに失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
-* **アクティビティの状態が失敗になった理由**: 
+  * _成功_:ユーザーが自分のパスワードのリセットに成功したことを示します。
+  * _失敗_:ユーザーが自分のパスワードのリセットに失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
+* **アクティビティの状態が失敗になった理由**:
   * _FuzzyPolicyViolationInvalidPassword_: 管理者が選択したパスワードが、Microsoft 禁止パスワード検出機能によって一般的すぎるパスワードまたは特に脆弱なパスワードと見なされたため、自動的に禁止されました。
 
-### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>アクティビティの種類: Self serve password reset flow activity progress (セルフサービスのパスワード リセット フロー アクティビティの進行状況)
+### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>アクティビティの種類: パスワード リセットのセルフサービスのフロー アクティビティ進行状況
 
 このアクティビティの詳しい説明は次のとおりです。
 
@@ -144,11 +145,11 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * **アクティビティのアクター**: パスワード リセット フローの一部を実行したユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **アクティビティのターゲット**: パスワード リセット フローの一部を実行したユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **アクティビティの状態**:
-  * _成功_: ユーザーがパスワード リセット フローの特定の手順に成功したことを示します。
-  * _失敗_: パスワード リセット フローの特定の手順が失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
-* **アクティビティの状態の理由**: [使用できるすべてのリセット アクティビティ状態の理由](#allowed-values-for-details-column)については、次の表をご覧ください。
+  * _成功_:ユーザーがパスワード リセット フローの特定の手順に成功したことを示します。
+  * _失敗_:パスワード リセット フローの特定の手順が失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
+* **アクティビティの状態の理由**:  [使用できるすべてのリセット アクティビティ状態の理由](#description-of-the-report-columns-in-the-azure-portal)については、次の表をご覧ください。
 
-### <a name="activity-type-unlock-a-user-account-self-service"></a>アクティビティの種類: Unlock user account (self-service) (ユーザー アカウントのロック解除 (セルフサービス))
+### <a name="activity-type-unlock-a-user-account-self-service"></a>アクティビティの種類: ユーザー アカウントのロック解除 (セルフサービス)
 
 このアクティビティの詳しい説明は次のとおりです。
 
@@ -156,10 +157,10 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * **アクティビティのアクター**: 自分のパスワードをリセットせずに自分のアカウントをロック解除したユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **アクティビティのターゲット**: 自分のパスワードをリセットせずに自分のアカウントをロック解除したユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **使用可能なアクティビティ状態**:
-  * _成功_: ユーザーが自分のアカウントのロック解除に成功したことを示します。
-  * _失敗_: ユーザーが自分のアカウントのロック解除に失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
+  * _成功_:ユーザーが自分のアカウントのロック解除に成功したことを示します。
+  * _失敗_:ユーザーが自分のアカウントのロック解除に失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
 
-### <a name="activity-type-user-registered-for-self-service-password-reset"></a>アクティビティの種類: User registered for self-service password reset (セルフサービスのパスワード リセットを登録したユーザー)
+### <a name="activity-type-user-registered-for-self-service-password-reset"></a>アクティビティの種類: セルフサービスによるパスワード リセットに登録されたユーザー
 
 このアクティビティの詳しい説明は次のとおりです。
 
@@ -167,11 +168,11 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * **アクティビティのアクター**: パスワード リセットに登録したユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **アクティビティのターゲット**: パスワード リセットに登録したユーザー。 このユーザーは、エンド ユーザーまたは管理者である可能性があります。
 * **使用可能なアクティビティ状態**:
-  * _成功_: ユーザーが現在のポリシーに従ってパスワード リセットの登録に成功したことを示します。 
-  * _失敗_: ユーザーがパスワード リセットの登録に失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。 
+  * _成功_:ユーザーが現在のポリシーに従ってパスワード リセットの登録に成功したことを示します。 
+  * _失敗_:ユーザーがパスワード リセットの登録に失敗したことを示します。 この行を選択すると、**[Activity Status Reason]\(アクティビティの状態の理由\)** カテゴリが表示され、失敗の原因について詳しく知ることができます。
 
      >[!NOTE]
-     >失敗は、ユーザーが自分のパスワードをリセットできないことを意味するわけではありません。 登録プロセスを完了していないことを意味します。 ユーザーのアカウントに未確認の正しいデータ (未確認の電話番号など) がある場合、そのデータを確認していなくても、パスワードのリセットに使用できます。 詳細については、[ユーザーの登録時に発生すること](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers)に関するページをご覧ください。
+     >失敗は、ユーザーが自分のパスワードをリセットできないことを意味するわけではありません。 登録プロセスを完了していないことを意味します。 ユーザーのアカウントに未確認の正しいデータ (未確認の電話番号など) がある場合、そのデータを確認していなくても、パスワードのリセットに使用できます。
      >
 
 ## <a name="next-steps"></a>次の手順

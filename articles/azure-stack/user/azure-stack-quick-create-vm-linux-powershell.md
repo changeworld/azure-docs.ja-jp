@@ -11,19 +11,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: a2dea792db39c753d0ea720c8e610a399401315f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.lastreviewed: 12/03/2018
+ms.openlocfilehash: e6afea414ed632dead97a4b9adc7c623e48bd7ef
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840573"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766701"
 ---
-# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>クイック スタート: Azure Stack で PowerShell を使用して Linux サーバー仮想マシンを作成する
+# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>クイック スタート:Azure Stack で PowerShell を使用して Linux サーバー仮想マシンを作成する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack の PowerShell を使用して、Ubuntu Server 16.04 LTS 仮想マシンを作成できます。 この記事の手順に従って仮想マシンを作成し、使用します。  この記事では、以下のことを実行する手順も示します。
 
@@ -389,7 +390,7 @@ New-AzureRmVM `
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-SSH がインストールされているクライアント システムから、次のコマンドを使用して仮想マシンに接続します。 Windows で作業している場合は、[Putty](http://www.putty.org/) を使用して接続を作成できます。
+SSH がインストールされているクライアント システムから、次のコマンドを使用して仮想マシンに接続します。 Windows で作業している場合は、[Putty](https://www.putty.org/) を使用して接続を作成できます。
 
 ```
 ssh <Public IP Address>

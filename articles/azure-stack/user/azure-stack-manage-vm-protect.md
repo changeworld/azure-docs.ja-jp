@@ -11,27 +11,23 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: 45e22f19c6e2da26105615da6a775eed4f8676f0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 3/19/2018
+ms.openlocfilehash: de57ebbf0c0c4e8a18c955200d1692ea4ae9afae
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243641"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295013"
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Azure Stack にデプロイされた仮想マシンの保護
 
 この記事は、ユーザーが Azure Stack にデプロイする仮想マシン (VM) を保護するためのプランを作成するためのガイドとして使用します。
 
-データ損失や計画外のダウンタイムから保護するには、ユーザー アプリケーションとそのデータのバックアップと回復またはディザスター リカバリー計画を実装する必要があります。 この計画はアプリケーションごとに一意である場合がありますが、組織の包括的なビジネス継続性およびディザスター リカバリー (BC/DR) 戦略によって確立されたフレームワークに従います。 最初に、「[回復性に優れた Azure 用アプリケーションの設計](https://docs.microsoft.com/azure/architecture/resiliency)」を参照することをお勧めします。ここでは、アプリケーションの可用性と回復性の一般的なパターンとプラクティスを紹介しています。
-
->[!IMPORTANT]
-> バックアップと回復およびディザスター リカバリー計画を継続的にテストしてください。 これを実行して次のことを確認する必要があります。
-> * 計画が正常に動作する
-> * 計画がその基となったニーズを現在も満たしている
+データ損失や計画外のダウンタイムから保護するには、ユーザー アプリケーションとそのデータのバックアップと回復またはディザスター リカバリー計画を実装する必要があります。 この計画はアプリケーションごとに一意である場合がありますが、組織の包括的なビジネス継続性およびディザスター リカバリー (BC/DR) 戦略によって確立されたフレームワークに従います。 最初に、「[Azure Stack:Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp)」を参照することをお勧めします。
 
 ## <a name="azure-stack-infrastructure-recovery"></a>Azure Stack インフラストラクチャの復旧
 
@@ -46,6 +42,9 @@ Azure Stack クラウドが長時間オフラインになっているか、永�
 * アプリケーションが引き続きユーザー要求に対応できるようにする
 
 Azure Stack クラウドのオペレーターは、基になる Azure Stack インフラストラクチャとサービスの回復計画を作成する役割を担います。 詳細については、「[致命的なデータ損失からの復旧](https://docs.microsoft.com/azure/azure-stack/azure-stack-backup-recover-data)」をご覧ください。
+
+## <a name="considerations-for-iaas-vms"></a>IaaS VM に関する考慮事項
+IaaS VM にインストール済みのオペレーティング システムでは、IaaS VM に含まれているデータを保護するためにユーザーが使用できる製品が制限されます。 Windows ベースの IaaS VM では、データを保護するために Microsoft 製品とパートナー製品を使用できます。 Linux ベースの IaaS VM では、パートナー製品を使用することが唯一の選択肢です。 [Azure Stack で検証済みの製品を持つすべての BC/DR パートナーに関するこのデータシート](https://aka.ms/azurestackbcdrpartners)を参照してください。
 
 ## <a name="sourcetarget-combinations"></a>ソースとターゲットの組み合わせ
 

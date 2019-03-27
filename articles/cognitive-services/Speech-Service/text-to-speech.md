@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Text-to-Speech API では、45 を超える言語およびロケールで 75 を超える音声を提供しています。 標準の音声フォントを使用するには、Speech Service を呼び出すときに、他のいくつかのパラメーターで音声名を指定する必要があるだけです。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b06864e08f6edf52e4c96c33c88bba9f8ef4e859
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0836ae4a9041db27cfed35dd0f1fc0df6e541aff
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343209"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859336"
 ---
 # <a name="about-the-text-to-speech-api"></a>Text to Speech API について
 
@@ -38,6 +38,9 @@ ms.locfileid: "53343209"
 
 Microsoft **Text-to-Speech** サービスでは、45 を超える言語およびロケールで 75 を超える音声を提供しています。 このような標準の ”音声フォント” を使用するには、サービスの REST API を呼び出すときに、他のいくつかのパラメーターで音声名を指定する必要があるだけです。 サポートされている言語、ロケール、および音声の詳細については、[サポートされている言語](language-support.md#text-to-speech)に関するページを参照してください。
 
+> [!IMPORTANT]
+> 料金は、標準音声、カスタム音声、ニューラル音声によって異なります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページをご覧ください。
+
 ### <a name="neural-voices"></a>ニューラル音声
 
 ニューラル テキスト読み上げ機能を使用すると、チャットボットや仮想アシスタントとの対話をより自然で魅力的なものにできます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 Neural TTS では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムと対話する際のリスニング疲労が大幅に軽減されます。 ニューラル音声の詳細については、[サポートされている言語](language-support.md#text-to-speech)に関するページを参照してください。
@@ -52,11 +55,11 @@ Microsoft **Text-to-Speech** サービスでは、45 を超える言語および
 
 | ユース ケース | REST | SDK |
 |-----|-----|-----|----|
-| 音声適応のためのデータセットをアップロードする | [はい] | いいえ  |
-| 音声フォント モデルを作成および管理する | [はい] | いいえ  |
-| 音声フォントの展開を作成および管理する | [はい] | いいえ  |
-| 音声フォントのテストを作成および管理する| [はい] | いいえ  |
-| サブスクリプションの管理 | [はい] | いいえ  |
+| 音声適応のためのデータセットをアップロードする | はい | いいえ  |
+| 音声フォント モデルを作成および管理する | はい | いいえ  |
+| 音声フォントの展開を作成および管理する | はい | いいえ  |
+| 音声フォントのテストを作成および管理する| はい | いいえ  |
+| サブスクリプションの管理 | はい | いいえ  |
 
 > [!NOTE]
 > API で、API 要求を 5 秒ごとに 25 個までに制限するスロットリングを実装します。 この制限はメッセージ ヘッダーで通知されます。

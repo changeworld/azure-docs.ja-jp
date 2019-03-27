@@ -43,15 +43,17 @@ items:
     items:
     - name: 補足ドキュメント
       href: avere-vfxt-additional-resources.md
-    - name: コントローラーを使用せずにクラスター ロールを作成する
-      href: avere-vfxt-pre-role.md
+    - name: コントローラーのアクセス ロールのカスタマイズ
+      href: avere-vfxt-controller-role.md
     - name: Avere クラスターの DNS 構成
       href: avere-vfxt-configure-dns.md
     - name: Avere vFXT のデプロイを所有者以外に承認する
       href: avere-vfxt-non-owner.md
-ms.openlocfilehash: 319745fad14ca3cce97e8735def901f380132eff
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+  - name: ホワイトペーパー
+    href: avere-vfxt-whitepapers.md
+ms.openlocfilehash: add9b123138ee1242426c2ced94ed4fd2d9a742e
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52273713"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246087"

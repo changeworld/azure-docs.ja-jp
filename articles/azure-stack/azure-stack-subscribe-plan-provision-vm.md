@@ -11,15 +11,16 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: sethm
-ms.openlocfilehash: 7de32573ac6c0d084be3fdd6ff2c3641559fc31f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.author: efemmano
+ms.lastreviewed: 01/09/2019
+ms.openlocfilehash: ba1232bc28d638d1e4293b5e6bf30b84b23e4951
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118831"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761125"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack"></a>Azure Stack でオファーのサブスクリプションを作成する
 

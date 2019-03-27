@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
-ms.author: cwatson
-ms.openlocfilehash: 670aafeb8eb107fc5970b70bfa85d7469c343483
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/30/2019
+ms.author: banders
+ms.openlocfilehash: 36800071d5e0080ef5d1d791eed12587b114df78
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722855"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743635"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 
@@ -36,11 +36,11 @@ Azure Reserved Virtual Machine Instances を購入した場合は、予約の最
 2. **[すべてのサービス]** > **[予約]** を選択します。
 3. 予約を選択します。
 4. **[設定]** > **[構成]** を選択します。
-5. スコープを変更します。 
+5. スコープを変更します。
 
 共有スコープから単一スコープに変更する場合、選択できるのは自分が所有者であるサブスクリプションだけです。 選択できるのは、予約と同じ課金コンテキスト内のサブスクリプションに限られます。
 
-スコープの対象となるのは、従量課金制オファー MS-AZR-0003P、Enterprise オファー MS-AZR-0017P、または CSP サブスクリプションの種類のみです。 エンタープライズ契約に関して、Dev/Test サブスクリプションは予約割引の対象外となります。
+スコープの対象となるのは、従量課金制オファー MS-AZR-0003P または MS-AZR-0023P、Enterprise オファー MS-AZR-0017P または MS-AZR-0148P、または CSP サブスクリプションの種類のみです。
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>予約を管理できるユーザーを追加または変更する
 

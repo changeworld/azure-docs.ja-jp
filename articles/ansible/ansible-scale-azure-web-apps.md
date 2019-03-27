@@ -1,19 +1,19 @@
 ---
 title: Ansible を使用して Azure App Service Web アプリをスケーリングする
 description: Linux 上の App Service で、Ansible を使用して、Java 8 と Tomcat コンテナー ランタイムを使った Web アプリを作成する方法について学習します。
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, プレイブック, Azure App Service, Web アプリ, スケール, Java
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 4ef8320d3eba841ee64557e31e63b4e79ee3aa92
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 2bafb73afa35c7670ac45f7027545277c70075ef
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159895"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792278"
 ---
 # <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>Ansible を使用して Azure App Service Web アプリをスケーリングする
 [Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (または単に Web Apps) は、Web アプリケーション、REST API、モバイル バックエンドをホストします。 開発には、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、お気に入りの言語をご利用いただけます。

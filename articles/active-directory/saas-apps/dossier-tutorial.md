@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Dossier の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Dossier の統合 | Microsoft Docs
 description: Azure Active Directory と Dossier の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 932a832d4717a788f2d9adfd98ce1ba0c4ca07a1
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dd69616fa544c1d13e14eb8eebb92adb6350d9e8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39507513"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217532"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dossier"></a>チュートリアル: Azure Active Directory と Dossier の統合
+# <a name="tutorial-azure-active-directory-integration-with-dossier"></a>チュートリアル:Azure Active Directory と Dossier の統合
 
 このチュートリアルでは、Dossier と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -172,11 +173,11 @@ Dossier で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-dossier-test-user"></a>Dossier のテスト ユーザーの作成
 
-このセクションでは、Dossier で Britta Simon というユーザーを作成します。 [Dossier サポート チーム](mailto:support@intellimedia.ca)と連携して、Dossier プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Dossier で Britta Simon というユーザーを作成します。  [Dossier サポート チーム](mailto:support@intellimedia.ca) と連携して、Dossier プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

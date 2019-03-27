@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: ac94370b1c6a8f48ad55f0e277d93cd2f8388cb1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a747e5064ff0ef99fb43c545c29c2a34535445d0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242605"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540155"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure Media Services での Azure CDN キャッシュ ポリシーの管理
-Azure Media Services では、HTTP ベースのアダプティブ ストリーミングとプログレッシブ ダウンロードが提供されます。 HTTP ベースのストリーミングは、プロキシと CDN レイヤーにおけるキャッシュだけでなくクライアント側のキャッシュの利点もあり、高い拡張性を備えています。 ストリーミング エンドポイントは、一般的なストリーミング機能と、HTTP キャッシュ ヘッダーの構成も提供します。 ストリーミング エンドポイントは、HTTP Cache-Control: max-age および Expires ヘッダーを設定します。 HTTP キャッシュ ヘッダーの詳細については、 [W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)を参照してください。
+Azure Media Services では、HTTP ベースのアダプティブ ストリーミングとプログレッシブ ダウンロードが提供されます。 HTTP ベースのストリーミングは、プロキシと CDN レイヤーにおけるキャッシュだけでなくクライアント側のキャッシュの利点もあり、高い拡張性を備えています。 ストリーミング エンドポイントは、一般的なストリーミング機能と、HTTP キャッシュ ヘッダーの構成も提供します。 ストリーミング エンドポイントは、HTTP Cache-Control: max-age および Expires ヘッダーを設定します。 HTTP キャッシュ ヘッダーの詳細については、 [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)を参照してください。
 
 ## <a name="default-caching-headers"></a>既定のキャッシュ ヘッダー
 既定では、ストリーミング エンドポイントは、オンデマンド ストリーミング データ (実際のメディア フラグメント/チャンク) および マニフェスト (プレイリスト) に対して 3 日間有効なキャッシュ ヘッダーを適用します。 ライブ ストリーミングの場合は、ストリーミング エンドポイントは、データ (実際のメディア フラグメント/チャンク) に対しては 3 日間有効なキャッシュ ヘッダーを、マニフェスト (プレイリスト) 要求には 2 秒間有効なキャッシュ ヘッダーを適用します。 ライブ プログラムがオンデマンド (ライブ アーカイブ) に変わると、オンデマンド ストリーミング キャッシュ ヘッダーが適用されます。

@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: LUIS のオーサリング API とエンドポイント API からどのような HTTP 応答コードが返されるかを理解します
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8ea180131ce2f9e1288c3ffb928170be55a77de7
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 18ec59200d3cf820794ac353e38106ad26aca697
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598452"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337246"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>一般的な API 応答コードとその意味
 

@@ -2,16 +2,17 @@
 title: レンダリング アプリケーションを使用する - Azure Batch
 description: Azure Batch でレンダリング アプリケーションを使用する方法
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4c7fdbfcc34cdb6e10177d50bea707f1fa5f223e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534769"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57789592"
 ---
 # <a name="rendering-applications"></a>アプリケーションをレンダリングする
 
@@ -58,7 +59,7 @@ Maya に組み込まれているレンダラーに加えて、VM イメージの
 
 ### <a name="task-command-line"></a>タスクのコマンド ライン
 
-タスクのコマンド ラインでは、`renderer.exe` コマンド ライン レンダラーが使用されます。 コマンド ライン レンダラーは [Maya のヘルプ](http://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4)に記載されています。
+タスクのコマンド ラインでは、`renderer.exe` コマンド ライン レンダラーが使用されます。 コマンド ライン レンダラーは [Maya のヘルプ](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4)に記載されています。
 
 次の例では、ジョブ準備タスクを使用してシーンのファイルとアセットをジョブ準備作業ディレクトリにコピーし、出力フォルダーを使用してレンダリング イメージを格納して、フレーム 10 がレンダリングされます。
 

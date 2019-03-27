@@ -3,23 +3,24 @@ title: Azure AD での SaaS アプリ ユーザー プロビジョニングの�
 description: Azure AD を使用して、複数のサードパーティ SaaS アプリケーション間でユーザー アカウントを自動的にプロビジョニング、プロビジョニング解除、継続的に更新する方法の紹介。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/30/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: 935fef5ea988908787ae04688985606acec41bfd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 198f32b5f3d7572807b6af3e41ccf8085d9cbc0b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387279"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576941"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
 
@@ -39,7 +40,7 @@ Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、Se
 
 * ソース システムとターゲット システムとの間で既存の ID を一致させる機能。
 * ソース システムからターゲット システムにフローするユーザー データを定義する、カスタマイズ可能な属性マッピング。
-* プロビジョニング エラーの電子メール通知 (オプション)
+* プロビジョニング エラーのためのオプションの電子メール通知。
 * 監視とトラブルシューティングに役立つレポートとアクティビティ ログ。
 
 ## <a name="why-use-automated-provisioning"></a>自動プロビジョニングを使用する理由
@@ -133,7 +134,7 @@ Azure AD がソース システムである場合、プロビジョニング サ
 
 1. ソース システムのすべてのユーザーとグループにクエリを実行し、[属性マッピング](customize-application-attributes.md)で定義されているすべての属性を取得します。
 2. 返されたユーザーおよびグループを、構成済み[割り当て](assign-user-or-group-access-portal.md)または[属性ベースのスコープ フィルター](define-conditional-rules-for-provisioning-user-accounts.md)を使用してフィルター処理します。
-3. ユーザーが割り当て済み、またはプロビジョニング対象の場合、サービスはターゲット システムに対してクエリを実行し、指定された[一致属性](customize-application-attributes.md#understanding-attribute-mapping-properties)を使用して、一致するユーザーがいないかどうかを確認します。 たとえば、ソース システムの userPrincipal 名が一致属性であり、ターゲット システムの userName にマップされる場合、プロビジョニング サービスは、ターゲット システムにクエリを実行し、ソース システムの userPrincipal 名の値と一致する userName がないかどうかを確認します。
+3. ユーザーが割り当て済み、またはプロビジョニング対象の場合、サービスはターゲット システムに対してクエリを実行し、指定された[照合属性](customize-application-attributes.md#understanding-attribute-mapping-properties)を使用して、一致するユーザーがいないかどうかを確認します。 例:ソース システムの userPrincipal 名が一致属性であり、ターゲット システムの userName にマップされる場合、プロビジョニング サービスは、ターゲット システムにクエリを実行し、ソース システムの userPrincipal 名の値と一致する userName がないかどうかを確認します。
 4. 一致するユーザーがターゲット システムで見つからない場合、ソース システムから返された属性を使用してユーザーが作成されます。 ユーザー アカウントが作成された後、プロビジョニング サービスは新しいユーザー用のターゲット システムの ID を検出しキャッシュします。これはそのユーザーの将来の操作すべてを実行するときに使用されます。
 5. 一致するユーザーが見つかった場合、そのユーザーは、ソース システムによって提供された属性を使用して更新されます。 ユーザー アカウントが照合された後、プロビジョニング サービスは新しいユーザー用のターゲット システムの ID を検出しキャッシュします。これはそのユーザーの将来の操作すべてを実行するときに使用されます。
 6. 属性マッピングに "参照" 属性が含まれている場合、サービスは、ターゲット システムで追加の更新を実行して参照先オブジェクトを作成し、リンクします。 たとえば、あるユーザーがターゲット システムで "Manager" 属性を持ち、それがターゲット システムで作成された別のユーザーにリンクされている場合があります。
@@ -214,13 +215,13 @@ ServiceNow、Google Apps、Box など、アプリケーションの中には、�
     
 **初期同期**の完了に要する時間に影響する要因のまとめ
 
-* プロビジョニングのスコープ内のユーザーとグループの合計数
+* プロビジョニングのスコープ内のユーザーとグループの合計数。
 
-* ソース システム (Azure AD) に存在するユーザー、グループ、およびグループのメンバーの合計数
+* ソース システム (Azure AD) に存在するユーザー、グループ、およびグループのメンバーの合計数。
 
 * プロビジョニングのスコープ内のユーザーがターゲット アプリケーション内の既存のユーザーと一致するかどうか、または新たに作成する必要があるかどうか。 すべてのユーザーを初めて作成する同期ジョブはすべてのユーザーが既存ユーザーと一致する同期ジョブの約 *2 倍*の時間がかかります。
 
-* [監査ログ](check-status-user-account-provisioning.md)内のエラー数。 多くのエラーが発生し、プロビジョニング サービスが検疫状態に移行した場合、パフォーマンスは低下します 
+* [監査ログ](check-status-user-account-provisioning.md)内のエラー数。 多くのエラーが発生し、プロビジョニング サービスが検疫状態に移行した場合、パフォーマンスは低下します。    
 
 * ターゲット システムによって実装される要求レートの制限および調整。 ターゲット システムによって、要求レートの制限および調整が実装される場合があり、大規模な同期動作中にパフォーマンスに影響する可能性があります。 このような条件下では、高速で大量の要求を受信するアプリは応答レートが遅くなったり、接続が閉じたりする場合があります。 パフォーマンスを向上するために、アプリが処理できるよりも速くアプリ要求を送信しないようにコネクタによって調整する必要があります。 Microsoft がビルドしたプロビジョニング コネクタはこの調整を行います。 
 
@@ -255,11 +256,11 @@ Azure Portal で監査ログを確認する方法については、[プロビジ
 
 ### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>SaaS アプリへの自動ユーザー プロビジョニングは、Azure AD の動的グループに対応しますか。
 
-はい。 「割り当てられているユーザーおよびグループのみを同期」するように構成されている場合、Azure AD ユーザー プロビジョニング サービスは、SaaS アプリケーションのユーザーを、[動的グループ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule])のメンバーであるかどうかに基づいて、プロビジョニングまたはプロビジョニング解除できます。 動的グループは、「すべてのユーザーとグループを同期する」オプションにも対処します。
+はい。 「割り当てられているユーザーおよびグループのみを同期」するように構成されている場合、Azure AD ユーザー プロビジョニング サービスは、SaaS アプリケーションのユーザーを、[動的グループ](../users-groups-roles/groups-create-rule.md)のメンバーであるかどうかに基づいて、プロビジョニングまたはプロビジョニング解除できます。 動的グループは、「すべてのユーザーとグループを同期する」オプションにも対処します。
 
 ただし、動的グループの使用は、Azure AD から SaaS アプリケーションへのエンドツーエンドのユーザー プロビジョニングのパフォーマンス全体に影響することがあります。 動的グループを使用している場合は、これらの注意事項と推奨事項に留意してください。
 
-* SaaS アプリケーションで動的グループのユーザーをプロビジョニングまたはプロビジョニング解除する速度は、動的グループがメンバーシップの変更を評価する速さによって決まります。 動的グループの処理状態を確認する方法の詳細については、「[メンバーシップ ルールの処理状態をチェックする](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule)」を参照してください。
+* SaaS アプリケーションで動的グループのユーザーをプロビジョニングまたはプロビジョニング解除する速度は、動的グループがメンバーシップの変更を評価する速さによって決まります。 動的グループの処理状態を確認する方法の詳細については、「[メンバーシップ ルールの処理状態をチェックする](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)」を参照してください。
 
 * 動的グループを使用しているときに、メンバーシップの喪失はプロビジョニング解除イベントになるので、ユーザープロビジョニングおよびプロビジョニング解除に留意してルールを慎重に考慮する必要があります。
 

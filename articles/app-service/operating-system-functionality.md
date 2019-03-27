@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ad27a7eaf88ae57f730609e2b0f43a2f5ea182a1
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
+ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653511"
+ms.lasthandoff: 01/25/2019
+ms.locfileid: "54901787"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
 この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
@@ -128,6 +128,10 @@ App Service の各アプリは、"アプリケーション プール ID" と呼�
 アプリは、実行される仮想マシンの多くのレジストリ (すべてのレジストリではありません) に読み取り専用でアクセスできます。 つまり、実際には、アプリは、ローカルの Users グループへの読み取り専用アクセスを許可するレジストリ キーにアクセスできることになります。 現在、読み取りアクセスまたは書き込みアクセスがサポートされていないレジストリ領域の 1 つに、HKEY\_CURRENT\_USER ハイブがあります。
 
 レジストリへの書き込みアクセスはブロックされます。ユーザーごとのレジストリ キーにも一切アクセスできません。 Azure 環境の場合、アプリが他の仮想マシンへ移行される可能性があるので、レジストリへの書き込みアクセスを前提にしてコードを開発しないでください。 アプリで利用できる唯一の書き込み可能な永続ストレージは、App Service の UNC 共有に格納されるアプリ別のコンテンツ ディレクトリ構造です。 
+
+## <a name="remote-desktop-access"></a>リモート デスクトップ アクセス
+
+App Service では、VM インスタンスへのリモート デスクトップ アクセスは提供されません。
 
 ## <a name="more-information"></a>詳細情報
 

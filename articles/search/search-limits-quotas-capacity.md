@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 98902c7a27d769b59b20d4560b2cda21bfcff6c6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b97c84a7a5d7732c8c895fd3074734762e5e040c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310248"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780407"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、または **Standard** の価格レベルのいずれでプロビジョニングするかによって異なります。
@@ -24,7 +24,7 @@ ms.locfileid: "53310248"
 
 + **Basic** は、小規模の運用環境のワークロード専用のコンピューティング リソースを提供します。
 
-+ **Standard** は、すべてのレベルでさらに多くのストレージや処理能力を持つ専用マシン上で実行されます。 Standard には 4 つのレベル (S1、S2、S3、S3 HD) があります。
++ **Standard** は、すべてのレベルでさらに多くのストレージや処理能力を持つ専用マシン上で実行されます。 Standard には 4 つのレベル(S1、S2、S3、S3 HD) があります。
 
   S3 高密度 (S3 HD) は、特定のワークロード ([マルチテナント](search-modeling-multitenant-saas-applications.md)と大量の小さなインデックス (インデックスあたり 100 万ドキュメント、サービスあたり 3000 インデックス)) 向けに設計されています。 このレベルでは、[インデクサー機能](search-indexer-overview.md)は用意されていません。 S3 HD では、データ インジェストがプッシュ アプローチを活用することで、API 呼び出しを使って、ソースからインデックスにデータをプッシュする必要があります。 
 
@@ -124,6 +124,10 @@ Azure blob のインデックスのイメージ分析、コグニティブ検索
 QPS の見積もりは、すべての顧客ごとに個別に開発する必要があります。 インデックスのサイズと複雑さ、クエリのサイズと複雑さ、およびトラフィックの量が QPS を決定する主な要因です。 このような要因が不明な場合は、意義のある見積もりを用意する方法はありません。
 
 見積もりは、専用リソース (Basic および Standard レベル) 上で実行されるサービスに基づいて計算される場合、予測可能性がより高くなります。 より多くのパラメーターを制御できるため、さらに厳密に QPS を見積もることができます。 見積もりを行う方法のガイダンスについては、[Azure Search のパフォーマンスと最適化](search-performance-optimization.md)に関する記事を参照してください。
+
+## <a name="data-limits-cognitive-search"></a>データの制限 (コグニティブ検索)
+
+[エンティティ認識](cognitive-search-skill-entity-recognition.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[センチメント分析](cognitive-search-skill-sentiment.md)、および[言語検出](cognitive-search-skill-language-detection.md)の Text Analytics リソースに対して呼び出しを行う[コグニティブ検索パイプライン](cognitive-search-concept-intro.md)は、データの制限を受ける可能性があります。 レコードの最大サイズは、`String.Length` によって測定されるため、50,000 文字にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用します。
 
 ## <a name="api-request-limits"></a>API 要求の制限
 * 要求あたりの最大値: 16 MB<sup>1</sup>

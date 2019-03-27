@@ -3,21 +3,22 @@ title: Azure Active Directory で「ここからアクセスすることはで�
 description: 「ここからアクセスすることはできません」というエラー メッセージを受け取る場合の考えられる理由についてトラブルシューティングします。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: c34b096766b6b7dda26c51559bf58e40d95715e7
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a7cd67a9a7027e8567e470acab006fd09748de54
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49651267"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181713"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>「ここからアクセスすることはできません」というエラー メッセージを受け取る場合の考えられる理由
 組織内部の Web アプリやサービスにアクセスするとき、「**ここからアクセスすることはできません**」というエラー メッセージが出力されることがあります。 このメッセージは、デバイスが組織のリソースにアクセスできないようにするポリシーが組織で設定されていることを意味します。 最終的にはヘルプデスクに連絡してこの問題を解決してもらうことになりますが、まず最初に試すことができるいくつかの操作を以下に示します。
@@ -68,4 +69,4 @@ ms.locfileid: "49651267"
 ## <a name="next-steps"></a>次の手順
 - [MyApps ポータルとは](active-directory-saas-access-panel-introduction.md)
 
-- [パスワードではなく携帯電話でサインインする](microsoft-authenticator-app-phone-signin-faq.md)
+- [パスワードではなく携帯電話でサインインする](user-help-auth-app-sign-in.md)

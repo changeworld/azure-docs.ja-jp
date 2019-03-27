@@ -5,19 +5,23 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/13/2018
-ms.openlocfilehash: 1c05203de694cde882277bf269f3ff87438f9f26
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 1/30/2019
+ms.openlocfilehash: 03e0db822e38cc6823fc32aa915dc9283fa46cbe
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547730"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493050"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
-読み取りレプリカ機能 (パブリック プレビュー) を使用すると、Azure Database for MySQL サーバー (マスター) から、同じ Azure リージョン内にある最大 5 つの読み取り専用サーバー (レプリカ) にデータをレプリケートできます。 読み取り専用レプリカは、MySQL エンジンのネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーション テクノロジを使用して、非同期で更新されます。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
+> [!IMPORTANT]
+> 読み取りレプリカ機能はパブリック プレビュー段階にあります。
 
-Azure Database for MySQL サービスで作成されるレプリカは、標準またはスタンドアロンの MySQL サーバーと同様に管理できる新しいサーバーです。 これらのサーバーは、スタンドアロン サーバーと同じ料金で課金されます。
+読み取りレプリカ機能を使用すると、Azure Database for MySQL サーバー (マスター) から、同じ Azure リージョン内にある最大 5 つの読み取り専用サーバー (レプリカ) にデータをレプリケートできます。 読み取り専用レプリカは、MySQL エンジンのネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーション テクノロジを使用して、非同期で更新されます。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
+
+Azure Database for MySQL サービスで作成されるレプリカは、標準またはスタンドアロンの MySQL サーバーと同様に管理できる新しいサーバーです。 読み取りレプリカごとに、仮想コア内のプロビジョニング済みコンピューティングとプロビジョニング済みストレージ (GB/月) に対して課金されます。 
+
 
 MySQL レプリケーションの機能と問題の詳細については、[MySQL レプリケーションに関するドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)を参照してください。
 
@@ -82,6 +86,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 - レプリカのレプリカの作成はサポートされていません。
 - インメモリ テーブルを使用すると、レプリカの同期が解除される可能性があります。これは、MySQL レプリケーション テクノロジの制限事項です。 詳細については、[MySQL のリファレンス ドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html)をお読みください。
 - レプリカ サーバーの作成後にマスター サーバー上の [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/5.7/en/innodb-multiple-tablespaces.html) パラメーターをチューニングすると、レプリカの同期が解除される可能性があります。レプリカ サーバーでは異なるテーブル スペースが認識されません。
+- マスター サーバーのテーブルに主キーがあることを確認します。 主キーがないと、マスターとレプリカ間でレプリケーションの待機時間が発生する可能性があります。
 - MySQL レプリケーションの制限事項の完全な一覧については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)をご確認ください。
 
 

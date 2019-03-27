@@ -5,23 +5,24 @@ services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: de5bf637-75a7-4104-b6d8-03686372a319
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 397aa000da7ea70c12883622b60c0e3e6dded811
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 72b47943b14b30400075ca0a018ba5367257f15f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025308"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177319"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用したサインイン エクスペリエンス
 Azure Active Directory Identity Protection を使用すると、次の操作を行うことができます。
@@ -57,18 +58,13 @@ Azure Active Directory Identity Protection を使用すると、次の操作を�
 
 1. 最初の手順では、ユーザーはアカウントを多要素認証に設定するように求める通知を受け取ります。 
    
-    ![修復](./media/flows/301.png "Remediation")
-
+    ![修復](./media/flows/140.png "Remediation")
 2. 多要素認証を設定するには、システムに自分への連絡方法を設定する必要があります。
    
-    ![修復](./media/flows/302.png "Remediation")
-
-3. 電話番号と希望する連絡方法をシステムに指定します。
-
-    ![修復](./media/flows/303.png "Remediation")
-
-登録を完了するには、電話の着信に応答するか、コードを入力する必要があります。 
-
+    ![修復](./media/flows/141.png "Remediation")
+3. システムがチャレンジを送信するので、対応します。
+   
+    ![修復](./media/flows/142.png "Remediation")
 
 ## <a name="risky-sign-in-recovery"></a>リスクの高いサインインの復旧
 管理者がサインイン リスクのポリシーを構成してある場合、影響を受けたユーザーはサインインを試みると通知を受け取ります。 

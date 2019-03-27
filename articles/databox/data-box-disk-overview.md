@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 874142df31d96de36b2b5be81a863c2f31317c52
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c39931ab5d391020e0e7b5ad26ebfa41806fc4ba
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158042"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404673"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
 
@@ -77,7 +77,7 @@ Data Box Disk は、ネットワークに影響を与えずに大量のデータ
 | 仕様                                          | 説明              |
 |---------------------------------------------------------|--------------------------|
 | Weight                                                  | ボックスあたり 約 900 g (2 lbs.) 未満。 ボックスに最大 5 台のディスク                |
-| ディメンション                                              | ディスク - 2.5 インチ SSD |            
+| Dimensions                                              | ディスク - 2.5 インチ SSD |            
 | ケーブル                                                  | ディスクごとに USB 3.1 ケーブルが 1 本|
 | 1 注文あたりのストレージ容量                              | 40 TB (使用可能な容量は最大 35 TB)|
 | ディスク ストレージ容量                                   | 8 TB (使用可能な容量は最大 7 TB)|
@@ -102,6 +102,7 @@ Data Box Disk は、ネットワークに影響を与えずに大量のデータ
 |米国中北部  |オーストラリア南東部   |
 |米国東部      |オーストラリア中部 |
 |米国東部 2     |オーストラリア中部 2|
+|東日本     |韓国中部 |
 
 
 ## <a name="pricing"></a>価格

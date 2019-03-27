@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Opal の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Opal の統合 | Microsoft Docs
 description: Azure Active Directory と Opal の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 434fc204-e9f9-4678-ad5f-054d621bb2f9
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2018
 ms.author: jeedes
-ms.openlocfilehash: a20818fc03117b3e6a6cdb882c7323d6b9aec533
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9878e120a3456383812cca44e054a48759f683a3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438843"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202844"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-opal"></a>チュートリアル: Azure Active Directory と Opal の統合
+# <a name="tutorial-azure-active-directory-integration-with-opal"></a>チュートリアル:Azure Active Directory と Opal の統合
 
 このチュートリアルでは、Opal と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -138,7 +139,7 @@ Opal で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[名前空間]** は空白のままにします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** は空白のままにします。
     
     e. **[OK]** をクリックします。
  
@@ -153,7 +154,7 @@ Opal で Azure AD のシングル サインオンを構成してテストする�
 1. **Opal** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [Opal サポート チーム](mailto:support@workwithopal.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -185,11 +186,11 @@ Opal で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
   
 ### <a name="create-an-opal-test-user"></a>Opal テスト ユーザーを作成する
 
-このセクションでは、Opal で Britta Simon というユーザーを作成します。 [Opal サポート チーム](mailto:support@workwithopal.com)と連携し、Opal プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Opal で Britta Simon というユーザーを作成します。  [Opal サポート チーム](mailto:support@workwithopal.com) と連携し、Opal プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -226,7 +227,7 @@ Opal で Azure AD のシングル サインオンを構成してテストする�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Opal のタイルをクリックすると、Opal アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

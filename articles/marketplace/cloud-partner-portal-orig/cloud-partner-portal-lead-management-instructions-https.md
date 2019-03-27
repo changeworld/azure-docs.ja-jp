@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0d14b2eeb90bd360b71b315d7b4f4459f17f5672
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 905ce1eca9996140da5f9d33aa7f9749a4ef7034
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894123"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS エンドポイントを使用して潜在顧客管理を構成する
 
@@ -65,7 +65,7 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
 
     ![潜在顧客を選択する](./media/cloud-partner-portal-lead-management-instructions-https/https-image011.png)
 
-4. 潜在顧客の情報を提供するためのフォームが Flow に表示されます。 動的なコンテンツの追加を選択して、入力要求からの項目をマップできます。 次のスクリーン キャプチャでは、例として **LeadTitle** が示されています。
+4. 潜在顧客の情報を提供するためのフォームが Flow に表示されます。 動的なコンテンツの追加を選択して、入力要求からの項目をマップできます。 次のスクリーン キャプチャでは、例として **OfferTitle** が示されています。
 
     ![動的なコンテンツの追加](./media/cloud-partner-portal-lead-management-instructions-https/https-image013.png)
 
@@ -88,7 +88,7 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
    - **[To]** - 少なくとも 1 つの有効なメール アドレスを入力する必要があります。
    - **[件名]** - 次のスクリーン キャプチャの **LeadSource** のように、Flow には動的なコンテンツを追加するオプションがあります。
 
-    ![動的なコンテンツを使用して電子メール アクションを追加する](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
+     ![動的なコンテンツを使用して電子メール アクションを追加する](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
 
    - **[本文]** - [動的なコンテンツ] 一覧から、電子メールの本文に必要な情報を追加します。 たとえば、LastName、FirstName、Email、Company などです。
 
@@ -117,7 +117,7 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
 
 ``` json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "https://json-schema.org/draft-04/schema#",
   "definitions": {},
   "id": "http://example.com/example.json",
   "properties": {

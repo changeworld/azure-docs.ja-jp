@@ -12,19 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
-ms.reviewer: ''
-ms.openlocfilehash: e4e1701a145a36fce93db3812b67c307b342da5c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.reviewer: unknown
+ms.lastreviewed: 09/17/2018
+ms.openlocfilehash: 4deb72eae7dffac6eabb34b18a9e879ac1fd8113
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127484"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179962"
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Azure Stack でのサービスの提供の概要
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 [Microsoft Azure Stack](azure-stack-poc.md) は、データセンターからのサービスの提供を可能にするハイブリッド クラウド プラットフォームです。 サービス プロバイダーの場合は、テナントにサービスを提供できます。 企業や政府機関では、従業員にオンプレミスのサービスを提供できます。 
 
@@ -41,7 +42,7 @@ ms.locfileid: "46127484"
 
 サービスを組み合わせて、さまざまなユーザー向けに複雑なソリューションを統合して作成することもできます。
 
-ユーザーにこれらのサービスを提供するには、[プラン、オファー、およびクォータ](azure-stack-plan-offer-quota-overview.md)を作成する必要があります。 それによってユーザーが、オファーにサブスクライブしてサービスを使用することができます。
+ユーザーにこれらのサービスを提供するには、まず、[プラン、オファー、およびクォータ](azure-stack-plan-offer-quota-overview.md)を作成する必要があります。 それによってユーザーが、オファーにサブスクライブしてサービスを使用することができます。
 
 ## <a name="plan-your-service-offers"></a>サービスのオファーの計画
 

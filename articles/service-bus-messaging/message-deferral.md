@@ -3,22 +3,22 @@ title: Azure Service Bus のメッセージ遅延 | Microsoft Docs
 description: Service Bus メッセージの配信を遅延させます
 services: service-bus-messaging
 documentationcenter: ''
-author: clemensv
+author: axisc
 manager: timlt
-editor: ''
+editor: spelluru
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
-ms.author: spelluru
-ms.openlocfilehash: efe04b19188d7324c3f86565610040b8eaa97c43
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.date: 01/23/2019
+ms.author: aschhab
+ms.openlocfilehash: 4471b556dc1ac5f520185d7ad586fb489c6d8f30
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855393"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54856810"
 ---
 # <a name="message-deferral"></a>メッセージ遅延
 
@@ -40,7 +40,6 @@ API は、.NET Framework クライアントの [BrokeredMessage.Defer](/dotnet/a
 
 メッセージを処理する特定のリソースが一時的に使用できないためにそのメッセージを処理できないものの、メッセージの処理をすぐに中断できない場合があります。このような場合、数分間そのメッセージを確保する方法は、数分以内に投稿される[スケジュール済みメッセージ](message-sequencing.md)の **SequenceNumber** を記憶しておき、スケジュールされたメッセージが到着したときに遅延メッセージを取得し直すことです。 メッセージ ハンドラーですべての操作についてデータベースが使用されており、そのデータベースが一時的に使用できない場合は、遅延を使用しないようにしてください。その代わり、データベースが再び使用できるようになるまで、メッセージの受信を完全に中断してください。
 
-メッセージの遅延は、メッセージの有効期限に影響しません。つまり、遅延メッセージの有効期限は最初にスケジュールされた時間のままであり、構成されている場合は配達不能キューに移動されます。
 
 ## <a name="next-steps"></a>次の手順
 

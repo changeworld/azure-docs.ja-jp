@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: b8aac8a6a666bf3f360ef2867ff15933ad72dbd7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6f47606e91ec55bae624527bace81d947c5ea4f9
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166986"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55091548"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>チュートリアル: Azure Data Box Gateway のデプロイを準備する (プレビュー)
+# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>チュートリアル:Azure Data Box Gateway のデプロイを準備する (プレビュー)
 
 
 これは、Azure Data Box Gateway を完全にデプロイするために必要な一連のチュートリアルのうち最初のものです。 このチュートリアルでは、Data Box Gateway リソースをデプロイするために Azure portal を準備する方法を説明します。 
@@ -42,7 +42,7 @@ Data Box Gateway をデプロイするには、以下の順序どおりにチュ
 | **#** | **手順** | **概要** |
 | --- | --- | --- | 
 | 1. |**[Data Box Gateway のために Azure portal を準備する](data-box-gateway-deploy-prep.md)** |Data Box Gateway リソースを作成して構成した後で、Data Box Gateway 仮想デバイスをプロビジョニングします。 |
-| 2. |**[Hyper-V で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[VMware で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-vmware.md)**|Hyper-V の場合、Windows Server 2016 または Windows Server 2012 R2 上で Hyper-V を実行するホスト システムに Data Box Gateway 仮想デバイスをプロビジョニングして接続します。 <br><br><br> VMware の場合、VMware ESXi 6.0 または 6.5 を実行するホスト システムに Data Box Gateway 仮想デバイスをプロビジョニングして接続します。<br></br> |
+| 2. |**[Hyper-V で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[VMware で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-vmware.md)**|Hyper-V の場合、Windows Server 2016 または Windows Server 2012 R2 上で Hyper-V を実行するホスト システムに Data Box Gateway 仮想デバイスをプロビジョニングして接続します。 <br><br><br> VMware の場合、VMware ESXi 6.0、6.5、または 6.7 を実行するホスト システムに Data Box Gateway 仮想デバイスをプロビジョニングして接続します。<br></br> |
 | 手順 3. |**[Data Box Gateway を接続、設定、アクティブ化する](data-box-gateway-deploy-connect-setup-activate.md)** |ローカル Web UI に接続して、デバイス設定を完了し、デバイスをアクティブ化します。 これで、SMB 共有をプロビジョニングできます。  |
 | 4. |**[Data Box Gateway でデータを転送する](data-box-gateway-deploy-add-shares.md)** |共有を追加し、SMB または NFS を介して共有に接続します。 |
 
@@ -63,7 +63,7 @@ Data Box Gateway をデプロイするには、以下の順序どおりにチュ
 
 仮想デバイスをデプロイする前に次の点を確認します。
 
-* Windows Server 2012 R2 以降の Hyper-V または VMware (ESXi 6.0 または 6.5) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
+* Windows Server 2012 R2 以降の上に配置された Hyper-V、または VMware (ESXi 6.0、6.5、または 6.7) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
 * ホスト システムで、次のリソースを Data Box 仮想デバイスのプロビジョニング専用に使用できること。
   
   * 最小で 4 コア。
@@ -100,7 +100,7 @@ Azure portal で次の手順を実行して Data Box リソースを作成しま
     |リソース名   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
     |サブスクリプション    |サブスクリプションは、課金アカウントにリンクされます。 |
     |リソース グループ  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/resource-group-overview.md)をご覧ください。     |
-    |Location     |このリリースでは、米国東部、米国西部 2、東南アジア、西ヨーロッパを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
+    |場所     |このリリースでは、米国東部、米国西部 2、東南アジア、西ヨーロッパを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
     
     ![Data Box Gateway リソースの作成](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     
@@ -126,7 +126,7 @@ Data Box Gateway リソースを作成したら、ホスト システムに仮�
 4. 右側のウィンドウのクイック スタートで、ダウンロードするイメージに対応するリンクをクリックします。 イメージ ファイルは約 4.8 GB です。
    
    * [Windows Server 2012 R2 以降の Hyper-V 用 VHDX](https://aka.ms/dbe-vhdx-2012)
-   * [VMWare ESXi 6.0 または 6.5 用 VMDK](https://aka.ms/dbe-vmdk).
+   * [VMware ESXi 6.0、6.5、または 6.7 用 VMDK](https://aka.ms/dbe-vmdk)。
 
 5. ファイルをローカル ドライブにダウンロードして解凍し、解凍したファイルの場所をメモしておきます。
 

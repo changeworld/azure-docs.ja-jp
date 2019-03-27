@@ -4,23 +4,24 @@ description: このチュートリアルでは、Azure AD Reporting API と証�
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: report-monitor
+ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7535aad95f7410d25ada232b4946fe52ebc4ba67
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8706414b27969efd6aa26085370f8a0b1f891d69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961962"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095196"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>チュートリアル:Azure Active Directory Reporting API と証明書を使用したデータの取得
 
@@ -30,24 +31,28 @@ ms.locfileid: "52961962"
 
 ## <a name="prerequisites"></a>前提条件
 
-1. 最初に、[Azure Active Directory Reporting API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)を満たします。 
+1. サインイン データにアクセスするには、プレミアム (P1/P2) ライセンスを持つ Azure Active Directory テナントがあることを確認してください。 Azure Active Directory エディションにアップグレードするには、「[Azure Active Directory Premium の概要](../fundamentals/active-directory-get-started-premium.md)」を参照してください。 アップグレード前のアクティビティ データがない場合は、プレミアム ライセンスにアップグレードしてからレポートにデータが表示されるようになるまでに数日かかることに注意してください。 
 
-2. [Azure AD PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md) をダウンロードしてインストールします。
+2. テナントの**グローバル管理者**、**セキュリティ管理者**、**セキュリティ閲覧者**、または**レポート閲覧者**ロールに含まれているユーザー アカウントに切り替えるか、そのようなアカウントを新たに作成します。 
 
-3. [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/) をインストールします。 このモジュールには、いくつかのユーティリティ コマンドレットが用意されています。その例を次に示します。
+3. [Azure Active Directory Reporting API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)を満たします。 
+
+4. [Azure AD PowerShell V2](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md) をダウンロードしてインストールします。
+
+5. [MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/) をインストールします。 このモジュールには、いくつかのユーティリティ コマンドレットが用意されています。その例を次に示します。
     - 認証に必要な ADAL ライブラリ
     - ADAL を使用してユーザー キー、アプリケーション キー、証明書からアクセス トークンを取得
     - Graph API でページ単位の結果を処理
 
-4. 初めてモジュールを使う場合は、**Install-MSCloudIdUtilsModule** を実行します。初めてではない場合は、**Import-Module** PowerShell コマンドを使ってモジュールをインポートします。 セッションは次のような画面になります。![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. 初めてモジュールを使う場合は、**Install-MSCloudIdUtilsModule** を実行します。初めてではない場合は、**Import-Module** PowerShell コマンドを使ってモジュールをインポートします。 セッションは次のような画面になります。![Windows Powershell](./media/tutorial-access-api-with-certificates/module-install.png)
   
-5. **New-SelfSignedCertificate** PowerShell コマンドレットを使用して、テスト証明書を作成します。
+7. **New-SelfSignedCertificate** PowerShell コマンドレットを使用して、テスト証明書を作成します。
 
    ```
    $cert = New-SelfSignedCertificate -Subject "CN=MSGraph_ReportingAPI" -CertStoreLocation "Cert:\CurrentUser\My" -KeyExportPolicy Exportable -KeySpec Signature -KeyLength 2048 -KeyAlgorithm RSA -HashAlgorithm SHA256
    ```
 
-6. **Export-Certificate** コマンドレットを使用して、テスト証明書を証明書ファイルにエクスポートします。
+8. **Export-Certificate** コマンドレットを使用して、テスト証明書を証明書ファイルにエクスポートします。
 
    ```
    Export-Certificate -Cert $cert -FilePath "C:\Reporting\MSGraph_ReportingAPI.cer"
@@ -82,15 +87,15 @@ ms.locfileid: "52961962"
   
 7. これで、この証明書を使用して MS Graph API のアクセス トークンを取得できるようになりました。 MSCloudIdUtils PowerShell モジュールの **Get-MSCloudIdMSGraphAccessTokenFromCert** コマンドレットを使い、前の手順で取得したアプリケーション ID とサムプリントを渡します。 
 
- ![Azure ポータル](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
+   ![Azure ポータル](./media/tutorial-access-api-with-certificates/getaccesstoken.png)
 
 8. Powershell スクリプトでアクセス トークンを使用して、Graph API のクエリを実行します。 MSCloudIDUtils の **Invoke-MSCloudIdMSGraphQuery** コマンドレットを使って SignIns と directoryAudits エンドポイントを列挙します。 複数のページにわたる結果を処理し、それらの結果を PowerShell パイプラインに送っています。
 
 9. directoryAudits エンドポイントを照会して、監査ログを取得します。 
- ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+   ![Azure Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 10. SignIns エンドポイントを照会して、サインイン ログを取得します。
- ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+    ![Azure Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 11. このデータを CSV にエクスポートし、SIEM システムに保存できるようになります。 また、スケジュールされたタスクにスクリプトをラップすれば、ソース コードにアプリケーション キーを保存せずに Azure AD データをテナントから定期的に取得することができます。 
 

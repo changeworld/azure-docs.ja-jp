@@ -179,7 +179,7 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 | 形式 | ツール | アルゴリズム | ファイル拡張子 | 分割可能かどうか |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | DEFLATE | .gz | いいえ  |
-| Bzip2 | Bzip2 | Bzip2 |.bz2 | [はい] |
+| Bzip2 | Bzip2 | Bzip2 |.bz2 | はい |
 | LZO | Lzop | LZO | .lzo | はい (インデックス付きの場合) |
 | Snappy | 該当なし | Snappy | Snappy | いいえ  |
 

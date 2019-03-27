@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 12/10/2018
-ms.openlocfilehash: 3c809638cef89d111a032e5876b1f2f1b2c1eb7b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 1f2dcb43878359d20d737cef6ceb492eb79b7f4c
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602348"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55468327"
 ---
 # <a name="monitoring-and-performance-tuning"></a>監視とパフォーマンスのチューニング
 
-Azure SQL Database は、自動的に管理される柔軟なデータ サービスです。このサービスでは、使用状況の監視、リソース (CPU、メモリ、I/O) の追加または削除、データベースのパフォーマンスを向上させることのできる推奨事項の検出、あるいはデータベースをワークロードに適応させることによるパフォーマンスの自動的な最適化などを容易に行うことができます。
+Azure SQL Database は、自動管理される柔軟なデータ サービスです。このサービスでは、使用状況の監視、リソース (CPU、メモリ、I/O) の追加または削除、ご使用のデータベースのパフォーマンスを向上させる推奨事項の検出、あるいはデータベースをご自分のワークロードに適応させパフォーマンスを自動的に最適化するなどを容易に行うことができます。
 
 ## <a name="monitoring-database-performance"></a>データベース パフォーマンスの監視
 
@@ -34,14 +34,14 @@ Azure での SQL データベースのパフォーマンスの監視は、選択
 - [SQL Database Advisor](sql-database-advisor-portal.md) を使用して、インデックスの作成と削除、クエリのパラメーター化、およびスキーマの問題の修正に関する推奨事項を表示します。
 - データベース パフォーマンスの自動監視には、[Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) を使用します。 パフォーマンスの問題が検出されたら、問題の詳細と根本原因分析 (RCA) が記載された診断ログが生成されます。 可能な場合は、パフォーマンス改善の推奨事項も提供されます。
 - [自動チューニングを有効にします](sql-database-automatic-tuning-enable.md)。これにより、Azure SQL Database では、特定されたパフォーマンスの問題を自動的に修正できるようになります。
-- [動的管理ビュー (DMV)](sql-database-monitoring-with-dmvs.md)、[拡張イベント](https://docs.microsoft.com/azure/sql-database/sql-database-xevent-db-diff-from-svr)、および[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用して、パフォーマンスの問題のトラブルシューティングをより詳細に行います。
+- [動的管理ビュー (DMV)](sql-database-monitoring-with-dmvs.md)、[拡張イベント](sql-database-xevent-db-diff-from-svr.md)、および[クエリ ストア](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を使用して、パフォーマンスの問題のトラブルシューティングをより詳細に行います。
 
 > [!TIP]
 > 上の 1 つまたは複数の方法を使用してパフォーマンスの問題を識別した後、Azure SQL Database のパフォーマンスを向上させるために使用できる手法を見つけるには、[パフォーマンス ガイダンス](sql-database-performance-guidance.md)を参照してください。
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Azure ポータルを使用したデータベースの監視
 
-[Azure portal](https://portal.azure.com/) では、データベースを選択し、**[監視]** グラフをクリックすることによって単一データベースの使用を監視できます。 これにより、**[メトリック]** ウィンドウが表示されます。**[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
+[Azure portal](https://portal.azure.com/) で、ご使用のデータベースを選択し、**[監視]** グラフをクリックすることによって個々のデータベースの使用を監視できます。 これにより、**[メトリック]** ウィンドウが表示されます。**[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
 
 - CPU の割合
 - DTU の割合
@@ -204,7 +204,7 @@ CPU の問題をもたらしているワークロード ボリュームの変更
 
 最後に、データベースのパフォーマンス向上につながるすぐに実施可能な方法がない場合は、Azure SQL Database で使用できるリソースの量を変更することができます。 単一データベースの[DTU サービス レベル](sql-database-service-tiers-dtu.md)を変更するか、エラスティック プールの eDTU を増やすことにより、いつでもリソース割り当てを増やすことができます。 あるいは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用した場合は、サービス レベルを変更することも、データベースへの割り当てリソースを増やすこともできます。
 
-1. 単一データベースの場合は、[サービス レベルの変更](sql-database-service-tiers-dtu.md)や[コンピューティング リソース](sql-database-service-tiers-vcore.md)の変更をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
+1. 単一データベースの場合は、[サービス レベルの変更](sql-database-single-database-scale.md)や[コンピューティング リソース](sql-database-single-database-scale.md)の変更をオンデマンドで行うことで、データベースのパフォーマンスを改善できます。
 2. 複数のデータベースの場合は、リソースを自動的にスケーリングするための [エラスティック プール](sql-database-elastic-pool-guidance.md) の使用を検討してください。
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>アプリケーションまたはデータベース コードをチューニングおよびリファクタリングする

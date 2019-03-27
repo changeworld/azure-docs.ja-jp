@@ -15,20 +15,20 @@ ms.devlang: azurecli
 ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 93ff349eb14823784ca574a70279cd623c720872
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.subservice: disks
+ms.openlocfilehash: 1f545747b883ab70b597b4e598a86b192f89b027
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853727"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892767"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
-この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。 
-
+この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>新しいディスクの VM への接続
 
-VM に新しい空のデータ ディスクを追加する場合は、`--new` パラメーターを指定して [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) コマンドを使用します。 VM が可用性ゾーン内にある場合は、VM と同じゾーンで、ディスクが自動的に作成されます。 詳細については、[可用性ゾーンの概要](../../availability-zones/az-overview.md)に関するページをご覧ください。 次の例では、*myDataDisk* という名前で、サイズが 50 GB のディスクを作成します。
+VM に新しい空のデータ ディスクを追加する場合は、`--new` パラメーターを指定して [az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) コマンドを使用します。 VM が可用性ゾーン内にある場合は、VM と同じゾーンで、ディスクが自動的に作成されます。 詳細については、[可用性ゾーンの概要](../../availability-zones/az-overview.md)に関するページをご覧ください。 次の例では、*myDataDisk* という名前で、サイズが 50 GB のディスクを作成します。
 
 ```azurecli
 az vm disk attach \
@@ -39,9 +39,9 @@ az vm disk attach \
    --size-gb 50
 ```
 
-## <a name="attach-an-existing-disk"></a>既存のディスクの接続 
+## <a name="attach-an-existing-disk"></a>既存のディスクの接続
 
-既存のディスクを接続するには、ディスク ID を探し、[az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) コマンドに渡します。 次の例では、*myResourceGroup* 内の *myDataDisk* という名前のディスクにクエリを実行し、それを *myVM* という名前の VM に接続します。
+既存のディスクを接続するには、ディスク ID を探し、[az vm disk attach](/cli/azure/vm/disk?view=azure-cli-latest) コマンドに渡します。 次の例では、*myResourceGroup* 内の *myDataDisk* という名前のディスクにクエリを実行し、それを *myVM* という名前の VM に接続します。
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -49,9 +49,9 @@ diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
 ```
 
-
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Linux VM を接続して新しいディスクをマウントする
-Linux VM から使用できるように新しいディスクのパーティション分割、フォーマット、マウントを行うには、SSH で VM に接続します。 詳細については、[Azure 上の Linux における SSH の使用方法](mac-create-ssh-keys.md)に関するページをご覧ください。 次の例では、パブリック DNS エントリ *mypublicdns.westus.cloudapp.azure.com* を持つ VM に、ユーザー名 *azureuser* で接続します。 
+
+Linux VM から使用できるように新しいディスクのパーティション分割、フォーマット、マウントを行うには、SSH で VM に接続します。 詳細については、[Azure 上の Linux における SSH の使用方法](mac-create-ssh-keys.md)に関するページをご覧ください。 次の例では、パブリック DNS エントリ *mypublicdns.westus.cloudapp.azure.com* を持つ VM に、ユーザー名 *azureuser* で接続します。
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
@@ -73,7 +73,7 @@ dmesg | grep SCSI
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-ここでは、*sdc* が対象のディスクです。 `fdisk` でディスクをパーティション分割します。それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。 次の例では、`fdisk` プロセスが */dev/sdc* 上で開始されます。
+ここでは、*sdc* が対象のディスクです。 `parted` を使用してディスクをパーティション分割します。ディスクのサイズが 2 テビバイト (TiB) 以上の場合は、GPT パーティション分割を使用する必要があります。2 TiB 未満の場合は、MBR または GPT のパーティション分割を使用することができます。 MBR パーティション分割を使用している場合、`fdisk` を使用できます。 それをパーティション 1 上のプライマリ ディスクにして、それ以外は既定値をそのまま使用します。 次の例では、`fdisk` プロセスが */dev/sdc* 上で開始されます。
 
 ```bash
 sudo fdisk /dev/sdc
@@ -227,9 +227,10 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
     ```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>次の手順
+
 * [Linux マシンのパフォーマンスの最適化](optimization.md) に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
 * ディスクを追加してストレージ容量を拡張し、 [RAID を構成](configure-raid.md) してパフォーマンスを強化します。
-

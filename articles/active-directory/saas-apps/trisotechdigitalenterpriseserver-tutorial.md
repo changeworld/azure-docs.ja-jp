@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Trisotech Digital Enterprise Server の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Trisotech Digital Enterprise Server の統合 | Microsoft Docs
 description: Azure Active Directory と Trisotech Digital Enterprise Server の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6d54d20c-eca1-4fa6-b56a-4c3ed0593db0
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: e36a4be3a95b67c040855171d4b167e495a22496
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3a1a334c6c7852923da94403352bb7318b241629
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439628"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735846"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>チュートリアル: Azure Active Directory と Trisotech Digital Enterprise Server の統合
+# <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>チュートリアル:Azure Active Directory と Trisotech Digital Enterprise Server の統合
 
 このチュートリアルでは、Trisotech Digital Enterprise Server と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -145,11 +146,11 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
     d. **[保存]**
 
-    e. **[Allowed Domains (empty means everyone)]\(許可されているドメイン (空の場合はすべてのユーザー))\** テキストボックスにドメイン名を入力します。許可されているドメインに一致するユーザーのライセンスが自動的に割り当てられます
+    e. **[Allowed Domains (empty means everyone)]\(許可されているドメイン (空の場合はすべてのユーザー))** テキストボックスにドメイン名を入力します。許可されているドメインに一致するユーザーのライセンスが自動的に割り当てられます
 
     f. **[保存]**
 
- ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
@@ -185,7 +186,7 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 
 このセクションの目的は、Trisotech Digital Enterprise Server で Britta Simon というユーザーを作成することです。 Trisotech Digital Enterprise Server では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Trisotech Digital Enterprise Server ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Trisotech Digital Enterprise Server サポート チーム](mailto:support@trisotech.com)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、 [Trisotech Digital Enterprise Server サポート チーム](mailto:support@trisotech.com)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -222,7 +223,7 @@ Trisotech Digital Enterprise Server で Azure AD のシングル サインオン
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Trisotech Digital Enterprise Server] タイルをクリックすると、Trisotech Digital Enterprise Server アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

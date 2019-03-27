@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: c84b814ddc06c583fc2f07288c7aa5cd65cc70a0
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.date: 02/05/2019
+ms.openlocfilehash: 09f1bdfa4c9a7a179bddf9473b553924bfb58fb7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232126"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768564"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -23,13 +23,13 @@ ms.locfileid: "54232126"
 
 以下の機能はパブリック プレビュー段階です。 これらの機能は現在でも利用できますが、運用環境では使用しないでください。
 
+### <a name="sql-database-reference-data"></a>SQL Database 参照データ
+
+Azure Stream Analytics では、参照データ入力のソースとして Azure SQL Database がサポートされています。 Stream Analytics ツールを使用して、Azure portal および Visual Studio で Stream Analytics ジョブに対する参照データとして SQL Database を使用できます。 詳細については、[SQL Database からの参照データの Azure Stream Analytics ジョブでの使用](sql-reference-data.md)に関するページを参照してください。
+
 ### <a name="integration-with-azure-machine-learning"></a>Azure Machine Learning との統合
 
 Machine Learning (ML) 関数を使用して Stream Analytics のジョブをスケーリングできます。 Stream Analytics ジョブで ML 関数を使用する方法について詳しくは、「[Azure Machine Learning 関数を使用した Stream Analytics ジョブのスケーリング](stream-analytics-scale-with-machine-learning-functions.md)」をご覧ください。 現実のシナリオについては、「[Azure Stream Analytics と Azure Machine Learning を使用した感情分析の実行](stream-analytics-machine-learning-integration-tutorial.md)」を確認してください。
-
-### <a name="blob-output-partitioning-by-custom-time"></a>カスタム日時による BLOB 出力のパーティション分割
-
-Azure Stream Analytics は、カスタム日時属性に基づいて BLOB ストレージに出力できます。 詳しくは、「[Azure Stream Analytics の BLOB ストレージ出力用のカスタム DateTime パス パターン](stream-analytics-custom-path-patterns-blob-storage-output.md)」をご覧ください。
 
 ### <a name="javascript-user-defined-aggregate"></a>JavaScript ユーザー定義集計
 
@@ -45,7 +45,7 @@ Visual Studio Tools for Azure Stream Analytics ではローカル テスト機�
 
 ## <a name="private-previews"></a>プライベート プレビュー
 
-以下の機能は、プライベート プレビュー段階です。 これらのプレビューを使用するには、Azure Stream Analytics のプライベート プレビュー [サインアップ](https://aka.ms/ASApreview1) ページにアクセスしてください。
+以下の機能は、プライベート プレビュー段階です。
 
 ### <a name="anomaly-detection"></a>異常検出
 
@@ -55,13 +55,13 @@ Azure Stream Analytics では、"*スパイク*" と "*ディップ*" の検出�
 
 開発者は、C# でカスタム デシリアライザーを実装して、Azure Stream Analytics で受信したイベントを逆シリアル化できるようになりました。 逆シリアル化できる形式としては、Parquet、Protobuf、XML、または任意のバイナリ形式などがあります。
 
-### <a name="blob-output-partitioning-by-custom-attribute"></a>カスタム属性による BLOB 出力のパーティション分割
-
-クエリの任意の列に基づいて、Azure Stream Analytics の出力を BLOB ストレージにパーティション分割できるようになりました。
-
-### <a name="managed-identities-for-azure-resources-authentication-to-azure-data-lake-storage"></a>Azure Data Lake Storage に対する Azure リソース認証用のマネージド ID
+### <a name="managed-identities-for-azure-resource-authentication-to-azure-data-lake-storage"></a>Azure Data Lake Storage に対する Azure リソース認証用のマネージド ID
 
 Azure Data Lake Storage Gen1 に書き込みながら、Azure リソース ベースの認証用のマネージド ID でリアルタイム パイプラインを運用化できるようになり、プログラムでジョブを作成できます。 詳しくは、「[Azure Stream Analytics ジョブを認証するマネージド ID を Azure Data Lake Storage Gen1 出力で使用する](stream-analytics-managed-identities-adls.md)」をご覧ください。
+
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Stream Analytics 用の Visual Studio Code
+
+Visual Studio Code で Azure Stream Analytics のジョブを作成できます。
 
 ## <a name="next-steps"></a>次の手順
 

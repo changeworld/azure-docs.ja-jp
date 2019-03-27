@@ -4,7 +4,7 @@ description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 66021fa8140da2faae4ecab07c98b0df4ea5297a
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: f9993058f93cf94ee468a92ac7cbb2d6881e61be
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50142757"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58214301"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加
 
@@ -47,7 +47,8 @@ ms.locfileid: "50142757"
 
 ```javascript
 var applicationConfig = {
-    clientID: "[Enter the application Id here]",
+    clientID: "Enter_the_Application_Id_here",
+    authority: "https://login.microsoftonline.com/common",
     graphScopes: ["user.read"],
     graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };

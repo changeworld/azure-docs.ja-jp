@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: a9888a23088949b5373aa0eef7d4df3b3064466f
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 250931c9b53692dff4006a0114b6da20948b3f59
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358587"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55096672"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java アプリケーション開発用の Service Fabric プラグイン
 Eclipse は、Java 開発者の間で最も広く使用されている統合開発環境 (IDE) の 1 つです。 この記事では、Eclipse 開発環境をセットアップして Azure Service Fabric を操作する方法について説明します。 Service Fabric プラグインのインストール、Service Fabric アプリケーションの作成、ローカルまたはリモートの Service Fabric クラスターへの Service Fabric アプリケーションのデプロイを Eclipse で行う方法を確認します。 
@@ -37,7 +37,7 @@ Service Fabric プラグインを Eclipse にインストールすることが�
 
 [Eclipse サイト](https://www.eclipse.org)から Eclipse Neon またはそれ以降をインストールします。  さらに、Buildship のバージョン 2.2.1 以降をインストールします (Service Fabric プラグインは旧バージョンの Buildship と互換性がありません)。
 -   インストールされているコンポーネントのバージョンを確認するには、Eclipse で **[Help]\(ヘルプ\)** > **[About Eclipse]\(Eclipse について\)** > **[Installation Details]\(インストールの詳細\)** の順に移動します。
--   Buildship を更新するには、「[Eclipse Buildship: Eclipse Plug-ins for Gradle (Eclipse Buildship: Gradle 用の Eclipse プラグイン)][buildship-update]」を参照してください。
+-   Buildship は、[Eclipse Buildship: Gradle 用の Eclipse プラグイン][buildship-update]に関するページの手順に従って更新できます。
 -   Eclipse の更新プログラムを確認してインストールするには、**[Help]\(ヘルプ\)** > **[Check for Updates]\(更新プログラムの確認\)** の順に移動します。
 
 Service Fabric プラグインをインストールするために、Eclipse で **[Help]\(ヘルプ\)** > **[Install New Software]\(新しいソフトウェアのインストール\)** の順に移動します。
@@ -165,7 +165,7 @@ Service Fabric アプリケーションを構築したら、以下の手順に�
 
 セキュリティで保護された Linux クラスターの場合、アプリケーションに Reliable Services サービスが含まれている場合は、Service Fabric runtime API を呼び出すためにサービスが使用できる証明書を構成する必要もあります。 詳しくは、「[Reliable Services アプリを Linux クラスター上で実行するように構成する](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)」をご覧ください。
 
-セキュリティで保護された Linux クラスターに Java で記述された Service Fabric Reliable Services アプリケーションをデプロイする方法については、[Java Reliable Services アプリケーションのデプロイ](./service-fabric-quickstart-java-reliable-services.md)に関するチュートリアルを参照してください。
+セキュリティで保護された Linux クラスターに Java で記述された Service Fabric Reliable Services アプリケーションをデプロイする方法については、「[クイック スタート: Service Fabric に Java Reliable Services アプリケーションをデプロイする](./service-fabric-quickstart-java-reliable-services.md)」を参照してください。
 
 ## <a name="deploy-a-service-fabric-application-by-using-eclipse-run-configurations"></a>Eclipse 実行構成を使用して Service Fabric アプリケーションをデプロイする
 
@@ -230,7 +230,7 @@ Eclipse を使用してアプリケーションをアップグレードするに
 
 ## <a name="next-steps"></a>次の手順
 
-- Java Reliable サービス アプリケーションを構築し、それをローカルおよび Azure にデプロイする手順の概要については、[Java Reliable Services アプリケーションのデプロイ](./service-fabric-quickstart-java-reliable-services.md)に関するクイックスタートを参照してください。
+- Java Reliable サービス アプリケーションを構築し、それをローカルおよび Azure にデプロイする手順の概要については、「[クイック スタート: Service Fabric に Java Reliable Services アプリケーションをデプロイする](./service-fabric-quickstart-java-reliable-services.md)」を参照してください。
 - ローカル クラスター上の Java アプリケーションをデバッグする方法については、[Eclipse での Java サービスのデバッグ](./service-fabric-debugging-your-application-java.md)に関する記事を参照してください。
 - Service Fabric アプリケーションを監視し診断する方法については、「[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](./service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)」を参照してください。
 

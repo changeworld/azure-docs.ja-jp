@@ -12,18 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 02/28/2019
 ms.author: jeffgilb
 ms.reviewer: scottnap
-ms.openlocfilehash: b401139d417674cf58d2db264b442d7588cc34ba
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: 09805719262f0a1d30f3b38af4b5209667d25e5a
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45987102"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195372"
 ---
 # <a name="add-public-ip-addresses"></a>Public IP Addresses を追加する
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*  
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*  
 
 Azure Stack に Public IP Addresses をさらに追加する方法について説明します。  この記事では、外部アドレスを Public IP Addresses と呼びますが、Azure Stack では、これはご利用の外部ネットワークに IP アドレス ブロックを追加することを指します。  この記事では、外部ネットワークがルーティング可能なパブリック インターネットであるか、イントラネット上にあるか、またプライベート アドレス空間が使用されるかはあまり重要ではありません。  手順は同じです。 
 
@@ -49,14 +50,9 @@ Azure Stack に新しい Public IP Addresses ブロックを追加するプロ�
 5.  [パブリック IP プールの使用量] タイルをクリックします。
 6.  [Add IP pool]\(IP プールの追加\) ボタンをクリックします。
 7.  IP プールの名前を指定します。  選択する名前は、単に IP プールを簡単に識別し、自由に呼び出せるようにするためのものです。  必須ではありませんが、アドレス範囲と同じ名前にすることをお勧めします。
-8.   CIDR 表記で追加するアドレス ブロックを入力します。  たとえば、192.168.203.0/24 のように入力します。
+8.   CIDR 表記で追加するアドレス ブロックを入力します。  例: 192.168.203.0/24
 9.  [アドレス範囲 (CIDR ブロック)] フィールドに有効な CIDR 範囲を指定すると、[開始 IP アドレス]、[終了 IP アドレス] および [利用可能な IP アドレス] の各フィールドが自動的に設定されます。  これらは読み取り専用で、自動的に生成されるため、[アドレス範囲] フィールドで値を変更せずにこれらを変更することはできません。
 10. ブレード上の情報を確認し、すべて正しいことがわかったら、[OK] をクリックして変更をコミットし、アドレス範囲を Azure Stack に追加します。
-
-## <a name="update-the-acls-on-your-top-of-rack-switches"></a>Top-of-Rack スイッチの ACL を更新する
-最後に、新しく追加されたアドレス IP 範囲を有効にして動作させるために、Top-of-Rack (ToR) スイッチのアクセス制御リスト (ACL) を更新する必要があります。  ToR スイッチの ACL に新しい範囲が追加されるまで、新しく追加された IP 範囲への Azure Stack 外からの接続が動作しないように、ToR スイッチの ACL はロックダウンされます。  
-
-OEM に連絡し、協力して ToR スイッチの ACL を更新する必要があります。  サポートされている方法でこれを行うために必要なツールが用意されています。
 
 
 ## <a name="next-steps"></a>次の手順 

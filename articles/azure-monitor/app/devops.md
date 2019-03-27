@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: faeba611dfc55307f8f855ee45a1a8d37603f2f5
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0c7f248023a97bdad09c2c51e9e9a28073def086
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117386"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300127"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights を使用した Web アプリおよびサービスの詳細な診断
 ## <a name="why-do-i-need-application-insights"></a>Application Insights が必要な理由
-Application Insights は、実行中の Web アプリを監視します。 これを使用することでエラーやパフォーマンスの問題が通知され、顧客がどのようにアプリを使用しているかを分析するのに役立ちます。 多くのプラットフォーム (ASP.NET、J2EE、Node.js など) で実行されるアプリで動作し、クラウドまたはオンプレミスのいずれかで提供されます。 
+Application Insights は、実行中の Web アプリを監視します。 これを使用することでエラーやパフォーマンスの問題が通知され、顧客がどのようにアプリを使用しているかを分析するのに役立ちます。 多くのプラットフォーム (ASP.NET、Java EE、Node.js など) で実行されるアプリで動作し、クラウドまたはオンプレミスのいずれかでホストされます。 
 
 ![Aspects of the complexity of delivering web apps](./media/devops/010.png)
 

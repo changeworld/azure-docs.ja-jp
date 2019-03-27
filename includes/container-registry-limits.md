@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/30/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 4021d1ac5a0b3d9d9bf19e9fb7f74952f2471c30
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: fe1227d91c0d039a94e5b9a3046b879f4f17355a
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "49458845"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246978"
 ---
 | リソース | Basic | 標準 | Premium |
 |---|---|---|---|---|

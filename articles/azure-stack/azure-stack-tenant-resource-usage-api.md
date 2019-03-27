@@ -11,15 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: ab5dad550e590cd70f54ad5c8d4727d0f6370190
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: db0cdfce5903b8866985b0545494351e2796d8e2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379714"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55244625"
 ---
 # <a name="tenant-resource-usage-api"></a>テナント リソース使用量 API
 
@@ -82,7 +83,7 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedSta
 | *subscriptionId* |Azure ユーザーのサブスクリプション識別子 |
 | *usageStartTime* |この使用状況集計が属する使用状況バケットの UTC 開始時間 |
 | *usageEndTime* |この使用状況集計が属する使用状況バケットの UTC 終了時間 |
-| *instanceData* |インスタンスの詳細のキーと値のペア (新しい形式)。<br>  *resourceUri*: 完全修飾リソース ID。リソース グループとインスタンス名が含まれます <br>  *location*: このサービスが実行されたリージョン <br>  *tags*: ユーザーが指定するリソース タグ <br>  *additionalInfo*: OS のバージョンやイメージの種類など、使用されたリソースの詳細 |
+| *instanceData* |インスタンスの詳細のキーと値のペア (新しい形式)。<br>  *resourceUri*:完全修飾リソース ID。リソース グループとインスタンス名が含まれます <br>  *location*:このサービスが実行されたリージョン <br>  *tags*:ユーザーが指定するリソース タグ <br>  *additionalInfo*:OS のバージョンやイメージの種類など、使用されたリソースの詳細 |
 | *quantity* |この期間に発生したリソース使用量 |
 | *meterId* |使用されたリソースの一意の ID (*ResourceID* とも呼ばれる) |
 

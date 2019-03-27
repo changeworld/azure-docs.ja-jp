@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: dc93d0b44d6d99e8418d4333ca8698bc9ebf3a96
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a23a2f536f765c62919960f3c582d04543b1f49a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629681"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820829"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 
@@ -250,11 +250,11 @@ Hive on Tez ジョブのタスク実行ビューを使用して、構造化お�
 ![Data Lake Visual Studio Tools のタスク実行ビュー ウィンドウのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png "タスク実行ビュー")
 
 ## <a name="run-hive-batch-jobs"></a>Hive バッチ ジョブの実行
-HDInsight クラスターに対する Hive スクリプトのテストは、(対話型クエリ クラスター以外は) 時間がかかる可能性があります。 このプロセスには、数分以上かかることがあります。 Data Lake Tools for Visual Studio では、ライブ クラスターに接続しなくても、Hive スクリプトをローカルで検証できます。 対話型クエリの実行の詳細については、「[対話型 Hive クエリの実行](#run-interactive-hive-queries)」を参照してください。
+HDInsight クラスターに対する Hive スクリプトのテストは、(対話型クエリ クラスター以外は) 時間がかかる可能性があります。 このプロセスには、数分以上かかることがあります。 Data Lake Tools for Visual Studio では、ライブ クラスターに接続しなくても、Hive スクリプトをローカルで検証できます。 対話型クエリの実行の詳細については、「対話型 Hive クエリの実行」を参照してください。
 
 Data Lake Tools for Visual Studio では、特定の Hive ジョブの Yarn ログを収集して表示することで、Hive ジョブの内容を確認できます。
 
-Hive バッチ ジョブの実行方法の詳細については、「[対話型 Hive クエリの実行](#run-interactive-hive-queries)」を参照してください。 そのセクションの情報は、実行に時間がかかる Hive バッチ ジョブに適用されます。
+Hive バッチ ジョブの実行方法の詳細については、「対話型 Hive クエリの実行」を参照してください。 そのセクションの情報は、実行に時間がかかる Hive バッチ ジョブに適用されます。
 
 ## <a name="run-apache-pig-scripts"></a>Apache Pig スクリプトの実行
 Data Lake Tools for Visual Studio を使用して、Pig スクリプトの作成と HDInsight クラスターへの送信を行うことができます。 最初に、テンプレートから Pig プロジェクトを作成します。 次に、スクリプトを HDInsight クラスターに送信します。

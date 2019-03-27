@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
-ms.openlocfilehash: 4dd0f697d16d7a2fbeec8f712d98e6a7c439cb4e
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064680"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896995"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player の概要
 
@@ -24,23 +24,23 @@ Azure Media Player は、さまざまなブラウザーやデバイス上で Mic
 
 Microsoft Azure Media Services では、HLS、DASH、スムーズ ストリーミングのストリーミング形式でコンテンツを提供して再生できます。 Azure Media Player はこれらの多用な形式を考慮し、プラットフォームやブラウザーの性能に基づいて最適なリンクを自動的に再生します。 また、Media Services では PlayReady 暗号化や AES-128 ビットエンベロープ暗号化を使用した資産の動的暗号化も可能です。 Azure Media Player では、コンテンツが適切に構成されていれば、PlayReady 暗号化や AES-128 ビットエンベロープ暗号化されたコンテンツの暗号化を解除できます。 
 
-[無料試用版の利用を開始](http://azure.microsoft.com/en-us/pricing/free-trial/)
+[無料試用版の利用を開始](https://azure.microsoft.com/en-us/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Azure Media Player のデモページを使用する
 
 ### <a name="start-using"></a>使用を開始する
 
-[Azure Media Player のデモ ページ](http://aka.ms/amp)を使用して、Azure Media Services のサンプルや独自のストリームを再生することができます。  
+[Azure Media Player のデモ ページ](https://aka.ms/amp)を使用して、Azure Media Services のサンプルや独自のストリームを再生することができます。  
 
-新しいビデオを再生するには、別の URL を貼り付けて **[Update](更新する)** を押します。
+新しいビデオを再生するには、別の URL を貼り付けて **[Update]\(更新する)** を押します。
 
-さまざまな再生オプション (テクノロジ、言語、暗号化など) を構成するには、**[Advanced Options](詳細オプション)** を押します。
+さまざまな再生オプション (テクノロジ、言語、暗号化など) を構成するには、**[Advanced Options]\(詳細オプション)** を押します。
 
 ![Azure Media Player](./media/azure-media-player/home-page.png)
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>ビデオ ストリームの診断を監視する
 
-[Azure Media Player のデモ ページ](http://aka.ms/amp)を使用して、ビデオ ストリームの診断を監視します。 
+[Azure Media Player のデモ ページ](https://aka.ms/amp)を使用して、ビデオ ストリームの診断を監視します。 
 
 ![Azure Media Player の診断](./media/azure-media-player/diagnostics.png)
 

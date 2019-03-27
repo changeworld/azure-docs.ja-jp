@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 62cdc50b40fb1273fdc2eece050869fc2284cf6c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 6b57c3a172f39c596250b05024ad954a5d065440
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632978"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984819"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Web App for Containers のカスタム Docker イメージを使用する
 
@@ -59,7 +59,7 @@ cd docker-django-webapp-linux
 
 Git リポジトリで、_Dockerfile_ を確認してください。 このファイルには、アプリケーションの実行に必要な Python 環境が記述されています。 さらに、イメージはコンテナーとホスト間のセキュアな通信用に [SSH](https://www.ssh.com/ssh/protocol/) サーバーを設定します。
 
-```docker
+```Dockerfile
 FROM python:3.4
 
 RUN mkdir /code
@@ -254,7 +254,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 ### <a name="test-the-web-app"></a>Web アプリをテストする
 
-Web アプリの動作を確認するには、これを参照します (`http://<app_name>azurewebsites.net`)。 
+Web アプリの動作を確認するには、これを参照します (`http://<app_name>.azurewebsites.net`)。 
 
 ![Web アプリ ポート構成をテストする](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
@@ -280,7 +280,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
 * `apt-get` を呼び出してからルート アカウントのパスワードを `"Docker!"` に設定する [RUN](https://docs.docker.com/engine/reference/builder/#run) 命令。
 
-    ```docker
+    ```Dockerfile
     ENV SSH_PASSWD "root:Docker!"
     RUN apt-get update \
             && apt-get install -y --no-install-recommends dialog \
@@ -294,7 +294,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
 * Docker エンジンに [sshd_config](https://man.openbsd.org/sshd_config) ファイルを "*/etc/ssh/*" ディレクトリにコピーするよう指示する [COPY](https://docs.docker.com/engine/reference/builder/#copy) 命令。 構成ファイルは[この sshd_config ファイル](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config)に基づく必要があります。
 
-    ```docker
+    ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
@@ -305,7 +305,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
 
 * コンテナーでポート 2222 を公開する [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose) 命令。 ルート パスワードはわかっていますが、ポート 2222 はインターネットからアクセスすることはできません。 それはプライベート仮想ネットワークのブリッジ ネットワーク内でコンテナーのみがアクセスできる内部ポートです。 その後、コマンドが SSH 構成の詳細をコピーし、`ssh` サービスを起動します。
 
-    ```docker
+    ```Dockerfile
     EXPOSE 8000 2222
     ```
 

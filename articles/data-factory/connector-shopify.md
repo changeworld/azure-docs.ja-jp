@@ -44,9 +44,9 @@ Shopify のリンクされたサービスでは、次のプロパティがサポ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります。**Shopify** | [はい] |
-| host | Shopify サーバーのエンドポイント。 (つまり、mystore.myshopify.com)  | [はい] |
-| accessToken | Shopify のデータへのアクセスに使用する API アクセス トークン。 トークンはオフライン モードの場合には期限切れしません。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります。**Shopify** | はい |
+| host | Shopify サーバーのエンドポイント。 (つまり、mystore.myshopify.com)  | はい |
+| accessToken | Shopify のデータへのアクセスに使用する API アクセス トークン。 トークンはオフライン モードの場合には期限切れしません。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -77,7 +77,7 @@ Shopify からデータをコピーするには、データセットの type プ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります。**ShopifyObject** | [はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります。**ShopifyObject** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -106,7 +106,7 @@ Shopify からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**ShopifySource** | [はい] |
+| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**ShopifySource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM "Products" WHERE Product_Id = '123'"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**

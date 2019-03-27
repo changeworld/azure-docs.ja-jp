@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a3807dc792c2e56c3e7c1b74f7d3e8f73ac0f4b0
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 7b5b82e80ab4998f7cd106f469bf7ac8e271285d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705091"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588366"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Azure Maps を使って目的地へのルートを検索する
 
@@ -202,7 +202,7 @@ ms.locfileid: "51705091"
         endPoint.geometry.coordinates[0];
     ```
 
-3. ルートを取得するには、次のコード ブロックをスクリプトに追加します。 これにより、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) メソッドを通じて Azure Maps ルーティング サービスに対してクエリが実行され、[getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes) を使用してその応答が GeoJSON 形式に解析されます。 その後、応答に含まれるルートの線をデータ ソースに追加すれば、マップ上に自動的にレンダリングされます。
+3. ルートを取得するには、次のコード ブロックをスクリプトに追加します。 これにより、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) メソッドを通じて Azure Maps ルーティング サービスに対してクエリが実行され、[getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routegeojson?view=azure-iot-typescript-latest) を使用してその応答が GeoJSON 形式に解析されます。 その後、応答に含まれるルートの線をデータ ソースに追加すれば、マップ上に自動的にレンダリングされます。
 
     ```JavaScript
     //Execute the car route query then add the route to the map once a response is received.

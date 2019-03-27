@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用してアプリを作成する方法について説明します。
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 8c230143a4b3ab15e5a43d8b565d1973bc47ec29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 5c45918a2cdcdd0a848e392d125849953af976ea
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599021"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445119"
 ---
 # <a name="ship-an-application"></a>アプリケーションの出荷
 
@@ -45,21 +45,21 @@ Cognitive Services Speech SDK には、[Visual Studio 2017 の Microsoft Visual 
 | `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` | マネージド展開に必要
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | マネージド展開に必要
 
-## <a name="linux"></a> Linux
+## <a name="linux"></a>Linux
 
+現在、Speech SDK では、Ubuntu 16.04 および 18.04 のディストリビューションがサポートされています。
 ネイティブ アプリケーションについては、Speech SDK ライブラリ `libMicrosoft.CognitiveServices.Speech.core.so` を配布する必要があります。
 必ず、お使いのアプリケーションと一致するバージョン (x86、x64) を選択してください。 Linux バージョンによっては、次の依存関係を追加しなければならない場合もあります。
 
 * GNU C ライブラリの共有ライブラリ (POSIX Threads Programming ライブラリ `libpthreads` など)
 * OpenSSL ライブラリ (`libssl.so.1.0.0`)
-* cURL ライブラリ (`libcurl.so.4`)
 * ALSA アプリケーションの共有ライブラリ (`libasound.so.2`)
 
-たとえば、Ubuntu 16.04 または 18.04 では、GNU C ライブラリが既定でインストールされています。 残りの 3 つをインストールするには、次のコマンドを使用します。
+Ubuntu では、GNU C ライブラリが既定でインストールされています。 残りの 3 つをインストールするには、次のコマンドを使用します。
 
 ```sh
 sudo apt-get update
-sudo apt-get install libssl1.0.0 libcurl3 libasound2 wget
+sudo apt-get install libssl1.0.0 libasound2 wget
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 23af00b8a8e061056e9b7ad8ea2c999414783ad6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 29ad35b30e7f75259b9c4d0174c16c6c9c40a917
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538108"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852535"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Database for MariaDB データベースを設計する
 
@@ -28,6 +28,8 @@ Azure Database for MariaDB は、高可用性 MySQL データベースをクラ�
 > * データのクエリを実行する
 > * データの更新
 > * データの復元
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
@@ -56,7 +58,7 @@ Azure Database for MariaDB サーバーは、定義済みの一連の[コンピ�
     サーバー管理者のログイン | **myadmin** | サーバーに接続するときに使用するサインイン アカウント。 管理者のサインイン名に **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
     パスワード | *任意* | サーバー管理者アカウントの新しいパスワードを入力します。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
     パスワードの確認 | *任意*| 管理者アカウントのパスワードを確認します。
-    場所 | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
+    Location | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
     Version | *最新バージョン*| 最新バージョン (別のバージョンを使用する特別な要件がある場合を除く)。
     価格レベル  | 説明を参照してください。 | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[価格レベル]** > **[General Purpose]** を選択します。 次の設定は既定値のままにしてください。<br><ul><li>**[コンピューティング世代]** (Gen 5)</li><li>**[仮想コア]** (2 仮想コア)</li><li>**[ストレージ]** (5 GB)</li><li>**[バックアップの保有期間]** (7 日間)</li></ul><br>サーバー バックアップを geo 冗長ストレージで有効にするには、**[バックアップ冗長オプション]** で **[地理冗長]** を選択します。 <br><br>この価格レベルの選択を保存するには、**[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
     
@@ -88,7 +90,7 @@ Azure portal から、Azure Database for MariaDB サーバーの **[サーバー
 
    ![サーバーのプロパティ](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-この例では、サーバー名は **mydemoserver.mariadb.database.azure.com**、サーバー管理者ログイン名は **myadmin@mydemoserver** です。
+この例では、サーバー名は **mydemoserver.mariadb.database.azure.com**、サーバー管理者ログイン名は **myadmin\@mydemoserver** です。
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>mysql を使用してサーバーに接続する
 
@@ -171,7 +173,7 @@ SELECT * FROM inventory;
    
    - **復元ポイント**:一覧表示された期間から、どの時点までさかのぼって復元するかを選択します。 ローカル タイム ゾーンは必ず UTC に変換してください。
    - **新しいサーバーに復元**: 復元先となる新しいサーバーの名前を入力します。
-   - **場所**: リージョンはソース サーバーと同じ場所にします。変更することはできません。
+   - **[場所]**:リージョンはソース サーバーと同じ場所にします。変更することはできません。
    - **価格レベル**:ソース サーバーと同じ価格レベルにします。変更することはできません。
    
 3. **[OK]** を選択して、テーブルが削除される前の[時点にサーバーを復元](./howto-restore-server-portal.md)します。 サーバーを復元すると、選択した時点のサーバーのコピーが新たに作成されます。 

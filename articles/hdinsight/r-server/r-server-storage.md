@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 4aae44745981951fa61836fe52d8d6b799c6cadf
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001517"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309119"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure Storage ソリューション
 
@@ -119,9 +119,9 @@ HDInsight クラスターに関連付けられている Azure Active Directory (
 
 また、クラスター作成後に 1 つ以上の Data Lake Storage アカウントへのクラスター アクセスを追加することもできます。 そのためには、Data Lake Storage の Azure portal エントリを開き、**[データ エクスプローラー]、[アクセス]、[追加]** の順に移動します。 
 
-### <a name="how-to-access-data-lake-storage-from-ml-services-on-hdinsight"></a>HDInsight で ML Services から Data Lake Storage にアクセスする方法
+### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>HDInsight で ML Services から Data Lake Storage Gen1 にアクセスする方法
 
-Data Lake Storage へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の ML Services クラスターでストレージを使用できます。 唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。
+Data Lake Storage Gen1 へのアクセスを付与したら、Azure セカンダリ ストレージ アカウントと同様に、HDInsight の ML Services クラスターでストレージを使用できます。 唯一の違いは、プレフィックスが次のように **wasb://** から **adl://** に変わることです。
 
 
     # Point to the ADL Storage (e.g. ADLtest)
@@ -143,7 +143,7 @@ Data Lake Storage へのアクセスを付与したら、Azure セカンダリ �
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-次に示すコマンドは、RevoShare ディレクトリを含む Data Lake Storage アカウントを構成し、前の例のサンプル .csv ファイルを追加します。
+次に示すコマンドは、RevoShare ディレクトリを含む Data Lake Storage Gen1 アカウントを構成し、前の例のサンプル .csv ファイルを追加します。
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user
@@ -172,4 +172,4 @@ Azure Files の大きな利点は、サポートされている OS (Windows や 
 * [HDInsight 上の ML サービス クラスターの概要](r-server-overview.md)
 * [Apache Hadoop での ML サービス クラスターの使用開始](r-server-get-started.md)
 * [HDInsight 上の ML サービス クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
-
+* [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 841c65fd8420fdfe681cb99ee7054cb4edd5fcd3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2cf9a98a2f27c9088266a976118acdb56f8a65d7
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968992"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300824"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files を含む永続ボリュームを動的に作成して使用する
 
@@ -26,32 +26,20 @@ Kubernetes 永続ボリュームについて詳しくは、[Kubernetes 永続ボ
 
 また、Azure CLI バージョン 2.0.46 以降がインストール、構成されていること必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
+## <a name="create-a-storage-class"></a>ストレージ クラスの作成
 
-Azure Files 共有を Kubernetes ボリュームとして動的に作成するときは、AKS **ノード** リソース グループ内にある限り、任意のストレージ アカウントを使用できます。 このグループは、AKS クラスターにリソースのプロビジョニングによって作成された *MC_* プレフィックスを備えています。 [az aks show][az-aks-show] コマンドを使用して、リソース グループの名前を取得します。
+ストレージ クラスを使用して、Azure ファイル共有を作成する方法を定義します。 ストレージ アカウントは、ストレージ クラスと共に使用して Azure ファイル共有を保持するために、*_MC* リソース グループ内に自動的に作成されます。 *skuName* には、次のいずれかの [Azure Storage の冗長性][storage-skus]を選択します。
 
-```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
-
-MC_myResourceGroup_myAKSCluster_eastus
-```
-
-[az storage account create][az-storage-account-create] コマンドを使用して、ストレージ アカウントを作成します。
-
-最後の手順で収集したリソース グループの名前を使用して `--resource-group` を更新し、`--name` を任意の名前に更新します。 独自の一意のストレージ アカウント名を指定します。
-
-```azurecli
-az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --sku Standard_LRS
-```
+* *Standard_LRS* - 標準のローカル冗長ストレージ (LRS)
+* *Standard_GRS* - 標準の geo 冗長ストレージ (GRS)
+* *Standard_RAGRS* - 標準の読み取りアクセス geo 冗長ストレージ (RA-GRS)
 
 > [!NOTE]
 > Azure Files は現在、Standard ストレージのみと連動します。 Premium ストレージを使用すると、ボリュームはプロビジョニングに失敗します。
 
-## <a name="create-a-storage-class"></a>ストレージ クラスの作成
+Azure Files 用の Kubernetes ストレージ クラスについて詳しくは、[Kubernetes ストレージ クラス][kubernetes-storage-classes]に関するページをご覧ください。
 
-ストレージ クラスを使用して、Azure ファイル共有を作成する方法を定義します。 クラス内にストレージ アカウントを指定できます。 ストレージ アカウントが指定されない場合は、*skuName* と *location* が指定される必要があり、関連するリソース グループ内のすべてのストレージ アカウントが一致するかどうかの評価が行われます。 Azure Files 用の Kubernetes ストレージ クラスについて詳しくは、[Kubernetes ストレージ クラス][kubernetes-storage-classes]に関するページをご覧ください。
-
-`azure-file-sc.yaml` という名前のファイルを作成し、次の例のマニフェストにコピーします。 *storageAccount* の値を、前の手順で作成したストレージ アカウントの名前に更新します。 *mountOptions* について詳しくは、「[マウント オプション][mount-options]」セクションをご覧ください。
+`azure-file-sc.yaml` という名前のファイルを作成し、次の例のマニフェストにコピーします。 *mountOptions* について詳しくは、「[マウント オプション][mount-options]」セクションをご覧ください。
 
 ```yaml
 kind: StorageClass
@@ -66,7 +54,6 @@ mountOptions:
   - gid=1000
 parameters:
   skuName: Standard_LRS
-  storageAccount: mystorageaccount
 ```
 
 [kubectl apply][kubectl-apply] コマンドを使用して、ストレージ クラスを作成します。
@@ -295,3 +282,4 @@ Azure Files を使用した Kubernetes 永続ボリュームについて、さ�
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
+[storage-skus]: ../storage/common/storage-redundancy.md

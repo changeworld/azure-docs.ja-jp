@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: danlep
-ms.openlocfilehash: 8bae44215cdc17e9f1617c909ef197f2757fc114
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 42790905509e2ea8bbba87587ed01b1929221db5
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857756"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329321"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure Container Registry webhook リファレンス
 
@@ -43,7 +43,7 @@ Azure Container Registry webhook の構成方法については、「[Azure Cont
 |要素|type|説明|
 |-------------|----------|-----------|
 |`id`|String|webhook イベントの ID。|
-|`timestamp`|Datetime|webhook イベントがトリガーされた日時。|
+|`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
 |`action`|String|webhook イベントをトリガーしたアクション。|
 |[target](#target)|複合型|webhook イベントをトリガーしたイベントのターゲット。|
 |[request](#request)|複合型|webhook イベントを生成した要求。|
@@ -107,7 +107,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 |要素|type|説明|
 |-------------|----------|-----------|
 |`id`|String|webhook イベントの ID。|
-|`timestamp`|Datetime|webhook イベントがトリガーされた日時。|
+|`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
 |`action`|String|webhook イベントをトリガーしたアクション。|
 |[target](#delete_target)|複合型|webhook イベントをトリガーしたイベントのターゲット。|
 |[request](#delete_request)|複合型|webhook イベントを生成した要求。|
@@ -154,10 +154,10 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ```azurecli
 # Delete repository
-az acr repository delete -n MyRegistry --repository MyRepository
+az acr repository delete --name MyRegistry --repository MyRepository
 
-# Delete manifest
-az acr repository delete -n MyRegistry --repository MyRepository --tag MyTag --manifest
+# Delete image
+az acr repository delete --name MyRegistry --image MyRepository:MyTag
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -41,9 +41,9 @@ SAP Cloud for Customer のリンクされたサービスでは、次のプロパ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomer**。 | [はい] |
-| url | SAP C4C OData サービスの URL。 | [はい] |
-| username | SAP C4C に接続するためのユーザー名を指定します。 | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomer**。 | はい |
+| url | SAP C4C OData サービスの URL。 | はい |
+| username | SAP C4C に接続するためのユーザー名を指定します。 | はい |
 | password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合はいいえ、シンクの場合ははい |
 
@@ -81,8 +81,8 @@ SAP Cloud for Customer からデータをコピーするには、データセッ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**SapCloudForCustomerResource** |[はい] |
-| path | SAP C4C OData エンティティのパスを指定します。 |[はい] |
+| type | データセットの type プロパティは、次のように設定する必要があります:**SapCloudForCustomerResource** |はい |
+| path | SAP C4C OData エンティティのパスを指定します。 |はい |
 
 **例:**
 
@@ -112,7 +112,7 @@ SAP Cloud for Customer からデータをコピーするには、コピー ア�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomerSource**  | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomerSource**  | はい |
 | query | データを読み取るカスタム OData クエリを指定します。 | いいえ  |
 
 特定の日のデータを取得するサンプル クエリ: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
@@ -155,7 +155,7 @@ SAP Cloud for Customer にデータをコピーするには、コピー アク�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomerSink**  | [はい] |
+| type | type プロパティは、次のように設定する必要があります:**SapCloudForCustomerSink**  | はい |
 | writeBehavior | 操作の書き込み動作。 “Insert” または “Update” を指定できます。 | いいえ。 既定値: "Insert"。 |
 | writeBatchSize | 書き込み操作のバッチ サイズ。 最適なパフォーマンスを得るバッチ サイズは、テーブルまたはサーバーによって異なることがあります。 | いいえ。 既定値: 10。 |
 
@@ -205,7 +205,7 @@ SAP Cloud for Customer からデータをコピーするとき、次のSAP Cloud
 | SAP C4C OData のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | Edm.Binary | Byte[] |
-| Edm.Boolean | ブール値 |
+| Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
 | Edm.DateTime | Datetime |
 | Edm.Decimal | Decimal |

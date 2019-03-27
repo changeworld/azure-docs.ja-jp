@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: c1d9047de814b7a80210fe2502d219921f5829a4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 635f519239ad00df8672472bcb6c54e6b8a59927
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976904"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001705"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>クイック スタート:Azure VM への単一インスタンスの SAP HANA の手動インストール
 ## <a name="introduction"></a>はじめに
@@ -49,7 +49,7 @@ ms.locfileid: "53976904"
 VM の構成と運用の詳細については、「[Azure における SAP HANA インフラストラクチャの構成と運用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)」を参照してください。
 SAP HANA の高可用性については、「[Azure 仮想マシンの SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)」を参照してください。
 
-SAP HANA インスタンス、S/4HANA、または BW/4HANA システムを非常に迅速にデプロイする方法を探している場合は、[SAP Cloud Appliance Library](http://cal.sap.com) の使用を検討してください たとえば、Azure で SAP CAL を使用して S/4HANA システムを展開する場合、[このガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)で関連するドキュメントを見つけることができます。 必要なのは、Azure サブスクリプションと SAP Cloud Appliance Library に登録できる SAP ユーザーだけです。
+SAP HANA インスタンス、S/4HANA、または BW/4HANA システムを非常に迅速にデプロイする方法を探している場合は、[SAP Cloud Appliance Library](https://cal.sap.com) の使用を検討してください たとえば、Azure で SAP CAL を使用して S/4HANA システムを展開する場合、[このガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)で関連するドキュメントを見つけることができます。 必要なのは、Azure サブスクリプションと SAP Cloud Appliance Library に登録できる SAP ユーザーだけです。
 
 ## <a name="additional-resources"></a>その他のリソース
 ### <a name="sap-hana-backup"></a>SAP HANA バックアップ
@@ -70,7 +70,7 @@ SAP HANA でサポートされるオペレーティング システムの詳細�
 SAP HANA および各種の Linux オペレーティング システムに関する追加の SAP のマニュアルについては、以下を参照してください。
 
 * [SAP Support Note #171356 – SAP Software on Linux:General Information (SAP サポート ノート #171356 – SAP Software on Linux: 一般情報)](https://launchpad.support.sap.com/#/notes/1984787)
-* [SAP Support Note #1944799 – SAP HANA Guidelines for SLES Operating System Installation (SAP サポート ノート #1944799 – SLES オペレーティング システムのインストールに関する SAP HANA ガイドライン)](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)。
+* [SAP Support Note #1944799 – SAP HANA Guidelines for SLES Operating System Installation (SAP サポート ノート #1944799 – SLES オペレーティング システムのインストールに関する SAP HANA ガイドライン)](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)。
 * [SAP Support Note #2205917 – SAP HANA DB Recommended OS Settings for SLES 12 for SAP Applications (SAP サポート ノート #2205917 – SAP HANA DB: 推奨される SLES 12 for SAP Applications 向け OS 設定)](https://launchpad.support.sap.com/#/notes/2205917/E)。
 * [SAP Support Note #1984787 – SUSE Linux Enterprise Server 12:Installation Notes (SAP サポート ノート #1984787 – SUSE Linux Enterprise Server 12: インストールに関する注意事項)](https://launchpad.support.sap.com/#/notes/1984787)
 * [SAP Support Note #1391070 – Linux UUID Solutions (SAP サポート ノート #1391070 – Linux UUID ソリューション)](https://launchpad.support.sap.com/#/notes/1391070)。
@@ -195,7 +195,7 @@ Azure 上の Linux VM のルート ファイル システムには、サイズ�
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-推奨されるディスク構成では、HANA データ ボリュームとログ ボリュームは、LVM または MDADM を使用してストライピングされている Azure Premium Storage ディスクの同じセットに配置されます。 Azure Premium Storage では冗長性を確保するためにディスクのイメージが 3 つ保持されるため、RAID 冗長レベルを定義する必要はありません。 構成したストレージが十分であるかどうかを確認するために、「[SAP HANA TDI storage Requirements (SAP HANA TDI ストレージ要件)](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」および「[SAP HANA Server Installation and Update Guide (SAP HANA サーバー インストールおよびアップデート ガイド)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)」を参照してください。 「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](https://docs.microsoft.com/azure/storage/storage-premium-storage)」に関するページの説明に従って、異なる Azure Premium ストレージ ディスクの異なる仮想ハード ディスク (VHD) スループット ボリュームも考慮してください。 
+推奨されるディスク構成では、HANA データ ボリュームとログ ボリュームは、LVM または MDADM を使用してストライピングされている Azure Premium Storage ディスクの同じセットに配置されます。 Azure Premium Storage では冗長性を確保するためにディスクのイメージが 3 つ保持されるため、RAID 冗長レベルを定義する必要はありません。 構成したストレージが十分であるかどうかを確認するために、「[SAP HANA TDI storage Requirements (SAP HANA TDI ストレージ要件)](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html)」および「[SAP HANA Server Installation and Update Guide (SAP HANA サーバー インストールおよびアップデート ガイド)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)」を参照してください。 「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](../../windows/disks-types.md)」に関するページの説明に従って、異なる Azure Premium ストレージ ディスクの異なる仮想ハード ディスク (VHD) スループット ボリュームも考慮してください。 
 
 データベースまたはトランザクション ログのバックアップを格納するために、HANA DBMS VM に Premium Storage ディスクを追加することができます。
 
@@ -206,9 +206,7 @@ Azure 上の Linux VM のルート ファイル システムには、サイズ�
 
 ゲスト OS として Linux を実行している Azure VM にディスクをアタッチする方法については、「[Linux VM へのディスクの追加](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-Azure Premium Storage では、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にする必要があります。 その他のボリューム (ディスク) では、キャッシュ モードを **ReadOnly** に設定する必要があります。
-
-詳細については、[Premium Storage:Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../windows/premium-storage.md)に関する記事を参照してください。
+Azure Premium SSD では、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にする必要があります。 その他のボリューム (ディスク) では、キャッシュ モードを **ReadOnly** に設定する必要があります。
 
 VM 作成用の JSON のサンプル テンプレートを検索するには、「[Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates)」(Azure クイック スタート テンプレート) をご覧ください。
 vm-simple-sles テンプレートは、基本的なテンプレートです。 追加 100 GB のデータ ディスクを使用する記憶域セクションが含まれています。 このテンプレートはベースとして使用することができます。 テンプレートは特定の構成に適用できます。
@@ -253,7 +251,7 @@ SAP HANA カーネル設定を永続的な設定にするには、SLES 12 で **
 
 SAP HANA DB VM に関しては、データベースのインストール時に SAPinst (SWPM) と**一般的な**インストール オプションを使用した場合、すべてが /hana と /usr/sap にインストールされます。 SAP HANA ログ バックアップの既定の場所は /usr/sap です。 この場合もルート ファイル システムの記憶域スペースの不足を防ぐことが重要であるため、SWPM を使って SAP HANA をインストールする前に /hana と /usr/sap に十分な空き領域があることを確認します。
 
-SAP HANA の標準のファイルシステム レイアウトの説明は、「[SAP HANA Server Installation and Update Guide](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)」(SAP HANA サーバーのインストールと更新のガイド) をご覧ください。
+SAP HANA の標準のファイルシステム レイアウトの説明は、「[SAP HANA Server Installation and Update Guide](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm)」(SAP HANA サーバーのインストールと更新のガイド) をご覧ください。
 
 ![SAP アプリ サーバー VM に作成された追加のファイル システム](./media/hana-get-started/image009.jpg)
 
@@ -405,7 +403,7 @@ HANA HDBLCM ツールの詳細については、以下を参照してくださ�
 
 * [タスクに適した SAP HANA HDBLCM の選択](https://help.sap.com/saphelp_hanaplatform/helpdata/en/68/5cff570bb745d48c0ab6d50123ca60/content.htm)
 * [SAP HANA ライフサイクル管理ツール](https://www.tutorialspoint.com/sap_hana_administration/sap_hana_administration_lifecycle_management.htm)
-* [SAP HANA サーバーのインストールと更新のガイド](http://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf)
+* [SAP HANA サーバーのインストールと更新のガイド](https://help.sap.com/hana/SAP_HANA_Server_Installation_Guide_en.pdf)
 
 (HDBLCM ツールによって作成される) `\<HANA SID\>adm user` の既定のグループ ID 設定に関する問題を回避するために、HDBLCM を使って SAP HANA をインストールする前に、グループ ID `1001` を使って `sapsys` という新しいグループを定義します。
 

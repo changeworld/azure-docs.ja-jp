@@ -3,7 +3,7 @@ title: Azure Key Vault の概要 - Azure Key Vault | Microsoft Docs
 description: Azure Key Vault は、セキュリティで保護されたシークレット ストアとして機能するクラウド サービスです。
 services: key-vault
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 34af20ee-3fa7-4f28-9d98-6168b1759764
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: c96899fc46cd9cf6377894de773785dac14f3345
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 06f1a2b33b177cf667fc2d3c5932f7ff117d2bdc
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121568"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195474"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -55,7 +55,7 @@ Azure Key Vault は、ソフトウェアまたはハードウェアの HSM で�
 
 - ストレージ アカウントへのアーカイブ。
 - イベント ハブへのストリーム配信。
-- Log Analytics へのログの送信。
+- Azure Monitor ログにログを送信します。
 
 ユーザーは、ログを管理できます。ユーザーは、アクセスを制限することによってログを保護することができ、不要になったログを削除することもできます。
 

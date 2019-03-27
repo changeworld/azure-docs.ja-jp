@@ -1,20 +1,21 @@
 ---
-title: Azure Content Moderator でワークフローを定義して使用する | Microsoft Docs
-description: コンテンツ ポリシーに基づいてカスタム ワークフローを作成する方法を説明します。
+title: コンテンツ モデレーション ワークフローを定義して使用する - Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Azure Content Moderator ワークフロー デザイナーおよび API を使用し、コンテンツ ポリシーに基づいてカスタム ワークフローとしきい値を定義できます。
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: article
-ms.date: 01/07/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: dfe3ba8a2ef1bcbc69ef585b504a9367d9420bf0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8fe380e3015e5b6929aebcb898eef44d6f6bceda
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373024"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55213278"
 ---
 # <a name="define-test-and-use-workflows"></a>ワークフローの定義、テスト、使用
 

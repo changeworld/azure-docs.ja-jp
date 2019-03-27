@@ -4,7 +4,7 @@ description: Azure Active Directory と GoToMeeting の間でシングル サイ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bcaf19f2-5809-4e1c-acbc-21a8d3498ccf
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: f1632ffa6bf4f0896fe4155b9a3fe938d0e672fc
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9377ebdcc26305ca9652b947e8bd16d98374ef5d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065020"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>チュートリアル:Azure Active Directory と GoToMeeting の統合
 
@@ -110,7 +111,7 @@ GoToMeeting で Azure AD シングル サインオンを構成するには、次
 
     c. **[追加の URL を設定します]** をクリックして、以下の URL を構成します
 
-    d. **サインオン URL** (空白のまま)
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **サインオン URL** (空白のまま)
 
     e. **[RelayState]** ボックスに、次のパターンを使用して URL を入力します。
 
@@ -215,7 +216,7 @@ GoToMeeting で Azure AD シングル サインオンを構成するには、次
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -6,16 +6,16 @@ author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.component: implement
+ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 50e70ab9be87c15816dc6471a2a29afd0f17d907
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 9ce7a36f796716f48f6575b2391ac563eebf4530
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301247"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447822"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU)
 最適な Data Warehouse ユニット (DWU、cDWU) の数の選択についての推奨事項と、ユニットの数を変更する方法を示します。 
@@ -34,10 +34,12 @@ Data Warehouse ユニットのパフォーマンスは、次のようなデー�
 DWU の数を増やすと、次のメリットが得られます。
 - スキャン、集計、CTAS ステートメントに関するシステムのパフォーマンスが直線的に向上します。
 - PolyBase の読み込み操作のリーダーとライターの数が増えます。
-- 同時クエリと同時実行スロットの最大数が増えます。
+- コンカレント クエリとコンカレンシー スロットの最大数が増えます。
 
 ## <a name="service-level-objective"></a>サービス レベル目標
-サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 用のサービス レベルは、コンピューティング データ ウェアハウス単位 (cDWU) で測定されます (例: DW2000c)。 Gen1 サービス レベルは DWU の単位で計測されます (例: DW2000)。 
+サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 用のサービス レベルは、コンピューティング データ ウェアハウス単位 (cDWU) で測定されます (例: DW2000c)。 Gen1 サービス レベルは DWU の単位で計測されます (例: DW2000)。
+  > [!NOTE]
+  > Azure SQL Data Warehouse Gen2 には、最近、最低 100 cDWU のコンピューティング レベルをサポートするための新しいスケール機能が追加されました。 現在 Gen1 を使用していて小さいコンピューティング レベルを必要とする既存のデータ ウェアハウスでは、現在追加コストなしで利用可能なリージョンで Gen2 にアップグレードできます。  お使いのリージョンがまだサポートされていない場合は、サポートされているリージョンにアップグレードできます。 詳細については、[Gen2 へのアップグレード](upgrade-to-latest-generation.md)に関するページを参照してください。
 
 T-SQL では、サービス レベルと、データ ウェアハウスのパフォーマンス レベルは、SERVICE_OBJECTIVE 設定によって決定されます。
 
@@ -91,6 +93,8 @@ SQL Data Warehouse は、膨大な量のコンピューティングをプロビ�
 
 Data Warehouse ユニットを変更するには、「[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql)」で説明されているアクセス許可が必要です。 
 
+SQL DB 共同作成者や SQL Server 共同作成者などの Azure リソースの組み込みロールで DWU 設定を変更できます。 
+
 ## <a name="view-current-dwu-settings"></a>現在の DWU 設定の表示
 
 現在の DWU 設定を表示するには、次の手順に従います。
@@ -134,7 +138,7 @@ T-SQL で現在の DWU または cDWU の設定を表示したり、設定を変
 DWU または cDWU を変更するには、次の手順に従います。
 
 1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
-2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL ステートメントを使います。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000 に設定します。 
+2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL ステートメントを使用します。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000 に設定します。 
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -199,7 +203,7 @@ AND       major_resource_id = 'MySQLDW'
 - スケールダウン操作の場合は、不要なノードがストレージからデタッチされ、残りのノードに再アタッチします。
 
 ## <a name="next-steps"></a>次の手順
-パフォーマンスの管理の詳細については、[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)と、[メモリと同時実行の制限](memory-and-concurrency-limits.md)に関するページを参照してください。
+パフォーマンスの管理の詳細については、[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)と、[メモリとコンカレンシーの制限](memory-and-concurrency-limits.md)に関するページを参照してください。
 
 
 

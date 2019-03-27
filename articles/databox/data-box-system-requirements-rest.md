@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: e7c2cc0c0ffaae11bd7bf5113c942cdb98397201
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b36926365b85c576cbe2927c690a30cc64df23d8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550928"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752774"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box BLOB ストレージの要件
 
@@ -30,7 +30,7 @@ Data Box BLOB ストレージに接続する前にこの情報をよく確認し
 |    サービスによる保存データの暗号化                  |    256 ビット AES 暗号化                             |    256 ビット AES 暗号化 |
 |    ストレージ アカウントの種類                                 |    汎用アカウントと Azure Blob Storage アカウント    |    汎用 v1 のみ|
 |    BLOB 名                                            |    1,024 文字 (2,048 バイト)                     |    880 文字 (1,760 バイト)|
-|    ブロック BLOB の最大サイズ                              |    4.75 TB (100 MB X 50,000 ブロック)                   |    Azure Data Box v 1.7 以降の場合に 4.75 TB (100 MB x 50,000 ブロック)。|
+|    ブロック BLOB の最大サイズ                              |    4.75 TB (100 MB X 50,000 ブロック)                   |    Azure Data Box v 1.8 以降の場合に 4.75 TB (100 MB x 50,000 ブロック)。|
 |    ページ BLOB の最大サイズ                               |    8 TB                                               |    1 TB (テラバイト)                   |
 |    ページ BLOB のページ サイズ                                  |    512 バイト                                          |    4 KB                   |
 
@@ -38,8 +38,10 @@ Data Box BLOB ストレージに接続する前にこの情報をよく確認し
 
 Azure Storage サービス API シリーズの次のバージョンが Data Box BLOB ストレージでサポートされています。
 
-パブリック プレビュー リリース (Azure Data Box 1.7 以降)
+パブリック プレビュー リリース (Azure Data Box 1.8 以降)
 
+- [2017-11-09](/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](/rest/api/storageservices/version-2017-07-29)
 - [2017-04-17](/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](/rest/api/storageservices/version-2015-12-11)
@@ -60,11 +62,9 @@ Azure Storage サービス API シリーズの次のバージョンが Data Box 
 
 ## <a name="supported-azure-client-libraries"></a>サポートされている Azure クライアント ライブラリ
 
-Data Box BLOB ストレージでは、クライアント ライブラリとエンドポイント サフィックスに特定の要件があります。
+Data Box BLOB ストレージでは、クライアント ライブラリとエンドポイント サフィックスに特定の要件があります。 Data Box BLOB ストレージのエンドポイントは、最新バージョンの Azure Blob Storage REST API と完全に対応しているわけではありません。[Azure Data Box 1.8 以降でサポートされているバージョン](#supported-api-versions)に関するセクションをご覧ください。 したがって、ストレージのクライアント ライブラリについて、REST API と互換性のあるバージョンを把握しておく必要があります。
 
-Azure Data Box バージョン 1.7 以降の場合、Data Box BLOB ストレージでサポートされる REST API バージョンは 2017-04-17、2016-05-31、2015-12-11、2015-07-08、2015-04-05 です。 Data Box BLOB ストレージのエンドポイントは、最新バージョンの Azure Blob Storage REST API と完全に対応しているわけではありません。 したがって、ストレージのクライアント ライブラリについて、REST API と互換性のあるバージョンを把握しておく必要があります。
-
-### <a name="azure-data-box-17-onwards"></a>Azure Data Box 1.7 以降
+### <a name="azure-data-box-18-onwards"></a>Azure Data Box 1.8 以降
 
 | クライアント ライブラリ     |Data Box BLOB ストレージでサポートされているバージョン     | Link   |     エンドポイントの指定      |
 |--------------------|--------------------------------------------|--------|---------------------------------|

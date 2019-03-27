@@ -12,18 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/201
+ms.date: 01/04/2019
 ms.author: sethm
-ms.openlocfilehash: 5e0462c533be11241908cafc593c89588f61f349
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: bc73e80acddaac8676b4cb47c0b9ced2467cdc44
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192653"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55245458"
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>ポータルを使って Azure Stack の Key Vault を管理する
 
-Azure Stack ポータルを使用して Azure Stack の Key Vault を管理できます。 この記事では、Azure Stack で Key Vault を作成および管理する方法について説明します。
+Azure Stack ポータルを使用して Azure Stack の Key Vault を管理できます。 この記事では、Azure Stack でキー コンテナーを作成および管理する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -17,6 +17,9 @@ items:
     href: quick-create-net.md
   - name: シークレットの設定と取得 - Node.js
     href: quick-create-node.md
+  - name: シークレットの設定と取得 - Resource Manager テンプレート
+    displayName: resource manager, resource manager template, arm
+    href: quick-create-template.md
   expanded: true
 - name: チュートリアル
   items:
@@ -38,6 +41,12 @@ items:
         href: tutorial-net-windows-virtual-machine.md
       - name: Python
         href: tutorial-python-windows-virtual-machine.md
+  - name: ストレージ アカウント キー
+    items:
+    - name: Azure CLI を使用したマネージド ストレージ アカウント キー
+      href: key-vault-ovw-storage-keys.md
+    - name: PowerShell を使用したマネージド ストレージ アカウント キー
+      href: key-vault-overview-storage-keys-powershell.md
   - name: Azure コンテナー
     href: ../container-instances/container-instances-managed-identity.md
   - name: Azure Resource Manager テンプレート
@@ -58,11 +67,7 @@ items:
     href: key-vault-ovw-security-worlds.md
   - name: 論理的な削除
     href: key-vault-ovw-soft-delete.md
-  - name: マネージド ストレージ アカウント キー - Azure CLI
-    href: key-vault-ovw-storage-keys.md
-  - name: マネージド ストレージ アカウント キー - PowerShell
-    href: key-vault-overview-storage-keys-powershell.md
-  - name: 調整
+  - name: Throttling
     href: key-vault-ovw-throttling.md
   - name: 仮想ネットワーク サービス エンドポイント
     href: key-vault-overview-vnet-service-endpoints.md
@@ -99,10 +104,14 @@ items:
     href: key-vault-group-permissions-for-apps.md
   - name: ファイアウォールと仮想ネットワークの構成
     href: key-vault-network-security.md
+  - name: Java 開発
+    items:
+    - name: Spring Boot Starter を使用する
+      href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-key-vault
 - name: リファレンス
   items:
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.keyvault
+    href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
   - name: Azure CLI
     href: /cli/azure/keyvault
   - name: .NET
@@ -115,6 +124,8 @@ items:
     href: /python/api/overview/azure/key-vault?view=azure-python
   - name: REST
     href: /rest/api/keyvault
+  - name: ベスト プラクティス
+    href: key-vault-best-practices.md
   - name: Resource Manager テンプレート
     href: /azure/templates/microsoft.keyvault/allversions
   - name: 認証、要求、応答
@@ -153,6 +164,8 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
   - name: サービス レベル アグリーメント (SLA)
     href: https://azure.microsoft.com/support/legal/sla/key-vault/
+  - name: 一般的なセキュリティ属性
+    href: key-vault-security-attributes.md
   - name: サービスの制限
     href: key-vault-service-limits.md
   - name: サービスの状態
@@ -160,12 +173,12 @@ items:
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=key-vault
   - name: ブログ
-    href: http://blogs.technet.com/b/kv/
-- name: 製品フィードバック
-  href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 406f1dcfca9f05197a38e66e1c5d26b06a47791f
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+    href: https://blogs.technet.com/b/kv/
+  - name: 製品フィードバック
+    href: https://feedback.azure.com/forums/906355-azure-key-vault
+ms.openlocfilehash: 7be12b2950e9ddd122fc2ac2da5f18ecd93e82a2
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321162"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370756"

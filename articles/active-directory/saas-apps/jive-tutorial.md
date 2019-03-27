@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Jive の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Jive の統合 | Microsoft Docs
 description: Azure Active Directory と Jive の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 9fc5659a-c116-4a1b-a601-333325a26b46
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: cebcfb4614d1f685697bed6914f80237e175fb7b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3f6155f348a8e5698c9c7792f45536c94f6ead81
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436558"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203949"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jive"></a>チュートリアル: Azure Active Directory と Jive の統合
+# <a name="tutorial-azure-active-directory-integration-with-jive"></a>チュートリアル:Azure Active Directory と Jive の統合
 
 このチュートリアルでは、Jive と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -89,7 +90,7 @@ Azure AD への Jive の統合を構成するには、ギャラリーから管�
 
 Jive で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Jive テスト ユーザーの作成](#creating-a-jive-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Jive で作成します。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -183,7 +184,7 @@ Jive で Azure AD のシングル サインオンを構成してテストする�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="creating-a-jive-test-user"></a>Jive テスト ユーザーの作成
 

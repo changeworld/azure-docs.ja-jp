@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Tableau Online を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+title: チュートリアル:Tableau Online を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Tableau Online に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 4f6297fa8477ff4794bee589737e047993427c06
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6ed8bae32cb8d0680b1f9aa66f26407c3313ea06
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345864"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077821"
 ---
-# <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>チュートリアル: Tableau Online を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>チュートリアル:Tableau Online を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルの目的は、Azure AD が自動的にユーザーまたはグループを Tableau Online にプロビジョニングまたは Tableau Online からプロビジョニング解除するように構成するために、Tableau Online と Azure Active Directory (Azure AD) で実行される手順を示すことです。
 
@@ -105,19 +106,19 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションの **[ドメイン]**、**[管理ユーザー名]**、**[管理パスワード]**、**[コンテンツ URL]** に、Tableau Online アカウントの情報を入力します。
 
-    *   **[ドメイン]** フィールドに、手順 6. に基づくサブドメインを設定します。
+   * **[ドメイン]** フィールドに、手順 6. に基づくサブドメインを設定します。
 
-    *   **[管理ユーザー名]** フィールドに、Clarizen テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
+   * **[管理ユーザー名]** フィールドに、Clarizen テナントの管理者アカウントのユーザー名を入力します。 例: admin@contoso.com.
 
-    *   **[管理パスワード]** フィールドに、管理者ユーザー名に対応する管理者アカウントのパスワードを入力します。
+   * **[管理パスワード]** フィールドに、管理者ユーザー名に対応する管理者アカウントのパスワードを入力します。
 
-    *   **[コンテンツ URL]** フィールドに、手順 6. に基づくサブドメインを設定します。
+   * **[コンテンツ URL]** フィールドに、手順 6. に基づくサブドメインを設定します。
 
 6. **[ドメイン]** および **[コンテンツ URL]** の値は、Tableau Online の管理者アカウントにログインした後、管理者ページの URL から抽出できます。
 
     *   Tableau Online アカウントの **[ドメイン]** は、URL の中の次の部分からコピーできます。![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
 
-    *   Tableau Online アカウントの **[コンテンツ URL]** は、次のセクションからコピーできます。この値は、アカウントのセットアップ中に定義されます。 この例では、"contoso" という値が該当します。![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
+    *   Tableau Online アカウントの **[コンテンツ URL]** は、次のセクションからコピーできます。この値は、アカウントのセットアップ中に定義されます。 この例では、値は "contoso" です。![Tableau Online のプロビジョニング](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
         > 実際の**ドメイン**は、ここに示したものとは異なる場合があります。 

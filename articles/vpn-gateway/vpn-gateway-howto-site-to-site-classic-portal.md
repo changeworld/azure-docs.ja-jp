@@ -1,5 +1,5 @@
 ---
-title: 'オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN (クラシック): ポータル | Microsoft Docs'
+title: 'オンプレミス ネットワークから Azure Virtual Network への接続:サイト間 VPN (クラシック): ポータル | Microsoft Docs'
 description: パブリック インターネットを経由したオンプレミスのネットワークからクラシック Azure 仮想ネットワークへの IPsec 接続を作成します。
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4e9736adfce83fc449b68a7448441ecee481ad2a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b0fa60d709c2fa6c286e44797d53e8a4a8d47d00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38477898"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695606"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 
@@ -54,19 +54,19 @@ ms.locfileid: "38477898"
 
 この記事の例では、次の値を使用します。 この値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。
 
-* **VNet の名前:** TestVNet1
+* **VNet 名:** TestVNet1
 * **アドレス空間:** 
   * 10.11.0.0/16
   * 10.12.0.0/16 (この演習では省略可能)
 * **サブネット:**
-  * FrontEnd: 10.11.0.0/24
+  * FrontEnd:10.11.0.0/24
   * BackEnd: 10.12.0.0/24 (この演習では省略可能)
 * **GatewaySubnet:** 10.11.255.0/27
-* **リソース グループ:** TestRG1
-* **場所:** 米国東部
+* **[リソース グループ]:** TestRG1
+* **[場所]:** 米国東部
 * **DNS サーバー:** 10.11.0.3 (この演習では省略可能)
 * **ローカル サイト名:** Site2
-* **クライアント アドレス空間:** オンプレミスのサイトにあるアドレス空間。
+* **[クライアント アドレス空間]:** オンプレミスのサイトにあるアドレス空間。
 
 ## <a name="CreatVNet"></a>1.仮想ネットワークの作成
 
@@ -226,5 +226,5 @@ PowerShell とクラシック デプロイ モデルを使用する場合、ポ�
 
 ## <a name="next-steps"></a>次の手順
 
-* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。
+* 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/) に関するページを参照してください。
 * 強制トンネリングについては、[強制トンネリング](vpn-gateway-about-forced-tunneling.md)に関する記事を参照してください。

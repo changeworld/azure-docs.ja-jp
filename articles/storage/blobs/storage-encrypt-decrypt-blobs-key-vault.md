@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Docs'
+title: チュートリアル:Azure Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Docs
 description: Azure Key Vault で Microsoft Azure Storage のクライアント側暗号化を使用して BLOB を暗号化および復号化する方法を説明します。
 services: storage
 author: tamram
@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
-ms.component: blobs
-ms.openlocfilehash: 092ffa5ed34a8e0a05b69c3fae86ab7299760ac2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: blobs
+ms.openlocfilehash: 4552249e7d7dd79edbe885b3d615f5071aa694ee
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233101"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116101"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
+# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>チュートリアル:Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
 ## <a name="introduction"></a>はじめに
 このチュートリアルでは、Azure Key Vault でクライアント側ストレージ暗号化を利用する方法について説明します。 これらのテクノロジを使用して、コンソール アプリケーションで BLOB を暗号化および復号化する手順を説明します。
 
@@ -43,7 +43,7 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 4. 暗号化されたデータは、Azure Storage サービスにアップロードされます。
 
 ## <a name="set-up-your-azure-key-vault"></a>Azure Key Vault のセットアップ
-このチュートリアルを続けるには、チュートリアル「[Azure Key Vault の概要](../../key-vault/key-vault-get-started.md)」で説明されている以下の手順を実行する必要があります。
+このチュートリアルを続けるには、チュートリアル「[Azure Key Vault とは](../../key-vault/key-vault-overview.md)」で説明されている以下の手順を実行する必要があります。
 
 * Key Vault を作成します。
 * キーやシークレットを Key Vault に追加します。
@@ -136,7 +136,7 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 > 
 > Key Vault クライアントは REST API とやり取りして、Key Vault に含まれる 2 種類のものの JSON Web キーとシークレットを認識します。
 > 
-> Key Vault 拡張機能は、Azure Storage のクライアント側暗号化用に特に作成されたクラスです。 Key Resolver の概念に基づくキー用のインターフェイス (IKey) とクラスを含みます。 IKey には 2 種類の実装 RSAKey と SymmetricKey があり、これらを知っておく必要があります。 現在はたまたま Key Vault に含まれるものと一緒に存在していますが、これらは独立したクラスです (したがって、Key Vault クライアントによって取得されたキーとシークレットは IKey を実装していません)。
+> Key Vault 拡張機能は、Azure Storage のクライアント側暗号化用に特に作成されたクラスです。 Key Resolver の概念に基づくキー用のインターフェイス (IKey) とクラスを含みます。 IKey には 2 種類の実装RSAKey と SymmetricKey があり、これらを知っておく必要があります。 現在はたまたま Key Vault に含まれるものと一緒に存在していますが、これらは独立したクラスです (したがって、Key Vault クライアントによって取得されたキーとシークレットは IKey を実装していません)。
 > 
 > 
 
@@ -184,14 +184,14 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 ```
 
 > [!NOTE]
-> キー管理を容易にするリゾルバーとして、他に AggregateKeyResolver および CachingKeyResolver の 2 つがあります。
+> キー管理を容易にするリゾルバーとして、他にAggregateKeyResolver および CachingKeyResolver の 2 つがあります。
 > 
 > 
 
 ## <a name="use-key-vault-secrets"></a>Key Vault シークレットの使用
 シークレットは基本的に対称キーなので、クライアント側暗号化でシークレットを使用するには SymmetricKey クラスを使用します。 ただし、前に説明したように、Key Vault のシークレットは SymmetricKey に対して正確にマップしていません。 いくつかの点について理解しておく必要があります。
 
-* SymmetricKey のキーは、128、192、256、384、または 512 ビットの固定長でなければなりません。
+* SymmetricKey のキーは固定長の128、192、256、384、または 512 ビットである必要があります。
 * SymmetricKey のキーは Base64 でエンコードされている必要があります。
 * SymmetricKey として使用される Key Vault シークレットは、Key Vault でのコンテンツ タイプが "application/octet-stream" でなければなりません。
 
@@ -208,7 +208,7 @@ $enc = [System.Convert]::ToBase64String($b)
 $secretvalue = ConvertTo-SecureString $enc -AsPlainText -Force
 
 // Substitute the VaultName and Name in this command.
-$secret = Set-AzureKeyVaultSecret -VaultName 'ContoseKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
+$secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'TestSecret2' -SecretValue $secretvalue -ContentType "application/octet-stream"
 ```
 
 コンソール アプリケーションでは、前と同じ呼び出しを使用して、このシークレットを SymmetricKey として取得できます。

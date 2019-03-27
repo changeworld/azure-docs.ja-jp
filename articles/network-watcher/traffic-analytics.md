@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 120b97f69c8fad2daf3090441e8d0326e80115c3
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4f1ce84dba4e9f35e7884ebd9058781eb30c3ec4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338585"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815848"
 ---
-# <a name="traffic-analytics"></a>トラフィック分析
+# <a name="traffic-analytics"></a>Traffic Analytics
 
-トラフィック分析は、クラウド ネットワークでのユーザーとアプリケーションのアクティビティを可視化するクラウドベースのソリューションです。 トラフィック分析では、Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する洞察を示します。 トラフィック分析を使用すると、次のことが可能になります。
+Traffic Analytics は、クラウド ネットワークでのユーザーとアプリケーションのアクティビティを可視化するクラウドベースのソリューションです。 トラフィック分析では、Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する洞察を示します。 トラフィック分析を使用すると、次のことが可能になります。
 
 - Azure サブスクリプション全体のネットワーク アクティビティを視覚化し、ホットスポットを特定する。
 - 開いているポート、インターネット にアクセスしようとしているアプリケーション、承認されていないネットワークに接続している仮想マシン (VM) などの情報を使用して、ネットワークに対するセキュリティの脅威を特定し、ネットワークをセキュリティで保護する。
@@ -99,9 +99,6 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 |                   | Contributor            |
 |                   | Reader                 |
 |                   | Network Contributor    |
-|クラシック            | アカウント管理者  |
-|                   | サービス管理者  |
-|                   | 共同管理者       |
 
 上記のどの組み込みロールにもアカウントが割り当てられていない場合、サブスクリプション レベルで次のアクションが割り当てられる[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に割り当てる必要があります。
 
@@ -167,7 +164,7 @@ New-AzureRmStorageAccount `
 2. フロー ログを保存する既存のストレージ アカウントを選択します。 データを無期限に保存する場合は、値を *0* に設定します。 ストレージ アカウントに対して Azure Storage の料金が発生します。
 3. **[リテンション期間]** を、データを保存する日数に設定します。
 4. *[Traffic Analytics Status]\(Traffic Analytics の状態\)* で、**[オン]** を選択します。
-5. 既存の Log Analytics ワークスペースを選択するか、**[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#traffic-analytics-supported-regions)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
+5. 既存の Log Analytics ワークスペースを選択するか、**[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、サポートされているリージョンのいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
 
     トラフィック分析ソリューションをホストするログ分析ワークスペースと NSG は、同じリージョンに存在する必要はありません。 たとえば、西ヨーロッパ リージョンのワークスペースにトラフィック分析があり、米国東部と米国西部に NSG があっても構いません。 同じワークスペースに複数の NSG を構成できます。
 6. **[保存]** を選択します。
@@ -176,7 +173,7 @@ New-AzureRmStorageAccount `
 
 トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国の法律や規制で許可されていることを確認してください。
 
-また、AzureRm PowerShell モジュール バージョン 6.2.1 以降で [Set-AzureRmNetworkWatcherConfigFlowLog](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) PowerShell コマンドレットを使用して、トラフィック分析を構成できます。 `Get-Module -ListAvailable AzureRM` を実行して、インストールされているバージョンを見つけます。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+また、AzureRm PowerShell モジュール バージョン 6.2.1 以降で [Set-AzureRmNetworkWatcherConfigFlowLog](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) PowerShell コマンドレットを使用して、トラフィック分析を構成できます。 `Get-Module -ListAvailable AzureRM` を実行して、インストールされているバージョンを見つけます。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
 
 ## <a name="view-traffic-analytics"></a>トラフィック分析の表示
 

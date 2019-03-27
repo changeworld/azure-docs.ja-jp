@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 5df11eb4e1b759d66200c09cabc8752532d0873c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5c3da9a69204d7229ddcbbf39ec389684258e389
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042157"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55470690"
 ---
-# <a name="understanding-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容の理解
+# <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容を理解する
 
 完全に管理されたクラウド ネイティブ データベース サービスとして、Azure Cosmos DB では、プロビジョニングされたスループットと使用ストレージに対してのみ課金することで、課金を簡略化します。 オンプレミスまたは Iaas でホストされている別のサービスに比べ、追加のライセンス料、ハードウェア、ユーティリティのコスト、設備のコストは発生しません。 Azure Cosmos DB の複数リージョンの機能を考えると、データベース サービスでは、既存のオンプレミスまたは IaaS ソリューションに比べ、コストが大幅に削減されます。
 

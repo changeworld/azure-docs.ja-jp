@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 4d6060c1774b2ad09c3b813bc107b73309dae801
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 52d2061262fd04e68ed13aac8932c23b7074f83e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020219"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113772"
 ---
 # <a name="azure-data-box-edge-system-requirements-preview"></a>Azure Data Box Edge のシステム要件 (プレビュー)
 
@@ -47,13 +47,15 @@ Data Box Edge のシステム要件は次のとおりです。
 
 [!INCLUDE [Supported browsers for local web UI](../../includes/data-box-edge-gateway-supported-browsers.md)]
 
-## <a name="port-configuration-for-data-box-edge"></a>Data Box Edge のポート構成
+## <a name="networking-port-requirements"></a>ネットワーク ポートの要件
+
+### <a name="port-requirements-for-data-box-edge"></a>Data Box Edge ポートの要件
 
 SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、"*イン*" ("*受信*") は、着信クライアント要求がデバイスにアクセスする方向を意味します。 "*アウト*" ("*送信*") は Data Box Edge デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
 
 [!INCLUDE [Port configuration for device](../../includes/data-box-edge-gateway-port-config.md)]
 
-## <a name="port-configuration-for-iot-edge"></a>IoT Edge のポート構成
+### <a name="port-requirements-for-iot-edge"></a>IoT Edge ポートの要件
 
 Azure IoT Edge では、サポートされている IoT Hub プロトコルを使用した、オンプレミスの Edge デバイスから Azure クラウドへのアウトバウンド通信が許可されています。 インバウンド通信が必要なのは、Azure IoT Hub がメッセージを Azure IoT Edge デバイスにプッシュ ダウンする必要がある特定のシナリオのみです (たとえば、クラウドからデバイスへのメッセージング)。
 
@@ -61,8 +63,8 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 | ポート番号 | インまたはアウト | ポート範囲 | 必須 | ガイダンス |
 |----------|-----------|------------|----------|----------|
-| TCP 5671 (AMQP)| アウト       | WAN        | [はい]      | IoT Edge の既定の通信プロトコル。 Azure IoT Edge が他のサポートされているプロトコル用に構成されていない場合、または AMQP が望ましい通信プロトコルである場合は、オープンにする必要があります。 <br>AMQP での 5672 は、IoT Edge ではサポートされていません。 <br>Azure IoT Edge が、IoT Hub でサポートされているのとは異なるプロトコルを使用する場合は、このポートをブロックします。 |
-| TCP 443 (HTTPS)| アウト       | WAN        | [はい]      | IoT Edge のプロビジョニングのため、送信用に開きます。 メソッド要求を送信することがあるリーフ デバイスを備えた透過的なゲートウェイがある場合。 この場合、ポート 443 は、IoT Hub に接続したり Azure IoT Edge を通じて IoT Hub サービスを提供したりするために外部ネットワークに対してオープンにする必要はありません。 そのため、受信規則は内部ネットワークからのオープンなインバウンドだけに制限することができます。 |
+| TCP 5671 (AMQP)| アウト       | WAN        | はい      | IoT Edge の既定の通信プロトコル。 Azure IoT Edge が他のサポートされているプロトコル用に構成されていない場合、または AMQP が望ましい通信プロトコルである場合は、オープンにする必要があります。 <br>AMQP での 5672 は、IoT Edge ではサポートされていません。 <br>Azure IoT Edge が、IoT Hub でサポートされているのとは異なるプロトコルを使用する場合は、このポートをブロックします。 |
+| TCP 443 (HTTPS)| アウト       | WAN        | はい      | IoT Edge のプロビジョニングのため、送信用に開きます。 メソッド要求を送信することがあるリーフ デバイスを備えた透過的なゲートウェイがある場合。 この場合、ポート 443 は、IoT Hub に接続したり Azure IoT Edge を通じて IoT Hub サービスを提供したりするために外部ネットワークに対してオープンにする必要はありません。 そのため、受信規則は内部ネットワークからのオープンなインバウンドだけに制限することができます。 |
 | TCP 5671 (AMQP) | イン        |            | いいえ        | インバウンド接続はブロックする必要があります。|
 | TCP 443 (HTTPS) | イン        |            | 場合によっては、コメントを参照してください | インバウンド接続が以下の特定のシナリオだけでオープンになるようにする必要があります。 AMQP、MQTT などの非 HTTP プロトコルを構成できない場合は、ポート 443 を使用してメッセージを WebSockets 経由で送信できます。 |
 
@@ -78,17 +80,17 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 > - デバイスの (送信元) IP は、常にすべてのクラウド対応ネットワーク インターフェイスに合わせて設定します。
 > - 宛先 IP は、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)に合わせて設定するようにします。
 
-|    URL パターン                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    コンポーネントまたは機能                                                                           |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-|    https://\*.databoxedge.azure.com/\*<br>https://\*.servicebus.windows.net/\*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                                                                           |    Edge サービス<br>Azure Service Bus<br>認証サービス                           |
-|    http://\*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                                |    デバイスのアクティブ化                                                                                    |
-|    http://crl.microsoft.com/pki/\*<br>http://www.microsoft.com/pki/\*                                                                                                                                                                                                                                                                                                                                                                                                  |    証明書の失効                                                                               |
-|    https://\*.core.windows.net/\*<br>https://\*.data.microsoft.com<br>http://\*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                            |    Azure ストレージ アカウントと監視                                                                |
-|    http://windowsupdate.microsoft.com<br>http://\*.windowsupdate.microsoft.com<br>https://\*.windowsupdate.microsoft.com<br>http://\*.update.microsoft.com<br>https://\*.update.microsoft.com<br>http://\*.windowsupdate.com<br>http://download.microsoft.com<br>http://\*.download.windowsupdate.com<br>http://wustat.windows.com<br>http://ntservicepack.microsoft.com<br>http://\*.ws.microsoft.com<br>https://\*.ws.microsoft.com<br>http://\*.mp.microsoft.com |    Microsoft Update サーバー                                                                             |
-|    http://\*.deploy.akamaitechnologies.com                                                                                                                                                                                                                                                                                                                                                                                                                          |    Akamai CDN                                                                                           |
-|    https://\*.partners.extranet.microsoft.com/\*                                                                                                                                                                                                                                                                                                                                                                                                                    |    サポート パッケージ                                                                                      |
-|    http://\*.data.microsoft.com                                                                                                                                                                                                                                                                                                                                                                                                                                     |    Windows のテレメトリ サービス (「顧客満足度及び診断テレメトリのための更新プログラム」を参照)      |
-|                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |                                                                                                         |
+### <a name="url-patterns-for-gateway-feature"></a>ゲートウェイ機能の URL パターン
+
+[!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
+
+### <a name="url-patterns-for-compute-feature"></a>コンピューティング機能の URL パターン
+
+| URL パターン                      | コンポーネントまたは機能                     |   |
+|----------------------------------|---------------------------------------------|---|
+| `https://mcr.microsoft.com`<br></br>https://\*.cdn.mscr.io | Microsoft コンテナー レジストリ (必須)               |   |
+| https://\*.azurecr.io                     | 個人やサード パーティのコンテナー レジストリ (任意) |   |
+| https://\*.azure-devices.net              | IoT Hub アクセス (必須)                             |   |
 
 ## <a name="internet-bandwidth"></a>インターネット帯域幅
 
@@ -96,4 +98,4 @@ Azure IoT Edge ランタイムをホストするサーバーのポート構成�
 
 ## <a name="next-step"></a>次のステップ
 
-* [Azure Data Box Edge をデプロイする](data-box-Edge-deploy-prep.md)
+- [Azure Data Box Edge をデプロイする](data-box-Edge-deploy-prep.md)

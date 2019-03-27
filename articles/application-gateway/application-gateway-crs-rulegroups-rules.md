@@ -12,12 +12,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 4/16/2018
 ms.author: victorh
-ms.openlocfilehash: 15a86410e8ca853c2ca2431cb9a62de628972703
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b45e782984f637f1b084ec757000dde9dd3a5777
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320103"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302038"
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>提供されている Web アプリケーション ファイアウォールの CRS 規則グループと規則の一覧
 
@@ -27,6 +27,11 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 
 ## <a name="owasp30"></a> OWASP_3.0
 
+### <a name="General"></a> <p x-ms-format-detection="none">全般</p>
+
+|RuleId|説明|
+|---|---|
+|200004|可能性のあるマルチパートによる不一致の境界。|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
@@ -239,6 +244,8 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 |941290|IE XSS フィルター - 攻撃が検出されました。|
 |941300|IE XSS フィルター - 攻撃が検出されました。|
 |941310|US-ASCII 非整形式エンコード XSS フィルター - 攻撃が検出されました。|
+|941330|IE XSS フィルター - 攻撃が検出されました。|
+|941340|IE XSS フィルター - 攻撃が検出されました。|
 |941350|UTF-7 エンコード IE XSS - 攻撃が検出されました。|
 |941013|規則 941013|
 |941014|規則 941014|
@@ -255,18 +262,29 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 |942011|規則 942011|
 |942012|規則 942012|
 |942100|libinjection を通じて SQL インジェクション攻撃が検出されました|
+|942110|SQL インジェクション攻撃:一般的なインジェクション テストが検出されました|
+|942130|SQL インジェクション攻撃:SQL トートロジーが検出されました。|
 |942140|SQL インジェクション攻撃 = 共通 DB 名が検出されました|
 |942160|sleep() または benchmark() を使用して、ブラインド sqli テストを検出します。|
 |942170|条件付きクエリも含めて、SQL ベンチマークとスリープ インジェクション試行を検出します|
+|942190|MSSQL コード実行と情報収集の試行を検出します。|
+|942200|MySQL コメント/スペース難読化インジェクションとバッククォートの終了を検出します|
 |942230|条件付き SQL インジェクション試行を検出します|
+|942260|基本的な SQL 認証のバイパスの試行 2/3 を検出します|
 |942270|基本的な sql インジェクションを探しています。 mysql oracle などの共通攻撃文字列。|
 |942290|基本的な MongoDB SQL インジェクション試行を探します|
+|942300|MySQL コメント、条件、および ch(a)r インジェクションを検出します。|
 |942320|MySQL および PostgreSQL ストアド プロシージャ/関数インジェクションを検出します|
+|942330|従来の SQL インジェクション プローブ 1/2 を検出します|
+|942340|基本的な SQL 認証のバイパスの試行 3/3 を検出します|
 |942350|MySQL UDF インジェクションと、その他のデータ/構造操作試行を検出します|
+|942360|連結された基本的な SQL インジェクションと SQLLFI 試行を検出します|
+|942370|従来の SQL インジェクション プローブ 2/2 を検出します|
 |942013|規則 942013|
 |942014|規則 942014|
 |942150|SQL インジェクション攻撃|
 |942410|SQL インジェクション攻撃|
+|942430|制限された SQL 文字の異常検出 (引数): 特殊文字数が超過しました (12)|
 |942440|SQL コメント シーケンスが検出されました。|
 |942450|SQL 16 進数エンコードが識別されました|
 |942015|規則 942015|

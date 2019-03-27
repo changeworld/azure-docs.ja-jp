@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker サービスには、機械学習や自然言語処理に由来する新しい用語に加え、サービス固有の用語が数多く存在します。 この用語集は、そうした用語を理解するための助けとなります。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 73504cff7a35dfe475b2de90a6b38a9527a800e1
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c280f6ef99678b77edcb251ead685be88265f825
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259940"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871015"
 ---
 # <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>QnA Maker のナレッジ ベースとサービスの用語集
 
@@ -35,7 +35,7 @@ QnA Maker サービスは、QnA Maker の使用を開始するための前提条
 ## <a name="published-knowledge-base"></a>公開ナレッジ ベース
 ナレッジ ベースには、テストと公開という 2 つの状態があります。  公開ナレッジ ベースは、チャット ボット/アプリケーションで使用されるバージョンです。 ナレッジ ベースを公開するアクションは、テスト ナレッジ ベースの内容を、ナレッジ ベースの公開バージョン内に配置します。 公開ナレッジ ベースは、アプリケーションがエンドポイントを介して使用するバージョンであるため、その内容が正確であり、十分にテストされていることを保証する必要があります。
 
-## <a name="query"></a>クエリ
+## <a name="query"></a>Query
 ユーザー クエリは、エンド ユーザーまたはテスト担当者がナレッジ ベースに尋ねる質問です。 多くの場合、クエリは、自然言語形式か、質問を表すいくつかのキーワードで行われます。
 
 ## <a name="response"></a>Response

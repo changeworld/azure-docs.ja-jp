@@ -98,18 +98,20 @@ items:
       href: quickstarts-sdk/csharp-thumb-sdk.md
     - name: テキストを抽出します
       href: quickstarts-sdk/csharp-hand-text-sdk.md
+  - name: Python SDK の使用
+    href: quickstarts-sdk/python-sdk.md
 - name: チュートリアル
   items:
-  - name: Azure の画像のメタデータを取得する
+  - name: 画像のメタデータを生成する
     href: Tutorials/storage-lab-tutorial.md
-  - name: 画像処理アプリのビルド
-    href: Tutorials/CSharpTutorial.md
 - name: 概念
   items:
   - name: イメージへのタグ付け
     href: concept-tagging-images.md
   - name: オブジェクトの検出
     href: concept-object-detection.md
+  - name: ブランドの検出
+    href: concept-brand-detection.md
   - name: イメージの分類
     href: concept-categorizing-images.md
   - name: イメージの説明
@@ -124,8 +126,6 @@ items:
     href: concept-detecting-color-schemes.md
   - name: サムネイルの生成
     href: concept-generating-thumbnails.md
-  - name: OCR によるテキストの抽出
-    href: concept-extracting-text-ocr.md
   - name: 印刷されたテキストと手書きのテキストの認識
     href: concept-recognizing-text.md
   - name: 成人向けコンテンツとわいせつなコンテンツの検出
@@ -181,7 +181,11 @@ items:
 - name: リソース
   items:
   - name: サンプル
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
+    items:
+    - name: 画像処理アプリの探索
+      href: Tutorials/CSharpTutorial.md
+    - name: Computer Vision の他のサンプル
+      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
   - name: FAQ
     href: FAQ.md
   - name: 料金と制限
@@ -196,9 +200,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: cf554121906493f7b1384a585f0e32f73b39cf5e
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 2fc31b518155f49cd17b86780e6accbacc2ba354
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354537"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192311"

@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/14/2019
 ms.author: magoedte
-ms.openlocfilehash: f68e2d9c303b6df0d4a2a355dd9d41ac1616be9f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0140cb4fd1721e1d13840fe27db223c0ebec7d8a
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185972"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301895"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Azure Log Analytics エージェントを使用してログ データを収集する
 
-Azure Log Analytics (OMS) エージェント (旧称 Microsoft Monitoring Agent (MMA) または OMS Linux エージェント) は、オンプレミスのマシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) によって監視されるコンピューター、および任意のクラウドの仮想マシンを包括的に管理するために開発されました。 Windows と Linux のエージェントは、Log Analytics ワークスペースにアタッチして、さまざまなソースの他に、監視ソリューション内に定義されている一意のログまたはメトリックからデータを収集します。 
+Azure Log Analytics エージェント (旧称 Microsoft Monitoring Agent (MMA) または OMS Linux エージェント) は、オンプレミスのマシン、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) によって監視されるコンピューター、および任意のクラウドの仮想マシンを包括的に管理するために開発されました。 Windows と Linux のエージェントは、Log Analytics ワークスペースにアタッチして、さまざまなソースの他に、監視ソリューション内に定義されている一意のログまたはメトリックからデータを収集します。 
 
 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。   
 
@@ -41,7 +41,7 @@ Linux と Windows のエージェントは、Log Analytics への接続だけで
 ## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
 
-* Windows Server 2008 Service Pack 1 (SP1) 以降
+* Windows Server 2008 R2 以降
 * Windows 7 SP1 以降
 
 ## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
@@ -78,10 +78,10 @@ Linux および Windows エージェントが Log Analytics と通信するた�
 
 |エージェントのリソース|ポート |方向 |バイパス HTTPS 検査|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |ポート 443 |受信および送信|はい |  
-|*.oms.opinsights.azure.com |ポート 443 |受信および送信|はい |  
-|*.blob.core.windows.net |ポート 443 |受信および送信|はい |  
-|*.azure-automation.net |ポート 443 |受信および送信|はい |  
+|*.ods.opinsights.azure.com |ポート 443 |送信|はい |  
+|*.oms.opinsights.azure.com |ポート 443 |送信|はい |  
+|*.blob.core.windows.net |ポート 443 |送信|はい |  
+|*.azure-automation.net |ポート 443 |送信|はい |  
 
 
 Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook を使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
@@ -97,7 +97,7 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 
 |プロパティ| 説明 |
 |--------|-------------|
-|プロトコル | https |
+|Protocol | https |
 |user | プロキシ認証のオプションのユーザー名 |
 |password | プロキシ認証のオプションのパスワード |
 |proxyhost | プロキシ サーバー/Log Analytics ゲートウェイのアドレスまたは FQDN |

@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 01/18/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 426e4fe05890f1669859545db3d731943a12428a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 2b99207f35bd83c9e02ad636a070ae538ae3472c
+ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260177"
+ms.lasthandoff: 01/19/2019
+ms.locfileid: "54412225"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
 
@@ -36,7 +36,10 @@ Azure IoT Edge と SQL Server を使用し、エッジでデータを格納し�
 
 Azure IoT Edge デバイス:
 
-* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。 
+* [Linux デバイス](quickstart-linux.md) または [Windows デバイス](quickstart.md)のクイック スタートに記載された手順に従って開発マシンまたは仮想マシンをエッジ デバイスとして使用できます。
+
+  > [!NOTE]
+  > SQL Server でサポートされるのは Linux コンテナーのみです。 エッジ デバイスに Windows デバイスを使用してこのチュートリアルをテストしたい場合は、Linux コンテナーを使用するように構成する必要があります。 Windows 上の Linux コンテナー向けに IoT Edge ランタイムを構成するための前提条件とインストール手順については、[Windows に Azure IoT Edge ランタイムをインストールする方法](how-to-install-iot-edge-windows-with-linux.md)に関するページを参照してください。
 
 クラウド リソース:
 
@@ -227,15 +230,9 @@ Azure IoT Edge デバイス:
 
 1. Visual Studio Code エクスプローラーで、**deployment.template.json** ファイルを開きます。 
 
-2. **modules** セクションを探します。 2 つのモジュールが表示されています。1 つはシミュレートされたデータを生成する **tempSensor** というモジュールで、もう 1 つは **sqlFunction** というモジュールです。
+1. **modules** セクションを探します。 2 つのモジュールが表示されています。1 つはシミュレートされたデータを生成する **tempSensor** というモジュールで、もう 1 つは **sqlFunction** というモジュールです。
 
-3. Windows コンテナーを使用している場合は、**sqlFunction.settings.image** セクションを変更します。
-
-   ```json
-   "image": "${MODULES.sqlFunction.windows-amd64}"
-   ```
-
-4. 3 つ目のモジュールを宣言するために次のコードを追加します。 sqlFunction セクションの後にコンマを追加し、以下を挿入します。
+1. 3 つ目のモジュールを宣言するために次のコードを追加します。 sqlFunction セクションの後にコンマを追加し、以下を挿入します。
 
    ```json
    "sql": {
@@ -253,29 +250,7 @@ Azure IoT Edge デバイス:
 
    ![SQL Server モジュールをマニフェストに追加する](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-5. IoT Edge デバイス上の Docker コンテナーの種類に応じて、**sql** モジュール パラメーターを次のコードに更新します。
-   * Windows コンテナー:
-
-      ```json
-      "env": {
-        "ACCEPT_EULA": {"value": "Y"},
-        "SA_PASSWORD": {"value": "Strong!Passw0rd"}
-      },
-      "settings": {
-        "image": "microsoft/mssql-server-windows-developer",
-        "createOptions": {
-          "HostConfig": {
-            "Mounts": [{"Target": "C:\\mssql","Source": "sqlVolume","Type": "volume"}],
-            "PortBindings": {
-              "1433/tcp": [{"HostPort": "1401"}]
-            }
-          }
-        }
-      }
-      ```
-
-   * Linux コンテナー:
-
+1. **sql** モジュールのパラメーターを次のコードで更新します。
       ```json
       "env": {
         "ACCEPT_EULA": {"value": "Y"},
@@ -295,9 +270,9 @@ Azure IoT Edge デバイス:
       ```
 
    >[!Tip]
-   >運用環境で SQL Server コンテナーを作成するときに、[既定のシステム管理者パスワードを変更](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password)する必要があります。
+   >運用環境で SQL Server コンテナーを作成するときに、[既定のシステム管理者パスワードを変更](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker)する必要があります。
 
-6. **deployment.template.json** ファイルを保存します。
+1. **deployment.template.json** ファイルを保存します。
 
 ## <a name="build-your-iot-edge-solution"></a>IoT Edge ソリューションのビルド
 
@@ -353,42 +328,16 @@ VS Code の Azure IoT Hub Devices セクションのデバイスの状態を更�
 IoT Edge デバイスで次のコマンドを実行します。 これらのコマンドによって、デバイス上で実行されている **sql** モジュールに接続され、送信された温度データを保持するデータベースとテーブルが作成されます。 
 
 1. IoT Edge デバイス上のコマンドライン ツールで、データベースに接続します。 
-   * Windows コンテナー:
-   
-      ```cmd
-      docker exec -it sql cmd
-      ```
-    
-   * Linux コンテナー: 
-
       ```bash
       sudo docker exec -it sql bash
       ```
 
 2. SQL コマンド ツールを開きます。
-   * Windows コンテナー:
-
-      ```cmd
-      sqlcmd -S localhost -U SA -P "Strong!Passw0rd"
-      ```
-
-   * Linux コンテナー: 
-
       ```bash
       /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
       ```
 
 3. データベースを作成します。 
-
-   * Windows コンテナー
-      ```sql
-      CREATE DATABASE MeasurementsDB
-      ON
-      (NAME = MeasurementsDB, FILENAME = 'C:\mssql\measurementsdb.mdf')
-      GO
-      ```
-
-   * Linux コンテナー
       ```sql
       CREATE DATABASE MeasurementsDB
       ON

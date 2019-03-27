@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 805f8d55b1627ad12ce58e8a64728a42867a858e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1bfe0026e52107c85bf2c7e66414e937ad27f715
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260618"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267752"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>クイック スタート:SignalR Service を使ってチャット ルームを作成する
 
@@ -79,7 +79,7 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
 
 1. 次のコマンドを実行して、`Microsoft.Azure.SignalR` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-*
+        dotnet add package Microsoft.Azure.SignalR
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
@@ -92,12 +92,12 @@ Azure SignalR Service は、開発者がリアルタイムの機能を使って 
     このコマンドは、*.csproj* ファイルと同じディレクトリで実行する必要があります。
 
     ```
-    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
     シークレット マネージャーは、ローカルでホストされているときの、Web アプリのテスト用にのみ使用されます。 この後のチュートリアルでは、Azure にチャット Web アプリをデプロイします。 この Web アプリが Azure にデプロイされた後は、シークレット マネージャーで接続文字列を保存するのではなく、アプリケーション設定を使用します。
 
-    このシークレットには構成 API でアクセスします。 サポートされているすべてのプラットフォームで構成 API を使用する構成名にコロン (:) を使用できます。[環境別の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0#configuration-by-environment)に関するページを参照してください。 
+    このシークレットには構成 API でアクセスします。 サポートされているすべてのプラットフォームで構成 API を使用する構成名にコロン (:) を使用できます。[環境別の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)に関するページを参照してください。 
 
 
 4. *Startup.cs* を開き、`services.AddSignalR().AddAzureSignalR()` メソッドを呼び出して Azure SignalR Service を使うように、`ConfigureServices` メソッドを更新します。

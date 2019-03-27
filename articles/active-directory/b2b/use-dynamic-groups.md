@@ -3,19 +3,20 @@ title: 動的グループと Azure Active Directory B2B コラボレーション
 description: Azure Active Directory B2B コラボレーションを Azure AD の動的グループと共に使用する方法について説明します。
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 287c5a75d1c15a9ebc7a23d263ce7ff5516bcfab
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8dd9c0c4d0f258b545a9d44f51336d377a613b5d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981866"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192236"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>動的グループと Azure Active Directory B2B コラボレーション
 

@@ -10,19 +10,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.openlocfilehash: 4641dce6fe8518016ee85cd480de6d11354fe170
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.lastreviewed: 11/05/2018
+ms.openlocfilehash: 9d66227d131a36da420fe5d4e461e738c5ee0911
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037220"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777823"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>特権エンドポイントを使用して Azure Stack での更新プログラムをモニターする
 
-*適用対象: Azure Stack 統合システム*
+*適用対象:Azure Stack 統合システム*
 
 [特権エンドポイント](azure-stack-privileged-endpoint.md)を使用すると、Azure Stack 更新プログラムの実行の進行状況を監視し、Azure Stack ポータルが使用できなくなった場合に、失敗した更新プログラムの実行を成功した最後の手順から再開することができます。  Azure Stack ポータルの使用は、Azure Stack で更新プログラムを管理するための推奨される方法です。
 
@@ -35,7 +36,7 @@ ms.locfileid: "51037220"
 | | |
 
 ## <a name="verify-the-cmdlets-are-available"></a>コマンドレットが利用可能なことを確認する
-コマンドレットは、Azure Stack の 1710 更新プログラム パッケージの新機能であるため、モニター機能を使用する前に 1710 更新プロセスを特定の時点まで進める必要があります。 通常は、管理者ポータルの状態で、1710 更新が「**ストレージ ホストの再起動**」の手順に達していることが示された場合に、コマンドレットを使用できるようになります。 特に、コマンドレットの更新は、「**手順: 手順 2.6 の実行 - PrivilegedEndpoint ホワイトリストの更新**」の際に行われます。
+コマンドレットは、Azure Stack の 1710 更新プログラム パッケージの新機能であるため、モニター機能を使用する前に 1710 更新プロセスを特定の時点まで進める必要があります。 通常は、管理者ポータルの状態で、1710 更新が「**ストレージ ホストの再起動**」の手順に達していることが示された場合に、コマンドレットを使用できるようになります。 具体的には、コマンドレットの更新は、「**手順: 手順 2.6 の実行 - PrivilegedEndpoint ホワイトリストの更新**」の間に行われます。
 
 特権エンドポイントからのコマンドの一覧を照会することによって、コマンドレットが使用可能かどうかをプログラムによって判別することもできます。 これを行うには、ハードウェア ライフ サイクル ホストまたは特権アクセス ワークステーションから、次のコマンドを実行します。 さらに、特権エンドポイントが信頼されたホストであることを確認してください。 詳細については、「[特権エンドポイントへのアクセス](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint)」の手順 1 を参照してください。 
 

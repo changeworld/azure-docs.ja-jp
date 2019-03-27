@@ -3,16 +3,16 @@ ms.assetid: ''
 title: Azure Key Vault の論理的な削除 | Microsoft Docs
 ms.service: key-vault
 ms.topic: conceptual
-author: bryanla
-ms.author: bryanla
-manager: mbaldwin
+author: msmbaldwin
+ms.author: mbaldwin
+manager: barbkess
 ms.date: 09/25/2017
-ms.openlocfilehash: 12b14b87a02619b21e80436c80a284c4011f8b33
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 526b0b135c8d5c1741ddf5f3fe6fb32f259a3e2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300321"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092992"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
@@ -44,9 +44,9 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 ### <a name="purge-protection--flag"></a>保護の消去フラグ
 Azure CLI の既定では､保護の消去 (**--enable-purge-protection** ) フラグはオフです。 このフラグが有効の場合、削除状態のコンテナーまたはオブジェクトは､90 日間の保持期間が経過するまで削除することはできません｡ このようなコンテナーまたはオブジェクトは回復することもできます。 このフラグは、保持期間が経過するまでコンテナーまたはオブジェクトを完全には削除できないことの追加保証を与えます｡ 保護の消去フラグをオンにできるのは､soft-delete フラグがオンか､コンテナー作成時に､soft-delete と保護の消去の両方がオンになっている場合だけです｡
 
-> [!NOTE] 
-   消去の保護を有効にするには､論理的な削除を有効にしておく必要があります。
-このための Azure CLI 2 コマンドは
+> [!NOTE]
+>    消去の保護を有効にするには､論理的な削除を有効にしておく必要があります。
+> このための Azure CLI 2 コマンドは
 
 ```
 az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true

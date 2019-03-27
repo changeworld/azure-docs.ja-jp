@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: pim
+ms.subservice: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3294bddea867e061d01e8dc72f4e47f3238b6c4d
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5cec018eec6e298e27329c03964dccf5809c1791
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344087"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190638"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>PIM で Azure リソース ロール割り当てを延長または更新する
 

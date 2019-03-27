@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services の一部である Speech Service は、以前は個別に使用できた次のような複数の音声サービスを 1 つにまとめたものです(Bing Speech (音声認識とテキスト読み上げを構成)、Custom Speech、Speech Translation)。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: overview
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: e86adfd4e832e6b9514e4813ddd4a942b07ca624
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: d60e5f881e44f397090a3ba5e467c08f20137d72
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336596"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858834"
 ---
 # <a name="what-is-speech-services"></a>Speech Service とは
 
@@ -55,8 +55,8 @@ Speech Service には、HTTP 要求を実行できるプログラミング言語
 
 |<br>方法|音声<br>テキスト変換|テキストから<br>音声|音声<br>翻訳|<br>説明|
 |-|-|-|-|-|
-|[Speech SDK](speech-sdk.md)|[はい]|いいえ |[はい]|C#、C++、および Java 用のネイティブ API による開発の簡略化。|
-|[REST API](rest-apis.md)|[はい]|[はい]|いいえ |アプリケーションに音声を簡単に追加できる HTTP ベースの単純な API。|
+|[Speech SDK](speech-sdk.md)|はい|いいえ |はい|C#、C++、および Java 用のネイティブ API による開発の簡略化。|
+|[REST API](rest-apis.md)|はい|はい|いいえ |アプリケーションに音声を簡単に追加できる HTTP ベースの単純な API。|
 
 ### <a name="websockets"></a>WebSocket
 

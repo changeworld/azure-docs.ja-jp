@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Direct の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Direct の統合 | Microsoft Docs
 description: Azure Active Directory と Direct の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 7c2cd1f0-d14c-42f0-94a8-9b800008b285
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 7e693a721e5556970607fafd8ff187d3b06c913e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 576a79c79d7c3990140b93543bc30f833207a6ba
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092888"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172520"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-direct"></a>チュートリアル: Azure Active Directory と Direct の統合
+# <a name="tutorial-azure-active-directory-integration-with-direct"></a>チュートリアル:Azure Active Directory と Direct の統合
 
 このチュートリアルでは、Direct と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -88,7 +89,7 @@ Direct で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 
 Direct で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Direct テスト ユーザーの作成](#creating-a-direct-test-user)** - Direct で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -118,7 +119,7 @@ Direct で Azure AD のシングル サインオンを構成してテストす�
 
     ![Configure single sign-on](./media/direct-tutorial/tutorial_direct_url1.png)
 
-     **[サインオン URL]** テキストボックスに、URL: `https://direct4b.com/sso` を入力します 
+     **[サインオン URL]** テキストボックスに、URL: `https://direct4b.com/sso` を入力します 
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -160,11 +161,11 @@ Direct で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="creating-a-direct-test-user"></a>Direct テスト ユーザーの作成
 
-このセクションでは、Direct で Britta Simon というユーザーを作成します。 [Direct サポート チーム](https://direct4b.com/ja/support.html#inquiry)と連携して Direct プラットフォームでユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、Direct で Britta Simon というユーザーを作成します。  [Direct サポート チーム](https://direct4b.com/ja/support.html#inquiry) と連携して Direct プラットフォームでユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

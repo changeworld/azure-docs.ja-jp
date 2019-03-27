@@ -5,24 +5,25 @@ services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 06866b1a0b986190ab6770e5484fb7d950d10b26
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 40b4c4c56c26eec18e804abca8838e89ab0049c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753916"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58165064"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスとは
 
@@ -108,11 +109,7 @@ Azure AD の条件付きアクセスを使うと、承認されたユーザー�
 
 ## <a name="next-steps"></a>次の手順
 
-- 詳細を知りたい場合:
-    - 条件については、「[Conditions in Azure Active Directory conditional access](conditions.md)」(Azure Active Directory の条件付きアクセスの条件) をご覧ください。
+お使いの環境に条件付きアクセスを実装する方法については、「[Azure Active Directory の条件付きアクセスの展開を計画する](plan-conditional-access.md)」をご覧ください。
 
-    - アクセスの制御については、「[Azure Active Directory の条件付きアクセスのコントロール](controls.md)」をご覧ください。
 
-- 条件付きアクセス ポリシーの構成を体験するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
 
-- 推奨されるポリシーを使った段階的なデプロイメント計画を策定する場合は、[条件付きアクセスの展開計画](https://aka.ms/conditionalaccessdeploymentplan)に関する記事を参照してください。

@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 19a715812f1250523fd050ac8b80dee9ec664be4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 56f3573bbab059aed78608209cb2815413876bb0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686264"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308725"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps におけるエラーと例外の処理
 
@@ -31,10 +31,10 @@ ms.locfileid: "51686264"
 
 | type | 説明 | 
 |------|-------------| 
-| [**既定**](#default-retry) | このポリシーは、"[*指数関数的に増加*](#exponential-retry)" する間隔で、最大 4 回の再試行を送信します。間隔の増加係数は 7.5 秒で、下限と上限はそれぞれ 5 秒と 45 秒になります。 | 
-| [**指数間隔**](#exponential-retry)  | このポリシーは、指数関数的に増加する範囲から選択されるランダムな間隔を待ち時間として、次の要求を送信します。 | 
-| [**固定間隔**](#fixed-retry)  | このポリシーは、指定された間隔を待ち時間として、次の要求を送信します。 | 
-| [**なし**](#no-retry)  | 要求を再送信しません。 | 
+| **既定値** | このポリシーは、"*指数関数的に増加*" する間隔で、最大 4 回の再試行を送信します。間隔の増加係数は 7.5 秒で、下限と上限はそれぞれ 5 秒と 45 秒になります。 | 
+| **指数間隔**  | このポリシーは、指数関数的に増加する範囲から選択されるランダムな間隔を待ち時間として、次の要求を送信します。 | 
+| **固定間隔**  | このポリシーは、指定された間隔を待ち時間として、次の要求を送信します。 | 
+| **なし**  | 要求を再送信しません。 | 
 ||| 
 
 再試行ポリシーの制限については、「[Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#request-limits)」をご覧ください。 

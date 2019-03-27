@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/05/2018
+ms.date: 02/05/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: a90ef531cedb5e4c32a8f0af8b6cca86a93fb39a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: e526d7fac3c66c5eaf9686db3c9f9f9506d6fc6b
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997123"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768659"
 ---
 # <a name="what-is-azure-cost-management"></a>Azure Cost Management とは
 
-コスト管理とは、ビジネスに関連するコストを効率的に計画して制御するプロセスです。 通常、コストの管理タスクは、財務、管理、およびアプリのチームが実行します。 Azure Cost Management は、マイクロソフトエンタープライズ契約 (EA) のある組織がコストを考慮した計画を立てる際に役立ちます。 また、コストを効果的に分析して、クラウド支出を最適化するアクションを実行することもできます。 組織としてコスト管理にアプローチする方法の詳細については、「[Azure Cost Management のベスト プラクティス](cost-mgt-best-practices.md)」記事を参照してください。
+コスト管理とは、ビジネスに関連するコストを効率的に計画して制御するプロセスです。 通常、コストの管理タスクは、財務、管理、およびアプリのチームが実行します。 Azure Cost Management は、企業がコストを考慮して計画を立てるときに役立ちます。 また、コストを効果的に分析して、クラウド支出を最適化するアクションを実行することもできます。 組織としてコスト管理にアプローチする方法の詳細については、「[Azure Cost Management のベスト プラクティス](cost-mgt-best-practices.md)」記事を参照してください。
 
 課金は、コスト管理と関連してはいますが、異なるものです。 課金は、顧客に商品やサービスを請求し、取引関係を管理するプロセスです。  通常、課金タスクを実行するのは、調達チームや財務チームです。
 

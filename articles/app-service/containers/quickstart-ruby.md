@@ -13,22 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 01/23/2019
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 13686951324a10c1de621f0fe507be062c9d2095
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c5858aaf09cd832a5d60d32bb33aeeb51795b406
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252475"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870437"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>App Service on Linux で Ruby on Rails アプリを作成する
 
 [Azure App Service on Linux](app-service-linux-intro.md) は、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、Web App on Linux として Azure にデプロイできる基本的な [Ruby on Rails](https://rubyonrails.org/) アプリケーションの作成方法を示します。
 
 > [!NOTE]
-> この時点で、Ruby 開発スタックは Ruby on Rails のみをサポートしています。 別のプラットフォーム (Sinatra など) を使用する場合は、[Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/) のクイック スタートを参照してください。
+> この時点で、Ruby 開発スタックは Ruby on Rails のみをサポートしています。 別のプラットフォーム (Sinatra など) を使用するか、[サポートされていない Ruby バージョン](app-service-linux-intro.md)を使用する場合は、[Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/) のクイック スタートを参照してください。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -53,7 +53,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 最初の手順では、必要な gem をインストールします。 `Gemfile` がサンプルに含まれているため、インストールする gem を指定する必要はありません。 これには bundler を使用します。
 
-```
+```bash
 bundle install
 ```
 
@@ -139,4 +139,4 @@ http://<app name>.azurewebsites.net
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Ruby on Rails と MySQL](tutorial-ruby-postgres-app.md)
+> [Ruby on Rails と Postgres](tutorial-ruby-postgres-app.md)

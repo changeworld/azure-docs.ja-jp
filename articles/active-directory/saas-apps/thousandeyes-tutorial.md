@@ -1,27 +1,28 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ThousandEyes の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ThousandEyes の統合 | Microsoft Docs
 description: Azure Active Directory と ThousandEyes の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: 790e3f1e-1591-4dd6-87df-590b7bf8b4ba
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: b6af7a3322b1a01c1d822df78d827121c19e21e1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 43aa43d37099d69441a5dde47327e784d67fa9ac
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444404"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189448"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>チュートリアル: Azure Active Directory と ThousandEyes の統合
+# <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>チュートリアル:Azure Active Directory と ThousandEyes の統合
 
 このチュートリアルでは、ThousandEyes と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -46,7 +47,7 @@ ThousandEyes と Azure AD の統合を構成するには、次のものが必要
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、1 か月の試用版を[無料試用版の提供](https://azure.microsoft.com/pricing/free-trial/)のページで入手できます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -88,7 +89,7 @@ ThousandEyes で、Azure AD の **[ユーザー名]** の値を **[Username]\(�
 
 ThousandEyes で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[ThousandEyes のテスト ユーザーの作成](#creating-a-thousandeyes-test-user)** - ThousandEyes で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -150,7 +151,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
     c. **[Logout Page URL]\(ログアウト ページ URL\)** テキストボックスに、Azure portal からコピーした**サインアウト URL** を貼り付けます。
 
-    d. **[Identity Provider Issuer]\(ID プロバイダーの発行者\)** テキストボックスに、Azure portal からコピーした **SAML エンティティ ID** を貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Identity Provider Issuer]\(ID プロバイダーの発行者\)** テキストボックスに、Azure portal からコピーした **SAML エンティティ ID** を貼り付けます。
 
     e. **[Verification Certificate]\(検証証明書\)** で **[Choose file]\(ファイルの選択\)** をクリックし、Azure Portal からダウンロードした証明書をアップロードします。
 
@@ -185,7 +186,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="creating-a-thousandeyes-test-user"></a>ThousandEyes テスト ユーザーの作成
 

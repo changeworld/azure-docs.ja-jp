@@ -5,10 +5,10 @@ services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
@@ -16,16 +16,17 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: abd9aeab88dc723ddcdff90ce58268296841dc4e
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e950450a1ebe710a56ccfa0e8abefc7104602ec5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413304"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206176"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 
-環境を保護された状態で維持するために、疑わしいユーザーによるサインイン アクティビティをブロックすることができます。 [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) では、各サインインを分析して、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性を算出します。 可能性 (低、中、高) は、[サインイン リスク レベル](conditions.md#sign-in-risk)と呼ばれる計算値の形で示されます。 サインイン リスクの条件を設定することで、特定のサインイン リスク レベルに応じた条件付きアクセス ポリシーを構成できます。 
+環境を保護された状態で維持するために、疑わしいユーザーによるサインインをブロックすることができます。 [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) では、各サインインを分析して、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性を算出します。 可能性 (低、中、高) は、[サインイン リスク レベル](conditions.md#sign-in-risk)と呼ばれる計算値の形で示されます。 サインイン リスクの条件を設定することで、特定のサインイン リスク レベルに応じた条件付きアクセス ポリシーを構成できます。 
 
 このクイック スタートでは、構成されたサインイン リスク レベルが検出されたときにサインインをブロックする[条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)を構成する方法を説明します。 
 
@@ -66,11 +67,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このセクションでは、必要な条件付きアクセス ポリシーを作成する方法について説明します。 ポリシーに以下の内容を設定します。
 
-|設定 |値|
+|Setting |値|
 |---     | --- |
 | ユーザーとグループ | Alain Charon  |
 | クラウド アプリ | すべてのクラウド アプリ |
-| サインイン リスク | 中 |
+| サインイン リスク | Medium |
 | 許可 | アクセスのブロック |
  
 
@@ -113,7 +114,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     c. **[選択]** ページで **[Alain Charon]** を選択し、**[選択]** をクリックします。
 
-    d. **[ユーザーとグループ]** ページで、**[完了]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザーとグループ]** ページで、**[完了]** をクリックします。
 
 8. **[クラウド アプリ]** をクリックします。
 
@@ -141,7 +142,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     c. [サインイン リスク レベル] で **[中]** を選択します。
 
-    d. **[選択]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[選択]** をクリックします。
 
     e. **[条件]** ページで、**[完了]** をクリックします。
 

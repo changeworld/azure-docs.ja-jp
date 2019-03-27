@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 36902edd7b2df472960d19b8ef9a4ebd4cdfe695
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 937ac1d892cdea849d7e5a89c8e69c6b069f2efd
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906682"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333791"
 ---
 この記事では、仮想マシンのサイズの前の世代の情報を提供します。 これらのサイズも、使用できますが、より新しい世代が使用可能です。
 
@@ -22,11 +22,11 @@ ms.locfileid: "37906682"
 
 ACU: 160
 
-Premium Storage:  サポートされています
+Premium Storage: サポートされています
 
-Premium Storage Caching:  サポートされています
+Premium Storage Caching: サポートされています
 
-| サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1 |1 |3.5 |7 |4 |4,000/32 (43) |3,200/32 |2/500 |
 | Standard_DS2 |2 |7 |14 |8 |8,000/64 (86) |6,400/64 |2/1,000 |
@@ -39,18 +39,18 @@ Premium Storage Caching:  サポートされています
 
 ACU: 160 <sup>1</sup>
 
-Premium Storage:  サポートされています
+Premium Storage: サポートされています
 
-Premium Storage Caching:  サポートされています
+Premium Storage Caching: サポートされています
 
-| サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11 |2 |14 |28 |8 |8,000/64 (72) |6,400/64 |2/1,000 |
 | Standard_DS12 |4 |28 |56 |16 |16,000/128 (144) |12,800/128 |4/2,000 |
 | Standard_DS13 |8 |56 |112 |32 |32,000/256 (288) |25,600/256 |8/4,000 |
 | Standard_DS14 |16 |112 |224 |64 |64,000/512 (576) |51,200/512 |8/8,000 |
 
-<sup>1</sup> DS シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/virtual-machines/windows/premium-storage.md)」を参照してください。
+<sup>1</sup> DS シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、[高パフォーマンス用の設計](../articles/virtual-machines/windows/premium-storage-performance.md)に関する記事を参照してください。
 
 
 
@@ -58,13 +58,13 @@ Premium Storage Caching:  サポートされています
 
 ACU: 160
 
-Premium Storage:  サポートされていません
+Premium Storage: サポートされていません
 
-Premium Storage Caching:  サポートされていません
+Premium Storage Caching: サポートされていません
 
-| サイズ         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+| Size         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1  | 1         | 3.5         | 50             | 3000/46/23                                           | 4 / 4x500                         | 2/500                 |
+| Standard_D1  | 1         | 3.5         | 50             | 3000/46/23                                           | 4 / 4x500                         | 2/500                 |
 | Standard_D2  | 2         | 7           | 100            | 6000/93/46                                           | 8 / 8x500                         | 2/1,000                     |
 | Standard_D3  | 4         | 14          | 200            | 12000/187/93                                         | 16 / 16x500                         | 4/2,000                     |
 | Standard_D4  | 8         | 28          | 400            | 24000/375/187                                        | 32 / 32x500                       | 8/4,000                     |
@@ -75,11 +75,11 @@ Premium Storage Caching:  サポートされていません
 
 ACU: 160
 
-Premium Storage:  サポートされていません
+Premium Storage: サポートされていません
 
-Premium Storage Caching:  サポートされていません
+Premium Storage Caching: サポートされていません
 
-| サイズ         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+| Size         | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D11 | 2         | 14          | 100            | 6000/93/46                                           | 8 / 8x500                         | 2/1,000                     |
 | Standard_D12 | 4         | 28          | 200            | 12000/187/93                                         | 16 / 16x500                         | 4/2,000                     |
@@ -92,13 +92,13 @@ Premium Storage Caching:  サポートされていません
 
 ACU: 225
 
-Premium Storage:  サポートされていません
+Premium Storage: サポートされていません
 
-Premium Storage Caching:  サポートされていません
+Premium Storage Caching: サポートされていません
 
 A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。  この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。 
 
-| サイズ | vCPU | メモリ: GiB | 一時ストレージ (HDD): GiB | 最大データ ディスク数 | 最大データ ディスク スループット: IOPS | 最大 NIC 数|
+| Size | vCPU | メモリ: GiB | 一時ストレージ (HDD):GiB | 最大データ ディスク数 | データ ディスクの最大スループット:IOPS | 最大 NIC 数|
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A8 <sup>1</sup> |8 |56 |382 |32 |32 x 500 |2 |
 | Standard_A9 <sup>1</sup> |16 |112 |382 |64 |64 x 500 |4 |
@@ -111,13 +111,13 @@ A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集�
 
 ## <a name="a-series"></a>A シリーズ
 
-ACU: 50 ～ 100
+ACU: 50-100
 
-Premium Storage:  サポートされていません
+Premium Storage: サポートされていません
 
-Premium Storage Caching:  サポートされていません
+Premium Storage Caching: サポートされていません
 
-| サイズ | vCPU | メモリ: GiB | 一時ストレージ (HDD): GiB | 最大データ ディスク数 | 最大データ ディスク スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps)  |
+| Size | vCPU | メモリ: GiB | 一時ストレージ (HDD):GiB | 最大データ ディスク数 | データ ディスクの最大スループット:IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps)  |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A0 <sup>1</sup> |1 |0.768 |20 |1 |1x500 |2/100 |
 | Standard_A1 |1 |1.75 |70 |2 |2x500 |2/500  |
@@ -143,9 +143,9 @@ Premium Storage Caching:  サポートされていません
 
 ## <a name="basic-a"></a>Basic A
 
-Premium Storage:  サポートされていません
+Premium Storage: サポートされていません
 
-Premium Storage Caching:  サポートされていません
+Premium Storage Caching: サポートされていません
 
 Basic レベルのサイズは主に、負荷分散や自動スケール、メモリ消費量の多い仮想マシンのいずれも必要としない用途 (開発ワークロードなど) 向けです。
 

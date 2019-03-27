@@ -3,25 +3,25 @@ title: Azure Active Directory で SCIM を使用してアプリのプロビジ�
 description: Azure Active Directory では、SCIM プロトコル仕様のインターフェイスを持つ Web サービスによってアクセスされるアプリケーションや ID ストアにユーザーやグループを自動的にプロビジョニングできます
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 04287d286aed872a2b951c47e0f67a93bd19c7b3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 946a70a1b3fe2ddcaf8ec58b9ebc297f1d8894fd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583478"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178857"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -38,9 +38,9 @@ Azure Active Directory (Azure AD) では、[Cross-Domain Identity Management (SC
 
 Azure Active Directory には、次の 2 つの SCIM のユース ケースがあります。
 
-* **SCIM をサポートするアプリケーションにユーザーとグループをプロビジョニングする** - SCIM 2.0 をサポートし、認証に OAuth ベアラー トークンを使用するアプリケーションは、構成なしで Azure AD と連携します。
+* **SCIM をサポートするアプリケーションにユーザーとグループをプロビジョニングする** - SCIM 2.0 をサポートし、認証に OAuth ベアラー トークンを使用するアプリケーションは、構成なしで Azure AD と連携して動作します。
   
-* **他の API ベースのプロビジョニングをサポートするアプリケーション用に独自のプロビジョニング ソリューションを構築する** - SCIM 以外のアプリケーションの場合は、ユーザー プロビジョニング用に、SCIM のエンドポイントを作成して、Azure AD SCIM のエンドポイントと、アプリケーションがサポートする API との間で変換を行うことができます。 SCIM エンドポイントの開発を支援するために、SCIM エンドポイントを用意して SCIM メッセージを変換する方法を示すコード サンプルと共に、共通言語基盤 (CLI: Common Language Infrastructure) ライブラリが用意されています。  
+* **他の API ベースのプロビジョニングをサポートするアプリケーション用に独自のプロビジョニング ソリューションを構築する** - SCIM 以外のアプリケーションの場合は、ユーザー プロビジョニング用に、SCIM のエンドポイントを作成して、Azure AD SCIM のエンドポイントと、アプリケーションがサポートする API との間で変換を行うことができます。 SCIM エンドポイントの開発を支援するために、SCIM エンドポイントを提供して SCIM メッセージを変換する方法を示すサンプル コードと共に、共通言語基盤 (CLI) ライブラリが存在します。  
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>SCIM をサポートするアプリケーションにユーザーとグループをプロビジョニングする
 Azure AD は、[System for Cross-domain Identity Management 2 (SCIM)](https://tools.ietf.org/html/draft-ietf-scim-api-19) Web サービスを実装し、認証用に OAuth ベアラー トークンを受け取るアプリケーションに対し、割り当て済みのユーザーとグループを自動的にプロビジョニングするように構成できます。 SCIM 2.0 仕様の中で、アプリケーションは次の要件を満たす必要があります。
@@ -74,7 +74,7 @@ Azure AD は、[System for Cross-domain Identity Management 2 (SCIM)](https://to
    *図 3:Azure portal でのプロビジョニングの構成*
     
 6. **[テナント URL]** フィールドに、アプリケーションの SCIM エンドポイントの URL を入力します。 例: https://api.contoso.com/scim/v2/
-7. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD は各要求に Azure AD から発行された OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリケーションは、この Azure AD が発行したトークンを検証できます。
+7. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドが空白のままである場合、Azure AD は、Azure AD から発行された OAuth ベアラー トークンを各要求に含めます。 ID プロバイダーとして Azure AD を使用するアプリは、この Azure AD によって発行されたトークンを検証できます。
 8. **[テスト接続]** ボタンをクリックして、Azure Active Directory による SCIM エンドポイントへの接続を試みます。 試みが失敗した場合は、エラー情報が表示されます。  
 
     >[!NOTE]
@@ -86,7 +86,7 @@ Azure AD は、[System for Cross-domain Identity Management 2 (SCIM)](https://to
     >[!NOTE]
     >必要に応じて [グループ] マッピングを無効にすることで、グループ オブジェクトの同期を無効にできます。 
 
-11. **[設定]** の **[スコープ]** フィールドは、同期するユーザーまたはグループを定義します。 [Sync only assigned users and groups]\(割り当てたユーザーとグループのみ同期する\) (推奨) を選択すると、**[ユーザーとグループ]** タブに割り当てられたユーザーとグループのみが同期されます。
+11. **[設定]** の **[スコープ]** フィールドは、どのユーザーおよびグループが同期されるかを定義します。 [Sync only assigned users and groups]\(割り当てたユーザーとグループのみ同期する\) (推奨) を選択すると、**[ユーザーとグループ]** タブに割り当てられたユーザーとグループのみが同期されます。
 12. 構成が完了したら、**[プロビジョニング状態]** を **[オン]** に変更します。
 13. Azure AD のプロビジョニング サービスを開始するには、**[保存]** をクリックします。 
 14. 割り当てられたユーザーとグループのみを同期する (推奨) 場合は、**[ユーザーとグループ]** タブを選択し、同期するユーザーとグループを割り当てます。
@@ -120,7 +120,7 @@ Azure Active Directory を接続して動作させる SCIM Web サービスを�
 ### <a name="getting-started"></a>Getting Started (概要)
 Azure AD からのプロビジョニング要求を受信できる SCIM エンドポイントを実装する最も簡単な方法は、プロビジョニングするユーザーをコンマ区切り値 (CSV) ファイルに出力するコード サンプルをビルドしてデプロイすることです。
 
-**サンプルの SCIM エンドポイントを作成するには:**
+#### <a name="to-create-a-sample-scim-endpoint"></a>サンプルの SCIM エンドポイントを作成するには
 
 1. [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) で、コード サンプル パッケージをダウンロードします。
 2. パッケージを解凍し、Windows コンピューターの C:\AzureAD-BYOA-Provisioning-Samples\ などの場所に配置します。
@@ -142,7 +142,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 8. **[Windows の設定] の [ネットワークとインターネット]** 設定で、**[Windows ファイアウォール]、[詳細設定]** の順に選択し、ポート 9000 への入力方向のアクセスを許可する**受信規則**を作成します。
 9. Windows コンピューターがルーターの内側にある場合は、インターネットに公開されているルーターのポート 9000 と Windows コンピューターのポート 9000 の間でネットワーク アクセス変換を実行するようにルーターを構成する必要があります。 この構成は、Azure AD がクラウド上にあるこのエンドポイントにアクセスするために必要です。
 
-**Azure AD にサンプルの SCIM エンドポイントを登録するには:**
+#### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>Azure AD にサンプルの SCIM エンドポイントを登録するには
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。 
 2. **[Azure Active Directory] > [エンタープライズ アプリケーション]** を参照し、**[新しいアプリケーション] > [すべて] > [ギャラリー以外のアプリケーション]** を選択します。
@@ -153,7 +153,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
    ![][2]
    *図 4:Azure portal でのプロビジョニングの構成*
     
-6. **[テナント URL]** フィールドに、インターネットに公開されている URL と SCIM エンドポイントのポートを入力します。 入力内容は、 http://testmachine.contoso.com:9000 または http://<IP アドレス>:9000/ のようになります。<IP アドレス> は、インターネットに公開されている IP アドレスです。  
+6. **[テナント URL]** フィールドに、インターネットに公開されている URL と SCIM エンドポイントのポートを入力します。 この入力は、 http://testmachine.contoso.com:9000 または http://\<IP アドレス>:9000/ のようになります。ここで、\<IP アドレス> はインターネットに公開されている IP アドレスです。  
 7. SCIM エンドポイントで、Azure AD 以外の発行者からの OAuth ベアラー トークンを必要とする場合は、必要な OAuth ベアラー トークンをオプションの **[シークレット トークン]** フィールドにコピーします。 このフィールドを空白のままにすると、Azure AD は各要求に Azure AD から発行された OAuth ベアラー トークンを含めます。 ID プロバイダーとして Azure AD を使用するアプリケーションは、この Azure AD が発行したトークンを検証できます。
 8. **[テスト接続]** ボタンをクリックして、Azure Active Directory による SCIM エンドポイントへの接続を試みます。 試みが失敗した場合は、エラー情報が表示されます。  
 
@@ -422,7 +422,7 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
      System.Threading.Tasks.Task<Microsoft.SystemForCrossDomainIdentityManagement.Resource[]>  Query(
        Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters parameters, 
        string correlationIdentifier);
-   ````
+   ```
 
    次に示すのは、Microsoft.SystemForCrossDomainIdentityManagement.IQueryParameters インターフェイスの定義です。 
 

@@ -3,24 +3,25 @@ title: IE 用 Azure アクセス パネル拡張機能のトラブルシュー�
 description: グループ ポリシーを使用してマイ アプリ ポータル用の Internet Explorer アドオンをデプロイする方法。
 services: active-directory
 documentationcenter: ''
-author: barbkess
+author: CelesteDG
 manager: mtillman
 ms.service: active-directory
-ms.component: app-mgmt
+ms.subservice: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/11/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9ebd949460f826c9529b9f392bc4a7f4918ee170
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ace2482e51454458977452f0aa610dd43a94e8a7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715042"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211191"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング
 この記事は、次の問題をトラブルシューティングする際に役立ちます。
@@ -28,7 +29,7 @@ ms.locfileid: "44715042"
 * Internet Explorer を使用中にマイ アプリ ポータルからアプリにアクセスできない。
 * ソフトウェアをインストール済みでも "ソフトウェアをインストールしてください" というメッセージが表示される。
 
-管理者の方は、「 [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy](deploy-access-panel-browser-extension.md)
+管理者の場合は、以下も参照してください。[グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](deploy-access-panel-browser-extension.md)
 
 ## <a name="run-the-diagnostic-tool"></a>診断ツールの実行
 アクセス パネルの診断ツールをダウンロードし実行することで、アクセス パネル拡張機能のインストールに関する問題を診断することができます。

@@ -4,7 +4,7 @@ description: Azure Active Directory と Absorb LMS の間でシングル サイ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: f7f96b4357e7db61d3b5d30b93eff8960e515c2d
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 998a46bc6255898ab4754de57a2570a77896cf85
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971292"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル:Azure Active Directory と Absorb LMS の統合
 
@@ -159,7 +160,7 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     c. メモ帳で、Azure Portal からダウンロードした証明書を開きます。 **-----BEGIN CERTIFICATE-----** タグと **-----END CERTIFICATE-----** タグを削除します。 次に **[キー]** ボックスに残りのコンテンツを貼り付けます。
 
-    d. **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
 
     e. **[Id Property]\(ID プロパティ\)** ボックスで、Azure AD でユーザー ID として構成した属性を選択します。 たとえば、Azure AD で *userPrincipalName* が選択されている場合、**[ユーザー名]** を選択します。
 
@@ -252,7 +253,7 @@ Azure AD ユーザーが Absorb LMS にサインインするには、そのユ�
 
     c. **[ユーザー名]** ボックスに、ユーザーの氏名 (たとえば、**Britta Simon**) を入力します。
 
-    d. **[パスワード]** ボックスに、ユーザーのパスワードを入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[パスワード]** ボックスに、ユーザーのパスワードを入力します。
 
     e. **[パスワードの確認]** ボックスに、パスワードを再度入力します。
 
@@ -275,6 +276,6 @@ Azure AD ユーザーが Absorb LMS にサインインするには、そのユ�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

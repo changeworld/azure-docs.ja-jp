@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: ロールは、パターンでのみ使用されるエンティティの名前付きコンテキスト サブタイプです。 たとえば、発話 `buy a ticket from New York to London` では、ロンドンとニューヨークは両方とも都市ですが、文章内での意味はそれぞれ異なります。 ニューヨークは出発地、ロンドンは目的地です。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: cb155486365ffa1beb4657e2d9cc56fcf143b624
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 958194d49cd403caeaf9dd21dd90a02cab098e45
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53547747"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881459"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>パターンのエンティティ ロールはコンテキスト サブタイプです
 ロールは、[パターン](luis-concept-patterns.md)でのみ使用されるエンティティの名前付きコンテキスト サブタイプです。
@@ -25,10 +25,10 @@ ms.locfileid: "53547747"
 
 ロールでは、こうした違いに対して名前が付けられます。
 
-|エンティティ|ロール|目的|
+|エンティティ|Role|目的|
 |--|--|--|
-|場所|origin|飛行機が離陸する場所|
-|場所|destination|飛行機が着陸する場所|
+|Location|origin|飛行機が離陸する場所|
+|Location|destination|飛行機が着陸する場所|
 |事前構築済みの datetimeV2|to|終了日|
 |事前構築済みの datetimeV2|from|開始日|
 

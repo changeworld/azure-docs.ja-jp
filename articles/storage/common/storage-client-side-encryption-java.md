@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.component: common
-ms.openlocfilehash: 995b54d8eb53efc6001e29366e22e09b246f0bff
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.subservice: common
+ms.openlocfilehash: 9a96f80c609f446dcc1fea2a87925dec3dadfedd
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522018"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471897"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Java による Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -248,9 +248,9 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 ストレージ データを暗号化すると、パフォーマンスのオーバーヘッドが増えることに注意してください。 コンテンツ キーと IV を生成する必要があり、コンテンツ自体を暗号化する必要があります。また、追加のメタデータをフォーマットおよびアップロードする必要もあります。 このオーバーヘッドは、暗号化されるデータの量によって異なります。 開発中に、アプリケーションのパフォーマンスを常にテストすることをお勧めします。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Storage Client Library for Java の Maven パッケージ](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
-* [Azure Storage Client Library for Java のソースコード](https://github.com/Azure/azure-storage-java)   
+*  [Azure Storage Client Library for Java の Maven パッケージ](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
+*  [Azure Storage Client Library for Java のソースコード](https://github.com/Azure/azure-storage-java)   
 * Java Maven パッケージの Azure Key Vault Maven Library をダウンロードする:
   * [コア](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) パッケージ
   * [クライアント](http://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) パッケージ
-* [Azure Key Vault のドキュメント](../../key-vault/key-vault-whatis.md)
+*  [Azure Key Vault のドキュメント](../../key-vault/key-vault-whatis.md)

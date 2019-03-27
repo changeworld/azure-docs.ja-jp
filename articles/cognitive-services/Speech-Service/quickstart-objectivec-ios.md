@@ -1,23 +1,23 @@
 ---
 title: 'クイック スタート: 音声を認識する (Objective-C) - 音声サービス'
 titleSuffix: Azure Cognitive Services
-description: iOS で Objective-C と Speech Service SDK を使用して音声を認識する方法について説明します
+description: iOS で Objective-C と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: chlandsi
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: speech-service
+ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/13/2018
+ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 75411ebd50448c5f490a1f03fbbf25a61dbffaf8
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 67acc7a074b26cb7614b5e08d25afd7b7c1caa74
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718114"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958509"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>クイック スタート: iOS 上で Objective-C と Speech Service SDK を使用して音声を認識する
+# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>クイック スタート:iOS で Objective-C と Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "53718114"
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.2.0` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.3.1` です。
 
 Mac および iOS 用の Cognitive Services Speech SDK は、現在は Cocoa フレームワークとして配布されています。
 これは https://aka.ms/csspeech/iosbinary からダウンロードできます。 ファイルをホーム ディレクトリにダウンロードします。

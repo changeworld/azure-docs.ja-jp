@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 451ccff9747988ee019f2be9e0cccec12c9c1ef9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c79f840becce43c47287ef38bd39ed3ac9168b73
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118236"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891081"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 
@@ -64,7 +64,7 @@ HDInsight は PaaS ソリューションであるため、優れたプラット�
 
 2 番目の手順では、実行時に Caffe 用の protobuf 2.5.0 をダウンロードし、コンパイルしてインストールします。 protobuf 2.5.0 が[必要](https://github.com/yahoo/CaffeOnSpark/issues/87)です。ただし、このバージョンは Ubuntu 16 のパッケージとして入手できないため、ソース コードからコンパイルする必要があります。 コンパイル方法については、インターネットでもいくつかのリソースが見つかります。 詳細については、[このページ](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html)を参照してください。
 
-作業を開始するには、このスクリプト アクションをクラスターに対して実行して、すべての worker ノードとヘッド ノード (HDInsight 3.5 用) に適用します。 既存のクラスターでスクリプト アクションを実行するか、クラスターの作成時にスクリプト アクションを使用します。 スクリプト アクションの詳細については、[こちらの](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions)ドキュメントを参照してください。
+作業を開始するには、このスクリプト アクションをクラスターに対して実行して、すべての worker ノードとヘッド ノード (HDInsight 3.5 用) に適用します。 既存のクラスターでスクリプト アクションを実行するか、クラスターの作成時にスクリプト アクションを使用します。 スクリプト アクションの詳細については、[こちらの](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)ドキュメントを参照してください。
 
 ![依存関係をインストールするスクリプト アクション](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 

@@ -1,6 +1,4 @@
 items:
-- name: Azure IoT の基礎
-  href: ../iot-fundamentals/index.yml
 - name: IoT ソリューション アクセラレータのドキュメント
   href: index.md
 - name: 概要
@@ -47,9 +45,11 @@ items:
         href: iot-accelerators-remote-monitoring-deploy-local.md
       - name: VS Code を使用したローカルでのデプロイ
         href: iot-accelerators-remote-monitoring-deploy-local-vscode.md
+      - name: IntelliJ を使用したローカルでのデプロイ
+        href: iot-accelerators-remote-monitoring-deploy-local-java.md
       - name: Docker を使用したローカルでのデプロイ
         href: iot-accelerators-remote-monitoring-deploy-local-docker.md
-    - name: 物理デバイスの接続
+    - name: 実デバイスの接続
       items:
       - name: Windows 上の C
         href: iot-accelerators-connecting-devices.md
@@ -257,9 +257,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: リモート監視 V1
     href: https://docs.microsoft.com/previous-versions/azure/iot-suite/
-ms.openlocfilehash: 0b95b2efed51db0d43b618e76fbe24a13d35b6ed
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 5b2067facd27e94735aba63bb1c54c15e1511c64
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390852"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342039"

@@ -4,7 +4,7 @@ description: Azure Active Directory と Atlassian Cloud の間でシングル �
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 729b8eb6-efc4-47fb-9f34-8998ca2c9545
 ms.service: Azure-Active-Directory
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/20/2018
+ms.date: 02/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 517c92336b8c5c6827717d4c2287c41eaaa14b55
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 601f2dc69c7b390ea05cb66976dc7bbcc98d9502
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810533"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880500"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atlassian-cloud"></a>チュートリアル:Azure Active Directory と Atlassian Cloud の統合
 
@@ -39,6 +40,7 @@ Atlassian Cloud と Azure AD の統合を構成するには、次のものが必
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
 * Atlassian Cloud でのシングル サインオンが有効なサブスクリプション
+* Atlassian Cloud 製品の Security Assertion Markup Language (SAML) シングル サインオンを有効にするには、Atlassian Access を設定する必要があります。 詳細については、「[Atlassian Access]( https://www.atlassian.com/enterprise/cloud/identity-manager)」を参照してください。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -110,7 +112,7 @@ Atlassian Cloud との Azure AD シングル サインオンを構成するに�
 
     c. **[追加の URL を設定します]** をクリックします。
 
-    d. **[リレー状態]** ボックスに、`https://<instancename>.atlassian.net` のパターンで URL を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[リレー状態]** ボックスに、`https://<instancename>.atlassian.net` のパターンで URL を入力します。
 
     > [!NOTE]
     > 上記の値は、実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値は、このチュートリアルで後述する Atlassian Cloud SAML 構成画面から取得できます。
@@ -124,29 +126,15 @@ Atlassian Cloud との Azure AD シングル サインオンを構成するに�
     > [!NOTE]
     > 上記のサインオン URL の値は、実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 この値を取得するには、[クライアント サポート チーム](https://support.atlassian.com/)に問い合わせてください。
 
-6. Atlassian Cloud アプリケーションでは、特定の形式の SAML アサーションを使用するため、ご利用の SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。
-
-    既定では、**[ユーザー識別子]** の値は user.userprincipalname にマップされています。 この値が user.mail にマップされるよう変更します。 お客様の組織の設定によっては他の適切な値を選択することもできますが、ほとんどの場合は電子メールが適切です。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
+6. Atlassian Cloud アプリケーションでは、特定の形式の SAML アサーションを受け取るため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。 Atlassian Cloud アプリケーションでは、**nameidentifier** が **user.mail** にマップされると想定されているため、**[編集]** アイコンをクリックして属性マッピングを編集し、属性マッピングを変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
-7. **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、次の手順を実行します。
-
-    a. **[編集]** アイコンをクリックして、**[ユーザー要求の管理]** ダイアログを開きます。
-
-    ![image](./media/atlassian-cloud-tutorial/tutorial_usermail.png)
-
-    ![image](./media/atlassian-cloud-tutorial/tutorial_usermailedit.png)
-
-    b. **[ソース属性]** の一覧から、**[user.mail]** を選択します。
-
-    c. **[Save]** をクリックします。
-
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-9. **[Atlassian Cloud のセットアップ]** セクションで、要件のとおりに適切な URL をコピーします。
+8. **[Atlassian Cloud のセットアップ]** セクションで、要件のとおりに適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -176,7 +164,7 @@ Atlassian Cloud との Azure AD シングル サインオンを構成するに�
 
     c. Azure Portal からダウンロードした証明書を .txt ファイルで開き、*Begin Certificate (証明書の開始)* 行と *End Certificate (証明書の終了)* 行以外の値をコピーして、**[Public X509 certificate]\(公開 X509 証明書\)** ボックスに貼り付けます。
 
-    d. **[Save Configuration]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save Configuration]** をクリックします。
 
 5. 確実に正しい URL を設定するには、次の手順を実行して Azure AD 設定を更新します。
 
@@ -271,7 +259,7 @@ Azure AD ユーザーが Atlassian Cloud にサインインできるようにす
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
    

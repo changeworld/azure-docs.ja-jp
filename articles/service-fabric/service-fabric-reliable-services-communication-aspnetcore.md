@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: eb020dfd52140375778cf22c6b70e715a7422761
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 71d5b0e8156710e2f82ac76d3187ba1ddba46936
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310251"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55151092"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric リライアブル サービスでの ASP.NET Core
 
@@ -62,7 +62,7 @@ Service Fabric サービスと ASP.NET をゲスト実行可能ファイルと�
 `Microsoft.ServiceFabric.AspNetCore.*` NuGet パッケージの Kestrel と HttpSys の `ICommunicationListener` 実装は使用パターンが類似していますが、実行されるアクションは各 Web サーバーに応じて多少異なります。 
 
 どちらの通信リスナーも、次の引数を受け取るコンストラクターを提供します。
- - **`ServiceContext serviceContext`**: 実行中のサービスに関する情報を含む `ServiceContext` オブジェクト。
+ - **`ServiceContext serviceContext`**:実行中のサービスに関する情報を含む `ServiceContext` オブジェクト。
  - **`string endpointName`**: ServiceManifest.xml の `Endpoint` 構成の名前。 2 つの通信リスナーが異なるのは主にこの部分です。HttpSys では `Endpoint` 構成が**必要**ですが、Kestrel では必要ありません。
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: `IWebHost` を作成して返すために実装するラムダ。 これにより、ASP.NET Core アプリケーションで通常行う方法で `IWebHost` を構成することができます。 ラムダによって URL が提供されます。この URL は、使用した Service Fabric 統合オプションと提供した `Endpoint` 構成に応じて生成されます。 Web サーバーを起動するために、この URL を変更することも、そのまま使用することもできます。
 

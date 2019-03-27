@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と ThirdPartyTrust の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と ThirdPartyTrust の統合 | Microsoft Docs
 description: Azure Active Directory と ThirdPartyTrust の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3c496939-4201-4108-b0cc-d3e7c4244229
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 4333f6094a0da22f73255836379e1163aac485d4
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ae9481f6d8b4b54bd90ad0dd54a29b43c9e20531
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050519"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184085"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thirdpartytrust"></a>チュートリアル: Azure Active Directory と ThirdPartyTrust の統合
+# <a name="tutorial-azure-active-directory-integration-with-thirdpartytrust"></a>チュートリアル:Azure Active Directory と ThirdPartyTrust の統合
 
 このチュートリアルでは、ThirdPartyTrust と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -127,7 +128,7 @@ ThirdPartyTrust で Azure AD のシングル サインオンを構成してテ�
 7. **ThirdPartyTrust** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [ThirdPartyTrust サポート チーム](mailto:support@thirdpartytrust.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -159,11 +160,11 @@ ThirdPartyTrust で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-thirdpartytrust-test-user"></a>ThirdPartyTrust のテスト ユーザーの作成
 
-このセクションでは、ThirdPartyTrust で Britta Simon というユーザーを作成します。 [ThirdPartyTrust サポート チーム](mailto:support@thirdpartytrust.com)と連携して、ThirdPartyTrust プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、ThirdPartyTrust で Britta Simon というユーザーを作成します。  [ThirdPartyTrust サポート チーム](mailto:support@thirdpartytrust.com) と連携して、ThirdPartyTrust プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
@@ -201,7 +202,7 @@ ThirdPartyTrust で Azure AD のシングル サインオンを構成してテ�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [ThirdPartyTrust] タイルをクリックすると、自動的に ThirdPartyTrust アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

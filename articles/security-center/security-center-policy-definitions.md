@@ -4,7 +4,7 @@ description: Azure Security Center 内で監視される Azure ポリシーの�
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: c89cb1aa-74e8-4ed1-980a-02a7a25c1a2f
 ms.service: security-center
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/22/2018
+ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: e76464e294a3378bf3a275ec4fe7ccbd87c09475
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e83ff9f3bf02a134919d497662744028e1b9acda
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011642"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343019"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Azure Security Center により監視される Azure セキュリティ ポリシー
-この記事では、Security Center 内で監視できる Azure ポリシーの定義の一覧を示します。
+この記事では、Security Center 内で監視できる Azure ポリシーの定義の一覧を示します。 セキュリティ ポリシーの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。
 
 ## <a name="available-security-policies"></a>利用可能なセキュリティ ポリシー
 
@@ -96,4 +96,4 @@ Security Center によって監視される組み込みのポリシーについ�
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md):このサービスの使用に関してよく寄せられる質問とその回答を紹介しています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/):Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-Azure Policy について詳しくは、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」をご覧ください。
+Azure Policy について詳しくは、「[Azure Policy とは](../governance/policy/overview.md)」をご覧ください。

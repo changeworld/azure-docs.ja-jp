@@ -4,22 +4,22 @@ description: このチュートリアルでは、パススルー配信用に構�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 6f4acd95-cc64-4dd9-9e2d-8734707de326
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 08/09/2017
+ms.topic: conceptual
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 2bb56ff6eaf311bee33b07ecb319127645db9961
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d86151b436ec3cc5ea3d4b687f5c8692b2ca4efa
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235107"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258704"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Azure Portal を使用してオンプレミス エンコーダーでライブ ストリーミングを実行する方法
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "51235107"
 
 * Azure アカウント。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
 * Media Services アカウント。 Media Services アカウントを作成するには、「 [Media Services アカウントの作成方法](media-services-portal-create-account.md)」を参照してください。
-* Web カメラ。 たとえば、 [Telestream Wirecast エンコーダー](http://www.telestream.net/wirecast/overview.htm)。
+* Web カメラ。 たとえば、 [Telestream Wirecast エンコーダー](https://www.telestream.net/wirecast/overview.htm)。
 
 次の記事の確認を強くお勧めします。
 

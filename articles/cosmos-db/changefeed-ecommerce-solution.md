@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: b04a31ec46194d68dbbc5e5a4eb2b600968d7be5
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 50ae4de8c9c1d10b0b17a9744ffa2340059fc298
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037108"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120518"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
 
@@ -105,7 +105,7 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos DB コンテナーのレコ
 
 3. 次に、変更フィードを処理する「**leases**」という名前の別のコレクションを作成します。 リース コレクションは、複数の worker 間で変更フィードの処理を調整します。 個別のコレクションを使用して、リース (パーティションごとに 1 リース) が保存されます。  
 
-4.  **[データ エクスプローラー]** ペインに戻り、**[新しいコレクション]** を選択し、次の詳細でフォームに入力します。
+4. **[データ エクスプローラー]** ペインに戻り、**[新しいコレクション]** を選択し、次の詳細でフォームに入力します。
 
    * **[データベース ID]** フィールドで、**[既存のものを使用]** を選択し、「**changefeedlabdatabase**」と入力します。  
    * **[コレクション ID]** フィールドに、「**leases**」と入力します。  
@@ -165,7 +165,7 @@ Cosmos DB コレクションで新しいドキュメントが作成される、�
 
 1. エクスプローラーのリポジトリに戻り、**[ChangeFeedFunction.sln]** を右クリックして、それを Visual Studio の新しいウィンドウでもう一度開きます。  
 
-2. **App.config** ファイルに移動します。<appSettings> ブロックに、前に取得した Azure Cosmos DB の URI と一意の**主キー**を追加します。  
+2. **App.config** ファイルに移動します。<appSettings> ブロックに、前に取得した Azure Cosmos DB アカウントのエンドポイントおよび一意の**主キー**を追加します。  
 
 3. **コレクション**名と**データベース**名を追加します  (別の名前にすることを選択していない限り、これらの名前は **changefeedlabcollection** と **changefeedlabdatabase** にしてください)。
 
@@ -382,7 +382,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
 8. **EcommerceWebApp.sln** 内の **[チェックアウト フォルダー]** に移動して開きます。 その後、そのフォルダー内の **Web.config** ファイルを開きます。  
 
-9. `<appSettings>` ブロック内で、以前に保存した **URI** と**主キー**を示されている位置に追加します。 その後、**データベース名**と**コレクション名**を示されているとおりに追加します。 (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。  
+9. `<appSettings>` ブロック内で、以前に保存した **URI** と**主キー**を示されている位置に追加します。 その後、**データベース名**と**コレクション名**を示されているとおりに追加します  (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。  
 
 10. ページ上部の **[開始]** を押してプログラムを実行します。  
 

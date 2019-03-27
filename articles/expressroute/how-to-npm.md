@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: e72c2ceaedd23f4e3ee2006930302321498eb736
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 93fd42739e0ec8ca9230688274b31fac5edf216d
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104732"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55098580"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute に使用する Network Performance Monitor の構成
 
@@ -38,7 +38,7 @@ ms.locfileid: "53104732"
 監視エージェントは、複数のサーバー (オンプレミスと Azure の両方) にインストールされます。 これらのエージェントは互いに通信を行いますが、データは送信せず、TCP ハンドシェイク パケットを送信します。 エージェント間の通信によって、Azure は、トラフィックが通過する可能性のある経路とネットワーク トポロジとをマッピングすることができます。
 
 1. NPM ワークスペースを作成します。 これは、Log Analytics ワークスペースと同じです。
-2. ソフトウェア エージェントをインストールして構成します。 
+2. ソフトウェア エージェントをインストールして構成します  (監視を Microsoft ピアリング経由でのみ実行する場合は、ソフトウェア エージェントのインストールと構成は必要ありません)。 
     * オンプレミス サーバーと Azure VM に監視エージェントをインストールします (プライベート ピアリングの場合)。
     * 監視エージェントが通信を行うことができるように、監視エージェント サーバー上の設定を構成します  (ファイアウォール ポートを開放するなど)。
 3. Azure VM にインストールされている監視エージェントがオンプレミスの監視エージェントと通信を行うことができるようにネットワーク セキュリティ グループ (NSG) 規則を構成します。

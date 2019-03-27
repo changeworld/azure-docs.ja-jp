@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 2beb5aa7218df25a1af87411d9481d30b259c353
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 2b73deb18b518f257e1de6125ef6d4e35eb0e7b7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53256731"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236280"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -141,24 +141,26 @@ Log Analytics を使用してログを保存するには、次の手順に従い
 
 以下の例は、Azure PowerShell コマンドレットによる診断ログを有効にする方法を示しています。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>ストレージ アカウントの診断ログを有効にする
 
 1. ログインしてサブスクリプションを選択します。
 
-    Connect-AzureRmAccount 
+    Connect-AzAccount 
 
     Select-AzureSubscription -SubscriptionId 
 
 2. ストレージ アカウントの診断ログを有効にするには、次のコマンドを入力します。
 
     ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
+    Set-AzDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
     ```
 
 3. Log Analytics ワークスペースの診断ログを有効にするには、次のコマンドを入力します。
 
     ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
+    Set-AzDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
     .<subscriptionName>" -WorkspaceId "/subscriptions/<workspaceId>.<workspaceName>" -Enabled $true -Categories CoreAnalytics 
     ```
 
@@ -290,7 +292,7 @@ Log Analytics 管理ソリューションを追加するには、次の手順に
 
 ### <a name="offers-and-pricing-tiers"></a>プランと価格レベル
 
-[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)で管理ソリューションのプランと価格レベルを確認できます。
+[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)で管理ソリューションのプランと価格レベルを確認できます。
 
 ### <a name="customizing-views"></a>ビューのカスタマイズ
 

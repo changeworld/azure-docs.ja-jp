@@ -5,7 +5,7 @@ items:
   items:
   - name: Azure Monitor とは
     href: overview.md
-  - name: ブランドの変更
+  - name: 用語の変更
     href: azure-monitor-rebrand.md
 - name: クイック スタート
   items:
@@ -34,9 +34,9 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: Log Analytics でデータを解析する
+  - name: Log Analytics でのデータの分析
     href: learn/tutorial-viewdata.md
-  - name: Log Analytics でデータを視覚化する
+  - name: Log Analytics でのデータの視覚化
     href: learn/tutorial-logs-dashboards.md
   - name: プラットフォーム メトリックとログ データのアーカイブ
     href: learn/tutorial-archive-data.md
@@ -61,9 +61,15 @@ items:
 - name: 概念
   items:
   - name: Azure の管理
-    href: azure-management.md?toc=/azure/azure-monitor/toc.json
+    href: azure-management.md
   - name: 継続的な監視
     href: continuous-monitoring.md
+  - name: ログ データの分析
+    items:
+    - name: ログ クエリ
+      href: log-query/log-query-overview.md
+    - name: ログ クエリ ポータル
+      href: log-query/portals.md
   - name: データの監視
     items:
     - name: メトリックとログ
@@ -106,18 +112,6 @@ items:
       href: insights/vminsights-overview.md
     - name: 監視ソリューション
       href: insights/solutions-inventory.md
-  - name: データを分析する
-    items:
-    - name: Log Analytics
-      href: log-query/log-query-overview.md
-    - name: ログ クエリ ポータル
-      href: log-query/portals.md
-    - name: OMS ポータルの移行
-      items:
-      - name: 概要
-        href: platform/oms-portal-transition.md
-      - name: 一般的な質問
-        href: platform/oms-portal-faq.md
   - name: インシデントへの対応
     items:
     - name: アラート
@@ -135,9 +129,15 @@ items:
     - name: アクティビティ ログ アラート
       href: platform/activity-log-alerts.md
   - name: データの視覚化
-    href: visualizations.md?toc=/azure/azure-monitor/toc.json
+    href: visualizations.md
   - name: パートナー統合
     href: platform/partners.md
+  - name: OMS ポータルの移行
+    items:
+    - name: 概要
+      href: platform/oms-portal-transition.md
+    - name: 一般的な質問
+      href: platform/oms-portal-faq.md
   - name: FAQ
     items:
     - name: Log Analytics
@@ -180,6 +180,8 @@ items:
           href: learn/quick-create-workspace-posh.md
       - name: ワークスペースを削除する
         href: platform/delete-workspace.md
+      - name: ワークスペースを管理する
+        href: platform/manage-access.md
       - name: サービス プロバイダー向けの設計
         href: platform/service-providers.md
   - name: データを収集する
@@ -195,12 +197,12 @@ items:
         - name: Windows エージェント
           href: platform/agent-windows.md
         - name: Windows 用の VM 拡張機能
-          href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+          href: ../virtual-machines/windows/extensions-oms.md
         - name: Linux 用の VM 拡張機能
-          href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
+          href: ../virtual-machines/linux/extensions-oms.md
         - name: Operations Manager
           href: platform/om-agents.md
-        - name: OMS ゲートウェイ
+        - name: Log Analytics ゲートウェイ
           href: platform/gateway.md
         - name: エージェント管理
           href: platform/agent-manage.md
@@ -263,7 +265,7 @@ items:
       - name: Azure アプリ
         items:
         - name: Azure App Service
-          href: ../application-insights/app-insights-azure-web-apps.md?toc=/azure/azure-monitor/toc.json
+          href: app/azure-web-apps.md
         - name: Azure クラウド サービス
           href: app/cloudservices.md
         - name: 継続的な監視の追加
@@ -280,14 +282,26 @@ items:
             href: app/profiler-servicefabric.md
           - name: Azure VM で Profiler を有効にする
             href: app/profiler-vm.md
+          - name: Linux App Services 用の Profiler (プレビュー)
+            href: app/profiler-aspnetcore-linux.md
           - name: Profiler の設定
             href: app/profiler-settings.md
           - name: プロファイリング要求を追跡する
             href: app/profiler-trackrequests.md
           - name: Profiler に関するトラブルシューティング
             href: app/profiler-troubleshooting.md
+        - name: スナップショット デバッガー
+          items:
+          - name: 概要
+            href: app/snapshot-debugger.md
+          - name: アプリ サービス用にスナップショット デバッガーを有効にする
+            href: app/snapshot-debugger-appservice.md
+          - name: その他の環境用にスナップショット デバッガーを有効にする
+            href: app/snapshot-debugger-vm.md
+          - name: スナップショット デバッガーのトラブルシューティング
+            href: app/snapshot-debugger-troubleshoot.md
         - name: 診断
-          href: ../application-insights/app-insights-azure-diagnostics.md?toc=/azure/azure-monitor/toc.json
+          href: ../application-insights/app-insights-azure-diagnostics.md
         - name: プレビュー
           href: app/previews.md
       - name: ASP.NET アプリ
@@ -303,7 +317,7 @@ items:
         - name: ASP.NET Core
           href: app/asp-net-core.md
           items:
-          - name: Linux App Services 用の Profiler
+          - name: Linux App Services 用の Profiler (プレビュー)
             href: app/profiler-aspnetcore-linux.md
         - name: コンソール
           href: app/console.md
@@ -315,6 +329,8 @@ items:
           href: app/asp-net-exceptions.md
         - name: ログ トレース
           href: app/asp-net-trace-logs.md
+        - name: ILogger
+          href: app/ilogger.md
         - name: パフォーマンス カウンター
           href: app/performance-counters.md
         - name: 依存関係
@@ -323,8 +339,6 @@ items:
           href: app/annotations.md
         - name: ApplicationInsights.config
           href: app/configuration-with-applicationinsights-config.md
-        - name: スナップショット デバッガー
-          href: app/snapshot-debugger.md
       - name: Java アプリ
         items:
         - name: Web Apps
@@ -343,6 +357,8 @@ items:
           href: app/java-filter-telemetry.md
         - name: Micrometer メトリック
           href: app/micrometer-java.md
+        - name: Spring Boot Initializer アプリの構成
+          href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
       - name: Node.js アプリ
         items:
         - name: Node.js
@@ -352,7 +368,7 @@ items:
         - name: JavaScript
           href: app/javascript.md
       - name: Azure Functions を監視する
-        href: ../azure-functions/functions-monitoring.md?toc=/azure/application-insights/toc.json
+        href: ../azure-functions/functions-monitoring.md
       - name: 分散トレース
         items:
         - name: ローカル フォワーダー
@@ -388,6 +404,8 @@ items:
           href: app/proactive-cloud-services.md
         - name: スマート検出規則の管理
           href: app/proactive-arm-config.md
+        - name: メール通知
+          href: app/proactive-email-notification.md
       - name: リソースの作成
         href: app/create-new-resource.md
       - name: トラブルシューティング
@@ -395,7 +413,7 @@ items:
         - name: .NET のデータがない
           href: app/asp-net-troubleshoot-no-data.md
         - name: スナップショット デバッガー
-          href: ../application-insights/app-insights-troubleshoot-snapshot-debugger.md?toc=/azure/azure-monitor/toc.json
+          href: ../application-insights/app-insights-troubleshoot-snapshot-debugger.md
         - name: Analytics
           href: app/analytics-troubleshooting.md
         - name: Java
@@ -414,8 +432,6 @@ items:
         href: platform/collect-azure-metrics-logs.md
       - name: Azure ストレージからの診断またはログ データ
         href: platform/azure-storage-iis-table.md
-      - name: Azure PaaS リソース
-        href: platform/collect-azurepass-posh.md
       - name: カスタム データ ソースを関連付ける
         href: app/custom-data-correlation.md
     - name: カスタム データの収集
@@ -442,10 +458,10 @@ items:
         href: platform/archive-diagnostic-logs.md
       - name: 診断ログを保存する
         href: platform/diagnostic-logs-stream-log-store.md
+      - name: Event Hub への Azure リソース データ
+        href: platform/stream-monitoring-data-event-hubs.md
       - name: アクティビティ ログの Event Hubs へのストリーム
         href: platform/activity-logs-stream-event-hubs.md
-      - name: ログとメトリックをイベント ハブにストリーミングする
-        href: platform/stream-monitoring-data-event-hubs.md
       - name: 診断ログをイベント ハブにストリーミングする
         href: platform/diagnostic-logs-stream-event-hubs.md
       - name: アプリケーション データを Log Analytics に送信する
@@ -517,6 +533,8 @@ items:
         items:
         - name: 概要
           href: insights/container-insights-overview.md
+        - name: FAQ
+          href: insights/container-insights-faq.md
         - name: 利用開始
           href: insights/container-insights-onboard.md
         - name: 分析
@@ -525,6 +543,8 @@ items:
           href: insights/container-insights-optout.md
         - name: コンテナー ライブ ログの表示
           href: insights/container-insights-live-logs.md
+        - name: アラート
+          href: insights/container-insights-alerts.md
         - name: エージェント管理
           href: insights/container-insights-manage-agent.md
         - name: トラブルシューティング
@@ -602,7 +622,7 @@ items:
       - name: Key Vault Analytics
         href: insights/azure-key-vault.md
       - name: Service Fabric 分析
-        href: ../service-fabric/service-fabric-diagnostics-oms-agent.md?toc=/azure/azure-monitor/toc.json
+        href: ../service-fabric/service-fabric-diagnostics-oms-agent.md
     - name: その他のリソースの監視
       items:
       - name: AD の正常性の評価
@@ -626,34 +646,35 @@ items:
   - name: データの視覚化
     items:
     - name: ビュー
-      href: platform/view-designer.md
       items:
+      - name: ビュー デザイナー
+        href: platform/view-designer.md
       - name: タイルのリファレンス
         href: platform/view-designer-tiles.md
       - name: 視覚化パーツのリファレンス
         href: platform/view-designer-parts.md
       - name: フィルター
         href: platform/view-designer-filters.md
-    - name: ダッシュボード
-      items:
-      - name: ログ
-        href: platform/dashboards.md
-      - name: アプリケーション
-        href: app/app-insights-dashboards.md
     - name: Power BI
       items:
       - name: ログ データをエクスポートする
         href: platform/powerbi.md
       - name: アプリケーション データをエクスポートする
         href: app/export-power-bi.md
+    - name: ダッシュボード
+      href: app/app-insights-dashboards.md
     - name: データを Grafana に送信する
       href: platform/grafana-plugin.md
   - name: データを分析する
     items:
-    - name: メトリックス エクスプローラーでのメトリック グラフの作成
+    - name: メトリックス エクスプローラーの概要
+      href: platform/metrics-getting-started.md
+    - name: メトリックス エクスプローラーの高度な機能
       href: platform/metrics-charts.md
+    - name: メトリック グラフの例
+      href: platform/metric-chart-samples.md
     - name: アクティビティ ログでのイベントの表示
-      href: ../azure-resource-manager/resource-group-audit.md?toc=/azure/azure-monitor/toc.json
+      href: ../azure-resource-manager/resource-group-audit.md
     - name: サービスの通知を表示する
       href: platform/service-notifications.md
     - name: ログ データのクエリ
@@ -742,7 +763,7 @@ items:
           href: platform/alerts-metric.md
         - name: Azure Monitor でクラシック メトリック アラートを作成、表示、管理する
           href: platform/alerts-classic-portal.md
-        - name: 動的なしきい値によるアラート
+        - name: 動的しきい値によるメトリック アラート
           href: platform/alerts-dynamic-thresholds.md
         - name: ログのメトリック アラートを構成する
           href: platform/alerts-metric-logs.md
@@ -819,7 +840,7 @@ items:
       - name: Resource Manager テンプレートを使用した VM スケール セットの自動スケール
         href: platform/autoscale-virtual-machine-scale-sets.md
       - name: VM スケール セットでのマシンの自動スケール
-        href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json?toc=/azure/azure-monitor/toc.json
+        href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=/azure/azure-monitor/toc.json
       - name: 自動スケールで webhook と電子メール通知を構成する
         href: platform/autoscale-webhook-email.md
     - name: サービスの通知
@@ -969,7 +990,7 @@ items:
   - name: スキーマ
     items:
     - name: 診断ログのサービス、カテゴリ、スキーマ
-      href: platform/tutorial-dashboards.md
+      href: platform/diagnostic-logs-schema.md
     - name: アクティビティ ログのイベント スキーマ
       href: platform/activity-log-schema.md
     - name: Azure 診断拡張機能のスキーマ
@@ -991,6 +1012,8 @@ items:
       href: platform/alerts-extend.md
     - name: OMS ポータルから Azure Portal にアラートをコピーする
       href: platform/alerts-extend-tool.md
+    - name: ログ アラートの API 設定の切り替え
+      href: platform/alerts-log-api-switch.md
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -1021,9 +1044,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 5cb859501356213289c674e3bfa689095c9b28e1
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 661ffa0c16b17186523c7b36e571a38785a2ea5c
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390724"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189871"

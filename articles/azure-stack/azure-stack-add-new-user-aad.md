@@ -3,7 +3,7 @@ title: 新しい Azure Stack テナント アカウントを Azure Active Direct
 description: Microsoft Azure Stack Development Kit のデプロイを行った後、少なくとも 1 つのテナント ユーザー アカウントを作成して、テナント ポータルを表示できるようにする必要があります。
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: patricka
 manager: femila
 editor: ''
 ms.assetid: a75d5c88-5b9e-4e9a-a6e3-48bbfa7069a7
@@ -12,19 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
-ms.author: jeffgilb
+ms.date: 02/12/2019
+ms.author: patricka
 ms.reviewer: unknown
-ms.openlocfilehash: fa8c8da34a687edd1bd92c1d516183ee5d3e1bd0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.lastreviewed: 09/17/2018
+ms.openlocfilehash: d7dc690f719dd9265317b2bba3b87521e9a00d6b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240122"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106578"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>新しい Azure Stack テナント アカウントをAzure Active Directory に追加する
 
-[Azure Stack Development Kit をデプロイ](azure-stack-run-powershell-script.md)した後は、テナント ポータルを操作し、オファーとプランをテストするためにテナント ユーザー アカウントが必要になります。 テナント アカウントを作成するには、[Azure Portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) または [PowerShell](#create-an-azure-stack-tenant-account-using-powershell) を使用します。
+[Azure Stack Development Kit をデプロイ](azure-stack-run-powershell-script.md)した後は、テナント ポータルを操作し、オファーとプランをテストするためにテナント ユーザー アカウントが必要になります。 テナント アカウントを作成するには、[Azure portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) または PowerShell を使用します。
 
 ## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>Azure ポータルを使用して Azure Stack テナント アカウントを作成する
 
@@ -40,11 +41,11 @@ Azure ポータルを使用するには Azure サブスクリプションが必�
 
     ![新しいユーザーの追加 (ユーザー情報が入力された [ユーザー] ページ)](media/azure-stack-add-new-user-aad/new-user-user.png)
 
-    - **[名前] (必須)。** 新しいユーザーの氏名です。 たとえば、Mary Parker などです。
-    - **[ユーザー名] (必須)。** 新しいユーザーのユーザー名です。 たとえば、「 mary@contoso.com 」のように入力します。
-        ユーザー名のドメイン部分には、既定の初期ドメイン名の <_yourdomainname_>.onmicrosoft.com、またはカスタム ドメイン名 (contoso.com など) のいずれかを使用する必要があります。 カスタム ドメイン名の作成方法の詳細については、[Azure Active Directory にカスタム ドメイン名を追加する方法](../active-directory/fundamentals/add-custom-domain.md)に関するページを参照してください。
-    - **[プロファイル]。** オプションで、ユーザーに関する詳細情報を追加することができます。 後でユーザー情報を追加することもできます。 ユーザー情報の追加方法については、「[ユーザー プロファイル情報の追加または変更方法](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)」を参照してください。
-    - **ディレクトリ ロール。**  **[ユーザー]** を選択します。
+   - **[名前] (必須)。** 新しいユーザーの氏名です。 たとえば、Mary Parker などです。
+   - **[ユーザー名] (必須)。** 新しいユーザーのユーザー名です。 たとえば、「 mary@contoso.com 」のように入力します。
+       ユーザー名のドメイン部分には、既定の初期ドメイン名の <_yourdomainname_>.onmicrosoft.com、またはカスタム ドメイン名 (contoso.com など) のいずれかを使用する必要があります。 カスタム ドメイン名の作成方法の詳細については、[Azure Active Directory にカスタム ドメイン名を追加する方法](../active-directory/fundamentals/add-custom-domain.md)に関するページを参照してください。
+   - **[プロファイル]。** オプションで、ユーザーに関する詳細情報を追加することができます。 後でユーザー情報を追加することもできます。 ユーザー情報の追加方法については、「[ユーザー プロファイル情報の追加または変更方法](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)」を参照してください。
+   - **ディレクトリ ロール。**  **[ユーザー]** を選択します。
 
 5. **[パスワードの表示]** チェックボックスを選択し、**[パスワード]** ボックスに表示される自動生成されたパスワードをコピーします。 このパスワードは、最初のサインイン プロセスで必要になります。
 
@@ -55,14 +56,12 @@ Azure ポータルを使用するには Azure サブスクリプションが必�
 7. 新しいアカウントで Microsoft Azure portal にサインインします。 パスワードの変更を求められたら、変更します。
 8. `https://portal.local.azurestack.external` に新しいアカウントでサインインして、テナント ポータルを表示します。
 
-## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>PowerShell を使用して Azure Stack テナント アカウントを作成する
+## <a name="create-an-azure-stack-user-account-using-powershell"></a>PowerShell を使用して Azure Stack ユーザー アカウントを作成する
 
 Azure サブスクリプションがない場合は、Azure Portal を使用してテナント ユーザー アカウントを追加できません。 その場合は、代わりに Windows PowerShell 用 Azure Active Directory モジュールを利用できます。
 
 > [!NOTE]
 > Microsoft アカウント (Live ID) を使用して Azure Stack Development Kit をデプロイしている場合は、AAD PowerShell を使用してテナント アカウントを作成できません。 
-> 
-> 
 
 1. [IT プロフェッショナル 用 Microsoft Online Services サインイン アシスタント RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950) をインストールします。
 2. [Windows PowerShell 用 Azure Active Directory Module (64 ビット版)](https://go.microsoft.com/fwlink/p/?linkid=236297) をインストールして開きます。
@@ -84,3 +83,6 @@ Azure サブスクリプションがない場合は、Azure Portal を使用し�
 1. 新しいアカウントで Microsoft Azure にサインインします。 パスワードの変更を求められたら、変更します。
 2. `https://portal.local.azurestack.external` に新しいアカウントでサインインして、テナント ポータルを表示します。
 
+## <a name="next-steps"></a>次の手順
+
+[AD FS の Azure Stack ユーザーを追加する](azure-stack-add-users-adfs.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 9c2ebcfc376456f63896ebae8331136aff0cdb99
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 93402f9124a5c2f6a251cb0e3b3dab21386fa5ff
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119443"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965258"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>例 3 - ファイアウォール、UDR、NSG から成る DMZ を構築してネットワークを保護する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -32,7 +32,7 @@ ms.locfileid: "54119443"
 この例で使用するサブスクリプションには、以下のものが含まれています。
 
 * 3 つのクラウド サービス:"SecSvc001"、"FrontEnd001"、"BackEnd001"
-* 3 つのサブネット ("SecNet"、"FrontEnd"、"BackEnd") を含む仮想ネットワーク "CorpNetwork"
+* 次の 3 つのサブネットを含む Virtual Network "CorpNetwork": “SecNet”、“FrontEnd”、および “BackEnd”
 * SecNet サブネットに接続されたネットワーク仮想アプライアンス (この例ではファイアウォール)
 * アプリケーション Web サーバーを表す Windows サーバー ("IIS01")
 * アプリケーション バックエンド サーバーを表す 2 つの Windows サーバー ("AppVM01"、"AppVM02")
@@ -50,10 +50,10 @@ ms.locfileid: "54119443"
 
 スクリプトが正常に実行された後、必要に応じて次の手順を別途実行します。
 
-1. ファイアウォール ルールを設定します。この点については、ファイアウォール ルールの説明で取り上げます。
+1. ファイアウォール ルールを設定します。これは、下の「ファイアウォール ルール」というタイトルのセクションで説明されています。
 2. この DMZ 構成を使ったテストを実行するために、必要に応じて「参照」セクションにある 2 つのスクリプトを実行します。簡単な Web アプリケーションを含む Web サーバーとアプリケーション サーバーがこれらのスクリプトによってセットアップされます。
 
-スクリプトが正常に実行されたら、ファイアウォール ルールを完成させる必要があります。この点については、「ファイアウォール ルール」セクションで取り上げます。
+スクリプトが正常に実行されたら、ファイアウォール ルールを完成させる必要があります。これは、「ファイアウォール ルール」というタイトルのセクションで説明されています。
 
 ## <a name="user-defined-routing-udr"></a>ユーザー定義ルーティング (UDR)
 既定では、次のシステム ルートが定義されています。
@@ -109,35 +109,46 @@ VNETLocal は、特定のネットワークの VNet に対して必ず定義さ�
 この例では、ルート テーブルの作成、ユーザー定義ルートの追加、サブネットへのルート テーブルのバインドを各コマンドを使用して行っています (注: ドル記号で始まる項目 (例: $BESubnet) はユーザー定義変数です。このドキュメントの「参照」セクションのスクリプトで宣言されています)。
 
 1. まず、ベース ルーティング テーブルを作成する必要があります。 このスニペットは、バックエンド サブネット用のテーブルを作成するものです。 対応するフロントエンド サブネット用のテーブルもスクリプトで作成します。
-   
-     New-AzureRouteTable -Name $BERouteTableName `
-   
-         -Location $DeploymentLocation `
-         -Label "Route table for $BESubnet subnet"
+
+   ```powershell
+   New-AzureRouteTable -Name $BERouteTableName `
+       -Location $DeploymentLocation `
+       -Label "Route table for $BESubnet subnet"
+   ```
+
 2. ルート テーブルの作成後、具体的なユーザー定義ルートを追加できます。 このスニペットでは、すべてのトラフィック (0.0.0.0/0) が仮想アプライアンスを通じてルーティングされます (スクリプトの前半で仮想アプライアンスの作成時に割り当てた IP アドレスを変数 $VMIP[0] で渡しています)。 フロントエンド テーブルにも対応するルールをスクリプトで作成します。
-   
-     Get-AzureRouteTable $BERouteTableName | `
-   
-         Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
-         -NextHopType VirtualAppliance `
-         -NextHopIpAddress $VMIP[0]
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
+       -NextHopType VirtualAppliance `
+       -NextHopIpAddress $VMIP[0]
+   ```
+
 3. 既定の "0.0.0.0/0" ルートは先ほどのルート エントリによってオーバーライドされますが、既定の 10.0.0.0/16 ルールは依然として存在します。このルールによって、VNet 内のトラフィックがネットワーク仮想アプライアンスにではなく直接宛先にルーティングされる可能性があります。 この動作を修正するために、次のルールを追加する必要があります。
-   
-        Get-AzureRouteTable $BERouteTableName | `
-            Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
-            -NextHopType VirtualAppliance `
-            -NextHopIpAddress $VMIP[0]
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
+       -NextHopType VirtualAppliance `
+       -NextHopIpAddress $VMIP[0]
+   ```
+
 4. ここで検討事項が生じます。 上の 2 つのルートでは、同じサブネット内のトラフィックも含め、すべてのトラフィックがファイアウォールにルーティングされて評価されます。 場合によってはそれでも問題ありませんが、トラフィックの発信元と宛先とが同じサブネットであるときに、ファイアウォールを介さずローカルでルーティングする場合には、最も具体性のある第 3 のルールを追加します。 このルート指定 (NextHopType = VNETLocal) によって、ローカル サブネット宛てのアドレスはすべてそのサブネット内で直接ルーティングすることができます。
-   
-        Get-AzureRouteTable $BERouteTableName | `
-            Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
-            -NextHopType VNETLocal
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
+           -NextHopType VNETLocal
+   ```
+
 5. ルーティング テーブルを作成し、ユーザー定義ルートを設定したら、最後にそのテーブルをサブネットにバインドする必要があります。 フロント エンド用のルート テーブルも、このスクリプトでフロントエンド サブネットにバインドします。 以下に示したのは、バックエンド サブネット用のバインディング スクリプトです。
-   
-     Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
-   
-        -SubnetName $BESubnet `
-        -RouteTableName $BERouteTableName
+
+   ```powershell
+   Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
+       -SubnetName $BESubnet `
+       -RouteTableName $BERouteTableName
+   ```
 
 ## <a name="ip-forwarding"></a>IP 転送
 UDR と併用される機能に IP 転送があります。 実際には自分自身宛てではないトラフィックを受信し、最終的な宛先に転送することができる仮想アプライアンス上の設定です。
@@ -149,13 +160,14 @@ UDR と併用される機能に IP 転送があります。 実際には自分�
 > 
 > 
 
-IP 転送の設定は、VM の作成時に単一のコマンドで実行できます。 このコード スニペットは、スクリプトの最後の方に、一連の UDR コマンドと一緒に記述されます。
+IP 転送の設定は、VM の作成時に単一のコマンドで実行できます。 この例のフローでは、コード スニペットはスクリプトの最後の方に、一連の UDR コマンドと一緒に記述されます。
 
 1. 仮想アプライアンスである VM インスタンス (このケースではファイアウォール) を呼び出し、IP 転送を有効にします (注: ドル記号で始まる赤色の項目 (例: $VMName[0]) はユーザー定義変数です。このドキュメントの「参照」セクションのスクリプトで宣言されています。 角かっこで囲まれたゼロ ([0]) は、VM の配列の先頭に格納されている VM を表します。このサンプル スクリプトが修正なしで正常に機能するためには、1 番目の VM (VM 0) がファイアウォールである必要があります)。
-   
-     Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
-   
+
+    ```powershell
+    Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
         Set-AzureIPForwarding -Enable
+    ```
 
 ## <a name="network-security-groups-nsg"></a>ネットワーク セキュリティ グループ (NSG)
 この例では、NSG グループを作成し、そこに単一のルールを設定します。 このグループは、(SecNet を除いた) フロントエンドとバックエンドのサブネットにのみバインドします。 ここで作成しているルールの内容は次のとおりです。
@@ -166,22 +178,26 @@ IP 転送の設定は、VM の作成時に単一のコマンドで実行でき�
 
 この例のネットワーク セキュリティ グループに存在するルールは 1 つだけである点に注目してください。セキュリティ サブネットを含め、仮想ネットワーク全体でインターネット トラフィックを拒否する、というルールが 1 つあるだけです (以下のコマンドを参照)。 
 
-    Get-AzureNetworkSecurityGroup -Name $NSGName | `
-        Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
-        from the Internet" `
-        -Type Inbound -Priority 100 -Action Deny `
-        -SourceAddressPrefix INTERNET -SourcePortRange '*' `
-        -DestinationAddressPrefix VIRTUAL_NETWORK `
-        -DestinationPortRange '*' `
-        -Protocol *
+```powershell
+Get-AzureNetworkSecurityGroup -Name $NSGName | `
+    Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
+    from the Internet" `
+    -Type Inbound -Priority 100 -Action Deny `
+    -SourceAddressPrefix INTERNET -SourcePortRange '*' `
+    -DestinationAddressPrefix VIRTUAL_NETWORK `
+    -DestinationPortRange '*' `
+    -Protocol *
+```
 
 しかし、この NSG がバインドされるのはフロントエンド サブネットとバックエンド サブネットだけです。セキュリティ サブネットに入ってくるトラフィックに対してはルールの処理は適用されません。 その結果、VNet 上の全アドレスに対するインターネット トラフィックが NSG ルールで拒否されていても、その NSG をセキュリティ サブネットにバインドしなければ、トラフィックはセキュリティ サブネットに到達します。
 
-    Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
-        -SubnetName $FESubnet -VirtualNetworkName $VNetName
+```powershell
+Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
+    -SubnetName $FESubnet -VirtualNetworkName $VNetName
 
-    Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
-        -SubnetName $BESubnet -VirtualNetworkName $VNetName
+Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
+    -SubnetName $BESubnet -VirtualNetworkName $VNetName
+```
 
 ## <a name="firewall-rules"></a>ファイアウォール ルール
 ファイアウォールには、転送ルールを作成する必要があります。 受信トラフィック、送信トラフィック、VNet 間トラフィックをすべてブロックまたは転送する役割を果たすファイアウォールには、多くのファイアウォール ルールが必要です。 また、すべての受信トラフィックは、セキュリティ サービスのパブリック IP アドレス (の各種ポート) に到達し、そこでファイアウォールの処理が適用されます。 手戻り作業をなくすために、あらかじめ論理フローを図式化したうえでサブネットとファイアウォール ルールを設定するようお勧めします。 次の図では、この例で使用するファイアウォール ルールを論理的に示しています。
@@ -233,15 +249,17 @@ IP 転送の設定は、VM の作成時に単一のコマンドで実行でき�
 
 エンドポイントの開放は、VM の作成時に行うか、または以下のサンプル スクリプトおよび次のコード スニペットで行っているように構築後に行うこともできます (注: ドル記号で始まる項目 (例: $VMName[$i]) はユーザー定義変数です。このドキュメントの「参照」セクションのスクリプトで宣言されています。 角かっこで囲まれた "$i" ([$i]) は、VM の配列における特定の VM の配列番号を表します)。
 
-    Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
-        -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
-        Update-AzureVM
+```powershell
+Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
+    -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
+    Update-AzureVM
+```
 
 ここでは変数を使っているためにわかりにくいですが、エンドポイントを開放しているのは、セキュリティ クラウド サービス **のみ** です。 こうすることによって、すべての受信トラフィックが確実にファイアウォールで処理 (ルーティング、NAT 変換、破棄) されます。
 
 ファイアウォールを管理したり、必要な構成を作成したりするには、管理クライアントを PC にインストールする必要があります。 デバイスの管理方法については、ご利用のファイアウォール (または他の NVA) ベンダーのドキュメントを参照してください。 このセクションの残りの部分および次のセクション (「ファイアウォール ルールの作成」) では、ファイアウォールそのものの構成について説明しています。ファイアウォールの構成は、(Azure ポータルや PowerShell ではなく) ベンダーの管理クライアントを使って行います。
 
-この例で使用するクライアントをダウンロードして Barracuda に接続する手順については、「[Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)」を参照してください。
+クライアントのダウンロードと、この例で使用される Barracuda への接続の手順については、「[Barracuda NG Admin](https://techlib.barracuda.com/NG61/NGAdmin)」を参照してください。
 
 ファイアウォールへのログオン後、ファイアウォール ルールを作成する前に、Network と Service という 2 つのオブジェクト クラスがあらかじめ必要となります。これらのオブジェクトを使用した方が簡単にルールを作成できます。
 
@@ -419,7 +437,7 @@ Pass ルール: ![Pass アイコン][9]
 5. ファイアウォール ルールの処理が開始されます。
    1. FW ルール 1 (FW 管理) は該当しません。次のルールに進みます。
    2. FW ルール 2 ～ 5 (RDP ルール) は該当しません。次のルールに進みます。
-   3. FW ルール 6 (Web へのアプリ) が該当し、トラフィックが許可され、ファイアウォールの NAT で 10.0.1.4 (IIS01) に変換されます。
+   3. FW ルール 6 (アプリ:Web) が該当し、トラフィックが許可され、ファイアウォールの NAT で 10.0.1.4 (IIS01) に変換されます。
 6. フロントエンド サブネットが、以下に示す受信ルールの処理を開始します。
    1. NSG ルール 1 (インターネットをブロック) は該当しません (このトラフィックはファイアウォールによって NAT 変換されます。その時点で発信元アドレスはファイアウォールになっています。ファイアウォールは、セキュリティ サブネット上にあり、フロントエンド サブネットの NSG からは "ローカル" トラフィックに見えるため、このトラフィックは許可されます)。次のルールに進みます。
    2. 既定の NSG ルールではサブネット間トラフィックが許可されます。トラフィックは許可され、NSG ルールの処理はここで終了します。
@@ -430,8 +448,8 @@ Pass ルール: ![Pass アイコン][9]
 11. ファイアウォール ルールの処理が開始されます。
     1. FW ルール 1 (FW 管理) は該当しません。次のルールに進みます。
     2. FW ルール 2 ～ 5 (RDP ルール) は該当しません。次のルールに進みます。
-    3. FW ルール 6 (Web へのアプリ) は該当しません。次のルールに進みます。
-    4. FW ルール 7 (バックエンドへのアプリ) が該当し、トラフィックが許可され、ファイアウォールから 10.0.2.5 (AppVM01) に転送されます。
+    3. FW ルール 6 (アプリ: Web) は該当しません。次のルールに進みます。
+    4. FW ルール 7 (アプリ: バックエンド) が該当し、トラフィックが許可され、ファイアウォールから 10.0.2.5 (AppVM01) に転送されます。
 12. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
     1. NSG ルール 1 (インターネットをブロック) は該当しません。次のルールに進みます。
     2. 既定の NSG ルールではサブネット間トラフィックが許可されます。トラフィックは許可され、NSG ルールの処理はここで終了します。
@@ -592,6 +610,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 > 
 > 
 
+```powershell
     <# 
      .SYNOPSIS
       Example of DMZ and User Defined Routing in an isolated network (Azure only, no hybrid connections)
@@ -604,7 +623,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
        - A Network Virtual Appliance (NVA), in this case a Barracuda NextGen Firewall
        - One server on the FrontEnd Subnet
        - Three Servers on the BackEnd Subnet
-       - IP Forwading from the FireWall out to the internet
+       - IP Forwarding from the FireWall out to the internet
        - User Defined Routing FrontEnd and BackEnd Subnets to the NVA
 
       Before running script, ensure the network configuration file is created in
@@ -702,7 +721,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
           $SubnetName += $FESubnet
           $VMIP += "10.0.1.4"
 
-        # VM 2 - The First Appliaction Server
+        # VM 2 - The First Application Server
           $VMName += "AppVM01"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -711,7 +730,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
           $SubnetName += $BESubnet
           $VMIP += "10.0.2.5"
 
-        # VM 3 - The Second Appliaction Server
+        # VM 3 - The Second Application Server
           $VMName += "AppVM02"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -730,7 +749,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
           $VMIP += "10.0.2.4"
 
     # ----------------------------- #
-    # No User Defined Varibles or   #
+    # No User Defined Variables or   #
     # Configuration past this point #
     # ----------------------------- #
 
@@ -741,7 +760,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 
       # Create Storage Account
         If (Test-AzureName -Storage -Name $StorageAccountName) { 
-            Write-Host "Fatal Error: This storage account name is already in use, please pick a diffrent name." -ForegroundColor Red
+            Write-Host "Fatal Error: This storage account name is already in use, please pick a different name." -ForegroundColor Red
             Return}
         Else {Write-Host "Creating Storage Account" -ForegroundColor Cyan 
               New-AzureStorageAccount -Location $DeploymentLocation -StorageAccountName $StorageAccountName}
@@ -777,7 +796,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
         $FatalError = $true}
     Else { Write-Host "The network config file was found" -ForegroundColor Green
             If (-Not (Select-String -Pattern $DeploymentLocation -Path $NetworkConfigFile)) {
-                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation varible is correct and the netowrk config file matches.' -ForegroundColor Yellow
+                Write-Host 'The deployment location was not found in the network config file, please check the network config file to ensure the $DeploymentLocation variable is correct and the network config file matches.' -ForegroundColor Yellow
                 $FatalError = $true}
             Else { Write-Host "The deployment location was found in the network config file." -ForegroundColor Green}}
 
@@ -872,7 +891,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
             |Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $FEPrefix `
             -NextHopType VNETLocal
 
-      # Assoicate the Route Tables with the Subnets
+      # Associate the Route Tables with the Subnets
         Write-Host "Binding Route Tables to the Subnets" -ForegroundColor Cyan 
         Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
             -SubnetName $BESubnet `
@@ -920,11 +939,12 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
       Write-Host " - Install Test Web App (Run Post-Build Script on the IIS Server)" -ForegroundColor Gray
       Write-Host " - Install Backend resource (Run Post-Build Script on the AppVM01)" -ForegroundColor Gray
       Write-Host
-
+```
 
 #### <a name="network-config-file"></a>ネットワーク構成ファイル
 この xml ファイルに実際のロケーション情報に反映して保存し、このファイルへのリンクを上記スクリプト内の $NetworkConfigFile 変数に追加します。
 
+```xml
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
@@ -957,9 +977,10 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
         </VirtualNetworkSites>
       </VirtualNetworkConfiguration>
     </NetworkConfiguration>
+```
 
 #### <a name="sample-application-scripts"></a>サンプル アプリケーション スクリプト
-これに対応するサンプル アプリケーション、およびその他の DMZ の例をインストールしたい場合は、[サンプル アプリケーション スクリプト][SampleApp]をご利用ください。
+このためのサンプル アプリケーションやその他の DMZ の例をインストールする場合は、[サンプル アプリケーション スクリプト][SampleApp]のリンクに用意されています。
 
 <!--Image References-->
 [1]: ./media/virtual-networks-dmz-nsg-fw-udr-asm/example3design.png "双方向 DMZ + NVA、NSG、および UDR"

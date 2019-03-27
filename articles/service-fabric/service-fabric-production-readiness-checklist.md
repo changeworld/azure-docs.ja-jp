@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: aljo-microsoft
-ms.openlocfilehash: 4e6d5cb3191be7188c1a7c4753200cf049800f04
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 02ad880f3c4a4f5812b60887090c29a0a39f6742
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436009"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55206971"
 ---
 # <a name="production-readiness-checklist"></a>運用環境の準備状況チェックリスト
 
@@ -27,15 +27,15 @@ ms.locfileid: "53436009"
 
 
 ## <a name="pre-requisites-for-production"></a>運用環境の前提条件
-1. [Azure Service Fabric のベスト プラクティスは次のとおりです](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices): 
+1. [Azure Service Fabric のセキュリティに関するベスト プラクティス](https://docs.microsoft.com/azure/security/azure-service-fabric-security-best-practices): 
 * X.509 証明書を使用する
 * セキュリティ ポリシーを構成する
 * Azure Service Fabric の SSL を構成する
 * Azure Service Fabric にネットワークの分離とセキュリティを使用する
 * セキュリティ確保のために Azure Key Vault を設定する
-* ユーザーをロールに割り当てる
+* ロールへの Microsoft.Network/loadBalancersAssign ユーザー
 * Actors プログラミング モデルを使用している場合に Reliable Actors のセキュリティ構成を実装する
-2. 20 を超えるコアまたは 10 個を超えるノードを持つクラスターの場合は、システム サービス用に専用のプライマリ ノード タイプを作成します。 [配置の制約](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)を追加して、システム サービス用にプライマリ ノード タイプを予約します。 
+2. 20 を超えるコアまたは 10 個を超えるノードを持つクラスターの場合は、システム サービス用に専用のプライマリ ノード タイプを作成します。 [配置の制約](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)を追加して、システム サービス用にプライマリ ノード タイプを予約します。
 3. プライマリ ノード タイプには D2v2 または上位の SKU を使用します。 少なくとも 50 GB のハード ディスク容量を持つ SKU を選択することをお勧めします。
 4. 運用環境クラスターは、[セキュリティで保護されている](service-fabric-cluster-security.md)必要があります。 セキュリティで保護されたクラスターの設定例については、この[クラスター テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG)を参照してください。 証明書の共通名を使用します。自己署名証明書は使用しないでください。
 5. [コンテナーとサービスのリソース制約](service-fabric-resource-governance.md)を追加して、ノード リソースの消費が 75% を超えないようにします。 
@@ -61,8 +61,8 @@ Service Fabric の Reliable Services または Reliable Actors プログラミ�
 22. ローカル開発中にアプリケーションをアップグレードして、サービス コードが `RunAsync` メソッドでキャンセル トークンを受け入れること、およびカスタム通信リスナーを終了することを確認します。
 23. Reliable Collection を使用する場合は、[よくある落とし穴](service-fabric-work-with-reliable-collections.md)を回避します。
 24. ロード テストの実行時に、.NET CLR メモリ パフォーマンス カウンターを監視して、高いレートのガベージ コレクションやランナウェイ ヒープの増加を確認します。
-25. [Reliable Services と Reliable Actors](service-fabric-reliable-services-backup-restore.md) のオフライン バックアップを保持して、復元プロセスをテストします。 
-
+25. [Reliable Services と Reliable Actors](service-fabric-reliable-services-backup-restore.md) のオフライン バックアップを保持して、復元プロセスをテストします。
+26. プライマリ NodeType 仮想マシン インスタンス数は理想的には、クラスターの信頼性レベルの最小と等しくする必要があります。レベルの最小を超えることが適切な場合の条件は、プライマリ NodeTypes 仮想マシン スケール セット SKU を垂直方向にスケーリングする場合の一時的なものなどです。
 
 ## <a name="optional-best-practices"></a>省略可能なベスト プラクティス
 

@@ -11,17 +11,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/06/2018
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1a4e6c2f939b080338f81061c81898dd689c1c20
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 8648042c114c514df2218249719faa3ff19df5ec
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54122189"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669824"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
-Application Insights は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
+Application Insights は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
 
 [概要を説明するアニメーションを参照してください](https://www.youtube.com/watch?v=fX2NtGrh-Y0)。
 
@@ -89,7 +89,7 @@ Application Insights を Web アプリにインストールし、[可用性 Web 
 アラートを受け取ったときや問題を検出したときに、次のことを行います。
 
 * 影響を受けるユーザーの数を評価します。
-* 例外、依存関係呼び出し、トレースと失敗を相互に関連付けます。
+* 失敗を、例外、依存関係呼び出し、トレースと相互に関連付けます。
 * プロファイラー、スナップショット、スタック ダンプ、およびトレース ログを調べます。
 
 ### <a name="build-measure-learn"></a>ビルド、評価、学習
@@ -107,7 +107,6 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 * **実行時: サーバー上の Web アプリをインストルメント化します。**  コードを更新しなくて済みます。 サーバーへの管理者アクセスが必要になります。
   * [**オンプレミスまたは VM 上の IIS**](../../azure-monitor/app/monitor-performance-live-website-now.md)
   * [**Azure Web アプリまたは VM**](../../azure-monitor/app/monitor-performance-live-website-now.md)
-  * [**J2EE**](../../azure-monitor/app/java-live.md)
 * **開発時: コードに Application Insights を追加します。**  カスタム テレメトリを記述したり、バックエンド アプリおよびデスクトップ アプリをインストルメント化したりすることができます。
   * [Visual Studio](../../azure-monitor/app/asp-net.md) 2013 Update 2 以降。
   * [Java](../../azure-monitor/app/java-get-started.md)
@@ -117,12 +116,10 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
 * Visual Studio App Center と統合することで、**[モバイル アプリの使用状況を分析](../../azure-monitor/learn/mobile-center-quickstart.md)** します。
 * **[可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md)** - Microsoft のサーバーから定期的に Web サイトに ping を実行します。
 
-
 ## <a name="next-steps"></a>次の手順
 実行時に開始する:
 
 * [IIS サーバー](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [J2EE サーバー](../../azure-monitor/app/java-live.md)
 
 開発時に開始する:
 

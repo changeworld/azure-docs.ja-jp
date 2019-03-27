@@ -3,19 +3,20 @@ title: Android での Azure Active Directory の証明書ベースの認証
 description: Android デバイスでソリューションに証明書ベースの認証を構成するための対応シナリオや要件について説明する
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: annaba
-ms.openlocfilehash: ef58fd6c4701f367c6b8664c9cf9ee76e15fbd70
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2492fe3074b72df5f9ecbaab0496fee1f54ca0e2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106661"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211565"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android での Azure Active Directory の証明書ベースの認証
 

@@ -10,6 +10,18 @@ items:
   items:
   - name: 事前構築済みのドメイン アプリの構築
     href: luis-get-started-create-app.md
+  - name: LUIS ポータルの使用
+    items:
+    - name: 1. アプリを作成する
+      displayName: intent, entity, create app, test, example utterance
+      href: get-started-portal-build-app.md
+    - name: 2. アプリのデプロイ
+      displayName: assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish
+      href: get-started-portal-deploy-app.md
+  - name: .NET SDK の使用
+    items:
+    - name: 予測エンドポイントに対するクエリの実行
+      href: sdk-csharp-quickstart-query-prediction-endpoint.md
   - name: REST API の使用
     items:
     - name: 意図の取得
@@ -81,6 +93,7 @@ items:
 - name: 概念
   items:
   - name: ベスト プラクティス
+    displayName: phrase list, pattern, intent, utterance, version, do, don't, example utterances, iteration, cycle, correct, right
     href: luis-concept-best-practices.md
   - name: アプリの計画
     displayName: simple, hierarchical, composite, prebuilt, list, regex, regular expression
@@ -90,9 +103,10 @@ items:
     - name: 作成サイクル
       href: luis-concept-app-iteration.md
     - name: コラボレーション
-      displayName: shared, transfer, ownership, author, access
+      displayName: shared, transfer, ownership, author, access, import
       href: luis-concept-collaborator.md
     - name: バージョン管理
+      displayName: import
       href: luis-concept-version.md
   - name: 設計モデル
     items:
@@ -136,17 +150,19 @@ items:
   - name: Enterprise
     items:
     - name: 設計戦略
+      displayName: import
       href: luis-concept-enterprise.md
   - name: セキュリティ
     items:
     - name: アプリのアクセス
-      displayName: public, public app, AAD, compliance, ISO, certification, trust center
+      displayName: public, public app, AAD, compliance, ISO, certification, trust center, import
       href: luis-concept-security.md
     - name: オーサリング キーとエンドポイント キー
       href: luis-concept-keys.md
 - name: ハウツー ガイド
   items:
   - name: 新しいアプリの開始
+    displayName: import
     href: luis-how-to-start-new-app.md
   - name: モデルの構築
     items:
@@ -155,6 +171,7 @@ items:
     - name: 発話に対するエンティティの追加
       href: luis-how-to-add-example-utterances.md
     - name: 発話のないエンティティの追加
+      displayName: import
       href: luis-how-to-add-entities.md
     - name: 事前構築済みのモデルの使用
       items:
@@ -212,6 +229,7 @@ items:
     - name: 対話型テスト
       href: luis-interactive-test.md
     - name: バッチ テスト
+      displayName: import
       href: luis-how-to-batch-test.md
   - name: 発行
     href: luis-how-to-publish-app.md
@@ -220,16 +238,14 @@ items:
     - name: ダッシュボードの利用
       displayName: analytics, usage
       href: luis-how-to-use-dashboard.md
-    - name: エンドポイント キーの作成
-      displayName: azure portal
+    - name: LUIS アプリでのサブスクリプション キーの使用
+      displayName: azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription
       href: luis-how-to-azure-subscription.md
-    - name: アプリへのエンドポイント キーの追加
-      displayName: assign key, assign
-      href: luis-how-to-manage-keys.md
     - name: バージョンの管理
       href: luis-how-to-manage-versions.md
+      diplayName: import
     - name: 作成者とコラボレーターの管理
-      displayName: access, transfer, AAD, tenant, Azure AD, consent
+      displayName: access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import
       href: luis-how-to-collaborate.md
     - name: オーサリング キーの管理
       href: luis-how-to-account-settings.md
@@ -240,7 +256,7 @@ items:
   - name: コンテナーの使用
     items:
     - name: コンテナーのインストールと実行
-      displayName: docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now
+      displayName: docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull
       href: luis-container-howto.md
     - name: コンテナーを構成する
       href: luis-container-configuration.md
@@ -248,7 +264,8 @@ items:
   items:
   - name: ユーザーのプライバシー
     href: luis-user-privacy.md
-  - name: リージョン
+  - name: 作成と公開のリージョン
+    displayName: failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr
     href: luis-reference-regions.md
   - name: 境界
     href: luis-boundaries.md
@@ -343,6 +360,8 @@ items:
       items:
       - name: pip SDK
         href: https://pypi.org/project/azure-cognitiveservices-language-luis/
+      - name: リファレンス
+        href: https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/index?view=azure-python
       - name: サンプル
         href: https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis
 - name: 関連項目
@@ -370,13 +389,15 @@ items:
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: 言語とリージョンのサポート
+    displayName: phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, Germain, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens
     href: luis-language-support.md
   - name: Azure のロードマップ
     href: https://aka.ms/luis-roadmap
   - name: 用語集
     href: luis-glossary.md
-  - name: FAQ
-    href: luis-resources-faq.md
+  - name: トラブルシューティング
+    displayName: FAQ, import
+    href: troubleshooting.md
   - name: 料金と制限
     href: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/
   - name: スタック オーバーフロー
@@ -389,9 +410,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 175d21f23f204f564608613fb490af989eeab42d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 5e9083be98a8a27f4c7b66f6b662d9659777f0ed
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261436"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438141"

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 33cf6650de757f538dcefc858c94fa71b434ec80
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: b596af8ae9fbbaee6964622df44d316a11582cb9
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064646"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337925"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
@@ -29,11 +29,11 @@ ms.locfileid: "54064646"
 
 本番環境シナリオでは、Azure コンテナー レジストリへのアクセス権を[サービス プリンシパル](../container-registry/container-registry-auth-service-principal.md)を使用して提供する必要があります。 サービス プリンシパルを使用すると、コンテナー イメージに[ロールベースのアクセス制御](../container-registry/container-registry-roles.md)を提供できます。 たとえば、レジストリに対するプルのみのアクセス権を持つサービス プリンシパルを設定できます。
 
-このセクションでは、Azure キー コンテナーとサービス プリンシパルを作成し、サービス プリンシパルの資格情報をコンテナーに格納します。
+次のセクションでは、Azure キー コンテナーとサービス プリンシパルを作成し、サービス プリンシパルの資格情報をコンテナーに格納します。 
 
 ### <a name="create-key-vault"></a>キー コンテナーの作成
 
-[Azure キー コンテナー](/azure/key-vault/)にコンテナーがない場合、次のコマンドを使用して Azure CLI で 1 つ作成します。
+[Azure キー コンテナー](../key-vault/key-vault-overview.md)にコンテナーがない場合、次のコマンドを使用して Azure CLI で 1 つ作成します。
 
 `RES_GROUP` 変数をキー コンテナーが作成される既存のリソース グループの名前で、また `ACR_NAME` をコンテナー レジストリの名前で更新します。 `AKV_NAME` で新しいキー コンテナーの名前を指定します。 コンテナー名は、3 ～ 24 文字の英数字で、Azure 内で一意である必要があります。名前の先頭には英字、末尾には英字または数字を使用する必要があります。また、ハイフンを連続させることはできません。
 
@@ -134,9 +134,11 @@ Resource Manager テンプレートでの Azure キー コンテナーシーク�
 
 ## <a name="deploy-with-azure-portal"></a>Azure Portal でのデプロイ
 
-Azure Container Registry にコンテナー イメージを保持している場合は、Azure ポータルを使用して Azure Container Instances 内にコンテナーを簡単に作成できます。
+Azure Container Registry にコンテナー イメージを保持している場合は、Azure portal を使用して Azure Container Instances 内にコンテナーを簡単に作成できます。 Azure portal を使用してコンテナー レジストリからコンテナー インスタンスをデプロイするときは、レジストリの[管理者アカウント](../container-registry/container-registry-authentication.md#admin-account)を有効にする必要があります。 管理者アカウントは、主にテストのために、1 人のユーザーがレジストリにアクセスすることを目的としています。 
 
 1. Azure ポータルで、自分のコンテナー レジストリに移動します。
+
+1. 管理者アカウントが有効であることを確認するには、**[アクセス キー]** を選択し、**[管理者ユーザー]** の下で **[有効化]** を選択します。
 
 1. **[リポジトリ]** を選択し、次にデプロイ元のリポジトリを選択して、デプロイするコンテナー イメージのタグを右クリックし、**[実行インスタンス]** を選択します。
 

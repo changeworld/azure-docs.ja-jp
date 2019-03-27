@@ -4,16 +4,16 @@ description: Azure Storage は、Microsoft のクラウド ストレージ ソ�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: dc7932f197931a0fbf1dde924eb70ca18f6f9748
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.subservice: common
+ms.openlocfilehash: d558f0fa5abc421785ff6f9fcc2a6318819e3ebc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065547"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012734"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -48,7 +48,7 @@ BLOB ストレージは、次の目的に最適です。
 * バックアップと復元、ディザスター リカバリー、アーカイブのためのデータを格納する。
 * オンプレミス サービスまたは Azure ホステッド サービスで分析するデータを格納する。
 
-BLOB ストレージ内のオブジェクトには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 ユーザーまたはクライアント アプリケーションは、URL、[Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/storage)、または Azure Storage クライアント ライブラリを介して BLOB にアクセスできます。 ストレージ クライアント ライブラリは、[.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client)、[Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)、[Node.js](http://azure.github.io/azure-storage-node)、[Python](https://azure-storage.readthedocs.io/)、[PHP](http://azure.github.io/azure-storage-php/)、[Ruby](http://azure.github.io/azure-storage-ruby) など、さまざまな言語で利用できます。
+BLOB ストレージ内のオブジェクトには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 ユーザーまたはクライアント アプリケーションは、URL、[Azure Storage REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/storage)、または Azure Storage クライアント ライブラリを介して BLOB にアクセスできます。 ストレージ クライアント ライブラリは、[.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client)、[Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)、[Node.js](https://azure.github.io/azure-storage-node)、[Python](https://azure-storage.readthedocs.io/)、[PHP](https://azure.github.io/azure-storage-php/)、[Ruby](https://azure.github.io/azure-storage-ruby) など、さまざまな言語で利用できます。
 
 Blob Storage の詳細については、「[Blob Storage の概要](../blobs/storage-blobs-introduction.md)」をご覧ください。
 
@@ -130,13 +130,13 @@ SSE は、すべてのパフォーマンス レベル (Standard および Premiu
 
 クライアント側の暗号化の詳細については、[.NET による Microsoft Azure Storage のクライアント側の暗号化](storage-client-side-encryption.md)に関するページを参照してください。
 
-## <a name="replication"></a>レプリケーション
+## <a name="redundancy"></a>冗長性
 
-Azure Storage は、データの持続性を確保するために、データの複数のコピーをレプリケートします。 レプリケーションの種類は、ストレージ アカウントをセットアップするときに選択します。 この設定は、ほとんどの場合、ストレージ アカウントが作成された後で変更することができます。 
+Azure Storage は、データの持続性を確保するために、データの複数のコピーをレプリケートします。 冗長性オプションは、ストレージ アカウントを設定するときに選択します。 
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-ディザスター リカバリーについては、「[Azure Storage の停止が発生した場合の対処方法](storage-disaster-recovery-guidance.md)」を参照してください。
+ディザスター リカバリーの詳細については、「[Azure Storage の停止が発生した場合の対処方法](storage-disaster-recovery-guidance.md)」を参照してください。
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Azure Storage との間のデータ転送
 
@@ -169,7 +169,7 @@ Azure Storage のリソースは、HTTP/HTTPS 要求が可能な任意の言語�
 * [.NET 用 Storage Data Movement クライアント ライブラリ](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement)
 
 ### <a name="tools-and-utilities"></a>ツールとユーティリティ
-* [ストレージ用 Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/azure.storage)
+* [ストレージ用 Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/module/az.storage)
 * [ストレージ用 Azure CLI コマンドレット](https://docs.microsoft.com/cli/azure/storage)
 * [AzCopy コマンド ライン ユーティリティ](https://aka.ms/downloadazcopy)
 * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。

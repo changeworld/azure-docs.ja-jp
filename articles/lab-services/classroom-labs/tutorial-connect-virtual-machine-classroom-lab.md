@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/14/2018
+ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: b9d140eedf69ed730985412ba1dcdca2d626b191
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 3ec3abffc7962051f4cfc02d5369581ca193d70e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51706706"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775579"
 ---
-# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>チュートリアル: Azure Lab Services でクラスルーム ラボにアクセスする
+# <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>チュートリアル:Azure Lab Services でクラスルーム ラボにアクセスする
 このチュートリアルでは、学生がクラスルーム ラボ内の仮想マシン (VM) にアクセスします。 
 
 このチュートリアルでは、次のアクションを実行します。
@@ -32,10 +32,10 @@ ms.locfileid: "51706706"
 
 ## <a name="use-the-registration-link"></a>登録リンクを使用する
 
-1. 教師から受け取った**登録 URL** に移動します。 
-2. 学校アカウントを使ってサービスにサインインし、登録を完了します。 
-3. 登録した後、アクセスできるラボの仮想マシンが表示されることを確認します。 
-2. 仮想マシンの準備が完了するのを待って VM を**起動**します。 このプロセスには、ある程度時間がかかります。  
+1. 教師から受け取った**登録 URL** に移動します。 登録完了後は、登録 URL を使用する必要はありません。 代わりに [https://labs.azure.com](https://labs.azure.com) という URL を使用します。 
+1. 学校アカウントを使ってサービスにサインインし、登録を完了します。 
+2. 登録した後、アクセスできるラボの仮想マシンが表示されることを確認します。 
+3. 仮想マシンの準備が完了するのを待って VM を**起動**します。 このプロセスには、ある程度時間がかかります。  
 
     ![VM を起動する](../media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
 
@@ -44,8 +44,9 @@ ms.locfileid: "51706706"
 1. アクセスするラボの仮想マシンを表すタイルの **[接続]** を選択します。 
 
     ![VM への接続](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
-2. RDP ファイルをハード ディスクに保存して開きます (Windows VM を想定)。
-3. マシンにログインするために教師から提供された**ユーザー名**と**パスワード**を使います。 
+2. 次のいずれかの手順を実行します。 
+    1. **Windows** 仮想マシンの場合は、**RDP** ファイルをハード ディスクに保存します。 仮想マシンに接続するための RDP ファイルを開きます。 マシンにログインするために教師から提供された**ユーザー名**と**パスワード**を使います。 
+    3. **Linux** 仮想マシンの場合は、**[仮想マシンに接続する]** ダイアログ ボックス上で SSH 接続文字列をコピーして保存します。 仮想マシンに接続するには、SSH ターミナル([Putty](https://www.putty.org/) など) からこの接続文字列を使用します。 
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、教師から入手した登録リンクを使って、クラスルーム ラボにアクセスしました。

@@ -11,14 +11,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: fe63813220d526536a31efb48b6ec29b6ae383e8
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 233ce5623195a9a661f67b5c3ded40e68c8eb33a
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121143"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54843516"
 ---
 # <a name="set-alerts-in-application-insights"></a>Application Insights のアラートの設定
 [Azure Application Insights][start] では、Web アプリのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。 
@@ -89,7 +89,20 @@ Application Insights は、[さまざまなプラットフォーム][platforms]�
 * Web アプリケーションのサーバー側の**サーバー応答時間**。 アラートの設定に加え、このメトリックを監視して、高い要求率でメトリックが過度に変動するかどうかを確認します。この変動は、アプリケーションでリソースが不足していることを示している可能性があります。 
 * **サーバー例外** - サーバー例外を表示するには、 [追加のセットアップ](../../azure-monitor/app/asp-net-exceptions.md)を実行する必要があります。
 
-[失敗率のプロアクティブ診断](../../azure-monitor/app/proactive-failure-diagnostics.md)により、アプリケーションがエラー コードで要求に応答する率が自動的に監視されます。 
+[失敗率のプロアクティブ診断](../../azure-monitor/app/proactive-failure-diagnostics.md)により、アプリケーションがエラー コードで要求に応答する率が自動的に監視されます。
+
+## <a name="who-receives-the-classic-alert-notifications"></a>(クラシック) アラート通知は誰が受け取りますか。
+
+このセクションは、クラシック アラートにのみ適用され、目的の受信者だけが通知を受け取るように、アラート通知を最適化するために役立ちます。 [クラシック アラート](../platform/alerts-classic.overview.md)と新しいアラート エクスペリエンスの違いの詳細については、[アラートの概要の記事](../platform/alerts-overview.md)を参照してください。 新しいアラート エクスペリエンスのアラート通知を制御するには、[アクション グループ](../platform/action-groups.md)を使用します。
+
+* クラシック アラート通知には、特定の受信者の使用をお勧めします。
+
+* Application Insights のメトリック (可用性メトリックを含む) についてのアラートの場合、**一括/グループ** チェックボックス オプションが有効にされていれば、サブスクリプション内の所有者、共同作成者、または閲覧者ロールを持つユーザーに送信されます。 実際には、サブスクリプションの Application Insights リソースにアクセスできる_すべて_のユーザーが範囲内になり、通知を受け取ります。 
+
+> [!NOTE]
+> 現在、**一括/グループ** チェックボックス オプションを使用しており、それを無効にすると、変更を元に戻すことはできません。
+
+ロールに基づいてユーザーに通知する必要がある場合は、新しいアラート エクスペリエンス/準リアルタイム アラートを使用します。 [アクション グループ](../platform/action-groups.md)を使用して、共同作成者/所有者/閲覧者のいずれかのロール (1 つのオプションとして組み合わされていない) を持つユーザーに対し、電子メール通知を構成することができます。
 
 ## <a name="automation"></a>Automation
 * [PowerShell を使用したアラートの設定の自動化](../../azure-monitor/app/powershell-alerts.md)

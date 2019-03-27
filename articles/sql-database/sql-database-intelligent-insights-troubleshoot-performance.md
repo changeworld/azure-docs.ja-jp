@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: ad7d56b3a23d163cfbc6c9ca14c2788c5f96486b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 01/25/2019
+ms.openlocfilehash: 1935c670b5c7622f45f8c96b8c2faf03da6282f3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600864"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993634"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 
@@ -50,7 +50,7 @@ Intelligent Insights を使用すると、クエリ実行の待機時間、エ�
 | [価格レベルのダウングレード](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | 価格レベルのダウングレード アクションによって、使用できるリソースが減りました。 これは SQL データベースのパフォーマンスに影響しています。 | 価格レベルのダウングレード アクションによって、使用できるリソースが減りました。 これは SQL データベースのパフォーマンスに影響しています。 |
 
 > [!TIP]
-> SQL Database のパフォーマンスを継続的に最適化するには、[Azure SQL Database の自動チューニング](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning)を有効にします。 この SQL Database に組み込まれているインテリジェンスの固有機能は、SQL データベースを継続的に監視し、インデックスを自動的に調整して、クエリ実行プランの修正を適用します。
+> SQL Database のパフォーマンスを継続的に最適化するには、[Azure SQL Database の自動チューニング](sql-database-automatic-tuning.md)を有効にします。 この SQL Database に組み込まれているインテリジェンスの固有機能は、SQL データベースを継続的に監視し、インデックスを自動的に調整して、クエリ実行プランの修正を適用します。
 >
 
 次のセクションでは、検出可能なパフォーマンス パターンについてさらに詳しく説明します。
@@ -61,7 +61,7 @@ Intelligent Insights を使用すると、クエリ実行の待機時間、エ�
 
 この検出可能なパフォーマンス パターンは、使用可能なリソースの上限、worker の上限、およびセッションの上限への到達に関連するパフォーマンスの問題を組み合わせたものです。 このパフォーマンスの問題が検出されると、診断ログの説明フィールドに、パフォーマンスの問題がリソース、worker、セッションの上限のいずれに関連しているかが示されます。
 
-SQL Database 上のリソースは、通常、[DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) リソースまたは[仮想コア](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) リソースと呼ばれます。 リソースの上限への到達パターンが認識されるのは、検出されたクエリ パフォーマンスの低下が、測定されるリソース上限のいずれかに到達したことによって生じている場合です。
+SQL Database 上のリソースは、通常、[DTU](sql-database-what-is-a-dtu.md) リソースまたは[仮想コア](sql-database-service-tiers-vcore.md) リソースと呼ばれます。 リソースの上限への到達パターンが認識されるのは、検出されたクエリ パフォーマンスの低下が、測定されるリソース上限のいずれかに到達したことによって生じている場合です。
 
 セッション上限のリソースは、SQL データベースに同時にログインできる数を示します。 このパフォーマンス パターンは、SQL データベースに接続しているアプリケーションが、データベースに同時にログインできる数に到達した場合に認識されます。 データベースで利用できる数よりも多くのセッションをアプリケーションが使用しようとすると、クエリのパフォーマンスが影響を受けます。
 
@@ -73,7 +73,7 @@ SQL Database 上のリソースは、通常、[DTU](https://docs.microsoft.com/a
 
 使用可能なセッションの上限に到達した場合は、データベースへのログイン数を減らすことで、アプリケーションを最適化できます。 アプリケーションからデータベースへのログイン数を減らすことができない場合は、データベースの価格レベルを上げることを検討します。 または、データベースを分割して複数のデータベースに移動させ、より均等にワークロードを分散させることができます。
 
-セッションの上限に対応するためのその他の推奨事項については、「[How to deal with the limits of Azure SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)」(Azure SQL Database の最大ログイン数の上限に対応する方法) をご覧ください。 サーバーおよびサブスクリプション レベルの制限については、[論理サーバー上のリソース制限の概要](sql-database-resource-limits-logical-server.md)に関するページをご覧ください。
+セッションの上限に対応するためのその他の推奨事項については、「[How to deal with the limits of Azure SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)」(Azure SQL Database の最大ログイン数の上限に対応する方法) をご覧ください。 サーバーおよびサブスクリプション レベルの制限については、[SQL Database サーバー上のリソース制限の概要](sql-database-resource-limits-database-server.md)に関するページをご覧ください。
 
 ## <a name="workload-increase"></a>ワークロードの増加
 
@@ -237,7 +237,7 @@ SQL データベースではさまざまな種類のラッチを使うことが�
 
 この検出可能なパフォーマンス パターンは、過去 7 日間のベースラインとの比較により、現在のデータベースのワークロード パフォーマンスが低下していることを示します。 原因は、サブスクリプションのエラスティック プールで使用可能な DTU の不足です。 
 
-SQL Database のリソースは通常 [DTU リソース](sql-database-service-tiers.md#dtu-based-purchasing-model)と呼ばれ、CPU と IO (データおよびトランザクション ログ IO) リソースを組み合わせたメジャーで構成されます。 [Azure エラスティック プールのリソース](sql-database-elastic-pool.md)は、複数のデータベース間でスケーリングのために共有される、使用可能な eDTU リソースのプールとして使用されます。 エラスティック プールで使用可能な eDTU リソースが、プール内のすべてのデータベースのサポートには足りない場合、エラスティック プールの DTU の不足というパフォーマンスの問題がシステムで検出されます。
+SQL Database のリソースは通常 [DTU リソース](sql-database-purchase-models.md#dtu-based-purchasing-model)と呼ばれ、CPU と IO (データおよびトランザクション ログ IO) リソースを組み合わせたメジャーで構成されます。 [Azure エラスティック プールのリソース](sql-database-elastic-pool.md)は、複数のデータベース間でスケーリングのために共有される、使用可能な eDTU リソースのプールとして使用されます。 エラスティック プールで使用可能な eDTU リソースが、プール内のすべてのデータベースのサポートには足りない場合、エラスティック プールの DTU の不足というパフォーマンスの問題がシステムで検出されます。
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 

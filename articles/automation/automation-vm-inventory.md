@@ -3,23 +3,23 @@ title: インベントリ収集による Azure 仮想マシンの管理 | Micros
 description: インベントリ収集による仮想マシンの管理
 services: automation
 ms.service: automation
-ms.component: change-inventory-management
+ms.subservice: change-inventory-management
 keywords: インベントリ, オートメーション, 変更, 追跡
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 03/30/2018
+ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 761bb1a6974afd5e7b851efb0c60101ab7d8958b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2d6cc55ec2e3be3510b9547025db17bcbee97e10
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403612"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765383"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
 
-Azure 仮想マシンに対するインベントリの追跡は、その仮想マシンのリソース ページから有効にすることができます。 この方法では、ブラウザーベースのユーザー インターフェイスで、インベントリ収集を設定および構成できます。
+Azure 仮想マシンに対するインベントリの追跡は、その仮想マシンのリソース ページから有効にすることができます。 コンピューター上のソフトウェア、ファイル、Linux デーモン、Windows サービス、Windows レジストリ キーのインベントリを収集し、表示することができます。 この方法では、ブラウザーベースのユーザー インターフェイスで、インベントリ収集を設定および構成できます。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -65,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|Windows レジストリ キー   | ファイル確認のためのパス (例: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup")。      |
+|Windows レジストリ キー   | ファイル確認のためのパス。その例を次に示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ### <a name="windows-files"></a>Windows ファイル
 
@@ -101,7 +101,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ![コンピューター グループのページを表示する](./media/automation-vm-inventory/machine-group-page.png)
 
-**[+ 複製]** ボタンをクリックして、コンピューター グループを複製します。 ここで、グループに新しい名前とグループの別名を付ける必要があります。 この時点では、定義の変更が可能です。 クエリを変更した後、**[Validate query] (クエリの検証)** を押して、選択されるコンピューターをプレビューします。 そのグループでよければ、**[作成]** をクリックしてコンピューター グループを作成します
+**[+ 複製]** ボタンをクリックして、コンピューター グループを複製します。 ここで、グループに新しい名前とグループの別名を付ける必要があります。 この時点では、定義の変更が可能です。 クエリを変更した後、**[Validate query]\(クエリの検証)** を押して、選択されるコンピューターをプレビューします。 そのグループでよければ、**[作成]** をクリックしてコンピューター グループを作成します
 
 新しいコンピューター グループを作成する場合は、**[+ Create a machine group] (+ 新しいコンピューター グループの作成)** を選択します。 このボタンによって、**[Create a machine group] (コンピューター グループの作成)** ページが開きます。 **[作成]** をクリックしてグループを作成します。
 
@@ -126,3 +126,4 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 * 仮想マシン上のファイルとレジストリ設定内の変更を管理する方法については、「[変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する](../log-analytics/log-analytics-change-tracking.md)」を参照してください。
 * 仮想マシン上の Windows とパッケージの更新を管理する方法については、「[Azure の Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)」をご覧ください。
+

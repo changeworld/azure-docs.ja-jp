@@ -11,21 +11,27 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 6b725d7912fa4b0d6b46acb35eda80ae66e4a38c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: b9a847f04048cd17d550ca66bd3e6502577746eb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121415"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878457"
 ---
-# <a name="application-insights-connector-management-solution-preview"></a>Application Insights Connector 管理ソリューション (プレビュー)
+# <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
 ![Application Insights シンボル](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> [リソース間のクエリ](../../azure-monitor/log-query/cross-workspace-query.md)のサポートにより、Application Insight コネクタ管理ソリューションはもはや必要でなくなり、非推奨になります。 7 月以降は、新しい Application Insights リソースを Log Analytics ワークスペースにリンクさせることができなくなります。 既存のリンクとダッシュボードは引き続き 2018 年 11 月まで使用可能です。 詳細については、「[OMS ポータルの Azure への移行](../../azure-monitor/platform/oms-portal-transition.md)」を参照してください。
+> [リソース間のクエリ](../../azure-monitor/log-query/cross-workspace-query.md)のサポートにより、Application Insights Connector 管理ソリューションはもはや必要なくなりました。 その機能は非推奨になり、2019 年 1 月 15 日に Azure 商用クラウドで正式に非推奨となった OMS ポータルと共に、Azure Marketplace から削除されています。 Azure US Government クラウドでは 2019 年 3 月 30 日に廃止されます。
+>
+>既存の接続は 2019 年 6 月 30日まで引き続き機能します。  OMS ポータルの廃止により、ポータルから既存の接続を構成および削除する方法がなくなります。 PowerShell を使用して既存の接続を削除するスクリプトについては、後の「[PowerShell でコネクタを削除する](#removing-the-connector-with-powershell)」をご覧ください。
+>
+>複数のアプリケーションに対する Application Insights ログ データのクエリを実行する方法については、「[Azure Monitor で複数の Application Insights リソースを統合する](../log-query/unify-app-resource-data.md)」をご覧ください。 OMS ポータルの廃止について詳しくは、「[OMS ポータルの Azure への移行](../../azure-monitor/platform/oms-portal-transition.md)」をご覧ください。
+>
+> 
 
 Application Insights Connector ソリューションを使用すると、[Application Insights](../../azure-monitor/app/app-insights-overview.md) でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。 Log Analytics でも Application Insights で開発者に表示されるものと同じアプリケーション テレメトリのビューを使用できます。 しかし、Application Insights アプリを Log Analytics と統合すると、運用データとアプリケーション データを 1 か所にまとめることによってアプリケーションの可視性が向上します。 同じビューの表示は、アプリ開発者との共同作業を支援します。 共通のビューによって、アプリケーションの問題とプラットフォームの問題の両方を検出して解決するための時間を短縮できます。
 
@@ -55,7 +61,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ## <a name="configuration"></a>構成
 
-1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
+1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
 2. [Azure ポータル](https://portal.azure.com)にアクセスします。 **[すべてのサービス]** を選択して、Application Insights を開きます。 次に、"Application Insights" を検索します。 
 3. **[サブスクリプション]** で、Application Insights リソースを所有するサブスクリプションを選択し、**[名前]** で、1 つまたは複数のアプリケーションを選択します。
 4. **[Save]** をクリックします。
@@ -121,7 +127,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 **Application Insights Connector** ダッシュボードで何かをクリックしているかどうかに関係なく、**[検索]** ページでは、Application Insights データを返すすべてのクエリで Application Insights パースペクティブが表示されます。 たとえば、Application Insights データを表示する場合、**&#42;** クエリでも、次の図のように、パースペクティブ タブが表示されます。
 
-![Application Insights ](./media/app-insights-connector/app-insights-search.png)
+![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
 パースペクティブ コンポーネントは、検索クエリに応じて更新されます。 つまり、結果を任意の検索フィールドを使用してフィルター処理することで、以下のデータを表示することができます。
 
@@ -262,6 +268,57 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 
 このソリューションには、ダッシュボードに表示されるサンプル ログ検索のセットはありません。 ただし、サンプル ログ検索クエリとその説明が「[Application Insights Connector 情報を表示する](#view-application-insights-connector-information)」セクションに示されています。
+
+## <a name="removing-the-connector-with-powershell"></a>PowerShell でコネクタを削除する
+OMS ポータルの廃止により、ポータルから既存の接続を構成および削除する方法がなくなります。 次の PowerShell スクリプトを使用して、既存の接続を削除することができます。 この操作を実行するには、ワークスペースの所有者または共同作成者であり、Application Insights リソースの閲覧者である必要があります。
+
+```PowerShell
+$Subscription_app = "App Subscription Name"
+$ResourceGroup_app = "App ResourceGroup"
+$Application = "Application Name"
+$Subscription_workspace = "Workspace Subscription Name"
+$ResourceGroup_workspace = "Workspace ResourceGroup"
+$Workspace = "Workspace Name"
+
+Connect-AzureRmAccount
+Set-AzureRmContext -SubscriptionId $Subscription_app
+$AIApp = Get-AzureRmApplicationInsights -ResourceGroupName $ResourceGroup_app -Name $Application 
+Set-AzureRmContext -SubscriptionId $Subscription_workspace
+Remove-AzureRmOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
+```
+
+REST API 呼び出しを行う次の PowerShell スクリプトを使用して、アプリケーションの一覧を取得することができます。 
+
+```PowerShell
+Connect-AzureRmAccount
+$Tenant = "TenantId"
+$Subscription_workspace = "Workspace Subscription Name"
+$ResourceGroup_workspace = "Workspace ResourceGroup"
+$Workspace = "Workspace Name"
+$AccessToken = "AAD Authentication Token" 
+
+Set-AzureRmContext -SubscriptionId $Subscription_workspace
+$LAWorkspace = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $ResourceGroup_workspace -Name $Workspace
+
+$Headers = @{
+    "Authorization" = "Bearer $($AccessToken)"
+    "x-ms-client-tenant-id" = $Tenant
+}
+
+$Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
+$ConnectionsJson = $Connections | ConvertTo-Json
+```
+このスクリプトでは、Azure Active Directory に対する認証のためにベアラー認証トークンが必要です。 このトークンを取得する方法の 1 つでは、[REST API のドキュメント サイト](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate)の記事を使用します。 **[試してみる]** をクリックして、お使いの Azure サブスクリプションにログインします。 次の図のように、**[Request Preview]\(要求プレビュー\)** からベアラー トークンをコピーできます。
+
+
+![ベアラー トークン](media/app-insights-connector/bearer-token.png)
+
+
+また、ログ クエリを使用してアプリケーションの一覧を取得することもできます。
+
+```Kusto
+ApplicationInsights | summarize by ApplicationName
+```
 
 ## <a name="next-steps"></a>次の手順
 

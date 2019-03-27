@@ -4,22 +4,23 @@ description: Azure Active Directory と Skilljar の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.assetid: c572f556-98a3-48e6-8e4c-e634b7a2ba70
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: a997de5530bf8ed475031147369b591b2d44d227
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0148737c9c93b575c3ab11cf2b186bf97363e362
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850332"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170456"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skilljar"></a>チュートリアル: Azure Active Directory と Skilljar の統合
 
@@ -162,7 +163,7 @@ Skilljar で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="creating-a-skilljar-test-user"></a>Skilljar テスト ユーザーの作成
 

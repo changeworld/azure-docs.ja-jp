@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/21/2018
+ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: 8d6865349f103278131a02c2385557fb53ee24f5
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f558c6fcfa864b142209712a536adf1be97122cf
+ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52720594"
+ms.lasthandoff: 01/17/2019
+ms.locfileid: "54389259"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断
 
@@ -41,9 +41,12 @@ ms.locfileid: "52720594"
 アプリケーションから送られてくるテレメトリはユーザーが自分でコードを書くのでユーザーの制御下にありますが、Service Fabric プラットフォームからの診断はどうでしょうか。 Service Fabric の目標の 1 つは、ハードウェア障害に対するアプリケーションの回復力を維持することです。 この目標を実現するには、プラットフォームのシステム サービスの機能を利用します。この機能は、インフラストラクチャの問題を特定し、ワークロードをクラスター内の別のノードにすばやくフェールオーバーします。 しかし、このようなケースで、もしシステム サービス自体に問題があるとしたらどうなるでしょうか。 または、ワークロードのデプロイまたは移動でサービス配置のルールに違反したらどうなるでしょうか。 Service Fabric ではこれらやその他についての診断が提供され、ユーザーはクラスターで発生しているアクティビティについての情報を得られます。 クラスター監視のシナリオの例を次に示します。
 
 Service Fabric は、標準で、包括的なイベントのセットを提供します。 これらの [Service Fabric イベント](service-fabric-diagnostics-events.md)には、EventStore または運用チャネル (プラットフォームによって公開されたイベント チャネル) を通してアクセスできます。 
-* EventStore - EventStore は Service Fabric Explorer および REST API で使用可能な Service Fabric プラットフォーム イベントを提供するプラットフォームによって提供される機能です。 ノード、サービス、アプリケーション、クエリなどの各エンティティに対してクラスター内で行われていることの時刻に基づくスナップショット ビューを表示できます。 また、EventStore について詳しくは、「[EventStore の概要](service-fabric-diagnostics-eventstore.md)」をご覧ください。    
 
 * Service Fabric イベントのチャネル - Windows では、Service Fabric イベントは、稼働およびデータのチャネルとメッセージング チャネルの選択に使用される、一連の関連する `logLevelKeywordFilters` を持つ単一の ETW プロバイダーから提供されます。これが、発信される Service Fabric イベントを必要に応じて取り出してフィルター処理する方法となっています。 Linux では、Service Fabric イベントは LTTng 経由で到着し、1 つの Storage テーブルに格納されます。ここで、必要に応じてイベントをフィルター処理できます。 これらのチャネルには、選別され、構造化されたイベントが含まれ、これを使用してクラスターの状態をより詳細に把握できます。 クラスターの作成時には、既定で診断が有効になります。それにより、Azure Storage テーブルが作成され、後でクエリを実行できるように、そこにこれらのチャネルからのイベントが送信されます。 
+
+* EventStore - EventStore は Service Fabric Explorer および REST API で使用可能な Service Fabric プラットフォーム イベントを提供するプラットフォームによって提供される機能です。 ノード、サービス、アプリケーション、クエリなどの各エンティティに対してクラスター内で行われていることの時刻に基づくスナップショット ビューを表示できます。 また、EventStore について詳しくは、「[EventStore の概要](service-fabric-diagnostics-eventstore.md)」をご覧ください。    
+
+![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
 
 提供される診断は、既定のイベントの包括的なセットの形式になっています。 これらの [Service Fabric イベント](service-fabric-diagnostics-events.md)では、ノード、アプリケーション、サービス、パーティションなどのさまざまなエンティティ上で、プラットフォームによって実行されたアクションが示されています。上記の最後のシナリオでは、ノードがダウンした場合、プラットフォームは `NodeDown` イベントを生成し、ユーザーは自分が選択した監視ツールによってすぐに通知されます。 他の一般的な例としては、フェールオーバーの間の `ApplicationUpgradeRollbackStarted` や `PartitionReconfigured` などがあります。 **同じイベントを、Windows と Linux 両方のクラスターで利用できます。**
 

@@ -3,36 +3,37 @@ title: Azure Active Directory B2B コラボレーションのサポートの利�
 description: Azure Active Directory B2B コラボレーションのサポート エクスペリエンスとは
 services: active-directory
 ms.service: active-directory
-ms.component: B2B
+ms.subservice: B2B
 ms.topic: reference
 ms.date: 05/26/2017
 ms.author: mimart
 author: msmimart
-manager: mtillman
+manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 1474bf13a6d364fcbd90adee09a1a60bcafc2ccb
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2d2ae596315b65d3f738a48dc3ad7e1d7c90f68d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985279"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169294"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>B2B コラボレーションのサポートの利用
 
 ドキュメントをよく読んで、適切な手順を実行しても、上手くいかない場合があります。 そのようなときはサポート チケットを開いてください(サポート プランが必要です)。
 
 1. [Azure Portal](https://portal.azure.com) で、[ヘルプとサポート] ブレードに移動して [新しいサポート要求] を選択します。
-  - [問題の種類]: [技術]
-  - [サブスクリプション]: 影響されるサブスクリプションを選択します。
-    - [サービス]: [Active Directory]
-    - [サポート プラン]: 関連するサポート プランを選択します。
+  - [問題の種類]: 技術
+  - サブスクリプション:影響されるサブスクリプションを選択します
+    - サービス:Active Directory
+    - [サポート プラン]: 関連するサポート プランを選択します
 
   ![new support request](media/get-support/new-support-request.png)
 
 2. 問題について説明してください。
   - ニーズに対応する重要度を選択します。
-  - [問題の種類] で [User and Group Management (ユーザーおよびグループ管理)] を選択します。
-  - [カテゴリ]で [Adding Users (B2B) (ユーザーの追加 (B2B))]を選択します。
+  - [問題の種類] で [ユーザーおよびグループ管理] を選択します。
+  - [カテゴリ]で [ユーザーの追加 (B2B)]を選択します。
   - CorrelationID などのエラー メッセージや影響を受けユーザーなどを入力します。
 
   ![support ticket problem description](media/get-support/problem-description.png)

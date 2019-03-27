@@ -2,13 +2,15 @@
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/19/2018
+ms.date: 03/04/2019
 ms.author: mabrigg
-ms.openlocfilehash: c9de22455bf46990200521d7bd2956bed281e9d9
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.reviewer: johnhas
+ms.lastreviewed: 11/26/2018
+ms.openlocfilehash: c111140e015b2ab1367697662d8f4d70a96a8e4a
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650969"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57343170"
 ---
 **[送信]** を選択してワークフローを作成します。

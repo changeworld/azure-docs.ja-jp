@@ -58,6 +58,7 @@ items:
         - name: VM の暗号化 - Azure PowerShell
           href: quick-encrypt-vm-powershell.md
       - name: Azure Disk Encryption
+        href: azure-security-disk-encryption-appendix.md
         items:
         - name: ディスク暗号化の前提条件
           href: azure-security-disk-encryption-prerequisites.md
@@ -65,8 +66,9 @@ items:
           href: azure-security-disk-encryption-windows.md
         - name: Linux VM のディスク暗号化
           href: azure-security-disk-encryption-linux.md
-      - name: ディスク暗号化に関する付録
-        href: azure-security-disk-encryption-appendix.md
+        - name: VMSS 拡張機能のシーケンス処理によるディスク暗号化
+          href: azure-security-disk-encryption-extension-sequencing.md
+        - name: ディスク暗号化に関する付録
       - name: ディスク暗号化の FAQ
         href: azure-security-disk-encryption-faq.md
       - name: トラブルシューティング
@@ -242,17 +244,6 @@ items:
       href: ./blueprints/ffiec-iaaswa-overview.md
     - name: PaaS Web アプリケーション
       href: ./blueprints/ffiec-paaswa-overview.md
-  - name: GDPR
-    displayName: blueprint, privacy, certifications
-    items:
-    - name: データ分析
-      href: ./blueprints/gdpr-analytics-overview.md
-    - name: データ ウェアハウス
-      href: ./blueprints/gdpr-datawarehouse-overview.md
-    - name: IaaS Web アプリケーション
-      href: ./blueprints/gdpr-iaaswa-overview.md
-    - name: PaaS Web アプリケーション
-      href: ./blueprints/gdpr-paaswa-overview.md
   - name: HIPAA/HITRUST
     displayName: blueprint, privacy, certifications
     items:
@@ -339,6 +330,8 @@ items:
         href: azure-security-threat-modeling-tool-releases-71509112.md
       - name: Threat Modeling Tool 更新プログラム リリース 7.1.51023.1 - 11/1/2018
         href: azure-security-threat-modeling-tool-releases-71510231.md
+      - name: Threat Modeling Tool 更新プログラム リリース 7.1.60126.1 - 1/29/2019
+        href: azure-security-threat-modeling-tool-releases-71601261.md
     - name: 軽減策
       href: azure-security-threat-modeling-tool-mitigations.md
       items:
@@ -362,9 +355,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: セッションの管理
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 5b3729f616c04a7c969706d51edbfbf74e34f32e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: dc0f98ace10f61a423e72fc0a61899ac1ed4b5b3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360158"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402475"

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Azure portal で Azure Bot Service v3 を使用して QnA ボットを構築する手順について説明します。
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: qna-maker`
+ms.subservice: qna-maker
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: f5587e14a0250e7312f1c95598b481bd052931c3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: b948835b1a15eee391c6902d18229ec4926b66ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094833"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095213"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>チュートリアル: Azure Bot Service v3 による QnA ボットの作成
 
@@ -90,15 +90,12 @@ ms.locfileid: "53094833"
 
 1. QnA Maker ポータルで、ナレッジ ベースの [設定] タブから、ナレッジ ベース ID、ホスト URL、およびエンドポイント キーを取得します。
 
-    - [QnA Maker](https://qnamaker.ai) にサインインする
-    - ナレッジ ベースに移動する
-    - **[設定]** タブを選択します
-    - まだの場合は、ナレッジ ベースを**発行**します。
+   - [QnA Maker](https://qnamaker.ai) にサインインする
+   - ナレッジ ベースに移動する
+   - **[設定]** タブを選択します
+   - まだの場合は、ナレッジ ベースを**発行**します。
 
-    ![QnA Maker の値](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
-
-> [!NOTE]
-> ナレッジ ベースのプレビュー バージョンを QnA ボットと接続する場合は、**Ocp-Apim-Subscription-Key** の値を **QnAAuthKey** に設定します。 **QnAEndpointHostName** は空のままにします。
+     ![QnA Maker の値](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
 
 ## <a name="test-the-bot"></a>ボットのテスト
 

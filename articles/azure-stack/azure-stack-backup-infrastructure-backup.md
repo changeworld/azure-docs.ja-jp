@@ -5,33 +5,34 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-mss.service: azure-stack
+ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 4cb8ffe218ef1cd64b93201eddbbd09bb16026db
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: 080129ca1520dc2b1b085c69f6389508f11c7ba2
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087391"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285923"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービスを使用した Azure Stack のバックアップとデータの回復
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-インフラストラクチャ バックアップ サービスを使用して、構成およびサービス データをバックアップおよび復元できます。 Azure Stack の各インストールには、サービスのインスタンスが含まれています。 Azure Stack Cloud を再デプロイし、ID、セキュリティ、Azure Resource Manager データを復元するには、サービスによって作成されたバックアップを使用できます。
+インフラストラクチャ バックアップ サービスを使用して、構成およびサービス データをバックアップおよび復元できます。 Azure Stack の各インストールには、サービスのインスタンスが含まれています。 Azure Stack Cloud を再デプロイし、ID、セキュリティ、Azure Resource Manager データを復元するには、サービスによって作成されたバックアップを使用できます。 
 
 クラウドを実稼働に移行する準備ができたら、バックアップを有効にすることができます。 テストと検証を長期間実行する予定の場合は、バックアップを有効にしないでください。
 
 バックアップ サービスを有効にする前に、[要件が満たされている](#verify-requirements-for-the-infrastructure-backup-service)ことを確認してください。
 
 > [!Note]  
-> インフラストラクチャ バックアップ サービスには、ユーザー データとアプリケーションは含まれません。 <!-- See the following articles for instructions on backing up and restore [App Services](https://aka.ms/azure-stack-app-service), [SQL](https://aka.ms/azure-stack-ms-sql), and [MySQL](https://aka.ms/azure-stack-mysql) resource providers and associated user data. -->
+> インフラストラクチャ バックアップ サービスには、ユーザー データとアプリケーションは含まれません。 IaaS VM ベースのアプリケーションを保護する方法の詳細については、[Azure Stack にデプロイされた VM の保護](user/azure-stack-manage-vm-protect.md)に関する説明を参照してください。 Azure Stack 上でアプリケーションを保護する方法を包括的に理解するには、[事業継続とディザスター リカバリーのための Azure Stack の考慮事項に関するホワイトペーパー](http://aka.ms/azurestackbcdrconsiderationswp)を参照してください。
 
 ## <a name="the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービス
 
@@ -51,12 +52,16 @@ ms.locfileid: "50087391"
   7 個のバックアップを保存できる、Azure Stack からアクセス可能なファイル共有が必要です。 各バックアップは約 10 GB です。 共有には 140 GB のバックアップを保存できる必要があります。 Azure Stack インフラストラクチャ バックアップ サービスの保存場所の選択の詳細については、「[Backup Controller requirements](azure-stack-backup-reference.md#backup-controller-requirements)」(バックアップ コントローラーの要件) を参照してください。
 - **資格情報**  
   ドメイン ユーザー アカウントと資格情報が必要です。たとえば、Azure Stack 管理者の資格情報を使用できます。
-- **暗号化キー**  
-  バックアップ ファイルはこのキーを使用して暗号化されます。 このキーは安全な場所に保存してください。 初めて事前共有キーを設定する場合、または今後キーを交換する場合には、このインターフェイスでキーを表示することはできません。 事前共有キーの生成手順の詳細については、「[PowerShell で Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-powershell.md)」のスクリプトを参照してください。
+- **暗号化証明書**  
+  バックアップ ファイルは証明書内の公開キーを使用して暗号化されます。 必ず、この証明書は安全な場所に保存してください。 
+
 
 ## <a name="next-steps"></a>次の手順
 
-- [管理ポータルで Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-console.md)方法を学びます。
-- [PowerShell で Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-powershell.md)方法を学びます。
-- [Azure Stack のバックアップ](azure-stack-backup-back-up-azure-stack.md )方法を学びます。
-- [致命的なデータの損失からの復旧](azure-stack-backup-recover-data.md)方法を学びます。
+[管理ポータルで Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-console.md)方法を学びます。
+
+[PowerShell で Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-powershell.md)方法を学びます。
+
+[Azure Stack のバックアップ](azure-stack-backup-back-up-azure-stack.md )方法を学びます。
+
+[致命的なデータの損失からの復旧](azure-stack-backup-recover-data.md)方法を学びます。

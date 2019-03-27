@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f844b460e5fc6548a17b93038d1232fe61483018
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 3839a1a457af1549a82b7607310a619911c78591
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754069"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761873"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -62,7 +62,7 @@ ms.locfileid: "53754069"
   * [開始タスク](#start-task)
   * [ジョブ マネージャー タスク](#job-manager-task)
   * [ジョブ準備タスクおよびジョブ解放タスク](#job-preparation-and-release-tasks)
-  * [マルチインスタンス タスク (MPI)](#multi-instance-tasks)
+  * マルチインスタンス タスク (MPI)
   * [Task dependencies](#task-dependencies)
 * [アプリケーション パッケージ](#application-packages)
 
@@ -153,7 +153,7 @@ Batch プールを作成するときは、Azure 仮想マシン構成と、プ�
 
 #### <a name="container-support-in-virtual-machine-pools"></a>仮想マシンのプールでのコンテナーのサポート
 
-Batch API を使用して仮想マシン構成プールを作成するときに、Docker コンテナーでタスクを実行するためのプールを設定できます。 現在は、Docker コンテナーをサポートするイメージを使ってプールを作成する必要があります。 Azure Marketplace の Windows Server 2016 Datacenter with Containers イメージを使用するか、Docker Community Edition (または Enterprise Edition) と必要なすべてのドライバーを含むカスタム VM イメージを指定する必要があります。 プール設定には、プールの作成時にコンテナー イメージを VM にコピーする[コンテナー構成](/rest/api/batchservice/pool/add#definitions_containerconfiguration)が含まれている必要があります。 これにより、プール上で実行されるタスクが、コンテナー イメージとコンテナー実行オプションを参照できます。
+Batch API を使用して仮想マシン構成プールを作成するときに、Docker コンテナーでタスクを実行するためのプールを設定できます。 現在は、Docker コンテナーをサポートするイメージを使ってプールを作成する必要があります。 Azure Marketplace の Windows Server 2016 Datacenter with Containers イメージを使用するか、Docker Community Edition (または Enterprise Edition) と必要なすべてのドライバーを含むカスタム VM イメージを指定する必要があります。 プール設定には、プールの作成時にコンテナー イメージを VM にコピーする[コンテナー構成](/rest/api/batchservice/pool/add)が含まれている必要があります。 これにより、プール上で実行されるタスクが、コンテナー イメージとコンテナー実行オプションを参照できます。
 
 詳細については、「[Azure Batch で Docker コンテナー アプリケーションを実行する](batch-docker-container-workloads.md)」を参照してください。
 
@@ -215,7 +215,7 @@ Batch でプール内のすべてのノードにタスクを均等に配分す�
 
 ### <a name="network-configuration"></a>ネットワーク構成
 
-プールのコンピューティング ノードを作成する必要のある Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) のサブネットを指定できます。 詳細については、「[プール ネットワーク構成](#pool-network-configuration)」セクションを参照してください。
+プールのコンピューティング ノードを作成する必要のある Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) のサブネットを指定できます。 詳細については、「プール ネットワーク構成」セクションを参照してください。
 
 
 ## <a name="job"></a>ジョブ
@@ -271,7 +271,7 @@ Batch サービスには、ノードで計算を実行するために定義す�
 * [開始タスク](#start-task)
 * [ジョブ マネージャー タスク](#job-manager-task)
 * [ジョブ準備タスクおよびジョブ解放タスク](#job-preparation-and-release-tasks)
-* [マルチインスタンス タスク (MPI)](#multi-instance-tasks)
+* マルチインスタンス タスク (MPI)
 * [Task dependencies](#task-dependencies)
 
 ### <a name="start-task"></a>開始タスク

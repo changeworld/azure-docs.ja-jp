@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.component: common
-ms.openlocfilehash: a15c983291d35063884178f7b84e21fe4908b49a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.subservice: common
+ms.openlocfilehash: 2272414c185388df0ccbc9e21b7d166432fc7a52
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632316"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110411"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -272,7 +272,7 @@ Azure CLI をご利用いただけます。
 
 **レプリケートされたストレージ アカウント (ZRS、GRS、または読み取り GRS など) の場合、セカンダリ リージョンに格納されているデータにアクセスする方法は?**
 
--   ZRS または GRS を使用している場合は、フェールオーバーが発生しない限り、セカンダリ リージョンのデータにアクセスすることはできません。 フェールオーバー プロセスの詳細については、「[Storage のフェールオーバーが発生した場合](storage-disaster-recovery-guidance.md#what-to-expect-if-a-storage-failover-occurs)」をご覧ください。
+-   ゾーン冗長ストレージまたは geo 冗長ストレージ を使用している場合は、セカンダリ リージョンへのフェールオーバーを開始していない限り、そのリージョンのデータにアクセスすることはできません。 フェールオーバー プロセスの詳細については、「[Disaster recovery and storage account failover (preview) in Azure Storage (Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー))](storage-disaster-recovery-guidance.md)」を参照してください。
 
 -   読み取りアクセス GRS を使用している場合は、セカンダリ リージョンのデータにいつでもアクセスできます。 次のいずれかの方法を使用します。  
       
@@ -282,7 +282,7 @@ Azure CLI をご利用いただけます。
 
     - **SAS トークン**:SAS トークンを使用してエンドポイントからデータにアクセスします。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
-**ストレージ アカウントで HTTPS カスタム ドメインを使用するにはどうすればよいですか?たとえば、"https://mystorageaccountname.blob.core.windows.net/images/image.gif" を "https://www.contoso.com/images/image.gif" として表示するにはどうすればよいですか?**
+**ストレージ アカウントで HTTPS カスタム ドメインを使用するにはどうすればよいですか?たとえば、"<https://mystorageaccountname.blob.core.windows.net/images/image.gif>" を "<https://www.contoso.com/images/image.gif>" として表示するにはどうすればよいですか?**
 
 カスタム ドメインを使用するストレージ アカウントでは、SSL は現在サポートされていません。
 ただし、HTTPS 以外のカスタム ドメインはご利用いただけます。 詳細については、「[BLOB ストレージ エンドポイントのカスタム ドメイン名の構成](../blobs/storage-custom-domain-name.md)」をご覧ください。

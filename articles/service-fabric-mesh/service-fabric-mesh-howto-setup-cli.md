@@ -3,18 +3,18 @@ title: Azure Service Fabric Mesh CLI の設定 | Microsoft Docs
 description: Azure Service Fabric Mesh CLI を設定する方法について説明します。
 services: service-fabric-mesh
 keywords: ''
-author: tylermsft
-ms.author: twhitney
+author: dkkapur
+ms.author: dekapur
 ms.date: 11/28/2018
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: daeec38863ee7e9dd4e56f2470e5f9459dcc8bc1
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 7b817eefc7a17966060eb7ca05e21f70f04d0878
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958595"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885455"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
 Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、ローカルおよび Azure Service Fabric Mesh でリソースをデプロイして管理するために必要です。 
@@ -55,7 +55,7 @@ Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、
 Maven CLI を使用するには、コンピューターに次をインストールする必要があります。 
 
 * [Java](https://www.azul.com/downloads/zulu/)
-* [Maven](http://maven.apache.org/download.cgi)
+* [Maven](https://maven.apache.org/download.cgi)
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * Azure Mesh CLI (az mesh) - Azure Service Fabric Mesh 対象 
 * SFCTL (sfctl) - ローカル クラスター対象 

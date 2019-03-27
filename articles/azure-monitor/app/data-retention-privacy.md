@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 812478c13ef39b369471a731c52dc38ba6a4368c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1de12f2dd2e31c3f5413424793f3bf78fdc8ff27
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119749"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300263"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -41,7 +41,7 @@ Application Insights サービスは製品利用統計情報を保存し、分�
 
 Application Insights サービスから、たとえば、データベースや外部ツールにデータをエクスポートできます。 サービスから取得した特別なキーを各ツールに提供します。 キーは必要に応じて取り消すことができます。 
 
-Application Insights SDK はさまざまなアプリケーション タイプに利用できます。独自の J2EE サーバー、ASP.NET サーバー、Azure にホストされている Web サービス、Web クライアント (Web ページで実行されるコード)、デスクトップのアプリとサービス、デバイス アプリ (Windows Phone、iOS、Android) などです。 これらはすべて同じサービスに製品利用統計情報を送信します。
+Application Insights SDK はさまざまなアプリケーション タイプに利用できます。独自の Java EE サーバー、ASP.NET サーバー、または Azure にホストされている Web サービス、Web クライアント (Web ページで実行されるコード)、デスクトップのアプリとサービス、デバイス アプリ (Windows Phone、iOS、Android) などです。 これらはすべて同じサービスに製品利用統計情報を送信します。
 
 ## <a name="what-data-does-it-collect"></a>どのようなデータが収集されますか。
 ### <a name="how-is-the-data-is-collected"></a>データはどのような方法で収集されますか。
@@ -51,7 +51,7 @@ Application Insights SDK はさまざまなアプリケーション タイプに
   
   * それぞれの SDK にはさまざまな [モジュール](../../azure-monitor/app/configuration-with-applicationinsights-config.md)があり、さまざまな手法でさまざまな種類の製品利用統計情報を収集します。
   * デプロイ時に SDK をインストールする場合、標準のモジュールに加え、その API を利用し、独自の製品利用統計情報を送信できます。 このカスタム製品利用統計情報にあらゆるデータを含め、送信できます。
-* 一部の Web サーバーには、アプリと共に実行され、CPU、メモリ、ネットワーク占有率に関する製品利用統計情報を送信するエージェントもあります。 たとえば、Azure VM、Docker ホスト、 [J2EE サーバー](../../azure-monitor/app/java-agent.md) にそのようなエージェントがあります。
+* 一部の Web サーバーには、アプリと共に実行され、CPU、メモリ、ネットワーク占有率に関する製品利用統計情報を送信するエージェントもあります。 たとえば、Azure VM、Docker ホスト、[Java EE サーバー](../../azure-monitor/app/java-agent.md)にそのようなエージェントがあります。
 * [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md) は Microsoft が実行するプロセスであり、定期的な間隔で要求を Web アプリに送信します。 結果は Application Insights サービスに送信されます。
 
 ### <a name="what-kinds-of-data-are-collected"></a>どのような種類のデータが収集されますか。
@@ -148,7 +148,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 
 構成ファイルを使用する場合:
-```
+```xml
 <TelemetryChannel Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel,   Microsoft.AI.ServerTelemetryChannel">
     <StorageFolder>D:\NewTestFolder</StorageFolder>
 </TelemetryChannel>
@@ -158,7 +158,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 - 構成ファイルから ServerTelemetryChannel を削除します。
 - 構成に次のスニペットを追加します。
-```
+```csharp
 ServerTelemetryChannel channel = new ServerTelemetryChannel();
 channel.StorageFolder = @"D:\NewTestFolder";
 channel.Initialize(TelemetryConfiguration.Active);
@@ -171,7 +171,7 @@ TelemetryConfiguration.Active.TelemetryChannel = channel;
 
 次のコード スニペットは、 `Startup.cs`  クラスの `ConfigureServices()`  メソッドで `ServerTelemetryChannel.StorageFolder` を設定する方法を示しています。
 
-```
+```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
 ```
 

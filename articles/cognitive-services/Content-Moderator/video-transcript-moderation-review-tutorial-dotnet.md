@@ -1,27 +1,27 @@
 ---
 title: チュートリアル:ビデオとトランスクリプトを .NET でモデレートする - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Content Moderator を使用して、ビデオとトランスクリプトを .NET でモデレートする方法。
+description: このチュートリアルは、マシン支援型のモデレーションと人間参加型レビューの作成を含む完全なビデオとトランスクリプトのモデレーション ソリューションをビルドする方法を理解するうえで役立ちます。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 1/27/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: e5958eeb4aca4cdc41bbc263a4cc38378927874b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: e3578c08b78894c2f9a858e97c7cbe2d260731c5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118576"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878750"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>チュートリアル:ビデオとトランスクリプトのモデレーション
 
 Content Moderator のビデオ API を使用してビデオをモデレートし、人間参加型レビュー ツール内にビデオ レビューを作成できます。 
 
-この詳細なチュートリアルは、コンピューター支援型のモデレーションと人間参加型レビューの作成を含む完全なビデオとトランスクリプトのモデレーション ソリューションをビルドする方法を理解するうえで役立ちます。
+このチュートリアルは、マシン支援型のモデレーションと人間参加型レビューの作成を含む完全なビデオとトランスクリプトのモデレーション ソリューションをビルドする方法を理解するうえで役立ちます。
 
 このチュートリアル用の [C# コンソール アプリケーション ](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp)をダウンロードします。 コンソール アプリケーションは、SDK と関連パッケージを使用して、以下のタスクを実行します。
 
@@ -241,7 +241,7 @@ Content Moderator のビデオ API を使用してビデオをモデレートし
 
 - `App.config` 内の構成に必要なデータがすべて含まれていることを確認する
 - `ffmpeg` バイナリが存在することを確認する
-- ファイルの基本名に `_c.mp4` を追加することで、出力ファイル名を作成する (例: `Example.mp4` -> `E>xample_c.mp4`)
+- ファイルの基本名に `_c.mp4` を追加することで、出力ファイル名を作成する (例: `Example.mp4` -> `Example_c.mp4`)
 - 変換を実行するコマンド ライン文字列を作成する
 - コマンド ラインを使用して `ffmpeg` プロセスを開始する
 - ビデオの処理が終わるまで待機する

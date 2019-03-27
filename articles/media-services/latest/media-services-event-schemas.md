@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 12/24/2018
+ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: c5332cd2613bc64e3dda143381f37d27b54aa922
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 8ad0efffc89a3c11f412d94b922401c23e84a3e5
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789231"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268789"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Media Services 用の Azure Event Grid スキーマ
 
@@ -24,15 +24,13 @@ ms.locfileid: "53789231"
 
 サンプル スクリプトとチュートリアルの一覧については、[Media Services のイベント ソース](../../event-grid/event-sources.md#azure-subscriptions)に関する記事を参照してください。
 
-## <a name="available-event-types"></a>使用可能なイベントの種類
-
-### <a name="job-related-event-types"></a>ジョブに関連するイベントの種類
+## <a name="job-related-event-types"></a>ジョブに関連するイベントの種類
 
 Media Services では、以下の種類の**ジョブ**関連イベントが出力されます。 **ジョブ**関連イベントには 2 つのカテゴリがあります。"ジョブの状態変更の監視" と "ジョブ出力の状態変更の監視" です。 
 
 JobStateChange イベントをサブスクライブすると、すべてのイベントを登録できます。 また、特定のイベントのみ (たとえば、JobErrored、JobFinished、JobCanceled などの最終状態) をサブスクライブすることもできます。 
 
-#### <a name="monitoring-job-state-changes"></a>ジョブの状態変更の監視
+### <a name="monitoring-job-state-changes"></a>ジョブの状態変更の監視
 
 | イベントの種類 | 説明 |
 | ---------- | ----------- |
@@ -44,7 +42,9 @@ JobStateChange イベントをサブスクライブすると、すべてのイ�
 | Microsoft.Media.JobCanceled| ジョブが取り消し済みの状態に遷移したときにイベントを取得します。 これは、ジョブの出力を含む最終状態です。|
 | Microsoft.Media.JobErrored| ジョブがエラー状態に遷移したときにイベントを取得します。 これは、ジョブの出力を含む最終状態です。|
 
-#### <a name="monitoring-job-output-state-changes"></a>ジョブ出力の状態変更の監視
+次の[スキーマの例](#event-schema-examples)を参照してください。
+
+### <a name="monitoring-job-output-state-changes"></a>ジョブの出力の状態変更の監視
 
 | イベントの種類 | 説明 |
 | ---------- | ----------- |
@@ -56,11 +56,21 @@ JobStateChange イベントをサブスクライブすると、すべてのイ�
 | Microsoft.Media.JobOutputCanceled| ジョブ出力が取り消し済みの状態に遷移したときにイベントを取得します。|
 | Microsoft.Media.JobOutputErrored| ジョブ出力がエラー状態に遷移したときにイベントを取得します。|
 
-### <a name="live-event-types"></a>ライブ イベントの種類
+次の[スキーマの例](#event-schema-examples)を参照してください。
+
+### <a name="monitoring-job-output-progress"></a>ジョブ出力の進行状況の監視
+
+| イベントの種類 | 説明 |
+| ---------- | ----------- |
+| Microsoft.Media.JobOutputProgress| このイベントは、ジョブ処理の進行状況を反映します (0 % から 100%)。 進行状況の値が 5% 以上増加した場合、または前回のイベントから 30 秒以上経過した (ハートビート) 場合に、サービスによるイベントの送信が試されます。 進行状況の値は、0% で始まることも 100% に達することも保証されていません。さらに、時間の経過とともに一定の率で増加することも保証されていません。 このイベントは、処理が完了していることを判断するために使用すべきではありません。代わりに、状態変更イベントを使用する必要があります。|
+
+次の[スキーマの例](#event-schema-examples)を参照してください。
+
+## <a name="live-event-types"></a>ライブ イベントの種類
 
 Media Services では、以下の種類の**ライブ** イベントも出力されます。 **Live** イベントには、ストリーム レベル イベントとトラック レベル イベントの 2 つのカテゴリがあります。 
 
-#### <a name="stream-level-events"></a>ストリーム レベル イベント
+### <a name="stream-level-events"></a>ストリーム レベル イベント
 
 ストリーム レベル イベントは、ストリームまたは接続ごとに発生します。 各イベントには、接続またはストリームを識別する `StreamId` パラメーターがあります。 各ストリームまたは接続には、さまざまな種類のトラックが少なくとも 1 つ存在します。 たとえば、エンコーダーからの接続 1 つにつき、1 つのオーディオ トラックと 4 つのビデオ トラックが存在する場合もあります。 ストリーム イベントには、次の種類があります。
 
@@ -70,7 +80,9 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 | Microsoft.Media.LiveEventEncoderConnected | エンコーダーがライブ イベントとの接続を確立しました。 |
 | Microsoft.Media.LiveEventEncoderDisconnected | エンコーダーが切断されました。 |
 
-#### <a name="track-level-events"></a>トラック レベル イベント
+次の[スキーマの例](#event-schema-examples)を参照してください。
+
+### <a name="track-level-events"></a>トラック レベル イベント
 
 トラック レベル イベントは、トラックごとに発生します。トラック イベントには、次の種類があります。
 
@@ -83,7 +95,9 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 | Microsoft.Media.LiveEventIngestHeartbeat | ライブ イベントの実行中、各トラックについて 20 秒ごとに発行されます。 取り込みの正常性についての概要が得られます。 |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | メディア サーバーが受信中のトラックの途切れを検出しました。 |
 
-## <a name="event-schemas-and-properties"></a>イベントのスキーマとプロパティ
+次の[スキーマの例](#event-schema-examples)を参照してください。
+
+## <a name="event-schema-examples"></a>イベント スキーマの例
 
 ### <a name="jobstatechange"></a>JobStateChange
 
@@ -109,10 +123,10 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| previousState | string | イベントの前のジョブの状態。 |
-| state | string | このイベントで通知されるジョブの新しい状態。 例: "Scheduled:The job is ready to start" または "Finished:The job is finished"。|
+| previousState | 文字列 | イベントの前のジョブの状態。 |
+| state | 文字列 | このイベントで通知されるジョブの新しい状態。 例: "Scheduled:The job is ready to start" または "Finished:The job is finished"。|
 
 ジョブの状態。値は次のいずれかです。*Queued*、*Scheduled*、*Processing*、*Finished*、*Error*、*Canceled*、*Canceling*
 
@@ -179,9 +193,9 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| 出力 | Array | ジョブ出力を取得します。|
+| Outputs | 配列 | ジョブ出力を取得します。|
 
 ### <a name="joboutputstatechange"></a>JobOutputStateChange
 
@@ -244,6 +258,29 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
   "metadataVersion": "1"
 }]
 ```
+### <a name="joboutputprogress"></a>JobOutputProgress
+
+スキーマの例は次のようになります。
+
+ ```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/belohGroup/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/job-5AB6DE32",
+  "eventType": "Microsoft.Media.JobOutputProgress",
+  "eventTime": "2018-12-10T18:20:12.1514867",
+  "id": "00000000-0000-0000-0000-000000000000",
+  "data": {
+    "jobCorrelationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    },
+    "label": "VideoAnalyzerPreset_0",
+    "progress": 86
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
 
 ### <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
@@ -272,13 +309,13 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| streamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
-| ingestUrl | string | ライブ イベントから提供される取り込み URL。 |  
-| encoderIp | string | エンコーダーの IP。 |
-| encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
-| resultCode | string | 接続が拒否された理由。 結果コードについては、以下の表をご覧ください。 |
+| streamId | 文字列 | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
+| ingestUrl | 文字列 | ライブ イベントから提供される取り込み URL。 |  
+| encoderIp | 文字列 | エンコーダーの IP。 |
+| encoderPort | 文字列 | このストリームの送信元であるエンコーダーのポート。 |
+| resultCode | 文字列 | 接続が拒否された理由。 結果コードについては、以下の表をご覧ください。 |
 
 次に示したのは、結果コードの一覧です。
 
@@ -319,12 +356,12 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| streamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に指定します。 |
-| ingestUrl | string | ライブ イベントから提供される取り込み URL。 |
-| encoderIp | string | エンコーダーの IP。 |
-| encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
+| streamId | 文字列 | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に指定します。 |
+| ingestUrl | 文字列 | ライブ イベントから提供される取り込み URL。 |
+| encoderIp | 文字列 | エンコーダーの IP。 |
+| encoderPort | 文字列 | このストリームの送信元であるエンコーダーのポート。 |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
@@ -353,13 +390,13 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| streamId | string | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
-| ingestUrl | string | ライブ イベントから提供される取り込み URL。 |  
-| encoderIp | string | エンコーダーの IP。 |
-| encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
-| resultCode | string | エンコーダーの切断の理由。 正常な切断とエラーによる切断とがあります。 結果コードについては、以下の表をご覧ください。 |
+| streamId | 文字列 | ストリームまたは接続の識別子。 この ID は、エンコーダーまたはカスタマーが取り込み URL に追加します。 |  
+| ingestUrl | 文字列 | ライブ イベントから提供される取り込み URL。 |  
+| encoderIp | 文字列 | エンコーダーの IP。 |
+| encoderPort | 文字列 | このストリームの送信元であるエンコーダーのポート。 |
+| resultCode | 文字列 | エンコーダーの切断の理由。 正常な切断とエラーによる切断とがあります。 結果コードについては、以下の表をご覧ください。 |
 
 次に示したのは、エラー結果コードの一覧です。
 
@@ -410,14 +447,14 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
-| trackName | string | トラックの名前。 |
+| trackType | 文字列 | 追跡のタイプ (オーディオ/ビデオ)。 |
+| trackName | 文字列 | トラックの名前。 |
 | bitrate | integer | トラックのビットレート。 |
-| timestamp | string | ドロップされたデータ チャンクのタイムスタンプ。 |
-| timescale | string | タイムスタンプのタイムスケール。 |
-| resultCode | string | データ チャンクがドロップされた理由。 **FragmentDrop_OverlapTimestamp** または **FragmentDrop_NonIncreasingTimestamp**。 |
+| timestamp | 文字列 | ドロップされたデータ チャンクのタイムスタンプ。 |
+| timescale | 文字列 | タイムスタンプのタイムスケール。 |
+| resultCode | 文字列 | データ チャンクがドロップされた理由。 **FragmentDrop_OverlapTimestamp** または **FragmentDrop_NonIncreasingTimestamp**。 |
 
 ### <a name="liveeventincomingstreamreceived"></a>LiveEventIncomingStreamReceived
 
@@ -450,16 +487,16 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
-| trackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
+| trackType | 文字列 | 追跡のタイプ (オーディオ/ビデオ)。 |
+| trackName | 文字列 | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
 | bitrate | integer | トラックのビットレート。 |
-| ingestUrl | string | ライブ イベントから提供される取り込み URL。 |
-| encoderIp | string  | エンコーダーの IP。 |
-| encoderPort | string | このストリームの送信元であるエンコーダーのポート。 |
-| timestamp | string | 受信したデータ チャンクの最初のタイムスタンプ。 |
-| timescale | string | タイムスタンプの表示に使用されるタイムスケール。 |
+| ingestUrl | 文字列 | ライブ イベントから提供される取り込み URL。 |
+| encoderIp | 文字列  | エンコーダーの IP。 |
+| encoderPort | 文字列 | このストリームの送信元であるエンコーダーのポート。 |
+| timestamp | 文字列 | 受信したデータ チャンクの最初のタイムスタンプ。 |
+| timescale | 文字列 | タイムスタンプの表示に使用されるタイムスケール。 |
 
 ### <a name="liveeventincomingstreamsoutofsync"></a>LiveEventIncomingStreamsOutOfSync
 
@@ -489,14 +526,14 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| minLastTimestamp | string | 全トラック (オーディオまたはビデオ) における最後のタイムスタンプの最小値。 |
-| typeOfTrackWithMinLastTimestamp | string | 最後のタイムスタンプが最も小さいトラックの種類 (オーディオまたはビデオ)。 |
-| maxLastTimestamp | string | 全トラック (オーディオまたはビデオ) におけるすべてのタイムスタンプの最大値。 |
-| typeOfTrackWithMaxLastTimestamp | string | 最後のタイムスタンプが最も大きいトラックの種類 (オーディオまたはビデオ)。 |
-| timescaleOfMinLastTimestamp| string | "MinLastTimestamp" の表示に使用されるタイムスケールを取得します。|
-| timescaleOfMaxLastTimestamp| string | "MaxLastTimestamp" の表示に使用されるタイムスケールを取得します。|
+| minLastTimestamp | 文字列 | 全トラック (オーディオまたはビデオ) における最後のタイムスタンプの最小値。 |
+| typeOfTrackWithMinLastTimestamp | 文字列 | 最後のタイムスタンプが最も小さいトラックの種類 (オーディオまたはビデオ)。 |
+| maxLastTimestamp | 文字列 | 全トラック (オーディオまたはビデオ) におけるすべてのタイムスタンプの最大値。 |
+| typeOfTrackWithMaxLastTimestamp | 文字列 | 最後のタイムスタンプが最も大きいトラックの種類 (オーディオまたはビデオ)。 |
+| timescaleOfMinLastTimestamp| 文字列 | "MinLastTimestamp" の表示に使用されるタイムスケールを取得します。|
+| timescaleOfMaxLastTimestamp| 文字列 | "MaxLastTimestamp" の表示に使用されるタイムスケールを取得します。|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
@@ -527,11 +564,11 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| firstTimestamp | string | 種類がビデオであるいずれかのトラック/品質レベルについて受信したタイムスタンプ。 |
-| firstDuration | string | 1 つ目のタイムスタンプを持つデータ チャンクの期間。 |
-| secondTimestamp | string  | 種類がビデオである他の何らかのトラック/品質レベルについて受信したタイムスタンプ。 |
-| secondDuration | string | 2 つ目のタイムスタンプを持つデータ チャンクの期間。 |
-| timescale | string | タイムスタンプと時間のタイムスケール。|
+| firstTimestamp | 文字列 | 種類がビデオであるいずれかのトラック/品質レベルについて受信したタイムスタンプ。 |
+| firstDuration | 文字列 | 1 つ目のタイムスタンプを持つデータ チャンクの期間。 |
+| secondTimestamp | 文字列  | 種類がビデオである他の何らかのトラック/品質レベルについて受信したタイムスタンプ。 |
+| secondDuration | 文字列 | 2 つ目のタイムスタンプを持つデータ チャンクの期間。 |
+| timescale | 文字列 | タイムスタンプと時間のタイムスケール。|
 
 ### <a name="liveeventingestheartbeat"></a>LiveEventIngestHeartbeat
 
@@ -567,19 +604,19 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
-| trackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
+| trackType | 文字列 | 追跡のタイプ (オーディオ/ビデオ)。 |
+| trackName | 文字列 | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
 | bitrate | integer | トラックのビットレート。 |
 | incomingBitrate | integer | エンコーダーから送信されるデータ チャンクに基づいて計算されたビットレート。 |
-| lastTimestamp | string | トラックに関して直近 20 秒に受信した最新のタイムスタンプ。 |
-| timescale | string | タイムスタンプの表示に使用されるタイムスケール。 |
+| lastTimestamp | 文字列 | トラックに関して直近 20 秒に受信した最新のタイムスタンプ。 |
+| timescale | 文字列 | タイムスタンプの表示に使用されるタイムスケール。 |
 | overlapCount | integer | 直近 20 秒にタイムスタンプが重複したデータ チャンクの数。 |
 | discontinuityCount | integer | 直近 20 秒に観察された途切れの数。 |
 | nonIncreasingCount | integer | 直近 20 秒に過去のタイムスタンプを受信したデータ チャンクの数。 |
 | unexpectedBitrate | bool | 直近 20 秒における予想ビットレートと実ビットレートの差が、許容されている上限を超えているかどうか。 incomingBitrate がビットレートの 2 倍以上または incomingBitrate がビットレートの 1/2 以下または incomingBitrate が 0 のとき、かつそのときに限り true。 |
-| state | string | ライブ イベントの状態。 |
+| state | 文字列 | ライブ イベントの状態。 |
 | healthy | bool | カウントとフラグに基づき、取り込みが正常であるかどうかを示します。 overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false の場合、Healthy は true になります。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -611,30 +648,30 @@ Media Services では、以下の種類の**ライブ** イベントも出力さ
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| trackType | string | 追跡のタイプ (オーディオ/ビデオ)。 |
-| trackName | string | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
+| trackType | 文字列 | 追跡のタイプ (オーディオ/ビデオ)。 |
+| trackName | 文字列 | トラックの名前。エンコーダーによって指定されるか、または RTMP の場合は、*TrackType_Bitrate* 形式でサーバーによって生成されます。 |
 | bitrate | integer | トラックのビットレート。 |
-| previousTimestamp | string | 前のフラグメントのタイムスタンプ。 |
-| newTimestamp | string | 現在のフラグメントのタイムスタンプ。 |
-| discontinuityGap | string | 2 つのタイムスタンプの差。 |
-| timescale | string | タイムスタンプと不連続性の両方について、差を表すときに使用されるタイムスケール。 |
+| previousTimestamp | 文字列 | 前のフラグメントのタイムスタンプ。 |
+| newTimestamp | 文字列 | 現在のフラグメントのタイムスタンプ。 |
+| discontinuityGap | 文字列 | 2 つのタイムスタンプの差。 |
+| timescale | 文字列 | タイムスタンプと不連続性の両方について、差を表すときに使用されるタイムスケール。 |
 
 ### <a name="common-event-properties"></a>共通のイベント プロパティ
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | type | 説明 |
+| プロパティ | 型 | 説明 |
 | -------- | ---- | ----------- |
-| topic | string | EventGrid トピック。 このプロパティは、Media Services アカウントのリソース ID を保持します。 |
-| subject | string | Media Services アカウント下の Media Services チャンネルのリソース パス。 トピックとサブジェクトを連結することで、ジョブのリソース ID が得られます。 |
-| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 例: "Microsoft.Media.JobStateChange" |
-| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | string | イベントの一意識別子。 |
+| topic | 文字列 | EventGrid トピック。 このプロパティは、Media Services アカウントのリソース ID を保持します。 |
+| subject | 文字列 | Media Services アカウント下の Media Services チャンネルのリソース パス。 トピックとサブジェクトを連結することで、ジョブのリソース ID が得られます。 |
+| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 例: "Microsoft.Media.JobStateChange" |
+| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | 文字列 | イベントの一意識別子。 |
 | data | オブジェクト | Media Services イベント データ。 |
-| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 ## <a name="next-steps"></a>次の手順
 

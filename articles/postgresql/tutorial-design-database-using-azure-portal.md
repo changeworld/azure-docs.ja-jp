@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 441b56aa683ac01566d2fd2877b9b8b912194f3a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 869bee8fcd0d1c2876ac7317fb239a1d5c61cb87
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536527"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864551"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Database for PostgreSQL を設計する
 
@@ -51,7 +51,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
     - サブスクリプション:複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。
     - リソース グループ: **myresourcegroup**
     - サーバー管理者のログインとパスワード
-    - 場所
+    - Location
     - PostgreSQL のバージョン
 
    > [!IMPORTANT]
@@ -78,7 +78,7 @@ Azure Database for PostgreSQL サービスは、サーバーレベルでファ�
 
 1.  デプロイが完了したら、左側のメニューの **[すべてのリソース]** をクリックし、サーバー名「**mydemoserver**」を入力して、ご利用の新しく作成したサーバーを検索します。 検索結果に示されたサーバー名をクリックします。 サーバーの **[概要]** ページが開き、さらに多くの構成オプションが表示されます。
 
-   ![Azure Database for PostgreSQL - サーバーの検索 ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   ![Azure Database for PostgreSQL - サーバーの検索](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 2.  サーバーのページで、**[接続のセキュリティ]** を選択します。 
 
@@ -98,7 +98,7 @@ Azure Database for PostgreSQL サーバーを作成したときに、既定の *
 
 1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したばかりのサーバーを検索します。
 
-   ![Azure Database for PostgreSQL - サーバーの検索 ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   ![Azure Database for PostgreSQL - サーバーの検索](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 2. サーバー名 **[mydemoserver]** をクリックします。
 
@@ -194,7 +194,7 @@ SELECT * FROM inventory;
 
    - **復元ポイント**:サーバーが変更される前の日時を選択します。
    - **対象サーバー**:復元先の新しいサーバー名を指定します。
-   - **場所**: リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
+   - **[場所]**:リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります。
    - **価格レベル**:サーバーを復元するときは、この値を変更することはできません。 ソース サーバーと同じレベルになります。 
 3.  **[OK]** をクリックして、テーブルが削除される前の[状態にサーバーを復元](./howto-restore-server-portal.md)します。 異なる時点にサーバーを復元すると、[価格レベル](./concepts-pricing-tiers.md)のリテンション期間内であれば、指定した時点の元サーバーと同じサーバー内に、新しいサーバーが複製されます。
 

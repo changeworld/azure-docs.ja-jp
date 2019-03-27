@@ -3,19 +3,19 @@ title: Azure Active Directory B2C での言語のカスタマイズ | Microsoft 
 description: 言語のエクスペリエンスのカスタマイズについて説明します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: e115db18770ef304d823ff9c35d7d2cf302d5ccf
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.subservice: B2C
+ms.openlocfilehash: 040f9b00b7f282789d8a63b9bbeb8ee7edfc779e
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187764"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55164154"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での言語のカスタマイズ
 
@@ -211,7 +211,7 @@ Chrome と Firefox はどちらも、それぞれに設定されている言語�
 | ロシア語               | ru            |
 | スロバキア語                | sk            |
 | スウェーデン語               | sv            |
-| タミール語                 | ta            |
+| タミル語                 | ta            |
 | テルグ語                | te            |
 | タイ語                  | th            |
 | トルコ語               | tr            |

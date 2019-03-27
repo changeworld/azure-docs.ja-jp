@@ -9,16 +9,16 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: d5425cf7c2ea39770bbc3e9368f34d57d7279842
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e3d2b377df6a3ed8312ca8b2563fe466236c2741
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534878"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818296"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Azure Logic Apps で Azure Log Analytics を使用して B2B メッセージを監視する
 
-統合アカウントで取引先間の B2B 通信を設定すると、これらの取引先が相互にメッセージを交換できるようになります。 この通信が予想通りに動作していることを確認するために、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して、AS2、X12、および EDIFACT メッセージを監視して、統合アカウントの診断ログを設定できます。 このサービスは、クラウド環境とオンプレミス環境を監視して、その可用性とパフォーマンスの管理を支援し、深いデバッグを行うためのランタイムの詳細とイベントの収集を実行します。 また、Azure Storage や Azure Event Hubs などの[他のサービスでこのデータ](#extend-diagnostic-data)を使用することもできます。
+統合アカウントで取引先間の B2B 通信を設定すると、これらの取引先が相互にメッセージを交換できるようになります。 この通信が予想通りに動作していることを確認するために、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して、AS2、X12、および EDIFACT メッセージを監視して、統合アカウントの診断ログを設定できます。 このサービスは、クラウド環境とオンプレミス環境を監視して、その可用性とパフォーマンスの管理を支援し、深いデバッグを行うためのランタイムの詳細とイベントの収集を実行します。 また、Azure Storage や Azure Event Hubs などの他のサービスでこのデータを使用することもできます。
 
 > [!NOTE]
 > このページには、[2019 年 1 月に廃止される](../azure-monitor/platform/oms-portal-transition.md) Microsoft Operations Management Suite (OMS) への言及がまだ残っている可能性がありますが、可能な場合には、これらの手順を Azure Log Analytics で置き換えてください。 
@@ -47,7 +47,7 @@ ms.locfileid: "53534878"
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 統合アカウントに関連付けられている Azure サブスクリプション | 
-   | **[リソース グループ]** | <*Azure-resource-group-name*> | 統合アカウントの Azure リソース グループ | 
+   | **リソース グループ** | <*Azure-resource-group-name*> | 統合アカウントの Azure リソース グループ | 
    | **リソースの種類** | **統合アカウント** | ログを有効にする Azure リソースの種類 | 
    | **リソース** | <*integration-account-name*> | ログを有効にする Azure リソースの名前 | 
    ||||  
@@ -89,7 +89,7 @@ ms.locfileid: "53534878"
    | プロパティ | 値 | 説明 | 
    |----------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 統合アカウントに関連付けられている Azure サブスクリプション | 
-   | **[リソース グループ]** | <*Azure-resource-group-name*> | 統合アカウントの Azure リソース グループ | 
+   | **リソース グループ** | <*Azure-resource-group-name*> | 統合アカウントの Azure リソース グループ | 
    | **リソースの種類** | **統合アカウント** | ログを有効にする Azure リソースの種類 | 
    | **リソース** | <*integration-account-name*> | ログを有効にする Azure リソースの名前 | 
    ||||  

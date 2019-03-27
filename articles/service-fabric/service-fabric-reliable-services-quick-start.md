@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 6977fa0a62767cebbd1000335c6c3a33a5991c2c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: eb0fd7e4feb28d60173b638a15dbce598f78e6bf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208167"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182954"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 > [!div class="op_single_selector"]
@@ -28,9 +28,7 @@ ms.locfileid: "34208167"
 > 
 > 
 
-Azure Service Fabric アプリケーションには、コードを実行する 1 つ以上のサービスが含まれています。 ここでは、 [Reliable Services](service-fabric-reliable-services-introduction.md)を使用して、ステートレスとステートフルの両方の Service Fabric アプリケーションを作成する方法を説明します。  また、次の Microsoft Virtual Academy のビデオでは、ステートレスな Reliable Services を作成する方法を紹介しています。<center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=s39AO76yC_7206218965">  
-<img src="./media/service-fabric-reliable-services-quick-start/ReliableServicesVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
+Azure Service Fabric アプリケーションには、コードを実行する 1 つ以上のサービスが含まれています。 ここでは、 [Reliable Services](service-fabric-reliable-services-introduction.md)を使用して、ステートレスとステートフルの両方の Service Fabric アプリケーションを作成する方法を説明します。  
 
 ## <a name="basic-concepts"></a>基本的な概念
 Reliable Services の使用を開始するには、いくつかの基本的な概念を理解する必要があります。

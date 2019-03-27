@@ -34,13 +34,13 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
-  - name: DNS ゾーンとレコード
+  - name: ゾーンとレコード
     href: dns-zones-records.md
-  - name: DNS エイリアス レコード
+  - name: エイリアス レコード
     href: dns-alias.md
-  - name: Azure DNS による DNS 委任
+  - name: Azure DNS による委任
     href: dns-domain-delegation.md
-  - name: DNS に関する FAQ
+  - name: FAQ
     href: dns-faq.md
   - name: プライベート DNS ゾーンの使用
     href: private-dns-overview.md
@@ -82,6 +82,10 @@ items:
       href: dns-reverse-dns-for-azure-services.md
   - name: DNS ゾーン ファイルのインポートとエクスポート
     href: dns-import-export.md
+  - name: サブドメインの委任
+    href: delegate-subdomain.md
+  - name: PowerShell を使用したサブドメインの委任
+    href: delegate-subdomain-ps.md
   - name: 他の Azure サービスとの統合
     href: dns-for-azure-services.md
   - name: DNS ゾーンとレコードを保護する
@@ -107,9 +111,9 @@ items:
   - name: Java
     href: /java/api/com.microsoft.azure.management.dns
   - name: Node.js
-    href: http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/
+    href: https://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/
   - name: Ruby
-    href: http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0
+    href: https://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0
   - name: Python
     href: http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html
   - name: REST
@@ -139,16 +143,16 @@ items:
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork
   - name: ネットワークのブログ
-    href: http://azure.microsoft.com/blog/topics/networking
+    href: https://azure.microsoft.com/blog/topics/networking
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/dns/
   - name: 料金計算ツール
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=dns
-ms.openlocfilehash: ca6910655425711fda12d5f511538d52f380b239
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 28a175d3a395929c90d9a7557d577517f555b5f9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319530"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551384"

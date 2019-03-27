@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: dfad3199ba3a9cd2f3bca55be50760ddde676e70
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: b11f11aa3966bc57caa5b8dd0379f4d5c59c8375
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558194"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672901"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge セキュリティ デーモンおよびランタイムの更新
 
@@ -28,7 +28,7 @@ IoT Edge サービスの新しいバージョンがリリースされたら、�
 >* デバイスを Windows ビルド 17763 にアップグレードしていない。 IoT Edge バージョン 1.0.5 は、17763 よりも前の Windows ビルドをサポートしていません。
 >* Windows デバイス上で Java または Node.js モジュールを実行している。 Windows デバイスを最新のビルドに更新している場合でも、バージョン 1.0.5 はスキップしてください。 
 >
->IoT Edge バージョン 1.0.5 の詳細については、[1.0.5 のリリース ノート](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5)を参照してください。 開発ツールが最新バージョンに更新されないようにする方法の詳細については、[IoT 開発者ブログ](https://aka.ms/dev-win-iot-edge-module)を参照してください。
+>IoT Edge バージョン 1.0.5 の詳細については、[1.0.5 のリリース ノート](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5)を参照してください。 開発ツールが最新バージョンに更新されないようにする方法の詳細については、[IoT 開発者ブログ](https://devblogs.microsoft.com/iotdev/)を参照してください。
 
 
 Azure IoT Edge の最新バージョンを見つけるには、[Azure IoT Edge リリース](https://github.com/Azure/azure-iotedge/releases)に関する記事を参照してください。

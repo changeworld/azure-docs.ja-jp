@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 04fcb84b22e84060652b4a3743cb73e4543ee573
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 02/07/2019
+ms.openlocfilehash: 426c090a79931f252a5daeacbdd83d0238ecf672
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868448"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868118"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL Database でエラスティック プールのリソースをスケーリングする
 
@@ -27,8 +27,8 @@ ms.locfileid: "52868448"
 
 - 最大サイズの上限に達するまでストレージをプロビジョニングすることができます。
 
-  - Standard Storage の場合は、10 GB の増分でサイズを増減します
-  - Premium Storage の場合は、250 GB の増分でサイズを増減します
+  - 標準または汎用サービス レベルのストレージの場合は、10 GB 単位でサイズを増減します
+  - Premium または Business Critical レベルのストレージの場合は、250 GB 単位でサイズを増減します
 - エラスティック プールのストレージは、最大サイズを増減することでプロビジョニングできます。
 - エラスティック プールのストレージの料金は、ストレージ量にサービス レベルのストレージ単価を掛けて計算します。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 

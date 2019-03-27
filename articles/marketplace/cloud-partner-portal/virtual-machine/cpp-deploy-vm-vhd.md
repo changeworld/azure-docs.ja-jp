@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9157ce7f8f16bc60a6d5c16fa992a5402cf2d7ad
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: a5b4e0465e83dec5620954998db329e7902fb59c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190732"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106051"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>VHD からの VM のデプロイ
 
@@ -37,7 +37,7 @@ VM イメージの詳細については、次のブログを参照してくだ�
 
 Azure PowerShell と Azure CLI をまだインストールしていない場合は、次の指示に従ってインストールします。
 
-- [PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)
+- [PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)
 - [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
@@ -51,13 +51,13 @@ Azure PowerShell と Azure CLI をまだインストールしていない場合�
 
 使用する VM がデプロイされたら、[VM イメージを認定](./cpp-certify-vm.md)する準備が整います。
 
-2.  **[新規]** をクリックして、**[テンプレートのデプロイ]** を検索し、**[エディターで独自のテンプレートを作成する]** を選択します。  <br/>
-  ![Azure portal で VHD デプロイ テンプレートを作成する](./media/publishvm_021.png)
+1. **[新規]** をクリックして、**[テンプレートのデプロイ]** を検索し、**[エディターで独自のテンプレートを作成する]** を選択します。  <br/>
+   ![Azure portal で VHD デプロイ テンプレートを作成する](./media/publishvm_021.png)
 
-3. この [JSON テンプレート](./cpp-deploy-json-template.md)をコピーしてエディターに貼り付け、**[保存]** をクリックします。 <br/>
-  ![Azure portal で VHD デプロイ テンプレートを保存する](./media/publishvm_022.png)
+1. この [JSON テンプレート](./cpp-deploy-json-template.md)をコピーしてエディターに貼り付け、**[保存]** をクリックします。 <br/>
+   ![Azure portal で VHD デプロイ テンプレートを保存する](./media/publishvm_022.png)
 
-4. 表示されている**カスタム デプロイ**のプロパティ ページのパラメーター値を指定します。
+1. 表示されている**カスタム デプロイ**のプロパティ ページのパラメーター値を指定します。
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
@@ -70,7 +70,7 @@ Azure PowerShell と Azure CLI をまだインストールしていない場合�
    | 管理パスワード              | 新しい VM の管理者アカウントのパスワード                                  |
    | [OS Type]\(OS の種類\)                     | VM オペレーティング システム: `Windows` \| `Linux`                                    |
    | サブスクリプション ID             | 選択したサブスクリプションの識別子                                      |
-   | 場所                    | デプロイの地理的な場所                                        |
+   | Location                    | デプロイの地理的な場所                                        |
    | VM サイズ                     | [Azure VM サイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)、例`Standard_A2` |
    | パブリック IP アドレス名      | パブリック IP アドレスの名前                                               |
    | VM 名                     | 新しい VM の名前                                                           |
@@ -79,7 +79,7 @@ Azure PowerShell と Azure CLI をまだインストールしていない場合�
    | VHD の URL                     | OS ディスクの VHD の URL を完了する                                                     |
    |  |  |
             
-5. これらの値を指定した後、**[購入]** をクリックします。 
+1. これらの値を指定した後、**[購入]** をクリックします。 
 
 Azure はデプロイを開始します。これにより、指定のストレージ アカウント パスに、指定されたアンマネージド VHD を含む新しい VM が作成されます。  ポータルの左側にある **[Virtual Machines]** をクリックして Azure portal で進捗状況を追跡できます。  VM が作成されると、状態は `Starting` から `Running` に変わります。 
 

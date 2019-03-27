@@ -205,12 +205,16 @@ items:
       href: ../connectors/connectors-native-http-swagger.md
     - name: HTTP Webhook
       href: ../connectors/connectors-native-webhook.md
+    - name: IBM 3270
+      href: ../connectors/connectors-run-3270-apps-ibm-mainframe-create-api-3270.md
     - name: Informix
       href: ../connectors/connectors-create-api-informix.md
     - name: 統合アカウント
       href: logic-apps-enterprise-integration-metadata.md
     - name: MailChimp
       href: ../connectors/connectors-create-api-mailchimp.md
+    - name: Microsoft Graph Security
+      href: ../connectors/connectors-integrate-security-operations-create-api-microsoft-graph-security.md
     - name: Microsoft Translator
       href: ../connectors/connectors-create-api-microsofttranslator.md
     - name: MQ
@@ -281,6 +285,10 @@ items:
       href: logic-apps-enterprise-integration-accounts.md
     - name: 最新のスキーマに移行する
       href: ../connectors/connectors-schema-migration.md
+  - name: テスト
+    items:
+    - name: モック データを使用してロジック アプリをテストする
+      href: test-logic-apps-mock-data-static-results.md
   - name: デプロイ
     items:
     - name: ロジック アプリの定義とデプロイ
@@ -291,14 +299,14 @@ items:
     items:
     - name: ロジック アプリの監視
       href: logic-apps-monitor-your-logic-apps.md
-    - name: Log Analytics を使用したロジック アプリの監視
+    - name: Azure Monitor ログでロジック アプリを監視する
       href: logic-apps-monitor-your-logic-apps-oms.md
-    - name: Log Analytics を使用した B2B メッセージの監視
+    - name: Azure Monitor ログで B2B メッセージを監視する
       href: logic-apps-monitor-b2b-message.md
       items:
-      - name: Log Analytics を使用した B2B メッセージの追跡
+      - name: Azure Monitor ログで B2B メッセージを追跡する
         href: logic-apps-track-b2b-messages-omsportal.md
-      - name: Log Analytics を使用した B2B メッセージに対するクエリの作成
+      - name: Azure Monitor ログで B2B メッセージに対するクエリを作成する
         href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
   - name: 例、シナリオ、チュートリアル
     href: logic-apps-examples-and-scenarios.md
@@ -329,7 +337,7 @@ items:
   - name: 使用量の測定
     href: logic-apps-pricing.md
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.logicapp
+    href: /powershell/module/az.logicapp
   - name: REST API
     href: /rest/api/logic/
   - name: Resource Manager テンプレート
@@ -360,7 +368,7 @@ items:
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azurelogicapps
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-logic-apps
+    href: https://stackoverflow.com/questions/tagged/azure-logic-apps
   - name: Twitter
     href: https://twitter.com/logicappsio
   - name: 価格
@@ -373,9 +381,9 @@ items:
     href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest
-ms.openlocfilehash: 9501c94448651c8d67dd65a1edc3ae97fe54c6a4
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: ecdde9ccf8f0558e0ed50b3bc94735def73a41af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156835"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887953"

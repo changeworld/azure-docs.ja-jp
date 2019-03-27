@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Azure Cognitive Services で Computer Vision API の 86 カテゴリの分類を取得します。
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: reference
 ms.date: 12/19/2016
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 184babea3b11f611850cb33fc9994e9ea79f69a7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: efdcf68799dcd0d3fd83365c36ca00500c3fbbc6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582152"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865194"
 ---
 # <a name="86-categories-taxonomy"></a>86 カテゴリの分類
 

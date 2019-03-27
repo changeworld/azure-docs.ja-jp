@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: このページでは、ダウンロード手順やベイク プロセスなど、Project Acoustics についてよく寄せられる質問に回答します。
 services: cognitive-services
 author: kegodin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: acoustics
+ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b8b5ea39c1cfb3a37a8e3009f59312728bcb0331
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 12dda5d7af1236ec2d7eddbe025b8fdba47d7bca
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900395"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881076"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -69,7 +69,7 @@ Project Acoustics は、アーキテクチャのすべての側面を考慮に�
 
 ## <a name="what-exactly-happens-during-baking"></a>"ベイク" の間、正確には何が起きているのですか?
 
-システムは潜在的なプレイヤー位置を考慮して、一定間隔の "プローブ" サンプル位置を生成します。 レベルのベイクは、プローブごとの独立したタスクで構成されます: システムはプローブを中心にした直方体の "シミュレーション領域" を考慮し、その領域内で最大 25 cm の解像度で詳細な波動シミュレーションを行います。
+システムは潜在的なプレイヤー位置を考慮して、一定間隔の "プローブ" サンプル位置を生成します。 レベルのベイクは、プローブごとの独立したタスクで構成されます。システムはプローブを中心にした直方体の "シミュレーション領域" を考慮し、その領域内で最大 25 cm の解像度で詳細な波動シミュレーションを行います。
 
 ## <a name="next-steps"></a>次の手順
 * [サンプル シーン](sample-walkthrough.md)を調査する

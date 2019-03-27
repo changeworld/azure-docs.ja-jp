@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Useall の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Useall の統合 | Microsoft Docs
 description: Azure Active Directory と Useall の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8dd9e452-a5b6-4a16-a97c-b60211ea6b95
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 8deacddc9dcc7571ea725143fa9a9c002c1602b1
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d2752588ded56962b3d49785f44c128136090b48
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50743017"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211650"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-useall"></a>チュートリアル: Azure Active Directory と Useall の統合
+# <a name="tutorial-azure-active-directory-integration-with-useall"></a>チュートリアル:Azure Active Directory と Useall の統合
 
 このチュートリアルでは、Useall と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -121,7 +122,7 @@ Useall で Azure AD のシングル サインオンを構成してテストす�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Useall サポート チーム](mailto:luizotavio@useall.com.br)にお問い合わせください。
 
-5. **Set up Single Sign-On with SAML(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
+5. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](./media/useall-tutorial/tutorial_useall_certificate.png)
 
@@ -145,12 +146,12 @@ Useall で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
   
 ### <a name="creating-useall-test-user"></a>Useall テスト ユーザーの作成
 
@@ -185,7 +186,7 @@ Useall で Azure AD のシングル サインオンを構成してテストす�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Useall のタイルをクリックすると、自動的に Useall アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事をご覧ください。
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -70,7 +70,7 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
     - ソース:cdnverify サブドメインを含めて、カスタム ドメイン名を cdnverify._&lt;カスタム ドメイン名&gt; 形式で入力します。 たとえば、cdnverify.www.contoso.com とします。
 
-    - 次のコマンドを入力します: 「*CNAME*」と入力します。
+    - [Type]:「*CNAME*」と入力します。
 
     - 変換先:cdnverify サブドメインを含めて、CDN エンドポイントのホスト名を cdnverify._&lt;エンドポイント名&gt;_.azureedge.net 形式で入力します。 たとえば、cdnverify.contoso.azureedge.net とします。
 
@@ -90,7 +90,7 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
     ![CNAME エントリ](./media/cdn-map-content-to-custom-domain/cdn-cdnverify-cname-entry.png)
 
-    - 次のコマンドを入力します: *[CNAME]* を選択したままにします。
+    - [Type]:*[CNAME]* を選択したままにします。
 
     - [Host]\(ホスト\):cdnverify サブドメイン名を含めて、使用するカスタム ドメインのサブドメインを入力します。 たとえば、cdnverify.www とします。
 
@@ -164,7 +164,7 @@ cdnverify サブドメインがエンドポイントに正常にマップされ�
 
     - ソース:カスタム ドメイン名 (例: www.contoso.com) を入力します。
 
-    - 次のコマンドを入力します: 「*CNAME*」と入力します。
+    - [Type]:「*CNAME*」と入力します。
 
     - 変換先:CDN エンドポイントのホスト名を入力します。 名前は _&lt;エンドポイント名&gt;_.azureedge.net 形式である必要があります。 たとえば、contoso.azureedge.net とします。
 
@@ -188,7 +188,7 @@ cdnverify サブドメインがエンドポイントに正常にマップされ�
 
     ![CNAME エントリ](./media/cdn-map-content-to-custom-domain/cdn-cname-entry.png)
 
-    - 次のコマンドを入力します: *[CNAME]* を選択したままにします。
+    - [Type]:*[CNAME]* を選択したままにします。
 
     - [Host]\(ホスト\):使用するカスタム ドメインのサブドメインを入力します。 たとえば、www または cdn とします。
 

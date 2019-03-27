@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: e979930ed504dafe330b774725f4193f1c15ed17
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: f112bdf9eacf51852659ab49a5673b0c8bfb0e46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53793990"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997553"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -360,6 +360,7 @@ module.exports = function (context, req) {
 ### <a name="excel-input---usage"></a>Excel の入力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
@@ -522,6 +523,7 @@ module.exports = function (context, req) {
 ### <a name="excel-output---usage"></a>Excel の出力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
@@ -664,6 +666,7 @@ module.exports = function (context, req) {
 ### <a name="file-input---usage"></a>ファイルの入力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
@@ -671,7 +674,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - byte[]
 - ストリーム
-- string
+- 文字列
 - Microsoft.Graph.DriveItem
 
 
@@ -811,6 +814,7 @@ module.exports = function (context, req) {
 #### <a name="file-output---usage"></a>ファイルの出力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
@@ -818,7 +822,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - byte[]
 - ストリーム
-- string
+- 文字列
 - Microsoft.Graph.DriveItem
 
 
@@ -960,6 +964,7 @@ module.exports = function (context, req) {
 ### <a name="outlook-output---usage"></a>Outlook の出力 - 使用方法
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
+
 |リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザーとしてのメールの送信|
@@ -967,7 +972,7 @@ module.exports = function (context, req) {
 バインドは、.NET 関数に次の種類を公開します。
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
-- string
+- 文字列
 - カスタム オブジェクトの種類 (構造的なモデル バインドを使用)
 
 
@@ -982,7 +987,7 @@ Webhook を使用すると、Microsoft Graph でのイベントに応答でき�
 - [Microsoft Graph webhook サブスクリプションの入力バインド](#webhook-input)を使用すると、既存のサブスクリプションを一覧表示し、必要に応じて更新できます。
 - [Microsoft Graph webhook サブスクリプションの出力バインド](#webhook-output)を使用すると、webhook サブスクリプションを作成または削除できます。
 
-バインド自体には Azure AD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions)をご覧ください。
+バインド自体には Azure AD のアクセス許可は必要ありませんが、対応するリソースの種類に関連した、アクセス許可を要求する必要がある場合があります。 それぞれのリソースの種類で必要なアクセス許可の一覧については、[サブスクリプションのアクセス許可](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0)をご覧ください。
 
 webhook について詳しくは、「[Microsoft Graph の Webhooks での作業]」をご覧ください。
 
@@ -1397,7 +1402,7 @@ module.exports = function (context, req) {
 ### <a name="webhook-output---usage"></a>webhook の出力 - 使用方法
 
 バインドは、.NET 関数に次の種類を公開します。
-- string
+- 文字列
 - Microsoft.Graph.Subscription
 
 
@@ -1421,7 +1426,7 @@ module.exports = function (context, req) {
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#app-identity-refresh---c-script-example)
-* [JavaScript](#app-identity-refresh---javascript-example)
+* JavaScript
 
 ### <a name="app-identity-refresh---c-script-example"></a>アプリケーション ID の更新 - C# スクリプトの例
 

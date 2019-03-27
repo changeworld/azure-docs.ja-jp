@@ -2,23 +2,20 @@
 title: Azure Stack への Azure Backup Server のインストール | Microsoft Docs
 description: Azure Backup Server を使用してワークロードを保護し、Azure Stack にバックアップします。
 services: backup
-documentationcenter: ''
 author: rayne-wiselman
 manager: carmonm
-editor: ''
-keywords: Azure Backup Server; ワークロードの保護; ワークロードのバックアップ
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 6/5/2018
+ms.topic: conceptual
+ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: 1e8c8efa590b6cce4543255dd33afbfd79aecef6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 8269cde7c1be5ba5671bafdae850d88c43db27ea
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52877169"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55497929"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Azure Stack への Azure Backup Server のインストール
 
@@ -36,7 +33,7 @@ Azure Backup Server は、以下の Azure Stack 仮想マシン ワークロー�
 | Windows Server Semi Annual Channel - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
 | Windows Server 2016 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
 | Windows Server 2012 R2 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
-| Windows Server 2012 - Datacenter/Entprise/Standard | ボリューム、ファイル、フォルダー |
+| Windows Server 2012 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
 | Windows Server 2008 R2 - Datacenter/Enterprise/Standard | ボリューム、ファイル、フォルダー |
 | SQL Server 2016 | Database |
 | SQL Server 2014 | Database |

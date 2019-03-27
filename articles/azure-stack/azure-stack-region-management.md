@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: sethm
 ms.reviewer: efemmano
-ms.openlocfilehash: 80a8414d98eba984f2427f5f746cd0e1061248a4
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.lastreviewed: 11/27/2018
+ms.openlocfilehash: 2845bb09fa44c3bd9cee914e2446403b4182b0d5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726920"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871045"
 ---
 # <a name="region-management-in-azure-stack"></a>Azure Stack でのリージョン管理
 
-*適用先:Azure Stack 統合システムと Azure Stack Development Kit*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack では、"*リージョン*" という概念が使用されています。リージョンとは、Azure Stack インフラストラクチャを構成するハードウェア リソースから成る論理エンティティです。 リージョン管理では、Azure Stack インフラストラクチャを正常に運用するために必要なすべてのリソースを見つけることができます。
 
@@ -38,7 +39,7 @@ Azure Stack には、**[Region management]** (リージョン管理) タイル�
 
 **[Region management]\(リージョン管理\)** タイル内のリージョンをクリックすると、次の情報にアクセスできます。
 
-[ ![[Region management]\(リージョン管理\) ブレードのウィンドウの説明](media/azure-stack-region-management/regionssm.png "[Region management]\(リージョン管理\) ブレード") ](media/azure-stack-region-management/regions.png#lightbox)
+[![リージョン管理 ブレードのウィンドウの説明](media/azure-stack-region-management/regionssm.png "リージョン管理ブレード")](media/azure-stack-region-management/regions.png#lightbox)
 
 1. **リソース メニュー**。 特定のインフラストラクチャ管理領域にアクセスして、ストレージ アカウントや仮想ネットワークなどのユーザー リソースを表示および管理します。
 

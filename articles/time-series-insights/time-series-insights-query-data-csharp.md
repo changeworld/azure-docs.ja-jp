@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.custom: seodec18
-ms.openlocfilehash: f921cc5af9d7f0ad8a072f5c14a24692e837e382
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 72059862b3faf155bf08c5e2ca643fc32582c6a1
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198878"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696143"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>C# を使用して Azure Time Series Insights 環境からデータを照会する
 
@@ -112,7 +112,7 @@ namespace TimeSeriesInsightsQuerySample
                 toAvailabilityTimestamp);
             Console.WriteLine();
 
-            // Assume data for the whole availablility range is requested.
+            // Assume data for the whole availability range is requested.
             DateTime from = fromAvailabilityTimestamp;
             DateTime to = toAvailabilityTimestamp;
 

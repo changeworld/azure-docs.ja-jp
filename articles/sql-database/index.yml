@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0049468330a9fcb26f023de2a8adb5dfd1544321
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 3217d1cd5585443534dbcc91ae3a12bb01db9a52
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436808"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444543"
 documentType: LandingData
 title: Azure SQL Database のドキュメント
 metadata:
@@ -15,13 +15,14 @@ metadata:
   author: CarlRabeler
   manager: craigg
   ms.service: sql-database
+  ms.subservice: service
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
-  ms.date: 07/07/2018
+  ms.date: 03/04/2019
   ms.author: carlrab
 abstract:
-  description: Azure SQL Database とは、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、サービスとしてのリレーショナル データベース (DBaaS) です。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
+  description: Azure SQL Database は、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、汎用のサービスとしてのリレーショナル データベース (DBaaS) です。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたクラウド データベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
   aside:
     image:
       alt: 
@@ -54,7 +55,7 @@ sections:
         src: media/index/i_scale.svg
       title: スケーラビリティ
     - href: /azure/sql-database/sql-database-single-index
-      html: <p>論理サーバーでホストされている単一データベースを、予測可能なパフォーマンスで単一データベースを必要とする SaaS アプリケーションやマイクロサービスに使用します。</p>
+      html: <p>SQL Database サーバーで管理されている単一データベースを、予測可能なパフォーマンスの単一データベースを必要とする SaaS アプリケーションやマイクロサービスに使用します。</p>
       image:
         src: media/index/i_db.svg
       title: 単一データベース
@@ -64,7 +65,7 @@ sections:
         src: media/index/i_elasticpool.svg
       title: エラスティック プール
     - href: /azure/sql-database/sql-database-managed-instance-index
-      html: <p>Managed Instance を使用すると、データベース コードの変更を最小またはゼロに抑えながら、オンプレミス データベースをフル マネージド Azure PaaS データベース サービスに簡単に移行できます。</p>
+      html: <p>マネージド インスタンスを使用して、オンプレミス データベースからの移行に必要なデータベース コードの変更を最小またはゼロに抑えて、Azure クラウドでホストされたフル マネージド SQL Server Database エンジン インスタンスを取得します。</p>
       image:
         src: media/index/i_mi.svg
       title: マネージド インスタンス
@@ -103,58 +104,36 @@ sections:
         src: media/index/logo_arm.svg
       title: Azure Resource Manager テンプレート
     rows:
-    - title: 1 つの SQL データベースの作成
+    - title: 単一データベースの作成
       values:
-      - href: /azure/sql-database/sql-database-get-started-portal
+      - href: /azure/sql-database/sql-database-single-database-get-started
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
-      - href: 
-    - title: SQL マネージド インスタンスの作成
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create
+    - title: エラスティック プールの作成
       values:
-      - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
-    - title: SQL エラスティック プールの作成
-      values:
-      - href: 
+      - href: /azure/sql-database/sql-database-elastic-pool-manage
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
       - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
-    - title: 1 つの SQL データベースのスケーリング
-      values:
-      - href: 
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
-      - href: 
-    - title: SQL エラスティック プールのスケーリング
-      values:
-      - href: 
-      - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
-      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
-    - title: マネージド インスタンスのスケーリング
-      values:
-      - href: 
-      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
-      - href: 
-    - title: マネージド インスタンスの Azure ネットワークの構成
+    - title: マネージド インスタンスの作成
       values:
       - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: 
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment
+      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
+      - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell.md
+      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: SQL DB を使用してデータベースを作成、管理、移行する方法について説明します
+    text: SQL Database を使用してデータベースを作成、管理、移行する方法について説明します
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> または <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> を使用して新しい SQL データベースのスキーマを作成および設計する
-    - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">データベースの復元</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a>、または <a href="/azure/sql-database/sql-database-import">BACPAC インポート</a>を使用して、既存のデータベースを Azure に移行する
+    - html: クイック スタート ガイドを使用して、<a href="/azure/sql-database/sql-database-single-database-quickstart-guide">単一データベース</a>と<a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">マネージド インスタンス</a>の使用を開始する。
+    - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> または <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> を使用して新しい単一データベースのスキーマを作成および設計する
+    - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">ネイティブな SQL Server バックアップ ファイル</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a>、または <a href="/azure/sql-database/sql-database-import">BACPAC ファイルのインポート</a>を使用して、既存のデータベースを Azure に移行する
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">SQL Database をセキュリティ保護する</a>
-    - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理的に分散したデータベース</a>を使用してデータをグローバルに分散する
+    - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geo 分散型データベース</a>を使用してデータをグローバルに分散する
 - title: Microsoft Learn でスキルを身に付ける
   items:
   - type: list
@@ -196,7 +175,7 @@ sections:
     className: cardsD
     items:
     - title: コマンド ライン
-      html: <p><a href="/powershell/module/azurerm.sql/#sql">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell (エラスティック データベース)</a></p><p><a href="/cli/azure/sql">Azure CLI</a></p>
+      html: <p><a href="/powershell/module/Az.Sql/">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell (エラスティック データベース)</a></p><p><a href="/cli/azure/sql">Azure CLI</a></p>
     - title: Languages
       html: <p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>
     - title: REST

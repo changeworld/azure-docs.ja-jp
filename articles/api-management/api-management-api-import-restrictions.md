@@ -14,27 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: bad87931feb11012f23f0ef19bd853b38566c07c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 251caa840446e75ff13d9b4dcebcbae3a36473c8
+ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106826"
+ms.lasthandoff: 01/14/2019
+ms.locfileid: "54265449"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 ## <a name="about-this-list"></a>このリストについて
 API をインポートするときに、制限や ID の問題が発生し、修正しないと正常にインポートできない場合があります。 この記事ではこうした内容について、API のインポート形式別に説明します。
 
 ## <a name="open-api"> </a>API を開く/Swagger
-Open API ドキュメントのインポートでエラーが発生した場合は、Azure Portal のデザイナー (デザイン - フロント エンド - Open API 仕様エディター)、または <a href="https://editor.swagger.io">Swagger Editor</a> などのサードパーティ ツールを使用して、そのドキュメントが有効であることを確認してください。
 
-* OpenAPI 用の JSON 形式のみがサポートされています。
-* パスとクエリの両方の間で必要なパラメーターは、一意の名前が必要です。 ( OpenAPI では、 パラメーター名が、パス、クエリ、ヘッダーなどの場所内で一意であることだけが必要です。  しかし、 API Management では、パスとクエリの両方のパラメーターで判別する操作を許可します ( OpenAPI はサポートしません)。 したがって、 URL テンプレート　全体の中で、一意であるパラメーターの名前が必要です。)
-* **$ref** プロパティを使用して参照されるスキーマには、他の **$ref** プロパティを含めることができません。
+Open API ドキュメントのインポートでエラーが発生した場合は、事前に検証を行っていることを確認します。 これは、Azure portal でデザイナーを使用する ([デザイン] - [フロント エンド] - [OpenAPI 仕様エディター]) か、<a href="https://editor.swagger.io">Swagger Editor</a> などのサードパーティ ツールを使用して実行できます。
+
+### <a name="open-api-general"> </a>全般
+
+* パスとクエリの両方の間で必要なパラメーターは、一意の名前が必要です。 (OpenAPI では、パラメーター名は、パス、クエリ、ヘッダーなどの場所でのみ一意である必要があります。 ただし、API Management では、パスのパラメーターとクエリのパラメーターの両方によって操作を区別できます (これは OpenAPI ではサポートされていません)。 このため、URL テンプレート　全体の中で、パラメーターの名前を一意にする必要があります。)
 * **$ref** ポインターは、外部ファイルを参照できません。
 * サポートされている拡張子は、**x-ms-paths** と **x-servers** のみです。
 * カスタム拡張子は、インポート時に無視され、エクスポートでは保存されず、保持もされません。
-* **再帰** - APIM では、再帰的に定義される定義 (自身を参照する定義など) はサポートされていません。
+* **再帰** - API Management では、再帰的に定義される定義はサポートされていません (たとえば、それ自体を参照するスキーマ)。
+* ソース ファイルの URL (使用できる場合) が、相対的なサーバーの URL に適用されます。
+
+### <a name="open-api-v2"> </a>OpenAPI バージョン 2
+
+* JSON 形式のみがサポートされています。
+
+### <a name="open-api-v3"> </a>OpenAPI バージョン 3
+
+* 多数の**サーバー**が指定された場合、API Management では、最初の HTTPS URL の選択が試行されます。 HTTPS URL がない場合は、最初の HTTP URL が使用されます。 HTTP URL がない場合、サーバーの URL は空になります。
+* **Examples** はサポートされていませんが、**example** はサポートされています。
+* **Multipart/form-data** はサポートされていません。
 
 > [!IMPORTANT]
 > OpenAPI のインポートに関する重要な情報とヒントについては、この[ドキュメント](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/)を参照してください。

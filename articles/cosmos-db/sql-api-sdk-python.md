@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 01f6fe3ef309f19896befe61512d524a8543745f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 9903339cbf0958893fb0d11a8c1b6ab7d156aae7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041460"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548219"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Python SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -30,20 +30,14 @@ ms.locfileid: "54041460"
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[PyPI](https://pypi.org/project/azure-cosmos)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)</td></tr>
-
-<tr><td>**SDK のインストール手順**</td><td>[Python SDK のインストール手順](https://github.com/Azure/azure-cosmos-python)</td></tr>
-
-<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-cosmos-python)</td></tr>
-
-<tr><td>**作業開始**</td><td>[Python SDK の開始](sql-api-python-application.md)</td></tr>
-
-<tr><td>**現在サポートされているプラットフォーム**</td><td>[Python 2.7](https://www.python.org/downloads/) と [Python 3.5](https://www.python.org/downloads/)</td></tr>
-</table></br>
+| |  |
+|---|---|
+|**SDK のダウンロード**|[PyPI](https://pypi.org/project/azure-cosmos)|
+|**API ドキュメント**|[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
+|**SDK のインストール手順**|[Python SDK のインストール手順](https://github.com/Azure/azure-cosmos-python)|
+|**SDK への協力**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
+|**作業開始**|[Python SDK の開始](sql-api-python-application.md)|
+|**現在サポートされているプラットフォーム**|[Python 2.7](https://www.python.org/downloads/) と [Python 3.5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>リリース ノート
 
@@ -177,7 +171,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 | [1.6.0](#1.6.0) |2016 年 3 月 29 日 |--- |
 | [1.5.0](#1.5.0) |2016 年 1 月 3 日 |--- |
 | [1.4.2](#1.4.2) |2015 年 10 月 6 日 |--- |
-| [1.4.1](#1.4.1) |2015 年 10 月 6 日 |--- |
+| 1.4.1 |2015 年 10 月 6 日 |--- |
 | [1.2.0](#1.2.0) |2015 年 8 月 6 日 |--- |
 | [1.1.0](#1.1.0) |2015 年 7 月 9 日 |--- |
 | [1.0.1](#1.0.1) |2015 年 5 月 25 日 |--- |

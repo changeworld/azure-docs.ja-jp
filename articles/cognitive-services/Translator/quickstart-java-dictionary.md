@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Java と Translator Text API を使って、特定の用語に対する翻訳の代替候補とその用例を取得する方法について説明します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 001aa2a813816562cdc5e95a00b858d8958a6756
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5c2f85e6417c3185df58e757f9831ef171e39add
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157821"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181896"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>クイック スタート:Java を使用して 2 か国語辞書で単語を検索する
 
@@ -74,7 +74,7 @@ dependencies {
 サンプル アプリ用のフォルダーを作成しましょう。 作業ディレクトリから、次のコマンドを実行します。
 
 ```console
-mkdir -p src/main/java
+mkdir -p src\main\java
 ```
 
 次に、このフォルダー内に `AltTranslation.java` というファイルを作成します。
@@ -171,6 +171,12 @@ public static void main(String[] args) {
 
 ```console
 gradle build
+```
+
+ビルドが完了したら、次のコマンドを実行します。
+
+```console
+gradle run
 ```
 
 ## <a name="sample-response"></a>応答のサンプル

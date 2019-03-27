@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 19a842eacb00e877d31712febeeebc72cbdd25a0
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 7626b8359befe234a981ee3d5de1c7cedc5bdaa5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743172"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007689"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート (アーカイブ)
 
@@ -41,13 +41,13 @@ HDInsight の 2018 年 6 月のリリースは、ユーザーに役立つ多数�
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>HDInsight の 2017 年 8 月 1 日リリース
 
 | タイトル | 説明 | 影響を受ける領域  | クラスターの種類  | 
-| --- | --- | --- | --- | --- |
-| HDInsight での Microsoft R Server 9.1 の リリース |HDInsight では、HDInsight での Microsoft R Server 9.1 クラスターのプロビジョニングをサポートするようになりました。 Microsoft R Server 9.1 リリースの詳細については、[このブログ](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/)をご覧ください。 |Service |R Server |
-| HDInsight 3.6 に Hadoop スタックの新バージョンを搭載|<ul><li>更新されたバージョンの詳細な一覧については、[HDInsight で使用可能な Apache Hadoop コンポーネント バージョン](hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)に関するページをご覧ください。</li><li>Hadoop スタックの最新バージョンで修正されたバグの一覧については、「[Apache Patch Information (Apache パッチ情報)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html)」をご覧ください。</li><li>HDP 2.6.1 (現在 HDInsight 3.6 で利用可能) の間での破壊的変更の一覧については、[https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html) を参照してください。</li><li>HDP 2.6.1 の既知の問題の一覧については、「[Known issues (既知の問題)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html)」をご覧ください。</li></ul> |Service |All |該当なし |
-| インタラクティブ Hive (プレビュー) クラスターの更新 |<ul><li><b>機能改善。</b> メタデータをキャッシュすることによってバックエンド SQL への負荷を削減し、すべてのメタデータ操作のパフォーマンスを向上させるキャッシュ metastore を実装。  この改善は、すべてのインタラクティブ Apache Hive クラスターに適用されています。 詳細については、[https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520) を参照してください。</li><li><b>機能改善。</b> パーティションの動的読み込みを最適化。 詳細については、[https://issues.apache.org/jira/browse/HIVE-14204](https://issues.apache.org/jira/browse/HIVE-14204) を参照してください。</li><li><b>機能改善。</b> Linux 上の HDInsight の構成を最適化。</li><li><b>バグ修正。</b> `CredentialProviderFactory$getProviders` がスレッドセーフではない。 この問題は解決されました。 詳細については、[https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195) を参照してください。</li><li><b>バグ修正。</b> WASB ドライバーの `liststatus` API の CPU 使用率が高いため、ATS のパフォーマンスが悪化する。 この問題は解決されました。 詳細については、[https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154) を参照してください。</li></ul> |Service |対話型 Hive (プレビュー) |
-| Hadoop クラスターの更新 |Templeton ジョブ操作の信頼性が向上。 詳細については、[https://issues.apache.org/jira/browse/HIVE-15947](https://issues.apache.org/jira/browse/HIVE-15947) を参照してください |Service |Hadoop |
-| YARN の更新 | HDInsight で (コストを増やすことなく) 250 GB の Ambari データベースが作成されるようになり、カスタマー エクスペリエンスが向上。 この変更により、ATS がいっぱいになる状態が回避されるため、パフォーマンスの改善が見込めます。 |Service |All |
-| Spark の更新 | Spark 2.1.1 のリリース。 詳細については、[Apache Spark Release 2.1.1](https://spark.apache.org/releases/spark-release-2-1-1.html) に関するページをご覧ください。 | Service | Spark |
+| --- | --- | --- | --- |
+| HDInsight での Microsoft R Server 9.1 の リリース |HDInsight では、HDInsight での Microsoft R Server 9.1 クラスターのプロビジョニングをサポートするようになりました。 |Service |R Server |
+| HDInsight 3.6 に Hadoop スタックの新バージョンを搭載|<ul><li>更新されたバージョンの詳細な一覧については、[HDInsight で使用可能な Apache Hadoop コンポーネント バージョン](hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)に関するページをご覧ください。</li><li>Hadoop スタックの最新バージョンで修正されたバグの一覧については、「[Apache Patch Information (Apache パッチ情報)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html)」をご覧ください。</li><li>HDP 2.6.1 (現在 HDInsight 3.6 で利用可能) の間での破壊的変更の一覧については、[https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html) を参照してください。</li><li>HDP 2.6.1 の既知の問題の一覧については、「[Known issues (既知の問題)](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html)」をご覧ください。</li></ul> |Service |All |
+| インタラクティブ Hive (プレビュー) クラスターの更新 |<ul><li><b>機能改善。</b> メタデータをキャッシュすることによってバックエンド SQL への負荷を削減し、すべてのメタデータ操作のパフォーマンスを向上させるキャッシュ metastore を実装。  この改善は、すべてのインタラクティブ Apache Hive クラスターに適用されています。 詳細については、[https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520) を参照してください。</li><li><b>機能改善。</b> パーティションの動的読み込みを最適化。 詳細については、[https://issues.apache.org/jira/browse/HIVE-14204](https://issues.apache.org/jira/browse/HIVE-14204) を参照してください。</li><li><b>機能改善。</b> Linux 上の HDInsight の構成を最適化。</li><li><b>バグ修正。</b> `CredentialProviderFactory$getProviders` がスレッドセーフではない。 この問題は解決されました。 詳細については、[https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195) を参照してください。</li><li><b>バグ修正。</b> WASB ドライバーの `liststatus` API の CPU 使用率が高いため、ATS のパフォーマンスが悪化する。 この問題は解決されました。 詳細については、[https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154) を参照してください。</li></ul> |Service |対話型 Hive (プレビュー) | |
+| Hadoop クラスターの更新 |Templeton ジョブ操作の信頼性が向上。 詳細については、[https://issues.apache.org/jira/browse/HIVE-15947](https://issues.apache.org/jira/browse/HIVE-15947) を参照してください |Service |Hadoop | |
+| YARN の更新 | HDInsight で (コストを増やすことなく) 250 GB の Ambari データベースが作成されるようになり、カスタマー エクスペリエンスが向上。 この変更により、ATS がいっぱいになる状態が回避されるため、パフォーマンスの改善が見込めます。 |Service |All | |
+| Spark の更新 | Spark 2.1.1 のリリース。 詳細については、[Apache Spark Release 2.1.1](https://spark.apache.org/releases/spark-release-2-1-1.html) に関するページをご覧ください。 | Service | Spark | |
 
   
 

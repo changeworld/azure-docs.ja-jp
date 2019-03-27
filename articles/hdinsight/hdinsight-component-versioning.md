@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: kakampf
-ms.openlocfilehash: 3a8b3a22eb4bdaed0142f8afc6f92128be32eca3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 7da765bda815e9112dac809d259fd417dc4d866e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971122"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981096"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは
 
@@ -76,9 +76,9 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 | HDInsight のバージョン | HDP のバージョン | VM の OS | リリース日 | サポート有効期限 | 提供終了日 | 高可用性 |  Azure Portal での可用性 | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 <br> (プレビュー) |HDP 3.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |[はい] |[はい] |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | | |[はい] |[はい] |
-| HDInsight 3.5 <br> (Spark)* |HDP 2.6 |Ubuntu 16.0.4 LTS |2016 年 9 月 30 日 |2019 年 3 月 13 日 |2019 年 3 月 13 日 |[はい] |[はい] |
+| HDInsight 4.0 <br> (プレビュー) |HDP 3.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |はい |はい |
+| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | | |はい |はい |
+| HDInsight 3.5 <br> (Spark)* |HDP 2.6 |Ubuntu 16.0.4 LTS |2016 年 9 月 30 日 |2019 年 3 月 13 日 |2019 年 3 月 13 日 |はい |はい |
 
 *&ast; Spark クラスターの種類についてのみ、HDInsight 3.5 のサポートが延長されました*
 
@@ -92,14 +92,14 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 | HDInsight のバージョン | HDP のバージョン | VM の OS | リリース日 | サポート有効期限 | 提供終了日 | 高可用性 |  Azure Portal での可用性 | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.5 <br> (Spark 以外) |HDP 2.5 |Ubuntu 16.0.4 LTS |2016 年 9 月 30 日 |2017 年 9 月 5 日 |2018 年 6 月 28 日 |[はい] |いいえ  |
-| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016 年 3 月 29 日 |2016 年 12 月 29 日 |2018 年 1 月 9 日 |[はい] |いいえ  |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2015 年 12 月 2 日 |2016 年 6 月 27 日 |2018 年 7 月 31日 |[はい] |いいえ  |
-| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2015 年 12 月 2 日 |2016 年 6 月 27 日 |2017 年 7 月 31 日 |[はい] |いいえ  |
-| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012 R2 |2015 年 2 月 18 日 |2016 年 3 月 1 日 |2017 年 4 月 1 日 |[はい] |いいえ  |
-| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |2014 年 6 月 24 日 |2015 年 5 月 18 日 |2016 年 6 月 30 日 |[はい] |いいえ  |
-| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |2014 年 2 月 11 日 |2014 年 9 月 17 日 |2015 年 6 月 30 日 |[はい] |いいえ  |
-| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |2013 年 10 月 28 日 |2014 年 5 月 12 日 |2015 年 5 月 31 日 |[はい] |いいえ  |
+| HDInsight 3.5 <br> (Spark 以外) |HDP 2.5 |Ubuntu 16.0.4 LTS |2016 年 9 月 30 日 |2017 年 9 月 5 日 |2018 年 6 月 28 日 |はい |いいえ  |
+| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |2016 年 3 月 29 日 |2016 年 12 月 29 日 |2018 年 1 月 9 日 |はい |いいえ  |
+| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2015 年 12 月 2 日 |2016 年 6 月 27 日 |2018 年 7 月 31日 |はい |いいえ  |
+| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2015 年 12 月 2 日 |2016 年 6 月 27 日 |2017 年 7 月 31 日 |はい |いいえ  |
+| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012 R2 |2015 年 2 月 18 日 |2016 年 3 月 1 日 |2017 年 4 月 1 日 |はい |いいえ  |
+| HDInsight 3.1 |HDP 2.1 |Windows Server 2012 R2 |2014 年 6 月 24 日 |2015 年 5 月 18 日 |2016 年 6 月 30 日 |はい |いいえ  |
+| HDInsight 3.0 |HDP 2.0 |Windows Server 2012 R2 |2014 年 2 月 11 日 |2014 年 9 月 17 日 |2015 年 6 月 30 日 |はい |いいえ  |
+| HDInsight 2.1 |HDP 1.3 |Windows Server 2012 R2 |2013 年 10 月 28 日 |2014 年 5 月 12 日 |2015 年 5 月 31 日 |はい |いいえ  |
 | HDInsight 1.6 |HDP 1.1 | |2013 年 10 月 28 日 |2014 年 4 月 26 日 |2015 年 5 月 31 日 |いいえ  |いいえ  |
 
 > [!NOTE]  
@@ -228,16 +228,36 @@ _提供終了日_ とは、その日を過ぎると HDInsight でクラスター
 
 * ブラジル南部と西日本を除くすべてのサポートされているリージョン:
 
-  | クラスターの種類 | Hadoop | hbase | Interactive Query | Storm | Spark  | ML Server |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | ヘッド: 既定の VM サイズ |D12 v2 |D12 v2 | D13 v2 |A3 |D12 v2 |D12 v2 |
-  | ヘッド: 推奨される VM サイズ |D3 v2、<br/> D4 v2、<br/> D12 v2 |D3 v2、<br/> D4 v2、<br/> D12 v2  | D13、<br/> D14 |A4 v2、<br/> A8 v2、<br/> A2m v2 |D12 v2、<br/> D13 v2、<br/> D14 v2 |D12 v2、<br/> D13 v2、<br/> D14 v2 |
-  | worker: 既定の VM サイズ |D4 v2 |D4 v2| D14 v2|D3 v2 |D13 v2 | D4 v2 |
-  | worker: 推奨される VM サイズ |D3 v2、<br/> D4 v2、<br/> D12 v2 |D3 v2、<br/> D4 v2、<br/> D12 v2  | D13、<br/> D14 |D3 v2、<br/> D4 v2、<br/> D12 v2 |D4 v2、<br/> D12 v2、<br/> D13 v2、<br/> D14 v2 |D4 v2、<br/> D12 v2、<br/> D13 v2、<br/> D14 v2 |
-  | ZooKeeper: 既定の VM サイズ | |A4 v2 |A4 v2 |A4 v2 | | A2 v2|
-  | ZooKeeper: 推奨される VM サイズ | |A4 v2、<br/> A8 v2、<br/> A2m v2 | | A2 v2、<br/> A4 v2、<br/> A8 v2 | | |
-  | エッジ: 既定の VM サイズ | | | | | |D4 v2 |
-  | エッジ: 推奨される VM サイズ | | | | | |D4 v2、<br/> D12 v2、<br/> D13 v2、<br/> D14 v2 |
+|クラスターの種類|Hadoop|hbase|Interactive Query|Storm|Spark|ML Server|Kafka|
+|---|---|---|---|---|---|---|---|
+|ヘッド: 既定の VM サイズ|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
+|ヘッド: 推奨される VM サイズ|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
+||D4 v2|D4 v2|D14|A8 v2|D13 v2|D13 v2|D3 v2|
+||D12 v2|D12 v2|E16 v3|A2m v2|D14 v2|D14 v2|D4 v2|
+||E4 v3|E4 v3|E32 v3|E4 v3|E4 v3|E4 v3|D12 v2|
+|worker: 既定の VM サイズ|D4 v2|D4 v2|D14 v2|D3 v2|D13 v2|D4 v2|4 D12v2 (ブローカーあたり 2 S30 ディスク)|
+|worker: 推奨される VM サイズ|D3 v2|D3 v2|D13|D3 v2|D4 v2|D4 v2|D13 v2|
+||D4 v2|D4 v2|D14|D4 v2|D12 v2|D12 v2|DS12 v2|
+||D12 v2|D12 v2|E16 v3|D12 v2|D13 v2|D13 v2|DS13 v2|
+||E4 v3|E4 v3|E20 v3|E4 v3|D14 v2|D14 v2|E4 v3|
+||||E32 v3||E16 v3|E16 v3|ES4 v3|
+||||E64 v3||E20 v3|E20 v3|E8 v3|
+||||||E32 v3|E32 v3|ES8 v3|
+||||||E64 v3|E64 v3||
+|ZooKeeper: 既定の VM サイズ||A4 v2|A4 v2|A4 v2||A2 v2|D3v2|
+|ZooKeeper: 推奨される VM サイズ||A4 v2||A2 v2|||A2M v2|
+|||A8 v2||A4 v2|||D3 v2|
+|||A2m v2||A8 v2|||E8 v3|
+|エッジ: 既定の VM サイズ||||||D4 v2||
+|エッジ: 推奨される VM サイズ||||||D4 v2||
+|||||||D12 v2||
+|||||||D13 v2||
+|||||||D14 v2||
+|||||||E16 v3||
+|||||||E20 v3||
+|||||||E32 v3||
+|||||||E64 v3||
+
 * ブラジル南部と西日本のみ (v2 サイズはありません):
 
   | クラスターの種類 | Hadoop | hbase | Interactive Query |Storm | Spark | ML サービス |

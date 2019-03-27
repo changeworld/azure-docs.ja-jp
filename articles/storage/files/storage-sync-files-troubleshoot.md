@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 01/31/2019
 ms.author: jeffpatt
-ms.component: files
-ms.openlocfilehash: 852ffdafefeef7f4b8fd6bf3a9c5d175d872e077
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.subservice: files
+ms.openlocfilehash: 52e0521217fb99bc5fac3fdde8f43f9c80f86ac7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157634"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194239"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -145,7 +145,7 @@ Set-AzureRmStorageSyncServerEndpoint `
 
 サーバー エンドポイントでは、次の理由により同期アクティビティが記録されない場合があります。
 
-- サーバーにアクティブな VSS 同期セッション (SnapshotSync) が存在する。 あるサーバー エンドポイントで VSS 同期セッションがアクティブな場合、その VSS 同期セッションが完了するまで、同じボリューム上の他のサーバー エンドポイントは同期セッションを開始できません。
+- 4.3.0.0 またはそれよりも古いバージョンのエージェントがインストールされており、アクティブな VSS 同期セッション (SnapshotSync) がサーバーに存在している。 あるサーバー エンドポイントで VSS 同期セッションがアクティブな場合、その VSS 同期セッションが完了するまで、同じボリューム上の他のサーバー エンドポイントは同期セッションを開始できません。 この問題を解決するには、VSS 同期セッションがアクティブなときにボリュームで複数のサーバー エンドポイントの同期をサポートするエージェント バージョン 5.0.2.0 以降をインストールします。
 
     サーバー上の現在の同期アクティビティを確認するには、「[現在の同期セッションの進行状況を監視するにはどうすればよいですか。](#how-do-i-monitor-the-progress-of-a-current-sync-session)」を参照してください。
 
@@ -251,8 +251,8 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 Azure File Sync は、1 日 1 回サーバー上で一時 VSS スナップショットを作成して、開くハンドルを含むファイルを同期します。 |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | ファイルが変更されましたが、まだ同期によって変更が検出されていません。この変更が検出された後に同期が復旧します。 | 必要なアクションはありません。 |
-| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Azure ファイル共有の制限に達したため、ファイルを同期できません。 | この問題を解決するには、トラブルシューティング ガイドの「[Azure のファイル共有ストレージの上限に到達しました](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)」をご覧ください。 |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | このエラーは、ファイルがサポートされていないソリューション (NTFS EFS など) によって暗号化されている場合、または削除保留中状態の場合に、発生する可能性があります。 | ファイルがサポートされていないソリューションによって暗号化されている場合は、ファイルの暗号化を解除し、サポートされている暗号化ソリューションを使用します。 サポートされているソリューションの一覧については、計画ガイドの「[暗号化ソリューション](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#encryption-solutions)」セクションをご覧ください。 ファイルが削除保留中状態の場合は、開いているファイルのすべてのハンドルが閉じられると、ファイルは削除されます。 |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Azure ファイル共有の制限に達したため、ファイルを同期できません。 | この問題を解決するには、トラブルシューティング ガイドの「[Azure のファイル共有ストレージの上限に到達しました](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)」をご覧ください。 |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | このエラーは、ファイルがサポートされていないソリューション (NTFS EFS など) によって暗号化されている場合、または削除保留中状態の場合に、発生する可能性があります。 | ファイルがサポートされていないソリューションによって暗号化されている場合は、ファイルの暗号化を解除し、サポートされている暗号化ソリューションを使用します。 サポートされているソリューションの一覧については、計画ガイドの「[暗号化ソリューション](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)」セクションをご覧ください。 ファイルが削除保留中状態の場合は、開いているファイルのすべてのハンドルが閉じられると、ファイルは削除されます。 |
 | 0x20 | 32 | ERROR_SHARING_VIOLATION | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同期中にファイルが変更されたため、再度同期する必要があります。 | 必要なアクションはありません。 |
 
@@ -538,7 +538,7 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 | **エラー文字列** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **修復が必要か** | はい |
 
-ファイル単位の同期エラーが多数あると、同期セッションが失敗し始める可能性があります。 この状態のトラブルシューティング方法については、「[ファイル/ディレクトリ単位の同期エラーのトラブルシューティング](#troubleshooting-per-file-directory-sync-errors)」を参照してください。
+ファイル単位の同期エラーが多数あると、同期セッションが失敗し始める可能性があります。 <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
 
 > [!NOTE]
 > Azure File Sync は、1 日 1 回サーバー上で一時 VSS スナップショットを作成して、開くハンドルを含むファイルを同期します。
@@ -804,24 +804,19 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 次の各セクションでは、クラウド階層化の問題のトラブルシューティングを行い、問題がクラウド ストレージの問題かサーバーの問題かを確認する方法を示します。
 
 <a id="monitor-tiering-activity"></a>**サーバー上の階層化アクティビティを監視する方法**  
-サーバー上の階層化アクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの [アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent] の下) にあるイベント ID 9002、9003、9016、および 9029 を使用します。
-
-- イベント ID 9002 は、サーバー エンドポイントの非実体化の統計を示します。 たとえば、TotalGhostedFileCount、SpaceReclaimedMB などです。
+サーバー上の階層化アクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの [アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent] の下) にあるイベント ID 9003、9016、9029 を使用します。
 
 - イベント ID 9003 は、サーバー エンドポイントのエラー分布を示します。 たとえば、Total Error Count、ErrorCode などです。エラー コードごとに 1 つのイベントがログ記録されます。
-
 - イベント ID 9016 は、ボリュームの非実体化の結果を示します。 たとえば、空き領域の割合、セッション内の非実体化されたファイルの数、非実体化が失敗したファイルの数などです。
-
-- イベント ID 9029 は、非実体化セッションの情報を示します。 たとえば、セッション内の試行されたファイルの数、セッション内の階層化されたファイルの数、既に階層化されているファイルの数などです。
+- イベント ID 9029 では、サーバー エンドポイントの非実体化セッション情報が提供されます。 たとえば、セッション内の試行されたファイルの数、セッション内の階層化されたファイルの数、既に階層化されているファイルの数などです。
 
 <a id="monitor-recall-activity"></a>**サーバー上の呼び戻しアクティビティを監視する方法**  
-サーバー上の呼び戻しアクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの [アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent] の下) にあるイベント ID 9005、9006、9007 を使用します。 これらのイベントは 1 時間ごとにログ記録されます。
+サーバー上の呼び戻しアクティビティを監視するには、テレメトリ イベント ログ (イベント ビューアーの [アプリケーションとサービス]\[Microsoft]\[FileSync]\[Agent] の下) にあるイベント ID 9005、9006、9009、9059 を使用します。
 
 - イベント ID 9005 は、サーバー エンドポイントの呼び戻しの信頼性を示します。 たとえば、アクセスされた一意のファイルの合計数、アクセスが失敗した一意のファイルの合計数などです。
-
 - イベント ID 9006 は、サーバー エンドポイントの呼び戻しエラーの分布を示します。 たとえば、失敗した要求の合計数、ErrorCode などです。エラー コードごとに 1 つのイベントがログ記録されます。
-
-- イベント ID 9007 は、サーバー エンドポイントの呼び戻しのパフォーマンスを示します。 たとえば、TotalRecallIOSize、TotalRecallTimeTaken などです。
+- イベント ID 9009 では、サーバー エンドポイントの呼び戻しセッション情報が提供されます。 たとえば、DurationSeconds、CountFilesRecallSucceeded、CountFilesRecallFailed などです。
+- イベント ID 9059 では、サーバー エンドポイントのアプリケーション呼び戻し分布が提供されます。 たとえば、ShareId、Application Name、TotalEgressNetworkBytes です。
 
 <a id="files-fail-tiering"></a>**階層化に失敗するファイルをトラブルシューティングする**  
 ファイルが Azure ファイルへの階層化に失敗する場合:
@@ -858,6 +853,9 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 意図しない呼び出しは、ファイル エクスプローラーでファイルを参照する場合などの他のシナリオで発生することもあります。 サーバー上でクラウド階層化されたファイルがあるフォルダーをファイル エクスプローラーで開くと、意図しない再呼び出しが発生することがあります。 ウイルス対策ソリューションがサーバーで有効になっている場合よりも、こちらのほうが発生する可能性が高まります。
 
+> [!NOTE]
+>テレメトリ イベント ログでイベント ID 9059 を使用して、呼び戻しの原因となっているアプリケーションを特定します。 このイベントは、サーバー エンドポイントのアプリケーション呼び戻し分布を提供し、1 時間に 1 回ログに記録されます。
+
 ## <a name="general-troubleshooting"></a>一般的なトラブルシューティング
 サーバーで Azure File Sync の問題が発生する場合は、次の手順を完了します。
 1. イベント ビューアーで、テレメトリ イベント ログ、操作イベント ログ、および診断イベント ログをレビューします。
@@ -884,6 +882,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 6. ログファイルとトレース ファイルを含む .zip ファイルが、指定した出力ディレクトリに保存されます。
 
 ## <a name="see-also"></a>関連項目
+- [Azure File Sync の監視](storage-sync-files-monitoring.md)
 - [Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md)
 - [Windows での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)
 - [Linux での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-linux-file-connection-problems.md)

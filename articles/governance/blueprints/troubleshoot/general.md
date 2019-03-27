@@ -1,20 +1,20 @@
 ---
 title: 一般的なエラーのトラブルシューティング
-description: ブループリントの作成や割り当てで発生する問題を解決する方法について説明します
+description: ブループリントの作成、割り当て、および削除で発生する問題を解決する方法について説明します
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 40668fed2fcc2a04e39fa3a4d7e8e8923c75ae05
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: cebbc8b61a806663e7cb58e0bf7fbdd589f46cca
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315528"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343308"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 
@@ -52,6 +52,20 @@ ms.locfileid: "53315528"
 #### <a name="resolution"></a>解決策
 
 ブルー プリントを変更して、エラーの詳細に含まれているポリシーと競合しないようにします。 変更できない場合、代替として、ブループリントがポリシーと競合しないようにポリシー割り当てのスコープを変更するという選択肢があります。
+
+### <a name="escape-function-parameter"></a>シナリオ:ブループリント パラメーターが関数である
+
+#### <a name="issue"></a>問題
+
+関数であるブループリント パラメーターが、成果物に渡される前に処理されます。
+
+#### <a name="cause"></a>原因
+
+`[resourceGroup().tags.myTag]` などの関数を使用するブループリント パラメーターを成果物に渡すと、動的関数ではなく、成果物に対して関数が設定されます。
+
+#### <a name="resolution"></a>解決策
+
+関数をパラメーターとして渡すには、ブループリント パラメーターが `[[resourceGroup().tags.myTag]` のようになるように、文字列全体を `[` でエスケープします。 エスケープ文字により、Blueprints によってブループリントが処理されるときに値が文字列として扱われます。 その後、関数は Blueprints によって成果物に配置され、意図したとおりに動的になります。
 
 ## <a name="next-steps"></a>次の手順
 

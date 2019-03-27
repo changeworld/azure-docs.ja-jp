@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 53ef96b561ccaa1480125f2c509381e980084b7a
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: b7d498b34fa3e247d5d4688f8d87213e7707fd86
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636693"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408784"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure データ エクスプローラーの時系列分析
 
@@ -64,7 +64,7 @@ demo_make_series1
     - `byOsVer`:  OS ごとのパーティション分割
 - 実際の時系列データの構造は、各時間ビンごとに集計された値の数値配列です。 視覚化には `render timechart` を使用します。
 
-上の表には、3 つのパーティションがあります。 次のグラフに示すように、OS バージョンごとに Windows 10 (赤)、7 (青)、および 8.1 (緑) の個別の時系列を作成できます。
+上の表には、3 つのパーティションがあります。 個別の時系列を作成できます:次のグラフでは、OS のバージョンごとに Windows 10 (赤)、7 (青)、8.1 (緑):
 
 ![時系列のパーティション](media/time-series-analysis/time-series-partition.png)
 
@@ -77,8 +77,8 @@ demo_make_series1
 
 フィルター処理は信号処理の一般的な方法であり、時系列処理タスク (ノイズの多い信号の円滑化や変化検出など) で有効です。
 - 次の 2 つの一般的なフィルター処理関数があります。
-    - [`series_fir()`](/azure/kusto/query/series-firfunction): FIR フィルターを適用します。 変化検出のための時系列の移動平均と微分の単純な計算に使用します。
-    - [`series_iir()`](/azure/kusto/query/series-iirfunction): IIR フィルターを適用します。 指数平滑法と累積合計に使用します。
+    - [`series_fir()`](/azure/kusto/query/series-firfunction):FIR フィルターを適用します。 変化検出のための時系列の移動平均と微分の単純な計算に使用します。
+    - [`series_iir()`](/azure/kusto/query/series-iirfunction):IIR フィルターを適用します。 指数平滑法と累積合計に使用します。
 - サイズ 5 のビンの新しい移動平均系列 (名前は *ma_num*) をクエリに追加することで、時系列セットに `Extend` を実行します。
 
 ```kusto
@@ -103,7 +103,7 @@ ADX は、時系列の傾向を予測するために、セグメント化され�
 ```kusto
 demo_series2
 | extend series_fit_2lines(y), series_fit_line(y)
-| render linechart
+| render linechart with(xcolumn=x)
 ```
 
 ![時系列回帰](media/time-series-analysis/time-series-regression.png)
@@ -206,7 +206,7 @@ let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));
 let max_t = toscalar(demo_many_series1 | summarize max(TIMESTAMP));  
 demo_many_series1
 | make-series reads=avg(DataRead) on TIMESTAMP in range(min_t, max_t, 1h)
-| render timechart 
+| render timechart with(ymin=0) 
 ```
 
 ![大規模な時系列分析](media/time-series-analysis/time-series-at-scale.png)
@@ -217,25 +217,25 @@ demo_many_series1
 
 ```kusto
 demo_many_series1
-| summarize by Loc, anonOp, DB
+| summarize by Loc, Op, DB
 | count
 ```
 
 |   |   |
 | --- | --- |
 |   | Count |
-|   | 23115 |
+|   | 18339 |
 
-ここで、読み取り回数のメトリックの 23115 の時系列のセットを作成します。 make-series ステートメントに `by` 句を追加し、線形回帰を適用して、最も重要な減少傾向があった上位 2 つの時系列を選択します。
+ここで、読み取り回数のメトリックの 18339 の時系列のセットを作成します。 make-series ステートメントに `by` 句を追加し、線形回帰を適用して、最も重要な減少傾向があった上位 2 つの時系列を選択します。
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
 let max_t = toscalar(demo_many_series1 | summarize max(TIMESTAMP));  
 demo_many_series1
-| make-series reads=avg(DataRead) on TIMESTAMP in range(min_t, max_t, 1h) by Loc, anonOp, DB
+| make-series reads=avg(DataRead) on TIMESTAMP in range(min_t, max_t, 1h) by Loc, Op, DB
 | extend (rsquare, slope) = series_fit_line(reads)
 | top 2 by slope asc 
-| render timechart with(title='Service Traffic Outage for 2 instances (out of 23115)')
+| render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
 ![時系列の上位 2 つ](media/time-series-analysis/time-series-top-2.png)
@@ -246,18 +246,18 @@ demo_many_series1
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
 let max_t = toscalar(demo_many_series1 | summarize max(TIMESTAMP));  
 demo_many_series1
-| make-series reads=avg(DataRead) on TIMESTAMP in range(min_t, max_t, 1h) by Loc, anonOp, DB
+| make-series reads=avg(DataRead) on TIMESTAMP in range(min_t, max_t, 1h) by Loc, Op, DB
 | extend (rsquare, slope) = series_fit_line(reads)
 | top 2 by slope asc
-| project Loc, anonOp, DB, slope 
+| project Loc, Op, DB, slope 
 ```
 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
-|   | Loc | anonOp | DB | 傾き |
-|   | Loc 15 | -3207352159611332166 | 1151 | -102743.910227889 |
-|   | Loc 13 | -3207352159611332166 | 1249 | -86303.2334644601 |
+|   | Loc | 操作 | DB | 傾き |
+|   | Loc 15 | 37 | 1151 | -102743.910227889 |
+|   | Loc 13 | 37 | 1249 | -86303.2334644601 |
 
-2 分以内に、ADX は 20,000 を超える時系列を分析し、読み取り数が突然低下した 2 つの異常な時系列を検出しました。
+2 分以内に、ADX は約 20,000 の時系列を分析し、読み取り数が突然低下した 2 つの異常な時系列を検出しました。
 
 これらの高度な機能と ADX の高速なパフォーマンスを組み合わせることで、時系列分析のためのユニークで強力なソリューションが提供されます。

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/29/2018
+ms.date: 2/8/2019
 ms.author: moderakh
-ms.openlocfilehash: fbb1757cfb1118380e2f7d79566f6dc9832fce23
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1a86ceefdc5c3b60dc4bca5a1ac659534653aa66
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041495"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416277"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -32,24 +32,34 @@ ms.locfileid: "54041495"
 
 SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポートした非同期操作が可能であるという点で、SQL API Java SDK とは異なります。 既存の [SQL API Java SDK](sql-api-sdk-java.md) では、非同期操作はサポートされません。 
 
-<table>
-
-<tr><td>**SDK のダウンロード**</td><td>[Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)</td></tr>
-
-<tr><td>**API ドキュメント**</td><td>[Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._asyncdocumentclient?view=azure-java-stable)</td></tr>
-
-<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-java)</td></tr>
-
-<tr><td>**作業開始**</td><td>[Async Java SDK の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started)</td></tr>
-
-<tr><td>**Code sample**</td><td>[GitHub](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)</td></tr>
-
-<tr><td>**パフォーマンスに関するヒント**</td><td>[GitHub の Readme](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)</td></tr>
-
-<tr><td>**サポートされている最小ランタイム**</td><td>[JDK 8](https://aka.ms/azure-jdks)</td></tr>
-</table></br>
+| |  |
+|---|---|
+| **SDK のダウンロード** | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) |
+|**API ドキュメント** |[Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient?view=azure-java-stable) | 
+|**SDK への協力** | [GitHub](https://github.com/Azure/azure-cosmosdb-java) | 
+|**作業開始** | [Async Java SDK の開始](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started) | 
+|**Code sample** | [GitHub](https://github.com/Azure/azure-cosmosdb-java#usage-code-sample)| 
+| **パフォーマンスに関するヒント**| [GitHub の Readme](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
+| **サポートされている最小ランタイム**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+* 直接モード接続は、一般提供 (GA) になっています。 直接モード接続を使用するサンプルについては、[azure-cosmosdb-java](https://github.com/Azure/azure-cosmosdb-java) GitHub リポジトリをご覧ください。
+* QueryMetrics のサポートが追加されました。
+* 代わりに java.util.List を受け付けるために重要な順序に合わせて、java.util.Collection を受け付ける API を変更しました。 ConnectionPolicy#getPreferredLocations()、JsonSerialization、および PartitionKey(.) でリストを受け付けるようになりました。
+
+### <a name="a-name240-beta-1240-beta-1"></a><a name="2.4.0-beta-1"/>2.4.0-beta-1
+* 直接モード接続のサポートが追加されました。
+* 代わりに java.util.List を受け付けるために重要な順序に合わせて、java.util.Collection を受け付ける API を変更しました。
+  ConnectionPolicy#getPreferredLocations()、JsonSerialization、および PartitionKey(.) でリストを受け付けるようになりました。
+* ゲートウェイ モードでのドキュメント クエリのセッション バグを修正しました。
+* 依存関係をアップグレードしました (netty 0.4.20 [github #79](https://github.com/Azure/azure-cosmosdb-java/issues/79)、RxJava 1.3.8)。
+
+### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
+* 非常に大規模なクエリ応答の処理を修正しました。
+* クライアントをインスタンス化するときのリソース トークン処理を修正しました ([github #78](https://github.com/Azure/azure-cosmosdb-java/issues/78))。
+* 脆弱性のある依存関係 jackson-databind をアップグレードしました ([github #77](https://github.com/Azure/azure-cosmosdb-java/pull/77))。
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
 * リソース リークのバグを修正しました。
@@ -125,6 +135,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.4.0](#2.4.0) |2019 年 2 月 8 日|--- |
+| [2.4.0-beta-1](#2.4.0-beta-1) |2019 年 2 月 4 日|--- |
+| [2.3.1](#2.3.1) |2019 年 1 月 15 日|--- |
 | [2.3.0](#2.3.0) |2018 年 11 月 29 日|--- |
 | [2.2.2](#2.2.2) |2018 年 11 月 8 日|--- |
 | [2.2.1](#2.2.1) |2018 年 11 月 2 日|--- |

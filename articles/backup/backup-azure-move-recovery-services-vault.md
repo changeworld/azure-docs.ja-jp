@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.author: sogup
-ms.openlocfilehash: e1df91a11a474faf3a10dbbb7c99ea058037d685
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0ab626bffa3520af0ea23314cbaed118d66e280f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109147"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56007510"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Azure サブスクリプションとリソース グループをまたいで Recovery Services コンテナーを移動する (限定パブリック プレビュー)
 
@@ -42,9 +42,9 @@ ms.locfileid: "54109147"
 >
 >
 
-## <a name="register-the-subscription-to-move-your-recovery-services-vault"></a>Recovery Services コンテナーの移動のためのサブスクリプションの登録
+## <a name="register-the-source-subscription-to-move-your-recovery-services-vault"></a>Recovery Services コンテナーの移動元となるサブスクリプションの登録
 
-Recovery Services コンテナーを**移動**するためにサブスクリプションを登録するには、PowerShell ターミナルから次のコマンドレットを実行します。
+Recovery Services コンテナーの**移動**元となるサブスクリプションを登録するには、PowerShell ターミナルから次のコマンドレットを実行します。
 
 1. Azure アカウントへのサインイン
 
@@ -61,6 +61,12 @@ Recovery Services コンテナーを**移動**するためにサブスクリプ�
 
   ```
   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+  ```
+
+4. コマンドを実行します
+
+  ```
+  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
   ```
 
 Azure portal または PowerShell を使用して移動操作を開始する前に、サブスクリプションがホワイト リストに登録されるまで 30 分間待機します。

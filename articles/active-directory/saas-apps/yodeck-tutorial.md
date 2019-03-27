@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Yodeck の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Yodeck の統合 | Microsoft Docs
 description: Azure Active Directory と Yodeck の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: b2c8dccb-eeb0-4f4d-a24d-8320631ce819
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
-ms.openlocfilehash: b017efd2c170f543041dcb35a3a3d040389d1dac
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 071054e2ec5fead3ce6181925b3c5f4e99a26736
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436796"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164228"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>チュートリアル: Azure Active Directory と Yodeck の統合
+# <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>チュートリアル:Azure Active Directory と Yodeck の統合
 
 このチュートリアルでは、Yodeck と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -140,7 +141,7 @@ Yodeck で Azure AD のシングル サインオンを構成してテストす�
     
     c. **[アプリのフェデレーション メタデータ URL]** をインポートすると、残りのフィールドが自動的に設定されます。
 
-    d. **[Save]** をクリックします。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -172,7 +173,7 @@ Yodeck で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-yodeck-test-user"></a>Yodeck テスト ユーザーの作成
 
@@ -201,7 +202,7 @@ Yodeck の場合、プロビジョニングは手動で行います。
 
     c. **[メール]** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
 
-    d. 組織の要件に従って、適切な **[アカウントのアクセス許可]** オプションを選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 組織の要件に従って、適切な **[アカウントのアクセス許可]** オプションを選択します。
     
     e. **[Save]** をクリックします。
 
@@ -240,7 +241,7 @@ Yodeck の場合、プロビジョニングは手動で行います。
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Yodeck] タイルをクリックすると、Yodeck アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

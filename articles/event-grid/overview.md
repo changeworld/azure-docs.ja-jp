@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 12/06/2018
+ms.date: 01/06/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 466f7614026866bb038f3c73b23e28e34d9f2e30
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 1fa9eaa5f4ba399622e0b8889ab722e4a4e130a0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321018"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770478"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -44,6 +44,7 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 * Service Bus
 * ストレージ BLOB
 * ストレージ汎用 v2 (GPv2)
+* Azure Maps
 
 ## <a name="event-handlers"></a>イベント ハンドラー
 
@@ -65,7 +66,7 @@ Azure Event Grid には、作業開始にあたり理解する必要がある、
 * **イベント** - 発生内容
 * **イベント ソース** - イベントの発生元
 * **トピック** - 発行元がイベントを送信するエンドポイント
-* **イベント サブスクリプション** - イベントを (時には複数のハンドラーに) ルーティングするエンドポイントまたは組み込みメカニズム。 サブスクリプションは、受信イベントをインテリジェントにフィルター処理するために、ハンドラーによっても使用されます。
+* **イベント サブスクリプション** - イベントを (ときには複数のハンドラーに) ルーティングするエンドポイントまたは組み込みメカニズム。 サブスクリプションは、受信イベントをインテリジェントにフィルター処理するために、ハンドラーによっても使用されます。
 * **イベント ハンドラー** - イベントに反応するアプリまたはサービス
 
 これらの概念の詳細については、「[Azure Event Grid の概念](concepts.md)」を参照してください。
@@ -87,7 +88,7 @@ Event Grid、Event Hubs、および Service Bus の比較については、「[C
 
 ## <a name="what-can-i-do-with-event-grid"></a>Event Grid でできること
 
-Azure Event Grid は、サーバーレス、操作の自動化、および[統合](http://azure.com/integration)作業を大幅に向上する複数の機能を提供します。 
+Azure Event Grid は、サーバーレス、操作の自動化、および[統合](https://azure.com/integration)作業を大幅に向上する複数の機能を提供します。 
 
 ### <a name="serverless-application-architectures"></a>サーバーレス アプリケーション アーキテクチャ
 

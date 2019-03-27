@@ -2,33 +2,23 @@
 title: Azure Stack とデータセンターの統合 - ID
 description: Azure Stack の AD FS をデータセンターの AD FS と統合する方法について説明します。
 services: azure-stack
-author: jeffgilb
+author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/08/19
-ms.author: jeffgilb
-ms.reviewer: wfayed
-keywords: ''
-ms.openlocfilehash: 63ac30728cceae76f869f5529905cd6d3dde9ae2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.date: 03/04/2019
+ms.author: patricka
+ms.reviewer: thoroet
+ms.lastreviewed: 03/04/2019
+ms.openlocfilehash: 5f34991dca4dbb4275033c764981c44492b9920e
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263798"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257810"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
-Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 AD FS を使用したデプロイは、切断モードでの Azure Stack のデプロイとも呼ばれます。
-
-次の表は、2 つの ID の選択間の違いを示します。
-
-||インターネットから切断されている|インターネットに接続されている|
-|---------|---------|---------|
-|課金|容量ベース<br> Enterprise Agreement (EA) のみ|容量ベースまたは従量課金制<br>EA または Cloud Solution Provider (CSP)|
-|ID|AD FS|Azure AD または AD FS|
-|マーケットプレース |サポートされています<br>ライセンス持ち込み (BYOL)|サポートされています<br>ライセンス持ち込み (BYOL)|
-|登録|必須、リムーバブル メディアと<br> 別途接続されているデバイスが必要。|自動|
-|パッチと更新プログラム|必須、リムーバブル メディアと<br> 別途接続されているデバイスが必要。|更新プログラム パッケージはインターネットから<br> Azure Stack に直接ダウンロード可能。|
+Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 接続されているシナリオでは、Azure AD または AD FS を選択できます。 切断されたシナリオでは、AD FS のみがサポートされます。
 
 > [!IMPORTANT]
 > Azure Stack ソリューション全体を再デプロイすることなく、ID プロバイダーを切り替えることはできません。
@@ -43,7 +33,7 @@ AD FS を使用してデプロイすると、既存の Active Directory フォ�
 
 既存の AD FS はアカウント セキュリティ トークン サービス (STS) で、Azure Stack AD FS (リソース STS) に要求を送信します。 Azure Stack で、自動化によりクレーム プロバイダー信頼とメタデータ エンドポイントを、既存の AD FS に対して作成します。
 
-既存の AD FS で、証明書利用者信頼を構成する必要があります。 この手順は自動化によっては実行されず、オペレーターによって構成される必要があります。 Azure Stack のメタデータ エンドポイントは AzureStackStampDeploymentInfo.JSON ファイルに、または特権エンドポイントを介してコマンド `Get-AzureStackInfo` を実行することで記載されます。
+既存の AD FS で、証明書利用者信頼を構成する必要があります。 この手順は自動化によっては実行されず、オペレーターによって構成される必要があります。 AD FS 向けの Azure Stack VIP エンドポイントは、`https://adfs.<Region>.<ExternalFQDN>/` というパターンを使用して作成できます。
 
 また、証明書利用者信頼構成には、マイクロソフトが提供する要求変換ルールを構成する必要があります。
 
@@ -73,7 +63,7 @@ Graph は、単一の Active Directory フォレストとの統合のみをサ�
 
 複数のサイトを持つ Active Directory の展開では、Azure Stack のデプロイに最も近い Active Directory サイトを構成します。 この構成により、Azure Stack Graph サービスで、リモート サイトからグローバル カタログ サーバーを使用してクエリが解決されなくなります。
 
-Azure Stack の[パブリック VIP ネットワーク](azure-stack-network.md#public-vip-network) サブネットを Azure Stack に最も近い Azure AD サイトに追加します。 たとえば、Active Directory にシアトル サイトに Azure Stack がデプロイされたシアトルとレドモンドの 2 つのサイトがある場合、Azure Stack のパブリック VIP ネットワーク サブネットをシアトルの Azure AD サイトに追加します。
+Azure Stack の[パブリック VIP ネットワーク](azure-stack-network.md#public-vip-network) サブネットを Azure Stack に最も近い Active Directory サイトに追加します。 たとえば、Active Directory にシアトルとレドモンドの 2 つのサイトがあり、シアトルのサイトに Azure Stack がデプロイされている場合、Azure Stack のパブリック VIP ネットワーク サブネットを Active Directory のシアトルのサイトに追加します。
 
 Active Directory サイトについて詳しくは、「[サイト トポロジの設計](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)」をご覧ください。
 
@@ -132,7 +122,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 |パラメーター|説明|例|
 |---------|---------|---------|
 |CustomAdfsName|クレーム プロバイダーの名前。<br>AD FS のランディング ページにそのように表示されます。|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|フェデレーション メタデータのリンク|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
+|CustomAD<br>FSFederationMetadataEndpointUri|フェデレーション メタデータのリンク| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
 
 
 ### <a name="trigger-automation-to-configure-claims-provider-trust-in-azure-stack"></a>Azure Stack で自動化をトリガーしてクレーム プロバイダー信頼を構成する
@@ -193,16 +183,21 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 この手順では、Azure Stack で特権エンドポイントと通信可能で、前の手順で作成したメタデータ ファイルにアクセスできるコンピューターを使用します。
 
-1. 管理者特権の Windows PowerShell セッションを開きます。
+1. Windows PowerShell セッションを管理者特権で開き、特権エンドポイントに接続します。
 
    ```PowerShell  
    $federationMetadataFileContent = get-content c:\metadata.xml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
-   Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
    ```
 
-2. お使いの環境に合わせてパラメーターを変更して次のコマンドを実行し、既定のプロバイダー サブスクリプションの所有者を更新します。
+2. これで特権エンドポイントに接続されました。お使いの環境に合わせてパラメーターを変更し、次のコマンドを実行します。
+
+    ```PowerShell
+    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
+    ```
+
+3. お使いの環境に合わせてパラメーターを変更して次のコマンドを実行し、既定のプロバイダー サブスクリプションの所有者を更新します。
 
    ```PowerShell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
@@ -300,7 +295,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 > [!Important]  
 > AD FS は、対話型ログオン セッションにのみ対応しています。 自動化シナリオに対話型ではないログオンを必要とする場合、SPN を使用する必要があります。
 
-SPN の作成について詳しくは、「[AD FS のサービス プリンシパルを作成する](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs)」をご覧ください。
+SPN の作成について詳しくは、「[AD FS のサービス プリンシパルを作成する](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals)」をご覧ください。
 
 
 ## <a name="troubleshooting"></a>トラブルシューティング

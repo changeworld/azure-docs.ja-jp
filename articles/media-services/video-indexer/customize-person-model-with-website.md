@@ -7,14 +7,14 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 321db75b1a286e7de1e38ed3b382ee7dc9fe5902
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 29c32126a5bbe792dd6fe88ae189e09c511d2a22
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283748"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997059"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>Video Indexer Web サイトを使用して人物モデルをカスタマイズする
 

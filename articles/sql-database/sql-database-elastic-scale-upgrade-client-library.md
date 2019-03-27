@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: 395aff83c8983c4f61ca0b1fd1da276de17ec98b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 02c09e5a2ad0c3e23fe641bf445a646477f7db2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190074"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993969"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>最新のエラスティック データベース クライアント ライブラリを使用するためのアプリのアップグレード
 
@@ -47,7 +47,7 @@ ms.locfileid: "54190074"
 
 ***オプション 1:PowerShell を使用してメタデータをアップグレードする***
 
-1. [こちら](http://nuget.org/nuget.exe) から NuGet の最新のコマンド ライン ユーティリティをダウンロードして、フォルダーに保存します。
+1. [こちら](https://nuget.org/nuget.exe) から NuGet の最新のコマンド ライン ユーティリティをダウンロードして、フォルダーに保存します。
 2. コマンド プロンプトを開き、同じフォルダーに移動して、次のコマンドを発行します。`nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
 3. ダウンロードした新しいクライアントの DLL バージョンを含むサブフォルダーに移動します。例:`cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
 4. [スクリプト センター](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)からエラスティック データベース クライアントのアップグレード スクリプトをダウンロードして、DLL が含まれる同じフォルダーに保存します。

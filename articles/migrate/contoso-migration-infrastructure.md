@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 32a489ee6266018ef1160a0870fe236cc6a72d36
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 17ec8eb779dec560cfc5350fecc0fb819e89195a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726986"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340129"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 移行インフラストラクチャを展開する
 
@@ -30,7 +30,7 @@ ms.locfileid: "52726986"
 [記事 1:概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
 記事 2:Azure インフラストラクチャのデプロイ | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズの移行に関するすべての記事で同じインフラストラクチャを使用します。 | この記事の内容は次のとおりです。
 [記事 3:Azure への移行の対象となるオンプレミスのリソースの評価](contoso-migration-assessment.md)  | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | 使用可能
-[記事 4:Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行します。 アプリ データベースの Azure SQL Database Managed Instance への移行には、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用します。 | 使用可能   
+[記事 4: Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行します。 アプリ データベースの Azure SQL Database Managed Instance への移行には、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用します。 | 使用可能   
 [記事 5:Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
 [記事 6:Azure VM および SQL Server AlwaysOn 可用性グループでのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso がアプリを移行します。Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用してアプリのデータベースを AlwaysOn 可用性グループで保護されている SQL Server クラスターに移行します。 | 使用可能
 [記事 7:Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Site Recovery サービスを使用して、Azure VM への Linux osTicket アプリのリフトアンドシフト移行を完了します。 | 使用可能
@@ -94,7 +94,7 @@ Contoso は [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/ente
 - 何らかの理由で Contoso がコミットメントを超えて使うと、Microsoft は差額を請求します。
 - コミットメントを超えた分のコストはすべて同じレートであり、このレートは Contoso のコントラクトに記載されています。 超過に対するペナルティはありません。
 
-### <a name="manage-subscriptions"></a>[サブスクリプションの管理]
+### <a name="manage-subscriptions"></a>サブスクリプションの管理
 
 Azure の料金を支払った後、Contoso は Azure サブスクリプションを管理する方法を決める必要があります。 Contoso は EA を利用しているので、設定できる Azure サブスクリプションの数に制限はありません。
 
@@ -182,7 +182,7 @@ Azure リソース グループは Azure リソースをひとまとめにした
 
 Contoso の管理者は、次の表に示すように Azure リソース グループを設定します。
 
-**[リソース グループ]** | **詳細**
+**リソース グループ** | **詳細**
 --- | ---
 **ContosoCobRG** | このグループには、ビジネスの継続性 (COB) に関連するすべてのリソースが含まれています。  これには、Contoso が Azure Site Recovery サービスおよび Azure Backup サービス用に使用するコンテナーが含まれます。<br/><br/> また、Azure Migrate や Database Migration Service など、移行に使われるリソースも含まれます。
 **ContosoDevRG** | このグループには、開発とテストのリソースが含まれます。
@@ -646,7 +646,7 @@ Contoso は ID とアクセスの制御を構成しているので、ガバナ�
 
 Azure Policy サービスは、リソースを評価して、適用されているポリシー定義に準拠していないリソースをスキャンします。 たとえば、特定の種類の VM だけを許可するポリシーや、リソースが特定のタグを持つポリシーが設定されていることがあります。 
 
-Azure のポリシーではポリシーの定義が指定されており、ポリシー割り当てではポリシーの適用範囲が指定されています。 範囲は、管理グループからリソース グループまでです。 ポリシーの作成と管理の[詳細をご覧ください](https://docs.microsoft.com/azure/azure-policy/create-manage-policy)。
+Azure のポリシーではポリシーの定義が指定されており、ポリシー割り当てではポリシーの適用範囲が指定されています。 範囲は、管理グループからリソース グループまでです。 ポリシーの作成と管理の[詳細をご覧ください](../governance/policy/tutorials/create-and-manage.md)。
 
 Contoso は、いくつかのポリシーを開始する予定です。
 
@@ -781,7 +781,7 @@ Contoso は、これがアプリケーションからどのように見えるか
 
 ASG に関連付けられた NSG は最小限の特権で構成されており、許可されたパケットのみが、ネットワークの 1 つの部分から宛先にフローできます。
 
-**アクション** | **名前** | **ソース** | **ターゲット** | **ポート**
+**アクション** | **Name** | **ソース** | **ターゲット** | **ポート**
 --- | --- | --- | --- | --- 
 ALLOW | AllowiInternetToFE | VNET-HUB-EUS1/IB-TrustZone | APP1-FE 80、443
 ALLOW | AllowWebToApp | APP1-FE | APP1-DB | 1433

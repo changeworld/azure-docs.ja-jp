@@ -1,6 +1,6 @@
 ---
-title: RBAC と REST API を使用してアクセスを管理する | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) と REST API を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
+title: RBAC と REST API を使用して Azure リソースへのアクセスを管理する | Microsoft Docs
+description: ロールベースのアクセス制御 (RBAC) と REST API を使用してユーザー、グループ、アプリケーションの Azure リソースへのアクセスを管理する方法について説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,20 +15,20 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 859a410a4ff9204e8e52fbd2cc3b38823f4bb830
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: c2ef9b0070cc9ac190b773f023ffc18d1b251a41
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435220"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338412"
 ---
-# <a name="manage-access-using-rbac-and-the-rest-api"></a>RBAC と REST API を使用してアクセスを管理する
+# <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>RBAC と REST API を使用して Azure リソースへのアクセスを管理する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 この記事では、RBAC と REST API を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。
+[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 この記事では、RBAC と REST API を使用してユーザー、グループ、アプリケーションのアクセス権を管理する方法を説明します。
 
 ## <a name="list-access"></a>アクセス権の表示
 
-RBAC でアクセス権を一覧表示するには、ロールの割り当てを一覧表示します。 ロールの割り当てを一覧表示するには、いずれかの[ロールの割り当て - 一覧表示](/rest/api/authorization/roleassignments/list) REST API を使用します。 結果を絞り込むには、スコープと任意のフィルターを指定します。 API を呼び出すには、指定スコープでの `Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。 この操作のアクセス権は、いくつかの[組み込みロール](built-in-roles.md)に付与されています。
+RBAC でアクセス権を一覧表示するには、ロールの割り当てを一覧表示します。 ロールの割り当てを一覧表示するには、いずれかの[ロールの割り当て - 一覧表示](/rest/api/authorization/roleassignments/list) REST API を使用します。 結果を絞り込むには、スコープと任意のフィルターを指定します。 API を呼び出すには、指定スコープでの `Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。 この操作のアクセス権は、[Azure リソースの組み込みロール](built-in-roles.md)の一部に付与されています。
 
 1. 次の要求から開始します。
 
@@ -38,7 +38,7 @@ RBAC でアクセス権を一覧表示するには、ロールの割り当てを
 
 1. URI の *{scope}* を、ロールの割り当てを一覧表示するスコープに変更します。
 
-    | スコープ | type |
+    | Scope (スコープ) | type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
@@ -77,7 +77,7 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
     
 1. URI の *{scope}* をロールの割り当てのスコープに変更します。
 
-    | スコープ | type |
+    | Scope (スコープ) | type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
@@ -105,7 +105,7 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
 1. URI の *{scope}* を、ロールの割り当てを削除するためのスコープに変更します。
 
-    | スコープ | type |
+    | Scope (スコープ) | type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | サブスクリプション |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
@@ -117,4 +117,4 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
 - [Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-rest.md)
 - [Azure REST API リファレンス](/rest/api/azure/)
-- [REST API を使用してカスタム ロールを作成する](custom-roles-rest.md)
+- [REST API を使用して Azure リソースのカスタム ロールを作成する](custom-roles-rest.md)

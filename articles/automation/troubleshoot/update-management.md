@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: d0d6ed03b6e28df9767e24170ebf5ec92bb9fe9a
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0b92d36287646038d9195f7ba39352d8ced9a3b6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434734"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270268"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -43,9 +43,13 @@ The components for the 'Update Management' solution have been enabled, and now t
 #### <a name="resolution"></a>解決策
 
 1. 「[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)」で、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
-2. 複製イメージを使用する場合は、そのイメージを先に sysprep してから、MMA エージェントをインストールします。
+2. 複製されたイメージを使用する場合:
+   1. Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
+   2. `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force` を実行します。
+   3. `Restart-Service HealthService` を実行して `HealthService` を再起動します。 これにより、キーが再作成され、新しい UUID が生成されます。
+   4. これが機能しない場合は、そのイメージを先に sysprep した後、MMA エージェントをインストールします。
 
-### <a name="multi-tenant"></a>シナリオ: 別の Azure テナントのマシンを対象とした更新プログラムのデプロイを作成しているときに、リンクされているサブスクリプションのエラーが発生する。
+### <a name="multi-tenant"></a>シナリオ:別の Azure テナントのマシンを対象とした更新プログラムのデプロイを作成しているときに、リンクされているサブスクリプションのエラーが発生する。
 
 #### <a name="issue"></a>問題
 
@@ -88,7 +92,7 @@ Hybrid Runbook Worker の再登録と再インストールが必要な可能性�
 
 「[Windows Hybrid Runbook Worker をデプロイする](../automation-windows-hrw-install.md)」(Windows の場合) または「[Linux Hybrid Runbook Worker を展開する](../automation-linux-hrw-install.md)」(Linux の場合) の手順に従ってハイブリッド worker を再インストールしてください。
 
-## <a name="windows"></a> Windows
+## <a name="windows"></a>Windows
 
 ソリューションまたは仮想マシンをオンボードしようとして問題が発生した場合は、ローカル コンピューター上の **[アプリケーションとサービス ログ]** にある **Operations Manager** イベント ログで、イベント ID **4502** のイベントと **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** を含むイベント メッセージを確認してください。
 
@@ -178,7 +182,12 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Windows Update サービス (wuauserv) が実行されており、無効になっていないことを確認します。        |
 |その他の一般的な例外     | 考えられる解決策をインターネットで検索し、最寄りの IT サポートと連携してください。         |
 
-## <a name="linux"></a> Linux
+さらに、[Windows Update トラブルシューティング ツール](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)をダウンロードして実行し、コンピューター上の Windows Update に問題がないか確認できます。
+
+> [!NOTE]
+> [Windows Update トラブルシューティング ツール](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)により、それは Windows クライアント向けであるが、Windows Server でも機能することが示されます。
+
+## <a name="linux"></a>Linux
 
 ### <a name="scenario-update-run-fails-to-start"></a>シナリオ: 更新プログラムの実行を開始できない
 

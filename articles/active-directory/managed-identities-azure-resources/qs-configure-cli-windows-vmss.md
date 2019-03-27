@@ -3,23 +3,24 @@ title: Azure CLI を使用して Azure VMSS 上でシステム割り当てマネ
 description: Azure CLI を使用して、Azure VMSS 上でシステム割り当てマネージド ID とユーザー割り当てマネージド ID を構成する手順について説明します。
 services: active-directory
 documentationcenter: ''
-author: daveba
-manager: mtillman
+author: priyamohanram
+manager: daveba
 editor: ''
 ms.service: active-directory
-ms.component: msi
+ms.subservice: msi
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/15/2018
-ms.author: daveba
-ms.openlocfilehash: eb8ec68bc7e19af77e94bdf38f8e2bc3322d7fc6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: priyamo
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6457a04419012ef80432d8603caae21bbacde59b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993512"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170960"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Azure CLI を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -113,7 +114,7 @@ az vmss update -n myVM -g myResourceGroup --set identity.type='UserAssigned'
 az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 ```
 
-Azure リソース VM 拡張機能のマネージド ID (2019 年 1 月に非推奨となる予定) を削除するには、[az vmss identity remove](/cli/azure/vmss/identity/#az-vmss-remove-identity) コマンドを使用してシステム割り当てマネージド ID を VMSS から削除します。
+Azure リソース VM 拡張機能のマネージド ID (2019 年 1 月に非推奨となる予定) を削除するには、[az vmss identity remove](/cli/azure/vmss/identity/) コマンドを使用してシステム割り当てマネージド ID を VMSS から削除します。
 
 ```azurecli-interactive
 az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGroup -vmss-name myVMSS
@@ -190,7 +191,7 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
    }
    ```
 
-2. [az vmss identity assign](/cli/azure/vmss/identity#az-vm-assign-identity) を使用して、ユーザー割り当てマネージド ID を VMSS に割り当てます。 `<RESOURCE GROUP>` と `<VMSS NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY>` は、前の手順で作成されたユーザー割り当て ID のリソース `name` プロパティです。
+2. [az vmss identity assign](/cli/azure/vmss/identity) を使用して、ユーザー割り当てマネージド ID を VMSS に割り当てます。 `<RESOURCE GROUP>` と `<VMSS NAME>` のパラメーターの値は、必ず実際の値に置き換えてください。 `<USER ASSIGNED IDENTITY>` は、前の手順で作成されたユーザー割り当て ID のリソース `name` プロパティです。
 
     ```azurecli-interactive
     az vmss identity assign -g <RESOURCE GROUP> -n <VMSS NAME> --identities <USER ASSIGNED IDENTITY>

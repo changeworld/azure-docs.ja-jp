@@ -4,21 +4,22 @@ description: Azure Active Directory のグループベースのライセンス�
 services: active-directory
 keywords: Azure AD のライセンス
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.service: active-directory
-ms.component: fundamentals
+ms.subservice: fundamentals
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/29/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 0450feb82e539ebd73c3013e066104b29916238d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a6f7eaa91faabfea7bb951eb9863ffecd2f5499
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018774"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182376"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスとは
 

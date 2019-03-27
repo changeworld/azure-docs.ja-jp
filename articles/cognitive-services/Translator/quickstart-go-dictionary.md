@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Translator Text API と Go を使って、文脈中における用語の例と翻訳の代替候補を探します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/05/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: c1a75a32e60e337d07bda9d6f6d39efa58c679e2
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: b9f1b3b7ab99ca878227d8bf618545ec90aca4ac
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158569"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732043"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-go"></a>クイック スタート:Go を使用して 2 か国語辞書で単語を検索する
 

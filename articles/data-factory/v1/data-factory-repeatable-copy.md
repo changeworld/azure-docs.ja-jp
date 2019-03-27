@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 450e6a180b104d8f384fd08cc7c4cafcd53b4453
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 20c916275acd6bb79675c592711b17b277c9fc78
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021341"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294095"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory での反復可能なコピー
 
@@ -133,7 +133,7 @@ ID    Product        Quantity    ModifiedDate
     )
     ```
 
-2. コピー アクティビティで、次のように使用します。
+1. コピー アクティビティで、次のように使用します。
    
     ```json
     "sink":  

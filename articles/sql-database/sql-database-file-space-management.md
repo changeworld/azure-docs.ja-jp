@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Database のファイル領域管理 | Microsoft Docs
-description: このページでは、Azure SQL Database を使用してファイル領域を管理する方法について説明します。また、データベースを縮小する必要があるかどうかを判断する方法、データベースの縮小操作を実行する方法を示すコード サンプルを紹介します。
+title: Azure SQL Database の単一/プールされたデータベースのファイル領域管理 | Microsoft Docs
+description: このページでは、Azure SQL Database の単一データベースおよびプールされたデータベースを使用してファイル領域を管理する方法について説明します。また、単一データベースまたはプールされたデータベースを縮小する必要があるかどうかを判断する方法、データベースの縮小操作を実行する方法を示すコード サンプルを紹介します。
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,38 +11,46 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: d8ddbb2590852ed80ce02f147886dc125815fc23
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 02/11/2019
+ms.openlocfilehash: 32cfb108964d67f865b1d03ffa745eb468feeea7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605978"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110151"
 ---
-# <a name="manage-file-space-in-azure-sql-database"></a>Azure SQL Database でファイル領域を管理する
-この記事では、Azure SQL Database のさまざまな種類の記憶域スペースと、データベースとエラスティック プールに割り当てられたファイル領域を明示的に管理する必要がある場合に実行できる手順について説明します。
+# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Azure SQL Database で単一データベースおよびプールされたデータベースのファイル領域を管理する
+
+この記事では、Azure SQL Database の単一データベースおよびプールされたデータベースのさまざまな種類の記憶域スペースと、データベースとエラスティック プールに割り当てられたファイル領域を明示的に管理する必要がある場合に実行できる手順について説明します。
+
+> [!NOTE]
+> この記事は、Azure SQL Database のマネージド インスタンスのデプロイ オプションには適用されません。
 
 ## <a name="overview"></a>概要
 
-Azure SQL Database では、データベースの基礎となるデータ ファイルの割り当てが使用データ ページ数よりも大きくなるようなワークロード パターンがあります。 この状況は、使用領域が増えた後にデータが削除された場合に発生する可能性があります。 これは、データの削除時に割り当てられていたファイル領域が自動的に再利用されないためです。
+Azure SQL Database の単一データベースおよびプールされたデータベースでは、データベースの基礎となるデータ ファイルの割り当てが使用データ ページ数よりも大きくなるようなワークロード パターンがあります。 この状況は、使用領域が増えた後にデータが削除された場合に発生する可能性があります。 これは、データの削除時に割り当てられていたファイル領域が自動的に再利用されないためです。
 
 次のシナリオでは、ファイル領域の使用率の監視とデータ ファイルの圧縮が必要になる場合があります。
+
 - データベースに割り当てられたファイル領域がプールのサイズ上限に達した場合に、エラスティック プール内のデータの増大を許可する。
 - 単一データベースまたはエラスティック プールの最大サイズの縮小を許可する。
 - 単一データベースまたはエラスティック プールを、よりサイズ上限の低い異なるサービス レベルまたはパフォーマンス レベルに変更することを許可する。
 
 ### <a name="monitoring-file-space-usage"></a>ファイル領域の使用状況の監視
+
 Azure portal に表示されるほとんどのストレージ領域のメトリックと次の API は、使用されるデータ ページのサイズを測定するだけです。
+
 - PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric) などの Azure Resource Manager ベースのメトリック API
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 ただし、次の API は、データベースとエラスティック プールに割り当てられている領域のサイズを測ることもできます。
+
 - T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>データ ファイルの圧縮
 
-データベースのパフォーマンスに影響を与える可能性があるため、未使用の割り当て領域を再利用するために SQL DB サービスがデータ ファイルを自動的に縮小することはありません。  ただし、「[未使用の割り当て済み領域を再利用する](#reclaim-unused-allocated-space)」で説明されている手順に従って、データ ファイルを選択した時点でセルフサービスによって縮小できます。 
+データベースのパフォーマンスに影響を与える可能性があるため、未使用の割り当て領域を再利用するために SQL Database サービスがデータ ファイルを自動的に縮小することはありません。  ただし、「[未使用の割り当て済み領域を再利用する](#reclaim-unused-allocated-space)」で説明されている手順に従って、データ ファイルを選択した時点でセルフサービスによって縮小できます。
 
 > [!NOTE]
 > データ ファイルとは異なり、ログ ファイルの操作はデータベースのパフォーマンスに影響を与えないため、ログ ファイルは SQL Database サービスによって自動的に縮小されます。 
@@ -61,13 +69,14 @@ Azure portal に表示されるほとんどのストレージ領域のメトリ�
 
 次の図は、データベースの異なる種類の記憶域スペース間の関係を示しています。
 
-![記憶域スペースの種類と関係](./media/sql-database-file-space-management/storage-types.png) 
+![記憶域スペースの種類と関係](./media/sql-database-file-space-management/storage-types.png)
 
-## <a name="query-a-database-for-storage-space-information"></a>記憶域スペースの情報についてデータベースのクエリを実行する
+## <a name="query-a-single-database-for-storage-space-information"></a>記憶域スペースの情報について単一データベースのクエリを実行する
 
-次のクエリを使用して、データベースの記憶域スペースの量を確認できます。  
+次のクエリを使用して、単一データベースの記憶域スペースの量を確認できます。  
 
 ### <a name="database-data-space-used"></a>使用済みのデータベース データ領域
+
 使用されているデータベース データ領域の量を返すように次のクエリを変更します。  クエリ結果の単位は MB です。
 
 ```sql
@@ -80,6 +89,7 @@ ORDER BY end_time DESC
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>割り当て済みのデータベース データ領域と未使用の割り当て済み領域
+
 次のクエリを使用して、割り当て済みデータベース データ領域と未使用の割り当て済み領域を返します。  クエリ結果の単位は MB です。
 
 ```sql
@@ -93,6 +103,7 @@ HAVING type_desc = 'ROWS'
 ```
  
 ### <a name="database-data-max-size"></a>データベース データの最大サイズ
+
 データベース データの最大サイズを返すように次のクエリを変更します。  クエリ結果の単位はバイトです。
 
 ```sql
@@ -118,6 +129,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 次のクエリを使用して、エラスティック プールの記憶域スペースの量を確認できます。  
 
 ### <a name="elastic-pool-data-space-used"></a>使用済みのエラスティック プールのデータ領域
+
 使用済みのエラスティック プールのデータ領域の量を返すように次のクエリを変更します。  クエリ結果の単位は MB です。
 
 ```sql
@@ -135,7 +147,7 @@ ORDER BY end_time DESC
 
 エラスティック プールに割り当てられた領域の合計を確認するために、プール内の各データベースに割り当てられた領域を確認するためのクエリ結果も追加することができます。 割り当て済みエラスティック プール領域は、エラスティック プールの最大サイズを超えないようにする必要があります。  
 
-PowerShell スクリプトには SQL Server PowerShell モジュールが必要です。インストール方法については、[PowerShell モジュールのダウンロード](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module?view=sql-server-2017)に関するページを参照してください。
+PowerShell スクリプトには SQL Server PowerShell モジュールが必要です。インストール方法については、[PowerShell モジュールのダウンロード](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)に関するページを参照してください。
 
 ```powershell
 # Resource group name
@@ -216,7 +228,7 @@ DBCC SHRINKDATABASE (N'db1')
 
 ### <a name="auto-shrink"></a>自動圧縮
 
-代わりに、データベースの自動圧縮を有効にすることもできます。  自動圧縮では、ファイル管理の複雑さが軽減され、SHRINKDATABASE または SHRINKFILE よりもデータベース パフォーマンスへの影響がより低くなります。  自動圧縮は、多数のデータベースがあるエラスティック プールの管理に、特に役立てることができます。  ただし、自動圧縮は、SHRINKDATABASE および SHRINKFILE よりもファイル領域の解放の効果が低くなる可能性があります。
+代わりに、データベースの自動圧縮を有効にすることもできます。  自動圧縮では、ファイル管理の複雑さが軽減され、`SHRINKDATABASE` または `SHRINKFILE` よりもデータベース パフォーマンスへの影響が低くなります。  自動圧縮は、多数のデータベースがあるエラスティック プールの管理に、特に役立てることができます。  ただし、自動圧縮は、`SHRINKDATABASE` および `SHRINKFILE` よりもファイル領域の解放の効果が低くなる可能性があります。
 自動圧縮を有効にするには、次のコマンドのデータベースの名前を変更します。
 
 
@@ -234,9 +246,9 @@ ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ## <a name="next-steps"></a>次の手順
 
 - データベースの最大サイズについては、以下を参照してください。
-  - [Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases)
-  - [DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-single-databases)
-  - [Azure SQL Database のエラスティック プールに対する仮想コアベースの購入モデルの制限](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)
-  - [DTU ベースの購入モデルを使用したエラスティック プールに対するリソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-dtu-resource-limits-elastic-pools)
+  - [Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限](sql-database-vcore-resource-limits-single-databases.md)
+  - [DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](sql-database-dtu-resource-limits-single-databases.md)
+  - [Azure SQL Database のエラスティック プールに対する仮想コアベースの購入モデルの制限](sql-database-vcore-resource-limits-elastic-pools.md)
+  - [DTU ベースの購入モデルを使用したエラスティック プールに対するリソース制限](sql-database-dtu-resource-limits-elastic-pools.md)
 - `SHRINKDATABASE` コマンドの詳細については、[SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql) を参照してください。 
 - インデックスの断片化と再構築の詳細については、「[インデックスの再構成と再構築](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes)」を参照してください。

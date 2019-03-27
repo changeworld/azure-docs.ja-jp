@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: dwalthermsft
-ms.openlocfilehash: 1e7b6ed7c401bed741142dfc02efc7990cf67f6e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: cc873ad441c93a7fce54c275e9f7d52f0b044319
+ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118817"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54302427"
 ---
 # <a name="public-preview-service-limits"></a>パブリック プレビューのサービスの制限
 
@@ -35,7 +35,7 @@ ms.locfileid: "54118817"
 
 さらに、Azure Digital Twins の各インスタンスでは次のものを使用できます。
 
-- ちょうど 1 つの **IotHub** リソース。
+- サービスのプロビジョニング中に自動的に作成される組み込み **IoTHub** リソースが厳密に 1 つだけ。
 - イベントの種類が **DeviceMessage** であるちょうど 1 つの **EventHub** エンドポイント。
 - イベントの種類が **SensorChange**、**SpaceChange**、**TopologyOperation**、または **UdfCustom** である、最大 3 つの **EventHub**、**ServiceBus**、または **EventGrid** エンドポイント。
 

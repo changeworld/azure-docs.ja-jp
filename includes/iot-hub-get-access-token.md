@@ -1,20 +1,20 @@
 ---
-author: dominicbetts
+author: robinsh
+ms.author: robin.shahan
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: dobett
-ms.openlocfilehash: ab9d059ede2464318205a90b8ac738727e8d89a4
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e2d6b6413d1e397eaa3c53f28394dcf321dac729
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165751"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011770"
 ---
-## <a name="obtain-an-azure-resource-manager-token"></a>Azure Resource Manager トークンの取得
-Azure Active Directory では、Azure リソース マネージャーを使用してリソース上で実行するすべてのタスクを認証する必要があります。 ここに示す例では、パスワード認証が使用されます。その他の手法については、[Azure Resource Manager の要求の認証][lnk-authenticate-arm]に関する記事を参照してください。
+## <a name="obtain-an-azure-resource-manager-token"></a>Obtain an Azure Resource Manager token
+Azure Active Directory must authenticate all the tasks that you perform on resources using the Azure Resource Manager. The example shown here uses password authentication, for other approaches see [Authenticating Azure Resource Manager requests][lnk-authenticate-arm].
 
-1. Program.cs の **Main** メソッドに次のコードを追加し、アプリケーション ID とパスワードを利用して Azure AD からトークンを取得します。
+1. Add the following code to the **Main** method in Program.cs to retrieve a token from Azure AD using the application id and password.
    
     ```
     var authContext = new AuthenticationContext(string.Format  
@@ -29,14 +29,14 @@ Azure Active Directory では、Azure リソース マネージャーを使用�
       return;
     }
     ```
-2. **Main** メソッドの終わりに次のコードを追加し、トークンを使用する **ResourceManagementClient** オブジェクトを作成します。
+2. Create a **ResourceManagementClient** object that uses the token by adding the following code to the end of the **Main** method:
    
     ```
     var creds = new TokenCredentials(token.AccessToken);
     var client = new ResourceManagementClient(creds);
     client.SubscriptionId = subscriptionId;
     ```
-3. 使用するリソース グループを作成するか、その参照を取得します。
+3. Create, or obtain a reference to, the resource group you are using:
    
     ```
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,

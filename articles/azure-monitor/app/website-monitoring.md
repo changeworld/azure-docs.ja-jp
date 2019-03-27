@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: ce8c25ce6bb728c9d3a365821b3606613e322c11
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a35f4d8c1d5bf5943ecba02ff262fbc7fc0730fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54080692"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108230"
 ---
 # <a name="start-monitoring-your-website"></a>Web サイトの監視を開始する
 
@@ -45,7 +45,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
     | 設定        | 値           | [説明]  |
    | ------------- |:-------------|:-----|
-   | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
+   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
    | **アプリケーションの種類** | 汎用アプリケーション | 監視しているアプリの種類 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
    | **場所** | 米国東部 | 近くにある場所か、アプリがホストされている場所の近くを選択します。 |
@@ -87,7 +87,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
         });
         
         window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
-</script>
+   </script>
    ```
 
 3. ``hello_world.html`` を編集し、インストルメンテーション キーを追加します。
@@ -127,7 +127,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
 5. 複数のページを持つより複雑な Web サイトをインストルメント化した場合、もう 1 つの便利なツールは [**User Flows**](../../azure-monitor/app/usage-flows.md) です。 **User Flows** を使用すると、Web サイトのさまざまな部分を通じて訪問者がたどった経路を追跡することができます。
 
-  ![User Flows の視覚化](./media/website-monitoring/user-flows.png)
+   ![User Flows の視覚化](./media/website-monitoring/user-flows.png)
 
 Web サイトを監視するためのより高度な構成については、[JavaScript SDK の API リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)を参照してください。
 

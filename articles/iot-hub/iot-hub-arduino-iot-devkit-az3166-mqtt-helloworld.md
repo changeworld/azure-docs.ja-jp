@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 8959c1d773a7e4ea79c7a7531c2bba578f2801e2
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158484"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552012"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>MQTT サーバーにメッセージを送信する
 
 モノのインターネット (IoT) のシステムでは、断続的、低品質、または低速なインターネット接続を扱うことがよくあります。 MQTT は、このような課題を念頭に開発された、マシン間 (M2M) の接続プロトコルです。 
 
-ここで使用する MQTT クライアント ライブラリは、[Eclipse Paho](http://www.eclipse.org/paho/) プロジェクトの一部です。このプロジェクトは、複数の転送方法で MQTT を使用するための API を提供します。
+ここで使用する MQTT クライアント ライブラリは、[Eclipse Paho](https://www.eclipse.org/paho/) プロジェクトの一部です。このプロジェクトは、複数の転送方法で MQTT を使用するための API を提供します。
 
 ## <a name="what-you-learn"></a>学習内容
 
@@ -77,7 +77,7 @@ VS Code で、次の手順を実行し、シリアル モニターを開いて�
 
 問題が発生した場合は、[IoT DevKit の FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) に関するページを参照するか、以下のチャネルを使用してお問い合わせください。
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>関連項目

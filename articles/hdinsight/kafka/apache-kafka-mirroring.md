@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 0df548d6b3639ce2ce3c7c72695bb96cc6d0dc3d
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0c37ad6de867c4abe4ebf0e6c7a40b5cf27c4541
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53581030"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079641"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
 
@@ -73,7 +73,7 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
     
     ![HDInsight のカスタム デプロイ](./media/apache-kafka-mirroring/parameters.png)
     
-    * **[リソース グループ]**: グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
+    * **リソース グループ**:グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
 
     * **場所**: 地理的に近い場所を選択します。
      
@@ -258,7 +258,7 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
     * **--num.streams**:作成するコンシューマー スレッドの数。
 
- スタートアップ時に、MirrorMaker により次のテキストのような情報が返されます。
+   スタートアップ時に、MirrorMaker により次のテキストのような情報が返されます。
 
     ```json
     {metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-3, security.protocol=PLAINTEXT}{metadata.broker.list=wn1-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092,wn0-source.aazwc2onlofevkbof0cuixrp5h.gx.internal.cloudapp.net:9092, request.timeout.ms=30000, client.id=mirror-group-0, security.protocol=PLAINTEXT}

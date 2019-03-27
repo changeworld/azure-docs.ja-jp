@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 6024a11f518432b735ccec6a3d89db687aed8ae6
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b45cd84322279d7f81cc3f047f72a75a6d898bc6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332593"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452693"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 構成リファレンス
 
@@ -55,9 +55,9 @@ ms.locfileid: "54332593"
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | 一意のワークフロー名。 対応するスマート コントラクトでは、該当するコントラクト クラスに対して同じ **Name** を使用する必要があります。 | [はい] | 50 |
-| DisplayName | ワークフローのわかりやすい表示名。 | [はい] | 255 |
-| 説明 | ワークフローの説明。 | いいえ  | 255 |
+| Name | 一意のワークフロー名。 対応するスマート コントラクトでは、該当するコントラクト クラスに対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| DisplayName | ワークフローのわかりやすい表示名。 | はい | 255 |
+| Description | ワークフローの説明。 | いいえ  | 255 |
 | Initiators | [ApplicationRoles](#application-roles) のコレクション。 ワークフローでコントラクトを作成する権限を持つユーザーに割り当てられるロール。 | はい | |
 | StartState | ワークフローの初期状態の名前。 | はい | |
 | Properties | [識別子](#identifiers)のコレクション。 ユーザー エクスペリエンス ツールでオフチェーンの読み取りまたは視覚化を実行できるデータを表します。 | はい | |
@@ -209,9 +209,9 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | 関数の一意の名前。 対応するスマート コントラクトでは、該当する関数に対して同じ **Name** を使用する必要があります。 | [はい] | 50 |
-| DisplayName | 関数のわかりやすい表示名。 | [はい] | 255 |
-| 説明 | 関数の説明。 | いいえ  | 255 |
+| Name | 関数の一意の名前。 対応するスマート コントラクトでは、該当する関数に対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| DisplayName | 関数のわかりやすい表示名。 | はい | 255 |
+| Description | 関数の説明。 | いいえ  | 255 |
 | parameters | 関数のパラメーターに対応する[識別子](#identifiers)のコレクション。 | はい | |
 
 ### <a name="functions-example"></a>関数の例
@@ -257,9 +257,9 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | 状態の一意の名前。 対応するスマート コントラクトでは、該当する状態に対して同じ **Name** を使用する必要があります。 | [はい] | 50 |
-| DisplayName | 状態のわかりやすい表示名。 | [はい] | 255 |
-| 説明 | 状態の説明。 | いいえ  | 255 |
+| Name | 状態の一意の名前。 対応するスマート コントラクトでは、該当する状態に対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| DisplayName | 状態のわかりやすい表示名。 | はい | 255 |
+| Description | 状態の説明。 | いいえ  | 255 |
 | PercentComplete | Blockchain Workbench のユーザー インターフェイスに表示される整数値。ビジネス ロジックの制御フロー内の進行状況を示します。 | はい | |
 | Style | 状態が成功か失敗かを表すビジュアル ヒント。 有効な値は `Success` または `Failure` です。 | はい | |
 | Transitions | 現在の状態から次の一連の状態への使用できる[遷移](#transitions)のコレクション。 | いいえ  | |
@@ -312,7 +312,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
     {
       "Name": "Terminated",
       "DisplayName": "Terminated",
-      "Description": "Asset transfer has been cancelled",
+      "Description": "Asset transfer has been canceled",
       "PercentComplete": 100,
       "Style": "Failure",
       "Transitions": []
@@ -371,8 +371,8 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | アプリケーション ロールの一意の名前。 対応するスマート コントラクトでは、該当するロールに対して同じ **Name** を使用する必要があります。 基本データ型は予約されています。 アプリケーション ロールに [Type](#type) と同じ名前を付けることはできません| [はい] | 50 |
-| 説明 | アプリケーション ロールの説明。 | いいえ  | 255 |
+| Name | アプリケーション ロールの一意の名前。 対応するスマート コントラクトでは、該当するロールに対して同じ **Name** を使用する必要があります。 基本データ型は予約されています。 アプリケーション ロールに [Type](#type) と同じ名前を付けることはできません| はい | 50 |
+| Description | アプリケーション ロールの説明。 | いいえ  | 255 |
 
 ### <a name="application-roles-example"></a>アプリケーション ロールの例
 
@@ -394,9 +394,9 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | プロパティまたはパラメーターの一意の名前。 対応するスマート コントラクトでは、該当するプロパティまたはパラメーターに対して同じ **Name** を使用する必要があります。 | [はい] | 50 |
-| DisplayName | プロパティまたはパラメーターのわかりやすい表示名。 | [はい] | 255 |
-| 説明 | プロパティまたはパラメーターの説明。 | いいえ  | 255 |
+| Name | プロパティまたはパラメーターの一意の名前。 対応するスマート コントラクトでは、該当するプロパティまたはパラメーターに対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| DisplayName | プロパティまたはパラメーターのわかりやすい表示名。 | はい | 255 |
+| Description | プロパティまたはパラメーターの説明。 | いいえ  | 255 |
 
 ### <a name="identifiers-example"></a>識別子の例
 
@@ -988,7 +988,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
         {
           "Name": "Terminated",
           "DisplayName": "Terminated",
-          "Description": "Asset transfer has been cancelled",
+          "Description": "Asset transfer has been canceled",
           "PercentComplete": 100,
           "Style": "Failure",
           "Transitions": []

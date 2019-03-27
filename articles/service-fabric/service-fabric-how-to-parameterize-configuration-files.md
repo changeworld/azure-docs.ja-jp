@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 9057cdc22e277e4e12e9f439f3fbe0c5a5cda2a2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 0ab6e3f189d4a2e7e8f3bc96108d7979c99fffa8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48900515"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102671"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric で構成ファイルをパラメーター化する方法
 
@@ -30,24 +30,24 @@ ms.locfileid: "48900515"
 1. サービス プロジェクト内の *<MyService>\PackageRoot\Config\Settings.xml* ファイルを開きます。
 1. 次の XML を追加して、構成パラメーターの名前と値を設定します (たとえば、キャッシュ サイズ = 25)。
 
-  ```xml
+   ```xml
     <Section Name="MyConfigSection">
       <Parameter Name="CacheSize" Value="25" />
     </Section>
-  ```
+   ```
 
 1. ファイルを保存して閉じます。
 1. *<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* ファイルを開きます。
 1. ApplicationManifest.xml ファイルで、`Parameters` 要素にパラメーターと既定値を宣言します。  パラメーター名にはサービスの名前 (たとえば "MyService") を含めることをお勧めします。
 
-  ```xml
+   ```xml
     <Parameters>
       <Parameter Name="MyService_CacheSize" DefaultValue="80" />
     </Parameters>
-  ```
+   ```
 1. ApplicationManifest.xml ファイルの `ServiceManifestImport` セクションに `ConfigOverride` 要素を追加し、構成パッケージ、セクション、およびパラメーターを参照します。
 
-  ```xml
+   ```xml
     <ConfigOverrides>
       <ConfigOverride Name="Config">
           <Settings>
@@ -57,7 +57,7 @@ ms.locfileid: "48900515"
           </Settings>
       </ConfigOverride>
     </ConfigOverrides>
-  ```
+   ```
 
 > [!NOTE]
 > ConfigOverride を追加すると、Service Fabric は常に、アプリケーション パラメーターか、アプリケーション マニフェストで指定されている既定値を選びます。

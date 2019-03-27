@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.component: common
-ms.openlocfilehash: d7a9da4ac3560e67a6f7bc8b79a7c2dd37995d4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.subservice: common
+ms.openlocfilehash: 15ec4f006147cdffb46598d22a937aec429fd8ac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258012"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729406"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Azure Import/Export サービスのインポート ジョブの作成
 
@@ -61,14 +61,14 @@ REST API を使用して Microsoft Azure Import/Export サービスのインポ�
 
  次の手順に従って、送付先を取得します。
 
--   ストレージ アカウントの場所名を特定します。 この値は、Azure Portal でストレージ アカウントの**ダッシュボード**の **[場所]** フィールドを見て確認するか、サービス管理 API の [Get Storage Account Properties](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties) 操作を使用して照会することができます。
+-   ストレージ アカウントの場所名を特定します。 この値は、Azure Portal でストレージ アカウントの**ダッシュボード**の **[場所]** フィールドを見て確認するか、サービス管理 API の [Get Storage Account Properties](/rest/api/storagerp/storageaccounts) 操作を使用して照会することができます。
 
 -   `Get Location` 操作を呼び出して、このストレージ アカウントを処理できる場所を取得します。
 
 -   場所の `AlternateLocations` プロパティにその場所自体が含まれていれば、その場所を使用できます。 そうでない場合は、別の場所を使用して `Get Location` 操作をもう一度呼び出します。 保守作業のために、元の場所が一時的に閉鎖されている場合もあります。
 
 ## <a name="creating-the-import-job"></a>インポート ジョブを作成する
-インポート ジョブを作成するには、[Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) 操作を呼び出します。 次の情報を指定する必要があります。
+インポート ジョブを作成するには、[Put Job](/rest/api/storageimportexport/jobs) 操作を呼び出します。 次の情報を指定する必要があります。
 
 -   ジョブの名前。
 

@@ -1,28 +1,29 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Work.com の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Work.com の統合 | Microsoft Docs
 description: Azure Active Directory と Work.com の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: joflore
 ms.assetid: 98e6739e-eb24-46bd-9dd3-20b489839076
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: f4247a24905b5865635495774412237118e3372a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1e5d097afa3af111a7de8341b90d8c6c05ac0347
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427365"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205751"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workcom"></a>チュートリアル: Azure Active Directory と Work.com の統合
+# <a name="tutorial-azure-active-directory-integration-with-workcom"></a>チュートリアル:Azure Active Directory と Work.com の統合
 
 このチュートリアルでは、Work.com と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -173,7 +174,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
     
     c. **[Browse]\(参照\)** をクリックして、Azure Portal からダウンロードした証明書をアップロードします。
     
-    d. **[Entity Id]\(エンティティ ID\)** ボックスに、「`https://salesforce-work.com`」と入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Entity Id]\(エンティティ ID\)** ボックスに、「`https://salesforce-work.com`」と入力します。
     
     e. **[SAML ID の種類]** として、**[アサーションにはユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
     
@@ -200,7 +201,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
     ![Login Page Branding](./media/work-com-tutorial/ic784366.png "Login Page Branding")
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -232,7 +233,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-workcom-test-user"></a>Work.com テスト ユーザーの作成
 Azure Active Directory ユーザーがサインインできるように、Azure Active Directory ユーザーを Work.com に対してプロビジョニングする必要があります。 Work.com の場合、プロビジョニングは手動で行います。
@@ -261,7 +262,7 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
     
     c. **[Alias]\(エイリアス\)** ボックスに、ユーザーの**名前** (**BrittaS**) を入力します。
     
-    d. **[Email]\(メール\)** ボックスに、ユーザーの**メール アドレス** (**Brittasimon@contoso.com**) を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Email]\(メール\)** ボックスに、ユーザーの**メール アドレス** (**Brittasimon@contoso.com**) を入力します。
     
     e. **[User Name]\(ユーザー名\)** ボックスに、ユーザーのユーザー名 (**Brittasimon@contoso.com** など) を入力します。
     

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: ef670c2dc701f888be3c7bb9a546c8a8a46f993a
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 4cc115d068736f61f9edb4ec609ac592607e7fa0
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458871"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246993"
 ---
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
-| [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md) |リージョンあたり 10,000 <sup>1</sup> |リージョンあたり 10,000 |
+|  [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md) |リージョンあたり 10,000 <sup>1</sup> |リージョンあたり 10,000 |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの VM の合計コア数 |リージョンあたり 20 件<sup>1</sup> | サポートにお問い合せください |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのシリーズ (Dv2、F など) ごとの VM のコア数 |リージョンあたり 20 件<sup>1</sup> | サポートにお問い合せください |
 | [共同管理者](../articles/billing-add-change-azure-subscription-administrator.md) 数 |無制限 |無制限 |
@@ -35,7 +35,7 @@ ms.locfileid: "49458871"
 
 <sup>2</sup>これには、Standard および Premium ストレージ アカウントの両方が含まれます。 必要なストレージ アカウントが 200 個を超える場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)からリクエストを送信してください。 Azure Storage チームがビジネス ケースを確認します。承認された場合、最大 250 個のストレージ アカウントが与えられます。
 
-<sup>3</sup>1 つのサブスクリプションで適用できるタグの数に制限はありません。 リソースまたはリソース グループあたりのタグの数は 15 に制限されています。 サブスクリプションに存在する[一意のタグ名と値のリスト](/rest/api/resources/tags#Tags_List)が Resource Manager から返されるのは、タグの数が 10,000 未満である場合に限られます。 ただしタグの数が 10,000 を超えていても、タグでリソースを特定することはできます。  
+<sup>3</sup>1 つのサブスクリプションで適用できるタグの数に制限はありません。 リソースまたはリソース グループあたりのタグの数は 15 に制限されています。 サブスクリプションに存在する[一意のタグ名と値のリスト](/rest/api/resources/tags)が Resource Manager から返されるのは、タグの数が 10,000 未満である場合に限られます。 ただしタグの数が 10,000 を超えていても、タグでリソースを特定することはできます。  
 
 <sup>4</sup>これらの機能は、Azure リソース グループと Azure Resource Manager では必要なくなりました。
 

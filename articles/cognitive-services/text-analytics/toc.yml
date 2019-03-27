@@ -24,6 +24,9 @@ items:
     href: quickstarts/ruby.md
 - name: チュートリアル
   items:
+  - name: Azure Databricks を使用した、ストリーミング データに対する感情分析
+    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
+    maintainContext: true
   - name: Text Analytics と Power BI
     href: Tutorials/tutorial-power-bi-key-phrases.md
   - name: Text Analytics と Power Apps
@@ -94,9 +97,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/555922-text-analytics
-ms.openlocfilehash: 0a40ee016fcb0d4b172d521bda26650b40f7dcbf
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1759bee73caeb18ac96a228bb3a81e697aa62089
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243374"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54475630"

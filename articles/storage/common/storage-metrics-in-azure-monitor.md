@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
-ms.component: common
-ms.openlocfilehash: 51c0fefc0d18127da1f5fc513b493407510a071b
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.subservice: common
+ms.openlocfilehash: aabd0ab55c061c9d2cdc27b4ab5a241ad9e9793c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994438"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811770"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -39,7 +39,7 @@ Azure Portal ではメトリックを時間経過に沿って監視できます�
 
 ### <a name="access-metrics-with-the-rest-api"></a>REST API でメトリックにアクセスする
 
-Azure Monitor には、メトリックの定義と値を読み取るための [REST API](/rest/api/monitor/) が用意されています。 このセクションでは、ストレージ メトリックを読み取る方法について説明します。 リソース ID は、すべての REST API で使用されます。 詳細については、[Azure Storage サービスのリソース ID](#understanding-resource-id-for-services-in-storage) に関するページを参照してください。
+Azure Monitor には、メトリックの定義と値を読み取るための [REST API](/rest/api/monitor/) が用意されています。 このセクションでは、ストレージ メトリックを読み取る方法について説明します。 リソース ID は、すべての REST API で使用されます。 詳細については、Azure Storage サービスのリソース ID に関するページを参照してください。
 
 次の例は、コマンド ラインで [ArmClient](https://github.com/projectkudu/ARMClient) を使用して、REST API でテストを簡略化する方法を示しています。
 
@@ -136,7 +136,7 @@ BLOB、テーブル、ファイル、またはキューのメトリック定義�
 
 ### <a name="access-metrics-with-the-net-sdk"></a>.Net SDK でメトリックにアクセスする
 
-Azure Monitor には、メトリックの定義と値を読み取るための [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) が用意されています。 [サンプル コード](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)では、さまざまなパラメーターで SDK を使用する方法を示します。 ストレージ メトリックスについては `0.18.0-preview` 以降のバージョンを使用する必要があります。 リソース ID は .Net SDK で使用されます。 詳細については、[Azure Storage サービスのリソース ID](#understanding-resource-id-for-services-in-storage) に関するページを参照してください。
+Azure Monitor には、メトリックの定義と値を読み取るための [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) が用意されています。 [サンプル コード](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)では、さまざまなパラメーターで SDK を使用する方法を示します。 ストレージ メトリックスについては `0.18.0-preview` 以降のバージョンを使用する必要があります。 リソース ID は .Net SDK で使用されます。 詳細については、Azure Storage サービスのリソース ID に関するページを参照してください。
 
 次の例では、Azure Monitor .Net SDK を使用してストレージ メトリックスを読み取る方法を示します。
 
@@ -341,6 +341,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 | BlobCapacity | ストレージ アカウントで使用されている Blob Storage の合計。 <br/><br/> 単位:Bytes <br/> 集計の種類:平均 <br/> 値の例:1024 <br/> ディメンション:BlobType ([定義](#metrics-dimensions)) |
 | BlobCount    | ストレージ アカウントに格納されている BLOB オブジェクトの数。 <br/><br/> 単位:Count <br/> 集計の種類:平均 <br/> 値の例:1024 <br/> ディメンション:BlobType ([定義](#metrics-dimensions)) |
 | ContainerCount    | ストレージ アカウントのコンテナーの数。 <br/><br/> 単位:Count <br/> 集計の種類:平均 <br/> 値の例:1024 |
+| IndexCapacity     | ADLS Gen2 階層構造のインデックスで使用される記憶域の量 <br/><br/> 単位:Bytes <br/> 集計の種類:平均 <br/> 値の例:1024 |
 
 ### <a name="table-storage"></a>テーブル ストレージ
 
@@ -368,7 +369,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 ## <a name="transaction-metrics"></a>トランザクション メトリック
 
-トランザクション メトリックは、Azure Storage から Azure Monitor に 1 分ごとに送信されます。 すべてのトランザクション メトリックを、アカウント レベルとサービス レベルの両方 (Blob Storage、Table Storage、Azure Files、および Queue ストレージ) で使用することができます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべてのトランザクション メトリックに対してサポートされている時間グレインは PT1H と PT1M です。
+トランザクション メトリックは、ストレージ アカウントへの要求ごとに、Azure Storage から Azure Monitor に出力されます。 ストレージ アカウントにアクティビティがない場合、その間はトランザクション メトリックのデータは存在しません。 すべてのトランザクション メトリックを、アカウント レベルとサービス レベルの両方 (Blob Storage、Table Storage、Azure Files、および Queue ストレージ) で使用することができます。 時間グレインは、メトリック値が提供される時間間隔を定義します。 すべてのトランザクション メトリックに対してサポートされている時間グレインは PT1H と PT1M です。
 
 Azure Storage は、Azure Monitor で次のトランザクション メトリックを提供します。
 
@@ -390,7 +391,7 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 | BlobType | BLOB メトリックの BLOB の種類のみ。 サポートされる値は **BlockBlob** と **PageBlob** です。 BlockBlob には Append Blob が含まれます。 |
 | ResponseType | トランザクション応答の種類。 次の値をご利用いただけます。 <br/><br/> <li>ServerOtherError:記述されていない、その他すべてのサーバー側エラー </li> <li> ServerBusyError:HTTP 503 ステータス コードを返した認証済み要求。 </li> <li> ServerTimeoutError:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 タイムアウトは、サーバー エラーが原因で発生しました。 </li> <li> AuthorizationError:データの不正アクセスまたは承認エラーが原因で失敗した認証済み要求。 </li> <li> NetworkError:ネットワーク エラーが原因で失敗した認証済み要求。 クライアントがタイムアウト期限が切れる前に途中で接続を終了したときによく発生します。 </li> <li>    ClientThrottlingError:クライアント側の調整エラー。 </li> <li> ClientTimeoutError:HTTP 500 ステータス コードを返した、タイムアウトした認証済み要求。 クライアントのネットワーク タイムアウトまたは要求タイムアウトが、ストレージ サービスで予期される値よりも低く設定されている場合、これは予期されるタイムアウトです。 それ以外の場合は、ServerTimeoutError としてレポートされます。 </li> <li> ClientOtherError:記述されていない、その他すべてのクライアント側エラー。 </li> <li> Success:成功した要求|
 | GeoType | プライマリ クラスターまたはセカンダリ クラスターからのトランザクション。 使用可能な値は Primary と Secondary です。 セカンダリ テナントからオブジェクトを読み取るときに、読み取りアクセス geo 冗長ストレージ (RA-GRS) に適用されます。 |
-| ApiName | 操作の名前。 例:  <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> すべての操作名については、こちらの[ドキュメント](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md)を参照してください。 |
+| ApiName | 操作の名前。 例:  <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>GetBlob</li> すべての操作名については、こちらの[ドキュメント](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)を参照してください。 |
 | Authentication | トランザクションで使用される認証の種類。 次の値をご利用いただけます。 <br/> <li>AccountKey:トランザクションは、ストレージ アカウント キーを使って認証されます。</li> <li>SAS:トランザクションは、Shared Access Signature を使って認証されます。</li> <li>OAuth:トランザクションは、OAuth アクセス トークンを使って認証されます。</li> <li>Anonymous:トランザクションは匿名で要求されます。 プリフライト要求は含まれません。</li> <li>AnonymousPreflight:トランザクションは、プリフライト要求です。</li> |
 
 メトリック サポート ディメンションの場合、対応するメトリック値を表示するには、ディメンション値を指定する必要があります。 たとえば、成功した応答の **Transaction** 値を確認する場合は、**ResponseType** ディメンション を **Success** でフィルター処理する必要があります。 また、ブロック BLOB の **BlobCount** 値を確認する場合は、**BlobType** ディメンションを **BlockBlob** でフィルター処理する必要があります。
@@ -400,6 +401,10 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 Azure Monitor 管理メトリックと並行して従来のメトリックを利用できます。 サポートは、Azure Storage が従来のメトリックのサービスを終了するまで引き続き提供されます。
 
 ## <a name="faq"></a>FAQ
+
+**新しいメトリックは、従来のストレージ アカウントをサポートしていますか?**
+
+いいえ。Azure Monitor の新しいメトリックは、Azure Resource Manager ストレージ アカウントのみサポートしています。 ストレージ アカウントに対してメトリックを使用する場合、Azure Resource Manager ストレージ アカウントに移行する必要があります。 [Azure Resource Manager への移行](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)に関するページを参照してください。
 
 **Azure Storage はマネージド ディスクまたはアンマネージド ディスクのメトリックをサポートしますか。**
 

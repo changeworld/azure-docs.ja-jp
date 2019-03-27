@@ -3,7 +3,7 @@ title: ユーザーとして PowerShell を使用して Azure Stack に接続す
 description: ユーザーの Azure Stack インスタンスに接続する手順。
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2018
-ms.author: sethm
-ms.reviewer: bganapa
-ms.openlocfilehash: bc6d48e0b805d8efa2efe88242aff53f797a6a12
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.date: 03/15/2019
+ms.author: mabrigg
+ms.reviewer: thoroet
+ms.lastreviewed: 01/24/2019
+ms.openlocfilehash: ab23013d8de61e13013aa4cd735be04e1e3213c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243901"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119940"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>ユーザーとして PowerShell を使用して Azure Stack に接続する
 
@@ -67,17 +68,8 @@ ms.locfileid: "54243901"
   # Register an Azure Resource Manager environment that targets your Azure Stack instance
   Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
 
-  $AuthEndpoint = (Get-AzureRmEnvironment -Name "AzureStackUser").ActiveDirectoryAuthority.TrimEnd('/')
-  $tenantId = (invoke-restmethod "$($AuthEndpoint)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
-
   # Sign in to your environment
-
-  $cred = get-credential
-
-  Login-AzureRmAccount `
-    -EnvironmentName "AzureStackUser" `
-    -TenantId $tenantId `
-    -Credential $cred
+  Login-AzureRmAccount -EnvironmentName "AzureStackUser"
   ```
 
 ## <a name="register-resource-providers"></a>リソース プロバイダーを登録する
@@ -104,4 +96,5 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 - [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)
 - [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
+- [Azure Stack PowerShell Module リファレンス](https://docs.microsoft.com/en-us/powershell/azure/azure-stack/overview)
 - クラウド オペレーター環境用に PowerShell を設定する場合、[Azure Stack オペレーターの PowerShell 環境の構成](../azure-stack-powershell-configure-admin.md)に関する記事をご覧ください。

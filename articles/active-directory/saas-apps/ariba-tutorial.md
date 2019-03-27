@@ -4,7 +4,7 @@ description: Azure Active Directory と Ariba の間でシングル サインオ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 45a8364c-55d1-4dc7-b079-9eb2a701842d
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 81c66e73698f210c9ef364a8b328642f78e3012b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b6882cfc0b972fa0ea2a43081b1d6d62671d9da7
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973980"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881585"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>チュートリアル:Azure Active Directory と Ariba の統合
 
@@ -110,7 +111,7 @@ Ariba で Azure AD シングル サインオンを構成するには、次の手
     | `https://<subdomain>.sourcing.ariba.com` |
     | `https://<subdomain>.supplier.ariba.com` |
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`http://<subdomain>.procurement-2.ariba.com` という形式で URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`http://<subdomain>.procurement-2.ariba.com`
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、Ariba クライアント サポート チーム (**1-866-218-2155**) に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -188,7 +189,7 @@ Ariba で Azure AD シングル サインオンを構成するには、次の手
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

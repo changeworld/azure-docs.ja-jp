@@ -5,21 +5,22 @@ services: active-directory
 keywords: Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/19/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7f4750dd527aa53624fa977115a120911511b7d5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 80b8db3bb2e7a21011508f30492bf99c7ecca583
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185071"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096862"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -194,8 +195,8 @@ Azure AD は、新しいバージョンのソフトウェアを、署名済み�
 3. アップデーターは、MSI が Microsoft によって署名されていることを確認します。
 4. アップデーターは MSI を実行します。 この操作では次の手順を実行します。
 
- > [!NOTE]
- > アップデーターは[ローカル システム](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)権限で実行されます。
+   > [!NOTE]
+   > アップデーターは[ローカル システム](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)権限で実行されます。
 
     - 認証エージェント サービスの停止
     - 新しいバージョンの認証エージェントのサーバーへのインストール
@@ -208,10 +209,10 @@ Azure AD は、新しいバージョンのソフトウェアを、署名済み�
 
 ## <a name="next-steps"></a>次の手順
 - [現時点での制限事項](how-to-connect-pta-current-limitations.md):サポートされているシナリオと、サポートされていないシナリオを確認します。
-- [クイック スタート](how-to-connect-pta-quick-start.md):Azure AD パススルー認証を起動および実行します。
+- [クイック スタート](how-to-connect-pta-quick-start.md): Azure AD パススルー認証を起動および実行します。
 - [AD FS からパススルー認証への移行](https://aka.ms/adfstoptadpdownload) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
 - [スマート ロックアウト](../authentication/howto-password-smart-lockout.md):ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
 - [しくみ](how-to-connect-pta-how-it-works.md):Azure AD パススルー認証のしくみの基礎を確認します。
 - [よく寄せられる質問](how-to-connect-pta-faq.md):よく寄せられる質問の回答を探します。
-- [トラブルシューティング](tshoot-connect-pass-through-authentication.md):パススルー認証機能に関する一般的な問題を解決する方法について説明します。
+- [トラブルシューティング](tshoot-connect-pass-through-authentication.md): パススルー認証機能に関する一般的な問題を解決する方法について説明します。
 - [Azure AD シームレス SSO](how-to-connect-sso.md):この補完的な機能の詳細について説明します。

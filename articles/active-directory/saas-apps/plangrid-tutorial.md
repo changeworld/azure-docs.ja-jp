@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と PlanGrid の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と PlanGrid の統合 | Microsoft Docs
 description: Azure Active Directory と PlanGrid の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -8,21 +8,22 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 0ba72432-9b49-4358-b756-14c982422be8
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: jeedes
-ms.openlocfilehash: b2225a48e78e8c609223510a32d3ed5c735ed3b6
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5453d29b0c5317dfbd0212a98f47095fd0fc8f46
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046065"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174250"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-plangrid"></a>チュートリアル: Azure Active Directory と PlanGrid の統合
+# <a name="tutorial-azure-active-directory-integration-with-plangrid"></a>チュートリアル:Azure Active Directory と PlanGrid の統合
 
 このチュートリアルでは、PlanGrid と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -156,11 +157,11 @@ PlanGrid で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-plangrid-test-user"></a>PlanGrid テスト ユーザーの作成
 
-このセクションでは、PlanGrid で Britta Simon というユーザーを作成します。 [PlanGrid サポート チーム](mailto:help@plangrid.com)と連携し、PlanGrid プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、PlanGrid で Britta Simon というユーザーを作成します。  [PlanGrid サポート チーム](mailto:help@plangrid.com) と連携し、PlanGrid プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -197,7 +198,7 @@ PlanGrid で Azure AD のシングル サインオンを構成してテストす
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [PlanGrid] タイルをクリックすると、PlanGrid アプリケーションに自動的にサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

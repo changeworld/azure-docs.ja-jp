@@ -4,7 +4,7 @@ description: この記事では、Azure Service Fabric のセキュリティの�
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 629b6fba9ced5fa2ccf22f473fe25c87d1cc4818
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 3e7717d4ee07a1f3bfebb5e09b983af68aa4ea31
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436812"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116222"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric セキュリティの概要
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における課題に対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高い、ミッション クリティカルで要求の厳しいワークロードの実装に注力できます。
@@ -48,7 +48,7 @@ Service Fabric では、クラスターを作成するときに指定した X.50
 Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、2 種類のアクセス コントロールがサポートされています。
 
 -   **管理者**: 読み取り/書き込み機能も含む管理機能へのフル アクセス権があります。
--   **ユーザー**: 管理機能 (クエリ機能など) への読み取りアクセス権のみがあり、アプリケーションとサービスの問題を解決できます。
+-   **User**:管理機能 (クエリ機能など) への読み取りアクセス権のみがあり、アプリケーションとサービスの問題を解決できます。
 
 クラスター管理者はアクセス制御を使用して、特定の種類のクラスター操作に対するアクセスを制限できます。 その結果、クラスターのセキュリティが強化されます。
 

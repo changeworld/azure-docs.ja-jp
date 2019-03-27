@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2018
-ms.author: cwatson
-ms.openlocfilehash: 01af1249039f8bfa1238cbbc12a77074e9347a39
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.author: banders
+ms.openlocfilehash: 7e5697073b9406d915eda99a5e71e3123c48073a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263567"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880223"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>Azure の予約の自動化に関する API
 
@@ -29,7 +29,7 @@ Azure API を使用して、Azure サービスまたはソフトウェアの予�
 
 組織の使用状況に基づいて購入する予約プランについての推奨事項を取得するには、Reservation Recommendation API を使用します。 詳細については、[予約についの推奨事項の取得](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)に関する記事をご覧ください。
 
-Consumption API の使用状況の詳細を使って、リソースの使用状況を分析することもできます。 詳細については、「[Usage Details - List For Billing Period By Billing Account](/rest/api/consumption/usagedetails/listforbillingperiodbybillingaccount)」(使用状況の詳細 - 請求期間に対する課金アカウント別のリスト) をご覧ください。 通常、一貫して使用する Azure リソースは、予約に最適な候補です。
+Consumption API の使用状況の詳細を使って、リソースの使用状況を分析することもできます。 詳細については、「[Usage Details - List For Billing Period By Billing Account](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod)」(使用状況の詳細 - 請求期間に対する課金アカウント別のリスト) をご覧ください。 通常、一貫して使用する Azure リソースは、予約に最適な候補です。
 
 ## <a name="buy-a-reservation"></a>予約の購入
 

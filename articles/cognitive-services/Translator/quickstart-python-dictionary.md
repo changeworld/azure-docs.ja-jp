@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python と Translator Text REST API を使用して、翻訳の代替候補を探す方法と特定のテキストの使用例を紹介します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/21/2018
+ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 52820a9162a20b680b85d07f8c49ac5305d4979a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: f00cc893f21db302c2efe63da285c8843958b1ee
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158013"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731244"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>クイック スタート:Python を使用して 2 か国語辞書で単語を検索する
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-現在、1 つのエンドポイントが Translator Text 用に使用可能で、`base_url` として設定されています。 `path` によって、`dictionary/lookup` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+Translator Text のグローバル エンドポイントは、`base_url` として設定されます。 `path` によって、`dictionary/lookup` ルートが設定され、API のバージョン 3 を使用することが識別されます。
 
 `params` は、ソース言語と出力言語を設定するために使用されます。 このサンプルでは、英語 (`en`) とスペイン語 (`es`) を使用します。
 

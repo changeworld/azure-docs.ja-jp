@@ -12,20 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 33512b47eff75421ce07b02f9c17ae3028152568
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.lastreviewed: 12/11/2018
+ms.openlocfilehash: 4481bcf7a794423f98f45e4a21a139dbe4c32b4f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276253"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210783"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムの Azure から切断されたデプロイ計画の決定
 [Azure Stack をハイブリッド クラウド環境に統合する方法](azure-stack-connection-models.md)を決定したら、Azure Stack デプロイの決定を完成させることができます。
 
-インターネットに接続していなくても、Azure Stack をデプロイして使用することができます。 ただし、切断されたデプロイでは、AD FS ID ストアおよび容量ベースの課金モデルに制限されます。 マルチテナント機能には Azure AD の使用が必要であるため、切断されたデプロイではマルチテナントはサポートされません。 
+インターネットに接続していなくても、Azure Stack をデプロイして使用することができます。 ただし、切断されたデプロイでは、AD FS ID ストアおよび容量ベースの課金モデルに制限されます。 マルチテナント機能には Azure Active Directory (Azure AD) の使用が必要であるため、切断されたデプロイではマルチテナントはサポートされません。 
 
 このオプションは、次の場合に選択します。
 - インターネットに接続されていない環境で Azure Stack をデプロイすることが必要なセキュリティまたはその他の制限がある。
@@ -33,9 +34,9 @@ ms.locfileid: "53276253"
 - Azure Stack を純粋に、社内イントラネットにデプロイされるプライベート クラウド ソリューションとして使用したい。ハイブリッド シナリオには関心がない。
 
 > [!TIP]
-> この種類の環境は "サブマリン シナリオ" と呼ばれる場合もあります。
+> この種類の環境は*サブマリン シナリオ*と呼ばれる場合もあります。
 
-切断されたデプロイは、後でハイブリッド テナント VM シナリオのために Azure Stack インスタンスを Azure に接続できないことを厳密に示すものではありません。 これは、デプロイ中に Azure への接続がないか、または ID ストアとして Azure Active Directory を使用したくないことを示しています。
+切断されたデプロイは、後でハイブリッド テナント VM シナリオのために Azure Stack インスタンスを Azure に接続することを制限するものではありません。 これは、デプロイ中に Azure への接続がないか、または ID ストアとして Azure AD を使用したくないことを示しています。
 
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>切断されたデプロイで損なわれるか、または使用できない機能 
 Azure Stack は Azure に接続されているときに最適に機能するように設計されているため、切断モードでは損なわれるか、または完全に使用できない機能がいくつか存在することに注意する必要があります。 
@@ -46,7 +47,7 @@ Azure Stack は Azure に接続されているときに最適に機能するよ�
 |Docker コマンドを実行するための Docker 拡張機能を備えた VM デプロイ|損なわれる – Docker は最新バージョンがないかどうかインターネットをチェックするため、このチェックは失敗します。|
 |Azure Stack ポータルでのドキュメント リンク|使用できない – インターネット URL を使用するリンク ([フィードバックのご提供]、[ヘルプ]、[クイック スタート] など) は機能しません。|
 |オンライン修復ガイドを参照する、アラートによる修復/軽減|使用できない – インターネット URL を使用するアラート修復リンクはすべて機能しません。|
-|Marketplace – Azure Marketplace から直接ギャラリー パッケージを選択して追加する機能|損なわれる - Azure Stack を非接続モード (インターネット接続なし) でデプロイする場合、Azure Stack ポータルを使用して Marketplace アイテムをダウンロードすることはできません。 ただし、[マーケットプレース シンジケーション ツール](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity)を使用して、インターネットに接続されたマシンに Marketplace アイテムをダウンロードしてから、Azure Stack 環境に転送することができます。|
+|Marketplace – Azure Marketplace から直接ギャラリー パッケージを選択して追加する機能|損なわれる - Azure Stack を非接続モード (インターネット接続なし) でデプロイする場合、Azure Stack ポータルを使用して Marketplace アイテムをダウンロードすることはできません。 ただし、[マーケットプレース シンジケーション ツール](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)を使用して、インターネットに接続されたマシンに Marketplace アイテムをダウンロードしてから、Azure Stack 環境に転送することができます。|
 |Azure Stack デプロイを管理するための Azure Active Directory フェデレーション アカウントの使用|使用できない – この機能には Azure への接続が必要です。 代わりに、ローカルの Active Directory インスタンスによる AD FS を使用する必要があります。|
 |アプリケーション サービス|損なわれる - WebApps では、コンテンツの更新のためにインターネットへのアクセスが必要です。|
 |コマンド ライン インターフェイス (CLI)|損なわれる – CLI は、サービス プリンシパルの認証およびプロビジョニングの点で機能が削減されます。|

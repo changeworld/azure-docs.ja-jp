@@ -7,20 +7,21 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
-ms.openlocfilehash: 0664316d73b1473ab52b08f8abead2ec33d121b6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.lastreviewed: 12/03/2018
+ms.openlocfilehash: 39298d34a0d29eb1e5a4234ffe0e0fcca844226e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836748"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858186"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>クイック スタート: Azure Stack ポータルで Linux サーバー仮想マシンを作成する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack ポータルを使用して、Ubuntu Server 16.04 LTS 仮想マシンを作成できます。 この記事の手順に従って仮想マシンを作成し、使用します。 この記事では、以下のことを実行する手順も示します。
 
@@ -40,9 +41,9 @@ Azure Stack ポータルを使用して、Ubuntu Server 16.04 LTS 仮想マシ�
 
 * **SSH クライアントへのアクセス**
 
-   Azure Stack Development Kit (ASDK) を使用している場合は、SSH クライアントにアクセスできない可能性があります。 クライアントが必要な場合は、SSH クライアントが含まれるパッケージがいくつかあります。 たとえば、PuTTY には SSH クライアントと SSH キージェネレーター (puttygen.exe) が含まれています。 利用できるパッケージの詳細については、Azure の関連記事「[How to Use SSH keys with Windows on Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients)」(Azure 上の Windows で SSH キーを使用する方法) を参照してください。
+   Azure Stack Development Kit (ASDK) を使用している場合は、SSH クライアントにアクセスできない可能性があります。 クライアントが必要な場合は、SSH クライアントが含まれるパッケージがいくつかあります。 たとえば、PuTTY には SSH クライアントと SSH キージェネレーター (puttygen.exe) が含まれています。 利用できるパッケージの詳細については、Azure の関連記事「[Azure 上の Windows で SSH キーを使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients)」を参照してください。
 
-   このクイック スタートでは、PuTTY を使用して SSH キーを生成し、Linux サーバー仮想マシンに接続します。 PuTTY をダウンロードしてインストールするには、[http://www.putty.org/](http://www.putty.org) にアクセスします。
+   このクイック スタートでは、PuTTY を使用して SSH キーを生成し、Linux サーバー仮想マシンに接続します。 PuTTY をダウンロードしてインストールするには、[https://www.putty.org/](https://www.putty.org) にアクセスします。
 
 ## <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
 
@@ -76,8 +77,8 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
 
 4. 仮想マシンの情報を入力します。 **[認証の種類]** には **[SSH 公開キー]** を選択します。 保存した SSH 公開キーを貼り付け、**[OK]** をクリックします。
 
-   >[!NOTE]
- キーの先頭または末尾の空白を削除します。
+   > [!NOTE]
+   > キーの先頭または末尾の空白を削除します。
 
    ![基本パネル - 仮想マシンの構成](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
@@ -87,10 +88,10 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
 
 6. **[設定]** ページで、必要に応じて既定値を変更します。
    
-    - Azure Stack バージョン 1808 以降では、**ストレージ**を構成できます。ここで "*マネージド ディスク*" の使用を選択できます。 バージョン 1808 より前は、アンマネージド ディスクのみを使用できます。    
-      ![マネージド ディスクのストレージを構成する](media/azure-stack-quick-linux-portal/linux-03.PNG)
+   - Azure Stack バージョン 1808 以降では、**ストレージ**を構成できます。ここで "*マネージド ディスク*" の使用を選択できます。 バージョン 1808 より前は、アンマネージド ディスクのみを使用できます。    
+     ![マネージド ディスクのストレージを構成する](media/azure-stack-quick-linux-portal/linux-03.PNG)
     
-    お使いの構成の準備が整ったら、**[OK]** を選択して続行します。
+     お使いの構成の準備が整ったら、**[OK]** を選択して続行します。
 
 7. **[概要]** ページで、**[OK]** をクリックして仮想マシンの展開を開始します。  
    ![デプロイする](media/azure-stack-quick-linux-portal/deploy.png)

@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 908b7e40c0509d7034b86985ac0775635726a6b9
+ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406145"
+ms.lasthandoff: 01/16/2019
+ms.locfileid: "54329805"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry と Azure を統合する
 
 [Cloud Foundry](https://docs.cloudfoundry.org/) は、クラウド プロバイダーの IaaS プラットフォーム上で動作する PaaS プラットフォームです。 各クラウド プロバイダーに、一貫性のあるアプリケーション デプロイ エクスペリエンスを提供します。 また、エンタープライズ グレードの HA、スケーラビリティ、および低コストで、さまざまな Azure サービスと統合することもできます。
-[Cloud Foundry には 6 つのサブシステム](https://docs.cloudfoundry.org/concepts/architecture/) (ルーティング、認証、アプリケーション ライフ サイクル管理、サービス管理、メッセージング、監視) があり、オンラインで柔軟にスケーリングすることができます。 各サブシステムについて、対応する Azure サービスを利用するように Cloud Foundry を構成することができます。 
+以下を含め、[Cloud Foundry には 6 つのサブシステム](https://docs.cloudfoundry.org/concepts/architecture/)があります。これらはオンラインで柔軟にスケールできます。ルーティング、認証、アプリケーション ライフ サイクル管理、サービス管理、メッセージング、および監視です。 各サブシステムについて、対応する Azure サービスを利用するように Cloud Foundry を構成することができます。 
 
 ![Azure 統合アーキテクチャでの Cloud Foundry](media/CFOnAzureEcosystem-colored.png)
 

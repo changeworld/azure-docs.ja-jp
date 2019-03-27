@@ -1,6 +1,6 @@
 ---
 title: Azure の Office 365 管理ソリューション | Microsoft Docs
-description: この記事では、Azure での Office 365 ソリューションの構成と使用について詳しく説明します。  Log Analytics で作成された Office 365 レコードの詳細な説明が含まれています。
+description: この記事では、Azure での Office 365 ソリューションの構成と使用について詳しく説明します。  Azure Monitor で作成された Office 365 レコードの詳細な説明が含まれています。
 services: operations-management-suite
 documentationcenter: ''
 author: bwren
@@ -10,26 +10,26 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: a97a3330ff99cada3921f98b76cf08ed7a464bcc
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 92ba185ce3c271284ae20981408b2b12f516e3c8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156563"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999302"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
 ![Office 365 のロゴ](media/solution-office-365/icon.png)
 
-Office 365 管理ソリューションでは、Log Analytics で Office 365 環境を監視できます。
+Office 365 管理ソリューションでは、Azure Monitor で Office 365 環境を監視できます。
 
 - Office 365 アカウント上でのユーザー アクティビティを監視し、使用パターンを分析したり、行動傾向を識別したりします。 たとえば、組織の外で共有されるファイルや、最も人気のある SharePoint サイトといった特定の使用シナリオを抽出することができます。
 - 管理者のアクティビティを監視し、構成変更や高権限操作を追跡します。
 - 不必要なユーザーの行動を検出および調査します。これは、組織のニーズに合わせてカスタマイズできます。
 - 監査とコンプライアンスを実証します。 たとえば、機密ファイルに対するファイル アクセス操作を監視でき、これは監査とコンプライアンスのプロセスに役立ちます。
-- 組織の Office 365 アクティビティ データに対して[ログ検索](../../azure-monitor/log-query/log-query-overview.md)を使用し、運用上のトラブルシューティングを実行します。
+- 組織の Office 365 アクティビティ データに対して[ログ クエリ](../log-query/log-query-overview.md)を使用し、運用上のトラブルシューティングを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションをインストールして構成する前に、次のものが必要です。
@@ -40,10 +40,10 @@ Office 365 管理ソリューションでは、Log Analytics で Office 365 環�
  
 
 ## <a name="management-packs"></a>管理パック
-このソリューションでは、[接続されている管理グループ](../../azure-monitor/platform/om-agents.md)に管理パックがインストールされることはありません。
+このソリューションでは、[接続されている管理グループ](../platform/om-agents.md)に管理パックがインストールされることはありません。
   
 ## <a name="install-and-configure"></a>インストールと構成
-[サブスクリプションに Office 365 ソリューション](solutions.md#install-a-management-solution)を追加することで開始します。 追加されたら、Office 365 サブスクリプションへのアクセス権を付与するため、このセクションの構成手順を実行する必要があります。
+[サブスクリプションに Office 365 ソリューション](solutions.md#install-a-monitoring-solution)を追加することで開始します。 追加されたら、Office 365 サブスクリプションへのアクセス権を付与するため、このセクションの構成手順を実行する必要があります。
 
 ### <a name="required-information"></a>必要な情報
 この手順を開始する前に、次の情報を収集します。
@@ -158,7 +158,7 @@ Office 365 サブスクリプションから:
     AdminConsent -ErrorAction Stop
     ```
 
-2. 次のコマンドを実行して、スクリプトを実行します。
+2. 次のコマンドを実行して、スクリプトを実行します。 資格情報を求めるメッセージが 2 回表示されます。 最初に Log Analytics ワークスペースの資格情報を指定し、次に Office 365 テナントのグローバル管理者の資格情報を指定します。
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
@@ -351,7 +351,7 @@ Office 365 サブスクリプションから:
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
-サブスクリプションが既に存在していて、サブスクリプションを作成しようとすると、次のエラーが表示される場合があります。
+アプリケーションがこのワークスペースに既にサブスクライブしている場合や、このテナントが別のワークスペースにサブスクライブしている場合は、次のエラーが表示されることがあります。
 
 ```
 Invoke-WebRequest : {"Message":"An error has occurred."}
@@ -375,7 +375,7 @@ At line:12 char:18
 ```
 
 ## <a name="uninstall"></a>アンインストール
-[管理ソリューションを削除する](solutions.md#remove-a-management-solution)のプロセスを使用して Office 365 管理ソリューションを削除できます。 ただし Log Analytics に Office 365 から収集されるデータは停止されません。 Office 365 からのサブスクリプションを解除し、データの収集を停止するには、以下の手順に従います。
+[管理ソリューションを削除する](solutions.md#remove-a-monitoring-solution)のプロセスを使用して Office 365 管理ソリューションを削除できます。 ただしこれによって、Office 365 から Azure Monitor に収集されているデータは停止されません。 Office 365 からのサブスクリプションを解除し、データの収集を停止するには、以下の手順に従います。
 
 1. 次のスクリプトを *office365_unsubscribe.ps1* として保存します。
 
@@ -394,7 +394,7 @@ At line:12 char:18
     $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Get-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     
@@ -476,12 +476,15 @@ At line:12 char:18
 
 ## <a name="data-collection"></a>データ収集
 ### <a name="supported-agents"></a>サポートされているエージェント
-Office 365 ソリューションは、どの [Log Analytics エージェント](../../azure-monitor/platform/agent-data-sources.md)からもデータを取得しません。  Office 365 から直接データを取得します。
+Office 365 ソリューションは、どの [Log Analytics エージェント](../platform/agent-data-sources.md)からもデータを取得しません。  Office 365 から直接データを取得します。
 
 ### <a name="collection-frequency"></a>収集の頻度
-最初のデータ収集には数時間かかる場合があります。 収集が開始されると、レコードが作成されるたびに、Office 365 は [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)と詳細なデータを Log Analytics に送信します。 このレコードは、受信した後、数分以内に Log Analytics で使用できます。
+最初のデータ収集には数時間かかる場合があります。 収集が開始されると、レコードが作成されるたびに、Office 365 は [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)と詳細なデータを Azure Monitor に送信します。 このレコードは、受信した後、数分以内に Azure Monitor で使用できます。
 
 ## <a name="using-the-solution"></a>ソリューションの使用
+
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
 Log Analytics ワークスペースに Office 365 ソリューションを追加すると、ダッシュボードに **[Office 365]** タイルが追加されます。 このタイルには、ご利用の環境におけるコンピューターの数と更新プログラムの対応状態が数字とグラフで表示されます。<br><br>
 ![Office 365 の概要タイル](media/solution-office-365/tile.png)  
 
@@ -501,9 +504,9 @@ Log Analytics ワークスペースに Office 365 ソリューションを追加
 
 
 
-## <a name="log-analytics-records"></a>Log Analytics のレコード
+## <a name="azure-monitor-log-records"></a>Azure Monitor のログ レコード
 
-Log Analytics ワークスペースで Office 365 ソリューションによって作成されたすべてのレコードは、**型** が **OfficeActivity** です。  **OfficeWorkload**プロパティは、レコードが参照する Office 365 サービス (Exchange、AzureActiveDirectory、SharePoint、または OneDrive) を決定します。  **RecordType** プロパティは操作の種類を指定します。  プロパティは操作の種類ごとに異なり、次の表に示しています。
+Azure Monitor の Log Analytics ワークスペースで Office 365 ソリューションによって作成されたすべてのレコードは、**型** が **OfficeActivity** です。  **OfficeWorkload**プロパティは、レコードが参照する Office 365 サービス (Exchange、AzureActiveDirectory、SharePoint、または OneDrive) を決定します。  **RecordType** プロパティは操作の種類を指定します。  プロパティは操作の種類ごとに異なり、次の表に示しています。
 
 ### <a name="common-properties"></a>共通のプロパティ
 次のプロパティは、Office 365 のすべてのレコードに共通です。
@@ -516,7 +519,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 | Operation | ユーザーまたは管理者アクティビティの名前。  |
 | OrganizationId | 組織の Office 365 テナントの GUID。 どの Office 365 サービスで発生するかにかかわらず、この値は組織に対して常に同じになります。 |
 | RecordType | 実行する操作の種類。 |
-| ResultStatus | (Operation プロパティで指定された) アクションが正常に終了したかどうかを示します。 値は Succeeded、PartiallySucceded、Failed のいずれかです。 Exchange 管理者アクティビティの場合、値は True または False です。 |
+| ResultStatus | (Operation プロパティで指定された) アクションが正常に終了したかどうかを示します。 値は Succeeded、PartiallySucceeded、Failed のいずれかです。 Exchange 管理者アクティビティの場合、値は True または False です。 |
 | UserId | レコードがログに記録される結果になったアクションを実行したユーザーの UPN (ユーザー プリンシパル名)。たとえば、my_name@my_domain_name。 (SHAREPOINT\system や NTAUTHORITY\SYSTEM などの) システム アカウントによって実行されるアクティビティのレコードも含まれることに注意してください。 | 
 | UserKey | UserId プロパティで識別されるユーザーの代替 ID。  たとえば、SharePoint、OneDrive for Business、および Exchange でユーザーによって実行されたイベントの Passport 一意識別子 (PUID) が、このプロパティの値になります。 このプロパティは、他のサービスで発生するイベントや、システム アカウントによって実行されるイベントの UserID プロパティと同じ値を指定する場合もあります。|
 | UserType | 操作を実行したユーザーの種類。<br><br>[Admin]<br>アプリケーション<br>DcAdmin<br>通常 <br>予約済み<br>ServicePrincipal<br>システム |
@@ -697,7 +700,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
 
-| クエリ | 説明 |
+| Query | 説明 |
 | --- | --- |
 |Office 365 サブスクリプションでのすべての操作のカウント |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint サイトの使用率|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl | sort by Count asc|
@@ -708,6 +711,6 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
-* [独自のダッシュボードを作成](../../azure-monitor/platform/dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
-* [アラートを作成](../../azure-monitor/platform/alerts-overview.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  
+* [Azure Monitor でログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な更新プログラムのデータを表示します。
+* [独自のダッシュボードを作成](../learn/tutorial-logs-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
+* [アラートを作成](../platform/alerts-overview.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  

@@ -8,14 +8,14 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 11eec492501f7ead639aa928fe0ddaafb2f1d1bc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: b81cedc9376b33b27f3a742fbe5d7410535fa727
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033674"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587805"
 ---
-# <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Azure Cosmos DB は:Gremlin API を使用して Node.js アプリケーションをビルドする
+# <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>クイック スタート:Azure Cosmos DB Gremlin API アカウントを使用して Node.js アプリケーションをビルドする
 
 > [!div class="op_single_selector"]
 > * [Gremlin コンソール](create-graph-gremlin-console.md)
@@ -78,7 +78,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
 * Gremlin クライアントが作成されます。
 
-    ```nodejs
+    ```javascript
     const client = Gremlin.createClient(
         443, 
         config.endpoint, 
@@ -94,7 +94,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
 * さまざまな Gremlin 操作を実行する一連の関数が定義されています。 その一例を次に示します。
 
-    ```nodejs
+    ```javascript
     function addVertex1(callback)
     {
         console.log('Running Add Vertex1'); 
@@ -108,7 +108,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
 * 各関数は、Gremlin クエリ文字列パラメーターが指定された `client.execute` メソッドを実行します。 `g.V().count()` の実行方法の例を次に示します。
 
-    ```nodejs
+    ```javascript
     console.log('Running Count'); 
     client.execute("g.V().count()", { }, (err, results) => {
         if (err) return console.error(err);
@@ -119,7 +119,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
 * このファイルの最後で、`async.waterfall()` メソッドを使用してすべてのメソッドが呼び出されます。 すべてのメソッドは順に実行されます。
 
-    ```nodejs
+    ```javascript
     try{
         async.waterfall([
             dropGraph,
@@ -158,7 +158,7 @@ GitHub から Gremlin API アプリの複製を作成し、接続文字列を設
 
 たとえば、完成した config.js ファイルの内容は次のようになります。
 
-```nodejs
+```javascript
 var config = {}
 
 // Note that this must not have HTTPS or the port number

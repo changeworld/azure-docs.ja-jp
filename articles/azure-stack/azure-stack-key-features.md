@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 01/14/2019
 ms.author: jeffgilb
-ms.reviewer: ''
-ms.openlocfilehash: 21a6eeb4b0a83574be4c5c996e43d9867c3249d0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.reviewer: unknown
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: b07d8b115b966b9decdfa7379a908da4f9f2ee74
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185734"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55243911"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack の主要な機能と概念
 Microsoft Azure Stack を初めて使う場合は、次の用語と機能の説明を参考にしてください。
@@ -129,23 +130,13 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 KeyVault RP は、パスワードや証明書などのシークレットの管理と監査を提供します。 たとえば、テナントは、KeyVault RP を使用して、VM のデプロイ中に管理者のパスワードやキーを指定できます。
 
 ## <a name="high-availability-for-azure-stack"></a>Azure Stack の高可用性
-*適用対象: Azure Stack 1802 以降のバージョン*
+Azure でのマルチ VM による実稼働システムの高可用性を実現するため、VM は、複数の障害ドメインと更新ドメインに分散される[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)に配置されます。 より小さいスケールの Azure Stack では、可用性セット内の障害ドメインは、スケール ユニット内の 1 つのノードとして定義されます。  
 
-Azure でのマルチ VM による実稼働システムの高可用性を実現するため、VM は、複数の障害ドメインと更新ドメインに分散される可用性セットに配置されます。 この方法では、次の図に示すように[可用性セットにデプロイされた VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) が複数のサーバー ラックに互いに物理的に分離され、障害からの回復性が考慮されています。
-
-  ![Azure Stack の高可用性](media/azure-stack-key-features/high-availability.png)
-
-### <a name="availability-sets-in-azure-stack"></a>Azure Stack の可用性セット
 Azure Stack のインフラストラクチャは既に障害に対する回復性を備えていますが、基盤となっているテクノロジ (フェールオーバー クラスタリング) では、ハードウェアが故障した場合にその影響を受ける物理サーバー上の VM に多少のダウンタイムが発生します。 Azure Stack では、Azure との一貫性がある最大 3 つの障害ドメインを持つ可用性セットを用意することをサポートしています。
 
 - **障害ドメイン**。 可用性セットに配置された VM は、複数の障害ドメイン (Azure Stack ノード) にできる限り均等に分散させることによって、互いに物理的に分離されます。 ハードウェアが故障した場合、障害が発生した障害ドメインの VM は他の障害ドメインで再起動されますが、可能であれば、同じ可用性セット内の他の VM とは別の障害ドメインに保持されます。 ハードウェアがオンラインに戻ると、高可用性を維持するために VM の再分配が行われます。 
  
-- **更新ドメイン**。 更新ドメインは、可用性セットに高可用性を提供する Azure の別の概念です。 更新ドメインは、メンテナンスを同時に実行できる、基盤となるハードウェアの論理グループです。 同じ更新ドメイン内の VM は、計画済みメンテナンス中に同時に再起動されます。 テナントが可用性セット内に VM を作成すると、Azure プラットフォームは、これらの更新ドメインに VM を自動的に分散します。 Azure Stack では、VM のホストが更新される前に、クラスター内の他のオンライン ホストに VM がライブで移行されます。 ホスト更新中のテナントのダウンタイムはないため、Azure Stack の更新ドメイン機能は、Azure とのテンプレートの互換性を保つためにのみ存在します。 
-
-### <a name="upgrade-scenarios"></a>アップグレードのシナリオ 
-Azure Stack バージョン 1802 より前に作成された可用性セット内の VM には、既定数の障害ドメインと更新ドメインが与えられています (前者は 1、後者は 1)。 既存の可用性セット内の VM に対する高可用性を実現するには、既存の VM を削除した後、「[Windows VM の可用性セットの変更](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set)」の説明に従って、適切な数の障害ドメインと更新ドメインを持つ新しい可用性セットに再デプロイする必要があります。 
-
-仮想マシン スケール セット用の可用性セットは、既定数の障害ドメインと更新ドメイン (前者は 3、後者は 5) で内部的に作成されます。 1802 更新プログラムより前に作成されたすべての仮想マシン スケール セットは、既定数の障害ドメインと更新ドメイン (前者は 1、後者は 1) を持つ可用性セットに配置されます。 これらの仮想マシン スケール セット インスタンスを新しく分散されるように更新するには、1802 更新プログラムより前に存在していたインスタンス数によって仮想マシン スケール セットをスケール アウトした後、仮想マシン スケール セットの古いインスタンスを削除します。 
+- **更新ドメイン**。 更新ドメインは、可用性セットに高可用性を提供する Azure の別の概念です。 更新ドメインは、メンテナンスを同時に実行できる、基盤となるハードウェアの論理グループです。 同じ更新ドメイン内の VM は、計画済みメンテナンス中に同時に再起動されます。 テナントが可用性セット内に VM を作成すると、Azure プラットフォームは、これらの更新ドメインに VM を自動的に分散します。 Azure Stack では、VM のホストが更新される前に、クラスター内の他のオンライン ホストに VM がライブで移行されます。 ホスト更新の際にテナントのダウンタイムは発生しないため、Azure Stack の更新ドメイン機能は、Azure とテンプレートの互換性を保つためにのみ存在します。 
 
 ## <a name="role-based-access-control-rbac"></a>ロールベースの Access Control (RBAC)
 RBAC を使用して、承認されたユーザー、グループ、およびサービスに対してサブスクリプション、リソース グループ、または個々のリソース レベルでロールを割り当てることによって、システムへのアクセスを許可することができます。 各ロールは、Microsoft Azure Stack のリソースに対するユーザー、グループ、またはサービスのアクセス レベルを定義します。

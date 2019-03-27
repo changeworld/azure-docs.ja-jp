@@ -6,22 +6,22 @@ documentationcenter: ''
 author: jeffgilb
 manager: femila
 editor: ''
-ms.assetid: 02c7ff03-874e-4951-b591-28166b7a7a79
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/07/2019
+ms.date: 02/25/2019
 ms.author: jeffgilb
-ms.reviewer: ''
-ms.openlocfilehash: f60bc6a446309bacc300c5bc3fcee430232e295d
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.reviewer: efemmano
+ms.lastreviewed: 02/25/2019
+ms.openlocfilehash: 8662cfde881a90ce8f7fc6cceaa576d3b971d9d6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107601"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817934"
 ---
 # <a name="quickstart-use-the-azure-stack-administration-portal"></a>クイック スタート: Azure Stack 管理ポータルを使用する
 

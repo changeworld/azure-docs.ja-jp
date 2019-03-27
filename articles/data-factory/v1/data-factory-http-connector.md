@@ -57,7 +57,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 | url | Web サーバーへのベース URL | はい |
 | authenticationType | 認証の種類を指定します。 使用できる値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> これらの認証の種類のその他のプロパティや JSON サンプルについては、この記事の後の方のセクションを参照してください。 | はい |
 | enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 HTTPS サーバーで自己署名証明書を使用している場合は、これを **false** に設定します。 | いいえ <br /> (既定値は **true** です)。 |
-| gatewayName | オンプレミスの HTTP ソースに接続するために使用する Data Management Gateway インスタンスの名前。 | オンプレミスの HTTP ソースからデータをコピーしている場合は [はい] |
+| gatewayName | オンプレミスの HTTP ソースに接続するために使用する Data Management Gateway インスタンスの名前。 | オンプレミスの HTTP ソースからデータをコピーしている場合は はい |
 | encryptedCredential | HTTP エンドポイントにアクセスするための暗号化された資格情報。 この値は、コピー ウィザードで、または **ClickOnce** ダイアログ ボックスを使用して認証情報を構成していると自動生成されます。 | いいえ <br /> (オンプレミスの HTTP サーバーからデータをコピーする場合にのみ適用されます) |
 
 オンプレミスの HTTP コネクタ データ ソースの資格情報を設定する方法の詳細については、「[Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)」を参照してください。

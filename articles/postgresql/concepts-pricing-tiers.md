@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/15/2019
-ms.openlocfilehash: 49c9d908970425165fcdd76171c20ab65454f42a
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.date: 02/01/2019
+ms.openlocfilehash: 8cc7d7d93f483289ab7faa3f5a7193fc218b57bc
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318580"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695029"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL の価格レベル
 
@@ -129,5 +129,5 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 ## <a name="next-steps"></a>次の手順
 
 - [ポータルで PostgreSQL サーバーを作成](tutorial-design-database-using-azure-portal.md)する方法を確認します。
-- [Azure CLI での Azure Database for PostgreSQL サーバーの監視とスケーリング](scripts/sample-scale-server-up-or-down.md)する方法を確認します。
-- [サービスの制限事項](concepts-limits.md)を確認します。 
+- [サービスの制限](concepts-limits.md)について確認します。 
+- [読み取りレプリカを使用してスケールアウトする](howto-read-replicas-portal.md)方法を確認します。

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing News Search API の分析を取得する方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: 435365ff0e10ce7340b7109701e55f126a85f9f0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: ffc50a305b446c4659940275bf7bbac20159d8ca
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261487"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55882881"
 ---
 # <a name="how-to-get-analytics-for-bing-news-search-api"></a>Bing News Search API の分析を取得する方法
 

@@ -3,21 +3,22 @@ title: Azure Active Directory でアプリ パスワードを管理する方法 
 description: このページは、アプリ パスワードの詳細と、2 段階認証 に関連した用途を理解するのに役立ちます。
 services: active-directory
 author: eross-msft
-manager: mtillman
+manager: daveba
 ms.reviewer: richagi
 ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
 ms.workload: identity
 ms.service: active-directory
-ms.component: user-help
+ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 836f426be950e33031ff74276218d1ba59f1f2f7
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fdcd078714d8311cf59471492187314183de28b2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300915"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187306"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>2 段階認証のアプリ パスワードを管理する
 
@@ -121,4 +122,4 @@ My Apps ポータル経由でアプリ パスワードを作成および削除�
 
 - [2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)
 
-- SMS や電話を受ける代わりに、[Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)の通知を使用してサインインを確認する
+- SMS や電話を受ける代わりに、[Microsoft Authenticator アプリ](user-help-auth-app-download-install.md)の通知を使用してサインインを確認する

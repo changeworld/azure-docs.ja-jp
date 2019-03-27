@@ -5,18 +5,20 @@ items:
   items:
   - name: Azure Stack とは
     href: azure-stack-poc.md
+  - name: 主要機能および概念
+    href: azure-stack-key-features.md
   - name: リリース ノート
     items:
     - name: 最新の更新
-      href: azure-stack-servicing-policy.md#update-package-release-cadence
+      href: azure-stack-servicing-policy.md
+    - name: 1902 更新プログラム
+      href: azure-stack-update-1902.md
+    - name: 1901 更新プログラム
+      href: azure-stack-update-1901.md
     - name: 1811 更新プログラム
       href: azure-stack-update-1811.md
     - name: 1809 更新プログラム
       href: azure-stack-update-1809.md
-    - name: 1808 更新プログラム
-      href: azure-stack-update-1808.md
-    - name: 1807 更新プログラム
-      href: azure-stack-update-1807.md
 - name: クイック スタート
   items:
   - name: 管理ポータルの使用
@@ -113,10 +115,6 @@ items:
         href: azure-stack-integrate-security.md
       - name: デバイスの監査
         href: azure-stack-integrate-physical-device-auditing.md
-  - name: サービス ポリシー
-    href: azure-stack-servicing-policy.md
-  - name: 主要機能および概念
-    href: azure-stack-key-features.md
   - name: 管理の基本
     href: azure-stack-manage-basics.md
 - name: ハウツー ガイド
@@ -165,6 +163,8 @@ items:
         href: azure-stack-manage-storage-accounts.md
       - name: ストレージ容量の管理
         href: azure-stack-manage-storage-shares.md
+      - name: ストレージ インフラストラクチャの管理
+        href: azure-stack-storage-infrastructure-overview.md
       - name: 物理メモリ容量の管理
         href: azure-stack-manage-storage-physical-memory-capacity.md
       - name: スケール ユニット ノードの追加
@@ -207,6 +207,8 @@ items:
       href: azure-stack-rotate-secrets.md
     - name: ウイルス対策の更新
       href: azure-stack-security-av.md
+    - name: ログの収集とデータの処理
+      href: azure-stack-data-collection.md
   - name: Marketplace の設定
     items:
     - name: Marketplace の概要
@@ -282,20 +284,24 @@ items:
       href: azure-stack-app-service-capacity-planning.md
     - name: 開始する前に
       href: azure-stack-app-service-before-you-get-started.md
-    - name: 障害ドメインに分散して Azure App Service on Azure Stack を再配布する方法
-      href: azure-stack-app-service-fault-domain-update.md
-    - name: App Service リソース プロバイダーのデプロイ
+    - name: App Service のデプロイ
       href: azure-stack-app-service-deploy.md
+    - name: 高可用性のための App Service のデプロイ
+      href: app-service-deploy-ha.md
     - name: App Service のオフライン デプロイ
       href: azure-stack-app-service-deploy-offline.md
     - name: App Service の更新
       href: azure-stack-app-service-update.md
     - name: App Service のオフライン更新
       href: azure-stack-app-service-update-offline.md
-    - name: Web worker ロールの追加
+    - name: App Service のインフラストラクチャ ロールの追加
       href: azure-stack-app-service-add-worker-roles.md
     - name: デプロイ ソースを構成する
       href: azure-stack-app-service-configure-deployment-sources.md
+    - name: App Service のバックアップ
+      href: app-service-back-up.md
+    - name: App Service の復旧
+      href: app-service-recover.md
     - name: App Service on Azure Stack のリリース ノート
       items:
       - name: App Service on Azure Stack Update 1 のリリース ノート
@@ -306,6 +312,8 @@ items:
         href: azure-stack-app-service-release-notes-update-three.md
       - name: App Service on Azure Stack update 4 のリリース ノート
         href: azure-stack-app-service-release-notes-update-four.md
+      - name: App Service on Azure Stack update 5 のリリース ノート
+        href: azure-stack-app-service-release-notes-update-five.md
   - name: プラン、オファー、クォータの作成
     items:
     - name: プラン、オファー、クォータ、サブスクリプションの概要
@@ -395,9 +403,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 91c476e8e65642e490c3a42de7d5a340964f3ae5
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: f2ea6b4ae7ff49d3263805460a30e5d407f7c0e6
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411715"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338362"

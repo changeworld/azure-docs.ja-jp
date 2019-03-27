@@ -4,23 +4,24 @@ description: このトピックでは、Azure AD Connect を使用するため�
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 91b88fda-bca6-49a8-898f-8d906a661f07
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/28/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a36868e5bab64883036e0f93352bea5341ff7fe7
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9925f2ed9f5b24a4113c30f1d00eb3a5bbed8eb5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384059"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205343"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -79,7 +80,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
   * ドイツで Microsoft Cloud を使用する場合、または Microsoft Azure Government クラウドを使用する場合は、 [Azure AD Connect 同期サービス インスタンスの考慮事項](reference-connect-instances.md) に関するページで URL を確認してください。
 * Azure AD Connect (バージョン 1.1.614.0 以降) では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.2 が使用されます。 基盤となるオペレーティング システムで TLS 1.2 が使用できない場合は、1 つ前のプロトコル (TLS 1.1 と TLS 1.0) に段階的にフォールバックされます。
 * バージョン 1.1.614.0 未満の Azure AD Connect では、同期エンジンと Azure AD との間の通信の暗号化に既定で TLS 1.0 が使用されます。 TLS 1.2 に変更するには、「[Azure AD Connect 用に TLS 1.2 を有効にする](#enable-tls-12-for-azure-ad-connect)」の手順に従います。
-* 送信プロキシを使用してインターネットに接続する場合は、次の設定を **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** ファイルに追加して、インストール ウィザードと Azure AD Connect 同期がインターネットと Azure AD に接続できるようにする必要があります。 このテキストは、ファイルの末尾に入力する必要があります。 このコードの &lt;PROXYADRESS&gt; は実際のプロキシ IP アドレスまたはホスト名を表します。
+* 送信プロキシを使用してインターネットに接続する場合は、次の設定を **C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config** ファイルに追加して、インストール ウィザードと Azure AD Connect 同期がインターネットと Azure AD に接続できるようにする必要があります。 このテキストは、ファイルの末尾に入力する必要があります。 このコードの &lt;PROXYADDRESS&gt; は実際のプロキシ IP アドレスまたはホスト名を表します。
 
 ```
     <system.net>
@@ -148,9 +149,9 @@ Azure AD Connect は、Microsoft PowerShell と .NET 4.5.1 に依存していま
 ### <a name="windows-remote-management"></a>Windows リモート管理
 Azure AD Connect を使用して Active Directory フェデレーション サービスまたは Web アプリケーション プロキシをデプロイする場合、以下の要件を確認します。
 
-* 対象サーバーがドメインに参加している場合は、Windows リモート管理が有効であることを確認します。
+* ターゲット サーバーがドメインに参加している場合は、Windows リモート管理が有効であることを確認します。
   * 管理者特権の PSH コマンド ウィンドウで、 `Enable-PSRemoting –force`
-* 対象サーバーが、ドメインに参加していない WAP コンピューターである場合は、いくつかの追加の要件があります。
+* ターゲット サーバーが、ドメインに参加していない WAP コンピューターである場合は、いくつかの追加の要件があります。
   * ターゲット コンピューター (WAP コンピューター) での要件
     * サービス スナップインから winrm (Windows Remote Management / WS-Management) サービスが実行されていることを確認します。
     * 管理者特権の PSH コマンド ウィンドウで、 `Enable-PSRemoting –force`

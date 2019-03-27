@@ -3,19 +3,20 @@ title: クラウドでの Azure MFA の概要
 description: 条件付きアクセスを使用した Microsoft Azure Multi-Factor Authentication の概要
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: bd2f796ab2feee4bb862d8de2c44efc742163f06
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cbfade56ff12aa719927d496606a6ce4b4fe5a38
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167530"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167152"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>クラウドベースの Azure Multi-Factor Authentication をデプロイする
 
@@ -74,14 +75,14 @@ Azure Multi-Factor Authentication を有効にする前に、どのような認�
 1. ポリシーのわかりやすい名前を指定します。
 1. **[ユーザーとグループ]** で次の手順を実行します。
    * **[Include]\(追加\)** タブで、**[All users]\(すべてのユーザー\)** ラジオ ボタンを選択します
-   * 推奨: **[Exclude]\(除外\)** タブで、**[ユーザーとグループ]** のチェック ボックスをオンにし、ユーザーが特定の認証方法を利用できない場合の除外に使用するグループを選択します。
+   * 推奨:**[Exclude]\(除外\)** タブで、**[ユーザーとグループ]** のチェック ボックスをオンにし、ユーザーが特定の認証方法を利用できない場合の除外に使用するグループを選択します。
    * **[Done]** をクリックします。
 1. **[クラウド アプリ]** で、**[すべてのクラウド アプリ]** ラジオ ボタンを選択します。
-   * オプション: **[Exclude]\(除外\)** タブで、組織において MFA の必要がないクラウド アプリを選択します。
+   * オプション:**[Exclude]\(除外\)** タブで、組織において MFA の必要がないクラウド アプリを選択します。
    * **[Done]** をクリックします。
 1. **[条件]** セクションで次の手順を実行します。
-   * オプション: Azure Identity Protection を有効にしてある場合は、ポリシーの一部としてのサインイン リスクの評価を選択できます。
-   * オプション: 信頼できる場所または名前付きの場所を構成してある場合は、これらの場所をポリシーに追加するか、ポリシーから除外するよう指定できます。
+   * オプション:Azure Identity Protection を有効にしてある場合は、ポリシーの一部としてサインイン リスクを評価することを選択できます。
+   * オプション:信頼できる場所または名前付きの場所を構成してある場合は、これらの場所をポリシーに追加するか、ポリシーから除外するよう指定できます。
 1. **[許可]** で、**[アクセス権の付与]** ラジオ ボタンが選択されていることを確認します。
     * **[多要素認証を要求する]** のボックスをオンにします。
     * **[選択]** をクリックします。

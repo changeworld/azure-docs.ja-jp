@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 6bd8d0cee01853547efd028feef0a97f9398024e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 692113257e483f67eaaee038c07d8702d95a7b31
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015524"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116811"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理
 
@@ -186,12 +186,12 @@ SyntheticSource プロパティに値を持つすべてのテレメトリを除�
 ```
 
 * `FromSeverityLevel` の有効な値は次のとおりです。
- *  OFF - すべてのトレースを除外
- *  TRACE - フィルタリングなし。 トレース レベルに等しい
- *  INFO - TRACE レベルを除外
- *  WARN - TRACE と INFO を除外
- *  ERROR - WARN、INFO、TRACE を除外
- *  CRITICAL - CRITICAL 以外のすべてを除外
+  *  OFF - すべてのトレースを除外
+  *  TRACE - フィルタリングなし。 トレース レベルに等しい
+  *  INFO - TRACE レベルを除外
+  *  WARN - TRACE と INFO を除外
+  *  ERROR - WARN、INFO、TRACE を除外
+  *  CRITICAL - CRITICAL 以外のすべてを除外
 
 
 ## <a name="custom-filters"></a>カスタム フィルター

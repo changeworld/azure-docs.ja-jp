@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331647"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812091"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 
@@ -140,7 +140,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 | ソースとシンク | サービスによって決定される並列コピーの既定数 |
 | --- | --- |
 | ファイル ベースのストア (Blob Storage、Data Lake Store、Amazon S3、オンプレミスのファイル システム、オンプレミスの HDFS) 間のデータのコピー |1 ～ 32 の範囲。 どの数にするかは、ファイルのサイズと、2 つのクラウド データ ストア間でのデータのコピーで使用されるクラウド データ移動単位の数 (DMU) またはハイブリッド コピー (オンプレミス データ ストアとの間のデータのコピー) で使用されるゲートウェイ コンピューターの物理構成によって決まります。 |
-|  **任意のソース データ ストアから Azure Table Storage への** |4 |
+| **任意のソース データ ストアから Azure Table Storage への** |4 |
 | その他のすべてのソースとシンクのペア |1 |
 
 通常は、既定の動作で最適なスループットが得られます。 ただし、データ ストアをホストしているコンピューターの負荷を制御したり、コピーのパフォーマンスをチューニングしたりするには、 **parallelCopies** プロパティの値を指定して、既定値をオーバーライドできます。 1 ～ 32 の値 (両端の値を含む) を指定する必要があります。 実行時にコピー アクティビティは、設定された値以下でパフォーマンスが最大になる値を使用します。
@@ -176,7 +176,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 >
 >
 
-これらの 2 つのプロパティをうまく利用し、データ移動のスループットを向上させるには、 [ユース ケースのサンプル](#case-study-use-parallel-copy)を参照してください。 既定の動作を活用する場合は、 **parallelCopies** を構成する必要はありません。 構成しても **parallelCopies** が小さすぎる場合は、複数のクラウド DMU が十分に活用されない可能性があります。
+これらの 2 つのプロパティをうまく利用し、データ移動のスループットを向上させるには、ユース ケースのサンプルを参照してください。 既定の動作を活用する場合は、 **parallelCopies** を構成する必要はありません。 構成しても **parallelCopies** が小さすぎる場合は、複数のクラウド DMU が十分に活用されない可能性があります。
 
 ### <a name="billing-impact"></a>課金への影響
 **重要** なのは、コピー操作の合計時間に基づいて料金が請求されることです。 これまで 1 回のコピー ジョブに 1 クラウド単位で 1 時間かかっていたのが、4 クラウド単位で 15 分かかるようになった場合、全体的な請求金額はほぼ同じままです。 たとえば、4 クラウド単位を使用するとします。 1 回のコピー アクティビティの実行で、1 つ目のクラウド単位に 10 分、2 つ目に 10 分、3 つ目に 5 分、4 つ目に 5 分かかります。 コピー (データ移動) の合計時間は 10 + 10 + 5 + 5 で 30 分になり、その分の料金が発生します。 **parallelCopies** を使用しても、課金には影響しません。
@@ -210,7 +210,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 | --- | --- | --- | --- |
 | **enableStaging** |中間ステージング ストアを経由してデータをコピーするかどうかを指定します。 |False |いいえ |
 | **linkedServiceName** |[AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) または [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) のリンクされたサービスの名前を指定します。これは、中間ステージング ストアとして使用する Storage のインスタンスです。 <br/><br/> PolyBase を使用してデータを SQL Data Warehouse に読み込むために、Shared Access Signature を持つ Storage を使用することはできません。 それ以外のすべてのシナリオでは使用できます。 |該当なし |はい ( **enableStaging** が TRUE に設定されている場合) |
-| **path** |ステージング データを格納する Blob Storage のパスを指定します。 パスを指定しないと、一時データを格納するコンテナーがサービスによって作成されます。 <br/><br/>  パスを指定するのは、Shared Access Signature を持つ Storage を使用する場合、または一時データを特定の場所に保存する必要がある場合のみです。 |該当なし |いいえ |
+| **path** |ステージング データを格納する Blob Storage のパスを指定します。 パスを指定しないと、一時データを格納するコンテナーがサービスによって作成されます。 <br/><br/> パスを指定するのは、Shared Access Signature を持つ Storage を使用する場合、または一時データを特定の場所に保存する必要がある場合のみです。 |該当なし |いいえ |
 | **enableCompression** |データをコピーする前に圧縮するかどうかを指定します。 この設定により、転送するデータの量が減ります。 |False |いいえ |
 
 上の表に記載されているプロパティを持つコピー アクティビティの定義の例を次に示します。
@@ -297,7 +297,7 @@ Blob Storage から SQL Data Warehouse にデータをコピーする場合は�
 
 * **テーブル スキーマ**: テーブル スキーマは、コピーのスループットに影響を与えます。 同じ量のデータをコピーする場合は、行のサイズが小さいよりも大きい方がパフォーマンスは高くなります。 これは、データベースは、データのバッチが少ないほど、また含まれている行が少ないほど、そのデータを効率的に取得できるためです。
 * **クエリまたはストアド プロシージャ**: データをより効率的にフェッチできるように、コピー アクティビティ ソースで指定するクエリまたはストアド プロシージャのロジックを最適化します。
-* SQL Server や Oracle など、**Data Management Gateway** を使用する必要がある**オンプレミスのリレーショナル データベース**の場合は、「[Data Management Gateway に関する考慮事項](#considerations-on-data-management-gateway)」を参照してください。
+* SQL Server や Oracle など、**Data Management Gateway** を使用する必要がある**オンプレミスのリレーショナル データベース**の場合は、「Data Management Gateway に関する考慮事項」を参照してください。
 
 ## <a name="considerations-for-the-sink"></a>シンクに関する考慮事項
 ### <a name="general"></a>全般

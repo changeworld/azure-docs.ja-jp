@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Skills Base の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Skills Base の統合 | Microsoft Docs
 description: Azure Active Directory と Skills Base の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2018
 ms.author: jeedes
-ms.openlocfilehash: e11ba8ca9c4ad17b2ade909bb474ad2d1fcf4410
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8bc0353453cf5fe689eec398f6a7d73fb356b178
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205376"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190842"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>チュートリアル: Azure Active Directory と Skills Base の統合
+# <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>チュートリアル:Azure Active Directory と Skills Base の統合
 
 このチュートリアルでは、Skills Base と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -171,7 +172,7 @@ Skills Base で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
  
 ### <a name="create-a-skills-base-test-user"></a>Skills Base のテスト ユーザーを作成する
 
@@ -215,7 +216,7 @@ Skills Base で Azure AD のシングル サインオンを構成してテスト
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Skills Base] タイルをクリックすると、自動的に Skills Base アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

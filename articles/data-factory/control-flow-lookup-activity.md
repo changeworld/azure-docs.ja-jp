@@ -100,7 +100,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
     ```
 
 ### <a name="copy-activity-example"></a>コピー アクティビティの例
-この例では、コピー アクティビティは、Azure SQL Database インスタンス内の SQL テーブルから Azure Blob Storage にデータをコピーします。 SQL テーブルの名前は、Blob Storage 内の JSON ファイルに格納されます。 ルックアップ アクティビティは、実行時にテーブル名を検索します。 JSON は、この方法を使用して動的に変更されます。 パイプラインやデータセットを再デプロイする必要はありません。 
+この例では、コピー アクティビティは、Azure SQL データベース インスタンス内の SQL テーブルから Azure Blob Storage にデータをコピーします。 SQL テーブルの名前は、Blob Storage 内の JSON ファイルに格納されます。 ルックアップ アクティビティは、実行時にテーブル名を検索します。 JSON は、この方法を使用して動的に変更されます。 パイプラインやデータセットを再デプロイする必要はありません。 
 
 この例では、最初の行のみのルックアップを示します。 すべての行のルックアップについて、および ForEach アクティビティで結果をチェーンするには、「[Azure Data Factory を使って複数のテーブルを一括コピーする](tutorial-bulk-copy.md)」のサンプルを参照してください。
 
@@ -249,7 +249,7 @@ firstRowOnly | 最初の行のみまたはすべての行のどちらを返す�
 ```
 
 ### <a name="azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービス
-この Azure SQL Database インスタンスには、Blob Storage にコピーされるデータが格納されています。 
+この Azure SQL データベース インスタンスには、Blob Storage にコピーされるデータが格納されています。 
 
 ```json
 {

@@ -1,29 +1,30 @@
 ---
-title: Azure AD Connect 同期:AD のごみ箱の有効化 | Microsoft Docs
+title: 'Azure AD Connect 同期: AD のごみ箱の有効化 | Microsoft Docs'
 description: このトピックでは、Azure AD Connect を使った AD のごみ箱機能の使用を推奨します。
 services: active-directory
 keywords: AD のごみ箱、誤削除、ソース アンカー
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: afec4207-74f7-4cdd-b13a-574af5223a90
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/17/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d1a09c077adbc3c9176740bce69bf051a912bc22
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5fe7d3ea7d4f6d648438efc1a484d5909ade2f23
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555576"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208216"
 ---
-# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同期:AD のごみ箱の有効化
+# <a name="azure-ad-connect-sync-enable-ad-recycle-bin"></a>Azure AD Connect 同期: AD のごみ箱の有効化
 Azure AD に同期される、オンプレミスの Active Directory 向けの AD ごみ箱機能を有効にすることをお勧めします。 
 
 オンプレミスの AD ユーザー オブジェクトを誤って削除し、この機能を使って復元した場合、Azure AD により対応する Azure AD ユーザー オブジェクトが復元されます。  AD のごみ箱機能について詳しくは、「[Scenario Overview for Restoring Deleted Active Directory Objects (削除された Active Directory オブジェクトの復元シナリオの概要)](https://technet.microsoft.com/library/dd379542.aspx)」をご覧ください。
@@ -39,9 +40,6 @@ Azure AD に同期される、オンプレミスの Active Directory 向けの A
 
 > [!NOTE]
 > 既定では、削除された Azure AD ユーザー オブジェクトは、論理削除済み状態で 30 日間保持された後、完全に削除されます。 ただし、管理者は、このようなオブジェクトの削除までの時間を短縮できます。 完全に削除されたオブジェクトは、オンプレミスの AD ごみ箱機能を有効にしていても、回復することはできません。
-
->[!NOTE]
->これまでは、オンプレミスの同期範囲からユーザーが削除され、クラウドでも削除された場合、アカウントの DirSyncEnabled 状態が誤って "False" に設定されていました。 その後、そのユーザーが AD のごみ箱から手動で復元された場合は、"Cloud-Only" という正しくない状態のアカウントとして表示されていました。 現在はこれは修正され、ユーザーが同期範囲から削除され、論理的に削除された後、Azure AD のごみ箱から手動で復元された場合でも、DirSyncEnabled 状態は、常に "True" で維持されるようになりました。
 
 ## <a name="next-steps"></a>次の手順
 **概要トピック**

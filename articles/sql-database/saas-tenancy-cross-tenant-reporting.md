@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e23b679d6c81d1a4103f010a9d13c35e80d4d2af
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.date: 01/25/2019
+ms.openlocfilehash: ccf6ff75cb041c7d9998f67d579d1b392f83cee9
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240990"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55476249"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>分散クエリを使用したテナント間レポート
 
@@ -93,7 +93,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
 1. **オブジェクト エクスプローラー**で、**[contosoconcerthall]** > **[ビュー]** の順に展開します。
 
-   ![ビュー](media/saas-tenancy-cross-tenant-reporting/views.png)
+   ![views](media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. **[dbo.Venues]** を右クリックします。
 3. **[ビューをスクリプト化]** > **[新規作成]** > **[新しいクエリ エディター ウィンドウ]** の順に選択します。
@@ -128,7 +128,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
     ![外部データ ソースを作成する](media/saas-tenancy-cross-tenant-reporting/create-external-data-source.png)
 
-   外部テーブルは、前のセクションで説明したグローバル ビューを参照します。**DISTRIBUTION = SHARDED(VenueId)** で定義されています。 各 *VenueId* は 1 つのデータベースにマッピングされるため、次のセクションで示すように、多くのシナリオでパフォーマンスが改善されます。
+   外部テーブルは、前のセクションで説明したグローバル ビューを参照します。**DISTRIBUTION = SHARDED(VenueId)** で定義されています。 各 *VenueId* は個々のデータベースにマッピングされるため、次のセクションで示すように、多くのシナリオでパフォーマンスが改善されます。
 
     ![外部テーブルを作成する](media/saas-tenancy-cross-tenant-reporting/external-tables.png)
 
@@ -148,7 +148,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
 実行プランを調べるとき、プラン アイコンにカーソルを合わせると詳細が表示されます。 
 
-外部データ ソースの定義時に **DISTRIBUTION = SHARDED(VenueId)** を設定したことで、多くのシナリオでパフォーマンスが改善します。これは重要なことなのでご留意ください。 各 *VenueId* は 1 つのデータベースにマッピングされるため、フィルター処理はリモートで簡単に実行されます。必要なデータのみが返されます。
+外部データ ソースの定義時に **DISTRIBUTION = SHARDED(VenueId)** を設定したことで、多くのシナリオでパフォーマンスが改善します。これは重要なことなのでご留意ください。 各 *VenueId* は個々のデータベースにマッピングされるため、フィルター処理はリモートで簡単に実行されます。必要なデータのみが返されます。
 
 1. SSMS で ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReportingQueries.sql* を開きます。
 2. **adhocreporting** データベースに接続していることを確認します。

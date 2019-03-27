@@ -1,23 +1,23 @@
 ---
-title: '例: 予測エンドポイントを使用してプログラムで分類子を指定してテストする - Custom Vision'
+title: 例:予測エンドポイントを使用してプログラムで分類器を指定してテストする - Custom Vision
 titlesuffix: Azure Cognitive Services
-description: API を使用して、Custom Vision Service の分類子によるイメージのテストをプログラムから行う方法を説明します。
+description: API を使用して、Custom Vision Service の分類器によるイメージのテストをプログラムから行う方法を説明します。
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: sample
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 3a81f3cef6aaeb5c98022d9fc93f4d84f3f58a6e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: a285bc4c6eecf1a8cdda758af9df1a697c374b5a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363651"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533971"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>予測エンドポイントを利用し、Custom Vision Service の分類子を使用してプログラムからイメージをテストします
+# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>予測エンドポイントを利用し、Custom Vision Service の分類器を使用してプログラムからイメージをテストします
 
 モデルをトレーニングした後、イメージを Prediction API に送信することで、プログラムからイメージをテストできます。 
 
@@ -26,9 +26,9 @@ ms.locfileid: "46363651"
 
 ## <a name="get-the-url-and-prediction-key"></a>URL と予測キーを取得する
 
-[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。__予測キー__ を含む Prediction API の使用に関する情報を表示するには、__[Prediction URL]\(Prediction の URL\)__ を選択します。 Azure リソースに関連付けられているプロジェクトの場合、__予測キー__ は、関連付けられている Azure リソースの [Azure portal](https://portal.azure.com) ページの __[キー]__ で確認することもできます。 アプリケーションで使用するため、次の情報をコピーします。
+[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。__予測キー__を含む Prediction API の使用に関する情報を表示するには、__[Prediction URL]\(Prediction の URL\)__ を選択します。 Azure リソースに関連付けられているプロジェクトの場合、__予測キー__ は、関連付けられている Azure リソースの [Azure portal](https://portal.azure.com) ページの __[キー]__ で確認することもできます。 アプリケーションで使用するため、次の情報をコピーします。
 
-* __[URL]__: __イメージファイル__ を使用するため。
+* __[URL]__: __イメージファイル__を使用するため。
 * __[Prediction-key]__(予測キー) の値。
 
 > [!TIP]
@@ -46,7 +46,7 @@ ms.locfileid: "46363651"
     > 次の情報を変更します。
     >
     > * __namespace__ はプロジェクトの名前に設定します。
-    > * 前に受け取った __予測キー__ の値を、`client.DefaultRequestHeaders.Add("Prediction-Key",` で始まる行の中に設定します。
+    > * 前に受け取った__予測キー__の値を、`client.DefaultRequestHeaders.Add("Prediction-Key",` で始まる行の中に設定します。
     > * 前に受け取った __URL__ の値を、`string url =` で始まる行の中に設定します。
 
     ```csharp
@@ -86,7 +86,7 @@ ms.locfileid: "46363651"
                 client.DefaultRequestHeaders.Add("Prediction-Key", "13hc77781f7e4b19b5fcdd72a8df7156");
 
                 // Prediction URL - replace this example URL with your valid prediction URL.
-                string url = "http://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/prediction/d16e136c-5b0b-4b84-9341-6a3fff8fa7fe/image?iterationId=f4e573f6-9843-46db-8018-b01d034fd0f2";
+                string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.0/prediction/d16e136c-5b0b-4b84-9341-6a3fff8fa7fe/image?iterationId=f4e573f6-9843-46db-8018-b01d034fd0f2";
 
                 HttpResponseMessage response;
 

@@ -5,6 +5,8 @@ items:
   items:
   - name: Site Recovery について
     href: site-recovery-overview.md
+  - name: Site Recovery の最新情報
+    href: site-recovery-whats-new.md
 - name: クイック スタート
   items:
   - name: Azure VM を別のリージョンにレプリケートする
@@ -18,8 +20,16 @@ items:
       href: azure-to-azure-tutorial-enable-replication.md
     - name: ディザスター リカバリー訓練を実行する
       href: azure-to-azure-tutorial-dr-drill.md
-    - name: フェールオーバーとフェールバックを実行する
+    - name: フェールオーバーを実行して再保護する
       href: azure-to-azure-tutorial-failover-failback.md
+    - name: フェールバックを実行する
+      href: azure-to-azure-tutorial-failback.md
+  - name: Azure VM の移動
+    items:
+    - name: Azure VM を別のリージョンに移動する
+      href: azure-to-azure-tutorial-migrate.md
+    - name: Azure VM を Availability Zones に移動する
+      href: move-Azure-VMs-AVset-Azone.md
   - name: Azure への VMware VM のディザスター リカバリー
     items:
     - name: Azure を準備する
@@ -56,15 +66,11 @@ items:
       href: migrate-tutorial-windows-server-2008.md
     - name: AWS インスタンスを Azure に移行する
       href: migrate-tutorial-aws-azure.md
-  - name: Azure VM の移動
-    items:
-    - name: Azure VM を別のリージョンに移動する
-      href: azure-to-azure-tutorial-migrate.md
 - name: 概念
   items:
   - name: Site Recovery に関する一般的な質問
     href: site-recovery-faq.md
-  - name: Azure への Azure VM のディザスター リカバリーについて
+  - name: Azure VM のディザスター リカバリーについて
     items:
     - name: Azure から Azure へのアーキテクチャ
       href: azure-to-azure-architecture.md
@@ -72,10 +78,14 @@ items:
       href: azure-to-azure-common-questions.md
     - name: Azure から Azure へのサポート マトリックス
       href: azure-to-azure-support-matrix.md
+    - name: Azure Site Recovery と Azure Backup の使用
+      href: site-recovery-backup-interoperability.md
     - name: Azure VM ディザスター リカバリーのための高速ネットワーク
       href: azure-vm-disaster-recovery-with-accelerated-networking.md
     - name: ExpressRoute と Azure VM ディザスター リカバリーを併用する
       href: azure-vm-disaster-recovery-with-expressroute.md
+  - name: Azure VM の移行について
+    href: azure-to-azure-move-overview.md
   - name: Azure への VMware VM のディザスター リカバリーについて
     items:
     - name: VMware のディザスター リカバリーの概要
@@ -152,6 +162,10 @@ items:
         href: azure-to-azure-how-to-enable-replication.md
       - name: 暗号化された VM の Azure から Azure へのレプリケーションを有効にする
         href: azure-to-azure-how-to-enable-replication-ade-vms.md
+      - name: S2D VM の Azure から Azure へのレプリケーションを有効にする
+        href: azure-to-azure-how-to-enable-replication-s2d-vms.md
+      - name: ディスクを除外する
+        href: azure-to-azure-exclude-disks.md
       - name: フェールオーバー後に Azure VM を再保護する
         href: azure-to-azure-how-to-reprotect.md
       - name: Azure への移行後に Azure VM のディザスター リカバリーをセットアップする
@@ -161,7 +175,7 @@ items:
       - name: Azure VM のモビリティ サービスを更新する
         href: azure-to-azure-autoupdate.md
       - name: Azure Site Recovery での更新
-        href: service updates-how-to.md
+        href: service-updates-how-to.md
   - name: VMware から Azure へのディザスター リカバリー
     items:
     - name: ネットワークの設定
@@ -198,12 +212,10 @@ items:
         href: vmware-azure-set-up-replication.md
       - name: モビリティ サービスをデプロイする
         items:
-        - name: モビリティ サービスのインストール
+        - name: モビリティ サービスの概要とインストール
           href: vmware-physical-mobility-service-overview.md
         - name: モビリティ サービスのプッシュ インストールを準備する
           href: vmware-azure-install-mobility-service.md
-        - name: モビリティ サービスを手動でインストールする
-          href: vmware-physical-mobility-service-install-manual.md
         - name: System Center Configuration Manager を使用してモビリティ サービスをデプロイする
           href: vmware-azure-mobility-install-configuration-mgr.md
       - name: VMware VM のレプリケーションを有効にする
@@ -230,6 +242,8 @@ items:
         href: vmware-azure-install-linux-master-target.md
     - name: 管理
       items:
+      - name: VMware のモビリティ エージェントの管理
+        href: vmware-physical-manage-mobility-service.md
       - name: VMware 用の構成サーバーの管理
         href: vmware-azure-manage-configuration-server.md
       - name: プロセス サーバーの管理
@@ -237,7 +251,7 @@ items:
       - name: vCenter サーバーの管理
         href: vmware-azure-manage-vcenter.md
       - name: Azure Site Recovery での更新
-        href: service updates-how-to.md
+        href: service-updates-how-to.md
       - name: サーバーの削除と保護の無効化
         href: site-recovery-manage-registration-and-protection.md
       - name: コンテナーの削除
@@ -262,8 +276,6 @@ items:
           href: vmware-physical-mobility-service-overview.md
         - name: モビリティ サービスのプッシュ インストールを準備する
           href: vmware-azure-install-mobility-service.md
-        - name: モビリティ サービスを手動でインストールする
-          href: vmware-physical-mobility-service-install-manual.md
         - name: System Center Configuration Manager を使用してモビリティ サービスをデプロイする
           href: vmware-azure-mobility-install-configuration-mgr.md
         - name: 'チュートリアル: ディザスター リカバリーを設定する'
@@ -272,6 +284,8 @@ items:
       href: physical-to-azure-failover-failback.md
     - name: 管理
       items:
+      - name: 物理サーバーのモビリティ エージェントの管理
+        href: vmware-physical-manage-mobility-service.md
       - name: 物理サーバー レプリケーション用の構成サーバーの管理
         href: physical-manage-configuration-server.md
       - name: プロセス サーバーの管理
@@ -279,7 +293,7 @@ items:
       - name: サーバーの削除と保護の無効化
         href: site-recovery-manage-registration-and-protection.md
       - name: Azure Site Recovery での更新
-        href: service updates-how-to.md
+        href: service-updates-how-to.md
       - name: コンテナーの削除
         href: delete-vault.md
   - name: Azure Stack VM のディザスター リカバリー
@@ -331,11 +345,9 @@ items:
       - name: サーバーの削除と保護の無効化
         href: site-recovery-manage-registration-and-protection.md
       - name: Azure Site Recovery での更新
-        href: service updates-how-to.md
+        href: service-updates-how-to.md
       - name: コンテナーの削除
         href: delete-vault.md
-      - name: Site Recovery で構成されている Windows サーバーをアップグレードする
-        href: upgrade-2012R2-to-2016.md
   - name: アプリのディザスター リカバリー
     items:
     - name: オンプレミス アプリで Azure へのディザスター リカバリーを設定する
@@ -418,6 +430,10 @@ items:
       href: site-recovery-failover-to-azure-troubleshoot.md
     - name: VMware VM の再保護とフェールバックに関するトラブルシューティング
       href: vmware-azure-troubleshoot-failback-reprotect.md
+    - name: Microsoft Azure Site Recovery プロバイダーのアップグレード エラーのトラブルシューティング
+      href: vmware-azure-troubleshoot-upgrade-failures.md
+    - name: vCenter の検出エラーのトラブルシューティング
+      href: vmware-azure-troubleshoot-vcenter-discovery-failures.md
   - name: Hyper-V
     items:
     - name: Hyper-V レプリケーションのトラブルシューティング
@@ -441,7 +457,7 @@ items:
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: ブログ
-    href: http://azure.microsoft.com/blog/tag/azure-site-recovery/
+    href: https://azure.microsoft.com/blog/tag/azure-site-recovery/
   - name: フォーラム
     href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hypervrecovmgr
   - name: ラーニング パス
@@ -452,9 +468,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: c81028216a6af1fac6b6da261395d4fded3d8500
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: b486afff5bc65e58fc89d4b9f0bee4d9c0ff0b5c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382489"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418998"

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Active Directory と Rackspace SSO の統合 | Microsoft Docs'
+title: チュートリアル:Azure Active Directory と Rackspace SSO の統合 | Microsoft Docs
 description: Azure Active Directory と Rackspace SSO の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2018
 ms.author: jeedes
-ms.openlocfilehash: b825fb1d7f56aae923f6760c4fd6384e03274b7a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 24864fd1e21efaf37f846fc95b9dae39ffb19e5f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042059"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186839"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>チュートリアル: Azure Active Directory と Rackspace SSO の統合
+# <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>チュートリアル:Azure Active Directory と Rackspace SSO の統合
 
 このチュートリアルでは、Rackspace SSO と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
@@ -151,7 +152,7 @@ Rackspace SSO で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
 
 ### <a name="create-a-rackspace-sso-test-user"></a>Rackspace SSO テスト ユーザーを作成する
 
@@ -192,7 +193,7 @@ Rackspace SSO で Azure AD のシングル サインオンを構成してテス�
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで Rackspace SSO のタイルをクリックすると、自動的に Rackspace SSO アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関するページを参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

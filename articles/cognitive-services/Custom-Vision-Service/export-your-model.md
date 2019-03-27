@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: モバイル アプリケーションの作成で利用する目的でモデルをエクスポートする方法について説明します。
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 50417e9e1722e69c24185c05ea5e286e6b13e8c7
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 080a4691869c4deaf86f0e27961e80b60d439f05
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364943"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857248"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>モバイル デバイスで使用するためにモデルをエクスポートする
 
@@ -29,7 +29,7 @@ Custom Vision Service は次のエクスポートに対応しています。
 * Windows または Linux __コンテナー__。 コンテナーには、Tensorflow モデルと、Custom Vision Service API を使用するためのサービス コードが含まれています。 
 
 > [!IMPORTANT]
-> Custom Vision Service は __コンパクト__ ドメインのみをエクスポートします。 コンパクト ドメインで生成されたモデルは、モバイル デバイスのリアルタイム分類の制約に合わせて最適化されています。 コンパクト ドメインでビルドされた分類子は、トレーニング データの量が同じ標準ドメインより、わずかに正確性に欠けることがあります。
+> Custom Vision Service は__コンパクト__ ドメインのみをエクスポートします。 コンパクト ドメインで生成されたモデルは、モバイル デバイスのリアルタイム分類の制約に合わせて最適化されています。 コンパクト ドメインでビルドされた分類子は、トレーニング データの量が同じ標準ドメインより、わずかに正確性に欠けることがあります。
 >
 > 分類子を改善する方法については、[分類子の改善](getting-started-improving-your-classifier.md)に関するドキュメントを参照してください。
 
@@ -44,7 +44,7 @@ Custom Vision Service は次のエクスポートに対応しています。
 
     ![ホーム アイコンとプロジェクト一覧の画像](./media/export-your-model/projects-list.png)
 
-2. プロジェクトを選択し、ページ右上にある __歯車__ アイコンを選択します。
+2. プロジェクトを選択し、ページ右上にある__歯車__アイコンを選択します。
 
     ![歯車アイコンの画像](./media/export-your-model/gear-icon.png)
 

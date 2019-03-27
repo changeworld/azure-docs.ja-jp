@@ -6,14 +6,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 20e869d30f9e7b8102b723870f0102e041e064d7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d9bd1bec6d1df6fab634c5d929cb778abbd3d13d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042276"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55478408"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割
+# <a name="partitioning-in-azure-cosmos-db---overview"></a>Azure Cosmos DB でのパーティション分割 - 概要
 
 パーティション分割は、Cosmos DB で使用して、データベースの個別のコンテナーをスケーリングし、アプリケーションのパフォーマンスのニーズを満たす手法です。 パーティション分割を使用して、コンテナー内の項目を、論理パーティションと呼ばれる特定のサブセットに分割します。 論理パーティションは、各項目に関連付けられているパーティション キーのプロパティの値に基づいて作成されます。
 

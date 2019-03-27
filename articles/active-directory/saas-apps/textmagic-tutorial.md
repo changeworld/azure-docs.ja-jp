@@ -8,19 +8,20 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3e5b49d2-7096-46bc-a9ce-90e09177ba28
 ms.service: active-directory
-ms.component: saas-app-tutorial
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ab193d908063230946ebb2bb6320ab50bf14971
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ec8085d2d3ac4cc338ab9c0c36eec481a5d4fbc9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53014890"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>チュートリアル:Azure Active Directory と TextMagic の統合
 
@@ -141,7 +142,7 @@ TextMagic で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    d. **[名前空間]** 値を入力します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** 値を入力します。
 
     e. [ソース] として **[属性]** を選択します。
 
@@ -181,7 +182,7 @@ TextMagic で Azure AD のシングル サインオンを構成してテスト�
 
     c.  **[Identity provider SLO URL:]\(ID プロバイダー SLO URL\)**  ボックスに、Azure portal からコピーした **ログアウト URL** の値を貼り付けます。
 
-    d. Azure portal からダウンロードした **base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを  **[Public x509 certificate:]\(パブリック x509 証明書:\)**  ボックスに貼り付けます。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure portal からダウンロードした **base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを  **[Public x509 certificate:]\(パブリック x509 証明書:\)**  ボックスに貼り付けます。
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -206,7 +207,7 @@ TextMagic で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d. **作成**を選択します。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
   
 ### <a name="creating-a-textmagic-test-user"></a>TextMagic テスト ユーザーを作成する
 

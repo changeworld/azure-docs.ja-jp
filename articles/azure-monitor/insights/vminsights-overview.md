@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/07/2018
+ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 69aa2cbcaa6861b1d5c5c71769be2fb8046d9ea5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9a4c31df51f804d4738e3a2eb4ce904e793c3f1b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188511"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004997"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) とは?
 
@@ -35,13 +35,13 @@ Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および
 これらの機能は、次の 3 つの観点に分けて構成されています。
 
 * Health
-* [パフォーマンス]
+* パフォーマンス
 * マップ
 
 >[!NOTE]
 >現在、正常性機能は、Azure 仮想マシンと仮想マシン スケール セットに対してのみ提供されています。 パフォーマンス機能とマップ機能では、ご利用の環境または他のクラウド プロバイダーにおいてホストされている Azure VM および仮想マシンの両方がサポートされています。
 
-Log Analytics との統合により、強力な集計とフィルター処理が実現されています。さらに、時間の経過に伴うデータの傾向を分析することができます。 Azure Monitor、Service Map、または Log Analytics はいずれも単独では、そのような包括的なワークロード監視を実現することはできません。  
+Azure Monitor ログとの統合により、強力な集計とフィルター処理が実現されています。さらに、時間の経過に伴うデータの傾向を分析することができます。 そうした包括的なワークロード監視は、Azure Monitor または Service Map 単独では実現できません。  
 
 単一の VM 内のこのデータをその仮想マシンから直接表示することも、Azure Monitor を使用して、ご利用の複数の VM の集計ビューを提供することもできます。 このビューは、各機能の次の観点に基づいています。
 
@@ -50,7 +50,7 @@ Log Analytics との統合により、強力な集計とフィルター処理が
 
 ![Azure portal での仮想マシン分析情報のパースペクティブ](./media/vminsights-overview/vminsights-azmon-directvm-01.png)
 
-Azure DevOps を使用すると、重要なアプリケーションのパフォーマンスおよび可用性を予測することができます。 重要なオペレーティング システムのイベント、パフォーマンスのボトルネック、およびネットワークの問題が識別されます。 Azure DevOps はまた、問題が他の依存関係に関連しているかどうかの把握にも役立ちます。  
+Azure Monitor for VMs を使用すると、重要なアプリケーションのパフォーマンスおよび可用性を予測することができます。 重要なオペレーティング システムのイベント、パフォーマンスのボトルネック、およびネットワークの問題が識別されます。 Azure Monitor for VMs はまた、問題が他の依存関係に関連しているかどうかの把握にも役立ちます。  
 
 ## <a name="data-usage"></a>データ利用状況 
 

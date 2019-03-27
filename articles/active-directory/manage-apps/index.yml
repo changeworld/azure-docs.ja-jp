@@ -1,18 +1,18 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4f26421d8d935593f55444902f331cf260b32335
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 3d7b9dff034aca6c7602ea72fadfcdc53b11fe15
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50956589"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335880"
 documentType: LandingData
 title: アプリケーション管理のドキュメント
 metadata:
-  title: Azure Active Directory アプリケーション管理のドキュメント
-  meta.description: Learn how to manage and deploy applications with Azure Active Directory.
+  title: Azure AD アプリケーション管理のドキュメント - Azure Active Directory
+  description: Azure Active Directory を使用してアプリケーションを管理してデプロイする方法について説明します。
   services: active-directory
   author: barbkess
-  manager: mtillman
+  manager: daveba
   layout: LandingPage
   ms.assetid: 
   ms.service: active-directory

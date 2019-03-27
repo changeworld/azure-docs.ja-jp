@@ -11,36 +11,42 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 5236cff7a4afe508a8e11c6d75484fcdc9d43f91
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: e1c225eb77a76015520690916db0399487ffe9e7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194234"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822614"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する
+
+>[!NOTE]
+>Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ゲートウェイは Log Analytics ゲートウェイと呼ばれます。 
+>
+
 このドキュメントでは、直接接続されたコンピューターまたは Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに、Log Analytics ゲートウェイを使用して Azure Automation および Log Analytics との通信を構成する方法について説明します。  Log Analytics ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシであり、インターネットにアクセスできないコンピューターに代わってデータを収集し、Azure Automation および Log Analytics に送ることができます。  
 
 Log Analytics ゲートウェイでは、以下をサポートしています。
 
+* 背後にある 4 つまでの同じ Log Analytics ワークスペースのエージェントのレポートが構成されている  
 * Azure Automation の Hybrid Runbook Worker  
 * Microsoft Monitoring Agent がインストールされており、同エージェントが Log Analytics ワークスペースに直接接続している Windows コンピューター
 * Log Analytics エージェント for Linux が Log Analytics ワークスペースに直接接続されている Linux コンピューター  
-* System Center Operations Manager 2012 SP1 with UR7、Operations Manager 2012 R2 with UR3、Operations Manager 2016、Operations Manager Version 1801 の管理グループのうち、Log Analytics と統合しているもの。  
+* System Center Operations Manager 2012 SP1 with UR7、Operations Manager 2012 R2 with UR3、Operations Manager 2016 以降の管理グループは Log Analytics に統合されました。  
 
 販売時点管理 (POS) デバイスや IT サービスをサポートするサーバーなど、ネットワーク上にあっても IT セキュリティ ポリシーによりインターネットに接続することが禁止されているコンピューターを使用している場合に、そのコンピューターを管理および監視するにあたり Azure Automation または Log Analytics に接続する必要がある局面を考えてみましょう。この場合、そのコンピューターには、直接通信する相手を Log Analytics ゲートウェイとし、データの転送は OMS ゲートウェイに任せるという構成が可能です。  これに対して、コンピューターに Log Analytics ワークスペースと直接接続している Log Analytics エージェントを構成した場合には、全部のコンピューターが Log Analytics ゲートウェイと通信します。  ゲートウェイは、エージェントから収集したデータをサービスに直接転送します。ゲートウェイが転送されるデータを分析することはありません。
 
-Log Analytics と Operations Manager 管理グループが統合している場合には、管理サーバーが Log Analytics ゲートウェイに接続して構成情報を受信し、収集されたデータを有効にしているソリューションに応じて送信するという構成が可能です。  Operations Manager エージェントは、Operations Manager アラート、構成評価、インスタンス スペース、容量データなどのデータを管理サーバーに送信します。 IIS ログ、パフォーマンス、セキュリティ イベントなどの他の大容量データは、Log Analytics ゲートウェイに直接送信されます。  信頼されていないシステムの監視のために DMZ などの分離されたネットワーク上に Operations Manager ゲートウェイ サーバーをデプロイしている場合には、そのサーバーが Log Analytics ゲートウェイと通信することはできません。  Operations Manager ゲートウェイ サーバーは、管理サーバーに対してのみレポートを送信できます。  Operations Manager 管理グループが Log Analytics ゲートウェイと通信する構成になっている場合には、エージェントが管理しており、かつ Log Analytics 用のデータを収集する構成になっているコンピューターそれぞれに対して、プロキシの構成情報が自動で配信されます (設定が空欄であっても同じです)。    
+Log Analytics と Operations Manager 管理グループが統合している場合には、管理サーバーが Log Analytics ゲートウェイに接続して構成情報を受信し、収集されたデータを有効にしているソリューションに応じて送信するという構成が可能です。  Operations Manager エージェントは、Operations Manager アラート、構成評価、インスタンス スペース、容量データなどのデータを管理サーバーに送信します。 IIS ログ、パフォーマンス、セキュリティ イベントなどの他の大容量データは、Log Analytics ゲートウェイに直接送信されます。  信頼されていないシステムの監視のために DMZ などの分離されたネットワーク上に 1 つ以上の Operations Manager ゲートウェイ サーバーをデプロイしている場合には、そのサーバーが Log Analytics ゲートウェイと通信することはできません。  Operations Manager ゲートウェイ サーバーは、管理サーバーに対してのみレポートを送信できます。  Operations Manager 管理グループが Log Analytics ゲートウェイと通信する構成になっている場合には、エージェントが管理しており、かつ Log Analytics 用のデータを収集する構成になっているコンピューターそれぞれに対して、プロキシの構成情報が自動で配信されます (設定が空欄であっても同じです)。    
 
 ゲートウェイを経由して Log Analytics と通信する Operations Management グループまたは Log Analytics に直接接続しているグループに対して高可用性を実現するには、ネットワーク負荷分散を使って複数のゲートウェイ サーバーにトラフィックをリダイレクトし、トラフィックを分散させます。  ゲートウェイ サーバーが 1 台ダウンした場合には、トラフィックが別の利用可能なノードにリダイレクトされます。  
 
-Log Analytics ゲートウェイのパフォーマンスやイベント データを解析するために、Log Analytics ゲートウェイとの通信や、Log Analytics ゲートウェイの監視に必要なサービスおよびエンドポイントを特定するために、Log Analytics ゲートウェイを実行しているコンピューターで Log Analytics エージェントが必要になります。
+Log Analytics ゲートウェイとの通信に必要なサービスおよびエンドポイントを特定するだけでなく、ゲートウェイの背後にあるエージェントや Operations Manager 管理グループが構成されている同じワークスペースにレポートを送信するためには、Log Analytics ゲートウェイを実行しているコンピューターで Log Analytics Windows エージェントが必要になります。 これは、ゲートウェイが割り当てられているワークスペースとの対話を許可するために必要です。 ゲートウェイは最大 4 つのワークスペースへのマルチホームにすることができます。これは、Windows エージェントがサポートするワークスペースの合計数です。  
 
 各エージェントは、ゲートウェイとの間で双方向にデータを自動的に転送できるように、ゲートウェイにネットワーク接続する必要があります。 ドメイン コントローラーにゲートウェイをインストールすることはお勧めしません。
 
-次の図は、ゲートウェイ サーバーを使った場合の直接エージェントから Azure Automation および Log Analytics へのデータ フローを示したものです。  エージェントのプロキシ構成のポートは、サービスとの通信のために Log Analytics ゲートウェイに対して構成されているポートと同じになっている必要があります。  
+次の図は、ゲートウェイ サーバーを使った場合の直接エージェントから Azure Automation および Log Analytics へのデータ フローを示したものです。 エージェントのプロキシ構成のポートは、Log Analytics ゲートウェイに対して構成されているポートと同じになっている必要があります。  
 
 ![エージェントとサービスの直接通信の図](./media/gateway/oms-omsgateway-agentdirectconnect.png)
 
@@ -56,7 +62,7 @@ Log Analytics ゲートウェイを実行するコンピューターを設計す
 * Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2、Windows Server 2008
 * .Net Framework 4.5
 * 最低 4 コアのプロセッサと 8 GB のメモリ 
-* Windows 用の Log Analytics エージェント 
+* [Windows 用の log Analytics エージェント](agent-windows.md)がインストールされていて、ゲートウェイ経由で通信するエージェントと同じワークスペースにレポートを送信するように構成されている。  
 
 ### <a name="language-availability"></a>利用可能な言語
 
@@ -85,10 +91,10 @@ Log Analytics ゲートウェイは、トランスポート層セキュリティ
 ### <a name="supported-number-of-agent-connections"></a>サポートされるエージェント接続の数
 次の表に、ゲートウェイ サーバーと通信するエージェントがサポートされる数を示します。  このサポートは、6 秒ごとに最大 200 KB のデータをアップロードするエージェントに基づいています。 テストされるエージェントごとのデータ量は、1 日あたり約 2.7 GB です。
 
-|ゲートウェイ |サポートされるエージェントのおおよその数|  
+|Gateway |サポートされるエージェントのおおよその数|  
 |--------|----------------------------------|  
-|- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6GHz 2 コア<br> - メモリ: 4 GB<br> - ネットワーク帯域幅: 1 Gbps| 600|  
-|- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6GHz 4 コア<br> - メモリ: 8 GB<br> - ネットワーク帯域幅: 1 Gbps| 1,000|  
+|- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6 GHz 2 コア<br> - メモリ: 4 GB<br> - ネットワーク帯域幅: 1 Gbps| 600|  
+|- CPU: Intel XEON CPU E5-2660 v3 \@ 2.6 GHz 4 コア<br> - メモリ: 8 GB<br> - ネットワーク帯域幅: 1 Gbps| 1,000|  
 
 ## <a name="download-the-log-analytics-gateway"></a>Log Analytics ゲートウェイのダウンロード
 
@@ -124,7 +130,8 @@ or
 1. Microsoft Update が有効になっていない場合は、Microsoft Update のページが表示され、有効にするかどうかを選択できます。 選択を行い、**[次へ]** をクリックします。 使用する場合は、次の手順に進みます。
 1. **[インストール先のフォルダー]** ページでは、既定のフォルダー C:\Program Files\OMS Gateway をそのまま使用するか、ゲートウェイをインストールする場所を入力して、**[次へ]** をクリックします。
 1. **[インストールの準備完了]** ページで **[インストール]** をクリックします。 [ユーザー アカウント制御] が表示され、インストールのためのアクセス許可が要求されることがあります。 その場合は、**[はい]** をクリックします。
-1. セットアップが完了した後、**[完了]** をクリックします。 サービスが実行中であることを確認するには、services.msc スナップインを開きます。そこでサービスの一覧に **[Log Analytics ゲートウェイ]** が表示されており、状態が **[実行中]** であれば、サービスは正常に実行されています。<br><br> ![サービス - Log Analytics ゲートウェイ](./media/gateway/gateway-service.png)  
+1. セットアップが完了した後、**[完了]** をクリックします。 サービスが実行中であることを確認するには、services.msc スナップインを開きます。そこでサービスの一覧に **[OMS ゲートウェイ]** が表示されており、状態が **[実行中]** であれば、サービスは正常に実行されています。<br><br> ![サービス - Log Analytics ゲートウェイ](./media/gateway/gateway-service.png)  
+
 
 ## <a name="configure-network-load-balancing"></a>ネットワーク負荷分散を構成する 
 ネットワーク負荷分散 (NLB) を使えば、ゲートウェイに高可用性を構成できます。これには、Microsoft ネットワーク負荷分散 (NLB) とハードウェアベースのロード バランサーのどちらかを使用します。  ロード バランサーは、Log Analytics エージェントまたは Operations Manager 管理サーバーからの接続要求を自らのノードにリダイレクトする形で、トラフィックを管理します。 1 台のゲートウェイ サーバーで障害が発生した場合、トラフィックは他のノードにリダイレクトされます。
@@ -140,7 +147,11 @@ Windows Server 2016 のネットワーク負荷分散クラスターの設計お
 以下のセクションでは、直接接続されている Log Analytics エージェント、Operations Manager 管理グループ、または Azure Automation Hybrid Runbook Worker に対して Azure Automation または Log Analytics との通信のために Log Analytics ゲートウェイを構成する手順を説明します。  
 
 ### <a name="configure-standalone-log-analytics-agent"></a>スタンドアロンの Log Analytics エージェントを構成する
-Log Analytics に直接接続している Windows コンピューターに Log Analytics エージェントをインストールするための要件と手順については、[Windows コンピューターを Log Analytics に接続する](agent-windows.md)方法に関するページをご覧ください。Linux コンピューターの場合には、[Linux コンピューターを Log Analytics に接続する](../../azure-monitor/learn/quick-collect-linux-computer.md)方法に関するページをご覧ください。 エージェントを構成するときにプロキシ サーバーを指定する代わりに、その値を Log Analytics ゲートウェイ サーバーの IP アドレスとそのポート番号に置き換えます。  ネットワーク ロード バランサーの背後に複数のゲートウェイ サーバーをデプロイしている場合には、Log Analytics エージェントのプロキシ構成が、NLB の仮想 IP アドレスとなります。  
+Log Analytics に直接接続している ゲートウェイと Windows コンピューターに Log Analytics エージェントをインストールするための要件と手順については、[Windows コンピューターを Log Analytics に接続する](agent-windows.md)方法に関するページをご覧ください。Linux コンピューターの場合には、[Linux コンピューターを Log Analytics に接続する](../../azure-monitor/learn/quick-collect-linux-computer.md)方法に関するページをご覧ください。 エージェントを構成するときにプロキシ サーバーを指定する代わりに、その値を Log Analytics ゲートウェイ サーバーの IP アドレスとそのポート番号に置き換えます。 ネットワーク ロード バランサーの背後に複数のゲートウェイ サーバーをデプロイしている場合には、Log Analytics エージェントのプロキシ構成が、NLB の仮想 IP アドレスとなります。  
+
+エージェントをゲートウェイ サーバーにインストールした後は、ゲートウェイと通信するワークスペースのエージェントにレポートを送信するように構成できます。 Log Analytics Windows エージェント、ゲートウェイがインストールされていない場合は、エージェントをインストールする必要があることを示すイベント 300 が **OMS ゲートウェイ ログ**のイベント ログに書き込まれます。 エージェントがインストールされていても、それを経由して通信するエージェントと同じワークスペースにレポートを送信するよう構成されていない場合は、ゲートウェイ上のエージェントはゲートウェイと通信するエージェントと同じワークスペースにレポートを送信するよう構成する必要があることを示すイベント 105 が、同じイベント ログに書き込まれます。
+
+構成が完了した後は、変更を有効にするために、**OMS ゲートウェイ** サービスを再起動する必要があります。 そうしないと、ゲートウェイは、Log Analytics との通信を試みるエージェントを拒否し、**OMS ゲートウェイ ログ**のイベント ログにイベント ID 105 をレポートします。 これは、ゲートウェイ サーバーのエージェント構成にワークスペースを追加または削除するときにも当てはまります。   
 
 Automation Hybrid Runbook Worker に関連する情報は、[Hybrid Runbook Worker のデプロイ](../../automation/automation-hybrid-runbook-worker.md)に関するページをご覧ください。
 
@@ -149,18 +160,20 @@ Automation Hybrid Runbook Worker に関連する情報は、[Hybrid Runbook Work
 
 ゲートウェイを使って Operations Manager をサポートするには、以下の条件を満たす必要があります。
 
-* Microsoft Monitoring Agent (エージェント バージョン – **8.0.10900.0** 以降) がゲートウェイ サーバーにインストールされていて、通信する Log Analytics ワークスペース用に構成されていること。
+* Microsoft Monitoring Agent (エージェント バージョン **8.0.10900.0** 以降) がゲートウェイ サーバーにインストールされていて、管理グループがレポートを送信するよう構成されている同じ Log Analytics ワークスペースに対して構成されていること。
 * ゲートウェイがインターネットに接続されていること、またはインターネットに接続できるプロキシ サーバーに接続されていること。
 
 > [!NOTE]
 > ゲートウェイの値を指定しなかった場合には、全部のエージェントに対して空の値がプッシュされます。
 > 
 
-今回初めて Operations Manager 管理グループを Log Analytics ワークスペースに登録する場合、管理グループのプロキシ構成を指定するオプションはオペレーション コンソールで使用できません。  このオプションを使用可能にするには、管理グループがサービスに正常に登録される必要があります。  オペレーション コンソールを実行しているシステムで Netsh を使用してシステム プロキシ構成を更新して、統合と、管理グループのすべての管理サーバーを構成する必要があります。  
+今回初めて Operations Manager 管理グループを Log Analytics ワークスペースに登録する場合、管理グループのプロキシ構成を指定するオプションはオペレーション コンソールで使用できません。  このオプションを使用可能にするには、管理グループがサービスに正常に登録される必要があります。  オペレーション コンソールを実行しているシステムで Netsh を使用してシステム プロキシ構成を更新して、統合と、管理グループのすべての管理サーバーを構成します。  
 
 1. 管理者特権でのコマンド プロンプトを開きます。
-   a. **[スタート]** に移動し、「**cmd**」と入力します。
-   b. **[コマンド プロンプト]** を右クリックし、[管理者として実行]** を選択します。
+
+    a. **[スタート]** に移動し、「**cmd**」と入力します。  
+    b. **[コマンド プロンプト]** を右クリックし、**[管理者として実行]** を選択します。  
+
 1. 次のコマンドを入力し、**Enter** キーを押します。
 
     `netsh winhttp set proxy <proxy>:<port>`
@@ -296,7 +309,7 @@ Log Analytics ゲートウェイの構成設定の更新に必要なタスクを
 
 次の表では、Log Analytics ゲートウェイに使えるパフォーマンス カウンターを示します。 パフォーマンス モニターを使ってカウンターを追加できます。
 
-| **名前** | **説明** |
+| **Name** | **説明** |
 | --- | --- |
 | Log Analytics ゲートウェイ/アクティブなクライアント接続 |アクティブなクライアント ネットワーク (TCP) 接続の数 |
 | Log Analytics ゲートウェイ/エラーの数 |エラーの数 |

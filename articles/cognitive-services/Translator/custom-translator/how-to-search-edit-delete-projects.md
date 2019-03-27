@@ -5,16 +5,16 @@ description: Custom Translator には、効率的な方法でプロジェクト�
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.component: custom-translator
+ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 185febd18d773a07601fce4dfa8c4575855f84b0
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 922f64f3e9588b3bfcfeedf7602df781c8ee6172
+ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51626964"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55226606"
 ---
 # <a name="search-edit-and-delete-projects"></a>プロジェクトの検索、編集、削除
 

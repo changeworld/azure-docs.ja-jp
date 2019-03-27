@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/01/2018
+ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: ea4203c45f482b990122a966fc2ec13b3fb41c84
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 604f135cc3dffdb9ac6533826eff6926ad5467df
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167156"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117750"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>チュートリアル: VMware で Azure Data Box Gateway をプロビジョニングする (プレビュー)
+# <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>チュートリアル:VMware で Azure Data Box Gateway をプロビジョニングする (プレビュー)
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、VMware ESXi 6.0 または 6.5 を実行しているホスト システム上に Data Box Gateway をプロビジョニングする方法について説明します。 
+このチュートリアルでは、VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システム上に Data Box Gateway をプロビジョニングする方法について説明します。 
 
 仮想デバイスをプロビジョニングして、そのデバイスに接続するには、管理者特権が必要です。 プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮想デバイスをプロビジョニングするための前提条件は次のとおりです。
+VMware ESXi 6.0、6.5、または 6.7 を実行しているホスト システムで仮想デバイスをプロビジョニングするための前提条件は次のとおりです。
 
 ### <a name="for-the-data-box-gateway-resource"></a>Data Box Gateway リソースの場合
 
@@ -53,7 +53,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 仮想デバイスをデプロイする前に次の点を確認します。
 
-* VMware (ESXi 6.0 または 6.5) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
+* VMware (ESXi 6.0、6.5、または 6.7) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
 * ホスト システムで、次のリソースを仮想デバイスのプロビジョニング専用に使用できること。
 
   * 最小で 4 コア。
@@ -66,18 +66,18 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 作業を開始する前に、次のことを行います。
 
-- Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-requirements)に関する記事を参照してください。
+- Data Box Gateway をデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成します。 詳細については、[Data Box Gateway のシステム要件](data-box-gateway-system-requirements.md#networking-port-requirements)に関する記事を参照してください。
 - インターネットの最小帯域幅が、デバイスの最適動作を可能にする 20 Mbps であることを確認します。
 
 ## <a name="check-the-host-system"></a>ホスト システムをチェックする
 
 仮想デバイスを作成するには、以下が必要です。
 
-* VMware ESXi Server 6.0 または 6.5 を実行しているホスト システムにアクセスできること。 ホスト システムは、次のリソースを仮想デバイス専用にすることができます。
+* VMware ESXi Server 6.0、6.5、または 6.7 を実行しているホスト システムにアクセスできること。 ホスト システムは、次のリソースを仮想デバイス専用にすることができます。
  
   * 最小で 4 コア。
   * 少なくとも 8 GB の RAM。 
-  * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。 
+  * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。
   * 250 GB の OS ディスク。
   * データ用の 2 TB の仮想ディスク。
 * システムに、ESXi ホストを管理するための VMware vSphere client があること。
@@ -89,7 +89,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 1. システム上にある仮想デバイスのイメージをコピーします。 この仮想イメージ (2 つのファイル) は、Azure portal からダウンロードしています。 このイメージは後で使用するため、コピー先はメモしておいてください。
 
-2. vSphere web client を使用して、ESXi サーバーにログインします。 仮想マシンを作成するには、管理者特権が必要です。
+2. ブラウザーで URL `https://<IP address of the ESXi server>` にアクセスして ESXi サーバーにサインインします。 仮想マシンを作成するには、管理者特権が必要です。
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -141,7 +141,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 15. **[Select storage]\(ストレージの選択\)** ページで、VM のプロビジョニングに使用するデータストアを選択します。 **[次へ]** をクリックします。
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. **[Customize settings]\(設定のカスタマイズ\)** ページで、**[CPU]** を [4] に、**[Memory]\(メモリ\)** を [8192 MB] (以上) に、**[Hard disk 1]\(ハード ディスク 1\)** を [2 TB] (以上) に設定します。 追加する **SCSI ハード _ ディスク** を選択します。 ここでは、それは LSI Logic SAS でした。 **静的 IDE ディスクはサポートされていません。** **[Hard disk 1]\(ハード ディスク 1\)** は仮想データ ディスクです。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。
+16. **[Customize settings]\(設定のカスタマイズ\)** ページで、**[CPU]** を [4] に、**[Memory]\(メモリ\)** を [8192 MB]\(以上) に、**[Hard disk 1]\(ハード ディスク 1\)** を [2 TB]\(以上) に設定します。 追加する **SCSI ハード _ ディスク** を選択します。 ここでは、それは LSI Logic SAS でした。 **静的 IDE ディスクはサポートされていません。** **[Hard disk 1]\(ハード ディスク 1\)** は仮想データ ディスクです。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
@@ -149,20 +149,24 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
-    **[New hard disk]\(新しいハード ディスク\)** が表示するまで下にスクロールし、それを展開して設定を表示します。 **[Virtual Device Node]\(仮想デバイス ノード\)** を **[IDE controller 0]\(IDE コントロ―ラー 0\)** に設定します。 **[次へ]** をクリックします。
+    **[New hard disk]\(新しいハード ディスク\)** が表示するまで下にスクロールし、それを展開して設定を表示します。 **[Virtual Device Node]\(仮想デバイス ノード\)** を **[IDE controller 0]\(IDE コントロ―ラー 0\)** に設定します。
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-27. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 CPU に 4、メモリに 8192 MB、ネットワーク インターフェイスに 1、ハード ディスク 2 に IDE コントローラー 0 が設定されていることを確認します。 **[完了]** をクリックします。 
+17. (省略可能) *VMware ESXi Server 6.7 を実行している場合にのみ、この手順を実行します*。 **[Customize settings]\(設定のカスタマイズ\)** ページで **[VM options]\(VM のオプション\)** をクリックします。 **[Boot options]\(ブート オプション\) > [Firmware]\(ファームウェア\)** に移動し、**[BIOS]** に変更します。 既定では、値は [EFI] に設定されます。 **[次へ]** をクリックします。
+
+    ![](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
+
+18. **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。 CPU に 4、メモリに 8192 MB、ネットワーク インターフェイスに 1、ハード ディスク 2 に IDE コントローラー 0 が設定されていることを確認します。 **[完了]** をクリックします。
    
     ![](./media/data-box-gateway-deploy-provision-vmware/image16.png)
     ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-これで仮想マシンがプロビジョニングされました。 その趣旨の通知が表示され、新しい仮想マシンが VM の一覧に追加されます。 
+これで仮想マシンがプロビジョニングされました。 その趣旨の通知が表示され、新しい仮想マシンが VM の一覧に追加されます。
 
 ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-次はこのマシンを起動して IP アドレスを取得します。
+次はこの VM を起動して IP アドレスを取得します。
 
 > [!NOTE]
 > (上でプロビジョニングした) 仮想デバイスには VMware ツールをインストールしないことをお勧めします。 VMware ツールをインストールすると、サポートされていない構成になります。
@@ -192,7 +196,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップして手順 8 に進みます。 非 DHCP 環境でデバイスを起動した場合は、**Set-hcsipaddress コマンドレットを使用してネットワークを構成してください**という趣旨のメッセージが表示されます。 
+6. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップして手順 8 に進みます。 非 DHCP 環境でデバイスを起動した場合は、"**ネットワークを構成するには、Set-HcsIPAddress コマンドレットを使用します**" という趣旨のメッセージが表示されます。 
    
 7. ネットワークを構成するには、コマンド プロンプトで `Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。 デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `Ethernet`です。
 

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/20/2017
 ms.author: danlep
-ms.openlocfilehash: 350ae16aa66276e7e64c5c35718dca74a70f499e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: cbfbe5bf0df1b4f40752b5b233dff6416bcdd309
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854101"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770603"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
 
@@ -74,7 +74,7 @@ Azure CLI を使用して ACR Webhook をテストするには、[az acr webhook
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01
 ```
 
-結果を表示するには、[az acr webhook list-events](/cli/azure/acr/webhook#list-events) コマンドを使用します。
+結果を表示するには、[az acr webhook list-events](/cli/azure/acr/webhook) コマンドを使用します。
 
 ```azurecli-interactive
 az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook01
@@ -104,4 +104,4 @@ Azure Container Registry によって出力される JSON イベント ペイロ
 
 この記事で説明したネイティブ レジストリ Webhook イベントだけでなく、Azure Container Registry は Event Grid に対してイベントを生成できます。
 
-[クイック スタート - Event Grid へのコンテナー レジストリ イベントの送信](container-registry-event-grid-quickstart.md)
+[クイック スタート:Event Grid へのコンテナー レジストリ イベントの送信](container-registry-event-grid-quickstart.md)

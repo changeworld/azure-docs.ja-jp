@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: bbe1288a42db307001ac778394ac410206f1df21
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 71463b523f0afdf63a7c89ff2b3137ae8d091b3b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228200"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086702"
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>BizTalk サービスの状態を使用して実行できる操作と実行できない操作
 
@@ -48,7 +48,7 @@ BizTalk サービスの現在の状態によっては、BizTalk サービスで�
 | SuspendedFailed <br/> ResumeFailed|  |  |  | ✔ | ✔ | ✔ | |  |  | 
 | CreatedFailed <br/> RestoreFailed |  |  |  |  |  | ✔ | |  |  | 
 | ConfigUpdateFailed  |  |  | ✔ |  |  | ✔ | |✔ | |
-| ScaleFailed |  |  |  |  |  | ✔ |✔ | |  |  | 
+| ScaleFailed |  |  |  |  |  | ✔ |✔ | |  |
 
 
 

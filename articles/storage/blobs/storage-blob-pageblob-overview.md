@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: wielriac
-ms.component: blobs
-ms.openlocfilehash: 6d1c443cfe3454d1b1e50a7270bd78598f69f6de
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.subservice: blobs
+ms.openlocfilehash: a61e78ff54cdc2a3db6c166686c2c51a19856a9c
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063934"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55252313"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 

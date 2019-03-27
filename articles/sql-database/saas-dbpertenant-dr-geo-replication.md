@@ -11,20 +11,20 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
-ms.date: 04/09/2018
-ms.openlocfilehash: f24c76fb6b7ca24573a97aa122659fe5ca019550
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 01/25/2019
+ms.openlocfilehash: b2be42e4984ac7000cfb31ce6575c529b752db2d
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056337"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55471149"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>データベースの geo レプリケーションを使用したマルチテナント SaaS アプリケーションのディザスター リカバリー
 
-このチュートリアルでは、テナント単位データベース モデルを使用して実装されているマルチテナント SaaS アプリケーションの完全なディザスター リカバリー シナリオを見ていきます。 障害からアプリを保護するには、[_geo レプリケーション_](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) を使用して、代替復旧リージョンにカタログ データベースとテナント データベースのレプリカを作成します。 障害が発生した場合は、迅速にレプリカにフェールオーバーして、通常の業務を再開します。 フェールオーバー時には、元のリージョンのデータベースが、復旧リージョン内のデータベースのセカンダリ レプリカになります。 これらのレプリカがオンラインに戻ると、復旧リージョン内のデータベースの状態に自動的に追いつきます。 障害が解決した後は、元の運用リージョン内のデータベースにフェールバックします。
+このチュートリアルでは、テナント単位データベース モデルを使用して実装されているマルチテナント SaaS アプリケーションの完全なディザスター リカバリー シナリオを見ていきます。 障害からアプリを保護するには、[_geo レプリケーション_](sql-database-geo-replication-overview.md) を使用して、代替復旧リージョンにカタログ データベースとテナント データベースのレプリカを作成します。 障害が発生した場合は、迅速にレプリカにフェールオーバーして、通常の業務を再開します。 フェールオーバー時には、元のリージョンのデータベースが、復旧リージョン内のデータベースのセカンダリ レプリカになります。 これらのレプリカがオンラインに戻ると、復旧リージョン内のデータベースの状態に自動的に追いつきます。 障害が解決した後は、元の運用リージョン内のデータベースにフェールバックします。
 
 このチュートリアルでは、フェールオーバーとフェールバック両方のワークフローについて説明します。 学習内容は次のとおりです。
-> [!div classs="checklist"]
+> [!div class="checklist"]
 
 >* データベースとエラスティック プールの構成情報をテナントのカタログに同期する
 >* アプリケーション、サーバー、プールで構成される復旧環境を代替リージョンにセットアップする
@@ -53,9 +53,9 @@ geo レプリケーションに基づく DR プランは、3 つの部分から�
 すべての部分を慎重に検討する必要があり、規模が大きい場合は特に重要です。 全体として、計画では複数の目標を達成する必要があります。
 
 * セットアップ
-    * 復旧リージョン内にミラー イメージ環境を確立して維持します。 この復旧環境にエラスティック プールを作成し、任意の単一データベースをレプリケートして、復旧リージョンに容量を確保します。 この環境の維持には、プロビジョニングされた新しいテナント データベースのレプリケートが含まれます。  
+    * 復旧リージョン内にミラー イメージ環境を確立して維持します。 この復旧環境にエラスティック プールを作成し、任意のデータベースをレプリケートして、復旧リージョンに容量を確保します。 この環境の維持には、プロビジョニングされた新しいテナント データベースのレプリケートが含まれます。  
 * 復旧
-    * スケールダウンされた復旧環境を使用して日常的なコストを最小にする場合は、プールと単一データベースをスケールアップして復旧リージョンに完全な運用容量を取得する必要があります
+    * スケールダウンされた復旧環境を使用して日常的なコストを最小にする場合は、プールとデータベースをスケールアップして復旧リージョンに完全な運用容量を取得する必要があります
     * できるだけ早く復旧リージョンで新しいテナントのプロビジョニングを有効にします  
     * 優先順でテナントが復元されるように最適化します
     * 可能であれば、並列で手順を実行して、できる限り速くテナントがオンラインになるように最適化します
@@ -67,10 +67,10 @@ geo レプリケーションに基づく DR プランは、3 つの部分から�
 このチュートリアルでは、Azure SQL Database と Azure プラットフォームの以下の機能を使って、これらの課題に対応します。
 
 * [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)は、できるだけ早くすべての必要な容量を確保します。 復旧リージョン内に運用サーバーとエラスティック プールのミラー イメージをプロビジョニングするには、Azure Resource Manager テンプレートを使います。
-* [geo レプリケーション](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview)は、すべてのデータベースのレプリケートされた読み取り専用のセカンダリを非同期的に作成します。 障害時には、復旧リージョンのレプリカにフェールオーバーします。  障害が解決した後で、データを失うことなく元のリージョン内のデータベースにフェールバックします。
+* [geo レプリケーション](sql-database-geo-replication-overview.md)は、すべてのデータベースのレプリケートされた読み取り専用のセカンダリを非同期的に作成します。 障害時には、復旧リージョンのレプリカにフェールオーバーします。  障害が解決した後で、データを失うことなく元のリージョン内のデータベースにフェールバックします。
 * テナントの優先順に送信される[非同期](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)フェールオーバー操作は、大量のデータベースのフェールオーバー時間を最小限に抑えます。
-* [シャード管理復旧機能](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager)は、復旧および復帰の間にカタログのデータベース エントリを変更します。 これらの機能により、アプリは、再構成しなくても、場所に関係なく、テナント データベースに接続できます。
-* [SQL サーバーの DNS エイリアス](https://docs.microsoft.com/azure/sql-database/dns-alias-overview)は、アプリが動作しているリージョンに関係なく、新しいテナントのシームレスなプロビジョニングを可能にします。 また、DNS エイリアスは、カタログの場所に関係なく、カタログ同期プロセスがアクティブなカタログに接続できるようにするためにも使われます。
+* [シャード管理復旧機能](sql-database-elastic-database-recovery-manager.md)は、復旧および復帰の間にカタログのデータベース エントリを変更します。 これらの機能により、アプリは、再構成しなくても、場所に関係なく、テナント データベースに接続できます。
+* [SQL サーバーの DNS エイリアス](dns-alias-overview.md)は、アプリが動作しているリージョンに関係なく、新しいテナントのシームレスなプロビジョニングを可能にします。 また、DNS エイリアスは、カタログの場所に関係なく、カタログ同期プロセスがアクティブなカタログに接続できるようにするためにも使われます。
 
 ## <a name="get-the-disaster-recovery-scripts"></a>ディザスター リカバリー スクリプトを取得する 
 
@@ -92,7 +92,7 @@ geo レプリケーションに基づく DR プランは、3 つの部分から�
 復旧プロセスを始める前に、アプリケーションの通常の正常な状態を確認します。
 1. Web ブラウザーで、Wingtip Tickets イベント ハブ (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net - &lt;user&gt; は実際の展開でのユーザーの値に置き換えます) を開きます。
     * ページの下部までスクロールし、フッターでカタログ サーバー名と場所を確認します。 場所は、アプリを展開したリージョンです。
-    *ヒント: 場所をマウスでポイントすると表示が拡大します。* 
+    *ヒント:場所をマウスでポイントすると表示が拡大されます。*
     ![元のリージョンでのイベント ハブの正常な状態](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Contoso Concert Hall テナントをクリックして、そのイベント ページを開きます。
@@ -126,7 +126,7 @@ PowerShell ウィンドウはバックグラウンドで実行させたままに
 このタスクでは、重複するアプリ インスタンスを展開してカタログとすべてのテナント データベースを復旧リージョンにレプリケートするプロセスを開始します。
 
 > [!Note]
-> このチュートリアルでは、geo レプリケーションの保護を Wingtip Tickets サンプル アプリケーションに追加します。 geo レプリケーションを使うアプリケーションの運用シナリオでは、各テナントが geo レプリケートされたデータベースで最初からプロビジョニングされます。 「[Azure SQL Database を使用した高可用性サービスの設計](https://docs.microsoft.com/azure/sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)」をご覧ください。
+> このチュートリアルでは、geo レプリケーションの保護を Wingtip Tickets サンプル アプリケーションに追加します。 geo レプリケーションを使うアプリケーションの運用シナリオでは、各テナントが geo レプリケートされたデータベースで最初からプロビジョニングされます。 「[Azure SQL Database を使用した高可用性サービスの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)」をご覧ください。
 
 1. *PowerShell ISE* で、...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 スクリプトを開き、次の値を設定します。
     * **$DemoScenario = 2**: ミラー イメージ復旧環境を作成し、カタログ データベースとテナント データベースをレプリケートします
@@ -135,12 +135,14 @@ PowerShell ウィンドウはバックグラウンドで実行させたままに
 ![同期プロセス](media/saas-dbpertenant-dr-geo-replication/replication-process.png)  
 
 ## <a name="review-the-normal-application-state"></a>通常のアプリケーションの状態を確認する
+
 この時点で、アプリケーションは元のリージョンで正常に実行され、geo レプリケーションによって保護されています。  すべてのデータベースに対し、読み取り専用のセカンダリ レプリカが復旧リージョンに存在します。 
+
 1. Azure Portal でリソース グループを表示すると、-recovery というサフィックスが付いたリソース グループが復旧リージョンに作成されていることがわかります。 
 
-1. 復旧リソース グループでリソースを調べます。  
+2. 復旧リソース グループでリソースを調べます。  
 
-1. _tenants1-dpt-&lt;ユーザー&gt;-recovery_ サーバーで、Contoso Concert Hall データベースをクリックします。  左側で [geo レプリケーション] をクリックします。 
+3. _tenants1-dpt-&lt;ユーザー&gt;-recovery_ サーバーで、Contoso Concert Hall データベースをクリックします。  左側で [geo レプリケーション] をクリックします。 
 
     ![Contoso Concert の geo レプリケーション リンク](media/saas-dbpertenant-dr-geo-replication/contoso-geo-replication.png) 
 
@@ -193,6 +195,7 @@ Azure リージョンのマップで、元のリージョンのプライマリ�
 > 復旧ジョブのコードを調べるには、...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\RecoveryJobs フォルダーにある PowerShell スクリプトをご覧ください。
 
 ### <a name="review-the-application-state-during-recovery"></a>復旧中にアプリケーションの状態を確認する
+
 Traffic Manager でアプリケーション エンドポイントが無効になっている間は、アプリケーションを使用できません。 カタログが復旧リージョンにフェールオーバーされて、すべてのテナントがオフラインとしてマークされると、アプリケーションはオンラインに戻されます。 アプリケーションは使用可能ですが、データベースがフェールオーバーされるまでは、イベント ハブ内で各テナントはオフラインと表示されます。 オフラインのテナント データベースを処理するようにアプリケーションを設計することが重要です。
 
 1. カタログ データベースが復旧された後すぐ、Web ブラウザーで Wingtip Tickets イベント ハブを更新します。
@@ -301,7 +304,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
-> [!div classs="checklist"]
+> [!div class="checklist"]
 
 >* データベースとエラスティック プールの構成情報をテナントのカタログに同期する
 >* アプリケーション、サーバー、プールで構成される復旧環境を代替リージョンにセットアップする
@@ -313,4 +316,4 @@ Azure SQL データベースで提供されているビジネス継続性を有�
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+* [Wingtip SaaS アプリケーションに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)

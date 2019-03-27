@@ -4,7 +4,7 @@ description: Azure Key Vault のサービス制限について説明します。
 documentationcenter: dev-center-name
 services: key-vault
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 1a5f1222-57f0-4a2a-98ee-92bb899f9d75
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 12eab13d7478bb443d52b03ce4a757589b5456a0
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: e58fec5fd3f2a1ccc603fd5b997184eb0f05e98a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075432"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117564"
 ---
 # <a name="azure-key-vault-service-limits"></a>Azure Key Vault サービスの制限
 

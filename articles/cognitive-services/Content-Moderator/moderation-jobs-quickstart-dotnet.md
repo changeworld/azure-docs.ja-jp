@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: .NET を使用してモデレーション ジョブを開始する - Content Moderator'
+title: クイック スタート:.NET を使用してモデレーション ジョブを開始する - Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Azure Content Moderator SDK for .NET を使用してモデレーション ジョブを開始する方法。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 6045d6daf2abace6e2b38bd6fd6e22516e3a60a0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0664e75a299246d9dd2cc14dbab31d22a1bd9c4b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227436"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878069"
 ---
-# <a name="quickstart-start-moderation-jobs-using-net"></a>クイック スタート: .NET を使用してモデレーション ジョブを開始する
+# <a name="quickstart-start-moderation-jobs-using-net"></a>クイック スタート:.NET を使用してモデレーション ジョブを開始する
 
 この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) を使用して次の操作をすぐに開始するために役立つ情報とコード サンプルを提供します。
  
@@ -30,8 +30,7 @@ ms.locfileid: "47227436"
 
 ## <a name="sign-up-for-content-moderator"></a>Content Moderator へのサインアップ
 
-REST API や SDK を通じて Content Moderator サービスを使用するには、サブスクリプション キーが必要です。
-キーを入手する方法については、[クイック スタート](quick-start.md)を参照してください。
+REST API や SDK を通じて Content Moderator サービスを使用するには、サブスクリプション キーが必要です。 [Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Content Moderator をサブスクライブし、キーを取得します。
 
 ## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>前の手順で完了していない場合は、レビュー ツール アカウントにサインアップする
 

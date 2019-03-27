@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: ad9ecd9c5b50657caba7522fe500a748a10cd02d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 58a51fd90eb0b89048eca7c95272523ffd10c24a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634305"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982321"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -79,7 +79,7 @@ IoT Edge ランタイムがインストールされたら、次のセクショ�
 
 IoT Edge デーモンは、Docker デーモンとほぼ同じ方法で構成されています。 IoT Edge が IoT Hub へ送信するすべての要求で、HTTPS が使用されます。 お使いのオペレーティング システムに基づいて、次の手順に従って、サービス用に環境変数を設定します。 
 
-#### <a name="linux"></a> Linux
+#### <a name="linux"></a>Linux
 
 IoT Edge デーモンを構成するために、ターミナルでエディターを開きます。 
 
@@ -89,7 +89,7 @@ sudo systemctl edit iotedge
 
 次のテキストを入力して、**\<proxy URL>** をお使いのプロキシ サーバーのアドレスとポートに置き換えます。 その後、保存して終了します。 
 
-```text
+```ini
 [Service]
 Environment="https_proxy=<proxy URL>"
 ```

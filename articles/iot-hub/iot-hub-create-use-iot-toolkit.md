@@ -7,18 +7,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 9138a709cf8a166bbb572e04b082c5b8e6c82949
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: c37eeec6429e8367ade12b58bb4e20022423edf6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050236"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730361"
 ---
 # <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Visual Studio Code 用の Azure IoT Tools を使用して IoT ハブを作成する
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 この記事では、[Visual Studio Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して Azure IoT ハブを作成する方法について説明します。 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 この記事を完了するには、以下が必要です。
 

@@ -4,22 +4,23 @@ description: Azure Active Directory と UltiPro の間でシングル サイン�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: afc0f2b9-2eac-47ec-af04-65ed0fb0ca5a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 5ad89a8d5a0e9329e9951b7a8f7145a24910277e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 77d2312c5a20aa6b90586d47ee120593e807295e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970561"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ultipro"></a>チュートリアル:Azure Active Directory と UltiPro の統合
 
@@ -105,6 +106,7 @@ UltiPro で Azure AD シングル サインオンを構成するには、次の�
     ![[UltiPro のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+
     | |
     |--|
     | `https://<companyname>.ultipro.com/`|
@@ -112,6 +114,7 @@ UltiPro で Azure AD シングル サインオンを構成するには、次の�
     | ` https://<companyname>.ultipro.ca`|
     
     b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。
+
     | |
     |--|
     | `https://<companyname>.ultipro.com/adfs/services/trust`|
@@ -119,6 +122,7 @@ UltiPro で Azure AD シングル サインオンを構成するには、次の�
     | `https://<companyname>.ultipro.ca/adfs/services/trust`|
     
     c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    
     | |
     |--|
     | `https://<companyname>.ultipro.com/<instancename>`|
@@ -164,7 +168,7 @@ UltiPro で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -211,7 +215,7 @@ UltiPro で Azure AD シングル サインオンを構成するには、次の�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

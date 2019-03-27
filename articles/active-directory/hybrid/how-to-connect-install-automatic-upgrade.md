@@ -1,28 +1,29 @@
 ---
-title: 'Azure AD Connect: 自動アップグレード | Microsoft Docs'
+title: Azure AD Connect:自動アップグレード | Microsoft Docs
 description: このトピックでは、Azure AD Connect Sync の組み込みの自動アップグレード機能について説明します。
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 editor: ''
 ms.assetid: 6b395e8f-fa3c-4e55-be54-392dd303c472
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/26/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 72503c9f073a046b81001322cdbb4fb8a1af76cf
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6083237426e86220f8a3cb7fbe0cdfc30f44f8cc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224122"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208828"
 ---
-# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: 自動アップグレード
+# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect:自動アップグレード
 この機能は、ビルド [ 1.1.105.0 (2016 年 2 月リリース) で導入されました](reference-connect-version-history.md#111050)。  この機能は[ビルド 1.1.561](reference-connect-version-history.md#115610) で更新され、以前サポートされていなかった追加のシナリオがサポートされています。
 
 ## <a name="overview"></a>概要

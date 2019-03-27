@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: c2afd1c5a85ec393acfb0f754dd4ca9d77162061
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e948ee943db646ca83d39510485849b3c9956e90
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065496"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697451"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso の移行: Azure への移行の対象となるオンプレミスのワークロードを評価する
 
@@ -25,7 +25,7 @@ ms.locfileid: "54065496"
 --- | --- | ---
 [記事 1:概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
 [記事 2: Azure インフラストラクチャをデプロイする](contoso-migration-infrastructure.md) | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズのすべての記事で同じインフラストラクチャを使用します。 | 使用可能
-記事 3: Azure への移行の対象となるオンプレミスのリソースの評価 | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | この記事の内容は次のとおりです。
+記事 3:Azure への移行の対象となるオンプレミスのリソースの評価 | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | この記事の内容は次のとおりです。
 [記事 4: Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 アプリのフロントエンドは、Azure Site Recovery サービスを使用して移行します。 Azure Database Migration Service を使用してアプリ データベースを Azure SQL Database Managed Instance に移行します。 | 使用可能
 [記事 5:Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
 [記事 6:Azure VM および SQL Server AlwaysOn 可用性グループでのアプリのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel360 アプリを移行します。Site Recovery を使用してアプリの VM を移行し、Database Migration Service を使用して、アプリ データベースを AlwaysOn 可用性グループによって保護されている SQL Server クラスターに移行します。 | 使用可能
@@ -121,11 +121,11 @@ Contoso と他のユーザーは、次に示す評価の前提条件を満たす
 - バージョン 6.5、6.0、または 5.5 を実行しているオンプレミスの vCenter Server インスタンス。
 - vCenter Server の読み取り専用アカウント、またはそれを作成するためのアクセス許可。
 - .ova テンプレートを使用して vCenter Server インスタンス上に VM を作成するためのアクセス許可。
-- バージョン 5.0 以降を実行している少なくとも 1 つの ESXi ホスト。
+- バージョン 5.5 以降を実行している少なくとも 1 つの ESXi ホスト。
 - 少なくとも 2 つのオンプレミス VMware VM (1 つは SQL Server データベースを実行)。
 - Azure Migrate エージェントを各 VM にインストールするためのアクセス許可。
 - VM には、インターネットへの直接接続が必要です。  
-    - [必要な URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) へのインターネット アクセスを制限できます。  
+    - [必要な URL](https://docs.microsoft.com/azure/migrate/concepts-collector) へのインターネット アクセスを制限できます。  
     - VM がインターネットに接続できない場合、VM に Azure [Log Analytics Gateway](../azure-monitor/platform/gateway.md) をインストールし、エージェント トラフィックにそのゲートウェイを通過させる必要があります。
 - SQL Server インスタンスを実行している VM の FQDN (データベース評価用)。
 - SQL Server VM 上で実行されている Windows ファイアウォールでは、TCP ポート 1433 (既定値) で外部接続が許可されている必要があります。 このセットアップにより、Data Migration Assistant の接続が可能になります。
@@ -206,7 +206,7 @@ Contoso が評価を行う方法は次のとおりです。
 > [!NOTE]
 > 大規模な評価を行う場合:
 > - 複数の評価を同時に実行し、**[すべての評価]** ページで評価の状態を表示します。
-> - 評価を [SQL Server データベース](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017#import-assessment-results-into-a-sql-server-database)に統合します。
+> - 評価を [SQL Server データベース](https://docs.microsoft.com/sql/dma/dma-consolidatereports?view=ssdt-18vs2017)に統合します。
 > - 評価を [Power BI レポート](https://docs.microsoft.com/sql/dma/dma-powerbiassesreport?view=ssdt-18vs2017)に統合します。
 
 ## <a name="step-3-prepare-for-vm-assessment-by-using-azure-migrate"></a>手順 3:Azure Migrate を使用した VM 評価の準備をする
@@ -287,13 +287,7 @@ Contoso は、VM をデプロイする前に OVA ファイルが安全である�
     **例**
 
     ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 生成されたハッシュは、次の設定と一致する必要があります (バージョン 1.0.9.15)。
-
-    **アルゴリズム** | **ハッシュ値**
-    --- | ---
-    MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
-    SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
-    SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+3. 生成されたハッシュは、[こちら](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#continuous-discovery)に示されているハッシュ値と一致する必要があります。
 
 ### <a name="create-the-collector-appliance"></a>コレクター アプライアンスを作成する
 

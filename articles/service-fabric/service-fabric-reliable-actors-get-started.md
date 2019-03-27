@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 4ff896902c1a92c244c3bcd147c3daeeb9e49c77
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f92fe2432051b148bf0b35fccc3fa33db9b66a14
+ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054759"
+ms.lasthandoff: 01/28/2019
+ms.locfileid: "55093158"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Visual Studio 2015 以降を管理者として起動し、新しい **Service Fa
 
 * **インターフェイス プロジェクト (HelloWorld.Interfaces)**。 このプロジェクトには、アクターのインターフェイス定義が含まれています。 アクター インターフェイスは、任意の名前の任意のプロジェクトで定義できます。  このインターフェイスは、アクター コントラクトを定義します。コントラクトは、アクター実装と、アクターを呼び出すクライアントによって共有されます。  クライアント プロジェクトがこれに依存する可能性があるため、通常は、アクター実装とは別のアセンブリで定義するのが妥当です。
 
-* **アクター サービス プロジェクト (HelloWorld)**。 このプロジェクトは、アクターをホストする Service Fabric サービスを定義します。 これには、アクターの実装である *HellowWorld.cs* が含まれています。 アクター実装は、基本型 `Actor` から派生し、*MyActor.Interfaces* プロジェクトで定義されたインターフェイスを実装するクラスです。 またアクター クラスは、`ActorService` インスタンスおよび `ActorId` を受け取り、ベース `Actor` クラスに渡すコンストラクターを実装する必要があります。
+* **アクター サービス プロジェクト (HelloWorld)**。 このプロジェクトは、アクターをホストする Service Fabric サービスを定義します。 これには、アクターの実装である *HelloWorld.cs* が含まれています。 アクター実装は、基本型 `Actor` から派生し、*MyActor.Interfaces* プロジェクトで定義されたインターフェイスを実装するクラスです。 またアクター クラスは、`ActorService` インスタンスおよび `ActorId` を受け取り、ベース `Actor` クラスに渡すコンストラクターを実装する必要があります。
     
     このプロジェクトには *Program.cs* も含まれています。これは、`ActorRuntime.RegisterActorAsync<T>()` を使用して、アクター クラスを Service Fabric ランタイムに登録します。 `HelloWorld` クラスは既に登録されています。 プロジェクトに追加された追加アクター実装も、`Main()` メソッドに登録する必要があります。
 

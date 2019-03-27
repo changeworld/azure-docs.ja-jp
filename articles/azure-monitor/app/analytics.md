@@ -10,17 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/08/2018
+ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: 24a911978d6c9f9a33c81254a5e2f5951029ff3a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4c3ecdd01106cc8d305764206bc75535fa4dac3a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120888"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268602"
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights の Analytics
-Analytics は、[Application Insights](../../azure-monitor/app/app-insights-overview.md) の強力な検索およびクエリのツールです。 Analytics は Web ツールであるため、セットアップは不要です。 Application Insights をお使いのアプリの一つで構成済みの場合、アプリの [[概要]](../../azure-monitor/app/app-insights-dashboards.md) ブレードで Analytics を開いてアプリのデータを分析できます。
+Analytics は、[Application Insights](app-insights-overview.md) の強力な検索およびクエリのツールです。 Analytics は Web ツールであるため、セットアップは不要です。
+Application Insights をお使いのアプリの一つで構成済みの場合、アプリの [[概要]](app-insights-dashboards.md) ブレードで Analytics を開いてアプリのデータを分析できます。
 
 ![portal.azure.com で Application Insights リソースを開き、[Analytics] をクリックします。](./media/analytics/001.png)
 
@@ -28,6 +29,12 @@ Analytics は、[Application Insights](../../azure-monitor/app/app-insights-over
 <br>
 <br>
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
+
+## <a name="relation-to-azure-monitor-logs"></a>Azure Monitor ログとの関係
+Application Insights Analytics は、Azure Monitor ログなどの [Azure Data Explorer](/azure/data-explorer) に基づいていて、[Kusto クエリ言語](/azure/kusto/query)も使用します。 Azure Monitor ログと同じ[Log Analytics ポータル](../log-query/get-started-portal.md)を使用しますが、そのデータは個別のパーティションに格納されます。
+
+Application Insights Analytics から Log Analytics ワークスペース内のデータに直接アクセスすることはできず、Log Analytics からアプリケーション データに直接アクセスすることもできません。 両方のデータ セットをまとめてクエリするには、[Log Analytics でクエリ](../log-query/log-query-overview.md)を作成し、[app() 式](../log-query/app-expression.md)を使用してアプリケーション データにアクセスします。
+
 
 ## <a name="query-data-in-analytics"></a>Analytics でのデータ クエリ
 一般的なクエリではテーブル名を最初に記述し、その後に一連の "*演算子*" を `|` で区切って続けます。

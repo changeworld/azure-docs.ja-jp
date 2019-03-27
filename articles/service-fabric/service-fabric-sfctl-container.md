@@ -29,7 +29,7 @@ ms.locfileid: "53274906"
 |コマンド|説明|
 | --- | --- |
 | invoke-api | 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーでコンテナー API を呼び出します。 |
-| ログ | 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーのコンテナー ログを取得します。 |
+| logs | 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーのコンテナー ログを取得します。 |
 
 ## <a name="sfctl-container-invoke-api"></a>sfctl container invoke-api
 特定のコード パッケージの Service Fabric ノードにデプロイされているコンテナーでコンテナー API を呼び出します。

@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 41cbb657a4fc83b498c5cc9a6a16397a619aa075
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 93cd93b40c142d504c52f08f9005d082fb5a2a20
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034048"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55469483"
 ---
-# <a name="how-to-use-azure-cosmos-db-change-feed-with-azure-functions"></a>Azure Cosmos DB の変更フィードを Azure Functions と共に使用する方法
+# <a name="trigger-azure-functions-from-azure-cosmos-db"></a>Azure Cosmos DB から Azure Functions をトリガーする
 
 Azure Functions を使用している場合、変更フィードに接続する最も簡単な方法は、[Azure Cosmos DB トリガー](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)を Azure Functions のアプリケーションに追加することです。 Azure Functions のアプリケーション内で Cosmos DB トリガーを作成するときに、接続先の Cosmos コンテナーを選択します。これで、コンテナーに変更が加えられるたびに関数がトリガーされます。
 

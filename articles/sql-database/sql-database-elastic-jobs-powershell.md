@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 06/14/2018
-ms.openlocfilehash: de395dc4f862e57030fba1d77de78eabe44a3da8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.date: 01/25/2019
+ms.openlocfilehash: 6ec0742c205204ee74ac9f9474af0394f9d1ab31
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278459"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55472647"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
 
@@ -189,7 +189,7 @@ ms.locfileid: "53278459"
 </table>
 
 ## <a name="supported-elastic-database-jobs-group-types"></a>サポートされているエラスティック データベース ジョブ グループの種類
-このジョブは、Transact-SQL (T-SQL) スクリプトまたは DACPAC のアプリケーションをデータベースのグループに対して実行します。 データベース グループ全体に対して実行するジョブを送信すると、対象のジョブが子ジョブにまで "拡張" されます。各子ジョブでは、グループ内の Single Database に対して要求されたジョブ実行が実行されます。 
+このジョブは、Transact-SQL (T-SQL) スクリプトまたは DACPAC のアプリケーションをデータベースのグループに対して実行します。 データベース グループ全体に対して実行するジョブを送信すると、対象のジョブが子ジョブにまで "拡張" されます。各子ジョブでは、グループ内の個々のデータベースに対して要求されたジョブ実行が実行されます。 
 
 次の 2 種類のグループを作成できます。 
 
@@ -416,7 +416,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
 
 * 名前:実行ポリシーの識別子。
 * ジョブのタイムアウト:Elastic Database ジョブによってジョブが取り消されるまでの合計時間。
-* 初期再試行間隔:最初の再試行前に待機する間隔。
+* 初期再試行間隔:最初の再試行する前に待機する間隔。
 * 最大再試行間隔:使用する再試行間隔の上限。
 * 再試行間隔のバックオフ係数:次回の再試行間隔の計算に使用される係数。  (初期再試行間隔) * Math.pow((間隔のバックオフ係数), (再試行回数) - 2) という式が使用されます。 
 * 最大試行回数:1 つのジョブ内で実行する最大再試行回数。

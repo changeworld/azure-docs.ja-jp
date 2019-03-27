@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing.com で表示される画像分析情報の例を示します。
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-visual-search
+ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: 39468a4a143d184fcc964ae88f82ad7254e4f3b0
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: b120ad6c116b5722e5d2a982e93960232b0baf94
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53741744"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869349"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Bing 分析情報の使用例
 

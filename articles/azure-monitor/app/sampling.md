@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 02/07/2019
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 0b56451231f1fda4e5bd156d0aded6e84c9c0162
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 8e9cb570f69eb29887f4f904ba7b2b35548f3771
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117454"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965360"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -195,6 +195,63 @@ SDK ベースのアダプティブ サンプリングまたは固定レート �
 サンプリング率には、N を整数として 100/N に近い割合を選択します。  サンプリングでは現在、その他の値はサポートされていません。
 
 サーバーでも固定レート サンプリングを有効にしている場合は、クライアントとサーバーはサンプリングを同期するので、検索で関連のあるページ ビューと要求の間を移動できます。
+
+## <a name="aspnet-core-sampling"></a>ASP.NET Core サンプリング
+
+アダプティブ サンプリングは、すべての ASP.NET Core アプリケーションで既定で有効にされています。 サンプリング動作は無効にしたり、カスタマイズしたりできます。
+
+### <a name="turning-off-adaptive-sampling"></a>アダプティブ サンプリングを無効にする
+
+Application Insights サービスを追加する際に、```ConfigureServices``` メソッドで、```ApplicationInsightsServiceOptions``` を使用して、既定のサンプリング機能を無効にできます。
+
+``` c#
+public void ConfigureServices(IServiceCollection services)
+{
+// ...
+
+var aiOptions = new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions();
+aiOptions.EnableAdaptiveSampling = false;
+services.AddApplicationInsightsTelemetry(aiOptions);
+
+//...
+}
+```
+
+上記のコードによって、サンプリング機能が無効になります。 その他のカスタマイズ オプションを使用したサンプリングを追加するには、次の手順に従います。
+
+### <a name="configure-sampling-settings"></a>サンプリング設定を構成する
+
+サンプリング動作をカスタマイズするには、次に示すように、```TelemetryProcessorChainBuilder``` の拡張メソッドを使用します。
+
+> [!IMPORTANT]
+> このメソッドを使用して、サンプリングを構成する場合、AddApplicationInsightsTelemetry() で aiOptions.EnableAdaptiveSampling = false; 設定を使用してください。
+
+``` c#
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+var configuration = app.ApplicationServices.GetService<TelemetryConfiguration>();
+
+var builder = configuration .TelemetryProcessorChainBuilder;
+// version 2.5.0-beta2 and above should use the following line instead of above. (https://github.com/Microsoft/ApplicationInsights-aspnetcore/blob/develop/CHANGELOG.md#version-250-beta2)
+// var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+
+// Using adaptive sampling
+builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond:10);
+ 
+// OR Using fixed rate sampling   
+double fixedSamplingPercentage = 50;
+builder.UseSampling(fixedSamplingPercentage);
+
+builder.Build();
+
+// ...
+}
+
+```
+
+**上記のメソッドを使用して、サンプリングを構成する場合、AddApplicationInsightsTelemetry() で ```aiOptions.EnableAdaptiveSampling = false;```設定を使用してください。**
+
+これを使用しないと、テレメトリ プロセッサ チェーンに複数のサンプリング プロセッサが存在し、予期しない結果につながります。
 
 ## <a name="fixed-rate-sampling-for-aspnet-and-java-web-sites"></a>ASP.NET および Java Web サイトの固定レート サンプリング
 固定レート サンプリングは、Web サーバーおよび Web ブラウザーから送信されるトラフィックを削減します。 アダプティブ サンプリングとは異なり、管理者によって決定された固定レートでテレメトリを削減します。 また、クライアントとサーバーのサンプリングが同期されて、関連する項目が維持されます。たとえば、検索でページ ビューを見るとき、それに関連する要求を検索できます。

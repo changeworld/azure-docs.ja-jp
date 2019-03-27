@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: Python での TensorFlow モデルの実行 - Custom Vision Service'
+title: チュートリアル:Python での TensorFlow モデルの実行 - Custom Vision Service
 titlesuffix: Azure Cognitive Services
 description: Python での TensorFlow モデルの実行
 services: cognitive-services
 author: areddish
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: custom-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 05/17/2018
 ms.author: areddish
-ms.openlocfilehash: 26427406b045b96f2f3f612e4444b7dc2afcefc6
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 298279fd67b312b6a7ab3a9939444c344407127f
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247314"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806897"
 ---
-# <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル: Python での TensorFlow モデルの実行
+# <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル:Python での TensorFlow モデルの実行
 
 Custom Vision Service から [TensorFlow モデルをエクスポート](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model)したら、このクイックスタートが、このモデルをローカルで使用して画像を分類する方法を示します。
 
@@ -111,8 +111,10 @@ augmented_image = resize_to_256_square(max_square_image)
 ### <a name="crop-the-center-for-the-specific-input-size-for-the-model"></a>モデルの特定の入力サイズの中央をトリミングする
 
 ```Python
-# The compact models have a network size of 227x227, the model requires this size.
-network_input_size = 227
+# Get the input size of the model
+with tf.Session() as sess:
+    input_tensor_shape = sess.graph.get_tensor_by_name('Placeholder:0').shape.as_list()
+network_input_size = input_tensor_shape[1]
 
 # Crop the center for the specified network_input_Size
 augmented_image = crop_center(augmented_image, network_input_size, network_input_size)

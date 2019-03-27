@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 81f76b31f7af3643e2b654e8e26c70d0481d60b8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017108"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094577"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -94,7 +94,7 @@ ms.locfileid: "54017108"
 
 ### <a name="use-appsettings"></a>アプリケーション設定を参照する
 
-[関数アプリに対して定義されているアプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
+[関数アプリに対して定義されているアプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)を参照することもできます。その場合は、設定名をパーセント記号 (%) で囲みます。
 
 たとえば、*https://%ORDER_PROCESSING_HOST%/api/orders* のバックエンド URL で、"%ORDER_PROCESSING_HOST%" は ORDER_PROCESSING_HOST 設定の値に置き換えられます。
 
@@ -151,7 +151,7 @@ ms.locfileid: "54017108"
 
 ### <a name="disableProxies"></a> 個々のプロキシを無効する
 
-個々のプロキシを無効にするには、`proxies.json` ファイル内のプロキシに `"disabled": true` を追加します。 これにより、matchCondidtion を満たす要求はすべて 404 を返します。
+個々のプロキシを無効にするには、`proxies.json` ファイル内のプロキシに `"disabled": true` を追加します。 これにより、matchCondition を満たす要求はすべて 404 を返します。
 ```json
 {
     "$schema": "http://json.schemastore.org/proxies",
@@ -171,8 +171,8 @@ ms.locfileid: "54017108"
 
 プロキシの動作は、いくつかのアプリ設定によって制御できます。 これらについては、[関数のアプリ設定のリファレンス](./functions-app-settings.md)で説明されています
 
-* [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azurefunctionproxydisablelocalcall)
-* [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azurefunctionproxybackendurldecodeslashes)
+* [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
+* [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
 ### <a name="reservedChars"></a> 予約文字 (文字列形式)
 
@@ -249,7 +249,7 @@ ms.locfileid: "54017108"
 > この例では、応答の本文が直接設定されているため、`backendUri` プロパティは必要ありません。 この例では、Azure Functions プロキシを使って API のモッキングを行う方法を説明しています。
 
 [Azure Portal]: https://portal.azure.com
-[HTTP トリガー]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
+[HTTP トリガー]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
 [requestOverrides オブジェクトの定義]: #requestOverrides

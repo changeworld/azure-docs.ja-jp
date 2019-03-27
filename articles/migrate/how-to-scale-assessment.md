@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 809d892c6238441f5a0bd93382acd7a783a4f0e9
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 8a2ea64d32194ff06378e3227b260c4f10d53175
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260720"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116675"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
@@ -19,10 +19,10 @@ Azure Migrate は 1 プロジェクトあたりのマシン数は 1,500 台に�
 
 ## <a name="prerequisites"></a>前提条件
 
-- **VMware**:移行する予定の VM は、vCenter Server バージョン 5.5、6.0、または 6.5 で管理する必要があります。 また、コレクター VM を展開するために、バージョン 5.0 以降を稼働している ESXi ホストが 1 つ必要です。
+- **VMware**:移行する予定の VM は、vCenter Server バージョン 5.5、6.0、6.5、または 6.7 で管理する必要があります。 また、コレクター VM をデプロイするために、バージョン 5.5 以降を稼働している ESXi ホストが 1 つ必要です。
 - **vCenter アカウント**:vCenter Server にアクセスするには、読み取り専用アカウントが必要です。 Azure Migrate はこのアカウントを使ってオンプレミスの VM を検出します。
 - **アクセス許可**:vCenter Server では、OVA 形式でファイルをインポートして VM を作成するためのアクセス許可が必要です。
-- **統計情報の設定**:この要件は、現在非推奨になっている [1 回限りの検出モデル](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods)にのみ適用されます。 1 回限りの検出モデルの場合、デプロイを始める前に、vCenter Server の統計設定をレベル 3 に設定する必要があります。 日、週、月の収集間隔のそれぞれについて、統計情報レベルを 3 に設定する必要があります。 3 つの収集間隔のうち、いずれか 1 つでもレベルが 3 未満の場合、評価は機能しますが、ストレージとネットワークのパフォーマンス データが収集されません。 この場合の推奨サイズは、CPU とメモリのパフォーマンス データと、ディスクおよびネットワーク アダプターの構成データに基づきます。
+- **統計情報の設定**:この要件は、現在非推奨になっている [1 回限りの検出モデル](https://docs.microsoft.com/azure/migrate/concepts-collector)にのみ適用されます。 1 回限りの検出モデルの場合、デプロイを始める前に、vCenter Server の統計設定をレベル 3 に設定する必要があります。 日、週、月の収集間隔のそれぞれについて、統計情報レベルを 3 に設定する必要があります。 3 つの収集間隔のうち、いずれか 1 つでもレベルが 3 未満の場合、評価は機能しますが、ストレージとネットワークのパフォーマンス データが収集されません。 この場合の推奨サイズは、CPU とメモリのパフォーマンス データと、ディスクおよびネットワーク アダプターの構成データに基づきます。
 
 > [!NOTE]
 > 1 回限りの検出アプライアンスは推奨されなくなりました。この方法は、パフォーマンス データ ポイントの可用性と収集された平均パフォーマンス カウンターの vCenter Server の統計設定に依存しており、その結果、Azure への移行のために VM のサイズが小さくなったためです。
@@ -38,7 +38,7 @@ Azure Migrate は、評価対象の VM を自動的に検出するために、VM
 
 テナント環境にデプロイする場合、これを設定する 1 つの方法を以下に示します。
 
-1.  テナントあたり 1 つのユーザーを作成し、[RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) を使用して、特定のテナントに属するすべての VM に読み取り専用のアクセス許可を割り当てます。 次にこれらの資格情報を使用して検出を行います。 RBAC により、対応する vCenter ユーザーが、テナント固有の VM のみにアクセスできるようになります。
+1. テナントあたり 1 つのユーザーを作成し、[RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) を使用して、特定のテナントに属するすべての VM に読み取り専用のアクセス許可を割り当てます。 次にこれらの資格情報を使用して検出を行います。 RBAC により、対応する vCenter ユーザーが、テナント固有の VM のみにアクセスできるようになります。
 2. 次の例でユーザー 1 とユーザー 2 について記載されているように、異なるテナント ユーザーに対して RBAC を設定します。
 
     - **[ユーザー名]** と **[パスワード]** に、コレクターが VM を検出するために使用する読み取り専用の資格情報を指定します。

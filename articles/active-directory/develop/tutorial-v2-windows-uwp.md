@@ -3,24 +3,25 @@ title: Azure AD v2.0 UWP の概要 | Microsoft Docs
 description: ユニバーサル Windows プラットフォーム アプリケーション (UWP) で、Azure Active Directory v2.0 エンドポイントからのアクセス トークンを必要とする API を呼び出す方法
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: jmprieur
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2018
-ms.author: andret
+ms.date: 02/18/2019
+ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4ba4e844ed6bb01204b7a0adf5020aec255147dd
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6e130da9bf12d25cc5c77c825512717bdf2ba5a1
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986544"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408818"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
 
@@ -73,14 +74,11 @@ ms.locfileid: "49986544"
 2. 以下のコマンドをコピーして、**パッケージ マネージャー コンソール**のウィンドウに貼り付けます。
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
+    Install-Package Microsoft.Identity.Client
     ```
 
 > [!NOTE]
-> このコマンドを実行すると、[Microsoft Authentication Library](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) がインストールされます。 MSAL は、Azure Active Directory v2.0 で保護された API にアクセスするユーザー トークンを取得、キャッシュ、および更新します。
-
-> [!NOTE]
-> このチュートリアルでは、MSAL.NET の最新バージョンはまだ使用していませんが、更新に取り組んでいます。
+> このコマンドを実行すると、[Microsoft Authentication Library](https://aka.ms/msal-net) がインストールされます。 MSAL は、Azure Active Directory v2.0 で保護された API にアクセスするユーザー トークンを取得、キャッシュ、および更新します。
 
 ## <a name="initialize-msal"></a>MSAL の初期化
 この手順は、トークンの処理など、MSAL とのやり取りを処理するクラスを作成するために役立ちます。
@@ -158,7 +156,8 @@ ms.locfileid: "49986544"
     
             try
             {
-                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, App.PublicClientApp.Users.FirstOrDefault());
+                var accounts = await App.PublicClientApp.GetAccountsAsync();
+                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault());
             }
             catch (MsalUiRequiredException ex)
             {
@@ -202,15 +201,15 @@ ms.locfileid: "49986544"
 
 最終的に、`AcquireTokenSilentAsync` メソッドは失敗します。 この失敗は、ユーザーがサインアウトしたか、別のデバイスでパスワードを変更したことが原因と考えられます。 ユーザーの操作によって解決できる問題が MSAL によって検出された場合、MSAL は `MsalUiRequiredException` 例外を発行します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
-* すぐに `AcquireTokenAsync` を呼び出します。 この呼び出しにより、ユーザーにサインインを求めます。 通常、ユーザーが使用できるオフライン コンテンツがないオンライン アプリケーションでは、このパターンを使用します。 このガイドの設定で生成されるサンプルは、このパターンに従っています。 サンプルを初めて実行したときの動作で、それがわかります。 
-    * アプリケーションはユーザーによって使用されたことがないため、`PublicClientApp.Users.FirstOrDefault()` には null 値が含まれ、`MsalUiRequiredException` 例外がスローされます。
-    * その後、サンプルのコードは、`AcquireTokenAsync` を呼び出すことによって例外を処理します。 この呼び出しにより、ユーザーにサインインを求めます。
+* すぐに `AcquireTokenAsync` を呼び出します。 この呼び出しにより、ユーザーにサインインを求めます。 通常、ユーザーが使用できるオフライン コンテンツがないオンライン アプリケーションでは、このパターンを使用します。 このガイドの設定で生成されるサンプルは、このパターンに従っています。 サンプルを初めて実行したときの動作で、それがわかります。
+  * アプリケーションはユーザーによって使用されたことがないため、`accounts.FirstOrDefault()` には null 値が含まれ、`MsalUiRequiredException` 例外がスローされます。
+  * その後、サンプルのコードは、`AcquireTokenAsync` を呼び出すことによって例外を処理します。 この呼び出しにより、ユーザーにサインインを求めます。
 
 * または、代わりに、対話型サインインが必要であることをユーザーに視覚的に示します。 その場合、ユーザーは適切な時を選んでサインインすることができます。 または、アプリケーションが後で `AcquireTokenSilentAsync` を再試行します。 多くの場合、このパターンは、ユーザーが中断することなく他のアプリケーション機能を使用できる場合に使用されます。 たとえば、アプリケーションでオフラインのコンテンツを使用可能な場合です。 この場合、保護されたリソースにアクセスしたり、古くなった情報を更新したりするために、サインインするタイミングをユーザーが決定できます。 または、一時的に使用できなくなっていたネットワークが回復したときに、アプリケーションが `AcquireTokenSilentAsync` の再試行を決定することもできます。
 
 ## <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>取得したトークンを使用して Microsoft Graph API を呼び出す
 
-* 次の新しいメソッドを **MainPage.xaml.cs** に追加します。 このメソッドは、[Authorize] ヘッダーを使用した Graph API に対する `GET` 要求の実行に使用されます。
+* 次の新しいメソッドを **MainPage.xaml.cs** に追加します。 このメソッドは、`Authorization` ヘッダーを使用した Graph API に対する `GET` 要求の実行に使用されます。
 
     ```csharp
     /// <summary>
@@ -254,11 +253,12 @@ ms.locfileid: "49986544"
     /// </summary>
     private void SignOutButton_Click(object sender, RoutedEventArgs e)
     {
-        if (App.PublicClientApp.Users.Any())
+        var accounts = await App.PublicClientApp.GetAccountsAsync();
+        if (accounts.Any())
         {
             try
             {
-                App.PublicClientApp.Remove(App.PublicClientApp.Users.FirstOrDefault());
+                App.PublicClientApp.RemoveAsync(accounts.FirstOrDefault());
                 this.ResultText.Text = "User has signed-out";
                 this.CallGraphButton.Visibility = Visibility.Visible;
                 this.SignOutButton.Visibility = Visibility.Collapsed;
@@ -332,7 +332,7 @@ Windows 統合認証を、フェデレーション Azure Active Directory ドメ
     ```
 
 > [!IMPORTANT]
-> このサンプルには、既定では Windows 統合認証が構成されていません。 "*エンタープライズ認証*" または "*共有ユーザー証明書*" 機能を要求するアプリケーションでは、Windows ストアによるより高いレベルの検証が必要です。 また、すべての開発者がより高いレベルの検証を望むとは限りません。 この設定は、Windows 統合認証とフェデレーション Azure Active Directory ドメインが必要な場合にのみ有効にしてください。
+> このサンプルの既定では、[統合 Windows 認証](https://aka.ms/msal-net-iwa)は構成されていません。 "*エンタープライズ認証*" または "*共有ユーザー証明書*" 機能を要求するアプリケーションでは、Windows ストアによるより高いレベルの検証が必要です。 また、すべての開発者がより高いレベルの検証を望むとは限りません。 この設定は、Windows 統合認証とフェデレーション Azure Active Directory ドメインが必要な場合にのみ有効にしてください。
 
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -357,9 +357,9 @@ Windows 統合認証を、フェデレーション Azure Active Directory ドメ
 
 |プロパティ  |形式  |説明 |
 |---------|---------|---------|
-|**名前** |ユーザーのフルネーム|ユーザーの姓と名。|
+|**Name** |ユーザーのフルネーム|ユーザーの姓と名。|
 |**ユーザー名** |<span>user@domain.com</span> |ユーザーを識別するユーザー名。|
-|**Token Expires** |Datetime |トークンの有効期限が切れる日時。 MSAL は、必要に応じてトークンを更新することで、有効期限日を延長します。|
+|**Token Expires** |DateTime |トークンの有効期限が切れる日時。 MSAL は、必要に応じてトークンを更新することで、有効期限日を延長します。|
 |**Access Token** |String |*Authorization ヘッダー*を必要とする HTTP 要求に送信されるトークン文字列。|
 
 #### <a name="see-whats-in-the-access-token-optional"></a>アクセス トークンの内容の確認 (省略可能)
@@ -384,13 +384,13 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 **原因:** エンタープライズ機能および証明書機能が有効になっていません。
 
-**対処:** [フェデレーション ドメインでの統合認証](#enable-integrated-authentication-on-federated-domains-optional)に関するセクションの手順に従います。
+**解決策:**[フェデレーション ドメインでの統合認証](#enable-integrated-authentication-on-federated-domains-optional)に関するセクションの手順に従います。
 
 ### <a name="issue-2"></a>問題 2
 [フェデレーション ドメインの統合認証](#enable-integrated-authentication-on-federated-domains-optional)を有効にし、Windows 10 コンピューターで Windows Hello を使用して、多要素認証が構成されている環境でサインインしようとします。 証明書の一覧が表示されます。 しかし、PIN の使用を選択すると、PIN ウィンドウが表示されません。
 
 **原因:** この問題は、Windows 10 デスクトップで実行される UWP アプリケーションの Web 認証ブローカーに関する既知の制限です。 Windows 10 Mobile では正常に動作します。
 
-**回避策:** **[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、**[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
+**対処法:** **[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、**[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

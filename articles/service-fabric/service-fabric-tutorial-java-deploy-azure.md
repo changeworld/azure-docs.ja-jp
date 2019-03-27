@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 53ad780ff0b199764c354327439fa69c360e7cb5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: db0b1cd9d61e498430bff417573b63f99c0ae7e4
+ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996810"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55301732"
 ---
-# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
+# <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
 
 このチュートリアルはシリーズの第 3 部です。Azure のクラスターに Service Fabric アプリケーションをデプロイする方法について説明します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "46996810"
 
 このチュートリアルを開始する前に
 
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
+* Azure サブスクリプションを持っていない場合は[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成する
 * [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Mac](service-fabric-get-started-mac.md) または [Linux](service-fabric-get-started-linux.md) 向け Service Fabric SDK のインストール
 * [Python 3 のインストール](https://wiki.python.org/moin/BeginnersGuide/Download)
@@ -226,11 +226,11 @@ ms.locfileid: "46996810"
     ./install.sh
     ```
 
-5. Service Fabric Explorer にアクセスするには、任意のブラウザーを開いて「 https://testlinuxcluster.westus.cloudapp.azure.com:19080」と入力します。 証明書ストアから、このエンドポイントに接続する際に使用する証明書を選択します。 Linux マシンを使用している場合、Service Fabric Explorer を表示するには、*new-service-fabric-cluster-certificate.sh* スクリプトによって生成された証明書を Chrome にインポートする必要があります。 Mac を使用する場合、キーチェーンに PFX ファイルをインストールする必要があります。 目的のアプリケーションがクラスターにインストールされていることがわかります。
+5. Service Fabric Explorer にアクセスするには、任意のブラウザーを開いて「 https://testlinuxcluster.westus.cloudapp.azure.com:19080 」と入力します。 証明書ストアから、このエンドポイントに接続する際に使用する証明書を選択します。 Linux マシンを使用している場合、Service Fabric Explorer を表示するには、*new-service-fabric-cluster-certificate.sh* スクリプトによって生成された証明書を Chrome にインポートする必要があります。 Mac を使用する場合、キーチェーンに PFX ファイルをインストールする必要があります。 目的のアプリケーションがクラスターにインストールされていることがわかります。
 
     ![SFX Java Azure](./media/service-fabric-tutorial-java-deploy-azure/sfxjavaonazure.png)
 
-6. アプリケーションにアクセスするには、「 https://testlinuxcluster.westus.cloudapp.azure.com:8080」と入力します。
+6. アプリケーションにアクセスするには、「 https://testlinuxcluster.westus.cloudapp.azure.com:8080 」と入力します。
 
     ![Java Azure の投票アプリケーション](./media/service-fabric-tutorial-java-deploy-azure/votingappjavaazure.png)
 
@@ -242,12 +242,11 @@ ms.locfileid: "46996810"
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Azure でのセキュリティで保護された Linux クラスターの作成
 > * ELK を使った監視に必要なリソースの作成
-> * (省略可) パーティ クラスターを使用して Service Fabric を実際に試す方法
 
 次のチュートリアルに進みます。
 > [!div class="nextstepaction"]

@@ -7,13 +7,13 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
-ms.component: common
-ms.openlocfilehash: f7b73fa4d1f596e0221c2cec3c6c7417ceb767a4
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.subservice: common
+ms.openlocfilehash: 79440cf69f921e5933ed410e276cdf304e94fa4f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275692"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817276"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 
@@ -46,7 +46,7 @@ ms.locfileid: "53275692"
 
 1. 監視の構成が完了したら、**[保存]** を選択します。
 
-既定のメトリック セットは、ストレージ アカウント ブレードのグラフと、個別のサービス ブレード (BLOB、キュー、テーブル、およびファイル) に表示されます。 サービスのメトリックを有効にした場合、データがグラフに表示されるまでに最大で 1 時間かかる場合があります。 メトリック グラフで **[編集]** を選択すると、グラフに表示する[メトリックを構成](#how-to-customize-metrics-charts)できます。
+既定のメトリック セットは、ストレージ アカウント ブレードのグラフと、個別のサービス ブレード (BLOB、キュー、テーブル、およびファイル) に表示されます。 サービスのメトリックを有効にした場合、データがグラフに表示されるまでに最大で 1 時間かかる場合があります。 メトリック グラフで **[編集]** を選択すると、グラフに表示するメトリックを構成できます。
 
 メトリックの収集とログ記録を無効にするには、**[ステータス]** を **[オフ]** に設定します。
 
@@ -116,7 +116,7 @@ ms.locfileid: "53275692"
    ![Azure Portal のタイル ギャラリー](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
 1. グラフの追加が完了したら、ダッシュボードの上部にある **[カスタマイズ完了]** を選択します。
 
-グラフをダッシュボードに追加したら、「[メトリック グラフのカスタマイズ](#how-to-customize-metrics-charts)」の説明に従って、そのグラフをさらにカスタマイズすることができます。
+グラフをダッシュボードに追加したら、「メトリック グラフのカスタマイズ」の説明に従って、そのグラフをさらにカスタマイズすることができます。
 
 ## <a name="configure-logging"></a>ログの構成
 

@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: 事前構築済みのドメインのリファレンスです。事前構築済みのドメインは、Language Understanding Intelligent Service (LUIS) の意図とエンティティの事前構築済みのコレクションです。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.component: language-understanding
+ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 3cb85a48a881545e9b2a0df29c35218b999fdbf0
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: f03efe13cdc31381cd67317879b7bd936fc35e8f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140967"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868958"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUIS アプリの事前構築済みのドメインのリファレンス
 このリファレンスは、[事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)に関する情報を提供します。事前構築済みのドメインは、LUIS が提供している意図とエンティティの事前構築済みのコレクションです。
@@ -68,7 +68,7 @@ Calendar ドメインには、カレンダー エントリに関する意図と�
 ### <a name="entities"></a>エンティティ
 | エンティティ名 | 説明 | 例 |
 | ---------------- |-----------------------|----|
-| 場所 | カレンダー項目、会議、予定の場所。 たとえば、住所、都市、地域などです。| 209 ナッシュビル ジム <br/><br/>897 パンケーキ ハウス<br/><br/>ガレージ|
+| Location | カレンダー項目、会議、予定の場所。 たとえば、住所、都市、地域などです。| 209 ナッシュビル ジム <br/><br/>897 パンケーキ ハウス<br/><br/>ガレージ|
 | Subject | 会議または予定のタイトル。| 歯科の予約 <br/><br/>Julia とランチ<br/><br/>医師の予約|
 
 ## <a name="camera"></a>Camera 
@@ -634,7 +634,7 @@ Weather ドメインには、天気のレポートと予測を取得するため
 ### <a name="entities"></a>エンティティ
 | エンティティ名 | 説明 | 例 |
 | ---------------- |-----------------------|----|
-| 場所| 気象リクエストの絶対的な場所。|シアトル<br/>パリ<br/>パロ アルト|
+| Location| 気象リクエストの絶対的な場所。|シアトル<br/>パリ<br/>パロ アルト|
 
 ## <a name="web"></a>Web 
 Web ドメインには、Web サイトにナビゲートする意図が用意されています。

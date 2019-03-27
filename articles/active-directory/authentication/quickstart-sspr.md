@@ -3,19 +3,20 @@ title: クイック スタート Azure AD のセルフサービスによるパ�
 description: このクイック スタートでは、ユーザーが自分のパスワードをリセットできるように、Azure AD のセルフサービスによるパスワードのリセットをすばやく構成します
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: d04d27ee6136edec8d9af16f9133cf9a7cc0720c
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e6cd463a728d8362221aaf7789258d7815566b23
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311560"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176256"
 ---
 # <a name="quickstart-self-service-password-reset"></a>クイック スタート:セルフサービスのパスワード リセット
 

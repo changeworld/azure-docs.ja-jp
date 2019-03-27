@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 577147ad91c6a35a45fd40ca9e6424863ea196d6
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c2ffa623ad7a6c6da5b799d2c7d5f35c9f65e503
+ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340782"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54215407"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
 
@@ -96,9 +96,9 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
 | taskHub    | クエリ文字列    | [タスク ハブ](durable-functions-task-hubs.md)の名前。 指定しない場合は、現在の関数アプリのタスク ハブの名前が想定されます。 |
 | connection | クエリ文字列    | ストレージ アカウントの接続文字列の**名前**。 指定しない場合は、関数アプリの既定の接続文字列が想定されます。 |
 | systemKey  | クエリ文字列    | API の呼び出しに必要な承認キー。 |
-| showInput  | クエリ文字列    | 省略可能なパラメーター。 `false` に設定した場合、その実行入力が応答ペイロードに含まれなくなります。|
-| showHistory| クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、オーケストレーションの実行履歴が応答ペイロードに含まれます。|
-| showHistoryOutput| クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、アクティビティの出力がオーケストレーションの実行履歴に含まれます。|
+| showInput  | クエリ文字列    | 省略可能なパラメーター。単一インスタンスの要求のみ。 `false` に設定した場合、その実行入力が応答ペイロードに含まれなくなります。|
+| showHistory| クエリ文字列    | 省略可能なパラメーター。単一インスタンスの要求のみ。 `true` に設定した場合、オーケストレーションの実行履歴が応答ペイロードに含まれます。|
+| showHistoryOutput| クエリ文字列    | 省略可能なパラメーター。単一インスタンスの要求のみ。 `true` に設定した場合、アクティビティの出力がオーケストレーションの実行履歴に含まれます。|
 | createdTimeFrom  | クエリ文字列    | 省略可能なパラメーター。 指定した場合、特定の ISO8601 タイムスタンプの時刻またはそれより後に作成された、返されるインスタンスの一覧がフィルター処理されます。|
 | createdTimeTo    | クエリ文字列    | 省略可能なパラメーター。 指定した場合、特定の ISO8601 タイムスタンプの時刻またはそれより前に作成された、返されるインスタンスの一覧がフィルター処理されます。|
 | runtimeStatus    | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を参照するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関するトピックをご覧ください。 |
@@ -140,13 +140,13 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&conne
 
 | フィールド           | データ型 | 説明 |
 |-----------------|-----------|-------------|
-| runtimeStatus   | string    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
+| runtimeStatus   | 文字列    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
 | input           | JSON      | インスタンスを初期化するために使用される JSON データ。 このフィールドは、`showInput` クエリ文字列パラメーターが `false`に設定されている場合は、`null` です。|
 | customStatus    | JSON      | カスタム オーケストレーションの状態に使用された JSON データ。 セットされていない場合、このフィールドは`null`です。 |
 | output          | JSON      | インスタンスの JSON の出力。 インスタンスが完了状態でない場合、このフィールドは `null` です。 |
-| createdTime     | string    | インスタンスが作成された時刻。 ISO 8601 の拡張された表記を使用します。 |
-| lastUpdatedTime | string    | インスタンスが最後に保持されていた時刻。 ISO 8601 の拡張された表記を使用します。 |
-| historyEvents   | JSON      | オーケストレーションの実行履歴を含む JSON 配列。 このフィールドは、`showHistory` クエリ文字列パラメーターが `true`に設定されていない限り、`null` です。  |
+| createdTime     | 文字列    | インスタンスが作成された時刻。 ISO 8601 の拡張された表記を使用します。 |
+| lastUpdatedTime | 文字列    | インスタンスが最後に保持されていた時刻。 ISO 8601 の拡張された表記を使用します。 |
+| historyEvents   | JSON      | オーケストレーションの実行履歴を含む JSON 配列。 このフィールドは、`showHistory` クエリ文字列パラメーターが `true`に設定されていない限り、`null` です。 |
 
 オーケストレーションの実行履歴とアクティビティの出力を含む応答ペイロードの例を次に示します (読みやすい形式になっています)。
 
@@ -341,7 +341,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 
 | フィールド       | パラメーターのタイプ  | データ型 | 説明 |
 |-------------|-----------------|-----------|-------------|
-| eventName   | URL             | string    | ターゲット オーケストレーション インスタンスが待機しているイベントの名前。 |
+| eventName   | URL             | 文字列    | ターゲット オーケストレーション インスタンスが待機しているイベントの名前。 |
 | {content}   | 要求内容 | JSON      | JSON 形式のイベント ペイロード。 |
 
 #### <a name="response"></a>Response
@@ -387,7 +387,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate?reason={reas
 
 | フィールド       | パラメーターのタイプ  | データ型 | 説明 |
 |-------------|-----------------|-----------|-------------|
-| reason      | クエリ文字列    | string    | 省略可能。 オーケストレーション インスタンスの終了の理由。 |
+| reason      | クエリ文字列    | 文字列    | 省略可能。 オーケストレーション インスタンスの終了の理由。 |
 
 #### <a name="response"></a>Response
 
@@ -427,7 +427,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}
 
 | フィールド       | パラメーターのタイプ  | データ型 | 説明 |
 |-------------|-----------------|-----------|-------------|
-| reason      | クエリ文字列    | string    | 省略可能。 オーケストレーション インスタンスを rewind する理由。 |
+| reason      | クエリ文字列    | 文字列    | 省略可能。 オーケストレーション インスタンスを rewind する理由。 |
 
 ### <a name="response"></a>Response
 

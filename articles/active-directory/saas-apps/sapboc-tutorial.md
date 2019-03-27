@@ -4,7 +4,7 @@ description: Azure Active Directory と SAP Business Object Cloud の間でシ�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 6c5e44f0-4e52-463f-b879-834d80a55cdf
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 18adc7728ffd0b4faf2e63e7c5d3be0da7dd651c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c397cd3b535c7bf918eac2ac1e9ae1f967d7b95a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065122"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877505"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>チュートリアル:Azure Active Directory と SAP Business Object Cloud の統合
 
@@ -234,7 +235,7 @@ Azure AD ユーザーが SAP Business Object Cloud にサインインできる�
 
     c. **[LAST NAME]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    d. **[DISPLAY NAME]\(表示名\)** ボックスに、ユーザーのフル ネームを入力します (この例では **Britta Simon**)。
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[DISPLAY NAME]\(表示名\)** ボックスに、ユーザーのフル ネームを入力します (この例では **Britta Simon**)。
 
     e. **[E-MAIL]\(電子メール\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
 
@@ -254,7 +255,7 @@ Azure AD ユーザーが SAP Business Object Cloud にサインインできる�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

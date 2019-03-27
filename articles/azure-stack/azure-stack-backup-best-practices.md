@@ -12,15 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: cca5fe492032c74a9922780f197065e9c2b40ad3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: d2568a4dfc4fefe9628fc63dcc0526b0876fde00
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966136"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993879"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>インフラストラクチャ バックアップ サービスのベスト プラクティス
 
@@ -42,9 +43,18 @@ ms.locfileid: "52966136"
 
 ### <a name="encryption"></a>暗号化
 
+#### <a name="version-1901-and-newer"></a>バージョン 1901 以降
+
+暗号化証明書を使用して、外部ストレージにエクスポートされるバックアップ データを暗号化します。 証明書はキーの転送にしか使用されないため、自己署名証明書でかまいません。 証明書の作成方法の詳細については、New-SelfSignedCertificate を参照してください。  
+キーは (グローバルの Azure Key Vault 証明書などの) 安全な場所に保存する必要があります。 証明書の CER 形式はデータの暗号化に使用されます。 Azure Stack のクラウド復旧デプロイの間は、バックアップ データを暗号化解除するために PFX 形式を使用する必要があります。
+
+![証明書を安全な場所に保存しました。](media/azure-stack-backup/azure-stack-backup-encryption-store-cert.png)
+
+#### <a name="1811-and-older"></a>1811 およびそれ以前
+
 暗号化キーを使用して、外部ストレージにエクスポートされるバックアップ データを暗号化します。 キーは、[PowerShell で Azure Stack のバックアップを有効にする](azure-stack-backup-enable-backup-powershell.md)一環として生成されます。
 
-キーは、安全な場所 (パブリックの Azure Key Vault シークレット) に格納する必要があります。 このキーは、Azure Stack の再展開時に使用します。 
+キーは (グローバルの Azure Key Vault シークレットなどの) 安全な場所に保存する必要があります。 このキーは、Azure Stack の再展開時に使用します。 
 
 ![安全な場所にキーを格納する。](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
@@ -84,7 +94,7 @@ OEM は、各社のコンポーネントのバックアップ データは、リ
 
 システムでサポートされるアラートは、以下のとおりです。
 
-| アラート:                                                   | 説明                                                                                     | 修復                                                                                                                                |
+| アラート:                                                   | 説明                                                                                     | Remediation                                                                                                                                |
 |---------------------------------------------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ファイル共有の容量が不足しているため、バックアップに失敗しました | ファイル共有が容量不足のため、バックアップ コントローラーがバックアップ ファイルをその場所にエクスポートできません。 | ストレージ容量を追加して、バックアップをやり直します。 既存のバックアップを (最も古いものから) 削除して、空き容量を増やします。                    |
 | 接続の問題のため、バックアップに失敗しました。             | Azure Stack とファイル共有間のネットワークに問題があります。                          | ネットワークの問題に対処して、バックアップをやり直します。                                                                                            |
@@ -94,6 +104,6 @@ OEM は、各社のコンポーネントのバックアップ データは、リ
 
 ## <a name="next-steps"></a>次の手順
 
-[インフラストラクチャ バックアップ サービス](azure-stack-backup-reference.md)の参照資料を確認します。
+[インフラストラクチャ バックアップ サービス](azure-stack-backup-reference.md)の参照資料を確認します
 
-[インフラストラクチャ バックアップ サービス](azure-stack-backup-enable-backup-console.md)を有効にします。
+[インフラストラクチャ バックアップ サービス](azure-stack-backup-enable-backup-console.md)を有効にします

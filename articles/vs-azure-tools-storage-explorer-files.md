@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 536092c1ee50045e6df4e2933c7d6eb0ee7a8b42
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 194b13e889de4bc1c5938a6ce9cfded6fe2c88c8
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429789"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768261"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Azure File Storage でのストレージ エクスプローラーの使用
 
@@ -29,7 +29,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 この記事の手順を完了するには、次のことが必要になります。
 
-- [Storage Explorer をダウンロードしてインストールする](http://www.storageexplorer.com/)
+- [Storage Explorer をダウンロードしてインストールする](https://www.storageexplorer.com/)
 
 - [Azure ストレージ アカウントまたはサービスに接続する](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
@@ -47,7 +47,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
     ![ファイル共有の作成](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-1. **[ファイル共有]** フォルダーの下に、テキスト ボックスが表示されます。 ファイル共有の名前を入力します。 ファイル共有の名前付けに関する規則と制限の一覧については、[共有の名前付け規則](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs#create-a-container)に関するセクションをご覧ください。
+1. **[ファイル共有]** フォルダーの下に、テキスト ボックスが表示されます。 ファイル共有の名前を入力します。 ファイル共有の名前付けに関する規則と制限の一覧については、[共有の名前付け規則](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs)に関するセクションをご覧ください。
 
     ![共有の名前付け](media/vs-azure-tools-storage-explorer-files/image2.png)
 
@@ -219,7 +219,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
         c. 必要に応じて、選択したフォルダーの内容のアップロード先となるターゲット フォルダーを指定します。 ターゲット フォルダーが存在しない場合は、作成されます。
 
-        d. **[アップロード]** を選択します。
+        d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[アップロード]** を選択します。
 
     - **ローカル コンピューターにファイルをダウンロードする**
         
@@ -229,7 +229,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
         
         c. **[Specify where to save the downloaded file (ダウンロードしたファイルを保存する場所の指定)]** ダイアログで、ファイルのダウンロード先の場所と、その場所に付ける名前を指定します。
 
-        d. **[保存]** を選択します。
+        d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[保存]** を選択します。
 
     - **ローカル コンピューターでファイルを開く**
         
@@ -247,7 +247,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
         c. 左側のウィンドウで別のファイル共有に移動し、それをダブルクリックして、メイン ウィンドウに表示します。
 
-        d. メイン ウィンドウのツール バーで **[貼り付け]** を選択して、ファイルのコピーを作成します。
+        d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 メイン ウィンドウのツール バーで **[貼り付け]** を選択して、ファイルのコピーを作成します。
 
     - **ファイルを削除する**
 
@@ -259,6 +259,6 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
 ## <a name="next-steps"></a>次の手順
 
-- [最新の Storage Explorer のリリース ノートとビデオ](http://www.storageexplorer.com/)を確認します。
+- [最新の Storage Explorer のリリース ノートとビデオ](https://www.storageexplorer.com/)を確認します。
 
 - [Azure BLOB、テーブル、キュー、ファイルを使ってアプリケーションを作成する](https://azure.microsoft.com/documentation/services/storage/)方法について学習します。

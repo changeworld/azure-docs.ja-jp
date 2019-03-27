@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad04b229e4c6ace3f87ba6e800c0a7c82eb76d92
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: fc63eb792e58d960ae67138b5e58e6b705945030
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51633956"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446394"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA on Azure (L インスタンス) のインストールと構成の方法
 
@@ -70,7 +70,7 @@ HANA L インスタンス ユニットは、この SMT インスタンスに接�
 
 SLES12 SP1 および RHEL 7.2 以降では、これらのパラメーターを /etc/sysctl.d ディレクトリにある構成ファイルで設定する必要があります。 たとえば、91-NetApp-HANA.conf という名前の構成ファイルを作成する必要があります。 それより前にリリースされた SLES と RHEL では、これらのパラメーターを /etc/sysctl.conf で設定する必要があります。
 
-SLES12 以降のすべての RHEL リリースについては、以下のことに留意してください。 
+RHEL 6.3 以降のすべての RHEL リリースについては、以下のことに留意してください。 
 - /etc/modprobe.d/sunrpc-local.conf で、sunrpc.tcp_slot_table_entries = 128 パラメーターを設定する必要があります。 このファイルが存在しない場合は、最初に次のエントリを追加し、ファイルを作成する必要があります。 
     - options sunrpc tcp_max_slot_table_entries=128
 
@@ -85,9 +85,9 @@ SLES12 以降のすべての RHEL リリースについては、以下のこと�
 > [!IMPORTANT] 
 > Type II ユニットの場合、現在は SLES 12 SP2 OS バージョンのみがサポートされています。 
 
-「[SAP support note #1999997 - FAQ: SAP HANA memory (SAP サポート ノート #1999997 - FAQ: SAP HANA のメモリ)](https://launchpad.support.sap.com/#/notes/1999997/E)」に従って、提供される OS イメージのスワップ領域は 2 GB に設定されています。 異なる設定が必要な場合は、お客様ご自身で設定する必要があります。
+提供される OS イメージのスワップ領域は、「[SAP support note #1999997 - FAQ: SAP HANA memory (SAP サポート ノート #1999997 - FAQ: SAP HANA のメモリ)](https://launchpad.support.sap.com/#/notes/1999997/E)」に従って、2 GB に設定されています。 異なる設定が必要な場合は、お客様ご自身で設定する必要があります。
 
-[SAP アプリケーション用の SUSE Linux Enterprise Server 12 SP1](https://www.suse.com/products/sles-for-sap/hana) は、SAP HANA on Azure (L インスタンス) 用にインストールされる Linux ディストリビューションです。 このディストリビューションでは、SAP 特有の機能を "そのままで使う" ことができます (SAP on SLES を効果的に実行するための事前設定されたパラメーターを含む)。
+[SAP アプリケーション用の SUSE Linux Enterprise Server 12 SP1](https://www.suse.com/products/sles-for-sap/download/) は、SAP HANA on Azure (L インスタンス) 用にインストールされる Linux ディストリビューションです。 このディストリビューションでは、SAP 特有の機能を "そのままで使う" ことができます (SAP on SLES を効果的に実行するための事前設定されたパラメーターを含む)。
 
 SUSE Web サイトの[リソース ライブラリにあるホワイト ペーパー](https://www.suse.com/products/sles-for-sap/resource-library#white-papers)や、SAP Community Network (SCN) の [SAP on SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) に関するページでは、SAP HANA on SLES のデプロイに関連するいくつかの便利なリソース (高可用性の設定や、SAP の運用に特有のセキュリティ強化など) を参照できます。
 
@@ -102,7 +102,7 @@ SAP HANA on SLES 12 の実装に適用できる SAP サポート ノートは次
 - [SAP Support Note #1944799 – SAP HANA Guidelines for SLES Operating System Installation (SAP サポート ノート #1944799 – SLES オペレーティング システムのインストールに関する SAP HANA ガイドライン)](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 - [SAP Support Note #2205917 – SAP HANA DB Recommended OS Settings for SLES 12 for SAP Applications (SAP サポート ノート #2205917 – SAP HANA DB: 推奨される SLES 12 for SAP Applications 向け OS 設定)](https://launchpad.support.sap.com/#/notes/2205917/E)
 - [SAP Support Note #1984787 – SUSE Linux Enterprise Server 12:  Installation Notes (SAP サポート ノート #1984787 – SUSE Linux Enterprise Server 12: インストールに関する注意事項)](https://launchpad.support.sap.com/#/notes/1984787)
-- [SAP Support Note #171356 – SAP Software on Linux:  General Information (SAP サポート ノート #171356 – SAP Software on Linux: 一般情報)](https://launchpad.support.sap.com/#/notes/1984787)
+- [SAP support note #171356 – SAP software on Linux:General Information (SAP サポート ノート #171356 – SAP Software on Linux: 一般情報)](https://launchpad.support.sap.com/#/notes/1984787)
 - [SAP Support Note #1391070 – Linux UUID Solutions (SAP サポート ノート #1391070 – Linux UUID ソリューション)](https://launchpad.support.sap.com/#/notes/1391070)
 
 [Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) は、HANA L インスタンスで SAP HANA を実行するためのもう 1 つのプランです。 RHEL 6.7 および 7.2 のリリースが利用できます。 RHEL 7.2 以降のリリースのみがサポートされているネイティブの Azure VM とは対照的に、HANA L インスタンスは RHEL 6.7 もサポートしていることに注意してください。 ただし、RHEL 7.x リリースを使用することをお勧めします。
@@ -113,13 +113,13 @@ SAP HANA on SLES 12 の実装に適用できる SAP サポート ノートは次
 SAP HANA on Red Hat の実装に適用できる SAP サポート ノートは次のとおりです。
 
 - [SAP Support Note #2009879 – SAP HANA Guidelines for Red Hat Enterprise Linux (RHEL) Operating System (SAP サポート ノート #2009879 – Red Hat Enterprise Linux (RHEL) オペレーティング システムに関する SAP HANA ガイドライン)](https://launchpad.support.sap.com/#/notes/2009879/E)
-- [SAP Support Note #2292690 - SAP HANA DB: Recommended OS settings for RHEL 7 (SAP サポート ノート #2292690 - SAP HANA DB: RHEL 7 に推奨される OS 設定)](https://launchpad.support.sap.com/#/notes/2292690)
-- [SAP Support Note #2247020 - SAP HANA DB: Recommended OS settings for RHEL 6.7 (SAP サポート ノート #2247020 - SAP HANA DB: RHEL 6.7 に推奨される OS 設定)](https://launchpad.support.sap.com/#/notes/2247020)
+- [SAP support note #2292690 - SAP HANA DB:Recommended OS settings for RHEL 7 (SAP HANA DB: RHEL 7 に推奨される OS 設定)](https://launchpad.support.sap.com/#/notes/2292690)
+- [SAP Support Note #2247020 - SAP HANA DB:Recommended OS settings for RHEL 6.7 (SAP サポート ノート #2247020 – SAP HANA DB: RHEL 6.7 に推奨される OS 設定)](https://launchpad.support.sap.com/#/notes/2247020)
 - [SAP Support Note #1391070 – Linux UUID Solutions (SAP サポート ノート #1391070 – Linux UUID ソリューション)](https://launchpad.support.sap.com/#/notes/1391070)
-- [SAP Support Note #2228351 - Linux: SAP HANA Database SPS 11 revision 110 (or higher) on RHEL 6 or SLES 11 (SAP サポート ノート #2228351 - Linux: RHEL 6 または SLES 11 の SAP HANA データベース SPS 11 リビジョン 110 以上)](https://launchpad.support.sap.com/#/notes/2228351)
-- [SAP Support Note #2397039 - FAQ: SAP on RHEL (SAP サポート ノート #2397039 - FAQ: SAP on RHEL)](https://launchpad.support.sap.com/#/notes/2397039)
-- [SAP Support Note #1496410 - Red Hat Enterprise Linux 6.x: Installation and Upgrade (SAP サポート ノート #1496410 - Red Hat Enterprise Linux 6.x: インストールおよびアップグレード)](https://launchpad.support.sap.com/#/notes/1496410)
-- [SAP Support Note #2002167 - Red Hat Enterprise Linux 7.x: Installation and Upgrade (SAP サポート ノート #2002167 - Red Hat Enterprise Linux 7.x: インストールおよびアップグレード)](https://launchpad.support.sap.com/#/notes/2002167)
+- [SAP support note #2228351 - Linux:SAP HANA Database SPS 11 revision 110 (or higher) on RHEL 6 or SLES 11 (SAP サポート ノート #2228351 - Linux: RHEL 6 または SLES 11 の SAP HANA データベース SPS 11 リビジョン 110 以上)](https://launchpad.support.sap.com/#/notes/2228351)
+- [SAP support note #2397039 - FAQ: SAP on RHEL (SAP サポート ノート #2397039 - FAQ: SAP on RHEL)](https://launchpad.support.sap.com/#/notes/2397039)
+- [SAP support note #1496410 - Red Hat Enterprise Linux 6.x: Installation and Upgrade (SAP サポート ノート #1496410 - Red Hat Enterprise Linux 6.x: インストールとアップグレード)](https://launchpad.support.sap.com/#/notes/1496410)
+- [SAP support note #2002167 - Red Hat Enterprise Linux 7.x: Installation and Upgrade (SAP サポート ノート #2002167 - Red Hat Enterprise Linux 7.x: インストールとアップグレード)](https://launchpad.support.sap.com/#/notes/2002167)
 
 ### <a name="time-synchronization"></a>時刻同期
 
@@ -201,7 +201,7 @@ SAP HANA 1.0 バージョンから SPS12 までは、これらのパラメータ
 
 SAP HANA データベースのインストール後に、hdbparam フレームワークを使ってパラメーターを構成することもできます。 
 
-SAP HANA 2.0 では、hdbparam フレームワークが非推奨となりました。 この結果、これらのパラメーターは SQL コマンドを使用して設定する必要があります。 詳細については、「[SAP Note #2399079: Elimination of hdbparam in HANA 2 (SAP ノート #2399079: HANA 2 で hdbparam を廃止)](https://launchpad.support.sap.com/#/notes/2399079)」をご覧ください。
+SAP HANA 2.0 では、hdbparam フレームワークが非推奨となりました。 この結果、これらのパラメーターは SQL コマンドを使用して設定する必要があります。 詳しくは、「[SAP Note #2399079: Elimination of hdbparam in HANA 2 (SAP ノート #2399079: HANA 2 で hdbparam を廃止)](https://launchpad.support.sap.com/#/notes/2399079)」をご覧ください。
 
 アーキテクチャのストレージ レイアウトの詳細については、[HLI でサポートされるシナリオ](hana-supported-scenario.md)に関する記事を参照してください。
 

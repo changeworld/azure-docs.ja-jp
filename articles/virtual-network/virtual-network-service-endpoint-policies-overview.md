@@ -6,17 +6,17 @@ documentationcenter: na
 author: sumeetmittal
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 7a3a94e9759dfb3c525ffcf1e840d5bec18f4808
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 619b9b68a5c4e897642e1f84c25c2822d8291400
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051313"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104490"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>仮想ネットワークのサービス エンドポイント ポリシー (プレビュー)
 
@@ -154,15 +154,15 @@ __Azure Storage__:WestCentralUS、WestUS2。
 ### <a name="troubleshooting-scenarios"></a>トラブルシューティングのシナリオ
 - エンドポイント ポリシーにリストされていないストレージ アカウントに対するアクセスが許可される
   - ネットワーク セキュリティ グループで、他のリージョン内のインターネットまたは Azure Storage アカウントへのアクセスが許可されている可能性があります。
-  - ネットワーク セキュリティ グループは、すべての送信インターネット トラフィックを拒否して、特定の Azure Storage リージョンへのトラフィックのみを許可するように構成する必要があります。 詳細については、[ネットワーク セキュリティ グループ](#network-security-groups)に関する記述を参照してください。
+  - ネットワーク セキュリティ グループは、すべての送信インターネット トラフィックを拒否して、特定の Azure Storage リージョンへのトラフィックのみを許可するように構成する必要があります。 詳しくは、「ネットワーク セキュリティ グループ」をご覧ください。
 - エンドポイント ポリシーにリストされているアカウントに対するアクセスが拒否される
   - ネットワーク セキュリティ グループまたはファイアウォールのフィルター処理でアクセスがブロックされている可能性があります
   - ポリシーの削除または再適用によって接続が失われる場合:
-   - エンドポイント経由の仮想ネットワークからのアクセスを許可するように Azure サービスが構成されているかどうか、またはリソースの既定のポリシーが *[すべて許可]* に設定されていることを確認します。
+    - エンドポイント経由の仮想ネットワークからのアクセスを許可するように Azure サービスが構成されているかどうか、またはリソースの既定のポリシーが *[すべて許可]* に設定されていることを確認します。
       > [!NOTE]      
       > エンドポイント ポリシーを使用してアクセスする場合は、仮想ネットワークにサービス リソースを固定する必要はありません。 しかし、セキュリティのベスト プラクティスとして、サービス エンドポイント経由、およびオンプレミス、IP ファイアウォール経由の、Azure Virtual Network などの信頼されたネットワークにサービス リソースを固定することをお勧めします。
   
-   - サービス診断でエンドポイント経由のトラフィックが表示されることを確認します。
+    - サービス診断でエンドポイント経由のトラフィックが表示されることを確認します。
     - ネットワーク セキュリティ グループのフロー ログにアクセスが表示されているかどうかと、ストレージ ログにサービス エンドポイント経由のアクセスが期待どおりに表示されることを確認します。
     - Azure サポートに問い合わせます。
 - サービス エンドポイント ポリシーにリストされていないアカウントに対するアクセスが拒否される

@@ -5,22 +5,23 @@ services: active-directory
 keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
 documentationcenter: ''
 author: billmath
-manager: mtillman
+manager: daveba
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/24/2018
-ms.component: hybrid
+ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c0533f0609539645c462c9e6f5b514a82f1162a1
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 94b027900a3be4a43d6524fa595a5b4dc2909fa7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187571"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186218"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -62,12 +63,12 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 | OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|はい\*|いいえ |[はい]|[はい]\*\*\*|該当なし
-|Windows 8.1|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
-|Windows 8|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
-|Windows 7|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
-|Windows Server 2012 R2 以降|はい\*\*|該当なし|[はい]|[はい]\*\*\*|該当なし
-|Mac OS X|該当なし|該当なし|[はい]\*\*\*|[はい]\*\*\*|[はい]\*\*\*
+|Windows 10|はい\*|いいえ |はい|はい\*\*\*|該当なし
+|Windows 8.1|はい\*|該当なし|はい|はい\*\*\*|該当なし
+|Windows 8|はい\*|該当なし|はい|はい\*\*\*|該当なし
+|Windows 7|はい\*|該当なし|はい|はい\*\*\*|該当なし
+|Windows Server 2012 R2 以降|はい\*\*|該当なし|はい|はい\*\*\*|該当なし
+|Mac OS X|該当なし|該当なし|はい\*\*\*|はい\*\*\*|はい\*\*\*
 
 
 \*Internet Explorer バージョン 10 以降が必要

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73fffda6ec0ae0a65af9b5aa8505e3b9551bd3b4
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 84f74392b93212558851f89dab924ae3db5620ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558177"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995126"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用:リアルタイムでの不正検出
 
@@ -28,7 +28,7 @@ ms.locfileid: "53558177"
 
 このチュートリアルでは、電話データに基づくリアルタイムでの不正検出の例を使います。 ここで説明する技法は、クレジット カード詐欺やなりすましなど、他の種類の不正行為検出にも適しています。 
 
-## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>シナリオ:通信および SIM におけるリアルタイムでの不正行為の検出
+## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>シナリオ: 通信および SIM におけるリアルタイムでの不正行為の検出
 
 ある通信会社は、膨大な量の着信データを扱っています。 この会社は、不正な呼び出しをリアルタイムに検出し、顧客に通知したり、特定の番号に対してサービスを停止したりすることを考えています。 SIM 不正行為の種類の 1 つとして、地理的に異なる場所からほぼ同時に同じ ID から行われる複数の呼び出しがあります。 この種の不正を検出するには、着信レコードを調べて特定のパターンを見つける必要があります。この場合は、ほぼ同時に異なる複数の国で行われた発信です。 このカテゴリに分類される通話レコードは、後で分析できるようにストレージに書き込まれます。
 
@@ -68,7 +68,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
 
 5. 新しい名前空間をクリックし、名前空間ウィンドウで **[イベント ハブ]** をクリックします。
 
-   ![新しいイベント ハブを作成するための [イベント ハブの追加] ボタン ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
+   ![新しいイベント ハブを作成するための [イベント ハブの追加] ボタン](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
 6. 新しいイベント ハブに `asa-eh-frauddetection-demo` という名前を付けます。 別の名前を使用してもかまいません。 その場合、名前を書き留めておきます。後でこの名前が必要になります。 イベント ハブの他のオプションをここで設定する必要はありません。
 
@@ -114,20 +114,20 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 
 ### <a name="configure-the-telcogenerator-app"></a>TelcoGenerator アプリを構成する
 
-1.  接続文字列をエディターにコピーし、`EntityPath` の値を書き留めた後、`EntityPath` のペアを削除します (忘れず、前にあるセミコロンも削除します)。 
+1. 接続文字列をエディターにコピーし、`EntityPath` の値を書き留めた後、`EntityPath` のペアを削除します (忘れず、前にあるセミコロンも削除します)。 
 
-2.  TelcoGenerator.zip ファイルを解凍したフォルダーにある telcodatagen.exe.config ファイルをエディターで開きます  (複数の .config ファイルがあるので、正しいファイルを開くように注意してください)。
+2. TelcoGenerator.zip ファイルを解凍したフォルダーにある telcodatagen.exe.config ファイルをエディターで開きます  (複数の .config ファイルがあるので、正しいファイルを開くように注意してください)。
 
-3.  `<appSettings>` 要素で次のように設定します。
+3. `<appSettings>` 要素で次のように設定します。
 
-    * `EventHubName` キーの値をイベント ハブ名 (つまり、エンティティ パスの値) に設定します。
-    * `Microsoft.ServiceBus.ConnectionString` キーの値を接続文字列に設定します。 
+   * `EventHubName` キーの値をイベント ハブ名 (つまり、エンティティ パスの値) に設定します。
+   * `Microsoft.ServiceBus.ConnectionString` キーの値を接続文字列に設定します。 
 
-    `<appSettings>` セクションは、次の例のようになります  (わかりやすくするため、行を折り返し、承認トークンから一部の文字を削除してあります)。
+   `<appSettings>` セクションは、次の例のようになります  (わかりやすくするため、行を折り返し、承認トークンから一部の文字を削除してあります)。
 
    ![TelcoGenerator 構成ファイルに示されるイベント ハブ名と接続文字列](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
-4.  ファイルを保存します。 
+4. ファイルを保存します。 
 
 ### <a name="start-the-app"></a>アプリを起動する
 1.  コマンド ウィンドウを開き、TelcoGenerator アプリを解凍したフォルダーに移動します。
@@ -191,6 +191,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
    |Event Hub 名前空間  |  asa-eh-ns-demo |  イベント ハブの名前空間の名前を入力します。   |
    |イベント ハブ名  | asa-eh-frauddetection-demo | イベント ハブの名前を選択します。   |
    |イベント ハブ ポリシー名  | asa-policy-manage-demo | 以前に作成したアクセス ポリシーを選択します。   |
+
     </br>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
@@ -359,6 +360,7 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
    |サブスクリプション   |  \<該当するサブスクリプション\> |  作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。 |
    |ストレージ アカウント  |  asaehstorage |  作成したストレージ アカウントの名前を入力します。 |
    |コンテナー  | asa-fraudulentcalls-demo | [新規作成] を選択し、コンテナー名を入力します。 |
+
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     

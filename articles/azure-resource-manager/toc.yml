@@ -19,24 +19,29 @@ items:
   - name: テンプレート リファレンスの利用
     href: resource-manager-tutorial-create-encrypted-storage-accounts.md
   - name: 複数のインスタンスの作成
+    displayName: iteration,copy
     href: resource-manager-tutorial-create-multiple-instances.md
   - name: リソースの移動
     href: resource-manager-tutorial-move-resources.md
   - name: リソースのデプロイ順序の設定
+    displayName: dependent resources, dependency
     href: resource-manager-tutorial-create-templates-with-dependent-resources.md
   - name: 使用条件
     href: resource-manager-tutorial-use-conditions.md
   - name: Key Vault の統合
+    displayName: secrets
     href: resource-manager-tutorial-use-key-vault.md
   - name: リンク済みテンプレートの作成
     href: resource-manager-tutorial-create-linked-templates.md
   - name: VM 拡張機能のデプロイ
+    displayName: virtual machine extensions
     href: resource-manager-tutorial-deploy-vm-extensions.md
   - name: SQL 拡張機能のデプロイ
     href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
   - name: アーティファクトのセキュリティ保護
     href: resource-manager-tutorial-secure-artifacts.md
   - name: 安全なデプロイ プラクティスの使用
+    displayName: azure deployment manager
     href: deployment-manager-tutorial.md
   - name: テンプレートのデプロイに関するトラブルシューティング
     href: resource-manager-tutorial-troubleshoot.md
@@ -48,33 +53,15 @@ items:
     href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
 - name: 概念
   items:
-  - name: テンプレート
-    items:
-    - name: テンプレート ファイルの構造
-      href: resource-group-authoring-templates.md
-    - name: parameters
-      href: resource-manager-templates-parameters.md
-    - name: variables
-      href: resource-manager-templates-variables.md
-    - name: Functions
-      href: resource-group-authoring-templates.md#functions
-    - name: リソース
-      href: resource-manager-templates-resources.md
-    - name: 出力
-      href: resource-manager-templates-outputs.md
-  - name: ガイダンス
-    items:
-    - name: テンプレートのベスト プラクティス
-      href: template-best-practices.md
-    - name: サブスクリプションのガバナンス
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold
-      maintainContext: true
-    - name: クラウドの一貫性を実現するテンプレート
-      href: templates-cloud-consistency.md
+  - name: テンプレート ファイルの構造
+    displayName: parameters,variables,resources,outputs
+    href: resource-group-authoring-templates.md
+  - name: テンプレートのベスト プラクティス
+    href: template-best-practices.md
+  - name: クラウドの一貫性を実現するテンプレート
+    href: templates-cloud-consistency.md
   - name: リソース プロバイダーと種類
     href: resource-manager-supported-services.md
-  - name: 管理グループ
-    href: management-groups-overview.md
   - name: Deployment Manager
     href: deployment-manager-overview.md
   - name: デプロイ モード
@@ -94,9 +81,11 @@ items:
     - name: リソースの依存関係を定義する
       href: resource-group-define-dependencies.md
     - name: テンプレートをモジュール化する
+      displayName: linked templates, nested templates
       href: resource-group-linked-templates.md
     - name: シークレットを管理する
       href: resource-manager-keyvault-parameter.md
+      displayname: key vault
     - name: 複数のインスタンスの作成
       href: resource-group-create-multiple.md
     - name: テンプレートの拡張機能を使用する
@@ -105,47 +94,53 @@ items:
       href: /azure/architecture/building-blocks/extending-templates/update-resource
   - name: テンプレートのデプロイ
     items:
-    - name: Azure portal を使用したデプロイ
+    - name: デプロイ - ポータル
       href: resource-group-template-deploy-portal.md
-    - name: Azure CLI を使用したデプロイ
+    - name: デプロイ - CLI
       href: resource-group-template-deploy-cli.md
-    - name: Azure PowerShell を使用したデプロイ
+    - name: デプロイ - PowerShell
       href: resource-group-template-deploy.md
-    - name: REST API を使用したデプロイ
+    - name: デプロイ - REST API
       href: resource-group-template-deploy-rest.md
-    - name: テンプレートのエクスポート
-      items:
-      - name: ポータルの使用
-        href: resource-manager-export-template.md
-      - name: Azure CLI の使用
-        href: resource-manager-export-template-cli.md
-      - name: Azure PowerShell の使用
-        href: resource-manager-export-template-powershell.md
     - name: SAS トークンを使用してテンプレートをセキュリティ保護する
       items:
       - name: Azure CLI の使用
         href: resource-manager-cli-sas-token.md
-      - name: PowerShell の使用
+      - name: Azure PowerShell の使用
         href: resource-manager-powershell-sas-token.md
     - name: 複数のリソース グループまたはサブスクリプションへのデプロイ
       href: resource-manager-cross-resource-group-deployment.md
     - name: Azure DevOps Services を使用した継続的インテグレーション
       href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
       maintainContext: true
-  - name: リソースの管理
+  - name: 管理
     items:
-    - name: Azure portal を使用した管理
-      href: resource-group-portal.md
-    - name: Azure PowerShell を使用した管理
-      href: powershell-azure-resource-manager.md
-    - name: Azure CLI を使用した管理
-      href: cli-azure-resource-manager.md
+    - name: リソース グループの管理
+      items:
+      - name: Azure ポータルの使用
+        displayName: create,list,open,delete,deploy,move,lock,tag,export
+        href: manage-resource-groups-portal.md
+      - name: Azure CLI の使用
+        displayName: create,list,open,delete,deploy,move,lock,tag,export
+        href: manage-resource-groups-cli.md
+      - name: Azure PowerShell の使用
+        displayName: create,list,open,delete,deploy,move,lock,tag,export
+        href: manage-resource-groups-powershell.md
+    - name: リソースの管理
+      items:
+      - name: Azure ポータルの使用
+        displayName: open,delete,deploy,move,lock,tag,monitor
+        href: manage-resources-portal.md
+      - name: Azure CLI の使用
+        displayName: open,delete,deploy,move,lock,tag
+        href: manage-resources-cli.md
+      - name: Azure PowerShell の使用
+        displayName: open,delete,deploy,move,lock,tag
+        href: manage-resources-powershell.md
     - name: リソースの移動
       href: resource-group-move-resources.md
-      items:
-      - name: 移動操作のサポートについて (リソースの種類別)
-        href: move-support-resources.md
-    - name: タグを使用したリソースの編成
+    - name: リソースの編成
+      displayName: tags
       href: resource-group-using-tags.md
     - name: リソースのロック
       href: resource-group-lock-resources.md
@@ -218,8 +213,14 @@ items:
       href: resource-group-template-functions-resource.md
     - name: 文字列関数
       href: resource-group-template-functions-string.md
-  - name: タグのサポート
-    href: tag-support.md
+  - name: リソースの機能
+    items:
+    - name: 完全モードの削除
+      href: complete-mode-deletion.md
+    - name: 移動のサポート
+      href: move-support-resources.md
+    - name: タグのサポート
+      href: tag-support.md
   - name: REST - Resource Manager
     href: /rest/api/resources/
   - name: REST - Deployment Manager
@@ -233,7 +234,7 @@ items:
   - name: Java
     href: /java/api/com.microsoft.azure.management.resources
   - name: Python
-    href: http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html
+    href: /python/api/overview/azure/resources?view=azure-python
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -248,9 +249,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 0256bc1bf00680a36d1a8f4286757e56243e54f5
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: c84e93cbc0a74ca59a2f25e467780378ee3d1e19
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329157"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372150"

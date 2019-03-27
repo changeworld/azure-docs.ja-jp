@@ -1,21 +1,21 @@
 ---
-title: 'クイック スタート: ナレッジ ベースから回答を取得する - REST (Java) - QnA Maker'
+title: クイック スタート:ナレッジ ベースから回答を取得する - REST (Java) - QnA Maker
 titlesuffix: Azure Cognitive Services
 description: この Java REST ベースのクイック スタートでは、ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: qna-maker
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: 630b033428ab6e21afeddf9d4162be015582dae9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 5cdec31775258b4748609e994cc5455dc24eb1e2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977815"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863280"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Java を使用してナレッジ ベースから質問の回答を取得する
 

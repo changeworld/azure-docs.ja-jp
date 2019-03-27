@@ -1,23 +1,23 @@
 ---
-title: 'チュートリアル: C# を使った Text Analytics'
+title: チュートリアル:Visual Studio の接続済みサービスを使用して Text Analytics Service に接続する
 titleSuffix: Azure Cognitive Services
-description: ASP.NET Core Web アプリケーション から Text Analytics に接続します。
+description: ASP.NET Core Web アプリケーション から Text Analytics に接続する方法について説明します。
 services: cognitive-services
-author: ghogen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: ghogen
-ms.openlocfilehash: 95de174087fb2a73ad6c75a2e96caf872c351854
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: a37ea5fdad941e1559e470ccb22303a8e3c7ca3d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605234"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243894"
 ---
-# <a name="tutorial-connect-to-the-text-analytics-cognitive-service-by-using-connected-services-in-visual-studio"></a>チュートリアル: Visual Studio の接続済みサービスを使用して Text Analytics Cognitive Service に接続する
+# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>チュートリアル:Visual Studio の接続済みサービスを使用して Text Analytics Service に接続する
 
 Text Analytics Service を使用することで、豊富な情報を抽出して視覚データを分類および処理したり、機械による画像のモデレートを実施してサービスのキュレーションを支援したりできます。
 

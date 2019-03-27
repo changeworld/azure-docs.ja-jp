@@ -3,19 +3,19 @@ title: Azure Active Directory B2C のカスタム ポリシーで検証技術プ
 description: Azure Active Directory B2C のカスタム ポリシーで Azure Active Directory 検証技術プロファイルを定義します。
 services: active-directory-b2c
 author: davidmu1
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
-ms.component: B2C
-ms.openlocfilehash: c21a5c5b23b709ce6683c51cf96f0e6ff89efc78
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.subservice: B2C
+ms.openlocfilehash: 220a95f1bc95a8866a459eb878047e7f47920bd1
+ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568678"
+ms.lasthandoff: 01/29/2019
+ms.locfileid: "55175096"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーで検証技術プロファイルを定義する
 
@@ -39,7 +39,6 @@ ms.locfileid: "51568678"
 
 セルフアサート技術プロファイルでは、その出力要求の一部またはすべてを検証するために使用する検証技術プロファイルを定義できます。 参照先の技術プロファイルのすべての入力要求は、参照元の検証技術プロファイルの出力要求に表示する必要があります。
 
-
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
 **ValidationTechnicalProfiles** 要素には、次の要素が含まれています。
@@ -53,7 +52,7 @@ ms.locfileid: "51568678"
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ReferenceId | はい | ポリシーまたは親ポリシーで既に定義されている技術プロファイルの識別子。 |
-|ContinueOnError|いいえ | この検証技術プロファイルでエラーが発生した場合に後続の検証技術プロファイルの検証を続行するかどうかを示します。 有効な値: `true` または `false` (既定値。以降の検証プロファイルの処理が停止され、エラーが返されます)。
+|ContinueOnError|いいえ | この検証技術プロファイルでエラーが発生した場合に後続の検証技術プロファイルの検証を続行するかどうかを示します。 有効な値: `true` または `false` (既定値。以降の検証プロファイルの処理が停止され、エラーが返されます)。 |
 |ContinueOnSuccess | いいえ  | この検証技術プロファイルが成功した場合に後続の検証プロファイルの検証を続行するかどうかを示します。 指定できる値: `true` または `false`。 既定値は `true` で、以降の検証プロファイルの処理が続行されることを意味します。 |
 
 **ValidationTechnicalProfile** 要素には、次の要素が含まれています。
@@ -64,7 +63,7 @@ ms.locfileid: "51568678"
 
 **Precondition** 要素には、次の属性が含まれています。
 
-| Attribute | 必須 | 説明 |
+| Attribute | 必須 | Description |
 | --------- | -------- | ----------- |
 | Type | はい | 前提条件に対して実行するチェックまたはクエリの種類。 指定した要求がユーザーの現在の要求セット内に存在する場合にアクションが実行されるようにするには、`ClaimsExist` を指定する必要があります。または、指定した要求が存在し、その値が指定値と等しい場合にアクションが実行されるようにするには、`ClaimEquals` を指定する必要があります。 |
 | ExecuteActionsIf | はい | テストが true または false の場合に前提条件のアクションを実行するかどうかを示します。 |

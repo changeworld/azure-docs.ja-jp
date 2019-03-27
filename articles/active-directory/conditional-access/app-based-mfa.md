@@ -5,23 +5,24 @@ services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
 author: MarkusVi
-manager: mtillman
+manager: daveba
 ms.assetid: ''
 ms.service: active-directory
-ms.component: conditional-access
+ms.subservice: conditional-access
 ms.topic: article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 1c61286a24c3562e32cb4c734ea081526d38837a
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 07466e40834b8bfaf4a452cf728bae517b8c7b00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413154"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122718"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする 
 
@@ -43,6 +44,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - **Azure AD Premium エディションへのアクセス** - Azure AD の条件付きアクセスは Azure AD Premium の機能です。 
 
 - **Isabella Simonsen というテスト アカウント** - テスト アカウントの作成方法がわからない場合は、「[クラウド ベースのユーザーを追加する](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)」を参照してください。
+
+
+このクイック スタートのシナリオでは、テスト アカウントに対して、ユーザーごとの MFA が有効にされていない必要があります。 詳細については、「[ユーザーに 2 段階認証を要求する方法](../authentication/howto-mfa-userstates.md)」を参照してください。
 
 
 ## <a name="test-your-sign-in"></a>サインインをテストする
@@ -160,7 +164,7 @@ What If ポリシー評価ツールを初期化するには、次のように設
 - ユーザーに「**Isabella Simonsen**」 
 - クラウド アプリに「**Microsoft Azure の管理**」
 
- **[What If]** をクリックすると、シミュレート レポートが作成され、次のように表示されます。
+  **[What If]** をクリックすると、シミュレート レポートが作成され、次のように表示されます。
 
 - **[適用するポリシー]** の下に "**Azure Portal にアクセスするには MFA が必要です**" 
 - **[制御の許可]** に "**多要素認証が必要です**"

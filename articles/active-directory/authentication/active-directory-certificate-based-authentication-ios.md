@@ -3,19 +3,20 @@ title: iOS での Azure Active Directory の証明書ベースの認証
 description: iOS デバイスでソリューションに証明書ベースの認証を構成するための対応シナリオや要件について説明する
 services: active-directory
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: annaba
-ms.openlocfilehash: 655fa6b4bf0f04f2d88e9a3f11cb9d3917ea3dd3
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 717eef0857d6db53462ef1b5eb4786962550d44b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346429"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188071"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS での Azure Active Directory の証明書ベースの認証
 

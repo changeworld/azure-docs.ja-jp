@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
-ms.openlocfilehash: 5fb615ff042cc5cdd3b6b8e42e4d91b161ebf445
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: ba5eb50dcf800c186124db348ac584ff6f55cebb
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602377"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54467317"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Azure IoT リファレンス アーキテクチャの概要
 
@@ -79,7 +79,7 @@ IoT ソリューションでは、ほぼあらゆる種類のデバイスとク�
 
 ルーティングにより、テレメトリを 1 つ以上のストレージ エンドポイント、分析プロセス、およびアクションにディスパッチできます。 ソリューションにおいて、異なる順序でステージを結合し、同時実行の並列タスクでそれらを処理することもあります。
 
-リモート監視ソリューションでは、ストリーム処理のために [Azure Stream Analytics](/azure/stream-analytics/) を使用しています。 ソリューション内のルール エンジンは、Stream Analytics クエリを使用してアラームとアクションを生成します。 たとえば、ソリューションでクエリを使用し、トラックの貨物室で、5 分間での平均温度が36 度を下回ったときを識別できます。
+リモート監視ソリューションでは、ストリーム処理のために [Azure Stream Analytics](/azure/stream-analytics/) を使用しています。 ソリューション内のルール エンジンでは、Stream Analytics クエリを使用してアラートとアクションが生成されます。 たとえば、ソリューションでクエリを使用し、トラックの貨物室で、5 分間での平均温度が36 度を下回ったときを識別できます。
 
 ### <a name="storage"></a>Storage
 

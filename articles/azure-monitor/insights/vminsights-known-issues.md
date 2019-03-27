@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 038c6afe94ccfea707eea3b4032a2e45f69e5102
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 677fec21b7491398da5e4958441e5405e0c10e0e
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187076"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745675"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) の既知の問題
 
@@ -27,6 +27,7 @@ ms.locfileid: "54187076"
 ## <a name="health"></a>Health 
 正常性機能の現在のリリースに関する既知の問題を次に示します。
 
+- VM のプロパティ パネルで、Windows Server 2019 オペレーティング システムが Windows Server 2016 と表示されます。 これは今後のリリースで修正されます。
 - Azure VM は、削除または移動された場合でも、しばらくの間、VM リスト ビューに表示されます。 さらに、移動または削除された VM の状態をクリックすると、**正常性診断**ビューが開き、読み込みループが開始されます。 削除された VM の名前を選択すると、ウィンドウが開き、VM が削除されたことを示すメッセージが表示されます。
 - しきい値の更新などの構成の変更は、ポータルまたは Workload Monitor API でそれらがすぐに更新される場合でも、最大 30 分かかります。 
 - 正常性診断エクスペリエンスは他のどのビューよりも迅速に更新されます。 ビューの切り替えを行う場合に、情報の遅延が発生する可能性があります。 

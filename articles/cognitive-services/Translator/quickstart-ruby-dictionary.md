@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Translator Text API と Ruby を使って、文脈中における用語の例と翻訳の代替候補を探します。
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: translator-text
+ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 02/08/2019
 ms.author: erhopf
-ms.openlocfilehash: 4574c07f3dfa98c0264d70c08a5ee4feff075bee
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 98d9b7c3bf85e025c9479609737cb8c66bc66287
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157090"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980569"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-ruby"></a>クイック スタート:Ruby を使用して 2 か国語辞書で単語を検索する
 

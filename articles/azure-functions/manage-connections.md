@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: glenga
-ms.openlocfilehash: 9780f98be7d488f87e280a1f391f7cc536ce0f8c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 4246259445cf096b5353ab87a9ed83f87332dc78
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52999562"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299328"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Azure Functions で接続を管理する方法
 

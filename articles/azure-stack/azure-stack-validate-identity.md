@@ -11,16 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 10/23/2018
+ms.topic: conceptual
+ms.date: 12/04/2018
 ms.author: sethm
-ms.reviewer: ''
-ms.openlocfilehash: 0a46344893c8ad62bd85f9abb84d434c0331d507
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.reviewer: unknown
+ms.lastreviewed: 12/04/2018
+ms.openlocfilehash: b43fb3ff158a7df609d7a828192815db6b15963b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984198"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850062"
 ---
 # <a name="validate-azure-identity"></a>Azure ID の検証 
 Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用して、対象の Azure Active Directory (Azure AD) を Azure Stack で使用する準備が整っていることを検証します。 Azure Stack のデプロイを開始する前に、Azure ID ソリューションを検証します。  
@@ -48,24 +49,24 @@ Azure Stack のユーザー、アプリケーション、グループ、およ�
 **Azure Active Directory の環境:**
  - Azure Stack に使用する Azure AD アカウントを特定し、それが Azure Active Directory グローバル管理者であることを確認します。
  - Azure AD テナントの名前を特定します。 テナント名は、Azure Active Directory の "*プライマリ*" ドメイン名である必要があります  (例: *contoso.onmicrosoft.com*)。 
- - 使用する AzureEnvironment を特定します: *AzureCloud*、*AzureGermanCloud*、または *AzureChinaCloud*。
+ - 使用する AzureEnvironment を特定します。 環境名のパラメーターとしてサポートされる値は、AzureCloud、AzureChinaCloud または AzureUSGovernment です。使用している Azure サブスクリプションに応じて異なります。
 
 ## <a name="validate-azure-identity"></a>Azure ID の検証 
 1. 前提条件を満たしているコンピューターで、管理 PowerShell プロンプトを開き、次のコマンドを実行して、AzsReadinessChecker をインストールします。  
 
    > `Install-Module Microsoft.AzureStack.ReadinessChecker -Force`
 
-2. PowerShell プロンプトから次を実行して、*$serviceAdminCredential* を、お使いの Azure AD テナントのサービス管理者として設定します。  *serviceadmin@contoso.onmicrosoft.com* を、お使いのアカウントおよびテナントで置き換えます。 
+2. PowerShell プロンプトから次を実行して、*$serviceAdminCredential* を、お使いの Azure AD テナントのサービス管理者として設定します。  *serviceadmin\@contoso.onmicrosoft.com* をお使いのアカウントとテナントに置き換えます。 
    > `$serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant"` 
 
 3. PowerShell プロンプトから次を実行して、Azure AD の検証を開始します。 
-   - AzureEnvironment の値を *AzureCloud*、*AzureGermanCloud*、または *AzureChinaCloud* として指定します。  
+   - AzureEnvironment の環境名の値を指定します。 環境名のパラメーターとしてサポートされる値は、AzureCloud、AzureChinaCloud または AzureUSGovernment です。使用している Azure サブスクリプションに応じて異なります。  
    - Azure Active Directory テナント名を指定して、*contoso.onmicrosoft.com* で置き換えます。 
 
-   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AADDirectoryTenantName contoso.onmicrosoft.com`
+   > `Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com`
 4. ツールの実行後、出力を確認します。 インストールの要件について、状態が **OK** であることを確認します。 次の図のように、検証が成功したことが表示されます。 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -76,7 +77,7 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 
 
 ## <a name="report-and-log-file"></a>レポートとログ ファイル
@@ -97,7 +98,7 @@ Invoke-AzsAzureIdentityValidation Completed
 
 ### <a name="expired-or-temporary-password"></a>期限切れまたは一時パスワード 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -111,7 +112,7 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 **原因** - パスワードの有効期限が切れているか、一時パスワードであるため、アカウントがログオンできません。     
 
 **解決策** - PowerShell で次を実行し、プロンプトに従ってパスワードをリセットします。  
@@ -120,7 +121,7 @@ Invoke-AzsAzureIdentityValidation Completed
 または、 https://portal.azure.com にアカウントとしてログインします。この場合、ユーザーはパスワードの変更を強制されます。
 ### <a name="unknown-user-type"></a>ユーザーの種類が不明 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -134,13 +135,13 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 **原因** - 指定した Azure Active Directory (AADDirectoryTenantName) にアカウントがログオンできません。 この例では、*AzureChinaCloud* が *AzureEnvironment* として指定されています。
 
-**解決策** - 指定した Azure 環境に対してアカウントが有効であることを確認します。 PowerShell では、次を実行して、特定の環境に対してアカウントが有効であることを確認します: Login-AzureRmAccount – EnvironmentName AzureChinaCloud 
+**解決策** - 指定した Azure 環境に対してアカウントが有効であることを確認します。 PowerShell で次を実行して、特定の環境に対してアカウントが有効であることを確認します。 Login-AzureRmAccount – EnvironmentName AzureChinaCloud 
 ### <a name="account-is-not-an-administrator"></a>アカウントが管理者ではない 
  
-````PowerShell
+```PowerShell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -154,7 +155,7 @@ Finished Azure Identity Validation
 Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
 Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
 Invoke-AzsAzureIdentityValidation Completed
-````
+```
 
 **原因** - アカウントは正常にログオンできますが、そのアカウントが Azure Active Directory (AADDirectoryTenantName) の管理者ではありません。  
 

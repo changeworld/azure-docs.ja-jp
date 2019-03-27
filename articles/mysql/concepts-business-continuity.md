@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 9b9e2362553eb93cbb111b70cf29a1cc1524e77e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 02/01/2019
+ms.openlocfilehash: a09c1934ecb34518b191a8e730a72efecc85aa2f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554539"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692904"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Azure Database for MySQL によるビジネス継続性の概要
 
@@ -50,6 +50,6 @@ Azure Database for MySQL で提供されるビジネス継続性機能には、�
 
 ## <a name="next-steps"></a>次の手順
 
-- 自動バックアップについて詳しくは、[Azure Database for MySQL でのバックアップ](concepts-backup.md)に関するページをご覧ください。
-- Azure Portal を使用して特定の時点に復元する方法については、 [Azure Portal を使用したデータベースのポイントインタイム リストア](howto-restore-server-portal.md)に関するページをご覧ください。
-- Azure CLI を使用して特定の時点に復元する方法については、 [CLI を使用したデータベースのポイントインタイム リストア](howto-restore-server-cli.md)に関するページをご覧ください。
+- [Azure Database for MySQL での自動バックアップ](concepts-backup.md)の詳細を確認する。
+- [Azure portal](howto-restore-server-portal.md) または [Azure CLI](howto-restore-server-cli.md) を使用して復元する方法を確認する。
+- [Azure Database for MySQL の読み取りレプリカ](concepts-read-replicas.md)について確認する。

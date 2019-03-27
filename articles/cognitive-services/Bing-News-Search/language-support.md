@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Bing News Search API でサポートされる自然言語、国、および地域の一覧。
 services: cognitive-services
 author: MikeDodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: bing-news-search
+ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: v-gedod
-ms.openlocfilehash: 1d8a46287d2b84735ffb6d5159346cb9b8243472
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f94ebb9b46ade0c03f65fdeb78bc7be96794a3d2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264002"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866749"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Bing News Search API の言語と地域のサポート
 

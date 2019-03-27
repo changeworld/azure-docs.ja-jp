@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: 4a8d4ab4d93831abbd9489d9023dd9b6f5c66d6d
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: b9adac3f2f56093c3559570aab4e905eb047ccd2
+ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246893"
+ms.lasthandoff: 01/30/2019
+ms.locfileid: "55247087"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Azure Stack ポータルを使用したテンプレートのデプロイ
 

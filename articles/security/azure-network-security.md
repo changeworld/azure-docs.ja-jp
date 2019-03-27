@@ -4,7 +4,7 @@ description: クラウドベースのコンピューティング サービスに
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1d94ac5f799fc4bad13ab6a5e97a225a7499380d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405975"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111290"
 ---
 # <a name="azure-network-security"></a>Azure のネットワーク セキュリティ
 
@@ -161,9 +161,9 @@ VNet は、自身のネットワークと Azure の間のプライベート ネ�
 
 オンプレミス ネットワークを VNet に接続するには、次のオプションを組み合わせて使用します。
 
-- **ポイント対サイト仮想プライベート ネットワーク (VPN):** ネットワークに接続されている 1 台の PC と VNet の間で確立されます。 この接続の種類は、既存のネットワークへの変更をほとんどまたはまったく必要としないため、Azure を使い始めたばかりのユーザーまたは開発者に適しています。 この接続は、SSTP プロトコルを使用して、PC と VNet の間にインターネット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、ポイント対サイト VPN の待ち時間は予測できません。
+- **ポイント対サイト仮想プライベート ネットワーク (VPN)**:ネットワークに接続されている 1 台の PC と VNet の間で確立されます。 この接続の種類は、既存のネットワークへの変更をほとんどまたはまったく必要としないため、Azure を使い始めたばかりのユーザーまたは開発者に適しています。 この接続は、SSTP プロトコルを使用して、PC と VNet の間にインターネット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、ポイント対サイト VPN の待ち時間は予測できません。
 
-- **サイト間 VPN:** VPN デバイスと Azure VPN ゲートウェイの間で確立されます。 この接続の種類を使用すると、承認した任意のオンプレミス リソースが VNet にアクセスできます。 この接続は IPsec/IKE VPN で、オンプレミスのデバイスと Azure VPN ゲートウェイの間にインターケット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、サイト間接続の待ち時間は予測できません。
+- **サイト間 VPN**:VPN デバイスと Azure VPN Gateway の間で確立されます。 この接続の種類を使用すると、承認した任意のオンプレミス リソースが VNet にアクセスできます。 この接続は IPsec/IKE VPN で、オンプレミスのデバイスと Azure VPN ゲートウェイの間にインターケット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、サイト間接続の待ち時間は予測できません。
 
 - **Azure ExpressRoute:** ExpressRoute のパートナーを介して、ネットワークと Azure の間で確立されます。 この接続はプライベート接続です。 トラフィックはインターネットを経由しません。 トラフィックがインターネットを経由しないため、ExpressRoute 接続の待ち時間は予測可能です。 ここまでに説明したすべての接続オプションについて詳しくは、「[接続トポロジの図](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
@@ -183,11 +183,11 @@ VM ロール インスタンスと Cloud Services ロール インスタンス�
 
 Azure では、VNet 内の任意のサブネットに接続されている複数のリソースが相互通信できるようにするルート テーブルが既定で作成されます。 次のオプションのいずれかまたは両方を実装して、Azure によって作成される既定のルートをオーバーライドできます。
 
-- **ユーザー定義ルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含むカスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)に関する記事をご覧ください。
+- **ユーザー定義のルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含む、カスタム ルート テーブルを作成できます。 ユーザー定義ルートについて詳しくは、[ユーザー定義のルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)に関する記事をご覧ください。
 
 - **BGP のルート:** Azure VPN ゲートウェイまたは ExpressRoute 接続を使用して VNet をオンプレミス ネットワークに接続する場合、BGP ルートを VNet に伝達できます。
 
-### <a name="hybrid-internet-connectivity-connect-to-an-on-premises-network"></a>ハイブリッド インターネット接続: オンプレミス ネットワークへの接続
+### <a name="hybrid-internet-connectivity-connect-to-an-on-premises-network"></a>ハイブリッド インターネット接続:オンプレミス ネットワークに接続する
 オンプレミス ネットワークを VNet に接続するには、次のオプションを組み合わせて使用します。
 
 -   インターネット接続
@@ -276,19 +276,19 @@ NSG は 5 つのタプルを使用してトラフィックを評価します (�
 
 -   [送信元と送信先のポート](https://technet.microsoft.com/library/dd197515)
 
--   プロトコル: [伝送制御プロトコル (TCP)](https://technet.microsoft.com/library/cc940037.aspx) または[ユーザー データグラム プロトコル (UDP)](https://technet.microsoft.com/library/cc940034.aspx)
+-   プロトコル:[伝送制御プロトコル (TCP)](https://technet.microsoft.com/library/cc940037.aspx) または[ユーザー データグラム プロトコル (UDP)](https://technet.microsoft.com/library/cc940034.aspx)
 
 これは、単一の VM と VM のグループ間のアクセス、単一の VM からもう 1 つの単一の VM へのアクセス、または全サブネット間のアクセスを制御できることを意味します。 ここでも、これは単純なステートフル パケット フィルター処理であり、フル パケット検査ではないことに注意する必要があります。 ネットワーク セキュリティ グループにはプロトコルの検証やネットワーク レベルの IDS または IPS 機能はありません。
 
 NSG には認識しておく必要があるいくつかのルールが組み込まれています。 次のとおりです。
 
--   **特定の仮想ネットワーク内のすべてのトラフィックを許可する:** 同じ Azure Virtual Network 上のすべての VM は相互に通信できます。
+-   **特定の仮想ネットワークの内部ですべてのトラフィックを許可する:** 同じ Azure Virtual Network 上のすべての VM は互いに通信できます。
 
 -   **Azure の負荷分散の受信を許可する:** このルールは、すべての送信元アドレスからすべての送信先アドレスへの Azure Load Balancer のトラフィックを許可します。
 
 -   **すべての受信を拒否する:** このルールは、明示的に許可したインターネットからのトラフィック ソーシングをすべてブロックします。
 
--   **インターネットに送信されるすべてのトラフィックを許可する:** このルールは、インターネットへの接続を開始すること VM に許可します。 これらの接続を開始しない場合は、これらのルールをブロックするまたは強制的なトンネリングを適用するルールを作成する必要があります。
+-   **インターネットに送信されるすべてのトラフィックを許可する:** このルールは VM がインターネットへの接続を開始することを許可します。 これらの接続を開始しない場合は、これらのルールをブロックするまたは強制的なトンネリングを適用するルールを作成する必要があります。
 
 #### <a name="system-routes-and-user-defined-routes"></a>システム ルートとユーザー定義のルート
 
@@ -645,9 +645,9 @@ Application Gateway に関しては、次のメトリックがサポートされ
 
 [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)に関しては、次のログがサポートされます。
 
-- **NetworkSecurityGroupEvent:**: MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
+- **NetworkSecurityGroupEvent:** MAC アドレスに基づいた、VM とインスタンス ロールに適用される NSG ルールに関するエントリが含まれます。 これらのルールの状態は 60 秒ごとに収集されます。
 
-- **NetworkSecurityGroupRuleCounter:** トラフィックを許可または拒否するために各 NSG ルールが適用された回数に関するエントリが含まれます。
+- **NetworkSecurityGroupRuleCounter:** トラフィックを拒否または許可するために各 NSG ルールが適用された回数に関するエントリが含まれます。
 
 ## <a name="next-steps"></a>次の手順
 セキュリティについて詳しくは、セキュリティについて掘り下げた次のトピックをご覧ください。

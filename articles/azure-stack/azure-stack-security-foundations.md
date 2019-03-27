@@ -11,18 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/9/2018
+ms.date: 01/14/2019
 ms.author: patricka
-ms.openlocfilehash: 8b478c1ba60df679d69d5fced660836c16079e6a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.reviewer: fiseraci
+ms.lastreviewed: 01/14/2019
+ms.openlocfilehash: efa97c18a63954239475338c85f2145b8c6c6ac6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727091"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767271"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack インフラストラクチャのセキュリティ体制
 
-*適用先:Azure Stack 統合システム*
+*適用対象:Azure Stack 統合システム*
 
 セキュリティに関する考慮事項と法令遵守規定は、ハイブリッド クラウドを使用する際の中核となる推進力です。 Azure Stack は、これらのシナリオに適しています。 この記事では、Azure Stack 用のセキュリティ コントロールについて説明します。
 
@@ -40,7 +42,7 @@ Azure Stack のセキュリティ手法は、最新の脅威から防御する�
 Azure Stack が統合システムとして配布されるため、、Azure Stack インフラストラクチャのセキュリティ体制は Microsoft によって定義されます。 Azure と同様に、テナントは、テナント ワークロードのセキュリティ体制を定義する責任を負います。 このドキュメントでは、Azure Stack インフラストラクチャのセキュリティ体制に関する基本的知識について説明します。
 
 ## <a name="data-at-rest-encryption"></a>保存データの暗号化
-すべての Azure Stack インフラストラクチャとテナントのデータは、保存時に Bitlocker を使用して暗号化されます。 この暗号化は、Azure Stack の ストレージ コンポーネントの物理的損失や盗難から保護します。 詳細については、[Azure Stack における保存データの暗号化](azure-stack-security-bitlocker.md)に関するページを参照してください。
+すべての Azure Stack インフラストラクチャとテナントのデータは、保存時に BitLocker を使用して暗号化されます。 この暗号化は、Azure Stack の ストレージ コンポーネントの物理的損失や盗難から保護します。 詳細については、[Azure Stack における保存データの暗号化](azure-stack-security-bitlocker.md)に関するページを参照してください。
 
 ## <a name="data-in-transit-encryption"></a>転送中データの暗号化
 Azure Stack インフラストラクチャのコンポーネントは、TLS 1.2 で暗号化されたチャネルを使用して通信します。 暗号化証明書は、インフラストラクチャが自己管理します。 
@@ -65,7 +67,7 @@ Device Guard ポリシーは、Azure Stack インフラストラクチャでサ�
 Azure Stack の別の Windows Server 2016 セキュリティ機能として Windows Defender Credential Guard があります。この機能は、Azure Stack インフラストラクチャの資格情報を Pass-the-Hash および Pass-the-Ticket 攻撃から防護するために使用されます。
 
 ## <a name="antimalware"></a>マルウェア対策
-Azure Stack (HYPER-V ホストと Virtual Machines の両方) のすべてのコンポーネントは、Windows Defender Antivirus によって保護されています。
+Azure Stack のすべてのコンポーネント (Hyper-V ホストと Virtual Machines の両方) は、Windows Defender Antivirus によって保護されています。
 
 接続されているシナリオでは、ウイルス対策の定義とエンジンの更新プログラムが、1 日に複数回適用されます。 接続されていないシナリオでは、マルウェア対策の更新プログラムが、月次の Azure Stack 更新プログラムの一部として適用されます。 詳細については、「[Azure Stack 上で Windows Defender ウイルス対策を更新する](azure-stack-security-av.md)」を参照してください。
 

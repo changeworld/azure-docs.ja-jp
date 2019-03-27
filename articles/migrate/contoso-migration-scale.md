@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: c36572230387ffc33a46913dbcc1259ea65f84f5
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: bd1761ecf16bbfb0d3fdc354ab1b9fa1f42f9c17
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104235"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328580"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso - Azure への移行のスケーリング
 
@@ -292,11 +292,10 @@ Contoso は、キャパシティに関する考慮事項に基づいて、これ
 **構成サーバー** | 100 から 200 の VM をまとめてレプリケートする場合の Contoso の見積もりと、[構成サーバーのサイズ要件](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server)に基づいて、Contoso の見積もりには次のように構成サーバー マシンが必要です。<br/><br/> CPU:16 vCPU (2 ソケット * 8 コア @ 2.5 GHz)<br/><br/> メモリ:32 GB<br/><br/> キャッシュ ディスク:1 TB (テラバイト)<br/><br/> データ変化率:1 TB から 2 TB まで。<br/><br/> Contoso は、サイズ要件に加えて、構成サーバーが最適に配置されていること、すなわち移行される VM と同じネットワークの同じ LAN セグメントに配置されていることを確認する必要があります。
 **プロセス サーバー** | Contoso は、100 から 200 の VM をレプリケートできるスタンドアロンの専用プロセス サーバーをデプロイします。<br/><br/> CPU:16 vCPU (2 ソケット * 8 コア @ 2.5 GHz)<br/><br/> メモリ:32 GB<br/><br/> キャッシュ ディスク:1 TB (テラバイト)<br/><br/> データ変化率:1 TB から 2 TB まで。<br/><br/> プロセス サーバーは負荷が高くなるため、レプリケーションに必要なディスク I/O、ネットワーク トラフィック、CPU 使用率を処理できる ESXi ホストに配置する必要があります。 Contoso は、この目的のために専用ホストを検討します。 
 **ネットワーク** | Contoso は現在のサイト間 VPN インフラストラクチャを見直し、Azure ExpressRoute を実装することにしました。 その実装は、待機時間を削減し、Contoso の米国東部 2 プライマリ Azure リージョンの帯域幅を改善するために不可欠です。<br/><br/> **監視**:Contoso はプロセス サーバーからのデータの流れを注意深く監視する必要があります。 データによってネットワーク帯域幅が過負荷になる場合、Contoso は[プロセス サーバーの帯域幅を調整する](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth)ことを検討します。
-**Azure Storage** | 移行に際して、Contoso は適切な Azure ストレージ アカウントの種類と数を見極める必要があります。  Site Recovery は、VM のデータを Azure Storage にレプリケートします。<br/><br/> Site Recovery により、Standard または Premium (SSD) ストレージ アカウントにレプリケートできます。<br/><br/> ストレージについて決定するために、Contoso は[容量の上限](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)を見直し、時間の経過に伴い予想される増加率および使用量の増加を考慮に入れる必要があります。 移行の速度と優先度に従って、Contoso は Premium ストレージ アカウントを使用することを決定しました。<br/><br/> 複数のストレージ アカウントを作成し、移行プロセス中に再利用します。
-Contoso は、Azure にデプロイされるすべての VM にマネージド ディスクを使用することに決定しました。  必要な IOPS は、ディスクが Standard (HDD) か Premium (SSD) かによって決まります。<br/>にも掲載されています。<br/>
+**Azure Storage** | 移行に際して、Contoso は適切な Azure ストレージ アカウントの種類と数を見極める必要があります。  Site Recovery は、VM のデータを Azure Storage にレプリケートします。<br/><br/> Site Recovery により、Standard または Premium (SSD) ストレージ アカウントにレプリケートできます。<br/><br/> ストレージについて決定するために、Contoso は[容量の上限](../virtual-machines/windows/disks-types.md)を見直し、時間の経過に伴い予想される増加率および使用量の増加を考慮に入れる必要があります。 移行の速度と優先度に従って、Contoso は Premium SSD を使用することを決定しました。<br/><br/>
+Contoso は、Azure にデプロイされるすべての VM にマネージド ディスクを使用することに決定しました。  必要な IOPS は、ディスクが Standard HDD、Standard SSD、Premium (SSD) のいずれかによって決まります。<br/><br/>
 
-
-#### <a name="data-migration-service"></a>データ移行サービス 
+#### <a name="data-migration-service"></a>データ移行サービス
 
 Azure Database Migration Service (DMS) は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できる、フル マネージドのサービスです。
 

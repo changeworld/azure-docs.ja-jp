@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 480edbb508b875d53d972e9ac93fd4d119c7e54a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d3127b7f9bea9a35d9ac25d0724700cad72fa509
+ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119664"
+ms.lasthandoff: 01/24/2019
+ms.locfileid: "54857150"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Web サイトの可用性と応答性の監視
 いずれかのサーバーに Web アプリまたは Web サイトをデプロイした後、テストを設定して、その可用性と応答性を監視できます。 [ Application Insights](../../azure-monitor/app/app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 アプリケーションがまったく応答しなくなったりアプリケーションの応答が遅くなったりした場合は、Application Insights からその旨が通知されます。
@@ -194,7 +194,7 @@ Web テストを編集、一時的に無効化、削除、またはダウンロ�
 
 例外の行をクリックすると、代理可用性テストが失敗した原因であるサーバー側の例外の詳細が表示されます。 コード レベルの豊富な診断の [デバッグ スナップショット](../../azure-monitor/app/snapshot-debugger.md)を取得することもできます。
 
-![サーバー側の診断](./media/monitor-web-app-availability/open-instance-4.png)
+![サーバー側診断](./media/monitor-web-app-availability/open-instance-4.png)
 
 ## <a name="alerts"></a>可用性のアラート
 クラシック アラート エクスペリエンスを使用することにより可用性データに対して次の種類のアラート ルールを設定できます。
@@ -208,7 +208,7 @@ Web テストを編集、一時的に無効化、削除、またはダウンロ�
 ![エクスペリエンスを作成する](./media/monitor-web-app-availability/appinsights-71webtestUpload.png)
 
 > [!NOTE]
->  [新しい統合アラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)の場合、アラート ルールの重大度と通知の基本設定**をアクション グループ**と一緒に、アラート エクスペリエンスで構成する必要があります。 次の手順を行わないと、ポータル内通知を受け取るだけとなります。
+>  [新しい統合アラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)の場合、アラート ルールの重大度と通知の基本設定[をアクション グループ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)と一緒に、アラート エクスペリエンスで構成する**必要があります**。 次の手順を行わないと、ポータル内通知を受け取るだけとなります。
 
 1. 可用性テストを保存した後、詳細タブで、作成したテストの省略記号をクリックします。 [アラートの編集] をクリックします。
 ![保存後の編集](./media/monitor-web-app-availability/9editalert.png)
@@ -258,7 +258,7 @@ Web テストに使用できる SAML プラグインを使用します。
 2. 応答からベアラー トークンを抽出します。
 3. 承認ヘッダーにベアラー トークンを使用して API を呼び出します。
 
-Web テストが実際のクライアントであること、つまり、独自のアプリが AAD に登録されていることを確認し、clientId と appkey を使用します。 テスト対象のサービスの独自のアプリも AAD に登録されている場合: Web テストの "リソース" フィールドにはこのアプリの appID URI が反映されます。
+Web テストが実際のクライアントであること、つまり、独自のアプリが AAD に登録されていることを確認し、clientId と appkey を使用します。 テスト対象のサービスの独自のアプリも AAD に登録されている場合: Web テストのリソース フィールドにはこのアプリの appID URI が反映されます。
 
 ### <a name="open-authentication"></a>オープン認証
 オープン認証の例としては、Microsoft または Google アカウントを使用したサインインが挙げられます。 OAuth を使用する多くのアプリがクライアント シークレットに代わる機能を提供しているため、その可能性を調査することが最初の方法です。
@@ -356,6 +356,22 @@ Web サイトに対してロード テストを実行できます。 可用性�
 * *クライアント証明書でテストを実行するにはどうすればよいですか。*
 
     申し訳ありませんが、それはサポートされていません。
+
+## <a name="who-receives-the-classic-alert-notifications"></a>(クラシック) アラート通知は誰が受け取りますか。
+
+このセクションは、クラシック アラートにのみ適用され、目的の受信者だけが通知を受け取るように、アラート通知を最適化するために役立ちます。 [クラシック アラート](../platform/alerts-classic.overview.md)と新しいアラート エクスペリエンスの違いの詳細については、[アラートの概要の記事](../platform/alerts-overview.md)を参照してください。 新しいアラート エクスペリエンスのアラート通知を制御するには、[アクション グループ](../platform/action-groups.md)を使用します。
+
+* クラシック アラート通知には、特定の受信者の使用をお勧めします。
+
+* Y のうち X の場所からのエラーに関するアラートの場合、**一括/グループ** チェックボックス オプションが有効にされていれば、管理者/共同管理者ロールを持つユーザーに送信されます。  本質的に、_サブスクリプション_の_すべて_の管理者が通知を受け取ります。
+
+* 可用性メトリック (または、それに関する Application Insights のメトリック) についてのアラートの場合、**一括/グループ** チェックボックス オプションが有効にされていれば、サブスクリプション内の所有者、共同作成者、または閲覧者ロールを持つユーザーに送信されます。 実際には、サブスクリプションの Application Insights リソースにアクセスできる_すべて_のユーザーが範囲内になり、通知を受け取ります。 
+
+> [!NOTE]
+> 現在、**一括/グループ** チェックボックス オプションを使用しており、それを無効にすると、変更を元に戻すことはできません。
+
+ロールに基づいてユーザーに通知する必要がある場合は、新しいアラート エクスペリエンス/準リアルタイム アラートを使用します。 [アクション グループ](../platform/action-groups.md)を使用して、共同作成者/所有者/閲覧者のいずれかのロール (1 つのオプションとして組み合わされていない) を持つユーザーに対し、電子メール通知を構成することができます。
+
 
 
 ## <a name="next"></a>次のステップ

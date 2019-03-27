@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2019
 ms.author: sethm
-ms.openlocfilehash: ba1e310234485d972646320f082d8b882a3d43f1
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.lastreviewed: 01/05/2019
+ms.openlocfilehash: 3a4efb6282a0aca8173403009fd58e9154a91b2b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052344"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728951"
 ---
 # <a name="using-dns-in-azure-stack"></a>Azure Stack での DNS の使用
 
@@ -42,7 +43,7 @@ Azure Stack はドメイン ネーム システム (DNS) 機能に対応して�
 
 次のスクリーンショットは、ポータルを利用してパブリック IP アドレスを作成するための **[パブリック IP アドレスの作成]** ダイアログのものです。
 
-![パブリック IP アドレスの作成](media/azure-stack-whats-new-dns/image01.png)
+![パブリック IP アドレスの作成](media/azure-stack-dns/image01.png)
 
 ### <a name="example-scenario"></a>サンプル シナリオ
 
@@ -68,7 +69,7 @@ Azure Stack の DNS は Azure の DNS に似ていますが、重要な例外が
 
 Azure DNS の詳細については、[DNS のゾーンとレコード](../../dns/dns-zones-records.md)に関するページを参照してください。
 
-### <a name="tags"></a>タグ
+### <a name="tags"></a>Tags
 
 Azure Stack DNS では、DNS ゾーン リソースに対して Azure Resource Manager のタグを使用できます。 DNS レコード セットのタグはサポートされませんが、その代わりとして、DNS レコード セットでは、次のセクションで説明する**メタデータ**がサポートされます。
 

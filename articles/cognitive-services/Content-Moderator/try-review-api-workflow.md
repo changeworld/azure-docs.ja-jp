@@ -1,21 +1,21 @@
 ---
 title: API コンソールからのコンテンツ モデレーション ワークフロー - Content Moderator
 titlesuffix: Azure Cognitive Services
-description: API コンソールからコンテンツ モデレーション ワークフローを使用する方法について説明します。
+description: Azure Content Moderator でワークフロー操作を使用し、Review API を使用してワークフローを作成または更新し、ワークフローの詳細を取得することができます。
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
-ms.component: content-moderator
+ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 02/05/2018
+ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 4ef8951b30fa7aede08a1af3c834192b5ed18649
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 1c18544a0fd135eb546660c442b865bf1249dfe5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223852"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883085"
 ---
 # <a name="workflows-from-the-api-console"></a>API コンソールのワークフロー
 

@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: Python を使用して Text Analytics API を呼び出す'
+title: クイック スタート:Python を使用して Text Analytics API を呼び出す
 titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: ashmaka
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.component: text-analytics
+ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 5169f6c7ff3d34d90f3f2e4b37b01733384966ff
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.date: 02/15/2019
+ms.author: aahi
+ms.openlocfilehash: 1219a5f43d8abd78c4840e824c2f4c69a6fa7939
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52283589"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330139"
 ---
-# <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Python を使用して Text Analytics Cognitive Service を呼び出す 
+# <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
 
 このチュートリアルでは、T[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を Python で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、および[キー フレーズの抽出](#KeyPhraseExtraction)を行う方法について説明します。

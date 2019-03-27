@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 67797f3bc5eadc126bad1051e793a8d3bc4590e5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 27db3327e296dafea3af2180eeaadd0ff4680b8d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800946"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341952"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure マネージド アプリケーションの概要
 
@@ -73,11 +73,11 @@ IT チームは、マネージド アプリケーションを使用して、組�
 
 ## <a name="azure-policy"></a>Azure Policy
 
-マネージド アプリケーションには、[Azure Policy](../azure-policy/azure-policy-introduction.md) を適用することができます。 ポリシーを適用することで、デプロイされたマネージド アプリケーションのインスタンスに、データやセキュリティの要件を確実に準拠させることができます。 アプリケーションで機密データを扱う場合は、そのデータに必要な保護の方法を検証しておいてください。 たとえば Office 365 のデータをアプリケーションで扱う場合、データ暗号化が有効であることを確認するポリシーを適用します。
+マネージド アプリケーションには、[Azure Policy](../governance/policy/overview.md) を適用することができます。 ポリシーを適用することで、デプロイされたマネージド アプリケーションのインスタンスに、データやセキュリティの要件を確実に準拠させることができます。 アプリケーションで機密データを扱う場合は、そのデータに必要な保護の方法を検証しておいてください。 たとえば Office 365 のデータをアプリケーションで扱う場合、データ暗号化が有効であることを確認するポリシーを適用します。
 
 ## <a name="next-steps"></a>次の手順
 
 この記事では、マネージド アプリケーションを使用する利点について説明しました。 次の記事にアクセスして、マネージド アプリケーションの定義を作成しましょう。
 
 > [!div class="nextstepaction"]
-> [クイック スタート: Azure マネージド アプリケーションの定義を発行する](publish-managed-app-definition-quickstart.md)
+> [クイック スタート:Azure マネージド アプリケーションの定義を発行する](publish-managed-app-definition-quickstart.md)

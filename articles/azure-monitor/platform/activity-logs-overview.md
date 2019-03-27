@@ -7,19 +7,19 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
-ms.component: logs
-ms.openlocfilehash: 7f454cb0979fb2379490d4b275b14afee8706f0f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.subservice: logs
+ms.openlocfilehash: fb3ed970b7f92e1cc06a9d1023e01f5888915e94
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715377"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088674"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
 
 **Azure アクティビティ ログ**は、Azure で発生したサブスクリプションレベルのイベントの分析に利用できるサブスクリプション ログです。 たとえば、Azure Resource Manager の運用データから、サービスの正常性イベントまでの範囲のデータが含まれています。 管理者のカテゴリではサブスクリプションのコントロール プレーン イベントが報告されるため、アクティビティ ログは以前は "監査ログ" または "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用するリソースに対する操作は含まれません。
 
-![アクティビティ ログとその他の種類のログ ](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![アクティビティ ログとその他の種類のログ](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 図 1:アクティビティ ログとその他の種類のログ
 
@@ -45,7 +45,7 @@ Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API �
 * **自動スケール** - このカテゴリには、サブスクリプションで定義したすべての自動スケール設定に基づいて、自動スケール エンジンの操作に関連するすべてのイベントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"Autoscale scale up action failed" (自動スケールのスケールアップ アクションに失敗しました) などがあります。 自動スケールを使用すると、自動スケール設定で指定した時刻や負荷 (メトリック) データに基づいて、サポートされるリソースの種類のインスタンス数を自動的にスケールアウトまたはスケールインすることができます。 スケールアップまたはスケールダウンの条件を満たした場合、開始イベントと、成功または失敗イベントがこのカテゴリに記録されます。
 * **推奨** - このカテゴリには、Azure Advisor からの推奨イベントが含まれます。
 * **セキュリティ** - このカテゴリには、Azure Security Center によって生成されたアラートのレコードが含まれます。 このカテゴリで表示されるイベントの種類の例としては、"Suspicious double extension file executed" (拡張子が 2 つある不審なファイルが実行されました) などがあります。
-* **ポリシー** - このカテゴリにはイベントは含まれません。これは将来の使用のために予約されています。 
+* **ポリシー** - このカテゴリには、Azure Policy によって実行されるすべての効果アクション操作のレコードが含まれます。 このカテゴリで表示されるイベントの種類の例として、監査と拒否があります。 Policy によって実行されるすべてのアクションは、リソースに対する操作としてモデル化されます。
 
 ## <a name="event-schema-per-category"></a>カテゴリごとのイベント スキーマ
 [カテゴリごとのアクティビティ ログ イベント スキーマの詳細については、この記事を参照してください。](../../azure-monitor/platform/activity-log-schema.md)
@@ -83,7 +83,7 @@ Azure Portal では、次のフィールドでアクティビティ ログを絞
 
 フィルターのセットを定義した後は、Azure ダッシュボードにクエリをピン留めして、特定のイベントを常に監視できます。
 
-さらに強力な機能もあります。**[ログ]** アイコンをクリックすると、[Log Analytics Activity Log Analytics ソリューション](../../azure-monitor/platform/collect-activity-logs.md)でアクティビティ ログ データを表示することができます。 [アクティビティ ログ] ブレードには基本的なログのフィルター/閲覧機能がありますが、Log Analytics を使用すると、より強力な方法でデータをピボット、クエリ、視覚化することができます。
+さらに強力な機能もあります。**[ログ]** アイコンをクリックすると、[アクティビティ ログの収集と分析ソリューション](../../azure-monitor/platform/collect-activity-logs.md)でアクティビティ ログ データを表示することができます。 [アクティビティ ログ] ブレードには基本的なログのフィルター/閲覧機能がありますが、Azure Monitor ログ機能を使用すると、より強力な方法でデータをピボット、クエリ、視覚化することができます。
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>ログ プロファイルを使用してアクティビティ ログをエクスポートする
 **ログ プロファイル** は、アクティビティ ログをエクスポートする方法を制御します。 ログ プロファイルを使用して、以下を構成できます。
@@ -118,40 +118,42 @@ Azure portal の [イベント ハブにエクスポート] オプションを�
 
     ![ポータルの [エクスポート] ボタン](./media/activity-logs-overview/activity-logs-portal-export-v2.png)
 3. ブレードが表示されたら、以下を選択できます。  
-  * イベントをエクスポートするリージョン
-  * イベントの保存先となるストレージ アカウント
-  * ストレージでイベントを保持する日数。 日数を 0 にした場合には、ログが永久に保持されます。
-  * イベントのストリーミング用にイベント ハブを作成する Service Bus 名前空間。
+   * イベントをエクスポートするリージョン
+   * イベントの保存先となるストレージ アカウント
+   * ストレージでイベントを保持する日数。 日数を 0 にした場合には、ログが永久に保持されます。
+   * イベントのストリーミング用にイベント ハブを作成する Service Bus 名前空間。
 
      ![[Export Activity Log (アクティビティ ログのエクスポート)] ブレード](./media/activity-logs-overview/activity-logs-portal-export-blade.png)
 4. **[保存]** をクリックして設定を保存します。 設定はサブスクリプションにすぐに適用されます。
 
 ### <a name="configure-log-profiles-using-the-azure-powershell-cmdlets"></a>Azure PowerShell コマンドレットを使用したログ プロファイルの構成
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 #### <a name="get-existing-log-profile"></a>既存のログ プロファイルの取得
 
 ```
-Get-AzureRmLogProfile
+Get-AzLogProfile
 ```
 
 #### <a name="add-a-log-profile"></a>ログ プロファイルの追加
 
 ```
-Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
+Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
-| Name |[はい] |ログ プロファイルの名前。 |
+| Name |はい |ログ プロファイルの名前。 |
 | StorageAccountId |いいえ  |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
 | serviceBusRuleId |いいえ  |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
-| 場所 |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-| RetentionInDays |[はい] |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
+| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
+| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
 | Category |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
 #### <a name="remove-a-log-profile"></a>ログ プロファイルの削除
 ```
-Remove-AzureRmLogProfile -name my_log_profile
+Remove-AzLogProfile -name my_log_profile
 ```
 
 ### <a name="configure-log-profiles-using-the-azure-cli"></a>Azure CLI を使用したログ プロファイルの構成
@@ -185,3 +187,4 @@ az monitor log-profiles delete --name <profile name>
 ## <a name="next-steps"></a>次の手順
 * [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../../azure-resource-manager/resource-group-audit.md)
 * [Azure アクティビティ ログを Event Hubs にストリーミングする](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+

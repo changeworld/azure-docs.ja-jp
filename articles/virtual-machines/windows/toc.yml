@@ -94,23 +94,18 @@ items:
       href: acu.md
     - name: ベンチマーク スコア
       href: compute-benchmark-scores.md
+    - name: vCPU のクォータ
+      href: quotas.md
   - name: メンテナンスと更新
     href: maintenance-and-updates.md
   - name: Disk Storage
-    href: about-disks-and-vhds.md
     items:
-    - name: Managed Disks
+    - name: マネージド ディスクの概要
       href: managed-disks-overview.md
-    - name: Premium SSD
-      href: premium-storage.md
-    - name: Standard SSD
-      href: disks-standard-ssd.md
-    - name: ウルトラ SSD
-      href: disks-ultra-ssd.md
-    - name: Premium Storage のパフォーマンス
+    - name: IaaS VM 用のディスクの種類の選択
+      href: disks-types.md
+    - name: 高パフォーマンス用の設計
       href: premium-storage-performance.md
-    - name: Standard Storage
-      href: standard-storage.md
     - name: ディスクのスケーラビリティ ターゲット
       href: disk-scalability-targets.md
     - name: ディスクのバックアップとディザスター リカバリー
@@ -129,14 +124,8 @@ items:
     href: monitor.md
   - name: バックアップと回復
     href: backup-recovery.md
-  - name: ハイ パフォーマンス コンピューティング
-    href: high-performance-computing.md
-  - name: デプロイに関する考慮事項
-    items:
-    - name: インフラストラクチャのガイドライン
-      href: infrastructure-example.md
-    - name: vCPU のクォータ
-      href: quotas.md
+  - name: インフラストラクチャの例
+    href: infrastructure-example.md
 - name: ハウツー ガイド
   items:
   - name: VM の作成
@@ -158,6 +147,7 @@ items:
     - name: Python の使用
       href: python.md
     - name: テンプレートの使用
+      displayName: Azure Resource Manager template, ARM
       href: ps-template.md
     - name: VM への接続
       href: connect-logon.md
@@ -167,6 +157,8 @@ items:
       href: windows-desktop-multitenant-hosting-deployment.md
   - name: VM のセキュリティ保護
     items:
+    - name: ジャストインタイム アクセス
+      href: ../../security-center/security-center-just-in-time.md
     - name: 暗号化
       displayName: encryption
       href: encrypt-disks.md
@@ -179,24 +171,33 @@ items:
     - name: Key Vault の作成
       href: key-vault-setup.md
   - name: VM の保護
-    href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     items:
-    - name: 単一の VM のバックアップ
+    - name: VM をバックアップする
+      href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
       items:
-      - name: Azure ポータル
-        href: ../../backup/quick-backup-vm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-      - name: Azure PowerShell
-        href: ../../backup/quick-backup-vm-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: 複数の VM のバックアップ
-      href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      - name: 単一の VM のバックアップ
+        href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: 複数の VM のバックアップ
+        href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: ディスクの復元
+        href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: 個々のファイルの復元
+        href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: VM のディザスター リカバリーの設定
+      href: ../../site-recovery/site-recovery-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+      - name: VM のディザスター リカバリーを有効にする
+        href: ../../site-recovery/azure-to-azure-tutorial-enable-replication.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: VM のディザスター リカバリーの演習を実行する
+        href: ../../site-recovery/azure-to-azure-tutorial-dr-drill.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      - name: VM を別のリージョンにフェールオーバーする
+        href: ../../site-recovery/azure-to-azure-tutorial-failover-failback.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
   - name: VM の管理
     items:
     - name: VM の使用状況
       href: vm-usage.md
     - name: 一般的な PowerShell タスク
       href: ps-common-ref.md
-    - name: VM の移動
-      href: move-vm.md
     - name: VM サイズの変更
       href: resize-vm.md
     - name: OS ディスクの交換
@@ -311,8 +312,6 @@ items:
         href: excel-cluster-hpcpack.md
   - name: ストレージの管理
     items:
-    - name: ディスクに関する FAQ
-      href: faq-for-disks.md
     - name: ディスクを追加する
       items:
       - name: Azure PowerShell
@@ -321,33 +320,38 @@ items:
         href: attach-managed-disk-portal.md
     - name: ディスクを取り外す
       href: detach-disk.md
+    - name: テンプレートによるディスクのデプロイ
+      href: using-managed-disks-template-deployments.md
     - name: ディスクのサイズの変更
       href: expand-os-disk.md
     - name: ディスクのスナップショットの作成
       href: snapshot-copy-managed-disk.md
     - name: 非管理対象ディスクのバックアップ
       href: incremental-snapshots.md
-    - name: Standard と Premium 間でディスクを変換する
-      href: convert-disk-storage.md
-    - name: Azure Site Recovery を使用した Premium Storage への移行
-      href: migrate-to-premium-storage-using-azure-site-recovery.md
+    - name: 移行と変換
+      items:
+      - name: Standard と Premium 間でディスクを変換する
+        href: convert-disk-storage.md
+      - name: Azure Site Recovery を使用した Premium Storage への移行
+        href: migrate-to-premium-storage-using-azure-site-recovery.md
+      - name: マネージド ディスクに移行する
+        href: migrate-to-managed-disks.md
+      - name: 非管理対象ディスクからマネージド ディスク
+        href: convert-unmanaged-to-managed-disks.md
+    - name: パフォーマンス
+      items:
+      - name: 書き込みアクセラレータを有効にする
+        href: how-to-enable-write-accelerator.md
+      - name: ウルトラ SSD を有効にする
+        href: disks-enable-ultra-ssd.md
+      - name: ディスクのベンチマークの実行
+        href: disks-benchmarks.md
     - name: アタッチされていないディスクの検出
       href: find-unattached-disks.md
     - name: File Storage を使用する
-      href: mount-azure-file-storage.md
-    - name: テンプレートによるディスクのデプロイ
-      href: using-managed-disks-template-deployments.md
-    - name: 書き込みアクセラレータを有効にする
-      href: how-to-enable-write-accelerator.md
-    - name: ウルトラ SSD の使用
-      href: disks-enable-ultra-ssd.md
-    - name: マネージド ディスクに移行する
-      href: migrate-to-managed-disks.md
-      items:
-      - name: 非管理対象ディスクから管理ディスク
-        href: convert-unmanaged-to-managed-disks.md
-      - name: 単一の クラシック VM から Resource Manager
-        href: migrate-single-classic-to-resource-manager.md
+      href: ../../storage/files/storage-files-quick-create-use-windows.md
+    - name: ディスクに関する FAQ
+      href: faq-for-disks.md
   - name: ネットワークの管理
     href: ps-common-network-ref.md
     items:
@@ -385,8 +389,14 @@ items:
       href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
   - name: VM 拡張機能の使用
     href: ../extensions/overview.md
-  - name: VM の移行
+  - name: VM を移動および移行する
     items:
+    - name: サブスクリプションまたはリソース グループを変更する
+      href: move-vm.md
+    - name: リージョンを移動する
+      href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+    - name: 可用性ゾーンに移動する
+      href: ../../site-recovery/move-azure-vms-avset-azone.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: AWS とオンプレミスの VM を移行する
       href: on-prem-to-azure.md
       items:
@@ -432,6 +442,7 @@ items:
   - name: Managed Disks REST
     href: /rest/api/compute/disks
   - name: Resource Manager テンプレート
+    displayName: ARM
     href: /azure/templates/microsoft.compute/allversions
 - name: リソース
   items:
@@ -448,14 +459,14 @@ items:
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-virtual-machine
+    href: https://stackoverflow.com/questions/tagged/azure-virtual-machine
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 1b0aa58f551a7fc03a9fa4b32a1ead9e0024bd08
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: b6e86980e854e336373907f6aeaba2a72dd29b7c
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246774"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372550"

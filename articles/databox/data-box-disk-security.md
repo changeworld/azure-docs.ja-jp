@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 569f89d389e4bc8c7f2d1f46f3713e9792d4e466
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159691"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093458"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk のセキュリティとデータ保護
 
@@ -71,17 +71,17 @@ Azure Data Box Disk は、同サービスにおける次の主要なインスタ
 
 - **注文の詳細** - 発注後、ユーザーの配送先住所、メール、連絡先情報が Azure portal に格納されます。 たとえば、次の情報が保存の対象となります。
 
-    - 連絡先の名前
-    - 電話番号
-    - 電子メール
-    - 番地
-    - City
-    - 郵便番号
-    - 状態
-    - 国/地方/地域
-    - ドライブ ID
-    - 運送業者のアカウント番号
-    - 配送追跡番号
+  - 連絡先の名前
+  - 電話番号
+  - 電子メール
+  - 番地
+  - City
+  - 郵便番号
+  - 状態
+  - 国/地方/地域
+  - ドライブ ID
+  - 運送業者のアカウント番号
+  - 配送追跡番号
 
     注文の詳細は、ジョブが完了するか、お客様が注文を削除すると、Data Box サービスによって削除されます。
 

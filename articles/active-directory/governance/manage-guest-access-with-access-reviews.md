@@ -11,16 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance
+ms.subservice: compliance
 ms.date: 12/13/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: d3cc5f5a7642ba827a46ab5cbc2b0da2cda38731
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 63acf3a91e7e121a807a44bed8506d05e71899d2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385127"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175185"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューによるゲスト アクセスの管理
 
@@ -43,11 +44,11 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>ゲストのアクセス レビューの作成と実行
 
-まず、レビュー担当者のアクセス パネルにアクセス レビューが表示されるようにします。 グローバル管理者またはユーザー アカウント管理者として[アクセス レビュー ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動します。 
+まず、全体管理者またはユーザー アカウント管理者として[アクセス レビュー ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動し、組織がアクセス レビューを使用できる状態であることを確認します。 
 
 ゲスト ユーザーのレビューに関して、Azure AD はいくつかのシナリオに対応しています。
 
-次のいずれかを選択してください。
+次の内容を確認できます。
 
  - Azure AD 内のグループのメンバーとして 1 人以上のゲストが存在する。
  - Azure AD に接続済みのアプリケーションに対して 1 人以上のゲスト ユーザーが割り当てられている。 
@@ -86,7 +87,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 
 1. アプリケーションのアクセス レビューを開始するには、ゲストだけをレビュー対象とし、ユーザーに自身のアクセス権をレビューしてもらうよう選択します。 詳細については、[アクセス レビューの作成](create-access-review.md)に関するページをご覧ください。
 
-2. 各ゲストに自身のアプリケーション アクセスをレビューするよう依頼します。 既定では、招待状を受け取った各ゲストには、組織のアクセス パネル内のアクセス レビューへのリンクが記載されたメールが Azure AD から届きます。 Azure AD のゲスト向けの手順については、[アクセス権をレビューする方法](perform-access-review.md)に関するページを参照してください。
+2. 各ゲストに自身のアプリケーション アクセスをレビューするよう依頼します。 既定では、招待状を受け取った各ゲストには Azure AD からメールが届きます。 そのメールには、組織のアクセス パネル内のアクセス レビューへのリンクが記載されています。 Azure AD のゲスト向けの手順については、[アクセス権をレビューする方法](perform-access-review.md)に関するページを参照してください。
 
 3. レビュー担当者が結果を入力したら、アクセス レビューを停止して変更を適用します。 詳細については、「[アクセス レビューの完了](complete-access-review.md)」を参照してください。
 
@@ -109,7 +110,7 @@ Azure Active Directory (Azure AD) では、組織の境界を越えたコラボ�
 > [!NOTE]
 > 以前のバージョンの Azure Portal では、UserType が Guest であるユーザーの管理アクセスが認められていませんでした。 ディレクトリの管理者が PowerShell を使ってゲストの UserType の値を Member に変更している場合があります。 過去にそのような変更がご利用のディレクトリで行われていた場合、前述したクエリでは、以前管理アクセス権を持っていたゲスト ユーザーが対象から漏れる場合があります。 その場合は、ゲストの UserType を変更するか、該当するゲストをグループ メンバーシップに手動で追加する必要があります。
 
-1. ゲストをメンバーとするセキュリティ グループを Azure AD に作成します (適切なグループがまだ存在しない場合)。 たとえば、手動で管理されたゲストのメンバーシップを基にグループを作成します。 または、UserType 属性の値が Guest である Contoso テナントのユーザー用に "Guests of Contoso" などの名前の動的グループを作成してもよいでしょう。  効率を高めるために、そのグループが主にゲストで構成されるようにしてください。レビューが不要なユーザーを含むグループを選択しないようにしてください。
+1. ゲストをメンバーとするセキュリティ グループを Azure AD に作成します (適切なグループがまだ存在しない場合)。 たとえば、手動で管理されたゲストのメンバーシップを基にグループを作成します。 または、UserType 属性の値が Guest である Contoso テナントのユーザー用に "Guests of Contoso" などの名前の動的グループを作成してもよいでしょう。  効率を高めるために、そのグループが主にゲストで構成されるようにしてください。メンバー ユーザーはレビューが不要なので、メンバー ユーザーを含むグループを選択しないようにしてください。  また、グループのメンバーであるゲスト ユーザーがグループの他のメンバーを表示できる点に注意してください。
 
 2. そのグループのアクセス レビューを開始するには、メンバー自身をレビュー担当者として選択します。 詳細については、[アクセス レビューの作成](create-access-review.md)に関するページをご覧ください。
 

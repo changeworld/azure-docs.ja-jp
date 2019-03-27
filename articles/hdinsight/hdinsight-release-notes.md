@@ -1309,7 +1309,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 ## <a name="known-issues"></a>既知の問題
 
--   **HDInsight と ADLS Gen 2 の統合** Azure Data Lake Storage Gen 2 をユーザー ディレクトリとアクセス許可と共に使用する HDInsight ESP クラスターには、次の 2 つの問題があります。
+-   **HDInsight と ADLS Gen 2 の統合** Azure Data Lake Storage Gen 2 を使用する HDInsight ESP クラスターには、ユーザー ディレクトリとアクセス許可に関して次の 2 つの問題があります。
    
    1. ユーザーのホーム ディレクトリが、ヘッド ノード 1 に作成されません。 回避策として、ディレクトリを手動で作成し、所有権をそれぞれのユーザーの UPN に変更します。
    

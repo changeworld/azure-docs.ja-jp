@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 03/18/2019
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 0a20f7629fbc102ae05c51c7388bbfd6915d6204
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3d51f5328aec66eee0d8382026e8795db45a6a2c
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257386"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189786"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高度なメディア エンコーダー プレミアム ワークフローのチュートリアル
 ## <a name="overview"></a>概要
@@ -44,12 +44,12 @@ ms.locfileid: "51257386"
   * [独立したオーディオ トラックの追加](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_audio_tracks)
   * ["ISM" SMIL ファイルの追加](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_ism_file)
 * [MXF をマルチビットレートの MP4 にエンコードする (設計の改良)](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4)
-  * [改良するワークフローの全体像](#workflow-overview-to-enhance)
+  * 改良するワークフローの全体像
   * [ファイルの名前付け規則](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_file_naming)
   * [コンポーネントのプロパティをワークフローのルートに公開する](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_publishing)
   * [生成される出力ファイル名に公開プロパティの値を使用する](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_output_files)
 * [マルチビットレートの MP4 出力にサムネイルを追加する](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)
-  * [サムネイルの追加先となるワークフローの全体像](#workflow-overview-to-add-thumbnails-to)
+  * サムネイルの追加先となるワークフローの全体像
   * [JPG エンコードの追加](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4__with_jpg)
   * [色空間の変換処理](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_color_space)
   * [サムネイルの作成](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_writing_thumbnails)
@@ -297,7 +297,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 
 ```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-    <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
+    <smil xmlns="https://www.w3.org/2001/SMIL20/Language">
       <head>
         <meta name="formats" content="mp4" />
       </head>
@@ -692,8 +692,8 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 まず、トリミングする区間を決める必要があります。 高度な技術知識は必要ありません。ワークフロー図のルートに 2 つのプロパティを公開しましょう。 デザイナー画面を右クリックし、[プロパティの追加] を選択します。
 
-* 1 つ目のプロパティ: "ClippingTimeStart" (型: "TIMECODE")
-* 2 つ目のプロパティ: "ClippingTimeEnd" (型: "TIMECODE")
+* 1 つ目のプロパティ:"ClippingTimeStart" (型:"TIMECODE")
+* 2 つ目のプロパティ:"ClippingTimeEnd" (型:"TIMECODE")
 
 ![クリッピングの開始時間のプロパティを追加するダイアログ](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-clip-start-time.png)
 
@@ -947,7 +947,7 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 [メディア エンコーダー プレミアム ワークフローの形式とコーデック](media-services-premium-workflow-encoder-formats.md)
 
-[サンプルのワークフロー ファイル](http://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
+[サンプルのワークフロー ファイル](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)
 
 [Azure Media Services Explorer ツール](https://aka.ms/amse)
 

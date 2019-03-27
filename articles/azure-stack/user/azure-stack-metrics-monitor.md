@@ -11,14 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 03/11/2018
 ms.author: mabrigg
-ms.openlocfilehash: fbd4552a9e40f16a6fedec4e04be0d7d6d39351d
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.lastreviewed: 12/01/2018
+ms.openlocfilehash: 174038c611d9e804817d49478f99c643f5280f7b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724487"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773048"
 ---
 # <a name="how-to-consume-monitoring-data-from-azure-stack"></a>Azure Stack の監視データの使用方法
 

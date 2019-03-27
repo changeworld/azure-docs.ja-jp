@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: f9bd0288d4009af536bdc8f45cbaed4b3f1eee18
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 884775fc2783256d9fff43e8bc6b26cc4f638648
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018712"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998622"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "48018712"
 
 カスタム プローブ構成を設定しない場合、アプリケーション ゲートウェイにより既定の正常性プローブが自動で構成されます。 監視は、バックエンド プールに構成済みの IP アドレスに対して HTTP 要求を行うことで実行されます。 既定のプローブでは、バックエンドの http 設定が HTTPS に対応するように構成されている場合、プローブはバックエンドの正常性をテストする際に HTTPS も使用します。
 
-たとえば、バックエンド サーバー A、B、C を使用して ポート 80 で HTTP ネットワーク トラフィックを受信するように、アプリケーション ゲートウェイを構成したとします。 既定の正常性監視では、30 秒ごとにこれら 3 つのサーバーに対して HTTP 応答が正常であるかどうかがテストされます。 正常な HTTP 応答の [状態コード](https://msdn.microsoft.com/library/aa287675.aspx) は、200 から 399 の間です。
+例: バックエンド サーバー A、B、C を使用して ポート 80 で HTTP ネットワーク トラフィックを受信するように、アプリケーション ゲートウェイを構成したとします。 既定の正常性監視では、30 秒ごとにこれら 3 つのサーバーに対して HTTP 応答が正常であるかどうかがテストされます。 正常な HTTP 応答の [状態コード](https://msdn.microsoft.com/library/aa287675.aspx) は、200 から 399 の間です。
 
 サーバー A に対する既定のプローブ チェックが失敗した場合、アプリケーション ゲートウェイはサーバー A をバックエンド プールから削除するため、ネットワーク トラフィックがこのサーバーに送られなくなります。 既定のプローブは、削除後もサーバー A を 30 秒ごとにチェックし続けます。 サーバー A は、既定の正常性プローブからの要求に正常に応答するようになるとバックエンド プールに「正常」として戻され、このサーバーへのトラフィックの送信が再開されます。
 
@@ -44,7 +44,7 @@ ms.locfileid: "48018712"
 
 例: 
 
-```
+```powershell
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
@@ -81,7 +81,7 @@ Application Gateway のすべてのインスタンスは、互いに独立して
 | プローブのプロパティ | 説明 |
 | --- | --- |
 | Name |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
-| プロトコル |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
+| Protocol |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
 | Host |プローブを送信するホスト名。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。 |
 | Path |プローブの相対パス。 パスは、先頭が '/' である必要があります。 |
 | interval |プローブの間隔 (秒)。 この値は、2 つの連続するプローブの時間間隔です。 |

@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
-ms.component: develop
+ms.subservice: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,12 +17,13 @@ ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
-ms.openlocfilehash: b74c3d355a720948c22e90b1792dcd6139c101ea
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 245683ec6c3c2d25f362e035020e162af75e1627
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338211"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169923"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 開発者向け用語集
 
@@ -132,7 +133,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 デバイス上にネイティブでインストールされるタイプの [クライアント アプリケーション](#client-application) 。 すべてのコードがデバイス上で実行され、機密性を保った状態でプライベートに資格情報を保存することができないため、"public" クライアントと見なされます。 詳細については、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するページを参照してください。
 
-## <a name="permissions"></a>アクセス許可
+## <a name="permissions"></a>permissions
 
 [クライアント アプリケーション](#client-application)は、アクセス許可要求を宣言することで[リソース サーバー](#resource-server)へのアクセス権を取得します。 次の 2 種類があります。
 

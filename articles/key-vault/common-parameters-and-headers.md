@@ -3,8 +3,8 @@ title: 一般的なパラメーターとヘッダー
 description: Key Vault リソースに関連するすべての操作に共通のヘッダーおよびパラメーター。
 services: key-vault
 documentationcenter: ''
-author: bryanla
-manager: mbaldwin
+author: msmbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: a715d13ca9-d6e8-4e54-ac5e-0ed9400fb15b15d13ca9-d6e8-4e54-ac5e-0ed9400fb15b
 ms.service: key-vault
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: bryanla
-ms.openlocfilehash: de9243a0a95c14a048be124976b07853a48a9a08
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.author: mbaldwin
+ms.openlocfilehash: cc6c937e37ebb7919ca271e765ad6460c104e43b
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075228"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405047"
 ---
 # <a name="common-parameters-and-headers"></a>一般的なパラメーターとヘッダー
 
@@ -34,12 +34,14 @@ ms.locfileid: "54075228"
 ## <a name="common-error-response"></a>一般的なエラー応答
 このサービスは、HTTP 状態コードを使用して成功または失敗を示します。 さらに、エラーには次の形式の応答が含まれています。
 
+```
    {  
      "error": {  
-     "code":"BadRequest",  
-     "message":"The key vault sku is invalid."  
+     "code": "BadRequest",  
+     "message": "The key vault sku is invalid."  
      }  
    }  
+```
 
 |要素名 | type | 説明 |
 |---|---|---|

@@ -3,19 +3,20 @@ title: 管理者によるユーザーとデバイスの管理 - Azure MFA | Micr
 description: ここでは、追加のセキュリティ確認を強制するなど、ユーザー設定を変更する方法について説明します。
 services: multi-factor-authentication
 ms.service: active-directory
-ms.component: authentication
+ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
-manager: mtillman
+manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 8d3ffa2664c747f5fbbd4269b23ae54850e0d750
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 941d11e9768d60c106c576e3f93bc7ad2067b73c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321001"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174862"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 内の Office 365 グループの有効期限ポリシーのクイック スタート | Microsoft Docs
+title: Office 365 グループの有効期限ポリシーのクイック スタート - Azure Active Directory | Microsoft Docs
 description: Office 365 グループの有効期限 - Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -7,20 +7,21 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 08/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 7008943e9077cbad3c58de43f64b105f35931bf3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 94e799c1728175431f94f720ec57b6332147741b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "40208902"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194480"
 ---
-# <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>クイック スタート: Azure Active Directory における Office 365 グループの有効期限を設定する
+# <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>クイック スタート:Azure Active Directory における Office 365 グループの有効期限を設定する
 
 このクイック スタートでは、Office 365 グループの有効期限ポリシーを設定します。 ユーザーが独自のグループを設定できるようになっていると、未使用のグループが増えてしまうことがあります。 未使用のグループを管理する 1 つの方法は、それらのグループに有効期限を設定することです。グループを手動で削除するというメンテナンスの負担が軽減されます。
 
@@ -54,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
   
   ![有効期限の設定](./media/groups-quickstart-expiration/expiration-settings.png)
 
-2. 期限切れの間隔を設定します。 プリセット値を選択するか、31 日を超えるカスタム値を入力します。 
+2. 期限切れの間隔を設定します。 プリセット値を選択するか、31 日を超えるカスタム値を入力します。 
 
 3. グループに所有者がいない場合に、有効期限の通知を送信するメール アドレスを指定します。
 

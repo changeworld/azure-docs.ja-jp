@@ -12,26 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 2/17/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.openlocfilehash: cd44aa1dcc0ac5f97d39dee91fb547a333cb6ccf
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.lastreviewed: 12/27/2018
+ms.openlocfilehash: 1ab59dfc42213fc5c5ce22841e572e2724e239aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247709"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119005"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack でサポートされているゲスト オペレーティング システム
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-## <a name="windows"></a> Windows
+## <a name="windows"></a>Windows
 
 Azure Stack は、次の表に示す Windows ゲスト オペレーティング システムをサポートしています。
 
 | オペレーティング システム | 説明 | Marketplace で利用可能 |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | Windows Server、バージョン 1709 | 64 ビット | コンテナー付き Core |
 | Windows Server 2016 | 64 ビット |  Datacenter、Datacenter Core、Datacenter with Containers |
 | Windows Server 2012 R2 | 64 ビット |  データセンター |
@@ -47,17 +48,17 @@ Marketplace イメージは従量課金制または BYOL (EA/SPLA) ライセン�
 
 Datacenter エディションは、Marketplace でダウンロードできます。お客様は、他のエディションを含む独自のサーバー イメージを使用できます。 Marketplace では、Windows クライアント イメージを利用できません。
 
-## <a name="linux"></a> Linux
+## <a name="linux"></a>Linux
 
 Marketplace で入手可能として示されている Linux ディストリビューションには、必要な Windows Azure Linux エージェント (WALA) が含まれます。 Azure Stack に独自のイメージを持ち込む場合は、「[Azure Stack への Linux イメージの追加](azure-stack-linux.md)」のガイドラインに従ってください。
 
 > [!NOTE]
-> カスタム イメージは、最新のパブリック WALA バージョンでビルドする必要があります。 2.2.18 より古いバージョンは、Azure Stack で正しく機能しない可能性があります。
+> カスタム イメージは、最新のパブリック WALA バージョンまたはバージョン 2.2.20 を使ってビルドする必要があります。 2.2.20 より古いバージョンと、2.2.20 から 2.2.36 までのバージョンは、Azure Stack 上で正しく機能しない可能性があります。 
 >
 > 現在、[cloud-init](https://cloud-init.io/) は Azure Stack ではサポートされていません。
 
-| ディストリビューション | 説明 | 発行元 | マーケットプレース |
-| --- | --- | --- | --- | --- | --- |
+| ディストリビューション | 説明 | Publisher | マーケットプレース |
+| --- | --- | --- | --- |
 | CentOS-based 6.9 | 64 ビット | Rogue Wave | はい |
 | CentOS-based 7.4 | 64 ビット | Rogue Wave | はい |
 | ClearLinux | 64 ビット | ClearLinux.org | はい |
@@ -69,7 +70,7 @@ Marketplace で入手可能として示されている Linux ディストリビ�
 | SLES 12SP3 | 64 ビット | SUSE | はい |
 | Ubuntu 14.04-LTS | 64 ビット | Canonical | はい |
 | Ubuntu 16.04-LTS | 64 ビット | Canonical | はい |
-| Ubuntu 18.04-LTS | 64 ビット | Canonical | [はい] |
+| Ubuntu 18.04-LTS | 64 ビット | Canonical | はい |
 
 Red Hat Enterprise Linux のサポート情報については、「[Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531)」(Red Hat と Azure Stack: よく寄せられる質問) を参照してください。
 

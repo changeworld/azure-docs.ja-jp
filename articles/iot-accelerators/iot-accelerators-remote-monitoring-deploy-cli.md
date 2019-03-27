@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/30/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5704cc21b14d83ebc30cd29f52102c751cfb11f2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 61da17d1dc59a08128671da163d8b3ea27f83994
+ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248012"
+ms.lasthandoff: 01/23/2019
+ms.locfileid: "54463220"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLI を使用してリモート監視ソリューション アクセラレータをデプロイする
 
@@ -70,7 +70,7 @@ Basic デプロイによって Azure サブスクリプション内に作成さ�
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux Virtual Machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | マイクロサービスのホスト |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard レベル | デバイス管理との通信 |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 標準        | 構成データ、ルール、アラーム、その他のコールド ストレージを格納する |  
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 標準        | 構成データ、ルール、アラート、その他のコールド ストレージを格納する |  
 | 1     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | 標準        | VM およびストリーミング チェックポイントのストレージ |
 | 1     | [Web アプリケーション](https://azure.microsoft.com/services/app-service/web/)        |                 | フロント エンド Web アプリケーションのホスト |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | ユーザー ID とセキュリティを管理する |
@@ -89,7 +89,7 @@ Standard デプロイによって Azure サブスクリプション内に作成�
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| フル マネージドの Kubernetes コンテナー オーケストレーション サービスをぜひご利用ください。既定のエージェントは 3 つです。|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard レベル | デバイス管理、コマンドとコントロール |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 標準        | 構成データ、およびルール、アラーム、メッセージなどのデバイス テレメトリの格納 |
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 標準        | 構成データ、およびルール、アラート、メッセージなどのデバイス テレメトリの格納 |
 | 5     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | 標準        | VM ストレージ用に 4 つ、およびストリーミング チェックポイント用に 1 つ |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | SSL 経由のアプリケーション ゲートウェイ |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | ユーザー ID とセキュリティを管理する |

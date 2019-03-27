@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 9cc08920c5b8814a3e4b649f4518dce78c7cb38e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: ce9804a4ecad4cd0f2e797038dc10c71b50de9bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54160527"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122719"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Azure portal を使用して Azure Database for MariaDB のメトリックのアラートを設定する
 
@@ -25,10 +25,9 @@ ms.locfileid: "54160527"
 * Webhook を呼び出す
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
-* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
-* [コマンド ライン インターフェイス (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
-* [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
+* [Azure 監視 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric"></a>メトリックのアラート ルールを作成する
 1. [Azure portal](https://portal.azure.com/) で、監視する Azure Database for MariaDB サーバーを選択します。
@@ -49,7 +48,7 @@ ms.locfileid: "54160527"
    
    ![メトリックを選択する](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. アラート ロジックを構成します。これには、**[条件]**(例: 「より大きい」)、**[しきい値]** (例: 85 パーセント)、**[時間の集計]**、どのくらいの期間メトリック ルールが満たされた後にアラートがトリガーされるかを示す **[期間]** (例: 「直近 30 分」)、**[頻度]** があります。
+7. アラート ロジックを構成します。これには、**[条件]**(例: 「より大きい」)、**[しきい値]** (例: 85 パーセント)、**[時間の集計]**、どのくらいの期間メトリック ルールが満たされた後にアラートがトリガーされるかを示す **[期間]** (例: 「直近 30 分」)、と **[頻度]** があります。
    
    完了したら、**[完了]** を選択します。
 
@@ -61,21 +60,21 @@ ms.locfileid: "54160527"
 
 10. アクションの種類で、**[電子メール/SMS/プッシュ/音声]** を構成します。
     
-   [電子メールの Azure Resource Manager のロール] を選択して、通知を受信するサブスクリプションの所有者、共同作成者、および閲覧者を選択します。
+    [電子メールの Azure Resource Manager のロール] を選択して、通知を受信するサブスクリプションの所有者、共同作成者、および閲覧者を選択します。
    
-   オプションで、アラートが発生したときに呼び出す webhook の有効な URI を **[webhook]** フィールドに入力します。
+    オプションで、アラートが発生したときに呼び出す webhook の有効な URI を **[webhook]** フィールドに入力します。
 
-   完了したら、**[OK]** を選択します。
+    完了したら、**[OK]** を選択します。
 
-   ![アクション グループ](./media/howto-alert-metric/10-action-group-type.png)
+    ![アクション グループ](./media/howto-alert-metric/10-action-group-type.png)
 
 11. [アラート ルール名]、[説明]、[重大度] を指定します。
 
-   ![アクション グループ](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![アクション グループ](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. **[アラート ルールの作成]** を選択して、アラートを作成します。
 
-   数分後にアラートがアクティブになり、前述のようにトリガーされます。
+    数分後にアラートがアクティブになり、前述のようにトリガーされます。
 
 ## <a name="manage-your-alerts"></a>アラートの管理
 アラートを作成したら、それを選択して次のアクションを実行できます。

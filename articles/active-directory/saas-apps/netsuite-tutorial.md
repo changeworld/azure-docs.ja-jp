@@ -4,7 +4,7 @@ description: Azure Active Directory と NetSuite の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dafa0864-aef2-4f5e-9eac-770504688ef4
 ms.service: Azure-Active-Directory
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 05e565d58faefbfc80815635afa38595177ad353
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f9c1b7b60069b4ea59828bc552c4dc1e6da6b001
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53807467"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869056"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>チュートリアル:Azure Active Directory と NetSuite の統合
 
@@ -131,7 +132,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
     
     | Name | ソース属性 | 
     | ---------------| --------------- |
-    | アカウント  | `account id` |
+    | account  | `account id` |
 
     a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
@@ -228,7 +229,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
     c. **[New Role]** をクリックします。
 
-    d. 新しいロールの**名前**を入力します:
+    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 新しいロールの**名前**を入力します:
 
     ![Configure single sign-on](./media/NetSuite-tutorial/ns-new-role.png)
 
@@ -325,7 +326,7 @@ NetSuite で Azure AD のシングル サインオンを構成するには、次
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
