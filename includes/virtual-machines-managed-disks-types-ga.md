@@ -8,54 +8,33 @@ ms.topic: include
 ms.date: 03/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0201776914610ddaca50a670fc500156a65cd734
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: 88a4110d68dc8aa921d647f90de654d2ebb4e17d
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58124685"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58395742"
 ---
 ## <a name="premium-ssd"></a>Premium SSD
 
 Azure Premium SSD では、IO (入出力) を集中的に行うワークロードが存在する仮想マシン (VM) 向けに、高パフォーマンスで待ち時間の少ないディスク サポートが提供されます。 Premium Storage ディスクの速度とパフォーマンスを活用するために、既存の VM ディスクを Premium SSD に移行することができます。 Premium SSD は、ミッション クリティカルな運用アプリケーションに適しています。
 
 ### <a name="disk-size"></a>ディスク サイズ
-
-アスタリスクで示されるサイズは現在プレビュー中です。
-
-| Premium SSD のサイズ | P4 | P6 | P10 | P15 | P20 | P30 | P40 | P50 | P60* | P70* | P80* |
-|-------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| ディスク サイズ (GiB) | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,095 | 8,192 | 16,384 | 32,767 |
-| ディスクあたりの IOPS | 最大 120 | 最大 240 | 最大 500 | 最大 1,100 | 最大 2,300 | 最大 5,000 | 最大 7,500 | 最大 7,500 | 最大 12,500 | 最大 15,000 | 最大 20,000 |
-| ディスクあたりのスループット | 最大 25 MiB/秒 | 最大 50 MiB/秒 | 最大 100 MiB/秒 | 最大 125 MiB/秒 | 最大 150 MiB/秒 | 最大 200 MiB/秒 | 最大 250 MiB/秒 | 最大 250 MiB/秒| 最大 480 MiB/秒 | 最大 750 MiB/秒 | 最大 750 MiB/秒 |
+[!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="standard-ssd"></a>Standard SSD
 
 Azure Standard SSD は、比較的低い IOPS レベルで一貫したパフォーマンスを必要とするワークロード向けに最適化された、コスト効果に優れたストレージ オプションです。 Standard SSD は、クラウドへの移行を希望している方、特にオンプレミスの HDD ソリューションで実行されているワークロードのばらつきによって問題が発生している場合に、エントリ レベルの優れたエクスペリエンスを提供します。 Standard SSD は、HDD ディスクに比べて、可用性、一貫性、信頼性、待機時間が優れています。 Standard SSD は、Web サーバー、低い IOPS のアプリケーション サーバー、使用の少ないエンタープライズ アプリケーション、開発/テストのワークロードに適しています。
 
 ### <a name="disk-size"></a>ディスク サイズ
-
-アスタリスクで示されるサイズは現在プレビュー中です。
-
-| Standard SSD のサイズ | E4 | E6 | E10 | E15 | E20 | E30 | E40 | E50 | E60* | E70* | E80* |
-|--------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| ディスク サイズ (GiB) | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,095 | 8,192 | 16,384 | 32,767 |
-| ディスクあたりの IOPS | 最大 120 | 最大 240 | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 1,300 | 最大 2,000 | 最大 2,000 |
-| ディスクあたりのスループット |  最大 25 MiB/秒 |  最大 50 MiB/秒  |  最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒| 最大 300 MiB/秒 |  最大 500 MiB/秒 | 最大 500 MiB/秒 |
+[!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
 ## <a name="standard-hdd"></a>Standard HDD
 
 Azure Standard HDD では、待機時間の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポートが提供されます。 また、BLOB、テーブル、キュー、ファイルもサポートしています。 Standard Storage では、データはハード ディスク ドライブ (HDD) に格納されます。 VM を使用するとき、開発/テスト シナリオや重要度の低いワークロードには Standard SSD および HDD ディスクを使用できます。 Standard Storage はすべての Azure リージョンで利用できます。
 
 ### <a name="disk-size"></a>ディスク サイズ
-
-アスタリスクで示されるサイズは現在プレビュー中です。
-
-| Standard ディスクの種類 | S4 | S6 | S10 | S15 | S20 | S30 | S40 | S50 | S60* | S70* | S80* |
-|--------------------|----|----|-----|-----|-----|-----|-----|-----|------|------|------|
-| ディスク サイズ (GiB) | 32 | 64 | 128 | 256 | 512 | 1,024 | 2,048 | 4,095 | 8,192 | 16,384 | 32,767 |
-| ディスクあたりの IOPS | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 500 | 最大 1,300 | 最大 2,000 | 最大 2,000 |
-| ディスクあたりのスループット | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒| 最大 300 MiB/秒 | 最大 500 MiB/秒 | 最大 500 MiB/秒 |
+[!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
 ## <a name="billing"></a>課金
 

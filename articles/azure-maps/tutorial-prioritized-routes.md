@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2af3981e05482a5f59b19cfaa2e400ae47295763
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: d78f46d2d62ca9db9400e0f436a8c0358734a54e
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588841"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540518"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Azure Maps を使用してさまざまな移動モードのルートを検索します
 
@@ -42,11 +42,11 @@ ms.locfileid: "57588841"
     <html>
     <head>
         <title>Map Route</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css" />
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
         <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
@@ -79,21 +79,21 @@ ms.locfileid: "57588841"
     </body>
     </html>
     ```
-    
+
     HTML ヘッダーに、Azure マップ コントロール ライブラリによってホストされる CSS および JavaScript のリソース ファイルが含まれることに注意してください。 ページ本体の `onload` イベントに注目してください。ページの本体が読み込まれると、このイベントによって `GetMap` 関数が呼び出されます。 この関数には、Azure Maps API にアクセスするためのインライン JavaScript コードが含まれます。
 
 3. `GetMap` 関数に、次の JavaScript コードを追加します。 **\<Your Azure Maps Key\>** という文字列を、Maps アカウントからコピーした主キーに置き換えてください。
 
     ```JavaScript
-   //Instantiate a map object
-   var map = new atlas.Map("myMap", {
-       //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
-       authOptions: {
-        authType: 'subscriptionKey',
-        subscriptionKey: '<Your Azure Maps Key>'
-       }
-   });
-   ```
+    //Instantiate a map object
+    var map = new atlas.Map("myMap", {
+        //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
+        authOptions: {
+            authType: 'subscriptionKey',
+            subscriptionKey: '<Your Azure Maps Key>'
+        }
+    });
+    ```
 
     **atlas.Map** は、ビジュアルと対話型 Web マップのためのコントロールを提供し、Azure マップ コントロール API のコンポーネントです。
 
@@ -113,8 +113,8 @@ ms.locfileid: "57588841"
         });
     });
     ```
-    
-     読み込みイベントがマップに追加されます。これは、マップ リソースが完全に読み込まれたときに発生します。 マップの読み込みイベントのハンドラーで、マップのトラフィック フロー設定を `relative` (フリーフローを基準とした道路の速度) に設定します。 道路の速度を `absolute` に設定することもできますし、`relative-delay` に設定して、フリーフローとの差を示す相対的速度を表示することもできます。
+
+    読み込みイベントがマップに追加されます。これは、マップ リソースが完全に読み込まれたときに発生します。 マップの読み込みイベントのハンドラーで、マップのトラフィック フロー設定を `relative` (フリーフローを基準とした道路の速度) に設定します。 道路の速度を `absolute` に設定することもできますし、`relative-delay` に設定して、フリーフローとの差を示す相対的速度を表示することもできます。
 
 2. **MapTruckRoute.html** ファイルを保存し、ブラウザーでページを更新します。 マップと対話してロサンゼルスにズーム インすると、道路が交通データ付きで表示されます。
 
@@ -157,7 +157,7 @@ ms.locfileid: "57588841"
     ```
 
     読み込みイベントがマップに追加されます。これは、マップ リソースが完全に読み込まれたときに発生します。 マップの読み込みイベントのハンドラーで、ルートの線および起点と終点を格納するためのデータ ソースを作成します。 ルートの線のレンダリング方法を定義するために、線レイヤーが作成され、データ ソースにアタッチされます。 式を使って、線の幅と色をルートの線の特徴に関するプロパティから取得します。 このレイヤーで GeoJSON LineString データだけがレンダリングされるように、フィルターを追加しています。 このレイヤーをマップに追加する際に、`'labels'` という値の第 2 パラメーターを渡します。これにより、このレイヤーをマップ ラベルの下にレンダリングするよう指定します。 この結果、ルートの線で道路のラベルが覆い隠されないようになります。 記号レイヤーを作成し、データ ソースにアタッチします。 起点と終点のレンダリング方法は、このレイヤーで指定します。ここでは、各ポイント オブジェクトのプロパティからアイコン画像とテキスト ラベル情報を取得するための式を追加しています。
-    
+
 2. このチュートリアルでは、シアトルにある架空の会社 (Fabrikam) を起点とし、Microsoft 本社を終点に設定します。 マップの読み込みイベントのハンドラーに、次のコードを追加します。
 
     ```JavaScript
@@ -166,13 +166,13 @@ ms.locfileid: "57588841"
         title: 'Fabrikam, Inc.',
         icon: 'pin-blue'
     });
-    
+
     var endPoint = new atlas.data.Feature(new atlas.data.Point([-122.201164, 47.616940]), {
         title: 'Microsoft - Lincoln Square',
         icon: 'pin-round-blue'
     });
     ```
-    
+
     このコードは、ルートの起点と終点を表す 2 つの [GeoJSON オブジェクト](https://en.wikipedia.org/wiki/GeoJSON)を作成します。 それぞれの点に、`title` プロパティと `icon` プロパティを追加します。
 
 3. 続けて、次の JavaScript コードを追加して、起点と終点のピンをマップに追加します。
@@ -187,6 +187,7 @@ ms.locfileid: "57588841"
         padding: 100
     });
     ```
+
     起点と終点をデータ ソースに追加します。 起点と終点の境界ボックスは、`atlas.data.BoundingBox.fromData` 関数を使用して計算されます。 この境界ボックスと `map.setCamera` 関数を使用して、ルート全体にマップのカメラ ビューが設定されます。 記号アイコンの画像サイズ (ピクセル) を相殺するためにパディングを追加しています。
 
 4. ファイルを保存し、ブラウザーを更新してマップ上にピンを表示します。 マップの中心がシアトルに設定され、起点を示す丸い青色のピンと、終点を示す青色のピンが表示されます。
@@ -201,7 +202,7 @@ ms.locfileid: "57588841"
 
 1. GetMap 関数内に、次の JavaScript コードを追加します。
 
-    ```Javascript
+    ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key
     var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(atlas.getSubscriptionKey());
 
@@ -211,6 +212,7 @@ ms.locfileid: "57588841"
     // Construct the RouteURL object
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
+
    **SubscriptionKeyCredential** は、Azure Maps に対してサブスクリプション キーで HTTP 要求を認証する **SubscriptionKeyCredentialPolicy** を作成します。 **atlas.service.MapsURL.newPipeline()** は、**SubscriptionKeyCredential** ポリシーを受け取って、[Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) のインスタンスを作成します。 **routeURL** は、Azure Maps の [Route](https://docs.microsoft.com/rest/api/maps/route) 操作の URL を表します。
 
 2. 資格情報と URL を設定した後、USHazmatClass2 クラスの積み荷を運ぶトラックの基点から終点までのルートを構築し、その結果を表示するための次の JavaScript コードを追加します。
@@ -227,35 +229,36 @@ ms.locfileid: "57588841"
         vehicleLength: 5,
         vehicleLoadType: 'USHazmatClass2'
     }).then((directions) => {
-          //Get data features from response
-          var data = directions.geojson.getFeatures();
-        
-          //Get the route line and add some style properties to it.  
-          var routeLine = data.features[0];
-          routeLine.properties.strokeColor = '#2272B9';
-          routeLine.properties.strokeWidth = 9;
-          
-          //Add the route line to the data source. We want this to render below the car route which will likely be added to the data source faster, so insert it at index 0.
-          datasource.add(routeLine, 0);
-        });
+        //Get data features from response
+        var data = directions.geojson.getFeatures();
+
+        //Get the route line and add some style properties to it.  
+        var routeLine = data.features[0];
+        routeLine.properties.strokeColor = '#2272B9';
+        routeLine.properties.strokeWidth = 9;
+
+        //Add the route line to the data source. We want this to render below the car route which will likely be added to the data source faster, so insert it at index 0.
+        datasource.add(routeLine, 0);
+    });
     ```
+
     上記のコード スニペットでは、[getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) メソッドを介して Azure Maps ルーティング サービスにクエリを行います。 応答から **geojson.getFeatures()** メソッドを使用して抽出される GeoJSON フィーチャー コレクションから、ルートの線が抽出されます。 その後、ルートの線がデータ ソースに追加されます。 さらに、データ ソース内の他の行の前に確実にレンダリングされるように、インデックス 0 が追加されます。 トラックのルート計算は、えてして乗用車のルート計算よりも時間がかかるものであり、トラックのルートの線が乗用車のルートよりも遅れてデータ ソースに追加された場合、その上にレンダリングされてしまうためです。 トラックのルートの線には、2 つのプロパティを追加します。ストローク カラー (繊細な青色) とストロークの幅 (9 ピクセル) です。
 
 3. 次の JavaScript コードを追加して、乗用車のルートを構築し、結果を表示します。
 
     ```JavaScript
-     routeURL.calculateRouteDirections(atlas.service.Aborter.timeout(10000), coordinates).then((directions) => {
-      
-      //Get data features from response
-      var data = directions.geojson.getFeatures();
+    routeURL.calculateRouteDirections(atlas.service.Aborter.timeout(10000), coordinates).then((directions) => {
 
-      //Get the route line and add some style properties to it.  
-      var routeLine = data.features[0];
-      routeLine.properties.strokeColor = '#B76DAB';
-      routeLine.properties.strokeWidth = 5;
-      
-      //Add the route line to the data source. We want this to render below the car route which will likely be added to the data source faster, so insert it at index 0.  
-      datasource.add(routeLine);
+        //Get data features from response
+        var data = directions.geojson.getFeatures();
+
+        //Get the route line and add some style properties to it.  
+        var routeLine = data.features[0];
+        routeLine.properties.strokeColor = '#B76DAB';
+        routeLine.properties.strokeWidth = 5;
+
+        //Add the route line to the data source. We want this to render below the car route which will likely be added to the data source faster, so insert it at index 0.  
+        datasource.add(routeLine);
     });
     ```
 

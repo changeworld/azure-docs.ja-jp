@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 75569d552baba8ce72b5e322d6ef6f81fcaa4bc5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f4d94536a8c1b509e0ce435a764e69984b5d415e
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761261"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499303"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Azure バックエンド接続機能の相互運用性: データ プレーンの分析
 
@@ -518,7 +518,7 @@ ExpressRoute とサイト間 VPN が共存する接続を構成する方法の�
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface
-[Configuration]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-config
+[Configuration]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-configuration
 [ExpressRoute]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction
 [VPN]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways
 [VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal

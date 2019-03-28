@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: dc84d5850656a0898fba328b652d86f3d8995bef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb1d6c5bd51fcfe35127c2f6d8dd6a80b727c45f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118376"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517149"
 ---
 # <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Azure Data Box を使用して適切な Azure Storage BLOB 層にデータを送信する
 
@@ -27,7 +27,7 @@ Azure storage では、非常にコスト パフォーマンスに優れた方�
 
 クール ストレージ層は、30 日以上保存する必要がある、頻繁にはアクセスされないデータに適しています。 コールド層のストレージ コストは、ホット ストレージ層よりも低くなります。ただし、データ アクセス料金は、ホット層と比べて高くなります。
 
-Azure アーカイブ層はオフラインであり、ストレージ コストは最も低くなりますが、アクセス コストは最も高くなります。 この層は、180 日以上アーカイブ ストレージに残るデータを保存することを目的としています。 それぞれの層および価格モデルの詳細については、「[ストレージ層の比較](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#comparison-of-the-storage-tiers)」を参照してください。
+Azure アーカイブ層はオフラインであり、ストレージ コストは最も低くなりますが、アクセス コストは最も高くなります。 この層は、180 日以上アーカイブ ストレージに残るデータを保存することを目的としています。 それぞれの層および価格モデルの詳細については、「[ストレージ層の比較](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)」を参照してください。
 
 Data Box のデータは、ストレージ アカウントに関連付けられているストレージ層にアップロードされます。 ストレージ アカウントの作成時、アクセス層をホットまたはコールドとして指定できます。 このデータは、ワークロードのアクセス パターンとコストに応じて、既定の層から別のストレージ層に移動できます。
 

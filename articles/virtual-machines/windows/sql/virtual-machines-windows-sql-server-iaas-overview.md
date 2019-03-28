@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e845724d02d668444a770deb5f02b50560a14653
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 99c4f0f99af61196cf1a12f2f68a7d10d8b2e6c7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771389"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481282"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 
@@ -85,7 +85,7 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 
 Azure portal で利用できない SQL Server の古いイメージを、PowerShell を使用してデプロイすることはできますか。 Powershell を使用して、使用可能なすべてのイメージを表示するには、次のコマンドを使用します。
 
-  ```PowerShell
+  ```powershell
   Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
   ```
 

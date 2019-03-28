@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: fd5ae375dff80c8b1179d2fd73566d07c5861e4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a9de0f0021d92c59c44e85f0487cc9a08b6a3099
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000342"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497364"
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Azure VM での MATLAB Distributed Computing Server クラスターの作成
 コンピューティング集中型の並列 MATLAB ワークロードを実行する 1 つ以上の MATLAB Distributed Computing Server クラスターを作成するには、Microsoft Azure Virtual Machines を使用します。 VM に MATLAB Distributed Computing Server ソフトウェアをインストールして基本イメージとして使用し、Azure のクイック スタート テンプレートまたは Azure PowerShell スクリプト ( [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)から入手可能) を使用してクラスターをデプロイおよび管理します。 デプロイ後には、クラスターに接続してワークロードを実行します。
@@ -34,7 +34,7 @@ Azure の仮想マシンを使用すると、対話型のジョブ、バッチ �
 * **Azure PowerShell** : クライアント コンピューターにインストールする方法については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
 * **Azure サブスクリプション** - サブスクリプションがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成することができます。 大規模なクラスターでは、従量課金制サブスクリプションまたはその他の購入オプションを検討してください。
 * **vCPU クォータ** : 大規模なクラスターまたは複数の MATLAB Distributed Computing Server クラスターをデプロイするには、vCPU クォータを増やす必要があります。 クォータを増やすには、 [オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
-* **MATLAB の Parallel Computing Toolbox および MATLAB Distributed Computing Server ライセンス** : このスクリプトでは、すべてのライセンスで [MathWorks Hosted License Manager](https://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/) が使用されていることを想定しています。  
+* **MATLAB の Parallel Computing Toolbox および MATLAB Distributed Computing Server ライセンス** : このスクリプトでは、すべてのライセンスで [MathWorks Hosted License Manager](https://www.mathworks.com/help/install/license-management.html) が使用されていることを想定しています。  
 * **MATLAB Distributed Computing Server ソフトウェア** : クラスター VM の基本 VM イメージとして使用される VM にインストールされます。
 
 ## <a name="high-level-steps"></a>手順の概要

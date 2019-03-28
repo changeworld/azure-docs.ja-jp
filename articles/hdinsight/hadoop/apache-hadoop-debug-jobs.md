@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 4d3d45434a90e89e011bf8aa7c3fd37909e25386
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a035789af08aa4c0d877a06295d9bd6fdedf6844
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203066"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449484"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop のログを分析する
 
@@ -315,6 +315,5 @@ Azure Portal から、HDInsight HBase クラスター名をクリックし、ク
 
 ## <a name="next-steps"></a>次の手順
 
-* [HDInsight で Apache Ambari ビューを使用して Apache Tez ジョブをデバッグする](../hdinsight-debug-ambari-tez-view.md)
 * [Linux ベースの HDInsight で Apache Hadoop サービスのヒープ ダンプを有効にする](../hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [Apache Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)

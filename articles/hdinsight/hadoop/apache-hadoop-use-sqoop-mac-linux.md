@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 265881ede035e8b854be1bd54a70fa8c7ef127ab
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 0f96ee3a24a811d7e3ab7e65ba4ff14050541638
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200526"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443373"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
@@ -160,7 +160,7 @@ Sqoop を使用して、SQL Server からデータのインポートとエクス
 
 ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
 
-* [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie.md):Oozie ワークフローで Sqoop アクションを使用します。
+* [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie-linux-mac.md):Oozie ワークフローで Sqoop アクションを使用します。
 * [HDInsight を使用したフライト遅延データの分析](../hdinsight-analyze-flight-delay-data-linux.md):Apache Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL Database にデータをエクスポートします。
 * [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight/Azure Blob Storage にデータをアップロードするその他の方法を説明します。
 

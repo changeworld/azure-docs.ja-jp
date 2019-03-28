@@ -4,7 +4,7 @@ description: このクイック スタートでは、Azure Active Directory (Azu
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 ms.assetid: ''
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/14/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e950450a1ebe710a56ccfa0e8abefc7104602ec5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4de5fdfab0858536cdd0cd81a81ea7cbc012b855
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206176"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518220"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 
@@ -114,7 +114,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     c. **[選択]** ページで **[Alain Charon]** を選択し、**[選択]** をクリックします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザーとグループ]** ページで、**[完了]** をクリックします。
+    d. **[ユーザーとグループ]** ページで、**[完了]** をクリックします。
 
 8. **[クラウド アプリ]** をクリックします。
 
@@ -142,7 +142,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     c. [サインイン リスク レベル] で **[中]** を選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[選択]** をクリックします。
+    d. **[選択]** をクリックします。
 
     e. **[条件]** ページで、**[完了]** をクリックします。
 

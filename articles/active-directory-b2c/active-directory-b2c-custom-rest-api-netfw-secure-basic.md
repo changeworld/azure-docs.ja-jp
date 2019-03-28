@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 71a5ca62dc5d21e30a4944f8be57a77040f4f204
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: ef408022174bc53300626b71f28bafe0561dc343
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733690"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486242"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する
 
@@ -46,7 +46,7 @@ ms.locfileid: "55733690"
 
     複雑なパスワードを生成するには、次の PowerShell コードを実行します。 任意の値を使用できます。
 
-    ```PowerShell
+    ```powershell
     $bytes = New-Object Byte[] 32
     $rand = [System.Security.Cryptography.RandomNumberGenerator]::Create()
     $rand.GetBytes($bytes)
@@ -237,7 +237,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 6. **[シークレット]** ボックスに、前に定義したアプリ ID を入力します。
 
-7. **[キー使用法]** には **[シークレット]** を選択します。
+7. **[キー使用法]** には **[署名]** を選択します。
 
 8. **作成**を選択します。
 
@@ -257,7 +257,7 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
 
 6. **[シークレット]** ボックスに、前に定義したアプリ シークレットを入力します。
 
-7. **[キー使用法]** には **[シークレット]** を選択します。
+7. **[キー使用法]** には **[署名]** を選択します。
 
 8. **作成**を選択します。
 

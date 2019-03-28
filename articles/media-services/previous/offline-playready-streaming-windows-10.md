@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: willzhan
-ms.openlocfilehash: 7d907e3d06e8c2817b1fc4a30a7f808d06b022ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 75073058647f8e27a048e5ba0673a3d7e3f6a465
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884712"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311256"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Windows 10 用のオフライン PlayReady ストリーミング  
 

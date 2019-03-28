@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 15cdc78559a8f299e2bf0f357bbb7c0664881712
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 86cb6f6a18cb799574ae9badc0f02144b3a6e1d7
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116896"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445118"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する
 
@@ -332,5 +332,4 @@ Oozie Web UI は、クラスターでの Oozie ジョブの状態を表示する
 
 ## <a name="next-steps"></a>次の手順
 * [Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する](../hdinsight-use-oozie-linux-mac.md)。
-* [時間ベースの Apache Oozie コーディネーターを使用する](../hdinsight-use-oozie-coordinator-time.md)。
 * [SSH を使用して HDInsight (Apache Hadoop) に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined)。

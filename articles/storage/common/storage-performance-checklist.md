@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 1b6c8b1af00c2819632c60a27d61d7cf8db44885
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d39c2414aa8299282b3896a9ceb57897fdb25ff1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012321"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445995"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
 ## <a name="overview"></a>概要
@@ -98,7 +98,7 @@ Azure Storage 自体では、サブスクリプションおよびリージョン
 特定のサブスクリプションとリージョンの組み合わせで利用できるストレージ アカウント数の制限に近づいている場合は、アプリケーションとストレージ アカウントの使用状況を評価して、以下のいずれかの状況に該当するかどうかを判断します。
 
 * ストレージ アカウントをアンマネージド ディスクとして使用し、これらのディスクを仮想マシンに追加している。 このシナリオでは、[マネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)の使用をお勧めします。個々のストレージ アカウントを自分で作成して管理することなく、ストレージ ディスクのスケーラビリティが自動的に処理されるからです。
-* データを分離するために、顧客ごとに 1 つのストレージ アカウントを使用している。 このシナリオでは、ストレージ アカウント全体ではなく、顧客ごとにストレージ コンテナーを使用することをお勧めします。 Azure Storage では、[コンテナーごとに](storage-auth-aad-rbac.md)ロールベースのアクセス制御を指定できるようになりました。
+* データを分離するために、顧客ごとに 1 つのストレージ アカウントを使用している。 このシナリオでは、ストレージ アカウント全体ではなく、顧客ごとにストレージ コンテナーを使用することをお勧めします。 Azure Storage では、[コンテナーごとに](storage-auth-aad-rbac-portal.md)ロールベースのアクセス制御を指定できるようになりました。
 * イングレス/エグレス/IOPS/容量のスケーラビリティ向上のため、複数のストレージ アカウントを使用してシャード化している。 このシナリオでは、ワークロードに必要なストレージ アカウントの数を減らすために、可能であれば標準のストレージ アカウントの[制限を引き上げる](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)ことをお勧めします。
 
 アプリケーションが 1 つのストレージ アカウントに対するスケーラビリティ ターゲットに接近している場合は、次の方法のいずれかを検討し、適用します。  

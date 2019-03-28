@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 3a22caa39dad3ce296c43015f324270b7dc55ae8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/25/2019
+ms.openlocfilehash: 77e7ed6b39f18f05323562865097dd0760240abf
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862031"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446370"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database"></a>Azure SQL Database 用の Azure PowerShell サンプル
 
@@ -65,7 +65,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 | |  |
 |---|---|
 |**マネージド インスタンスを作成して構成する**||
-| [Managed Instance を作成し、管理する](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/) | この PowerShell スクリプトでは、Azure PowerShell を使用してマネージド インスタンスを作成および管理する方法が示されます |
+| [Managed Instance を作成し、管理する](scripts/sql-database-create-configure-managed-instance-powershell.md) | この PowerShell スクリプトでは、Azure PowerShell を使用してマネージド インスタンスを作成および管理する方法が示されます |
 | [Azure Resource Manager テンプレート を使用してマネージド インスタンスを作成および管理する](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md?toc=%2fpowershell%2fmodule%2ftoc.json) | この PowerShell スクリプトは、Azure PowerShell Azure Resource Manager テンプレートを使用してマネージド インスタンスを作成および管理する方法を示しています。|
 | **透過的なデータ暗号化 (TDE) の構成**||
 | [Azure Key Vault の独自のキーを使用してマネージド インスタンスで Transparent Data Encryption を管理する](scripts/transparent-data-encryption-byok-sql-managed-instance-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| この PowerShell スクリプトによって、Azure Key Vault のキーを使用し、Azure SQL マネージド インスタンスの Bring Your Own Key シナリオで Transparent Data Encryption (TDE) が構成されます。|

@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: a22512a960426cc21f4f012e06b9df4fa86e637e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 046aed64d3551d5c0b6ddae44b925452c01c297a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807271"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337597"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする
 
@@ -152,7 +152,7 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 
 1. 呼び出すリソースの要求**メソッド**と **URI** の場所など、そのアクションに必要な詳細を提供します。
 
-   たとえば、[Azure AD をサポートする次の Azure サービスのいずれかで](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) Azure Active Directory (Azure AD) 認証を使用しているとします。 
+   たとえば、[Azure AD をサポートする次の Azure サービスのいずれかで](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) Azure Active Directory (Azure AD) 認証を使用しているとします。 
    **[URI]** ボックスに、その Azure サービスのエンドポイント URL を入力します。 
    つまり、Azure Resource Manager を使用している場合、**[URI]** プロパティにこの値を入力します。
 
@@ -167,7 +167,7 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
    > [!IMPORTANT]
    > 
    > **[対象ユーザー]** プロパティで、リソース ID 値は、必須の末尾のスラッシュも含めて Azure AD で予想される値に正確に一致している必要があります。 
-   > これらのリソース ID 値は、この [Azure AD をサポートする Azure サービスについて説明する表](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication)で確認できます。 
+   > これらのリソース ID 値は、この [Azure AD をサポートする Azure サービスについて説明する表](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)で確認できます。 
    > たとえば、Azure Resoruce Manager のリソース ID を使用している場合、URI の末尾にスラッシュがあることを確認します。
 
 1. ご希望の方法でロジック アプリのビルドを続行します。

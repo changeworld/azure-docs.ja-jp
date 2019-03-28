@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 1a71fb81acc91036ce12ff15f6b2762b808c7473
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 03/26/2019
+ms.openlocfilehash: 69963f34cb49482cc7eae25320a6a3a5f176f8dd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53541619"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486583"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
 **適用対象:** Azure Database for PostgreSQL 9.6 および 10
-
-> [!IMPORTANT]
-> Query Performance Insight 機能は現在パブリック プレビュー段階です。 
 
 Query Performance Insight では、実行時間が最長のクエリ、クエリの経時変化､影響を受けている待機状態を素早く特定することができます。
 

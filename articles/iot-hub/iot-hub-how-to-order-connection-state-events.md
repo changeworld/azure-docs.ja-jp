@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: 5580d67f796efc809ef536818419ab91e8ee54a2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: edaa0cdcd98ce529ccbf9bf6aafaacf57a3ea383
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540013"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337529"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -24,9 +24,9 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、[無料アカウントを作成する](https://azure.microsoft.com/pricing/free-trial/)ことができます。
 
-* アクティブな Azure Cosmos DB SQL API アカウント。 まだ作成していない場合は、「[データベース アカウントの作成](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-a-database-account)」の手順を参照してください。
+* アクティブな Azure Cosmos DB SQL API アカウント。 まだ作成していない場合は、「[データベース アカウントの作成](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-an-account)」の手順を参照してください。
 
-* データベース内のコレクション。 「[コレクションの追加](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-collection)」の手順を参照してください。
+* データベース内のコレクション。 「[コレクションの追加](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-database-and-a-collection)」の手順を参照してください。
 
 * Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](../iot-hub/iot-hub-csharp-csharp-getstarted.md)」のチュートリアルをご覧ください。 
 
@@ -350,5 +350,3 @@ Azure Cosmos DB アカウントを Azure portal から削除するには、ア�
 * [IoT Hub イベントのチュートリアルを試します](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 
 * [Event Grid](../event-grid/overview.md) で他にできることについて確認します
-
-

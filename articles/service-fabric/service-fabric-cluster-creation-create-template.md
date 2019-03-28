@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 8bfd6bd7e42d5978f6db2c2a6bdb634661c6bfed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 857f621ee2c6d594f769b642b7cc671c5e7f7a9a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886747"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482574"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Service Fabric クラスターの Resource Manager テンプレートを作成する
 
@@ -241,13 +241,13 @@ RM モジュールには、Azure AD 構成を生成する機能がありませ�
 ## <a name="test-your-template"></a>テンプレートのテスト
 次の PowerShell コマンドを使用して、パラメーター ファイルで Resource Manager テンプレートをテストします。
 
-```PowerShell
+```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
 問題が発生し、不明なメッセージを受け取った場合は、オプションに "-Debug" を使用します。
 
-```PowerShell
+```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 

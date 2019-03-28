@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7ddf37a2973196f458efb8ecc8e20761006996ef
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: c9356eb3405bfc21d2e706f89705a5f6ab40c8fc
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199513"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58442224"
 ---
 # <a name="run-apache-sqoop-jobs-by-using-azure-powershell-for-apache-hadoop-in-hdinsight"></a>HDInsight で Azure PowerShell for Apache Hadoop を使用して Apache Sqoop ジョブを実行する
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -25,6 +25,9 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL デー
 > この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。 他の方法を選択するには、この記事の上部にあるタブ セレクターを使用してください。 
 
 ## <a name="prerequisites"></a>前提条件 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 このチュートリアルを開始する前に、次の項目を用意する必要があります。
 
 * Azure PowerShell を実行できるワークステーション。
@@ -50,8 +53,8 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL デー
 
     #region - Connect to Azure subscription
     Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
-    try{Get-AzureRmContext}
-    catch{Connect-AzureRmAccount}
+    try{Get-AzContext}
+    catch{Connect-AzAccount}
     #endregion
 
     #region - pre-process the source file
@@ -63,14 +66,14 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL デー
     $destBlobName = "tutorials/usesqoop/data/sample.log"
 
     # Define the connection string
-    $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey `
+    $defaultStorageAccountKey = (Get-AzStorageAccountKey `
                                     -ResourceGroupName $resourceGroupName `
                                     -Name $defaultStorageAccountName)[0].Value
     $storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$defaultStorageAccountName;AccountKey=$defaultStorageAccountKey"
 
     # Create block blob objects referencing the source and destination blob.
-    $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -Name $defaultStorageAccountName
-    $storageContainer = ($storageAccount |Get-AzureStorageContainer -Name $defaultBlobContainerName).CloudBlobContainer
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $defaultStorageAccountName
+    $storageContainer = ($storageAccount |Get-AzStorageContainer -Name $defaultBlobContainerName).CloudBlobContainer
     $sourceBlob = $storageContainer.GetBlockBlobReference($sourceBlobName)
     $destBlob = $storageContainer.GetBlockBlobReference($destBlobName)
 
@@ -134,25 +137,25 @@ Azure PowerShell を使用して、HDInsight クラスターと Azure SQL デー
     $sqljdbcdriver = "/user/oozie/share/lib/sqoop/sqljdbc41.jar"
 
     # Submit a Sqoop job
-    $sqoopDef = New-AzureRmHDInsightSqoopJobDefinition `
+    $sqoopDef = New-AzHDInsightSqoopJobDefinition `
         -Command "export --connect $connectionString --table $tableName_log4j --export-dir $exportDir_log4j --input-fields-terminated-by \0x20 -m 1" `
         -Files $sqljdbcdriver
 
-    $sqoopJob = Start-AzureRmHDInsightJob `
+    $sqoopJob = Start-AzHDInsightJob `
                     -ClusterName $hdinsightClusterName `
                     -HttpCredential $httpCredential `
                     -JobDefinition $sqoopDef #-Debug -Verbose
 
-    Wait-AzureRmHDInsightJob `
+    Wait-AzHDInsightJob `
         -ResourceGroupName $resourceGroupName `
         -ClusterName $hdinsightClusterName `
         -HttpCredential $httpCredential `
         -JobId $sqoopJob.JobId
 
     Write-Host "Standard Error" -BackgroundColor Green
-    Get-AzureRmHDInsightJobOutput -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -HttpCredential $httpCredential -JobId $sqoopJob.JobId -DisplayOutputType StandardError
+    Get-AzHDInsightJobOutput -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -HttpCredential $httpCredential -JobId $sqoopJob.JobId -DisplayOutputType StandardError
     Write-Host "Standard Output" -BackgroundColor Green
-    Get-AzureRmHDInsightJobOutput -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -HttpCredential $httpCredential -JobId $sqoopJob.JobId -DisplayOutputType StandardOutput
+    Get-AzHDInsightJobOutput -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -HttpCredential $httpCredential -JobId $sqoopJob.JobId -DisplayOutputType StandardOutput
     #endregion
 
 ## <a name="limitations"></a>制限事項
@@ -165,7 +168,7 @@ Linux ベースの HDInsight には次の制限事項があります。
 ## <a name="next-steps"></a>次の手順
 ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
 
-* [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie.md):Oozie ワークフローで Sqoop アクションを使用します。
+* [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie-linux-mac.md):Oozie ワークフローで Sqoop アクションを使用します。
 * [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight または Azure Blob Storage にデータをアップロードするその他の方法を説明します。
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html

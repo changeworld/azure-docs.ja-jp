@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
-ms.openlocfilehash: a79565661ae11e70364d64503b3b11bdeabeabdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e5c4eca772cf17f04ea10f4d5ae166ea41eaa830
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899759"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58496923"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
 このクイック スタートでは、**Standard** の SKU で **Messaging** タイプの Service Bus 名前空間を作成する Azure Resource Manager テンプレートを作成します。 また、デプロイの実行用に指定するパラメーターについても取り上げます。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、「[Azure Resource Manager のテンプレートの作成][Authoring Azure Resource Manager templates]」をご覧ください。 完全なテンプレートについては、GitHub の [Service Bus 名前空間テンプレート][Service Bus namespace template]に関するページを参照してください。
@@ -44,7 +44,7 @@ JSON を記述したり PowerShell/CLI コマンドを実行したりするこ�
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-**Azure PowerShell** を使用して Resource Manager テンプレートをデプロイするには、[Azure PowerShell をインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.7.0)します。
+**Azure PowerShell** を使用して Resource Manager テンプレートをデプロイするには、[Azure PowerShell をインストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)します。
 
 **Azure CLI** を使用して Resource Manager テンプレートをデプロイするには、[Azure CLI をインストール]( /cli/azure/install-azure-cli)します。
 
@@ -205,6 +205,6 @@ Azure CLI を使用してリソースをデプロイするには、JSON ファ�
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Service Bus namespace template]: https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/
 [Azure Quickstart Templates]: https://azure.microsoft.com/documentation/templates/?term=service+bus
-[Service Bus pricing and billing]: service-bus-pricing-billing.md
+[Service Bus pricing and billing]: https://azure.microsoft.com/pricing/details/service-bus/
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6b6728d7eaa263bb7e9da0f08a47ffe2f1e961a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 81e31a6e5fd1260ec844cc36f28a64e44334ebec
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009469"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482777"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -455,14 +455,14 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 2. **[SUBNETID]** ボックスに、Azure 仮想マシンのデプロイ先となる準備済みの Azure ネットワーク SubnetID の完全な文字列を追加します。
 3. すべての Azure ネットワーク サブネットの一覧を取得するには、次の PowerShell コマンドを実行します。
 
-   ```PowerShell
+   ```powershell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
    **[ID]** フィールドに **[SUBNETID]** と表示されます。
 4. すべての **SUBNETID** 値の一覧を取得するには、次の PowerShell コマンドを実行します。
 
-   ```PowerShell
+   ```powershell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
    ```
 
@@ -1196,7 +1196,7 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
 1. 次の PowerShell コマンドを実行して、現在の **ProbePort** の設定を確認します。 クラスター構成内のいずれかの仮想マシンで実行します。
 
-   ```PowerShell
+   ```powershell
    $SAPSID = "PR1"     # SAP <SID>
 
    $SAPNetworkIPClusterName = "SAP $SAPSID IP"
@@ -1213,7 +1213,7 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
    **SAP <*SID*> IP** クラスター リソースの新しい ProbePort 値を設定するには、次の PowerShell スクリプトを実行します。 環境に合わせて PowerShell 変数を更新してください。 スクリプトを実行した後、変更を有効にするために SAP クラスター グループを再起動するよう求められます。
 
-   ```PowerShell
+   ```powershell
    $SAPSID = "PR1"      # SAP <SID>
    $ProbePort = 62000   # ProbePort of the Azure Internal Load Balancer
 
@@ -1271,7 +1271,7 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
    **SAP <*SID*>** クラスター ロールをオンラインにした後、**ProbePort** が新しい値に設定されていることを確認します。
 
-   ```PowerShell
+   ```powershell
    $SAPSID = "PR1"     # SAP <SID>
 
    $SAPNetworkIPClusterName = "SAP $SAPSID IP"
@@ -1287,7 +1287,7 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
 両方のクラスター ノードで Windows ファイアウォール プローブ ポートを開く必要があります。 Windows ファイアウォール プローブ ポートを開くには、次のスクリプトを使用します。 環境に合わせて PowerShell 変数を更新してください。
 
-  ```PowerShell
+  ```powershell
   $ProbePort = 62000   # ProbePort of the Azure Internal Load Balancer
 
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
@@ -1347,7 +1347,7 @@ _**図 62:** SIOS DataKeeper で、クラスター ノード A からクラス�
    - フェールオーバー クラスター マネージャーを使用します  
    - 次のフェールオーバー クラスター PowerShell を使用します
 
-   ```PowerShell
+   ```powershell
    $SAPSID = "PR1"     # SAP <SID>
 
    $SAPClusterGroup = "SAP $SAPSID"

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 3f39448332bf363eb6b43639144b33a6f9de878a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b2ff6caa4c1b3626e4be1684976441be6ecbfe30
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100106"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418586"
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Azure Media Services を使用してライブ ストリーミングを実行し、.NET でマルチビットレートのストリームを作成する方法
 > [!div class="op_single_selector"]
@@ -210,7 +210,7 @@ namespace EncodeLiveStreamWithAmsClear
             IOperation channelCreateOperation = _context.Channels.SendCreateOperation(options);
             string channelId = TrackOperation(channelCreateOperation, "Channel create");
 
-            IChannel channel = _context.Channels.Where(c => c.Id == channelId).FirstOrDefault();
+            IChannel channel = _context.Channels.FirstOrDefault(c => c.Id == channelId);
 
             Log("Starting channel");
             var channelStartOperation = channel.SendStartOperation();
@@ -399,8 +399,7 @@ namespace EncodeLiveStreamWithAmsClear
             {
                 foreach (var program in channel.Programs)
                 {
-                    asset = _context.Assets.Where(se => se.Id == program.AssetId)
-                                .FirstOrDefault();
+                    asset = _context.Assets.FirstOrDefault(se => se.Id == program.AssetId);
 
                     Log("Stopping program");
                     var programStopOperation = program.SendStopOperation();

@@ -3,7 +3,7 @@ title: フェデレーション ドメイン用のハイブリッド Azure Activ
 description: フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加を構成する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/08/2019
-ms.author: markvi
+ms.date: 03/20/2019
+ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f9045246366d8595dd47b1e1be50e966859759b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d737be389666590d32e9f1b887db57dacce543e2
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58163910"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517185"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル:フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -230,7 +230,7 @@ Azure テナントのデバイス登録状態を確認するには、**[Azure Ac
 
 > [!div class="nextstepaction"]
 > [マネージド ドメインのハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-managed-domains.md)
-> [ハイブリッド Azure Active Directory 参加を手動で構成する](hybrid-azuread-join-manual-steps.md)
+> [ハイブリッド Azure Active Directory 参加を手動で構成する](hybrid-azuread-join-manual.md)
 
 
 

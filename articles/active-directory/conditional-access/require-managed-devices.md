@@ -3,7 +3,7 @@ title: 方法 - Azure Active Directory の条件付きアクセスを使用し�
 description: クラウド アプリへのアクセスにマネージド デバイスを要求する Azure Active Directory (Azure AD) デバイス ベースの条件付きアクセス ポリシーを構成する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: a27862a6-d513-43ba-97c1-1c0d400bf243
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c468f149a8005f2452ba49afbb447c3304c3d4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 75f55f1058537da255a2611f544239f693615678
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170532"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517353"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスにマネージド デバイスを要求する
 

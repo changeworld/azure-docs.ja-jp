@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 02/06/2019
 ms.author: danlep
-ms.openlocfilehash: 8e9f488f194c3326e79439a65214a060ff16e6c4
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: b8a2280fe82e0f4be8e2812f5494150927642692
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55958750"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417745"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>コンテナー レジストリにコンテナー イメージをインポートする
 
@@ -101,7 +101,7 @@ az acr import --name myregistry --source mysourceregistry.azurecr.io/aci-hellowo
 次の例では、 *mysourceregistry* が、同じ Active Directory テナント内の *myregistry* とは別のサブスクリプション内にあります。 ソース レジストリのリソース ID は、`--registry` パラメーターを使用して指定しています。 なお、`--source` パラメーター名では、ソース リポジトリとイメージ名だけを指定しています (レジストリ ログイン サーバー名は指定していません)。
  
 ```azurecli
-az acr import --name myregistry --source sourcerepo/aci-helloworld:latest --image aci-hello-world:latest --registry /subscriptions/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
+az acr import --name myregistry --source sourcerepo/aci-helloworld:latest --image aci-hello-world:latest --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
 ### <a name="import-from-a-registry-using-service-principal-credentials"></a>サービス プリンシパル資格情報を使用してレジストリからインポートする

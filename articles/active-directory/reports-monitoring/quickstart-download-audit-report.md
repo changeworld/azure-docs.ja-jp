@@ -3,7 +3,7 @@ title: 'クイック スタート: Azure portal を使用して監査レポー�
 description: Azure portal を使用して監査レポートをダウンロードする方法を説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4de121ea-f4aa-4c8a-aae4-700c2c5e97a2
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7a45e85b35ab48f95ecff07043484b322f237a8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a6cbea49fe39c92c8a2fc50e501cb4ef5cff74b1
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538053"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436678"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して監査レポートをダウンロードする
 
