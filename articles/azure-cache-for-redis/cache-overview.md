@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5b2b3a3ec0e9aec603a69211a7493afc31e83283
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9d789572abf0545eb51b357da091e5a1d712eab2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236551"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433809"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>Azure Cache for Redis とは
 
@@ -57,7 +57,7 @@ Basic | 単一ノード キャッシュ。 このレベルでは、複数のメ�
 
 キャッシュは、既に作成された後に、より高いレベルにスケールアップできます。 より低いレベルへのスケールダウンは、サポートされていません。 スケーリングの詳細な手順については、「[How to Scale Azure Cache for Redis](cache-how-to-scale.md)」(Azure Redis Cache のスケーリング方法) と「[How to automate a scaling operation](cache-how-to-scale.md#how-to-automate-a-scaling-operation)」(スケーリング処理を自動化する方法) を参照してください。
 
-### <a name="feature-comparision"></a>機能の比較
+### <a name="feature-comparison"></a>機能の比較
 
 「[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)」ページに、各レベルの詳細な比較が示されています。 次の表に、レベル別にサポートされる一部の機能を紹介します。
 

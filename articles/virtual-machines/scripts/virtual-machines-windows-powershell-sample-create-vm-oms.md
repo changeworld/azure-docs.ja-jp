@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - Log Analytics | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - Log Analytics
+title: Azure PowerShell のサンプル スクリプト - Azure Monitor ログ | Microsoft Docs
+description: Azure PowerShell のサンプル スクリプト - Azure Monitor ログ
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 615ba2286fc8c3e920e10a4909ed336ec6a30f9d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 11ae92770f712f2e809824d9caf5981f435b25a9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001734"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541521"
 ---
-# <a name="create-a-log-analytics-monitored-vm-with-powershell"></a>Log Analytics によって監視される VM を PowerShell で作成する 
+# <a name="create-an-azure-monitor-vm-with-powershell"></a>PowerShell を使用して Azure Monitor VM を作成する 
 
 このスクリプトでは、Azure 仮想マシンを作成し、Log Analytics エージェントをインストールして、システムを Log Analytics ワークスペースに登録します。 このスクリプトを実行すると、仮想マシンが Azure Monitor に表示されるようになります。 また、Log Analytics ワークスペース ID とワークスペース キーを更新する必要があります。
 
