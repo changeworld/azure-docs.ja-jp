@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1cfe7dab907a332f1a38560c39d4f6476cee81aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7b5d9d483d05ac8225ea4b7497922192be44f1bc
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004738"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731685"
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 

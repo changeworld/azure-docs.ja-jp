@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f9385723-8fe7-4340-8afb-1508dac3e92b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9af11c7c347481921f04e63276e946e679b03cdd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8942ebf3f006c2e1cc72b322dd243d46bf69f04d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876213"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-sign"></a>チュートリアル:Azure Active Directory と Adobe Sign の統合
 
@@ -128,7 +128,7 @@ Adobe Sign で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="configure-adobe-sign-single-sign-on"></a>Adobe Sign シングル サインオンの構成
 
-7. Adobe Sign で自分のドメインをホワイトリストに登録するには、構成する前に、[Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に連絡してください。 ドメインの追加方法は次のとおりです。
+1. Adobe Sign で自分のドメインをホワイトリストに登録するには、構成する前に、[Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に連絡してください。 ドメインの追加方法は次のとおりです。
 
     a. [Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)からランダムに生成されたトークンが送信されます。 ドメインの場合、トークンは **adobe-sign-verification= xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx** のようになります。
 
@@ -139,7 +139,7 @@ Adobe Sign で Azure AD シングル サインオンを構成するには、次�
     
     c. トークンが発行された後に、サポート チケットを通じて [Adobe Sign クライアント サポート チーム](https://helpx.adobe.com/in/contact/support.html)に通知すると、サポート チームがドメインを検証し、それをユーザーのアカウントに追加します。
     
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 通常、DNS レコードでトークンを発行する手順は次のとおりです。
+    d. 通常、DNS レコードでトークンを発行する手順は次のとおりです。
 
     * ドメイン アカウントにサインインする
     * DNS レコードを更新するためのページを検索する。 このページは、DNS 管理、ネーム サーバー管理、または詳細設定と呼ばれる場合があります。
@@ -147,33 +147,33 @@ Adobe Sign で Azure AD シングル サインオンを構成するには、次�
     * Adobe から提供された完全なトークン値を使用して TXT レコードを追加する。
     * 変更を保存します。
 
-8. 別の Web ブラウザーのウィンドウで、管理者として Adobe Sign 企業サイトにサインインします。
+1. 別の Web ブラウザーのウィンドウで、管理者として Adobe Sign 企業サイトにサインインします。
 
-9. [SAML] メニューで、**[アカウント設定]** > **[SAML 設定]** を選択します。
+1. [SAML] メニューで、**[アカウント設定]** > **[SAML 設定]** を選択します。
    
     ![Adobe Sign の [SAML 設定] ページ](./media/adobe-echosign-tutorial/ic789520.png "[アカウント]") のスクリーンショット
 
-10. **[SAML 設定]** セクションで、次の手順に従います。
+1. **[SAML 設定]** セクションで、次の手順に従います。
   
-    ![[SAML 設定]](./media/adobe-echosign-tutorial/ic789521.png "[SAML 設定]") のスクリーンショット
+   ![[SAML 設定]](./media/adobe-echosign-tutorial/ic789521.png "[SAML 設定]") のスクリーンショット
    
-    ![[SAML 設定]](./media/adobe-echosign-tutorial/ic789522.png "[SAML 設定]") のスクリーンショット
+   ![[SAML 設定]](./media/adobe-echosign-tutorial/ic789522.png "[SAML 設定]") のスクリーンショット
 
-    a. **[SAML モード]** で **[SAML Mandatory]** を選択します。
+   a. **[SAML モード]** で **[SAML Mandatory]** を選択します。
    
-    b. **[Echosign 資格情報を使用して、Echosign アカウント管理者のログインを許可する]** を選択します。
+   b. **[Echosign 資格情報を使用して、Echosign アカウント管理者のログインを許可する]** を選択します。
    
-    c. **[ユーザーの作成]** で、**[SAML を使用して認証されたユーザーを自動的に追加]** を選択します。
+   c. **[ユーザーの作成]** で、**[SAML を使用して認証されたユーザーを自動的に追加]** を選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Idp Entity ID]\(IDP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**を貼り付けます。
+   d. **[Idp Entity ID]\(IDP エンティティ ID\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**を貼り付けます。
     
-    e. **[Idp Login URL]\(IDP ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
+   e. **[Idp Login URL]\(IDP ログイン URL\)** ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
    
-    f. **[Idp Logout URL]\(IDP ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** を貼り付けます。
+   f. **[Idp Logout URL]\(IDP ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** を貼り付けます。
 
-    g. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開きます。 その内容をクリップボードにコピーし、**[IdP Certificate]\(IdP 証明書\)** ボックスに貼り付けます。
+   g. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開きます。 その内容をクリップボードにコピーし、**[IdP Certificate]\(IdP 証明書\)** ボックスに貼り付けます。
 
-    h. **[変更の保存]** を選択します。
+   h. **[変更の保存]** を選択します。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -193,7 +193,7 @@ Adobe Sign で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1a02862d3ea2e17cfa25a2a2d96e1454699ae7f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ba132adc6b0fd2b8423a7bce30ad6d52fccc898e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166285"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858203"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>クイック スタート:PHP を使用して Bing Web Search API を呼び出す  
 
 このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Node.js アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイック スタートを実行するには、以下のものが必要です。
 
-* [PHP 5.6.x](http://php.net/downloads.php) 以降
+* [PHP 5.6.x](https://php.net/downloads.php) 以降
 * サブスクリプション キー  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
@@ -34,11 +35,11 @@ ms.locfileid: "56166285"
 
 作業を開始する前に、`php.ini` を見つけ、次の行をコメント解除します。
 
-```
-;extension=php_openssl.dll
+```php
+; extension=php_openssl.dll
 ```
 
-## <a name="create-a-project-and-define-variables"></a>プロジェクトの作成と変数の定義  
+## <a name="create-a-project-and-define-variables"></a>プロジェクトの作成と変数の定義
 
 適切な IDE またはエディターで新しい PHP プロジェクトを作成します。 開始タグと終了タグの `<?php` と `?>` を追加し忘れないでください。
 

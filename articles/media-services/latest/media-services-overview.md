@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/26/2019
+ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: de1bd8599682baae860737401d02c7c1dec9e223
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 018392db2ffb510d41385d8e0af19635c35678e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960651"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003407"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Azure Media Services v3 の概要
 
@@ -49,9 +49,9 @@ v3 は、Azure Resource Manager 上に構築された管理と操作の両方の
 
 * メディア処理タスクまたは分析タスクの簡単なワークフローを定義するのに役立つ**変換**。 変換は、ビデオ ファイルとオーディオ ファイルを処理するためのレシピです。 変換にジョブを送信することで、変換を繰り返し適用して、コンテンツ ライブラリ内のすべてのファイルを処理できます。
 * ビデオを処理 (エンコードまたは分析) するための**ジョブ**。 HTTPS URL、SAS URL、または Azure Blob Storage 内に存在するファイルへのパスを使って、ジョブで入力コンテンツを指定できます。 現時点では、AMS v3 には、HTTPS URL 経由でチャンク転送エンコード処理がサポートされていません。
-* ジョブの進行状況や状態、またはライブ チャネルの開始/停止とエラー イベントを監視する**通知**。 通知は、Azure Event Grid の通知システムに統合されています。 Azure Media Services の複数のリソースでのイベントを簡単にサブスクライブすることができます。 
-* **Azure Resource Management** テンプレートを使って、変換、ストリーミング エンドポイント、チャネル、その他を作成して展開できます。
-* **ロールベースのアクセス制御**をリソース レベルで設定でき、変換やチャネルなどの特定のリソースへのアクセスをロックダウンできます。
+* ジョブの進行状況や状態、またはライブ イベントの開始/停止とエラー イベントを監視する**通知**。 通知は、Azure Event Grid の通知システムに統合されています。 Azure Media Services の複数のリソースでのイベントを簡単にサブスクライブすることができます。 
+* **Azure Resource Management** テンプレートを使って、変換、ストリーミング エンドポイント、ライブ イベントなどを作成して展開できます。
+* **ロールベースのアクセス制御**をリソース レベルで設定でき、変換やライブ イベントなどの特定のリソースへのアクセスをロックダウンできます。
 * 複数の言語 (.NET、.NET Core、Python、Go、Java、Node.js) での**クライアント SDK**。
 
 ## <a name="naming-conventions"></a>名前付け規則

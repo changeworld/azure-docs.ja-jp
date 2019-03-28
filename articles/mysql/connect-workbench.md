@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: f93c581b916a7f9c4f454833cb37f603cc177856
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 410317d0a075f7c9e82fbed8d041437819ef06d2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540471"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875874"
 ---
 # <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: MySQL Workbench を使った接続とデータの照会
 このクイックスタートでは、MySQL Workbench アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 
@@ -52,7 +52,7 @@ GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続�
     | 接続方法 | Standard (TCP/IP) | Standard (TCP/IP) で十分です。 |
     | ホスト名 | *サーバー名* | 前に Azure Database for MySQL を作成したときに使用したサーバー名の値を指定します。 この例におけるサーバーは、mydemoserver.mysql.database.azure.com です。 例で示されているように、完全修飾ドメイン名 (\*.mysql.database.azure.com) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得します。  |
     | ポート | 3306 | Azure Database for MySQL に接続する場合は、常にポート 3306 を使用します。 |
-    | ユーザー名 |  *サーバー管理者ログイン名* | 前に Azure Database for MySQL を作成したときに指定したサーバー管理者ログイン ユーザー名を入力します。 この例のユーザー名は myadmin@mydemoserver です。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得します。 形式は *username@servername* です。
+    | ユーザー名 |  *サーバー管理者ログイン名* | 前に Azure Database for MySQL を作成したときに指定したサーバー管理者ログイン ユーザー名を入力します。 この例のユーザー名は myadmin@mydemoserver です。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得します。 形式は *username\@servername* です。
     | パスワード | パスワード | **[Store in Vault]\(コンテナーに保存\)** ボタンをクリックしてパスワードを保存します。 |
 
 3.   **[Test Connection] \(接続のテスト)** をクリックして、すべてのパラメーターが正しく構成されているかをテストします。 

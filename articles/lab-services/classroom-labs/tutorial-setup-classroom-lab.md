@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/07/2019
+ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 4abec80df4aeeb4c20d56b43ba122ee7266905a6
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 31bf2de7417a1be6139de3ec9dcc8d531df586d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649589"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090323"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>チュートリアル:クラスルーム ラボを設定する 
 このチュートリアルでは、クラスルームで学生が使用する仮想マシンで、クラスルーム ラボを設定します。  
@@ -69,9 +69,9 @@ ms.locfileid: "56649589"
 
     ![完了後の [Configure template]\(テンプレートの構成\) ページ](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. **[Configure template]\(テンプレートの構成\)** ページで、次の手順のようにします。これらの手順は、チュートリアルでは**省略可能**です。
-    2. **[接続]** を選択してテンプレート VM に接続します。 
-    3. テンプレート VM にソフトウェアをインストールして構成します。     
-    5. テンプレートの**説明**を入力します。
+    1. **[接続]** を選択してテンプレート VM に接続します。 
+    2. テンプレート VM にソフトウェアをインストールして構成します。     
+    3. テンプレートの**説明**を入力します。
 9. [Configure template]\(テンプレートの構成\) ページの **[次へ]** を選択します。 
 10. **[Publish the template]** \(テンプレートの発行\) ページで、次の操作を行います。 
     1. テンプレートをすぐに発行するには、**[Publish]\(発行\)** を選択します。  
@@ -108,15 +108,15 @@ ms.locfileid: "56649589"
     ![ユーザー リスト](../media/how-to-configure-student-usage/users-list-new.png)
 
 
-## <a name="send-registration-link-to-students"></a>登録リンクを学生に送信する
-
+## <a name="send-an-email-with-the-registration-link"></a>登録リンクが記載された電子メールを送信する
 1. このページ上で、まだ **[ユーザー]** ビューが表示されていない場合は、[ユーザー] ビューに切り替えます。 
-2. ツール バーの **[Get registration link]\(登録リンクの取得\)** を選択します。
-1. **[User registration]\(ユーザー登録\)** ダイアログ ボックスで、**[コピー]** ボタンを選びます。 リンクがクリップボードにコピーされます。
+2. 一覧で特定のユーザーまたはすべてのユーザーを選択します。 特定のユーザーを選択するには、一覧の最初の列のチェック ボックスを選択します。 すべてのユーザーを選択するには、最初の列のタイトル (**[名前]**) の前にあるチェック ボックスを選択するか、一覧ですべてのユーザーのすべてのチェック ボックスを選択します。
+3. ツールバーで **[招待状の送信]** を選択します。 一覧で、学生の名前の上にマウス ポインターを置き、電子メール送信アイコンを選択することもできます。 
 
-    ![登録リンク](../media/tutorial-setup-classroom-lab/registration-link.png)
-1. **[User registration]\(ユーザー登録\)** ダイアログ ボックスの **[閉じる]** を選択します。 
-2. 学生がクラスに登録できるように、登録リンクを学生と共有します。
+    ![登録リンクを電子メールで送信する](../media/tutorial-setup-classroom-lab/send-email.png)
+4. **[登録リンクを電子メールで送信する]** ページで、次の手順に従います。 
+    1. 学生に送信する**オプション メッセージ**を入力します。 電子メールには、登録リンクが自動的に含まれます。 
+    2. **[登録リンクを電子メールで送信する]** ページで、 **[送信]** を選択します。 
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、クラスルーム ラボを作成し、ラボを構成しました。 学生が登録リンクを使ってラボの VM にアクセスする方法を学習するには、次のチュートリアルに進んでください。

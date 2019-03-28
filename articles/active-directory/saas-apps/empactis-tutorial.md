@@ -1,33 +1,34 @@
 ---
-title: チュートリアル:Azure Active Directory と Merchlogix の統合 | Microsoft Docs
-description: Azure Active Directory と Merchlogix の間でシングル サインオンを構成する方法について説明します。
+title: チュートリアル:Azure Active Directory と Empactis の統合 | Microsoft Docs
+description: Azure Active Directory と Empactis の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: a1f49bb8-6b17-433d-8f25-9d26fb390e77
+ms.assetid: ee18d76c-7a05-4b25-8e4f-e151b2268958
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/20/2019
+ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2dd08ca77af14b0646fbff7b461c2703ddb0b992
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed0b5c990bd12e23fefcc433a656a71207b08683
+ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897566"
+ms.lasthandoff: 03/15/2019
+ms.locfileid: "58003746"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>チュートリアル:Azure Active Directory と Merchlogix の統合
+# <a name="tutorial-azure-active-directory-integration-with-empactis"></a>チュートリアル:Azure Active Directory と Empactis の統合
 
-このチュートリアルでは、Merchlogix と Azure Active Directory (Azure AD) を統合する方法について説明します。
-Merchlogix と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、Empactis と Azure Active Directory (Azure AD) を統合する方法について説明します。
+Empactis と Azure AD の統合には、次の利点があります。
 
-* Merchlogix にアクセスする Azure AD ユーザーを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して Merchlogix に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
+* Empactis にアクセスする Azure AD ユーザーを制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して自動的に Empactis にサインイン (シングル サインオン) するよう指定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
@@ -35,22 +36,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-Merchlogix と Azure AD の統合を構成するには、次のものが必要です。
+Empactis と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Merchlogix でのシングル サインオンが有効なサブスクリプション
+* Empactis でのシングル サインオンが有効なサブスクリプション
 
 ## <a name="scenario-description"></a>シナリオの説明
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Merchlogix では、**SP** によって開始される SSO がサポートされます
+* Empactis では、**IDP** によって開始される SSO がサポートされます
 
-## <a name="adding-merchlogix-from-the-gallery"></a>ギャラリーからの Merchlogix の追加
+## <a name="adding-empactis-from-the-gallery"></a>ギャラリーからの Empactis の追加
 
-Azure AD への Merchlogix の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Merchlogix を追加する必要があります。
+Azure AD への Empactis の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Empactis を追加する必要があります。
 
-**ギャラリーから Merchlogix を追加するには、次の手順に従います。**
+**ギャラリーから Empactis を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
@@ -64,31 +65,31 @@ Azure AD への Merchlogix の統合を構成するには、ギャラリーか�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Merchlogix**」と入力し、結果ウィンドウで **[Merchlogix]** を選び、**[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Empactis**」と入力し、結果ウィンドウで **[Empactis]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-     ![結果リストの Merchlogix](common/search-new-app.png)
+     ![結果一覧の Empactis](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Merchlogix を利用した Azure AD のシングル サインオンを構成してテストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと Merchlogix 内の関連ユーザー間にリンク関係が確立されている必要があります。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Empactis で Azure AD のシングル サインオンを構成し、テストします。
+シングル サインオンを機能させるには、Azure AD ユーザーと Empactis 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
-Merchlogix で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Empactis で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Merchlogix シングル サインオンの構成](#configure-merchlogix-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
+2. **[Empactis シングル サインオンの構成](#configure-empactis-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
 3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[Merchlogix テスト ユーザーの作成](#create-merchlogix-test-user)** - Azure AD のユーザー表現にリンクされる Britta Simon に対応するユーザーを Merchlogix 内に用意します。
+5. **[Empactis のテスト ユーザーの作成](#create-empactis-test-user)** - Empactis で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
 
-Merchlogix を利用して Azure AD シングル サインオンを構成するには、次の手順を実行します。
+Empactis で Azure AD シングル サインオンを構成するには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com/) 内の **[Merchlogix]** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) の **Empactis** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク](common/select-sso.png)
 
@@ -100,22 +101,15 @@ Merchlogix を利用して Azure AD シングル サインオンを構成する�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+4. アプリは Azure と事前に統合済みであるため、**[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
-    ![[Merchlogix のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
-
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<DOMAIN>/login.php?saml=true`
-
-    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<DOMAIN>/simplesaml/module.php/saml/sp/metadata.php/<SAML_NAME>`
-
-    > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Merchlogix クライアント サポート チーム](https://www.merchlogix.com/contact/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    ![[Empactis のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-6. **[Merchlogix のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+6. **[Empactis のセットアップ]** セクションで、要件どおりの適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -125,9 +119,9 @@ Merchlogix を利用して Azure AD シングル サインオンを構成する�
 
     c. ログアウト URL
 
-### <a name="configure-merchlogix-single-sign-on"></a>Merchlogix シングル サインオンの構成
+### <a name="configure-empactis-single-sign-on"></a>Empactis のシングル サインオンを構成する
 
-**Merchlogix** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Merchlogix サポート チーム](https://www.merchlogix.com/contact/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Empactis** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Empactis サポート チーム](mailto:support@empactis.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -147,7 +141,7 @@ Merchlogix を利用して Azure AD シングル サインオンを構成する�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -156,15 +150,15 @@ Merchlogix を利用して Azure AD シングル サインオンを構成する�
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Merchlogix へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に Empactis へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Merchlogix]** を選択します。
+1. Azure portal 上で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択してから、**[Empactis]** を選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で **[Merchlogix]** を選択します。
+2. アプリケーションの一覧で **[Empactis]** を選択します。
 
-    ![アプリケーションの一覧の [Merchlogix] リンク](common/all-applications.png)
+    ![アプリケーションの一覧の Empactis のリンク](common/all-applications.png)
 
 3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
@@ -176,19 +170,19 @@ Merchlogix を利用して Azure AD シングル サインオンを構成する�
 
 5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
+6. SAML アサーション内に任意のロール値が必要な場合、**[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 
-7. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログで、**[割り当て]** をクリックします。
 
-### <a name="create-merchlogix-test-user"></a>Merchlogix テスト ユーザーの作成
+### <a name="create-empactis-test-user"></a>Empactis テスト ユーザーを作成する
 
-このセクションでは、Merchlogix で Britta Simon というユーザーを作成します。  [Merchlogix サポート チーム](https://www.merchlogix.com/contact/)と連携して、Merchlogix プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Empactis で Britta Simon というユーザーを作成します。  [Empactis サポート チーム](mailto:support@empactis.com)と連携し、Empactis プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Merchlogix] タイルをクリックすると、SSO を設定した Merchlogix に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Empactis] タイルをクリックすると、SSO を設定した Empactis に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
