@@ -4,15 +4,15 @@ description: Azure Migrate サービスの概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 03/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 317e843f1fcc2fc85ffbc590d48e9bdf4aa934c1
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7f0b3a0f63b87928938e5c0e9d39cc49c0fc791d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415767"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999973"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -30,15 +30,17 @@ Azure Migrate によって次のことが可能になります。
 ## <a name="current-limitations"></a>現時点での制限事項
 
 - Azure VM への移行に関して、オンプレミスの VMware 仮想マシン (VM) だけを評価することができます。 VMware VM は、vCenter Server (バージョン 5.5、6.0、6.5、6.7 のいずれか) で管理する必要があります。
-- Hyper-V 仮想マシンと物理サーバーを評価する必要がある場合、Hyper-V には [Azure Site Recovery Deployment Planner](https://aka.ms/asr-dp-hyperv-doc) を、物理マシンには Microsoft の [パートナーのツール](https://azure.microsoft.com/migration/partners/)を使用してください。
+- Hyper-V のサポート (運用サポートを含む) は現在プレビュー段階にあります。この機能をお試しになりたい場合は、[こちら](https://aka.ms/migratefuture)でサインアップしてください。
+- 物理サーバーの評価には、Microsoft の[パートナー ツール](https://azure.microsoft.com/migration/partners/)をご利用いただけます。
 - 1 回の検出で最大 1,500 個の VM を検出でき、1 つのプロジェクトで最大 1,500 個の VM を検出できます。 さらに、一度に最大 1,500 個の VM を評価できます。
 - より大規模な環境を検出する場合は、検出を分割して、複数のプロジェクトを作成できます。 [詳細情報](how-to-scale-assessment.md)。 Azure Migrate では、サブスクリプションあたり最大 20 個のプロジェクトをサポートしています。
 - Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
 -  Azure Migrate プロジェクトは、次の地域でのみ作成できます。 ただし、他の Azure のターゲット場所について評価を作成できないという訳ではありません。
+
     **地理的な場所** | **保存場所**
     --- | ---
     Azure Government | 米国政府バージニア州
-    アジア | 東南アジア
+    アジア | 東南アジアまたは東アジア
     ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
     米国 | 米国東部または米国中西部
 
@@ -72,27 +74,27 @@ Azure Migrate の価格について、[詳しくはこちら](https://azure.micr
 
 ## <a name="how-does-azure-migrate-work"></a>Azure Migrate のしくみ
 
-1.  Azure Migrate プロジェクトを作成します。
-2.  Azure Migrate は、コレクター アプライアンスと呼ばれるオンプレミス VM を使用して、オンプレミスのマシンに関する情報を検出します。 このアプライアンスを作成するには、Open Virtualization Appliance (.ova) 形式のセットアップ ファイルをダウンロードし、それをオンプレミスの vCenter Server 上の VM としてインポートします。
+1. Azure Migrate プロジェクトを作成します。
+2. Azure Migrate は、コレクター アプライアンスと呼ばれるオンプレミス VM を使用して、オンプレミスのマシンに関する情報を検出します。 このアプライアンスを作成するには、Open Virtualization Appliance (.ova) 形式のセットアップ ファイルをダウンロードし、それをオンプレミスの vCenter Server 上の VM としてインポートします。
 3. vCenter Server から VM に接続します。接続の過程で、その新しいパスワードを指定します。
 4. VM でコレクターを実行して検出を開始します。
 5. コレクターが、VMware PowerCLI のコマンドレットを使用して VM のメタデータを収集します。 検出はエージェントレスであり、VMware ホストまたは VM には何もインストールされません。 収集されるメタデータには、VM 情報 (コア、メモリ、ディスク、ディスク サイズ、ネットワーク アダプター) が含まれています。 また、CPU とメモリの使用率、ディスク IOPS、ディスクのスループット (MBps)、ネットワーク出力 (MBps) など、VM のパフォーマンス データも収集されます。
-5.  このメタデータが Azure Migrate プロジェクトにプッシュされます。 それを Azure Portal で確認することができます。
-6.  評価の目的で、検出された VM をグループにまとめます。 たとえば、同じアプリケーションを実行する VM をグループにまとめます。 より正確なグループ分けのために、特定のマシンまたはグループ内のすべてのマシンの依存関係を表示し、グループを絞り込むことができます。
-7.  グループの定義後、その評価を作成します。
-8.  評価が完了したら、それをポータルで表示することも、Excel 形式でダウンロードすることもできます。
+5. このメタデータが Azure Migrate プロジェクトにプッシュされます。 それを Azure Portal で確認することができます。
+6. 評価の目的で、検出された VM をグループにまとめます。 たとえば、同じアプリケーションを実行する VM をグループにまとめます。 より正確なグループ分けのために、特定のマシンまたはグループ内のすべてのマシンの依存関係を表示し、グループを絞り込むことができます。
+7. グループの定義後、その評価を作成します。
+8. 評価が完了したら、それをポータルで表示することも、Excel 形式でダウンロードすることもできます。
 
-  ![Azure Migrate のアーキテクチャ](./media/migration-planner-overview/overview-1.png)
+   ![Azure Migrate のアーキテクチャ](./media/migration-planner-overview/overview-1.png)
 
 ## <a name="what-are-the-port-requirements"></a>ポート要件とは
 
 次の表は、Azure Migrate の通信に必要なポートをまとめたものです。
 
-コンポーネント | 通信先 |  詳細
---- | --- |---
-コレクター  | Azure Migrate サービス | コレクターは、SSL ポート 443 経由でサービスに接続します。
-コレクター | vCenter Server | 既定では、コレクターはポート 443 で vCenter Server に接続します。 他のポートでサーバーがリッスンしている場合、それをコレクター VM で送信ポートとして構成する必要があります。
-オンプレミス VM | Log Analytics ワークスペース | [TCP 443] | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) は TCP ポート 443 を使用して Log Analytics に接続します。 MMA エージェントを必要とする依存関係の視覚化機能を使用している場合のみ、このポートが必要になります。
+| コンポーネント | 通信先 |  詳細 |
+| --- | --- |--- |
+|コレクター  | Azure Migrate サービス | コレクターは、SSL ポート 443 経由でサービスに接続します。|
+|コレクター | vCenter Server | 既定では、コレクターはポート 443 で vCenter Server に接続します。 他のポートでサーバーがリッスンしている場合、それをコレクター VM で送信ポートとして構成する必要があります。|
+|オンプレミス VM | Log Analytics ワークスペース | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) は TCP ポート 443 を使用して Azure Monitor ログに接続します。 MMA エージェントを必要とする依存関係の視覚化機能を使用している場合のみ、このポートが必要になります。|
 
 
 ## <a name="what-happens-after-assessment"></a>評価後の流れ

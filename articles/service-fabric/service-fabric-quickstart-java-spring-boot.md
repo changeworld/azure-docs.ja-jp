@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e4fde75aeaf86219518daf92b67434fe9fd63f86
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 2c98b069e042f9cbd07ccee643028ac84b3471c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297415"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886689"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>クイック スタート:Java Spring Boot アプリケーションを Service Fabric にデプロイする
 
@@ -105,7 +105,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <ServiceManifest Name="SpringGettingStartedPkg" Version="1.0.0"
-                     xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+                     xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" >
 
        <ServiceTypes>
           <StatelessServiceType ServiceTypeName="SpringGettingStartedType" UseImplicitHost="true">
@@ -161,7 +161,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     ./install.sh
     ```
 
-1. 使い慣れた Web ブラウザーを開き、**http://localhost:8080** に接続してアプリケーションにアクセスします。
+1. 使い慣れた Web ブラウザーを開き、`http://localhost:8080` に接続してアプリケーションにアクセスします。
 
     ![ローカルのアプリケーション フロントエンド](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 

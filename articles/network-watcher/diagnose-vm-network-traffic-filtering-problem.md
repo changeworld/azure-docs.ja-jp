@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 6d5c159d030303b90128513d3521a19419e4277e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d469ee5148e3742f30795c09acf1a217db1b997a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429232"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004635"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -85,7 +85,7 @@ VM を作成すると、Azure は既定に従って、VM との間でやり取�
     | 方向         | 送信                                                                                          |
     | ローカル IP アドレス  | 10.0.0.4                                                                                          |
     | ローカル ポート      | 60000                                                                                                |
-    | リモート IP アドレス | 13.107.21.200 - www.bing.com に対するアドレスの 1 つ。                                             |
+    | リモート IP アドレス | 13.107.21.200 - <www.bing.com> に対するアドレスの 1 つ。                                             |
     | リモート ポート       | 80                                                                                                |
 
     ![IP フロー検証](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)

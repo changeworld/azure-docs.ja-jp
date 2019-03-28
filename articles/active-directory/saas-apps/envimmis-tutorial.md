@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: ab89f8ee-2507-4625-94bc-b24ef3d5e006
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad35d8d3ff04de7e3d99976d637c4fad47c0cd6c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7bc40c5043cefad7892eaead8fe8058ac3707865
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869005"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>チュートリアル:Azure Active Directory と Envi MMIS の統合
 
@@ -184,7 +184,7 @@ Envi MMIS で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -237,17 +237,17 @@ Azure AD ユーザーが Envi MMIS にサインインできるようにするに
 
     ![従業員の追加](./media/envimmis-tutorial/user3.png)
 
-    a. **[User Name]\(ユーザー名)** テキストボックスに、Britta Simon のアカウントのユーザー名を入力します (例: **brittasimon@contoso.com**)。
+    a. **[ユーザー名]** ボックスに、Britta Simon のアカウントのユーザー名を入力します (例: **brittasimon\@contoso.com**)。
     
     b. **[First Name]\(名\)** テキスト ボックスに、Britta Simon の名を入力します (**Britta**)。
 
     c. **[Last Name]\(姓\)** テキスト ボックスに、Britta Simon の名を入力します (**Simon**)。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ユーザーの役職を **[Title]\(役職\)** テキスト ボックスに入力します。
+    d. ユーザーの役職を **[Title]\(役職\)** テキスト ボックスに入力します。
     
-    e. **[Email Address]\(電子メール アドレス\)** テキストボックスに、Britta Simon のアカウントのメール アドレスを入力します (例: **brittasimon@contoso.com**)。
+    e. **[メール アドレス]** ボックスに、Britta Simon のアカウントのメール アドレスを入力します (例: **brittasimon\@contoso.com**)。
 
-    f. **[SSO User Name]\(SSO ユーザー名)** テキストボックスに、Britta Simon のアカウントのユーザー名を入力します (例: **brittasimon@contoso.com**)。
+    f. **[SSO User Name]\(SSO ユーザー名\)** ボックスに、Britta Simon のアカウントのユーザー名を入力します (例: **brittasimon\@contoso.com**)。
 
     g. **[Save]** をクリックします。
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: c5208b0d-66a3-49ed-9aad-70d21f54aee0
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c5bd23f3190a9af2d159c56feee18cda36229ef
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 895066b2ce21e75095d544de47b817866cd1a8ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984137"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855854"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobbadmin"></a>チュートリアル:Azure Active Directory と Jobbadmin の統合
 
@@ -105,11 +105,11 @@ Jobbadmin で Azure AD シングル サインオンを構成するには、次�
 
     ![[Jobbadmin のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<instancename>.jobbnorge.no/auth/saml2/login.ashx` の形式で URL を入力します。
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<instancename>.jobbnorge.no/auth/saml2/login.ashx`
 
-    b. **[識別子 (エンティティ ID)]** ボックスに、`https://<instancename>.jobnorge.no` の形式で URL を入力します。
+    b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<instancename>.jobnorge.no`
 
-    c. **[応答 URL]** ボックスに、`https://<instancename>.jobbnorge.no/auth/saml2/login.ashx` の形式で URL を入力します。
+    c. **[応答 URL]** ボックスに、`https://<instancename>.jobbnorge.no/auth/saml2/login.ashx` のパターンを使用して URL を入力します。
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値を実際のサインオン URL、識別子、および応答 URL で更新してください。 これらの値を取得するには、[Jobbadmin クライアント サポート チーム](https://www.jobbnorge.no/om-oss/kontakt-oss)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
@@ -150,7 +150,7 @@ Jobbadmin で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

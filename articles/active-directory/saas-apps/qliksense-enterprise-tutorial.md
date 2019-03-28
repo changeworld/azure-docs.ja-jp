@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8c27e340-2b25-47b6-bf1f-438be4c14f93
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d5824708f6a99d0222ef5e236758b78a7eedafb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 54690386b3654952cc2292963c9bf01dc65e4315
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882180"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875214"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qlik-sense-enterprise"></a>チュートリアル:Azure Active Directory と Qlik Sense Enterprise の統合
 
@@ -108,6 +108,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
     a. **[サインオン URL]** ボックスに、`https://<Qlik Sense Fully Qualifed Hostname>:4443/azure/hub` のパターンを使用して URL を入力します。
 
     b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。
+
     | |
     |--|
     | `https://<Qlik Sense Fully Qualifed Hostname>.qlikpoc.com`|
@@ -140,7 +141,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     c. RoleDescriptor タグと、タグ間のすべての情報をファイルから削除します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 このファイルは、このドキュメントで後ほど使用するため、わかりやすい場所に保存してください。
+    d. このファイルは、このドキュメントで後ほど使用するため、わかりやすい場所に保存してください。
 
 2. Qlik Sense Qlik Management Console (QMC) に、仮想プロキシ構成を作成できるユーザーとして移動します。
 
@@ -166,7 +167,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     c. **[Session inactivity timeout (minutes)]** は、この仮想プロキシを経由する接続のタイムアウトです。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Session cookie header name]** は、認証が成功した後にユーザーが受け取る Qlik Sense セッション用のセッション識別子を格納する Cookie 名です。  この名前は一意である必要があります。
+    d. **[Session cookie header name]** は、認証が成功した後にユーザーが受け取る Qlik Sense セッション用のセッション識別子を格納する Cookie 名です。  この名前は一意である必要があります。
 
 7. [Authentication (認証)] メニュー オプションをクリックして表示します。  [Authentication (認証)] 画面が表示されます。
 
@@ -178,7 +179,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     c. **[SAML host URI]** フィールドに、ユーザーが SAML 仮想プロキシを介して Qlik Sense にアクセスする際に入力するホスト名を入力します。  ホスト名は、Qlik Sense サーバーの URI です。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML entity ID]** に、[SAML host URI] フィールドに入力したのと同じ値を入力します。
+    d. **[SAML entity ID]** に、[SAML host URI] フィールドに入力したのと同じ値を入力します。
 
     e. **[SAML IdP metadata]** に、以前に **Azure AD 構成からのフェデレーション メタデータの編集**に関するセクションで編集したファイルを指定します。  **IdP メタデータをアップロードする前に、このファイルを編集する必要があります**。Azure AD と Qlik Sense サーバーの間で処理が正しく行われるように、ファイルの情報を削除してください。  **まだファイルを編集していない場合は、上記の手順に従ってください。**  ファイルを編集済みの場合は、[Browse (参照)] ボタンをクリックし、編集したメタデータ ファイルを選択して、仮想プロキシ構成にアップロードします。
 
@@ -260,7 +261,7 @@ Qlik Sense Enterprise で Azure AD シングル サインオンを構成する�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

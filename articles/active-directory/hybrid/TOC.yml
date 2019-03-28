@@ -251,6 +251,8 @@ items:
       href: how-to-connect-sync-best-practices-changing-default-configuration.md
     - name: 既定の構成の変更
       href: how-to-connect-sync-change-the-configuration.md
+    - name: 既定の規則に加えた変更の修正
+      href: how-to-connect-fix-default-rules.md
     - name: ディレクトリ拡張機能の構成
       href: how-to-connect-sync-feature-directory-extensions.md
     - name: 優先されるデータの場所の構成
@@ -273,6 +275,8 @@ items:
         href: how-to-connect-sync-service-manager-ui-mvsearch.md
   - name: トラブルシューティング
     items:
+    - name: Azure AD Connect 管理エージェントとは
+      href: whatis-aadc-admin-agent.md
     - name: ADConnectivityTools PowerShell モジュールとは
       href: how-to-connect-adconnectivitytools.md
     - name: 接続
@@ -337,9 +341,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: ADConnectivityTools リファレンス
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 613adb5c19c3ca7fa2f47700a0358a51beac98e4
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: aac9615fde8547493851ba513156ec860c51c13c
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193706"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498283"

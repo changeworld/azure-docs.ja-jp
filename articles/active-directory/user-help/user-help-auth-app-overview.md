@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8585557672c7db15e07be6a5e663ba1811e07694
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 4b47b0c5af98198d829c4658877acae2edff5455
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961314"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001187"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリとは
 
@@ -28,18 +28,21 @@ Microsoft Authenticator アプリは、2 要素認証を使用する場合に、
 
 Microsoft Authenticator アプリは次のような複数の方法で使用できます。
 
-- お客様が自分のユーザー名とパスワードを使ってサインインした後に、2 つ目の認証方法が求められるようにする。
+- ユーザー名とパスワードでサインインした後に、認証のためのプロンプトに応答する。
 
-- ユーザー名と、指紋、顔、または PIN によるモバイル デバイスを利用して、パスワードを必要としないサインインを提供する。
+- ユーザー名、認証アプリ、およびモバイル デバイスで指紋、顔、または PIN を使用して、パスワードを入力せずにサインインする。
 
->[!Important]
->Microsoft Authenticator アプリは、2 要素認証を使用する任意のアプリ、および時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
+- 認証アプリをサポートする他のアカウント用のコード ジェネレーターとして使用する。
 
->組織では、サインインして組織のデータやドキュメントにアクセスするために、認証アプリの使用がユーザーに要求されている場合があります。 アプリにユーザー名が表示される場合でも、登録プロセスを完了するまで、アカウントは検証方法として機能するように実際に設定されてはいません。 詳しくは、「[職場または学校のアカウントを追加する](user-help-auth-app-overview.md)」をご覧ください。
-
->アカウントへのサインインに問題がある場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429)」をヘルプとして参照してください。 Microsoft アカウントへのサインイン試行時に ["指定した Microsoft アカウントは登録されていません"](https://support.microsoft.com/help/13811) というメッセージが表示される場合の対処方法を、詳しく確認してください。
+> [!Important]
+> Microsoft Authenticator アプリは、2 要素認証を使用し、時間ベースのワンタイム パスワード (TOTP) 標準をサポートする任意のアカウントで動作します。
+> 
+> 組織では、サインインして組織のデータやドキュメントにアクセスするために、認証アプリの使用がユーザーに要求されている場合があります。 アプリにユーザー名が表示される場合でも、登録プロセスを完了するまで、アカウントは検証方法として機能するように実際に設定されてはいません。 詳しくは、「[職場または学校のアカウントを追加する](user-help-auth-app-add-work-school-account.md)」をご覧ください。
+> 
+> アカウントへのサインインに問題がある場合は、「[Microsoft アカウントにサインインできない場合](https://support.microsoft.com/help/12429)」をヘルプとして参照してください。 Microsoft アカウントへのサインイン試行時に ["指定した Microsoft アカウントは登録されていません"](https://support.microsoft.com/help/13811) というメッセージが表示される場合の対処方法を、詳しく確認してください。
 
 ## <a name="terminology"></a>用語集
+
 |用語|説明|
 |----|-----------|
 |2 要素認証 |わずか 2 種類の認証情報 (パスワードと PIN など) を特に使用しなければならない認証プロセスです。 Microsoft Authenticator アプリでは、標準の 2 要素認証とパスワードなしのサインインの両方がサポートされます。|

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 6c5e44f0-4e52-463f-b879-834d80a55cdf
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c397cd3b535c7bf918eac2ac1e9ae1f967d7b95a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c64fb2dc4c494252f0078b8d23e05b15f07ebe00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877505"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>チュートリアル:Azure Active Directory と SAP Business Object Cloud の統合
 
@@ -106,12 +106,14 @@ SAP Business Object Cloud で Azure AD シングル サインオンを構成す�
     ![[SAP Business Object Cloud のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+
     | |
     |-|-|
     | `https://<sub-domain>.sapanalytics.cloud/` |
     | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
+    
     | |
     |-|-|
     | `<sub-domain>.sapbusinessobjects.cloud` |
@@ -178,7 +180,7 @@ SAP Business Object Cloud で Azure AD シングル サインオンを構成す�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -235,9 +237,9 @@ Azure AD ユーザーが SAP Business Object Cloud にサインインできる�
 
     c. **[LAST NAME]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[DISPLAY NAME]\(表示名\)** ボックスに、ユーザーのフル ネームを入力します (この例では **Britta Simon**)。
+    d. **[DISPLAY NAME]\(表示名\)** ボックスに、ユーザーのフル ネームを入力します (この例では **Britta Simon**)。
 
-    e. **[E-MAIL]\(電子メール\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
+    e. **[E-MAIL]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (この例では **brittasimon\@contoso.com**)。
 
     f. **[Select Roles]\(ロールの選択\)** ページで、ユーザーの適切なロールを選択し、**[OK]** を選択します。
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bcaf19f2-5809-4e1c-acbc-21a8d3498ccf
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9377ebdcc26305ca9652b947e8bd16d98374ef5d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9faf82918619301335f191d39453d317dcf5988b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873748"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>チュートリアル:Azure Active Directory と GoToMeeting の統合
 
@@ -111,20 +111,20 @@ GoToMeeting で Azure AD シングル サインオンを構成するには、次
 
     c. **[追加の URL を設定します]** をクリックして、以下の URL を構成します
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **サインオン URL** (空白のまま)
+    d. **サインオン URL** (空白のまま)
 
     e. **[RelayState]** ボックスに、次のパターンを使用して URL を入力します。
 
-    - GoToMeeting App の場合は、`https://global.gotomeeting.com` を使用します。
+   - GoToMeeting App の場合は、`https://global.gotomeeting.com` を使用します。
 
-    - GoToTraining の場合は、`https://global.gototraining.com` を使用します。
+   - GoToTraining の場合は、`https://global.gototraining.com` を使用します。
 
-    - GoToWebinar の場合は、`https://global.gotowebinar.com` を使用します。 
+   - GoToWebinar の場合は、`https://global.gotowebinar.com` を使用します。 
 
-    - GoToAssist の場合は、`https://app.gotoassist.com` を使用します。
+   - GoToAssist の場合は、`https://app.gotoassist.com` を使用します。
 
-    > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[GoToMeeting クライアント サポート チーム](https://go.microsoft.com/fwlink/?linkid=845985)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+     > [!NOTE]
+     > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[GoToMeeting クライアント サポート チーム](https://go.microsoft.com/fwlink/?linkid=845985)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -164,7 +164,7 @@ GoToMeeting で Azure AD シングル サインオンを構成するには、次
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

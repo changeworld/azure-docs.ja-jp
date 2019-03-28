@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: a9ca626ecf026736617ba495422ed957d03b2b37
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: f062dcfb22dda015d0dab9727672ca90df5ddb4d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414602"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000890"
 ---
 # <a name="tutorial-create-and-manage-s2s-vpn-connections-using-powershell"></a>チュートリアル:PowerShell を使用して S2S VPN 接続を作成および管理する
 
@@ -120,7 +120,7 @@ Get-AzVirtualNetworkGatewayConnectionSharedKey `
   -Name $Connection1 -ResourceGroupName $RG1
 ```
 
-上記の例の出力は、"**Azure@!b2C3**" になります。 事前共有キーの値を "**Azure@!_b2=C3**" に変更するには、次のコマンドを使用します。
+上記の例の出力は、"**Azure\@!b2C3**" になります。 事前共有キーの値を "**Azure\@!_b2=C3**" に変更するには、次のコマンドを使用します。
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkGatewayConnectionSharedKey `

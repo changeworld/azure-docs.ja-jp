@@ -1,6 +1,6 @@
 ---
 title: Azure Application Insights のクイック スタート | Microsoft docs
-description: Application Insights で監視する ASP.NET Core Web アプリを迅速にセットアップする手順を説明します
+description: Application Insights で監視するために ASP.NET Core Web アプリを迅速に設定する手順を説明します
 services: application-insights
 keywords: ''
 author: mrbullwinkle
@@ -10,18 +10,18 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 14295bca12e64174d03cfd1c2bd8d214d801e8e5
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fe986d24df8dce6a390d21a262056f7ab857070c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261062"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886730"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する
 
 Azure Application Insights を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を簡単に監視できます。 アプリケーションのエラーを、ユーザーからの報告を待つことなく、迅速に特定して診断することもできます。 
 
-このクイック スタートでは、既存の ASP.Net Core Web アプリケーションに Application Insights SDK を追加する方法を説明します。 
+このクイック スタートでは、既存の ASP.NET Core Web アプリケーションに Application Insights SDK を追加する方法を説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 

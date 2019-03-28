@@ -17,15 +17,15 @@ items:
 - name: チュートリアル
   items:
   - name: 単一のサイトをホストする
-    href: tutorial-manage-web-traffic-cli.md
+    href: quick-create-portal.md
   - name: Web アプリケーション ファイアウォールを有効にする
-    href: tutorial-restrict-web-traffic-cli.md
+    href: application-gateway-web-application-firewall-portal.md
   - name: SSL でセキュリティ保護する
-    href: tutorial-ssl-cli.md
+    href: create-ssl-portal.md
   - name: 複数のサイトをホストする
-    href: tutorial-multiple-sites-cli.md
+    href: create-multiple-sites-portal.md
   - name: URL に基づいてルーティングする
-    href: tutorial-url-route-cli.md
+    href: create-url-route-portal.md
   - name: Web トラフィックをリダイレクトする
     href: tutorial-url-redirect-cli.md
   - name: 自動スケーリングとゾーン冗長
@@ -90,8 +90,10 @@ items:
   items:
   - name: 単一のサイトをホストする
     items:
-    - name: Azure ポータル
+    - name: Azure PowerShell
       href: tutorial-manage-web-traffic-powershell.md
+    - name: Azure CLI
+      href: tutorial-manage-web-traffic-cli.md
     - name: Template
       href: create-vmss-template.md
   - name: 内部 Load Balancer を構成する
@@ -104,10 +106,10 @@ items:
     items:
     - name: SSL 終了
       items:
-      - name: SSL 終了 - ポータル
-        href: create-ssl-portal.md
       - name: SSL 終了 - PowerShell
         href: tutorial-ssl-powershell.md
+      - name: SSL 終了 - Azure CLI
+        href: tutorial-ssl-cli.md
     - name: エンドツーエンド SSL
       items:
       - name: エンドツーエンド SSL - ポータル
@@ -126,10 +128,10 @@ items:
         href: application-gateway-configure-ssl-policy-powershell.md
   - name: Web アプリケーション ファイアウォールを構成する
     items:
-    - name: Azure ポータル
-      href: application-gateway-web-application-firewall-portal.md
     - name: Azure PowerShell
       href: tutorial-restrict-web-traffic-powershell.md
+    - name: Azure CLI
+      href: tutorial-restrict-web-traffic-cli.md
   - name: WAF 規則セットを構成する
     items:
     - name: Azure ポータル
@@ -140,16 +142,16 @@ items:
       href: application-gateway-customize-waf-rules-cli.md
   - name: URL に基づいてルーティングする
     items:
-    - name: Azure ポータル
-      href: create-url-route-portal.md
     - name: Azure PowerShell
       href: tutorial-url-route-powershell.md
+    - name: Azure CLI
+      href: tutorial-url-route-cli.md
   - name: 複数のサイトをホストする
     items:
-    - name: Azure ポータル
-      href: create-multiple-sites-portal.md
     - name: Azure PowerShell
       href: tutorial-multiple-sites-powershell.md
+    - name: Azure CLI
+      href: tutorial-multiple-sites-cli.md
   - name: トラフィックをリダイレクトする
     items:
     - name: 外部トラフィック
@@ -236,9 +238,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: cd08a1ac880bb4242f4f57882d0e45133cf26748
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: b7b696b2094dc74e1a30cbd33f304aa663bf742e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350761"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444929"
