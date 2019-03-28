@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: cc0631052fa915ae946e791c907e405d70713ad2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e7617aec2739daa4f84bcecab060ae0f8e28fabe
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860562"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361593"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>チュートリアル:Azure Machine Learning service でイメージ分類モデルをトレーニングする
 
@@ -65,9 +65,11 @@ Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](
 
 ### <a name="server"></a>独自の Jupyter Notebook サーバーを使用する
 
-次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  以下の手順を完了したら、**tutorials/img-classification-part1-training.ipynb** ノートブックを実行します。
+次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。 
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
+
+ 以下の手順を完了したら、**tutorials/img-classification-part1-training.ipynb** ノートブックを実行します。
 
 ## <a name="start"></a>開発環境を設定する
 
