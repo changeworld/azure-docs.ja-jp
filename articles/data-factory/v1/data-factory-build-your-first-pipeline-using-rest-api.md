@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 384294dfcd443f0bdbb7a915069d2563bcc35ae4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5dcf31adc5e8bdf810d484f07ebeb6f23acbf452
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533887"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487806"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル:Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ ms.locfileid: "57533887"
   3. **Get-AzSubscription -SubscriptionName NameOfAzureSubscription | Set-AzContext** を実行して、使用するサブスクリプションを選択します。 **NameOfAzureSubscription** を自分の Azure サブスクリプションの名前で置き換えます。
 * PowerShell で次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
 
-    ```PowerShell
+    ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
@@ -272,7 +272,7 @@ Azure PowerShell で、値を独自の値に置き換えて、以下のコマン
 >
 >
 
-```PowerShell
+```powershell
 $client_id = "<client ID of application in AAD>"
 $client_secret = "<client key of application in AAD>"
 $tenant = "<Azure tenant ID>";
@@ -285,7 +285,7 @@ $adf = "FirstDataFactoryREST"
 
 ## <a name="authenticate-with-aad"></a>AAD での認証
 
-```PowerShell
+```powershell
 $cmd = { .\curl.exe -X POST https://login.microsoftonline.com/$tenant/oauth2/token  -F grant_type=client_credentials  -F resource=https://management.core.windows.net/ -F client_id=$client_id -F client_secret=$client_secret };
 $responseToken = Invoke-Command -scriptblock $cmd;
 $accessToken = (ConvertFrom-Json $responseToken).access_token;
@@ -301,17 +301,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
     ここで指定するデータ ファクトリの名前 (ADFCopyTutorialDF) が、 **datafactory.json**で指定した名前と一致することを確認します。
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@datafactory.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/FirstDataFactoryREST?api-version=2015-10-01};
     ```
 2. **Invoke-Command**を使用して、コマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. 結果を表示します。 データ ファクトリが正常に作成された場合は、**results** にデータ ファクトリの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 
@@ -327,12 +327,12 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
 
-    ```PowerShell
+    ```powershell
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
       Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
-    ```PowerShell
+    ```powershell
     Get-AzResourceProvider
     ```
   * Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
@@ -347,17 +347,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 1. コマンドを **cmd**という名前の変数に割り当てます。
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data “@azurestoragelinkedservice.json” https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/AzureStorageLinkedService?api-version=2015-10-01};
     ```
 2. **Invoke-Command**を使用して、コマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. 結果を表示します。 リンクされたサービスが正常に作成された場合は、**results** に、リンクされたサービスの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 
@@ -366,17 +366,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 1. コマンドを **cmd**という名前の変数に割り当てます。
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@hdinsightondemandlinkedservice.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/linkedservices/hdinsightondemandlinkedservice?api-version=2015-10-01};
     ```
 2. **Invoke-Command**を使用して、コマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. 結果を表示します。 リンクされたサービスが正常に作成された場合は、**results** に、リンクされたサービスの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 
@@ -388,17 +388,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 1. コマンドを **cmd**という名前の変数に割り当てます。
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@inputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobInput?api-version=2015-10-01};
     ```
 2. **Invoke-Command**を使用して、コマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. 結果を表示します。 データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 
@@ -407,17 +407,17 @@ $accessToken = (ConvertFrom-Json $responseToken).access_token;
 
 1. コマンドを **cmd**という名前の変数に割り当てます。
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@outputdataset.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/AzureBlobOutput?api-version=2015-10-01};
     ```
 2. **Invoke-Command**を使用して、コマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. 結果を表示します。 データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 
@@ -428,17 +428,17 @@ Azure Blob Storage の **adfgetstarted/inputdata** フォルダーに **input.lo
 
 1. コマンドを **cmd**という名前の変数に割り当てます。
 
-    ```PowerShell
+    ```powershell
     $cmd = {.\curl.exe -X PUT -H "Authorization: Bearer $accessToken" -H "Content-Type: application/json" --data "@pipeline.json" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datapipelines/MyFirstPipeline?api-version=2015-10-01};
     ```
 2. **Invoke-Command**を使用して、コマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     $results = Invoke-Command -scriptblock $cmd;
     ```
 3. 結果を表示します。 データセットが正常に作成された場合は、**results** にデータセットの JSON が表示されます。そうでない場合は、エラー メッセージが表示されます。
 
-    ```PowerShell
+    ```powershell
     Write-Host $results
     ```
 4. これで、Azure PowerShell を使用して最初のパイプラインを作成できました。
@@ -446,7 +446,7 @@ Azure Blob Storage の **adfgetstarted/inputdata** フォルダーに **input.lo
 ## <a name="monitor-pipeline"></a>パイプラインを監視する
 この手順では、Data Factory REST API を使用して、パイプラインによって生成されるスライスを監視します。
 
-```PowerShell
+```powershell
 $ds ="AzureBlobOutput"
 
 $cmd = {.\curl.exe -X GET -H "Authorization: Bearer $accessToken" https://management.azure.com/subscriptions/$subscription_id/resourcegroups/$rg/providers/Microsoft.DataFactory/datafactories/$adf/datasets/$ds/slices?start=1970-01-01T00%3a00%3a00.0000000Z"&"end=2016-08-12T00%3a00%3a00.0000000Z"&"api-version=2015-10-01};
