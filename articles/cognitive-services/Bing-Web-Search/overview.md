@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 08/14/2018
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2cf135cc984ce032113de65bead210bd4c5e95ce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b6e546130efd52312fca62ab4e6a22626778a19e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861801"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847985"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Search API とは
 
-Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTful サービスです。 検索結果は、Web ページ、画像、ビデオ、ニュース、翻訳などを含むように簡単に構成できます。 結果は JSON として提供され、検索の関連性と Bing Web Search のサブスクリプションに基づいています。
+Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTful サービスです。 検索結果は、Web ページ、画像、ビデオ、ニュース、翻訳などを含むように簡単に構成できます。 Bing Web Search では、検索の関連性と Bing Web Search のサブスクリプションに基づいて、結果が JSON として提供されます。
 
 この API は、ユーザーの検索クエリに関連するすべてのコンテンツにアクセスする必要があるアプリケーションに最適です。 特定の種類の結果のみを必要とするアプリケーションを構築する場合は、[Bing Image Search API](../Bing-Image-Search/overview.md)、[Bing Video Search API](../Bing-Video-Search/search-the-web.md)、または [Bing News Search API](../Bing-News-Search/search-the-web.md) を使用することを検討してください。 Bing Search API の詳細な一覧については、[Cognitive Services APIs](https://docs.microsoft.com/azure/cognitive-services) を参照してください。
 
@@ -28,7 +28,7 @@ Bing Web Search API は、ユーザーのクエリにすぐに回答する RESTf
 
 ## <a name="features"></a>機能  
 
-Bing Web Search には、すぐに回答が得られるだけでなく、ユーザーに対する検索結果をカスタマイズできる追加の機能があります。
+Bing Web Search では、インスタント アンサーにアクセスできるだけではありません。 ユーザーの検索結果をカスタマイズできるさまざまな機能も利用できます。
 
 | 機能 | 説明 |
 |---------|-------------|
@@ -40,7 +40,7 @@ Bing Web Search には、すぐに回答が得られるだけでなく、ユー�
 
 ## <a name="workflow"></a>ワークフロー
 
-Bing Web Search API は、HTTP 要求を作成して JSON 応答を解析できる任意プログラミング言語から簡単に呼び出すことができます。 このサービスには、[REST API](quickstarts/python.md) または [Bing Web Search SDK](web-sdk-python-quickstart.md) を使用してアクセスできます。  
+Bing Web Search API は、HTTP 要求を作成して JSON 応答を解析できる任意プログラミング言語から簡単に呼び出すことができます。 このサービスには、[REST API](quickstarts/python.md) または [Bing Web Search SDK](web-sdk-python-quickstart.md) を使用してアクセスできます。
 
 1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)を作成できます。  
 2. [要求を Bing Web Search API](quickstarts/python.md) に送信します。

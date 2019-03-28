@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 62b42e15-c282-492d-823a-a7c1c539f2cc
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3c4eff92fa0ca63eccf331f5a6ba9e43610fc7b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 949b5b1aaab60e5b1d160963ac3f024dbbfbe552
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834960"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>チュートリアル:Azure Active Directory と Cezanne HR Software の統合
 
@@ -154,7 +154,7 @@ Cezanne HR Software で Azure AD シングル サインオンを構成するに�
 
     c. **[SAML Binding (SAML バインディング)]** を "POST" に変更します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[セキュリティ トークン サービス エンドポイント]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    d. **[セキュリティ トークン サービス エンドポイント]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
     e. [ユーザー ID の属性名] ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`」と入力します。
 
@@ -184,7 +184,7 @@ Cezanne HR Software で Azure AD シングル サインオンを構成するに�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -239,7 +239,7 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 
     c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[電子メール]** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
+    d. **[電子メール]** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
 4. **[Account Information (アカウント情報)]** セクションで、次の手順を実行します。
 
@@ -251,7 +251,7 @@ Azure AD ユーザーが Cezanne HR Software にログインできるように�
 
     c. **[Security Role (セキュリティ ロール)]** で **[HR Professional (人事担当者)]** を選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Click **OK**.
+    d. Click **OK**.
 
 5. **[Single Sign-On (シングル サインオン)]** タブに移動し、**[SAML 2.0 Identifiers (SAML 2.0 識別子)]** 領域で **[Add New (新規追加)]** を選択します。
 

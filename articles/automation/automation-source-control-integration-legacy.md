@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edc38296374538fd708a74f575d5b0c77770c005
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da9b82b1e17a62aa9b3d606b0b16295acf04eb85
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901544"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418756"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Azure Automation でのソース管理の統合 - 従来
 
@@ -65,17 +65,17 @@ GitHub アカウントと、Azure Automation にリンクするリポジトリ�
      
      | **パラメーター** | **値** |
      |:--- |:--- |
-     | Name |Microsoft.Azure.Automation.SourceControl.Connection |
-     | Type |String |
-     | Value |{"Branch":\<*ブランチ名*>,"RunbookFolderPath":\<*Runbookフォルダー パス*>,"ProviderType":\<*GitHub の場合は値 1*>,"Repository":\<*リポジトリ名*>,"Username":\<*Your GitHub ユーザー名*>} |
+     | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
+     | `Type`  |String |
+     | `Value` |{"Branch":\<*ブランチ名*>,"RunbookFolderPath":\<*Runbookフォルダー パス*>,"ProviderType":\<*GitHub の場合は値 1*>,"Repository":\<*リポジトリ名*>,"Username":\<*Your GitHub ユーザー名*>} |
 
      * **Microsoft.Azure.Automation.SourceControl.OauthToken**変数には、OAuthToken のセキュリティで保護され暗号化された値が格納されます。  
 
      |**パラメーター**            |**値** |
      |:---|:---|
-     | Name  | Microsoft.Azure.Automation.SourceControl.OauthToken |
-     | Type | Unknown(Encrypted) |
-     | Value | <*暗号化された OAuthToken*> |  
+     | `Name`  | Microsoft.Azure.Automation.SourceControl.OauthToken |
+     | `Type`  | Unknown(Encrypted) |
+     | `Value` | <*暗号化された OAuthToken*> |  
 
      ![variables](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 

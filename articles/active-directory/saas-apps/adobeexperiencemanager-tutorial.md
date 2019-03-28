@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 88a95bb5-c17c-474f-bb92-1f80f5344b5a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ceab0ee0180a6888ef99a7aefb1e5d176ab6c05
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cb066ce346d56b9b879a5e3cdcf30e7da77d94fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873170"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57846720"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>チュートリアル:Azure Active Directory と Adobe Experience Manager の統合
 
@@ -188,7 +188,7 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
     c. **[IDP Certificate Alias]\(IDP 証明書の別名\)** ボックスに、トラストストアに追加した**証明書の別名**の値を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Security Provided Entity ID]\(セキュリティ指定されたエンティティ ID\)** ボックスに、Azure portal で構成した **[Azure AD 識別子]** の一意の値を入力します。
+    d. **[Security Provided Entity ID]\(セキュリティ指定されたエンティティ ID\)** ボックスに、Azure portal で構成した **[Azure AD 識別子]** の一意の値を入力します。
 
     e. **[Assertion Consumer Service URL]** ボックスに、Azure Portal で構成した **[応答 URL]** の値を入力します。
 
@@ -220,7 +220,7 @@ Azure AD と Adobe Experience Manager の統合を構成するには、ギャラ
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

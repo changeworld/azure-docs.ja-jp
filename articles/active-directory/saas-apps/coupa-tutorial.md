@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 47f27746-9057-4b9c-991e-3abf77710f73
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d1bac1e9fee9b06fb88237ddc3a7374eed32e40
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4156ef264069b5f926f28f766a201dceb29a512b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879642"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>チュートリアル:Azure Active Directory と Coupa の統合
 
@@ -111,6 +111,7 @@ Coupa で Azure AD シングル サインオンを構成するには、次の手
     > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Coupa クライアント サポート チーム](https://success.coupa.com/Support/Contact_Us?)にお問い合わせください。
 
     b. **[識別子]** ボックスに、URL を入力します。
+
     | 環境  | URL |
     |:-------------|----|
     | サンドボックス | `devsso35.coupahost.com`|
@@ -118,6 +119,7 @@ Coupa で Azure AD シングル サインオンを構成するには、次の手
     | | |
 
     c. **[応答 URL]** テキスト ボックスに、次の URL を入力します。
+
     | 環境 | URL |
     |------------- |----|
     | サンドボックス | `https://devsso35.coupahost.com/sp/ACS.saml2`|
@@ -174,7 +176,7 @@ Coupa で Azure AD シングル サインオンを構成するには、次の手
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

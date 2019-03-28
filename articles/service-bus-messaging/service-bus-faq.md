@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: fce3c2975e4b82583aa09a3862f704f05a363828
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a10b4d7fac29a6b016b5660b0430d042f2443fbd
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210596"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498079"
 ---
 # <a name="service-bus-faq"></a>Service Bus に関する FAQ
 
@@ -55,7 +55,7 @@ ms.locfileid: "56210596"
 ## <a name="pricing"></a>価格
 このセクションでは、Service Bus の価格体系についてよく寄せられる質問 (FAQ) とその回答を紹介します。
 
-「[Service Bus の料金と課金](service-bus-pricing-billing.md)」の記事では、Service Bus の課金メーターについて説明しています。 Service Bus の価格オプションの特定の情報については、[Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページをご覧ください。
+「[Service Bus の料金と課金](https://azure.microsoft.com/pricing/details/service-bus/)」の記事では、Service Bus の課金メーターについて説明しています。 Service Bus の価格オプションの特定の情報については、[Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページをご覧ください。
 
 Azure の全般的な価格情報については、[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/) も参照してください。 
 

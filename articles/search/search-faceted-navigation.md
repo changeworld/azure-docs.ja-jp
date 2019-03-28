@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/10/2017
+ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f1d557396f17357afd6f9e5d701e946668fcee65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5c7050ac006ea2500854f8f41b134895e5e0061
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861045"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541215"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Azure Search でファセット ナビゲーションを実装する方法
 ファセット ナビゲーションは、検索アプリケーションで自律型のドリルダウン ナビゲーションを提供するフィルター処理メカニズムです。 「ファセット ナビゲーション」という用語は聞き慣れないかもしれませんが、気づかずに使っていることもあります。 次の例に示すように、ファセット ナビゲーションは結果のフィルター処理に使用されるカテゴリです。
@@ -34,7 +34,7 @@ ms.locfileid: "57861045"
 ## <a name="sample-code-and-demo"></a>サンプル コードとデモ
 この記事では、例としてジョブ検索ポータルを使用します。 この例は、ASP.NET MVC アプリケーションとして実装されます。
 
--   「[Azure Search Job Portal Demo](https://azjobsdemo.azurewebsites.net/)」にある作業用デモをオンラインで参照し、テストしてください。
+-   「[Azure Search Job Portal Demo](http://azjobsdemo.azurewebsites.net/)」にある作業用デモをオンラインで参照し、テストしてください。
 
 -   [GitHub の Azure 用サンプル リポジトリ](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)からコードをダウンロードします。
 
@@ -364,7 +364,7 @@ Azure Search には、**geo.distance** および **geo.intersects** という 2 
 * **geo.distance** 関数は、2 つの点の間の距離を、キロメートル単位で返します。 1 つはフィールドで、もう 1 つはフィルターの一部として定数で渡されます。 
 * **geo.intersects** 関数は、指定された点が指定された多角形の内部にある場合は true を返します。 点はフィールドとして、多角形は座標の定数リストとして指定されて、フィルターの一部として渡されます。
 
-フィルターの例については、「 [Azure Search の OData 式の構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)」を参照してください。
+フィルターの例については、「 [Azure Search の OData 式の構文](query-odata-filter-orderby-syntax.md)」を参照してください。
 
 <a name="tryitout"></a>
 

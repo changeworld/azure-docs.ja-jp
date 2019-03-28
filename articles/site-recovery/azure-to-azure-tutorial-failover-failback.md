@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 46dae28fd6c9eaa3d5e03f5f06c5e92449653679
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ba1e65ca915c576d2424b166488b89baa92c24a9
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737724"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729042"
 ---
-# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Azure リージョン間で Azure VM をフェールオーバーおよびフェールバックする
+# <a name="fail-over-and-reprotect-azure-vms-between-azure-regions"></a>Azure リージョン間での Azure VM のフェールオーバーおよび再保護
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
 
@@ -25,8 +25,6 @@ ms.locfileid: "56737724"
 > [!div class="checklist"]
 > * Azure VM をフェールオーバーする
 > * プライマリ リージョンにレプリケートされるように、セカンダリ Azure VM を再保護する
-> * セカンダリ VM をフェールバックする
-> * プライマリ VM をセカンダリ リージョンに再保護する
 
 > [!NOTE]
 > このチュートリアルは、ターゲット リージョンへのフェールオーバーとフェールバックを最小限のカスタマイズで行う手順をユーザーに紹介することが目的です。ネットワークの考慮事項、オートメーション、トラブルシューティングなど、フェールオーバーに関する事柄をさまざまな角度から詳しく知りたい場合は、Azure VM の "操作方法" のドキュメントを参照してください。
@@ -74,12 +72,5 @@ VM のフェールオーバー後、プライマリ リージョンにレプリ�
 > 再保護の作業フローと再保護中の動作について詳しくは、["操作手順" のセクション](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection)を参照してください。
 
 
-## <a name="fail-back-to-the-primary-region"></a>プライマリ リージョンにフェールバックする
-
-VM が再保護されたら、必要に応じてプライマリ リージョンにフェールバックできます。 これを行うには、この記事で説明したように、セカンダリ リージョンからプライマリ リージョンへのフェールオーバーを設定します。
-
-![右クリックして再保護する](./media/azure-to-azure-tutorial-failover-failback/failback.png)
-
-前出のスクリーンショットが表示された場合、"ContosoWin2016" VM は米国中部から米国東部にフェールオーバーされ、米国東部から米国中部にフェールバックされています。
-
-フェールオーバーでは、セカンダリ リージョン (ディザスター リカバリー リージョン) の VM がシャットダウンされた後、プライマリ リージョンの VM が作成されて起動されます。 DR VM は、上図のようにシャットダウン (割り当て解除済み) 状態のままとなることに**注意**してください。 これは意図的な動作です。Azure Site Recovery は仮想マシンの情報を保存しますが、仮想マシンの情報は、プライマリ リージョンからセカンダリ リージョンへのフェールオーバーで有用な働きをする場合があるためです。 割り当て解除状態の仮想マシンに対して課金されることはないので、そのままにしておいてください。
+## <a name="next-steps"></a>次の手順
+- [フェールバックの方法](azure-to-azure-tutorial-failback.md)を確認する。

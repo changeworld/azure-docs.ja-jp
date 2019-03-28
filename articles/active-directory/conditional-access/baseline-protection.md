@@ -4,7 +4,7 @@ description: ベースラインの保護により、Azure Active Directory 環�
 services: active-directory
 keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
@@ -15,15 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/08/2018
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79cde42056d3943b8a3e15f46c57fdf6a0730de4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5b3d8b1daef9f780bbba53f33ae451c63f80249b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166166"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519767"
 ---
 # <a name="what-is-baseline-protection-preview"></a>ベースラインの保護とは (プレビュー)  
 

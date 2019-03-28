@@ -351,7 +351,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
  詳細については、「[ContainerHost 要素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)」を参照してください。
 
 ### <a name="imagename-element"></a>ImageName 要素
-https://hub.docker.com または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
+[https://hub.docker.com](https://hub.docker.com) または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables 要素
 コンテナーまたは exe に環境変数を渡します。  詳細については、「[EnvironmentVariables 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)」を参照してください。
@@ -395,7 +395,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 詳細については、「[ContainerHost 要素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)」を参照してください。
 
 ### <a name="imagename-element"></a>ImageName 要素
-https://hub.docker.com または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
+[https://hub.docker.com](https://hub.docker.com) または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="commands-element"></a>Commands 要素
 コマンドのコンマ区切りリストをコンテナーに渡します。 詳細については、「[Commands 要素](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
