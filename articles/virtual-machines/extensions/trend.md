@@ -80,7 +80,7 @@ VM エージェントがインストールされている場合は、次のコ�
 
 * このソリューションに関する Trend の記事「 [Instant-On Cloud Security for Microsoft Azure (Microsoft Azure 用の Instant-On クラウド セキュリティ)](https://go.microsoft.com/fwlink/?LinkId=404101)
 * 仮想マシンを構成するための [Windows PowerShell サンプル スクリプト](https://go.microsoft.com/fwlink/?LinkId=404100)
-* [説明](https://go.microsoft.com/fwlink/?LinkId=404099) 
+* サンプルの[説明書](https://go.microsoft.com/fwlink/?LinkId=404099) 
 
 ## <a name="additional-resources"></a>その他のリソース
 [Windows Server が実行されている仮想マシンにログオンする方法]
