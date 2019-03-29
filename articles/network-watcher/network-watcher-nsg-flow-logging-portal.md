@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 09d43386b994ffc046f8c3e22c82f13ec15acd38
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: bfe4abe4a83a6b22d05942f91f4152d5c0e62be9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428973"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124093"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
 
@@ -100,7 +100,10 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 
 6. NSG の一覧から **myVm-nsg** という名前の NSG を選択します。
 7. **[フローのログ設定]** の下で **[オン]** を選択します。
-8. フロー ログのバージョンを選択します。 バージョン 2 には、フローセッションの統計 (バイトおよびパケット) が含まれます。 ![フロー ログのバージョンの選択](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+8. フロー ログのバージョンを選択します。 バージョン 2 には、フローセッションの統計 (バイトおよびパケット) が含まれます。
+
+   ![フロー ログのバージョンの選択](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+
 9. 手順 3 で作成したストレージ アカウントを選択します。
 10. **[リテンション期間 (日数)]** を 5 に設定し、**[保存]** を選択します。
 
@@ -109,17 +112,13 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 1. ポータルの Network Watcher から、**[ログ]** の下の **[NSG フロー ログ]** を選択します。
 2. 次の図に示すように、**[構成済みのストレージ アカウントからフローのログをダウンロードできました。]** を選択します。
 
-  ![フロー ログをダウンロードする](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
+   ![フロー ログをダウンロードする](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. 「[NSG フロー ログの有効化](#enable-nsg-flow-log)」の手順 2 で構成したストレージ アカウントを選択します。
-4. 次の図に示すように、**[BLOB サービス]** の **[コンテナー]** を選択して、**[insights-logs-networksecuritygroupflowevent]** コンテナーを選択します。
+4. **[Blob service]** で **[BLOB]** を選択し、**[insights-logs-networksecuritygroupflowevent]** コンテナーを選択します。
+5. 次の図に示すように、コンテナー内のフォルダー階層を PT1H.json ファイルに到達するまで移動します。 ログ ファイルは、次の名前規則に従ってフォルダー階層に書き込まれます。 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
-    ![コンテナーの選択](./media/network-watcher-nsg-flow-logging-portal/select-container.png)
-5. 次の図に示すように、フォルダー階層を PT1H.json ファイルに到達するまで移動します。
-
-    ![ログ ファイル](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
-
-    ログ ファイルは、次の名前規則に従ってフォルダー階層に書き込まれます。 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+   ![フローのログ](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
 6. PT1H.json ファイルの右側の **[...]** を選択し、**[ダウンロード]** を選択します。
 
@@ -196,7 +195,6 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 }
 ```
 
-
 前の出力の **mac** の値は、VM の作成時に作成されたネットワーク インターフェイスの MAC アドレスです。 **flowTuples** のコンマで区切られた情報を次に示します。
 
 | サンプル データ | データが表す内容   | 説明                                                                              |
@@ -213,7 +211,7 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 | 30 | 送信済みパケット数 - 送信元から宛先 (**バージョン 2 のみ**) | 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットの総数。 |
 | 16978 | 送信済みバイト数 - 送信元から宛先 (**バージョン 2 のみ**) | 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。 | 
 | 24 | 送信済みパケット数 - 宛先から送信元 (**バージョン 2 のみ**) | 最後の更新以降に宛先から送信元に送信された TCP または UDP パケットの総数。 |
-| 14008| 送信済みバイト数 - 宛先から送信元 (**バージョン 2 のみ**) | 最後の更新以降に宛先から送信元に送信された TCP および UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。| |
+| 14008| 送信済みバイト数 - 宛先から送信元 (**バージョン 2 のみ**) | 最後の更新以降に宛先から送信元に送信された TCP および UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。|
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,11 +4,13 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/2/2019
 ms.author: crtreasu
-ms.openlocfilehash: 139f2f2c32c8974d08e0a9c4278304a5b17892bc
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 4badd7b3ea308968e514a58463f08e58243a3387
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752794"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57908520"
 ---
-**[階層]** ウィンドウで、**AzureSpatialAnchors** ゲーム オブジェクトを選択します。 次に、**[Inspector]** ウィンドウで、`Spatial Anchors Account Key` の値として (作成済みの Spatial Anchors リソースの) `Account Key` を入力し、`Spatial Anchors Account Id` の値として (作成済みの Spatial Anchors リソースの) `Account ID` を入力します。
+次に、自分のアカウント識別子とアカウント キーを使用するようにアプリを構成します。 これらの情報は、[Spatial Anchors リソースを設定](#create-a-spatial-anchors-resource)するときにテキスト エディターにコピーしました。
+
+**[階層]** ウィンドウで、**AzureSpatialAnchors** ゲーム オブジェクトを選択します。 次に、**[Inspector]** ウィンドウで、`Spatial Anchors Account Key` の値として `Account Key` を、`Spatial Anchors Account Id` の値として `Account ID` を入力します。

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: aahi
-ms.openlocfilehash: e11e4a59e447a8befcfaedb7ddedbb9aabdfaa28
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 61cfb5fa78a735d2ef542c30b445f3200f256d7c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330700"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226931"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Node.js を使用して Text Analytics Cognitive Service を呼び出す  
 <a name="HOLTop"></a>
@@ -28,7 +28,7 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。 
+また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。
 
 <a name="Detect"></a>
 
@@ -36,11 +36,11 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 
 言語検出 API では、[言語検出メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。
 
-1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+1. 任意の IDE で新しい Node.JS プロジェクトを作成するか、デスクトップにフォルダーを作成します。
+2. 新しい `.js` ファイルに以下のコードを追加します。
+3. `accessKey` の値は、Azure の Text Analytics リソースのサブスクリプション キーに置き換えてください。
 4. `uri` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+5. IDE またはコマンド ラインからプログラムを実行します (例: `npm start` または `node detect.js`)。
 
 ```javascript
 'use strict';
@@ -156,13 +156,13 @@ get_language (documents);
 
 ## <a name="analyze-sentiment"></a>センチメントを分析する
 
-感情分析 API では、[Sentiment メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)を使用して、テキスト レコードのセットのセンチメントを検出します。 次の例では、英語とスペイン語で書かれた 2 つのドキュメントをスコア付けします。
+Sentiment Analysis API では、[Sentiment メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 センチメント分析を使用すると、肯定的または否定的な感情の手掛かりを探して未加工のテキストを分析することで、ブランドまたはトピックに対して顧客がどう思っているのかを突き止めることができます。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
 
-1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+1. 任意の IDE で新しい Node.JS プロジェクトを作成するか、デスクトップにフォルダーを作成します。
+2. 新しい `.js` ファイルに以下のコードを追加します。
+3. `accessKey` の値は、Azure の Text Analytics リソースのサブスクリプション キーに置き換えてください。
 4. `uri` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+5. IDE またはコマンド ラインからプログラムを実行します (例: `npm start` または `node sentiment.js`)。
 
 ```javascript
 'use strict';
@@ -229,7 +229,8 @@ get_sentiments (documents);
 
 **センチメント分析の応答**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+結果は、スコアが 1.0 に近いほど肯定的と評価され、0.0 に近いほど否定的と評価されます。
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -251,13 +252,13 @@ get_sentiments (documents);
 
 ## <a name="extract-key-phrases"></a>キー フレーズを抽出する
 
-Key Phrase Extraction API では、[Key Phrases メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 次の例では、英語とスペイン語の両方のドキュメントのキー フレーズを抽出します。
+Key Phrase Extraction API では、[Key Phrases メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 キー フレーズ抽出は、ドキュメントまたはテキストの要点をすばやく突き止める目的で使用されます。 次の例では、英語とスペイン語、両方のドキュメントのキー フレーズを抽出しています。
 
-1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+1. 任意の IDE で新しい Node.JS プロジェクトを作成するか、デスクトップにフォルダーを作成します。
+2. 新しい `.js` ファイルに以下のコードを追加します。
+3. `accessKey` の値は、Azure の Text Analytics リソースのサブスクリプション キーに置き換えてください。
 4. `uri` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+5. IDE またはコマンド ラインからプログラムを実行します (例: `npm start` または `node key-phrases.js`)。
 
 ```javascript
 'use strict';
@@ -367,13 +368,13 @@ get_key_phrases (documents);
 
 ## <a name="identify-linked-entities"></a>リンクされているエンティティを識別する
 
-Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 次の例では、英語のドキュメントのエンティティを識別しています。
+Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
 
-1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+1. 任意の IDE で新しい Node.JS プロジェクトを作成するか、デスクトップにフォルダーを作成します。
+2. 新しい `.js` ファイルに以下のコードを追加します。
+3. `accessKey` の値は、Azure の Text Analytics リソースのサブスクリプション キーに置き換えてください。
 4. `uri` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+5. IDE またはコマンド ラインからプログラムを実行します (例: `npm start` または `node entities.js`)。
 
 ```javascript
 'use strict';
@@ -440,7 +441,7 @@ get_entities (documents);
 
 **エンティティ抽出の応答**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {

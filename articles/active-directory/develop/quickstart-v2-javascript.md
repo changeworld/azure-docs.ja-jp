@@ -4,7 +4,7 @@ description: JavaScript アプリケーションで、アクセス トークン�
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.subservice: develop
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a97e03f3c195b9fbd0ee7a09950414b7a940c7c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fe8c2287da7a7eabc26ff134d8bb44c5e45085f1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217481"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203049"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>クイック スタート:ユーザーをサインインし、JavaScript アプリケーションからアクセス トークンを取得する
 
@@ -29,7 +29,7 @@ ms.locfileid: "56217481"
 
 このクイック スタートでは、JavaScript シングル ページ アプリケーション (SPA) が個人用アカウントや職場および学校アカウントをサインインし、Microsoft Graph API や任意の Web API を呼び出すためのアクセス トークンを取得する方法を示すサンプル コードの使用方法について説明します。
 
-![このクイック スタートで生成されたサンプル アプリの動作](media/quickstart-v2-javascript/javascriptspa-intro.png)
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-javascript/javascriptspa-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>クイック スタート アプリケーションを登録してダウンロードする
@@ -74,14 +74,15 @@ ms.locfileid: "56217481"
 * [Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
 
 ローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを解凍します。
+フォルダー内のファイルを開くには、[Visual Studio Code](https://code.visualstudio.com/) などのエディターを使用します。
 
 #### <a name="step-3-configure-your-javascript-app"></a>手順 3:JavaScript アプリの構成
 
 > [!div renderon="docs"]
-> `applicationConfig`の下にある、`index.html`を編集し、`clientID`と`authority`の値を設定します。
+> *JavaScriptSPA* フォルダーの `index.html` を編集します。`applicationConfig` の `clientID` と `authority` の値を設定してください。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> `index.html` を編集し、`applicationConfig` を次に置き換えます。
+> *JavaScriptSPA* フォルダーの `index.html` を編集します。`applicationConfig` を次の内容に置き換えてください。
 
 ```javascript
 var applicationConfig = {
@@ -103,13 +104,9 @@ var applicationConfig = {
 > > [!TIP]
 > > **[アプリケーション (クライアント) ID]**、**[ディレクトリ (テナント) ID]**、**[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
 
-> [!NOTE]
-> [Node.js](https://nodejs.org/en/download/)プロジェクト内の*server.js*ファイルや、[Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)プロジェクト内の *.csproj*ファイルで、30662 ポートでリッスンするため、サーバーが構成されます。
->
-
 #### <a name="step-4-run-the-project"></a>手順 4:プロジェクトを実行する
 
-* Node.js を使用している場合:
+* [Node.js](https://nodejs.org/en/download/) を使用している場合:
 
     1. プロジェクトのディレクトリから次のコマンドを実行して、サーバーを起動します。
 
@@ -122,7 +119,7 @@ var applicationConfig = {
     1. **[サインイン]** ボタンをクリックしてサインインを開始してから、Microsoft Graph API を呼び出します。
 
 
-* Visual Studio を使用している場合は、プロジェクト ソリューションを選択したことを確認し、**F5** キーを押してプロジェクトを実行します。
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/) を使用している場合は、プロジェクト ソリューションを選択したことを確認し、**F5** キーを押してプロジェクトを実行します。
 
 ## <a name="more-information"></a>詳細情報
 
@@ -217,9 +214,9 @@ myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (access
 ### <a name="learn-the-steps-to-create-the-application-for-this-quickstart"></a>このクイック スタート用のアプリケーションを作成する手順を確認する
 
 > [!div class="nextstepaction"]
-> [Graph API 呼び出しチュートリアル](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
+> [サインインして MS Graph を呼び出すチュートリアル](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
 
 ### <a name="browse-the-msal-repo-for-documentation-faq-issues-and-more"></a>MSAL リポジトリでドキュメント、FAQ、問題などを確認する
 
 > [!div class="nextstepaction"]
-> [msal.js GitHub のリポジトリ](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [MSAL.js GitHub リポジトリ](https://github.com/AzureAD/microsoft-authentication-library-for-js)

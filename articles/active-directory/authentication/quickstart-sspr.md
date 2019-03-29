@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6cd463a728d8362221aaf7789258d7815566b23
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eabc30b28ec6c32295c5eeff0f19b31fba622056
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176256"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095621"
 ---
 # <a name="quickstart-self-service-password-reset"></a>クイック スタート:セルフサービスのパスワード リセット
 
@@ -42,11 +42,11 @@ ms.locfileid: "56176256"
 3. **[認証方法]** ページで、以下を選択します。
    * リセットに必要な方法の数:**1**
    * ユーザーが使用できる方法:
-      * **携帯電話**
-      * **会社電話**
+      * **電子メール**
+      * **モバイル アプリ コード (プレビュー)**
    * **[Save]** をクリックします。
 
-    ![認証][Authentication]
+     ![認証][Authentication]
 
 4. **[登録]** ページで、以下を選択します。
    * サインイン時にユーザーに登録を求める:**はい**

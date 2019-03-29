@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97c70c6187672c47a9f6dc09e1ccb8e6eadeff6a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed01b2b122724ba1428fb685bb3f1f52b7099a7b
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187684"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287062"
 ---
 # <a name="sign-up-for-azure-active-directory-premium-editions"></a>Azure Active Directory Premium エディションにサインアップする
 Azure Active Directory (Azure AD) Premium エディションを購入して、お使いの Azure サブスクリプションと関連付けることができます。 新しい Azure サブスクリプションを作成する必要がある場合は、ライセンス プランと Azure AD サービス アクセスをアクティブにする必要もあります。
@@ -65,17 +65,17 @@ EMS の詳細については、[Enterprise Mobility + Security の Web サイト
 ### <a name="to-activate-your-license-plan"></a>ライセンス プランをアクティブ化するには、次の手順を実行します。
 - サインアップした後に Microsoft から受信した確認の電子メールを開き、**[サインイン]** または **[サインアップ]** のどちらかをクリックします。
    
-    ![サインイン](media/active-directory-get-started-premium/MOLSEmail.png)
+    ![サインインおよびサインアップ用のリンクを含む確認メール](media/active-directory-get-started-premium/MOLSEmail.png)
 
     - **[サインイン]**。 既存のテナントがある場合は、このリンクをクリックし、既存の管理者アカウントを使ってサインインします。 ライセンスがアクティブ化されているテナント上で、グローバル管理者になっている必要があります。
 
     - **[サインアップ]**。 **[アカウント プロファイルの作成]** ページを開いて、自分のライセンス プラン用に新しい Azure AD テナントを作成する場合は、このリンクを選択します。
 
-        ![[アカウント プロファイルの作成]](media/active-directory-get-started-premium/MOLSAccountProfile.png)
+        ![サンプル情報を含む [アカウント プロファイルの作成] ページ](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 
 完了したら、テナントに対してライセンス プランをアクティブ化したことへの謝意を示した確認ボックスが表示されます。
 
-![確認](media/active-directory-get-started-premium/MOLSThankYou.png)
+![謝意が示された確認ボックス](media/active-directory-get-started-premium/MOLSThankYou.png)
 
 ## <a name="activate-your-azure-ad-access"></a>Azure AD アクセスをアクティブ化する
 新しい Azure AD Premium ライセンスを既存のサブスクリプションに追加している場合は、あらかじめ Azure AD アクセスがアクティブ化されている必要があります。 それ以外の場合は、**ウェルカム メール**を受信した後で Azure AD アクセスをアクティブ化する必要があります。  
@@ -89,11 +89,11 @@ EMS の詳細については、[Enterprise Mobility + Security の Web サイト
 
 1. **[ウェルカム メール]** を開いて、**[サインイン]** をクリックします。
    
-    ![ウェルカム メール](media/active-directory-get-started-premium/AADEmail.png)
+    ![サインイン用リンクが強調表示されたウェルカム メール](media/active-directory-get-started-premium/AADEmail.png)
 
 2. 正常にサインインした後は、モバイル デバイスを使用して 2 段階認証へ進みます。
    
-    ![Mobile verification](media/active-directory-get-started-premium/SignUppage.png)
+    ![モバイル認証による 2 段階認証のページ](media/active-directory-get-started-premium/SignUppage.png)
 
 通常、アクティブ化のプロセスにかかる時間は数分のみで、その後は、お使いの Azure AD テナントを使用できるようになります。 
 

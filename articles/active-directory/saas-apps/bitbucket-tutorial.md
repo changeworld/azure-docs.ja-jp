@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: fc947df1-f24e-43ae-9a34-518293583d69
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0ebb13ae67173b669ffeb8dad49910294cecba
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: eaa00690cab2cf8bc1ef7c1c3ab279a9f59fcabf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873663"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880468"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>チュートリアル:Azure Active Directory と SAML SSO for Bitbucket by resolution GmbH の統合
 
@@ -148,7 +148,7 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD シングル サインオ
 
     c. **[Description]\(説明\)** ボックスに、説明を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ]** をクリックします。
+    d. **[次へ]** をクリックします。
 
 6. **[Identity provider configuration]\(ID プロバイダーの構成\)** ページで、**[次へ]** をクリックします。
 
@@ -182,7 +182,7 @@ SAML SSO for Bitbucket by resolution GmbH で Azure AD シングル サインオ
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

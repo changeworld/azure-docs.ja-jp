@@ -1,0 +1,75 @@
+items:
+- name: ASC for IoT プレビューのドキュメント
+  href: index.yml
+- name: 概要
+  href: overview.md
+  items:
+  - name: ソリューションのアーキテクチャ
+    href: architecture.md
+  - name: セキュリティ エージェント
+    href: security-agent-architecture.md
+  - name: サービスの前提条件
+    href: service-prerequisites.md
+  - name: ASC for IoT を使用して作業を開始する
+    href: getting-started.md
+- name: クイック スタート
+  items:
+  - name: IoT Hub で ASC for IoT を有効にする
+    href: quickstart-onboard-iot-hub.md
+  - name: ソリューションを構成する
+    href: quickstart-configure-your-solution.md
+  - name: ASC for IoT モジュール ツインを作成する
+    href: quickstart-create-security-twin.md
+  - name: カスタムのセキュリティのアラートを作成する
+    href: quickstart-create-custom-alerts.md
+  expanded: true
+- name: チュートリアル
+  items:
+  - name: セキュリティ エージェントをデプロイする
+    items:
+    - name: C# ベースのセキュリティ エージェントを Windows デバイスにデプロイする
+      href: tutorial-deploy-windows-cs.md
+    - name: C# ベースのセキュリティ エージェントを Linux デバイスにデプロイする
+      href: tutorial-deploy-linux-cs.md
+    - name: C ベースのセキュリティ エージェントを Linux デバイスにデプロイする
+      href: tutorial-deploy-linux-c.md
+  - name: デバイスを調査する
+    href: tutorial-investigate-device.md
+  - name: 独自のセキュリティ メッセージを送信する
+    href: tutorial-send-security-messages.md
+- name: 概念
+  items:
+  - name: デプロイが推奨されるエージェント
+    href: select-deploy-agent.md
+  - name: セキュリティ エージェントを構成する
+    href: concept-agent-configuration.md
+  - name: セキュリティ エージェントの認証
+    href: concept-security-agent-authentication-methods.md
+  - name: セキュリティ モジュール
+    href: concept-security-module.md
+  - name: セキュリティのアラート
+    href: concept-security-alerts.md
+  - name: セキュリティに関する推奨事項
+    href: concept-recommendations.md
+- name: ハウツー ガイド
+  items:
+  - name: 未加工のセキュリティ データにアクセスする
+    href: how-to-security-data-access.md
+  - name: セキュリティ モジュール ツインを変更する
+    href: how-to-modify-security-module-twin.md
+- name: リソース
+  items:
+  - name: よく寄せられる質問
+    href: resources-frequently-asked-questions.md
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=security-identity
+  - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
+    href: http://blogs.msdn.com/b/azuresecurity/
+  - name: リージョン別の提供状況
+    href: https://azure.microsoft.com/regions/services/
+ms.openlocfilehash: 6789b87deb5c502df3541a10e9a8e4eece21a351
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541324"

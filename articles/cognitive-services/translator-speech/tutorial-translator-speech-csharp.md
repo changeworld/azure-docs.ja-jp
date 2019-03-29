@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3ed13cfe764c4f94dfa50fd096cfc7a8ac7656d
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 81ee3c7da43aa4d81838c90f4e8f41d114da72b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673753"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900830"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>チュートリアル:C# での Translator Speech アプリケーション
 
@@ -40,7 +40,7 @@ Visual Studio ソリューションでは、アプリケーションのインス
 
 また、Translator Speech サービスのサブスクリプション キーも必要です (Microsoft Azure ダッシュ ボードから取得できます)。 ユーザーは、毎月最大 10 時間の発話を無料で翻訳できる、無料価格レベルを利用できます。 このチュートリアルでは、この価格レベルで十分です。
 
-また、サード パーティの [JSON.Net ライブラリ](https://www.newtonsoft.com/json) (提供元は Newtonsoft) も必要になります。 このアセンブリは、Visual Studio のオプションで [パッケージの復元] チェック ボックスが両方とも有効になっている場合、NuGet によって自動的にインストールされます。
+また、サード パーティの [JSON.NET ライブラリ](https://www.newtonsoft.com/json) (提供元は Newtonsoft) も必要になります。 このアセンブリは、Visual Studio のオプションで [パッケージの復元] チェック ボックスが両方とも有効になっている場合、NuGet によって自動的にインストールされます。
 
 ## <a name="trying-the-translation-app"></a>翻訳アプリの使用
 

@@ -1,0 +1,114 @@
+---
+title: クイック スタート:Python を使用して Azure Data Explorer クラスターとデータベースを作成する
+description: Python を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
+services: data-explorer
+author: oflipman
+ms.author: oflipman
+ms.reviewer: orspodek
+ms.service: data-explorer
+ms.topic: quickstart
+ms.date: 03/17/2019
+ms.openlocfilehash: 4f87c5996ea323c26c32c1680ba6f627bf8f95c2
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287390"
+---
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python を使用して Azure Data Explorer クラスターとデータベースを作成する
+
+> [!div class="op_single_selector"]
+> * [ポータル](create-cluster-database-portal.md)
+> * [CLI](create-cluster-database-cli.md)
+> * [PowerShell](create-cluster-database-powershell.md)
+> * [C#](create-cluster-database-csharp.md)
+> * [Python](create-cluster-database-python.md)
+>  
+
+このクイック スタートでは、Python を使用して、Azure Data Explorer クラスターとデータベースを作成する方法について説明します。
+
+## <a name="prerequisites"></a>前提条件
+
+このクイック スタートを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+
+## <a name="install-python-package"></a>Python パッケージのインストール
+
+Azure Data Explorer (Kusto) 向けの Python パッケージをインストールするには、Python をパス設定した状態でコマンド プロンプトを開き、次のコマンドを実行します。
+
+```
+pip install azure-mgmt-kusto
+```
+
+## <a name="create-the-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターを作成する
+
+1. 次のコマンドを使用して、クラスターを作成します。
+
+    
+
+   |**設定** | **推奨値** | **フィールドの説明**|
+   |---|---|---|
+   | cluster_name | *mykustocluster* | クラスターの任意の名前。|
+   | sku | *D13_v2* | クラスターに使用される SKU。 |
+   | resource_group_name | *testrg* | クラスターが作成されるリソース グループの名前。 |
+
+    使用できる省略可能なパラメーターが他にも存在します (クラスターの容量など)。
+    
+    "credentials" には自分の資格情報を設定してください (詳細については、 https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python を参照してください)
+
+2. クラスターが正常に作成されたかどうかを確認するには、次のコマンドを実行します。
+
+    ```Python
+    cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
+    ```
+
+結果に値が `Succeeded` の `provisioningState` が含まれている場合、クラスターは正常に作成されています。
+
+## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターでデータベースを作成する
+
+1. 次のコマンドを使用して、データベースを作成します。
+
+    ```Python
+    from azure.mgmt.kusto.models import Database
+    from datetime import timedelta
+    
+    softDeletePeriod = timedelta(days=3650)
+    hotCachePeriod = timedelta(days=3650)
+    databaseName="mykustodatabase"
+    
+    database_operations = kusto_management_client.databases 
+    _database = Database(location=location,
+                        soft_delete_period=softDeletePeriod,
+                        hot_cache_period=hotCachePeriod)
+    
+    database_operations.create_or_update(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName, parameters = _database)
+    ```
+
+   |**設定** | **推奨値** | **フィールドの説明**|
+   |---|---|---|
+   | cluster_name | *mykustocluster* | データベースの作成先となるクラスターの名前。|
+   | database_name | *mykustodatabase* | データベースの名前。|
+   | resource_group_name | *testrg* | クラスターが作成されるリソース グループの名前。 |
+   | soft_delete_period | *3650 days, 0:00:00* | データをクエリに使用できるようにしておく時間。 |
+   | hot_cache_period | *3650 days, 0:00:00* | データをキャッシュに保持する時間。 |
+
+2. 次のコマンドを実行して、作成したデータベースを確認します。
+
+    ```Python
+    database_operations.get(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName)
+    ```
+
+クラスターとデータベースが作成されました。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+* 他のクイック スタートやチュートリアルを行う場合は、作成したリソースをそのままにします。
+* リソースをクリーンアップするには、クラスターを削除します。 クラスターを削除するときに、その中に含まれるデータベースもすべて削除されます。 クラスターを削除するには次のコマンドを使います。
+
+    ```Python
+    cluster_operations.delete(resource_group_name = resource_group_name, cluster_name = clusterName)
+    ```
+
+## <a name="next-steps"></a>次の手順
+
+> [!div class="nextstepaction"]
+> [クイック スタート:Azure Data Explorer の Python ライブラリを使用してデータを取り込む](python-ingest-data.md)

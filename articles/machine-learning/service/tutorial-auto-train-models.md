@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c064874c7eeeae0ae0b1176e3756be24f225e7fb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e30e65ba2efaf60a0e2d0a6df409c96db4d6285e
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818631"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295812"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
@@ -35,7 +35,7 @@ Azure Machine Learning service を使用してお客様のモデルの構築を�
 > * カスタム パラメーターを使用してモデルをローカルで実行する。
 > * 結果を調べる。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 >[!NOTE]
 > この記事のコードは、Azure Machine Learning SDK バージョン 1.0.0 を使用してテストされました。
@@ -82,18 +82,19 @@ Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](
 
     ```shell
     jupyter notebook
+    ```
 
-## <a name="start"></a>Set up your development environment
+## <a name="start"></a>開発環境を設定する
 
-All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+Python Notebook で、開発作業に関するすべての設定を行うことができます。 設定の一環として次のことを行います。
 
-* Install the SDK
-* Import Python packages
-* Configure your workspace
+* SDK のインストール
+* Python パッケージをインポートする
+* ワークスペースを構成する
 
-### Install and import packages
+### <a name="install-and-import-packages"></a>パッケージをインストールしてインポートする
 
-If you are following the tutorial in your own Python environment, use the following to install necessary packages.
+独自の Python 環境でチュートリアルを実行している場合は、次を使用して必要なパッケージをインストールします。
 
 ```shell
 pip install azureml-sdk[automl,notebooks] matplotlib
@@ -111,7 +112,7 @@ import os
 
 ### <a name="configure-workspace"></a>ワークスペースの構成
 
-既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace` は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。
+既存のワークスペースからワークスペース オブジェクトを作成します。 [ワークスペース](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。
 
 `Workspace.from_config()` は、**aml_config/config.json** ファイルを読み取り、詳細情報を `ws` という名前のオブジェクトに読み込みます。  `ws` は、このチュートリアルの残りのコード全体で使用されています。
 

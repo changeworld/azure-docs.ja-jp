@@ -18,6 +18,8 @@ ms.author: carolz
 
 拡張可能なクラウド プラットフォーム、Media Services を使用して、ブロードキャスト品質のビデオ ストリーミングを行う方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、ビデオ ストリーミングやオーディオ ストリーミングをオンデマンドやライブで安全に行い、数百万規模のユーザーに拡張する方法を紹介します。
 
+**注:** Media Services v2 には新機能は追加されません。 最新のバージョンである [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)をご覧ください。
+
 <ul class="panelContent cardsFTitle">
      <li>
         <a href="/azure/media-services/media-services-overview">
@@ -66,7 +68,7 @@ ms.author: carolz
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Portal で Azure Media Services を使ってみる</h3>
+                        <h3>Azure portal を使用した Azure Media Services の概要</h3>
                     </div>
                 </div>
             </div>
@@ -102,7 +104,7 @@ ms.author: carolz
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Azure Portal を使用したコンテンツ配信の概要</h3>
+                        <h3>Azure portal を使用したコンテンツ配信の概要</h3>
                     </div>
                 </div>
             </div>

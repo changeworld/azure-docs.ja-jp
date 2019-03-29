@@ -10,12 +10,12 @@ ms.topic: overview
 ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: d08fb915870355b49fafa91752cdd4264cbe6ad8
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: f0104bdc4b5ea5c5c6333e12b95defafb34665b3
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887541"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295506"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics とは
 
@@ -79,7 +79,7 @@ Azure Stream Analytics では、クラウドとインテリジェント エッ�
 ## <a name="mission-critical-ready"></a>ミッション クリティカル対応
 Azure Stream Analytics は世界中の複数のリージョンで使用でき、信頼性、セキュリティ、コンプライアンスの要件をサポートすることで、ミッション クリティカルなワークロードを実行するように設計されています。
 ### <a name="reliability"></a>信頼性
-厳密には、Azure Stream Analytics で保証されるイベントの処理は 1 回、イベントの配信は 1 回以上となります。そのため、イベントが失われることはありません。 「[イベント配信の保証](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)」で説明されているように、選択した出力が提供される厳密に 1 回だけの処理が保証されます。 Azure Stream Analytics には、イベントの配信に失敗した場合のために、組み込みの回復機能が備わっています。 また、Stream Analytics では、ジョブの状態を保持するために組み込みのチェックポイント機能が提供され、反復可能な結果が提供されます。
+厳密には、Azure Stream Analytics で保証されるイベントの処理は 1 回、イベントの配信は 1 回以上となります。そのため、イベントが失われることはありません。 [イベント配信の保証](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)に関するページで説明されているように、選択した出力が提供される厳密に 1 回だけの処理が保証されます。 Azure Stream Analytics には、イベントの配信に失敗した場合のために、組み込みの回復機能が備わっています。 また、Stream Analytics では、ジョブの状態を保持するために組み込みのチェックポイント機能が提供され、反復可能な結果が提供されます。
 
 Stream Analytics はマネージド サービスとして、分レベルで 99.9% の可用性のイベント処理が証されます。 詳細については、「[Stream Analytics の SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)」を参照してください。 
 
