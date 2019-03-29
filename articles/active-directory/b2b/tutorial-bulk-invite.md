@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 183a6ddf3fd47be552ba13ce42c1f6e29fca4410
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a30281012d28489a40e3366585164628d87c220
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193953"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009147"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する
 
@@ -119,7 +119,7 @@ foreach ($email in $invitations)
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-招待したユーザーが表示されていることを確認します。*emailaddress*#EXT#@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。 たとえば、*lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待状を送信した組織になります。
+招待したユーザーが表示されていることを確認します。*emailaddress*#EXT#\@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。 たとえば、*lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待状を送信した組織になります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

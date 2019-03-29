@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6c97289cd1ad406769613621afdc16c8096f4aeb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d5b229d96c0f63e27e36fb95122b36d3d8c128ac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116169"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110309"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 
@@ -36,6 +36,8 @@ ms.locfileid: "56116169"
 
 開始する前に、ディザスター リカバリーのために [VMware](vmware-azure-architecture.md) または [Hyper-V](hyper-v-azure-architecture.md) アーキテクチャを確認しておくと役立ちます。
 
+> [!TIP]
+> VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリック](https://aka.ms/migrateVMs-signup)してください
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,7 +56,6 @@ ms.locfileid: "56116169"
    ![新しいコンテナー](./media/migrate-tutorial-on-premises-azure/onprem-to-azure-vault.png)
 
 新しいコンテナーは、**[ダッシュボード]** の **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに追加されます。
-
 
 
 ## <a name="select-a-replication-goal"></a>レプリケーションの目標を選ぶ
@@ -112,10 +113,10 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 5. 想定どおりに Azure VM が Azure に表示されることを確認します。
 6. **[レプリケートされたアイテム]** で [VM] > **[移行の完了]** を右クリックします。 次の処理が実行されます。
 
-    - 移行プロセスが終了し、AWS VM のレプリケーションが停止して、その VM での Site Recovery の課金が停止します。
-    - この手順でレプリケーション データがクリーンアップされます。 移行した VM は削除されません。
+   - 移行プロセスが終了し、AWS VM のレプリケーションが停止して、その VM での Site Recovery の課金が停止します。
+   - この手順でレプリケーション データがクリーンアップされます。 移行した VM は削除されません。
 
-    ![移行の完了](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
+     ![移行の完了](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
 
 
 > [!WARNING]

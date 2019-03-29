@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 387e59eccc7dd9b20142bd692a1fe361435d3d57
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 7c4a73c86245067a07dc253041c43ae6c17f7172
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965020"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096981"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボにアクセスする方法
 この記事では、クラスルーム ラボにアクセスし、ラボの VM に接続して、VM を停止する方法について説明します。 
@@ -46,10 +46,10 @@ ms.locfileid: "55965020"
 
 1. VM をまだ起動していない場合は起動し、タイルで **[開始]** を選択します。 
 2. アクセスするラボの仮想マシンを表すタイルの **[接続]** を選びます。 
-3. RDP ファイル (Windows VM の場合) をハード ディスクに保存して開きます。 
-4. マシンにログインするために教師から提供された**ユーザー名**と**パスワード**を使います。 
-
-## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>クラスルーム ラボの仮想マシンを停止する
+3. 次のいずれかの手順を実行します。 
+   1. **Windows** 仮想マシンの場合は、**RDP** ファイルをハード ディスクに保存します。 仮想マシンに接続するための RDP ファイルを開きます。 マシンにログインするために教師から提供された**ユーザー名**と**パスワード**を使います。 
+   3. **Linux** 仮想マシンの場合は、**[仮想マシンに接続する]** ダイアログ ボックス上で SSH 接続文字列をコピーして保存します。 仮想マシンに接続するには、SSH ターミナル ([Putty](https://www.putty.org/) など) からこの接続文字列を使用します。
+      ## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>クラスルーム ラボの仮想マシンを停止する
 
 VM を停止するには、タイルの **[停止]** を選択します。 VM が停止すると、タイルの **[開始]** ボタンが有効になります。 
 

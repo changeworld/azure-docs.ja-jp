@@ -191,8 +191,6 @@ items:
     items:
     - name: 概要
       href: sql-data-warehouse-overview-integrate.md
-    - name: SQL Database エラスティック クエリ
-      href: how-to-use-elastic-query-with-sql-data-warehouse.md
 - name: ハウツー ガイド
   items:
   - name: セキュリティ保護
@@ -269,8 +267,6 @@ items:
         href: sql-data-warehouse-integrate-azure-stream-analytics.md
     - name: ダッシュボードとレポートのビルド
       items:
-      - name: SQL Database エラスティック クエリの構成
-        href: tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md
       - name: Power BI による視覚化
         href: sql-data-warehouse-get-started-visualize-with-power-bi.md
   - name: トラブルシューティング
@@ -321,9 +317,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: データ管理
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 7895d71fc2db30dd12aded48da168a105dbab2d9
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 52d14867099b85b2d03cc3c536026032fc56263f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517489"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620502"

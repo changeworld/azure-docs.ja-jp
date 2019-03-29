@@ -10,14 +10,14 @@ ms.topic: include
 ms.custom: include file
 ms.date: 09/27/2018
 ms.author: diberry
-ms.openlocfilehash: 6bda00a20dd83e005a57b50b0183b2b9f49667b4
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e077373532ffdc409c3748e969c33a3b84b4f6c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55291110"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177869"
 ---
 1. Visual Studio 2017 Community エディションを開きます。
-1. 新しい**コンソール アプリ (.NET Core)** プロジェクトを作成し、そのプロジェクトに名前を付けます`QnaMakerQuickstart`。 残りの設定には既定値を受け入れます。
+1. 新しい**コンソール アプリ (.NET Core)** プロジェクトを作成し、そのプロジェクトに `QnaMakerQuickstart` という名前を付けます。 残りの設定には既定値を受け入れます。
 1. ソリューション エクスプローラーで、プロジェクト名 **QnaMakerQuickstart** を右クリックし、**[NuGet パッケージの管理...]** を選択します。
 1. NuGet ウィンドウで、**[ブラウザー]** を選択したら、**Newtonsoft.JSON** を検索してパッケージをインストールします。 QnaMaker HTTP 応答から返される JSON を解析するには、このパッケージが使用されます。 

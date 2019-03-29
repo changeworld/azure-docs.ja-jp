@@ -5,19 +5,19 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a7c503fba534b72323472fa58b14188bc412003c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: a0b50b86ca164199ca723354e39e194c6cd7423f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100697"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014135"
 ---
-# <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル: データをエクスポートし、管理する
+# <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
 コスト分析のチュートリアルをお読みになっていれば、コスト管理データを手動でダウンロードできます。 その一方で、コスト管理データを Azure Storage に対して毎日、毎週、または毎月、自動的にエクスポートする定期タスクを作成することができます。 エクスポートしたデータは CSV 形式になり、コスト管理で収集したすべての情報がそれに含まれます。 エクスポート後は、Azure Storage に格納されたそのデータを外部システムで利用したり、独自のデータと組み合わせたりできます。 また、エクスポートしたデータを、ダッシュボードやその他の金融システムのような外部システムで利用できます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "56100697"
 > * データが収集されたことを確認する
 
 ## <a name="prerequisites"></a>前提条件
-データのエクスポートは、[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様など、さまざまな Azure アカウントの種類で使用できます。 サポートされているアカウントの種類の完全な一覧については、「[Cost Management データの理解](understand-cost-mgt-data.md)」をご覧ください。 ユーザーおよびグループによるデータのエクスポートについては、サブスクリプションに従い、次の Azure のアクセス許可がサポートされています。
+データのエクスポートは、[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様など、さまざまな Azure アカウントの種類で使用できます。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 ユーザーおよびグループによるデータのエクスポートについては、サブスクリプションに従い、次の Azure のアクセス許可、またはスコープがサポートされています。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
 - 所有者: サブスクリプションのスケジュールされたエクスポートを作成、変更、または削除できます。
 - 共同作成者: スケジュールされたエクスポートを作成、変更、または削除できます。 他のユーザーが作成したスケジュールされたエクスポートの名前を変更できます。
@@ -45,9 +45,9 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサイ�
 
 ## <a name="create-a-daily-export"></a>毎日のエクスポートを作成する
 
-コスト管理 + 課金 &gt; コスト管理 &gt; サブスクリプションを選択するか、サブスクリプション内のリソース グループを選択する &gt; エクスポート &gt; **追加**。
+データ エクスポートを作成または表示する場合、またはエクスポートをスケジュールする場合は、Azure portal で目的のスコープを開き、メニューで **[コスト分析]** を選択します。 たとえば、**[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 [コスト分析] ページの上部にある **[エクスポート]** をクリックしてから、エクスポート オプションを選択します。 たとえば、**[エクスポートのスケジュール]** をクリックします。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
-エクスポートの名前を入力し、[Daily export of month-to-date costs]\(過去 1 か月間のコストを毎日エクスポート\) オプションを選択します。 **[次へ]** をクリックします。
+**[追加]** をクリックし、エクスポートの名前を入力し、**[Daily export of month-to-date costs]\(過去 1 か月間のコストを毎日エクスポート\)** オプションを選択します。 **[次へ]** をクリックします。
 
 ![エクスポートの種類を示す新しいエクスポートの例](./media/tutorial-export-acm-data/basics_exports.png)
 

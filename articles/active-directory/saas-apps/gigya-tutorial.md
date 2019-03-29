@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 2c7d200b-9242-44a5-ac8a-ab3214a78e41
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: ac3242725438a7d5eaa6b93cb1f86f9344b59c1f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c3a2a92eb01943ab87c12d3ffefc4999cd9ff518
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864993"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901697"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>チュートリアル:Azure Active Directory と Gigya の統合
 
@@ -143,7 +143,7 @@ Gigya で Azure AD シングル サインオンを構成するには、次の手
    
     c. **[Single Sign-On Service URL]\(シングル サインオン サービス URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
    
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Name ID Format]\(名前 ID 形式\)** ボックスに、Azure Portal からコピーした**名前識別子形式**の値を貼り付けます。
+    d. **[Name ID Format]\(名前 ID 形式\)** ボックスに、Azure Portal からコピーした**名前識別子形式**の値を貼り付けます。
    
     e. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X.509 証明書]** ボックスに貼り付けます。
    
@@ -167,7 +167,7 @@ Gigya で Azure AD シングル サインオンを構成するには、次の手
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

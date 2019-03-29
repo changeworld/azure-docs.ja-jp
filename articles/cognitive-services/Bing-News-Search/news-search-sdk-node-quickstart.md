@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 262f7f49987dba8340ba4a1f0e6e505b9858e1e5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1930ef761b4be9d8085fd6e1785e78146c6b5547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863875"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109166"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>クイック スタート:Bing News Search SDK for Node.js を使ってニュース検索を実行する
 
@@ -35,7 +35,7 @@ Bing News Search SDK を使用してコンソール アプリケーションを�
 
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. `CognitiveServicesCredentials` のインスタンスを作成します。 サブスクリプション キーと検索語句の変数を作成します。
+1. `CognitiveServicesCredentials` のインスタンスを作成します。 サブスクリプション キーと検索用語の変数を作成します。
 
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
@@ -52,7 +52,7 @@ Bing News Search SDK を使用してコンソール アプリケーションを�
 
 ## <a name="send-a-search-query"></a>検索クエリを送信する
 
-3. クライアントを使用して検索語 (この場合は "Winter Olympics") を検索します。
+1. クライアントを使用して検索語 (この場合は "Winter Olympics") を検索します。
     
     ```javascript
     client.newsOperations.search(search_term).then((result) => {
@@ -72,4 +72,4 @@ Bing News Search SDK を使用してコンソール アプリケーションを�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-[単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)
+> [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

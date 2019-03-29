@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 345b22be-d87e-45a4-b4c0-70a67eaf9bfd
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd08de2711e8584b9f2bbe17716fe14400c8bf7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ed7d8d1a2c2f8c515fa520f6701068e4655cad35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871383"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898586"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>チュートリアル: Azure Active Directory と Mimecast Personal Portal の統合
 
@@ -178,7 +178,7 @@ Mimecast Personal Portal で Azure AD シングル サインオンを構成す�
    
     c. **[プロバイダー]** で **[Azure Active Directory]** を選択します。
    
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[発行者の URL]** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
+    d. **[発行者の URL]** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
    
     e. **[ログイン URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
    
@@ -208,7 +208,7 @@ Mimecast Personal Portal で Azure AD シングル サインオンを構成す�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -267,7 +267,7 @@ Azure AD ユーザーが Mimecast Personal Portal にログインできるよう
    
     ![保存](./media/mimecast-personal-portal-tutorial/ic795006.png "保存")
    
-    a. **[Email Address]\(電子メール アドレス\)** ボックスに、ユーザーの**電子メール アドレス**を「**BrittaSimon@contoso.com**」と入力します。
+    a. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーの**メール アドレス** (**BrittaSimon\@contoso.com** など) を入力します。
     
     b. **[Global Name]\(グローバル名\)** ボックスに、**ユーザー名**を「**BrittaSimon**」と入力します。
 

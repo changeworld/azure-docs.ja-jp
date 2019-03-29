@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 7be5331b-0481-48f7-9d6b-619dfec657e1
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb6943ef6c75f634cdb68557ed2339574bdc2602
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: eba63f8295fb5bebffdc8480f763c852521e331b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878287"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880910"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>チュートリアル:Azure Active Directory と ADP の統合
 
@@ -99,7 +99,7 @@ ADP で Azure AD シングル サインオンを構成するには、次の手�
 
     c. **[ユーザーの割り当てが必要]** フィールドの値を **[はい]** に設定します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザーに表示しますか?]** フィールドの値を **[いいえ]** に設定します。
+    d. **[ユーザーに表示しますか?]** フィールドの値を **[いいえ]** に設定します。
 
 2. [Azure portal](https://portal.azure.com/) の **ADP** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
@@ -187,7 +187,7 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
 5. Azure Portal の **ADP** アプリケーション統合ページで、**[プロパティ]** タブをクリックし、次の手順を実行します。  
 
-    ![シングル サインオンのリンクされたプロパティ](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
+    ![リンクされたシングル サインオンのプロパティ](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
     a.  **[ユーザーのサインインが有効になっていますか?]** フィールドの値を **[はい]** に設定します。
 
@@ -259,7 +259,7 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

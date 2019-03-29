@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de0e20eb096ba127790019c1c07fbdd504d3a480
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b22a7a86862f02c3320b7c14cc1ed878a57bd23d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877913"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>チュートリアル:Azure Active Directory と BlueJeans の統合
 
@@ -152,7 +152,7 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
     c. **[Password Change URL]\(パスワード変更 URL\)** テキスト ボックスに、Azure portal からコピーした**パスワードの変更 URL** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    d. **[ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
 5. 次の手順を実行します。
 
@@ -182,7 +182,7 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -240,11 +240,11 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
     c. **[Pick a BlueJeans Username]\(BlueJeans ユーザー名の選択\)** テキスト ボックスに、ユーザーのユーザー名 (**Brittasimon** など) を入力します
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[パスワードの作成]** テキスト ボックスにパスワードを入力します。
+    d. **[パスワードの作成]** テキスト ボックスにパスワードを入力します。
 
     e. **[会社]** テキスト ボックスに会社名を入力します。
 
-    f. **[電子メール アドレス]** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
+    f. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
     g. **[Create a BlueJeans Meeting I.D]\(BlueJeans 会議 I.D の作成\)** テキスト ボックスに、会議の ID を入力します。
 
@@ -252,7 +252,7 @@ BlueJeans で Azure AD シングル サインオンを構成するには、次�
 
     i. **[続行]** をクリックします。
 
-    ![ユーザーの追加](./media/bluejeans-tutorial/IC785887.png "ユーザーの追加")
+    ![ユーザーの追加](./media/bluejeans-tutorial/IC785887.png "Add User")
 
     J. **[ユーザーの追加]** をクリックします。
 
