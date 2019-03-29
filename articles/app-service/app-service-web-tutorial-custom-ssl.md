@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0c89cdc34c23c461e5cebf3026cb0774bf91b75d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a5b8bdbcd5a05574d824e3f57cfc23967278e27
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998568"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487738"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>チュートリアル:既存のカスタム SSL 証明書を Azure App Service にバインドする
 
@@ -252,7 +252,7 @@ az webapp config set \
 
 次のコマンドは、エクスポートした PFX ファイルをアップロードし、SNI ベースの SSL バインドを追加します。
 
-```PowerShell
+```powershell
 New-AzWebAppSSLBinding `
     -WebAppName <app_name> `
     -ResourceGroupName <resource_group_name> `

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7031e003ad05d647ccfaebf9239f26ef0af00a7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 13f67bfe0902a528d16b6a967f9d4ac189100406
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110717"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482405"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>チュートリアル:データを移動する Data Factory パイプラインを Azure PowerShell で作成する
 > [!div class="op_single_selector"]
@@ -82,31 +82,31 @@ ms.locfileid: "58110717"
 
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```   
    
     次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription
     ```
 
     次のコマンドを実行して、使用するサブスクリプションを選択します。 **&lt;NameOfAzureSubscription**&gt; を自分の Azure サブスクリプションの名前で置き換えます。
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
     ```
 1. 次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
 
-    ```PowerShell
+    ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     
     このチュートリアルの一部の手順は、 **ADFTutorialResourceGroup**という名前のリソース グループを使用することを前提としています。 異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループを使用する必要があります。
 1. **New-AzDataFactory** コマンドレットを実行し、**ADFTutorialDataFactoryPSH** という名前のデータ ファクトリを作成します。  
 
-    ```PowerShell
+    ```powershell
     $df=New-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
     ```
     この名前は既に取得されている可能性があります。 そのため、プレフィックスまたはサフィックスを追加してデータ ファクトリの名前を一意にしたうえで (たとえば、ADFTutorialDataFactoryPSH05152017)、再度コマンドを実行します。  
@@ -124,13 +124,13 @@ ms.locfileid: "58110717"
 
   * Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
 
-    ```PowerShell
+    ```powershell
     Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
     Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     Get-AzResourceProvider
     ```
   * Azure サブスクリプションを使用して、[Azure Portal](https://portal.azure.com) にサインインします。 Data Factory のブレードに移動するか、Azure Portal でデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
@@ -166,7 +166,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
 1. **Azure PowerShell** で **ADFGetStartedPSH** フォルダーに切り替えます。
 1. **New-AzDataFactoryLinkedService** コマンドレットを実行して、リンクされたサービスを作成します。**AzureStorageLinkedService** を作成します。 このコマンドレットと、このチュートリアルで使用する他の Data Factory コマンドレットでは、**ResourceGroupName** パラメーターと **DataFactoryName** パラメーターの値を渡す必要があります。 または、コマンドレットを実行するたびに ResourceGroupName と DataFactoryName を入力することなく、New-AzDataFactory コマンドレットから返された DataFactory オブジェクトを渡すことができます。 
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
     ```
     出力例を次に示します。
@@ -181,7 +181,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
 
     このリンクされたサービスを作成する別の方法として、DataFactory オブジェクトを指定する代わりに、リソース グループ名とデータ ファクトリ名を指定します。  
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName <Name of your data factory> -File .\AzureStorageLinkedService.json
     ```
 
@@ -206,7 +206,7 @@ AzureSqlLinkedService は、Azure SQL データベースをデータ ファク�
     ```
 1. 次のコマンドを実行して、リンクされたサービスを作成します。
 
-    ```PowerShell
+    ```powershell
     New-AzDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
     ```
     
@@ -290,7 +290,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     これらの JSON プロパティの詳細については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md#dataset-properties)に関する記事を参照してください。
 1. 次のコマンドを実行して、Data Factory データセットを作成します。
 
-    ```PowerShell  
+    ```powershell  
     New-AzDataFactoryDataset $df -File .\InputDataset.json
     ```
     出力例を次に示します。
@@ -353,7 +353,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     これらの JSON プロパティの詳細については、[Azure SQL コネクタ](data-factory-azure-sql-connector.md#dataset-properties)に関する記事を参照してください。
 1. 次のコマンドを実行して、データ ファクトリ データセットを作成します。
 
-    ```PowerShell   
+    ```powershell   
     New-AzDataFactoryDataset $df -File .\OutputDataset.json
     ```
 
@@ -438,7 +438,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
      パイプライン定義内の JSON プロパティの説明については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 コピー アクティビティ定義内の JSON プロパティの説明については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。 BlobSource でサポートされる JSON プロパティの説明については、[Azure BLOB コネクタ](data-factory-azure-blob-connector.md)に関する記事を参照してください。 SqlSink でサポートされる JSON プロパティの説明については、[Azure SQL Database コネクタ](data-factory-azure-sql-connector.md)に関する記事を参照してください。
 1. 次のコマンドを実行して、データ ファクトリ テーブルを作成します。
 
-    ```PowerShell   
+    ```powershell   
     New-AzDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
     ```
 
@@ -459,12 +459,12 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
 
 1. &lt;DataFactoryName&gt; をデータ ファクトリの名前で置き換え、**Get-AzDataFactory** を実行してその出力を $df 変数に割り当てます。
 
-    ```PowerShell  
+    ```powershell  
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
     ```
 
     例: 
-    ```PowerShell
+    ```powershell
     $df=Get-AzDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
     
@@ -483,7 +483,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     ```
 1. **Get-AzDataFactorySlice** を実行し、**OutputDataset** のすべてのスライスの詳細を表示します。これは、パイプラインの出力データセットです。  
 
-    ```PowerShell   
+    ```powershell   
     Get-AzDataFactorySlice $df -DatasetName OutputDataset -StartDateTime 2017-05-11T00:00:00Z
     ```
 
@@ -527,7 +527,7 @@ Azure Storage のリンクされたサービスは、Data Factory サービス�
     ```
 1. **Get-AzDataFactoryRun** を実行して、**特定の**スライスに関するアクティビティの実行の詳細を取得します。 前のコマンドの出力から日付/時刻値をコピーして、StartDateTime パラメーターの値を指定します。 
 
-    ```PowerShell  
+    ```powershell  
     Get-AzDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
     ```
 

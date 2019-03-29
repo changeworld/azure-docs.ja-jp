@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b472927f435cb86787c4580920250cb33438a07b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 59b390776a5e23c08d8793125747742cee4e473e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992257"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487025"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>チュートリアル:SQL Database を使用して Azure に ASP.NET アプリを作成する
 
@@ -227,19 +227,19 @@ public bool Done { get; set; }
 
 [パッケージ マネージャー コンソール] ウィンドウで、Code First Migrations を有効にします。
 
-```PowerShell
+```powershell
 Enable-Migrations
 ```
 
 移行を追加します。
 
-```PowerShell
+```powershell
 Add-Migration AddProperty
 ```
 
 ローカル データベースを更新します。
 
-```PowerShell
+```powershell
 Update-Database
 ```
 

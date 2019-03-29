@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: e833146d05f0c35449915c1d1293873258a7b7eb
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 6238f96c9e8df0431e42caa5e5846af3fc60e681
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226778"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484017"
 ---
 # <a name="point-in-time-snapshot"></a>ポイントインタイム スナップショット
 
@@ -27,7 +27,7 @@ Azure App Configuration は、新しいキーと値のペアが作成された�
 
 過去のキー/値を取得するには、そのスナップショットが作成された日時を REST API 呼び出しの HTTP ヘッダーに指定します。 例: 
 
-        GET /revisions HTTP/1.1
+        GET /kv HTTP/1.1
         Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
 
 現在、App Configuration では 7 日分の変更履歴が保持されます。

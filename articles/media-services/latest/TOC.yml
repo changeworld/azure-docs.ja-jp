@@ -53,6 +53,7 @@ items:
     - name: Transform と Job
       href: transforms-jobs-concept.md
     - name: Media Encoder Standard の形式
+      displayName: containers, codecs
       href: media-encoder-standard-formats.md
     - name: Autogen アダプティブ ビットレート ラダー
       href: autogen-bitrate-ladder.md
@@ -259,9 +260,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure のクラウドとリージョン
     href: azure-clouds-regions.md
-ms.openlocfilehash: c6e3c3f8b0496e95357abd4814773489f4956755
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6b4d60510fa285290d92d7e9d6a7c5c2166bcd3f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516945"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578707"
