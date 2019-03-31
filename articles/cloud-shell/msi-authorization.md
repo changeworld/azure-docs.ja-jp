@@ -23,16 +23,16 @@ ms.locfileid: "57244012"
 ---
 # <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Azure Cloud Shell で Azure リソースのマネージド ID を使用する
 
-Azure Cloud Shell は、Azure リソースのマネージド ID による承認をサポートします。 これを使用して、安全に Azure サービスと通信するためにアクセス トークンを取得します。
+Azure Cloud Shell は、Azure リソースのマネージド ID による認可をサポートします。 これにより、アクセス トークンを取得して安全に Azure サービスと通信することができます。
 
 ## <a name="about-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID について
-クラウド アプリケーションの構築時における一般的な課題は、クラウド サービスへの認証用のコードに必要な資格情報を安全に管理する方法です。 Cloud Shell では、スクリプトに必要な資格情報の Key Vault からの取得を認証する必要がある場合があります。
+クラウド アプリケーションの構築時における一般的な課題は、クラウド サービスへの認証に必要な資格情報を、コード上で安全に管理する方法です。 Cloud Shell では、スクリプトに必要な資格情報の Key Vault からの取得を認証する必要がある場合があります。
 
 Azure リソースのマネージド ID は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 
 ## <a name="acquire-access-token-in-cloud-shell"></a>Cloud Shell でアクセス トークンを取得する
 
-次のコマンドを実行し、環境変数 `access_token` として MSI アクセス トークンを設定します。
+次のコマンドを実行し、環境変数 `access_token` に MSI アクセス トークンを設定します。
 ```
 response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s)
 access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
@@ -45,7 +45,7 @@ echo The MSI access token is $access_token
 - キャッシュにトークンがないため、キャッシュ ミスが発生した
 - トークンの有効期限が切れている
 
-コードでトークンをキャッシュする場合は、リソースがトークンの期限切れ示している場合のシナリオを処理できるよう準備する必要があります。
+コードでトークンをキャッシュする場合は、リソースがトークンの有効期限切れを示している場合のシナリオを処理できるよう準備する必要があります。
 
 トークンのエラーを処理するには、[MSI アクセス トークンの使用に関する MSI ページ](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token#error-handling)を参照してください。
 
