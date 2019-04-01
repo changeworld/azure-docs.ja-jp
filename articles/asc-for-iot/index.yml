@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 12ba136bb227ef5ea469d91c6da9477b718b9e92
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: fad8ecd0658b2a00f249e8b218bab1dbdaf83187
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542235"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578222"
 documentType: LandingData
-title: Azure Security Center (ASC) for IoT プレビューのドキュメント
+title: ASC for IoT プレビューのドキュメント
 metadata:
-  title: Azure Security Center (ASC) for IoT プレビューのドキュメント - チュートリアル、クイック スタート | Microsoft Doc
-  meta.description: Azure Security Center for IoT unifies your security management and enables advanced threat protection across your IoT solution.
+  title: ASC for IoT プレビューのドキュメント - チュートリアル、クイック スタート | Microsoft Doc
+  meta.description: ASC for IoT unifies your security management and enables advanced threat protection across your IoT solution.
   services: ascforiot
   author: mlottner
   manager: barbkess
@@ -20,7 +20,7 @@ metadata:
   ms.date: 03/26/19
   ms.author: barbkess
 abstract:
-  description: Azure Security Center for IoT プレビューを使用して、既存のサイバーセキュリティ ビューを IoT ソリューション全体に拡張しましょう。 Azure に関連するすべてのリソースのセキュリティを完全に概観できるようになります。 迅速なデプロイ オプションがあり、IoT Hub モジュール ツインとの完全な統合が行われるため、幅広いカスタム オプションを利用し、現在のデバイス管理ツールと容易に統合できます。 
+  description: ASC for IoT プレビューを使用して、既存のサイバーセキュリティ ビューを IoT ソリューション全体に拡張しましょう。 Azure に関連するすべてのリソースのセキュリティを完全に概観できるようになります。 迅速なデプロイ オプションがあり、IoT Hub モジュール ツインとの完全な統合が行われるため、幅広いカスタム オプションを利用し、現在のデバイス管理ツールと容易に統合できます。 
 sections:
 - title: 5 分間のクイック スタート
   items:
@@ -32,19 +32,19 @@ sections:
     - image:
         src: media/index/deploy.svg
       text: ASC for IoT を有効にする
-      href: /azure/ascforiot/quickstart-onboard-iot-hub
+      href: /azure/asc-for-iot/quickstart-onboard-iot-hub
     - image:
         src: media/index/get-started.svg
       text: ASC for IoT を使用して作業を開始する
-      href: /azure/ascforiot/quickstart-getting-started
-- title: ステップバイステップのチュートリアル
+      href: /azure/asc-for-iot/getting-started
+- title: ハウツー ガイド
   items:
   - type: paragraph
     text: セキュリティ ポリシーを定義する方法、悪意のあるアクティビティからデバイスを保護する方法、セキュリティのアラートおよびインシデントに対応する方法について説明します。
   - type: list
-    style: ordered
+    style: unordered
     items:
-    - html: <a href="/azure/ascforiot/tutorial-investigate-device">ASC for IoT を使用して脅威を検出する</a>
+    - html: <a href="/azure/asc-for-iot/how-to-investigate-device">ASC for IoT を使用して脅威を検出する</a>
 - title: Microsoft Learn でスキルを身に付ける
   items:
   - type: list
