@@ -203,6 +203,7 @@ items:
     - name: 例 (簡単な構文)
       href: search-query-simple-examples.md
     - name: 例 (完全な Lucene)
+      href: search-query-lucene-examples.md
   - name: データのフィルター処理と並べ替え
     items:
     - name: フィルターの概要
@@ -212,7 +213,7 @@ items:
     - name: ファセット ナビゲーションの追加
       href: search-faceted-navigation.md
     - name: フィルターと OrderBy 式の構文と例
-      href: search-query-lucene-examples.md
+      href: query-odata-filter-orderby-syntax.md
   - name: 結果を処理する
     items:
     - name: ページ関連の機能
@@ -306,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: d0e692407a89e01806f425bedb302160ec8c672b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ec82dc9f36f7fb4be24d3d1e833a951f72b48f5a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576830"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651466"
