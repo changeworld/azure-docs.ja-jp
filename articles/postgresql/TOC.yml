@@ -191,6 +191,8 @@ items:
     items:
     - name: Azure portal を使用した読み取りレプリカの管理
       href: howto-read-replicas-portal.md
+    - name: Azure CLI を使用した読み取りレプリカの作成
+      href: howto-read-replicas-cli.md
 - name: リファレンス
   items:
   - name: Azure CLI
@@ -241,9 +243,9 @@ items:
     href: partners-migration-postgresql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 8e4f8c68e591f1ad8d26c4bd11bc2307c88c10c6
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 5958953a879a84a3a0b78b91ca276ad4bf48fc00
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620956"
+ms.locfileid: "58629186"

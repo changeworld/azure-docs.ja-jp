@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 903c1153db57f7cb632fc752bb696598902f5aaa
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 52a18203e5c6973822f52a65364ae2786913d4f0
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519716"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803852"
 documentType: LandingData
 title: Azure Media Services のドキュメント
 metadata:
@@ -30,22 +30,27 @@ sections:
     columns: 2
     items:
     - href: /azure/media-services/latest/
-      html: <p>ビデオのエンコード、オンデマンドでのストリーミング、ライブ ブロードキャスト、分析を Media Services v3 を使用して実行する方法を説明します。</p>
+      html: <p>Media Services v3 を使用して、コンテンツのエンコード、パッケージ化、保護に加えてオンデマンドでのビデオのストリーム配信、ライブ ブロードキャスト、分析を行います。</p>
       image:
-        src: media/index/AMSIcons-media_servicesV3.svg
+        src: /azure/media-services/latest/media/index/AMSIcons-encoding.svg
       title: Azure Media Services v3
-    - href: /azure/media-services/video-indexer/
-      html: <p>Video Indexer を使用して、ビデオおよびオーディオ ファイルから分析情報を抽出する方法について説明します。</p>
-      image:
-        src: media/index/AMSIcons-media_analytics.svg
-      title: Video Indexer
     - href: /azure/media-services/previous/
-      html: <p>Media Services v2 には新機能は追加されません。 最新の Media Services v3 バージョンをご確認ください。</p>
+      html: <p>Media Services v2 には新機能は追加されません。 </p>
       image:
-        src: media/index/AMSIcons-media_servicesV2.svg
+        src: 
       title: Azure Media Services v2 (legacy)
     - href: /azure/cdn/
-      html: <p>CDN を使用して、静的オブジェクトをキャッシュし、キャッシュできない動的なコンテンツを高速化する方法について説明します。</p>
+      html: <p>CDN を使用して、静的オブジェクトをキャッシュし、キャッシュできない動的なコンテンツを高速化します。</p>
       image:
         src: /azure/cdn/media/index/cdn.svg
       title: CDN
+    - href: http://amp.azure.net/libs/amp/latest/docs/index.html
+      html: <p>さまざまなブラウザーやデバイス上で Microsoft Azure Media Services からメディア コンテンツを再生します。</p>
+      image:
+        src: /azure/media-services/latest/media/index/AMSIcons-Player.svg
+      title: Azure Media Player
+    - href: /azure/media-services/video-indexer/
+      html: <p>Video Indexer を使用してビデオ ファイルやオーディオ ファイルから分析情報を抽出します。</p>
+      image:
+        src: media/index/AMSIcons-media_analytics.svg
+      title: Video Indexer

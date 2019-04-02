@@ -77,6 +77,12 @@ items:
       href: classroom-labs/how-to-create-schedules.md
     - name: テンプレート VM 内に複数の VM を備えた環境を作成する
       href: classroom-labs/how-to-enable-multi-vm-environment.md
+    - name: ピア仮想ネットワークにラボを接続する
+      href: classroom-labs/how-to-connect-peer-virtual-network.md
+    - name: 共有イメージ ギャラリーを接続して使用する
+      href: classroom-labs/how-to-use-shared-image-gallery.md
+    - name: Linux のリモート デスクトップ接続を有効にする
+      href: classroom-labs/how-to-enable-remote-desktop-linux.md
   - name: DevTest Labs
     items:
     - name: ラボ仮想マシンのリソース グループを指定する
@@ -94,7 +100,7 @@ items:
     - name: イメージ ファクトリを作成する
       href: image-factory-create.md
       items:
-      - name: AzureDevOps からイメージ ファクトリを実行する
+      - name: Azure DevOps からイメージ ファクトリを実行する
         href: image-factory-set-up-devops-lab.md
       - name: カスタム イメージを保存して複数のラボに配布する
         href: image-factory-save-distribute-custom-images.md
@@ -265,9 +271,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: よく寄せられる質問
       href: devtest-lab-faq.md
-ms.openlocfilehash: c2e32a28253e0fc38fbfa215599654a3cf751d36
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 4c96945c5e7a0aed52d3148c7dbf084a8d8b9f29
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448849"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651175"
