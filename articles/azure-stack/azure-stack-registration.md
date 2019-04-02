@@ -128,7 +128,7 @@ Run: Get-AzureStackStampInformation
    Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
-   | パラメーター | [説明] |  
+   | パラメーター | 説明 |  
    |-----|-----|
    | EnvironmentName | Azure クラウド サブスクリプション環境名。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure サブスクリプションを使用している場合は **AzureChinaCloud** です。  |
 
@@ -156,7 +156,7 @@ Run: Get-AzureStackStampInformation
    Connect-AzureRmAccount -Environment "<environment name>"
    ```
 
-   | パラメーター | [説明] |  
+   | パラメーター | 説明 |  
    |-----|-----|
    | EnvironmentName | Azure クラウド サブスクリプション環境名。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure サブスクリプションを使用している場合は **AzureChinaCloud** です。  |
 
@@ -192,7 +192,7 @@ Run: Get-AzureStackStampInformation
    Connect-AzureRmAccount -Environment "<environment name>"
    ```
 
-   | パラメーター | [説明] |  
+   | パラメーター | 説明 |  
    |-----|-----|
    | EnvironmentName | Azure クラウド サブスクリプション環境名。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure サブスクリプションを使用している場合は **AzureChinaCloud** です。  |
 
