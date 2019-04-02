@@ -65,7 +65,7 @@ ms.locfileid: "50233074"
 
    1. Bing 地図の接続が存在しない場合、接続を作成するように求められます。
 
-      | Setting | 値 | [説明] |
+      | Setting | 値 | 説明 |
       | ------- | ----- | ----------- |
       | **Connection Name** | BingMapsConnection | 接続の名前を指定します。 | 
       | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 | 
@@ -77,7 +77,7 @@ ms.locfileid: "50233074"
 
       これらのパラメーターの詳細については、「[Calculate a route (ルートの計算)](https://msdn.microsoft.com/library/ff701717.aspx)」を参照してください。
 
-      | Setting | 値 | [説明] |
+      | Setting | 値 | 説明 |
       | ------- | ----- | ----------- |
       | **通過地点 1** | <*start*> | ルートの出発地を入力します。 | 
       | **通過地点 2** | <*end*> | ルートの目的地を入力します。 | 
