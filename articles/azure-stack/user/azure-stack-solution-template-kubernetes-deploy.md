@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: c96fdbfb56fe5274de941c0f9ab1a12cbcc241b6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6b00f63fac0110a8964270b9cbcad5330ac44645
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658421"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986245"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Kubernetes を Azure Stack にデプロイする
 
@@ -39,7 +39,7 @@ Kubernetes は、次の目的で使用できます。
 
 - 数秒でデプロイできる極めてスケーラブルかつアップグレード可能なアプリケーションを開発する。 
 - アプリケーションの設計を簡素化し、異なる Helm アプリケーションによって信頼性を向上させる。 [Helm](https://github.com/kubernetes/helm) は、Kubernetes アプリケーションのライフサイクルをインストールおよび管理するのに役立つオープン ソースのパッケージ化ツールです。
-- スケーリングとアップグレードの機能を利用して、アプリケーションの正常性を簡単に監視および診断する。
+- アプリケーションの正常性を簡単に監視および診断する。
 
 クラスターをサポートするノードに必要なコンピューティングの使用量にのみ課金されます。 詳細については、「[Azure Stack での使用量と請求](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback)」を参照してください。
 
@@ -60,6 +60,8 @@ AD FS を使用した場合のクラスターのインストール手順につ�
 クラスターへのアプリのインストールと展開には、**Helm** パッケージ マネージャーも役に立ちます。 クラスターでの Helm のインストールと使用の方法については、[helm.sh](https://helm.sh/) をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
+
+[Kubernetes ダッシュボードの有効化](azure-stack-solution-template-kubernetes-dashboard.md)
 
 [Kubernetes を Marketplace に追加する (Azure Stack のオペレーター)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 

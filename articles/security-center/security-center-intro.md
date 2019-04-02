@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 16473b7814763d80f7e850acf44839f5ef640a18
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109046"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242039"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -128,7 +128,7 @@ Security Center には、Azure SQL 内のデータの自動分類を実行する
 
 ## <a name="get-secure-faster"></a>より迅速にセキュリティ保護
 
-ネイティブの Azure 統合 (Azure Policy、Log Analytics など) が、他の Microsoft セキュリティ ソリューション (Microsoft Cloud App Security、Windows Defender Advanced Threat Protection など) とのシームレスな統合と組み合わされているため、包括的なセキュリティ ソリューションを実現できるだけでなく、オンボードと展開も簡単です。
+ネイティブの Azure 統合 (Azure Policy、Azure Monitor ログなど) が、他の Microsoft セキュリティ ソリューション (Microsoft Cloud App Security、Windows Defender Advanced Threat Protection など) とのシームレスな統合と組み合わされているため、包括的なセキュリティ ソリューションを実現できるだけでなく、オンボードと展開も簡単です。
 
 さらに、Azure 以外にも、他のクラウド上やオンプレミスのデータ センター内で実行されているワークロードにソリューション全体を拡張することもできます。
 

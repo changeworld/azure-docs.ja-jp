@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 54c5daa45a7a31334a8f4f437e914dff64752499
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 6e82ec9563832c7569fa1cff735a46dad50a8b3b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963065"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887580"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging"></a>チュートリアル:Azure Notification Hubs と Google Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する
 
@@ -31,6 +31,9 @@ ms.locfileid: "55963065"
 
 このチュートリアルでは、Azure Notification Hubs を使用して Android アプリケーションにプッシュ通知を送信する方法について説明します。
 Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Android アプリを作成します。
+
+> [!IMPORTANT]
+> Google Cloud Messaging (GCM) は非推奨となり、[まもなく](https://developers.google.com/cloud-messaging/faq)削除される予定です。
 
 > [!IMPORTANT]
 > このトピックでは、Google Cloud Messaging (GCM) を使用したプッシュ通知について説明します。 Google の Firebase Cloud Messaging (FCM) を使用している場合は、 [Azure Notification Hubs と FCM を使用した Android へのプッシュ通知の送信](notification-hubs-android-push-notification-google-fcm-get-started.md)に関する記事を参照してください。
@@ -89,15 +92,15 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 1. **[app (アプリ)]** の `Build.Gradle` ファイルの **dependencies** セクションに次の行を追加します。
 
     ```gradle
-    compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 2. **[dependencies]** セクションの後に次のリポジトリを追加します。
 
     ```gradle
     repositories {
         maven {
-            url "http://dl.bintray.com/microsoftazuremobile/SDK"
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
         }
     }
     ```
@@ -158,19 +161,19 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
     `NotificationSettings` クラスの次のコードにある 3 つのプレースホルダーを更新します。
 
-   * `SenderId`:[Google Cloud Console](http://cloud.google.com/console) で取得しておいたプロジェクト番号。
+   * `SenderId`:[Google Cloud Console](https://cloud.google.com/console) で取得しておいたプロジェクト番号。
    * `HubListenConnectionString`:ハブの `DefaultListenAccessSignature` 接続文字列。 その接続文字列は、[Azure Portal] のハブの **[設定]** ページで **[アクセス ポリシー]** をクリックすることによってコピーできます。
    * `HubName`:[Azure portal] のハブ ページに表示される通知ハブの名前を使用します。
 
      `NotificationSettings` のコードは次のとおりです。
 
-    ```java
-    public class NotificationSettings {
+     ```java
+     public class NotificationSettings {
         public static String SenderId = "<Your project number>";
         public static String HubName = "<Your HubName>";
         public static String HubListenConnectionString = "<Your default listen connection string>";
-    }
-    ```
+     }
+     ```
 2. `MyInstanceIDService` という名前の別の新しいクラスを追加します。 このクラスは、インスタンス ID リスナー サービスの実装です。
 
     このクラスのコードが `IntentService` を呼び出して、バックグラウンドで [GCM トークンを更新します](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)。
@@ -544,7 +547,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
     ```java
     /**
-        * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx
+        * Example code from https://msdn.microsoft.com/library/azure/dn495627.aspx
         * to parse the connection string so a SaS authentication token can be
         * constructed.
         *
@@ -573,7 +576,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 
     ```java
     /**
-        * Example code from http://msdn.microsoft.com/library/azure/dn495627.aspx to
+        * Example code from https://msdn.microsoft.com/library/azure/dn495627.aspx to
         * construct a SaS token from the access key to authenticate a request.
         *
         * @param uri The unencoded resource URI string for this operation. The resource
@@ -647,7 +650,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
                 try
                 {
                     // Based on reference documentation...
-                    // http://msdn.microsoft.com/library/azure/dn223273.aspx
+                    // https://msdn.microsoft.com/library/azure/dn223273.aspx
                     ParseConnectionString(NotificationSettings.HubFullAccess);
                     URL url = new URL(HubEndpoint + NotificationSettings.HubName +
                             "/messages/?api-version=2015-01");
@@ -734,8 +737,8 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 <!-- URLs. -->
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md 
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
+[Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
 [Azure Portal]: https://portal.azure.com

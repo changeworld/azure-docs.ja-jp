@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7916995d2630e9b33e3695c5c505925851ba4934
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: fba54fa1d2ca6675b41728b460a07515b05758f8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092796"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531591"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で Linux 仮想マシンの監視と更新を行う
 
@@ -189,7 +189,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 ![Update Management ソリューションを有効にする](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
-ソリューションを有効にするには最大 15 分かかります。 この処理中はブラウザーのウィンドウは閉じないでください。 ソリューションが有効になると、VM 上の不足している更新プログラムの情報が Log Analytics に送られます。 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
+ソリューションを有効にするには最大 15 分かかります。 この処理中はブラウザーのウィンドウは閉じないでください。 ソリューションが有効になると、VM 上の不足している更新プログラムの情報が Azure Monitor ログに送られます。 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
 
 ### <a name="view-update-assessment"></a>更新の評価を確認する
 
@@ -294,7 +294,7 @@ VM の起動時と停止時には、イベントがアクティビティ ログ�
 
 VM が接続されている Log Analytics ワークスペースから[高度なクエリ言語](../../azure-monitor/log-query/log-query-overview.md)を使用して、収集されたデータを取得、統合、および分析することもできます。 
 
-![Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Log Analytics ワークスペース](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>次の手順
 

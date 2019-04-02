@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/26/2018
-ms.openlocfilehash: 24bd6fbcf47a340020b5ed171b84aeed9fa96fe8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 03/26/2018
+ms.openlocfilehash: 873462354b70d13e56ca108c3257031ef34873f8
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534658"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480856"
 ---
 # <a name="usage-scenarios-for-query-store"></a>クエリ ストアの使用シナリオ
 
 **適用対象:** Azure Database for PostgreSQL 9.6 および 10
-
-> [!IMPORTANT]
-> クエリ ストア機能はパブリック プレビュー段階です。
 
 予測可能なワークロード パフォーマンスの追跡と管理が重要であるさまざまなシナリオで、クエリ ストアを使用することができます。 次の例を考えてみます。 
 - 高コスト上位クエリの識別と調整 

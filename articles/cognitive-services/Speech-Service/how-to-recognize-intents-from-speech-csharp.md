@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 680c10d8402853f1ac2f519b8f07f81b9718ab9e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866999"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855726"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>チュートリアル:C# 用の Speech SDK を使用して音声の意図を認識する
 
@@ -45,9 +45,9 @@ Cognitive Services [Speech SDK](~/articles/cognitive-services/speech-service/spe
 
 ## <a name="luis-and-speech"></a>LUIS および音声認識
 
-LUIS は音声から意図を認識するために Speech サービスと統合しています。 Speech サービスのサブスクリプションは不要で、LUIS だけでかまいません。
+LUIS は音声から意図を認識するために Speech Services と統合しています。 Speech Services のサブスクリプションは不要で、LUIS だけでかまいません。
 
-LUIS では 2 種類のキーを使用します。 
+LUIS では 2 種類のキーを使用します。
 
 |キーの種類|目的|
 |--------|-------|
@@ -56,7 +56,7 @@ LUIS では 2 種類のキーを使用します。
 
 エンドポイント キーは、このチュートリアルに必要な LUIS キーです。 このチュートリアルでは、[事前構築済みホーム オートメーション アプリの使用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)に従って作成できるホーム オートメーション LUIS アプリのサンプルを使用します。 独自の LUIS アプリを作成した場合は、代わりにそのアプリを使用することができます。
 
-LUIS アプリを作成するとき、テキスト クエリを使用してアプリをテストできるようにスタート キーが自動的に生成されます。 このキーによって Speech サービス統合は有効にならないため、このキーはこのチュートリアルでは機能しません。 Azure ダッシュボードで LUIS リソースを作成して LUIS アプリに割り当てる必要があります。 このチュートリアルでは無料のサブスクリプション階層を使用することができます。 
+LUIS アプリを作成するとき、テキスト クエリを使用してアプリをテストできるようにスタート キーが自動的に生成されます。 このキーによって Speech Services 統合は有効にならないため、このキーはこのチュートリアルでは機能しません。 Azure ダッシュボードで LUIS リソースを作成して LUIS アプリに割り当てる必要があります。 このチュートリアルでは無料のサブスクリプション階層を使用することができます。
 
 Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS ポータル](https://www.luis.ai/home)にログインし、[マイ アプリ] ページでアプリケーションを選択し、アプリの[Manage] (管理) ページに切り替えます。 最後に、サイドバーの **[Keys and endpoints]\(キーとエンドポイント\)** をクリックします。
 
@@ -123,7 +123,7 @@ static async Task RecognizeIntentAsync()
 音声から意図を認識するための最初の手順は、LUIS のエンドポイント キーとリージョンから音声構成を作成することです。 音声構成は、Speech SDK のさまざまな機能のための認識エンジンを作成するために使用できます。 音声構成では、使用するサブスクリプションを指定する複数の方法があります。ここでは `FromSubscription` を使用し、この方法ではサブスクリプション キーとリージョンを受け取ります。
 
 > [!NOTE]
-> Speech Service サブスクリプションではなく LUIS サブスクリプションのキーおよびリージョンを使用してください。
+> Speech Services サブスクリプションではなく LUIS サブスクリプションのキーおよびリージョンを使用してください。
 
 次に、`new IntentRecognizer(config)` を使用して意図認識エンジンを作成します。 構成で使用するサブスクリプションは既にわかっているため、認識エンジンを作成するときにサブスクリプション キーとエンドポイントをもう一度指定する必要はありません。
 
@@ -174,7 +174,7 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 
 もう 1 つの機能では、処理の対象となる音声を含むオーディオを WAV ファイルから読み取ります。 この機能では、意図認識エンジンを作成するときに使用できるオーディオ構成を作成する必要があります。 ファイルはサンプリング速度が 16 kHz の単一チャネル (モノラル) である必要があります。
 
-これらの機能を試すには、`RecognizeIntentAsync()` メソッドの本体を次のコードに置き換えます。 
+これらの機能を試すには、`RecognizeIntentAsync()` メソッドの本体を次のコードに置き換えます。
 
 [!code-csharp[Intent recognition by using events from a file](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#intentContinuousRecognitionWithFile)]
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a9357cda51a9d658849dbec872258061171fa90
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d4bdeecc5682eb09ac0a65d3834ad1770258c4e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867985"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57874729"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル:Azure Active Directory と FreshDesk の統合
 
@@ -177,7 +177,7 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
     c. **[SAML Login URL]** \(SAML ログイン URL\) テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ログアウト URL]** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+    d. **[ログアウト URL]** テキストボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
     e. **[セキュリティ証明書フィンガープリント]** テキストボックスに、先ほど得た **Cert ハッシュ (sha256)** の値を貼り付けます。
   
@@ -201,7 +201,7 @@ FreshDesk で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -265,7 +265,7 @@ FreshDesk の場合、プロビジョニングは手動で行います。
 
     c. **[タイトル]** ボックスに、プロビジョニングする Azure AD アカウントのタイトルを入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
+    d. **[Save]** をクリックします。
 
     >[!NOTE]
     >Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。

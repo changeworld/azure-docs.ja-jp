@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bd398225-8bd8-4697-9a44-af6e6679113a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a7fa71f2cb9d2c5326eea75af40e1ab6b986eb9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b345656b30a9bb182c097a4c9e18d71a293bf420
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864874"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852551"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>チュートリアル:Azure Active Directory と SAP Cloud Platform の統合
 
@@ -168,7 +168,7 @@ SAP Cloud Platform で Azure AD シングル サインオンを構成するに�
 
     c. **[Local Provider Name (ローカル プロバイダー名)]** は既定値のままにします。 この値をコピーして、SAP Cloud Platform 用の Azure AD 構成の **[識別子]** フィールドに貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **署名キー**と**署名証明書**キーのペアを生成するには、**[Generate Key Pair (キー ペアの生成)]** をクリックします。
+    d. **署名キー**と**署名証明書**キーのペアを生成するには、**[Generate Key Pair (キー ペアの生成)]** をクリックします。
 
     e. **[Principal Propagation (プリンシパル伝達)]** で **[無効]** を選択します。
 
@@ -253,7 +253,7 @@ SAP Cloud Platform アカウントでアプリケーションの 1 つ以上の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -304,7 +304,7 @@ Azure AD ユーザーが SAP Cloud Platform にログインできるようにす
 
     c. **[User]** テキストボックスに、ユーザーのメール アドレスを入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Assign]** をクリックしてユーザーをロールに割り当てます。
+    d. **[Assign]** をクリックしてユーザーをロールに割り当てます。
 
     e. **[Save]** をクリックします。
 

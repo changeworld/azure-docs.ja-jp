@@ -8,18 +8,20 @@ services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 300b42c9452fc58c857d075a7fd8c42fd6a1c409
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 59a84190386b554716472b4cb46c94030a66a4cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731735"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077107"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-application-preview"></a>クイック スタート:C プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
+
+Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
 
 [IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 設定の概要については、[このページ](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)を参照してください。
 
@@ -29,7 +31,6 @@ ms.locfileid: "55731735"
 次の図は、デバイスローカルおよびサービスローカルのプロキシ プログラムで、SSH クライアントと SSH デーモン プロセスの間のエンドツーエンド接続を可能にする設定を示しています。 パブリック プレビュー中、C SDK ではデバイス側のデバイス ストリームのみがサポートされます。 そのため、このクイック スタートでは、デバイスローカルのプロキシ アプリケーションを実行する手順についてのみ説明しています。 対応するサービスローカルのプロキシ アプリケーションも実行する必要があり、それについては [C# クイック スタート](./quickstart-device-streams-proxy-csharp.md)または [Node.js クイック スタート](./quickstart-device-streams-proxy-nodejs.md)のガイドに記載されています。
 
 ![代替テキスト](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg "ローカル プロキシの設定")
-
 
 1. サービスローカルのプロキシによって IoT ハブへの接続が行われ、ターゲット デバイスへのデバイス ストリームが開始されます。
 
@@ -48,6 +49,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
+* デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
+
+  * **米国中部**
+  * **米国中部 EUAP**
+
 * ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードを有効にした [Visual Studio 2017](https://www.visualstudio.com/vs/) をインストールします。
 * 最新バージョンの [Git](https://git-scm.com/download/) をインストールします。
 
@@ -55,21 +61,20 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このクイック スタートでは、[C 対応の Azure IoT device SDK](iot-hub-device-sdk-c-intro.md) を使用します。[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) を GitHub から複製してビルドするために使用される開発環境を準備します。 GitHub 上の SDK には、このクイック スタートで使用されるサンプル コードが含まれます。 
 
-
-1. [GitHub](https://github.com/Kitware/CMake/releases/tag/v3.11.4) から [CMake ビルド システム](https://cmake.org/download/) バージョン 3.11.4 をダウンロードします。 ダウンロードしたバイナリを、対応する暗号化ハッシュ値を使用して検証します。 次の例では、Windows PowerShell を使用して、x64 MSI 配布のバージョン 3.11.4 の暗号化ハッシュを検証しています。
+1. [CMake ビルド システム](https://cmake.org/download/) バージョン 3.13.4 をダウンロードします。 ダウンロードしたバイナリを、対応する暗号化ハッシュ値を使用して検証します。 次の例では、Windows PowerShell を使用して、x64 MSI 配布のバージョン 3.13.4 の暗号化ハッシュを検証しています。
 
     ```PowerShell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
+    PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
+    PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
     True
     ```
-    
-    この記事の執筆時点では、CMake サイトにバージョン 3.11.4 用に次のハッシュ値が一覧表示されていました。
+
+    この記事の執筆時点では、CMake サイトにバージョン 3.13.4 用に次のハッシュ値が一覧表示されていました。
 
     ```
-    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
-    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
-    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
+    563a39e0a7c7368f81bfa1c3aff8b590a0617cdfe51177ddc808f66cc0866c76  cmake-3.13.4-Linux-x86_64.tar.gz
+    7c37235ece6ce85aab2ce169106e0e729504ad64707d56e4dbfc982cb4263847  cmake-3.13.4-win32-x86.msi
+    64ac7dd5411b48c2717e15738b83ea0d4347cd51b940487dff7f99a870656c09  cmake-3.13.4-win64-x64.msi
     ```
 
     `CMake` のインストールを開始する**前に**、Visual Studio の前提条件 (Visual Studio と "C++ によるデスクトップ開発" ワークロード) が マシンにインストールされていることが重要です。 前提条件を満たし、ダウンロードを検証したら、CMake ビルド システムをインストールします。
@@ -81,7 +86,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     ```
     このリポジトリのサイズは現在約 220 MB です。 この操作は、完了するまでに数分かかります。
 
-
 3. git リポジトリのルート ディレクトリに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。 
 
     ```
@@ -90,28 +94,27 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     cd cmake
     ```
 
-4. 次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 Windows では、シミュレートされたデバイスの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。 
+4. `cmake` ディレクトリから次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。
 
-```
-    # In Linux
-    cmake ..
-    make -j
-```
+   * Linux の場合:
 
-Windows では、Visual Studio 2015 または 2017 プロンプト用の開発者コマンド プロンプトで、次のコマンドを実行します。
+      ```bash
+      cmake ..
+      make -j
+      ```
 
-```
-    rem In Windows
-    rem For VS2015
-    cmake .. -G "Visual Studio 15 2015"
+   * Windows では、Visual Studio 2015 または 2017 用の開発者コマンド プロンプトで、次のコマンドを実行します。 シミュレートされたデバイスの Visual Studio ソリューションが `cmake` ディレクトリに生成されます。
 
-    rem Or for VS2017
-    cmake .. -G "Visual Studio 15 2017"
+      ```cmd
+      rem For VS2015
+      cmake .. -G "Visual Studio 14 2015"
 
-    rem Then build the project
-    cmake --build . -- /m /p:Configuration=Release
-```
-    
+      rem Or for VS2017
+      cmake .. -G "Visual Studio 15 2017"
+
+      rem Then build the project
+      cmake --build . -- /m /p:Configuration=Release
+      ```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -146,61 +149,60 @@ Windows では、Visual Studio 2015 または 2017 プロンプト用の開発�
 
     この値は、このクイック スタートの後の方で使います。
 
-
 ## <a name="ssh-to-a-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの SSH 接続
 
 ### <a name="run-the-device-local-proxy-application"></a>デバイスローカルのプロキシ アプリケーションの実行
 
-- ソース ファイル `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample/iothub_client_c2d_streaming_proxy_sample.c` を編集して、お客様のデバイスの接続文字列、ターゲット デバイス IP またはホスト名、RDP ポート 22 を指定します。
-```C
-  /* Paste in the your iothub connection string  */
-  static const char* connectionString = "[Connection string of IoT Hub]";
-  static const char* localHost = "[IP/Host of your target machine]"; // Address of the local server to connect to.
-  static const size_t localPort = 22; // Port of the local server to connect to.
-```
+1. ソース ファイル `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample/iothub_client_c2d_streaming_proxy_sample.c` を編集して、お客様のデバイスの接続文字列、ターゲット デバイスの IP またはホスト名、SSH ポート 22 を指定します。
 
-- 次のようにサンプルをコンパイルします。
+   ```C
+   /* Paste in the your iothub connection string  */
+   static const char* connectionString = "[Connection string of IoT Hub]";
+   static const char* localHost = "[IP/Host of your target machine]"; // Address of the local server to connect to.
+   static const size_t localPort = 22; // Port of the local server to connect to.
+   ```
 
-```
+2. サンプルをコンパイルします。
+
+   ```bash
     # In Linux
     # Go to the sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
     make -j
-```
+   ```
 
-```
+   ```cmd
     rem In Windows
     rem Go to cmake at root of repository
     cmake --build . -- /m /p:Configuration=Release
-```
+   ```
 
-- デバイス上で、コンパイル済みプログラムを実行します。
-```
+3. デバイス上で、コンパイル済みプログラムを実行します。
+
+   ```bash
     # In Linux
-    # Go to sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
+    # Go to the sample's folder cmake/iothub_client/samples/iothub_client_c2d_streaming_proxy_sample
     ./iothub_client_c2d_streaming_proxy_sample
-```
+   ```
 
-```
+   ```cmd
     rem In Windows
-    rem Go to sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_proxy_sample\Release
+    rem Go to the sample's release folder cmake\iothub_client\samples\iothub_client_c2d_streaming_proxy_sample\Release
     iothub_client_c2d_streaming_proxy_sample.exe
-```
+   ```
 
 ### <a name="run-the-service-local-proxy-application"></a>サービスローカルのプロキシ アプリケーションの実行
 
-[上記](#how-it-works)の説明のとおり、SSH トラフィックをトンネリングするためにエンドツーエンドのストリームを確立するには、両端 (つまり、サービスとデバイス) にローカル プロキシが必要です。 しかし、パブリック プレビュー中、IoT Hub C SDK ではデバイス側のデバイス ストリームのみがサポートされます。 サービスローカルのプロキシについては、代わりに [C# クイック スタート](./quickstart-device-streams-proxy-csharp.md)または [Node.js クイック スタート](./quickstart-device-streams-proxy-nodejs.md)の対応するガイドを使用してください。
-
+[前述](#how-it-works)のように、SSH トラフィックをトンネリングするためにエンドツーエンドのストリームを確立するには、両端 (サービスとデバイスの両方) にローカル プロキシが必要です。 パブリック プレビュー中、IoT Hub C SDK ではデバイス側のデバイス ストリームのみがサポートされます。 サービスローカル プロキシを構築して実行するには、[C# クイック スタート](./quickstart-device-streams-proxy-csharp.md)または [Node.js クイック スタート](./quickstart-device-streams-proxy-nodejs.md)に記載されている手順に従ってください。
 
 ### <a name="establish-an-ssh-session"></a>SSH セッションの確立
 
-デバイスローカルとサービスローカルの両方のプロキシが実行されているとして、次にお客様の SSH クライアント プログラムを使用して、(SSH デーモンに直接ではなく) ポート 2222 でサービスローカルのプロキシに接続します。 
+デバイスローカルとサービスローカルの両方のプロキシが実行されていると、お客様の SSH クライアント プログラムを使用して、(SSH デーモンに直接ではなく) ポート 2222 でサービスローカルのプロキシに接続します。
 
-```
+```cmd/sh
 ssh <username>@localhost -p 2222
 ```
 
 この時点で、お客様の資格情報を入力するための SSH ログイン プロンプトが表示されます。
-
 
 `IP_address:22` の SSH デーモンに接続するデバイスローカルのプロキシのコンソール出力:![代替テキスト](./media/quickstart-device-streams-proxy-c/device-console-output.PNG "デバイスローカルのプロキシの出力")
 

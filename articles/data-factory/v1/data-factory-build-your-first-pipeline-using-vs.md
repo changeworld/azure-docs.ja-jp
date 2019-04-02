@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ceaabdd9aa15e5979d8ab163a9b64986a03c8332
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2d816ab2f14be8574f77491807d4dbd071487f42
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023091"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483067"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>チュートリアル:Visual Studio を使用してデータ ファクトリを作成する
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -60,6 +60,9 @@ ms.locfileid: "54023091"
 5. 発行した後、Azure Portal のブレードと、監視と管理アプリを使用して、パイプラインを監視します。 
   
 ### <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 1. 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。 冒頭のドロップダウン リストの **[Overview and prerequisites (概要と前提条件)]** というオプションを選択して、その記事に移動することもできます。 前提条件を満たすことができたら、ドロップダウン リストの **[Visual Studio]** というオプションを選択して、この記事に戻ります。
 2. Data Factory インスタンスを作成するには、サブスクリプション/リソース グループ レベルで [Data Factory の共同作業者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) ロールのメンバーである必要があります。  
 3. コンピューターに以下がインストールされている必要があります。
@@ -128,7 +131,7 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
     > [!IMPORTANT]
     > HDInsight クラスターは、JSON (linkedServiceName) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (timeToLive) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
     > 
-    > 処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf<yourdatafactoryname>-<linkedservicename>-datetimestamp` 形式になります。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](http://storageexplorer.com/) などのツールを使用します。
+    > 処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf<yourdatafactoryname>-<linkedservicename>-datetimestamp` 形式になります。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](https://storageexplorer.com/) などのツールを使用します。
 
     JSON のプロパティの詳細については、[コンピューティングのリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)に関する記事を参照してください。 
 4. **HDInsightOnDemandLinkedService1.json** ファイルを保存します。
@@ -311,8 +314,8 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
    5. データ ファクトリの **リージョン** を選択します。
    6. **[次へ]** をクリックし、**[項目の発行]** ページに切り替えます。 (**[次へ]** ボタンが無効になっている場合は、**Tab** キーを押して [名前] フィールドの外に移動します。)
 
-    > [!IMPORTANT]
-    > 発行時に "**Data factory 名 "DataFactoryUsingVS" は利用できません**" というエラーが発生した場合は、名前を変更します (yournameDataFactoryUsingVS など)。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。   
+      > [!IMPORTANT]
+      > 発行時に "**Data factory 名 "DataFactoryUsingVS" は利用できません**" というエラーが発生した場合は、名前を変更します (yournameDataFactoryUsingVS など)。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。   
 1. **[項目の発行]** ページで、すべての Data Factory エンティティが選択されていることを確認し、**[次へ]** をクリックして **[概要]** ページに切り替えます。
 
     ![Publish items page](media/data-factory-build-your-first-pipeline-using-vs/publish-items-page.png)     
@@ -325,13 +328,13 @@ Azure Storage のリンクされたサービスは、接続情報を提供する
 
 - エラー "**This subscription is not registered to use namespace Microsoft.DataFactory (このサブスクリプションは、名前空間 Microsoft.DataFactory を使用するように登録されていません)**" が表示された場合は、以下のいずれかの操作を行ってから、もう一度発行してみます。
     - Azure PowerShell で次のコマンドを実行して、Data Factory プロバイダーを登録します。
-        ```PowerShell   
-        Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+        ```powershell   
+        Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
         ```
         Data Factory プロバイダーが登録されたことを確認するには、次のコマンドを実行します。
 
-        ```PowerShell
-        Get-AzureRmResourceProvider
+        ```powershell
+        Get-AzResourceProvider
         ```
     - Azure サブスクリプションを使用して [Azure ポータル](https://portal.azure.com) にログインし、[Data Factory] ブレードに移動するか、Azure ポータルでデータ ファクトリを作成します。 この操作によって、プロバイダーが自動的に登録されます。
 - データ ファクトリの名前は今後、DNS 名として登録される可能性があるため、一般ユーザーに表示される場合があります。
@@ -412,7 +415,7 @@ Azure ポータルを使用して、このチュートリアルで作成した�
 -  Data Factory は、上記の JSON で **Linux ベース** の HDInsight クラスターを自動的に作成します。 詳細については、 [オンデマンド HDInsight のリンクされたサービス](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) に関するセクションを参照してください。
 - HDInsight クラスターは、JSON (linkedServiceName) で指定した BLOB ストレージに**既定のコンテナー**を作成します。 クラスターを削除しても、HDInsight はこのコンテナーを削除しません。 この動作は仕様です。 オンデマンド HDInsight のリンクされたサービスでは、既存のライブ クラスター (timeToLive) がある場合を除き、スライスが処理されるたびに HDInsight クラスターが作成されます。 クラスターは、処理が終了すると自動的に削除されます。
     
-    処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](http://storageexplorer.com/) などのツールを使用します。
+    処理されるスライスが多いほど、Azure BLOB ストレージ内のコンテナーも増えます。 ジョブのトラブルシューティングのためにコンテナーが必要ない場合、コンテナーを削除してストレージ コストを削減できます。 これらのコンテナーの名前は、`adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 形式になります。 Azure BLOB ストレージ内のコンテナーを削除するには、 [Microsoft ストレージ エクスプローラー](https://storageexplorer.com/) などのツールを使用します。
 - 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。 
 - このチュートリアルでは、Azure Data Factory を使用してデータをコピーする方法は説明しません。 Azure Data Factory を使用してデータをコピーする方法のチュートリアルについては、[Blob Storage から SQL Database にデータをコピーする方法のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
@@ -478,7 +481,7 @@ Azure Storage のリンクされたサービスに関して次のような JSON 
     }
     ```
 
-    この例で構成しているのは、Azure Storage のリンクされたサービスと Azure SQL のリンクされたサービスの connectionString プロパティです。 名前を指定するための構文が [JsonPath](http://goessner.net/articles/JsonPath/)であることに注目してください。   
+    この例で構成しているのは、Azure Storage のリンクされたサービスと Azure SQL のリンクされたサービスの connectionString プロパティです。 名前を指定するための構文が [JsonPath](https://goessner.net/articles/JsonPath/)であることに注目してください。   
 
     ここで、JSON のプロパティが、次のコードのように値の配列になっているとします。  
 
@@ -562,6 +565,7 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 
 
 ## <a name="see-also"></a>関連項目
+
 | トピック | 説明 |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにデータ主導ワークフローを作成する方法を説明します。 |

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: e24ed3921872a4c754967841634ebab23b972e59
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 276ddf0a70fa450451cd3ddc78c7610c4ab1edc1
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55735951"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58494950"
 ---
 可用性グループ リスナーとは、SQL Server 可用性グループがリッスンする IP アドレスとネットワーク名のことです。 可用性グループ リスナーを作成するには、次の手順を実行します。
 
@@ -35,7 +35,7 @@ ms.locfileid: "55735951"
     c. **[名前]** ボックスで、この新しいリスナーの名前を指定します。 
    新しいリスナーの名前は、アプリケーションが SQL Server 可用性グループ内のデータベースへの接続に使用するネットワーク名です。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[次へ]** を 2 回クリックしてから **[完了]** をクリックし、リスナーの作成を完了します。 この時点では、リスナーまたはリソースをオンラインにしないでください。
+    d. **[次へ]** を 2 回クリックしてから **[完了]** をクリックし、リスナーの作成を完了します。 この時点では、リスナーまたはリソースをオンラインにしないでください。
 
 1. 可用性グループ クラスター ロールをオフラインにします。 **[フェールオーバー クラスター マネージャー]** の **[ロール]** で該当するロールを右クリックし、**[ロールの停止]** を選択します。
 
@@ -66,7 +66,7 @@ ms.locfileid: "55735951"
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Click **OK**.
+    d. Click **OK**.
 
 1. <a name="listname"></a>クライアント アクセス ポイント リソースが IP アドレスに依存するように設定します。
 
@@ -86,27 +86,27 @@ ms.locfileid: "55735951"
 
 1. <a name="setparam"></a>PowerShell でクラスターのパラメーターを設定します。
 
-  a. いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。
+   a. いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。
 
-  - `$ListenerILBIP` は、Azure Load Balancer に対して作成した、可用性グループ リスナーの IP アドレスです。
+   - `$ListenerILBIP` は、Azure Load Balancer に対して作成した、可用性グループ リスナーの IP アドレスです。
     
-  - `$ListenerProbePort` は、Azure Load Balancer に対して構成した、可用性グループ リスナーのポートです。
+   - `$ListenerProbePort` は、Azure Load Balancer に対して構成した、可用性グループ リスナーのポートです。
 
-  ```PowerShell
-  $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-  $IPResourceName = "<IPResourceName>" # the IP Address resource name
-  $ListenerILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
-  [int]$ListenerProbePort = <nnnnn>
+   ```powershell
+   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+   $IPResourceName = "<IPResourceName>" # the IP Address resource name
+   $ListenerILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
+   [int]$ListenerProbePort = <nnnnn>
   
-  Import-Module FailoverClusters
+   Import-Module FailoverClusters
 
-  Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-  ```
+   Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ListenerILBIP";"ProbePort"=$ListenerProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+   ```
 
-  b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
+   b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
 
-  > [!NOTE]
-  > SQL Server インスタンスが別個のリージョンに存在する場合は、PowerShell スクリプトを 2 回実行する必要があります。 1 回目の実行では、1 番目のリージョンの `$ListenerILBIP` と `$ListenerProbePort` を使用します。 2 回目の実行では、2 番目のリージョンの `$ListenerILBIP` と `$ListenerProbePort` を使用します。 クラスター ネットワーク名とクラスター IP リソース名も、リージョンごとに異なります。
+   > [!NOTE]
+   > SQL Server インスタンスが別個のリージョンに存在する場合は、PowerShell スクリプトを 2 回実行する必要があります。 1 回目の実行では、1 番目のリージョンの `$ListenerILBIP` と `$ListenerProbePort` を使用します。 2 回目の実行では、2 番目のリージョンの `$ListenerILBIP` と `$ListenerProbePort` を使用します。 クラスター ネットワーク名とクラスター IP リソース名も、リージョンごとに異なります。
 
 1. 可用性グループ クラスター ロールをオンラインにします。 **[フェールオーバー クラスター マネージャー]** の **[ロール]** で該当するロールを右クリックし、**[ロールの起動]** を選択します。
 
@@ -120,24 +120,24 @@ ms.locfileid: "55735951"
 
 1. <a name="setwsfcparam"></a>PowerShell でクラスターのパラメーターを設定します。
   
-  a. いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。
+   a. いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。
 
-  - `$ClusterCoreIP` は、Azure Load Balancer に対して作成した、WSFC コア クラスター リソースの IP アドレスです。 可用性グループ リスナーの IP アドレスとは異なります。
+   - `$ClusterCoreIP` は、Azure Load Balancer に対して作成した、WSFC コア クラスター リソースの IP アドレスです。 可用性グループ リスナーの IP アドレスとは異なります。
 
-  - `$ClusterProbePort` は、Azure Load Balancer に対して構成した、WSFC 正常性プローブのポートです。 可用性グループ リスナーのプローブとは異なります。
+   - `$ClusterProbePort` は、Azure Load Balancer に対して構成した、WSFC 正常性プローブのポートです。 可用性グループ リスナーのプローブとは異なります。
 
-  ```PowerShell
-  $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
-  $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
-  $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
-  [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability group listener probe port.
+   ```powershell
+   $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+   $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
+   $ClusterCoreIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
+   [int]$ClusterProbePort = <nnnnn> # The probe port from the WSFCEndPointprobe in the Azure portal. This port must be different from the probe port for the availability group listener probe port.
   
-  Import-Module FailoverClusters
+   Import-Module FailoverClusters
   
-  Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
-  ```
+   Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ClusterCoreIP";"ProbePort"=$ClusterProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+   ```
 
-  b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
+   b. いずれかのクラスター ノード上で PowerShell スクリプトを実行して、クラスター パラメーターを設定します。  
 
 >[!WARNING]
 >可用性グループ リスナーの正常性プローブのポートは、クラスター コア IP アドレスの正常性プローブ ポートとは違っている必要があります。 これらの例では、リスナー ポートが 59999 で、クラスター コアの IP アドレスが 58888 です。 どちらのポートも、受信を許可するようにファイアウォール規則が設定されている必要があります。

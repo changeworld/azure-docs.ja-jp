@@ -1,32 +1,31 @@
 ---
 title: Azure portal で Azure SQL データベースのインデックスを作成するチュートリアル - Azure Search
-description: このチュートリアルでは、Azure SQL データベースをクロールして検索可能なデータを抽出し、Azure Search インデックスを作成します。
+description: このチュートリアルでは、Azure SQL データベースに接続して検索可能なデータを抽出し、Azure Search インデックスにそれを読み込みます。
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 872871d2ab9a9c693ad81081f24c8de68457982d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 4e94f4c1b5de47e36dd9a5be6b9e7f43d264de82
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312053"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201400"
 ---
 # <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>チュートリアル:Azure Search インデクサーを使用して Azure SQL データベースをクロールする
 
-このチュートリアルでは、検索可能なデータをサンプル Azure SQL データベースから抽出するためのインデクサーを構成する方法について説明します。 [インデクサー](search-indexer-overview.md)は、外部データ ソースをクロールして[検索インデックス](search-what-is-an-index.md)にデータを投入する Azure Search のコンポーネントです。 Azure SQL データベースのインデクサーは、すべてのインデクサーの中で最も広く使用されています。 
+検索可能なデータをサンプル Azure SQL データベースから抽出するためのインデクサーを構成する方法について説明します。 [インデクサー](search-indexer-overview.md)は、外部データ ソースをクロールして[検索インデックス](search-what-is-an-index.md)にデータを投入する Azure Search のコンポーネントです。 Azure SQL Database のインデクサーは、すべてのインデクサーの中で最も広く使用されています。 
 
 インデクサーを構成することによって、記述すべきコードや保守すべきコードの量が少なくて済むため、そのスキルは身に付けておいて損はありません。 スキーマに準拠した JSON データセットを作成して投入する代わりに、インデクサーをデータ ソースにアタッチし、データをインデクサーで抽出してインデックスに挿入することができるほか、必要に応じてインデクサーを定期実行し、基になるソースの変更を反映することもできます。
 
 このチュートリアルでは、[Azure Search .NET クライアント ライブラリ](https://aka.ms/search-sdk)と .NET Core コンソール アプリケーションを使用して次のタスクを実行します。
 
 > [!div class="checklist"]
-> * ソリューションをダウンロードして構成する
 > * Search サービスの情報をアプリケーション設定に追加する
 > * 外部データセットを Azure SQL Database に用意する 
 > * サンプル コードでインデックスとインデクサーの定義を確認する
@@ -38,16 +37,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Search サービス。 その設定方法については、[Search サービスの作成](search-create-service-portal.md)に関するページを参照してください。
+[Azure Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
 
-* Azure SQL データベース。インデクサーの外部データ ソースとして使用されます。 サンプル ソリューションでは、SQL データ ファイルを入力することにってテーブルを作成しています。
+* [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)。インデクサーの外部データ ソースとして使用されます。 サンプル ソリューションでは、SQL データ ファイルを入力することにってテーブルを作成しています。
 
-* Visual Studio 2017。 無料の [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) を使用できます。 
+* + [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
 
 > [!Note]
 > 無料の Azure Search サービスを使用している場合、インデックス、インデクサー、データ ソースの数は、いずれも 3 つまでに制限されます。 このチュートリアルでは、それぞれ 1 つずつ作成します。 ご利用のサービスに、新しいリソースを作成できるだけの空き領域があることを確認してください。
 
-## <a name="download-the-solution"></a>ソリューションをダウンロードする
+### <a name="download-the-solution"></a>ソリューションをダウンロードする
 
 このチュートリアルで使用するインデクサー ソリューションは、1 つのマスター ダウンロードで提供される Azure Search サンプルのコレクションに含まれるものです。 このチュートリアルで使用するソリューションは *DotNetHowToIndexers* です。
 
@@ -63,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 6. **ソリューション エクスプローラー**で、最上位ノードの親ソリューションを右クリックし、**[NuGet パッケージの復元]** を選択します。
 
-## <a name="set-up-connections"></a>接続を設定する
+### <a name="set-up-connections"></a>接続を設定する
 必要なサービスへの接続情報は、ソリューションの **appsettings.json** ファイルで指定します。 
 
 このチュートリアルの手順に従って各設定を入力できるよう、ソリューション エクスプローラーで **appsettings.json** を開いてください。  
@@ -90,22 +89,22 @@ Search サービスのエンドポイントとキーは、ポータルから入�
 
 4. これをコピーし、Visual Studio で **appsettings.json** の 1 つ目のエントリとして貼り付けます。
 
-  > [!Note]
-  > サービス名は、search.windows.net を含んだエンドポイントの構成要素となります。 興味がある方は、[概要] ページの **[要点]** で完全な URL を確認できます。 この URL は、 https://your-service-name.search.windows.net のようになります。
+   > [!Note]
+   > サービス名は、search.windows.net を含んだエンドポイントの構成要素となります。 興味がある方は、[概要] ページの **[要点]** で完全な URL を確認できます。 この URL は、 https://your-service-name.search.windows.net のようになります。
 
 5. 左側の **[設定]** > **[キー]** で、いずれかの管理者キーをコピーし、**appsettings.json** に 2 つ目のエントリとして貼り付けます。 キーは、プロビジョニング時にサービスに対して生成される英数字の文字列で、サービス操作への承認済みアクセスに必要となります。 
 
-  両方の設定が追加されたファイルは、次の例のようになります。
+   両方の設定が追加されたファイルは、次の例のようになります。
 
-  ```json
-  {
+   ```json
+   {
     "SearchServiceName": "azs-tutorial",
     "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
     . . .
-  }
-  ```
+   }
+   ```
 
-## <a name="prepare-an-external-data-source"></a>外部データ ソースを準備する
+## <a name="prepare-sample-data"></a>サンプル データの準備
 
 この手順では、インデクサーがクロールできる外部データ ソースを作成します。 このチュートリアルのデータ ファイルは、\DotNetHowToIndexers ソリューション フォルダーに格納されている *hotels.sql* です。 
 
@@ -125,7 +124,7 @@ Azure Portal とサンプルの *hotels.sql* ファイルを使用して、Azure
 
 4. 新しいデータベースの [SQL Database] ページをまだ開いていない場合は開きます。 リソース名は *SQL Server* ではなく "*SQL データベース*" になっている必要があります。
 
-  ![[SQL Database] ページ](./media/search-indexer-tutorial/hotels-db.png)
+   ![[SQL Database] ページ](./media/search-indexer-tutorial/hotels-db.png)
 
 4. コマンド バーの **[ツール]** > **[クエリ エディター]** をクリックします。
 
@@ -135,24 +134,24 @@ Azure Portal とサンプルの *hotels.sql* ファイルを使用して、Azure
 
 7. ファイルを選択し、**[開く]** をクリックします。 このスクリプトは次のスクリーンショットのようになります。
 
-  ![SQL スクリプト](./media/search-indexer-tutorial/sql-script.png)
+   ![SQL スクリプト](./media/search-indexer-tutorial/sql-script.png)
 
 8. **[実行]** をクリックしてクエリを実行します。 3 つの行について、クエリが正常に実行されたことを示すメッセージが [結果] ウィンドウに表示されます。
 
 9. このテーブルから行セットが返されるようにするには、検証ステップとして次のクエリを実行します。
 
-   ```sql
-   SELECT HotelId, HotelName, Tags FROM Hotels
-   ```
-   クエリ エディターでは、典型的なクエリである `SELECT * FROM Hotels` が正しく動作しません。 サンプル データでは、Location フィールドに地理座標が格納されていますが、このフィールドが現時点のエディターでは処理されません。 その他の一連の列を照会するには、`SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')` ステートメントを実行できます。
+    ```sql
+    SELECT HotelId, HotelName, Tags FROM Hotels
+    ```
+    クエリ エディターでは、典型的なクエリである `SELECT * FROM Hotels` が正しく動作しません。 サンプル データでは、Location フィールドに地理座標が格納されていますが、このフィールドが現時点のエディターでは処理されません。 その他の一連の列を照会するには、`SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')` ステートメントを実行できます。
 
 10. これで外部データセットが揃ったので、データベースの ADO.NET 接続文字列をコピーします。 データベースの [SQL Database] ページで **[設定]** > **[接続文字列]** に移動し、ADO.NET 接続文字列をコピーします。
  
-  ADO.NET 接続文字列は次のようになります。有効なデータベース名、ユーザー名、パスワードに置き換えて使用してください。
+    ADO.NET 接続文字列は次のようになります。有効なデータベース名、ユーザー名、パスワードに置き換えて使用してください。
 
-  ```sql
-  Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-  ```
+    ```sql
+    Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    ```
 11. Visual Studio で **appsettings.json** ファイルの 3 つ目のエントリとして、接続文字列を "AzureSqlConnectionString" に貼り付けます。
 
     ```json
@@ -250,15 +249,15 @@ Azure Portal にアクセスし、Search サービスの [概要] ページで�
 
 2. **[検索]** ボタンをクリックして空の検索を実行します。 
 
-  インデックスの 3 つのエントリが JSON ドキュメントとして返されます。 Search エクスプローラーは、構造全体が見えるようにドキュメントを JSON 形式で返します。
+   インデックスの 3 つのエントリが JSON ドキュメントとして返されます。 Search エクスプローラーは、構造全体が見えるようにドキュメントを JSON 形式で返します。
 
 3. 次に、検索文字列として「`search=river&$count=true`」を入力します。 
 
-  このクエリは、`river` という語についてフルテキスト検索を呼び出すもので、その結果には、一致したドキュメントの件数が含まれます。 一致したドキュメントの件数は、インデックスが大きく数千から数百万のドキュメントが含まれている場合のテストで役立ちます。 今回のケースで、このクエリに一致するドキュメントは 1 件だけです。
+   このクエリは、`river` という語についてフルテキスト検索を呼び出すもので、その結果には、一致したドキュメントの件数が含まれます。 一致したドキュメントの件数は、インデックスが大きく数千から数百万のドキュメントが含まれている場合のテストで役立ちます。 今回のケースで、このクエリに一致するドキュメントは 1 件だけです。
 
 4. 最後に、JSON 出力を必要なフィールドに限定するため、検索文字列として「`search=river&$count=true&$select=hotelId, baseRate, description`」を入力します。 
 
-  クエリの応答が選択フィールドに制限され、より簡潔な出力内容が得られます。
+   クエリの応答が選択フィールドに制限され、より簡潔な出力内容が得られます。
 
 ## <a name="view-indexer-configuration"></a>インデクサーの構成を確認する
 
@@ -268,7 +267,7 @@ Azure Portal にアクセスし、Search サービスの [概要] ページで�
 2. 下へスクロールして **[インデクサー]** と **[データ ソース]** のタイルを探します。
 3. タイルをクリックして各リソースの一覧を表示します。 個々のインデクサーまたはデータ ソースを選択して、構成設定を表示したり変更したりすることができます。
 
-  ![インデクサーとデータ ソースのタイル](./media/search-indexer-tutorial/tiles-portal.png)
+   ![インデクサーとデータ ソースのタイル](./media/search-indexer-tutorial/tiles-portal.png)
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

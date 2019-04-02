@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: a016cfb84f7c41ff47b1811e1d6b68b4d2be2ae3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 37fd131e570fa9f50df2479503b35407d67410cb
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863425"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311528"
 ---
 # <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>オンデマンド ストリーミング操作による Postman コレクションのインポート 
 

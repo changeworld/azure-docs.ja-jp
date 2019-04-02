@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 474148289bb03088bbf92eeadc4049ce19625e3e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 06f1a2b33b177cf667fc2d3c5932f7ff117d2bdc
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115948"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195474"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
@@ -55,7 +55,7 @@ Azure Key Vault は、ソフトウェアまたはハードウェアの HSM で�
 
 - ストレージ アカウントへのアーカイブ。
 - イベント ハブへのストリーム配信。
-- Log Analytics へのログの送信。
+- Azure Monitor ログにログを送信します。
 
 ユーザーは、ログを管理できます。ユーザーは、アクセスを制限することによってログを保護することができ、不要になったログを削除することもできます。
 

@@ -16,16 +16,16 @@ ms.date: 02/12/2019
 ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 5c07288bbfbf70be62723f835192cf09d92166ab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d7dc690f719dd9265317b2bba3b87521e9a00d6b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163225"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106578"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>新しい Azure Stack テナント アカウントをAzure Active Directory に追加する
 
-[Azure Stack Development Kit をデプロイ](azure-stack-run-powershell-script.md)した後は、テナント ポータルを操作し、オファーとプランをテストするためにテナント ユーザー アカウントが必要になります。 テナント アカウントを作成するには、[Azure Portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) または [PowerShell](#create-an-azure-stack-tenant-account-using-powershell) を使用します。
+[Azure Stack Development Kit をデプロイ](azure-stack-run-powershell-script.md)した後は、テナント ポータルを操作し、オファーとプランをテストするためにテナント ユーザー アカウントが必要になります。 テナント アカウントを作成するには、[Azure portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) または PowerShell を使用します。
 
 ## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>Azure ポータルを使用して Azure Stack テナント アカウントを作成する
 
@@ -41,11 +41,11 @@ Azure ポータルを使用するには Azure サブスクリプションが必�
 
     ![新しいユーザーの追加 (ユーザー情報が入力された [ユーザー] ページ)](media/azure-stack-add-new-user-aad/new-user-user.png)
 
-    - **[名前] (必須)。** 新しいユーザーの氏名です。 たとえば、Mary Parker などです。
-    - **[ユーザー名] (必須)。** 新しいユーザーのユーザー名です。 たとえば、「 mary@contoso.com 」のように入力します。
-        ユーザー名のドメイン部分には、既定の初期ドメイン名の <_yourdomainname_>.onmicrosoft.com、またはカスタム ドメイン名 (contoso.com など) のいずれかを使用する必要があります。 カスタム ドメイン名の作成方法の詳細については、[Azure Active Directory にカスタム ドメイン名を追加する方法](../active-directory/fundamentals/add-custom-domain.md)に関するページを参照してください。
-    - **[プロファイル]。** オプションで、ユーザーに関する詳細情報を追加することができます。 後でユーザー情報を追加することもできます。 ユーザー情報の追加方法については、「[ユーザー プロファイル情報の追加または変更方法](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)」を参照してください。
-    - **ディレクトリ ロール。**  **[ユーザー]** を選択します。
+   - **[名前] (必須)。** 新しいユーザーの氏名です。 たとえば、Mary Parker などです。
+   - **[ユーザー名] (必須)。** 新しいユーザーのユーザー名です。 たとえば、「 mary@contoso.com 」のように入力します。
+       ユーザー名のドメイン部分には、既定の初期ドメイン名の <_yourdomainname_>.onmicrosoft.com、またはカスタム ドメイン名 (contoso.com など) のいずれかを使用する必要があります。 カスタム ドメイン名の作成方法の詳細については、[Azure Active Directory にカスタム ドメイン名を追加する方法](../active-directory/fundamentals/add-custom-domain.md)に関するページを参照してください。
+   - **[プロファイル]。** オプションで、ユーザーに関する詳細情報を追加することができます。 後でユーザー情報を追加することもできます。 ユーザー情報の追加方法については、「[ユーザー プロファイル情報の追加または変更方法](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)」を参照してください。
+   - **ディレクトリ ロール。**  **[ユーザー]** を選択します。
 
 5. **[パスワードの表示]** チェックボックスを選択し、**[パスワード]** ボックスに表示される自動生成されたパスワードをコピーします。 このパスワードは、最初のサインイン プロセスで必要になります。
 

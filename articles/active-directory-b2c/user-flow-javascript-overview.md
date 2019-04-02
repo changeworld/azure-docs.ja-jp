@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 997babef5860488232f0b530c90b44aba6608ac5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5102755c9e830f43fa92e8546e5125960e0a2f9a
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007470"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58401558"
 ---
 # <a name="about-using-javascript-and-page-contract-versions-in-a-user-flow"></a>ユーザー フローで JavaScript とページ コントラクトのバージョンを使用する方法
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 Azure AD B2C では、ユーザー フローのユーザー インターフェイス要素に対する HTML、CSS、JavaScript を含むパッケージ コンテンツのセットが提供されています。 ユーザー フローで [JavaScript](javascript-samples.md) のクライアント側コードを有効にする場合は、JavaScript の基になる要素を変更不可にする必要があります。 そうしないと、何らかの変更によってユーザー フローのページで予期しない動作が発生する可能性があります。 このような問題を防ぐには、ユーザー フローに対してページ コントラクトの使用を強制して、ページ コントラクトのバージョンを指定することができます。 このようにすると、JavaScript の基になるすべてのコンテンツ定義が変更不可になります。 ユーザー フローで JavaScript を有効にする予定がない場合でも、ユーザー フローのページに対してページ コントラクトのバージョンを指定できます。
 

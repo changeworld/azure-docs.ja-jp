@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 1585eb460cc5f8ae437ee59a596dc7a854a108e7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 98f793b7d94cd554d426a0eec30d8bb4553d3d81
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995732"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105405"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>管理ポータルで Azure Stack のバックアップを有効にする
 Azure Stack でインフラストラクチャ バックアップを生成できるように、管理ポータルで Infrastructure Backup サービスを有効にします。 ハードウェア パートナーは、[壊滅的な障害](./azure-stack-backup-recover-data.md)が発生した場合、これらのバックアップとクラウドの復旧を使って環境を復元できます。 クラウドを復旧する目的は、復旧の完了後に、作業者とユーザーがポータルに再度ログインできるということを確認することです。 ユーザーのサブスクリプションが復元され、これにはロールベースのアクセス許可とロール、当初のプラン、オファー、および以前に定義されていたコンピューティング、ストレージ、ネットワークのクォータ、および Key Vault のシークレットが含まれます。
@@ -67,12 +67,15 @@ Azure Stack でインフラストラクチャ バックアップを生成でき�
             -FilePath c:\certs\AzSIBCCert.cer 
     ```
 
-    > [!Note]  
-    > **1901 以降**:Azure Stack では、インフラストラクチャ バックアップ データを暗号化するための証明書が受け入れられます。 公開キーと秘密キーを含む証明書を安全な場所に保管してください。 セキュリティ上の理由から、公開キーと秘密キーを含む証明書を使用して、バックアップ設定を構成しないことをお勧めします。 この証明書のライフサイクルを管理する方法について詳しくは、「[インフラストラクチャ バックアップ サービスのベスト プラクティス](azure-stack-backup-best-practices.md)」をご覧ください。
+   > [!Note]
+   > **1901 以降**:Azure Stack では、インフラストラクチャ バックアップ データを暗号化するための証明書が受け入れられます。 公開キーと秘密キーを含む証明書を安全な場所に保管してください。 セキュリティ上の理由から、公開キーと秘密キーを含む証明書を使用して、バックアップ設定を構成しないことをお勧めします。 この証明書のライフサイクルを管理する方法について詳しくは、「[インフラストラクチャ バックアップ サービスのベスト プラクティス](azure-stack-backup-best-practices.md)」をご覧ください。
+   > 
+   > **1811 以前**:Azure Stack では、インフラストラクチャのバックアップ データを暗号化するための対称キーが受理されます。 [キーの作成には、New-AzsEncryptionKey64 コマンドレットを使用します](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64)。 1811 から 1901 にアップグレードした後は、バックアップ設定に暗号化キーが保持されます。 証明書を使用するようにバックアップ設定を更新することをお勧めします。 暗号化キーのサポートは現在、非推奨となっています。 証明書を使用するような設定への更新が必要になるまでには、リリースが少なくともあと 3 回あります。 
 
 10. **[OK]** を選択して、バックアップ コントローラーの設定を保存します。
 
 ![Azure Stack - バックアップ コントローラーの設定](media/azure-stack-backup/backup-controller-settings-certificate.png)
+
 
 ## <a name="start-backup"></a>バックアップの開始
 バックアップを開始するには、**[今すぐバックアップ]** をクリックして、オンデマンド バックアップを開始します。 オンデマンド バックアップを実行しても、次回のスケジュール済みバックアップの時間は変更されません。 タスクの完了後、**[基本]** で設定を確認できます。
@@ -115,7 +118,7 @@ Azure Stack でインフラストラクチャ バックアップを生成でき�
 ![Azure Stack - 証明書のサムプリントを表示する](media/azure-stack-backup/encryption-settings-thumbprint.png)
 
 ### <a name="backwards-compatibility-mode"></a>下位互換性モード
-1901 に更新する前にバックアップを構成した場合、設定は動作の変更なしで引き継がれます。 この場合、暗号化キーは下位互換性のためにサポートされます。 暗号化キーを更新するか、または証明書の使用に切り替えることができます。 3 つのリリースの間は、引き続き暗号化キーを更新できます。 この期間を使用して、証明書に移行してください。 
+1901 に更新する前にバックアップを構成した場合、設定は動作の変更なしで引き継がれます。 この場合、暗号化キーは下位互換性のためにサポートされます。 暗号化キーを更新するか、または証明書の使用に切り替えることができます。 少なくともあと 3 回のリリースの間は、引き続き暗号化キーを更新できます。 この期間を使用して、証明書に移行してください。 新しい暗号化キーを作成するには、[New-AzsEncryptionKeyBase64 コマンドレット](https://docs.microsoft.com/en-us/powershell/module/azs.backup.admin/new-azsencryptionkeybase64)を使用します。
 
 ![Azure Stack - 下位互換性モードでの暗号化キーの使用](media/azure-stack-backup/encryption-settings-backcompat-encryption-key.png)
 

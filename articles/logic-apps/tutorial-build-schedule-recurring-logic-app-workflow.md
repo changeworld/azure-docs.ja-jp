@@ -57,7 +57,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **名前** | LA-TravelTime | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
@@ -123,7 +123,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションを選択](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Setting | 値 | [説明] |
+   | Setting | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **Connection Name** | BingMapsConnection | 接続の名前を指定します。 | 
    | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 Bing 地図のキーを所有していない場合は、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">キーの取得方法</a>に関するページを参照してください。 | 
@@ -135,7 +135,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションの情報を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Setting | 値 | [説明] |
+   | Setting | 値 | 説明 |
    | ------- | ----- | ----------- |
    | **通過地点 1** | <*start-location*> | ルートの起点 | 
    | **通過地点 2** | <*end-location*> | ルートの目的地 | 
@@ -169,7 +169,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 4. 変数の詳細を次のように入力します。
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **名前** | travelTime | 変数の名前 | 
    | **種類** | 整数 | 変数のデータ型 | 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e0c8986f-2acd-418d-a306-437abc44b640
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87b3ee979c39e80c771b49abb51358b75ff4df54
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5ca35e1c6966365fab1a53fe9674a8f361422eea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875720"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-directions-on-microsoft"></a>チュートリアル:Azure Active Directory と Directions on Microsoft の統合
 
@@ -106,12 +106,14 @@ Directions on Microsoft で Azure AD シングル サインオンを構成する
     ![[Directions on Microsoft のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+
     |  |
     | --- |
     | `https://www.directionsonmicrosoft.com/user/login` |
     | `https://<subdomain>.devcloud.acquia-sites.com/<companyname>` |
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに、次のパターンで URL を入力します。
+    
     |  |
     | --- |
     | `https://rhelmdirectionsonmicrosoftcomtest.devcloud.acquia-sites.com/simplesaml/<companyname>` |
@@ -159,7 +161,7 @@ Directions on Microsoft で Azure AD シングル サインオンを構成する
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

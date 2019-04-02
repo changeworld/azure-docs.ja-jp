@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: aa8f4e188761c50391cd2ead49ae8d8b9081188f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 770fa89bc08b448482b4a74d21ee307df8a9f836
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983493"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167917"
 ---
 # <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM に SQL、IIS、.NET スタックをインストールする
 
@@ -38,7 +38,7 @@ Azure Cloud Shell は無料のインタラクティブ シェルです。この�
 
 Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) に移動して、別のブラウザー タブで Cloud Shell を起動することもできます。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
 
-## <a name="create-a-iis-vm"></a>IIS の仮想マシンを作成する 
+## <a name="create-an-iis-vm"></a>IIS VM を作成する 
 
 この例では、PowerShell Cloud Shell の [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットを使用して、Windows Server 2016 仮想マシンをすばやく作成し、IIS と .NET Framework をインストールします。 IIS と Azure SQL VM はリソース グループと仮想ネットワークを共有するため、それらの名前となる変数を作成します。
 

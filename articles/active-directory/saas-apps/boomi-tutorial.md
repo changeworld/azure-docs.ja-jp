@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 40d034ff-7394-4713-923d-1f8f2ed8bf36
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15149cd172611bdb9b18d27c40cbfa44099330d3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8092724a8ebf04342e00d054cc78fe26b48d2f82
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868988"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842704"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>チュートリアル:Azure Active Directory と Boomi の統合
 
@@ -170,7 +170,7 @@ Boomi で Azure AD シングル サインオンを構成するには、次の手
 
     c. **[ID プロバイダーのログイン URL]** ボックスに、Azure AD アプリケーションの構成ウィンドウの **[ログイン URL]** の値を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Federation Id Location]** で、**[Federation Id is in FEDERATION_ID Attribute element]** オプションを選択します。
+    d. **[Federation Id Location]** で、**[Federation Id is in FEDERATION_ID Attribute element]** オプションを選択します。
 
     e. **[保存]** ボタンをクリックします。
 
@@ -192,7 +192,7 @@ Boomi で Azure AD シングル サインオンを構成するには、次の手
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -249,7 +249,7 @@ Azure AD ユーザーが Boomi にログインできるようにするには、�
 
     c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では Simon)。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ユーザーの**フェデレーション ID** を入力します。 各ユーザーには、アカウント内のユーザーを一意に識別するフェデレーション ID が必要です。
+    d. ユーザーの**フェデレーション ID** を入力します。 各ユーザーには、アカウント内のユーザーを一意に識別するフェデレーション ID が必要です。
 
     e. **標準ユーザー**の役割をユーザーに割り当てます。 シングル サインオンのアクセスのほかに、Boomi AtomSphere の通常のアクセスも付与することになるため、管理者の役割は割り当てないでください。
 

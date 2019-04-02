@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: f20c62f574b22d55d2acd8f9c7b811067837adb7
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 390421c2805bf242b8f931200c8b8981cb7116c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985939"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875002"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>クイック スタート: C# を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -34,7 +34,7 @@ ms.locfileid: "56985939"
 ## <a name="prerequisites"></a>前提条件
 
 * [Visual Studio 2017](https://www.visualstudio.com/vs/) のインストール。
-* [.Net Core SDK](https://www.microsoft.com/net/download/windows) のインストール。
+* [.NET Core SDK](https://www.microsoft.com/net/download/windows) のインストール。
 * [Git](https://git-scm.com/download/) のインストール。
 
 

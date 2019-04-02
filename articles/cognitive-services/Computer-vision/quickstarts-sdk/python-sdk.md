@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/26/2019
+ms.date: 02/28/2019
 ms.author: pafarley
-ms.openlocfilehash: d14b9c88b447583eedc8b50f4f9acf80ae4e3c75
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 23db6f889e2ca4266b7e3566c18cf9a85d4062a8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889632"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517557"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Python 用の Azure Cognitive Services Computer Vision SDK
 
@@ -42,7 +42,7 @@ Computer Vision サービスを使用すると、開発者は、イメージを�
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>Azure のサブスクリプションをお持ちでない場合
 
-**試用**エクスペリエンスで 7 日間有効な無料のキーを作成してください。 キーが作成されたら、キーとリージョン名をコピーします。 この情報は、[クライアントを作成](#create-client)する際に必要となります。
+Computer Vision サービスの**[試用][computervision_resource]** エクスペリエンスで 7 日間有効な無料のキーを作成してください。 キーが作成されたら、キーとリージョン名をコピーします。 この情報は、[クライアントを作成](#create-client)する際に必要となります。
 
 キーの作成後は、次の情報を記録しておいてください。
 
@@ -51,7 +51,7 @@ Computer Vision サービスを使用すると、開発者は、イメージを�
 
 ### <a name="if-you-have-an-azure-subscription"></a>Azure サブスクリプションをお持ちの場合
 
-Computer Vision API アカウントが必要な場合、以下の [Azure CLI][azure_cli] コマンドを使用して、ご利用のサブスクリプションにアカウントを作成するのが最も簡単です。 リソース グループ名 ("my-cogserv-group" など) と Computer Vision リソース名 ("my-computer-vision-resource" など) を選択する必要があります。 
+以下の [Azure CLI][azure_cli] コマンドを使用して、ご利用のサブスクリプションにリソースを作成するのが最も簡単です。 これで、多くのコグニティブ サービスで使用できる Cognitive Service キーが作成されます。 "_既存_" のリソース グループ名 ("my-cogserv-group" など) と新しい Computer Vision リソース名 ("my-computer-vision-resource" など) を選択する必要があります。 
 
 ```Bash
 RES_REGION=westeurope 
@@ -62,8 +62,8 @@ az cognitiveservices account create \
     --resource-group $RES_GROUP \
     --name $ACCT_NAME \
     --location $RES_REGION \
-    --kind ComputerVision \
-    --sku S1 \
+    --kind CognitiveServices \
+    --sku S0 \
     --yes
 ```
 
@@ -96,20 +96,18 @@ Computer Vision リソースを作成した後は、クライアント オブジ
 
 [ComputerVisionAPI][ref_computervisionclient] クライアント オブジェクトのインスタンスを作成するときに、これらの値を使用します。 
 
-<!--
-
-For example, use the Bash terminal to set the environment variables:
+たとえば、Bash ターミナルを使用して環境変数を設定します。
 
 ```Bash
 ACCOUNT_REGION=<resourcegroup-name>
 ACCT_NAME=<computervision-account-name>
 ```
 
-### For Azure subscription usrs, get credentials for key and region
+### <a name="for-azure-subscription-users-get-credentials-for-key-and-region"></a>Azure サブスクリプション ユーザーの場合は、キーとリージョンの資格情報を取得します。
 
-If you do not remember your region and key, you can use the following method to find them. If you need to create a key and region, you can use the method for [Azure subscription holders](#if-you-have-an-azure-subscription) or for [users without an Azure subscription](#if-you-dont-have-an-azure-subscription).
+リージョンとキーを覚えていない場合は、次のメソッドで見つけることができます。 キーとリージョンを作成する必要がある場合、[Azure サブスクリプション所有者](#if-you-have-an-azure-subscription)または [Azure サブスクリプションのないユーザー](#if-you-dont-have-an-azure-subscription)にこのメソッドを使用できます。
 
-Use the [Azure CLI][cloud_shell] snippet below to populate two environment variables with the Computer Vision account **region** and one of its **keys** (you can also find these values in the [Azure portal][azure_portal]). The snippet is formatted for the Bash shell.
+次の [Azure CLI][cloud_shell] スニペットを使用して、2 つの環境変数に Computer Vision アカウントの**リージョン**とその**アカウント キー**の 1 つを設定します (これらの値は、[Azure portal][azure_portal] 内で見つけることもできます)。 このスニペットは Bash シェル用にフォーマットされています。
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
@@ -127,23 +125,30 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
     --query key1 \
     --output tsv)
 ```
--->
+
 
 ### <a name="create-client"></a>クライアントの作成
 
-[ComputerVisionAPI][ref_computervisionclient] クライアント オブジェクトを作成します。 次のコード例のリージョンとキー値は、実際の値に置き換えてください。
+環境変数からリージョンとキーを取得してから、[ComputerVisionAPI][ref_computervisionclient] クライアント オブジェクトを作成します。  
 
 ```Python
 from azure.cognitiveservices.vision.computervision import ComputerVisionAPI
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 
-region = "westcentralus"
-key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+# Get region and key from environment variables
+import os
+region = os.environ['ACCOUNT_REGION']
+key = os.environ['ACCOUNT_KEY']
 
+# Set credentials
 credentials = CognitiveServicesCredentials(key)
+
+# Create client
 client = ComputerVisionAPI(region, credentials)
 ```
+
+## <a name="examples"></a>例
 
 以降のタスクはいずれも、事前に [ComputerVisionAPI][ref_computervisionclient] クライアント オブジェクトが必要となります。
 
@@ -224,7 +229,7 @@ raw = True
 custom_headers = None
 numberOfCharsInOperationId = 36
 
-# SDK call
+# Async SDK call
 rawHttpResponse = client.recognize_text(url, mode, custom_headers,  raw)
 
 # Get ID from returned headers
@@ -233,7 +238,9 @@ idLocation = len(operationLocation) - numberOfCharsInOperationId
 operationId = operationLocation[idLocation:]
 
 # SDK call
-result = client.get_text_operation_result(operationId)
+while result.status in ['NotStarted', 'Running']:
+    time.sleep(1)
+    result = client.get_text_operation_result(operationId)
 
 # Get data
 if result.status == TextOperationStatusCodes.succeeded:
@@ -321,7 +328,7 @@ Computer Vision Python SDK のサンプルは、この SDK の GitHub リポジ�
 [pip]: https://pypi.org/project/pip/
 [python]: https://www.python.org/downloads/
 
-[azure_cli]: https://docs.microsoft.com/cli/azure
+[azure_cli]: https://docs.microsoft.com/en-us/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create
 [azure_pattern_circuit_breaker]: https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker
 [azure_pattern_retry]: https://docs.microsoft.com/azure/architecture/patterns/retry
 [azure_portal]: https://portal.azure.com
@@ -342,20 +349,25 @@ Computer Vision Python SDK のサンプルは、この SDK の GitHub リポジ�
 [ref_httpfailure]: https://docs.microsoft.com/python/api/msrest/msrest.exceptions.httpoperationerror?view=azure-python
 
 
-[computervision_resource]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtosubscribe
+[computervision_resource]: https://azure.microsoft.com/en-us/try/cognitive-services/?
 
 [computervision_docs]: https://docs.microsoft.com/azure/cognitive-services/computer-vision/home
 
-[ref_computervisionclient]: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionapi?view=azure-python
+[ref_computervisionclient]: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
 
+[ref_computervisionclient_analyze_image]: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
 
-[ref_computervisionclient_analyze_image]: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionapi?view=azure-python#analyze-image-url--visual-features-none--details-none--language--en---custom-headers-none--raw-false----operation-config-
-[ref_computervisionclient_list_models]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionapi?view=azure-python#list-models-custom-headers-none--raw-false----operation-config-
-[ref_computervisionclient_analyze_image_by_domain]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionapi?view=azure-python#analyze-image-by-domain-model--url--language--en---custom-headers-none--raw-false----operation-config-
-[ref_computervisionclient_describe_image]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionapi?view=azure-python#describe-image-url--max-candidates--1---language--en---custom-headers-none--raw-false----operation-config-
-[ref_computervisionclient_recognize_text]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionapi?view=azure-python#recognize-text-url--mode--custom-headers-none--raw-false----operation-config-
-[ref_computervisionclient_get_text_operation_result]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionapi?view=azure-python#get-text-operation-result-operation-id--custom-headers-none--raw-false----operation-config-
-[ref_computervisionclient_generate_thumbnail]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionapi?view=azure-python#generate-thumbnail-width--height--url--smart-cropping-false--custom-headers-none--raw-false--callback-none----operation-config-
+[ref_computervisionclient_list_models]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
+
+[ref_computervisionclient_analyze_image_by_domain]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
+
+[ref_computervisionclient_describe_image]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
+
+[ref_computervisionclient_recognize_text]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
+
+[ref_computervisionclient_get_text_operation_result]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
+
+[ref_computervisionclient_generate_thumbnail]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python
 
 
 [ref_computervision_model_visualfeatures]:https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-python

@@ -3,8 +3,8 @@ title: Azure AD v2 iOS クイック スタート | Microsoft Docs
 description: iOS ネイティブ アプリケーションでユーザーにサインインし、Microsoft Graph に対してクエリを実行する方法を説明します。
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/23/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30e80aa57896bec5e5b1ed68d754c0a838193042
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194064"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439264"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>クイック スタート:iOS ネイティブ アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
@@ -30,7 +30,7 @@ ms.locfileid: "56194064"
 
 このクイック スタートには、ネイティブ iOS アプリケーションから個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。
 
-![このクイック スタートで生成されたサンプル アプリの動作](media/quickstart-v2-ios/ios-intro.png)
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-ios/ios-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>登録とダウンロード
@@ -44,7 +44,7 @@ ms.locfileid: "56194064"
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>手順 1:アプリケーションの作成
-> このクイック スタートのコード サンプルを動作させるには、応答 URL として `msal<AppId>://auth` (msal<AppId> はこのアプリケーション ID) を追加する必要があります。
+> このクイック スタートのコード サンプルを動作させるには、応答 URL として `msal<AppId>://auth` (msal\<AppId> はこのアプリケーション ID) を追加する必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
@@ -168,7 +168,7 @@ applicationContext.acquireToken(forScopes: self.kScopes) { (result, error) in /*
 
 > |各値の説明:||
 > |---------|---------|
-> | `forScopes` | 要求するスコープを含む (つまり、 [ "user.read" ]` for Microsoft Graph or `[ "<Application ID URL>/scope" ]` for custom Web APIs (i.e. `api://<Application ID>/access_as_user`)) |
+> | `forScopes` | 要求するスコープを含む (つまり、Microsoft Graph 用の `[ "user.read" ]` またはカスタム Web API 用の `[ "<Application ID URL>/scope" ]` (つまり、`api://<Application ID>/access_as_user`)) |
 
 #### <a name="getting-an-access-token-silently"></a>アクセス トークンを自動的に取得する
 

@@ -105,7 +105,7 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| type |*AzureDiagnostics* |
+| Type |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |要求を行ったクライアントの IP アドレス |
 | Category | *AuditEvent* |
@@ -117,9 +117,9 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
 | OperationName |操作の名前 (「[Azure Key Vault のログ記録](../../key-vault/key-vault-logging.md)」を参照) |
 | OperationVersion |クライアントによって要求された REST API バージョン (例: *2015-06-01*) |
 | requestUri_s |要求の URI |
-| リソース |Key Vault の名前 |
+| Resource |Key Vault の名前 |
 | ResourceGroup |Key Vault のリソース グループ |
-| resourceId |Azure リソース マネージャー リソース ID。 Key Vault のログの場合は、Key Vault リソース ID となります。 |
+| ResourceId |Azure リソース マネージャー リソース ID。 Key Vault のログの場合は、Key Vault リソース ID となります。 |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |
 | ResourceType | *VAULTS* |
 | ResultSignature |HTTP の状態 (例: *OK*) |

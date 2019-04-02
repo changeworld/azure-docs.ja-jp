@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: sample
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 35ce6a09b77b1cebe00f3ee11f09d526dd9b0b22
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: cf296d8bb494307dbb58b9de522d55a83892c6d5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768608"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537322"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB の Python サンプル
 
@@ -48,7 +48,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
    > 
 
 ## <a name="database-examples"></a>データベースのサンプル
-[DatabaseManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement) プロジェクトの [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py) ファイルは、次のタスクを実行する方法を示しています。
+[DatabaseManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement) プロジェクトの [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py) ファイルは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos データベースについて知るために、[データベース、コンテナー、アイテムの操作](databases-containers-items.md)に関する概念記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -58,7 +58,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 | [データベースの削除](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py#L113-L126) |[CosmosClient.DeleteDatabase](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient#deletedatabase-database-link--options-none-) |
 
 ## <a name="collection-examples"></a>コレクションのサンプル
-[CollectionManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement) プロジェクトの [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py) ファイルは、次のタスクを実行する方法を示しています。
+[CollectionManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement) プロジェクトの [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py) ファイルは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos のコレクションについて知るために、[データベース、コンテナー、アイテムの操作](databases-containers-items.md)に関する概念記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -69,7 +69,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 | [コレクションの削除](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py#L224-L238) |[CosmosClient.DeleteContainer](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient#deletecontainer-collection-link--options-none-) |
 
 ## <a name="document-examples"></a>ドキュメントのサンプル
-[DocumentManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement) プロジェクトの [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py) ファイルは、次のタスクを実行する方法を示しています。
+[DocumentManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement) プロジェクトの [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py) ファイルは、次のタスクを実行する方法を示しています。 以下のサンプルを実行する前に Azure Cosmos のドキュメントについて知るために、[データベース、コンテナー、アイテムの操作](databases-containers-items.md)に関する概念記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -80,7 +80,7 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 | [条件付き ETag チェックでドキュメントを置換する](https://github.com/Azure/azure-cosmos-python/blob/a21f6fb4bad3f59909ef43558b598f9fb476b7bc/test/crud_tests.py#L1216-L1218) | [CosmosClient.ReplaceItem](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient#replaceitem-document-link--new-document--options-none-) |
 
 ## <a name="indexing-examples"></a>インデックス作成のサンプル
-[IndexManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement) プロジェクトの [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py) ファイルは、次のタスクを実行する方法を示しています。
+[IndexManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement) プロジェクトの [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py) ファイルは、次のタスクを実行する方法を示しています。  以下のサンプルを実行する前に Azure Cosmos DB におけるインデックス作成について知るために、[インデックス作成ポリシー](index-policy.md)、[インデックスの種類](index-types.md)、[インデックスのパス](index-paths.md)に関する概念記事を参照してください。 
 
 | タスク | API リファレンス |
 | --- | --- |
@@ -92,7 +92,8 @@ Azure Cosmos DB のリソースで CRUD 操作などの一般的な操作を実�
 | [インデックス変換の実行](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py#L514-L559) |[CosmosClient.ReplaceContainer](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient#replacecontainer-collection-link--collection--options-none-) |
 
 ## <a name="query-examples"></a>クエリのサンプル
-サンプル プロジェクトでは、次のクエリ タスクを実行する方法も示します。
+サンプル プロジェクトでは、次のクエリ タスクを実行する方法も示します。 以下のサンプルを実行する前に Azure Cosmos DB の SQL クエリ リファレンスについて知るために、[SQL クエリの例](how-to-sql-query.md)に関する概念記事を参照してください。 以下のサンプルを実行する前に Azure Cosmos DB の SQL クエリ リファレンスについて知るために、[SQL クエリの例](how-to-sql-query.md)に関する概念記事を参照してください。 
+
 
 | タスク | API リファレンス |
 | --- | --- |

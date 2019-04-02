@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: ae609583-f875-4cb8-b68e-1b0b7938e9a7
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2029b90b4f23b22fa20ad8a89af308f6c16b410e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8eec05507cd66e2b856e3110bfb60f24c87dfdf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872575"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57879968"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>チュートリアル:Azure Active Directory と Arc Publishing - SSO の統合
 
@@ -154,11 +154,11 @@ Arc Publishing - SSO で Azure AD シングル サインオンを構成するに
     > [!NOTE]
     > ここで、**group** 属性は **user.assignedroles** とマップされます。 これらは、アプリケーションでグループ名をマップし直すために Azure AD で作成されたカスタム ロールです。 Azure AD でカスタム ロールを作成する方法についての詳しいガイダンスは、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)に記載されています。 
 
-8. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-9. **[Arc Publishing - SSO のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
+1. **[Arc Publishing - SSO のセットアップ]** セクションで、要件に従って適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -190,7 +190,7 @@ Arc Publishing - SSO で Azure AD シングル サインオンを構成するに
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

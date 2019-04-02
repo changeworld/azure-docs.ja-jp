@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 03/21/2019
 ms.author: larryfr
-ms.openlocfilehash: 7f123187ea869931b0701fd9d68372deb0b272e1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: af1b96b4ab47053a6737893832b484372ed37e99
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879073"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351866"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>チュートリアル:Custom Vision からエクスポートされた ONNX モデルを Windows ML (プレビュー) で使用する
 
@@ -51,7 +51,7 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 1. Visual Studio で `F5` キーを押すと、アプリケーションが起動します。 開発者モードを有効にするよう求めるメッセージが表示される場合があります。 詳細については、ドキュメント「[デバイスを開発用に有効にする](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)」を参照してください。
 
-2. アプリケーションの起動時に、ボタンを使用してスコア付け用のイメージを選択します。
+1. アプリケーションの起動時に、ボタンを使用してスコア付け用のイメージを選択します。
 
 ## <a name="use-your-own-model"></a>自分で用意したモデルを使用する
 
@@ -65,8 +65,8 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 1. ソリューション エクスプローラーで [Assets] フォルダーを右クリックし、__[既存項目の追加]__ を選択します。 ONNX ファイルを選択します。
 
-1. ソリューション エクスプローラーで、[Assets] フォルダーの ONNX ファイルを選択します。 ファイルの以下のプロパティを変更します。 
-    
+1. ソリューション エクスプローラーで、[Assets] フォルダーの ONNX ファイルを選択します。 ファイルの以下のプロパティを変更します。
+
     * __[ビルド アクション]__ -> __[コンテンツ]__
     * __[出力ディレクトリにコピー]__ -> __[新しい場合はコピーする]__
 

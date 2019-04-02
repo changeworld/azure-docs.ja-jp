@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: alkohli
-ms.openlocfilehash: e7c58978c7d6542887854c5a1996b15252fdb025
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b601ad5936820e2c237b7b9d37d9af73aa468bbc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982405"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895755"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル:ケーブルを配線して Azure Data Box に接続する
 
@@ -40,7 +40,7 @@ ms.locfileid: "55982405"
     - 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。 
 6. Data Box を設置できる平らな場所があること。 デバイスを標準的なラック棚に設置しようとする場合は、データ センター ラックに 7U のスロットが必要です。 デバイスは平面に置くことも、ラックに立てて置くこともできます。
 7. Data Box をホスト コンピューターに接続するために以下のケーブルを用意していること。
-    - 1 本以上の 10 GbE SFP+ Twinax 銅線ケーブルまたは SFP+ 光ファイバー ケーブル (DATA 1、DATA 2 ネットワーク インターフェイスで使用)。 Data Box には、PCI Express 3.0 ネットワーク インターフェイスを備えた Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T アダプターが搭載されています。そのため、このインターフェイスと互換性のあるケーブルであれば正常に機能します。 たとえば社内テストでは、CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M ケーブルが使用されています。
+    - 1 本以上の 10 GbE SFP+ Twinax 銅線ケーブルまたは SFP+ 光ファイバー ケーブル (DATA 1、DATA 2 ネットワーク インターフェイスで使用)。 Data Box には、PCI Express 3.0 ネットワーク インターフェイスを備えた Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T アダプターが搭載されています。そのため、このインターフェイスと互換性のあるケーブルであれば正常に機能します。 たとえば社内テストでは、CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M ケーブルが使用されています。 詳しくは、[Mellanox 社提供のサポートされているケーブルおよびスイッチの一覧](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf)をご覧ください。
     - RJ-45 CAT 6 ネットワーク ケーブル 1 本 (MGMT ネットワーク インターフェイスで使用)
     - RJ-45 CAT 6A OR ネットワーク ケーブル 1 本、RJ-45 CAT 6 ネットワーク ケーブル 1 本 (それぞれ 10 Gbps または 1 Gbps として構成されている DATA 3 ネットワーク インターフェイスで使用)
 
@@ -83,10 +83,10 @@ ms.locfileid: "55982405"
     
 7. 前の手順で Azure portal から取得したデバイスのパスワードを指定して、デバイスのローカル Web UI にサインインします。 **[サインイン]** をクリックします。
 8. **[ダッシュボード]** で、ネットワーク インターフェイスが構成されていることを確認します。 
-    - 環境で DHCP が有効になっている場合、ネットワーク インターフェイスは自動的に構成されます。 
-    - DHCP が有効ではない場合、必要であれば **[ネットワーク インターフェイスの設定]** に移動し静的な IP を割り当てます。
+   - 環境で DHCP が有効になっている場合、ネットワーク インターフェイスは自動的に構成されます。 
+   - DHCP が有効ではない場合、必要であれば **[ネットワーク インターフェイスの設定]** に移動し静的な IP を割り当てます。
 
-    ![デバイス ダッシュボード](media/data-box-deploy-set-up/data-box-dashboard-1.png)
+     ![デバイス ダッシュボード](media/data-box-deploy-set-up/data-box-dashboard-1.png)
 
 データ ネットワーク インターフェイスが構成されると、DATA 1 から DATA 3 までのインターフェイスのいずれかの IP アドレスを使用して、ローカルの Web UI (`https://<IP address of a data network interface>`) にアクセスすることもできます。 
 

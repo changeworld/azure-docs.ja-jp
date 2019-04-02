@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 02/18/2019
+ms.date: 03/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9dbe641c5e22129f7db3d3f3b886fea4501300b0
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 6508e90f76a374d628fdd5032c475e4dde8ffa78
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416141"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351781"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3-using-net"></a>チュートリアル:.NET を使用して Media Services v3 でビデオを分析する
 
@@ -66,7 +66,7 @@ ms.locfileid: "56416141"
 6. ジョブの実行から生成されるファイルをダウンロードします。 
 
 > [!NOTE]
-> ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。 詳細については、[メディア処理のスケーリング](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。
+> ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。 詳細については、[メディア処理のスケーリング](media-reserved-units-cli-how-to.md)に関するページを参照してください。
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
 

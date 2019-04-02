@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 143d14df3019aa0c5c5dd798f656f95c8ebde372
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731082"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485154"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -374,50 +374,50 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 | プロパティ | 説明 |
 |:--|:--|
-| type | *ServiceMapComputer_CL* |
-| SourceSystem | *OpsManager* |
-| resourceId | ワークスペース内のマシンに対する一意識別子 |
-| ResourceName_s | ワークスペース内のマシンに対する一意識別子 |
-| ComputerName_s | コンピューターの FQDN |
-| Ipv4Addresses_s | サーバーの IPv4 アドレスの一覧 |
-| Ipv6Addresses_s | サーバーの IPv6 アドレスの一覧 |
-| DnsNames_s | DNS 名の配列 |
-| OperatingSystemFamily_s | Windows または Linux |
-| OperatingSystemFullName_s | オペレーティング システムのフル ネーム  |
-| Bitness_s | マシンのビット数 (32 ビットまたは 64 ビット)  |
-| PhysicalMemory_d | 物理メモリ (MB) |
-| Cpus_d | CPU の数 |
-| CpuSpeed_d | CPU 速度 (MHz)|
-| VirtualizationState_s | "*不明*"、"*物理*"、"*仮想*"、"*ハイパーバイザー*" |
-| VirtualMachineType_s | *hyperv*、*vmware* など |
-| VirtualMachineNativeMachineId_g | ハイパーバイザーによって割り当てられた VM ID |
-| VirtualMachineName_s | VM の名前 |
-| BootTime_t | ブート時間 |
+| `Type` | *ServiceMapComputer_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | ワークスペース内のマシンに対する一意識別子 |
+| `ResourceName_s` | ワークスペース内のマシンに対する一意識別子 |
+| `ComputerName_s` | コンピューターの FQDN |
+| `Ipv4Addresses_s` | サーバーの IPv4 アドレスの一覧 |
+| `Ipv6Addresses_s` | サーバーの IPv6 アドレスの一覧 |
+| `DnsNames_s` | DNS 名の配列 |
+| `OperatingSystemFamily_s` | Windows または Linux |
+| `OperatingSystemFullName_s` | オペレーティング システムのフル ネーム  |
+| `Bitness_s` | マシンのビット数 (32 ビットまたは 64 ビット)  |
+| `PhysicalMemory_d` | 物理メモリ (MB) |
+| `Cpus_d` | CPU の数 |
+| `CpuSpeed_d` | CPU 速度 (MHz)|
+| `VirtualizationState_s` | "*不明*"、"*物理*"、"*仮想*"、"*ハイパーバイザー*" |
+| `VirtualMachineType_s` | *hyperv*、*vmware* など |
+| `VirtualMachineNativeMachineId_g` | ハイパーバイザーによって割り当てられた VM ID |
+| `VirtualMachineName_s` | VM の名前 |
+| `BootTime_t` | ブート時間 |
 
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 型のレコード
 *ServiceMapProcess_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーの TCP 接続プロセスのインベントリ データが含まれています。 これらのレコードは、次の表に示したプロパティを持ちます。
 
 | プロパティ | 説明 |
 |:--|:--|
-| type | *ServiceMapProcess_CL* |
-| SourceSystem | *OpsManager* |
-| resourceId | ワークスペース内のプロセスに対する一意識別子 |
-| ResourceName_s | 実行中のマシン内のプロセスに対する一意識別子|
-| MachineResourceName_s | マシンのリソース名 |
-| ExecutableName_s | プロセスの実行可能ファイルの名前 |
-| StartTime_t | プロセス プールの開始時刻 |
-| FirstPid_d | プロセス プール内の最初の PID |
-| Description_s | プロセスの説明 |
-| CompanyName_s | 会社の名前 |
-| InternalName_s | 内部名 |
-| ProductName_s | 製品の名前 |
-| ProductVersion_s | 製品バージョン |
-| FileVersion_s | ファイル バージョン |
-| CommandLine_s | コマンド ライン |
-| ExecutablePath _s | 実行可能ファイルのパス |
-| WorkingDirectory_s | 作業ディレクトリ |
-| UserName | プロセスが実行されているアカウント |
-| UserDomain | プロセスが実行されているドメイン |
+| `Type | *ServiceMapProcess_CL* |
+| `SourceSystem` | *OpsManager* |
+| `ResourceId` | ワークスペース内のプロセスに対する一意識別子 |
+| `ResourceName_s` | 実行中のマシン内のプロセスに対する一意識別子|
+| `MachineResourceName_s` | マシンのリソース名 |
+| `ExecutableName_s` | プロセスの実行可能ファイルの名前 |
+| `StartTime_t` | プロセス プールの開始時刻 |
+| `FirstPid_d` | プロセス プール内の最初の PID |
+| `Description_s` | プロセスの説明 |
+| `CompanyName_s` | 会社の名前 |
+| `InternalName_s` | 内部名 |
+| `ProductName_s` | 製品の名前 |
+| `ProductVersion_s` | 製品バージョン |
+| `FileVersion_s` | ファイル バージョン |
+| `CommandLine_s` | コマンド ライン |
+| `ExecutablePath _s` | 実行可能ファイルのパス |
+| `WorkingDirectory_s` | 作業ディレクトリ |
+| `UserName` | プロセスが実行されているアカウント |
+| `UserDomain` | プロセスが実行されているドメイン |
 
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 

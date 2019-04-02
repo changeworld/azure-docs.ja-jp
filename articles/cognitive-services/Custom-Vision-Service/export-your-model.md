@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 03/21/2019
 ms.author: anroth
-ms.openlocfilehash: 080a4691869c4deaf86f0e27961e80b60d439f05
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 405b6ebd06091536749751a94362d8c4a6495dbc
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857248"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351298"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>モバイル デバイスで使用するためにモデルをエクスポートする
 
-Custom Vision Service では、分類子をエクスポートし、オフラインで実行できます。 エクスポートした分類子をアプリケーションに組み込み、デバイス上でローカル実行すると、リアルタイムの分類が可能になります。 
+Custom Vision Service では、分類子をエクスポートし、オフラインで実行できます。 エクスポートした分類子をアプリケーションに組み込み、デバイス上でローカル実行すると、リアルタイムの分類が可能になります。
 
 Custom Vision Service は次のエクスポートに対応しています。
 
@@ -37,7 +37,7 @@ Custom Vision Service は次のエクスポートに対応しています。
 
 > [!NOTE]
 > このセクションの手順は、既存の分類子がコンパクト ドメインに設定されていない場合にのみ適用されます。
- 
+
 既存の分類子のドメインは次の手順で変換します。
 
 1. [[Custom Vision]](https://customvision.ai) ページから、__[ホーム]__ アイコンを選択し、プロジェクトを一覧表示します。 [https://customvision.ai/projects](https://customvision.ai/projects) を使用してプロジェクトを表示することもできます。

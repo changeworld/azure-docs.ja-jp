@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 394efd023382f9153a6869944a8a3a815203f9dd
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 410955936e07b79128e1892d72644eaeb18ee036
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338599"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863765"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>チュートリアル:.NET を使用した Media Services v3 によるライブ ストリーミング
 
@@ -33,7 +33,7 @@ Azure Media Services では、[ライブ イベント](https://docs.microsoft.co
 > [!div class="checklist"]
 > * このトピックで説明されているサンプル アプリをダウンロードする
 > * ライブ ストリーミングを実行するコードを確認する
-> * [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) (http://ampdemo.azureedge.net) でイベントを視聴する
+> * [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) (https://ampdemo.azureedge.net) でイベントを視聴する
 > * リソースのクリーンアップ
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -81,9 +81,9 @@ Azure Media Services では、[ライブ イベント](https://docs.microsoft.co
 
 ### <a name="create-a-live-event"></a>ライブ イベントを作成する
 
-このセクションは、**パススルー** タイプの (LiveEventEncodingType が None に設定されている) ライブ イベントを作成する方法を示します。 ライブ エンコードが有効になっているライブ イベントを作成する場合は、LiveEventEncodingType を **Standard** に設定します。 
-
-ライブ イベントの作成時には、次を指定することをお勧めします。
+このセクションは、**パススルー** タイプの (LiveEventEncodingType が None に設定されている) ライブ イベントを作成する方法を示します。 使用可能なライブ イベントの種類について詳しくは、「[ライブ イベントの種類](live-events-outputs-concept.md#live-event-types)」をご覧ください。 
+ 
+ライブ イベントを作成するときは、次のことを指定します。
 
 * Media Services の場所 
 * ライブ イベントのストリーミング プロトコル (現時点では、RTMP プロトコルと Smooth Streaming プロトコルがサポートされます)<br/>ライブ イベントや、それに関連付けられたライブ出力の実行中は、プロトコル オプションを変更できません。 別のプロトコルが必要な場合は、ストリーミング プロトコルごとに別のライブ イベントを作成する必要があります。  
@@ -166,7 +166,7 @@ foreach (StreamingPath path in paths.StreamingPaths)
 
 ## <a name="watch-the-event"></a>イベントの視聴
 
-イベントを視聴するには、「ストリーミング ロケーターを作成する」に記述されたコードを実行したときに取得したストリーミング URL をコピーし、適当なプレーヤーを使用します。 [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) (http://ampdemo.azureedge.net) を使用して、ストリームをテストできます。 
+イベントを視聴するには、「ストリーミング ロケーターを作成する」に記述されたコードを実行したときに取得したストリーミング URL をコピーし、適当なプレーヤーを使用します。 [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) (https://ampdemo.azureedge.net) を使用して、ストリームをテストできます。 
 
 ライブ イベントが停止すると、イベントがオンデマンド コンテンツに自動的に変換されます。 イベントを停止して削除した後も、アセットを削除していなければ、アーカイブ済みコンテンツをオンデマンドでのビデオとしてストリーミングできます。 イベントがアセットを使用している場合はアセットを削除できません。まずイベントを削除する必要があります。  
 

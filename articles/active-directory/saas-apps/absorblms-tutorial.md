@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 998a46bc6255898ab4754de57a2570a77896cf85
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e86ae61a6aec6c546b36c52f3f3875cbebdc838e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876740"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861929"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル:Azure Active Directory と Absorb LMS の統合
 
@@ -160,7 +160,7 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     c. メモ帳で、Azure Portal からダウンロードした証明書を開きます。 **-----BEGIN CERTIFICATE-----** タグと **-----END CERTIFICATE-----** タグを削除します。 次に **[キー]** ボックスに残りのコンテンツを貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
+    d. **[モード]** ボックスで、**[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
 
     e. **[Id Property]\(ID プロパティ\)** ボックスで、Azure AD でユーザー ID として構成した属性を選択します。 たとえば、Azure AD で *userPrincipalName* が選択されている場合、**[ユーザー名]** を選択します。
 
@@ -194,7 +194,7 @@ Absorb LMS で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -253,7 +253,7 @@ Azure AD ユーザーが Absorb LMS にサインインするには、そのユ�
 
     c. **[ユーザー名]** ボックスに、ユーザーの氏名 (たとえば、**Britta Simon**) を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[パスワード]** ボックスに、ユーザーのパスワードを入力します。
+    d. **[パスワード]** ボックスに、ユーザーのパスワードを入力します。
 
     e. **[パスワードの確認]** ボックスに、パスワードを再度入力します。
 

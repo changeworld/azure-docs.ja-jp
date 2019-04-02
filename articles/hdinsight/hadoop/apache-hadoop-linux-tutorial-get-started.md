@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 12/27/2018
-ms.openlocfilehash: 5814c3f386ed31d8804469fa1a261ab9bda6b8f8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 220549c4ac3b6db584654b2c8bf27d9b4519b54a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865860"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225809"
 ---
 # <a name="quickstart-get-started-with-apache-hadoop-and-apache-hive-in-azure-hdinsight-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して Azure HDInsight で Apache Hadoop と Apache Hive を使用する
 
@@ -258,7 +258,7 @@ HDInsight クラスターの作成または管理の詳細については、以�
 
 Azure Resource Manager テンプレートを使用した HDInsight クラスターの作成について詳しくは、以下をご覧ください。
 
-* [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)。
+* [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)。
 * [Azure テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.hdinsight/allversions)。
 
 [1]: ../HDInsight/apache-hadoop-visual-studio-tools-get-started.md

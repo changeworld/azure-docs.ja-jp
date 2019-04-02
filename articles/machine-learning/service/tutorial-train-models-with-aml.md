@@ -6,17 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-author: hning86
-ms.author: haining
-ms.reviewer: sgilley
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7397546d4dc576a8488f605e20a0bfe15a01d7c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e7617aec2739daa4f84bcecab060ae0f8e28fabe
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311173"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361593"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>チュートリアル:Azure Machine Learning service でイメージ分類モデルをトレーニングする
 
@@ -29,13 +28,12 @@ ms.locfileid: "56311173"
 > [!div class="checklist"]
 > * 開発環境を設定する。
 > * データにアクセスして検査する。
-> * 人気のある scikit-learn 機械学習ライブラリを使って、単純なロジスティック回帰モデルをローカルでトレーニングする。 
-> * リモート クラスター上で複数のモデルをトレーニングする。
+> * リモート クラスターで単純なロジスティック回帰モデルをローカルでトレーニングします。
 > * トレーニングの結果をレビューし、最適なモデルを登録する。
 
 [このチュートリアルのパート 2](tutorial-deploy-models-with-aml.md) では、モデルを選択してデプロイする方法を学習します。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 >[!NOTE]
 > この記事のコードは、Azure Machine Learning SDK バージョン 1.0.8 を使用してテストされました。
@@ -67,9 +65,11 @@ Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](
 
 ### <a name="server"></a>独自の Jupyter Notebook サーバーを使用する
 
-次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  以下の手順を完了したら、**tutorials/img-classification-part1-training.ipynb** ノートブックを実行します。
+次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。 
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
+
+ 以下の手順を完了したら、**tutorials/img-classification-part1-training.ipynb** ノートブックを実行します。
 
 ## <a name="start"></a>開発環境を設定する
 

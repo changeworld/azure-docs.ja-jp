@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fa9f613bfbb3028715629f1d27b90531bd1dac3a
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: e3320cd6131497d0b2c794646bae7fae578488cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959682"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995578"
 ---
 # <a name="quickstart-create-an-ios-unity-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する iOS Unity アプリを作成する
 
@@ -36,7 +36,8 @@ ms.locfileid: "56959682"
 このクイック スタートを実行するには、以下が必要です。
 
 - <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 以降</a>、<a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a>、<a href="https://cocoapods.org" target="_blank">CocoaPods</a> がインストールされている macOS コンピューター。
-- 開発者向けオプションが有効化されている、<a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit 対応</a>の iOS デバイス。
+- HomeBrew を介してインストールされた Git。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 次に、`brew install git` を実行します。
+- 開発者向けの <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit 対応</a> iOS デバイス。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 

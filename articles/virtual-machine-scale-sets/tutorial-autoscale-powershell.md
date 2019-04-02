@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 83c3db81b2836fca15c8cac1e9665a73a89ba06d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 5a87563e54e0d932acefc5bd5808ac49b3cbf30a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980257"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005242"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケールする
 
@@ -188,7 +188,7 @@ IpAddress
 52.168.121.216
 ```
 
-最初の VM インスタンスへのリモート接続を作成します。 必要な VM インスタンスの独自のパブリック IP アドレスとポート番号を、前のコマンドで示されたとおりに指定します。 メッセージが表示されたら、スケール セットを作成するときに使用した資格情報 (サンプル コマンドでは、既定の *azureuser* と *P@ssw0rd!*) を入力します。 Azure Cloud Shell を使用する場合は、ローカルの PowerShell プロンプトまたはリモート デスクトップ クライアントからこの手順を実行します。 次の例では、VM インスタンス *0* に接続します。
+最初の VM インスタンスへのリモート接続を作成します。 必要な VM インスタンスの独自のパブリック IP アドレスとポート番号を、前のコマンドで示されたとおりに指定します。 メッセージが表示されたら、スケール セットを作成するときに使用した資格情報 (サンプル コマンドでは、既定の *azureuser* と *P\@ssw0rd!*) を入力します。 Azure Cloud Shell を使用する場合は、ローカルの PowerShell プロンプトまたはリモート デスクトップ クライアントからこの手順を実行します。 次の例では、VM インスタンス *0* に接続します。
 
 ```powershell
 mstsc /v 52.168.121.216:50001

@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1055bba6-f4df-462e-bc9b-1ad5ada0f638
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 1cb2eb42757d321648ea1ace000913916b1b7a05
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3dcbbfcdff0f30b8300e4fe767e27efb65723c5b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880667"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857829"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>チュートリアル:Azure Active Directory と FreshGrade の統合
 
@@ -105,12 +105,14 @@ FreshGrade で Azure AD のシングル サインオンを構成するには、�
     ![[FreshGrade のドメインと URL] のシングル サインオン情報](common/sp-identifier.png)
 
      a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
+
       | |
       |--|
       | `https://<subdomain>.freshgrade.com/login` |
       | `https://<subdomain>.onboarding.freshgrade.com/login` |
 
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。
+    
       | |
       |--|
       | `https://login.onboarding.freshgrade.com:443/saml/metadata/alias/<instancename>` |
@@ -145,7 +147,7 @@ FreshGrade で Azure AD のシングル サインオンを構成するには、�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

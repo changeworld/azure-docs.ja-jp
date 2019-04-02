@@ -1,23 +1,22 @@
 ---
-title: .NET Core と Visual Studio を使用した複数の依存サービスの実行 | Microsoft Docs
+title: .NET Core と Visual Studio を使用した複数の依存サービスの実行
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 6a9058d7f84b336b332ffdaf9b41abfb660433e6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
+ms.openlocfilehash: e302a4edc54b98f0dd731f65d0d45aa592cc72ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819856"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076770"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したマルチサービスの開発
 
@@ -35,7 +34,7 @@ ms.locfileid: "56819856"
 1. "*別の Visual Studio ウィンドウ*" で `mywebapi` プロジェクトを開きます。
 1. 前に `webfrontend` プロジェクトで行ったように、起動設定ドロップダウンから **[Azure Dev Spaces]** を選択します。 今回は新しい AKS クラスターを作成するのではなく、作成済みのものを選択します。 前述のように、[スペース] は既定の `default` のままにし、**[OK]** をクリックします。 [出力] ウィンドウを見ると、デバッグを開始したときの作業速度を上げるために、Visual Studio によって開発空間でこの新しいサービスの "ウォーム アップ" が開始されたことがわかります。
 1. F5 キーを押し、サービスがビルドされ、展開されるまで待ちます。 準備ができると、Visual Studio のステータス バーがオレンジ色に変わります。
-1. **[出力]** ウィンドウの **[Azure Dev Spaces for AKS]** ウィンドウに表示されるエンドポイント URL を書き留めます。 これは、 http://localhost:\<portnumber\> のように表示されます。 コンテナーはローカルで実行されているように見えますが、実際には Azure の開発空間で実行されています。
+1. **[出力]** ウィンドウの **[Azure Dev Spaces for AKS]** ウィンドウに表示されるエンドポイント URL を書き留めます。 これは、`http://localhost:<portnumber>` のように表示されます。 コンテナーはローカルで実行されているように見えますが、実際には Azure の開発空間で実行されています。
 2. `mywebapi` の準備ができたら、ブラウザーで localhost アドレスを開き、URL に `/api/values` を追加して `ValuesController` の既定の GET API を呼び出します。 
 3. すべての手順が正常に完了すると、次のような `mywebapi` サービスからの応答を確認できます。
 

@@ -3,18 +3,18 @@ title: クイック スタート - Hello World を Azure Service Fabric Mesh に
 description: このクイック スタートでは、Service Fabric Mesh アプリケーションを Azure Service Fabric mesh にデプロイする方法について説明します。
 services: service-fabric-mesh
 keywords: SEO チャンプを確認せずに、キーワードを追加または編集しないでください。
-author: rwike77
-ms.author: ryanwi
+author: dkkapur
+ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 2f54f11ffc6db9af4c7d74ef6c0806a8b8b8fe74
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5ca622602c71976917a07005bf349dd98086327c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754763"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336985"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>クイック スタート: Service Fabric Mesh に Hello World をデプロイする
 

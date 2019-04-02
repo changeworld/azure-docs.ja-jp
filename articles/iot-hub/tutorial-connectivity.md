@@ -2,19 +2,19 @@
 title: Azure IoT Hub へのデバイス接続を確認する
 description: IoT Hub ツールを使用して、開発時に IoT ハブへのデバイスの接続に関する問題を解決します。
 services: iot-hub
-author: dominicbetts
-manager: timlt
-ms.author: dobett
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.custom: mvc
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: ebd206f6de031ea73d621568e091632e2e8123b9
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: cd60129e2da0b0c2130b300159953bd81c4aeb82
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674509"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077566"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>チュートリアル:シミュレートされたデバイスを使用して IoT ハブとの接続をテストする
 
@@ -135,7 +135,7 @@ az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubNam
 
 生成された SAS トークンの全文をメモします。 SAS トークンは次のようになります。`SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
-開発用マシンのターミナル ウィンドウで、ダウンロードしたサンプル Node.js プロジェクトのルート フォルダーに移動します。 次に **iot-hub\Tutorials\ConnectivityTests\simulated-device** フォルダーに移動します。
+開発用マシンのターミナル ウィンドウで、ダウンロードしたサンプル Node.js プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Tutorials\ConnectivityTests** フォルダーに移動します。
 
 ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションを実行します。
 
@@ -176,7 +176,7 @@ SAS トークンを使用してハブに接続しようとすると、ターミ�
 az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
-メッセージを送信するシミュレートされたデバイスを実行するには、ダウンロードしたコードの **iot-hub\Tutorials\ConnectivityTests\simulated-device** フォルダーに移動します。
+メッセージを送信するシミュレートされたデバイスを実行するには、ダウンロードしたコードの **iot-hub\Tutorials\ConnectivityTests** フォルダーに移動します。
 
 ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションを実行します。
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 1dcd17854adacc853215f4c5a9982862d3e488c4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: db2d9fcf3dbb168061805906dae6ecc3a03e3301
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738574"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884406"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>クイック スタート:Node.js で Translator Text API を使用してテキストの表記を変換する
 
@@ -32,7 +32,7 @@ ms.locfileid: "56738574"
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
-普段使用している IDE またはエディターで、新しいプロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `transliterate-text.js` という名前のファイルにコピーします。
+任意の IDE またはエディターを使用して新しいプロジェクトを作成するか、`translate-text.js` という名前のファイルが含まれる新しいフォルダーをデスクトップに作成します。 次に、このコード スニペットをプロジェクト/ファイルにコピーします。
 
 ```javascript
 const request = require('request');
@@ -126,7 +126,7 @@ node transliterate-text.js
 [
     {
         "script": "latn",
-        "text": "konnnichiha"
+        "text": "konnichiwa"
     }
 ]
 ```

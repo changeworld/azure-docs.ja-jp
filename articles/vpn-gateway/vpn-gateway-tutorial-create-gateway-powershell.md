@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: afe71953e9917ccf274742124d59cb790f15521b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 790a8b74f437fe8fd7b8660c2ac9d208328b487f
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414135"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445215"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>チュートリアル:PowerShell を使用した VPN ゲートウェイの作成と管理
 
@@ -118,7 +118,7 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 
 ## <a name="view-the-gateway-public-ip-address"></a>ゲートウェイのパブリック IP アドレスを表示する
 
-パブリック IP アドレスの名前がわかっている場合は、[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=azurermps-6.8.1) を使用して、ゲートウェイに割り当てられたパブリック IP アドレスを表示します。
+パブリック IP アドレスの名前がわかっている場合は、[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) を使用して、ゲートウェイに割り当てられたパブリック IP アドレスを表示します。
 
 セッションがタイムアウトした場合、一般的なネットワーク パラメーターをこのチュートリアルの先頭から新しいセッションにコピーして、続行します。
 

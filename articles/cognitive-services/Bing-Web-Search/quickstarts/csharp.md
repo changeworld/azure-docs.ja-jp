@@ -8,30 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 08e2ef1b219ed66a39d38c08be80df89814afbaf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 871cca9fe2b3ff50202feb4925a267b93d432700
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180489"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842075"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-c"></a>クイック スタート:Bing Web Search REST API と C# を使用して Web を検索する
-
 
 このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この C# アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは C# で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイック スタートを実行するには、以下のものが必要です。
 
 * Windows:[Visual Studio 2017](https://www.visualstudio.com/downloads/)
-* Linux/macOS:[モノラル](http://www.mono-project.com/)  
+* Linux/macOS:[モノラル](https://www.mono-project.com/)  
 * サブスクリプション キー
 
 このサンプル プログラムは、.NET Core クラスのみを使用します。
-
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -63,7 +62,7 @@ namespace BingSearchApisQuickstart
 
 ## <a name="define-variables"></a>変数の定義
 
-先に進む前に、いくつかの変数を設定する必要があります。 `uriBase` が有効であることを確認し、`accessKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `searchTerm` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
+先に進む前に、いくつかの変数を設定する必要があります。 `uriBase` が有効であることを確認し、`accessKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `searchTerm` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。 前述のように、忘れずにこのコードを `Program` クラスに追加してください。
 
 ```csharp
 // Enter a valid subscription key.
@@ -79,7 +78,7 @@ const string searchTerm = "Microsoft Cognitive Services";
 
 ## <a name="declare-the-main-method"></a>Main メソッドの宣言
 
-`Main()` は必須であり、プログラムの起動時に最初に呼び出されるメソッドです。 このアプリケーションでは、main メソッドが `accessKey` の検証、要求の実行、および応答の出力を行います。
+`Main()` メソッドは必須であり、プログラムの起動時に最初に呼び出されるメソッドです。 このアプリケーションでは、main メソッドが `accessKey` の検証、要求の実行、および応答の出力を行います。
 
 `main()` は次のいくつかのセクションで作成されるメソッドに依存していることに注意してください。
 

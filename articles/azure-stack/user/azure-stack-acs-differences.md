@@ -10,17 +10,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviwer: xiaofmao
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 11736b978242416bcfb95d3025975028e4148e98
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: bbf5076c195fde6a7c5fcabd8e347b7a0d433e8f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486540"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763251"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack ストレージ:相違点と考慮事項
 
@@ -44,6 +44,7 @@ Azure Stack ストレージは、Microsoft Azure Stack 内のストレージ ク
 |ブロック BLOB の最大サイズ|4.75 TB (100 MB X 50,000 ブロック)|1802 update 以降のバージョンでは、4.75 TB (100 MB x 50,000 ブロック)。 それより前のバージョンでは 50,000 X 4 MB (約 195 GB)。
 |ページ BLOB のスナップショット コピー|実行中の VM にアタッチされている Azure の管理対象外 VM ディスクのバックアップはサポートされています|まだサポートされていません。
 |ページ BLOB の増分スナップショットのコピー|Premium および標準の Azure ページ BLOB がサポートされます|まだサポートされていません。
+|ページ BLOB の課金|一意のページに対する料金が発生します。そのページが BLOB とスナップショットのどちらに含まれているかは関係ありません。 BLOB に関連付けられているスナップショットについて追加料金が発生するのは、ベース BLOB が更新されたときです。|ベース BLOB と、関連付けられているスナップショットに対する料金が発生します。 個々のスナップショットごとに追加料金が発生します。
 |Blob Storage のストレージ層|ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層。|まだサポートされていません。
 |Blob Storage の論理的な削除|一般提供|まだサポートされていません。
 |ページ BLOB の最大サイズ|8 TB|1 TB (テラバイト)

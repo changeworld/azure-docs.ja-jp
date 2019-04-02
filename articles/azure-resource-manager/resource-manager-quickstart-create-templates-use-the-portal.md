@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/11/2019
+ms.date: 03/04/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c7759b9f0787b7926b3642b8b912ec5391347adf
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 84025953e74cb2ace358aa041f55dc1498d22f2f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911491"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079062"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ
 
 Azure portal を使用して Resource Manager テンプレートを生成する方法と、ポータルでテンプレートを編集およびデプロイするプロセスについて学習します。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
+
+![Resource Manager テンプレートのクイック スタート ポータル ダイアグラム](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 チュートリアルを完了した後、Azure Storage アカウントをデプロイします。 同じプロセスを使用して他の Azure リソースをデプロイすることができます。
 
@@ -32,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 最初から Resource Manager テンプレートを作成するのは簡単な作業ではありません。Azure のデプロイと JSON 形式に慣れていない場合は特にそうです。 Azure portal を使用すると、Azure Storage アカウントなどのリソースを構成できます。 リソースをデプロイする前に、構成を Resource Manager テンプレートにエクスポートできます。 テンプレートを保存し、今後再利用できます。
 
-経験豊富なテンプレート開発者の多くは、慣れていない Azure リソースをデプロイするときにこの方法を使用して実用的なテンプレートを生成しています。
+経験豊富なテンプレート開発者の多くは、慣れていない Azure リソースをデプロイするときにこの方法を使用してテンプレートを生成しています。 ポータルを使用したテンプレートのエクスポートの詳細については、[テンプレートへのリソース グループのエクスポート](./manage-resource-groups-portal.md#export-resource-groups-to-templates)に関する記事を参照してください。 作業用のテンプレートを検索する他の方法は、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からです。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[リソースの作成]** > **[Storage]** > **[ストレージ アカウント - Blob、File、Table、Queue]** を選択します。
@@ -40,8 +42,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![Azure portal を使用して Azure ストレージ アカウントを作成する](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 3. 次の情報を入力します。
 
-    - **[リソース グループ]**:**[新規作成]** を選択し、任意のリソース グループ名を指定します。 スクリーンショットでは、リソース グループ名は *mystorage1016rg* です。 リソース グループとは、Azure リソース用のコンテナーです。 リソース グループを使用すると、Azure リソースをより簡単に管理できます。
-    - **[名前]**:ストレージ アカウントに一意の名前を付けます。 スクリーンショットでは、名前は *mystorage1016* です。
+    |名前|値|
+    |----|----|
+    |**リソース グループ**|**[新規作成]** を選択し、任意のリソース グループ名を指定します。 スクリーンショットでは、リソース グループ名は *mystorage1016rg* です。 リソース グループとは、Azure リソース用のコンテナーです。 リソース グループを使用すると、Azure リソースをより簡単に管理できます。 |
+    |**Name**|ストレージ アカウントに一意の名前を付けます。 ストレージ アカウントの名前は、Azure に存在するいずれの名前とも重複しないこと、また小文字と数字だけで構成されている必要があります。 名前は 3 文字から 24 文字の長さで指定する必要があります。 "ストレージ カウント名 'mystorage1016' は既に使用されています" というエラー メッセージが表示された場合は、**&lt;自分の名前>storage&lt;MMDD形式の今日の日付>** (例: **johndolestorage1016**) の使用を試してください。 詳細については、「[名前付け規則と制約事項](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions)」を参照してください。|
 
     残りのプロパティは既定値のままでかまいません。
 
@@ -50,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     > [!NOTE]
     > エクスポートされたテンプレートの中には、デプロイする前に編集を必要とするものがあります。
 
-4. 画面下部の **[確認および作成]** を選択します。
+4. 画面下部の **[確認および作成]** を選択します。 次の手順で **[作成]** を選択しないでください。
 5. 画面下部の **[Automation のテンプレートをダウンロードする]** を選択します。 ポータルに、生成されたテンプレートが次のように表示されます。
 
     ![ポータルを使用してテンプレートを生成する](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
@@ -59,13 +63,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     6 個のパラメーターが定義されています。 そのうちの 1 つは、**storageAccountName** という名前です。 前のスクリーンショットの 2 番目の強調表示された部分は、テンプレートでこのパラメーターを参照する方法を示しています。 次のセクションでは、生成された名前をストレージ アカウントに使用するようにテンプレートを編集します。
 
-    テンプレートには、1 つの Azure リソースが定義されています。 その種類は、[Microsoft.Storage/storageAccounts] です。 リソースがどのように定義されているかと、定義の構造を確認してください。
-6. **[Download]** を選択します。 ダウンロードしたパッケージの **template.json** をコンピューターに保存します。 次のセクションでは、テンプレート デプロイ ツールを使用してテンプレートを編集します。
-7. **[パラメーター]** タブを選択して、パラメーターに指定した値を確認します。 これらの値を書き留めておきます。次のセクションでテンプレートをデプロイするときに必要になります。
+    テンプレートには、1 つの Azure リソースが定義されています。 種類は `Microsoft.Storage/storageAccounts` です。 リソースがどのように定義されているかと、定義の構造を確認します。
+6. 画面上部の **[ダウンロード]** を選択します。 
+7. ダウンロードした zip ファイルを開き、**template.json** をお使いのコンピューターに保存します。 次のセクションでは、テンプレート デプロイ ツールを使用してテンプレートを編集します。
+8. **[パラメーター]** タブを選択して、パラメーターに指定した値を確認します。 これらの値を書き留めておきます。次のセクションでテンプレートをデプロイするときに必要になります。
 
     ![ポータルを使用してテンプレートを生成する](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
-    テンプレートとパラメーター ファイルの両方を使用して、リソース (このチュートリアルでは Azure Storage アカウント) を作成できます。
+    テンプレート ファイルとパラメーター ファイルの両方を使用して、リソース (このチュートリアルでは Azure Storage アカウント) を作成できます。
 
 ## <a name="edit-and-deploy-the-template"></a>テンプレートの編集とデプロイ
 
@@ -81,79 +86,82 @@ Azure では、各 Azure サービスで一意の名前が使用される必要�
 4. **作成**を選択します。
 5. **[Build your own template in the editor] \(エディターで独自のテンプレートをビルド\)** を選択します。
 6. **[ファイルの読み込み]** を選択し、手順に従って、前のセクションでダウンロードした template.json を読み込みます。
-7. 次のスクリーンショットに示されているように、1 つの変数を追加します。
+7. テンプレートに次の 3 つの変更を加えます。
 
-    ```json
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
-    ```
     ![Azure Resource Manager のテンプレート](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
-    ここでは、`concat()` と `uniqueString()` という 2 つのテンプレート関数が使用されています。
+   - 前のスクリーンショットに示されているように、**storageAccountName** パラメーターを削除します。
+   - 前のスクリーン ショットに示されているように、**storageAccountName** という 1 つの変数を追加します。
 
-8. 前のスクリーンショットで強調表示されている **storageAccountName** パラメーターを削除します。
-9. このパラメーターの代わりに、新しく定義した変数を使用するように、**Microsoft.Storage/storageAccounts** リソースの name 要素を更新します。
+       ```json
+       "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+       ```
 
-    ```json
-    "name": "[variables('storageAccountName')]",
-    ```
+       ここでは、`concat()` と `uniqueString()` という 2 つのテンプレート関数が使用されています。
+   - このパラメーターの代わりに、新しく定義した変数を使用するように、**Microsoft.Storage/storageAccounts** リソースの name 要素を更新します。
 
-    最終的なテンプレートは次のようになります。
+       ```json
+       "name": "[variables('storageAccountName')]",
+       ```
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "location": {
-                "type": "string"
-            },
-            "accountType": {
-                "type": "string"
-            },
-            "kind": {
-                "type": "string"
-            },
-            "accessTier": {
-                "type": "string"
-            },
-            "supportsHttpsTrafficOnly": {
-                "type": "bool"
-            }
-        },
-        "variables": {
-            "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
-        },
-        "resources": [
-            {
-                "name": "[variables('storageAccountName')]",
-                "type": "Microsoft.Storage/storageAccounts",
-                "apiVersion": "2018-07-01",
-                "location": "[parameters('location')]",
-                "properties": {
-                    "accessTier": "[parameters('accessTier')]",
-                    "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]"
-                },
-                "dependsOn": [],
-                "sku": {
-                    "name": "[parameters('accountType')]"
-                },
-                "kind": "[parameters('kind')]"
-            }
-        ],
-        "outputs": {}
-    }
-    ```
-7. **[保存]** を選択します。
-8. 次の値を入力します。
+     最終的なテンプレートは次のようになります。
 
-    - **リソース グループ**: **[新規作成]** を選択し、リソース グループに一意の名前を付けます。
-    - **場所**: リソース グループの場所を選択します。 たとえば **[米国中部]** です。 
-    - **[場所]**: ストレージ アカウントの場所を選択します。 たとえば **[米国中部]** です。
-    - **アカウントの種類**:このクイック スタートでは、「**Standard_LRS**」と入力します。
-    - **種類**:このクイック スタートでは、「**StorageV2**」と入力します。
-    - **アクセス層**:このクイック スタートでは、「**ホット**」と入力します。
-    - **[Https Traffic Only Enabled]\(HTTPS トラフィックのみ有効\)**:   このクイック スタートでは、**[true]** を選択します。
-    - **[上記の使用条件に同意する]**: (オン)
+     ```json
+     {
+       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion": "1.0.0.0",
+       "parameters": {
+           "location": {
+               "type": "string"
+           },
+           "accountType": {
+               "type": "string"
+           },
+           "kind": {
+               "type": "string"
+           },
+           "accessTier": {
+               "type": "string"
+           },
+           "supportsHttpsTrafficOnly": {
+               "type": "bool"
+           }
+       },
+       "variables": {
+           "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+       },
+       "resources": [
+           {
+               "name": "[variables('storageAccountName')]",
+               "type": "Microsoft.Storage/storageAccounts",
+               "apiVersion": "2018-07-01",
+               "location": "[parameters('location')]",
+               "properties": {
+                   "accessTier": "[parameters('accessTier')]",
+                   "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]"
+               },
+               "dependsOn": [],
+               "sku": {
+                   "name": "[parameters('accountType')]"
+               },
+               "kind": "[parameters('kind')]"
+           }
+       ],
+       "outputs": {}
+     }
+     ```
+8. **[保存]** を選択します。
+9. 次の値を入力します。
+
+    |名前|値|
+    |----|----|
+    |**リソース グループ**|前のセクションで作成したリソース グループの名前を選択します。 |
+    |**場所**|ストレージ アカウントの場所を選択します。 たとえば **[米国中部]** です。 |
+    |**アカウントの種類**|このクイック スタートでは、「**Standard_LRS**」と入力します。 |
+    |**種類**|このクイック スタートでは、「**StorageV2**」と入力します。 |
+    |**アクセス層**|このクイック スタートでは、「**ホット**」と入力します。 |
+    |**[Https Traffic Only Enabled]\(HTTPS トラフィックのみ有効\)**| このクイック スタートでは、**[true]** を選択します。 |
+    |**上記の使用条件に同意する**|(選択します)|
 
     サンプルのデプロイのスクリーンショットを次に示します。
 

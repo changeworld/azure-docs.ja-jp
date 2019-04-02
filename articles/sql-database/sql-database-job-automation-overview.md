@@ -3,7 +3,6 @@ title: Azure SQL ジョブの自動化 | Microsoft Docs
 description: ジョブの自動化を使用して、一連の Azure SQL データベース全体に Transact-SQL (T-SQL) スクリプトを実行します。
 services: sql-database
 ms.service: sql-database
-ms.subservice: database-features
 ms.custom: ''
 ms.devlang: ''
 ms.topic: overview
@@ -12,18 +11,20 @@ ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1fd524e858b20c75aef4101ad98ac54c4f485d1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4e80bbc868376a41212d924bd31df6ac70a52ded
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457209"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901969"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>データベース ジョブを使用して管理タスクを自動化する
 
 Azure SQL Database では、T-SQL クエリを実行してメンテナンス タスクを行うジョブを作成し、スケジュールして、1 つまたは多数のデータベースに対して定期的に実行することができます。 すべてのジョブでは、実行の状態が記録されます。また、エラーが発生した場合に操作が自動で再試行されます。
 ジョブの実行場所となるターゲット データベースまたは Azure SQL データベースのグループを定義できるほか、ジョブを実行するスケジュールを定義できます。
 ターゲット データベースにログインするタスクはジョブによって処理されます。 Azure SQL データベースのグループ全体に対して実行される Transact-SQL スクリプトの定義、保守、維持も行います。
+
+## <a name="when-to-use-automated-jobs"></a>自動化されたジョブを使用するタイミング
 
 ジョブの自動化を使用できるシナリオをいくつか次に示します。
 
@@ -36,8 +37,10 @@ Azure SQL Database では、T-SQL クエリを実行してメンテナンス タ
   - Azure SQL データベースのコレクションから 1 つのテーブルにデータを集約します。
   - 顧客の製品利用統計情報収集など、大規模なデータセット全体に対して、時間がかかるデータ処理クエリを実行します。 結果は 1 つの対象テーブルに収集され、分析に使用されます。
 - データの移動
- - お客様のデータベースで行われた変更を他のデータベースにレプリケートしたり、リモート データベースに加えられた更新を収集してデータベースに変更を適用したりするジョブを作成します。
- - SQL Server Integration Services (SSIS) を使用してお客様のデータベースとの間で双方向にデータを読み込むジョブを作成します。
+  - お客様のデータベースで行われた変更を他のデータベースにレプリケートしたり、リモート データベースに加えられた更新を収集してデータベースに変更を適用したりするジョブを作成します。
+  - SQL Server Integration Services (SSIS) を使用してお客様のデータベースとの間で双方向にデータを読み込むジョブを作成します。
+
+## <a name="overview"></a>概要
 
 Azure SQL Database では、次のジョブ スケジュール テクノロジが利用できます。
 
@@ -158,9 +161,9 @@ Managed Instance では、SQL Server で利用できる一部の SQL エージ�
 - SQL エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、マネージド インスタンスではサポートされていません。
 - Managed Instance では現在、エージェントの有効化/無効化がサポートされていません。 SQL エージェントは常時稼動状態となります。
 - 通知は部分的にサポートされています。
- - ポケットベルはサポートされていません。
- - NetSend はサポートされていません。
- - アラートはまだサポートされていません。
+  - ポケットベルはサポートされていません。
+  - NetSend はサポートされていません。
+  - アラートはまだサポートされていません。
 - プロキシはサポートされていません。
 - Eventlog はサポートされていません。
 

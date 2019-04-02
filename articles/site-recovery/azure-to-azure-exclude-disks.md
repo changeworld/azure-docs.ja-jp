@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 978566eb9e0073c60046eca024e09ba63c642180
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: b378f77874b1ebef243836c101fa71a53f4775d1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458229"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517751"
 ---
 # <a name="exclude-disks-from-replication-of-azure-vms-to-azure-using-azure-powershell"></a>Azure PowerShell を使用した Azure VM の Azure へのレプリケーションからディスクを除外する
 
@@ -31,7 +31,7 @@ ms.locfileid: "56458229"
 ## <a name="why-exclude-disks-from-replication"></a>レプリケーションからディスクを除外する理由
 レプリケーションからディスクを除外する必要性は、多くの場合、次の理由から生じます。
 
-- お使いの仮想マシンが、[データ変化率のレプリケートに対する Azure Site Recovery の制限](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#azure-site-recovery-limits-to-replicate-data-change-rates)に達している。
+- お使いの仮想マシンが、[データ変化率のレプリケートに対する Azure Site Recovery の制限](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)に達している。
 
 - 除外対象のディスクに頻繁に変更されるデータが存在するものの重要度が低いか、レプリケートする必要がない。
 

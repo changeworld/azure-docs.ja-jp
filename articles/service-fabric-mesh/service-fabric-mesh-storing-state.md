@@ -3,18 +3,18 @@ title: Azure Service Fabric Mesh の状態ストレージ オプション | Micr
 description: Azure Service Fabric Mesh 上で実行されている Service Fabric Mesh アプリケーションに状態を確実に格納する方法について説明します。
 services: service-fabric-mesh
 keywords: ''
-author: rwike77
-ms.author: ryanwi
+author: dkkapur
+ms.author: dekapur
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: 81d9fc7babef7c1d14a0acc420d0c16c05b83215
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ef51040d1bad74ee74d5901d1f5acbe875c02a07
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354333"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337579"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric を使用した状態の管理
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 072724b9-d1c8-4c22-9571-d1d0d7eb5ea2
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/18/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe795cafa761d5ce38c792d9ceb91e490fccc228
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cce100c4e8aa33a9180f5657756b11d6c6e34920
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882280"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838869"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>チュートリアル:Azure Active Directory と AuditBoard の統合
 
@@ -111,7 +111,7 @@ AuditBoard で Azure AD シングル サインオンを構成するには、次�
 
     c. アプリケーションを **SP 開始**モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.auditboardapp.com/` という形式で URL を入力します。
+    d. **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.auditboardapp.com/` という形式で URL を入力します。
 
     ![[AuditBoard のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
@@ -144,7 +144,7 @@ AuditBoard で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

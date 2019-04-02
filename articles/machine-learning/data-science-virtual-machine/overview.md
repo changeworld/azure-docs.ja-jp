@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 44427183b6cc785af33daf92bda050336eec5284
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f90e82fea9cbb3c3052738d15ff4a3838f1ad000
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245288"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863242"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure データ サイエンス仮想マシンの概要
 
@@ -38,7 +38,7 @@ Data Science Virtual Machine (DSVM) の目標は、業界を越えてすべて�
 ここでは、データ サイエンス VM をデプロイできる主要なシナリオをいくつか示します。
 
 ### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>クラウド内の事前構成済み分析デスクトップ
-データ サイエンス VM は、ローカル デスクトップを管理されたクラウド デスクトップに置き換えようと考えているデータ サイエンス チームに基準となる構成を提供します。 この基準により、チームのすべてのデータ科学者に、実験を確認して共同作業を促進するための一貫性のあるセットアップが保証されます。 また、システム管理者の負担を軽減し、高度な分析を行うために必要なさまざまなソフトウェア パッケージの評価、インストール、および管理に必要な時間を短縮することで、コストも削減できます。  
+データ サイエンス VM は、ローカル デスクトップを管理されたクラウド デスクトップに置き換えようと考えているデータ サイエンス チームに基準となる構成を提供します。 この基準により、チームのすべてのデータ科学者に、実験を確認して共同作業を促進するための一貫性のあるセットアップが保証されます。 また、システム管理者の負担を軽減し、高度な分析を行うために必要なさまざまなソフトウェア パッケージの評価、インストール、および管理に必要な時間を短縮することで、コストも削減できます。
 
 ### <a name="data-science-training-and-education"></a>データ サイエンスのトレーニングと教育
 エンタープライズでデータ サイエンスを教える訓練と教育の担当者は、通常、受講者が一貫したセットアップを使用でき、サンプルが予測どおりに動作するように、仮想マシン イメージを提供します。 データ サイエンス VM は、サポートと非互換性の問題を軽減する一貫したセットアップでオンデマンドの環境を作成します。 このような環境を頻繁に構築する必要がある場合 (特に短期間のトレーニング クラスの場合)、非常にメリットがあります。
@@ -50,7 +50,7 @@ Data Science Virtual Machine (DSVM) の目標は、業界を越えてすべて�
 データ サイエンス VM は、Microsoft ML Server、SQL Server、Visual Studio ツール、Jupyter、ディープ ラーニング/ML ツールキット、およびコミュニティで人気のあるセットアップ作業が最小限の新しいツールなど、ツールの学習と評価のために使用できます。 Data Science VM は迅速に設定できるので、公開された実験の複製、デモの実行、オンライン セッションでのチュートリアルの実施、会議チュートリアルなど、他の短期的な使用シナリオに適用できます。
 
 ### <a name="deep-learning"></a>ディープ ラーニング
-Data Science VM は、GPU (グラフィック処理装置) ベースのハードウェア上でディープ ラーニング アルゴリズムを使用するトレーニング モデルに使用できます。 DSVM では、Azure クラウドの VM スケーリング機能を利用すると、必要に応じてクラウド上で GPU ベースのハードウェアを使用できます。 同じ OS ディスクを保持しつつ、大規模モデルをトレーニングするときまたは高速計算が必要なときに GPU ベースの VM に切り替えることができます。  Windows Server 2016 エディションの DSVM には、GPU ドライバー、フレームワーク、および GPU バージョンのディープ ラーニング フレームワークが事前インストールされています。 Linux エディションでは、GPU でのディープ ラーニングは、CentOS と Ubuntu DSVM の両方で可能です。 Data Science VM の Ubuntu、CentOS、または Windows 2016 エディションは GPU ベースでない Azure 仮想マシンにデプロイできます。その場合、すべてのディープ ラーニング フレームワークは CPU モードにフォールバックします。 
+Data Science VM は、GPU (グラフィック処理装置) ベースのハードウェア上でディープ ラーニング アルゴリズムを使用するトレーニング モデルに使用できます。 DSVM では、Azure クラウドの VM スケーリング機能を利用すると、必要に応じてクラウド上で GPU ベースのハードウェアを使用できます。 同じ OS ディスクを保持しつつ、大規模モデルをトレーニングするときまたは高速計算が必要なときに GPU ベースの VM に切り替えることができます。  Windows Server 2016 エディションの DSVM には、GPU ドライバー、フレームワーク、および GPU バージョンのディープ ラーニング フレームワークが事前インストールされています。 Linux エディションでは、GPU でのディープ ラーニングは、CentOS と Ubuntu DSVM の両方で可能です。 Data Science VM の Ubuntu、CentOS、または Windows 2016 エディションは GPU ベースでない Azure 仮想マシンにデプロイできます。その場合、すべてのディープ ラーニング フレームワークは CPU モードにフォールバックします。
 
 ## <a name="whats-included-in-the-data-science-vm"></a>データ サイエンス VM に含まれるもの
 データ サイエンス仮想マシンには、多くの一般的なデータ サイエンスおよびディープ ラーニング ツールが既にインストールされ、構成されています。 また、Microsoft ML Server (R、Python) などの各種の Azure データおよび分析製品を簡単に操作して予測モデルを構築したり、SQL Server 2017 を使用して大規模なデータ セットを探査したりするためのツールも含まれています。 オープン ソース コミュニティや Microsoft の他のツールのホスト、およびサンプル コードとノートブックも含まれます。 次の表は、データ サイエンス仮想マシンの Windows エディションと Linux エディションに含まれる主要なコンポーネントを列記して比較したものです。
@@ -66,7 +66,7 @@ Data Science VM は、GPU (グラフィック処理装置) ベースのハード
 | リレーショナル データベース                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer エディション| [PostgreSQL](https://www.postgresql.org/) (CentOS)、<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer エディション (Ubuntu) |
 | データベース ツール                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp、sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * ODBC/JDBC ドライバー| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/) (クエリ ツール)、 <br /> * bcp、sqlcmd <br /> * ODBC/JDBC ドライバー|
 | SQL Server ML サービス (R、Python) によるスケーラブルなデータベース内分析 | Y     |N              |
-| 次のカーネルを備えた **[Jupyter Notebook Server](http://jupyter.org/)**                                  | Y     | Y |
+| 次のカーネルを備えた **[Jupyter Notebook Server](https://jupyter.org/)**                                  | Y     | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* R | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Python | Y | Y |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | Y | Y |
@@ -76,17 +76,17 @@ Data Science VM は、GPU (グラフィック処理装置) ベースのハード
 | JupyterHub (マルチ ユーザー Notebook サーバー)| N | Y |
 | JupyterLab (マルチ ユーザー Notebook サーバー) | N | Y (Ubuntu のみ) |
 | **開発ツール、IDE、およびコード エディター**| | |
-| &nbsp;&nbsp;&nbsp;&nbsp;* Git プラグイン、Azure HDInsight (Hadoop)、Data Lake、SQL Server データ ツール、[Node.js](https://github.com/Microsoft/nodejstools)、[Python](https://aka.ms/ptvs)、および [R Tools for Visual Studio (RTVS)](http://microsoft.github.io/RTVS-docs/)を備えた [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* Git プラグイン、Azure HDInsight (Hadoop)、Data Lake、SQL Server データ ツール、[Node.js](https://github.com/Microsoft/nodejstools)、[Python](https://aka.ms/ptvs)、および [R Tools for Visual Studio (RTVS)](https://microsoft.github.io/RTVS-docs/)を備えた [Visual Studio 2017 (Community Edition)](https://www.visualstudio.com/community/) | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Visual Studio Code](https://code.visualstudio.com/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [RStudio Server](https://www.rstudio.com/products/rstudio/#Server) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [PyCharm Community Edition](https://www.jetbrains.com/pycharm/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Atom](https://atom.io/) | N | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Juno (Julia IDE)](http://junolab.org/)| Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Juno (Julia IDE)](https://junolab.org/)| Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Vim および Emacs | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Git および GitBash | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* OpenJDK | Y | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* .Net Framework | Y | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* .NET Framework | Y | N |
 | PowerBI Desktop | Y | N |
 | Azure および Cortana Intelligence Suite のサービスにアクセスするための SDK | Y | Y |
 | **データ移動および管理ツール** | | |
@@ -99,12 +99,12 @@ Data Science VM は、GPU (グラフィック処理装置) ベースのハード
 | &nbsp;&nbsp;&nbsp;&nbsp;* [DocDB データ移行ツール](https://docs.microsoft.com/azure/documentdb/documentdb-import-data) | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft データ管理ゲートウェイ](https://msdn.microsoft.com/library/dn879362.aspx): オンプレミスとクラウドの間におけるデータの移動 | Y | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Unix/Linux コマンド ライン ユーティリティ | Y | Y |
-| データ探索用 [Apache Drill](http://drill.apache.org) | Y | Y |
+| データ探索用 [Apache Drill](https://drill.apache.org) | Y | Y |
 | **Machine Learning ツール** |||
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) との統合 (R、Python) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Xgboost](https://github.com/dmlc/xgboost) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | Y | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [Weka](http://www.cs.waikato.ac.nz/ml/weka/) | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [Weka](https://www.cs.waikato.ac.nz/ml/weka/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Rattle](https://togaware.com/rattle/) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [LightGBM](https://github.com/Microsoft/LightGBM) | N | Y (Ubuntu のみ) |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CatBoost](https://tech.yandex.com/catboost/) | N | Y (Ubuntu のみ) |
@@ -113,21 +113,21 @@ Data Science VM は、GPU (グラフィック処理装置) ベースのハード
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft Cognitive Toolkit (CNTK)](https://docs.microsoft.com/cognitive-toolkit/) (Windows 2016) | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow](https://www.tensorflow.org/) | Y (Windows 2016) | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Horovod](https://github.com/uber/horovod) | N | Y (Ubuntu) |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](http://mxnet.io/) | Y (Windows 2016) | Y|
+| &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet](https://mxnet.io/) | Y (Windows 2016) | Y|
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Caffe および Caffe2](https://github.com/caffe2/caffe2) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Chainer](https://chainer.org/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Torch](http://torch.ch/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Theano](https://github.com/Theano/Theano) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Keras](https://keras.io/)| N | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* [PyTorch](http://pytorch.org/)| N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* [PyTorch](https://pytorch.org/)| N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [NVidia Digits](https://github.com/NVIDIA/DIGITS) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [MXNet モデル サーバー](https://github.com/awslabs/mxnet-model-server) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow Serving](https://www.tensorflow.org/serving/) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorRT](https://developer.nvidia.com/tensorrt) | N | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA、cuDNN、NVIDIA Driver](https://developer.nvidia.com/cuda-toolkit) | Y | Y |
 | **ビッグ データ プラットフォーム (Devtest のみ)**|||
-| &nbsp;&nbsp;&nbsp;&nbsp;* ローカル [Spark](http://spark.apache.org/) Standalone | Y | Y |
-| &nbsp;&nbsp;&nbsp;&nbsp;* ローカル [Hadoop](http://hadoop.apache.org/) (HDFS、YARN) | N | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* ローカル [Spark](https://spark.apache.org/) Standalone | Y | Y |
+| &nbsp;&nbsp;&nbsp;&nbsp;* ローカル [Hadoop](https://hadoop.apache.org/) (HDFS、YARN) | N | Y |
 
 ## <a name="get-started"></a>作業開始
 

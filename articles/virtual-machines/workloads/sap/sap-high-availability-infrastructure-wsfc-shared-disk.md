@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 43e4cf27d9a57db58c0f90b269e7a52622508ee1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 130dca5efdf39936fdf2a4dc4409f8b29d15bbcd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998771"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487687"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -235,14 +235,14 @@ _**図 1:** SAP 高可用性 Azure Resource Manager パラメーターを設定�
 2. **[SUBNETID]\(サブネット ID\)** ボックスに、Azure 仮想マシンのデプロイ先となる準備済みの Azure ネットワークのサブネット ID の完全な文字列を追加します。
 3. すべての Azure ネットワーク サブネットの一覧を取得するには、次の PowerShell コマンドを実行します。
 
-   ```PowerShell
+   ```powershell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
    **[ID]** フィールドにサブネット ID の値が表示されます。
 4. すべてのサブネット ID 値の一覧を取得するには、次の PowerShell コマンドを実行します。
 
-   ```PowerShell
+   ```powershell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
    ```
 

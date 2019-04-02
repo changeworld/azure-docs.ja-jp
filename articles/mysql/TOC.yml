@@ -198,6 +198,8 @@ items:
     items:
     - name: Azure ポータル
       href: howto-restart-server-portal.md
+    - name: Azure CLI
+      href: howto-restart-server-cli.md
 - name: リファレンス
   items:
   - name: Azure CLI
@@ -246,9 +248,9 @@ items:
     href: partners-migration-mysql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 32343d73c18be4ddd7823ba710bed0eaad6d07ff
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 625316fef2cba47dd2d718b22f8ca4f922e74793
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900813"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620208"

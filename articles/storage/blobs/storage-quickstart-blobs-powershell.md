@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: rogarana
-ms.openlocfilehash: c3a85a668a398047e7daef8a2e07be261ff644c5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 464f3db86c2b6dc4cfe51c74b224a8da4d512103
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447482"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485596"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -98,7 +98,7 @@ Get-AzStorageblobcontent -Blob "Image002.png" `
 
 簡単な例として、PowerShell ウィンドウ内から、*myfile.txt* という名前のファイルを *mystoragecontainer* コンテナーにアップロードするための AzCopy コマンドを次に示します。
 
-```PowerShell
+```powershell
 ./AzCopy `
     /Source:C:\myfolder `
     /Dest:https://mystorageaccount.blob.core.windows.net/mystoragecontainer `

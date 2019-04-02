@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 1af6214833109ad89e8b5f27eefc0c99cdaf2496
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 2eb57268aece081423b6b0beaa314a244b6fdd8f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984188"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456008"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>クイック スタート: Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
 
@@ -76,7 +76,7 @@ Azure Portal でリソース グループを作成するには、次の手順に
 5. リソース グループの場所を選択します。
 6. **[作成]** ボタンをクリックします。  
 
-   ![Azure Portal でのリソース グループの作成を示したスクリーンショット](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
+   ![Azure portal でのリソース グループの作成を示したスクリーンショット](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントを作成する
 
@@ -96,7 +96,7 @@ Azure Portal で汎用 v2 ストレージ アカウントを作成するには�
 9. **[Data Lake Storage Gen2]** セクションで、**[階層構造の名前空間]** を **[有効]** に設定します。
 10. **[確認および作成]** をクリックして、ストレージ アカウントを作成します。
 
-    ![Azure Portal でのストレージ アカウントの作成を示したスクリーンショット](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
+    ![Azure portal でのストレージ アカウントの作成を示したスクリーンショット](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
 
 これで、ご自身のストレージ アカウントがポータルで作成されました。
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 8761f5ca-c57c-4a7e-bf14-ac0421bd3b5e
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abddd3f88e8e523b5856de0ff19998a0e07e7376
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 65badda86fa29dc68f2eef1e9c0883dc8b40107a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870586"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>チュートリアル:Azure Active Directory と GitHub の統合
 
@@ -154,7 +154,7 @@ GitHub で Azure AD シングル サインオンを構成するには、次の�
 
     c. Azure Portal からダウンロードした証明書 をメモ帳で開き、その内容を **[Public Certificate]\(公開証明書\)** ボックスに貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Edit]\(編集\)** アイコンをクリックし、**[Signature Method]\(署名方法\)** と **[Digest Method]\(ダイジェスト方法\)** を編集して、**RSA-SHA1** および **SHA1** から **RSA-SHA256** および **SHA256** に変更します (下図参照)。
+    d. **[Edit]\(編集\)** アイコンをクリックし、**[Signature Method]\(署名方法\)** と **[Digest Method]\(ダイジェスト方法\)** を編集して、**RSA-SHA1** および **SHA1** から **RSA-SHA256** および **SHA256** に変更します (下図参照)。
 
     ![image](./media/github-tutorial/tutorial_github_sha.png)
 
@@ -185,7 +185,7 @@ GitHub で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

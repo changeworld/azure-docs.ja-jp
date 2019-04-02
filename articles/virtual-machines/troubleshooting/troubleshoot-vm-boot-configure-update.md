@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: a291b7640662da7ea0c205c2027fe83d6243850e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c6d9f46582e1c618de6bfccea9328fb35aea7875
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980365"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485817"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM の起動が停止し、"Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される (Azure 内)
 
@@ -132,7 +132,7 @@ OS ディスクが暗号化されている場合は、暗号化されたディ�
 
 **非マネージド ディスクの場合**
 
-```PowerShell
+```powershell
 # To log in to Azure Resource Manager
 Login-AzAccount
 
@@ -163,7 +163,7 @@ New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vm -Verbose
 
 **マネージド ディスクの場合**
 
-```PowerShell
+```powershell
 # To log in to Azure Resource Manager
 Login-AzAccount
 

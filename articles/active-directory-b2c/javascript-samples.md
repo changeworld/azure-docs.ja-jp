@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d664c33c4535d25ec93fd1f36c990f2764a4e071
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ea1b4bd904a9936c401f6b0ea6ac9663c20bc92b
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000815"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400042"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で使用するための JavaScript のサンプル
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 独自の JavaScript クライアント側コードを、Azure Active Directory (Azure AD) B2C アプリケーションに追加できます。 この記事では、[ユーザー フロー](user-flow-javascript-overview.md)または[カスタム ポリシー](active-directory-b2c-overview-custom.md)を変更してスクリプトの実行を有効にする方法について説明します。
 

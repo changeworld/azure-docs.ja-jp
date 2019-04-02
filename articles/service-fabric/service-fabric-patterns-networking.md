@@ -3,7 +3,7 @@ title: Azure Service Fabric のネットワーク パターン | Microsoft Docs
 description: Service Fabric の一般的なネットワーク パターンと、Azure のネットワーク機能を使用してクラスターを作成する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
-ms.author: ryanwi
-ms.openlocfilehash: 7f6e95b28482ed6d75bb76773da05aebd1855a66
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.author: aljo
+ms.openlocfilehash: d54585e0218cc900f981f0c924fe8c5762baeaa2
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093395"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500340"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric のネットワーク パターン
 Azure Service Fabric クラスターを Azure の他のネットワーク機能と統合できます。 この記事では、次の機能を使用するクラスターを作成する方法について説明します。

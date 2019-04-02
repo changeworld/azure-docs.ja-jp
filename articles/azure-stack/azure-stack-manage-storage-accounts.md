@@ -1,6 +1,6 @@
 ---
 title: Azure Stack のストレージ アカウントを管理する | Microsoft Docs
-description: Azure Stack のストレージ アカウントを検索、管理、回復、および回収する方法について説明します。
+description: Azure Stack のストレージ アカウントを検索、管理、回復、および回収する方法について説明します
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,30 +10,31 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
-ms.topic: get-started-article
-ms.date: 01/18/2019
+ms.topic: conceptual
+ms.date: 03/19/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: aa88c2c63d348d0c82e0ad93115ea49437a63567
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: 34e49060a28869015f067f058b81239ec13eff47
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895061"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226402"
 ---
-# <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でストレージ アカウントを管理する
+# <a name="manage-azure-stack-storage-accounts"></a>Azure Stack のストレージ アカウントを管理する
 
-ビジネスのニーズに基づいてストレージ容量を検索、回復、および回収するために、Azure Stack でストレージ アカウントを管理する方法について説明します。
+Azure Stack のストレージ アカウントを管理する方法について説明します。 ビジネス ニーズに応じてストレージ容量を検索、回復、および回収できます。
 
 ## <a name="find-a-storage-account"></a>ストレージ アカウントの検索
+
 リージョン内のストレージ アカウントのリストは、次の方法を使って Azure Stack で表示できます。
 
 1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
 
-2. **[すべてのサービス]** > **[ストレージ アカウント]** の順に選択します。
+2. **[すべてのサービス]** > **[ストレージ]** > **[ストレージ アカウント]** の順に選択します。
 
-   ![](media/azure-stack-manage-storage-accounts/image4.png)
+   ![Azure Stack のストレージ アカウント](media/azure-stack-manage-storage-accounts/image4.png)
 
 既定では、最初の 10 個のアカウントが表示されます。 リストの下部にある **[さらに読み込む]** リンクをクリックすると、さらに多くのアカウントをフェッチすることができます。
 
@@ -45,17 +46,18 @@ ms.locfileid: "55895061"
 **アカウントをフィルター処理するには:**
 
 1. ウィンドウの上部にある **[フィルター]** を選択します。
-2. [フィルター] ウィンドウでは、**アカウント名**、\*\*サブスクリプション ID、または**ステータス**を指定して、表示するストレージ アカウントのリストを細かく調整できます。 必要に応じてこれらを使用します。
-3. **[Update]\(更新\)** を選択します。 リストが更新されます。
+2. [フィルター] ウィンドウでは、**アカウント名**、**サブスクリプション ID**、または**ステータス**を指定して、表示するストレージ アカウントのリストを細かく調整できます。 必要に応じてこれらを使用します。
+3. 入力中、リストに自動的にフィルターが適用されます。  。
    
-    ![](media/azure-stack-manage-storage-accounts/image5.png)
+    ![Azure Stack のストレージ アカウントをフィルター処理する](media/azure-stack-manage-storage-accounts/image5.png)
+
 4. フィルターをリセットするには、**[フィルター]** を選択し、選択をオフにして更新します。
 
 (ストレージ アカウントのリスト ウィンドウの上部の) 検索テキスト ボックスを使用すると、アカウントのリスト内で選択したテキストを強調表示することができます。 この方法は、フル ネームまたは ID が簡単には見つからないときに役立ちます。
 
 ここでフリー テキストを使用すると、関心のあるアカウントが見つけやすくなります。
 
-![](media/azure-stack-manage-storage-accounts/image6.png)
+![Azure Stack のストレージ アカウントを検索する](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>アカウントの詳細の確認
 表示で関心のあるアカウントが見つかったら、そのアカウントを選択して特定の詳細を表示できます。 新しいウィンドウが開き、アカウントの種類、作成時、場所などのアカウントの詳細が表示されます。
@@ -97,9 +99,8 @@ Azure Stack では、これを行う簡単な方法があります。
 
 1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
 2. **[管理]** の下で、**[すべてのサービス]** > **[リージョン管理]** を選択します。
-3. **[リソース プロバイダー]** リストから **[ストレージ]** を選びます。
-4. 上部の **[設定]** を選択して [設定] ウィンドウを開きます。
-5. **[構成]** を選択してリテンション期間の値を編集します。
+3. **[リソース プロバイダー]** > **[ストレージ]** > **[設定]** の順に選択します。 パスは、[ホーム] > [<*リージョン*> - リソース プロバイダー] > [ストレージ] です。
+4. **[構成]** を選択してリテンション期間の値を編集します。
 
    日数を設定して保存します。
    

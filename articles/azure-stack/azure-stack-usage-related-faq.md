@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.lastreviewed: 11/08/2018
-ms.openlocfilehash: 92774592f86a71a8482fd3d44eca404fcf2d4e6e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.lastreviewed: 02/26/2019
+ms.openlocfilehash: 9f835382cbfe56c1601267ae994a94b56c0c3692
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429555"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727044"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Azure Stack Usage API のよくあるご質問
 
@@ -197,15 +197,15 @@ ms.locfileid: "56429555"
 **単位**:GB \* 月      
 **注**:Premium マネージド ディスクのディスク上の実際のサイズ 
 
-**測定 ID**:75d4b707-1027-4403-9986-6ec7c05579c8  
+**測定 ID**:108fa95b-be0d-4cd9-96e8-5b0d59505df1  
 **測定名**:ActualStandardSnapshotSize   
 **単位**:GB \* 月   
 **注**:マネージド Standard スナップショットのディスク上の実際のサイズ。  
 
-**測定 ID**:5ca1cbb9-6f14-4e76-8be8-1ca91547965e   
+**測定 ID**:578ae51d-4ef9-42f9-85ae-42b52d3d83ac   
 **測定名**:ActualPremiumSnapshotSize   
 **単位**:GB \* 月   
-**注**:マネージド Premium のディスク上の実際のサイズ。   
+**注**:マネージド Premium スナップショットのディスク上の実際のサイズ。   
 
 **測定 ID**:5d76e09f-4567-452a-94cc-7d1f097761f0   
 **測定名**:S4   
@@ -285,7 +285,11 @@ ms.locfileid: "56429555"
 **測定 ID**:95b0c03f-8a82-4524-8961-ccfbf575f536   
 **測定名**:ActualPremiumSnapshotSize   
 **単位**:バイト\* (時間)   
-**注**:マネージド Premium のディスク上の実際のサイズ (非推奨) 
+**注**:マネージド Premium スナップショットのディスク上の実際のサイズ (非推奨) 
+
+**測定 ID**:75d4b707-1027-4403-9986-6ec7c05579c8 **測定名**:ActualStandardSnapshotSize **単位**:GB\*月 **注**:マネージド Standard スナップショットのディスク上の実際のサイズ (非推奨)  
+
+**測定 ID**:5ca1cbb9-6f14-4e76-8be8-1ca91547965e **測定名**:ActualPremiumSnapshotSize **単位**:GB\*月 **注**:マネージド Premium スナップショットのディスク上の実際のサイズ (非推奨)  
 
 ### <a name="sql-rp"></a>Sql RP
   
@@ -407,6 +411,10 @@ ms.locfileid: "56429555"
 | 400/無効な要求 |*SubscriptionIdMissingInRequest* |呼び出し元のサブスクリプション ID がありません。 |
 | 400/無効な要求 |*InvalidAggregationGranularity* |無効な集計単位が要求されました。 有効な値は、日単位と時間単位です。 |
 | 503 |*ServiceUnavailable* |サービスがビジー状態か、呼び出しが調整されているため、再試行可能エラーが発生しました。 |
+
+## <a name="what-is-the-policy-for-charging-for-vms"></a>VM の課金ポリシーはどうなっていますか。
+
+実行中および停止中の VM は使用状況データを生成します。 Azure と一貫性があり、使用状況データの生成を停止するには割り当てを解除する必要があります。 ポータルが使用できなくても、コンピューティング リソース プロバイダーがまだ実行中の場合、使用状況が生成されます。
 
 ## <a name="next-steps"></a>次の手順
 [Azure Stack でのお客様への請求と配賦](azure-stack-billing-and-chargeback.md)

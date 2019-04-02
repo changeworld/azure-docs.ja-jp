@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fa48d3825b5b942497b1eabd19a1eeb7e0141058
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 39198c0093f018b64a1292f023914651b51b4faf
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003144"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58403784"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>カスタム ポリシーを使用して Azure Active Directory B2C でページ コントラクトを選択する | Microsoft Docs
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ユーザー フローを使用しているか、カスタム ポリシーを使用しているかに関係なく、Azure Active Directory (Azure AD) B2C ポリシーでクライアント側 JavaScript コードを有効にできます。 この記事では、[カスタム ポリシー](active-directory-b2c-overview-custom.md)でページ コントラクトを構成して、Azure AD B2C でページ コントラクトを選択する方法について説明します。 ページ コントラクトは、Azure AD B2C が提供する要素とお客様が指定するコンテンツの関連付けです。 [Javascript](javascript-samples.md) を使用する場合は、カスタム ポリシー内のすべてのコンテンツ定義に対してページ コントラクト バージョンを定義する必要があります。
 

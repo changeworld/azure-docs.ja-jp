@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 181e2c1d1a9758d6f196c9cb2b281eefa141d81a
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: fcf3fe85b6dd184b4f58060aab4fcf3ce146af13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58015158"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks ノートブックを実行する
 
@@ -151,7 +151,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
           ![新しいフォルダーを作成する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [新しいノートブックを作成](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook)します (Python)。**adftutorial** フォルダーの下の **mynotebook** という名前にして **、****[作成]** をクリックします。
+       1. [新しいノートブックを作成します](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python)。**adftutorial** フォルダー以下で **mynotebook** という名前にして、**[作成]** をクリックします。
 
           ![新しいノートブックを作成する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -173,13 +173,13 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
        1. ここでの **Notebook パス**は、**adftutorial/mynotebook** です。
 
-1.  **Data Factory UI 作成ツール**に戻ります。 **Notebook1 アクティビティ**の **[設定]** タブに移動します。 
-    
+1.  **Data Factory UI 作成ツール**に戻ります。 **Notebook1 アクティビティ**の **[設定]** タブに移動します。
+
     a.  Notebook アクティビティに**パラメーターを追加**します。 前に**パイプライン**に追加したのと同じパラメーターを使用します。
 
        ![パラメーターを追加する](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  パラメーターの名前を **input** にして、値を式 **@pipeline().parameters.name** として指定します。
+    b.  パラメーターの名前を **input** にして、値を式 **\@pipeline().parameters.name** として指定します。
 
 1.  パイプラインを検証するために、ツール バーの  **[検証]**  ボタンを選択します。 検証ウィンドウを閉じるには、 **\>\>**  (右矢印) ボタンを選択します。
 

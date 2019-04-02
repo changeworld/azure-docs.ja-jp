@@ -10,14 +10,19 @@ items:
     displayName: desktop ui Workbench upgrade update transfer
     href: overview-what-happened-to-workbench.md
   expanded: true
+- name: セットアップ
+  items:
+  - name: ワークスペースの作成
+    displayName: install sdk workspace
+    href: setup-create-workspace.md
 - name: クイック スタート
   items:
-  - name: 作業の開始 - ポータル
-    displayName: install sdk workspace
-    href: quickstart-get-started.md
-  - name: 作業の開始 - Python
-    displayName: create workspace install sdk
-    href: quickstart-create-workspace-with-python.md
+  - name: クラウドのノートブックを使用した実験
+    displayName: workspace
+    href: quickstart-run-cloud-notebook.md
+  - name: ローカルのノートブックを使用した実験
+    displayName: workspace install sdk
+    href: quickstart-run-local-notebook.md
 - name: チュートリアル
   items:
   - name: 画像の分類 (MNIST データ)
@@ -85,15 +90,18 @@ items:
         href: how-to-vscode-tools.md
       - name: トレーニングとデプロイ
         href: how-to-vscode-train-deploy.md
-  - name: データを準備する
+  - name: データの処理
     displayName: data prep, etl, elt, data preparation
     items:
-    - name: データを読み込む
-      href: how-to-load-data.md
-    - name: データを変換する
-      href: how-to-transform-data.md
-    - name: データを書き込む
-      href: how-to-write-data.md
+    - name: データの探索と準備
+      displayName: data prep, etl, elt, data preparation
+      items:
+      - name: データを読み込む
+        href: how-to-load-data.md
+      - name: データを変換する
+        href: how-to-transform-data.md
+      - name: データを書き込む
+        href: how-to-write-data.md
   - name: データストアのデータを取得する
     displayName: blob get fileshare access storage
     href: how-to-access-data.md
@@ -193,9 +201,9 @@ items:
   - name: Microsoft の ML 製品の比較
     href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
     maintainContext: true
-ms.openlocfilehash: c022e3607466db482e37f1ace283577dad6a37b8
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 52bc0220f3eb2fa28d344f68fe86310eabeee47c
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338532"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540382"

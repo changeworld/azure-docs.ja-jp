@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory で組織のグループとメンバーを表示するためのクイック スタート | Microsoft Docs
+title: グループとメンバーを表示するためのクイック スタート - Azure Active Directory | Microsoft Docs
 description: 組織のグループとそれらに割り当てられているメンバーを検索して表示する方法に関する手順。
 services: active-directory
 author: eross-msft
@@ -10,15 +10,15 @@ ms.subservice: fundamentals
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: lizross
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 621ee02944e32a11a3749d6730b9263254fa9bda
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8eef6f7a363fe7b020a3ef18ae26799d7d5452ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183277"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881012"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -61,7 +61,7 @@ _Alain Charon_ という名前の新しいユーザーを作成します。 ユ�
 
     - **名前:** 「_Alain Charon_」と入力します。
 
-    - **ユーザー名:** 「*alain@contoso.com*」と入力します。
+    - **ユーザー名:** 「*alain\@contoso.com*」と入力します。
 
 3. 提供される自動生成されたパスワードを **[パスワード]** ボックスにコピーし、**[作成]** を選択します。
 

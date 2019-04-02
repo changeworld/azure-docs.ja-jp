@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services アカウントの作成 - Azure CLI| Microsoft Docs
+title: Azure Media Services アカウントの作成 - Azure CLI | Microsoft Docs
 description: Azure CLI スクリプトを使って、Azure Media Services アカウントを作成します。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/25/2019
 ms.author: juliako
-ms.openlocfilehash: 41d9548aa33ee29c40179506ae824ab79b000859
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7e668852346de1b48bd34658dea001435ba8a625
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213176"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842218"
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>CLI の例:Azure Media Services アカウントの作成
 
@@ -45,7 +45,7 @@ az group delete --name amsResourceGroup
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントを作成します。 |

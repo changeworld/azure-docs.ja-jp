@@ -16,12 +16,12 @@ ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: 2432c30ca98904c2e6789f4b15468f905096bbf7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 765701188de6375a5dfe0c9a6c04afe1ee9f6740
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962793"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886441"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service on Azure Stack update 3 のリリース ノート
 
@@ -59,7 +59,7 @@ Azure App Service on Azure Stack Update 3 には、次の機能強化と修正�
 - 信頼性を高めるためのコア サービスと、一般的な問題を簡単に診断できるようにするエラー メッセージの更新。
 
 - **次のアプリケーション フレームワークとツールの更新**:
-  - ASP.Net Core 2.1.2 を追加
+  - ASP.NET Core 2.1.2 を追加
   - NodeJS 10.0.0 を追加
   - Zulu OpenJDK 8.30.0.1 を追加
   - Tomcat 8.5.31 と 9.0.8 を追加

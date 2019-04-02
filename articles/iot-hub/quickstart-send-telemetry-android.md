@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/05/2018
+ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: d90595d3d557293bfbc6b06aca638eb1b7c08d30
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 63e1f6a6779cf2689a7cbffad06447d272a413d7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164315"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516928"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>クイック スタート: IoT の利用統計情報を Android デバイスから送信する
 
@@ -85,6 +85,12 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     ```
 
 3. Android Studio で、**[File]\(ファイル\)** > **[Sync Project with Gradle Files]\(プロジェクトを Gradle ファイルと同期\)** の順にクリックします。 ビルドが完了したことを確認します。
+
+   > [!NOTE]
+   > プロジェクトの同期に失敗した場合、次のいずれかの理由が原因として考えられます。
+   >
+   > * プロジェクトで参照されている Android Gradle プラグインと Gradle のバージョンが、ご使用の Android Studio のバージョンに対して古い。 [こちらの手順](https://developer.android.com/studio/releases/gradle-plugin)に従って、実際の環境に合った正しいバージョンのプラグインと Gradle を参照、インストールしてください。
+   > * Android SDK のライセンス契約に署名していない。 ビルド出力に書かれている手順に従ってライセンス契約に署名し、SDK をダウンロードしてください。
 
 4. ビルドが完了したら、**[Run]\(実行\)** > **[Run 'app']\(<アプリ> の実行\)** をクリックします。 物理 Android デバイスまたは Android Emulator 上で実行されるようにアプリを構成します。 物理デバイスまたはエミュレーター上での Android アプリの実行について詳しくは、「[アプリを実行する](https://developer.android.com/training/basics/firstapp/running-app)」を参照してください。
 

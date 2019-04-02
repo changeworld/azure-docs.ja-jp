@@ -11,12 +11,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: bcc0d69024954b0b8cbf58fb3eac938ff3e1b0e6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8dd725bed6364979a9388d5741bf17f667bda0b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039862"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435271"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-nodejs-express-app"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Node.js Express アプリを作成する
 
@@ -103,7 +103,7 @@ ms.locfileid: "54039862"
     * dist フォルダーに置かれるすべてのもの (静的コンテンツ) を提供する
     * アプリケーションを表示する。サーバーに存在しない GET 要求には index.html を返す (ディープ リンク)
     * app.listen でサーバーを起動する
-    * ポートが稼働状態であることをアロー関数を使ってログに出力する
+    * アロー関数を使って、ポートが稼働状態であることをログに出力する
     
    ```node
    const express = require('express');

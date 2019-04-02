@@ -3,7 +3,7 @@ title: Azure AD Power BI コンテンツ パックをインストールする | 
 description: Azure AD Power BI コンテンツ パックをインストールする方法について説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 ms.assetid: fd5604eb-1334-4bd8-bfb5-41280883e2b5
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 981360793179faa4e79f6c7b77951c0e74a2fc67
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 69a69732d8cb42c248fa954ef9047e5876f40837
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171029"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437426"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>クイック スタート:Azure Active Directory Power BI コンテンツ パックのインストール
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: bfed291c-a33e-410d-b919-5b965a631d45
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff46d9644848d197051e574106b029fb44efb069
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b7556e93e6e7b7e9bdb1f19f5a6e5b3c15c7b910
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877709"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894072"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>チュートリアル:Azure Active Directory と Canvas の統合
 
@@ -152,7 +152,7 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
     c. **[Log Out URL]\(ログアウト URL\)** ボックスに、Azure portal からコピーした **[ログアウト URL]** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Change Password Link] \(パスワードの変更リンク)** テキスト ボックスに、Azure Portal からコピーした**パスワードの変更 URL** の値を貼り付けます。
+    d. **[Change Password Link] \(パスワードの変更リンク)** テキスト ボックスに、Azure Portal からコピーした**パスワードの変更 URL** の値を貼り付けます。
 
     e. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
 
@@ -180,7 +180,7 @@ Canvas で Azure AD のシングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -239,11 +239,11 @@ Azure AD ユーザーが Canvas にログインできるようにするには、
 
    a. **[Full Name] \(フルネーム)** テキスト ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
 
-   b. **[電子メール]** テキスト ボックスに、ユーザーの電子メール (**brittasimon@contoso.com** など) を入力します。
+   b. **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
-   c. **[ログイン]** テキスト ボックスに、ユーザーの Azure AD 電子メール アドレス (**brittasimon@contoso.com** など) を入力します。
+   c. **[Login]\(ログイン\)** テキスト ボックスに、ユーザーの Azure AD 電子メール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[このアカウント作成についてユーザーに電子メールを送信]** を選択します。
+   d. **[このアカウント作成についてユーザーに電子メールを送信]** を選択します。
 
    e. **[ユーザーの追加]** をクリックします。
 

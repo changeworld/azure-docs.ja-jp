@@ -14,36 +14,38 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 44ae922b182874eef378d4868fb278c3c76252db
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7a2c3f8d2eb4dbbcaf1290593115f3a60918a0be
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884415"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484069"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
-ASP.NET Core には、さまざまなソースから構成データを読み取るほか、アプリケーションを再起動することなく即座に変更を処理することができるプラグ可能な構成システムがあります。 厳密に型指定された .NET クラスに構成設定をバインドし、さまざまな `IOptions<T>` パターンを使用してそれらをコードに挿入することがサポートされています。 そうしたパターンの 1 つである `IOptionsSnapshot<T>` では、基になるデータが変化したときに、アプリケーションの構成が自動的にリロードされます。 アプリケーションのコントローラーに `IOptionsSnapshot<T>` を挿入すれば、Azure App Configuration に格納されている最新の構成にアクセスすることができます。 また、自分が定義した間隔で定期的にポーリングしてアプリ構成ストアにおける変更を常時監視して取得するように App Configuration ASP.NET Core クライアント ライブラリを設定することもできます。
+ASP.NET Core には、さまざまなソースから構成データを読み取ることができるプラグ可能な構成システムがあります。 アプリケーションを再起動せずに、その場で変更を処理できます。 ASP.NET Core では、厳密に型指定された .NET クラスへの構成設定のバインドがサポートされています。 さまざまな `IOptions<T>` パターンを使用して、それらをコードに挿入します。 そうしたパターンの 1 つである `IOptionsSnapshot<T>` では、基になるデータが変化したときに、アプリケーションの構成が自動的にリロードされます。 
+
+アプリケーションのコントローラーに `IOptionsSnapshot<T>` を挿入すれば、Azure App Configuration に格納されている最新の構成にアクセスすることができます。 また、アプリ構成ストアにおける変更を常時監視して取得するように、App Configuration ASP.NET Core クライアント ライブラリを設定することもできます。 ポーリングの定期的な間隔を定義します。
 
 このチュートリアルでは、自分が作成するコードに、構成の動的更新を実装する方法について説明します。 これは、クイック スタートで紹介されている Web アプリに基づいています。 先に進む前に、[App Configuration を使用した ASP.NET Core アプリの作成](./quickstart-aspnet-core-app.md)を完了しておいてください。
 
-このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 ただし、推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
+このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * アプリ構成ストアへの変更に合わせて構成を更新するようにアプリケーションを設定する
-> * アプリケーションのコントローラーに最新の構成を挿入する
+> * アプリ構成ストアへの変更に合わせて構成を更新するようにアプリケーションを設定する。
+> * アプリケーションのコントローラーに最新の構成を挿入する。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、[.NET Core SDK](https://dotnet.microsoft.com/download) をインストールします。
+このクイック スタートを実行するには、[.NET Core SDK](https://dotnet.microsoft.com/download) をインストールします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="reload-data-from-app-configuration"></a>App Configuration からデータを再度読み込む
 
-1. *Program.cs* を開き、`config.AddAzureAppConfiguration()` メソッドを追加して `CreateWebHostBuilder` メソッドを更新します。
+1. Program.cs を開き、`config.AddAzureAppConfiguration()` メソッドを追加して `CreateWebHostBuilder` メソッドを更新します。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -52,16 +54,16 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
             {
                 var settings = config.Build();
                 config.AddAzureAppConfiguration(o => o.Connect(settings["ConnectionStrings:AppConfig"])
-                    .Watch("TestApp:Settings:BackgroundColor", TimeSpan.FromSeconds(1))
-                    .Watch("TestApp:Settings:FontColor", TimeSpan.FromSeconds(1))
-                    .Watch("TestApp:Settings:Message", TimeSpan.FromSeconds(1)));
+                    .Watch("TestApp:Settings:BackgroundColor")
+                    .Watch("TestApp:Settings:FontColor")
+                    .Watch("TestApp:Settings:Message"));
             })
             .UseStartup<Startup>();
     ```
 
-    `.Watch` メソッドの第 2 パラメーターはポーリング間隔です。ASP.NET クライアント ライブラリは、この間隔でアプリ構成ストアを照会し、特定の構成設定に変更が加えられているかどうかを確認します。
+    `.Watch` メソッドの第 2 パラメーターは、ポーリング間隔です。ASP.NET クライアント ライブラリは、この間隔でアプリ構成ストアを照会します。 クライアント ライブラリは、特定の構成設定をチェックして、変更が発生したかどうかを確認します。
 
-2. 新しい `Settings` クラスを定義して実装する *Settings.cs* ファイルを追加します。
+2. 新しい `Settings` クラスを定義して実装する Settings.cs ファイルを追加します。
 
     ```csharp
     namespace TestAppConfig
@@ -76,7 +78,7 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
     }
     ```
 
-3. *Startup.cs* を開き、構成データを `Settings` クラスにバインドするよう `ConfigureServices` メソッドを更新します。
+3. Startup.cs を開き、構成データを `Settings` クラスにバインドするように `ConfigureServices` メソッドを更新します。
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -95,7 +97,7 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
 ## <a name="use-the-latest-configuration-data"></a>最新の構成データを使用する
 
-1. *Controllers* ディレクトリにある *HomeController.cs* を開き、`HomeController` クラスを更新します。依存関係の挿入を通じて `Settings` を受け取り、その値を利用するようにしてください。
+1. Controllers ディレクトリの HomeController.cs を開きます。 `HomeController` クラスを更新して、依存関係の挿入を通じて `Settings` を受け取り、その値を利用するようにします。
 
     ```csharp
     public class HomeController : Controller
@@ -118,7 +120,7 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
     }
     ```
 
-2. *Views* > *Home* ディレクトリにある *Index.cshtml* を開いて、その内容を次のように置き換えます。
+2. Views の Home ディレクトリにある Index.cshtml を開いて、内容を次のスクリプトに置き換えます。
 
     ```html
     <!DOCTYPE html>
@@ -151,13 +153,13 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
         dotnet run
 
-3. ブラウザー ウィンドウを起動して `http://localhost:5000` (ローカルでホストされた Web アプリの既定の URL) に移動します。
+3. ブラウザー ウィンドウを開いて、`http://localhost:5000` (ローカルでホストされた Web アプリの既定の URL) に移動します。
 
     ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. [Azure portal](https://aka.ms/azconfig/portal) にサインインし、**[すべてのリソース]** をクリックして、クイック スタートで作成したアプリ構成ストアのインスタンスをクリックします。
+4. [Azure Portal](https://aka.ms/azconfig/portal) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成したアプリ構成ストア インスタンスを選択します。
 
-5. **[キー/値のエクスプローラー]** をクリックして次のキーの値を更新します。
+5. **[キー/値のエクスプローラー]** を選択して以下のキーの値を更新します。
 
     | キー | 値 |
     |---|---|
@@ -175,7 +177,7 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure マネージド サービス ID を追加して、App Configuration へのアクセスを効率化し、アプリの資格情報管理を改善しました。 App Configuration の使用の詳細については、Azure CLI のサンプルに進んでください。
+このチュートリアルでは、Azure マネージド サービス ID を追加して、App Configuration へのアクセスを効率化し、アプリの資格情報管理を改善しました。 App Configuration の使用方法の詳細については、Azure CLI のサンプルに進んでください。
 
 > [!div class="nextstepaction"]
 > [CLI のサンプル](./cli-samples.md)

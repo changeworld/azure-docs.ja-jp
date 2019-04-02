@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4ea9f47c-25ca-42b0-a878-9e7aa6f34973
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96937c5e90cc143f41d9577298fee13f1756aa8c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 81351fc13ddf36d8aeb4fa5cecab10daf152406f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873306"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875925"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>チュートリアル:Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合
 
@@ -106,18 +106,21 @@ Cloud Management Portal for Microsoft Azure との Azure AD シングル サイ�
     ![[Cloud Management Portal for Microsoft Azure のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
     a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
+
     | |
     |--|
     | `https://portal.newsignature.com/<instancename>` |   
     | `https://portal.igcm.com/<instancename>` |
 
     b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。
+
     | |
     |--|
     | `https://<subdomain>.igcm.com` |
     | `https://<subdomain>.newsignature.com` |
 
     c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+
     | |
     |--|
     | `https://<subdomain>.igcm.com/<instancename>` |
@@ -163,7 +166,7 @@ Cloud Management Portal for Microsoft Azure との Azure AD シングル サイ�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

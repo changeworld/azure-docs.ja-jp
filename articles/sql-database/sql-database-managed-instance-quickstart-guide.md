@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: 44ea6db1c31f0ebfbe2abe2f9f6eea165a3ff4e0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/25/2019
+ms.openlocfilehash: 08b7870000b38d782e9282eef7ec9c0d551094dd
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306767"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444311"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Azure SQL Database マネージド インスタンスの概要
 
@@ -65,9 +65,10 @@ ms.locfileid: "57306767"
 
  前の手順での説明のようにネットワーク環境を作成していない場合は、Azure portal で自動的に作成できます。唯一の欠点は、後で変更できない既定のパラメーターをいくつか使用して構成されることです。 代替手段として、次のものを使用できます。
 
-- [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/)
+- [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)
 - [PowerShell と Resource Manager テンプレート](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)
 - [Azure CLI](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/create-azure-sql-managed-instance-using-azure-cli/)。
+- [Resource Manager テンプレート](sql-database-single-database-get-started-template.md)
 
 ## <a name="migrating-to-a-managed-instance-with-minimal-downtime"></a>最小限のダウンタイムでのマネージド インスタンスへの移行
 

@@ -8,18 +8,20 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 566523b1ca461d6a8a0ffaf8830481e5dc3ce26f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: ffd5f4baf3bbd2b7f0fe90272f896e438a30a35f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770369"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079232"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-applications-preview"></a>クイック スタート:C# プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
+
+Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
 
 [IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイック スタート ガイドには、IoT Hub を通じて確立されたデバイス ストリームを介してクライアント/サーバー アプリケーション トラフィック (SSH、RDP など) を送信できるようにする、2 つの C# プログラムが含まれています。 設定の概要については、[こちら](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)を参照してください。
 
@@ -48,6 +50,11 @@ ms.locfileid: "55770369"
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
+
+デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
+
+  - **米国中部**
+  - **米国中部 EUAP**
 
 このクイック スタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発用コンピューター上に .NET Core SDK 2.1.0 以降が必要です。
 
@@ -100,7 +107,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --hub-name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name YourIoTHubName
     ```
 
     次のような戻り値をメモしておきます。
@@ -178,7 +185,7 @@ ssh <username>@localhost -p 2222
 
 `IP_address:22` の SSH デーモンに接続するデバイスローカルのプロキシのコンソール出力:
 
-]代替テキスト(./media/quickstart-device-streams-proxy-csharp/device-console-output.png "")デバイスローカルのプロキシの出力")
+![代替テキスト](./media/quickstart-device-streams-proxy-csharp/device-console-output.png "デバイスローカルのプロキシの出力")
 
 SSH クライアント プログラムのコンソール出力 (SSH クライアントは、サービスローカルのプロキシがリッスンしているポート 22 に接続することで、SSH デーモンと通信します):
 

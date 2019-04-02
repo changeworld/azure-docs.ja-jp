@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b7214230d55831fa33d547ecf9e65051aa5bb4d9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6e4402be7108f242e1d285ebe91dfece744f0805
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891455"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532152"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-azure-active-directory"></a>Azure Active Directory を使用して Azure Stack に Kubernetes をデプロイする
 
@@ -53,7 +53,7 @@ ms.locfileid: "55891455"
 
 Azure でサービス プリンシパルを設定します。 サービス プリンシパルは、アプリケーションに Azure Stack リソースへのアクセス権を付与します。
 
-1. グローバルな [Azure Portal](http://portal.azure.com) にサインインします。
+1. グローバルな [Azure Portal](https://portal.azure.com) にサインインします。
 
 1. Azure Stack インスタンスに関連付けられた Azure AD テナントを使ってサインインしたことを確認します。 Azure ツールバーのフィルター アイコンをクリックすると、サインインを切り替えることができます。
 
@@ -67,7 +67,7 @@ Azure でサービス プリンシパルを設定します。 サービス プ�
 
     c. **[Web アプリ / API]** を選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[サインオン URL]** に `http://localhost` と入力します。
+    d. **[サインオン URL]** に `http://localhost` と入力します。
 
     c. **Create** をクリックしてください。
 
@@ -167,3 +167,5 @@ Azure でサービス プリンシパルを設定します。 サービス プ�
 ## <a name="next-steps"></a>次の手順
 
 [クラスターへの接続](azure-stack-solution-template-kubernetes-deploy.md#connect-to-your-cluster)
+
+[Kubernetes ダッシュボードの有効化](azure-stack-solution-template-kubernetes-dashboard.md)

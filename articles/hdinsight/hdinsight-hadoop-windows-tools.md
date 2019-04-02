@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 05/17/2017
-ms.openlocfilehash: d336d659a15f5b4cb1cbc917a8ae10ab8224d029
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b8bad1d0f53ce4e4c924734201165e1b050c153f
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426320"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361474"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Windows PC から HDInsight の Apache Hadoop エコシステムで作業する
 
@@ -30,7 +30,7 @@ PowerShell で実行できるタスクの例を次に示します。
 * [PowerShell を使用した Apache Hive クエリの実行](hadoop/apache-hadoop-use-hive-powershell.md)。
 * [PowerShell を使用したクラスターの管理](hdinsight-administer-use-powershell.md)。
 
-[Azure PowerShell のインストールと構成](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)に関するページの手順に従い、最新バージョンを入手してください。 Azure Resource Manager 用の新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合は、「[HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する](hdinsight-hadoop-development-using-azure-resource-manager.md)」を参照してください。
+[Azure PowerShell のインストールと構成](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページの手順に従い、最新バージョンを入手してください。 Azure Resource Manager 用の新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合は、「[HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する](hdinsight-hadoop-development-using-azure-resource-manager.md)」を参照してください。
 
 ## <a name="utilities-you-can-run-in-a-browser"></a>ブラウザーで実行できるユーティリティ
 次のユーティリティは、ブラウザーで動作する Web UI を備えています。

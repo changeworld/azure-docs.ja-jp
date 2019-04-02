@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 7713b449d5e5291ce1dd6c9b814ebefd07bc53a9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 68101be211335d51eb4bf99361ea36b73fa19218
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737673"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485409"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Azure Cloud Services のパフォーマンス カウンターの収集
 
@@ -29,7 +29,7 @@ ms.locfileid: "56737673"
 
 パフォーマンス カウンターは、セット名 (カテゴリとも呼ばれます) と 1 つ以上のカウンターという 2 つの部分で構成されています。 PowerShell を使用して、使用可能なパフォーマンス カウンターの一覧を取得できます。
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Select-Object CounterSetName, Paths | Sort-Object CounterSetName
 
 CounterSetName                                  Paths
@@ -56,7 +56,7 @@ Authorization Manager Applications              {\Authorization Manager Appl...
 
 セットのすべてのカウンターを取得するには、`CounterSetName` 値を使用し、`Paths` コレクションを展開します。 各パス項目は、照会できるカウンターです。 たとえば、`Processor` セットに関連した使用可能なカウンターを取得するには、`Paths` コレクションを展開します。
 
-```PowerShell
+```powershell
 Get-Counter -ListSet * | Where-Object CounterSetName -eq "Processor" | Select -ExpandProperty Paths
 
 \Processor(*)\% Processor Time

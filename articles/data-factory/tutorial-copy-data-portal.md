@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 1aca53c876b6cc982c141d74cdf727f9c966adfe
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a4041d7d2cc9d3fd42a541c316d8d739b3ab733d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233865"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539872"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から SQL データベースにデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から SQL データベースにデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
@@ -53,7 +53,7 @@ ms.locfileid: "56233865"
     Jane,Doe
     ```
 
-1. Blob Storage に **adftutorial** という名前のコンテナーを作成します。 このコンテナーに **input** という名前のフォルダーを作成します。 次に、**input** フォルダーに **emp.txt** ファイルをアップロードします。 Azure Portal を使用するか、または [Azure Storage Explorer](http://storageexplorer.com/) などのツールを使用して、これらのタスクを実行します。
+1. Blob Storage に **adftutorial** という名前のコンテナーを作成します。 このコンテナーに **input** という名前のフォルダーを作成します。 次に、**input** フォルダーに **emp.txt** ファイルをアップロードします。 Azure Portal を使用するか、または [Azure Storage Explorer](https://storageexplorer.com/) などのツールを使用して、これらのタスクを実行します。
 
 #### <a name="create-a-sink-sql-table"></a>シンク SQL テーブルを作成する
 
@@ -193,7 +193,7 @@ ms.locfileid: "56233865"
 
     c. **[データベース名]** で、使用する SQL データベースを選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザー名]** に、ユーザーの名前を入力します。
+    d. **[ユーザー名]** に、ユーザーの名前を入力します。
 
     e. **[パスワード]** に、ユーザーのパスワードを入力します。
 
@@ -269,7 +269,7 @@ Data Factory または独自の Azure Repos Git リポジトリにアーティ�
 
     c. **[End On]\(終了日\)** のドロップダウン リストを選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **現在の日付**のオプションを選択します。 既定では、終了日は翌日に設定されています。
+    d. **現在の日付**のオプションを選択します。 既定では、終了日は翌日に設定されています。
 
     e. **分**の部分を現在の日時の数分後に変更します。 トリガーは、変更を発行した後にのみアクティブ化されます。 これをわずか数分後に設定し、それまでに発行しなかった場合、トリガー実行は表示されません。
 

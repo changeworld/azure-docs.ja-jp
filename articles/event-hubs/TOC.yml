@@ -53,6 +53,14 @@ items:
       href: event-hubs-node-get-started-receive.md
     - name: Apache Storm
       href: event-hubs-storm-getstarted-receive.md
+  - name: イベントのキャプチャ
+    items:
+    - name: Azure portal を使用した Event Hubs Capture の有効化
+      href: event-hubs-capture-enable-through-portal.md
+    - name: Resource Manager テンプレートを使用した Event Hubs Capture の有効化
+      href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
+    - name: Python を使用して Event Hubs データをキャプチャする
+      href: event-hubs-capture-python.md
   - name: Apache Kafka 用 Event Hubs へのストリーム配信
     href: event-hubs-quickstart-kafka-enabled-event-hubs.md
   expanded: true
@@ -116,14 +124,6 @@ items:
       href: event-hubs-create-kafka-enabled.md
     - name: Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する
       href: event-hubs-kafka-stream-analytics.md
-  - name: イベントのキャプチャ
-    items:
-    - name: Azure portal を使用した Event Hubs Capture の有効化
-      href: event-hubs-capture-enable-through-portal.md
-    - name: Resource Manager テンプレートを使用した Event Hubs Capture の有効化
-      href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-    - name: Python を使用して Event Hubs データをキャプチャする
-      href: event-hubs-capture-python.md
   - name: 管理
     items:
     - name: Azure 監視による Event Hubs の監視
@@ -199,9 +199,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-eventhub
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: f565b8c743d8ed29b1fea4480f798dd522fcd045
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 21aafbeff9aa06d890afb6282fdf10e1feac739e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285983"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577282"

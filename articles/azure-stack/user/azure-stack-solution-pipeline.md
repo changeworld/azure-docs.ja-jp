@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: deaf7defe5aca4f53df073b19e471a52bd7b8a5d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9c7e6640bdb17e9f996545c2c3315c0c1ade42d1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878746"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902214"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack へのアプリのデプロイ
 
@@ -78,17 +78,17 @@ CI と CD については、次の記事をご覧ください。
 ### <a name="azure-stack-requirements"></a>Azure Stack の要件
 
 * Azure Stack 統合システムを使用するか、Azure Stack Development Kit (ASDK) をデプロイします。 ASDK をデプロイするには、次の手順を実行します。
-    * [インストーラーを使った ASDK のデプロイに関するチュートリアル](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy)で詳しいデプロイ手順を確認します。
-    * [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) PowerShell スクリプトを使って ASDK デプロイ後の手順を自動化します。
+  * [インストーラーを使った ASDK のデプロイに関するチュートリアル](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy)で詳しいデプロイ手順を確認します。
+  * [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) PowerShell スクリプトを使って ASDK デプロイ後の手順を自動化します。
 
     > [!Note]
     > ASDK のインストールは完了までに 7 時間ほどかかるため、それに応じて計画を立ててください。
 
- * [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS サービスを Azure Stack にデプロイします。
- * Azure Stack に[プラン/オファー](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview)を作成します。
- * Azure Stack に[テナント サブスクリプション](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm)を作成します。
- * テナント サブスクリプションに Web アプリを作成します。 後で使用できるように新しい Web アプリの URL を書き留めておきます。
- * テナント サブスクリプションに Windows Server 2012 仮想マシンをデプロイします。 このサーバーはビルド サーバーとして、Azure DevOps Services を実行するために使用します。
+  * [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS サービスを Azure Stack にデプロイします。
+  * Azure Stack に[プラン/オファー](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview)を作成します。
+  * Azure Stack に[テナント サブスクリプション](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm)を作成します。
+  * テナント サブスクリプションに Web アプリを作成します。 後で使用できるように新しい Web アプリの URL を書き留めておきます。
+  * テナント サブスクリプションに Windows Server 2012 仮想マシンをデプロイします。 このサーバーはビルド サーバーとして、Azure DevOps Services を実行するために使用します。
 * 仮想マシン (VM) 用に .NET 3.5 を含んだ Windows Server 2016 イメージを用意します。 この VM は、プライベート ビルド エージェントとして Azure Stack に構築されます。
 
 ### <a name="developer-tool-requirements"></a>開発者ツールの要件
@@ -97,8 +97,8 @@ CI と CD については、次の記事をご覧ください。
 * [Visual Studio 2017 をインストール](https://docs.microsoft.com/visualstudio/install/install-visual-studio)して、[Azure DevOps Services にサインイン](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services)します。
 * プロジェクトに接続し、[ローカルに複製](https://www.visualstudio.com/docs/git/gitquickstart)します。
 
- > [!Note]
- > Azure Stack 環境には、Windows Server と SQL Server を実行する適切なイメージがシンジケート化されている必要があります。 また、App Service がデプロイされている必要があります。
+  > [!Note]
+  > Azure Stack 環境には、Windows Server と SQL Server を実行する適切なイメージがシンジケート化されている必要があります。 また、App Service がデプロイされている必要があります。
 
 ## <a name="prepare-the-private-azure-pipelines-agent-for-azure-devops-services-integration"></a>Azure DevOps Services 統合のためのプライベート Azure Pipelines エージェントを準備する
 
@@ -363,7 +363,7 @@ Azure DevOps の最新の更新プログラムにより、認証に証明書を�
 
 2. プロジェクトの **[Build Web Application]\(Web アプリケーションのビルド\)** ページに移動します。
 
-3. **[引数]** に **-r win10-x64** コードを追加します。 これは、.Net Core を使用して自己完結型のデプロイをトリガーするために必要です。
+3. **[引数]** に **-r win10-x64** コードを追加します。 これは、.NET Core を使用して自己完結型のデプロイをトリガーするために必要です。
 
     ![ビルド パイプラインの引数の追加](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
 

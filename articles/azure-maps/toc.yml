@@ -45,6 +45,8 @@ items:
     href: supported-languages.md
   - name: サポートされているマップ スタイル
     href: supported-map-styles.md
+  - name: Web SDK でサポートされているブラウザー
+    href: supported-browsers.md
 - name: ハウツー ガイド
   items:
   - name: Maps のアカウントを管理する
@@ -85,6 +87,8 @@ items:
         href: map-add-shape.md
       - name: ヒート マップ レイヤーを追加する
         href: map-add-heat-map-layer.md
+      - name: ポイント データのクラスタリング
+        href: clustering-point-data-web-sdk.md
       - name: イメージをオーバーレイする
         href: map-add-image-layer.md
       - name: タイル レイヤーを追加する
@@ -99,6 +103,8 @@ items:
         href: map-accessibility.md
     - name: サービス モジュール
       items:
+      - name: サービス モジュールの使用
+        href: how-to-use-services-module.md
       - name: 検索結果を表示する
         href: map-search-location.md
       - name: 座標から情報を取得する
@@ -193,15 +199,15 @@ items:
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
     - name: Time Series Insights
       href: /azure/time-series-insights
-  - name: Edge
+  - name: IoT Edge
     items:
     - name: IoT Edge
       href: /azure/iot-edge
     - name: IoT デバイス SDK
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: 2753badd048840eb518fbcfaa97cde6f185688bc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: db82c8eac3288867b524f19b688b6358b8e6bbc6
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58014610"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575825"

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 02/27/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: db10361707d83fcda20f0e4bf2adc2abc4176808
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 67f4eb5383452a81ba288f5fe611242259217951
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156173"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404897"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk を注文する
 
@@ -80,11 +80,25 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
     |Name|注文を追跡するためのフレンドリ名を指定します。<br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。 |
     |リソース グループ| 既存のグループを使用するか、新しいグループを作成します。 <br> リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。 |
     |宛先 Azure リージョン| ストレージ アカウントのリージョンを選択します。<br> 現時点では、米国、西ヨーロッパ、北ヨーロッパ、カナダ、およびオーストラリアにおけるすべてのリージョンのストレージ アカウントがサポートされています。 |
-    |ストレージ アカウント|指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から選択します。 <br>新しい汎用 v1 アカウントまたは汎用 v2 アカウントを作成することもできます。 |
     |推定データ サイズ (TB 単位)| 推定サイズを TB 単位で入力します。 <br>データ サイズに基づいて、Microsoft は適切な数の 8 TB SSD (使用可能な容量は 7 TB) を発送します。 <br>5 台のディスクの最大使用可能容量は最大 35 TB です。 |
     |ディスク パスキー| **[Azure 生成のパスキーではなくカスタム キーを使用]** をオンにした場合は、ディスク パスキーを指定します。 <br> 少なくとも 1 つの数字と 1 つの特殊文字を含む 12 から 32 文字の英数字で構成されたキーを入力します。 使用できる特殊文字は `@?_+` です。 <br> このオプションをスキップし、Azure によって生成されたパスキーを使用してディスクをロック解除することができます。|
+    |保存先     | ストレージ アカウント、マネージド ディスク、またはその両方から選択します。 <br> 指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧からストレージ アカウントを選択します。 Data Box は、最大 10 個のストレージ アカウントにリンクできます。 <br> 新しい**汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント**を作成することもできます。 <br>規則が構成されているストレージ アカウントは使用できません。 ストレージ アカウントは、ファイアウォールと仮想ネットワークのセクションにある**すべてのネットワークからのアクセスを許可する**必要があります。|
 
-13. **[次へ]** をクリックします。 
+    保存先としてストレージ アカウントを使用すると、次のスクリーンショットのように表示されます。
+
+    ![ストレージ アカウントの Data Box Disk 注文](media/data-box-disk-deploy-ordered/order-storage-account.png)
+
+    Data Box Disk を使用してオンプレミスの VHD からマネージド ディスクを作成する場合は、次の情報も指定する必要があります。
+
+    |Setting  |値  |
+    |---------|---------|
+    |リソース グループ     | オンプレミスの VHD からマネージド ディスクを作成する場合は、新しいリソース グループを作成します。 既存のリソース グループを使用するのは、Data Box サービスによってマネージド ディスク用にそのグループが Data Box Disk 注文に対して作成された場合だけにしてください。 <br> サポートされているリソース グループは 1 つのみです。|
+
+    ![マネージド ディスクの Data Box Disk 注文](media/data-box-disk-deploy-ordered/order-managed-disks.png)
+
+    マネージド ディスクに指定されたストレージ アカウントは、ステージング ストレージ アカウントとして使用されます。 Data Box サービスで、VHD がステージング ストレージ アカウントにアップロードされ、マネージド ディスクに変換され、リソース グループに移動されます。 詳細については、「[Azure へのデータのアップロードを確認する](data-box-disk-deploy-picked-up.md#verify-data-upload-to-azure)」を参照してください。
+
+13. **[次へ]** をクリックします。
 
     ![注文の詳細を指定する](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
@@ -102,7 +116,7 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
  
 ## <a name="track-the-order"></a>注文を追跡する
 
-注文後、Azure portal から注文の状態を追跡できます。 目的の注文に移動し、**[概要]** に移動して状態を表示します。 ポータルに、**注文済み**状態のジョブが表示されます。 
+注文後、Azure portal から注文の状態を追跡できます。 目的の注文に移動し、**[概要]** に移動して状態を表示します。 ポータルに、**注文済み**状態のジョブが表示されます。
 
 ![注文済み状態の Data Box Disk](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
 
@@ -118,9 +132,9 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
 
 ## <a name="cancel-the-order"></a>注文をキャンセルする
 
-この注文をキャンセルするには、Azure portal で **[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。 
+この注文をキャンセルするには、Azure portal で **[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。
 
-ディスクが注文され、出荷に向けて注文が処理されている途中にのみキャンセルできます。 注文が処理された後は、注文をキャンセルすることはできなくなります。 
+ディスクが注文され、出荷に向けて注文が処理されている途中にのみキャンセルできます。 注文が処理された後は、注文をキャンセルすることはできなくなります。
 
 ![注文をキャンセルする](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
@@ -140,5 +154,3 @@ Data Box Disk を注文するには、[Azure portal](https://aka.ms/azuredatabox
 
 > [!div class="nextstepaction"]
 > [Azure Data Box Disk を設定する](./data-box-disk-deploy-set-up.md)
-
-

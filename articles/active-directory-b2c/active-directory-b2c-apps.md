@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 116abd259d11e66be2dc158d833c569f06aaa923
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 5324f1ed92ae4513dcd877853cb6fa2f4c7dd8f3
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446377"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497961"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Azure Active Directory B2C で使用できるアプリケーションの種類
 
@@ -108,7 +108,7 @@ Azure AD B2C を使用して Web API をセキュリティ保護する方法の�
 
 モバイル アプリケーションやデスクトップ アプリケーションなどのデバイスにインストールされているアプリケーションは、多くの場合、ユーザーの代わりにバックエンド サービスや Web API にアクセスする必要があります。 カスタマイズされた ID 管理エクスペリエンスをネイティブ アプリケーションに追加し、Azure AD B2C と [OAuth 2.0 の承認コード フロー](active-directory-b2c-reference-oauth-code.md)を使用して、バックエンド サービスを安全に呼び出すことができます。  
 
-このフローでは、アプリケーションが[ポリシー](active-directory-b2c-reference-policies.md)を実行し、ユーザーがポリシーを完了した後、Azure AD から `authorization_code` を受け取ります。 `authorization_code` は、現在サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリケーションのアクセス許可を表します。 これにより、アプリケーションはバックグラウンドで `authorization_code` を `id_token` および `refresh_token` と交換できます。  アプリケーションは `id_token` を使用し、HTTP 要求でバックエンド Web API への認証を行うことができます。 また、古い `id_token` の有効期限が切れたときは、`refresh_token` を使用して新しいものを取得できます。
+このフローでは、アプリケーションが[ポリシー](active-directory-b2c-reference-policies.md)を実行し、ユーザーがポリシーを完了した後、Azure AD から `authorization_code` を受け取ります。 `authorization_code` は、現在サインインしているユーザーに代わってバックエンド サービスを呼び出すためのアプリケーションのアクセス許可を表します。 これにより、アプリケーションはバックグラウンドで `authorization_code` を `access_token` および `refresh_token` と交換できます。  アプリケーションは `access_token` を使用し、HTTP 要求でバックエンド Web API への認証を行うことができます。 また、古い `access_token` の有効期限が切れたときは、`refresh_token` を使用して新しいものを取得できます。
 
 ## <a name="current-limitations"></a>現時点での制限事項
 

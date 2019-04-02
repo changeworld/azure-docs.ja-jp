@@ -131,7 +131,7 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 ## <a name="custom-log-record-properties"></a>カスタム ログ レコードのプロパティ
 カスタム ログ レコードには、種類、ユーザーが指定するログ名、次の表にあるプロパティが与えられます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | TimeGenerated |Azure Monitor がレコードを収集した日付と時刻。  ログが時間基準の区切り記号を使用する場合、これはエントリから収集された時間になります。 |
 | SourceSystem |レコードが収集されたエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または System Center Operations Manager <br> Linux – すべての Linux エージェント |

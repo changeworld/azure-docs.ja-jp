@@ -36,6 +36,8 @@ items:
     href: apache-spark-ipython-notebook-machine-learning.md
   - name: IntelliJ での Apache Spark アプリの作成
     href: apache-spark-create-standalone-application.md
+  - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
+    href: ../hdinsight-cluster-availability.md
 - name: 方法
   items:
   - name: クラスター ストレージの使用
@@ -183,21 +185,6 @@ items:
       - name: HDInsight アプリを Azure Marketplace に発行する
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: 発行したアプリのインストール - Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: セキュリティ保護
     items:
     - name: HDInsight で SSH を使用する
@@ -307,9 +294,6 @@ items:
     - name: ワークフローに Apache Oozie を使用する
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: 時間ベースの Apache Oozie コーディネーターを使用する
-      href: ../hdinsight-use-oozie-coordinator-time.md
-      maintainContext: true
     - name: クラスターとサービスのポートと URI
       href: ../hdinsight-hadoop-port-settings-for-services.md
       maintainContext: true
@@ -365,9 +349,6 @@ items:
         maintainContext: true
       - name: Apache Hive の設定によるメモリ不足エラーの解決
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
-        maintainContext: true
-      - name: Apache Ambari ビューを使用した Apache Tez ジョブのデバッグ
-        href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
       - name: Apache Hive クエリの最適化
         href: ../hdinsight-hadoop-optimize-hive-query.md
@@ -461,9 +442,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 06f432d9a80d21fe41514e899ebc31d92b50ed5d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 9775c1da15b5ac5e675e84487006339b1c9701ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360981"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670172"

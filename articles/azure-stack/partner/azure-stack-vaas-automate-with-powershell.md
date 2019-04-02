@@ -10,32 +10,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 99a1b218919380dcdb0c1dba4540d9f8219d2df3
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7f9a4ce4f1e16f69a1d8998e24c1bfe955d17d92
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593643"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767109"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>PowerShell を使用した Azure Stack の検証の自動化
 
 サービスとしての検証 (VaaS) には、**LaunchVaaSTests.ps1** スクリプトを使ってテストの開始を自動化する機能があります。
 
-> [!NOTE]
+> [!NOTE]  
 > 自動化は、テスト成功ワークフローだけで使用できます。 パッケージの検証とソリューションの検証のワークフローは、VaaS ポータルを通じてのみサポートされます。
 
-このチュートリアルでは、以下の操作を行うスクリプトの作成方法について説明します。
+このスクリプトを使用して次のことをおこなえます。
 
 > [!div class="checklist"]
-> * 前提条件のインストール
-> * ローカル エージェントのインストールと起動
-> * テストのカテゴリ (統合、機能、信頼性など) の立ち上げ
-> * テストの結果のレポート
+> * 必須コンポーネントをインストールする
+> * ローカル エージェントをインストールして起動する
+> * テストのカテゴリ (*統合*、*機能*、*信頼性*など) を立ち上げる
+> * テスト結果を報告する
 
 ## <a name="launch-the-test-pass-workflow"></a>テスト成功ワークフローの起動
 

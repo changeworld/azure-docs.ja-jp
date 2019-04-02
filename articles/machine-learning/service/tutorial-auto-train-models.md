@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: c064874c7eeeae0ae0b1176e3756be24f225e7fb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8fa77409f1f5c32bc1e8f8644111c38f6115a92d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818631"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58362052"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
@@ -35,7 +35,7 @@ Azure Machine Learning service を使用してお客様のモデルの構築を�
 > * カスタム パラメーターを使用してモデルをローカルで実行する。
 > * 結果を調べる。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 >[!NOTE]
 > この記事のコードは、Azure Machine Learning SDK バージョン 1.0.0 を使用してテストされました。
@@ -67,33 +67,23 @@ Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](
 
 ### <a name="server"></a>独自の Jupyter Notebook サーバーを使用する
 
-次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  手順を完了したら、**tutorials/regression-part2-automated-ml.ipynb** ノートブックを実行します。
+次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  ご利用の環境に `matplotlib` および `automl` と `notebooks` の追加機能をインストールしていることを確認してください。
 
-1. [Azure Machine Learning Python のクイック スタート](quickstart-create-workspace-with-python.md)を完了して、Miniconda 環境とワークスペースを作成します。
-1. `pip install azureml-sdk[automl,notebooks]` を使用して、`automl` と `notebooks` の追加機能をご自分の環境にインストールします。
-1. `pip install maplotlib` を使用して `maplotlib` をインストールします。
-1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-    ```
-    git clone https://github.com/Azure/MachineLearningNotebooks.git
-    ```
+手順を完了したら、**tutorials/regression-part2-automated-ml.ipynb** ノートブックを実行します。
 
-1. 複製したディレクトリから、Notebook サーバーを起動します。
+## <a name="start"></a>開発環境を設定する
 
-    ```shell
-    jupyter notebook
+Python Notebook で、開発作業に関するすべての設定を行うことができます。 設定の一環として次のことを行います。
 
-## <a name="start"></a>Set up your development environment
+* SDK のインストール
+* Python パッケージをインポートする
+* ワークスペースを構成する
 
-All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+### <a name="install-and-import-packages"></a>パッケージをインストールしてインポートする
 
-* Install the SDK
-* Import Python packages
-* Configure your workspace
-
-### Install and import packages
-
-If you are following the tutorial in your own Python environment, use the following to install necessary packages.
+独自の Python 環境でチュートリアルを実行している場合は、次を使用して必要なパッケージをインストールします。
 
 ```shell
 pip install azureml-sdk[automl,notebooks] matplotlib
@@ -111,7 +101,7 @@ import os
 
 ### <a name="configure-workspace"></a>ワークスペースの構成
 
-既存のワークスペースからワークスペース オブジェクトを作成します。 `Workspace` は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。
+既存のワークスペースからワークスペース オブジェクトを作成します。 [ワークスペース](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。
 
 `Workspace.from_config()` は、**aml_config/config.json** ファイルを読み取り、詳細情報を `ws` という名前のオブジェクトに読み込みます。  `ws` は、このチュートリアルの残りのコード全体で使用されています。
 
@@ -155,7 +145,7 @@ dflow_prepared.get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>type</th>
+      <th>Type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>

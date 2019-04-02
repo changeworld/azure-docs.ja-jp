@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 5211910a-ab96-4709-959a-524c4d57c43e
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2450548858d3b7eab3fda11b7f309519f6b871c8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 768afe007141eacbcea1560d3ec1676d9a7d2867
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869042"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852017"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>チュートリアル:Azure Active Directory と 123ContactForm の統合
 
@@ -139,7 +139,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
     ![Configure single sign-on](./media/123contactform-tutorial/submit.png) 
 
-    a. **[Email]\(電子メール\)** ボックスに、ユーザーの電子メール (**BrittaSimon@Contoso.com** など) を入力します。
+    a. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (**BrittaSimon\@Contoso.com** など) を入力します。
 
     b. **[Upload]\(アップロード\)** をクリックし、Azure portal からダウンロードしたダウンロード メタデータ XML ファイルを参照します。
 
@@ -173,7 +173,7 @@ Azure AD への 123ContactForm の統合を構成するには、ギャラリー�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

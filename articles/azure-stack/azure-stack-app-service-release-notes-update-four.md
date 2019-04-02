@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 2555ce4b9485ba6464bde3422df114343b579641
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5108d4f65208f12875ad592e2e9222f8e1fdb130
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243421"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991083"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>App Service on Azure Stack update 4 のリリース ノート
 
@@ -95,6 +95,11 @@ Azure App Service on Azure Stack Update 4 には、次の機能強化と修正�
 - リソース プロバイダーのコントロール プレーンが構成済みの SQL Server インスタンスに接続できないとき、App Service 管理ポータル エクスペリエンスにエラー メッセージを表示します。
 
 - エンドポイントが新しい関数アプリケーションに指定されたとき、確実にカスタム ストレージ接続文字列にエンドポイントが指定されるようにします。
+
+### <a name="post-deployment-steps"></a>デプロイ後の手順
+
+> [!IMPORTANT]  
+> SQL Always On インスタンスを使用して App Service RP を提供している場合は、データベースのフェールオーバー時にサービスの停止を防ぐために、[appservice_hosting と appservice_metering データベースを可用性グループに追加](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)し、それらのデータベースを同期する必要があります。
 
 ### <a name="post-update-steps-optional"></a>更新後の手順 (省略可)
 

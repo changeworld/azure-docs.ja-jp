@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: c16f218903557a6d3a10f3ef201587d2885fffa9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 469213ae67f1f2bcece6afa5d9b7873bfdfe8d6c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239113"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095740"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Azure Stack 上の Azure Monitor
 
@@ -27,16 +27,16 @@ ms.locfileid: "55239113"
 
 この記事では、Azure Stack 上の Azure Monitor サービスの概要を説明します。 Azure Monitor の動作について説明し、Azure Stack での Azure Monitor の使用方法に関するその他の情報を紹介します。 
 
-Azure Monitor の紹介、概要、および使用開始方法については、Azure の記事「[Azure Monitor の使用](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started)」を参照してください。
+Azure Monitor の紹介、概要、および使用開始方法については、[Azure Stack 上の Azure Monitor の概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started)に関する Azure の記事を参照してください。
 
 ![Azure Stack の Monitor ブレード](./media/azure-stack-metrics-azure-data/azs-monitor.png)
 
 Azure Monitor は、Azure リソースを監視するための 1 つのソースを提供するプラットフォーム サービスです。 Azure Monitor を使用すると、Azure のリソースのメトリックとログに対して、視覚化、クエリ、ルーティング、アーカイブなどのアクションを実行できます。 このデータは、Azure Stack 管理ポータル、Monitor PowerShell コマンドレット、クロスプラットフォーム CLI、または Azure Monitor REST API を使用して操作できます。 Azure Stack でサポートされている特定の接続については、「[Azure Stack の監視データの使用](azure-stack-metrics-monitor.md)」を参照してください
 
-> [!Note]  
-Azure Stack Development Kit では、メトリックと診断ログを使用できません。
+> [!Note]
+> Azure Stack Development Kit では、メトリックと診断ログを使用できません。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites-for-azure-monitor-on-azure-stack"></a>Azure Stack 上の Azure Monitor の前提条件
 
 サブスクリプションのオファー リソース プロバイダー設定で **Microsoft.insights** リソース プロバイダーを登録します。 サブスクリプションに関連付けられているオファーでリソース プロバイダーが使用可能であることを確認できます。
 
@@ -46,13 +46,13 @@ Azure Stack Development Kit では、メトリックと診断ログを使用で�
 4. **[設定]** で、**[リソース プロバイダー]** を選択します。 
 5. 一覧内で **Microsoft.Insights** を見つけ、状態が **[登録済み]** になっていることを確認します。
 
-## <a name="overview"></a>概要
+## <a name="overview-of-azure-monitor-on-azure-stack"></a>Azure Stack 上の Azure Monitor の概要
 
 Azure 上の Azure Monitor と同様、Azure Monitor 上の Azure Stack では、ほとんどのサービスに対して標準となるインフラストラクチャのメトリックおよびログを提供します。
 
-## <a name="azure-monitor-sources-compute-subset"></a>Azure Monitor のソース: Compute のサブセット
+## <a name="azure-monitor-sources-compute-subset"></a>Azure Monitor のソース: コンピューティングのサブセット
 
-![Azure Monitor のソース - Compute のサブセット](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
+![Azure Stack 上の Azure Monitor のソース: コンピューティングのサブセット](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
 
 Azure Stack 上の **Microsoft.Compute** リソース プロバイダーには、以下が含まれます。
  - Virtual Machines 
@@ -86,7 +86,7 @@ Azure Stack 上の **Microsoft.Compute** リソース プロバイダーには�
 
 ## <a name="azure-monitor-sources-everything-else"></a>Azure Monitor のソース: 上記以外のすべて
 
-![Azure Monitor のソース - 上記以外のすべて](media//azure-stack-metrics-azure-data/azs-monitor-othersubset.png)
+![Azure Stack 上の Azure Monitor のソース: 上記以外のすべて](media//azure-stack-metrics-azure-data/azs-monitor-othersubset.png)
 
 ### <a name="resources---metrics-and-diagnostics-logs"></a>リソース - メトリックと診断ログ
 

@@ -3,7 +3,7 @@ title: PowerShell を使用してマネージド ID のサービス プリンシ
 description: PowerShell を使用してマネージド ID のサービス プリンシパルを表示するための段階的手順。
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
-ms.author: priyamo
+ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bf6687adc367ef32550c4cb70a667050e54298c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5aa5ab96ae85833e59ed40161cafcc1eb88379be
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200753"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485800"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-powershell"></a>PowerShell を使用してマネージド ID のサービス プリンシパルを表示する
 
@@ -41,7 +41,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 次のコマンドは、システム割り当ての ID を有効にして VM またはアプリケーションのサービス プリンシパルを表示する方法を示しています。 `<VM or application name>` を独自の値に置き換えます。
 
-```PowerShell
+```powershell
 Get-AzADServicePrincipal -DisplayName <VM or application name>
 ```
 

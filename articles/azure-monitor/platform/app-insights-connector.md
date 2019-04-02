@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: b9a847f04048cd17d550ca66bd3e6502577746eb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4e91e193b3980901e7778a8826989e729517a29a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878457"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481758"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
@@ -229,7 +229,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="exception-specific-fields"></a>例外に固有のフィールド
 
-| type | ApplicationInsights |
+| Type | ApplicationInsights |
 | --- | --- |
 | TelemetryType | 例外 |
 | ExceptionType | 例外の種類 |
@@ -272,7 +272,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 ## <a name="removing-the-connector-with-powershell"></a>PowerShell でコネクタを削除する
 OMS ポータルの廃止により、ポータルから既存の接続を構成および削除する方法がなくなります。 次の PowerShell スクリプトを使用して、既存の接続を削除することができます。 この操作を実行するには、ワークスペースの所有者または共同作成者であり、Application Insights リソースの閲覧者である必要があります。
 
-```PowerShell
+```powershell
 $Subscription_app = "App Subscription Name"
 $ResourceGroup_app = "App ResourceGroup"
 $Application = "Application Name"
@@ -289,7 +289,7 @@ Remove-AzureRmOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceG
 
 REST API 呼び出しを行う次の PowerShell スクリプトを使用して、アプリケーションの一覧を取得することができます。 
 
-```PowerShell
+```powershell
 Connect-AzureRmAccount
 $Tenant = "TenantId"
 $Subscription_workspace = "Workspace Subscription Name"

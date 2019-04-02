@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: f1bc0112-315c-4e6f-8c69-7c6873007bcf
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: d50cf28ebfc34d9b7deaff95c177f0eebd210be3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1ed8dac90527de396e0b7ae59e5d19939a4a36be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879732"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904356"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>チュートリアル:Azure Active Directory と Form.com の統合
 
@@ -109,6 +109,7 @@ Form.com で Azure AD シングル サインオンを構成するには、次の
     b. **[識別子]** ボックスに、`https://<subdomain>.form.com` という形式で URL を入力します。
 
     c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    
     | |
     |--|
     | `https://<subdomain>.wa-form.com/Member/UserAccount/SAML2.action` |
@@ -153,7 +154,7 @@ Form.com で Azure AD シングル サインオンを構成するには、次の
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

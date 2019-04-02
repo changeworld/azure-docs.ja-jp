@@ -9,14 +9,15 @@ ms.date: 07/02/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb01ae6514dfb97cc8a923619513383ace0b09a5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: f4935cc15bf3edeccd6b6ce9da701904a32606db
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669977"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295030"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>クイック スタート:Azure portal でディレクトリにゲスト ユーザーを追加する
 
@@ -39,15 +40,15 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 2. 左ウィンドウで、**[Azure Active Directory]** を選択します。
 3.  **[管理]** にある **[ユーザー]** を選択します。
 
-    ![[Azure Active Directory] を選択します。](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
+    ![[ユーザー] オプションを選択する場所を示すスクリーンショット](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
 4.  **[新しいゲスト ユーザー]** を選択します。
 
-    ![[Azure Active Directory] を選択します。](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
+    ![[新しいゲスト ユーザー] オプションを選択する場所を示すスクリーンショット](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
 
 5.  **[ユーザー名]** に外部ユーザーの電子メール アドレスを入力します。 **[招待状に個人的なメッセージを含めます]** の下に、ようこそメッセージを入力します。 
 
-    ![[Azure Active Directory] を選択します。](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
+    ![ゲスト ユーザー招待メッセージを入力する場所を示すスクリーンショット](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
 
 6. **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 右上隅に**ユーザーが正常に招待された**ことを示す通知が表示します。 
 7.  招待を送信すると、ユーザー アカウントがディレクトリにゲストとして自動的に追加されます。
@@ -59,7 +60,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 3.  **[新しいアプリケーション]** を選択します。
 4. **[ギャラリーから追加する]** で、「**Salesforce**」を検索して選択します。
 
-    ![[Azure Active Directory] を選択します。](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
+    ![[ギャラリーから追加する] 検索ボックスを示すスクリーンショット](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
 5. **[追加]** を選択します。
 6. **[管理]** で **[シングル サインオン]** を選択し、**[シングル サインオン モード]** で **[パスワードに基づくサインオン]** を選択し、**[保存]** をクリックします。
 7. **[管理]** で、**[ユーザーとグループ]** > **[ユーザーの追加]** > **[ユーザーとグループ]** を選択します。
@@ -71,11 +72,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1.  テスト用のゲスト ユーザーの電子メール アカウントにサインインします。
 2.  受信トレイで、"招待されました" 電子メールを見つけます。
 
-    ![B2B 招待メール](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
+    ![B2B の招待メールを示すスクリーンショット](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
 
 3.  電子メールの本文で、**[開始]** を選択します。 **[アクセス許可の確認]** ページがブラウザーで開きます。 
 
-    ![B2B 招待承認ページ](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
+    ![[アクセス許可の確認] ページのスクリーンショット](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
 
 4. **[Accept]\(承認\)** を選択します。 ゲスト ユーザーがアクセスできるアプリケーションを一覧表示するアクセス パネルが開きます。
 

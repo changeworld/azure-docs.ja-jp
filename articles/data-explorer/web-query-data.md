@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9dade2ccebfb96cd54bdb9c8ef70c14fdeadad76
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106449"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225775"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>クイック スタート: Azure Data Explorer でデータのクエリを実行する
 
@@ -39,7 +39,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. アプリケーションの左上にある **[Add cluster]\(クラスターの追加\)** を選択します。
 
-1. **[Add cluster]\(クラスターの追加\)** ダイアログ ボックスで「`https://help.kusto.windows.net`」と入力して、**[Add]\(追加\)** を選択します。
+1. **[Add cluster]\(クラスターの追加\)** ダイアログ ボックスで URI を入力して、**[Add]\(追加\)** を選択します。
+
+   ヘルプ クラスター URI `https://help.kusto.windows.net` を使用できます。 独自のクラスターがある場合は、そのクラスターの URI を指定します。 たとえば、次の図のように、`https://mydataexplorercluster.westus.kusto.windows.net` と指定します。
+
+    ![ポータルでのサーバー URI](media/web-query-data/server-uri.png)
 
 1. 左側のウィンドウに **help** クラスターが表示されます。 **Samples** データベースを展開し、アクセスできるサンプル テーブルを表示します。
 

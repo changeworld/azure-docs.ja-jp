@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 4fb636a91389309b44f2308efec1a6c257c41078
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b43fb3ff158a7df609d7a828192815db6b15963b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242588"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850062"
 ---
 # <a name="validate-azure-identity"></a>Azure ID の検証 
 Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用して、対象の Azure Active Directory (Azure AD) を Azure Stack で使用する準備が整っていることを検証します。 Azure Stack のデプロイを開始する前に、Azure ID ソリューションを検証します。  
@@ -56,7 +56,7 @@ Azure Stack のユーザー、アプリケーション、グループ、およ�
 
    > `Install-Module Microsoft.AzureStack.ReadinessChecker -Force`
 
-2. PowerShell プロンプトから次を実行して、*$serviceAdminCredential* を、お使いの Azure AD テナントのサービス管理者として設定します。  *serviceadmin@contoso.onmicrosoft.com* を、お使いのアカウントおよびテナントで置き換えます。 
+2. PowerShell プロンプトから次を実行して、*$serviceAdminCredential* を、お使いの Azure AD テナントのサービス管理者として設定します。  *serviceadmin\@contoso.onmicrosoft.com* をお使いのアカウントとテナントに置き換えます。 
    > `$serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant"` 
 
 3. PowerShell プロンプトから次を実行して、Azure AD の検証を開始します。 

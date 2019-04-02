@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: fdda53172bef9fb7a4a09cbacfdc5fa4ec4c7509
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6470a358fd3127c93e2e2248b42f79690f4e8b55
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122354"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449351"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>チュートリアル - PowerShell を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -37,7 +37,7 @@ Azure Dedicated HSM サービスでは、完全な管理制御と完全な管理
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Dedicated HSM は、現時点では Azure portal で使用できません。そのため、サービスに対するすべての操作は、コマンドラインまたは PowerShell を使用して行います。 このチュートリアルでは、Azure Cloud Shell で PowerShell を使用します。 PowerShell を使用するのが初めての場合は、こちらの [Azure PowerShell の開始](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0)に関するページの開始手順に従います。
+Azure Dedicated HSM は、現時点では Azure portal で使用できません。そのため、サービスに対するすべての操作は、コマンドラインまたは PowerShell を使用して行います。 このチュートリアルでは、Azure Cloud Shell で PowerShell を使用します。 PowerShell を使用するのが初めての場合は、こちらの [Azure PowerShell の開始](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページの開始手順に従います。
 
 想定:
 

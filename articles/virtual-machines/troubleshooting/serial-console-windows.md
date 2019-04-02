@@ -255,7 +255,7 @@ Microsoft は、シリアル コンソールには問題がいくつかあるこ
 
 **Q.フィードバックを送信するにはどうすればよいですか?**
 
-A. https://aka.ms/serialconsolefeedback で GitHub の問題を作成することで、フィードバックをご提供ください。 (あまりお勧めしませんが) azserialhelp@microsoft.com、または https://feedback.azure.com の仮想マシン カテゴリでフィードバックをお送りいただくこともできます。
+A. GitHub の問題を作成したフィードバックの提供 https://aka.ms/serialconsolefeedbackします。 (あまりお勧めしませんが) azserialhelp@microsoft.com、または https://feedback.azure.com の仮想マシン カテゴリでフィードバックをお送りいただくこともできます。
 
 **Q.シリアル コンソールでは、コピー/貼り付けが可能ですか。**
 

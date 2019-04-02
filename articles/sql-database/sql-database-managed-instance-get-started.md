@@ -11,19 +11,20 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: Carlrab
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: 481c82eb74bcf80c3d0546324009ec0bf6495cfb
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.date: 03/13/2019
+ms.openlocfilehash: 6aa8f362f067a4e3e391f435ee849f96abdf752f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587057"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997501"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>クイック スタート:Azure SQL Database マネージド インスタンスの作成
 
 このクイック スタートでは、Azure portal で Azure SQL Database [マネージド インスタンス](sql-database-managed-instance.md)を作成する方法について説明します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+> [!IMPORTANT]
+> 制限については、[サポートされているリージョン](sql-database-managed-instance-resource-limits.md#supported-regions)と[サポートされているサブスクリプションの種類](sql-database-managed-instance-resource-limits.md#supported-subscription-types)に関するセクションを参照してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
@@ -35,13 +36,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 2. **[マネージド インスタンス]** を探し、**[Azure SQL Managed Instance]** を選択します。
-3. **[作成]** を選択します。
+3. **作成**を選択します。
 
    ![マネージド インスタンスの作成](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
 
 4. 次の表の情報を参考にして、**SQL マネージド インスタンス** フォームに必要な情報を入力します。
 
-   | 設定| 推奨値 | 説明 |
+   | Setting| 推奨値 | 説明 |
    | ------ | --------------- | ----------- |
    | **サブスクリプション** | 該当するサブスクリプション | 新しいリソースを作成するアクセス許可があるサブスクリプション |
    |**マネージド インスタンス名**|有効な名前|有効なサーバー名については、[名前付け規則と制限事項](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
@@ -49,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    |**パスワード**|有効なパスワード|パスワードは 16 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
    |**照合順序**|マネージド インスタンスに対して使用する照合順序|SQL Server からデータベースを移行する場合は、`SELECT SERVERPROPERTY(N'Collation')` を使用してソースの照合順序を確認し、その値を使用してください。 照合順序の詳細については、[サーバーレベルの照合順序](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation)に関するページを参照してください。|
    |**場所**|マネージド インスタンスの作成先となる場所|リージョンについては、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。|
-   |**Virtual Network**|**[新しい仮想ネットワークの作成]** または有効な仮想ネットワークとサブネットを選択します。| ネットワーク/サブネットが淡色表示されている場合は、新しいマネージド インスタンスのターゲットとして選択する前に、[ネットワーク要件を満たすように変更する](sql-database-managed-instance-configure-vnet-subnet.md)必要があります。 マネージド インスタンスのネットワーク環境を構成するための要件については、[マネージド インスタンスの VNet の構成](sql-database-managed-instance-connectivity-architecture.md)に関する記事を参照してください。 |
+   |**Virtual Network**|**[新しい仮想ネットワークの作成]** または有効な仮想ネットワークとサブネットを選択します。| ネットワーク/サブネットが使用できない場合は、新しいマネージド インスタンスのターゲットとして選択する前に、[ネットワーク要件を満たすように変更する](sql-database-managed-instance-configure-vnet-subnet.md)必要があります。 マネージド インスタンスのネットワーク環境を構成するための要件については、[マネージド インスタンスの VNet の構成](sql-database-managed-instance-connectivity-architecture.md)に関する記事を参照してください。 |
    |**リソース グループ**|新規または既存のリソース グループ|有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。|
 
    ![マネージド インスタンス フォーム](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)

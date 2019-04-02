@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 24dfc9602f7329b4ea56db2257f29f5711510d22
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 43a5f3be9b176cf25e643d6a5231669922300b98
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977798"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485936"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>クイック スタート:Azure PowerShell で SQL Server Windows 仮想マシンを作成する
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. PowerShell を開き、**Connect-AzAccount** コマンドを実行し、Azure アカウントへのアクセスを確立します。
 
-   ```PowerShell
+   ```powershell
    Connect-AzAccount
    ```
 
@@ -54,19 +54,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 一意のリソース グループ名を持つ変数を定義します。 クイック スタートの以降の手順を簡略化するために、残りのコマンドでは、この名前を他のリソース名のベースとして使用します。
 
-   ```PowerShell
+   ```powershell
    $ResourceGroupName = "sqlvm1"
    ```
 
 1. すべての VM リソースのターゲット Azure リージョンの場所を定義します。
 
-   ```PowerShell
+   ```powershell
    $Location = "East US"
    ```
 
 1. リソース グループを作成します。
 
-   ```PowerShell
+   ```powershell
    New-AzResourceGroup -Name $ResourceGroupName -Location $Location
    ```
 
@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ネットワーク セキュリティ グループを作成します。 リモート デスクトップ (RDP) および SQL Server 接続を許可するように規則を構成します。
 
-   ```PowerShell
+   ```powershell
    # Rule to allow remote desktop (RDP)
    $NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
       -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * `
@@ -113,7 +113,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ネットワーク インターフェイスを作成します。
 
-   ```PowerShell
+   ```powershell
    $InterfaceName = $ResourceGroupName + "int"
    $Interface = New-AzNetworkInterface -Name $InterfaceName `
       -ResourceGroupName $ResourceGroupName -Location $Location `
@@ -134,7 +134,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 仮想マシン構成オブジェクトを作成してから、VM を作成します。 次のコマンドでは、Windows Server 2016 で SQL Server 2017 Developer Edition VM を作成します。
 
-   ```PowerShell
+   ```powershell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
    $VMConfig = New-AzVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
@@ -153,7 +153,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ポータル統合および SQL VM の機能を取得するには、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)をインストールする必要があります。 新しい VM にエージェントをインストールするには、VM の作成後に次のコマンドを実行します。
 
-   ```PowerShell
+   ```powershell
    Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
    ```
 
@@ -161,7 +161,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 次のコマンドを使用して、新しい VM のパブリック IP アドレスを取得します。
 
-   ```PowerShell
+   ```powershell
    Get-AzPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
@@ -185,11 +185,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 VM を継続的に実行する必要がない場合は、使用中でないときに停止することで、不要な料金の発生を回避できます。 次のコマンドでは、VM を停止しますが、後から使用できるように残しておきます。
 
-```PowerShell
+```powershell
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 
-**Remove-AzResourceGroup** コマンドを使用して、仮想マシンに関連付けらているすべてのリソースを完全に削除することもできます。 そのようにすると仮想マシンも完全に削除されるため、このコマンドは注意して使用してください。
+**Remove-AzResourceGroup** コマンドを使用して、仮想マシンに関連付けられているすべてのリソースを完全に削除することもできます。 そのようにすると仮想マシンも完全に削除されるため、このコマンドは注意して使用してください。
 
 ## <a name="next-steps"></a>次の手順
 

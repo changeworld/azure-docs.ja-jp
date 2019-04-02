@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 32862d06cfa6a9a8dd9b99459362ec53fd88cec2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 02f2bd78ca5656534b106c6f7f18c05165b4b9ff
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978950"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444497"
 ---
 # <a name="create-a-windows-virtual-machine-with-the-simplified-new-azvm-cmdlet-in-cloud-shell"></a>Cloud Shell で簡素化された New-AzVM コマンドレットを使用して Windows 仮想マシンを作成する 
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azurermps-6.8.1) コマンドレットには、PowerShell を使用して新しい VM を作成するための簡素化されたパラメーター セットが追加されました。 このトピックでは、Azure Cloud Shell で PowerShell を使用して、プレインストールされている最新バージョンの New-AzureVM コマンドレットで新しい VM を作成する方法について説明します。 スマートな既定値を使用して必要なすべてのリソースが自動的に作成される、簡素化されたパラメーター セットを使用します。 
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットには、PowerShell を使用して新しい VM を作成するための簡素化されたパラメーター セットが追加されました。 このトピックでは、Azure Cloud Shell で PowerShell を使用して、プレインストールされている最新バージョンの New-AzureVM コマンドレットで新しい VM を作成する方法について説明します。 スマートな既定値を使用して必要なすべてのリソースが自動的に作成される、簡素化されたパラメーター セットを使用します。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-the-vm"></a>VM の作成
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azurermps-6.8.1) コマンドレットを使用して、Azure Marketplace の Windows Server 2016 Datacenter イメージの使用を含むスマートな既定値で VM を作成することができます。 New-AzVM は **-Name** パラメーターだけで使用できます。この値は、すべてのリソース名に使用されます。 この例では、**-Name** パラメーターを *myVM* として設定します。 
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) コマンドレットを使用して、Azure Marketplace の Windows Server 2016 Datacenter イメージの使用を含むスマートな既定値で VM を作成することができます。 New-AzVM は **-Name** パラメーターだけで使用できます。この値は、すべてのリソース名に使用されます。 この例では、**-Name** パラメーターを *myVM* として設定します。 
 
 Cloud Shell で **PowerShell** が選択されていることを確認して、次のように入力します。
 

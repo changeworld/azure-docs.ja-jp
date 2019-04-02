@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 41437933f715af092dea563b0b1be4794c71925c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5c4d2320ffd54054eb8a5bb26ef14c8e99dabb33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863161"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855956"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator を使用して eコマース製品画像をモデレートする
 
@@ -43,7 +43,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-a-review-team"></a>レビュー チームを作成する
 
-[Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)にサインアップしてレビュー チームを作成する方法の手順については、「[クイック スタート: Content Moderator の概要](quick-start.md)」を参照してください。 **[資格情報]** ページの **[チーム ID]** を書き留めておきます。
+[Content Moderator レビュー ツール](https://contentmoderator.cognitive.microsoft.com/)にサインアップしてレビュー チームを作成する方法の手順については、「[Web 上で Content Moderator を試す](quick-start.md)」クイック スタートを参照してください。 **[資格情報]** ページの **[チーム ID]** を書き留めておきます。
 
 ## <a name="create-custom-moderation-tags"></a>カスタム モデレーション タグの作成
 

@@ -9,14 +9,15 @@ ms.date: 06/25/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f6718c13534e7f43b183400a1ccf25c3f8d1e1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 94e5f4eaf32815dd0342ef73705efb2c575b71bc
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669010"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293994"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>チュートリアル:多要素認証を B2B ゲスト ユーザーに適用する
 
@@ -24,7 +25,7 @@ ms.locfileid: "56669010"
 
 例:
 
-![MFA を要求する B2B アプリ](media/tutorial-mfa/aad-b2b-mfa-example.png)
+![会社のアプリにサインインしているゲスト ユーザーを示す図](media/tutorial-mfa/aad-b2b-mfa-example.png)
 
 1.  会社 A の管理者または従業員は、アクセスで MFA を要求するように構成されたクラウドまたはオンプレミスのアプリケーションを使用するようにゲスト ユーザーを招待します。
 2.  ゲスト ユーザーは、自分の職場、学校、またはソーシャルの ID を使用してサインインします。 
@@ -56,11 +57,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 3.  **[管理]** にある **[ユーザー]** を選択します。
 4.  **[新しいゲスト ユーザー]** を選択します。
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-user-3.png)
+    ![[新しいゲスト ユーザー] オプションを選択する場所を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-user-3.png)
 
 5.  **[ユーザー名]** に外部ユーザーの電子メール アドレスを入力します。 必要に応じて、ようこそメッセージを含めます。 
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-user-4.png)
+    ![ゲスト招待メッセージを入力する場所を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-user-4.png)
 
 6.  **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 **ユーザーが正常に招待された**ことを示すメッセージが表示されます。 
 7.  招待を送信すると、ユーザー アカウントがディレクトリにゲストとして自動的に追加されます。
@@ -79,26 +80,26 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 6.  **[割り当て]** セクションで、**[ユーザーとグループ]** を選択します。
 7.  **[ユーザーとグループ]** ページで、**[ユーザーとグループの選択]** を選択し、**[すべてのゲスト ユーザー (プレビュー)]** を選択します。
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-policy-6.png)
+    ![すべてのゲスト ユーザーを選択する方法を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-policy-6.png)
 9.  **[完了]** を選択します。
 10. **[新規]** ページの **[割り当て]** セクションで、**[クラウド アプリ]** を選択します。
 11. **[クラウド アプリ]** ページで、**[アプリを選択]** を選択し、**[選択]** を選択します。
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-policy-10.png)
+    ![[クラウド アプリ] ページと [選択] オプションを示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-policy-10.png)
 
 12. **[選択]** ページで **[Microsoft Azure Management]** を選択し、**[選択]** を選択します。
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-policy-11.png)
+    ![[Microsoft Azure の管理] アプリが選択された状態を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
 13. **[クラウド アプリ]** ページで、**[完了]** を選択します。
 14. **[新規]** ページの **[アクセス制御]** セクションで、 **[付与]** を選択します。
 15. **[付与]** ページで、**[アクセスの許可]** を選択し、**[多要素認証を要求する]** チェック ボックスをオンにし、**[選択]** を選択します。
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-policy-13.png)
+    ![[多要素認証を要求する] オプションを示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-policy-13.png)
 
 16. **[ポリシーの有効化]** で、**[オン]** を選択します。
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-policy-14.png)
+    ![[ポリシーの有効化] オプションが [オン] に設定された状態を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-policy-14.png)
 
 17. **作成**を選択します。
 
@@ -106,27 +107,27 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1.  **[条件付きアクセス - ポリシー]** ページで、**[What If]** を選択します。 
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
+    ![[What if] オプションを選択する場所を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
 2.  **[ユーザー]** を選択し、テスト用のテスト ユーザーを選択し、**[選択]** を選択します。
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
+    ![ゲスト ユーザーが選択された状態を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
 
 3.  **[クラウド アプリ]** を選択します。
 4.  **[クラウド アプリ]** ページで、**[アプリを選択]** を選択し、**[選択]** をクリックします。 アプリの一覧から **[Microsoft Azure の管理]** を選択し、**[選択]** をクリックします。 
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
+    ![[Microsoft Azure の管理] アプリが選択された状態を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
 
 5.  **[クラウド アプリ]** ページで、**[完了]** を選択します。
 6.  **[What If]** を選択し、**[Policies that will apply]\(適用するポリシー\)** タブの **[評価結果]** の下に新しいポリシーが表示されることを確認します。
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
+    ![[What if] オプションを選択する場所を示すスクリーンショット](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
 
 ## <a name="test-your-conditional-access-policy"></a>条件付きアクセス ポリシーをテストする
 1.  テスト用のユーザー名とパスワードを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 2.  追加の認証方法を要求するメッセージが表示されます。 ポリシーが有効になるまで時間がかかる可能性があることに注意してください。
 
-    ![[Azure Active Directory] を選択します。](media/tutorial-mfa/mfa-required.png)
+    !["詳細情報が必要" メッセージが表示された状態を示すスクリーンショット](media/tutorial-mfa/mfa-required.png)
  
 3.  サインアウトします。
 
@@ -139,5 +140,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 5.  左ウィンドウで、**[Azure Active Directory]** を選択します。
 6.  **[セキュリティ]** で、**[条件付きアクセス]** を選択します。
 7.  **[ポリシー名]** の一覧で、テスト用のポリシーのコンテキスト メニュー (...) を選択し、**[削除]** を選択します。 **[はい]** を選択して確定します。
+
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、ゲスト ユーザーがいずれかのクラウド アプリのサインインするときに MFA を使用することを要求する条件付きアクセス ポリシーを作成しました。 コラボレーションするためのゲスト ユーザーを追加する方法の詳細については、「[Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](add-users-administrator.md)」を参照してください。

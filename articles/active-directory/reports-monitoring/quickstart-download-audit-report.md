@@ -3,7 +3,7 @@ title: 'クイック スタート: Azure portal を使用して監査レポー�
 description: Azure portal を使用して監査レポートをダウンロードする方法を説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4de121ea-f4aa-4c8a-aae4-700c2c5e97a2
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d702810ae7de03a14e50f56c2b8e819c31f3ea9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a6cbea49fe39c92c8a2fc50e501cb4ef5cff74b1
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192712"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436678"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して監査レポートをダウンロードする
 
-このクイック スタートでは、過去 24 時間のテナントに関する監査ログをダウンロードする方法について説明します。 レコードは Azure portal から 5000 個までダウンロードできます。 レコードは最新の順に並べ替えられており、既定では最新の 5,000 個のレコードが取得されます。 
+このクイック スタートでは、過去 24 時間のテナントに関する監査ログの CSV ファイルをダウンロードする方法について説明します。 Azure portal から最大 250,000 個のレコードをダウンロードできます。 レコードは最新の順に並べ替えられており、既定では最新の 250,000 個のレコードが取得されます。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +41,7 @@ ms.locfileid: "56192712"
 2. 左側のナビゲーション ウィンドウで **[Azure Active Directory]** を選択し、**[ディレクトリの切り替え]** ボタンを使用して目的の Active Directory を選択します。
 3. ダッシュボードから **[Azure Active Directory]** を選択し、**[監査ログ]** を選択します。 
 4. **[日付の範囲]** フィルター ドロップダウンで **[過去 24 時間]** を選択し、**[適用]** を選択して過去 24 時間の監査ログを表示します。 
-5. **[ダウンロード]** ボタンを選択して、フィルター処理したレコードを含む CSV ファイルをダウンロードします。 
+5. **[ダウンロード]** ボタンを選択して、ファイル形式として **[CSV]** を選択し、ファイル名を指定して、フィルター処理したレコードを含む CSV ファイルをダウンロードします。 
 
 ![レポート](./media/quickstart-download-audit-report/download-audit-logs.png)
 

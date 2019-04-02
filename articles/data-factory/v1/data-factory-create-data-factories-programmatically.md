@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8f333b626fa51fa60f80350547ee53f346d6cc3a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436769"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486973"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Azure Data Factory .NET SDK を使用した Azure Data Factory の作成、監視、および管理
 > [!NOTE]
@@ -44,17 +44,17 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 1. **PowerShell**を起動します。
 2. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 3. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription
     ```
 4. 次のコマンドを実行して、使用するサブスクリプションを選択します。 **&lt;NameOfAzureSubscription**&gt; を自分の Azure サブスクリプションの名前で置き換えます。
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
     ```
 
@@ -63,7 +63,7 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
 
 5. PowerShell で次のコマンドを実行して、 **ADFTutorialResourceGroup** という名前の Azure リソース グループを作成します。
 
-    ```PowerShell
+    ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
@@ -72,28 +72,28 @@ Azure Active Directory アプリケーションを作成し、アプリケーシ
     異なるリソース グループを使用する場合は、このチュートリアルで ADFTutorialResourceGroup の代わりにそのリソース グループの名前を使用する必要があります。
 6. Azure Active Directory アプリケーションを作成します。
 
-    ```PowerShell
+    ```powershell
     $azureAdApplication = New-AzADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
     ```
 
     次のエラーが表示された場合は、別の URL を指定して、コマンドをもう一度実行します。
     
-    ```PowerShell
+    ```powershell
     Another object with the same value for property identifierUris already exists.
     ```
 7. AD サービス プリンシパルを作成します。
 
-    ```PowerShell
+    ```powershell
     New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
 8. **Data Factory 共同作成者** ロールにサービス プリンシパルを追加します。
 
-    ```PowerShell
+    ```powershell
     New-AzRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
     ```
 9. アプリケーション ID を取得します。
 
-    ```PowerShell
+    ```powershell
     $azureAdApplication 
     ```
     出力のアプリケーション ID (applicationID) をメモします。

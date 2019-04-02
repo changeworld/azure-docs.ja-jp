@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 3233357d9013c2a1f9d77178c217ca9310a34ac4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198203"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834491"
 ---
-# <a name="search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>Bing Web Search REST API と Node.js を使用して Web を検索する
+# <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>クイック スタート:Bing Web Search REST API と Node.js を使用して Web を検索する
 
 このクイック スタートを使用すると、Bing Web Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 この Node.js アプリケーションは、API に検索要求を送信してその応答を表示します。 このアプリケーションは JavaScript で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイック スタートを実行するには、以下のものが必要です。
 
 * [Node.js 6](https://nodejs.org/en/download/) 以降
@@ -43,7 +44,7 @@ const https = require('https')
 
 ## <a name="set-the-subscription-key"></a>サブスクリプション キーの設定
 
-このコード スニペットは、`AZURE_SUBSCRIPTION_KEY` 環境変数を使用してサブスクリプション キーを格納します。これは、コードのデプロイ時にキーの偶発的な露出を防ぐ優れたやり方です。 [ここをクリック](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)してサブスクリプション キーを調べます。
+このコード スニペットは、`AZURE_SUBSCRIPTION_KEY` 環境変数を使用してサブスクリプション キーを格納します。これは、コードのデプロイ時にキーの偶発的な露出を防ぐ優れたやり方です。 サブスクリプション キーを探すには、[API に関するページ](https://azure.microsoft.com/try/cognitive-services/my-apis/?apiSlug=search-api-v7)に移動します。
 
 環境変数を使用について詳しくない場合や、このアプリをできるだけ高速に実行しようとしている場合は、`process.env['AZURE_SUBSCRIPTION_KEY']` を、文字列として設定されたサブスクリプション キーに置き換えることができます。
 
@@ -110,7 +111,7 @@ bingWebSearch(query)
 const https = require('https')
 const SUBSCRIPTION_KEY = process.env['AZURE_SUBSCRIPTION_KEY']
 if (!SUBSCRIPTION_KEY) {
-  throw new Error('Missing the AZURE_SUBSCRIPTION_KEY environment varable')
+  throw new Error('Missing the AZURE_SUBSCRIPTION_KEY environment variable')
 }
 function bingWebSearch(query) {
   https.get({

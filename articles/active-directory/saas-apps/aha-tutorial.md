@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: ad955d3d-896a-41bb-800d-68e8cb5ff48d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2cb0edf74a8d829c5d3dc9e634f66617c5d2ee9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 90d4cdcecd08ae87b3a2ae6023b8a2557a515fb1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866234"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aha"></a>チュートリアル:Azure Active Directory と Aha!
 
@@ -157,7 +157,7 @@ Aha! で Azure AD のシングル サインオンを構成するには、次の�
 
     c. ダウンロードしたメタデータ ファイルをアップロードするには、**[参照]** をクリックします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Update]** をクリックします。
+    d. **[Update]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -177,7 +177,7 @@ Aha! で Azure AD のシングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

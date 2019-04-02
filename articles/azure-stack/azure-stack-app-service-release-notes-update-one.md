@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 03/20/2018
-ms.openlocfilehash: 9288ffa406b0e5765b35fa9b23aa13dee5754e9a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 99b4134f8f2d6ed2f521a7f488c33e06c0f436bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240031"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58165830"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service on Azure Stack Update 1 のリリース ノート
 
@@ -58,7 +58,7 @@ Azure App Service on Azure Stack Update 1 には、次の機能強化と修正�
 - **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。 Azure Stack Portal SDK バージョンと一致しています。
 
 - **次のアプリケーション フレームワークとツールの更新**:
-    - **.Net Core 2.0** のサポートが追加されました。
+    - **.NET Core 2.0** のサポートが追加されました。
     - **Node.js** の次のバージョンが追加されました。
         - 6.11.2
         - 6.11.5

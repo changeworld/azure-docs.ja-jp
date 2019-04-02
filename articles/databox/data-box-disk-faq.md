@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 02/14/2019
+ms.date: 02/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 5f44e3c4a1b7f28133ecd232fc49a34931bddfa4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 97794675f3d489e1154d9c327c18d40708dd5b53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729833"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877855"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
 
@@ -51,7 +51,7 @@ A.  Data Box Disk を入手するには、Azure portal にログインし、Data
 A. 1 台につき 8 TB (使用可能な容量は 7 TB) のディスクが 5 台で、使用可能な最大容量は 35 TB となります。 したがって、1 回のやり取りで転送できるデータは 35 TB となります。 それを超えるデータを転送するには、さらに多くのディスクを注文する必要があります。
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>Q. 自分のリージョンで Data Box Disk が利用できるかどうかは、どうやって調べればよいでしょうか? 
-A.  Data Box Disk は、現在、米国、カナダ、オーストラリア、および欧州連合のすべての国で利用できます。  
+A.  Data Box Disk が現在使用できる場所については、「[利用可能なリージョン](data-box-disk-overview.md#region-availability)」を参照してください。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. Data Box Disk では、どのリージョンにデータを保存できますか?
 A. Data Box Disk は、米国、カナダ、オーストラリア、西ヨーロッパ、および北ヨーロッパ内のすべてのリージョンでサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
@@ -126,14 +126,14 @@ A.  いいえ。 現在 Data Box Disk でサポートされているストレー
 A. Data Box Disk で使用できるツールセットには、次の 3 つのツールが含まれています。
  - **Data Box Disk ロック解除ツール**:このツールは、Microsoft から出荷された暗号化ディスクのロックを解除するために使用します。 ツールを使用してディスクのロックを解除するときは、Azure portal での Data Box Disk の注文に関して取得できるパスキーを指定する必要があります。 
  - **Data Box Disk 検証ツール**:このツールは、Azure の命名規則に従ってサイズ、形式、および BLOB 名を検証するために使用します。 コピーしたデータのチェックサムも生成されます。チェックサムは、Azure にアップロードされたデータを検証するために使用されます。
- - **Data Box Disk 分割コピー ツール**:このツールは、複数のディスクを使用していて、大きなデータセットをそれらのすべてのディスクに分割してコピーする必要がある場合に使用します。 このツールは、現在 Windows で使用できます。
+ - **Data Box Disk 分割コピー ツール**:このツールは、複数のディスクを使用していて、大きなデータセットをそれらのすべてのディスクに分割してコピーする必要がある場合に使用します。 このツールは、現在 Windows で使用できます。 このツールはマネージド ディスクではサポートされません。 このツールでは、データのコピー時も検証されるため、このツールを使用するときは検証手順をスキップできます。
 
 このツールセットは、Windows と Linux の両方で使うことができます。 ツールセットは、次の場所からダウンロードできます。
- - [Windows 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolswin) 
- - [Linux 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolslinux)
+- [Windows 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolswin) 
+- [Linux 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolslinux)
  
-### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Q. Data Box Disk を使用して Azure Files にデータを転送した後、そのデータを Azure File Sync で使用することはできますか? 
-A. Data Box Disk では Azure Files がサポートされません。 また、そのファイルのデータを後から Azure File Sync で使用する場合、メタデータも維持されません。
+  ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Q. Data Box Disk を使用して Azure Files にデータを転送した後、そのデータを Azure File Sync で使用することはできますか? 
+  A. Azure Files は Data Box Disk でサポートされていますが、Azure File Sync では適切に機能しません。そのファイルのデータを Azure File Sync で使用する場合、メタデータは維持されません。
 
 
 ## <a name="verify-and-upload"></a>確認とアップロード
@@ -142,10 +142,10 @@ A. Data Box Disk では Azure Files がサポートされません。 また、�
 A.  データ コピーの注文の状態が完了として表示されたら、すぐにデータにアクセスすることができます。
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Q. アップロード後、私のデータは Azure 内のどこに置かれるのですか?
-A.  ディスク上の *BlockBlob* フォルダーと *PageBlob* フォルダーにデータをコピーすると、*BlockBlob* フォルダーと *PageBlob* フォルダーのサブフォルダーごとのコンテナーが Azure Storage アカウントに作成されます。 *BlockBlob* フォルダーと *PageBlob* フォルダーの直下にコピーしたファイルは、Azure Storage アカウントの *$root* という既定のコンテナーに置かれます。
+A.  ディスク上の *BlockBlob* フォルダーと *PageBlob* フォルダーにデータをコピーすると、*BlockBlob* フォルダーと *PageBlob* フォルダーのサブフォルダーごとのコンテナーが Azure Storage アカウントに作成されます。 *BlockBlob* フォルダーと *PageBlob* フォルダーの直下にコピーしたファイルは、Azure Storage アカウントの *$root* という既定のコンテナーに置かれます。 データを *AzureFile* フォルダー以下のフォルダーにコピーすると、ファイル共有が作成されます。
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Q. コンテナーに付けた名前が Azure の要件に従っていないことに気付きました。 Azure へのデータのアップロードは失敗しますか?
-A. コンテナー名に大文字が使われている場合、それらは自動的に小文字へと変換されます。 それ以外の点で名前付け規則に違反している場合 (特殊文字、他の言語など)、アップロードは失敗します。 詳細については、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)を参照してください。
+A. コンテナー名に大文字が使われている場合、それらは自動的に小文字へと変換されます。 それ以外の点で名前付け規則に違反している場合 (特殊文字、他の言語など)、アップロードは失敗します。 詳細については、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)を参照してください。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>Q. 複数の Data Box Disk にコピーしたデータは、どのようにして確認すればよいでしょうか?
 A.  データのコピーが完了した後、*DataBoxDiskImport* フォルダーに用意されている `DataBoxDiskValidation.cmd` を実行することで、検証用のチェックサムを生成できます。 ディスクが複数ある場合は、ディスクごとにコマンド ウィンドウを開いてこのコマンドを実行する必要があります。 データのサイズによっては、この操作にかなり (数時間など) 時間がかかる場合があるので注意してください。
@@ -160,7 +160,13 @@ A.  Data Box Disk は、Microsoft BitLocker の AES-128 方式で暗号化され
 A. はい。 データを検証する場合 (推奨)、ディスクにデータを追加したときは検証を再実行する必要があります。
 
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>Q. データの転送にすべてのディスクを使い切ってしまったので、ディスクを追加注文する必要があります。 簡単に注文する方法はありますか?
-A. 前回の注文を複製することができます。 複製することで前回と同じ注文が作成されるので、注文の詳細のみを編集すればよく、住所や連絡先、通知の詳細を入力する必要はありません。 
+A. 前回の注文を複製することができます。 複製することで前回と同じ注文が作成されるので、注文の詳細のみを編集すればよく、住所や連絡先、通知の詳細を入力する必要はありません。
+
+### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>Q. ManagedDisk フォルダーにデータをコピーしました。 マネージド ディスク用に指定されたリソース グループがあるマネージド ディスクが表示されません。 データは Azure にアップロードされましたか? また、どうすればデータを見つけられますか?
+A. はい。 データは Azure にアップロードされましたが、指定されたリソース グループを持つマネージド ディスクが表示されない場合は、データが無効だった可能性があります。 ページ BLOB、ブロック BLOB、Azure Files、およびマネージド ディスクが無効だった場合は、次のフォルダーに移動されます。
+ - ページ BLOB は *databoxdisk-invalid-pb-* で始まるブロック BLOB コンテナーに移動されます。
+ - Azure Files は *databoxdisk-invalid-af-* で始まるブロック BLOB コンテナーに移動されます。
+ - マネージド ディスクは *databoxdisk-invliad-md-* で始まるブロック BLOB コンテナーに移動されます。
 
 ## <a name="next-steps"></a>次の手順
 

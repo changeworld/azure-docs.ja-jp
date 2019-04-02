@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: b61db97cec77fc724933c2b4e7d3fa7f7afc0ab6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 09eed87dce65325a5b3466346b073a0d786bfb89
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884955"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861453"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>クイック スタート:C# を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -28,7 +28,12 @@ ms.locfileid: "55884955"
 
 * [Visual Studio 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 * NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。
-* Linux/macOS を使用している場合、このアプリケーションは [Mono](http://www.mono-project.com/) を使用して実行できます。
+    * Visual Studio に NuGet パッケージをインストールするには:
+        1. Solution Manager を右クリックします
+        2.  **[NuGet パッケージの管理]**
+        3. **newtonsoft.json** を探してパッケージをインストールします
+
+* Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
@@ -38,6 +43,7 @@ ms.locfileid: "55884955"
 1. Visual Studio で、新しい C# コンソール ソリューションを作成します。 次に、メイン コード ファイルに次の名前空間を追加します。
     
     ```csharp
+    using Newtonsoft.Json;
     using System;
     using System.Net.Http;
     using System.Text;
@@ -68,25 +74,26 @@ ms.locfileid: "55884955"
 
 1. クラス内に、`Search()` という関数を作成します。 新しい `HttpClient` オブジェクトを作成し、`Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加します。
 
-    1. ホストとパスを組み合わせることで、要求の URI を作成します。 その後、市場を追加し、クエリを URL でエンコードします。
-    2. `client.GetAsync()` で HTTP 応答が取得されるまで待った後、`ReadAsStringAsync()` を待機することで JSON 応答を格納します。
-    3. コンソールに文字列を出力します。
+   1. ホストとパスを組み合わせることで、要求の URI を作成します。 その後、市場を追加し、クエリを URL でエンコードします。
+   2. `client.GetAsync()` で HTTP 応答が取得されるまで待った後、`ReadAsStringAsync()` を待機することで JSON 応答を格納します。
+   3. JSON 文字列を `JsonConvert.DeserializeObject()` で書式設定し、コンソールに出力します。
 
-    ```csharp
-    async static void Search()
-    {
-        //...
-        HttpClient client = new HttpClient();
-        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+      ```csharp
+      async static void Search()
+      {
+       //...
+       HttpClient client = new HttpClient();
+       client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
 
-        string uri = host + path + "?mkt=" + market + "&q=" + System.Net.WebUtility.UrlEncode(query);
+       string uri = host + path + "?mkt=" + market + "&q=" + System.Net.WebUtility.UrlEncode(query);
 
-        HttpResponseMessage response = await client.GetAsync(uri);
+       HttpResponseMessage response = await client.GetAsync(uri);
 
-        string contentString = await response.Content.ReadAsStringAsync();
-        Console.WriteLine(JsonPrettyPrint(contentString));
-    }
-    ```
+       string contentString = await response.Content.ReadAsStringAsync();
+       dynamic parsedJson = JsonConvert.DeserializeObject(contentString);
+       Console.WriteLine(parsedJson);
+      }
+      ```
 
 2. アプリケーションの main メソッドで、`Search()` 関数を呼び出します。
     
@@ -139,7 +146,7 @@ ms.locfileid: "55884955"
         "_type": "Restaurant",
         "webSearchUrl": "https://www.bing.com/search?q=Pickles+and+Preserves...",
         "name": "Munson's Pickles and Preserves Farm",
-        "url": "http://www.princi.com/",
+        "url": "https://www.princi.com/",
         "entityPresentationInfo": {
           "entityScenario": "ListItem",
           "entityTypeHints": [

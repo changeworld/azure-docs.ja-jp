@@ -4,8 +4,8 @@ description: Web App for Containers のカスタム Docker イメージを使用
 keywords: Azure App Service, Web アプリ, Linux, Docker, コンテナー
 services: app-service
 documentationcenter: ''
-author: SyntaxC4
-manager: SyntaxC4
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.service: app-service
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/24/2017
-ms.author: cfowler
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6b57c3a172f39c596250b05024ad954a5d065440
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 98e690ab73b9a51126f4eae9ac5eff410e211957
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984819"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58435844"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Web App for Containers のカスタム Docker イメージを使用する
 
@@ -309,7 +309,7 @@ SSH では、コンテナーとクライアント間の通信をセキュリテ�
     EXPOSE 8000 2222
     ```
 
-* /bin ディレクトリ内のシェル スクリプトを使用して [ssh サービスを開始](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)してください。
+* /bin ディレクトリ内のシェル スクリプトを使用して [ssh サービスを開始](https://github.com/Azure-App-Service/node/blob/master/8.9/startup/init_container.sh#L18)してください。
  
     ```bash
     #!/bin/bash
@@ -526,6 +526,9 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 > [!NOTE]
 > *\<docker-registry-server-url>* には `https://` が必要です。
 >
+> [!NOTE]
+> dockerhub 以外のレジストリを使用する場合は、`docker-custom-image-name` にレジストリの完全修飾ドメイン名 (FQDN) を含める必要があります。  
+> Azure Container Registry の場合は、`<azure-container-registry>.azurecr.io/mydockerimage` のように記述します。
 
 コマンドは、次の JSON 文字列のような出力を表示し、構成が正常に変更されたことを示します。
 

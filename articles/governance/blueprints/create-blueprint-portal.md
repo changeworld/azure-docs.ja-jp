@@ -4,17 +4,17 @@ description: Azure Blueprints を使用して、Azure Portal から成果物を�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7aeb3cf2d56dbe20c85adca2243f5830575693e3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: fdf87bff026dee4969b3995b37c31de3ead7714b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818665"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004905"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>ポータルで Azure ブループリントを定義して割り当てる
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![ブループリントを作成する](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. **[ブループリントの名前]** で「MyBlueprint」などと指定します (文字と数字で構成し、最大 48 文字で、スペースと特殊文字は使用しない)。**[ブループリントの説明]** はこの時点では空白のままにしておきます。  **[定義の場所]** ボックスで、右側にある省略記号をクリックして、ブループリントを保存する[管理グループ](../management-groups/overview.md)またはサブスクリプションを選択し、**[選択]** をクリックします。
+1. **[ブループリントの名前]** で「MyBlueprint」などと指定します (文字と数字で構成し、最大 48 文字で、スペースと特殊文字は使用しない)。**[ブループリントの説明]** はこの時点では空白のままにしておきます。 **[定義の場所]** ボックスで、右側にある省略記号をクリックして、ブループリントを保存する[管理グループ](../management-groups/overview.md)またはサブスクリプションを選択し、**[選択]** をクリックします。
 
 1. 情報が正しいことを確認します (**[ブループリントの名前]** と **[定義の場所]** フィールドは後で変更することはできません)。ページの下部にある **[次へ: 成果物]** またはページの上部にある **[成果物]** タブをクリックします。
 
@@ -84,7 +84,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
            },
            "location": {
                "type": "string",
-               "defaultValue": "[resourceGroup().location]",
+               "defaultValue": "[resourceGroups('ResourceGroup').location]",
                "metadata": {
                    "description": "Location for all resources."
                }
@@ -129,7 +129,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ブループリントの一覧で、以前に作成したものを右クリックし、**[ブループリントの編集]** を選択します。
 
-1. **[ブループリントの説明]** に、ブループリントとそれを構成する成果物に関する情報を入力します。  この場合、たとえば次のように入力します。「このブループリントは、サブスクリプションにタグのポリシーとロールの割り当てを設定し、リソース グループを作成し、リソース テンプレートとロールの割り当てをそのリソース グループにデプロイします」。
+1. **[ブループリントの説明]** に、ブループリントとそれを構成する成果物に関する情報を入力します。 この場合、たとえば次のように入力します。「このブループリントは、サブスクリプションにタグのポリシーとロールの割り当てを設定し、リソース グループを作成し、リソース テンプレートとロールの割り当てをそのリソース グループにデプロイします」。
 
 1. ページの下部の **[次へ:成果物]**、またはページの上部の **[成果物]** タブをクリックします。
 
@@ -186,13 +186,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    > [!NOTE]
    > 選択した各サブスクリプションに対して割り当てが作成され、選択したサブスクリプションの残りの部分に変更を強制することがなく、1 つのサブスクリプションの割り当てを後で変更できるようになります。
 
-1. **[Assigned name]\(割り当て済みの名前\)** で、この割り当ての一意名を指定します。
+1. **[割り当て名]** で、この割り当ての一意名を指定します。
 
-1. **[場所]** では、管理対象 ID を作成するリージョンを選択します。 Azure Blueprint は、この管理対象 ID を使用して、割り当てられたブループリント内にすべての成果物をデプロイします。 詳細については、[Azure リソースの管理対象 ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関するページをご覧ください。
+1. **[場所]** で、マネージド ID およびサブスクリプションのデプロイ オブジェクトを作成するリージョンを選択します。 Azure Blueprint は、この管理対象 ID を使用して、割り当てられたブループリント内にすべての成果物をデプロイします。 詳細については、[Azure リソースの管理対象 ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関するページをご覧ください。
 
-1. 'v1' エントリの **[発行済み]** バージョンの **[ブループリント定義バージョン]** ドロップダウンはそのままにしておきます (既定は最新の**発行済み**バージョンです)。
+1. 'v1' エントリの **発行済み** バージョンの **ブループリント定義バージョン** ドロップダウンはそのままにしておきます (既定は最新の**発行済み**バージョンです)。
 
 1. **[割り当てのロック]** は、**[ロックしない]** の既定のままにします。 詳細については、[ブループリント リソースのロック](./concepts/resource-locking.md)に関するページを参照してください。
+
+   ![割り当て - ロックおよびマネージド ID](./media/create-blueprint-portal/assignment-locking-mi.png)
+
+1. **[マネージド ID]** の下で、既定の **[システム割り当て済み]** をそのままにします。
 
 1. サブスクリプション レベルのロールの割り当ての **[ユーザー グループまたはアプリケーション名] :共同作成者**では、ユーザー、アプリ、またはグループを検索します。
 
@@ -245,9 +249,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-- [ブループリントのライフサイクル](./concepts/lifecycle.md)を参照する
-- [静的および動的パラメーター](./concepts/parameters.md)の使用方法を理解する
-- [ブループリントの優先順位](./concepts/sequencing-order.md)のカスタマイズを参照する
-- [ブループリントのリソース ロック](./concepts/resource-locking.md)の使用方法を調べる
-- [既存の割り当ての更新](./how-to/update-existing-assignments.md)方法を参照する
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](./troubleshoot/general.md)で解決する
+- [ブループリントのライフサイクル](./concepts/lifecycle.md)を参照する。
+- [静的および動的パラメーター](./concepts/parameters.md)の使用方法を理解する。
+- [ブループリントの優先順位](./concepts/sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのリソース ロック](./concepts/resource-locking.md)の使用方法を調べる。
+- [既存の割り当ての更新](./how-to/update-existing-assignments.md)方法を参照する。
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](./troubleshoot/general.md)で解決する。

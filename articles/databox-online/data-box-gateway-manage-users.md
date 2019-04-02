@@ -6,23 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 8adec2986a286e55ee71f0fddca695d1800b5317
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 898049fb8c24529db03300ed6dcc2fef43b38ab1
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167190"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499934"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Azure portal を使用して Azure Data Box Gateway のユーザーを管理する 
 
 この記事では、Data Box Gateway のユーザーを管理する方法について説明します。 Azure Data Box Gateway の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用してユーザーを追加、変更、または削除します。
 
-> [!IMPORTANT]
-> - Data Box Gateway はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
-
-この記事では、次のことについて説明します:
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * ユーザーの追加
@@ -52,7 +49,7 @@ ms.locfileid: "49167190"
     ![[ユーザーの追加] をクリックする](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
-    > システムによって予約されていて使用できないユーザー名は、Administrator、EdgeUser、EdgeSupport、HcsSetupUser、WDAGUtilityAccount、CLIUSR、DefaultAccount、Guest です。  
+    > 以下のユーザーはシステムで予約されているため、使用できません。Administrator、EdgeUser、EdgeSupport、HcsSetupUser、WDAGUtilityAccount、CLIUSR、DefaultAccount、Guest。  
 
 3. ユーザーの作成が開始され完了すると、その旨が通知されます。 ユーザーが作成されたら、コマンド バーの **[最新の情報に更新]** をクリックして、更新されたユーザーの一覧を表示します。
 

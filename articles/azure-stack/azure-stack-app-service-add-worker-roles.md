@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 02/22/2010
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: 0ac20ee9f6197a8322bb741020aee813c690847e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 839fa7fe8374f1f85b019178d4c3fe53f7137372
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445885"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729646"
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>Azure Stack 上の App Service: インフラストラクチャまたは worker ロールを追加する
 
@@ -37,11 +37,6 @@ ms.locfileid: "56445885"
 既定の Azure Stack 上の App Service インストールでデプロイされる内容がわからない場合は、「[App Service on Azure Stack overview](azure-stack-app-service-overview.md)」(Azure Stack 上の App Service の概要) を参照してください。
 
 Azure Stack 上の Azure App Service では、仮想マシン スケール セットを使用するすべてのロールをデプロイします。そのため、このワークロードの拡張機能を活用します。 したがって、worker 階層のすべてのスケーリングは、App Service 管理者を通して行われます。
-
-> [!IMPORTANT]
-> 現在、Azure Stack のリリース ノートで確認されているように、ポータルで仮想マシン スケール セットをスケーリングすることはできません。そのため、PowerShell の例を使用してスケールアウトしてください。
->
->
 
 ## <a name="add-additional-workers-with-powershell"></a>PowerShell を使用した他の worker の追加
 
@@ -80,7 +75,7 @@ Azure Stack 上の Azure App Service では、仮想マシン スケール セ�
 
 3. App Service 管理で新しいロール インスタンスの状態を監視します。個別のロール インスタンスの状態を確認するには、一覧でそのロールの種類をクリックします。
 
-## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>[App Service Resource Provider Admin]\(App Service リソース プロバイダー管理\) 内から worker を直接追加します。
+## <a name="add-additional-workers-using-the-administration-portal"></a>管理ポータルを使用した他の worker の追加
 
 1. Azure Stack 管理ポータルにサービス管理者としてサインインします。
 

@@ -212,12 +212,10 @@ items:
         href: vmware-azure-set-up-replication.md
       - name: モビリティ サービスをデプロイする
         items:
-        - name: モビリティ サービスのインストール
+        - name: モビリティ サービスの概要とインストール
           href: vmware-physical-mobility-service-overview.md
         - name: モビリティ サービスのプッシュ インストールを準備する
           href: vmware-azure-install-mobility-service.md
-        - name: モビリティ サービスを手動でインストールする
-          href: vmware-physical-mobility-service-install-manual.md
         - name: System Center Configuration Manager を使用してモビリティ サービスをデプロイする
           href: vmware-azure-mobility-install-configuration-mgr.md
       - name: VMware VM のレプリケーションを有効にする
@@ -244,6 +242,8 @@ items:
         href: vmware-azure-install-linux-master-target.md
     - name: 管理
       items:
+      - name: VMware のモビリティ エージェントの管理
+        href: vmware-physical-manage-mobility-service.md
       - name: VMware 用の構成サーバーの管理
         href: vmware-azure-manage-configuration-server.md
       - name: プロセス サーバーの管理
@@ -276,8 +276,6 @@ items:
           href: vmware-physical-mobility-service-overview.md
         - name: モビリティ サービスのプッシュ インストールを準備する
           href: vmware-azure-install-mobility-service.md
-        - name: モビリティ サービスを手動でインストールする
-          href: vmware-physical-mobility-service-install-manual.md
         - name: System Center Configuration Manager を使用してモビリティ サービスをデプロイする
           href: vmware-azure-mobility-install-configuration-mgr.md
         - name: 'チュートリアル: ディザスター リカバリーを設定する'
@@ -286,6 +284,8 @@ items:
       href: physical-to-azure-failover-failback.md
     - name: 管理
       items:
+      - name: 物理サーバーのモビリティ エージェントの管理
+        href: vmware-physical-manage-mobility-service.md
       - name: 物理サーバー レプリケーション用の構成サーバーの管理
         href: physical-manage-configuration-server.md
       - name: プロセス サーバーの管理
@@ -468,9 +468,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 66b14ba7100b8bd8e4bb3a100e8fd10d226f555e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b486afff5bc65e58fc89d4b9f0bee4d9c0ff0b5c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317104"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418998"

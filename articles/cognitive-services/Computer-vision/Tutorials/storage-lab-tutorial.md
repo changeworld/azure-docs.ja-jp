@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 650696d1eb3979447bffa7312e91b4fe1a57652c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e5124b07a5aff67d53213149565ddae4ea6dda33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865014"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448001"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>チュートリアル:Computer Vision を使用して Azure Storage に画像メタデータを生成する
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ダイアログ ウィンドウで、**[名前]** フィールドに「vision-api-key」と入力し、**[価格レベル]** として **[F0]** を選択します。 お客様の Azure ストレージ アカウントを設定するときに選択したのと同じ**場所**を選択します。 **[リソース グループ]** で、**[既存のものを使用]** を選択し、同様に同じリソース グループを選択します。 **確認**のチェック ボックスをオンにし、**[作成]** をクリックします。
 
-    ![Computer Vision API への登録](../Images/create-vision-api.png)
+    ![Computer Vision API へのサブスクライブ](../Images/create-vision-api.png)
 
 1. お客様のリソース グループのメニューに戻り、お客様が先ほど作成した Computer Vision API サブスクリプションをクリックします。 **[エンドポイント]** の下の URL を、一瞬で簡単に取得できる場所にコピーします。 次に、**[アクセス キーを表示]** をクリックします。
 

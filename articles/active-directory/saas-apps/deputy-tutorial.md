@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 5665c3ac-5689-4201-80fe-fcc677d4430d
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b317ddf98e7b13fc8b5e335fb8d07fc6a9e1cacc
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2b0b3921640ebf6ed21860cfac75ffca195096db
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875380"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57869746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>チュートリアル:Azure Active Directory と Deputy の統合
 
@@ -106,6 +106,7 @@ Deputy で Azure AD シングル サインオンを構成するには、次の�
     ![[Deputy のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、次の形式で URL を入力します。
+
     |  |
     | ----|
     | `https://<subdomain>.<region>.au.deputy.com` |
@@ -125,6 +126,7 @@ Deputy で Azure AD シングル サインオンを構成するには、次の�
     | `https://<subdomain>.<region>.deputy.com` |
 
     b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+    
     | |
     |----|
     | `https://<subdomain>.<region>.au.deputy.com/exec/devapp/samlacs` |
@@ -185,7 +187,7 @@ Deputy で Azure AD シングル サインオンを構成するには、次の�
    
     c. [SAML SSO URL] ボックスに、「`https://<your subdomain>.deputy.com/exec/devapp/samlacs?dpLoginTo=<saml sso url>`」と入力します。
     
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [SAML SSO URL] ボックスで、`<your subdomain>` をサブドメインに置き換えます。
+    d. [SAML SSO URL] ボックスで、`<your subdomain>` をサブドメインに置き換えます。
    
     e. [SAML SSO URL] ボックスで、`<saml sso url>` を、Azure portal からコピーした **[ログイン URL]** に置き換えます。
    
@@ -209,7 +211,7 @@ Deputy で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -268,7 +270,7 @@ Azure AD ユーザーが Deputy にログインできるようにするには、
    
     c. **[Work at]\(勤務先\)** ボックスに、勤務先の名前を入力します。
    
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save & Invite (保存および招待)]** ボタンをクリックします。
+    d. **[Save & Invite (保存および招待)]** ボタンをクリックします。
 
 5. AAD アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。 Deputy から提供されている他の Deputy ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 

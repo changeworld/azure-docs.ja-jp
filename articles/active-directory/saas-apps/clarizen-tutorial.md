@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b62bfca7c78e05269e6717f09cc597f09f027829
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 48955354baf86d84c0ddc6618a99f7e806c26c2b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865707"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840880"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>チュートリアル:Azure Active Directory と Clarizen の統合
 
@@ -134,7 +134,7 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
     ![ユーザー名の下にある [Settings (設定)] のクリック](./media/clarizen-tutorial/tutorial_clarizen_001.png "設定")
 
-1. **[Global Settings (グローバル設定)]** タブをクリックします。次に、[Federated Authentication (フェデレーション認証)] の横の **[edit (編集)]** をクリックします。
+1. **[Global Settings (グローバル設定)]** タブをクリックします。次に、**[Federated Authentication (フェデレーション認証)]** の横の **[edit (編集)]** をクリックします。
 
     ![[Global Settings (グローバル設定)] タブ](./media/clarizen-tutorial/tutorial_clarizen_002.png "グローバル設定")
 
@@ -148,7 +148,7 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
     c. **[Sign-in URL]\(サインイン URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウの **[ログイン URL]** の値を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Sign-out URL]\(サインアウト URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウの **[ログアウト URL]** の値を入力します。
+    d. **[Sign-out URL]\(サインアウト URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウの **[ログアウト URL]** の値を入力します。
 
     e. **[POST を使用]** を選択します。
 
@@ -172,7 +172,7 @@ Clarizen で Azure AD シングル サインオンを構成するには、次の
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

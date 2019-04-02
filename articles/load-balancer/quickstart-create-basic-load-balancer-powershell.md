@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: 6b27c21944131d01254e75c7120520a119998132
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 0bdad2d59528775d23d882831cfdbdc09471e12e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109799"
 ---
 # <a name="get-started"></a>クイック スタート:Azure PowerShell を使用してパブリック ロード バランサーを作成する
 
@@ -229,7 +229,7 @@ $nsg = New-AzNetworkSecurityGroup `
 $nicVM1 = New-AzNetworkInterface `
 -ResourceGroupName 'myResourceGroupLB' `
 -Location 'EastUS' `
--Name 'MyNic1' `
+-Name 'MyVM1' `
 -LoadBalancerBackendAddressPool $backendPool `
 -NetworkSecurityGroup $nsg `
 -LoadBalancerInboundNatRule $natrule1 `
@@ -239,7 +239,7 @@ $nicVM1 = New-AzNetworkInterface `
 $nicVM2 = New-AzNetworkInterface `
 -ResourceGroupName 'myResourceGroupLB' `
 -Location 'EastUS' `
--Name 'MyNic2' `
+-Name 'MyVM2' `
 -LoadBalancerBackendAddressPool $backendPool `
 -NetworkSecurityGroup $nsg `
 -LoadBalancerInboundNatRule $natrule2 `
@@ -268,7 +268,7 @@ $availabilitySet = New-AzAvailabilitySet `
 $cred = Get-Credential
 ```
 
-[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになりました。 次の例では、2 つの VM と必要な仮想ネットワーク コンポーネントがまだ存在しない場合にそれらを作成します。 以下の例の VM 作成時には、あらかじめ作成しておいた NIC が VM に関連付けられます。同じ仮想ネットワーク (*myVnet*) とサブネット (*mySubnet*) が割り当てられているためです。
+[New-AzVM](/powershell/module/az.compute/new-azvm) を使用して VM を作成できるようになりました。 次の例では、2 つの VM と必要な仮想ネットワーク コンポーネントがまだ存在しない場合にそれらを作成します。 この例では、先行する手順で作成した NIC (*VM1* および *VM2*) が、同じ名前を持つ仮想マシン *VM1* と *VM2* に自動的に割り当てられ、同じ仮想ネットワーク (*myVnet*) およびサブネット (*mySubnet*) が割り当てられます。 加えて、これらの NIC はロード バランサーのバックエンド プールに関連付けられるため、VM はバックエンド プールに自動的に追加されます。
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -295,18 +295,18 @@ for ($i=1; $i -le 2; $i++)
 
 1. Load Balancer のパブリック IP アドレスを取得します。 `Get-AzPublicIPAddress` を使用して、Load Balancer のパブリック IP アドレスを取得します。
 
-  ```azurepowershell-interactive
+   ```azurepowershell-interactive
     Get-AzPublicIPAddress `
     -ResourceGroupName "myResourceGroupLB" `
     -Name "myPublicIP" | select IpAddress
-  ```
+   ```
 2. 前の手順で取得したパブリック IP アドレスを使用して、VM1 へのリモート デスクトップ接続を作成します。 
 
-  ```azurepowershell-interactive
+   ```azurepowershell-interactive
 
       mstsc /v:PublicIpAddress:4221  
   
-  ```
+   ```
 3. *VM1* の資格情報を入力して RDP セッションを開始します。
 4. VM1 で Windows PowerShell を起動し、次のコマンドを使用して IIS サーバーのインストールと既定の htm ファイルの更新を行います。
     ```azurepowershell-interactive

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI のサンプル スクリプト - Azure Monitoring がインストールされた Linux VM の作成 | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - Azure Monitoring がインストールされた Linux VM の作成
+title: Azure CLI のサンプル スクリプト - Azure Monitor がインストールされた Linux VM の作成 | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - Azure Monitor がインストールされた Linux VM の作成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 70eb7ef93d4802f30bb1343c442c414cda48464b
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6aed5f40d689fc84c82f37760e78fc7c3fe94dd1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732789"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535623"
 ---
-# <a name="monitor-a-vm-with-azure-monitoring"></a>Azure Monitoring を使用して VM を監視する
+# <a name="monitor-a-vm-with-azure-monitor"></a>Azure Monitor を使用して VM を監視する
 
 このスクリプトでは、Azure 仮想マシンを作成し、Log Analytics エージェントをインストールして、システムを Log Analytics ワークスペースに登録します。 このスクリプトを実行すると、仮想マシンがコンソールに表示されるようになります。
 
@@ -47,11 +47,11 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | 仮想マシンを作成し、作成したマシンをネットワーク カード、仮想ネットワーク、サブネット、およびNSG に接続します。 このコマンドでは、使用する仮想マシン イメージと管理者の資格情報も指定します。  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 仮想マシンに対して VM 拡張機能を実行します。 このサンプルでは、Log Analytics エージェント拡張機能を使用して、Log Analytics エージェントをインストールし Log Analytics ワークスペースに VM を登録します。 |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | 仮想マシンに対して VM 拡張機能を実行します。 このサンプルでは、Azure Monitor エージェント拡張機能を使用して、Log Analytics エージェントをインストールし Log Analytics ワークスペースに VM を登録します。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順

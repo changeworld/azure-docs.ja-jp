@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: c199073f-02ce-45c2-b515-8285d4bbbca2
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225945c3accb9a92cc4a04faa9ba029092feae57
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 35bd52904ab081e41cb43a346288234c18a7f43b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868699"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>チュートリアル:Azure Active Directory と Adobe Creative Cloud の統合
 
@@ -173,7 +173,7 @@ Adobe Creative Cloud で Azure AD のシングル サインオンを構成する
 
     c. **[IDP Login URL (IDP ログイン URL)]** ボックスで、Azure ポータルの **[サインオンの構成]** セクションからコピーした **SAML SSO サービスの URL** の値を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[IDP Binding (IDP バインディング)]** として **[HTTP - Redirect (HTTP - リダイレクト)]** を選択します。
+    d. **[IDP Binding (IDP バインディング)]** として **[HTTP - Redirect (HTTP - リダイレクト)]** を選択します。
 
     e. **[User Login Setting (ユーザー ログイン設定)]** として **[Email Address (電子メール アドレス])** を選択します。
 
@@ -205,7 +205,7 @@ Adobe Creative Cloud で Azure AD のシングル サインオンを構成する
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -249,9 +249,9 @@ Azure AD ユーザーが Adobe Creative Cloud にログインできるように�
 2. Adobe のコンソール内でフェデレーション ID としてユーザーを追加し、製品のプロファイルに割り当てます。 ユーザーの追加の詳細については、「[Add users in Adobe Admin Console (Adobe Admin Console でのユーザーの追加)](https://helpx.adobe.com/enterprise/using/users.html#Addusers)」を参照してください。 
 
 3. ここで、Adobe サインイン フォームにメール アドレス/UPN を入力し、Tab キーを押すと、Azure AD にフェデレーションされます。
-    * Web アクセス: www.adobe.com > サインイン
-    * デスクトップ アプリ ユーティリティ内 > サインイン
-    * アプリケーション内 > ヘルプ > サインイン
+   * Web アクセス: www\.adobe.com > サインイン
+   * デスクトップ アプリ ユーティリティ内 > サインイン
+   * アプリケーション内 > ヘルプ > サインイン
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

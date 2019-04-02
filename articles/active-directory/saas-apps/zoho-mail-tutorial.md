@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 9874e1f3-ade5-42e7-a700-e08b3731236a
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5ca65ca74e24579f15512722dffd0900a231230
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: dfd3afea4a5f09f1e572030b28d3511b31d81b69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873340"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904280"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho"></a>チュートリアル:Azure Active Directory と Zoho の統合
 
@@ -146,7 +146,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
    
     c. **[Change Password URL]\(パスワードの変更 URL\)** ボックスに、Azure Portal からコピーした**パスワードの変更 URL** を貼り付けます。
        
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[PublicKey]\(公開キー\)** ボックスに貼り付けます。
+    d. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[PublicKey]\(公開キー\)** ボックスに貼り付けます。
    
     e. **[アルゴリズム]** として **[RSA]** を選択します。
    
@@ -170,7 +170,7 @@ Zoho で Azure AD シングル サインオンを構成するには、次の手�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -228,9 +228,9 @@ Azure AD ユーザーが Zoho Mail にログインできるようにするには
 
     b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    c. **[Email ID]\(メール ID\)** ボックスに、ユーザーのメール ID (この例では **brittasimon@contoso.com**) を入力します。
+    c. **[メール ID]** ボックスに、ユーザーのメール ID (**brittasimon\@contoso.com** など) を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
+    d. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
    
     e. Click **OK**.  
       

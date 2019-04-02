@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 9760e6b9cdcd6f03f4377277f3426189b1fe0a61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/21/2019
+ms.openlocfilehash: f58d4e4f8b0e095fe64489fb42f78ef82c5af359
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182019"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407818"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Azure Stack 統合システムの接続モデル
 Azure Stack 統合システムの購入に関心がある場合は、このシステムがデータセンターにどのように適合するかを確認するために、Azure Stack のデプロイに関する[データセンターの統合のいくつかの考慮事項](azure-stack-datacenter-integration.md)を理解する必要があります。 さらに、Azure Stack をハイブリッド クラウド環境にどのように統合するかを決定する必要があります。 この記事では、これらの主な決定 (Azure 接続、ID ストア、および課金モデルの決定を含む) の概要について説明します。
@@ -38,12 +38,14 @@ Azure Stack をインターネットに (および Azure に) 接続した状態
 
 
 |オプション|Azure への接続|Azure からの切断|
-|-----|-----|-----|
+|-----|:-----:|:-----:|
 |Azure AD|![サポートされています](media/azure-stack-connection-models/check.png)| |
 |AD FS|![サポートされています](media/azure-stack-connection-models/check.png)|![サポートされています](media/azure-stack-connection-models/check.png)|
 |消費ベースの課金|![サポートされています](media/azure-stack-connection-models/check.png)| |
 |容量ベースの課金|![サポートされています](media/azure-stack-connection-models/check.png)|![サポートされています](media/azure-stack-connection-models/check.png)|
-|Azure Stack に更新プログラム パッケージを直接ダウンロード|![サポートされています](media/azure-stack-connection-models/check.png)|  |
+|ライセンス| マイクロソフト エンタープライズ契約または Cloud Solution Provider | Enterprise Agreement |
+|パッチと更新プログラム|更新プログラム パッケージはインターネットから Azure Stack に直接ダウンロード可能 |  必須<br><br>リムーバブル メディアと<br> 別途接続されているデバイスも必要 |
+| 登録 | 自動 | 必須<br><br>リムーバブル メディアと<br> 別途接続されているデバイスも必要 |
 
 Azure Stack デプロイに使用される Azure 接続モデルを決定したら、ID ストアと課金方法に関する、接続に依存した追加の決定を行う必要があります。 
 

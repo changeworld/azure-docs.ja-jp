@@ -3,7 +3,7 @@ title: Azure Service Fabric コンテナー アプリケーション マニフ�
 description: 複数コンテナーの Service Fabric アプリケーションのアプリケーションとサービス マニフェストの設定を構成する方法について説明します。
 services: service-fabric
 documentationcenter: na
-author: rwike77
+author: peterpogorski
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2018
-ms.author: ryanwi
-ms.openlocfilehash: f358080b3bcada5515f578ad2215fa2b135c2f2d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pepogors
+ms.openlocfilehash: 184a36b991fc49efad6f53efcaee430d8fea1ebc
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878331"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498113"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>複数コンテナーのアプリケーション マニフェストとサービス マニフェストの例
 複数コンテナーの Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Windows Server 2016 コンテナー サンプル](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) のマニフェストに基づいています。
@@ -351,7 +351,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
  詳細については、「[ContainerHost 要素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)」を参照してください。
 
 ### <a name="imagename-element"></a>ImageName 要素
-https://hub.docker.com または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
+[https://hub.docker.com](https://hub.docker.com) または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables 要素
 コンテナーまたは exe に環境変数を渡します。  詳細については、「[EnvironmentVariables 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)」を参照してください。
@@ -395,7 +395,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 詳細については、「[ContainerHost 要素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)」を参照してください。
 
 ### <a name="imagename-element"></a>ImageName 要素
-https://hub.docker.com または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
+[https://hub.docker.com](https://hub.docker.com) または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="commands-element"></a>Commands 要素
 コマンドのコンマ区切りリストをコンテナーに渡します。 詳細については、「[Commands 要素](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。

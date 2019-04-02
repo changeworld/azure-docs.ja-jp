@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 2ee5028e0766ec52c407bf0ef0e18885c11734d8
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 9458f052258993ee598ddfbca262faf8f6cb4ab9
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961055"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258549"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート:Android で Speech SDK を使用して Java で音声を認識する
 
@@ -30,7 +30,7 @@ ms.locfileid: "56961055"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、Speech サービス サブスクリプション キーが必要です。 1 つ無料で取得できます。 詳しくは、[Sppech サービスを無料で試す](get-started.md)ための記事を参照してください。
+このクイック スタートを完了するには、Speech Services サブスクリプション キーが必要です。 1 つ無料で取得できます。 詳細については、「[Speech Service を無料で試す](get-started.md)」を参照してください。
 
 ## <a name="create-and-configure-a-project"></a>プロジェクトの作成と構成
 
@@ -61,11 +61,11 @@ Android Studio が新しい Android プロジェクトを準備するまでし�
 Cognitive Services Speech SDK の現在のバージョンは `1.3.1` です。
 
 Android 用 Speech SDK は、必要なライブラリと必要な Android アクセス許可を含む [AAR (Android ライブラリ)](https://developer.android.com/studio/projects/android-library) としてパッケージ化されます。
-ホストされている Maven リポジトリの場所は https://csspeechstorage.blob.core.windows.net/maven/ です。
+Maven リポジトリ (https:\//csspeechstorage.blob.core.windows.net/maven/) でホストされています。
 
 Speech SDK を使用するためにプロジェクトを設定します。 Android Studio のメニュー バーから **[ファイル]** > **[Project Structure]** (プロジェクトの構造) を選択してプロジェクトの構造のウィンドウ開きます。 [Project Structure] (プロジェクトの構造) ウィンドウで、次の変更を行います。
 
-1. ウィンドウの左側にあるリストから、**[プロジェクト]** を選択します。 **[Default Library Repository]\(既定のライブラリ リポジトリ\)** 設定を編集して、コンマと、一重引用符で囲んだ Maven リポジトリの URL を追加します。 'https://csspeechstorage.blob.core.windows.net/maven/'
+1. ウィンドウの左側にあるリストから、**[プロジェクト]** を選択します。 **[Default Library Repository]\(既定のライブラリ リポジトリ\)** 設定を編集して、コンマと、一重引用符で囲んだ Maven リポジトリの URL を追加します。 'https:\//csspeechstorage.blob.core.windows.net/maven/'
 
    ![[Project Structure] (プロジェクトの構造) ウィンドウのスクリーンショット](media/sdk/qs-java-android-06-add-maven-repository.png)
 
@@ -137,7 +137,7 @@ Speech SDK を使用するためにプロジェクトを設定します。 Andro
 
    ![配置ターゲットの選択ウィンドウのスクリーンショット](media/sdk/qs-java-android-12-deploy.png)
 
-アプリケーションのボタンを押して音声認識に関するセクションを開始します。 次の 15 秒間の英語スピーチが Speech サービスに送信されて変換されます。 結果は Android アプリケーションと Android Studio の logcat ウィンドウに表示されます。
+アプリケーションのボタンを押して音声認識に関するセクションを開始します。 次の 15 秒間の英語スピーチが Speech Services に送信されて変換されます。 結果は Android アプリケーションと Android Studio の logcat ウィンドウに表示されます。
 
 ![Android アプリケーションのスクリーンショット](media/sdk/qs-java-android-13-gui-on-device.png)
 

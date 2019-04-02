@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7c7279f1895764c2a3ed73e824d44c2eed68240c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3df5bd177dfd88e74a8dbc72dd1966a18a61d0f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244583"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860586"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack を使用して地理的に分散されたアプリ ソリューションを作成する
 
@@ -123,7 +123,7 @@ Azure サブスクリプションと Azure Stack のインストールが必要�
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>両方のクラウドで Web アプリ デプロイを作成する
 
-1.  **WebApplication.csproj** ファイルを編集します。Runtimeidentifier を選択し、**win10 x64** を追加します。 (「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください)。
+1.  **WebApplication.csproj** ファイルを編集します。**Runtimeidentifier** を選択し、**win10 x64** を追加します。 (「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください)。
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
 
@@ -135,7 +135,7 @@ Azure サブスクリプションと Azure Stack のインストールが必要�
 
 1. **Azure Pipelines にログイン**して、ビルド定義を作成する機能を確認します。
 
-2. **-r win10-x64** コードを追加します。 これは、.Net Core を使用して自己完結型のデプロイをトリガーするために必要です。
+2. **-r win10-x64** コードを追加します。 これは、.NET Core を使用して自己完結型のデプロイをトリガーするために必要です。
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image4.png)
 
@@ -154,9 +154,9 @@ Azure DevOps および Azure DevOps Server が提供するパイプラインは�
 
 ![Alt text](media/azure-stack-solution-geo-distributed/image5.png)
 
-1.  Visual Studio Online (VSO) の [ビルドとリリース] ページの **[リリース] タブ**で **[+]** ボタンを選択して、新しいリリースを追加します。
+1. Visual Studio Online (VSO) の [ビルドとリリース] ページの **[リリース] タブ**で **[+]** ボタンを選択して、新しいリリースを追加します。
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image6.png)
+   ![Alt text](media/azure-stack-solution-geo-distributed/image6.png)
 
 2. **Azure App Service の配置**テンプレートを適用します。
 
@@ -210,7 +210,7 @@ Azure DevOps および Azure DevOps Server が提供するパイプラインは�
 
 14. Azure Stack エンドポイントの**サブスクリプション**を選択します。
 
-  ![Alt text](media/azure-stack-solution-geo-distributed/image20.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image20.png)
 
 15. **[App Service の名前]** として、Azure Stack Web アプリの名前を設定します。
 
@@ -299,11 +299,11 @@ DNS レコード ページは、**[My domains] (マイ ドメイン)** で表示
 
 ![DNS レコード ページの例](media/azure-stack-solution-geo-distributed/image28.png)
 
-1.  ドメイン名レジストラーで、**[Add or Create] (追加または作成)** を選択してレコードを作成します。 プロバイダーによっては、追加するレコード タイプごとに異なるリンクが用意されています。 プロバイダーのドキュメントを参照してください。
+1. ドメイン名レジストラーで、**[Add or Create] (追加または作成)** を選択してレコードを作成します。 プロバイダーによっては、追加するレコード タイプごとに異なるリンクが用意されています。 プロバイダーのドキュメントを参照してください。
 
-2.  CNAME レコードを追加して、サブドメインをアプリの既定のホスト名にマップします。
+2. CNAME レコードを追加して、サブドメインをアプリの既定のホスト名にマップします。
 
-  www.northwindcloud.com ドメインの例では、名前を <app\_name>.azurewebsites.net にマップする CNAME レコードを追加します。
+   www.northwindcloud.com ドメインの例では、名前を <app\_name>.azurewebsites.net にマップする CNAME レコードを追加します。
 
 CNAME を追加した後の DNS レコード ページは次の例のようになります。
 
@@ -311,47 +311,47 @@ CNAME を追加した後の DNS レコード ページは次の例のように�
 
 ### <a name="enable-the-cname-record-mapping-in-azure"></a>Azure で CNAME レコード マッピングを有効にする
 
-1.  新しいタブで、Microsoft Azure portal にサインインします。
+1. 新しいタブで、Microsoft Azure portal にサインインします。
 
-2.  App Services に移動します。
+2. App Services に移動します。
 
-3.  Web アプリを選択します。
+3. Web アプリを選択します。
 
-4.  Azure Portal のアプリ ページの左側のナビゲーションで、**[カスタム ドメイン]** を選択します。
+4. Azure Portal のアプリ ページの左側のナビゲーションで、**[カスタム ドメイン]** を選択します。
 
-5.  **[ホスト名の追加]** の横の **+** アイコンを選択します。
+5. **[ホスト名の追加]** の横の **+** アイコンを選択します。
 
-1.  `www.northwindcloud.com` のように完全修飾ドメイン名を入力します。
+1. `www.northwindcloud.com` のように完全修飾ドメイン名を入力します。
 
-2.  **[検証]** を選択します。
+2. **[検証]** を選択します。
 
-3.  指示された場合は、他の種類 (`A` または `TXT`) の追加レコードをドメイン名レジストラー DNS レコードに追加します。 Azure は、これらのレコードの値と種類を提供します。
+3. 指示された場合は、他の種類 (`A` または `TXT`) の追加レコードをドメイン名レジストラー DNS レコードに追加します。 Azure は、これらのレコードの値と種類を提供します。
 
-    a.  アプリの IP アドレスにマップするための **A** レコード。
+   a.  アプリの IP アドレスにマップするための **A** レコード。
 
-    b.  アプリの既定のホスト名 <app_name>.azurewebsites.net にマップするための **TXT** レコード。 App Service は、このレコードを、カスタム ドメインの所有者を検証するために構成時にのみ使用します。 検証後、TXT レコードを削除してください。
+   b.  アプリの既定のホスト名 <app_name>.azurewebsites.net にマップするための **TXT** レコード。 App Service は、このレコードを、カスタム ドメインの所有者を検証するために構成時にのみ使用します。 検証後、TXT レコードを削除してください。
 
-4.  ドメイン レジスター タブでこのタスクを完了し、**[ホスト名の追加]** ボタンがアクティブになるまで、再検証します。
+4. ドメイン レジスター タブでこのタスクを完了し、**[ホスト名の追加]** ボタンがアクティブになるまで、再検証します。
 
-5.  **[ホスト名レコード タイプ] が **[CNAME (www.example.com または任意のサブドメイン)]** に設定されていることを確認します。
+5. **[ホスト名レコード タイプ] が **[CNAME (www.example.com または任意のサブドメイン)]** に設定されていることを確認します。
 
-6.  **[ホスト名の追加]** を選択します。
+6. **[ホスト名の追加]** を選択します。
 
-7.  `northwindcloud.com` のように完全修飾ドメイン名を入力します。
+7. `northwindcloud.com` のように完全修飾ドメイン名を入力します。
 
-8.  **[検証]** を選択します。
+8. **[検証]** を選択します。
 
-9.  **[追加]** がアクティブになります。
+9. **[追加]** がアクティブになります。
 
 10. **[ホスト名レコード タイプ] が **[A レコード (example.com)]** に設定されていることを確認します。
 
 11. **ホスト名を追加します**。
 
-  アプリの **[カスタム ドメイン]** ページに新しいホスト名が反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
+    アプリの **[カスタム ドメイン]** ページに新しいホスト名が反映されるまで時間がかかることがあります。 データを更新するために、ブラウザーの表示を更新してみてください。
   
-  ![Alt text](media/azure-stack-solution-geo-distributed/image31.png) 
+    ![Alt text](media/azure-stack-solution-geo-distributed/image31.png) 
   
-  エラーが発生した場合は、検証エラーの通知がページの下部に表示されます。 ![検証エラー](media/azure-stack-solution-geo-distributed/image32.png)
+    エラーが発生した場合は、検証エラーの通知がページの下部に表示されます。 ![検証エラー](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
 >  上記の手順を繰り返して、ワイルドカード ドメイン (\*northwindcloud.com) をマップできます。 これにより、それぞれに個別の CNAME レコードを作成せずに、このアプリ サービスに別のサブドメインを追加できます。 レジストラーの指示に従って、この設定を構成します。
@@ -482,15 +482,15 @@ IIS または **Certreq.exe** を使用して証明書の要求を生成した�
 
 #### <a name="upload-the-ssl-certificate"></a>SSL 証明書をアップロードする
 
-1.  Web アプリの左側のナビゲーションで **[SSL 設定]** を選択します。
+1. Web アプリの左側のナビゲーションで **[SSL 設定]** を選択します。
 
-2.  **[証明書のアップロード]** を選択します。
+2. **[証明書のアップロード]** を選択します。
 
-3.  **[PFX 証明書ファイル]** で、PFX ファイルを選択します。
+3. **[PFX 証明書ファイル]** で、PFX ファイルを選択します。
 
-4.  4. **証明書のパスワード**、PFX ファイルをエクスポートするときに作成したパスワードを入力します。
+4. 1. **証明書のパスワード**、PFX ファイルをエクスポートするときに作成したパスワードを入力します。
 
-5.  **[アップロード]** を選択します。
+5. **[アップロード]** を選択します。
 
 ![証明書のアップロード](media/azure-stack-solution-geo-distributed/image38.png)
 
@@ -507,9 +507,9 @@ App Service による証明書のアップロードが完了すると、**[SSL �
 
 1.  **[SSL バインディングの追加]** ページで、ドロップダウンから保護するドメインの名前と使用する証明書を選択します。
 
-2.  **[SSL Type] \(SSL の種類)** で、[**Server Name Indication (SNI)**](http://en.wikipedia.org/wiki/Server_Name_Indication) ベースの SSL を使用するか IP ベースの SSL を使用するかを選択します。
+2.  **[SSL Type] \(SSL の種類)** で、[**Server Name Indication (SNI)**](https://en.wikipedia.org/wiki/Server_Name_Indication) ベースの SSL を使用するか IP ベースの SSL を使用するかを選択します。
 
--   **SNI ベースの SSL** - 複数の SNI ベースの SSL バインドを追加できます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](http://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。
+-   **SNI ベースの SSL** - 複数の SNI ベースの SSL バインドを追加できます。 このオプションでは、複数の SSL 証明書を使用して、同一の IP アドレス上の複数のドメインを保護できます。 最新のブラウザーのほとんど (Inernet Explorer、Chrome、Firefox、Opera など) が SNI をサポートしています (ブラウザーのサポートに関するより包括的な情報については、「[Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)」を参照してください)。
 
 -   **IP ベースの SSL** - IP ベースの SSL バインドは 1 つだけ追加できます。 このオプションでは、SSL 証明書を 1 つだけ使用して、専用のパブリック IP アドレスを保護します。 複数のドメインを保護するには、同じ SSL 証明書を使用してすべてのドメインを保護します。 これは、SSL バインドの従来のオプションです。
 
@@ -588,23 +588,23 @@ Web アプリページで、**[SSL 設定]** を選択します。 その後、*
 
 ### <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
 
-1.  ポータルの検索バーで、前のセクションで作成した **Traffic Manager プロファイル** の名前を検索し、表示された結果から Traffic Manager プロファイルを選択します。
+1. ポータルの検索バーで、前のセクションで作成した **Traffic Manager プロファイル** の名前を検索し、表示された結果から Traffic Manager プロファイルを選択します。
 
-2.  **[Traffic Manager プロファイル]** の **[設定]** セクションで、**[エンドポイント]** を選択します。
+2. **[Traffic Manager プロファイル]** の **[設定]** セクションで、**[エンドポイント]** を選択します。
 
-3.  **[追加]** を選択します。
+3. **[追加]** を選択します。
 
-4.  Azure Stack エンドポイントを追加します。
+4. Azure Stack エンドポイントを追加します。
 
-5.  **[Type] (種類)** で、**[外部エンドポイント]** を選択します。
+5. **[Type] (種類)** で、**[外部エンドポイント]** を選択します。
 
-6.  このエンドポイントの**名前**を、理想的には Azure Stack の名前を入力します。
+6. このエンドポイントの**名前**を、理想的には Azure Stack の名前を入力します。
 
-7.  完全修飾ドメイン名 (**FQDN**) については、Azure Stack Web アプリの外部 URL を使用します。
+7. 完全修飾ドメイン名 (**FQDN**) については、Azure Stack Web アプリの外部 URL を使用します。
 
-8.  地理的マッピングで、リソースが置かれているリージョン/大陸を選択します (たとえば**ヨーロッパ**)。
+8. 地理的マッピングで、リソースが置かれているリージョン/大陸を選択します (たとえば**ヨーロッパ**)。
 
-9.  表示される [Country/Region] (国/リージョン) ドロップダウンで、このエンドポイントに適用される国を選択します (たとえば**ドイツ**)。
+9. 表示される [Country/Region] (国/リージョン) ドロップダウンで、このエンドポイントに適用される国を選択します (たとえば**ドイツ**)。
 
 10. **[Add as disabled (無効として追加)]** はオフのままにします。
 
@@ -628,12 +628,12 @@ Web アプリページで、**[SSL 設定]** を選択します。 その後、*
 
 16. **[OK]** を選択します。
 
-  > [!Note]  
-  >  [All (World)] (すべて (世界)) の地理的範囲を持つ少なくとも 1 つのエンドポイントを作成して、リソースの既定のエンドポイントとして機能します。
+    > [!Note]  
+    >  [All (World)] (すべて (世界)) の地理的範囲を持つ少なくとも 1 つのエンドポイントを作成して、リソースの既定のエンドポイントとして機能します。
 
-1.  両方のエンドポイントは、追加が完了すると、**[Traffic Manager プロファイル]** に、監視ステータスが **[オンライン]** の状態で表示されます。
+1. 両方のエンドポイントは、追加が完了すると、**[Traffic Manager プロファイル]** に、監視ステータスが **[オンライン]** の状態で表示されます。
 
-  ![Alt text](media/azure-stack-solution-geo-distributed/image46.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image46.png)
 
 **グローバル エンタープライズは、地理的分散機能に依存する**
 

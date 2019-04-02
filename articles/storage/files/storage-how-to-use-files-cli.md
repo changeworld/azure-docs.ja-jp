@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: ee8dcf1488cfb407793bdb35cdbbee18b2ef15ab
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f18b2cbf31b50b27c1ae8a6d4fa4a6510781cb12
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750972"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886492"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>クイック スタート:Azure CLI を使用した Azure ファイル共有の作成および管理
 このガイドでは、Azure CLI を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
@@ -45,12 +45,12 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 ストレージ アカウントは、Azure ファイル共有またはその他のストレージ リソース (BLOB やキューなど) をデプロイできるストレージの共有プールです。 1 つのストレージ アカウントに格納できるファイル共有の数に制限はありません。 1 つの共有に格納できるファイルの数に制限はなく、ストレージ アカウントの容量の上限までファイルを格納できます。
 
-次の例では、[az storage account create](/cli/azure/storage/account) コマンドを使用して *mystorageaccount\<ランダムな数字\>* という名前のストレージ アカウントを作成し、そのストレージ アカウントの名前を `$STORAGEACCT` 変数に設定します。 ストレージ アカウント名は一意である必要があります。 `$RANDOM` を使用することで、ストレージ アカウント名に数字を追加して一意な名前にすることができます。 
+次の例では、[az storage account create](/cli/azure/storage/account) コマンドを使用して *mystorageaccount\<ランダムな数字\>* という名前のストレージ アカウントを作成し、そのストレージ アカウントの名前を `$STORAGEACCT` 変数に設定します。 ストレージ アカウント名は一意である必要があるので、必ず "mystorageacct" を一意名に置き換えてください。
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \
     --resource-group "myResourceGroup" \
-    --name "mystorageacct$RANDOM" \
+    --name "mystorageacct" \
     --location eastus \
     --sku Standard_LRS \
     --query "name" | tr -d '"')
@@ -87,7 +87,7 @@ SMB を使用してファイル共有をマウントするには、お使いの 
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>ファイル REST プロトコルで Azure ファイル共有を使用する 
-ファイル REST プロトコルは直接使用する (つまり手動で REST HTTP 呼び出しを作成する) こともできますが、ファイル REST プロトコルを使用する最も一般的な方法は、Azure CLI、[Azure PowerShell モジュール](storage-how-to-use-files-powershell.md)、または Azure Storage SDK を使用することです。いずれの方法でも、任意のスクリプト言語またはプログラミング言語でファイル REST プロトコルの便利なラッパーが提供されます。  
+ファイル REST プロトコルは直接使用する (手動で REST HTTP 呼び出しを作成する) こともできますが、ファイル REST プロトコルを使用する最も一般的な方法は、Azure CLI、[Azure PowerShell モジュール](storage-how-to-use-files-powershell.md)、または Azure Storage SDK を使用することです。いずれの方法でも、任意のスクリプト言語またはプログラミング言語でファイル REST プロトコルの便利なラッパーが提供されます。  
 
 Azure Files のほとんどのユーザーは、SMB プロトコルを介して Azure ファイル共有を操作したいと考えていると予想されます。その方が、使用できることを期待している既存のアプリケーションやツールを使用できるためです。しかし、SMB よりもファイル REST API を使用する方が有益な理由がいくつかあります。その理由を次に示します。
 

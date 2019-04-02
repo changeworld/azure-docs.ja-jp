@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 48688c58115a002508f9df0b242ea3e2d2d94719
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 49a703164b302443d8b50ba950cf23b8601cb599
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855437"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480704"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Azure REST API を使用して Azure Network Watcher でパケット キャプチャを管理する
 
@@ -50,7 +50,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 
 ## <a name="log-in-with-armclient"></a>ARMClient でログインする
 
-```PowerShell
+```powershell
 armclient login
 ```
 

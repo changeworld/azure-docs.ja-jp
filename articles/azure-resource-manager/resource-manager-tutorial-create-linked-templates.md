@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/16/2019
+ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5f8dffa01b2d7dd7fa966d2b417019f1d2afb1bc
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 25dda12ca33165cfc64ffd949a2068acb5150b84
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867016"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097151"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>チュートリアル:リンクされた Azure Resource Manager テンプレートの作成
 
 リンクされた Azure Resource Manager テンプレートを作成する方法について説明します。 リンクされたテンプレートを使用すると、あるテンプレートから別のテンプレートを呼び出すことができます。 これは、テンプレートをモジュール化する場合に役立ちます。 このチュートリアルでは、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)」で使用したものと同じテンプレートを使用し、仮想マシン、仮想ネットワーク、その他の依存リソース (ストレージ アカウントを含む) を作成します。 リンクされたテンプレートにストレージ アカウントのリソース作成を分離します。
+
+リンクされたテンプレートの呼び出しは、関数の呼び出しと似ています。  また、リンクされたテンプレートにパラメーター値を渡す方法と、リンクされたテンプレートから "戻り値" を取得する方法についても説明します。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -34,6 +36,8 @@ ms.locfileid: "56867016"
 > * 依存関係を構成する
 > * テンプレートのデプロイ
 > * 追加のプラクティス
+
+詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](./resource-group-linked-templates.md)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -67,95 +71,97 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 3. **[開く]** を選択して、ファイルを開きます。
 4. テンプレートによって定義されたリソースは、5 つあります。
 
-    * `Microsoft.Storage/storageAccounts` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。 
-    * `Microsoft.Network/publicIPAddresses` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。 
-    * `Microsoft.Network/virtualNetworks` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。 
-    * `Microsoft.Network/networkInterfaces` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。 
-    * `Microsoft.Compute/virtualMachines` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
+   * [`Microsoft.Storage/storageAccounts`](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)
+   * [`Microsoft.Network/publicIPAddresses`](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
+   * [`Microsoft.Network/virtualNetworks`](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
+   * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
+   * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
-    テンプレートをカスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
+     テンプレートをカスタマイズする前にテンプレート スキーマの基本をある程度理解することは役に立ちます。
 5. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
 6. **[ファイル]** > **[名前を付けて保存]** を選択し、このファイルの別のコピーを **linkedTemplate.json** という名前で作成します。
 
 ## <a name="create-the-linked-template"></a>リンクされたテンプレートを作成する
 
-リンクされたテンプレートにより、ストレージ アカウントが作成されます。 リンクされたテンプレートは、ストレージ アカウントを作成するスタンドアロンのテンプレートとほぼ同じです。 このチュートリアルでは、リンクされたテンプレートから、値をメイン テンプレートに渡し返す必要があります。 この値は `outputs` 要素で定義されます。
+リンクされたテンプレートにより、ストレージ アカウントが作成されます。 リンクされたテンプレートは、ストレージ アカウントを作成するスタンドアロンのテンプレートとして使用できます。 このチュートリアルでは、リンクされたテンプレートで 2 つのパラメーターを受け取り、値をメイン テンプレートに渡し返します。 この "戻り" 値は `outputs` 要素で定義されます。
 
-1. linkedTemplate.json が開いていない場合、このファイルを Visual Studio Code で開きます。
+1. **linkedTemplate.json** が開いていない場合、このファイルを Visual Studio Code で開きます。
 2. 次の変更を行います。
 
-    * ストレージ アカウントを除くすべてのリソースを削除します。 合計で 4 つのリソースを削除します。
+    * **location** 以外のパラメーターをすべて削除します。
+    * **storageAccountName** というパラメーターを追加します。 
+        ```json
+        "storageAccountName":{
+          "type": "string",
+          "metadata": {
+              "description": "Azure Storage account name."
+          }
+        },
+        ```
+        ストレージ アカウント名と場所は、パラメーターとして、メイン テンプレートからリンクされたテンプレートに渡されます。
+        
+    * **variables** 要素とすべての変数定義を削除します。
+    * ストレージ アカウント以外のすべてのリソースを削除します。 合計で 4 つのリソースを削除します。
     * ストレージ アカウント リソースの **name** 要素の値を次の目的で更新します。
 
         ```json
           "name": "[parameters('storageAccountName')]",
         ```
-    * **variables** 要素とすべての変数定義を削除します。
-    * **location** 以外のパラメーターをすべて削除します。
-    * **storageAccountName** というパラメーターを追加します。 ストレージ アカウント名は、パラメーターとして、メイン テンプレートから、リンクされたテンプレートに渡されます。
 
-        ```json
-        "storageAccountName":{
-        "type": "string",
-        "metadata": {
-            "description": "Azure Storage account name."
-        }
-        },
-        ```
     * **outputs** 要素を更新します。その結果、次のようになります。
-
+    
         ```json
         "outputs": {
-            "storageUri": {
-                "type": "string",
-                "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
-              }
+          "storageUri": {
+              "type": "string",
+              "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
+            }
         }
         ```
-        **storageUri**は、メイン テンプレートの仮想マシン リソース定義で必要です。  この値を、出力値としてメイン テンプレートに値を渡し返します。
+       **storageUri**は、メイン テンプレートの仮想マシン リソース定義で必要です。  この値を、出力値としてメイン テンプレートに値を渡し返します。
 
-    完了すると、テンプレートは次のようになります。
+        完了すると、テンプレートは次のようになります。
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-          "storageAccountName":{
-            "type": "string",
-            "metadata": {
-              "description": "Azure Storage account name."
+        ```json
+        {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "storageAccountName": {
+              "type": "string",
+              "metadata": {
+                "description": "Azure Storage account name."
+              }
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "description": "Location for all resources."
+              }
             }
           },
-          "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]",
-            "metadata": {
-              "description": "Location for all resources."
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "name": "[parameters('storageAccountName')]",
+              "location": "[parameters('location')]",
+              "apiVersion": "2018-07-01",
+              "sku": {
+                "name": "Standard_LRS"
+              },
+              "kind": "Storage",
+              "properties": {}
+            }
+          ],
+          "outputs": {
+            "storageUri": {
+              "type": "string",
+              "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
             }
           }
-        },
-        "resources": [
-          {
-            "type": "Microsoft.Storage/storageAccounts",
-            "name": "[parameters('storageAccountName')]",
-            "apiVersion": "2016-01-01",
-            "location": "[parameters('location')]",
-            "sku": {
-              "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {}
-          }
-        ],
-        "outputs": {
-            "storageUri": {
-                "type": "string",
-                "value": "[reference(parameters('storageAccountName')).primaryEndpoints.blob]"
-              }
         }
-    }
-    ```
+        ```
 3. 変更を保存します。
 
 ## <a name="upload-the-linked-template"></a>リンクされたテンプレートをアップロードする
@@ -227,7 +233,7 @@ echo "Linked template URI with SAS token: $templateURI"
 
 メイン テンプレートは azuredeploy.json と呼ばれます。
 
-1. azuredeploy.json が開いていない場合、Visual Studio Code で開きます。
+1. **azuredeploy.json** が開いていない場合、Visual Studio Code で開きます。
 2. テンプレートからストレージ アカウント リソース定義を削除します。
 
     ```json
@@ -302,8 +308,6 @@ echo "Linked template URI with SAS token: $templateURI"
     "*linkedTemplate*" は、デプロイ リソースの名前です。  
 3. 前のスクリーンショットに示すように、**properties/diagnosticsProfile/bootDiagnostics/storageUri** を更新します。
 4. 変更後のテンプレートを保存します。
-
-詳細については、「[Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用](./resource-group-linked-templates.md)」を参照してください。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 

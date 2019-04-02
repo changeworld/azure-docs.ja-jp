@@ -106,7 +106,7 @@ Log Analytics は、フォレンジック分析などのセキュリティ分析
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応できるようにします。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
 さらに、Azure Security Center は、すぐに対応できるようにアラートや推奨事項が表示された単一のダッシュ ボードを提供することで、セキュリティ操作に役立てることができます。 多くの場合、Azure Security Center コンソール内で 1 回クリックすれば問題を修復することができます。
-## <a name="applications"></a>[アプリケーション]
+## <a name="applications"></a>アプリケーション
 このセクションでは、アプリケーション セキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="web-application-vulnerability-scanning"></a>Web アプリケーションの脆弱性のスキャン

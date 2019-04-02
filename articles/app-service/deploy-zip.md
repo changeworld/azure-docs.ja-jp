@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 011caaad2f9cb3b0b891df172002dcb6b6aa8206
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 1f94544a2e7a26ab00432a3564bb752c71254844
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607053"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484882"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>ZIP または WAR ファイルを使用した Azure App Service へのアプリのデプロイ
 
@@ -100,7 +100,7 @@ curl -X POST -u <username> --data-binary @"<war_file_path>" https://<app_name>.s
 
 次の例では、[Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod)を使って、.war ファイルを含む要求を送信します。 プレースホルダー `<deployment_user>`、`<deployment_password>`、`<zip_file_path>`、`<app_name>` を置き換えます。
 
-```PowerShell
+```powershell
 $username = "<deployment_user>"
 $password = "<deployment_password>"
 $filePath = "<war_file_path>"

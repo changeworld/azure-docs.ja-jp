@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4581173f142170248a48d99683804bdb67f1703e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2f8e833088ffdf819e387fd28ae88508d5fe6d00
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250684"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519930"
 abstract:
   description: 次の Azure Machine Learning 製品を使用して、インテリジェントなアルゴリズムをアプリや Web サイトに組み込む方法を学習します。  チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
 documentType: LandingData
@@ -38,8 +38,8 @@ sections:
   - text: <b>クイック スタート:</b>
     type: paragraph
   - items:
-    - html: <a href="service/quickstart-create-workspace-with-python">Python を使用して作業を開始する</a>
-    - html: <a href="service/quickstart-get-started">Azure portal を使用して作業を開始する</a>
+    - html: <a href="service/quickstart-run-cloud-notebook">クラウドで実験を実行する</a> (インストール不要)
+    - html: <a href="service/quickstart-run-local-notebook">ローカルのノートブック サーバーを使用して実験を実行する</a> (SDK のローカル インストール)
     style: unordered
     type: list
   - text: <b>画像分類のチュートリアルと MNIST データ:</b>

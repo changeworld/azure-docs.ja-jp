@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: How to
-ms.date: 11/26/2018
+ms.topic: conceptual
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
-ms.openlocfilehash: cb26aae743d267866a8a7d1de76a319a0a681a08
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 3fb5c3deeddb6f3ee381ca45df76feebf3405b21
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252066"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766575"
 ---
 # <a name="scheduling-a-test"></a>テストのスケジュール設定
 
@@ -53,7 +53,7 @@ ms.locfileid: "55252066"
 
 ![代替テキスト](media/vaas_test_pass_parameters.png)
 
-ソリューションのワークフローを定義します。 ワークフローには、ソリューションのテストに使用されるプロセス ステップが含まれます。
+ワークフロー内のすべてのテストに適用されるパラメーターを指定します。
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
 2. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
@@ -63,22 +63,23 @@ ms.locfileid: "55252066"
 
 ## <a name="select-tests-to-run"></a>実行するテストの選択
 
-ワークフローで実行するテストを選択します。
+選択したテストは、ワークフローの作成後にスケジュールされます。
 
 1. ワークフローで実行するテストを選択します。
 
     テストの共通パラメーター (前のセクションで指定したパラメーター) を上書きする場合は、横の **[編集]** リンクを選択して新しい値を指定します。
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
+
 1. **[次へ]** を選択して、ワークフローを確認します。
 
 ## <a name="review-and-submit"></a>確認と送信
 
-ワークフローを確認、作成し、スケジュールします。
+ワークフローの作成を完了します。
 
 1. 表示された情報を確認します。
 
-    サービスにより、提供した情報を使用してワークフローが作成され、選択したテストがスケジュールされます。
+    サービスにより、指定した情報を使用してワークフローが作成され、選択したテストがスケジュールされます。
 
     誤りがある場合は、**[前へ]** ボタンを使用して前のセクションに移動します。
 

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 01/15/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 10d8683724622f164299016a801e1960e0a868c7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 11028561cf6742cfd5e8c0c882de16ff35ebf0ef
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770049"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486370"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>PowerShell コマンドレットで Batch リソースを管理する
 
@@ -36,13 +36,13 @@ Batch API、Azure portal、Azure コマンド ライン インターフェイス
 
 * **Connect-AzAccount** コマンドレットを実行してサブスクリプションに接続します (Azure Batch コマンドレットは、Azure Resource Manager モジュールに付属しています)。
 
-  ```PowerShell
+  ```powershell
   Connect-AzAccount
   ```
 
 * **Batch プロバイダーの名前空間に登録します**。 この操作は、**サブスクリプションごとに 1 回**実行するだけでかまいません。
   
-  ```PowerShell
+  ```powershell
   Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
   ```
 
@@ -52,13 +52,13 @@ Batch API、Azure portal、Azure コマンド ライン インターフェイス
 
 **New-AzBatchAccount** は、指定したリソース グループに Batch アカウントを作成します。 リソース グループがまだない場合は、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドレットを実行して作成します。 **location** パラメーターで Azure リージョンのいずれか (例: "Central US") を指定します。 例: 
 
-```PowerShell
+```powershell
 New-AzResourceGroup –Name MyBatchResourceGroup –Location "Central US"
 ```
 
 次に、リソース グループに Batch アカウントを作成します。 <*account_name*> にアカウントの名前を指定し、リソース グループの場所と名前を指定します。 Batch アカウントの作成は、完了までにしばらく時間がかかる場合があります。 例: 
 
-```PowerShell
+```powershell
 New-AzBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
 ```
 
@@ -69,7 +69,7 @@ New-AzBatchAccount –AccountName <account_name> –Location "Central US" –Res
 
 **Get-AzBatchAccountKeys** は、Azure Batch アカウントに関連付けられているアクセス キーを示します。 たとえば、作成したアカウントのプライマリ キーとセカンダリ キーを取得するには、次のように実行します。
 
- ```PowerShell
+ ```powershell
 $Account = Get-AzBatchAccountKeys –AccountName <account_name>
 
 $Account.PrimaryAccountKey
@@ -81,7 +81,7 @@ $Account.SecondaryAccountKey
 
 **New-AzBatchAccountKey** は、Azure Batch アカウントの新しいプライマリ アカウント キーまたはセカンダリ アカウント キーを生成します。 たとえば、Batch アカウントの新しいプライマリ キーを生成するには、次のように入力します。
 
-```PowerShell
+```powershell
 New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 ```
 
@@ -92,7 +92,7 @@ New-AzBatchAccountKey -AccountName <account_name> -KeyType Primary
 
 **Remove-AzBatchAccount** は、Batch アカウントを削除します。 例: 
 
-```PowerShell
+```powershell
 Remove-AzBatchAccount -AccountName <account_name>
 ```
 
@@ -104,7 +104,7 @@ Batch リソースを管理するための認証は、共有キー認証また�
 
 ### <a name="shared-key-authentication"></a>共有キー認証
 
-```PowerShell
+```powershell
 $context = Get-AzBatchAccountKeys -AccountName <account_name>
 ```
 
@@ -113,7 +113,7 @@ $context = Get-AzBatchAccountKeys -AccountName <account_name>
 
 ### <a name="azure-active-directory-authentication"></a>Azure Active Directory 認証
 
-```PowerShell
+```powershell
 $context = Get-AzBatchAccount -AccountName <account_name>
 ```
 
@@ -129,7 +129,7 @@ Batch プールを作成または更新する際は、コンピューティン�
 
 オペレーティング システムの設定は、**New-AzBatchPool** を実行するときに、PSCloudServiceConfiguration オブジェクトまたは PSVirtualMachineConfiguration オブジェクトで渡します。 たとえば、以下のスニペットは、仮想マシンの構成を選び、Ubuntu Server 18.04-LTS のイメージを使用して、Standard_A1 サイズのコンピューティング ノードで Batch プールを作成しています。 ここでは、**VirtualMachineConfiguration** パラメーターに PSVirtualMachineConfiguration オブジェクトとして *$configuration* 変数を指定しています。 **BatchContext** パラメーターには、先ほど定義した *$context* 変数を BatchAccountContext オブジェクトとして指定しています。
 
-```PowerShell
+```powershell
 $imageRef = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("UbuntuServer","Canonical","18.04.0-LTS")
 
 $configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration" -ArgumentList @($imageRef, "batch.node.ubuntu 18.04")
@@ -147,7 +147,7 @@ Batch アカウントで作成されたエンティティを照会するには�
 
 たとえば、**Get-AzBatchPools** を使用してプールを検索します。 既定では、これは、既に BatchAccountContext オブジェクトが *$context*に格納されていると仮定して、自分のアカウントのすべてのプールを照会します。
 
-```PowerShell
+```powershell
 Get-AzBatchPool -BatchContext $context
 ```
 
@@ -155,7 +155,7 @@ Get-AzBatchPool -BatchContext $context
 
 **Filter** パラメーターを使用して OData フィルターを指定すると、関心のあるオブジェクトのみを検索できます。 たとえば、ID が "myPool" で始まるすべてのプールを検索できます。
 
-```PowerShell
+```powershell
 $filter = "startswith(id,'myPool')"
 
 Get-AzBatchPool -Filter $filter -BatchContext $context
@@ -167,7 +167,7 @@ Get-AzBatchPool -Filter $filter -BatchContext $context
 
 OData フィルターに代わる方法として、 **ID** パラメーターを使用します。 "myPool" という ID の特定のプールを照会するには:
 
-```PowerShell
+```powershell
 Get-AzBatchPool -Id "myPool" -BatchContext $context
 ```
 
@@ -177,7 +177,7 @@ Get-AzBatchPool -Id "myPool" -BatchContext $context
 
 既定では、各コマンドレットは最大で 1000 のオブジェクトを返します。 この制限に達した場合は、オブジェクトが少なくなるようにフィルターで絞り込むか、 **MaxCount** パラメーターを使用して明示的に最大値を設定してください。 例: 
 
-```PowerShell
+```powershell
 Get-AzBatchTask -MaxCount 2500 -BatchContext $context
 ```
 
@@ -189,13 +189,13 @@ Batch コマンドレットは、コマンドレット間でデータを送信�
 
 たとえば、自分のアカウントのすべてのタスクを検索して表示します。
 
-```PowerShell
+```powershell
 Get-AzBatchJob -BatchContext $context | Get-AzBatchTask -BatchContext $context
 ```
 
 プール内のすべてのコンピューティング ノードを再起動します。
 
-```PowerShell
+```powershell
 Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatchComputeNode -BatchContext $context
 ```
 
@@ -205,25 +205,25 @@ Get-AzBatchComputeNode -PoolId "myPool" -BatchContext $context | Restart-AzBatch
 
 **作成** する:
 
-```PowerShell
+```powershell
 New-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
 ```
 
 **追加** する:
 
-```PowerShell
+```powershell
 New-AzBatchApplicationPackage -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication" -ApplicationVersion "1.0" -Format zip -FilePath package001.zip
 ```
 
 アプリケーションの**既定のバージョン**を設定する:
 
-```PowerShell
+```powershell
 Set-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication" -DefaultVersion "1.0"
 ```
 
 アプリケーションのパッケージを**一覧表示**する:
 
-```PowerShell
+```powershell
 $application = Get-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
 
 $application.ApplicationPackages
@@ -231,13 +231,13 @@ $application.ApplicationPackages
 
 アプリケーション パッケージを**削除**する:
 
-```PowerShell
+```powershell
 Remove-AzBatchApplicationPackage -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication" -ApplicationVersion "1.0"
 ```
 
 アプリケーションを**削除**する:
 
-```PowerShell
+```powershell
 Remove-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_group_name> -ApplicationId "MyBatchApplication"
 ```
 
@@ -250,7 +250,7 @@ Remove-AzBatchApplication -AccountName <account_name> -ResourceGroupName <res_gr
 
 プールのノードがそこに参加するタイミングでアプリケーション パッケージをデプロイするには、`-ApplicationPackageReference` オプションを指定してプールを作成します。 まず、**PSApplicationPackageReference** オブジェクトを作成し、プールのコンピューティング ノードにデプロイするアプリケーション ID とパッケージのバージョンでオブジェクトを構成します。
 
-```PowerShell
+```powershell
 $appPackageReference = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
 
 $appPackageReference.ApplicationId = "MyBatchApplication"
@@ -260,7 +260,7 @@ $appPackageReference.Version = "1.0"
 
 次に、プールを作成し、`ApplicationPackageReferences` オプションの引数としてパッケージ参照オブジェクトを指定します。
 
-```PowerShell
+```powershell
 New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 
@@ -273,7 +273,7 @@ New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServi
 
 既存のプールに割り当てられているアプリケーションを更新するには、まず、必要なプロパティ (アプリケーション ID とパッケージのバージョン) を指定して PSApplicationPackageReference オブジェクトを作成します。
 
-```PowerShell
+```powershell
 $appPackageReference = New-Object Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference
 
 $appPackageReference.ApplicationId = "MyBatchApplication"
@@ -284,7 +284,7 @@ $appPackageReference.Version = "2.0"
 
 次に、バッチからプールを取得し、既存のパッケージをすべて削除します。新しいパッケージ参照を追加し、新しいプール設定で Batch サービスを更新します。
 
-```PowerShell
+```powershell
 $pool = Get-AzBatchPool -BatchContext $context -Id "PoolWithAppPackage"
 
 $pool.ApplicationPackageReferences.Clear()
@@ -296,7 +296,7 @@ Set-AzBatchPool -BatchContext $context -Pool $pool
 
 これで、Batch サービスでプールのプロパティが更新されました。 ただし、プールのコンピューティング ノードに新しいアプリケーション パッケージを実際にデプロイするには、それらのノードを再起動するか、再イメージ化する必要があります。 次のコマンドを使用して、プール内のすべてのノードを再起動できます。
 
-```PowerShell
+```powershell
 Get-AzBatchComputeNode -PoolId "PoolWithAppPackage" -BatchContext $context | Restart-AzBatchComputeNode -BatchContext $context
 ```
 

@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/12/2018
-ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b498283ee117935438c55e5162e92acdb0f5ebfe
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249682"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649902"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>Azure Stack Marketplace の Windows Server に関する FAQ
 
@@ -38,7 +38,7 @@ ms.locfileid: "55249682"
 
 Microsoft は、次の 2 つのバージョンの Windows Server イメージを Azure Stack Marketplace で提供しています。
 
-- **従量課金制**: これらのイメージでは、正規の価格の Windows メーターが実行されます。 
+- **従量課金制**: これらのイメージでは、正規の価格の Windows メーターが実行されます。
    対象ユーザーとしては、"*使用量課金モデル*" を利用するマイクロソフト エンタープライズ契約 (EA) のお客様や、SPLA ライセンスの使用を希望しない CSP にお勧めします。
 - **ライセンス持ち込み (BYOL)**: これらのイメージでは、基本メーターが実行されます。
    対象ユーザーとしては、Windows Server ライセンスを所有する EA のお客様や、SPLA ライセンスを使用する CSP にお勧めします。
@@ -74,20 +74,20 @@ Azure Stack で Windows Server 仮想マシンのライセンス認証を行う�
 
 ### <a name="how-can-i-verify-that-my-virtual-machine-is-activated"></a>自分の仮想マシンがライセンス認証されたことは、どのようにして確認できますか?
 
-管理者特権でのコマンド プロンプトで、次のコマンドを実行します。 
+管理者特権でのコマンド プロンプトで、次のコマンドを実行します。
 
 ```shell
 slmgr /dlv
-``` 
+```
 
 正しくライセンス認証されていれば、`slmgr` の出力にその旨が明記され、ホスト名が表示されます。 ディスプレイ上の透かしに頼らないようにしてください。これらは最新ではない可能性があるほか、ご利用のものとは異なる仮想マシンからの表示である可能性もあります。
 
 ### <a name="my-vm-is-not-set-up-to-use-avma-how-can-i-fix-it"></a>私の VM は AVMA を使用するように設定されていません。解決方法を教えてください。
 
-管理者特権でのコマンド プロンプトで、次のコマンドを実行します。 
+管理者特権でのコマンド プロンプトで、次のコマンドを実行します。
 
 ```shell
-slmgr /ipk <AVMA key> 
+slmgr /ipk <AVMA key>
 ```
 
 イメージに使用するキーについては、記事「[Automatic Virtual Machine Activation (仮想マシンの自動ライセンス認証)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11))」を参照してください。

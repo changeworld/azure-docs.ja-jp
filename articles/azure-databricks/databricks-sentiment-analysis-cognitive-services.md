@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 12/07/2018
-ms.openlocfilehash: 6509db136524d90db11b83acb701bda71c541060
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 54a7f308163cb2463554da32f0fae8b897c0742f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882622"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080541"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用した、ストリーミング データに対する感情分析
 
@@ -40,6 +40,10 @@ ms.locfileid: "56882622"
 > * ツイートに対して感情分析を実行する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+
+> [!Note]
+> **Azure 無料試用版サブスクリプション**を使用してこのチュートリアルを実行することはできません。
+> 無料アカウントを使用して Azure Databricks クラスターを作成するには、クラスターを作成する前に、プロファイルにアクセスし、サブスクリプションを**従量課金制**に変更します。 詳細については、[Azure 無料アカウント](https://azure.microsoft.com/free/)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次の値を指定します。
 
-    |プロパティ  |[説明]  |
+    |プロパティ  |説明  |
     |---------|---------|
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
@@ -97,11 +101,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     以下を除くすべての値は、既定値のままにします。
 
-    * クラスターの名前を入力します。
-    * この記事では、**4.0 (ベータ)** ランタイムを使用してクラスターを作成します。
-    * **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+   * クラスターの名前を入力します。
+   * この記事では、**4.0 (ベータ)** ランタイムを使用してクラスターを作成します。
+   * **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
 
-    **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
+     **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
 ## <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
 
@@ -125,16 +129,16 @@ Twitter アプリケーションについて取得した値を保存します。
 
 このチュートリアルでは、Twitter API を使用してツイートを Event Hubs に送信します。 さらに、[Apache Spark Event Hubs コネクタ](https://github.com/Azure/azure-event-hubs-spark)を使用して、Azure Event Hubs に対するデータの読み取りと書き込みを行います。 これらの API をクラスターの一部として使用するには、それらをライブラリとして Azure Databricks に追加し、Spark クラスターに関連付けます。 次の手順では、ワークスペースの **[共有]** フォルダーにライブラリを追加する方法について説明します。
 
-1.  Azure Databricks ワークスペースで **[ワークスペース]** を選択し、**[共有]** を右クリックします。 コンテキスト メニューで **[作成]** > **[ライブラリ]** の順に選択します。
+1. Azure Databricks ワークスペースで **[ワークスペース]** を選択し、**[共有]** を右クリックします。 コンテキスト メニューで **[作成]** > **[ライブラリ]** の順に選択します。
 
-    ![[ライブラリの追加] ダイアログ ボックス](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-option.png "[ライブラリの追加] ダイアログ ボックス")
+   ![[ライブラリの追加] ダイアログ ボックス](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-option.png "[ライブラリの追加] ダイアログ ボックス")
 
 2. [新しいライブラリ] ページの **[ソース]** で、**[Maven Coordinate]\(Maven 座標\)** を選択します。 **[座標]** には、追加したいパッケージの座標を入力します。 ここでは、このチュートリアルで使用するライブラリの Maven 座標です。
 
-    * Spark Event Hubs コネクタ - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`
-    * Twitter API - `org.twitter4j:twitter4j-core:4.0.6`
+   * Spark Event Hubs コネクタ - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`
+   * Twitter API - `org.twitter4j:twitter4j-core:4.0.6`
 
-    ![Maven 座標を入力する](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "Maven 座標を入力する")
+     ![Maven 座標を入力する](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "Maven 座標を入力する")
 
 3. **[ライブラリの作成]** を選択します。
 
@@ -164,13 +168,13 @@ Twitter アプリケーションについて取得した値を保存します。
 
     ![Cognitive Services アカウントを作成する](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "Cognitive Services アカウントを作成する")
 
-    - Cognitive Services アカウントの名前を入力します。
-    - アカウントが作成される Azure サブスクリプションを選択します。
-    - Azure の場所を選択します。
-    - サービスの価格レベルを選択します。 Cognitive Services の価格の詳細については、[料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/)を参照してください。
-    - 新しいリソース グループを作成するか、既存のリソース グループを選択するかを指定します。
+   - Cognitive Services アカウントの名前を入力します。
+   - アカウントが作成される Azure サブスクリプションを選択します。
+   - Azure の場所を選択します。
+   - サービスの価格レベルを選択します。 Cognitive Services の価格の詳細については、[料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/)を参照してください。
+   - 新しいリソース グループを作成するか、既存のリソース グループを選択するかを指定します。
 
-    **作成**を選択します。
+     **作成**を選択します。
 
 5. アカウントの作成後、**[概要]** タブで **[アクセス キーを表示]** を選択します。
 

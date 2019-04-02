@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 6a0061c03a10f5a5bd518c9ea01d8edd542e4e39
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1ffeab91933bfcba9f3ffa0b557e849a1e6890f5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470564"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486157"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Azure 診断 1.2 構成スキーマ
 > [!NOTE]
@@ -28,7 +28,7 @@ Azure 診断は、Azure Monitor、Application Insights、Log Analytics など、
 
  次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義をダウンロードします。  
 
-```PowerShell  
+```powershell  
 (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File –Encoding utf8 -FilePath 'C:\temp\WadConfig.xsd'  
 ```  
 

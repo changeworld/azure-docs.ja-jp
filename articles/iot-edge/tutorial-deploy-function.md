@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: d8912b67656cb9862f31b03eb9a899dfc650f377
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1fba2c4e5191d4c827035362a8eb6876fcbb67cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053367"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081748"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル: Azure 関数を IoT Edge モジュールとして展開する
 
@@ -27,6 +27,7 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 > * フィルター処理されたデータを表示する。
 
 <center>
+
 ![図 - チュートリアルのアーキテクチャ、関数モジュールのステージングと展開](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
 

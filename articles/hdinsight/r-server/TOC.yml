@@ -102,21 +102,6 @@ items:
       - name: HDInsight アプリを Azure Marketplace に発行する
         href: ../hdinsight-apps-publish-applications.md
         maintainContext: true
-      - name: 発行したアプリのインストール - Cask Data Application Platform (CDAP)
-        href: ../hdinsight-apps-install-cask.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Dataiku
-        href: ../hdinsight-apps-install-dataiku.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Datameer
-        href: ../hdinsight-apps-install-datameer.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - H2O
-        href: ../hdinsight-apps-install-h2o.md
-        maintainContext: true
-      - name: 発行したアプリのインストール - Streamsets
-        href: ../hdinsight-apps-install-streamsets.md
-        maintainContext: true
   - name: セキュリティ保護
     items:
     - name: HDInsight で SSH を使用する
@@ -208,9 +193,6 @@ items:
     - name: ワークフローに Apache Oozie を使用する
       href: ../hdinsight-use-oozie-linux-mac.md
       maintainContext: true
-    - name: 時間ベースの Apache Oozie コーディネーターを使用する
-      href: ../hdinsight-use-oozie-coordinator-time.md
-      maintainContext: true
     - name: クラスターとサービスのポートと URI
       href: ../hdinsight-hadoop-port-settings-for-services.md
       maintainContext: true
@@ -260,9 +242,6 @@ items:
         maintainContext: true
       - name: Apache Hive の設定によるメモリ不足エラーの解決
         href: ../hdinsight-hadoop-hive-out-of-memory-error-oom.md
-        maintainContext: true
-      - name: Apache Ambari ビューを使用した Apache TEZ ジョブのデバッグ
-        href: ../hdinsight-debug-ambari-tez-view.md
         maintainContext: true
       - name: Apache Hive クエリの最適化
         href: ../hdinsight-hadoop-optimize-hive-query.md
@@ -339,9 +318,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 5fb36b3fa7170db727199346749be5fd855c981d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: c6978307f4c1843921c2fe4974c27d29de2ad073
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361661"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447901"

@@ -243,6 +243,8 @@ items:
     items:
     - name: VM の前払い - Azure の予約
       href: prepay-reserved-vm-instances.md
+    - name: RedHat ソフトウェアの前払い
+      href: prepay-rhel-software-charges.md
     - name: SUSE ソフトウェアの前払い
       href: prepay-suse-software-charges.md
     - name: Azure の予約とは
@@ -565,9 +567,9 @@ items:
     href: faq.md
 - name: トラブルシューティング
   href: ../troubleshooting/index.md
-ms.openlocfilehash: a6563c71032c5b96217189648871f91817781392
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: f7503998b2dd5149f2e12fe5e8f6891b0b33d386
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225027"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649911"

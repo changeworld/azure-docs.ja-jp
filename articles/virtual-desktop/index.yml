@@ -1,17 +1,17 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 06b95c24914574a2aea59c6c597e3d9b3d5097cc
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b9f4cd78288d1b9868a823c5e0ccd0b68b324229
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58318737"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400239"
 documentType: LandingData
-title: Windows Virtual Desktop のドキュメント
+title: Windows Virtual Desktop プレビューのドキュメント
 metadata:
-  title: Windows Virtual Desktop のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
-  description: Windows Virtual Desktop for Azure は、クラウドで仮想化されたマルチユーザー Windows 10 Enterprise エクスペリエンスです。
+  title: Windows Virtual Desktop プレビューのドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  description: Azure 用の Windows Virtual Desktop プレビューは、クラウドで仮想化されたマルチユーザー Windows 10 Enterprise エクスペリエンスです。
   author: Heidilohr
-  manager: dansimp
+  manager: daveba
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page
@@ -23,11 +23,11 @@ sections:
 - title: 概要
   items:
   - type: paragraph
-    text: Windows Virtual Desktop とその使用方法について説明します。 チュートリアル、操作方法、リファレンス コンテンツなどによって、ホスト プールとテナントを設定し、Windows Virtual Desktop 環境のユーザーにロールを割り当てる方法が示されます。
+    text: Windows Virtual Desktop プレビューとその使用方法について説明します。 チュートリアル、操作方法、リファレンス コンテンツなどによって、ホスト プールとテナントを設定し、Windows Virtual Desktop 環境のユーザーにロールを割り当てる方法が示されます。
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/virtual-desktop/overview">Windows Virtual Desktop とは (プレビュー)</a>
+    - html: <a href="/azure/virtual-desktop/overview">Windows Virtual Desktop プレビューとは</a>
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
@@ -44,4 +44,4 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell (プレビュー)</a>
+    - html: <a href="/powershell/windows-virtual-desktop/overview">PowerShell</a>

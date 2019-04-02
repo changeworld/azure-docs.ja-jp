@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: f9a7cb7c-ff67-40dc-872c-1fa35f9dd03b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc6bcd30a9835fe3cece103b9a773fb24cadbe4a
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: e331ea54a290bc794b04bb0d8e0ea653ef12bc19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889745"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860722"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>チュートリアル:Azure Active Directory と Evidence.com の統合
 
@@ -130,9 +130,9 @@ Evidence.com で Azure AD シングル サインオンを構成するには、�
 
 1. 別の Web ブラウザー ウィンドウで、Evidence.com テナントに管理者としてログインし、 **[Admin] \(管理)** タブに移動します。
 
-2.  **[Agency Single Sign On] \(代理店のシングル サインオン)**
+2. **[Agency Single Sign On] \(代理店のシングル サインオン)**
 
-3.  **[SAML Based Single Sign On] \(SAML ベースのシングル サインオン)**
+3. **[SAML Based Single Sign On] \(SAML ベースのシングル サインオン)**
 
 4. Azure portal に表示される **[Azure AD 識別子]**、**[ログイン URL]**、**[ログアウト URL]** の値を、Evidence.com の対応するフィールドにコピーします。
 
@@ -158,7 +158,7 @@ Evidence.com で Azure AD シングル サインオンを構成するには、�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

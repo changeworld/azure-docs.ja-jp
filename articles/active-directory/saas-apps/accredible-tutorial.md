@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7284dfb6-df62-41f1-a4a4-1b8322b7ef44
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f816a6629ef561067f5a40ba15064b98b34c99
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2f8be215f1a972539aff47347395f041d89d4e81
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871436"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892848"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>チュートリアル:Azure Active Directory と Accredible の統合
 
@@ -154,7 +154,7 @@ Accredible で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -189,7 +189,7 @@ Accredible で Azure AD シングル サインオンを構成するには、次�
 
 ### <a name="create-accredible-test-user"></a>Accredible のテスト ユーザーの作成
 
-このセクションでは、Accredible で Britta Simon というユーザーを作成します。 ユーザーの emailid を  [Accredible サポート チーム](mailto:support@accredible.com)に送信する必要があり、メールを確認したサポートチームから送られてくる招待メールを使って、Accredible プラットフォームにユーザーを追加できます。
+このセクションでは、Accredible で Britta Simon というユーザーを作成します。 ユーザーの電子メール ID を  [Accredible サポート チーム](mailto:support@accredible.com)に送信する必要があり、メールを確認したサポートチームから送られてくる招待メールを使って、Accredible プラットフォームにユーザーを追加できます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

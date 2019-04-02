@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: da7750198f76bc9e17c23b1347e9fc78262aa06c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8b0d78d33c0780b05ac6f4bd8a21c6423d801f4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086957"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445062"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>VMware VM のディザスター リカバリー用の構成サーバーを管理する
 
@@ -180,7 +180,7 @@ Azure Site Recovery コンポーネントのサポート ステートメント�
 
 ### <a name="parameters"></a>parameters
 
-|パラメーター名| type | 説明| 値|
+|パラメーター名| Type | 説明| 値|
 |-|-|-|-|
 | /ServerMode|必須|構成サーバーとプロセス サーバーの両方をインストールするか、プロセス サーバーだけをインストールするかを指定します。|CS<br>PS|
 |/InstallLocation|必須|コンポーネントがインストールされているフォルダー。| コンピューター上の任意のフォルダー|
@@ -234,7 +234,7 @@ ProxyPassword="Password"
 
 必要に応じて、PowerShell を使って構成サーバーを削除できます。
 
-1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0)します。
+1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)します。
 2. 次のコマンドを使用して Azure アカウントにサインインします。
 
     `Connect-AzureRmAccount`

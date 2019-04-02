@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 08/16/2018
+ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: ec7221837145db73386f146aa839b83ee23c1510
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 273922c8cf48c24ff3b1b55fa44b36b69e061057
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865108"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863901"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>クイック スタート:Python 用の Bing Web Search SDK を使用する
 
@@ -81,7 +81,9 @@ python -m pip install azure-cognitiveservices-search-websearch
 応答に Web ページ、画像、ニュース、または動画が含まれている場合は、それぞれの最初の結果が出力されます。
 
 1. 普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。
-2. このサンプル コードをプロジェクトにコピーします。  
+
+1. このサンプル コードをプロジェクトにコピーします。  
+
     ```python
     # Import required modules.
     from azure.cognitiveservices.search.websearch import WebSearchAPI
@@ -161,19 +163,22 @@ python -m pip install azure-cognitiveservices-search-websearch
     else:
         print("Didn't find any videos...")
     ```
-3. `subscription_key` を有効なサブスクリプション キーに置き換えます。
-4. プログラムを実行します。 (例: `python your_program.py`)。
+
+1. `subscription_key` を有効なサブスクリプション キーに置き換えます。
+
+1. プログラムを実行します。 (例: `python your_program.py`)。
 
 ## <a name="define-functions-and-filter-results"></a>関数の定義と結果のフィルター処理
 
-これで Bing Web Search API の最初の呼び出しを実行できたので、次は SDK 機能がよくわかるいくつかの関数を調べて、クエリとフィルター処理の結果を調整しましょう。 各関数は、前のセクションで作成した Python プログラムに追加することができます。
+Bing Web Search API の最初の呼び出しを行ったので、関数をいくつか見てみましょう。 以下のセクションでは、クエリを調整して結果をフィルター処理するための SDK の機能に注目します。 各関数は、前のセクションで作成した Python プログラムに追加することができます。
 
 ### <a name="limit-the-number-of-results-returned-by-bing"></a>Bing から返される結果の数の制限
 
-このサンプルでは、`count` パラメーターと `offset` パラメーターを使用して、SDK の [`search` メソッド](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)によって返される結果の数を制限しています。 最初の結果の `name` と `URL` が出力されます。
+このサンプルでは、`count` パラメーターと `offset` パラメーターを使用して、SDK の [`search` メソッド](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)によって返される結果の数を制限しています。 最初の結果の `name` と `url` が出力されます。
 
 1. 次のコードを Python プロジェクトに追加します。
-    ```python
+
+   ```python
     # Declare the function.
     def web_results_with_count_and_offset(subscription_key):
         client = WebSearchAPI(CognitiveServicesCredentials(subscription_key))
@@ -203,13 +208,15 @@ python -m pip install azure-cognitiveservices-search-websearch
         except Exception as err:
             print("Encountered exception. {}".format(err))
     ```
-2. プログラムを実行します。
+
+1. プログラムを実行します。
 
 ### <a name="filter-for-news-and-freshness"></a>ニュースと鮮度のフィルター処理
 
-このサンプルでは、`response_filter` パラメーターと `freshness` パラメーターを使用して、SDK の [`search` メソッド](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)による検索結果をフィルター処理します。 返される検索結果は、ニュース記事と、Bing が過去 24 時間以内に検出したページだけに制限されます。 最初の結果の `name` と `URL` が出力されます。
+このサンプルでは、`response_filter` パラメーターと `freshness` パラメーターを使用して、SDK の [`search` メソッド](/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations)による検索結果をフィルター処理します。 返される検索結果は、ニュース記事と、Bing が過去 24 時間以内に検出したページだけに制限されます。 最初の結果の `name` と `url` が出力されます。
 
 1. 次のコードを Python プロジェクトに追加します。
+
     ```python
     # Declare the function.
     def web_search_with_response_filter(subscription_key):
@@ -251,13 +258,15 @@ python -m pip install azure-cognitiveservices-search-websearch
     # Call the function.
     web_search_with_response_filter(subscription_key)
     ```
-2. プログラムを実行します。
+
+1. プログラムを実行します。
 
 ### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>セーフ サーチ、回答数、昇格フィルターの使用
 
-このサンプルでは、`answer_count`、`promote`、および `safe_search` パラメーターを使用して、SDK の [`search` メソッド](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)による検索結果をフィルター処理します。 最初の結果の `name` と `URL` が表示されます。
+このサンプルでは、`answer_count`、`promote`、および `safe_search` パラメーターを使用して、SDK の [`search` メソッド](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python)による検索結果をフィルター処理します。 最初の結果の `name` と `url` が表示されます。
 
 1. 次のコードを Python プロジェクトに追加します。
+
     ```python
     # Declare the function.
     def web_search_with_answer_count_promote_and_safe_search(subscription_key):
@@ -294,7 +303,8 @@ python -m pip install azure-cognitiveservices-search-websearch
         except Exception as err:
             print("Encountered exception. {}".format(err))
     ```
-2. プログラムを実行します。
+
+1. プログラムを実行します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

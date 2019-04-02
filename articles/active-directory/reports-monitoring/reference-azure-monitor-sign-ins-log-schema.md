@@ -3,7 +3,7 @@ title: Azure Monitor (プレビュー) の Azure Active Directory サインイ�
 description: Azure Monitor (プレビュー) で使用する Azure AD サインイン ログ スキーマについて説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0834333dbec9f8aa23092339ea41d0b6cc5aba08
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78ce1de5b5b9ff46efcc9e7faed9aa147b53211a
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169719"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439058"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor-preview"></a>Azure Monitor (プレビュー) での Azure AD サインイン ログ スキーマを解釈する
 
@@ -154,7 +154,7 @@ ms.locfileid: "56169719"
 | フィールド名 | 説明 |
 |------------|-------------|
 | Time | 日付と時刻 (UTC)。 |
-| resourceId | この値はマップされていないため、このフィールドを無視しても問題ありません。  |
+| ResourceId | この値はマップされていないため、このフィールドを無視しても問題ありません。  |
 | OperationName | サインインの場合、この値は常に *Sign-in activity* です。 |
 | OperationVersion | クライアントによって要求された REST API のバージョン。 |
 | Category | サインインの場合、この値は常に *SignIn* です。 | 

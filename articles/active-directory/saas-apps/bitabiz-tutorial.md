@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 1a51e677-c62b-4aee-9c61-56926aaaa899
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3cd6a299cdad93cf9e403cb04a4b7dfda85cbb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 19e46c77d3204cc6cd037e5ef8252aa7598d624d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883115"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880706"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>チュートリアル:Azure Active Directory と BitaBIZ の統合
 
@@ -152,7 +152,7 @@ BitaBIZ で Azure AD シングル サインオンを構成するには、次の�
 
     c. **[Azure AD SAML Entity ID]\(Azure AD SAML エンティティ ID\)** ボックスに、Azure portal からコピーした **[Azure AD 識別子]** を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[Azure AD Signing Certificate (Base64 encoded)]\(Azure AD 署名証明書 (Base64 でエンコード済み)\)** ボックスに貼り付けます。
+    d. ダウンロードした**証明書 (Base64)** ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[Azure AD Signing Certificate (Base64 encoded)]\(Azure AD 署名証明書 (Base64 でエンコード済み)\)** ボックスに貼り付けます。
 
     e. ビジネス メール ドメイン名 (mycompany.com) を **[ドメイン名]** ボックスに追加して、SSO を、このメール ドメインと共に (必須ではありません) 会社のユーザーに割り当てます。
 
@@ -178,7 +178,7 @@ BitaBIZ で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -242,7 +242,7 @@ BitaBIZ の場合、プロビジョニングは手動で行います。
 
     c. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Date of employment]\(雇用日\)** で日付を選択します。
+    d. **[Date of employment]\(雇用日\)** で日付を選択します。
 
     e. ユーザーに対して設定できる他の任意のユーザー属性があります。 詳細については、[従業員の設定ドキュメント](https://help.bitabiz.dk/manage-or-set-up-your-account/on-boarding-employees/new-employee)を参照してください。
 
