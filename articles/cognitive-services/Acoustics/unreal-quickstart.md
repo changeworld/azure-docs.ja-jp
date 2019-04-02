@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1314e393d292145ef112e700abf6ab1ef199db7d
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 1575c4f4a1c96a84823f76e8e98e76de3c2ace86
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138168"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313024"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Project Acoustics Unreal/Wwise のクイック スタート
 このクイック スタートでは、Unreal Engine と Wwise 用に提供されるサンプル コンテンツを使用して、Project Acoustics の設計コントロールを試します。
@@ -25,7 +25,7 @@ ms.locfileid: "58138168"
 * [Wwise 2018.1.6](https://www.audiokinetic.com/products/wwise/)
 
 ## <a name="download-the-sample-package"></a>サンプル パッケージをダウンロードする
-[Project Acoustics Unreal と Wwise のサンプル パッケージ](http://www.microsoft.com/downloads/details.aspx?FamilyID=f03dff5a-5780-462e-87ef-e6d039d0748d)をダウンロードします。 サンプル パッケージには、Unreal Engine プロジェクト、その Unreal プロジェクトの Wwise プロジェクト、および Project Acoustics Wwise プラグインが含まれています。
+[Project Acoustics Unreal と Wwise のサンプル パッケージ](https://www.microsoft.com/download/details.aspx?id=58090)をダウンロードします。 サンプル パッケージには、Unreal Engine プロジェクト、その Unreal プロジェクトの Wwise プロジェクト、および Project Acoustics Wwise プラグインが含まれています。
 
 ## <a name="set-up-the-project-acoustics-sample-project"></a>Project Acoustics サンプル プロジェクトを設定する
 Project Acoustics Unreal/Wwise サンプル プロジェクトを設定するには、最初に Project Acoustics プラグインを Wwise にインストールする必要があります。 その後、Wwise バイナリを Unreal プロジェクトにデプロイし、Project Acoustics をサポートするために Wwise の Unreal プラグインを調整します。
@@ -33,26 +33,26 @@ Project Acoustics Unreal/Wwise サンプル プロジェクトを設定するに
 ### <a name="install-the-project-acoustics-wwise-plugin"></a>Project Acoustics Wwise プラグインをインストールする
 Wwise ランチャーを開き、**[Plugins]\(プラグイン\)** タブの **[Install New Plugins]\(新しいプラグインのインストール\)** で、**[Add From Directory]\(ディレクトリから追加\)** を選択します。 ダウンロードしたパッケージに含まれた `AcousticsWwisePlugin\ProjectAcoustics` ディレクトリを選択します。
 
-![Wwise プラグインをインストールする](media/wwise-install-new-plugin.png)
+![Wwise プラグインのインストール オプションを示している Wwise ランチャーのスクリーンショット](media/wwise-install-new-plugin.png)
 
 ### <a name="add-wwise-binaries-to-the-project-acoustics-unreal-sample-project"></a>Wwise バイナリを Project Acoustics Unreal サンプル プロジェクトに追加する
 Wwise ランチャーから、**[Unreal Engine]** タブをクリックし、**[Recent Unreal Engine Projects]\(最近使った Unreal Engine プロジェクト\)** の横にあるハンバーガー メニューをクリックして、**[Browse for project]\(プロジェクトの参照\)** を選択します。 パッケージ `AcousticsSample\AcousticsGame\AcousticsGame.uproject` のサンプル Unreal プロジェクトの `.uproject` ファイルを開きます。
 
-![Wwise Unreal のタブ](media/wwise-unreal-tab.png)
+![Wwise ランチャーの Unreal タブのスクリーンショット](media/wwise-unreal-tab.png)
 
 その後、Project Acoustics サンプル プロジェクトの横にある **[Integrate Wwise in Project]\(プロジェクトに Wwise を統合\)** をクリックします。
 
-![Wwise Acoustics Game Unreal プロジェクト](media/wwise-acoustics-game-project.png)
+![Acoustics ゲームの Unreal プロジェクトを示す Wwise ランチャーのスクリーンショット](media/wwise-acoustics-game-project.png)
 
 ### <a name="extend-wwises-unreal-plugin-functionality"></a>Wwise の Unreal プラグイン機能を拡張する
 Project Acoustics Unreal プラグインでは、Wwise Unreal プラグイン API から追加動作を公開する必要があります。 Project Acoustics Unreal プラグインで提供されるバッチ ファイルを実行して、これらの変更を自動化します。
 * `AcousticsGame\Plugins\ProjectAcoustics\Resources` 内で、`PatchWwise.bat` を実行します。
 
-    ![Wwise のパッチ スクリプト](media/patch-wwise-script.png)
+    ![Wwise プロジェクトを修正するスクリプトを示す Windows エクスプローラー ウィンドウのスクリーンショット](media/patch-wwise-script.png)
 
 * DirectX SDK がインストールされていない場合は、`AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` の DXSDK_DIR を含む行をコメントアウトする必要があります
 
-    ![DXSDK のコメント アウト](media/directx-sdk-comment.png)
+    ![DXSDK がコメント アウトされているコード エディターのスクリーンショット](media/directx-sdk-comment.png)
 
 ### <a name="open-the-unreal-project"></a>Unreal プロジェクトを開きます。 
 モジュールの再構築を求められたら、[Yes]\(はい\) をクリックします。
@@ -65,9 +65,9 @@ Unreal エディターの再生ボタンをクリックして、シーンがど�
 ### <a name="modify-occlusion-and-transmission"></a>閉鎖と伝送を変更する
 各 Unreal サウンド アクターにはソースごとの Project Acoustics 設計コントロールがあります。
 
-![DemoSceneSoundSourceDesignControls](media/demo-scene-sound-source-design-controls.png)
+![Unreal エディターの Acoustics 設計コントロールのスクリーンショット](media/demo-scene-sound-source-design-controls.png)
 
-**[Occlusion]\(閉鎖\)** の乗数が 1 より大きい場合 (既定値は 1)、閉鎖は誇張されます。 1 未満に設定すると、閉鎖の影響はわずかになります。
+**[Occlusion]\(閉鎖\)** の乗数が 1 より大きい場合 (既定値は 1)、閉鎖は誇張されます。 1 未満に設定すると、閉鎖の効果はわずかになります。
 
 壁通過伝送を有効にするには、**[Transmission (dB)]\(伝送 (dB)\)** スライダーを最下位レベルまで下げます。 
 
@@ -79,7 +79,7 @@ Unreal エディターの再生ボタンをクリックして、シーンがど�
 ### <a name="modify-distance-based-attenuation"></a>距離ベースの減衰を変更する
 Project Acoustics Wwise ミキサー プラグインでは、Wwise に組み込まれているソースごとの距離ベースの減衰が優先されます。 この曲線を変更すると、ドライ パス レベルが変更されます。 Project Acoustics プラグインでは、シミュレーションと設計コントロールによって指定されたウェット/ドライの組み合わせを維持するためにウェット レベルが調整されます。
 
-![DemoSoundsAttenuation](media/demo-sounds-attenuation.png)
+![シミュレーションの境界の前に 0 に減衰する Wwise 減衰曲線パネルのスクリーンショット](media/demo-sounds-attenuation.png)
 
 Project Acoustics では、シミュレートされたプレーヤーの各位置を中心とした "シミュレーション リージョン" ボックス内の計算を行います。 サンプル パッケージ内の音響資産はシミュレーション領域の半径が 45 m でベイクされており、減衰は 45 m の前で 0 になるように設計されています。 この減衰は厳密な要件ではありませんが、リスナーの 45 m 以内のジオメトリのみで音が遮られるという点に注意してください。
 

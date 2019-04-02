@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3355f9068d35f29483e257e5c236275f76a1c9d0
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 8ae9ad4d1101c3b42c46c51546ac82e5b4a134c8
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58008605"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519853"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql-preview"></a>クイック スタート:T-SQL を使用してワークロード分類子を作成する (プレビュー)
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このクイック スタートは、SQL Data Warehouse が既に用意されていて、CONTROL データベース権限を持っていることを前提としています。 作成する必要がある場合は、[ポータルでの作成と接続](create-data-warehouse-portal.md)に関する記事に従って、**mySampleDataWarehouse** という名前のデータ ウェアハウスを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure Portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -51,7 +51,9 @@ END
 ;
 ```
 
-## <a name="create-theceo-user-in-mysampledatawarehouse"></a>mySampleDataWarehouse で TheCEO ユーザーを作成する
+## <a name="create-user"></a>ユーザーの作成
+
+mySampleDataWarehouse で "TheCEO" という [ユーザーを作成します](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest)
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'THECEO')
@@ -61,7 +63,9 @@ END
 ;
 ```
 
-## <a name="create-a-workload-classifier-for-theceo-with-high-importance"></a>TheCEO に対して重要度の高いワークロード分類子を作成する
+## <a name="create-a-workload-classifier"></a>ワークロード分類子を作成する
+
+"TheCEO" に対して重要度の高い[ワークロード分類子](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)を作成します。
 
 ```sql
 DROP WORKLOAD CLASSIFIER [wgcTheCEO];

@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/11/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 79648e30e832a056016b8842fdc39e27e206c9ee
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: e85e006a54fcb4bb677932b3e1ff9fa79352dba9
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57897802"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519835"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-edge"></a>Azure portal を使用して Azure Data Box Edge の共有を管理する
 
 この記事では、Azure Data Box Edge の共有を管理する方法について説明します。 Azure Data Box Edge の管理は、Azure portal またはローカル Web UI を通じて行えます。 Azure portal を使用し、共有に関連付けられているストレージ アカウントの共有を追加、削除、更新したり、ストレージ キーを同期したりすることができます。
-
-> [!IMPORTANT]
-> Edge はプレビュー段階です。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
-
 
 ## <a name="about-shares"></a>共有について
 
@@ -67,8 +63,10 @@ ms.locfileid: "57897802"
 
         ![NFS 共有を追加する](media/data-box-edge-manage-shares/add-nfs-share.png)
 
-7. **[作成]** をクリックして共有を作成します。 共有の作成が進行中であることが通知されます。 指定した設定で共有を作成すると、**[共有]** ブレードは更新され、新しい共有が反映されます。
- 
+7. Edge コンピューティング モジュールから共有に簡単にアクセスするには、ローカル マウント ポイントを使用します。 **[Edge コンピューティングで共有を使用する]** を選択すると、共有が作成された後、自動的にマウントされます。 このオプションが選択されている場合、Edge モジュールでもローカル マウント ポイントでコンピューティングを使用できます。
+
+8. **[作成]** をクリックして共有を作成します。 共有の作成が進行中であることが通知されます。 指定した設定で共有を作成すると、**[共有]** ブレードは更新され、新しい共有が反映されます。
+
 ## <a name="add-a-local-share"></a>ローカル共有を追加する
 
 1. Azure portal で Data Box Edge リソースに移動し、**[ゲートウェイ]、[共有]** の順に移動します。 コマンド バーの **+ [共有の追加]** を選択します。
@@ -93,11 +91,56 @@ ms.locfileid: "57897802"
 
     共有の作成が進行中であることが通知されます。 指定した設定で共有を作成すると、**[共有]** ブレードは更新され、新しい共有が反映されます。
 
-    ![[共有] ブレードの更新の表示](media/data-box-edge-manage-shares/add-local-share-4.png)
+    ![[共有] ブレードの更新の表示](media/data-box-edge-manage-shares/add-local-share-3.png)
     
     共有を選択すると、この共有の Edge コンピューティング モジュールのローカル マウント ポイントが表示されます。
 
     ![ローカル共有の詳細の表示](media/data-box-edge-manage-shares/add-local-share-4.png)
+
+## <a name="mount-a-share"></a>共有のマウント
+
+Data Box Edge デバイス上でコンピューティングを構成する前に共有を作成した場合、その共有をマウントする必要があります。 共有をマウントするには、次の手順を行います。
+
+
+1. Azure portal で Data Box Edge リソースに移動し、**[ゲートウェイ]、[共有]** の順に移動します。 共有の一覧からマウントする共有を選択します。 **[コンピューティングに使用]** 列で、選択した共有の状態に**無効**と表示されます。
+
+    ![共有を選択する](media/data-box-edge-manage-shares/select-share-mount.png)
+
+2. **[マウント]** を選択します。
+
+    ![[マウント] の選択](media/data-box-edge-manage-shares/select-mount.png)
+
+3. 確認を求められたら、**[はい]** を選択します。 これにより、共有がマウントされます。
+
+    ![マウントを確認する](media/data-box-edge-manage-shares/confirm-mount.png)
+
+4. 共有がマウントされたら、共有の一覧に移動します。 **[コンピューティングに使用]** 列の共有の状態が**有効**と表示されていることを確認できます。
+
+    ![マウントされた共有](media/data-box-edge-manage-shares/share-mounted.png)
+
+5. もう一度共有を選択し、共有に使用するローカル マウント ポイントを表示します。 Edge コンピューティング モジュールでは、共有にこのローカル マウント ポイントを使用します。
+
+    ![共有用のローカル マウント ポイント](media/data-box-edge-manage-shares/share-mountpoint.png)
+
+## <a name="unmount-a-share"></a>共有のマウントの解除
+
+共有のマウントを解除するには、Azure portal で次の手順を行います。
+
+1. Azure portal で Data Box Edge リソースに移動し、**[ゲートウェイ]、[共有]** の順に移動します。
+
+    ![共有を選択する](media/data-box-edge-manage-shares/select-share-unmount.png)
+
+2. 共有の一覧で、マウントを解除する共有を選択します。 マウントを解除する共有がどのモジュールからも使用されていないことを確認する必要があります。 共有がモジュールによって使用されている場合、該当するモジュールで問題が発生します。 **[マウント解除]** を選択します。
+
+    ![[マウント解除] を選択する](media/data-box-edge-manage-shares/select-unmount.png)
+
+3. 確認を求められたら、**[はい]** を選択します。 これにより、共有のマウントが解除されます。
+
+    ![マウント解除を確認する](media/data-box-edge-manage-shares/confirm-unmount.png)
+
+4. 共有のマウントが解除されたら、共有の一覧に移動します。 **[コンピューティングに使用]** 列の共有の状態に**無効**と表示されることを確認できます。
+
+    ![マウントが解除された共有](media/data-box-edge-manage-shares/share-unmounted.png)
 
 ## <a name="delete-a-share"></a>共有を削除する
 
@@ -123,7 +166,8 @@ ms.locfileid: "57897802"
 更新機能を使用すると、共有の内容を更新できます。 共有を更新すると、前回の更新後にクラウドに追加された BLOB とファイルを含むすべての Azure オブジェクトを見つけるために、検索が開始されます。 追加ファイルがダウンロードされ、デバイス上の共有の内容が更新されます。
 
 > [!IMPORTANT]
-> ローカル共有は更新できません。
+> - ローカル共有は更新できません。
+> - アクセス許可とアクセス制御リスト (ACL) は、更新操作の間で保持されません。 
 
 共有を更新するには、Azure portal で次の手順を実行します。
 

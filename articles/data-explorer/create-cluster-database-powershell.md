@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: 650bdc5cdf99645bc2be6c8e85737dacd10a6b27
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: 86fbf5801e9ff1c8bd9dead8be14aeeea1b58a29
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287383"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472482"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -25,20 +25,21 @@ ms.locfileid: "58287383"
 > * [Python](create-cluster-database-python.md)
 >  
 
-
-このクイック スタートでは、PowerShell を使用して、Azure Data Explorer クラスターとデータベースを作成する方法について説明します。
-
-Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で PowerShell コマンドレットとスクリプトを実行して、[Azure Data Explorer](https://docs.microsoft.com/azure/kusto/ ) を作成および構成できます。
-
-[**Az.Kusto**](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto )。 Azure PowerShell と **Az.Kusto** を使用すると、次のタスクを実行できます。
+Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 このクイック スタートでは、PowerShell を使用して、クラスターとデータベースを 1 つずつ作成します。 [Az.Kusto](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto) を使って Windows、Linux、または [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) で PowerShell コマンドレットとスクリプトを実行し、Azure Data Explorer のクラスターとデータベースを作成および構成できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Azure CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには `az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="configure-parameters"></a>パラメーターを構成する
 
-Azure Cloud Shell でコマンドを実行している場合、次の手順は必要ありません。 ローカル環境で CLI を実行している場合、次の手順に従って Azure にサインインし、現在のサブスクリプションを設定します。
+Azure Cloud Shell でコマンドを実行している場合、次の手順は必要ありません。 ローカルで CLI を実行している場合、手順 1、2 に従って Azure にサインインし、現在のサブスクリプションを設定します。
 
 1. 次のコマンドを実行して、Azure にサインインします。
 
@@ -46,12 +47,12 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
     Connect-AzAccount
     ```
 
-2. クラスターを作成するサブスクリプションを設定します。
+1. クラスターを作成するサブスクリプションを設定します。
 
     ```azurepowershell-interactive
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
-3. Az.Kusto モジュールをお使いのデバイスにインストールします。
+1. ローカルまたは Azure Cloud Shell で Azure CLI を実行している場合、ご利用のドライブに Az.Kusto モジュールをインストールする必要があります。
     
     ```azurepowershell-interactive
      Install-Module -Name Az.Kusto  
@@ -67,13 +68,13 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
-   | Name | *mykustocluster* | クラスターの任意の名前。|
+   | 名前 | *mykustocluster* | クラスターの任意の名前。|
    | Sku | *D13_v2* | クラスターに使用される SKU。 |
    | ResourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
 
     使用できる省略可能なパラメーターが他にも存在します (クラスターの容量など)。
 
-2. クラスターが正常に作成されたかどうかを確認するには、次のコマンドを実行します。
+1. クラスターが正常に作成されたかどうかを確認するには、次のコマンドを実行します。
 
     ```azurepowershell-interactive
     Get-AzKustoCluster -Name mykustocluster --ResourceGroupName testrg
@@ -92,12 +93,12 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | ClusterName | *mykustocluster* | データベースの作成先となるクラスターの名前。|
-   | Name | *mykustodatabase* | データベースの名前。|
+   | 名前 | *mykustodatabase* | データベースの名前。|
    | ResourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
    | SoftDeletePeriod | *3650:00:00:00* | データをクエリに使用できるようにしておく時間。 |
    | HotCachePeriod | *3650:00:00:00* | データをキャッシュに保持する時間。 |
 
-2. 次のコマンドを実行して、作成したデータベースを確認します。
+1. 次のコマンドを実行して、作成したデータベースを確認します。
 
     ```azurepowershell-interactive
     Get-AzKustoDatabase -ClusterName mykustocluster --ResourceGroupName testrg -Name mykustodatabase
@@ -116,7 +117,5 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
 ## <a name="next-steps"></a>次の手順
 
-他の Az.Kusto コマンドは[**こちら**](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto )で確認できます。
-
-> [!div class="nextstepaction"]
-> [クイック スタート:Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む](net-standard-ingest-data.md)
+* [その他の Az.Kusto コマンド](https://docs.microsoft.com/powershell/module/az.kusto/?view=azps-1.4.0#kusto)
+* [クイック スタート:Azure Data Explorer .NET Standard SDK (プレビュー) を使用してデータを取り込む](net-standard-ingest-data.md)

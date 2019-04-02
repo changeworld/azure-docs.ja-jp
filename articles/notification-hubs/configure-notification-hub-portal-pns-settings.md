@@ -10,12 +10,12 @@ ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: jowargo
-ms.openlocfilehash: 8d2b54e65c1409c01a4c38ca8fcdfeca5f031277
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04108c4b5a8ce04b971a0529393ea442cb1cf226
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113335"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480125"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Azure portal で通知ハブのプッシュ通知を設定する
 
@@ -29,7 +29,7 @@ Azure Notification Hubs には、使いやすくスケールアウトにも対�
 
 Apple Push Notification Service (APNS) を設定するには、次の手順に従います。
 
-1. Azure portal の **[Notification Hub]** で、**[Apple (APNS)]** を選択します。
+1. Azure portal の **[通知ハブ]** ページで、左側のメニューの **[Apple (APNS)]** を選択します。
 
 1. **[認証モード]** で **[証明書]** または **[トークン]** を選択します。
 
@@ -42,7 +42,7 @@ Apple Push Notification Service (APNS) を設定するには、次の手順に�
 
    b. **[トークン]** を選択した場合:
 
-   * **[キー ID]**、**[バンドル ID]**、**[チーム ID]**、および **[トークン]** に値を入力します。
+   * **[キー ID]**、**[バンドル ID]**、**[チーム ID]**、**[トークン]** に値を入力します。
    * **[サンドボックス]** モードを選択します。 または、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合は、**[Production]\(運用\)** モードを選択します。
 
      ![Azure portal における APNS トークン構成のスクリーンショット](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
@@ -53,7 +53,7 @@ Apple Push Notification Service (APNS) を設定するには、次の手順に�
 
 Google Firebase Cloud Messaging (FCM) のプッシュ通知を設定するには、次の手順に従います。
 
-1. Azure portal の **[Notification Hub]** で、**[Google (GCM/FCM)]** を選択します。 
+1. Azure portal の **[通知ハブ]** ページで、左側のメニューの **[Google (GCM/FCM)]** を選択します。 
 2. 前に保存した FCM プロジェクトの **API キー**を貼り付けます。 
 3. **[保存]** を選択します。 
 
@@ -67,7 +67,7 @@ Google Firebase Cloud Messaging (FCM) のプッシュ通知を設定するには
 
 Windows プッシュ通知サービス (WNS) を設定するには、次の手順に従います。
 
-1. Azure portal の **[Notification Hub]** で、**[Windows (WNS)]** を選択します。
+1. Azure portal の **[通知ハブ]** ページで、左側のメニューの **[Windows (WNS)]** を選択します。
 2. **[パッケージ SID]** と **[セキュリティ キー]** に値を入力します。
 3. **[保存]** を選択します。
 
@@ -79,7 +79,7 @@ Windows プッシュ通知サービス (WNS) を設定するには、次の手�
 
 Windows Phone 用 Microsoft プッシュ通知サービス (MPNS) を設定するには、次の手順に従います。 
 
-1. Azure portal の **[Notification Hub]** で、**[Windows Phone (MPNS)]** を選択します。
+1. Azure portal の **[通知ハブ]** ページで、左側のメニューの **[Windows Phone (MPNS)]** を選択します。
 1. 非認証プッシュ通知または認証済みプッシュ通知を有効にします。
 
    a. 非認証プッシュ通知を有効にするには、**[非認証プッシュを有効にする]** > **[保存]** の順に選択します。
@@ -99,7 +99,7 @@ Windows Phone 用 Microsoft プッシュ通知サービス (MPNS) を設定す�
 
 Amazon Device Messaging (ADM) のプッシュ通知を設定するには、次の手順に従います。
 
-1. Azure portal の **[Notification Hub]** で、**[Amazon (ADM)]** を選択します。
+1. Azure portal の **[通知ハブ]** ページで、左側のメニューの **[Amazon (ADM)]** を選択します。
 2. **[クライアント ID]** と **[クライアント シークレット]** に値を入力します。
 3. **[保存]** を選択します。
     
@@ -111,7 +111,7 @@ Amazon Device Messaging (ADM) のプッシュ通知を設定するには、次�
 
 Baidu のプッシュ通知を設定するには、次の手順に従います。
 
-1. Azure portal の **[Notification Hub]** で、**[Baidu (Android China)]** を選択します。 
+1. Azure portal の **[通知ハブ]** ページで、左側のメニューの **[Baidu (Android China)]** を選択します。 
 2. Baidu コンソールから取得した、Baidu クラウド プッシュ プロジェクトの **API キー**を入力します。 
 3. Baidu コンソールから取得した、Baidu クラウド プッシュ プロジェクトの**秘密鍵**を入力します。 
 4. **[保存]** を選択します。 

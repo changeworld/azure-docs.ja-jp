@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 7f079c511a32cfcf0fa018d40abb737ad08f3821
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 01783aa12f586f61583b1503c796f9b523770104
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58138012"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310627"
 ---
 # <a name="project-acoustics-unity-design-tutorial"></a>Project Acoustics Unity のデザイン チュートリアル
 このチュートリアルでは、Unity での Project Acoustics のデザイン ツールとワークフローについて説明します。
@@ -37,16 +37,16 @@ Project Acoustics では、ソースに固有の多くの音響設計コント�
 ### <a name="adjust-distance-based-attenuation"></a>距離ベースの減衰を調整する
 **Project Acoustics** Unity 立体化プラグインによって提供されるオーディオ DSP では、Unity エディターに組み込まれているソース単位かつ距離ベースの減衰が考慮されます。 距離ベースの減衰のコントロールは、音源の **[Inspector]** パネルで、**[3D Sound Settings]** 下の **[Audio Source]** コンポーネント内にあります。
 
-![距離減衰](media/distance-attenuation.png)
+![Unity の距離減衰オプション パネルのスクリーンショット](media/distance-attenuation.png)
 
 Acoustics は、プレイヤーの位置を中心とした「シミュレーション リージョン」ボックス内の計算を実行します。 音源がプレーヤーから距離があり、このシミュレーション リージョンの外部にある場合、ボックス内のジオメトリのみがサウンド伝達 (オクルージョンを引き起こすなど) に影響します。これはオクルダーがプレーヤーの近辺にあるときに非常に良く機能します。 ただし、プレーヤーがオープン スペースにあり、オクルダーが離れた音源の近くにある場合に、サウンドできますになる非現実的にディスオクルージョンされることがあります。 推奨される回避策は、そのような場合にサウンド減衰が約 45 m (プレーヤーからボックスの端までの既定の水平方向の距離) で 0 になるようにすることです。
 
-![SpeakerMode](media/speaker-mode.png)
+![Unity の SpeakerMode オプション パネルのスクリーンショット](media/speaker-mode.png)
 
 ### <a name="adjust-occlusion-and-transmission"></a>閉鎖と伝送を調整する
 **AcousticsSourceCustomization** スクリプトをソースにアタッチすることで、そのソースのパラメーターを調整できます。 スクリプトをアタッチするには、**[Inspector]** パネルの下部にある **[Add Component]** をクリックし、**[Scripts] > [Acoustics Adjust]** に移動します。 スクリプトには、次の 6 つのコントロールがあります。
 
-![AcousticsAdjust](media/acoustics-adjust.png)
+![Unity の AcousticsAdjust スクリプトのスクリーンショット](media/acoustics-adjust.png)
 
 * **Enable Acoustics** - このソースに音響を適用するかどうかを制御します。 オフにした場合、ソースは HRTF またはパンで空間化されますが、音響はありません。 つまり、障害も閉鎖もなく、レベルや減衰時間などの動的な残響パラメーターもありません。 ただし、残響は固定のレベルと減衰時間で適用されます。
 * **Occlusion** - 音響システムによって計算されたオクルージョン dB レベルに乗数を適用します。 この乗数が 1 より大きい場合、オクルージョンは誇張され、値が 1 未満の場合はオクルージョン効果はわずかになり、値 0 だとオクルージョンは無効になります。
@@ -59,14 +59,14 @@ Acoustics は、プレイヤーの位置を中心とした「シミュレーシ�
 
 **AcousticsAdjustExperimental** スクリプトをソースに添付すると、そのソースの追加の実験的なチューニング パラメーターが有効になります。 スクリプトを添付するには、**[Inspector]** パネルの下部にある **[Add Component]** をクリックし、**[Scripts] > [Acoustics Adjust Experimental]** に移動します。 現在、次の 1 つの実験コントロールがあります。
 
-![AcousticsAdjustExperimental](media/acoustics-adjust-experimental.png)
+![Unity の AcousticsAdjustExperimental スクリプトのスクリーンショット](media/acoustics-adjust-experimental.png)
 
 * **Perceptual Distance Warp**-ドライ ウェット比率の計算に使用される距離に指数ワープを適用します。 音響システムは、スペース全体でのウェット レベルを計算します。これは距離に応じてならだかに変化し、知覚距離の手がかりを提供します。1 より大きいワープ値を指定すると、距離関連のリバーブ レベルを増すことでこの効果が誇張され、サウンドは "遠くに" 聞こえます。 ワープ値を 1 未満にすると、距離ベースのリバーブの変化はわずかになり、サウンドはより "近くにある" ように聞こえます。
 
 ## <a name="design-acoustics-for-all-sources"></a>すべてのソースの音響を設計する
 すべてのソースのパラメーターを調整するには、Unity の**オーディオ ミキサー**でチャネル ストリップをクリックし、**[Project Acoustics Mixer]\(Project Acoustics ミキサー\)** エフェクトでパラメーターを調整します。
 
-![ミキサーのカスタマイズ](media/mixer-parameters.png)
+![Project Acoustics Unity Mixer のカスタマイズ パネルのスクリーンショット](media/mixer-parameters.png)
 
 * **[Wetness Adjust]\(ウェットネス調整\)** - ソースとリスナー間の距離に基づいて、シーン内のすべてのソースにわたってリバーブの強さを dB 単位で調整します。 正の値は残響を大きくし、負の値はより乾いた音にします。
 * **[RT60 Scale]\(RT60 スケール\)** - リバーブ時間の乗法スカラー。
@@ -75,7 +75,7 @@ Acoustics は、プレイヤーの位置を中心とした「シミュレーシ�
 ## <a name="check-proper-sound-source-placement"></a>適切な音源配置を確認する
 占有ボクセル内に配置されている音源では、音響は処理されません。 ボクセルはビジュアル シーン ジオメトリを超えて拡張されるため、ビジュアル ジオメトリによって遮断されていないようであれば、ボクセル内にソースを配置できます。 Project Acoustics のボクセルは、**[Scene]\(シーン\)** ビューの右上にある、**[Gizmos]\(ギズモ\)** メニューのボクセル グリッド チェックボックスを切り替えることで、表示できます。
 
-![[Gizmos] メニュー](media/gizmos-menu.png)  
+![Unity の [Gizmos] メニューのスクリーンショット](media/gizmos-menu.png)  
 
 ボクセル表示は、ゲーム内の視覚的構成要素に変換が適用されているかどうかの判別にも役立ちます。 適用されている場合、**Acoustics Manager** をホストしている GameObject に同じ変換を適用します。
 
@@ -84,11 +84,11 @@ Acoustics は、プレイヤーの位置を中心とした「シミュレーシ�
 
 デザイン時のボクセル:
 
-![VoxelsDesignTime](media/voxels-design-time.png)
+![デザイン時の Project Acoustics のボクセルのスクリーンショット](media/voxels-design-time.png)
 
 ランタイム ボクセル:
 
-![VoxelsRuntime](media/voxels-runtime.png)
+![実行時の Project Acoustics のボクセルのスクリーンショット](media/voxels-runtime.png)
 
 ## <a name="next-steps"></a>次の手順
 * [設計プロセス](design-process.md)の背後にある概念に焦点を当てたケース スタディを確認する

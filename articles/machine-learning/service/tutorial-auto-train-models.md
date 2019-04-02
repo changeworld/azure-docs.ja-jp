@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e30e65ba2efaf60a0e2d0a6df409c96db4d6285e
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8fa77409f1f5c32bc1e8f8644111c38f6115a92d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295812"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58362052"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>チュートリアル:自動化された機械学習を使用して回帰モデルを構築する
 
@@ -67,22 +67,11 @@ Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](
 
 ### <a name="server"></a>独自の Jupyter Notebook サーバーを使用する
 
-次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  手順を完了したら、**tutorials/regression-part2-automated-ml.ipynb** ノートブックを実行します。
+次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  ご利用の環境に `matplotlib` および `automl` と `notebooks` の追加機能をインストールしていることを確認してください。
 
-1. [Azure Machine Learning Python のクイック スタート](quickstart-create-workspace-with-python.md)を完了して、Miniconda 環境とワークスペースを作成します。
-1. `pip install azureml-sdk[automl,notebooks]` を使用して、`automl` と `notebooks` の追加機能をご自分の環境にインストールします。
-1. `pip install maplotlib` を使用して `maplotlib` をインストールします。
-1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
+[!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
-    ```
-    git clone https://github.com/Azure/MachineLearningNotebooks.git
-    ```
-
-1. 複製したディレクトリから、Notebook サーバーを起動します。
-
-    ```shell
-    jupyter notebook
-    ```
+手順を完了したら、**tutorials/regression-part2-automated-ml.ipynb** ノートブックを実行します。
 
 ## <a name="start"></a>開発環境を設定する
 
@@ -156,7 +145,7 @@ dflow_prepared.get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>type</th>
+      <th>Type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>

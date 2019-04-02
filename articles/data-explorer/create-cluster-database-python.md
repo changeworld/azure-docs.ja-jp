@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: 4f87c5996ea323c26c32c1680ba6f627bf8f95c2
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: 24e482d223fec2c1f95d7cc964f62eac81c5de05
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287390"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472584"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Python を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -25,15 +25,15 @@ ms.locfileid: "58287390"
 > * [Python](create-cluster-database-python.md)
 >  
 
-このクイック スタートでは、Python を使用して、Azure Data Explorer クラスターとデータベースを作成する方法について説明します。
+Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 このクイック スタートでは、Python を使用して、クラスターとデータベースを 1 つずつ作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 ## <a name="install-python-package"></a>Python パッケージのインストール
 
-Azure Data Explorer (Kusto) 向けの Python パッケージをインストールするには、Python をパス設定した状態でコマンド プロンプトを開き、次のコマンドを実行します。
+Azure Data Explorer (Kusto) 向けの Python パッケージをインストールするには、Python をパスに設定した状態でコマンド プロンプトを開きます。 次のコマンドを実行します。
 
 ```
 pip install azure-mgmt-kusto
@@ -43,7 +43,26 @@ pip install azure-mgmt-kusto
 
 1. 次のコマンドを使用して、クラスターを作成します。
 
+    ```Python
+    from azure.mgmt.kusto.kusto_management_client import KustoManagementClient
+    from azure.mgmt.kusto.models import Cluster, AzureSku
+
+    credentials = xxxxxxxxxxxxxxx
     
+    subscription_id = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'
+    location = 'Central US'
+    sku = 'D13_v2'
+    capacity = 5
+    resource_group_name = 'testrg'
+    cluster_name = 'mykustocluster'
+    cluster = Cluster(location=location, sku=AzureSku(name=sku, capacity=capacity))
+    
+    kustoManagementClient = KustoManagementClient(credentials, subscription_id)
+    
+    cluster_operations = kustoManagementClient.clusters
+    
+    cluster_operations.create_or_update(resource_group_name, cluster_name, cluster)
+    ```
 
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
@@ -53,9 +72,9 @@ pip install azure-mgmt-kusto
 
     使用できる省略可能なパラメーターが他にも存在します (クラスターの容量など)。
     
-    "credentials" には自分の資格情報を設定してください (詳細については、 https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python を参照してください)
+1. [*資格情報*](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python)を設定します。
 
-2. クラスターが正常に作成されたかどうかを確認するには、次のコマンドを実行します。
+1. クラスターが正常に作成されたかどうかを確認するには、次のコマンドを実行します。
 
     ```Python
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
@@ -91,7 +110,7 @@ pip install azure-mgmt-kusto
    | soft_delete_period | *3650 days, 0:00:00* | データをクエリに使用できるようにしておく時間。 |
    | hot_cache_period | *3650 days, 0:00:00* | データをキャッシュに保持する時間。 |
 
-2. 次のコマンドを実行して、作成したデータベースを確認します。
+1. 次のコマンドを実行して、作成したデータベースを確認します。
 
     ```Python
     database_operations.get(resource_group_name = resource_group_name, cluster_name = clusterName, database_name = databaseName)

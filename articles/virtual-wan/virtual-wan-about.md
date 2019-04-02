@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 6f2f002c5ff08e21741927d07a0facfd09ec0914
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 6dae42dcc8b74b682c7226916482228058db6154
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295693"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336254"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 
@@ -21,7 +21,7 @@ Azure Virtual WAN は、Azure への、または Azure 経由での、最適化�
 
 Azure Virtual WAN は、サイト間 VPN (一般提供)、ExpressRoute (プレビュー)、ポイント対サイト ユーザー VPN (プレビュー) など、多数の Azure クラウド接続サービスを 1 つの操作インターフェイスにまとめたものです。 Azure VNet への接続は、仮想ネットワーク接続を使用して確立されます。
 
-![Virtual WAN のダイアグラム](./media/virtual-wan-about/vwangraphic.png)
+![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan1.png)
 
 この記事では、Azure Virtual WAN のネットワーク接続について簡単に説明します。 Virtual WAN には次の利点があります。
 

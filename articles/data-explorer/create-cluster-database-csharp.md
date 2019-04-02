@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: d861eba6ce905ccaf0d08a08cdd9998a199889da
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: c2a11422398b3cdb99c9f71accddfcd78237c64c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287373"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417906"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>C# を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -25,20 +25,19 @@ ms.locfileid: "58287373"
 > * [Python](create-cluster-database-python.md)
 >  
 
-
-このクイック スタートでは、C# を使用して、Azure Data Explorer クラスターとデータベースを作成する方法について説明します。
+Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 このクイック スタートでは、C# を使用して、クラスターとデータベースを 1 つずつ作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+* Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 
-- このクイック スタートを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+* Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 ## <a name="install-c-nuget"></a>C# nuget をインストールする
 
-- Azure Data Explorer (Kusto) 用の nuget パッケージが必要になります。Nuget はここから入手できます: https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/
-- 認証用に nuget Microsoft.IdentityModel.Clients.ActiveDirectory も必要です: https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/
+1. [Azure Data Explorer (Kusto) NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)をインストールします。
 
+1. 認証用に [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet パッケージ](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)をインストールします。
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Azure Data Explorer クラスターを作成する
 
@@ -72,10 +71,10 @@ ms.locfileid: "58287373"
    | resourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
 
     使用できる省略可能なパラメーターが他にも存在します (クラスターの容量など)。
-    
-    "credentials" には自分の資格情報を設定してください (詳細については、 https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet を参照してください)
 
-2. クラスターが正常に作成されたかどうかを確認するには、次のコマンドを実行します。
+1. [資格情報](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)を設定します。
+
+1. クラスターが正常に作成されたかどうかを確認するには、次のコマンドを実行します。
 
     ```C#-interactive
     KustoManagementClient.Clusters.Get(resourceGroupName, clusterName);

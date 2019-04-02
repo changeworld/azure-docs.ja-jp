@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9134f939e771f92453b184aad643d41089623e19
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201468"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439264"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>クイック スタート:iOS ネイティブ アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
 
@@ -44,7 +44,7 @@ ms.locfileid: "58201468"
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>手順 1:アプリケーションの作成
-> このクイック スタートのコード サンプルを動作させるには、応答 URL として `msal<AppId>://auth` (msal<AppId> はこのアプリケーション ID) を追加する必要があります。
+> このクイック スタートのコード サンプルを動作させるには、応答 URL として `msal<AppId>://auth` (msal\<AppId> はこのアプリケーション ID) を追加する必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
@@ -168,7 +168,7 @@ applicationContext.acquireToken(forScopes: self.kScopes) { (result, error) in /*
 
 > |各値の説明:||
 > |---------|---------|
-> | `forScopes` | 要求するスコープを含む (つまり、 [ "user.read" ]` for Microsoft Graph or `[ "<Application ID URL>/scope" ]` for custom Web APIs (i.e. `api://<Application ID>/access_as_user`)) |
+> | `forScopes` | 要求するスコープを含む (つまり、Microsoft Graph 用の `[ "user.read" ]` またはカスタム Web API 用の `[ "<Application ID URL>/scope" ]` (つまり、`api://<Application ID>/access_as_user`)) |
 
 #### <a name="getting-an-access-token-silently"></a>アクセス トークンを自動的に取得する
 

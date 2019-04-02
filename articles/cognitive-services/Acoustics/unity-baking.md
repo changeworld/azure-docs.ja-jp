@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: cb5ad8e4ff3d5a28fa38c7e8972e7e3e69d2762d
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: f44b6f9ed42770fe830346de08058e33ed68a249
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136917"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309642"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Project Acoustics Unity ベイク チュートリアル
 このチュートリアルでは、Unity の Project Acoustics での音響ベイクについて説明します。
@@ -28,7 +28,7 @@ ms.locfileid: "58136917"
 ## <a name="open-the-project-acoustics-bake-window"></a>Project Acoustics ベイク ウィンドウを開く
 次のように、Unity メニューから **[Window]\(ウィンドウ\)、[Acoustics]\(音響\)** の順に選択します。
 
-![[Acoustics] ウィンドウを開く](media/window-acoustics.png)
+![Acoustics ウィンドウ メニュー オプションが強調表示されている Unity エディターのスクリーンショット](media/window-acoustics.png)
 
 ## <a name="create-a-navigation-mesh"></a>ナビゲーション メッシュの作成
 Project Acoustics ではナビゲーション メッシュを使用して、シミュレーションのためにリスナー プローブ ポイントを配置します。 Unity の[ナビゲーション メッシュ ワークフロー](https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html)を使用することも、別の 3D モデリング パッケージを使用して独自のメッシュを設計することもできます。 
@@ -68,15 +68,15 @@ Unity のワークフローを使用して作成されたナビゲーション �
 
 シーンで何も選択していない場合、[Objects]\(オブジェクト\) タブは次の画像のようになります。
 
-![何も選択していない場合の [Objects]\(オブジェクト\) タブ](media/objects-tab-no-selection-detail.png)
+![何も選択されていない Acoustics の [オブジェクト] タブのスクリーンショット](media/objects-tab-no-selection-detail.png)
 
 シーンまたは階層ウィンドウで何かを選択している場合は、次の画像のようになります。
 
-![何も選択していない場合の [Objects]\(オブジェクト\) タブ](media/objects-tab-selection-detail.png)
+![選択内容が示された Acoustics の [オブジェクト] タブのスクリーンショット](media/objects-tab-selection-detail.png)
 
 マークされているオブジェクトとマークされていないオブジェクトがある場合、該当するチェック ボックスに "混在" を示す値が表示されます。
 
-!["混在" を示す値が表示されたチェック ボックス](media/mixed-object-selection-detail.png)
+![混在を示す選択アイコンが強調表示された Acoustics の [オブジェクト] タブのスクリーンショット](media/mixed-object-selection-detail.png)
 
 チェック ボックスをクリックすると、すべてのオブジェクトが強制的にマークされ、もう一度クリックすると、すべてのオブジェクトのマークが解除されます。
 
@@ -89,10 +89,10 @@ Unity のワークフローを使用して作成されたナビゲーション �
 
 室内の特定のマテリアルの残響時間はその吸収係数に反比例し、ほとんどのマテリアルの吸収値は 0.01 ～ 0.20 の範囲です。 吸収係数がこの範囲外の場合、非常に吸収性が高いマテリアルです。
 
-![リバーブ時間グラフ](media/reverb-time-graph.png)
+![吸収係数と残響時間の逆相関を示すグラフ](media/reverb-time-graph.png)
 
 ### <a name="for-reference-parts-of-the-materials-tab"></a>参照用:[Materials]\(マテリアル\) タブの各部
-![[Materials]\(マテリアル\) タブの詳細](media/materials-tab-detail.png)
+![Unreal の Acoustics の [マテリアル] タブのスクリーンショット](media/materials-tab-detail.png)
 
 1. このページを表示するために使用する **[Materials]\(マテリアル\)** タブ ボタン。
 2. このページを使用して行う必要がある操作の簡単な説明。
@@ -117,23 +117,23 @@ Unity のワークフローを使用して作成されたナビゲーション �
 ### <a name="review-voxel-and-probe-placement"></a>ボクセルとプローブの配置を確認する
 ボクセル データとプローブ ポイントの両方の位置をプレビューし、シーンのベイク準備ができたことを確認します。 不完全なナビゲーション メッシュや欠落または余分な音響ジオメトリは、通常、プレビューですぐに確認できます。 [Gizmos]\(ギズモ\) メニューを使用して、ボクセルとプローブの配置を有効または無効にすることができます。
 
-![[Gizmos] メニュー](media/gizmos-menu.png)
+![Unity の [Gizmos] メニューのスクリーンショット](media/gizmos-menu.png)
 
 音響ジオメトリを含むボクセルは、緑色のキューブとして表示されます。 シーンを調べ、ジオメトリである必要があるすべてのものにボクセルがあることを確認します。 シーン カメラは、ボクセルが示すオブジェクトから約 5 メートル以内に存在する必要があります。
 
 粗分解能と細分解能で作成されたボクセルを比較すると、粗いボクセルは 2 倍の大きさになります。
 
-![ボクセルのプレビュー](media/voxel-cubes-preview.png)
+![Unity エディターの粗いボクセル プレビューのスクリーンショット](media/voxel-cubes-preview.png)
 
 実行時にリスナー プローブ ポイントの位置の間でシミュレーション結果が補間されます。 シーン内でプレーヤーが移動すると予想されるあらゆる場所の近くにプローブ ポイントがあることを確認します。
 
-![プローブのプレビュー](media/probes-preview.png)
+![Unity エディターのプローブ プレビューのスクリーンショット](media/probes-preview.png)
 
 ### <a name="take-care-with-scene-renames"></a>シーンの名前を変更する場合は注意が必要
 シーン名は、プローブ ポイントの配置とボクセル化が保存されているファイルにシーンを接続するために使用されます。 プローブ ポイントの計算後にシーン名を変更すると、マテリアルの割り当てと配置データが失われるので、再実行する必要があります。
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>参照用:[Probes]\(プローブ\) タブの各部
-![[Probes]\(プローブ\) タブの詳細](media/probes-tab-detail.png)
+![Unity の Acoustics の [プローブ] タブのスクリーンショット](media/probes-tab-detail.png)
 
 1. このページを表示するために使用する **[Probes]\(プローブ\)** タブ ボタン。
 2. このページを使用して行う必要がある操作の簡単な説明。
@@ -157,15 +157,15 @@ Project Acoustics のこのバージョンでは、プローブを手動で配�
 * "中身の詰まった" ボクセル (つまり、ジオメトリを含むボクセル) 内に音源を配置することはできません。これを行うと音がなくなります。 粗設定のサイズの大きいボクセル内には音源は配置されないため、細設定を使用する場合よりも音源の配置が難しくなります。
 * 次に示すように、ボクセルのサイズが大きくなると、ポータルへの侵入の度合いが大きくなります。 最初の画像は、粗を使用して作成されたものであり、2 番目は、細分解能を使用した同じ出入り口を示しています。 赤のマーキングで示すように、細設定を使用すると、出入り口への侵入が大幅に減っています。 青色の線はジオメトリによって定義された出入り口であり、赤色の線はボクセル サイズによって定義された有効な音響ポータルです。 特定の状況でこの侵入がどの程度になるかは、ボクセルとポータルのジオメトリの適合度合いに完全に左右されます。この度合いは、シーン内のオブジェクトのサイズと位置によって決まります。
 
-![Coarse\(粗\) 設定の出入り口](media/coarse-voxel-doorway.png)
+![出入り口に配置された粗いボクセルのスクリーンショット](media/coarse-voxel-doorway.png)
 
-![Fine\(細\) 設定の出入り口](media/fine-voxel-doorway.png)
+![出入り口に配置された細かいボクセルのスクリーンショット](media/fine-voxel-doorway.png)
 
 ## <a name="bake-your-scene-using-azure-batch"></a>Azure Batch を使用してシーンをベイクする
 Azure Batch サービスを使用して、クラウド内のコンピューティング クラスターでシーンをベイクすることができます。 Project Acoustics Unity プラグインは Azure Batch に直接接続され、ベイク処理ごとに Azure Batch クラスターをインスタンス化、管理、破棄します。 **[Bake]\(ベイク\)** タブで、Azure の資格情報を入力し、クラスター マシンのタイプとサイズを選択して **[Bake]\(ベイク\)** をクリックします。
 
 ### <a name="for-reference-parts-of-the-bake-tab"></a>参照用:[Bake]\(ベイク\) タブの各部
-![[Bake]\(ベイク\) タブの詳細](media/bake-tab-details.png)
+![Unity の Acoustics の [ベイク] タブのスクリーンショット](media/bake-tab-details.png)
 
 1. このページを表示するために使用する [Bake]\(ベイク\) タブ ボタン。
 2. このページで実行する操作の簡単な説明。
@@ -209,8 +209,8 @@ Azure 資格情報はローカル コンピューターに安全に保存され�
 ### <a name="setup-docker"></a>Docker のセットアップ
 シミュレーションを処理する PC 上に Docker をインストールして構成します。
 1. [Docker ツールセット](https://www.docker.com/products/docker-desktop)をインストールします。
-2. Docker 設定を起動し、[Advanced]\(詳細\) オプションに移動して、少なくとも 8 GB の RAM があるリソースを構成します。 Docker に CPU を多く割り当てると、ベイクの実行速度は上がります。 ![Docker 設定の例](media/docker-settings.png)
-3. 「共有ドライブ」に移動し、処理に使用されるドライブの共有を有効にします。![DockerDriveSharing](media/docker-shared-drives.png)
+2. Docker 設定を起動し、[Advanced]\(詳細\) オプションに移動して、少なくとも 8 GB の RAM があるリソースを構成します。 Docker に CPU を多く割り当てると、ベイクの実行速度は上がります。 ![Docker 設定の例のスクリーンショット](media/docker-settings.png)
+3. 「共有ドライブ」に移動し、処理に使用されるドライブの共有を有効にします。![Docker 共有ドライブ オプションのスクリーンショット](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>ローカル ベイクの実行
 1. **[Bake]\(ベイク\)** タブで [Prepare Local Bake (ローカル ベイクの準備)] ボタンをクリックし、入力ファイルと実行スクリプトの保存先フォルダーを選択します。 ハードウェアの最小要件を満たしており、そのマシンにフォルダーをコピーして Docker がインストールされていれば、どのマシンでもベイクを実行できます。
@@ -234,11 +234,11 @@ Azure 資格情報はローカル コンピューターに安全に保存され�
 ## <a name="set-up-the-acoustics-lookup-table"></a>音響ルックアップ テーブルの設定
 プロジェクト パネルから **[Project Acoustics]** プレハブをドラッグし、シーンにドロップします。
 
-![Acoustics プレハブ](media/acoustics-prefab.png)
+![Unity の Acoustics プレハブのスクリーンショット](media/acoustics-prefab.png)
 
 **ProjectAcoustics** ゲーム オブジェクトをクリックして、そのインスペクター パネルに移動します。 ベイク結果の場所 (**Assets/AcousticsData** 内の .ACE ファイル) を指定します。それには、このファイルを Acoustics Manager スクリプトにドラッグ アンド ドロップするか、またはテキスト ボックスの隣にある丸ボタンをクリックします。
 
-![Acoustics Manager](media/acoustics-manager.png)  
+![Unity の Acoustics Manager プレハブのスクリーンショット](media/acoustics-manager.png)  
 
 ## <a name="next-steps"></a>次の手順
 * [Unity の設計コントロール](unity-workflow.md)を確認する

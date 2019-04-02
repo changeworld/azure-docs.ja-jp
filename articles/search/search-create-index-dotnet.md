@@ -1,6 +1,6 @@
 ---
-title: .NET API を使用してコードでインデックスを作成する - Azure Search
-description: Azure Search .NET SDK と C# のサンプル コードを使用して、全文検索可能なインデックスを作成する方法について説明します。
+title: C# でインデックスを作成する - Azure Search
+description: Azure Search .NET SDK を使用して C# で全文検索可能なインデックスを作成する方法について説明します。
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/20/2019
-ms.openlocfilehash: dbaac1478fdbf1b42fc6b597c3a5c541e007e413
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/22/2019
+ms.openlocfilehash: a5861faaf26962d34d1c356e29dce1be40f8716b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287147"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370586"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>クイック スタート:1 - C# で Azure Search インデックスを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "58287147"
 
 > [!div class="checklist"]
 > * 検索サービスに接続するための [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) オブジェクトを作成する。
-> * `Indexes.Create` のパラメーターとして渡す [`Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) オブジェクトを作成する。
+> * `Indexes.Create` にパラメーターとして渡す [`Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) オブジェクトを作成する。
 > * `SearchServiceClient` で `Indexes.Create` メソッドを呼び出して、`Index` をサービスに送信する。
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ ms.locfileid: "58287147"
 
 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。 サンプル コードと手順については、無料の Community エディションでテストされています。
 
-検索サービスの URL エンドポイントと管理者 API キー。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
+ご利用の検索サービスの URL エンドポイントと管理者 API キーを取得します。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
   1. Azure portal の検索サービスの **[概要]** ページで、URL を取得します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
@@ -200,7 +200,9 @@ serviceClient.Indexes.Delete("hotels");
 > 
 
 ## <a name="next-steps"></a>次の手順
-このクイック スタートでは、フィールドのデータ型と動作を定義するスキーマに基づいて、空の Azure Search インデックスを作成しました。 このシリーズの次のクイック スタートでは、検索可能なコンテンツを含むインデックスを読み込む方法について説明します。
+このクイック スタートでは、フィールドのデータ型と動作を定義するスキーマに基づいて、空の Azure Search インデックスを作成しました。 このインデックスは、名前と属性フィールドで構成される "最小限" のインデックスです。 より現実的なインデックスには、[スコアリング プロファイル](index-add-scoring-profiles.md)、先行入力をサポートする [suggester](index-add-suggesters.md)、[シノニム](search-synonyms.md)、あるいは[カスタム アナライザー](index-add-custom-analyzers.md)などのその他の要素が含まれます。 基本的なワークフローを理解してから、これらの機能を再度参照することをお勧めします。
+
+このシリーズの次のクイック スタートでは、検索可能なコンテンツを含むインデックスを読み込む方法について説明します。
 
 > [!div class="nextstepaction"]
 > [C# を使用して Azure Search インデックスにデータを読み込む](search-import-data-dotnet.md)
