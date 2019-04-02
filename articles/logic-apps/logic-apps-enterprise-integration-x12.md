@@ -61,7 +61,7 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
     ![契約の詳細の指定](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     | --- | --- |
     | Name |契約の名前。 |
     | 契約の種類 | X12 にする必要があります。 |
