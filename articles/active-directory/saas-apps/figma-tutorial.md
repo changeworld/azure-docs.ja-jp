@@ -7,20 +7,20 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8569cae1-87dd-4c40-9bbb-527ac80d6a96
-ms.service: Azure-Active-Directory
+ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/12/2019
+ms.date: 03/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecfdd76e171ed237e3e87c98f6596634784faea1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d58da4781a7c5c93d897e0efd7cf3d5aee612d78
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865316"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225682"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>チュートリアル:Azure Active Directory と Figma の統合
 
@@ -32,14 +32,16 @@ Figma と Azure AD の統合には、次の利点があります。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 Figma と Azure AD の統合を構成するには、次のものが必要です。
 
 * Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* Figma のシングル サインオンが有効なサブスクリプション
+* Figma Organization Plan
+
+>[!NOTE]
+>このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。 Figma Professional Team の新規ユーザーとアクティブなサブスクライバーは、Figma に連絡して、サブスクリプションを [Figma Organization Plan](https://www.figma.com/pricing/) にアップグレードすることができます。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -107,20 +109,20 @@ Figma で Azure AD シングル サインオンを構成するには、次の手
 
     ![[Figma のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
-    a. **[識別子]** ボックスに、`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://www.figma.com/saml/<TENANT ID>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/consume` のパターンを使用して URL を入力します
+    b. **[応答 URL]** ボックスに、`https://www.figma.com/saml/<TENANT ID>/consume` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
     ![[Figma のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、`https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/start` という形式で URL を入力します。
+    **[サインオン URL]** ボックスに、`https://www.figma.com/saml/<TENANT ID>/start` という形式で URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 この値を取得するには、[Figma クライアント サポート チーム](mailto:support@figma.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 Figma の記事「[Configure Azure Active Directory SAML SSO process (Azure Active Directory SAML SSO プロセスを構成する)](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso)」の手順 11. で、`TENANT ID` を取得できます。
 
-6. Figma アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 [編集] アイコンをクリックして属性を追加します。
+6. Figma アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
@@ -154,13 +156,13 @@ Figma で Azure AD シングル サインオンを構成するには、次の手
 
     g. **[Save]** をクリックします。
 
-8. **[Set-up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[App Federation Metadata Url]\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
+8. **Set up Single Sign-On with SAML\(SAML でのシングルサインオンの設定** ページの **SAML 署名証明書** セクションで、コピー ボタンをクリックして **App Federation Metadata Url\(アプリのフェデレーション メタデータ URL)** をコピーして、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
-
+  
 ### <a name="configure-figma-single-sign-on"></a>Figma のシングル サインオンの構成
 
-Figma 側でシングル サインオンを構成するには、次のフォームに入力してください。[https://goo.gl/forms/XkRB1z5ed4eVUzXn2](https://goo.gl/forms/XkRB1z5ed4eVUzXn2) 手順 8. の**アプリのフェデレーション メタデータ URL** を使用します。
+Figma 側でシングル サインオンを構成するには、Figma の記事「[Configure Azure Active Directory SAML SSO process (Azure Active Directory SAML SSO プロセスを構成する)](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso)」に従う必要があります。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -180,7 +182,7 @@ Figma 側でシングル サインオンを構成するには、次のフォー�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -230,3 +232,4 @@ Figma 側でシングル サインオンを構成するには、次のフォー�
 - [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

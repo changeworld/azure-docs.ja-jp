@@ -2,21 +2,24 @@
 title: Terratest を使用して Azure で Terraform モジュールをテストする
 description: Terratest を使用して Terraform モジュールをテストする方法を学習します。
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, DevOps, ストレージ アカウント, Azure, Terratest, 単体テスト, 統合テスト
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/19/2018
-ms.openlocfilehash: fce70916cef96cee6496478503305e2bb1e73c09
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 03/19/2019
+ms.openlocfilehash: 9d621905122ab7bf64432323d7d11cf8f1b50750
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656340"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224007"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Terratest を使用して Azure で Terraform モジュールをテストする
+
+> [!NOTE]
+> この記事のサンプル コードは、バージョン 0.12 (以降) では動作しません。
 
 Azure Terraform モジュールを使用して、再利用可能、構成可能、かつテスト可能なコンポーネントを作成できます。 Terraform モジュールには、コード プロセスとしてインフラストラクチャを実装するのに役立つカプセル化が組み込まれています。
 

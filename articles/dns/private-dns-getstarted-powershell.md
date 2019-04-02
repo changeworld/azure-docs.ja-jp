@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 7/24/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 73b8dfd741543560cd6ebf26178618a70bdae5f6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b4d75c7a6db89b19d88cddcc564fd4e6a9ad0f49
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992774"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770461"
 ---
 # <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure DNS プライベート ゾーンを作成する
 
@@ -53,7 +53,7 @@ New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 
 ## <a name="create-a-dns-private-zone"></a>DNS プライベート ゾーンの作成
 
-`New-AzDnsZone` コマンドレットを使用し、**ZoneType** パラメーターに *Private* という値を指定して DNS ゾーンを作成します。 次の例では、**MyAzureResourceGroup** というリソース グループに **contoso.local** という DNS ゾーンを作成し、その DNS ゾーンを **MyAzureVnet** という仮想ネットワークで利用できるようにします。
+`New-AzDnsZone` コマンドレットを使用し、**ZoneType** パラメーターに *Private* という値を指定して DNS ゾーンを作成します。 次の例では、**MyAzureResourceGroup** というリソース グループに **private.contoso.com** という DNS ゾーンを作成し、その DNS ゾーンを **MyAzureVnet** という仮想ネットワークで利用できるようにします。
 
 **ZoneType** パラメーターを省略した場合、そのゾーンはパブリック ゾーンとして作成されます。そのため、プライベート ゾーンを作成する場合はこのパラメーターが必須です。 
 
@@ -66,7 +66,7 @@ $vnet = New-AzVirtualNetwork `
   -AddressPrefix 10.2.0.0/16 `
   -Subnet $backendSubnet
 
-New-AzDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup `
+New-AzDnsZone -Name private.contoso.com -ResourceGroupName MyAzureResourceGroup `
    -ZoneType Private `
    -RegistrationVirtualNetworkId @($vnet.Id)
 ```
@@ -118,10 +118,10 @@ New-AzVm `
 
 ## <a name="create-an-additional-dns-record"></a>追加の DNS レコードの作成
 
-レコード セットは、`New-AzDnsRecordSet` コマンドレットを使用して作成します。 次の例では、リソース グループ **MyAzureResourceGroup** の DNS ゾーン **contoso.local** に、相対名が **db** のレコードを作成します。 レコード セットの完全修飾名は、**db.contoso.local** になります。 レコードの種類は "A"、IP アドレスは "10.2.0.4"、TTL は 3,600 秒です。
+レコード セットは、`New-AzDnsRecordSet` コマンドレットを使用して作成します。 次の例では、リソース グループ **MyAzureResourceGroup** の DNS ゾーン **private.contoso.com** に、相対名が **db** のレコードを作成します。 レコード セットの完全修飾名は、**db.private.contoso.com** になります。 レコードの種類は "A"、IP アドレスは "10.2.0.4"、TTL は 3,600 秒です。
 
 ```azurepowershell
-New-AzDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
+New-AzDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
    -ResourceGroupName MyAzureResourceGroup -Ttl 3600 `
    -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.2.0.4")
 ```
@@ -131,13 +131,13 @@ New-AzDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
 ゾーン内の DNS レコードを一覧表示するには、次のコマンドを実行します。
 
 ```azurepowershell
-Get-AzDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyAzureResourceGroup
+Get-AzDnsRecordSet -ZoneName private.contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 ただし、2 台のテスト用仮想マシンに対して自動的に作成された A レコードは表示されません。
 
 ## <a name="test-the-private-zone"></a>プライベート ゾーンのテスト
 
-これで、**contoso.local** プライベート ゾーンでの名前解決をテストできます。
+これで、**private.contoso.com** プライベート ゾーンでの名前解決をテストできます。
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>受信 ICMP を許可するように VM を構成する
 
@@ -156,13 +156,13 @@ MyVM02 についても同じ手順を繰り返します。
 
 1. myVM02 の Windows PowerShell コマンド プロンプトから、自動的に登録されたホスト名を使用して myVM01 を ping します。
    ```
-   ping myVM01.contoso.local
+   ping myVM01.private.contoso.com
    ```
    次のような出力が表示されます。
    ```
-   PS C:\> ping myvm01.contoso.local
+   PS C:\> ping myvm01.private.contoso.com
 
-   Pinging myvm01.contoso.local [10.2.0.4] with 32 bytes of data:
+   Pinging myvm01.private.contoso.com [10.2.0.4] with 32 bytes of data:
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time=1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
@@ -176,13 +176,13 @@ MyVM02 についても同じ手順を繰り返します。
    ```
 2. 次に、前に作成した **db** 名を ping します。
    ```
-   ping db.contoso.local
+   ping db.private.contoso.com
    ```
    次のような出力が表示されます。
    ```
-   PS C:\> ping db.contoso.local
+   PS C:\> ping db.private.contoso.com
 
-   Pinging db.contoso.local [10.2.0.4] with 32 bytes of data:
+   Pinging db.private.contoso.com [10.2.0.4] with 32 bytes of data:
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128

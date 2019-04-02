@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: ff214a545023364b09a0e757462a1b3f3d963d44
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d421abf0a3cc402cf8d040363dfe79b07b66bf95
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885023"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105711"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>クイック スタート:Bing Video Search SDK for Java で動画の検索を実行する
 
@@ -41,7 +41,7 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
   </dependencies> 
 ```
 
-## <a name="create-and-initalize-a-project"></a>プロジェクトを作成して初期化する
+## <a name="create-and-initialize-a-project"></a>プロジェクトの作成と初期化
 
 
 普段使用している IDE またはエディターで新しい Java プロジェクトを作成し、以下のライブラリをインポートします。
@@ -61,7 +61,7 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
 
 ## <a name="create-a-search-client"></a>検索クライアントを作成する
 
-2. `VideoSearchAPIImpl` クライアントを実装します。これには API エンドポイントと `ServiceClientCredentials` クラスのインスタンスが必要となります。
+1. `VideoSearchAPIImpl` クライアントを実装します。これには API エンドポイントと `ServiceClientCredentials` クラスのインスタンスが必要となります。
 
     ```java
     public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
@@ -100,7 +100,7 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
         ///...
         ```
 
-    3. `intercept` 関数内に、要求のための変数を作成します。 `Request.Builder()` を使用して要求を作成します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、request オブジェクトの `chain.proceed()` を返します。
+    3. `intercept` 関数内に、要求のための変数を作成します。 `Request.Builder()` を使用して要求を作成します。 `Ocp-Apim-Subscription-Key` ヘッダーにサブスクリプション キーを追加し、要求オブジェクトで `chain.proceed()` を返します。
             
         ```java
         //...
@@ -115,7 +115,7 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
         //...
         ```
 
-## <a name="send-a-search-request-and-recieve-the-response"></a>検索要求を送信して応答を受信する 
+## <a name="send-a-search-request-and-receive-the-response"></a>検索要求を送信して応答を受信する 
 
 1. 文字列としてサブスクリプション キーを受け取る `VideoSearch()` という関数を作成します。 先ほど作成した検索クライアントをインスタンス化します。
     

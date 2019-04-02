@@ -3,7 +3,7 @@ title: Linux VM のシステム割り当てマネージド ID を使用して Az
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
-ms.author: priyamo
+ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d050cbfbe3def0e6475b807f88102f3edfe4f7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 474165219d7740e63bb5e0a62d08069109a52c31
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204663"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445932"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Linux 仮想マシン (VM) のシステム割り当てマネージド ID を使用して Cosmos DB にアクセスする方法について説明します。 学習内容は次のとおりです。 
+このチュートリアルでは、Linux 仮想マシン (VM) のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする方法について説明します。 学習内容は次のとおりです。 
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -71,7 +71,7 @@ Azure Data Lake Store は Azure AD 認証をネイティブにサポートする
 
 1. ポータルで、お使いの Linux VM に移動します。 **[概要]** の **[接続]** を選択します。  
 2. 任意の SSH クライアントを使用して、VM に接続します。 
-3. ターミナル ウィンドウで、cURL を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Data Lake Store ファイル システムのアクセス トークンを取得するよう要求します。 Data Lake Store のリソース識別子は "https://datalake.azure.net/" です。  リソース識別子の末尾にスラッシュが含まれることが重要です。
+3. ターミナル ウィンドウで、cURL を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Data Lake Store ファイル システムのアクセス トークンを取得するよう要求します。 Data Lake Store のリソース識別子は `https://datalake.azure.net/` です。  リソース識別子の末尾にスラッシュが含まれることが重要です。
     
    ```bash
    curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatalake.azure.net%2F' -H Metadata:true   

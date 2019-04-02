@@ -8,28 +8,31 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 6dac6fb18f221ddb45e5b5b7e325868915732368
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
+ms.openlocfilehash: 625556986c5034303e83cc23b4ba06b1638115d1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804649"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448426"
 ---
-# <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>クイック スタート:Event Grid の通知をサブスクライブすることで Azure Data Explorer に Azure BLOB を取り込む
+# <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>クイック スタート:Event Grid の通知をサブスクライブすることで Azure Data Explorer に BLOB を取り込む
 
-Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer では、BLOB コンテナーに書き込まれた BLOB からの継続的な取り込み (データの読み込み) を実行できます。 これは、BLOB 作成イベントに対して [Azure Event Grid](/azure/event-grid/overview) サブスクリプションを設定し、それらのイベントをイベント ハブ経由で Kusto にルーティングすることで実現されます。 このクイック スタートでは、イベント ハブに通知を送信する Event Grid サブスクリプションを持つストレージ アカウントが必要です。 イベント グリッド データ接続を作成して、システム全体のデータ フローを確認できます。
+Azure Data Explorer は、ログと利用統計情報のための高速でスケーラブルなデータ探索サービスです。 BLOB コンテナーに書き込まれた BLOB からの継続的な取り込み (データの読み込み) を実行できます。 
+
+このクイック スタートでは、 [Azure Event Grid](/azure/event-grid/overview) サブスクリプションの設定方法、およびイベント ハブを使用して Azure Data Explorer にイベントをルーティングする方法について説明します。 まずは、Azure Event Hubs に通知を送信する イベント グリッド サブスクリプションを持つストレージ アカウントが必要です。 次に、Event Grid データ接続を作成して、システム全体のデータ フローを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
-1. Azure サブスクリプションをお持ちでない場合は、[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成できます。
-1. [クラスターとデータベース](create-cluster-database-portal.md)
-1. [ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)
-1. [イベント ハブ](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
+* Azure サブスクリプション。 [無料の Azure アカウント](https://azure.microsoft.com/free/)を作成します。
+* [クラスターとデータベース](create-cluster-database-portal.md)。
+* [ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)。
+* [イベント ハブ](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)。
 
 ## <a name="create-an-event-grid-subscription-in-your-storage-account"></a>お使いのストレージ アカウント内に Event Grid サブスクリプションを作成する
 
-1. Azure portal で、お使いのストレージ アカウントに移動します。
-1. **[イベント]** タブをクリックし、**[イベント サブスクリプション]** をクリックします。
+1. Azure portal でストレージ アカウントを検索します。
+1. **[イベント]** > **[イベント サブスクリプション]** を選択します。
 
     ![アプリケーションの [クエリ] リンク](media/ingest-data-event-grid/create-event-grid-subscription.png)
 
@@ -38,7 +41,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | Name | *test-grid-connection* | 作成するイベント グリッドの名前。|
-    | イベント スキーマ | *イベント グリッド スキーマ* | イベント グリッドで使用するスキーマ。 |
+    | イベント スキーマ | *Event Grid スキーマ* | イベント グリッドで使用するスキーマ。 |
     | トピックの種類 | *ストレージ アカウント* | イベント グリッド トピックの種類。 |
     | トピックのリソース | *gridteststorage* | ご利用のストレージ アカウントの名前。 |
     | すべてのイベントの種類をサブスクライブする | *オフ* | すべてのイベントの通知は取得しません。 |
@@ -48,13 +51,13 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     | | |
 
 1. 特定のコンテナーからのファイルを追跡する場合は、**[追加機能]** タブを選択します。 次のように、通知用のフィルターを設定します。
-    * **[Subject Begins With]\(指定の値で始まる件名\)** フィールドは、BLOB コンテナーの "*リテラル*" プレフィックスです (適用されるパターンは *startswith* であるため、複数のコンテナーを対象にできます)。 ワイルドカードは使用できません。
+    * **[次で始まるサブジェクト]** フィールドは、BLOB コンテナーの*リテラル* プレフィックスです。 適用されるパターンは *startswith* であるため、複数のコンテナーにまたがることができます。 ワイルドカードは使用できません。
      次のように設定する "*必要があります*"。*`/blobServices/default/containers/`*[コンテナーのプレフィックス]
     * **[Subject Ends With]\(指定の値で終わる件名\)** フィールドは、BLOB の "*リテラル*" サフィックスです。 ワイルドカードは使用できません。
 
 ## <a name="create-a-target-table-in-azure-data-explorer"></a>Azure データ エクスプローラーでターゲット テーブルを作成する
 
-Azure Data Explorer で、イベント ハブのデータの送信先となるテーブルを作成します。 「**前提条件**」で準備したクラスターとデータベース内にテーブルを作成します。
+Azure Data Explorer で、Event Hubs のデータの送信先となるテーブルを作成します。 前提条件で準備したクラスターとデータベース内にテーブルを作成します。
 
 1. Azure portal のクラスターで、**[クエリ]** を選択します。
 
@@ -80,17 +83,17 @@ Azure Data Explorer で、イベント ハブのデータの送信先となる�
 
 1. ツールバーの **[通知]** を選択して、イベント ハブのデプロイが成功したことを確認します。
 
-1. 作成したクラスターの **[データベース]**、**[TestDatabase]** の順に選択します。
+1. 作成したクラスターの **[データベース]** > **[TestDatabase]** を選択します。
 
     ![テスト データベースの選択](media/ingest-data-event-grid/select-test-database.png)
 
-1. **[データ インジェスト]**、**[データ接続の追加]** の順に選択します。
+1. **[データ インジェスト]** > **[データ接続の追加]** を選択します。
 
     ![データの取り込み](media/ingest-data-event-grid/data-ingestion-create.png)
 
-1. 接続の種類として、**Blob Storage**。
+1.  次の接続の種類を選択します:**Blob Storage**。
 
-1. フォームに次の情報を入力し、**[作成]** をクリックします。
+1. フォームに次の情報を入力し、**[作成]** を選択します。
 
     ![イベント ハブの接続](media/ingest-data-event-grid/create-event-grid-data-connection.png)
 
@@ -98,11 +101,11 @@ Azure Data Explorer で、イベント ハブのデータの送信先となる�
 
     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | データ接続名 | *test-hub-connection* | Azure データ エクスプローラーで作成する接続の名前。|
+    | データ接続名 | *test-hub-connection* | Azure Data Explorer で作成する接続の名前。|
     | ストレージ アカウントのサブスクリプション | サブスクリプション ID | ストレージ アカウントが存在するサブスクリプション ID。|
     | ストレージ アカウント | *gridteststorage* | 作成済みのストレージ アカウントの名前。|
     | Event Grid | *test-grid-connection* | 作成したイベント グリッドの名前。 |
-    | イベント ハブ名 | *test-hub* | 作成したイベント ハブ。 これは、イベント グリッドを選択すると、自動的に入力されます。 |
+    | イベント ハブ名 | *test-hub* | 作成したイベント ハブ。 このフィールドは、イベント グリッドを選択すると、自動的にデータが入力されます。 |
     | コンシューマー グループ | *test-group* | 作成したイベント ハブに定義されているコンシューマー グループ。 |
     | | |
 
@@ -119,9 +122,9 @@ Azure Data Explorer で、イベント ハブのデータの送信先となる�
 
 Azure Data Explorer とストレージ アカウントが接続されたので、サンプル データを作成して BLOB ストレージにアップロードできます。
 
-Azure Storage リソースを操作するいくつかの基本的な Azure CLI コマンドを発行する、簡単なシェル スクリプトを使用します。 スクリプトはまず最初にストレージ アカウントに新しいコンテナーを作成し、そのコンテナーに任意の既存ファイルを (BLOB として) アップロードします。 その後、コンテナー内のすべての BLOB を一覧表示します。 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用して、このスクリプトをポータルで直接実行できます。
+Azure Storage リソースを操作するいくつかの基本的な Azure CLI コマンドを発行する、簡単なシェル スクリプトを使用します。 このスクリプトは、ストレージ アカウントに新しいコンテナーを作成し、そのコンテナーに既存ファイルを (BLOB として) アップロードしてから、コンテナー内の BLOB を一覧表示します。 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用して、このスクリプトをポータルで直接実行できます。
 
-次のデータをファイルに保存し、下のスクリプトで使用します。
+ファイルにデータを保存し、このスクリプトでそれをアップロードします。
 
 ```Json
 {"TimeStamp": "1987-11-16 12:00","Value": "Hello World","Source": "TestSource"}
@@ -154,7 +157,7 @@ Azure Storage リソースを操作するいくつかの基本的な Azure CLI �
 ## <a name="review-the-data-flow"></a>データ フローの確認
 
 > [!NOTE]
-> ADX には、取り込みプロセスを最適化することを目的とした、データ取り込み用の集計 (バッチ処理) ポリシーがあります。
+> Azure Data Explorer には、インジェスト プロセスを最適化することを目的とした、データ インジェストの集計 (バッチ処理) ポリシーがあります。
 既定では、ポリシーは 5 分間に構成されます。
 このポリシーは、必要に応じて、後で変更できます。 このクイック スタートでは、数分間の待機時間が発生する可能性があります。
 

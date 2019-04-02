@@ -26,7 +26,7 @@ items:
       href: data-box-gateway-system-requirements.md
     - name: 制限を理解する
       href: data-box-gateway-limits.md
-    - name: ユースケースを確認する
+    - name: ユース ケースを確認する
       href: data-box-gateway-use-cases.md
   - name: 方法
     items:
@@ -46,7 +46,7 @@ items:
       href: data-box-gateway-troubleshoot.md
   - name: リリース ノート
     items:
-    - name: プレビュー
+    - name: 一般公開
       href: data-box-gateway-release-notes.md
 - name: Data Box Edge
   items:
@@ -94,6 +94,10 @@ items:
       href: data-box-edge-connect-powershell-interface.md
     - name: トラブルシューティング
       href: data-box-edge-troubleshoot.md
+  - name: リリース ノート
+    items:
+    - name: 一般公開
+      href: data-box-gateway-release-notes.md
 - name: リソース
   items:
   - name: Data Box Edge C# モジュールのサンプル (.NET)
@@ -102,9 +106,9 @@ items:
     href: https://azure.microsoft.com/services/storage/databox/edge/
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
-ms.openlocfilehash: aab87662b82d80585aad647af7905ebfad399df9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ae1c076d22c6dba0486e0f949820cf0cd6e0b79a
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400384"
+ms.locfileid: "58418085"

@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 02/12/2019
-ms.openlocfilehash: 61c4edc5ec9c690944047ce67f619f0f69f62f6c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 03/01/2019
+ms.openlocfilehash: e15cf93514f921223fea37aa480730bba46dd195
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236738"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864951"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>クイック スタート:Azure SQL Database で Machine Learning Services と R を使用する (プレビュー)
 
@@ -29,8 +29,12 @@ Machine Learning Services には、R の基本ディストリビューション�
 
 Azure サブスクリプションをお持ちでない場合は、始める前に[アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-> [!NOTE]
-> Azure SQL Database での Machine Learning Services と R は、現在パブリック プレビュー期間です。 [プレビューにサインアップしてください](sql-database-machine-learning-services-overview.md#signup)。
+> [!IMPORTANT]
+> Azure SQL Database の Machine Learning Services は、現在パブリック プレビュー期間です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>
+> [プレビューにサインアップしてください](sql-database-machine-learning-services-overview.md#signup)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -154,7 +158,7 @@ SQL Database では、次の 2 とおりの方法で R コードを実行でき�
 
     ![テーブルのデータを返す R スクリプトからの出力](./media/sql-database-connect-query-r/r-output-rtestdata.png)
 
-3. 入力変数または出力変数の名前を変更してみましょう。 前出のスクリプトでは、入力変数と出力変数に既定の名前である _InputDataSet_ と _OutputDataSet_ を使用しました。 _InputDatSet_ に関連付けられる入力データを定義するには、*@input_data_1* 変数を使用します。
+3. 入力変数または出力変数の名前を変更してみましょう。 前出のスクリプトでは、入力変数と出力変数に既定の名前である _InputDataSet_ と _OutputDataSet_ を使用しました。 _InputDatSet_ に関連付けられる入力データを定義するには、*\@input_data_1* 変数を使用します。
 
     このスクリプトでは、ストアド プロシージャの出力変数と入力変数の名前を *SQL_out* と *SQL_in* に変更しています。
 
@@ -170,7 +174,7 @@ SQL Database では、次の 2 とおりの方法で R コードを実行でき�
 
     R では、大文字と小文字が区別されることに注意してください。`@input_data_1_name` と `@output_data_1_name` における入力変数と出力変数の大文字と小文字の区別は、`@script` における R コード内の変数と一致していなければなりません。 
 
-    加えて、パラメーターの順序も重要です。 オプション パラメーターの *@input_data_1_name* と *@output_data_1_name* を使用するためには、必要なパラメーター *@input_data_1* と *@output_data_1* を先に指定する必要があります。
+    加えて、パラメーターの順序も重要です。 オプション パラメーターの *\@input_data_1_name* と *\@output_data_1_name* を使用するには、まず必須パラメーターの *\@input_data_1* と *\@output_data_1* を指定する必要があります。
 
     パラメーターとして渡すことができる入力データセットは 1 つだけです。また、返すことのできるデータセットも 1 つだけです。 ただし、R コード内から他のデータセットを呼び出し、そのデータセットに加えて、他の種類の出力を返すことができます。 任意のパラメーターに OUTPUT キーワードを追加することもでき、その場合は、パラメーターに結果が返されます。 
 
@@ -271,34 +275,34 @@ R を使用してモデルをトレーニングし、お使いの SQL データ�
 
     線形モデルの要件は単純です。
 
-    - 従属変数 `speed` と独立変数 `distance` の間の関係を表す数式を定義します。
+   - 従属変数 `speed` と独立変数 `distance` の間の関係を表す数式を定義します。
 
-    - モデルのトレーニングに使用する入力データを提供します。
+   - モデルのトレーニングに使用する入力データを提供します。
 
-    > [!TIP]
-    > 線形モデルについて復習する必要がある場合は、次のチュートリアルをお勧めします。rxLinMod を使用してモデルを当てはめるプロセスが説明されています。「[Fitting Linear Models (線形モデルの当てはめ)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)」
+     > [!TIP]
+     > 線形モデルについて復習する必要がある場合は、次のチュートリアルをお勧めします。rxLinMod を使用してモデルを当てはめるプロセスが説明されています。「[Fitting Linear Models (線形モデルの当てはめ)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)」
 
-    モデルをビルドするには、R コード内で式を定義し、そのデータを入力パラメーターとして渡します。
+     モデルをビルドするには、R コード内で式を定義し、そのデータを入力パラメーターとして渡します。
 
-    ```sql
-    DROP PROCEDURE IF EXISTS generate_linear_model;
-    GO
-    CREATE PROCEDURE generate_linear_model
-    AS
-    BEGIN
-        EXEC sp_execute_external_script
-        @language = N'R'
-        , @script = N'lrmodel <- rxLinMod(formula = distance ~ speed, data = CarsData);
-            trained_model <- data.frame(payload = as.raw(serialize(lrmodel, connection=NULL)));'
-        , @input_data_1 = N'SELECT [speed], [distance] FROM CarSpeed'
-        , @input_data_1_name = N'CarsData'
-        , @output_data_1_name = N'trained_model'
-        WITH RESULT SETS ((model VARBINARY(max)));
-    END;
-    GO
-    ```
+     ```sql
+     DROP PROCEDURE IF EXISTS generate_linear_model;
+     GO
+     CREATE PROCEDURE generate_linear_model
+     AS
+     BEGIN
+       EXEC sp_execute_external_script
+       @language = N'R'
+       , @script = N'lrmodel <- rxLinMod(formula = distance ~ speed, data = CarsData);
+           trained_model <- data.frame(payload = as.raw(serialize(lrmodel, connection=NULL)));'
+       , @input_data_1 = N'SELECT [speed], [distance] FROM CarSpeed'
+       , @input_data_1_name = N'CarsData'
+       , @output_data_1_name = N'trained_model'
+       WITH RESULT SETS ((model VARBINARY(max)));
+     END;
+     GO
+     ```
 
-    rxLinMod の第 1 引数は *formula* パラメーターです。このパラメーターで、distance を speed の従属変数として定義します。 入力データは `CarsData` 変数に格納されます。この変数は、SQL クエリによって入力されます。 入力データに具体的な名前を割り当てなかった場合、既定の変数名は _InputDataSet_ になります。
+     rxLinMod の第 1 引数は *formula* パラメーターです。このパラメーターで、distance を speed の従属変数として定義します。 入力データは `CarsData` 変数に格納されます。この変数は、SQL クエリによって入力されます。 入力データに具体的な名前を割り当てなかった場合、既定の変数名は _InputDataSet_ になります。
 
 2. 次に、モデルを再トレーニングしたり予測に使用したりできるよう、モデルの格納先となるテーブルを作成します。 モデルを作成する R パッケージの出力は通常、**バイナリ オブジェクト**になります。 したがって、このテーブルには **VARBINARY(max)** 型の列が必要となります。
 
@@ -397,23 +401,23 @@ R を使用してモデルをトレーニングし、お使いの SQL データ�
 
     上記のスクリプトは、次のステップを実行します。
 
-    + SELECT ステートメントを使用してテーブルから単一のモデルを取得し、それを入力パラメーターとして渡します。
+   + SELECT ステートメントを使用してテーブルから単一のモデルを取得し、それを入力パラメーターとして渡します。
 
-    + テーブルからモデルを取得した後、そのモデルに対して `unserialize` 関数を呼び出します。
+   + テーブルからモデルを取得した後、そのモデルに対して `unserialize` 関数を呼び出します。
 
-        > [!TIP] 
-        > RevoScaleR に用意されている新しい[シリアル化関数](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel)もご確認ください。リアルタイム スコアリングがサポートされています。
-    + `rxPredict` 関数と適切な引数をモデルに適用し、新しい入力データを提供します。
+       > [!TIP] 
+       > RevoScaleR に用意されている新しい[シリアル化関数](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxserializemodel)もご確認ください。リアルタイム スコアリングがサポートされています。
+   + `rxPredict` 関数と適切な引数をモデルに適用し、新しい入力データを提供します。
 
-    + この例では、テスト フェーズ中、`str` 関数を追加して、R から返されるデータのスキーマをチェックしています。このステートメントは後から削除することができます。
+   + この例では、テスト フェーズ中、`str` 関数を追加して、R から返されるデータのスキーマをチェックしています。このステートメントは後から削除することができます。
 
-    + R スクリプトで使用される列名は、必ずしもストアド プロシージャの出力に渡されるとは限りません。 ここでは、WITH RESULTS 句を使用して、いくつかの新しい列名を定義しています。
+   + R スクリプトで使用される列名は、必ずしもストアド プロシージャの出力に渡されるとは限りません。 ここでは、WITH RESULTS 句を使用して、いくつかの新しい列名を定義しています。
 
-    **結果**
+     **結果**
 
-    ![停止距離を予測するための結果セット](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
+     ![停止距離を予測するための結果セット](./media/sql-database-connect-query-r/r-predict-stopping-distance-resultset.png)
 
-    [Transact-SQL の PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql) を使用して、保存されているモデルに基づいて、予測された値やスコアを生成することもできます。
+     [Transact-SQL の PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql) を使用して、保存されているモデルに基づいて、予測された値やスコアを生成することもできます。
 
 <a name="add-package"></a>
 

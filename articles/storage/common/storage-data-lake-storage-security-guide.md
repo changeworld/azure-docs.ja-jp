@@ -5,15 +5,15 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 02/07/2019
+ms.date: 03/21/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 22b070e6d70208057c85ad6a2322cc440d12a0fa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ce01301455c7abcd26006e622fcfbb8127e1c511
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008218"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372490"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Azure Data Lake Storage Gen2 セキュリティ ガイド
 
@@ -134,7 +134,7 @@ Azure Key Vault を使用するもう 1 つの利点は、Azure Active Directory
 Azure Storage 内のデータ オブジェクトへのアクセスを承認するための 3 つのオプションがあります。
 
 - Azure AD を使用して、ファイル システムとキューへのアクセスを承認する。 他の承認方法と比較した Azure AD の利点には、コード内にシークレットを格納する必要がないことが含まれます。 詳細については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](storage-auth-aad.md)」を参照してください。 
-- ストレージ アカウント キーを使用して、共有キーを介したアクセスを承認する。 共有キーを介した承認では、ストレージ アカウント キーをアプリケーション内に格納する必要があるため、可能であれば、代わりに Azure AD を使用することをお勧めします。 実稼働アプリケーション、または Azure のテーブルとファイルへのアクセスの承認では、Azure AD の統合がプレビュー段階にある間は、引き続き共有キーを使用してください。
+- ストレージ アカウント キーを使用して、共有キーを介したアクセスを承認する。 共有キーを介した承認では、ストレージ アカウント キーをアプリケーション内に格納する必要があるため、可能であれば、代わりに Azure AD を使用することをお勧めします。
 - 共有アクセス署名を使用して、特定のデータ オブジェクトへの制御されたアクセス許可を特定の期間付与する。
 
 承認を使用してアクセスを制限する以外に、[ファイアウォールと仮想ネットワーク](storage-network-security.md)を使用し、ネットワーク ルールに基づいてストレージ アカウントへのアクセスを制限する方法もあります。  このアプローチを使用すると、パブリック インターネット トラフィックに対するアクセスを拒否し、特定の Azure Virtual Network またはパブリック インターネット IP アドレスの範囲にのみアクセスを許可することができます。

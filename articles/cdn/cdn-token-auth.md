@@ -96,7 +96,7 @@ ms.locfileid: "30905148"
        > <table>
        > <tr>
        >   <th>パラメーター名</th> 
-       >   <th>[説明]</th>
+       >   <th>説明</th>
        > </tr>
        > <tr>
        >    <td><b>ec_expire</b></td>

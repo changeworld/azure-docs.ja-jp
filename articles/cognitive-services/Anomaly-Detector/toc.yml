@@ -1,0 +1,47 @@
+items:
+- name: Anomaly Detector のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+  - name: Anomaly Detector API とは
+    href: overview.md
+  expanded: true
+- name: クイック スタート
+  items:
+  - name: データの異常を検出する
+    items:
+    - name: C# の使用
+      href: quickstarts/detect-data-anomalies-csharp.md
+    - name: Java の使用
+      href: quickstarts/detect-data-anomalies-java.md
+    - name: Python の使用
+      href: quickstarts/detect-data-anomalies-python.md
+  expanded: true
+- name: ハウツー ガイド
+  items:
+  - name: データの異常を特定する
+    href: how-to/identify-anomalies.md
+- name: 概念
+  items:
+  - name: Anomaly Detection API のベスト プラクティス
+    href: concepts/anomaly-detection-best-practices.md
+- name: リファレンス
+  items:
+  - name: REST API リファレンス
+    href: https://aka.ms/anomaly-detector-rest-api-ref
+  - name: SDK
+    items:
+    - name: .NET
+      href: https://aka.ms/anomaly-detector-dotnet-ref
+- name: リソース
+  items:
+  - name: 価格
+    href: https://aka.ms/anomaly-detector-pricing
+  - name: リージョン別の提供状況
+    href: https://aka.ms/anomaly-detector-region
+ms.openlocfilehash: c752383026434ca2f8f1d3f047bb1dbc3740c7ea
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58473399"

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: f64000ed502ee817f907e6ac9c89c2f037725a39
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7132c2073223008cd82d0ffd54aaf266d0a630ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823792"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839019"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>チュートリアル 3:信用リスク モデルをデプロイする - Azure Machine Learning Studio
 
@@ -72,12 +72,11 @@ ms.locfileid: "56823792"
 
 各モジュールを選択して Delete キーを押すか、モジュールを右クリックして **[削除]** を選択します。 
 
-![SVM モデルを削除](./media/tutorial-part3-credit-risk-deploy/publish3a.png)
-
+![サポート ベクター マシン モデルを削除するために、削除するモジュールを強調表示](./media/tutorial-part3-credit-risk-deploy/publish3a.png)
 
 これでモデルは次のようになるはずです。
 
-![SVM モデルを削除](./media/tutorial-part3-credit-risk-deploy/publish3.png)
+![サポート ベクター マシン モデルが削除されたときの結果の実験](./media/tutorial-part3-credit-risk-deploy/publish3.png)
 
 これで、[2 クラス ブースト デシジョン ツリー][two-class-boosted-decision-tree]を使用するモデルをデプロイする準備ができました。
 

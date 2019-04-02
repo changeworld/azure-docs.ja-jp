@@ -3,7 +3,7 @@ title: Azure Active Directory のログを Azure Monitor ログ (プレビュー
 description: Azure Active Directory のログを Azure Monitor ログ (プレビュー) と統合する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 2c3db9a8-50fa-475a-97d8-f31082af6593
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d8259cdb61d2481805dd2e07c11b539e057215c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 056a529101ffc39170ea057832bcd50b283505be
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817067"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436271"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>Azure AD ログを Azure Monitor ログ (プレビュー) と統合する
 

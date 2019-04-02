@@ -1,38 +1,43 @@
 ---
-title: Text Analytics とは
+title: Text Analytics API とは - 機能 -
 titleSuffix: Azure Cognitive Services
-description: センチメント分析、キー フレーズ抽出、言語検出、エンティティのリンクのための Azure Cognitive Services の Text Analytics。
+description: 感情分析、キー フレーズ抽出、言語検出、エンティティのリンクのための Azure Cognitive Services の Text Analytics API。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 03/01/2019
 ms.author: aahi
-ms.openlocfilehash: 7623f98b9fd6c4bad8a41050e39b6e0e8650dccc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1e6aea792666447141e504f45a3ff55cb70f6261
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889287"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533240"
 ---
-# <a name="what-is-text-analytics"></a>Text Analytics とは
+# <a name="what-is-text-analytics-api"></a>Text Analytics API とは
 
 Text Analytics API は、未加工のテキストに対して高度な自然言語処理を実行できるクラウドベースのサービスであり、主要な機能として感情分析、キー フレーズ抽出、言語検出、エンティティ リンク設定の 4 つを備えています。
 
 この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/) に含まれます。
 
-## <a name="capabilities-in-text-analytics"></a>テキスト分析の機能
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
-テキスト分析にはさまざまな意味がありますが、Cognitive Services の場合、Text Analytics API は次の表に示す 4 種類の分析を提供します。
+テキスト分析にはさまざまな意味がありますが、Cognitive Services の場合、Text Analytics API には次のように 4 種類の分析が用意されています。
 
-| 操作| 説明 | API |
-|-----------|-------------|------|
-|[**感情分析**](how-tos/text-analytics-how-to-sentiment-analysis.md) | 未加工のテキストを分析し、正または負の感情を見抜くための手がかりを求めることで、ブランドまたはトピックに対して顧客がどう思っているのかを突き止めます。 この API はドキュメントごとに 0 から 1 までの感情スコアを返します。1 が最も肯定的となります。<br /> 分析モデルは、広範囲にわたるテキスト本文と Microsoft の自然言語技術を利用して事前トレーニングされています。 [一部の言語](text-analytics-supported-languages.md)については、この API はユーザーが指定したあらゆる未加工テキストを分析し、評価し、呼び出し元のアプリケーションに結果を直接返すことができます。 | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package)  |
-|[**キー フレーズ抽出**](how-tos/text-analytics-how-to-keyword-extraction.md) | 重要なフレーズを自動的に抽出し、重要な点を迅速に特定します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。  | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) <br /> [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
-|[**言語検出**](how-tos/text-analytics-how-to-language-detection.md) | 最大 120 の言語に対して、入力テキストが書かれている言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 言語コードは、評価値の強度を示すスコアと組みになります。 | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) <br />  [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) |
-|[**エンティティの認識 (プレビュー)**](how-tos/text-analytics-how-to-entity-linking.md) | テキスト内のエンティティを識別し、人、場所、組織、日付/時刻、数量、パーセンテージ、通貨、その他に分類します。 既知のエンティティも識別され、Web 上の詳細ページにリンクされます。 | [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) |
+## <a name="sentiment-analysis"></a>感情分析
+[感情分析](how-tos/text-analytics-how-to-sentiment-analysis.md)を使用すると、肯定的または否定的な感情の手がかりを探して未加工のテキストを分析することで、ブランドまたはトピックに対して顧客がどう思っているのかを突き止めることができます。 この API はドキュメントごとに 0 から 1 までの感情スコアを返します。1 が最も肯定的となります。<br /> 分析モデルは、広範囲にわたるテキスト本文と Microsoft の自然言語技術を利用して事前トレーニングされています。 [一部の言語](text-analytics-supported-languages.md)については、この API はユーザーが指定したあらゆる未加工テキストを分析し、評価し、呼び出し元のアプリケーションに結果を直接返すことができます。 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) API または [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK を使用することができます。
+
+## <a name="key-phrase-extraction"></a>キー フレーズ抽出
+[キー フレーズを自動的に抽出](how-tos/text-analytics-how-to-keyword-extraction.md)し、重要な点を迅速に特定します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 ここで [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) API または [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK を使用することができます。
+
+## <a name="language-detection"></a>言語検出
+最大 120 の言語に対して、[入力テキストが書かれている言語を検出し](how-tos/text-analytics-how-to-language-detection.md)、要求で送信されたドキュメントごとに 1 つの言語コードを報告することができます。 言語コードは、評価値の強度を示すスコアと組みになります。 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) API または [.NET](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/csharp#install-the-nuget-sdk-package) SDK を使用することができます。
+
+## <a name="entity-recognition-preview"></a>エンティティの認識 (プレビュー)
+[テキスト内のエンティティを識別して分類します](how-tos/text-analytics-how-to-entity-linking.md) (人、場所、組織、日付/時刻、数量、パーセンテージ、通貨など)。 既知のエンティティも識別され、Web 上の詳細ページにリンクされます。 [REST](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) API を使用できます。
 
 ## <a name="use-containers"></a>コンテナーの使用
 
@@ -80,18 +85,10 @@ Text Analytics API では、テキストの表現と文字数の計算に Unicod
 
 ## <a name="next-steps"></a>次の手順
 
-まず、[対話型デモ](https://azure.microsoft.com/services/cognitive-services/text-analytics/)をお試しください。 テキスト入力 (最大 5,120 文字) を貼り付け、言語を検出したり (最大 120)、感情スコアを算出したり、キー フレーズを抽出したりできます。 新規登録の必要ありません。
-
-API を直接呼び出す準備ができたら:
-
 + [新規登録](how-tos/text-analytics-how-to-signup.md)してアクセス キーを入手し、[API の呼び出し](how-tos/text-analytics-how-to-call-api.md)手順を確認します。
 
-+ [こちらのクイック スタート](quickstarts/csharp.md)は C# で記述された REST API 呼び出しのチュートリアルです。 テキストの送信方法、分析の選択方法、最小コードで結果を表示する方法について学習してください。
++ [こちらのクイック スタート](quickstarts/csharp.md)は C# で記述された REST API 呼び出しのチュートリアルです。 テキストの送信方法、分析の選択方法、最小コードで結果を表示する方法について学習してください。 好みに応じて、代わりに [Python クイック スタート](quickstarts/python.md)から始めることもできます。
 
-+ [API リファレンス ドキュメント](//go.microsoft.com/fwlink/?LinkID=759346)には、API に関する技術文書があります。 ドキュメントには呼び出しが埋め込まれています。各ドキュメント ページから API を呼び出すことができます。
++ Azure Databricks を使用するこちらの[感情分析のチュートリアル](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services)では、少し詳しく説明されています。
 
-+ [こちらの外部/コミュニティ コンテンツ](text-analytics-resource-external-community.md)紹介ページには、Text Analytics を他のツールやテクノロジと共に使用する方法を実演したブログ投稿や動画の一覧があります。
-
-## <a name="see-also"></a>関連項目
-
- [Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/cognitive-services/)
++ [外部/コミュニティ コンテンツ ページ](text-analytics-resource-external-community.md)には、他のツールやテクノロジと共に Text Analytics API を使用する方法に関するブログ投稿や他の動画の一覧が掲載されています。

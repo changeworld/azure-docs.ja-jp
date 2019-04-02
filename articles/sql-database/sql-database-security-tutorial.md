@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: b9141fcef8bda181cd7b679f58d22d4ba2895b14
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d6f14a7cdcb77c1ca47d0f79f587e0bf3606b5d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004584"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893273"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>チュートリアル:単一データベースまたはプールされたデータベースをセキュリティで保護する
 
@@ -77,11 +77,11 @@ SQL データベースは、Azure 内のファイアウォールによって保�
 
 1. **[概要]** ページで、**[サーバー ファイアウォールの設定]** を選択します。 データベース サーバーの **[ファイアウォール設定]** ページが開きます。
 
-    1. ツール バーの **[クライアント IP の追加]** を選択し、現在の IP アドレスを新しいファイアウォール規則に追加します。 この規則は、単一の IP アドレスまたは一定範囲の IP アドレスに対して、ポート 1433 を開くことができます。 **[保存]** を選択します。
+   1. ツール バーの **[クライアント IP の追加]** を選択し、現在の IP アドレスを新しいファイアウォール規則に追加します。 この規則は、単一の IP アドレスまたは一定範囲の IP アドレスに対して、ポート 1433 を開くことができます。 **[保存]** を選択します。
 
-    ![サーバーのファイアウォール規則の設定](./media/sql-database-security-tutorial/server-firewall-rule2.png)
+      ![サーバーのファイアウォール規則の設定](./media/sql-database-security-tutorial/server-firewall-rule2.png)
 
-    1. **[OK]** を選択し、**[ファイアウォール設定]** ページを閉じます。
+   1. **[OK]** を選択し、**[ファイアウォール設定]** ページを閉じます。
 
 これで、指定した IP アドレスまたは IP アドレスの範囲を使用して、サーバー内の任意のデータベースに接続できるようになりました。
 
@@ -90,7 +90,7 @@ SQL データベースは、Azure 内のファイアウォールによって保�
 
 ### <a name="setup-database-firewall-rules"></a>データベースのファイアウォール規則の設定
 
-データベースレベルのファイアウォール規則は、個々のデータベースのみに適用されます。 これらの規則は移植可能で、サーバーのフェールオーバー中はデータベースに従います。 データベースレベルのファイアウォール規則は、サーバーレベルのファイアウォール規則を構成した後にのみ、Transact-SQL (T-SQL) ステートメントを使用して構成することができます。
+データベースレベルのファイアウォール規則は、個々のデータベースのみに適用されます。 サーバーのフェールオーバーの間、これらの規則はデータベースに保持されます。 データベースレベルのファイアウォール規則は、サーバーレベルのファイアウォール規則を構成した後にのみ、Transact-SQL (T-SQL) ステートメントを使用して構成することができます。
 
 データベースレベルのファイアウォール規則を設定する手順は次のとおりです。
 
@@ -142,7 +142,7 @@ Azure AD の構成の詳細については、次のページを参照してく�
 
 - [オンプレミス ID と Azure AD の統合](../active-directory/hybrid/whatis-hybrid-identity.md)
 - [Azure AD への独自のドメイン名の追加](../active-directory/active-directory-domains-add-azure-portal.md)
-- [Microsoft Azure での Windows Server AD とのフェデレーションのサポート](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)
+- [Microsoft Azure での Windows Server AD とのフェデレーションのサポート](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Azure AD ディレクトリの管理](../active-directory/fundamentals/active-directory-administer.md)
 - [PowerShell による Azure AD の管理](/powershell/azure/overview?view=azureadps-2.0)
 - [ハイブリッド ID で必要なポートとプロトコル](../active-directory/hybrid/reference-connect-ports.md)
@@ -248,11 +248,11 @@ Advanced Data Security を有効にするには:
 
 1. **[SQL サーバー]** ページで **[セキュリティ]** セクションを探し、**[Advanced Data Security]** を選択します。
 
-    1. **[Advanced Data Security]** で **[オン]** を選択して、この機能を有効にします。 脆弱性評価の結果を保存するためのストレージ アカウントを選択します。 次に、**[保存]** を選択します。
+   1. **[Advanced Data Security]** で **[オン]** を選択して、この機能を有効にします。 脆弱性評価の結果を保存するためのストレージ アカウントを選択します。 次に、**[保存]** を選択します。
 
-    ![ナビゲーション ウィンドウ](./media/sql-database-security-tutorial/threat-settings.png)
+      ![ナビゲーション ウィンドウ](./media/sql-database-security-tutorial/threat-settings.png)
 
-    電子メールを構成して、セキュリティのアラート、ストレージの詳細、脅威検出の種類を受信することもできます。
+      電子メールを構成して、セキュリティのアラート、ストレージの詳細、脅威検出の種類を受信することもできます。
 
 1. 目的のデータベースの **[SQL データベース]** ページに戻り、**[セキュリティ]** セクションの **[Advanced Data Security]** を選択します。 ここには、データベースのさまざまなセキュリティ インジケーターがあります。
 
@@ -264,7 +264,7 @@ Advanced Data Security を有効にするには:
 
 ### <a name="auditing"></a>監査
 
-監査機能は、データベース イベントを追跡し、Azure ストレージまたは Log Analytics の監査ログか、イベント ハブのいずれかにイベントを書き込みます。 監査により、規制に対するコンプライアンスの維持、データベース アクティビティの把握、セキュリティ侵害の可能性がある差異や異常に対する分析が容易になります。
+監査機能は、データベース イベントを追跡し、Azure Storage の監査ログ、Azure Monitor ログ、またはイベント ハブのいずれかにイベントを書き込みます。 監査により、規制に対するコンプライアンスの維持、データベース アクティビティの把握、セキュリティ侵害の可能性がある差異や異常に対する分析が容易になります。
 
 監査を有効にする手順は次のとおりです。
 
@@ -274,25 +274,25 @@ Advanced Data Security を有効にするには:
 
 1. **[監査]** の設定で、次の値を設定します。
 
-    1. **[監査]** を **[オン]** に設定します。
+   1. **[監査]** を **[オン]** に設定します。
 
-    1. **[監査ログの保存先]** として、次のいずれかを選択します。
+   1. **[監査ログの保存先]** として、次のいずれかを選択します。
 
-        - **[ストレージ]**: イベント ログが保存され、*.xel* ファイルとしてダウンロードできる Azure ストレージ アカウント。
+       - **[ストレージ]**: イベント ログが保存され、*.xel* ファイルとしてダウンロードできる Azure ストレージ アカウント。
 
-           > [!TIP]
-           > 監査レポートのテンプレートを最大限活用するには、すべての監査済みデータベースに同じストレージ アカウントを使用してください。
+          > [!TIP]
+          > 監査レポートのテンプレートを最大限活用するには、すべての監査済みデータベースに同じストレージ アカウントを使用してください。
 
-        - **[Log Analytics]**: クエリや詳細な分析のために、イベントが自動的に保存されます。
+       - **[Log Analytics]**: クエリや詳細な分析のために、イベントが自動的に保存されます。
 
-            > [!NOTE]
-            > 分析、カスタムのアラート ルール、Excel や Power BI のエクスポートなどの高度な機能をサポートするには、**Log analytics ワークスペース**が必要です。 ワークスペースがない場合は、クエリ エディターのみを使用できます。
+           > [!NOTE]
+           > 分析、カスタムのアラート ルール、Excel や Power BI のエクスポートなどの高度な機能をサポートするには、**Log Analytics ワークスペース**が必要です。 ワークスペースがない場合は、クエリ エディターのみを使用できます。
 
-        - **[イベント ハブ]**: イベントをルーティングして、他のアプリケーションで使用できるようにします。
+       - **[イベント ハブ]**: イベントをルーティングして、他のアプリケーションで使用できるようにします。
 
-    1. **[保存]** を選択します。
+   1. **[保存]** を選択します。
 
-    ![監査設定](./media/sql-database-security-tutorial/audit-settings.png)
+      ![監査設定](./media/sql-database-security-tutorial/audit-settings.png)
 
 1. これで、**[監査ログの表示]** を選択してデータベース イベントのデータを表示できるようになりました。
 
@@ -334,7 +334,7 @@ Advanced Data Security を有効にするには:
     ![Transparent Data Encryption](./media/sql-database-security-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> 暗号化の状態を確認するには、[SSMS](./sql-database-connect-query-ssms.md) を使用してデータベースに接続し、[sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql?view=sql-server-2017) ビューの `encryption_state` 列にクエリを実行します。 状態 `3` は、データベースが暗号化されていることを示します。
+> 暗号化の状態を確認するには、[SSMS](./sql-database-connect-query-ssms.md) を使用してデータベースに接続し、[sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) ビューの `encryption_state` 列にクエリを実行します。 状態 `3` は、データベースが暗号化されていることを示します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4ebc9b83c3aa135c90f18ff982621e862cb01d72
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5ff065816e287e0d4e37cdea9a7770c9ff806520
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879615"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890748"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
@@ -60,7 +60,7 @@ Machine Learning Workbench、Azure Machine Learning 実験、Machine Learning �
 
 ポータルのワークスペース ダッシュボードは、Microsoft Edge、Chrome、および Firefox ブラウザーでのみでサポートされます。
 
-[![オンライン ポータル](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
+[![Office ポータル](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
 モデルのトレーニングと、新しい CLI と SDK を使用した実行履歴の追跡を開始します。 方法については、「[チュートリアル: Azure Machine Learning サービスを使用したモデルのトレーニング](tutorial-train-models-with-aml.md)」から参照できます。
 
@@ -68,7 +68,7 @@ Machine Learning Workbench、Azure Machine Learning 実験、Machine Learning �
 
 もう Machine Learning Workbench がないため、既存のデータ準備ファイルは最新のリリースに移植されません。 ただし、引き続き任意のサイズのデータ セットをモデリング用に準備できます。   
 
-あらゆるサイズのデータセットについて、[Azure Machine Learning Data Prep SDK](http://aka.ms/data-prep-sdk) を使用し、Python コードを記述することにより、モデリングの前にデータをすばやく準備することができます。 
+あらゆるサイズのデータセットについて、[Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk) を使用し、Python コードを記述することにより、モデリングの前にデータをすばやく準備することができます。 
 
 Azure Machine Learning Data Prep SDK の使い方について詳しくは、[こちらのチュートリアル](tutorial-data-prep.md)をご覧ください。
 
@@ -84,7 +84,7 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 [Python とメインの SDK](quickstart-create-workspace-with-python.md) で、または [Azure portal](quickstart-get-started.md) を使用して、開始する方法を確認してください。
 
 ## <a name="what-about-my-registered-models-and-images"></a>登録されているモデルとイメージについて教えてください。
- 
+
 古いモデル レジストリに登録したモデルは、それらを引き続き使用したい場合は新しいワークスペースに移行する必要があります。 お客様のモデルを移行するには、新しいワークスペースでモデルをダウンロードして再登録します。 
 
 古いイメージ レジストリに作成したイメージは、引き続き使用するには新しいワークスペースに再作成する必要があります。 [イメージの構成と作成](how-to-deploy-and-where.md#configureimage)に関するセクションに従うことで、これらのイメージを再作成できます。 
@@ -109,7 +109,7 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 この最新リリースでは、拡張機能は Azure Machine Learning for Visual Studio Code に変更されました。また、上記の新しい機能と共に動作するよう拡張および強化されています。
 
-[![Visual Studio Code 用の Azure Machine Learning](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
+[![Azure Machine Learning for Visual Studio Code](./media/overview-what-happened-to-workbench/vscode.png)](./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
 
 ## <a name="what-about-domain-packages"></a>ドメイン パッケージについて教えてください。
 

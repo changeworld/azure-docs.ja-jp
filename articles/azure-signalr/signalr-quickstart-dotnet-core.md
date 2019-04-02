@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/13/2018
+ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 1bfe0026e52107c85bf2c7e66414e937ad27f715
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 248861848aa905f9cbff01ab60affd7cf21aae78
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267752"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004806"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>クイック スタート:SignalR Service を使ってチャット ルームを作成する
 
@@ -267,6 +267,6 @@ connection.start()
 このクイック スタートでは、新しい Azure SignalR Service リソースを作成し、そのリソースとASP.NET Core Web アプリを使用して、接続されている複数のクライアントにコンテンツの更新をリアルタイムにプッシュしました。 Azure SignalR Server の使用についてさらに学習するには、認証を実演する次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure SignalR Service の認証](./signalr-authenticate-oauth.md)
+> [Azure SignalR Service の認証](./signalr-concept-authenticate-oauth.md)
 
 

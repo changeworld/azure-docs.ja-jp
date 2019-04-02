@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 485d88a4765d7cedcb171a5b325fe5f366fff1f9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.lastreviewed: 03/18/2019
+ms.openlocfilehash: 33f1ccf3f1c7bc657cc66efe7c5025356c954ad6
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004765"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58187763"
 ---
 # <a name="asdk-release-notes"></a>ASDK リリース ノート
 
@@ -28,7 +28,40 @@ ms.locfileid: "56004765"
 
 [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [フィード](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)をサブスクライブして、ASDK の新着情報を常に把握するようにしてください。
 
+## <a name="build-11902069"></a>ビルド 1.1902.0.69
+
+### <a name="new-features"></a>新機能
+
+- 1902 ビルドでは、Azure Stack の管理者ポータル上にプラン、オファー、クォータ、アドオン プランの作成のための新しいユーザー インターフェイスを導入しています。 スクリーンショットを含めた詳細については、[プラン、オファー、クォータの作成](../azure-stack-create-plan.md)に関するページを参照してください。
+
+- このリリースでのその他の変更点および機能強化点の一覧は、Azure Stack リリース ノートの[このセクション](../azure-stack-update-1902.md#improvements)を参照してください。
+
+<!-- ### New features
+
+- For a list of new features in this release, see [this section](../azure-stack-update-1902.md#new-features) of the Azure Stack release notes.
+
+### Fixed and known issues
+
+- For a list of issues fixed in this release, see [this section](../azure-stack-update-1902.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../azure-stack-update-1902.md#known-issues-post-installation).
+- Note that [available Azure Stack hotfixes](../azure-stack-update-1902.md#azure-stack-hotfixes) are not applicable to the Azure Stack ASDK. -->
+
+### <a name="known-issues"></a>既知の問題
+
+- 内部ロード バランサー (ILB) を宛先としたパケットが 1,450 バイトを上回る場合にドロップする問題が発見されています。 この問題は、ホストの MTU の設定が、ロールを走査するカプセル化された VXLAN パケットに対応できないほど低い値になっていることが原因となって発生します。この設定は、1901 の時点でホストに移行されました。 この問題が発生することが確認されているシナリオは少なくとも 2 つあります。
+
+  - 内部ロード バランサー (ILB) の背後にある SQL Always-On に SQL クエリを実行し、そのクエリが 660 バイトを超えるとき。
+  - 複数のマスターを有効にしようとした場合に、Kubernetes のデプロイに失敗したとき。  
+
+  この問題は、同じ仮想ネットワークにあるものの、サブネットが異なる VM と ILB の間に通信がある場合に発生します。 ASDK ホスト上で管理者特権でのコマンド プロンプトを起動し、次のコマンドを実行すると、この問題を回避できます。
+
+  ```shell
+  netsh interface ipv4 set sub "hostnic" mtu=1660
+  netsh interface ipv4 set sub "management" mtu=1660
+  ```
+
 ## <a name="build-11901095"></a>ビルド 1.1901.0.95
+
+[Azure Stack リリースノート内の重要なビルド情報](../azure-stack-update-1901.md#build-reference)を参照してください。
 
 ### <a name="changes"></a>変更点
 
@@ -61,17 +94,3 @@ ms.locfileid: "56004765"
 ### <a name="fixed-and-known-issues"></a>修正された問題と既知の問題
 
 このリリースで修正された問題の一覧については、Azure Stack リリース ノートの[このセクション](../azure-stack-update-1811.md#fixed-issues)を参照してください。 このリリースでの既知の問題の一覧については、[このセクション](../azure-stack-update-1811.md#known-issues-post-installation)を参照してください。
-
-## <a name="build-11809090"></a>ビルド 1.1809.0.90
-
-### <a name="new-features"></a>新機能
-
-このリリースでの新機能の一覧については、Azure Stack リリース ノートの[このセクション](../azure-stack-update-1809.md#new-features)を参照してください。
-
-### <a name="fixed-issues"></a>修正された問題
-
-このリリースで修正された問題の一覧については、[このセクション](../azure-stack-update-1809.md#fixed-issues)を参照してください。
-
-### <a name="known-issues"></a>既知の問題
-
-このリリースでの既知の問題の一覧については、[このセクション](../azure-stack-update-1809.md#known-issues-post-installation)を参照してください。

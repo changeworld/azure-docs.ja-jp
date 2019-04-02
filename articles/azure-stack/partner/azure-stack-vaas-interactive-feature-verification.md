@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 01/07/2019
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 20a48e67a24763af7bcce9e8831e2a1d1846d094
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d3db8ea8639f73f3522ddaa358195e7c9ef2f9a9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594306"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766004"
 ---
 # <a name="interactive-feature-verification-testing"></a>対話型機能検証テスト  
 
@@ -35,13 +35,13 @@ ms.locfileid: "56594306"
 
 ## <a name="overview-of-interactive-testing"></a>対話型テストの概要
 
-ディスク交換に関するテストは一般的なシナリオです。 この例では、テストに 7 つのステップが含まれています。
+ディスク交換に関するテストは一般的なシナリオです。 この例では、テストに 5 つのステップが含まれています。
 
-1. 新しい**テスト成功**ワークフローを作成する
-1. **Disk Identification Test (ディスク識別テスト)** を選択する
-1. メッセージが表示されたら、手動の手順を完了する
-1. シナリオの結果をチェックする
-1. テスト結果を Microsoft に送信する
+1. 新しい**テスト パス** ワークフローを作成する。
+2. **Disk Identification Test** を選択する。
+3. メッセージが表示されたら、手動の手順を完了する。
+4. シナリオの結果をチェックする。
+5. テスト結果を Microsoft に送信する。
 
 ## <a name="create-a-new-test-pass"></a>新しいテスト パスの作成
 

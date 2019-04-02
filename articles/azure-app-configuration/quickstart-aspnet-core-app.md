@@ -14,22 +14,24 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: ce19041b29d567f061dde59fbe041adf61f889a0
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: a721cc2252619923496ee5a3a8ae590a5cda3b04
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961484"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487551"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
-Azure App Configuration は、Azure 内にあるマネージド構成サービスです。 すべてのアプリケーション設定を、お使いのコードとは別の 1 つの場所に簡単に保存して管理することが可能です。 このクイック スタートでは、ASP.NET Core Web アプリにサービスを組み込む方法を示します。 ASP.NET Core では、アプリケーションによって指定される 1 つ以上のデータ ソース ("*構成プロバイダー*" と呼ばれます) からの設定を使用して、キーと値に基づく 1 つの構成オブジェクトが作成されます。 App Configuration の .NET Core クライアントはそのようなプロバイダーとして実装されるので、サービスは他のデータ ソースと同じように表示されます。
+Azure App Configuration は、Azure 内にあるマネージド構成サービスです。 これを使用すると、すべてのアプリケーション設定を、コードとは別の 1 つの場所に簡単に保存して管理することができます。 このクイック スタートでは、ASP.NET Core Web アプリにサービスを組み込む方法を示します。 
 
-このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 ただし、推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
+ASP.NET Core では、アプリケーションによって指定される 1 つ以上のデータ ソースからの設定を使用して、キーと値に基づく 1 つの構成オブジェクトが作成されます。 これらのデータ ソースは、"*構成プロバイダー*" と呼ばれます。 App Configuration の .NET Core クライアントはそのようなプロバイダーとして実装されるため、このサービスは他のデータ ソースと同じように表示されます。
+
+このクイック スタートの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、[.NET Core SDK](https://dotnet.microsoft.com/download) をインストールします。
+このクイック スタートを実行するには、[.NET Core SDK](https://dotnet.microsoft.com/download) をインストールします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,7 +41,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリケーションの作成
 
-[.NET Core コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/dotnet/core/tools/) を使用して、新しい ASP.NET Core MVC Web アプリ プロジェクトを作成します。 Visual Studio ではなく .NET Core CLI を使用する利点は、Windows、macOS、および Linux プラットフォームで使用できるという点です。
+[.NET Core コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/dotnet/core/tools/) を使用して、新しい ASP.NET Core MVC Web アプリ プロジェクトを作成します。 Visual Studio ではなく .NET Core CLI を使用する利点は、Windows、macOS、および Linux プラットフォームで使用できることです。
 
 1. プロジェクト用の新規フォルダーを作成します。 このクイック スタートでは、*TestAppConfig* という名前にします。
 
@@ -69,11 +71,11 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
     </Project>
     ```
 
-## <a name="connect-to-app-configuration-store"></a>アプリ構成ストアに接続する
+## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
 
 1. 次のコマンドを実行して、`Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 1.0.0-preview-007830001
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
@@ -81,30 +83,37 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 3. シークレット マネージャーに、*ConnectionStrings:AppConfig* という名前のシークレットを追加します。
 
-    このシークレットには、アプリ構成ストアにアクセスするための接続文字列が格納されます。 下記のコマンドの値を、自分のアプリ構成ストアの接続文字列に置き換えます。
+    このシークレットには、アプリ構成ストアにアクセスするための接続文字列が格納されます。 次のコマンドの値を、自分のアプリ構成ストアの接続文字列に置き換えます。
 
     このコマンドは、*.csproj* ファイルと同じディレクトリで実行する必要があります。
 
         dotnet user-secrets set ConnectionStrings:AppConfig "Endpoint=<your_endpoint>;Id=<your_id>;Secret=<your_secret>"
 
-    シークレット マネージャーは、ローカル環境での Web アプリのテスト用にのみ使用されます。 アプリをデプロイするときは (たとえば、[Azure App Service](https://azure.microsoft.com/services/app-service/web) に)、シークレット マネージャーで接続文字列を格納する代わりに、アプリケーションの設定 (たとえば、App Service での**接続文字列**) を使用します。
+    シークレット マネージャーは、Web アプリをローカルにテストするためだけに使用されます。 アプリをデプロイするときは (たとえば、[Azure App Service](https://azure.microsoft.com/services/app-service/web) に)、アプリケーションの設定 (たとえば、App Service での**接続文字列**) を使用します。 シークレット マネージャーで接続文字列を保存するのではなく、この設定を使用します。
 
-    このシークレットには構成 API でアクセスします。 サポートされているすべてのプラットフォームで構成 API を使用する構成名にコロン (:) を使用できます。[環境別の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0#configuration-by-environment)に関するページを参照してください。
+    このシークレットには、構成 API を使用してアクセスします。 サポートされているすべてのプラットフォームで、構成 API を使用する際の構成名にコロン (:) を使用できます。 [環境別の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)に関するページを参照してください。
 
-4. *Program.cs* を開き、`config.AddAzureAppConfiguration()` メソッドを呼び出すことで、App Configuration を使用するように `CreateWebHostBuilder` メソッドを更新します。
+4. Program.cs を開き、`config.AddAzureAppConfiguration()` メソッドを呼び出すことで App Configuration を使用するように、`CreateWebHostBuilder` メソッドを更新します。
 
     ```csharp
+    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+
+    ...
+
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(settings["ConnectionStrings:AppConfig"]);
+                config.AddAzureAppConfiguration(options => {
+                    options.Connect(settings["ConnectionStrings:AppConfig"])
+                           .SetOfflineCache(new OfflineFileCache());
+                });
             })
             .UseStartup<Startup>();
     ```
 
-5. *Views* > *Home* ディレクトリにある *Index.cshtml* を開いて、内容を次のコードに置き換えます。
+5. Views の Home ディレクトリにある Index.cshtml を開いて、内容を次のコードに置き換えます。
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -130,7 +139,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
     </html>
     ```
 
-6. *Views* > *Shared* ディレクトリにある *_Layout.cshtml* を開いて、内容を次のコードに置き換えます。
+6. Views の Shared ディレクトリにある _Layout.cshtml を開いて、内容を次のコードに置き換えます。
 
     ```html
     <!DOCTYPE html>
@@ -157,7 +166,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
     </html>
     ```
 
-## <a name="build-and-run-the-app-locally"></a>アプリをビルドし、ローカルで実行する
+## <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
 1. .NET Core CLI を使用してアプリケーションをビルドするには、コマンド シェルで次のコマンドを実行します。
 
@@ -167,7 +176,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
         dotnet run
 
-3. ブラウザー ウィンドウを起動して `http://localhost:5000` (ローカルでホストされた Web アプリの既定の URL) に移動します。
+3. ブラウザー ウィンドウを開いて、`http://localhost:5000` (ローカルでホストされた Web アプリの既定の URL) に移動します。
 
     ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-app-launch-local.png)
 
@@ -177,7 +186,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、新しいアプリ構成ストアを作成して、ASP.NET Core Web アプリと共に使用しました。 App Configuration の使用についてさらに学習するには、認証について示した次のチュートリアルに進んでください。
+このクイック スタートでは、新しいアプリ構成ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から ASP.NET Core Web アプリと共に使用しました。 App Configuration の使用方法についてさらに学習するには、認証について示した次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure リソースのマネージド ID の統合](./integrate-azure-managed-service-identity.md)

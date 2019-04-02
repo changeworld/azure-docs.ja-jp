@@ -10,23 +10,23 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: b313772fb2737c015a02cfc36cec87797c95f619
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ab867af76821f90c6a87c08d42affdef8192e201
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251964"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258141"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Azure Stack 用の iDNS の概要
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-iDNS は、外部 DNS 名 (例: http://www.bing.com.) を解決することができる、Azure Stack のネットワーク機能です。内部仮想ネットワークの名前を登録することもできます。 これを行うことで、同じ仮想ネットワーク内の VM を IP アドレスではなく名前で解決することができます。 このアプローチでは、カスタム DNS サーバー エントリを用意する必要がありません。 DNS の詳細については、「[Azure DNS の概要](https://docs.microsoft.com/azure/dns/dns-overview)」を参照してください。
+iDNS は、外部 DNS 名 (例: http:\//www.bing.com) を解決することができる、Azure Stack のネットワーク機能です。内部仮想ネットワーク名を登録することもできます。 これを行うことで、同じ仮想ネットワーク内の VM を IP アドレスではなく名前で解決することができます。 このアプローチでは、カスタム DNS サーバー エントリを用意する必要がありません。 DNS の詳細については、「[Azure DNS の概要](https://docs.microsoft.com/azure/dns/dns-overview)」を参照してください。
 
 ## <a name="what-does-idns-do"></a>iDNS が実行すること
 

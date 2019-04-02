@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: f0db4fb0-7eec-48c2-9c7a-beab1ab49bc2
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d5e7af8dc5ed678846f24b136d64fef384ef773
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b00e27a0620212fbc09f8b7d91d8f5b9d0971c8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868240"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885234"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-samanage"></a>チュートリアル:Azure Active Directory と Samanage の統合
 
@@ -148,7 +148,7 @@ Samanage で Azure AD シングル サインオンを構成するには、次の
  
     c. **[Login URL]\(ログイン URL\)** が Azure portal の **[基本的な SAML 構成]** セクションの **[サインオン URL]** と一致することを確認します。
  
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Logout URL]\(ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を入力します。
+    d. **[Logout URL]\(ログアウト URL\)** ボックスに、Azure portal からコピーした**ログアウト URL** の値を入力します。
  
     e. **[SAML Issuer]** \(SAML 発行者\) ボックスに、ID プロバイダーに設定されたアプリ ID URI を入力します。
  
@@ -176,7 +176,7 @@ Samanage で Azure AD シングル サインオンを構成するには、次の
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

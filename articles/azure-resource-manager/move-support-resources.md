@@ -4,14 +4,14 @@ description: 新しいリソース グループまたはサブスクリプショ
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 2/13/2019
+ms.date: 03/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: f82c3adc0049c7386206fb4be10d3e634627a25a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d44b1bf778c7ec9551e2fd30f67083f8dded22d1
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236891"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438470"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 リソースの種類には、移動操作がサポートされていても、リソースが移動されることを妨げている条件がある可能性があります。 移動操作に影響する条件の詳細については、[新しいリソース グループまたはサブスクリプションへリソースを移動](resource-group-move-resources.md)を参照してください。
@@ -422,7 +422,7 @@ ms.locfileid: "56236891"
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | リソースの種類 | リソース グループ | サブスクリプション |
 | ------------- | ----------- | ---------- |
-| labaccounts | はい | はい |
+| labaccounts | いいえ  | いいえ  |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | リソースの種類 | リソース グループ | サブスクリプション |

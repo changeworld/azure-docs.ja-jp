@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 0978db31f4aa8caa273c63c2f55d5146b19dea26
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cdde9f0ec69bec48ae0fb747db0cc49e81920817
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878015"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872572"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>クイック スタート:Unity 用 Speech SDK (ベータ版) を使用して音声を認識する
 
@@ -82,14 +82,14 @@ Unity に慣れていない場合は、アプリケーションの開発を始�
 
 1. ダブルクリックしてスクリプトを編集します。
 
-  > [!NOTE]
-  > **[Edit]\(編集\)** > **[Preferences]\(設定\)** で、起動するコード エディターを構成できます。[Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/Preferences.html)を参照してください。
+   > [!NOTE]
+   > **[Edit]\(編集\)** > **[Preferences]\(設定\)** で、起動するコード エディターを構成できます。[Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/Preferences.html)を参照してください。
 
 1. すべてのコードを次のものに置き換えます。
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-unity/Assets/Scripts/HelloWorld.cs#code)]
 
-1. `YourSubscriptionKey` という文字列を探し、実際の Speech Service のサブスクリプション キーに置き換えます。
+1. `YourSubscriptionKey` という文字列を探し、実際の Speech Services のサブスクリプション キーに置き換えます。
 
 1. `YourServiceRegion` という文字列を探し、実際のサブスクリプションに関連付けられている[リージョン](regions.md)に置き換えます。 たとえば、無料試用版を使用している場合、リージョンは `westus` になります。
 
@@ -97,19 +97,19 @@ Unity に慣れていない場合は、アプリケーションの開発を始�
 
 1. Unity エディターに戻ってから、スクリプトをコンポーネントとしてゲーム オブジェクトのいずれかに追加する必要があります。
 
-  * [Hierarchy]\(ヒエラルキー\) ウィンドウの **[Canvas]\(キャンバス\)** オブジェクトをクリックします。 [[Inspector]\(インスペクター\) ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html) (既定では右側) でその設定が開きます。
-  * [Inspector]\(インスペクター\) ウィンドウの **[Add Component]\(コンポーネントの追加\)** をクリックし、上で作成した HelloWorld スクリプトを検索して、追加します。
-  * Hello World コンポーネントには、初期化されていない 2 つのプロパティ、**Output Text** と **Start Reco Button** が含まれていることに注意してください。これらは `HelloWorld` クラスのパブリック プロパティに一致します。
-    これらを接続するには、オブジェクト ピッカー (プロパティの右側にある小さな円アイコン) をクリックして、先ほど作成したテキスト オブジェクトとボタン オブジェクトを選択します。
+   * [Hierarchy]\(ヒエラルキー\) ウィンドウの **[Canvas]\(キャンバス\)** オブジェクトをクリックします。 [[Inspector]\(インスペクター\) ウィンドウ](https://docs.unity3d.com/Manual/UsingTheInspector.html) (既定では右側) でその設定が開きます。
+   * [Inspector]\(インスペクター\) ウィンドウの **[Add Component]\(コンポーネントの追加\)** をクリックし、上で作成した HelloWorld スクリプトを検索して、追加します。
+   * Hello World コンポーネントには、初期化されていない 2 つのプロパティ、**Output Text** と **Start Reco Button** が含まれていることに注意してください。これらは `HelloWorld` クラスのパブリック プロパティに一致します。
+     これらを接続するには、オブジェクト ピッカー (プロパティの右側にある小さな円アイコン) をクリックして、先ほど作成したテキスト オブジェクトとボタン オブジェクトを選択します。
 
-    > [!NOTE]
-    > このボタンには、入れ子になったテキスト オブジェクトも含まれています。 テキスト出力用として、誤ってこれを選択しないようにしてください (このような混乱を避けるために、[Inspector]\(インスペクター\) ウィンドウの [Name]\(名前\) フィールドを使用していずれかのテキスト オブジェクトの名前を変更してもかまいません)。
+     > [!NOTE]
+     > このボタンには、入れ子になったテキスト オブジェクトも含まれています。 テキスト出力用として、誤ってこれを選択しないようにしてください (このような混乱を避けるために、[Inspector]\(インスペクター\) ウィンドウの [Name]\(名前\) フィールドを使用していずれかのテキスト オブジェクトの名前を変更してもかまいません)。
 
 ## <a name="run-the-application-in-the-unity-editor"></a>Unity エディターでアプリケーションを実行する
 
 * Unity エディターのツール バー (メニュー バーの下) の **[Play]\(再生\)** を押します。
 
-* アプリが起動したら、ボタンをクリックし、コンピューターのマイクに向かって英語のフレーズや文章を話します。 音声が Speech サービスに送信されてテキストに変換され、ウィンドウに表示されます。
+* アプリが起動したら、ボタンをクリックし、コンピューターのマイクに向かって英語のフレーズや文章を話します。 音声が Speech Services に送信されてテキストに変換され、ウィンドウに表示されます。
 
   [![Unity のゲーム ウィンドウで実行中のクイック スタートのスクリーンショット](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
 

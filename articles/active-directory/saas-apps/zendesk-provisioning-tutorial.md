@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2e05e5e430760d16d5d494a6f27ef985aafc487
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 71e9a3f614048185d9444011da3c47b88931d0c5
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097993"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499949"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>チュートリアル:Zendesk を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -39,7 +39,7 @@ ms.locfileid: "58097993"
 *   Admin アクセス許可がある Zendesk のユーザー アカウント 
 
 > [!NOTE]
-> Azure AD プロビジョニング統合では、Enterprise プラン以上の Zendesk チームで使用できる [Zendesk Rest API](https://developer.zendesk.com/rest_api/docs/core/introduction) が必要です。
+> Azure AD プロビジョニング統合では、Enterprise プラン以上の Zendesk チームで使用できる [Zendesk Rest API](https://developer.zendesk.com/rest_api/docs/zendesk-apis/resources) が必要です。
 
 ## <a name="adding-zendesk-from-the-gallery"></a>ギャラリーからの Zendesk の追加
 Azure AD で自動ユーザー プロビジョニング用に Zendesk を構成する前に、Azure AD アプリケーション ギャラリーから Zendesk を管理対象の SaaS アプリケーションの一覧に追加する必要があります。

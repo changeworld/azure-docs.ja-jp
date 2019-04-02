@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0885671d777d79c6f8a9fc993aa1224312705bce
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 7139906ac22f8d0dbf6cd6e2d69289c4b910b2b0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650905"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486089"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -145,7 +145,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 
 **[ホスト名の追加]** ページが表示されます 
 
-**[ホスト名レコード タイプ]** が **[CNAME (www.example.com または任意のサブドメイン)]** に設定されていることを確認します。
+**[ホスト名レコード タイプ]** が **[CNAME (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。
 
 **[ホスト名の追加]** を選択します。
 
@@ -282,7 +282,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 
 **[ホスト名の追加]** ボタンがアクティブになります。 
 
-**[ホスト名レコード タイプ]** が **[CNAME レコード (www.example.com または任意のサブドメイン)]** に設定されていることを確認します。
+**[ホスト名レコード タイプ]** が **[CNAME レコード (www\.example.com または任意のサブドメイン)]** に設定されていることを確認します。
 
 **[ホスト名の追加]** を選択します。
 
@@ -351,7 +351,7 @@ az webapp config hostname add \
 
 次のコマンドでは、構成済みカスタム DNS 名を App Service アプリに追加します。 
 
-```PowerShell  
+```powershell  
 Set-AzWebApp `
     -Name <app_name> `
     -ResourceGroupName <resource_group_name> ` 

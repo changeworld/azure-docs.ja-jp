@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 192ecf0cf4f97a709808fa04f676035e8a672b79
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 74087a6d1ce00293c968837e72c636847081e39e
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976948"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285984"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure VM のカスタム イメージを作成する
 
@@ -162,7 +162,7 @@ Remove-AzImage `
 > * サブスクリプション内のすべてのイメージを一覧表示する
 > * イメージを削除する
 
-次のチュートリアルに進み、仮想マシンの高可用性について学習してください。
+次のチュートリアルに進み、高可用性仮想マシンを作成する方法について学習してください。
 
 > [!div class="nextstepaction"]
 > [高可用性 VM の作成](tutorial-availability-sets.md)

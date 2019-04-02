@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/07/2019
+ms.date: 03/14/2019
 ms.author: barclayn
-ms.openlocfilehash: 4dd81fd03c39dec3c34e614234a563ec8c2ced38
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0902e3fb64a73a095b457306aa561c13519e4066
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117104"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000617"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal ( http://portal.azure.com ) にサインインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-vault"></a>コンテナーの作成
 
@@ -43,7 +43,6 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
     - **サブスクリプション**:サブスクリプションを選択します。
     - **[リソース グループ]** で、**[新規作成]** を選択し、リソース グループ名を入力します。
     - **[場所]** プルダウン メニューで場所を選択します。
-    - **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
     - 他のオプションは既定値のままにしておきます。
 6. 上記の情報を指定したら、**[作成]** を選択します。
 
@@ -70,7 +69,11 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
 
 シークレットが正常に作成されたことを示すメッセージが表示されたら、一覧でそのシークレットをクリックできます。 すると、いくつかのプロパティを確認できます。 現在のバージョンをクリックすると、前の手順で指定した値が表示されます。
 
-![シークレットのプロパティ](./media/quick-create-portal/version.png)
+![シークレットのプロパティ](./media/quick-create-portal/current-version-hidden.png)
+
+右側のウィンドウで [シークレット値を表示する] ボタンをクリックすると、非表示の値を確認できます。 
+
+![表示されたシークレット値](./media/quick-create-portal/current-version-shown.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

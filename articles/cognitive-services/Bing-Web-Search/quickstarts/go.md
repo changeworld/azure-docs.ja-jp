@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
 ms.custom: seodec2018
-ms.openlocfilehash: 3c64841656f81f2f78c02c54f08ca24cccd78586
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b7bf73c2948b302ec8294b7dc2ff2dc8f220c91b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186864"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843885"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-go"></a>クイック スタート:Bing Web Search REST API と Go を使用して Web を検索する
 
@@ -309,7 +309,7 @@ func main() {
 
 ## <a name="sample-response"></a>応答のサンプル  
 
-Bing Web Search API からの応答は、JSON として返されます。 このサンプル応答は、`BingAnswer` 構造体を使用して書式設定され、`result.Name` と `result.URL` を表示します。
+Bing Web Search API からの応答は、JSON として返されます。 このサンプル応答は、`BingAnswer` 構造体を使用して書式設定されており、`result.Name` と `result.URL` が表示されています。
 
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services

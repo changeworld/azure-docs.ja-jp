@@ -3,7 +3,7 @@ title: Azure AD で古いデバイスを管理する方法 | Microsoft Docs
 description: デバイスの紛失、盗難、破損、OS の再インストールなどの理由で、環境には古いデバイスが存在しているのが一般的です。 Azure Active Directory (Azure AD) の登録済みデバイスのデータベースから古いデバイスを削除する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 01/30/2019
-ms.author: markvi
+ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fcbc7f66df65cd1ea18cd3062ec61adb1e0399f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5c4aa4d3a4425c93cb495d27d0fe38d329ddea7a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58164962"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521535"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 

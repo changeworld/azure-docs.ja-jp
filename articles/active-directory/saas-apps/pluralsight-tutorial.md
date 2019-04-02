@@ -4,23 +4,22 @@ description: Azure Active Directory と Pluralsight の間でシングル サイ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 4c3f07d2-4e1f-4ea3-9025-c663f1f2b7b4
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/26/2018
+ms.date: 03/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 844e8abff45f663b39846c9b8dc9b55be0d43f4f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b2d8d98fb9c953ef8063bf2081201f7d9bdf3649
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875618"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57874985"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>チュートリアル:Azure Active Directory と Pluralsight の統合
 
@@ -46,6 +45,8 @@ Pluralsight と Azure AD の統合を構成するには、次のものが必要�
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
 * Pluralsight では、**SP** によって開始される SSO がサポートされます
+
+* Pluralsight では、**Just-In-Time** ユーザー プロビジョニングがサポートされています 
 
 ## <a name="adding-pluralsight-from-the-gallery"></a>ギャラリーから Pluralsight を追加する
 
@@ -114,14 +115,13 @@ Pluralsight で Azure AD シングル サインオンを構成するには、次
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 これらの値を取得するには、[Pluralsight クライアント サポート チーム](mailto:support@pluralsight.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. Pluralsight アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
-
-    ![image](common/edit-attribute.png)
+5. Pluralsight アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
+    ![画像](common/edit-attribute.png)
 
     >[!NOTE]
     >**"一意の ID"** 属性を追加し、EmployeeID などの組織に合った適切な値を設定することもできます。 これは必須の属性ではありませんが、一意のユーザーを識別するために追加できます。
 
-6. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+6. その他に、Pluralsight アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。
     
     | Name | ソース属性|
     | --------------- | --------- |
@@ -173,7 +173,7 @@ Pluralsight で Azure AD シングル サインオンを構成するには、次
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -208,7 +208,7 @@ Pluralsight で Azure AD シングル サインオンを構成するには、次
 
 ### <a name="create-pluralsight-test-user"></a>Pluralsight のテスト ユーザーの作成
 
-このセクションの目的は、Pluralsight で Britta Simon というユーザーを作成することです。 [Pluralsight クライアント サポート チーム](mailto:support@pluralsight.com)と連携し、Pluralsight アカウントにユーザーを追加してください。  シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Britta Simon というユーザーを Pluralsight に作成します。 Pluralsight では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Pluralsight にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

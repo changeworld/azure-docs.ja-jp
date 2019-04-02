@@ -1,20 +1,20 @@
 ---
 title: Azure Site Recovery を使用してオンプレミスの Windows Server 2008 サーバーを Azure に移行する | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して、オンプレミスの Windows Server 2008 マシンを Azure に移行する方法について説明します。
-author: bsiva
-manager: abhemraj
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 11/27/2018
-ms.author: bsiva
+ms.date: 03/18/2019
+ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 875548b8277e50ccb813cf6b36541a053abdbb70
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5233f9421b02be9b34bb481252f749e153942573
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222067"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312021"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 を実行しているサーバーを Azure に移行する
 
@@ -51,6 +51,8 @@ ms.locfileid: "55222067"
 Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper-V を移行するには、[オンプレミス マシンを Azure に移行する](migrate-tutorial-on-premises-azure.md)チュートリアルの手順に従います。
 
 このチュートリアルの手順以外の部分では、オンプレミス VMware 仮想マシンと Windows Server 2008 または 2008 R2 を実行している物理サーバーを移行する方法を説明しています。
+> [!TIP]
+> VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリック](https://aka.ms/migrateVMs-signup)してください。
 
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題

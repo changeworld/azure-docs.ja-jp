@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 67a0b476-2305-4157-8658-2ec3625850d5
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 627275855f231f5a4336075df3864448325127f2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0a62aa573d49ccdd237e692b63a6fda0dd83d52a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211871"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>チュートリアル:Azure Active Directory と Palo Alto Networks Captive Portal の統合
 
@@ -105,12 +105,12 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
 
     ![Palo Alto Networks Captive Portal の [基本的な SAML 構成] ウィンドウ](common/idp-intiated.png)
 
-    1. **[識別子]** に、`https://<customer_firewall_host_name>/SAML20/SP` の形式で URL を入力します。
+   1. **[識別子]** に、`https://<customer_firewall_host_name>/SAML20/SP` の形式で URL を入力します。
 
-    2. **[応答 URL]** に、`https://<customer_firewall_host_name>/SAML20/SP/ACS` の形式で URL を入力します。
+   2. **[応答 URL]** に、`https://<customer_firewall_host_name>/SAML20/SP/ACS` の形式で URL を入力します。
 
-    > [!NOTE]
-    > この手順に示したプレースホルダーの値は、実際の識別子と応答 URL に置き換えてください。 実際の値を取得するには、[Palo Alto Networks Captive Portal のクライアント サポート チーム](https://support.paloaltonetworks.com/support)にご連絡ください。
+      > [!NOTE]
+      > この手順に示したプレースホルダーの値は、実際の識別子と応答 URL に置き換えてください。 実際の値を取得するには、[Palo Alto Networks Captive Portal のクライアント サポート チーム](https://support.paloaltonetworks.com/support)にご連絡ください。
 
 5. **[SAML 署名証明書]** セクションで、**[フェデレーション メタデータ XML]** の隣にある **[ダウンロード]** を選択します。 ダウンロードしたファイルを、お使いのコンピューターに保存します。
 
@@ -158,7 +158,7 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
 
     1. **[名前]** に、「**BrittaSimon**」と入力します。
   
-    2. **[ユーザー名]** に、「**BrittaSimon@\<your_company_domain\>**」と入力します。 たとえば、**BrittaSimon@contoso.com** です。
+    2. **[ユーザー名]** に、「**BrittaSimon\@\<your_company_domain\>**」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
 
     3. **[パスワード]** に、パスワードを入力します。 入力するパスワードはどこかに記録しておくことをお勧めします。 **[パスワードを表示]** チェック ボックスをオンにして、パスワードを表示することもできます。
 

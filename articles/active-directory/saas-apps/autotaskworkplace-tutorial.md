@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: a9a7ff71-c389-4169-aafd-d7a505244797
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5476c3f6d59f7599fe9deb4534f6c8a20ba824
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 00e838dd3df417bd0b26167d5f316225520e7263
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875635"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889592"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>チュートリアル:Azure Active Directory と Autotask Workplace の統合
 
@@ -155,7 +155,7 @@ Autotask Workplace で Azure AD シングル サインオンを構成するに�
 
     c. **[I confirm this information is correct and I trust this IdP]\(この情報が正しいことを確認し、この IdP を信頼します\)** チェック ボックスをオンにします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[APPROVE]\(承認\)** をクリックします。
+    d. **[APPROVE]\(承認\)** をクリックします。
 
 > [!Note]
 > Autotask Workplace の構成でサポートを必要とする場合は、[こちらのページ](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm)を参照して、Workplace アカウントでサポートを受けてください。
@@ -178,7 +178,7 @@ Autotask Workplace で Azure AD シングル サインオンを構成するに�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

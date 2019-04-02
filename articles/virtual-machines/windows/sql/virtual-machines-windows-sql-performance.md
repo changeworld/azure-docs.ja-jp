@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bb9b90ca239ff03f44b76a7ee5754eb7872caa31
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 8d31f04c355b47720a1c9b0334042ba2f6654768
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415903"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448570"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のパフォーマンスに関するガイドライン
 
@@ -135,7 +135,7 @@ Premium SSD がサポートされる VM (DS シリーズ、DSv2 シリーズ、�
 
   * これらの推奨事項は、Premium SSD ディスクに適用されます。 Premium SSD を使用していない場合は、どのデータ ディスクでもキャッシュを有効にしないでください。
 
-  * ディスク キャッシュの構成手順については、以下の記事をご覧ください。 クラシック (ASM) デプロイ モデルの場合:[Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) と [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx) に関するページを参照してください。 Azure Resource Manager デプロイ モデルの場合:[Set-AzOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-4.4.1) と [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdatadisk?view=azurermps-4.4.1) に関するページを参照してください。
+  * ディスク キャッシュの構成手順については、以下の記事をご覧ください。 クラシック (ASM) デプロイ モデルの場合:[Set-AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) と [Set-AzureDataDisk](https://msdn.microsoft.com/library/azure/jj152851.aspx) に関するページを参照してください。 Azure Resource Manager デプロイ モデルの場合:[Set-AzOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk) と [Set-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdatadisk) に関するページを参照してください。
 
      > [!WARNING]
      > データベースの破損の可能性を回避するために、Azure VM ディスクのキャッシュ設定を変更するときには、SQL Server サービスを停止してください。

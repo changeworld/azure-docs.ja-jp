@@ -45,7 +45,7 @@ ms.locfileid: "55982881"
 6.  **[プライベート IP の割り当て]** が **[静的]** になっていない場合は、**[静的]** に変更します。
 7.  **[IP アドレス]** を、サブネットで使用できる別の IP アドレスに変更します。
 8. 仮想マシンが再起動して、新しい NIC をシステムに初期化します。
-9.  マシンへの RDP を試します。 成功した場合は、いつでも元のプライベート IP アドレスに戻すことができます。 それ以外の場合は、そのまま保持できます。 
+9.  マシンへの RDP を試します。 成功したら、必要に応じて元のプライベート IP アドレスに戻すことができます。 あるいは、そのまま保持することもできます。 
 
 #### <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
@@ -70,7 +70,7 @@ ms.locfileid: "55982881"
     #Add/Change static IP. This process will not change MAC address
     Get-AzVM -ServiceName $ResourceGroup -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP | Update-AzVM
     ```
-3. マシンへの RDP を試します。  成功した場合は、いつでも元のプライベート IP アドレスに戻すことができます。 それ以外の場合は、そのまま保持できます。
+3. マシンへの RDP を試します。  成功したら、必要に応じて元のプライベート IP アドレスに戻すことができます。 あるいは、そのまま保持することもできます。
 
 ### <a name="for-classic-vms"></a>クラシック VM の場合
 
@@ -111,7 +111,7 @@ ms.locfileid: "55982881"
     #Add/Change static IP. This process will not change MAC address
     Get-AzureVM -ServiceName $CloudService -Name $VM | Set-AzureStaticVNetIP -IPAddress $IP |Update-AzureVM
     ```
-3. マシンへの RDP を試します。 成功した場合は、いつでも元のプライベート IP アドレスに戻すことができます。 それ以外の場合は、そのまま保持できます。 
+3. マシンへの RDP を試します。 成功したら、必要に応じて元のプライベート IP アドレスに戻すことができます。 あるいは、そのまま保持することもできます。 
 
 ## <a name="delete-the-unavailable-nics"></a>使用できない NIC を削除する
 コンピューターにリモート デスクトップ接続できたら、潜在的な問題を回避するために古い NIC を削除する必要があります。

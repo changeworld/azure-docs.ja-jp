@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 6cbc6e351147ed5b4c31463b5cf319417f34da34
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 50935aca20af931eec63717921ef7a73267d2373
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456777"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350472"
 ---
 # <a name="what-is-azure-custom-vision"></a>Azure Custom Vision とは
 
@@ -25,17 +25,18 @@ Azure Custom Vision は、独自の画像分類器を構築、デプロイ、お
 
 Custom Vision サービスでは、画像にラベルを適用するために機械学習アルゴリズムを使用します。 開発者は、着目する特性を備えた画像グループと、それを欠いた画像グループを提出する必要があります。 提出時に自分で画像にラベルを付けます。 次に、アルゴリズムをこのデータでトレーニングし、同じ画像に対するテストを行って、アルゴリズム自体の精度を計算します。 アルゴリズムのトレーニング後、テスト、再トレーニングを行い、最終的にはアルゴリズムを使用して、新しい画像をアプリのニーズに合わせて分類することができます。 オフラインで使用するために、モデル自体をエクスポートすることもできます。
 
-## <a name="classification-and-object-detection"></a>分類とオブジェクトの検出
+### <a name="classification-and-object-detection"></a>分類とオブジェクトの検出
 
 Custom Vision の機能は、2 つに分割できます。 **画像の分類**では、画像に 1 つまたは複数のラベルを適用します。 **オブジェクトの検出**では、同様のことを行いますが、適用されたラベルを見つけることができる画像内の座標も返されます。
 
-## <a name="optimization"></a>最適化
+### <a name="optimization"></a>最適化
 
 Custom Vision サービスは、画像間の主な違いをすばやく認識するように最適化されています。 これにより、少量のデータでモデルのプロトタイプ作成を開始できます。 ラベルあたり 50 個の画像が、通常は適切な出発点です。 しかし、これは、画像の微妙な違いの検出 (たとえば、品質保証のシナリオにおける小さな割れやへこみの検出) にはこのサービスが最適ではないということを意味します。
 
 また、Custom Vision アルゴリズムのいくつかの種類の中から、特定の対象素材 (たとえば、ランドマークや小売り品目) が含まれている画像に適したものを選択することもできます。 それらの詳細については、[分類器の構築](getting-started-build-a-classifier.md)に関するガイドを参照してください。
 
 ## <a name="what-it-includes"></a>備えている機能
+
 Custom Vision Service は、[Custom Vision ホーム ページ](https://customvision.ai/)の Web ベースのインターフェイスを通じて利用するだけでなく、ネイティブ SDK のセットとしても利用できます。 いずれかのインターフェイス、または両方のインターフェイスを使用して、モデルの作成、テスト、およびトレーニングを行うことができます。
 
 ![Chrome ブラウザー ウィンドウでの Custom Vision ホーム ページ](media/browser-home.png)

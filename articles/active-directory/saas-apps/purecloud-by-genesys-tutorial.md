@@ -7,19 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: e16a46db-5de2-4681-b7e0-94c670e3e54e
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: c9b2770f861098993623d69f6b9f6a1577c9cf27
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: d1cc7735b8caa952a5ab7695d3e1f35b03fec1bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890591"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890680"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purecloud-by-genesys"></a>チュートリアル:Azure Active Directory と PureCloud by Genesys の統合
 
@@ -105,6 +105,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
     ![[PureCloud by Genesys のドメインと URL] のシングル サインオン情報](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、自分のリージョンに応じて URL を入力します。
+
     | |
     |--|
     | `https://login.mypurecloud.com/saml` |
@@ -114,6 +115,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
     | `https://login.mypurecloud.au/saml` |
 
     b. **[応答 URL]** ボックスに、自分のリージョンに応じて URL を入力します。
+
     | |
     |--|
     | `https://login.mypurecloud.com/saml` |
@@ -127,6 +129,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
     ![[PureCloud by Genesys のドメインと URL] のシングル サインオン情報](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、自分のリージョンに応じて URL を入力します。
+    
     | |
     |--|
     | `https://login.mypurecloud.com` |
@@ -196,7 +199,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
 
     c. **[Target URI]\(ターゲット URI\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Relying Party Identifier]\(証明書利用者識別子\)** の値については、Azure portal に移動し、**PureCloud by Genesys** アプリケーション統合ページで **[プロパティ]** タブをクリックして、**[アプリケーション ID]** の値をコピーします。 それを **[Relying Party Identifier]\(証明書利用者識別子\)** ボックスに貼り付けます。 
+    d. **[Relying Party Identifier]\(証明書利用者識別子\)** の値については、Azure portal に移動し、**PureCloud by Genesys** アプリケーション統合ページで **[プロパティ]** タブをクリックして、**[アプリケーション ID]** の値をコピーします。 それを **[Relying Party Identifier]\(証明書利用者識別子\)** ボックスに貼り付けます。 
 
     ![Configure single sign-on](./media/purecloud-by-genesys-tutorial/configure06.png)
 
@@ -220,7 +223,7 @@ PureCloud by Genesys で Azure AD シングル サインオンを構成するに
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -275,7 +278,7 @@ Azure AD ユーザーが PureCloud by Genesys にログインできるように�
 
     a. **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの名前を入力します (例: **Brittasimon**)。
 
-    b. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **brittasimon@contoso.com**)。
+    b. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
     
     c. **Create** をクリックしてください。
 

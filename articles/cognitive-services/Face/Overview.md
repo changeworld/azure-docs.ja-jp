@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 2f5f57f0978adbdf33ed4ce25ba9b32247ea0484
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: dcfb50c58f1205a5ab31c3fc6b9b22fdb503e4ec
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455978"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588960"
 ---
 # <a name="what-is-the-azure-face-api"></a>Azure Face API とは
 
@@ -26,12 +26,12 @@ Face API にはいくつかの異なる機能があり、そのそれぞれに�
 
 Face API では、画像に含まれている人の顔を検出し、その位置の四角形の座標を返すことができます。 顔検出では、オプションとして、ポーズ、頭部姿勢、性別、年齢、ひげ、眼鏡などの顔関連の属性を抽出できます。
 
+> [!NOTE] 
+> 顔検出機能は [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) を通じて利用することもできますが、さらなる操作を顔データに対して実行したい場合は、Face API (本サービス) を使用することをお勧めします。
+
 ![女性と男性の画像 (それぞれの顔の周囲に四角形が描かれ、年齢と性別が表示されている)](./Images/Face.detection.jpg)
 
-> [!NOTE] 
-> 顔検出機能は [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) を通じて利用することもできますが、さらなる操作を顔データに対して実行したい場合は、Face API (本サービス) を使用することをお勧めします。 
-
-顔検出の詳細については、[Detect API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) に関するページを参照してください。
+顔検出の詳細については、[顔検出のハウツー ガイド](face-api-how-to-topics/howtodetectfacesinimage.md)または [Detect API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) リファレンス ドキュメントを参照してください。
 
 ## <a name="face-verification"></a>顔検証
 

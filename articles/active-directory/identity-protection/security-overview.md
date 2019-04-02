@@ -4,7 +4,7 @@ description: '[セキュリティの概要] で、組織のセキュリティ体
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: e7434eeb-4e98-4b6b-a895-b5598a6cccf1
 ms.service: active-directory
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: markvi
-ms.reviewer: raluthra
+ms.author: joflore
+ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dca184e5b94d69845bfa6e2d83753f53554cadeb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 610668768c7baca13cb60caf1d810cced31ebec3
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266749"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516435"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - セキュリティの概要
 
@@ -37,7 +37,7 @@ ms.locfileid: "56266749"
 
 ![セキュリティの概要](./media/security-overview/01.png)
   
-## <a name="trends"></a>傾向
+## <a name="trends"></a>Trends
 
 ### <a name="new-risky-users-detected"></a>新しい危険なユーザーが検出されました
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: f00cc893f21db302c2efe63da285c8843958b1ee
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 55cb9564205c99abc868413ebf43e575999198ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731244"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183698"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>クイック スタート:Python を使用して 2 か国語辞書で単語を検索する
 
@@ -32,7 +32,7 @@ ms.locfileid: "56731244"
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
-普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `dictionary-lookup.py` という名前のファイルにコピーします。
+任意の IDE またはエディターを使用して新しい Python プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 このコード スニペットをプロジェクトまたはフォルダーの `dictionary-lookup.py` という名前のファイルにコピーします。
 
 ```python
 # -*- coding: utf-8 -*-
@@ -60,8 +60,8 @@ else:
     print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
     exit()
 # If you want to set your subscription key as a string, uncomment the line
-# below and add your subscription key.
-#subscriptionKey = 'put_your_key_here'
+# below and add your subscription key. Then, be sure to delete your "os" import.
+# subscriptionKey = 'put_your_key_here'
 ```
 
 Translator Text のグローバル エンドポイントは、`base_url` として設定されます。 `path` によって、`dictionary/lookup` ルートが設定され、API のバージョン 3 を使用することが識別されます。
@@ -123,7 +123,7 @@ print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separat
 これで、Translator Text API を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
 
 ```console
-python dictionary-lookup.py
+python alt-translations.py
 ```
 
 作成したコードをサンプル コードと比較したい場合は、完全なサンプルを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python) から入手できます。

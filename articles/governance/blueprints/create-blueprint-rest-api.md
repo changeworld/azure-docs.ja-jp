@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 634b175ec0b5771e3ff2fa061532106eb124ea4e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 9dada3c6f0718db41a24368aca594bbd3215fec5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994862"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>REST API で Azure Blueprint を定義して割り当てる
 
@@ -70,6 +70,9 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
 
 - `{YourMG}` - 実際の管理グループの ID に置き換えます
 - `{subscriptionId}` - サブスクリプション ID で置き換えます
+
+> [!NOTE]
+> ブループリントはサブスクリプション レベルで作成することもできます。 例については、[サブスクリプションでのブループリントの作成例](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)を参照してください。
 
 1. 初期 "_ブループリント_" オブジェクトを作成します。 **要求本文**には、ブループリントに関するプロパティ、作成するリソース グループ、ブループリント レベルのすべてのパラメーターが含まれています。 これらのパラメーターは、割り当ての間に設定されて、後のステップで追加される成果物によって使用されます。
 
@@ -262,7 +265,7 @@ $response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
                      "tags": {
                         "[parameters('tagNameFromBP')]": "[parameters('tagValueFromBP')]"
                      },
-                     "location": "[resourceGroup().location]",
+                     "location": "[resourceGroups('storageRG').location]",
                      "sku": {
                          "name": "[parameters('storageAccountTypeFromBP')]"
                      },
@@ -435,9 +438,9 @@ REST API を使用してブループリントを発行した後は、それを�
 
 ## <a name="next-steps"></a>次の手順
 
-- [ブループリントのライフサイクル](./concepts/lifecycle.md)を参照する
-- [静的および動的パラメーター](./concepts/parameters.md)の使用方法を理解する
-- [ブループリントの優先順位](./concepts/sequencing-order.md)のカスタマイズを参照する
-- [ブループリントのリソース ロック](./concepts/resource-locking.md)の使用方法を調べる
-- [既存の割り当ての更新](./how-to/update-existing-assignments.md)方法を参照する
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](./troubleshoot/general.md)で解決する
+- [ブループリントのライフサイクル](./concepts/lifecycle.md)を参照する。
+- [静的および動的パラメーター](./concepts/parameters.md)の使用方法を理解する。
+- [ブループリントの優先順位](./concepts/sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのリソース ロック](./concepts/resource-locking.md)の使用方法を調べる。
+- [既存の割り当ての更新](./how-to/update-existing-assignments.md)方法を参照する。
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](./troubleshoot/general.md)で解決する。

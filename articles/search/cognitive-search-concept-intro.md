@@ -6,16 +6,16 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.devlang: NA
-ms.topic: conceptual
-ms.date: 01/18/2019
+ms.topic: overview
+ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d2086f02cc981ad944c030ad40083d153c520359
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 3c2567564e015ef19adf9f8c776e1f377a9cdf30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447329"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58133061"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Azure Search での "コグニティブ検索" とは?
 
@@ -27,7 +27,7 @@ ms.locfileid: "56447329"
 
 ![コグニティブ検索パイプライン ダイアグラム](./media/cognitive-search-intro/cogsearch-architecture.png "コグニティブ検索パイプラインの概要")
 
-Azure Search のコグニティブ スキルは、Cognitive Services API の機械学習モデル ([Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) と[テキスト分析) に基づいています。 
+Azure Search のコグニティブ スキルは、Cognitive Services API の機械学習モデル ([Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/) と[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview)) に基づいています。 
 
 自然言語および画像処理はデータ インジェスト フェーズで適用され、結果は Azure Search における検索可能なインデックス内のドキュメントの構成の一部になります。 データは Azure データ セットとして調達され、必要な[組み込みのスキル](cognitive-search-predefined-skills.md)を使用してインデックス パイプライン経由でプッシュされます。 アーキテクチャは拡張可能なため、組み込みのスキルでは不十分な場合は、[カスタム スキル](cognitive-search-create-custom-skill-example.md)を作成して追加し、カスタム処理を統合できます。 例としては、金融、科学出版物、医療などの専門分野を対象としたカスタム エンティティ モジュールまたはドキュメント分類子が挙げられます。
 
@@ -92,31 +92,9 @@ Azure Search のコグニティブ スキルは、Cognitive Services API の機�
 
 ## <a name="where-do-i-start"></a>どこから始めるか
 
-**手順 1:API を提供するリージョンに [Azure Search リソースを作成する](search-create-service-portal.md)** 
+**手順 1:[Azure Search リソースの作成](search-create-service-portal.md)** 
 
-+ 米国中西部
-+ 米国中南部
-+ 米国中北部
-+ 米国東部
-+ 米国東部 2
-+ 米国西部
-+ 米国西部 2
-+ 米国中央部
-+ カナダ中部
-+ 西ヨーロッパ
-+ 北ヨーロッパ
-+ 英国南部
-+ フランス中部
-+ ブラジル南部
-+ 東アジア
-+ 東南アジア
-+ インド中部
-+ 西日本
-+ 東日本
-+ 韓国中部
-+ オーストラリア東部
-
-**手順 2:実際に体験してワークフローを習得する**
+**手順 2:クイック スタートや例を試して実際に体験する**
 
 + [クイック スタート (ポータル)](cognitive-search-quickstart-blob.md)
 + [チュートリアル (HTTP 要求)](cognitive-search-tutorial-blob.md)

@@ -4,22 +4,22 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 3ee9aca1ee86b04998e357875b98b14782b3e56d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0dab71b6d169e26a3d7dc208dd09efe1143fbe13
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56963352"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305214"
 ---
-### <a name="launch-the-publish-wizard"></a>発行ウィザードを起動する
+### <a name="open-the-publish-wizard"></a>発行ウィザードを開く
 
 **ソリューション エクスプローラー**で、**SharingService** プロジェクトを右クリックし、**[発行]** を選択します。
 
-発行ウィザードが自動的に起動します。 **[App Service]**、**[発行]** の順に選択し、**[App Service の作成]** ダイアログを開きます。
+発行ウィザードが起動します。 **[App Service]** > **[発行]** の順に選択し、**[App Service の作成]** ダイアログ ボックスを開きます。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-**[App Service の作成]** ダイアログで、**[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既にサインインしている場合、ドロップダウンからアカウントを選択します。
+**[App Service の作成]** ダイアログ ボックスで **[アカウントの追加]** を選択し、Azure サブスクリプションにサインインします。 既にサインインしている場合、ドロップダウン リストからアカウントを選択します。
 
 > [!NOTE]
 > 既にサインインしている場合は、まだ **[作成]** を選択しないでください。
@@ -39,7 +39,7 @@ ms.locfileid: "56963352"
 
 **[ホスティング プラン]** の隣にある **[新規]** を選択します。
 
-**[ホスティング プランの構成]** ダイアログ ボックスで、次の表に示した設定を使用します。
+**[ホスティング プランの構成]** ダイアログ ボックスで、以下の設定を使用します。
 
 | Setting | 推奨値 | 説明 |
 |-|-|-|
@@ -55,8 +55,8 @@ ms.locfileid: "56963352"
 
 **[作成]** をクリックして、Azure リソースの作成を開始します。
 
-ウィザードの完了後に、Azure に ASP.NET Core Web アプリを発行してから、既定のブラウザーでアプリを起動します。
+ウィザードの完了後に、Azure に ASP.NET Core Web アプリを発行してから、既定のブラウザーでアプリを開きます。
 
 ![Azure で発行された ASP.NET Web アプリ](./media/spatial-anchors-azure/web-app-running-live.png)
 
-アプリを[作成して発行する手順](#create-and-publish-the-web-app)で指定した名前が、`https://<app_name>.azurewebsites.net` 形式の URL プレフィックスとして使用されます。 この URL は、後で使用するので書き留めておいてください。
+このセクションで使用したアプリ名は、形式 `https://<app_name>.azurewebsites.net` の URL プレフィックスとして使用されます。 後で必要になるため、この URL はメモしておきます。

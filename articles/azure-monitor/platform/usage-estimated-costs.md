@@ -9,12 +9,12 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 1ae35c30e0379ed7a0f1fac16c279651e3bcd8fd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7911bd398b6760fb4f83382868f040382b86cd1f
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315879"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480545"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>使用量と推定コストの監視
 
@@ -138,7 +138,7 @@ isGrandFatherableSubscription optedInDate
 
 このサブスクリプションを新しい価格モデルに移行するには、次を実行します。
 
-```PowerShell
+```powershell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -149,7 +149,7 @@ Invoke-AzResourceAction `
 
 変更が成功したことを確認するには、次を再実行します。
 
-```PowerShell
+```powershell
 $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -170,7 +170,7 @@ optInDate に、このサブスクリプションが新しい価格モデルに�
 
 古い価格モデルに戻す必要がある場合は、次を実行します。
 
-```PowerShell
+```powershell
  $ResourceID ="/subscriptions/<Subscription-ID-Here>/providers/microsoft.insights"
 Invoke-AzResourceAction `
  -ResourceId $ResourceID `
@@ -183,7 +183,7 @@ Invoke-AzResourceAction `
 
 同じテナントにホストされた複数のサブスクリプションを移行する場合は、次のスクリプトを使用して独自のバリアントを作成できます。
 
-```PowerShell
+```powershell
 #Query tenant and create an array comprised of all of your tenants subscription ids
 $TenantId = <Your-tenant-id>
 $Tenant =Get-AzSubscription -TenantId $TenantId
@@ -192,7 +192,7 @@ $Subscriptions = $Tenant.Id
 
 テナント内のすべてのサブスクリプションで新しい価格モデルを使用できるかどうかを確認するには、次を実行します。
 
-```PowerShell
+```powershell
 Foreach ($id in $Subscriptions)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"
@@ -206,7 +206,7 @@ Invoke-AzResourceAction `
 
 スクリプトは、3 つの配列を生成するスクリプトを作成することで改善できます。 最初の配列は、```isGrandFatherableSubscription``` が True に設定されており、現在 optedInDate に値がないすべてのサブスクリプション ID で構成されます。 2 番目の配列は、現在新しい価格モデルになっているすべてのサブスクリプションです。 3 番目の配列は、テナント内にある新しい価格モデルを使用できないサブスクリプション ID のみが入力されます。
 
-```PowerShell
+```powershell
 [System.Collections.ArrayList]$Eligible= @{}
 [System.Collections.ArrayList]$NewPricingEnabled = @{}
 [System.Collections.ArrayList]$NotEligible = @{}
@@ -242,7 +242,7 @@ $Result= Invoke-AzResourceAction `
 
 サブスクリプションが 3 つの配列に分割されたところで、結果を慎重に確認する必要があります。 将来変更を元に戻す必要性が出てきた場合に対応できるように、配列のコンテンツのバックアップ コピーを作成できます。 現在古い価格モデルを使用しており、かつ新しい価格モデルを使用できるすべてのサブスクリプションを変換する場合、このタスクは次のように実行できます。
 
-```PowerShell
+```powershell
 Foreach ($id in $Eligible)
 {
 $ResourceID ="/subscriptions/$id/providers/microsoft.insights"

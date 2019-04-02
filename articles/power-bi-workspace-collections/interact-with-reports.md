@@ -1,21 +1,19 @@
 ---
 title: JavaScript API を使ったレポートの対話操作 | Microsoft Docs
 description: Power BI JavaScript API を使用すると、Power BI レポートをアプリケーションに簡単に埋め込むことができます。
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: bdd885d3-1b00-4dcf-bdff-531eb1f97bfb
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.author: maghan
-ms.openlocfilehash: d5a411e227704eb80b0020f68fad072491576f18
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 47bfdc3afed5fd17d7df98c6664e58374410a7f5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883799"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522045"
 ---
 # <a name="interact-with-power-bi-reports-using-the-javascript-api"></a>JavaScript API を使った Power BI レポートの対話操作
 

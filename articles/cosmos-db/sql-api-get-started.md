@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: d73638e0c02af5dc07e80084dd2ce5a7e090ecd2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4b04a1a5805ff11ad51cec53cdcccf2ea34f1c65
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043449"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443251"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB は:SQL API の使用に関するチュートリアル
 
@@ -62,14 +62,14 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 1. コンピューターで **Visual Studio 2017** を開きます。
 2. **[ファイル]** メニューで、**[新規]**、**[プロジェクト]** の順に選択します。
 3. **[新しいプロジェクト]** ダイアログで、**[テンプレート]** / **[Visual C#]** / **[コンソール アプリケーション]** の順に選択し、プロジェクトの名前を指定して、**[OK]** をクリックします。
-   ![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
+   ![[新しいプロジェクト] ウィンドウのスクリーンショット](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
 4. **ソリューション エクスプローラー**で、Visual Studio ソリューションの下にある新しいコンソール アプリケーションを右クリックし、**[NuGet パッケージの管理]** をクリックします。
     
-    ![プロジェクトの右クリック メニューのスクリーン ショット](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+    ![プロジェクトの右クリック メニューのスクリーンショット](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 5. **[NuGet]** タブの **[参照]** をクリックし、検索ボックスに「**azure documentdb**」と入力します。
 6. 結果で **Microsoft Azure DocumentDB** を探し、**[インストール]** をクリックします。
    Azure Cosmos DB SQL API クライアント ライブラリのパッケージ ID は [Microsoft Azure Cosmos DB クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) です。
-   ![Azure Cosmos DB クライアント SDK を見つける NuGet メニューのスクリーン ショット](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+   ![Azure Cosmos DB クライアント SDK を見つけるための NuGet メニューのスクリーンショット](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
     ソリューションの変更の確認に関するメッセージが表示されたら、**[OK]** をクリックします。 ライセンスの同意に関するメッセージが表示されたら、**[同意する]** をクリックします。
 
@@ -108,7 +108,7 @@ Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** を�
 
 ポータルから URI をコピーし、program.cs ファイルの `<your endpoint URL>` に貼り付けます。 次に、ポータルからプライマリ キーをコピーし、 `<your primary key>`に貼り付けます。
 
-![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure Portal のスクリーンショット。 アクティブなハブが強調表示され、[Azure Cosmos DB アカウント] ページで [キー] が強調表示され、[キー] ページで URI 値、プライマリ キー値、およびセカンダリ キー値が強調表示されている Azure Cosmos DB アカウントを示します。][keys]
+![C# コンソール アプリケーションを作成するために NoSQL チュートリアルで使用される Azure portal のスクリーンショット。 アクティブなハブが強調表示され、[Azure Cosmos DB アカウント] ページで [キー] が強調表示され、[キー] ページで URI 値、プライマリ キー値、およびセカンダリ キー値が強調表示されている Azure Cosmos DB アカウントを示します。][keys]
 
 次に、**DocumentClient** の新しいインスタンスを作成して、アプリケーションを起動します。
 

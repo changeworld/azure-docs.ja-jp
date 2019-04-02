@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6266ec1f01a50756f745c3e8185c9fe34e102b4a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2e25848359de91d67925f49901c6c170978ea592
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196197"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078705"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>クイック スタート:Microsoft のサインインを統合する Xamarin アプリを作成する
 
@@ -59,11 +59,12 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 3. 左側のウィンドウで **[すべてのサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
 5. 画面の指示に従って、新しい**ネイティブ クライアント アプリケーション**を作成します。
-  * **[名前]** は、ユーザーに対して表示されるアプリ名です。
-  * **[リダイレクト URI]** には、Azure AD がトークン応答を返すために使用するスキームと文字列の組み合わせを設定します。 値を入力します (例: http://DirectorySearcher) )。
+   * **[名前]** は、ユーザーに対して表示されるアプリ名です。
+   * **[リダイレクト URI]** には、Azure AD がトークン応答を返すために使用するスキームと文字列の組み合わせを設定します。 値を入力します (例: `http://DirectorySearcher`)。
 6. 登録が完了すると、Azure AD によって一意のアプリケーション ID がアプリに割り当てられます。 **[アプリケーション]** タブから値をコピーします。この値は後で必要になります。
 7. **[設定]** ページで、**[必要なアクセス許可]** を選択し、**[追加]** を選択します。
-8. API として **[Microsoft Graph]** を選択します。 **[委任されたアクセス許可]** で、**[ディレクトリ データの読み取り]** アクセス許可を追加します。 この操作によって、ユーザーがアプリで Graph API に照会できるようになります。
+8. API として **[Microsoft Graph]** を選択します。 **[委任されたアクセス許可]** で、**[ディレクトリ データの読み取り]** アクセス許可を追加します。 
+   この操作によって、ユーザーがアプリで Graph API に照会できるようになります。
 
 ## <a name="step-3-install-and-configure-adal"></a>手順 3:ADAL をインストールして構成する
 
@@ -95,9 +96,9 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 2. DirectorySearcherLib プロジェクトで、DirectorySearcher.cs を開きます。
 3. クラス メンバーの値を Azure Portal で入力した値に置き換えます。 これらの値は、コードで ADAL を使用する際に常に参照されます。
 
-  * *tenant* には、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) を指定します。
-  * *clientId* には、ポータルからコピーしたアプリのクライアント ID を指定します。
-  * *returnUri* は、ポータルで入力したリダイレクト URI です (例: http://DirectorySearcher) )。
+   * *tenant* には、Azure AD テナントのドメイン (contoso.onmicrosoft.com など) を指定します。
+   * *clientId* には、ポータルからコピーしたアプリのクライアント ID を指定します。
+   * *returnUri* は、ポータルで入力したリダイレクト URI です (例: `http://DirectorySearcher`)。
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>手順 4:ADAL を使用して、Azure AD からトークンを取得する
 

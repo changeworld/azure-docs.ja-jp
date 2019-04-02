@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 0340d7f3-ab54-49ef-b77c-62a0efd5d49c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 873b9d89889317a5c406313811c74286caf7d0e1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 203c082275dc75a7dcf948eb42a383300955f355
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882044"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>チュートリアル:Azure Active Directory と Comm100 Live Chat の統合
 
@@ -154,29 +154,29 @@ Comm100 Live Chat との Azure AD シングル サインオンを構成するに
 
 ### <a name="configure-comm100-live-chat-single-sign-on"></a>Comm100 Live Chat のシングル サインオンの構成
 
-9. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Comm100 Live Chat にログインします。
+1. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Comm100 Live Chat にログインします。
 
-10. ページの右上の **[My Account]\(マイ アカウント\)** をクリックします。
+1. ページの右上の **[My Account]\(マイ アカウント\)** をクリックします。
 
-    ![Comm100 Live Chat のマイ アカウント](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
+   ![Comm100 Live Chat のマイ アカウント](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
 
-11. メニューの左側にある **[セキュリティ]** をクリックし、**[Agent Single Sign-On]\(エージェント シングル サインオン\)** をクリックします。
+1. メニューの左側にある **[セキュリティ]** をクリックし、**[Agent Single Sign-On]\(エージェント シングル サインオン\)** をクリックします。
 
-    ![Comm100 Live Chat のセキュリティ](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+   ![Comm100 Live Chat のセキュリティ](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
 
-12. **[Agent Single Sign-On]\(エージェント シングル サインオン\)** ページで、次の手順を実行します。
+1. **[Agent Single Sign-On]\(エージェント シングル サインオン\)** ページで、次の手順を実行します。
 
-    ![Comm100 Live Chat のセキュリティ](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
+   ![Comm100 Live Chat のセキュリティ](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
 
-    a. 強調表示されている 1 つ目のリンクをコピーし、Azure Portal の **[Comm100 Live Chat のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
+   a. 強調表示されている 1 つ目のリンクをコピーし、Azure Portal の **[Comm100 Live Chat のドメインと URL]** セクションにある **[サインオン URL]** ボックスに貼り付けます。
 
-    b. **[SAML SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+   b. **[SAML SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    c. **[リモート ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
+   c. **[リモート ログアウト URL]** ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Choose a File]\(ファイルの選択\)** を選択して、Azure Portal からダウンロードした base 64 でエンコードされた証明書を **[Certificate]\(証明書\)** にアップロードします。
+   d. **[Choose a File]\(ファイルの選択\)** を選択して、Azure Portal からダウンロードした base 64 でエンコードされた証明書を **[Certificate]\(証明書\)** にアップロードします。
 
-    e. **[Save Changes]\(変更の保存\)** をクリックします
+   e. **[Save Changes]\(変更の保存\)** をクリックします
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -196,7 +196,7 @@ Comm100 Live Chat との Azure AD シングル サインオンを構成するに
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -249,13 +249,13 @@ Azure AD ユーザーが Comm100 Live Chat にログインできるようにす�
 
     ![Comm100 Live Chat の新規エージェント](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
 
-    a. a. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **Brittasimon@contoso.com**)。
+    a. a. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレス (**Brittasimon\@contoso.com** など) を入力します。
 
     b. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
 
     c. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon**)。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Display Name]\(表示名\)** ボックスに、ユーザーの表示名を入力します (例: **Britta simon**)
+    d. **[Display Name]\(表示名\)** ボックスに、ユーザーの表示名を入力します (例: **Britta simon**)
 
     e. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 

@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 983eecc6-41f8-49b7-b7f6-dcf833dde121
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d3a2995fa1dc0b0c77898b0fa76791bb76e18c0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 11cc42f9ed7e427620b22ce65365183bc62cc0be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883966"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-4me"></a>チュートリアル:Azure Active Directory と 4me の統合
 
@@ -191,7 +191,7 @@ Azure AD への 4me の統合を構成するには、ギャラリーから管理
 
     c. **[SAML]** セクションの **[SAML SSO URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Certificate fingerprint]\(証明書フィンガープリント\)** ボックスに、Azure portal からコピーした**拇印**の値をコロンで区切って貼り付けます (AA:BB:CC:DD:EE:FF:GG:HH:II)。
+    d. **[Certificate fingerprint]\(証明書フィンガープリント\)** ボックスに、Azure portal からコピーした**拇印**の値をコロンで区切って貼り付けます (AA:BB:CC:DD:EE:FF:GG:HH:II)。
 
     e. **[Save]** をクリックします。
 
@@ -213,7 +213,7 @@ Azure AD への 4me の統合を構成するには、ギャラリーから管理
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

@@ -8,18 +8,20 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 590faaf727345dcfe8ab61a1860ca46d78256b22
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1e7efe28918cafb3fa9547c144be3360768d549c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219007"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079897"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して Node.js でデバイス アプリケーションと通信する (プレビュー)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
+
+Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
 
 [IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 パブリック プレビュー中、Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 そのため、このクイック スタートでは、サービス側アプリケーションを実行する手順についてのみ説明しています。 対応するデバイス側アプリケーションも実行する必要があり、それについては [C クイック スタート](./quickstart-device-streams-echo-c.md)または [C# クイック スタート](./quickstart-device-streams-echo-csharp.md)のガイドに記載されています。
 
@@ -37,6 +39,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 
 ## <a name="prerequisites"></a>前提条件
+
+デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
+
+  - **米国中部**
+  - **米国中部 EUAP**
 
 このクイック スタートのサービス側アプリケーションを実行するには、開発用マシンに Node.js v4.x.x 以降が必要です。
 
@@ -80,7 +87,7 @@ node --version
     **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --hub-name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name YourIoTHubName
     ```
 
     次のような戻り値をメモしておきます。
@@ -100,7 +107,7 @@ node --version
 デバイス側アプリケーションが実行されているとして、Node.js でサービス側アプリケーションを実行するには、次の手順に従います。
 
 - サービス資格情報とデバイス ID を環境変数として指定します。
-```
+  ```
   # In Linux
   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
   export STREAMING_TARGET_DEVICE="MyDevice"
@@ -108,11 +115,11 @@ node --version
   # In Windows
   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
   SET STREAMING_TARGET_DEVICE=MyDevice
-```
-`MyDevice` を、デバイス用に選択したデバイス ID に変更します。
+  ```
+  `MyDevice` を、デバイス用に選択したデバイス ID に変更します。
 
 - 解凍したプロジェクト フォルダーの `Quickstarts/device-streams-service` に移動し、ノードを使用してサンプルを実行します。
-```
+  ```
   cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
   
   # Install the preview service SDK, and other dependencies
@@ -120,7 +127,7 @@ node --version
   npm install
 
   node echo.js
-```
+  ```
 
 最後の手順の終わりに、サービス側プログラムはデバイスへのストリームを開始し、確立後はストリームを介してサービスに文字列バッファーを送信します。 このサンプルでは、​​サービス側プログラムは単にターミナルの stdin を読み取り、それをデバイスに送信します。その後、デバイスはそれをエコーバックします。 これによって、2 つのアプリケーション間の双方向通信が成功したことが示されます。
 

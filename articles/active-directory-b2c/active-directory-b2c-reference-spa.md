@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 82483d8d84349a929ef4892d5e9571ea65b9a88a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 081adc9421a97f7cafcf7fba946ce0b901a00a0c
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104840"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439432"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C:OAuth 2.0 暗黙的フローを使用したシングルページ アプリへのサインイン
 
@@ -27,7 +27,7 @@ ms.locfileid: "56104840"
 
 これらのアプリケーションをサポートするために、Azure Active Directory B2C (Azure AD B2C) は OAuth 2.0 暗黙的フローを使用します。 OAuth 2.0 承認の暗黙的許可フローは、[OAuth 2.0 仕様のセクション 4.2](https://tools.ietf.org/html/rfc6749) で説明されています。 暗黙的フローでは、アプリは Azure Active Directory (Azure AD) 承認エンドポイントから直接トークンを受け取るため、サーバー間の交換は実行されません。 すべての認証ロジックとセッション処理は、追加のページ リダイレクトなしに、JavaScript クライアント内ですべて行うことができます。
 
-Azure AD B2C によって、標準の OAuth 2.0 暗黙的フローが、単純な認証と承認以上まで拡張されます。 Azure AD B2C には、[ポリシー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 ポリシー パラメーターと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理のユーザー フローなどのポリシーをアプリに追加できます。 この記事では、暗黙的フローと Azure AD を使用して、シングルページ アプリケーションにこれらの各エクスペリエンスを実装する方法を説明します。 作業の開始に役立てるために、[Node.JS](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) や [.NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi) のサンプルを参照してください。
+Azure AD B2C によって、標準の OAuth 2.0 暗黙的フローが、単純な認証と承認以上まで拡張されます。 Azure AD B2C には、[ポリシー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 ポリシー パラメーターと共に OAuth 2.0 を使用して、サインアップ、サインイン、プロファイル管理のユーザー フローなどのポリシーをアプリに追加できます。 この記事では、暗黙的フローと Azure AD を使用して、シングルページ アプリケーションにこれらの各エクスペリエンスを実装する方法を説明します。
 
 この記事の HTTP 要求例では、サンプルの Azure AD B2C ディレクトリ **fabrikamb2c.onmicrosoft.com** を使用します。 また、独自のサンプル アプリケーションとユーザー フローも使用します。 それらの値を利用して、要求を試すことができます。または、独自の値で置き換えることもできます。
 [独自の Azure AD B2C ディレクトリ、アプリケーション、ユーザー フローの取得方法](#use-your-own-azure-ad-b2c-tenant)について学習してください。
@@ -275,9 +275,4 @@ p=b2c_1_sign_in
 1. [Azure AD B2C テナントを作成](active-directory-b2c-get-started.md)します。 要求で独自のテナントの名前を使用します。
 2. [アプリケーションを作成し](active-directory-b2c-app-registration.md)、アプリケーション ID と `redirect_uri` 値を取得します。 アプリ内に Web アプリまたは Web API を含めます。 必要に応じて、アプリケーション シークレットを作成できます。
 3. [使用するユーザー フローを作成](active-directory-b2c-reference-policies.md)して、そのユーザー フロー名を取得します。
-
-## <a name="samples"></a>サンプル
-
-* [Node.js を使用してシングルページ アプリを作成する](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
-* [.NET を使用してシングルページ アプリを作成する](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
 

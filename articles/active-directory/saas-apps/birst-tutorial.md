@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 677183b1-5348-4302-88cc-5c8ab63a3c6c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 636331c5ad39887ec8d8c92720cfa4fb3b3b3663
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 632ae913214794a114bc12019d92b6902172fca7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883387"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>チュートリアル:Azure Active Directory と Birst Agile Business Analytics の統合
 
@@ -109,12 +109,12 @@ Birst Agile Business Analytics で Azure AD シングル サインオンを構�
 
     この URL は、Birst アカウントが存在するデータセンターによって異なります。
 
-    * 米国のデータセンターでは、`https://login.bws.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID` というパターンを使用します。
+   * 米国のデータセンターでは、`https://login.bws.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID` というパターンを使用します。
 
-    * ヨーロッパのデータセンターでは、`https://login.eu1.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID` というパターンを使用します。
+   * ヨーロッパのデータセンターでは、`https://login.eu1.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID` というパターンを使用します。
 
-    > [!NOTE]
-    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Birst Agile Business Analytics クライアント サポート チーム](mailto:info@birst.com)に問い合わせてください。
+     > [!NOTE]
+     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Birst Agile Business Analytics クライアント サポート チーム](mailto:info@birst.com)に問い合わせてください。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -155,7 +155,7 @@ Birst Agile Business Analytics で Azure AD シングル サインオンを構�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: e1f49ee4-d2d4-4a82-9baf-0587ca1f20f6
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef76cf9cfa97d7d3ecc6c511c269b52ce6a2dec0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 27028a4e95abd2f190dd1f37bb877ed28fe8aade
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876842"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838127"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-unifi"></a>チュートリアル:Azure Active Directory と UNIFI の統合
 
@@ -150,7 +150,7 @@ UNIFI で Azure AD シングル サインオンを構成するには、次の手
 
     c. Azure Portal からダウンロードした証明書をメモ帳で開き、**---BEGIN CERTIFICATE---** タグおよび **---END CERTIFICATE---** タグを削除して、残りの内容を **[証明書]** テキストボックスに貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[is Default Provider(既定のプロバイダーにする)]** チェックボックスをオンします。
+    d. **[is Default Provider(既定のプロバイダーにする)]** チェックボックスをオンします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -170,7 +170,7 @@ UNIFI で Azure AD シングル サインオンを構成するには、次の手
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

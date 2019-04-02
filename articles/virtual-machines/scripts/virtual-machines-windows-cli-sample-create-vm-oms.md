@@ -1,6 +1,6 @@
 ---
-title: Azure CLI サンプル - Log Analytics 監視機能を実行する Azure VM を作成する | Microsoft Docs
-description: Azure CLI のサンプル - Windows Server 2016 VM と Log Analytics 監視機能を実行する Azure VM を作成します。
+title: Azure CLI サンプル - Azure Monitor を実行する Azure VM を作成する | Microsoft Docs
+description: Azure CLI のサンプル - Windows Server 2016 VM と Azure Monitor を実行する Azure VM を作成します。
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 06e853534dc811ba5b37b192a9da75e88eedd778
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2565433b8f42a3b81b843a972dd27850cce124b8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668315"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543323"
 ---
-# <a name="monitor-a-vm-with-log-analytics"></a>Log Analytics を使用して VM を監視する
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>Azure Monitor ログを使用して VM を監視する
 
 このスクリプトでは、Azure 仮想マシンを作成し、Log Analytics エージェントをインストールして、システムを Log Analytics ワークスペースに登録します。 このスクリプトを実行すると、仮想マシンが Azure Monitoring に表示されるようになります。
 

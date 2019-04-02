@@ -2,17 +2,16 @@
 title: Azure DNS とは
 description: Microsoft Azure の DNS ホスティング サービスの概要です。 Microsoft Azure でドメインをホストします。
 author: vhorne
-manager: jeconnoc
 ms.service: dns
 ms.topic: overview
-ms.date: 9/24/2018
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 07230b061f9b18e1efe6ce8c65abe0f7e7f73b34
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: cea19ad2ba03d3e71df32912a1d7ee9e6171689a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893496"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339460"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
@@ -38,6 +37,9 @@ Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Az
 
 詳細については、「[DNS ゾーンとレコードを保護する方法](dns-protect-zones-recordsets.md)」を参照してください。 
 
+## <a name="dnssec"></a>DNSSEC
+
+現在、Azure DNS で DNSSEC はサポートされません。 ほとんどの場合、アプリケーションで常に HTTPS/TLS を使用することで DNSSEC の必要性を減らすことができます。 DNSSEC が DNS ゾーンにとって重要な要件である場合は、サード パーティの DNS ホスティング プロバイダーを使用してこれらのゾーンをホストすることができます。
 
 ## <a name="ease-of-use"></a>使いやすさ
 
@@ -55,12 +57,11 @@ Azure DNS では、プライベート DNS ドメインもサポートされる�
 
 ## <a name="alias-records"></a>エイリアス レコード
 
-Azure DNS では、エイリアス レコード セットをサポートします。 エイリアス レコード セットは、Azure パブリック IP アドレスまたは Azure Traffic Manager プロファイルなどの Azure リソースを参照するために使用できます。 基になるリソースの IP アドレスが変更された場合、エイリアス レコード セットは DNS の解決時にシームレスに自動更新されます。 エイリアス レコード セットはサービス インスタンスをポイントし、サービス インスタンスは IP アドレスに関連付けられます。 
+Azure DNS では、エイリアス レコード セットをサポートします。 エイリアス レコード セットは、Azure パブリック IP アドレス、Azure Traffic Manager プロファイル、または Azure Content Delivery Network (CDN) エンドポイントなどの Azure リソースを参照するために使用できます。 基になるリソースの IP アドレスが変更された場合、エイリアス レコード セットは DNS の解決時にシームレスに自動更新されます。 エイリアス レコード セットはサービス インスタンスをポイントし、サービス インスタンスは IP アドレスに関連付けられます。
 
-さらに、エイリアス レコードを使用することにより、頂点のドメインやネイキッド ドメインで Traffic Manager プロファイルを参照できるようになりました  一例として contoso.com があります。
+さらに、エイリアス レコードを使用することにより、頂点のドメインやネイキッド ドメインで Traffic Manager プロファイルまたは CDN エンドポイントを参照できるようになりました。 一例として contoso.com があります。
 
 詳細については、「[Azure DNS エイリアス レコード](dns-alias.md)」をご覧ください。
-
 
 ## <a name="next-steps"></a>次の手順
 

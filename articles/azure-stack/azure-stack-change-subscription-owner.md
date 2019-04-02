@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: shnatara
 ms.lastreviewed: 10/19/2018
-ms.openlocfilehash: de5c20cf2113bcd6ce902a05d4613376145a4da3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 1d9dd7d19c196679ead9b552bcf296b4acd4ca68
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649409"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842891"
 ---
 # <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>Azure Stack ユーザー サブスクリプションの所有者の変更
 
@@ -49,7 +49,7 @@ Azure Stack オペレーターは、PowerShell を使用して、ユーザー �
 - **$ArmEndpoint**: ご使用の環境用の Resource Manager エンドポイント。
 - **$TenantId**: テナント ID。
 - **$SubscriptionId**: サブスクリプション ID。
-- **$OwnerUpn**: **user@example.com** など、新しい課金の所有者として追加するアカウント。
+- **$OwnerUpn**: **user\@example.com** など、新しい課金の所有者として追加するアカウント。
 
 ```powershell
 # Set up Azure Stack admin environment

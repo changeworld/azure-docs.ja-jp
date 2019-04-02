@@ -14,12 +14,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 602517f13b762f5dd7a13e652a5e8bf5de56e403
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9d358c021f795172e7ced0ba2a2f309a0a0dab6e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245635"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649729"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 証明書署名要求の生成
 
@@ -27,48 +27,49 @@ Azure Stack 適合性チェッカー ツールを使用して、Azure Stack デ�
 
 Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用すると、次の証明書を要求できます。
 
- - [Azure Stack デプロイのための PKI 証明書の生成](azure-stack-get-pki-certs.md)に関する説明に従った**標準の証明書要求**。
- - **サービスとしてのプラットフォーム**  
-    「Azure Stack 公開キー インフラストラクチャ証明書の要件」の「[オプションの PaaS 証明書](azure-stack-pki-certs.md#optional-paas-certificates)」で指定されているように、証明書に対するサービスとしてのプラットフォーム (PaaS) 名を要求できます。
+- [Azure Stack デプロイのための PKI 証明書の生成](azure-stack-get-pki-certs.md)に関する説明に従った**標準の証明書要求**。
+- **サービスとしてのプラットフォーム**:「Azure Stack 公開キー インフラストラクチャ証明書の要件」の「[オプションの PaaS 証明書](azure-stack-pki-certs.md#optional-paas-certificates)」で指定されているように、証明書に対するサービスとしてのプラットフォーム (PaaS) 名を要求できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 Azure Stack デプロイのための PKI 証明書に対する CSR を生成する前に、システムは次の前提条件を満たしている必要があります。
 
- - Microsoft Azure Stack 適合性チェッカー
- - 証明書の属性:
-    - リージョン名
-    - 外部完全修飾ドメイン名 (FQDN)
-    - Subject
- - Windows 10 または Windows Server 2016
- 
+- Microsoft Azure Stack 適合性チェッカー
+- 証明書の属性:
+  - リージョン名
+  - 外部完全修飾ドメイン名 (FQDN)
+  - Subject
+- Windows 10 または Windows Server 2016
+
   > [!NOTE]  
   > 証明機関から証明書が送り返されたら、「[Azure Stack PKI 証明書の準備](azure-stack-prepare-pki-certs.md)」の手順を同じシステムで完了する必要があります。
 
 ## <a name="generate-certificate-signing-requests"></a>証明書の署名要求を生成する
 
-次の手順を使って、Azure Stack PKI 証明書を準備し、検証します。 
+次の手順を使って、Azure Stack PKI 証明書を準備し、検証します。
 
-1.  次のコマンドレットを実行して、PowerShell プロンプト (5.1 以上) から AzsReadinessChecker をインストールします。
+1. 次のコマンドレットを実行して、PowerShell プロンプト (5.1 以上) から AzsReadinessChecker をインストールします。
 
     ```PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ```
 
-2.  順序指定されたディクショナリとして**サブジェクト**を宣言します。 例:  
+2. 順序指定されたディクショナリとして**サブジェクト**を宣言します。 例: 
 
     ```PowerShell  
-    $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"} 
+    $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"}
     ```
+
     > [!note]  
     > 共通名 (CN) が指定されている場合、証明書要求の最初の DNS 名によって上書きされます。
 
-3.  既に存在する出力ディレクトリを宣言します。 例: 
+3. 既に存在する出力ディレクトリを宣言します。 例: 
 
     ```PowerShell  
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ```
-4.  ID システムを宣言します
+
+4. ID システムを宣言します
 
     Azure Active Directory
 
@@ -107,12 +108,12 @@ Azure Stack デプロイのための PKI 証明書に対する CSR を生成す�
     ```
 
     PaaS サービスを含めるには、スイッチ ```-IncludePaaS``` を指定します
-    
+
 8. 出力を確認します。
 
     ```PowerShell  
     New-AzsCertificateSigningRequest v1.1809.1005.1 started.
-    
+
     CSR generating for following SAN(s): dns=*.east.azurestack.contoso.com&dns=*.blob.east.azurestack.contoso.com&dns=*.queue.east.azurestack.contoso.com&dns=*.table.east.azurestack.cont
     oso.com&dns=*.vault.east.azurestack.contoso.com&dns=*.adminvault.east.azurestack.contoso.com&dns=portal.east.azurestack.contoso.com&dns=adminportal.east.azurestack.contoso.com&dns=ma
     nagement.east.azurestack.contoso.com&dns=adminmanagement.east.azurestack.contoso.com*dn2=*.adminhosting.east.azurestack.contoso.com@dns=*.hosting.east.azurestack.contoso.com
@@ -123,7 +124,7 @@ Azure Stack デプロイのための PKI 証明書に対する CSR を生成す�
     New-AzsCertificateSigningRequest Completed
     ```
 
-9.  生成された **.REQ** ファイルを CA (内部またはパブリック) に送信します。  **New-AzsCertificateSigningRequest** の出力ディレクトリには、証明機関への送信に必要な CSR が含まれています。  また、このディレクトリには、証明書要求の生成中に使用される INF ファイルが含まれる子ディレクトリも参照用として含まれています。 CA が生成された要求を使用して、[Azure Stack PKI の要件](azure-stack-pki-certs.md)を満たす証明書を生成することを確認してください。
+9. 生成された **.REQ** ファイルを CA (内部またはパブリック) に送信します。  **New-AzsCertificateSigningRequest** の出力ディレクトリには、証明機関への送信に必要な CSR が含まれています。  また、このディレクトリには、証明書要求の生成中に使用される INF ファイルが含まれる子ディレクトリも参照用として含まれています。 CA が生成された要求を使用して、[Azure Stack PKI の要件](azure-stack-pki-certs.md)を満たす証明書を生成することを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

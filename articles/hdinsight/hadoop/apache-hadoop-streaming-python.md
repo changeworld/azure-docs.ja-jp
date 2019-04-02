@@ -10,18 +10,20 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4c1d7357dc78ca6c9387fc594f3d49f043008631
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 95a78fafcd83e6f56f26ef6670beaa179085de62
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120578"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359582"
 ---
 # <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>HDInsight 用 Python ストリーミング MapReduce プログラムの開発
 
 ストリーミング MapReduce 操作に Python を使用する方法について説明します。 Apache Hadoop には、Java 以外の言語で map 関数と reduce 関数を記述できる MapReduce 用のストリーミング API が用意されています。 このドキュメントの手順では、Python に Map および Reduce コンポーネントを実装します。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 * HDInsight クラスター上の Linux ベースの Apache Hadoop
 
@@ -33,7 +35,7 @@ ms.locfileid: "58120578"
   > [!IMPORTANT]
   > テキスト エディターでは、行の終わりとして LF を使用する必要があります。 行末に CRLF を使用すると、Linux ベースの HDInsight クラスターで MapReduce ジョブを実行するときにエラーが発生します。
 
-* `ssh` および `scp` コマンド、または [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-3.8.0)
+* `ssh` および `scp` コマンド、または [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 
 ## <a name="word-count"></a>文字数
 

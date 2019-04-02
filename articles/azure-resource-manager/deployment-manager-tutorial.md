@@ -10,19 +10,17 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/27/2018
+ms.date: 03/05/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9f548fbb9611b6d4b16efe5c4d26db73d85c9654
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c9cdac53e43d57feb0d2dc5a8a7153dc05be8a7d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882299"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170634"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (プライベート プレビュー)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [Azure Deployment Manager](./deployment-manager-overview.md) を使用して、アプリケーションを複数の地域に配備する方法を学習します。 Deployment Manager を使用するには、次の 2 つのテンプレートを作成する必要があります。
 
@@ -59,6 +57,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
+
+    既に Azure PowerShell Az モジュールがインストールされている場合は、さらに 2 つのスイッチが必要となります。
+
+    ```powershell
+    Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease -AllowClobber -Force
+    ```
+
 * [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)。 Azure Storage Explorer は必須ではありませんが、作業しやすくなります。
 
 ## <a name="understand-the-scenario"></a>シナリオの理解
@@ -204,9 +209,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - **dependsOn**:すべてのサービス トポロジ リソースは、成果物ソース リソースに依存します。
 - **artifacts** は、テンプレート成果物をポイントします。  ここでは相対パスが使用されます。 フルパスは、artifactSourceSASLocation (成果物ソースで定義される)、artifactRoot (成果物ソースで定義される)、templateArtifactSourceRelativePath (または parametersArtifactSourceRelativePath) を連結することで構成されます。
 
-> [!NOTE]
-> サービス ユニットの名前は、31 文字未満にする必要があります。 
-
 ### <a name="topology-parameters-file"></a>トポロジ パラメーター ファイル
 
 トポロジ テンプレートで使用されるパラメーター ファイルを作成します。
@@ -276,7 +278,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. 次のパラメーター値を記入します。
 
     - **namePrefix**:4-5 文字の文字列を入力します。 このプレフィックスは、固有の azure リソース名を作成するために使用されます。
-    - **azureResourceLocation**:現在、Deployment Manager のリソースは、米国中部または**米国東部 2** のいずれかでのみ作成できます。
+    - **azureResourceLocation**:現在、Deployment Manager のリソースは、**米国中部**または**米国東部 2** のいずれかでのみ作成できます。
     - **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されているルート ディレクトリ (BLOB コンテナー) への SAS URI を入力します。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
     - **binaryArtifactRoot**:成果物のフォルダー構造を変更しない限り、このチュートリアルでは **binaries/1.0.0.0** を使用してください。
     - **managedIdentityID**:ユーザー割り当てマネージド ID を入力します。 「[ユーザー割り当てマネージド ID の作成](#create-the-user-assigned-managed-identity)」を参照してください。 の構文は次のとおりです。
@@ -294,13 +296,13 @@ Azure PowerShell を使用すればテンプレートを配備できます。
 
 1. サービス トポロジを配備するには、スクリプトを実行します。
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     $resourceGroupName = "<Enter a Resource Group Name>"
     $location = "Central US"  
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
     
     # Create a resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
     
     # Create the service topology
     New-AzureRmResourceGroupDeployment `
@@ -317,7 +319,7 @@ Azure PowerShell を使用すればテンプレートを配備できます。
 
 3. <a id="deploy-the-rollout-template"></a>次のロールアウト テンプレートをデプロイします。
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     # Create the rollout
     New-AzureRmResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
@@ -327,19 +329,60 @@ Azure PowerShell を使用すればテンプレートを配備できます。
 
 4. 次の PowerShell スクリプトを使用して、ロールアウトの進行状況を確認します。
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     # Get the rollout status
     $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzureRmDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
-        -Name $rolloutName
+        -Name $rolloutName `
+        -Verbose
     ```
 
-    このコマンドレットを実行する前に、Deployment Manager PowerShell コマンドレットをインストールする必要があります。 「前提条件」を参照してください。
+    このコマンドレットを実行する前に、Deployment Manager PowerShell コマンドレットをインストールする必要があります。 「前提条件」を参照してください。 -Verbose スイッチを使用すると、出力全体を表示することができます。
 
     次のサンプルでは、実行状況を示しています。
     
     ```
+    VERBOSE: 
+    
+    Status: Succeeded
+    ArtifactSourceId: /subscriptions/<AzureSubscriptionID>/resourceGroups/adm0925rg/providers/Microsoft.DeploymentManager/artifactSources/adm0925ArtifactSourceRollout
+    BuildVersion: 1.0.0.0
+    
+    Operation Info:
+        Retry Attempt: 0
+        Skip Succeeded: False
+        Start Time: 03/05/2019 15:26:13
+        End Time: 03/05/2019 15:31:26
+        Total Duration: 00:05:12
+    
+    Service: adm0925ServiceEUS
+        TargetLocation: EastUS
+        TargetSubscriptionId: <AzureSubscriptionID>
+    
+        ServiceUnit: adm0925ServiceEUSStorage
+            TargetResourceGroup: adm0925ServiceEUSrg
+    
+            Step: Deploy
+                Status: Succeeded
+                StepGroup: stepGroup3
+                Operation Info:
+                    DeploymentName: 2F535084871E43E7A7A4CE7B45BE06510adm0925ServiceEUSStorage
+                    CorrelationId: 0b6f030d-7348-48ae-a578-bcd6bcafe78d
+                    Start Time: 03/05/2019 15:26:32
+                    End Time: 03/05/2019 15:27:41
+                    Total Duration: 00:01:08
+                Resource Operations:
+    
+                    Resource Operation 1:
+                    Name: txq6iwnyq5xle
+                    Type: Microsoft.Storage/storageAccounts
+                    ProvisioningState: Succeeded
+                    StatusCode: OK
+                    OperationId: 64A6E6EFEF1F7755
+
+    ...
+
     ResourceGroupName       : adm0925rg
     BuildVersion            : 1.0.0.0
     ArtifactSourceId        : /subscriptions/<SubscriptionID>/resourceGroups/adm0925rg/providers/Microsoft.DeploymentManager/artifactSources/adm0925ArtifactSourceRollout

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 03/20/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 2acc26fc473d0e8dcb93b1439de316fbef67ae98
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.lastreviewed: 03/20/2019
+ms.openlocfilehash: e02a09bdc8bd80b93f7fa33632c32a75c1d705bd
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416515"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226863"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新プログラム
 
@@ -34,7 +34,14 @@ ms.locfileid: "56416515"
 
 ## <a name="build-reference"></a>ビルドのリファレンス
 
-Azure Stack 1901 更新プログラムのビルド番号は **1.1901.0.95** です。
+2019 年 2 月 26 日以降、Azure Stack 1901 更新プログラムのビルド番号は **1.1901.0.95** または **1.1901.0.99** です。 次のメモを参照してください。
+
+> [!IMPORTANT]  
+> Microsoft は 1811 (1.1811.0.101) から 1901 に更新するお客様が影響を受ける可能性のある問題を検出し、この問題を解決するために、更新された 1901 パッケージ をリリースしました。ビルド番号は 1.1901.0.99 です (1.1901.0.95 から更新)。 1.1901.0.95 に更新済みのお客様は、追加のアクションは不要です。
+>
+> 1811 を使用している接続済みのお客様には、新しい 1901 (1.1901.0.99) パッケージが管理者ポータルに自動的に表示され、準備ができたらインストールする必要があります。 接続していないお客様は、[こちらの説明](azure-stack-apply-updates.md)と同じ方法を使用して、新しい 1901 パッケージをダウンロードしてインポートできます。
+>
+> いずれかのバージョンの 1901 を使用しているお客様は、完全パッケージまたは修正プログラムを次回インストールするときに影響を受けません。
 
 ## <a name="hotfixes"></a>修正プログラム
 
@@ -51,18 +58,20 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 
 - **1809**: [KB 4481548 – Azure Stack 修正プログラム 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**: 最新の修正プログラムはありません。
-- **1901**: 最新の修正プログラムはありません。
+- **1901**: [KB 4481548 – Azure Stack 修正プログラム 1.1901.2.103](https://support.microsoft.com/help/4494720)
 
 ## <a name="prerequisites"></a>前提条件
 
 > [!IMPORTANT]
-- 1901 に更新する前に 1811 用の[最新の Azure Stack 修正プログラム](#azure-stack-hotfixes) (ある場合) をインストールしてください。
+> - 1901 に更新する前に 1811 用の[最新の Azure Stack 修正プログラム](#azure-stack-hotfixes) (ある場合) をインストールしてください。
 
 - この更新プログラムのインストールを開始する前に、次のパラメーターを指定して [Test-AzureStack](azure-stack-diagnostic-test.md) を実行して Azure Stack の状態を確認し、見つかったすべての操作上の問題 (すべての警告とエラーを含む) を解決します。 また、アクティブなアラートを確認し、アクションが必要なアラートを解決します。
 
     ```PowerShell
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
+
+- Azure Stack を System Center Operations Manager (SCOM) で管理している場合は、1901 を適用する前に、Microsoft Azure Stack 用の管理パックをバージョン 1.0.3.11 に更新してください。
 
 ## <a name="new-features"></a>新機能
 
@@ -80,7 +89,7 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
    * **AzureRm.Storage**  
          AzureRm ロールアップ モジュールに、**api-version 2017-10-01** をサポートする既に公開済みのバージョン 5.0.4 が組み込まれました。  
    * **AzureRm.Compute**  
-         `New-AzureRMVM` と `NewAzureRMVMSS` にシンプルなパラメーター セットが追加されました。`-ImageName` パラメーターは、ユーザー イメージの指定をサポートします。  
+         `New-AzureRmVM` と `New-AzureRmVmss` にシンプルなパラメーター セットが追加されました。`-Image` パラメーターは、ユーザー イメージの指定をサポートします。  
    * **AzureRm.Insights**  
          AzureRm ロールアップ モジュールに、メトリック、メトリック定義リソース タイプ用の **api-version 2018-01-01** をサポートする既に公開済みのバージョン 5.1.5 が組み込まれました。
 
@@ -106,7 +115,8 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
 <!-- 16523695 – IS, ASDK -->
 - Virtual Network の DNS 設定が **[Use Azure Stack DNS]\(Azure Stack DNS を使用\)** から **[Custom DNS]\(カスタム DNS\)** に更新された後、新しい設定でインスタンスが更新されないという問題が修正されました。
 
-- <!-- 3235634 – IS, ASDK --> **v2** サフィックスを含むサイズ (**Standard_A2_v2** など) で VM をデプロイする場合に、サフィックスを **Standard_A2_v2** (小文字の v) で指定しなければならないという問題が修正されました。 グローバル Azure と同様に、**Standard_A2_V2** (大文字の V) を使用できるようになりました。
+- <!-- 3235634 – IS, ASDK -->
+  **v2** サフィックスを含むサイズ (**Standard_A2_v2** など) で VM をデプロイする場合に、サフィックスを **Standard_A2_v2** (小文字の v) で指定しなければならないという問題が修正されました。 グローバル Azure と同様に、**Standard_A2_V2** (大文字の V) を使用できるようになりました。
 
 <!-- 2869209 – IS, ASDK --> 
 - [Add-AzsPlatformImage コマンドレット](/powershell/module/azs.compute.admin/add-azsplatformimage)を使用する場合に、ディスクのアップロード先のストレージ アカウント URI として **-OsUri** パラメーターを使用しなければならないという問題が修正されました。 ディスクへのローカル パスも使用できるようになりました。
@@ -172,33 +182,6 @@ Azure Stack 修正プログラムを適用できるのは Azure Stack 統合シ�
      -DirectoryTenantName $homeDirectoryTenantName -Verbose
    ```
 
-- Azure Stack には現在、Marketplace シンジケーションを介して明示的にダウンロードしなくても正常にデプロイされる拡張機能が あります。 これらの拡張機能の次のバージョンが削除されます。 Azure Stack オペレーターは、Azure Stack Marketplace からこれらの拡張機能を明示的に配信することが必要になります。
-
-   | type                     | Version        |
-   |--------------------------|----------------|
-   | DSC                      | 2.19.0.0       |
-   | IaaSAntimalware          | 1.4.0.0        |
-   | BGInfo                   | 2.1            |
-   | VMAccessAgent            | 2.0            |
-   | CustomScriptExtension    | 1.8            |
-   | MicrosoftMonitoringAgent | 1.0.10900.0    |
-   | IaaSDiagnostics          | 1.10.1.1       |
-   | VMAccessForLinux         | 1.4.0.0        |
-   | CustomScriptForLinux     | 1.5.2.0        |
-   | DockerExtension          | 1.1.1606092330 |
-   | JsonADDomainExtension    | 1.3            |
-   | OSPatchingForLinux       | 2.3.0.1        |
-   | WebRole                  | 4.3000.14.0    |
-
-   Azure Stack ユーザーは拡張機能のデプロイ時に `autoUpgradeMinorVersion` を **true** に設定することをお勧めします。 例: 
-
-   ```json
-   "type": "Extension",
-           "publisher": "ExtensionPublisher",
-           "typeHandlerVersion": "1.2",
-           "autoUpgradeMinorVersion": "true"
-   ```
-
 - Azure Stack のキャパシティを正確に計画するための新しい考慮事項があります。 1901 更新プログラムでは、作成できる仮想マシンの合計数に制限があります。  この制限は、ソリューションの不安定性を回避するための一時的なものです。 VM の数が多い場合の安定性の問題の原因は対処されていますが、修復のための具体的なタイムラインは決定されていません。 1901 更新プログラムでは、VM の数が、サーバーごとに 60 個、ソリューションの合計で 700 個に制限されています。  たとえば、8 サーバーの Azure Stack VM の制限は 480 個 (8 * 60) になります。  12 ～ 16 サーバーの Azure Stack ソリューションでは、制限は 700 個になります。 この制限は、オペレーターがスタンプで維持したい回復性の予約や仮想と物理の CPU の比率など、コンピューティング容量に関するすべての考慮事項を念頭に置いて作成されています。 詳細については、Capacity Planner の新しいリリースに関するページを参照してください。  
 VM のスケールの上限に達すると、次のエラー コードが返されます: VMsPerScaleUnitLimitExceeded、VMsPerScaleUnitNodeLimitExceeded。 
  
@@ -245,7 +228,7 @@ VM のスケールの上限に達すると、次のエラー コードが返さ�
 
 - [Test-AzureStack](azure-stack-diagnostic-test.md) を実行すると、ベースボード管理コントローラー (BMC) からの警告メッセージが表示されます。 この警告は無視してかまいません。
 
-- <!-- 2468613 - IS --> この更新プログラムのインストール中、`Error – Template for FaultType UserAccounts.New is missing.` というタイトルのアラートが表示されることがありますが、これらのアラートは無視してかまいません。 この更新プログラムのインストールが完了した後、これらのアラートは自動的に閉じられます。
+- <!-- 2468613 - IS --> この更新プログラムのインストール中に、`Error – Template for FaultType UserAccounts.New is missing.` というタイトルのアラートが表示されることがありますが、これらのアラートは無視してかまいません。 この更新プログラムのインストールが完了した後、これらのアラートは自動的に閉じられます。
 
 ## <a name="post-update-steps"></a>更新後の手順
 
@@ -309,9 +292,9 @@ VM のスケールの上限に達すると、次のエラー コードが返さ�
 <!-- 3632798 - IS, ASDK -->
 - ポータルで受信セキュリティ規則を追加し、**[Service Tag]\(サービス タグ\)** をソースとして選択すると、Azure Stack では利用できないオプションがいくつか **[Source Tag]\(ソース タグ\)** リストに表示されます。 Azure Stack で有効なのは次のオプションだけです。
 
-    - **Internet**
-    - **VirtualNetwork**
-    - **AzureLoadBalancer**
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
   
     その他のオプションについては、Azure Stack ではソース タグとしてサポートされません。 同様に、送信セキュリティ規則を追加し、**[Service Tag]\(サービス タグ\)** を宛先として選択した場合も、**[Source Tag]\(ソース タグ\)** のリストに同じオプションが表示されます。 有効なオプションは、前述のリストで説明した **[Source Tag]\(ソース タグ\)** と同じものに限られます。
 

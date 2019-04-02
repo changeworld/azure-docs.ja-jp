@@ -42,7 +42,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ロジック アプリの詳細を指定する](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | プロパティ | 値 | [説明] | 
+   | プロパティ | 値 | 説明 | 
    |----------|-------|-------------| 
    | **名前** | MyFirstLogicApp | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 

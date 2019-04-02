@@ -58,7 +58,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 1. ストレージ コンテナーを作成する前に、次の設定で[ストレージ アカウントを作成](../storage/common/storage-quickstart-create-account.md)します。
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    |---------|-------|-------------| 
    | **Name** | attachmentstorageacct | ストレージ アカウントの名前 | 
    | **デプロイ モデル** | Resource Manager | リソースのデプロイを管理するための[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md) | 
@@ -234,7 +234,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **Name** | LA-ProcessAttachment | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション | 
@@ -432,7 +432,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ストレージ アカウントへの接続を作成](./media/tutorial-process-email-attachments-workflow/create-storage-account-connection-first.png)
 
-   | Setting | 値 | [説明] | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **Connection Name** | AttachmentStorageConnection | 接続の名前。わかりやすい名前を付けます。 | 
    | **ストレージ アカウント** | attachmentstorageacct | 添付ファイルの保存用に作成しておいたストレージ アカウントの名前 | 

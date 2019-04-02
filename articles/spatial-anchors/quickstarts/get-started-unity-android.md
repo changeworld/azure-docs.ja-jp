@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e92c812ffc8b72fe79248c602e48ff01ef9fefcb
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 21a10bcedc25ddce63ba468e400dcea1f77148a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961016"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863119"
 ---
 # <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Android Unity アプリを作成する
 
@@ -36,7 +36,9 @@ ms.locfileid: "56961016"
 このクイック スタートを実行するには、以下が必要です。
 
 - <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 以降</a>および <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 以降</a>がインストールされている Windows または macOS コンピューター。
-- <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向けオプションが有効化</a>されている、<a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a>の Android デバイス。
+  - Windows で実行する場合は、<a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> も必要になります。
+  - MacOS で実行する場合は、HomeBrew から Git をインストールします。 次のコマンドをターミナルに 1 行で入力します: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`。 次に、`brew install git` を実行します。
+- <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -58,32 +60,12 @@ ms.locfileid: "56961016"
 
 [!INCLUDE [Export Unity Project](../../../includes/spatial-anchors-unity-export-project-snip.md)]
 
-**[Export]\(エクスポート\)** を選択してダイアログを開きます。 次に、Android Studio プロジェクトのエクスポート先となるフォルダーを選択します。
-
-エクスポートが完了すると、エクスポートした Android Studio プロジェクトと、**HelloAR U3D** という名前のサブフォルダーが含まれる、フォルダーが表示されます。
-
-## <a name="deploy-the-android-application"></a>Android アプリケーションを配置する
-
-Android Studio を開き、**[Open an existing Android Studio project]\(既存の Android Studio プロジェクトを開く\)** を選択します。 次に、エクスポートした Android Studio プロジェクトから **HelloAR U3D** サブフォルダーを選択し、**[OK]** をクリックします。
-
-開くとき、Gradle ラッパーを使用するよう求めるメッセージが表示されます。 **[OK]** を選択して Gradle ラッパーを使用し、プロジェクトを開きます。
-
-Android デバイスの電源をオンにしてサインインし、USB ケーブルを使用して PC に接続します。
-
-Android Studio のツール バーから **[Run]\(実行\)** を選択します。
-
-![Android Studio での配置と実行](./media/get-started-unity-android/android-studio-deploy-run.png)
-
-**[Select Deployment Target]\(配置ターゲットの選択\)** ダイアログで Android デバイスを選択し、**[OK]** を選択して Android デバイス上でアプリを実行します。
+**[Export Project]\(プロジェクトのエクスポート\)** チェック ボックスがオフになっていることを確認してください。 **[Build And Run]\(ビルドして実行\)** をクリックします。 `.apk` ファイルを保存するよう求められたら、任意の名前を選択できます。
 
 アプリの指示に従って、アンカーを配置し、呼び戻します。
 
 > [!NOTE]
 > アプリを実行したとき、背景としてカメラが表示されない場合は (たとえば、代わりに空白、青、または他のテクスチャが表示される場合)、Unity に資産を再インポートすることが必要な場合があります。 アプリを停止します。 Unity の上部のメニューで、**[Assets]\(資産\) -> [Reimport all]\(すべて再インポート\)** を選択します。 その後、アプリをもう一度実行します。
-
-Android Studio ツール バーの **[Stop]\(停止\)** を選択して、アプリを停止します。
-
-![Android Studio での停止](./media/get-started-unity-android/android-studio-stop.png)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

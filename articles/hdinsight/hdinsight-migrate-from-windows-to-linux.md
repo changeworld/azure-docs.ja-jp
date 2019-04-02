@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea808609add942c5cac36e7f0306e4a27ac3bb3a
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ec40c587ea4c609b1f8201e9860eb0e98e06ec62
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743648"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448191"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
 
@@ -24,6 +24,8 @@ Windows ベースの HDInsight はクラウドで Apache Hadoop を使用する�
 
 > [!NOTE]  
 > HDInsight クラスターは、クラスター内のノードのオペレーティング システムとして Ubuntu の長期サポート (LTS) を使用します。 HDInsight で使用可能な Ubuntu のバージョンの詳細や他のコンポーネントのバージョン情報については、[HDInsight コンポーネントのバージョンに関する記事](hdinsight-component-versioning.md)を参照してください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="migration-tasks"></a>移行タスク
 
@@ -63,7 +65,7 @@ Windows ベースの HDInsight はクラウドで Apache Hadoop を使用する�
 
     ```powershell
     $clusterName="Your existing HDInsight cluster name"
-    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+    $clusterInfo = Get-AzHDInsightCluster -ClusterName $clusterName
     write-host "Storage account name: $clusterInfo.DefaultStorageAccount.split('.')[0]"
     write-host "Default container: $clusterInfo.DefaultStorageContainer"
     ```
@@ -93,7 +95,7 @@ Windows ベースの HDInsight はクラウドで Apache Hadoop を使用する�
 
 #### <a name="direct-copy-between-blobs-in-azure-storage"></a>Azure Storage の BLOB 間の直接コピー
 
-`Start-AzureStorageBlobCopy` Azure PowerShell コマンドレットを使用して、HDInsight 外のストレージ アカウント間で BLOB をコピーすることもできます。 詳細については、「Azure Storage での Azure PowerShell の使用」の「Azure BLOB の管理方法」セクションを参照してください。
+`Start-AzStorageBlobCopy` Azure PowerShell コマンドレットを使用して、HDInsight 外のストレージ アカウント間で BLOB をコピーすることもできます。 詳細については、「Azure Storage での Azure PowerShell の使用」の「Azure BLOB の管理方法」セクションを参照してください。
 
 ## <a name="client-side-technologies"></a>クライアント側のテクノロジ
 
@@ -236,7 +238,7 @@ C# アプリケーションを使用するワークフローを使用してい�
 
 Linux ベースのクラスターでは、HBase の znode の親は `/hbase-unsecure`です。 この値を、ネイティブの HBase Java API を使用するすべての Java クライアント アプリケーションの構成で設定する必要があります。
 
-この値を設定するクライアント例については、[Java ベースの Apache HBase アプリケーションの構築](hdinsight-hbase-build-java-maven.md)に関するページを参照してください。
+この値を設定するクライアント例については、[Java ベースの Apache HBase アプリケーションの構築](hbase/apache-hbase-build-java-maven-linux.md)に関するページを参照してください。
 
 ## <a name="spark"></a>Spark
 

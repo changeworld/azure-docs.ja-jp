@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/05/2019
 ms.author: jowargo
-ms.openlocfilehash: d2de4a4be8838cf696d2d3ed6589e8f154a6ca05
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 2fe448f3ed91f2c6dd242c24aa378c3541eceecc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857948"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>チュートリアル:Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する
 
@@ -29,7 +29,7 @@ ms.locfileid: "55959838"
 
 このチュートリアルでは、Azure Notification Hubs と Firebase Cloud Messaging (FCM) を使用して Android アプリケーションにプッシュ通知を送信する方法を示します。 このチュートリアルでは、Firebase Cloud Messaging (FCM) を使用してプッシュ通知を受信する空の Android アプリケーションを作成します。
 
-このチュートリアルの完成したコードについては、GitHub の [こちら](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStartedFirebase)からダウンロードできます。
+このチュートリアルの完成したコードについては、GitHub の [こちら](https://github.com/Azure/azure-notificationhubs-android/tree/master/samples/FCMTutorialApp)からダウンロードできます。
 
 このチュートリアルでは、次の手順を実行します。
 
@@ -74,7 +74,7 @@ ms.locfileid: "55959838"
 
 1. 左側のメニューの **[Settings]\(設定\)** で、**[Google (GCM/FCM)]** を選択します。 
 2. 前に保存した FCM プロジェクトの**サーバー キー**を貼り付けます。 
-3. ツール バーの **[Save]\(保存\)** を選択します。 
+3. ツールバーの **[保存]** を選択します。 
 
     ![Azure Notification Hubs - Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 4. 通知ハブが正常に更新されたことを示すアラートのメッセージが表示されます。 **[Save]\(保存\)** ボタンが無効になります。 
@@ -92,7 +92,7 @@ ms.locfileid: "55959838"
 1. **[app (アプリ)]** の `Build.Gradle` ファイルの **dependencies** セクションに次の行を追加します。
 
     ```gradle
-    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
     implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
@@ -101,7 +101,7 @@ ms.locfileid: "55959838"
     ```gradle
     repositories {
         maven {
-            url "http://dl.bintray.com/microsoftazuremobile/SDK"
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
         }
     }
     ```
@@ -111,7 +111,7 @@ ms.locfileid: "55959838"
 1. **アプリ**の `Build.Gradle` ファイルで、**dependencies** セクションに次の行を追加します (まだ存在しない場合)。 
 
     ```gradle
-    implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
     ```
 
 2. ファイルの最後に次のプラグインを追加します (まだ存在しない場合)。 
@@ -186,8 +186,8 @@ ms.locfileid: "55959838"
         }
         ```
 
-    > [!IMPORTANT]
-    > 先に進む前に、通知ハブの**名前**と **DefaultListenSharedAccessSignature** を入力します。 
+     > [!IMPORTANT]
+     > 先に進む前に、通知ハブの**名前**と **DefaultListenSharedAccessSignature** を入力します。 
 2. `MyInstanceIDService`という名前の別のクラスを追加します。 このクラスは、インスタンス ID リスナー サービスの実装です。
 
     このクラスのコードで、`IntentService` が呼び出され、バックグラウンドで [FCM トークンが更新](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens)されます。
@@ -554,7 +554,7 @@ ms.locfileid: "55959838"
 <!-- URLs. -->
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-android-get-started-push.md  
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Referencing a library project]: http://go.microsoft.com/fwlink/?LinkId=389800
+[Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md

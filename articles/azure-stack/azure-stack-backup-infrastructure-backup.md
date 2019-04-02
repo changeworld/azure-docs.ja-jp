@@ -5,7 +5,7 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-mss.service: azure-stack
+ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,26 +13,26 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 77493782802eeb29313b57d11442535f1734c12e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.lastreviewed: 03/19/2019
+ms.openlocfilehash: 080129ca1520dc2b1b085c69f6389508f11c7ba2
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097387"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285923"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービスを使用した Azure Stack のバックアップとデータの回復
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
-インフラストラクチャ バックアップ サービスを使用して、構成およびサービス データをバックアップおよび復元できます。 Azure Stack の各インストールには、サービスのインスタンスが含まれています。 Azure Stack Cloud を再デプロイし、ID、セキュリティ、Azure Resource Manager データを復元するには、サービスによって作成されたバックアップを使用できます。
+インフラストラクチャ バックアップ サービスを使用して、構成およびサービス データをバックアップおよび復元できます。 Azure Stack の各インストールには、サービスのインスタンスが含まれています。 Azure Stack Cloud を再デプロイし、ID、セキュリティ、Azure Resource Manager データを復元するには、サービスによって作成されたバックアップを使用できます。 
 
 クラウドを実稼働に移行する準備ができたら、バックアップを有効にすることができます。 テストと検証を長期間実行する予定の場合は、バックアップを有効にしないでください。
 
 バックアップ サービスを有効にする前に、[要件が満たされている](#verify-requirements-for-the-infrastructure-backup-service)ことを確認してください。
 
 > [!Note]  
-> インフラストラクチャ バックアップ サービスには、ユーザー データとアプリケーションは含まれません。 <!-- See the following articles for instructions on backing up and restore [App Services](https://aka.ms/azure-stack-app-service), [SQL](https://aka.ms/azure-stack-ms-sql), and [MySQL](https://aka.ms/azure-stack-mysql) resource providers and associated user data. -->
+> インフラストラクチャ バックアップ サービスには、ユーザー データとアプリケーションは含まれません。 IaaS VM ベースのアプリケーションを保護する方法の詳細については、[Azure Stack にデプロイされた VM の保護](user/azure-stack-manage-vm-protect.md)に関する説明を参照してください。 Azure Stack 上でアプリケーションを保護する方法を包括的に理解するには、[事業継続とディザスター リカバリーのための Azure Stack の考慮事項に関するホワイトペーパー](http://aka.ms/azurestackbcdrconsiderationswp)を参照してください。
 
 ## <a name="the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービス
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: e4ae0c944323f18876ffcd1ee5c21aa29e9806cc
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 4b95c75b863cdc86dd8a1ebe8347b77b637b110c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650820"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999099"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>クイック スタート:App Service on Linux で Java アプリを作成する
 
@@ -55,25 +55,18 @@ code pom.xml
     <!--*************************************************-->
     <!-- Deploy to Tomcat in App Service Linux           -->
     <!--*************************************************-->
-      
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
         <version>1.5.3</version>
         <configuration>
-            <!-- Specify v2 schema -->
-            <schemaVersion>v2</schemaVersion>
             <!-- App information -->
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
    
             <!-- Java Runtime Stack for App on Linux-->
-            <runtime>
-                <os>linux</os>
-                <javaVersion>jre8</javaVersion>
-                <webContainer>tomcat 8.5</webContainer>
-            </runtime>
+            <linuxRuntime>tomcat 8.5-jre8</linuxRuntime> 
         </configuration>
     </plugin>
 </plugins>
@@ -115,7 +108,8 @@ mvn package azure-webapp:deploy
 このクイック スタートでは、Maven を使用して Java アプリを作成し、[Maven Plugin for Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) を構成した後、Web アーカイブにパッケージ化された Java アプリを App Service on Linux にデプロイしました。 App Service on Linux での Java アプリケーションのホストについて詳しくは、次のチュートリアルとハウツー記事を参照してください。
 
 - [チュートリアル:PostgreSQL を使って Java Enterprise アプリをデプロイする](tutorial-java-enterprise-postgresql-app.md)
-- [Tomcat データ ソースを構成する](app-service-linux-java.md#connecting-to-data-sources)
+- [Tomcat データ ソースを構成する](app-service-linux-java.md#tomcat)
 - [Jenkins での CI/CD](/azure/jenkins/deploy-jenkins-app-service-plugin)
 - [アプリケーション パフォーマンス監視ツールのセットアップ](how-to-java-apm-monitoring.md)
+- [App Service on Linux の Java 開発者ガイド](app-service-linux-java.md)
 

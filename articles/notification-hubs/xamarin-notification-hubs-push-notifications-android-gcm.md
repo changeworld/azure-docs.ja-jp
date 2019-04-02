@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/04/2019
+ms.date: 1/4/2019
 ms.author: jowargo
-ms.openlocfilehash: 5d287bfc38f7bbdda7aab928a5fca6e9209c1faa
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f7088179f43c69fb9f72eacd6ff3703a926cabe2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447083"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886560"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して Xamarin.Android アプリにプッシュ通知を送信する
 
@@ -46,7 +46,7 @@ ms.locfileid: "54447083"
 
 ## <a name="create-a-firebase-project-and-enable-firebase-cloud-messaging"></a>Firebase プロジェクトを作成し、Firebase Cloud Messaging を有効にする
 
-[!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
+[!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging-xamarin.md)]
 
 ## <a name="create-a-notification-hub"></a>通知ハブを作成する
 
@@ -66,10 +66,18 @@ ms.locfileid: "54447083"
 
 ### <a name="create-visual-studio-project-and-add-nuget-packages"></a>Visual Studio プロジェクトを作成し、NuGet パッケージを追加する
 
-1. Visual Studio の **[ファイル]** メニューを開き、**[新規作成]**、**[プロジェクト]** の順に選択します。
+1. Visual Studio の **[ファイル]** メニューを開き、**[新規作成]**、**[プロジェクト]** の順に選択します。 **[新しいプロジェクト]** ウィンドウで、次の手順のようにします。 
+    1. **[インストール済み]**、**[Visual C#]** の順に展開し、**[Android]** をクリックします。
+    2. 一覧から **[Android アプリ (Xamarin)]** を選択します。 
+    3. プロジェクトの **名前** を入力します。 
+    4. プロジェクトの **場所** を選択します。 
+    5. **[OK]** を選択します。 
 
-    ![Visual Studio - 新しい Android プロジェクトを作成する](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog.png)
-2. **ソリューション エクスプローラー** ウィンドウで、**[プロパティ]** を展開し、**[AndroidManifest.xml]** をクリックします。 Google Firebase Console でプロジェクトに Firebase Cloud Messaging を追加するときに入力したパッケージ名に一致するようにパッケージ名を更新します。
+        ![[新しいプロジェクト] ダイアログ](./media/partner-xamarin-notification-hubs-android-get-started/new-project-dialog-new.png)        
+2. **[New Android App]\(新しい Android アプリ\)** ダイアログ ボックスで **[空のアプリ]** を選択し、**[OK]** を選択します。 
+
+    ![[新しいプロジェクト] ダイアログ](./media/partner-xamarin-notification-hubs-android-get-started/new-android-app-dialog.png)
+1. **ソリューション エクスプローラー** ウィンドウで、**[プロパティ]** を展開し、**[AndroidManifest.xml]** をクリックします。 Google Firebase Console でプロジェクトに Firebase Cloud Messaging を追加するときに入力したパッケージ名に一致するようにパッケージ名を更新します。
 
     ![GCM でのパッケージ名](./media/partner-xamarin-notification-hubs-android-get-started/package-name-gcm.png)
 3. プロジェクトを右クリックし、**[NuGet パッケージの管理...]** を選択します。
@@ -281,17 +289,17 @@ ms.locfileid: "54447083"
 [30]: ./media/notification-hubs-android-get-started/notification-hubs-test-send.png
 
 <!-- URLs. -->
-[Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
-[My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
-[Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
+[Submit an app page]: https://go.microsoft.com/fwlink/p/?LinkID=266582
+[My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
+[Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Visual Studio と Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 [Azure Portal]: https://portal.azure.com/
-[wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Notification Hubs Guidance]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs How-To for Android]: http://msdn.microsoft.com/library/dn282661.aspx
+[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
+[Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [GitHub]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid

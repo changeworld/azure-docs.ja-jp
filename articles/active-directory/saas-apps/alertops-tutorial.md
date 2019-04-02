@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3db13ed4-35c2-4b1e-bed8-9b5977061f93
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1874950e733df1cf14fba2f53fdb49d478cb6f8a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7914bc3775631f3cc5d6ae68fed10c6d5fecb853
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866047"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838053"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alertops"></a>チュートリアル:Azure Active Directory と AlertOps の統合
 
@@ -150,7 +150,7 @@ AlertOps で Azure AD シングル サインオンを構成するには、次の
 
     c. **[Issuer URL]\(発行者の URL\)** ボックスには、Azure portal の **[基本的な SAML 構成]** セクションで使用した ID 値を使用します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML endpoint URL]\(SAML エンドポイント URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    d. **[SAML endpoint URL]\(SAML エンドポイント URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
     e. **[SLO endpoint URL]\(SLO エンドポイント URL\)** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
@@ -176,7 +176,7 @@ AlertOps で Azure AD シングル サインオンを構成するには、次の
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -227,11 +227,11 @@ AlertOps で Azure AD シングル サインオンを構成するには、次の
 
     a. **[Login User Name]\(ログイン ユーザー名\)** ボックスにユーザー名を入力します (例: **Brittasimon**)。
 
-    b. **[Official Email]\(公式メール\)** ボックスに、ユーザーのメール アドレスを入力します (この例では **Brittasimon@contoso.com**)。
+    b. **[Official Email]\(公式メール\)** ボックスに、ユーザーのメール アドレスを入力します (この例では **Brittasimon\@contoso.com**)。
 
     c. **[名]** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
+    d. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
     e. 所属する組織に応じた **[Type]\(種類\)** の値をボックスの一覧から選択します。
 

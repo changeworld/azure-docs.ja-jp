@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 02/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 357fa8a34afc8b426d308940462e22895130169f
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0dd0474ad1ad360fd82cfdf746d2e9837f74833a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158773"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108377"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box Disk の返送と Azure へのデータ アップロードの確認
 
@@ -33,7 +33,7 @@ ms.locfileid: "54158773"
 
 1. データの検証が完了したら、ディスクの接続を解除します。 接続ケーブルを取り外してください。
 2. すべてのディスクと接続ケーブルをエアー クッションで包んで梱包箱に詰めます。
-3. 梱包箱に貼り付けられている透明のビニール袋に入った返送ラベルを使用します。 ラベルを破損または紛失した場合は、新しい配送先住所ラベルを Azure portal からダウンロードして、デバイスに貼り付けてください。 **[概要] > [出荷ラベルをダウンロード]** に移動します。 
+3. 梱包箱に貼り付けられている透明のビニール袋に入った返送ラベルを使用します。 ラベルを破損または紛失した場合は、新しい配送先住所ラベルを Azure portal からダウンロードして、デバイスに貼り付けてください。 **[概要] > [出荷ラベルをダウンロード]** に移動します。
 
     ![配送先住所ラベルのダウンロード](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
 
@@ -66,7 +66,28 @@ Azure データセンター内のサーバーにディスクが接続される�
 
 ![データのコピーが完了](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
 
-コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。 Azure にデータがアップロードされたことを確認するには、次の手順を実行します。
+コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。 データは次の場所にあります。
+
+- お使いの Azure Storage アカウント。 データを Data Box にコピーする場合は、そのデータがタイプに応じて Azure Storage アカウントの次のいずれかのパスにアップロードされます。
+
+  - ブロック BLOB およびページ BLOB の場合: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
+  - Azure Files の場合: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
+
+    あるいは、Azure Portal で Azure ストレージ アカウントにアクセスし、そこから移動することもできます。
+
+- マネージド ディスク リソース グループ。 マネージド ディスクを作成するとき、VHD はページ BLOB としてアップロードされた後、マネージド ディスクに変換されます。 マネージド ディスクは、注文の作成時に指定されたリソース グループに接続されています。
+
+  - Azure のマネージド ディスクへのコピーが正常に完了した場合は、Azure portal の **[注文の詳細]** に移動して、マネージド ディスクに指定されているリソース グループをメモすることができます。
+
+      ![[注文の詳細] を表示する](media/data-box-disk-deploy-picked-up/order-details-resource-group.png)
+
+    メモしたリソース グループに移動し、目的のマネージド ディスクを見つけます。
+
+      ![マネージド ディスク用のリソース グループ](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
+
+  - VHDX または動的/差分 VHD をコピーした場合、VHDX/VHD はブロック BLOB としてステージング ストレージ アカウントにアップロードされます。 ステージング環境の **[ストレージ アカウント] > [BLOB]** に移動し、適切なコンテナー (StandardSSD、StandardHDD、または PremiumSSD) を選択します。 VHDX/VHD は、ステージング ストレージ アカウントにブロック BLOB として表示されます。
+
+Azure にデータがアップロードされたことを確認するには、次の手順を実行します。
 
 1. ディスクの注文に関連付けられているストレージ アカウントに移動します。
 2. **[Blob service] > [BLOB の参照]** に移動します。 コンテナーの一覧が表示されます。 *BlockBlob* フォルダーと *PageBlob* フォルダーに作成したサブフォルダーに対応して、同じ名前のコンテナーがご利用のストレージ アカウントに作成されます。
@@ -78,7 +99,7 @@ Azure データセンター内のサーバーにディスクが接続される�
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>Data Box Disk からデータを消去する
 
-コピーが完了し、Azure Storage アカウントにデータが存在することをお客様が確認した後、ディスクは NIST 標準に従って確実に消去されます。 
+コピーが完了し、Azure Storage アカウントにデータが存在することをお客様が確認した後、ディスクは NIST 標準に従って確実に消去されます。
 
 ## <a name="next-steps"></a>次の手順
 

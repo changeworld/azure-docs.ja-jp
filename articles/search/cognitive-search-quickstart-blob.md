@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 01/02/2019
+ms.date: 03/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 191cff21cdaa6a4e94358ed0b9c63cd942f71a6e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f00df841f81ea5c7aa1fd53309b00487602e5143
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564563"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200627"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>クイック スタート:スキルとサンプル データを使用してコグニティブ検索パイプラインを作成する
 
@@ -32,21 +32,7 @@ ms.locfileid: "55564563"
 
 ## <a name="supported-regions"></a> サポートされているリージョン
 
-コグニティブ検索は、次の地域で作成された Azure Search サービスで試してみることができます。
-
-* 米国中西部
-* 米国中南部
-* 米国東部
-* 米国東部 2
-* 米国西部 2
-* カナダ中部
-* 西ヨーロッパ
-* 英国南部
-* 北ヨーロッパ
-* ブラジル南部
-* 東南アジア
-* インド中部
-* オーストラリア東部
+Cognitive Services の AI によって強化されたインデックス作成は、すべての Azure Search リージョンで利用できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -69,11 +55,11 @@ Azure サービスはこのシナリオでのみ使用されます。 必要な�
 
 最初に、Azure Search サービスにサインアップします。 
 
-1. [Azure Portal](https://portal.azure.com) に移動し、Azure アカウントを使用してサインインします。
+1. Azure アカウントを使用して [Azure Portal](https://portal.azure.com) にサインインします。
 
 1. **[リソースの作成]** をクリックし、Azure Search を検索して、**[作成]** をクリックします。 Search サービスを設定するのが初めてのために、さらにサポートが必要な場合は、「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」をご覧ください。
 
-  ![ダッシュボード ポータル](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Portal での Azure Search サービスの作成")
+   ![ダッシュボード ポータル](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "Portal での Azure Search サービスの作成")
 
 1. [リソース グループ] では、このクイック スタートで作成するすべてのリソースを含める新しいリソース グループを作成します。 これにより、クイックスタートが完了した後で、リソースをクリーンアップしやすくなります。
 
@@ -81,16 +67,16 @@ Azure サービスはこのシナリオでのみ使用されます。 必要な�
 
 1. [価格レベル] では、チュートリアルとクイックスタートを完了するために、**Free** のサービスを作成することができます。 独自のデータを使用して詳しく調査する場合は、**Basic** や **Standard** などの[有料のサービス](https://azure.microsoft.com/pricing/details/search/)を作成します。 
 
-  Free サービスは、3 つのインデックス、16 MB の最大 BLOB サイズ、および 2 分のインデックス作成に制限されていて、コグニティブ検索の全機能をテストするには不十分です。 さまざまなレベルの制限を確認するには、「[サービスの制限](search-limits-quotas-capacity.md)」をご覧ください。
+   Free サービスは、3 つのインデックス、16 MB の最大 BLOB サイズ、および 2 分のインデックス作成に制限されていて、コグニティブ検索の全機能をテストするには不十分です。 さまざまなレベルの制限を確認するには、「[サービスの制限](search-limits-quotas-capacity.md)」をご覧ください。
 
-  ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service2.png "Portal のサービス定義のページ")
+   ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service2.png "Portal のサービス定義のページ")
 
-  > [!NOTE]
-  > コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行は、現時点では無料を含むすべてのレベルで使用可能です。 有料の Cognitive Services リソースを関連付けることなく、限られた数のエンリッチメントを実行することができます。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
+   > [!NOTE]
+   > コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行は、現時点では無料を含むすべてのレベルで使用可能です。 有料の Cognitive Services リソースを関連付けることなく、限られた数のエンリッチメントを実行することができます。 [詳細情報](cognitive-search-attach-cognitive-services.md)。
 
 1. サービス情報にすばやくアクセスするために、サービスをダッシュボードにピン留めします。
 
-  ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service3.png "Portal のサービス定義のページ")
+   ![Portal のサービス定義のページ](./media/cognitive-search-tutorial-blob/create-search-service3.png "Portal のサービス定義のページ")
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Azure BLOB サービスを設定し、サンプル データを読み込む
 
@@ -98,11 +84,13 @@ Azure サービスはこのシナリオでのみ使用されます。 必要な�
 
 1. さまざまなタイプの小さいファイル セットで構成されている[サンプル データをダウンロード](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)します。 
 
-1. Azure Blob Storage にサインアップしてストレージ アカウントを作成します。BLOB サービス ページを開き、コンテナーを作成します。 コンテナーで、パブリック アクセス レベルを **[コンテナー]** に設定します。 詳しくは、"*非構造化データの検索*" のチュートリアルの「[コンテナーを作成する](../storage/blobs/storage-unstructured-search.md#create-a-container)」セクションをご覧ください。
+1. Azure Blob Storage にサインアップしてストレージ アカウントを作成します。BLOB サービス ページを開き、コンテナーを作成します。 
+
+1. コンテナーのパブリック アクセス レベルを **[コンテナー (コンテナーと BLOB の匿名読み取りアクセス)]** に設定します。 詳しくは、"*非構造化データの検索*" のチュートリアルの「[コンテナーを作成する](../storage/blobs/storage-unstructured-search.md#create-a-container)」セクションをご覧ください。
 
 1. 作成したコンテナーで、**[アップロード]** をクリックし、前の手順でダウンロードしたサンプル ファイルをアップロードします。
 
-  ![Azure Blob Storage 内のソース ファイル](./media/cognitive-search-quickstart-blob/sample-data.png)
+   ![Azure Blob Storage 内のソース ファイル](./media/cognitive-search-quickstart-blob/sample-data.png)
 
 ## <a name="create-the-enrichment-pipeline"></a>エンリッチメント パイプラインを作成する
 
@@ -126,17 +114,17 @@ Azure Search サービスのダッシュボード ページに戻り、コマン
 
 1. **[Cognitive Services をアタッチする]** を展開して、Cognitive Services APIs のリソース割り当てのオプションを表示します。 このチュートリアルの目的には、**[Free]** リソースを使用できます。
 
-  ![Cognitive Services をアタッチする](media/cognitive-search-quickstart-blob/cog-search-attach.png)
+   ![Cognitive Services をアタッチする](media/cognitive-search-quickstart-blob/cog-search-attach.png)
 
 2. **[エンリッチメントの追加]** を展開し、自然言語処理を実行するスキルを選択します。 このクイックスタートでは、人、組織、および場所のエンティティの認識を選択します。
 
-  ![Cognitive Services をアタッチする](media/cognitive-search-quickstart-blob/skillset.png)
+   ![Cognitive Services をアタッチする](media/cognitive-search-quickstart-blob/skillset.png)
 
-  ポータルでは、OCR 処理とテキスト分析用の組み込みスキルが提供されます。 Portal では、スキルセットは 1 つのソース フィールドで動作します。 それは小さいターゲットのように見えることもありますが、Azure BLOB の場合は `content` フィールドにほとんどの BLOB ドキュメント (たとえば、Word 文書または PowerPoint デッキ) が含まれています。 そのため、BLOB のすべてのコンテンツがここにあるため、このフィールドは理想的な入力です。
+   ポータルでは、OCR 処理とテキスト分析用の組み込みスキルが提供されます。 Portal では、スキルセットは 1 つのソース フィールドで動作します。 それは小さいターゲットのように見えることもありますが、Azure BLOB の場合は `content` フィールドにほとんどの BLOB ドキュメント (たとえば、Word 文書または PowerPoint デッキ) が含まれています。 そのため、BLOB のすべてのコンテンツがここにあるため、このフィールドは理想的な入力です。
 
 3. 次のページに進みます。
 
-  ![次のページでインデックスをカスタマイズ](media/cognitive-search-quickstart-blob/next-button-customize-index.png)
+   ![次のページでインデックスをカスタマイズ](media/cognitive-search-quickstart-blob/next-button-customize-index.png)
 
 > [!NOTE]
 > 自然言語処理スキルは、サンプルのデータ セット内のテキスト コンテンツで動作します。 OCR オプションは選択していないので、サンプルのデータ セット内にある JPEG および PNG ファイルはこのクイック スタートでは処理されません。 

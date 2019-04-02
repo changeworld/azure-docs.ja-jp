@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 32bd8898-c2d2-4aa7-8c46-f1f5c2aa05f1
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/3/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c964d4e070bafc6e8e66535c3963d82803d3cd1e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2281fb046ca9b96aa5800150d630b9086236c5c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865775"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57846924"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>チュートリアル:Azure Active Directory と SuccessFactors の統合
 
@@ -106,6 +106,7 @@ SuccessFactors で Azure AD シングル サインオンを構成するには、
     ![[SuccessFactors のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。
+
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -114,6 +115,7 @@ SuccessFactors で Azure AD シングル サインオンを構成するには、
     | `https://<companyname>.sapsf.eu`|
 
     b. **[識別子]** ボックスに、次のパターンを使用して URL を入力します。
+
     | |
     |--|
     | `https://www.successfactors.com/<companyname>`|
@@ -127,6 +129,7 @@ SuccessFactors で Azure AD シングル サインオンを構成するには、
     | `https://www.successfactors.cn/<companyname>`|
 
     c. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+
     | |
     |--|
     | `https://<companyname>.successfactors.com/<companyname>`|
@@ -180,7 +183,7 @@ SuccessFactors で Azure AD シングル サインオンを構成するには、
 
     c. **[発行者の URL]** テキストボックスに、Azure portal からコピーした、**Azure AD ID** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Require Mandatory Signature]\(必須の署名が必要\)** として **[アサーション]** を選択します。
+    d. **[Require Mandatory Signature]\(必須の署名が必要\)** として **[アサーション]** を選択します。
 
     e. **[Enable SAML Flag (SAML フラグを有効にする)]** で **[Enabled (有効にする)]** を選択します。
 
@@ -205,7 +208,7 @@ SuccessFactors で Azure AD シングル サインオンを構成するには、
 
     c. **[Require sp must encrypt all NameID element (すべての NameID 要素で SP での暗号化を要求)]** で **[No (いいえ)]** を選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[NameID Format (NameID の形式)]** で **[unspecified (未指定)]** を選択します。
+    d. **[NameID Format (NameID の形式)]** で **[unspecified (未指定)]** を選択します。
 
     e. **[Enable sp initiated login (AuthnRequest) (SP によって開始されたログインを有効にする (AuthnRequest))]** で **[Yes (はい)]** を選択します。
 
@@ -242,7 +245,7 @@ SuccessFactors で Azure AD シングル サインオンを構成するには、
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

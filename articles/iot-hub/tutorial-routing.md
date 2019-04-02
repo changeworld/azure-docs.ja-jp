@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: cc3f7c72acc0723c522b595ea106f72947e9d014
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 87d0339de117330bf6d586cd653b0d4d16a8cbca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728728"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087705"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>チュートリアル:IoT Hub を使用してメッセージ ルーティングを構成する
 
@@ -144,7 +144,7 @@ echo "Service Bus namespace = " $sbNameSpace
 az servicebus namespace create --resource-group $resourceGroup \
     --name $sbNameSpace \
     --location $location
-    
+
 # The Service Bus queue name must be globally unique, so add a random number to the end.
 sbQueueName=ContosoSBQueue$RANDOM
 echo "Service Bus queue name = " $sbQueueName
@@ -276,7 +276,7 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 
 ストレージ アカウントへのルーティングを設定します。 [メッセージ ルーティング] ウィンドウに移動して、ルートを追加します。 ルートを追加するときは、ルートに対する新しいエンドポイントを定義します。 これを設定した後、**level** プロパティが **storage** に設定されているメッセージは、ストレージ アカウントに自動的に書き込まれます。 
 
-データは BLOB ストレージに Avro 形式で書き込まれます。
+既定では、データが Blob Storage に Avro 形式で書き込まれます。
 
 1. [Azure portal](https://portal.azure.com) で **[リソース グループ]** をクリックし、使うリソース グループを選びます。 このチュートリアルでは、**ContosoResources** を使います。 
 
@@ -301,8 +301,9 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
    > 
    > たとえば、既定の BLOB ファイル名形式を使用して、ハブ名が ContosoTestHub であり、日付/時刻が 2018 年 10 月 30 日午前 10:56 である場合、BLOB 名は `ContosoTestHub/0/2018/10/30/10/56` のようになります。
    > 
-   > BLOB は、Avro 形式で書き込まれます。
-   >
+   > 既定では、BLOB が Avro 形式で書き込まれます。 ファイルは JSON 形式で書き込むこともできます。 JSON 形式のエンコード機能は、IoT Hub が提供されているすべてのリージョンでプレビュー段階です (米国東部、米国西部、西ヨーロッパを除く)。 [Blob Storage へのルーティングに関するガイダンス](iot-hub-devguide-messages-d2c.md#azure-blob-storage)を参照してください。
+   > 
+   > Blob Storage にルーティングする際は、パーティションを想定することなくすべてのコンテナーを確実に読み取るために、BLOB を確保したうえでそれらを反復処理することをお勧めします。 [Microsoft が開始するフェールオーバー](iot-hub-ha-dr.md#microsoft-initiated-failover)中や IoT Hub の[手動フェールオーバー](iot-hub-ha-dr.md#manual-failover-preview)中にパーティションの範囲が変化する可能性があります。 BLOB のリストを列挙する方法については、[Blob Storage へのルーティング](iot-hub-devguide-messages-d2c.md#azure-blob-storage)に関するページを参照してください。
 
 8. **[作成]** をクリックしてストレージ エンドポイントを作成し、ルートに追加します。 **[Add a route]\(ルートの追加\)** ウィンドウに表示が戻ります。
 
@@ -311,15 +312,15 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
    **[名前]**:ルーティング クエリの名前を入力します。 このチュートリアルでは、「**StorageRoute**」を使います。
 
    **エンドポイント**:ここには、先ほど設定したエンドポイントが表示されます。 
-   
+
    **データ ソース**:ドロップダウン リストから **[デバイス テレメトリのメッセージ]** を選びます。
 
    **ルートの有効化**:これは必ず有効にします。
-   
+
    **ルーティング クエリ**:クエリ文字列として、「`level="storage"`」と入力します。 
 
    ![ストレージ アカウントのルーティング クエリの作成を示すスクリーンショット。](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
-   
+
    **[Save]** をクリックします。 完了すると [メッセージ ルーティング] ウィンドウに表示が戻り、そこでストレージの新しいルーティング クエリを確認できます。 [ルート] ウィンドウを閉じて、[リソース グループ] ページに戻ります。
 
 ### <a name="routing-to-a-service-bus-queue"></a>Service Bus キューへのルーティング 
@@ -337,14 +338,14 @@ New-AzServiceBusQueue -ResourceGroupName $resourceGroup `
 4. フィールドに入力します。
 
    **エンドポイント名**:エンドポイントの名前を入力します。 このチュートリアルでは、**CriticalQueue** を使います。
-   
+
    **Service Bus 名前空間**:このフィールドをクリックしてドロップダウン リストを表示し、準備ステップで設定したサービス バスの名前空間を選択します。 このチュートリアルでは、**ContosoSBNamespace** を使います。
 
    **Service Bus キュー**:このフィールドをクリックしてドロップダウン リストを表示し、そこから Service Bus キューを選択します。 このチュートリアルでは、**contososbqueue** を使います。
 
 5. **[作成]** をクリックして Service Bus キュー エンドポイントを追加します。 **[Add a route]\(ルートの追加\)** ウィンドウに表示が戻ります。 
 
-6.  ルーティング クエリ情報の残りの部分を完成します。 このクエリでは、エンドポイントとして追加した Service Bus キューにメッセージを送信するための条件を指定します。 画面のフィールドを入力します。 
+6. ルーティング クエリ情報の残りの部分を完成します。 このクエリでは、エンドポイントとして追加した Service Bus キューにメッセージを送信するための条件を指定します。 画面のフィールドを入力します。 
 
    **[名前]**:ルーティング クエリの名前を入力します。 このチュートリアルでは、**SBQueueRoute** を使います。 
 
@@ -401,7 +402,7 @@ Service Bus キューは、critical と指定されているメッセージを�
    ![Service Bus キューの接続の設定を示すスクリーンショット。](./media/tutorial-routing/logic-app-define-connection.png)
 
    Service Bus の名前空間をクリックします。 このチュートリアルでは、**ContosoSBNamespace** を使います。 名前空間を選ぶと、ポータルは Service Bus 名前空間を照会してキーを取得します。 **RootManageSharedAccessKey** を選び、**[作成]** をクリックします。 
-   
+
    ![接続設定の終了を示すスクリーンショット。](./media/tutorial-routing/logic-app-finish-connection.png)
 
 6. 次の画面で、ドロップダウン リストからキューの名前を選びます (このチュートリアルでは **contososbqueue**)。 残りのフィールドは既定値のままでかまいません。 
@@ -442,9 +443,9 @@ Power BI の視覚エフェクトにデータを表示するには、最初に�
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの入力の追加
 
-4. **[ジョブ トポロジ]** で **[入力]** をクリックします。
+1. **[ジョブ トポロジ]** で **[入力]** をクリックします。
 
-5. **[入力]** ウィンドウで、**[ストリーム入力の追加]** をクリックして [IoT Hub] を選びます。 表示される画面で、次のフィールドを入力します。
+1. **[入力]** ウィンドウで、**[ストリーム入力の追加]** をクリックして [IoT Hub] を選びます。 表示される画面で、次のフィールドを入力します。
 
    **入力のエイリアス**:このチュートリアルでは、**contosoinputs** を使います。
 
@@ -457,12 +458,12 @@ Power BI の視覚エフェクトにデータを表示するには、最初に�
    **共有アクセス ポリシー名**:**[iothubowner]** を選びます。 [共有アクセス ポリシー キー] はポータルによって自動的に設定されます。
 
    **コンシューマー グループ**:前に作成したコンシューマー グループを選びます。 このチュートリアルでは、**contosoconsumers** を使います。
-   
+
    その他のフィールドについては、既定値を指定できます。 
 
    ![Stream Analytics ジョブの入力の設定方法を示すスクリーンショット。](./media/tutorial-routing/stream-analytics-job-inputs.png)
 
-6. **[Save]** をクリックします。
+1. **[Save]** をクリックします。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの出力の追加
 
@@ -631,4 +632,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 次のチュートリアルに進み、IoT デバイスの状態を管理する方法を学習してください。 
 
 > [!div class="nextstepaction"]
-[IoT ハブのメトリックと診断を設定して使用する](tutorial-use-metrics-and-diags.md)
+> [IoT ハブのメトリックと診断を設定して使用する](tutorial-use-metrics-and-diags.md)

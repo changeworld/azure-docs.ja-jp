@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 35a041216bf24a4c6ab73f9d5c3e85dff38a4501
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 423db264c8035f9b089524eb4b19a13baccdf2e0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588111"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404707"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>チュートリアル:Azure Data Box に NFS 経由でデータをコピーする
 
@@ -40,7 +40,8 @@ ms.locfileid: "56588111"
 
 選択したストレージ アカウントに基づいて、Data Box では最大で次のものが作成されます。
 - GPv1 および GPv2 に対して関連付けられているストレージ アカウントごとに 3 つの共有。
-- Premium または BLOB ストレージ アカウントに対して 1 つの共有。 
+- Premium ストレージに対して 1 つの共有。 
+- BLOB ストレージ アカウントに対して 1 つの共有。 
 
 ブロック BLOB とページ BLOB の共有では、第 1 レベルのエンティティはコンテナーであり、第 2 レベルのエンティティは BLOB です。 Azure Files の共有では、第 1 レベルのエンティティは共有であり、第 2 レベルのエンティティはファイルです。
 
@@ -125,6 +126,9 @@ Linux ホスト コンピューターを使用している場合は、Robocopy �
      j は並列化の数を指定し、X は並列コピーの数です。
 
      16 並列コピーから始めて、使用可能なリソースに応じてスレッドの数を増やすことをお勧めします。
+
+> [!IMPORTANT]
+> Linux ファイルの種類のうち、シンボリック リンク、文字ファイル、ブロック ファイル、ソケット、パイプはサポートされていません。 これらのファイルの種類を使用すると、**発送準備**手順でエラーが発生します。
 
 - データの整合性を保証するため、データがコピーされるときにインラインでチェックサムが計算されます。 コピーが完了したら、デバイスで使用済み領域と空き領域を確認します。
     

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 64e5e78f93488b2c375c617e8857c84ba2171f00
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8f2a5fdaf2222de7a802e8ff2a1f6fdb37dae4c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822397"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880042"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Android アプリを作成する
 
@@ -33,6 +33,8 @@ ms.locfileid: "56822397"
 このクイック スタートを実行するには、以下が必要です。
 
 - <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3.3 以降</a>がインストールされている Windows または macOS コンピューター。
+  - Windows で実行する場合は、<a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> も必要になります。
+  - MacOS で実行する場合は、HomeBrew から Git をインストールします。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 次に、`brew install git` を実行します。
   - NDK サンプルを構築するには、Android Studio の NDK と CMake 3.6 SDK Tools もインストールする必要があります。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向けオプションが有効化</a>されている、<a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a>の Android デバイス。
 - アプリでは ARCore 1.5 をターゲットにする必要があります (ARCore 1.6 以降は間もなくサポートされるようになります)
@@ -59,7 +61,7 @@ Android Studio を起動します。
 
 ## <a name="configure-account-identifier-and-key"></a>アカウント識別子とキーを構成する
 
-次の手順は、Spatial Anchors リソースを設定してアプリを構成するときに記録したアカウント識別子とアカウント キーを使用することです。
+次に、自分のアカウント識別子とアカウント キーを使用するようにアプリを構成します。 これらの情報は、[Spatial Anchors リソースを設定](#create-a-spatial-anchors-resource)するときにテキスト エディターにコピーしました。
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 

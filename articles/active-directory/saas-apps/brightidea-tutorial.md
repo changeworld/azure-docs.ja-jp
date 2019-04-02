@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 3adae3e0-f43b-492f-b373-6a512d2d6046
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 589aa227352a839e1d77a35412d2193fa05df420
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: bc45c63d3168a15b4701dcaff7bb531f759d47ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873451"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888708"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>チュートリアル:Azure Active Directory と Brightidea の統合
 
@@ -163,18 +163,18 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
     
     ![Brightidea の構成](./media/brightidea-tutorial/configure4.png)
     
-     * たとえば `Azure Ad SSO` のように、**[SAML Profile Name]\(SAML プロファイル名\)** に入力します。
+   * たとえば `Azure Ad SSO` のように、**[SAML Profile Name]\(SAML プロファイル名\)** に入力します。
     
-     * **[Upload Metadata]\(メタデータのアップロード\)** において、[ファイルの選択] をクリックして、Azure portal からダウンロード済みのメタデータ ファイルをアップロードします。
+   * **[Upload Metadata]\(メタデータのアップロード\)** において、[ファイルの選択] をクリックして、Azure portal からダウンロード済みのメタデータ ファイルをアップロードします。
 
      > [!NOTE]
      > メタデータ ファイルをアップロードすると、残りのフィールド (**[シングル サインオン サービス]、[ID プロバイダーの発行者]、[公開キーのアップロード ]**) は自動的に入力されます。
 
-     * **[電子メール]** ボックスに、`mail` の値を入力します。
+   * **[電子メール]** ボックスに、`mail` の値を入力します。
      
-     * **[画面の名前]** ボックスに、`givenName` の値を入力します。
+   * **[画面の名前]** ボックスに、`givenName` の値を入力します。
      
-     * **[変更を保存]** をクリックします。  
+   * **[変更を保存]** をクリックします。  
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -194,7 +194,7 @@ Brightidea によって Azure AD のシングル サインオンを構成する�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

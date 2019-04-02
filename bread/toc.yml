@@ -100,6 +100,9 @@ items:
   - name: Application Gateway
     tocHref: /azure/application-gateway/
     topicHref: /azure/application-gateway/
+  - name: ASC for IoT
+    tocHref: /azure/asc-for-iot/
+    topicHref: /azure/asc-for-iot/
   - name: Automation
     tocHref: /azure/automation/
     topicHref: /azure/automation/
@@ -226,6 +229,9 @@ items:
     - name: Academic Knowledge
       tocHref: /azure/cognitive-services/academic-knowledge/
       topicHref: /azure/cognitive-services/academic-knowledge/home
+    - name: Anomaly Detector
+      tocHref: /azure/cognitive-services/anomaly-detector/
+      topicHref: /azure/cognitive-services/anomaly-detector/
     - name: Bing Autosuggest
       tocHref: /azure/cognitive-services/Bing-Autosuggest/
       topicHref: /azure/cognitive-services/Bing-Autosuggest/
@@ -253,6 +259,9 @@ items:
     - name: Bing Web Search
       tocHref: /azure/cognitive-services/bing-web-search/
       topicHref: /azure/cognitive-services/bing-web-search/
+    - name: Bing Local Business Search
+      tocHref: /azure/cognitive-services/bing-local-business-search/
+      topicHref: /azure/cognitive-services/bing-local-business-search/
     - name: Computer Vision
       tocHref: /azure/cognitive-services/computer-vision/
       topicHref: /azure/cognitive-services/computer-vision/
@@ -664,9 +673,9 @@ items:
   - name: Windows Virtual Desktop
     tocHref: /azure/virtual-desktop/
     topicHref: /azure/virtual-desktop/
-ms.openlocfilehash: e8e0481d3d8d8e9d5e7d0d784bd6d58af6229c66
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 662f61109113c207f73a084b3e151b6eda2a605e
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317699"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540637"

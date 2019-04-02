@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 0889476d84bbeaf620d9fc952efe102601a1eaf8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1276d1e581caf477449ce9a4c928d4493a6354d3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857846"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487602"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Azure Network Watcher を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
 
@@ -50,7 +50,7 @@ Network Watcher のトラブルシューティングを使用すると、仮想�
 
 ## <a name="log-in-with-armclient"></a>ARMClient でのログイン
 
-```PowerShell
+```powershell
 armclient login
 ```
 

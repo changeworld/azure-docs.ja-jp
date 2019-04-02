@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 2bbe69d114df61f6ca01add0b3459220d59d83e0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 29ad35b30e7f75259b9c4d0174c16c6c9c40a917
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880517"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852535"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Database for MariaDB データベースを設計する
 
@@ -90,7 +90,7 @@ Azure portal から、Azure Database for MariaDB サーバーの **[サーバー
 
    ![サーバーのプロパティ](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-この例では、サーバー名は **mydemoserver.mariadb.database.azure.com**、サーバー管理者ログイン名は **myadmin@mydemoserver** です。
+この例では、サーバー名は **mydemoserver.mariadb.database.azure.com**、サーバー管理者ログイン名は **myadmin\@mydemoserver** です。
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>mysql を使用してサーバーに接続する
 

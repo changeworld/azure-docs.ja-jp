@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: dabffd88965a10fe4feca2b600cfaf5741e2f664
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 247ebdc8156453062eefe6738c5c281d393a9923
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157909"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436056"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで JWT トークン発行者用の技術プロファイルを定義する
 
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) B2C は、各 認証フローを処理する�
 | rolling_refresh_token_lifetime_secs | いいえ  | 更新トークンのスライディング ウィンドウの有効期間。 この期間が経過すると、アプリケーションによって取得された最新の更新トークンの有効期間にかかわらず、ユーザーは強制的に再認証されます。 スライディング ウィンドウの有効期間を強制しないようにする場合は、allow_infinite_rolling_refresh_token の値を `true` に設定してください。 既定は 7,776,000 秒 (90 日) です。 最短 (包括) は 86,400 秒 (24 時間) です。 最長 (包括) は 31,536,000 秒 (365 日) です。 | 
 | allow_infinite_rolling_refresh_token | いいえ  | `true` に設定される場合、更新トークンのスライディング ウィンドウの有効期間はありません。 |
 | IssuanceClaimPattern | はい | 発行者 (iss) 要求を制御します。 次のいずれかの値です。<ul><li>AuthorityAndTenantGuid - iss 要求には、`login.microsoftonline` や `tenant-name.b2clogin.com` のようなドメイン名、テナント識別子 https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/ などがあります。</li><li>AuthorityWithTfp - iss 要求には、`login.microsoftonline` や `tenant-name.b2clogin.com` のようなドメイン名、テナント識別子、証明書利用者のポリシー名などがあります。 https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> | 
-| AuthenticationContextReferenceClaimPattern | いいえ  | `acr` の要求値 を制御します。<ul><li>None - Azure AD B2C は acr 要求を発行しない</li><li>PolicyId - `acr` 要求にポリシー名を含める</li></ul>この値を設定する場合のオプションは、TFP (trust framework policy) および ACR (authentication context reference) です。 この値を TFP に設定することをお勧めします。値を設定するには、`<Item>` が `Key="AuthenticationContextReferenceClaimPattern"` と共に存在し、その値が `None` であることを確認してください。 証明書利用者ポリシーで、<OutputClaims> 項目を追加し、この要素 `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />` を追加します。 ポリシーには、クレームの種類 `<ClaimType Id="trustFrameworkPolicy"> <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` が存在することも確認してください。 | 
+| AuthenticationContextReferenceClaimPattern | いいえ  | `acr` の要求値 を制御します。<ul><li>None - Azure AD B2C は acr 要求を発行しない</li><li>PolicyId - `acr` 要求にポリシー名を含める</li></ul>この値を設定する場合のオプションは、TFP (trust framework policy) および ACR (authentication context reference) です。 この値を TFP に設定することをお勧めします。値を設定するには、`<Item>` が `Key="AuthenticationContextReferenceClaimPattern"` と共に存在し、その値が `None` であることを確認してください。 証明書利用者ポリシーで、`<OutputClaims>` 項目を追加し、この要素 `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />` を追加します。 ポリシーには、クレームの種類 `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` が存在することも確認してください。 | 
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 

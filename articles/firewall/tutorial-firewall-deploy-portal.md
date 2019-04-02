@@ -1,21 +1,21 @@
 ---
-title: 'チュートリアル: Azure portal を使用して Azure Firewall をデプロイして構成する'
+title: チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
 description: このチュートリアルでは、Azure portal を使用して Azure Firewall をデプロイおよび構成する方法を学習します。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 3/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be4cbc7e955e56853809378f98e9733ffe4a20c3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 288a6e1b1d88fcef6fbd5554ba811acc1dab776e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633726"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994248"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して Azure Firewall をデプロイして構成する
+# <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
 
 アウトバウンド ネットワーク アクセスを制御することは、ネットワーク セキュリティ プラン全体の重要な要素です。 たとえば、Web サイト (つまり、アクセス可能なアウトバウンドの IP アドレスとポート) へのアクセスを制限したい場合があります。
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このリソース グループには、このチュートリアルのすべてのリソースが含まれます。
 
-1. Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 2. Azure portal のホーム ページで **[リソース グループ]** > **[追加]** の順にクリックします。
 3. **[リソース グループ名]** に「**Test-FW-RG**」と入力します。
 4. **[サブスクリプション]** で、ご使用のサブスクリプションを選択します。
@@ -109,12 +109,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. **[受信ポートの規則]** の **[パブリック受信ポート]** で、**[選択したポートを許可する]** をクリックします。
 5. **[受信ポートを選択]** で、**[RDP (3389)]** を選択します。
 
-6. 他の既定値をそのまま使用し、**[Next: Disks]\(次へ: ディスク\)** をクリックします。
-7. ディスクの既定値をそのまま使用し、**[Next: Networking]\(次へ: ネットワーク\)** をクリックします。
+6. 他の既定値をそのまま使用し、**[次へ: ディスク]** をクリックします。
+7. 既定値をそのまま使用し、**[次へ: ネットワーク]** を選択します。
 8. 仮想ネットワークとして **Test-FW-VN** が選択されていること、およびサブネットが **Jump-SN** であることを確認します。
 9. **[パブリック IP]** で、**[新規作成]** をクリックします。
 10. パブリック IP アドレス名として「**Srv-Jump-PIP**」と入力し、**[OK]** をクリックします。
-11. 他の既定値をそのまま使用し、**[Next: Management]\(次へ: 管理\)** をクリックします。
+11. 他の既定値をそのまま使用し、**[次へ: 管理]** をクリックします。
 12. **[オフ]** をクリックして、ブート診断を無効にします。 他の既定値をそのまま使用し、**[確認および作成]** をクリックします。
 13. 概要ページの設定を確認して、**[作成]** をクリックします。
 
@@ -141,9 +141,9 @@ VNet にファイアウォールをデプロイします。
    |---------|---------|
    |Name     |Test-FW01|
    |サブスクリプション     |\<該当するサブスクリプション\>|
-   |リソース グループ     |**[既存のものを使用]**: Test-FW-RG |
+   |リソース グループ     |**[Use Existing]\(既存の使用\)**: Test-FW-RG |
    |Location     |以前使用したのと同じ場所を選択します|
-   |仮想ネットワークの選択     |**[既存のものを使用]**: Test-FW-VN|
+   |仮想ネットワークの選択     |**[Use Existing]\(既存の使用\)**: Test-FW-VN|
    |パブリック IP アドレス     |**新規作成**。 パブリック IP アドレスは、Standard SKU タイプであることが必要です。|
 
 5. **[Review + create]\(レビュー + 作成\)** をクリックします。
@@ -235,12 +235,12 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 1. Azure portal で、**Srv-Work** 仮想マシンのネットワーク設定を確認し、プライベート IP アドレスをメモします。
 2. リモート デスクトップを **Srv-Jump** 仮想マシンに接続し、そこから **Srv-Work** のプライベート IP アドレスへのリモート デスクトップ接続を開きます。
 
-3. Internet Explorer を開き、 http://msn.com を参照します。
+3. Internet Explorer を開き、 https://msn.com を参照します。
 4. セキュリティ アラートに対して **[OK]** > **[閉じる]** の順にクリックします。
 
    MSN のホーム ページが表示されます。
 
-5. http://www.msn.com を参照します。
+5. https://www.msn.com を参照します。
 
    ファイアウォールによってブロックされます。
 
@@ -256,4 +256,4 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [チュートリアル: Azure Firewall のログを監視する](./tutorial-diagnostics.md)
+> [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)

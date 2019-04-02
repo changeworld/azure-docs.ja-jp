@@ -10,24 +10,24 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: d3a6b8389d44d3ad92f9305124884d97fa293429
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 1464d1ca8fcf1ad5a955d69aa76caec9aa568dad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447111"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886119"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>クイック スタート:Python 用 Speech SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、Python 用 Speech SDK を通じて Speech サービスを使用する方法について説明します。 マイクの入力から音声を認識する方法を解説します。
+この記事では、Python 用 Speech SDK を通じて Speech Services を使用する方法について説明します。 マイクの入力から音声を認識する方法を解説します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+* Speech Services 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 * [Python 3.5 以降](https://www.python.org/downloads/)。
-* 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。 
+* 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。
     * Windows: x64 および x86。
     * Mac: macOS X バージョン 10.12 以降。
     * Linux:x64 の Ubuntu 16.04 または 18.04。
@@ -50,11 +50,11 @@ ms.locfileid: "56447111"
 pip install azure-cognitiveservices-speech
 ```
 
-## <a name="support-and-updates"></a>サポートと更新プログラム 
+## <a name="support-and-updates"></a>サポートと更新プログラム
 
 Speech SDK Python パッケージの更新プログラムは、PyPI を通じて配布され、[リリース ノート](./releasenotes.md)で発表されます。
 新しいバージョンが利用可能な場合は、コマンド `pip install --upgrade azure-cognitiveservices-speech` を使用してそれに更新できます。
-`azure.cognitiveservices.speech.__version__` 変数を調べて、現在インストールされているバージョンを確認します。 
+`azure.cognitiveservices.speech.__version__` 変数を調べて、現在インストールされているバージョンを確認します。
 
 問題があるか、機能が欠落している場合は、「[サポート オプションとヘルプ オプション](./support.md)」を参照してください。
 
@@ -68,7 +68,7 @@ Speech SDK Python パッケージの更新プログラムは、PyPI を通じて
 python quickstart.py
 ```
 
-また、このクイック スタート チュートリアルを [Speech SDK のサンプル リポジトリ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/)から [Jupyter](https://jupyter.org) ノートブックとしてダウンロードして、ノートブックとして実行することもできます。 
+また、このクイック スタート チュートリアルを [Speech SDK のサンプル リポジトリ](https://github.com/Azure-Samples/cognitive-services-speech-sdk/)から [Jupyter](https://jupyter.org) ノートブックとしてダウンロードして、ノートブックとして実行することもできます。
 
 ### <a name="sample-code"></a>サンプル コード
 
@@ -86,13 +86,13 @@ python quickstart.py
 1. Visual Studio Code の **[ファイル]** アイコンを選択します。 次に、作成したフォルダーを開きます。
 
    ![フォルダーを開く](media/sdk/qs-python-vscode-python-open-folder.png)
-   
+
 1. 新しいファイル アイコンを選択して、新しい Python ソース ファイル `speechsdk.py` を作成します。
 
    ![ファイルを作成する](media/sdk/qs-python-vscode-python-newfile.png)
 
 1. 新しく作成されたファイルに [Python コード](#sample-code)をコピーして貼り付け、保存します。
-1. お使いの Speech サービスのサブスクリプション情報を挿入します。
+1. お使いの Speech Services のサブスクリプション情報を挿入します。
 1. Python インタープリターが選択されている場合は、ウィンドウの下部にあるステータス バーの左側にそれが表示されます。
    そうでない場合は、使用可能な Python インタープリターの一覧が表示されます。 コマンド パレットを開いて (Ctrl + Shift + P)、「**Python: Select Interpreter**」と入力します。 適切なものを選択します。
 1. Visual Studio Code 内から Speech SDK Python パッケージをインストールできます。 選択した Python インタープリター用にまだインストールされていない場合は、インストールします。

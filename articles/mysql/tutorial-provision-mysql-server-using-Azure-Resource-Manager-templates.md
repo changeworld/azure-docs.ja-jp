@@ -8,12 +8,12 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: bb7a48b08fde07380276d33393225c3f5220b93f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5d5398f4da7563c6f53c17d0305f54c4360f1c65
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880701"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076855"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用して Azure Database for MySQL サーバーをプロビジョニングする
 
@@ -87,8 +87,8 @@ Azure Database for MySQL サーバー用の JSON テンプレート リファレ
 +   `storageProfile/geoRedundantBackup` - Geo DR の要件に応じて有効/無効を指定します。
 +   `sku/tier` -デプロイに対する Basic、GeneralPurpose、MemoryOptimized レベルを指定します。
 +   `sku/capacity` - 仮想コア容量を指定します。 指定できる値には、2、4、8、16、32、64 が含まれます。
-+   `sku/family` - Gen4 または Gen5 を指定して、サーバー デプロイ用のハードウェア世代を選択します。
-+   `sku/name` - TierPrefix_family_capacity を指定します。 たとえば、B_Gen4_1、GP_Gen5_16、MO_Gen5_32 です。 リージョンごとおよびレベルごとの有効な値については、[価格レベル](./concepts-pricing-tiers.md)のドキュメントをご覧ください。
++   `sku/family` - Gen5 を指定して、サーバー デプロイ用のハードウェア世代を選択します。
++   `sku/name` - TierPrefix_family_capacity を指定します。 たとえば、B_Gen5_1、GP_Gen5_16、MO_Gen5_32 です。 リージョンごとおよびレベルごとの有効な値については、[価格レベル](./concepts-pricing-tiers.md)のドキュメントをご覧ください。
 +   `resources/properties/virtualNetworkSubnetId` - Azure MySQL サーバーを配置する VNet 内のサブネットの Azure 識別子を指定します。 
 +   `tags(optional)` - 省略可能なタグを指定します。これは、課金などの目的でリソースを分類するために使用するキーと値のペアです。
 
@@ -127,8 +127,8 @@ az mysql server show --resource-group myresourcegroup --name mydemoserver
   "resourceGroup": "myresourcegroup",
  "sku": {
     "capacity": 2,
-    "family": "Gen4",
-    "name": "GP_Gen4_2",
+    "family": "Gen5",
+    "name": "GP_Gen5_2",
     "size": null,
     "tier": "GeneralPurpose"
   },
@@ -207,5 +207,5 @@ SELECT * FROM inventory;
 > * サンプル データの読み込み
 > * データのクエリを実行する
 > * データの更新
-
+> 
 > [Azure Database for MySQL にアプリケーションを接続する方法](./howto-connection-string.md)

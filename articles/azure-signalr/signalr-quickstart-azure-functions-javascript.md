@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 09/23/2018
+ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: f0044ca206d15762d44d8d4ea2d58c93950c5e1e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c66323a430e86053627577b40f66b3f4be11c74f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252458"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535650"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>クイック スタート:JavaScript を使って Azure Functions と SignalR Service を使用してチャット ルームを作成する
 
@@ -81,7 +81,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Visual Studio でリアルタイムのサーバーレス アプリケーションを構築して実行しました。 次に、Visual Studio で Azure Functions を開発およびデプロイする方法の詳細を学習してください。
+このクイック スタートでは、VS Code でリアルタイムのサーバーレス アプリケーションを構築して実行しました。 次は、VS Code から Azure Functions をデプロイする方法を詳しく学びます。
 
 > [!div class="nextstepaction"]
-> [Visual Studio を使用する Azure Functions の開発](../azure-functions/functions-develop-vs.md)
+> [VS Code で Azure Functions をデプロイする](https://code.visualstudio.com/tutorials/functions-extension/getting-started)

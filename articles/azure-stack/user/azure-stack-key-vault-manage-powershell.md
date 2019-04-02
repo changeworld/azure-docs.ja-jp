@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 4ec662cd60e2ca8e5db76a3fda4c68df6f3164e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: b00082ec567d51c320f55210cb38dcab9547e0d9
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893683"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258753"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>PowerShell を使用した Azure Stack での Key Vault の管理
 
@@ -92,7 +92,7 @@ New-AzureRmKeyVault -VaultName "Vault01" -ResourceGroupName "VaultRG" -Location 
 
 ![新しいキー コンテナー](media/azure-stack-key-vault-manage-powershell/image4.png)
 
-このコマンドの出力は、作成したキー コンテナーのプロパティを示します。 アプリケーションは、このコンテナーにアクセスするときに、**Vault URI** プロパティ (この例では "https://vault01.vault.local.azurestack.external") を使用する必要があります。
+このコマンドの出力は、作成したキー コンテナーのプロパティを示します。 アプリケーションは、このコンテナーにアクセスするときに、**Vault URI** プロパティ (この例では "https:\//vault01.vault.local.azurestack.external") を使用する必要があります。
 
 ### <a name="active-directory-federation-services-ad-fs-deployment"></a>Active Directory フェデレーション サービス (AD FS) のデプロイ
 
@@ -127,8 +127,8 @@ Add-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01" -verbose -Destination So
 
 これで、作成されたキーの URI を使用してそのキーを参照できます。 既存のキーと同じ名前のキーを作成またはインポートした場合、元のキーは、新しいキーで指定される値で更新されます。 前のバージョンにアクセスするには、キーのバージョン固有の URI を使用します。 例: 
 
-* "https://vault10.vault.local.azurestack.external:443/keys/key01" を使用して、常に現在のバージョンを取得します。
-* "https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" を使用して、この特定のバージョンを取得します。
+* "https:\//vault10.vault.local.azurestack.external:443/keys/key01" を使用すると、常に現在のバージョンが取得されます。
+* "https:\//vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" を使用すると、この特定のバージョンが取得されます。
 
 ### <a name="get-a-key"></a>キーの取得
 

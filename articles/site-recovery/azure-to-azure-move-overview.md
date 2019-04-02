@@ -8,105 +8,99 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: a73eac1dea731bbf1ffb903ddf2438e791fec9d5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: dc49b33fd3e6d582b31af5fe0507884e60205757
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726451"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078008"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
 
-Azure は顧客ベースと共に大規模に拡大しており、需要の増大に伴って、新たにサポートされるリージョンも増えています。 サービス全体で毎月追加される新しい機能も存在します。 そのため、既存の VM を別のリージョンや Availability Zones に移動して可用性を高めたい場合があります。
+Azure は顧客ベースと共に拡大しており、需要の増大に対応するため、新たにサポートされるリージョンが増えています。 また、サービス間の新しい機能も毎月追加されています。 既存の仮想マシン (VM) を別のリージョンや Availability Zones に移動して可用性を高めたい場合があります。
 
-このドキュメントでは、VM の移動が必要になるさまざまなシナリオについて取り上げると共に、可用性を高めるために、ターゲットに対してどのようにアーキテクチャを構成すればよいかについて説明します。 
+このチュートリアルでは、VM を移動することが望ましいさまざまなシナリオについて説明します。 また、高可用性を実現するためにターゲット リージョンでアーキテクチャを構成する方法についても説明します。 
+
+このチュートリアルでは、次の事項について説明します。
+
 > [!div class="checklist"]
-> * [Azure VM を移動する理由](#why-would-you-move-azure-vms)
-> * [Azure VM を移動する方法](#how-to-move-azure-vms)
-> * [一般的なアーキテクチャ](#typical-architectures-for-a-multi-tier-deployment)
-> * [VM をそのままターゲット リージョンに移動する](#move-azure-vms-to-another-region)
-> * [VM を移動して可用性を高める](#move-vms-to-increase-availability)
+> 
+> * VM を移動する理由
+> * 一般的なアーキテクチャ
+> * VM をそのままターゲット リージョンに移動する
+> * VM を移動して可用性を高める
 
-
-## <a name="why-would-you-move-azure-vms"></a>Azure VM を移動する理由
+## <a name="reasons-to-move-azure-vms"></a>Azure VM を移動する理由
 
 ユーザーが VM を移動する理由としては、次のケースが考えられます。
 
-- 既にデプロイ済みのリージョンがあるとき、既存のアプリケーションまたはサービスのエンド ユーザーにより近いリージョンが新たにサポートされた場合、待ち時間の短縮を図るために、**既存のVM をそのまま新しいリージョン**に移動したいと考えるでしょう。 サブスクリプションを統合したい場合や、ガバナンス/組織のルール上、移動が必要となる場合にも、同じ手法が用いられます。 
-- 単一インスタンスの VM として、または可用性セットの一部として VM がデプロイされているとき、可用性の SLA を強化するには、**既存の VM を可用性ゾーンに移動**することができます。 
+- 既にデプロイ済みのリージョンがあるとき、既存のアプリケーションまたはサービスのエンド ユーザーにより近いリージョンが新たにサポートされた場合。 このシナリオでは、待機時間の短縮を図るために、既存の VM をそのまま新しいリージョンに移動したいと考えるでしょう。 サブスクリプションを統合したい場合や、ガバナンス/組織のルール上、移動が必要となる場合にも、同じ手法を用います。
+- 単一インスタンス VM として、または可用性セットの一部として、VM がデプロイされた場合。 可用性 SLA を向上させたい場合は、VM を可用性ゾーンに移動します。
 
-## <a name="how-to-move-azure-vms"></a>Azure VM を移動する方法
+## <a name="steps-to-move-azure-vms"></a>Azure VM を移動する手順
+
 VM の移動には、次の手順が伴います。
 
-1. 前提条件を確認する 
-2. ソース VM を準備する 
-3. ターゲット リージョンを準備する 
-4. ターゲット リージョンにデータをコピーする: Azure Site Recovery のレプリケーション テクノロジを使用して、ソース VM からターゲット リージョンにデータをコピーします。
-5. 構成をテストする: レプリケーションが完了したら、非運用ネットワークへのテスト フェールオーバーを実行して構成をテストします。
-6. 移動を実行する 
-7. ソース リージョンのリソースを破棄する 
-
-
-> [!IMPORTANT]
-> 現在 Azure Site Recovery では、異なるリージョン間の VM の移動はサポートされますが、同じリージョン内での移動はサポートされません。 
+1. 前提条件を確認します。
+2. ソース VM を準備します。
+3. ターゲット リージョンを準備します。
+4. ターゲット リージョンにデータをコピーします。 Azure Site Recovery のレプリケーション テクノロジを使用して、ソース VM からターゲット リージョンにデータをコピーします。
+5. 構成をテストします。 レプリケーションが完了したら、非運用ネットワークへのテスト フェールオーバーを実行して構成をテストします。
+6. 移動を実行します。
+7. ソース リージョンのリソースを破棄します。
 
 > [!NOTE]
-> これらの手順についての詳しいガイダンスは、[ここ](#next-steps)で言及されている各シナリオのドキュメントに記載されています。
+> これらの手順の詳細については、以下のセクションで説明します。
+> [!IMPORTANT]
+> 現在 Azure Site Recovery では、異なるリージョン間の VM の移動はサポートされますが、同じリージョン内での移動はサポートされません。
 
 ## <a name="typical-architectures-for-a-multi-tier-deployment"></a>多層デプロイの一般的なアーキテクチャ
-以下のセクションでは、Azure における多層アプリケーションで採用される最も一般的なデプロイ アーキテクチャについて見ていきます。 ここでは、パブリック IP を持つ 3 階層アプリケーションの例を取り上げています。 Web、アプリケーション、データベースの各階層は、それぞれ 2 つの VM を有しており、ロード バランサーによって他の階層に接続されています。 データベース層の VM 間には SQL AlwaysOn レプリケーションが存在し、高可用性 (HA) が確保されています。
 
-1.  **単一インスタンスの VM を各種階層にデプロイ** - 階層内の各 VM は単一インスタンスの VM として構成され、ロード バランサーによって他の階層に接続されます。 これがユーザーによって採用される最もシンプルな構成になります。
+このセクションでは、Azure における多層アプリケーションの最も一般的なデプロイ アーキテクチャについて説明します。 ここでは、パブリック IP を持つ 3 階層アプリケーションの例を取り上げています。 各階層 (Web、アプリケーション、データベース) は、それぞれ 2 つの VM を有しており、Azure ロード バランサーによって他の階層に接続されています。 データベース層の VM 間には SQL Server Always On レプリケーションが存在し、高可用性が確保されています。
 
-       ![単一 VM](media/move-vm-overview/regular-deployment.PNG)
+* **単一インスタンスの VM を各種階層にデプロイ**: 階層内の各 VM は単一インスタンスの VM として構成され、ロード バランサーによって他の階層に接続されます。 この構成は最も簡単に採用できます。
 
-2. **各階層の VM を可用性セットにデプロイ** - 階層内の各 VM が可用性セット内に構成されます。 [可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)を使うことで、Azure にデプロイする VM は、クラスター内で切り離された複数のハードウェア ノードに確実に分散されます。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。 
-   
-      ![avset](media/move-vm-overview/AVset.PNG)
+     ![階層への単一インスタンスの VM のデプロイ](media/move-vm-overview/regular-deployment.png)
 
-3. **各階層の VM を可用性セットにデプロイ** - 階層内の各 VM が [Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) に構成されます。 Azure リージョン内の可用性ゾーンは、障害ドメインと更新ドメインを組み合わせたものです。 たとえば、Azure リージョンの 3 つのゾーンに 3 つ以上の VM を作成する場合、VM は実際には 3 つの障害ドメインと 3 つの更新ドメインに分散されます。 Azure プラットフォームは更新ドメインへのこの分散を認識し、異なるゾーン内の VM が同時に更新されないようにします。
+* **各階層の VM を可用性セットにデプロイ**: 階層内の各 VM は可用性セットに構成されます。 [可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)を使うことで、Azure にデプロイする VM は、クラスター内で切り離された複数のハードウェア ノードに確実に分散されます。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。
 
-      ![zone-deploymnt](media/move-vm-overview/zone.PNG)
+     ![可用性セットへの VM のデプロイ](media/move-vm-overview/avset.png)
 
+* **各階層の VM を Availability Zones にデプロイ**: 階層内の各 VM は [Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) に構成されます。 Azure リージョン内の可用性ゾーンは、障害ドメインと更新ドメインを組み合わせたものです。 たとえば、Azure リージョンの 3 つのゾーンに 3 つ以上の VM を作成する場合、VM は実際には 3 つの障害ドメインと 3 つの更新ドメインに分散されます。 Azure プラットフォームは更新ドメインへのこの分散を認識し、異なるゾーン内の VM が同時に更新されないようにします。
 
+     ![可用性ゾーンのデプロイ](media/move-vm-overview/zone.png)
 
 ## <a name="move-vms-as-is-to-a-target-region"></a>VM をそのままターゲット リージョンに移動する
 
-以下に示したのは、前述の[アーキテクチャ](#typical-architectures-for-a-multi-tier-deployment)をベースに、ターゲット リージョンに VM をそのまま移動した後のデプロイの概観です。
+前述の[アーキテクチャ](#typical-architectures-for-a-multi-tier-deployment)をベースに、ターゲット リージョンに VM をそのまま移動した後のデプロイの概観を次に示します。
 
+* **単一インスタンスの VM を各種階層にデプロイ**
 
-1. **単一インスタンスの VM を各種階層にデプロイ** 
+     ![階層への単一インスタンスの VM のデプロイ](media/move-vm-overview/single-zone.png)
 
-     ![single-zone.PNG](media/move-vm-overview/single-zone.PNG)
+* **各階層の VM を可用性セットにデプロイ**
 
-2. **各階層の VM を可用性セットにデプロイ**
+     ![リージョン間の可用性セット](media/move-vm-overview/crossregionaset.png)
 
-     ![crossregionAset.PNG](media/move-vm-overview/crossregionAset.PNG)
+* **各階層の VM を Availability Zones にデプロイ**
 
-
-3. **各階層の VM を可用性ゾーンにデプロイ**
-      
-
-     ![AzoneCross.PNG](media/move-vm-overview/AzoneCross.PNG)
+     ![Availability Zones への VM のデプロイ](media/move-vm-overview/azonecross.png)
 
 ## <a name="move-vms-to-increase-availability"></a>VM を移動して可用性を高める
 
-1. **単一インスタンスの VM を各種階層にデプロイ** 
+* **単一インスタンスの VM を各種階層にデプロイ**
 
-     ![single-zone.PNG](media/move-vm-overview/single-zone.PNG)
+     ![階層への単一インスタンスの VM のデプロイ](media/move-vm-overview/single-zone.png)
 
-2. **各階層の VM を可用性セットにデプロイ** - Azure Site Recovery を使用した VM のレプリケーションを有効にした場合、可用性セット内の VM を別個の可用性ゾーンに配置するように構成できます。 移動操作の完了後、可用性の SLA は 99.9% になります。
+* **各階層の VM を可用性セットにデプロイ**: Azure Site Recovery を使用して VM のレプリケーションを有効にすると、可用性セット内の VM を個別の Availability Zones に構成できます。 移動操作の完了後、可用性の SLA は 99.9% になります。
 
-     ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
-
+     ![可用性セットと Availability Zones への VM のデプロイ](media/move-vm-overview/aset-azone.png)
 
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントでは、VM の移動に関する一般的なガイダンスについて取り上げました。 具体的な実行手順については、次の記事を参照してください。
-
-
 > [!div class="nextstepaction"]
+> 
 > * [Azure VM を別のリージョンに移動する](azure-to-azure-tutorial-migrate.md)
-
-> * [Azure VM を Availability Zones に移動する](move-azure-VMs-AVset-Azone.md)
+> 
+> * [Azure VM を Availability Zones に移動する](move-azure-vms-avset-azone.md)
 

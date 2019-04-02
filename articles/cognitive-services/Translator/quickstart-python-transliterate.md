@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 2022971d24f7ac8a24986f45031f568a86fc31d9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: b30fa9bb0af8da7b3c72fef7aa2ecd18a8f759e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726365"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862847"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>クイック スタート: Python と Translator Text API を使用してテキストの表記を変換する
 
@@ -32,7 +32,7 @@ ms.locfileid: "56726365"
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
-普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `transliterate-text.py` という名前のファイルにコピーします。
+任意の IDE またはエディターを使用して新しいプロジェクトを作成するか、`transliterate-text.py` という名前のファイルが含まれる新しいフォルダーをデスクトップに作成します。 次に、このコード スニペットをプロジェクト/ファイルにコピーします。
 
 ```python
 # -*- coding: utf-8 -*-
@@ -135,7 +135,7 @@ python transliterate-text.py
 [
     {
         "script": "latn",
-        "text": "konnnichiha"
+        "text": "konnichiwa"
     }
 ]
 ```

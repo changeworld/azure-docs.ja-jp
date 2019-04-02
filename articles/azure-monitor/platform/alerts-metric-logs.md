@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 8fd43228c5129395f9a61778fb83d32906fc85df
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 9f47ba44e7940414932371ef1b7a360d0b01e1ff
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311765"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483864"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成
 
@@ -361,7 +361,7 @@ Log Analytics データで収集されたログのメトリックを機能させ
 
 次の Azure PowerShell コマンドを使用することもできます。
 
-```PowerShell
+```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertStatic.json TemplateParameterFile metricfromLogsAlertStatic.parameters.json
 ```
 
@@ -677,7 +677,7 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 
 次の Azure PowerShell コマンドを使用することもできます。
 
-```PowerShell
+```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertDynamic.json TemplateParameterFile metricfromLogsAlertDynamic.parameters.json
 ```
 

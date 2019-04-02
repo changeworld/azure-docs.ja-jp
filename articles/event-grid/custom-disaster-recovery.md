@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: babanisa
-ms.openlocfilehash: a77c208c208ef7e0df170733dbe89963fc5cb846
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fa0ffa9ad913f0dc3afe8dc31aeaa0254fa2d241
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727181"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863170"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する
 
@@ -28,7 +28,7 @@ ms.locfileid: "56727181"
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
 この URL は後で必要になるのでメモしておいてください。
@@ -54,10 +54,10 @@ ms.locfileid: "56727181"
 
 1. [Event Grid トピック] メニューで、**[+ 追加]** を選択してプライマリ トピックを作成します。
 
-    * トピックに論理名を付け、"-primary" をサフィックスとして追加し、追跡しやすくします。
-    * このトピックのリージョンが、お客様のプライマリ リージョンになります。
+   * トピックに論理名を付け、"-primary" をサフィックスとして追加し、追跡しやすくします。
+   * このトピックのリージョンが、お客様のプライマリ リージョンになります。
 
-    ![Event Grid トピックのプライマリ作成ダイアログ](./media/custom-disaster-recovery/create-primary-topic.png)
+     ![Event Grid トピックのプライマリ作成ダイアログ](./media/custom-disaster-recovery/create-primary-topic.png)
 
 1. トピックが作成されたら、そこに移動して **[トピック エンドポイント]** をコピーします。 後で URI が必要になります。
 
@@ -69,11 +69,11 @@ ms.locfileid: "56727181"
 
 1. トピックのブレードで **+ [イベント サブスクリプション]** をクリックして、チュートリアルの前提条件で作成したサブスクライブ中のイベント レシーバー Web サイトに接続するサブスクリプションを作成します。
 
-    * イベント サブスクリプションに論理名を付け、"-primary" をサフィックスとして追加し、追跡しやすくします。
-    * [エンドポイントの種類] で [webhook] を選択します。
-    * エンドポイントをお客様のイベント レシーバーのイベント URL に設定します。これは `https://<your-event-reciever>.azurewebsites.net/api/updates` のようになります。
+   * イベント サブスクリプションに論理名を付け、"-primary" をサフィックスとして追加し、追跡しやすくします。
+   * [エンドポイントの種類] で [webhook] を選択します。
+   * エンドポイントをお客様のイベント レシーバーのイベント URL に設定します。これは `https://<your-event-reciever>.azurewebsites.net/api/updates` のようになります。
 
-    ![Event Grid のプライマリ イベント サブスクリプション](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Event Grid のプライマリ イベント サブスクリプション](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. 同じフローを繰り返して、セカンダリのトピックとサブスクリプションを作成します。 今回は、"-primary" サフィックスを "-secondary" に置き換えて追跡しやすくします。 最後に、別の Azure リージョンにそれを配置してください。 これは好きな場所に配置できますが、[Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)の使用が推奨されます。 セカンダリのトピックとサブスクリプションを別のリージョンに配置すると、プライマリ リージョンがダウンしてもお客様の新しいイベントが流れるようになります。
 
