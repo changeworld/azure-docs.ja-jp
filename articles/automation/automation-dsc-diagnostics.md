@@ -120,7 +120,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TimeGenerated |コンプライアンス チェックが実行された日時。 |
 | OperationName |DscNodeStatusData |
@@ -151,7 +151,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
 | TimeGenerated |コンプライアンス チェックが実行された日時。 |
 | OperationName |DscResourceStatusData|
