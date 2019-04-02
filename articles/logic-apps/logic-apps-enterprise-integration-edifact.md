@@ -63,7 +63,7 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
    ![契約の詳細の指定](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
-   | プロパティ | [説明] |
+   | プロパティ | 説明 |
    | --- | --- |
    | Name |契約の名前。 |
    | 契約の種類 | EDIFACT である必要があります |
