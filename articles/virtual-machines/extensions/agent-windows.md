@@ -27,7 +27,7 @@ Microsoft Azure 仮想マシン エージェント (VM エージェント) は�
 
 この記事では、Azure 仮想マシン エージェントのインストール、検出、削除について説明します。
 
-## <a name="install-the-vm-agent"></a>[VM エージェントのインストール]
+## <a name="install-the-vm-agent"></a>VM エージェントのインストール
 
 ### <a name="azure-marketplace-image"></a>Azure Marketplace イメージ
 
