@@ -116,7 +116,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
    * **[シークレット トークン]** フィールドに、手順 6 で説明されているシークレット トークンを設定します。
 
    * **[ドメイン]** フィールドに、Zendesk テナントのサブドメインを設定します。
-     例:https://my-tenant.zendesk.com のテナント URL があるアカウントの場合、サブドメインは **my-tenant** になります。
+     例: [https://my-tenant.zendesk.com](https://my-tenant.zendesk.com) のテナント URL があるアカウントの場合、サブドメインは **my-tenant** になります。
 
 6. Zendesk アカウントの**シークレット トークン** は、**[管理者] > [API] > [設定]** に配置されています。
    **[Token Access]\(トークン アクセス\)** が **[有効]** に設定されていることを確認します。
