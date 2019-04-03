@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ff065816e287e0d4e37cdea9a7770c9ff806520
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 22615d07e69d707c90e3ff9bda83bfa6f0852996
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890748"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360286"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
@@ -40,7 +40,7 @@ Azure Machine Learning service の最終リリースには、次の機能が含�
 + 新しい、より包括的な Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>。
 + 機械学習のための拡張された新しい [Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
-[アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning サービス ワークスペース](concept-azure-machine-learning-architecture.md#workspace)だけです。 ワークスペースは、[Azure portal](quickstart-get-started.md) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやデプロイのコンピューティング先、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
+[アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning サービス ワークスペース](concept-azure-machine-learning-architecture.md#workspace)だけです。 ワークスペースは、[Azure portal]((setup-create-workspace.md#portal) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやデプロイのコンピューティング先、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
 
 現在のリリースには新しい強化された CLI と SDK クライアントがありますが、デスクトップ ワークベンチ アプリケーション自体は廃止されました。 実験は、[Azure portal のワークスペース ダッシュボード](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)で管理できます。 ダッシュボードを使用して、実験履歴の取得、ワークスペースに接続されているコンピューティング ターゲットの管理、モデルと Docker イメージの管理、さらには Web サービスのデプロイも行います。
 
@@ -50,7 +50,7 @@ Azure Machine Learning service の最終リリースには、次の機能が含�
 
 Machine Learning Workbench、Azure Machine Learning 実験、Machine Learning モデル管理の各アカウントのサポート、およびそれらに関連する SDK と CLI のサポートは、2019 年 1 月 9 日に終了しました。 
 
-最新の機能はすべて、この <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md)、[ポータル](quickstart-get-started.md)を使用して利用可能です。
+最新の機能はすべて、この <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md)、[ポータル](setup-create-workspace.md#portal)を使用して利用可能です。
 
 ## <a name="what-about-run-histories"></a>実行履歴について教えてください。
 
@@ -81,7 +81,7 @@ Azure Machine Learning Data Prep SDK の使い方について詳しくは、[こ
 run = exp.submit(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
 ```
 
-[Python とメインの SDK](quickstart-create-workspace-with-python.md) で、または [Azure portal](quickstart-get-started.md) を使用して、開始する方法を確認してください。
+作業を開始するには、[ワークスペースを作成](setup-create-workspace.md#portal)してください。
 
 ## <a name="what-about-my-registered-models-and-images"></a>登録されているモデルとイメージについて教えてください。
 
@@ -121,6 +121,6 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 サービスの概要については、「[Azure Machine Learning service の概要](overview-what-is-azure-ml.md)」を参照してください。
 
-ワークスペースの作成、プロジェクトの作成、スクリプトの実行、および最新のバージョンの Azure Machine Learning サービスを使用したスクリプトの実行履歴の調査を行う方法を示すクイック スタートとして、[Azure Machine Learning サービス](quickstart-get-started.md)を開始してみてください。
+スクリプトの実行および最新のバージョンの Azure Machine Learning サービスを使用したスクリプトの実行履歴の調査を行う方法を示すクイック スタートとして、[Azure Machine Learning サービスを開始](quickstart-run-cloud-notebook.md)してみてください。
 
 このワークフローをさらに詳しく体験するには、Azure Machine Learning service を使用してモデルをトレーニングおよびデプロイするための詳細な手順が記載されている、[完全版のチュートリアル](tutorial-train-models-with-aml.md)に従ってください。 
