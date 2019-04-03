@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 9fde3befb147aeeab9419e08602552a970368cfe
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32714b3e5a5ed859716faef2ca660f8b2c90b089
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844986"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402510"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーに通知を送信する
 
@@ -53,13 +53,13 @@ ms.locfileid: "57844986"
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="update-the-code-for-the-client-project"></a>クライアント プロジェクトのコードを更新する
+## <a name="update-the-code-for-the-uwp-client"></a>UWP クライアントのコードを更新する
 
 このセクションでは、「[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」のチュートリアルで完成したプロジェクト内のコードを更新します。 このプロジェクトは、既に Windows ストアに関連付けられている必要があります。 また、通知ハブを使用するように構成されている必要があります。 このセクションでは、新しい WebAPI バックエンドを呼び出すコードを追加し、それを通知の登録および送信に使用します。
 
 1. Visual Studio で、「[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)」で作成したソリューションを開きます。
-2. ソリューション エクスプローラーで、**[WindowsApp]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
-3. 左側で、 **[オンライン]** をクリックします。
+2. ソリューション エクスプローラーで、ユニバーサル Windows プラットフォーム (UWP) プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+3. 左側で、**[参照]** を選択します。
 4. **[検索]** ボックスに、「**Http Client**」と入力します。
 5. 結果の一覧で、**[System.Net.Http]** をクリックし、**[インストール]** をクリックします。 インストールを完了します。
 6. NuGet **[検索]** ボックスに戻り、「**Json.net**」と入力します。 **Newtonsoft.json** パッケージをインストールしてから、NuGet パッケージ マネージャー ウィンドウを閉じます。

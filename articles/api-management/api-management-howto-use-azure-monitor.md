@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 3501284be2430941863bbae90f044df8ba5e7a2a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7f2fe6fc3ba3ae515d372fb5a794e46897bad115
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454806"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517948"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -173,7 +173,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 }  
 ```
 
-| プロパティ  | type | 説明 |
+| プロパティ  | Type | 説明 |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | ブール値 | 応答の状態コードが 2xx または 3xx の範囲内で HTTP 要求が完了した場合は True |
 | time | date-time | ゲートウェイによる HTTP 要求の受信タイムスタンプ |
@@ -184,7 +184,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 | correlationId | 文字列 | API Management によって割り当てられる一意の http 要求識別子 |
 | location | 文字列 | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |
 | httpStatusCodeCategory | 文字列 | HTTP 応答状態コードのカテゴリ: 成功 (301 以下または 304 または 307)、未承認 (401、403、429)、エラー (400、500 から 600)、その他 |
-| resourceId | 文字列 | API Management リソース /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> の ID |
+| resourceId | 文字列 | API Management リソース /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> の ID |
 | properties | オブジェクト | 現在の要求のプロパティ |
 | method | 文字列 | 受信要求の HTTP メソッド |
 | url | 文字列 | 受信要求の URL |

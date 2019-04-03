@@ -575,9 +575,15 @@ items:
       - name: ファイアウォールと仮想ネットワークの構成
         href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Azure Storage の暗号化用のカスタム キーの管理
-        href: ../common/storage-service-encryption-customer-managed-keys.md
+        href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: RBAC を使用したアクセス権の管理
-        href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        items:
+        - name: ポータル
+          href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: CLI
+          href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: PowerShell
+          href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: ファイルレベルおよびディレクトリレベルのアクセス許可の設定
         href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
     - name: Azure サービスと統合する
@@ -632,9 +638,9 @@ items:
       href: https://stackoverflow.com/questions/tagged/windows-azure-storage
     - name: ビデオ
       href: https://azure.microsoft.com/documentation/videos/index/?services=storage
-ms.openlocfilehash: 78f3ab4e007f5da8986d5e59fdf78905e172d0aa
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 07631af7efdd8eafb6095145bed877e68e1f7cbe
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758362"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849834"

@@ -44,7 +44,7 @@ items:
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=power-bi-embedded
   - name: PowerShell
-    href: /powershell/module/azurerm.powerbiembedded
+    href: /powershell/module/az.powerbiembedded
   - name: .NET Azure Resource Manager
     href: /dotnet/api/microsoft.azure.management.powerbiembedded
   - name: .NET SDK ダウンロード
@@ -73,9 +73,9 @@ items:
     href: https://github.com/Azure-Samples/power-bi-embedded-integrate-report-into-web-app/
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/powerbi
-ms.openlocfilehash: ceef0dc6803c8c4edcfa9e3a76b849a67f8bc27f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5d43ccee59baebec93416845597bf437e57bc46b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849586"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846483"

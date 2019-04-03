@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/13/2019
+ms.date: 03/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 8128afa7078c396156d2cbffb47effeb7de68a0b
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: f2416bd3393ae05a74665fe7e11bd1c8c04c91d7
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58002085"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499032"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>Azure Data Box Edge のコンピューティングの管理
 
@@ -32,7 +32,7 @@ ms.locfileid: "58002085"
 
 ## <a name="manage-triggers"></a>トリガーの管理
 
-イベントとは、クラウド環境内またはデバイス上で発生し、対応が必要になる可能性のある事象のことを指します。 たとえば、共有内でファイルが作成されると、それはイベントです。 トリガーは、それらのイベントへの応答です。 トリガーにより、イベントが発生するたびに関数を実行することができます。 Data Box Edge では、トリガーをファイル イベントやスケジュールへの応答にすることができます。
+イベントとは、クラウド環境内またはデバイス上で発生し、対応が必要になる可能性のある事象のことを指します。 たとえば、共有内でファイルが作成されると、それはイベントです。 トリガーは、イベントを発生させます。 Data Box Edge では、トリガーをファイル イベントやスケジュールへの応答にすることができます。
 
 - **ファイル**:これらのトリガーは、ファイルの作成やファイルの変更などのファイル イベントへの応答です。
 - **Scheduled**: これらのトリガーは、開始日、開始時刻、および繰り返し間隔を指定して定義できるスケジュールへの応答です。
@@ -132,6 +132,23 @@ IoT デバイスと IoT Edge デバイスのキーをローテーションした
      ![確認を求められたら [はい] を選択](media/data-box-edge-manage-compute/refresh-configuration-2.png)
 
 3. 同期が完了したら、ダイアログを閉じます。
+
+## <a name="enable-a-network-interface-for-compute"></a>コンピューティング用のネットワーク インターフェイスの有効化
+
+Data Box Edge デバイス上で実行されているモジュールへのアクセスが必要な場合があります。 モジュールに外部からアクセスするには、デバイス上のネットワーク インターフェイスに IP アドレスを割り当てる必要があります。 ローカル Web UI から、これらのコンピューティング設定を管理できます。
+
+コンピューティング設定を構成するには、ローカル Web UI で次の手順を実行します。
+
+1. ローカル Web UI で、**[構成] > [コンピューティング設定]** の順に移動します。  
+
+2. デバイス上のコンピューティング モジュールへの接続に使用するネットワーク インターフェイスを**有効**にします。 
+
+    - 静的 IP アドレスを使用する場合は、ネットワーク インターフェイスの IP アドレスを入力します。
+    - DHCP を使用している場合は、IP アドレスが自動的に割り当てられます。
+
+3. **[適用]** を選択して、設定を適用します。
+
+    ![コンピューティング設定を有効にする](media/data-box-edge-manage-compute/compute-settings-1.png)
 
 
 ## <a name="next-steps"></a>次の手順

@@ -63,6 +63,8 @@ items:
     - name: エンタープライズ セキュリティの概要
       displayName: authorization authentication encryption
       href: concept-enterprise-security.md
+    - name: ユーザーとロールを管理する
+      href: how-to-assign-roles.md
     - name: 仮想ネットワークの使用
       displayName: vnet
       href: how-to-enable-virtual-network.md
@@ -76,8 +78,6 @@ items:
       href: how-to-manage-workspace.md
     - name: Resource Manager テンプレートを使用する
       href: how-to-create-workspace-template.md
-    - name: ユーザーとロールを管理する
-      href: how-to-assign-roles.md
   - name: 開発環境をセットアップする 
     items:
     - name: 開発環境を構成する
@@ -201,9 +201,9 @@ items:
   - name: Microsoft の ML 製品の比較
     href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
     maintainContext: true
-ms.openlocfilehash: 52bc0220f3eb2fa28d344f68fe86310eabeee47c
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 4b38742208ad88b8dd1eeff8cce0d0055294ec12
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540382"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862932"

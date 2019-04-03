@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2f55ca6d0dae8ca1eaba1f409bd6a9faa75baf9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9f8e13ad089fd40cde22bb76587b171a1c52c7b
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849212"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361899"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
 
@@ -87,7 +87,7 @@ Azure サービスを使用するクレジットを取得できます。 この�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure portal を使用する](quickstart-get-started.md)か (インストールしない方法)、または [Python](quickstart-create-workspace-with-python.md) を使用して (SDK をインストールする方法)、Machine Learning service ワークスペースの作成を開始します。
+- [Machine Learning service ワークスペースを作成](setup-create-workspace.md)します。
 
 - 詳細なチュートリアルに従ってください。 
   + [Azure Machine Learning service でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md) 

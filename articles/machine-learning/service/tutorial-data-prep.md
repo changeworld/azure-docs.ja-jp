@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca49cb65331373832b00b8489d731d51e8a8e004
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0ee49299dbbe8095ef98be51dc8619c28891abc5
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182916"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361389"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>チュートリアル:回帰モデリングのためにデータを準備する
 
@@ -58,7 +58,7 @@ Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](
 
 次の手順を使用して、コンピューターにローカルの Jupyter Notebook サーバーを作成します。  手順を完了したら、**tutorials/regression-part1-data-prep.ipynb** ノートブックを実行します。
 
-1. [Azure Machine Learning Python のクイック スタート](quickstart-create-workspace-with-python.md)を完了して、Miniconda 環境を作成します。  「**ワークスペースを作成する**」セクションはスキップしてもかまいませんが、このチュートリアル シリーズの[パート 2](tutorial-auto-train-models.md) で必要になります。
+1. [[Azure Machine Learning Python のクイック スタート](quickstart-run-local-notebook.md)](setup-create-workspace.md#python)にあるインストール手順を完了して、Miniconda 環境を作成します。  「**ワークスペースを作成する**」セクションはスキップしてもかまいませんが、このチュートリアル シリーズの[パート 2](tutorial-auto-train-models.md) で必要になります。
 1. `pip install azureml-dataprep` を使用して、Data Prep SDK を環境にインストールします。
 1. [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
 
@@ -70,17 +70,18 @@ Azure Notebooks の利用を開始するのは簡単です。 [Azure Notebooks](
 
     ```shell
     jupyter notebook
+    ```
 
-## <a name="start"></a>Set up your development environment
+## <a name="start"></a>開発環境を設定する
 
-All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+Python Notebook で、開発作業に関するすべての設定を行うことができます。 設定の一環として次のことを行います。
 
-* Install the SDK
-* Import Python packages
+* SDK のインストール
+* Python パッケージをインポートする
 
-### Install and import packages
+### <a name="install-and-import-packages"></a>パッケージをインストールしてインポートする
 
-Use the following to install necessary packages if you don't already have them.
+必要なパッケージがまだない場合は、次のコマンドを使用してそれらをインストールします。
 
 ```shell
 pip install azureml-dataprep
@@ -318,7 +319,7 @@ combined_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>type</th>
+      <th>Type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>
@@ -470,7 +471,7 @@ latlong_filtered_df.keep_columns(columns=[
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>type</th>
+      <th>Type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>
@@ -604,7 +605,7 @@ latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>type</th>
+      <th>Type</th>
       <th>Min</th>
       <th>max</th>
       <th>Count</th>

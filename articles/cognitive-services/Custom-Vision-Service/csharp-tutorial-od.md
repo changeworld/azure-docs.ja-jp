@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 10/31/2018
+ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 9d8340d505308753855fa0fcd286949e80d3ecaa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cc66630f57af32e18916e0662a400b38f27000a9
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879277"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472601"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>クイック スタート:Custom Vision .NET SDK を使用して物体検出プロジェクトを作成する
 
@@ -26,10 +26,11 @@ ms.locfileid: "55879277"
 - [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Custom Vision SDK とサンプル コードを入手する
+
 Custom Vision を使用する .NET アプリを作成するには、Custom Vision NuGet パッケージが必要となります。 これらは、これからダウンロードするサンプル プロジェクトに含まれていますが、次のページから個別にアクセスすることもできます。
 
-* [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
-* [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
+- [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
+- [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
 
 [Cognitive Services .NET サンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples) プロジェクトを複製またはダウンロードします。 **CustomVision/ObjectDetection** フォルダーに移動して、_ObjectDetection.csproj_ を Visual Studio で開きます。
 
@@ -75,21 +76,48 @@ Endpoint パラメーターは、Custom Vision リソースを含む Azure リ�
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=106-117)]
 
-### <a name="set-the-current-iteration-as-default"></a>現在のイテレーションを既定として設定します。
+### <a name="publish-the-current-iteration"></a>現在のイテレーションを公開する
 
-このコードは、現在のイテレーションを既定のイテレーションとしてマークするものです。 既定のイテレーションは、予測要求に応答するモデルのバージョンを表します。 モデルを再トレーニングするたびに更新する必要があります。
+公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=119-124)]
+```csharp
+// The iteration is now trained. Publish it to the prediction end point.
+var publishedModelName = "treeClassModel";
+var predictionResourceId = "<target prediction resource ID>";
+trainingApi.PublishIteration(project.Id, iteration.Id, publishedModelName, predictionResourceId);
+Console.WriteLine("Done!\n");
+```
 
 ### <a name="create-a-prediction-endpoint"></a>予測エンドポイントを作成する
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=126-131)]
+```csharp
+// Create a prediction endpoint, passing in the obtained prediction key
+CustomVisionPredictionClient endpoint = new CustomVisionPredictionClient()
+{
+        ApiKey = predictionKey,
+        Endpoint = SouthCentralUsEndpoint
+};
+```
 
 ### <a name="use-the-prediction-endpoint"></a>予測エンドポイントを使用する
 
 この部分のスクリプトでは、テスト画像を読み込み、モデル エンドポイントを照会して、予測データをコンソールに出力します。
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?range=133-145)]
+```csharp
+// Make a prediction against the new project
+Console.WriteLine("Making a prediction:");
+var imageFile = Path.Combine("Images", "test", "test_image.jpg");
+using (var stream = File.OpenRead(imageFile))
+{
+        var result = endpoint.DetectImage(project.Id, publishedModelName, File.OpenRead(imageFile));
+
+        // Loop over each prediction and write out the results
+        foreach (var c in result.Predictions)
+        {
+                Console.WriteLine($"\t{c.TagName}: {c.Probability:P1} [ {c.BoundingBox.Left}, {c.BoundingBox.Top}, {c.BoundingBox.Width}, {c.BoundingBox.Height} ]");
+        }
+}
+```
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
@@ -104,6 +132,7 @@ Making a prediction:
         fork: 98.2% [ 0.111609578, 0.184719115, 0.6607002, 0.6637112 ]
         scissors: 1.2% [ 0.112389535, 0.119195729, 0.658031344, 0.7023591 ]
 ```
+
 **Images/Test/** 内のテスト画像にタグが適切に付けられていること、また検出の領域が正しいことを確認してください。 この時点で、任意のキーを押してアプリケーションを終了できます。
 
 [!INCLUDE [clean-od-project](includes/clean-od-project.md)]

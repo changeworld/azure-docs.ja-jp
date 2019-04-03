@@ -6,23 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 02/26/2019
+ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: c07293971c4cadd8b7bccc608f69faa3baa19ba7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 86cd4190647586ec47519ca481f78267f8999cef
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100855"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402203"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Azure Data Box Gateway に関する問題のトラブルシューティング 
 
-この記事では、Azure Data Box Gateway に関する問題のトラブルシューティングを行う方法について説明します。 
-
-> [!IMPORTANT]
-> - Data Box Gateway はプレビュー段階にあります。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
-
-この記事では、次のことについて説明します。
+この記事では、Azure Data Box Gateway に関する問題のトラブルシューティングを行う方法について説明します。 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * 診断の実行
@@ -53,7 +48,7 @@ ms.locfileid: "58100855"
 
     ![[ユーザーの追加] をクリックする](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
-2. サポート パッケージが作成されたら、**[サポート パッケージのダウンロード]** をクリックします。 圧縮されたパッケージが、お客様が選択したパスにダウンロードされます。 パッケージを解凍して、システム ログ ファイルを表示できます。
+2. サポート パッケージが作成されたら、**[サポート パッケージのダウンロード]** をクリックします。 圧縮されたパッケージが、お客様が選択したパスにダウンロードされます。 そのパッケージを解凍してください。
 
     ![[ユーザーの追加] をクリックする](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 

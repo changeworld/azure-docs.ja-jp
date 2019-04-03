@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory ユーザー認証
+title: Azure Active Directory ユーザー認証 - Azure Active Directory
 description: Azure AD 管理者がエンドユーザーへの影響を抑えながらユーザー認証を保護するには、どうすればよいでしょうか。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b054dd8c78968ffb65b92ab7ee4fe1b21501b0d3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 38bc2f138a8e56fc56b48ccdaf0636a93138f95d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192519"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314656"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>認証には、どのような方式がありますか。
 

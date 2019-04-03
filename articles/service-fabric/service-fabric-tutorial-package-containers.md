@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 01/31/2019
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: bab7cdd478ba33eb797df0e68206b0aaa54be6a5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b6353b2c720a188571a0f6a4e27a89a49c857173
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892610"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311565"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>チュートリアル:Yeoman を使用して Service Fabric アプリケーションとしてコンテナーをパッケージ化およびデプロイする
 
@@ -282,11 +282,11 @@ sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azu
 ./install.sh
 ```
 
-ブラウザーを開いて､Service Fabric Explorer (http://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer) に移動します。 アプリケーション ノードを展開し、アプリケーションの種類のエントリとインスタンスのエントリがあることを確認します。
+ブラウザーを開いて、Service Fabric Explorer (http:\//containertestcluster.eastus.cloudapp.azure.com:19080/Explorer) に移動します。 アプリケーション ノードを展開し、アプリケーションの種類のエントリとインスタンスのエントリがあることを確認します。
 
 ![Service Fabric Explorer][sfx]
 
-実行中のアプリケーションに接続するには、Web ブラウザーを開いてクラスターの URL に移動します (例: http://containertestcluster.eastus.cloudapp.azure.com:80 )。 Web UI に Voting アプリケーションが表示されます。
+実行中のアプリケーションに接続するには、Web ブラウザーを開いてクラスターの URL に移動します (例: http:\//containertestcluster.eastus.cloudapp.azure.com:80)。 Web UI に Voting アプリケーションが表示されます。
 
 ![Voting アプリケーション][votingapp]
 

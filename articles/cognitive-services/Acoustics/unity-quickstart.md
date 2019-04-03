@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: b4eedabbc47738eb2f5797ffd67a3e3ebc9529ca
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 468c5584d21c226d6ffce55ff3981e629d872c56
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136208"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317189"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>Project Acoustics Unity クイック スタート
 Unity のProject Acoustics サンプル コンテンツを使用して、シミュレーション機能付きの設計 コントロールを試します。
 
 ソフトウェア要件:
 * Windows 10 用の [Unity 2018.2 以上](http://unity3d.com)
-* [Project Acoustics のサンプル コンテンツ パッケージ](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
+* [Project Acoustics のサンプル コンテンツ パッケージ](https://www.microsoft.com/download/details.aspx?id=57346)
 
 サンプル パッケージの内容
 * ジオメトリ、音源、およびゲームプレイ コントロールを備えた Unity シーン
@@ -33,7 +33,7 @@ Unity のProject Acoustics サンプル コンテンツを使用して、シミ�
 新しい Unity プロジェクトにサンプル パッケージをインポートします。 
 * Unity で、**[Assets] > [Import Package] > [Custom Package...]** を選択します。
 
-    ![パッケージのインポート](media/import-package.png)  
+    ![Unity インポート パッケージ オプションのスクリーンショット](media/import-package.png)  
 
 * **[ProjectAcoustics.unitypackage]** を選択します。
 
@@ -44,23 +44,23 @@ Unity のProject Acoustics サンプル コンテンツを使用して、シミ�
 
 **[Player Settings]\(Player の設定\)** を開くと、この設定が有効になったことを確認できます。
 
-![Player 設定](media/player-settings.png)
+![Unity の [Player Settings]\(Player の設定\) パネルのスクリーンショット](media/player-settings.png)
 
-![.NET 4.5](media/net45.png)
+![Unity の [Player Settings]\(Player の設定\) パネルで .NET 4.5 を選択したところのスクリーンショット](media/net45.png)
 
 ## <a name="experiment-with-design-controls"></a>設計コントロールを試してみる
 **[ProjectAcousticsSample]** フォルダーのサンプル シーンを開き、Unity エディターの再生ボタンをクリックします。 W、A、S、D、およびマウスを使用してあちこち移動します。 音響があるシーンとないシーンがどのように聞こえるかを比較するには、**R** ボタンを押し続けます (オーバーレイ テキストが赤色になり、[Acoustics: Disabled]\(音響: 無効\) と表示されるまで)。 その他のコントロールのキーボード ショートカットを表示するには、**F1** を押します。 コントロールは、右クリックして実行するアクションを選択し、左クリックしてアクションを実行することによっても使用できます。
 
 サンプル シーンの音源に **AcousticsAdjust** スクリプトが付属しています。このスクリプトによって、ソースごとの設計パラメーターが有効になります。 
 
-![AcousticsAdjust](media/acoustics-adjust.png)
+![Unity AcousticsAdjust スクリプトのスクリーンショット](media/acoustics-adjust.png)
 
 以下で、提供されるコントロールで生成できる効果の一部を説明します。 各コントロールの詳細については、[Project Acoustics Unity 設計チュートリアル](unreal-workflow.md)をご覧ください。
 
 ### <a name="modify-distance-based-attenuation"></a>距離ベースの減衰を変更する
 **Project Acoustics** Unity 立体化プラグインによって提供されるオーディオ DSP は、Unity エディターに組み込まれているソース単位かつ距離ベースの減衰を考慮します。 距離ベースの減衰のコントロールは、音源の **[Inspector]** パネルで、**[3D Sound Settings]** 下の **[Audio Source]** コンポーネント内にあります。
 
-![距離減衰](media/distance-attenuation.png)
+![Unity 距離減衰オプション パネルのスクリーンショット](media/distance-attenuation.png)
 
 Project Acoustics は、プレイヤーの位置を中心とした「シミュレーション リージョン」ボックス内の計算を実行します。 サンプル パッケージの音響資産はプレーヤーの周囲 45 m のシミュレーション リージョン サイズでベイクされたため、音声減衰は約 45 m で 0 になるように設計する必要があります。
 

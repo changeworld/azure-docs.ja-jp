@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/18/2019
 ms.author: juliako
-ms.openlocfilehash: a33001216fb805b700d077aa8c9d42fae9bd6bae
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 704c26670f9fe2a3d7d0011fee4621a8e8c33028
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416804"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314962"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST
 
@@ -189,7 +189,7 @@ Media Services でコンテンツをエンコードまたは処理するとき�
 
 [ジョブ](https://docs.microsoft.com/rest/api/media/jobs)は、作成された**変換**を特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。
 
-この例では、ジョブの入力は HTTPS URL ("https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/") に基づいています。
+この例では、ジョブの入力は HTTPS URL ("https:\//nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/") に基づいています。
 
 1. Postman の左側のウィンドウで、[Encoding and Analysis]\(エンコードと分析\) を選択します。
 2. 次に、[Create or Update Job]\(ジョブを作成または更新する\) を選択します。

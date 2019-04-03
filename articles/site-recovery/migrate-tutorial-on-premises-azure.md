@@ -2,17 +2,18 @@
 title: Azure Site Recovery を使用してオンプレミスのマシンを Azure に移行する | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して、オンプレミスのマシンを Azure に移行する方法について説明します。
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d5b229d96c0f63e27e36fb95122b36d3d8c128ac
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 31d08c0dac63662568bf55a021e85ec414c61e52
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110309"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360369"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 
@@ -37,7 +38,7 @@ ms.locfileid: "58110309"
 開始する前に、ディザスター リカバリーのために [VMware](vmware-azure-architecture.md) または [Hyper-V](hyper-v-azure-architecture.md) アーキテクチャを確認しておくと役立ちます。
 
 > [!TIP]
-> VMware VM をエージェントレスで Azure に移行する方法については、 [ここをクリック](https://aka.ms/migrateVMs-signup)してください
+> VMware VM から Azure に移行するためのエージェントレスの新しいエクスペリエンスにご参加いただけます。 [詳細についてはこちらをご覧ください](https://aka.ms/migrateVMs-signup)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -113,7 +114,7 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 5. 想定どおりに Azure VM が Azure に表示されることを確認します。
 6. **[レプリケートされたアイテム]** で [VM] > **[移行の完了]** を右クリックします。 次の処理が実行されます。
 
-   - 移行プロセスが終了し、AWS VM のレプリケーションが停止して、その VM での Site Recovery の課金が停止します。
+   - 移行プロセスが終了し、オンプレミス VM のレプリケーションが停止して、その VM での Site Recovery の課金が停止します。
    - この手順でレプリケーション データがクリーンアップされます。 移行した VM は削除されません。
 
      ![移行の完了](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
@@ -128,7 +129,7 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
 
 マシンが Azure に移行された後に、多くの手順を完了する必要があります。
 
-[復旧計画]( https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)における組み込みの自動化スクリプト機能を使用して、移行プロセスの一環として、いくつかの手順を自動化できます。   
+[復旧計画](site-recovery-runbook-automation.md)における組み込みの自動化スクリプト機能を使用して、移行プロセスの一環として、いくつかの手順を自動化できます。   
 
 
 ### <a name="post-migration-steps-in-azure"></a>Azure での移行後の手順
@@ -139,7 +140,7 @@ Azure への[テスト フェールオーバー](tutorial-dr-drill-azure.md)を�
     - VMware マシンおよび物理サーバーを移行する場合、モビリティ サービス インストーラーによって Windows マシン上で利用できる Azure VM エージェントがインストールされます。 Linux VM 上で、フェールオーバー後にエージェントをインストールすることをお勧めします。
     - Azure VM をセカンダリ リージョンに移行している場合、移行前に、VM 上に Azure VM エージェントがプロビジョニングされる必要があります。
     - Hyper-V VM を Azure に移行している場合、移行後に Azure VM 上に Azure VM エージェントをインストールします。
-- VM から任意の Site Recovery プロバイダー/エージェントを手動で削除します。 VMware VM または物理サーバーを移行する場合、Azure VM から [モビリティ サービスをアンインストール][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer] します。
+- VM から任意の Site Recovery プロバイダー/エージェントを手動で削除します。 VMware VM または物理サーバーを移行する場合は、モビリティ サービスを VM からアンインストールしてください。
 - 復元性の向上:
     - Azure Backup サービスを使用して、Azure VM をバックアップすることで、データの安全性を保持します。 [詳細情報]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)。
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細情報](azure-to-azure-quickstart.md)。

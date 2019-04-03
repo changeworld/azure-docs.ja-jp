@@ -5,15 +5,15 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 04/04/2018
+ms.date: 03/22/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8413044beff68390dbccdf16c4477e113a85f81b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 28eac814364b56f59b8edc6f59209a6d742ff403
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125177"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407787"
 ---
 ## <a name="create-the-webapi-project"></a>Web API プロジェクトを作成する
 
@@ -58,6 +58,8 @@ ms.locfileid: "58125177"
    このチュートリアルではデータベースは必要ありません。 App Service プランを選択したら、**[OK]** を選択して、プロジェクトを作成します。
 
     ![[Microsoft Azure Web App の構成] ウィンドウ][B5]
+
+    App Service プランを構成するためのこのページが表示されない場合、チュートリアルを続行してください。 これはアプリの発行時に後で構成できます。 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>WebAPI バックエンドに対してクライアントを認証する
 
@@ -265,8 +267,8 @@ ms.locfileid: "58125177"
             case "apns":
                 registration = new AppleRegistrationDescription(deviceUpdate.Handle);
                 break;
-            case "gcm":
-                registration = new GcmRegistrationDescription(deviceUpdate.Handle);
+            case "fcm":
+                registration = new FcmRegistrationDescription(deviceUpdate.Handle);
                 break;
             default:
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -354,10 +356,10 @@ ms.locfileid: "58125177"
                 var alert = "{\"aps\":{\"alert\":\"" + "From " + user + ": " + message + "\"}}";
                 outcome = await Notifications.Instance.Hub.SendAppleNativeNotificationAsync(alert, userTag);
                 break;
-            case "gcm":
+            case "fcm":
                 // Android
                 var notif = "{ \"data\" : {\"message\":\"" + "From " + user + ": " + message + "\"}}";
-                outcome = await Notifications.Instance.Hub.SendGcmNativeNotificationAsync(notif, userTag);
+                outcome = await Notifications.Instance.Hub.SendFcmNativeNotificationAsync(notif, userTag);
                 break;
         }
 

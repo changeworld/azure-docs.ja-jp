@@ -15,18 +15,21 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: msfussell
 ms.custom: mvc
-ms.openlocfilehash: 8f2a3536b7d1b02f124b3116c96ce442383a6b3b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 4e686d314c1b6550c2c782e9a1e1dc681ff154e1
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294435"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539685"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド ネイティブ アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 Service Fabric は、コンテナーで実行するこれらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代プラットフォームの代表例です。
 
 こちらの短いビデオでは、Service Fabric とマイクロサービスを紹介しています。
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
+
+## <a name="compliance"></a>コンプライアンス
+Azure Service Fabric リソース プロバイダーは、すべての Azure リージョンで利用でき、Azure が持っているすべてのコンプライアンス証明書に準拠しています。これには、SOC、ISO、PCI DSS、HIPPA、および GDRP が含まれます。 コンプライアンス証明書の完全な一覧については、「[コンプライアンス認証](https://www.microsoft.com/trustcenter/compliance/complianceofferings)」を参照してください。
 
 ## <a name="applications-composed-of-microservices"></a>マイクロサービスで構成されたアプリケーション 
 Service Fabric を使用すると、マシンの共有プール (クラスターと呼ばれる) 上で高密度で実行されるマイクロサービスで構成された、スケーラブルで信頼性の高いアプリケーションを構築して管理することができます。 コンテナーで実行する分散型のスケーラブルなステートレスおよびステートフル マイクロサービスを構築するための高度な軽量ランタイムを提供します。 また、コンテナー化されたサービスを含むデプロイ済みのアプリケーションをプロビジョニング、デプロイ、監視、アップグレード/修正、削除するための包括的なアプリケーション管理機能も提供します。

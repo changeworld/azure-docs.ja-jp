@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 12ca210e1fe7aa60515f5b8c4c0ad830dcdd9594
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8d96d929e55bd4423bdb0cd0dd064e275462ce2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078960"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445353"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを持つ Azure Data Factory を作成します。    
@@ -226,9 +226,10 @@ END
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
+1. 左側のメニューで、**[リソースの作成]** > **[データ + 分析]** > **[Data Factory]** の順に選択します。 
    
-   ![New->DataFactory](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
+   ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 1. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFMultiIncCopyTutorialDF**」と入力します。 
       
      ![[新しいデータ ファクトリ] ページ](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory.png)
@@ -508,7 +509,7 @@ END
      1. **[Import parameter]\(インポート パラメーター\)** を選択します。 
      1. 各パラメーターの値を次のように指定します。 
 
-         | Name | type | 値 | 
+         | Name | Type | 値 | 
          | ---- | ---- | ----- |
          | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
          | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

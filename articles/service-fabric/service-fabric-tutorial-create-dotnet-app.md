@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 7432cbf8fae098c0753641f2002b72eaab3ddbb4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff6475637b07f50aaea93caac85e65356bc9b96b
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57851365"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317206"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル:ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 
@@ -466,7 +466,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
         ],
 ```
 ローカル開発クラスターで使用されているリバース プロキシ ポートを確認するには、ローカル Service Fabric クラスター マニフェスト内の **HttpApplicationGatewayEndpoint** 要素を確認します。
-1. ブラウザー ウィンドウを開き、 http://localhost:19080 に移動して Service Fabric Explorer ツールを開きます。
+1. ブラウザー ウィンドウを開き、http:\//localhost:19080 に移動して Service Fabric Explorer ツールを開きます。
 2. **[クラスター] -> [マニフェスト]** を選択します。
 3. HttpApplicationGatewayEndpoint 要素のポートをメモします。 既定では、これは 19081 のはずです。 19081 ではない場合は、次の VotesController.cs コードの GetProxyAddress メソッドで、ポートを変更する必要があります。
 

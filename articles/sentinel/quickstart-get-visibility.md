@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/4/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1d54ac521fb8b81ed5fa135f68af420bda261661
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a80c4db1b81dd2bc0b223a2781e28ccb1f5ba68e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246952"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402883"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel-preview"></a>クイック スタート:Azure Sentinel プレビューの概要
 
@@ -118,7 +118,22 @@ ms.locfileid: "57246952"
 
 データを見るユーザーのロール必要なものに基づいて、さまざまなダッシュボードを作成できます。 たとえば、ファイアウォール データを含むネットワーク管理者用のダッシュボードを作成できます。 また、ダッシュボードを確認する頻度、毎日確認することがあるかどうか、1 時間に 1 回確認する必要がある項目などに基づいてダッシュボードを作成することもできます。たとえば、Azure AD のサインを毎時確認し、異常を検索することができます。 
 
+## <a name="create-new-detections"></a>新しい検出を作成する
 
+[Azure Sentinel に接続したデータ ソース](connect-data-sources.md)に対し、組織内の脅威を調査するための検出を生成します。
+
+新しい検出を作成する際は、Microsoft のセキュリティ研究員によって作成されたビルトインの検出を活用しましょう。接続先のデータ ソースに合わせてカスタマイズされています。
+
+1. [GitHub コミュニティ](https://github.com/Azure/Azure-Sentinel/tree/master/Detections)で **Detections** フォルダーに移動し、対象となるフォルダーを選択します。
+   ![対象となるフォルダー](./media/qs-get-visibility/detection-folders.png)
+ 
+3.  **[分析]** タブに移動して **[追加]** を選択します。
+   ![Log Analytics でルールを作成する](./media/qs-get-visibility/query-params.png)
+
+3.  そのルールにすべてのパラメーターをコピーして、**[作成]** をクリックします。
+   ![アラート ルールを作成する](./media/qs-get-visibility/create-alert-rule.png)
+
+ 
 ## <a name="next-steps"></a>次の手順
 このクイック スタートでは、Azure Sentinel を使い始める方法について説明しました。 [脅威の検出方法](tutorial-detect-threats.md)のチュートリアルに進んでください。
 > [!div class="nextstepaction"]

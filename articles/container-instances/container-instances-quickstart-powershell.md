@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 10/02/2018
+ms.date: 03/21/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 00f5f8e045a2ec78751d115db3d9d75ec76189e8
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 8c50a3069ea8b1303e45c571425a6f4c9b4c0d5b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732291"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368190"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してコンテナー インスタンスを Azure にデプロイする
 
@@ -43,14 +43,14 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-リソース グループを作成すると、Azure でコンテナーを実行できます。 Azure PowerShell を使用してコンテナー インスタンスを作成するには、リソース グループ名、コンテナー インスタンス名、および Docker コンテナー イメージを [New-AzContainerGroup][New-AzContainerGroup] コマンドレットに渡します。 このクイック スタートでは、パブリック Docker Hub レジストリにある `microsoft/iis:nanoserver` Windows イメージを使用します。 このイメージには、Nano Server で動作するインターネット インフォメーション サービス (IIS) がパッケージされています。
+リソース グループを作成すると、Azure でコンテナーを実行できます。 Azure PowerShell を使用してコンテナー インスタンスを作成するには、リソース グループ名、コンテナー インスタンス名、および Docker コンテナー イメージを [New-AzContainerGroup][New-AzContainerGroup] コマンドレットに渡します。 このクイック スタートでは、パブリックの `mcr.microsoft.com/windows/servercore/iis:nanoserver` イメージを使用します。 このイメージには、Nano Server で動作する Microsoft インターネット インフォメーション サービス (IIS) がパッケージされています。
 
 1 つまたは複数の開くポート、DNS 名ラベル、またはその両方を指定することで、コンテナーをインターネットに公開することができます。 このクイック スタートでは、IIS にパブリックに到達できるよう、DNS 名ラベルを指定してコンテナーをデプロイします。
 
 次のようなコマンドを実行して、コンテナー インスタンスを開始します。 `-DnsNameLabel` の値は、インスタンスを作成する Azure リージョン内で一意の値を設定してください。 エラー メッセージ "DNS 名ラベルは利用できません" が表示された場合は、別の DNS 名ラベルを試してください。
 
  ```azurepowershell-interactive
-New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
+New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
 数秒以内に、Azure から応答を受信します。 コンテナーの `ProvisioningState` は、最初は **Creating** と表示されますが、1、2 分で **Succeeded** に変わります。 [Get-AzContainerGroup][Get-AzContainerGroup] コマンドレットを使用して、デプロイの状態を確認します。

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 5e636617a61de3c2f8e3dd891b205c17caaaf454
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 42384d3ef025640e302ef8173a25965580784319
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090374"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361202"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>クイック スタート:HDInsight クラスター上に Apache Kafka を作成する
 
@@ -31,9 +31,11 @@ ms.locfileid: "58090374"
 
 ## <a name="prerequisites"></a>前提条件
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-* Azure PowerShell。 詳しくは、「[Install and Configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)」(Azure PowerShell のインストールと構成) をご覧ください。
+* Azure PowerShell。 詳しくは、「[Install and Configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)」(Azure PowerShell のインストールと構成) をご覧ください。
 
 * SSH クライアント このドキュメントの手順では、SSH を使って、クラスターに接続します。
 
@@ -50,54 +52,54 @@ ms.locfileid: "58090374"
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-`Login-AzureRmAccount` コマンドレットで Azure サブスクリプションにログインし、画面上の指示に従います。
+`Login-AzAccount` コマンドレットで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```powershell
-Login-AzureRmAccount
+Login-AzAccount
 ```
 
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、名前と場所の入力を求められた後、新しいリソース グループが作成されます。
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、名前と場所の入力を求められた後、新しいリソース グループが作成されます。
 
 ```powershell
 $resourceGroup = Read-Input -Prompt "Enter the resource group name"
 $location = Read-Input -Prompt "Enter the Azure region to use"
 
-New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-HDInsight 上の Kafka は Azure マネージド ディスクを使って Kafka のデータを格納しますが、クラスターはログなどの情報を格納するために Azure Storage も使います。 新しいストレージ アカウントを作成するには、[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) を使います。
+HDInsight 上の Kafka は Azure マネージド ディスクを使って Kafka のデータを格納しますが、クラスターはログなどの情報を格納するために Azure Storage も使います。 新しいストレージ アカウントを作成するには、[New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) を使います。
 
 ```powershell
 $storageName = Read-Host -Prompt "Enter the storage account name"
 
-New-AzureRmStorageAccount `
+New-AzStorageAccount `
         -ResourceGroupName $resourceGroup `
         -Name $storageName `
         -Type Standard_LRS `
         -Location $location
 ```
 
-HDInsight は、BLOB コンテナーにストレージ アカウント内のデータを格納します。 新しいコンテナーを作成するには、[New-AzureStorageContainer](/powershell/module/Azure.Storage/New-AzureStorageContainer) を使います。
+HDInsight は、BLOB コンテナーにストレージ アカウント内のデータを格納します。 新しいコンテナーを作成するには、[New-AzStorageContainer](/powershell/module/Azure.Storage/New-AzStorageContainer) を使います。
 
 ```powershell
 $containerName = Read-Host -Prompt "Enter the container name"
 
-$storageKey = (Get-AzureRmStorageAccountKey `
+$storageKey = (Get-AzStorageAccountKey `
                 -ResourceGroupName $resourceGroup `
                 -Name $storageName)[0].Value
-$storageContext = New-AzureStorageContext `
+$storageContext = New-AzStorageContext `
                     -StorageAccountName $storageName `
                     -StorageAccountKey $storageKey
-New-AzureStorageContainer -Name $containerName -Context $storageContext 
+New-AzStorageContainer -Name $containerName -Context $storageContext 
 ```
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka クラスターを作成する
 
-HDInsight クラスターに Apache Kafka を作成するには、[New-AzureRmHDInsightCluster](/powershell/module/AzureRM.HDInsight/New-AzureRmHDInsightCluster) を使います。
+HDInsight クラスターに Apache Kafka を作成するには、[New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) を使います。
 
 ```powershell
 # Create a Kafka 1.0 cluster
@@ -115,7 +117,7 @@ $disksPerNode=2
 $kafkaConfig = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
 $kafkaConfig.Add("kafka", "1.0")
 
-New-AzureRmHDInsightCluster `
+New-AzHDInsightCluster `
         -ResourceGroupName $resourceGroup `
         -ClusterName $clusterName `
         -Location $location `
@@ -138,7 +140,7 @@ New-AzureRmHDInsightCluster `
 > [!TIP]  
 > `-DisksPerWorkerNode` パラメーターは、HDInsight 上の Kafka のスケーラビリティを構成します。 HDInsight 上の Kafka は、クラスターの仮想マシンのローカル ディスクを使って、データを保存します。 Kafka は I/O が多いため、[Azure マネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)を使ってノードごとに高いスループットと多くの記憶域を提供します。 
 >
-> マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。 `-WorkerNodeSize` パラメーターを使って、VM の種類を設定することができます。 パラメーターについて詳しくは、「[New-AzureRmHDInsightCluster](/powershell/module/AzureRM.HDInsight/New-AzureRmHDInsightCluster)」をご覧ください。
+> マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。 `-WorkerNodeSize` パラメーターを使って、VM の種類を設定することができます。 パラメーターの詳細については、「[New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster)」ドキュメントを参照してください。
 
 
 > [!IMPORTANT]  
@@ -333,10 +335,10 @@ Kafka では、トピック内に*レコード*が格納されます。 レコ�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使って、リソース グループ、HDInsight、すべての関連リソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) コマンドを使って、リソース グループ、HDInsight、すべての関連リソースを削除できます。
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 > [!WARNING]  

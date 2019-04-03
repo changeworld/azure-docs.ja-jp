@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 59a84190386b554716472b4cb46c94030a66a4cb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 539357c9dcfaaffa551b4be08427a51d9e92475f
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077107"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484771"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-application-preview"></a>クイック スタート:C プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
 
@@ -61,9 +61,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このクイック スタートでは、[C 対応の Azure IoT device SDK](iot-hub-device-sdk-c-intro.md) を使用します。[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) を GitHub から複製してビルドするために使用される開発環境を準備します。 GitHub 上の SDK には、このクイック スタートで使用されるサンプル コードが含まれます。 
 
-1. [CMake ビルド システム](https://cmake.org/download/) バージョン 3.13.4 をダウンロードします。 ダウンロードしたバイナリを、対応する暗号化ハッシュ値を使用して検証します。 次の例では、Windows PowerShell を使用して、x64 MSI 配布のバージョン 3.13.4 の暗号化ハッシュを検証しています。
+1. [CMake ビルド システム](https://cmake.org/download/)をダウンロードします。 ダウンロードしたバイナリを、ダウンロードしたバージョンに対応する暗号化ハッシュ値を使用して検証します。 暗号化ハッシュ値も、既に示した CMake のダウンロード リンクの場所にあります。
 
-    ```PowerShell
+    次の例では、Windows PowerShell を使用して、x64 MSI 配布のバージョン 3.13.4 の暗号化ハッシュを検証しています。
+
+    ```powershell
     PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
     PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
     True

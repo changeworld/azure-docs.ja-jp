@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: b6717bc76caffb9c4b6f7743cc5356a80a8f742b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dca789a850e5df58024d13b8f592765e55c39485
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111856"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316951"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -129,7 +129,7 @@ Apache Storm には、Apache Kafka を操作するためのコンポーネント
     >
     > Storm クラスターの作成にこのドキュメントのテンプレートを使用しない場合は、スクリプト アクションをクラスターに手動で適用する必要があります。
     >
-    > このスクリプト アクションは `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh` にあり、Storm クラスターのスーパーバイザー ノードと Nimbus ノードに適用されます。 スクリプト アクションの使用方法の詳細については、[スクリプト アクションを使用した HDInsight のカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するドキュメントをご覧ください。
+    > このスクリプト アクションは [https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh](https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh) にあり、Storm クラスターのスーパーバイザー ノードと Nimbus ノードに適用されます。 スクリプト アクションの使用方法の詳細については、[スクリプト アクションを使用した HDInsight のカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関するドキュメントをご覧ください。
 
 これらのトポロジは、[Flux](https://storm.apache.org/releases/1.1.2/flux.html) で定義されています。 Flux は Storm 0.10.x で導入されており、これによりトポロジ構成とコードを切り離すことができます。 Flux フレームワークを使用するトポロジの場合、YAML ファイルでトポロジを定義します。 YAML ファイルはトポロジの一部として含めることができるほか、 トポロジを送信するときに使用するスタンドアロン ファイルにもなります。 Flux では実行時の変数代入もサポートされており、以下の例ではこれを使用しています。
 
