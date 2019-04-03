@@ -28,7 +28,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 -   [アプリケーション リスト](#ProductList)  
   
--   [アプリケーション](#Application)  
+-   [Application](#Application)  
   
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、「[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)」を参照してください。  
@@ -81,10 +81,9 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 |プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
-|`Paging`|[ページング](api-management-template-data-model-reference.md#Paging) エンティティ。|アプリケーション コレクションのページング情報。|  
+|`Paging`|[Paging](api-management-template-data-model-reference.md#Paging) エンティティ。|アプリケーション コレクションのページング情報。|  
 |`Applications`|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション。|現在のユーザーに表示されるアプリケーション。|  
 |`CategoryName`|文字列|アプリケーションのカテゴリ。|  
-
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
@@ -137,8 +136,8 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 }  
 ```  
   
-##  <a name="Application"></a> アプリケーション  
- **アプリケーション** テンプレートを使用すると、開発者ポータルでアプリケーション ページの本文をカスタマイズすることができます。  
+##  <a name="Application"></a> Application  
+ **Application** テンプレートを使用すると、開発者ポータルでアプリケーション ページの本文をカスタマイズすることができます。  
   
  ![Application Page Developer Portal Templates](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM Application Page Developer Portal Templates")  
   
@@ -184,7 +183,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
  `Application` テンプレートでは、[ページ コントロール](api-management-page-controls.md)は使用できません。  
   
 ### <a name="data-model"></a>データ モデル  
- [アプリケーション](api-management-template-data-model-reference.md#Application) エンティティ。  
+ [Application](api-management-template-data-model-reference.md#Application) エンティティ。  
   
 ### <a name="sample-template-data"></a>サンプル テンプレート データ  
   
