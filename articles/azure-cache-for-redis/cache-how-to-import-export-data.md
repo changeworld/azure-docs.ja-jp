@@ -123,7 +123,7 @@ Import/Export は Premium 価格レベルでのみ使用できます。
 
 ### <a name="what-rdb-versions-can-i-import"></a>RDB のどのバージョンをインポートできますか?
 
-Azure Cache for Redis は、RDB バージョン 7 以降で RDB のインポートをサポートしています。
+Azure Cache for Redis は、RDB バージョン 7 までの RDB のインポートをサポートしています。
 
 ### <a name="is-my-cache-available-during-an-importexport-operation"></a>Import/Export 操作中にキャッシュを使うことはできますか?
 * **エクスポート** - キャッシュは使用可能な状態のままです。エクスポート操作中もキャッシュの使用を続行できます。
