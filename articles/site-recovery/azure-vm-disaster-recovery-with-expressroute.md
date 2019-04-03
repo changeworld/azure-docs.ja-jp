@@ -40,7 +40,7 @@ ExpressRoute を利用すると、接続プロバイダーが提供するプラ�
 - ExpressRoute の[ルーティング ドメイン](../expressroute/expressroute-circuit-peerings.md#routingdomains)
 - ExpressRoute の[場所](../expressroute/expressroute-locations.md)。
 - Azure VM の[レプリケーション アーキテクチャ](azure-to-azure-architecture.md)
-- Azur VM の[レプリケーションを設定する](azure-to-azure-tutorial-enable-replication.md)方法。
+- Azure VM の[レプリケーションを設定する](azure-to-azure-tutorial-enable-replication.md)方法。
 - Azure VM を[フェールオーバーする](azure-to-azure-tutorial-failover-failback.md)方法。
 
 
