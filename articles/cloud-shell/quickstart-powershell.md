@@ -344,7 +344,7 @@ Cloud Shell で Git リポジトリを複製するには、[個人用アクセ�
   git clone https://<your-access-token>@github.com/username/repo.git
 ```
 
-## <a name="exit-the-shell"></a>シェルを終了します。
+## <a name="exit-the-shell"></a>シェルを終了する
 
 「`exit`」と入力してセッションを終了します。
 
