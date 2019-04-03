@@ -7,6 +7,12 @@ ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: overview
+ms.openlocfilehash: bd874ffe9293d01fced7ff6df5d329a829b7d8b4
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804836"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループでリソースを整理する
 
@@ -18,7 +24,7 @@ ms.topic: overview
 
 管理グループとサブスクリプションの柔軟な構造を作成し、リソースを階層に整理して、統一されたポリシーとアクセス管理を適用できます。 次の図は、管理グループを使用した管理のための階層を作成する例を示します。
 
-![ツリー](./media/tree.png)
+![管理グループ階層ツリーの例](./media/tree.png)
 
 階層を作成するとポリシーを適用できます。たとえば、"運用" というグループの VM の場所を米国西部リージョンに制限できます。 このポリシーは、その管理グループ下の両方の EA サブスクリプションに継承され、それらのサブスクリプションの下にあるすべての VM に適用されます。 このセキュリティ ポリシーは、ガバナンスを改善するためにリソースまたはサブスクリプションの所有者が変更することができません。
 

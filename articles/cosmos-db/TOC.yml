@@ -284,6 +284,8 @@ items:
         href: mongodb-indexing.md
       - name: Spring Data の格納と管理
         href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
+      - name: カスタム コマンドの使用
+        href: mongodb-custom-commands.md
         maintainContext: true
   - name: Gremlin API
     displayName: graph, graph database
@@ -656,9 +658,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 96160b85319ddd7e09b1ecd4e57b974608648021
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3c25662c3068dae31f5b45f44130bbcba8840a19
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876920"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805433"

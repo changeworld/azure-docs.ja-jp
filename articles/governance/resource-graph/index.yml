@@ -1,12 +1,6 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b79f900c9d1fa78c131b132975f9352c4696b201
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726908"
 documentType: LandingData
-title: Azure Resource Graph のドキュメント
+title: Azure Resource Graph サービスのドキュメント
 metadata:
   title: Azure Resource Graph のドキュメント - チュートリアル、API リファレンス
   description: Azure Resource Graph は、リソースの複雑なクエリを大規模に実行するための Azure サービスです。
@@ -20,36 +14,36 @@ metadata:
 abstract:
   description: Azure Resource Graph のドキュメントは、リソースを大規模に検索し検証するためのクエリ言語を構成および習得するのに役立ちます。
 sections:
-- title: 5 分間のクイック スタート
-  items:
-  - type: paragraph
-    text: リソース グラフを構成し、最初のクエリを実行します。
-  - type: list
-    style: icon48
+  - title: 5 分間のクイック スタート
     items:
-    - image:
-        alt: Azure CLI
-        src: ./media/cli.svg
-      text: Azure CLI
-      href: first-query-azurecli.md
-    - image:
-        alt: Azure PowerShell
-        src: ./media/powershell.svg
-      text: Azure PowerShell
-      href: first-query-powershell.md
-- title: フィードバック
-  items:
-  - type: paragraph
-    text: この機能に関するご意見やご質問をお寄せになる場合は、Azure portal の <b>Azure Policy</b> から<b>リソース グラフ (プレビュー)</b> のページにアクセスして、[フィードバック] をクリックしてください。 <a href="https://feedback.azure.com/forums/915958-azure-governance">UserVoice</a> からご提案を送信していただくことも可能です。
-- title: リファレンス
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: リソース グラフを構成し、最初のクエリを実行します。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: Azure CLI
+              src: ./media/cli.svg
+            text: Azure CLI
+            href: first-query-azurecli.md
+          - image:
+              alt: Azure PowerShell
+              src: ./media/powershell.svg
+            text: Azure PowerShell
+            href: first-query-powershell.md
+  - title: フィードバック
     items:
-    - title: コマンド ライン
-      html: <p><a href="/cli/azure/ext/resource-graph/graph">Azure CLI</a></p><p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">Azure SDK for .NET</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">Azure SDK for Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/azureresourcegraph/resources/resources">API リファレンス</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview (OpenAPI)</a></p>
+      - type: paragraph
+        text: 'この機能に関するご意見やご質問をお寄せになる場合は、Azure portal の <b>Azure Policy</b> から<b>リソース グラフ (プレビュー)</b> のページにアクセスして、[フィードバック] をクリックしてください。 <a href="https://feedback.azure.com/forums/915958-azure-governance">UserVoice</a> からご提案を送信していただくことも可能です。'
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: コマンド ライン
+            html: <p><a href="/cli/azure/ext/resource-graph/graph">Azure CLI</a></p><p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
+          - title: Languages
+            html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">Azure SDK for .NET</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">Azure SDK for Python</a></p>
+          - title: REST
+            html: '<p><a href="/rest/api/azureresourcegraph/resources/resources">API リファレンス</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview (OpenAPI)</a></p>'
