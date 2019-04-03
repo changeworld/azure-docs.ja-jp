@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39a5ef9d929899ac5e66c5a0e342040fc3c5074b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b294163a4486ab1db0590f39ca9235ae46ef1dfe
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194820"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286994"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート: Azure Active Directory で新しいテナントを作成する
 Azure Active Directory (Azure AD) ポータルを使用して、組織の新しいテナントの作成など、すべての管理タスクを実行できます。 
@@ -29,7 +29,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 全体管理者アカウントを使用して、組織の [Azure portal](https://portal.azure.com/) にサインインします。
 
-![Azure portal 画面](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+![Azure AD オプションを含む Azure portal 画面](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>組織の新しいテナントを作成する
 Azure portal にサインインすると、組織の新しいテナントを作成できます。 新しいテナントは組織を表し、社内外のユーザー向けに特定インスタンスの Microsoft クラウド サービスを管理するために役立ちます。
@@ -60,7 +60,7 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 
     テナントとその関連情報は削除されます。
 
-    ![[ディレクトリの作成] ページ](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
+    ![サンプル情報を含む [ディレクトリの作成] ページ](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
 
 ## <a name="next-steps"></a>次の手順
 - 追加のドメイン名を変更または追加する方法については、[Azure Active Directory にカスタム ドメイン名を追加する方法](add-custom-domain.md)に関するページを参照してください。

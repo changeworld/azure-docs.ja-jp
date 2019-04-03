@@ -8,18 +8,20 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/15/2019
+ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 0231b67ee56de5e1729c02ed3d87b2461f025b84
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: a737413f6692b4ee811d0590351a385552cc9a8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085577"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-nodejs-proxy-application-preview"></a>クイック スタート:Node.js プロキシ アプリケーションを使用した IoT Hub デバイス ストリーム経由の SSH または RDP (プレビュー)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
+
+Microsoft Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)としてデバイス ストリームをサポートしています。
 
 [IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイック スタート ガイドでは、SSH および RDP トラフィックをデバイス ストリームを介してデバイスに送信できるようにするためのサービス側での Node.js プロキシ アプリケーションの実行について説明します。 設定の概要については、[こちら](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)を参照してください。 パブリック プレビュー中、Node.js SDK ではサービス側のデバイス ストリームのみがサポートされます。 そのため、このクイック スタート ガイドでは、サービスローカルのプロキシを実行する手順についてのみ説明しています。 対応するサービスローカルのプロキシも実行する必要があり、それについては [C クイック スタート](./quickstart-device-streams-proxy-c.md)または [C# クイック スタート](./quickstart-device-streams-proxy-csharp.md)のガイドに記載されています。
 
@@ -32,6 +34,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 
 ## <a name="prerequisites"></a>前提条件
+
+デバイス ストリームのプレビューは現在、次のリージョンで作成された IoT Hub に対してのみサポートされています。
+
+  - **米国中部**
+  - **米国中部 EUAP**
 
 このクイック スタートのサービスローカルのアプリケーションを実行するには、開発用マシンに Node.js v4.x.x 以降が必要です。
 
@@ -75,7 +82,7 @@ node --version
     **YourIoTHubName**:このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --hub-name YourIoTHubName
+    az iot hub show-connection-string --policy-name service --name YourIoTHubName
     ```
 
     次のような戻り値をメモしておきます。
@@ -95,7 +102,7 @@ node --version
 [デバイスローカルのプロキシ](#run-the-device-local-proxy)が実行されているとして、Node.js で記述されたサービスローカルのプロキシを実行するには、次の手順に従います。
 
 - サービス資格情報、SSH デーモンが実行されているターゲット デバイスの ID、およびデバイスで実行されているプロキシのポート番号を、環境変数として指定します。
-```
+  ```
   # In Linux
   export IOTHUB_CONNECTION_STRING="<provide_your_service_connection_string>"
   export STREAMING_TARGET_DEVICE="MyDevice"
@@ -105,11 +112,11 @@ node --version
   SET IOTHUB_CONNECTION_STRING=<provide_your_service_connection_string>
   SET STREAMING_TARGET_DEVICE=MyDevice
   SET PROXY_PORT=2222
-```
-実際のデバイス ID と接続文字列に合わせて上記の値を変更します。
+  ```
+  実際のデバイス ID と接続文字列に合わせて上記の値を変更します。
 
 - 解凍したプロジェクト フォルダーの `Quickstarts/device-streams-service` に移動し、サービスローカルのプロキシを実行します。
-```
+  ```
   cd azure-iot-samples-node-streams-preview/iot-hub/Quickstarts/device-streams-service
 
   # Install the preview service SDK, and other dependencies
@@ -118,7 +125,7 @@ node --version
 
   # Run the service-local proxy application
   node proxy.js
-```
+  ```
 
 ### <a name="ssh-to-your-device-via-device-streams"></a>デバイス ストリームを介したデバイスへの SSH 接続
 Linux では、ターミナルで `ssh $USER@localhost -p 2222` を使用して SSH を実行します。 Windows では、任意の SSH クライアント (PuTTY など) を使用します。

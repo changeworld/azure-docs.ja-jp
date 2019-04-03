@@ -6,14 +6,14 @@ author: dineshmurthy
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 03/11/2019
 ms.author: dineshm
-ms.openlocfilehash: 14e8d54b7b9cf579bb5dcbce595e2591c158b841
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 7f712bcf3e82005480d4960484cb0ea3ad51fbff
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585432"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226761"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 のデータにアクセスする
 
@@ -32,22 +32,22 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * Azure Data Lake Storage Gen2 アカウントを作成します。
 
-  [Azure Data Lake Storage Gen2 アカウントの作成](data-lake-storage-quickstart-create-account.md)に関するページを参照してください。
+  「[Azure Data Lake Storage Gen2 アカウントを作成する](data-lake-storage-quickstart-create-account.md)」を参照してください。
 
 * ユーザー アカウントに[ストレージ BLOB データ共同作成者ロール](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac)が割り当てられていることを確認します。
 
 * AzCopy v10 をインストールします。 [AzCopy v10 を使用したデータ転送](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
 
-*  サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+* サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
 
-   この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
+  この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
-   :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
+  :heavy_check_mark:記事の「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)」セクションの手順を実行するときに、必ず**ストレージ BLOB データ共同作成者**ロールをサービス プリンシパルに割り当ててください。
 
-   > [!IMPORTANT]
-   > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当てるようにしてください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
+  > [!IMPORTANT]
+  > Data Lake Storage Gen2 ストレージ アカウントの範囲内のロールを割り当てるようにしてください。 親リソース グループまたはサブスクリプションにロールを割り当てることはできますが、それらのロール割り当てがストレージ アカウントに伝達されるまで、アクセス許可関連のエラーが発生します。
 
-   :heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
+  :heavy_check_mark:記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を実行するとき、テナント ID、アプリケーション ID、および認証キーの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
 
 ### <a name="download-the-flight-data"></a>フライト データのダウンロード
 
@@ -71,7 +71,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 2. **[Azure Databricks サービス]** で次の値を指定して、Databricks サービスを作成します。
 
-    |プロパティ  |[説明]  |
+    |プロパティ  |説明  |
     |---------|---------|
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します。  |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
@@ -147,12 +147,12 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
    * `storage-account-name` は、Azure Data Lake Storage Gen2 ストレージ アカウントの名前です。
 
-    > [!NOTE]
-    > 運用設定では、認証キーを Azure Databricks に格納することを検討してください。 次に、認証キーではなくルック アップ キーをコード ブロックに追加します。 このクイック スタートの完了後、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」で、このアプローチの例を参照してください。
+   > [!NOTE]
+   > 運用設定では、認証キーを Azure Databricks に格納することを検討してください。 次に、認証キーではなくルック アップ キーをコード ブロックに追加します。 このクイック スタートの完了後、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」で、このアプローチの例を参照してください。
 
 19. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 
-    このノートブックは開いたままにしておいてください。後でコマンドを追加します。
+   このノートブックは開いたままにしておいてください。後でコマンドを追加します。
 
 ## <a name="ingest-data"></a>データの取り込み
 
@@ -171,9 +171,10 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
 2. *.csv* アカウントからデータをコピーするには、次のコマンドを入力します。
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
    ```
-   * プレースホルダー `<csv-folder-path>` の値を、*.csv* ファイルが格納されているディレクトリのパス (ファイルの名前を除く) に置き換えます。
+
+   * プレースホルダー `<csv-folder-path>` の値は、*.csv* ファイルへのパスに置き換えます。
 
    * `storage-account-name` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
@@ -181,28 +182,28 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
 
 ### <a name="use-databricks-notebook-to-convert-csv-to-parquet"></a>Databricks Notebook を使用して CSV を Parquet に変換する
 
-前もって作成しておいたノートブックに新しいセルを追加し、そこに次のコードを貼り付けます。 このコード スニペット内のプレースホルダー `storage-account-name` の値は、CSV ファイルの保存先フォルダーの名前に置き換えてください。
+前もって作成しておいたノートブックに新しいセルを追加し、そこに次のコードを貼り付けます。 
 
 ```python
 # Use the previously established DBFS mount point to read the data.
 # create a data frame to read data.
 
-flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/*.csv")
+flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/*.csv")
 
 # read the airline csv file and write the output to parquet format for easy query.
- flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
- print("Done")
- ```
+flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
+print("Done")
+```
 
 ## <a name="explore-data"></a>データを調査する
 
-AzCopy 経由でアップロードされた CSV ファイルの一覧を取得するために、次のコードを新しいセルに貼り付けます。 プレースホルダー `<csv-folder-path>` の値は、先ほど使用したプレースホルダーと同じ値に置き換えてください。
+AzCopy 経由でアップロードされた CSV ファイルの一覧を取得するために、次のコードを新しいセルに貼り付けます。
 
 ```python
 import os.path
 import IPython
 from pyspark.sql import SQLContext
-display(dbutils.fs.ls("/mnt/flightdata/On_Time/<your-folder-name>"))
+display(dbutils.fs.ls("/mnt/flightdata"))
 ```
 
 新しいファイルを作成して *parquet/flights* フォルダー内のファイルの一覧を作成するには、次のスクリプトを実行します。
@@ -220,13 +221,11 @@ dbutils.fs.ls("/mnt/flightdata/parquet/flights")
 
 データ ソースのデータフレームを作成するには、次のスクリプトを実行します。
 
-* プレースホルダー `<csv-folder-path>` の値を、*.csv* ファイルが格納されているディレクトリのパス (ファイルの名前を除く) に置き換えます。
-
-* プレースホルダー `<your-csv-file-name` の値は、実際の *CSV* ファイルの名前に置き換えます。
+* プレースホルダー `<csv-folder-path>` の値は、*.csv* ファイルへのパスに置き換えます。
 
 ```python
 #Copy this into a Cmd cell in your notebook.
-acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/<your-csv-file-name>.csv")
+acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time.csv")
 acDF.write.parquet('/mnt/flightdata/parquet/airlinecodes')
 
 #read the existing parquet file for the flights database that was created earlier
@@ -285,5 +284,5 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 ## <a name="next-steps"></a>次の手順
 
-[!div class="nextstepaction"] 
+> [!div class="nextstepaction"] 
 > [Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う](data-lake-storage-tutorial-extract-transform-load-hive.md)

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: aahi
-ms.openlocfilehash: 6462e48e2edb662c9968a9e22e431638a054e98b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 70f95ca83e225d7fe66875907afb1f829a2c896b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326274"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189089"
 ---
 # <a name="quickstart-using-java-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Java を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
@@ -28,7 +28,7 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。 
+また、サインアップ時に生成される[エンドポイントとアクセス キー](../How-tos/text-analytics-how-to-access-key.md)が必要です。
 
 <a name="Detect"></a>
 
@@ -36,11 +36,12 @@ API の技術ドキュメントについては、[API の定義](//go.microsoft.
 
 言語検出 API では、 [言語検出メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)を使用してテキスト ドキュメントの言語を検出します。
 
-1. 適切な IDE で新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 `DetectLanguage.java` という名前のクラスを作成します。
+1. そのクラスに次のコードを追加します。
+1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
+1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
+1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
 ```java
 import java.io.*;
@@ -59,6 +60,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (DetectLanguage.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac DetectLanguage.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar DetectLanguage
  */
@@ -107,7 +109,7 @@ public class DetectLanguage {
     static String host = "https://westus.api.cognitive.microsoft.com";
 
     static String path = "/text/analytics/v2.0/languages";
-    
+
     public static String GetLanguage (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
@@ -160,7 +162,7 @@ public class DetectLanguage {
 }
 ```
 
-**言語検出の応答**
+### <a name="language-detection-response"></a>言語検出の応答
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -208,13 +210,14 @@ public class DetectLanguage {
 
 ## <a name="analyze-sentiment"></a>センチメントを分析する
 
-感情分析 API では、[Sentiment メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)を使用して、テキスト レコードのセットのセンチメントを検出します。 次の例では、英語とスペイン語で書かれた 2 つのドキュメントをスコア付けします。
+Sentiment Analysis API では、[Sentiment メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 センチメント分析を使用すると、肯定的または否定的な感情の手掛かりを探して未加工のテキストを分析することで、ブランドまたはトピックに対して顧客がどう思っているのかを突き止めることができます。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
 
-1. 適当な IDE で新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. `uriBase` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetSentiment.java` という名前のクラスを作成します。
+1. そのクラスに次のコードを追加します。
+1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
+1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
+1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
 ```java
 import java.io.*;
@@ -233,6 +236,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (GetSentiment.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac GetSentiment.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar GetSentiment
  */
@@ -283,7 +287,7 @@ public class GetSentiment {
 
     static String path = "/text/analytics/v2.0/sentiment";
     
-    public static String GetSentiment (Documents documents) throws Exception {
+    public static String getTheSentiment (Documents documents) throws Exception {
         String text = new Gson().toJson(documents);
         byte[] encoded_text = text.getBytes("UTF-8");
 
@@ -324,7 +328,7 @@ public class GetSentiment {
             documents.add ("1", "en", "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.");
             documents.add ("2", "es", "Este ha sido un dia terrible, llegué tarde al trabajo debido a un accidente automobilistico.");
 
-            String response = GetSentiment (documents);
+            String response = getTheSentiment (documents);
             System.out.println (prettify (response));
         }
         catch (Exception e) {
@@ -333,9 +337,11 @@ public class GetSentiment {
     }
 }
 ```
-**センチメント分析の応答**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+### <a name="sentiment-analysis-response"></a>センチメント分析の応答
+
+結果は、スコアが 1.0 に近いほど肯定的と評価され、0.0 に近いほど否定的と評価されます。
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -357,13 +363,14 @@ public class GetSentiment {
 
 ## <a name="extract-key-phrases"></a>キー フレーズを抽出する
 
-Key Phrase Extraction API では、[Key Phrases メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 次の例では、英語とスペイン語の両方のドキュメントのキー フレーズを抽出します。
+Key Phrase Extraction API では、[Key Phrases メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 キー フレーズ抽出は、ドキュメントまたはテキストの要点をすばやく突き止める目的で使用されます。 次の例では、英語とスペイン語、両方のドキュメントのキー フレーズを抽出しています。
 
-1. 適当な IDE で新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. `uriBase` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetKeyPhrases.java` というクラスを作成します。
+1. そのクラスに次のコードを追加します。
+1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
+1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
+1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
 ```java
 import java.io.*;
@@ -382,6 +389,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (GetKeyPhrases.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac GetKeyPhrases.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar GetKeyPhrases
  */
@@ -483,9 +491,10 @@ public class GetKeyPhrases {
     }
 }
 ```
-**キー フレーズ抽出の応答**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+### <a name="key-phrase-extraction-response"></a>キー フレーズ抽出の応答
+
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -526,13 +535,14 @@ public class GetKeyPhrases {
 
 ## <a name="identify-entities"></a>エンティティの識別
 
-Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 次の例では、英語のドキュメントのエンティティを識別しています。
+Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 [Entities](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) は、テキストから "United States" などの単語を抽出して、その種類や Wikipedia リンクを返します。 "United States" の種類は `location` で、Wikipedia のリンクは `https://en.wikipedia.org/wiki/United_States` です。  次の例では、英語のドキュメントのエンティティを識別しています。
 
-1. 適当な IDE で新しい Java プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. `uriBase` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
-5. プログラムを実行します。
+1. 任意の IDE で新しい Java プロジェクトを作成するか、新しいフォルダーをデスクトップに作成します。 そこに `GetEntities.java` という名前のクラスを作成します。
+1. そのクラスに次のコードを追加します。
+1. `accessKey` の値は、[Azure](https://ms.portal.azure.com) の Text Analytics サブスクリプションのキーに置き換えてください。
+1. `host` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+1. [Gson](https://github.com/google/gson) ライブラリがインストールされていることを確認します。
+1. お使いの IDE でプログラムを実行するか、またはコマンド ラインを使用して実行します (コード コメント内の指示を参照)。
 
 ```java
 import java.io.*;
@@ -551,6 +561,7 @@ import javax.net.ssl.HttpsURLConnection;
  * same folder as this file (GetEntities.java), you can compile and run this program at
  * the command line as follows.
  *
+ * Execute the following two commands to build and run (change gson version if needed):
  * javac GetEntities.java -classpath .;gson-2.8.1.jar -encoding UTF-8
  * java -cp .;gson-2.8.1.jar GetEntities
  */
@@ -651,9 +662,10 @@ public class GetEntities {
     }
 }
 ```
-**エンティティ抽出の応答**
 
-成功した応答は、次の例に示すように JSON で返されます。 
+### <a name="entity-extraction-response"></a>エンティティ抽出の応答
+
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
@@ -816,7 +828,7 @@ public class GetEntities {
 > [!div class="nextstepaction"]
 > [Text Analytics と Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>関連項目
 
  [Text Analytics の概要](../overview.md)  
  [よく寄せられる質問 (FAQ)](../text-analytics-resource-faq.md)

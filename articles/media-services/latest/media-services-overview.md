@@ -13,19 +13,22 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 018392db2ffb510d41385d8e0af19635c35678e6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 88113fee64251344bd84085caedc9dfccfa10933
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003407"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351458"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Azure Media Services v3 の概要
 
 クラウドベースのプラットフォームである Azure Media Services では、ブロードキャスト品質のビデオ ストリーミングを実現し、アクセス性と配信を強化し、コンテンツを分析するソリューションを構築できます。 アプリケーション開発者、コール センター、政府機関、エンターテイメント会社のいずれであっても、Media Services を利用すると、今日の最も一般的なモバイル デバイスとブラウザーの多くのユーザーに、優れた品質のメディア エクスペリエンスを提供するアプリケーションを作成できます。 
+
+> [!NOTE]
+> 現時点では、Azure portal を使用して v3 リソースを管理することはできません。 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref)、サポートされている [SDK](developers-guide.md) のいずれかを使用します。
 
 ## <a name="what-can-i-do-with-media-services"></a>Media Services の機能
 
@@ -74,24 +77,11 @@ v3 API の主要な設計原則の 1 つは、API の安全性の向上です。
 
 [.NET を使用してコンテンツ キー ポリシーを取得する方法](get-content-key-policy-dotnet-howto.md)の例を参照してください。
 
-## <a name="how-can-i-get-started-with-v3"></a>v3 の利用を始める方法
-
-各種のツールと SDK を使用して Media Services v3 API での開発を始める方法については、[開発の開始](developers-guide.md)に関する記事をご覧ください。
-
-## <a name="v3-content-map"></a>v3 のコンテンツ マップ
-
-Media Services v3 のコンテンツは、次の構造に従って編成されています (目次にも反映されています)。
-
-|セクション| 説明|
-|---|---|
-| 概要 | Media Services の機能と、サービスでできることについて説明します。|
-| クイック スタート | 新しいお客様が Media Services を簡単に試すことができるよう、基礎について 1 日で説明します。|
-| チュートリアル | Media Services でよく行われるタスクについて、シナリオ ベースで手順を示します。|
-| サンプル | コード サンプルへのリンクを示します。 |
-| 概念 | [Media Services v3 の概念と機能](concepts-overview.md)についての詳しい説明が含まれます。 開発を始める前に、これらのトピックで説明されている基本的な概念を確認する必要があります。<br/><br/>* クラウドのアップロードとストレージ<br/>* エンコード<br/>* メディア分析<br/>* パッケージ化、デリバリー、保護<br/>* ライブ ストリーミング<br/>* 監視<br/>* Player クライアント<br/><br/>その他にも用途はあります。 |
-| ハウツー ガイド | タスクを完了する方法を示します。|
-
 ## <a name="next-steps"></a>次の手順
 
-ビデオ ファイルのエンコードおよびストリーミングを簡単に始める方法については、[ファイルのストリーム配信](stream-files-dotnet-quickstart.md)に関するページをご覧ください。 
+v3 の利用を始める方法 
+
+> [!div class="nextstepaction"]
+> [基本的な概念を理解する](concepts-overview.md)<br/>
+> [Media Services v3 API と SDK を使用して開発する](developers-guide.md) 
 

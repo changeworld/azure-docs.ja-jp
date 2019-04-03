@@ -18,6 +18,9 @@ items:
       href: install-jenkins-solution-template.md
   - name: 2. 構成
     items:
+    - name: Azure Container Instances でのスケーリング
+      href: /azure/container-instances/container-instances-jenkins
+      maintainContext: true
     - name: Azure VM エージェントでのスケーリング
       href: jenkins-azure-vm-agents.md
   - name: 3. CI/CD の実装
@@ -35,9 +38,6 @@ items:
         href: execute-cli-jenkins-pipeline.md
       - name: GitHub から App Service へのアプリのデプロイ
         href: tutorial-jenkins-deploy-web-app-azure-app-service.md
-    - name: Azure Container Instances を使用したビルド
-      href: /azure/container-instances/container-instances-jenkins
-      maintainContext: true
     - name: Azure DevOps での Jenkins の使用
       href: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins
       maintainContext: true
@@ -73,9 +73,9 @@ items:
   - name: Jenkins アーキテクチャ
     href: /azure/architecture/reference-architectures/jenkins/
     maintainContext: true
-ms.openlocfilehash: 2cfd843c0a7fc11a98d2450cc5ec499cdc1f580e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: c83891a0037f009d539f2d1101697a554f478b1d
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438682"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621364"

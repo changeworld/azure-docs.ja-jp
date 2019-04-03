@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: a5a1a264-7497-47e7-b129-a1b5b1ebff5b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74cc66119eeb82eeb5448a14f2f1762822a9bc80
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0efc69aa7fb081303df6fc6327253fd5b8336999
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876570"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>チュートリアル:Azure Active Directory と ServiceNow の統合
 
@@ -156,7 +156,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
      ![プラグインをアクティブにする](./media/servicenow-tutorial/tutorial_activate.png "プラグインをアクティブにする")
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Activate (アクティブ化)]** ボタンをクリックします。
+    d. **[Activate (アクティブ化)]** ボタンをクリックします。
 
      ![プラグインをアクティブにする](./media/servicenow-tutorial/tutorial_activate1.png "プラグインをアクティブにする")
 
@@ -360,7 +360,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     c. **[Format]** で **[PEM]** を選択します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Type]** で **[Trust Store Cert]** を選択します。
+    d. **[Type]** で **[Trust Store Cert]** を選択します。
 
     e. Azure Portal からダウンロードした Base64 エンコードの証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[PEM Certificate]** ボックスに貼り付けます。
 
@@ -380,7 +380,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     c. **[Identity Provider's AuthnRequest]\(ID プロバイダーの AuthnRequest\)** フィールドに、Azure Portal からコピーした**認証要求 URL** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Identity Provider's SingleLogoutRequest]\(ID プロバイダーの SingleLogoutRequest\)** フィールドに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます
+    d. **[Identity Provider's SingleLogoutRequest]\(ID プロバイダーの SingleLogoutRequest\)** フィールドに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます
 
     e. **[Identity Provider Certificate (ID プロバイダー証明書)]** で、前の手順で作成した証明書を選択します。
 
@@ -394,7 +394,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     c. **[AuthnContextClassRef Method (AuthnContextClassRef メソッド)]** に「`http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password`」と入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Create an AuthnContextClass]** をオフにします。
+    d. **[Create an AuthnContextClass]** をオフにします。
 
 9. **[Additional Service Provider Properties (追加のサービス プロバイダーのプロパティ)]** で、次の手順に従います。
 
@@ -409,7 +409,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     c. **[Audience URI (対象ユーザー URI)]** ボックスに、ServiceNow テナントの URL を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Clock Skew]** ボックスに「**60**」と入力します。
+    d. **[Clock Skew]** ボックスに「**60**」と入力します。
 
     e. ServiceNow のデプロイでユーザーを一意に識別するためのフィールドに応じて、**[User Field]** ボックスに「**email**」または「**user_id**」と入力します。
 
@@ -436,7 +436,7 @@ ServiceNow で Azure AD シングル サインオンを構成するには、次�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 39877e01eb8b9690dc1ac7b1dbb79bab450814c4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7511b85384c2c64c823d93df4369b0fea3e64b51
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456930"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226217"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ
 
@@ -148,13 +148,13 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
 1. SQL Server Management Studio を使用して、Azure AD サーバー プリンシパル (ログイン) でマネージド インスタンスに接続します。 マネージド インスタンスのホスト名を入力します。 SSMS での認証の場合、Azure AD アカウントを使ってログインするときに選択できるオプションは 3 つあります。
 
-    - Active Directory - MFA サポートで汎用
-    - Active Directory - パスワード
-    - Active Directory - 統合 </br>
+   - Active Directory - MFA サポートで汎用
+   - Active Directory - パスワード
+   - Active Directory - 統合 </br>
 
-    ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
+     ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
 
-    詳細については、次の記事を参照してください。[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)
+     詳細については、次の記事を参照してください。[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)
 
 1. **[Active Directory - MFA サポートで汎用]** を選択します。 これで、Multi-Factor Authentication (MFA) のログイン ウィンドウが表示されます。 Azure AD のパスワードを使ってサインインします。
 
@@ -207,10 +207,10 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、新しい接続に **[新しいクエリ]** を選択します。
 1. 次のコマンドを実行して、新しく作成した Azure AD サーバー プリンシパル (ログイン) のサーバー アクセス許可を確認します。
 
-    ```sql
-    SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
-    GO
-    ```
+      ```sql
+      SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
+      GO
+      ```
 
 > [!NOTE]
 > Azure AD のゲスト ユーザーは、Azure AD グループの一員として追加されている場合のみ、マネージド インスタンスのログインがサポートされます。 Azure AD のゲスト ユーザーは、マネージド インスタンスが属している Azure AD に別の Azure AD から招待されるアカウントです。 たとえば、joe@contoso.com (Azure AD アカウント) または steve@outlook.com (MSA アカウント) は、Azure AD aadsqlmi 内のグループに追加できます。 ユーザーがグループに追加されると、**CREATE LOGIN** 構文を使用して、そのグループのマネージド インスタンス **master** データベースにログインを作成できます。 このグループのメンバーであるゲスト ユーザーは、現在のログイン (joe@contoso.com や steve@outlook.com など) を使用してマネージド インスタンスに接続できます。
@@ -360,7 +360,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
     GO
     ```
 
-1. 次のコマンドを使用して、このストアド プロシージャの実行時に偽装しているユーザーが **bob@aadsqlmi.net** であることを確認します。
+1. 次のコマンドを使用して、このストアド プロシージャの実行時に偽装しているユーザーが **bob\@aadsqlmi.net** であることを確認します。
 
     ```sql
     Exec dbo.usp_Demo

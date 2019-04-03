@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 687f99fb6447eddb4ce10ce81bc349181ec5c48c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094754"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339491"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Azure Availability Zones での SAP ワークロードの構成
 [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) は、Azure で提供されている高可用性機能の 1 つです。 Availability Zones により、Azure での SAP ワークロードの全体的な可用性が向上します。 この機能は、既に一部の[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)で利用可能になっています。 今後、さらに多くのリージョンで利用できるようになります。
@@ -93,7 +93,7 @@ Availability Zones を使用する方法を決定する前に、次の事項を�
 > 前述の測定は、[Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) をサポートするすべての Azure リージョンで異なる結果になることが予想されます。 ネットワーク待ち時間の要件が同じでも、ゾーン間でネットワーク待ち時間が異なる可能性があるため、異なる Azure リージョンでは異なるデプロイ戦略の採用が必要になる場合があります。 一部の Azure リージョンでは、3 つの異なるゾーン間のネットワーク待ち時間が大きく異なる可能性があります。 他のリージョンでは、3 つの異なるゾーン間のネットワーク待ち時間がより均一になる可能性があります。 常に 1 ～ 2 ミリ秒のネットワーク待ち時間があるという主張は正しくありません。 Azure リージョン内の Availability Zones 間のネットワーク待ち時間を一般化することはできません。
 
 ## <a name="activeactive-deployment"></a>アクティブ/アクティブのデプロイ
-このデプロイ アーキテクチャがアクティブ/アクティブと呼ばれるのは、2 つまたは 3 つのゾーンにアクティブな SAP ダイアログ インスタンスをデプロイするためです。 エンキュー レプリケーションを使用する SAP セントラル サービス インスタンスは、2 つのゾーン間にデプロイされます。 DBMS レイヤーについても同じで、SAP セントラル サービスと同じゾーンにデプロイされます。
+このデプロイ アーキテクチャがアクティブ/アクティブと呼ばれるのは、2 つまたは 3 つのゾーンにアクティブな SAP アプリケーション サーバーをデプロイするためです。 エンキュー レプリケーションを使用する SAP セントラル サービス インスタンスは、2 つのゾーン間にデプロイされます。 DBMS レイヤーについても同じで、SAP セントラル サービスと同じゾーンにデプロイされます。
 
 この構成を検討する際は、リージョン内で、ワークロードと同期 DBMS レプリケーションについて許容されるゾーン間のネットワーク待ち時間を提供する 2 つの Availability Zones を見つける必要があります。 また、選択したゾーン内のネットワーク待ち時間とゾーン間のネットワーク待ち時間の差が、大きすぎないようにする必要があります。 これは、ジョブが DBMS サーバーを含むゾーン内で実行されているか、ゾーンをまたいで実行されているかによって、ビジネス プロセスやバッチ ジョブの実行時間の変動率があまり大きくならないようにするためです。 ある程度の変動は許容されますが、相違の要因ではありません。
 

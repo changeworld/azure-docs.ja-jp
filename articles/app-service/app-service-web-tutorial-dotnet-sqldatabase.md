@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ffa6e44a4be8813b74dc707f161bd5c17f72f350
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 59b390776a5e23c08d8793125747742cee4e473e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720052"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487025"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>チュートリアル:SQL Database を使用して Azure に ASP.NET アプリを作成する
 
@@ -227,19 +227,19 @@ public bool Done { get; set; }
 
 [パッケージ マネージャー コンソール] ウィンドウで、Code First Migrations を有効にします。
 
-```PowerShell
+```powershell
 Enable-Migrations
 ```
 
 移行を追加します。
 
-```PowerShell
+```powershell
 Add-Migration AddProperty
 ```
 
 ローカル データベースを更新します。
 
-```PowerShell
+```powershell
 Update-Database
 ```
 
@@ -362,7 +362,7 @@ Azure アプリを右クリックし、**[ストリーミング ログの表示]
 
 トレース レベルを変更して別のトレース メッセージを出力するには、**サーバー エクスプローラー**に戻ります。
 
-Azure アプリを再度右クリックし、**[設定の表示]** を選択します。
+Azure アプリを再度右クリックし、**[表示の設定]** を選択します。
 
 **[Application Logging (File System) (アプリケーションのログ記録 (ファイル システム))]** ボックスの一覧の **[詳細]** をクリックします。 **[Save]** をクリックします。
 

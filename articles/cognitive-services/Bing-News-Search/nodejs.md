@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 287a82292994a629bde8255321c7f603fdf00b67
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 86c00242d2d7dbb9441b09dc327e4ee8cbbd729b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869281"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099969"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>クイック スタート:Node.js と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -184,4 +184,4 @@ ms.locfileid: "55869281"
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-[単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)
+> [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

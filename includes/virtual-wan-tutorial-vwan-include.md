@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/27/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ea1b40b033a862bc4ed5db67a68e4fa7e97f3cad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 485a386210458d57b87aaa0537b1c58a6adab2c7
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124557"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58342726"
 ---
 1. **[すべてのサービス]** に移動して仮想 WAN を検索することで、仮想 WAN を見つけることができます。 または、Azure portal の上部にある検索ボックスで仮想 WAN を検索できます。 **[仮想 WAN]** をクリックしてページを開きます。
 2. **[+ 追加]** をクリックして **[WAN の作成]** ページを開きます。
-3. [WAN の作成] ページで、次のフィールドに入力します。
+3. **[WAN の作成]** ページで、次のフィールドに入力します。
 
    * **[名前]** - WAN に付ける名前を選択します。
    * **[サブスクリプション]** - 使用するサブスクリプションを選択します。

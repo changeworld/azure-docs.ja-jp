@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: d4587b5268635691d55b51a7bf88bbe01df2a0c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 06b2a5211c720d50a2f14e5fa56fa296cb80d41f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871647"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519631"
 ---
 # <a name="what-are-the-speech-services"></a>Speech Service とは
 
@@ -39,9 +39,9 @@ Azure Speech Services は次の機能で構成されています。 各機能の
 
 Azure Speech Services の新機能について説明します。
 
+* 2019 年 3 月 - 特定のリージョンで利用可能な音声の完全なリストを返す、テキスト読み上げの新しいエンドポイントが利用可能になりました。 詳細については、[テキスト読み上げ API リファレンス (REST)](rest-text-to-speech.md) のページを参照してください。
 * 2019年 2 月 - [Unity (ベータ)](quickstart-csharp-unity.md) をサポートする Speech SDK 1.3.0 がリリースされました。 `AudioInput` クラスのサポートが追加されました。このクラスでは、オーディオのストリーミング ソースを選択できます。 拡張機能と既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」をご覧ください。
 * 2018年 12 月 - [Python](quickstart-python.md)、[Node.js](quickstart-js-node.md)、および Ubuntu 18.04 LTS をサポートする Speech SDK 1.2.0 がリリースされました。 詳しくは、「[リリース ノート](releasenotes.md)」をご覧ください。
-* 2018年 12 月 - [.NET Core](quickstart-dotnet-text-to-speech.md)、[Python](quickstart-python-text-to-speech.md)、[Node.js](quickstart-nodejs-text-to-speech.md) 向けのテキスト読み上げクイック スタートが追加されました。 その他のサンプルは、[GitHub](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http) で入手できます。
 
 ## <a name="try-speech-services"></a>Speech Services を試してみる
 

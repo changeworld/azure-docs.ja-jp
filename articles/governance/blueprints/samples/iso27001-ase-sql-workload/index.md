@@ -1,5 +1,5 @@
 ---
-title: サンプル - ISO 27001 App Service Environment/SQL Database ワークロード ブループリント - 概要
+title: サンプル - ISO 27001 ASE/SQL ワークロード ブループリント - 概要
 description: ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルの概要とアーキテクチャ
 services: blueprints
 author: DCtheGeek
@@ -8,8 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
+ms.openlocfilehash: b4bd8d3ed18a5b30871fc5e61636104f3eb5a770
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802730"
 ---
-# <a name="overview-of-the-azure-blueprints-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Azure Blueprints ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルの概要
+# <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルの概要。
 
 ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルでは、[ISO 27001 共有サービス](../iso27001-shared/index.md) ブループリント サンプルへの追加のインフラストラクチャが提供されます。
 このブループリントにより、お客様は、認定またはコンプライアンスの要件があるシナリオにソリューションを提供するクラウド ベースのアーキテクチャをデプロイできます。
@@ -23,7 +29,7 @@ ISO 27001 App Service Environment/SQL Database ワークロード ブループ�
 
 ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルにより、サービスとしてのプラットフォーム ベースの Web 環境がデプロイされます。 環境は、複数の Web アプリケーション、Web API、および ISO 27001 標準に準拠した SQL Database インスタンスをホストするために使用できます。 このブルー プリントのサンプルは、[ISO 27001 共有サービス](../iso27001-shared/index.md) ブルー プリント サンプルに依存します。
 
-![ISO 27001 App Service Environment/SQL Database ワークロード ブループリントのサンプル設計](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
+![ISO 27001 ASE/SQL ワークロード ブループリント サンプルの設計](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
 
 この環境は、ISO 27001 標準に基づいたセキュリティで保護された、完全に監視されたエンタープライズ対応のワークロード インフラストラクチャを提供するために使用される複数の Azure サービスで構成されます。 この環境は、以下で構成されています。
 

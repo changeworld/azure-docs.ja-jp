@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2016
 ms.author: kasing
-ms.openlocfilehash: 77b575de3a84d582c11fb31952120e1079e23ffb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 89739aa51748e7bc69fc42b8b745994bbe50e39d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091105"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309795"
 ---
 # <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Azure Resource Manager の仮想マシンの WinRM アクセスを設定する
 
@@ -83,7 +83,7 @@ Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretV
 VM をプロビジョニングするときに、Microsoft.Compute リソース プロバイダーには Key Vault 内部のシークレットへの URL が必要です。 これにより、Microsoft.Compute リソース プロバイダーがシークレットをダウンロードして、VM 上に同様の証明書を作成することができます。
 
 > [!NOTE]
-> シークレットの URL には、バージョンも含める必要があります。 URL の例は次のようになります。 https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+> シークレットの URL には、バージョンも含める必要があります。 URL の例を次に示します: https:\//contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 #### <a name="templates"></a>テンプレート
 次のコードを使用して、テンプレートの URL へのリンクを取得する事ができます
@@ -150,7 +150,7 @@ VM に接続する前に、WinRM リモート管理のためにコンピュー�
     Enable-PSRemoting -Force
 
 > [!NOTE]
-> 上記が動作しない場合は、WinRM サービスが実行されていることを確認する必要があります。  `Get-Service WinRM`
+> 上記が動作しない場合は、WinRM サービスが実行されていることを確認する必要があります。 `Get-Service WinRM`
 > 
 > 
 

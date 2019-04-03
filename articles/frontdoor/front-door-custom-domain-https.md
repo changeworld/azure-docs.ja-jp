@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b6e378263ac8bcd7cfee36209f70f26680988e6e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b3ec0616a7f022a104a20589f3281262b2717e35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753800"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014119"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -43,7 +43,7 @@ Azure Front Door Service では、既定で、Front Door の既定のホスト�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順を完了するには、最初に Front Door と、オンボードされる 1 つ以上のカスタム ドメインを作成する必要があります。 詳細については、「[チュートリアル: Front Door にカスタム ドメインを追加する](front-door-custom-domain.md)」を参照してください。
+このチュートリアルの手順を完了するには、最初に Front Door と、オンボードされる 1 つ以上のカスタム ドメインを作成する必要があります。 詳細については、[チュートリアル: Front Door にカスタム ドメインを追加する](front-door-custom-domain.md)」を参照してください。
 
 ## <a name="ssl-certificates"></a>SSL 証明書の数
 
@@ -141,7 +141,7 @@ CNAME レコードは、次の形式にする必要があります。ここで *
 
 | Name            | type  | 値                 |
 |-----------------|-------|-----------------------|
-| www.contoso.com | CNAME | contoso.azurefd.net |
+| <www.contoso.com> | CNAME | contoso.azurefd.net |
 
 CNAME レコードの詳細については、[CNAME DNS レコードの作成](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)に関するセクションを参照してください。
 

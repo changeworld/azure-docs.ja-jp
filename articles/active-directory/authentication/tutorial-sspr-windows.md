@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0463a2ad3fa74f33a52e15a246dfd4ffd63107a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f8e0b79d5aebd1e92dd71bba72efa7430aa475b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200872"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224653"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワード リセット
 
@@ -33,8 +33,10 @@ ms.locfileid: "56200872"
    * [Azure AD 参加済み](../device-management-azure-portal.md)または
    * [Hybrid Azure AD 参加済み](../device-management-hybrid-azuread-joined-devices-setup.md)、さらにドメイン コントローラーへのネットワーク接続。
 * Azure AD のパスワード リセットのセルフサービスを有効にする必要があります。
-* Windows 10 デバイスがプロキシ サーバーまたはファイアウォールの内側にある場合は、HTTPS トラフィック (ポート 443) の許可する URL の一覧に URL `passwordreset.microsoftonline.com` と `ajax.aspnetcdn.com` を追加する必要があります。
+* Windows 10 デバイスがプロキシ サーバーまたはファイアウォールの内側にある場合は、HTTPS トラフィック (ポート 443) の許可される URL の一覧に URL `passwordreset.microsoftonline.com` と `ajax.aspnetcdn.com` を追加する必要があります。
+* Windows 10 の SSPR は、マシンレベルのプロキシでのみサポートされています
 * ご使用の環境でこの機能を試す前に、次の制限事項を確認してください。
+* イメージを使用している場合は、sysprep に先立って、CopyProfile 手順を実行する前に Web キャッシュがビルトイン Administrator に対してクリアされていることを確認してください。 この詳細については、[カスタムの既定のユーザー プロファイルを使用した場合のパフォーマンスの低下](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)に関するサポート記事を参照してください。
 
 ## <a name="configure-reset-password-link-using-intune"></a>Intune を使用して "パスワードのリセット" リンクを構成する
 

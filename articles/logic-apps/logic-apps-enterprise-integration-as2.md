@@ -60,7 +60,7 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
     ![契約の詳細の指定](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
-    | プロパティ | [説明] |
+    | プロパティ | 説明 |
     | --- | --- |
     | Name |契約の名前。 |
     | 契約の種類 | AS2 である必要があります |

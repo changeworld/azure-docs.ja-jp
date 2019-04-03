@@ -3,7 +3,7 @@ title: AWS 上の Service Fabric クラスターのインフラストラクチ�
 description: このチュートリアルでは、Service Fabric クラスターを実行するための AWS インフラストラクチャをセットアップする方法を学習します。
 services: service-fabric
 documentationcenter: .net
-author: david-stanford
+author: dkkapur
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/11/2018
-ms.author: dastanfo
+ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6b7d2223d33abb429ab5f59b14c80d43c70598dc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9a0c56ecb20857b8fe2f5e55851e5d0d98ed3038
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209652"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369116"
 ---
-# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>チュートリアル: Service Fabric クラスターをホストする AWS インフラストラクチャを作成する
+# <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>チュートリアル:Service Fabric クラスターをホストする AWS インフラストラクチャを作成する
 
 Service Fabric で採用されている "すべての OS、すべてのクラウド" のアプローチの一環として、Service Fabric スタンドアロン クラスターには、独自の環境を選んでクラスターを作成する選択肢が用意されています。 このチュートリアル シリーズでは、AWS をホストとするスタンドアロン クラスターを作成し、そこにアプリケーションをインストールします。
 
@@ -110,7 +110,7 @@ Service Fabric の最後の 2 つの規則については、世界中に対し�
 
 インスタンスに正常に接続したら、それらを接続してファイルを共有できることを確認します。  すべてのインスタンスの IP アドレスを収集してあるので、現在接続していないインスタンスを選択します。 **[スタート]** で「`cmd`」と入力し、**[コマンド プロンプト]** を選択します。
 
-これらの例では、172.31.21.141 という IP アドレスへの RDP 接続が確立されました。 次に、すべての接続テストが他の IP アドレス (172.31.20.163) に対して行われます。
+これらの例では、次の IP アドレスへの RDP 接続が確立されました: 172.31.21.141。 次に、すべての接続テストがもう 1 つの IP アドレスに対して行われます: 172.31.20.163。
 
 基本的な接続が機能することを検証するには、ping コマンドを使用します。
 

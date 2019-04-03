@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 8e583ac1c8ac4b6f32c2fa9f8b7ed07c2e7033e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cfe5f490ef4063e02d9407f23130c1a216961ed
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890000"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402458"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>チュートリアル:ユニバーサル Windows プラットフォーム アプリケーションを実行している特定の Windows デバイスにプッシュ通知を送信する
 
@@ -222,30 +222,28 @@ ms.locfileid: "57890000"
 
 これでアプリは完成しました。 アプリは、ユーザーがカテゴリの選択を変更したときに、通知ハブに登録するために使用されるカテゴリ セットをデバイスのローカル記憶域に格納できます。 次のセクションでは、このアプリにカテゴリ通知を送信できるバックエンドを定義します。
 
-## <a name="send-tagged-notifications"></a>タグ付けされた通知を送信する
-
-[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
-
-## <a name="run-the-app-and-generate-notifications"></a>アプリケーションを実行して通知を生成する
-
+## <a name="run-the-uwp-app"></a>UWP アプリを実行する 
 1. Visual Studio で、**F5** を選択して、アプリのコンパイルと起動を行います。 アプリの UI には、購読するカテゴリを選択できる一連の切り替えボタンが表示されます。
 
-    ![ニュース速報アプリ][1]
+    ![ニュース速報アプリ](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
 
 2. 1 つ以上のカテゴリ切り替えボタンを有効にし、**[購読]** をクリックします。
 
     アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。 登録されたカテゴリが返され、ダイアログ ボックスに表示されます。
 
-    ![カテゴリの切り替えと [購読] ボタン][19]
+    ![カテゴリの切り替えと [購読] ボタン](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png)
 
-3. 次のいずれかの方法で、新しい通知をバックエンドから送信します。
+## <a name="create-a-console-app-to-send-tagged-notifications"></a>タグ付けされた通知を送信するコンソール アプリを作成する
 
-   * **コンソール アプリケーション**: コンソール アプリケーションを起動します。
-   * **Java/PHP**: アプリまたはスクリプトを実行します。
+[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-     選択されたカテゴリの通知がトースト通知として表示されます。
+## <a name="run-the-console-app-to-send-tagged-notifications"></a>タグ付けされた通知を送信するコンソール アプリを実行する
 
-     ![トースト通知][14]
+1. 前のセクションで作成したアプリを実行します。
+2. 選択されたカテゴリの通知がトースト通知として表示されます。 通知を選択すると、最初の UWP アプリ ウィンドウが表示されます。 
+
+     ![トースト通知](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png)
+
 
 ## <a name="next-steps"></a>次の手順
 
@@ -260,11 +258,6 @@ ms.locfileid: "57890000"
 [Send notifications from your back-end]: #send
 [Run the app and generate notifications]: #test-app
 [Next Steps]: #next-steps
-
-<!-- Images. -->
-[1]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
-[14]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png
-[19]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
 
 <!-- URLs.-->
 [get-started]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md

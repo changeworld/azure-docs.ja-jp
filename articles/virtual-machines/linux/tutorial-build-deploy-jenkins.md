@@ -5,20 +5,20 @@ author: tomarchermsft
 manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: devops
+ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
+ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 651e8505c6d3a3952347bba5e598ec9a0a518e8e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074769"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901425"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>チュートリアル:Jenkins と Azure DevOps Services を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -60,7 +60,7 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 このアプリのフォークを作成し、このチュートリアルの後の手順で使用できるように場所 (URL) のメモを取ります。 詳細については、「[Fork a repo (リポジトリのフォーク)](https://help.github.com/articles/fork-a-repo/)」を参照してください。    
 
 > [!NOTE]
-> アプリは [Yeoman](http://yeoman.io/learning/index.html) でビルドされました。 Express、bower、および Grunt を使用します。 また、依存関係として複数の npm パッケージを保持しています。
+> アプリは [Yeoman](https://yeoman.io/learning/index.html) でビルドされました。 Express、bower、および Grunt を使用します。 また、依存関係として複数の npm パッケージを保持しています。
 > このサンプルには、Nginx を設定し、アプリを配置するスクリプトも含まれています。 これは仮想マシンで実行します。 スクリプトによって、具体的には次の処理が行われます。
 > 1. Node、Nginx、および PM2 をインストールします。
 > 2. Nginx と PM2 を構成します。
@@ -141,7 +141,7 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 8. インストール後、デプロイ グループのタグを求められます。 既定値を受け入れます。
 9. Azure DevOps Services の **[配置グループ]** の **[ターゲット]** で、新たに登録された仮想マシンを確認します。
 
-## <a name="create-a-azure-pipelines-release-pipeline"></a>Azure Pipelines のリリース パイプラインを作成する
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Azure Pipelines のリリース パイプラインを作成する
 
 リリース パイプラインでは、Azure Pipelines でアプリをデプロイするときに使用するプロセスを指定します。 この例ではシェル スクリプトを実行します。
 

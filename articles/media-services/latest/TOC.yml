@@ -11,6 +11,8 @@ items:
     href: stream-files-dotnet-quickstart.md
   - name: ビデオ ファイルのストリーム配信 - CLI
     href: stream-files-cli-quickstart.md
+  - name: ビデオ ファイルのストリーム配信 - Node.js
+    href: stream-files-nodejs-quickstart.md
   expanded: true
 - name: チュートリアル
   items:
@@ -51,6 +53,7 @@ items:
     - name: Transform と Job
       href: transforms-jobs-concept.md
     - name: Media Encoder Standard の形式
+      displayName: containers, codecs
       href: media-encoder-standard-formats.md
     - name: Autogen アダプティブ ビットレート ラダー
       href: autogen-bitrate-ladder.md
@@ -87,7 +90,7 @@ items:
           href: widevine-license-template-overview.md
         - name: FairPlay ライセンスの要件
           href: fairplay-license-overview.md
-    - name: ストリーミング エンドポイント
+    - name: ストリーミング エンドポイント/配信元
       displayName: origins, cdn
       href: streaming-endpoint-concept.md
     - name: ストリーミング ロケーター
@@ -128,10 +131,8 @@ items:
     items:
     - name: Azure Media Player
       href: use-azure-media-player.md
-  - name: Media Services エンティティ
-    items:
-    - name: エンティティの並べ替え、フィルター処理、ページング
-      href: entities-overview.md
+  - name: v3 API シリーズを使用した開発
+    href: entities-overview.md
   - name: v2 から v3 への移行ガイダンス
     href: migrate-from-v2-to-v3.md
 - name: ハウツー ガイド
@@ -144,10 +145,17 @@ items:
       href: access-api-cli-how-to.md
     - name: メディア占有ユニットのスケーリング - CLI
       href: media-reserved-units-cli-how-to.md
-    - name: 開発を始める
+    - name: REST を使用した開発
+      items:
+      - name: Postman を使用して接続する
+        href: media-rest-apis-with-postman.md
+    - name: SDK を使用した開発
       href: developers-guide.md
-    - name: Postman を構成する
-      href: media-rest-apis-with-postman.md
+      items:
+      - name: .NET を使用して接続する
+        href: configure-connect-dotnet-howto.md
+      - name: Node.js を使用して接続する
+        href: configure-connect-nodejs-howto.md
   - name: コンテンツをアップロードする
     items:
     - name: HTTPS から - .NET
@@ -257,9 +265,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure のクラウドとリージョン
     href: azure-clouds-regions.md
-ms.openlocfilehash: 7810fb88062d540a141e8af59971fa9452b486dc
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 4f40fc3241dd0df881c7777d3e47a8976a364dc5
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372507"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755439"

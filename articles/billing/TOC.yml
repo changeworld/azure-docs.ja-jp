@@ -60,6 +60,8 @@ items:
         href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
       - name: Cosmos DB
         href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
+      - name: RedHat Linux ソフトウェア
+        href: ../virtual-machines/linux/prepay-rhel-software-charges.md?toc=/azure/billing/TOC.json
       - name: SQL Database
         href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
       - name: SUSE Linux ソフトウェア
@@ -80,6 +82,8 @@ items:
       href: billing-understand-reserved-instance-usage.md
     - name: エンタープライズの場合の使用量
       href: billing-understand-reserved-instance-usage-ea.md
+    - name: 予約の交換と返金
+      href: billing-azure-reservations-self-service-exchange-and-refund.md
     - name: 予約の管理
       href: billing-manage-reserved-vm-instance.md
     - name: 予約の表示
@@ -216,9 +220,9 @@ items:
     items:
     - name: Enterprise Reporting REST API
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 0fcf799513ec6288253c67406599f7c079152d4c
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: aa60036ccc8f24bc8a847db8873102c348b1fba9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349809"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652367"

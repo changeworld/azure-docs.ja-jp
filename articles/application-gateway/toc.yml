@@ -5,6 +5,8 @@ items:
   items:
   - name: アプリケーション ゲートウェイについて
     href: overview.md
+  - name: 新機能
+    href: whats-new.md
 - name: クイック スタート
   items:
   - name: アプリケーション ゲートウェイの作成 - ポータル
@@ -238,9 +240,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: b7b696b2094dc74e1a30cbd33f304aa663bf742e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 01ca52cb94059cd0281fb81f605380c8bd852704
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444929"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803767"

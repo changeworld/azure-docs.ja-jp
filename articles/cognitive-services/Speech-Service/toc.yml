@@ -71,7 +71,13 @@ items:
         href: quickstart-translate-speech-java-jre.md
   - name: REST API
     items:
-    - name: テキスト読み上げ
+    - name: サポートされている声をリージョン別に一覧表示する
+      items:
+      - name: Node.js
+        href: quickstart-nodejs-get-text-to-speech-voices.md
+      - name: Python
+        href: quickstart-python-get-text-to-speech-voices.md
+    - name: テキストを音声に変換する
       items:
       - name: C# (.NET Core)
         href: quickstart-dotnet-text-to-speech.md
@@ -228,9 +234,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: プライバシーと Cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: 7ca4d35f9db9368af60971a5af66cc1d2c7faaf7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8849764c9368f93443c99742d0e0de089c444539
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875806"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886779"

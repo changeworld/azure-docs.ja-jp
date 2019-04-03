@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 2e0dc5c69a6cc875f4e673a494387db79c1dd1fa
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a942f91dfa03eea2d9dc14b4b44e2ef5ee57c1ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672550"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078637"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>.NET コンソール アプリケーションをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する (SDK バージョン 3 プレビュー)
 
@@ -61,14 +61,14 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 1. コンピューターで **Visual Studio 2017** を開きます。
 1. **[ファイル]** メニューで、**[新規]**、**[プロジェクト]** の順に選択します。
 1. **[新しいプロジェクト]** ダイアログで、**[Visual C#]** / **[コンソール アプリ (.NET Framework)]** の順に選択し、プロジェクトの名前を指定して、**[OK]** をクリックします。
-    ![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-new-project.png)
+    ![[新しいプロジェクト] ウィンドウのスクリーンショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-new-project.png)
 1. **ソリューション エクスプローラー**で、Visual Studio ソリューションの下にある新しいコンソール アプリケーションを右クリックし、**[NuGet パッケージの管理]** をクリックします。
     
-    ![プロジェクトの右クリック メニューのスクリーン ショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget.png)
+    ![プロジェクトの右クリック メニューのスクリーンショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget.png)
 1. **[NuGet]** タブの **[参照]** をクリックし、検索ボックスに「**Microsoft.Azure.Cosmos**」と入力します。 プレビューを検索できるように、必ず *[プレリリースを含める]*  を選択してください。
 1. 結果で **Microsoft.Azure.Cosmos** を探し、**[インストール]** をクリックします。
    Azure Cosmos DB SQL API クライアント ライブラリのパッケージ ID は [Microsoft Azure Cosmos DB クライアント ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) です。
-   ![Azure Cosmos DB クライアント SDK を見つける NuGet メニューのスクリーン ショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
+   ![Azure Cosmos DB クライアント SDK を見つけるための NuGet メニューのスクリーンショット](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
 
     ソリューションの変更の確認に関するメッセージが表示されたら、**[OK]** をクリックします。 ライセンスの同意に関するメッセージが表示されたら、**[同意する]** をクリックします。
 
@@ -321,7 +321,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
         await this.CreateContainer();
     }
     ```
-**F5** キーを押してアプリケーションを実行します。
+   **F5** キーを押してアプリケーションを実行します。
 
 お疲れさまでした。 これで、Azure Cosmos DB コンテナーが作成されました。  
 
@@ -599,7 +599,7 @@ Azure Cosmos DB では、各コレクションに格納された JSON ドキュ�
         await this.ReplaceFamilyItem();
     }
     ```
-**F5** キーを押してアプリケーションを実行します。
+   **F5** キーを押してアプリケーションを実行します。
 
 お疲れさまでした。 これで、Azure Cosmos DB 項目が置換されました。
 

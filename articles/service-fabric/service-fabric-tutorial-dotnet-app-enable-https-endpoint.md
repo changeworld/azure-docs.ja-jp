@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/17/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5308fc024a53fdbbef12b409622cc35adaea1e2e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ba28014dfb2be4550407c20b4885feda3921f98
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857710"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316893"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル:Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
@@ -341,9 +341,9 @@ if ($cert -eq $null)
 
 ## <a name="run-the-application-locally"></a>ローカルでアプリケーションを実行する
 
-ソリューション エクスプローラーで、**Voting** アプリケーションを選択し、**Application URL** プロパティを "<https://localhost:443>" に設定します。
+ソリューション エクスプローラーで、**Voting** アプリケーションを選択し、**Application URL** プロパティを "https:\//localhost:443" に設定します。
 
-すべてのファイルを保存した後、F5 キーを押してアプリケーションをローカルで実行します。  アプリケーションのデプロイ後、Web ブラウザーで [https://localhost:443](https://localhost:443) が開かれます。 自己署名証明書を使用している場合、この Web サイトのセキュリティが PC によって信頼されていないことを示す警告が表示されます。  Web ページに進みます。
+すべてのファイルを保存した後、F5 キーを押してアプリケーションをローカルで実行します。  アプリケーションのデプロイ後、Web ブラウザーで https:\//localhost:443 が開かれます。 自己署名証明書を使用している場合、この Web サイトのセキュリティが PC によって信頼されていないことを示す警告が表示されます。  Web ページに進みます。
 
 ![投票アプリケーション][image2]
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8362ae5e9647c023ff950a363f9ba7bfde37fdb6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863323"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499558"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 
@@ -52,10 +52,11 @@ Azure Container Instances では、同じ API で、Windows と Linux の両方�
 
 * コンテナー グループあたりの複数のコンテナー
 * ボリューム マウント ([Azure Files](container-instances-volume-azure-files.md)、[emptyDir](container-instances-volume-emptydir.md)、[GitRepo](container-instances-volume-gitrepo.md)、[シークレット](container-instances-volume-secret.md))
+* [リソース使用量メトリック](container-instances-monitor.md)と Azure Monitor
 * [仮想ネットワークのデプロイ](container-instances-vnet.md) (プレビュー)
 * [GPU リソース](container-instances-gpu.md) (プレビュー)
 
-Azure Container Instances では、長期的なサービス チャネル (LTSC) のバージョンに基づいて Windows Server 2016 イメージがサポートされています。 1709 や 1803 のような Windows 半期チャネル (SAC) のリリースは、サポートされていません。
+Azure Container Instances では、現在、長期的なサービス チャネル (LTSC) のバージョンに基づいて Windows Server 2016 イメージがサポートされています。 1709 や 1803 のような Windows 半期チャネル (SAC) のリリースは、サポートされていません。
 
 ## <a name="co-scheduled-groups"></a>共同スケジュール グループ
 

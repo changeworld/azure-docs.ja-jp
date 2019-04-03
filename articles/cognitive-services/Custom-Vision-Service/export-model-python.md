@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 05/17/2018
+ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: 55704ed6236872c4f225775559e54370757a26a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1e4c08c1e1f9c32c7c397cf187ad2ef91a25c59d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007140"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58350456"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル:Python での TensorFlow モデルの実行
 
@@ -24,16 +24,14 @@ Custom Vision Service から [TensorFlow モデルをエクスポート](https:/
 > [!NOTE]
 > このチュートリアルは、イメージ分類のプロジェクトからエクスポートされたモデルにのみ適用されます。
 
-## <a name="install-required-components"></a>必須コンポーネントのインストール
-
-### <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを使用するには、次の作業が必要となります。
 
 - Python 2.7 以降または Python 3.5 以降をインストールします。
 - pip をインストールします。
 
-次のパッケージもインストールする必要があります。
+続けて次のパッケージをインストールする必要があります。
 
 ```
 pip install tensorflow
@@ -113,7 +111,6 @@ max_square_image = crop_center(image, min_dim, min_dim)
 # Resize that square down to 256x256
 augmented_image = resize_to_256_square(max_square_image)
 ```
-
 
 ### <a name="crop-the-center-for-the-specific-input-size-for-the-model"></a>モデルの特定の入力サイズの中央をトリミングする
 
@@ -209,10 +206,10 @@ with tf.Session() as sess:
         print (labels[label_index], truncated_probablity)
         label_index += 1
 ```
+
 ## <a name="next-steps"></a>次の手順
 
-モバイル アプリケーションに、モデルをラップすることもできます。
+次に、モバイル アプリケーションにモデルをラップする方法を学びましょう。
 * [エクスポートされた Tensorflow モデルを Android アプリケーションで使用する](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [エクスポートされた CoreML モデルを Swift iOS アプリケーションで使用する](https://go.microsoft.com/fwlink/?linkid=857726)
 * [エクスポートされた CoreML モデルを Xamarin を使って iOS アプリケーションで使用する](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
-

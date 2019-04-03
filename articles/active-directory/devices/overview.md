@@ -3,7 +3,7 @@ title: Azure Active Directory のデバイス管理とは | Microsoft Docs
 description: デバイス管理を利用して、環境内のリソースにアクセスしているデバイスを管理する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/31/2019
-ms.author: markvi
+ms.date: 03/01/2019
+ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3711f2b2901ddbe49b4d6a49cabef12ac5dab3e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c5b736c75f65fa5dfc2f3132a43ac0485bc58d19
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192474"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520311"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Azure Active Directory のデバイス管理とは
 
@@ -89,7 +89,7 @@ Azure AD Join は、次の方法のいずれかを使用して展開できます
 
 Azure AD 参加済みデバイスを実装すると、次のメリットを得ることができます。
 
-- Azure が管理している SaaS アプリやサービスへの**シングル サインオン (SSO)**。 ユーザーが職場のリソースにアクセスするときに、追加の認証プロンプトが表示されることはありません。 SSO 機能は、ドメイン ネットワークに接続されていない場合も有効です。
+- Azure が管理している SaaS アプリやサービスへの**シングル サインオン (SSO)**。 ユーザーが職場のリソースにアクセスするときに、追加の認証プロンプトが表示されることはありません。 SSO 機能は、ユーザーがドメイン ネットワークに接続されていない場合も使用できます。
 
 - 参加デバイス間でのユーザー設定の**企業に準拠しているローミング**。 ユーザーは、デバイスの設定を確認するときに Microsoft アカウント (Hotmail など) に接続する必要はありません。
 

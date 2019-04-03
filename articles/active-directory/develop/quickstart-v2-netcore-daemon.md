@@ -4,7 +4,7 @@ description: .NET Core プロセスでアクセス トークンを取得し、Az
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 1/11/2019
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27cc0334e8332e3bc09ae4302e0b0efdda8067f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5c63269630d0ed74d1b17edbc5cb9e787499604e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194446"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200518"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -30,7 +30,7 @@ ms.locfileid: "56194446"
 
 このチュートリアルでは、アプリ自体の ID を使用してアクセス トークンを取得した後、Microsoft Graph API を呼び出して、ディレクトリ内の[ユーザーの一覧](https://docs.microsoft.com/graph/api/user-list)を表示する .NET Core アプリケーションを記述する方法について説明します。 このシナリオは、オペレーターがいない無人のジョブや、ユーザーの ID ではなくアプリケーション ID を使用して実行する必要がある Windows サービスがある状況で役立ちます。
 
-![このクイック スタートで生成されたサンプル アプリの動作](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.png)
+![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-netcore-daemon/netcore-daemon-intro-updated.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -198,7 +198,7 @@ var app = new ConfidentialClientApplication(
 > |---------|---------|
 > | `secret` | Azure Portal 上でアプリケーションに対して作成されるクライアント シークレット。 |
 > | `clientId` | Azure portal に登録されているアプリケーションの "**アプリケーション (クライアント) ID**"。 この値は、Azure portal のアプリの **[概要]** ページで確認できます。 |
-> | `Authority`    | (省略可能) ユーザーを認証するための STS エンドポイント。 通常、パブリック クラウド上では https://login.microsoftonline.com/{tenant} です。{tenant} はご自分のテナントの名前またはテナント ID です。|
+> | `Authority`    | (省略可能) ユーザーを認証するための STS エンドポイント。 通常、パブリック クラウド上では <https://login.microsoftonline.com/{tenant}> です。{tenant} はご自分のテナントの名前またはテナント ID です。|
 > | `redirectUri`  | 認証後にユーザーが送られる URL。 コンソール/非対話型アプリケーションであるため、このパラメーターはここでは使用されません。 |
 > | `clientCredentials`  | シークレットまたは証明書のいずれかを含む、クライアント資格情報オブジェクト。 |
 > | `userTokenCache`  | ユーザー用のトークン キャッシュのインスタンス。 このアプリは、ユーザーのコンテキストではなくアプリのコンテキストで実行されるため、ここではこの値は null になります。|

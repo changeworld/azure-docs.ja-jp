@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d627158744ae89e3c614d10a64886cee6879a3fb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0a5b8bdbcd5a05574d824e3f57cfc23967278e27
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116051"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487738"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>チュートリアル:既存のカスタム SSL 証明書を Azure App Service にバインドする
 
@@ -252,7 +252,7 @@ az webapp config set \
 
 次のコマンドは、エクスポートした PFX ファイルをアップロードし、SNI ベースの SSL バインドを追加します。
 
-```PowerShell
+```powershell
 New-AzWebAppSSLBinding `
     -WebAppName <app_name> `
     -ResourceGroupName <resource_group_name> `
@@ -264,7 +264,7 @@ New-AzWebAppSSLBinding `
 ## <a name="public-certificates-optional"></a>パブリック証明書 (省略可能)
 アプリがクライアントとしてリモート リソースにアクセスする必要があり、リモート リソースが証明書認証を必要とする場合は、[パブリック証明書](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/)をアプリにアップロードできます。 パブリック証明書は、アプリの SSL バインディングには必要ありません。
 
-アプリにパブリック証明書を読み込んで使用する方法の詳細については、「[Azure App Service のアプリケーション コードに SSL 証明書を使用する](app-service-web-ssl-cert-load.md)」を参照してください。 App Service Environment でも、アプリでパブリック証明書を使用することができます。 LocalMachine の証明書ストアに証明書を格納する必要がある場合は、App Service Enviroment でアプリを使用する必要があります。 詳細については、[App Service アプリに合わせてパブリック証明書を構成する方法](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)に関するページを参照してください。
+アプリにパブリック証明書を読み込んで使用する方法の詳細については、「[Azure App Service のアプリケーション コードに SSL 証明書を使用する](app-service-web-ssl-cert-load.md)」を参照してください。 App Service Environment でも、アプリでパブリック証明書を使用することができます。 LocalMachine の証明書ストアに証明書を格納する必要がある場合は、App Service Environment でアプリを使用する必要があります。 詳細については、[App Service アプリに合わせてパブリック証明書を構成する方法](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer)に関するページを参照してください。
 
 ![パブリック証明書のアップロード](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

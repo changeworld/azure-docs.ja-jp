@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
+title: クイック スタート:Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
 description: Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する方法を学習します
 services: data-explorer
 author: radennis
@@ -7,15 +7,15 @@ ms.author: radennis
 ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 2/4/2019
-ms.openlocfilehash: ca4ffce1ae966d2bb8fb187c9b04938330969641
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 3/25/2019
+ms.openlocfilehash: 2a77671ca405a69ec87e335004a84acb2e649c2c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286331"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418654"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-the-cli"></a>CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Azure CLI を使用して Azure Data Explorer クラスターとデータベースを作成する
 
 > [!div class="op_single_selector"]
 > * [ポータル](create-cluster-database-portal.md)
@@ -23,9 +23,9 @@ ms.locfileid: "58286331"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+>
 
-このクイック スタートでは、Azure CLI を使用して、Azure Data Explorer クラスターとデータベースを作成する方法について説明します。
+Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 このクイック スタートでは、Azure CLI を使用して、クラスターとデータベースを 1 つずつ作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
     az login
     ```
 
-2. クラスターを作成するサブスクリプションを設定します。 `MyAzureSub` は、使用する Azure サブスクリプションの名前に置き換えてください。
+1. クラスターを作成するサブスクリプションを設定します。 `MyAzureSub` は、使用する Azure サブスクリプションの名前に置き換えてください。
 
     ```azurecli-interactive
     az account set --subscription MyAzureSub
@@ -67,7 +67,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
     使用できる省略可能なパラメーターが他にも存在します (クラスターの容量など)。
 
-2. クラスターが正常に作成されたかどうかを確認するには、次のコマンドを実行します。
+1. クラスターが正常に作成されたかどうかを確認するには、次のコマンドを実行します。
 
     ```azurecli-interactive
     az kusto cluster show --name azureclitest --resource-group testrg
@@ -91,7 +91,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
    | soft-delete-period | *3650:00:00:00* | データをクエリに使用できるようにしておく時間。 |
    | hot-cache-period | *3650:00:00:00* | データをキャッシュに保持する時間。 |
 
-2. 次のコマンドを実行して、作成したデータベースを確認します。
+1. 次のコマンドを実行して、作成したデータベースを確認します。
 
     ```azurecli-interactive
     az kusto database show --name clidatabase --resource-group testrg --cluster-name azureclitest

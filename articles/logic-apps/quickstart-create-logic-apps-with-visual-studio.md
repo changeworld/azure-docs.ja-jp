@@ -12,14 +12,14 @@ ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 07/31/2018
-ms.openlocfilehash: 9d2fe2c18452537f734a8bf176130e1ad68d40e1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: e1d845d1d90a3a70590778013504fea7c0aec85c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231034"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097663"
 ---
-# <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート: Azure Logic Apps を使用してタスク、プロセス、ワークフローを作成および自動化する - Visual Studio
+# <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用してタスク、プロセス、ワークフローを作成および自動化する - Visual Studio
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio を使用して、企業および組織の間でアプリ、データ、システム、サービスを統合するタスクとプロセスを自動化するワークフローを作成できます。 このクイックスタートでは、これらのワークフローを設計して構築する方法について説明します。そのために、Visual Studio でロジック アプリを作成し、それらのアプリをクラウドの <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> にデプロイします。 これらのタスクは <a href="https://portal.azure.com" target="_blank">Azure Portal</a> でも実行できます。しかし、Visual Studio を使用すれば、ロジック アプリをソース管理に追加したり、さまざまなバージョンを発行したり、異なるデプロイ環境用の Azure Resource Manager テンプレートを作成したりできます。 
 
@@ -83,11 +83,13 @@ Azure Logic Apps を使用するのが初めてであり、単に基本的な概
 
 Azure リソース グループ プロジェクトを作成した後、**[空のロジック アプリ]** テンプレートからロジック アプリを作成して構築します。
 
-1. ソリューション エクスプローラーで、**LogicApp.json** ファイルのショートカット メニューを開きます。 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します  (Ctrl + L キー)。
+1. ソリューション エクスプローラーで、**LogicApp.json** ファイルのショートカット メニューを開きます。 
+   **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します  (Ctrl + L キー)。
 
    ![ロジック アプリ デザイナーでロジック アプリの .json ファイルを開く](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
-2. **[サブスクリプション]** で、使用する Azure サブスクリプションを選択します。 **[リソース グループ]** で **[新規作成...]** を選択します。これで、新しい Azure リソース グループが作成されます。 
+2. **[サブスクリプション]** で、使用する Azure サブスクリプションを選択します。 
+   **[リソース グループ]** で **[新規作成...]** を選択します。これで、新しい Azure リソース グループが作成されます。 
 
    ![Azure サブスクリプション、リソース グループ、リソースの場所を選択する](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
@@ -101,7 +103,8 @@ Azure リソース グループ プロジェクトを作成した後、**[空の
    | **場所** | MyLogicApp-RG2 <br> (米国西部) | リソース グループの場所を使用しない場合の別の場所 |
    ||||
 
-3. ロジック アプリ デザイナーが開き、紹介ビデオとよく使用されるトリガーが含まれたページが表示されます。 ビデオとトリガーを超えてスクロールします。 **[テンプレート]** で **[空のロジック アプリ]** を選択します。
+3. ロジック アプリ デザイナーが開き、紹介ビデオとよく使用されるトリガーが含まれたページが表示されます。 
+   ビデオとトリガーを超えてスクロールします。 **[テンプレート]** で **[空のロジック アプリ]** を選択します。
 
    ![[空のロジック アプリ] を選択する](./media/quickstart-create-logic-apps-with-visual-studio/choose-blank-logic-app-template.png)
 
@@ -109,7 +112,7 @@ Azure リソース グループ プロジェクトを作成した後、**[空の
 
 次に、新しい RSS フィード項目が発行されたときに起動される[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加します。 すべてのロジック アプリは必ずトリガーによって起動されます。このトリガーは、特定の条件が満たされたときに起動されます。 トリガーが起動されるたびに、ワークフローを実行するロジック アプリ インスタンスが Logic Apps エンジンによって作成されます。
 
-1. ロジック アプリ デザイナーの検索ボックスに「rss」と入力します。 **[フィード項目が発行される場合]** トリガーを選択します。
+1. ロジック アプリ デザイナーの検索ボックスに「rss」と入力します。 トリガーとして、**フィード項目が発行される場合**
 
    ![トリガーとアクションを追加してロジック アプリを構築する](./media/quickstart-create-logic-apps-with-visual-studio/add-trigger-logic-app.png)
 

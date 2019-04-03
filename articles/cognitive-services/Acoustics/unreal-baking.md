@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: afe4421bea27ff029bd4a1a7808241a54027a6ac
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 544de5a3ac48c12d75f05a1c9adb56f48bb540f4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136564"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311562"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Project Acoustics Unreal ベイク チュートリアル
 このドキュメントでは、Unreal エディター拡張機能を使用して音響ベイクを送信するプロセスについて説明します。
@@ -32,7 +32,7 @@ ms.locfileid: "58136564"
 
 Project Acoustics プラグイン パッケージをプロジェクトにインポートします。 このヘルプについては、[Unreal 統合](unreal-integration.md)トピックを参照してください。 プラグインが統合されたら、新しい Acoustics Mode アイコンをクリックして Acoustics UI を開きます。
 
-![Acoustics Mode を開く](media/acoustics-mode.png)
+![Unreal エディターの Acoustics Mode オプションのスクリーンショット](media/acoustics-mode.png)
 
 ## <a name="tag-actors-for-acoustics"></a>音響のタグ アクター
 
@@ -42,7 +42,7 @@ World Outliner で 1 つ以上のオブジェクトを選択するか、**[一�
 
 ### <a name="for-reference-the-objects-tab-parts"></a>参照用:[Objects]\(オブジェクト\) タブの各部
 
-![Unreal [Objects]\(オブジェクト\) タブの詳細情報](media/unreal-objects-tab-details.png)
+![Unreal の Acoustics の [Objects]\(オブジェクト\) タブのスクリーンショット](media/unreal-objects-tab-details.png)
 
 1. タブ選択ボタン (**[Objects]\(オブジェクト\)** タブが選択されています)。 これらのボタンを使用して、音響ベイクを実行するためのさまざまな手順を進めます (上から下へ)。
 2. このページを使用して行う必要がある操作の簡単な説明。
@@ -75,11 +75,11 @@ World Outliner で 1 つ以上のオブジェクトを選択するか、**[一�
 
 室内の特定のマテリアルの残響時間はその吸収係数に反比例し、ほとんどのマテリアルの吸収値は 0.01 ～ 0.20 の範囲です。 吸収係数がこの範囲を上回る場合、非常に吸収性が高いマテリアルです。 たとえば、部屋の反響音が大きすぎる場合は、壁、床、または天井の音響マテリアルを吸収率の高いものに変更します。 音響マテリアルの割り当ては、そのシーン マテリアルを使用するすべてのアクターに適用されます。
 
-![リバーブ時間グラフ](media/reverb-time-graph.png)
+![吸収係数と残響時間の逆相関を示すグラフ](media/reverb-time-graph.png)
 
 ### <a name="for-reference-parts-of-the-materials-tab"></a>参照用:[Materials]\(マテリアル\) タブの各部
 
-![Unreal [Objects]\(オブジェクト\) タブの詳細情報](media/unreal-materials-tab-details.png)
+![Unreal の Acoustics の [Objects]\(オブジェクト\) タブのスクリーンショット](media/unreal-materials-tab-details.png)
 
 1. このページを表示するために使用する **[Materials]\(マテリアル\)** タブ ボタン。
 2. このページを使用して行う必要がある操作の簡単な説明。
@@ -94,7 +94,7 @@ World Outliner で 1 つ以上のオブジェクトを選択するか、**[一�
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>参照用:[Probes]\(プローブ\) タブの各部
 
-![[Probes]\(プローブ\) タブの詳細](media/unreal-probes-tab-details.png)
+![Unreal の Acoustics の [Probes]\(プローブ\) タブのスクリーンショット](media/unreal-probes-tab-details.png)
 
 1. このページを表示するために使用する **[Probes]\(プローブ\)** タブ ボタン。
 2. このページを使用して行う必要がある操作の簡単な説明。
@@ -124,11 +124,11 @@ World Outliner で 1 つ以上のオブジェクトを選択するか、**[一�
 
 プローブ計算が完了すると、World Outliner に **AcousticsDebugRenderer** という新しいアクターが表示されます。 **[プローブのレンダリング]** および **[ボクセルのレンダリング]** チェックボックスをオンにすると、エディター ビューポート内のデバッグ表示が有効になります。
 
-![音響デバッグ レンダラー](media/acoustics-debug-renderer.png)
+![Unreal エディターの音響デバッグ レンダラー アクターを示すスクリーンショット](media/acoustics-debug-renderer.png)
 
 ボクセルやプローブがご使用のレベルに重なっていない場合は、ビューポートでリアルタイム レンダリングが有効になっていることを確認してください。
 
-![リアルタイムでのレンダリングを有効にする](media/unreal-real-time-rendering.png)
+![Unreal のリアルタイム レンダリング オプションのスクリーンショット](media/unreal-real-time-rendering.png)
 
 ### <a name="voxels"></a>ボクセル
 
@@ -137,7 +137,7 @@ World Outliner で 1 つ以上のオブジェクトを選択するか、**[一�
 
 粗分解能と細分解能で作成されたボクセルを比較すると、粗いボクセルは 2 倍の大きさになります。
 
-![ボクセルのプレビュー](media/unreal-voxel-preview.png)
+![Unreal エディターにおける Acoustics ボクセル プレビューのスクリーンショット](media/unreal-voxel-preview.png)
 
 ### <a name="probe-points"></a>プローブ ポイント
 
@@ -145,7 +145,7 @@ World Outliner で 1 つ以上のオブジェクトを選択するか、**[一�
 
 プレーヤーがシーン内を移動すると予想される場所にプローブ ポイントが存在することを確認することが重要です。 プローブ ポイントは Project Acoustics エンジンによってナビゲーション メッシュ上に配置されており、移動や編集はできません。このため、プローブ ポイントを調べて、ナビゲーション メッシュが考えられるすべてのプレイヤーの場所をカバーしていることを確認してください。
 
-![プローブのプレビュー](media/unreal-probes-preview.png)
+![Unreal における Acoustics プローブのスクリーンショット](media/unreal-probes-preview.png)
 
 ### <a name="Coarse-vs-Fine-Resolution"></a> 粗分解能と細分解能の比較
 
@@ -159,9 +159,9 @@ World Outliner で 1 つ以上のオブジェクトを選択するか、**[一�
 * "中身の詰まった" ボクセル (つまり、ジオメトリを含むボクセル) 内に音源を配置することはできません。これを行うと音がなくなります。 粗設定のサイズの大きいボクセル内には音源は配置されないため、細設定を使用する場合よりも音源の配置が難しくなります。
 * 次に示すように、ボクセルのサイズが大きくなると、ポータルへの侵入の度合いが大きくなります。 最初の画像は、粗を使用して作成されたものであり、2 番目は、細分解能を使用した同じ出入り口を示しています。 赤のマーキングで示すように、細設定を使用すると、出入り口への侵入が大幅に減っています。 青色の線はジオメトリによって定義された出入り口であり、赤色の線はボクセル サイズによって定義された有効な音響ポータルです。 特定の状況でこの侵入がどの程度になるかは、ボクセルとポータルのジオメトリの適合度合いに完全に左右されます。この度合いは、シーン内のオブジェクトのサイズと位置によって決まります。
 
-![Coarse\(粗\) 設定の出入り口](media/unreal-coarse-bake.png)
+![Unreal で出入り口を埋める粗いボクセルのスクリーンショット](media/unreal-coarse-bake.png)
 
-![Fine\(細\) 設定の出入り口](media/unreal-fine-bake.png)
+![Unreal で出入り口に配置された細かなボクセルのスクリーンショット](media/unreal-fine-bake.png)
 
 ## <a name="bake-your-level-using-azure-batch"></a>Azure Batch を使用したレベルのベイク
 
@@ -169,7 +169,7 @@ Azure Batch サービスを使用して、クラウド内のコンピューテ�
 
 ### <a name="for-reference-parts-of-the-bake-tab"></a>参照用:[Bake]\(ベイク\) タブの各部
 
-![[Bake]\(ベイク\) タブの詳細](media/unreal-bake-tab-details.png)
+![Unreal の Acoustics の [Bake]\(ベイク\) タブのスクリーンショット](media/unreal-bake-tab-details.png)
 
 1. このページを表示するために使用する [Bake]\(ベイク\) タブ ボタン。
 2. このページで実行する操作の簡単な説明。

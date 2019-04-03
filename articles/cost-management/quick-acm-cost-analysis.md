@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 931732c047a5ffe22ad456a115c36d7c882d01bc
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 55407ec1846a0fe2eb037756dc2e97d8b05e7330
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769853"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997301"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
 
@@ -51,7 +51,7 @@ Cost Management データに対するアクセス権割り当ての詳細につ�
 
 ## <a name="review-costs-in-cost-analysis"></a>コスト分析でコストを確認する
 
-コスト分析でコストを確認するには、Azure portal で **[コストの管理と請求]** &gt; **[コスト分析]** の順に移動します。 **[スコープ:<_スコープ名_>]** を選択し、スコープを選択して、**[選択]** をクリックします。
+コスト分析でコストを確認するには、Azure portal で目的のスコープを開き、メニューで **[コスト分析]** を選択します。 たとえば、**[サブスクリプション]** に移動し、一覧からサブスクリプションを選択して、メニューから **[コスト分析]** を選択します。 コスト分析で別のスコープに切り替えるには、**[スコープ]** ピルを使用します。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
 選択したスコープは、データの統合とコスト情報へのアクセスの制御のために、Cost Management 全体を通して使用されます。 スコープを使用する場合は、複数選択を行いません。 代わりに、他のユーザーがロールアップする、より大きなスコープを選択し、後で必要なものをフィルターで絞り込みます。 一部のユーザーは子スコープがロール アップする親スコープにはアクセスできないようにする必要があるため、これを理解しておくことが重要です。
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: e6a24bfe25513b1b4eacd8bc192caa5518c896c6
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d8d96d929e55bd4423bdb0cd0dd064e275462ce2
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593201"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445353"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを持つ Azure Data Factory を作成します。    
@@ -56,7 +56,7 @@ ms.locfileid: "56593201"
 
     c. コピー アクティビティを作成する。これは基準値列の値がかつての基準値より大きく、かつ新しい基準値よりも小さい行をソース データ ストアからコピーするアクティビティです。 その差分データが、ソース データ ストアから新しいファイルとして Azure BLOB ストレージにコピーされます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ストアド プロシージャ― アクティビティを作成する。これはパイプラインの次回実行に備えて基準値を更新するためのアクティビティです。 
+    d. ストアド プロシージャ― アクティビティを作成する。これはパイプラインの次回実行に備えて基準値を更新するためのアクティビティです。 
 
     ソリューションの概略図を次に示します。 
 
@@ -226,9 +226,10 @@ END
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
+1. 左側のメニューで、**[リソースの作成]** > **[データ + 分析]** > **[Data Factory]** の順に選択します。 
    
-   ![New->DataFactory](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
+   ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+
 1. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFMultiIncCopyTutorialDF**」と入力します。 
       
      ![[新しいデータ ファクトリ] ページ](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory.png)
@@ -382,7 +383,7 @@ END
    ![シンク データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
- 1. **[完了]** をクリックした後、テーブル名として **@dataset().SinkTableName** が表示されます。
+   1. **[完了]** をクリックすると、テーブル名として **\@dataset().SinkTableName** が表示されます。
    
    ![シンク データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -424,11 +425,11 @@ END
     ![パイプライン名](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
 1. **プロパティ** ウィンドウで、以下の手順を実行します。 
 
-    1. **[+ 新規]** をクリックします。 
-    1. **[名前]** に、パラメーター名として「**tableList**」と入力します。 
-    1. パラメーターの **[型]** として **[オブジェクト]** を選択します。
+   1. **[+ 新規]** をクリックします。 
+   1. **[名前]** に、パラメーター名として「**tableList**」と入力します。 
+   1. パラメーターの **[型]** として **[オブジェクト]** を選択します。
 
-    ![パイプラインのパラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
+      ![パイプラインのパラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
 1. **[アクティビティ]** ツール ボックスで **[Iteration & Conditionals]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **プロパティ** ウィンドウの **[全般]** タブで、「**IterateSQLTables**」と入力します。 
 
     ![ForEach アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
@@ -457,69 +458,69 @@ END
     ![2 つ目の検索アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-name.png)
 1. **[設定]** タブに切り替えます。
 
-    1. **[Source Dataset]\(ソース データセット\)** で **[SourceDataset]** を選択します。 
-    1. **[クエリの使用]** で **[クエリ]** を選択します。
-    1. **[クエリ]** に次の SQL クエリを入力します。
+     1. **[Source Dataset]\(ソース データセット\)** で **[SourceDataset]** を選択します。 
+     1. **[クエリの使用]** で **[クエリ]** を選択します。
+     1. **[クエリ]** に次の SQL クエリを入力します。
 
-        ```sql    
-        select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
-        ```
+         ```sql    
+         select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
+         ```
     
-        ![2 つ目の検索アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
+         ![2 つ目の検索アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
 1. **[アクティビティ]** ツールボックスから**コピー** アクティビティをドラッグアンドドロップし、**[名前]** に「**IncrementalCopyActivity**」と入力します。 
 
-    ![コピー アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
+     ![コピー アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
 1. 1 つずつ、**検索**アクティビティを**コピー** アクティビティに接続します。 接続するには、**検索**アクティビティの横の**緑**のボックスをドラッグして**コピー** アクティビティにドロップします。 コピー アクティビティの境界線の色が**青**に変わったら、マウス ボタンを離します。
 
-    ![検索アクティビティをコピー アクティビティに接続する](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
+     ![検索アクティビティをコピー アクティビティに接続する](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
 1. パイプラインの**コピー** アクティビティを選択します。 **プロパティ** ウィンドウで **[ソース]** タブに切り替えます。 
 
-    1. **[Source Dataset]\(ソース データセット\)** で **[SourceDataset]** を選択します。 
-    1. **[クエリの使用]** で **[クエリ]** を選択します。 
-    1. **[クエリ]** に次の SQL クエリを入力します。
+     1. **[Source Dataset]\(ソース データセット\)** で **[SourceDataset]** を選択します。 
+     1. **[クエリの使用]** で **[クエリ]** を選択します。 
+     1. **[クエリ]** に次の SQL クエリを入力します。
 
-        ```sql
-        select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
-        ```
+         ```sql
+         select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
+         ```
 
-        ![コピー アクティビティ - ソースの設定](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
+         ![コピー アクティビティ - ソースの設定](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. **[シンク]** タブに切り替えて、**[Sink Dataset]\(シンク データセット\)** で **[SinkDataset]** を選択します。 
         
-    ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
+     ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. **[パラメーター]** タブに切り替えて、次の手順を実行します。
 
-    1. **[Sink Stored Procedure Name]\(シンク ストアド プロシージャ名\)** プロパティに「`@{item().StoredProcedureNameForMergeOperation}`」と入力します。
-    1. **[Sink Table Type]\(シンク テーブル型\)** プロパティに「`@{item().TableType}`」と入力します。
-    1. **[Sink Dataset]\(シンク データセット\)** セクションで、**[SinkTableName]** パラメーターに「`@{item().TABLE_NAME}`」と入力します。
+     1. **[Sink Stored Procedure Name]\(シンク ストアド プロシージャ名\)** プロパティに「`@{item().StoredProcedureNameForMergeOperation}`」と入力します。
+     1. **[Sink Table Type]\(シンク テーブル型\)** プロパティに「`@{item().TableType}`」と入力します。
+     1. **[Sink Dataset]\(シンク データセット\)** セクションで、**[SinkTableName]** パラメーターに「`@{item().TABLE_NAME}`」と入力します。
 
-        ![コピー アクティビティ - パラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+         ![コピー アクティビティ - パラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **コピー** アクティビティを**ストアド プロシージャ** アクティビティに接続します。 
 
-    ![コピー アクティビティ - パラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
+     ![コピー アクティビティ - パラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
 1. パイプラインの **ストアド プロシージャ** アクティビティを選択します。**プロパティ** ウィンドウの **[全般]** タブで、**[名前]** に「**StoredProceduretoWriteWatermarkActivity**」と入力します。 
 
-    ![ストアド プロシージャ アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
+     ![ストアド プロシージャ アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
 1. **[SQL アカウント]** タブに切り替えて、**[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
 
-    ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
+     ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。
 
-    1. **[ストアド プロシージャ名]** に `usp_write_watermark` を選択します。 
-    1. **[Import parameter]\(インポート パラメーター\)** を選択します。 
-    1. 各パラメーターの値を次のように指定します。 
+     1. **[ストアド プロシージャ名]** に `usp_write_watermark` を選択します。 
+     1. **[Import parameter]\(インポート パラメーター\)** を選択します。 
+     1. 各パラメーターの値を次のように指定します。 
 
-        | Name | type | 値 | 
-        | ---- | ---- | ----- |
-        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+         | Name | Type | 値 | 
+         | ---- | ---- | ----- |
+         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
-        ![ストアド プロシージャ アクティビティ - ストアド プロシージャの設定](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
+         ![ストアド プロシージャ アクティビティ - ストアド プロシージャの設定](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. 左側のウィンドウで **[発行]** をクリックします。 これにより、作成されたエンティティが Data Factory サービスに発行されます。 
 
-    ![[発行] ボタン](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
+     ![[発行] ボタン](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
 1. **[正常に発行されました]** というメッセージが表示されるまで待機します。 通知を表示するには、**[通知の表示]** リンクをクリックします。 **[X]** をクリックして通知ウィンドウを閉じます。
 
-    ![通知の表示](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
+     ![通知の表示](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
 
  
 ## <a name="run-the-pipeline"></a>パイプラインを実行する

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 02/23/2019
-ms.openlocfilehash: 1138af0e073f68842861df86acd4d9d6eb467782
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: bd8fa10ca0a9809891efc67ff930ab01d502eda9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824712"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117083"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>Jenkins Azure Functions プラグインを使用した Azure Functions へのデプロイ
 
@@ -24,8 +24,8 @@ ms.locfileid: "56824712"
 - **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 - **Jenkins サーバー**: Jenkins サーバーがインストールされていない場合は、[Azure での Jenkins サーバーの作成](./install-jenkins-solution-template.md)に関する記事を参照してください。
 
- > [!TIP]
- > このチュートリアルに使用されているソース コードは [Visual Studio China GitHub リポジトリ](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java)にあります。
+  > [!TIP]
+  > このチュートリアルに使用されているソース コードは [Visual Studio China GitHub リポジトリ](https://github.com/VSChina/odd-or-even-function/blob/master/src/main/java/com/microsoft/azure/Function.java)にあります。
 
 ## <a name="create-a-java-function"></a>Java 関数の作成
 
@@ -89,6 +89,14 @@ Java ランタイム スタックを備えた Java 関数を作成するには�
 
 1. Azure サービス プリンシパルを使用して、資格情報の種類 "Microsoft Azure サービス プリンシパル" を Jenkins に追加します。 [Azure App Service へのデプロイ](./tutorial-jenkins-deploy-web-app-azure-app-service.md#add-service-principal-to-jenkins)に関するチュートリアルを参照してください。
 
+## <a name="fork-the-sample-github-repo"></a>サンプル GitHub リポジトリのフォーク
+
+1. [奇数または偶数のサンプル アプリ用の GitHub リポジトリにサインインします](https://github.com/VSChina/odd-or-even-function.git)。
+
+1. GitHub の右上隅にある **[Fork]\(フォーク\)** を選択します。
+
+1. プロンプトに従ってお客様の GitHub アカウントを選択し、フォークを完了します。
+
 ## <a name="create-a-jenkins-pipeline"></a>Jenkins パイプラインの作成
 
 このセクションでは、[Jenkins パイプライン](https://jenkins.io/doc/book/pipeline/)を作成します。
@@ -107,7 +115,27 @@ Java ランタイム スタックを備えた Java 関数を作成するには�
     
 1. **[Pipeline]\(パイプライン\)、[Definition]\(定義\)** セクションの順に移動し、**[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** を選択します。
 
-1. 提供されている[スクリプトの例](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile)を使用して、SCM リポジトリの URL とスクリプトのパスを入力します。
+1. GitHub フォークの URL とスクリプト パス ("doc/resources/jenkins/JenkinsFile") を入力し、[JenkinsFile の例](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile)で使用します。
+
+   ```
+   node {
+    stage('Init') {
+        checkout scm
+        }
+
+    stage('Build') {
+        sh 'mvn clean package'
+        }
+
+    stage('Publish') {
+        azureFunctionAppPublish appName: env.FUNCTION_NAME, 
+                                azureCredentialsId: env.AZURE_CRED_ID, 
+                                filePath: '**/*.json,**/*.jar,bin/*,HttpTrigger-Java/*', 
+                                resourceGroup: env.RES_GROUP, 
+                                sourceDirectory: 'target/azure-functions/odd-or-even-function-sample'
+        }
+    }
+    ```
 
 ## <a name="build-and-deploy"></a>ビルドとデプロイ
 

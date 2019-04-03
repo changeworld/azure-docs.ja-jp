@@ -6,22 +6,28 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 3/3/2019
+ms.date: 3/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ccd62c0b0832622bbc74542674c1d09f59ea301b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 06d18ccd6f14f0a2b31f579b0ed7250b2c4f0c92
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848832"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310593"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
 
 [Azure Site Recovery](site-recovery-overview.md) は、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、フェールバックなど、オンプレミスのマシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理し、調整します。
 
 
-このチュートリアルでは、Azure Site Recovery を使用し、VMware VM のレプリケーションを設定して有効にする方法について説明します。 チュートリアルは、基本設定を備えた Site Recovery をデプロイする方法を示すように設計されています。 最も簡単なパスを使用し、すべてのオプションは表示しません。 このチュートリアルでは、以下の内容を学習します。
+このチュートリアルでは、カスタマイズのない基本的な設定で Site Recovery をデプロイする方法について説明します。 さらに複雑な方法については、攻略ガイドの記事を参照してください。
+
+    - [レプリケーション ソース](vmware-azure-set-up-source.md)と[構成サーバー](vmware-azure-deploy-configuration-server.md)を設定する。
+    - [レプリケーション ターゲット](vmware-azure-set-up-target.md)を設定する。
+    - [レプリケーション ポリシー](vmware-azure-set-up-replication.md)を設定して、[レプリケーションを有効にする](vmware-azure-enable-replication.md)。
+
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * レプリケーションのソースとターゲットを入力します。
@@ -37,10 +43,6 @@ ms.locfileid: "57848832"
 - VMware VM のディザスター リカバリーを設定する方法の詳細について、次のリソースを確認する。
     - VMware のディザスター リカバリーに関する[よく寄せられる質問を確認する](vmware-azure-common-questions.md)。
     - VMware で何がサポートされ、何が必要であるかについて[確認する](vmware-physical-azure-support-matrix.md)。
--  **ハウツー ガイド**で次の VMware に関するすべてのデプロイ オプションを網羅する詳細な手順を確認する。
-    - [レプリケーション ソース](vmware-azure-set-up-source.md)と[構成サーバー](vmware-azure-deploy-configuration-server.md)を設定する。
-    - [レプリケーション ターゲット](vmware-azure-set-up-target.md)を設定する。
-    - [レプリケーション ポリシー](vmware-azure-set-up-replication.md)を設定して、[レプリケーションを有効にする](vmware-azure-enable-replication.md)。
 - このチュートリアルでは、1 つの VM をレプリケートする方法を示します。 複数の VM をデプロイしている場合は、[Deployment Planner ツール](https://aka.ms/asr-deployment-planner)を使用してデプロイを計画する必要があります。 [こちら](site-recovery-deployment-planner.md) を参照してください。
 
 以下のヒントを確認してください。

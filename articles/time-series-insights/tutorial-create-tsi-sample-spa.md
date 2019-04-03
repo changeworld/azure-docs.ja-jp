@@ -8,12 +8,12 @@ ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 9d18b1382bdb421afcc8aee92fd99b7ef0d09e32
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a9baf36221c99ece0703e2caa3f3e6c3b9364480
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540148"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312208"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>チュートリアル: Azure Time Series Insights シングルページ Web アプリの作成
 
@@ -52,9 +52,9 @@ ms.locfileid: "53540148"
    
    パラメーター|説明
    ---|---
-   **名前** | わかりやすい登録名を入力します。  
+   **Name** | わかりやすい登録名を入力します。  
    **アプリケーションの種類** | SPA Web アプリケーションをビルドするため、[Web アプリ/API] のままにします。
-   **サインオン URL** | アプリケーションのホーム/サインイン ページの URL を入力します。 アプリケーションは (後で) Azure App Service でホストされるため、"https://azurewebsites.net" ドメイン内の URL を使用する必要があります。 この例では、名前は登録名に基づきます。
+   **サインオン URL** | アプリケーションのホーム/サインイン ページの URL を入力します。 アプリケーションは (後で) Azure App Service でホストされるため、"https:\//azurewebsites.net" ドメイン内の URL を使用する必要があります。 この例では、名前は登録名に基づきます。
 
    完了したら、**[作成]** をクリックして新しいアプリケーション登録を作成します。
 

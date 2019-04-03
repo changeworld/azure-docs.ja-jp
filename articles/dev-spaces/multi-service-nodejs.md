@@ -1,21 +1,20 @@
 ---
-title: Node.js と VS Code を使用した複数の依存サービスの実行 | Microsoft Docs
+title: Node.js と VS Code を使用した複数の依存サービスの実行
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 author: DrEsteban
 ms.author: stevenry
 ms.date: 11/21/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 8d305e051bd6708977926e3a4de47c15a784c7b6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
+ms.openlocfilehash: 8d17ece1426c2aedda2ef98cb465dad532d4dba6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818818"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902707"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したマルチサービスの開発
 
@@ -33,8 +32,8 @@ ms.locfileid: "56818818"
 ### <a name="run-mywebapi"></a>*mywebapi* を実行する
 1. "*別の VS Code ウィンドウ*" で、`mywebapi` フォルダーを開きます。
 1. (**[表示 | コマンド パレット]** メニューを使用して) **コマンド パレット**を開き、オート コンプリートを使用して次のコマンドを入力および選択します: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 このコマンドと、デプロイ用にプロジェクトを構成する `azds prep` コマンドを混同しないでください。
-1. F5 キーを押し、サービスがビルドされ、展開されるまで待ちます。 準備ができると、VS Code デバッグ バーが表示されます。
-1. エンドポイント URL を書き留めます。これは、 http://localhost:\<portnumber\> のように表示されます。 **ヒント:VS Code のステータス バーに、クリック可能な URL が表示されます。** コンテナーはローカルで実行されているように見えるかもしれませんが、実際には Azure の開発環境で実行されています。 localhost アドレスである理由は、`mywebapi` でパブリック エンドポイントが定義されておらず、Kubernetes インスタンス内からしかアクセスできないためです。 利便性を考慮し、また、ローカル コンピューターからのプライベート サービスとの対話を容易にするために、Azure Dev Spaces では、Azure で実行されているコンテナーへの一時的な SSH トンネルが作成されます。
+1. F5 キーを押し、サービスがビルドされ、展開されるまで待ちます。 準備ができると、"*Listening on port 80 (ポート 80 をリッスンしています)*" というメッセージがデバッグ コンソールに表示されます。
+1. エンドポイント URL を書き留めます。これは、`http://localhost:<portnumber>` のように表示されます。 **ヒント:VS Code のステータス バーに、クリック可能な URL が表示されます。** コンテナーはローカルで実行されているように見えるかもしれませんが、実際には Azure の開発環境で実行されています。 localhost アドレスである理由は、`mywebapi` でパブリック エンドポイントが定義されておらず、Kubernetes インスタンス内からしかアクセスできないためです。 利便性を考慮し、また、ローカル コンピューターからのプライベート サービスとの対話を容易にするために、Azure Dev Spaces では、Azure で実行されているコンテナーへの一時的な SSH トンネルが作成されます。
 1. `mywebapi` の準備ができたら、ブラウザーで localhost アドレスを開きます。 `mywebapi` サービスからの応答 ("Hello from mywebapi") が表示されます。
 
 
@@ -61,7 +60,7 @@ ms.locfileid: "56818818"
        });
     });
     ```
- 4. `server.js` の最後の行 `server.close()` の*削除*
+   1. `server.js` の最後の行 `server.close()` の*削除*
 
 前述のコード例は、`azds-route-as` ヘッダーを受信要求から送信要求に転送します。 これがチームによる共同開発にどのように役立つかについては、後ほど説明します。
 

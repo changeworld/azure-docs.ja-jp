@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 5ad3d7c27b003fb3963333471bceb3226655a5eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 559c02e74e97093a15b1d768eb5a3b32502db64e
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57874883"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314588"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>チュートリアル:Service Fabric 上に Java Web API フロントエンド サービスとステートフル バックエンド サービスを含むアプリケーションを作成する
 
@@ -912,7 +912,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
 4. Eclipse の Package Explorer で、**Voting** プロジェクトを右クリックし、**[Service Fabric] -> [Publish Application...]\(アプリケーションの発行...\)** の順にクリックします 
 5. **[Publish Application]\(アプリケーションの発行\)** ウィンドウで、ドロップダウンから **[Local.json]** を選択し、**[Publish]\(発行\)** をクリックします。
-6. Web ブラウザーを使用して `http://localhost:8080` にアクセスし、ローカル Service Fabric クラスターで実行されているアプリケーションを表示します。 
+6. Web ブラウザーを使用して http:\//localhost:8080 にアクセスし、ローカル Service Fabric クラスターで実行されているアプリケーションを表示します。 
 
 ## <a name="next-steps"></a>次の手順
 

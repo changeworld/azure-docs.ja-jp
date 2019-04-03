@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2b1d75b4b32ebfffbddfaddf45b0c08fb1132995
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d4e9e26f2c6764cc179826266891d861514e23f6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168555"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882210"
 ---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure のドキュメント
 
@@ -12,7 +12,7 @@ ms.locfileid: "58168555"
 
 ## <a name="getting-started"></a>Getting Started (概要)
 
-オープン ソースの共同作成とは、ドキュメントを更新する行為のみを指すものではありません。問題を見つけたときに Microsoft に連絡することも含まれます。 詳細については、Microsoft の[共同作成ガイダンス](.github/CONTRIBUTING.md)を参照してください。
+オープン ソースの共同作成とは、ドキュメントを更新する行為のみを指すものではありません。問題を見つけたときに Microsoft に連絡することも含まれます。 詳細については、Microsoft の[共同作成ガイダンス](CONTRIBUTING.md)を参照してください。
 
 ### <a name="prerequisites"></a>前提条件
 

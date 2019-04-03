@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 01/09/2019
-ms.openlocfilehash: e739ed1f7cd1b832ffe11299d3444c9bf0ac99e9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 296005f68592a8c89f3ec78da8ece4d1741f253f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874462"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880825"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用した Azure Database for MariaDB サーバーの作成
 
@@ -72,11 +72,11 @@ Azure Database for MariaDB サービスでは、サーバー レベルでファ�
 
 サーバーレベルのファイアウォール規則を作成するには、次の手順に従います。
 
-1.   デプロイが完了したら、目的のサーバーを探します。 必要に応じて、検索することができます。 たとえば左側のメニューで、**[すべてのリソース]** を選びます。 次に、サーバー名を入力します。 たとえば、「**mydemoserver**」と入力して、新しく作成されたサーバーを検索します。 検索結果の一覧からサーバー名を選択します。 サーバーの **[概要]** ページが開きます。 追加の設定は、このページで変更できます。
+1. デプロイが完了したら、目的のサーバーを探します。 必要に応じて、検索することができます。 たとえば左側のメニューで、**[すべてのリソース]** を選びます。 次に、サーバー名を入力します。 たとえば、「**mydemoserver**」と入力して、新しく作成されたサーバーを検索します。 検索結果の一覧からサーバー名を選択します。 サーバーの **[概要]** ページが開きます。 追加の設定は、このページで変更できます。
 
 2. サーバーの概要ページで、**[接続のセキュリティ]** を選択します。
 
-3.  **[ファイアウォール規則]** で、**[規則名]** 列の空白のテキスト ボックスを選択し、ファイアウォール規則の作成を開始します。 このサーバーに接続するクライアントの正確な IP 範囲を指定します。
+3. **[ファイアウォール規則]** で、**[規則名]** 列の空白のテキスト ボックスを選択し、ファイアウォール規則の作成を開始します。 このサーバーに接続するクライアントの正確な IP 範囲を指定します。
    
    ![[接続のセキュリティ] - [ファイアウォール規則]](./media/quickstart-create-mariadb-server-database-using-azure-portal/5-firewall-2.png)
 
@@ -94,7 +94,7 @@ Azure Database for MariaDB サービスでは、サーバー レベルでファ�
 
 2. これらの値をコピーするには、コピーしたいフィールドにカーソルを合わせます。 テキストの右側にコピー アイコンが表示されます。 必要に応じてコピー アイコンを選択して値をコピーします。
 
-この例では、サーバー名は **mydemoserver.mariadb.database.azure.com**、サーバー管理者ログイン名は **myadmin@mydemoserver** です。
+この例では、サーバー名は **mydemoserver.mariadb.database.azure.com**、サーバー管理者ログイン名は **myadmin\@mydemoserver** です。
 
 ## <a name="connect-to-azure-database-for-mariadb-by-using-the-mysql-command-line"></a>mysql コマンド ラインを使用して Azure Database for MariaDB に接続する
 
@@ -103,9 +103,9 @@ Azure Database for MariaDB サーバーには、さまざまなアプリケー�
 サーバーに接続する方法を示すために、まずは [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) コマンドライン ツールを使用してみましょう。 ソフトウェアをインストールせずに、Web ブラウザーと Azure Cloud Shell を使用する方法もあります。 mysql ユーティリティがローカルにインストールしてある場合は、そこからも接続できます。
 
 1. Azure portal の右上のツール バーにあるターミナル アイコン (**>_**) で Azure Cloud Shell を起動します。
-![Azure Cloud Shell のターミナル シンボル](./media/quickstart-create-mariadb-server-database-using-azure-portal/7-cloud-console.png)
+   ![Azure Cloud Shell のターミナル シンボル](./media/quickstart-create-mariadb-server-database-using-azure-portal/7-cloud-console.png)
 
-2.  ブラウザーで Azure Cloud Shell が開きます。 Cloud Shell から Bash シェル コマンドを使用することができます。
+2. ブラウザーで Azure Cloud Shell が開きます。 Cloud Shell から Bash シェル コマンドを使用することができます。
 
    ![コマンド プロンプト - mysql コマンド ラインの例](./media/quickstart-create-mariadb-server-database-using-azure-portal/8-bash.png)
 
@@ -126,7 +126,7 @@ Azure Database for MariaDB サーバーには、さまざまなアプリケー�
     mysql パラメーター |推奨値|説明
     ---|---|---
     --host | *サーバー名* | Azure Database for MariaDB サーバーを作成するときに使用したサーバー名の値。 この例におけるサーバーは、**mydemoserver.mariadb.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (**\*.mariadb.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。
-    --user | *サーバー管理者ログイン名* |Azure Database for MariaDB サーバーを作成するときに使用したサーバー管理者のログイン ユーザー名。 このユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username@servername* です。
+    --user | *サーバー管理者ログイン名* |Azure Database for MariaDB サーバーを作成するときに使用したサーバー管理者のログイン ユーザー名。 このユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username\@servername* です。
     -p | *<お使いのパスワード>*<br>(プロンプトが表示されるまで待つ) |メッセージが表示されたら、サーバーの作成に使用したパスワードを入力します。 入力したパスワードの文字は bash プロンプトには表示されません。 パスワードを入力したら、Enter キーを押します。
 
    mysql ユーティリティが接続されると、`mysql>` プロンプトが表示されます。 このプロンプトでコマンドを入力することができます。 
@@ -165,14 +165,14 @@ Azure Database for MariaDB サーバーには、さまざまなアプリケー�
    > [!TIP]
    > その他のコマンドについては、「[MySQL 5.7 リファレンス マニュアル - 4.5.1 章](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)」を参照してください。
 
-5.  `mysql>` プロンプトに次のコマンドを入力して空のデータベースを作成します。
+5. `mysql>` プロンプトに次のコマンドを入力して空のデータベースを作成します。
 
-    ```sql
-    CREATE DATABASE quickstartdb;
-    ```
-    このコマンドが完了するまで数分かかることがあります。 
+   ```sql
+   CREATE DATABASE quickstartdb;
+   ```
+   このコマンドが完了するまで数分かかることがあります。 
 
-    Azure Database for MariaDB サーバーには 1 つまたは複数のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを利用するか、複数のデータベースを作成してリソースを共有することができます。 作成できるデータベース数に制限はありませんが、複数のデータベースは同一のサーバー リソースを共有します。 
+   Azure Database for MariaDB サーバーには 1 つまたは複数のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを利用するか、複数のデータベースを作成してリソースを共有することができます。 作成できるデータベース数に制限はありませんが、複数のデータベースは同一のサーバー リソースを共有します。 
 
 6. データベースを一覧表示するには、`mysql>` プロンプトに次のコマンドを入力します。
 
@@ -180,7 +180,7 @@ Azure Database for MariaDB サーバーには、さまざまなアプリケー�
     SHOW DATABASES;
     ```
 
-7.  「**\q**」と入力し、Enter キーを押して mysql ツールを閉じます。 これで、Azure Cloud Shell を閉じることができます。
+7. 「**\q**」と入力し、Enter キーを押して mysql ツールを閉じます。 これで、Azure Cloud Shell を閉じることができます。
 
 Azure Database for MariaDB サーバーに接続し、空のユーザー データベースを作成しました。 次のセクションでは、広く使われているもう 1 つのツール、MySQL Workbench を使って同じサーバーに接続します。
 
@@ -202,7 +202,7 @@ MySQL Workbench を使用してサーバーに接続するには、次の手順�
     接続方法 | **Standard (TCP/IP)** | Standard (TCP/IP) で十分です。 |
     ホスト名 | *サーバー名* | Azure Database for MariaDB サーバーを作成するときに使用したサーバー名の値。 この例におけるサーバーは、**mydemoserver.mariadb.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (**\*.mariadb.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、この記事で説明した手順に従って接続情報を取得してください。|
      ポート | 3306 | Azure Database for MariaDB サーバーに接続するときに使用するポート。 |
-    ユーザー名 |  *サーバー管理者ログイン名* | Azure Database for MariaDB サーバーを作成するときに使用したサーバー管理者のサインイン情報。 この例のユーザー名は **myadmin@mydemoserver** です。 ユーザー名を覚えていない場合は、この記事で説明した手順に従って接続情報を取得してください。 形式は *username@servername* です。
+    ユーザー名 |  *サーバー管理者ログイン名* | Azure Database for MariaDB サーバーを作成するときに使用したサーバー管理者のサインイン情報。 この例のユーザー名は **myadmin\@mydemoserver** です。 ユーザー名を覚えていない場合は、この記事で説明した手順に従って接続情報を取得してください。 形式は *username\@servername* です。
     パスワード | *<お使いのパスワード>* | パスワードを保存するには、**[Store in Vault]\(コンテナーに保存\)** を選択します。 |
 
 4. すべてのパラメーターが正しく構成されていることを確認するために、**[Test Connection]\(接続のテスト\)** を選択します。 その後、**[OK]** を選択して接続を保存します。 
@@ -227,13 +227,13 @@ MySQL Workbench を使用してサーバーに接続するには、次の手順�
 
 新しく作成したサーバーを削除するには、次の手順に従います。
 
-1.  Azure portal で目的のサーバーを探します (まだ開いていない場合)。 左側のメニューで、**[すべてのリソース]** を選びます。 次に、作成したサーバーを検索します。
+1. Azure portal で目的のサーバーを探します (まだ開いていない場合)。 左側のメニューで、**[すべてのリソース]** を選びます。 次に、作成したサーバーを検索します。
 
-2.  **[概要]** ページで **[削除]** を選択します。 
+2. **[概要]** ページで **[削除]** を選択します。 
 
    ![Azure Database for MariaDB - サーバーの削除](./media/quickstart-create-mariadb-server-database-using-azure-portal/delete-server.png)
 
-3.  削除するサーバーの名前を確認します。 削除によって影響を受けるデータベースをその下に表示します。 削除の確認を行うために、目的のサーバー名 (この例では **mydemoserver**) を入力します。 **[削除]** を選択します。
+3. 削除するサーバーの名前を確認します。 削除によって影響を受けるデータベースをその下に表示します。 削除の確認を行うために、目的のサーバー名 (この例では **mydemoserver**) を入力します。 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

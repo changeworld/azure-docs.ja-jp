@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dc2fb3faddc8af30edd66b926259c05580d9872a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cdd852e56cf966371cda62f89cee62956551f5c0
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104524"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313109"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Azure に移行するためにオンプレミスの VMware VM を検出して評価する
 
@@ -185,7 +185,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
    - VM がプロキシ経由でインターネットにアクセスしている場合は、**[Proxy settings]\(プロキシの設定\)** をクリックし、プロキシ アドレスとリスニング ポートを指定します。 プロキシで認証が必要な場合は、資格情報を指定します。 インターネット接続要件については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites)をご覧ください。コレクターがアクセスする URL の一覧については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector)をご覧ください。
 
      > [!NOTE]
-     > プロキシのアドレスを、<http://ProxyIPAddress> または <http://ProxyFQDN> の形式で入力する必要があります。 サポートされるのは HTTP プロキシのみです。 インターセプトするプロキシがあるときに、プロキシ証明書をインポートしていない場合は、初回のインターネット接続は失敗することがあります。プロキシ証明書を信頼された証明書としてコレクター VM にインポートすることでこの問題を修正する方法について、[詳細を学習](https://docs.microsoft.com/azure/migrate/concepts-collector)してください。
+     > プロキシのアドレスを、http:\//ProxyIPAddress または http:\//ProxyFQDN の形式で入力する必要があります。 サポートされるのは HTTP プロキシのみです。 インターセプトするプロキシがあるときに、プロキシ証明書をインポートしていない場合は、初回のインターネット接続は失敗することがあります。プロキシ証明書を信頼された証明書としてコレクター VM にインポートすることでこの問題を修正する方法について、[詳細を学習](https://docs.microsoft.com/azure/migrate/concepts-collector)してください。
 
    - コレクター サービスが実行されていることをコレクターがチェックします。 このサービスは、既定でコレクター VM にインストールされています。
    - VMware PowerCLI をダウンロードしてインストールします。

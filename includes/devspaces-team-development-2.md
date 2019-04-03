@@ -10,57 +10,43 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
-ms.openlocfilehash: 5d66dcaccc6ca2e40fbd516f535ec56c1baf6b17
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: e0f768b876b49ec006ce98decf121d73d334b6d8
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195624"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439521"
 ---
 ### <a name="run-the-service"></a>サービスを実行する
 
-1. F5 キーを押して (またはターミナル ウィンドウで「`azds up`」と入力して)、サービスを実行します。 新たに選択した _dev/scott_ 空間で、サービスが自動的に実行されます。 
-1. `azds list-up` をもう一度実行すると、サービスが独自の空間で実行されていることを確認できます。 *mywebapi* のインスタンスが _dev/scott_ 空間で実行されていることがわかります (_dev_ で実行されているバージョンもまだ実行されていますが、リストされていません)。
+F5 キーを押して (またはターミナル ウィンドウで「`azds up`」と入力して)、サービスを実行します。 新たに選択した _dev/scott_ 空間で、サービスが自動的に実行されます。 `azds list-up` を実行すると、サービスが独自の空間で実行されていることを確認できます。
 
-    ```
-    Name                      DevSpace  Type     Updated  Status
-    mywebapi                  scott     Service  3m ago   Running
-    mywebapi-bb4f4ddd8-sbfcs  scott     Pod      3m ago   Running
-    webfrontend               dev       Service  26m ago  Running
-    ```
+```cmd
+$ azds list-up
 
-1. `azds list-uris` を実行して、*webfrontend* のアクセス ポイント URL を確認します。
-
-    ```
-    Uri                                                                        Status
-    -------------------------------------------------------------------------  ---------
-    http://localhost:53831 => mywebapi.scott:80                                Tunneled
-    http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
-    ```
-
-1. *scott.s* というプレフィックスの付いた URL を使用してアプリケーションに移動します。 この更新された URL が引き続き解決されることに注意してください。 この URL は _dev/scott_ 空間に固有のものです。 この特別な URL は、"scott URL" に送信された要求で、まず、_dev/scott_ 空間内のサービスへのルーティングが試行され、失敗した場合は、_dev_ 空間内のサービスにフォールバックされることを示します。
-
-<!--
-TODO: replace 2 & 3 with below once bug#753164 and PR#158827 get pushed to production.
-
-You can confirm that your service is running in its own space by running `azds list-up` again. First, you'll notice an instance of *mywebapi* is now running in the _dev/scott_ space (the version running in _dev_ is still running but it is not listed). If you run `azds list-uris`, you will notice that the access point URL for *webfrontend* is prefixed with the text "scott.s.". This URL is unique to the _dev/scott_ space. The special URL signifies that requests sent to the "Scott URL" will try to first route to services in the _dev/scott_ space, but if that fails, they will fall back to services in the _dev_ space.
-
-```
 Name                      DevSpace  Type     Updated  Status
 mywebapi                  scott     Service  3m ago   Running
-mywebapi-bb4f4ddd8-sbfcs  scott     Pod      3m ago   Running
 webfrontend               dev       Service  26m ago  Running
 ```
 
-```
+*mywebapi* のインスタンスが _dev/scott_ 空間で実行されていることがわかります。 _dev_ で実行されているバージョンもまだ実行されていますが、リストされていません。
+
+`azds list-uris` を実行して、現在の空間の URL をリストします。
+
+```cmd
+$ azds list-uris
+
 Uri                                                                        Status
 -------------------------------------------------------------------------  ---------
 http://localhost:53831 => mywebapi.scott:80                                Tunneled
 http://scott.s.dev.webfrontend.6364744826e042319629.ce.azds.io/  Available
 ```
--->
 
-![](../articles/dev-spaces/media/common/space-routing.png)
+*webfrontend* のパブリック アクセス ポイント URL に、*scott.s* というプレフィックスが付いていることがわかります。 この URL は _dev/scott_ 空間に固有のものです。 この URL プレフィックスによって、_dev/scott_ バージョンのサービスに要求をルーティングするようイングレス コントローラーに命令が伝えられます。 この URL を使った要求が Dev Spaces によって処理されるとき、イングレス コントローラーはまず、その要求を _dev/scott_ 空間の *webfrontend* サービスにルーティングするよう試みます。 それに失敗した場合は、フォールバックとして、_dev_ 空間の *webfrontend* サービスに要求がルーティングされます。 また、localhost URL が存在することにも注目してください。Kubernetes の "*ポート フォワーディング*" 機能を使用して localhost でサービスにアクセスするためのものです。 Azure Dev Spaces における URL とルーティングの詳細については、「[How Azure Dev Spaces works and is configured (Azure Dev Spaces のしくみと構成方法)](../articles/dev-spaces/how-dev-spaces-works.md)」を参照してください。
+
+
+
+![空間のルーティング](../articles/dev-spaces/media/common/Space-Routing.png)
 
 Azure Dev Spaces のこの組み込み機能を使用すれば、共有空間内でコードをテストできます。その場合、各開発者が、自分の空間内にサービスをフル スタックで再作成する必要はありません。 このルーティングを行うには、このガイドの前の手順で示したように、アプリ コードで伝達ヘッダーを転送する必要があります。
 

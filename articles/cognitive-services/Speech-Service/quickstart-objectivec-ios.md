@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 67acc7a074b26cb7614b5e08d25afd7b7c1caa74
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 2520f05c83cb5b727c8cdae1602b39320de4b99d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958509"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094924"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>クイック スタート:iOS で Objective-C と Speech SDK を使用して音声を認識する
 
@@ -75,7 +75,7 @@ UI はプロジェクトの `Main.storyboard` 部分に設定されます。
 ## <a name="add-the-sample-code"></a>サンプル コードを追加する
 
 1. リンクを右クリックし、**[Save target as...]** を選択して、[サンプルの wav ファイル](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav)をダウンロードします。Finder ウィンドウからプロジェクト ビューのルート レベルにドラッグすることで、wav ファイルをプロジェクトにリソースとして追加します。
-設定を変更せずに、次のダイアログで **[Finish]** をクリックします。
+   設定を変更せずに、次のダイアログで **[Finish]** をクリックします。
 1. 次の操作によって、自動生成された `ViewController.m` ファイルの内容を置き換えます。
 
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
@@ -92,10 +92,10 @@ UI はプロジェクトの `Main.storyboard` 部分に設定されます。
 1. デバッグ出力が表示されるようにします (**[View]** > **[Debug Area]** > **[Activate Console]**)。
 1. **[Product]\(製品\)** -> **[Destination]\(ターゲット\)** メニューの一覧から、お使いの開発マシンに接続された iOS デバイスまたは iOS シミュレーターをアプリのターゲットとして選択します。
 1. コード例をビルドし、メニューから **[Product]** -> **[Run]** の順に選択するか、**[Play]** ボタンをクリックして、iOS シミュレーターで実行します。
-現在、Speech SDK は、64 ビット iOS プラットフォームのみをサポートしています。
+   現在、Speech SDK は、64 ビット iOS プラットフォームのみをサポートしています。
 1. アプリの [Recognize (File)]\(認識 (ファイル)\) ボタンをクリックすると、画面の下部にオーディオ ファイルの内容である "What's the weather like?" が表示されます。 表示されます。
 
- ![シミュレートされた iOS アプリ](media/sdk/qs-objectivec-simulated-app.png)
+   ![シミュレートされた iOS アプリ](media/sdk/qs-objectivec-simulated-app.png)
 
 1. アプリの [Recognize (Microphone)]\(認識 (マイク)\) ボタンをクリックして何か話すと、発話した内容のテキストが画面の下部に表示されます。
 

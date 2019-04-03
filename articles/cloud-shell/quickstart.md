@@ -87,7 +87,7 @@ az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表示されます。 <br>
 ![](media/quickstart/ubuntu-welcome.png)
 
-## <a name="cleaning-up"></a>クリーンアップしています 
+## <a name="cleaning-up"></a>クリーンアップ 
 1. SSH セッションを終了します。
    ```azurecli-interactive
    exit
@@ -99,6 +99,6 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
    ```
 
 ## <a name="next-steps"></a>次の手順
-[Cloud Shell の Bash でのファイルの永続化については、こちらを参照してください](persisting-shell-storage.md) <br>
+[Cloud Shell の Bash でのファイルの永続化について](persisting-shell-storage.md) <br>
 [Azure CLI について](https://docs.microsoft.com/cli/azure/) <br>
 [Azure Files ストレージについて](../storage/files/storage-files-introduction.md) <br>

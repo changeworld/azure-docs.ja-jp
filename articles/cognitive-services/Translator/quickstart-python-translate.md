@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 4518f5a6bd232bce3cf973c21944ef3aa722d1f7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 573c45eb9c48d7b6663b518d4830577f951ec70d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727147"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899402"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>クイック スタート: Python と Translator Text API を使用して文字列を翻訳する
 
@@ -32,7 +32,7 @@ ms.locfileid: "56727147"
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
-普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `translate-text.py` という名前のファイルにコピーします。
+普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `translate-text.py` という名前のファイルにコピーします。 ライブラリが認識されるように、IDE のインタープリターが正しいバージョンの Python を参照していることを確認してください。
 
 ```python
 # -*- coding: utf-8 -*-

@@ -204,10 +204,6 @@ items:
       href: search-query-simple-examples.md
     - name: 例 (完全な Lucene)
       href: search-query-lucene-examples.md
-  - name: 結果を処理する
-    items:
-    - name: ページ関連の機能
-      href: search-pagination-page-layout.md
   - name: データのフィルター処理と並べ替え
     items:
     - name: フィルターの概要
@@ -216,8 +212,12 @@ items:
       href: search-filters-facets.md
     - name: ファセット ナビゲーションの追加
       href: search-faceted-navigation.md
-    - name: フィルターと OrderBy 式の構文
+    - name: フィルターと OrderBy 式の構文と例
       href: query-odata-filter-orderby-syntax.md
+  - name: 結果を処理する
+    items:
+    - name: ページ関連の機能
+      href: search-pagination-page-layout.md
   - name: 関連性のチューニング
     items:
     - name: スコアリング プロファイルの追加
@@ -307,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 74d4c29b7a4c70116531ef242929571eee3e4d90
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: ec82dc9f36f7fb4be24d3d1e833a951f72b48f5a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500502"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651466"

@@ -9,17 +9,17 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: f0fc1e693f3eccd0b6f6b69339f210785df6ea69
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5d89ac6a0a8918b30cac31580e7fc95c3f770b1a
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773234"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58436763"
 ---
 [!INCLUDE [](../../includes/devspaces-team-development-1.md)]
 
 ### <a name="make-a-code-change"></a>コードに変更を加える
-`mywebapi` の VS Code ウィンドウに移動し、既定の GET `/` ハンドラーのコードを編集します。次に例を示します。
+`mywebapi` の VS Code ウィンドウに移動し、`server.js` で既定の GET `/` ハンドラーのコードを編集します。次に例を示します。
 
 ```javascript
 app.get('/', function (req, res) {

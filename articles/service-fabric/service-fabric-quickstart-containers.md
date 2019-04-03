@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 05f8c1898e565e145aedbfdc13e0a88ad09486dc
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 0d4689e35cd308478ae0c0154761534dd834f146
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804653"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482336"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>クイック スタート:Service Fabric に Windows コンテナーをデプロイする
 
@@ -105,7 +105,7 @@ Microsoft は、異なるバージョンの Windows Server 上に構築された
 
 スクリプトを実行してクラスターが作成されたら、出力で `ClusterEndpoint` を検索します。 例: 
 
-```PowerShell
+```powershell
 ...
 ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/clusters/b76e757d-0b97-4037-a184-9046a7c818c0
 ```
@@ -149,7 +149,7 @@ Thumbprint                                Subject
 
 クラスター内の各アプリケーションには、一意の名前が必要です。 名前の競合が発生している場合は、Visual Studio プロジェクトの名前を変更し、もう一度デプロイします。
 
-ブラウザーを開き、前の手順で **[接続のエンドポイント]** フィールドに入力したアドレスに移動します。 URL には、必要に応じて先頭にスキーム ID (`http://`) を、末尾にポート (`:80`) を追加してください。 たとえば、「 http://mysfcluster.SouthCentralUS.cloudapp.azure.com:80 」のように入力します。
+ブラウザーを開き、前の手順で **[接続のエンドポイント]** フィールドに入力したアドレスに移動します。 URL には、必要に応じて先頭にスキーム ID (`http://`) を、末尾にポート (`:80`) を追加してください。 たとえば、http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80 のようになります。
 
  IIS の既定の Web ページが表示されます。![IIS の既定の Web ページ][iis-default]
 

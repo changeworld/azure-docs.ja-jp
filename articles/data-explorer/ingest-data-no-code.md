@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 2/5/2019
-ms.openlocfilehash: c171962fd6177a01afdb8e9605b09574c99f485e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 3/14/2019
+ms.openlocfilehash: 422813c1ddb77aa11195d3021484744839c4e3bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889224"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994332"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>チュートリアル:コードを 1 行も書かずに Azure Data Explorer にデータを取り込む
 
@@ -38,29 +38,44 @@ ms.locfileid: "56889224"
 
 ## <a name="azure-monitor-data-provider-diagnostic-and-activity-logs"></a>Azure Monitor データ プロバイダー: 診断ログとアクティビティ ログ
 
-Azure Monitor の診断ログとアクティビティ ログによって提供されたデータを表示して理解します。 これらのデータ スキーマに基づいて、取り込みパイプラインを作成します。
+以下の Azure Monitor の診断ログとアクティビティ ログによって提供されたデータを表示して理解します。 これらのデータ スキーマに基づいて、取り込みパイプラインを作成します。 ログの各イベントにはレコードの配列が含まれます。 このチュートリアルの後半では、このレコードの配列が分割されます。
 
 ### <a name="diagnostic-logs-example"></a>診断ログの例
 
-Azure 診断ログは、Azure サービスによって生成され、そのサービスの動作に関するデータを提供するメトリックです。 データは、1 分の時間グレインで集計されます。 診断ログの各イベントには、1 つのレコードが含まれます。 クエリ期間についての Azure Data Explorer メトリックイベント スキーマの例を次に示します。
+Azure 診断ログは、Azure サービスによって生成され、そのサービスの動作に関するデータを提供するメトリックです。 データは、1 分の時間グレインで集計されます。 クエリ期間についての Azure Data Explorer メトリックイベント スキーマの例を次に示します。
 
 ```json
 {
-    "count": 14,
-    "total": 0,
-    "minimum": 0,
-    "maximum": 0,
-    "average": 0,
-    "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
-    "time": "2018-12-20T17:00:00.0000000Z",
-    "metricName": "QueryDuration",
-    "timeGrain": "PT1M"
+    "records": [
+    {
+        "count": 14,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-20T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    },
+    {
+        "count": 12,
+        "total": 0,
+        "minimum": 0,
+        "maximum": 0,
+        "average": 0,
+        "resourceId": "/SUBSCRIPTIONS/F3101802-8C4F-4E6E-819C-A3B5794D33DD/RESOURCEGROUPS/KEDAMARI/PROVIDERS/MICROSOFT.KUSTO/CLUSTERS/KEREN",
+        "time": "2018-12-21T17:00:00.0000000Z",
+        "metricName": "QueryDuration",
+        "timeGrain": "PT1M"
+    }
+    ]
 }
 ```
 
 ### <a name="activity-logs-example"></a>アクティビティ ログの例
 
-Azure アクティビティ ログは、レコードのコレクションが含まれるサブスクリプションレベルのログです。 ログでは、サブスクリプション内のリソースで実行された操作についての分析情報が提供されます。 診断ログとは異なり、アクティビティ ログの各イベントにはレコードの配列が含まれます。 このチュートリアルでは後ほど、このレコードの配列を分割する必要があります。 アクセスを確認するためのアクティビティログ イベントの例を次に示します。
+Azure アクティビティ ログは、サブスクリプションのリソースに対して実行された操作を分析できるサブスクリプション レベルのログです。 アクセスを確認するためのアクティビティログ イベントの例を次に示します。
 
 ```json
 {
@@ -129,6 +144,8 @@ Azure Data Explorer の *TestDatabase* データベースで **[クエリ]** を
 
 ### <a name="create-the-target-tables"></a>ターゲット テーブルを作成する
 
+Azure Monitor ログの構造は表形式ではありません。 データを操作し、各イベントを 1 つまたは複数のレコードに展開します。 生データは、アクティビティ ログの場合は *ActivityLogsRawRecords*、診断ログの場合は *DiagnosticLogsRawRecords* という中間テーブルに取り込まれます。 その時点で、データを操作および展開します。 更新ポリシーを使用して、展開されたデータはアクティビティ ログの場合は *ActivityLogsRecords* テーブル、診断ログの場合は *DiagnosticLogsRecords* に取り込まれます。 つまり、アクティビティ ログを取り込むために 2 つの異なるテーブルを作成し、診断ログを取り込むために 2 つの異なるテーブルを作成する必要があります。
+
 Azure Data Explorer の Web UI を使用して、Azure Data Explorer データベースにターゲット テーブルを作成します。
 
 #### <a name="the-diagnostic-logs-table"></a>診断ログ テーブル
@@ -143,9 +160,13 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 
     ![Run query](media/ingest-data-no-code/run-query.png)
 
-#### <a name="the-activity-logs-tables"></a>アクティビティ ログ テーブル
+1. 次のクエリを使用して、データ操作用の *DiagnosticLogsRawRecords* という名前の中間データ テーブルを *TestDatabase* データベース内に作成します。 **[実行]** を選択してテーブルを作成します。
 
-アクティビティ ログの構造は表形式ではないため、データを操作し、各イベントを 1 つまたは複数のレコードに展開する必要があります。 生データは、*ActivityLogsRawRecords* という名前の中間テーブルに取り込まれます。 その時点で、データを操作および展開します。 その後、更新ポリシーを使用して、展開されたデータが *ActivityLogsRecords* テーブルに取り込まれます。 つまり、アクティビティ ログを取り込むには、2 つの異なるテーブルを作成する必要があります。
+    ```kusto
+    .create table DiagnosticLogsRawRecords (Records:dynamic)
+    ```
+
+#### <a name="the-activity-logs-tables"></a>アクティビティ ログ テーブル
 
 1. アクティビティ ログ レコードを受け取る *ActivityLogsRecords* という名前のテーブルを、*TestDatabase* データベース内に作成します。 テーブルを作成するには、次の Azure Data Explorer クエリを実行します。
 
@@ -174,7 +195,7 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 診断ログのデータをテーブルにマップするには、次のクエリを使用します。
 
 ```kusto
-.create table DiagnosticLogsRecords ingestion json mapping 'DiagnosticLogsRecordsMapping' '[{"column":"Timestamp","path":"$.time"},{"column":"ResourceId","path":"$.resourceId"},{"column":"MetricName","path":"$.metricName"},{"column":"Count","path":"$.count"},{"column":"Total","path":"$.total"},{"column":"Minimum","path":"$.minimum"},{"column":"Maximum","path":"$.maximum"},{"column":"Average","path":"$.average"},{"column":"TimeGrain","path":"$.timeGrain"}]'
+.create table DiagnosticLogsRawRecords ingestion json mapping 'DiagnosticLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
 #### <a name="table-mapping-for-activity-logs"></a>アクティビティ ログのテーブル マッピング
@@ -185,9 +206,11 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 .create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-### <a name="create-the-update-policy-for-activity-logs-data"></a>アクティビティ ログのデータ用に更新ポリシーを作成する
+### <a name="create-the-update-policy-for-log-data"></a>ログ データの更新ポリシーを作成する
 
-1. コレクション内の各値が個別の行を受け取るようにレコードのコレクションを展開する[関数](/azure/kusto/management/functions)を作成します。 [`mvexpand`](/azure/kusto/query/mvexpandoperator) 演算子を使用します。
+#### <a name="activity-log-data-update-policy"></a>アクティビティ ログ データによるポリシーの更新
+
+1. コレクション内の各値が個別の行を受け取るようにアクティビティ ログ レコードのコレクションを展開する[関数](/azure/kusto/management/functions)を作成します。 [`mvexpand`](/azure/kusto/query/mvexpandoperator) 演算子を使用します。
 
     ```kusto
     .create function ActivityLogRecordsExpand() {
@@ -212,6 +235,32 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
 
     ```kusto
     .alter table ActivityLogsRecords policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    ```
+
+#### <a name="diagnostic-log-data-update-policy"></a>診断ログ データによるポリシーの更新
+
+1. コレクション内の各値が個別の行を受け取るように診断ログ レコードのコレクションを展開する[関数](/azure/kusto/management/functions)を作成します。 [`mvexpand`](/azure/kusto/query/mvexpandoperator) 演算子を使用します。
+     ```kusto
+    .create function DiagnosticLogRecordsExpand() {
+        DiagnosticLogsRawRecords
+        | mvexpand events = Records
+        | project
+            Timestamp = todatetime(events["time"]),
+            ResourceId = tostring(events["resourceId"]),
+            MetricName = tostring(events["metricName"]),
+            Count = toint(events["count"]),
+            Total = todouble(events["total"]),
+            Minimum = todouble(events["minimum"]),
+            Maximum = todouble(events["maximum"]),
+            Average = todouble(events["average"]),
+            TimeGrain = tostring(events["timeGrain"])
+    }
+    ```
+
+2. [更新ポリシー](/azure/kusto/concepts/updatepolicy)をターゲット テーブルに追加します。 このポリシーでは、*DiagnosticLogsRawRecords* 中間データ テーブルに新しく取り込まれたデータに対してクエリが自動的に実行され、*DiagnosticLogsRecords* テーブルにその結果が取り込まれます。
+
+    ```kusto
+    .alter table DiagnosticLogsRecords policy update @'[{"Source": "DiagnosticLogsRawRecords", "Query": "DiagnosticLogRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
 ## <a name="create-an-azure-event-hubs-namespace"></a>Azure Event Hubs 名前空間を作成する
@@ -252,12 +301,12 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
     ![診断設定](media/ingest-data-no-code/diagnostic-settings.png)
 
 1. **[診断設定]** ウィンドウが開きます。 次の手順を実行します。
-    1. 診断ログ データに *ADXExportedData* という名前を付けます。
-    1. **[メトリック]** で、**[AllMetrics]** チェック ボックスをオンにします (省略可能)。
-    1. **[イベント ハブへのストリーム]** チェック ボックスをオンにします。
-    1. **[構成]** をクリックします。
+   1. 診断ログ データに *ADXExportedData* という名前を付けます。
+   1. **[メトリック]** で、**[AllMetrics]** チェック ボックスをオンにします (省略可能)。
+   1. **[イベント ハブへのストリーム]** チェック ボックスをオンにします。
+   1. **[構成]** をクリックします。
 
-    ![[診断設定] ウィンドウ](media/ingest-data-no-code/diagnostic-settings-window.png)
+      ![[診断設定] ウィンドウ](media/ingest-data-no-code/diagnostic-settings-window.png)
 
 1. **[イベント ハブの選択]** ウィンドウで、自分が作成したイベント ハブに診断ログからデータをエクスポートする方法を構成します。
     1. **[イベント ハブの名前空間の選択]** リストで、*AzureMonitoringData* を選択します。
@@ -330,7 +379,7 @@ Azure 診断ログでは、ストレージ アカウントまたはイベント 
 
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | **テーブル** | *DiagnosticLogsRecords* | 自分が *TestDatabase* データベースに作成したテーブル。 |
+    | **テーブル** | *DiagnosticLogsRawRecords* | 自分が *TestDatabase* データベースに作成したテーブル。 |
     | **データ形式** | *JSON* | テーブルで使用される形式。 |
     | **列マッピング** | *DiagnosticLogsRecordsMapping* | 自分が *TestDatabase* データベースに作成したマッピング。これにより、受信 JSON データが *DiagnosticLogsRecords* の列名とデータ型にマッピングされます。|
     | | |
@@ -400,6 +449,7 @@ ActivityLogsRecords
 ```
 
 クエリの結果:
+
 |   |   |
 | --- | --- |
 |   |  avg(DurationMs) |

@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
-ms.date: 10/31/2018
+ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 875f2d9dbbece4e9587462c6e8bdb2b2d8536c86
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c61e606bde4b50fa10c194c76c79a3d8a27a4b8e
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979889"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407693"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Windows VM でリモート デスクトップ サービスまたはその管理者パスワードをリセットする
 Windows 仮想マシン (VM) に接続できない場合は、ご自分のローカル管理者パスワードをリセットすることも、(Windows ドメイン コントローラーでサポートされていない) リモート デスクトップ サービスの構成をリセットすることもできます。 パスワードをリセットするには、Azure portal を使用するか、Azure PowerShell で VM アクセス拡張機能を使用します。 VM にサインインした後、そのローカル管理者のパスワードをリセットします。  
@@ -39,18 +39,19 @@ PowerShell を使用する場合は、[最新の PowerShell モジュールの�
 
 1. Windows VM を選択して、**[サポート + トラブルシューティング]** の **[パスワードのリセット]** を選択します。 **[パスワードのリセット]** ウィンドウが表示されます。
 
-1. **[パスワードのリセット]** を選択し、ユーザー名とパスワードを入力して、**[更新]** を選択します。 
+2. **[パスワードのリセット]** を選択し、ユーザー名とパスワードを入力して、**[更新]** を選択します。 
 
-1. VM への接続を再度試してみます。
+3. VM への接続を再度試してみます。
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**リモート デスクトップ サービスの構成のリセット**
 
+このプロセスでは、VM 上でリモート デスクトップ サービスを有効にし、既定の RDP ポート 3389 のファイアウォール規則を作成します。
+
 1. Windows VM を選択して、**[サポート + トラブルシューティング]** の **[パスワードのリセット]** を選択します。 **[パスワードのリセット]** ウィンドウが表示されます。 
 
-1. **[構成のみのリセット]** を選択して **[更新]** を選択します。 
+2. **[構成のみのリセット]** を選択して **[更新]** を選択します。 
 
-1. VM への接続を再度試してみます。
-
+3. VM への接続を再度試してみます。
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>VMAccess 拡張機能と PowerShell を使用してリセットする
 

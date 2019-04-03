@@ -100,7 +100,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |プロパティ|Type|説明|  
 |--------------|----------|-----------------|  
 |`Issues`|[問題](api-management-template-data-model-reference.md#Issue)エンティティのコレクション。|現在のユーザーに表示される問題。|  
-|`Paging`|[ページング](api-management-template-data-model-reference.md#Paging) エンティティ。|アプリケーション コレクションのページング情報。|  
+|`Paging`|[Paging](api-management-template-data-model-reference.md#Paging) エンティティ。|アプリケーション コレクションのページング情報。|  
 |`IsAuthenticated`|ブール値|現在のユーザーが開発者ポータルにサインインしているかどうか。|  
 |`CanReportIssues`|ブール値|問題を報告する権限が現在のユーザーにあるかどうか。|  
 |`Search`|文字列|このプロパティは非推奨です。使用しないでください。|  

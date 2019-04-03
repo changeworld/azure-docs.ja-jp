@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 27db3327e296dafea3af2180eeaadd0ff4680b8d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: da6c9bb6cbd94ab5078641f25e42ad2203ff7a53
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341952"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402356"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure マネージド アプリケーションの概要
 
@@ -32,6 +32,8 @@ Azure マネージド アプリケーションを使用して、ユーザーが�
 ユーザーは、マネージド アプリケーションを各自のサブスクリプションでデプロイしますが、アプリケーションの管理、更新、またはサービスの提供を行う必要はありません。 すべてのユーザーが承認済みのバージョンを使用していることを保証できます。 ユーザーは、これらのアプリケーションを管理するためのアプリケーション固有のドメインの知識を深める必要はありません。 ユーザーは、アプリケーションのトラブルシューティングや問題の診断を気にすることなく、アプリケーションの更新プログラムを自動的に取得します。 
 
 IT チームは、マネージド アプリケーションを使用して、組織内のユーザーに事前承認済みのソリューションを提供できます。 これらのソリューションが組織の標準に準拠していることへの確信が得られます。
+
+マネージド アプリケーションでは現在、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) がサポートされません。
 
 ## <a name="types-of-managed-applications"></a>マネージド アプリケーションの種類
 
