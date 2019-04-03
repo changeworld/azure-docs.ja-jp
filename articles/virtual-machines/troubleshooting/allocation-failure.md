@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 1298e7d7ed9c3760ff5022b5b97e8444eb1bcad1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 72fbdbcfcd94dd41a67bb81314802dd7314ae463
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007051"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316628"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Azure で VM を作成、再起動、またはサイズ変更するときの割り当てエラーのトラブルシューティング
 
@@ -25,7 +25,7 @@ ms.locfileid: "58007051"
 
 **エラー コード**:AllocationFailed または ZonalAllocationFailed
 
-**エラー メッセージ**:「割り当てに失敗しました。 このリージョンには、要求された VM サイズに対して十分な容量がありません。 Read more about improving likelihood of allocation success at `https://aka.ms/allocation-guidance`」(割り当てに失敗しました。このリージョンには、要求された VM サイズに対して十分な容量がありません。割り当てが成功する可能性を向上させる方法については、 http://aka.ms/allocation-guidance をご覧ください)
+**エラー メッセージ**:「割り当てに失敗しました。 このリージョンには、要求された VM サイズに対して十分な容量がありません。 割り当てが成功する可能性を向上させる方法については、https:\//aka.ms/allocation-guidance をご覧ください」
 
 この記事では、いくつかの一般的な割り当てエラーの原因を説明し、可能な対処方法を提案します。
 

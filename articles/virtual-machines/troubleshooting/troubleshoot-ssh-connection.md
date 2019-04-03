@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 1c28c0bb3fdc2bb94595910ccff9f86769b17da5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 81e00c4a3b9490a05667d58952f7bdf8945bacdb
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547132"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58446577"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 この記事は、Linux 仮想マシン (VM) に接続しようとしたときに、Secure Shell (SSH) エラー、SSH 接続エラー、または SSH の拒否により発生する問題を見つけて修正するために役立ちます。 Azure Portal、Azure CLI、または Linux 用の VM アクセス拡張機能を使用して、接続の問題を解決できます。
@@ -37,7 +37,7 @@ ms.locfileid: "57547132"
 3. [ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md) ルールで SSH トラフィックが許可されていることを確認します。
    * SSH トラフィックを許可する[ネットワーク セキュリティ グループ規則](#security-rules)が存在することを確認します (既定では TCP ポート 22)。
    * ポートのリダイレクト/マッピングは、Azure Load Balancer なしでは使用できません。
-4. [VM リソースの正常性](../../resource-health/resource-health-overview.md)を確認します。 
+4. [VM リソースの正常性](../../resource-health/resource-health-overview.md)を確認します。
    * VM が正常であると報告されていることを確認します。
    * [ブート診断を有効にしている](boot-diagnostics.md)場合は、VM のブート エラーがログに報告されていないことを確認します。
 5. [VM を再起動します](#restart-vm)。
@@ -49,6 +49,7 @@ ms.locfileid: "57547132"
 資格情報または SSH 構成は、次のいずれかの方法でリセットできます。
 
 * [Azure Portal](#use-the-azure-portal) - SSH 構成または SSH キーをすばやくリセットする必要があり、Azure ツールをインストールしていない場合に最適です。
+* [Azure VM シリアル コンソール](https://aka.ms/serialconsolelinux) - VM シリアル コンソールは、SSH 構成に関係なく動作し、VM への対話型コンソールを提供します。 実際に、シリアル コンソールは、"SSH 接続できない" 状況の解決を支援するように設計されています。 詳しくは、以下をご覧ください。
 * [Azure CLI](#use-the-azure-cli) - 既にコマンド ラインにいる場合は、SSH 構成または資格情報をすばやくリセットします。 クラシック VM を使用している場合は、[Azure クラシック CLI](#use-the-azure-classic-cli) を使用できます。
 * [Azure VMAccessForLinux 拡張機能](#use-the-vmaccess-extension) - json 定義ファイルを作成して再度使用して、SSH 構成またはユーザーの資格情報をリセットします。
 
@@ -76,6 +77,26 @@ SSH 構成をリセットするには、上のスクリーンショットのよ�
 ### <a name="check-routing"></a>ルーティングを確認する
 
 Network Watcher の[次ホップ](../../network-watcher/network-watcher-check-next-hop-portal.md)機能を使用して、ルートが仮想マシンとの間でトラフィックのルーティングを妨げていないことを確認します。 有効なルートを見直し、ネットワーク インターフェイスのすべての有効なルートを確認することもできます。 詳細については、「[有効なルートを使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/diagnose-network-routing-problem.md)」を参照してください。
+
+## <a name="use-the-azure-vm-serial-console"></a>Azure VM シリアル コンソールの使用
+[Azure VM シリアル コンソール](./serial-console-linux.md)では、Linux 仮想マシンのテキスト ベースのコンソールにアクセスできます。 コンソールを使用して、対話型シェル内で SSH 接続のトラブルシューティングを行うことができます。 シリアル コンソールを使用するための[前提条件](./serial-console-linux.md#prerequisites)を満たしていることを確認し、次のコマンドを試して SSH 接続のトラブルシューティングをさらに行います。
+
+### <a name="check-that-ssh-is-running"></a>SSH が実行されていることを確認する
+次のコマンドを使用して、VM 上で SSH が実行されているかどうかを確認できます。
+```
+$ ps -aux | grep ssh
+```
+出力がある場合は、SSH が稼働しています。
+
+### <a name="check-which-port-ssh-is-running-on"></a>SSH が実行されているポートの確認
+次のコマンドを使用して、SSH が実行されているポートを確認できます。
+```
+$ sudo grep Port /etc/ssh/sshd_config
+```
+出力は次のようになります。
+```
+Port 22
+```
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 まだインストールしていない場合は、最新の [Azure CLI](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index) を使用して Azure アカウントにサインインします。
@@ -209,8 +230,8 @@ Azure 内で VM を別のノードに再デプロイすると、基になるネ�
 
 > [!NOTE]
 > この操作を行うと、一時ディスクのデータが失われ、仮想マシンに関連付けられている動的 IP アドレスが更新されます。
-> 
-> 
+>
+>
 
 ### <a name="azure-portal"></a>Azure ポータル
 Azure Portal を使用して VM を再デプロイするには、VM を選択し、**[サポート + トラブルシューティング]** セクションまで下にスクロールします。 次の例のように、**[再デプロイ]** を選択します。
@@ -236,12 +257,12 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 
 * [Azure Portal](https://portal.azure.com) からリモート アクセスをリセットします。 Azure portal で VM を選択し、**[Reset Remote]\(リモートのリセット\)** を選択します。
 * VM を再起動します。 [Azure portal](https://portal.azure.com) で VM を選択し、**[再起動]** を選択します。
-    
+
 * 仮想マシンを新しい Azure ノードに VM を再デプロイします。 VM の再デプロイ方法については、「[新しい Azure ノードへの仮想マシンの再デプロイ](../windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
-  
+
     この操作を行うと、一時ディスクのデータが失われ、仮想マシンに関連付けられている動的 IP アドレスが更新されます。
 * [Linux ベースの仮想マシンのパスワードまたは SSH をリセットする方法](../linux/classic/reset-access-classic.md) の指示に従って、以下の操作を行います。
-  
+
   * パスワードまたは SSH キーをリセットする
   * *sudo* ユーザー アカウントを作成する
   * SSH 構成をリセットします。

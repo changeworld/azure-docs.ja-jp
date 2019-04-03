@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ef8498ae1aa9be0322f508b3723778311e2cdd5
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6abfd26e63cc8001f501371fffce0a4c10f4ff85
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327784"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483521"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS のデプロイ
 
@@ -158,7 +158,7 @@ ms.locfileid: "56327784"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -172,7 +172,7 @@ ms.locfileid: "56327784"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -314,7 +314,7 @@ ms.locfileid: "56327784"
 Azure で SAP on Oracle を実行できる Oracle のバージョンと対応する OS のバージョンに関しては、SAP Note [2039619] をご覧ください。
 
 Oracle での SAP Business Suite の実行に関する一般的な情報については、[SAP on Oracle](https://www.sap.com/community/topic/oracle.html) を参照してください。
-Oracle ソフトウェアを Microsoft Azure 上で実行できるようになりました。 Windows Hyper-V と Azure の一般的なサポートの詳細については、「[Oracle and Microsoft Azure FAQ (Oracle と Microsoft Azure に関する FAQ)](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)」をご覧ください。 
+Oracle ソフトウェアを Microsoft Azure 上で実行できるようになりました。 Windows Hyper-V と Azure の一般的なサポートの詳細については、「[Oracle and Microsoft Azure FAQ (Oracle と Microsoft Azure に関する FAQ)](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)」をご覧ください。 
 
 ## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>Oracle、SAP、Azure に関連する SAP Note 
 
@@ -426,7 +426,7 @@ Windows への Oracle のデプロイでは、「[Azure accelerated networking (
 「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」では、Azure 可用性セットや SAP の監視など、Oracle Database を使用した VM のデプロイに関係のある他の重要な概念が説明されています。
 
 ## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Oracle Linux 上の Oracle Database の詳細
-ゲスト OS として Oracle Linux を使用して、Oracle ソフトウェアを Microsoft Azure 上で実行できるようになりました。 Windows Hyper-V と Azure の一般的なサポートの詳細については、「[Azure and Oracle FAQ (Azure と Oracle に関する FAQ)](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)」をご覧ください。 
+ゲスト OS として Oracle Linux を使用して、Oracle ソフトウェアを Microsoft Azure 上で実行できるようになりました。 Windows Hyper-V と Azure の一般的なサポートの詳細については、「[Azure and Oracle FAQ (Azure と Oracle に関する FAQ)](https://www.oracle.com/technetwork/topics/cloud/faq-1963009.html)」をご覧ください。 
 
 Oracle Database を活用する SAP アプリケーションの特定のシナリオも同様にサポートされます。 詳細については、ドキュメントの次の部分で説明します。
 
@@ -463,12 +463,13 @@ Azure ページ BLOB ストレージまたは Managed Disks に基づくディ�
 サポートされている Azure VM のタイプを識別するには、SAP Note [1928533] をご覧ください。
 
 最小構成:
+
 | コンポーネント | ディスク | キャッシュ | ストライプ化* |
 | --- | ---| --- | --- |
-| /oracle/<SID>/origlogaA & mirrlogB | Premium | なし | 不要 |
-| /oracle/<SID>/origlogaB & mirrlogA | Premium | なし | 不要 |
-| /oracle/<SID>/sapdata1...n | Premium | 読み取り専用 | 使用可能 |
-| /oracle/<SID>/oraarch | Standard | なし | 不要 |
+| /oracle/\<SID>/origlogaA & mirrlogB | Premium | なし | 不要 |
+| /oracle/\<SID>/origlogaB & mirrlogA | Premium | なし | 不要 |
+| /oracle/\<SID>/sapdata1...n | Premium | 読み取り専用 | 使用可能 |
+| /oracle/\<SID>/oraarch | Standard | なし | 不要 |
 | Oracle ホーム、saptrace、... | OS ディスク | | 不要 |
 
 *ストライプ化: RAID0 を使用した LVM ストライプまたは MDADM
@@ -476,15 +477,16 @@ Azure ページ BLOB ストレージまたは Managed Disks に基づくディ�
 Oracle のオンラインの再実行ログをホストするためのディスクの選択は、IOPS 要件に従う必要があります。 ボリューム、IOPS、スループットの要件を満たしている限りは、1 つのマウント ディスク上の sapdata1...n (テーブルスペース) すべてを格納できます。 
 
 パフォーマンス構成:
+
 | コンポーネント | ディスク | キャッシュ | ストライプ化* |
 | --- | ---| --- | --- |
-| /oracle/<SID>/origlogaA | Premium | なし | 使用可能  |
-| /oracle/<SID>/origlogaB | Premium | なし | 使用可能 |
-| /oracle/<SID>/mirrlogAB | Premium | なし | 使用可能 |
-| /oracle/<SID>/mirrlogBA | Premium | なし | 使用可能 |
-| /oracle/<SID>/sapdata1...n | Premium | 読み取り専用 | 推奨  |
-| /oracle/SID/sapdata(n+1)* | Premium | なし | 使用可能 |
-| /oracle/<SID>/oraarch* | Premium | なし | 不要 |
+| /oracle/\<SID>/origlogaA | Premium | なし | 使用可能  |
+| /oracle/\<SID>/origlogaB | Premium | なし | 使用可能 |
+| /oracle/\<SID>/mirrlogAB | Premium | なし | 使用可能 |
+| /oracle/\<SID>/mirrlogBA | Premium | なし | 使用可能 |
+| /oracle/\<SID>/sapdata1...n | Premium | 読み取り専用 | 推奨  |
+| /oracle/\<SID>/sapdata(n+1)* | Premium | なし | 使用可能 |
+| /oracle/\<SID>/oraarch* | Premium | なし | 不要 |
 | Oracle ホーム、saptrace、... | OS ディスク | 不要 |
 
 *ストライプ化: RAID0 を使用した LVM ストライプまたは MDADM

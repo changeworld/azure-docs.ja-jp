@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: aa46fbce9d11a8fd380a5ee1990c0e7924079a9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8dc0a003a12eb0aca28c6a3238e2119dc449d661
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078688"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309420"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Azure 仮想マシン イメージを事前に検証するための自己テスト クライアントを作成する
 
@@ -54,7 +54,7 @@ ms.locfileid: "58078688"
 自己テスト API には、POST メソッドのみをサポートする 1 つのエンドポイントが含まれています。  その構造を次に示します。
 
 ```
-Uri:             https://isvapp.azurewebsites.net/selftest-vm
+Uri:             https:\//isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -260,7 +260,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
    - **名前** - アプリのフレンドリ名を入力します。 たとえば、"SelfTestClient" です。
    - **アプリケーションの種類** - **[Web App/API]\(Web アプリ/API\)** を選択します
-   - **サインオン URL** - 「 https://isvapp.azurewebsites.net/selftest-vm」と入力します
+   - **サインオン URL** - 「https:\//isvapp.azurewebsites.net/selftest-vm」と入力します
 
 4. **作成**を選択します。
 5. **[アプリの登録]** または **[登録済みのアプリ]** の下に **[アプリケーション ID]** をコピーします。

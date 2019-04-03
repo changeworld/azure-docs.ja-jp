@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: f66101d9847c57c5e078c3484a243e7b38823f53
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d6a4c5b2b6d9818dffdb1c1fee8c4c0df7cad77c
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001789"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539804"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows VM をアマゾン ウェブ サービス (AWS) から Azure 仮想マシンに移行する
 
@@ -48,7 +48,7 @@ ms.locfileid: "58001789"
 
 Amazon S3 バケット内の VHD に EC2 インスタンスをエクスポートします。 Amazon のドキュメント記事「[Exporting an Instance as a VM Using VM Import/Export (VM Import/Export を使用して VM としてインスタンスをエクスポート)](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html)」の手順に従って [create-instance-export-task](https://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) コマンドを実行し、EC2 インスタンスを VHD ファイルにエクスポートします。 
 
-エクスポートされた VHD ファイルは、指定した Amazon S3 バケットに保存されます。 VHD をエクスポートするための基本的な構文を次に示します。<brackets> 内のプレースホルダー テキストを実際の情報に置き換えるだけです。
+エクスポートされた VHD ファイルは、指定した Amazon S3 バケットに保存されます。 VHD をエクスポートするための基本的な構文を次に示します。\<brackets> 内のプレースホルダー テキストを実際の情報に置き換えるだけです。
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \

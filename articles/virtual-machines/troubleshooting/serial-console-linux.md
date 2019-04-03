@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 4fd96aedc658833493d6fddb704104a70c01df44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f407d87249c44ad3a4773b2cd8fc85ee09506ceb
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010979"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445654"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Linux の仮想マシンのシリアル コンソール
 
@@ -41,9 +41,9 @@ Windows VM のシリアル コンソールのドキュメントについては�
 
 - シリアル コンソールを使用するアカウントには、VM の[仮想マシン共同作成者ロール](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)と[ブート診断](boot-diagnostics.md)のストレージ アカウントが必要です。
 
-    - シリアル コンソールにアクセスする VM には、パスワードベースのアカウントが必要です。 このアカウントは、VM アクセス拡張機能の[パスワードのリセット](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)機能を使用して作成することができます。 **[サポート + トラブルシューティング]** セクションの **[パスワードのリセット]** を選択します。
+- シリアル コンソールにアクセスする VM には、パスワードベースのアカウントが必要です。 このアカウントは、VM アクセス拡張機能の[パスワードのリセット](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password)機能を使用して作成することができます。 **[サポート + トラブルシューティング]** セクションの **[パスワードのリセット]** を選択します。
 
-    - Linux ディストリビューションに固有の設定については、「[シリアル コンソールの Linux ディストリビューションの可用性](#serial-console-linux-distribution-availability)」を参照してください。
+- Linux ディストリビューションに固有の設定については、「[シリアル コンソールの Linux ディストリビューションの可用性](#serial-console-linux-distribution-availability)」を参照してください。
 
 
 
@@ -85,12 +85,11 @@ Oracle Linux        | シリアル コンソール アクセスが既定で有�
 
 シナリオ          | シリアル コンソールでのアクション
 :------------------|:-----------------------------------------
-壊れた *FSTAB* ファイル | **Enter** キーを押して続行し、テキスト エディターを使って *FSTAB* ファイルを修正します。 そのためには、シングル ユーザー モードにすることが必要な場合があります。 詳細については、[fstab の問題の修正方法](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)に関するページ、および「[シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする](serial-console-grub-single-user-mode.md)」を参照してください。
-不適切なファイアウォール規則 | シリアル コンソールにアクセスして iptables を修正します。
-ファイル システムの破損/チェック | シリアル コンソールにアクセスし、ファイルシステムを復旧します。
-SSH/RDP の構成の問題 | シリアル コンソールにアクセスし、設定を変更します。
-システムのネットワーク ロックダウン| Azure portal からシリアル コンソールにアクセスして、システムを管理します。
-ブートローダーの操作 | シリアル コンソール ブレードから VM を再起動して、Linux VM 上の GRUB にアクセスします。 詳細については、「[シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする](serial-console-grub-single-user-mode.md)」を参照してください。
+壊れた *FSTAB* ファイル | **Enter** キーを押して続行し、テキスト エディターを使って *FSTAB* ファイルを修正します。 そのためには、シングル ユーザー モードにすることが必要な場合があります。 詳しくは、[fstab の問題の修正方法](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors)に関するページのシリアル コンソールのセクション、および「[シリアル コンソールを使用して GRUB とシングル ユーザー モードにアクセスする](serial-console-grub-single-user-mode.md)」をご覧ください。
+不適切なファイアウォール規則 |  SSH 接続をブロックするように iptables を構成した場合は、シリアル コンソールを使用して、SSH を必要とせずに VM と対話できます。 詳しくは、[iptables の man ページ](https://linux.die.net/man/8/iptables)をご覧ください。 同様に、firewalld によって SSH アクセスがブロックされている場合は、シリアル コンソールを通じて VM にアクセスし、firewalld を再構成できます。 詳しくは、[firewalld のドキュメント](https://firewalld.org/documentation/)をご覧ください。
+ファイル システムの破損/チェック | 破損したファイル システムのシリアル コンソールを使用したトラブルシューティングについて詳しくは、「[Azure の Linux VM は、ファイル システム エラーが発生したため開始できません](https://support.microsoft.com/en-us/help/3213321/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck)」のシリアル コンソールのセクションをご覧ください。
+SSH 構成の問題 | シリアル コンソールにアクセスし、設定を変更します。 シリアル コンソールは、VM にネットワーク接続がなくても機能するので、VM の SSH 構成に関係なく使用できます。 トラブルシューティング ガイドは、「[Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-ssh-connection)」にあります。 詳しくは、「[Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順](./detailed-troubleshoot-ssh-connection.md)」をご覧ください
+ブートローダーの操作 | シリアル コンソール ブレードから VM を再起動して、Linux VM 上の GRUB にアクセスします。 詳細および distro 固有の情報については、「[シリアル コンソールを使用して GRUB とシングル ユーザー モードにアクセスする](serial-console-grub-single-user-mode.md)」をご覧ください。
 
 ## <a name="disable-the-serial-console"></a>シリアル コンソールを無効にする
 既定では、すべてのサブスクリプションは、すべての VM に対してシリアル コンソールのアクセスが有効になっています。 VM レベルまたはサブスクリプション レベルのいずれかで、シリアル コンソールを無効にすることができます。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: fb4fed2aa6b80ceb37dde1205996a16f0c30bdd4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4483a7f53e084be5f245840829f4c9c95648b1af
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994716"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520583"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 での SAP HANA スケールアウトの高可用性セットアップの確認とトラブルシューティング 
 
@@ -458,7 +458,7 @@ node.startup = automatic
 5. イニシエーター名の上にある **[Service Start]\(サービスの開始\)** 値が **[When Booting]\(起動時\)** に設定されていることを確認します。
 6. そうでない場合は、**[Manually]\(手動\)** の代わりに **[When Booting]\(起動時\)** に設定します。
 7. 次に、上部のタブを **[Connected Targets]\(接続済みのターゲット\)** に切り替えます。
-8. **[Connected Targets]\(接続済みのターゲット)** 画面に、この例: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso** のような SBD デバイスのエントリが表示されます。
+8. **[Connected Targets]\(接続済みのターゲット)** 画面に、次の例のような SBD デバイスのエントリが表示されます:**10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**。
 9. **Start-Up** 値が **on boot** に設定されているかどうかを確認します。
 10. そうでない場合は、**[Edit]\(編集\)** を選択して変更します。
 11. 変更内容を保存し、YaST2 を終了します。
@@ -964,7 +964,7 @@ https://&ltnode&gt:7630
 ![Hawk で制約を一覧表示する](media/hana-vm-scale-out-HA-troubleshooting/hawk-2.png)
 
 
-次のように、**[History]\(履歴\)** の下の Hawk で **hb_report** 出力をアップロードすることもできます。 「[ログ ファイルを収集する hb_report](#hbreport-to-collect-log-files)」を参照してください。 
+次のように、**[History]\(履歴\)** の下の Hawk で **hb_report** 出力をアップロードすることもできます。 「ログ ファイルを収集する hb_report」を参照してください。 
 
 ![Hawk で hb_report 出力をアップロードする](media/hana-vm-scale-out-HA-troubleshooting/hawk-3.png)
 

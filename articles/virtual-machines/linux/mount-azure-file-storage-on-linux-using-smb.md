@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: bc4de2d406ea2c1814825daf89d5e6a576c94036
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4b3bba1da5238655ca749f6464c539e53ca48f27
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764814"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540059"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
@@ -42,7 +42,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-[az storage account create](/cli/azure/storage/account) を使用して、作成したリソース グループ内に新しいストレージ アカウントを作成します。 この例では、*mySTORAGEACCT<random number>* という名前のストレージ アカウントを作成し、ストレージ アカウントの名前を変数 **STORAGEACCT** に設定します。 ストレージ アカウント名は一意にする必要があります。`$RANDOM` を使用し、末尾に番号を追加して、一意にします。Ⅰ
+[az storage account create](/cli/azure/storage/account) を使用して、作成したリソース グループ内に新しいストレージ アカウントを作成します。 この例では、*mySTORAGEACCT\<random number>* という名前のストレージ アカウントを作成し、そのストレージ アカウントの名前を変数 **STORAGEACCT** に設定します。 ストレージ アカウント名は一意にする必要があります。`$RANDOM` を使用し、末尾に番号を追加して、一意にします。Ⅰ
 
 ```bash
 STORAGEACCT=$(az storage account create \

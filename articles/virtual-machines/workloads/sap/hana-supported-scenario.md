@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e8253238bf5edb5e0ea3f89fe67d6aa39f4a2d7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 501c5ffa86f2360e44c187e087f7285bbf4084fd
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855457"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482965"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA L インスタンスのサポートされるシナリオ
 このドキュメントでは、HANA L インスタンス (HLI) のサポートされるシナリオとそのアーキテクチャの詳細について説明します。
@@ -68,10 +68,10 @@ HANA L インスタンスは、ビジネス要件を達成するためにさま�
 | b | TYPE I | eth2.tenant | eno3.tenant | ノード間 |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | STONITH |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | ノード間 |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | STONITH |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | ノード間 |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | STONITH |
 
 HLI ユニットに構成されたトポロジに基づいてインターフェイスを使用します。 たとえば、インターフェイス "B" はノード間通信用に設定されています。これは、スケールアウト トポロジが構成されている場合に便利です。 単一ノードのスケールアップ構成の場合、このインターフェイスは使用されません。 インターフェイスの使用方法の詳細については、実際に必要なシナリオを確認してください (このドキュメントで後述します)。 
 
@@ -101,7 +101,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 ストレージは、要求されたトポロジに基づいて事前に構成されています。 ボリュームのサイズとマウントポイントは、構成されているサーバー、SKU、およびトポロジの数に応じて変わります。 詳細については、実際に必要なシナリオを確認してください (このドキュメントで後述します)。 さらにストレージが必要な場合は、1 TB ずつ購入できます。
 
 >[!NOTE]
->マウントポイント /usr/sap/<SID> は、/hana/shared マウントポイントへのシンボリック リンクです。
+>マウントポイント /usr/sap/\<SID> は、/hana/shared マウントポイントへのシンボリック リンクです。
 
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
@@ -142,10 +142,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -177,10 +177,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -217,10 +217,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -258,10 +258,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -312,10 +312,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | STONITH 用に使用 |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | STONITH 用に使用 |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | STONITH 用に使用 |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -360,10 +360,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | STONITH 用に使用 |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | STONITH 用に使用 |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | STONITH 用に使用 |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -419,10 +419,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | ノード間通信 |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | ノード間通信 |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | ノード間通信 |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -460,10 +460,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | ノード間通信 |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | ノード間通信 |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | ノード間通信 |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -496,10 +496,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | ノード間通信 |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | ノード間通信 |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | ノード間通信 |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
@@ -535,10 +535,10 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 | b | TYPE I | eth2.tenant | eno3.tenant | ノード間通信 |
 | C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
 | D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
-| A | TYPE II | vlan<tenantNo> | team0.tenant | クライアントから HLI |
-| b | TYPE II | vlan<tenantNo+2> | team0.tenant+2 | ノード間通信 |
-| C | TYPE II | vlan<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
-| D | TYPE II | vlan<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | ノード間通信 |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
 
 ### <a name="storage"></a>Storage
 次のマウントポイントは事前に構成されています。
