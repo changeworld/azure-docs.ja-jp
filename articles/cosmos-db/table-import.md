@@ -43,7 +43,7 @@ ms.locfileid: "58006244"
 
    ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
-```
+   ```
 
 コマンドのオプションは次のとおりです。
 
