@@ -31,7 +31,7 @@ JSON データから、指定された要素を取得します。
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputJson | 文字列 | 項目を取得する要求変換で使用される ClaimTypes。 |
 | InputParameter | claimToExtract | 文字列 | 抽出する JSON 要素の名前。 |
-| OutputClaim | extractedClaim | 文字列 | このclaims transformation が呼び出された後に生成される ClaimType は、 _claimToExtract_入力パラメーターに指定された要素の値です。 |
+| OutputClaim | extractedClaim | 文字列 | このclaims transformation が呼び出された後に生成される ClaimType は、 _claimToExtract_ 入力パラメーターに指定された要素の値です。 |
 
 次の例では、JSON データから要求変換によって`emailAddress`要素が抽出されます。`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
