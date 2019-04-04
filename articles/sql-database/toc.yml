@@ -233,7 +233,7 @@ items:
         href: sql-database-data-discovery-and-classification.md
       - name: 脆弱性評価
         href: sql-vulnerability-assessment.md
-      - name: 脅威の検出
+      - name: 高度な脅威保護
         href: sql-database-threat-detection-overview.md
     - name: サーバーレベルの IP ファイアウォール規則
       items:
@@ -729,9 +729,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: エラスティック ジョブのアンインストール (非推奨)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 43ed2064f7bba7799bdcbc275e255ed551d7c4a3
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: c5499ed8f5fc5de742ff75c0692221f54a56b1a0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540569"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894561"
