@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 05dd3b292f90964c6af21890aaeafab9849a09ed
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9eb8b3aefedb3e3330715408595a21596f33a413
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242979"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480941"
 ---
 # <a name="download-azure-stack-tools-from-github"></a>GitHub からの Azure Stack ツールのダウンロード
 
@@ -28,7 +28,7 @@ ms.locfileid: "55242979"
 
 **AzureStack-Tools** は PowerShell モジュールをホストする [GitHub リポジトリ](https://github.com/Azure/AzureStack-Tools)で、リソースの管理と Azure Stack へのデプロイに使用できます。 VPN 接続を確立しようとしている場合は、これらの PowerShell モジュールを Azure Stack Development Kit にダウンロードするか、Windows ベースの外部クライアントにダウンロードできます。 これらのツールを入手するには、GitHub リポジトリを複製するか、次のスクリプトを実行して **AzureStack-Tools** フォルダーをダウンロードします。
 
-```PowerShell
+```powershell
 # Change directory to the root directory. 
 cd \
 

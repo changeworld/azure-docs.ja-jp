@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 9eb2e8ddde13783eabf3d82173e6a2fa75ec2b06
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ef75b161bcdb9e1b9658612b783dff46d1fa2502
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082672"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484340"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack での特権エンドポイントの使用
 
@@ -53,7 +53,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
 
     - 統合システムで、管理者特権の Windows PowerShell セッションから次のコマンドを実行して、ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行されているセキュリティ強化された仮想マシンの信頼されたホストとして PEP を追加します。
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - ASDK を実行している場合、開発キットのホストにサインインします。
@@ -61,7 +61,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
 2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行しているセキュリティ強化された仮想マシンで、Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
  
    - 統合システム上で:
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -70,7 +70,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
      `ComputerName` パラメーターは、PEP をホストする仮想マシンの 1 台の IP アドレスまたは DNS 名のどちらかです。 
    - ASDK を実行している場合:
      
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName azs-ercs01 `
@@ -113,7 +113,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
 
 そのため、たとえば、特定のコマンドレットについてパラメーターの一覧を取得するには、次のコマンドを実行します。
 
-```PowerShell
+```powershell
     Get-Command <cmdlet_name> -Syntax
 ```
 
@@ -125,7 +125,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
 
     統合システムで、管理者特権の Windows PowerShell セッションから次のコマンドを実行して、ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行されているセキュリティ強化された仮想マシンの信頼されたホストとして PEP を追加します。
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - ASDK を実行している場合、開発キットのホストにサインインします。
@@ -133,7 +133,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
 2. ハードウェア ライフサイクル ホストまたは Privileged Access Workstation で実行しているセキュリティ強化された仮想マシンで、Windows PowerShell セッションを開きます。 次のコマンドを実行して、PEP をホストする仮想マシン上でリモート セッションを確立します。
  
    - 統合システム上で:
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -142,7 +142,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
      `ComputerName` パラメーターは、PEP をホストする仮想マシンの 1 台の IP アドレスまたは DNS 名のどちらかです。 
    - ASDK を実行している場合:
      
-     ```PowerShell
+     ```powershell
       $cred = Get-Credential
 
       $session = New-PSSession -ComputerName azs-ercs01 `
@@ -154,7 +154,7 @@ PEP には、PEP をホストする仮想マシン上のリモート PowerShell 
      - **Password**:インストール中に AzureStackAdmin ドメイン管理者アカウントのパスワードとして指定したものと同じパスワードを入力します。
 
 3. ローカル コンピューターに PEP セッションをインポートします
-    ```PowerShell 
+    ```powershell 
         Import-PSSession $session
     ```
 4. これで、Azure Stack のセキュリティ対策を損なうことなく、PEP のすべての関数およびコマンドレットと共に、ローカルの PowerShell セッションで通常どおりにタブ補完を使用し、スクリプトを実行できるようになりました。 機能を有効にご活用ください。

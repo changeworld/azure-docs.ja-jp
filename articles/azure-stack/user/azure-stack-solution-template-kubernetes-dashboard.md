@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 76af6d6585d52eee99548f69c92bd414068fa28d
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 4e9df0d413b964b4a14cf9ca48db8b7956b441f9
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259212"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482591"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Azure Stack で Kubernetes ダッシュボードにアクセスする 
 
@@ -106,7 +106,7 @@ Kubernetes には、基本的な管理操作に使用できる Web ダッシュ�
 
 3. ファイルの場所を書き留めておきます。 その場所でスクリプトを更新してから、管理者特権のプロンプトで PowerShell を開きます。 更新されたスクリプトを実行します。  
 
-    ```PowerShell   
+    ```powershell   
     Import-Certificate -Filepath "ca.crt" -CertStoreLocation cert:\LocalMachine\Root 
     $pfxpwd = Get-Credential -UserName 'Enter password below' -Message 'Enter password below' 
     Import-PfxCertificate -Filepath "client.pfx" -CertStoreLocation cert:\CurrentUser\My -Password $pfxpwd.Password 

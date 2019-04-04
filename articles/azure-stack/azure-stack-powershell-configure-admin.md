@@ -15,12 +15,12 @@ ms.date: 03/15/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: a0411e3aa8f4df1039a129fd73ebdad5a58c5a0c
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: daf30098888a0d7779ccff4d4c6c2ce6390511fe
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257586"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486225"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>オペレーターとして PowerShell を使用して Azure Stack に接続する
 
@@ -39,7 +39,7 @@ PowerShell を使用してオファー、プラン、クォータ、アラート
 
 PowerShell を使用する Azure Stack オペレーター環境を構成します。 次のスクリプトのいずれかを実行します。Azure Active Directory (Azure AD) tenantName と Azure Resource Manager エンドポイント値を独自の環境構成で置き換えます。 <!-- GraphAudience endpoint -->
 
-```PowerShell  
+```powershell  
     # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
 Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external"
 
@@ -59,7 +59,7 @@ Azure Stack オペレーター環境に Active Directory フェデレーショ�
 
 <!-- GraphAudience endpoint -->
 
-  ```PowerShell  
+  ```powershell  
   # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
   Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external"
 
@@ -74,7 +74,7 @@ Azure Stack オペレーター環境に Active Directory フェデレーショ�
 
 必要な設定がすべて整ったら、PowerShell を使って Azure Stack にリソースを作成してみましょう。 たとえば、アプリケーションのリソース グループを作成して仮想マシンを追加できます。 次のコマンドを使用して、**MyResourceGroup** という名前のリソース グループを作成します。
 
-```PowerShell  
+```powershell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 
