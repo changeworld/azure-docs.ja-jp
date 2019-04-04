@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 6f878e05255be8f65868d8d1dcdbacb3ccfa2729
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 31b18e2dfbad1f572b5c9b0ae59f5e076db7cde2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369940"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649290"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Azure Logic Apps へのアクセスのセキュリティ保護
 
@@ -52,7 +52,7 @@ ms.locfileid: "58369940"
 Shared Access Signature によるアクセスのセキュリティ保護の詳細を以下に示します。
 
 * [アクセス キーを再生成する](#access-keys)
-* [有効期限付きのコールバック URL を作成する](#expiring-URLs)
+* [有効期限付きのコールバック URL を作成する](#expiring-urls)
 * [プライマリまたはセカンダリのキーを使用して URL を作成する](#primary-secondary-key)
 
 <a name="access-keys"></a>
@@ -156,8 +156,9 @@ Azure portal でこの制限を設定するには、お客様のロジック ア
 
 特定のユーザーまたはグループにのみお客様のロジック アプリに対する操作の実行を許可するために、管理、編集、表示などのタスクでアクセスを制限できます。 Logic Apps では、[Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) がサポートされていて、組み込みのロールをカスタマイズしてお客様のサブスクリプションのメンバーに割り当てることができます。次に例を示します。
 
-* **ロジック アプリの共同作成者**: ユーザーがお客様のロジック アプリを表示、編集、更新できます。 このロールでは、ロジック アプリを削除したり管理者の操作を実行したりできません。
-* **ロジック アプリのオペレーター**: ユーザーがお客様のロジック アプリと実行履歴を表示できます。また、お客様のロジック アプリを有効または無効にすることができます。 このロールでは、お客様のロジック アプリを編集したり、更新したりできません。
+* [ロジック アプリの共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor): ユーザーがお客様のロジック アプリを表示、編集、更新できます。 
+
+* [ロジック アプリのオペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator): ユーザーがお客様のロジック アプリと実行履歴を表示できます。また、お客様のロジック アプリを有効または無効にすることができます。 このロールでは、お客様のロジック アプリを編集したり、更新したりできません。
 
 他のユーザーがお客様のロジック アプリを変更したり削除したりしないようにするには、[Azure のリソース ロック](../azure-resource-manager/resource-group-lock-resources.md)を使用できます。 この機能は、他のユーザーが運用リソースを変更したり削除したりしないようにするのに役立ちます。
 

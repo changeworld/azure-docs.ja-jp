@@ -16,14 +16,15 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56fda1110218910f8fbd8aa9597195f37444e01c
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193329"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793324"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード ハッシュ同期のトラブルシューティング
+
 このトピックでは、パスワード ハッシュ同期の問題のトラブルシューティングを行う手順を示します。 パスワードが想定どおりに同期しない場合、そのパスワードが、ユーザーのサブセット、またはすべてのユーザーを対象している可能性があります。
 
 Azure Active Directory (Azure AD) Connect バージョン 1.1.614.0 以降のデプロイについては、ウィザードのトラブルシューティング タスクを使用して、パスワード ハッシュ同期の問題のトラブルシューティングを行ってください。
@@ -47,12 +48,14 @@ Azure Active Directory (Azure AD) Connect バージョン 1.1.614.0 以降のデ
 
 
 ## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>パスワードが同期されない: トラブルシューティング タスクによるトラブルシューティング
+
 トラブルシューティング タスクを使用して、パスワードが同期されない理由を確認できます。
 
 > [!NOTE]
 > トラブルシューティング タスクは、Azure AD Connect バージョン 1.1.614.0 以降のみで使用できます。
 
 ### <a name="run-the-troubleshooting-task"></a>トラブルシューティング タスクを実行する
+
 パスワードが同期されない問題のトラブルシューティングを行うには:
 
 1. **[管理者として実行]** オプションを指定して、Azure AD Connect サーバーで新しい Windows PowerShell セッションを開きます。
@@ -70,6 +73,7 @@ Azure Active Directory (Azure AD) Connect バージョン 1.1.614.0 以降のデ
 7. サブ メニューで、**[Password hash synchronization does not work at all]\(パスワード ハッシュ同期がまったく機能しない\)** を選択します。
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>トラブルシューティング タスクの結果を理解する
+
 トラブルシューティング タスクでは、次のチェックが実行されます。
 
 * パスワード ハッシュ同期機能が Azure AD テナントに対して有効になっていることを検証します。
@@ -95,26 +99,31 @@ Azure Active Directory (Azure AD) Connect バージョン 1.1.614.0 以降のデ
 このセクションの残りの部分では、タスクによって返される具体的な結果と、それに対応する問題について説明します。
 
 #### <a name="password-hash-synchronization-feature-isnt-enabled"></a>パスワード ハッシュ同期機能が有効になっていない
+
 Azure AD Connect ウィザードを使用してパスワード ハッシュ同期を有効にしていなかった場合は、次のエラーが返されます。
 
 ![パスワード ハッシュ同期が有効になっていない](./media/tshoot-connect-password-hash-synchronization/phsglobaldisabled.png)
 
 #### <a name="azure-ad-connect-server-is-in-staging-mode"></a>Azure AD Connect サーバーがステージング モードである
+
 Azure AD Connect サーバーがステージング モードである場合、パスワード ハッシュ同期は一時的に無効になり、次のエラーが返されます。
 
 ![Azure AD Connect サーバーがステージング モードである](./media/tshoot-connect-password-hash-synchronization/phsglobalstaging.png)
 
 #### <a name="no-password-hash-synchronization-heartbeat-events"></a>パスワード ハッシュ同期のハートビート イベントがない
+
 オンプレミスの Active Directory コネクタごとに、独自のパスワード ハッシュ同期チャネルがあります。 パスワード ハッシュ同期チャネルが確立され、同期するパスワード変更がない場合は、Windows アプリケーション イベント ログでハートビート イベント (EventId 654) が 30 分に 1 回生成されます。 このコマンドレットは、オンプレミスの Active Directory コネクタごとに、過去 3 時間の対応するハートビートを検索します。 ハートビート イベントが見つからないと、次のエラーが返されます。
 
 ![パスワード ハッシュ同期のハートビート イベントがない](./media/tshoot-connect-password-hash-synchronization/phsglobalnoheartbeat.png)
 
 #### <a name="ad-ds-account-does-not-have-correct-permissions"></a>AD DS アカウントに適切なアクセス許可がない
+
 パスワード ハッシュを同期するためにオンプレミスの Active Directory コネクタによって使用される AD DS アカウントに、適切なアクセス許可がない場合は、次のエラーが返されます。
 
 ![正しくない資格情報](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>AD DS アカウントのユーザー名またはパスワードが正しくない
+
 パスワード ハッシュを同期するためにオンプレミスの Active Directory コネクタによって使用される AD DS アカウントに、誤ったユーザー名またはパスワードが指定さている場合は、次のエラーが返されます。
 
 ![正しくない資格情報](./media/tshoot-connect-password-hash-synchronization/phsglobalaccountincorrectcredential.png)
@@ -129,6 +138,7 @@ Azure AD Connect サーバーがステージング モードである場合、�
 > トラブルシューティング タスクは、Azure AD Connect バージョン 1.1.614.0 以降のみで使用できます。
 
 ### <a name="run-the-diagnostics-cmdlet"></a>診断コマンドレットを実行する
+
 特定のユーザー オブジェクトに関する問題のトラブルシューティングを行うには:
 
 1. **[管理者として実行]** オプションを指定して、Azure AD Connect サーバーで新しい Windows PowerShell セッションを開きます。
@@ -146,6 +156,7 @@ Azure AD Connect サーバーがステージング モードである場合、�
 7. サブ メニューで、**[Password is not synchronized for a specific user account]\(特定のユーザー アカウントのパスワードが同期されない\)** を選択します。
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>トラブルシューティング タスクの結果を理解する
+
 トラブルシューティング タスクでは、次のチェックが実行されます。
 
 * Active Directory コネクタ スペース、メタバース、および Azure AD コネクタ スペースで、Active Directory オブジェクトの状態を調べます。
@@ -161,16 +172,19 @@ Azure AD Connect サーバーがステージング モードである場合、�
 このセクションの残りの部分では、コマンドレットによって返される具体的な結果と、それに対応する問題について説明します。
 
 #### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Active Directory オブジェクトが Azure AD にエクスポートされない
+
 Azure AD テナントに対応するオブジェクトがないため、このオンプレミス Active Directory アカウントのパスワード ハッシュ同期が失敗します。 次のエラーが返されます。
 
 ![Azure AD オブジェクトがない](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
 
 #### <a name="user-has-a-temporary-password"></a>ユーザーに一時パスワードがある
+
 現在、Azure AD Connect では、一時パスワードと Azure AD の同期はサポートされていません。 オンプレミスの Active Directory ユーザーで **[Change password at next logon]\(次回ログオン時にパスワード変更が必要\)** オプションが設定されている場合、パスワードは一時的なものと見なされます。 次のエラーが返されます。
 
 ![一時パスワードがエクスポートされない](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
 
 #### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>パスワード同期の前回の試行結果を使用できない
+
 既定では、Azure AD Connect では、パスワード ハッシュ同期の試行結果が 7 日間保存されます。 選択した Active Directory オブジェクトについて使用できる結果がない場合は、次の警告が返されます。
 
 ![1 つのオブジェクトの診断出力 - パスワード同期履歴がない](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnohistory.png)
@@ -178,12 +192,14 @@ Azure AD テナントに対応するオブジェクトがないため、この�
 
 
 ## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>パスワードが同期されない: 診断コマンドレットによるトラブルシューティング
+
 パスワードが同期されない理由を確認するには、`Invoke-ADSyncDiagnostics` コマンドレットを使用できます。
 
 > [!NOTE]
 > `Invoke-ADSyncDiagnostics` コマンドレットは、Azure AD Connect バージョン 1.1.524.0 以降のみで使用できます。
 
 ### <a name="run-the-diagnostics-cmdlet"></a>診断コマンドレットを実行する
+
 パスワードが同期されない問題のトラブルシューティングを行うには:
 
 1. **[管理者として実行]** オプションを指定して、Azure AD Connect サーバーで新しい Windows PowerShell セッションを開きます。
@@ -197,12 +213,14 @@ Azure AD テナントに対応するオブジェクトがないため、この�
 
 
 ## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>1 つのオブジェクトがパスワードを同期していない: 診断コマンドレットによるトラブルシューティング
+
 1 つのオブジェクトがパスワードを同期していない理由を確認するには、`Invoke-ADSyncDiagnostics` コマンドレットを使用できます。
 
 > [!NOTE]
 > `Invoke-ADSyncDiagnostics` コマンドレットは、Azure AD Connect バージョン 1.1.524.0 以降のみで使用できます。
 
 ### <a name="run-the-diagnostics-cmdlet"></a>診断コマンドレットを実行する
+
 ユーザーのパスワードが同期されない問題のトラブルシューティングを行うには:
 
 1. **[管理者として実行]** オプションを指定して、Azure AD Connect サーバーで新しい Windows PowerShell セッションを開きます。
@@ -212,17 +230,21 @@ Azure AD テナントに対応するオブジェクトがないため、この�
 3. `Import-Module ADSyncDiagnostics` を実行します。
 
 4. 次のコマンドレットを実行します。
+
    ```
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
+
    例: 
-   ```
+
+   ```powershell
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
    ```
 
 
 
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>パスワードが同期されない: 手動によるトラブルシューティング手順
+
 パスワードが同期されない理由を確認するには、次の手順に従います。
 
 1. Connect サーバーは[ステージング モード](how-to-connect-sync-staging-server.md)ですか。 ステージング モードのサーバーは、パスワードを同期しません。
@@ -276,6 +298,7 @@ Azure AD との接続がありますか。
 10. スクリプトによってハートビートがないことが示されたら、「[すべてのパスワードの完全同期の開始](#trigger-a-full-sync-of-all-passwords)」にあるスクリプトを実行します。
 
 ## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>1 つのオブジェクトがパスワードを同期していない: 手動によるトラブルシューティング手順
+
 オブジェクトの状態を確認することで、パスワード ハッシュ同期の問題を簡単に解決できます。
 
 1. **[Active Directory ユーザーとコンピューター]** で、ユーザーを検索し、**[ユーザーは次回ログオン時にパスワードの変更が必要]** チェック ボックスがオフになっていることを確認します。  
@@ -325,6 +348,7 @@ Azure AD との接続がありますか。
     ![[コネクタ スペース オブジェクトのプロパティ] ダイアログ ボックス](./media/tshoot-connect-password-hash-synchronization/cspasswordsync2.png)  
 
 ### <a name="password-sync-log"></a>パスワード同期ログ
+
 状態列には次の値が入ります。
 
 | Status | 説明 |
@@ -343,7 +367,8 @@ Azure AD との接続がありますか。
 ## <a name="scripts-to-help-troubleshooting"></a>トラブルシューティングに役立つスクリプト
 
 ### <a name="get-the-status-of-password-sync-settings"></a>パスワード同期設定の状態の取得
-```
+
+```powershell
 Import-Module ADSync
 $connectors = Get-ADSyncConnector
 $aadConnectors = $connectors | Where-Object {$_.SubType -eq "Windows Azure Active Directory (Microsoft)"}
@@ -397,12 +422,13 @@ Write-Host
 ```
 
 #### <a name="trigger-a-full-sync-of-all-passwords"></a>すべてのパスワードの完全同期の開始
+
 > [!NOTE]
 > このスクリプトは 1 回のみ実行してください。 複数回実行する必要がある場合は、別の問題があります。 問題のトラブルシューティングを行う場合は、Microsoft サポートに連絡してください。
 
 次のスクリプトを使用して、すべてのパスワードの完全同期をトリガーできます。
 
-```
+```powershell
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"
 $aadConnector = "<CASE SENSITIVE AAD CONNECTOR NAME>"
 Import-Module adsync
@@ -417,6 +443,7 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 * [Azure AD Connect Sync によるパスワード ハッシュ同期の導入](how-to-connect-password-hash-synchronization.md)
 * [Azure AD Connect 同期: 同期オプションをカスタマイズする](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)

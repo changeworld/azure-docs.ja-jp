@@ -14,16 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
-ms.openlocfilehash: e80134729c33741aa3007deb2d93a2de3e3fe697
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b9c035c1c9088957f59550bf6564cc02bc7972f4
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979719"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792422"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux Agent 拡張機能
 
 ## <a name="overview"></a>概要
+
 Stackify は､問題を素早く発見､解決するのに役立つ､アプリケーションに関する詳細を記録する製品を提供します｡ 開発者のチームにとって､Retrace は複数環境をサポートする完全統合型のアプリ パフォーマンスのスーパー パワーです｡ Retrace には､あらゆる開発チームが必要とするいくつかのツールが統合されています｡
 
 Retrace は 1 つのプラットフォーム上のすべての環境にまたがって次の機能のすべてを提供する唯一のツールです｡
@@ -40,9 +41,10 @@ Retrace は 1 つのプラットフォーム上のすべての環境にまたが
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="operating-system"></a>オペレーティング システム 
+
 Retrace エージェントは､次の Linux ディストリビューションに対して実行できます｡
 
-| ディストリビューション | Version |
+| ディストリビューション | バージョン |
 |---|---|
 | Ubuntu | 16.04 LTS､14.04 LTS､16.10､17.04 |
 | Debian | 7.9+ および 8.2+､9 |
@@ -50,12 +52,14 @@ Retrace エージェントは､次の Linux ディストリビューション�
 | CentOS | 6.3+､7.0+ |
 
 ### <a name="internet-connectivity"></a>インターネット接続
+
 Linux 用の Stackify Agent 拡張機能では、ターゲットの仮想マシンがインターネットに接続されている必要があります。 
 
 Stackify への接続を許可するために､ネットワーク構成の調整が必要になることがあります｡ https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall を参照してください｡ 
 
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
+
 ---
 
 次の JSON は、Stackify Retrace Agent 拡張機能のスキーマを示しています。 この拡張機能には `environment` および `activationKey` が必要です｡
@@ -151,7 +155,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 この拡張機能には `environment` および `activationKey` が必要です｡
 
-```
+```powershell
 $PublicSettings = @{"environment" = "myEnvironment"}
 $ProtectedSettings = @{"activationKey" = "myActivationKey"}
 

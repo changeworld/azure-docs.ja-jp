@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
-ms.openlocfilehash: 2830772dd69ac94c2b8373936665b9445f9f5f10
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 24426a4249934af1d85f43552617cda7c1d7e172
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431208"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883889"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Azure Cosmos DB を使用した Python Flask Web アプリケーションの作成
 
@@ -417,7 +417,7 @@ Azure Cosmos DB に対してローカルで適切に動作する完全なアプ�
     ![Bottle、Flask、および Django アプリを App Service に公開した結果](./media/sql-api-python-application/python-published-app-services.png)
 
     > [!Tip] 
-    > Web ページが表示されない場合、または "内部サーバー エラーが発生したため、ページを表示できません。" というメッセージがまだ表示される場合、 Kudo で web.config ファイルを開き、` <httpErrors errorMode="Detailed"></httpErrors>` を system.webServer セクションに追加してから、ページを更新します。 これにより、ブラウザーに詳細なエラー出力が表示されます。 
+    > Web ページが表示されない場合、または "内部サーバー エラーが発生したため、ページを表示できません。" というメッセージがまだ表示される場合、 Kudo で web.config ファイルを開き、`<httpErrors errorMode="Detailed"></httpErrors>` を system.webServer セクションに追加してから、ページを更新します。 これにより、ブラウザーに詳細なエラー出力が表示されます。 
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 これがコンピューターで実行した最初の Python アプリの場合は、PATH 変数に次のフォルダー (または同等のインストールの場所) が含まれていることを確認します。

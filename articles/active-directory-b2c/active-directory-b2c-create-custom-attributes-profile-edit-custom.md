@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6be2a2d6febfe927cadbdeb12dc91b0e103d6ac4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 41c3db1c9a7295d939aa34a36f86c0dfa9fecd91
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094628"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891448"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C:カスタム プロファイル編集ポリシーでカスタム属性を使用する
 
@@ -296,7 +296,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ## <a name="reference"></a>リファレンス
 
-拡張プロパティの詳細については、記事「[ディレクトリ スキーマ拡張機能 | Graph API の概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)」を参照してください。
+拡張プロパティの詳細については、記事「[ディレクトリ スキーマ拡張機能 | Graph API の概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)」を参照してください。
 
 > [!NOTE]
 > * **TechnicalProfile** は、エンドポイントの名前、メタデータ、およびプロトコルを定義する要素の種類 (または関数) です。 **TechnicalProfile** には、Identity Experience Framework によって実行される要求の交換が詳細に示されています。 この関数がオーケストレーションの手順または別の **TechnicalProfile** から呼び出されると、**InputClaims** と **OutputClaims** が呼び出し元によってパラメーターとして指定されます。  

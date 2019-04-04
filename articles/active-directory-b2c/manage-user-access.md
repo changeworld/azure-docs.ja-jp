@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 0ec3aa6f3d6e7037e2ed59baeb0657fbdabcf3ec
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2fb9de7781fae51792e2802002a3cf68974dec83
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154611"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894858"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー アクセスの管理
 
@@ -46,7 +46,7 @@ ms.locfileid: "55154611"
 
 保護者の同意を得るためのユーザー フローの例を次に示します。
 
-1. [Azure Active Directory Graph API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) の操作によって、ユーザーは未成年者として識別され、ユーザー データが無署名の JSON トークンの形式でアプリケーションに返されます。
+1. [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog) の操作によって、ユーザーは未成年者として識別され、ユーザー データが無署名の JSON トークンの形式でアプリケーションに返されます。
 
 2. アプリケーションによって JSON トークンが処理され、この未成年者に対して、保護者の同意が必要であることを通知する画面が表示されます。また、この画面では、オンラインでの保護者の同意が求められます。 
 

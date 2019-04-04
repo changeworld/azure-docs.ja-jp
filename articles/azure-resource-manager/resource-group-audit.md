@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: e7bcfce4e9d23839c623be3b54e97d931e6454cb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 8348099d778a9ec65e907bb3d21ae995041b9fb6
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268296"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802289"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>リソースのアクションを監査するアクティビティ ログの表示
 
@@ -167,7 +167,7 @@ ms.locfileid: "56268296"
 
 ## <a name="rest-api"></a>REST API
 
-アクティビティ ログを利用するための REST 操作は [Insights REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx)に含まれています。 アクティビティ ログのイベントを取得するには、 [サブスクリプション内の管理イベントの一覧表示](https://msdn.microsoft.com/library/azure/dn931934.aspx)に関するページを参照してください。
+アクティビティ ログを利用するための REST 操作は [Insights REST API](/rest/api/monitor/)に含まれています。 アクティビティ ログのイベントを取得するには、 [サブスクリプション内の管理イベントの一覧表示](/rest/api/monitor/activitylogs)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 3b6ddd99d7b198cdc5274b2944a723e68864bd4f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d91e12de075ee6efebe39fd5ab582d4998046f9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993034"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847867"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要
 
@@ -88,14 +88,14 @@ Azure Monitor に、*アクション グループ*という再利用可能な通
 ## <a name="next-steps"></a>次の手順
 アラート ルールとその構成方法については、以下をご覧ください。
 
-* [メトリック](../../azure-monitor/platform/data-collection.md)の詳細
+* [メトリック](data-platform.md)の詳細
 * [Azure Portal からの従来のメトリック アラート](alerts-classic-portal.md)を構成する
 * [従来のメトリック アラートの PowerShell](alerts-classic-portal.md) を構成する
 * [従来のメトリック アラートのコマンド ライン インターフェイス (CLI)](alerts-classic-portal.md) を構成する
 * [従来のメトリック アラートの Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx) を構成する
-* [アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md) の詳細
-* [Azure Portal からのアクティビティ ログ アラート](../../azure-monitor/platform/activity-log-alerts.md)の構成
+* [アクティビティ ログ](activity-logs-overview.md) の詳細
+* [Azure Portal からのアクティビティ ログ アラート](activity-log-alerts.md)の構成
 * [Resource Manager からのアクティビティ ログ アラート](alerts-activity-log.md)の構成
-* [アクティビティ ログ アラート webhook スキーマ](../../azure-monitor/platform/activity-log-alerts-webhook.md) の確認
-* [アクション グループ](../../azure-monitor/platform/action-groups.md)の詳細をご覧ください。
-* [新しいアラート](../../azure-monitor/platform/alerts-metric.md)を構成する
+* [アクティビティ ログ アラート webhook スキーマ](activity-log-alerts-webhook.md) の確認
+* [アクション グループ](action-groups.md)の詳細をご覧ください。
+* [新しいアラート](alerts-metric.md)を構成する

@@ -3,17 +3,17 @@ title: 'クイック スタート: Azure Data Explorer の Node ライブラリ�
 description: このクイック スタートでは、Node.js を使用して Azure Data Explorer にデータを取り込む (読み込む) 方法について説明します。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: 46abd71d4621bad7ee47f6579b1675b75819b16d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 0a23c171d99d46eb29dd589867ce70ca2739ff29
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979923"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756454"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>クイック スタート: Azure Data Explorer の Node ライブラリを使用してデータを取り込む
 

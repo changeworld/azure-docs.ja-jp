@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 55284318a627186b7a20d6d36dff1953e80d5020
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c9f1cf80cd3a781e878daca2048f7c5dc9095a7c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958560"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893232"
 ---
 # <a name="testing-example-utterances-in-luis"></a>LUIS での発話の例のテスト
 
@@ -48,7 +48,7 @@ LUIS で、対話的に一度に 1 つずつ発話を[テスト](luis-interactiv
 ## <a name="where-to-find-utterances"></a>発話の検索場所
 LUIS では、ログに記録されたすべての発話がクエリ ログに格納され、[LUIS](luis-reference-regions.md) Web サイトの **[アプリ]** 一覧ページでダウンロードしたり、LUIS [オーサリング API](https://aka.ms/luis-authoring-apis) で使用したりできます。 
 
-LUIS が確信を持てなかった発話はすべて、[LUIS](luis-reference-regions.md) Web サイトの **[[エンドポイントの発話の確認]](luis-how-to-review-endoint-utt.md)** ページに一覧表示されます。 
+LUIS が確信を持てなかった発話はすべて、[LUIS](luis-reference-regions.md) Web サイトの **[[エンドポイントの発話の確認]](luis-how-to-review-endpoint-utterances.md)** ページに一覧表示されます。 
 
 ![エンドポイントの発言の確認](./media/luis-concept-test/review-endpoint-utterances.png)
  
