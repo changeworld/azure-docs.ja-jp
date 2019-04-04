@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 4ae8ae43d8c245270b64611bed0ac4930aa0ecc3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6d03c219025c8cd39214bd8ab6807125709f9742
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763429"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849680"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Azure Monitor で使用するデータのソース
-この記事では、リソースとそれらで実行されているアプリケーションの正常性とパフォーマンスを監視するために Azure Monitor によって収集されるデータのソースについて説明します。 これらのリソースは、Azure、別のクラウド、またはオンプレミスに存在する可能性があります。  このデータが保存されるしくみと、データを表示する方法の詳細については、[Azure Monitor によって収集されるデータ](data-collection.md)に関する記事をご覧ください。
+この記事では、リソースとそれらで実行されているアプリケーションの正常性とパフォーマンスを監視するために Azure Monitor によって収集されるデータのソースについて説明します。 これらのリソースは、Azure、別のクラウド、またはオンプレミスに存在する可能性があります。  このデータが保存されるしくみと、データを表示する方法の詳細については、[Azure Monitor によって収集されるデータ](data-platform.md)に関する記事をご覧ください。
 
 Azure における監視データはさまざまなソースから取得されます。データは複数の階層に分類できます。最上位の階層はアプリケーションとオペレーティング システム、下位の階層は Azure プラットフォームのコンポーネントです。 データの階層を次の図に示します。各階層については、以降のセクションで詳しく説明します。
 
@@ -59,7 +59,7 @@ Azure 自体の正常性と操作に関連するテレメトリには、Azure �
 
 
 ### <a name="metrics"></a>メトリック
-ほとんどの Azure サービスでは、そのパフォーマンスと操作を反映する[プラットフォーム メトリック](data-collection.md#metrics)が生成されます。 [リソースの種類によってメトリックは異なります](metrics-supported.md)。  それらにはメトリック分析からアクセスできます。また、Log Analytics を使用した傾向分析やその他の分析のために、ログにコピーできます。
+ほとんどの Azure サービスでは、そのパフォーマンスと操作を反映する[プラットフォーム メトリック](data-platform-metrics.md)が生成されます。 [リソースの種類によってメトリックは異なります](metrics-supported.md)。  それらにはメトリック分析からアクセスできます。また、Log Analytics を使用した傾向分析やその他の分析のために、ログにコピーできます。
 
 
 ### <a name="resource-diagnostic-logs"></a>リソース診断ログ
@@ -116,4 +116,4 @@ Azure Monitor では、[Data Collector API](../../azure-monitor/platform/data-co
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Monitor によって収集される監視データの種類](data-collection.md)と、このデータを表示および分析する方法の詳細を確認します。
+- [Azure Monitor によって収集される監視データの種類](data-platform.md)と、このデータを表示および分析する方法の詳細を確認します。

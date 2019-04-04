@@ -4,7 +4,7 @@ description: Azure PowerShell スクリプトのサンプル - 特定のノー�
 services: service-fabric
 documentationcenter: ''
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 03/19/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: a5c1e7786f02b7ebc42f96e4ed12b2fb5729bb41
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 1528ce03f548c70d20d8f7af0238019305f01f2e
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498011"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660818"
 ---
 # <a name="update-the-admin-username-and-password-of-the-vms-in-a-cluster"></a>クラスター内の VM の管理者のユーザー名とパスワードを更新します。
 

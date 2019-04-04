@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 7a303b9d27b3708bd4f59517452fa232cc38c923
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259688"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619443"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する 
 > [!NOTE]
@@ -73,11 +73,6 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 ### <a name="output-file"></a>出力ファイル
 出力コンテンツを特定するためのフレンドリ名。 
-
-## <a name="azure-media-hyperlapse"></a>Azure Media Hyperlapse
-Azure Media Hyperlapse は、一人称視点またはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成する MP です。  詳細については、 [こちらの](media-services-hyperlapse-content.md) トピックを参照してください。 このセクションでは、この MP に対して指定するオプションについて詳細を説明します。
-
-![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze004.png)
 
 ### <a name="speed"></a>速度
 入力ビデオの高速化に使用する速度を指定します。 出力は、入力ビデオの安定した低速度撮影画像となります。
@@ -141,7 +136,7 @@ Azure Media Hyperlapse は、一人称視点またはアクション カメラ�
 
 ![ビデオのモデレート](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
-### <a name="version"></a>Version 
+### <a name="version"></a>バージョン 
 "2.0" を使用しています。
 
 ### <a name="mode"></a>Mode

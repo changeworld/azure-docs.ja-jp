@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3c8fab85d71f5f81bbf81bc3dd7a22d6c0b7f11b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 635b4e71c09a2e8b3901af5580f221bc4716831d
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551842"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917772"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
@@ -85,7 +85,7 @@ CORS でオリジンが設定される前に CDN に対し要求が行われて�
 ![Rules example with regular expression](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>オリジンごとの要求ヘッダー ルール
-正規表現を使用するのではなく、許可するオリジンごとに個別のルールを作成することもできます。この場合、**Request Header Wildcard (要求ヘッダーのワイルドカード)** [一致条件](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1)を使用します。 正規表現の方法と同様に、ルール エンジンは単独で CORS ヘッダーを設定します。 
+正規表現を使用するのではなく、許可するオリジンごとに個別のルールを作成することもできます。この場合、**Request Header Wildcard (要求ヘッダーのワイルドカード)** [一致条件](/previous-versions/azure/mt757336(v=azure.100)#Anchor_1)を使用します。 正規表現の方法と同様に、ルール エンジンは単独で CORS ヘッダーを設定します。 
 
 ![Rules example without regular expression](./media/cdn-cors/cdn-cors-no-regex.png)
 

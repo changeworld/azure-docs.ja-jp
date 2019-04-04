@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 677fec21b7491398da5e4958441e5405e0c10e0e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5fdee4edce0301a5a4524725879f599b0a2e3532
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745675"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916701"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) の既知の問題
 
@@ -31,7 +31,6 @@ ms.locfileid: "55745675"
 - Azure VM は、削除または移動された場合でも、しばらくの間、VM リスト ビューに表示されます。 さらに、移動または削除された VM の状態をクリックすると、**正常性診断**ビューが開き、読み込みループが開始されます。 削除された VM の名前を選択すると、ウィンドウが開き、VM が削除されたことを示すメッセージが表示されます。
 - しきい値の更新などの構成の変更は、ポータルまたは Workload Monitor API でそれらがすぐに更新される場合でも、最大 30 分かかります。 
 - 正常性診断エクスペリエンスは他のどのビューよりも迅速に更新されます。 ビューの切り替えを行う場合に、情報の遅延が発生する可能性があります。 
-- VM をシャットダウンすると、正常性基準が "*クリティカル*" に更新されるものと、"*正常*" に更新されるものがあります。 VM の最終的な状態は、"*クリティカル*" になります。
 - Linux VM に関して、単一 VM ビューの正常性基準を一覧表示するページのタイトルに、ユーザー定義の VM 名ではなく VM のドメイン名全体が表示されます。 
 - サポートされている方法の 1 つを使用して VM の監視を無効にした後、それを再びデプロイする場合は、前と同じワークスペースにデプロイする必要があります。 異なるワークスペースを選択した場合、その VM の正常性状態を表示する際に、一貫性のない動作が見られる場合があります。
 - Windows の合計 CPU 使用率正常性基準で、**4** と "*等しくない*" というしきい値が表示されます。これは、CPU 使用率が 95% より高く、システム キューの長さが 15 より大きいことを意味します。 このプレビューでは、この正常性基準は構成できません。  

@@ -1,6 +1,6 @@
 ---
-title: Add caching to improve performance in Azure API Management | Microsoft Docs
-description: Learn how to improve the latency, bandwidth consumption, and web service load for API Management service calls.
+title: キャッシュを追加して Azure API Management のパフォーマンスを向上させる | Microsoft Docs
+description: API Management のサービスの呼び出しで、遅延、帯域幅の消費、Web サービスの負荷を改善させる方法について説明します。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 39284805d9b9b5c10f5e211dc7d4c461d15cc6bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763539"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577018"
 ---
-# <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Add caching to improve performance in Azure API Management
+# <a name="add-caching-to-improve-performance-in-azure-api-management"></a>キャッシュを追加して Azure API Management のパフォーマンスを向上させる
 
-Operations in API Management can be configured for response caching. Response caching can significantly reduce API latency, bandwidth consumption, and web service load for data that does not change frequently.
- 
-For more detailed information about caching, see [API Management caching policies](api-management-caching-policies.md) and  [Custom caching in Azure API Management](api-management-sample-cache-by-key.md).
+API Management では、応答のキャッシュ用に操作を構成できます。 応答のキャッシュを行うと、API の遅延、帯域幅の消費、頻繁に変更されないデータの Web サービスの負荷が大幅に小さくなります。
 
-![cache policies](media/api-management-howto-cache/cache-policies.png)
+キャッシュの詳細については、「[API Management のキャッシュ ポリシー](api-management-caching-policies.md)」と「[Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 
-What you'll learn:
+![キャッシュ ポリシー](media/api-management-howto-cache/cache-policies.png)
+
+ここでは、次の内容について学習します。
 
 > [!div class="checklist"]
-> * Add response caching for your API
-> * Verify caching in action
+> * API の応答キャッシュの追加
+> * 動作中のキャッシュの確認
 
-## <a name="availability"></a>Availability
+## <a name="availability"></a>可用性
 
 > [!NOTE]
-> Internal cache is not available in the **Consumption** tier of Azure API Management. You can [use an external Azure Cache for Redis](api-management-howto-cache-external.md) instead.
+> 内部キャッシュは Azure API Management の**従量課金**レベルでは利用できません。 代わりに[外部 Azure Cache for Redis を使用](api-management-howto-cache-external.md)できます。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>前提条件
 
-To complete this tutorial:
+このチュートリアルを完了するには、以下が必要です。
 
-+ [Create an Azure API Management instance](get-started-create-service-instance.md)
-+ [Import and publish an API](import-and-publish.md)
++ [Azure API Management インスタンスを作成する](get-started-create-service-instance.md)
++ [API をインポートおよび発行する](import-and-publish.md)
 
-## <a name="caching-policies"> </a>Add the caching policies
+## <a name="caching-policies"> </a>キャッシュ ポリシーの追加
 
-With caching policies shown in this example, the first request to the **GetSpeakers** operation returns a response from the backend service. This response is cached, keyed by the specified headers and query string parameters. Subsequent calls to the operation, with matching parameters, will have the cached response returned, until the cache duration interval has expired.
+この例に示すキャッシュ ポリシーでは、**GetSpeakers** 操作に対する最初の要求は、バックエンド サービスからの応答を返します。 この応答はキャッシュされ、指定されたヘッダーとクエリ文字列パラメーターによってキーが設定されます。 パラメーターが一致する後続の操作の呼び出しに対しては、キャッシュの有効期間が超過するまで、キャッシュに格納された応答が返されます。
 
-1. Sign in to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
-2. Browse to your APIM instance.
-3. Select the **API** tab.
-4. Click **Demo Conference API** from your API list.
-5. Select **GetSpeakers**.
-6. On the top of the screen, select **Design** tab.
-7. In the **Inbound processing** section, click the **</>** icon.
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+2. APIM インスタンスを参照します。
+3. **[API]** タブを選択します。
+4. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
+5. **[GetSpeakers]** を選択します。
+6. 画面の上部の **[デザイン]** タブを選択します。
+7. **[受信処理]** セクションで、**[</>]** アイコンをクリックします。
 
-    ![code editor](media/api-management-howto-cache/code-editor.png) 
+    ![コード エディター](media/api-management-howto-cache/code-editor.png)
 
-8. In the **inbound** element, add the following policy:
+8. **inbound** 要素で、次のポリシーを追加します。
 
         <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
             <vary-by-header>Accept</vary-by-header>
@@ -69,29 +69,29 @@ With caching policies shown in this example, the first request to the **GetSpeak
             <vary-by-header>Authorization</vary-by-header>
         </cache-lookup>
 
-9. In the **outbound** element, add the following policy:
+9. **outbound** 要素で、次のポリシーを追加します。
 
         <cache-store caching-mode="cache-on" duration="20" />
 
-    **Duration** specifies the expiration interval of the cached responses. In this example, the interval is **20** seconds.
+    **[期間]** は、キャッシュに入れられた応答の有効期間を指定します。 この例では、間隔は **20** 秒です。
 
 > [!TIP]
-> If you are using an external cache, as described in [Use an external Azure Cache for Redis in Azure API Management](api-management-howto-cache-external.md), you may want to specify the `cache-preference` attribute of the caching policies. See [API Management caching policies](api-management-caching-policies.md) for more details.
+> 外部キャッシュを使用している場合は、「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」の説明に従って、キャッシュ ポリシーの `caching-type` 属性を指定する必要がある場合があります。 詳しくは、「[API Management のキャッシュ ポリシー](api-management-caching-policies.md)」をご覧ください。
 
-## <a name="test-operation"> </a>Call an operation and test the caching
-To see the caching in action, call the operation from the developer portal.
+## <a name="test-operation"> </a>操作の呼び出しとキャッシュのテスト
+動作中のキャッシュを確認するには、開発者ポータルから操作を呼び出します。
 
-1. In the Azure portal, browse to your APIM instance.
-2. Select the **APIs** tab.
-3. Select the API to which you added caching policies.
-4. Select the **GetSpeakers** operation.
-5. Click the **Test** tab in the top right menu.
-6. Press **Send**.
+1. Azure Portal で、APIM インスタンスに移動します。
+2. **[API]** タブを選択します。
+3. キャッシュ ポリシーを追加した API を選択します。
+4. **[GetSpeakers]** 操作を選択します。
+5. 右上のメニューの **[テスト]** タブをクリックします。
+6. **[送信]** をクリックします。
 
-## <a name="next-steps"> </a>Next steps
-* For more information about caching policies, see [Caching policies][Caching policies] in the [API Management policy reference][API Management policy reference].
-* For information on caching items by key using policy expressions, see [Custom caching in Azure API Management](api-management-sample-cache-by-key.md).
-* For more information about using external Azure Cache for Redis, see [Use an external Azure Cache for Redis in Azure API Management](api-management-howto-cache-external.md).
+## <a name="next-steps"> </a>次のステップ
+* キャッシュ ポリシーの詳細については、[API Management ポリシー リファレンス][API Management policy reference]の[キャッシュ ポリシー][Caching policies]に関するページを参照してください。
+* ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「 [Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
+* 外部の Azure Cache for Redis の使用方法について詳しくは、「[Azure API Management で外部の Azure Cache for Redis を使用する](api-management-howto-cache-external.md)」をご覧ください。
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

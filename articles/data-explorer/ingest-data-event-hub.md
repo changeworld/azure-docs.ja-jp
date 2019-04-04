@@ -3,17 +3,17 @@ title: クイック スタート:イベント ハブから Azure Data Explorer �
 description: このクイック スタートでは、イベント ハブから Azure データ エクスプローラーにデータを取り込む方法について説明します。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 02/2/2018
-ms.openlocfilehash: 7b724219750154c5ec1410af64175bc70f5cbd6c
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: fcc4a50cb57e15021a3be1266d660c33501dbe82
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805817"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758676"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>クイック スタート:イベント ハブから Azure Data Explorer にデータを取り込む
 
@@ -29,7 +29,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 * サンプル アプリを実行する [Visual studio 2017 Version 15.3.2 以降](https://www.visualstudio.com/vs/)
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure Portal にサインインします
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 0c090499ee6ae2aaaa14af18c3c38db28ecb2f3e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aac9719f8d74c4b7bc283745ee2b8e01365a81f0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884729"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620004"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics 
 
@@ -40,8 +40,6 @@ Media Analytics のメディア プロセッサによって MP4 ファイルま�
 
 ### <a name="indexer"></a>Indexer
 Azure Media Indexer では、コンテンツを検索可能にしたり、クローズド キャプション トラックを生成したりできます。 前のバージョンと比較すると、 Azure Media Indexer 2 プレビューは、インデックス作成が高速化され、より多くの言語をサポートします。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語、ポルトガル語、アラビア語などがサポートされています。 詳しい情報と例については、[Azure Media Indexer 2 を使用したビデオの処理](media-services-process-content-with-indexer2.md)に関するページをご覧ください。
-### <a name="hyperlapse"></a>Hyperlapse
-Microsoft Hyperlapse では、ビデオの安定化と低速撮影の機能を組み合わせて、長い形式のコンテンツからすばやく視聴可能なビデオを作成します。 低速撮影ビデオの作成のほか、Hyperlapse では携帯電話やビデオ カメラを使用して撮影したブレのあるビデオから安定したビデオを作成できます。 詳しい情報と例については、「[Azure Media Hyperlapse を使用する Hyperlapse メディア ファイル](media-services-hyperlapse-content.md)」をご覧ください。
 ### <a name="motion-detector"></a>Motion Detector
 Motion Detector を使用することで、ひな形の背景を持つビデオでモーションを検出することができます。 これにより、監視カメラで検出されるモーション イベントの誤判定をチェックします。 詳細と例については、 [Azure Media Analytics でのモーション検出](media-services-motion-detection.md)に関するページを参照してください。
 ### <a name="face-detector"></a>Face Detector

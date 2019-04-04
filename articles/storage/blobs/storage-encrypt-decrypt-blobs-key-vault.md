@@ -8,14 +8,15 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4552249e7d7dd79edbe885b3d615f5071aa694ee
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c7a185e1c7f271cdca0c688ce7838f6390594da5
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116101"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650412"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>チュートリアル:Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
+
 ## <a name="introduction"></a>はじめに
 このチュートリアルでは、Azure Key Vault でクライアント側ストレージ暗号化を利用する方法について説明します。 これらのテクノロジを使用して、コンソール アプリケーションで BLOB を暗号化および復号化する手順を説明します。
 
@@ -26,6 +27,7 @@ Azure Key Vault の概要については、「[Azure Key Vault とは](../../key
 Azure Storage のクライアント側暗号化の概要については、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
+
 このチュートリアルを完了するには、以下が必要です。
 
 * Azure ストレージ アカウント
@@ -33,6 +35,7 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 * Azure PowerShell
 
 ## <a name="overview-of-client-side-encryption"></a>クライアント側暗号化の概要
+
 Azure Storage のクライアント側暗号化の概要については、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
 
 ここでは、クライアント側暗号化のしくみを簡単に説明します。
@@ -43,6 +46,7 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 4. 暗号化されたデータは、Azure Storage サービスにアップロードされます。
 
 ## <a name="set-up-your-azure-key-vault"></a>Azure Key Vault のセットアップ
+
 このチュートリアルを続けるには、チュートリアル「[Azure Key Vault とは](../../key-vault/key-vault-overview.md)」で説明されている以下の手順を実行する必要があります。
 
 * Key Vault を作成します。
@@ -55,11 +59,12 @@ Azure Storage のクライアント側暗号化の概要については、「[Mi
 Key Vault で両方のキーを作成します。 以降のチュートリアルでは、ContosoKeyVault および TestRSAKey1 という名前を使用したものとして説明します。
 
 ## <a name="create-a-console-application-with-packages-and-appsettings"></a>パッケージおよび AppSettings でコンソール アプリケーションを作成します。
+
 Visual Studio で、新しいコンソール アプリケーションを作成します。
 
 パッケージ マネージャー コンソールで、必要な nuget パッケージを追加します。
 
-```
+```powershell
 Install-Package WindowsAzure.Storage
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
@@ -93,6 +98,7 @@ using System.IO;
 ```
 
 ## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>コンソール アプリケーションにトークンを取得するメソッドを追加します。
+
 次のメソッドは、Key Vault へのアクセスを認証する必要がある Key Vault クラスによって使用されます。
 
 ```csharp
@@ -112,6 +118,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 ```
 
 ## <a name="access-storage-and-key-vault-in-your-program"></a>プログラムでのストレージおよび Key Vault へのアクセス
+
 Main 関数に次のコードを追加します。
 
 ```csharp
@@ -141,6 +148,7 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 > 
 
 ## <a name="encrypt-blob-and-upload"></a>BLOB の暗号化とアップロード
+
 次のコードを追加して BLOB を暗号化し、Azure ストレージ アカウントにアップロードします。 **ResolveKeyAsync** メソッドは IKey を返します。
 
 ```csharp
@@ -167,6 +175,7 @@ using (var stream = System.IO.File.OpenRead(@"C:\data\MyFile.txt"))
 > 
 
 ## <a name="decrypt-blob-and-download"></a>BLOB の復号化とダウンロード
+
 Resolver クラスを使用すると、復号化に役立ちます。 暗号化に使用されるキーの ID はメタデータ内の BLOB に関連付けられているので、キーを取得し、キーと BLOB との関連付けを憶えている必要はありません。 キーが Key Vault に残っているのを確認することだけが必要です。   
 
 RSA キーの秘密キーは Key Vault に残っているので、復号化を行うには、CEK を含む BLOB メタデータから暗号化されたキーを復号化のために Key Vault に送信します。
@@ -189,6 +198,7 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 > 
 
 ## <a name="use-key-vault-secrets"></a>Key Vault シークレットの使用
+
 シークレットは基本的に対称キーなので、クライアント側暗号化でシークレットを使用するには SymmetricKey クラスを使用します。 ただし、前に説明したように、Key Vault のシークレットは SymmetricKey に対して正確にマップしていません。 いくつかの点について理解しておく必要があります。
 
 * SymmetricKey のキーは固定長の128、192、256、384、または 512 ビットである必要があります。
@@ -221,6 +231,7 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 これで終了です。 機能を有効にご活用ください。
 
 ## <a name="next-steps"></a>次の手順
+
 C# での Microsoft Azure Storage の使用について詳しくは、「[.NET 用の Microsoft Azure Storage クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx)」をご覧ください。
 
 BLOB REST API について詳しくは、「[BLOB サービス REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)」をご覧ください。

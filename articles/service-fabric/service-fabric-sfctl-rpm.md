@@ -4,7 +4,7 @@ description: Service Fabric CLI sfctl rpm のコマンドについて説明し�
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: a8ac3899b6ae80668c4472f24b508ba6ba7e2644
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 04080d75042bfa8a07533336936165e0abef051b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275314"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664134"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 クエリを実行し、修復マネージャー サービスにコマンドを送信します。
 
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
 | approve-force | 指定した修復タスクの承認を強制します。 |
 | delete | 完了した修復タスクを削除します。 |

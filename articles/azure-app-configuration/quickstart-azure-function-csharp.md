@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 22ec05660682f000d8bc3b9780732d5adf9b5c24
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9b0c48b3a3fb3a1b4e4fbe94a368297823a86778
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226710"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579582"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>クイック スタート:App Configuration で Azure Function を作成する
 
@@ -45,13 +45,19 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 ## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
 
-1. *Function1.cs* を開き、App Configuration .NET Core 構成プロバイダーへの参照を追加します。
+1. プロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[参照]** タブで以下の NuGet パッケージを検索し、プロジェクトに追加します。 見つからない場合は、**[プレリリースを含める]** チェック ボックスをオンにします。
+
+    ```
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 1.0.0 preview or later
+    ```
+
+2. *Function1.cs* を開き、App Configuration .NET Core 構成プロバイダーへの参照を追加します。
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-2. `builder.AddAzureAppConfiguration()` を呼び出して App Configuration を使用するように、`Run` メソッドを更新します。
+3. `builder.AddAzureAppConfiguration()` を呼び出して App Configuration を使用するように、`Run` メソッドを更新します。
 
     ```csharp
     public static async Task<IActionResult> Run(

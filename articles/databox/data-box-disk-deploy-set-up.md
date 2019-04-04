@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 4c2f2ebca40ee3e4b5a9a32767783694af52944b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee1150dd146be1f022134ffe6df3ca2fbf84f867
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106646"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652152"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>チュートリアル:Azure Data Box Disk の開梱、接続、ロック解除
 
@@ -90,7 +90,7 @@ ms.locfileid: "58106646"
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ``` 
 
-6. `DataBoxDiskUnlock.exe` を実行し、「[ディスクに接続してパスキーを取得する](#Connect-to-disks-and-get-the-passkey)」で取得したパスキーを指定します。 ディスクに割り当てられたドライブ文字が表示されます。 サンプル出力を次に示します。
+6. `DataBoxDiskUnlock.exe` を実行し、「[ディスクに接続してパスキーを取得する](#connect-to-disks-and-get-the-passkey)」で取得したパスキーを指定します。 ディスクに割り当てられたドライブ文字が表示されます。 サンプル出力を次に示します。
 
     ```powershell
     PS C:\WINDOWS\system32> cd C:\DataBoxDiskUnlockTool\DiskUnlock
@@ -204,7 +204,7 @@ ms.locfileid: "58106646"
      OpenSSL is already installed.
      ```
 
-6. Data Box Disk ロック解除ツールを実行します。 「[ディスクに接続してパスキーを取得する](#Connect-to-disks-and-get-the-passkey)」で取得したパスキーを、Azure portal から指定します。 オプションで、ロックを解除する、BitLocker で暗号化されたボリュームの一覧を指定します。 パスキーとボリュームの一覧は、単一引用符で囲んで指定する必要があります。 
+6. Data Box Disk ロック解除ツールを実行します。 「[ディスクに接続してパスキーを取得する](#connect-to-disks-and-get-the-passkey)」で取得したパスキーを、Azure portal から指定します。 オプションで、ロックを解除する、BitLocker で暗号化されたボリュームの一覧を指定します。 パスキーとボリュームの一覧は、単一引用符で囲んで指定する必要があります。 
 
     次のコマンドを入力します。
  
