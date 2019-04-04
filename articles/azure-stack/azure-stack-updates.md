@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 6cddb513249b424ef0df2ed2d1b5609de17c0744
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a5fe2d9b295a72b8e2e3adb7e5cffd5a98c03070
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894038"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487517"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Azure Stack での更新プログラムの管理概要
 
@@ -48,7 +48,7 @@ Azure Stack には、Microsoft ソフトウェア更新プログラムの適用�
 
 - この更新プログラムのインストールを開始する前に、次のパラメーターを指定して [Test-AzureStack](azure-stack-diagnostic-test.md) を実行して Azure Stack の状態を確認し、見つかったすべての操作上の問題 (すべての警告とエラーを含む) を解決します。 また、アクティブなアラートを確認し、アクションが必要なアラートを解決します。  
 
-  ```PowerShell
+  ```powershell
   Test-AzureStack -Group UpdateReadiness
   ``` 
 

@@ -14,12 +14,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 96325d7c21ccf7d93deaafbad974009004030157
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eefd39c751bdbd9ed9c8f3b9112fee1ddbffb9a0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091989"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486939"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>サービスとしての検証のリリース ノート
 
@@ -61,7 +61,7 @@ Azure Stack 月間更新検証ワークフローを実行しているとき、�
 
     `Install-VaaSPrerequisites` に、クラウド管理者の資格情報は不要になりました。 このコマンドレットの最新バージョンを実行する場合、前提条件をインストールするための変更後のコマンドについては、「[Download and install the agent (エージェントのダウンロードとインストール)](azure-stack-vaas-local-agent.md#download-and-install-the-agent)」をご覧ください。 コマンドは次のとおりです。
 
-    ```PowerShell
+    ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
     Import-Module .\VaaSPreReqs.psm1 -Force
     Install-VaaSPrerequisites -AadTenantId $AadTenantId `
@@ -78,7 +78,7 @@ Azure Stack 月間更新検証ワークフローを実行しているとき、�
 
     パッケージ検証時の問題に対処するために、`Install-VaaSPrerequisites` に、クラウド管理者の資格情報が必要になりました。 「[Download and install the agent (エージェントのダウンロードとインストール)](azure-stack-vaas-local-agent.md#download-and-install-the-agent)」のドキュメントが次のように更新されました。
 
-    ```PowerShell
+    ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
     $CloudAdminCreds = New-Object System.Management.Automation.PSCredential "<cloudAdminDomain\username>", (ConvertTo-SecureString "<cloudAdminPassword>" -AsPlainText -Force)
     Import-Module .\VaaSPreReqs.psm1 -Force

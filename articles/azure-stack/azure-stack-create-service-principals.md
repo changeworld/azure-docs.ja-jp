@@ -13,12 +13,12 @@ ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0f5a4dc76830740d69547a01ce40b5e10cf4a74b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809250"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499410"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Azure Stack へのアクセスをアプリケーションに提供する
 
@@ -86,14 +86,14 @@ AD FS を使用してサービス プリンシパルを作成する場合は、�
 
 AD FS のサービス プリンシパルを管理するタスクは以下のとおりです。
 
-| type | Action |
+| Type | Action |
 | --- | --- |
 | AD FS 証明書 | [作成](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate) |
-| AD FS 証明書 | [Update](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-AD-FS) |
-| AD FS 証明書 | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-AD-FS) |
+| AD FS 証明書 | [Update](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-ad-fs) |
+| AD FS 証明書 | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 | AD FS クライアント シークレット | [作成](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
 | AD FS クライアント シークレット | [Update](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
-| AD FS クライアント シークレット | [Remove](azure-stack-create-service-principals.md##remove-a-service-principal-for-AD-FS) |
+| AD FS クライアント シークレット | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 
 ### <a name="create-a-service-principal-using-a-certificate"></a>証明書を使用したサービス プリンシパルの作成
 
@@ -116,7 +116,7 @@ ID のために AD FS を使用した状態でサービス プリンシパルを
 
 |パラメーター|説明|例|
 |---------|---------|---------|
-|Name|SPN アカウントの名前|MyAPP|
+|名前|SPN アカウントの名前|MyAPP|
 |ClientCertificates|証明書オブジェクトの配列|X509 証明書|
 |ClientRedirectUris<br>(省略可能)|アプリケーションのリダイレクト URI|-|
 
@@ -124,7 +124,7 @@ ID のために AD FS を使用した状態でサービス プリンシパルを
 
 1. Windows PowerShell セッションを管理者特権で開き、次のコマンドレットを実行します。
 
-   ```PowerShell  
+   ```powershell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
     $Creds = Get-Credential
 
@@ -173,7 +173,7 @@ ID のために AD FS を使用した状態でサービス プリンシパルを
    > [!Note]  
    > 検証を目的として、次の例を使用して自己署名証明書を作成できます。
 
-   ```PowerShell  
+   ```powershell  
    $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
    ```
 
@@ -203,7 +203,7 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
 
 |パラメーター|説明|例|
 |---------|---------|---------|
-|Name|SPN アカウントの名前|MyAPP|
+|名前|SPN アカウントの名前|MyAPP|
 |ApplicationIdentifier|一意識別子|S-1-5-21-1634563105-1224503876-2692824315-2119|
 |ClientCertificate|証明書オブジェクトの配列|X509 証明書|
 
@@ -247,14 +247,14 @@ ERCS 仮想マシン上で、特権エンドポイントからこれらのスク
 
 | パラメーター | 説明 | 例 |
 |----------------------|--------------------------|---------|
-| Name | SPN アカウントの名前 | MyAPP |
+| 名前 | SPN アカウントの名前 | MyAPP |
 | GenerateClientSecret | シークレットの作成 |  |
 
 #### <a name="use-the-ercs-privilegedendpoint-to-create-the-service-principal"></a>ERCS PrivilegedEndpoint を使用 したサービス プリンシパルの作成
 
 1. Windows PowerShell セッションを管理者特権で開き、次のコマンドレットを実行します。
 
-     ```PowerShell  
+     ```powershell  
       # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
      $Creds = Get-Credential
 
@@ -272,7 +272,7 @@ ERCS 仮想マシン上で、特権エンドポイントからこれらのスク
 
 2. コマンドレットを実行すると、SPN を使用するために必要な情報がシェルに表示されます。 クライアント シークレットは必ず保存してください。
 
-     ```PowerShell  
+     ```powershell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
      ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
      Thumbprint            : 
@@ -304,7 +304,7 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
 
 1. Windows PowerShell セッションを管理者特権で開き、次のコマンドレットを実行します。
 
-     ```PowerShell  
+     ```powershell  
           # Creating a PSSession to the ERCS PrivilegedEndpoint
           $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
@@ -318,7 +318,7 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
 
 2. 自動化が完了したら、SPN の認証に必要な、新しく生成されたシークレットが表示されます。 新しいクライアント シークレットは必ず保存してください。
 
-     ```PowerShell  
+     ```powershell  
           ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2120
           ClientId              :  
           Thumbprint            : 

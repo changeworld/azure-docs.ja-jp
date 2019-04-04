@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: b00082ec567d51c320f55210cb38dcab9547e0d9
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: d2324f9538ce8079be5e660a1613c1c093ecc85a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258753"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484598"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>PowerShell を使用した Azure Stack での Key Vault の管理
 
@@ -45,7 +45,7 @@ PowerShell を使用して Azure Stack で Key Vault を管理できます。 Ke
 
 キー コンテナーを操作するには、コンテナー操作のテナント サブスクリプションが有効になっていることを確認する必要があります。 コンテナー操作が有効になっていることを確認するには、次のコマンドを実行します。
 
-```PowerShell  
+```powershell  
 Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
 ```
 
@@ -57,7 +57,7 @@ Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
 
 コンテナー操作が有効になっていない場合は、次のコマンドを呼び出して、サブスクリプションで Key Vault サービスを登録します。
 
-```PowerShell
+```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 ```
 
@@ -71,7 +71,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 キー コンテナーを作成する前に、リソース グループを作成し、このリソース グループに、キー コンテナー関連のすべてのリソースが存在するようにしておきます。 次のコマンドを使用して、新しいリソース グループを作成します。
 
-```PowerShell
+```powershell
 New-AzureRmResourceGroup -Name "VaultRG" -Location local -verbose -Force
 
 ```
@@ -84,7 +84,7 @@ New-AzureRmResourceGroup -Name "VaultRG" -Location local -verbose -Force
 
 次のコマンドを実行して、キー コンテナーを作成します。
 
-```PowerShell
+```powershell
 New-AzureRmKeyVault -VaultName "Vault01" -ResourceGroupName "VaultRG" -Location local -verbose
 ```
 
@@ -98,7 +98,7 @@ New-AzureRmKeyVault -VaultName "Vault01" -ResourceGroupName "VaultRG" -Location 
 
 AD FS のデプロイでは、"アクセス ポリシーが設定されていません。 ユーザーまたはアプリケーションに、このコンテナーを使用するアクセス許可がありません" という警告が表示される場合があります。 この問題を解決するには、[Set-AzureRmKeyVaultAccessPolicy](#authorize-an-application-to-use-a-key-or-secret) コマンドを使用して、コンテナーのアクセス ポリシーを設定します。
 
-```PowerShell
+```powershell
 # Obtain the security identifier(SID) of the active directory user
 $adUser = Get-ADUser -Filter "Name -eq '{Active directory user name}'"
 $objectSID = $adUser.SID.Value
@@ -115,7 +115,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName "{key vault name}" -ResourceGroupName
 
 **Add-AzureKeyVaultKey** コマンドを使用して、キー コンテナーでソフトウェアで保護されたキーを作成またはインポートします。
 
-```PowerShell
+```powershell
 Add-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01" -verbose -Destination Software
 ```
 
@@ -134,7 +134,7 @@ Add-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01" -verbose -Destination So
 
 **Get-AzureKeyVaultKey** コマンドを使用して、キーとその詳細を読み取ります。
 
-```PowerShell
+```powershell
 Get-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01"
 ```
 
@@ -142,7 +142,7 @@ Get-AzureKeyVaultKey -VaultName "Vault01" -Name "Key01"
 
 **Set-AzureKeyVaultSecret** コマンドを使用して、コンテナーでシークレットを作成または更新します。 まだシークレットが存在していない場合は、作成されます。 既に存在する場合は、新しいバージョンのシークレットが作成されます。
 
-```PowerShell
+```powershell
 $secretvalue = ConvertTo-SecureString "User@123" -AsPlainText -Force
 Set-AzureKeyVaultSecret -VaultName "Vault01" -Name "Secret01" -SecretValue $secretvalue
 ```
@@ -155,7 +155,7 @@ Set-AzureKeyVaultSecret -VaultName "Vault01" -Name "Secret01" -SecretValue $secr
 
 **Get-AzureKeyVaultSecret** コマンドを使用して、キー コンテナーのシークレットを読み取ります。 このコマンドは、シークレットのすべてのバージョンまたは特定のバージョンを返すことができます。
 
-```PowerShell
+```powershell
 Get-AzureKeyVaultSecret -VaultName "Vault01" -Name "Secret01"
 ```
 
@@ -166,13 +166,13 @@ Get-AzureKeyVaultSecret -VaultName "Vault01" -Name "Secret01"
 **Set-AzureRmKeyVaultAccessPolicy** コマンドを使用して、キー コンテナーのキーまたはシークレットへの、アプリケーションによるアクセスを承認します。
 次の例では、コンテナー名が *ContosoKeyVault* で、承認するアプリケーションのクライアント ID が *8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed* です。 アプリケーションを承認するには、次のコマンドを実行します。 必要に応じて、**PermissionsToKeys** パラメーターを指定し、ユーザー、アプリケーション、またはセキュリティ グループに対してアクセス許可を設定できます。
 
-```PowerShell
+```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
 ```
 
 その同じアプリケーションがコンテナーのシークレットを読み取ることを承認する場合は、次のコマンドレットを実行します。
 
-```PowerShell
+```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300 -PermissionsToKeys Get
 ```
 

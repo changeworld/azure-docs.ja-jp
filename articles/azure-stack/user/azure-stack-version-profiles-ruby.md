@@ -16,12 +16,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 5c7031b0d0a08106473409233db0ad95ecb32525
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 226416688fe4f2c48981718e7a2f40b0ba5b0685
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095366"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649613"
 ---
 # <a name="use-api-version-profiles-with-ruby-in-azure-stack"></a>Azure Stack での Ruby による API バージョンのプロファイルの使用
 
@@ -91,7 +91,7 @@ Azure Stack で Ruby Azure SDK を使用するには、次の値を指定した�
 | クライアント ID | AZURE_CLIENT_ID | このドキュメントの前のセクションでサービス プリンシパルが作成されたときに保存した、サービス プリンシパル アプリケーション ID。  |
 | サブスクリプション ID | AZURE_SUBSCRIPTION_ID | [サブスクリプション ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。 |
 | クライアント シークレット | AZURE_CLIENT_SECRET | サービス プリンシパルの作成時に保存した、サービス プリンシパル アプリケーション シークレット 。 |
-| Resource Manager エンドポイント | ARM_ENDPOINT | 「[Azure Stack Resource Manager エンドポイント](#The-azure-stack-resource-manager-endpoint)」を参照してください。  |
+| Resource Manager エンドポイント | ARM_ENDPOINT | 「[Azure Stack Resource Manager エンドポイント](#the-azure-stack-resource-manager-endpoint)」を参照してください。  |
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack Resource Manager エンドポイント
 

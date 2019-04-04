@@ -15,12 +15,12 @@ ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: dc146c6e8877a99570aab25d198ba365abbe7c86
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4dc4c9d4d936bbcf626884c5c90e16f640f268a0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078178"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487772"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack の登録
 Azure Stack Development Kit (ASDK) インストールを Azure に登録して Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データを設定したりできます。 マーケットプレース シンジケーションを含む、Azure Stack のすべての機能をサポートするには、登録が必要です。 マーケットプレース シンジケーションや使用状況レポートなどの Azure Stack の重要な機能をテストできるようにするには、登録が必要です。 Azure Stack を登録すると、使用状況が Azure コマースにレポートされます。 使用状況は、登録に使用したサブスクリプションの下に表示されます。 ただし、ASDK のユーザーは、レポートする使用状況に対して課金されることはありません。
@@ -32,7 +32,7 @@ Azure Stack Development Kit (ASDK) インストールを Azure に登録して A
 
 さらに、Azure に ASDK を登録するために使用されるコンピューター上で、PowerShell 言語モードを **FullLanguageMode** に設定する必要があります。 現在の言語モードが完全に設定されていることを確認するには、PowerShell ウィンドウを管理者特権で開き、次の PowerShell コマンドを実行します。
 
-```PowerShell  
+```powershell  
 $ExecutionContext.SessionState.LanguageMode
 ```
 
@@ -50,7 +50,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 2. 次の PowerShell コマンドを実行し、Azure に ASDK インストールを登録します。 Azure 課金サブスクリプション ID とローカル ASDK インストールの両方にサインインする必要があります。 Azure 課金サブスクリプション ID をまだ持っていない場合は、[こちらから無料の Azure アカウントを作成](https://azure.microsoft.com/free/?b=17.06)できます。 Azure Stack を登録しても、Azure サブスクリプションに課金されることはありません。<br><br>**Set-AzsRegistration** コマンドレットを実行するときに、登録用の一意の名前を設定します。 **RegistrationName** パラメーターの既定値は **AzureStackRegistration** です。 ただし、複数の Azure Stack インスタンスに同じ名前を使用すると、スクリプトは失敗します。
 
-    ```PowerShell  
+    ```powershell  
     # Add the Azure cloud subscription environment name. 
     # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
     Add-AzureRmAccount -EnvironmentName "<environment name>"
@@ -89,7 +89,7 @@ $ExecutionContext.SessionState.LanguageMode
 ### <a name="get-a-registration-token-from-the-azure-stack-environment"></a>Azure Stack 環境から登録トークンを取得する
 ASDK ホスト コンピューター上で、管理者として PowerShell を起動し、Azure Stack ツールをダウンロードしたときに作成された **AzureStack-Tools-master** ディレクトリ内の **Registration** フォルダーに移動します。 次の PowerShell コマンドを使用して **RegisterWithAzure.psm1** モジュールをインポートし、**Get-AzsRegistrationToken** コマンドレットを使用して登録トークンを取得します。  
 
-   ```PowerShell  
+   ```powershell  
    # Import the registration module that was downloaded with the GitHub tools
    Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
 
@@ -110,7 +110,7 @@ ASDK ホスト コンピューター上で、管理者として PowerShell を�
 ### <a name="connect-to-azure-and-register"></a>Azure に接続して登録する
 インターネット接続されたコンピューターで、次の PowerShell コマンドを使用して **RegisterWithAzure.psm1** モジュールをインポートしてから、作成した登録トークンと一意の登録名で **Register-AzsEnvironment** コマンドレットを使用して Azure に登録します。  
 
-  ```PowerShell  
+  ```powershell  
   # Add the Azure cloud subscription environment name. 
   # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
   Add-AzureRmAccount -EnvironmentName "<environment name>"
@@ -134,7 +134,7 @@ ASDK ホスト コンピューター上で、管理者として PowerShell を�
 
 または、**Get-Content** コマンドレットを使用して、登録トークンが含まれているファイルを示すことができます。
 
-  ```PowerShell  
+  ```powershell  
   # Add the Azure cloud subscription environment name. 
   # Supported environment names are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
   Add-AzureRmAccount -EnvironmentName "<environment name>"

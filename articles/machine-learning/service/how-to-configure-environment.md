@@ -267,21 +267,17 @@ Databricks クラスターを準備し、サンプルのノートブックを取
     クラスターが作成されるまで数分かかります。 クラスターが実行中になるまで待機してから、次に進んでください。
 
 1. Azure Machine Learning SDK パッケージをインストールしてクラスターにアタッチします。  
-
     * 以下の設定のいずれかを使用して[ライブラリを作成します](https://docs.databricks.com/user-guide/libraries.html#create-a-library) (_これらのオプションの 1 つだけを選択します_)。
-    
-        * 自動化された機械学習の機能を_含めずに_ Azure Machine Learning SDK をインストールする場合:
+        * 自動化された機械学習の機能を _含めずに_ Azure Machine Learning SDK をインストールする場合:
             | Setting | 値 |
             |----|---|
             |ソース | Python Egg または PyPI のアップロード
             |PyPi 名 | azureml-sdk[databricks]
-    
-        * 自動化された機械学習を_含めて_ Azure Machine Learning SDK をインストールする場合:
+        * 自動化された機械学習を _含めて_ Azure Machine Learning SDK をインストールする場合:
             | Setting | 値 |
             |----|---|
             |ソース | Python Egg または PyPI のアップロード
             |PyPi 名 | azureml-sdk[automl_databricks]
-    
     * **すべてのクラスターに自動的にアタッチする** は選択しないでください
 
     * クラスター名の横にある **アタッチ** を選択します
@@ -292,9 +288,9 @@ Databricks クラスターを準備し、サンプルのノートブックを取
 
     完了すると、ライブラリは以下の図に示すようにアタッチされます。 [Databricks の一般的な問題](resource-known-issues.md#databricks)に注意してください。
 
-    * 自動化された機械学習を_含めず_に Azure Machine Learning SDK をインストールした場合 ![自動化された機械学習を含めずに Databricks にインストールされた SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
+    * 自動化された機械学習を _含めず_ に Azure Machine Learning SDK をインストールした場合 ![自動化された機械学習を含めずに Databricks にインストールされた SDK](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-    * 自動化された機械学習を_含めて_に Azure Machine Learning SDK をインストールした場合 ![自動化された機械学習を含めて Databricks にインストールされた SDK](./media/how-to-configure-environment/automlonadb.jpg)
+    * 自動化された機械学習を _含めて_ に Azure Machine Learning SDK をインストールした場合 ![自動化された機械学習を含めて Databricks にインストールされた SDK](./media/how-to-configure-environment/automlonadb.jpg)
 
    この手順が失敗する場合は、以下の手順を実行してクラスターを再起動します。
 

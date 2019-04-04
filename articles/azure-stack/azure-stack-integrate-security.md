@@ -11,12 +11,12 @@ ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/28/2019
 keywords: ''
-ms.openlocfilehash: a47b38acc372e6c1d215c7440657486b5babf3bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3694425ac72d3b75d66d870e3746bc1738ba0138
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009479"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481911"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Azure Stack データセンターの統合 - Syslog 転送
 
@@ -73,7 +73,7 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 
 *Set-SyslogClient* コマンドレットのパラメーター:
 
-| パラメーター | 説明 | type |
+| パラメーター | 説明 | Type |
 |---------|---------| ---------|
 | *pfxBinary* | Syslog サーバーに対する認証のためにクライアントが ID として使用する証明書が入った pfx ファイル  | Byte[] |
 | *CertPassword* |  pfx ファイルに関連付けられている秘密キーをインポートするためのパスワード | SecureString |
@@ -185,13 +185,13 @@ Syslog サーバー構成を完全に削除し、Syslog 転送を停止するに
 
 **クライアントから Syslog サーバー構成を削除する**
 
-```PowerShell  
+```powershell  
 Set-SyslogServer -Remove
 ```
 
 **クライアントからクライアント証明書を削除する**
 
-```PowerShell  
+```powershell  
 Set-SyslogClient -RemoveCertificate
 ```
 
@@ -201,13 +201,13 @@ Syslog クライアントを Syslog サーバーに接続することに成功�
 
 **Syslog クライアントのサーバー構成を確認する**
 
-```PowerShell  
+```powershell  
 Get-SyslogServer
 ```
 
 **Syslog クライアントの証明書のセットアップを確認する**
 
-```PowerShell  
+```powershell  
 Get-SyslogClient
 ```
 

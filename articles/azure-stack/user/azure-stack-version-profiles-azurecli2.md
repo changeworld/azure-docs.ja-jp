@@ -14,12 +14,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 519046081a7f9778fb430daa0cd418cf9863a2b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 21167366ff3af2bb360c33eaae9d591020bf11a5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57975629"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487585"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack での Azure CLI による API バージョンのプロファイルの使用
 
@@ -95,13 +95,13 @@ az --version
 
 2. PIP をアップグレードします。 PIP は Python 用のパッケージ マネージャーです。 コマンド プロンプトまたは管理者特権の PowerShell プロンプトを開き、次のコマンドを入力します。
 
-    ```PowerShell  
+    ```powershell  
     python -m pip install --upgrade pip
     ```
 
 3. **certifi** モジュールをインストールします。 [certifi](https://pypi.org/project/certifi/) モジュールは、SSL 証明書の信頼性の検証と TLS ホストの ID の確認を行うためのルート証明書のコレクションです。 コマンド プロンプトまたは管理者特権の PowerShell プロンプトを開き、次のコマンドを入力します。
 
-    ```PowerShell
+    ```powershell
     pip install certifi
     ```
 
@@ -157,7 +157,7 @@ Azure Stack の CA ルート証明書を信頼するには、Python の既存の
 
 1. マシンで証明書の場所を探します。 この場所は、Python をインストールした場所に応じて異なる場合があります。 コマンド プロンプトまたは管理者特権の PowerShell プロンプトを開き、次のコマンドを入力します。
 
-    ```PowerShell  
+    ```powershell  
       python -c "import certifi; print(certifi.where())"
     ```
 
@@ -277,7 +277,7 @@ ASDK を使用する場合は、リモート マシン上で CA ルート証明�
 
 1. マシンで証明書の場所を探します。 この場所は、Python をインストールした場所に応じて異なる場合があります。 コマンド プロンプトまたは管理者特権の PowerShell プロンプトを開き、次のコマンドを入力します。
 
-    ```PowerShell  
+    ```powershell  
       python -c "import certifi; print(certifi.where())"
     ```
 

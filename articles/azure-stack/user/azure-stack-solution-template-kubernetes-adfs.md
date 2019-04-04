@@ -15,12 +15,12 @@ ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: 7e11da971e86b605e3e17b07ebcdab97eef5b957
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bdb46a5e11b26f04d008160fa5a782050211b56e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122945"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484375"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Active Directory フェデレーション サービスを使用して Azure Stack に Kubernetes をデプロイする
 
@@ -85,7 +85,7 @@ AD FS を ID ソリューションとして使用する場合は、Azure Stack �
 
    - 管理者特権のプロンプトで PowerShell を開き、[Azure Stack に接続](azure-stack-powershell-configure-user.md#connect-with-ad-fs)します。 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
 
-     ```PowerShell  
+   ```powershell  
        $armEndpoint="<Azure Resource Manager Endpoint>"
        $subscriptionId="<Your Subscription ID>"
        $username="<your user name >"
@@ -126,7 +126,7 @@ AD FS を ID ソリューションとして使用する場合は、Azure Stack �
 
    - 管理者特権のプロンプトで PowerShell を開き、[Azure Stack に接続](azure-stack-powershell-configure-user.md#connect-with-ad-fs)します。 実際の値に更新したパラメーターを指定して、次のスクリプトを実行します。
 
-     ```PowerShell  
+    ```powershell
         
      # upload the pfx to key vault
      $tempPFXFilePath = "<certificate path>"

@@ -36,7 +36,7 @@ Azure Monitor のログでは、*[Filter (preview)]\(フィルター (プレビ�
 
 ![ログ検索のフィールドの抽出](media/log-search-transition/extract-fields-log-search.png)
 
-Azure Monitor のログでは、カスタム フィールドをテーブル ビューから抽出します。 _フィールドの抽出_アクションには、レコードの左側にある矢印をクリックしてレコードを展開し、省略記号をクリックしてアクセスします。
+Azure Monitor のログでは、カスタム フィールドをテーブル ビューから抽出します。 _フィールドの抽出_ アクションには、レコードの左側にある矢印をクリックしてレコードを展開し、省略記号をクリックしてアクセスします。
 
 ![ログのフィールドの抽出](media/log-search-transition/extract-fields-logs.png)
 

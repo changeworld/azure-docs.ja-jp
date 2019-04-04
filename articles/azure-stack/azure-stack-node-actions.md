@@ -15,12 +15,12 @@ ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 24c500251c8e91b7542c5c9d3e77676205c88c1f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cd7e66961a0b9a80150a3d3e132efd29485cdb66
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090969"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483150"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack でのスケール ユニット ノードの操作
 
@@ -85,7 +85,7 @@ Azure Stack PowerShell モジュールをインストールする必要があり
 
 停止アクションを実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
-```PowerShell  
+```powershell  
   Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
@@ -99,7 +99,7 @@ Azure Stack PowerShell モジュールをインストールする必要があり
  
 開始アクションを実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
-```PowerShell  
+```powershell  
   Start-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
@@ -118,7 +118,7 @@ Azure Stack PowerShell モジュールをインストールする必要があり
 
 ドレイン アクションを実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
-```PowerShell  
+```powershell  
   Disable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
@@ -130,7 +130,7 @@ Azure Stack PowerShell モジュールをインストールする必要があり
 
 再開アクションを実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
-```PowerShell  
+```powershell  
   Enable-AzsScaleUnitNode -Location <RegionName> -Name <NodeName>
 ```
 
@@ -149,7 +149,7 @@ Azure Stack PowerShell モジュールをインストールする必要があり
 
 修復アクションを実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
-  ```PowerShell
+  ```powershell
   Repair-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -BMCIPv4Address <BMCIPv4Address>
   ```
 
@@ -163,7 +163,7 @@ Azure Stack PowerShell モジュールをインストールする必要があり
 
 シャットダウン操作を実行するには、管理者特権の PowerShell プロンプトを開き、次のコマンドレットを実行します。
 
-  ```PowerShell
+  ```powershell
   Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -Shutdown
   ```
 

@@ -17,12 +17,12 @@ ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 489ef2c472cb9622e83a04428ec9c5958e5a5003
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 54eb2ff43a5f36999294b8d0c580bc425ab65b28
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983374"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629065"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Azure Stack Development Kit とは
 [Microsoft Azure Stack 統合システム](../azure-stack-poc.md)には 4 ノードから 16 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。 Azure Stack 統合システムの使用により、運用ワークロード向けの新しいシナリオが可能になります。 統合システム インフラストラクチャの管理およびサービスの提供を行う Azure Stack オペレーターは、[オペレーター ドキュメント](https://docs.microsoft.com/azure/azure-stack)を参照してください。
@@ -49,7 +49,7 @@ ASDK の詳細については、次の短い動画をご覧ください。
 |説明|ASDK|マルチノード Azure Stack|
 |-----|-----|-----|
 |**スケール**|すべてのコンポーネントが、単一ノードのサーバー コンピューターにインストールされます。|サイズは 4 から 16 ノードの範囲で設定できます。|
-|**回復力**|単一ノードの構成では、高可用性は提供されません|[高可用性](../azure-stack-key-features.md#high-availability-for-azure-stack)機能がサポートされています。|
+|**回復力**|単一ノードの構成では、高可用性は提供されません|[高可用性](../azure-stack-overview.md#providing-high-availability)機能がサポートされています。|
 |**ネットワーク**|ASDK ホストは、すべての ASDK ネットワーク トラフィックをルーティングします。 他のスイッチ要件はありません。|Top-Of-Rack (TOR)、ベースボード管理コントローラー (BMC)、境界 (データセンター ネットワーク) スイッチなど、より複雑な[ネットワーク ルーティング インフラストラクチャ](../azure-stack-network.md#network-infrastructure)がマルチノード デプロイでは必要です。|
 |**修正プログラムと更新プログラムの処理**|ASDK の新しいバージョンに移行するには、開発キットのホスト コンピューターで ASDK を再デプロイする必要があります。|インストール済みの Azure Stack バージョンを更新するために、[修正プログラムと更新プログラム](../azure-stack-updates.md)のプロセスが使用されます。|
 |**サポート**|MSDN の Azure Stack フォーラム。 Microsoft カスタマー サービス & サポート (CSS) のサポートは、非運用環境では使用 "*できません*"。|[MSDN の Azure Stack フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack)と完全な CSS サポート。|

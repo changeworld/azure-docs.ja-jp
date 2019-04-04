@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f66f57799e1e6b6d0e27624e3dc08b4de5d09cac
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9513b552ce6bfd525077270b90d3d10e31c015c5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766202"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484964"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Azure Stack のサービスとしての検証のワークフロー共通パラメーター
 
@@ -43,7 +43,7 @@ ms.locfileid: "57766202"
 1. DVM または Azure Stack 環境にアクセスできる任意のマシンにサインインします。
 2. 管理者特権の PowerShell ウィンドウで次のコマンドを実行します。
 
-    ```PowerShell  
+    ```powershell  
     $CloudAdminUser = "<cloud admin username>"
     $CloudAdminPassword = ConvertTo-SecureString "<cloud admin password>" -AsPlainText -Force
     $stampInfoCreds = New-Object System.Management.Automation.PSCredential($CloudAdminUser, $CloudAdminPassword)

@@ -64,17 +64,17 @@ items:
     href: azure-management.md
   - name: 継続的な監視
     href: continuous-monitoring.md
-  - name: ログ データの分析
+  - name: データ プラットフォーム
     items:
-    - name: ログ クエリ
-      href: log-query/log-query-overview.md
-    - name: ログ クエリ ポータル
-      href: log-query/portals.md
-  - name: データの監視
+    - name: 概要
+      href: platform/data-platform.md
+    - name: メトリック
+      href: platform/data-platform-metrics.md
+    - name: ログ
+      href: platform/data-platform-logs.md
+  - name: データ ソース
     items:
-    - name: メトリックとログ
-      href: platform/data-collection.md
-    - name: データ ソース
+    - name: データ ソースの概要
       href: platform/data-sources.md
     - name: Azure データ ソース
       href: platform/data-sources-reference.md
@@ -86,14 +86,20 @@ items:
       href: platform/data-ingestion-time.md
     - name: メトリック ストアへのカスタム メトリックの送信
       href: platform/metrics-custom-overview.md
-    - name: データのセキュリティ
-      items:
-      - name: ログ データ
-        href: platform/data-security.md
-      - name: 個人のログ データの処理
-        href: platform/personal-data-mgmt.md
-      - name: アプリケーション データの収集、保持、保存
-        href: app/data-retention-privacy.md
+  - name: ログ データの分析
+    items:
+    - name: ログ クエリ
+      href: log-query/log-query-overview.md
+    - name: ログ クエリ ポータル
+      href: log-query/portals.md
+  - name: データのセキュリティ
+    items:
+    - name: ログ データ
+      href: platform/data-security.md
+    - name: 個人のログ データの処理
+      href: platform/personal-data-mgmt.md
+    - name: アプリケーション データの収集、保持、保存
+      href: app/data-retention-privacy.md
   - name: 洞察
     items:
     - name: Application Insights
@@ -128,6 +134,8 @@ items:
       href: platform/alerts-unified-log.md
     - name: アクティビティ ログ アラート
       href: platform/activity-log-alerts.md
+    - name: 一般的なアラート スキーマ
+      href: platform/alerts-common-schema.md
   - name: データの視覚化
     href: visualizations.md
   - name: パートナー統合
@@ -180,8 +188,6 @@ items:
           href: learn/quick-create-workspace-posh.md
       - name: ワークスペースを削除する
         href: platform/delete-workspace.md
-      - name: ワークスペースを管理する
-        href: platform/manage-access.md
       - name: サービス プロバイダー向けの設計
         href: platform/service-providers.md
   - name: データを収集する
@@ -341,6 +347,8 @@ items:
           href: app/annotations.md
         - name: ApplicationInsights.config
           href: app/configuration-with-applicationinsights-config.md
+        - name: スナップショット デバッガー
+          href: app/snapshot-debugger.md
       - name: Java アプリ
         items:
         - name: Web Apps
@@ -434,6 +442,8 @@ items:
         href: platform/collect-azure-metrics-logs.md
       - name: Azure ストレージからの診断またはログ データ
         href: platform/azure-storage-iis-table.md
+      - name: Azure PaaS リソース
+        href: platform/collect-azurepass-posh.md
       - name: カスタム データ ソースを関連付ける
         href: app/custom-data-correlation.md
     - name: カスタム データの収集
@@ -460,10 +470,10 @@ items:
         href: platform/archive-diagnostic-logs.md
       - name: 診断ログを保存する
         href: platform/diagnostic-logs-stream-log-store.md
-      - name: Event Hub への Azure リソース データ
-        href: platform/stream-monitoring-data-event-hubs.md
       - name: アクティビティ ログの Event Hubs へのストリーム
         href: platform/activity-logs-stream-event-hubs.md
+      - name: ログとメトリックをイベント ハブにストリーミングする
+        href: platform/stream-monitoring-data-event-hubs.md
       - name: 診断ログをイベント ハブにストリーミングする
         href: platform/diagnostic-logs-stream-event-hubs.md
       - name: アプリケーション データを Log Analytics に送信する
@@ -650,9 +660,8 @@ items:
   - name: データの視覚化
     items:
     - name: ビュー
+      href: platform/view-designer.md
       items:
-      - name: ビュー デザイナー
-        href: platform/view-designer.md
       - name: タイルのリファレンス
         href: platform/view-designer-tiles.md
       - name: 視覚化パーツのリファレンス
@@ -807,6 +816,8 @@ items:
           href: platform/action-groups.md
         - name: webhook スキーマの詳細情報
           href: platform/activity-log-alerts-webhook.md
+        - name: 一般的なアラート スキーマの定義
+          href: platform/alerts-common-schema-definitions.md
         - name: SMS アラート動作
           href: platform/alerts-sms-behavior.md
         - name: アラートのレート制限
@@ -978,9 +989,9 @@ items:
   - name: Azure PowerShell
     items:
     - name: 監視
-      href: /powershell/module/azurerm.insights
+      href: /powershell/module/az.applicationinsights
     - name: ログ
-      href: /powershell/module/azurerm.operationalinsights
+      href: /powershell/module/az.operationalinsights
   - name: REST API
     items:
     - name: 監視
@@ -1056,9 +1067,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 48ea888b5c21bc2c689d93684b4dbae7eaee1ed8
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 9c0f17f113b7940f83e3d3b5b2161fe9f88c01ac
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629428"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886643"
