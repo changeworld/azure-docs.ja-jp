@@ -22,7 +22,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58106663"
 ---
-# <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>主な考慮事項:Azure Stack でのサービスの使用またはアプリの作成
+# <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>重要な考慮事項:Azure Stack でのサービスの使用またはアプリの作成
 
 Azure Stack のサービスを使用する場合やアプリを作成する場合、Azure Stack と Azure の違いを理解しておく必要があります。 この記事では、Azure Stack をハイブリッド クラウド開発環境として使用する際の重要な考慮事項について説明します。
 
@@ -39,15 +39,15 @@ Azure に関する技術的な内容は、Azure Stack ではなく、Azure サ�
 * 適切な Azure Stack 固有のエンドポイント (ポータル アドレスや Azure Resource Manager エンドポイントの URL など) を使用する必要があります。
 * Azure Stack でサポートされている PowerShell および API のバージョンを使用する必要があります。 サポートされているバージョンを使用すると、確実に Azure Stack と Azure の両方でアプリが動作するようになります。
 
-## <a name="cheat-sheet-high-level-differences"></a>チート シート:違いの概要
+## <a name="cheat-sheet-high-level-differences"></a>チート シート: 大まかな違い
 
-次の表では、Azure Stack と Azure の違いの概要を示します。 Azure Stack 向けに開発する場合や、Azure Stack サービスを使用する場合は以下の相違点に注意してください。
+次の表では、Azure Stack と Azure の大まかな違いを示します。 Azure Stack 向けに開発する場合や、Azure Stack サービスを使用する場合は以下の相違点に注意してください。
 
 *適用対象:Azure Stack 統合システムと Azure Stack Development Kit*
 
 | 領域 | Azure (グローバル) | Azure Stack |
 | -------- | ------------- | ----------|
-| 担当 | Microsoft | 組織またはサービス プロバイダー。|
+| 運用担当(オペレーター) | Microsoft | 組織またはサービス プロバイダー。|
 | サポートに関する連絡先 | Microsoft | 統合システムについては、(組織またはサービス プロバイダーの) Azure Stack オペレーターにお問い合わせください。<br><br>Azure Stack Development Kit のサポートについては、[Microsoft フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurestack)にアクセスして確認してください。 開発キットは評価環境であるため、Microsoft カスタマー サポート サービス (CSS) を通した正式なサポートは提供されていません。
 | 利用可能なサービス | [Azuer 製品](https://azure.microsoft.com/services/?b=17.04b)の一覧を参照してください。 利用可能なサービスは Azure リージョンによって異なります。 | Azure Stack では Azure サービスのサブセットがサポートされます。 提供される実際のサービスは、組織またはサービス プロバイダーによる選択内容によって異なります。
 | Azure Resource Manager のエンドポイント* | https://management.azure.com | Azure Stack 統合システムの場合は、Azure Stack オペレーターによって提供されたエンドポイントを使用します。<br><br>開発キットの場合は、 https://management.local.azurestack.external を使用します。
