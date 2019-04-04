@@ -385,7 +385,7 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 
 ## <a name="metrics-and-logs-available"></a>利用可能なメトリックとログ
 
-収集された監視テレメトリは、[SQL Analytics 言語](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)による独自の_カスタム分析_と_アプリケーション開発_に利用できます。
+収集された監視テレメトリは、[SQL Analytics 言語](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)による独自の _カスタム分析_ と _アプリケーション開発_ に利用できます。
 
 ## <a name="all-metrics"></a>すべてのメトリック
 
