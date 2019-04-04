@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 30ebccd6bee26900ac01f7f4d17993e24c9db745
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3318e52b29723eaa08d8c3a4fba18e278e6cfe9c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779251"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487755"
 ---
 # <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Azure Stack Key Vault に格納されているセキュリティ保護されたパスワードを使用して仮想マシンを作成する
 
@@ -53,7 +53,7 @@ Azure Stack Key Vault にはパスワードなどの値をシークレットと�
 
 次のスクリプトは、Key Vault を作成し、パスワードをシークレットとして Key Vault に格納します。 Key Vault を作成するときは、`-EnabledForDeployment` パラメーターを使います。 このパラメーターを指定すると、Azure Resource Manager テンプレートから Key Vault を参照できるようになります。
 
-```PowerShell
+```powershell
 
 $vaultName = "contosovault"
 $resourceGroup = "contosovaultrg"
@@ -118,7 +118,7 @@ Set-AzureKeyVaultSecret `
 
 次の PowerShell スクリプトを使用して、テンプレートをデプロイします。
 
-```PowerShell  
+```powershell  
 New-AzureRmResourceGroupDeployment `
   -Name KVPwdDeployment `
   -ResourceGroupName $resourceGroup `

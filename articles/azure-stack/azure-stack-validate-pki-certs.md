@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 1e5154f4f6c77e9a024ced58f3b75a0111a614c3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 06cb29d6d04fb314f9eefa63d7a2b628a2af846b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769381"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481122"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Azure Stack PKI 証明書の検証
 
@@ -67,12 +67,12 @@ Azure Stack のデプロイに対して PKI 証明書を検証する前に、シ
 
 1. 次のコマンドレットを実行して、PowerShell プロンプト (5.1 以上) から **AzsReadinessChecker** をインストールします。
 
-    ```PowerShell  
+    ```powershell  
         Install-Module Microsoft.AzureStack.ReadinessChecker -force 
     ```
 
 2. 証明書ディレクトリ構造を作成します。 次の例では、`<c:\certificates>` を、選択した新規ディレクトリ パスに変更できます。
-    ```PowerShell  
+    ```powershell  
     New-Item C:\Certificates -ItemType Directory
     
     $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
@@ -85,7 +85,7 @@ Azure Stack のデプロイに対して PKI 証明書を検証する前に、シ
     > [!Note]  
     > AD FS を ID システムとして使用している場合は、AD FS と Graph が必要です。 例: 
     >
-    > ```PowerShell  
+    > ```powershell  
     > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
     > ```
     
@@ -96,7 +96,7 @@ Azure Stack のデプロイに対して PKI 証明書を検証する前に、シ
 
 3. PowerShell ウィンドウで、Azure Stack 環境に合わせて **RegionName** および **FQDN** の値を変更し、次を実行します。
 
-    ```PowerShell  
+    ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Invoke-AzsCertificateValidation -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
@@ -104,7 +104,7 @@ Azure Stack のデプロイに対して PKI 証明書を検証する前に、シ
 
 4. 出力を確認し、すべての証明書がすべてのテストに合格していることを確認します。 例: 
 
-```PowerShell
+```powershell
 Invoke-AzsCertificateValidation v1.1809.1005.1 started.
 Testing: ARM Public\ssl.pfx
 Thumbprint: 7F6B27****************************E9C35A
@@ -156,7 +156,7 @@ Invoke-AzsCertificateValidation Completed
 
  - 証明書チェーンに問題がある場合、他の証明書はスキップされます。
 
-    ```PowerShell  
+    ```powershell  
     Testing: ACSBlob\singlewildcard.pfx
         Read PFX: OK
         Signature Algorithm: OK
@@ -185,13 +185,13 @@ SQL/MySQL または App Services のデプロイを計画している場合は�
 
 1.  次のコマンドレットを実行して、PowerShell プロンプト (5.1 以上) から **AzsReadinessChecker** をインストールします。
 
-    ```PowerShell  
+    ```powershell  
       Install-Module Microsoft.AzureStack.ReadinessChecker -force
     ```
 
 2.  検証が必要な PaaS 証明書ごとに、パスとパスワードを含む入れ子になったハッシュ テーブルを作成します。 PowerShell ウィンドウで、次を実行します。
 
-    ```PowerShell  
+    ```powershell  
         $PaaSCertificates = @{
         'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
         'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
@@ -203,12 +203,12 @@ SQL/MySQL または App Services のデプロイを計画している場合は�
 
 3.  Azure Stack 環境に合わせて **RegionName** と **FQDN** の値を変更し、検証を開始します。 次に、以下を実行します。
 
-    ```PowerShell  
+    ```powershell  
     Invoke-AzsCertificateValidation -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com 
     ```
 4.  出力を確認し、すべての証明書がすべてのテストに合格していることを確認します。
 
-    ```PowerShell
+    ```powershell
     Invoke-AzsCertificateValidation v1.0 started.
     Thumbprint: 95A50B****************************FA6DDA
         Signature Algorithm: OK

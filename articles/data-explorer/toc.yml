@@ -85,6 +85,10 @@ items:
       href: delete-data.md
     - name: 重複したデータを処理する
       href: dealing-with-duplicates.md
+  - name: 監視
+    items:
+    - name: メトリックを使用してクラスターの正常性を監視する
+      href: using-metrics.md
   - name: その他のツールを操作する
     items:
     - name: Python を使用して Databricks から接続する
@@ -135,9 +139,9 @@ items:
     href: https://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: f3be712f345e603f3959c753ad3c81faaa1e00cf
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 7b525558fd22b2d2f61f3cc901938c449f53fb72
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402662"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847073"
