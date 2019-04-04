@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: fa1f90cf0236a589d1df96658c672a555195be6b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 199843be72df473ae501eaf6bd47dce41b079c94
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888816"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906108"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS のレコードおよびレコード セットを管理する
 
@@ -33,9 +33,9 @@ ms.locfileid: "56888816"
 
 この記事の例では、[Azure PowerShell のインストール、サインイン、DNS ゾーンの作成](dns-operations-dnszones.md)が既に完了していることを前提としています。
 
-## <a name="introduction"></a>はじめに
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+## <a name="introduction"></a>はじめに
 
 Azure DNS で DNS レコードを作成する前に、まず、Azure DNS における DNS レコード セットでの DNS レコードの編成方法を理解する必要があります。
 
@@ -93,7 +93,7 @@ New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGr
 
 各ケースで、1 つのレコードを含むレコード セットの作成方法を説明します。 "A" レコードに関する前の例は、メタデータを使って複数のレコードを含むその他の種類のレコード セットを作成したり、空のレコード セットを作成したりする場合に応用できます。
 
-SOA レコード セットを作成する例は示しません。SOA は各 DNS ゾーンと共に作成および削除されるため、単独で作成または削除することはできません。 ただし、[後の例に示すとおり、SOA を変更することはできます](#to-modify-an-SOA-record)。
+SOA レコード セットを作成する例は示しません。SOA は各 DNS ゾーンと共に作成および削除されるため、単独で作成または削除することはできません。 ただし、[後の例に示すとおり、SOA を変更することはできます](#to-modify-an-soa-record)。
 
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>1 つのレコードを含む AAAA レコード セットの作成
 
@@ -398,4 +398,4 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 <br>
 Azure DNS の使用時に[ゾーンとレコードを保護する](dns-protect-zones-recordsets.md)方法について確認します。
 <br>
-[Azure DNS PowerShell のリファレンス ドキュメント](/powershell/module/azurerm.dns)を確認します。
+[Azure DNS PowerShell のリファレンス ドキュメント](/powershell/module/az.dns)を確認します。

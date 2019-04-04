@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 9897fbb3f5efe1f5255992e4894ea22041595263
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: ad4839a1b9e951a2bb206518254826a066330000
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268194"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620861"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Azure Monitor ログのテキスト データの解析
 Azure Monitor によって収集された一部のログ データでは、1 つのプロパティに複数に分けられた情報が含まれます。 このデータを複数のプロパティに分けて解析すると、クエリで使用しやすくなります。 一般的な例は、複数の値を持つすべてのログ エントリを 1 つのプロパティに集める[カスタム ログ](../../log-analytics/log-analytics-data-sources-custom-logs.md)です。 異なる値に個別のプロパティを作成することによって、それぞれで検索したり、集約したりできます。
@@ -55,7 +55,7 @@ Azure Monitor によって収集された一部のログ データでは、1 つ
  
 この方法には、次のような短所があります。
 
-- より複雑なクエリを記述する必要があります。 これは、[テーブルをシミュレートする関数](#Use-function-to-simulate-a-table)を使用することによって軽減できます。
+- より複雑なクエリを記述する必要があります。 これは、[テーブルをシミュレートする関数](#use-function-to-simulate-a-table)を使用することによって軽減できます。
 - 複数のクエリの解析ロジックをレプリケートする必要があります。 関数を使用して一部のロジックを共有できます。
 - 非常に大きなレコード セット (数十億件のレコード) に対して複雑なロジックを実行するときに、オーバーヘッドが発生する可能性があります。
 

@@ -4,7 +4,7 @@ description: Service Fabric クラスターは Windows Server または Linux �
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: 5d3421c4d48a6bf8416a774c4b4e5e7852a83f06
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: b4b7759d1dc23c1a1b3a9b5aeb2a181923e14d40
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55967019"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670712"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Service Fabric スタンドアロン クラスターの概要
 
@@ -40,7 +40,7 @@ Windows スタンドアロン クラスターでは、Windows セキュリティ
 詳細については、「[ノード間のセキュリティ](service-fabric-cluster-security.md#node-to-node-security)」を参照してください。
 
 ### <a name="client-to-node-security"></a>クライアントとノードの間のセキュリティ
-クライアントとノードの間のセキュリティでは、クライアントの認証を行い、クラスター内のクライアントと個々のノードの間の通信をセキュリティで保護できます。 この種類のセキュリティでは、権限のあるユーザーのみが、クラスターと、クラスターにデプロイされたアプリケーションにアクセスできます。 クライアントは、X.509 証明書のセキュリティ資格情報を通じて一意に識別されます。 クラスターで管理者またはユーザー クライアントを認証するために、任意の数のクライアント証明書をオプションとして使用できます。
+クライアントとノードの間のセキュリティでは、クライアントの認証を行い、クラスター内のクライアントと個々のノードの間の通信をセキュリティで保護できます。 この種類のセキュリティでは、権限のあるユーザーのみが、クラスターと、クラスターにデプロイされたアプリケーションにアクセスできます。 クライアントは、X.509 証明書のセキュリティ資格情報を通じて一意に識別されます。 クラスターで管理クライアントまたはユーザー クライアントを認証するために、必要に応じて任意の数のクライアント証明書を使用できます。
 
 クラスターでクライアントを認証するために、クライアント証明書に加えて、Azure Active Directory も構成できます。
 
@@ -57,7 +57,7 @@ Service Fabric では、ユーザーの各グループに対して特定のク�
 
 詳細については、[スタンドアロン クラスターのスケーリング](service-fabric-cluster-scaling-standalone.md)に関するページを参照してください。
 
-## <a name="upgrading"></a>アップグレード
+## <a name="upgrading"></a>アップグレード中
 
 スタンドアロン クラスターは、ユーザーが完全に所有するリソースです。 基になる OS への修正プログラムの適用とファブリック アップグレードの開始はユーザーの責任です。 Microsoft から新しいバージョンがリリースされたときに自動ランタイム アップグレードを受信するようにクラスターを設定できます。または、目的のサポートされているランタイム バージョンを選択できます。 ファブリックのアップグレードに加え、OS の修正プログラムを適用したり、証明書やアプリケーション ポートなどのクラスター構成を更新したりすることもできます。 
 
