@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 245683ec6c3c2d25f362e035020e162af75e1627
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ec06b25954d25c27cd7606f2f47aa93ef6d54244
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169923"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650395"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory 開発者向け用語集
 
@@ -204,7 +204,7 @@ Azure AD テナントはサインアップ時に作成され、Azure サブス�
 
 ## <a name="token-endpoint"></a>トークン エンドポイント
 
-[承認サーバー](#authorization-server)によって実装されるエンドポイントの 1 つ。OAuth2 [承認付与](#authorization-grant)をサポートするために使用されます。 付与された承認によっては、[クライアント](#client-application)への[アクセス トークン](#access-token) (と関連する "更新" トークン) を取得したり、[OpenID Connect][OpenIDConnect] プロトコルと共に使用する場合に [ID トークン](#ID-token)を取得したりできます。
+[承認サーバー](#authorization-server)によって実装されるエンドポイントの 1 つ。OAuth2 [承認付与](#authorization-grant)をサポートするために使用されます。 付与された承認によっては、[クライアント](#client-application)への[アクセス トークン](#access-token) (と関連する "更新" トークン) を取得したり、[OpenID Connect][OpenIDConnect] プロトコルと共に使用する場合に [ID トークン](#id-token)を取得したりできます。
 
 ## <a name="user-agent-based-client"></a>ユーザー エージェント ベースのクライアント
 

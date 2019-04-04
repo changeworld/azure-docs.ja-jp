@@ -4,7 +4,7 @@ description: デプロイされた Service Fabric サービスのレプリカ (�
 services: service-fabric
 documentationcenter: .net
 author: harahma
-manager: timlt
+manager: chackdan
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 80d9d447a86b58c8d6db5a62d3b0df997e42f673
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d2d958a89bff40483e1cd473538f7d1a6971d266
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172376"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663283"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric ホスティング モデル
 この記事では、Azure Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および**共有プロセス** モデルと**排他的プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、またこのサービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。

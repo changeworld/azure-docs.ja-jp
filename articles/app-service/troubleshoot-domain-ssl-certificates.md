@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 6f88079c5baac8cef677fd3afc5696cec5c00d92
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653664"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730102"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
 
@@ -88,13 +88,84 @@ Azure Portal から [Azure App Service 証明書](./web-sites-purchase-ssl-web-s
 - そのサブスクリプションは、サブスクリプションで許可されている購入の上限に達しました。
 
     **解決策**:サブスクリプションの種類が従量課金制および EA の場合、App Service 証明書の購入上限は 10 件です。 その他のサブスクリプションの種類の場合、上限は 3 件です。 この上限を増やすには、[Azure サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)へお問い合わせください。
-- App Service 証明書が不正であるとマークされて、 次のエラー メッセージが表示されました。"Your certificate has been flagged for possible fraud. The request is currently under review. If the certificate does not become usable within 24 hours, please contact Azure Support."(証明書に詐欺の可能性のフラグが付けられました。要求を確認中です。24 時間以内に証明書が使用可能にならない場合、Azure サポートに問い合わせてください)。
+- App Service 証明書が不正であるとマークされて、 次のエラー メッセージが表示されました。"Your certificate has been flagged for possible fraud. The request is currently under review. If the certificate does not become usable within 24 hours, contact Azure Support."(証明書に詐欺の可能性のフラグが付けられました。要求を確認中です。24 時間以内に証明書が使用可能にならない場合、Azure サポートに問い合わせてください。)
 
     **解決策**:証明書が不正であるとマークされて 24 時間以内に解決されない場合は、以下の手順に従ってください。
 
     1. [Azure Portal](https://portal.azure.com) にサインインします。
     2. **[App Service 証明書]** に移動して、証明書を選択します。
     3. **[証明書の構成]** > **[手順 2: 確認]** > **[ドメインの検証]** と選択します。 この手順により、問題を解決するため、Azure の証明書プロバイダーに電子メールの通知が送信されます。
+
+## <a name="custom-domain-problems"></a>カスタム ドメインに関する問題
+
+### <a name="a-custom-domain-returns-a-404-error"></a>カスタム ドメインから 404 エラーが返される 
+
+#### <a name="symptom"></a>症状
+
+カスタム ドメイン名を使用してサイトを参照すると、次のエラー メッセージが表示されます。
+
+"Error 404-Web app not found."(エラー 404-Web アプリが見つかりません。)
+
+#### <a name="cause-and-solution"></a>原因と解決策
+
+**原因 1** 
+
+構成したカスタム ドメインに CNAME または A レコードがありません。 
+
+**原因 1 の解決策**
+
+- A レコードを追加した場合は、必ず TXT レコードも追加するようにします。 詳細については、「[A レコードを作成する](./app-service-web-tutorial-custom-domain.md#create-the-a-record)」を参照してください。
+- アプリのためにルート ドメインを使用する必要がない場合は、A レコードではなく CNAME レコードを使用することをお勧めします。
+- 同じドメインのために CNAME レコードと A レコードの両方を使用しないでください。 この問題によって競合が発生し、ドメインの解決が妨げられる場合があります。 
+
+**原因 2** 
+
+インターネット ブラウザーが、ドメインの古い IP アドレスをまだキャッシュしている可能性があります。 
+
+**原因 2 の解決策**
+
+ブラウザーをクリアします。 Windows デバイスの場合は、`ipconfig /flushdns` コマンドを実行できます。 [WhatsmyDNS.net](https://www.whatsmydns.net/) を使用して、ドメインがアプリの IP アドレスを指し示していることを確認します。 
+
+### <a name="you-cant-add-a-subdomain"></a>サブドメインを追加できない 
+
+#### <a name="symptom"></a>症状
+
+アプリに新しいホスト名を追加し、サブドメインを割り当てることができません。
+
+#### <a name="solution"></a>解決策
+
+- サブスクリプションの管理者に問い合わせて、アプリにホスト名を追加する権限があることを確認します。
+- さらに多くのサブドメインが必要な場合は、ドメイン ホスティングを Azure ドメイン ネーム サービス (DNS) に変更することをお勧めします。 Azure DNS を使用すると、アプリに 500 のホスト名を追加できます。 詳細については、[サブドメインの追加](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)に関するページを参照してください。
+
+### <a name="dns-cant-be-resolved"></a>DNS を解決できない
+
+#### <a name="symptom"></a>症状
+
+次のエラー メッセージが表示されました。
+
+"DNS レコードが見つかりませんでした。"
+
+#### <a name="cause"></a>原因
+この問題は、次のいずれかの理由で発生します。
+
+- Time to Live (TTL) 期間が有効期限切れになりませんでした。 ドメインの DNS 構成を調べて TTL 値を確認し、その期間が有効期限切れになるまで待機します。
+- DNS 構成が正しくありません。
+
+#### <a name="solution"></a>解決策
+- この問題が自動的に解決されるのを 48 時間待ちます。
+- DNS 構成で TTL 設定を変更できる場合は、値を 5 分に変更し、この問題が解決されるかどうかを確認します。
+- [WhatsmyDNS.net](https://www.whatsmydns.net/) を使用して、ドメインがアプリの IP アドレスを指し示していることを確認します。 そうでない場合は、A レコードを、アプリの正しい IP アドレスに向けて構成します。
+
+### <a name="you-need-to-restore-a-deleted-domain"></a>削除したドメインを復元する必要がある 
+
+#### <a name="symptom"></a>症状
+ドメインが Azure Portal に表示されなくなっています。
+
+#### <a name="cause"></a>原因 
+サブスクリプションの所有者が意図せずドメインを削除した可能性があります。
+
+#### <a name="solution"></a>解決策
+ドメインが削除されたのが 7 日前までの場合、ドメインの削除プロセスはまだ開始されていません。 この場合、Azure Portal で、同じサブスクリプションを使用してもう一度同じドメインを購入できます。 (必ず、検索ボックスに正確なドメイン名を入力してください。)このドメインに対して再度の請求は行われません。 ドメインが 7 日前より前に削除された場合は、[Azure サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)に連絡してドメイン復元の支援を受けてください。
 
 ## <a name="domain-problems"></a>ドメインに関する問題
 
@@ -199,102 +270,59 @@ Microsoft Azure portal 内の App Service からドメインを購入できま�
     |TXT|@|<app-name>.azurewebsites.net|
     |CNAME|www|<app-name>.azurewebsites.net|
 
-### <a name="dns-cant-be-resolved"></a>DNS を解決できない
+## <a name="faq"></a>FAQ
 
-#### <a name="symptom"></a>症状
+**カスタム ドメインを購入した後、それを Web サイト用に構成する必要がありますか**
 
-次のエラー メッセージが表示されました。
+Azure Portal からドメインを購入した場合、App Service アプリケーションは、そのカスタム ドメインを使用するように自動的に構成されます。 追加の手順を実行する必要はありません。 詳細については、Channel9 の [Azure App Service のセルフ ヘルプ: カスタム ドメイン名の追加](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)に関するページを参照してください。
 
-"DNS レコードが見つかりませんでした。"
+**Azure Portal で購入されたドメインを使用して、代わりに Azure VM を指すことはできますか**
 
-#### <a name="cause"></a>原因
-この問題は、次のいずれかの理由で発生します。
+はい。そのドメインで VM、ストレージなどを指すことができます。詳細については、[Windows VM 用の Azure Portal でのカスタム FQDN の作成](../virtual-machines/windows/portal-create-fqdn.md)に関するページを参照してください。
 
-- Time to Live (TTL) 期間が有効期限切れになりませんでした。 ドメインの DNS 構成を調べて TTL 値を確認し、その期間が有効期限切れになるまで待機します。
-- DNS 構成が正しくありません。
+**このドメインは GoDaddy または Azure DNS によってホストされますか**
 
-#### <a name="solution"></a>解決策
-- この問題が自動的に解決されるのを 48 時間待ちます。
-- DNS 構成で TTL 設定を変更できる場合は、値を 5 分に変更し、この問題が解決されるかどうかを確認します。
-- [WhatsmyDNS.net](https://www.whatsmydns.net/) を使用して、ドメインがアプリの IP アドレスを指し示していることを確認します。 そうでない場合は、A レコードを、アプリの正しい IP アドレスに向けて構成します。
+App Service ドメインはドメイン登録のために GoDaddy を使用し、Azure DNS を使用してドメインをホストします。 
 
-### <a name="you-need-to-restore-a-deleted-domain"></a>削除したドメインを復元する必要がある 
+**自動更新を有効にしているにもかかわらず、依然として電子メール経由でドメインの更新通知を受信しました。どうすればよいですか。**
 
-#### <a name="symptom"></a>症状
-ドメインが Azure Portal に表示されなくなっています。
+自動更新を有効にしている場合は、何も対処する必要はありません。 その通知電子メールは、ドメインが期限切れに近づいていることを通知し、自動更新が有効になっていない場合は手動で更新するために提供されます。
 
-#### <a name="cause"></a>原因 
-サブスクリプションの所有者が意図せずドメインを削除した可能性があります。
+**ドメインをホストしている Azure DNS に対して課金されますか**
 
-#### <a name="solution"></a>解決策
-ドメインが削除されたのが 7 日前までの場合、ドメインの削除プロセスはまだ開始されていません。 この場合、Azure Portal で、同じサブスクリプションを使用してもう一度同じドメインを購入できます。 (必ず、検索ボックスに正確なドメイン名を入力してください。)このドメインに対して再度の請求は行われません。 ドメインが削除されたのが 7 日より前の場合は、ドメイン復元の助けを得るため、[Azure サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)にお問い合わせください。
+ドメイン購入の初期コストは、ドメイン登録にのみ適用されます。 登録コストに加えて、使用状況に基づいた Azure DNS に対する料金が発生します。 詳細については、「[Azure DNS の価格](https://azure.microsoft.com/pricing/details/dns/)」を参照してください。
 
-### <a name="a-custom-domain-returns-a-404-error"></a>カスタム ドメインから 404 エラーが返される 
+**以前に Azure Portal からドメインを購入しており、GoDaddy ホスティングから Azure DNS ホスティング移行したいと考えています。どうすればよいですか**
 
-#### <a name="symptom"></a>症状
+Azure DNS ホスティングへの移行は必須ではありません。 Azure DNS に移行したい場合は、Azure Portal でのドメイン管理エクスペリエンスによって、Azure DNS に移行するために必要な手順に関する情報が提供されます。 そのドメインが App Service 経由で購入された場合、GoDaddy ホスティングから Azure DNS への移行は比較的シームレスな手順になります。
 
-カスタム ドメイン名を使用してサイトを参照すると、次のエラー メッセージが表示されます。
+**App Service ドメインからドメインを購入したいと考えていますが、Azure DNS の代わりに GoDaddy でドメインをホストできますか**
 
-"Error 404-Web app not found."(エラー 404-Web アプリが見つかりません。)
+2017 年 7 月 24 日から、ポータルで購入された App Service ドメインは Azure DNS でホストされます。 別のホスティング プロバイダーを使用したい場合は、そのプロバイダーの Web サイトにアクセスしてドメイン ホスティング ソリューションを入手する必要があります。
 
+**ドメインのプライバシー保護に対して支払う必要がありますか**
 
-#### <a name="cause-and-solution"></a>原因と解決策
+Azure Portal 経由でドメインを購入した場合は、追加コストなしでプライバシーを追加することを選択できます。 これは、Azure App Service 経由でドメインを購入する利点の 1 つです。
 
-**原因 1** 
+**ドメインが必要なくなったと判断した場合、返金を受けることはできますか**
 
-構成したカスタム ドメインに CNAME または A レコードがありません。 
+ドメインを購入した場合、5 日間は課金されません。その期間内に、そのドメインが必要ないことを判断できます。 その 5 日の期間内にドメインが必要ないと判断した場合は、課金されません。 (.uk ドメインはこれの例外です。 .uk ドメインを購入した場合は、直ちに課金され、返金を受けることはできません。)
 
-**原因 1 の解決策**
+**サブスクリプションの別の Azure App Service アプリでドメインを使用できますか**
 
-- A レコードを追加した場合は、必ず TXT レコードも追加するようにします。 詳細については、「[A レコードを作成する](./app-service-web-tutorial-custom-domain.md#create-the-a-record)」を参照してください。
-- アプリのためにルート ドメインを使用する必要がない場合は、A レコードではなく CNAME レコードを使用することをお勧めします。
-- 同じドメインのために CNAME レコードと A レコードの両方を使用しないでください。 これによって競合が発生し、ドメインが解決されない可能性があります。 
+はい。 Azure Portal でカスタム ドメインや SSL ブレードにアクセスすると、購入したドメインが表示されます。 これらのドメインのいずれかを使用するようにアプリを構成できます。
 
-**原因 2** 
+**ドメインをあるサブスクリプションから別のサブスクリプションに転送できますか**
 
-インターネット ブラウザーが、ドメインの古い IP アドレスをまだキャッシュしている可能性があります。 
+[Move-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource?view=azurermps-6.13.0) PowerShell コマンドレットを使用して、ドメインを別のサブスクリプション/リソース グループに移動できます。
 
-**原因 2 の解決策**
+**現在 Azure App Service アプリがない場合、カスタム ドメインを管理するにはどうすればよいですか**
 
-ブラウザーをクリアします。 Windows デバイスの場合は、`ipconfig /flushdns` コマンドを実行できます。 [WhatsmyDNS.net](https://www.whatsmydns.net/) を使用して、ドメインがアプリの IP アドレスを指し示していることを確認します。 
+App Service Web Apps がない場合でも、ドメインを管理できます。 ドメインは、仮想マシン、ストレージなどの Azure サービスのために使用できます。ドメインを App Service Web Apps のために使用する場合は、そのドメインを Web アプリにバインドするために、Free App Service プランにない Web アプリを含める必要があります。
 
-### <a name="you-cant-add-a-subdomain"></a>サブドメインを追加できない 
+**カスタム ドメインを含む Web アプリを別のサブスクリプションに、または App Service 環境 v1 から V2 に移動できますか**
 
-#### <a name="symptom"></a>症状
+はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/resource-group-move-resources.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
+)に関するページを参照してください。
 
-アプリに新しいホスト名を追加し、サブドメインを割り当てることができません。
-
-#### <a name="solution"></a>解決策
-
-- サブスクリプションの管理者に問い合わせて、アプリにホスト名を追加する権限があることを確認します。
-- さらに多くのサブドメインが必要な場合は、ドメイン ホスティングを Azure DNS に変更することをお勧めします。 Azure DNS を使用すると、アプリに 500 のホスト名を追加できます。 詳細については、[サブドメインの追加](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)に関するページを参照してください。
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Web アプリを移動した後、カスタム ドメイン設定内のドメインのホスト名バインディングは同じままになります。 ホスト名バインディングを構成するための追加の手順は必要ありません。

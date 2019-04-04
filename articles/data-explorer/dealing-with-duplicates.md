@@ -3,17 +3,17 @@ title: 重複したデータを処理する
 description: このトピックでは、データの重複に対するさまざまな対処方法を紹介します。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: f417ba7d0fcd6f9d6b5bd6cd43cf1730af2ca53c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7a9ccd5139168393019a70aafb9b7b705ca25919
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54027529"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756372"
 ---
 # <a name="deal-with-duplicate-data"></a>重複したデータを処理する
 

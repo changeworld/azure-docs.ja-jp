@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f2219e038d3432807c81246256873a1ecb2cd9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d4105fa17041c7cefd1387d1ee50c177b8c55fc9
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093475"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651288"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>クイック スタート:Azure Active Directory におけるグループの名前付けポリシー
 
@@ -38,14 +38,18 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
 1. 管理者として Windows PowerShell アプリを開きます。
 2. 以前のバージョンの AzureADPreview をアンインストールします。
   
-   ```
+
+   ```powershell
    Uninstall-Module AzureADPreview
    ```
+
 3. 最新バージョンの AzureADPreview をインストールします。
   
-   ```
+
+   ```powershell
    Install-Module AzureADPreview
    ```
+
    信頼されていないリポジトリへのアクセスに関するメッセージが表示されたら、「**Y**」と入力します。新しいモジュールのインストールには数分かかる場合があります。
 
 ## <a name="set-up-naming-policy"></a>名前付けポリシーの設定
@@ -56,10 +60,12 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
 
 2. 次のコマンドを実行して、コマンドレットを実行する準備をします。
   
-   ```
+
+   ```powershell
    Import-Module AzureADPreview
    Connect-AzureAD
    ```
+
    表示された **[アカウントにサインイン]** 画面で、管理者アカウントとパスワードを入力してサービスに接続し、**[サインイン]** を選択します。
 
 3. 「[グループの設定を構成するための Azure Active Directory コマンドレット](groups-settings-cmdlets.md)」の手順に従って、このテナントのグループ設定を作成します。
@@ -68,35 +74,46 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
 
 1. 現在の名前付けポリシーの設定を表示します。
   
+
+   ```powershell
+   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id
    ```
-   $Setting = Get-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id
-   ```
+
   
 2. 現在のグループ設定を表示します。
   
-   ```
+
+   ```powershell
    $Setting.Values
    ```
+
   
+
 ### <a name="step-3-set-the-naming-policy-and-any-custom-blocked-words"></a>手順 3: 名前付けポリシーとカスタム禁止単語を設定する
 
 1. Azure AD PowerShell でグループ名のプレフィックスとサフィックスを設定します。 機能を適切に動作させるには、設定に [GroupName] を含める必要があります。
   
-   ```
+
+   ```powershell
    $Setting["PrefixSuffixNamingRequirement"] =“GRP_[GroupName]_[Department]"
    ```
+
   
 2. 制限するカスタム禁止単語を設定します。 次の例は、独自のカスタム単語を追加する方法を示しています。
   
-   ```
+
+   ```powershell
    $Setting["CustomBlockedWordsList"]=“Payroll,CEO,HR"
    ```
+
   
 3. 次の例のように、新しいポリシーの設定を保存して有効にします。
   
+
+   ```powershell
+   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
-   ```
+
   
 これで終了です。 名前付けポリシーが設定され、カスタム禁止単語が追加されました。
 
@@ -104,20 +121,25 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
 
 1. Azure AD PowerShell でグループ名のプレフィックスとサフィックスを空にします。
   
-   ```
+
+   ```powershell
    $Setting["PrefixSuffixNamingRequirement"] =""
    ```
+
   
 2. カスタム禁止単語を空にします。
   
-   ```
+
+   ```powershell
    $Setting["CustomBlockedWordsList"]=""
    ```
+
   
 3. 設定を保存します。
   
-   ```
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+
+   ```powershell
+   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | Where-Object -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
 
 ## <a name="next-steps"></a>次の手順

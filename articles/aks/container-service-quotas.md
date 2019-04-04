@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 04/01/2019
 ms.author: iainfou
-ms.openlocfilehash: ef1ecf4419733e908445f9cf4fe47797d430433f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 8feeaf2e8ee99405ed0de8291fc97dc50db6a386
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337461"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805229"
 ---
 # <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクォータとリージョンの可用性
 
@@ -41,8 +41,11 @@ Azure Kubernetes Service (AKS) は、次のリージョンで利用できます�
 - 米国東部 2
 - フランス中部
 - 東日本
+- 韓国中部
+- 韓国南部
 - 北ヨーロッパ
 - 東南アジア
+- 米国中南部
 - インド南部
 - 英国南部
 - 英国西部

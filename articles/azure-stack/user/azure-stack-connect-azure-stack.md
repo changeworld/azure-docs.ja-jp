@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 77cfade382d2c2533b803412157a1d5268e89983
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9b7a5aef76ec72b0de76fb4517ffda02808eab9d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764321"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882490"
 ---
 # <a name="connect-to-azure-stack"></a>Azure Stack への接続
 
@@ -55,7 +55,7 @@ Azure Stack Development Kit に対して、分割トンネルの仮想プライ�
 
 Development Kit に対する VPN 接続を作成するには、ローカル Windows ベースのコンピューターから管理者特権の PowerShell セッションを開き、次のスクリプトを実行します (実際の環境に合わせて IP アドレスとパスワードは変更してください)。
 
-```PowerShell 
+```powershell 
 # Configure winrm if it's not already configured
 winrm quickconfig  
 
@@ -92,9 +92,9 @@ Add-AzsVpnConnection `
 
 次の 2 つの方法のいずれかを使用して、Azure Stack インスタンスに接続します。  
 
-* `Connect-AzsVpn ` コマンドを使用する: 
+* `Connect-AzsVpn` コマンドを使用する: 
     
-  ```PowerShell
+  ```powershell
   Connect-AzsVpn `
     -Password $Password
   ```

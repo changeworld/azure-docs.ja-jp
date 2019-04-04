@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 40b31f166ea97cfce67d3cc386062e32338ffd45
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 04/01/2019
+ms.openlocfilehash: f340f1e42b6993a1f834ab05570c669d4241222b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455519"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847177"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の読み取りレプリカ
 
 読み取りレプリカ機能を使用すると、Azure Database for PostgreSQL サーバーから、読み取り専用サーバーにデータをレプリケートできます。 マスター サーバーから同じ Azure リージョン内の最大 5 つのレプリカにレプリケートできます。 レプリカは、PostgreSQL エンジンのネイティブ レプリケーション テクノロジを使用して非同期的に更新されます。
-
-> [!IMPORTANT]
-> 読み取りレプリカ機能はパブリック プレビュー段階にあります。
 
 レプリカは、通常の Azure Database for PostgreSQL サーバーと同様に管理する新しいサーバーです。 読み取りレプリカごとに、仮想コアおよびストレージのプロビジョニング済みコンピューティング (GB/月) に対して課金されます。
 

@@ -4,7 +4,7 @@ description: このチュートリアルでは、Service Fabric クラスター�
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9a0c56ecb20857b8fe2f5e55851e5d0d98ed3038
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: aa50cbe640c928c4113fb64c1b503548a95ee0a9
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369116"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670270"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>チュートリアル:Service Fabric クラスターをホストする AWS インフラストラクチャを作成する
 

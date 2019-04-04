@@ -11,12 +11,12 @@ ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 47cc7d9f09b7fb22cf99ad010f1dc75e6388c314
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 23cc0f03c41801de944eb9938d4cd15896d1745e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731928"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482183"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure Stack の拡張機能ホストを準備する
 
@@ -47,13 +47,13 @@ Azure Stack 適合性チェッカー ツールを使用すると、必要とさ�
 1. ハードウェア ライフサイクル ホストまたは Azure Stack 管理ワークステーションで、昇格された権限で PowerShell を開きます。
 2. 次のコマンドレットを実行して、Azure Stack 適合性チェッカー ツールをインストールします。
 
-    ```PowerShell  
+    ```powershell  
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
 3. 次のスクリプトを実行して、必須のフォルダー構造を作成します。
 
-    ```PowerShell  
+    ```powershell  
     New-Item C:\Certificates -ItemType Directory
 
     $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal', 'Admin extension host', 'Public extension host'
@@ -69,7 +69,7 @@ Azure Stack 適合性チェッカー ツールを使用すると、必要とさ�
 4. 現在 Azure Stack で使用している既存の証明書を適切なディレクトリに配置します。 たとえば、**管理者の ARM** 証明書を `Arm Admin` フォルダーに配置します。 その後、新しく作成されたホスティング証明書を `Admin extension host` と `Public extension host` ディレクトリに配置します。
 5. 次のコマンドレットを実行して、証明書の確認を開始します。
 
-    ```PowerShell  
+    ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
@@ -86,7 +86,7 @@ Azure Stack 適合性チェッカー ツールを使用すると、必要とさ�
 2. PowerShell ISE を開いて、次のスクリプト ブロックを実行します
 3. 管理者ホスティング エンドポイントの証明書をインポートします。
 
-    ```PowerShell  
+    ```powershell  
 
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
@@ -104,7 +104,7 @@ Azure Stack 適合性チェッカー ツールを使用すると、必要とさ�
     }
     ```
 4. ホスティング エンドポイントの証明書をインポートします。
-    ```PowerShell  
+    ```powershell  
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
     $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -127,7 +127,7 @@ Azure Stack 適合性チェッカー ツールを使用すると、必要とさ�
 > DNS 統合に DNS ゾーンの委任を使用した場合、この手順は必要ありません。
 Azure Stack エンドポイントを公開するよう個別のホスト A レコードが構成されている場合、追加のホスト A レコードを 2 つ作成する必要があります。
 
-| IP | ホスト名 | type |
+| IP | ホスト名 | Type |
 |----|------------------------------|------|
 | \<IP> | *.Adminhosting.\<リージョン>.\<FQDN> | A |
 | \<IP> | *.Hosting.\<リージョン>.\<FQDN> | A |
@@ -142,7 +142,7 @@ Azure Stack エンドポイントを公開するよう個別のホスト A レ�
 
 ファイアウォール経由で 2 つの新しいエンドポイントを公開する必要があります。 パブリック VIP プールから割り当てられた IP は、Azure Stack [環境の特権エンドポイント](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)から実行する必要のある次のコードを使用して取得できます。
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -173,7 +173,7 @@ Remove-PSSession -Session $PEPSession
 
 #### <a name="sample-output"></a>サンプル出力
 
-```PowerShell
+```powershell
 Can access AZS DNS
 The IP for the Admin Extension Host is: *.adminhosting.\<region>.\<fqdn> - is: xxx.xxx.xxx.xxx
 The Record to be added in the DNS zone: Type A, Name: *.adminhosting.\<region>.\<fqdn>, Value: xxx.xxx.xxx.xxx

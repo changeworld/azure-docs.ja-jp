@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 905ce1eca9996140da5f9d33aa7f9749a4ef7034
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cfcd154b2f44c9e8acf12a9666abc9ce95fb3c26
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894123"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648352"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS エンドポイントを使用して潜在顧客管理を構成する
 
@@ -48,8 +48,8 @@ HTTPS エンドポイントを使用して、Azure Marketplace と AppSource の
 
 7. 以下のいずれかの手順を使用して、**[要求本文の JSON スキーマ]** を構成します。
 
-   - この記事の最後にある [JSON スキーマ](#JSON-schema)を **[要求本文の JSON スキーマ]** テキスト ボックスにコピーします。
-   - **[サンプルのペイロードを使用してスキーマを生成する]** を選びます。 **[サンプルの JSON ペイロードを入力するか、貼り付けます]** テキスト ボックスに [JSON の例](#JSON-example)を貼り付けます。 **[完了]** を選択してスキーマを作成します。
+   - この記事の最後にある [JSON スキーマ](#json-schema)を **[要求本文の JSON スキーマ]** テキスト ボックスにコピーします。
+   - **[サンプルのペイロードを使用してスキーマを生成する]** を選びます。 **[サンプルの JSON ペイロードを入力するか、貼り付けます]** テキスト ボックスに [JSON の例](#json-example)を貼り付けます。 **[完了]** を選択してスキーマを作成します。
 
    >[!Note]
    >フローのこの時点で、CRM システムに接続したり、電子メール通知を構成したりすることができます。

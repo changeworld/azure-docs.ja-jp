@@ -4,7 +4,7 @@ description: ランタイム、SDK、およびツールをインストールし�
 services: service-fabric
 documentationcenter: linux
 author: suhuruli
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 95d7fc55accb163e07dcb7d103cc896794720cf4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 84d1f52b5fb8f18d3578bad28930f74534b1409f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845459"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662243"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]

@@ -8,16 +8,16 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: lyrana
-ms.openlocfilehash: 2d437f3fd96c38bebac52d6bb9dacf2c01b20a3c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: bfc73a71a0ccda5c135e6a740d6f63bd37522a9b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443687"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904272"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure Digital Twins でのロール ベースのアクセス制御
 
-Azure Digital Twins では、空間グラフ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 これは、"ロールベースのアクセス制御" (RBAC) と呼ばれるきめ細かいロールとアクセス許可の管理によって行われます。 RBAC は_ロール_と_ロール割り当て_により構成されます。 ロールによってアクセス許可のレベルが特定されます。 ロール割り当てによってロールがユーザーまたはデバイスに関連付けられます。
+Azure Digital Twins では、空間グラフ内の特定のデータ、リソース、アクションへのアクセスを正確に制御できます。 これは、"ロールベースのアクセス制御" (RBAC) と呼ばれるきめ細かいロールとアクセス許可の管理によって行われます。 RBAC は _ロール_ と _ロール割り当て_ により構成されます。 ロールによってアクセス許可のレベルが特定されます。 ロール割り当てによってロールがユーザーまたはデバイスに関連付けられます。
 
 RBAC を使用し、次にアクセス許可を付与できます。
 
@@ -67,7 +67,7 @@ RBAC は、アクセス許可が空間グラフの下方に継承されるとい
 次のリファレンス ドキュメント記事では、以下について説明されています。
 
 - [ユーザー用オブジェクト ID のクエリの実行または取得](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)方法。
-- [サービス プリンシパル用オブジェクト ID の取得](https://docs.microsoft.com/powershell/module/azurerm.resources/get-azurermadserviceprincipal)方法。
+- [サービス プリンシパル用オブジェクト ID の取得](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)方法。
 - [Azure AD テナント用オブジェクト ID の取得](../active-directory/develop/quickstart-create-new-tenant.md)方法。
 
 ## <a name="role-assignments"></a>ロールの割り当て

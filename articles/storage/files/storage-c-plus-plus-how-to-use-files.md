@@ -8,19 +8,21 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
 ms.subservice: files
-ms.openlocfilehash: a0937de97d858084433f969f1f6d4bdb2ae9e3fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3432794c6b6d2323392f0b56b364400d05b10afc
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893562"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649710"
 ---
 # <a name="develop-for-azure-files-with-c"></a>C++ での Azure Files 用の開発
+
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>このチュートリアルについて
+
 このチュートリアルでは、Azure Files で基本的な操作を実行する方法を紹介します。 C++ で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 初めて Azure Files を使用する場合は、次のセクションの概念に目を通すと、サンプルを理解するのに役立ちます。
 
 * Azure ファイル共有を作成および削除する
@@ -34,6 +36,7 @@ ms.locfileid: "57893562"
 > Azure Files には SMB 経由でアクセスできるため、標準の C++ I/O クラスおよび関数を使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述できます。 この記事では、[File REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) を使用して Azure Files と通信する Azure Storage C++ SDK を使用するアプリケーションを記述する方法について説明します。
 
 ## <a name="create-a-c-application"></a>C++ アプリケーションの作成
+
 サンプルをビルドするには、C++ 用 Azure Storage クライアント ライブラリ 2.4.0 をインストールする必要があります。 また、Azure ストレージ アカウントを作成しておく必要があります。
 
 C++ 用 Azure Storage クライアント 2.4.0 をインストールする場合、次の方法のいずれかを使用できます。
@@ -41,11 +44,13 @@ C++ 用 Azure Storage クライアント 2.4.0 をインストールする場合
 * **Linux:**[C++ 用 Azure Storage クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。
 * **Windows:** Visual Studio で、**[ツール] &gt; [NuGet パッケージ マネージャー] &gt; [パッケージ マネージャー コンソール]** の順にクリックします。 [NuGet パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) に次のコマンドを入力し、 **Enter**キーを押します。
   
-```
+
+```powershell
 Install-Package wastorage
 ```
 
 ## <a name="set-up-your-application-to-use-azure-files"></a>Azure Files を使用するようにアプリケーションを設定する
+
 Azure Files を操作する C++ ソース ファイルの先頭に次の include ステートメントを追加します。
 
 ```cpp
@@ -54,6 +59,7 @@ Azure Files を操作する C++ ソース ファイルの先頭に次の include
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage 接続文字列の設定
+
 ファイル ストレージを使用するには、Azure ストレージ アカウントに接続する必要があります。 最初の手順は、ストレージ アカウントに接続するために使用する接続文字列を構成することです。 そのために静的変数を定義しましょう。
 
 ```cpp
@@ -63,6 +69,7 @@ storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_sto
 ```
 
 ## <a name="connecting-to-an-azure-storage-account"></a>Azure ストレージ アカウントに接続する
+
 **cloud_storage_account** クラスを使用してストレージ アカウント情報を表すことができます。 ストレージ接続文字列からストレージ アカウント情報を取得するには、 **parse** メソッド使用します。
 
 ```cpp
@@ -72,6 +79,7 @@ azure::storage::cloud_storage_account storage_account =
 ```
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
+
 Azure ファイル共有内のすべてのファイルとディレクトリは、**Share** という名前のコンテナー内に存在します。 ストレージ アカウントには、アカウントの容量が許す限りの共有を置くことができます。 共有とそのコンテンツにアクセスするには、Azure Files クライアントを使う必要があります。
 
 ```cpp
@@ -99,6 +107,7 @@ if (share.create_if_not_exists()) {
 この時点で、**share** は「**my-sample-share**」という名前の共有の参照を保持します。
 
 ## <a name="delete-an-azure-file-share"></a>Azure ファイル共有を削除する
+
 cloud_file_share オブジェクトで **delete_if_exists** メソッドを呼び出すと共有が削除されます。 次がそのサンプル コードです。
 
 ```cpp
@@ -111,6 +120,7 @@ share.delete_share_if_exists();
 ```
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
+
 ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することができます。 Azure Files では、自分のアカウントで許可されるだけのディレクトリを作成できます。 次のコードは、ルート ディレクトリの下に **my-sample-directory** という名前のディレクトリを作成し、さらに **my-sample-subdirectory** という名前のサブディレクトリを作成します。
 
 ```cpp
@@ -127,6 +137,7 @@ subdirectory.create_if_not_exists();
 ```
 
 ## <a name="delete-a-directory"></a>ディレクトリを削除する
+
 ディレクトリの削除は単純な作業です。ただし、注意するべきことは、ファイルや他のディレクトリが含まれるディレクトリは削除できないということです。
 
 ```cpp
@@ -149,6 +160,7 @@ directory.delete_directory_if_exists();
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Azure ファイル共有のファイルとディレクトリを列挙する
+
 **cloud_file_directory** 参照で **list_files_and_directories** を呼び出すと、共有内のファイルとディレクトリの一覧を簡単に取得できます。 返された **list_file_and_directory_item** の豊富なプロパティとメソッドのセットにアクセスするには、**list_file_and_directory_item.as_file** メソッドを呼び出して **cloud_file** オブジェクトを取得するか、**list_file_and_directory_item.as_directory** メソッドを呼び出して **cloud_file_directory** オブジェクトを取得する必要があります。
 
 次のコードは、共有のルート ディレクトリ内の各アイテムの URI を取得して出力する方法を示しています。
@@ -175,6 +187,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
 ```
 
 ## <a name="upload-a-file"></a>ファイルをアップロードする
+
 Azure ファイル共有には、少なくとも、ファイルが置かれるルート ディレクトリが含まれます。 このセクションでは、ローカル ストレージから共有のルート ディレクトリにファイルをアップロードする方法を紹介します。
 
 ファイルをアップロードするための最初の手順は、ファイルを置くディレクトリの参照を取得することです。 これを行うには、share オブジェクトの **get_root_directory_reference** メソッドを呼び出します。
@@ -207,6 +220,7 @@ file4.upload_from_file(_XPLATSTR("DataFile.txt"));
 ```
 
 ## <a name="download-a-file"></a>ファイルをダウンロードする
+
 ファイルをダウンロードするには、まずファイルの参照を取得し、**download_to_stream** メソッドを呼び出して、ローカル ファイルに保存できるストリーム オブジェクトにファイルの内容を転送します。 代わりに、**download_to_file** メソッドを使用して、ローカル ファイルにファイルの内容をダウンロードすることもできます。 また、**download_text** メソッドを使用して、ファイルの内容をテキスト文字列としてダウンロードすることもできます。
 
 次の例は、**download_to_stream** メソッドと **download_text** メソッドを使用して、前のセクションで作成したファイルをダウンロードする方法を示しています。
@@ -232,6 +246,7 @@ outfile.close();
 ```
 
 ## <a name="delete-a-file"></a>ファイルを削除する
+
 Azure Files でのもう 1 つの一般的な操作はファイルの削除です。 次のコードでは、ルート ディレクトリに保存されている my-sample-file-3 という名前のファイルを削除します。
 
 ```cpp
@@ -249,6 +264,7 @@ file.delete_file_if_exists();
 ```
 
 ## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Azure ファイル共有のクォータ (最大サイズ) を設定する
+
 ファイル共有のクォータ (最大サイズ) をギガバイト単位で設定することができます。 また、共有に現在格納されているデータの量も確認できます。
 
 共有のクォータを設定することにより、共有に格納するファイルの合計サイズを制限できます。 共有上のファイルの合計サイズが共有に設定されたクォータを超過すると、クライアントは既存ファイルのサイズを増やせなくなったり、新しいファイルを作成できなくなったりします。ただし、これらのファイルが空である場合は除きます。
@@ -280,6 +296,7 @@ if (share.exists())
 ```
 
 ## <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>ファイルまたはファイル共有の Shared Access Signature の生成
+
 ファイル共有または個々のファイルの Shared Access Signature (SAS) を生成することができます。 また、ファイル共有に共有アクセス ポリシーを作成して、Shared Access Signature を管理することもできます。 共有アクセス ポリシーを作成することをお勧めします。これにより、侵害されそうな場合に SAS を取り消すことができます。
 
 次の例では、共有上に共有アクセス ポリシーを作成し、そのポリシーを使用して共有上のファイルの SAS に制約を指定します。
@@ -346,7 +363,9 @@ if (share.exists())
 
 }
 ```
+
 ## <a name="next-steps"></a>次の手順
+
 Azure Storage についてさらに学習するには、次のリソースを参照してください。
 
 * [C++ 用ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp)

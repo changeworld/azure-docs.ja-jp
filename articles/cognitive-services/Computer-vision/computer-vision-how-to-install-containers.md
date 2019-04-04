@@ -144,7 +144,7 @@ Computer Vision サービスで該当する REST 操作を使用する方法と�
 
 ## <a name="billing"></a>課金
 
-テキスト認識コンテナーは、Azure アカウントの _テキスト認識_リソースを使用して、Azure に課金情報を送信します。 
+テキスト認識コンテナーは、Azure アカウントの _テキスト認識_ リソースを使用して、Azure に課金情報を送信します。 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

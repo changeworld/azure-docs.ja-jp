@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 4c4b5491bba072ba22ec20e164b7315691877a22
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b20fa7a1f43369cde85c2535637eec7ceb1d3c29
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038444"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918333"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>PowerShell を使用した Azure Cloud Services での診断の有効化
 Azure 診断拡張機能を使用して、クラウド サービスからアプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 この記事では、PowerShell を使用して Cloud Service の Azure 診断拡張機能を有効にする方法について説明します。  この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) に関するページを参照してください。
@@ -136,5 +136,5 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 
 ## <a name="next-steps"></a>次の手順
 * Azure 診断と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、「 [Azure Cloud Services および Virtual Machines の診断機能](cloud-services-dotnet-diagnostics.md)」を参照してください。
-* [診断構成スキーマ](https://msdn.microsoft.com/library/azure/dn782207.aspx) に関するページでは、診断拡張機能の各種 xml 構成オプションについて説明しています。
+* [診断構成スキーマ](/azure/azure-monitor/platform/diagnostics-extension-schema-1dot2) に関するページでは、診断拡張機能の各種 xml 構成オプションについて説明しています。
 * Virtual Machines の診断拡張機能を有効にする方法については、「 [Create a Windows Virtual machine with monitoring and diagnostics using Azure Resource Manager Template (Azure リソース マネージャー テンプレートを使用した監視および診断機能を備えた Windows 仮想マシンの作成)](../virtual-machines/windows/extensions-diagnostics-template.md)

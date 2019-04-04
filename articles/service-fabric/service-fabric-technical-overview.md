@@ -4,7 +4,7 @@ description: Service Fabric の用語の概要です。 重要な用語の概念
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: chackdan;subramar
 ms.assetid: 3a970679-e19e-43b3-9be8-71773f307c57
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: d9012ff37693b406d4e91560c880d6bed66c051b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 085d5e560eec090ab76c263f8f93140786f2d734
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498300"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668444"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric の用語の概要
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  [Service Fabric クラスターは任意の場所でホスト](service-fabric-deploy-anywhere.md)できます。具体的には、Azure、オンプレミスのデータセンター、任意のクラウド プロバイダー上などです。  Service Fabric は [Azure Service Fabric Mesh](/azure/service-fabric-mesh) の動力となるオーケストレーターです。 あらゆるフレームワークを利用してサービスを記述したり、複数の環境からアプリケーションを実行する場所を選択したりできます。 この記事では、Service Fabric 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用される用語について詳しく説明します。

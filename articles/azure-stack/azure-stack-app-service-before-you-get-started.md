@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 58be7b6dc9eeeadd69fe82f1dc03d959aa94f9c8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb2c01052b8dc5fe346196a64e3fcbf7d1b69c2b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088436"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485752"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
@@ -61,13 +61,13 @@ Azure Stack 統合システムまたは Azure Stack Development Kit のホスト
 
 次の PowerShell コマンドを実行するときに、AzureStack\CloudAdmin の特権エンドポイントおよび資格情報を提供する必要があります。
 
-```PowerShell
+```powershell
     Get-AzureStackRootCert.ps1
 ```
 
 #### <a name="get-azurestackrootcertps1-script-parameters"></a>Get-AzureStackRootCert.ps1 スクリプトのパラメーター
 
-| パラメーター | 必須または省略可能 | 既定値 | 説明 |
+| パラメーター | 必須または省略可能 | Default value | 説明 |
 | --- | --- | --- | --- |
 | PrivilegedEndpoint | 必須 | AzS-ERCS01 | 特権エンドポイント |
 | CloudAdminCredential | 必須 | AzureStack\CloudAdmin | Azure Stack クラウド管理者のドメイン アカウントの資格情報 |
@@ -92,7 +92,7 @@ Azure Stack 統合システムまたは Azure Stack Development Kit のホスト
 
 #### <a name="create-appservicecertsps1-script-parameters"></a>Create-AppServiceCerts.ps1 スクリプトのパラメーター
 
-| パラメーター | 必須または省略可能 | 既定値 | 説明 |
+| パラメーター | 必須または省略可能 | Default value | 説明 |
 | --- | --- | --- | --- |
 | pfxPassword | 必須 | Null | 証明書の秘密キーを保護するのに役立つパスワード |
 | DomainName | 必須 | local.azurestack.external | Azure Stack のリージョンとドメイン サフィックス |
@@ -353,11 +353,11 @@ Azure AD サービス プリンシパルで以下の操作をサポートする�
 13. **[設定]** を選択します。
 14. **[必要なアクセス許可]** > **[アクセス許可の付与]** > **[はい]** の順に選択します。
 
-```PowerShell
+```powershell
     Create-AADIdentityApp.ps1
 ```
 
-| パラメーター | 必須または省略可能 | 既定値 | 説明 |
+| パラメーター | 必須または省略可能 | Default value | 説明 |
 | --- | --- | --- | --- |
 | DirectoryTenantName | 必須 | Null | Azure AD テナント ID。 GUID または文字列を指定します。 例として、myazureaaddirectory.onmicrosoft.com があります。 |
 | AdminArmEndpoint | 必須 | Null | 管理者の Azure Resource Manager エンドポイント。 例として、adminmanagement.local.azurestack.external があります。 |
@@ -389,11 +389,11 @@ AD FS によって保護されている Azure Stack 環境の場合、 AD FS サ
 5. **[資格情報]** ウィンドウで、AD FS クラウドの管理者アカウントとパスワードを入力します。 **[OK]** を選択します。
 6. [先ほど作った証明書](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
 
-```PowerShell
+```powershell
     Create-ADFSIdentityApp.ps1
 ```
 
-| パラメーター | 必須または省略可能 | 既定値 | 説明 |
+| パラメーター | 必須または省略可能 | Default value | 説明 |
 | --- | --- | --- | --- |
 | AdminArmEndpoint | 必須 | Null | 管理者の Azure Resource Manager エンドポイント。 例として、adminmanagement.local.azurestack.external があります。 |
 | PrivilegedEndpoint | 必須 | Null | 特権エンドポイント。 例として、AzS-ERCS01 があります。 |

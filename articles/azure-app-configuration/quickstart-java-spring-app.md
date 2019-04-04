@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: 050a7a3718cb7c9eb864b7ed6ea0787c079e31b9
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: fec72a4fac6baa3869928c0203aeb29e53ce5ea4
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226319"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648471"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>クイック スタート:App Configuration を使用して Java Spring アプリを作成する
 
@@ -35,7 +35,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
 
 ## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
 
-1. 新しいアプリ構成ストアを作成するには、[Azure portal](https://aka.ms/azconfig/portal) にサインインします。 ページの左上隅にある **[+ リソースの作成]** を選択します。 **[Marketplace を検索]** ボックスに「**App Configuration**」と入力し、Enter キーを押します。
+1. 新しいアプリ構成ストアを作成するには、[Azure portal](https://aka.ms/azconfig/portal) にサインインします。 ページの左上にある **[+ リソースの作成]** を選択します。 **[Marketplace を検索]** ボックスに「**App Configuration**」と入力し、Enter キーを押します。
 
     ![App Configuration を検索する](./media/quickstarts/azure-app-configuration-new.png)
 
@@ -93,7 +93,7 @@ Azure App Configuration は、Azure 内にあるマネージド構成サービ�
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M1</version>
+        <version>1.1.0.M3</version>
     </dependency>
     ```
 

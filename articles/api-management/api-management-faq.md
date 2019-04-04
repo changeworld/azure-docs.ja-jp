@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 99b54a5fe5c28eb66a61fad61d23b94f0955f126
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9c0c8adca9d99c00e32127e02a3d68ff668a235e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728570"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793307"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -72,13 +72,13 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 複数の方法で API Management インスタンスを新しいインスタンスにコピーできます。 次のようにすることができます。
 
 * API Management のバックアップと復元の機能を使用します。 詳細については、「[Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](api-management-howto-disaster-recovery-backup-restore.md)」を参照してください。
-* [API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx) を使用して独自のバックアップと復元の機能を作成します。 REST API を使用すると、任意のサービス インスタンスからエンティティを保存して復元できます。
+* [API Management REST API](/rest/api/apimanagement/) を使用して独自のバックアップと復元の機能を作成します。 REST API を使用すると、任意のサービス インスタンスからエンティティを保存して復元できます。
 * Git を使用してサービス構成をダウンロードし、新しいインスタンスにアップロードします。 詳細については、「[Git を使用して API Management サービス構成を保存および構成する方法](api-management-configuration-repository-git.md)」を参照してください。
 
 ### <a name="can-i-manage-my-api-management-instance-programmatically"></a>API Management インスタンスはプログラムで管理できますか。
 はい、API Management は次の手段を使用してプログラムで管理できます。
 
-* [API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx)
+* [API Management REST API](/rest/api/apimanagement/)
 * [Microsoft Azure ApiManagement Service Management Library SDK](https://aka.ms/apimsdk)
 * [サービスのデプロイ](https://docs.microsoft.com/powershell/module/wds)および[サービスの管理](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)用の PowerShell コマンドレット
 
@@ -97,7 +97,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 4. この URL を使って管理ポータルにアクセスできます。
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>追加するポリシーがポリシー エディターで利用できないのはなぜですか。
-追加するポリシーがポリシー エディターで薄く表示されたり網掛けになったりしている場合は、そのポリシー用の正しいスコープが選択されていることを確認してください。 各ポリシー ステートメントは、特定のスコープおよびポリシー セクションで使用するように設計されています。 ポリシーのポリシー セクションとスコープを確認するには、「[API Management policies (API Management ポリシー)](https://msdn.microsoft.com/library/azure/dn894080.aspx)」で、目的のポリシーの「Usage (使用方法)」セクションを参照してください。
+追加するポリシーがポリシー エディターで薄く表示されたり網掛けになったりしている場合は、そのポリシー用の正しいスコープが選択されていることを確認してください。 各ポリシー ステートメントは、特定のスコープおよびポリシー セクションで使用するように設計されています。 ポリシーのポリシー セクションとスコープを確認するには、「[API Management policies (API Management ポリシー)](/azure/api-management/api-management-policies)」で、目的のポリシーの「Usage (使用方法)」セクションを参照してください。
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>1 つの API で複数の環境をセットアップするにはどうすればよいですか。
 テスト環境と運用環境など、複数の環境を 1 つの API でセットアップする方法は 2 つあります。 次のようにすることができます。
@@ -142,7 +142,7 @@ New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -
 ```
 
 #### <a name="direct-api-update-method"></a>直接 API 更新を使用する場合 ####
-1. API Management を使用して[バックエンド](https://msdn.microsoft.com/library/azure/dn935030.aspx) エンティティを作成します。       
+1. API Management を使用して[バックエンド](/rest/api/apimanagement/) エンティティを作成します。     
 2. **skipCertificateChainValidation** プロパティを **true** に設定します。     
 3. 自己署名証明書を許可する必要がなくなったときは、バックエンド エンティティを削除するか、**skipCertificateChainValidation** プロパティを **false** に設定します。
 

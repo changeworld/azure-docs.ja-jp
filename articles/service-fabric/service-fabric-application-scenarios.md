@@ -3,8 +3,8 @@ title: アプリケーションのシナリオと設計 | Microsoft Docs
 description: Service Fabric のクラウド アプリケーションのカテゴリの概要 ステートフル サービスとステートレス サービスを使用したアプリケーションの設計について説明します。
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: 3a8ca6ea-b8e9-4bc3-9e20-262437d2528e
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/02/2017
-ms.author: mfussell
-ms.openlocfilehash: a84d8fead42f8314decc144f01d8de1dac30bbdf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.author: atsenthi
+ms.openlocfilehash: c9b2f9ac131e71b7c6b37ed85568adc0c3978dc2
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199478"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668247"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric アプリケーションのシナリオ
 Azure Service Fabric はさまざまな種類のビジネス アプリケーションやサービスを作成し実行できる信頼性の高い柔軟なプラットフォームを提供します。 これらのアプリケーションとマイクロサービスはステートレスまたはステートフルが考えられますが、最大限に効率化するために仮想マシン間でリソース分散されます。 Service Fabric 独自のアーキテクチャでは、リアルタイムに近いデータ分析、メモリ内のコンピューティング、並列トランザクション、アプリケーションでのイベント処理を実行できます。 リソース要件の変化に応じて、アプリケーションを簡単にスケール アップまたはスケール ダウン (実際にはスケール インまたはスケール アウト) できます。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 3a295a5c8a202b2f3186e696bb281002090fcad4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112604"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652169"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure における IP アドレスの種類と割り当て方法 (クラシック)
 Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
@@ -41,7 +41,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 * アプリケーション ゲートウェイ
 
 ### <a name="allocation-method"></a>割り当て方法
-パブリック IP アドレスを Azure リソースに割り当てる必要がある場合は、リソースが作成された場所内の使用可能なパブリック IP アドレスのプールから*動的に*割り当てられます。 この IP アドレスは、リソースが停止したときに解放されます。 クラウド サービスの場合、この解放はすべてのロール インスタンスが停止したときに発生します。これは、*静的* (予約済み) IP アドレスを使用することで回避できます (「[クラウド サービス](#Cloud-services)」セクションを参照)。
+パブリック IP アドレスを Azure リソースに割り当てる必要がある場合は、リソースが作成された場所内の使用可能なパブリック IP アドレスのプールから*動的に*割り当てられます。 この IP アドレスは、リソースが停止したときに解放されます。 クラウド サービスの場合、この解放はすべてのロール インスタンスが停止したときに発生します。これは、*静的* (予約済み) IP アドレスを使用することで回避できます (「[クラウド サービス](#cloud-services)」セクションを参照)。
 
 > [!NOTE]
 > Azure リソースへのパブリック IP アドレスの割り当てに使用する IP アドレス範囲のリストは、「 [Azure データセンターの IP アドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)」で公開されています。
@@ -87,7 +87,7 @@ Azure [Application Gateway](../application-gateway/application-gateway-introduct
 ### <a name="at-a-glance"></a>概略
 次の表は、各リソースの種類と、可能な割り当て方法 (動的または静的) および複数のパブリック IP アドレスの割り当てが可能かどうかを示しています。
 
-| リソース | 動的 | 静的 | 複数の IP アドレス |
+| Resource | 動的 | 静的 | 複数の IP アドレス |
 | --- | --- | --- | --- |
 | クラウド サービス |はい |はい |はい |
 | IaaS VM または PaaS ロール インスタンス |はい |いいえ  |いいえ  |
@@ -137,7 +137,7 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 ### <a name="at-a-glance"></a>概略
 次の表は、各リソースの種類と、可能な割り当て方法 (動的または静的) および複数のプライベート IP アドレスの割り当てが可能かどうかを示しています。
 
-| リソース | 動的 | 静的 | 複数の IP アドレス |
+| Resource | 動的 | 静的 | 複数の IP アドレス |
 | --- | --- | --- | --- |
 | VM (*スタンドアロン* クラウド サービスまたは VNet 内) |はい |はい |はい |
 | PaaS ロール インスタンス (*スタンドアロン* クラウド サービスまたは VNet 内) |はい |いいえ  |いいえ  |
@@ -162,7 +162,7 @@ Azure における [ネットワークの制限](../azure-subscription-service-l
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>リソース マネージャーとクラシック デプロイの相違点
 リソース マネージャーの IP アドレス指定機能とクラシック デプロイ モデルとの比較を次に示します。
 
-|  | リソース | クラシック | リソース マネージャー |
+|  | Resource | クラシック | リソース マネージャー |
 | --- | --- | --- | --- |
 | **パブリック IP アドレス** |***VM*** |ILPIP と呼ばれる (動的のみ) |パブリック IP と呼ばれる (動的または静的) |
 |  ||IaaS VM や PaaS ロール インスタンスに割り当てられる |VM の NIC に関連付けられる |

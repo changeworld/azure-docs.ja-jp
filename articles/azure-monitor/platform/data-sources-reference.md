@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 02b4b2efb447e3ba8c45caa378268ec402b5c3e7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c703f735f59a8425c2a14641781f482a6e2d1c78
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001990"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848546"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Azure の監視データの使用
 
@@ -48,7 +48,7 @@ Azure プラットフォーム全体にわたって、Azure Monitor パイプラ
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Monitor メトリック](data-collection.md)の詳細を確認する
+- [Azure Monitor メトリック](data-platform.md)の詳細を確認する
 - [Azure アクティビティ ログ](activity-logs-overview.md)の詳細を確認する
 - [Azure 診断ログ](diagnostic-logs-overview.md)の詳細を確認する
 

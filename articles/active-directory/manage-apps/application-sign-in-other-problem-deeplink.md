@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3525436c61038d9cdda3a1b1da8e226ab153134f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d7ad6eeba09c81de33b92722992c6762a4b4327c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098255"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649341"
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>ディープ リンクを使用したアプリケーションへのサインインに関する問題
 
@@ -113,7 +113,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 Azure AD ギャラリーからアプリケーションを構成するには、以下を実行する必要があります。
 
--   [Azure AD ギャラリーからアプリケーションを追加する](#add-an-application-from-the-Azure-AD-gallery)
+-   [Azure AD ギャラリーからアプリケーションを追加する](#add-an-application-from-the-azure-ad-gallery)
 
 -   [パスワード シングル サインオンに対応するようにアプリケーションを構成する](#configure-the-application-for-password-single-sign-on)
 

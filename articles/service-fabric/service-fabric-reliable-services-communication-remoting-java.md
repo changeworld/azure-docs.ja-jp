@@ -4,7 +4,7 @@ description: Service Fabric のリモート処理では、クライアントと�
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: timlt
+manager: chackdan
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 686d736798a4d949e3590d988f399d7da82d4fee
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 51c8c689bd3fe3e8967bab77e776ad02f9cb59f1
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231990"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667968"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Java での Reliable Services を使用したサービスのリモート処理
 > [!div class="op_single_selector"]

@@ -4,7 +4,7 @@ description: Azure Service Fabric CLI を使用した Azure Service Fabric ク�
 services: service-fabric
 documentationcenter: ''
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 04/16/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 1723bdd29bf85b11bf0a5d86d51cb813abd6e6b4
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 1b90c4f8a1cdc5334425ba549a71bc189bc112b6
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804095"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668264"
 ---
 # <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Service Fabric クラスターへのアプリケーションのデプロイ
 

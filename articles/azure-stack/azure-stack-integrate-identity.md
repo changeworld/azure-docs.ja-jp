@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 5f34991dca4dbb4275033c764981c44492b9920e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 14095d4ffbd23a57ef769aa702b6e7c3c8af9994
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257810"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485987"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
 Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 接続されているシナリオでは、Azure AD または AD FS を選択できます。 切断されたシナリオでは、AD FS のみがサポートされます。
@@ -86,14 +86,14 @@ Active Directory サイトについて詳しくは、「[サイト トポロジ�
 
 1. 管理者特権での Windows PowerShell セッション (管理者として実行) を開き、特権エンドポイントの IP アドレスに接続します。 **CloudAdmin** の資格情報を使用して認証します。
 
-   ```PowerShell  
+   ```powershell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. これで特権エンドポイントに接続されました。次のコマンドを実行します。 
 
-   ```PowerShell  
+   ```powershell  
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
    ```
 
@@ -108,7 +108,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 Azure Stack の Graph サービスは、次のプロトコルとポートを使用して、対象の Active Directory と通信します。
 
-|type|ポート|Protocol|
+|Type|ポート|Protocol|
 |---------|---------|---------|
 |LDAP|389|TCP と UDP|
 |LDAP SSL|636|TCP|
@@ -131,20 +131,20 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 1. Windows PowerShell セッションを管理者特権で開き、特権エンドポイントに接続します。
 
-   ```PowerShell  
+   ```powershell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. これで特権エンドポイントに接続されました。お使いの環境に合わせてパラメーターを変更し、次のコマンドを実行します。
 
-   ```PowerShell  
+   ```powershell  
    Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataEndpointUri https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml
    ```
 
 3. お使いの環境に合わせてパラメーターを変更して次のコマンドを実行し、既定のプロバイダー サブスクリプションの所有者を更新します。
 
-   ```PowerShell  
+   ```powershell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
@@ -169,7 +169,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 1. Windows PowerShell セッションを管理者特権で開き、お使いの環境に合わせてパラメーターを変更し、次のコマンドを実行します。
 
-   ```PowerShell  
+   ```powershell  
     $url = "https://win-SQOOJN70SGL.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml"
     $webclient = New-Object System.Net.WebClient
     $webclient.Encoding = [System.Text.Encoding]::UTF8
@@ -185,7 +185,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 1. Windows PowerShell セッションを管理者特権で開き、特権エンドポイントに接続します。
 
-   ```PowerShell  
+   ```powershell  
    $federationMetadataFileContent = get-content c:\metadata.xml
    $creds=Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
@@ -193,13 +193,13 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 2. これで特権エンドポイントに接続されました。お使いの環境に合わせてパラメーターを変更し、次のコマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     Register-CustomAdfs -CustomAdfsName Contoso -CustomADFSFederationMetadataFileContent $using:federationMetadataFileContent
     ```
 
 3. お使いの環境に合わせてパラメーターを変更して次のコマンドを実行し、既定のプロバイダー サブスクリプションの所有者を更新します。
 
-   ```PowerShell  
+   ```powershell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
@@ -249,7 +249,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 2. エクストラネットおよびイントラネット用に Windows フォーム ベース認証が有効になっていることを確認します。 次のコマンドレットを実行して、それが既に有効になっているかどうかをまず確認します。
 
-   ```PowerShell  
+   ```powershell  
    Get-AdfsAuthenticationProvider | where-object { $_.name -eq "FormsAuthentication" } | select Name, AllowedForPrimaryExtranet, AllowedForPrimaryIntranet
    ```
 
@@ -260,13 +260,13 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
    **AD FS 2016 の場合**
 
-   ```PowerShell  
+   ```powershell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone" -TokenLifeTime 1440
    ```
 
    **AD FS 2012/2012 R2 の場合**
 
-   ```PowerShell  
+   ```powershell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -TokenLifeTime 1440
    ```
 
@@ -278,7 +278,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
    > [!note]  
    > Windows Server 2012 または 2012 R2 AD FS を使用するとき、この手順は該当しません。 このコマンドをスキップして統合を続けても問題ありません。
 
-   ```PowerShell  
+   ```powershell  
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
 
@@ -306,14 +306,14 @@ SPN の作成について詳しくは、「[AD FS のサービス プリンシ�
 
 1. Windows PowerShell セッションを管理者特権で開き、次のコマンドを実行します。
 
-   ```PowerShell  
+   ```powershell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. その後次のコマンドレットを実行します。
 
-   ```PowerShell  
+   ```powershell  
    Reset-DatacenterIntegrationConfiguration
    ```
 
@@ -322,7 +322,7 @@ SPN の作成について詳しくは、「[AD FS のサービス プリンシ�
    > [!IMPORTANT]
    > 既定のプロバイダー サブスクリプションの元の所有者を構成する必要があります
 
-   ```PowerShell  
+   ```powershell  
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "azurestackadmin@[Internal Domain]"
    ```
 
@@ -332,14 +332,14 @@ SPN の作成について詳しくは、「[AD FS のサービス プリンシ�
 
 1. Windows PowerShell セッションを管理者特権で開き、次のコマンドを実行します。
 
-   ```PowerShell  
+   ```powershell  
    $creds = Get-Credential
    Enter-pssession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
 2. その後次のコマンドレットを実行します。
 
-   ```PowerShell  
+   ```powershell  
    Get-AzureStackLog -OutputPath \\myworstation\AzureStackLogs -FilterByRole ECE
    ```
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: d0c5ba41bc636479407e7580fa686fe1bba91612
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9d54cff81f39f41b60800e9b33f3b4da1a735d85
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873193"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893437"
 ---
 # <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>主題の領域、意図、エンティティによって LUIS アプリを計画します
 
@@ -49,7 +49,7 @@ LUIS アプリは、ドメイン固有のトピックを中心としています
 
 ## <a name="next-steps"></a>次の手順
 
-アプリをトレーニングして発行し、アプリによってエンドポイント発話が取得されたら、[アクティブ ラーニング](luis-how-to-review-endoint-utt.md)、[フレーズ リスト](luis-concept-feature.md)、[パターン](luis-concept-patterns.md)を使用した予測機能強化の実装を計画します。 
+アプリをトレーニングして発行し、アプリによってエンドポイント発話が取得されたら、[アクティブ ラーニング](luis-how-to-review-endpoint-utterances.md)、[フレーズ リスト](luis-concept-feature.md)、[パターン](luis-concept-patterns.md)を使用した予測機能強化の実装を計画します。 
 
 
 * LUIS アプリを作成するための簡単なチュートリアルについては、[最初の Language Understanding Intelligent Service (LUIS) アプリの作成](luis-get-started-create-app.md)に関するページをご覧ください。

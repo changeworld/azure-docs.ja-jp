@@ -4,7 +4,7 @@ description: この記事では、出力されるイベントおよびパフォ�
 services: service-fabric
 documentationcenter: .net
 author: abhishekram
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: 888f9e04e048e3da4c9809ac4f8570f020030335
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f573db887b3acc2c4a668a8c19c7f8e3cb25019
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855837"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670746"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors の診断とパフォーマンス監視
 Reliable Actors ランタイムは、[EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントおよび[パフォーマンス カウンター](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)を出力します。 これらは、ランタイムがどのように動作するかを示し、トラブルシューティングとパフォーマンス監視に役立ちます。

@@ -9,18 +9,18 @@ ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: alerts
-ms.openlocfilehash: dcce5e424a5f14cb8f36582635383b0a8ba86caa
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f8b9db47684a6dd78302f094d8e670da4a61ab2c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472264"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849813"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>メトリック値が条件を満たしている場合は通知を受け取る
 
 Azure Monitor はメトリックを多くの Azure リソースで使用できるようにします。 これらのメトリックはリソースのパフォーマンスと正常性を伝えます。 多くの場合、メトリック値はリソースの問題を示している可能性があります。 異常な動作を監視し、その動作が発生した場合は通知するメトリック アラートを作成することができます。 このクイック スタートでは、ロジック アプリの作成、ジョブの作成、およびロジック アプリのメトリックを表示する手順を説明します。 その後、アラートの作成と、ロジック アプリ リソースのメトリックに関する通知を受け取る方法について説明します。
 
-メトリックとメトリック アラートの詳細については、[Azure Monitor メトリックの概要](../../azure-monitor/platform/data-collection.md)および [Azure Monitor アラートの概要](./alerts-overview.md)に関するページを参照してください。 
+メトリックとメトリック アラートの詳細については、[Azure Monitor メトリックの概要](data-platform.md)および [Azure Monitor アラートの概要](alerts-overview.md)に関するページを参照してください。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 

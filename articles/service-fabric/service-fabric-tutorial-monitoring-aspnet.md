@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure Service Fabric の ASP.NE
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 3/21/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: b5485d1dbde48a9fe52196bbeb449b6e4186a88e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9de11c0049cf3db3feea311a2541640437ba8632
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402611"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665204"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>チュートリアル:Application Insights を使用して Service Fabric 上の ASP.NET Core アプリケーションを監視および診断する
 

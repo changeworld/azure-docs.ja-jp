@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae3a2788a0d5451736433a6338a71eda3d0ad9ca
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984360"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895124"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS アプリに対して良い発話を理解する
 
@@ -72,7 +72,7 @@ LUIS モデルに[発話の例を追加する](luis-how-to-add-example-utterance
 
 LUIS は、LUIS モデルの作成者によって慎重に選択された発話で有効なモデルを構築します。 追加する発話が多すぎると、混乱が発生するので役に立ちません。  
 
-少数の発話で開始し、[エンドポイント発話を確認](luis-how-to-review-endoint-utt.md)して意図の予測とエンティティの抽出が正しいことを確認することをお勧めします。
+少数の発話で開始し、[エンドポイント発話を確認](luis-how-to-review-endpoint-utterances.md)して意図の予測とエンティティの抽出が正しいことを確認することをお勧めします。
 
 ## <a name="punctuation-marks"></a>句読点
 
@@ -88,11 +88,11 @@ LUIS は、既定では句読点を無視しません。句読点が重要視さ
 
 ## <a name="testing-utterances"></a>発話のテスト 
 
-開発者は、発話を[予測エンドポイント](luis-how-to-azure-subscription.md) URL に送信することにより、実際のトラフィックで LUIS アプリケーションのテストを開始する必要があります。 これらの発話は、[発話の確認](luis-how-to-review-endoint-utt.md)での意図とエンティティのパフォーマンスを向上させるために使われます。 LUIS Web サイトのテスト ウィンドウで送信されるテストは、エンドポイント経由では送信されず、したがってアクティブな学習には影響しません。 
+開発者は、発話を[予測エンドポイント](luis-how-to-azure-subscription.md) URL に送信することにより、実際のトラフィックで LUIS アプリケーションのテストを開始する必要があります。 これらの発話は、[発話の確認](luis-how-to-review-endpoint-utterances.md)での意図とエンティティのパフォーマンスを向上させるために使われます。 LUIS Web サイトのテスト ウィンドウで送信されるテストは、エンドポイント経由では送信されず、したがってアクティブな学習には影響しません。 
 
 ## <a name="review-utterances"></a>発話の確認
 
-モデルがトレーニングされて発行され、[エンドポイント](luis-glossary.md#endpoint) クエリを受け取った後、LUIS によって提案された[発話を確認](luis-how-to-review-endoint-utt.md)します。 LUIS は、意図またはエンティティに対してスコアの低いエンドポイント発話を選択します。 
+モデルがトレーニングされて発行され、[エンドポイント](luis-glossary.md#endpoint) クエリを受け取った後、LUIS によって提案された[発話を確認](luis-how-to-review-endpoint-utterances.md)します。 LUIS は、意図またはエンティティに対してスコアの低いエンドポイント発話を選択します。 
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

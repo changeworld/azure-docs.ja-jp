@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d921d0907d7481b842fd98db2c0d7cb5f402f24f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3c399491f0a2048fe924e9ed9600dd5ce3899ca2
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835979"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903728"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandas を使用して Azure BLOB ストレージのデータを探索する
 
@@ -36,7 +36,7 @@ ms.locfileid: "57835979"
 1. BLOB サービスを使用する次の Python コード サンプルで Azure BLOB からデータをダウンロードします。 次のコードの変数を、実際の値に置き換えます。
 
 ```python
-from azure.storage.blob import BlobService
+from azure.storage.blob import BlockBlobService
 import tables
 
 STORAGEACCOUNTNAME= <storage_account_name>
@@ -47,7 +47,7 @@ BLOBNAME= <blob_name>
 
 #download from blob
 t1=time.time()
-blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
+blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
 blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
 t2=time.time()
 print(("It takes %s seconds to download "+blobname) % (t2 - t1))

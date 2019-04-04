@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: b2e87b2855ac1d76fe2ad544c17c33bfa14f635a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4ca26c7b8fbfebbce8cfcb9915a7db12e5ad2352
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812380"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918673"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services の証明書の概要
 証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使われます ([管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure にデプロイする方法について説明します。
@@ -69,7 +69,7 @@ Azure Portal または Azure クラシック デプロイ モデルを使って�
 Windows で証明書を作成する簡単な方法として、 `makecert.exe` ユーティリティを使用する方法と IIS を使用する方法の 2 つがあります。
 
 ### <a name="makecertexe"></a>Makecert.exe
-このユーティリティは非推奨になったため、ここに記載されなくなりました。 詳細については、 [こちらの MSDN 記事](https://msdn.microsoft.com/library/windows/desktop/aa386968)を参照してください。
+このユーティリティは非推奨になったため、ここに記載されなくなりました。 詳細については、 [こちらの MSDN 記事](/windows/desktop/SecCrypto/makecert)を参照してください。
 
 ### <a name="powershell"></a>PowerShell
 ```powershell

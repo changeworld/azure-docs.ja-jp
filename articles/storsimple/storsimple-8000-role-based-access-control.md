@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: c500725508d2bf9f09279e665871ab286d9e495a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: be0c1611856a1fa68d20696c32b5fadcd8572004
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652071"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793613"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>StorSimple でロールベースのアクセス制御を使用する
 
@@ -50,7 +50,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
 3. 閲覧者ロールを JSON テンプレートとしてコンピューターにエクスポートします。
 
-    ```
+    ```powershell
     Get-AzureRMRoleDefinition -Name "Reader"
 
     Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
@@ -72,7 +72,7 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
     前の考慮事項を念頭に置いて、ファイルを編集します。
 
-    ```
+    ```json
     {
         "Name":  "StorSimple Infrastructure Admin",
         "Id":  "<guid>",
@@ -113,18 +113,24 @@ Azure ポータルの StorSimple デバイス ユーザーのために使用で�
 
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>Powershell によるカスタム ロールの作成のサンプル出力
 
+```powershell
+Connect-AzureRmAccount
 ```
-PS C:\WINDOWS\system32> Connect-AzureRmAccount
 
+```Output
 Environment           : AzureCloud
 Account               : john.doe@contoso.com
 TenantId              : <tenant_ID>
 SubscriptionId        : <subscription_ID>
 SubscriptionName      : Internal Consumption
 CurrentStorageAccount :
+```
 
-PS C:\WINDOWS\system32> Get-AzureRMRoleDefinition -Name "Reader"
+```powershell
+Get-AzureRMRoleDefinition -Name "Reader"
+```
 
+```Output
 Name             : Reader
 Id               : <guid>
 IsCustom         : False
@@ -132,11 +138,14 @@ Description      : Lets you view everything, but not make any changes.
 Actions          : {*/read}
 NotActions       : {}
 AssignableScopes : {/}
+```
 
-PS C:\WINDOWS\system32> Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+```powershell
+Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"
+```
 
-PS C:\WINDOWS\system32> New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"
-
+```Output
 Name             : StorSimple Infrastructure Admin
 Id               : <tenant_ID>
 IsCustom         : True
@@ -148,8 +157,6 @@ Actions          : {Microsoft.StorSimple/managers/alerts/read,
                    Microsoft.StorSimple/managers/devices/alertSettings/read...}
 NotActions       : {}
 AssignableScopes : {/subscriptions/<subscription_ID>/}
-
-PS C:\WINDOWS\system32>
 ```
 
 ## <a name="add-users-to-the-custom-role"></a>カスタム ロールにユーザーを追加する
@@ -188,4 +195,3 @@ PS C:\WINDOWS\system32>
 ## <a name="next-steps"></a>次の手順
 
 [内部ユーザーと外部ユーザーへのカスタム ロールの割り当て](../role-based-access-control/role-assignments-external-users.md)に関する記事で詳細を確認します。
-

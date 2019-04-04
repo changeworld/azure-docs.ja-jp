@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.author: hrasheed
-ms.openlocfilehash: 05df154db27dcf1b07506c6bf9c2a681408de61e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 123c05470f8f162095b92c0894716c7b5d2a92b2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091819"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648773"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -47,7 +47,7 @@ Eclipse の起動時に、Scala プラグインがインストールされてい
 
 ![Scala プラグインの自動インストール](./media/apache-spark-eclipse-tool-plugin/auto-install-scala.png)
 
-[Azure サブスクリプションにサインイン](#Sign-in-to-your-Azure-subscription)するか、[HDInsight クラスターをリンク](#Link-a-cluster)して開始できます。Ambari のユーザー名/パスワードまたはドメイン参加の資格情報を利用してください。 
+[Azure サブスクリプションにサインイン](#sign-in-to-your-azure-subscription)するか、[HDInsight クラスターをリンク](#link-a-cluster)して開始できます。Ambari のユーザー名/パスワードまたはドメイン参加の資格情報を利用してください。 
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインします。
 1. Eclipse IDE を起動し、Azure Explorer を開きます。 **[Window]\(ウィンドウ\)** メニューの **[Show View]\(ビューの表示\)** を選択し、**[Other]\(その他\)** を選択します。 表示されたダイアログ ボックスで **[Azure]** を展開し、**[Azure Explorer]** を選択して、**[OK]** を選択します。

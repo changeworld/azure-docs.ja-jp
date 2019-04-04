@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b1676f53125694eeff3a39adf51dc854c197d756
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bd65b1479ace1a51087836eb8032f16fd10dc119
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110496"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648904"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する
 
@@ -22,10 +22,6 @@ ms.locfileid: "58110496"
 
 - プライマリ リージョンへのレプリケートを開始できるように、セカンダリ リージョンの VM を再保護します。
 - 再保護が完了して、VM がレプリケートされると、セカンダリからプライマリ リージョンにフェールオーバーすることができます。
-
-> [!WARNING]
-> プライマリからセカンダリ リージョンにマシンを[移行](migrate-overview.md#what-do-we-mean-by-migration)すると、VM を別のリソース グループに移動した場合、または Azure VM を削除した場合は、VM を再保護したり、フェールバックしたりすることはできません。
-
 
 ## <a name="prerequisites"></a>前提条件
 1. VM のプライマリからセカンダリ リージョンへのフェールオーバーは、コミットされている必要があります。

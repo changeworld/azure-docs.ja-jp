@@ -11,12 +11,12 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 1b1583731f9b95bea7fe64efe628b05bb7b9a476
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 44ff2a5b723c086604acf39e9f975deb53759ae1
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118035"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648111"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Azure AI Gallery からの製品内ユーザー データの表示と削除
 
@@ -80,7 +80,7 @@ Catalog API を使用して一覧にないエンティティを表示するに�
 
 Catalog API には、[AI Gallery Web サイト](https://gallery.azure.ai/)で直接表示することもできる、Azure AI Gallery に公開されたエンティティに関する情報が格納されます。 
 
-公開されたエンティティを表示するには、`[AuthorId]` を、上記の「[作成者 ID を取得する](#get-an-author-ID)」で取得した作成者 ID に置き換えて、以下の URL にアクセスします。
+公開されたエンティティを表示するには、`[AuthorId]` を、上記の「[作成者 ID を取得する](#get-an-author-id)」で取得した作成者 ID に置き換えて、以下の URL にアクセスします。
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 

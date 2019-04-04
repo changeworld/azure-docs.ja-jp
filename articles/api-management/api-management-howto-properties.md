@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: f7c52b7ab8aaad917eb03455800df6d8ba4cbc88
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082706"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791628"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーでの名前付きの値の使用方法
 API Management のポリシーは、Azure Portal がその構成を通じて API の動作を変更できる、システムの強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 ポリシー ステートメントは、リテラル テキストの値、ポリシーの式、名前付きの値を使用して構築できます。 
 
 それぞれの API Management サービス インスタンスには、名前付きの値と呼ばれる、サービス インスタンスにグローバルなキー/値ペアのプロパティ コレクションがあります。 これらの名前付きの値を利用し、すべての API の構成とポリシーを対象に、定数文字列値を管理できます。 各プロパティは次の属性を持つことができます。
 
-| Attribute | type | 説明 |
+| Attribute | Type | 説明 |
 | --- | --- | --- |
 | 表示名 |文字列 |ポリシーのプロパティを参照する際に使用する英数字の文字列。 |
 | 値 |文字列 |プロパティの値。 空にすることはできません。スペースのみで構成することはできません。 |
@@ -34,9 +34,9 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 ![名前付きの値](./media/api-management-howto-properties/named-values.png)
 
-プロパティ値にはリテラル文字列と[ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx)を含めることができます。 たとえば、`ExpressionProperty` の値は、現在の日時を含む文字列を返すポリシー式です。 プロパティ `ContosoHeaderValue` はシークレットとして設定されています。そのため、その値は表示されていません。
+プロパティ値にはリテラル文字列と[ポリシー式](/azure/api-management/api-management-policy-expressions)を含めることができます。 たとえば、`ExpressionProperty` の値は、現在の日時を含む文字列を返すポリシー式です。 プロパティ `ContosoHeaderValue` はシークレットとして設定されています。そのため、その値は表示されていません。
 
-| Name | 値 | シークレット | Tags |
+| 名前 | 値 | シークレット | Tags |
 | --- | --- | --- | --- |
 | ContosoHeader |TrackingId |False |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |
@@ -55,7 +55,7 @@ API Management のポリシーは、Azure Portal がその構成を通じて API
 
 プロパティが作成されたら、そのプロパティをクリックすることで編集できます。 プロパティ名を変更すると、そのプロパティを参照するポリシーも、その新しい名前を使用するように自動的に更新されます。
 
-REST API を利用し、プロパティを編集する方法については、「 [Edit a property using the REST API (REST API を利用してプロパティを編集する)](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch)」を参照してください。
+REST API を利用し、プロパティを編集する方法については、「 [Edit a property using the REST API (REST API を利用してプロパティを編集する)](/rest/api/apimanagement/property?Patch)」を参照してください。
 
 ## <a name="to-delete-a-property"></a>プロパティを削除するには
 
@@ -66,7 +66,7 @@ REST API を利用し、プロパティを編集する方法については、�
 > 
 > 
 
-REST API を利用し、プロパティを削除する方法については、「 [Delete a property using the REST API (REST API を利用してプロパティを作成する)](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete)」を参照してください。
+REST API を利用し、プロパティを削除する方法については、「 [Delete a property using the REST API (REST API を利用してプロパティを作成する)](/rest/api/apimanagement/property?Delete)」を参照してください。
 
 ## <a name="to-search-and-filter-named-values"></a>名前付きの値を検索し、フィルター処理するには
 
@@ -111,8 +111,8 @@ REST API を利用し、プロパティを削除する方法については、�
 ## <a name="next-steps"></a>次の手順
 * ポリシーの使用に関する説明
   * [API Management のポリシー](api-management-howto-policies.md)
-  * [Policy reference (ポリシー リファレンス)](https://msdn.microsoft.com/library/azure/dn894081.aspx)
-  * [ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx)
+  * [Policy reference (ポリシー リファレンス)](/azure/api-management/api-management-policies)
+  * [ポリシー式](/azure/api-management/api-management-policy-expressions)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
 [api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png

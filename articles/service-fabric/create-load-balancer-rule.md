@@ -4,7 +4,7 @@ description: Azure Service Fabric クラスターのポートを開くように 
 services: service-fabric
 documentationcenter: na
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: aljo
-ms.openlocfilehash: 777ac1c18447ed86559e82e730949dfef0bccd71
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 526e70fe8548b23f08a2c85e8a59bdc2c25199b4
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499286"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660935"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric クラスターのポートを開く
 

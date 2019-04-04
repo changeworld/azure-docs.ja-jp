@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2c29d9860f1c8fc4f0f6d9f4d84c06e8ade8dee5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 56b164d9612fd1bef8caf9ae0de679f65595bc39
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286977"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629480"
 ---
 # <a name="quickstart-create-a-hololens-unity-app-that-uses-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する HoloLens Unity アプリを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "58286977"
 
 
 - <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3</a> 以降および <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> 以降がインストールされている Windows コンピューターが必要です。 Visual Studio インストールには、**ユニバーサル Windows プラットフォーム開発**ワークロードが含まれている必要があります。 <a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> もインストールする必要があります。
-- [開発者モード](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイスが必要です。 [Windows 2018 年 10 月 10 日更新プログラム](https://docs.microsoft.com/en-us/windows/mixed-reality/release-notes-october-2018) (RS5 とも呼ばれます) をデバイスにインストールする必要があります。 HoloLens を最新のリリースに更新するには、**[設定]** アプリを開き、**[更新とセキュリティ]** を選択し、**[更新プログラムの確認]** を選択します。
+- [開発者モード](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイスが必要です。 [Windows 2018 年 10 月 10 日更新プログラム](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (RS5 とも呼ばれます) をデバイスにインストールする必要があります。 HoloLens を最新のリリースに更新するには、**[設定]** アプリを開き、**[更新とセキュリティ]** を選択し、**[更新プログラムの確認]** を選択します。
 - アプリで **SpatialPerception** 機能を有効にする必要があります。 この設定は、**[ビルド設定]** > **[プレーヤーの設定]** > **[発行の設定]** > **[機能]** にあります。
 - アプリで **[Virtual Reality Supported]\(サポートされている仮想現実\)** を **Windows Mixed Reality SDK** と共に有効にする必要があります。 この設定は、**[ビルド設定]** > **[プレーヤーの設定]** > **[XR Settings]\(XR 設定\)** にあります。
 

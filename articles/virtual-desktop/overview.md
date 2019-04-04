@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 4443d71d5c0b84ac7dbc18129338229c40323d2c
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f922f940f6c579c8710dadec29b365e7cf4c7938
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401049"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577188"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>Windows Virtual Desktop プレビューとは 
 
@@ -72,7 +72,7 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
   
 Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件は次のとおりです。
 
-* [標準ドメイン参加済み](https://docs.microsoft.com/microsoft-desktop-optimization-pack/appv-v4/domain-joined-and-non-domain-joined-clients)または [Hybrid AD 参加済み](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)であること。 仮想マシンを Azure AD に参加させることはできません。
+* [標準ドメイン参加済み](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison)または [Hybrid AD 参加済み](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)であること。 仮想マシンを Azure AD に参加させることはできません。
 * サポート対象となる次のいずれかの OS イメージを実行していること。
   * Windows 10 (Enterprise マルチセッション)
   * Windows Server 2016

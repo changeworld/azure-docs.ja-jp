@@ -3,8 +3,8 @@ title: Azure Data Lake Storage Gen1 のネットワーク セキュリティ | M
 description: Azure Data Lake Storage Gen1 における仮想ネットワーク統合のしくみについて説明します
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 557f331136726110db2a19e20b9d2f5f971ad384
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7d6c826df2a509ffb378809e3682073bd5ab1301
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772910"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880595"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の仮想ネットワーク統合
 
@@ -75,7 +75,7 @@ Data Lake Storage Gen1 仮想ネットワーク統合を使用すると、特定
 
 - Data Lake Storage Gen1 仮想ネットワーク統合のサポートが利用可能になる前に作成された HDInsight クラスターは、この新機能をサポートするために作成し直す必要があります。
  
-- 新しい HDInsight クラスターを作成し、仮想ネットワーク統合が有効な Data Lake Storage Gen1 アカウントを選択すると、プロセスは失敗します。 最初に、仮想ネットワーク規則を無効にします。 または、Data Lake Storage アカウントの **[ファイアウォールと仮想ネットワーク]** ブレードで、**[Allow access from all networks and services]\(すべてのネットワークとサービスからのアクセスを許可する\)** を選択します。 その後、最終的に仮想ネットワーク規則を再度有効にするか、**[Allow access from all networks and services]\(すべてのネットワークとサービスからのアクセスを許可する\)** を選択解除する前に、HDInsight クラスターを作成します。 詳細については、「[例外](##Exceptions)」セクションを参照してください。
+- 新しい HDInsight クラスターを作成し、仮想ネットワーク統合が有効な Data Lake Storage Gen1 アカウントを選択すると、プロセスは失敗します。 最初に、仮想ネットワーク規則を無効にします。 または、Data Lake Storage アカウントの **[ファイアウォールと仮想ネットワーク]** ブレードで、**[Allow access from all networks and services]\(すべてのネットワークとサービスからのアクセスを許可する\)** を選択します。 その後、最終的に仮想ネットワーク規則を再度有効にするか、**[Allow access from all networks and services]\(すべてのネットワークとサービスからのアクセスを許可する\)** を選択解除する前に、HDInsight クラスターを作成します。 詳細については、「[例外](#exceptions)」セクションを参照してください。
 
 - Data Lake Storage Gen1 仮想ネットワーク統合は、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) に対応していません。
   

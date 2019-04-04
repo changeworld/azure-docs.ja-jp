@@ -4,7 +4,7 @@ description: このチュートリアルでは、Visual Studio Azure DevOps を�
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 08/29/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 2da33f2a333529eb7a27a607484a407f869ee540
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 37305f27203986ce2e3d06276b5169ffd9b41287
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807084"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668808"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル:CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする
 

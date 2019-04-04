@@ -230,7 +230,7 @@ SASL PLAIN は、AMQP プロトコルがセキュリティ トークンを転送
 ソリューションのバックエンドから [Service REST API](https://docs.microsoft.com/rest/api/iothub/service) を使用して、デバイスを管理できます。 API を使用して、[デバイス ツイン](#device-twin)のプロパティの取得と更新、[ダイレクト メソッド](#direct-method)の呼び出し、および[ジョブ](#job)のスケジュールを実行できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
 
 ## <a name="shared-access-signature"></a>共有アクセス署名
-Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 SAS 認証には_共有アクセス ポリシー_と _Shared Access Signature_ (多くの場合トークンと呼ばれます) という 2 つのコンポーネントがあります。 デバイスは、IoT Hub での認証に SAS を使用します。 [バック エンド アプリ](#back-end-app)も IoT Hub 上のサービス向けエンドポイントでの認証に SAS を使用します。 通常、SAS トークンは、IoT Hub への接続を確立するためにアプリが使用する[接続文字列](#connection-string)に含めます。
+Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは URI に基づいた認証メカニズムです。 SAS 認証には _共有アクセス ポリシー_ と _Shared Access Signature_ (多くの場合トークンと呼ばれます) という 2 つのコンポーネントがあります。 デバイスは、IoT Hub での認証に SAS を使用します。 [バック エンド アプリ](#back-end-app)も IoT Hub 上のサービス向けエンドポイントでの認証に SAS を使用します。 通常、SAS トークンは、IoT Hub への接続を確立するためにアプリが使用する[接続文字列](#connection-string)に含めます。
 
 ## <a name="shared-access-policy"></a>共有アクセス ポリシー
 共有アクセス ポリシーは、そのポリシーに関連付けられた、有効な[主キーまたは 2 次キー](#primary-and-secondary-keys)を持つすべてのユーザーに許可する権限を定義します。 ハブの共有アクセス ポリシーとキーは、[ポータル](#azure-portal)で管理できます。

@@ -4,7 +4,7 @@ description: Service Fabric CLI sfctl standalone cluster のコマンドにつ�
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: ce10e2c24e89140357df3fa6b724a1f89f389a50
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: a652439729e538b3ce2545ab3b09284e6645ce9d
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275484"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668519"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 スタンドアロンの Service Fabric クラスターを管理します。
 
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
 | config | Service Fabric スタンドアロン クラスターの構成を取得します。 |
 | config-upgrade | Service Fabric スタンドアロン クラスターの構成のアップグレードを開始します。 |

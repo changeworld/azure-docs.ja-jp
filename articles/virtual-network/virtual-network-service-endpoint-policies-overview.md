@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 619b9b68a5c4e897642e1f84c25c2822d8291400
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2d65d51ae8148e2e55d57d39e306ded0f75da687
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104490"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652588"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>仮想ネットワークのサービス エンドポイント ポリシー (プレビュー)
 
@@ -145,7 +145,7 @@ __Azure Storage__:WestCentralUS、WestUS2。
 - **ピアリングされているか、接続されているか、あるいは複数の仮想ネットワーク**:ピアリングされた仮想ネットワーク内のトラフィックをフィルター処理するには、これらの仮想ネットワークに個別にエンドポイント ポリシーを適用する必要があります。
 - **ネットワーク アプライアンスまたは Azure Firewall でのインターネット トラフィックのフィルター処理**:ポリシーを使用してエンドポイント経由の Azure サービス トラフィックをフィルター処理し、アプライアンスまたは Azure Firewall 経由の残りのインターネットまたは Azure トラフィックをフィルター処理します。 
 - **Virtual Network にデプロイされている Azure サービスでのトラフィックのフィルター処理**:プレビュー期間中は、ご利用の仮想ネットワークにデプロイされている Azure マネージド サービスのいずれのサービス エンドポイント ポリシーもサポートされません。 
- 特定のサービスについては、「[制限事項](#Limitations)」を参照してください。
+ 特定のサービスについては、「[制限事項](#limitations)」を参照してください。
 - **オンプレミスから Azure サービスへのトラフィックのフィルター処理**:サービス エンドポイント ポリシーのみが、そのポリシーに関連付けられているサブネットからのトラフィックに適用されます。 オンプレミスから特定の Azure サービス リソースへのアクセスを許可するには、ネットワーク仮想アプライアンスまたはファイアウォールを使用してトラフィックをフィルター処理する必要があります。
 
 ## <a name="logging-and-troubleshooting"></a>ロギングおよびトラブルシューティング
@@ -182,7 +182,7 @@ __Azure Storage__:WestCentralUS、WestUS2。
 
 サービス エンドポイント ポリシーでは、次の制限が適用されます。 
 
- |リソース | 既定の制限 |
+ |Resource | 既定の制限 |
  |---------|---------------|
  |ServiceEndpointPoliciesPerSubscription |500 |
  |ServiceEndpintPoliciesPerSubnet|100 |

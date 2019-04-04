@@ -4,7 +4,7 @@ description: Service Fabric CLI sfctl compose のコマンドについて説明�
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d71b0c020fb9ceb305b56216d466bacb42ad21e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278153"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667508"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Docker Compose アプリケーションを作成、削除、および管理します。
 
-## <a name="commands"></a>コマンド
+## <a name="commands"></a>command
 
-|コマンド|説明|
+|command|説明|
 | --- | --- |
 | create | Service Fabric Compose のデプロイを作成します。 |
 | list | Service Fabric クラスターで作成された Compose デプロイの一覧を取得します。 |

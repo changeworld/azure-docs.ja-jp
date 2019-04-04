@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 24ee0083ec79265f0ac4dfc0a2e235bc72522831
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: cecfd0fafd17e9c463e0c0a74f1e30290a53d82f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813893"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758202"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成
 
@@ -89,6 +89,13 @@ AMS v3 リソースの操作を開始する前に、サービス プリンシパ
 
     ![AAD トークンを取得する](./media/develop-with-postman/postman-get-aad-auth-token.png)
 
+## <a name="see-also"></a>関連項目
+
+- [Media Services アカウントにファイルをアップロードする - REST](upload-files-rest-how-to.md)
+- [Media Services を使用してフィルターを作成する - REST](filters-dynamic-manifest-rest-howto.md)
+- [Azure Resource Manager ベースの REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
+
 ## <a name="next-steps"></a>次の手順
 
-[REST を使用してファイルのストリーム配信を行う](stream-files-tutorial-with-rest.md)。  
+- [REST を使用してファイルのストリーム配信を行う](stream-files-tutorial-with-rest.md)。  
+- [チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST](stream-files-tutorial-with-rest.md)

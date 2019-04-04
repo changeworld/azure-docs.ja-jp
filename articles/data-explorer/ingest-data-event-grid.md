@@ -4,17 +4,17 @@ description: このクイック スタートでは、Event Grid サブスクリ�
 services: data-explorer
 author: radennis
 ms.author: radennis
-ms.reviewer: orspod
+ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
 Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
-ms.openlocfilehash: 625556986c5034303e83cc23b4ba06b1638115d1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8efe8b95b09fa8b4de16c08345699cee88e11285
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448426"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756432"
 ---
 # <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>クイック スタート:Event Grid の通知をサブスクライブすることで Azure Data Explorer に BLOB を取り込む
 
@@ -40,7 +40,7 @@ Azure Data Explorer は、ログと利用統計情報のための高速でスケ
 
     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | Name | *test-grid-connection* | 作成するイベント グリッドの名前。|
+    | 名前 | *test-grid-connection* | 作成するイベント グリッドの名前。|
     | イベント スキーマ | *Event Grid スキーマ* | イベント グリッドで使用するスキーマ。 |
     | トピックの種類 | *ストレージ アカウント* | イベント グリッド トピックの種類。 |
     | トピックのリソース | *gridteststorage* | ご利用のストレージ アカウントの名前。 |

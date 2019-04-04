@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 43f9443e4b5cd700500bd9803f2737ed9e0aa633
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 257fe51cae245708816cd9a7bb0c33b6edf5aa05
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223165"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756000"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Azure CLI で Azure Media Services API にアクセスする
  
@@ -40,10 +40,19 @@ Media Services アカウント名、ストレージ名、およびリソース�
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="next-steps"></a>次の手順
-
-[ファイルのストリーミング](stream-files-dotnet-quickstart.md)
-
 ## <a name="see-also"></a>関連項目
+
+- [メディア占有ユニットのスケーリング - CLI](media-reserved-units-cli-how-to.md)
+- [Media Services アカウントを作成する - CLI](./scripts/cli-create-account.md) 
+- [アカウントの資格情報をリセットする - CLI](./scripts/cli-reset-account-credentials.md)
+- [資産を作成する - CLI](./scripts/cli-create-asset.md)
+- [ファイルをアップロードする - CLI](./scripts/cli-upload-file-asset.md)
+- [トランスフォームを作成する - CLI](./scripts/cli-create-transform.md)
+- [ジョブを作成する - CLI](./scripts/cli-create-jobs.md)
+- [EventGrid を作成する - CLI](./scripts/cli-create-event-grid.md)
+- [資産を公開する - CLI](./scripts/cli-publish-asset.md)
+- [フィルター - CLI](filters-dynamic-manifest-cli-howto.md)
+
+## <a name="next-steps"></a>次の手順
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

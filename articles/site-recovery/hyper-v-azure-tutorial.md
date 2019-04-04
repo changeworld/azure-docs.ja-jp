@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5a7161d05b153a556cce20ec4f4d0cbbfdf1d2d1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2201a8017f82517f287cc0b73346a90eaa2408a4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315506"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877722"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
@@ -87,17 +87,17 @@ Hyper-V コア サーバーを使用している場合は、[こちら](#set-up-
 
 1. 以下を実行して、AzureSiteRecoveryProvider.exe からファイルを抽出します
 
-    ``AzureSiteRecoveryProvider.exe /x:. /q``
+    `AzureSiteRecoveryProvider.exe /x:. /q`
  
     これにより、ローカル ディレクトリにファイルが抽出されます。
  
-2.  ``.\setupdr.exe /i `` を実行します。
+2.  ラン `.\setupdr.exe /i`
 
     結果は %Programdata%\ASRLogs\DRASetupWizard.log に記録されます
 
 3.  次のコマンドを使用してサーバーを登録します。
 
-``cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved" ``
+`cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"`
  
 
 ## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
@@ -140,4 +140,4 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
    **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**[保護を有効にする]** アクションの進行状況を追跡できます。 **[保護の最終処理]** ジョブが完了すると、初期レプリケーションが完了し、仮想マシンがフェールオーバーを実行できる状態になります。
 
 ## <a name="next-steps"></a>次の手順
-[ディザスター リカバリーのテストを実行する](tutorial-dr-drill-azure.md)
+[ディザスター リカバリー訓練を実行する](tutorial-dr-drill-azure.md)

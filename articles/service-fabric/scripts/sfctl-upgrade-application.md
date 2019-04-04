@@ -4,7 +4,7 @@ description: Service Fabric CLI スクリプト サンプル - アプリケー�
 services: service-fabric
 documentationcenter: ''
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 12/06/2017
 ms.author: aljo
 ms.custom: ''
-ms.openlocfilehash: 7c6b4b6214f5fc2788827ae34aad4019dad1d8ae
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ffc60279ae414055c893c024d0ffd98267e6655f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806965"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662943"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>アプリケーション証明書の Service Fabric クラスターへの追加
 

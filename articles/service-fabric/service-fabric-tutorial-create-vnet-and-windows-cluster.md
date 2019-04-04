@@ -4,7 +4,7 @@ description: このチュートリアルでは、PowerShell を使用して Wind
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/13/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 28f115e356c8852174b923f4891f93ad435ce7d7
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 5ef143fe2021a9f705bf61b579e8251b2946b042
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498181"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668094"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>チュートリアル:Azure 仮想ネットワークに Windows を実行する Service Fabric クラスターをデプロイする
 

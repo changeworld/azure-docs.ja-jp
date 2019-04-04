@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 8fb60f36bbc7c8886c1f465177a11224a1c90659
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3c2384b536235554fed7c1cf1a08b7c665f513a8
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541249"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621925"
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Azure API Management テンプレート データ モデル リファレンス
 このトピックでは、Azure API Management の開発者ポータル テンプレートのデータ モデルで使用される一般的な項目のエンティティと型表現について説明します。  
@@ -34,7 +34,7 @@ ms.locfileid: "58541249"
 
 -   [API](#API)  
 -   [API summary](#APISummary)  
--   [アプリケーション](#Application)  
+-   [Application](#Application)  
 -   [Attachment](#Attachment)  
 -   [Code sample](#Sample)  
 -   [Comment](#Comment)  
@@ -162,7 +162,7 @@ ms.locfileid: "58541249"
 ##  <a name="Header"></a> Header  
  このセクションでは、`parameter` 表現を記述します。  
   
-|プロパティ|Description|Type|  
+|プロパティ|Type|Description|  
 |--------------|-----------------|----------|  
 |`name`|文字列|パラメーター名。|  
 |`description`|文字列|パラメーターの説明。|  
@@ -239,7 +239,7 @@ ms.locfileid: "58541249"
 ##  <a name="Parameter"></a> Parameter  
  このセクションでは、`parameter` 表現を記述します。  
   
-|プロパティ|Description|Type|  
+|プロパティ|Type|Description|  
 |--------------|-----------------|----------|  
 |`name`|文字列|パラメーター名。|  
 |`description`|文字列|パラメーターの説明。|  

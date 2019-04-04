@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 6c182b4f8de96429f52e8c396503f7a89c5347ec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 835e0153039ecc3bb93fb7aa9b5007c205ec503e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871783"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793885"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>クイック スタート:.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 
@@ -36,12 +36,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="visual-studio"></a>Visual Studio
+
 この記事のチュートリアルでは、Visual Studio 2017 を使用します。 Visual Studio 2013 または 2015 を使用することもできます。
 
 ### <a name="azure-net-sdk"></a>Azure .NET SDK
+
 [Azure .NET SDK](https://azure.microsoft.com/downloads/) をマシンにダウンロードしてインストールします。
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
+
 [こちらの記事](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)のセクションの手順に従って、以下のタスクを行ってください。 
 
 1. **Azure Active Directory アプリケーションを作成します**。 このチュートリアルで作成している .NET アプリケーションを表すアプリケーションを Azure Active Directory に作成します。 サインオン URL については、この記事に示されているようにダミーの URL (`https://contoso.org/exampleapp`) を指定できます。
@@ -64,7 +67,7 @@ Visual Studio 2013/2015/2017 を使用して、C# .NET コンソール アプリ
 1. **[ツール]** -> **[NuGet パッケージ マネージャー]** -> **[パッケージ マネージャー コンソール]** の順にクリックします。
 2. **パッケージ マネージャー コンソール**で、次のコマンドを実行してパッケージをインストールします。 詳細については、[Microsoft.Azure.Management.DataFactory nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)を参照してください。
 
-    ```
+    ```powershell
     Install-Package Microsoft.Azure.Management.DataFactory
     Install-Package Microsoft.Azure.Management.ResourceManager
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
@@ -408,6 +411,7 @@ Press any key to exit...
 ```
 
 ## <a name="verify-the-output"></a>出力を検証する
+
 このパイプラインは、adftutorial BLOB コンテナーに対して output フォルダーを自動的に作成します。 そのうえで、input フォルダーから output フォルダーに emp.txt ファイルをコピーします。 
 
 1. Azure Portal の **adftutorial** コンテナー ページで **[最新の情報に更新]** をクリックして出力フォルダーを表示します。 
@@ -419,6 +423,7 @@ Press any key to exit...
     ![更新](media/quickstart-create-data-factory-dot-net/output-file.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
 プログラムによって実行するには、データ ファクトリを削除し、次のコード行をプログラムに追加します。 
 
 ```csharp
@@ -427,4 +432,5 @@ Press any key to exit...
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 より多くのシナリオで Data Factory を使用する方法については、[チュートリアル](tutorial-copy-data-dot-net.md)を参照してください。 

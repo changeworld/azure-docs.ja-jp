@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 4d3e77ab2ee7f25c9155feb9d40c0870103320d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5adc86b161770f2502b6ef9cf5ec2189ec3d4f99
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007915"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619927"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows 用の NVIDIA GPU ドライバー拡張機能
 
 ## <a name="overview"></a>概要
 
-この拡張機能は、Windows の N シリーズ VM に NVIDIA GPU ドライバーをインストールします。 VM ファミリに応じて、この拡張機能では CUDA ドライバーまたは GRID ドライバーがインストールされます。 この拡張機能を使用して NVIDIA ドライバーをインストールする際は、[NVIDIA のエンドユーザー使用許諾契約書](https://developer.download.nvidia.com/compute/cuda/5_5/rel/docs/EULA.pdf)の条項を受け入れ、同意します。 インストール プロセス中に、ドライバーのセットアップを完了するために仮想マシンが再起動することがあります。
+この拡張機能は、Windows の N シリーズ VM に NVIDIA GPU ドライバーをインストールします。 VM ファミリに応じて、この拡張機能では CUDA ドライバーまたは GRID ドライバーがインストールされます。 この拡張機能を使用して NVIDIA ドライバーをインストールする際は、[NVIDIA のエンドユーザー使用許諾契約書](https://go.microsoft.com/fwlink/?linkid=874330)の条項を受け入れ、同意します。 インストール プロセス中に、ドライバーのセットアップを完了するために仮想マシンが再起動することがあります。
 
 NVIDIA GPU ドライバーを [Linux の N シリーズ VM](hpccompute-gpu-linux.md) にインストールするための拡張機能も利用可能です。
 
@@ -35,7 +35,7 @@ NVIDIA GPU ドライバーを [Linux の N シリーズ VM](hpccompute-gpu-linux
 
 この拡張機能は､次の OS に対応しています｡
 
-| ディストリビューション | Version |
+| ディストリビューション | バージョン |
 |---|---|
 | Windows 10 (バージョン 1803 まで)| コア |
 | Windows Server 2016 | コア |
@@ -71,7 +71,7 @@ NVIDIA GPU ドライバー用の Microsoft Azure 拡張機能では、ターゲ�
 
 ### <a name="properties"></a>Properties
 
-| Name | 値/例 | データ型 |
+| 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | 文字列 |

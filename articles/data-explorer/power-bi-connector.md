@@ -3,17 +3,17 @@ title: クイック スタート:Power BI 用 Azure Data Explorer コネクタ�
 description: Power BI のデータは 3 とおりの方法を使用して視覚化できます。このクイック スタートでは、そのうちの 1 つである Azure Data Explorer 用 Power BI コネクタを使用した方法を説明します。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: de920a9addf9d2053a3c101c6b1f9a2c1a2feb27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ca3e68f3ef039f86957e47e22df48922498c292f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106748"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754725"
 ---
 # <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>クイック スタート:Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する
 

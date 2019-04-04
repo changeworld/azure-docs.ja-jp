@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e97e79ef3077431d8fc627cd634a67b0a01b6f8e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b12ba53f847b46479b3100c088c29372b58c1b8e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993109"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649035"
 ---
 # <a name="saas-application-test-drive-tab"></a>SaaS アプリケーションの [体験版] タブ
 
@@ -53,7 +53,7 @@ ms.locfileid: "57993109"
 |     Azure Resource Manager               |    Azure Resource Manager 体験版は、発行元によって構築されるソリューションを構成しているすべての Azure リソースが含まれたデプロイ テンプレートです。 この種類の体験版に適合する製品は、Azure リソースのみを使用する製品です。               |       [Azure Resource Manager の体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)            |
 |       ホストされている             |       ホストされた体験版では、体験版のユーザー プロビジョニングとプロビジョニング解除を実行するサービスを Microsoft がホストして管理するので、セットアップの複雑さがなくなります。             |         [ホストされた体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
 |      ロジック アプリ              |       ロジック アプリ体験版は、あらゆる複雑なソリューション アーキテクチャに対応するように意図されたデプロイ テンプレートです。 すべての Dynamics アプリケーションやカスタム製品には、この種類の体験版を使用する必要があります。            |      [ロジック アプリの体験版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
-|       Power BI             |         Power BI 体験版は、カスタム ビルドされたダッシュボードへの埋め込みリンクで構成されています。 インタラクティブな Power BI の視覚化のデモンストレーションを行う製品には、この種類の体験版を使用する必要があります。 必要なのは、埋め込み Power BI の URL をアップロードすることだけです。          |        [Power BI の体験版](#Power-BI-test-drive)           |
+|       Power BI             |         Power BI 体験版は、カスタム ビルドされたダッシュボードへの埋め込みリンクで構成されています。 インタラクティブな Power BI の視覚化のデモンストレーションを行う製品には、この種類の体験版を使用する必要があります。 必要なのは、埋め込み Power BI の URL をアップロードすることだけです。          |        [Power BI の体験版](#power-bi-test-drive)           |
 
 ### <a name="power-bi-test-drive"></a>Power BI の体験版
 
