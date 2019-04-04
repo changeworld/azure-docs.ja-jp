@@ -5,15 +5,20 @@ description: Azure の課金の確認、使用量とコストの管理および�
 services: billing
 author: cwatson-cat
 manager: dougeby
-ms.assetid: null
+ms.assetid: ''
 ms.service: billing
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 02/19/2019
 ms.author: banders
+ms.openlocfilehash: e150525b6f5fd1814f13595fbd4ea7e3bccde4fc
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446717"
 ---
-
 # <a name="azure-billing-and-cost-management-documentation"></a>Azure の課金とコスト管理に関するドキュメント
 
 Azure の課金の確認、使用量とコストの監視、アカウントとサブスクリプションの管理の方法について説明します。

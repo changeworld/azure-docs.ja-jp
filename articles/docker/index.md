@@ -11,6 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
+ms.openlocfilehash: f3e26701a5764169b6d459d28c5d70227386c6bf
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588145"
 ---
 <div class="content">
    <h1>Azure 上の Docker</h1>   

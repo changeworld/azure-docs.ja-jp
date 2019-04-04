@@ -9,8 +9,13 @@ layout: LandingPage
 ms.service: power-bi-embedded
 ms.topic: landing-page
 ms.date: 07/31/2018
+ms.openlocfilehash: 8c7ee917234891123392a7954bf704e1ff2a70e1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447812"
 ---
-
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded のドキュメント
 
 Power BI Embedded を使用して、データの視覚化と対話型のレポートをアプリケーションに埋め込む方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Power BI のレポートとダッシュボードをアプリにシームレスに埋め込む方法を紹介します。

@@ -10,8 +10,13 @@ ms.service: azure-iot
 ms.topic: landing-page
 ms.date: 02/12/2019
 ms.author: dkshir
+ms.openlocfilehash: d19b6fff3bf2b43ecb692bd8d8e33a202e969570
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57343824"
 ---
-
 <div id="main" class="v2">
     <div class="container">
         <h1>Azure IoT (モノのインターネット) のドキュメント</h1>

@@ -11,8 +11,13 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6e73e089f0753f49233c75a5e55513ebaf7bf9c9
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338107"
 ---
-
 # <a name="user-help-for-authentication-apps-and-device-management"></a>認証、アプリ、デバイスの管理に関するユーザー ヘルプ
 
 このコンテンツは、セキュリティ情報の設定と使用、2 段階認証、自分のパスワードのリセット方法の習得、Azure Active Directory デバイスの設定と参加、Microsoft Authenticator アプリとマイ アプリ ポータルの設定と使用を支援するために作成されました。

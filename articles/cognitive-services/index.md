@@ -9,8 +9,13 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 02/21/2019
 ms.topic: hub-page
+ms.openlocfilehash: 621cf49284ac1080bf18619f80f14c8a21c2f761
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472924"
 ---
-
 <div id="main" class="v2">
 <h1>Azure Cognitive Services のドキュメント</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。</p>
