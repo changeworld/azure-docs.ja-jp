@@ -152,7 +152,7 @@ def run(raw_data):
 
 #### <a name="working-with-binary-data"></a>バイナリ データの使用
 
-モデルが__バイナリ データ__を受け入れる場合は、`AMLRequest`、`AMLResponse`、および `rawhttp` を使用します。 バイナリ データを受け入れ、POST 要求に対して反転したバイトを返すスクリプトの例を次に示します。 GET 要求に対しては、応答本文で完全な URL を返します。
+モデルが __バイナリ データ__ を受け入れる場合は、`AMLRequest`、`AMLResponse`、および `rawhttp` を使用します。 バイナリ データを受け入れ、POST 要求に対して反転したバイトを返すスクリプトの例を次に示します。 GET 要求に対しては、応答本文で完全な URL を返します。
 
 ```python
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
