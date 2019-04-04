@@ -4,7 +4,7 @@ description: ローカルの開発用コンピューターで Microsoft Azure Se
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: edcc0631-ed2d-45a3-851d-2c4fa0f4a326
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: c0547fe817cf81adbf417bfad195a197a2071cc6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 31c559c1ab314b7e1f29bd96f74d6d82cfcc0420
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822358"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670049"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
 > [!div class="op_single_selector"]

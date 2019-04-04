@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 48a0400a471e06f65c1d548b7c1c419a1cb198bd
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 8d6323c73e5313a29b7b0df09ebdd24a190879f5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284580"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876430"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 
@@ -42,7 +42,7 @@ ms.locfileid: "58284580"
 はい。 バックアップ ポリシーが実行される速度を調整して、SQL Server インスタンスへの影響を最小限に抑えることができます。 設定を変更するには:
 1. SQL Server インスタンスで、*C:\Program Files\Azure Workload Backup\bin* フォルダーに *ExtensionSettingsOverrides.json* ファイルを作成します。
 2. *ExtensionSettingsOverrides.json* ファイルで、**DefaultBackupTasksThreshold** 設定を小さな値 (たとえば、5) に変更します。 <br>
-  ` {"DefaultBackupTasksThreshold": 5}`
+  `{"DefaultBackupTasksThreshold": 5}`
 
 3. 変更を保存し、ファイルを閉じます。
 4. SQL Server インスタンスで、**タスク マネージャー**を開きます。 **AzureWLBackupCoordinatorSvc** サービスを再起動します。

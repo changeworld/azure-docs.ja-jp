@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: cdaaf5323543377d9c2b603ad7377d088710cde8
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c52a1942bda9881f8f782a227c81feaa4813722d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447747"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793641"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Azure API Management、Event Hubs、Moesif を使用した API の監視
 [API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 しかし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは Azure Portal ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。
@@ -47,7 +47,7 @@ Event Hubs には、複数のコンシューマー グループにイベント�
 
 代わりの方法として、HTTP 仕様の [RFC 7230](https://tools.ietf.org/html/rfc7230) に規定されている `application/http` メディア タイプを使用しました。 このメディア タイプでは、実際にネットワーク経由で HTTP メッセージを送信する際に使用されるのとまったく同じ形式が使用されますが、メッセージ全体を別の HTTP 要求の本文に含めることができます。 ここでは、本文を、Event Hubs に送信するメッセージとして使用します。 [Microsoft ASP.NET Web API 2.2 クライアント](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) ライブラリには、この形式を解析してネイティブ `HttpRequestMessage` オブジェクトと `HttpResponseMessage` オブジェクトに変換できる便利なパーサーが含まれています。
 
-このメッセージを作成できるようにするには、Azure API Management の C# ベースの [ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx) を使用する必要があります。 Azure Event Hubs に HTTP 要求メッセージを送信するポリシーを次に示します。
+このメッセージを作成できるようにするには、Azure API Management の C# ベースの [ポリシー式](/azure/api-management/api-management-policy-expressions) を使用する必要があります。 Azure Event Hubs に HTTP 要求メッセージを送信するポリシーを次に示します。
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -315,4 +315,4 @@ Azure API Management サービスでは、API を経由して送受信される 
 * API Management と Event Hubs の統合の詳細
   * [Azure API Management で Azure Event Hubs にイベントを記録する方法](api-management-howto-log-event-hubs.md)
   * [ロガーのエンティティ リファレンス](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [log-to-eventhub ポリシー リファレンス](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
+  * [log-to-eventhub ポリシー リファレンス](/azure/api-management/api-management-advanced-policies#log-to-eventhub)

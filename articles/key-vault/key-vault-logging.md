@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: afec42551f124890dd2cc7b03cce48c359fc88c4
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 25ebd72c512eb92c5d9a464a4b4d74f9e41ae389
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194097"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484114"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -55,7 +55,7 @@ Key Vault の概要については、「[Azure Key Vault とは](key-vault-whati
 
 Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。  
 
-```PowerShell
+```powershell
 Connect-AzAccount
 ```
 
@@ -63,13 +63,13 @@ Connect-AzAccount
 
 キー コンテナーを作成するときに使用したサブスクリプションを指定することが必要な場合があります。 アカウントのサブスクリプションを確認するには、次のコマンドを入力します。
 
-```PowerShell
+```powershell
 Get-AzSubscription
 ```
 
 ログ記録するキー コンテナーに関連付けられているサブスクリプションを指定するには、次を入力します。
 
-```PowerShell
+```powershell
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
@@ -81,7 +81,7 @@ PowerShell を適切なサブスクリプションにポイントすることは
 
 また、管理を容易にするために、キー コンテナーが含まれているリソース グループと同じリソース グループを使用します。 [入門チュートリアル](key-vault-get-started.md)に基づいて、このリソース グループには **ContosoResourceGroup** という名前を付け、東アジアの場所を引き続き使用します。 これらの値は、必要に応じて実際の値に置き換えてください。
 
-```PowerShell
+```powershell
  $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 ```
 
@@ -94,7 +94,7 @@ PowerShell を適切なサブスクリプションにポイントすることは
 
 [入門チュートリアル](key-vault-get-started.md)では、キー コンテナー名は **ContosoKeyVault** でした。 この名前を引き続き使用して、**kv** という名前の変数の詳細情報を格納します。
 
-```PowerShell
+```powershell
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 ```
 
@@ -102,7 +102,7 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 Key Vault のログ記録を有効にするために、**Set-AzDiagnosticSetting** コマンドレットを、新しいストレージ アカウントおよび Key Vault 用に作成した変数と組み合わせて使用します。 また、**-Enabled** フラグを **$true** に設定し、カテゴリを **AuditEvent** (Key Vault ログ記録の唯一のカテゴリ) に設定します。
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
@@ -122,7 +122,7 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 必要に応じて、ログのアイテム保持ポリシーを、古いログが自動的に削除されるように設定することができます。 たとえば、**-RetentionEnabled** フラグを **$true** に設定し、**-RetentionInDays** パラメーターを **90** に設定した保持ポリシーを設定すると、90 日より前のログが自動的に削除されます。
 
-```PowerShell
+```powershell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
 ```
 
@@ -141,13 +141,13 @@ Key Vault のログは、指定したストレージ アカウント内の **ins
 
 最初に、コンテナー名の変数を作成します。 この変数は、チュートリアルの残りの部分で使用します。
 
-```PowerShell
+```powershell
 $container = 'insights-logs-auditevent'
 ```
 
 このコンテナー内のすべての BLOB を一覧表示するには、次のように入力します。
 
-```PowerShell
+```powershell
 Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
@@ -174,19 +174,19 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 
 フォルダーを作成して BLOB をダウンロードします。 例: 
 
-```PowerShell 
+```powershell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 ```
 
 すべての BLOB の一覧を取得します。  
 
-```PowerShell
+```powershell
 $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
 **Get-AzStorageBlobContent** を介してこの一覧をパイプして、BLOB を宛先フォルダーにダウンロードします。
 
-```PowerShell
+```powershell
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
@@ -196,19 +196,19 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 * 複数の Key Vault を持っている場合に、CONTOSOKEYVAULT3 という名前の Key Vault のみについてログをダウンロードするには、次のようにします。
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
   ```
 
 * 複数のリソース グループを持っている場合、1 つのリソース グループのみについてログをダウンロードするには、次のように `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`を使用します。
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
 * 2019 年 1 月のすべてのログをダウンロードする場合は、次のように `-Blob '*/year=2019/m=01/*'` を使用します。
 
-  ```PowerShell
+  ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
@@ -221,7 +221,7 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。 ログ エントリの例を見てみましょう。 次のコマンドを実行します。
 
-```PowerShell
+```powershell
 Get-AzKeyVault -VaultName 'contosokeyvault'`
 ```
 

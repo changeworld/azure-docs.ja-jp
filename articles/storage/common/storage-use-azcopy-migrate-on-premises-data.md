@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: b7dbea4736eae3371d288883ba40d8edfe310869
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 40138a69baf9cd621b2f287b2fe035225bfd9bec
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727946"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877499"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>チュートリアル:AzCopy を使用したオンプレミス データのクラウド ストレージへの移行
 
@@ -59,7 +59,7 @@ BLOB は常にコンテナーにアップロードする必要があるため、
 
 AzCopy を使用すると、フォルダー内のすべてのファイルを [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage) または [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#blob-download) 上の Blob Storage にアップロードできます。 フォルダー内のすべての BLOB をアップロードするには、次の AzCopy コマンドを入力します。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# [<a name="linux"></a>Linux](#tab/linux)
 
     azcopy \
         --source /mnt/myfolder \
@@ -67,7 +67,7 @@ AzCopy を使用すると、フォルダー内のすべてのファイルを [Wi
         --dest-key <key> \
         --recursive
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# [<a name="windows"></a> Windows](#tab/windows)
 
     AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S
 ---
@@ -82,7 +82,7 @@ AzCopy を使用して、最終更新時刻に基づいて[ファイルをアッ
 
 宛先に存在しないソース リソースのみをコピーする場合は、AzCopy コマンドに `--exclude-older` と `--exclude-newer` (Linux) または `/XO` と `/XN` (Windows) の両方のパラメーターを指定します。 AzCopy は、タイムスタンプに基づいて、更新されたデータのみをアップロードします。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# [<a name="linux"></a>Linux](#tab/linux)
 
     azcopy \
     --source /mnt/myfolder \
@@ -91,7 +91,7 @@ AzCopy を使用して、最終更新時刻に基づいて[ファイルをアッ
     --recursive \
     --exclude-older
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# [<a name="windows"></a> Windows](#tab/windows)
 
     AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /S /XO
 ---
@@ -102,11 +102,11 @@ AzCopy コマンド スクリプトを実行するスケジュールされたタ
 
 AzCopy コマンドをテキスト エディターにコピーします。 AzCopy コマンドのパラメーター値を適切な値に更新します。 ファイルを AzCopy 用に `script.sh` (Linux) または `script.bat` (Windows) として保存します。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# [<a name="linux"></a>Linux](#tab/linux)
 
     azcopy --source /mnt/myfiles --destination https://myaccount.blob.core.windows.net/mycontainer --dest-key <key> --recursive --exclude-older --exclude-newer --verbose >> Path/to/logfolder/`date +\%Y\%m\%d\%H\%M\%S`-cron.log
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# [<a name="windows"></a> Windows](#tab/windows)
 
     cd C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy
     AzCopy /Source: C:\myfolder  /Dest:https://myaccount.blob.core.windows.net/mycontainer /DestKey:<key> /V /XO /XN >C:\Path\to\logfolder\azcopy%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-11,2%%time:~-8,2%%time:~-5,2%.log
@@ -117,7 +117,7 @@ AzCopy は、詳細オプション `--verbose` (Linux) または `/V` (Windows) 
 このチュートリアルでは、Windows 上でスケジュールされたタスクを作成するために [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx) を使用します。 Linux 上で cron ジョブを作成するには、[Crontab](http://crontab.org/) コマンドを使用します。
  **Schtasks** は、管理者がローカルまたはリモート コンピューター上でスケジュールされたタスクを作成、削除、クエリ、変更、実行、および終了することを可能にします。 **Cron** は、Linux および Unix ユーザーが [cron 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)を使用して、指定された日時にコマンドまたはスクリプトを実行することを可能にします。
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# [<a name="linux"></a>Linux](#tab/linux)
 
 Linux 上で cron ジョブを作成するには、端末で次のコマンドを入力します。
 
@@ -126,9 +126,9 @@ crontab -e
 */5 * * * * sh /path/to/script.sh
 ```
 
-コマンドの cron 式 `*/5 * * * * ` は、シェル スクリプト `script.sh` を 5 分ごとに実行することを指定します。 スクリプトは、毎日、毎月、または毎年特定の時刻に実行するようにスケジュールすることができます。 ジョブの実行日時の設定の詳細については、[cron 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)に関するページを参照してください。
+コマンドの cron 式 `*/5 * * * *` は、シェル スクリプト `script.sh` を 5 分ごとに実行することを指定します。 スクリプトは、毎日、毎月、または毎年特定の時刻に実行するようにスケジュールすることができます。 ジョブの実行日時の設定の詳細については、[cron 式](https://en.wikipedia.org/wiki/Cron#CRON_expression)に関するページを参照してください。
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# [<a name="windows"></a> Windows](#tab/windows)
 
 Windows 上でスケジュールされたタスクを作成するには、コマンド プロンプトまたは PowerShell で次のコマンドを入力します。
 

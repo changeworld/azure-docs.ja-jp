@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: d0d725a57c27fe30215d77a596f6fb3b8c8720d6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8041e7e02b117b8938f0f7c18da2d57c31dddb34
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098010"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482266"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Service Fabric クラスターを Azure Stack にデプロイする
 
@@ -61,7 +61,7 @@ KeyVault を作成してそこに "*クラスター証明書*" を追加する�
 > [!TIP]  
 > このスクリプトを正常に実行するためには、Compute、Network、Storage、KeyVault の各サービスを含んだパブリック オファーが必要です。 
 
-  ```PowerShell
+  ```powershell
     function Get-ThumbprintFromPfx($PfxFilePath, $Password) 
         {
             return New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($PfxFilePath, $Password)
@@ -211,7 +211,7 @@ Service Fabric クラスターには、Service Fabric Explorer または Service
 
 1. 環境変数の順序を変更したら、PowerShell を再起動し、次の PowerShell スクリプトを実行して Service Fabric クラスターにアクセスします。
 
-   ```PowerShell  
+   ```powershell  
     Connect-ServiceFabricCluster -ConnectionEndpoint "\[Service Fabric
     CLUSTER FQDN\]:19000" \`
 

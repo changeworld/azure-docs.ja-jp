@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 017461d5b73bb48ce61678fbbd795026cef60bc1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ba69a5aaffb39c26731ffd209587a8c8223b032a
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536852"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915359"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Cloud Services での Azure 診断の有効化
 Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics](../azure-diagnostics.md) 」をご覧ください。
@@ -191,7 +191,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 ![CloudServices_diag_tables](./media/cloud-services-dotnet-diagnostics/WadExampleTables.png)
 
 ## <a name="configuration-file-schema"></a>構成ファイル スキーマ
-診断構成ファイルでは、診断エージェントの起動時に診断構成設定の初期化に使用される値を定義します。 有効な値と例については、「 [Azure 診断構成スキーマ](https://msdn.microsoft.com/library/azure/mt634524.aspx) 」をご覧ください。
+診断構成ファイルでは、診断エージェントの起動時に診断構成設定の初期化に使用される値を定義します。 有効な値と例については、「 [Azure 診断構成スキーマ](/azure/azure-monitor/platform/diagnostics-extension-schema) 」をご覧ください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 問題が発生した場合、一般的な問題の解決方法については、「 [Azure Diagnostics Troubleshooting](../azure-diagnostics-troubleshooting.md) 」をご覧ください。

@@ -16,12 +16,12 @@ ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 2f51ab51cc352c5f3d95ac1a35a1cbf918899753
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9bf261918bdbdf3ee06ad28a037d5bb8a3631a20
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768401"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487636"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
@@ -101,14 +101,14 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
 3. 複数のサブスクリプションがある場合は、次のコマンドを実行して、登録に使用したサブスクリプションを選択します。  
 
-   ```PowerShell  
+   ```powershell  
    Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    $AzureContext = Get-AzureRmContext
    ```
 
 4. 次のスクリプトを使用して、マーケットプレース シンジケーション ツールの最新バージョンをダウンロードします。  
 
-   ```PowerShell
+   ```powershell
    # Download the tools archive.
    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
    invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip `
@@ -126,7 +126,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
 5. 次のコマンドを実行して、シンジケーション モジュールをインポートし、ツールを起動します。 `Destination folder path` を、Azure Marketplace からダウンロードしたファイルを保存する場所に置き換えます。   
 
-   ```PowerShell  
+   ```powershell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes" 
@@ -164,7 +164,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
 3. 次のスクリプトを実行して、シンジケーション モジュールをインポートした後、マーケットプレース シンジケーション ツールを起動します。
 
-   ```PowerShell
+   ```powershell
    $credential = Get-Credential -Message "Enter the azure stack operator credential:"
    Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -AzsCredential $credential
    ```
@@ -206,7 +206,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
    このスクリプトに代わる方法として、[こちらの記事で説明されている手順](azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal)に従い、Azure portal を使って .VHD イメージをインポートすることもできます。
 
-   ```PowerShell  
+   ```powershell  
    Add-AzsPlatformimage `
     -publisher "MicrosoftWindowsServer" `
     -offer "WindowsServer" `
@@ -229,7 +229,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
 
 4.  PowerShell で **Add-AzsGalleryItem** コマンドレットを使用して、Marketplace 項目を Azure Stack に発行します。 例:   
-    ```PowerShell  
+    ```powershell  
     Add-AzsGalleryItem `
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
      –Verbose
@@ -239,7 +239,7 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
 Azure Stack PowerShell 1.3.0 のリリースにより、仮想マシン拡張機能を追加できるようになりました。 例: 
 
-```PowerShell
+```powershell
 Add-AzsVMExtension -Publisher "Microsoft" -Type "MicroExtension" -Version "0.1.0" -ComputeRole "IaaS" -SourceBlob "https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip" -SupportMultipleExtensions -VmOsType "Linux"
 ```
 

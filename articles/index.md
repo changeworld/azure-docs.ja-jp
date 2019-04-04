@@ -5,7 +5,13 @@ title: Microsoft Azure のドキュメント
 description: Microsoft Azure Cloud Services を使用して、強力なアプリケーションを構築し、管理する方法について説明します。 ドキュメント、サンプル コード、チュートリアルなどを入手できます。
 ms.topic: hub-page
 featureFlags:
-  - clicktale
+- clicktale
+ms.openlocfilehash: 97fd2ffd22f4a4c883d284a2d2db060cd1c2121c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878674"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -70,7 +76,7 @@ featureFlags:
         <h1 class="visually-hidden">Microsoft Azure のドキュメント</h1>
         <ul class="pivots">
             <li>
-                <a href="#get-started">作業開始</a>
+                <a href="#get-started">作業の開始</a>
                 <ul id="get-started">
                     <li>
                         <a href="#get-started1"></a>
@@ -88,8 +94,8 @@ featureFlags:
                                             <div class="cardText">
                                                 <h3>インフラストラクチャのデプロイ</h3>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/virtual-machines/linux/">Linux virtual machines</a></li>
-                                                    <li><a class="barLink" href="/azure/virtual-machines/windows/">Windows virtual machines</a></li>
+                                                    <li><a class="barLink" href="/azure/virtual-machines/linux/">Linux Virtual Machines</a></li>
+                                                    <li><a class="barLink" href="/azure/virtual-machines/windows/">Windows Virtual Machines</a></li>
                                                     <li><a class="barLink" href="/azure/governance/blueprints/">Azure Blueprint</a></li>
                                                 </ul>
                                             </div>
@@ -170,9 +176,9 @@ Go</a>
                                                <h4>アプリ モデル</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/app-service-web/">Web Apps</a></li>
-                                                    <li><a class="barLink" href="/azure/azure-functions/">サーバーレスな Functions</a></li>
+                                                    <li><a class="barLink" href="/azure/azure-functions/">サーバーレス関数</a></li>
                                                     <li><a class="barLink" href="/azure/containers/">Containers</a></li>
-                                                    <li><a class="barLink" href="/azure/aks/">Kubernetes を利用したマイクロサービス</a></li>
+                                                    <li><a class="barLink" href="/azure/aks/">Kubernetes を使ったマイクロサービス</a></li>
                                                     <li><a class="barLink" href="/azure/service-fabric/">Service Fabric を使ったマイクロサービス</a></li>
                                                 </ul>
                                             </div>
@@ -294,22 +300,22 @@ Azure DevOps Projects </a>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/tour-azure-portal/">
                                                             <img src="https://docs.microsoft.com/learn/achievements/tour-azure-services-and-features.svg" alt="">
-Azure のサービスと機能のツアー</a>
+Azure のサービスと機能のツアー </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/principles-cloud-computing/">
                                                             <img src="https://docs.microsoft.com/learn/achievements/principles-cloud-computing.svg" alt="">
-クラウド コンピューティングの原則</a>
+クラウド コンピューティングの原則 </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/control-azure-services-with-cli/">
                                                             <img src="https://docs.microsoft.com/learn/achievements/control-azure-services-with-cli.svg" alt="">
-CLI を使用した Azure サービスの制御</a>
+CLI を使用した Azure サービスの制御 </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/modules/automate-azure-tasks-with-powershell/">
                                                             <img src="https://docs.microsoft.com/learn/achievements/automate-azure-tasks-with-powershell.svg" alt="">
-PowerShell でスクリプトを使用した Azure タスクの自動化</a>
+PowerShell でスクリプトを使用した Azure タスクの自動化 </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/learn/browse/?products=azure">対話型学習の詳細...</a>
@@ -333,10 +339,10 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                 </ul>
             </li>
             <li>
-                <a href="#products">製品</a>
+                <a href="#products">成果物</a>
                 <ul id="products">
                     <li>
-                        <a href="#all">すべて</a>
+                        <a href="#all">All</a>
                         <ul id="all" class="directory">
                             <li>
                                 <div class="group">
@@ -1617,6 +1623,12 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                             <a href="/azure/sentinel/">
                                                 <img src="media/index/sentinel.png" alt="" />
                                                 <p>Azure Sentinel</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/asc-for-iot/">
+                                                <img src="media/index/asc-for-iot.svg" alt="" />
+                                                <p>Azure Security Center for IoT</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -3265,7 +3277,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#analytics">分析</a>
+                        <a href="#analytics">Analytics</a>
                         <ul id="analytics" class="cardsA">
                             <li>
                                 <a href="/azure/sql-data-warehouse/">
@@ -4843,6 +4855,25 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure/asc-for-iot/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/asc-for-iot.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Security Center for IoT</h3>
+                                                    <p>セキュリティ管理を統合し、高度な脅威保護を IoT ソリューション全体で有効化する方法を学習</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -6070,7 +6101,7 @@ Azure REST API </h3>
                                                 <h3>
 Azure CLI </h3>
                                                 <p>
-                                                    <a href="/cli/azure">作業開始</a>
+                                                    <a href="/cli/azure">作業の開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="/cli/azure/reference-index">リファレンス</a>
@@ -6092,7 +6123,7 @@ Azure CLI </h3>
                                             <div class="cardText">
                                                 <h3>Azure PowerShell</h3>
                                                 <p>
-                                                    <a href="/powershell/azure/get-started-azureps">作業開始</a>
+                                                    <a href="/powershell/azure/get-started-azureps">作業の開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="/powershell/azure/overview">リファレンス</a>
@@ -6280,10 +6311,10 @@ Azure Resource Manager </h3>
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://storageexplorer.com">Storage Explorer</a>
+                                                    <a href="https://storageexplorer.com">ストレージ エクスプローラー</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">作業開始</a>
+                                                    <a href="/azure/vs-azure-tools-storage-manage-with-storage-explorer">作業の開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=722418">Linux 用のダウンロード</a>
@@ -6321,7 +6352,7 @@ Service Fabric SDK および Tools </h3>
                                                     <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac">Mac OS X のダウンロード</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-cli">Service Fabric CLI のダウンロード</a>
+                                                    <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-cli">Service Fabric CLI のダウンロード </a>
                                                 </p>
                                             </div>
                                         </div>

@@ -3,7 +3,7 @@ title: マネージド ID VM 拡張機能の使用を止めて Azure Instance Me
 description: VM 拡張機能の使用を止めて、認証用の Azure Instance Metadata Service (IMDS) の使用を開始する手順を順を追って説明します。
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
-ms.author: priyamo
-ms.openlocfilehash: c29eb22f2606fc44cfd7d948f2c363cb51c811dd
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.author: markvi
+ms.openlocfilehash: 5b3c6c99b05320ee53c3ff49f5c299650c32e939
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58229343"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498334"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>仮想マシンのマネージド ID 拡張機能の使用を止めて Azure Instance Metadata Service の使用を開始する方法
 
@@ -196,7 +196,7 @@ Azure リソース仮想マシン拡張機能のマネージド ID (2019 年 1 �
 
 ## <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-[Azure Instance Metadata Service (IMDS)](https://docs.microsoft.com/azure/virtual-machines/instance-metadata-service) は、実行中の仮想マシン インスタンスに関する情報を提供します。これらの情報を使用して仮想マシンの管理と構成を行うことができる REST エンドポイントです。 このエンドポイントは、仮想マシンからのみアクセスすることができる、よく知られているルーティング不可能な IP アドレス (`169.254.169.254`) で使用できます。
+[Azure Instance Metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) は、実行中の仮想マシン インスタンスに関する情報を提供します。これらの情報を使用して仮想マシンの管理と構成を行うことができる REST エンドポイントです。 このエンドポイントは、仮想マシンからのみアクセスすることができる、よく知られているルーティング不可能な IP アドレス (`169.254.169.254`) で使用できます。
 
 Azure IMDS を使用トークンを要求することには、いくつかの利点があります。 
 

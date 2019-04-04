@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4b212ae884b184ffc60cdc0b3a2181a59efa3904
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fedfd7f83a35398586734fa647751e537b850bf8
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760870"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481198"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>サービスとしての検証のトラブルシューティング
 
@@ -60,7 +60,7 @@ ms.locfileid: "57760870"
 
 3. 管理者特権のプロンプトから Windows PowerShell を開きます。 次のコマンドを実行します。
 
-```PowerShell  
+```powershell  
     .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'Server2016DatacenterFullBYOL.vhd' /NC:12 /V:azcopylog.log /Y
     .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'Server2016DatacenterCoreBYOL.vhd' /NC:12 /V:azcopylog.log /Y
     .\azcopy.exe /Source:'https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container' /Dest:'<LocalFileShare>' /Pattern:'WindowsServer2012R2DatacenterBYOL.vhd' /NC:12 /V:azcopylog.log /Y
@@ -105,7 +105,7 @@ ms.locfileid: "57760870"
     | プラン | WindowsServer |
     | [OS Type]\(OS の種類\) |  Windows |
     | SKU | 2012-R2-Datacenter |
-    | Version | 1.0.0 |
+    | バージョン | 1.0.0 |
     | OS ディスク BLOB URI | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
 
 1. **[作成]** ボタンを選択します。
@@ -113,7 +113,7 @@ ms.locfileid: "57760870"
 
 全 5 つの VM イメージのプロパティは次のとおりです。
 
-| Publisher  | プラン  | [OS Type]\(OS の種類\) | SKU | Version | OS ディスク BLOB URI |
+| Publisher  | プラン  | [OS Type]\(OS の種類\) | SKU | バージョン | OS ディスク BLOB URI |
 |---------|---------|---------|---------|---------|---------|
 | MicrosoftWindowsServer| WindowsServer |  Windows | 2012-R2-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/WindowsServer2012R2DatacenterBYOL.vhd |
 | MicrosoftWindowsServer | WindowsServer |  Windows | 2016-Datacenter | 1.0.0 | https://azurestacktemplate.blob.core.windows.net/azurestacktemplate-public-container/Server2016DatacenterFullBYOL.vhd |

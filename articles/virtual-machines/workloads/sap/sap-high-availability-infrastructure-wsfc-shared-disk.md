@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 130dca5efdf39936fdf2a4dc4409f8b29d15bbcd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: b729327187a52f36d50f8a754f5521527bb07ac6
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487687"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848285"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -236,14 +236,14 @@ _**図 1:** SAP 高可用性 Azure Resource Manager パラメーターを設定�
 3. すべての Azure ネットワーク サブネットの一覧を取得するには、次の PowerShell コマンドを実行します。
 
    ```powershell
-   (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
+   (Get-AzVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
    **[ID]** フィールドにサブネット ID の値が表示されます。
 4. すべてのサブネット ID 値の一覧を取得するには、次の PowerShell コマンドを実行します。
 
    ```powershell
-   (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
+   (Get-AzVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
    ```
 
    サブネット ID は次のようになります。
@@ -525,7 +525,7 @@ SAP ASCS または SCS インスタンスに別の番号を使う場合は、そ
 1. Azure Portal で、**\<[\>** SID > -lb-ascs ロード バランサー]**[負荷分散規則]** の順に選びます。
 2. SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
-   * Name
+   * 名前
    * ポート
    * バックエンド ポート
 

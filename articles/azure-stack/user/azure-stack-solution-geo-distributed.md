@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 3df5bd177dfd88e74a8dbc72dd1966a18a61d0f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2c2b0d022c81dffe5e98932c22b9707eb10b7e63
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860586"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481724"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack を使用して地理的に分散されたアプリ ソリューションを作成する
 
@@ -123,7 +123,7 @@ Azure サブスクリプションと Azure Stack のインストールが必要�
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>両方のクラウドで Web アプリ デプロイを作成する
 
-1.  **WebApplication.csproj** ファイルを編集します。**Runtimeidentifier** を選択し、**win10 x64** を追加します。 (「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください)。
+1.  **WebApplication.csproj** ファイルを編集します。Runtimeidentifier を選択し、**win10 x64** を追加します。 (「[自己完結型デプロイ](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)」に関するドキュメントを参照してください)。
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
 
@@ -472,7 +472,7 @@ App Service で証明書を使用するには、証明書が次のすべての�
 
 秘密キー ファイルは OpenSSL 経由で作成されます。 証明書を PFX にエクスポートするには、*<private-key-file>* と *<merged-certificate-file>* のプレースホルダーを秘密キーのパスと結合した証明書ファイルに置き換えて次のコマンドを実行します。
 
-```PowerShell
+```powershell
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
 ```
 
