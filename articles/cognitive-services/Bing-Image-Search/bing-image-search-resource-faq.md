@@ -63,6 +63,6 @@ This approach also protects your API key from exposure to the public, since only
 
 Is your question about a missing feature or functionality? Consider requesting or voting for it on our [User Voice web site](https://cognitive.uservoice.com/forums/555907-bing-search).
 
-## <a name="see-also"></a>See also
+## <a name="see-also"></a>関連項目
 
  [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)
