@@ -149,7 +149,7 @@ def run(raw_data):
 
 #### <a name="working-with-binary-data"></a>バイナリ データの使用
 
-モデルが__バイナリ データ__を受け入れる場合は、`AMLRequest`、`AMLResponse`、および `rawhttp` を使用します。 バイナリ データを受け入れ、POST 要求に対して反転したバイトを返すスクリプトの例を次に示します。 GET 要求に対しては、応答本文で完全な URL を返します。
+モデルが __バイナリ データ__ を受け入れる場合は、`AMLRequest`、`AMLResponse`、および `rawhttp` を使用します。 バイナリ データを受け入れ、POST 要求に対して反転したバイトを返すスクリプトの例を次に示します。 GET 要求に対しては、応答本文で完全な URL を返します。
 
 ```python
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -433,7 +433,7 @@ sudo chmod +x deploymodel
 sudo ./deploymodel <ContainerRegistryName> <username> <password> <imageLocationURL> <DeploymentID> <IoTHubname> <DeviceID>
 ```
 
-または、「[Azure portal から Azure IoT Edge モジュールをデプロイする](../../iot-edge/how-to-deploy-modules-portal.md)」のドキュメントの手順に従って、イメージをお客様のデバイスにデプロイできます。 デバイスの__レジストリ設定__を構成するときは、お客様のワークスペースにあるコンテナー レジストリの__ログイン サーバー__、__ユーザー名__、__パスワード__を使用します。
+または、「[Azure portal から Azure IoT Edge モジュールをデプロイする](../../iot-edge/how-to-deploy-modules-portal.md)」のドキュメントの手順に従って、イメージをお客様のデバイスにデプロイできます。 デバイスの __レジストリ設定__ を構成するときは、お客様のワークスペースにあるコンテナー レジストリの __ログイン サーバー__、__ユーザー名__、__パスワード__ を使用します。
 
 > [!NOTE]
 > Azure IoT を使い慣れていない場合は、サービスの概要について次のドキュメントで確認してください。
@@ -497,7 +497,7 @@ print(service.state)
 
 * __デプロイ中にエラーが発生した場合は__、`service.get_logs()` を使用してサービス ログを表示します。 ログに記録された情報に、エラーの原因が示されている可能性があります。
 
-* ログには、__ログ レベルを DEBUG に設定__するよう指示するエラーが含まれる場合があります。 ログ レベルを設定するには、スコアリング スクリプトに次の行を追加し、イメージを作成し、その後そのイメージを使用してサービスを作成します。
+* ログには、__ログ レベルを DEBUG に設定__ するよう指示するエラーが含まれる場合があります。 ログ レベルを設定するには、スコアリング スクリプトに次の行を追加し、イメージを作成し、その後そのイメージを使用してサービスを作成します。
 
     ```python
     import logging
