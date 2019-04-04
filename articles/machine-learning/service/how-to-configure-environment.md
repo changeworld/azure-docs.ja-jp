@@ -267,21 +267,17 @@ Databricks クラスターを準備し、サンプルのノートブックを取
     クラスターが作成されるまで数分かかります。 クラスターが実行中になるまで待機してから、次に進んでください。
 
 1. Azure Machine Learning SDK パッケージをインストールしてクラスターにアタッチします。  
-
     * 以下の設定のいずれかを使用して[ライブラリを作成します](https://docs.databricks.com/user-guide/libraries.html#create-a-library) (_これらのオプションの 1 つだけを選択します_)。
-    
         * 自動化された機械学習の機能を_含めずに_ Azure Machine Learning SDK をインストールする場合:
             | Setting | 値 |
             |----|---|
             |ソース | Python Egg または PyPI のアップロード
             |PyPi 名 | azureml-sdk[databricks]
-    
         * 自動化された機械学習を_含めて_ Azure Machine Learning SDK をインストールする場合:
             | Setting | 値 |
             |----|---|
             |ソース | Python Egg または PyPI のアップロード
             |PyPi 名 | azureml-sdk[automl_databricks]
-    
     * **すべてのクラスターに自動的にアタッチする** は選択しないでください
 
     * クラスター名の横にある **アタッチ** を選択します
