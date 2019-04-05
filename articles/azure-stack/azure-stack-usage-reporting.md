@@ -26,12 +26,12 @@ ms.locfileid: "55252168"
 
 使用状況データ (使用量データとも呼ばれる) は、使用されたリソースの量を表します。
 
-従量制の課金モデルを採用する Azure Stack マルチモード システムは、課金のために使用状況データを Azure に報告する必要があります。 Azure Stack オペレーターは、使用状況データを Azure に報告するように Azure Stack インスタンスを構成する必要があります。
+従量制の課金モデルを採用する Azure Stack マルチノード システムは、課金のために使用状況データを Azure に報告する必要があります。 Azure Stack オペレーターは、使用状況データを Azure に報告するように Azure Stack インスタンスを構成する必要があります。
 
 > [!IMPORTANT]
 > すべてのワークロードは、Azure Stack のライセンス条項に従って、[テナント サブスクリプションでデプロイする必要があります](#are-users-charged-for-the-infrastructure-vms)。
 
-使用状況データの報告は、従量課金モデルのライセンスを持つ Azure Stack マルチモード システムのユーザーにとっては必須事項です。 一方、容量モデルのライセンスを持つユーザーはこの報告を省略できます ([購入方法](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)に関するページを参照してください)。 Azure Stack Development Kit ユーザーの場合は、Azure Stack オペレーターが使用状況データを報告し、機能をテストできます。 ただし、ユーザーの使用に対して課金されることはありません。
+使用状況データの報告は、従量課金モデルのライセンスを持つ Azure Stack マルチノード システムのユーザーにとっては必須事項です。 一方、容量モデルのライセンスを持つユーザーはこの報告を省略できます ([購入方法](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)に関するページを参照してください)。 Azure Stack Development Kit ユーザーの場合は、Azure Stack オペレーターが使用状況データを報告し、機能をテストできます。 ただし、ユーザーの使用に対して課金されることはありません。
 
 ![課金のフロー](media/azure-stack-usage-reporting/billing-flow.png)
 
