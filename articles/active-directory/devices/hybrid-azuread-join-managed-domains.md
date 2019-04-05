@@ -69,7 +69,7 @@ Azure AD Connect が、Azure AD に参加するハイブリッド Azure AD に�
 - https://enterpriseregistration.windows.net
 - https://login.microsoftonline.com
 - https://device.login.microsoftonline.com
-- https://autologon.microsoftazuread-sso.com (シームレス SSO を使用している場合、または使用する予定の場合)
+- [https://autologon.microsoftazuread-sso.com](https://autologon.microsoftazuread-sso.com) (シームレス SSO を使用している場合、または使用する予定の場合)
 
 Windows 10 1709 以降では、組織が送信プロキシ経由でインターネットにアクセスする必要がある場合に、[グループ ポリシー オブジェクト (GPO) を使用してコンピューターのプロキシ設定を構成できます](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。 お使いのコンピューターで Windows 10 1709 より古いバージョンが実行されている場合は、Web Proxy Auto-Discovery (WPAD) を実装して、Windows 10 コンピューターが Azure AD にデバイスを登録できるようにする必要があります。 
 
