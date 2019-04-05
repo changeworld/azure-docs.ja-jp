@@ -12,17 +12,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/29/2018
+ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 0ae4c883baa156276646755273547a17d23edc55
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f768582e8ef32bc654a2f797c5c7a481a26fb643
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982490"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734185"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Windows 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Windows ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどの OS およびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
+
+この記事は、2019 年 2 月 21 日に [Az PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-az-ps) バージョン 1.3.0 と [Packer](https://www.packer.io/docs/install/index.html) バージョン 1.3.4 を使用して最後にテストされました。
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
@@ -31,8 +33,8 @@ Azure の各仮想マシン (VM) は、Windows ディストリビューション
 
 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-```powershell
-$rgName = "myResourceGroup"
+```azurepowershell
+$rgName = "mypackerGroup"
 $location = "East US"
 New-AzResourceGroup -Name $rgName -Location $location
 ```
@@ -40,24 +42,28 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Azure 資格情報の作成
 Packer はサービス プリンシパルを使用して Azure で認証されます。 Azure のサービス プリンシパルは、アプリケーション、サービス、および Packer などのオートメーション ツールで使用できるセキュリティ ID です。 Azure でサービス プリンシパルが実行できる操作を設定するアクセス許可の制御と定義を行います。
 
-[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) を使用してサービス プリンシパルを作成し、そのサービス プリンシパルにアクセス許可を割り当て、[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) を使用してリソースを作成および管理します。 例の *&lt;password&gt;* は、自分のパスワードに置き換えてください。  
+[New-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) を使用してサービス プリンシパルを作成し、そのサービス プリンシパルにアクセス許可を割り当て、[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) を使用してリソースを作成および管理します。 `-DisplayName` の値は一意である必要があります。必要に応じて独自の値に置き換えてください。  
 
-```powershell
-$sp = New-AzADServicePrincipal -DisplayName "AzurePacker" `
-    -Password (ConvertTo-SecureString "<password>" -AsPlainText -Force)
-Sleep 20
+```azurepowershell
+$sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
+$BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret)
+$plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
 New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
+
+その後、パスワードとアプリケーション ID を出力します。
+
+```powershell
+$plainPassword
+$sp.ApplicationId
+```
+
 
 Azure に対して認証するには、[Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) を使用して Azure のテナントとサブスクリプション ID も取得する必要があります。
 
 ```powershell
-$sub = Get-AzSubscription
-$sub.TenantId[0]
-$sub.SubscriptionId[0]
+Get-AzSubscription
 ```
-
-次の手順でこれら 2 つの ID を使用します。
 
 
 ## <a name="define-packer-template"></a>Packer テンプレートを定義する
@@ -68,7 +74,7 @@ $sub.SubscriptionId[0]
 | パラメーター                           | 入手場所 |
 |-------------------------------------|----------------------------------------------------|
 | *client_id*                         | `$sp.applicationId` でサービス プリンシパル ID を表示します |
-| *client_secret*                     | `$securePassword` で指定したパスワード |
+| *client_secret*                     | `$plainPassword` を使用して自動生成されたパスワードを表示します |
 | *tenant_id*                         | `$sub.TenantId` コマンドからの出力 |
 | *subscription_id*                   | `$sub.SubscriptionId` コマンドからの出力 |
 | *managed_image_resource_group_name* | 最初の手順で作成したリソース グループの名前 |
@@ -79,12 +85,12 @@ $sub.SubscriptionId[0]
   "builders": [{
     "type": "azure-arm",
 
-    "client_id": "0831b578-8ab6-40b9-a581-9a880a94aab1",
-    "client_secret": "P@ssw0rd!",
-    "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "subscription_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "client_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "client_secret": "ppppppp-pppp-pppp-pppp-ppppppppppp",
+    "tenant_id": "zzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz",
+    "subscription_id": "yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy",
 
-    "managed_image_resource_group_name": "myResourceGroup",
+    "managed_image_resource_group_name": "myPackerGroup",
     "managed_image_name": "myPackerImage",
 
     "os_type": "Windows",
@@ -123,9 +129,9 @@ $sub.SubscriptionId[0]
 ## <a name="build-packer-image"></a>Packer イメージをビルドする
 まだローカル コンピューターに Packer がインストールされていない場合は、[手順に従って Packer をインストールしてください](https://www.packer.io/docs/install/index.html)。
 
-次のように Packer テンプレート ファイルを指定してイメージをビルドします。
+コマンド プロンプトを開き、次のように Packer テンプレート ファイルを指定して、イメージをビルドします。
 
-```bash
+```
 ./packer build windows.json
 ```
 

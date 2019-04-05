@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: fd301967800f67d95c12f1689981b2dfd8eb2d80
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: cce38eb12d803c0640d9ee774dbc6c98ab5db219
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452765"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243773"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのストレージ オプション
 
@@ -121,6 +121,8 @@ spec:
 
 ## <a name="next-steps"></a>次の手順
 
+関連するベスト プラクティスについては、[AKS のストレージとバックアップに関するベスト プラクティス][operator-best-practices-storage]に関する記事を参照してください。
+
 Azure ディスクまたは Azure Files を使用する動的または静的ボリュームの作成方法については、次の操作方法の記事をご覧ください。
 
 - [Azure ディスクを使用した静的ボリュームの作成][aks-static-disks]
@@ -148,3 +150,4 @@ Kubernetes と AKS の中心概念に関する追加情報については、次�
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-network]: concepts-network.md
+[operator-best-practices-storage]: operator-best-practices-storage.md

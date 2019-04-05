@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec0842daa9ca8e0f64d0ca7d2610b6116c2bd5b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 19b312f284d557c2c1344b82b9fcd570d3392077
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202827"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433741"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>ハイブリッド ID ライフサイクルの導入戦略の決定
 このタスクでは、「 [ハイブリッド ID 管理タスクの決定](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)」で定義したビジネス要件を満たすために、ハイブリッド ID ソリューションの ID 管理戦略を定義します。

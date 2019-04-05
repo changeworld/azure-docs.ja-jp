@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a898b5b235099109fcfeaaa4d647493e54caf57e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237873"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853173"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Azure AD ギャラリーのアプリケーションの追加に関する問題
 
@@ -38,7 +38,7 @@ ms.locfileid: "56237873"
 
 エラーが発生すると、**[追加]** ボタンをクリックしたときに **[エラー]** 状態に **[通知]** と表示されます。 エラーに関する詳細を確認したり、サポート エンジニアと共有したりする場合は、「[ポータルの通知の詳細を確認する方法](#how-to-see-the-details-of-a-portal-notification)」セクションの手順に従って、エラーに関する詳細を確認できます。
 
- ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>アプリケーションを追加した後に設定する方法がわからない
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>アプリケーションを追加した後に設定する方法がわからない
 
 アプリケーションについて学習する必要がある場合、 「[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)」という記事をお勧めします。
 
@@ -73,41 +73,41 @@ ms.locfileid: "56237873"
 
 ### <a name="essential-notification-items"></a>重要な通知項目
 
--   **タイトル** – 通知のわかりやすいタイトル
+- **タイトル** – 通知のわかりやすいタイトル
 
   * 例 – **アプリケーション プロキシの設定**
 
--   **説明** – 操作の結果として発生した内容についての説明
+- **説明** – 操作の結果として発生した内容についての説明
 
-    -   例 – **入力された内部 URL は、既に別のアプリケーションで使用されています**
+  -   例 – **入力された内部 URL は、既に別のアプリケーションで使用されています**
 
--   **通知 ID** – 通知の一意の ID
+- **通知 ID** – 通知の一意の ID
 
-    -   例 – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  -   例 – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **クライアント要求 ID** – ブラウザーで作成された特定の要求 ID
+- **クライアント要求 ID** – ブラウザーで作成された特定の要求 ID
 
-    -   例 – **302fd775-3329-4670-a9f3-bea37004f0bc**
+  -   例 – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **タイム スタンプ UTC** – 通知発生時のタイムスタンプ (UTC)
+- **タイム スタンプ UTC** – 通知発生時のタイムスタンプ (UTC)
 
-    -   例 – **2017-03-23T19:50:43.7583681Z**
+  -   例 – **2017-03-23T19:50:43.7583681Z**
 
--   **内部トランザクション ID** – システムでエラーを検索するために使用できる内部 ID
+- **内部トランザクション ID** – システムでエラーを検索するために使用できる内部 ID
 
-    -   例 – **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  -   例 – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **UPN** – 操作を実行したユーザー
+- **UPN** – 操作を実行したユーザー
 
-    -   例 – **tperkins@f128.info**
+  -   例 - **tperkins\@f128.info**
 
--   **テナント ID** – 操作を実行したユーザーがメンバーであったテナントの一意の ID
+- **テナント ID** – 操作を実行したユーザーがメンバーであったテナントの一意の ID
 
-    -   例 – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  -   例 – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **ユーザー オブジェクト ID** – 操作を実行したユーザーの一意の ID
+- **ユーザー オブジェクト ID** – 操作を実行したユーザーの一意の ID
 
-    -   例 – **17f84be4-51f8-483a-b533-383791227a99**
+  -   例 – **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>詳細な通知項目
 
@@ -125,7 +125,7 @@ ms.locfileid: "56237873"
 
 -   **詳細** – 操作の結果として発生した内容についての詳細な説明
 
-    -   例 - **内部 URL "https://bing.com/" は既に使用中のため無効です**
+    -   例 - **内部 URL `https://bing.com/` は既に使用中のため無効です**
 
 -   **エラーのコピー** – **[エラーのコピー]** ボックスの右にある**コピー アイコン**をクリックしてすべての通知の詳細をコピーし、サポートまたは製品グループと共有します 
 -   エンジニア

@@ -8,21 +8,19 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a1f5a698ee76ebd0561bd19ff1a23d0f04be0771
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: c55783e9b209a1280a21edca34b75e72481f4cb6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410117"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806999"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper コグニティブ スキル
 
-**Shaper** スキルは、複合フィールド (マルチパート フィールドとも呼ばれます) をサポートする複合型を作成します。 複合型のフィールドには複数の部分がありますが、Azure Search インデックスでは 1 つの項目として扱われます。 統合されたフィールドが検索のシナリオで役立つ例として、姓と名を組み合わせて 1 つのフィールドにすること、市と県を 1 つのフィールドにすること、名前と誕生日を 1 つのフィールドにして一意の ID を確立することが挙げられます。
-
-**Shaper** スキルでは、基本的に、構造を作成し、その構造のメンバーの名前を定義して、各メンバーに値を割り当てることができます。
+**Shaper** スキルは、複数の入力を、エンリッチメント パイプラインの後の部分で参照できる複合型に統合します。 **Shaper** スキルでは、基本的に、構造を作成し、その構造のメンバーの名前を定義して、各メンバーに値を割り当てることができます。 統合されたフィールドが検索のシナリオで役立つ例として、姓と名を組み合わせて 1 つの構造体にする、市と県を組み合わせて 1 つの構造体にする、名前と誕生日を組み合わせて 1 つの構造体にする、などの操作を行って一意の ID を確立することが挙げられます。
 
 既定では、この方法でサポートされるオブジェクトは深さが 1 レベルのものです。 より複雑なオブジェクトについては、いくつかの **Shaper** ステップを連鎖させることができます。
 
@@ -58,7 +56,7 @@ Microsoft.Skills.Util.ShaperSkill
   "outputs": [
     {
       "name": "output",
-      "targetName": analyzedText"
+      "targetName": "analyzedText"
     }
   ]
 }
@@ -125,8 +123,8 @@ Microsoft.Skills.Util.ShaperSkill
     ],
     "outputs": [
         {
-            "output": "titlesAndChapters",
-            "targetName": "analyzedText"
+            "name": "output",
+            "targetName": "titlesAndChapters"
         }
     ]
 }

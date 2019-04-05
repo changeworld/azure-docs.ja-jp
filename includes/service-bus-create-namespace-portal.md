@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d976a1c5e9366069b82cff718593ce72d7ad8a08
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588944"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457789"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Azure Portal での名前空間の作成
 Azure の Service Bus メッセージング エンティティを使用するには、Azure 全体で一意となる名前を備えた名前空間を最初に作成しておく必要があります。 名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
@@ -25,7 +25,7 @@ Azure の Service Bus メッセージング エンティティを使用するに
 
     ![[リソースの作成] -> [統合] -> [Service Bus]](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
 3. **[名前空間の作成]** ダイアログで、次の手順を実行します。 
-    1. **名前空間の名前**を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
+    1. **名前空間の名前**を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。 名前空間の名前付け規則の一覧については、[名前空間の作成の REST API](/rest/api/servicebus/create-namespace) に関する記事を参照してください。
     2. 名前空間の価格レベル (Basic、Standard、Premium) を選択します。 [トピックとサブスクリプション](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)を使用する場合は、Standard または Premium を選択してください。 Basic 価格レベルでは、トピック/サブスクリプションはサポートされていません。
     3. **Premium** 価格レベルを選択した場合は、次の手順を実行します。 
         1. **メッセージング ユニット**の数を指定します。 Premium レベルでは、各ワークロードが分離した状態で実行されるように、CPU とメモリのレベルでリソースが分離されます。 このリソースのコンテナーをメッセージング ユニットと呼びます。 Premium 名前空間には、少なくとも 1 つのメッセージング ユニットがあります。 Service Bus の Premium 名前空間ごとに、1 個、2 個、または 4 個のメッセージング ユニットを選択できます。 詳細については、[Service Bus の Premium メッセージング](../articles/service-bus-messaging/service-bus-premium-messaging.md)に関するページをご覧ください。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: kfollis
-ms.openlocfilehash: 4a2dee4ad90fb269268ec7d3e86def58f2444e3a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 693e973fb988a57c15b4ea2fae47f16b4ff39011
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884730"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818580"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure Portal でのダッシュボードの作成と共有
 ダッシュボードを複数作成し、ご自分の Azure サブスクリプションにアクセスできる他のユーザーと共有することができます。  この記事では、ダッシュボードの作成、編集、発行のほか、ダッシュボードへのアクセスの管理に関する基本について説明します。
@@ -93,6 +93,6 @@ Azure サブスクリプションがあり、チームのメンバーに、サ�
 ![manage access control](./media/azure-portal-dashboards/manage-access.png)
 
 ## <a name="next-steps"></a>次の手順
-* リソースの管理については、「 [ポータルを使用した Azure リソースの管理](../azure-resource-manager/resource-group-portal.md)」を参照してください。
+* リソースを管理するには、「[Manage Azure resources by using the Azure portal (Azure portal を使用した Azure リソースの管理)](../azure-resource-manager/manage-resources-portal.md)」を参照してください。
 * リソースのデプロイについては、「 [Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-portal.md)」を参照してください。
 

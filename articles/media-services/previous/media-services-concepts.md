@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 413e005762ab557e0605f9b4e79a6fe5b45448b7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 79de09631b33f838c1a2f12fdc58b2648548004b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993913"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998431"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念 
 
@@ -177,7 +177,7 @@ Standard ストリーミング エンドポイントはほとんどのストリ�
 StreamingEndpoint が実行状態の場合のみ課金されます。
 
 ### <a name="asset-delivery-policy"></a>資産の配信ポリシー
-Media Services におけるコンテンツ配信ワークフローの手順の 1 つは、ストリームする [資産の配信ポリシー ](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)を構成することです。 資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、Smooth Streaming、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
+Media Services におけるコンテンツ配信ワークフローの手順の 1 つは、ストリーム配信する[アセットの配信ポリシー](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)を構成することです。 資産の配信ポリシーは、資産を配信する方法、つまりどのストリーミング プロトコルで資産を動的パッケージングするか (例 : MPEG DASH、HLS、スムーズ ストリーミング、またはすべて)、資産を動的に暗号化するかどうか、どの暗号化方法を使用するか (エンベロープ暗号化または共通暗号化) を Media Services に示します。
 
 ストレージで暗号化した資産をストリーミングするには、ストリーミング サーバーでストレージ暗号化を解除し、指定された配信ポリシーを使用してコンテンツをストリーミングする必要があります。 たとえば、AES (Advanced Encryption Standard) 暗号化キーを使用して暗号化された資産を配信するには、ポリシーの種類を DynamicEnvelopeEncryption に設定します。 ストレージ暗号化を解除して資産を平文でストリームするには、ポリシーの種類を NoDynamicEncryption に設定します。
 

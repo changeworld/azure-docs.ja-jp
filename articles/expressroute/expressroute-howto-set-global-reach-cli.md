@@ -2,28 +2,23 @@
 title: 'ExpressRoute Global Reach を構成する: Azure CLI | Microsoft Docs'
 description: この記事では、ExpressRoute 回線を相互にリンクして、オンプレミス ネットワーク間にプライベート ネットワークを構築し、Global Reach を有効にする方法について説明します。
 services: expressroute
-author: cherylmc
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/12/2018
-ms.author: cherylmc
+ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: be10489d731b9e01d148ce1ac7892cb6de956662
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 28df8f59944ccac9d731e15a558d864beed2f3ae
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659322"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817696"
 ---
-# <a name="configure-expressroute-global-reach-by-using-the-azure-cli-preview"></a>Azure CLI を使用して ExpressRoute Global Reach を構成する (プレビュー)
+# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Azure CLI を使用して ExpressRoute Global Reach を構成する
 
 この記事は、Azure CLI を使用して Azure ExpressRoute Global Reach を構成するのに役立ちます。 詳細については、[ExpressRoute Global Reach](expressroute-global-reach.md) に関するページを参照してください。
  
-## <a name="before-you-begin"></a>開始する前に
-
-> [!IMPORTANT]
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
-
 構成を開始する前に、次の要件を完了します。
 
 * 最新バージョンの Azure CLI をインストールします。 [Azure CLI のインストール](/cli/azure/install-azure-cli)と [Azure CLI の使用開始](/cli/azure/get-started-with-azure-cli)に関する各ページを参照してください。

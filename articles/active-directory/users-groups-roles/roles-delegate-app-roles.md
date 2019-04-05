@@ -8,19 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.component: users-groups-roles
+ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 316ebb7774a0420087bf9ed5c099a91d78a96fb0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181220"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119741"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>Azure Active Directory でアプリ管理者ロールを委任する
 
@@ -37,8 +37,8 @@ Azure portal でアプリケーションのアクセスを管理する権限を�
 1. テナントのグローバル管理者ロールに適したアカウントを使用して、[Azure AD テナント](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
 2. 十分なアクセス許可がある場合は、[ロールと管理者のページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators)を開きします。
 3. 次のロールのいずれかを開いて、そのメンバー割り当てを表示します。
-  * **アプリケーション管理者**
-  * **クラウド アプリケーション管理者**
+   * **アプリケーション管理者**
+   * **クラウド アプリケーション管理者**
 4. ロールの **[メンバー]** ページで、**[メンバーの追加]** を選択します。
 5. ロールに追加する 1 人以上のメンバーを選択します。 <!--Members can be users or groups.-->
 
@@ -50,15 +50,15 @@ Azure portal でアプリケーションのアクセスを管理する権限を�
 
 1. テナントのグローバル管理者ロールに適したアカウントを使用して、[Azure AD テナント](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。
 2. 十分なアクセス許可を取得したら、次の一方または両方を設定します。
-  * [テナントの [ユーザー設定] ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)で、**[ユーザーはアプリケーションを登録できる]** を [いいえ] に設定します。
-  * [エンタープライズ アプリケーションのユーザー設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)で、**[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** を [いいえ] に設定します。
+   * [テナントの [ユーザー設定] ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)で、**[ユーザーはアプリケーションを登録できる]** を [いいえ] に設定します。
+   * [エンタープライズ アプリケーションのユーザー設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)で、**[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** を [いいえ] に設定します。
 3. 次に、必要に応じて、このアクセス許可を必要とするユーザーを、アプリケーション開発者ロールのメンバーとして割り当てます。
 
 ユーザーがアプリケーションを登録すると、そのユーザーはアプリケーションの最初の所有者として自動的に追加されます。
 
 ## <a name="delegate-app-ownership"></a>アプリの所有権を委任する
 
-アプリの所有者とアプリの登録所有者は、それぞれ、自分が所有するアプリの申請またはアプリの登録のみを管理できます。 たとえば、Salesforce アプリケーションに所有者を追加すると、その所有者は、Salesforce へのアクセスと Salesforce の構成を管理できますが、他のアプリケーションについては管理できません。 1 つのアプリが多くの所有者を持つことができ、1 人のユーザーが多くのアプリの所有者になることができます。
+アプリの所有者とアプリの登録所有者は、それぞれ、自分が所有するアプリケーションまたはアプリの登録のみを管理できます。 たとえば、Salesforce アプリケーションに所有者を追加すると、その所有者は、Salesforce へのアクセスと Salesforce の構成を管理できますが、他のアプリケーションについては管理できません。 1 つのアプリが多くの所有者を持つことができ、1 人のユーザーが多くのアプリの所有者になることができます。
 
 アプリケーションの所有者は、次のことを行うことができます。
 

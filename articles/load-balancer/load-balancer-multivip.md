@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3036bbc74b4ed8ee92e10f952252889c4c12f845
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bf5721e206316a4ce576253743e9ac65de47094a
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353942"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194046"
 ---
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>クラウド サービスの複数の VIP を構成する
 
@@ -172,7 +172,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -Virtual
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Load Balancer のログ分析](load-balancer-monitor-log.md)
+[Azure Load Balancer 用の Azure Monitor ログ](load-balancer-monitor-log.md)
 
 [インターネットに接続するロード バランサーの概要](load-balancer-internet-overview.md)
 

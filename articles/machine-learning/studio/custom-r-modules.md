@@ -5,17 +5,17 @@ description: このトピックでは、Azure Machine Learning Studio でカス�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 43691988e3f4f253c642702ad19272a5267c14cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0dec86eff9b9df70514be6f32f3aad60bfb311ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56457032"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120382"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio 用にカスタム R モジュールを定義する
 
@@ -288,7 +288,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * Categorical
     * String
     * Label
-    * Feature
+    * 機能
     * Score
     * All
   * **default** - 列の選択の有効な既定の選択内容は次のとおりです。 

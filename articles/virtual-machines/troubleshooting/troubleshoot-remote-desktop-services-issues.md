@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 3d747f3b8f54dfefe7e96c378eddbce320bcc8f7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 8dc3dcbe3a84a0c35c1e3fc6e367c63393bebb70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215118"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003143"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Azure VM でリモート デスクトップ サービスが起動しない
 
@@ -99,7 +99,8 @@ VM に接続しようとすると、次のシナリオが発生します。
 
     |  Error |  推奨事項 |
     |---|---|
-    |5 - ACCESS DENIED |[アクセス拒否エラーによる TermService サービスの停止](#termService-service-is-stopped-because-of-an-access-denied-problem)に関する記述を参照してください。 |   |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |「[TermService サービスが無効化されている](#termService-service-is-disabled)」を参照してください。  |  
+    |5 - ACCESS DENIED |[アクセス拒否エラーによる TermService サービスの停止](#termService-service-is-stopped-because-of-an-access-denied-problem)に関する記述を参照してください。 |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |「[TermService サービスが無効化されている](#termService-service-is-disabled)」を参照してください。  |  
     |1058 - ERROR_SERVICE_DISABLED  |「[TermService サービスがクラッシュまたはハングする](#termService-service-crashes-or-hangs)」を参照してください。  |
     |1059 - ERROR_CIRCULAR_DEPENDENCY |問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。|
     |1067 - ERROR_PROCESS_ABORTED  |「[TermService サービスがクラッシュまたはハングする](#termService-service-crashes-or-hangs)」を参照してください。  |
@@ -108,7 +109,7 @@ VM に接続しようとすると、次のシナリオが発生します。
     |1070 - ERROR_SERVICE_START_HANG   | 「[TermService サービスがクラッシュまたはハングする](#termService-service-crashes-or-hangs)」を参照してください。 |
     |1077 - ERROR_SERVICE_NEVER_STARTED   | 「[TermService サービスが無効化されている](#termService-service-is-disabled)」を参照してください。  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 |
-    |1753   |問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。   |   |5 - ACCESS DENIED |[アクセス拒否エラーによる TermService サービスの停止](#termService-service-is-stopped-because-of-an-access-denied-error)に関する記述を参照してください。 |
+    |1753   |問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>アクセス拒否の問題が原因で TermService サービスが停止する
 
@@ -205,7 +206,7 @@ VM に接続しようとすると、次のシナリオが発生します。
 
 1. [復旧 VM に OS ディスクを接続します](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 復旧 VM へのリモート デスクトップ接続を開始します。 接続したディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
-3.  管理者特権でのコマンド プロンプト インスタンス (**[管理者として実行]**) を開きます。 次に、以下のスクリプトを実行します。 接続された OS ディスクに割り当てられたドライブ文字が **F** であると仮定します。これを、ご利用の VM の適切な値に置き換えます。 
+3. 管理者特権でのコマンド プロンプト インスタンス (**[管理者として実行]**) を開きます。 次に、以下のスクリプトを実行します。 接続された OS ディスクに割り当てられたドライブ文字が **F** であると仮定します。これを、ご利用の VM の適切な値に置き換えます。 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv

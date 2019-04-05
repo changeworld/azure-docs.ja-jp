@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: 信頼度スコアは、回答が特定のユーザー クエリに最適である信頼度を示します。
 services: cognitive-services
 author: tulasim88
-manager: pchoudh
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 757ef07c1268cbf159ce98dfb8ba1980616e4a3a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: bf254d661f7819114d34631359aaecb97e9d0e0d
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245135"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403738"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。 
@@ -72,9 +72,9 @@ ms.locfileid: "56245135"
 
 
 ## <a name="no-match-found"></a>一致が見つからない
-ランク付けによって適切な一致が見つからない場合は、0.0 または "None" の信頼度スコアが返され、既定の応答は [No good match found in the KB]\(KB で適切な一致が見つかりませんでした\) になります。 ボットまたはエンドポイントを呼び出すアプリケーション コード内のこの既定の応答を上書きできます。 別の方法として、Azure に上書き応答を設定することもできます。この場合は、特定の QnA Maker サービスにデプロイされたすべてのナレッジ ベースの既定値が変更されます。
+ランク付けによって適切な一致が見つからない場合は、0.0 または "None" の信頼度スコアが返され、既定の応答は [No good match found in the KB]\(KB で適切な一致が見つかりませんでした\) になります。 エンドポイントを呼び出すボットまたはアプリケーションのコードで、この[既定の応答](#change-default-answer)を上書きできます。 別の方法として、Azure に上書き応答を設定することもできます。この場合は、特定の QnA Maker サービスにデプロイされたすべてのナレッジ ベースの既定値が変更されます。
 
-### <a name="change-default-answer"></a>既定の回答の変更
+## <a name="change-default-answer"></a>既定の回答の変更
 
 1. [Azure Portal](https://portal.azure.com) に移動し、作成した QnA Maker サービスを表すリソース グループに移動します。
 
@@ -94,5 +94,4 @@ ms.locfileid: "56245135"
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [サポートされるデータ ソース](./data-sources-supported.md)
-## <a name="see-also"></a>関連項目 
-[QnA Maker の概要](../Overview/overview.md)
+

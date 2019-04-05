@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 182a0232b5317b1a375a20bdd4c6467578dc775b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 18dfc6badf640afb418e661e6c464442fbb41945
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232744"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875171"
 ---
-# <a name="security-frame-session-management"></a>セキュリティ フレーム: セッション管理
+# <a name="security-frame-session-management"></a>セキュリティ フレーム:セッションの管理
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[Azure AD を使うときは、ADAL のメソッドを使って適切なログアウトを実装する](#logout-adal)</li></ul> |
@@ -270,7 +270,7 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET MVC と Web ページでの XSRF/CSRF の防止](http://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
+| **参照**              | [ASP.NET MVC と Web ページでの XSRF/CSRF の防止](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
 | **手順** | CSRF 対策フォームと ASP.NET MVC フォーム - ビューの `AntiForgeryToken` ヘルパー メソッドを使う、`Html.AntiForgeryToken()` をフォームに設定する、など。|
 
 ### <a name="example"></a>例
@@ -304,7 +304,7 @@ public ViewResult SubmitUpdate()
 * これらの cookie と `Request.Form` の値が一致する。すべてに問題がない場合、要求は通常どおり通過します。 問題がある場合は、"必要な偽造防止トークンが指定されていないか、または無効です" というメッセージで承認が失敗します。 
 
 ### <a name="example"></a>例
-CSRF 対策と AJAX: AJAX 要求は HTML フォーム データではなく JSON データを送信する場合があるため、フォーム トークンは AJAX 要求に対して問題である可能性があります。 1 つの解決策は、カスタム HTTP ヘッダーでトークンを送信することです。 次のコードでは、Razor 構文を使ってトークンを生成した後、AJAX 要求にトークンを追加しています。 
+CSRF 対策と AJAX:AJAX 要求は HTML フォーム データではなく JSON データを送信する場合があるため、フォーム トークンは AJAX 要求に対して問題である可能性があります。 1 つの解決策は、カスタム HTTP ヘッダーでトークンを送信することです。 次のコードでは、Razor 構文を使ってトークンを生成した後、AJAX 要求にトークンを追加しています。 
 ```csharp
 <script>
     @functions{
@@ -377,7 +377,7 @@ void Page_Init (object sender, EventArgs e) {
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | [HttpSessionState.Timeout プロパティ](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
-| **手順** | セッションのタイムアウトは、Web サーバーで定義されている期間中にユーザーが Web サイトでアクションを何も実行しないと発生するイベントを表します。 サーバー側では、イベントはユーザー セッションの状態を "無効" (たとえば、"もう使われない") に変更し、Web サーバーにそれを破棄する (そこに含まれるすべてのデータを削除する) ように指定します。 次のコード例では、Web.config ファイルでタイムアウト セッション属性を 15 分に設定しています。|
+| **手順** | セッションのタイムアウトは、Web サーバーで定義されている期間中にユーザーが Web サイト上でアクションを何も実行しないと発生するイベントを表します。 サーバー側では、イベントはユーザー セッションの状態を "無効" (たとえば、"もう使われない") に変更し、Web サーバーにそれを破棄する (そこに含まれるすべてのデータを削除する) ように指定します。 次のコード例では、Web.config ファイルでタイムアウト セッション属性を 15 分に設定しています。|
 
 ### <a name="example"></a>例
 ```XML 
@@ -467,8 +467,8 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | 該当なし  |
-| **参照**              | [ASP.NET Web API でクロスサイト リクエスト フォージェリ (CSRF) 攻撃を防止する](http://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
-| **手順** | CSRF 対策と AJAX: AJAX 要求は HTML フォーム データではなく JSON データを送信する場合があるため、フォーム トークンは AJAX 要求に対して問題である可能性があります。 1 つの解決策は、カスタム HTTP ヘッダーでトークンを送信することです。 次のコードでは、Razor 構文を使ってトークンを生成した後、AJAX 要求にトークンを追加しています。 |
+| **参照**              | [ASP.NET Web API でクロスサイト リクエスト フォージェリ (CSRF) 攻撃を防止する](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) |
+| **手順** | CSRF 対策と AJAX:AJAX 要求は HTML フォーム データではなく JSON データを送信する場合があるため、フォーム トークンは AJAX 要求に対して問題である可能性があります。 1 つの解決策は、カスタム HTTP ヘッダーでトークンを送信することです。 次のコードでは、Razor 構文を使ってトークンを生成した後、AJAX 要求にトークンを追加しています。 |
 
 ### <a name="example"></a>例
 ```Javascript
@@ -554,7 +554,7 @@ public ViewResult SubmitUpdate()
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | MVC5、MVC6 |
 | **属性**              | ID プロバイダー - ADFS、ID プロバイダー - Azure AD |
-| **参照**              | [ASP.NET Web API 2.2 において個別のアカウントおよびローカル ログインで Web API を保護する](http://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |
+| **参照**              | [ASP.NET Web API 2.2 において個別のアカウントおよびローカル ログインで Web API を保護する](https://www.asp.net/web-api/overview/security/individual-accounts-in-web-api) |
 | **手順** | Web API は、OAuth 2.0 を使ってセキュリティ保護されている場合、承認要求ヘッダーにベアラー トークンが含まれることを想定し、トークンが有効な場合にのみ要求にアクセスを許可します。 cookie ベースの認証とは異なり、ブラウザーは要求にベアラー トークンを添付しません。 要求元のクライアントは、要求ヘッダーにベアラー トークンを明示的に追加する必要があります。 したがって、OAuth 2.0 を使って保護されている ASP.NET Web API では、ベアラー トークンは CSRF 攻撃に対する防御と見なされます。 アプリケーションの MVC 部分がフォーム認証を使っている (つまり、cookie を使っている) 場合は、MVC Web アプリで偽造防止トークンを使う必要があることに注意してください。 |
 
 ### <a name="example"></a>例

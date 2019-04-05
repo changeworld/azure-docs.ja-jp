@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57f7d72be86a05b9785f7714380363d9c6ddb5c6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c0afc31bf08a5037d91885bc6a85c6aeaf858825
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205700"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436665"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -76,7 +76,7 @@ Azure AD Connect では、認証に先進認証方式 (ADAL ライブラリを�
 
 ### <a name="the-password-cannot-be-verified"></a>パスワードを確認できない
 インストール ウィザードによる Azure AD への接続は成功したものの、パスワード自体を確認できない場合に、このエラーが表示されます。  
-![badpassword](./media/tshoot-connect-connectivity/badpassword.png)
+![間違ったパスワード。](./media/tshoot-connect-connectivity/badpassword.png)
 
 * そのパスワードは一時パスワードで、変更が必要ではないでしょうか。 また、本当に正しいパスワードでしょうか。 Azure AD Connect サーバーとは別のコンピューターで https://login.microsoftonline.com へのサインインを試し、アカウントが使用可能であることを確認してください。
 
@@ -165,7 +165,7 @@ Azure AD ディレクトリが見つからないか、解決できません。 �
 ### <a name="authorization-failure"></a>Authorization Failure (認可エラー)
 Azure AD で操作を実行するユーザーを承認できませんでした。
 
-### <a name="authentication-cancelled"></a>認証が取り消された
+### <a name="authentication-canceled"></a>Authentication Canceled (認証が取り消されました)
 Multi-Factor Authentication (MFA) 要求が取り消されました。
 
 <div id="connect-msolservice-failed">

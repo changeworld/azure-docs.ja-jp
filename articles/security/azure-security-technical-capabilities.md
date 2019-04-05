@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: e7f8eef2c3422084846462e2f6159a8b8be7167f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 76944d98d6a5fe7c3f83ce12bb2fdf1a34d5e234
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301827"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839102"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 
@@ -75,7 +75,7 @@ Azure Active Directory (Azure AD) のセキュリティ上の利点は次のと�
 
 - Azure AD アプリケーション プロキシを通じてオンプレミス Web アプリケーションへの安全なリモート アクセスをプロビジョニングする。
 
-[Azure Active Directory ポータル](http://aad.portal.azure.com/)を Azure Portal の一部として使用できます。 このダッシュボードから組織の状態の概要を確認し、ディレクトリ、ユーザー、またはアプリケーションのアクセスを簡単に管理できます。
+[Azure Active Directory ポータル](https://aad.portal.azure.com/)を Azure Portal の一部として使用できます。 このダッシュボードから組織の状態の概要を確認し、ディレクトリ、ユーザー、またはアプリケーションのアクセスを簡単に管理できます。
 
 ![Azure Active Directory](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
@@ -113,7 +113,7 @@ Azure ID 管理のコア機能は次のとおりです。
 
 セキュリティの監視とアラートや、整合性のないアクセス パターンを識別する機械学習ベースのレポートを使用して、ビジネスを保護できます。 Azure Active Directory のアクセスおよび使用状況レポートを使用すると、組織のディレクトリの整合性とセキュリティを表示できます。 ディレクトリ管理者は、この情報を使用して、リスクを軽減するために適切に計画できるように、セキュリティ上のリスクがある箇所をより適切に確認できます。
 
-[レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)は、Azure Portal または [Azure Active Directory ポータル](http://aad.portal.azure.com/)で、次の方法で分類されます。
+[レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide)は、Azure Portal または [Azure Active Directory ポータル](https://aad.portal.azure.com/)で、次の方法で分類されます。
 
 - 異常レポート: 異常と考えられるサインイン イベントが含まれます。 この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。
 
@@ -169,7 +169,7 @@ Azure のアクセス制御では、最初に課金に注目します。 [Azure 
 
 セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 [Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
 
-![セキュリティで保護されたリソース アクセス ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
+![セキュリティで保護されたリソース アクセス](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。 すべてのユーザーに Azure サブスクリプションまたはリソースで無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 たとえば、RBAC を使用して、ある従業員にはサブスクリプションで仮想マシンを管理できるようにし、他の従業員にも同じサブスクリプション内で SQL データベースを管理できるようにします。
 
@@ -193,7 +193,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 | ----------------  | ----------------- | ----------------- | --------------- |
 | サーバーの暗号化 | サーバーの暗号化 | サーバーの暗号化 | クライアントの暗号化
 | サービス管理キーを使用したサーバー側暗号化 | ユーザーが管理する Azure Key Vault キーを使用したサーバー側暗号化 | オンプレミスの顧客管理キーを使用したサーバー側暗号化 |
-| • Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br> •    マイクロソフトがキーを管理する <br>•    完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する<br>• お客様が Azure Key Vault を使用してキーを制御する<br>• 完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br>• お客様がオンプレミスのキーを制御する <br> •   完全なクラウド機能| • Azure のサービスは解読されたデータを表示できない <br>• お客様がオンプレミス (または別のセキュリティで保護されたストア) にキーを保持する。 キーは Azure のサービスでは使用できません <br>• 制限されたクラウド機能|
+| • Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br> •    マイクロソフトがキーを管理する <br>•    完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する<br>• お客様が Azure Key Vault を使用してキーを制御する<br>• 完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br>• お客様がオンプレミスのキーを管理する <br> •   完全なクラウド機能| • Azure のサービスは解読されたデータを表示できない <br>• お客様がオンプレミス (または別のセキュリティで保護されたストア) にキーを保持する。 キーは Azure のサービスでは使用できません <br>• 制限されたクラウド機能|
 
 ### <a name="enabling-encryption-at-rest"></a>保存時の暗号化を有効にする
 
@@ -274,7 +274,7 @@ Azure VPN オプションの詳細については、「[VPN Gateway の計画と
 
 [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) は、暗号化、ID、承認ポリシーを使用してファイルとメールを保護します。 Azure RMS は組織内と組織外の両方でデータを保護できるため、携帯電話、タブレット、PC などの複数のデバイスに適用できます。 これが可能なのは、データが組織外に出たとしても Azure RMS による保護がデータに残るためです。
 
-Azure RMS を使用してファイルを保護する場合、[FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html) を完全にサポートする業界標準の暗号化技術が適用されます。 データ保護に Azure RMS を利用すると、クラウド ストレージ サービスのような IT 部門の管轄外のストレージにファイルがコピーされたとしても、ファイルを確実に保護できます。 メールでファイルを共有する場合も同じです。メール メッセージの添付ファイルとしてファイルを保護し、保護された添付ファイルを開く方法をメール本文に記載しておきます。
+Azure RMS を使用してファイルを保護する場合、[FIPS 140-2](https://csrc.nist.gov/groups/STM/cmvp/standards.html) を完全にサポートする業界標準の暗号化技術が適用されます。 データ保護に Azure RMS を利用すると、クラウド ストレージ サービスのような IT 部門の管轄外のストレージにファイルがコピーされたとしても、ファイルを確実に保護できます。 メールでファイルを共有する場合も同じです。メール メッセージの添付ファイルとしてファイルを保護し、保護された添付ファイルを開く方法をメール本文に記載しておきます。
 Azure RMS の導入を計画するときは、次の準備を行うことをお勧めします。
 
 - [RMS 共有アプリ](https://technet.microsoft.com/library/dn339006.aspx)をインストールします。 Office アドインをインストールすることによって、このアプリが Office アプリケーションと統合され、ユーザーが直接簡単にファイルを保護できるようになります。
@@ -398,19 +398,19 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、ハイブリッド クラウド向けの IT 管理ソリューションです。 Log Analytics は単独で使用されるかまたは System Center の既存のデプロイを拡張するために使用され、インフラストラクチャをクラウドベースで管理するための柔軟な制御を最大限に実現します。
+[Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、ハイブリッド クラウド向けの IT 管理ソリューションです。 Azure Monitor ログは単独で使用されるか、System Center の既存のデプロイを拡張するために使用され、ご自分のインフラストラクチャをクラウドベースで管理するための柔軟性と制御を最大限に実現します。
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Azure Monitor](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-Log Analytics を使用すれば、オンプレミス型、Azure、AWS、Windows Server、Linux、VMware、OpenStack など、あらゆるクラウドのインスタンスを競合ソリューションよりも低コストで管理できます。 クラウド中心に構築された Log Analytics は、新しいビジネス課題に対応し、新しいワークロード、アプリケーション、およびクラウド環境にも対応する最も高速でコスト効率の良い新たな企業の管理方法を提供します。
+Azure Monitor を使用すれば、オンプレミス型、Azure、AWS、Windows Server、Linux、VMware、OpenStack など、あらゆるクラウドのインスタンスを競合ソリューションよりも低コストで管理できます。 クラウド中心に構築された Azure Monitor は、新しいビジネス課題に対応し、新しいワークロード、アプリケーション、およびクラウド環境にも対応する最も高速でコスト効果の良い新たな企業の管理方法を提供します。
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) は、管理対象リソースから中央リポジトリにデータを収集する監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
+[Azure Monitor ログ](https://azure.microsoft.com/documentation/services/log-analytics)は、管理対象リソースから中央リポジトリにデータを収集する監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
+![Azure Monitor ログ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
 この方法を使用すると、さまざまなソースからのデータを統合できるため、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、データの収集とそのデータに対して実行される操作は明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
 

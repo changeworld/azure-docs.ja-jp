@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: eb0fd7e4feb28d60173b638a15dbce598f78e6bf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 26520e3ff8f5bb97866015d3148b4c8b8813b319
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182954"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168572"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Visual Studio 2015 または Visual Studio 2017 を管理者として起動し�
 
 ![[新しいプロジェクト] ダイアログを使用して新しい Service Fabric アプリケーションを作成する](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
-次に、**.Net Core 2.0** を使用して、*HelloWorldStateless* という名前のステートレス サービス プロジェクトを作成します。
+次に、**.NET Core 2.0** を使用して、*HelloWorldStateless* という名前のステートレス サービス プロジェクトを作成します。
 
 ![2 番目のダイアログ ボックスでステートレス サービス プロジェクトを作成する](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
@@ -127,7 +127,7 @@ Service Fabric には、新しい種類のステートフルなサービスが�
 
 ![Service Fabric アプリケーションにサービスを追加します。](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-**[.Net Core 2.0] -> [ステートフル サービス]** を選択し、*HelloWorldStateful* という名前を付けます。 Click **OK**.
+**[.NET Core 2.0]、[ステートフル サービス]** の順に選択し、*HelloWorldStateful* という名前を付けます。 Click **OK**.
 
 ![[新しいプロジェクト] ダイアログを使用して新しい Service Fabric のステートフル サービスを作成する](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 

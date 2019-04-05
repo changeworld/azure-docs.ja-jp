@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/12/2018
 ms.author: elbutter
 ms.reviewer: craigg
-ms.openlocfilehash: 3b354ebf5436a6637fe126085225b0ae6c8f1dcc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1d8b6d2df21fe0aabe85754e061db4deb129b32e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465862"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895704"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Fivetran と Azure SQL Data Warehouse の使用をすぐに開始する
 
@@ -80,5 +80,5 @@ Fivetran にサインインするには、SQL Data Warehouse へのアクセス�
 * ホスト (自分のサーバーの名前)。
 * ポート。
 * データベース。
-* ユーザー (ユーザー名は **fivetran@_server_name_** のようになり、*server_name* は Azure ホスト URI に含まれます: **server_name.database.windows.net**)。
+* ユーザー (ユーザー名は **fivetran\@_server_name_** のようになり、*server_name* は Azure ホスト URI に含まれます: ***server_name*.database.windows.net**)。
 * パスワード。

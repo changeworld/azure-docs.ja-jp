@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/26/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 6f36000eb5a17e58d1450a064897dd9caef89bad
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fe15cafceea8128735f7241fa5e4187d4d9c47a9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859353"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960056"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 QnA Maker における制限の包括的な一覧です。
@@ -52,7 +52,7 @@ QnA Maker における制限の包括的な一覧です。
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
 * 代替の質問の最大数: 100
-* 質問と回答のペアの最大数: 選択した [Azure Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 
+* 質問と回答のペアの最大数: 選択した [Azure Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 質問と回答のペアは、Azure Search インデックスのドキュメントにマップされます。 
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限
 これらは、ナレッジ ベース作成操作 (つまり、*[KB を作成する]* のクリック、または CreateKnowledgeBase API の呼び出し) ごとの制限を表します。
@@ -71,6 +71,6 @@ QnA Maker における制限の包括的な一覧です。
 
 サービス レベルを変更するタイミングと方法について学びます。
 
-* [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): 現在のレベルよりも多くの質問と回答をナレッジ ベースに含める必要がある場合は、QnA Maker サービスの価格レベルをアップグレードします。
-* [Search](how-to/upgrade-qnamaker-service.md#upgrade-app-service) - ナレッジ ベースでクライアント アプリの要求をより多く提供する必要がある場合は、アプリ サービスの価格レベルをアップグレードします。
-* [App service](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): 多数のナレッジ ベースを使用する予定の場合は、Azure Search サービスの価格レベルをアップグレードします。
+* [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): 現在のレベルよりも多くのソース ファイルまたはより大きなドキュメントをナレッジ ベースに含める必要がある場合は、QnA Maker サービスの価格レベルをアップグレードします。
+* [App Service](how-to/upgrade-qnamaker-service.md#upgrade-app-service): ナレッジ ベースでクライアント アプリの要求をより多く提供する必要がある場合は、アプリ サービスの価格レベルをアップグレードします。
+* [Azure Search](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): 多数のナレッジ ベースを使用する予定の場合は、Azure Search サービスの価格レベルをアップグレードします。

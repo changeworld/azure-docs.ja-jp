@@ -13,16 +13,18 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 81c7c98f29c2e507e165a3943395e36a453cbf06
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d9d26ced30f718f06d6d0ba9eb7c2a78682305ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024044"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102368"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory のよく寄せられる質問](../frequently-asked-questions.md)に関するページを参照してください。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>一般的な質問
 ### <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
@@ -76,7 +78,7 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service)、[Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service)、[SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[ストアド プロシージャ](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure Data Factory と SQL Server Integration Services (SSIS) はどのように違いますか。 
-MVP (Most Valued Professional) の 1 人である Reza Rad の「[Azure Data Factory vs.SSIS (Azure Data Factory とSSIS)](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS)」プレゼンテーションを参照してください。 Data Factory の最近の変更点の一部は、スライド デッキに表示されない場合があります。 Azure Data factory には、継続的に機能が追加されています。 Azure Data factory には、継続的に機能が追加されています。 これらの更新は、今年中に、マイクロソフトのデータ統合テクノロジの比較に組み込まれる予定です。   
+MVP (Most Valued Professional) の 1 人である Reza Rad の「[Azure Data Factory vs.SSIS (Azure Data Factory とSSIS)](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS)」プレゼンテーションを参照してください。 Data Factory の最近の変更点の一部は、スライド デッキに表示されない場合があります。 Azure Data factory には、継続的に機能が追加されています。 Azure Data factory には、継続的に機能が追加されています。 これらの更新は、今年中に、マイクロソフトのデータ統合テクノロジの比較に組み込まれる予定です。   
 
 ## <a name="activities---faq"></a>アクティビティ - FAQ
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Data Factory パイプラインで使用できるアクティビティには、どのような種類がありますか。
@@ -171,12 +173,12 @@ external プロパティが適切に設定されている場合は、入力デ�
 
 * 監視と管理アプリを使用して、アクティビティ ウィンドウまたはスライスを再実行します。 「 [選択したアクティビティ ウィンドウを再実行する](data-factory-monitor-manage-app.md#perform-batch-actions) 」を参照してください。   
 * Azure Portal のスライスの **[データ スライス]** ブレードで、コマンド バーの **[実行]** をクリックします。
-* スライスの状態を **Waiting** に設定して、**Set-AzureRmDataFactorySliceStatus** コマンドレットを実行します。   
+* スライスの状態を **Waiting** に設定して、**Set-AzDataFactorySliceStatus** コマンドレットを実行します。   
 
     ```PowerShell
-    Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
+    Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-コマンドレットの詳細については、[Set-AzureRmDataFactorySliceStatus][set-azure-datafactory-slice-status] に関するページをご覧ください。
+  コマンドレットの詳細については、[Set-AzDataFactorySliceStatus][set-azure-datafactory-slice-status] に関するページをご覧ください。
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>スライスの処理にかかった時間を調べるにはどうすればよいですか。
 データ スライスの処理に要した時間は、監視と管理アプリのアクティビティ ウィンドウ エクスプローラーを使用して調べます。 詳細については、「 [アクティビティ ウィンドウ エクスプローラー](data-factory-monitor-manage-app.md#activity-window-explorer) 」を参照してください。
@@ -191,7 +193,7 @@ external プロパティが適切に設定されている場合は、入力デ�
 6. **[期間]** フィールドに表示されている値を確認します。 この値が、スライスの処理にかかった時間です。   
 
 ### <a name="how-to-stop-a-running-slice"></a>実行中のスライスを停止するにはどうすればよいですか
-パイプラインの実行を停止する必要がある場合は、 [Suspend-AzureDataFactoryPipeline](/powershell/module/azurerm.datafactories/suspend-azurermdatafactorypipeline) コマンドレットを使用できます。 現時点では、パイプラインを中断しても、進行中のスライスの実行は停止しません。 進行中の実行が完了すると、追加のスライスは取得されません。
+パイプラインの実行を停止する必要がある場合は、[Suspend-AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) コマンドレットを使用できます。 現時点では、パイプラインを中断しても、進行中のスライスの実行は停止しません。 進行中の実行が完了すると、追加のスライスは取得されません。
 
 すべての実行をすぐに停止するには、パイプラインをいったん削除した後で再作成するしかありません。 パイプラインを削除する場合は、パイプラインによって使用されているテーブルとリンクされたサービスを削除する必要はありません。
 
@@ -199,11 +201,11 @@ external プロパティが適切に設定されている場合は、入力デ�
 [msdn-class-library-reference]: /dotnet/api/microsoft.azure.management.datafactories.models
 [msdn-rest-api-reference]: /rest/api/datafactory/
 
-[adf-powershell-reference]: /powershell/module/azurerm.datafactories/
-[azure-portal]: http://portal.azure.com
-[set-azure-datafactory-slice-status]: /powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus
+[adf-powershell-reference]: /powershell/module/az.datafactory/
+[azure-portal]: https://portal.azure.com
+[set-azure-datafactory-slice-status]: /powershell/module/az.datafactory/set-Azdatafactoryslicestatus
 
-[adf-pricing-details]: http://go.microsoft.com/fwlink/?LinkId=517777
-[hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/
-[hdinsight-alternate-storage]: http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
-[hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
+[adf-pricing-details]: https://go.microsoft.com/fwlink/?LinkId=517777
+[hdinsight-supported-regions]: https://azure.microsoft.com/pricing/details/hdinsight/
+[hdinsight-alternate-storage]: https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
+[hdinsight-alternate-storage-2]: https://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx

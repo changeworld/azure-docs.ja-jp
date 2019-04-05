@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbfade56ff12aa719927d496606a6ce4b4fe5a38
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 07e98d5a93b8576c06e9be8274a974b1b574da4b
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167152"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217746"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>クラウドベースの Azure Multi-Factor Authentication をデプロイする
 
@@ -42,6 +42,9 @@ Azure Multi-Factor Authentication (Azure MFA) の使用開始は簡単なプロ�
 ## <a name="choose-authentication-methods"></a>認証方法を選択する
 
 組織の要件に基づいて、ユーザーの認証方法を少なくとも 1 つ有効にします。 Microsoft Authenticator アプリをユーザーに対して有効にすると、最適なユーザー エクスペリエンスを提供できることがわかっています。 使用可能な方法とその設定方法を理解する必要がある場合は、「[認証方法とは](concept-authentication-methods.md)」の記事を参照してください。
+
+> [!IMPORTANT]
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
 
 ## <a name="get-users-to-enroll"></a>ユーザーによる登録を促す
 

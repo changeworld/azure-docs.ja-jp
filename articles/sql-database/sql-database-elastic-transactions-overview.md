@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ae9f4d1ebcb84748b665579104f63dab3ee6f076
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 03/12/2019
+ms.openlocfilehash: d7865d394dfc955a7b24115e747dd77352d89e3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463873"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901918"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>クラウド データベースにまたがる分散トランザクション
 
@@ -126,13 +126,17 @@ Azure App Services では、ゲスト OS のアップグレードは現在サポ
 
 ## <a name="transactions-across-multiple-servers"></a>複数のサーバーにまたがるトランザクション
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
 エラスティック データベース トランザクションは、Azure SQL Database のさまざまな SQL Database サーバーでサポートされています。 トランザクションが SQL Database サーバーの境界を超える場合、参加するサーバーが最初に双方向の通信リレーションシップに入る必要があります。 通信リレーションシップが確立されると、2 つのサーバーのいずれのデータベースも、もう一方のサーバーのデータベースを使用してエラスティック トランザクションに参加できます。 2 つの SQL Database サーバーにまたがるトランザクションでは、SQL Database サーバーの任意のペア用に通信リレーションシップが用意されている必要があります。
 
 次の PowerShell コマンドレットを使って、エラスティック データベースのトランザクション用のサーバー間通信リレーションシップを管理できます。
 
-* **New-AzureRmSqlServerCommunicationLink**:このコマンドレットを使用して Azure SQL Database で 2 つの SQL Database サーバー間に新しい通信リレーションシップを構築します。 リレーションシップは対象です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
-* **Get-AzureRmSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップとそのプロパティを取得します。
-* **Remove-AzureRmSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップを削除します。 
+* **New-AzSqlServerCommunicationLink**:このコマンドレットを使用して Azure SQL Database で 2 つの SQL Database サーバー間に新しい通信リレーションシップを構築します。 リレーションシップは対象です。つまり、いずれのサーバーも他方のサーバーとのトランザクションを開始できます。
+* **Get-AzSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップとそのプロパティを取得します。
+* **Remove-AzSqlServerCommunicationLink**:このコマンドレットを使用して既存の通信リレーションシップを削除します。 
 
 ## <a name="monitoring-transaction-status"></a>トランザクションの状態の監視
 

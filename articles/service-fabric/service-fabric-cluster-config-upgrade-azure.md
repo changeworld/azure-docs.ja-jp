@@ -14,19 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 621dc22ead8fbb6882c692851d39b658da043c55
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6ddd246057b178119d520bee3bbe58117fbae610
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894685"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820979"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Azure でクラスターの構成をアップグレードする 
 
 この記事では、Service Fabric クラスターのさまざまなファブリックの設定をカスタマイズする方法について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。
 
-> [!NOTE]
-> すべての設定をポータルで使用できるとは限らず、[Azure Resource Manager テンプレートを使用してそれをカスタマイズすることがベスト プラクティスです](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)。ポータルは Service Fabric の開発とテストのシナリオ専用です。> 
+> [!NOTE]
+> すべての設定をポータルで使用できるとは限りません。[ベスト プラクティスは、Azure Resource Manager テンプレートを使用して設定をカスタマイズすること](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)です。ポータルは Service Fabric の開発とテストのシナリオ専用です。
+> 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Resource Manager テンプレートを使用してクラスター設定をカスタマイズする
 Azure クラスターは、JSON の Resource Manager テンプレートを使って構成できます。 さまざまな設定の詳細については、[クラスターの構成設定](service-fabric-cluster-fabric-settings.md)に関する記事をご覧ください。 例として、次の手順はで、Azure Resource Explorer を使って *MaxDiskQuotaInMB* という新しい設定を *Diagnostics* セクションに追加する方法を示します。

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b133947a7daf1977f084ee4008599882b51d9e8b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3e217e0e3367c6e1200567f589749fec9e626da8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428479"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817458"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation のデータの管理
 この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。
@@ -39,7 +39,7 @@ Azure Automation は、90 日を超えるジョブを自動的に削除した後
 
 保持ポリシーはすべてのユーザーに適用され、現在カスタマイズすることはできません。
 
-ただし、データを長期にわたって保持する必要がある場合は、Runbook ジョブのログを Log Analytics に転送できます。  詳細については、[Log Analytics への Azure Automation ジョブ データの転送](automation-manage-send-joblogs-log-analytics.md)に関するページをご覧ください。   
+ただし、データを長期にわたって保持する必要がある場合は、Runbook ジョブのログを Azure Monitor ログに転送できます。  詳細については、[Azure Monitor ログへの Azure Automation ジョブ データの転送](automation-manage-send-joblogs-log-analytics.md)に関するページを参照してください。   
 
 ## <a name="backing-up-azure-automation"></a>Azure Automation のバックアップ
 Microsoft Azure でオートメーション アカウントを削除すると、Runbook、モジュール、構成、設定、ジョブ、資産など、アカウント内のすべてのオブジェクトが削除されます。 アカウントを削除した後にオブジェクトを修復することはできません。  削除する前に、以下の情報を使用してオートメーション アカウントの内容をバックアップできます。 

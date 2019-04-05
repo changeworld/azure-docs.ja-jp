@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 4fae4486e6cf47892ba2133885ec864969f66001
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 89b311edbae6b5f6679908b5d07b22b402b5c55e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663606"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888068"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ネットワーク インターフェイスの IP アドレスの追加、変更、削除
 
@@ -30,11 +30,13 @@ ms.locfileid: "55663606"
 
 ## <a name="before-you-begin"></a>開始する前に
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 この記事のセクションに記載された手順を始める前に、次のタスクを完了してください。
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使用する場合は、 https://portal.azure.com を開き、Azure アカウントでログインします。
-- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+- PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 1.0.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 - Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI のバージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
 Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または[ネットワーク インターフェイスのアクセス許可](virtual-network-network-interface.md#permissions)の一覧で示されている適切なアクセス許可を割り当てられた[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に、割り当てられている必要があります。
@@ -49,20 +51,20 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 4. **[IP 構成]** の **[+ 追加]** を選択します。
 5. 次のように指定し、**[OK]** を選択します。
 
-    |Setting|必須|詳細|
-    |---|---|---|
-    |Name|はい|ネットワーク インターフェイスについて一意である必要があります|
-    |type|はい|IP 構成を既存のネットワーク インターフェイスに追加しており、各ネットワーク インターフェイスには必ず[プライマリ](#primary) IP 構成があるため、選ぶことができるオプションは **セカンダリ** のみです。|
-    |プライベート IP アドレスの割り当て方法|[はい]|[**動的**](#dynamic):Azure により、ネットワーク インターフェイスがデプロイされているサブネット アドレスの範囲で次に利用可能なアドレスが割り当てられます。 [**静的**](#static):ネットワーク インターフェイスがデプロイされているサブネット アドレスの範囲で未使用のアドレスを自分で割り当てます。|
-    |パブリック IP アドレス|いいえ |**無効:** パブリック IP アドレス リソースは現在 IP 構成に関連付けられていません。 **有効:** 既存の IPv4 パブリック IP アドレスを選択するか、新しく作成します。 パブリック IP アドレスの作成方法については、「[Public IP addresses](virtual-network-public-ip-address.md#create-a-public-ip-address)」(パブリック IP アドレス) の記事をご覧ください。|
+   |Setting|必須|詳細|
+   |---|---|---|
+   |Name|はい|ネットワーク インターフェイスについて一意である必要があります|
+   |type|はい|IP 構成を既存のネットワーク インターフェイスに追加しており、各ネットワーク インターフェイスには必ず[プライマリ](#primary) IP 構成があるため、選ぶことができるオプションは **セカンダリ** のみです。|
+   |プライベート IP アドレスの割り当て方法|はい|[**動的**](#dynamic):Azure により、ネットワーク インターフェイスがデプロイされているサブネット アドレスの範囲で次に利用可能なアドレスが割り当てられます。 [**静的**](#static):ネットワーク インターフェイスがデプロイされているサブネット アドレスの範囲で未使用のアドレスを自分で割り当てます。|
+   |パブリック IP アドレス|いいえ |**無効:** パブリック IP アドレス リソースは現在 IP 構成に関連付けられていません。 **有効:** 既存の IPv4 パブリック IP アドレスを選択するか、新しく作成します。 パブリック IP アドレスの作成方法については、「[Public IP addresses](virtual-network-public-ip-address.md#create-a-public-ip-address)」(パブリック IP アドレス) の記事をご覧ください。|
 6. 「[VM オペレーティング システムに IP アドレスを追加する](virtual-network-multiple-ip-addresses-portal.md#os-config)」の手順に従って、セカンダリ プライベート IP アドレスを仮想マシンのオペレーティング システムに手動で追加します。 仮想マシンのオペレーティング システムに IP アドレスを手動で追加する前の特別な考慮事項については、「[プライベート](#private)」を参照してください。 仮想マシンのオペレーティング システムにパブリック IP アドレスは追加しないでください。
 
 **コマンド**
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig)|
+|PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>IP アドレス設定を変更する
 
@@ -80,10 +82,10 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 **コマンド**
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
+|PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>IP アドレスを削除する
 
@@ -96,10 +98,10 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 **コマンド**
 
-|ツール|コマンド|
+|ツール|command|
 |---|---|
 |CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig)|
+|PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>IP 構成
 
@@ -118,10 +120,10 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 - プライベート IPv4 アドレスまたは IPv6 アドレスが割り当てられている必要があります。 アドレスが IPv6 の場合、ネットワーク インターフェイスに割り当てることができるセカンダリ IP 構成は 1 つだけです。 アドレスが IPv4 の場合、ネットワーク インターフェイスには複数のセカンダリ IP 構成を割り当てることができます。 ネットワーク インターフェイスに割り当てることができるプライベートとパブリックの IPv4 アドレスの数の詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。
 - プライベート IP アドレスが IPv4 の場合、パブリック IPv4 アドレスを割り当てることもできます。 プライベート IP アドレスが IPv6 の場合、パブリック IPv4 または IPv6 アドレスを IP 構成に割り当てることはできません。 ネットワーク インターフェイスに複数の IP アドレスを割り当てると、次のようなシナリオで役立ちます。
-    - 異なる IP アドレスと SSL 証明書を持つ複数のウェブサイトやサービスを、1つのサーバーでホストする。
-    - 仮想マシンがファイアウォールやロード バランサーのような、ネットワーク仮想アプライアンスとして機能する。
-    - 任意のネットワーク インターフェイスの任意のプライベート IPv4 アドレスを、Azure Load Balancer のバックエンド プールに追加できる。 以前は、プライマリ ネットワーク インターフェイスのプライマリ IPv4 アドレスしか、バックエンド プールに追加できませんでした。 複数の IPv4 構成の負荷分散方法の詳細については、「[Azure Portal を使用した複数の IP 構成での負荷分散](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 
-    - ネットワーク インターフェイスに割り当てられている 1 つの IPv6 アドレスを負荷分散できる。 プライベート IPv6 アドレスに負荷分散する方法の詳細については、「[Azure Load Balancer の IPv6 の概要](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+  - 異なる IP アドレスと SSL 証明書を持つ複数のウェブサイトやサービスを、1つのサーバーでホストする。
+  - 仮想マシンがファイアウォールやロード バランサーのような、ネットワーク仮想アプライアンスとして機能する。
+  - 任意のネットワーク インターフェイスの任意のプライベート IPv4 アドレスを、Azure Load Balancer のバックエンド プールに追加できる。 以前は、プライマリ ネットワーク インターフェイスのプライマリ IPv4 アドレスしか、バックエンド プールに追加できませんでした。 複数の IPv4 構成の負荷分散方法の詳細については、「[Azure Portal を使用した複数の IP 構成での負荷分散](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 
+  - ネットワーク インターフェイスに割り当てられている 1 つの IPv6 アドレスを負荷分散できる。 プライベート IPv6 アドレスに負荷分散する方法の詳細については、「[Azure Load Balancer の IPv6 の概要](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
 ## <a name="address-types"></a>アドレスの種類
 

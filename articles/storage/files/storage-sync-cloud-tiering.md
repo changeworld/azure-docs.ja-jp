@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
 ms.subservice: files
-ms.openlocfilehash: e73a11d7849d6e304be0844a55ddad46e6966f6e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fe363bd6d16d7beea1c8f1e6ec17710975a80924
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470452"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652562"
 ---
 # <a name="cloud-tiering-overview"></a>クラウドの階層化の概要
 クラウドの階層化は Azure File Sync のオプション機能です。この機能では、頻繁にアクセスされるファイルがサーバー上にローカルにキャッシュされ、その他のファイルはポリシー設定に基づいて Azure Files に階層化されます。 ファイルを階層化すると、Azure File Sync ファイル システム フィルター (StorageSync.sys) がローカルでファイルをポインターと置き換えるか、ポイントを再解析します。 再解析ポイントは Azure Files 内のファイルの URL を表します。 階層化されたファイルをサード パーティ アプリケーションで安全に識別できるように、階層化されたファイルには "オフライン" 属性と FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性の両方が NTFS 内で設定されます。
@@ -21,9 +21,12 @@ ms.locfileid: "55470452"
 ユーザーが階層化されたファイルを開くと、Azure File Sync によってファイル データが Azure Files からシームレスに再呼び出しされます。ユーザーは、ファイルが実際に Azure に格納されていることを知る必要はありません。 
  
  > [!Important]  
-    > 重要:クラウドの階層化は、Windows システム ボリューム上のサーバー エンドポイントではサポートされません。さらに、サイズが 64 KiB より大きいファイルしか Azure Files に階層化することはできません。
+ > クラウドの階層化は、Windows システム ボリューム上のサーバー エンドポイントではサポートされません。さらに、サイズが 64 KiB より大きいファイルしか Azure Files に階層化することはできません。
     
 Azure File Sync では 64 KiB よりも小さいファイルの階層化はサポートされていません。そのようなファイルを階層化および再呼び出することで生じるパフォーマンスのオーバーヘッドが領域の節約を上回るからです。
+
+ > [!Important]  
+ > 階層化されたファイルを再呼び出しするには、1 Mbps 以上のネットワーク帯域幅が必要です。 ネットワーク帯域幅が 1 Mbps 未満の場合、タイムアウト エラーでファイルの再呼び出しが失敗する可能性があります。
 
 ## <a name="cloud-tiering-faq"></a>クラウドの階層化の FAQ
 

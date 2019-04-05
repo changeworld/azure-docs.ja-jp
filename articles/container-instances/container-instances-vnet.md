@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 79ba32f85c608d98b29b235bf1417e74f7e2a4d4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 5382c565e5afc42d65a3198d797b51d1b1a9dde6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313485"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550772"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -40,19 +40,13 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
-この機能はプレビュー段階であるため、仮想ネットワークにコンテナー インスタンスをデプロイする場合には、次の制限が適用されます。 
+この機能はプレビュー段階であるため、仮想ネットワークにコンテナー グループをデプロイする場合には、次の制限が適用されます。 
 
-**サポートされているリージョンとリソースの制限**
-
-| Location | OS | CPU | メモリ (GB) |
-| -------- | :---: | :---: | :-----------: |
-| 西ヨーロッパ | Linux | 4 | 14 |
-| 米国東部、米国西部 | Linux | 2 | 3.5 |
-| オーストラリア東部、北ヨーロッパ | Linux | 1 | 1.5 |
+[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 コンテナーのリソース制限は、これらのリージョンでのネットワークに接続されていないコンテナー インスタンスに対する制限とは異なる場合があります。 現在、この機能でサポートされているのは、Linux コンテナーのみです。 Windows でのサポートは計画されています。
 
-**サポートされていないネットワーク リソースと機能**
+### <a name="unsupported-network-resources-and-features"></a>サポートされていないネットワーク リソースと機能
 
 * Azure Load Balancer
 * 仮想ネットワーク ピアリング

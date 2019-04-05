@@ -1,6 +1,6 @@
 ---
 title: RBAC と Azure PowerShell を使用して Azure リソースへのアクセスを管理する | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) と Azure PowerShell を使用してユーザー、グループ、アプリケーションの Azure リソースへのアクセスを管理する方法について説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
+description: ロールベースのアクセス制御 (RBAC) と Azure PowerShell を使用して、ユーザー、グループ、およびアプリケーションの Azure リソースへのアクセスを管理する方法について説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2019
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 84fd4262d3b64b369d6307a6a875e8a459324aaa
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ace70dea5277b4e9d8c8b0e6e0cdc49da0b674e0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343776"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432228"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-powershell"></a>RBAC と Azure PowerShell を使用して Azure リソースへのアクセスを管理する
 
@@ -81,9 +81,11 @@ NotDataActions   : {}
 AssignableScopes : {/}
 ```
 
-### <a name="list-a-specific-role-in-json-format"></a>特定のロールを JSON 形式で一覧表示する
+## <a name="list-a-role-definition"></a>ロール定義を一覧表示する
 
-特定のロールを JSON 形式で一覧表示するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用します。
+### <a name="list-a-role-definition-in-json-format"></a>JSON 形式でロール定義を一覧表示します
+
+JSON 形式でロール定義を一覧表示するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用します。
 
 ```azurepowershell
 Get-AzRoleDefinition <role name> | ConvertTo-Json
@@ -328,4 +330,4 @@ PS C:\> Remove-AzRoleAssignment -SignInName alain@example.com -RoleDefinitionNam
 
 - [チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をグループに付与する](tutorial-role-assignments-group-powershell.md)
 - [チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-powershell.md)
-- [Azure PowerShell でリソースを管理する](../azure-resource-manager/powershell-azure-resource-manager.md)
+- [Azure PowerShell でリソースを管理する](../azure-resource-manager/manage-resources-powershell.md)

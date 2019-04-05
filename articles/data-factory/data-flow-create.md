@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: b706e229bed48c821d5ca772450df320fd7e0b7f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: bb6ae9f97d681625218118b8adca116de1c0fb21
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271398"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728235"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Azure Data Factory のデータ フローを作成する
 
@@ -34,7 +34,12 @@ Azure Blob ストレージ アカウント情報の入力を求められます�
 
 [これらのサンプルで使用されるデータはこちらで見つけることができます](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata)。 サンプル データをダウンロードし、Azure Blob ストレージ アカウントにファイルを格納して、サンプルを実行できるようにします。
 
+## <a name="create-new-data-flow"></a>新しいデータ フローを作成する
+
 ADF UI で、[+] ボタン (リソースの作成) を使用して、データソースを作成します。
 
 ![Data Flow オプション](media/data-flow/newresource.png "新しいリソース")
 
+## <a name="next-steps"></a>次の手順
+
+[ソース変換](data-flow-source.md)を使用してデータ変換の構築を開始します。

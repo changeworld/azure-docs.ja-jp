@@ -16,12 +16,12 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f4eab44a55574f84f29488e78cd60522d7a52eb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6f2e5674413cb4057187b7573fde0bcd8899caab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171198"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905173"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 
@@ -31,7 +31,7 @@ Azure AD Privileged Identity Management (PIM) を使用すると、重要なイ�
 
 PIM から Azure AD ロールと Azure リソース ロールの両方に送信される電子メールの送信者メール アドレスは、次のアドレスになります。
 
-- メール アドレス:  **azure-noreply@microsoft.com**
+- メール アドレス: **azure-noreply\@microsoft.com**
 - 表示名:Microsoft Azure
 
 これらの電子メールの件名行には、**PIM** というプレフィックスが付けられます。 次に例を示します。

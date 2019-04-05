@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d6cc55ec2e3be3510b9547025db17bcbee97e10
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 59f36595e0b6cc8b9d9ea0669c9ecb5be1e74b42
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765383"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441391"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
 
@@ -60,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ### <a name="windows-registry"></a>Windows レジストリ
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -69,7 +69,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ### <a name="windows-files"></a>Windows ファイル
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -78,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ### <a name="linux-files"></a>Linux ファイル
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -91,7 +91,9 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="manage-machine-groups"></a>コンピューター グループを管理する
 
-インベントリを使用すると、Log Analytics 内で、コンピューター グループを作成し、表示することができます。 コンピューター グループは、Log Analytics 内でクエリによって定義されるコンピューターのコレクションです。
+インベントリを使用すると、Azure Monitor ログ内で、マシン グループを作成し、表示することができます。 マシン グループは、Azure Monitor ログ内でクエリによって定義されるマシンのコレクションです。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 コンピューター グループを表示するには、[インベントリ] ページの **[Machine groups] (コンピューター グループ)** タブを選択します。
 
@@ -103,7 +105,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 **[+ 複製]** ボタンをクリックして、コンピューター グループを複製します。 ここで、グループに新しい名前とグループの別名を付ける必要があります。 この時点では、定義の変更が可能です。 クエリを変更した後、**[Validate query]\(クエリの検証)** を押して、選択されるコンピューターをプレビューします。 そのグループでよければ、**[作成]** をクリックしてコンピューター グループを作成します
 
-新しいコンピューター グループを作成する場合は、**[+ Create a machine group] (+ 新しいコンピューター グループの作成)** を選択します。 このボタンによって、**[Create a machine group] (コンピューター グループの作成)** ページが開きます。 **[作成]** をクリックしてグループを作成します。
+新しいマシン グループを作成する場合は、**[+ マシン グループの作成]** を選択します。 このボタンによって、**[Create a machine group] (コンピューター グループの作成)** ページが開きます。 **[作成]** をクリックしてグループを作成します。
 
 ![新しいコンピューター グループを作成する](./media/automation-vm-inventory/create-new-group.png)
 
@@ -116,7 +118,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 3. 切断する仮想マシンを一覧で選択します。 仮想マシンの **[OMS 接続]** 列の **[このワークスペース]** の横に、緑色のチェック マークが表示されます。
 
    >[!NOTE]
-   >OMS は、Log Analytics と呼ばれるようになりました。
+   >OMS は、Azure Monitor ログと呼ばれるようになりました。
    
 4. 次のページの上部にある **[切断]** を選択します。
 5. 確認ウィンドウで **[はい]** を選択します。

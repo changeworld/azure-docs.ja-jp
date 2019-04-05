@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 02/15/2019
 ms.author: saudas
-ms.openlocfilehash: 37a9712749a1575f81086d28ad461a665bef36d9
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: aafc6c5a240a1dd3e3c75dd33da26bde918b2288
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313451"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403211"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -31,7 +31,7 @@ AKS では、Kubernetes の 4 つのマイナー バージョンがサポート�
 
 新しいマイナー バージョンが導入されると、サポートされている最も古いマイナー バージョンと修正プログラムのリリースは、提供終了となります。 新しいマイナー バージョンのリリースおよび次期バージョンの提供終了の 15 日前に、[Azure の更新プログラム チャネル][azure-update-channel]を通じて告知が行われます。 上記の例では*1.12.x* がリリースされた場合に廃止されるバージョンは、*1.8.g* + *1.8.h* となります。
 
-ポータルまたは Azure CLI を使用して AKS クラスターをデプロイする場合、クラスターは常に n-1 マイナー バージョンおよび最新修正プログラムに設定されます。 たとえば、AKS が *1.12.x*、*1.11.a* + *1.11.b*、*1.10.c* + *1.10d*、*1.9.e* + *1.9f* をサポートする場合、新しいクラスターの既定のバージョンは *1.10.b* となります。
+ポータルまたは Azure CLI を使用して AKS クラスターをデプロイする場合、クラスターは常に n-1 マイナー バージョンおよび最新修正プログラムに設定されます。 たとえば、AKS が *1.12.x*、*1.11.a* + *1.11.b*、*1.10.c* + *1.10d*、*1.9.e* + *1.9f* をサポートする場合、新しいクラスターの既定のバージョンは *1.11.b* となります。
 
 ## <a name="list-currently-supported-versions"></a>現在サポートされているバージョンの一覧表示
 

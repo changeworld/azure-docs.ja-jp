@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 1a21ab5af8c0dc5fbbe2c1dbab8931bd903df4ff
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 121226ad9ca1ea0c29dd192ed69797b37245da46
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235990"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213927"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database のセキュリティ機能の概要
 
@@ -84,7 +84,7 @@ Azure SQL Database でのアクセス許可の概要については、[ログイ
 
 SQL Database では、監査と脅威検出機能を提供することで、顧客データをセキュリティで保護します。
 
-### <a name="sql-auditing-in-log-analytics-and-event-hubs"></a>Log Analytics と Event Hubs での SQL 監査
+### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>Azure Monitor ログと Event Hubs での SQL 監査
 
 SQL Database Auditing はデータベース アクティビティを追跡し、顧客が所有する Azure ストレージ アカウントの監査ログにデータベース イベントを記録することによって、セキュリティ標準のコンプライアンスを維持できるようにします。 Auditing を使用することで、ユーザーは進行中のデータベース アクティビティを監視し、過去のアクティビティを分析および調査して、潜在的な脅威や疑わしい不正使用、およびセキュリティ違反を特定することができます。 詳細については、「[SQL Database 監査の使用](sql-database-auditing.md)」を参照してください。  
 

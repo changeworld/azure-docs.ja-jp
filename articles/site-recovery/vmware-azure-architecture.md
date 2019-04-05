@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery における VMware から Azure へのディザスター リカバリー アーキテクチャ | Microsoft Docs
 description: この記事では、Azure Site Recovery を使ってオンプレミスの VMware VM から Azure へのディザスター リカバリーを設定するときに使われるコンポーネントとアーキテクチャの概要を説明します
-author: rayne-wiselman
+author: mayurigupta13
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
-ms.author: raynew
-ms.openlocfilehash: 3d91788544c49c260eff051185950bdfd164b802
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 3/3/2019
+ms.author: mayg
+ms.openlocfilehash: 5f9ead8df3d0dfb2695def46087d2ea994b8b75b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217953"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340442"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -25,7 +25,7 @@ ms.locfileid: "55217953"
 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | ---
-**Azure** | Azure サブスクリプション、Azure Storage アカウント、および Azure ネットワーク。 | オンプレミスの VM からレプリケートされたデータはストレージ アカウントに格納されます。 オンプレミスから Azure へのフェールオーバーを実行すると、そのレプリケートされたデータで Azure VM が作成されます。 Azure VM は、作成時に Azure 仮想ネットワークに接続します。
+**Azure** | Azure サブスクリプション、キャッシュの Azure Storage アカウント、マネージド ディスク、および Azure ネットワーク。 | オンプレミスの VM からレプリケートされたデータは、Azure ストレージに格納されます。 オンプレミスから Azure へのフェールオーバーを実行すると、そのレプリケートされたデータで Azure VM が作成されます。 Azure VM は、作成時に Azure 仮想ネットワークに接続します。
 **構成サーバー マシン** | 単一のオンプレミス マシン。 ダウンロードした OVF テンプレートからデプロイできる VMware VM として実行することをお勧めします。<br/><br/> マシンは、構成サーバー、プロセス サーバー、マスター ターゲット サーバーなど、オンプレミスのすべての Site Recovery コンポーネントを実行します。 | **構成サーバー**:オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。<br/><br/> **プロセス サーバー**:構成サーバーに既定でインストールされます。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。 また、プロセス サーバーは、レプリケートする VM への Azure Site Recovery モビリティ サービスのインストールや、オンプレミスのマシンの自動検出も行います。 デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立したプロセス サーバーを追加できます。<br/><br/> **マスター ターゲット サーバー**:構成サーバーに既定でインストールされます。 Azure からのフェールバック中にレプリケーション データを処理します。 大規模なデプロイでは、フェールバック用に別のマスター ターゲット サーバーを追加できます。
 **VMware サーバー** | VMware VM は、オンプレミス vSphere ESXi サーバーでホストされています。 ホストの管理には vCenter サーバーをお勧めします。 | Site Recovery のデプロイ中には、VMware サーバーを Recovery Services コンテナーに追加します。
 **レプリケートされたマシン** | レプリケートする各 VMware VM にモビリティ サービスがインストールされます。 | プロセス サーバーから自動的にインストールできるようにすることをお勧めします。 また、サービスを手動でインストールしたり、System Center Configuration Manager などの自動デプロイ方法を使用したりすることができます。

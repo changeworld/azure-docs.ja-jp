@@ -3,20 +3,20 @@ title: Azure Database for MySQL へのオンライン移行に関する既知の
 description: Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項について学習します。
 services: database-migration
 author: HJToland3
-ms.author: scphang
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: ebe2af858aafaff62a7e3b629c0a8c84bbf49584
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: e2b82c8a7bcdc1982ed4489e9422a4a0efd64f3c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721650"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58175101"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Azure DB for MySQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -80,7 +80,7 @@ MySQL から Azure Database for MySQL へのオンライン移行に関する既
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **対処法**: 32 KB を超える LOB オブジェクトがある場合は、エンジニアリング チーム ([dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)) に相談してください。 
+    **対処法**: 32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。 
 
 ## <a name="other-limitations"></a>その他の制限事項
 - 先頭と末尾に中かっこ {} を含むパスワード文字列はサポートされていません。 この制限は、ソース MySQL とターゲット Azure Database for MySQL の両方への接続に適用されます。

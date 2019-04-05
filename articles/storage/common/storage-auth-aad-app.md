@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4c39f47169071ceb9430f419a144e11f425d65b0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6d283840116a5e1f996602fd792456d3b8e8d9a0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240728"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456093"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>BLOB やキューにアクセスするためにアプリケーションから Azure Active Directory で認証を行う (プレビュー)
 
@@ -39,11 +39,11 @@ Azure AD を使用してストレージ リソースへのアクセスを承認�
 
 Azure Storage アプリケーションを登録するには、「[Azure Active Directory とアプリケーションの統合](../../active-directory/active-directory-integrating-applications.md)」の「[アプリケーションの追加](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md)」の手順に従います。 アプリケーションをネイティブ アプリケーションとして登録する場合は、**リダイレクト URI** 用に任意の有効な URI を指定できます。 値は実際のエンドポイントである必要はありません。
 
-![ストレージ アプリケーションを Azure AD に登録する方法を示すスクリーン ショット](./media/storage-auth-aad-app/app-registration.png)
+![ストレージ アプリケーションを Azure AD に登録する方法を示すスクリーンショット](./media/storage-auth-aad-app/app-registration.png)
 
 アプリケーションを登録すると、**[設定]** にアプリケーション ID (クライアント ID) が表示されます。
 
-![クライアント ID を示すスクリーン ショット](./media/storage-auth-aad-app/app-registration-client-id.png)
+![クライアント ID を示すスクリーンショット](./media/storage-auth-aad-app/app-registration-client-id.png)
 
 Azure AD へのアプリケーションの登録について詳しくは、「[Azure Active Directory とアプリケーションの統合](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)」を参照してください。 
 
@@ -57,14 +57,14 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 4. **[必要なアクセス許可]** ブレードで、**[追加]** ボタンをクリックします。
 5. **[API を選択します]** で "Azure Storage" を検索して、結果の一覧から **[Azure Storage]** を選択します。
 
-    ![ストレージのアクセス許可を示すスクリーン ショット](media/storage-auth-aad-app/registered-app-permissions-1.png)
+    ![ストレージのアクセス許可を示すスクリーンショット](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
 6. **[アクセス許可の選択]** で、**[Access Azure Storage]\(Azure Storage へのアクセス\)** の横にあるチェック ボックスをオンにして、**[選択]** をクリックします。
 7. **[Done]** をクリックします。
 
 これで、**[必要なアクセス許可]** ウィンドウに、Azure AD アプリケーションに Azure Active Directory と Azure Storage の両方へのアクセス権があることが示されます。 アプリを Azure AD に最初に登録する際に、Azure AD へのアクセス許可が自動的に付与されます。
 
-![登録済みのアプリのアクセス許可を示すスクリーン ショット](media/storage-auth-aad-app/registered-app-permissions-2.png)
+![登録済みのアプリのアクセス許可を示すスクリーンショット](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET コード例: ブロック BLOB を作成する
 
@@ -101,7 +101,7 @@ Azure Storage への要求を認証するトークンを取得するには、Azu
 2. **[プロパティ]** をクリックします。
 3. **ディレクトリ ID** 用に提供されている GUID 値をコピーします。 この値は、テナント ID とも呼ばれます。
 
-![テナント ID をコピーする方法を示すスクリーン ショット](./media/storage-auth-aad-app/aad-tenant-id.png)
+![テナント ID をコピーする方法を示すスクリーンショット](./media/storage-auth-aad-app/aad-tenant-id.png)
 
 ### <a name="add-references-and-using-statements"></a>参照と using ステートメントを追加する  
 

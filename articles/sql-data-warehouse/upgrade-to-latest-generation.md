@@ -10,22 +10,25 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3e877733d473993a5acd2f44e088b8b0b4fe130
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 8ec6ffaba8056eacf44d8e1bd911eb1f22daad84
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447261"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314842"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>SQL Data Warehouse をアップグレードしてパフォーマンスを最適化する
+
 Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレージ アーキテクチャにアップグレードします。
 
 ## <a name="why-upgrade"></a>アップグレードする理由
+
 [サポートされるリージョン](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)の Azure portal で SQL Data Warehouse のコンピューティング最適化 Gen2 階層にシームレスにアップグレードできるようになりました。 セルフアップグレードがサポートされていないリージョンの場合は、サポートされているリージョンにアップグレードするか、またはそのリージョンでセルフアップグレードが利用できるようになるまで待つことができます。 今すぐアップグレードして、最新世代の Azure ハードウェアと、高パフォーマンス、高スケーラビリティ、無制限の列指向ストレージなどの拡張されたストレージ アーキテクチャを利用してください。 
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 ## <a name="applies-to"></a>適用対象
+
 このアップグレードは、[サポートされるリージョン](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)の、コンピューティング最適化 Gen1 階層のデータ ウェアハウスに適用されます。
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -49,13 +52,18 @@ Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレ
    |           DW2000            |           DW2000c           |
    |           DW3000            |           DW3000c           |
    |           DW6000            |           DW6000c           |
->[!Note]
->推奨されるパフォーマンス レベルは、直接変換ではありません。 たとえば、DW600 から DW500c に移行することをお勧めします。
+
+> [!Note]
+> 推奨されるパフォーマンス レベルは、直接変換ではありません。 たとえば、DW600 から DW500c に移行することをお勧めします。
 
 ## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>サポートされているリージョンで Azure portal を使用してアップグレードする
 
+## <a name="before-you-begin"></a>開始する前に
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!NOTE]
-> Azure portal による GEN1 から GEN2 への移行は永続的です。 GEN1 に戻るプロセスはありません。  
+> Azure portal による Gen1 から Gen2 への移行は永続的です。 Gen1 に戻るプロセスはありません。  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
@@ -73,13 +81,13 @@ Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレ
    元の Gen1 PowerShell コマンド:
 
    ```powershell
-   Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
+   Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
    ```
 
    変更後:
 
    ```powershell
-   Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
+   Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
    ```
 
    > [!NOTE] 
@@ -100,8 +108,6 @@ Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレ
    > [!NOTE] 
    > SERVICE_OBJECTIVE = 'DW300' が SERVICE_OBJECTIVE = 'DW300**c**' に変更されています
 
-
-
 ## <a name="start-the-upgrade"></a>アップグレードを開始する
 
 1. Azure portal でコンピューティング最適化 Gen1 階層のデータ ウェアハウスに移動します。 アップグレードするコンピューティング最適化 Gen1 階層のデータ ウェアハウスが一時停止している場合は、[データ ウェアハウスを再開](pause-and-resume-compute-portal.md)します。 
@@ -110,7 +116,6 @@ Azure SQL Data Warehouse を最新世代の Azure ハードウェアとストレ
     > [!NOTE]
     > [タスク] タブに **[Gen2 にアップグレードします]** カードが表示されない場合は、お使いのサブスクリプションの種類が現在のリージョンで制限されています。
     > [サポート チケットを提出](sql-data-warehouse-get-started-create-support-ticket.md)し、サブスクリプションをホワイトリストに登録してもらってください。
-
 
 3. アップグレードの前に、ワークロードの実行が完了し、休止していることを確認します。 データ ウェアハウスがコンピューティング最適化 Gen2 階層のデータ ウェアハウスとしてオンラインに戻る前に、数分間のダウンタイムが発生します。 **[アップグレード] を選択します**。
 
@@ -173,6 +178,7 @@ FROM   sys.indexes idx
                        AND idx.object_id = part.object_id 
 WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE'; 
 ```
+
 ## <a name="upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal"></a>Azure portal で復元を使用して Azure の地理的リージョンからアップグレードする
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Azure portal を使用してユーザー定義の復元ポイントを作成する
@@ -190,6 +196,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
     ![復元ポイントの名前](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_1.png)
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Azure portal を使用してアクティブまたは一時停止中のデータベースを復元する
+
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 復元元の SQL データ ウェアハウスに移動します。
 3. [概要] セクションの上部にある **[復元]** を選択します。
@@ -205,11 +212,13 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
     ![ユーザー定義の復元ポイント](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
 ## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>PowerShell を使用して Azure 地理的リージョンから復元する
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 データベースを復旧するには、 [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) コマンドレットを使用します。
 
 > [!NOTE]
 > Gen2 への geo リストアを行うことができます。 そのためには、省略可能なパラメーターとして Gen2 の ServiceObjectiveName (例: DW1000**c**) を指定します。
->
 
 1. Windows PowerShell を開きます。
 2. Azure アカウントに接続して、アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。
@@ -235,7 +244,6 @@ $GeoRestoredDatabase.status
 
 > [!NOTE]
 > 復元が完了した後にデータベースを構成する方法については、「 [復旧後のデータベースの構成](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)」を参照してください。
->
 
 ソース データベースの TDE が有効な場合、復旧したデータベースも TDE が有効になります。
 
@@ -243,4 +251,5 @@ $GeoRestoredDatabase.status
 データ ウェアハウスで問題が発生した場合は、[サポート リクエスト](sql-data-warehouse-get-started-create-support-ticket.md)を作成し、考えられる原因を "Gen2 アップグレード" としてください。
 
 ## <a name="next-steps"></a>次の手順
+
 アップグレードしたデータ ウェアハウスはオンラインです。 拡張アーキテクチャを利用するには、[ワークロード管理のためのリソース クラス](resource-classes-for-workload-management.md)に関する記事をご覧ください。

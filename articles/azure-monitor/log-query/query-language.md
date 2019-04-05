@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: 01d452f97134093e9b40b6ec32f1c9fed41564aa
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ecbea91cef69c80975dd105c35f526b357033a6b
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343053"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749820"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure Monitor ログ クエリ
 Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azure Monitor ログ クエリでは、同じ Kusto クエリ言語のバージョンが使用されます。 [Kusto クエリ言語のドキュメント](/azure/kusto/query)には言語に関するすべての詳細が記載されているため、Azure Monitor ログ クエリを記述するためのプライマリ リソースとなります。 このページでは、クエリの記述方法を学習するためのその他のリソースへのリンクと、言語による Azure Monitor の実装の違いに関する情報へのリンクを示します。
@@ -27,7 +27,7 @@ Azure Monitor ログは、Azure Data Explorer 上に構築されており、Azur
 
 ## <a name="getting-started"></a>使用の開始
 
-- 「[Get started with Azure Monitor log analytics (Azure Monitor ログ分析の開始)](get-started-portal.md)」は、Azure portal でのクエリの作成と結果の操作に関するレッスンです。
+- 「[Azure Monitor Log Analytics の使用を開始する](get-started-portal.md)」は、Azure portal でのクエリの作成と結果の操作に関するレッスンです。
 - 「[Get started with Azure Monitor log queries (Azure Monitor ログ クエリの開始)](get-started-queries.md)」は、Azure Monitor ログ データを使用するクエリの記述に関するレッスンです。
 
 ## <a name="concepts"></a>概念

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6e57979e2c43cc47504495cce23947b93abb4020
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 54b89b74017b8d5d6e4bd1b52c6b3986d2802702
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414935"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118801"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway のリセット
 
@@ -47,7 +47,7 @@ Azure Portal を使用して Resource Manager VPN Gateway をリセットでき�
 1. [Azure Portal](https://portal.azure.com) を開いて、リセットする Resource Manager 仮想ネットワーク ゲートウェイに移動します。
 2. 仮想ネットワーク ゲートウェイのブレードで、[リセット] をクリックします。
 
-  ![Reset VPN Gateway blade](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
+   ![Reset VPN Gateway blade](./media/vpn-gateway-howto-reset-gateway/reset-vpn-gateway-portal.png)
 3. [リセット] ブレードで、**[リセット]** ボタンをクリックします。
 
 ## <a name="ps"></a>PowerShell
@@ -56,7 +56,7 @@ Azure Portal を使用して Resource Manager VPN Gateway をリセットでき�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-ゲートウェイをリセットするコマンドレットは **Reset-AzVirtualNetworkGateway** です。 リセットを実行する前に [Resource Manager PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure/azurerm/install-Az-ps?view=azurermps-4.0.0)の最新版があることを確認します。 次の例では、TestRG1 リソース グループの VNet1GW という名前の仮想ネットワーク ゲートウェイをリセットします。
+ゲートウェイをリセットするコマンドレットは **Reset-AzVirtualNetworkGateway** です。 リセットを実行する前に [PowerShell Az コマンドレット](https://docs.microsoft.com/powershell/module/az.network)の最新バージョンがあることを確認します。 次の例では、TestRG1 リソース グループの VNet1GW という名前の仮想ネットワーク ゲートウェイをリセットします。
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1

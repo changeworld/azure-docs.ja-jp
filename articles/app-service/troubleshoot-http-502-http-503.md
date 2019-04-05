@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5a4b8b2fd3e232d7b42b2f510075c3964ca50531
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 5edd3e51e83b5ab324d1e110a1882b20d935a9b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652576"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899130"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Azure App Service での HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティング
 "502 無効なゲートウェイ" と "503 サービス利用不可" は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でホストされているアプリで発生する一般的なエラーです。 この記事は、これらのエラーのトラブルシューティングを行うために役立ちます。
@@ -46,7 +46,7 @@ ms.locfileid: "53652576"
 2. [データを収集する](#collect)
 3. [問題を緩和する](#mitigate)
 
-[App Service](overview.md) を活用できます。
+[App Service](overview.md) ではステップごとにさまざまなオプションを使用できます。
 
 <a name="observe" />
 
@@ -109,7 +109,7 @@ Azure App Service では、アプリケーションが実行されるスケー�
 スケーリングは、[手動] または [自動] に設定することができます。
 
 #### <a name="use-autoheal"></a>AutoHeal を使用する
-AutoHeal は、選択された設定 (構成の変更、要求、メモリに基づく制限、要求の実行に必要な時間など) に従って、アプリのワーカー プロセスをリサイクルします。 ほとんどの場合、問題を回復するための一番の近道は、プロセスをリサイクルすることです。 アプリはいつでも、Azure Portal 内から直接、再起動できますが、AutoHeal はユーザーの介入なしでそれを自動的に実行します。 必要な作業は、アプリのルート web.config にいくつかのトリガーを追加することだけです。 .Net アプリケーション以外でも、これらの設定は同じように作用します。
+AutoHeal は、選択された設定 (構成の変更、要求、メモリに基づく制限、要求の実行に必要な時間など) に従って、アプリのワーカー プロセスをリサイクルします。 ほとんどの場合、問題を回復するための一番の近道は、プロセスをリサイクルすることです。 アプリはいつでも、Azure Portal 内から直接、再起動できますが、AutoHeal はユーザーの介入なしでそれを自動的に実行します。 必要な作業は、アプリのルート web.config にいくつかのトリガーを追加することだけです。 アプリケーションが .NET アプリ以外でも、これらの設定は同じように作用します。
 
 詳細については、 [Azure Web Sites の自動復旧](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)に関するページを参照してください。
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5be6acc28932cb3c7f0481b18cbcffae27c3ce13
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: be7dbe35800bbe911bc56d1883462534a16499a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002376"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083183"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリでシャード マルチテナント Azure SQL データベースのパフォーマンスを監視および管理する
 
@@ -28,7 +28,7 @@ Wingtip Tickets SaaS マルチテナント データベース アプリは、会
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-
+> 
 > * 指定されたロード ジェネレーターを実行して、シャード マルチテナント データベースの使用をシミュレートする
 > * 負荷の増加に対応しているときのデータベースを監視する
 > * データベースの負荷の増加に対応してデータベースをスケールアップする
@@ -52,7 +52,7 @@ Wingtip Tickets SaaS マルチテナント データベース アプリは、会
 
 [Azure Portal](https://portal.azure.com) には、ほとんどのリソースに監視とアラートが組み込まれています。 SQL Database の場合は、データベース上で監視とアラートを使用できます。 この組み込みの監視とアラートはリソース固有であるため、リソースが少数の場合は便利ですが、リソースの数が多くなると便利とは言えません。
 
-多くのリソースを処理する大規模なシナリオの場合は、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) を使用できます。 これは、出力された診断ログと、ログ分析ワークスペースで収集されたテレメトリに分析を提供する個別の Azure サービスです。 Log Analytics は、多くのサービスからテレメトリを収集できます。また、このサービスを使用して、クエリを実行し、アラートを設定することもできます。
+多くのリソースを処理する大規模なシナリオの場合は、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)を使用できます。 これは、出力された診断ログと、Log Analytics ワークスペースで収集されたテレメトリに分析を提供する個別の Azure サービスです。 Azure Monitor ログは、多くのサービスからテレメトリを収集できます。また、このサービスを使用して、クエリを実行し、アラートを設定することもできます。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Wingtip Tickets SaaS マルチテナント データベース アプリケーションのソース コードとスクリプトを入手する
 
@@ -168,7 +168,7 @@ Wingtip Tickets SaaS マルチテナント データベースは SaaS アプリ�
 この演習では、人気のあるイベントのチケットが発売されたときに高負荷が発生する Salix Salsa の影響をシミュレートします。
 
 1. …\\*Demo-PerformanceMonitoringAndManagement.ps1* スクリプトを開きます。
-1. **$DemoScenario = 5** (_1 つのテナントに標準負荷に加えて高負荷 (約 90 DTU) を生成する_) を設定します。
+1. **$DemoScenario = 5** ("_1 つのテナントに標準負荷に加えて高負荷 (約 90 DTU) を生成_") を設定します。
 1. **$SingleTenantName = Salix Salsa** を設定します。
 1. **F5** を使用して、スクリプトを実行します。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 64cbf8f8704dbb216a15247caf741ff43690496a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54457074"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56751483"
 ---
 > [!div class="op_single_selector"]
 > * [Windows 上の C](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -58,9 +58,9 @@ ms.locfileid: "54457074"
 
 デバイスがソリューション アクセラレータに接続するには、有効な資格情報を使用して IoT Hub に対してデバイス自身の ID を証明する必要があります。 ソリューションにデバイスを追加するときに、これらの資格情報を含むデバイスの接続文字列を保存する機会が与えられます。 このチュートリアルの後半で、クライアント アプリケーションにデバイスの接続文字列を含めます。
 
-デバイスをリモート監視ソリューションに追加するには、ソリューションの **[デバイス]** ページで次の手順を実行します。
+デバイスをリモート監視ソリューションに追加するには、ソリューションの **[デバイス エクスプローラー]** ページで次の手順を実行します。
 
-1. **[+ 新規デバイス]** を選択し、**[デバイスの種類]** で **[物理]** を選択します。
+1. **[+ 新規デバイス]** を選択し、**[デバイスの種類]** で **[実際]** を選択します。
 
     ![実デバイスの追加](media/iot-suite-selector-connecting/devicesprovision.png)
 

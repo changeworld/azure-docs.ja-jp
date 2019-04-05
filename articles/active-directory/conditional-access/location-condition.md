@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/21/2019
+ms.date: 03/01/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb991de113b13666eeaab3f283b9eccd75fbd39
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e59e00b0be7b7694d03961b19fadfa92c5db98b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166031"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58171076"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの場所の条件の概要 
 
@@ -67,7 +67,7 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 
 - **不明な領域を含める** - 一部の IP アドレスは特定の国にマップされません。 このオプションを使用すると、このような IP アドレスを名前付きの場所に含めるかどうかを選択できます。 名前付きの場所を使用するポリシーを不明な場所に適用する場合は、この設定を使用します。
 
-構成できる名前付きの場所の数は、Azure AD 内の関連するオブジェクトのサイズによって制約されます。 利用できる構成は、次のとおりです。
+構成できる名前付きの場所の数は、Azure AD 内の関連するオブジェクトのサイズによって制約されます。 次のいずれかを構成できます。
 
 - 1 つの名前付きの場所で、最大 1,200 の IP 範囲。
 
@@ -142,7 +142,7 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 
 ### <a name="user-ip-address"></a>ユーザーの IP アドレス
 
-ポリシー評価で使用される IP アドレスは、ユーザーのパブリック IP アドレスです。 プライベート ネットワーク上のデバイスの場合、これはイントラネット上のユーザー デバイスのクライアント IP ではなく、ネットワークがパブリック インターネットに接続するために使用するアドレスです。 
+ポリシー評価で使用される IP アドレスは、ユーザーのパブリック IP アドレスです。 プライベート ネットワーク上のデバイスの場合、これはイントラネット上のユーザー デバイスのクライアント IP ではなく、ネットワークがパブリック インターネットに接続するために使用するアドレスです。 デバイスが IPv6 アドレスのみを持つ場合、場所の条件を構成することはできません。
 
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>名前付きの場所の一括アップロードとダウンロード
 

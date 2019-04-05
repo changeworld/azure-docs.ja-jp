@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: hrasheed
-ms.openlocfilehash: 59d32657b3f65ee3e087ea8da3b95fff8a79a6fd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 3041fba89ef29cb40cbdfdf9cd3d261ffeae816f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975425"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450007"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -76,7 +76,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     |仮想マシン名 | この仮想マシンを特定するフレンドリ名を入力します。 この例では、**DNSProxy** を使用します。|
     |リージョン | 前に作成した仮想ネットワークと同じリージョンを選択します。  すべてのリージョンですべての VM サイズを使用できるわけではありません。  |
     |可用性のオプション |  必要な可用性のレベルを選択します。  Azure は、アプリケーションの可用性と耐障害性を管理するためのさまざまなオプションを提供しています。  可用性ゾーンまたは可用性セット内のレプリケートされた VM を使用して、データセンターの障害やメンテナンス イベントからアプリやデータを保護するためのソリューションを設計します。 この例では、**[インフラストラクチャ冗長は必要ありません]** を使用します。 |
-    |イメージ | VM 用のベース オペレーティング システムまたはアプリケーションを選択します。  この例では、最小および最低コストのオプションを選択します。 |
+    |Image | VM 用のベース オペレーティング システムまたはアプリケーションを選択します。  この例では、最小および最低コストのオプションを選択します。 |
     |認証の種類 | __パスワード__ または __SSH 公開キー__:SSH アカウントの認証方法。 安全性の高いパブリック キーを使用することをお勧めします。 この例では、公開キーを使用します。  詳細については、[Linux VM 用の SSH キーの作成と使用](../virtual-machines/linux/mac-create-ssh-keys.md)に関するドキュメントをご覧ください。|
     |ユーザー名 |VM の管理者ユーザー名を入力します。  この例では、**sshuser** を使用します。|
     |[パスワード] または [SSH 公開キー] | 使用可能なフィールドは、**[認証の種類]** として選択された内容によって決定されます。  適切な値を入力します。|
@@ -91,7 +91,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     | フィールド | 値 |
     | --- | --- |
     |仮想ネットワーク | 前に作成した仮想ネットワークを選択します。|
-    |サブネット | 前に作成した仮想ネットワークの既定のサブネットを選択します。 VPN Gateway で使用されているサブネットは選択 __しないでください__。|
+    |Subnet | 前に作成した仮想ネットワークの既定のサブネットを選択します。 VPN Gateway で使用されているサブネットは選択 __しないでください__。|
     |パブリック IP | 自動入力されている値を使用します。  |
 
     ![仮想ネットワークの設定](./media/connect-on-premises-network/virtual-network-settings.png)

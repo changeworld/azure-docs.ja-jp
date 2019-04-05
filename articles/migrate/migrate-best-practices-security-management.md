@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: eaef1c904b5404339c476d86c5b8c2a1740e5a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0bd19492c844e217dc520ae0c189ca467bb7ac0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700079"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011089"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Azure に移行されたワークロードのセキュリティ保護と管理に関するベスト プラクティス
 
@@ -267,7 +267,7 @@ Azure では、高度なセキュリティ オプションを提供するセキ�
 
 - タグ付けとタグの制限事項[について学習する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)。
 - タグ付けを設定してリソース グループからリソースにタグを適用するための PowerShell と CLI の例を[確認する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags#powershell)。
-- Azure のタグ付けのベスト プラクティスを[読む](http://www.azurefieldnotes.com/2016/07/18/azure-resource-tagging-best-practices/)。
+- Azure のタグ付けのベスト プラクティスを[読む](https://www.azurefieldnotes.com/2016/07/18/azure-resource-tagging-best-practices/)。
 
 
 ## <a name="best-practice-implement-blueprints"></a>ベスト プラクティス:ブループリントを実装する
@@ -588,7 +588,7 @@ Azure リソースでは、かなり多くのログ メトリックとテレメ�
 
 - 既定では、ほとんどのリソースの種類で診断ログは有効になっていません。
 - リソース全体で診断ログを有効にすることにより、ログ データのクエリを実行し、アラートとそれに基づくプレイブックを作成できます。
-- 診断ログを有効にするとき、各リソースには特定のカテゴリのセットがあります。 1 つまたは複数のログ カテゴリと、ログ データの場所を選択します。 ログは、ストレージ アカウント、イベント ハブ、または Log Analytics に送信できます。 
+- 診断ログを有効にするとき、各リソースには特定のカテゴリのセットがあります。 1 つまたは複数のログ カテゴリと、ログ データの場所を選択します。 ログは、ストレージ アカウント、イベント ハブ、または Azure Monitor ログに送信できます。 
 
 
 ![診断ログ](./media/migrate-best-practices-security-management/diagnostics.png)
@@ -679,7 +679,7 @@ Azure VM をオペレーティング システムとソフトウェアの最新�
 Azure Automation には Change Tracking ソリューションがあります。
 
 - このソリューションでは、Windows および Linux のソフトウェアとファイル、Windows のレジストリ キー、Windows サービス、および Linux デーモンに対する変更が追跡されます。
-- 監視対象のサーバーでの変更は、クラウドの Log Analytics サービスに送信されて、処理されます。
+- 監視サーバーに対する変更は、クラウドの Azure Monitor サービスに送信されて、処理されます。
 - 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
 - [変更の追跡] ダッシュボードでは、サーバー インフラストラクチャで行われた変更を簡単に確認できます。
 

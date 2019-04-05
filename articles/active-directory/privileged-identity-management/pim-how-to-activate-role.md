@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/21/2018
+ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0023ac374ef70593d0ab2d9589c99d0f37e19ff8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7fc0a22f4300a06b5c827973ffb2436d0b8cfb36
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189601"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542758"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>PIM で自分の Azure AD ディレクトリ ロールをアクティブにする
 
@@ -71,25 +71,15 @@ Azure AD ディレクトリ ロールが必要な場合は、PIM の **[自分�
 
 1. **[アクティブ化]** をクリックします。
 
-    承認が必要ないロールは、アクティブ化され、アクティブなロールの一覧に追加されます。 すぐにロールを使用する場合は、次のセクションの手順に従います。
+    ロールに承認が必要ない場合、**[アクティブ化の状態]** ウィンドウが表示され、アクティブ化の状態が示されます。
+
+    ![アクティブ化の状態](./media/pim-how-to-activate-role/activation-status.png)
+
+    すべてのステージが完了したら、**[サインアウト]** リンクをクリックして、Azure portal からサインアウトします。 ポータルにもう一度サインインすると、ロールを使用できるようになります。
 
     アクティブ化に[承認が必要なロール](./azure-ad-pim-approval-workflow.md)の場合は、ブラウザーの右上隅に通知が表示され、承認待ちになっていることが示されます。
 
     ![要求保留の通知](./media/pim-how-to-activate-role/directory-roles-activate-notification.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>アクティブ化後すぐにロールを使用する
-
-PIM でロールをアクティブにすると、必要な管理ポータルにアクセスしたり、特定の管理ワークロード内で機能を実行したりできるようになるには、少なくとも 10 分かかります。 アクセス許可の更新を強制するには、次の手順で説明されている **[アプリケーションへのアクセス]** のページを使用します。
-
-1. Azure AD Privileged Identity Management を開きます。
-
-1. **[アプリケーションへのアクセス]** ページをクリックします。
-
-    ![PIM のアプリケーションへのアクセス](./media/pim-how-to-activate-role/pim-application-access.png)
-
-1. **[Azure Active Directory]** のリンクをクリックして、ポータルの **[すべてのユーザー]** ページを再度開きます。
-
-    このリンクをクリックすると、現在のトークンが無効になり、更新されたアクセス許可を含む新しいトークンが Azure portal によって強制的に取得されます。
 
 ## <a name="view-the-status-of-your-requests"></a>要求の状態を表示する
 
@@ -139,7 +129,7 @@ PIM でロールをアクティブにすると、必要な管理ポータルに�
 
 ### <a name="permissions-not-granted-after-activating-a-role"></a>ロールをアクティブにした後、アクセス許可が付与されない
 
-PIM でロールをアクティブにすると、必要な管理ポータルにアクセスしたり、特定の管理ワークロード内で機能を実行したりできるようになるには、少なくとも 10 分かかります。 アクセス許可の更新を強制するには、先の「[アクティブ化後すぐにロールを使用する](#use-a-role-immediately-after-activation)」で説明した **[アプリケーションへのアクセス]** のページを使用します。
+PIM でロールをアクティブにすると、必要な管理ポータルにアクセスしたり、特定の管理ワークロード内で機能を実行したりできるようになるには、少なくとも 10 分かかります。 アクティブ化が完了したら、Azure portal からサインアウトし、もう一度サインインして、新しくアクティブになったロールの使用を開始します。
 
 追加のトラブルシューティング手順については、[昇格されたアクセス許可のトラブルシューティング](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx)に関するページを参照してください。
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 1d01755ae62843ad1f2f1728df046b767fe123ca
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ae4e4487b3d9df4b2cf756174f0a56e721af91c4
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886579"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406909"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Log Analytics で Azure サービスのログとメトリックを使用できるように収集する
 
@@ -79,16 +79,19 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 * 利用できるログの詳細については、「[診断ログでサポートされているサービスとスキーマ](../../azure-monitor/platform/diagnostic-logs-schema.md)」を参照してください。
 
 ### <a name="enable-diagnostics-with-powershell"></a>PowerShell を使用して診断を有効にする
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 2016 年 11 月 (v2.3.0) 以降のリリースの [Azure PowerShell](/powershell/azure/overview) が必要です。
 
-次の PowerShell の例は、[Set-AzureRmDiagnosticSetting](/powershell/module/azurerm.insights/set-azurermdiagnosticsetting) を使用してネットワーク セキュリティ グループで診断を有効にする方法を示しています。 同じ方法をサポート対象のすべてのリソースで利用できます。診断を有効にするリソースのリソース ID に `$resourceId` を設定します。
+次の PowerShell の例は、[Set-AzDiagnosticSetting](/powershell/module/Az.Monitor/Set-AzDiagnosticSetting) を使用してネットワーク セキュリティ グループで診断を有効にする方法を示しています。 同じ方法をサポート対象のすべてのリソースで利用できます。診断を有効にするリソースのリソース ID に `$resourceId` を設定します。
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
 $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
 
-Set-AzureRmDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enabled $true
+Set-AzDiagnosticSetting -ResourceId $ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
 ### <a name="enable-diagnostics-with-resource-manager-templates"></a>Resource Manager テンプレートを使用して診断を有効にする

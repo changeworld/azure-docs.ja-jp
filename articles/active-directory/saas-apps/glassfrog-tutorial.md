@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6bdc9f2214f8a23ffd1a126905faf00f2fc4264
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8287a9847632d078d3c724d06c3d581b7bed510c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199637"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>チュートリアル:Azure Active Directory と GlassFrog の統合
 
@@ -141,12 +141,12 @@ GlassFrog で Azure AD シングル サインオンを構成してテストす�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+    d. **作成**を選択します。
  
 ### <a name="create-a-glassfrog-test-user"></a>GlassFrog テスト ユーザーの作成
 

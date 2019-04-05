@@ -5,24 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 02/28/2019
 ms.author: tamram
-ms.openlocfilehash: 500d5217a35cdc569964195558b6e4a2c023c614
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d57023063fe23db9f57d52ab9cdf99e0687c1fdf
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352140"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217293"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
 汎用 v2 ストレージ アカウントは、最新の Azure Storage 機能をサポートし、汎用 v1 および BLOB ストレージ アカウントのすべての機能を組み込んでいます。 ほとんどのストレージ シナリオに汎用 v2 アカウントをお勧めします。 汎用 v2 アカウントは、業界内の他社に引けを取らないトランザクション料金で、Azure Storage に対してギガバイトあたり容量の最低価格を提供しています。
 
-汎用 v1 または BLOB ストレージ アカウントから汎用 v2 ストレージ アカウントにアップグレードする方法は簡単です。 Azure portal、PowerShell、または Azure CLI を使用してアップグレードできます。 
+汎用 v1 または BLOB ストレージ アカウントから汎用 v2 ストレージ アカウントにアップグレードする方法は簡単です。 Azure portal、PowerShell、または Azure CLI を使用してアップグレードできます。
 
-> [!NOTE]
-> ご使用のストレージ アカウントを汎用 v2 アカウントにアップグレードするのは無料です。
-> ストレージ アクセス層を変更すると、請求書が変更されることがあります。 詳細については、「[価格と課金](#pricing-and-billing)」セクションを参照してください。
+> [!IMPORTANT]
+> v1 のストレージ アカウントから汎用の v2 へのアップグレードは永続的であり、元に戻すことはできません。
 
 ## <a name="upgrade-using-the-azure-portal"></a>Azure portal を使用したアップグレード
 
@@ -68,8 +67,10 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 いずれの場合も、最初にすべきことは、汎用 v2 ストレージ アカウントに格納されるデータの格納、アクセス、操作にかかるコストを見積もり、そのコストを現在のコストと比較することです。
 
-
 ## <a name="pricing-and-billing"></a>価格と課金
+
+v1 ストレージ アカウントから汎用 v2 アカウントへのアップグレードは無料です。 ただし、ストレージ アクセス層を変更すると、請求が変更されることがあります。 
+
 すべてのストレージ アカウントでは、各 BLOB の層に基づいた Blob Storage の価格モデルを採用しています。 ストレージ アカウントを使用するときには、課金に関して次の点を考慮してください。
 
 * **ストレージ コスト**:データの格納のコストは、格納されているデータの量だけでなく、ストレージ アクセス層にも左右されます。 よりクールな層になるほど、ギガバイトあたりのコストが下がります。
@@ -157,7 +158,7 @@ BLOB ストレージ アカウントのデータ アクセス コストを見積
 また、BLOB ストレージ アカウントの geo レプリケーション データ転送のコストは、GRS ストレージ アカウントまたは RA-GRS ストレージ アカウントを使用する場合に書き込まれるデータ量の見積もりを使用することによって計算することもできます。
 
 > [!NOTE]
-> ホット ストレージ アクセス層またはクール ストレージ アクセス層を使用する場合のコストの計算に関する詳細な例については、「*Azure Storage の価格* 」というページにある、["ホットおよびクール アクセス層とはどのようなものですか? また、どちらを使用すればよいのでしょうか?"](https://azure.microsoft.com/pricing/details/storage/)というタイトルのよくあるご質問を参照します。
+> ホット ストレージ アクセス層またはクール ストレージ アクセス層を使用する場合のコストの計算に関する詳細な例については、「*Azure Storage の価格* 」というページにある、 ["ホットおよびクール アクセス層とはどのようなものですか? また、どちらを使用すればよいのでしょうか?"](https://azure.microsoft.com/pricing/details/storage/)にサインインします。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a8cfb39c26813b605d69fb3a2b3057ec2b0d897
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e68175471b24c48f23cc48cff9d0b47c937f588a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217464"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217191"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
 
@@ -65,6 +65,9 @@ ms.locfileid: "56217464"
 | 信頼できる IP | | |● |
 | 信頼済みデバイスの MFA の記憶 |● |● |● |
 | オンプレミス アプリケーション用の MFA | | |● |
+
+> [!IMPORTANT]
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
 
 ## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Azure AD 管理者用の Azure Multi-Factor Authentication を有効にする方法
 

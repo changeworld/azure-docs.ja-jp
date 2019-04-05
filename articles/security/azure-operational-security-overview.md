@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 38054d6ee3799296887726954ef1f096945aeaeb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116475"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241087"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -29,13 +29,13 @@ ms.locfileid: "56116475"
 
 IT 運用チームは、データセンター インフラストラクチャ、アプリケーション、データの管理を担当します。これには、こうしたシステムの安定性とセキュリティが含まれます。 ただし、多くの場合、複雑さを増す IT 環境のセキュリティを組織が把握するには、複数のセキュリティおよび管理システムのデータをまとめる必要があります。
 
-[Microsoft Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、クラウドベースの IT 管理ソリューションです。 このソリューションのコア機能は、Azure で実行される次のサービスによって提供されます。 Azure には、オンプレミスおよびクラウド インフラストラクチャを管理して保護できる複数のサービスがあります。 各サービスでは、固有の管理機能が提供されます。 お客様は、複数のサービスを組み合わせて、さまざまな管理シナリオを実現することができます。 
+[Microsoft Azure Monitor ログ](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、クラウドベースの IT 管理ソリューションです。 このソリューションのコア機能は、Azure で実行される次のサービスによって提供されます。 Azure には、オンプレミスおよびクラウド インフラストラクチャを管理して保護できる複数のサービスがあります。 各サービスでは、固有の管理機能が提供されます。 お客様は、複数のサービスを組み合わせて、さまざまな管理シナリオを実現することができます。 
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) では、マネージド ソースから中央のデータ ストアへのデータの収集が行われます。 このデータには、API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 収集されたデータは、アラート、分析、エクスポートに使用できます。 
 
-さまざまなソースからのデータを統合し、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、Log Analytics ではデータの収集とそのデータに対して実行される操作が明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
+さまざまなソースからのデータを統合し、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、Azure Monitor ログではデータの収集とそのデータに対して実行される操作が明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
 
 ### <a name="automation"></a>Automation
 
@@ -93,7 +93,7 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 >[!Note]
 >Security Center のロールと許可されているアクションの詳細については、「[Azure Security Center におけるアクセス許可](https://docs.microsoft.com/azure/security-center/security-center-permissions)」を参照してください。
 
-Security Center では、Microsoft Monitoring Agent が使用されます。 これは、Log Analytics サービスで使用されるエージェントと同じです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)または新規のワークスペースのいずれかに格納されます。
+Security Center では、Microsoft Monitoring Agent が使用されます。 これは、Azure Monitor サービスで使用されるのと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)または新規のワークスペースのいずれかに格納されます。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

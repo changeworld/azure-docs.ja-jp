@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4f6d49a60df09e78c3cbeee22d43827ecc9f9f64
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ac9abaaea7f33627332a9bc7563745b5efdf3d12
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118423"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436250"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
@@ -327,7 +327,7 @@ Azure Functions ではデバッグ関数コードが直接サポートされて�
 
 既定では、Durable Functions の状態が Azure Storage に格納されます。 つまり、オーケストレーションの状態は、[Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) などのツールを使用して調査することができます。
 
-![Azure Storage Explorer のスクリーン ショット](./media/durable-functions-diagnostics/storage-explorer.png)
+![Azure Storage Explorer のスクリーンショット](./media/durable-functions-diagnostics/storage-explorer.png)
 
 オーケストレーションの状態を正確に把握できるので、これはデバッグで役に立ちます。 また、キュー内のメッセージを調べることで、保留中になっている (場合によってはスタックしている) 処理を把握することも可能です。
 

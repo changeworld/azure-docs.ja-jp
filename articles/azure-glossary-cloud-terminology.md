@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 748a9c0c583d4e1af9626527a440b19900898b87
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600306"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823860"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集:Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -147,7 +147,7 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 「[仮想マシンの拡張機能とその機能について](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Windows) と「[仮想マシンの拡張機能とその機能について](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(Linux) をご覧ください。
 
 ## <a name="vnet"></a>Virtual network
-他のどの Azure テナントとも切り離された Azure リソース間の接続を提供するネットワーク。 [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して、仮想ネットワーク間の接続や[仮想ネットワークとオンプレミス ネットワーク間](vpn-gateway/vpn-gateway-plan-design.md)の接続を確立できます。 仮想ネットワーク内では、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。  
+他のどの Azure テナントとも切り離された Azure リソース間の接続を提供するネットワーク。 [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して、仮想ネットワーク間の接続や仮想ネットワークとオンプレミス ネットワーク間の接続を確立できます。 仮想ネットワーク内では、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。  
 「[Virtual Network の概要](virtual-network/virtual-networks-overview.md)」をご覧ください。  
 
 ## <a name="web-app"></a>Web アプリ

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9910155b439b5ee6d0e5abd96d750943605098a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 88839598b3ae11f0041b3451ba5481547c019c9d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211599"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449616"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Server と Active Directory 間のディレクトリ統合
 
@@ -71,7 +71,7 @@ Azure Multi-Factor Authentication には、次の 3 つのフィルター オプ
 | --- | --- |
 | 一意識別子 |コンテナー、セキュリティ グループ、およびユーザー レコードの一意識別子として機能する属性の属性名を入力します。  Active Directory では、これは通常は objectGUID です。 その他の LDAP 実装では、entryUUID またはそれに類似する名前が使用されることがあります。  既定値は objectGUID です。 |
 | 一意識別子の型 |一意識別子属性の型を選択します。  Active Directory では、objectGUID 属性の型は GUID です。 その他の LDAP 実装では、ASCII バイト配列型または文字列型が使用されることがあります。  既定値は [GUID] です。 <br><br>同期項目はその一意識別子によって参照されるため、この型を正しく設定することが重要です。 ディレクトリから目的のオブジェクトを直接検索するときに一意識別子の型が使用されます。  ディレクトリに実際に保存されている値が ASCII 文字のバイト配列のときに型を [文字列] に設定すると、同期が正常に機能しなくなります。 |
-| 識別名 |各レコードの識別名を含む属性の属性名を入力します。  Active Directory では、これは通常は distinguishedName です。 その他の LDAP 実装では、entryDN またはそれに類似する名前が使用されることがあります。  既定値は distinguishedName です。 <br><br>識別名のみが含まれている属性が存在しない場合は、adspath 属性を使用できます。  パスの "LDAP://\<サーバー\>/" 部分は自動的に削除され、オブジェクトの識別名だけが残ります。 |
+| 識別名 |各レコードの識別名を含む属性の属性名を入力します。  Active Directory では、これは通常は distinguishedName です。 その他の LDAP 実装では、entryDN またはそれに類似する名前が使用されることがあります。  既定値は distinguishedName です。 <br><br>識別名のみが含まれている属性が存在しない場合は、AD パス属性を使用できます。  パスの "LDAP://\<サーバー\>/" 部分は自動的に削除され、オブジェクトの識別名だけが残ります。 |
 | コンテナー名 |コンテナー レコード内の名前を含む属性の属性名を入力します。  この属性の値は、Active Directory からインポートするとき、または同期項目を追加するときに、コンテナー階層に表示されます。  既定値は name です。 <br><br>注: コンテナーごとに異なる属性をその名前に使用する場合は、複数のコンテナー名属性をセミコロンで区切って指定します。  コンテナー オブジェクトで見つかった最初のコンテナー名の属性が、名前を表示するために使用されます。 |
 | セキュリティ グループ名 |セキュリティ グループ レコード内の名前を含む属性の属性名を入力します。  この属性の値は、Active Directory からインポートするとき、または同期項目を追加するときに、セキュリティ グループ リストに表示されます。  既定値は name です。 |
 | ユーザー名 |ユーザー レコード内のユーザー名を含む属性の属性名を入力します。  この属性の値は、Multi-Factor Auth Server ユーザー名として使用されます。  2 つ目の属性を 1 つ目の属性のバックアップとして指定できます。  2 つ目の属性は、1 つ目の属性にユーザーの値が含まれていない場合にのみ使用されます。  既定値は userPrincipalName と sAMAccountName です。 |

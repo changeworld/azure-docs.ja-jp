@@ -1,19 +1,19 @@
 ---
 title: Azure アクティビティ ログのアーカイブ
 description: ストレージ アカウントの長期保持に関する Azure アクティビティ ログをアーカイブします。
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
-ms.author: johnkem
+ms.date: 02/22/2019
+ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: d9abfe90296b27918594c41a207befe2b59027b9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5328173090bce3e3adf51a1503e18c8da5532b0e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461606"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310907"
 ---
 # <a name="archive-the-azure-activity-log"></a>Azure アクティビティ ログのアーカイブ
 この記事では、Azure Portal、PowerShell コマンドレット、またはクロス プラットフォーム CLI を使用して、ストレージ アカウントで [**Azure アクティビティ ログ**](../../azure-monitor/platform/activity-logs-overview.md)をアーカイブする方法について説明します。 このオプションは、監査、静的分析、またはバックアップに対して (保持ポリシーを完全に制御して) 90 日よりも長いアクティビティ ログを保持する場合に便利です。 90 日以下でイベントを保持する必要があるだけの場合は、ストレージ アカウントにアーカイブを設定する必要はありません。アーカイブを有効にしなければ、アクティビティ ログのイベントは Azure プラットフォームに90 日間保持されるためです。
@@ -26,11 +26,8 @@ ms.locfileid: "54461606"
 ## <a name="prerequisites"></a>前提条件
 開始する前に、アクティビティ ログのアーカイブ先の[ストレージ アカウントを作成](../../storage/common/storage-quickstart-create-account.md)する必要があります。 既存のストレージ アカウントを使用しないことを強くお勧めします。既存のストレージ アカウントには、監視データへのアクセスをさらに制御するために保存されている他の非監視データがあります。 ただし、診断ログとメトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、アクティビティ ログのそのストレージ アカウントも使用するのが適切であることがあります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントは、ログを出力するのと同じサブスクリプションに属している必要はありません。
 
-> [!NOTE]
->  現在、セキュリティで保護された仮想ネットワークの背後で作成されたストレージ アカウントにデータをアーカイブすることはできません。
-
 ## <a name="log-profile"></a>ログ プロファイル
-以下の方法のいずれかを使用して、アクティビティ ログをアーカイブするには、サブスクリプションに **ログ プロファイル** を設定します。 ログ プロファイルは、保存またはストリーミングされたイベントの種類と、ストレージ アカウントまたはイベント ハブの出力の種類を定義します。 また、ストレージ アカウントに格納されたイベントの保持ポリシー (保持する日数) も定義します。 保持ポリシーが 0 に設定されている場合は、イベントが無制限に保存されます。 それ以外の場合は、1 ～ 2,147, 483,647 の範囲の任意の値に設定できます。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。 [ログ プロファイルの詳細については、こちらを参照してください](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。 
+以下の方法のいずれかを使用して、アクティビティ ログをアーカイブするには、サブスクリプションに **ログ プロファイル** を設定します。 ログ プロファイルは、保存またはストリーミングされたイベントの種類と、ストレージ アカウントまたはイベント ハブの出力の種類を定義します。 また、ストレージ アカウントに格納されたイベントの保持ポリシー (保持する日数) も定義します。 保持ポリシーが 0 に設定されている場合は、イベントが無制限に保存されます。 それ以外の場合は、1 から 365 の範囲の任意の値に設定できます。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。 [ログ プロファイルの詳細については、こちらを参照してください](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>ポータルを使用したアクティビティ ログのアーカイブ
 1. ポータルで、左側のナビゲーションの **[アクティビティ ログ]** リンクをクリックします。 アクティビティ ログのリンクが表示されない場合は、最初に **[すべてのサービス]** リンクをクリックします。
@@ -47,10 +44,12 @@ ms.locfileid: "54461606"
 
 ## <a name="archive-the-activity-log-via-powershell"></a>PowerShell を使用したアクティビティ ログのアーカイブ
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
    ```powershell
    # Settings needed for the new log profile
    $logProfileName = "default"
-   $locations = (Get-AzureRmLocation).Location
+   $locations = (Get-AzLocation).Location
    $locations += "global"
    $subscriptionId = "<your Azure subscription Id>"
    $resourceGroupName = "<resource group name your storage account belongs to>"
@@ -59,13 +58,13 @@ ms.locfileid: "54461606"
    # Build the storage account Id from the settings above
    $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -StorageAccountId $storageAccountId
+   Add-AzLogProfile -Name $logProfileName -Location $locations -StorageAccountId $storageAccountId
    ```
 
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
 | StorageAccountId |はい |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
-| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 `(Get-AzureRmLocation).Location` を使って、サブスクリプションのすべてのリージョンの一覧を見ることができます。 |
+| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 `(Get-AzLocation).Location` を使って、サブスクリプションのすべてのリージョンの一覧を見ることができます。 |
 | RetentionInDays |いいえ  |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
 | Categories |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。  指定しないと、すべての可能な値と見なされます |
 

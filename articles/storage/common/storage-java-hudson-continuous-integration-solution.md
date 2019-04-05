@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 431a4ef4e84c88467dc7e36bb12d406309f9a8b7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d00bf87a80e13808c42a5839ad0f4508ad7214b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467834"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011111"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -25,7 +25,7 @@ ms.locfileid: "55467834"
 ## <a name="introduction-to-hudson"></a>Hudson の概要
 Hudson では、開発者がコードの変更を簡単に統合し、ビルドを自動的に頻繁に生成できるようになり、ソフトウェア プロジェクトの継続的な統合が実現されます。これにより、開発者の生産性が向上します。 ビルドはバージョン管理され、ビルド アーティファクトをさまざまなリポジトリにアップロードできます。 この記事では、Azure BLOB ストレージをビルド アーティファクトのリポジトリとして使用する方法について説明します。 また、Azure BLOB ストレージから依存関係をダウンロードする方法も紹介します。
 
-Hudson の詳細については、「 [Meet Hudson (Hudson について)](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)」を参照してください。
+Hudson の詳細については、「 [Meet Hudson (Hudson について)](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)」を参照してください。
 
 ## <a name="benefits-of-using-the-blob-service"></a>Blob service を使用するメリット
 Blob service を使用してアジャイル開発のビルド アーティファクトをホストするメリットには、次の点が挙げられます。
@@ -52,7 +52,7 @@ Hudson CI ソリューションで Blob service を使用するには、次の�
   5. 初期セットアップの完了後、Hudson WAR の実行中のインスタンスを取り消し、Hudson WAR を再度起動します。次に、Azure Storage プラグインのインストールと構成を行うために、Hudson ダッシュボード (`http://localhost:8080/`) を再度開きます。
      
       通常の Hudson CI ソリューションであればサービスとして実行されるように設定しますが、このチュートリアルではコマンド ラインで Hudson war を実行するだけで十分です。
-* Azure アカウント。 Azure アカウントには、<http://www.azure.com> でサインアップできます。
+* Azure アカウント。 Azure アカウントには、<https://www.azure.com> でサインアップできます。
 * Azure ストレージ アカウント。 まだストレージ アカウントを取得していない場合には、「 [ストレージ アカウントを作成する](../common/storage-quickstart-create-account.md)」に記載の手順に従って作成できます。
 * 以降では、Hudson CI のビルド アーティファクトで Blob service をリポジトリとして使用するうえで必要な手順を、基本的な例を使って説明しています。Hudson CI ソリューションにある程度習熟していることが望ましいものの、必須ではありません。
 
@@ -134,7 +134,7 @@ Hudson で Blob service を使用するには、Azure Storage プラグインを
 1. ジョブ構成の **[Build]** セクションで **[Add build step]** をクリックし、**[Download from Azure Blob storage]** を選択します。
 2. **[Storage Account Name]** では、使用するストレージ アカウントを選択します。
 3. **[Container name]** では、ダウンロードする BLOB が格納されているコンテナーの名前を指定します。 環境変数を使用できます。
-4. **[Blob name]** には BLOB 名を指定します。 環境変数を使用できます。 また、アスタリスクを使用して、BLOB 名の先頭文字 (複数可) の後にワイルドカードを指定できます。 たとえば「**project\***」と入力すると、名前が「**project**」で始まる BLOB がすべて指定されます。
+4. **[Blob name]** には BLOB 名を指定します。 環境変数を使用できます。 また、アスタリスクを使用して、BLOB 名の先頭文字 (複数可) の後にワイルドカードを指定できます。 たとえば「**project\\***」と入力すると、名前が "**project**" で始まる BLOB がすべて指定されます。
 5. [省略可能] **[Download path]** では、Azure Blob Storage のファイルのダウンロード先となる、Hudson を実行しているコンピューター上のパスを指定します。 Azure BLOB ストレージのファイルはこのパスにダウンロードされます。 環境変数も使用できます( **[Download path]** に値を入力しない場合、Azure Blob Storage のファイルは、ジョブのワークスペースにダウンロードされます)。
 
 Azure BLOB ストレージからダウンロードする項目が他にもある場合は、追加のビルド手順を作成できます。
@@ -158,7 +158,7 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
 ## <a name="next-steps"></a>次の手順
-* [Meet Hudson (Hudson について)](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
+* [Meet Hudson (Hudson について)](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Azure Storage SDK for Java](https://github.com/azure/azure-storage-java)
 * [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)

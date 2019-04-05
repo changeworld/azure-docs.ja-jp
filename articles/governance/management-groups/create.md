@@ -10,18 +10,20 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 01bfd10b2f37a7990ab9a1badfcb09422baa391a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 8e887409c35619261544b92395301ce06a033e8b
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342203"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992738"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 
 管理グループは、複数のサブスクリプションのアクセス、ポリシー、コンプライアンスを管理するのに役立つコンテナーです。 これらのコンテナーを作成して、[Azure Policy](../policy/overview.md) と [Azure ロール ベースのアクセス制御](../../role-based-access-control/overview.md)で使用できる効果的で効率的な階層を構築します。 管理グループについて詳しくは、「[Azure 管理グループでリソースを整理する](overview.md)」をご覧ください。
 
 ディレクトリに作成される最初の管理グループは、完了までに最大 15 分かかる場合があります。 Azure 内でディレクトリの管理グループ サービスを初めて設定する際に実行するプロセスがあります。 プロセスが完了すると、通知を受け取ります。
+
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="create-a-management-group"></a>管理グループの作成
 
@@ -48,10 +50,10 @@ ms.locfileid: "56342203"
 
 ### <a name="create-in-powershell"></a>PowerShell で作成する
 
-PowerShell で、New-AzureRmManagementGroup コマンドレットを使用します。
+PowerShell で、New-AzManagementGroup コマンドレットを使用します。
 
 ```azurepowershell-interactive
-New-AzureRmManagementGroup -GroupName 'Contoso'
+New-AzManagementGroup -GroupName 'Contoso'
 ```
 
 **GroupName** は、作成される一意識別子です。 この ID は、このグループを参照するために他のコマンドで使用され、後で変更することはできません。
@@ -59,7 +61,7 @@ New-AzureRmManagementGroup -GroupName 'Contoso'
 Azure Portal 内で管理グループを別の名前で表示する場合は、**DisplayName** パラメーターを文字列と共に追加します。 たとえば、Contoso という GroupName と "Contoso Group" という表示名を持つ管理グループを作成する場合は、次のコマンドレットを使用します。
 
 ```azurepowershell-interactive
-New-AzureRmManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId 'ContosoTenant'
+New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoTenant'
 ```
 
 この管理グループを別の管理の下に作成するには **ParentId** パラメーターを使用します。
@@ -78,6 +80,6 @@ az account management-group create --name 'Contoso'
 
 - [管理グループを作成して Azure リソースを整理する](create.md)
 - [管理グループを変更、削除、または管理する方法](manage.md)
-- [Azure PowerShell Resources モジュールで管理グループを確認する](https://aka.ms/mgPSdocs)
-- [REST API で管理グループを確認する](https://aka.ms/mgAPIdocs)
-- [Azure CLI で管理グループを確認する](https://aka.ms/mgclidoc)
+- [Azure PowerShell Resources モジュールで管理グループを確認する](/powershell/module/az.resources#resources)
+- [REST API で管理グループを確認する](/rest/api/resources/managementgroups)
+- [Azure CLI で管理グループを確認する](/cli/azure/account/management-group)

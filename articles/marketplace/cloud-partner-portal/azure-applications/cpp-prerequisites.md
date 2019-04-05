@@ -3,7 +3,7 @@ title: Azure Application オファーの前提条件 | Microsoft Docs
 description: Azure Marketplace で Azure アプリケーション オファーを発行するための前提条件。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
-author: dan-wesley
+author: v-miclar
 manager: Patrick.Butler
 editor: ''
 ms.assetid: ''
@@ -12,18 +12,20 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: b3f978635127ef6aabb123d1c95b76ed06fccbbf
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: df127eec662f8598246f276ef9b1608ae3021512
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097792"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007164"
 ---
 # <a name="azure-application-prerequisites"></a>Azure アプリケーションの前提条件
 
-この記事では、Azure Marketplace でマネージド アプリケーション オファーを発行するための技術面/ビジネス面の前提条件について説明します。  「[Azure Marketplace 向けのソリューション テンプレートとマネージド アプリケーションの作成](https://channel9.msdn.com/Events/Build/2018/BRK3603)」のビデオをご覧ください。
+この記事では、Azure Marketplace でマネージド アプリケーション オファーを発行するための技術面/ビジネス面の前提条件について説明します。  まだ完了していない場合は、次の情報源を確認します。
+- SKU の種類に応じて、次のいずれかを確認します: 「[Azure アプリケーション: ソリューション テンプレートのオファー発行ガイド](../../marketplace-solution-templates.md)」または「[Azure アプリケーション: マネージド アプリケーション オファーの発行ガイド](../../marketplace-managed-apps.md)」
+- [Azure Marketplace 向けのソリューション テンプレートとマネージド アプリケーションの作成](https://channel9.msdn.com/Events/Build/2018/BRK3603)に関するビデオ
 
 
 ## <a name="technical-requirements"></a>技術的な要件
@@ -43,7 +45,7 @@ ms.locfileid: "56097792"
 
 ビジネス要件には、次の手続き、契約、法律に関する義務が含まれます。
 
-* 登録済みのクラウド マーケットプレース パブリッシャーである必要があります。 登録していない場合は、「クラウド マーケットプレース パブリッシャーになる」の手順に従ってください。
+* 登録済みのクラウド マーケットプレース パブリッシャーである必要があります。 登録していない場合は、「[クラウド マーケットプレース パブリッシャーになる](../../become-publisher.md)」の手順に従ってください。
 
 >[!NOTE]
 >Microsoft デベロッパー センター登録アカウントと同じアカウントを使用して、Cloud パートナー ポータルにサインインする必要があります。 複数の Azure Marketplace サービスに対して 1 つの Microsoft アカウントを使用してください。 このアカウントは、個々のサービスまたはオファーに固有のものにしないでください。
@@ -65,8 +67,8 @@ ms.locfileid: "56097792"
   * タイトル
   * (HTML 形式) での説明
   * PNG 形式で次の固定画像サイズのロゴ画像:40 x 40 ピクセル、90 x 90 ピクセル、115 x 115 ピクセル、255 x 115 ピクセル。
-* *利用規約*と*プライバシー ポリシー*
-* ドキュメント
+* "*利用規約*" と "*プライバシー ポリシー*" に関するドキュメント
+* アプリケーションのドキュメント
 * サポートの連絡先
 
 

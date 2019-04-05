@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e01b06b2031da20ee9349588bd4a7ee757fbc22c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e9cd97bc226ec69441b933a9f7bf3caec17f1478
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173302"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>チュートリアル:Azure Active Directory と RingCentral の統合
 
@@ -126,7 +126,8 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 
     ![image](./media/ringcentral-tutorial/b21-domains_and_urls.png)
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[サインオン URL]** テキスト ボックスに、URL を入力します。
+    d. **[サインオン URL]** テキスト ボックスに、URL を入力します。
+
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -140,6 +141,7 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 6. **サービス プロバイダー メタデータ ファイル**がない場合は、次の手順に従います。
 
     a. **[サインオン URL]** テキスト ボックスに、URL を入力します。
+
     | |
     |--|
     | `https://service.ringcentral.com` |
@@ -148,12 +150,14 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
     | `https://service.ringcentral.eu` |
 
     b. **[識別子]** ボックスに次の URL を入力します。
+
     | |
     |--|
     |  `https://sso.ringcentral.com` |
     | `https://ssoeuro.ringcentral.com` |
 
     c. **[応答 URL]** ボックスに、URL を入力します。
+    
     | |
     |--|
     | `https://sso.ringcentral.com/sp/ACS.saml2` |
@@ -189,9 +193,9 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 
     c. **[Attribute Mapping]\(属性マッピング\)** セクションの **[Map Email Attribute to]\(メール属性のマップ先\)** で `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` を選択します
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
+    d. **[Save]** をクリックします。
 
-    e. **[Step 2]\(ステップ 2\)** の **[Download]\(ダウンロード\)** をクリックして**サービス プロバイダー メタデータ ファイル**をダウンロードし、Azure portal でそれを **[基本的な SAML 構成]** セクションにアップロードして、**[識別子]** と **[応答 URL]** を自動的に設定します。
+    e. **[Step 2]\(ステップ 2\)** の **[Download]\(ダウンロード\)** をクリックして**サービス プロバイダー メタデータ ファイル**をダウンロードし、Azure portal 内でそれを **[基本的な SAML 構成]** セクションにアップロードして、**[識別子]** と **[応答 URL]** を自動的に設定します。
 
     ![image](./media/ringcentral-tutorial/ringcentral6.png) 
 
@@ -223,12 +227,12 @@ RingCentral で Azure AD のシングル サインオンを構成してテスト
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+    d. **作成**を選択します。
  
 ### <a name="create-a-ringcentral-test-user"></a>RingCentral テスト ユーザーを作成する
 

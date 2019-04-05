@@ -1,5 +1,5 @@
 ---
-title: Azure AD のアクセス レビューでユーザー アクセスを管理する | Microsoft Docs
+title: Azure AD のアクセス レビューを使用してユーザー アクセスを管理する | Microsoft Docs
 description: Azure Active Directory のアクセス レビューを使用して、グループのメンバーシップやアプリケーションへの割り当てとしてのユーザー アクセスを管理する方法について説明します
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b53fd8b53b85525a3105cfee3594cd284e3838a8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 656a1d387a345d9ffcc549c19a131de758e18c35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182155"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57879992"
 ---
-# <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでユーザー アクセスを管理する
+# <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューを使用してユーザー アクセスを管理する
 
 Azure Active Directory (Azure AD) を使用すると、ユーザーに適切なアクセス権を確実かつ容易に設定できます。 ユーザー自身または意思決定者に対し、アクセス レビューに参加してユーザーのアクセス権を再確認 (証明) するよう求めることができます。 レビュー担当者は、Azure AD からの提案に基づいて、各ユーザーの継続的なアクセスのニーズを評価できます。 アクセス レビューが完了したら、変更を加え、不要になったアクセス権をユーザーから削除できます。
 
@@ -45,20 +45,20 @@ Azure Active Directory (Azure AD) を使用すると、ユーザーに適切な�
 
 2. 各ユーザーが自分自身のアクセスを確認するか、1 人以上のユーザーがすべてのユーザーのアクセスを確認するかを決定します。
 
-3. グローバル管理者またはユーザー アカウント管理者として[アクセス レビュー ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動します。
+3. グローバル管理者またはユーザー管理者として[アクセス レビュー ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動します。
 
-4. アクセス レビューを作成します。 詳細については、[アクセス レビューの作成](create-access-review.md)に関するページをご覧ください。
+4. アクセス レビューを作成します。 詳細については、[グループまたはアプリケーションのアクセス レビューの作成](create-access-review.md)に関するページをご覧ください。
 
-5. アクセス レビューの開始時には、レビュー担当者に入力するよう依頼してください。 既定では、各レビュー担当者には、アクセス パネルへのリンクが記載されたメールが Azure AD から届き、そこで[アクセス レビューを実行](perform-access-review.md)します。
+5. アクセス レビューの開始時には、レビュー担当者に入力するよう依頼してください。 既定では、それぞれが、アクセス パネルへのリンクが記載されたメールを Azure AD から受け取り、そこで[グループまたはアプリケーションへのアクセスをレビュー](perform-access-review.md)します。
 
 6. レビュー担当者がまだ入力していない場合は、そのレビュー担当者に通知を送信するよう Azure AD を設定できます。 既定では、終了日まであと半分になった時点で、Azure AD はまだ応答していないレビュー担当者に自動的に通知が送信されます。
 
-7. レビュー担当者が入力したら、アクセス レビューを停止し、変更を適用します。 詳細については、[アクセス レビューの完了](complete-access-review.md)に関するページをご覧ください。
+7. レビュー担当者が入力したら、アクセス レビューを停止し、変更を適用します。 詳細については、[グループまたはアプリケーションのアクセス レビューの完了](complete-access-review.md)に関するページをご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順
 
-[グループのメンバーまたはアプリケーションへのアクセスのアクセス レビューを作成する](create-access-review.md)
+[グループまたはアプリケーションのアクセス レビューを作成する](create-access-review.md)
 
 
 

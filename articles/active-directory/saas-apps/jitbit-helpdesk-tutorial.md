@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb752a6b598c9fe7f146cd6ce96182405fc0dc6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 86148d428bc526e071f095233b0692a6f3775a7d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167679"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>チュートリアル:Azure Active Directory と Jitbit Helpdesk の統合
 
@@ -114,6 +114,7 @@ Jitbit Helpdesk で Azure AD のシングル サインオンを構成してテ�
     ![Configure single sign-on](./media/jitbit-helpdesk-tutorial/tutorial_jitbit-helpdesk_url.png)
 
     a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 
+    
     | |     
     | ----------------------------------------|
     | `https://<hostname>/helpdesk/User/Login`|
@@ -161,7 +162,7 @@ Jitbit Helpdesk で Azure AD のシングル サインオンを構成してテ�
 
     c. **base-64** でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[X.509 証明書]** ボックスに貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[変更を保存]** をクリックします。
+    d. **[変更を保存]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -196,7 +197,7 @@ Jitbit Helpdesk で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-jitbit-helpdesk-test-user"></a>Jitbit Helpdesk のテスト ユーザーの作成
 
@@ -224,11 +225,11 @@ Azure AD ユーザーが Jitbit Helpdesk にログインできるようにする
    
    a. **[ユーザー名]** ボックスに、Azure Portal でのユーザー名「**BrittaSimon**」を入力します。
 
-   b. **[電子メール]** ボックスに、ユーザーの電子メール (**BrittaSimon@contoso.com** など) を入力します。
+   b. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **BrittaSimon\@contoso.com**) を入力します。
 
    c. **[名]** ボックスに、ユーザーの名を入力します (この例では **Britta**)。
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
+   d. **[姓]** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
    
    e. **Create** をクリックしてください。
 

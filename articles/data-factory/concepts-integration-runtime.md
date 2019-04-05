@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 82885c00557c85fefcf221789263632e21bd77da
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ab6da597457fa94c171a1e2547c1d48cf35cd0f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56344031"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893052"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 Integration Runtime (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
@@ -51,7 +51,7 @@ Azure-SSIS | SSIS パッケージの実行 | SSIS パッケージの実行
 Azure 統合ランタイムにより、次のことが可能になります。
 
 - クラウドのデータ ストア間でコピー アクティビティを実行する
-- パブリック ネットワーク内で次の変換アクティビティをディスパッチする:HDInsight Hive アクティビティ、HDInsight Pig アクティビティ、HDInsight MapReduce アクティビティ、HDInsight Spark アクティビティ、HDInsight Streaming アクティビティ、Machine Learning バッチ実行アクティビティ、Machine Learning 更新リソース アクティビティ、ストアド プロシージャ アクティビティ、Data Lake Analytics U-SQL アクティビティ、.Net カスタム アクティビティ、Web アクティビティ、ルックアップ アクティビティ、メタデータの取得アクティビティ。
+- パブリック ネットワーク内で次の変換アクティビティをディスパッチする:HDInsight Hive アクティビティ、HDInsight Pig アクティビティ、HDInsight MapReduce アクティビティ、HDInsight Spark アクティビティ、HDInsight Streaming アクティビティ、Machine Learning バッチ実行アクティビティ、Machine Learning 更新リソース アクティビティ、ストアド プロシージャ アクティビティ、Data Lake Analytics U-SQL アクティビティ、.NET カスタム アクティビティ、Web アクティビティ、ルックアップ アクティビティ、メタデータの取得アクティビティ。
 
 ### <a name="azure-ir-network-environment"></a>Azure IR のネットワーク環境
 Azure 統合ランタイムは、誰でもアクセス可能なエンドポイントを使用して、パブリック ネットワーク内のデータ ストアやコンピューティング サービスへの接続をサポートします。 Azure Virtual Network 環境にはセルフホステッド統合ランタイムを使用します。
@@ -69,7 +69,7 @@ Azure IR の作成と構成については、ハウツー ガイドで Azure IR 
 セルフホステッド IR により、次のことが可能になります。
 
 - クラウドのデータ ストアとプライベート ネットワーク内のデータ ストアの間でコピー アクティビティを実行する。
-- オンプレミスまたは Azure Virtual Network 内のコンピューティング リソースに対して次の変換アクティビティをディスパッチする:HDInsight Hive アクティビティ (BYOC-Bring Your Own Cluster)、HDInsight Pig アクティビティ (BYOC)、HDInsight MapReduce アクティビティ (BYOC)、HDInsight Spark アクティビティ (BYOC)、HDInsight Streaming アクティビティ (BYOC)、Machine Learning バッチ実行アクティビティ、Machine Learning 更新リソース アクティビティ、ストアド プロシージャ アクティビティ、Data Lake Analytics U-SQL アクティビティ、.Net カスタム アクティビティ、ルックアップ アクティビティ、メタデータの取得アクティビティ。
+- オンプレミスまたは Azure Virtual Network 内のコンピューティング リソースに対して次の変換アクティビティをディスパッチする:HDInsight Hive アクティビティ (BYOC-Bring Your Own Cluster)、HDInsight Pig アクティビティ (BYOC)、HDInsight MapReduce アクティビティ (BYOC)、HDInsight Spark アクティビティ (BYOC)、HDInsight Streaming アクティビティ (BYOC)、Machine Learning バッチ実行アクティビティ、Machine Learning 更新リソース アクティビティ、ストアド プロシージャ アクティビティ、Data Lake Analytics U-SQL アクティビティ、.NET カスタム アクティビティ、ルックアップ アクティビティ、メタデータの取得アクティビティ。
 
 > [!NOTE] 
 > SAP Hana や MySQL などの独自ドライバーを必要とするデータ ストアをサポートするには、セルフホステッド統合ランタイムを使用します。詳細については、「[supported data stores (サポートされるデータ ストア)](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。

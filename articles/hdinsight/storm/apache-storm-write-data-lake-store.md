@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 301de81fc9b8bdb8b295700de33065d988379334
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 34056b3a562d3110569e05c5c50ae4d9dae2375a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428796"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868138"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm から Apache Hadoop HDFS に書き込む
 
@@ -146,7 +146,7 @@ Flux フレームワークの詳細については、「[https://storm.apache.or
 
 ## <a name="build-and-package-the-topology"></a>トポロジをビルドおよびパッケージ化する
 
-1. サンプル プロジェクトを [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) から開発環境にダウンロードします。
+1. サンプル プロジェクトを [https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) から開発環境にダウンロードします。
 
 2. コマンド プロンプト、ターミナル、またはシェル セッションから、ダウンロードされたプロジェクトのルートにディレクトリを変更します。 トポロジを構築およびパッケージ化するには、次のコマンドを使用します。
    

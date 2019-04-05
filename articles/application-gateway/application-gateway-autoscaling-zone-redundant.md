@@ -5,23 +5,21 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/5/2019
+ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: bc1176ea97d1c2d4fc17487c0589fb4235163b46
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 9929b09280cea56a5fadcd4d0d9aba5b851f326e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446513"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544042"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)
 
 Application Gateway と Web アプリケーション ファイアウォール (WAF) は、現在、新しい v2 SKU でパブリック プレビューとして使用できます。この SKU では、パフォーマンスの向上が提供され、自動スケール、ゾーン冗長性、静的 VIP のサポートなどの重要な新機能のサポートが追加されます。 一般公開された SKU の既存機能は、既知の制限のセクションで示されているいくつかの例外を除き、新しい v2 SKU でも引き続きサポートされます。 新しい v2 SKU には、次の拡張機能が含まれます。
 
-- **自動スケール**:自動スケーリング SKU の下での Application Gateway または WAF のデプロイは、トラフィック負荷パターンの変化に基づいてスケールアップまたはスケールダウンできます。 また、自動スケールにより、プロビジョニングの間にデプロイのサイズまたはインスタンスの数を選択する必要がなくなります。 このように、SKU では真の弾力性が提供されます。 新しい SKU では、Application Gateway は固定容量モード (自動スケーリング無効) と自動スケーリング有効モードの両方で動作できます。 固定容量モードは、ワークロードが一定で予測可能なシナリオに便利です。 自動スケール モードは、アプリケーション トラフィックの変動が大きいアプリケーションで役に立ちます。
+- **自動スケール**:自動スケーリング SKU の下での Application Gateway または WAF のデプロイは、トラフィック負荷パターンの変化に基づいてスケールアップまたはスケールダウンできます。 また、自動スケールにより、プロビジョニングの間にデプロイのサイズまたはインスタンスの数を選択する必要がなくなります。 この SKU では真のエラスティック性が提供されます。 新しい SKU では、Application Gateway は固定容量モード (自動スケーリング無効) と自動スケーリング有効モードの両方で動作できます。 固定容量モードは、ワークロードが一定で予測可能なシナリオに便利です。 自動スケール モードは、アプリケーション トラフィックの変動が大きいアプリケーションで役に立ちます。
 
-   > [!NOTE]
-   > 現在、自動スケールは WAF SKU では利用できません。 WAF は、自動スケール モードではなく固定容量モードで構成してください。
 - **ゾーン冗長性**: Application Gateway または WAF のデプロイは複数の可用性ゾーンを対象にできるため、Traffic Manager を使ってゾーンごとに個別に Application Gateway のインスタンスをプロビジョニングして稼働させる必要はありません。 Application Gateway のインスタンスをデプロイする単一のゾーンまたは複数のゾーンを選択できるので、ゾーンの障害の回復性が保証されます。 アプリケーションのバックエンド プールも、複数の可用性ゾーンに同様に分散できます。
 - **パフォーマンスの向上**: 自動スケーリング SKU では、一般に利用可能な SKU と比較して、SSL オフロードのパフォーマンスが最大で 5 倍になります。
 - **デプロイと更新の時間の短縮**: 自動スケール SKU では、一般に使用可能な SKU と比較して、デプロイと更新の時間が短縮されます。
@@ -52,7 +50,6 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 |課金|現在は請求されません。|
 |FIPS モード、WebSocket|現在はサポートされていません。|
 |ILB のみモード|現在これはサポートされていません。 パブリック モードと ILB モードがまとめてサポートされます。|
-|Web アプリケーション ファイアウォールの自動スケール|WAF は、自動スケール モードをサポートしていません。 固定容量モードはサポートされています。|
 |Netwatcher 統合|パブリック プレビューではサポートされていません。|
 
 ## <a name="next-steps"></a>次の手順

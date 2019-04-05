@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 52a441d5d8f3f44b35253e02786a033da5439597
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 8c3ef3f115d37400eb72fdaca5df4f326382df5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269858"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871640"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの使用を開始する
 
 
 > [!NOTE]
-> このチュートリアルを完了する前に、「[Azure Monitor ログ分析の使用を開始する](get-started-portal.md)」を終えておく必要があります。
+> このチュートリアルを完了する前に、「[Azure Monitor Log Analytics の使用を開始する](get-started-portal.md)」を終えておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

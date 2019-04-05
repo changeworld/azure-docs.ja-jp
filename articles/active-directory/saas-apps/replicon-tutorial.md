@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46466ac85a8be1dec273440751489833f12c00db
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ade40287bd38580a1e3f6377e54017bfe92bf452
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166813"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863408"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>チュートリアル:Azure Active Directory と Replicon の統合
 
@@ -142,7 +142,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
    c. **+** をクリックして、**[metaDataConfiguration]** セクションを展開します。
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Choose File]** をクリックして、ID プロバイダー メタデータ XML ファイルを選択し、**[送信]** をクリックします。
+   d. **[Choose File]** をクリックして、ID プロバイダー メタデータ XML ファイルを選択し、**[送信]** をクリックします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -174,7 +174,7 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
 
 ### <a name="create-a-replicon-test-user"></a>Replicon テスト ユーザーの作成
 
@@ -196,13 +196,13 @@ Replicon で Azure AD のシングル サインオンを構成してテストす
 
     ![User profile](./media/replicon-tutorial/ic777808.png "User profile")
 
-    a. **[ログイン名]** ボックスに、プロビジョニングする Azure AD ユーザーの Azure AD メール アドレスを入力します (例: **BrittaSimon@contoso.com**)。
+    a. **[ログイン名]** ボックスに、プロビジョニングする Azure AD ユーザーの Azure AD メール アドレス (例: **BrittaSimon\@contoso.com**) を入力します。
 
     b. **[Authentication Type]** として **[SSO]** を選択します。
 
     c. **[Department]** テキストボックスに、ユーザーの所属を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Employee Type]** として **[Administrator]** を選択します。
+    d. **[Employee Type]** として **[Administrator]** を選択します。
 
     e. **[Save User Profile]** をクリックします。
 

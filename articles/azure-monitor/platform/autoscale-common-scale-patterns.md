@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 46d7520cce89d3f4204b9bf8f5da66506b1437fd
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8356a8c8c31a043197485b4913b4a67d7d719778
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475256"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997261"
 ---
 # <a name="overview-of-common-autoscale-patterns"></a>自動スケールの一般的なパターンの概要
 この記事では、Azure におけるリソースのスケールの一般的なパターンについて説明します。

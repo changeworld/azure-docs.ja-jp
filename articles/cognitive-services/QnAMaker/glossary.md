@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: c280f6ef99678b77edcb251ead685be88265f825
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bb3b262f3bde0599cb6dea009d0fbbeafb1c529a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871015"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649443"
 ---
 # <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>QnA Maker のナレッジ ベースとサービスの用語集
 
@@ -42,4 +42,4 @@ QnA Maker サービスは、QnA Maker の使用を開始するための前提条
 応答は、特定のユーザー クエリの最適な一致に基づいて、ナレッジ ベースから取得された回答です。
 
 ## <a name="confidence-score"></a>信頼度スコア
-応答の信頼度スコアは、提供される応答が、特定のユーザー クエリに対する適切な応答であることを示す、0 から 100 の範囲の数値です (100 はユーザー クエリとナレッジ ベース内の質問が完全に一致していることを示します)。 回答は、通常は信頼度スコアによって順位付けされ、高い信頼度スコアを持つ回答が既定の応答として提供されます。
+応答の信頼度スコアは、提供される応答が、特定のユーザー クエリに対する適切な応答であることを示す、0 から 100 の範囲の数値です (100 はユーザー クエリとナレッジ ベース内の質問が完全に一致していることを示します)。 回答は、通常は信頼度スコアによって順位付けされ、高い信頼度スコアを持つ回答が[既定の応答](concepts/confidence-score.md#change-default-answer)として提供されます。

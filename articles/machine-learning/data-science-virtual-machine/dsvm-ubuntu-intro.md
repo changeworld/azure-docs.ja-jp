@@ -16,25 +16,25 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: bbd73035993d3a981744eb5377fe0bf2c9d55b63
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268857"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884678"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
 Linux データ サイエンス仮想マシンは Ubuntu ベースの仮想マシン イメージであり、Azure 上でディープ ラーニングなどの機械学習を簡単に開始できます。 ディープ ラーニング ツールには以下が含まれます。
 
-  * [Caffe](http://caffe.berkeleyvision.org/): 速度、表現、モジュール性を念頭に置いて構築されたディープ ラーニング フレームワーク
+  * [Caffe](https://caffe.berkeleyvision.org/): 速度、表現、モジュール性を念頭に置いて構築されたディープ ラーニング フレームワーク
   * [Caffe2](https://github.com/caffe2/caffe2): Caffe のクロス プラットフォーム バージョン
   * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): Microsoft Research のディープ ラーニング ソフトウェア ツールキット
   * [H2O](https://www.h2o.ai/): オープン ソースのビッグ データ プラットフォームとグラフィカル ユーザー インターフェイス
   * [Keras](https://keras.io/): TensorFlow、Microsoft Cognitive Toolkit、および Theano 向けの Python の高度なニュートラル ネットワーク API
-  * [MXNet](http://mxnet.io/): 多くの言語バインディングを含む、柔軟で効率的なディープ ラーニング ライブラリ
+  * [MXNet](https://mxnet.io/): 多くの言語バインディングを含む、柔軟で効率的なディープ ラーニング ライブラリ
   * [NVIDIA DIGITS](https://developer.nvidia.com/digits): 一般的なディープ ラーニング タスクを簡略化するグラフィカル システム
-  * [PyTorch](http://pytorch.org/): 動的ネットワークをサポートする高度な Python ライブラリ
+  * [PyTorch](https://pytorch.org/): 動的ネットワークをサポートする高度な Python ライブラリ
   * [TensorFlow](https://www.tensorflow.org/): Google が提供する、マシン インテリジェンス用のオープンソース ライブラリ
   * [Theano](http://deeplearning.net/software/theano/): 多次元配列を含む数式の定義、最適化、効率的な評価ができる Python 用ライブラリ
   * [Torch](http://torch.ch/): 機械学習アルゴリズムを幅広くサポートする科学コンピューティング フレームワーク
@@ -105,7 +105,7 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    
    * ほとんどの場合は、既定値を使用できます。 既定値以外の値を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
    
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **概要**:
+   d. **概要**:
    
    * 入力したすべての情報が正しいことを確認します。 使用条件へのリンクが表示されます。 **[サイズ]** ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM によって発生することはありません。 プロビジョニングを開始するには、**[作成]** をクリックします。 
    
@@ -120,7 +120,7 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
 
 ### <a name="ssh"></a>SSH
 
-VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の **[基本]** セクションで作成したアカウントの資格情報を使用します。 Windows では、[Putty](http://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。
+VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の **[基本]** セクションで作成したアカウントの資格情報を使用します。 Windows では、[Putty](https://www.putty.org) などの SSH クライアント ツールをダウンロードできます。 グラフィカル デスクトップ (X Windows System) を使用する場合は、Putty で X11 転送を使用するか、X2Go クライアントをインストールすることができます。
 
 > [!NOTE]
 > テストでは、パフォーマンスは、X11 転送よりも、X2Go クライアントの方が優れていました。 グラフィカル デスクトップ インターフェイスでは、X2Go クライアントを使用することをお勧めします。
@@ -130,7 +130,7 @@ VM を作成したら、SSH を使用してサインインできます。 テキ
 ### <a name="x2go"></a>X2Go
 Linux VM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を実行します。
 
-1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
+1. [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
 1. X2Go クライアントを実行し、 **[New Session (新しいセッション)]** を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
    * **[Session] \(セッション) タブ**:
      * **[Host]\(ホスト\)**: Linux Data Science VM のホスト名または IP アドレス。
@@ -205,7 +205,7 @@ R は、データ分析と機械学習に最もよく使われる言語の 1 つ
 
 R コンソールを起動するには、シェルで「**R**」と入力します。 入力すると、対話型環境に移動します。 R プログラムを開発するには、通常、Emacs や vi などのエディターを使用し、R 内でスクリプトを実行します。RStudio をインストールすると、完全なグラフィカル IDE 環境で R プログラムを開発できます。
 
-必要な場合に備えて、 [上位 20 の R パッケージ](http://www.kdnuggets.com/2015/06/top-20-r-packages.html) をインストールするための R スクリプトも用意されています。 このスクリプトを実行するには、前述のとおり、シェルで「 **R** 」と入力して R の対話型インターフェイスに入る必要があります。  
+必要な場合に備えて、 [上位 20 の R パッケージ](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) をインストールするための R スクリプトも用意されています。 このスクリプトを実行するには、前述のとおり、シェルで「 **R** 」と入力して R の対話型インターフェイスに入る必要があります。  
 
 ### <a name="python"></a>Python
 Anaconda Python は、Python 2.7 および 3.5 の環境でインストールされます。 2.7 環境は _root_ と呼ばれ、3.5 環境は _py35_ と呼ばれます。 このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。 
@@ -271,12 +271,12 @@ Microsoft R Server で Spark コンテキストで実行する前に、1 回限�
     chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
     systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 
-Hadoop 関連サービスが不要な場合は、```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` を実行してサービスを停止することができます。MRS をリモート Spark コンテキスト (つまり DSVM 上のスタンドアロン Spark インスタンス) で開発およびテストする方法を示したサンプルは、`/dsvm/samples/MRS` ディレクトリで入手して使用することができます。 
+Hadoop 関連サービスが不要な場合は、```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` を実行してサービスを停止することができます。MRS をリモート Spark コンテキスト (つまり DSVM 上のスタンドアロンの Spark インスタンス) 内で開発およびテストする方法を示したサンプルは、`/dsvm/samples/MRS` ディレクトリから入手して使用することができます。 
 
 ### <a name="ides-and-editors"></a>IDE とエディター
 コード エディターには、いくつかの選択肢があります。 これには vi/VIM、Emacs、PyCharm、RStudio、IntelliJ が含まれます。 IntelliJ、RStudio、PyCharm はグラフィカル エディターであり、使用するにはグラフィカル デスクトップにサインインする必要があります。 これらのエディターには、起動するためのデスクトップとアプリケーションのメニューのショートカットが用意されています。
 
-**VIM** と **Emacs** はテキスト ベースのエディターです。 Emacs に関しては、Emacs エディター内で R を簡単に利用できるようにする Emacs Speaks Statistics (ESS) というアドオン パッケージがインストールされています。 詳細については、 [ESS](http://ess.r-project.org/)に関するページをご覧ください。
+**VIM** と **Emacs** はテキスト ベースのエディターです。 Emacs に関しては、Emacs エディター内で R を簡単に利用できるようにする Emacs Speaks Statistics (ESS) というアドオン パッケージがインストールされています。 詳細については、 [ESS](https://ess.r-project.org/)に関するページをご覧ください。
 
 **LaTex** は、texlive パッケージによって、Emacs アドオンである [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html) パッケージと共にインストールされます。auctex を使用すると、Emacs 内での LaTex ドキュメント作成が容易になります。  
 

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7f3c50a272ef5cc0d4980cb4a623ac043d764dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f1ce786b748fedd1ec4c722b28bc11c28672c2f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190910"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443404"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>サインイン アクティビティ レポートのエラー コード 
 
@@ -129,7 +129,7 @@ ms.locfileid: "56190910"
 |50180|Windows 統合認証が必要です。 シームレス SSO に対してテナントを有効にしてください。|
 |51001|オンプレミスのセキュリティ識別子 - オンプレミスの UPN に関してドメイン ヒントが存在しません。|
 |51004|ユーザー アカウントがディレクトリ内に存在しません。|
-|51006|Windows 統合認証が必要です。 ユーザーがログインに使用したセッション トークンに WIA 要求がありません。 ユーザーに再ログインを要求してください。|
+|51006|Windows 統合認証が必要です。 ユーザーが、要求を通じて、欠落したセッション トークンを使ってログインしました。 ユーザーに再ログインを要求してください。|
 |52004|ユーザーが、LinkedIn リソースへのアクセスに同意していません。 |
 |53000|条件付きアクセス ポリシーでは準拠デバイスが必要ですが、デバイスが準拠していません。 ユーザーに、Intune などの承認済み MDM プロバイダーにデバイスを登録させてください。|
 |53001|条件付きアクセス ポリシーではドメイン参加デバイスが必要ですが、デバイスがドメインに参加していません。 ユーザーにドメイン参加デバイスを使用させます。|
@@ -138,7 +138,7 @@ ms.locfileid: "56190910"
 |53004|ユーザーは、このコンテンツにアクセスする前に、多要素認証登録プロセスを完了する必要があります。 ユーザーは多要素認証に登録する必要があります。|
 |65001|アプリケーション X に、アプリケーション Y へのアクセス許可がありません。またはアクセス許可が取り消されました。 または、X という ID でアプリケーションを使用することにユーザーまたは管理者が同意していません。このユーザーとリソースのインタラクティブな承認要求を送信してください。 または、X という ID でアプリケーションを使用することにユーザーまたは管理者が同意していません。リソース Z に対する操作をアプリ Y に代わって行うための承認要求をテナント管理者に送信してください。|
 |65004|ユーザーはアプリへのアクセスの同意を拒否しました。 ユーザーに、再度サインインしてアプリに同意させてください|
-|65005|アプリケーションの必須リソース アクセス リストに、リソースによって検出可能なアプリケーションが含まれていません。または、必須リソース アクセス リストで指定されていないリソースへのアクセスをクライアント アプリケーションが要求したか、Graph サービスから無効な要求が返されたか、リソースが見つかりません。 アプリケーションが SAML をサポートしている場合、間違った識別子 (エンティティ) でアプリケーションを構成している可能性があります。 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list) を参照し、SAML に対して示されている解決策を試してください|
+|65005|アプリケーションの必須リソース アクセス リストに、リソースによって検出可能なアプリケーションが含まれていません。または、必須リソース アクセス リストで指定されていないリソースへのアクセスをクライアント アプリケーションが要求したか、Graph サービスから無効な要求が返されたか、リソースが見つかりません。 アプリケーションが SAML をサポートしている場合、間違った識別子 (エンティティ) でアプリケーションを構成している可能性があります。 [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) を参照し、SAML に対して示されている解決策を試してください|
 |70000|次の理由により許可が無効です。<ul><li>要求された SAML 2.0 アサーションのサブジェクト確認方法が無効です</li><li>アプリの OnBehalfOf フローは V2 でサポートされていません</li><li>プライマリ更新トークンがセッション キーで署名されていません</li><li>外部更新トークンが無効です</li><li>アクセス許可は、異なるテナントに対して取得されました。</li></ul>|
 |70001|X という名前のアプリケーションが Y という名前のテナントに見つかりませんでした。このエラーは、識別子 X のアプリケーションがテナントの管理者によってインストールされていない場合や、アプリケーションがテナント内のいずれのユーザーによっても同意されていない場合に発生することがあります。 アプリケーションの識別子の値を正しく構成していないか、または間違ったテナントに認証要求を送信した可能性があります。|
 |70002|アプリケーションが無効なクライアント資格情報を返しました。 アプリケーションの所有者に問い合わせください。|

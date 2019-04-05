@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 30b83613637d97bfe265c4f5a9c911d14da50c4f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 0d40bfa3a4215b671fcd01402a2cbceaea0cd75d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810909"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536285"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>ソリューションに適した IoT Hub のレベルを選択する
 
@@ -33,7 +33,7 @@ IoT Hub の Standard レベルではすべての機能が有効になり、双�
 
 1 つのレベル内の[エディション](https://azure.microsoft.com/pricing/details/iot-hub/)は IoT Hub あたり 1 種類だけ選択できます。 たとえば、S1 と B3 や S1 と S2 などの異なるエディションのユニットの組み合わせではなく、S1 のユニットを複数持つ IoT Hub を作成できます。
 
-| 機能 | Basic レベル | Standard レベル |
+| 機能 | Basic レベル | Free または Standard レベル |
 | ---------- | ---------- | ------------- |
 | [device-to-cloud テレメトリ](iot-hub-devguide-messaging.md) | はい | はい |
 | [デバイスごとの ID](iot-hub-devguide-identity-registry.md) | はい | はい |
@@ -53,7 +53,7 @@ IoT Hub では、テストおよび評価のための Free レベルも提供さ
 
 Azure IoT Hub には、[パーティション](../event-hubs/event-hubs-features.md#partitions)を含む [Azure Event Hubs](../event-hubs/event-hubs-features.md) の多数のコア コンポーネントが含まれています。 IoT Hubs のイベント ストリームには、通常はさまざまな IoT デバイスによって報告される受信テレメトリ データが入力されます。 イベント ストリームに対する読み取りと書き込みが同時に行われるときに発生する競合を削減するために、イベント ストリームのパーティション分割が使用されます。 
 
-パーティション数の制限は IoT Hub の作成時に選択され、変更することはできません。 Basic レベルでの IoT Hub のパーティションの最大数は 8、Standard レベルでの最大数は 32 です。 ほとんどの IoT Hub では、4 つのパーティションのみ必要です。 パーティション数を決定する方法の詳細については、Event Hubs の FAQ ([パーティションはいくつ必要ですか](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)) を参照してください。
+パーティション数の制限は IoT Hub の作成時に選択され、変更することはできません。 Basic レベルの IoT Hub と Standard レベルの IoT Hub のパーティションの上限は 32 個であることにご注意ください。 ほとんどの IoT Hub では、4 つのパーティションのみ必要です。 パーティション数を決定する方法の詳細については、Event Hubs の FAQ ([パーティションはいくつ必要ですか](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)) を参照してください。
 
 
 ## <a name="tier-upgrade"></a>レベルのアップグレード
@@ -67,7 +67,7 @@ Basic レベルから Standard レベルに移行しても、パーティショ�
 
 IoT Hub の Basic レベルと Standard レベルでサポートされる機能が違うことは、一部の API 呼び出しが Basic レベルのハブでは動作しないことを意味します。 次の表では、利用できる API を示します。 
 
-| API | Basic レベル | Standard レベル |
+| API | Basic レベル | Free または Standard レベル |
 | --- | ---------- | ------------- |
 | [デバイスの削除](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | はい | はい |
 | [デバイスの取得](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | はい | はい |

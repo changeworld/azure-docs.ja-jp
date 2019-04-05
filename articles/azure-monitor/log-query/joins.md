@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 91ff85d8c32c0bcfa984cc690382d09765a068a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2ea5b4e3af6591e6e25a863998baa7cecb3e29e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004643"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079113"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの結合
 
 > [!NOTE]
-> このレッスンを完了する前に、「[Azure Monitor ログ分析の使用を開始する](get-started-portal.md)」と「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を完了しておく必要があります。
+> このレッスンを完了する前に、「[Azure Monitor ログ分析の使用を開始する](get-started-portal.md)」と [Azure Monitor ログのクエリ](get-started-queries.md)に関するページの内容を完了しておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -101,7 +101,7 @@ _kind_ 引数で結合の種類を指定します。 次の表で説明するよ
 
 - 結合に対して評価する必要があるレコードを減らすには、各テーブルで時間フィルターを使用します。
 - 結合の前に入力テーブルの行と列の数を減らすには、`where` と `project` を使用します。
-* 一方のテーブルがもう一方よりも常に小さい場合は、それを結合の左側として使用します。
+- 一方のテーブルがもう一方よりも常に小さい場合は、それを結合の左側として使用します。
 
 
 ## <a name="next-steps"></a>次の手順

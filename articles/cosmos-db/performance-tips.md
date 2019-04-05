@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 67bdabe24e789dc4d1f2020a7a7853eafaa607c3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: cf90f7231362d147914e22419c9008d2628a483f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429368"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861895"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -38,37 +38,37 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
    * 直接モード
 
-     直接モードは、TCP および HTTPS プロトコル経由の接続をサポートします。 現在、直接モードは .NET Standard 2.0 においてのみサポートされています。 直接モードを利用するときは、次の 2 つのプロトコル オプションがあります。
+     直接モードは、TCP および HTTPS プロトコル経由の接続をサポートします。 .NET SDK の最新バージョンを使用している場合は、.NET Standard 2.0 と .NET Framework で直接接続モードがサポートされます。 直接モードを利用するときは、次の 2 つのプロトコル オプションがあります。
 
-    * TCP
-    * HTTPS
+     * TCP
+     * HTTPS
 
-    ゲートウェイ モードを使用している場合、Cosmos DB はポート 443 を使用し、MongoDB 用の Azure Cosmos DB の API を使用している場合はポート 10250、10255、および 10256 を使用します。 10250 ポートは geo レプリケーションなしで既定の MongoDB インスタンスにマップされ、10255/10256 ポートは geo レプリケーション機能付きで MongoDB インスタンスにマップされます。 直接モードで TCP を使用する場合は、Azure Cosmos DB が動的 TCP ポートを使用するため、ゲートウェイ ポートに加えてポート範囲 10000 ～ 20000 を開いておく必要があります。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。 次の表は、さまざまな API で使用可能な接続モードと、各 API のサービス ポート ユーザーを示しています。
+     ゲートウェイ モードを使用している場合、Cosmos DB はポート 443 を使用し、MongoDB 用の Azure Cosmos DB の API を使用している場合はポート 10250、10255、および 10256 を使用します。 10250 ポートは geo レプリケーションなしで既定の MongoDB インスタンスにマップされ、10255/10256 ポートは geo レプリケーション機能付きで MongoDB インスタンスにマップされます。 直接モードで TCP を使用する場合は、Azure Cosmos DB が動的 TCP ポートを使用するため、ゲートウェイ ポートに加えてポート範囲 10000 ～ 20000 を開いておく必要があります。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。 次の表は、さまざまな API で使用可能な接続モードと、各 API のサービス ポート ユーザーを示しています。
 
-    |接続モード  |サポートされるプロトコル  |サポートされる SDK  |API/サービス ポート  |
-    |---------|---------|---------|---------|
-    |Gateway  |   HTTPS    |  すべての SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
-    |直接    |    HTTPS     |  .Net と Java SDK    |   10,000 ～ 20,000 の範囲内のポート    |
-    |直接    |     TCP    |  .Net SDK    | 10,000 ～ 20,000 の範囲内のポート |
+     |接続モード  |サポートされるプロトコル  |サポートされる SDK  |API/サービス ポート  |
+     |---------|---------|---------|---------|
+     |Gateway  |   HTTPS    |  すべての SDK    |   SQL (443)、Mongo (10250、10255、10256)、Table (443)、Cassandra (10350)、Graph (443)    |
+     |直接    |    HTTPS     |  .NET と Java SDK    |   10,000 ～ 20,000 の範囲内のポート    |
+     |直接    |     TCP    |  .NET SDK    | 10,000 ～ 20,000 の範囲内のポート |
 
-    Azure Cosmos DB は、HTTPS を介したシンプルなオープン RESTful プログラミング モデルを提供します。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 Direct TCP と HTTPS は、どちらも最初の認証とトラフィックの暗号化で SSL を使用します。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。
+     Azure Cosmos DB は、HTTPS を介したシンプルなオープン RESTful プログラミング モデルを提供します。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 Direct TCP と HTTPS は、どちらも最初の認証とトラフィックの暗号化で SSL を使用します。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。
 
-    接続モードは、ConnectionPolicy パラメーターを使用して DocumentClient インスタンスの作成時に構成されます。 直接モードを使用する場合、ConnectionPolicy パラメーター内でプロトコルも設定できます。
+     接続モードは、ConnectionPolicy パラメーターを使用して DocumentClient インスタンスの作成時に構成されます。 直接モードを使用する場合、ConnectionPolicy パラメーター内でプロトコルも設定できます。
 
-    ```csharp
-    var serviceEndpoint = new Uri("https://contoso.documents.net");
-    var authKey = new "your authKey from the Azure portal";
-    DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
-    new ConnectionPolicy
-    {
+     ```csharp
+     var serviceEndpoint = new Uri("https://contoso.documents.net");
+     var authKey = new "your authKey from the Azure portal";
+     DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
+     new ConnectionPolicy
+     {
         ConnectionMode = ConnectionMode.Direct,
         ConnectionProtocol = Protocol.Tcp
-    });
-    ```
+     });
+     ```
 
-    TCP は直接モードでのみサポートされるため、ゲートウェイ モードを使用する場合は、ゲートウェイとの通信に HTTPS プロトコルが常に使用され、ConnectionPolicy の Protocol 値は無視されます。
+     TCP は直接モードでのみサポートされるため、ゲートウェイ モードを使用する場合は、ゲートウェイとの通信に HTTPS プロトコルが常に使用され、ConnectionPolicy の Protocol 値は無視されます。
 
-    ![Azure Cosmos DB 接続ポリシーの図](./media/performance-tips/connection-policy.png)
+     ![Azure Cosmos DB 接続ポリシーの図](./media/performance-tips/connection-policy.png)
 
 2. **OpenAsync を呼び出して最初の要求での開始時の待機時間を回避する**
 

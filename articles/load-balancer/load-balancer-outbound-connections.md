@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: kumud
-ms.openlocfilehash: f0ebb5cc913dda99d7e927ccf45c0f1478fa86c5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814828"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194080"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の送信接続
 
@@ -70,7 +70,7 @@ SNAT ポートは、「[SNAT と PAT の理解](#snat)」の説明のとおり�
 
 [複数のパブリック IP アドレスが Load Balancer Basic に関連付けられている](load-balancer-multivip-overview.md)場合、それらのパブリック IP アドレスはどれもアウトバウンド フローの候補になり、その 1 つがランダムに選択されます。  
 
-Load Balancer Basic で送信接続の正常性を監視するために、[Load Balancer の Log Analytics](load-balancer-monitor-log.md) と、[SNAT ポート不足メッセージを監視するためのアラート イベント ログ](load-balancer-monitor-log.md#alert-event-log)を使用できます。
+Load Balancer Basic でアウトバウンド接続の正常性を監視するために、[Load Balancer 用の Azure Monitor ログ](load-balancer-monitor-log.md)と、SNAT ポート不足メッセージを監視するための[アラート イベント ログ](load-balancer-monitor-log.md#alert-event-log)を使用できます。
 
 ### <a name="defaultsnat"></a>シナリオ 3:インスタンス レベルのパブリック IP アドレスがないスタンドアロン VM
 

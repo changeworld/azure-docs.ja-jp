@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 810a4708974d18a4bba048e3e402a172868178f3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 400583f50e898bfc750a387bf0ee83a3147e5006
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429691"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905063"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights:よく寄せられる質問
 
@@ -257,7 +257,7 @@ Microsoft の SDK と [SDK API](api-custom-events-metrics.md) を使用するこ
 
 ご利用の Web サーバーから Microsoft のエンドポイントへの利用統計情報の送信を許可します。 
 
-### <a name="proxy-redirect"></a>プロキシによるリダイレクト
+### <a name="gateway-redirect"></a>ゲートウェイのリダイレクト
 
 構成内のエンドポイントを上書きすることによって、ご利用のサーバーからのトラフィックをイントラネット上のゲートウェイにルーティングします。
 これらの "Endpoint" プロパティが config に存在しない場合、これらのクラスは、次の ApplicationInsights.config の例に示されているように、既定値を使用します。 
@@ -288,7 +288,19 @@ Microsoft の SDK と [SDK API](api-custom-events-metrics.md) を使用するこ
 
 _ApplicationIdProvider は v2.6.0 以降で使用できます_
 
+### <a name="proxy-passthrough"></a>プロキシのパススルー
 
+プロキシのパススルーは、マシン レベルとアプリケーション レベルのどちらかのプロキシを構成することで実現できます。
+詳細については、[DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings) に関する dotnet の記事を参照してください。
+ 
+ Web.config の例:
+ ```xml
+<system.net>
+    <defaultProxy>
+      <proxy proxyaddress="http://xx.xx.xx.xx:yyyy" bypassonlocal="true"/>
+    </defaultProxy>
+</system.net>
+```
  
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>イントラネット サーバーで可用性 Web テストを実行できますか?

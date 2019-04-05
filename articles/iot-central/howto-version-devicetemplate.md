@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e6148a35540b08916a4f0468af39e0f088453286
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3889aa1e8b19e203a3f6354c2d26fb82afe2b922
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958868"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214284"
 ---
 # <a name="create-a-new-device-template-version"></a>デバイス テンプレートの新しいバージョンを作成する
 
@@ -56,7 +56,7 @@ Azure IoT Central を使用すると、IoT アプリケーションを迅速に�
 
 複数のバージョンのデバイス テンプレートを作成できます。 時間の経過と共に、接続された複数のデバイスがこれらのデバイス テンプレートを使用するようになります。 デバイス テンプレートの 1 つのバージョンから、別のバージョンに、デバイスを移行できます。 次の手順では、デバイスを移行する方法について説明します。
 
-1. **[エクスプローラー]** ページに移動します。
+1. **デバイス エクスプローラー** ページに移動します。
 1. 別のバージョンに移行する必要があるデバイスを選択します。
 1. **[Migrate Device]\(デバイスの移行\)** を選択します。
 1. デバイスの移行先のバージョン番号を選択して、**[移行]** を選択します。

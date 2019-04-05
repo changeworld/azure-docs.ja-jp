@@ -10,15 +10,15 @@ ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 2937d1f665dae03795892f9ff0e8a93a894e1992
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 47fbce7ea26bcb7224fe2624d593d85cd178d610
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818041"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776310"
 ---
 # <a name="what-is-azure-relay"></a>Azure Relay とは
 Azure Relay サービスでは、企業ネットワーク内で実行されているサービスをパブリック クラウドに安全に公開することができます。 ファイアウォールでポートを開放したり、企業ネットワーク インフラストラクチャ内に及ぶような変更を加えたりすることなく、それが可能です。 
@@ -63,12 +63,12 @@ WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作しま
 
 |  | WCF リレー | ハイブリッド接続と |
 | --- |:---:|:---:|
-| **WCF** |○ | |
+| **WCF** |x | |
 | **.NET Core** | |○ |
-| **.NET Framework** |○ |○ |
-| **Java script/Node.JS** | |○ |
-| **標準ベースのオープン プロトコル** | |○ |
-| **RPC プログラミング モデル** | |○ |
+| **.NET Framework** |x |x |
+| **Java script/Node.JS** | |x |
+| **標準ベースのオープン プロトコル** | |x |
+| **RPC プログラミング モデル** | |x |
 
 ## <a name="architecture-processing-of-incoming-relay-requests"></a>アーキテクチャ:受信リレー要求の処理
 次の図は、受信するリレー要求が、Azure Relay サービスでどのように処理されるかを示しています。
@@ -82,7 +82,7 @@ WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作しま
 5. ゲートウェイは、ゲートウェイ ストアで挙げられた正しいゲートウェイに、接続要求を転送します。 
 6. ゲートウェイはリッスンしているクライアントに要求を送信し、そのクライアントが、送信側クライアントに最も近いゲートウェイ ノードへの一時的なチャネルを作成します。 
 7. リッスンしているクライアントは、送信側クライアントに最も近いゲートウェイに対して一時的なチャネルを作成します。 ゲートウェイを介したクライアント間の接続が確立されたら、クライアントどうしがメッセージを交換できます。 
-8. ゲートウェイは、リッスンしているクライアントからのすべてのメッセージを送信側クライアントに転送します。 
+8. ゲートウェイは、リッスンしているクライアントからのメッセージをすべて送信側クライアントに転送します。 
 9. ゲートウェイは、送信側クライアントからのすべてのメッセージをリッスンしているクライアントに転送します。  
 
 ## <a name="next-steps"></a>次の手順

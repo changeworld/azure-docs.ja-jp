@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 196d08f47ddfdbb86b8e96ae0e5ca3d3e3e5917e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: f449449c542ce6ac04daa58ff37a3577f0d75aee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896230"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge に対する継続的インテグレーションと継続的配置
 
@@ -47,7 +47,7 @@ Azure Repos の詳細については、[Visual Studio と Azure Repos でのコ�
 >
 >詳細については、「[ビルド パイプラインを作成する](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav#create-a-build-pipeline)」を参照してください。
 
-1. ご自身の Azure DevOps 組織 (**https://dev.azure.com/{your organization}/**) にサインインして、IoT Edge ソリューションのリポジトリが含まれているプロジェクトを開きます。
+1. ご自身の Azure DevOps 組織 (**https:\//dev.azure.com/{your organization}/**) にサインインして、IoT Edge ソリューションのリポジトリが含まれているプロジェクトを開きます。
 
    この記事では、**IoTEdgeRepo** というリポジトリを作成しました。 そのリポジトリには、**filtermodule** という名前のモジュール用のコードがある **IoTEdgeSolution** が含まれています。 
 
@@ -69,13 +69,13 @@ Azure Repos の詳細については、[Visual Studio と Azure Repos でのコ�
 
 4. パイプラインが作成されると、パイプライン エディターが表示されます。 パイプラインの説明で、ターゲット プラットフォームに基づいて適切なエージェント プールを選択します。 
     
-    * Linux コンテナー用にプラットフォーム amd64 でモジュールをビルドする場合、**[Hosted Ubuntu 1604]** を選択します。
+   * Linux コンテナー用にプラットフォーム amd64 でモジュールをビルドする場合、**[Hosted Ubuntu 1604]** を選択します。
 
-    * Windows 1809 コンテナー用にプラットフォーム amd64 でモジュールをビルドする場合は、[Windows 上にセルフホステッド エージェントを設定](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)する必要があります。
+   * Windows 1809 コンテナー用にプラットフォーム amd64 でモジュールをビルドする場合は、[Windows 上にセルフホステッド エージェントを設定](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts)する必要があります。
 
-    * Linux コンテナー用にプラットフォーム arm32v7 でモジュールをビルドする場合は、[Linux 上にセルフホステッド エージェントを設定](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/)する必要があります。
+   * Linux コンテナー用にプラットフォーム arm32v7 でモジュールをビルドする場合は、[Linux 上にセルフホステッド エージェントを設定](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/)する必要があります。
     
-    ![ビルド エージェント プールの構成](./media/how-to-ci-cd/configure-env.png)
+     ![ビルド エージェント プールの構成](./media/how-to-ci-cd/configure-env.png)
 
 5. パイプラインは、**エージェント ジョブ 1** というジョブで事前に構成されています。 プラス記号 (**+**) を選択して、ジョブに 3 つのタスクを追加します (**[Azure IoT Edge]** で 2 回、**[ビルド成果物の発行]** で 1 回)。 (各タスクの名前の上にポインターを置くと、**[追加]** ボタンが表示されます。)
 
@@ -158,11 +158,11 @@ Azure Repos の詳細については、[Visual Studio と Azure Repos でのコ�
 
 10. 新しい Azure IoT Edge タスクを選択し、次の値を使用して構成します。
 
-   * **表示名**:表示名は、アクション フィールドが変更されると自動的に更新されます。 
-   * **アクション**:ドロップダウン リストを使用して、**[IoT Edge デバイスにデプロイする]** を選択します。 アクションの値を変更すると、タスクの表示名も一致するように更新されます。
-   * **Azure サブスクリプション**:IoT Hub が含まれているサブスクリプションを選択します。
-   * **IoT Hub 名**:IoT ハブを選択します。 
-   * **1 つまたは複数のデバイスを選択**:リソース パイプラインを 1 つのデバイスまたは複数のデバイスのどちらにデプロイするかを選択します。 
+    * **表示名**:表示名は、アクション フィールドが変更されると自動的に更新されます。 
+    * **アクション**:ドロップダウン リストを使用して、**[IoT Edge デバイスにデプロイする]** を選択します。 アクションの値を変更すると、タスクの表示名も一致するように更新されます。
+    * **Azure サブスクリプション**:IoT Hub が含まれているサブスクリプションを選択します。
+    * **IoT Hub 名**:IoT ハブを選択します。 
+    * **1 つまたは複数のデバイスを選択**:リソース パイプラインを 1 つのデバイスまたは複数のデバイスのどちらにデプロイするかを選択します。 
       * 1 つのデバイスにデプロイする場合は、**IoT Edge デバイス ID** を入力します。 
       * 複数のデバイスにデプロイする場合は、デバイスの**ターゲット条件**を指定します。 ターゲット条件とは、IoT ハブの一連の Edge デバイスと突き合わせるフィルターです。 デバイス タグを条件として使用する場合は、対応するデバイス タグを IoT Hub デバイス ツインに合わせて更新する必要があります。 詳細設定で、**IoT Edge デプロイ ID** と **IoT Edge デプロイの優先順位**を更新します。 複数のデバイスのデプロイを作成する方法の詳細については、[IoT Edge 自動デプロイについての理解](module-deployment-monitoring.md)に関するページを参照してください。
 

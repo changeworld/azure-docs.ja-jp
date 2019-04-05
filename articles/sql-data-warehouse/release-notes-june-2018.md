@@ -10,23 +10,25 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: cae02627c539e543d27ea188d521605f187ea8a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 672bfee600f19661c6bc68535a68fff4a0ccc43f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475348"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835369"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 6 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 6 月に導入された新しい機能と変更点について説明します。 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="user-defined-restore-points"></a>ユーザー定義の復元ポイント
 SQL Data Warehouse では 8 時間の目標復旧時点 (RPO) を保証するために、データ ウェアハウスのスナップショットが 8 時間ごとに自動的に取得されます。 このようなスナップショットの自動化により、データ ウェアハウス操作の管理上の負担が軽減されますが、ビジネスニーズに基づいて、重要な場面でスナップショットを作成する必要があります。 たとえば、データ ウェアハウスへの大量のデータの読み込みまたは新しいスクリプトのデプロイの直前にスナップショットを作成して、操作の直前の復元ポイントを有効にすることができます。 
 
-SQL Data Warehouse は [New-AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint) コマンドレットを使用して、[ユーザー定義の復元ポイント](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/)をサポートするようになりました。
+SQL Data Warehouse では、[New-AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) コマンドレットにより、[ユーザー定義の復元ポイント](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/)をサポートするようになりました。
 
 ```PowerShell
-New-AzureRmSqlDatabaseRestorePoint
+New-AzSqlDatabaseRestorePoint
     -ResourceGroupName $ResourceGroupName
     -ServerName $ServerName
     -DatabaseName $DatabaseName
@@ -124,7 +126,7 @@ SQL Data Warehouse の概要について学習したので、次は[SQL Data War
 [Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [顧客の成功事例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

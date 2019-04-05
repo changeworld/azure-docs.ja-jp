@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be5220c5f28505bd83110705e08a6b1c7fb12529
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b2346c0631bb4540aef27623f82f72f4eabd0d23
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210698"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433554"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Azure Active Directory アクティビティ ログ コンテンツ パックのエラーのトラブルシューティングを行う 
 
@@ -71,6 +71,6 @@ Azure Active Directory (Azure AD) の Power BI コンテンツ パックを操�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure AD レポート用の Power BI コンテンツ パックをインストールする](quickstart-install-power-bi-content-pack.md)
+* [Azure AD レポート用の Power BI コンテンツ パックをインストールする](quickstart-install-power-bi-content-pack.md)。
 * [Azure AD レポート用の Power BI コンテンツ パックを使用してデータを視覚化する](howto-power-bi-content-pack.md)
 * [Azure Active Directory のサポートを得る方法](../fundamentals/active-directory-troubleshooting-support-howto.md)

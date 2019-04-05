@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: 933d37f576d0b8507d2311a3e31e34182a0a2e69
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: b4bc652d54150b72cc64898464b3511a860bf011
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269837"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996309"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Monitor ログ クエリの workspace() 式
 
@@ -71,6 +71,6 @@ union
 
 ## <a name="next-steps"></a>次の手順
 
-- Application Insights アプリに触れている、[app 式](app-expression.md)に関するページを参照してください。
+- Application Insights アプリを参照する場合には、[app 式](app-expression.md)に関するページをご覧ください。
 - [Azure Monitor データ](log-query-overview.md)の格納方法を確認します。
 - [Kusto クエリ言語](/azure/kusto/query/)の完全なドキュメントにアクセスします。

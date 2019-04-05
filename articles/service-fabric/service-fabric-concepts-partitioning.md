@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 0012304412b343918ab69abf6eababc033cddc6f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 82b95080a9c93d8c02d4129ef93b1a6c9deba7aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852753"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
@@ -113,7 +113,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 
 適切な分散ハッシュ アルゴリズムの特徴は、計算が簡単で、競合がほとんどなく、キーが均等に分散されることです。 効率的なハッシュ アルゴリズムのよい例として、 [FNV-1](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function) ハッシュ アルゴリズムがあります。
 
-[Wikipedia のハッシュ関数のページ](http://en.wikipedia.org/wiki/Hash_function)は、ハッシュ コードのアルゴリズム選択全般に関する優れたリソースです。
+[Wikipedia のハッシュ関数のページ](https://en.wikipedia.org/wiki/Hash_function)は、ハッシュ コードのアルゴリズム選択全般に関する優れたリソースです。
 
 ## <a name="build-a-stateful-service-with-multiple-partitions"></a>複数のパーティションがあるステートフル サービスの構築
 まず、複数のパーティションがある信頼性の高いステートフル サービスを作成してみましょう。 この例では、同じパーティション内に同じアルファベットから始まる姓をすべて格納するという、ごく単純なアプリケーションを構築します。

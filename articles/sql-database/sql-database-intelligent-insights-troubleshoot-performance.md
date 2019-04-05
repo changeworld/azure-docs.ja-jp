@@ -12,16 +12,16 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1935c670b5c7622f45f8c96b8c2faf03da6282f3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fff4aa947f878974d2d0f18f373b8c0917ed7d70
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993634"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316057"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 
-このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) のデータベース パフォーマンス診断ログによって検出された、Azure SQL Database と Managed Instance のパフォーマンスに関する問題について説明します。 この診断ログ テレメトリを、[Azure Log Analytics](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションにストリーミングできます。
+このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) のデータベース パフォーマンス診断ログによって検出された、Azure SQL Database と Managed Instance のパフォーマンスに関する問題について説明します。 この診断ログ テレメトリを、[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)、[Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティ製ソリューションにストリーム配信できます。
 
 > [!NOTE]
 > Intelligent Insights を使った SQL Database のパフォーマンスのトラブルシューティングに関するクイック ガイドについては、このドキュメントの「[推奨されるトラブルシューティングのフロー](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow)」のフローチャートをご覧ください。
@@ -73,7 +73,7 @@ SQL Database 上のリソースは、通常、[DTU](sql-database-what-is-a-dtu.m
 
 使用可能なセッションの上限に到達した場合は、データベースへのログイン数を減らすことで、アプリケーションを最適化できます。 アプリケーションからデータベースへのログイン数を減らすことができない場合は、データベースの価格レベルを上げることを検討します。 または、データベースを分割して複数のデータベースに移動させ、より均等にワークロードを分散させることができます。
 
-セッションの上限に対応するためのその他の推奨事項については、「[How to deal with the limits of Azure SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)」(Azure SQL Database の最大ログイン数の上限に対応する方法) をご覧ください。 サーバーおよびサブスクリプション レベルの制限については、[SQL Database サーバー上のリソース制限の概要](sql-database-resource-limits-database-server.md)に関するページをご覧ください。
+セッションの上限に対応するためのその他の推奨事項については、「[How to deal with the limits of Azure SQL Database maximum logins](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/)」(Azure SQL Database の最大ログイン数の上限に対応する方法) をご覧ください。 サーバーおよびサブスクリプション レベルの制限については、[SQL Database サーバー上のリソース制限の概要](sql-database-resource-limits-database-server.md)に関するページをご覧ください。
 
 ## <a name="workload-increase"></a>ワークロードの増加
 
@@ -109,7 +109,7 @@ SQL Database 上のリソースは、通常、[DTU](sql-database-what-is-a-dtu.m
 
 最適化したり、複数のデータベースに分散させたりすることで、ワークロードを減らすこともできます。 または、ワークロードを複数のデータベースに分散させることができます。 これらの解決策が不可能な場合は、SQL データベース サブスクリプションの価格レベルを上げて、データベースで使用可能なメモリ リソースの量を増やすことを検討します。
 
-トラブルシューティングのその他の提案については、[Memory grants meditation:The mysterious SQL Server memory consumer with many names](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/)」(メモリ許可に関する考察: さまざまな名前を持つ、SQL Server の不可解なメモリ コンシューマー) をご覧ください。
+トラブルシューティングのその他の提案については、[Memory grants meditation:The mysterious SQL Server memory consumer with many names](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/)」(メモリ許可に関する考察: さまざまな名前を持つ、SQL Server の不可解なメモリ コンシューマー) をご覧ください。
 
 ## <a name="locking"></a>ロック
 
@@ -259,7 +259,7 @@ SQL データベースでは、クエリ実行コストが最も低いクエリ�
 
 新しいプランへの回帰の状態は、前のプランほど効率的ではない、新しいクエリ実行プランの実行が SQL Database で開始されている状態を表します。 前のプランへの回帰の状態は、SQL Database で、新しくより効率的なプランから、新しいプランほど効率的ではない前のプランの使用に切り替わった状態を表します。 ワークロードが変更された既存のプランへの回帰は、前のプランと新しいプランが継続的に交互に行われつつ、パフォーマンスの低いプランへの比重が高まっている状態を表します。
 
-プランの回帰について詳しくは、「[What is plan regression in SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/06/09/what-is-plan-regression-in-sql-server/)」(SQL server のプランの回帰とは) をご覧ください。 
+プランの回帰について詳しくは、「[What is plan regression in SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/)」(SQL server のプランの回帰とは) をご覧ください。 
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 
@@ -267,7 +267,7 @@ SQL データベースでは、クエリ実行コストが最も低いクエリ�
 
 提供されたクエリ ハッシュを使用して特定できるクエリに対して、どのプランのパフォーマンスが優れているかを分析できます。 クエリに対してパフォーマンスが優れているプランを判断した後、手動で適用できます。 
 
-詳しくは、「[Learn how SQL Server prevents plan regressions](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/04/25/you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/)」(SQL Server がプランの回帰を回避するしくみ) をご覧ください。
+詳しくは、「[Learn how SQL Server prevents plan regressions](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/)」(SQL Server がプランの回帰を回避するしくみ) をご覧ください。
 
 > [!TIP]
 > SQL Database では組み込みのインテリジェンスによって、データベースに最適なクエリ実行プランを自動管理します。

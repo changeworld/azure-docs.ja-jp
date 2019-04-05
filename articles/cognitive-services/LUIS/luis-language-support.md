@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 81684031ddaa1ca8fa63a6c7e512f3fe6769a639
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 98df1d9612d18e4ab5044bd92822b2df76286b12
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859812"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340863"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -30,7 +30,7 @@ LUIS はサービス内にさまざまな機能を備えています。 すべ�
 
 LUIS が理解する発話の言語を次に示します。
 
-| 言語 |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズの提案 | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
+| 言語 |ロケール  |  事前構築済みのドメイン | 事前構築済みのエンティティ | フレーズ リストのレコメンデーション | \**[テキスト分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(センチメントと<br>キーワード)|
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
@@ -53,7 +53,7 @@ LUIS が理解する発話の言語を次に示します。
 
  - `zh-cn` カルチャで LUIS に必要なのは、繁体字中国語ではなく簡体字中国語の文字セットです。
  - 意図、エンティティ、機能、および正規表現の名前には、中国語の文字またはローマ字を使用できます。
- - `zh-cn` カルチャでサポートされている事前構築済みのドメインについては、[事前構築済みのドメインのリファレンス](luis-reference-prebuilt-domains.md)を参照してください。
+ - `zh-cn` カルチャでサポートされているあらかじめ構築されたドメインについては、[あらかじめ構築されたドメインのリファレンス](luis-reference-prebuilt-domains.md)を参照してください。
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>*日本語サポートに関するメモ

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25af451ac06a7d744e171754db6f4e54cb2156c9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78e15de18e57e949b2e7b7146269204469e61797
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203219"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106952"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットのための Azure AD 機能のカスタマイズ
 
@@ -68,8 +68,8 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwor
 
 * ユーザーが自分のユーザー名を入力した後
 * ユーザーがカスタマイズされた URL にアクセスした場合:
-    * パスワード リセット ページに `whr` パラメーターを渡した場合 (例: "https://login.microsoftonline.com/?whr=contoso.com")
-    * パスワード リセット ページに `username` パラメーターを渡した場合 (例: "https://login.microsoftonline.com/?username=admin@contoso.com")
+    * パスワード リセット ページに `whr` パラメーターを渡した場合 (例: `https://login.microsoftonline.com/?whr=contoso.com`)
+    * パスワード リセット ページに `username` パラメーターを渡した場合 (例: `https://login.microsoftonline.com/?username=admin@contoso.com`)
 
 会社のブランドを構成する方法の詳細については、[Azure AD のサインイン ページへの会社のブランドの追加](../fundamentals/customize-branding.md)に関する記事を参照してください。
 

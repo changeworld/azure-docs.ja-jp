@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 07592c6852a7fce057381cb9086baedc9d2b1bd6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f1e238890b777e2816648ec407e2581f636d1c12
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111749"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57239829"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>セキュリティ アラート マップと脅威インテリジェンス
 この記事は、Azure Security Center のセキュリティ アラート マップとセキュリティ イベント ベースの脅威インテリジェンス マップを使用して、セキュリティ関連の問題を解決するのに役立ちます。
@@ -62,7 +62,7 @@ Security Center のセキュリティ アラート マップを使用して、�
 4. マップの上部で、**[View classic threat intelligence]\(従来の脅威インテリジェンスを表示する)** を選択します。 **[脅威インテリジェンス]** ダッシュボードが開きます。
 
    > [!NOTE]
-   > 右端の列に **[アップグレード プラン]** と表示されている場合、このワークスペースでは無料のサブスクリプションが使用されています。 この機能を使用するには、Standard にアップグレードしてください。 右端の列に **[REQUIRES UPDATE]\(更新が必要\)** と表示されている場合は、この機能を使用するために [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) を更新してください。 料金プランの詳細については、「Azure Security Center の価格」を参照してください。
+   > 右端の列に **[アップグレード プラン]** と表示されている場合、このワークスペースでは無料のサブスクリプションが使用されています。 この機能を使用するには、Standard にアップグレードしてください。 右端の列に **[REQUIRES UPDATE]\(更新が必要\)** と表示されている場合は、この機能を使用するために [Azure Monitor ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)を更新してください。 料金プランの詳細については、「Azure Security Center の価格」を参照してください。
    >
 5. 調査するワークスペースが複数ある場合は、**[悪意のある IP]** 列に従って調査に優先順位を付けます。 ここには、このワークスペースに含まれている悪意のある IP の現在の数が表示されます。 使用するワークスペースを選択すると、**[脅威インテリジェンス]** ダッシュボードが表示されます。
 
@@ -76,7 +76,7 @@ Security Center のセキュリティ アラート マップを使用して、�
 
     c.  **[脅威の場所]**。 使用中の環境と通信する、世界の現在の場所を特定するために役立ちます。 表示されているマップでは、オレンジ色 (受信) と赤 (送信) の矢印でトラフィックの方向を示します。 これらの矢印のいずれかを選択すると、脅威の種類とトラフィックの方向が表示されます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。  **[脅威の詳細]**。 マップで選択した脅威に関する詳細が表示されます。
+    d.  **[脅威の詳細]**。 マップで選択した脅威に関する詳細が表示されます。
 
 選択するオプション タイルにかかわらず、表示されるダッシュボードはログ検索クエリに基づいています。 唯一の違いは、クエリの種類と結果です。
 

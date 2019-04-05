@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d1f1ec45e1d4fc2fc6091a2f946caf6bc59441a9
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075903"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C:Azure AD Graph API を使用する
 
@@ -45,7 +45,7 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 3. 左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、**[アプリの登録]**、**[追加]** の順にクリックします。
 4. 画面の指示に従い、新しいアプリケーションを作成します。 
     1. アプリケーション タイプとして **[Web App / API]** (Web アプリ/API) を選択します。    
-    2. **任意のサインオン URL** を指定します (たとえば、 https://B2CGraphAPI) はこの例には関連しません)。  
+    2. これはこの例に関係がないので、**任意のサインオン URL** (例: `https://B2CGraphAPI`) を指定します。  
 5. この時点でアプリケーションの一覧に表示されたアプリケーションをクリックして、**アプリケーション ID** (クライアント ID とも呼ばれます) を取得します。 後のセクションで必要になるため、この ID をコピーします。
 6. [設定] メニューで **[キー]** をクリックします。
 7. **[パスワード]** セクションにキーの説明を入力し、期間を選択して、**[保存]** をクリックします。 後のセクションで使用するために、キーの値 (クライアント シークレットとも呼ばれます) をコピーします。

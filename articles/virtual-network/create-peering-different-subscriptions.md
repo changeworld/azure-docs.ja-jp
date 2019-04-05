@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 11ef6f2f09aacc175f095f7118ddb26ec77b2446
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 5ce816c9e8bec716de840cc5f6fdd546b6abd298
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268364"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649783"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション
 
@@ -106,7 +106,7 @@ ms.locfileid: "56268364"
 - Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 - Bash シェルで動作します。 Azure CLI スクリプトを Windows クライアントで実行する方法については、「[Windows での Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli-windows)」をご覧ください。
 
-CLI とその依存関係をインストールする代わりに、Azure Cloud Shell を使うことができます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 次のスクリプトの **[使ってみる]** ボタンを選択すると Cloud Shell が開き、Azure アカウントでログインできます。 
+CLI とその依存関係をインストールする代わりに、Azure Cloud Shell を使うことができます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 次のスクリプトの **[使ってみる]** ボタンを選択すると Cloud Shell が開き、Azure アカウントでログインできます。
 
 1. CLI セッションを開き、`azure login` コマンドを使って UserA として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
 2. PC で次のスクリプトをテキスト エディターにコピーし、`<SubscriptionA-Id>` を SubscriptionA の ID に置き換えた後、変更後のスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。 サブスクリプション ID がわからない場合は、"az account show" コマンドを入力します。 出力された **id** の値がサブスクリプション ID です。
@@ -130,9 +130,9 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
       --role "Network Contributor" \
       --scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
     ```
-    
+
 3. `az logout` コマンドを使って UserA として Azure からログアウトした後、UserB として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
-4. myVnetB を作成します。 PC で、手順 2 のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionA-Id>` を SubscriptionB の ID に置き換えます。 10.0.0.0/16 を 10.1.0.0/16 に、すべての A を B に、すべての B を A に変更します。変更後のスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。 
+4. myVnetB を作成します。 PC で、手順 2 のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionA-Id>` を SubscriptionB の ID に置き換えます。 10.0.0.0/16 を 10.1.0.0/16 に、すべての A を B に、すべての B を A に変更します。変更後のスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。
 5. UserB として Azure をログアウトし、UserA として Azure にログインします。
 6. myVnetA から myVnetB への仮想ネットワーク ピアリングを作成します。 PC で次のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionB-Id>` を SubscriptionB の ID に置き換えます。 スクリプトを実行するには、変更後のスクリプトをコピーし、CLI セッションに貼り付けて、Enter キーを押します。
 
@@ -174,33 +174,36 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 12. **省略可能**: このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-cli)」の手順を実行してください。
 
 2 つの仮想ネットワークに作成した Azure リソースが、その IP アドレスを使用して相互に通信できるようになりました。 仮想ネットワークに Azure の既定の名前解決を使用する場合、そのネットワーク内のリソースは、通信相手の仮想ネットワークに対して名前を解決することができません。 ピアリングされた仮想ネットワークの間で名前を解決する必要がある場合は、独自の DNS サーバーを作成する必要があります。 その方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
- 
+
 ## <a name="powershell"></a>ピアリングの作成 - PowerShell
 
-このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、Azure からログアウトする手順をスキップして、ユーザー ロールの割り当てを作成するスクリプト行を削除できます。 次のすべてのスクリプトの UserA@azure.com と UserB@azure.com を、UserA と UserB で使用しているユーザー名に置き換えます。 仮想ネットワークが異なるサブスクリプションに含まれ、サブスクリプションが異なる Azure Active Directory テナントに関連付けられている場合は、続行する前に、次の手順を完了します。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+このチュートリアルでは、サブスクリプションごとに異なるアカウントを使用します。 両方のサブスクリプションへのアクセス許可を持つアカウントを使用している場合は、すべての手順で同じアカウントを使用し、Azure からログアウトする手順をスキップして、ユーザー ロールの割り当てを作成するスクリプト行を削除できます。 次のすべてのスクリプトの UserA@azure.com と UserB@azure.com を、UserA と UserB で使用しているユーザー名に置き換えます。
+仮想ネットワークが異なるサブスクリプションに含まれ、サブスクリプションが異なる Azure Active Directory テナントに関連付けられている場合は、続行する前に、次の手順を完了します。
  - 各 Active Directory テナントのユーザーを、反対側の Azure Active Directory テナントに[ゲスト ユーザー](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)として追加します。
  - 各ユーザーは、反対側の Active Directory テナントからのゲスト ユーザーの招待を受け入れる必要があります。
 
-1. バージョン 6.5.0 以降を使用していることを確認します。 これは、`Get-Module -Name AzureRm` を実行することで行えます。最新バージョンの PowerShell の [AzureRm](https://www.powershellgallery.com/packages/AzureRM/) モジュールをインストールすることをお勧めします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 
+1. Azure PowerShell バージョン 1.0.0 以降を使用していることを確認します。 これは、`Get-Module -Name Az` を実行することで行えます。最新バージョンの PowerShell の [Az モジュール](/powershell/azure/install-az-ps)をインストールすることをお勧めします。 Azure PowerShell を初めてお使いの方は、[Azure PowerShell の概要](/powershell/azure/overview?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 
 2. PowerShell セッションを開始します。
-3. PowerShell で、`Connect-AzureRmAccount` コマンドを入力して UserA として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
-4. リソース グループと仮想ネットワーク A を作成します。PC で、次のスクリプトをテキスト エディターにコピーします。 `<SubscriptionA-Id>` を SubscriptionA の ID に置き換えます。 サブスクリプション ID がわからない場合は、`Get-AzureRmSubscription` コマンドを入力して表示します。 返された出力の **id** の値がサブスクリプション ID です。 スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
+3. PowerShell で、`Connect-AzAccount` コマンドを入力して UserA として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 アクセス許可の一覧については、[仮想ネットワークのピアリングのアクセス許可](virtual-network-manage-peering.md#permissions)に関するページをご覧ください。
+4. リソース グループと仮想ネットワーク A を作成します。PC で、次のスクリプトをテキスト エディターにコピーします。 `<SubscriptionA-Id>` を SubscriptionA の ID に置き換えます。 サブスクリプション ID がわからない場合は、`Get-AzSubscription` コマンドを入力して表示します。 返された出力の **id** の値がサブスクリプション ID です。 スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
 
     ```powershell
     # Create a resource group.
-    New-AzureRmResourceGroup `
+    New-AzResourceGroup `
       -Name MyResourceGroupA `
       -Location eastus
 
     # Create virtual network A.
-    $vNetA = New-AzureRmVirtualNetwork `
+    $vNetA = New-AzVirtualNetwork `
       -ResourceGroupName MyResourceGroupA `
       -Name 'myVnetA' `
       -AddressPrefix '10.0.0.0/16' `
       -Location eastus
 
     # Assign UserB permissions to myVnetA.
-    New-AzureRmRoleAssignment `
+    New-AzRoleAssignment `
       -SignInName UserB@azure.com `
       -RoleDefinitionName "Network Contributor" `
       -Scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
@@ -210,20 +213,20 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 6. PC で、手順 4 のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionA-Id>` を、サブスクリプション B の ID に置き換えます。10.0.0.0/16 を 10.1.0.0/16 に変更します。 すべての A を B に、すべての B を A に変更します。スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
 7. Azure から UserB をログアウトし、UserA でログインします。
 8. myVnetA から myVnetB へのピアリングを作成します。 PC で次のスクリプトをテキスト エディターにコピーします。 `<SubscriptionB-Id>` を、サブスクリプション B の ID に置き換えます。スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
- 
-    ```powershell
-    # Peer myVnetA to myVnetB.
-    $vNetA=Get-AzureRmVirtualNetwork -Name myVnetA -ResourceGroupName myResourceGroupA
-    Add-AzureRmVirtualNetworkPeering `
-      -Name 'myVnetAToMyVnetB' `
-      -VirtualNetwork $vNetA `
-      -RemoteVirtualNetworkId "/subscriptions/<SubscriptionB-Id>/resourceGroups/myResourceGroupB/providers/Microsoft.Network/virtualNetworks/myVnetB"
-    ```
+
+   ```powershell
+   # Peer myVnetA to myVnetB.
+   $vNetA=Get-AzVirtualNetwork -Name myVnetA -ResourceGroupName myResourceGroupA
+   Add-AzVirtualNetworkPeering `
+     -Name 'myVnetAToMyVnetB' `
+     -VirtualNetwork $vNetA `
+     -RemoteVirtualNetworkId "/subscriptions/<SubscriptionB-Id>/resourceGroups/myResourceGroupB/providers/Microsoft.Network/virtualNetworks/myVnetB"
+   ```
 
 9. myVnetA のピアリングの状態を表示します。
 
     ```powershell
-    Get-AzureRmVirtualNetworkPeering `
+    Get-AzVirtualNetworkPeering `
       -ResourceGroupName myResourceGroupA `
       -VirtualNetworkName myVnetA `
       | Format-Table VirtualNetworkName, PeeringState
@@ -233,7 +236,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 
 10. Azure から UserA をログアウトし、UserB でログインします。
 11. myVnetB から myVnetA へのピアリングを作成します。 PC で、手順 8 のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionB-Id>` をサブスクリプション A の ID に置き換え、すべての A を B に、すべての B を A に変更します。スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
-12. myVnetB のピアリングの状態を表示します。 PC で、手順 9 のスクリプトの内容をテキスト エディターにコピーします。 リソース グループと仮想ネットワークの名前の A を B に変更します。 スクリプトを実行するには、変更後のスクリプトを PowerShell に貼り付けて、`Enter` キーを押します。 状態は**接続済み**です。 **myVnetB** から **myVnetA** へのピアリングを作成した後、**myVnetA** のピアリングの状態は**接続済み**に変わります。 UserA を Azure に再びログインさせ、手順 9 を再度実行して、myVnetA のピアリング状態を確認します。 
+12. myVnetB のピアリングの状態を表示します。 PC で、手順 9 のスクリプトの内容をテキスト エディターにコピーします。 リソース グループと仮想ネットワークの名前の A を B に変更します。 スクリプトを実行するには、変更後のスクリプトを PowerShell に貼り付けて、`Enter` キーを押します。 状態は**接続済み**です。 **myVnetB** から **myVnetA** へのピアリングを作成した後、**myVnetA** のピアリングの状態は**接続済み**に変わります。 UserA を Azure に再びログインさせ、手順 9 を再度実行して、myVnetA のピアリング状態を確認します。
 
     > [!NOTE]
     > 両方の仮想ネットワークでピアリングの状態が**接続済み**になるまで、ピアリングは確立されません。
@@ -248,12 +251,12 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 仮想ネットワークが異なるサブスクリプションに含まれ、サブスクリプションが異なる Azure Active Directory テナントに関連付けられている場合は、続行する前に、次の手順を完了します。
  - 各 Active Directory テナントのユーザーを、反対側の Azure Active Directory テナントに[ゲスト ユーザー](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)として追加します。
  - 各ユーザーは、反対側の Active Directory テナントからのゲスト ユーザーの招待を受け入れる必要があります。
- 
+
 1. 仮想ネットワークを作成し、適切な[アクセス許可](virtual-network-manage-peering.md#permissions)を割り当てるには、この記事の[ポータル](#portal)、[Azure CLI](#cli)、または [PowerShell](#powershell) のセクションの手順を完了します。
 2. 次のテキストをローカル コンピューター上のファイルに保存します。 `<subscription ID>` は、UserA のサブスクリプション ID で置き換えてください。 たとえば、このファイルを vnetpeeringA.json として保存します。
 
-    ```json
-    {
+   ```json
+   {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
         "parameters": {
@@ -277,13 +280,13 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
             }
             }
         ]
-    }
-    ```
+   }
+   ```
 
 3. Azure に UserA としてログインし、[ポータル](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template)、[PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-templates-stored-locally) または [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) を使用してテンプレートをデプロイします。 手順 2 で保存したサンプルの json テキストのファイル名を指定します。
 4. 手順 2 のサンプル json をコンピューター上のファイルにコピーして、次から始まる行を変更します。
-    - **name**:*myVnetA/myVnetAToMyVnetB* を *myVnetB/myVnetBToMyVnetA* に変更します。
-    - **id**:`<subscription ID>` を UserB のサブスクリプション ID で置き換え、*myVnetB* を *myVnetA* に変更します。
+   - **name**:*myVnetA/myVnetAToMyVnetB* を *myVnetB/myVnetBToMyVnetA* に変更します。
+   - **id**:`<subscription ID>` を UserB のサブスクリプション ID で置き換え、*myVnetB* を *myVnetA* に変更します。
 5. 再び手順 3. を行います。ここでは Azure に UserB としてログインします。
 6. **省略可能**:このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 7. **省略可能**:このチュートリアルで作成したリソースを削除するには、Azure portal、PowerShell、Azure CLI のいずれかを使って、この記事の「[リソースの削除](#delete)」セクションの手順を実行してください。
@@ -304,30 +307,31 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 
 1. UserA として Azure にログインし、次のコマンドを実行します。
 
-    ```azurecli-interactive
-    az group delete --name myResourceGroupA --yes
-    ```
+   ```azurecli-interactive
+   az group delete --name myResourceGroupA --yes
+   ```
+
 2. UserA として Azure からログアウトし、UserB としてログインします。
 3. 次のコマンドを実行します。
 
-    ```azurecli-interactive
-    az group delete --name myResourceGroupB --yes
-    ```
+   ```azurecli-interactive
+   az group delete --name myResourceGroupB --yes
+   ```
 
 ### <a name="delete-powershell"></a>PowerShell
 
 1. UserA として Azure にログインし、次のコマンドを実行します。
 
-    ```powershell
-    Remove-AzureRmResourceGroup -Name myResourceGroupA -force
-    ```
+   ```powershell
+   Remove-AzResourceGroup -Name myResourceGroupA -force
+   ```
 
 2. UserA として Azure からログアウトし、UserB としてログインします。
 3. 次のコマンドを実行します。
 
-    ```powershell
-    Remove-AzureRmResourceGroup -Name myResourceGroupB -force
-    ```
+   ```powershell
+   Remove-AzResourceGroup -Name myResourceGroupB -force
+   ```
 
 ## <a name="next-steps"></a>次の手順
 

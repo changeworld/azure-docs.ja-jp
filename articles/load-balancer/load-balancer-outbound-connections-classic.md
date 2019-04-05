@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: ec3fcc0301083e6cd5eff34c111586ef6463f8fd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3267d79387586f5ca8475d7ac0ed0f86d3f64f0d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821509"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876944"
 ---
 # <a name="outbound-connections-classic"></a>送信接続 (クラシック)
 
@@ -41,7 +41,7 @@ Azure では、送信接続のクラシック デプロイを実現するため�
 | --- | --- | --- | --- | --- | --- |
 | [1.インスタンス レベルのパブリック IP アドレスがある VM](#ilpip) | SNAT (ポート マスカレードは不使用) | TCP、UDP、ICMP、ESP | Azure は仮想マシンに割り当てられたパブリック IP アドレスを使います。 インスタンスには、使用可能なすべてのエフェメラル ポートがあります。 | いいえ  | はい |
 | [2. パブリックに負荷分散されたエンドポイント](#publiclbendpoint) | パブリック エンドポイントに対するポート マスカレード (PAT) による SNAT | TCP、UDP | Azure は、複数のプライベート エンドポイントとパブリック IP アドレスのパブリック エンドポイントを共有します。 Azure は、PAT のパブリック エンドポイントのエフェメラル ポートを使います。 | はい | はい |
-| [3.スタンドアロン VM ](#defaultsnat) | ポート マスカレード (PAT) による SNAT | TCP、UDP | Azure は自動的に、SNAT のパブリック IP アドレスを指定し、このパブリック IP アドレスをデプロイ全体で共有して、PAT のパブリック エンドポイント IP アドレスのエフェメラル ポートを使います。 これは、上記のシナリオのフォールバック シナリオです。 可視性と制御が必要は場合は推奨されません。 | はい | はい |
+| [3.スタンドアロンの VM](#defaultsnat) | ポート マスカレード (PAT) による SNAT | TCP、UDP | Azure は自動的に、SNAT のパブリック IP アドレスを指定し、このパブリック IP アドレスをデプロイ全体で共有して、PAT のパブリック エンドポイント IP アドレスのエフェメラル ポートを使います。 これは、上記のシナリオのフォールバック シナリオです。 可視性と制御が必要は場合は推奨されません。 | はい | はい |
 
 これは、Azure の Resource Manager デプロイで使用できる送信接続機能のサブセットです。  
 

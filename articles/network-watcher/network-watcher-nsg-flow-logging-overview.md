@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: d9d87e0e6427c0a0d4b16947fd0427e1c79d8f0c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 62b526950367987e26c1c67394bc0720ae895fa6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341047"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983797"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -286,5 +286,5 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 - フロー ログを有効にする方法については、[フロー ログ記録の有効化](network-watcher-nsg-flow-logging-portal.md)に関するページをご覧ください。
 - フロー ログを読み取る方法については、「[NSG フロー ログの読み取り](network-watcher-read-nsg-flow-logs.md)」をご覧ください。
-- NSG のログ記録の詳細については、「[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
+- NSG のログ記録の詳細については、[ネットワーク セキュリティ グループ (NSG) のための Azure Monitor ログ](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関するページを参照してください。
 - VM に対するトラフィックを許可するのか拒否するのかを判断するには、[VM ネットワーク トラフィック フィルターの問題のトラブルシューティング](diagnose-vm-network-traffic-filtering-problem.md)に関するページを参照してください。

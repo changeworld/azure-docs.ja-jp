@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: b363f68b625a6f0987e58609477f51c7098423bf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9da79e5b744f8ba70c0e265f0d1f0126b37eba49
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874085"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870654"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>LUIS バージョンを使用する方法とタイミング
 
@@ -35,7 +35,7 @@ LUIS のバージョンは、従来のプログラミングのバージョンと
 
 現在アクティブなバージョンの名前は、左上のパネルのアプリ名の後に表示されます。 
 
-[ ![アクティブなバージョンの変更](./media/luis-concept-version/version-in-nav-bar-inline.png) ](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
+[![アクティブなバージョンの変更](./media/luis-concept-version/version-in-nav-bar-inline.png)](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
 
 ## <a name="versions-and-publishing-slots"></a>バージョンと公開スロット
 ステージング スロットと運用スロットのどちらかに公開します。 スロットごとで、別のバージョンを公開することも、同じバージョンを公開することもできます。 これは、エンドポイントを介してモデルのバージョン間の変更を確認するときに役立ち、ボットや他の LUIS 呼び出し元アプリケーションで使用できます。 

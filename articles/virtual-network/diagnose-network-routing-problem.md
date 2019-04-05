@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: jdial
-ms.openlocfilehash: ee807387b5fc7c8a9d42564cdb6cee7d59db2508
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6864e282319bc5a0539c4c94f3062dcab7315970
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819792"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652248"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>仮想マシンのルーティングに関する問題を診断する
 
@@ -54,12 +54,14 @@ VM に接続しようとしましたが、接続に失敗します。 VM に接�
 
 ## <a name="diagnose-using-powershell"></a>PowerShell を使用して診断する
 
-以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、*AzureRM* PowerShell モジュール、バージョン 6.0.1 以降が必要です。 コンピューターで `Get-Module -ListAvailable AzureRM` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `Login-AzureRmAccount` を実行して Azure にログインする必要もあります。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable) を使用してネットワーク インターフェイスの有効なルートを取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* というネットワーク インターフェイスの有効なルートを取得します。
+以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、Azure PowerShell モジュール、バージョン 1.0.0 以降が必要です。 コンピューターで `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、[必要なアクセス許可](virtual-network-network-interface.md#permissions)を持つアカウントで `Connect-AzAccount` を実行して Azure にログインする必要もあります。
+
+[Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) を使用してネットワーク インターフェイスの有効なルートを取得します。 次の例では、*myResourceGroup* というリソース グループにある *myVMVMNic* というネットワーク インターフェイスの有効なルートを取得します。
 
 ```azurepowershell-interactive
-Get-AzureRmEffectiveRouteTable `
+Get-AzEffectiveRouteTable `
   -NetworkInterfaceName myVMVMNic `
   -ResourceGroupName myResourceGroup `
   | Format-Table
@@ -70,7 +72,7 @@ Get-AzureRmEffectiveRouteTable `
 ネットワーク インターフェイスの名前がわからなくても、ネットワーク インターフェイスが接続されている VM の名前がわかっている場合は、次のコマンドで VM に接続されているすべてのネットワーク インターフェイスの ID が返されます。
 
 ```azurepowershell-interactive
-$VM = Get-AzureRmVM -Name myVM `
+$VM = Get-AzVM -Name myVM `
   -ResourceGroupName myResourceGroup
 $VM.NetworkProfile
 ```

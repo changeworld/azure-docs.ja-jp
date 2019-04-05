@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 94dec611a04819580696133c48db66da1ea9c463
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 73a2f0754cafaa5da09ebd437ecd62813296ffd9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000430"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890081"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
 
@@ -54,7 +54,7 @@ Azure HDInsight は、 [Hortonworks Data Platform (HDP)](https://hortonworks.co
 
 - **カスタム ツールまたはサードパーティ製のアプリケーションによる拡張機能** - HDInsight クラスターは、インストールされているコンポーネントを使用して拡張したり、Azure Marketplace から[ワンクリック](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) 展開を使用することによって他のビッグ データ ソリューションと統合したりできます。
 
-- **管理と監視が容易に** - Azure HDInsight は  [Azure Log Analytics](../hdinsight-hadoop-oms-log-analytics-tutorial.md)  と統合することによって、すべてのクラスターを監視できる一元化されたインターフェイスが得られます。
+- **管理と監視が容易に** - Azure HDInsight は  [Azure Monitor ログ](../hdinsight-hadoop-oms-log-analytics-tutorial.md) と統合することによって、すべてのクラスターを監視できる一元化されたインターフェイスが得られます。
 
 - **他の Azure サービスとの統合** - HDInsight は、好評を博している以下の Azure サービスと簡単に統合できます。
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d574f62a51b8aed7acbd1ba7f8b427395add854a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1ee409bc9e4ad60602ddffd3d1896baf09df52da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454132"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854791"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Team Data Science Process でのプロジェクト リーダーのタスク
 
@@ -126,11 +126,11 @@ ms.locfileid: "55454132"
 
 コード ホスティング プラットフォームとして Azure DevOps を使用している場合は通常、*プロジェクト テンプレート リポジトリの SSH URL* は次のとおりです。
 
-***ssh://\<Azure DevOps Services 名\>@\<Azure DevOps Services 名\>.visualstudio.com:22/\<プロジェクト名>/_git/\<プロジェクト テンプレート リポジトリ名\>。*** 
+***ssh://\<Azure DevOps Services 名\>\@\<Azure DevOps Services 名\>.visualstudio.com:22/\<プロジェクト名>/_git/\<プロジェクト テンプレート リポジトリ名\>。*** 
 
 この例では、
 
-***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/MyTeamProjectTemplate***。 
+***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/MyTeamProjectTemplate*** です。 
 
 ### <a name="clone-dsproject1-repository-r5-to-a-directory-d5-on-your-local-machine"></a>ローカル コンピューター上のディレクトリ (D5) に DSProject1 リポジトリ (R5) を複製します。
 
@@ -150,7 +150,7 @@ ms.locfileid: "55454132"
 
 ![10](./media/project-lead-tasks/project-leads-10-clone-project-repository-linux.png)
 
-コード ホスティング プラットフォームとして Azure DevOps を使用している場合は通常、_プロジェクト リポジトリの SSH URL_ は _ssh://<Azure DevOps Services 名\>@<Azure DevOps Services 名\>.visualstudio.com:22/<Your Project Name>/\_git/<プロジェクト リポジトリ名\> です。 この例では、***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1*** です。
+コード ホスティング プラットフォームとして Azure DevOps を使用している場合は通常、_プロジェクト リポジトリの SSH URL_ は _ssh://<Azure DevOps Services 名\>@<Azure DevOps Services 名\>.visualstudio.com:22/<Your Project Name>/\_git/<プロジェクト リポジトリ名\> です。 この例では、***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1*** です。
 
 ### <a name="copy-contents-of-d3-to-d5"></a>D5 に D3 のコンテンツをコピーします。 
 

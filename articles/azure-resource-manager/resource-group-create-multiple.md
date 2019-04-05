@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: c343dfa3c0eac4aeabaa9244c6675b235fc95552
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: c60983dbbe72515fd8f0f4860e169ce1ba69ed45
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311718"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407087"
 ---
 # <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリソースまたはプロパティの複数のインスタンスをデプロイする
 
-この記事では、リソースの複数のインスタンスを作成するために Azure Resource Manager テンプレートで反復処理する方法について説明します。 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](resource-manager-templates-resources.md#condition)に関する記述を参照してください。
+この記事では、リソースの複数のインスタンスを作成するために Azure Resource Manager テンプレートで反復処理する方法について説明します。 リソースをデプロイするかどうかを指定する必要がある場合は、[condition 要素](resource-group-authoring-templates.md#condition)に関する記述を参照してください。
 
 チュートリアルについては、「[Resource Manager テンプレートを使用した複数のリソース インスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)」を参照してください。
 
@@ -272,6 +272,8 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 
 変数のインスタンスを複数作成するには、variables セクション内で `copy` プロパティを使用します。 `input` プロパティの値から構築された要素の配列を作成します。 `copy` プロパティは、変数内で使用することも、variables セクションの最上位レベルで使用することもできます。 変数の反復処理内で `copyIndex` を使用するときは、反復処理の名前を指定する必要があります。
 
+文字列値の配列を作成する簡単な例については、[配列のコピーのテンプレート](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json)を参照してください。
+
 次の例は、動的に構築された要素を持つ配列変数のさまざまな作成方法を示しています。 これを見ると、変数内で copy を使用して、オブジェクトと文字列の配列を作成する方法がわかります。 また、最上位レベルで copy を使用して、オブジェクト、文字列、および整数の配列を作成する方法もわかります。
 
 ```json
@@ -344,6 +346,50 @@ copy 要素は配列であるため、リソースの複数のプロパティを
     }
   }
 }
+```
+
+作成される変数の型は、入力オブジェクトによって決まります。 たとえば、前の例の **top-level-object-array** という名前の変数は、次のものを返します。
+
+```json
+[
+  {
+    "name": "myDataDisk1",
+    "diskSizeGB": "1",
+    "diskIndex": 0
+  },
+  {
+    "name": "myDataDisk2",
+    "diskSizeGB": "1",
+    "diskIndex": 1
+  },
+  {
+    "name": "myDataDisk3",
+    "diskSizeGB": "1",
+    "diskIndex": 2
+  },
+  {
+    "name": "myDataDisk4",
+    "diskSizeGB": "1",
+    "diskIndex": 3
+  },
+  {
+    "name": "myDataDisk5",
+    "diskSizeGB": "1",
+    "diskIndex": 4
+  }
+]
+```
+
+また、**top-level-string-array** という名前の変数は、次のものを返します。
+
+```json
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
+]
 ```
 
 ## <a name="depend-on-resources-in-a-loop"></a>ループ内のリソースへの依存

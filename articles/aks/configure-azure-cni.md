@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 7d91366ee0fec2930484f7aaa7468e6d1d62f233
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4bd934c710d6300e95c60742d5873f5b71bdae59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701584"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002191"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -51,7 +51,7 @@ AKS クラスターの IP アドレス計画は、仮想ネットワーク、ノ
 | アドレス範囲/Azure リソース | 制限とサイズ変更 |
 | --------- | ------------- |
 | 仮想ネットワーク | Azure の仮想ネットワークは、/8 と同じサイズが可能ですが、構成される IP アドレスの個数は 65,536 に制限されています。 |
-| サブネット | クラスターにプロビジョニングされている可能性のあるノード、ポッド、すべての Kubernetes、および Azure のリソースを収容するのに十分な大きさである必要があります。 たとえば、内部に Azure Load Balancer をデプロイする場合は、そのフロントエンド IP は、パブリック IP ではなく、クラスター サブネットから割り当てられています。 アップグレード操作や今後のスケーリングのニーズも、サブネットのサイズで考慮される必要があります。<p />アップグレード操作用の追加のノードを含む*最小の*サブネットのサイズの計算には、`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)` を使用します。<p/>たとえば、50 のノードから構成されるクラスターは、`(51) + (51  * 30 (default)) = 1,581` (/21 以上) です。<p/>たとえば、追加でノードを 10 増やす用意がされている 50 のノードのクラスターは、`(61) + (61 * 30 (default)) = 1,891` (/21 以上) です。<p>クラスターを作成するときにノードごとの最大ポッド数を指定しないと、ノードごとの最大ポッド数は *30* に設定されます。 必要な最小 IP アドレス数はその値に基づきます。 別の最大値に基づいて最小 IP アドレス要件を計算する場合、[how to configure the maximum number of pods per node (ノードごとの最大ポッド数の構成方法)](#configure-maximum---new-clusters) を参照して、クラスターをデプロイするときにこの値を設定します。 |
+| Subnet | クラスターにプロビジョニングされている可能性のあるノード、ポッド、すべての Kubernetes、および Azure のリソースを収容するのに十分な大きさである必要があります。 たとえば、内部に Azure Load Balancer をデプロイする場合は、そのフロントエンド IP は、パブリック IP ではなく、クラスター サブネットから割り当てられています。 アップグレード操作や今後のスケーリングのニーズも、サブネットのサイズで考慮される必要があります。<p />アップグレード操作用の追加のノードを含む*最小の*サブネットのサイズの計算には、`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)` を使用します。<p/>たとえば、50 のノードから構成されるクラスターは、`(51) + (51  * 30 (default)) = 1,581` (/21 以上) です。<p/>たとえば、追加でノードを 10 増やす用意がされている 50 のノードのクラスターは、`(61) + (61 * 30 (default)) = 1,891` (/21 以上) です。<p>クラスターを作成するときにノードごとの最大ポッド数を指定しないと、ノードごとの最大ポッド数は *30* に設定されます。 必要な最小 IP アドレス数はその値に基づきます。 別の最大値に基づいて最小 IP アドレス要件を計算する場合、[how to configure the maximum number of pods per node (ノードごとの最大ポッド数の構成方法)](#configure-maximum---new-clusters) を参照して、クラスターをデプロイするときにこの値を設定します。 |
 | Kubernetes サービスのアドレス範囲 | この範囲は、この仮想ネットワーク上のネットワーク要素、またはこの仮想ネットワークに接続されているネットワーク要素では使用しないでください。 サービスのアドレスの CIDR は、/12 より小さくする必要があります。 |
 | Kubernetes DNS サービスの IP アドレス | クラスター サービス検索 (kube-dns) で使用される、Kubernetes サービスのアドレス範囲内の IP アドレス。 アドレス範囲内の最初の IP アドレス (.1 など) は使用しないでください。 サブネット範囲の最初のアドレスは、*kubernetes.default.svc.cluster.local* アドレスに使用されます。 |
 | Docker ブリッジ アドレス | ノード上の Docker ブリッジの IP アドレスとして使用される IP アドレス(CIDR 表記)。 既定値は 172.17.0.1/16 です。 |
@@ -143,7 +143,7 @@ Azure Portal の次のスクリーン ショットは、AKS クラスターの�
 
 * *ポッドごとのネットワーク ポリシーを構成できますか。*
 
-  いいえ。 ポッドごとのネットワーク ポリシーは現在サポートされていません。
+  Kubernetes ネットワーク ポリシーは、現在 AKS 内のプレビュー機能として使用できます。 開始するには、[AKS でネットワーク ポリシーを使用してポッド間のトラフィックをセキュリティで保護する][network-policy]方法に関する記事を参照してください。
 
 * *ノードに展開できるポッドの最大数は構成できますか。*
 
@@ -201,3 +201,4 @@ AKS Engine で作成された Kubernetes クラスターは、[kubenet][kubenet]
 [aks-ingress-static-tls]: ingress-static-ip.md
 [aks-http-app-routing]: http-application-routing.md
 [aks-ingress-internal]: ingress-internal-ip.md
+[network-policy]: use-network-policies.md

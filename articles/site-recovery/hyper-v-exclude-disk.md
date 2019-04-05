@@ -8,17 +8,18 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
-ms.openlocfilehash: a1b35d4c10246af7e4dab36585c2bb9b72fd0c01
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216967"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992343"
 ---
 # <a name="exclude-disks-from-replication"></a>レプリケーションからディスクを除外する
 この記事では、ディスクをレプリケーションから除外する方法について説明します。 除外することにより、レプリケーションによる帯域幅の消費や、このようなディスクによって使用されるターゲット側のリソースを最適化できます。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
+
 **機能** | **VMware から Azure** | **Hyper-V から Azure** | **Azure から Azure**| **Hyper-V から Hyper-V** 
 --|--|--|--|--
 ディスクの除外 | はい | はい | いいえ  | いいえ 
@@ -72,7 +73,7 @@ Azure Site Recovery ポータルで[レプリケーションを有効にする](
 DB-Disk0-OS | DISK0 | C:\ | オペレーティング システム ディスク
 DB-Disk1| Disk1 | D:\ | SQL システム データベースとユーザー データベース 1
 DB-Disk2 (保護対象から除外するディスク) | Disk2 | E:\ | 一時ファイル
-DB-Disk3 (保護対象から除外するディスク) | Disk3 | F:\ | SQL tempdb データベース (フォルダーのパスは F:\MSSQL\Data\) </br /> </br /> フェールオーバーの前にフォルダーのパスをメモしておくこと。
+DB-Disk3 (保護対象から除外するディスク) | Disk3 | F:\ | SQL tempdb データベース (フォルダーのパスは F:\MSSQL\Data\) <br /> <br />フェールオーバー前にフォルダー パスをメモします。
 DB-Disk4 | Disk4 |G:\ |ユーザー データベース 2
 
 仮想マシンの 2 つのディスク上のデータの変更は一時的であるため、SalesDB 仮想マシンを保護する一方で、Disk2 と Disk3 をレプリケーションから除外します。 Azure Site Recovery は、これらのディスクをレプリケートしません。 フェールオーバーが発生した場合、これらのディスクは Azure 上のフェールオーバー仮想マシンにも存在しません。
@@ -82,7 +83,7 @@ DB-Disk4 | Disk4 |G:\ |ユーザー データベース 2
 **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | ---
 DISK0 | C:\ | オペレーティング システム ディスク
-Disk1 | E:\ | 一時記憶域</br /> </br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
+Disk1 | E:\ | 一時ストレージ<br /> <br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
 Disk2 | D:\ | SQL システム データベースとユーザー データベース 1
 Disk3 | G:\ | ユーザー データベース 2
 
@@ -146,7 +147,7 @@ Azure からオンプレミスの Hyper-V ホストにフェールオーバー�
 **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | ---
 DISK0 | C:\ | オペレーティング システム ディスク
-Disk1 | E:\ | 一時記憶域</br /> </br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
+Disk1 | E:\ | 一時ストレージ<br /> <br />このディスクは Azure によって追加され、利用可能な最初のドライブ文字が割り当てられます。
 Disk2 | D:\ | SQL システム データベースとユーザー データベース 1
 Disk3 | G:\ | ユーザー データベース 2
 
@@ -186,7 +187,7 @@ Hyper-V から Azure に仮想マシンをフェールオーバーした後の A
 **ディスク名** | **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | オペレーティング システム ディスク
-DB-Disk1 | Disk1 | D:\ | 一時記憶域</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | 一時ストレージ<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | ユーザー データ 1
 DB-Disk3 | Disk3 | F:\ | ユーザー データ 2
 
@@ -213,10 +214,10 @@ DB-Disk3 | Disk3 | F:\ | ユーザー データ 2
 
 Hyper-V から Azure に仮想マシンをフェールオーバーした後の Azure 仮想マシンのディスク構成を次に示します。
 
-**ディスク名**| **ゲスト オペレーティング システム ディスク番号**| **ドライブ文字** | **ディスクに格納されているデータの種類**
+**ディスク名** | **ゲスト オペレーティング システム ディスク番号** | **ドライブ文字** | **ディスクに格納されているデータの種類**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |オペレーティング システム ディスク
-DB-Disk1 | Disk1 | D:\ | 一時記憶域</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | 一時ストレージ<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | ユーザー データ 1
 DB-Disk3 | Disk3 | F:\ | ユーザー データ 2
 

@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1285a9262221dbd8e46d07e384697ddea853f9fc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ee64fe8643362c6a75e288d78e163317fd8a44d8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163055"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193155"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect と Azure AD Connect Health のインストール ロードマップ
 
@@ -46,10 +46,10 @@ Azure AD Connect は [Microsoft ダウンロード センター](https://go.micr
 |Express 設定を使用したインストール | [Azure AD Connect の高速インストール](./how-to-connect-install-express.md)|
 |カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](./how-to-connect-install-custom.md)|
 |DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](./how-to-dirsync-upgrade-get-started.md)|
-|インストール後に | [インストールの確認とライセンスの割り当て ](how-to-connect-post-installation.md)|
+|インストール後に | [インストールの確認とライセンスの割り当て](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Azure AD Connect のインストールの詳細
-[運用](how-to-connect-sync-operations.md) 上の問題への備えも必要になることがあります。 [障害](how-to-connect-sync-operations.md#disaster-recovery)が発生したときにフェールオーバーできるように、スタンバイ サーバーを用意するという方法もあります。 頻繁に構成を変更する予定がある場合は、 [ステージング モード](how-to-connect-sync-operations.md#staging-mode) サーバーについて計画してください。
+[運用](how-to-connect-sync-operations.md) 上の問題への備えも必要になることがあります。 [障害](how-to-connect-sync-staging-server.md#disaster-recovery)が発生したときにフェールオーバーできるように、スタンバイ サーバーを用意するという方法もあります。 頻繁に構成を変更する予定がある場合は、 [ステージング モード](how-to-connect-sync-staging-server.md) サーバーについて計画してください。
 
 |トピック |リンク|  
 | --- | --- |

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac25473ecce86c2721eda9ede01b6d299c4b727b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 31f10ba0c04ccbd9f52b95c43fea7cc551fe64ee
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179333"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888017"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>チュートリアル:GitHub を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -33,11 +33,11 @@ ms.locfileid: "56179333"
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
 *   Azure Active Directory テナント
-*   [Business Cloud プラン](https://help.github.com/articles/organization-billing-plans/#github-business-cloud)以上の有効な GitHub テナント 
-*   Admin アクセス許可がある GitHub のユーザー アカウント 
+*   [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) に作成された GitHub 組織 ([GitHub Enterprise 課金プラン](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)が必要)
+*   組織への Admin アクセス許可がある GitHub のユーザー アカウント
 
 > [!NOTE]
-> Azure AD プロビジョニング統合では、Business プラン以上の GitHub チームで使用できる [GitHub SCIM API](https://developer.github.com/v3/scim/) が必要です。
+> Azure AD プロビジョニング統合では、[GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) のお客様が [GitHub Enterprise 課金プラン](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)で使用できる [GitHub SCIM API](https://developer.github.com/v3/scim/) が必要です。
 
 ## <a name="assigning-users-to-github"></a>GitHub へのユーザーの割り当て
 

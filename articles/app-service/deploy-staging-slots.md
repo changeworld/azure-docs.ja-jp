@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 7c12b34f6d735579326d4ccdd95e7831fbb777d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d9530d35bbaf608ae25e2a753685ee90e9e13501
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181424"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823299"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -42,7 +42,7 @@ ms.locfileid: "56181424"
 ## <a name="add-slot"></a>スロットの追加
 複数のデプロイ スロットを有効にするには、アプリが **Standard**、**Premium**、**Isolated** のいずれかのレベルで実行されている必要があります。
 
-1. [Azure Portal](https://portal.azure.com/) でアプリの[リソース ページ](../azure-resource-manager/resource-group-portal.md#manage-resources)を開きます。
+1. [Azure Portal](https://portal.azure.com/) でアプリの[リソース ページ](../azure-resource-manager/manage-resources-portal.md#manage-resources)を開きます。
 
 2. 左側のナビゲーションで、**[デプロイ スロット (プレビュー)]** オプションを選択し、**[スロットの追加]** をクリックします。
    
@@ -205,7 +205,9 @@ ms.locfileid: "56181424"
         </applicationInitialization>
     </system.webServer>
 
-次の 1 つまたは複数の[アプリ設定](https://github.com/MicrosoftDocs/azure-docs-pr/pull/web-sites-configure.md)でウォームアップ動作をカスタマイズすることもできます。
+`applicationInitialization` 要素のカスタマイズの詳細については、「[Most common deployment slot swap failures and how to fix them (最も一般的なデプロイ スロットのスワップ エラーとその修正方法)](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/)」を参照してください。
+
+次の 1 つまたは複数の[アプリ設定](web-sites-configure.md)でウォームアップ動作をカスタマイズすることもできます。
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`:サイトをウォームアップするための ping へのパス。 このアプリ設定を追加するには、値としてスラッシュで始まるカスタム パスを指定します。 たとえば、「 `/statuscheck` 」のように入力します。 既定値は `/` です。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`:ウォーム アップ操作の有効な HTTP 応答コード。 HTTP コードのコンマ区切りの一覧で、このアプリ設定を追加します。 たとえば、「`200,202`」のように指定します。 返された状態コードが一覧にない場合、ウォーム アップおよびスワップ操作が停止します。 既定で、すべての応答コードは有効です。

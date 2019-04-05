@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 54e78496b98fffefd2932a2ce7625f8b325fb32a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: bda3df3ce869d7717f572f72c38472e7eae4a0ef
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812652"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437430"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Cosmos DB との間でのデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -139,7 +139,7 @@ Azure Cosmos DB などのスキーマのないデータ ストアの場合、Dat
 この Cosmos DB コネクタを使って、次の作業を簡単に実行できます。
 
 * Azure BLOB、Azure Data Lake、オンプレミスのファイル システム、Azure Data Factory でサポートされているその他のファイル ベースのストアなど、さまざまなソースから Cosmos DB に JSON ドキュメントをインポートする。
-* JSON ドキュメントを Cosmos DB コレクションからさまざまなファイル ベースのストアにエクスポートする。
+* JSON ドキュメントを Cosmos DB コレクションからさまざまなファイルベースのストアにエクスポートする。
 * 2 つの Cosmos DB コレクション間でそのままデータを移行する。
 
 このようなスキーマに依存しないコピーを実現するには、次のようにします。

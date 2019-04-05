@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34f994bfca8bdeaffde6732572f47aeaa86b2ac5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818933"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247156"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>診断ログを使用した Azure Stream Analytics のトラブルシューティング
 
@@ -29,7 +29,9 @@ Stream Analytics には 2 種類のログがあります。
 * [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (構成可能) では、ジョブで発生するあらゆるイベントに関して豊富な分析情報が得られます。 診断ログはジョブの作成時に開始され、ジョブが削除されると終了します。 ジョブの更新時とジョブの実行中のイベントがログの対象です。
 
 > [!NOTE]
-> Azure Storage、Azure Event Hubs、Azure Log Analytics などのサービスを使用して、問題となったデータを分析できます。 これらのサービスでは、価格モデルに基づいて料金が発生します。
+> Azure Storage、Azure Event Hubs、Azure Monitor ログなどのサービスを使用して、問題となったデータを分析できます。 これらのサービスでは、価格モデルに基づいて料金が発生します。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="debugging-using-activity-logs"></a>アクティビティ ログを使用したデバッグ
 
@@ -51,11 +53,11 @@ Stream Analytics には 2 種類のログがあります。
 
 5. JSON のエラー メッセージに基づいて是正措置を取ることができます。 この例では、-90 度から 90 度の間の緯度値をクエリに追加する必要があることを確認します。
 
-6. 根本原因を特定するのにアクティビティ ログのエラー メッセージが役に立たない場合は、診断ログを有効にして Log Analytics を使用します。
+6. 根本原因を特定するのにアクティビティ ログのエラー メッセージが役に立たない場合は、診断ログを有効にして Azure Monitor ログを使用します。
 
-## <a name="send-diagnostics-to-log-analytics"></a>Log Analytics に診断を送信する
+## <a name="send-diagnostics-to-azure-monitor-logs"></a>Azure Monitor ログへの診断データの送信
 
-診断ログを有効にして Log Analytics に送信することを、強くお勧めします。 既定では、診断ログは**オフ**になっています。 診断ログを有効にするには、次の手順を実行します。
+診断ログを有効にして Azure Monitor ログに送信することを、強くお勧めします。 既定では、診断ログは**オフ**になっています。 診断ログを有効にするには、次の手順を実行します。
 
 1.  Azure portal にサインインして、Stream Analytics ジョブに移動します。 **[監視]** の下の **[診断ログ]** を選択します。 次に、**[診断を有効にする]** を選択します。
 
@@ -67,7 +69,7 @@ Stream Analytics には 2 種類のログがあります。
 
 3. Stream Analytics ジョブが開始すると、診断ログが Log Analytics ワークスペースにルーティングされます。 Log Analytics ワークスペースに移動して、**[全般]** セクションで **[ログ]** を選択します。
 
-   ![[全般] セクションの Log Analytics ログ](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
+   ![[全般] セクションの Azure Monitor ログ](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
 
 4. 語句の検索、傾向の把握、パターンの分析、およびデータに基づいた分析情報の提供を行う、[独自のクエリを記述](../azure-monitor/log-query/get-started-portal.md)することができます。 たとえば、“The streaming job failed (ストリーミング ジョブが失敗しました)” というメッセージが含まれている診断ログのみをフィルター処理するクエリを記述できます。 Azure Stream Analytics からの診断ログは、**AzureDiagnostics** テーブルに格納されます。
 

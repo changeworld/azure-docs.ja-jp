@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 1de12f2dd2e31c3f5413424793f3bf78fdc8ff27
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 0f8f1c5585eb13506baea1e5ddbe611cc931758e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300263"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003584"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -28,7 +28,7 @@ ms.locfileid: "56300263"
 * 「難しい設定なしで」動く標準の製品利用統計情報モジュールは、多くの場合、機密データをサービスに送信しません。 製品利用統計情報は、負荷指標、パフォーマンス指標、利用率指標、例外レポート、その他の診断データに関連します。 診断レポートに表示される主なユーザー データは URL ですが、いかなる場合も、アプリは URL にプレーンテキストで機密データを入力するべきではありません。
 * 診断と監視利用に役立つ追加のカスタム製品利用統計情報を送信するコードを記述できます。 (この拡張機能は Application Insights の優れた機能です。)手違いにより、このコードを記述し、個人データやその他の機密データが含まれてしまうことはあります。 アプリケーションがそのようなデータを利用する場合、記述するあらゆるコードに徹底したレビュー プロセスを適用してください。
 * アプリを開発し、テストするとき、SDK により送信される内容は簡単に調査できます。 データは IDE とブラウザーのデバッグ出力ウィンドウに表示されます。 
-* データは米国またはヨーロッパの [Microsoft Azure](https://azure.com) サーバーに保管されます。 (ただし、アプリは、場所を問わず実行できます)。Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。 あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。 Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。 転送中は暗号化されます。サーバーに保管されているときは暗号化されません。
+* データは米国またはヨーロッパの [Microsoft Azure](https://azure.com) サーバーに保管されます。 (ただし、アプリは、場所を問わず実行できます)。Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。 あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。 Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。 これは、転送中および保存時に暗号化されます。
 
 この記事の残りの部分では、以上の答えについてもっと詳しく説明します。 設計は自己完結型であり、直近のチームに入っていない同僚にも見せることができます。
 
@@ -118,9 +118,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 コードを他のプロジェクトと共有する場合は、インストルメンテーション キーを必ず削除してください。
 
 ## <a name="is-the-data-encrypted"></a>データは暗号化されますか。
-現時点で、サーバー内では暗号化されません。
-
-データをデータ センター間で移動するときは、すべてのデータが暗号化されます。
+すべてのデータが、保存時とデータ センター間での移動時に暗号化されます。
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>アプリケーションから Application Insights サーバーに送信されるときにデータは暗号化されますか。
 はい。ポータルからほぼすべての SDK (Web サーバー、デバイス、HTTPS Web ページを含みます) への送信に https が使用されます。 唯一の例外は、プレーンな HTTP Web ページから送信されるデータです。
@@ -129,12 +127,9 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 はい。特定のテレメトリ チャネルは、エンドポイントに到達できない場合、データをローカルで保持します。 どのフレームワークおよびテレメトリ チャネルが影響を受けるかを以下で確認してください。
 
-
 ローカル ストレージを利用するテレメトリ チャネルは、アプリケーションを実行している特定のアカウントに制限される TEMP または APPDATA ディレクトリ内に一時ファイルを作成します。 これは、エンドポイントが一時的に使用できなくなったか、または調整制限に達した場合に発生する可能性があります。 この問題が解決されると、テレメトリ チャネルは、すべての新しいデータおよび保持されているデータの送信を再開します。
 
-
-この保持されているデータは**暗号化されない**ため、プライベート データの収集を無効にするようにデータ収集ポリシーを再構築することを強くお勧めします。 (詳細については、「[プライベート データをエクスポートして削除する方法](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)」を参照してください。)
-
+この保持されているデータはローカルでは暗号化されません。 これが問題になる場合は、データを確認して、プライベート データのコレクションを制限します。 (詳細については、「[プライベート データをエクスポートして削除する方法](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)」を参照してください。)
 
 顧客がこのディレクトリを特定のセキュリティ要件で構成する必要がある場合は、フレームワークごとに構成できます。 アプリケーションを実行しているプロセスにこのディレクトリへの書き込みアクセス権があることを確認してください。ただし、意図しないユーザーによってテレメトリが読み取られることを防ぐために、このディレクトリが保護されていることも確認してください。
 
@@ -158,12 +153,12 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 - 構成ファイルから ServerTelemetryChannel を削除します。
 - 構成に次のスニペットを追加します。
-```csharp
-ServerTelemetryChannel channel = new ServerTelemetryChannel();
-channel.StorageFolder = @"D:\NewTestFolder";
-channel.Initialize(TelemetryConfiguration.Active);
-TelemetryConfiguration.Active.TelemetryChannel = channel;
-```
+  ```csharp
+  ServerTelemetryChannel channel = new ServerTelemetryChannel();
+  channel.StorageFolder = @"D:\NewTestFolder";
+  channel.Initialize(TelemetryConfiguration.Active);
+  TelemetryConfiguration.Active.TelemetryChannel = channel;
+  ```
 
 ### <a name="netcore"></a>NetCore
 
@@ -239,6 +234,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 SDK はプラットフォームごとに異なり、インストールできるコンポーネントは複数あります  ([Application Insights の概要][start]に関するページをご覧ください)。各コンポーネントは、それぞれ異なるデータを送信します。
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>さまざまなシナリオで送信されるデータのクラス
+
 | 操作 | 収集されるデータのクラス (次の表を参照) |
 | --- | --- |
 | [Application Insights SDK を .NET Web プロジェクトに追加する][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Session<br/>users |
@@ -254,6 +250,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [他のプラットフォームの SDK][platforms] については、該当するドキュメントを参照してください。
 
 #### <a name="the-classes-of-collected-data"></a>収集されるデータのクラス
+
 | 収集されるデータのクラス | 含まれるデータ (網羅的なリストではありません) |
 | --- | --- |
 | **Properties** |**コードによって決まる任意のデータ** |

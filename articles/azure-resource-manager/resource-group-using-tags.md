@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: ad8a01ecccd7af15686c449b17cd5f014450b015
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bc89b8d830e364c70fef5a5959d4da85c517a5ee
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734438"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764935"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>タグを使用した Azure リソースの整理
 
@@ -115,7 +115,7 @@ $r.Tags.Add("Status", "Approved")
 Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-*リソースにある既存のタグを保持せずに*、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+"*リソース上にある既存のタグを保持せずに*"、リソース グループのすべてのタグをそのリソースに適用するには、次のスクリプトを使用します。
 
 ```azurepowershell-interactive
 $groups = Get-AzResourceGroup
@@ -125,7 +125,7 @@ foreach ($g in $groups)
 }
 ```
 
-*リソースにある重複しない既存のタグを保持して*、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+"*リソース上にある重複しない既存のタグを保持したうえで*"、リソース グループのすべてのタグをそのリソースに適用するには、次のスクリプトを使用します。
 
 ```azurepowershell-interactive
 $group = Get-AzResourceGroup "examplegroup"
@@ -222,7 +222,7 @@ rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
 az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-*リソースにある既存のタグを保持せずに*、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+"*リソース上にある既存のタグを保持せずに*"、リソース グループのすべてのタグをそのリソースに適用するには、次のスクリプトを使用します。
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -238,7 +238,7 @@ do
 done
 ```
 
-*リソースにある既存のタグを保持したうえで*、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+"*リソースにある既存のタグを保持したうえで*"、リソース グループのすべてのタグをそのリソースに適用するには、次のスクリプトを使用します。
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -279,4 +279,4 @@ REST API の操作については、「 [Azure Billing REST API Reference (Azure
 ## <a name="next-steps"></a>次の手順
 
 * すべてのリソースの種類で、タグがサポートされるわけではありません。 リソースの種類にタグを適用することができるかどうかを確認するには、[Azure リソースに対するタグのサポート](tag-support.md)に関する記事を参照してください。
-* ポータルの使用方法の概要については、「[Azure ポータルを使用した Azure リソースの管理](resource-group-portal.md)」をご覧ください。  
+* ポータルの使用方法の概要については、「[Azure ポータルを使用した Azure リソースの管理](manage-resource-groups-portal.md)」をご覧ください。  

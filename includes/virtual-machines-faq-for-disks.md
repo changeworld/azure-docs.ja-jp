@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 311ec7bacdfe58982ee670277000d81756f92005
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 03e10497b033fc3d97fde4cd524b358c05fdc943
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55648642"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457944"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium 管理ディスクおよび非管理ディスクについてよく寄せられる質問
 
@@ -347,7 +347,7 @@ Standard SSD と Standard HDD の、500 IOPS および 60 MiB/秒を超える大
 
 **どのリージョンで、 4 TiB よりも大きいマネージド ディスクのサイズがサポートされていますか?**
 
-プレビューの現時点では、マネージド ディスクのサイズは、米国中西部、北ヨーロッパ、西ヨーロッパ、米国西部 2、米国東部 2、米国東部でサポートされます。
+4 TiB よりも大きいマネージド ディスク サイズのプレビューは、Gov、中国、ドイツを除くすべての Azure の運用リージョンでサポートされます。 
 
 **新しいディスク サイズについてホスト キャッシュを有効にするサポートはしていますか?**
 

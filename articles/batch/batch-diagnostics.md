@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 6fb8166893f0dada019ca633933833d17b95fee9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 368e1f6b9501c677eca1cf80d24a06c0a6533e86
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811462"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817356"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -91,7 +91,7 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 
 * Batch 診断ログ イベントを [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) にストリーミングします。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。 
 
-* 診断ログを [Azure Log Analytics](../log-analytics/log-analytics-overview.md) に送信して分析したり、Power BI または Excel で分析するためにエクスポートしたりできます。
+* 診断ログを [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)に送信して分析したり、Power BI または Excel で分析するためにエクスポートしたりできます。
 
 > [!NOTE]
 > Azure サービスで診断ログ データの格納または処理を行うには、追加料金が発生することがあります。 
@@ -101,7 +101,7 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 
 1. ポータルで、**[すべてのサービス]** > **[Batch アカウント]** をクリックし、Batch アカウントの名前をクリックします。
 2. **[監視]** で、**[診断ログ]** > **[診断の有効化]** をクリックします。
-3. **[診断設定]** に、設定の名前を入力し、ログの保存先 (既存の Storage アカウント、Event Hub、または Log Analytics) を選択します。 **[ServiceLog]** と **[AllMetrics]** のいずれかまたは両方を選択します。
+3. **[診断設定]** に、設定の名前を入力し、ログの保存先 (既存の Storage アカウント、Event Hub、または Azure Monitor ログ) を選択します。 **[ServiceLog]** と **[AllMetrics]** のいずれかまたは両方を選択します。
 
     ストレージ アカウントを選択するときに、必要に応じて保持ポリシーを設定します。 リテンション期間の日数を指定しない場合は、ストレージ アカウントが有効である間、データは保持されます。
 

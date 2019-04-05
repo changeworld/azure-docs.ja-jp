@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/04/2019
+ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 4f67158c0de8cdd161bce269059af6d421bb68b5
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 2d7dc6eb5ee77804f0c8c87ee2e5a5dd1d0dc30a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340350"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841125"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -72,6 +72,7 @@ ms.locfileid: "56340350"
     * ライブ イベントによって Channel が置き換えられました。<br/>ライブ イベントの課金はライブ チャンネルの測定に基づいています。 詳細については、[価格](live-event-states-billing.md)と[課金](https://azure.microsoft.com/pricing/details/media-services/)に関するセクションを参照してください。
     * ライブ出力によって Program が置き換えられました。
 * ライブ出力を明示的に開始する必要はなく、これらは作成時に起動され、削除されたときに停止します。 v2 API ではプログラムの動作方法が異なり、作成後に起動される必要がありました。
+*  ジョブに関する情報を取得するには、ジョブが作成された Transform の名前を知っている必要があります。 
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>v2 API に関する機能のギャップ
 
@@ -98,6 +99,7 @@ v3 API には v2 API に関して次の機能ギャップがあります。 ギ�
 |資産の作成とファイルのアップロード |[v2 .NET の例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[v3 .NET の例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
 |ジョブの送信|[v2 .NET の例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[v3 .NET の例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>まず変換を作成し、次にジョブを送信する方法を示しています。|
 |AES 暗号化を使用して資産を公開する |1.ContentKeyAuthorizationPolicyOption を作成します<br/>2.ContentKeyAuthorizationPolicy を作成します<br/>手順 3.AssetDeliveryPolicy を作成します<br/>4.資産を作成し、コンテンツをアップロードするか、ジョブを送信して出力資産を使用します<br/>5.AssetDeliveryPolicy を資産に関連付けます<br/>6.ContentKey を作成します<br/>7.ContentKey を資産にアタッチします<br/>8.AccessPolicy を作成します<br/>9.ロケーターを作成します<br/><br/>[v2 .NET の例](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1.コンテンツ キー ポリシーを作成します<br/>2.資産を作成します<br/>手順 3.コンテンツをアップロードするか、資産を JobOutput として使用します<br/>4.ストリーミング ロケーターを作成します<br/><br/>[v3 .NET の例](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|ジョブの詳細を取得し、ジョブを管理する |[v2 を使用したジョブの管理](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[v3 を使用したジョブの管理](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 ## <a name="known-issues"></a>既知の問題
 

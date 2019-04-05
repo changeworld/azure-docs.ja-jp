@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: cef6f47b62a500737e5b01865f73253f18fa470c
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 12b8fc2fb8df7fd730e220a3c1b60097ed7748a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960600"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433724"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ) 
 このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -64,7 +64,7 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 * **バナー ロゴ**:右下に表示されます。
 * **背景色**:上部に表示されます。
 
-    ![カスタマイズされた検証電子メールのスクリーンショット](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
+    ![カスタマイズされた確認メールのスクリーンショット](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
 電子メールの署名には、最初に Azure AD B2C テナントを作成したときに指定した Azure AD B2C テナントの名前が含まれます。 名前は次の手順を使用して変更できます。
 

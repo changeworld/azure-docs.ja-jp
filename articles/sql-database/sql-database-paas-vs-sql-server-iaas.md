@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ff0589b87ae031db5bda96dc238359bf9cfb3b11
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 03/11/2019
+ms.openlocfilehash: e5f400bb25fce58a4fb63ca1ad76ddf2b71fbd9c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751601"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835420"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure"></a>Azure で適切な SQL Server オプションを選択する
 
@@ -75,15 +75,15 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 | | SQL Database の単一データベースとエラスティック プール | SQL Database Managed Instance |Azure Virtual Machines と SQL Server |
 | --- | --- | --- |---|
 | **最適な用途:** |最新の安定した SQL Server 機能を使用する必要があり、開発とマーケティングに時間の制約がある新しいクラウド デザイン アプリケーション。 | 最新の新しい SQL Server 機能を使用する必要があり、最小限の変更でクラウドに移行される新しいアプリケーションまたは既存のオンプレミス アプリケーション。  | 変更を最小限に抑えるか、変更なしでクラウドに迅速に移行する必要がある既存のアプリケーション。 運用環境以外のオンプレミス SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。 |
-|  | 高可用性、障害復旧、アップグレードが組み込まれたデータベースを必要とするチーム。 | SQL Database の単一およびプールされたデータベースと同じです。 | SQL Server の高可用性、ディザスター リカバリー、修正プログラムの適用を構成、調整、カスタマイズして管理できるチーム。 自動化された機能がいくつか用意されているため、構成と管理が劇的に簡素化されます。 | |
-|  | 基盤のオペレーティング システムと構成設定の管理を回避したいチーム。 | SQL Database の単一およびプールされたデータベースと同じです。 | 完全な管理者アクセス権がある、カスタマイズされた環境を必要としている。 | |
+|  | 高可用性、障害復旧、アップグレードが組み込まれたデータベースを必要とするチーム。 | SQL Database の単一およびプールされたデータベースと同じです。 | SQL Server の高可用性、ディザスター リカバリー、修正プログラムの適用を構成、調整、カスタマイズして管理できるチーム。 自動化された機能がいくつか用意されているため、構成と管理が劇的に簡素化されます。 |
+|  | 基盤のオペレーティング システムと構成設定の管理を回避したいチーム。 | SQL Database の単一およびプールされたデータベースと同じです。 | 完全な管理者アクセス権がある、カスタマイズされた環境を必要としている。 |
 |  | 最大 100 TB のデータベース。 | 最大 8 TB。 | 記憶域が 64 TB までの SQL Server インスタンス。 インスタンスでは必要な数のデータベースがサポートされます。 |
 | **互換性** | ほとんどのオンプレミス データベース レベルの機能をサポートしています。 | ほとんどすべてのオンプレミス インスタンス レベルおよびデータベース レベルの機能をサポートしています。 | すべてのオンプレミス機能をサポートしています。 |
 | **リソース:** | 基盤となるインフラストラクチャの構成と管理のために IT リソースを使用するつもりがなく、アプリケーション層に的を絞りたい。 | SQL Database の単一およびプールされたデータベースと同じです。 | 構成と管理のための IT リソースが存在する。 自動化された機能がいくつか用意されているため、構成と管理が劇的に簡素化されます。 |
 | **総保有コスト:** | ハードウェアのコストを削減し、管理コストを削減します。 | SQL Database の単一およびプールされたデータベースと同じです。 | ハードウェアのコストを削減します。 |
 | **ビジネス継続性:** |Azure SQL Database では、[組み込みのフォールト トレランスのインフラストラクチャ機能](sql-database-high-availability.md)以外にも、ビジネス継続性を向上させるために、[自動バックアップ](sql-database-automated-backups.md)、[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)、[geo リストア](sql-database-recovery-using-backups.md#geo-restore)、[アクティブ geo レプリケーション](sql-database-active-geo-replication.md)、[自動フェールオーバー グループ](sql-database-auto-failover-group.md)などの機能が提供されます。 詳細については、 [SQL Database のビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。 | SQL Database の単一およびプールされたデータベースと同じですが、ユーザーが開始したコピーのみのバックアップも可能です。 | Azure VM 上の SQL Server では、データベース固有のニーズに合わせて、高可用性とディザスター リカバリーのソリューションを設定できます。 そのため、アプリケーション向けにシステムを大幅に最適化できます。 必要なときに自分でフェールオーバーをテストして実行できます。 詳細については、「 [Azure Virtual Machines における SQL Server の高可用性と障害復旧](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。 |
 | **ハイブリッド クラウド:** |オンプレミス アプリケーションから Azure SQL Database 内のデータにアクセスできます。 | Azure Express Route または VPN Gateway を使った、オンプレミス環境への[ネイティブ仮想ネットワークの実装](sql-database-managed-instance-vnet-configuration.md)と接続。 | Azure VM 上の SQL Server を使用して、アプリケーションの一部をクラウド上で実行し、一部をオンプレミスで実行することができます。 たとえば、 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)を介してオンプレミス ネットワークと Active Directory ドメインをクラウドに拡張できます。 ハイブリッド クラウド ソリューションについて詳しくは、「[オンプレミス データ ソリューションのクラウドへの拡張](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud)」をご覧ください。 |
-|  | サブスクライバーとして、データをレプリケートするための [SQL Server のトランザクション レプリケーション](https://msdn.microsoft.com/library/mt589530.aspx) がサポートされます。 | レプリケーションは、プレビュー機能としてマネージド インスタンスでサポートされています。 | データをレプリケートするための [SQL Server のトランザクション レプリケーション](https://msdn.microsoft.com/library/mt589530.aspx)、[AlwaysOn 可用性グループ](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)、Integration Services、ログ配布が完全にサポートされます。 また、従来の SQL Server バックアップも完全にサポートされます。 | |
+|  | サブスクライバーとして、データをレプリケートするための [SQL Server のトランザクション レプリケーション](https://msdn.microsoft.com/library/mt589530.aspx) がサポートされます。 | レプリケーションは、プレビュー機能としてマネージド インスタンスでサポートされています。 | データをレプリケートするための [SQL Server のトランザクション レプリケーション](https://msdn.microsoft.com/library/mt589530.aspx)、[AlwaysOn 可用性グループ](../virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md)、Integration Services、ログ配布が完全にサポートされます。 また、従来の SQL Server バックアップも完全にサポートされます。 |
 |  | | |
 
 ## <a name="business-motivations-for-choosing-azure-sql-database-or-sql-server-on-azure-vms"></a>Azure SQL Database と Azure VM 上の SQL Server のいずれかを選択するときのビジネスの要因
@@ -91,7 +91,7 @@ Azure とオンプレミス SQL Server データベースの話を始める前�
 SQL データベースをホストするために PaaS と IaaS のどちらを選択するかの決定に影響する可能性のある要素がいくつかあります。
 
 - [コスト](#cost) - PaaS と IaaS の両方のオプションに、基になるインフラストラクチャとライセンスの基本価格が含まれます。 ただし、IaaS オプションではデータベースを管理するために追加の時間とリソースを投資する必要がありますが、PaaS ではこれらの管理機能が価格に含まれています。 IaaS オプションでは、使用していないときにリソースをシャットダウンしてコストを削減できますが、PaaS バージョンでは、リソースを削除して必要なときに再作成しない限り常に実行されます。
-- [管理](#administration) - PaaS オプションでは、データベースの管理に投入する必要がある時間量が減少します。 ただし、ワークロードのパフォーマンスを向上させることができるいくつかのカスタム管理タスクも実行できなくなります。
+- [管理](#administration) - PaaS オプションでは、データベースの管理に投入する必要がある時間量が減少します。 ただし、実行できるカスタムの管理タスクおよびスクリプトの範囲も制限されます。 たとえば、CLR は単一またはプールされたデータベースではサポートされませんが、マネージド インスタンスではサポートされています。 また、PaaS のデプロイ オプションでは、トレース フラグの使用がサポートされていません。
 - [サービス レベル アグリーメント](#service-level-agreement-sla) - IaaS と PaaS の両方で、高度な業界標準の SLA が提供されます。 PaaS オプションでは 99.99% の SLA が保証されますが、IaaS ではインフラストラクチャについて 99.95% の SLA が保証されます。これは、データベースの可用性を確保するために追加のメカニズムを実装する必要があることを意味します。 極端なケースでは、一致する PaaS である高可用性ソリューションを実装する場合、VM に追加の SQL サーバーを作成し、AlwaysOn Availability グループを構成する必要があり、それによってデータベースのコストが倍増する可能性があります。
 - [Azure への移行にかかる時間](#market) - Azure VM 内の SQL Server はお客様の環境と完全に一致するので、オンプレミスから Azure SQL VM への移行は、オンプレミス サーバー間でのデータベースの移行と同じです。 マネージド インスタンスではとても簡単に移行できますが、マネージド インスタンスに移行する前に適用する必要がある変更がいくつかあります。
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: 09f1bdfa4c9a7a179bddf9473b553924bfb58fb7
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: e4037e79812f0cf548ddfcc277c1b66332e0f1f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768564"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902877"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -22,6 +22,10 @@ ms.locfileid: "55768564"
 ## <a name="public-previews"></a>パブリック プレビュー
 
 以下の機能はパブリック プレビュー段階です。 これらの機能は現在でも利用できますが、運用環境では使用しないでください。
+
+### <a name="anomaly-detection"></a>異常検出
+
+Azure Stream Analytics では、"*スパイク*" と "*ディップ*" の検出、および双方向、ゆっくりした増加、ゆっくりした減少の傾向の検出のサポートを備えた、新しい機械学習モデルが導入されています。 詳細については、「[Azure Stream Analytics での異常検出](stream-analytics-machine-learning-anomaly-detection.md)」を参照してください。
 
 ### <a name="sql-database-reference-data"></a>SQL Database 参照データ
 
@@ -47,10 +51,6 @@ Visual Studio Tools for Azure Stream Analytics ではローカル テスト機�
 
 以下の機能は、プライベート プレビュー段階です。
 
-### <a name="anomaly-detection"></a>異常検出
-
-Azure Stream Analytics では、"*スパイク*" と "*ディップ*" の検出、および双方向、ゆっくりした増加、ゆっくりした減少の傾向の検出のサポートを備えた、新しい機械学習モデルが導入されています。
-
 ### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge 用の C# カスタム デシリアライザー
 
 開発者は、C# でカスタム デシリアライザーを実装して、Azure Stream Analytics で受信したイベントを逆シリアル化できるようになりました。 逆シリアル化できる形式としては、Parquet、Protobuf、XML、または任意のバイナリ形式などがあります。
@@ -61,7 +61,7 @@ Azure Data Lake Storage Gen1 に書き込みながら、Azure リソース ベ�
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Stream Analytics 用の Visual Studio Code
 
-Visual Studio Code で Azure Stream Analytics のジョブを作成できます。
+Visual Studio Code で Azure Stream Analytics のジョブを作成できます。 ツールのプライベート プレビュー機能にアクセスするには、*ASAToolsfeedback\@microsoft.com* にお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
 

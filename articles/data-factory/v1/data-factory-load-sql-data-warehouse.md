@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 145a1d24e877cc4083706310694005c01c8c8fbf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e275411f9fd9dfb672bb0815e83e37bcd5d1dda9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020151"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077022"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
 > [!NOTE]
@@ -109,7 +109,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
         CLUSTERED COLUMNSTORE INDEX
     )
     ```
-以上で前提条件の手順が完了し、コピー ウィザードを使用するコピー アクティビティを構成する準備が整いました。
+  以上で前提条件の手順が完了し、コピー ウィザードを使用するコピー アクティビティを構成する準備が整いました。
 
 ## <a name="launch-copy-wizard"></a>コピー ウィザードの起動
 1. [Azure Portal](https://portal.azure.com) にログインします。

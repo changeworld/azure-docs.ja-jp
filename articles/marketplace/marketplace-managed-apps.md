@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: ae50562a9354b9c1e5b2711e5bbeec7b1e0fbbb8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 15c559bb8b357b7776c101f88db8316b05edb677
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078798"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213162"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure アプリケーション:マネージド アプリケーション オファーの発行ガイド
 
@@ -46,6 +46,8 @@ ms.locfileid: "54078798"
 >[!NOTE]
 > 管理対象アプリは、Marketplace から展開できる必要があります。 顧客の通信に懸念がある場合、リード共有を有効にした後、興味を持つ顧客に連絡するようにしてください。  
 
+>[!Note]
+>クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](./cloud-solution-providers.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 まだ行っていない場合は、 

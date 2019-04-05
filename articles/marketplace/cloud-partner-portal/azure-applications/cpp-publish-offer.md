@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: cafda8a48f9160c80edb02c3452035f912958bc7
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: fdca47877d4cb2192eef0a26448cd21e8afe4b77
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098223"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217939"
 ---
 # <a name="publish-azure-application-offer"></a>Azure アプリケーション オファーを公開する
 
@@ -52,6 +52,8 @@ Cloud パートナー ポータルのオファーの **[状態]** タブで発�
 
 発行プロセスが完了した後、オファーが [Microsoft Azure Marketplace のアプリケーション カテゴリ](https://azuremarketplace.microsoft.com/marketplace/apps/)に一覧表示されます。
 
+>[!Note]
+>クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](../../cloud-solution-providers.md)」を参照してください。
 
 ## <a name="errors-and-review-feedback"></a>エラーとフィードバックの確認
 

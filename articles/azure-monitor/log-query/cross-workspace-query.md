@@ -13,18 +13,25 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
-ms.openlocfilehash: ccc9a74c4e238ebfcab0fc05a3bf825000917843
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d69ddcd44fd947f3d1dc61ac960e7b55258c163e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998948"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872014"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Azure Monitor でクロスリソース ログ クエリを実行する  
 
 Azure Monitor では以前、現在のワークスペース内からしかデータを分析できず、サブスクリプション内に定義されている複数のワークスペース間でクエリを実行する機能が制限されていました。  また、Application Insights を使用した Web ベースのアプリケーションから収集されたテレメトリ項目を、Application Insights または Visual Studio から直接検索することしかできませんでした。  またこれにより、運用データとアプリケーション データを一緒にネイティブ分析することが難しくなっていました。   
 
-現在は、複数の Log Analytics ワークスペース間だけでなく、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからのデータのクエリを実行できるようになりました。 これにより、システム全体のデータを確認できます。  これらの種類のクエリは、[Log Analytics](portals.md) でのみ行うことができます。 1 回のクエリに含めることができるリソース (Log Analytics ワークスペースおよび Application Insights アプリ) の数は 100 個に制限されています。 
+現在は、複数の Log Analytics ワークスペース間だけでなく、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからのデータのクエリを実行できるようになりました。 これにより、システム全体のデータを確認できます。  これらの種類のクエリは、[Log Analytics](portals.md) でのみ行うことができます。
+
+## <a name="cross-resource-query-limits"></a>リソース間のクエリの制限 
+
+* 1 回のクエリに含めることができる Application Insights リソースの数は 100 個に制限されています。
+* リソース間のクエリは、ビュー デザイナーでサポートされていません。 Log Analytics でクエリを作成して、Azure ダッシュボードにピン留めし、[ログ検索を視覚化する](../../azure-monitor/learn/tutorial-logs-dashboards.md#visualize-a-log-search)ことができます。 
+* ログ アラートでのリソース間のクエリは、新しい [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) でサポートされています。 [従来の Log Alerts API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) から切り替えていない場合、Azure Monitor では既定で、[従来の Log Analytics Alert API](../platform/api-alerts.md) を使用して Azure portal から新しいログ アラート ルールが作成されます。 切り替えた後は、Azure portal での新しいアラート ルールに対して新しい API が既定になり、リソース間のクエリのログ アラート ルールを作成できます。 切り替えを行わなくても、[scheduledQueryRules API 用の ARM テンプレート](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)を使用することで、リソース間のクエリのログ アラート ルールを作成できます。ただし、このアラート ルールは、[scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) では管理できますが、Azure portal では管理できません。
+
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Log Analytics ワークスペース間と Application Insights からのクエリ
 クエリ内の別のワークスペースを参照するには、[*ワークスペース*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression)識別子を使用します。Application Insights のアプリの場合は、[*アプリ*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)識別子を使用します。  

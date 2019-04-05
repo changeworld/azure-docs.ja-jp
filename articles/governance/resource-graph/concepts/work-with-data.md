@@ -4,16 +4,16 @@ description: Azure Resource Graph の使用時に大きなデータ セットを
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/31/2019
+ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 8808f42cdd6fb547b70695278993faa0f52cdb61
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ef61314ae124668fc8970e6d68a0f927bdf771bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338395"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889037"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 
@@ -22,6 +22,9 @@ Azure Resource Graph は、Azure 環境内にあるリソースを操作し、�
 ## <a name="data-set-result-size"></a>データ セットの結果のサイズ
 
 既定では、Resource Graph のクエリで返されるレコードは **100** 個だけに制限されています。 このコントロールにより、ユーザーとサービスの両方が、大規模なデータ セットになる意図しないクエリから保護されます。 このようなことが最もよく発生するのは、ユーザーが自分の特定のニーズに合った方法でリソースの検索とフィルター処理を行うクエリを実験しているときです。 このコントロールは、Azure Data Explorer 言語の [top](/azure/kusto/query/topoperator) または [limit](/azure/kusto/query/limitoperator) 演算子を使用して結果を制限する場合とは異なります。
+
+> [!NOTE]
+> **First** を使用するときは、`asc` または `desc` を使って、少なくとも 1 つの列を基に結果を並べ替えることをお勧めします。 並べ替えを行わないと、返される結果がランダムになり、反復可能ではなくなります。
 
 既定の制限は、Resource Graph と対話するすべての方法でオーバーライドできます。 次の例では、データ セットのサイズ制限を _200_ に変更する方法を示します。
 
@@ -42,6 +45,9 @@ Search-AzGraph -Query "project name | order by name asc" -First 200
 ## <a name="skipping-records"></a>レコードのスキップ
 
 大規模なデータ セットを操作するための次のオプションは、**Skip** コントロールです。 このコントロールをクエリで使用すると、結果を返す前に定義されている数のレコードをスキップできます。 **Skip** は、結果セットの中間にあるレコードを取得することを目的として、意味のある方法で結果を並べ替えるクエリに便利です。 必要な結果が返されるデータ セットの末尾にある場合は、異なる並べ替え構成を使用し、代わりにデータ セットの先頭から結果を取得する方が効率的です。
+
+> [!NOTE]
+> **Skip** を使用するときは、`asc` または `desc` を使って、少なくとも 1 つの列を基に結果を並べ替えることをお勧めします。 並べ替えを行わないと、返される結果がランダムになり、反復可能ではなくなります。
 
 次の例では、クエリ結果の最初の _10_ レコードをスキップして、代わりに 11 番目のレコードから結果セットを返し始める方法を示します。
 

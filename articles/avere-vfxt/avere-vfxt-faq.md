@@ -4,14 +4,14 @@ description: Avere vFXT for Azure に関してよく寄せられる質問です
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: dbd9eaf531dcad230c23d1b41110036102faf3df
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 1dda3e379a9dcec9dc48d741c107ee352c4f2033
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652669"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404639"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure の FAQ
 
@@ -63,7 +63,7 @@ Avere vFXT はキャッシュです。 厳密に言えばデータを格納す�
 
 ### <a name="what-regions-are-supported"></a>どのリージョンがサポートされていますか?
 
-2018 年 11 月 1 日現在、Avere vFXT for Azure は、ソブリン リージョン (中国、ドイツ) と Government リージョンを除くすべてのリージョンでサポートされています。 使用するリージョンが、Avere vFXT クラスターを作成するために必要な大量のコンピューティング コアと VM インスタンスをサポートできることを確認してください。
+Avere vFXT for Azure は、ソブリン リージョン (中国、ドイツ) を除くすべてのリージョンでサポートされています。 使用するリージョンが、Avere vFXT クラスターを作成するために必要な大量のコンピューティング コアと VM インスタンスをサポートできることを確認してください。
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>Avere vFXT のヘルプを利用するにはどうすればよいですか?
 
@@ -88,15 +88,17 @@ Avere vFXT は、複数の Azure 仮想マシンによって構成されるク�
 
 ### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Avere vFXT はどのような種類の Azure 仮想マシン上で実行されますか?  
 
-Avere vFXT for Azure クラスターでは、Microsoft Azure E32s_v3 または D16s_v3 仮想マシンが使用されます。 
+Avere vFXT for Azure クラスターでは、Microsoft Azure E32s_v3 仮想マシンが使用されます。 
 
-### <a name="can-i-mix-and-match-virtual-machine-types-for-my-cluster"></a>クラスターでは異なる種類の仮想マシンを組み合わせることができますか?
+<!-- ### Can I mix and match virtual machine types for my cluster?
 
-いいえ、1 種類の仮想マシンを選択する必要があります。
+No, you must choose one virtual machine type or the other.
     
-### <a name="can-i-move-between-virtual-machine-types"></a>仮想マシンの種類を変更できますか?
+### Can I move between virtual machine types?
 
-はい、VM の種類を変更するための移行パスがあります。 方法については、[サポート チケットを開いてください](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)。
+Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
+
+-->
 
 ### <a name="does-the-avere-vfxt-environment-scale"></a>Avere vFXT 環境はスケーリングできますか?
 
@@ -175,7 +177,7 @@ Avere vFXT でオンプレミスのストレージを使用する場合は、1 G
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Avere vFXT には専用のサブネットが必要ですか?
 
-はい。 Avere vFXT は HA クラスターとして厳密に実行され、動作するには複数の IP アドレスが必要です。 クラスターが専用のサブネットに存在する場合は、インストールと通常の動作の問題となる可能性がある IP アドレスの競合のリスクを回避できます。 IP アドレスの重複がない限り、クラスターのサブネットは既存の仮想ネットワーク内でもかまいません。
+はい。 Avere vFXT は高可用性 (HA) クラスターとして厳密に実行され、動作するには複数の IP アドレスが必要です。 クラスターが専用のサブネットに存在する場合は、インストールと通常の動作の問題となる可能性がある IP アドレスの競合のリスクを回避できます。 IP アドレスの重複がない限り、クラスターのサブネットは既存の仮想ネットワーク内でもかまいません。
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>InfiniBand 上で Avere vFXT を実行できますか?
 
@@ -214,6 +216,10 @@ Avere vFXT はストレージではありません。 Avere vFXT は、コア �
 
 * Dell EMC Isilon (OneFS 7.1、7.2、8.0、8.1) 
 * NetApp ONTAP (Clustered Mode 9.4、9.3、9.2、9.1P1、8.0 から 8.3) および (7-Mode 7.*、8.0 から 8.3) 
+
+  > [!NOTE] 
+  > Azure NetApp Files は、現在、サポートされていません。 
+
 * Azure Blob コンテナー (ローカル冗長ストレージのみ) 
 * AWS S3 バケット 
 * Google Cloud バケット

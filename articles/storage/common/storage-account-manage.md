@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: tamram
-ms.openlocfilehash: 768fd4a715d4c0df154f823d159fd63898c9715b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3f6009c77618bc043586771a6f67442533b2a0d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981333"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444057"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Azure portal でストレージ アカウント設定を管理する
 
@@ -25,9 +25,9 @@ Azure Storage では、ロールベースのアクセス制御 (RBAC) を介し�
 Azure portal の**アクセス制御**設定を利用すれば、簡単な方法で RBAC ロールをユーザー、グループ、サービス プリンシパル、マネージド ID に割り当てることができます。 RBAC ロールを割り当てる方法については、[RBAC で BLOB およびキュー データへのアクセス許可を管理する (プレビュー)](storage-auth-aad-rbac.md) 方法に関するページを参照してください。
 
 > [!NOTE]
-> Azure AD の資格情報を使用したユーザーまたはアプリケーションの認証は、セキュリティと使いやすさで他の承認手段よりも優れています。 アプリケーションで共有キー承認を引き続き使うことはできますが、Azure AD を使うと、コードでアカウント アクセス キーを保存する必要がなくなります。 Shared Access Signature (SAS) の使用を続けても、ストレージ アカウント内のリソースにきめ細かいアクセスの許可できますが、Azure AD は同様の機能を提供するだけでなく、SAS トークンを管理したり、侵害された SAS の取り消しを心配したりする必要がありません。 
+> Azure AD の資格情報を使用したユーザーまたはアプリケーションの認証は、セキュリティと使いやすさで他の承認手段よりも優れています。 アプリケーションで共有キー承認を引き続き使うことはできますが、Azure AD を使うと、コードでアカウント アクセス キーを保存する必要がなくなります。 Shared Access Signature (SAS) を使ってストレージ アカウント内のリソースに対するきめ細かいアクセスの許可を続けることもできますが、Azure AD は、SAS トークンを管理したり侵害された SAS の取り消しを心配したりする必要なしに、同様の機能を提供します。 
 
-## <a name="tags"></a>タグ
+## <a name="tags"></a>Tags
 
 Azure Storage では、カスタマイズした分類で Azure リソースを整理するための Azure Resource Manager タグがサポートされています。 サブスクリプション内のストレージ アカウントを論理的にグループ化できるように、ストレージ アカウントにタグを適用できます。 
 

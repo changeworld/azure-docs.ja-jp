@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: c8320a0f504927830c47400f1f1ef0369c0e1cad
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 783cef6ff4e107838bb3ff7502fb4a8e9189ec3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116536"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011192"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd:Application Insights での Linux パフォーマンス メトリック
 
@@ -26,14 +26,12 @@ ms.locfileid: "54116536"
 
 既に [Application Insights で Java Web サービスをインストルメント化][java]してある場合は、通常、collectd を使用します。 collectd を使用すると、アプリのパフォーマンスの向上や問題の診断に役立つ多くのデータを得られます。 
 
-![サンプルのグラフ](./media/java-collectd/sample.png)
-
 ## <a name="get-your-instrumentation-key"></a>インストルメンテーション キーの取得
 [Microsoft Azure Portal](https://portal.azure.com) で、データを表示する [Application Insights](../../azure-monitor/app/app-insights-overview.md) リソースを開きます。 (または[新しいリソースを作成](../../azure-monitor/app/create-new-resource.md )します。)
 
 リソースを識別する、インストルメンテーション キーのコピーを取ります。
 
-![Browse all, open your resource, and then in the Essentials drop-down, select and copy the Instrumentation Key (すべてを参照し、リソースを開いてから、[Essentials] ドロップダウンでインストルメンテーション キーを選択およびコピーする)](./media/java-collectd/02-props.png)
+![Browse all, open your resource, and then in the Essentials drop-down, select and copy the Instrumentation Key (すべてを参照し、リソースを開いてから、[Essentials] ドロップダウンでインストルメンテーション キーを選択およびコピーする)](./media/java-collectd/instrumentation-key-001.png)
 
 ## <a name="install-collectd-and-the-plug-in"></a>collectd とプラグインのインストール
 Linux サーバー コンピューターで、次の操作を行います。
@@ -93,9 +91,7 @@ Linux サーバー コンピューターで、次の操作を行います。
 [マニュアル](https://collectd.org/wiki/index.php/First_steps)に従って collectd を起動します。
 
 ## <a name="view-the-data-in-application-insights"></a>Application Insights でデータを表示する
-Application Insights のリソースで、[メトリックス エクスプローラーの [グラフの追加]][metrics] を開き、[カスタム] カテゴリから表示するメトリックを選択します。
-
-![](./media/java-collectd/result.png)
+Application Insights のリソースで、[[メトリックス] および [グラフの追加]][metrics] を開き、[カスタム] カテゴリから表示したいメトリックを選択します。
 
 既定では、メトリックは、メトリックの収集元のすべてのホスト コンピューターにわたって集計されます。 ホスト別のメトリックを表示するには、グラフの詳細ブレードで [グループ化] を有効にしてから、CollectD-Host でのグループ化を選択します。
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fa9cebe092f726b2df3dec99cee1bb97ccc92dc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f9628be1d1f1d146ed0dbc5ebd9579f0512aeac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658657"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997371"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用した Azure への SAP NetWeaver HA のインストール
 
@@ -48,7 +48,7 @@ ms.locfileid: "34658657"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -211,7 +211,7 @@ ms.locfileid: "34658657"
 * SAP Software Provisioning Manager (SWPM) インストール ツール バージョン SPS21 以降。
 * 新しい SAP クラスター リソース DLL を使用した、最新の NTCLUST.SAR アーカイブのダウンロード。 新しい SAP クラスター DLL は、Windows Server フェールオーバー クラスターでのファイル共有を使用した SAP ASCS/SCS の高可用性をサポートしています。
 
-  新しい SAP クラスター リソース DLL の詳細については、ブログ「[New SAP cluster resource DLL is available! (新しい SAP クラスター リソース DLL が使用可能です!)][sap-blog-new-sap-cluster-resource-dll]」をご覧ください。
+  新しい SAP クラスター リソース DLL の詳細については、次のブログを参照してください: [New SAP cluster resource DLL is available! (新しい SAP クラスター リソース DLL が使用可能です!)][sap-blog-new-sap-cluster-resource-dll]。
 
 データベース管理システム (DBMS) の設定は、使用する DBMS システムによって異なるため、ここでは説明しません。 ただし、さまざまな DBMS ベンダーが Azure でサポートする機能を使用して、DBMS に関する高可用性の問題に対処していることを想定しています。 たとえば、SQL Server の Always On またはデータベース ミラーリング、Oracle データベースの Oracle Data Guard などがあります。 この記事のシナリオでは、DBMS の保護は強化しませんでした。
 
@@ -237,12 +237,12 @@ SAP ASCS/SCS インスタンスを ASCS/SCS クラスターの "*両方*" のノ
 
 インスタンスをインストールするには、SAP SWPM インストール ツールで、次のように選択します。
 
-**\<製品>** > **\<DBMS>** > **[Installation]\(インストール)** > **[Application Server ABAP** (or **Java**)]\(アプリケーション サーバー ABAP (または Java))> **[Distributed System]\(分散システム)** > **[ASCS/SCS Instance]\(ASCS/SCS インスタンス)**
+**\<製品>** > **\<DBMS>** > **[Installation]\(インストール)** > **[Application Server ABAP (or **Java**)]\(アプリケーション サーバー ABAP (または Java))** > **[Distributed System]\(分散システム)** > **[ASCS/SCS Instance]\(ASCS/SCS インスタンス)**
 
 > [!IMPORTANT]
 > 現在、SAP SWPM インストール ツールでは、ファイル共有のシナリオはサポートされていません。 次のインストール パスは "*使用できません*"。
 >
-> **\<製品>** > **\<DBMS>** > **[Installation]\(インストール)** > **[Application Server ABAP** (or **Java**)]\(アプリケーション サーバー ABAP (または Java))> **[High-Availability System]\(高可用性システム)** > …
+> **\<製品>** > **\<DBMS>** > **[Installation]\(インストール)** > **[Application Server ABAP (or **Java**)]\(アプリケーション サーバー ABAP (または Java))** > **[High-Availability System]\(高可用性システム)** > …
 >
 
 ### <a name="remove-sapmnt-and-create-an-saploc-file-share"></a>SAPMNT の削除と SAPLOC ファイル共有の作成
@@ -425,7 +425,7 @@ Import-Module C:\tmp\SAPScripts.psm1
 Update-SAPASCSSCSProfile -PathToAscsScsInstanceProfile \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_ascs-1 -NewASCSHostName pr1-ascs -NewSAPGlobalHostName sapglobal -Verbose  
 ```
 
-![図 1: SAPScripts.psm1 の出力][sap-ha-guide-figure-8012]
+![図 1:SAPScripts.psm1 の出力][sap-ha-guide-figure-8012]
 
 _**図 1**: SAPScripts.psm1 の出力_
 
@@ -435,7 +435,7 @@ _**図 1**: SAPScripts.psm1 の出力_
 2. \<sid>adm ユーザーとしてログオンし、Regedit.exe ツールを起動します。
 3. **[HKEY_CURRENT_USER]** > **[Environment]\(環境\)** に移動し、変数を新しい値に更新します。
 
-| 変数 | 値 |
+| 可変 | 値 |
 | --- | --- |
 | RSEC_SSFS_DATAPATH | \\\\**sapglobal**\sapmnt\PR1\SYS\global\security\rsecssfs\data |
 | RSEC_SSFS_KEYPATH | \\\\**sapglobal**\sapmnt\PR1\SYS\global\security\rsecssfs\key |
@@ -514,9 +514,9 @@ Start-ClusterGroup -Name $SAPClusterGroupName -Verbose
 C:\usr\sap\PR1\ASCS00\exe\sapstartsrv.exe -r -p \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_pr1-ascs -s PR1 -n 00 -U SAPCLUSTER\SAPServicePR1 -P mypasswd12 -e SAPCLUSTER\pr1adm
 ```
 
-![図 2: SAP サービスの再インストール][sap-ha-guide-figure-8013]
+![図 2:SAP サービスの再インストール][sap-ha-guide-figure-8013]
 
-_**図 2:** SAP サービスの再インストール_
+_**図 2**: SAP サービスの再インストール_
 
 パラメーターが正しいことを確認し、**[Startup Type]\(スタートアップの種類\)** として **[Manual]\(手動\)** を選択します。
 

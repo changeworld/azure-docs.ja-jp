@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 12589d9fa4623dbb6ebfd12d2e007eb9303ecdbf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4f06af8044a79a7dc54d6fde55992111d24d22a7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007600"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441562"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Azure Search での単純なクエリ構文
 Azure Search は、2 つの Lucene ベースのクエリ言語を実装します。[Simple Query Parser](https://lucene.apache.org/core/4_7_0/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) と [Lucene Query Parser](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) です。 Azure Search では、単純なクエリ構文では fuzzy/slop のオプションは除外されます。  
@@ -46,7 +46,7 @@ Azure Search は、2 つの Lucene ベースのクエリ言語を実装します
 
 ## <a name="operators-in-simple-search"></a>単純な検索での演算子
 
-クエリ文字列に演算子を埋め込んで、一致するドキュメントの検出に使用する高度な条件セットを作成することができます。 
+クエリ文字列に演算子を埋め込んで、一致するドキュメントの検出に使用する豊富な条件セットを作成することができます。 
 
 ## <a name="and-operator-"></a>AND 演算子 `+`
 

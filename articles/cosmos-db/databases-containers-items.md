@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 85d8b531f19ac35f091f54c2627f7fe6d3a62a42
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c7288b112ce2fd062a67cb673a1efa6028ec7d57
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468140"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888521"
 ---
 # <a name="work-with-databases-containers-and-items"></a>データベース、コンテナー、アイテムの操作
 
@@ -92,7 +92,7 @@ Azure Cosmos コンテナーには、一連のシステム定義プロパティ�
 Azure Cosmos コンテナーでは、いずれかの Azure Cosmos API を使用して、以下の操作を行えます。
 
 | **操作** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API** | **テーブル API** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | データベース内のコンテナーを列挙する | はい* | はい | はい | はい | NA | NA |
 | コンテナーを読み取る | はい | はい | はい | はい | NA | NA |
 | 新しいコンテナーを作成する | はい | はい | はい | はい | NA | NA |
@@ -125,7 +125,7 @@ Azure Cosmos のどの項目にも、以下のシステム定義プロパティ�
 Azure Cosmos の項目は、以下の操作をサポートしています。それらの操作は、いずれかの Azure Cosmos API を使用して実行できます。
 
 | **操作** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API** | **テーブル API** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | 挿入、置換、削除、アップサート、読み取り | いいえ  | 可能  | はい | はい | はい | はい |
 
 ## <a name="next-steps"></a>次の手順

@@ -1,5 +1,5 @@
 ---
-title: RBAC と REST API を使用して Azure リソースへのアクセスを管理する | Microsoft Docs
+title: RBAC と REST API を使用して Azure リソースへのアクセスを管理する - Azure | Microsoft Docs
 description: ロールベースのアクセス制御 (RBAC) と REST API を使用してユーザー、グループ、アプリケーションの Azure リソースへのアクセスを管理する方法について説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c2ef9b0070cc9ac190b773f023ffc18d1b251a41
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: a66969504dee5ba526cdccbbb39471ef5af971c0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338412"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439334"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>RBAC と REST API を使用して Azure リソースへのアクセスを管理する
 

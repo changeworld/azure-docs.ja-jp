@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: cce3ea06ebd7d3469dad14e491124f81567610ea
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: c446a71a363a9a81eeb7d0dddcdbd90ccee08b7d
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894056"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189361"
 ---
 # <a name="live-events-and-live-outputs"></a>ライブ イベントとライブ出力
 
@@ -42,7 +42,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ### <a name="pass-through"></a>パススルー
 
-![パススルー](./media/live-streaming/pass-through.png)
+![パススルー](./media/live-streaming/pass-through.svg)
 
 パススルー **ライブ イベント**を使用する場合は、オンプレミス ライブ エンコーダーを活用して、マルチ ビットレート ビデオ ストリームを生成し、(RTMP または Fragmented MP4 プロトコルを使用して) ライブ イベントへの投稿フィードとして送信します。 その後、ライブ イベントは追加の処理なしで受信ビデオ ストリームを通過します。 このようなパススルー LiveEvent は、長時間実行されるライブ ストリームや 24 時間 365 日のリニア ライブ エンコード向けに最適化されています。 この種類のライブ イベントを作成するときは、None (LiveEventEncodingType.None) を指定してください。
 
@@ -56,11 +56,16 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ### <a name="live-encoding"></a>ライブ エンコード  
 
-![ライブ エンコード](./media/live-streaming/live-encoding.png)
+![ライブ エンコード](./media/live-streaming/live-encoding.svg)
 
 Media Services によるライブ エンコードを使用する場合は、オンプレミス ライブ エンコーダーを、(RTMP または Fragmented MP4 プロトコルを使用して) ライブ イベントへの投稿フィードとしてシングル ビットレート ビデオを送信するように構成します。 ライブ イベントは、受信シングル ビットレート ストリームを[マルチ ビットレート ビデオ ストリーム](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)にエンコードし、そのストリームを、MPEG-DASH、HLS、Smooth Streaming などのプロトコルを介して再生デバイスに配信できるようにします。 この種類のライブ イベントを作成するときは、エンコードの種類に **Standard** (LiveEventEncodingType.Standard) を指定してください。
 
 投稿フィードは最大 1080p の解像度と 30 フレーム/秒のフレーム レートで、H.264/AVC ビデオ コーデックと AAC (AAC-LC、HE-AACv1、または HE-AACv2) オーディオ コーデックを使用して送信することができます。 詳細については、[ライブ イベントの種類の比較](live-event-types-comparison.md)についての記事を参照してください。
+
+ライブ エンコード (**Standard** に設定されたライブ イベント) を使用する際、エンコードのプリセットでは、受信ストリームを複数のビットレートまたはレイヤーにエンコードする方法を定義します。 詳細については、[システムのプリセット](live-event-types-comparison.md#system-presets)に関するページを参照してください。
+
+> [!NOTE]
+> 現在、Standard タイプのライブ イベントで使用できるプリセット値は、*Default720p* のみです。 カスタムのライブ エンコード プリセットを使用する必要がある場合は、amshelp@microsoft.com までお問い合わせください。 目的の解像度ビットレートを指定する必要があります。 720p のレイヤーが 1 つだけあり、最大で 6 つのレイヤーがあることを確認してください。
 
 ## <a name="live-event-creation-options"></a>ライブ イベントの作成のオプション
 
@@ -145,5 +150,4 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [ライブ イベントのストリーミング](live-streaming-overview.md)
-- [ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)
+[ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)

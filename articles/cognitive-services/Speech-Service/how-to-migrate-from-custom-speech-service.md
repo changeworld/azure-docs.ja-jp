@@ -1,7 +1,7 @@
 ---
 title: Custom Speech Service から Speech Services に移行する
 titlesuffix: Azure Cognitive Services
-description: Custom Speech Service は Speech Service の一部になっています。 Speech Service に切り替えると、最新の品質と機能の更新のベネフィットがあります。
+description: Custom Speech Service は Speech Services の一部になっています。 Speech Services に切り替えると、品質と機能の最新の更新によるベネフィットがあります。
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 698962aa0e3d72b204c4e990aa1384b44bf3896f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 501555c68b7b5922bbf5a74d2a7ed5e548b900c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856896"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833539"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Custom Speech Service から Speech Service に移行する
 
 アプリケーションを Custom Speech Service から Speech Service に移行するには、この記事を参考にしてください。
 
-Custom Speech Service は Speech Service の一部になっています。 Speech Service に切り替えると、最新の品質と機能の更新のベネフィットがあります。
+Custom Speech Service は Speech Service の一部になっています。 Speech Services に切り替えると、品質と機能の最新の更新によるベネフィットがあります。
 
 ## <a name="migration-for-new-customers"></a>新しいお客様の移行
 
@@ -39,16 +39,16 @@ Speech Service の価格モデルは時間ベースになっており、より�
 
 3. クイック スタート ガイドと SDK サンプルに従って、適切な API を使用します。 REST API を使用する場合は、正しいエンドポイントとリソース キーを使用する必要もあります。
 
-4. Speech Service とその API を使用するようにクライアント アプリケーションを更新します。
+4. Speech Services と API を使用するようにクライアント アプリケーションを更新します。
 
 ## <a name="migration-for-existing-customers"></a>既存のお客様の移行
 
-Speech Service ポータルで Speech Service に既存のリソース キーを移行します。 次の手順に従います。
+Speech Services ポータルで Speech Services にご自分の既存のリソース キーを移行します。 次の手順に従います。
 
 > [!NOTE]
 > リソース キーは、同じリージョン内でのみ移行できます。
 
-1. [cris.ai](http://www.cris.ai) ポータルにサインインし、右上のメニューでサブスクリプションを選択します。
+1. [cris.ai](https://www.cris.ai) ポータルにサインインし、右上のメニューでサブスクリプションを選択します。
 
 2. **[Migrate selected subscription]\(選択したサブスクリプションの移行\)** を選択します。
 
@@ -56,10 +56,10 @@ Speech Service ポータルで Speech Service に既存のリソース キーを
 
 ## <a name="next-steps"></a>次の手順
 
-* [Speech Service を無料で試す](get-started.md)
+* [Speech Services を無料で試す](get-started.md)
 * [Speech to Text API](./speech-to-text.md) の概念を学習する
 
 ## <a name="see-also"></a>関連項目
 
 * [Speech Service とは](overview.md)
-* [Speech Service および Speech SDK のドキュメント](speech-sdk.md#get-the-sdk)
+* [Speech Services と Speech SDK のドキュメント](speech-sdk.md#get-the-sdk)

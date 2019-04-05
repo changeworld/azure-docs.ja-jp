@@ -1,6 +1,6 @@
 ---
 title: Event Hubs への Azure 監視データのストリーミング
-description: パートナー SIEM または分析ツールにデータを取得するために、すべての Azure 監視データをイベント ハブにストリーミングする方法を説明します。
+description: パートナー SIEM または分析ツールにデータを取り込むために Azure 監視データをイベント ハブにストリーム配信する方法について学習します。
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 424dc1611622a1dfc37419fd443d860698020524
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 549ec74514ff03e06ff25893d3fa865f179470e9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468235"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870688"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
-Azure Monitor には、Azure 環境のすべての監視データにアクセスするための単一のパイプラインがあります。これを使用すると、そのデータを使用するようにパートナー SIEM および監視ツールを簡単にセットアップすることができます。 この記事では、Azure 環境のデータのさまざまな層を、外部ツールでデータを収集できるように単一の Event Hubs 名前空間またはイベント ハブに送信されるようにセットアップする手順を説明します。
+この記事では、Azure 環境のデータのさまざまな層を、外部ツールでデータを収集できるように単一の Event Hubs 名前空間またはイベント ハブに送信されるようにセットアップする手順を説明します。
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
@@ -33,7 +33,7 @@ Azure 環境内には監視データの "層" がいくつかあり、各層の�
 - **Azure サブスクリプション監視データ:** Azure サブスクリプションの操作および管理に関するデータと、Azure 自体の正常性および操作に関するデータ。 [アクティビティ ログ](./../../azure-monitor/platform/activity-logs-overview.md)には、サービス正常性インシデントや Azure Resource Manager の監査など、ほとんどのサブスクリプション監視データが含まれています。 このデータは、ログ プロファイルを使用して収集できます。
 - **Azure テナントの監視データ:** Azure Active Directory など、テナント レベルの Azure サービスの操作に関するデータ。 テナントの監視データの例として、Azure Active Directory の監査とサインインがあります。 このデータは、テナントの診断設定を使用して収集できます。
 
-どの層のデータも、イベント ハブに送信し、パートナー ツールに取り込むことができます。 以降のセクションでは、各層のデータをイベント ハブにストリーミングするように構成する方法について説明します。 手順では、その層のアセットが既に監視されるようになっていることを前提としています。
+どの層のデータも、イベント ハブに送信し、パートナー ツールに取り込むことができます。 一部のソースは、データをイベント ハブに直接送信するように構成できますが、Logic App などの別のプロセスでは必要なデータを取得する必要があります。 以降のセクションでは、各層のデータをイベント ハブにストリーミングするように構成する方法について説明します。 手順では、その層のアセットが既に監視されるようになっていることを前提としています。
 
 ## <a name="set-up-an-event-hubs-namespace"></a>Event Hubs 名前空間を設定する
 

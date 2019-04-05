@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d3b3702ca2daad002bde1b4e64bf9d43a03028d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb64debca10cf7be6e2e328a1f401f125b67d940
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180438"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>チュートリアル:Azure Active Directory と Workrite の統合
 
@@ -164,7 +164,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-workrite-test-user"></a>Workrite テスト ユーザーの作成
 
@@ -184,7 +184,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
 1. **[Create User]** ダイアログで、次の手順に従います。
    
-    ![[ユーザーの作成] ダイアログ][402]
+    ![ユーザー ダイアログの作成][402]
     
     a. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (Brittasimon@contoso.com など) を入力します。
 
@@ -192,7 +192,7 @@ Workrite で Azure AD のシングル サインオンを構成してテストす
 
     c. **[姓]** ボックスに、ユーザーの姓を入力します (この例では Simon)。
     
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ロールの選択]** で **[クライアント管理者]** を選択します。
+    d. **[ロールの選択]** で **[クライアント管理者]** を選択します。
     
     e. **[Save]** をクリックします。   
 

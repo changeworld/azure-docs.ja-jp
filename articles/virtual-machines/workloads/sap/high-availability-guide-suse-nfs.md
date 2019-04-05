@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 799a40d759dc5614bd43234638982d5275d9d325
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: a91bc1cbb72427205cc558a4b5e655f4aa8083b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429198"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992065"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性
 
@@ -179,6 +179,9 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
          * 上記の手順を繰り返して、NW2 に対してポート 2049 と TCP を設定します
       1. 2049 UDP (NW2)
          * 上記の手順を繰り返して、NW2 に対してポート 2049 と UDP を設定します
+
+> [!IMPORTANT]
+> Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker クラスターの作成
 
@@ -426,9 +429,9 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
    drbd を使用してあるホストから別のホストにデータを同期するときに、スプリット ブレインと呼ばれる状況が発生することがあります。 スプリット ブレインは、両方のクラスター ノードの drbd デバイスがプライマリに昇格され、非同期になるシナリオです。これはまれな状況かもしれませんが、スプリット ブレインをできるだけ早く処理して解決する必要があります。 したがって、スプリット ブレインが発生したときに通知を受け取ることが重要です。
 
-   スプリット ブレインの通知を設定する方法については、[drbd の公式ドキュメント](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification)を参照してください。
+   スプリット ブレインの通知を設定する方法については、[drbd の公式ドキュメント](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification)を参照してください。
 
-   さらに、スプリット ブレイン シナリオから自動的に復旧することも可能です。 詳細については、「[Automatic split brain recovery policies (自動スプリット ブレイン復旧ポリシー)](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)」を参照してください
+   さらに、スプリット ブレイン シナリオから自動的に復旧することも可能です。 詳細については、「[Automatic split brain recovery policies (自動スプリット ブレイン復旧ポリシー)](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)」を参照してください
    
 ### <a name="configure-cluster-framework"></a>クラスター フレームワークの構成
 

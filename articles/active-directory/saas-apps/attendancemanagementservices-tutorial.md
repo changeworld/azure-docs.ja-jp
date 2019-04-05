@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7b8b157b890bcdda8c06a0dd1b208a82f7f9058
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e3642bea878ca4d1582319e5e1d964dfa43ff061
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209134"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893511"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>チュートリアル:Azure Active Directory と Attendance Management Services の統合
 
@@ -144,7 +144,7 @@ Attendance Management Services で Azure AD のシングル サインオンを�
 
     c. **[認証エンドポイント URL]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ファイル選択]** ボタンをクリックして、Azure AD からダウンロードした証明書をアップロードします。
+    d. **[ファイル選択]** ボタンをクリックして、Azure AD からダウンロードした証明書をアップロードします。
 
     e. **[パスワード認証を無効する]** を選択します。
 
@@ -184,7 +184,7 @@ Attendance Management Services で Azure AD のシングル サインオンを�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-an-attendance-management-services-test-user"></a>Attendance Management Services テスト ユーザーの作成
 
@@ -206,7 +206,7 @@ Azure AD ユーザーが Attendance Management Services にログインできる
 
     ![従業員の追加](./media/attendancemanagementservices-tutorial/user4.png)
 
-    a. **[OBCiD]** テキスト ボックスに、ユーザーの電子メール (**BrittaSimon@contoso.com** など) を入力します。
+    a. **[OBCiD]** ボックスに、ユーザーのメール アドレス (例: **BrittaSimon\@contoso.com**) を入力します。
 
     b. **[Password]\(パスワード\)** ボックスに、ユーザーのパスワードを入力します。
 

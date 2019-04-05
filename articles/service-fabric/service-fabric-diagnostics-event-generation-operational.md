@@ -12,18 +12,18 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/23/2018
-ms.author: dekapur
-ms.openlocfilehash: e4537c789bfae0fb485e818bf68e87de27b88720
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.date: 2/25/2019
+ms.author: srrengar
+ms.openlocfilehash: 6aec4e4bbf0abcfb6201da50381b6697a47716fa
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102054"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244589"
 ---
 # <a name="list-of-service-fabric-events"></a>Service Fabric イベントの一覧 
 
-Service Fabric は、クラスター イベントのプライマリ セットを公開して、クラスターの状態を [Service Fabric イベント](service-fabric-diagnostics-events.md)として通知します。 これらは、ノードとクラスター上の Service Fabric によって実行されるアクション、またはクラスターの所有者/オペレーターによって行われる管理上の決定事項に基づきます。 これらのイベントは、[クラスターでの Log Analytics](service-fabric-diagnostics-oms-setup.md) の構成や、[EventStore](service-fabric-diagnostics-eventstore.md) のクエリなど、さまざまな方法で構成することによりアクセスできます。 Windows マシンでは、これらのイベントは EventLog にフィードされるので、イベント ビューアーで Service Fabric イベントを確認できます。 
+Service Fabric は、クラスター イベントのプライマリ セットを公開して、クラスターの状態を [Service Fabric イベント](service-fabric-diagnostics-events.md)として通知します。 これらは、ノードとクラスター上の Service Fabric によって実行されるアクション、またはクラスターの所有者/オペレーターによって行われる管理上の決定事項に基づきます。 これらのイベントは、[クラスターでの Azure Monitor ログ](service-fabric-diagnostics-oms-setup.md)の構成や、[EventStore](service-fabric-diagnostics-eventstore.md) のクエリなど、さまざまな方法で構成することによりアクセスできます。 Windows マシンでは、これらのイベントは EventLog にフィードされるので、イベント ビューアーで Service Fabric イベントを確認できます。 
 
 これらのイベントの特徴をいくつか次に示します
 * 各イベントは、クラスター内の特定のエンティティ (アプリケーション、サービス、ノード、レプリカなど) に関連付けられています。
@@ -73,7 +73,7 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 | --- | --- | --- | --- | --- | --- | 
 | 29620 | ApplicationCreated | LifeCycle | 新しいアプリケーションが作成されました | CM | 情報 | 
 | 29625 | ApplicationDeleted | LifeCycle | 既存のアプリケーションが削除されました | CM | 情報 | 
-| 23083 | ApplicationProcessExited | LifeCycle | アプリケーション内のプロセスが終了しました | ホスティング | 情報 | 
+| 23083 | ApplicationProcessExited | LifeCycle | アプリケーション内のプロセスが終了しました | Hosting | 情報 | 
 
 **アプリケーション アップグレード イベント**
 
@@ -110,9 +110,9 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 
 | EventId | Name | 説明 |ソース (タスク) | Level | Version |
 | --- | --- | ---| --- | --- | --- |
-| 23074 | ContainerActivated | コンテナーが起動しました | ホスティング | 情報 | 1 |
-| 23075 | ContainerDeactivated | コンテナーが停止しました | ホスティング | 情報 | 1 |
-| 23082 | ContainerExited | コンテナーが終了しました。UnexpectedTermination フラグを確認してください | ホスティング | 情報 | 1 |
+| 23074 | ContainerActivated | コンテナーが起動しました | Hosting | 情報 | 1 |
+| 23075 | ContainerDeactivated | コンテナーが停止しました | Hosting | 情報 | 1 |
+| 23082 | ContainerExited | コンテナーが終了しました。UnexpectedTermination フラグを確認してください | Hosting | 情報 | 1 |
 
 ## <a name="health-reports"></a>正常性レポート
 
@@ -236,7 +236,7 @@ Service Fabric は、クラスター イベントのプライマリ セットを
 | 29630 | ClusterUpgradeRollbackComplete | CM | 情報 |
 | 29631 | ClusterUpgradeDomainComplete | CM | 情報 |
 | 23074 | ContainerActivated | ホスティング | 情報 |
-| 23075 | ContainerDeactivated | ホスティング | 情報 |
+| 23075 | ContainerDeactivated | Hosting | 情報 |
 | 29620 | ApplicationCreated | CM | 情報 |
 | 29621 | ApplicationUpgradeStart | CM | 情報 |
 | 29622 | ApplicationUpgradeComplete | CM | 情報 |

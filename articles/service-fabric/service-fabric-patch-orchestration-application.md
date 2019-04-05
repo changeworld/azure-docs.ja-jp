@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 717b895696ca93444744955937c6de23626c7835
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d5d7f45b4833bb535e98542ee513e9ea8bf0f9e5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234750"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432993"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -60,6 +60,9 @@ POA は、ダウンタイムなしで、Service Fabric クラスターでのオ�
 > パッチ オーケストレーション アプリケーションでは、Service Fabric の修復マネージャー システム サービスを使用して、ノードを無効または有効にし、正常性チェックを実行します。 パッチ オーケストレーション アプリケーションによって作成される修復タスクによって、各ノードの Windows Update の進行状況が追跡されます。
 
 ## <a name="prerequisites"></a>前提条件
+
+> [!NOTE]
+> 必要な .NET Framework の最小バージョンは 4.6 です。
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>修復マネージャー サービスを有効にする (まだ実行されていない場合)
 
@@ -415,4 +418,4 @@ Windows Update の問題によって、特定のノードまたはアップグ�
 - InstallWindowsOSOnlyUpdates の既定値を False に変更します。
 
 ### <a name="version-132"></a>バージョン 1.3.2
-- 現在のノード名のサブセットである名前を持つノードがある場合に、ノードでのパッチ適用のライフサイクルの影響を与える問題を修正しました。 このようなノードでは、パッチが適用されなかったり、再起動が保留になる可能性があります。 
+- 現在のノード名のサブセットである名前を持つノードがある場合に、ノードでのパッチ適用のライフサイクルに影響を与える問題を修正しました。 このようなノードでは、パッチが適用されなかったり、再起動が保留になる可能性があります。 

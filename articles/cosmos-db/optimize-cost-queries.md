@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: cb85d09a1d5dee6cb54254baac4698cdad093785
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 80c9cd91efd14e3d4b4214bde089f73692568f76
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457668"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840190"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのクエリ コストを最適化する
 
@@ -33,7 +33,7 @@ Azure Cosmos DB でのクエリは、通常、以下のようにスループッ�
 
 Azure Cosmos コンテナーでデータを格納したら、Azure ポータルのデータ エクスプローラーを使用して、クエリを構築して実行することができます。 また、データ エクスプローラーを使用して、クエリのコストを取得することもできます。 この方法では、ご利用のシステムでサポートされる一般的なクエリと操作に関する実際の使用量を把握できます。
 
-また、SDK を使用して、クエリのコストをプログラムで取得することもできます。 作成、更新、削除などの操作のオーバーヘッドを測定するには、REST API を使用するときに `x-ms-request-charge` ヘッダーを確認します。 .Net または Java SDK を使用する場合、`RequestCharge` プロパティは要求使用量を取得するためのプロパティと同等であり、このプロパティは ResourceResponse または FeedResponse 内にあります。
+また、SDK を使用して、クエリのコストをプログラムで取得することもできます。 作成、更新、削除などの操作のオーバーヘッドを測定するには、REST API を使用するときに `x-ms-request-charge` ヘッダーを確認します。 .NET または Java SDK を使用する場合、`RequestCharge` プロパティは要求使用量を取得するためのプロパティと同等であり、このプロパティは ResourceResponse または FeedResponse 内にあります。
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -59,7 +59,7 @@ while (queryable.HasMoreResults)
 
 ## <a name="metrics-for-troubleshooting"></a>トラブルシューティング用のメトリック
 
-パフォーマンス、クエリで使用されるスループット、ユーザー定義関数 (UDF) は、ほとんどの場合、関数本体によって異なります。 UDF で費やされるクエリの実行時間と、使用される RU の数を確認する最も簡単な方法は、クエリ メトリックを有効にすることです。 .Net SDK を使用する場合に、SDK によって返されるクエリ メトリックのサンプルを以下に示します。
+パフォーマンス、クエリで使用されるスループット、ユーザー定義関数 (UDF) は、ほとんどの場合、関数本体によって異なります。 UDF で費やされるクエリの実行時間と、使用される RU の数を確認する最も簡単な方法は、クエリ メトリックを有効にすることです。 .NET SDK を使用する場合に、SDK によって返されるクエリ メトリックのサンプルを以下に示します。
 
 ```bash
 Retrieved Document Count                 :               1              

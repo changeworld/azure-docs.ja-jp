@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: cc8c10f8a3f515d3401dbb469a7e4a31c4fe3501
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4ddbec6b163a939c1663630e39e89140ac6f7efe
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329815"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546482"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 参照データ (別名、ルックアップテーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、参照の実行やデータ ストリームとの相互の関連付けに使用されます。 たとえば、IoT のシナリオでは、センサーに関する (変化が頻繁ではない) メタデータを参照データに格納し、リアルタイムの IoT データ ストリームと結合することができます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics ジョブで参照データを使用するには、一般にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。 
@@ -78,7 +78,7 @@ Azure SQL Database の参照データは、Stream Analytics ジョブによっ�
 
 参照データが変化の遅いデータ セットである場合、ジョブで使用されるスナップショットを定期的に更新する必要があります。 Stream Analytics では、Azure SQL Database 入力接続を構成するときにリフレッシュ レートを設定できます。 Stream Analytics ランタイムは、リフレッシュ レートによって指定された間隔で Azure SQL Database に対してクエリを実行します。 サポートされている最速のリフレッシュ レートは 1 分に 1 回です。 更新のたびに、Stream Analytics は指定されたストレージ アカウントに新しいスナップショットを格納します。
 
-Stream Analytics には、Azure SQL Database に対するクエリの実行に関する 2 つのオプションがあります。 スナップショット クエリは必須であり、各ジョブに含まれている必要があります。 Stream Analytics は、リフレッシュ間隔に基づいて定期的にスナップショット クエリを実行し、クエリの結果 (スナップショット) を参照データ セットとして使用します。 スナップショット クエリはほとんどのシナリオに適合しますが、大規模データ セットと高速リフレッシュ レートでパフォーマンスの問題が発生した場合、デルタ クエリ オプションを使用できます。
+Stream Analytics には、Azure SQL Database に対するクエリの実行に関する 2 つのオプションがあります。 スナップショット クエリは必須であり、各ジョブに含まれている必要があります。 Stream Analytics は、リフレッシュ間隔に基づいて定期的にスナップショット クエリを実行し、クエリの結果 (スナップショット) を参照データ セットとして使用します。 スナップショット クエリはほとんどのシナリオに適合しますが、大規模データ セットと高速リフレッシュ レートでパフォーマンスの問題が発生した場合、デルタ クエリ オプションを使用できます。 クエリは、60 秒以内に参照データセットを返せないと、タイムアウトになります。
 
 デルタ クエリ オプションでは、Stream Analytics はスナップショット クエリを最初に実行してベースライン参照データ セットを取得します。 その後 Stream Analytics は、リフレッシュ間隔に基づいてデルタ クエリを定期的に実行し、増分の変更を取得します。 これらの増分変更が参照データ セットに継続的に適用されることで、更新された状態が維持されます。 デルタ クエリの使用により、ストレージ コストおよびネットワーク I/O 操作を削減できる場合があります。
 

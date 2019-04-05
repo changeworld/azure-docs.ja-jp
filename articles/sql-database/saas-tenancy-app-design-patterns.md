@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2775ceb3cf27b6feedfd73cd43855204490ebc31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d55d8f8f945e30402cb772c7e26b234e3e460698
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471200"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217871"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>マルチテナント SaaS データベース テナント パターン
 
@@ -99,7 +99,7 @@ ms.locfileid: "55471200"
 
 ![エラスティック プールを使用する、テナント単位データベースを利用したマルチテナント アプリの設計][image-mt-app-db-per-tenant-pool-153p]
 
-Azure SQL Database では、共有を構成、監視、および管理するために必要なツールを提供しています。  プールレベルおよびデータベースレベル両方のパフォーマンス メトリックが、Azure Portal および Log Analytics 経由で使用できます。  メトリックは、集計とテナント固有両方のパフォーマンスに対して、優れた洞察を与えることができます。  個々のデータベースは、特定のテナントに対して予約済みのリソースを提供するために、プール間で移動できます。  これらのツールを活用すると、コスト効率の高い方法で優れたパフォーマンスを確保できます。
+Azure SQL Database では、共有を構成、監視、および管理するために必要なツールを提供しています。  プールレベルとデータベースレベルの両方のパフォーマンス メトリックを、Azure portal で、または Azure Monitor ログ経由で使用できます。  メトリックは、集計とテナント固有両方のパフォーマンスに対して、優れた洞察を与えることができます。  個々のデータベースは、特定のテナントに対して予約済みのリソースを提供するために、プール間で移動できます。  これらのツールを活用すると、コスト効率の高い方法で優れたパフォーマンスを確保できます。
 
 #### <a name="operations-scale-for-database-per-tenant"></a>テナント単位データベースに対する操作のスケール
 

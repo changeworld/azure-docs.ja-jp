@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3df48fd42ca998e2a64f2fbe685047da16a8bae7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5f6fcc4d2920841c730ef179497f9184b1f6649d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193486"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451962"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>チュートリアル:Azure Active Directory と Syncplicity の統合
 
@@ -150,7 +150,7 @@ Syncplicity で Azure AD のシングル サインオンを構成してテスト
 
     c. **[Entity Id]\(エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Sign-in page URL]\(サインイン ページ URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
+    d. **[Sign-in page URL]\(サインイン ページ URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
 
     e. **[Logout page URL]\(ログアウト ページ URL\)** ボックスに、Azure Portal からコピーした **サインアウト URL** を貼り付けます。
 
@@ -191,7 +191,7 @@ Syncplicity で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-syncplicity-test-user"></a>Syncplicity テスト ユーザーの作成
 AAD ユーザーがサインインできるようにするには、ユーザーを Syncplicity アプリケーションにプロビジョニングする必要があります。 このセクションでは、Syncplicity で AAD ユーザー アカウントを作成する方法について説明します。
@@ -206,7 +206,7 @@ AAD ユーザーがサインインできるようにするには、ユーザー�
    
     ![Manage Users](./media/syncplicity-tutorial/ic769764.png "Manage Users")
 
-1. プロビジョニングする AAD アカウントの**電子メール アドレス**を入力し、**[Role]\(ロール\)** として **[User]\(ユーザー\)** を選択し、**[NEXT]\(次へ\)** をクリックします。
+1. プロビジョニングする AAD アカウントの**メール アドレス**を入力し、**[Role]\(ロール\)** として **[User]\(ユーザー\)** を選択して、**[NEXT]\(次へ\)** をクリックします。
    
     ![Account Information](./media/syncplicity-tutorial/ic769765.png "Account Information")
    

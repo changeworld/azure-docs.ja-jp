@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d7547ecf387e070efe788ba5f8582076388f422a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428909"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984205"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Cognitive Services を使用して Language Understanding アプリを構築するためのベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。 
@@ -78,7 +78,9 @@ LUIS の予測データを使用して、意図が重複していないかどう
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>すべきこと: 後のイテレーションでフレーズ リストとパターンを追加する
 
-アプリのテストが済むまではこれらのプラクティスを適用しないのがベスト プラクティスです。 フレーズ リストとパターンを追加する前に、アプリがどのように動作するかを理解する必要があります。 これらがないときにアプリがどのように動作するかを理解したら、これらの機能がアプリに適用されるときに各機能を追加します。 これらの機能を[繰り返し](luis-concept-app-iteration.md)のたびに追加したり、バージョンが変わるたびに変更したりする必要はありません。 
+アプリのテストが済むまではこれらのプラクティスを適用しないのがベスト プラクティスです。 フレーズ リストやパターンを追加する前に、アプリがどのように動作するかを理解しておく必要があります。これらの機能は、発話の例よりも重く重み付けされており、信頼性を歪めることになるためです。 
+
+これらがないときにアプリがどのように動作するかを理解したら、これらの機能がアプリに適用されるときに各機能を追加します。 これらの機能を[繰り返し](luis-concept-app-iteration.md)のたびに追加したり、バージョンが変わるたびに変更したりする必要はありません。 
 
 それらをモデル設計の開始時に追加しても害はありませんが、モデルを発話でテストした後、各機能変更がどのような結果になるかを確認することが容易になります。 
 

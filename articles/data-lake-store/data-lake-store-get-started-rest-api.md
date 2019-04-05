@@ -1,5 +1,5 @@
 ---
-title: 'REST API: Azure Data Lake Storage Gen1 のアカウント管理操作 | Microsoft Docs'
+title: REST API:Azure Data Lake Storage Gen1 に対するアカウント管理操作 | Microsoft Docs
 description: Azure Data Lake Storage Gen1 と WebHDFS REST API を使用し、Data Lake Storage Gen1 でアカウント管理操作を実行します
 services: data-lake-store
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 7f22fe7d1c3962e59922bc4e2795ed4f899e3eca
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: b2c4d38462cf617d8417b269d47a8c1bb0c266c3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121670"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530126"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "46121670"
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* **[cURL](http://curl.haxx.se/)**。 この記事では、cURL を使用して、Data Lake Storage Gen1 アカウントに対して REST API 呼び出しを行う方法を説明します。
+* **[cURL](https://curl.haxx.se/)**。 この記事では、cURL を使用して、Data Lake Storage Gen1 アカウントに対して REST API 呼び出しを行う方法を説明します。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する方法
 Azure Active Directory を使用した認証方法には 2 つあります。
@@ -41,7 +41,7 @@ Azure Active Directory を使用した認証方法には 2 つあります。
 * アプリケーションのサービス間認証 (非対話型) については、「[Service-to-service authentication with Data Lake Storage Gen1 using .NET SDK](data-lake-store-service-to-service-authenticate-rest-api.md)」 (.NET SDK を使用した Data Lake Storage Gen1 に対するサービス間認証) を参照してください。
 
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントの作成
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントを作成する
 この操作は、 [ここ](https://docs.microsoft.com/rest/api/datalakestore/accounts/create)で定義されている REST API 呼び出しをベースにしています。
 
 次の cURL コマンドを使用します。 **\<yourstoragegen1name>** を自分の Data Lake Storage Gen1 名に変更します。

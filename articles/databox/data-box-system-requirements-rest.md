@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: b36926365b85c576cbe2927c690a30cc64df23d8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5770cd9a4955013100b7e58698eed77da10c0583
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752774"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012258"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure Data Box BLOB ストレージの要件
 
@@ -53,7 +53,7 @@ Azure Storage サービス API シリーズの次のバージョンが Data Box 
 |     クライアント ライブラリ     |     Data Box BLOB ストレージでサポートされているバージョン     |     Link             |     エンドポイントの指定         |
 |------------------------|-------------------------------------------------|---------------------------------------------|------------------------------------|
 |    .NET                |    6.2.0 から 8.7.0                         |    NuGet パッケージ: https://www.nuget.org/packages/WindowsAzure.Storage/ <br>GitHub リリース: https://github.com/Azure/azure-storage-net/releases                                                                      |    app.config ファイル                 |
-|    Java                |    4.1.0 から 6.1.0                          |    Maven パッケージ: http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>GitHub リリース: https://github.com/Azure/azure-storage-java/releases                                                      |    接続文字列の設定         |
+|    Java                |    4.1.0 から 6.1.0                          |    Maven パッケージ: https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage   <br>GitHub リリース: https://github.com/Azure/azure-storage-java/releases                                                      |    接続文字列の設定         |
 |    Node.js             |    1.1.0 から 2.7.0                          |    NPM リンク: https://www.npmjs.com/package/azure-storage (例: "npm install azure-storage@2.7.0" を実行します)   <br>GitHub リリース: https://github.com/Azure/azure-storage-node/releases                            |    サービス インスタンスの宣言    |
 |    C++                 |    2.4.0 から 3.1.0                          |    NuGet パッケージ: https://www.nuget.org/packages/wastorage.v140/   <br>GitHub リリース: https://github.com/Azure/azure-storage-cpp/releases                                                                            |    接続文字列の設定         |
 |    PHP                 |    0.15.0 から 1.0.0                         |    GitHub リリース: https://github.com/Azure/azure-storage-php/releases   <br>Composer 経由でインストールする (下記参照)                                                                                                   |    接続文字列の設定         |
@@ -69,7 +69,7 @@ Data Box BLOB ストレージでは、クライアント ライブラリとエ�
 | クライアント ライブラリ     |Data Box BLOB ストレージでサポートされているバージョン     | Link   |     エンドポイントの指定      |
 |--------------------|--------------------------------------------|--------|---------------------------------|
 |    .NET                |    8.7.0                                           |    NuGet パッケージ: https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0    <br>GitHub リリース: https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0                                                                                                                                                                                               |    app.config ファイル                 |
-|    Java                |    6.1.0                                           |    Maven パッケージ: http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub リリース: https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    接続文字列の設定         |
+|    Java                |    6.1.0                                           |    Maven パッケージ: https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub リリース: https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0                                                                                                                                                                              |    接続文字列の設定         |
 |    Node.js             |    2.7.0                                           |    NPM リンク: https://www.npmjs.com/package/azure-storage (実行: npm install azure-storage@2.7.0)   <br>GitHub リリース: https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0                                                                                                                                                                        |    サービス インスタンスの宣言    |
 |    C++                 |    3.1.0                                           |    NuGet パッケージ: https://www.nuget.org/packages/wastorage.v140/3.1.0   <br>GitHub リリース: https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0                                                                                                                                                                                                     |    接続文字列の設定         |
 |    PHP                 |    1.0.0                                           |    GitHub リリース:<br>共通: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common   <br>BLOB: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob      <br>Composer 経由でインストールする (詳細については下記参照)                                                                                                             |    接続文字列の設定         |
@@ -96,7 +96,7 @@ Composer 経由でインストールするには (BLOB の例):
 
 ### <a name="endpoint-declaration"></a>エンドポイントの宣言
 
-Azure Data Box BLOB ストレージのエンドポイントには、リージョン名と Data Box ドメインの 2 つの部分があります。 Data Box BLOB ストレージ SDK の既定のエンドポイントは <serial no. of the device>.microsoftdatabox.com です。  BLOB サービス エンドポイントの詳細については、[Data Box BLOB ストレージによる接続](data-box-deploy-copy-data-via-rest.md)に関するページを参照してください。
+Azure Data Box BLOB ストレージのエンドポイントには、リージョン名と Data Box ドメインの 2 つの部分があります。 Data Box BLOB ストレージ SDK の既定のエンドポイントは \<serial no. of the device>.microsoftdatabox.com です。  BLOB サービス エンドポイントの詳細については、[Data Box BLOB ストレージによる接続](data-box-deploy-copy-data-via-rest.md)に関するページを参照してください。
  
 ## <a name="examples"></a>例
 

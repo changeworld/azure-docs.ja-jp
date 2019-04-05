@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 98ab9b25c59af194a1a81c600c373b2180272e10
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e5fe076cfe733b4fa0151570603c090af98de0e8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106956"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882690"
 ---
 # <a name="handling-review-feedback"></a>レビュー フィードバックの処理
 
@@ -58,14 +58,14 @@ ms.locfileid: "56106956"
 
 1. **[Publishing steps]\(発行手順\)** フォームの **[Microsoft review]\(Microsoft のレビュー\)** セクションで、PR リンクをクリックしてブラウザーを起動し、この PR の **[概要]** (ホーム) ページに移動します。  次の図は、Contoso のサンプル アプリ オファーの重大な問題のホーム ページの例を示しています。  このページには、Azure アプリで検出されたレビューの問題に関する有用な概要情報が含まれています。  
 
-    [ ![プル要求のホーム ページ](./media/pr-home-page-thumb.png) ](./media/pr-home-page.png)
+    [![pull request のホーム ページ](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *拡大するには画像をクリックしてください。*
     
 2. (省略可能) ウィンドウの右側にある **[ポリシー]** セクションで、問題のメッセージをクリックして (この例では、**Policy Validation failed\(ポリシーの検証に失敗しました\)**)、問題の低レベルの詳細 (関連付けられているログ ファイルを含む) を調査します。  通常、エラーはログ ファイルの下部に表示されます。
 
 3. ホーム ページの左側にあるメニューで、**ファイル**を選択して、このオファーの技術資産を構成するリスト ファイルを表示します。  検出された重大な問題について説明するコメントが Microsoft のレビュー担当者によって追加されているはずです。  次の例では、2 つの問題が検出されました。 
 
-    [ ![プル要求のホーム ページ](./media/pr-files-page-thumb.png) ](./media/pr-files-page.png)
+    [![pull request のホーム ページ](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> *拡大するには画像をクリックしてください。*
 
 4. 左側のツリーで各コメント ノードをクリックして、周囲のコードのコンテキスト内のコメントに移動します。  チームのプロジェクト内のソース コードを修正し、コメントで説明されている問題を修正します。

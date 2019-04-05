@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e44b6a8232bcd0bc72c4faa0f7116d42cec79111
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67f2af94f32d5439585ad4d727fd2b1bd80fc41b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172418"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431704"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -72,9 +72,9 @@ ms.locfileid: "56172418"
 
 ![Azure Portal で Azure AD スマート ロックアウト ポリシーをカスタマイズする](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smartlockout-feature-is-working-or-not"></a>Smartlockout 機能が動作しているかどうかを確認する方法
+## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>スマート ロックアウト機能が動作しているかどうかを確認する方法
 
-Smartlockout のしきい値がトリガーされると、アカウントがロックされているときに次のメッセージが表示されます。
+スマート ロックアウトのしきい値がトリガーされると、アカウントがロックされているときに次のメッセージが表示されます。
 
 **ご使用のアカウントは、不正使用を防ぐために一時的にロックされています。後でもう一度お試しください。問題が解決しない場合は管理者にお問い合わせください。**
 

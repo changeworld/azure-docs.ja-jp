@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ee1b2a40dbcbd53a758ac71f30401778ef07e872
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fcb1e4f32608a1c83b653984dfa066da38e7c451
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229759"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960761"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Azure Search のデータのインポート ウィザード
 
@@ -77,15 +77,17 @@ Azure Search を初めて使用する場合は、 [ポータル ツールを使�
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md) ([コグニティブ検索](cognitive-search-concept-intro.md)パイプラインではサポートされません)
 
-フラット化されたデータセットの入力が必要です。 データは 1 つのテーブル、データベース ビュー、または同等のデータ構造からのみインポートできます。 ウィザードを実行する前に、このデータ構造を作成する必要があります。
+フラット化されたデータセットの入力が必要です。 データは 1 つのテーブル、データベース ビュー、または同等のデータ構造からのみインポートできます。 
+
+ウィザードを実行する前に、このデータ構造を作成し、コンテンツを含める必要があります。 空のデータ ソースに対して**データのインポート** ウィザードを実行しないでください。
 
 |  選択肢番号 | 説明 |
 | ---------- | ----------- |
 | **既存のデータ ソース** |Search サービスに定義済みのインデクサーが既にある場合は、別のインポート用に既存のデータ ソース定義を選択できます。 Azure Search では、データ ソース オブジェクトはインデクサーでのみ使用されます。 データ ソース オブジェクトは、プログラムで、または**データのインポート** ウィザードを使用して作成することができます。|
-| **サンプル**| Azure Search では無料のパブリック Azure SQL データベースをホストします。このデータベースを使用して、Azure Search でのインポートやクエリ要求の詳細を確認することができます。 チュートリアルについては、[ポータル ツールを使用したインポート、インデックス作成、およびクエリの実行に関するクイック スタート](search-get-started-portal.md)を参照してください。 |
+| **サンプル**| Azure Search では無料のパブリック Azure SQL データベースをホストします。このデータベースを使用して、Azure Search でのインポートやクエリ要求の詳細を確認することができます。 「[クイック スタート:ポータル ツールを使用したインポート、インデックス作成、およびクエリの実行に関するクイック スタート](search-get-started-portal.md)を参照してください。 |
 | **Azure SQL Database** |サービス名、読み取り権限を持つデータベース ユーザーの資格情報、データベース名は、このページで、または ADO.NET 接続文字列を使用して指定できます。 接続文字列のオプションを選択して、プロパティを表示またはカスタマイズします。 <br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。 このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。 |
 | **Azure VM 上の SQL Server** |接続文字列として、完全修飾サービス名、ユーザー ID とパスワード、データベースを指定します。 このデータ ソースを使用するには、接続を暗号化する証明書をローカル ストアにあらかじめインストールしておく必要があります。 手順については、[Azure Search への SQL VM 接続](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)に関する記事をご覧ください。 <br/><br/>行セットを提供するテーブルまたはビューは、このページで指定する必要があります。 このオプションは接続に成功すると表示され、ドロップダウン リストから選択できます。 |
-| **Azure Cosmos DB** |要件には、アカウント、データベース、コレクションが含まれます。 コレクション内のすべてのドキュメントはインデックスに含まれます。 クエリを定義して、行セットをフラット化またはフィルター処理したり、以降のデータ更新操作のためにドキュメントの変更を検出したりできます。 |
+| **Cosmos DB** |要件には、アカウント、データベース、コレクションが含まれます。 コレクション内のすべてのドキュメントはインデックスに含まれます。 行セットをフラット化またはフィルター処理するクエリを定義することも、クエリを空白のままにすることもできます。 このウィザードでは、クエリは必要はありません。|
 | **Azure Blob Storage** |要件には、ストレージ アカウントとコンテナーが含まれます。 BLOB 名がグループ化のために仮想名前付け規則に従っている場合は、必要に応じて、コンテナーの下のフォルダーとして名前の仮想ディレクトリの部分を指定できます。 詳しくは、[Blob Storage のインデックス作成](search-howto-indexing-azure-blob-storage.md)に関する記事をご覧ください。 |
 | **Azure Table Storage** |要件には、ストレージ アカウントとテーブル名が含まれます。 必要に応じて、クエリを指定してテーブルのサブセットを取得できます。 詳しくは、[Table Storage のインデックス作成](search-howto-indexing-azure-tables.md)に関する記事をご覧ください。 |
 

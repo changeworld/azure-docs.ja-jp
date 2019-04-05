@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: cbc11e2fc54ecffbea22a66354f334f3562e3339
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e40b763aa2a36e3afd85a82b66e393ac78d3afaa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459215"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839578"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos アカウントの使用
 
@@ -29,7 +29,7 @@ Azure Cosmos DB コンテナーはスケーラビリティの基本単位です�
 
 現在、1 つの Azure サブスクリプションで Azure Cosmos アカウントを最大 100 個作成することができます。 1 つの Azure Cosmos アカウントで、事実上無制限のデータ量とプロビジョニング スループットを管理できます。 データとプロビジョニング スループットを管理するには、自分のアカウントで 1 つまたは複数の Azure Cosmos データベースを作成し、そのデータベース内に 1 つまたは複数のコンテナーを作成することができます。 次の画像は、Azure Cosmos アカウントの要素の階層を示しています。
 
-![Azure Cosmos 要素の階層](./media/account-overview/hierarchy.png)
+![Azure Cosmos アカウントの階層](./media/account-overview/hierarchy.png)
 
 ## <a name="next-steps"></a>次の手順
 

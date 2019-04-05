@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5739c878812c09a8f2646320df4b1069dfa8810e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eced1b92aba24c8083cbdc2ece099fab95567db7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189048"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877957"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>チュートリアル:Azure Active Directory と Zscaler Three の統合
 
@@ -138,7 +138,7 @@ Zscaler Three で Azure AD のシングル サインオンを構成してテス�
 
     c. **[OK]** をクリックします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
+    d. **[Save]** をクリックします。
 
     > [!NOTE]
     > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)をクリックしてください
@@ -159,43 +159,43 @@ Zscaler Three で Azure AD のシングル サインオンを構成してテス�
 
 ### <a name="configure-zscaler-three-single-sign-on"></a>Zscaler Three シングル サインオンの構成
 
-9. 別の Web ブラウザー ウィンドウで、Zscaler Three 企業サイトに管理者としてログインします。
+1. 別の Web ブラウザー ウィンドウで、Zscaler Three 企業サイトに管理者としてログインします。
 
-10. **[Administration]\(管理\) > [Authentication]\(認証\) > [Authentication Settings]\(認証の設定\)** に移動し、次の手順を実行します。
+1. **[Administration]\(管理\) > [Authentication]\(認証\) > [Authentication Settings]\(認証の設定\)** に移動し、次の手順を実行します。
    
-    ![Administration](./media/zscaler-three-tutorial/ic800206.png "Administration")
+   ![Administration](./media/zscaler-three-tutorial/ic800206.png "Administration")
 
-    a. [Authentication Type]\(認証の種類\)で **[SAML]** を選択します。
+   a. [Authentication Type]\(認証の種類\)で **[SAML]** を選択します。
 
-    b. **[Configure SAML]** をクリックします。
+   b. **[Configure SAML]** をクリックします。
 
-11. **[Edit SAML]\(SAML の編集)** ウィンドウで次の手順を実行して、[保存] をクリックします。  
+1. **[Edit SAML]\(SAML の編集)** ウィンドウで次の手順を実行して、[保存] をクリックします。  
             
-    ![ユーザーと認証の管理](./media/zscaler-three-tutorial/ic800208.png "Manage Users & Authentication")
+   ![ユーザーと認証の管理](./media/zscaler-three-tutorial/ic800208.png "Manage Users & Authentication")
     
-    a. **[SAML Portal URL]\(SAML ポータル URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
+   a. **[SAML Portal URL]\(SAML ポータル URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** を貼り付けます。
 
-    b. **[Login Name Attribute]\(ログイン名属性\)** テキスト ボックスに **NameID** の値を入力します。
+   b. **[Login Name Attribute]\(ログイン名属性\)** テキスト ボックスに **NameID** の値を入力します。
 
-    c. **アップロード** をクリックして、Azure portal からダウンロードした Azure SAML 署名証明書を **Public SSL Certificate\(パブリック SSL 証明書\)** にアップロードします。
+   c. **アップロード** をクリックして、Azure portal からダウンロードした Azure SAML 署名証明書を **Public SSL Certificate\(パブリック SSL 証明書\)** にアップロードします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML 自動プロビジョニングを有効にする]** を選択します。
+   d. **[SAML 自動プロビジョニングを有効にする]** を選択します。
 
-    e. displayName 属性に SAML 自動プロビジョニングを有効にするには、**[User Display Name Attribute]\(ユーザー表示名属性\)** テキスト ボックスに **displayName** の値を入力します。
+   e. displayName 属性に SAML 自動プロビジョニングを有効にするには、**[User Display Name Attribute]\(ユーザー表示名属性\)** テキスト ボックスに **displayName** の値を入力します。
 
-    f. memberOf 属性に SAML 自動プロビジョニングを有効にするには、**[Group Name Attribute]\(グループ名属性\)** テキスト ボックスに **memberOf** の値を入力します。
+   f. memberOf 属性に SAML 自動プロビジョニングを有効にするには、**[Group Name Attribute]\(グループ名属性\)** テキスト ボックスに **memberOf** の値を入力します。
 
-    g. department 属性に SAML 自動プロビジョニングを有効にするには、**[Department Name Attribute]\(部署名属性\)** テキスト ボックスに **department** の値を入力します。
+   g. department 属性に SAML 自動プロビジョニングを有効にするには、**[Department Name Attribute]\(部署名属性\)** テキスト ボックスに **department** の値を入力します。
 
-    i. **[Save]** をクリックします。
+   i. **[Save]** をクリックします。
 
-12. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
+1. **[ユーザー認証の構成]** ダイアログ ページで、次の手順に従います。
 
-    ![管理](./media/zscaler-three-tutorial/ic800207.png)
+   ![管理](./media/zscaler-three-tutorial/ic800207.png)
 
-    a. 左下の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
+   a. 左下の **[Activation]\(アクティブ化\)** メニューにポインターを置きます。
 
-    b. **[アクティブ化]** をクリックします。
+   b. **[アクティブ化]** をクリックします。
 
 ## <a name="configuring-proxy-settings"></a>プロキシ設定の構成
 ### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Internet Explorer でプロキシ設定を構成するには
@@ -222,7 +222,7 @@ Zscaler Three で Azure AD のシングル サインオンを構成してテス�
 
     c. [ポート] ボックスに「 **80**」と入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
+    d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
 
     e. **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。
 
@@ -246,12 +246,12 @@ Zscaler Three で Azure AD のシングル サインオンを構成してテス�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+    d. **作成**を選択します。
 
 ### <a name="create-zscaler-three-test-user"></a>Zscaler Three テスト ユーザーの作成
 

@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01ac309d333b6e2456c53e0352067471514198c9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: cab5b9317102a86dd75d2cb7e5a820cf64d2e831
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338814"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535549"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Azure リソースに対する RBAC の変更のアクティビティ ログを表示する
 
@@ -108,9 +108,9 @@ az monitor activity-log list --resource-group pharma-sales-projectforecast --sta
 az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
 ```
 
-## <a name="azure-log-analytics"></a>Azure Log Analytics
+## <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-[Azure Log Analytics](../log-analytics/log-analytics-overview.md) は、Azure のすべてのリソースの RBAC の変更の収集および分析に使用できる、もう 1 つのツールです。 Log Analytics には、次のような利点があります。
+[Azure Monitor ログ](../log-analytics/log-analytics-overview.md)は、Azure のすべてのリソースの RBAC の変更の収集および分析に使用できる、もう 1 つのツールです。 Azure Monitor ログには、次のような利点があります。
 
 - 複雑なクエリとロジックを記述する
 - アラート、Power BI、およびその他のツールと統合する
@@ -123,9 +123,9 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 1. ワークスペースの [Activity Log Analytics ソリューションを構成します](../azure-monitor/platform/collect-activity-logs.md#configuration)。
 
-1. [アクティビティ ログを表示します](../azure-monitor/platform/collect-activity-logs.md#using-the-solution)。 Activity Log Analytics の [概要] ページに簡単に移動するには、**[Log Analytics]** オプションをクリックします。
+1. [アクティビティ ログを表示します](../azure-monitor/platform/collect-activity-logs.md#using-the-solution)。 Activity Log Analytics ソリューションの [概要] ページに簡単に移動するには、**[Log Analytics]** オプションをクリックします。
 
-   ![Portal の Log Analytics オプション](./media/change-history-report/azure-log-analytics-option.png)
+   ![ポータルの Azure Monitor ログのオプション](./media/change-history-report/azure-log-analytics-option.png)
 
 1. 必要に応じて、[ログ検索](../log-analytics/log-analytics-log-search.md)ページまたは[高度な分析ポータル](../azure-monitor/log-query/get-started-portal.md)を使用してログのクエリを実行し、ログを確認します。 これら 2 つのオプションの詳細については、[ログ検索ページまたは高度な分析ポータル](../azure-monitor/log-query/portals.md)に関するページをご覧ください。
 

@@ -14,25 +14,25 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
-ms.openlocfilehash: 400c8ac229e00e818e336f1c47b126d3e8a2d155
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: fecc3b411211ceb8aa6db5a0e0c0c6b07f19a63f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253841"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442463"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Azure デプロイで Java から SendGrid を使用して電子メールを送信する方法
-次の例では、Azure でホストされる Web ページから SendGrid を使用して電子メールを送信する方法を示しています。 次のスクリーンショットに示すように、作成されたアプリケーションは電子メールに関する値の入力をユーザーに求めます。
+次の例では、Azure でホストされる Web ページから SendGrid を使用して電子メールを送信する方法を示しています。 次のスクリーンショットに示すように、作成されたアプリケーションはメールに関する値の入力をユーザーに求めます。
 
 ![電子メール フォーム][emailform]
 
-送信された電子メールは次のスクリーン ショットのようになります。
+送信されたメールは次のスクリーンショットのようになります。
 
 ![電子メール メッセージ][emailsent]
 
 このトピックでコードを使用するためには次の操作を行う必要があります。
 
-1. <http://www.oracle.com/technetwork/java/javamail/index.html> などから、javax.mail JAR を取得します。
+1. <https://www.oracle.com/technetwork/java/javamail/index.html> などから、javax.mail JAR を取得します。
 2. JAR を Java のビルド パスに追加します。
 3. この Java アプリケーションの作成に Eclipse を使用している場合は、Eclipse のデプロイ アセンブリ機能を使用して、アプリケーション デプロイ ファイル (WAR) に SendGrid ライブラリを含めることができます。 この Java アプリケーションの作成に Eclipse を使用していない場合、ライブラリが Java アプリケーションと同じ Azure ロールにインクルードされており、アプリケーションのクラス パスに追加されていることを確認してください。
 
@@ -45,7 +45,7 @@ ms.locfileid: "51253841"
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -101,7 +101,7 @@ ms.locfileid: "51253841"
 
     <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
         pageEncoding="ISO-8859-1" import="javax.activation.*, javax.mail.*, javax.mail.internet.*, java.util.Date, java.util.Properties" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "https://www.w3.org/TR/html4/loose.dtd">
     <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -204,7 +204,7 @@ ms.locfileid: "51253841"
     </body>
     </html>
 
-電子メールを送信するだけでなく、emailform.jsp はユーザーに結果を返します。たとえば、次のスクリーンショットのようになります。
+メールを送信するだけでなく、emailform.jsp はユーザーに結果を返します。たとえば、次のスクリーンショットのようになります。
 
 ![電子メール送信の結果][emailresult]
 

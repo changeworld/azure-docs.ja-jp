@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 0e324ae82a0223cf48f00b186f46e26840d4d655
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 3fa4fb9fb7accfbe4517e2bf917a3df31ea10fa7
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747528"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887252"
 ---
 # <a name="your-marketplace-benefits"></a>Marketplace のベネフィット
 
@@ -63,9 +63,9 @@ GTM サポートには、パートナーのビジネスをプロモーション�
 1. Azure Marketplace または AppSource でオファーを公開します。
 2. オファーの**連絡先情報**部分でマーケティング連絡先を入力します。 これは、キャッチオール エイリアスではなく、専用のマーケティング リソースでなければなりません。 (つまり、"support\@"、"info\@"、"marketing\@" などは使用しないでください)
 
-ソリューションの状態に基づいて、セルフヘルプ リソースを含むメール、または専用の Engagement Manager のコンサルテーション呼び出しへの招待のいずれかを受け取ります。 呼び出しを開始するために何もする必要はありません。Marketplace Onboarding Team が、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)で提供された情報に基づいてご連絡します。
+ソリューションの状態 (つまり、"リスト"、"試用版"、または "トランザクション" プラン) に基づいて、セルフヘルプ リソースを含むメール、または専用の Engagement Manager のコンサルテーション呼び出しへの招待のいずれかを受け取ります。 呼び出しを開始するために何もする必要はありません。Marketplace Onboarding Team が、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)で提供された情報に基づいてご連絡します。
 
-マーケットプレースでのオファリングの拡大に合わせて、使用可能なアクティビティの範囲が広がります。 すべての掲載に対して、基本レベルの最適化推奨とプロモーションが提供されます。  これらの掲載には、ソリューションの状態、選択されたマーケットプレース、および Microsoft Partner Competency アチーブメントに基づいて、追加のマーケティング ベネフィットを得る権利もあります。 
+マーケットプレースでのオファリングの拡大に合わせて、使用可能なアクティビティの範囲が広がります。 すべての掲載に対して、基本レベルの最適化推奨とプロモーションが提供されます。  これらの掲載には、ソリューションの状態 (リスト、試用版、またはトランザクション)、選択されたマーケットプレース、および Microsoft Partner Competency アチーブメントに基づいて、追加のマーケティング ベネフィットを得る権利もあります。
 
 次の表は、適格性の要件をまとめたものです。
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d72f4ac39ac992d0386b3971cd4d3bc6616f0a28
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 36e1c8d6cae79147c5cd4b5a46f5e1c330811ab8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186457"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877651"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>チュートリアル: Azure Active Directory と Procore SSO の統合
 
@@ -179,12 +179,12 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
        たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+    d. **作成**を選択します。
 
 ### <a name="creating-a-procore-sso-test-user"></a>Procore SSO のテスト ユーザーの作成
 
@@ -204,9 +204,9 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     b. **[Last Name] \(姓)** テキストボックスに、ユーザーの姓を入力します (この例では **Simon**).
 
-    c. **[Email Address] \(メール アドレス)** テキストボックスに、ユーザーのメール アドレスを入力します (この例では **BrittaSimon@contoso.com**)。
+    c. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (例: **BrittaSimon\@contoso.com**) を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Permission Template] \(アクセス許可テンプレート)** で **[Apply Permission Template Later] \(アクセス許可テンプレートは後で適用する)** を選択します。
+    d. **[Permission Template] \(アクセス許可テンプレート)** で **[Apply Permission Template Later] \(アクセス許可テンプレートは後で適用する)** を選択します。
 
     e. **Create** をクリックしてください。
 
@@ -214,7 +214,7 @@ To ensure users can sign-in to Procore SSO after it has been configured to use A
 
     ![Configure single sign-on](./media/procoresso-tutorial/Procore_user_check.png)
 
-5. メールによる招待状が必要な場合は **[Save and Send Invitiation] \(保存して招待状を送信)** を、直接保存する場合は **[Save] \(保存)** をクリックして、ユーザー登録を完了します。
+5. メールによる招待状が必要な場合は **[Save and Send Invitiation]\(保存して招待状を送信\)** を、直接保存する場合は **[Save]\(保存\)** をクリックして、ユーザー登録を完了します。
     
     ![Configure single sign-on](./media/procoresso-tutorial/Procore_user_save.png)
 

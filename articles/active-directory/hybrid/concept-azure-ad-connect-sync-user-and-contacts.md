@@ -15,12 +15,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7605a8cee265822f133b3f72ce5de90add5fc0d0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210545"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993369"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同期: ユーザー、グループ、および連絡先について
 複数の Active Directory フォレストを使用することになる理由はさまざまあり、複数の異なるデプロイ トポロジがあります。 一般的なモデルとしては、アカウント リソース デプロイ、合併や買収の後で GAL 同期が行われたフォレストなどがあります。 ただし、純粋なモデルがある一方で、ハイブリッド モデルも一般的です。 Azure AD Connect Sync の既定の構成では特殊なモデルを想定しませんが、インストール ガイドにおけるユーザーの一致の選択方法によっては、異なる動作が見られることもあります。
@@ -51,9 +51,9 @@ Active Directory から Azure AD へグループを同期する場合に留意�
     
       * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* の Active Directory グループは、Azure AD ではメール対応しません。 SMTP アドレスを含みません。
       
-      * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe@contoso.com"}* の Active Directory グループは、Azure AD ではメール対応します。
+      * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup","SMTP:johndoe\@contoso.com"}* の Active Directory グループは、Azure AD でメール対応になります。
       
-      * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe@contoso.com"}* の Active Directory グループは、Azure AD でメール対応にもなります。
+      * proxyAddress 属性の値が *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe\@contoso.com"}* の Active Directory グループも、Azure AD でメール対応になります。
 
 ## <a name="contacts"></a>連絡先
 合併や買収の後、連絡先は異なるフォレストのユーザーを表しているのが一般的です。そこでは、GALSync ソリューションが 2 つ以上の Exchange フォレストをつないでいます。 連絡先オブジェクトは、メール属性を使用してコネクタ スペースからメタバースを常に結合しています。 同じメール アドレスの連絡先オブジェクトまたはユーザー オブジェクトが既にある場合、これらのオブジェクトは一緒に結合されます。 これは、**In from AD – Contact Join** というルールで構成されます。 また、定数が **Contact** であるメタバース属性 **sourceObjectType** への属性フローを使用する **In from AD – Contact Common** というルールもあります。 このルールの優先順位は低いので、ユーザー オブジェクトが同じメタバース オブジェクトに結合された場合は、**In from AD – User Common** というルールによって User という値がこの属性に提供されます。 このルールでは、この属性は、ユーザーが 1 人も結合されていない場合に Contact という値を使用し、ユーザーが 1 人でも見つかった場合に User という値を使用します。

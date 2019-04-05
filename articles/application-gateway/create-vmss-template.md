@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: f7050514d5f0de0cade09c6be672d7dfd3568da3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4cfe8b02697fe8234c29995a611cb99a89e2e54b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037414"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080983"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Azure リソース マネージャー テンプレートを使用した Application Gateway の作成
 
@@ -27,6 +27,8 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 この記事では、GitHub から既存の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)をダウンロードして変更し、そのテンプレートを GitHub、PowerShell、Azure CLI からデプロイする方法を説明します。
 
 GitHub から直接テンプレートをデプロイするだけで、変更を加えない場合は、Github からのテンプレートのデプロイに進んでください。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>シナリオ
 
@@ -53,16 +55,16 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 1. 保存したファイルを開き、5 行目にある **parameters** の内容を確認します。
 1. Azure リソース マネージャー テンプレートのパラメーターでは、デプロイメント中に入力できる、値のプレース ホルダーが用意されています。
 
-  | パラメーター | 説明 |
-  | --- | --- |
-  | **subnetPrefix** |Application Gateway サブネットの CIDR ブロック。 |
-  | **applicationGatewaySize** | Application Gateway のサイズ。  WAF では、中および大だけを使用できます。 |
-  | **backendIpaddress1** |1 番目の Web サーバーの IP アドレス。 |
-  | **backendIpaddress2** |2 番目の Web サーバーの IP アドレス。 |
-  | **wafEnabled** | WAF が有効かどうかを決定する設定。|
-  | **wafMode** | Web アプリケーション ファイアウォールのモード。  使用できるオプションは、**[防止]** または **[検出]** です。|
-  | **wafRuleSetType** | WAF のルールセットの種類。  現在、サポートされているオプションは、OWASP だけです。 |
-  | **wafRuleSetVersion** |ルールセットのバージョン。 現在、サポートされているオプションは、OWASP CRS 2.2.9 および 3.0 です。 |
+   | パラメーター | 説明 |
+   | --- | --- |
+   | **subnetPrefix** |Application Gateway サブネットの CIDR ブロック。 |
+   | **applicationGatewaySize** | Application Gateway のサイズ。  WAF では、中および大だけを使用できます。 |
+   | **backendIpaddress1** |1 番目の Web サーバーの IP アドレス。 |
+   | **backendIpaddress2** |2 番目の Web サーバーの IP アドレス。 |
+   | **wafEnabled** | WAF が有効かどうかを決定する設定。|
+   | **wafMode** | Web アプリケーション ファイアウォールのモード。  使用できるオプションは、**[防止]** または **[検出]** です。|
+   | **wafRuleSetType** | WAF のルールセットの種類。  現在、サポートされているオプションは、OWASP だけです。 |
+   | **wafRuleSetVersion** |ルールセットのバージョン。 現在、サポートされているオプションは、OWASP CRS 2.2.9 および 3.0 です。 |
 
 1. **resources** の内容を確認し、次のプロパティを参照します。
 
@@ -75,44 +77,44 @@ GitHub から既存の Azure リソース マネージャー テンプレート�
 1. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
 1. 保存したファイルを開き、パラメーターの値を編集します。 次の値を使用して、このシナリオで説明したアプリケーション ゲートウェイをデプロイします。
 
-    ```json
-    {
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-        "contentVersion": "1.0.0.0",
-        "parameters": {
-            "addressPrefix": {
-            "value": "10.0.0.0/16"
-            },
-            "subnetPrefix": {
-            "value": "10.0.0.0/28"
-            },
-            "applicationGatewaySize": {
-            "value": "WAF_Medium"
-            },
-            "capacity": {
-            "value": 2
-            },
-            "backendIpAddress1": {
-            "value": "10.0.1.10"
-            },
-            "backendIpAddress2": {
-            "value": "10.0.1.11"
-            },
-            "wafEnabled": {
-            "value": true
-            },
-            "wafMode": {
-            "value": "Detection"
-            },
-            "wafRuleSetType": {
-            "value": "OWASP"
-            },
-            "wafRuleSetVersion": {
-            "value": "3.0"
-            }
-        }
-    }
-    ```
+     ```json
+     {
+         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+         "contentVersion": "1.0.0.0",
+         "parameters": {
+             "addressPrefix": {
+             "value": "10.0.0.0/16"
+             },
+             "subnetPrefix": {
+             "value": "10.0.0.0/28"
+             },
+             "applicationGatewaySize": {
+             "value": "WAF_Medium"
+             },
+             "capacity": {
+             "value": 2
+             },
+             "backendIpAddress1": {
+             "value": "10.0.1.10"
+             },
+             "backendIpAddress2": {
+             "value": "10.0.1.11"
+             },
+             "wafEnabled": {
+             "value": true
+             },
+             "wafMode": {
+             "value": "Detection"
+             },
+             "wafRuleSetType": {
+             "value": "OWASP"
+             },
+             "wafRuleSetVersion": {
+             "value": "3.0"
+             }
+         }
+     }
+     ```
 
 1. ファイルを保存します。 [JSlint.com](https://www.jslint.com/)などのオンライン JSON 検証ツールを使用して、JSON テンプレートとパラメーター テンプレートをテストできます。
 
@@ -123,13 +125,13 @@ Azure PowerShell を初めて使用する場合は、[Azure PowerShell のイン
 1. PowerShell にログイン
 
     ```powershell
-    Login-AzureRmAccount
+    Login-AzAccount
     ```
 
 1. アカウントのサブスクリプションを確認します。
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     資格情報を使用して認証を行うように求めるメッセージが表示されます。
@@ -137,19 +139,19 @@ Azure PowerShell を初めて使用する場合は、[Azure PowerShell のイン
 1. 使用する Azure サブスクリプションを選択します。
 
     ```powershell
-    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    Select-AzSubscription -Subscriptionid "GUID of subscription"
     ```
 
 1. 必要に応じて、 **New-AzureResourceGroup** コマンドレットを使用してリソース グループを作成します。 以下の例では、米国東部に AppgatewayRG という名前のリソース グループを作成します。
 
     ```powershell
-    New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
+    New-AzResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
-1. **New-AzureRmResourceGroupDeployment** コマンドレットを実行し、先ほどダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。
+1. **New-AzResourceGroupDeployment** コマンドレットを実行し、先ほどダウンロードして変更したテンプレート ファイルとパラメーター ファイルを使用して、新しい仮想ネットワークをデプロイします。
     
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+    New-AzResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
@@ -215,7 +217,7 @@ echo $cert
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Remove-AzureRmResourceGroup -Name appgatewayRG
+Remove-AzResourceGroup -Name appgatewayRG
 ```
 
 ### <a name="azure-cli"></a>Azure CLI

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82382ecc3adf0d0621f51438a082f7807b031fc9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ec71f8998f7db07cafca7f8141acb9898b016328
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431216"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821355"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 ほとんどの Azure Automation Runbook は、何らかの形式の出力があります。 この出力には、ユーザーへのエラー メッセージや別の Runbook で使用することを目的とした複雑なオブジェクトなどがあります。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](/powershell/module/microsoft.powershell.core/about/about_redirection) が提供されます。 Azure Automation は、これらの各ストリームで異なる動作をします。 Runbook を作成するときに、それぞれの使用方法のベスト プラクティスに従ってください。
@@ -220,8 +220,8 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
    
    ![グラフィカル作成の [ログとトレース] ページ](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
-Automation からは、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 Log Analytics では、次のことが可能です。
+### <a name="microsoft-azure-monitor-logs"></a>Microsoft Azure Monitor ログ
+Automation からは、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 Azure Monitor ログを使用すると、次のことを行うことができます。
 
 * Automation ジョブに関する情報を得る 
 * Runbook ジョブの状態 (失敗、中断など) に基づいて電子メールまたはアラートをトリガーする 
@@ -229,7 +229,7 @@ Automation からは、Runbook ジョブの状態とジョブ ストリームを
 * Automation アカウントをまたいでジョブどうしを関連付ける 
 * ジョブの履歴を時系列で視覚化する    
 
-Log Analytics との統合を構成して、ジョブ データを収集、操作、および関連付けする方法の詳細については、「[Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
+Azure Monitor ログとの統合を構成して、ジョブ データを収集、操作、および関連付けする方法の詳細については、[Automation から Azure Monitor ログへのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、 [Runbook ジョブの追跡](automation-runbook-execution.md)

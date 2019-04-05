@@ -16,19 +16,19 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 770a5e61f549a10c8b313ed4d137f56dda45769e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 91548a4df4a77623978ea4bcb214b76427c026a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343862"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012027"
 ---
 # <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>RBAC を使用して外部ユーザーの Azure リソースへのアクセスを管理する
 
 ロールベースのアクセス制御 (RBAC) では、環境内の特定のリソースへのアクセスが必要なものの、インフラストラクチャ全体や課金に関連するスコープへのアクセスが必ずしも必要ではない外部のコラボレーター、ベンダー、フリーランサーと連携している大企業や SMB 向けの、優れたセキュリティ管理を実現できます。 RBAC では、管理者アカウント (サブスクリプション レベルでのサービス管理者ロール) によって管理される 1 つの Azure サブスクリプションの所有者を柔軟に設定できるほか、管理者権限を付与することなく、複数のユーザーを同じサブスクリプションでの業務に招待することができます。
 
 > [!NOTE]
-> Office 365 管理センターからプロビジョニングされた Office 365 サブスクリプションまたは Azure Active Directory ライセンス (例:Azure Active Directory へのアクセス) に RBAC の使用資格はありません。
+> Office 365 管理センターからプロビジョニングされた Office 365 サブスクリプションまたは Azure Active Directory ライセンス (例:Azure Active Directory へのアクセス) が Microsoft 365 管理センターからプロビジョニングされたものの場合、RBAC の使用資格はありません。
 
 ## <a name="assign-rbac-roles-at-the-subscription-scope"></a>RBAC ロールをサブスクリプション スコープで割り当てる
 

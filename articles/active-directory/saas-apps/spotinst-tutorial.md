@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 679284783ac93662c1c96e813f9f028fffb434f0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f0bffdf439a192fb10fe695fbfa18e8c7abf8077
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173659"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57846686"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>チュートリアル:Azure Active Directory と Spotinst の統合
 
@@ -139,7 +139,7 @@ Spotinst で Azure AD のシングル サインオンを構成してテストす
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[名前空間]** は空白のままにします。
+    d. **[名前空間]** は空白のままにします。
 
     e. **[OK]** をクリックします。
 
@@ -197,7 +197,7 @@ Spotinst で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
 
 ### <a name="create-a-spotinst-test-user"></a>Spotinst テスト ユーザーを作成する
 
@@ -215,13 +215,13 @@ Spotinst で Azure AD のシングル サインオンを構成してテストす
 
     ![Spotinst の設定](./media/spotinst-tutorial/adduser1.png)
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 ユーザーの追加セクションで、次の手順を実行します。
+    d. ユーザーの追加セクションで、次の手順を実行します。
 
     ![Spotinst の設定](./media/spotinst-tutorial/adduser2.png)
 
     * **[Full Name]\(フルネーム\)** ボックスに、ユーザーの氏名 (**BrittaSimon** など) を入力します。
 
-    * **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (**brittasimon@contoso.com** など)。
+    * **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **Brittasimon\@contoso.com**) を入力します。
 
     * **[Organization Role, Account Role, and Accounts]\(組織ロール、アカウント ロール、アカウント\)** で組織に固有の詳細を選択します。
 

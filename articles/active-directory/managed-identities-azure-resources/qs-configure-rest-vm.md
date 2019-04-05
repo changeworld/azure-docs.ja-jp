@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e3933f10a777a1aa10a4e04f8901e7fd1af5c48
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 778897e1a146abd0655d76ef157f64522681cb0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195636"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889677"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>REST API 呼び出しを使用して Azure VM 上に Azure リソースのマネージド ID を構成する
 
@@ -63,7 +63,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Bearer アクセス トークンを取得します。このトークンは、Authorization ヘッダーでシステム割り当てマネージド ID を使用して VM を作成する次の手順で使用します。
+3. Bearer アクセス トークンを取得します。このトークンは、Authorization ヘッダーでシステム割り当てマネージド ID を使用して VM を作成する次の手順で使用します。
 
    ```azurecli-interactive
    az account get-access-token
@@ -80,6 +80,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    ```
    
    **要求ヘッダー**
+   
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
@@ -168,6 +169,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM?api-version=2018-06-01 HTTP/1.1
    ```
    **要求ヘッダー**
+
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
@@ -239,6 +241,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
+
    **要求本文**
 
    ```JSON
@@ -314,7 +317,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
     az network nic create -g myResourceGroup --vnet-name myVnet --subnet mySubnet -n myNic
    ```
 
-3.  Bearer アクセス トークンを取得します。このトークンは、Authorization ヘッダーでシステム割り当てマネージド ID を使用して VM を作成する次の手順で使用します。
+3. Bearer アクセス トークンを取得します。このトークンは、Authorization ヘッダーでシステム割り当てマネージド ID を使用して VM を作成する次の手順で使用します。
 
    ```azurecli-interactive
    az account get-access-token
@@ -507,6 +510,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAME>?api-version=2018-06-01 HTTP/1.1
    ```
    **要求ヘッダー**
+
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。
@@ -675,6 +679,7 @@ VM からユーザー割り当ての ID を削除にするには、お使いの�
    ```
 
    **要求ヘッダー**
+
    |要求ヘッダー  |説明  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |

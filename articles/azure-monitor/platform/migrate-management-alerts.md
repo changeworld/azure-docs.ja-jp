@@ -8,35 +8,34 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 55d0269aaa330f928a9d037eec6a3445825a5ed3
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 4d82cc59eb1098451a263957aa028b66996bb072
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470343"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307192"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!WARNING]
 > 管理イベントに関するアラートは 10 月 1 日以降に無効になります。 以下の手順に従って、該当するアラートがあるかどうかを確認し、存在する場合はそのアラートを移行してください。
->
-> 
 
 ## <a name="what-is-changing"></a>変更点
 
 Azure Monitor (旧称 Azure Insights) では、管理イベントからトリガーされ、webhook の URL または電子メール アドレスへの通知を生成するアラートを作成する機能が提供されていました。 次のいずれかの方法でアラートを作成している可能性があります。
 * Azure Portal で、特定の種類のリソースについて、[監視]、[アラート]、[アラートの追加] の順に移動して、[アラート対象] を [イベント] に設定する
-* Add-AzureRmLogAlertRule PowerShell コマンドレットを実行する
+* Add-AzLogAlertRule PowerShell コマンドレットを実行する
 * [アラート REST API](https://docs.microsoft.com/rest/api/monitor/alertrules) を odata.type = “ManagementEventRuleCondition” および dataSource.odata.type = “RuleManagementEventDataSource” と共に直接使用する
  
 次の PowerShell スクリプトは、各アラートに設定されている条件だけでなく、サブスクリプション内にある管理イベントに関するすべてのアラートの一覧を返します。
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 $alerts = $null
-foreach ($rg in Get-AzureRmResourceGroup ) {
-  $alerts += Get-AzureRmAlertRule -ResourceGroup $rg.ResourceGroupName
+foreach ($rg in Get-AzResourceGroup ) {
+  $alerts += Get-AzAlertRule -ResourceGroup $rg.ResourceGroupName
 }
 foreach ($alert in $alerts) {
   if($alert.Properties.Condition.DataSource.GetType().Name.Equals("RuleManagementEventDataSource")) {

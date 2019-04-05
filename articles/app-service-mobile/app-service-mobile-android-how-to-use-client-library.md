@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 03/07/2019
 ms.author: crdun
-ms.openlocfilehash: 11eb06c77fec29bef5329b143fecdfa4bb938d6d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 45b5ac0c9b3535e5cc5efdc6827d694b41e0b8dd
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328414"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732117"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
 
@@ -53,12 +53,20 @@ Azure Mobile Apps SDK for Android では、タブレットとスマートフォ�
 
 2 つの **build.gradle** ファイルを変更します。
 
-1. 次のコードを、"*プロジェクト*" レベルの **build.gradle** ファイルの *buildscript* タグ内に追加します。
+1. 次のコードを、"*プロジェクト*" レベルの **build.gradle** ファイルに追加します。
 
     ```gradle
     buildscript {
         repositories {
             jcenter()
+            google()
+        }
+    }
+
+    allprojects {
+        repositories {
+            jcenter()
+            google()
         }
     }
     ```
@@ -66,7 +74,7 @@ Azure Mobile Apps SDK for Android では、タブレットとスマートフォ�
 2. 次のコードを、"*モジュール アプリ*" レベルの **build.gradle** ファイルの *dependencies* タグ内に追加します。
 
     ```gradle
-    compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
+    implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
     現在の最新バージョンは 3.4.0 です。 サポートされているバージョンの一覧については、[Bintray][14] を参照してください。
@@ -974,17 +982,17 @@ android {
 }
 ```
 
-最後に、`build.gradle` ファイルの依存関係一覧に `com.android.support:customtabs:23.0.1` を追加します。
+最後に、`build.gradle` ファイルの依存関係一覧に `com.android.support:customtabs:28.0.0` を追加します。
 
 ```gradle
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.code.gson:gson:2.3'
-    compile 'com.google.guava:guava:18.0'
-    compile 'com.android.support:customtabs:23.0.1'
-    compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@jar'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.google.code.gson:gson:2.3'
+    implementation 'com.google.guava:guava:18.0'
+    implementation 'com.android.support:customtabs:28.0.0'
+    implementation 'com.squareup.okhttp:okhttp:2.5.0'
+    implementation 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@jar'
 }
 ```
 
@@ -1091,11 +1099,11 @@ Active Directory 認証ライブラリ (ADAL) を使用して、Azure Active Dir
         exclude 'META-INF/MSFTSIG.SF'
     }
     dependencies {
-        compile fileTree(dir: 'libs', include: ['*.jar'])
-        compile('com.microsoft.aad:adal:1.1.1') {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation('com.microsoft.aad:adal:1.16.1') {
             exclude group: 'com.android.support'
-        } // Recent version is 1.1.1
-        compile 'com.android.support:support-v4:23.0.0'
+        } // Recent version is 1.16.1
+        implementation 'com.android.support:support-v4:28.0.0'
     }
     ```
 

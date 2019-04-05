@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: a331f8a8a69ffe41a368c1b36f1680890aaac8bf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7fdd2a96044acdae223243d751bfcffb7a99da78
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666876"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534261"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う
 
@@ -79,13 +79,13 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成]** > **[モノのインターネット]** > **[Stream Analytics ジョブ]** の順にクリックします。
 1. 次の情報をジョブに入力します。
 
-   **[ジョブ名]**: ジョブの名前。 名前はグローバルに一意である必要があります。
+   **ジョブ名**:ジョブの名前。 名前はグローバルに一意である必要があります。
 
-   **[リソース グループ]**: IoT ハブと同じリソース グループを使用します。
+   **[リソース グループ]**:IoT ハブと同じリソース グループを使用します。
 
-   **[場所]**: リソース グループと同じ場所を使用します。
+   **[場所]**:リソース グループと同じ場所を使用します。
 
-   **[ダッシュボードにピン留めする]**: ダッシュボードから IoT ハブに簡単にアクセスできるようにするには、このオプションをオンにします。
+   **[ダッシュボードにピン留めする]**:ダッシュボードから IoT ハブに簡単にアクセスできるようにするには、このオプションをオンにします。
 
    ![Azure での Stream Analytics ジョブの作成](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
@@ -97,11 +97,11 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 1. **[ジョブ トポロジ]** で **[入力]** をクリックします。
 1. **[入力]** ウィンドウで **[追加]** をクリックしてから、次の情報を入力します。
 
-   **[入力のエイリアス]**: 入力の一意のエイリアス。
+   **入力のエイリアス**:入力の一意のエイリアス。
 
-   **[ソース]**: **[IoT ハブ]** を選択します。
+   **ソース**:**[IoT ハブ]** を選択します。
 
-   **[コンシューマー グループ]**: 作成したコンシューマー グループを選択します。
+   **コンシューマー グループ**:作成したコンシューマー グループを選びます。
 
    ![Azure で Stream Analytics ジョブに入力を追加する](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
@@ -112,15 +112,15 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 1. **[ジョブ トポロジ]** で **[出力]** をクリックします。
 1. **[出力]** ウィンドウで **[追加]** をクリックしてから、次の情報を入力します。
 
-   **[出力のエイリアス]**: 出力の一意のエイリアス。
+   **出力のエイリアス**:出力の一意のエイリアス。
 
-   **[シンク]**: **[Blob Storage]** を選択します。
+   **シンク**: **[Blob Storage]** を選択します。
 
-   **[ストレージ アカウント]**: Blob Storage のストレージ アカウント。 ストレージ アカウントを作成するか、既存のストレージ アカウントを使用できます。
+   **ストレージ アカウント**: Blob Storage のストレージ アカウント。 ストレージ アカウントを作成するか、既存のストレージ アカウントを使用できます。
 
-   **[コンテナー]**: BLOB を保存するコンテナー。 コンテナーを作成するか、既存のコンテナーを使用できます。
+   **コンテナー**:BLOB を保存するコンテナー。 コンテナーを作成するか、既存のコンテナーを使用できます。
 
-   **[イベントのシリアル化の形式]**: **[CSV]** を選択します。
+   **イベントのシリアル化の形式**: **[CSV]** を選択します。
 
    ![Azure で Stream Analytics ジョブに出力を追加する](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
@@ -131,15 +131,15 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 1. **[ジョブ トポロジ]** で **[関数]** > **[追加]** の順にクリックします。
 1. 次の情報を入力します。
 
-   **[関数のエイリアス]**: 「`machinelearning`」を入力します。
+   **関数のエイリアス**: 「 `machinelearning` 」を入力します。
 
-   **[関数の種類]**: **[Azure ML]** を選択します。
+   **関数の型**: **[Azure ML]** を選択します。
 
    **[インポート オプション]**: **[別のサブスクリプションからインポートする]** を選択します。
 
-   **[URL]**: Excel ブックからメモした Web サービス URL を入力します。
+   **URL**: Excel ブックからメモした Web サービス URL を入力します。
 
-   **[キー]**: Excel ブックからメモしたアクセス キー を入力します。
+   **[キー]**:Excel ブックからメモしたアクセス キーを入力します。
 
    ![Azure で Stream Analytics ジョブに関数を追加する](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
@@ -175,7 +175,7 @@ Stream Analytics ジョブで、**[開始]** > **[現在]** > **[開始]** の�
 
 クライアント アプリケーションを実行して、IoT Hub に対する気温と湿度のデータの収集と送信を開始します。 IoT Hub が受信するメッセージごとに、Stream Analytics ジョブは天気予報の Web サービスを呼び出して降水確率を生成します。 結果は Azure Blob Storage に保存されます。 Azure ストレージ エクスプローラーを使用して、この結果を表示することができます。
 
-1. [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールします](http://storageexplorer.com/)。
+1. [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールします](https://storageexplorer.com/)。
 1. Azure ストレージ エクスプローラーを開きます。
 1. Azure アカウントにサインインします。
 1. サブスクリプションを選択します。

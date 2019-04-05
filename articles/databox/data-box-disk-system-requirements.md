@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 0effc6af1ddc3273f0c6e2bf9cbfd0f2ecadf0a2
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747324"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407631"
 ---
 # <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box Disk のシステム要件
 
@@ -52,7 +52,7 @@ Linux クライアントでは、Data Box Disk のツールセットが次の必
 
 ## <a name="supported-connection"></a>サポートされる接続
 
-データを格納するクライアント コンピューターには、USB 3.0 またはそれ以降のポートが必要です。 提供されているケーブルを使用して、ディスクをこのクライアントに接続します。 
+データを格納するクライアント コンピューターには、USB 3.0 またはそれ以降のポートが必要です。 提供されているケーブルを使用して、ディスクをこのクライアントに接続します。
 
 ## <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 
@@ -60,21 +60,24 @@ Data Box Disk でサポートされるストレージの種類の一覧を次に
 
 | **ストレージ アカウント** | **メモ** |
 | --- | --- |
-| クラシック | 標準 |
+| クラシック | Standard |
 | 汎用  |標準。V1 と V2 の両方がサポートされます。 また、ホット層とクール層の両方がサポートされます。 |
+| BLOB ストレージ アカウント | |
 
 >[!NOTE]
 > Azure Data Lake Storage Gen 2 アカウントはサポートされていません。
 
 
-## <a name="supported-storage-types"></a>サポートされるストレージの種類
+## <a name="supported-storage-types-for-upload"></a>アップロード用にサポートされているストレージの種類
 
-Data Box Disk でサポートされるストレージの種類の一覧を次に示します。
+以下は、Data Box Disk を使用した Azure へのアップロードのためにサポートされているストレージの種類の一覧です。
 
 | **ファイル形式** | **メモ** |
 | --- | --- |
 | Azure ブロック BLOB | |
 | Azure ページ BLOB  | |
+| Azure Files  | |
+| Managed Disks | |
 
 
 ## <a name="next-step"></a>次のステップ

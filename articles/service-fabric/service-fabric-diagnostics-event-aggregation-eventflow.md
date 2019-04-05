@@ -3,7 +3,7 @@ title: EventFlow を使用した Azure Service Fabric のイベントの集計 |
 description: Azure Service Fabric クラスターの監視と診断に EventFlow を使用したイベントの集計と収集について説明します。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/15/2017
-ms.author: dekapur
-ms.openlocfilehash: 829d1ffd1ef75d18f0d87a127c43666703e8a756
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 2/25/2019
+ms.author: srrengar
+ms.openlocfilehash: eee5e71863f9a9195dc1f6f711cbacbc95ab84f2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497368"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246765"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>EventFlow を使用したイベントの集計と収集
 
@@ -157,5 +157,5 @@ servicefabric:/<section-name>/<setting-name>
 ## <a name="next-steps"></a>次の手順
 
 * [Application Insights を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Log Analytics を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)
+* [Azure Monitor ログを使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)
 * [EventFlow のドキュメント](https://github.com/Azure/diagnostics-eventflow)

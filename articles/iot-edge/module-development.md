@@ -4,17 +4,17 @@ description: ランタイムおよび IoT Hub と通信できる Azure IoT Edge 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3dd5005312e1c59fa53a0d917951c89033374192
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ea2d1dbcf991ce858f07905bc1bb41809f9bcdd8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200634"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882741"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>独自の IoT Edge モジュールを開発する
 
@@ -65,5 +65,9 @@ ModuleClient インスタンスを作成し、デバイスで実行されてい�
 
 ## <a name="next-steps"></a>次の手順
 
-モジュールを開発したら、[IoT Edge モジュールを大規模にデプロイして監視する](how-to-deploy-monitor.md)方法について学習してください。
+[IoT Edge のための開発およびテスト環境の準備](development-environment.md)
+
+[Visual Studio 2017 を使用して IoT Edge 用の C# モジュールを開発する](how-to-visual-studio-develop-csharp-module.md)
+
+[Visual Studio Code を使用して IoT Edge 用のモジュールを開発する](how-to-vs-code-develop-module.md)
 

@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 17/07/2018
+ms.date: 11/17/2018
 ms.author: sedusch
-ms.openlocfilehash: d5d344f47fa46e9fe0adea048db200ec67a3fadc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 432dcf4608d23f269c5005b86d2c58b7f70b3068
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262584"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007582"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Azure 用の SAP LaMa コネクタ
 
@@ -77,7 +77,7 @@ Azure コネクタは SAP LaMa 3.0 SP05 以降に付属しています。 SAP La
 1. [Azure Active Directory] ブレードを開きます
 1. [アプリの登録] をクリックします
 1. [追加] をクリックします
-1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost)) を入力します。その後、[作成] をクリックします
+1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: `http://localhost`) を入力します。その後、[作成] をクリックします
 1. サインオン URL は使用されず、任意の有効な URL を指定することができます
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[期限なし] を選択して [保存] をクリックします

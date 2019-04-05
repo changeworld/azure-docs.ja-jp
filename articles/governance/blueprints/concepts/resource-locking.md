@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2e281896d45ada8010f24a1f18265a8cdd523d31
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 799e496fd9dd8a405e5fc356e13cf6c05883e1ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696986"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855410"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Blueprint でのリソース ロックについて
 
-一貫性のある環境を大規模に作成することが本当に価値があるのは、一貫性を維持するためのメカニズムがある場合だけです。 この記事では、Azure Blueprint でのリソース ロックのしくみについて説明します。
+一貫性のある環境を大規模に作成することが本当に価値があるのは、一貫性を維持するためのメカニズムがある場合だけです。 この記事では、Azure Blueprint でのリソース ロックのしくみについて説明します。 リソース ロックと "_拒否割り当て_" の適用の例については、[新しいリソースの保護](../tutorials/protect-new-resources.md)に関するチュートリアルを参照してください。
 
 ## <a name="locking-modes-and-states"></a>ロック モードと状態
 
@@ -58,8 +58,9 @@ ms.locfileid: "55696986"
 
 ## <a name="next-steps"></a>次の手順
 
-- [ブループリントのライフサイクル](lifecycle.md)を参照する
-- [静的および動的パラメーター](parameters.md)の使用方法を理解する
-- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する
-- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する
+- [新しいリソースの保護](../tutorials/protect-new-resources.md)に関するチュートリアルに従います。
+- [ブループリントのライフサイクル](lifecycle.md)を参照する。
+- [静的および動的パラメーター](parameters.md)の使用方法を理解する。
+- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する。
+- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

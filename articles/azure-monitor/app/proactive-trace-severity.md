@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: a593e42ed87ab985d4f4584ed6b73109716120bf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 10b909fd5239546047aa4696a1f6a68a703778c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54027814"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001246"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>トレースの重大度の比率の低下 (プレビュー)
 
@@ -25,8 +25,8 @@ ms.locfileid: "54027814"
 
 この機能には、アプリのトレース ログを構成する以外に特別な設定は不要です ([.NET](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-trace-logs) または [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-trace-logs) のトレース ログ リスナーを構成する方法を参照してください)。 この機能は、アプリが十分な例外のテレメトリを生成するとアクティブになります。
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>スマート検出によるこの種の通知が送信されるのはどのような場合ですか
-過去 7 日間に計算されたベースラインと比較して、"良好な" トレース (*Info* または *Verbose* レベルで記録されたトレース) と "問題のある" トレース (*Warning*、*Error、または *Fatal* レベルで記録されたトレース) の比率が特定の日に低下している場合に、この種の通知が送信されます。
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>この種類のスマート検出通知はどのような場合に取得されますか。
+過去 7 日間に計算されたベースラインと比較して、"良好な" トレース (*Info* または *Verbose* レベルで記録されたトレース) と "問題のある" トレース (*Warning*、*Error*、または *Fatal* レベルで記録されたトレース) の比率が特定の日に低下している場合に、この種の通知が送信されます。
 
 ## <a name="does-my-app-definitely-have-a-problem"></a>アプリに問題があるのは確かですか
 いいえ。通知は、アプリに確実に問題があることを示すものではありません。 "良好な" トレースと "問題のある" トレースの比率の低下がアプリケーションの問題を示している場合もありますが、比率のこの変化が無害の場合もあります。 たとえば、アプリケーションの新しいフローで既存のフローよりも多くの "問題のある" トレースが生成されたことが原因で変化する場合があります。

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95465fdc17131c996fa242d028addbab4191628c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d1bb62c9a11971f72a6c96c4652b136c19812cb3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191114"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839323"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>チュートリアル:Azure Active Directory と EverBridge の統合
 
@@ -127,22 +127,22 @@ EverBridge で Azure AD のシングル サインオンを構成してテスト�
 
 5. **EverBridge Member Portal** として **EverBridge** アプリケーションを構成するには、**[基本的な SAML 構成]** セクションで次の手順を行います。
 
-    * **IDP** 開始モードでアプリケーションを構成する場合は、次のようにします。
+   * **IDP** 開始モードでアプリケーションを構成する場合は、次のようにします。
 
-        ![EverBridge のドメインと URL のシングル サインオン情報](./media/everbridge-tutorial/tutorial_everbridge_url1.png)
+       ![EverBridge のドメインと URL のシングル サインオン情報](./media/everbridge-tutorial/tutorial_everbridge_url1.png)
 
-        * **[識別子]** ボックスに、`https://sso.everbridge.net/<API_Name>/<Organization_ID>` の形式で URL を入力します。
+       * **[識別子]** ボックスに、`https://sso.everbridge.net/<API_Name>/<Organization_ID>` の形式で URL を入力します。
 
-        * **[応答 URL]** ボックスに、`https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias` のパターンを使用して URL を入力します。
+       * **[応答 URL]** ボックスに、`https://member.everbridge.net/saml/SSO/<API_Name>/<Organization_ID>/alias/defaultAlias` のパターンを使用して URL を入力します。
 
-    * アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+   * アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-        ![EverBridge のドメインと URL のシングル サインオン情報](./media/everbridge-tutorial/tutorial_everbridge_url2.png)
+       ![EverBridge のドメインと URL のシングル サインオン情報](./media/everbridge-tutorial/tutorial_everbridge_url2.png)
 
-        * **[サインオン URL]** ボックスに、`https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true` のパターンを使用して URL を入力します。
+       * **[サインオン URL]** ボックスに、`https://member.everbridge.net/saml/login/<API_Name>/<Organization_ID>/alias/defaultAlias?disco=true` のパターンを使用して URL を入力します。
 
-    > [!NOTE]
-    > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[EverBridge サポート チーム](mailto:support@everbridge.com)に問い合わせてください。
+     > [!NOTE]
+     > これらは実際の値ではありません。 これらの値は、実際の識別子、応答 URL、サインオン URL で更新してください。 これらの値を取得するには、[EverBridge サポート チーム](mailto:support@everbridge.com)に問い合わせてください。
 
 6. **[SAML 署名証明書]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータの XML** をダウンロードし、メタデータ ファイルをコンピューターに保存します。
 
@@ -164,21 +164,21 @@ EverBridge で Azure AD のシングル サインオンを構成してテスト�
 
 9. 上部にあるメニューの **[Settings (設定)]** タブをクリックし、**[Security (セキュリティ)]** の **[Single Sign-On (シングル サインオン)]** を選択します。
    
-    ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_002.png)
+     ![Configure single sign-on](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
-    a. **[名前]** ボックスに、ID プロバイダーの名前 (自分の会社名など) を入力します。
+     a. **[名前]** ボックスに、ID プロバイダーの名前 (自分の会社名など) を入力します。
    
-    b. **[API Name (API 名)]** ボックスに API の名前を入力します。
+     b. **[API Name (API 名)]** ボックスに API の名前を入力します。
    
-    c. **[Choose File]\(ファイルの選択\)** ボタンをクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
+     c. **[Choose File]\(ファイルの選択\)** ボタンをクリックして、Azure Portal からダウンロードしたメタデータ ファイルをアップロードします。
    
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 [SAML Identity Location]\(SAML ID の場所\) で、**[Identity is in the NameIdentifier element of the Subject statement]\(ID は Subject ステートメントの NameIdentifier 要素にあります\)** を選択します。
+     d. [SAML Identity Location]\(SAML ID の場所\) で、**[Identity is in the NameIdentifier element of the Subject statement]\(ID は Subject ステートメントの NameIdentifier 要素にあります\)** を選択します。
    
-    e. **[Identity Provider Login URL]\(ID プロバイダーのログイン URL\)** テキスト ボックスに、Azure Portal からコピーした**ログイン URL** の値を貼り付けます。
+     e. **[Identity Provider Login URL]\(ID プロバイダーのログイン URL\)** テキスト ボックスに、Azure Portal からコピーした**ログイン URL** の値を貼り付けます。
    
-    f. [Service Provider Initiated Request Binding]\(サービス プロバイダーが開始した要求のバインド\) で、**[HTTP Redirect]\(HTTP リダイレクト\)** を選択します。
+     f. [Service Provider Initiated Request Binding]\(サービス プロバイダーが開始した要求のバインド\) で、**[HTTP Redirect]\(HTTP リダイレクト\)** を選択します。
 
-    g. **[保存]**
+     g. **[保存]**
 
 10. **EverBridge Member Portal** としての **EverBridge** アプリケーションでシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** を [Everbridge のサポート チーム](mailto:support@everbridge.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
@@ -200,12 +200,12 @@ EverBridge で Azure AD のシングル サインオンを構成してテスト�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+    d. **作成**を選択します。
   
 ### <a name="creating-an-everbridge-test-user"></a>EverBridge テスト ユーザーの作成
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 92ba185ce3c271284ae20981408b2b12f516e3c8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a13988af7a46ff6fafe352e850ee238cda79c08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999302"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996705"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -30,6 +30,8 @@ Office 365 管理ソリューションでは、Azure Monitor で Office 365 環�
 - 不必要なユーザーの行動を検出および調査します。これは、組織のニーズに合わせてカスタマイズできます。
 - 監査とコンプライアンスを実証します。 たとえば、機密ファイルに対するファイル アクセス操作を監視でき、これは監査とコンプライアンスのプロセスに役立ちます。
 - 組織の Office 365 アクティビティ データに対して[ログ クエリ](../log-query/log-query-overview.md)を使用し、運用上のトラブルシューティングを実行します。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションをインストールして構成する前に、次のものが必要です。
@@ -69,7 +71,7 @@ Office 365 サブスクリプションから:
 1. **[新しいアプリケーションの登録]** をクリックします。
 
     ![アプリの登録の追加](media/solution-office-365/add-app-registration.png)
-1. アプリケーションの **[名前]** を入力し、**[サインオン URL]** をクリックします。  名前は、わかりやすいである必要があります。  URL には _http://localhost_ を使用し、_[アプリケーションの種類]_ として **[Web app / API]** を選択します
+1. アプリケーションの **[名前]** を入力し、**[サインオン URL]** をクリックします。  名前は、わかりやすいである必要があります。  URL には `http://localhost` を使用し、**[アプリケーションの種類]** として _[Web アプリ/API]_ を選択します。
     
     ![アプリケーションの作成](media/solution-office-365/create-application.png)
 1. **[作成]** をクリックしてアプリケーションの情報を検証します。
@@ -89,11 +91,11 @@ Office 365 サブスクリプションから:
     ![API の選択](media/solution-office-365/select-api.png)
 
 1. **[アクセス許可を選択]** で **[アプリケーションのアクセス許可]** と **[デリゲートされたアクセス許可]** の両方の以下のオプションを選択します。
-    - 組織の Service Health 情報の読み取り
-    - 組織のアクティビティ データの読み取り
-    - 組織の活動レポートの読み取り
+   - 組織の Service Health 情報の読み取り
+   - 組織のアクティビティ データの読み取り
+   - 組織の活動レポートの読み取り
 
-    ![API の選択](media/solution-office-365/select-permissions.png)
+     ![API の選択](media/solution-office-365/select-permissions.png)
 
 1. **[選択]**、**[完了]** の順にクリックします。
 1. **[アクセス許可の付与]** をクリックし、確認を求められたら **[はい]** をクリックします。
@@ -123,10 +125,10 @@ Office 365 サブスクリプションから:
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
     
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $WorkspaceLocation= $Workspace.Location
     $WorkspaceLocation
     
@@ -190,11 +192,11 @@ Office 365 サブスクリプションから:
     $line='#-------------------------------------------------------------------------------------------------------------------------------------------------------------------------'
     $line
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Set-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     $OfficeClientSecret =[uri]::EscapeDataString($OfficeClientSecret)
@@ -365,12 +367,12 @@ At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 無効なパラメーター値を指定した場合は、次のエラーが表示される場合があります。
 
 ```
-Select-AzureRmSubscription : Please provide a valid tenant or a valid subscription.
+Select-AzSubscription : Please provide a valid tenant or a valid subscription.
 At line:12 char:18
-+ ... cription = (Select-AzureRmSubscription -SubscriptionId $($Subscriptio ...
++ ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
 +                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzureRmContext], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzureRMContextCommand
+    + CategoryInfo          : CloseError: (:) [Set-AzContext], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.SetAzContextCommand
 
 ```
 
@@ -390,11 +392,11 @@ At line:12 char:18
     
     $line
     IF ($Subscription -eq $null)
-        {Login-AzureRmAccount -ErrorAction Stop}
-    $Subscription = (Select-AzureRmSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
+        {Login-AzAccount -ErrorAction Stop}
+    $Subscription = (Select-AzSubscription -SubscriptionId $($SubscriptionId) -ErrorAction Stop)
     $Subscription
     $option = [System.StringSplitOptions]::RemoveEmptyEntries 
-    $Workspace = (Get-AzureRMOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
+    $Workspace = (Set-AzOperationalInsightsWorkspace -Name $($WorkspaceName) -ResourceGroupName $($ResourceGroupName) -ErrorAction Stop)
     $Workspace
     $WorkspaceLocation= $Workspace.Location
     
@@ -703,7 +705,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | Query | 説明 |
 | --- | --- |
 |Office 365 サブスクリプションでのすべての操作のカウント |OfficeActivity &#124; summarize count() by Operation |
-|SharePoint サイトの使用率|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl | sort by Count asc|
+|SharePoint サイトの使用率|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|
 |ユーザーの種類別のファイル アクセス操作|search in (OfficeActivity) OfficeWorkload =~ "azureactivedirectory" and "MyTest"|
 |特定のキーワードで検索する|Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"|
 |Exchange 上の外部アクションを監視する|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|

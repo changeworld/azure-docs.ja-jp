@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 02/01/2019
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: fd723304e2219c457e982cbe54529d00afe526f4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 860c00b876427af7395e3c04e0626131c27aca67
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896011"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878083"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench のメッセージング統合
 
@@ -375,7 +375,7 @@ Service Bus トピックは、Blockchain Workbench で発生するイベント�
 
 ## <a name="notification-message-reference"></a>通知メッセージのリファレンス
 
-**OperationName** に応じて、通知メッセージは次のいずれかの種類になります。
+**messageName** に応じて、通知メッセージは次のいずれかの種類になります。
 
 ### <a name="block-message"></a>ブロック メッセージ
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 86b33bfa0f5383ac68080e2f8f7f9a004a1364a0
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 618414331ab22cff41c7ac02c78f4bef333d0c84
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652620"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433452"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -186,7 +186,7 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
 
 ### <a name="set-up-logs-and-diagnostics"></a>ログと診断を設定する
 
-Linux では、IoT Edge デーモンで既定のログ ドライバーとして journald が使用されます。 コマンドライン ツール `journalctl` を使用して、デーモン ログのクエリを実行することができます。 Windows では、IoT Edge デーモンで PowerShell 診断が使用されます。 デーモンからのログのクエリを実行するには、`Get-WinEvent` を使用します。 IoT Edge モジュールでは、ログ用に JSON ドライバーが使用されます (Docker の既定)。  
+Linux では、IoT Edge デーモンで既定のログ ドライバーとしてジャーナルが使用されます。 コマンドライン ツール `journalctl` を使用して、デーモン ログのクエリを実行することができます。 Windows では、IoT Edge デーモンで PowerShell 診断が使用されます。 デーモンからのログのクエリを実行するには、`Get-WinEvent` を使用します。 IoT Edge モジュールでは、ログ用に JSON ドライバーが使用されます (Docker の既定)。  
 
 IoT Edge のデプロイをテストする場合、通常はデバイスにアクセスしてログを取得し、トラブルシューティングを行うことができます。 デプロイ シナリオでは、そのオプションがない場合があります。 運用環境でデバイスに関する情報をどのように収集するかを検討してください。 1 つのオプションとして、他のモジュールから情報を収集し、クラウドに送信するログ モジュールを使用する方法があります。 ログ モジュールの一例として [logspout loganalytics](https://github.com/veyalla/logspout-loganalytics) があります。独自のものを設計することもできます。 
 
@@ -194,7 +194,7 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 
 * つまり、Docker デーモン自体ですべての docker ログファイルのサイズを制限することができます。 Linux の場合は、`/etc/docker/daemon.json` でデーモンを構成します。 Windows の場合は、`C:\ProgramData\docker\confige\daemon.json` です。 
 * 各コンテナーのログファイル サイズを調整する場合は、各モジュールの CreateOptions で行うことができます。 
-* Docker の既定のログ ドライバーとして journald を設定し、ログを自動的に管理するように Docker を構成します。 
+* Docker の既定のログ ドライバーとしてジャーナルを設定し、ログを自動的に管理するように Docker を構成します。 
 * Docker の logrotate ツールをインストールすることで、デバイスから古いログを定期的に削除します。 次のファイルの指定を使用します。 
 
    ```

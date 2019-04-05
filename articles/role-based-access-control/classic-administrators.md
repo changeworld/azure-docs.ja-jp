@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f4838f688210f9017d691bd6a463217a75fc90d4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: a19153677e691d2681c131df67100a43ef9532a0
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447516"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889326"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -91,7 +91,7 @@ ms.locfileid: "56447516"
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-1. [サービス管理者を変更するための制限事項](#limits)を確認して、使用するシナリオがサポートされていることを確認してください。
+1. サービス管理者を変更するための制限事項を確認して、使用するシナリオがサポートされていることを確認してください。
 
 1. [Azure Portal](https://portal.azure.com) にアカウント管理者としてサインインします。
 
@@ -109,7 +109,7 @@ ms.locfileid: "56447516"
 
 ### <a name="account-center"></a>アカウント センター
 
-1. [サービス管理者を変更するための制限事項](#limits)を確認して、使用するシナリオがサポートされていることを確認してください。
+1. サービス管理者を変更するための制限事項を確認して、使用するシナリオがサポートされていることを確認してください。
 
 1. アカウント管理者として [Azure センター](https://account.windowsazure.com/subscriptions)にサインインします。
 
@@ -156,3 +156,4 @@ ms.locfileid: "56447516"
 
 * [Azure での各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](../role-based-access-control/role-assignments-portal.md)
+* [Azure サブスクリプション管理者を追加または変更する](../billing/billing-add-change-azure-subscription-administrator.md)

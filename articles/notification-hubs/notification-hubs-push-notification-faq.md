@@ -13,14 +13,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 7f1a1bd22ecd0b0a7ab64e639683ae316742c5f0
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: da24c437a1dbe8744579cd26ee1348f50c4815ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563985"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884746"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs によるプッシュ通知:よく寄せられる質問
 
@@ -206,30 +206,34 @@ Azure Notification Hubs には、トラブルシューティングを行うた�
 
 Azure Notification Hubs では、[Azure Portal] で利用統計情報を表示できます。 使用できるメトリックの詳細については、[Notification Hubs のメトリック]に関するページを参照してください。
 
+プログラムでメトリックにアクセスすることもできます。 詳細については、次の記事を参照してください。
+
+- [Retrieve Azure Monitor metrics with .NET (.NET を使用した Azure Monitor メトリックの取得)](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) このサンプルでは、ユーザー名とパスワードを使用します。 証明書を使用するために、[この例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)に示すように、FromServicePrincipal メソッドをオーバーロードして、証明書を提供します。 
+- [Getting metrics and activity logs for a resource (リソースのメトリックとアクティビティ ログの取得)](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
+- [Azure 監視 REST API のチュートリアル](../azure-monitor/platform/rest-api-walkthrough.md)
+
+
 > [!NOTE]
 > 通知の成功は、単にプッシュ通知が外部の PNS (たとえば Apple の APNS や Google の FCM) に配信されたことを意味します。 ターゲット デバイスに通知を配信するのは、PNS の役目です。 通常、PNS は、配信メトリックを第三者に公開しません。  
 
-Microsoft では、プログラムによってテレメトリ データをエクスポートする機能も提供しています (Standard レベル)。 詳細については、[Notification Hubs のメトリックのサンプル]を参照してください。
-
 [Azure Portal]: https://portal.azure.com
-[Notification Hubs の価格]: http://azure.microsoft.com/pricing/details/notification-hubs/
-[Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
+[Notification Hubs の価格]: https://azure.microsoft.com/pricing/details/notification-hubs/
+[Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [ケース スタディ:ソチ]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
 [ケース スタディ:Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
 [ケース スタディ:シアトル タイムズ]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
 [ケース スタディ:Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
 [ケース スタディ:7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [Notification Hubs REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[Notification Hubs の使用チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
-[Chrome アプリのチュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
-[Mobile Services Pricing]: http://azure.microsoft.com/pricing/details/mobile-services/
+[Notification Hubs の使用チュートリアル]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
+[Chrome アプリのチュートリアル]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/
+[Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [バックエンド登録のガイダンス]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [バックエンド登録のガイダンス 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx
 [Notification Hubs のセキュリティ モデル]: https://msdn.microsoft.com/library/azure/dn495373.aspx
-[Notification Hubs の安全なプッシュのチュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
-[Notification Hubs のトラブルシューティング]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
+[Notification Hubs の安全なプッシュのチュートリアル]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
+[Notification Hubs のトラブルシューティング]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs のメトリック]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[Notification Hubs のメトリックのサンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [登録のエクスポートとインポート]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

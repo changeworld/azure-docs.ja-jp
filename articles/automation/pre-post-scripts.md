@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7278eba1c9039c180f75cdd2dfd1e18a77baf423
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: dc30b28203ad416370f1304436e7e6e642921be9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416787"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441510"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>事前および事後スクリプトを管理する (プレビュー)
 
-事前および事後スクリプトを使用すると、更新プログラムの展開の前 (事前タスク) と後 (事後タスク) に Automation アカウントで PowerShell Runbook を実行できます。 事前および事後スクリプトはローカルではなく、Azure コンテキストで実行されます。 事前スクリプトは、更新プログラムの展開の開始時に実行されます。 事後スクリプトは、展開の最後、構成されているすべての再起動の後で実行されます。
+事前および事後スクリプトを使用すると、更新プログラムの展開の前 (事前タスク) と後 (事後タスク) に Automation アカウントで PowerShell Runbook を実行できます。 事前および事後スクリプトはローカルではなく、Azure コンテキストで実行されます。 事前スクリプトは、更新プログラムのデプロイの開始時に実行されます。 事後スクリプトは、展開の最後、構成されているすべての再起動の後で実行されます。
 
 ## <a name="runbook-requirements"></a>Runbook の要件
 

@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Hub モジュール ID とモジュール ツイン (Node.js) の概要 | Microsoft Docs
 description: モジュール ID を作成し、IoT SDK for Node.js を使用して .NET のモジュール ツインを更新する方法を説明します。
-author: chrissie926
-manager: ''
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.author: menchi
-ms.openlocfilehash: ae798ecf2ba5f53cdfdef45b74677615d2e0a06d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 80132a2d15333308766b62e89262133b1f05b394
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447005"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888725"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Node.js バックエンドおよび Node.js デバイスを使用した IoT Hub モジュール ID とモジュール ツインの概要
 
@@ -43,7 +43,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 1. コードを保持するためのディレクトリを作成します。
 2. そのディレクトリ内で、まず  **npm init -y**  を実行して、既定値で空の package.json を作成します。 これは、コードのプロジェクト ファイルです。
-3.  **npm install -S azure-iothub@modules-preview** を実行して、 **node_modules**  サブディレクトリ内にサービス SDK をインストールします。
+3.  **npm install -S azure-iothub\@modules-preview** を実行して、 **node_modules**  サブディレクトリ内にサービス SDK をインストールします。
 
     > [!NOTE]
     > サブディレクトリ名 node_modules では、"ノード ライブラリ" を意味する用語モジュールを使用します。 ここで言う用語は IoT Hub モジュールとは関係ありません。
@@ -107,7 +107,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 このアプリは、ID **myFirstDevice** のデバイス ID と ID **myFirstModule** のモジュール ID をデバイス **myFirstDevice** の下に作成します。 (そのモジュール ID が既に ID レジストリに存在する場合は、単にその既存のモジュール情報を取得します。)続けてその ID のプライマリ キーが表示されます。 シミュレートされたモジュール アプリでこのキーを使用し、IoT ハブに接続します。
 
-5. ノード add.js を使用してこれを実行します。 これにより、デバイス ID とモジュール ID の各接続文字列を取得できます。
+1. ノード add.js を使用してこれを実行します。 これにより、デバイス ID とモジュール ID の各接続文字列を取得できます。
 
     > [!NOTE]
     > IoT ハブの ID レジストリには、IoT ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID とモジュール ID のみが格納されます。 ID レジストリには、セキュリティ資格情報として使用されるデバイス ID とキーが格納されます。 ID レジストリには、そのデバイスのアクセスを無効にするために使用できる各デバイスの有効/無効フラグも格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 モジュール ID 用の有効/無効フラグはありません。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]をご覧ください。
@@ -116,11 +116,11 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 このセクションでは、モジュール ツインによって報告されるプロパティを更新する Node.js アプリをシミュレートされたデバイス上に作成します。
 
-1. **モジュールの接続文字列を取得する** -- [Azure Portal][lnk-portal] にログインします。 IoT Hub に移動し、[IoT デバイス] をクリックします。 myFirstDevice を検索して開くと、myFirstModule が作成されていることを確認できます。 モジュールの接続文字列をコピーします。 これは、次の手順で必要になります。
+1. **モジュールの接続文字列を取得する** -- [Azure Portal][lnk-portal] にログインします。 IoT Hub に移動し、[IoT デバイス] をクリックします。 myFirstDevice を検索して開くと、myFirstModule が正常に作成されていることを確認できます。 モジュールの接続文字列をコピーします。 これは、次の手順で必要になります。
 
     ![Azure Portal モジュールの詳細][15]
 
-2. 前述の手順で行ったように、デバイス コードのディレクトリを作成し、NPM を使用してこれを初期化して、デバイス SDK (**npm install -S azure-iot-device-amqp@modules-preview**) をインストールします。
+2. 前述の手順で行ったように、デバイス コードのディレクトリを作成し、NPM を使用してこれを初期化して、デバイス SDK (**npm install -S azure-iot-device-amqp\@modules-preview**) をインストールします。
 
     > [!NOTE]
     > npm install コマンドが遅くなったように感じる場合があります。 パッケージ リポジトリから多数のコードがプルダウンされます。
@@ -203,7 +203,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 [15]: ./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-portal]: https://portal.azure.com/
 
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md

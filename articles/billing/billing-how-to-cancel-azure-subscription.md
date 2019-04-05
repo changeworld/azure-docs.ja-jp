@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/23/2019
 ms.author: banders
-ms.openlocfilehash: b0d5dd5fb29c8915e2c660b8647cb0148bce1399
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 374224663323e75a1d1413c47490bd3aacd00267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901515"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876818"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Azure のサブスクリプションの取り消し
 
@@ -61,4 +61,4 @@ Microsoft では、お客様がデータにアクセスする必要がある場�
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

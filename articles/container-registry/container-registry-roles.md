@@ -5,27 +5,27 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/17/2018
+ms.date: 02/20/2019
 ms.author: danlep
-ms.openlocfilehash: a4b9b382755e73b6218432624c471346e9698752
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0148894bb013dc9f8cce595f14919f87d6292df8
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193392"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593626"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
 
 Azure Container Registry サービスでは、Azure コンテナー レジストリにさまざまなレベルのアクセス許可を提供する Azure のロールのセットがサポートされています。 Azure の[ロールベースのアクセス制御](../role-based-access-control/index.yml) (RBAC) を使用して、レジストリと対話する必要のあるユーザーまたはサービス プリンシパルに特定のアクセス許可を割り当てます。
 
-| ロール/アクセス許可       | [Resource Manager へのアクセス](#access-resource-manager)| [レジストリの作成/削除](#create-and-delete-registry) | [イメージのプッシュ](#push-image) | [イメージのプル](#pull-image) | [ポリシーの変更](#change-policies) |   [イメージの署名](#sign-images)  |
-| ---------| --------- | --------- | --------- | --------- | --------- | --------- |
-| Owner | X | X | X | X | X |  |  
-| Contributor | X | X | X | X | X |  |  
-| Reader | X |  |  | X |  |  | 
-| AcrPush |  |  | X | X |  |  |  
-| AcrPull |  |  |  | X |  |  |  
-| AcrImageSigner |  |  |  |  |  | X |
+| ロール/アクセス許可       | [Resource Manager へのアクセス](#access-resource-manager) | [レジストリの作成/削除](#create-and-delete-registry) | [イメージのプッシュ](#push-image) | [イメージのプル](#pull-image) | [イメージ データを削除する](#delete-image-data) | [ポリシーの変更](#change-policies) |   [イメージの署名](#sign-images)  |
+| ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
+| Owner | X | X | X | X | X | X |  |  
+| Contributor | X | X | X |  X | X | X |  |  
+| Reader | X |  |  | X |  |  |  |
+| AcrPush |  |  | X | X | X |  |  |  
+| AcrPull |  |  |  | X |  |  |  |  
+| AcrImageSigner |  |  |  |  |  |  | X |
 
 ## <a name="differentiate-users-and-services"></a>ユーザーとサービスを区別する
 
@@ -58,6 +58,10 @@ Azure コンテナー レジストリを作成および削除する権限です�
 ## <a name="pull-image"></a>イメージのプル
 
 レジストリから検疫されていないイメージの `docker pull` を行う、または Helm Chart などの別の[サポートされている成果物](container-registry-image-formats.md)をプルする権限です。 承認された ID を使用してレジストリで[認証](container-registry-authentication.md)を行う必要があります。
+
+## <a name="delete-image-data"></a>イメージ データを削除する
+
+[コンテナー イメージまたはリポジトリを削除する](container-registry-delete.md)権限です。
 
 ## <a name="change-policies"></a>ポリシーの変更
 

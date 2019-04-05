@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: 16d536ff5bd1f7d9a3427877a93036d9f711564e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 36b2f3817c7e96a35c1e8f3aba22db201224ceba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099780"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075937"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -45,7 +45,7 @@ ms.locfileid: "56099780"
 - Business Critical サービス レベルは、IO 待ち時間が最優先されるビジネス ワークロードに適しています。
 
 | | リソースの種類 | 汎用 |  ハイパースケール | Business Critical |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---|:---:|:---:|:---:|:---:|
 | **最適な用途** |All|  ほとんどのビジネス ワークロード。 予算重視のバランスの取れたコンピューティングおよびストレージ オプションを提供します。 | 大きなデータ容量要件のデータ アプリケーション、および柔軟性の高いストレージの自動スケーリングとコンピューティングのスケーリングの機能。 | トランザクション レートが高く、待ち時間 IO が最低のOLTP アプリケーション。 分離された複数のレプリカを使用して、最高の耐障害性が提供されます。|
 |  **リソースの種類** ||単一データベース/エラスティック プール/マネージド インスタンス | 単一データベース | 単一データベース/エラスティック プール/マネージド インスタンス |
 | **コンピューティング サイズ**|単一データベース/エラスティック プール * | 1 - 80 の仮想コア | 1 - 80 の仮想コア * | 1 - 80 の仮想コア |
@@ -73,7 +73,7 @@ ms.locfileid: "56099780"
 
 ### <a name="what-regions-currently-support-hyperscale"></a>現在ハイパースケールをサポートしているリージョン
 
-現在、ハイパースケールは次のリージョンの単一データベースで使用できます。米国西部1、米国西部2、米国東部1、米国中部、西ヨーロッパ、北ヨーロッパ、英国西部、東南アジア、東日本、韓国中部、オーストラリア南東部、オーストラリア東部。
+現在、ハイパースケールは次のリージョンの単一データベースで使用できます。米国西部 1、米国西部 2、米国東部 1、米国中部、西ヨーロッパ、北ヨーロッパ、東南アジア、東日本、韓国中部、オーストラリア南東部、オーストラリア東部。
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>SQL Database サーバーごとに複数のハイパースケール データベースを作成できるか
 

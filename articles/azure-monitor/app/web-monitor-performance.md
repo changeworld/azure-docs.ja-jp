@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8f5a0a22ecea0b5df0f4108984b2a65d4add2bf8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301776"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901170"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
 
@@ -112,7 +112,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 * 要求の数を他のメトリックと比較し、障害や応答速度の低下が負荷と関連しているかどうかを確認します。
 * コードに[トレース ステートメント][diagnostic]を挿入し、そのステートメントを検索することにより、問題を特定しやすくします。
 * 稼働中の Web アプリを [Live Metrics Stream][livestream] で監視します。
-* .Net アプリケーションの状態を[スナップショット デバッガー][snapshot]でキャプチャします。
+* ご自分の .NET アプリケーションの状態を[スナップショット デバッガー][snapshot]を使用してキャプチャします。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>過去のパフォーマンス調査を利用し、パフォーマンスのボトルネックを探して修正する
 

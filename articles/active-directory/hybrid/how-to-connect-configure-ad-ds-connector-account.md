@@ -11,12 +11,12 @@ ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d39305b4a8fafbd2fe2f1ac101f92597d6a3e4a0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6510105af8c019b1aca5333f516a10667edaadb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189050"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000872"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
@@ -158,7 +158,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 |type |Name |Access |適用対象|
 |-----|-----|-----|-----| 
-|ALLOW|AD DS コネクタ アカウント|プロパティの読み取り/書き込み|MS-DS-Consistency-Guid|ユーザーの子孫オブジェクト|
+|ALLOW|AD DS コネクタ アカウント|プロパティの読み取り/書き込み|ユーザーの子孫オブジェクト|
 
 ### <a name="permissions-for-password-hash-synchronization"></a>パスワード同期のアクセス許可 
 パスワード ハッシュ同期を使用しているときに、AD DS コネクタ アカウントのアクセス許可を設定するには、次のように実行します。 
@@ -271,7 +271,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 - 指定したオブジェクトの継承を無効にします 
 - 特定のオブジェクトのすべての ACE を削除します。ただし、SELF については既定のアクセス許可を維持するために、SELF に固有の ACE を除きます。 
  
- -ADConnectorAccountDN パラメーターは、アクセス許可のセキュリティを強化する必要がある AD アカウントです。 これは、通常、AD DS コネクタに構成されている MSOL_nnnnnnnnnnnn ドメイン アカウントです (「AD DS コネクタ アカウントの確認」を参照)。 -Credential パラメーターは、ターゲットの AD オブジェクトに対する Active Directory のアクセス許可を制限するために必要な特権を持つ、管理者アカウントを指定するために必要です。 これは通常、企業またはドメインの管理者です。  
+  -ADConnectorAccountDN パラメーターは、アクセス許可のセキュリティを強化する必要がある AD アカウントです。 これは、通常、AD DS コネクタに構成されている MSOL_nnnnnnnnnnnn ドメイン アカウントです (「AD DS コネクタ アカウントの確認」を参照)。 -Credential パラメーターは、ターゲットの AD オブジェクトに対する Active Directory のアクセス許可を制限するために必要な特権を持つ、管理者アカウントを指定するために必要です。 これは通常、企業またはドメインの管理者です。  
 
 ``` powershell
 Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 54faf8b37afa953aac7d411df2f539188dc5b451
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: f96b4bb75a22e51586820a2e7be08c09cf7b26dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104422"
 ---
 # <a name="how-to-improve-your-classifier"></a>分類子を改善する方法
 
@@ -102,4 +102,4 @@ ms.locfileid: "56310216"
 このガイドでは、カスタム画像分類モデルをより正確にするためのいくつかの技法について説明しました。 次に、画像を予測 API に送信することによって、それらの画像をプログラムでテストする方法を説明します。
 
 > [!div class="nextstepaction"]
-[予測 API の使用](use-prediction-api.md)
+> [予測 API の使用](use-prediction-api.md)

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3f72480aaa05c0f50179d4d330525b12525282bc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5f937a86e4e063ad1e8346dc629a917ae7ce8b65
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161870"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077209"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -33,7 +33,7 @@ ms.locfileid: "55161870"
 | **logonIdentifier_email** | 電子メール アドレス |
 | **requiredField_email** | メール アドレスを入力してください |
 | **invalid_email** | 有効な電子メール アドレスを入力してください |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&’'*+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$ |
 | **local_intro_username** | 自分のユーザー名でサインイン |
 | **logonIdentifier_username** | ユーザー名 |
 | **requiredField_username** | ユーザー名を入力してください |

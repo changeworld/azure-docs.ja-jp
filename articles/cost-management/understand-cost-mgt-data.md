@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/07/2019
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 1d7f58780819202eb02e3a48b4b5e0ac108a0432
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 40c08f87a1711ae57ceb8b288851686d1e2ad391
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447465"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993960"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -62,8 +62,9 @@ Azure Cost Management で現在サポートされている [Microsoft Azure の�
 | **サポート プラン** | Azure Government Pro-Direct サポート | MS-AZR-USGOV-0042P |
 | **サポート プラン** | Azure Government Developer サポート | MS-AZR-USGOV-0043P |
 
-従量課金制、MSDN、および Visual Studio のオファー カテゴリのお客様の場合、2018 年 10 月 2 からデータを Cost Management で使用できます。
+従量課金制、MSDN、および Visual Studio のオファー カテゴリのお客様の場合、2018 年 10 月 2 からデータを Cost Management で使用できます。 2018 年 10 月 2 日より前にサブスクリプションのデータにアクセスするには、[Azure アカウント センター](https://account.azure.com/subscriptions)を使用して使用量の詳細を CSV ファイルでダウンロードするか、[Usage Details API](/rest/api/consumption/usagedetails) を使用することができます。
 
+## <a name="determine-your-offer-type"></a>オファーの種類を決定する
 サブスクリプションのデータが表示されず、ご利用のサブスクリプションがサポート対象のプランに該当するかどうかわからない場合は、ご利用のサブスクリプションがサポート対象かどうかを検証することができます。 Azure サブスクリプションがサポート対象かどうかを検証するには、[Azure portal](https://portal.azure.com) にサインインします。 次に、左側のメニュー ウィンドウにある **[すべてのサービス]** を選択します。 サービスの一覧で **[サブスクリプション]** を選択します。 [サブスクリプション] の一覧で、検証するサブスクリプションを選択します。 選択したサブスクリプションが [概要] タブに表示され、**プラン**と**プラン ID** を確認できます。 次に例を示します。
 
 ![プランとプラン ID が表示された、サブスクリプションの [概要] タブの例](./media/understand-cost-mgt-data/offer-and-offer-id.png)
@@ -94,7 +95,7 @@ Cost Management に含まれるデータと含まれないデータを次の表�
 
 ## <a name="rated-usage-data-refresh-schedule"></a>評価済み使用状況データの更新スケジュール
 
-コストと使用状況データは、Azure portal の [コストの管理と請求] および[サポートする API](https://aka.ms/costmgmt/docs) から利用できます。 コストを確認するときは、次の点に留意してください。
+コストと使用状況データは、Azure portal の [コストの管理と請求] および[サポートする API](index.yml) から利用できます。 コストを確認するときは、次の点に留意してください。
 
 - 現在の請求期間の見積もり料金は、1 日に 6 回更新されます。
 - 現在の請求期間の見積もり料金は、使用量の増加に伴い変更される可能性があります。

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 1/04/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a850b42f23a94366ec73949556b4af9a90f5015e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4ebedddf5e62e41bd0ef2d4c426df448a81a1e2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195228"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837220"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>チュートリアル:Azure Active Directory と Rollbar の統合
 
@@ -196,7 +196,7 @@ Rollbar で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-rollbar-test-user"></a>Rollbar テスト ユーザーの作成
 
@@ -218,7 +218,7 @@ Azure AD ユーザーが Rollbar にログインできるようにするには�
 
     ![[ユーザーの招待]](./media/rollbar-tutorial/user2.png)
 
-1. テキストボックスに **brittasimon@contoso.com** のようにユーザー名を入力し、**[Add/Invite]\(追加/招待\)** をクリックします。
+1. ボックスにユーザー名 (例: **brittasimon\@contoso.com**) を入力し、**[Add/Invite]\(追加/招待\)** をクリックします。
 
     ![[ユーザーの招待]](./media/rollbar-tutorial/user3.png)
 

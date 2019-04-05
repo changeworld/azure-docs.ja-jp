@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 7cd6af1dc6b947abd91c9d25a4b102e52da9d24d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 20f9655e1c3e7cce652802957f5eef1f333870e9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456726"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176499"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのスケーリング オプション
 
@@ -51,7 +51,7 @@ AKS でポッドの水平オートスケーラーを開始するには、「[ポ
 
 ## <a name="cluster-autoscaler"></a>クラスター オートスケーラー
 
-ポッドの需要の変化に対応するために、Kubernetes には、ノード プール内で要求されるコンピューティング リソースに基づいてノードの数を調整するクラスター オートスケーラーがあります。 既定では、クラスター オートスケーラーはノード数での必要な変更について 10 秒ごとに API サーバーをチェックします。 クラスター オートスケーラーが変更が必要だと判断した場合、それに応じて AKS クラスター内のノードの数が増減されます。 クラスターオートスケーラーは、Kubernetes 1.10.x 以降を実行する RBAC 対応 AKS クラスターで動作します。
+ポッドの需要の変化に対応するために、Kubernetes には、ノード プール内で要求されるコンピューティング リソースに基づいてノードの数を調整するクラスター オートスケーラー (現在 AKS でプレビューの段階です) があります。 既定では、クラスター オートスケーラーはノード数での必要な変更について 10 秒ごとに API サーバーをチェックします。 クラスター オートスケーラーが変更が必要だと判断した場合、それに応じて AKS クラスター内のノードの数が増減されます。 クラスターオートスケーラーは、Kubernetes 1.10.x 以降を実行する RBAC 対応 AKS クラスターで動作します。
 
 ![Kubernetes クラスター オートスケーラー](media/concepts-scale/cluster-autoscaler.png)
 
@@ -81,7 +81,7 @@ AKS クラスターを迅速にスケーリングするために、Azure Contain
 
 ![ACI への Kubernetes バースト スケーリング](media/concepts-scale/burst-scaling.png)
 
-ACI では、追加のインフラストラクチャのオーバーヘッドなしに、コンテナー インスタンスを迅速にデプロイできます。 AKS で接続する場合、ACI は、AKS クラスターのセキュリティ保護された論理拡張機能になります。 Virtual Kubelet コンポーネントは、仮想の Kubernetes ノードとして ACI を表示する AKS クラスターにインストールされます。 Kubernetes は続いて、直接 AKS クラスター内にある VM ノード上のポッドとしてではなく、仮想ノードを通じた ACI インスタンスとして実行するポッドをスケジュール設定できます。
+ACI では、追加のインフラストラクチャのオーバーヘッドなしに、コンテナー インスタンスを迅速にデプロイできます。 AKS で接続する場合、ACI は、AKS クラスターのセキュリティ保護された論理拡張機能になります。 Virtual Kubelet コンポーネントは、仮想の Kubernetes ノードとして ACI を表示する AKS クラスターにインストールされます。 Kubernetes は続いて、直接 AKS クラスター内にある VM ノード上のポッドとしてではなく、仮想ノードを通じた ACI インスタンスとして実行するポッドをスケジュール設定できます。 仮想ノードは、現在 AKS でプレビューの段階です。
 
 アプリケーションは、仮想ノードを使用するために変更は不要です。 クラスター オートスケーラーが AKS クラスター内に新しいノードをデプロイするときに、デプロイは AKS と ACI にわたって遅延なくスケーリングできます。
 

@@ -1,7 +1,7 @@
 ---
 title: サブスクリプション キー
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 無料の最初の 1000 のエンドポイント クエリの使用には、サブスクリプション キーを作成する必要がありません。 HTTP 403 または 429 の形式で _クォータ不足_ エラーが表示される場合、キーを作成して、アプリに割り当てる必要があります。
+description: 無料の最初の 1000 のエンドポイント クエリの使用には、サブスクリプション キーを作成する必要がありません。 HTTP 403 または 429 の形式で_クォータ不足_エラーが表示される場合、キーを作成して、アプリに割り当てる必要があります。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,43 +9,29 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 03/01/2019
 ms.author: diberry
-ms.openlocfilehash: 3fd05e2dd5b55dd590af24f0757229bead041b6d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859115"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781699"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>LUIS アプリでのサブスクリプション キーの使用
 
-無料の最初の 1000 のエンドポイント クエリの使用には、サブスクリプション キーを作成する必要がありません。 それらのエンドポイント クエリを使用したら、[Azure portal](http://portal.azure.com) に Azure リソースを作成し、そのリソースを [LUIS ポータル](https://www.luis.ai)の LUIS アプリに割り当てます。
+無料の最初の 1000 のエンドポイント クエリの使用には、サブスクリプション キーを作成する必要がありません。 それらのエンドポイント クエリを使用したら、[Azure portal](https://portal.azure.com) に Azure リソースを作成し、そのリソースを [LUIS ポータル](https://www.luis.ai)の LUIS アプリに割り当てます。
 
-HTTP 403 または 429 の形式で _クォータ不足_ エラーが表示される場合、キーを作成して、アプリに割り当てる必要があります。 
+HTTP 403 または 429 の形式で_クォータ不足_エラーが表示される場合、キーを作成して、アプリに割り当てる必要があります。 
 
 テストおよびプロトタイプについてのみ、Free (F0) レベルを使用します。 運用システムについては、[有料](https://aka.ms/luis-price-tier)レベルを使用してください。 運用環境でのエンドポイントのクエリには、[作成者キー](luis-concept-keys.md#authoring-key)を使用しないでください。
 
 <a name="create-luis-service"></a>
+<a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
-## <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>Azure portal で Language Understanding エンドポイント キーを作成する
+## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Azure portal 内で予測エンドポイント ランタイム リソースを作成する
 
-この手順では、**Language Understanding** のリソースを作成します。 リソースを Cognitive Services 全体で使用できるようにするには、Language Understanding のリソースではなく、オールインワン キーの **[Cognitive Service](../cognitive-services-apis-create-account.md)** を作成します。 
-
-このキーは、エンドポイントの予測クエリでのみ使用します。 このキーは、モデルやアプリの変更には使用しないでください。 
-
-1. **[Azure Portal](https://ms.portal.azure.com/)** にサインインします。 
-1. 左側のパネルの緑色の **+** 記号をクリックし、マーケットプレースで `Language Understanding` を検索して、**[Language Understanding]** を選択します。次に、**作成操作**に従って LUIS サブスクリプション アカウントを作成します。 
-
-    ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
-
-1. アカウント名、価格レベルなどの設定によってサブスクリプションを構成します。 
-
-    ![Azure API の選択](./media/luis-azure-subscription/azure-api-choice.png) 
-
-1. Language Understanding リソースを作成したら、**[リソース管理] -> [キー]** で生成されたアクセス キーを表示できます。 次のセクションでは、LUIS ポータルの LUIS アプリにこの新しいリソースを接続する方法を説明します。 手順 3 からは、LUIS リソースの名前が必要です。
-
-    ![Azure キー](./media/luis-azure-subscription/azure-keys.png)
+詳細については、[アプリ作成](get-started-portal-build-app.md)のクイック スタートを参照してください。
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -63,23 +49,7 @@ HTTP 403 または 429 の形式で _クォータ不足_ エラーが表示さ�
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>LUIS ポータルの LUIS アプリにリソース キーを割り当てる
 
-1. LUIS ポータルにサインインし、新しいキーを追加するアプリを選択し、右上のメニューの **[Manage]\(管理\)** を選択し、**[Keys and endpoints]\(キーとエンドポイント\)** を選択します。
-
-    [![[Keys and endpoints]\(キーとエンドポイント) ページ](./media/luis-manage-keys/keys-and-endpoints.png)](./media/luis-manage-keys/keys-and-endpoints.png#lightbox)
-
-1. LUIS を追加するには、**[Assign Resource +]\(リソースの割り当て +)** を選択します。
-
-    ![アプリにリソースを割り当てる](./media/luis-manage-keys/assign-key.png)
-
-1. ダイアログ ボックスで、LUIS Web サイトへのサインインで使用したメール アドレスに関連付けられているテナントを選択します。  
-
-1. 追加する Azure リソースに関連付けられている**サブスクリプション名**を選択します。
-
-1. **LUIS リソース名**を選択します。 
-
-1. **[Assign resource]\(リソースの割り当て)** を選択します。 
-
-1. テーブルで新しい行を見つけて、そのエンドポイント URL をコピーします。 予測のために LUIS エンドポイントに対して HTTP GET 要求を行えれば、正しく構築されています。 
+詳細については、[デプロイ](get-started-portal-deploy-app.md)のクイック スタートを参照してください。
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>

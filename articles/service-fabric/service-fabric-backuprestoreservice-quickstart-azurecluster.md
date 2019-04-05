@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: hrushib
-ms.openlocfilehash: a9b90fe119bc56620a7bd3087d4842f604fc18f0
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4cb73ea08060336710207e026bb5bcc5a251efc8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582543"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877923"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元 
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Service Fabric は、複数のノードの状態をレプリケートして、�
 - データの破損を引き起こすサービスのバグ。 これは、サービス コードのアップグレードにより、Reliable Collection に不正なデータが書き込まれ始めると起こる可能性があります。 このような場合は、コードとデータの両方を、以前の状態に復元する必要があります。
 - オフライン データ処理 データを生成するサービスと切り離されて行われるビジネス インテリジェンスのために、データのオフライン処理を用意しておけば便利です。
 
-Service Fabric には、ポイントインタイムの[バックアップと復元](service-fabric-reliable-services-backup-restore.md)を行う API が組み込まれています。 アプリケーション開発者は、これらの API を使用して、サービスの状態を定期的にバックアップできます。 さらに、サービス管理者が特定の時点 (アプリケーションをアップグレードする前など) にサービスの外部からバックアップをトリガーすることを望んでいるのであれば、開発者は、バックアップ (および復元) を API としてサービスから公開する必要があります。 バックアップの管理には、追加コストが発生します。 たとえば、完全バックアップに続けて、30 分ごとに 5 回の増分バックアップを実行するとします。 完全バックアップを実行した後、その前に実行された増分バックアップを削除できます。 このアプローチではコードを追加する必要であり、それによってアプリケーションの開発中に追加コストが発生します。
+Service Fabric には、ポイントインタイムの[バックアップと復元](service-fabric-reliable-services-backup-restore.md)を行う API が組み込まれています。 アプリケーション開発者は、これらの API を使用して、サービスの状態を定期的にバックアップできます。 さらに、サービス管理者が特定の時点 (アプリケーションをアップグレードする前など) にサービスの外部からバックアップをトリガーすることを望んでいるのであれば、開発者は、バックアップ (および復元) を API としてサービスから公開する必要があります。 バックアップの管理には、追加コストが発生します。 たとえば、完全バックアップに続けて、30 分ごとに 5 回の増分バックアップを実行したい場合があるとします。 完全バックアップを実行した後、その前に実行された増分バックアップを削除できます。 このアプローチではコードを追加する必要であり、それによってアプリケーションの開発中に追加コストが発生します。
 
 Service Fabric のバックアップと復元サービスを使用すると、ステートフル サービスに格納された情報を簡単かつ自動的にバックアップできます。 定期的にアプリケーション データをバックアップすることは、データが失われたりサービスを利用できなくなったりしないように保護するために不可欠です。 Service Fabric には、オプションで提供されるバックアップと復元サービスがあります。このサービスを使用すると、追加のコードを記述することなく、ステートフルな Reliable Services の定期的なバックアップを構成できます (Actor Services も対象になります)。 これまでに実行したバックアップも簡単に復元できます。 
 
@@ -57,7 +57,7 @@ Service Fabric には、定期的なバックアップと復元機能に関連�
 ## <a name="prerequisites"></a>前提条件
 * Service Fabric のバージョンが 6.2 以降の Fabric クラスター。 クラスターは、Windows Server 上に設定されている必要があります。 Azure リソース テンプレートを使用して Service Fabric クラスターを作成する手順については、こちらの[記事](service-fabric-cluster-creation-via-arm.md)を参照してください。
 * バックアップを保存するストレージに接続するために必要なシークレットを暗号化する X.509 証明書。 X.509 証明書を取得または作成する方法については、[こちらの記事](service-fabric-cluster-creation-via-arm.md)を参照してください。
-* Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 Net Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
+* Service Fabric SDK バージョン 3.0 以降を使用してビルドされた Service Fabric Reliable Stateful アプリケーション。 .NET Core 2.0 がターゲットであるアプリケーションは、Service Fabric SDK バージョン 3.1 以降を使用してビルドする必要があります。
 * アプリケーションのバックアップを保存するための Azure ストレージ アカウントを作成します。
 
 ## <a name="enabling-backup-and-restore-service"></a>バックアップと復元サービスの有効化

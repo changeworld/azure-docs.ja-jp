@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: e40d8e7c05213e99fc2ef65f5dc05f17ba0d185e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 1a878b5a9f0502ff9acd411359895d7431fb76f4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890537"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437244"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Import/Export ジョブの状態情報の取得
 [Get Job](/rest/api/storageimportexport/jobs) 操作を呼び出して、インポートとエクスポートの両方のジョブに関する情報を取得することができます。 返される情報には、次の情報が含まれます。

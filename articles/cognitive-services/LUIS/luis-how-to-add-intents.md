@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/19/2019
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: e6ab51d568c950ca7fd503150557df288d84174f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0d6813c11b5b9ed4aef666f5eb3dc75d8c9de770
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867734"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593424"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>ユーザーの発話意図を判断する意図を追加する
 
@@ -50,21 +50,14 @@ ms.locfileid: "55867734"
 
 上部のナビゲーションで、**[トレーニング]** を選択します。 これで、予測の不一致がなくなります。
 
+> [!Note]
+> サンプル発話内の単語またはフレーズの下に赤い線が表示されている場合は、[エンティティ予測エラー](luis-how-to-add-example-utterances.md#entity-status-predictions)が発生しています。 このエラーは修正する必要があります。 
+
 ## <a name="add-a-custom-entity"></a>カスタム エンティティの追加
 
 意図に発話を追加したら、発話内からテキストを選択してカスタム エンティティを作成できます。 カスタム エンティティは、抽出するテキスト (および正しい意図) をタグ付けするためのものです。 
 
-1. 発話内の単語 (`Seattle`) を選択します。 テキストを囲む角かっこが表示され、ドロップダウン メニューが表示されます。 
-
-    ![意図の詳細ページのスクリーンショット (カスタム エンティティの作成)](./media/luis-how-to-add-intents/create-custom-entity.png) 
-
-    この例では、1 つの単語をエンティティとしてマークします。 エンティティとしてマークできるのは、1 つの単語や語句です。
-
-1. メニューの上部のテキスト ボックスに「`Location`」と入力し、を選択し、**[新しいエンティティの作成]** を選択します。 
-
-    ![意図の詳細ページのスクリーンショット (カスタム エンティティ名の作成)](./media/luis-how-to-add-intents/create-custom-entity-name.png) 
-
-1. エンティティ作成の **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか\)** ポップアップ ウィンドウで、**エンティティ名**が _Location_、**エンティティの種類**が "_簡易_" であることを確認します。 **[完了]** を選択します。
+詳細については、[発話に対するエンティティの追加](luis-how-to-add-example-utterances.md)に関するページを参照してください。
 
 ## <a name="entity-prediction-discrepancy-errors"></a>エンティティ予測の不一致エラー 
 
@@ -80,7 +73,7 @@ ms.locfileid: "55867734"
 
 ## <a name="using-the-contextual-toolbar"></a>コンテキスト ツールバーの使用
 
-一覧で 1 つ以上のサンプル発話が選択されているときに発話の左側のチェックボックスをオンにすると、発話一覧の上部にあるツールバーを使用して次の操作を実行できます。
+一覧で 1 つ以上のサンプル発話が選択されているときに発話の左側のチェック ボックスをオンにすると、発話一覧の上部にあるツール バーを使用して次のアクションを実行できます。
 
 * 意図の再割り当て: 発話を別の意図に移動します
 * 発話の削除

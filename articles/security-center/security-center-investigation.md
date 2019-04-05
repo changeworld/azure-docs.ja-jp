@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7763807fdb5fcff7e93d54bf5a851cd4443427d3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6ba21c6eacd5b72d13706c08f0cc9883ccc91388
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107193"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107476"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Azure Security Center でのインシデントとアラートの調査 (プレビュー)
 このドキュメントは、Azure Security Center の調査機能を使用して、セキュリティ インシデントとアラートを調査する際に役立ちます。
@@ -29,10 +29,10 @@ Security Center の調査機能を使用すると、潜在的な[セキュリテ
 
 その目的は、調査中のインシデントに関するすべてのエンティティ ([セキュリティ アラート](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)、ユーザー、コンピューター、インシデント) を関連付けて、調査プロセスを容易にすることです。  Security Center では、重要なデータとすべての関連するエンティティを相互に関連付けたうえで、対象の検索と重要な情報の視覚化に役立つライブ グラフを使ってその相関関係を明らかにすることで、これを実現します。
 
+
 > [!NOTE]
-> [カスタム アラート](security-center-custom-alert.md)は、Security Center の調査機能ではサポートされていません。
->
->
+> * [カスタム アラート](security-center-custom-alert.md)は、Security Center の調査機能ではサポートされていません。
+> * 調査は、Windows サーバーから収集されたデータに基づくアラートに対してのみサポートされています。
 
 
 ## <a name="how-investigation-works"></a>調査のしくみ

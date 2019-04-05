@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 148dff16d56755755f71e24e658e29c116ac5df1
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 2b8c35450ab4586f619993aeb9a578c83cafc0c6
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417637"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216936"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database での単一データベースとプールされたデータベースの管理
 
@@ -261,9 +261,9 @@ Azure portal でデータベースを選択し [概要] ペインのグラフを
 
 ![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-#### <a name="azure-sql-analytics-preview-in-log-analytics"></a>Log Analytics の Azure SQL Analytics (プレビュー)
+#### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Monitor ログの Azure SQL Analytics (プレビュー)
 
-[Azure Log Analytics](../azure-monitor/insights/azure-sql.md) では、主要な Azure SQL パフォーマンス メトリックを収集して視覚化することができます。ワークスペースごとに SQL Database は 15 万個、SQL エラスティック プールは 5 千個がサポートされています。 これにより、監視を行い、通知を受け取ることができます。 SQL Database およびエラスティック プールのメトリックは、複数の Azure サブスクリプションとエラスティック プールにわたって監視でき、これらのメトリックを利用してアプリケーション スタックの各層における問題を特定できます。
+[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)では、主要な SQL Azure パフォーマンス メトリックを収集して視覚化することができます。ワークスペースごとに SQL Database は 150,000 個、SQL エラスティック プールは 5,000 個がサポートされています。 これにより、監視を行い、通知を受け取ることができます。 SQL Database およびエラスティック プールのメトリックは、複数の Azure サブスクリプションとエラスティック プールにわたって監視でき、これらのメトリックを利用してアプリケーション スタックの各層における問題を特定できます。
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>パフォーマンスに問題があります。SQL Database と SQL Server のトラブルシューティングの方法の違いはどのようなものですか
 

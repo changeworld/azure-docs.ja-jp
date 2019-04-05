@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 517afe21fbf9241e2b2423525e9caee12a5603f6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271438"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726874"
 ---
-# <a name="azure-data-factory-data-flow-join-transformation"></a>Azure Data Factory Data Flow の結合変換
+# <a name="mapping-data-flow-join-transformation"></a>Mapping Data Flow の結合変換
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -44,7 +44,7 @@ ms.locfileid: "56271438"
 
 ### <a name="cross-join"></a>クロス結合
 
-式を使用して 2 つのストリームを外積したものです。
+式を使用して 2 つのストリームを外積するよう指定します。 これを使用して、カスタム結合条件を作成できます。
 
 ## <a name="specify-join-conditions"></a>結合条件を指定する
 
@@ -67,3 +67,7 @@ SSIS などのツールのマージ結合とは異なり、ADF Data Flow の結�
 ![自己結合](media/data-flow/selfjoin.png "自己結合")
 
 上の図では、先頭に選択変換があります。 これは、元のストリームを "OrigSourceBatting" にエイリアス化しています。 下部の強調表示されている結合変換で、この選択エイリアス ストリームを右側の結合として使用して、内部結合の右側と左側の両方で同じキーを参照できるようになっていることがわかります。
+
+## <a name="next-steps"></a>次の手順
+
+データの結合後は、[新しい列を作成](data-flow-derived-column.md)したり、[ご自分のデータを宛先データ ストアにシンク](data-flow-sink.md)したりできます。

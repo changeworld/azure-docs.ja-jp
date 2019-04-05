@@ -17,17 +17,17 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc08710909252c9bcade6177a105684128acc5bf
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: a1cc8a9305103a30fc0ea0fc40c23a522e136d80
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339025"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807186"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Azure Active Directory の Identity Protection (更新版) に関してよく寄せられる質問と既知の問題
 
 
-## <a name="dismiss-user-risk"></a>ユーザー リスクを無視する
+## <a name="dismiss-user-risk-known-issues"></a>"ユーザー リスクを無視する" の既知の問題
 
 従来の Identity Protection で**ユーザー リスクを無視する**と、Identity Protection (更新版) のユーザーのリスク履歴のアクターが **Azure AD** に設定されます。
 
@@ -37,7 +37,7 @@ Identity Protection (更新版) で**ユーザーのリスクを無視する**�
 現在、ユーザー リスクの無視フローに遅延が発生するという既知の問題があります。 "ユーザー リスク ポリシー" がある場合、このポリシーによって、[ユーザー リスクを無視する] をクリックしてから数分以内に、無視されたユーザーへの適用が停止されます。 ただし、無視されたユーザーの "リスク状態" が UX で更新されるまでに既知の遅延があります。 回避策としては、ブラウザー レベルでページを更新して最新のユーザーの "リスク状態" を確認します。
 
 
-## <a name="risky-users-report"></a>危険なユーザー レポート
+## <a name="risky-users-report-known-issues"></a>"危険なユーザー レポート" の既知の問題
 
 **[ユーザー名]** フィールドに対するクエリでは大文字と小文字が区別されますが、**[名前]** フィールドに対するクエリでは大文字と小文字が区別されません。
 
@@ -45,14 +45,10 @@ Identity Protection (更新版) で**ユーザーのリスクを無視する**�
 
 従来の Identity Protection で**すべてのイベントを無視する**と、リスク イベントの状態が **[クローズ (解決済み)]** に設定されます。
 
-リスクの高いサインイン レポートのサインイン レコード内で **[危険なユーザー レポート]** をクリックして危険なユーザー レポートにアクセスしようとすると、**[問題が発生しました。もう一度お試しください]** というメッセージが表示されることがあります。 これを解決するには、画面上部にある **[適用]** または **[リセット]** をクリックします。これにより、危険なユーザーのデータが設定されます。
 
-
-## <a name="risky-sign-ins-report"></a>リスクの高いサインイン レポート
+## <a name="risky-sign-ins-report-known-issues"></a>"リスクの高いサインイン レポート" の既知の問題
 
 リスク イベントで **[解決]** をクリックすると、状態が **[ユーザーが、リスク ベースのポリシーに要求された MFA に成功しました]** に設定されます。
-
-**[リスクの高いサインイン]** レポートで **[リセット]** をクリックしても、**[リスク イベントの種類]** の値はクリアされません。
 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問

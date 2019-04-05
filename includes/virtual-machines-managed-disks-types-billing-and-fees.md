@@ -8,22 +8,18 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0d771f03f9f71151ef25140148d4dd4daf3d46ec
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 3e303ce2b6f28500406bacf5b66d26f9c78ba46d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443378"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57783442"
 ---
 **送信データ転送**: [送信データ転送](https://azure.microsoft.com/pricing/details/bandwidth/) (Azure データ センターから送信されるデータ) では、帯域幅の使用量に対して課金されます。
 
-**トランザクション**:Standard マネージド ディスクで実行されるトランザクションの数に対して課金されます。 Standard HDD では、100,000 トランザクションあたり 0.0036 ドルが課金されます。 トランザクションには、ストレージに対する読み取り操作と書き込み操作の両方が含まれます。
+**トランザクション**:Standard マネージド ディスクで実行されるトランザクションの数に対して課金されます。
 
-Standard SSD では、256 KB の IO ユニット サイズが使用されます。 転送されるデータが 256 KB に満たない場合は、1 つの I/O ユニットとみなされます。 I/O のサイズが大きくなると、サイズが 256 KB の複数の I/O としてカウントされます。 たとえば、1,100 KB の I/O は 5 つの I/O ユニットとしてカウントされます。
-
-Premium マネージド ディスクの場合、トランザクションのコストはかかりません。
-
-Managed Disks の価格の詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)」をご覧ください。
+トランザクション コストを含め、Managed Disks の価格の詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)」をご覧ください。
 
 ### <a name="ultra-ssd-vm-reservation-fee"></a>Ultra SSD VM 予約料金
 

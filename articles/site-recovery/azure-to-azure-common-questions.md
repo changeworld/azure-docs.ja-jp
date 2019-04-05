@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 555c8b0b4046fd20583597ae4f0215a815806b8e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bf7a8ea00fe94e6896c097b8e27c22c0831f71da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860409"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008657"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>一般的な質問:Azure から Azure へのレプリケーション
 
@@ -26,6 +26,7 @@ ms.locfileid: "55860409"
 1.  **[マルチ VM 整合性](#multi-vm-consistency)** 
 1.  **[復旧計画](#recovery-plan)** 
 1.  **[再保護とフェールバック](#reprotection-and-failback)** 
+2.  **[容量](#capacity)**
 1.  **[セキュリティ](#security)** 
 
 
@@ -35,7 +36,7 @@ ms.locfileid: "55860409"
 詳しくは、「[Site Recovery の価格](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/)」をご覧ください。
 ### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Azure Site Recovery の Free レベルの課金はどのように行われますか?
 Azure Site Recovery で保護されるすべてのインスタンスは、保護を開始してから 31 日間は無料になります。 32 日目以降は、インスタンスの保護に対して上記の料金が課金されます。
-###<a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>最初の 31 日間に、他の Azure 料金は発生しますか?
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>最初の 31 日間に、他の Azure 料金は発生しますか?
 はい。Azure Site Recovery は保護されたインスタンスに対して最初の 31 日間無料ですが、Azure Storage、ストレージ トランザクション、データ転送について課金が発生する場合があります。 仮想マシンの復旧も、Azure の通常の課金の対象になる場合があります。 価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery)からご確認ください
 
 ### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>Azure VM で Site Recovery を構成するためのベスト プラクティスは何ですか?
@@ -59,7 +60,7 @@ Azure Site Recovery で保護されるすべてのインスタンスは、保護
 
 ### <a name="can-i-exclude-disks"></a>ディスクを除外することはできますか?
 
-はい、PowerShell を使用して保護時にディスクを除外できます。 詳しくは、[PowerShell のガイダンス](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine)に関する記事をご覧ください。
+はい、PowerShell を使用して保護時にディスクを除外できます。 詳しくは、[記事](azure-to-azure-exclude-disks.md)を参照してください
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>どのくらいの頻度で Azure にレプリケートできますか?
 Azure VM を別の Azure リージョンにレプリケートするときは、レプリケーションは継続的に行われます。 詳しくは、[Azure から Azure へのレプリケーション アーキテクチャ](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process)に関する記事をご覧ください。
@@ -117,7 +118,7 @@ Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイント�
 1. 直近 1 時間未満では、5 分ごとの復旧ポイントがあります。
 2. 過去 1 時間を超える時間については、Site Recovery は復旧ポイントを 1 つだけ保持します。
 
-  ![生成された復旧ポイントの一覧](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+   ![生成された復旧ポイントの一覧](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
 
 
 ### <a name="how-far-back-can-i-recover"></a>過去のどの時点まで遡って復旧できますか?
@@ -220,7 +221,12 @@ Site Recovery での復旧計画は、VM のフェールオーバーの復旧を
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>フェールバックにはどのくらい時間がかかりますか?
 再保護の後、フェールバックにかかる時間は、通常、プライマリ リージョンからセカンダリ リージョンへのフェールオーバーの時間と同程度です。 
 
-## <a name="a-namesecuritysecurity"></a><a name="security">セキュリティ
+## <a name="capacity"></a>容量
+### <a name="does-site-recovery-work-with-reserved-instance"></a>Site Recovery は予約インスタンスと共に動作しますか。
+はい。DR リージョンで[予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)を購入することができ、それらは ASR フェールオーバー操作で使用されます。 </br> お客様による追加の構成は不要です。
+
+
+## <a name="security"></a>セキュリティ
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
 いいえ。Site Recovery は、レプリケートされたデータをインターセプトすることも、仮想マシンでの実行内容に関するどのような情報を持つこともありません。 レプリケーションとフェールオーバーを調整するために必要なメタデータのみが、Site Recovery サービスに送信されます。  
 Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けており、SOC2 および FedRAMP JAB の評価が進行中です。

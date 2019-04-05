@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor ログ クエリ内の文字列の操作 | Microsoft Docs
-description: この記事は、Azure portal で Azure Monitor のログ分析を使用して、Azure Monitor でログ データのクエリと分析を行うためのチュートリアルとなっています。
+description: この記事は、Azure portal で Azure Monitor Log Analytics を使用して、Azure Monitor でログ データのクエリと分析を行うためのチュートリアルとなっています。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: dda7ef2e4e974ea053f030a3ebe71a16872612b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 718b12c8a66d66a75796f88ef31b5f0f62abbbc4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993726"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750958"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の JSON とデータ構造の操作
 
 > [!NOTE]
-> このレッスンを完了する前に、「[Azure Monitor ログ分析の使用を開始する](get-started-portal.md)」と、「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を完了しておく必要があります。
+> このレッスンを完了する前に、「[Azure Monitor Log Analytics の使用を開始する](get-started-portal.md)」と、「[Azure Monitor ログ クエリの使用を開始する](get-started-queries.md)」を完了しておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

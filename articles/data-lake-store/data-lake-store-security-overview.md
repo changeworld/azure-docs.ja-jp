@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4da387abe24318a29472c11dffa7aac67192408c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a310851819f70d138a4980b1ab61891fb0b2c311
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297425"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959614"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 のセキュリティ
 多くの企業が、ビッグ データの分析によってビジネスに関する洞察を獲得し、それを意思決定に活かしています。 ただ、一部の組織はユーザーが多様化し、その数も増加の一途を辿っているばかりか、各種の規制が存在する複雑な環境に直面しています。 このため、重要なビジネス データはこれまで以上に強固なセキュリティをもって保管すると同時に、個々のユーザーには適切な水準のアクセス権を付与することがきわめて重要になっています。 Azure Data Lake Storage Gen1 は、このようなセキュリティ要件を満たすことを目指して設計されています。 この記事では、以下に示す Data Lake Storage Gen1 のセキュリティ機能について説明します。
@@ -98,7 +98,7 @@ Data Lake Storage Gen1 では、アカウントに格納されているデータ
 アクティビティ ログの操作の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/resource-group-audit.md)」を参照してください。
 
 ### <a name="diagnostics-logs"></a>[診断ログ]
-Azure Portal でデータ アクセス監査および診断ログを有効にし、それらのログを Azure Blob Storage アカウント、イベント ハブ、または Log Analytics に送信できます。
+Azure portal でデータ アクセス監査および診断ログを有効にし、それらのログを Azure Blob Storage アカウント、イベント ハブ、または Azure Monitor ログに送信できます。
 
 ![診断ログ](./media/data-lake-store-security-overview/diagnostic-logs.png "診断ログ")
 

@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c622b95572a078d3f5a3e4791f959fd264eddc3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4b72ec628e048560fbfb9da63123bbb7461811b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182172"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074286"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリからユーザーまたはグループの割り当てを削除する
 Azure Active Directory (Azure AD) で、エンタープライズ アプリのいずれかに割り当てられているアクセスからユーザーまたはグループを簡単に削除できます。 エンタープライズ アプリを管理するには、適切なアクセス許可が必要です。また、ディレクトリの全体管理者である必要があります。
@@ -51,7 +51,7 @@ Azure Active Directory (Azure AD) で、エンタープライズ アプリのい
     > Azure AD モジュールをインストールする必要があります (`Install-Module -Name AzureAD` コマンドを使用してください)。 NuGet モジュールまたは新しい Azure Active Directory V2 PowerShell モジュールをインストールするように求められたら「Y」と入力し、ENTER キーを押します。
 
 2. `Connect-AzureAD` を実行してグローバル管理者ユーザー アカウントでサインインします。
-3. 次のスクリプトを使用して、アプリケーションにユーザーとロールを割り当てます。
+3. 次のスクリプトを使用して、アプリケーションからユーザーとロールを削除します。
 
     ```powershell
     # Store the proper parameters
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) で、エンタープライズ アプリのい
     #To remove the App role assignment run the following command.
     Remove-AzureADServiceAppRoleAssignment -ObjectId $spo.ObjectId -AppRoleAssignmentId $assignments[assignment #].ObjectId
     ``` 
-## <a name="next-steps"></a>次の手順
+   ## <a name="next-steps"></a>次の手順
 
 - [自分のグループをすべて表示する](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)

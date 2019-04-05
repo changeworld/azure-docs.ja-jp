@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67a8c4d4fe5476d00677c08bef9668066c4ec4f3
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458299"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339744"
 ---
 # <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>マイ プロファイル (プレビュー) ポータルから自分の組織を管理する
 **マイ プロファイル** ポータルの **[組織]** ページで、ご自分の組織を管理できます。
@@ -35,7 +35,7 @@ ms.locfileid: "56458299"
 
 2. 左側のナビゲーション ウィンドウから **[組織]** を選択するか、**[組織]** ブロックから **[組織の確認]** リンクを選択します。
 
-    ![[組織] リンクが強調表示されている [マイ プロファイル] ページ](media/myprofile-portal/myprofile-portal-organizations-links.png)
+    ![[組織] リンクが強調表示されている [マイ プロファイル] ページ](media/myprofile-portal/myprofile-portal-organizations.png)
 
 3. **[ホーム組織]** の情報を確認します。 
 
@@ -57,4 +57,4 @@ ms.locfileid: "56458299"
 
 ## <a name="next-steps"></a>次の手順
 
-- 最近のサインイン アクティビティを確認した後、ご自分の[セキュリティ情報](user-help-security-info-overview.md)、[最近のサインイン アクティビティ](myprofile-portal-recent-activity-page.md)、接続されている[デバイス](myprofile-portal-devices-page.md)の表示や管理を行ったり、組織で[ご自分のデータがどのように使用されているか](myprofile-portal-privacy-page.md)を確認したりできます。
+- 組織を確認した後、[セキュリティ情報](user-help-security-info-overview.md)や、接続されている[デバイス](myprofile-portal-devices-page.md)を表示または管理したり、組織による[データの使用](myprofile-portal-privacy-page.md)状況を確認したりすることができます。

@@ -5,23 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/30/2019
-ms.openlocfilehash: 03e0db822e38cc6823fc32aa915dc9283fa46cbe
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/26/2019
+ms.openlocfilehash: 6e33c7571dc735ce9984a0ce1b37275a6c4c7eca
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493050"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888473"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
-> [!IMPORTANT]
-> 読み取りレプリカ機能はパブリック プレビュー段階にあります。
-
 読み取りレプリカ機能を使用すると、Azure Database for MySQL サーバー (マスター) から、同じ Azure リージョン内にある最大 5 つの読み取り専用サーバー (レプリカ) にデータをレプリケートできます。 読み取り専用レプリカは、MySQL エンジンのネイティブなバイナリ ログ (binlog) ファイルの位置ベースのレプリケーション テクノロジを使用して、非同期で更新されます。 binlog レプリケーションの詳細については、[MySQL binlog レプリケーションの概要](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html)に関する記事を参照してください。
 
-Azure Database for MySQL サービスで作成されるレプリカは、標準またはスタンドアロンの MySQL サーバーと同様に管理できる新しいサーバーです。 読み取りレプリカごとに、仮想コア内のプロビジョニング済みコンピューティングとプロビジョニング済みストレージ (GB/月) に対して課金されます。 
-
+Azure Database for MySQL サービスで作成されるレプリカは、標準またはスタンドアロンの MySQL サーバーと同様に管理できる新しいサーバーです。 読み取りレプリカごとに、仮想コア内のプロビジョニング済みコンピューティングとプロビジョニング済みストレージ (GB/月) に対して課金されます。
 
 MySQL レプリケーションの機能と問題の詳細については、[MySQL レプリケーションに関するドキュメント](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html)を参照してください。
 
@@ -39,7 +35,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ### <a name="master-server-restart"></a>マスター サーバーの再起動
 
-このプレビュー中は、既存のレプリカがないマスターのレプリカを作成すると、マスターは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク時に実行してください。
+既存のレプリカがないマスターのレプリカを作成すると、マスターは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク時に実行してください。
 
 ### <a name="stopping-replication"></a>レプリケーションの停止
 

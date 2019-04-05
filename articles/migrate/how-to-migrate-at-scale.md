@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: snehaa
-ms.openlocfilehash: c0fc4fa0bdd58b8ecdf4f26051d60324118c4b21
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 74dabc49dd3d0e38f43dc758204c35ea1c0efd99
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896588"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438484"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Azure Site Recovery を使用して VM の移行をスケーリングする
 
@@ -31,7 +31,7 @@ ms.locfileid: "55896588"
 - 構成サーバーとプロセス サーバーがソース環境にインストールされていることと、コンテナーから環境を検出できることを確認します
 - レプリケーション ポリシーが作成されていて、構成サーバーに関連付けられていることを確認します
 - 構成サーバーに VM 管理者アカウントを追加したことを確認します (オンプレミスの VM をレプリケートするために使用されます)
-- Azure 内にターゲット アーティファクトが作成されていることを確認します
+- Azure 内にターゲット成果物が作成されていることを確認します
     - ターゲット リソース グループ
     - ターゲット ストレージ アカウント (およびそのリソース グループ)
     - フェールオーバー用のターゲット仮想ネットワーク (およびそのリソース グループ)
@@ -59,7 +59,7 @@ CSV の準備ができたら、次の手順を実行してオンプレミス VM 
 4 | asr_propertiescheck.ps1 | プロパティが適切に更新されているかどうかを確認します
 5 | asr_testmigration.ps1 |  csv にリストされている VM のテスト フェールオーバーを開始します。このスクリプトを実行すると、各 VM のジョブ詳細を含んだ CSV 出力が作成されます
 6 | asr_cleanuptestmigration.ps1 | テスト フェールオーバーされた VM を手動で検証したら、このスクリプトを使用してテスト フェールオーバー VM をクリーンアップします
-7 | asr_migration.ps1 | csv にリストされている VM の計画外フェールオーバーを実行します。このスクリプトを実行すると、各 VM のジョブ詳細を含んだ CSV 出力が作成されます。 このスクリプトでは、アプリケーションの一貫性を保つため、フェールオーバーをトリガーする前にオンプレミス VM をシャット ダウンすることはしません。スクリプトを実行する前に、VM を手動でシャット ダウンすることをお勧めします。
+7 | asr_migration.ps1 | csv にリストされている VM の計画外フェールオーバーを実行します。このスクリプトを実行すると、各 VM のジョブ詳細を含んだ CSV 出力が作成されます。 このスクリプトでは、アプリケーションの一貫性を保つため、フェールオーバーをトリガーする前にオンプレミス VM をシャットダウンすることはしません。スクリプトを実行する前に、VM を手動でシャットダウンすることをお勧めします。
 8 | asr_completemigration.ps1 | VM 上でコミット操作を実行し、ASR エンティティを削除します
 9 | asr_postmigration.ps1 | NIC のポスト フェールオーバーにネットワーク セキュリティ グループを割り当てる場合は、このスクリプトを使用してその操作を実行できます。 このスクリプトを実行すると、ターゲット VM 内の 1 つの NIC に NSG が割り当てられます。
 

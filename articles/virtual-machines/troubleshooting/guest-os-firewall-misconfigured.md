@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: bbfa5ce0e277df3648e98be29fe91a44b15a52b7
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fcea5e4e6bb108f1a8d8036e51a5dae8a9e6431b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262287"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839748"
 ---
 # <a name="azure-vm-guest-os-firewall-is-misconfigured"></a>Azure VM のゲスト OS のファイアウォールが正しく構成されていない
 
@@ -96,9 +96,9 @@ ms.locfileid: "54262287"
 
 *   RDP を介して VM への接続を再試行します。
 
-### <a name="offline-mitigations"></a>オフラインの軽減策
+### <a name="offline-mitigations"></a>オフラインの対応策
 
-1.  ファイアウォール規則を有効または無効にする方法については、「[Enable or disable a firewall rule on a Azure VM Guest OS](enable-disable-firewall-rule-guest-os.md)」(Azure VM のゲスト OS のファイアウォール規則を有効または無効にする) を参照してください。
+1.  ファイアウォール規則を有効または無効にする方法については、「[Azure VM のゲスト OS 上のファイアウォール規則を有効または無効にする](enable-disable-firewall-rule-guest-os.md)」を参照してください。
 
 2.  [ゲスト OS のファイアウォールによって受信トラフィックがブロックされるシナリオ](guest-os-firewall-blocking-inbound-traffic.md)に該当するかどうかを確認します。
 

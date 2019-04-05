@@ -3,21 +3,21 @@ title: Azure Data Factory でのビジュアルの作成 | Microsoft Docs
 description: Azure Data Factory でビジュアルの作成機能を使用する方法について説明します
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
+author: sharonlo101
 ms.author: shlo
-ms.openlocfilehash: 323d22363ee52ff6ccf7575b00c6b8b31a0fa156
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.reviewer: ''
+manager: craigg
+ms.openlocfilehash: 77eb109b8826bcb6136e91ac610235f74551cecb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188496"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853088"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 Azure Data Factory ユーザー インターフェイス エクスペリエンス (UX) を使用すると、コードを記述することなくデータ ファクトリ用リソースを視覚的に作成してデプロイできます。 パイプライン キャンバスにアクティビティをドラッグし、テストの実行を行い、反復的にデバッグを行い、パイプラインの実行を展開して監視することができます。 UX を使用してビジュアルの作成機能を実行するには 2 つの方法があります。
@@ -31,7 +31,7 @@ Data Factory サービスによるビジュアルの作成は、Git 統合によ
 - Data Factory サービスには、変更について JSON エンティティを格納するためのリポジトリが含まれていません。
 - Data Factory サービスは、コラボレーションまたはバージョン管理用に最適化されていません。
 
-![Data Factory サービスの構成 ](media/author-visually/configure-data-factory.png)
+![Data Factory サービスの構成](media/author-visually/configure-data-factory.png)
 
 UX **作成キャンバス**を使用して Data Factory サービスで直接作成する場合、**すべて発行**モードを使用できます。 行った変更はすべて、Data Factory サービスに直接発行されます。
 
@@ -204,7 +204,7 @@ Azure Data Factory で  **[始めましょう]**  ページに移動します�
 | **設定**                                              | **説明**                                                                                                                                                                                                                                                                                                                                                                                                                   | **値**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
 | **リポジトリの種類**                                      | Azure Repos コード リポジトリの種類。                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
-| **GitHub アカウント**                                       | GitHub アカウント名。 この名前は、 https://github.com/{account名}/{リポジトリ名} で確認できます。 このページに移動すると、お使いの GitHub アカウントへの GitHub OAuth の資格情報を入力するよう求められます。                                                                                                                                                                                                                                               |                    |
+| **GitHub アカウント**                                       | GitHub アカウント名。 この名前は、https:\//github.com/{アカウント名}/{リポジトリ名} で確認できます。 このページに移動すると、お使いの GitHub アカウントへの GitHub OAuth の資格情報を入力するよう求められます。                                                                                                                                                                                                                                               |                    |
 | **RepositoryName**                                       | GitHub コード リポジトリ名。 GitHub アカウントには、ソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内の既存のリポジトリを使用できます。                                                                                                                                                                                                                              |                    |
 | **コラボレーション ブランチ**                                 | 発行に使用される GitHub コラボレーション ブランチ。 既定は master です。 別のブランチからのリソースを発行する場合は、この設定を変更します。                                                                                                                                                                                                                                                               |                    |
 | **ルート フォルダー**                                          | GitHub コラボレーション ブランチのルート フォルダー。                                                                                                                                                                                                                                                                                                                                                                             |                    |
@@ -221,7 +221,7 @@ Azure Data Factory UX  **作成キャンバス**でデータ ファクトリを
 
 データ ファクトリで GitHub Enterprise リポジトリを構成するには 2 つの方法があります。
 
- #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>構成方法 1 (Enterprise リポジトリ):[Let's get started]\(始めましょう\) ページ
+#### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>構成方法 1 (Enterprise リポジトリ):[Let's get started]\(始めましょう\) ページ
 
 Azure Data Factory で  **[始めましょう]**  ページに移動します。 [ **Configure Code Repository**]\(コード リポジトリの構成) を選択します。
 
@@ -238,7 +238,7 @@ Azure Data Factory で  **[始めましょう]**  ページに移動します�
 | **リポジトリの種類**                                      | Azure Repos コード リポジトリの種類。                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
 | **GitHub Enterprise の使用**                                | GitHub Enterprise を選択するチェックボックス                                                                                                                                                                                                                                                                                                                                                                                              |                    |
 | **GitHub Enterprise の URL**                                | GitHub Enterprise のルート URL。 次に例を示します。 https://github.mydomain.com                                                                                                                                                                                                                                                                                                                                                          |                    |
-| **GitHub アカウント**                                       | GitHub アカウント名。 この名前は、 https://github.com/{account名}/{リポジトリ名} で確認できます。 このページに移動すると、お使いの GitHub アカウントへの GitHub OAuth の資格情報を入力するよう求められます。                                                                                                                                                                                                                                               |                    |
+| **GitHub アカウント**                                       | GitHub アカウント名。 この名前は、https:\//github.com/{アカウント名}/{リポジトリ名} で確認できます。 このページに移動すると、お使いの GitHub アカウントへの GitHub OAuth の資格情報を入力するよう求められます。                                                                                                                                                                                                                                               |                    |
 | **RepositoryName**                                       | GitHub コード リポジトリ名。 GitHub アカウントには、ソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内の既存のリポジトリを使用できます。                                                                                                                                                                                                                              |                    |
 | **コラボレーション ブランチ**                                 | 発行に使用される GitHub コラボレーション ブランチ。 既定は master です。 別のブランチからのリソースを発行する場合は、この設定を変更します。                                                                                                                                                                                                                                                               |                    |
 | **ルート フォルダー**                                          | GitHub コラボレーション ブランチのルート フォルダー。                                                                                                                                                                                                                                                                                                                                                                             |                    |

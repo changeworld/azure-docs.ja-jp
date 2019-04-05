@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 703b8a7a094d0ea6f5b5dedaf02a218b407269d3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9cfec02e2ea3496589474e61f583fb840a70f78d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813808"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881326"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -93,8 +93,8 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
     | Linux ディストリビューション | Version |
     | --------------- | ----------- |
+    | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
-    | Ubuntu 17.10    | `artful`    |
     | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
 
@@ -156,7 +156,7 @@ Azure Functions ランタイムのバージョン 2.x では、関数アプリ�
 
 [!INCLUDE [Register extensions](../../includes/functions-core-tools-install-extension.md)]
 
-詳しくは、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md#register-binding-extensions)」をご覧ください。
+詳しくは、「[Azure Functions でのトリガーとバインドの概念](./functions-bindings-expressions-patterns.md)」をご覧ください。
 
 ## <a name="local-settings-file"></a>ローカル設定ファイル
 
@@ -183,22 +183,22 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 
 | Setting      | 説明                            |
 | ------------ | -------------------------------------- |
-| **IsEncrypted** | **true** に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は **false** です。 |
-| **値** | ローカルで実行するときに使用されるアプリケーション設定と接続文字列のコレクションです。 これらの値は、**AzureWebJobsStorage** や **AzureWebJobsDashboard** など、Azure 内の関数アプリのアプリ設定に対応します。 多くのトリガーおよびバインドには、[BLOB Storage トリガー](functions-bindings-storage-blob.md#trigger---configuration)の **Connection** など、接続文字列アプリ設定を参照するプロパティがあります。 このようなプロパティでは、**Values** 配列にアプリケーション設定を定義する必要があります。 <br/>**AzureWebJobsStorage** は、HTTP 以外のトリガーに必要なアプリ設定です。 [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)がローカルにインストールされている場合は、**AzureWebJobsStorage** を `UseDevelopmentStorage=true` に設定できます。Core Tools はエミュレーターを使用します。 これは開発中には便利ですが、展開する前に実際のストレージに接続してテストする必要があります。 |
-| **Host** | このセクションの設定により、ローカルで実行時の Functions ホスト プロセスをカスタマイズできます。 |
-| **LocalHttpPort** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この値に優先します。 |
-| **CORS** | [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) で許可されるオリジンを定義します。 スペースなしのコンマ区切りのリストでオリジンを指定します。 ワイルドカード値 (\*) がサポートされており、これによって任意のオリジンからの要求を許可できます。 |
-| **ConnectionStrings** | 関数のバインディングで使用される接続文字列にこのコレクションを使用しないでください。 このコレクションは、[Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx) など、構成ファイルの **ConnectionStrings** セクションから接続文字列を取得するのが一般的なフレームワークでのみ使用されます。 このオブジェクト内の接続文字列は、[System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) のプロバイダーの種類と共に、環境に追加されます。 他のアプリ設定では、このコレクション内の項目は Azure に発行されません。 関数アプリの設定の**接続文字列**のコレクションに、これらの値を明示的に追加する必要があります。 関数のコードで [SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) を作成する場合は、接続文字列の値を他の接続と共に**アプリケーションの設定**に格納する必要があります。 |
+| **`IsEncrypted`** | `true` に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は `false` です。 |
+| **`Values`** | ローカルで実行するときに使用されるアプリケーション設定と接続文字列のコレクションです。 これらの値は、[`AzureWebJobsStorage`] など、Azure 内のご自分の関数アプリのアプリ設定に対応します。 多くのトリガーおよびバインドには、[Blob Storage トリガー](functions-bindings-storage-blob.md#trigger---configuration)の `Connection` など、接続文字列アプリ設定を参照するプロパティがあります。 このようなプロパティでは、`Values` 配列にアプリケーション設定を定義する必要があります。 <br/>[`AzureWebJobsStorage`] は、HTTP 以外のトリガーに必要なアプリ設定です。 <br/>Functions ランタイムのバージョン 2.x には、[`FUNCTIONS_WORKER_RUNTIME`] 設定が必要です。これは、Core Tools によってご自分のプロジェクトのために生成されます。 <br/> [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)がローカルにインストールされている場合は、[`AzureWebJobsStorage`] を `UseDevelopmentStorage=true` に設定できます。Core Tools はエミュレーターを使用します。 これは開発中には便利ですが、展開する前に実際のストレージに接続してテストする必要があります。 |
+| **`Host`** | このセクションの設定により、ローカルで実行時の Functions ホスト プロセスをカスタマイズできます。 |
+| **`LocalHttpPort`** | ローカルの Functions ホストの実行時に使用される既定のポートを設定します (`func host start`と`func run`)。 `--port` コマンド ライン オプションは、この値に優先します。 |
+| **`CORS`** | [クロス オリジン リソース共有 (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) で許可されるオリジンを定義します。 スペースなしのコンマ区切りのリストでオリジンを指定します。 ワイルドカード値 (\*) がサポートされており、これによって任意のオリジンからの要求を許可できます。 |
+| **`ConnectionStrings`** | 関数のバインディングで使用される接続文字列にこのコレクションを使用しないでください。 このコレクションは、[Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx) など、構成ファイルの `ConnectionStrings` セクションから接続文字列を取得するのが一般的なフレームワークでのみ使用されます。 このオブジェクト内の接続文字列は、[System.Data.SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx) のプロバイダーの種類と共に、環境に追加されます。 他のアプリ設定では、このコレクション内の項目は Azure に発行されません。 ご自分の関数アプリの設定の `Connection strings` コレクションに、これらの値を明示的に追加する必要があります。 ご自分の関数のコードで [`SqlConnection`](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx) を作成する場合は、ポータル内で接続文字列の値を他の接続と共に**アプリケーションの設定**に格納する必要があります。 |
 
 関数アプリの設定値は、コードの中で環境変数として読み込むこともできます。 詳細については、以下の言語固有のリファレンス トピックの「環境変数」のセクションを参照してください。
 
-+ [C# プリコンパイル済み](functions-dotnet-class-library.md#environment-variables)
-+ [C# スクリプト (.csx)](functions-reference-csharp.md#environment-variables)
-+ [F# スクリプト (.fsx)](functions-reference-fsharp.md#environment-variables)
-+ [Java](functions-reference-java.md#environment-variables)
-+ [JavaScript](functions-reference-node.md#environment-variables)
+* [C# プリコンパイル済み](functions-dotnet-class-library.md#environment-variables)
+* [C# スクリプト (.csx)](functions-reference-csharp.md#environment-variables)
+* [F# スクリプト (.fsx)](functions-reference-fsharp.md#environment-variables)
+* [Java](functions-reference-java.md#environment-variables)
+* [JavaScript](functions-reference-node.md#environment-variables)
 
-有効なストレージ接続文字列が **AzureWebJobsStorage** に設定されておらず、エミュレーターが使用されていない場合は、次のエラー メッセージが表示されます。
+有効なストレージ接続文字列が [`AzureWebJobsStorage`] に設定されていなく、エミュレーターが使用されていない場合は、次のエラー メッセージが表示されます。
 
 > local.settings.json に AzureWebJobsStorage の値がありません。 これは HTTP 以外のすべてのトリガーに必要です。 "func azure functionapp fetch-app-settings \<functionAppName\>" を実行するか、local.settings.json で接続文字列を指定することができます。
 
@@ -216,12 +216,12 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 
 + Core Tools を使用して、次のコマンドのいずれで Azure から接続文字列をダウンロードします。
 
-    + 既存の関数アプリからすべての設定をダウンロードします。
+  + 既存の関数アプリからすべての設定をダウンロードします。
 
     ```bash
     func azure functionapp fetch-app-settings <FunctionAppName>
     ```
-    + 特定のストレージ アカウントの接続文字列を取得します。
+  + 特定のストレージ アカウントの接続文字列を取得します。
 
     ```bash
     func azure storage fetch-connection-string <StorageAccountName>
@@ -481,3 +481,5 @@ Azure Functions Core Tools は[オープン ソースであり、GitHub でホ�
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure ポータル]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
+[`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage

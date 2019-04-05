@@ -14,16 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 30b064e3c20b184023cb6ada25d673f5cab6597c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 25452d3d65518511c47087d1cb712d0a512416fc
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297669"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245558"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>Syslog 内の Service Fabric Linux クラスター イベント
 
 Service Fabric では、クラスター内の重要なアクティビティを通知するための一連のプラットフォーム イベントを公開しています。 公開されているすべてのイベントの一覧については、[こちら](service-fabric-diagnostics-event-generation-operational.md)を参照してください。 これらのイベントは、さまざまな方法で使用できます。 この記事では、このようなイベントを Syslog に書き込むように Service Fabric を構成する方法について説明します。
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="introduction"></a>はじめに
 
@@ -93,8 +95,8 @@ SyslogConsumer を有効にするには、クラスターのアップグレー�
     }
 ```
 
-## <a name="log-analytics-integration"></a>Log Analytics の統合
-Log Analytics などの監視ツールでこれらの Syslog イベントを読み取ることができます。 Azure Marketplace を使用して Log Analytics ワークスペースを作成するには、こちらの [手順].(../azure-monitor/learn/quick-create-workspace.md) を参照してください。また、このデータを収集してワークスペースに送信するには、Log Analytics エージェントをクラスターに追加する必要があります。 これは、パフォーマンス カウンターの収集に使用されるものと同じエージェントです。 
+## <a name="azure-monitor-logs-integration"></a>Azure Monitor ログの統合
+Azure Monitor ログなどの監視ツールでこれらの Syslog イベントを読み取ることができます。 Azure Marketplace を使用して Log Analytics ワークスペースを作成するには、こちらの [手順].(../azure-monitor/learn/quick-create-workspace.md) を参照してください。また、このデータを収集してワークスペースに送信するには、Log Analytics エージェントをクラスターに追加する必要があります。 これは、パフォーマンス カウンターの収集に使用されるものと同じエージェントです。 
 
 1. `Advanced Settings` ブレードに移動します
 
@@ -120,6 +122,6 @@ Log Analytics などの監視ツールでこれらの Syslog イベントを読�
 
 ## <a name="next-steps"></a>次の手順
 * お使いのノードに [Log Analytics エージェントをデプロイ](service-fabric-diagnostics-oms-agent.md)してパフォーマンス カウンターを収集し、Docker の統計とコンテナーのログを収集する
-* Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
-* [Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する](../log-analytics/log-analytics-view-designer.md)
-* [Log Analytics と Syslog との統合](../log-analytics/log-analytics-data-sources-syslog.md)方法のリファレンス
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
+* [Azure Monitor ログのビュー デザイナーを使用してカスタム ビューを作成する](../log-analytics/log-analytics-view-designer.md)
+* [Azure Monitor ログを Syslog と統合する](../log-analytics/log-analytics-data-sources-syslog.md)方法を参照する。

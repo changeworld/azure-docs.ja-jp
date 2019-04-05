@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4ca5803ca410e3250e025eb60b5c1ff9fc7216b1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 591b30d0147e427e8a0dbc2d25276bdcd3b54be6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465243"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445485"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、開発エンジニアなど) がいる場合、またはマネージド サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
 
 ## <a name="built-in-monitoring-roles"></a>組み込みの監視の役割
@@ -49,8 +52,8 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 監視共同作業者の役割が割り当てられている場合、サブスクリプション内の監視データすべてを表示し、監視の設定を作成または変更できます。ただし、他のリソースについては何も変更することはできません。 この役割は監視閲覧者の役割のスーパーセットで、上記のアクセス許可以外に次の作業を行う必要がある、組織の監視チームまたはマネージド サービス プロバイダーのメンバーに適しています。
 
 * 共有ダッシュボードとして監視ダッシュボードを発行する。
-* リソースの[診断設定](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)を設定する。*
-* サブスクリプションの[ログ プロファイル](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)を設定する。*
+* リソースの[診断設定](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)を設定する。\*
+* サブスクリプションの[ログ プロファイル](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)を設定する。\*
 * [Azure アラート](../../azure-monitor/platform/alerts-overview.md)を使用して、アラート ルール アクティビティと設定を指定する。
 * Application Insights の Web テストとコンポーネントを作成する。
 * Log Analytics ワークスペースの共有キーを一覧表示する。
@@ -58,7 +61,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 * Log Analytics に保存された検索を作成および削除する。
 * Log Analytics ストレージ構成を作成および削除する。
 
-*診断設定またはログ プロファイルを設定するには、ターゲット リソース (ストレージ アカウントまたはイベント ハブ名前空間) で、ListKeys アクセス許可がユーザーに対して個別に付与されている必要があります。
+\*診断設定またはログ プロファイルを設定するには、ターゲット リソース (ストレージ アカウントまたはイベント ハブ名前空間) で、ListKeys アクセス許可がユーザーに対して個別に付与されている必要があります。
 
 > [!NOTE]
 > この役割では、イベント ハブにストリーミングされたログ データ、またはストレージ アカウントに保存されたログ データへの読み取りアクセス権は付与されません。 [以下を参照](#security-considerations-for-monitoring-data) してください。
@@ -98,7 +101,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 たとえば、上記の表を使用すると、"アクティビティ ログ閲覧者" に対して、次のようなカスタム RBAC 役割を作成できます。
 
 ```powershell
-$role = Get-AzureRmRoleDefinition "Reader"
+$role = Get-AzRoleDefinition "Reader"
 $role.Id = $null
 $role.Name = "Activity Log Reader"
 $role.Description = "Can view activity logs."
@@ -106,7 +109,7 @@ $role.Actions.Clear()
 $role.Actions.Add("Microsoft.Insights/eventtypes/*")
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add("/subscriptions/mySubscription")
-New-AzureRmRoleDefinition -Role $role 
+New-AzRoleDefinition -Role $role 
 ```
 
 ## <a name="security-considerations-for-monitoring-data"></a>データ監視のセキュリティに関する考慮事項
@@ -127,8 +130,8 @@ New-AzureRmRoleDefinition -Role $role
 ユーザーまたはアプリケーションがストレージ アカウントの監視データにアクセスする必要がある場合は、Blob Storage へのサービス レベルの読み取り専用アクセスが付与されている、監視データが含まれるストレージ アカウントで、 [アカウント SAS を生成](https://msdn.microsoft.com/library/azure/mt584140.aspx) します。 PowerShell では次のようになります。
 
 ```powershell
-$context = New-AzureStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
-$token = New-AzureStorageAccountSASToken -ResourceType Service -Service Blob -Permission "rl" -Context $context
+$context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
+$token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permission "rl" -Context $context
 ```
 
 その後、ストレージ アカウントからの読み取りが必要なエンティティにトークンを割り当てることができます。これにより、そのストレージ アカウントのすべての BLOB からの表示と読み取りが可能になります。
@@ -136,7 +139,7 @@ $token = New-AzureStorageAccountSASToken -ResourceType Service -Service Blob -Pe
 また、このアクセス許可を RBAC で制御する必要がある場合は、そのエンティティに、特定のストレージ アカウントの Microsoft.Storage/storageAccounts/listkeys/action 権限を付与します。 これは、診断設定またはログ プロファイルを、ストレージ アカウントにアーカイブされるように設定しなければならないユーザーに必要です。 たとえば、1 つのストレージ アカウントからの読み取りのみが必要なユーザーまたはアプリケーションに対しては、次のカスタム RBAC 役割を作成できます。
 
 ```powershell
-$role = Get-AzureRmRoleDefinition "Reader"
+$role = Get-AzRoleDefinition "Reader"
 $role.Id = $null
 $role.Name = "Monitoring Storage Account Reader"
 $role.Description = "Can get the storage account keys for a monitoring storage account."
@@ -145,7 +148,7 @@ $role.Actions.Add("Microsoft.Storage/storageAccounts/listkeys/action")
 $role.Actions.Add("Microsoft.Storage/storageAccounts/Read")
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myMonitoringStorageAccount")
-New-AzureRmRoleDefinition -Role $role 
+New-AzRoleDefinition -Role $role 
 ```
 
 > [!WARNING]
@@ -160,7 +163,7 @@ New-AzureRmRoleDefinition -Role $role
 2. コンシューマーがアドホックでキーを取得する必要がある場合は、そのイベント ハブの ListKeys アクションをユーザーに付与します。 これは、診断設定またはログ プロファイルを、イベント ハブにストリーミングされるように設定しなければならないユーザーにも必要です。 たとえば、RBAC ルールを作成する場合があります。
    
    ```powershell
-   $role = Get-AzureRmRoleDefinition "Reader"
+   $role = Get-AzRoleDefinition "Reader"
    $role.Id = $null
    $role.Name = "Monitoring Event Hub Listener"
    $role.Description = "Can get the key to listen to an event hub streaming monitoring data."
@@ -169,7 +172,7 @@ New-AzureRmRoleDefinition -Role $role
    $role.Actions.Add("Microsoft.ServiceBus/namespaces/Read")
    $role.AssignableScopes.Clear()
    $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySBNameSpace")
-   New-AzureRmRoleDefinition -Role $role 
+   New-AzRoleDefinition -Role $role 
    ```
 
 ## <a name="monitoring-within-a-secured-virtual-network"></a>セキュリティで保護された仮想ネットワーク内での監視

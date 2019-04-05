@@ -12,23 +12,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/03/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: a4a86576b8f9f842c54cfa195305a3e0d0ff4724
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: eb3435d8c7b10e2de55cb0cf1f3ad2548bf2bcef
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527621"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766752"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager テンプレートの関数
-この記事では、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。
-
-テンプレート内の関数はそれぞれかっこ (`[` と `]`) で囲んで追加します。 式は配置時に評価されます。 文字列リテラルとして記述される一方で、式の評価の結果は、配列、オブジェクト、整数など、さまざまな JSON 型にすることができます。 JavaScript の場合と同様に、関数呼び出しは `functionName(arg1,arg2,arg3)` という形式になります。 プロパティの参照には、ドットと [index] 演算子を使用します。
-
-テンプレート式は、24,576 文字を超えることはできません。
-
-テンプレート関数とそのパラメーターでは大文字と小文字が区別されません。 たとえば、Resource Manager では、**variables('var1')** と **VARIABLES('VAR1')** が同じものとして解決されます。 評価の際、関数は、大文字/小文字を明確に変更する (toUpper、toLower など) 場合を除き、大文字/小文字を保持します。 特定のリソースの種類では、関数の評価方法とは無関係に、大文字/小文字の要件が存在する場合があります。
+この記事では、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。 ご自分のテンプレート内で関数を使用する方法の詳細については、[テンプレートの構文](resource-group-authoring-templates.md#syntax)に関するセクションを参照してください。
 
 独自の関数を作成するには、[ユーザー定義関数](resource-group-authoring-templates.md#functions)に関するページをご覧ください。
 
@@ -207,6 +201,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 * [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
 * [length](resource-group-template-functions-string.md#length)
+* [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
 * [replace](resource-group-template-functions-string.md#replace)
 * [skip](resource-group-template-functions-string.md#skip)
@@ -222,9 +217,10 @@ Resource Manager には、テンプレートで比較を行うための関数が
 * [uri](resource-group-template-functions-string.md#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
+* [utcNow](resource-group-template-functions-string.md#utcnow)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure リソース マネージャー テンプレートのセクションの説明については、「 [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)
 * 複数のテンプレートをマージするには、 [Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)
-* 作成したテンプレートをデプロイする方法を確認するには、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)
+* 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager のテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。

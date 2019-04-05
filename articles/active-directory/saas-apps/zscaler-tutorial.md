@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74c1465169ccbd2e6a6901566d8eb4fafb7d5c09
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0264cad4177c5e1abbf3fb18220a6401615ccf69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182767"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57849161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler"></a>チュートリアル:Azure Active Directory と Zscaler の統合
 
@@ -140,7 +140,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[OK]** をクリックします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
+    d. **[Save]** をクリックします。
 
     > [!NOTE]
     > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management)をクリックしてください
@@ -179,7 +179,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
 
     c. **アップロード** をクリックして、Azure portal からダウンロードした Azure SAML 署名証明書を **Public SSL Certificate\(パブリック SSL 証明書\)** にアップロードします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML 自動プロビジョニングを有効にする]** を選択します。
+    d. **[SAML 自動プロビジョニングを有効にする]** を選択します。
 
     e. displayName 属性に SAML 自動プロビジョニングを有効にするには、**[User Display Name Attribute]\(ユーザー表示名属性\)** テキスト ボックスに **displayName** の値を入力します。
 
@@ -222,7 +222,7 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
 
     c. [ポート] ボックスに「 **80**」と入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
+    d. **[ローカル アドレスにはプロキシ サーバーを使用しない]** を選択します。
 
     e. **[OK]** をクリックして **[ローカル エリア ネットワーク (LAN) の設定]** ダイアログを閉じます。
 
@@ -246,12 +246,12 @@ Zscaler で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+    d. **作成**を選択します。
 
 ### <a name="creating-a-zscaler-test-user"></a>Zscaler テスト ユーザーの作成
 

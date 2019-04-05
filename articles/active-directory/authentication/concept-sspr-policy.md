@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fed31d07f4bbe9fc47ce0d2c31f45fed288c4c4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6888a8787856ef23c459c7ffc18f8e2b4de17f6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56218025"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901138"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
@@ -36,20 +36,22 @@ ms.locfileid: "56218025"
   * 課金管理者
   * パートナー レベル 1 のサポート
   * パートナー レベル 2 のサポート
-  * Exchange サービス管理者
-  * Lync サービス管理者
-  * ユーザー アカウント管理者
+  * Exchange 管理者
+  * Skype for Business 管理者
+  * ユーザー管理者
   * ディレクトリ ライター
   * グローバル管理者または会社の管理者
-  * SharePoint サービス管理者
+  * SharePoint 管理者
   * コンプライアンス管理者
   * アプリケーション管理者
   * セキュリティ管理者
   * 特権ロール管理者
-  * Microsoft Intune サービス管理者
+  * Intune 管理者
   * アプリケーション プロキシ サービス管理者
-  * CRM サービス管理者
+  * Dynamics 365 管理者
   * Power BI サービス管理者
+  * 認証管理者
+  * 特権認証管理者
 
 * 試用版サブスクリプションで 30 日が経過している、または
 * バニティ ドメインが存在する (contoso.com など)、または
@@ -75,13 +77,13 @@ Azure AD にサインインする必要があるすべてのユーザー アカ�
 
 ## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>クラウド ユーザー アカウントにのみ適用されるパスワード ポリシー
 
-次の表は、Azure AD で作成および管理されているユーザー アカウントに適用できるパスワード ポリシー設定の説明です。
+次の表は、Azure AD 内で作成および管理されているユーザー アカウントに適用されるパスワード ポリシー設定の説明です。
 
 | プロパティ | 必要条件 |
 | --- | --- |
-| 使用できる文字 |<ul><li>A - Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & \* - \_ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
-| 使用できない文字 |<ul><li>Unicode 文字。</li><li>スペース。</li><li> 強力なパスワードのみ:ピリオド文字 (".") を"\@\" 記号" の直前に含めることはできません。</li></ul> |
-| パスワードの制限 |<ul><li>8 文字以上 16 文字以下。</li><li>強力なパスワードのみ:次の 4 つのうち、3 つが必要です。<ul><li>小文字。</li><li>大文字。</li><li>数字 (0-9)。</li><li>記号 (上述のパスワード制限を参照してください)。</li></ul></li></ul> |
+| 使用できる文字 |<ul><li>A - Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & \* - \_ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li></ul> |
+| 使用できない文字 |<ul><li>Unicode 文字。</li><li>スペース。</li><li> "\@\" 記号" の直前にピリオド文字 (".") を含めることはできません。</li></ul> |
+| パスワードの制限 |<ul><li>8 文字以上 16 文字以下。</li><li>次の 4 つのうち、3 つが必要です。<ul><li>小文字。</li><li>大文字。</li><li>数字 (0-9)。</li><li>記号 (上述のパスワード制限を参照してください)。</li></ul></li></ul> |
 | パスワードの有効期間 |<ul><li>既定値:**90** 日。</li><li>値を構成するには、Windows PowerShell 用 Azure Active Directory モジュールから `Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
 | パスワードの期限切れの通知 |<ul><li>既定値:**14** 日 (パスワードの有効期限が切れる前)。</li><li>値を構成するには、`Set-MsolPasswordPolicy` コマンドレットを使用します。</li></ul> |
 | パスワードの期限切れ |<ul><li>既定値: **false** 日 (パスワードの有効期限が有効になっていることを示します)。</li><li>各ユーザー アカウントの値を構成するには、`Set-MsolUser` コマンドレットを使用します。</li></ul> |
@@ -108,7 +110,7 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 1. 会社の管理者の資格情報を使用して Windows PowerShell に接続します。
 1. 次のいずれかのコマンドを実行します。
 
-   * 特定のユーザーについてパスワードの有効期限が切れないかどうか確認するには、確認するユーザーの UPN (例: *aprilr@contoso.onmicrosoft.com*) またはユーザー ID を使用して、次のコマンドレットを実行します。`Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
+   * 特定のユーザーについてパスワードの有効期限が切れないよう設定されているかどうかを確認するには、確認するユーザーの UPN (例: *aprilr\@contoso.onmicrosoft.com*) またはユーザー ID を使用して、次のコマンドレットを実行します。`Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
    * すべてのユーザーについて**パスワードを無期限にする**設定を表示するには、次のコマンドレットを実行します。`Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
 
 ### <a name="set-a-password-to-expire"></a>パスワードを期限付きに設定する

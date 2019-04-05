@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: aa6c6a35a66569d5db182e1871012b9697c2802c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1c8cbcd2e5f137b1e8381dcce164ae9a4b87e804
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023347"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852844"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Search インデックスにデータをコピーする
 
@@ -49,7 +49,7 @@ Azure Search のリンクされたサービスでは、次のプロパティが�
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 > [!IMPORTANT]
-> Azure Search のリンクされたサービスでクラウド データ ストアのデータを Azure Search インデックスにコピーする場合は、connactVia で明示的なリージョンを指定して Azure 統合ランタイムを参照する必要があります。 Azure Search が存在するリージョンを設定します。 [Azure 統合ランタイム](concepts-integration-runtime.md#azure-integration-runtime)から説明します。
+> Azure Search のリンクされたサービスでクラウド データ ストアのデータを Azure Search インデックスにコピーする場合は、connactVia で明示的なリージョンを指定して Azure Integration Runtime を参照する必要があります。 Azure Search が存在するリージョンを設定します。 [Azure 統合ランタイム](concepts-integration-runtime.md#azure-integration-runtime)から説明します。
 
 **例:**
 

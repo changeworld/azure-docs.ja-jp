@@ -6,25 +6,25 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: fb8c94b1-6d0a-4b77-8d14-ae6efcdd99f4
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: f595fbb6571c3deaaa0644ba9d62f598181592e3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4c933145c54c47b5af083edd593ecb66b089f9c9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106313"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769150"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>クイック スタート:サインインとユーザー ID の設定
 
 サインインしなくても Azure Notebooks を常に表示できますが、ノートブックを実行し、保存されたプロジェクトとノートブックにアクセスし、他のユーザーとノートブックを共有するには、サインインする必要があります。
 
-## <a name="sign-in"></a>[サインイン]
+## <a name="sign-in"></a>サインイン
 
 1. [notebooks.azure.com](https://notebooks.azure.com/) の右上にある **[Sign in]\(サインイン\)** を選択します。
 
@@ -51,6 +51,9 @@ ms.locfileid: "53106313"
 1. 正常にサインインすると、Azure Notebooks のパブリック プロファイル ページに移動します。そこでは、**[Edit Profile Information]\(プロファイル情報の編集\)** を選択して、情報の残りの部分を入力できます (詳しくは、「[Your profile and user ID (プロファイルとユーザー ID)](azure-notebooks-user-profile.md)」をご覧ください)。
 
     ![Azure Notebooks プロファイル ページの初期表示](media/accounts/profile-page-new.png)
+
+> [!NOTE]
+> "User ID is already in use"\(ユーザー ID は既に使用中です\) というメッセージが表示された場合は、別の ID を試してください。 ユーザー ID はすべての Azure Notebooks アカウントで一意です。また、Azure Notebooks では、Microsoft のブランド名など、特定のユーザー ID が予約されています。
 
 ## <a name="sign-out"></a>サインアウトする
 

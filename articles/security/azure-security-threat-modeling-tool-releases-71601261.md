@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: jegeib
-ms.openlocfilehash: 55c781d0c6284de1382c9d3e614621c40963194b
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c96b924294286be57de90dae7e6534b5ed9306ea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302961"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57874574"
 ---
 # <a name="threat-modeling-tool-update-release-71601261---1292019"></a>Threat Modeling Tool 更新プログラム リリース 7.1.60126.1 - 1/29/2019
 
 バージョン 7.1.60126.1 の Microsoft Threat Modeling Tool が 2019 年 1 月 29 日にリリースされました。変更点は以下のとおりです。
 
-- .NET の最低限必要なバージョンが [.Net 4.7.1](http://go.microsoft.com/fwlink/?LinkId=863262) に上がりました。
+- .NET の最低限必要なバージョンが [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) に上がりました。
 - .NET の依存関係のため、Windows の最低限必要なバージョンが [Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) に上がりました。
 - ツールの [オプション] メニューにモデル検証の切り替え機能が追加されました。
 - 脅威のプロパティ内のいくつかのリンクが更新されました。
@@ -47,7 +47,7 @@ ms.locfileid: "55302961"
 - サポートされているオペレーティング システム
   - [Microsoft Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) 以降
 - 必要な .NET のバージョン
-  - [.Net 4.7.1](http://go.microsoft.com/fwlink/?LinkId=863262) 以降
+  - [.NET 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) 以降
 - その他の要件
   - ツールとテンプレートの更新プログラムを受け取るには、インターネット接続が必要です。
 

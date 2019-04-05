@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: f7d7b7f470f43d8a7a1cd94b4b1ce79503f0dfca
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 0587782cbfa31f7b397b950a752040cc678cf7d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301028"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085815"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-status-monitor"></a>Application Insights Status Monitor を使用した実行時の Web アプリのインストルメント化
 
@@ -27,7 +27,7 @@ Status Monitor は、オンプレミスまたは VM の IIS でホストされ�
 
 - お客様のアプリが Azure のアプリ サービスにデプロイされている場合、[こちらの手順](azure-web-apps.md)に従ってください。
 - お客様のアプリが Azure VM にデプロイされている場合は、Azure コントロール パネルから Application Insights の監視を有効にすることができます 
-- ([ライブ Java EE Web アプリ](java-live.md)と [Azure Cloud Services](../../azure-monitor/app/cloudservices.md) のインストルメント化については、個別の記事もあります)。
+- ([Azure Cloud Services](../../azure-monitor/app/cloudservices.md) のインストルメント化については、個別の記事もあります)。
 
 
 ![App Insights の概要グラフ (失敗した要求、サーバー応答時間、サーバー要求に関する情報) のスクリーンショット](./media/monitor-performance-live-website-now/overview-graphs.png)
@@ -98,14 +98,14 @@ Application Insights を有効にすると、Web アプリに DLL と Applicatio
 - applicationInsights.config ファイルがターゲット アプリ ディレクトリ内に存在し、お客様の ikey を含んでいることを確認します。
 
 - データがないと思われる場合は、[Analytics](../log-query/get-started-portal.md) で単純なクエリを実行して、現在テレメトリを送信中のクラウド ロールをすべて一覧表示できます。
-```Kusto
-union * | summarize count() by cloud_RoleName, cloud_RoleInstance
-```
+  ```Kusto
+  union * | summarize count() by cloud_RoleName, cloud_RoleInstance
+  ```
 
 - Application Insights が正常にアタッチされたことを確認する必要がある場合は、コマンド ウィンドウで [Sysinternals の Handle](https://docs.microsoft.com/sysinternals/downloads/handle) を実行して、applicationinsights.dll が IIS によって読み込まれたことを確認できます。
-```cmd
-handle.exe /p w3wp.exe
-```
+  ```cmd
+  handle.exe /p w3wp.exe
+  ```
 
 
 ### <a name="cant-connect-no-telemetry"></a>接続できない テレメトリが見つかりませんか?

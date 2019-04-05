@@ -1,5 +1,5 @@
 ---
-title: Azure AD B2B ユーザーとしてローカルで管理されているパートナー アカウントにクラウド リソースへのアクセス権を付与する | Microsoft Docs
+title: B2B ユーザーとしてローカル パートナー アカウントをクラウドに同期する - Azure Active Directory | Microsoft Docs
 description: Azure AD B2B コラボレーションと同じ資格情報を使用して、ローカルで管理されている外部パートナーにローカル リソースとクラウド リソースの両方へのアクセス権を付与します。
 services: active-directory
 ms.service: active-directory
@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29f5deb8bd06d4001f1776765ea6824da9bd9802
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 66c5ec6a41b630ee20139575080d8874d819bb59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163786"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871360"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する
 
@@ -31,7 +32,7 @@ UserType 属性の同期を有効にする前に、まず、UserType 属性を�
 これには一般的なアプローチが 2 つあります。
 
 - ソース属性として使用する未使用のオンプレミス Active Directory 属性 (extensionAttribute1 など) を指定する。 
-- または、UserType 属性の値を他のプロパティから派生させる。 たとえば、オンプレミス Active Directory UserPrincipalName 属性の末尾がドメイン *@partners.contoso.com* である場合、すべてのユーザーを "ゲスト" として同期する必要があるとします。
+- または、UserType 属性の値を他のプロパティから派生させる。 たとえば、オンプレミス Active Directory UserPrincipalName 属性の末尾がドメイン *\@partners.contoso.com* である場合、すべてのユーザーをゲストとして同期する必要があるとします。
  
 詳細な属性要件については、[UserType の同期の有効化](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype)に関するページをご覧ください。 
 

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/13/2019
+ms.date: 02/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: bc28349e1bfc935ac8298f991575c1e0cb42d38c
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 5213affe953636c46486614ee2a020d7727e1478
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56299232"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407538"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager のデプロイ モード
 
@@ -26,7 +26,7 @@ ms.locfileid: "56299232"
 
 ## <a name="complete-mode"></a>完全モード
 
-完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを**削除します**。 テンプレートに指定されているが、[条件](resource-manager-templates-resources.md#condition)が false と評価されるためにデプロイされないリソースは、削除されません。
+完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを**削除します**。 テンプレートに指定されているが、[条件](resource-group-authoring-templates.md#condition)が false と評価されるためにデプロイされないリソースは、削除されません。
 
 完全モードでは、リソースの種類に応じて削除の動作が多少異なります。 親リソースは、完全モードでデプロイされたテンプレートに含まれていない場合、自動的に削除されます。 一部の子リソースは、テンプレートに含まれていなければ、自動的には削除されません。 ただし、親リソースが削除されると、これらの子リソースも削除されます。 
 
@@ -36,6 +36,10 @@ ms.locfileid: "56299232"
 
 > [!NOTE]
 > 完全デプロイ モードがサポートされるのはルートレベルのテンプレートのみです。 [リンクされたテンプレートまたは入れ子になったテンプレート](resource-group-linked-templates.md)には、増分モードを使用する必要があります。 
+>
+> [サブスクリプション レベルのデプロイ](deploy-to-subscription.md)では、完全モードはサポートされていません。
+>
+> 現時点では、ポータルでは完全モードはサポートされていません。
 >
 
 ## <a name="incremental-mode"></a>増分モード

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: kumud
-ms.openlocfilehash: 7359be235135098779478eebc8a8927e34904ac1
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 8f1bf9b9070f2db2376de9cb0a0602eaea98b47e
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197795"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592929"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Azure CLI を使用してすべての可用性ゾーン間で VM の負荷を分散する
 
@@ -49,7 +49,7 @@ az group create \
 ```
 
 ## <a name="create-a-zone-redundant-public-ip-standard"></a>ゾーン冗長パブリック IP Standard を作成する
-インターネット上のアプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 ゾーン冗長フロントエンドは、リージョン内のすべての可用性ゾーンによって同時に提供されます。 [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) を使用してゾーン冗長パブリック IP アドレスを作成します。 Standard パブリック IP アドレスを作成した場合は既定でゾーン冗長です。
+インターネット上のアプリにアクセスするには、ロード バランサーのパブリック IP アドレスが必要です。 ゾーン冗長フロントエンドは、リージョン内のすべての可用性ゾーンによって同時に提供されます。 [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) を使用して、ゾーン冗長パブリック IP アドレスを作成します。 Standard パブリック IP アドレスを作成した場合は既定でゾーン冗長です。
 
 次の例では、*myPublicIP* という名前のゾーン冗長パブリック IP アドレスを *myResourceGroupLoadBalancer* リソース グループに作成します。
 

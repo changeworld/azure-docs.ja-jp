@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: aa884f2df76c20d3119022069179b08ba2f2a6b7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 803d05e1aaf4d9c26a6132bde30f101ce3905924
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565215"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096828"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログに登録する方法の詳細
 
@@ -26,7 +26,7 @@ ms.locfileid: "55565215"
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-
+> 
 > * 新しいシングル テナントをプロビジョニングする。
 > * 追加テナントのバッチをプロビジョニングする。
 
@@ -167,7 +167,7 @@ Wingtip Tickets アプリケーションで新しいテナント プロビジョ
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-
+> 
 > * 新しいシングル テナントをプロビジョニングする。
 > * 追加テナントのバッチをプロビジョニングする。
 > * テナントをプロビジョニングしてカタログに登録するまでの流れの詳細を確認する。

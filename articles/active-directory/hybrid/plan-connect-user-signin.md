@@ -16,12 +16,12 @@ ms.date: 05/31/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3b503c7f0693a90d438fcec3ecae335fd349b3d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb44c64540cc461bca4e305f7783f7c6b612591b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188003"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996331"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect ユーザーのサインイン オプション
 Azure Active Directory (Azure AD) Connect では、ユーザーは同じパスワードを使用して、クラウドとオンプレミス両方のリソースにサインインできます。 この記事では、Azure AD へのサインインに使用する ID を選択できるようにするために、各 ID モデルの主要な概念について説明します。
@@ -75,7 +75,9 @@ Office 365、SaaS アプリケーション、およびその他の Azure AD ベ�
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>Windows Server 2012 R2 の AD FS を使用した新規または既存のファームを使用するフェデレーション
 フェデレーション サインインでは、ユーザーはオンプレミスのパスワードを使用して Azure AD ベースのサービスにサインインできます。 企業ネットワーク上にいる時には、パスワードを入力する必要すらありません。 AD FS によるフェデレーション オプションを使用すれば、Windows Server 2012 R2 の AD FS を使用した新規または既存のファームをデプロイできます。 既存のファームを指定する場合は、Azure AD Connect によってファームと Azure AD との間に信頼が構成され、それにより、ユーザーがサインインできるようになります。
 
-<center>![Windows Server 2012 R2 の AD FS を使用したフェデレーション](./media/plan-connect-user-signin/federatedsignin.png)</center>
+<center>
+
+![Windows Server 2012 R2 の AD FS を使用したフェデレーション](./media/plan-connect-user-signin/federatedsignin.png)</center>
 
 #### <a name="deploy-federation-with-ad-fs-in-windows-server-2012-r2"></a>Windows Server 2012 R2 の AD FS を使用してフェデレーションをデプロイする
 
@@ -152,6 +154,7 @@ Azure AD ディレクトリのカスタム ドメインの状態と、オンプ�
 以下の説明では、UPN サフィックスが contoso.com である場合を想定しています。これは、オンプレミス ディレクトリで UPN の一部分として使用されます (例: user@contoso.com)。
 
 ###### <a name="express-settingspassword-hash-synchronization"></a>簡易設定/パスワード ハッシュの同期
+
 | 状態 | ユーザーの Azure サインイン エクスペリエンスへの影響 |
 |:---:|:--- |
 | 追加されていません |この場合、contoso.com のカスタム ドメインは Azure AD ディレクトリに追加されていません。 オンプレミスの UPN にサフィックス @contoso.com が付いているユーザーは、オンプレミスの UPN を使用して Azure にサインインすることができません。 代わりに、Azure AD によって提供された新しい UPN を使用する必要があります。この UPN は、既定の Azure AD ディレクトリのサフィックスを追加して作成されます。 たとえば、azurecontoso.onmicrosoft.com という Azure AD ディレクトリにユーザーを同期する場合、オンプレミス ユーザー user@contoso.com には、user@azurecontoso.onmicrosoft.com という UPN が与えられます。 |

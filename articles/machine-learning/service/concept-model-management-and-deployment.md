@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: chris-lauren
 ms.author: clauren
-ms.date: 09/24/2018
+ms.date: 1/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7f24e242168fc969d0f0d920dce0e6d9562a295
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8dea667b15471accd4fc8b09d0ff1eb7aa5daed5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241844"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403691"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルを管理、デプロイ、および監視する
 
 この記事では、Azure Machine Learning service を使用して、お使いのモデルをデプロイ、管理、および監視して、継続的に向上させる方法を説明します。 トレーニングしたモデルを、ローカル コンピューターまたは他のソースから Azure Machine Learning を使用してデプロイできます。 
 
-次の図は、完全なデプロイ ワークフローを示しています。[ ![Azure Machine Learning のデプロイ ワークフロー](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
+次の図は、完全なデプロイ ワークフローを示しています。[![Azure Machine Learning のデプロイ ワークフロー](media/concept-model-management-and-deployment/deployment-pipeline.png)](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 デプロイ ワークフローには次の手順が含まれます。
 1. **モデルを登録する**。お使いの Azure Machine Learning service ワークスペースでホストされているレジストリに登録します
@@ -33,7 +33,7 @@ ms.locfileid: "55241844"
 
 各手順を個別に、または 1 つのデプロイ コマンドの一部として実行できます。 さらに、次の図に示すように、デプロイを **CI/CD ワークフロー**に統合することもできます。
 
-[ !["Azure Machine Learning の継続的インテグレーション/継続的デプロイ (CI/CD) サイクル"](media/concept-model-management-and-deployment/model-ci-cd.png) ](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[!["Azure Machine Learning の継続的インテグレーション/継続的デプロイ (CI/CD) サイクル"](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 ## <a name="step-1-register-model"></a>手順 1:モデルの登録
 
@@ -73,7 +73,7 @@ Azure Machine Learning では、最もよく使用されているフレームワ
 
 Web サービスのデプロイも検索可能です。 たとえば、特定のモデルまたはイメージのすべてのデプロイを検索できます。
 
-[ ![ターゲットの推論](media/concept-model-management-and-deployment/inferencing-targets.png) ](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+[![ターゲットの推論](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
 
 ご自身のイメージを、クラウド内の次のデプロイ ターゲットにデプロイできます。
 
@@ -105,6 +105,6 @@ Web サービスのデプロイも検索可能です。 たとえば、特定の
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning サービスを使用して[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)を確認します。
+Azure Machine Learning サービスを使用して[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)を確認します。 デプロイの例については、「[チュートリアル: Azure Container Instances に画像分類モデルをデプロイする](tutorial-deploy-models-with-aml.md)」を参照してください。
 
 [デプロイされたモデルを Web サービスとして使用する](how-to-consume-web-service.md)クライアント アプリケーションとサービスの作成方法を確認します。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b236cc799a4ff84c3833f181ebec6305f1ec6942
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2690cb4243597c942b6679b5864016bf14fcbad1
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171318"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732438"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション
 
@@ -46,7 +46,7 @@ IP のホワイトリストを構成するには、`HKLM\SOFTWARE\Microsoft\Azur
 
 | Name | type | 既定値 | 説明 |
 | ---- | ---- | ------------- | ----------- |
-| IP_WHITELIST | 文字列 | Empty | セミコロンで区切られた IP アドレスの一覧を提供します。 サービス要求の送信元のマシン (NAS/VPN サーバーなど) の IP アドレスが含まれます。 サブネットである IP 範囲はサポートされません  <br><br> (*10.0.0.1;10.0.0.2;10.0.0.3* など)。
+| IP_WHITELIST | 文字列 | Empty | セミコロンで区切られた IP アドレスの一覧を提供します。 サービス要求の送信元のマシン (NAS/VPN サーバーなど) の IP アドレスが含まれます。 IP 範囲とサブネットはサポートされません。 <br><br> (*10.0.0.1;10.0.0.2;10.0.0.3* など)。
 
 ホワイトリストに存在する IP アドレスからの要求である場合、2 段階認証はスキップされます。 IP のホワイトリストが、RADIUS 要求の *ratNASIPAddress* 属性で提供される IP アドレスと比較されます。 RADIUS 要求に ratNASIPAddress 属性がない場合、"P_WHITE_LIST_WARNING::IP Whitelist is being ignored as source IP is missing in RADIUS request in NasIpAddress attribute" という警告がログに記録されます。
 

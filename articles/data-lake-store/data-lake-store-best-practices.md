@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 45d828b32984363f611828ca3ea33e5fa96a5017
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 53af7ff840f9d04f0e09010b72e9eefc32a8eadd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745845"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961892"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の使用に関するベスト プラクティス
 
@@ -140,7 +140,7 @@ Data Lake Storage Gen1 のログ配布が有効になっていない場合、Azu
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG
 
-このプロパティを設定してノードを再起動すると、Data Lake Storage Gen1 の診断がノード上の YARN ログ (/tmp/\<user\>/yarn.log) に書き込まれ、エラーやスロットリング (HTTP 429 エラー コード) などの重要な詳細を監視できます。 この同じ情報は、Data Lake Storage Gen1 アカウントの [[診断]](data-lake-store-diagnostic-logs.md) ブレードの Log Analytics や他のログ配布先で監視できます。 少なくともクライアント側のログ記録を有効にするか、Data Lake Storage Gen1 でログ配布のオプションを活用して、運用を可視化し、デバッグを簡単にすることをおすすめします。
+このプロパティを設定してノードを再起動すると、Data Lake Storage Gen1 の診断がノード上の YARN ログ (/tmp/\<user\>/yarn.log) に書き込まれ、エラーやスロットリング (HTTP 429 エラー コード) などの重要な詳細を監視できます。 この同じ情報は、Azure Monitor ログや、Data Lake Storage Gen1 アカウントの [[診断]](data-lake-store-diagnostic-logs.md) ブレードの他のログ配布先で監視できます。 少なくともクライアント側のログ記録を有効にするか、Data Lake Storage Gen1 でログ配布のオプションを活用して、運用を可視化し、デバッグを簡単にすることをおすすめします。
 
 ### <a name="run-synthetic-transactions"></a>代理トランザクションを実行する
 

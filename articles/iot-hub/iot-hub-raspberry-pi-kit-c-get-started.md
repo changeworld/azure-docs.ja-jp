@@ -8,18 +8,18 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: 1e96029b75c8168189dacdc420117e82387228d9
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4f092f2d290138e48068141113b184d8e856bee7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327249"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103215"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi の Azure IoT Hub への接続 (C)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-このチュートリアルでは、まず Raspbian を実行する Raspberry Pi の操作の基礎について説明します。 次に、[Azure IoT Hub](about-iot-hub.md) を使って、デバイスをクラウドにシームレスに接続する方法について説明します。 Windows 10 IoT Core サンプルについては、[Windows デベロッパー センター](http://www.windowsondevices.com/)を参照してください。
+このチュートリアルでは、まず Raspbian を実行する Raspberry Pi の操作の基礎について説明します。 次に、[Azure IoT Hub](about-iot-hub.md) を使って、デバイスをクラウドにシームレスに接続する方法について説明します。 Windows 10 IoT Core サンプルについては、[Windows デベロッパー センター](https://www.windowsondevices.com/)を参照してください。
 
 キットをお持ちでない場合は、 [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)をお試しください。 または、[こちら](https://azure.microsoft.com/develop/iot/starter-kits)で新しいキットを購入してください。
 
@@ -82,7 +82,7 @@ ms.locfileid: "56327249"
 microSD カードに Raspbian イメージをインストールするための準備をします。
 
 1. Raspbian をダウンロードします。
-   1. [Raspbian Jessie with Desktop](https://www.raspberrypi.org/downloads/raspbian/) (.zip ファイル) をダウンロードします。
+   1. [Raspbian Stretch with Desktop をダウンロード](https://www.raspberrypi.org/downloads/raspbian/)します (.ZIP ファイル)。
    1. コンピューター上のフォルダーに Raspbian イメージを抽出します。
 1. microSD カードに Raspbian をインストールします。
    1. [Etcher SD カード書き込みユーティリティをダウンロードしてインストールします](https://etcher.io/)。
@@ -148,7 +148,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 1. 次の SSH クライアントのいずれかを使用して、ホスト コンピューターから Raspberry Pi に接続します。
    
    **Windows ユーザー**
-   1. Windows 版の [PuTTY](http://www.putty.org/) をダウンロードしてインストールします。 
+   1. Windows 版の [PuTTY](https://www.putty.org/) をダウンロードしてインストールします。 
    1. Pi の IP アドレスをホスト名 (または IP アドレス) セクションにコピーし、接続の種類として SSH を選択します。
    
    ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
@@ -156,8 +156,8 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    **Mac ユーザーおよび Ubuntu ユーザー**
    
    Ubuntu または macOS に組み込まれている SSH クライアントを使用します。 SSH を使用して Pi を接続するには、`ssh pi@<ip address of pi>` を実行する必要がある場合があります。
-   > [!NOTE] 
-   既定のユーザー名は `pi` で、パスワードは`raspberry` です。
+   > [!NOTE]
+   > 既定のユーザー名は `pi` で、パスワードは`raspberry` です。
 
 
 ### <a name="configure-the-sample-application"></a>サンプル アプリケーションを構成する

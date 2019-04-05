@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9e208f899ff26135d3ce26bfa18096210513381
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bcc93254b50da9bff6f687034d39d0058aa514e1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192049"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>チュートリアル: Azure Active Directory と Perception United States (非 UltiPro) の統合
 
@@ -154,7 +154,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
     c. **[Default Reply-To Email]** ボックスに、有効な**電子メール**を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SSO Identity Provider]** として **[SAML 2.0]** を選択します。
+    d. **[SSO Identity Provider]** として **[SAML 2.0]** を選択します。
 
 1. **[SSO 構成]** ページで、次の手順を実行します。
 
@@ -166,7 +166,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
     
     c. **[Identity Provider Name]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。 
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SAML Domain]** ボックスに「**@contoso.com**」のようにドメインを入力します。
+    d. **[SAML Domain] ボックス**にドメイン (例: **\@contoso.com**) を入力します。
 
     e. **[Upload Again]** をクリックして、**メタデータ XML** ファイルをアップロードします。
 
@@ -206,7 +206,7 @@ Perception United States (非 UltiPro) で Azure AD のシングル サインオ
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
   
 ### <a name="create-a-perception-united-states-non-ultipro-test-user"></a>Perception United States (非 UltiPro) のテスト ユーザーの作成
 

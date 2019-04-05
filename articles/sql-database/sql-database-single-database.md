@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: e8af73c955305c54efc478290608e627acb431ea
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: ad164e150b22af7d5a0c91fa0a8a80156952cfd0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099328"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431117"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースとは
 
@@ -26,9 +26,9 @@ ms.locfileid: "56099328"
 > [!IMPORTANT]
 > 単一データベースは、Azure SQL Database の 3 つのデプロイ オプションの 1 つです。 他の 2 つは、[エラスティック プール](sql-database-elastic-pool.md)と[マネージド インスタンス](sql-database-managed-instance.md)です。
 > [!NOTE]
-> Azure SQL Database の用語集については、「[SQL Database 用語集](sql-database-glossary-terms.md)」をご覧ください
+> Azure SQL Database の用語集については、[SQL Database 用語集](sql-database-glossary-terms.md)を参照してください
 
-## <a name="dynamic-scalabilty"></a>動的な拡張性
+## <a name="dynamic-scalability"></a>動的スケーラビリティ
 
 最初に低い価格/パフォーマンスのサービス レベルで月額の低い小さな単一データベースにアプリをビルドし、後でいつでもソリューションのニーズに合わせて高い価格/パフォーマンスのサービス レベルに手動またはプログラムで[サービス レベルを変更する](sql-database-single-database-scale.md)ことができます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
 

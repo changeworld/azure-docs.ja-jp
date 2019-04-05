@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
 ms.author: aljo
-ms.openlocfilehash: 71448125d7308ca28e7241fd4019aadba430214e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 80a4014cb371f3c37c01fa1cf2d20041caf17184
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106139"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448223"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -90,7 +90,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 **[Service Fabric クラスターの作成]** ブレードには次の 4 つの手順があります。
 
 ### <a name="1-basics"></a>1.基本
-![新しいリソース グループを作成するスクリーン ショット。][CreateRG]
+![新しいリソース グループの作成に関するスクリーンショット。][CreateRG]
 
 [基本] ブレードでは、クラスターの基本情報を指定する必要があります。
 
@@ -130,7 +130,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 > 
 
 ### <a name="3-security"></a>手順 3.セキュリティ
-![Azure ポータルのセキュリティ構成のスクリーン ショット。][BasicSecurityConfigs]
+![Azure portal のセキュリティ構成のスクリーンショット。][BasicSecurityConfigs]
 
 セキュア テスト クラスターを簡単に設定できるようにするために、**[Basic]** オプションが用意されています。 既に証明書があり、[キー コンテナー](/azure/key-vault/)にアップロードしている場合 (また、デプロイでキー コンテナーが使用可能になっている場合) は、**[カスタム]** オプションを使用します
 
@@ -191,7 +191,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 Powershell または CLI を使用してクラスターで管理操作を実行するには、クラスターに接続する必要があります。詳細については、[クラスターへの接続に関する記事](service-fabric-connect-to-secure-cluster.md)を参照してください。
 
 ## <a name="view-your-cluster-status"></a>クラスターの状態を表示する
-![ダッシュボードのクラスターの詳細のスクリーン ショット。][ClusterDashboard]
+![ダッシュボードのクラスターの詳細のスクリーンショット。][ClusterDashboard]
 
 クラスターの作成後、ポータルでクラスターを検査できます。
 

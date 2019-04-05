@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 09bb81b0382f18c9cb94e5e4d0932dc6597ae73c
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 86be94404e7ab492beeebd6a467d23e68e7bce6b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454299"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080169"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Azure Portal を使用して複数の Web サイトをホストするアプリケーション ゲートウェイを作成し、構成します。
 
@@ -44,20 +44,20 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
 3. 次のアプリケーション ゲートウェイの値を入力します。
 
-    - *myAppGateway* - アプリケーション ゲートウェイの名前です。
-    - *myResourceGroupAG* - 新しいリソース グループの名前です。
+   - *myAppGateway* - アプリケーション ゲートウェイの名前です。
+   - *myResourceGroupAG* - 新しいリソース グループの名前です。
 
-    ![新しいアプリケーション ゲートウェイの作成](./media/create-multiple-sites-portal/application-gateway-create.png)
+     ![新しいアプリケーション ゲートウェイの作成](./media/create-multiple-sites-portal/application-gateway-create.png)
 
 4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
 5. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
 
-    - *myVNet* - 仮想ネットワークの名前です。
-    - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
-    - *myAGSubnet* - サブネットの名前です。
-    - *10.0.0.0/24* - サブネットのアドレス空間です。
+   - *myVNet* - 仮想ネットワークの名前です。
+   - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
+   - *myAGSubnet* - サブネットの名前です。
+   - *10.0.0.0/24* - サブネットのアドレス空間です。
 
-    ![Create virtual network](./media/create-multiple-sites-portal/application-gateway-vnet.png)
+     ![Create virtual network](./media/create-multiple-sites-portal/application-gateway-vnet.png)
 
 6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
 7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順にクリックし、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
@@ -94,6 +94,8 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ### <a name="install-iis"></a>IIS のインストール
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. 対話型シェルを開いて、**PowerShell** に設定されていることを確認します。
 
     ![カスタム拡張機能のインストール](./media/create-multiple-sites-portal/application-gateway-extension.png)
@@ -102,7 +104,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
       -ExtensionName IIS `
@@ -113,7 +115,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
       -Settings $publicSettings
     ```
 
-3. 2 番目の仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 名前および Set-AzureRmVMExtension の VMName の値として、*fabrikamVM* という名前を入力します。
+3. 2 番目の仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 名前および Set-AzVMExtension の VMName の値として、*fabrikamVM* という名前を入力します。
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>仮想マシンでのバックエンド プールの作成
 
@@ -132,8 +134,8 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 1. **[リスナー]**、**[マルチサイト]** の順にクリックします。
 2. 次のリスナーの値を入力します。
     
-    - *contosoListener* - リスナーの名前です。
-    - *www.contoso.com* - このホスト名の例をドメイン名に置き換えます。
+   - *contosoListener* - リスナーの名前です。
+   - *www.contoso.com* - このホスト名の例をドメイン名に置き換えます。
 
 3. Click **OK**.
 4. *fabrikamListener* という名前を使用して 2 番目のリスナーを作成し、2 番目のドメイン名を使用します。 この例では、*www.fabrikam.com* が使用されています。

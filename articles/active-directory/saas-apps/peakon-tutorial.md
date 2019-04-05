@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e32f0ac6fcc6839bad973c3d014436d08ae43896
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b841cbe838156cd00876a9a13c7a9cbe1790ea80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211310"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842198"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>チュートリアル:Azure Active Directory と Peakon の統合
 
@@ -166,7 +166,7 @@ Peakon で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[Choose a File]\(ファイルの選択\)** を選択して、Azure portal からダウンロードした証明書を [Certificate]\(証明書\) ボックスにアップロードします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。  **アイコン** をクリックして **[Entity ID]\(エンティティ ID\)** をコピーし、Azure portal で  **[基本的な SAML 構成]**  セクションの  **[識別子]** ボックスに貼り付けます。
+    d.  **アイコン** をクリックして **[Entity ID]\(エンティティ ID\)** をコピーし、Azure portal で  **[基本的な SAML 構成]**  セクションの  **[識別子]** ボックスに貼り付けます。
 
     e.  **アイコン** をクリックして **[Reply URL (ACS)]\(応答 URL (ACS)\)** をコピーし、Azure portal で  **[基本的な SAML 構成]**  セクションの  **[応答 URL]** ボックスに貼り付けます。
 
@@ -190,12 +190,12 @@ Peakon で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+    d. **作成**を選択します。
 
 ### <a name="creating-a-peakon-test-user"></a>Peakon テスト ユーザーの作成
 
@@ -220,7 +220,7 @@ Peakon の場合、プロビジョニングは手動で行います。
 
     a. **[Name]\(名前\)** ボックスに、姓として「**Britta**」を、名として「**simon**」を入力します。
 
-    b. **[Email]\(メール\)** ボックスに、メール アドレス (**Brittasimon@contoso.com** など) を入力します。
+    b. **[Email]\(メール\)** ボックスに、メール アドレス (例: **Brittasimon\@contoso.com**) を入力します。
 
     c. **[Create employee]\(従業員の作成\)** をクリックします。
 

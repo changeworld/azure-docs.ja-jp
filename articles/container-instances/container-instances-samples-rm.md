@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 03/07/2019
 ms.author: danlep
-ms.openlocfilehash: e825e0bdd08db0e9c1b51c09859aba2e7c716f91
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: bf9f2be8a0854a6968f3be6bfdaf3a59fc81dc76
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856468"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57728969"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances のための Azure Resource Manager テンプレート
 
@@ -34,6 +34,7 @@ ms.locfileid: "48856468"
 | **ネットワーク** ||
 | [UDP 公開されたコンテナー][net-udp] | UDP ポートを公開する、Windows または Linux のコンテナーを展開します。 |
 | [パブリック IP を使用する Linux コンテナー][net-publicip] | パブリック IP を使用してアクセスできる 1 つの Linux コンテナーを展開します。 |
+| [仮想ネットワークを使用したコンテナー グループのデプロイ (プレビュー)][net-vnet] | 新しい仮想ネットワーク、サブネット、ネットワーク プロファイル、およびコンテナー グループをデプロイします。 |
 | **Azure リソース** ||
 | [Azure Storage アカウントおよび Azure Files 共有を作成する][az-files] | コンテナー インスタンスで Azure CLI を使用して、ストレージ アカウントと Azure Files 共有します。
 
@@ -55,6 +56,7 @@ Resource Manager テンプレートを使用してリソースを配置するに
 [az-files]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-storage-file-share
 [net-publicip]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-linuxcontainer-public-ip
 [net-udp]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-udp
+[net-vnet]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 [repo]: https://github.com/Azure/azure-quickstart-templates
 [vol-emptydir]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-emptydir
 [vol-gitrepo]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-gitrepo

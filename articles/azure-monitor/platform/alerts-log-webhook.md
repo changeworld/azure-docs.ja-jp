@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 0765e5978f62a60b7a9b405c04c2471508947c60
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 908422927feabd156c5dcdc7a04d44ff8fc42094
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433171"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442887"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
 [Azure でログ アラートを作成する](alerts-log.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
@@ -78,9 +78,6 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 ## <a name="sample-payloads"></a>サンプル ペイロード
 このセクションでは、ペイロードが標準の場合やカスタムの場合など、ログ アラートの webhook のサンプル ペイロードを紹介します。
 
-> [!NOTE]
-> 旧バージョンとの互換性を確保するために、Azure Log Analytics を使用するアラートの標準 webhook ペイロードは、[Log Analytics のアラート管理](alerts-metric.md)と同じです。 ただし、[Application Insights](../../azure-monitor/app/analytics.md) を使用するログ アラートの場合、標準 webhook ペイロードはアクション グループ スキーマに基づいています。
-
 ### <a name="standard-webhook-for-log-alerts"></a>ログ アラートの標準 webhook 
 以下のサンプルはどちらも、2 つの列と 2 つの行のみで構成されたダミー ペイロードを示しています。
 
@@ -118,7 +115,11 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
     "Description": null,
     "Severity": "Warning"
  }
- ```   
+ ```
+
+> [!NOTE]
+> Log Analytics でログ アラートの [API 設定](alerts-log-api-switch.md)を切り替えていた場合、[重要度] フィールドの値が変化することがあります。
+
 
 #### <a name="log-alert-for-azure-application-insights"></a>Azure Application Insights のログ アラート
 以下は、Application Insights ベースのログ アラートに使用される場合の、*カスタム JSON オプションが含まれていない*標準 webhook のサンプル ペイロードです。
@@ -154,7 +155,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
-    "Severity": "Error",
+    "Severity": "3",
     "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
     }
 }
@@ -197,7 +198,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 
 
 ## <a name="next-steps"></a>次の手順
-- [Azure Alerts のログ アラート](alerts-unified-log.md)について確認します。
+- [Azure アラートのログ アラート](alerts-unified-log.md)について学習します。
 - [Azure のログ アラートの管理](alerts-log.md)について理解します
 - [Azure でのアクション グループ](action-groups.md)の作成および管理
 - [Application Insights](../../azure-monitor/app/analytics.md) についてさらに学習します。

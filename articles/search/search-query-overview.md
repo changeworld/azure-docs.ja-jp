@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 5cddf69f700c971d22384dadb00d3becc4a8385f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: a197be06d9c6f4b70b8ffc06712ef315547b4140
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300877"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58136514"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Azure Search でクエリを構成する方法
 
@@ -38,15 +38,15 @@ Azure Search では、クエリにラウンドトリップ処理すべてが指�
 新しい概念を紹介するときは例を示すのが役立ちます。 この例は、[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) で作成される典型的なクエリですが、[不動産のデモ インデックス](search-get-started-portal.md)をターゲットとして、一般的なパラメーターを含んでいます。
 
 ```
-{  
+{
     "queryType": "simple" 
-    "search": "seattle townhouse* +\"lake\"", 
-    "searchFields": "description, city",  
-    "count": "true", 
+    "search": "seattle townhouse* +\"lake\"",
+    "searchFields": "description, city",
+    "count": "true",
     "select": "listingId, street, status, daysOnMarket, description",
     "top": "10",
     "orderby": "daysOnMarket"
- } 
+}
 ```
 
 + **`queryType`** にはパーサーを設定します。Azure Search の場合に設定できるのは、[既定の単純なクエリ パーサー](search-query-simple-examples.md) (フル テキスト検索に最適) または、正規表現、近接検索、ファジー検索、ワイルドカード検索など高度なクエリ構成で使用される[完全な Lucene クエリ パーサー](search-query-lucene-examples.md)です。
@@ -167,4 +167,4 @@ Azure Search では、検索クエリに一致する検索結果の特定の部�
 + [Azure Search のフルテキスト検索のしくみ (クエリ解析アーキテクチャ)](search-lucene-query-architecture.md)
 + [Search エクスプローラー](search-explorer.md)
 + [.NET におけるクエリの実行方法](search-query-dotnet.md)
-+ [REST におけるクエリの実行方法](search-query-rest-api.md)
++ [REST におけるクエリの実行方法](search-create-index-rest-api.md)

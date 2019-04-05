@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6f0002c6aa98aaaddf50e4aac8929e8ddd379fd8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: eba4c70a25cba2e456ed418a98b938f2029c4c1f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301674"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438365"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -116,7 +116,7 @@ Time Series ID は不変のプロパティであるため、適切なタイム �
 
 Time Series Insights の従量課金制環境を作成する際に、Time Series Insights 環境と、データが格納される Azure Storage 汎用 V1 アカウントの 2 つのリソースを作成します。 相互運用性、価格、およびパフォーマンスのため、Azure Storage 汎用 V1 を既定のリソースとして選択しました。 
 
-Time Series Insights は、Azure Storage アカウントで、各イベントの最大 2 つのコピーを発行します。 初期コピーは常に保持されるため、他のサービスを使用して、それを効率的にクエリできます。 生の Parquet ファイル全体のタイム シリーズ ID 間で、Spark、Hadoop、およびその他の使い慣れたツールを簡単に使用できます。これらのエンジンでは、基本的なファイル名フィルターがサポートされているためです。 年および月で BLOB をグループ化することは、カスタム ジョブの特定の時間範囲内の BLOB を一覧表示する便利な方法です。 
+Time Series Insights は、Azure Storage アカウントで、各イベントの最大 2 つのコピーを発行します。 初期コピーは常に保持されるため、他のサービスを使用して、すばやく照会できます。 生の Parquet ファイル全体のタイム シリーズ ID 間で、Spark、Hadoop、およびその他の使い慣れたツールを簡単に使用できます。これらのエンジンでは、基本的なファイル名フィルターがサポートされているためです。 年および月で BLOB をグループ化することは、カスタム ジョブの特定の時間範囲内の BLOB を一覧表示する便利な方法です。 
 
 さらに、Time Series Insights は、Parquet ファイルのパーティションを再分割し、Time Series Insights API 用に最適化します。 最新のパーティション再分割されたファイルも保存されます。
 

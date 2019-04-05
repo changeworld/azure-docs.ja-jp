@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: bb13e507e7992f4cd4d767a7a18850739b8dccf2
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: f119d128b35b93d7e18d514c09d187689d8dffe9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270200"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306903"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM を使用して Azure にワークロードをバックアップするための準備
 
@@ -48,20 +48,17 @@ Azure VM 上の DPM | System Center 2012 R2 の DPM 2012 R2 更新プログラ�
 物理サーバー上の DPM | System Center 2012 SP1 以降。System Center 2012 R2。
 HYPER-V VM 上の DPM | System Center 2012 SP1 以降。System Center 2012 R2。
 VMware VM 上の DPM | System Center 2012 R2 の更新プログラムのロールアップ 5 以降。
-コンポーネント | DPM サーバーには、Windows PowerShell および .Net Framework 4.5 がインストール済みである必要があります。
+コンポーネント | DPM サーバーには、Windows PowerShell および .NET Framework 4.5 がインストール済みである必要があります。
 サポート対象アプリ | DPM がバックアップできるものについて[学習](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix)します。
 サポートされるファイルの種類 | Azure Backup では次のファイルの種類をバックアップできます。暗号化ファイル (完全バックアップのみ)、圧縮ファイル (増分バックアップがサポートされる)、スパース ファイル (増分バックアップがサポートされる)、圧縮されたスパース ファイル (スパースとして処理)。
 サポートされていないファイルの種類 | 大文字小文字を区別するファイル システム上のサーバー、ハード リンク (スキップされる)、再解析ポイント (スキップされる)、暗号化されている圧縮ファイル (スキップされる)。暗号化されているスパース ファイル (スキップされる)、圧縮ストリーム、解析ストリーム。
-ローカル ストレージ | バックアップする各マシンは、バックアップするデータのサイズの 5% 以上の空きローカル ストレージが必要です。  たとえば、100 GB のデータをバックアップするには、スクラッチ場所に少なくとも 5 GB の空き領域が必要です。
+ローカル ストレージ | バックアップする各マシンは、バックアップするデータのサイズの 5% 以上の空きローカル ストレージが必要です。 たとえば、100 GB のデータをバックアップするには、スクラッチ場所に少なくとも 5 GB の空き領域が必要です。
 コンテナー ストレージ | Azure Backup コンテナーにバックアップできるデータ量に制限はありませんが、データ ソース (仮想マシンやデータベースなど) のサイズは 54,400 GB を超えないようにする必要があります。
 Azure Backup エージェント | DPM が System Center 2012 SP1 で実行されている場合、DPM SP1 のロールアップ 2 以降をインストールします。 これはエージェントのインストールに必要です。<br/><br/> この記事では、Microsoft Azure Recovery Service (MARS) エージェントとも呼ばれる、Azure Backup エージェントの最新バージョンをデプロイする方法について説明します。 以前のバージョンがデプロイされている場合、最新バージョンに更新し、バックアップが期待どおりに動作するようにしてください。
 
-
 開始する前に、Azure Backup 機能が有効になっている Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 [Azure Backup の料金](https://azure.microsoft.com/pricing/details/backup/)を参照してください。
 
-
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
-
 
 ## <a name="modify-storage-settings"></a>ストレージ設定の変更
 
@@ -82,7 +79,6 @@ geo 冗長ストレージとローカル冗長ストレージのどちらかを�
 
     ![バックアップ コンテナーの一覧](./media/backup-azure-dpm-introduction/choose-storage-configuration-rs-vault.png)
 
-
 ## <a name="download-vault-credentials"></a>コンテナー資格情報のダウンロード
 
 DPM サーバーをコンテナーに登録する場合、コンテナーの資格情報を使用します。
@@ -98,7 +94,7 @@ DPM サーバーをコンテナーに登録する場合、コンテナーの資�
 
 - コンテナーの資格情報は登録ワークフロー中しか使用されません。
 - コンテナーの資格情報ファイルが安全で漏えいしないようにするのはユーザーの責任です。
-    -  資格情報のコントロールが失われた場合は、コンテナーの資格情報を使用して、他のマシンをコンテナーに登録できます。
+    - 資格情報のコントロールが失われた場合は、コンテナーの資格情報を使用して、他のマシンをコンテナーに登録できます。
     - ただし、バックアップ データは顧客に属するパスフレーズを使用して暗号化されているため、既存のバックアップ データが漏えいすることはありません。
 - ファイルは、DPM サーバーからアクセスできる場所に保存してください。 ファイル共有 / SMB に格納されている場合は、アクセス許可を確認します。
 - コンテナー資格情報は 48 時間後に有効期限が切れます。 新しいコンテナー資格情報は、必要な回数だけダウンロードできます。 ただし、登録ワークフローでは、最新のコンテナー資格情報ファイルのみを使用してください。
@@ -138,8 +134,7 @@ Azure Backup によってバックアップされるすべてのマシンに、B
 7. Azure Backup エージェントは、.NET Framework 4.5 と Windows PowerShell を (インストールされていない場合は) インストールして、インストールを完了します。
 8. エージェントがインストールされたら、ウィンドウを **閉じます**。
 
-   ![閉じます](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
-
+    ![閉じます](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>DPM サーバーのコンテナーへの登録
 
@@ -175,8 +170,7 @@ Azure Backup によってバックアップされるすべてのマシンに、B
     > 暗号化のパスフレーズはユーザーが所有しており、Microsoft はこれを確認できません。
     > パスフレーズを紛失または忘れてしまった場合、Microsoft はバックアップ データの回復を支援することはできません。
 
-13. **[登録]** をクリックしてコンテナーに DPM サーバーを登録します。  
-
+13. **[登録]** をクリックしてコンテナーに DPM サーバーを登録します。
 
 サーバーがコンテナーに正常に登録されると、Microsoft Azure へのバックアップを開始できるようになります。
 

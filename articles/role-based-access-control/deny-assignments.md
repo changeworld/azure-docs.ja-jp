@@ -11,24 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 53716fa343df25026dcc668ed8483673d934d1ad
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: fff213c8d1a408bf96e385f2097a5ef30dcc05d2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339126"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992106"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Azure リソースの拒否割り当ての概要
 
-ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、またはサービス プリンシパルに一連の拒否アクションがアタッチされます。 拒否割り当てを使用すると、ロールの割り当てでアクセスを許可されている場合であっても、指定した Azure リソース アクションをユーザーが実行できなくなります。 Azure の一部のリソース プロバイダーに拒否割り当てが追加されました。 現在、拒否割り当ては**読み取り専用**であり、Microsoft によってのみ設定されます。
+ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、またはサービス プリンシパルに一連の拒否アクションがアタッチされます。 拒否割り当てを使用すると、ロールの割り当てでアクセスを許可されている場合であっても、指定した Azure リソース アクションをユーザーが実行できなくなります。 Azure の一部のリソース プロバイダーに拒否割り当てが追加されました。
 
 いくつかの点で、拒否割り当てはロールの割り当てとは異なります。 拒否割り当てはプリンシパルを除外できるほか、子スコープへの継承を避けることができます。 拒否割り当ては、[従来のサブスクリプション管理者](rbac-and-directory-admin-roles.md)の割り当てにも適用されます。
 
 この記事では、拒否割り当てがどのように定義されるかについて説明します。
+
+> [!NOTE]
+> 現時点では、Azure Blueprints を使用することが、独自の拒否割り当てを追加する唯一の方法となります。 詳細については、「[Azure Blueprints のリソース ロックを使用して新しいリソースを保護する](../governance/blueprints/tutorials/protect-new-resources.md)」を参照してください。
 
 ## <a name="deny-assignment-properties"></a>拒否割り当てのプロパティ
 

@@ -8,46 +8,39 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
-ms.openlocfilehash: d430f6252157c5d34aa236ef88f8490b4ad6a184
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0a7a16a43b208bf2d14b86cd5cb23544ec03f9a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497946"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877532"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
 この記事では、PowerShell を使用して、Windows Server または Windows クライアント上に Microsoft Azure Backup をセットアップし、バックアップと回復を管理する方法を示します。
 
 ## <a name="install-azure-powershell"></a>Azure PowerShell をインストールする
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
-この記事では、リソース グループで Recovery Services コンテナーを使用できるようにする Azure Resource Manager (ARM) と MS Online Backup の PowerShell コマンドレットを中心に説明します。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure PowerShell 1.0 は、2015 年 10 月にリリースされました。 これは 0.9.8 リリースの次のリリースです。特にコマンドレットの命名パター名など、いくつかの重大な変更点があります。 1.0 のコマンドレットは、{動詞}-AzureRm{名詞}; という命名パターンに従っているのに対し、0.9.8 の名前には **Rm** が含まれません (たとえば、New-AzureResourceGroup ではなく New-AzureRmResourceGroup)。 Azure PowerShell 0.9.8 を使用している場合、まず、 **Switch-AzureMode AzureResourceManager** コマンドを実行してリソース マネージャー モードを有効にする必要があります。 このコマンドは、1.0 以降では必要ありません。
-
-0.9.8 環境向けに作成されたスクリプトを 1.0 以降の環境で使用する場合、運用前環境でスクリプトを慎重に更新し、テストしてから運用環境で使用し、予期しない影響が発生しないようにします。
-
-[PowerShell の最新リリースのダウンロード](https://github.com/Azure/azure-powershell/releases) (必要な最小バージョン: 1.0.0)。
-
-[!INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
+開始するには、[PowerShell の最新リリースをインストール](/powershell/azure/install-az-ps)します。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーの作成
 次の手順では、Recovery Services コンテナーの作成について説明します。 Recovery Services コンテナーは Backup コンテナーとは異なります。
 
-1. Azure Backup を初めて使用する場合、 **Register-AzureRMResourceProvider** コマンドレットを使って Azure Recovery Services プロバイダーをサブスクリプションに登録する必要があります。
+1. Azure Backup を初めて使用する場合、**Register-AzResourceProvider** コマンドレットを使って Azure Recovery Services プロバイダーをサブスクリプションに登録する必要があります。
 
     ```
-    PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    PS C:\> Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 2. Recovery Services コンテナーは ARM リソースであるため、リソース グループ内に配置する必要があります。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。 新しいリソース グループを作成する場合、リソース グループの名前と場所を指定します。  
 
     ```
-    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "WestUS"
+    PS C:\> New-AzResourceGroup –Name "test-rg" –Location "WestUS"
     ```
-3. **New-AzureRmRecoveryServicesVault** コマンドレットを使用して新しいコンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定してください。
+3. **New-AzRecoveryServicesVault** コマンドレットを使用して、新しいコンテナーを作成します。 リソース グループに使用したのと同じコンテナーの場所を指定してください。
 
     ```
-    PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
+    PS C:\> New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "WestUS"
     ```
 4. 使用するストレージ冗長性の種類を指定します。[ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy-lrs.md) または [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy-grs.md) を使用できます。 次に示す例では、testVault の -BackupStorageRedundancy オプションが GeoRedundant に設定されています。
 
@@ -57,17 +50,17 @@ Azure PowerShell 1.0 は、2015 年 10 月にリリースされました。 こ�
    >
 
     ```
-    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testVault"
-    PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
+    PS C:\> $vault1 = Get-AzRecoveryServicesVault –Name "testVault"
+    PS C:\> Set-AzRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
 ## <a name="view-the-vaults-in-a-subscription"></a>サブスクリプション内のコンテナーの表示
-**Get-AzureRmRecoveryServicesVault** を使用して、現在のサブスクリプション内のすべてのコンテナーを一覧表示します。 このコマンドは、新しく作成したコンテナーを確認したり、サブスクリプション内の利用可能なコンテナーを確認したりするのに使用できます。
+**Get-AzRecoveryServicesVault** を使用して、現在のサブスクリプション内にあるすべてのコンテナーを一覧表示します。 このコマンドは、新しく作成したコンテナーを確認したり、サブスクリプション内の利用可能なコンテナーを確認したりするのに使用できます。
 
-**Get-AzureRmRecoveryServicesVault** コマンドを実行すると、サブスクリプション内のすべてのコンテナーが一覧表示されます。
+**Get-AzRecoveryServicesVault** コマンドを実行すると、サブスクリプション内にあるすべてのコンテナーが一覧表示されます。
 
 ```
-PS C:\> Get-AzureRmRecoveryServicesVault
+PS C:\> Get-AzRecoveryServicesVault
 Name              : Contoso-vault
 ID                : /subscriptions/1234
 Type              : Microsoft.RecoveryServices/vaults
@@ -131,7 +124,7 @@ Recovery Services コンテナーを作成したら、最新のエージェン�
 
 ```
 PS C:\> $credspath = "C:\downloads"
-PS C:\> $credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
+PS C:\> $credsfilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $vault1 -Path  $credspath
 ```
 
 Windows Server または Windows クライアント コンピューターで [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) コマンドレットを実行し、コンピューターをコンテナーに登録します。

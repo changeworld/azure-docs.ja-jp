@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: b05a8bfd46800c5b0b0126adcf2acb4852bb6683
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9057245c108e4a1b9af2549bc87f98258da50535
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339758"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240169"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub との切断の検出とトラブルシューティング
 
@@ -54,7 +54,7 @@ Azure Monitor を使用すると、デバイス接続が切断されたときに
 
 ## <a name="resolve-connectivity-errors"></a>接続に関するエラーを解決する
 
-接続されたデバイスの診断ログとアラートを有効にすると、エラーが発生したときにアラートを受け取ります。 このセクションでは、アラートを受け取ったときに一般的な問題を解決する方法について説明します。 実際の診断ログに合わせて Azure Log Analytics を設定済みであることを前提として、以下の手順を説明します。
+接続されたデバイスの診断ログとアラートを有効にすると、エラーが発生したときにアラートを受け取ります。 このセクションでは、アラートを受け取ったときに一般的な問題を解決する方法について説明します。 実際の診断ログに合わせて Azure Monitor ログを設定済みであることを前提として、以下の手順を説明します。
 
 1. Azure portal で、**Log Analytics** のワークスペースに移動します。
 1. **[ログ検索]** を選択します。

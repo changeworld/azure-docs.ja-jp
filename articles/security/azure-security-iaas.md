@@ -4,7 +4,7 @@ description: " ワークロードを Azure IaaS に移行すると、設計を�
 services: security
 documentationcenter: na
 author: barclayn
-manager: barbkess
+manager: MBaldwin
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 6bf73bcc691e2ab27f3ec379530a59d3b616a070
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341218"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409756"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 
@@ -39,7 +39,7 @@ ms.locfileid: "56341218"
 VM 保護の第一歩は、承認されたユーザーのみが新しい VM を設定し、VM にアクセスできるようにすることです。
 
 **ベスト プラクティス**:VM へのアクセスを制御する。   
-**詳細**:[Azure ポリシー](../governance/policy/overview.md)を使用して、組織内のリソース向けの規則を確立し、カスタマイズ ポリシーを作成します。 これらのポリシーを[リソース グループ](../azure-resource-manager/resource-group-overview.md)などのリソースに適用します。 リソース グループに属する VM は、それらのポリシーを継承します。
+**詳細**:[Azure ポリシー](../azure-policy/azure-policy-introduction.md)を使用して、組織内のリソース向けの規則を確立し、カスタマイズ ポリシーを作成します。 これらのポリシーを[リソース グループ](../azure-resource-manager/resource-group-overview.md)などのリソースに適用します。 リソース グループに属する VM は、それらのポリシーを継承します。
 
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 [Azure 管理グループ](../azure-resource-manager/management-groups-overview.md)の範囲は、サブスクリプションを上回ります。 サブスクリプションを管理グループ (コンテナー) にまとめ、それらのグループに管理条件を適用できます。 管理グループ内のすべてのサブスクリプションは、グループに適用された条件を自動的に継承します。 管理グループを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。
 
@@ -128,7 +128,7 @@ Windows Update を使用している場合は、自動 Windows Update の設定�
 
 Security Center は脅威を積極的に監視でき、脅威のリスクはセキュリティ通知で公開されます。 関連性のある脅威は、セキュリティ インシデントと呼ばれる 1 つのビューに集約されます。
 
-Security Center では、データを[Azure Log Analytics](../log-analytics/log-analytics-overview.md) に格納します。 Log Analytics には、アプリケーションとリソースの操作に関する分析情報を提供するクエリ言語と分析エンジンがあります。 データは、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md)、管理ソリューション、およびクラウドやオンプレミスの仮想マシンにインストールされたエージェントからも収集されます。 この共有機能は、環境の全体像を把握するうえで役に立ちます。
+Security Center では、データを [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)に格納します。 Azure Monitor ログには、アプリケーションとリソースの操作に関する分析情報を提供するクエリ言語と分析エンジンがあります。 データは、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md)、管理ソリューション、およびクラウドやオンプレミスの仮想マシンにインストールされたエージェントからも収集されます。 この共有機能は、環境の全体像を把握するうえで役に立ちます。
 
 許可のないユーザーがセキュリティ制御を回避しようとする試みは、VM を強固なセキュリティで保護していなければ認識できません。
 
@@ -153,10 +153,10 @@ Azure Disk Encryption 使用時のベスト プラクティスを次に示しま
 **詳細**:Azure Disk Encryption は、暗号化キーを生成してキー コンテナーに書き込みます。 Key Vault の暗号化キーを管理するには、Azure AD 認証が必要です。 この目的で Azure AD アプリケーションを作成します。 認証には、クライアント シークレット ベースの認証か、[クライアント証明書ベースの Azure AD 認証](../active-directory/active-directory-certificate-based-authentication-get-started.md)を使用できます。
 
 **ベスト プラクティス**:暗号化キーのセキュリティに対する追加レイヤーとしてキー暗号化キー (KEK) を使用する。 キー コンテナーに KEK を追加します。   
-**詳細**:キー コンテナーでキー暗号化キーを作成するには、[Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) コマンドレットを使用します。 キー管理用のオンプレミスのハードウェア セキュリティ モジュール (HSM) から KEK をインポートすることもできます。 詳細については、[Key Vault](../key-vault/key-vault-hsm-protected-keys.md) のドキュメントを参照してください。 キー暗号化キーが指定されている場合、Azure Disk Encryption では、Key Vault への書き込みの前に、そのキーを使用して暗号化シークレットがラップされます。 このキーのエスクロー コピーをオンプレミスのキー管理 HSM で保持することは、キーを誤って削除した場合の二重の保護を提供します。
+**詳細**: キー コンテナーにキー暗号化キーを作成するには、[Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレットを使用します。 キー管理用のオンプレミスのハードウェア セキュリティ モジュール (HSM) から KEK をインポートすることもできます。 詳細については、[Key Vault](../key-vault/key-vault-hsm-protected-keys.md) のドキュメントを参照してください。 キー暗号化キーが指定されている場合、Azure Disk Encryption では、Key Vault への書き込みの前に、そのキーを使用して暗号化シークレットがラップされます。 このキーのエスクロー コピーをオンプレミスのキー管理 HSM で保持することは、キーを誤って削除した場合の二重の保護を提供します。
 
 **ベスト プラクティス**:ディスクを暗号化する前に、[スナップショット](../virtual-machines/windows/snapshot-copy-managed-disk.md)またはバックアップ、あるいはその両方を作成する。 バックアップは、暗号化中に予期しないエラーが発生した場合の回復オプションを提供します。   
-**詳細**:マネージド ディスクを含む VM では、暗号化する前にバックアップが必要になります。 バックアップを作成した後、**Set-AzureRmVMDiskEncryptionExtension** コマンドレットで *-skipVmBackup* パラメーターを指定して、マネージド ディスクを暗号化できます。 暗号化された VM のバックアップと復元方法の詳細については、[Azure Backup](../backup/backup-azure-vms-encryption.md) に関する記事を参照してください。
+**詳細**:マネージド ディスクを含む VM では、暗号化する前にバックアップが必要になります。 バックアップを作成した後、**Set-AzVMDiskEncryptionExtension** コマンドレットで *-skipVmBackup* パラメーターを指定して、マネージド ディスクを暗号化できます。 暗号化された VM のバックアップと復元方法の詳細については、[Azure Backup](../backup/backup-azure-vms-encryption.md) に関する記事を参照してください。
 
 **ベスト プラクティス**:暗号化シークレットがリージョンの境界を越えないようにするため、Azure Disk Encryption ではキー コンテナーと VM を同じリージョンに併置する必要がある。   
 **詳細**:暗号化する VM と同じリージョン内にキー コンテナーを作成して使用します。

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: b5e3e84ce8f8b4b364b2fa69dda0b0091db25b6d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 0988902e0a2154f2935a01ddcfb6a460be693df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329781"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093805"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 Windows 仮想マシン (VM) をオンプレミスから Microsoft Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの**第 1 世代の VM のみ**がサポートされています。 VHD のサイズの上限は、1,023 GB です。 第 1 世代の VM は、VHDX ファイル システムから VHD ファイル システムに、また容量可変ディスクから容量固定ディスクに変換できます。 ただし、VM の世代を変更することはできません。 詳細については、[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成する必要があるか](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)に関するページを参照してください。
@@ -320,14 +320,14 @@ Set-Service -Name RemoteRegistry -StartupType Automatic
 
 9. 次の AD ポリシーで、次の必要なアクセス アカウントのいずれも削除していないことを確認します。
 
-    - [コンピューターの構成]\[Windows の設定]\[セキュリティ設定]\[ローカル ポリシー]\[ユーザー権利の割り当て]\[ネットワーク経由でコンピューターへアクセス]
+   - [コンピューターの構成]\[Windows の設定]\[セキュリティ設定]\[ローカル ポリシー]\[ユーザー権利の割り当て]\[ネットワーク経由でコンピューターへアクセス]
 
-    このポリシーには、次のグループが表示されている必要があります。
+     このポリシーには、次のグループが表示されている必要があります。
 
-    - 管理者
-    - Backup Operators
-    - Everyone
-    - ユーザー
+   - 管理者
+   - Backup Operators
+   - Everyone
+   - ユーザー
 
 10. VM を再起動して、Windows が引き続き正常であり、RDP 接続を使用してアクセス可能であることを確認します。 この時点で、ローカル Hyper-V に VM を作成して、VM が完全に開始されていることを確認し、この VM が RDP でアクセス可能であるかどうかをテストできます。
 
@@ -415,17 +415,13 @@ Windows ベースのコンピューターにインストールされているロ
 ## <a name="complete-recommended-configurations"></a>推奨される構成を完了する
 次の設定は、VHD のアップロードに影響しません。 ただし、これらを構成しておくことを強くお勧めします。
 
-* [Azure VM エージェント](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をインストールします。 その後で、VM 拡張機能を有効にできます。 VM 拡張機能によって、パスワードのリセットや RDP の構成など、VM で使用する重要な機能のほとんどが実装されます。 詳細については、次を参照してください。
+* [Azure VM エージェント](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をインストールします。 その後で、VM 拡張機能を有効にできます。 VM 拡張機能によって、パスワードのリセットや RDP の構成など、VM で使用する重要な機能のほとんどが実装されます。 詳細については、「[Azure 仮想マシン エージェントの概要](../extensions/agent-windows.md)」を参照してください。
+* Azure で VM を作成した後は、パフォーマンスを向上させるために、ページ ファイルを "テンポラル ドライブ" ボリューム上に置くことをお勧めします。 これは以下のようにしてセットアップできます。
 
-    - [VM エージェントおよび拡張機能 – パート 1](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
-    - [VM エージェントおよび拡張機能 – パート 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)
-
-*  Azure で VM を作成した後は、パフォーマンスを向上させるために、ページ ファイルを "テンポラル ドライブ" ボリューム上に置くことをお勧めします。 これは以下のようにしてセットアップできます。
-
-    ```PowerShell
-    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
-    ```
-VM に接続されているデータ ディスクがある場合、テンポラル ドライブ ボリュームのドライブ文字は通常 "D" になります。 この文字は、使用可能なドライブ数や行った設定に応じて異なる場合があります。
+   ```PowerShell
+   Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -name "PagingFiles" -Value "D:\pagefile.sys" -Type MultiString -force
+   ```
+  VM に接続されているデータ ディスクがある場合、テンポラル ドライブ ボリュームのドライブ文字は通常 "D" になります。 この文字は、使用可能なドライブ数や行った設定に応じて異なる場合があります。
 
 ## <a name="next-steps"></a>次の手順
 * [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](upload-generalized-managed.md)

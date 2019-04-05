@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97e294a8b0e34e1fac24d0cbe01791e2eb290a43
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 334f5fa2309c44bebe8583f497fdaa3c7578e5ae
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162580"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433418"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>チュートリアル:Azure Active Directory と T&E Express の統合
 
@@ -134,7 +134,7 @@ T&E Express で Azure AD のシングル サインオンを構成してテスト
 
     ![Configure single sign-on](./media/tyeexpress-tutorial/tye-SAML.png)
 
-1. **[Activar (有効化)]** オプションを **[No]** から **[SI (はい)]** にして選択します。 **[Identity Provider Metadata (ID プロバイダーのメタデータ)]** ボックスに、Azure ポータルからダウンロードしたメタデータ XML を貼り付けます。
+1. **[Activar (有効化)]** オプションを **[No]** から **[SI (はい)]** にして選択します。 **[Identity Provider Metadata]\(ID プロバイダーのメタデータ\)** ボックスに、Azure portal からダウンロードしたメタデータ XML を貼り付けます。
 
     ![Configure single sign-on](./media/tyeexpress-tutorial/tyeAdmin.png)
 
@@ -170,7 +170,7 @@ T&E Express で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-te-express-test-user"></a>T&E Express テスト ユーザーの作成
 

@@ -5,19 +5,19 @@ services: iot-hub
 author: dominicbetts
 ms.service: iot-hub
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 02/20/2019
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 150b800bfa6bfa20f10dbba7e8d55981ecb9df34
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 6f7772eb7f2c500bbb58c391b1bc4b7a73141699
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56422836"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675757"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>診断設定を使用してログ記録を有効にする
 
-1. [Azure portal](https://portal.azure.com) にサインインし、IoT Hub に移動します。
+1. [Azure Portal](https://portal.azure.com) にサインインし、IoT Hub に移動します。
 
 2. **[診断設定]** を選択します。
 
@@ -47,6 +47,9 @@ ms.locfileid: "56422836"
    * ジョブ操作
    * ダイレクト メソッド  
    * 分散トレース (プレビュー)
+   * 構成
+   * デバイス ストリーム
+   * デバイス メトリック
 
 6. 新しい設定を保存します。 
 

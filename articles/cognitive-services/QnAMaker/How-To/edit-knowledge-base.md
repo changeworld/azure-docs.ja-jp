@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 03/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: a1f1270f5c77332cbcc8c7761203f0194be62a94
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ade6737d2df37d35eefd0be77895a54e1cea433d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881096"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314876"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>QnA Maker のナレッジ ベースを編集する
 
@@ -71,7 +71,7 @@ QnA を削除するには、QnA 行の右端にある**削除**アイコンを�
 ## <a name="add-metadata"></a>メタデータの追加
 
 
-メタデータ アイコンを選択してメタデータ ペアを追加します。
+メタデータ アイコンを選択してメタデータ ペアを追加します。 メタデータ ペアは、1 つのキーと 1 つの値で構成されます。
 
 ![メタデータの追加](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 

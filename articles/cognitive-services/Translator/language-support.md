@@ -7,19 +7,19 @@ author: Jann-Skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.topic: article
-ms.date: 09/25/2018
+ms.topic: reference
+ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: d0ab683ac59c17cbae1e0947cd2acd785b0365d3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: aed3d08f96265736889deccf51d427a6631e1ea9
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884982"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241576"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
-Translator Text API では、テキスト対テキストの翻訳について、以下の言語をサポートしています。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator Text API の V3 を使用して既定で提供されます。 
+Translator Text API では、テキスト対テキストの翻訳について、以下の言語をサポートしています。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator Text API の V3 を使用して既定で提供されます。
 
 [機械翻訳の詳細](https://www.microsoft.com/translator/mt.aspx)
 
@@ -33,7 +33,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 * ニューラルが既定: ニューラルが既定の翻訳システムです。 Microsoft Translator Hub 用の統計システムにアクセスするには、パラメーター `category=smt` を使用します。
 * ニューラルのみ: 利用できるのはニューラル翻訳のみです。
 
-**V3 Translator API** V3 Translator API は既定でニューラルとなっており、ニューラル システムが存在しない場合にのみ統計システムを利用できます。 カスタム トランスレーターは、ニューラル言語でのみ使用できます。 
+**V3 Translator API** V3 Translator API は既定でニューラルとなっており、ニューラル システムが存在しない場合にのみ統計システムを利用できます。 カスタム トランスレーターは、ニューラル言語でのみ使用できます。 [カスタム翻訳ツールで現在利用できる言語をご確認ください](#customization)。
 
 |言語|  言語コード|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
@@ -91,7 +91,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |スペイン語|   `es`    |ニューラルが利用可能|  ニューラル|
 |スウェーデン語|   `sv`    |ニューラルが利用可能   |ニューラル|
 |タヒチ語|  `ty`    |統計のみ|  統計|
-|タミール語| `ta`    |統計のみ|  統計|
+|タミル語| `ta`    |統計のみ|  統計|
 |テルグ語|    `te`    |ニューラルのみ|   ニューラル|
 |タイ語|  `th`    |ニューラルが利用可能|  ニューラル|
 |トンガ語|    `to`    |統計のみ|  統計|
@@ -125,7 +125,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | パンジャーブ語 | `pa` | グルムキー文字 `Guru`  | <--> | ラテン語 `Latn`  |
 | セルビア語 (キリル文字) | `sr-Cyrl` | キリル語 `Cyrl`  | --> | ラテン語 `Latn` |
 | セルビア語 (ラテン) | `sr-Latn` | ラテン語 `Latn` | --> | キリル語 `Cyrl`|
-| タミール語 | `ta` | タミール語 `Taml` | --> | ラテン語 `Latn` |
+| タミル語 | `ta` | タミール語 `Taml` | --> | ラテン語 `Latn` |
 | テルグ語 | `te` | テルグ語 `Telu` | --> | ラテン語 `Latn` |
 | タイ語 | `th` | タイ語 `Thai` | <--> | ラテン語 `Latn` |
 
@@ -178,7 +178,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | スロベニア語      | `sl`          |
 | スペイン語      | `es`          |
 | スウェーデン語      | `sv`          |
-| タミール語      | `ta`          |
+| タミル語      | `ta`          |
 | タイ語      | `th`          |
 | トルコ語      | `tr`          |
 | ウクライナ語      | `uk`          |
@@ -268,7 +268,7 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 
 ## <a name="customization"></a>カスタマイズ
 
-次の言語は、[カスタム トランスレーター](http://aka.ms/CustomTranslator)を使用してカスタマイズできます。
+次の言語は、[カスタム翻訳ツール](http://aka.ms/CustomTranslator)を使用して、英語との間で双方向のカスタマイズが可能です。
 
 | 言語    | 言語コード |
 |:----------- |:-------------:|

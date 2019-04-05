@@ -4,7 +4,7 @@ description: Service Fabric クラスターに対して新しい証明書を追�
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chakdan
 editor: ''
 ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
 ms.service: service-fabric
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
-ms.author: aljo-microsoft
-ms.openlocfilehash: aa5096b84f9bfe97784d6f80e4c203a1d8384404
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.author: aljo
+ms.openlocfilehash: 534335b15d61d1e411ec2e7fb96123eb4701878e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687420"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315276"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために[クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)を読むことをお勧めします。 先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
 
-Azure Service Fabrics SDK の証明書の既定の読み込み動作では、プライマリとセカンダリの構成定義に関係なく、有効期限が最も先の日付になっている定義済みの証明書がデプロイされて使用されます。 従来の動作に戻すことは推奨されませんが、高度な操作として行うことはできます。このためには、Fabric.Code 構成で "UseSecondaryIfNever" 設定パラメーター値を false に設定する必要があります。
+Azure Service Fabrics SDK の証明書の既定の読み込み動作では、プライマリとセカンダリの構成定義に関係なく、有効期限が最も先の日付になっている定義済みの証明書がデプロイされて使用されます。 従来の動作に戻すことは推奨されませんが、高度な操作として行うことはできます。このためには、Fabric.Code 構成で "UseSecondaryIfNewer" 設定パラメーター値を false に設定する必要があります。
 
 Service Fabric では、クラスターの作成中に証明書セキュリティを構成するときに、クライアントの証明書に加えて 2 つのクラスター証明書 (プライマリとセカンダリ) を指定できます。 作成時にそれらを設定する方法について詳しくは、[ポータルからクラスターを作成する](service-fabric-cluster-creation-via-portal.md)方法に関する記事か、[Azure Resource Manager を使用して Azure クラスターを作成する](service-fabric-cluster-creation-via-arm.md)方法に関する記事をご覧ください。 作成時にクラスター証明書を 1 つだけ指定した場合は、それがプライマリ証明書として使用されます。 クラスターの作成後に、新しい証明書をセカンダリ証明書として追加できます。
 
@@ -114,7 +114,7 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
          }
     ``` 
 
-4. **すべて**の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "virtualMachineProfile" の下の "publisher": "Microsoft.Azure.ServiceFabric" にスクロールします。
+4. **すべて**の **Microsoft.Compute/virtualMachineScaleSets** リソース定義を変更します。Microsoft.Compute/virtualMachineScaleSets リソース定義を探します。 "virtualMachineProfile" の下の "publisher": "Microsoft.Azure.ServiceFabric" までスクロールします。
 
     Service Fabric のパブリッシャーの設定は、次のように表示されます。
     
@@ -259,7 +259,7 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
 Get-ServiceFabricClusterHealth 
 ```
 
-## <a name="deploying-application-certificates-to-the-cluster"></a>アプリケーションの証明書をクラスターにデプロイする
+## <a name="deploying-client-certificates-to-the-cluster"></a>クライアント証明書をクラスターにデプロイする
 
 前の手順 5 で説明した方法を使用して、キー コンテナーからノードに証明書をデプロイできます。 別のパラメーターを定義して使用する必要があるのみです。
 

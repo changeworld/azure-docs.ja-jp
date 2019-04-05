@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e4c90b6f9fd8b968ceb0e241649ddbcf1c2e1cb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a15284b0176b7148055812ce5a642ec38e67d53b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189118"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449429"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>チュートリアル:Azure Active Directory と TrackVia の統合
 
@@ -136,7 +136,7 @@ TrackVia で Azure AD のシングル サインオンを構成してテストす
     
 1. 別の Web ブラウザー ウィンドウで、管理者として TrackVia 企業サイトにサインオンします。
 
-1. Trackvia の **[My Account]\(マイ アカウント\)** 設定をクリックし、**[Single Sign On]\(シングル サインオン\)** タブを選択し、次の手順を実行します。
+1. TrackVia の **[My Account]\(マイ アカウント\)** 設定をクリックし、**[Single Sign On]\(シングル サインオン\)** タブを選択して、次の手順を実行します。
 
     ![TrackVia の構成](./media/trackvia-tutorial/configure1.png)
 
@@ -176,7 +176,7 @@ TrackVia で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-trackvia-test-user"></a>TrackVia のテスト ユーザーを作成する
 

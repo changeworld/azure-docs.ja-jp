@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 61211db72928bebf0e1ea50cad6362337f66f0eb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c8d2ccc197eb8818cfe3fc54449ee982bbe0c087
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859618"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844590"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>LUIS におけるエンティティの種類とその目的
 
@@ -201,7 +201,7 @@ Pattern.any は、エンティティの開始位置と終了位置を示すた�
 
 ## <a name="regular-expression-entity"></a>正規表現エンティティ 
 
-生の発話テキストには正規表現をお勧めします。 大文字小文字とカルチャのバリアントは無視されます。  正規表現の照合は、スペルチェックによる変更後に、トークン レベルではなく文字レベルで適用されます。 角かっこが多用されているなど、正規表現が複雑すぎる場合は、このモデルに式を追加できません。 [.Net Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) ライブラリの全体ではなく一部が使用されます。 
+生の発話テキストには正規表現をお勧めします。 大文字小文字とカルチャのバリアントは無視されます。  正規表現の照合は、スペルチェックによる変更後に、トークン レベルではなく文字レベルで適用されます。 角かっこが多用されているなど、正規表現が複雑すぎる場合は、このモデルに式を追加できません。 [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) ライブラリの全体ではなく一部が使用されます。 
 
 エンティティは、次のような場合に最適です。
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f72f75013d69533eeda0e69acbff1c4f7047f509
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 67f87729dbfb792b88f28a772f15e233f0fa60dc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193685"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452115"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C:利用可能なリージョンとデータの保存場所
 利用可能なリージョンとデータの保存場所は、まったく異なる 2 つの概念です。また、Azure AD B2C とそれ以外の Azure サービスとでは、利用可能なリージョンとデータの保存場所との関係が異なります。 この記事では、2 つの概念の違いについて説明するとともに、Azure AD B2C とそれ以外の Azure サービスに対するそれらの概念の意味合いを比較します。
@@ -37,7 +37,7 @@ Azure AD B2C では、ユーザー データが米国またはヨーロッパに
 
 データの保存場所は、[Azure AD B2C テナントの作成](active-directory-b2c-get-started.md)時に、どの国/地域を選んだかによって決まります。
 
-![Screen shot of a preview tenant](./media/active-directory-b2c-reference-tenant-type/data-residency-b2c-tenant.png)
+![プレビュー テナントのスクリーンショット](./media/active-directory-b2c-reference-tenant-type/data-residency-b2c-tenant.png)
 
 次の国/地域の場合、データは米国に保存されます。
 
@@ -58,4 +58,4 @@ Azure AD B2C のプレビュー期間中に B2C テナントを作成した場�
 > プレビュー B2C テナントから運用スケール B2C テナントへの移行パスはありません。 プレビュー B2C テナントを削除し、同じドメイン名で運用スケール B2C テナントを再作成する場合に、既知の問題があることに注意してください。 運用スケール B2C テナントは異なるドメイン名で作成する必要があります。
 
 
-![Screen shot of a preview tenant](./media/active-directory-b2c-reference-tenant-type/preview-b2c-tenant.png)
+![プレビュー テナントのスクリーンショット](./media/active-directory-b2c-reference-tenant-type/preview-b2c-tenant.png)

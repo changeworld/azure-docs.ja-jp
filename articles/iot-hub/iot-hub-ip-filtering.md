@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: d549127b5cbdb3a94e435e753592f3227cb95f3a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 02059409000ee5b68fbcb8695f580980c95effe6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232216"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731716"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 
@@ -121,11 +121,13 @@ az resource update -n <iothubName> -g <resourceGroupName> --resource-type Micros
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>Azure PowerShell を使用した IP フィルターの取得および更新
 
-[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) を使用して、IoT Hub の IP フィルターを取得および設定できます。 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[Azure PowerShell](/powershell/azure/overview) を使用して、IoT Hub の IP フィルターを取得および設定できます。 
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name
-$iothubResource = Get-AzureRmResource -ResourceGroupName <resourceGroupNmae> -ResourceName <iotHubName> -ExpandProperties
+$iothubResource = Get-AzResource -ResourceGroupName <resourceGroupNmae> -ResourceName <iotHubName> -ExpandProperties
 
 # Access existing IP filter rules
 $iothubResource.Properties.ipFilterRules |% { Write-host $_ }
@@ -140,7 +142,7 @@ $iothubResource.Properties.ipFilterRules += $filter
 $iothubResource.Properties.ipFilterRules = @($iothubResource.Properties.ipFilterRules | Where 'filterName' -ne 'GoodIP')
 
 # Update your IoT Hub resource with your updated IP filters
-$iothubResource | Set-AzureRmResource -Force
+$iothubResource | Set-AzResource -Force
 ```
 
 ## <a name="update-ip-filter-rules-using-rest"></a>REST を使用した IP フィルター規則の更新

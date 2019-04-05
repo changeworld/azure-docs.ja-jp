@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 55b6e6db14f3847eb659f9bee05b12585a613693
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ac627907e3f595ef59edc606f34fd27353e4c577
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850045"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用
 
-このチュートリアルでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用するエンド ツー エンドのシナリオで、Team Data Science Process を使って、公開されている [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) データセットの 1 つからデータを格納、調査し、特徴エンジニアリングとダウンサンプリングを行う方法について説明します。 このチュートリアルでは、Azure Machine Learning を使用して、このデータに基づいてバイナリ分類モデルを構築します。 また、こうしたモデルのいずれかを Web サービスとして発行する方法も示します。
+このチュートリアルでは、[Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用するエンド ツー エンドのシナリオで、Team Data Science Process を使って、公開されている [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) データセットの 1 つからデータを格納、調査し、特徴エンジニアリングとダウンサンプリングを行う方法について説明します。 このチュートリアルでは、Azure Machine Learning を使用して、このデータに基づいてバイナリ分類モデルを構築します。 また、こうしたモデルのいずれかを Web サービスとして発行する方法も示します。
 
 IPython Notebook を使用して、このチュートリアルで説明するタスクを実行することもできます。 この方法を試してみたい方は、「 [Criteo walkthrough using a Hive ODBC connection (Hive ODBC の接続を使用した Criteo チュートリアル)](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) 」のトピックをご覧ください。
 
 ## <a name="dataset"></a>Criteo データセットの説明
-Criteo データは、gzip で圧縮された約 370 GB の TSV ファイル (非圧縮で ~1.3TB) のクリック予測データセットで、43 億以上のレコードが含まれています。 これは、 [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/)によって提供される 24 日間のクリック データから取得されます。 データ サイエンティストが使いやすいように、実験で使用できるデータは解凍されています。
+Criteo データは、gzip で圧縮された約 370 GB の TSV ファイル (非圧縮で ~1.3TB) のクリック予測データセットで、43 億以上のレコードが含まれています。 これは、 [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/)によって提供される 24 日間のクリック データから取得されます。 データ サイエンティストが使いやすいように、実験で使用できるデータは解凍されています。
 
 このデータセットの各レコードには、40 の列があります。
 
@@ -68,7 +68,7 @@ HDInsight クラスターを使用して予測分析ソリューションを構�
 3. [Azure Machine Learning Studio ワークスペースの作成](../studio/create-workspace.md):この Azure Machine Learning ワークスペースは、HDInsight クラスターでの初期データの探索とダウンサンプリング後に、機械学習モデルを構築するために使用します。
 
 ## <a name="getdata"></a>公開されているソースからデータを取得して使用する
-[Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) データセットにアクセスするには、リンクをクリックし、使用条件に同意して名前を入力します。 この画面のスナップショットを以下に示します。
+[Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) データセットにアクセスするには、リンクをクリックし、使用条件に同意して名前を入力します。 この画面のスナップショットを以下に示します。
 
 ![Criteo 条項に同意する](./media/hive-criteo-walkthrough/hLxfI2E.png)
 
@@ -306,7 +306,7 @@ Hive の LATERAL VIEW - explode の組み合わせは、通常のリストの代
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
 
-Col15 は 19 M 個の一意の値を持つことに注意してください。 "one-hot エンコーディング" のような単純な手法を使用して、このような高次元カテゴリ変数をエンコードすることはできません。 特に、この問題に効率的に取り組むために、[カウントを使用した学習](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)と呼ばれる、強力で信頼性の高い手法が示されています。
+Col15 は 19 M 個の一意の値を持つことに注意してください。 "one-hot エンコーディング" のような単純な手法を使用して、このような高次元カテゴリ変数をエンコードすることはできません。 特に、この問題に効率的に取り組むために、[カウントを使用した学習](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)と呼ばれる、強力で信頼性の高い手法が示されています。
 
 最後に、他のカテゴリ列の一意の値の数も確認します。 [sample&#95;hive&#95;criteo&#95;unique&#95;values&#95;multiple&#95;categoricals.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) の内容を以下に示します。
 
@@ -405,10 +405,10 @@ Col15 は 19 M 個の一意の値を持つことに注意してください。 "
 Azure Machine Learning に移動する前に、カウント テーブルに関する最後の重要なコンポーネントがあります。 次のサブセクションでは、カウント テーブルについて詳しく説明します。
 
 ## <a name="count"></a> カウント テーブルの簡単な説明
-ご覧になったように、カテゴリ変数のいくつかは非常に高次元です。 チュートリアルでは、こうした変数を効率的かつ堅牢な方法でエンコードする、[カウントを使用した学習](http://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)と呼ばれる強力な手法について説明します。 この手法の詳細については、リンクをクリックしてください。
+ご覧になったように、カテゴリ変数のいくつかは非常に高次元です。 チュートリアルでは、こうした変数を効率的かつ堅牢な方法でエンコードする、[カウントを使用した学習](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx)と呼ばれる強力な手法について説明します。 この手法の詳細については、リンクをクリックしてください。
 
 [!NOTE]
->このチュートリアルでは、カウント テーブルを使用して、高次元のカテゴリ特徴のコンパクトな表現を生成することに重点を置いています。 これは、カテゴリ特徴をエンコードする唯一の方法ではありません。関心のある方は、他の手法の詳細について [one-hot エンコーディング](http://en.wikipedia.org/wiki/One-hot)に関するページと[特徴ハッシュ](http://en.wikipedia.org/wiki/Feature_hashing)に関するページをご覧ください。
+>このチュートリアルでは、カウント テーブルを使用して、高次元のカテゴリ特徴のコンパクトな表現を生成することに重点を置いています。 これは、カテゴリ特徴をエンコードする唯一の方法ではありません。関心のある方は、他の手法の詳細について [one-hot エンコーディング](https://en.wikipedia.org/wiki/One-hot)に関するページと[特徴ハッシュ](https://en.wikipedia.org/wiki/Feature_hashing)に関するページをご覧ください。
 >
 
 カウント データのカウント テーブルを作成するには、raw/count フォルダーのデータを使用します。 モデリング セクションでは、カテゴリ特徴のカウント テーブルを最初から構築する方法と、探索のために事前に構築されたカウント テーブルを使用する別の方法を示します。 以下で "事前に構築されたカウント テーブル" が言及されている場合は、提供されているカウント テーブルを使用することを意味します。 これらのテーブルにアクセスする方法の詳細については、次のセクションで説明します。
@@ -417,7 +417,7 @@ Azure Machine Learning に移動する前に、カウント テーブルに関�
 Azure Machine Learning のモデル構築プロセスは、次の手順を実行します。
 
 1. [Azure Machine Learning に Hive テーブルからデータを取得する](#step1)
-2. [実験を作成する: データを整理してカウント テーブルを特徴付ける](#step2)
+2. [実験を作成する: データを整理してカウント テーブルを使用して特徴付ける](#step2)
 3. [モデルを構築し、トレーニングしてスコアを付ける](#step3)
 4. [モデルを評価する](#step4)
 5. [モデルを Web サービスとして発行する](#step5)
@@ -451,7 +451,7 @@ Azure Machine Learning のモデル構築プロセスは、次の手順を実行
 
 機械学習の実験用で使用する保存済みのデータセットを選ぶには、次の図に示す **[検索]** ボックスを使用してデータセットを検索します。 データセットに付けた名前の一部を入力してデータセットにアクセスし、このデータセットをメイン パネルにドラッグします。 メイン パネル上にドロップしたら、機械学習のモデリングで使用するために選択します。
 
-![データセットをメイン パネル上にドラッグする](./media/hive-criteo-walkthrough/cl5tpGw.png)
+![データ セットをメイン パネル上にドラッグする](./media/hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
 > トレーニングとテストの両方のデータセットでこれを行います。 また、この用途で付けたデータベース名とテーブル名を必ず使用してください。 図の値は、説明の目的でのみ使用されている例です。\*\*

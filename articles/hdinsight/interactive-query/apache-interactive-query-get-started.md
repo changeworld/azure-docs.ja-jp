@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: b34d67e640f09ac6949e992d3af9388581851622
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: ae0264c918bb550affe8e694cdb3b9891edea531
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629528"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875448"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight での対話型クエリの使用
 対話型クエリ (別名 Apache Hive LLAP または [Low Latency Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの一種](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Apache Hive クエリの速度と対話性が向上します。
@@ -72,7 +72,7 @@ Java Database Connectivity (JDBC) 接続文字列は次の方法で調べるこ�
 
 * [HDInsight で対話型クエリ クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)方法を学ぶ。
 * [Azure HDInsight の Power BI でビッグ データを視覚化する](../hadoop/apache-hadoop-connect-hive-power-bi.md)方法を学ぶ。
-* [Azure HDInsight 内で Apache Zeppelin を使用して Apache Hive クエリを実行する](../hdinsight-connect-hive-zeppelin.md)方法を学ぶ。
+* [Azure HDInsight で Apache Zeppelin を使用して Apache Hive クエリを実行する](../hdinsight-connect-hive-zeppelin.md)方法を学ぶ。
 * [Data Lake Tools for Visual Studio を使用して Apache Hive クエリを実行する](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries)方法を学ぶ。
 * [HDInsight Tools for Visual Studio Code を使用する](../hdinsight-for-vscode.md)方法を学ぶ。
 * [HDInsight 上の Apache Hadoop で Apache Hive ビューを使用する](../hadoop/apache-hadoop-use-hive-ambari-view.md)方法を学ぶ

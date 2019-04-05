@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 6495a4e4da9330cba562c7fd6530369c09d180da
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 84749332c5b7ab5fec2905c0fc36d89863adc3d2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302065"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960218"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド:拡張性があり、パフォーマンスに優れたテーブルを設計する
 
@@ -213,7 +213,7 @@ Table service ソリューションでは、読み取り、書き込み、また
 * 2 番目に良い方法は、**PartitionKey** を使用する***範囲クエリ***と、**RowKey 値**の範囲にフィルターをかけ、1 つ以上のエンティティを返す です。 **PartitionKey** 値は特定のパーティションを識別し、**RowKey** 値はそのパーティション内のエンティティのサブセットを識別します。 例: $filter=PartitionKey eq 'Sales' および RowKey ge 'S' および RowKey lt 'T'  
 * 3 番目に良い方法は、**PartitionKey** を使用し、他のキーを持たないプロパティにフィルターをかけ、1 つ以上のエンティティを返すことが可能な***パーティション スキャン***です。 **PartitionKey** 値は特定のパーティションを識別し、プロパティ値はそのパーティション内のエンティティのサブセットを選択します。 例: $filter = PartitionKey eq '販売'、および LastName eq 'Smith'  
 * ***テーブル スキャン***に **PartitionKey** は含まれません。また、一致するエンティティのテーブルを構成するパーティションのすべてを検索するため、非効率的です。 フィルターが **RowKey** を使用する / しないに関わりなく、テーブルのスキャンが実行されます。 例: $filter = LastName eq 'Jones'  
-* Azure Table Storage Queries は複数のエンティティを **PartitionKey** と **RowKey** の順序で並べ替えて返します。 クライアント内でエンティティを再度並べ替えるのを防ぐため、最も一般的な並べ替え順序を定義する **RowKey** を選択します。 Azure Cosmso DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。
+* Azure Table Storage Queries は複数のエンティティを **PartitionKey** と **RowKey** の順序で並べ替えて返します。 クライアント内でエンティティを再度並べ替えるのを防ぐため、最も一般的な並べ替え順序を定義する **RowKey** を選択します。 Azure Cosmos DB で Azure Table API によって返されるクエリ結果は、パーティション キーまたは行キーで並べ替えられません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。
 
 "**or**" を使用して **RowKey** 値に基づいてフィルターを指定した場合はパーティション スキャンが行われます。範囲クエリとしては扱われません。 そのため、$filter = PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322') のようなフィルターを使用するクエリの使用は避ける必要があります。  
 
@@ -255,7 +255,7 @@ Table service は 1 つのクラスター化インデックス内の **Partition
 Table service によって返されるクエリ結果は、最初に **PartitionKey**、次に **RowKey** に基づいて、昇順に並べ替えられます。
 
 > [!NOTE]
-> Azure Cosmso DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。
+> Azure DB で Azure Table API によって返されるクエリ結果は、パーティション キーまたは行キーで並べ替えられません。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。
 
 Azure Storage Table のキーは文字列値であり、数値を正しく並べ替えるには、固定長の値に変換し、ゼロ パディングを施す必要があります。 たとえば、従業員 ID 値を整数値の **RowKey** として使用する場合、従業員 ID を **123** から **00000123** に変換する必要があります。 
 
@@ -723,7 +723,7 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 逆の日付と時間順でソートする *RowKey* 値を 使用して最も最近追加された **n** を取得します。  
 
 > [!NOTE]
-> Azure Cosmso DB で Azure Table API によって返されるクエリ結果は、パーティション キーや行キーの順序にはなりません。 そのため、このパターンは Azure Cosmos DB ではなく Azure Table Storage に適しています。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。
+> Azure DB で Azure Table API によって返されるクエリ結果は、パーティション キーまたは行キーで並べ替えられません。 そのため、このパターンは Azure Cosmos DB ではなく Azure Table Storage に適しています。 機能の相違に関する詳細なリストについては、[Azure Cosmos DB の Table API と Azure Table Storage の間の相違](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)に関するページを参照してください。
 
 #### <a name="context-and-problem"></a>コンテキストと問題
 よく、最近作成されたエンティティ (従業員が提出した経費請求を日時の新しいものから 10 件など) を取得できることが必要な場合があります。 Table クエリは **$top** クエリ操作をサポートして、最初の *n* 件のエンティティをセットから返します。セットの最終 n 件のエンティティを返す同等のクエリの操作はありません。  

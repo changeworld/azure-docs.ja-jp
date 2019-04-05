@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: sngun
-ms.openlocfilehash: e6d16c31b8975036202fe77906e2d729391b5c59
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c7b62f66830e17fd8f6607e0a629307a9ab6fc78
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038077"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983593"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング
 
@@ -216,6 +216,8 @@ SDK リリース ノート、および実装されているクラスとメソッ
 ### <a name="indexing-policy"></a>インデックス作成ポリシー
 インデックス作成のパス、種類、モード、クエリ実行への影響については、「[インデックス作成ポリシーを構成する](index-policy.md)」を参照してください 既定では、等値クエリには有効だが範囲クエリ/並べ替えクエリには有効ではない文字列に対しハッシュ インデックスを使用するインデックス作成ポリシーが採用されています。 文字列の範囲クエリが必要な場合は、すべての文字列に対し範囲インデックス タイプを指定することをお勧めします。 
 
+既定では、Azure Cosmos DB は、自動インデックス作成をすべてのデータに適用します。 ハイ パフォーマンスの挿入シナリオの場合は、各挿入操作の RU コストを削減するために、パスを除外することを検討してください。 
+
 ## <a name="query-execution-metrics"></a>クエリ実行メトリック
 省略可能な `x-ms-documentdb-populatequerymetrics`ヘッダーを渡す (`FeedOptions.PopulateQueryMetrics` .NET SDK で) ことで、クエリの実行に関する詳細なメトリックを取得できます。 `x-ms-documentdb-query-metrics` で返される値には、クエリの実行の高度なトラブルシューティングに使用できる次のキー/値ペアが含まれています。 
 
@@ -257,7 +259,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 以下は、クエリの例とクエリ実行から返されたメトリックを解釈する方法です。 
 
-| クエリ | メトリックの例 | 説明 | 
+| Query | メトリックの例 | 説明 | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 取得されたドキュメントの数は、TOP 句と一致した 100 + 1 になっています。 スキャンであるため、クエリ時間の大部分が `WriteOutputTime` と `DocumentLoadTime` で費やされています。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount が高くなっています (TOP 句と一致する 500 + 1 になっています)。 | 

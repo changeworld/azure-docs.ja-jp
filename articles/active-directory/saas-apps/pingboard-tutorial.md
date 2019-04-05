@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 084a921123badb786503ce6696eb4ace14dd59b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a26418a5159781eab96cf7730d669ccb65742d86
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170484"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861487"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>チュートリアル:Azure Active Directory と PingBoard の統合
 
@@ -182,7 +182,7 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
 
 ### <a name="create-a-pingboard-test-user"></a>PingBoard テスト ユーザーを作成する
 
@@ -202,11 +202,11 @@ PingBoard で Azure AD のシングル サインオンを構成してテスト�
 
     a. **[フル ネーム]** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。
 
-    b. **[メール]** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
+    b. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **brittasimon\@contoso.com**) を入力します。
 
     c. **[Job Title]** ボックスに、Britta Simon の役職を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Location]** ドロップダウン リストで、Britta Simon の場所を選択します。
+    d. **[Location]** ドロップダウン リストで、Britta Simon の場所を選択します。
 
     e. **[追加]** をクリックします。
 

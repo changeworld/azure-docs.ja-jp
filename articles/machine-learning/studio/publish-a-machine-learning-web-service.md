@@ -5,17 +5,17 @@ description: トレーニング実験を予測実験に変換する方法、デ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 5990f47a7cc1517349d85654bf5f02f6240e9baa
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 2ffc9055f23b8221a6f711f741b6146545ff0821
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327597"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895731"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Azure Machine Learning Studio Web サービスをデプロイする
 
@@ -93,23 +93,23 @@ RRS テストのページには、入力、出力、および実験用に定義�
 
 RRS を使用してテストするには、リスト ビュー モードから適切な入力値を入力し、 **[Test Request-Response (要求応答のテスト)]** をクリックします。 予測結果は、左側の出力列に表示されます。
 
-![Web サービスをデプロイする](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
+![ご自分の Web サービスをテストするための適切な値を入力する](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
 BES をテストするには、 **[バッチ]** をクリックします。 バッチ テストのページで、入力の下の [参照] をクリックし、適切なサンプル値を含む CSV ファイルを選択します。 CSV ファイルがなく、Machine Learning Studio を使用して予測実験を作成した場合は、予測実験用のデータ セットをダウンロードし、それを使用できます。
 
 データ セットをダウンロードするには、Machine Learning Studio を開きます。 予測実験を開き、実験の入力を右クリックします。 コンテキスト メニューの **[データセット]** を選択し、**[ダウンロード]** を選択します。
 
-![Web サービスをデプロイする](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
+![Studio キャンバスからデータセットをダウンロードする](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
 **[Test]** をクリックします。 バッチ実行ジョブの進行状況は、**[Test Batch Jobs (バッチ ジョブのテスト)]** の右下に表示されます。
 
-![Web サービスをデプロイする](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
+![Web サービス ポータルを使用してご自分のバッチ実行ジョブをテストする](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
 
 <!--![Test the web service](./media/publish-a-machine-learning-web-service/figure-3.png)-->
 
 **[構成]** ページでは、Web サービスの説明やタイトルの変更、ストレージ アカウント キーの更新、およびサンプル データの有効化を行うことができます。
 
-![Web サービスを構成する](./media/publish-a-machine-learning-web-service/figure-8-arm-configure.png)
+![ご自分の Web サービスを構成する](./media/publish-a-machine-learning-web-service/figure-8-arm-configure.png)
 
 ### <a name="access-your-new-web-service"></a>新しい Web サービスにアクセスする
 
@@ -161,7 +161,7 @@ Machine Learning Studio Web サービスへのアクセスの詳細について�
 
 予測実験をデプロイするには、実験キャンバスの下部にある **[実行]** をクリックし、**[Web サービスのデプロイ]** をクリックします。 Web サービスがセットアップされ、Web サービスのダッシュ ボードに配置されます。
 
-![Web サービスをデプロイする](./media/publish-a-machine-learning-web-service/figure-2.png)
+![Studio からご自分の Web サービスをデプロイする](./media/publish-a-machine-learning-web-service/figure-2.png)
 
 ### <a name="test-your-classic-web-service"></a>従来の Web サービスをテストする
 
@@ -181,7 +181,7 @@ Web サービスは、Machine Learning Studio Web サービス ポータルま�
 
 ログ記録を有効にすれば、Web サービスのアクセスで発生するすべてのエラーを診断できます。 詳細については、「[Machine Learning Studio Web サービスのログ記録を有効にする](web-services-logging.md)」をご覧ください。
 
-![Web サービスを構成する](./media/publish-a-machine-learning-web-service/figure-4.png)
+![Web サービス ポータル内でログ記録を有効にする](./media/publish-a-machine-learning-web-service/figure-4.png)
 
 「新しい Web サービス」セクションで説明した手順と同様に、Web サービスのエンドポイントを Azure Machine Learning Web サービス ポータルで構成することもできます。 オプションは異なりますが、サービスの説明の追加または変更、ログの有効化、テスト用サンプル データの有効化を行うことができます。
 
@@ -209,7 +209,7 @@ Web サービスを更新するには、Web サービスのデプロイに使用
 > [!NOTE]
 > たとえば元の Web サービスの構成に変更を加えた場合や新しい表示名または説明を入力した場合、それらの値をもう一度入力する必要が生じます。
 
-Web サービスを更新するオプションの 1 つに、モデルをプログラムによって再トレーニングする方法があります。 詳細については、「[プログラムによる Machine Learning Studio のモデルの再トレーニング](retrain-models-programmatically.md)」をご覧ください。
+Web サービスを更新するオプションの 1 つに、モデルをプログラムによって再トレーニングする方法があります。 詳細については、「[プログラムによる Machine Learning Studio のモデルの再トレーニング](/azure/machine-learning/studio/retrain-machine-learning-model)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -219,13 +219,12 @@ Web サービスを更新するオプションの 1 つに、モデルをプロ�
 
 * REST API を使用して Web サービスにアクセスするには、いくつかの方法があります。 「[Azure Machine Learning Studio Web サービスを使用する方法](consume-web-services.md)」をご覧ください。
 
-
 <!-- internal links -->
 [トレーニング実験を作成する]: #create-a-training-experiment
 [予測実験に変換する]: #convert-the-training-experiment-to-a-predictive-experiment
 [新しい Web サービス]: #deploy-it-as-a-new-web-service
 [従来の Web サービス]: #deploy-it-as-a-classic-web-service
-[新規]: #deploy-the-predictive-experiment-as-a-new-web-service
+[新規]: #deploy-it-as-a-new-web-service
 [classic]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal

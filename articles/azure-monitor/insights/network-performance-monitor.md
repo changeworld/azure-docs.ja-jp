@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: cff96ecb4f4b20e7e3542f6ae6e3e7740b750235
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d35918659acb899e43f76e94168abcba080aa006
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729797"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452132"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -119,19 +119,13 @@ Network Performance Monitor は、代理トランザクションを使って、�
 
    **ExpressRoute モニター**: **[今すぐ検出する]** を選び、この Log Analytics ワークスペースにリンクされている Azure サブスクリプション内の仮想ネットワークに接続されているすべての ExpressRoute プライベート ピアリングを検出します。 
 
-   >[!NOTE] 
-   > このソリューションでは、現時点では ExpressRoute プライベート ピアリングしか検出されません。 
-
-   >[!NOTE] 
-   > 検出されるのは、この Log Analytics ワークスペースにリンクされているサブスクリプションに関連付けられている仮想ネットワークに接続されているプライベート ピアリングのみです。 ExpressRoute が、このワークスペースにリンクされているサブスクリプションの外部の仮想ネットワークに接続されている場合は、これらのサブスクリプションに Log Analytics ワークスペースを作成します。 Network Performance Monitor を使ってこれらのピアリングを監視します。
-
    ![[ExpressRoute モニター] ビュー](media/network-performance-monitor/npm-express-route.png)
 
-   検出が完了した後、検出されたプライベート ピアリングが表に一覧表示されます。 
+   検出が完了した後、検出された回線とピアリングが表に一覧表示されます。 
 
    ![[ネットワーク パフォーマンス モニターの構成] ページ](media/network-performance-monitor/npm-private-peerings.png)
     
-これらのピアリングの監視は、最初は無効状態になっています。 監視する各ピアリングを選び、右側の詳細ビューからそれらの監視を構成します。 **[保存]** を選んで構成を保存します。 詳しくは、ExpressRoute の監視の構成に関する記事をご覧ください。 
+これらの回線とピアリングの監視は、最初は無効状態になっています。 監視する各リソースを選び、右側の詳細ビューからそれらの監視を構成します。 **[保存]** を選んで構成を保存します。 詳しくは、ExpressRoute の監視の構成に関する記事をご覧ください。 
 
 セットアップの完了後は、データの読み込みに 30 分から 1 時間かかります。 ソリューションによってネットワークからデータが集計されている間、Network Performance Monitor の **[概要]** タイルには "*このソリューションにはさらに構成が必要です*" と表示されます。 データが収集されてインデックスが設定されると、**[概要]** タイルは変化し、ネットワークの正常性の概要が表示されます。 その後、Log Analytics エージェントがインストールされているノードと、環境から検出されたサブネットの監視を編集できます。
 

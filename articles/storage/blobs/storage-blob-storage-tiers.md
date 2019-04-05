@@ -5,15 +5,15 @@ services: storage
 author: kuhussai
 ms.service: storage
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/06/2019
 ms.author: kuhussai
 ms.subservice: blobs
-ms.openlocfilehash: 3e89f5de247cf18abdb710577ce55c6e2cb5765e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ec024f8f1cd411455a6cbb2a0b12e7b4751af5fe
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251896"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405336"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob ストレージ:Premium ストレージ層 (プレビュー)、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層
 
@@ -57,15 +57,7 @@ BLOB ストレージ アカウントと GPv2 アカウントには、アカウ�
 
 この層は、高速で一貫性のある応答時間を必要とするワークロードに最適です。 対話式の動画編集、静的な Web コンテンツ、オンライン トランザクションなどエンド ユーザーが関与するデータは、Premium アクセス層の候補として適しています。 この層は、利用統計情報のキャプチャ、メッセージング、データ変換などの小規模なトランザクションを多数実行するワークロード向けに調整されています。
 
-この層を使用するには、新しいブロック BLOB ストレージ アカウントをプロビジョニングし、[BLOB サービスの REST API](/rest/api/storageservices/blob-service-rest-api)、[AzCopy](/azure/storage/common/storage-use-azcopy)、または [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、コンテナーと BLOB の作成を開始します。
-
-プレビュー段階の Premium アクセス層は、
-
-- ローカル冗長ストレージ (LRS) として使用可能
-- 以下のリージョンでのみ使用できます。米国東部 2、米国中部、米国西部
-- データ ライフサイクル管理によるオブジェクト レベルの階層化や自動階層化はサポートしていません
-
-Premium アクセス層のプレビューに登録する方法については、「[Azure Premium Blob Storage の概要](https://aka.ms/premiumblob)」を参照してください。
+プレビューの詳細については、「[Azure Premium Blob Storage public preview (Azure Premium Blob Storage のパブリック プレビュー)](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/)」を参照してください。
 
 ## <a name="hot-access-tier"></a>ホット アクセス層
 

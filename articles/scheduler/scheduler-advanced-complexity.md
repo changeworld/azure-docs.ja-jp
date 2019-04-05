@@ -10,12 +10,12 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: a13ce85124dc84362ec1ee2aa39a16c2c3f09f88
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a413261d251c8dfc1de9209168ee8137b85009f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701014"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860620"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Azure Scheduler でジョブの高度なスケジュールと繰り返しを構築する
 
@@ -65,13 +65,13 @@ ms.locfileid: "55701014"
 
 | 要素 | 必須 | 説明 | 
 |---------|----------|-------------|
-| **startTime** | いいえ  | ジョブがいつ基本スケジュールで開始されるかを指定する、[ISO 8601 形式](http://en.wikipedia.org/wiki/ISO_8601)の DateTime 文字列値。 <p>複雑なスケジュールでは、**startTime** になるとすぐにジョブが開始されます。 | 
+| **startTime** | いいえ  | ジョブがいつ基本スケジュールで開始されるかを指定する、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)の DateTime 文字列値。 <p>複雑なスケジュールでは、**startTime** になるとすぐにジョブが開始されます。 | 
 | **recurrence** | いいえ  | ジョブが実行されるときの繰り返しの規則。 **recurrence** オブジェクトでは、**frequency**、**interval**、**schedule**、**count**、**endTime** の各要素がサポートされます。 <p>**recurrence** 要素を使用する場合は、**frequency** 要素も使用する必要があります。**recurrence** の他の要素は省略可能です。 |
-| **frequency** | はい (**recurrence** を使用する場合) | 実行間の時間単位。サポートされる値は、"Minute"、"Hour"、"Day"、"Week"、"Month"、および "Year" です。 | 
+| **frequency** | はい (**recurrence** を使用する場合) | 実行間の時間単位。次の値がサポートされます。"Minute"、"Hour"、"Day"、"Week"、"Month"、および "Year" | 
 | **interval** | いいえ  | **frequency** に基づいて実行間の時間単位の数を決定する正の整数。 <p>たとえば、**interval** が 10 で **frequency** が "Week" の場合、ジョブは 10 週間おきに繰り返されます。 <p>各 frequency の最大 interval 数は次のとおりです。 <p>- 18 か月 <br>- 78 週 <br>- 548 日 <br>- 時間と分については、範囲は 1 <= <*interval*> <= 1,000 です。 | 
 | **schedule** | いいえ  | 指定した分、時間、曜日、および月の日にちに基づいて、recurrence に対する変更を定義します | 
 | **count** | いいえ  | ジョブが終了するまでの実行回数を指定する正の整数。 <p>たとえば、日単位のジョブの **count** を 7 に設定し、開始日を月曜日に設定した場合、ジョブの実行は日曜日に終了します。 開始日が既に過去の日付である場合、最初の実行は作成時刻から計算されます。 <p>**endTime** または **count** が指定されていない場合、ジョブは無期限で実行されます。 同じジョブで **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 | 
-| **endTime** | いいえ  | ジョブの実行をいつ終了するかを示す、[ISO 8601 形式](http://en.wikipedia.org/wiki/ISO_8601)の Date または DateTime 文字列値。 **endTime** には、過去の値を設定することができます。 <p>**endTime** または **count** が指定されていない場合、ジョブは無期限で実行されます。 同じジョブで **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 |
+| **endTime** | いいえ  | ジョブの実行をいつ終了するかを示す、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)の Date または DateTime 文字列値。 **endTime** には、過去の値を設定することができます。 <p>**endTime** または **count** が指定されていない場合、ジョブは無期限で実行されます。 同じジョブで **count** と **endTime** の両方を使用することはできません。この場合、最初に完了する規則が適用されます。 |
 |||| 
 
 たとえば、次の JSON スキーマには、ジョブの基本スケジュールと繰り返しが記述されています。 
@@ -94,9 +94,9 @@ ms.locfileid: "55701014"
 
 "*日付と DateTime の値*"
 
-* Scheduler ジョブにおける日付は、日付のみを含み、[ISO 8601 仕様](http://en.wikipedia.org/wiki/ISO_8601)に従います。
+* Scheduler ジョブにおける日付は、日付のみを含み、[ISO 8601 仕様](https://en.wikipedia.org/wiki/ISO_8601)に従います。
 
-* Scheduler ジョブにおける日付/時刻は日付と時刻の両方を含み、[ISO 8601 仕様](http://en.wikipedia.org/wiki/ISO_8601)に従います。UTC オフセットが指定されていない場合は、UTC と見なされます。 
+* Scheduler ジョブにおける日付/時刻は日付と時刻の両方を含み、[ISO 8601 仕様](https://en.wikipedia.org/wiki/ISO_8601)に従います。UTC オフセットが指定されていない場合は、UTC と見なされます。 
 
 詳細については、[概念、用語、エンティティ](../scheduler/scheduler-concepts-terms.md)に関するページを参照してください。
 

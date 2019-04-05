@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 29e01177d4b096449cd906a22b47223078c6493e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8325e2d1dccf1184c5297a60161200b41fc1d412
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107822"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338282"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーの容量とスケーリングを計画する
 
@@ -114,7 +114,7 @@ Site Recovery インフラストラクチャを設定する前に、その環境
 1. これらのパラメーターを測定するには、環境で Site Recovery Deployment Planner を実行します。 役に立つガイドラインについては、「[VMware から Azure 用の Azure Site Recovery Deployment Planner について](site-recovery-deployment-planner.md)」をご覧ください。
 2. [構成サーバーのサイズの推奨事項](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server)を満たす構成サーバーをデプロイします。 運用ワークロードが仮想マシン 650 台を超える場合、別の構成サーバーをデプロイします。
 3. 測定されたデータの日次変化率に基づき、[サイズのガイドライン](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server)を参考にして、[スケールアウト プロセス サーバー](vmware-azure-set-up-process-server-scale.md#download-installation-file)をデプロイします。
-4. ディスクの仮想マシン用にデータの変化率が 2 MBps を超えることが予期される場合は、[Premium ストレージ アカウントを設定](tutorial-prepare-azure.md#create-a-storage-account)します。 Site Recovery Deployment Planner は、特定の期間について実行されます。 それ以外の時間帯のデータ変化率のピークは、レポートにキャプチャされていない可能性があります。
+4. ディスクの仮想マシン用にデータの変化率が 2 MBps を超えることが予期される場合は、Premium マネージド ディスクを使用してください。 Site Recovery Deployment Planner は、特定の期間について実行されます。 それ以外の時間帯のデータ変化率のピークは、レポートにキャプチャされていない可能性があります。
 5. 実現する RPO に基づいて、[ネットワーク帯域幅を設定](site-recovery-plan-capacity-vmware.md#control-network-bandwidth)します。
 6. インフラストラクチャをセットアップするときに、ワークロードのディザスター リカバリーを有効にします。 方法については、「[Azure への VMware レプリケーションのソース環境を設定する](vmware-azure-set-up-source.md)」をご覧ください。
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: ebf376f0bdba8c41f88d6f97cef2c17ecd259022
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0785d0805027dd0bd621203ade7287e5a1840a9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816647"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870148"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -401,13 +401,13 @@ PdM では、通常の例よりも、少数派クラスを構成する故障の�
 
 前述のように、PdM のモデルの運用化は、その仲間と異なっています。 通常、異常検出や障害検出に関連するシナリオでは、"_オンライン スコアリング_" (または "_リアルタイム スコアリング_") を実装します。 ここでは、モデルは受信した各レコードを "_スコア付け_" し、予測を返します。 異常検出では、予測は異常が発生したという兆候です (例: 1 クラス SVM)。 障害検出では、予測は障害の種類やクラスとなります。
 
-これに対し、PdM は "_バッチ スコアリング_" を含みます。 モデル シグネチャに準拠するために、新しいデータの特徴はトレーニング データと同じ方法でエンジニアリングされる必要があります。 新しいデータに典型的な大規模データ セットでは、特徴は時間枠で集計され、バッチでスコア付けされます。 通常、バッチ スコアリングは、[Spark](http://spark.apache.org/) や [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics) のような分散システムで実行されます。 準最適な代替手段が 2 つ存在します。
+これに対し、PdM は "_バッチ スコアリング_" を含みます。 モデル シグネチャに準拠するために、新しいデータの特徴はトレーニング データと同じ方法でエンジニアリングされる必要があります。 新しいデータに典型的な大規模データ セットでは、特徴は時間枠で集計され、バッチでスコア付けされます。 通常、バッチ スコアリングは、[Spark](https://spark.apache.org/) や [Azure Batch](https://docs.microsoft.com/azure/batch/batch-api-basics) のような分散システムで実行されます。 準最適な代替手段が 2 つ存在します。
 - ストリーミング データ エンジンは、メモリ内で時間枠での集計をサポートします。 したがって、オンライン スコアリングをサポートするとも言えます。 ただし、これらのシステムが適しているのは、狭い時間枠での高密度のデータ、または広い時間枠でのまばらな要素です。 広い時間枠での高密度のデータに対しては、PdM のシナリオで見られるように、適切にスケーリングが行われない可能性があります。
 - バッチ スコアリングを利用できない場合のソリューションは、オンライン スコアリングを調整して、小さなバッチ内の新しいデータを一度に処理することです。
 
 ## <a name="solution-templates-for-predictive-maintenance"></a>予測メンテナンスのためのソリューション テンプレート
 
-このガイドの最後のセクションでは、PdM のソリューション テンプレート、チュートリアル、および Azure で実装された実験の一覧を示します。 これらの PdM アプリケーションは、場合によっては数分で Azure サブスクリプションにデプロイできます。 これらは、概念実証のデモ、代替手段を実験するためのサンドボックス、または実稼働の実装のためのアクセラレータとして使用できます。 これらのテンプレートは、[Azure AI Gallery](http://gallery.azure.ai) または [Azure GitHub](https://github.com/Azure) に配置されます。 これらのさまざまなサンプルは、時間とともにこのソリューション テンプレートにまとめられます。
+このガイドの最後のセクションでは、PdM のソリューション テンプレート、チュートリアル、および Azure で実装された実験の一覧を示します。 これらの PdM アプリケーションは、場合によっては数分で Azure サブスクリプションにデプロイできます。 これらは、概念実証のデモ、代替手段を実験するためのサンドボックス、または実稼働の実装のためのアクセラレータとして使用できます。 これらのテンプレートは、[Azure AI Gallery](https://gallery.azure.ai) または [Azure GitHub](https://github.com/Azure) に配置されます。 これらのさまざまなサンプルは、時間とともにこのソリューション テンプレートにまとめられます。
 
 | # | タイトル | 説明 |
 |--:|:------|-------------|
@@ -431,9 +431,9 @@ Microsoft Azure では、一般的な AI の概念や実践に関するコンテ
 | [Azure の AI 開発者](https://azure.microsoft.com/training/learning-paths/azure-ai-developer) | パブリック |
 | [Microsoft AI スクール](https://aischool.microsoft.com/learning-paths) | パブリック |
 | [GitHub からの Azure AI ラーニング](https://github.com/Azure/connectthedots/blob/master/readme.md) | パブリック |
-| [LinkedIn Learning](http://www.linkedin.com/learning) | パブリック |
+| [LinkedIn Learning](https://www.linkedin.com/learning) | パブリック |
 | [Microsoft AI YouTube ウェビナー](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | パブリック |
-| [Microsoft AI Show](http://channel9.msdn.com/Shows/AI-Show) | パブリック |
+| [Microsoft AI Show](https://channel9.msdn.com/Shows/AI-Show) | パブリック |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | パートナー |
 | [Microsoft Partner Network](https://learningportal.microsoft.com) | パートナー |
 

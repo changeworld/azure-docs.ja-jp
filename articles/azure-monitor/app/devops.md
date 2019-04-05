@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0c7f248023a97bdad09c2c51e9e9a28073def086
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 24b0bc01b5cb4f1d2696a7c9526d586c9b42d0fc
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300127"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674584"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights を使用した Web アプリおよびサービスの詳細な診断
 ## <a name="why-do-i-need-application-insights"></a>Application Insights が必要な理由
@@ -166,7 +166,7 @@ Application Insights では、アラートが発生したときに、作業項�
 ## <a name="next-steps"></a>次の手順
 Application Insights の操作は簡単です。 主なオプションは次のとおりです。
 
-* 既に実行中の Web アプリをインストルメント化します。 これにより、すべての組み込みのパフォーマンス テレメトリが提供されます。 [Java](../../azure-monitor/app/java-live.md)、[IIS サーバー](../../azure-monitor/app/monitor-performance-live-website-now.md)のほか、[Azure App Service](../../azure-monitor/app/app-insights-overview.md) でも使用できます。
+* [IIS サーバー](../../azure-monitor/app/monitor-performance-live-website-now.md)、および [Azure App Service](../../azure-monitor/app/app-insights-overview.md) 用。
 * 開発中のプロジェクトをインストルメント化します。 これは、[ASP.NET](../../azure-monitor/app/asp-net.md) または [Java](../../azure-monitor/app/java-get-started.md) アプリだけでなく、[Node.js](../../azure-monitor/app/nodejs.md) や[他の種類](../../azure-monitor/app/platforms.md)のホストでも実行できます。 
 * 短いコード スニペットを追加して、 [任意の Web ページ](../../azure-monitor/app/javascript.md) をインストルメント化します。
 

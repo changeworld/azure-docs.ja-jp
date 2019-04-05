@@ -3,20 +3,20 @@ title: Azure Data Factory のデータ ファクトリをコピーまたは複�
 description: Azure Data Factory のデータ ファクトリをコピーまたは複製する方法について説明します
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: douglasl
-ms.openlocfilehash: c62581447cd395bd48a787fa7dc89659d5172486
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: 96ea8142e2f7794d3c15c6efb436eafa585bc8fd
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192741"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575615"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Azure Data Factory のデータ ファクトリをコピーまたは複製する
 
@@ -35,6 +35,8 @@ ms.locfileid: "54192741"
 1. Azure portal の Data Factory UI では、データ ファクトリのペイロード全体を Resource Manager テンプレートにエクスポートすることができます。その際、パラメーター ファイルも一緒にエクスポートできます。ファクトリを複製するときにこのファイルを使用することで、任意の値を変更することができます。
 
 1. 前提条件として、Azure portal からターゲット データ ファクトリを作成する必要があります。
+
+1. ご自分のソース ファクトリ内にセルフホステッド統合ランタイムがある場合は、ターゲット ファクトリ内に同じ名前を使用してそれを事前に作成する必要があります。 異なるファクトリでセルフホステッド IR を共有する場合は、[こちら](author-visually.md#best-practices-for-git-integration)で公開されているパターンを使用できます。
 
 1. GIT モードを使用している場合は、ポータルから発行するたびに、ファクトリの Resource Manager テンプレートが、GIT のリポジトリの adf_publish ブランチに保存されます。
 

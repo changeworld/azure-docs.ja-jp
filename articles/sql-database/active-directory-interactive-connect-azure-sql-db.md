@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.date: 01/25/2019
+ms.date: 03/12/2019
 manager: craigg
-ms.openlocfilehash: a7f2dbdb089df8035d18db25b3968d63a3c97c0f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 5f089148bafbab21721c83c0d4b6977a7db86320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767501"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834601"
 ---
 # <a name="connect-to-azure-sql-database-with-active-directory-mfa"></a>Active Directory MFA を使用して Azure SQL Database に接続する
 
@@ -99,7 +99,7 @@ Azure SQL Database の Azure AD 管理者とユーザーの詳細については
 
 SQL Database サーバーの Azure AD 管理者は、C# サンプル プログラムを実行できます。 Azure AD ユーザーは、データベースに登録されていればプログラムを実行できます。 データベースに既に登録され、データベースに対して `ALTER ANY USER` アクセス許可を持つ Azure AD SQL 管理者または Azure AD ユーザーは、ユーザーを追加できます。
 
-SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=sql-server-2017) コマンドを使用してデータベースにユーザーを追加できます。 たとえば、「 `CREATE USER [<username>] FROM EXTERNAL PROVIDER` 」のように入力します。
+SQL [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) コマンドを使用してデータベースにユーザーを追加できます。 たとえば、「 `CREATE USER [<username>] FROM EXTERNAL PROVIDER` 」のように入力します。
 
 詳細については、「[Use Azure Active Directory Authentication for authentication with SQL Database, Managed Instance, or SQL Data Warehouse (SQL Database、マネージド インスタンス、または SQL Data Warehouse での認証に Azure Active Directory Authentication を使用する)](sql-database-aad-authentication.md)」をご覧ください。
 
@@ -126,7 +126,7 @@ C# プログラムを正常に実行するには、静的フィールドに適�
 | 静的フィールド名 | 値の例 | Azure portal 内の場所 |
 | :---------------- | :------------ | :-------------------- |
 | Az_SQLDB_svrName | "my-sqldb-svr.database.windows.net" | **[SQL Server]** > **[名前でフィルター]** |
-| AzureAD_UserID | "auser@abc.onmicrosoft.com" | **[Azure Active Directory]** > **[ユーザー]** > **[新しいゲスト ユーザー]** |
+| AzureAD_UserID | "auser\@abc.onmicrosoft.com" | **[Azure Active Directory]** > **[ユーザー]** > **[新しいゲスト ユーザー]** |
 | Initial_DatabaseName | "myDatabase" | **[SQL Server]** > **[SQL データベース]** |
 | ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **[Azure Active Directory]** > **[アプリの登録]** > **[名前で検索]** > **[アプリケーション ID]** |
 | RedirectUri | 新しい URI ("https://mywebserver.com/") | **[Azure Active Directory]** > **[アプリの登録]** > **[名前で検索]** > *"アプリの登録名"* > **[設定]** > **[RedirectURIs]**<br /><br />この記事では使用されていないため、RedirectUri に任意の有効な値を指定できます。 |
@@ -341,5 +341,8 @@ In method 'AcquireTokenAsync', case_0 == '.ActiveDirectoryInteractive'.
 
 ## <a name="next-steps"></a>次の手順
 
-- [SQL Server の Azure AD 管理者に関する情報を取得する](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlserveractivedirectoryadministrator)
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
+- [Get-AzSqlServerActiveDirectoryAdministrator](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 9b5054da56bdc6a88642ea7860702b280a76dbb1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f9dec5b3aeb951316985c965de70a372f55b8225
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461170"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549189"
 ---
 # <a name="time-to-live-in-azure-cosmos-db"></a>Azure Cosmos DB の Time to Live 
 
@@ -30,7 +30,7 @@ Time to Live 値は秒数で設定され、項目が最後に変更された時�
 
    - 設定されており、値がいずれかの数 ("n") に設定されている場合、項目は最終変更時刻から "n" 秒後に期限切れになります。
 
-2. **項目の Time to Live** (`TimeToLive` を使用):
+2. **項目の Time to Live** (`ttl` を使用):
 
    - このプロパティを適用できるのは、`DefaultTimeToLive` が存在し、親コンテナーに対して null に設定されていない場合のみです。
 

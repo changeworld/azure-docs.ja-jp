@@ -5,17 +5,17 @@ description: Azure Machine Learning Studio では、Excel から直接 Web サ�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 1e8bb6deeb66b506e1342fceb725b1563b822dff
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453122"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855199"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Excel からの Azure Machine Learning Studio Web サービスの使用
 
@@ -33,8 +33,8 @@ Web サービスを作成したら、Studio の左側の **[WEB サービス]** 
 **従来の Web サービス**
 
 1. Web サービスの **[ダッシュボード]** タブに、**要求/応答**サービスの行があります。 このサービスに 1 つの出力がある場合は、その行の **[Excel ブックのダウンロード]** のリンクを確認してください。
-   
-    ![](./media/consuming-from-excel/excellink.png)
+
+    ![Studio Web サービス ポータルを使用して Excel ブックをダウンロードする](./media/consuming-from-excel/excellink.png)
 2. **[Excel ブックのダウンロード]** をクリックします。
 
 **新しい Web サービス**
@@ -46,17 +46,17 @@ Web サービスを作成したら、Studio の左側の **[WEB サービス]** 
 
 1. ブックを開きます。
 2. セキュリティの警告が表示されます。**[編集を有効にする]** ボタンをクリックします。
-   
-    ![](./media/consuming-from-excel/enableeditting.png)
+
+    ![編集を有効にして、保護されたビューのセキュリティ警告を削除する](./media/consuming-from-excel/enableeditting.png)
 3. セキュリティの警告が表示されます。 **[コンテンツの有効化]** ボタンをクリックして、スプレッドシートのマクロを実行します。
-   
-    ![](./media/consuming-from-excel/enablecontent.png)
+
+    ![コンテンツを有効にして、マクロが無効になっているというセキュリティ警告を無視する](./media/consuming-from-excel/enablecontent.png)
 4. マクロが有効になると、テーブルが生成されます。 青の列は RRS Web サービス、または **PARAMETERS**への入力として必要です。 RRS サービス **PREDICTED VALUES** の出力は緑色で表示されます。 特定の行のすべての列がいっぱいになると、ブックは自動的に、スコア付け API を呼び出し、スコア付けされた結果を表示します。
-   
-    ![](./media/consuming-from-excel/sampletable.png)
+
+    ![パラメーターの入力と結果の予測値の表](./media/consuming-from-excel/sampletable.png)
 5. 複数の行のスコア付けを実行するには、2 番目の行にデータを入力すると、予測値が生成されます。 複数の行を一度に貼り付けることもできます。
 
-これで、Excel 機能 (グラフ、Power Map、条件付き書式など) と予測値を使用して、データの視覚化に役立てることができます。    
+これで、Excel 機能 (グラフ、Power Map、条件付き書式など) と予測値を使用して、データの視覚化に役立てることができます。
 
 ## <a name="sharing-your-workbook"></a>ブックを共有する
 マクロが機能するには、API キーがスプレッドシートの一部である必要があります。 つまり、信頼するエンティティ/個人とだけ、ブックを共有する必要があります。

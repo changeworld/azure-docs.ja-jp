@@ -8,24 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: conceptual
-ms.date: 01/12/2017
+ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: e164e02f3e7458e0c8d4fdf8d2a88cf4ab8a17b3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 51f057a1dd0da866a50a0219574c70c3c805882e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874500"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000008"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Autosuggest API のアップグレード ガイド
 
-このアップグレード ガイドでは、Bing Autosuggest API のバージョン 5 とバージョン 7 の間の変更を識別します。 このガイドは、バージョン 7 を使用するために更新する必要のあるアプリケーションの部分を識別するのに役立ちます。
+このアップグレード ガイドでは、Bing Autosuggest API のバージョン 5 とバージョン 7 の間の変更を識別します。 このガイドを使用して、アプリケーションでバージョン 7 を使用できるように更新してください。
 
 ## <a name="breaking-changes"></a>重大な変更
 
 ### <a name="endpoints"></a>エンドポイント
 
-- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 例: https://api.cognitive.microsoft.com/bing/\*\*v7.0**/Suggestions。
+- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 たとえば、https:\//api.cognitive.microsoft.com/bing/\*\*v7.0**/Suggestion のようになっています。
 
 ### <a name="error-response-objects-and-error-codes"></a>エラー応答オブジェクトとエラー コード
 

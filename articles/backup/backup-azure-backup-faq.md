@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: bfc1c419d5d58b4528b76dbed6fd0060f6b2833d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 420c81f6206c777efc303924d81763f5984aba4c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446666"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993412"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 この記事では、Azure Backup サービスについてよく寄せられる質問への回答を示します。
@@ -93,7 +93,7 @@ VMware/Hyper-V を保護するために個別のライセンスは必要あり�
 ### <a name="what-operating-systems-are-supported-for-backup"></a>バックアップでサポートされているオペレーティング システムはどれですか。
 ファイルとフォルダーのほか、Azure Backup Server と DPM を使用して保護されたアプリのバックアップについて、Azure Backup では次のオペレーティング システムをサポートしています。
 
-**OS**| **SKU** |**詳細**
+**OS** | **SKU** | **詳細**
 --- | --- | ---
 ワークステーション | |
 Windows 10 64 ビット | Enterprise、Pro、Home | マシンで最新の Service Pack および更新プログラムが実行されている必要があります。
@@ -101,6 +101,7 @@ Windows 8.1 64 ビット | Enterprise、Pro | マシンで最新の Service Pack
 Windows 8 64 ビット | Enterprise、Pro | マシンで最新の Service Pack および更新プログラムが実行されている必要があります。
 Windows 7 64 ビット | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | マシンで最新の Service Pack および更新プログラムが実行されている必要があります。
 サーバー | |
+Windows Server 2019 64 ビット | Standard、Datacenter、Essentials | 最新の Service Pack/更新プログラムが適用されていること。
 Windows Server 2016 64 ビット | Standard、Datacenter、Essentials | 最新の Service Pack/更新プログラムが適用されていること。
 Windows Server 2012 R2 64 ビット | Standard、Datacenter、Foundation | 最新の Service Pack/更新プログラムが適用されていること。
 Windows Server 2012 64 ビット | Datacenter、Foundation、Standard | 最新の Service Pack/更新プログラムが適用されていること。
@@ -117,7 +118,7 @@ Azure VM Linux のバックアップについては、Azure Backup は [Azure �
 次のサイズ制限が適用されます。
 
 OS/マシン | データ ソースのサイズ制限
---- | --- | ---
+--- | --- 
 Windows 8 以降 | 54,400 GB
 Windows 7 |1,700 GB
 Windows Server 2012 またはそれ以降 | 54,400 GB

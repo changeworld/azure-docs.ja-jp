@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/31/2018
+ms.date: 02/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d57e3d647acfe9400d7b575f5635e2ab5254352
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 09f61f60a3885fbc58cddc4b46df11014057f54e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162222"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999498"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
@@ -149,6 +149,8 @@ Microsoft Authenticator アプリまたは他のサードパーティ アプリ�
 > セルフサービスによるパスワードのリセットの場合、リセットに必要な方法が 1 つのみのときは、**最高レベルのセキュリティを確保するため**、ユーザーが使用できるオプションは確認コードのみです。
 >
 
+ユーザーは、最大 5 つの OATH ハードウェア トークンまたはいつでも使用されるように構成された Microsoft Authenticator アプリなどの認証アプリケーションを組み合わせている場合があります。
+
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH ハードウェア トークン (パブリック プレビュー)
 
 OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていることに注意してください。すべてのトークンと互換性があるとは限りません。
@@ -196,6 +198,9 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 
 ユーザーが設定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # を押して認証を行います。
 
+> [!IMPORTANT]
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
+
 ## <a name="office-phone"></a>会社電話
 
 ユーザーが設定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # を押して認証を行います。
@@ -203,6 +208,9 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 正常に動作させるには、電話番号の形式が "*+<国コード> <電話番号>*" (例: +1 4255551234) になっている必要があります。
 
 会社電話の属性は、管理者によって管理されます。
+
+> [!IMPORTANT]
+> 2019 年 3 月以降、無料/試用版の Azure AD テナントの MFA および SSPR ユーザーは、音声通話オプションを利用できなくなります。 この変更は、SMS メッセージには影響しません。 有料の Azure AD テナントのユーザーは、引き続き音声通話を利用できます。 この変更は、無料/試用版の Azure AD テナントのみに影響します。
 
 > [!NOTE]
 > 国番号と電話番号の間にスペースを入れる必要があります。
@@ -229,6 +237,6 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 
 [Azure Multi-Factor Authentication を組織で使用できるようにする](howto-mfa-getstarted.md)
 
-[Azure Multi-Factor Authentication と Azure AD のセルフサービスによるパスワードのリセットで集中型登録を有効にする](concept-registration-mfa-sspr-converged.md)
+[テナントで統合された登録を有効にする](howto-registration-mfa-sspr-combined.md)
 
 [エンドユーザーの認証方法の構成に関するドキュメント](https://aka.ms/securityinfoguide)

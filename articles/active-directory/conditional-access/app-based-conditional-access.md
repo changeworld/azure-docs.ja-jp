@@ -18,12 +18,12 @@ ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3521ea7599aecd20784bd925492649b86921c567
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 57b7f540ccf80c6d25a7dfcfcad1ba7ca6698167
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182308"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113233"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>方法:条件付きアクセスを使用してクラウド アプリへのアクセスに承認されたクライアント アプリを要求する 
 
@@ -292,13 +292,13 @@ Azure Active Directory の条件付きアクセスを使うと、クラウド �
 
 5. **アクセスコントロール**として、以下を選択する必要があります。
 
-    - **デバイスは準拠としてマーク済みである必要があります**
+   - **デバイスは準拠としてマーク済みである必要があります**
 
-    - **承認されたクライアント アプリが必要です (プレビュー)**
+   - **承認されたクライアント アプリが必要です (プレビュー)**
 
-    - **選択したコントロールのいずれかが必要です**   
+   - **選択したコントロールのいずれかが必要です**   
  
-    ![条件付きアクセス](./media/app-based-conditional-access/11.png)
+     ![条件付きアクセス](./media/app-based-conditional-access/11.png)
 
 
 
@@ -388,13 +388,13 @@ Azure Active Directory の条件付きアクセスを使うと、クラウド �
 
 5. **アクセスコントロール**として、以下を選択する必要があります。
 
-    - **デバイスは準拠としてマーク済みである必要があります**
+   - **デバイスは準拠としてマーク済みである必要があります**
 
-    - **承認されたクライアント アプリが必要です (プレビュー)**
+   - **承認されたクライアント アプリが必要です (プレビュー)**
 
-    - **選択したコントロールすべてが必要です**   
+   - **選択したコントロールすべてが必要です**   
  
-    ![条件付きアクセス](./media/app-based-conditional-access/13.png)
+     ![条件付きアクセス](./media/app-based-conditional-access/13.png)
 
 
 
@@ -420,13 +420,13 @@ Azure Active Directory の条件付きアクセスを使うと、クラウド �
 
 5. **アクセスコントロール**として、以下を選択する必要があります。
 
-    - **デバイスは準拠としてマーク済みである必要があります**
+   - **デバイスは準拠としてマーク済みである必要があります**
 
-    - **承認されたクライアント アプリが必要です (プレビュー)**
+   - **承認されたクライアント アプリが必要です (プレビュー)**
 
-    - **選択したコントロールすべてが必要です**   
+   - **選択したコントロールすべてが必要です**   
  
-    ![条件付きアクセス](./media/app-based-conditional-access/64.png)
+     ![条件付きアクセス](./media/app-based-conditional-access/64.png)
 
 
 

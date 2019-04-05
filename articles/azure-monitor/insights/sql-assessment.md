@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 2e20623c015f8bc80b61f07e28c49d49df73887b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 534307cfd71551de5427a196902b275a15ad44b5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189440"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436376"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Log Analytics で SQL Server 正常性チェック ソリューションを使用して SQL 環境を最適化する
 
@@ -186,7 +186,7 @@ Log Analytics の評価ソリューションを使用するには、ソリュー
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-    ログ検索のクエリを示すスクリーン ショットを次に示します。<br><br> ![失敗した推奨事項](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    ログ検索のクエリを示すスクリーンショットを次に示します。<br><br> ![失敗した推奨事項](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
 3. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
 

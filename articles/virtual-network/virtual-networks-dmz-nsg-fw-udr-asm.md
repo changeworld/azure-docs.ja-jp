@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 93402f9124a5c2f6a251cb0e3b3dab21386fa5ff
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 9632bd339956aff7558461ed391cdd21c92f06ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965258"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995176"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>例 3 - ファイアウォール、UDR、NSG から成る DMZ を構築してネットワークを保護する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -356,7 +356,7 @@ Pass ルール: ![Pass アイコン][9]
   
     この Pass ルールによって、フロントエンド サブネット上の IIS サーバーが任意のプロトコルで AppVM01 (IP アドレス: 10.0.2.5) の任意のポートに到達し、Web アプリケーションに必要なデータにアクセスすることができます。
   
-    このスクリーン ショットでは、[Destination] フィールドに "\<explicit-dest\>" が使用され、宛先として 10.0.2.5 が指定されています。 ここは、この例のように明示的に指定してもかまいませんが、(DNS サーバーの前提条件で作成した) 名前付きネットワーク オブジェクトを指定することもできます。 どちらの方法を使用するかは、ファイアウォールの管理者が決めます。 10.0.2.5 を明示的な宛先として追加するには、\<explicit-dest\> の下にある 1 つ目の空白行をダブルクリックし、表示されたウィンドウにアドレスを入力します。
+    このスクリーンショットでは、[Destination]\(宛先\) フィールドに "\<explicit-dest\>" が使用され、宛先として 10.0.2.5 が指定されています。 ここは、この例のように明示的に指定してもかまいませんが、(DNS サーバーの前提条件で作成した) 名前付きネットワーク オブジェクトを指定することもできます。 どちらの方法を使用するかは、ファイアウォールの管理者が決めます。 10.0.2.5 を明示的な宛先として追加するには、\<explicit-dest\> の下にある 1 つ目の空白行をダブルクリックし、表示されたウィンドウにアドレスを入力します。
   
     内部トラフィックが対象となるため、この Pass ルールに NAT は不要です。[Connection Method] は "No SNAT" に設定してください。
   
@@ -381,7 +381,7 @@ Pass ルール: ![Pass アイコン][9]
   
     ![ファイアウォール DNS ルール][15]
   
-    **メモ**:このスクリーン ショットには [Connection Method] が含まれています。 このルールは内部 IP アドレス間のトラフィックを対象としているため、NAT 変換は不要です。そのため、この Pass ルールでは [Connection Method] を "No SNAT" に設定しています。
+    **メモ**:このスクリーンショットには [Connection Method]\(接続方法\) が含まれています。 このルールは内部 IP アドレス間のトラフィックを対象としているため、NAT 変換は不要です。そのため、この Pass ルールでは [Connection Method] を "No SNAT" に設定しています。
 * **サブネット間ルール**:この Pass ルールは、最初から有効になっている既定のルールです。バックエンド サブネット上の任意のサーバーからフロント エンド サブネット上の任意のサーバーへのトラフィックを許可するように変更を加えています。 すべて内部トラフィックが対象となるため、[Connection Method] は [No SNAT] に設定してください。
   
     ![ファイアウォール VNet 間ルール][16]
@@ -486,7 +486,7 @@ Pass ルール: ![Pass アイコン][9]
 11. AppVM01 はユーザー名とパスワードを求めるメッセージを表示します。
 
 #### <a name="allowed-web-server-dns-lookup-on-dns-server"></a>(許可) DNS サーバーに対する Web サーバーの DNS 参照
-1. Web サーバーである IIS01 が、www.data.gov にあるデータ フィードを必要としています。そのためにはアドレスを解決する必要があります。
+1. Web サーバーである IIS01 が、www\.data.gov にあるデータ フィードを必要としています。そのためにはアドレスを解決する必要があります。
 2. VNet 用のネットワーク構成にはプライマリ DNS サーバーとして、DNS01 (バックエンド サブネット上の 10.0.2.4) がリストされており、IIS01 は DNS 要求を DNS01 に送信します。
 3. 送信トラフィックの次ホップは、UDR によってファイアウォールに設定されます。
 4. フロントエンド サブネットに送信 NSG ルールはバインドされていないので、トラフィックは許可されます。
@@ -945,7 +945,7 @@ PowerShell スクリプト ファイルに完全なスクリプトを保存し�
 この xml ファイルに実際のロケーション情報に反映して保存し、このファイルへのリンクを上記スクリプト内の $NetworkConfigFile 変数に追加します。
 
 ```xml
-    <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+    <NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
           <DnsServers>

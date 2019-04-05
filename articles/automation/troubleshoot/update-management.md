@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 0b92d36287646038d9195f7ba39352d8ced9a3b6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: a8be44201a2181ab252dfba501469719dd675ffa
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270268"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410164"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -44,7 +44,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 1. 「[ネットワークの計画](../automation-hybrid-runbook-worker.md#network-planning)」で、Update Management を動作させるために許可する必要があるアドレスとポートを確認してください。
 2. 複製されたイメージを使用する場合:
-   1. Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
+   1. Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します (表示された場合)。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
    2. `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force` を実行します。
    3. `Restart-Service HealthService` を実行して `HealthService` を再起動します。 これにより、キーが再作成され、新しい UUID が生成されます。
    4. これが機能しない場合は、そのイメージを先に sysprep した後、MMA エージェントをインストールします。
@@ -78,11 +78,11 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
-### <a name="nologs"></a>シナリオ: マシンの Log Analytics に表示されない Update Management データ
+### <a name="nologs"></a>シナリオ:マシンの Azure Monitor ログに表示されない Update Management データ
 
 #### <a name="issue"></a>問題
 
-**[コンプライアンス]** の下に **[評価が行われていません]** と表示されるマシンがあるが、Hybrid Runbook Worker に対する Log Analytics 内にハートビート データが表示され、Update Management には表示されません。
+**[コンプライアンス]** の下に **[評価が行われていません]** と表示されるマシンがありますが、Hybrid Runbook Worker に対する Azure Monitor ログにハートビート データが表示され、Update Management には表示されません。
 
 #### <a name="cause"></a>原因
 

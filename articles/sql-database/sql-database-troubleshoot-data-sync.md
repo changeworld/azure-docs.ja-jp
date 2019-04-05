@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: d9e1eee9ab45e9f3a74f296e555c8f91802f36ab
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4ab26891a98418fae75c3be18f17f1d8e02d8b36
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563186"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216715"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>SQL データ同期に関する問題のトラブルシューティング
 
@@ -178,7 +178,7 @@ SQL データ同期の同期グループが、長時間にわたり処理状態�
     a. **[スタート]** メニューを選択します。  
     b. 検索ボックスに「**services.msc**」と入力します。  
     c. 検索結果ウィンドウの **[プログラム]** セクションで、**[サービス]** をダブルクリックします。  
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[SQL データ同期]** サービスを右クリックします。  
+    d. **[SQL データ同期]** サービスを右クリックします。  
     e. サービスが実行中の場合は、停止します。  
     f. サービスを右クリックして、**[開始]** を選択します。  
     g. データベースがまだ登録されているかどうかを確認します。 登録が解除されている場合は、作業は終了です。 それ以外の場合は、次の手順に進みます。
@@ -250,7 +250,7 @@ SQL データ同期の詳細については、以下を参照してください�
         -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   データ同期エージェント - [Azure SQL データ同期のデータ同期エージェント](sql-database-data-sync-agent.md)
 -   ベスト プラクティス - [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
--   監視 - [Log Analytics による SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   監視 - [Azure Monitor ログによる SQL データ同期の監視](sql-database-sync-monitor-oms.md)
 -   同期スキーマの更新
     -   Transact-SQL の場合 - [Azure SQL データ同期内でスキーマ変更のレプリケートを自動化する](sql-database-update-sync-schema.md)
     -   PowerShell の場合 - [PowerShell を使用して、既存の同期グループの同期スキーマを更新する](scripts/sql-database-sync-update-schema.md)

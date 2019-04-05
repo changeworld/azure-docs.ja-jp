@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/07/2019
 ms.author: diberry
-ms.openlocfilehash: 093c60287b16073a6c04e824dc439f5dc069ec96
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bbe46db1972951b466b431c9efc0420e15ff6dee
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863671"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765172"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>作成と公開のリージョンと関連付けられているキー
 
@@ -95,6 +95,9 @@ https://www.luis.ai で作成された LUIS アプリは、[ヨーロッパ](#pu
 |appID|URL ルートで使用され、アプリ ダッシュボードに表示される LUIS アプリ ID|
 |q|チャット ボットなどのクライアント アプリケーションから送信される発話テキスト|
 
+## <a name="failover-regions"></a>フェールオーバー リージョン
+
+各リージョンには、フェールオーバー先のセカンダリ リージョンがあります。 ヨーロッパではヨーロッパ内でフェールオーバーし、オーストラリアではオーストラリア内でフェールオーバーします。
 
 ## <a name="next-steps"></a>次の手順
 

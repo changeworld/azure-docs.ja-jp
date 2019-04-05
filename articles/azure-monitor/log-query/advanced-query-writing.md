@@ -1,5 +1,5 @@
 ---
-title: Azure の Azure Monitor での高度なクエリ | Microsoft Docs
+title: Azure Monitor での高度なクエリ | Microsoft Docs
 description: この記事では、Analytics ポータルを使用して Azure Monitor でクエリを記述することに関するチュートリアルを提供します。
 services: log-analytics
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 401a8d527fc3a8d0430e7eff965b6f5e20db8dc0
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 65713ed9c2d0635e776a7a7e5f205b6d55438ed4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268019"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451622"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Azure Monitor での高度なクエリの記述
 
 > [!NOTE]
-> このレッスンを完了する前に、「[Azure Monitor ログ分析の使用を開始する](get-started-portal.md)」と、「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を完了しておく必要があります。
+> このレッスンを完了する前に、「[Azure Monitor Log Analytics の使用を開始する](get-started-portal.md)」と、[クエリの使用開始](get-started-queries.md)に関する記事の手順を完了しておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

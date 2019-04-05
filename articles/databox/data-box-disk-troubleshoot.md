@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 02/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 24af2150438d3db13323aaecdfd89302b8152fa9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ed6d567be255fe9b72be564c31d734541a1ffa73
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879124"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453339"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Azure Data Box Disk の問題のトラブルシューティング
 

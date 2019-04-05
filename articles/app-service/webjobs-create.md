@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
-ms.openlocfilehash: 43ec22836cb32c21953b9eb6871b9efe300cbf9e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001172"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749921"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
@@ -47,8 +47,7 @@ Azure Functions は、プログラムとスクリプトを実行する別の方�
 | Web アプリが実行されているすべてのインスタンスで実行されます。 必要に応じて、Web ジョブを 1 つのインスタンスに制限できます。 |Azure が負荷分散用に選択した 1 つのインスタンス上で実行されます。|
 | リモート デバッグをサポートします。 | リモート デバッグをサポートしません。|
 
-> [!NOTE]
-> Web アプリは、20 分間アクティビティがないとタイムアウトする可能性があります。 タイマーがリセットされるのは、実際の Web アプリに要求があった場合のみです。 Azure portal でアプリの構成を表示したり、高度なツールのサイト (https://<app_name>.scm.azurewebsites.net) に対して要求を行っても、タイマーはリセットされません。 アプリが継続的またはスケジュールに従って Web ジョブを実行する場合は、**Always On** を有効にして、Web ジョブが確実に実行されるようにします。 この機能は、Basic、Standard、および Premium の[価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)でのみ利用できます。
+[!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ## <a name="acceptablefiles"></a>スクリプトまたはプログラムでサポートされるファイルの種類
 
@@ -181,10 +180,9 @@ when making changes in one don't forget the other two.
 {
     "schedule": "0 */15 * * * *"
 }
-``` 
+```
 
-> [!NOTE]
-> Web ジョブを Visual Studio からデプロイする場合は、`settings.job` ファイルのプロパティを **[新しい場合はコピーする]** に設定してください。
+詳細については、「[Scheduling a triggered WebJob (トリガーされる Web ジョブのスケジュール設定)](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob)」を参照してください。
 
 ## <a name="ViewJobHistory"></a>ジョブ履歴を表示する
 

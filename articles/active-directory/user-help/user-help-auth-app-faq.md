@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78fc7441b109c87f1ab9ff5b56ed8e055c152d10
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 83c071629ba18ab9f40ecec3b2e09290f57ad2fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996549"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator アプリに関する FAQ
 
@@ -27,6 +27,7 @@ ms.locfileid: "56456063"
 Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換わり、Azure 多要素認証を使用するときに推奨されるアプリです。 Microsoft Authenticator アプリは、[Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) および [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458) で利用できます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
 |質問|解決策|
 |--------|--------|
 |Authenticator でユーザーについてどのようなデータが格納されますか? また、どうすれば削除できますか?|Microsoft Authenticator アプリは、次の 3 種類の情報を収集します。<ul><li>アカウントを追加したときに入力したアカウント情報。 このデータは、アカウントを削除することで削除できます。</li><li>診断ログ データ。アプリの **[ヘルプ]** メニューから Microsoft への **[ログの送信]** を選択するまでアプリ内にのみ存在します。 これらのログファイルには、メール アドレス (alain@contoso.com など)、サーバー/IP アドレス、デバイス データ (デバイス名やオペレーティング システムのバージョンなど) のような個人データが含まれます。この個人データは、アプリの問題解決に必要な情報に制限されています。 これらのログ ファイルはいつでもアプリで表示し、収集されている情報を確認できます。 ユーザーがログ ファイルを送信すると、認証アプリ エンジニアはその情報を利用して報告された問題を解決できます。</li><li>"アカウントの追加フローが開始されました/アカウントが正常に追加されました"、"通知が承認されました" など、個人を特定できない使用データ。 このデータは、エンジニアリングの判断に重要な部分を占め、ユーザーにとって重要な機能やアプリの更新プログラムの形式で改善が必要な機能を判断するために役立ちます。 アプリ ユーザーには、アプリの最初の起動時にこのデータ収集の通知が表示され、アプリの **[設定]** ページでオフに切り替えられることが通知されます。 この設定はいつでも有効または無効にすることができます。</li></ul>|
@@ -49,13 +50,15 @@ Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換
 |Apple Watch 用の Microsoft Authenticator コンパニオン アプリが、Watch と同期も表示も行いません。なぜですか?|アプリが Watch に表示されない場合は、以下を試してください。 <ol><li>Watch が watchOS 4.0 以降で実行されていることを確認します。</li><li>Watch を再度同期します。</li></ol>|
 |Apple Watch コンパニオン アプリがクラッシュしました。 調査できるようにクラッシュ ログを送信できますか? |まず、分析を Microsoft と共有することを選択しているかどうかを確認する必要があります。 TestFlight ユーザーであれば、既にサインアップしています。 それ以外の場合は、**[設定] > [プライバシー] > [解析]** の順に移動し、**[iPhone と Watch 解析を共有]** オプションと **[App デベロッパと共有]** オプションの両方を選択します。<br><br>サインアップした後、調査のためにクラッシュ ログが自動的に送信されるように、クラッシュの再現を試みることができます。 ただし、クラッシュを再現できなくても、ログ ファイルを手動でコピーして送信できます。<ol><li>スマートフォン上で Watch アプリを開き、**[設定] > [一般]** の順に移動し、**[Watch 解析のコピー]** をクリックします。</li><li>**[設定] > [プライバシー] > [解析] > [解析データ]** で、該当するクラッシュを探し、テキスト全体を手動でコピーします。</li><li>スマートフォン上で Microsoft Authenticator アプリを開き、**[ログの送信]** ページの **[App デベロッパと共有]** テキスト ボックスに、コピーしたテキストを貼り付けます。</li></ol>|
 |アプリ ロック機能とは何ですか、セキュリティの強化にどのように役立ちますか?|ワンタイム パスコード、アプリの情報、アプリの設定のセキュリティを強化するには、Microsoft Authenticator アプリのアプリ ロック機能をオンにします。 Microsoft Authenticator アプリの **[設定]** 画面からアプリ ロック機能をオンにすることは、Microsoft Authenticator アプリを開くたびに、PIN または生体認証を使用して、認証を求められることを意味します。 この機能は保護を追加するもので、Microsoft Authenticator アプリで通知を承認する方法は変更されません。<br><br>**注**<br>30 秒以内に Android デバイスで実行されている Microsoft Authenticator アプリに戻った場合は、認証が再度求められることはありません。|
-|なぜ自分のアカウントのアクティビティに関する通知を受け取るのですか?|お客様個人の Microsoft アカウントで何が行われているかをお知らせるために、Microsoft Authenticator アプリにアクティビティの通知を送信しています。 これらの通知は、何か変更があるとすぐに表示されるため、安全性の向上に役立ちます。 以前はこれらの通知をメールと SMS で送信していましたが、アプリも含めるように拡張されました。 これらのアクティビティの通知の詳細については、「[お使いのアカウントで通常とは異なるサインインが発生した場合](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)」を参照してください。 通知を受け取る場所を変更するには、 https://account.live.com/SecurityNotifications/Update にサインインしてください。|
+|なぜ自分のアカウントのアクティビティに関する通知を受け取るのですか?|お客様個人の Microsoft アカウントで何が行われているかをお知らせるために、Microsoft Authenticator アプリにアクティビティの通知を送信しています。 これらの通知は、何か変更があるとすぐに表示されるため、安全性の向上に役立ちます。 以前はこれらの通知をメールと SMS で送信していましたが、アプリも含めるように拡張されました。 これらのアクティビティの通知の詳細については、「[お使いのアカウントで通常とは異なるサインインが発生した場合](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)」を参照してください。 通知を受け取る場所を変更するには、 https://account.live.com/SecurityNotifications/Update にサインインしてください。
 
 
 ## <a name="next-steps"></a>次の手順
 
+- 個人用 Microsoft アカウントの確認コードの取得に問題がある場合は、「[Microsoft アカウントのセキュリティ情報と確認コード](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes)」の記事の「**確認コードの問題のトラブルシューティング**」セクションを参照してください。
+
 -   2 段階認証について詳しくは、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」をご覧ください
 
--   セキュリティ情報の詳細については、[セキュリティ情報の管理](security-info-manage-settings.md)に関する記事を参照してください。
+-   セキュリティ情報の詳細については、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」を参照してください
 
 - 疑問点への答えがここで見つからなかった場合は、ぜひお知らせください。 [Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp)に質問を投稿してコミュニティからのサポートを受けるか、このページにコメントを残してください。

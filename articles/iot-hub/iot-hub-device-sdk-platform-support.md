@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: 15548e801777a99dfb78de0067abb633a2587ee6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7bcc1bf6b734abe202c5fec5d515604f4bf8e4a7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053195"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669365"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Azure IoT SDK プラットフォームのサポート
 
@@ -62,7 +62,7 @@ Microsoft はさまざまなオペレーティング システム/プラット�
 
 ### <a name="net-sdk"></a>.NET SDK
 
-| OS                  | Arch | フレームワーク            | 標準          |
+| OS                  | Arch | フレームワーク            | Standard          |
 |---------------------|------|----------------------|-------------------|
 | Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | .NET Standard 2.0 |
 | Windows Server 2016 | X64  | .NET Core 2.1        | .NET Standard 2.0 |
@@ -83,6 +83,7 @@ Microsoft はさまざまなオペレーティング システム/プラット�
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
 | Android API 28 | X64  | Java 8       |
+| Android Things | X64  | Java 8      |
 
 ## <a name="partner-supported-platforms"></a>パートナーによってサポートされているプラットフォーム
 

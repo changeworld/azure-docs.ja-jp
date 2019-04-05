@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.openlocfilehash: c9733346d091a6829bd5b42c80201df3a1357fe3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8c0e47f5bed0799b8536cecb38a85ed76185d0cd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243112"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194930"
 ---
 # <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>概要:Azure Logic Apps での Enterprise Integration Pack を使用した B2B エンタープライズ統合シナリオ
 
@@ -70,5 +70,5 @@ Azure Logic Apps の B2B 機能を使用する、[完全に動作する AS2 送�
 * [エンタープライズ統合コネクタ](../connectors/apis-list.md "Enterprise Integration Pack コネクタについての詳細情報")
 * [統合アカウント メタデータ](../logic-apps/logic-apps-enterprise-integration-metadata.md "統合アカウントのメタデータについての詳細情報")
 * [B2B メッセージを監視する](logic-apps-monitor-b2b-message.md "B2B メッセージの監視方法についての詳細情報")
-* [Azure Log Analytics で B2B メッセージを追跡する](logic-apps-track-b2b-messages-omsportal.md " Azure Log Analytics での B2B メッセージの追跡についての詳細情報")
+* [Azure Monitor ログで B2B メッセージを追跡する](logic-apps-track-b2b-messages-omsportal.md " Azure Monitor ログでの B2B メッセージの追跡についての詳細情報")
 

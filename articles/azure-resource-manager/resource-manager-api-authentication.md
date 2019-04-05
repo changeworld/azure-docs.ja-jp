@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 138367eb7eb0d4be2e0a7bec57d1bce551a5e829
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266995"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107054"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
 
@@ -234,7 +234,8 @@ Azure Resource Manager のアクセス トークンしかないため、Azure AD
 <a id="app-azure-ad-graph" />
 
 ### <a name="get-app-only-access-token-for-azure-ad-graph-api"></a>Azure AD Graph API のアプリケーション専用アクセス トークンを取得する
-アプリケーションを認証し、Azure AD Graph API へのトークンを取得するには、OAuth 2.0 クライアント資格情報付与フロー トークン要求を Azure AD トークン エンドポイント (**https://login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**) に発行します。
+
+アプリケーションを認証し、Azure AD Graph API へのトークンを取得するには、OAuth 2.0 クライアント資格情報付与フロー トークン要求を Azure AD トークン エンドポイント (**https:\//login.microsoftonline.com/{directory_domain_name}/OAuth2/Token**) に発行します。
 
 ASP.NET MVC サンプル アプリケーションの [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs) メソッドは、Active Directory Authentication Library for .NET を使用して、Graph API のアプリケーション専用アクセス トークンを取得します。
 

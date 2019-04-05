@@ -3,7 +3,7 @@ title: SQL Server 可用性グループ - Azure 仮想マシン - 前提条件 |
 description: このチュートリアルでは、Azure VM で SQL Server Always On 可用性グループを作成するための前提条件の構成方法について説明します。
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: ff2031bd4c4fdc3d3ed8447a08ef29f0f89ea1d8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1d0f3bfa03eb4bafdd10222e28782c318848b7f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818024"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995166"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Azure 仮想マシンで Always On 可用性グループを作成するための前提条件を満たす
 
@@ -42,7 +42,7 @@ ms.locfileid: "55818024"
 Azure アカウントが必要です。 [無料の Azure アカウントを作成する](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US)か、[Visual Studio サブスクライバーの特典を有効にする](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits)ことができます。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. ポータルで、**[+]** をクリックして新しいオブジェクトを作成します。
 
    ![新しいオブジェクト](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-portalplus.png)
@@ -292,14 +292,14 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 15. 黄色の警告バーにある **[その他]** リンクをクリックします。
 16. **[すべてのサーバー タスクの詳細]** ダイアログ ボックスの **[操作]** 列で、**[このサーバーをドメイン コントローラーに昇格する]** をクリックします。
 17. **[デプロイ構成]** で **[既存のドメインにドメイン コントローラーを追加する]** を選択します。
-   ![デプロイ構成](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
+    ![デプロイ構成](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/28-deploymentconfig.png)
 18. **[選択]** をクリックします。
 19. 管理者アカウント (**CORP.CONTOSO.COM\domainadmin**) とパスワード (**Contoso!0000**) を使用して接続します。
 20. **[フォレストからのドメインの選択]** で使用するドメインをクリックし、**[OK]** をクリックします。
 21. **[ドメイン コントローラー オプション]** で、既定値を使用し、DSRM パスワードを設定します。
 
-   >[!NOTE]
-   >**[DNS オプション]** ページでは、この DNS サーバーの委任を作成できないという警告が表示される場合があります。 この警告は、非運用環境では無視してかまいません。
+    >[!NOTE]
+    >**[DNS オプション]** ページでは、この DNS サーバーの委任を作成できないという警告が表示される場合があります。 この警告は、非運用環境では無視してかまいません。
 22. **前提条件**の確認のダイアログ ボックスが表示されるまで、**[次へ]** をクリックします。 その後、 **[インストール]** をクリックします。
 
 サーバーによる構成の変更が完了したら、サーバーを再起動します。
@@ -308,7 +308,7 @@ DNS 用に、プライマリ ドメイン コントローラーを使用しま�
 
 Azure Portal の仮想ネットワークの下で、セカンダリ ドメイン コント ローラーの IP アドレスを含めるように DNS サーバーを変更します。 この設定により、DNS サービスの冗長性が可能になります。
 
-### <a name=DomainAccounts></a> ドメイン アカウントの構成
+### <a name="DomainAccounts"></a> ドメイン アカウントの構成
 
 次に、Active Directory アカウントを構成します。 次の表は、各アカウントを示しています。
 
@@ -464,7 +464,7 @@ SQL Server 可用性グループでは、各 SQL Server VM をドメイン ア�
 もう一方の SQL Server VM についても同じ手順を繰り返します。
 
   >[!NOTE]
-  > 実際に SQL Server VM をフェールオーバー クラスターに参加させる手順と共に、この手順は、Azure クイックスタート テンプレートを使用して自動化できるようになりました。 詳しくは、「[WSFC、リスナーを作成し、Azure クイックスタート テンプレートを使用して、SQL Server VM に Always On 可用性グループ用の ILB を構成する](virtual-machines-windows-sql-availability-group-quickstart-template.md)」をご覧ください。
+  > 実際に SQL Server VM をフェールオーバー クラスターに参加させる手順と共に、この手順は、[Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) と [Azure クイック スタート テンプレート](virtual-machines-windows-sql-availability-group-quickstart-template.md)を使用して自動化できるようになりました。
 
 
 ## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"> 各 SQL Server VM でのファイアウォールの構成

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: e050122984c19e46f3782c8364331323b403caad
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 2e13f1f09fcdfb68a99e705511e3659f1632132e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895483"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Application Insights でライブ Azure Cloud Services をプロファイリングする
 
@@ -32,6 +32,8 @@ Application Insights Profiler は、Azure 診断拡張機能と共にインス�
 1. [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) 以降を使用していることを確認します。 *ServiceConfiguration.\*.cscfg* ファイルの `osFamily` 値が "5" 以上になっていることを確認すれば十分です。
 
 1. [Application Insights SDK を Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json) に追加します。
+
+   >**Cloud Services 向けの WAD の最新バージョンに付属しているプロファイラーにはバグがあります。** クラウド サービスでプロファイラーを使用するために、サポートされる AI SDK はバージョン 2.7.2 までのみです。 AI SDK の新しいバージョンを使用している場合は、プロファイラーを使用するために、2.7.2 に戻す必要があります。 Visual Studio を使用して、App Insights SDK のバージョンをダウングレードすると、実行時にバインド リダイレクト エラーが発生する可能性があります。 これは、AI SDK のダウングレード後に web.config ファイル内の Microsoft.ApplicationInsights の "newVersion" を "2.7.2.0" に設定する必要がありますが、自動的に更新されないからです。
 
 1. Application Insights で要求を追跡します。
 

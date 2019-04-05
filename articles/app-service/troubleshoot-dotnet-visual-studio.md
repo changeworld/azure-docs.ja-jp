@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e9c1c35236ce6449a9c9bf06ba291f46db472
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 03bafcdbf6890573d1d2855e2b47520d0111fe13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730439"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996779"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -134,19 +134,19 @@ public ActionResult About()
 }
 ```
 
-4. `ViewBag.Message` の行に[ブレークポイントを設定](https://docs.microsoft.com/visualstudio/debugger/)します。
+1. `ViewBag.Message` の行に[ブレークポイントを設定](https://docs.microsoft.com/visualstudio/debugger/)します。
 
-5. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、**[発行]** をクリックします。
+1. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、**[発行]** をクリックします。
 
-6. **[プロファイル]** ドロップダウン リストで、[Azure App Service での ASP.NET アプリの作成](app-service-web-get-started-dotnet-framework.md)に関するページで使用した同じプロファイルを選択します。 次に、[設定] をクリックします。
+1. **[プロファイル]** ドロップダウン リストで、[Azure App Service での ASP.NET アプリの作成](app-service-web-get-started-dotnet-framework.md)に関するページで使用した同じプロファイルを選択します。 次に、[設定] をクリックします。
 
-7. **[発行]** ダイアログ ボックスで、**[設定]** タブをクリックし、**[構成]** を **[デバッグ]** に変更し、**[保存]** をクリックします。
+1. **[発行]** ダイアログ ボックスで、**[設定]** タブをクリックし、**[構成]** を **[デバッグ]** に変更し、**[保存]** をクリックします。
 
     ![デバッグ モードでの発行](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-publishdebug.png)
 
-8. **[発行]** をクリックします。 デプロイが完了し、ブラウザーが起動してアプリの Azure URL が表示されたら、ブラウザーを閉じます。
+1. **[発行]** をクリックします。 デプロイが完了し、ブラウザーが起動してアプリの Azure URL が表示されたら、ブラウザーを閉じます。
 
-9. **サーバー エクスプローラー**で、アプリを右クリックしてから **[デバッガーの接続]** をクリックします。
+1. **サーバー エクスプローラー**で、アプリを右クリックしてから **[デバッガーの接続]** をクリックします。
 
     ![[デバッガーの接続]](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png)
 
@@ -156,19 +156,19 @@ public ActionResult About()
     > デバッガーの起動時に問題がある場合、**サーバー エクスプローラー**ではなく**クラウド エクスプローラー**を使用して起動してみてください。
     >
 
-10. メニューの **[About]** をクリックします。
+1. メニューの **[About]** をクリックします。
 
-     Visual Studio がブレークポイントで停止します。コードが実行されている場所は、ローカル コンピューターではなく Azure 上です。
+    Visual Studio がブレークポイントで停止します。コードが実行されている場所は、ローカル コンピューターではなく Azure 上です。
 
-11. `currentTime` 変数にマウスを合わせて、時刻値を表示します。
+1. `currentTime` 変数にマウスを合わせて、時刻値を表示します。
 
-     ![Azure で実行されているコード内の変数をデバッグ モードで表示](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
+    ![Azure で実行されているコード内の変数をデバッグ モードで表示](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
 
-     表示される時刻は、Azure サーバーの時刻です。ローカル コンピューターとはタイム ゾーンが異なります。
+    表示される時刻は、Azure サーバーの時刻です。ローカル コンピューターとはタイム ゾーンが異なります。
 
-12. `currentTime` 変数に新しい値 ("Now running in Azure" など) を入力します。
+1. `currentTime` 変数に新しい値 ("Now running in Azure" など) を入力します。
 
-13. F5 キーを押して実行を継続します。
+1. F5 キーを押して実行を継続します。
 
      Azure で実行中の [About] ページに、先ほど currentTime 変数に対して入力した新しい値が表示されます。
 
@@ -264,7 +264,7 @@ App Service アプリで実行される ASP.NET アプリケーションは、�
 * **詳細なエラー メッセージ ログ**<br/>
   失敗した HTTP 要求 (状態コード 400 以上の要求) について、より詳しい情報を記した HTML ページが Web サーバーによって作成されます。
 * **失敗した要求トレース ログ**<br/>
-   失敗した HTTP 要求についての詳しいトレース情報を記録した XML ファイルが Web サーバーによって作成されます。 また、ブラウザーで XML の体裁を設定するための XSL ファイルも作成されます。
+  失敗した HTTP 要求についての詳しいトレース情報を記録した XML ファイルが Web サーバーによって作成されます。 また、ブラウザーで XML の体裁を設定するための XSL ファイルも作成されます。
 
 ログ出力はアプリのパフォーマンスに影響を及ぼすため、Azure では、必要に応じてログの種類ごとにその有効と無効を切り替えることができるようになっています。 アプリケーション ログについては、特定の重大度レベルを超えるログだけを記録するように指定できます。 新しいアプリを作成した時点ではすべてのログが既定で無効になります。
 
@@ -311,7 +311,7 @@ public ActionResult Contact()
 }        
 ```
 
-2. `using System.Diagnostics;` ステートメントをファイルの先頭に追加します。
+1. `using System.Diagnostics;` ステートメントをファイルの先頭に追加します。
 
 ### <a name="view-the-tracing-output-locally"></a>ローカルでのトレース出力の表示
 1. F5 キーを押してデバッグ モードでアプリケーションを実行します。
@@ -339,15 +339,15 @@ public ActionResult Contact()
 ```
 
 `WebPageTraceListener` を使用すると、ブラウザーから `/trace.axd` にアクセスすることでトレース出力を表示できます。
-3. Web.config ファイルの `<system.web>` に、次のような <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trace 要素</a>を追加します。
+1. Web.config ファイルの `<system.web>` に、次のような <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trace 要素</a>を追加します。
 
 ``` xml
 <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
 ```       
 
-4. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
-5. ブラウザー ウィンドウのアドレス バーで、URL に続けて「*trace.axd*」と入力し、Enter キーを押します (例: http://localhost:53370/trace.axd))。
-6. **[アプリケーション トレース]** ページの最初の行 (BrowserLink の行とは異なる) で、**[詳細の表示]** をクリックします。
+1. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
+1. ブラウザー ウィンドウのアドレス バーで、URL に続けて「*trace.axd*」と入力し、Enter キーを押します (例: `http://localhost:53370/trace.axd`)。
+1. **[アプリケーション トレース]** ページの最初の行 (BrowserLink の行とは異なる) で、**[詳細の表示]** をクリックします。
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
@@ -477,7 +477,7 @@ Azure ポータルを使用して、Azure ストレージ アカウントへの 
    * Web サーバーのログは、*LogFiles\http\RawLogs* フォルダーの *.log* ファイルに記録されます。 これらのファイルの閲覧と操作は、 [Log Parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) などのツールを使って行うことができます。
    * 詳細なエラー メッセージのログは、*LogFiles\DetailedErrors* フォルダーの *.html* ファイルに記録されます。
 
-    (*deployments* フォルダーは、ソース管理の発行によって作成されたファイルに使用されます。Visual Studio の発行に関連したファイルは保存されません。 *Git* フォルダーは、ログ ファイル ストリーミング サービスやソース管理の発行に関連したトレースに使用されます。)  
+     (*deployments* フォルダーは、ソース管理の発行によって作成されたファイルに使用されます。Visual Studio の発行に関連したファイルは保存されません。 *Git* フォルダーは、ログ ファイル ストリーミング サービスやソース管理の発行に関連したトレースに使用されます。)  
 
 <!-- ## <a name="storagelogs"></a>View storage logs
 Application tracing logs can also be sent to an Azure storage account, and you can view them in Visual Studio. To do that you'll create a storage account, enable storage logs in the Azure portal, and view them in the **Logs** tab of the **Azure Web App** window.
@@ -651,7 +651,7 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
 * [監視と利用統計情報 (Azure での実際のクラウド アプリケーションのビルド) に関するページ](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)。<br>
   Azure クラウド アプリケーションをトレースするためのベスト プラクティスを掲載した E-Book の章。
 * [ASP.NET トレース](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
-   最新とは言えませんが、基本的な事柄がわかりやすくまとめられています。
+  最新とは言えませんが、基本的な事柄がわかりやすくまとめられています。
 * [トレース リスナー](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
   トレース リスナーについて書かれていますが、[WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx) には触れていません。
 * [チュートリアル:Integrating ASP.NET Tracing with System.Diagnostics Tracing (ASP.NET トレースと System.Diagnostics トレースの統合)](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
@@ -672,9 +672,9 @@ catch (Exception ex)
 ```
 
 * [Azure コマンド ラインからの診断トレース ログのストリーミングと Glimpse に関する情報](https://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
-   このチュートリアルで Visual Studio を使って行ったことをコマンド ラインで行う方法が解説されています。 [Glimpse](https://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) は、ASP.NET アプリケーションをデバッグするためのツールです。
+  このチュートリアルで Visual Studio を使って行ったことをコマンド ラインで行う方法が解説されています。 [Glimpse](https://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) は、ASP.NET アプリケーションをデバッグするためのツールです。
 * [Web Apps のログと診断の使用に関するページ - David Ebbo 作成](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/)、および [Web Apps からのログのストリーミングに関するページ - David Ebbo 作成](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
-   Scott Hanselman と David Ebbo によるビデオ。
+  Scott Hanselman と David Ebbo によるビデオ。
 
 エラーをログに記録する方法としては、独自のトレース コードを記述する以外にも、 [ELMAH](https://nuget.org/packages/elmah/)のようなオープン ソースのログ記録フレームワークを使う方法があります。 詳細については、 [Scott Hanselman が ELMAH についてまとめたブログ記事](https://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)を参照してください。
 
@@ -686,7 +686,7 @@ Web サーバーのログの分析の詳細については、次のリソース�
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Web サーバーのログ (*.log* ファイル) に記録されているデータを表示するためのツールです。
 * [IIS のパフォーマンスの問題やアプリケーション エラーを LogParser でトラブルシューティングする](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
-   Web サーバーのログを分析する際に活用できる Log Parser ツールについて基本的な事柄が説明されています。
+  Web サーバーのログを分析する際に活用できる Log Parser ツールについて基本的な事柄が説明されています。
 * [LogParser の使用に関して Robert McMurray が執筆したブログ記事](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [IIS 7.0、IIS 7.5、IIS 8.0 における HTTP 状態コード](https://support.microsoft.com/kb/943891)
 

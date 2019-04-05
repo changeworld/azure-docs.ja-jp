@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: ce6c3364c594bc515abd9f0c02bd69bf500e4f4e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0c43c81528c2de656e1d788f6af6ba337d7aacb8
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436571"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403024"
 ---
 # <a name="set-environment-variables"></a>環境変数の設定
 
@@ -83,20 +83,20 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 PowerShell での環境変数の設定は CLI と似ていますが、`-EnvironmentVariable` コマンド ライン引数を使用します。
 
-まず、この [New-AzureRmContainerGroup][new-azurermcontainergroup] コマンドを使用して、既定の構成で [microsoft/aci-wordcount][aci-wordcount] コンテナーを起動します。
+まず、この [New-AzContainerGroup][new-Azcontainergroup] コマンドを使用して、既定の構成で [microsoft/aci-wordcount][aci-wordcount] コンテナーを起動します。
 
 ```azurepowershell-interactive
-New-AzureRmContainerGroup `
+New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer1 `
     -Image microsoft/aci-wordcount:latest
 ```
 
-ここで、次の [New-AzureRmContainerGroup][new-azurermcontainergroup] コマンドを実行します。 これは、配列変数 `envVars` の設定後に、環境変数の *NumWords* と *MinLength* を指定しています。
+ここで、次の [New-AzContainerGroup][new-Azcontainergroup] コマンドを実行します。 これは、配列変数 `envVars` の設定後に、環境変数の *NumWords* と *MinLength* を指定しています。
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
-New-AzureRmContainerGroup `
+New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer2 `
     -Image microsoft/aci-wordcount:latest `
@@ -104,17 +104,17 @@ New-AzureRmContainerGroup `
     -EnvironmentVariable $envVars
 ```
 
-両方のコンテナーの状態が *Terminated* になったら ([Get-AzureRmContainerInstanceLog][azure-instance-log] を使用して状態を確認)、[Get-AzureRmContainerInstanceLog][azure-instance-log] コマンドでログをプルします。
+両方のコンテナーの状態が *Terminated* になったら ([Get-AzContainerInstanceLog][azure-instance-log] を使用して状態を確認)、[Get-AzContainerInstanceLog][azure-instance-log] コマンドでログをプルします。
 
 ```azurepowershell-interactive
-Get-AzureRmContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
-Get-AzureRmContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer2
+Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
+Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer2
 ```
 
 各コンテナーの出力には、そのコンテナーによって実行されるスクリプトを、環境変数を設定してどのように変更したが示されます。
 
 ```console
-PS Azure:\> Get-AzureRmContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
+PS Azure:\> Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
 [('the', 990),
  ('and', 702),
  ('of', 628),
@@ -127,7 +127,7 @@ PS Azure:\> Get-AzureRmContainerInstanceLog -ResourceGroupName myResourceGroup -
  ('HAMLET', 386)]
 
 Azure:\
-PS Azure:\> Get-AzureRmContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer2
+PS Azure:\> Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer2
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
  ('GERTRUDE', 82),
@@ -254,7 +254,7 @@ my-secret-value
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/
-[azure-instance-log]: /powershell/module/azurerm.containerinstance/get-azurermcontainerinstancelog
-[azure-powershell-install]: /powershell/azure/azurerm/install-azurerm-ps
-[new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
+[azure-instance-log]: /powershell/module/az.containerinstance/get-azcontainerinstancelog
+[azure-powershell-install]: /powershell/azure/azurerm/install-Az-ps
+[new-Azcontainergroup]: /powershell/module/az.containerinstance/new-azcontainergroup
 [portal]: https://portal.azure.com

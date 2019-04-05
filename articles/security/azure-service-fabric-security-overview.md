@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 3e7717d4ee07a1f3bfebb5e09b983af68aa4ea31
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c5b5f80a43530fe6d0b90e65c3aef89a815157e4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116222"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241393"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric セキュリティの概要
 [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における課題に対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高い、ミッション クリティカルで要求の厳しいワークロードの実装に注力できます。
@@ -87,7 +87,7 @@ Windows Server 2012 R2 と Active Directory を使用しているスタンドア
 
 2.  **イベントの集計**: 生成されたイベントを表示するには、生成されたイベントを収集して集計する必要があります。 一般的に、[Azure 診断](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (エージェント ベースのログ収集に類似) または [EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (インプロセスのログ収集) を使用することをお勧めします。
 
-3.  **分析**: イベントは、分析して表示できるように、視覚化して、特定の形式でアクセスできるようにする必要があります。 データの監視と診断を分析し、視覚化するプラットフォームはいくつかあります。 Service Fabric と緊密に統合できるため、[Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) と [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) の 2 つを推奨します。
+3.  **分析**: イベントは、分析して表示できるように、視覚化して、特定の形式でアクセスできるようにする必要があります。 データの監視と診断を分析し、視覚化するプラットフォームはいくつかあります。 Service Fabric と緊密に統合できるため、[Azure Monitor ログ](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms)と [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) の 2 つを推奨します。
 
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) を使用しても、Service Fabric クラスターの基盤となる Azure リソースの多くを監視できます。
 

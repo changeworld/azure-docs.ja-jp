@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 222957bb79a88ec7b4c6e9afd6d86fe2776dbfd3
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 7ac210d9b30a05fd5dbfd46c41c3e62a1d610357
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301794"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891105"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント:UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
@@ -57,9 +57,8 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 - API アプリ
 - Azure DNS
 - Key Vault
-- Azure Monitor
+- Azure Monitor (ログ)
 - Application Insights
-- Log Analytics
 - Azure Resource Manager
 - Azure Security Center
 - Azure SQL Database
@@ -169,11 +168,11 @@ Azure Storage のセキュリティ保護の詳細については、[セキュ�
 
 ### <a name="monitoring-logging-and-audit"></a>監視、ログ、監査
 
-#### <a name="log-analytics"></a>Log Analytics
+#### <a name="azure-monitor-logs"></a>Azure Monitor ログ
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) は Azure のサービスであり、クラウドおよびオンプレミスの環境内にあるリソースで生成されたデータを収集して分析するのに役立ちます。
+[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)は Azure のサービスであり、ご利用のクラウドおよびオンプレミスの環境内にあるリソースによって生成されたデータを収集して分析するのに役立ちます。
 
-#### <a name="log-analytics-in-this-blueprint"></a>このブループリントの Log Analytics
+#### <a name="azure-monitor-logs-in-this-blueprint"></a>このブループリントの Azure Monitor ログ
 
 - SQL の評価
 - Key Vault の診断
@@ -220,7 +219,7 @@ Crown Commercial Service (政府による商業および調達アクティビテ
 
 このブループリントは、英国国立サイバー セキュリティ センター (NCSC) によってレビューされ、NCSC 14 クラウド セキュリティ原則に適合しています。
 
-自動化テンプレートは、英国の Customer Success Unit Azure Cloud Solution Architect チームと Microsoft パートナーの [Ampliphae](http://www.ampliphae.com/) によってテストされています。
+自動化テンプレートは、英国の Customer Success Unit Azure Cloud Solution Architect チームと Microsoft パートナーの [Ampliphae](https://www.ampliphae.com/) によってテストされています。
 
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法

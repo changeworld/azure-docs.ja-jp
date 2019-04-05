@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 861a4d4d64f970a13aba68f831d2148f8a354ef4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bddfccaf0749bbb5eaf206e5961c713efa5eea17
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732160"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311901"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>"Functions Runtime に到達できない" 問題のトラブルシューティング方法
 
@@ -66,7 +66,7 @@ Azure portal でご自分のストレージ アカウントを検索し、まだ
 ### <a name="guidance"></a>ガイダンス
 
 * これらの設定のいずれに対しても、"スロット設定" をチェックしないでください。 デプロイ スロットをスワップすると、関数が中断されます。
-* 自動デプロイを使用する場合は、これらの設定を設定しないでください。
+* 自動デプロイの一環としてこれらの設定を変更しないようにしてください。
 * これらの設定は、作成時に指定して有効にする必要があります。 これらの設定が含まれない自動デプロイでは、アプリが機能しなくなります。後から設定を追加しても機能しません。
 
 ## <a name="storage-account-credentials-invalid"></a>ストレージ アカウントの資格情報が無効

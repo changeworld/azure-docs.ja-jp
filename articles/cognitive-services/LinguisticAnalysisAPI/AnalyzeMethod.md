@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2b02b048719dd7707db7e97df3641a314b512177
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 02c41e2510fd77f4bb65143faf62737f0985d2b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861682"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431140"
 ---
 # <a name="analyze-method"></a>Analyze メソッド
 
@@ -50,7 +50,7 @@ Name | type | 必須 | 説明
 
 結果は次のようになります。
 
-Name | type | 説明
+Name | Type | 説明
 -----|------|--------------
 analyzerId | 文字列 | 指定したアナライザーの GUID
 result | オブジェクト | アナライザーの結果
@@ -59,7 +59,7 @@ result | オブジェクト | アナライザーの結果
 
 ### <a name="tokens-response-json"></a>トークン応答 (JSON)
 
-Name | type | 説明
+Name | Type | 説明
 -----|------|-------------
 result | 文オブジェクトのリスト | テキスト内に指定された文の境界 |
 result[x].Offset | int | 各文の開始文字オフセット |

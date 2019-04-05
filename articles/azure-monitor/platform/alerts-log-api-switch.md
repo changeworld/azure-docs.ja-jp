@@ -5,20 +5,20 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/24/2018
+ms.date: 03/01/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 6af1c5347a522f7e42feecb6722dfbb64439d086
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 7c8e2297426b098fa6e86a5cda81afc2d71b08f4
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341013"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214641"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>ログ アラートの API の基本設定を切り替える
 
 > [!NOTE]
-> 記載されている内容は、Azure GovCloud のユーザーには適用**されず**、Azure パブリック クラウドのユーザーにのみ適用されます。  
+> 記載されている内容は Azure パブリック クラウドのユーザーのみに適用され、Azure Government または Azure China クラウドには適用**されません**。  
 
 最近まで、アラート ルールは Microsoft Operations Management Suite ポータルで管理していました。 新しいアラート エクスペリエンスは Log Analytics などの Microsoft Azure のさまざまなサービスと統合されており、Microsoft はお客様に[アラート ルールを OMS ポータルから Azure に拡張する](alerts-extend.md)ことをお願いしました。 しかし、お客様の中断を最小限にするため、このプロセスではそれを使用するためのプログラム インターフェイスは変更されませんでした (SavedSearch に基づく [Log Analytics Alert API](api-alerts.md))。
 
@@ -43,6 +43,7 @@ ms.locfileid: "56341013"
 
 - プログラム インターフェイスを使用してログ アラートを管理するために行われるすべての操作は、代わりに [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) を使用して行う必要があります。 詳細については、[Azure リソース テンプレートによるサンプルの使用](alerts-log.md#managing-log-alerts-using-azure-resource-template)および [Azure CLI と PowerShell によるサンプルの使用](alerts-log.md#managing-log-alerts-using-powershell-cli-or-api)に関するページをご覧ください
 - Azure portal で作成される新しいログ アラート ルールはすべて、[scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) のみを使用して作成され、ユーザーは Azure portal で[新しい API の追加機能](#Benefits-of-switching-to-new-Azure-API)を使用することもできます
+- ログ アラート ルールの重大度が変わります ("*重大、警告、および情報*" から "*重大度値の 0、1、および 2*")。 重大度 4 でアラートを作成/更新するルールのオプションも同様です。
 
 自主的に新しい [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) に切り替えて[従来の Log Analytics Alert API](api-alerts.md) からの使用をブロックしたいお客様は、次の API で PUT 呼び出しを実行して特定の Log Analytics ワークスペースに関連付けられているすべてのアラート ルールを切り替えることによって行うことができます。
 

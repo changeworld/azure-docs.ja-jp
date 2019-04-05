@@ -5,26 +5,31 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/23/2019
+ms.date: 3/1/2019
 ms.author: victorh
-ms.openlocfilehash: f88cc44890277604411f482779a83ee266820ac8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7f5f377f34a43dfb01ea516e023bb98f118d0dd4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816324"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247224"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>プライベート ドメインに Azure DNS を使用する
 
 ドメイン ネーム システム (DNS) は、サービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 DNS ドメインのホスティング サービスである Azure DNS は、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure DNS では、インターネットに接続する DNS ドメインだけでなく、プライベート DNS ドメインもプレビュー機能としてサポートするようになりました。
 
+[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+
 Azure DNS は、信頼性が高くセキュリティで保護された DNS サービスを提供し、カスタムの DNS ソリューションを追加する必要なしで、仮想ネットワークでドメイン名を管理および解決します。 プライベート DNS ゾーンを使用すると、現在利用可能な Azure で提供される名前ではなく、独自のカスタム ドメイン名を使用できます。 カスタム ドメイン名の使用は、組織のニーズに最適な仮想ネットワーク アーキテクチャを調整するのに役立ちます。 仮想ネットワーク内、および仮想ネットワーク間の、仮想マシン (VM) の名前解決を提供します。 さらに、水平分割ビューでゾーン名を構成できるので、プライベート DNS ゾーンとパブリック DNS ゾーンで名前を共有することもできます。
+
+仮想ネットワークにプライベート DNS ゾーンを発行するには、そのゾーン内のレコードを解決することが認められた仮想ネットワークの一覧を指定します。 これらを "*解決仮想ネットワーク*" と呼びます。 VM が作成されたときや IP が変更されたとき、または VM が削除されたときに絶えず Azure DNS によってホスト名レコードが維持される仮想ネットワークを指定することもできます。 これを "*登録仮想ネットワーク*" と呼びます。
 
 登録仮想ネットワークを指定する場合、プライベート ゾーンに登録されているその仮想ネットワーク内の VM の DNS レコードは Azure PowerShell と Azure CLI API から表示することも取得することもできませんが、VM レコードは登録が行われ、問題なく解決されます。
 
 ![DNS の概要](./media/private-dns-overview/scenario.png)
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+> [!NOTE]
+> ベスト プラクティスとして、.local ドメインはプライベート DNS ゾーン用には使用しないでください。 すべてのオペレーティング システムでこれがサポートされているわけではありません。
 
 ## <a name="benefits"></a>メリット
 

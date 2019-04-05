@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 9b462ba594122b86580b9d136a844db070eea92d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: d2c7211831658a18e65e04aa753607f4eb22dac8
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217647"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673190"
 ---
 # <a name="what-is-bing-speech"></a>Bing Speech とは
 
@@ -28,7 +29,7 @@ ms.locfileid: "55217647"
 
 ## <a name="speech-to-text-speech-recognition"></a>Speech to Text (音声認識)
 
-Microsoft Speech Recognition API は、オーディオ ストリームを、アプリケーションでユーザーに表示できるテキストまたはコマンド入力として操作できるテキストに "*書き起こします*"。 Speech は、REST API **または** Websocket ベースのクライアント ライブラリを使用してアプリに追加できます。
+Microsoft Speech Recognition API は、オーディオ ストリームを、アプリケーションでユーザーに表示できるテキストまたはコマンド入力として操作できるテキストに "*書き起こします*"。 開発者は、音声認識機能をアプリに追加するための手段として 2 つの方法を使用できます: REST API **または** Websocket ベースのクライアント ライブラリ。
 
 - [REST API](GetStarted/GetStartedREST.md): アプリからサービスへの HTTP 呼び出しを使用して音声認識を行います。
 - [クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md):高度な機能を使用する場合は、Microsoft Speech クライアント ライブラリをダウンロードして、それらをアプリにリンクできます。  クライアント ライブラリは、各種言語 (C#、Java、JavaScript、ObjectiveC) を使用して、さまざまなプラットフォーム (Windows、Android、iOS) で使用できます。 REST API とは異なり、クライアント ライブラリは、Websocket ベースのプロトコルを利用します。
@@ -60,4 +61,4 @@ Microsoft Speech Recognition API は、オーディオ ストリームを、ア�
 
 ### <a name="next-steps"></a>次の手順
 
-- マイクロソフトのテキスト読み上げサービスの使用を開始する: [Text to Speech API リファレンス](api-reference-rest/bingvoiceoutput.md)。 Text to Speech でサポートされている言語と音声の全一覧については、[サポートされているロケールと音声フォント](api-reference-rest/bingvoiceoutput.md#SupLocales)に関するページをご覧ください。
+- Microsoft テキスト読み上げサービスの使用を開始する: [Text to Speech API リファレンス](api-reference-rest/bingvoiceoutput.md)。 Text to Speech でサポートされている言語と音声の全一覧については、[サポートされているロケールと音声フォント](api-reference-rest/bingvoiceoutput.md#SupLocales)に関するページをご覧ください。

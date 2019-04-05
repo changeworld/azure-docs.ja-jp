@@ -13,18 +13,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: c41f03494720c9283bb3ce91fda6e3981f305084
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 5b9e0a30658e1cb8fe0f83d55c04f120637babaf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023024"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549206"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]
 > この記事は、Azure Data Factory のバージョン 1 に適用されます。 
 
 この記事では、Azure Data Factory を使用する場合の問題に対するトラブルシューティングのヒントを提供します。 ここでは、このサービスを使用する場合に発生する可能性があるすべての問題を取り上げているわけではなく、一部の問題と一般的なトラブルシューティングのヒントについて説明しています。   
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 ### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>エラー:サブスクリプションが名前空間 'Microsoft.DataFactory' を使用するように登録されていません
@@ -34,20 +36,20 @@ ms.locfileid: "54023024"
 2. 次のコマンドを使用して、Azure アカウントにログインします。
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 3. 次のコマンドを実行して、Azure Data Factory プロバイダーを登録します。
 
     ```powershell        
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>問題:Data Factory コマンドレットを実行する際の未承認エラー
 Azure PowerShell で使用する Azure アカウントまたはサブスクリプションが正しくない可能性があります。 次のコマンドレットを使用して、Azure PowerShell で使用する適切な Azure アカウントとサブスクリプションを選択してください。
 
-1. Connect-AzureRmAccount - 適切なユーザー ID とパスワードを使用します
-2. Get-AzureRmSubscription - アカウントのサブスクリプションをすべて表示します。
-3. Select-AzureRmSubscription &lt;サブスクリプション名&gt; - 適切なサブスクリプションを選択します。 Azure ポータルでデータ ファクトリの作成に使用するのと同じものを使用します。
+1. Connect-AzAccount - 適切なユーザー ID とパスワードを使用します
+2. Get-AzSubscription - アカウントのサブスクリプションをすべて表示します。
+3. Select-AzSubscription &lt;サブスクリプション名&gt; - 適切なサブスクリプションを選択します。 Azure ポータルでデータ ファクトリの作成に使用するのと同じものを使用します。
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>問題:Azure portal から Data Management Gateway の高速セットアップを起動できない
 Data Management Gateway の高速セットアップを起動するには、Internet Explorer または Microsoft ClickOnce と互換性のある Web ブラウザーが必要です。 高速セットアップの開始が失敗した場合は、次のいずれかの操作を行います。
@@ -128,9 +130,9 @@ Failed to create cluster. Exception: Unable to complete the cluster create opera
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md
-[developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
-[json-scripting-reference]: http://go.microsoft.com/fwlink/?LinkId=516971
+[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
+[json-scripting-reference]: https://go.microsoft.com/fwlink/?LinkId=516971
 
 [azure-portal]: https://portal.azure.com/
 

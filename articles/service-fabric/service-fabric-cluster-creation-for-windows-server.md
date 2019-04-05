@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/10/2017
+ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 321a69768935a9cb220bf5c2ae96c30274dc590d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 9c59da35f5dafcdcf62901689814e696dce3cd20
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159454"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674180"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Windows Server で実行されるスタンドアロン クラスターの作成
 Azure Service Fabric を使用すると、Windows Server を実行するあらゆる仮想マシンまたはコンピューター上に Service Fabric クラスターを作成できます。 つまり相互に接続された一連の Windows Server コンピューターを含む環境さえあれば、オンプレミスであれ、クラウド プロバイダーであれ、Service Fabric アプリケーションをデプロイして実行できるということです。 Service Fabric には、Service Fabric クラスターを作成するためのセットアップ パッケージ (スタンドアロン Windows Server パッケージ) が用意されています。
@@ -61,7 +61,9 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 
 この記事で作成するクラスターは安全ではありません。  だれでも匿名で接続し、管理操作を実行することができるため、運用クラスターは常に X.509 証明書または Windows セキュリティを使用して保護する必要があります。  セキュリティを構成できるのはクラスターを作成するときだけであり、クラスターの作成後はセキュリティを有効にすることはできません。 構成ファイルを更新して、[証明書によるセキュリティ](service-fabric-windows-cluster-x509-security.md)または [Windows のセキュリティ](service-fabric-windows-cluster-windows-security.md)を有効にします。 Service Fabric クラスターのセキュリティについて詳しくは、[クラスターのセキュリティ保護](service-fabric-cluster-security.md)についてのページを参照してください。
 
-### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>手順 1A: セキュリティで保護されていないローカルの開発クラスターを作成する
+### <a name="step-1-create-the-cluster"></a>手順 1:クラスターを作成する
+
+#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>シナリオ A: セキュリティで保護されていないローカルの開発クラスターを作成する
 [サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)に含まれる "*ClusterConfig.Unsecure.DevCluster.json*" ファイルを使用すると、Service Fabric を 1 台のマシンから成る開発クラスターにデプロイできます。
 
 スタンドアロン パッケージをマシンに解凍してサンプルの構成ファイルをローカル マシンにコピーしてから、管理者権限の PowerShell セッションでスタンドアロン パッケージのフォルダーにある *CreateServiceFabricCluster.ps1* スクリプトを実行します。
@@ -74,7 +76,7 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 
 開発シナリオの実行が完了したら、Service Fabric クラスターは、「[クラスターの削除](#removecluster_anchor)」の手順を参照してマシンから削除できます。 
 
-### <a name="step-1b-create-a-multi-machine-cluster"></a>手順 1B: 複数のコンピューターから成るクラスターを作成する
+#### <a name="scenario-b-create-a-multi-machine-cluster"></a>シナリオ B: 複数のコンピューターから成るクラスターを作成する
 [クラスターのデプロイの計画と準備](service-fabric-cluster-standalone-deployment-preparation.md)に関するページで説明されている計画および準備の手順を完了すると、独自のクラスター構成ファイルを使用して運用クラスターを作成できるようになります。
 
 クラスターのデプロイと構成を行うクラスター管理者には、コンピューターに対する管理特権が必要です。 ドメイン コントローラーに Service Fabric をインストールすることはできません。
@@ -114,7 +116,7 @@ Service Fabric ランタイム パッケージは、クラスターの作成時�
 > 
 > 
 
-### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>手順 1C: オフラインの (インターネットから切断された) クラスターを作成する
+#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>シナリオ C: オフラインの (インターネットから切断された) クラスターを作成する
 Service Fabric ランタイム パッケージは、クラスターの作成時に自動でダウンロードされます。 インターネットに接続していないコンピューターにクラスターをデプロイする場合、Service Fabric ランタイム パッケージを別にダウンロードしておき、クラスターの作成時にそのパスを指定する必要があります。
 ランタイム パッケージはインターネットに接続されている他のコンピューターから別にダウンロードすることができます ([ダウンロード リンク - Service Fabric ランタイム - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354))。 オフライン クラスターをデプロイしている場所にランタイム パッケージをコピーし、次の例のように `-FabricRuntimePackagePath` パラメーターを指定して `CreateServiceFabricCluster.ps1` を実行してクラスターを作成します。 
 

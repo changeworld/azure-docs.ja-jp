@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ea17db9af92887ff775e580224b66fed22c65d41
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 1d6e233509b50f0b03678f2e62267169d02133a1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963864"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990781"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
 
@@ -35,7 +35,7 @@ Azure App Service のコンテンツは Azure Storage に保存され、コン�
 * コンテンツは、アプリの複数の仮想マシン (VM) インスタンス全体で共有されます。
 * コンテンツは永続的であり、アプリを実行して変更できます。
 * ログ ファイルと診断データ ファイルは、同じ共有コンテンツ フォルダーで使用できます。
-* 新しいコンテンツを直接発行すると、コンテンツ フォルダーが更新されます。 SCM Web サイトと実行中のアプリでもすぐに同じコンテンツを表示できます (通常、何らかのファイルの変更があった場合、ASP.NET などの一部のテクノロジはアプリの再起動を開始し、最新のコンテンツを取得します)。
+* 新しいコンテンツを直接発行すると、コンテンツ フォルダーが更新されます。 SCM Web サイトと実行中のアプリでもすぐに同じコンテンツを表示できます (通常、なんらかのファイルの変更があった場合、ASP.NET などの一部のテクノロジはアプリの再起動を開始し、最新のコンテンツを取得します)。
 
 多くのアプリはこれらの機能の 1 つまたはすべてを使用しますが、高可用で実行できる高パフォーマンスの読み取り専用コンテンツ ストアのみを必要とするアプリもあります。 このようなアプリは、特定のローカル キャッシュの VM インスタンスを利用できます。
 

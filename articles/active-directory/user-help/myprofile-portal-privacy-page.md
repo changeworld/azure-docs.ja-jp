@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda3cb2b8d8edd4567440be627a58f576aebcca0
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: dbfcab7900a1552a46341ec71b8b0ea4b41b0bce
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458289"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339167"
 ---
 # <a name="view-your-privacy-related-info-from-the-my-profile-preview-portal"></a>マイ プロファイル (プレビュー) ポータルからご自分のプライバシー関連情報を表示する
 **マイ プロファイル** ポータルの **[プライバシー]** ページから、所属の組織でご自分のデータがどのように使用されているかを確認できます。
@@ -29,7 +29,7 @@ ms.locfileid: "56458289"
 
 2. 左側のナビゲーション ウィンドウから **[プライバシー]** を選択するか、**[プライバシー]** ブロックから **[プライバシーの確認]** リンクを選択します。
 
-    ![[プライバシー] リンクが強調表示されている [マイ プロファイル] ページ](media/myprofile-portal/myprofile-portal-privacy-links.png)
+    ![[プライバシー] リンクが強調表示されている [マイ プロファイル] ページ](media/myprofile-portal/myprofile-portal-privacy.png)
 
 3. 以下を含む情報を確認します。
 
@@ -39,4 +39,4 @@ ms.locfileid: "56458289"
 
 ## <a name="next-steps"></a>次の手順
 
-- 最近のサインイン アクティビティを確認した後、ご自分の[セキュリティ情報](user-help-security-info-overview.md)、[最近のサインイン アクティビティ](myprofile-portal-recent-activity-page.md)、接続されている[デバイス](myprofile-portal-devices-page.md)または[組織](myprofile-portal-organizations-page.md)の表示や管理を行うことを選択できます。
+- 組織でのデータの使用状況を確認した後、[セキュリティ情報](user-help-security-info-overview.md)、接続されている[デバイス](myprofile-portal-devices-page.md)、または[組織](myprofile-portal-organizations-page.md)を表示または管理することを選択できます。

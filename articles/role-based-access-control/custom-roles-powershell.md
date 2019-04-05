@@ -11,19 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2019
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 92c061a7f854b46ab5aee07aa5e648ace8f9ae52
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ad1185cab2b2bd2d0fea10f21b7859fd9ab1339f
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343844"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807611"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する
 
 [Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure PowerShell を使用し、カスタム ロールを作成して管理する方法について説明します。
+
+カスタム ロールの作成方法に関するステップ倍ステップのチュートリアルが必要な場合は、「[チュートリアル: Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-powershell.md)」を参照してください。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -32,7 +34,7 @@ ms.locfileid: "56343844"
 カスタム ロールを作成するには、次のものが必要です。
 
 - [所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)など、カスタム ロールを作成するためのアクセス許可
-- ローカルにインストールされた [Azure PowerShell](/powershell/azure/install-az-ps)
+- [Azure Cloud Shell](../cloud-shell/overview.md) または [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-custom-roles"></a>カスタム ロールの一覧表示
 
@@ -66,6 +68,65 @@ Virtual Machine Operator     True
 ```
 
 選択したサブスクリプションがロールの `AssignableScopes` にない場合、カスタム ロールは一覧表示されません。
+
+## <a name="list-a-custom-role-definition"></a>カスタム ロールの定義の一覧表示
+
+カスタム ロールの定義を一覧表示するには、[Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) を使用します。 これは、組み込みロールに使用するコマンドと同じです。
+
+```azurepowershell
+Get-AzRoleDefinition <role name> | ConvertTo-Json
+```
+
+```Example
+PS C:\> Get-AzRoleDefinition "Virtual Machine Operator" | ConvertTo-Json
+
+{
+  "Name": "Virtual Machine Operator",
+  "Id": "00000000-0000-0000-0000-000000000000",
+  "IsCustom": true,
+  "Description": "Can monitor and restart virtual machines.",
+  "Actions": [
+    "Microsoft.Storage/*/read",
+    "Microsoft.Network/*/read",
+    "Microsoft.Compute/*/read",
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/restart/action",
+    "Microsoft.Authorization/*/read",
+    "Microsoft.ResourceHealth/availabilityStatuses/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Insights/alertRules/*",
+    "Microsoft.Support/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/subscriptions/11111111-1111-1111-1111-111111111111"
+  ]
+}
+```
+
+次の例では、ロールのアクションのみを一覧表示します。
+
+```azurepowershell
+(Get-AzRoleDefinition <role name>).Actions
+```
+
+```Example
+PS C:\> (Get-AzRoleDefinition "Virtual Machine Operator").Actions
+
+"Microsoft.Storage/*/read",
+"Microsoft.Network/*/read",
+"Microsoft.Compute/*/read",
+"Microsoft.Compute/virtualMachines/start/action",
+"Microsoft.Compute/virtualMachines/restart/action",
+"Microsoft.Authorization/*/read",
+"Microsoft.ResourceHealth/availabilityStatuses/read",
+"Microsoft.Resources/subscriptions/resourceGroups/read",
+"Microsoft.Insights/alertRules/*",
+"Microsoft.Insights/diagnosticSettings/*",
+"Microsoft.Support/*"
+```
 
 ## <a name="create-a-custom-role"></a>カスタム ロールの作成
 
@@ -111,6 +172,7 @@ $role.Actions.Add("Microsoft.Compute/*/read")
 $role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")
 $role.Actions.Add("Microsoft.Compute/virtualMachines/restart/action")
 $role.Actions.Add("Microsoft.Authorization/*/read")
+$role.Actions.Add("Microsoft.ResourceHealth/availabilityStatuses/read")
 $role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
 $role.Actions.Add("Microsoft.Insights/alertRules/*")
 $role.Actions.Add("Microsoft.Support/*")
@@ -129,7 +191,9 @@ $role.Description = 'Can monitor and restart virtual machines.'
 $role.IsCustom = $true
 $perms = 'Microsoft.Storage/*/read','Microsoft.Network/*/read','Microsoft.Compute/*/read'
 $perms += 'Microsoft.Compute/virtualMachines/start/action','Microsoft.Compute/virtualMachines/restart/action'
-$perms += 'Microsoft.Authorization/*/read','Microsoft.Resources/subscriptions/resourceGroups/read'
+$perms += 'Microsoft.Authorization/*/read'
+$perms += 'Microsoft.ResourceHealth/availabilityStatuses/read'
+$perms += 'Microsoft.Resources/subscriptions/resourceGroups/read'
 $perms += 'Microsoft.Insights/alertRules/*','Microsoft.Support/*'
 $role.Actions = $perms
 $role.NotActions = (Get-AzRoleDefinition -Name 'Virtual Machine Contributor').NotActions

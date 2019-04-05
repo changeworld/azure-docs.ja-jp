@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 01/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4e9e9b76469554f5519626eed37a5b64586f5eb4
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: eaade5f9ec9db7e8d224305147dafc264916d9c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265398"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995590"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java 用 Application Insights のトラブルシューティングおよび Q&A
 [Java 用 Azure Application Insights][java] について疑問または問題はありませんか。 ここでは、いくつかのヒントを紹介します。
@@ -105,18 +105,39 @@ XML メソッドを使用するうえで、値を変更した場合はアプリ�
 
 API の仕組みの詳細を取得するには、ApplicationInsights.xml 構成ファイルのルート ノードの下に `<SDKLogger/>` を追加します。
 
+### <a name="applicationinsightsxml"></a>ApplicationInsights.xml
+
 ファイルに出力するようにロガーに指示することもできます。
 
 ```XML
-
-    <SDKLogger type="FILE">
-      <enabled>True</enabled>
-      <UniquePrefix>JavaSDKLog</UniquePrefix>
-    </SDKLogger>
+  <SDKLogger type="FILE">
+    <Level>TRACE</Level>
+    <UniquePrefix>AI</UniquePrefix>
+    <BaseFolderPath>C:/agent/AISDK</BaseFolderPath>
+</SDKLogger>
 ```
 
-Tomcat サーバーの場合、ファイルは `%temp%\javasdklogs` または `java.io.tmpdir` で見つかります。
+### <a name="spring-boot-starter"></a>Spring Boot スターター
 
+Application Insights Spring Boot スターターを使用している Spring Boot アプリを使って SDK のログ記録を有効にするには、次の内容を `application.properties` ファイルに追加します。
+
+```yaml
+azure.application-insights.logger.type=file
+azure.application-insights.logger.base-folder-path=C:/agent/AISDK
+azure.application-insights.logger.level=trace
+```
+
+### <a name="java-agent"></a>Java エージェント
+
+JVM エージェントのログ記録を有効にするには、[AI-Agent.xml ファイル](java-agent.md)を更新します。
+
+```xml
+<AgentLogger type="FILE">
+    <Level>TRACE</Level>
+    <UniquePrefix>AI</UniquePrefix>
+    <BaseFolderPath>C:/agent/AIAGENT</BaseFolderPath>
+</AgentLogger>
+```
 
 ## <a name="the-azure-start-screen"></a>Azure のスタート画面
 **[Azure Portal](https://portal.azure.com) を表示しています。このマップから、自分のアプリについて何か情報が得られるのでしょうか?**

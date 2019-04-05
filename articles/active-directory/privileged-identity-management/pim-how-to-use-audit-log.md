@@ -14,12 +14,12 @@ ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d9a60544f01048cd90605306e64d750982bf7a4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3b91e2c15e86cdda4daab27892fa7a2b6ed0c0e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200549"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008907"
 ---
 # <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>PIM で Azure AD ディレクトリ ロールの監査履歴を表示する
 Privileged Identity Management (PIM) の監査履歴を使用すると、すべての特権ロールでの特定の期間におけるすべてのユーザー割り当てとアクティブ化を確認できます。 管理者、エンド ユーザー、同期アクティビティを含むテナントのアクティビティの完全な監査履歴を確認するには、 [Azure Active Directory のアクセスおよび使用状況レポート](../reports-monitoring/overview-reports.md)
@@ -27,10 +27,10 @@ Privileged Identity Management (PIM) の監査履歴を使用すると、すべ�
 ## <a name="navigate-to-audit-history"></a>監査履歴に移動する
 [Azure Portal](https://portal.azure.com) のダッシュボードで、 **Azure AD Privileged Identity Management** アプリを選択します。 次に、PIM ダッシュボードで **[特権ロールの管理]** > **[監査履歴]** の順にクリックして、監査履歴にアクセスします。
 
-![](media/azure-ad-pim-approval-workflow/image021.png)
+![監査履歴](media/azure-ad-pim-approval-workflow/image021.png)
 
->[!NOTE]
-[アクション] でデータを並べ替え、[アクティブ化 - 承認済み] を探します。
+> [!NOTE]
+> [アクション] でデータを並べ替え、[アクティブ化 - 承認済み] を探します。
 
 
 ## <a name="audit-history-graph"></a>監査履歴グラフ

@@ -1,6 +1,6 @@
 ---
-title: Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する | Microsoft Docs
-description: Azure AD B2B コラボレーションを使用してクラウド B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する方法について説明します。
+title: B2B ユーザーにオンプレミスのアプリへのアクセスを許可する - Azure Active Directory | Microsoft Docs
+description: Azure AD B2B Collaboration を使用してクラウド B2B ユーザーにオンプレミスのアプリへのアクセスを許可する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ac169bfc2d04e08e9853bb6ceda64fdeed861b4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b0e9536f009d478796bc9367a66630c02019dcd2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190060"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441255"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 

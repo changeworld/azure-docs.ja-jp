@@ -1,5 +1,5 @@
 ---
-title: 2 段階認証を使用した Azure MFA サインイン | Microsoft Docs
+title: 2 段階認証を使用した Azure MFA サインイン - Azure Active Directory | Microsoft Docs
 description: このページでは、Azure MFA で利用可能な各種サインイン方法を確認できる参照先情報を示します。
 keywords: ユーザー認証, サインイン エクスペリエンス, 携帯電話でのサインイン, 会社の電話でのサインイン
 services: active-directory
@@ -13,13 +13,14 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
+ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2545e85ff466ed7455161eb725b824da465457bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1350b2d86e18f213d99f1c27d64e371451f5f9b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177313"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840879"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用したサインイン エクスペリエンス
 > [!NOTE]
@@ -32,7 +33,7 @@ ms.locfileid: "56177313"
 | --- |
 | [携帯電話また職場の電話の呼び出しを使用してサインインする](#signing-in-with-a-phone-call) |
 | [携帯電話へのテキストを使用してサインインする](#signing-in-with-a-text-message)
-| Microsoft Authenticator アプリの通知を使用してサインインする |
+| [Microsoft Authenticator アプリの通知を使用してサインインする](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
 | Microsoft Authenticator アプリの確認コードを使用してサインインする |
 | [通常の方法を使用できないので、別の方法でサインインする](#signing-in-with-an-alternate-method) |
 
@@ -57,7 +58,7 @@ ms.locfileid: "56177313"
 1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
 2. Microsoft がお客様のデバイス上の Microsoft Authenticator アプリに通知を送信します。
 
-  ![Microsoft が通知を送信する](./media/multi-factor-authentication-end-user-signin/notify.png)
+   ![Microsoft が通知を送信する](./media/multi-factor-authentication-end-user-signin/notify.png)
 
 3. お客様の電話で通知を開き、**確認**キーを選択します。 PIN の入力が必要な企業の場合は、ここで入力します。
 4. これでサインインできます。
@@ -69,7 +70,7 @@ Microsoft Authenticator アプリを使用して確認コードを取得する�
 1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
 2. Microsoft によって確認コードを求めるプロンプトが表示されます。
 
-  ![検証コードを入力する](./media/multi-factor-authentication-end-user-signin/verify3.png)
+   ![検証コードを入力する](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
 3. お客様の電話で Microsoft Authenticatior アプリを開き、サインインのためのボックスにコードを入力します。
 
@@ -80,12 +81,11 @@ Microsoft Authenticator アプリを使用して確認コードを取得する�
 2. **[別の確認オプションを使用する]** を選択します。 設定済みの確認オプションが表示されます。
 3. 代替方法を選択し、サインインします。
 
-  ![別の方法を使用する](./media/multi-factor-authentication-end-user-signin/alt.png)
+   ![別の方法を使用する](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>次の手順
+- 2 段階認証を使用したサインインに問題がある場合は、「[2 段階認証で発生する問題](multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。
 
-2 段階認証を使用したサインインに問題がある場合は、「[2 段階認証で発生する問題](multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。
+- 2 段階認証設定を管理する方法については、「[2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)」を参照してください。
 
-2 段階認証設定を管理する方法については、「[2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)」を参照してください。
-
-SMS や電話を受ける代わりに通知を使用してサインインする方法については、「[Get started with the Microsoft Authenticator app (Microsoft Authenticator アプリの概要)](user-help-auth-app-download-install.md)」を参照してください。
+- SMS や電話を受ける代わりに通知を使用してサインインする方法については、「[Get started with the Microsoft Authenticator app (Microsoft Authenticator アプリの概要)](user-help-auth-app-download-install.md)」を参照してください。

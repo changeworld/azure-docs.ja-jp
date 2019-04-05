@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8716d018756d1e6eadcd6ebeeaf4f67ad0bc4741
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97f375c6f48d3dc497eb59e76f19fc64cf906b56
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211157"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886509"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>チュートリアル:Azure Active Directory と Workspot Control の統合
 
@@ -157,7 +157,7 @@ Workspot Control で Azure AD のシングル サインオンを構成してテ�
 
     c. **[Logout Service URL]\(ログアウト サービス URL\)** テキスト ボックスに、Azure portal からコピーした**ログアウト URL** の値を貼り付けます。 
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Update File]\(ファイルの更新\)** ボタンをクリックして、Azure portal からダウンロードした base 64 でエンコードされた証明書を X.509 証明書にアップロードします。
+    d. **[Update File]\(ファイルの更新\)** ボタンをクリックして、Azure portal からダウンロードした base 64 でエンコードされた証明書を X.509 証明書にアップロードします。
 
     e. **[Save]** をクリックします。
 
@@ -179,12 +179,12 @@ Workspot Control で Azure AD のシングル サインオンを構成してテ�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+    d. **作成**を選択します。
  
 ### <a name="create-a-workspot-control-test-user"></a>Workspot Control のテスト ユーザーを作成する
 
@@ -206,9 +206,9 @@ Azure AD ユーザーが Workspot Control にログインできるようにす�
 
     b. **[Last Name]\(姓\)** ボックスに、ユーザーの姓を入力します (例: **simon**)。
 
-    c. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **Brittasimon@contoso.com**)。
+    c. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (**Brittasimon\@contoso.com** など) を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Role]\(ロール\)** ドロップダウンから適切なユーザー ロールを選択します。
+    d. **[Role]\(ロール\)** ドロップダウンから適切なユーザー ロールを選択します。
 
     e. **[Group]\(グループ\)** ドロップダウンから適切なユーザー グループを選択します。
 

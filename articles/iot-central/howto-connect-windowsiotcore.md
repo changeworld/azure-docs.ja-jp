@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ff45ecc00d1c5c810015c8007d194b882f32f3da
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 85fba27c856561eb1270e719dcf24b88d2d5a01f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412570"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309912"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -51,7 +51,7 @@ Windows IoT Core デバイスを設定するには、「[Windows IoT Core デバ
 ご利用の Azure IoT Central アプリケーションでは、**Windows IoT Core** デバイス テンプレートから実デバイスを追加し、デバイスの接続の詳細 (**スコープ ID、デバイス ID、主キー**) を書き留めます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
 
  > [!NOTE]
-   > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#getting-device-connection-string)し、チュートリアルの残りを続けてください。
+   > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#get-a-connection-string)し、チュートリアルの残りを続けてください。
 
 ## <a name="prepare-the-windows-10-iot-core-device"></a>Windows 10 IoT Core デバイスを準備する
 
@@ -72,10 +72,10 @@ Azure IoT Central と通信できるクライアント アプリケーション�
 それが完了したら、任意のブラウザーに「 http://[device-IP-address]:8080」と入力することによって、[Windows デバイス ポータル](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal)を開く必要があります。
 
 そこから、下に示す操作を実行します。
-1. 左側の [アプリ] ノードを展開します。
-2. [Quick-run samples] (サンプルのクイック実行) をクリックします。
-3. [Azure IoT Hub Client] (Azure IoT Hub クライアント) をクリックします。
-4. [デプロイと実行] をクリックします。
+1. 左側の **[アプリ]** ノードを展開します。
+2. **[Quick-run samples]\(サンプルのクイック実行\)** を選択します。
+3. **[Azure IoT Hub Client]\(Azure IoT Hub クライアント\)** を選択します。
+4. **[Deploy and run]\(デプロイと実行\)** を選択します。
 
 ![Windows デバイス ポータル上の Azure IoT Hub クライアントの GIF](./media/howto-connect-windowsiotcore/iothubapp.gif)
 
@@ -122,4 +122,4 @@ Azure IoT Central では、Raspberry Pi 上で実行されているコードが�
 | type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| Text            | 場所     | location   | 該当なし       |
+| Text            | Location     | location   | 該当なし       |

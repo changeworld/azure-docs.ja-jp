@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 7e135432ce8490c505e7d3a1022407dd5d9b9776
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 6c57dff2e0f0c1edb887ddd8f0e5ca206ba8b912
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584396"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110394"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight で ML Services クラスターを管理する
 
@@ -50,7 +50,7 @@ RStudio はクラスターのエッジ ノードで実行されているため�
 2. エッジ ノードで Linux ユーザーをさらに追加する
 3. ユーザーが作成された RStudio Community バージョンを使用する
 
-### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>ステップ 1:作成された SSH ユーザーを使用してエッジ ノードにサインインする
+### <a name="step-1-use-the-created-ssh-user-to-sign-in-to-the-edge-node"></a>手順 1:作成された SSH ユーザーを使用してエッジ ノードにサインインする
 
 「[SSH を使用して HDInsight (Apache Hadoop) に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md)」の手順に従って、エッジ ノードにアクセスします。 HDInsight での ML Services クラスターのエッジ ノード アドレスは `CLUSTERNAME-ed-ssh.azurehdinsight.net` です。
 
@@ -310,11 +310,11 @@ HDInsight ML Services を使うと、Hive および Parquet 内のデータに�
 
    * **[名前]** で、スクリプト操作の名前を指定します。
 
-    * **[バッシュ スクリプト URI]** で、「`https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`」と入力します。 これは、worker ノードに追加の R パッケージをインストールするスクリプトです
+     * **[バッシュ スクリプト URI]** で、「`https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh`」と入力します。 これは、worker ノードに追加の R パッケージをインストールするスクリプトです
 
    * **worker** についてのみチェック ボックスをオンにします。
 
-   * **パラメーター**:インストールされる R パッケージ。 たとえば、`bitops stringr arules` のように指定します。
+   * **パラメーター**: インストールされる R パッケージ。 たとえば、`bitops stringr arules` のように指定します。
 
    * **このスクリプト操作を保持する**ためのチェック ボックスをオンにします。  
 

@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a3ba80ce7b5abcb2f112880c4fef5ed3f067f691
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 051aa6b6ca8571fe948fa30e1e4a4320bb564a52
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563220"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593320"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 
@@ -121,24 +121,29 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 既定の構成では、HTTPS エンドポイントへのすべてのアクセスを許可します。 この設定は、さらに制限できます。
 
 ### <a name="changing-the-configuration"></a>構成の変更
-エンドポイントに適用されるアクセス制御ルールのグループは、**サービス構成ファイル**の **<EndpointAcls>** セクションに構成されます。
+エンドポイントに適用されるアクセス制御ルールのグループは、**サービス構成ファイル**の **\<EndpointAcls>** セクションに構成されます。
 
-    <EndpointAcls>
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
-    </EndpointAcls>
+```xml
+<EndpointAcls>
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
+</EndpointAcls>
+```
 
-アクセス制御グループ内のルールは、サービス構成ファイルの <AccessControl name=""> セクションに構成されます。 
+アクセス制御グループ内のルールは、サービス構成ファイルの \<AccessControl name=""> セクションに構成されます。 
 
 形式は、ネットワーク アクセス制御リスト ドキュメントに説明があります。
 たとえば、HTTPS エンドポイントへのアクセスを範囲 100.100.0.0 ～ 100.100.255.255 の IP のみ許可する場合、ルールは次のようになります。
 
-    <AccessControl name="Retricted">
-      <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
-      <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
-    </AccessControl>
-    <EndpointAcls>
+```xml
+<AccessControl name="Retricted">
+    <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
+    <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
+</AccessControl>
+<EndpointAcls>
     <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="Restricted" />
+</EndpointAcls>
+```
 
 ## <a name="denial-of-service-prevention"></a>サービス拒否 (DOS) 防止
 サービス拒否の攻撃を検出および防止するための支援として次の 2 種類のメカニズムがあります。
@@ -154,22 +159,29 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="restricting-number-of-concurrent-accesses"></a>同時実行アクセス数の制御
 この動作を構成するための設定は、次のとおりです。
 
-    <Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
-    <Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
+<Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```
 
 この保護を有効にするには、DynamicIpRestrictionDenyByConcurrentRequests を true に変更します。
 
 ## <a name="restricting-rate-of-access"></a>アクセス レートの制限
 この動作を構成するための設定は、次のとおりです。
 
-    <Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
-    <Setting name="DynamicIpRestrictionMaxRequests" value="100" />
-    <Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
+<Setting name="DynamicIpRestrictionMaxRequests" value="100" />
+<Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```
 
 ## <a name="configuring-the-response-to-a-denied-request"></a>拒否された要求に対する応答の構成
 次の設定は、拒否された要求への応答を構成します。
 
-    <Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```xml
+<Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```
+
 サポートされている他の値については、IIS の Dynamic IP Security に関するドキュメントを参照してください。
 
 ## <a name="operations-for-configuring-service-certificates"></a>サービス証明書を構成する操作
@@ -232,12 +244,16 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 
 この機能を無効にするには、次のようにして、サービス構成ファイルでこの設定を false にします。
 
-    <Setting name="SetupWebAppForClientCertificates" value="false" />
-    <Setting name="SetupWebserverForClientCertificates" value="false" />
+```xml
+<Setting name="SetupWebAppForClientCertificates" value="false" />
+<Setting name="SetupWebserverForClientCertificates" value="false" />
+```
 
 次に、CA 証明書の設定で、SSL 証明書と同じサムプリントを次のようにコピーします。
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="create-a-self-signed-certification-authority"></a>自己署名証明機関を作成する
 認証機関として機能する自己署名証明書を作成するには、次の手順を実行します。
@@ -280,11 +296,15 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="update-ca-certificate-in-service-configuration-file"></a>サービス構成ファイルの CA 証明書を更新する
 サービス構成ファイルの次の設定のサムプリント値を、クラウド サービスにアップロードされた証明書のサムプリントを使用して、次のように更新します。
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 同じサムプリントを使用して、次の設定の値を更新します。
 
-    <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```xml
+<Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```
 
 ## <a name="issue-client-certificates"></a>クライアント証明書を発行する
 サービスへのアクセスが許可された各個人は、排他的に使用するクライアント証明書を持っている必要があります。また、秘密キーを保護するための強力なパスワードを独自に選択する必要があります。 
@@ -338,17 +358,23 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 * 表示される [証明書] ダイアログ ボックスで [詳細] タブをクリックする
 * すべてが表示されていることを確認する
 * 一覧の Thumbprint という名前のフィールドを選択する
-* サムプリントの値をコピーする ** 最初の桁の前にある非表示の Unicode 文字を削除する ** すべてのスペースを削除する
+* サムプリントの値をコピーする
+  * 最初の桁の前にある非表示の Unicode 文字を削除する
+  * すべてのスペースを削除する
 
 ## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>許可されているクライアントをサービス構成ファイルに構成する
 サービス構成ファイルの次の設定値を、サービスへのアクセスが許可されたクライアント証明書のコンマで区切られたサムプリント一覧を使用して更新します。
 
-    <Setting name="AllowedClientCertificateThumbprints" value="" />
+```xml
+<Setting name="AllowedClientCertificateThumbprints" value="" />
+```
 
 ## <a name="configure-client-certificate-revocation-check"></a>クライアント証明書の失効確認を構成する
 既定の設定では、証明機関によるクライアント証明書の失効状態の確認は行われません。 クライアント証明書を発行した証明機関がこのような確認をサポートする場合にこの確認をオンにするには、X509RevocationMode 列挙型に定義された値の 1 つを使用して次のように設定を変更します。
 
-    <Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```xml
+<Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```
 
 ## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>自己署名の暗号化証明書の PFX ファイルを作成する
 暗号化証明書は、次のように実行します。
@@ -381,7 +407,9 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="update-encryption-certificate-in-service-configuration-file"></a>サービス構成ファイルの暗号化証明書を更新する
 サービス構成ファイルの次の設定のサムプリント値を、クラウド サービスにアップロードされた証明書のサムプリントを使用して、次のように更新します。
 
-    <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="common-certificate-operations"></a>一般的な証明操作
 * SSL 証明書の構成
@@ -452,7 +480,9 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 ## <a name="other-security-considerations"></a>その他のセキュリティの考慮事項
 このドキュメントで説明した SSL の設定では、HTTPS エンドポイント使用時のサービスとクライアント間の通信を暗号化します。 この暗号化が重要なのは、通信には、データベース アクセスの資格証明と他の潜在的な機密情報が含まれているためです。 ただし、このサービスでは、Microsoft Azure サブスクリプションでメタデータ ストレージ用に指定した Microsoft Azure SQL Database 内の内部テーブルに、資格情報を含む内部の状態が維持されることに注意してください。 このデータベースは、サービス構成ファイルの設定の一部として次のように定義されたものです (.CSCFG ファイル)。 
 
-    <Setting name="ElasticScaleMetadata" value="Server=…" />
+```xml
+<Setting name="ElasticScaleMetadata" value="Server=…" />
+```
 
 このデータベースに格納されている資格情報が暗号化されます。 ただし、ベスト プラクティスとして、サービス デプロイメントにおける Web ロールとワーカー ロールの両方を最新に保ち、両者がメタデータのデータベースと保存された資格情報の暗号化と解読に使用する証明書へアクセスする際の安全性が保たれるようにします。 
 

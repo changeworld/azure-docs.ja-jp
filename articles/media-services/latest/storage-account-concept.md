@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/21/2019
 ms.author: juliako
-ms.openlocfilehash: d49d056ab84b60389df8bcaf1c75d6224633863d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: cda029dd11e8cb4cb07e9fce7eef95d6d4d78d7e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337861"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960220"
 ---
 # <a name="cloud-upload-and-storage"></a>クラウドのアップロードとストレージ
 
@@ -31,14 +31,14 @@ Media Services アカウントおよび関連するすべてのストレージ �
 
 ホット ストレージ層とクール ストレージ層の選択を活用できるように、GPv2 を使用することをお勧めします。 ストレージ アカウントの詳細については、「[Azure ストレージ アカウントの概要](../../storage/common/storage-account-overview.md)」を参照してください。 
 
+ストレージ アカウント用に選択できる SKU はいくつかあります。 詳細については、[ストレージ アカウント](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest)に関するページを参照してください。 ストレージ アカウントで実験する場合は、`--sku Standard_LRS` を使用します。 ただし、運用環境用の SKU を選択する場合は、ビジネス継続性のために地理的レプリケーションを提供する `--sku Standard_RAGRS` を検討してください。 
+
 ## <a name="assets-in-a-storage-account"></a>ストレージ アカウント内の資産
 
-Media Services v3 では、Storage API を使用してファイルをアップロードします。
+Media Services v3 では、Storage API シリーズを使用してファイルをアセットにアップロードします。 詳細については、[アセットの概念](assets-concept.md)に関するページを参照してください。
 
 > [!Note]
 > Media Service API を使用せずに Media Services SDK によって生成された BLOB コンテナーの内容は、変更しないでください。
-
-Storage API と Media Services を使用して入力ファイルをアップロードする方法を確認するには、「[ローカル ファイルからジョブの入力を作成する](job-input-from-local-file-how-to.md)」を参照してください。 
  
 ## <a name="next-steps"></a>次の手順
 

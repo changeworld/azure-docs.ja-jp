@@ -17,12 +17,12 @@ ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6b1e1c103c37874365f7e8d0b893985c9a6469c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8b113dd3e354e778d2cf16182665afff5440d2e5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171079"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408532"
 ---
 # <a name="control-the-hybrid-azure-ad-join-of-your-devices"></a>デバイスのハイブリッド Azure AD 参加を制御する
 
@@ -82,7 +82,7 @@ GPO を設定するには:
 8.  **[ドメインに参加しているコンピューターをデバイスとして登録する]** を右クリックし、**[編集]** を選択します。
 
     > [!NOTE] 
-    > このグループ ポリシー テンプレートは、以前のバージョンのグループ ポリシー管理コンソールから変更されています。 以前のバージョンのコンソールを使用している場合は、**[コンピューターの構成]** > **[ポリシー]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[社内参加]** > **[Automatically workplace join client computers]\(クライアント コンピューターを自動的に社内参加する\)** に移動します。 
+    > このグループ ポリシー テンプレートは、以前のバージョンのグループ ポリシー管理コンソールから変更されています。 以前のバージョンのコンソールを使用している場合は、**[コンピューターの構成]** > **[ポリシー]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[デバイスの登録]** > **[Register domain joined computer as device]\(ドメイン参加コンピューターをデバイスとして登録\)** に移動します。 
 
 9.  次の設定のいずれかを選択し、**[適用]** を選択します。
 
@@ -99,16 +99,16 @@ GPO を任意の場所にリンクする必要があります。 たとえば、
 
 クライアント設定を構成するには:
 
-1.  **Configuration Manager** を開き、**[Cloud Services]** に移動します。
+1.  **Configuration Manager** を開き、**[管理]** を選択して、**[クライアントの設定]** に移動します。
 
-2.  **[デバイスの設定]** の **[Automatically register new Windows 10 domain joined devices with Azure Active Directory]\(新しい Windows 10 ドメインに参加しているデバイスを自動的に Azure Active Directory に登録する\)** で、次のいずれかの設定を選択します。
+2.  **[既定のクライアント設定]** のプロパティを開き、**[クラウド サービス]** を選択します。
+
+3.  **[デバイスの設定]** の **[Automatically register new Windows 10 domain joined devices with Azure Active Directory]\(新しい Windows 10 ドメインに参加しているデバイスを自動的に Azure Active Directory に登録する\)** で、次のいずれかの設定を選択します。
 
     - **[いいえ]**:デバイスの自動登録を無効にします。
     - **[はい]**:デバイスの自動登録を有効にします。
 
-
-3.  **[OK]** を選択します。
-    
+4.  **[OK]** を選択します。
 
 このクライアント設定を任意の場所にリンクする必要があります。 たとえば、組織内のすべての最新の Windows デバイスに対してこのクライアント設定を構成するには、クライアント設定をドメインにリンクします。 制御されたデプロイを行うには、このクライアント設定を、組織単位またはセキュリティ グループに属するドメイン参加済みの最新の Windows デバイスに構成します。
 

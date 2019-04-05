@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/15/2018
+ms.date: 02/27/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dad650ac1cc7ab8822925a4a9759b68ee0d0088
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b4015f99e9281285c530c6ae40dbda4e97846af8
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186002"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311051"
 ---
 # <a name="how-to-set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>方法:SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する 
 
@@ -77,7 +77,7 @@ Exchange Online に条件付きアクセス ポリシーを設定するときは
 
 Exchange Active Sync は先進認証をサポートしているものの、条件付きアクセスのシナリオのサポートに関していくつか制約があります:
 
-- 構成できるのはデバイス プラットフォームの条件のみです  
+- ポリシーで **Exchange Active Sync クライアント**を選択した場合は、他の条件を構成することはできません。  
 
     ![デバイス プラットフォーム](./media/conditional-access-for-exo-and-spo/05.png)
 
@@ -93,7 +93,7 @@ Exchange ActiveSync から Exchange Online へのアクセスを効果的に保�
 
     ![条件付きアクセス](./media/conditional-access-for-exo-and-spo/04.png)
 
-    b. **クライアント アプリ**として **Exchange Active Sync** を選択してから、**[サポートされているプラットフォームのみにポリシーを適用する]** を選択します。  
+    b. **クライアント アプリ**として、**Exchange Active Sync** を選択します。  
 
     ![デバイス プラットフォーム](./media/conditional-access-for-exo-and-spo/03.png)
 

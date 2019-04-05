@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: af0e642a1f8ec34e654295ae7dcf2960c8664d91
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 758cb47760f4a15e262a4d682089ac7d9fee64e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565566"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900507"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip Tickets サンプル SaaS アプリを使用する場合の一般的なガイダンス
 
@@ -94,7 +94,7 @@ PowerShell スクリプトの調査およびステップ実行に関するヒン
 
    ![カタログ サーバー](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. デモの資格情報は次のとおりです。ログイン = *developer*、パスワード = *P@ssword1*
+3. デモの資格情報は次のとおりです。ログイン = *developer*、パスワード = *P\@ssword1*
 
     次の図では、"*テナントごとのデータベース*" パターンのログインを示します。 
     ![connection](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
