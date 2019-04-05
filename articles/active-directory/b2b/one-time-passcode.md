@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9493f7ee3278bb42dc21574cd008fbe2f4376a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8f5234674bc41e1f5bfa260dfc32042a3345d9f7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185147"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294827"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>電子メール ワンタイム パスコード認証 (プレビュー)
 
@@ -35,11 +36,11 @@ ms.locfileid: "56185147"
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>ワンタイム パスコードのゲスト ユーザーに対するユーザー エクスペリエンス
 ワンタイム パスコード認証では、ゲスト ユーザーは、直接リンクをクリックするか、招待メールを使用して、招待に応じることができます。 どちらの場合も、ブラウザーのメッセージで、ゲスト ユーザーのメール アドレスにコードが送信されることが示されます。 ゲスト ユーザーは、**[コードの送信]** を選択します。
  
-   ![アクセス パネルでアプリを管理する](media/one-time-passcode/otp-send-code.png)
+   ![[コードの送信] ボタンを示すスクリーンショット](media/one-time-passcode/otp-send-code.png)
  
 パスコードがユーザーのメール アドレスに送信されます。 ユーザーは、メールからパスコードを取得し、ブラウザー ウィンドウに入力します。
  
-   ![アクセス パネルでアプリを管理する](media/one-time-passcode/otp-enter-code.png)
+   ![[コードの入力] ページを示すスクリーンショット](media/one-time-passcode/otp-enter-code.png)
  
 ゲスト ユーザーは認証されて、共有リソースを表示したり、サインインを続行したりできるようになります。 
 
@@ -57,7 +58,7 @@ ms.locfileid: "56185147"
 
 Azure portal の **[Azure Active Directory]** > **[組織の関係]** > **[他の組織からのユーザー]** で、ワンタイム パスコードを使用して認証しているゲスト ユーザーを確認できます。
 
-![ソースが OTP の場合に、Azure portal でワンタイム パスコードのユーザーを表示する](media/one-time-passcode/otp-users.png)
+![[Source]\(ソース\) の値が OTP のワンタイム パスワード ユーザーを示すスクリーンショット](media/one-time-passcode/otp-users.png)
 
 > [!NOTE]
 > ユーザーがワンタイム パスコードを使用した後、MSA、Azure AD アカウント、または他のフェデレーション アカウントを取得した場合、引き続きワンタイム パスコードによる認証が使用されます。 認証方法を更新する場合は、ゲスト ユーザー アカウントを削除して、招待し直すことができます。

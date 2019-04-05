@@ -15,20 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 1db16f203755f9afc265495daba056313138a5dc
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 26144b7eb53f5c0d4ebecbc9e6eece741f466719
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819452"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997795"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング
 
 Application Gateway の使用時に表示された無効なゲートウェイによる (502) エラーをトラブルシューティングする方法について説明します。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="overview"></a>概要
 
-アプリケーション ゲートウェイの構成後に発生する可能性があるエラーの 1 つに次のようなエラーがあります。"サーバー エラー:502 - Web サーバーがゲートウェイまたはプロキシ サーバーとして動作しているときに、無効な応答を受信しました"。 このエラーが発生する主な理由としては、次のことが考えられます。
+アプリケーション ゲートウェイの構成後に発生する可能性があるエラーの 1 つに次のようなエラーがあります。"サーバー エラー:502 - Web サーバーがゲートウェイまたはプロキシ サーバーとして動作しているときに、無効な応答を受信しました" というエラーが発生する場合。 このエラーが発生する主な理由としては、次のことが考えられます。
 
 * NSG、UDR、またはカスタム DNS が、バックエンド プールのメンバーへのアクセスをブロックしている。
 * バックエンド VM または仮想マシン スケール セットのインスタンスが既定の正常性プローブに応答していない。
@@ -50,21 +52,21 @@ NSG、UDR、またはカスタム DNS の存在によってバックエンドへ
 * Application Gateway サブネットに関連付けられている UDR をチェックします。 UDR がトラフィックをバックエンド サブネットから離れるように方向付けていないことを確認します。たとえば、ネットワーク仮想アプライアンスへのルーティングや、ExpressRoute/VPN 経由で Application Gateway にアドバタイズされる既定のルートをチェックします。
 
 ```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName
-Get-AzureRmVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName
+Get-AzVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
 * VM バックエンドとの有効な NSG と ルートをチェックします。
 
 ```powershell
-Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
-Get-AzureRmEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
 ```
 
 * VNet 内のカスタム DNS の存在をチェックします。 DNS は、出力内の VNet プロパティの詳細を調べることでチェックできます。
 
 ```json
-Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName 
+Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName 
 DhcpOptions            : {
                            "DnsServers": [
                              "x.x.x.x"
@@ -81,7 +83,7 @@ DhcpOptions            : {
 
 | プローブのプロパティ | 値 | 説明 |
 | --- | --- | --- |
-| プローブの URL |http://127.0.0.1/ |URL パス |
+| プローブの URL |`http://127.0.0.1/` |URL パス |
 | interval |30 |プローブの間隔 (秒) |
 | タイムアウト |30 |プローブのタイムアウト (秒) |
 | 異常のしきい値 |3 |プローブの再試行回数。 プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
@@ -90,7 +92,7 @@ DhcpOptions            : {
 
 * 既定のサイトが構成されており、127.0.0.1 でリッスンしていることを確認します。
 * BackendHttpSetting で 80 以外のポートが指定されている場合、既定のサイトはポート 80 でリッスンするように構成する必要があります。
-* http://127.0.0.1:port の呼び出しで、HTTP 結果コード 200 が返されるようにする必要があります。 30 秒のタイムアウト期間内に返されるようにする必要があります。
+* `http://127.0.0.1:port` の呼び出しで、HTTP 結果コード 200 が返されるようにする必要があります。 30 秒のタイムアウト期間内に返されるようにする必要があります。
 * 構成済みのポートを開き、構成済みのポートでの送受信トラフィックをブロックするファイアウォール規則または Azure ネットワーク セキュリティ グループが存在しないようにします。
 * FQDN またはパブリック IP と共に Azure クラシック VM またはクラウド サービスを使用する場合、対応する [エンドポイント](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fapplication-gateway%2ftoc.json) を必ず開いてください。
 * Azure Resource Manager を介して VM を構成しており、Application Gateway がデプロイされた VNet の外側に VM がある場合、 [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md) は、目的のポートにアクセスできるように構成する必要があります。
@@ -116,7 +118,7 @@ DhcpOptions            : {
 カスタムの正常性プローブが前の表のとおりに正しく構成されていることを確認します。 前のトラブルシューティングの手順を実行したうえで、次のことも必ず行ってください。
 
 * プローブが [ガイド](application-gateway-create-probe-ps.md)のとおりに正しく指定されていることを確認する。
-* Application Gateway を単一のサイトで構成する場合、既定ではホスト名は "127.0.0.1" と指定する必要があります (カスタム プローブで構成する場合は除く)。
+* Application Gateway を単一のサイトで構成する場合、既定ではホスト名を `127.0.0.1` と指定する必要があります (カスタム プローブで構成する場合は除く)。
 * http://\<host\>:\<port\>\<path\> の呼び出しで HTTP 結果コード 200 が返されることを確認する。
 * 間隔、タイムアウト、異常のしきい値が許容される範囲内であることを確認する。
 * HTTPS ブローブを使用する場合は、バックエンド サーバー自体にフォールバック証明書を構成して、バックエンド サーバーが SNI を必要としないようにしてください。
@@ -132,7 +134,7 @@ DhcpOptions            : {
 Application Gateway では、ユーザーは BackendHttpSetting でこの設定を構成し、別のプールに適用できます。 バックエンド プールごとに異なる BackendHttpSetting を構成できるため、複数の要求のタイムアウトを構成できます。
 
 ```powershell
-    New-AzureRmApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
+    New-AzApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
 ```
 
 ## <a name="empty-backendaddresspool"></a>空の BackendAddressPool
@@ -146,7 +148,7 @@ Application Gateway では、ユーザーは BackendHttpSetting でこの設定�
 バックエンド アドレス プールを空でない状態にしてください。 これには、PowerShell、CLI、ポータルのいずれかを使用できます。
 
 ```powershell
-Get-AzureRmApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
+Get-AzApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
 ```
 
 前のコマンドレットから取得した出力に、空でないバックエンド アドレス プールが含まれている必要があります。 次の例では、バックエンド VM の FQDN または IP アドレスが構成された 2 つのプールが返されます。 BackendAddressPool のプロビジョニング状態は "Succeeded" である必要があります。

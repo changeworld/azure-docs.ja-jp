@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 36ff3f4b73db8889349e977aaf80a754894d75ae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 534473ccde52af69b6dad1e84ef77da326d29d5c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857340"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872573"
 ---
 # <a name="quickstart-convert-text-to-speech-using-python"></a>クイック スタート: Python を使用してテキストを音声に変換する
 
 このクイック スタートでは、Python と Text to Speech REST API を使用してテキストを音声に変換する方法について説明します。 このガイドでは、要求本文が[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) として構成されており、応答の音声と言語を選択することができます。
 
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech Service リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
+このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech Services リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](get-started.md)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,7 +30,7 @@ ms.locfileid: "55857340"
 
 * Python 2.7.x または 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Speech Service の Azure サブスクリプション キー
+* Speech Services 用の Azure サブスクリプション キー
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
@@ -70,9 +70,9 @@ class TextToSpeech(object):
 
 ## <a name="get-an-access-token"></a>アクセス トークンを取得する
 
-Text to Speech REST API は、認証のためのアクセス トークンを必要とします。 アクセス トークンを取得するためには、交換が必要です。 このサンプルでは、`issueToken` エンドポイントを使用して、Speech Service のサブスクリプション キーをアクセス トークンと交換します。
+Text to Speech REST API は、認証のためのアクセス トークンを必要とします。 アクセス トークンを取得するためには、交換が必要です。 このサンプルでは、`issueToken` エンドポイントを使用して、ご利用の Speech Services のサブスクリプション キーをアクセス トークンと交換します。
 
-このサンプルでは、ご利用の Speech Service のサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`fetch_token_url` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
+このサンプルでは、ご利用の Speech Services のサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`fetch_token_url` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
 
 このコードを `TextToSpeech` クラスにコピーします。
 
@@ -91,7 +91,7 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>要求を実行して応答を保存する
 
-ここでは、要求を構築して音声応答を保存します。 まず、`base_url` と `path` を設定する必要があります。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `base_url` を更新してください。 詳細については、[Speech Service のリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するセクションを参照してください。
+ここでは、要求を構築して音声応答を保存します。 まず、`base_url` と `path` を設定する必要があります。 このサンプルでは、米国西部のエンドポイントを使用していることを想定しています。 ご使用のリソースが別のリージョンに登録されている場合は、必ず `base_url` を更新してください。 詳細については、[Speech Services のリージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)に関するセクションを参照してください。
 
 次に、要求に必要なヘッダーを追加する必要があります。 必ず `User-Agent` を (Azure portal にある) ご使用のリソースの名前に更新し、`X-Microsoft-OutputFormat` を、優先するオーディオ出力に設定してください。 出力形式の全一覧については、[オーディオ出力](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#audio-outputs)に関するセクションを参照してください。
 

@@ -1,21 +1,21 @@
 ---
-title: 例から Machine Learning Studio の実験を作成する
+title: 例から実験を開始する
 titleSuffix: Azure Machine Learning Studio
 description: Azure AI Gallery と Azure Machine Learning Studio を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 221f78dbeb6bfb0c76ac12280511a8d5a5138c38
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f88323069ed23f4a038ffa4a030b1c4d4541ec42
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453411"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861623"
 ---
 # <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから Azure Machine Learning Studio の実験を作成する
 

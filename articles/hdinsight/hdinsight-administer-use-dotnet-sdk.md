@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7c07a1b19bd651eadf7c7b27d5216dd446cd7abb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d46b1cb5bb8a0b65a9e1b38d5331977132f7eb40
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810907"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226455"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>.NET SDK を使用して HDInsight で Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -167,7 +167,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
     
     Storm Web UI は、HDInsight クラスターで使用できます。
     
-    ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-administer-use-management-portal/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    ![HDInsight Storm のスケールのバランス調整](./media/hdinsight-administer-use-powershell/hdinsight-portal-scale-cluster-storm-rebalance.png)
     
     CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
     
@@ -221,7 +221,7 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 > [!NOTE]  
 > アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
 
-これは、ポータルを使用して行うこともできます。 [Azure Portal ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページをご覧ください。
+これは、ポータルを使用して行うこともできます。 「[Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md)」を参照してください。
 
 ## <a name="update-http-user-credentials"></a>HTTP ユーザーの資格情報の更新
 HTTP アクセスの付与/取り消しと同じ手順です。  クラスターに HTTP アクセスが許可されている場合は、まずそれを取り消す必要があります。  次に、新しい HTTP ユーザーの資格情報を使用してアクセス許可を付与してください。
@@ -263,7 +263,7 @@ foreach (var key in results.Configuration.Keys)
 
 ## <a name="see-also"></a>関連項目
 * [HDInsight .NET SDK リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
-* [Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]
+* [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md)
 * [コマンド ライン インターフェイスを使用した HDInsight の管理][hdinsight-admin-cli]
 * [HDInsight クラスターの作成][hdinsight-provision]
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
@@ -279,11 +279,9 @@ foreach (var key in results.Configuration.Keys)
 [hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
 
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
-[hdinsight-admin-portal]: hdinsight-administer-use-portal-linux.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
 [hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-flight]: hdinsight-analyze-flight-delay-data.md
 
 

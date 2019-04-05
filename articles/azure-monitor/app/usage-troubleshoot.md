@@ -13,12 +13,12 @@ ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 7c903390af54d1771bce1b6aff96e9bb54397189
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: eabc47c2acb33d8c6ee03477b5e8c7783edebbb7
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045312"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258780"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights のユーザー動作分析ツールをトラブルシューティングする
 [Application Insights のユーザー動作分析ツール](usage-overview.md): [ユーザー、セッション、イベント](usage-segmentation.md)、[じょうご](usage-funnels.md)、[ユーザー フロー](usage-flows.md)、[リテンション](usage-retention.md)、またはコーホートについて質問がありますか?  いくつかの答えを次に示します。
@@ -39,7 +39,7 @@ Web アプリを監視している場合の最も簡単なソリューション�
 ## <a name="naming-events"></a>イベントの名前付け
 **アプリのページ ビューとカスタム イベント名が数千もあります。それらを見分けるのは難しく、さらにユーザー動作分析ツールがしばしば応答しなくなります。これらの名前付けの問題を修正するにはどうすればよいですか。**
 
-ページ ビューとカスタム イベント名は、ユーザー動作分析ツール全体で使用されます。 イベントに適切な名前を付けることは、これらのツールから価値を引き出すためにきわめて重要です。 目標は、少数の過度に汎用的な名前 ("ボタンがクリックされた") と、多数の過度に具体的な名前 ("http://www.contoso.com/index で [編集] ボタンがクリックされた") の間でバランスを取ることです。
+ページ ビューとカスタム イベント名は、ユーザー動作分析ツール全体で使用されます。 イベントに適切な名前を付けることは、これらのツールから価値を引き出すためにきわめて重要です。 目標は、少数の過度に汎用的な名前 ("ボタンがクリックされた") と、多数の過度に具体的な名前 ("http:\//www.contoso.com/index で [編集] ボタンがクリックされた") の間でバランスを取ることです。
 
 アプリが送信するページ ビューとカスタム イベント名を変更するには、アプリのソース コードを変更し、再展開する必要があります。 **Application Insights のすべてのテレメトリ データは 90 日間保存され、削除することはできません。** このため、イベント名に対して行った変更が完全に有効になるには 90 日かかります。 名前を変更した後 90 日間は、新旧のイベント名の両方がテレメトリに表示されるため、適切な方法でクエリを調整し、チームに伝達してください。
 

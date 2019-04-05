@@ -7,27 +7,29 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: aedd81af8b5821b1f8032faad1896790804df2a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103430"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119294"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Application Gateway で HTTP ヘッダーを書き換える (パブリック プレビュー)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 クライアントとサーバーは、HTTP ヘッダーを使用して、要求または応答に追加の情報を渡すことができます。 これらの HTTP ヘッダーの書き換えによって、HSTS/X-XSS-Protection などのセキュリティ関連ヘッダー フィールドを追加する、バックエンド サーバー名のような機密情報が漏れる可能性がある応答ヘッダー フィールドを削除するなど、いくつかの重要なシナリオを実現できます。
 
 Application Gateway では、受信 HTTP 要求と送信 HTTP 応答のヘッダーを書き換える機能がサポートされるようになりました。 要求/応答パケットがクライアントとバックエンド プールの間を移動する間に、HTTP 要求および応答ヘッダーを追加、削除、または更新することができます。 標準ヘッダー フィールドと非標準ヘッダー フィールドの両方を書き換え可能です。
 
-> [!NOTE] 
->
+> [!NOTE]
+> 
 > HTTP ヘッダーの書き換えは、[新しい SKU の [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) でのみサポートされます
 
 Application Gateway でのヘッダー書き換えのサポートにより、以下が提供されます。
 
 - **グローバルなヘッダーの書き換え**: サイトに関係があるすべての要求と応答の特定のヘッダーを書き換えることができます。
-- **パス ベースのヘッダーの書き換え**: この種類の書き換えでは、特定のサイト領域にのみ関係がある要求や応答のヘッダー書き換えが可能になります。たとえば、/cart/* で示されるショッピング カート領域に関係があるヘッダーです。
+- **パスベースのヘッダーの書き換え**: この種類の書き換えでは、特定のサイト領域にのみ関係がある要求や応答のヘッダー書き換えが可能になります。たとえば、/cart/\* で示されるショッピング カート領域に関係があるヘッダーです。
 
 この変更により、以下を行う必要があります。
 
@@ -48,7 +50,7 @@ http ヘッダーの書き換えルール セットを複数作成し、それ�
   *例:* 
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
+  $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
   ```
 
 - 別のヘッダーの値。 
@@ -56,7 +58,7 @@ http ヘッダーの書き換えルール セットを複数作成し、それ�
   *例 1:* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
+  $requestHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
   ```
 
   > [!Note] 
@@ -65,7 +67,7 @@ http ヘッダーの書き換えルール セットを複数作成し、それ�
   *例 2*:
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
+  $responseHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
   ```
 
   > [!Note] 
@@ -76,7 +78,7 @@ http ヘッダーの書き換えルール セットを複数作成し、それ�
   *例:* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
+  $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
   ```
 
   > [!Note] 

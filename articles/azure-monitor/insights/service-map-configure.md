@@ -1,24 +1,24 @@
 ---
 title: Azure での Service Map の構成 | Microsoft Docs
 description: Service Map は、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、Azure のソリューションです。 この記事では、サービス マップを環境に展開して、さまざまなシナリオで使用する場合の詳細について説明します。
-services: monitoring
+services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: d3d66b45-9874-4aad-9c00-124734944b2e
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
-ms.author: bwren
-ms.openlocfilehash: 60c43475fc044b0847e5d9bd495c0d53b562114e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 03/11/2019
+ms.author: magoedte
+ms.openlocfilehash: 26da504188a9060dbbb35330dbd8604bf5fe5e1b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822708"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995142"
 ---
 # <a name="configure-service-map-in-azure"></a>Azure で Service Map を構成する
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すれば、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -28,8 +28,10 @@ ms.locfileid: "55822708"
 ## <a name="supported-azure-regions"></a>サポート対象の Azure リージョン
 Service Map は現在、次の Azure リージョンでご利用いただけます。
 - 米国東部
-- 西ヨーロッパ
 - 米国中西部
+- カナダ中部
+- 英国南部
+- 西ヨーロッパ
 - 東南アジア
 
 ## <a name="supported-windows-operating-systems"></a>サポートされている Windows オペレーティング システム
@@ -40,6 +42,7 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 >
 
 ### <a name="windows-server"></a>Windows Server
+- Windows Server 2019
 - Windows Server 2016 1803
 - Windows Server 2016
 - Windows Server 2012 R2
@@ -59,17 +62,13 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 - 既定と SMP Linux のカーネル リリースのみがサポートされています。
 - PAE、Xen などの非標準のカーネル リリースは、どの Linux ディストリビューションでもサポートされていません。 たとえば、リリースの文字列が「2.6.16.21-0.8-xen」であるシステムはサポートされていません。
 - カスタム カーネル (標準カーネルの再コンパイルを含む) はサポートされていません。
-- CentOS Plus カーネルはサポートされていません。
+- CentOSPlus カーネルはサポートされています。
 - Oracle Unbreakable Enterprise Kernel (UEK) については、この記事の後のセクションで説明します。
 
 ### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| 7.0 | 3.10.0-123 |
-| 7.1 | 3.10.0-229 |
-| 7.2 | 3.10.0-327 |
-| 7.3 | 3.10.0-514 |
 | 7.4 | 3.10.0-693 |
 | 7.5 | 3.10.0-862 |
 | 7.6 | 3.10.0-957 |
@@ -78,49 +77,36 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| 6.0 | 2.6.32-71 |
-| 6.1 | 2.6.32-131 |
-| 6.2 | 2.6.32-220 |
-| 6.3 | 2.6.32-279 |
-| 6.4. | 2.6.32-358 |
-| 6.5 | 2.6.32-431 |
-| 6.6 | 2.6.32-504 |
-| 6.7 | 2.6.32-573 |
-| 6.8 | 2.6.32-642 |
 | 6.9 | 2.6.32-696 |
 | 6.10 | 2.6.32-754 |
+
+### <a name="centosplus"></a>CentOSPlus
+| OS バージョン | カーネル バージョン |
+|:--|:--|
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
 ### <a name="ubuntu-server"></a>Ubuntu Server
 
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| Ubuntu 18.04 | カーネル 4.15.* |
+| Ubuntu 18.04 | カーネル 4.15.\*<br>4.18* |
 | Ubuntu 16.04.3 | カーネル 4.15.* |
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
-### <a name="oracle-enterprise-linux-6-with-unbreakable-enterprise-kernel"></a>Unbreakable Enterprise Kernel を搭載した Oracle Enterprise Linux 6
-| OS バージョン | カーネル バージョン
-|:--|:--|
-| 6.2 | Oracle 2.6.32-300 (UEK R1) |
-| 6.3 | Oracle 2.6.39-200 (UEK R2) |
-| 6.4. | Oracle 2.6.39-400 (UEK R2) |
-| 6.5 | Oracle 2.6.39-400 (UEK R2 i386) |
-| 6.6 | Oracle 2.6.39-400 (UEK R2 i386) |
-
-### <a name="oracle-enterprise-linux-5-with-unbreakable-enterprise-kernel"></a>Unbreakable Enterprise Kernel を搭載した Oracle Enterprise Linux 5
+### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
 
 | OS バージョン | カーネル バージョン
 |:--|:--|
-| 5.10 | Oracle 2.6.39-400 (UEK R2) |
-| 5.11 | Oracle 2.6.39-400 (UEK R2) |
+| 11 SP4 | 3.0.* |
 
-## <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
+### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
 | OS バージョン | カーネル バージョン
 |:--|:--|
-|12 SP2 | 4.4.* |
-|12 SP3 | 4.4.* |
+| 12 SP2 | 4.4.* |
+| 12 SP3 | 4.4.* |
 
 ## <a name="dependency-agent-downloads"></a>Dependency Agent のダウンロード
 
@@ -173,6 +159,8 @@ Dependency Agent は、通常、システム メモリの 0.1%、システム CP
 
 ## <a name="installation"></a>インストール
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ### <a name="azure-vm-extension"></a>Azure VM 拡張機能
 Windows 用 (DependencyAgentWindows) と Linux 用 (DependencyAgentLinux) の両方の拡張機能が用意されています。[Azure VM 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features)を使用すると、Azure VM に Dependency Agent を簡単に展開できます。  Azure VM 拡張機能により、PowerShell スクリプトを使用して、または VM で Azure Resource Manager テンプレートを使用して直接、Windows および Linux の VM に Dependency Agent を展開することができます。  Azure VM 拡張機能を使用して展開したエージェントは、最新バージョンに自動的に更新されます。
 
@@ -188,7 +176,7 @@ $ExtPublisher = "Microsoft.Azure.Monitoring.DependencyAgent"
 $OsExtensionMap = @{ "Windows" = "DependencyAgentWindows"; "Linux" = "DependencyAgentLinux" }
 $rmgroup = "<Your Resource Group Here>"
 
-Get-AzureRmVM -ResourceGroupName $rmgroup |
+Get-AzVM -ResourceGroupName $rmgroup |
 ForEach-Object {
     ""
     $name = $_.Name
@@ -198,7 +186,7 @@ ForEach-Object {
     "${name}: ${os} (${location})"
     Date -Format o
     $ext = $OsExtensionMap.($os.ToString())
-    $result = Set-AzureRmVMExtension -ResourceGroupName $vmRmGroup -VMName $name -Location $location `
+    $result = Set-AzVMExtension -ResourceGroupName $vmRmGroup -VMName $name -Location $location `
     -Publisher $ExtPublisher -ExtensionType $ext -Name "DependencyAgent" -TypeHandlerVersion $version
     $result.IsSuccessStatusCode
 }
@@ -278,7 +266,7 @@ Dependency Agent は、`InstallDependencyAgent-Linux64.bin` (自己解凍バイ�
 
 Dependency Agent のファイルは、次のディレクトリに保存されます。
 
-| ファイル | 場所 |
+| ファイル | Location |
 |:--|:--|
 | コア ファイル | /opt/microsoft/dependency-agent |
 | ログ ファイル | /var/opt/microsoft/dependency-agent/log |

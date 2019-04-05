@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 49b5ef6b0dca32baaf05959cc29bb2a8024b6d04
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0e28792e49d588bfec8d1f09dec68ead7e9dfa49
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693991"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001083"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションのネットワークについて
 
@@ -101,7 +101,8 @@ Site Recovery IP アドレスの範囲は次のとおりです。
    フランス南部 | 52.136.139.227 |52.136.136.62
    オーストラリア中部| 20.36.34.70 | 20.36.46.142
    オーストラリア中部 2| 20.36.69.62 | 20.36.74.130
-
+   南アフリカ西部 | 102.133.72.51 | 102.133.26.128
+   南アフリカ北部 | 102.133.160.44 | 102.133.154.128
 ## <a name="example-nsg-configuration"></a>NSG 構成の例
 
 この例は、レプリケートする VM に対して NSG ルールを構成する方法を示しています。

@@ -9,12 +9,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.openlocfilehash: 45ba049717f2b9874bbac8d6493e13c2afc4b8f2
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 8c0b40f0e6204d6cff59d3de3f20604d6913b9cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910650"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111635"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
@@ -30,8 +30,8 @@ ms.locfileid: "54910650"
  
         ![Python と pip のバージョン](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
-    > [!NOTE]
-    > Python は、MacOS の既定のバージョンを使用する代わりに、手動でインストールすることをお勧めします。
+     > [!NOTE]
+     > Python は、MacOS の既定のバージョンを使用する代わりに、手動でインストールすることをお勧めします。
 
 
 2. 以下のコマンドを実行して、**virtualenv** をインストールします。

@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: ced83fc31e9e4944f7392169b703056dc5b4fd98
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/12/2019
+ms.openlocfilehash: f3c485659bc686efbb4101879e5cd24e7bb3db46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454839"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905105"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL による Azure Active Directory 認証の構成と管理
 
@@ -28,11 +28,15 @@ ms.locfileid: "56454839"
 > [!IMPORTANT]  
 > Azure Active Directory アカウントを使用している場合、Azure VM 上で実行されている SQL Server への接続はサポートされていません。 代わりにドメインの Active Directory アカウントを使用してください。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
 ## <a name="create-and-populate-an-azure-ad"></a>Azure AD を作成して設定する
 
 Azure AD を作成し、ユーザーとグループを設定します。 Azure AD は初期の Azure AD のマネージド ドメインにすることができます。 また、Azure AD とフェデレーションされるオンプレミスの Active Directory Domain Services にすることもできます。
 
-詳細については、「[オンプレミス ID と Azure Active Directory の統合](../active-directory/hybrid/whatis-hybrid-identity.md)」、[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-domains-add-azure-portal.md)に関するページ、「[Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)」(Microsoft Azure が Windows Server Active Directory とのフェデレーションに対応)、「[Azure AD ディレクトリの管理](../active-directory/fundamentals/active-directory-administer.md)」、[Windows PowerShell を使用した Azure AD の管理](/powershell/azure/overview?view=azureadps-2.0)に関するページ、および「[Hybrid Identity Required Ports and Protocols](../active-directory/hybrid/reference-connect-ports.md)」(ハイブリッド ID の必須ポートとプロトコル) を参照してください。
+詳細については、「[オンプレミス ID と Azure Active Directory の統合](../active-directory/hybrid/whatis-hybrid-identity.md)」、[Azure AD への独自のドメイン名の追加](../active-directory/active-directory-domains-add-azure-portal.md)に関するページ、「[Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)」(Microsoft Azure が Windows Server Active Directory とのフェデレーションに対応)、「[Azure AD ディレクトリの管理](../active-directory/fundamentals/active-directory-administer.md)」、[Windows PowerShell を使用した Azure AD の管理](/powershell/azure/overview)に関するページ、および「[Hybrid Identity Required Ports and Protocols](../active-directory/hybrid/reference-connect-ports.md)」(ハイブリッド ID の必須ポートとプロトコル) を参照してください。
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure サブスクリプションの Azure Active Directory への関連付けまたは追加
 
@@ -186,35 +190,35 @@ Managed Instance に Azure AD 管理者をプロビジョニングしたら、<a
 
 PowerShell コマンドレットを実行するには、Azure PowerShell をインストールし、実行している必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。 Azure AD 管理者をプロビジョニングするには、次のような Azure PowerShell コマンドを実行する必要があります。
 
-- Connect-AzureRmAccount
-- Select-AzureRmSubscription
+- Connect-AzAccount
+- Select-AzSubscription
 
 Azure AD 管理者のプロビジョニングと管理に使用するコマンドレットは、次のとおりです。
 
 | コマンドレット名 | 説明 |
 | --- | --- |
-| [Set-AzureRMSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/set-azurermsqlserveractivedirectoryadministrator) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします  (現在のサブスクリプションから実行する必要があります)。 |
-| [Remove-AzureRMSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/remove-azurermsqlserveractivedirectoryadministrator) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
-| [Get-AzureRMSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/get-azurermsqlserveractivedirectoryadministrator) |現在 Azure SQL Server または Azure SQL Data Warehouse 用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
+| [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします  (現在のサブスクリプションから実行する必要があります)。 |
+| [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
+| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |現在 Azure SQL Server または Azure SQL Data Warehouse 用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
 
-これらの各コマンドの情報を確認するには、PowerShell の get-help コマンドを使用します (例: ``get-help Set-AzureRmSqlServerActiveDirectoryAdministrator``)。
+これらの各コマンドの情報を確認するには、PowerShell の get-help コマンドを使用します (例: ``get-help Set-AzSqlServerActiveDirectoryAdministrator``)。
 
 次のスクリプトでは、**Group-23** という名前のリソース グループ内にあるサーバー **demo_server** に対して、**DBA_Group** という名前の Azure AD 管理者グループ (オブジェクト ID `40b79501-b343-44ed-9ce7-da4c8cc7353f`) をプロビジョニングします。
 
 ```powershell
-Set-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
+Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
 **DisplayName** 入力パラメーターには、Azure AD の表示名またはユーザー プリンシパル名を使用できます。 たとえば、``DisplayName="John Smith"`` や ``DisplayName="johns@contoso.com"``す。 Azure AD グループの場合は、Azure AD の表示名のみがサポートされています。
 
 > [!NOTE]
-> Azure PowerShell コマンド ```Set-AzureRmSqlServerActiveDirectoryAdministrator``` では、サポートされていないユーザーに対する Azure AD 管理者のプロビジョニングは禁止されていません。 サポートされていないユーザーのプロビジョニングは可能ですが、このようなユーザーはデータベースに接続できません
+> Azure PowerShell コマンド ```Set-AzSqlServerActiveDirectoryAdministrator``` では、サポートされていないユーザーに対する Azure AD 管理者のプロビジョニングは禁止されていません。 サポートされていないユーザーのプロビジョニングは可能ですが、このようなユーザーはデータベースに接続できません
 
 次の例では、オプションとして **ObjectID**を使用します。
 
 ```powershell
-Set-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
+Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 -ServerName "demo_server" -DisplayName "DBA_Group" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353f"
 ```
 
@@ -224,20 +228,21 @@ Set-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 次の例では、Azure SQL Server の現在の Azure AD 管理者に関する情報が返されます。
 
 ```powershell
-Get-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" | Format-List
+Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" | Format-List
 ```
 
 次の例では、Azure AD 管理者が削除されます。
 
 ```powershell
-Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
+Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-Azure Active Directory 管理者は、REST API を使用してプロビジョニングすることもできます。 詳細については、[Service Management REST API リファレンスと Azure SQL Database の操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)に関するページを参照してください。
+Azure Active Directory 管理者は、REST API を使用してプロビジョニングすることもできます。 詳細については、[Service Management REST API リファレンスと Azure SQL Database の操作](https://docs.microsoft.com/rest/api/sql/)に関するページを参照してください。
 
 ### <a name="cli"></a>CLI  
 
 以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングすることもできます。
+
 | command | 説明 |
 | --- | --- |
 |[az sql server ad-admin create](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします  (現在のサブスクリプションから実行する必要があります)。 |
@@ -308,7 +313,7 @@ Azure Active Directory の ID に基づく包含データベース ユーザー�
 > [!NOTE]
 > Azure SQL Server の Azure Active Directory 管理者を削除すると、Azure AD 認証ユーザーはサーバーに接続できなくなります。 必要に応じて、SQL Database 管理者は不要な Azure AD ユーザーを手動で削除できます。
 > [!NOTE]
-> "**接続がタイムアウトしました**" と表示された場合は、接続文字列の `TransparentNetworkIPResolution` パラメーターを false に設定することが必要になる場合があります。 詳しくは、「[Connection timeout issue with .NET Framework 4.6.1 - TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/2016/05/07/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/)」(.NET Framework 4.6.1 での接続タイムアウトの問題 - TransparentNetworkIPResolution) をご覧ください。
+> "**接続がタイムアウトしました**" と表示された場合は、接続文字列の `TransparentNetworkIPResolution` パラメーターを false に設定することが必要になる場合があります。 詳しくは、「[Connection timeout issue with .NET Framework 4.6.1 - TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/)」(.NET Framework 4.6.1 での接続タイムアウトの問題 - TransparentNetworkIPResolution) をご覧ください。
 
 データベース ユーザーを作成すると、そのユーザーには **CONNECT** アクセス許可が付与され、**PUBLIC** ロールのメンバーとしてそのデータベースに接続できるようになります。 最初にこのユーザーが利用できるアクセス許可は、**PUBLIC** ロールに付与されているアクセス許可か、またはそのユーザーが属している Azure AD グループに付与されているアクセス許可のみです。 Azure AD ベースの包含データベース ユーザーをプロビジョニングすると、他の種類のユーザーにアクセス許可を付与する場合と同様に、そのユーザーに追加のアクセス許可を付与できます。 通常は、データベース ロールにアクセス許可を付与し、そのロールにユーザーを追加します。 詳細については、 [データベース エンジンのアクセス許可の基本知識](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx)に関するページを参照してください。 特殊な SQL Database ロールの詳細については、「 [Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」を参照してください。
 外部ユーザーとしてマネージド ドメインにインポートされるフェデレーション ドメイン ユーザー アカウントは、マネージド ドメインの ID を使用する必要があります。
@@ -347,7 +352,7 @@ Azure AD のマネージド ドメインを使用して Azure AD のプリンシ
 Azure AD のネイティブ ユーザーまたはフェデレーション ユーザーのために、SQL DB/DW を Azure AD で認証するには、この方法を使用します。 ネイティブ ユーザーとは、Azure AD に明示的に作成され、ユーザー名とパスワードを使用して認証されるユーザーです。これに対し、フェデレーション ユーザーとは、所属ドメインが Azure AD との間でフェデレーションされている Windows ユーザーをいいます。 後者の (ユーザーとパスワードを使用した) 方法は、ユーザーが自分の Windows 資格情報の使用を希望しているものの、そのローカル コンピューターがドメインに参加していない (つまりリモート アクセスを使用している) 場合に使用できます。 このケースでは、Windows ユーザーが自分のドメイン アカウントとパスワードを指定し、フェデレーションされた資格情報を使用して SQL DB/DW に対する認証を行うことができます。
 
 1. Management Studio または Data Tools を起動し、**[サーバーへの接続]** (または **[データベース エンジンへの接続]**) ダイアログ ボックスの **[認証]** ボックスで、**[Active Directory - パスワード]** を選択します。
-2. **[ユーザー名]** ボックスに、Azure Active Directory のユーザー名を **username@domain.com** の形式で入力します。 ユーザー名は、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
+2. **[ユーザー名]** ボックスに、Azure Active Directory のご自分のユーザー名を **username\@domain.com** の形式で入力します。 ユーザー名は、Azure Active Directory のアカウントか、Azure Active Directory とフェデレーションするドメインのアカウントである必要があります。
 3. **[パスワード]** ボックスに、Azure Active Directory アカウントまたはフェデレーション ドメイン アカウントのユーザー パスワードを入力します。
 
     ![AD パスワード認証を選択する][12]
@@ -403,7 +408,7 @@ conn.AccessToken = "Your JWT token"
 conn.Open();
 ```
 
-詳細については、「 [SQL Server Security Blog (SQL Server のセキュリティに関するブログ)](https://blogs.msdn.microsoft.com/sqlsecurity/2016/02/09/token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/)」をご覧ください。 証明書の追加の詳細については、「[Azure Active Directory の証明書ベースの認証の概要](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)」を参照してください。
+詳細については、「 [SQL Server Security Blog (SQL Server のセキュリティに関するブログ)](https://blogs.msdn.microsoft.com/sqlsecurity/20../../token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/)」をご覧ください。 証明書の追加の詳細については、「[Azure Active Directory の証明書ベースの認証の概要](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)」を参照してください。
 
 ### <a name="sqlcmd"></a>sqlcmd
 

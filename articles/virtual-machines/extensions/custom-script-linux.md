@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: f8b0955afa1705dd8e3c01a943cc5e5d885f9c71
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 19637a1fe49550d0ed7aea7e3a596f1f77f5984b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456964"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082043"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能 v2 を使用する
 カスタム スクリプト拡張機能バージョン 2 は、スクリプトをダウンロードし、Azure 仮想マシン上で実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
@@ -124,7 +124,7 @@ GitHub または Azure Storage などスクリプトを外部でダウンロー�
 ### <a name="property-value-details"></a>プロパティ値の詳細
 * `skipDos2Unix`: (省略可能、ブール値) スクリプトベースのファイル URL またはスクリプトの dos2unix 変換を省略します。
 * `timestamp` (省略可能、32 ビットの整数) このフィールドは、このフィールドの値を変更することによりスクリプトの再実行をトリガーする場合のみ使用します。  任意の整数値が使用できますが、前の値と異なる必要があります。
- * `commandToExecute`: (スクリプトが設定されていない場合は**必須**、文字列)  スクリプトの実行のエントリ ポイント。 コマンドにパスワードなどの機密情報が含まれている場合は、代わりにこのフィールドを使用します。
+  * `commandToExecute`: (スクリプトが設定されていない場合は**必須**、文字列)  スクリプトの実行のエントリ ポイント。 コマンドにパスワードなどの機密情報が含まれている場合は、代わりにこのフィールドを使用します。
 * `script`: (commandToExecute が設定されていない場合は**必須**、文字列) /bin/sh によって実行される、base64 でエンコードされた (または GZip 圧縮された) スクリプト。
 * `fileUris`: (省略可能、文字列の配列) ファイルをダウンロードする URL。
 * `storageAccountName`: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての `fileUris` が Azure BLOB の URL である必要があります。

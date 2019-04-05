@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: shlo
-ms.openlocfilehash: 68cdabd8d6e5921eabaa200169c0523352461733
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: c5c12a66e8f66195a096588d779648d7486ab47b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856946"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092006"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory の ForEach アクティビティ
 ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
@@ -474,9 +474,9 @@ ForEach アクティビティで複数のアクティビティ (例: コピー �
 
 ## <a name="aggregating-outputs"></a>出力の集計
 
-__foreach__ アクティビティの出力を集計するには、_Variable_s と _Append Variable_ アクティビティを使用してください。
+__foreach__ アクティビティの出力を集計するには、_Variables_ と _Append Variable_ アクティビティを使用してください。
 
-最初に、パイプライン内で `array` _変数_ を宣言します。 次に、各 __foreach__ ループ内で _Append Variable_ アクティビティを呼び出します。 その後、配列から集計を取得できます。
+最初に、パイプライン内で `array` _変数_を宣言します。 次に、各 __foreach__ ループ内で _Append Variable_ アクティビティを呼び出します。 その後、配列から集計を取得できます。
 
 ## <a name="limitations-and-workarounds"></a>制限事項と回避策
 

@@ -2,20 +2,20 @@
 title: DMV を利用してワークロードを監視する | Microsoft Docs
 description: DMV を利用してワークロードを監視するについて説明します。
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 04/17/2018
-ms.author: kevin
+ms.date: 03/18/2019
+ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: fdb51bf249990a10b8476a55be1103cb05c5821b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e2360b5587d204ec87fe82c029391c7252d27914
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466984"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189548"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV を利用してワークロードを監視する
 この記事では、動的管理ビュー (DMV) を使用してワークロードを監視する方法について説明します。 Azure SQL Data Warehouse でのクエリの実行の調査が含まれます。
@@ -68,9 +68,9 @@ WHERE   [label] = 'My Query';
 
 上記のクエリ結果から、調査するクエリの **要求 ID を書き留めます** 。
 
-**中断** 状態のクエリは、コンカレンシーの制限が原因でクエリが実行されています。 これらのクエリは、UserConcurrencyResourceType 型の sys.dm_pdw_waits 待機クエリにも表示されます。 コンカレンシーの制限に関する情報については、[パフォーマンス レベル](performance-tiers.md)に関する記事、または「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待機している場合は、この記事の下にある [「リソースを待機しているクエリの調査」][Investigating queries waiting for resources]を参照してください。
+アクティブな実行中のクエリが多数あるため、**中断**状態のクエリをキューに入れることができます。 これらのクエリは、UserConcurrencyResourceType 型の [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) 待機クエリにも表示されます。 コンカレンシーの制限に関する情報については、[パフォーマンス レベル](performance-tiers.md)に関する記事、または「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待機している場合は、この記事の下にある [「リソースを待機しているクエリの調査」][Investigating queries waiting for resources]を参照してください。
 
-sys.dm_pdw_exec_requests テーブルのクエリの検索を単純化するには、[LABEL][LABEL] を使用して、sys.dm_pdw_exec_requests ビューで検索できるクエリにコメントを割り当てます。
+[sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) テーブルのクエリの検索を単純化するには、[LABEL][LABEL] を使用して、sys.dm_pdw_exec_requests ビューで検索できるクエリにコメントを割り当てます。
 
 ```sql
 -- Query with Label
@@ -96,8 +96,8 @@ DSQL プランに予想よりも時間がかかる場合は、多くの DSQL 手
 
 1 つの手順に関する詳細を調査するには、実行時間の長いクエリ手順の *operation_type* 列を確認し、**手順インデックス**を書き留めます。
 
-* 手順 3a の **SQL 操作**(OnOperation、RemoteOperation、ReturnOperation) に進みます。
-* 手順 3b の **Data Movement 操作** (ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation) に進みます。
+* 手順 3a の **SQL 操作** に進みます (OnOperation、RemoteOperation、ReturnOperation)。
+* 手順 3b の**データ移動操作** に進みます (ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation)。
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>手順 3a: 分散データベースでの SQL を調査する
 要求 ID と手順インデックスを使用して、[sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests] から詳細情報を取得します。これには、すべての分散データベースに対するクエリ手順の実行情報が含まれます。
@@ -292,11 +292,11 @@ DMV の詳細については、「[システム ビュー][System views]」を�
 [Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
 
 <!--MSDN references-->
-[sys.dm_pdw_dms_workers]: http://msdn.microsoft.com/library/mt203878.aspx
-[sys.dm_pdw_exec_requests]: http://msdn.microsoft.com/library/mt203887.aspx
-[sys.dm_pdw_exec_sessions]: http://msdn.microsoft.com/library/mt203883.aspx
-[sys.dm_pdw_request_steps]: http://msdn.microsoft.com/library/mt203913.aspx
-[sys.dm_pdw_sql_requests]: http://msdn.microsoft.com/library/mt203889.aspx
-[DBCC PDW_SHOWEXECUTIONPLAN]: http://msdn.microsoft.com/library/mt204017.aspx
-[DBCC PDW_SHOWSPACEUSED]: http://msdn.microsoft.com/library/mt204028.aspx
+[sys.dm_pdw_dms_workers]: https://msdn.microsoft.com/library/mt203878.aspx
+[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
+[sys.dm_pdw_exec_sessions]: https://msdn.microsoft.com/library/mt203883.aspx
+[sys.dm_pdw_request_steps]: https://msdn.microsoft.com/library/mt203913.aspx
+[sys.dm_pdw_sql_requests]: https://msdn.microsoft.com/library/mt203889.aspx
+[DBCC PDW_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
+[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
 [LABEL]: https://msdn.microsoft.com/library/ms190322.aspx

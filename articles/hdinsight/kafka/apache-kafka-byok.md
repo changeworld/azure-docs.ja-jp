@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a3b719f4b2a19f4ea399d6a0858719a1709adc93
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 26e4b921b4050efa5217e3b599b9dc942a003090
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109491"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58173925"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む (プレビュー)
 
@@ -31,7 +31,7 @@ Azure portal または Azure CLI を使用し、キー コンテナーのキー�
 
 1. Azure リソースのマネージド ID を作成します。
 
-   キー コンテナーに認証するには、[Azure portal](../../active-directory/managed-service-identity/how-to-manage-ua-identity-portal.md)、[Azure PowerShell](../../active-directory/managed-service-identity/how-to-manage-ua-identity-powershell.md)、[Azure Resource Manager](../../active-directory/managed-service-identity/how-to-manage-ua-identity-arm.md)、[Azure CLI](../../active-directory/managed-service-identity/how-to-manage-ua-identity-cli.md) を使用し、ユーザー割り当てマネージド ID を作成します。 マネージド ID と Kafka の BYOK には Azure Active Directory が必須ですが、ESP (Enterprise セキュリティ パッケージ) は必須ではありません。 キー コンテナー アクセス ポリシーに追加するときのために、マネージド ID のリソース ID を保存してください。
+   キー コンテナーに認証するには、[Azure portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)、[Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)、[Azure Resource Manager](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)、[Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) を使用し、ユーザー割り当てマネージド ID を作成します。 Azure HDInsight でマネージド ID がどのように機能するかに関する詳細は、「[Managed identities in Azure HDInsight (Azure HDInsight のマネージド ID)](../hdinsight-managed-identities.md)」を参照してください。 マネージド ID と Kafka の BYOK には Azure Active Directory が必須ですが、ESP (Enterprise セキュリティ パッケージ) は必須ではありません。 キー コンテナー アクセス ポリシーに追加するときのために、マネージド ID のリソース ID を保存してください。
 
    ![Azure portal でユーザー割り当てマネージド ID を作成する](./media/apache-kafka-byok/user-managed-identity-portal.png)
 

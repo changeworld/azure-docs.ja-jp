@@ -3,23 +3,23 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: ios
 ms.workload: identity
-ms.date: 09/19/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 8c7f11d74d0a0b81f9f0c40871b2eaa3eb25f51f
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: ace6c36f1bc4582b3210c049a4ff8cb1f770bf88
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988258"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203510"
 ---
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>iOS アプリケーションから Microsoft Graph API を呼び出す
 
@@ -34,7 +34,7 @@ ms.locfileid: "49988258"
 
 ## <a name="how-this-guide-works"></a>このガイドの利用法
 
-![このガイドの利用法](media/active-directory-develop-guidedsetup-ios-introduction/iosintro.png)
+![このチュートリアルで生成されたサンプル アプリの動作の紹介](media/active-directory-develop-guidedsetup-ios-introduction/iosintro-updated.png)
 
 このガイドのサンプル アプリケーションを参考にすると、iOS アプリケーションで、Microsoft Graph API または Azure AD v2.0 エンドポイントからトークンを受け取る Web API に対してクエリを実行できるようになります。 このシナリオでは、トークンは **Authorization** ヘッダーを使って HTTP 要求に追加されます。 トークンの取得と更新は、Microsoft Authentication Library (MSAL) で処理されます。
 

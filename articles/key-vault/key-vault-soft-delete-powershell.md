@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault - PowerShell で論理的な削除を使用する方法
 description: PowerShell コード スニペットを使用した論理的な削除のユース ケースの例
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2018
-ms.author: bryanla
-ms.openlocfilehash: 70437403d3b78b7f8b9eef921c933a68793450da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 3da4662885b2b09c6474a1a6ceafd627e71cf236
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113585"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081034"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
 
@@ -177,19 +177,19 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@conto
 キーと同様、シークレットも独自のコマンドで管理されます。
 
 - SQLPassword という名前のシークレットを削除します。 
-```powershell
-Remove-AzKeyVaultSecret -VaultName ContosoVault -name SQLPassword
-```
+  ```powershell
+  Remove-AzKeyVaultSecret -VaultName ContosoVault -name SQLPassword
+  ```
 
 - キー コンテナー内の削除されたシークレットをすべて一覧表示します。 
-```powershell
-Get-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState
-```
+  ```powershell
+  Get-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState
+  ```
 
 - 削除された状態のシークレットを復旧します。 
-```powershell
-Undo-AzKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
-```
+  ```powershell
+  Undo-AzKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
+  ```
 
 - 削除された状態のシークレットを消去します。 
 
@@ -205,7 +205,7 @@ Undo-AzKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
 > [!IMPORTANT]
 > キー コンテナーまたはそこに含まれているいずれかのオブジェクトを消去するとキー コンテナーは永続的に削除され、復旧できなくなります。
 
-消去機能は、以前論理的に削除されたキー コンテナー オブジェクトまたはキー・コンテナー全体を完全に消去するために使用されます。 前のセクションで示したように、論理的な削除機能が有効になったキー・コンテナーに格納されているオブジェクトは、次の複数の状態を経る可能性があります。
+消去機能は、以前論理的に削除されたキー コンテナー オブジェクトまたはキー コンテナー全体を完全に削除するために使用されます。 前のセクションで示したように、論理的な削除機能が有効になったキー・コンテナーに格納されているオブジェクトは、次の複数の状態を経る可能性があります。
 - **アクティブ**: 削除前。
 - **論理的に削除済み**: 削除後。一覧表示およびアクティブ状態への復旧が可能。
 - **完全に削除済み**: 消去後。復旧不可。

@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/18/2019
 ms.author: victorh
-ms.openlocfilehash: b513e898e25397f54b8f7f7590a4466523a705ff
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 78496dbc7891fe911ab0affd81f8a7d887e5d76e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401420"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111414"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する
 
-Azure DNS は、カスタム ドメインをサポートする、または完全修飾ドメイン名 (FQDN) を持つ任意の Azure リソースに対して、カスタム ドメインの DNS を提供します。 たとえば、Azure Web アプリがあり、ユーザーが FQDN として contoso.com または www.contoso.com を使用してそのアプリにアクセスできるようにします。 この記事では、カスタム ドメインを使用するために Azure サービスと Azure DNS を構成する方法について説明します。
+Azure DNS は、カスタム ドメインをサポートする、または完全修飾ドメイン名 (FQDN) を持つ任意の Azure リソースに対して、カスタム ドメインの DNS を提供します。 たとえば、Azure Web アプリがあり、ユーザーが FQDN として contoso.com または www\.contoso.com を使用してそのアプリにアクセスできるようにします。 この記事では、カスタム ドメインを使用するために Azure サービスと Azure DNS を構成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,7 +54,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 ## <a name="public-ip-address"></a>パブリック IP アドレス
 
-Application Gateway、Load Balancer、Cloud Service、Resource Manager VM、Classic VM などの、パブリック IP アドレスを使用するサービス用のカスタム ドメインを構成するために、CNAME レコードが使用されます。
+Application Gateway、Load Balancer、Cloud Service、Resource Manager VM、Classic VM などの、パブリック IP アドレスを使用するサービス用のカスタム ドメインを構成するために、A レコードが使用されます。
 
 **[Networking] \(ネットワーク)** > **[Public IP address] \(パブリック IP アドレス)** に移動し、パブリック IP リソースを選択して **[Configuration] \(構成)** をクリックします。 表示されている IP address をメモします。
 

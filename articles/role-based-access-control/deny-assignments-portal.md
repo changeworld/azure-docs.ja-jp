@@ -11,24 +11,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ec5e3daf1d4d799aab043f241548a3b4177f567c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343240"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005806"
 ---
 # <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Azure portal を使用して Azure リソースの拒否割り当てを表示する
 
-[拒否割り当て](deny-assignments.md)を使用すると、ロールの割り当てでアクセスを許可されている場合であっても、指定した Azure リソース アクションをユーザーが実行できなくなります。 独自の拒否割り当てを作成することはできませんが、アクセス許可全体に影響を与える可能性があるので、拒否割り当てを参照できるようにする必要はあります。 拒否割り当てに関する情報を取得するには、`Microsoft.Authorization/denyAssignments/read` アクセス許可が必要です。このアクセス許可は、ほとんどの [Azure リソースの組み込みロール](built-in-roles.md)に含まれています。
-
-この記事では、Azure portal を使用して拒否割り当てを参照する方法を説明します。
+[拒否割り当て](deny-assignments.md)を使用すると、ロールの割り当てでアクセスを許可されている場合であっても、指定した Azure リソース アクションをユーザーが実行できなくなります。 この記事では、Azure portal を使用して拒否割り当てを参照する方法を説明します。
 
 > [!NOTE]
-> 現在、拒否割り当ては読み取り専用であり、Azure によってのみ設定されます。
+> 現時点では、Azure Blueprints を使用することが、独自の拒否割り当てを追加する唯一の方法となります。 詳細については、「[Azure Blueprints のリソース ロックを使用して新しいリソースを保護する](../governance/blueprints/tutorials/protect-new-resources.md)」を参照してください。
+
+## <a name="prerequisites"></a>前提条件
+
+拒否割り当てに関する情報を取得するのに必要なものは次のとおりです: 
+
+- ほとんどの [Azure リソースの組み込みロール](built-in-roles.md)に含まれている `Microsoft.Authorization/denyAssignments/read` アクセス許可。
 
 ## <a name="view-deny-assignments"></a>拒否割り当てを表示する
 

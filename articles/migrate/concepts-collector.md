@@ -4,15 +4,15 @@ description: Azure Migrate の Collector アプライアンスに関する情報
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/04/2019
+ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 0568df92db2114c57a0aa027ade369e4b256af84
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813332"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080067"
 ---
 # <a name="about-the-collector-appliance"></a>Collector アプライアンスについて
 
@@ -85,22 +85,22 @@ Collector が Azure Migrate サービスに接続し、検出されたデータ�
 - プロキシ サーバーの IP アドレスまたは FQDN は、*http://IPaddress* または *http://FQDN* と指定する必要があります。
 - サポートされるのは HTTP プロキシのみです。 HTTPS ベースのプロキシ サーバーは、Collector ではサポートされていません。
 - プロキシ サーバーがインターセプト プロキシである場合は、Collector 仮想マシンにプロキシ証明書をインポートする必要があります。
-    1. Collector 仮想マシンで、**[スタート メニュー]** > **[コンピューター証明書の管理]** に移動します。
-    2. 証明書ツールの **[証明書 - ローカル コンピューター]** で、**[信頼された発行元]** > **[証明書]** を探します。
+  1. Collector 仮想マシンで、**[スタート メニュー]** > **[コンピューター証明書の管理]** に移動します。
+  2. 証明書ツールの **[証明書 - ローカル コンピューター]** で、**[信頼された発行元]** > **[証明書]** を探します。
 
-        ![証明書ツール](./media/concepts-intercepting-proxy/certificates-tool.png)
+      ![証明書ツール](./media/concepts-intercepting-proxy/certificates-tool.png)
 
-    3. Collector 仮想マシンにプロキシ証明書をコピーします。 証明書はネットワーク管理者から取得することが必要になる場合があります。
-    4. 証明書をダブルクリックして開き、**[証明書のインストール]** をクリックします。
-    5. 証明書インポート ウィザードで、[ストアの場所] に移動して、**[ローカル マシン]** を選択します。
+  3. Collector 仮想マシンにプロキシ証明書をコピーします。 証明書はネットワーク管理者から取得することが必要になる場合があります。
+  4. 証明書をダブルクリックして開き、**[証明書のインストール]** をクリックします。
+  5. 証明書インポート ウィザードで、[ストアの場所] に移動して、**[ローカル マシン]** を選択します。
 
-    ![証明書ストアの場所](./media/concepts-intercepting-proxy/certificate-store-location.png)
+     ![証明書ストアの場所](./media/concepts-intercepting-proxy/certificate-store-location.png)
 
-    6. **[証明書をすべて次のストアに配置する]** > **[参照]** > **[信頼された発行元]** を選択します。 **[完了]** をクリックして、証明書をインポートします。
+  6. **[証明書をすべて次のストアに配置する]** > **[参照]** > **[信頼された発行元]** を選択します。 **[完了]** をクリックして、証明書をインポートします。
 
-    ![証明書ストア](./media/concepts-intercepting-proxy/certificate-store.png)
+     ![証明書ストア](./media/concepts-intercepting-proxy/certificate-store.png)
 
-    7. 証明書が予期どおりインポートされていることを確認し、インターネット接続前提条件チェックが予期どおり機能していることを確認します。
+  7. 証明書が予期どおりインポートされていることを確認し、インターネット接続前提条件チェックが予期どおり機能していることを確認します。
 
 
 ### <a name="urls-for-connectivity"></a>接続の URL
@@ -111,7 +111,7 @@ Collector が Azure Migrate サービスに接続し、検出されたデータ�
 --- | --- | ---
 *.portal.azure.com | Azure Global に適用されます。 Azure サービス、および時刻の同期との接続を確認します。 | URL へのアクセスが必要です。<br/><br/> 接続がないと、前提条件チェックは失敗します。
 *.portal.azure.us | Azure Government にのみ適用されます。 Azure サービス、および時刻の同期との接続を確認します。 | URL へのアクセスが必要です。<br/><br/> 接続がないと、前提条件チェックは失敗します。
-*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| PowerShell vCenter PowerCLI モジュールをダウンロードするために使用されます。 | URL へのアクセスは省略可能です。<br/><br/> 前提条件チェックは失敗しません。<br/><br/> Collector 仮想マシンで自動のモジュールのインストールは失敗します。 モジュールを手動でインストールする必要があります。
+*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *.powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| PowerShell vCenter PowerCLI モジュールをダウンロードするために使用されます。 | URL へのアクセスが必要です。<br/><br/> 前提条件チェックは失敗しません。<br/><br/> Collector 仮想マシンで自動のモジュールのインストールは失敗します。 インターネットに接続しているマシンに手動でモジュールをインストールしたうえで、アプライアンスにモジュールをコピーする必要があります。 [詳細については、このトラブルシューティング ガイドの手順 4 を参照してください](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception)。
 
 
 ### <a name="install-vmware-powercli-module-manually"></a>VMware PowerCLI モジュールの手動でのインストール

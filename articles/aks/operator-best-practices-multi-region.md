@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
-ms.openlocfilehash: 9958f5f0f1435af231c1426a249c745f4a2352c5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 926f470b8a4dbdb6d6cbfe09ee61349a819600e7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816613"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098629"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -21,11 +21,11 @@ Azure Kubernetes Service (AKS) でクラスターを管理するにあたって�
 このベスト プラクティス記事では、AKS でのビジネス継続性とディザスター リカバリーを計画するうえでの考慮事項について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-* 複数リージョンでの AKS クラスターについて計画する
-* Azure Traffic Manager を使用して、トラフィックを複数のクラスター間でルーティングする
-* コンテナー イメージのレジストリに geo レプリケーションを使用する
-* 複数のクラスター間でのアプリケーション状態について計画する
-* 複数のリージョン間でストレージをレプリケートする
+> * 複数リージョンでの AKS クラスターについて計画する
+> * Azure Traffic Manager を使用して、トラフィックを複数のクラスター間でルーティングする
+> * コンテナー イメージのレジストリに geo レプリケーションを使用する
+> * 複数のクラスター間でのアプリケーション状態について計画する
+> * 複数のリージョン間でストレージをレプリケートする
 
 ## <a name="plan-for-multi-region-deployment"></a>複数リージョンへのデプロイを計画する
 
@@ -62,7 +62,7 @@ Traffic Manager は、DNS 参照を実行し、ユーザーに対して最も適
 
 ### <a name="layer-7-application-routing-with-azure-front-door"></a>Azure Front Door を使用したレイヤー 7 のアプリケーション ルーティング
 
-Azure Traffic Manager では、DNS (レイヤー 3) を使ってトラフィックが整理されます。 [Azure Front Door (プレビュー)](https://docs.microsoft.com/azure/frontdoor/front-door-overview) を使用すると、HTTP/HTTPS (レイヤー 7) のルーティング オプションが利用できます。 Front Door で提供される追加機能には、SSL 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティが含まれます。
+Azure Traffic Manager では、DNS (レイヤー 3) を使ってトラフィックが整理されます。 [Azure Front Door (現在プレビュー段階にあります)](https://docs.microsoft.com/azure/frontdoor/front-door-overview) を使用すると、HTTP/HTTPS (レイヤー 7) のルーティング オプションを利用できます。 Front Door で提供される追加機能には、SSL 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティが含まれます。
 
 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
 

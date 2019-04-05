@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: ergreenl
-ms.openlocfilehash: 41e7f0ea8616b25eac43ecff7802e0f9e1c08050
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f18d3409d53123733d7f423c77864cd0739765eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180706"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900592"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Windows Server 仮想マシンのマネージド ドメインへの参加
 この記事では、Azure Portal を使用して Windows Server 仮想マシンをデプロイする方法を示します。 その後、仮想マシンを Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメインに参加させる方法を示します。
@@ -107,7 +107,7 @@ Windows Server 仮想マシンを Azure AD DS のマネージド ドメインに
 
 7. 次のいずれかの方法で、資格情報を指定できます。
 
-   * **UPN 形式**: (推奨) Azure AD で構成されているユーザー アカウントのユーザー プリンシパル名 (UPN) サフィックスを指定します。 この例では、ユーザー *bob* の UPN サフィックスは *bob@domainservicespreview.onmicrosoft.com* です。
+   * **UPN 形式**: (推奨) Azure AD で構成されているユーザー アカウントのユーザー プリンシパル名 (UPN) サフィックスを指定します。 この例では、ユーザー *bob* の UPN サフィックスは、*bob\@domainservicespreview.onmicrosoft.com* です。
 
    * **SAMAccountName 形式**: SAMAccountName 形式でアカウント名を指定できます。 この例では、ユーザー *bob* は、「*CONTOSO100\bob*」と入力する必要があります。
 
@@ -146,7 +146,7 @@ Windows Server 仮想マシンを Azure AD DS のマネージド ドメインに
 
 * マネージド ドメインとの[パスワード同期を有効にしている](active-directory-ds-getting-started-password-sync.md)ことを確認します。
 
-* Azure AD で構成されているユーザーの UPN (例: *bob@domainservicespreview.onmicrosoft.com*) をサインインに使用したことを確認します。
+* Azure AD 内で構成されているユーザーの UPN (例: *bob\@domainservicespreview.onmicrosoft.com*) をサインインに使用したことを確認します。
 
 * ファースト ステップ ガイドで指定されているとおり、パスワード同期が完了するまで十分な時間待機します。
 

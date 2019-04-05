@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cebbc8b61a806663e7cb58e0bf7fbdd589f46cca
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 3621ca198ec2bac24791a2515ade51b990194bf2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343308"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003853"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 
@@ -24,11 +24,11 @@ ms.locfileid: "56343308"
 
 多くのエラーは、ブループリントをスコープに割り当てることから発生します。 割り当てられなかったとき、デプロイの失敗に関する詳細がブループリントにより提供されます。 この情報から問題が示されるので、問題を解決すれば、次回のデプロイは成功します。
 
-1. **[すべてのサービス]** をクリックし、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** をクリックします。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側のページから **[割り当てられたブループリント]** を選択し、検索ボックスを使用してブループリントの割り当てをフィルター処理し、失敗した割り当てを検索します。 **[プロビジョニング状態]** 列で割り当て表を並べ替え、失敗した割り当てをまとめて表示することもできます。
 
-1. 状態が _[失敗]_ のブループリントを左クリックし、**[割り当ての詳細を表示する]** を選択します。
+1. 状態が _[失敗]_ のブループリントを左クリックするか、**[割り当ての詳細を表示する]** を右クリックして選択します。
 
 1. ブループリント割り当てページの一番上に、割り当ての失敗を警告する赤いバナーが表示されます。 バナー内のどこでも良いのでクリックすると、詳細が表示されます。
 
@@ -65,7 +65,7 @@ ms.locfileid: "56343308"
 
 #### <a name="resolution"></a>解決策
 
-関数をパラメーターとして渡すには、ブループリント パラメーターが `[[resourceGroup().tags.myTag]` のようになるように、文字列全体を `[` でエスケープします。 エスケープ文字により、Blueprints によってブループリントが処理されるときに値が文字列として扱われます。 その後、関数は Blueprints によって成果物に配置され、意図したとおりに動的になります。
+関数をパラメーターとして渡すには、ブループリント パラメーターが `[[resourceGroup().tags.myTag]` のようになるように、文字列全体を `[` でエスケープします。 エスケープ文字により、Blueprints によってブループリントが処理されるときに値が文字列として扱われます。 その後、関数は Blueprints によって成果物に配置され、意図したとおりに動的になります。 詳細については、[テンプレート ファイル構造に関する記事の構文](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax)に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

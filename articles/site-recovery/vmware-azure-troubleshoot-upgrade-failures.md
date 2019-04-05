@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 02/05/2019
 ms.author: v-doglov
-ms.openlocfilehash: 9423fc844e766129ad81a8a286cb5bbdc722e2ca
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fc50be2a960784895947f3f154a0251f41716fc7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989316"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117304"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery プロバイダーのアップグレード エラーのトラブルシューティング
 
@@ -42,27 +42,27 @@ Microsoft Azure Site Recovery Provider (DRA) をアップグレードすると�
 
 1. 統合セットアップをダウンロードしたフォルダーに戻り、MicrosoftAzureSiteRecoveryUnifiedSetup.exe を実行してアップグレードを完了します。 
 
-## <a name="upgrade-failure-due-to-the-thirdparty-folder-being-renamed"></a>thirdparty フォルダーの名前が変更されたためのアップグレード エラー
+## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>サードパーティ フォルダーの名前が変更されたためのアップグレード エラー
 
-アップグレードが成功するには、thirdparty フォルダーの名前が変更されていてはなりません。
+アップグレードが成功するには、サードパーティ フォルダーの名前が変更されていてはなりません。
 
 問題を解決するには、次のようにします。
 
-2. レジストリ エディター (regedit.exe) を開始し、HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 ブランチを開きます。
-3. `Build_Version` キーの値を調べます。 最新バージョンに設定されている場合は、バージョン番号を下げます。 たとえば、最新バージョンが 9.22.\* で、`Build_Version` キーがその値に設定されている場合は、9.21.\* に下げます。
-4. 最新の Microsoft Azure Site Recovery 統合セットアップをダウンロードします。
+1. レジストリ エディター (regedit.exe) を開始し、HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 ブランチを開きます。
+1. `Build_Version` キーの値を調べます。 最新バージョンに設定されている場合は、バージョン番号を下げます。 たとえば、最新バージョンが 9.22.\* で、`Build_Version` キーがその値に設定されている場合は、9.21.\* に下げます。
+1. 最新の Microsoft Azure Site Recovery 統合セットアップをダウンロードします。
    1. 「[Azure Site Recovery のサービスの更新情報](service-updates-how-to.md##links-to-currently-supported-update-rollups)」記事の「現在サポートされている更新プログラム ロールアップへのリンク」セクションで、アップグレードするプロバイダーを選択します。
    2. ロールアップ ページで、**[Update information]\(情報の更新\)** セクションを探し、Microsoft Azure Site Recovery 統合セットアップの更新プログラムのロールアップをダウンロードします。
-5. コマンド プロンプトを開き、統合セットアップ ファイルをダウンロードしたフォルダーに移動し、コマンド「MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:&lt;抽出したファイルのフォルダー パス&gt;」を使用してダウンロードからセットアップ ファイルを抽出します。
+1. コマンド プロンプトを開き、統合セットアップ ファイルをダウンロードしたフォルダーに移動し、コマンド「MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:&lt;抽出したファイルのフォルダー パス&gt;」を使用してダウンロードからセットアップ ファイルを抽出します。
 
     コマンドの例:
 
     MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 
-4. コマンド プロンプトでファイルを抽出したフォルダーに移動し、次のインストール コマンドを実行します。
+1. コマンド プロンプトでファイルを抽出したフォルダーに移動し、次のインストール コマンドを実行します。
    
     CX_THIRDPARTY_SETUP.EXE /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
 
-5. タスク マネージャーを使用して、インストールの進行状況を監視します。 CX_THIRDPARTY_SETUP.EXE のプロセスがタスク マネージャーに表示されなくなったら、次のステップに進みます。
-6. C:\thirdparty が存在し、そのフォルダーに RRD ライブラリが含まれていることを確認します。
+1. タスク マネージャーを使用して、インストールの進行状況を監視します。 CX_THIRDPARTY_SETUP.EXE のプロセスがタスク マネージャーに表示されなくなったら、次のステップに進みます。
+1. C:\thirdparty が存在し、そのフォルダーに RRD ライブラリが含まれていることを確認します。
 1. 統合セットアップをダウンロードしたフォルダーに戻り、MicrosoftAzureSiteRecoveryUnifiedSetup.exe を実行してアップグレードを完了します。 

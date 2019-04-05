@@ -1,5 +1,5 @@
 ---
-title: B2B コラボレーションの招待メールの要素 - Azure Active Directory | Microsoft Docs
+title: B2B の招待メールの要素 - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションの招待メール テンプレート
 services: active-directory
 ms.service: active-directory
@@ -9,20 +9,21 @@ ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eaab50360269ac1231db2696ba095b6d8841f74
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7015abcfe3c53e2180d617bd2c78ecd44c42af7a
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163004"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295625"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
 招待メールは、パートナーを B2B コラボレーション ユーザーとして Azure AD に参加させるための重要なコンポーネントです。 それらを使用して、受信者の信頼を高めることができます。 電子メールに正当性と社会的証明を加えることによって、受信者が安心して **[開始]** ボタンを選択して招待に応じることができるようにします。 この信頼は、共有時の摩擦を軽減するための重要な手段です。 さらに、電子メールの見栄えを良くすることができます。
 
-![Azure AD B2B 招待電子メール](media/invitation-email-elements/invitation-email.png)
+![B2B の招待メールを示すスクリーンショット](media/invitation-email-elements/invitation-email.png)
 
 ## <a name="explaining-the-email"></a>電子メールの説明
 これらの機能の最適な使用方法がわかるように、電子メールの要素をいくつか見てみましょう。
@@ -31,7 +32,7 @@ ms.locfileid: "56163004"
 電子メールの件名は次のパターンに従います:You're invited to the &lt;テナント名&gt; organization (テナント名の組織に招待されています)
 
 ### <a name="from-address"></a>差出人アドレス
-差出人アドレスには、LinkedIn と同様のパターンが使用されています。  招待元がどの会社のだれであるかを明らかにし、電子メールが Microsoft の電子メール アドレスから送信されていることを明確に示す必要があります。 形式は次のようになります:&lt;テナント名&gt;の&lt;招待元の表示名&gt; (Microsoft 経由)<invites@microsoft.com>
+差出人アドレスには、LinkedIn と同様のパターンが使用されています。  招待元がどの会社のだれであるかを明らかにし、電子メールが Microsoft の電子メール アドレスから送信されていることを明確に示す必要があります。 形式は次のようになります:Microsoft Invitations <invites@microsoft.com>、または &lt;テナント名&gt; からの &lt;招待元の表示名&gt; (Microsoft 経由) <invites@microsoft.com>。
 
 ### <a name="reply-to"></a>返信
 電子メールの返信先は招待元の電子メール アドレス (使用可能な場合) に設定されるので、電子メールに返信すると、招待元に送信されます。
@@ -50,22 +51,26 @@ ms.locfileid: "56163004"
 
 招待元がプロファイル画像をまだ設定していない場合は、次のように招待元のイニシャルを示すアイコンが画像の場所に作成されます。
 
-  ![招待元のイニシャルの表示](media/invitation-email-elements/inviters-initials.png)
+  ![招待元のイニシャルが表示されている招待を示すスクリーンショット](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>本文
 本文には、[ゲスト ユーザーをディレクトリ、グループ、またはアプリに招待](add-users-administrator.md)するときに、または [Invitation API を使用して](customize-invitation-api.md)招待元が作成するメッセージが含まれています。 これはテキスト領域であるため、セキュリティ上の理由で HTML タグは処理されません。
 
+  ![招待メールの本文を示すスクリーンショット](media/invitation-email-elements/invitation-email-body.png)
+
 ### <a name="footer-section"></a>フッター セクション
-フッターには Microsoft 社のブランドが含まれており、電子メールが監視されていないエイリアスから送信されたものかどうかを受信者に伝えます。 特殊なケースは次のとおりです。
+フッターには Microsoft 社のブランドが含まれており、電子メールが監視されていないエイリアスから送信されたものかどうかを受信者に伝えます。 
+
+特殊なケースは次のとおりです。
 
 - 招待元が招待元のテナントで電子メール アドレスを持っていない場合
 
-  ![招待元が招待元のテナントで電子メール アドレスを持っていない場合の画像](media/invitation-email-elements/inviter-no-email.png)
+  ![招待元が招待元のテナントでメール アドレスを持っていない場合のスクリーンショット](media/invitation-email-elements/inviter-no-email.png)
 
 
 - 受信者が招待を利用する必要がない場合
 
-  ![受信者が招待を利用する必要がない場合](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
+  ![受信者が招待を利用する必要がない場合のスクリーンショット](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
 ## <a name="how-the-language-is-determined"></a>言語が決定される方法
 招待電子メール内のゲスト ユーザーに表示される言語は、次の設定によって決定されます。 これらの設定は、優先順位の順に一覧表示されています。 ある設定が構成されていない場合は、一覧内の次の設定によって言語が決定されます。 

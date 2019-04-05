@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: tylerfox
-ms.openlocfilehash: 36d169a4220cb1baacdaee072ed01101ef2e9437
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b8e9ad31c2ce7b001297012bca2aa7dd526f732a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815185"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201281"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -106,7 +106,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
 
     Storm Web UI は、HDInsight クラスターで使用できます。
 
-    ![HDInsight Storm の規模のバランス調整](./media/hdinsight-administer-use-management-portal/hdinsight.portal.scale.cluster.png)
+    ![HDInsight Storm の規模のバランス調整](./media/hdinsight-administer-use-powershell/hdinsight.portal.scale.cluster.png)
 
     CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
 
@@ -159,7 +159,7 @@ Grant-AzureRmHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredenti
 > [!NOTE]  
 > アクセス許可を付与するか、取り消すことで、クラスターのユーザー名とパスワードがリセットされます。
 
-アクセス許可の付与および取り消しは、ポータルを使用して行うこともできます。 [Azure Portal ポータルを使用した HDInsight の管理][hdinsight-admin-portal]に関するページをご覧ください。
+アクセス許可の付与および取り消しは、ポータルを使用して行うこともできます。 「[Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md)」を参照してください。
 
 ## <a name="update-http-user-credentials"></a>HTTP ユーザーの資格情報の更新
 HTTP アクセスの付与/取り消しと同じ手順です。 クラスターに HTTP アクセスが許可されている場合は、まずそれを取り消す必要があります。  次に、新しい HTTP ユーザーの資格情報を使用してアクセス許可を付与してください。
@@ -228,7 +228,7 @@ $resourceGroupName = $cluster.ResourceGroup
 
 ## <a name="see-also"></a>関連項目
 * [HDInsight コマンドレット リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn479228.aspx)
-* [Azure Portal を使用した HDInsight の管理][hdinsight-admin-portal]
+* [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md)
 * [コマンド ライン インターフェイスを使用した HDInsight の管理][hdinsight-admin-cli]
 * [HDInsight クラスターの作成][hdinsight-provision]
 * [HDInsight へのデータのアップロード][hdinsight-upload-data]
@@ -245,12 +245,10 @@ $resourceGroupName = $cluster.ResourceGroup
 [hdinsight-submit-jobs]:hadoop/submit-apache-hadoop-jobs-programmatically.md
 
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-storage]: hdinsight-hadoop-use-blob-storage.md
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
 [hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-flight]: hdinsight-analyze-flight-delay-data.md
 
 [hdinsight-powershell-reference]: https://msdn.microsoft.com/library/dn858087.aspx
 

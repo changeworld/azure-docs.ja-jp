@@ -2,22 +2,17 @@
 title: Azure Monitor でログ データを分析する | Microsoft Docs
 description: Azure Monitor からログ データを取得するにはログ クエリが必要です。  この記事では、Azure Monitor で新しいログ クエリを使用する方法と、ログ クエリを作成する前に理解しておく必要がある概念について説明します。
 services: log-analytics
-documentationcenter: ''
 author: bwren
-manager: carmonm
-editor: ''
 ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: 4c428372868e3d3fac58bc851de8c59ad01d1d8f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: b25bbc0c4beac12c0b0f693dd4e01ddb2896fa16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269962"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857880"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Azure Monitor でログ データを分析する
 
@@ -34,14 +29,19 @@ Azure Monitor からログ データを取得するにはログ クエリが必�
 
 ## <a name="where-log-queries-are-used"></a>ログ クエリを使用する場所
 
-Azure Monitor のログ クエリは、次に示すさまざまな方法で使用します。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Azure Monitor のクエリは、次に示すさまざまな方法で使用します。
+
 
 - **ポータル。** [Azure portal](portals.md) では、ログ データの対話型分析を行うことができます。  これにより、クエリを編集し、さまざまな形式および視覚化で結果を分析することができます。  
 - **警告ルール。** [警告ルール](../platform/alerts-overview.md)は、ワークスペースのデータの問題を事前に特定します。  各警告ルールは、定期的に自動実行されるログ検索に基づいてます。  結果を検査することで、警告を作成するかどうかが決まります。
 - **ダッシュボード。** クエリの結果は [Azure ダッシュボード](../learn/tutorial-logs-dashboards.md)にピン留めすることができます。これにより、ログ データとメトリック データをまとめて視覚化し、必要に応じて、他の Azure ユーザーと共有することができます。 
 - **ビュー。**  ユーザー ダッシュボードに含めるデータの視覚化を作成するには、[ビュー デザイナー](../platform/view-designer.md)を使用します。  ログ クエリによって提供されるのは、各ビューの[タイル](../platform/view-designer-tiles.md)および[視覚化パーツ](../platform/view-designer-parts.md)で使用するデータです。  
+
 - **エクスポート。**  Azure Monitor から Excel または [Power BI](../platform/powerbi.md) にログ データをインポートする場合は、ログ クエリを作成して、エクスポートするデータを定義します。
-- **PowerShell。** [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) を使用する Azure Automation Runbook またはコマンド ラインから PowerShell スクリプトを実行して、Azure Monitor からログ データを取得できます。  このコマンドレットでは、クエリによって、取得するデータを決定する必要があります。
+- **PowerShell。** [Get-AzOperationalInsightsSearchResults](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) を使用する Azure Automation Runbook またはコマンド ラインから PowerShell スクリプトを実行して、Azure Monitor からログ データを取得できます。  このコマンドレットでは、クエリによって、取得するデータを決定する必要があります。
 - **Azure Monitor Logs API。**  [Azure Monitor Logs API](../platform/alerts-overview.md) を使用すると、任意の REST API クライアントによってワークスペースからログ データを取得することができます。  API 要求には Azure Monitor に対して実行するクエリが含まれており、これにより取得するデータを決定します。
 
 ![ログ検索](media/log-query-overview/queries-overview.png)

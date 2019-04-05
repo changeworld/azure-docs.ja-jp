@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 23c532f6c344f8be37c3bf3d77f30effa4ec17e8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9b6c0715cb85e245aba94adfb8b33d0d07ece9a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227711"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084414"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する
 
@@ -54,7 +54,7 @@ ms.locfileid: "55227711"
 
 2. `Main.storyboard` ファイルで、オブジェクト ライブラリから、スクリーンショットに表示されているコンポーネントを追加します。
 
-    ![Xcode Interface Builder でストリートボードを編集する][1]
+    ![Xcode Interface Builder でストーリーボードを編集する][1]
 
    * **[ユーザー名]**: "*Enter Username*" というプレースホルダー テキストが入っている UI テキスト フィールドです。結果の送信ラベルのすぐ下にあり、左右の余白と、結果の送信ラベルの下の余白による制約が適用されます。
    * **Password**:"*Enter Password*" というプレースホルダー テキストが入っている UI テキスト フィールドです。ユーザー名のテキスト フィールドのすぐ下にあり、左右の余白と、ユーザー名のテキスト フィールドの下の余白による制約が適用されます。 Attributes Inspector で *[Return Key]* の下にある **[Secure Text Entry]** オプションをオンにします。
@@ -64,7 +64,7 @@ ms.locfileid: "55227711"
    * **APNS**: Apple Platform Notification Service に通知を送信するためのスイッチとそのラベルです。
    * **Recipient Username**: "*Recipient username tag*" というプレースホルダー テキストが入っている UI テキスト フィールドです。GCM ラベルのすぐ下にあり、左右の余白と、GCM ラベルの下にあることの制約が適用されます。
 
-    「 [Notification Hubs の使用](notification-hubs-ios-apple-push-notification-apns-get-started.md) 」チュートリアル (iOS) では、いくつかのコンポーネントが追加されています。
+     「 [Notification Hubs の使用](notification-hubs-ios-apple-push-notification-apns-get-started.md) 」チュートリアル (iOS) では、いくつかのコンポーネントが追加されています。
 
 3. ビューに表示されているコンポーネントを **Ctrl** キーを押しながら `ViewController.h` までドラッグし、新しいアウトレットを追加します。
 

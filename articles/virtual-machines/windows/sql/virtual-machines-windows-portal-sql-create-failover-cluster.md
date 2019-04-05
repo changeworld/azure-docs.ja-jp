@@ -3,7 +3,7 @@ title: SQL Server FCI - Azure Virtual Machines | Microsoft Docs
 description: この記事では、Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを作成する方法について説明します。
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 62b0f7adf0eb1dd3e3fd7493096c2261a1c1076d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 19910782142bf78c10dda155f40a5c41bdd64958
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328554"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842755"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -79,7 +79,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
 さらに、次のテクノロジの概要について理解しておくことが必要です。
 
 - [Windows Server 2016 の記憶域スペース ダイレクトを使用したハイパー コンバージド ソリューション](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
-- [Azure リソース グループ](../../../azure-resource-manager/resource-group-portal.md)
+- [Azure リソース グループ](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > 現時点で、Azure 上の SQL Server FCI では [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)がサポートされていません。 FCI に参加している VM からこの拡張機能をアンインストールすることをお勧めします。 この拡張機能では、自動バックアップや自動修正などの機能のほか、ポータルの SQL 用の機能の一部がサポートされます。 エージェントをアンインストールすると、これらの機能が SQL VM で動作しなくなります。
@@ -101,7 +101,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
 
 ## <a name="step-1-create-virtual-machines"></a>手順 1:仮想マシンを作成する
 
-1. お使いのサブスクリプションで、[Azure Portal](http://portal.azure.com) にログインします。
+1. お使いのサブスクリプションで、[Azure Portal](https://portal.azure.com) にログインします。
 
 1. [Azure 可用性セットを作成します](../tutorial-availability-sets.md)。
 

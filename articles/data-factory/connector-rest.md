@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 372275740b7d4fd757e97a3966e4e87c9d2de940
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 807a6b38b9f2cbe2a3c8787fe09c2ea14106a942
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105391"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864900"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントからデータをコピーする
 
@@ -274,8 +274,8 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 この汎用 REST コネクタでは、次の改ページ位置の自動修正パターンをサポートしています。 
 
-* 次の要求の絶対 URL = 現在の応答本文のプロパティの値
-* 次の要求の絶対 URL = 現在の応答ヘッダーのヘッダー値
+* 次の要求の絶対または相対 URL = 現在の応答本文のプロパティ値
+* 次の要求の絶対または相対 URL = 現在の応答ヘッダーのヘッダー値
 * 次の要求のクエリ パラメーター = 現在の応答本文のプロパティ値
 * 次の要求のクエリ パラメーター = 現在の応答ヘッダーのヘッダー値
 * 次の要求のヘッダー = 現在の応答本文のプロパティ値
@@ -287,7 +287,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 | キー | 説明 |
 |:--- |:--- |
-| AbsoluteUrl | 次の要求を発行する URL を示します。 |
+| AbsoluteUrl | 次の要求を発行する URL を示します。 これは、**絶対 URL と相対 URL のどちらか**です。 |
 | QueryParameters.*request_query_parameter* または QueryParameters['request_query_parameter'] | "request_query_parameter" は、次の HTTP 要求 URL 内で 1 つのクエリ パラメーター名を参照するユーザー定義です。 |
 | Headers.*request_header* または Headers['request_header'] | "request_header" は、次の HTTP 要求内で 1 つのヘッダー名を参照するユーザー定義です。 |
 

@@ -8,17 +8,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a86a965a746ed659b73c359ee44fb9be250aae97
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5f46e7846a5b0cd9479f19d475d4604f37bead4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714285"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168743"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
-HDInsight に Azure ストレージ アカウントを追加するためにスクリプト アクションを使用する方法について説明します。 このドキュメントの手順では、既存の Linux ベースの HDInsight クラスターにストレージ アカウントを追加します。
+HDInsight に Azure ストレージ アカウントを追加するためにスクリプト アクションを使用する方法について説明します。 このドキュメントの手順では、既存の Linux ベースの HDInsight クラスターにストレージ アカウントを追加します。 この記事は、[Azure Storage](hdinsight-hadoop-use-blob-storage.md) と追加のストレージ アカウントにのみ適用されます (既定のクラスター記憶域アカウントには適用されません)。 この記事は、[Azure Data Lake Storage Gen1](hdinsight-hadoop-use-data-lake-store.md) および [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md) には適用されません。
 
 > [!IMPORTANT]  
 > このドキュメントでは、クラスターの作成後に、そのクラスターにストレージを追加する方法を取り上げています。 クラスター作成時にストレージ アカウントを追加する方法については、「[Apache Hadoop、Apache Spark、Apache Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。

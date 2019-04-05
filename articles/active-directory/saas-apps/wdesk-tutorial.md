@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff88f25d4bf7fea09ea07673326e068840243b98
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 75d0e962169529ab8d17aeeeed8aab26e7b7e994
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176579"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880876"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>チュートリアル:Azure Active Directory と Wdesk の統合
 
@@ -158,7 +158,7 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
        
       c. **[Consumer url]\(コンシューマー URL\)** をコピーし、Azure Portal の **[応答 URL]** ボックスに貼り付けます。
    
-      d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure Portal の **[保存]** をクリックして、変更を保存します。      
+      d. Azure Portal の **[保存]** をクリックして、変更を保存します。      
 
 1. **[Configure IdP Settings]\(IdP の設定の構成\)** をクリックして、**[Edit IdP Settings]\(IdP の設定の編集\)** ダイアログを開きます。 **[Choose File]\(ファイルの選択\)** をクリックし、Azure Portal から保存した **Metadata.xml** ファイルを選択して、アップロードします。
     
@@ -200,7 +200,7 @@ Wdesk で Azure AD のシングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-wdesk-test-user"></a>Wdesk テスト ユーザーの作成
 
@@ -219,7 +219,7 @@ Azure AD ユーザーが Wdesk にログインできるようにするには、�
    
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/createuser1.png)  
 
-1. **[User]\(ユーザー\)** ボックスにユーザー名を入力し (例: **brittasimon@contoso.com**)、**[Continue]\(続行\)** をクリックします。
+1. **[User]\(ユーザー\)** ボックスにユーザー名 (例: **brittasimon\@contoso.com**) を入力し、**[Continue]\(続行\)** をクリックします。
 
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/createuser3.png)
 
@@ -227,7 +227,7 @@ Azure AD ユーザーが Wdesk にログインできるようにするには、�
   
     ![Azure AD のテスト ユーザーの作成](./media/wdesk-tutorial/createuser4.png)
  
-    a. **[E-mail]\(電子メール\)** ボックスに、ユーザーのメール アドレスを入力します (例: **brittasimon@contoso.com**)。
+    a. **[E-mail]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **brittasimon\@contoso.com**) を入力します。
 
     b. **[First Name]\(名\)** ボックスに、ユーザーの名を入力します (例: **Britta**)。
 

@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: 884775fc2783256d9fff43e8bc6b26cc4f638648
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998622"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120552"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
@@ -22,6 +22,8 @@ ms.locfileid: "55998622"
 ![application gateway probe example][1]
 
 既定の正常性プローブによる監視を行うだけでなく、アプリケーションの要件に合わせて正常性プローブをカスタマイズすることもできます。 この記事では、既定とカスタムの両方の正常性プローブについて説明します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="default-health-probe"></a>既定の正常性プローブ
 
@@ -33,20 +35,20 @@ ms.locfileid: "55998622"
 
 ### <a name="probe-matching"></a>プローブの一致
 
-既定では、状態コード 200 の HTTP(S) 応答は正常と見なされます。 カスタム正常性プローブでは、さらに 2 つの一致条件がサポートされます。 一致条件を使用して、正常な応答の構成要素の既定の解釈を必要に応じて変更できます。
+既定では、状態コードが 200 から 399 の HTTP(S) 応答は正常と見なされます。 カスタム正常性プローブでは、さらに 2 つの一致条件がサポートされます。 一致条件を使用して、正常な応答の構成要素の既定の解釈を必要に応じて変更できます。
 
 一致条件は、次のとおりです。 
 
 - **HTTP 応答の状態コードの一致** - ユーザー指定 http 応答コードまたは応答コードの範囲を受け入れるためのプローブの一致条件。 個々のコンマ区切りの応答状態コードまたは状態コードの範囲がサポートされています。
 - **HTTP 応答本文の一致** - HTTP 応答本文をチェックし、ユーザー指定文字列と一致させるプローブの一致条件。 一致ではユーザー指定文字列が応答本文内にあるかどうかのみがチェックされ、完全な正規表現の一致ではありません。
 
-一致条件は `New-AzureRmApplicationGatewayProbeHealthResponseMatch` コマンドレットを使用して指定できます。
+一致条件は `New-AzApplicationGatewayProbeHealthResponseMatch` コマンドレットを使用して指定できます。
 
 例: 
 
-```powershell
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
+```azurepowershell
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
 一致条件が指定されたら、PowerShell の `-Match` パラメーターを使用してプローブの構成にアタッチできます。
 
@@ -62,7 +64,7 @@ $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 > [!NOTE]
 > ポートはバックエンドの HTTP 設定と同じポートです。
 
-既定のプローブは、正常性状態を判断する際に http://127.0.0.1:\<port\> だけをチェックします。 カスタム URL をチェックするように正常性プローブを構成するか、その他の設定を変更する必要がある場合は、カスタム プローブを使用する必要があります。
+既定のプローブは、正常性状態を判断する際に http:\//127.0.0.1:\<port\> だけをチェックします。 カスタム URL をチェックするように正常性プローブを構成するか、その他の設定を変更する必要がある場合は、カスタム プローブを使用する必要があります。
 
 ### <a name="probe-intervals"></a>プローブの期間
 

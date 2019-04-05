@@ -7,14 +7,14 @@ manager: carmonm
 ms.service: application-insights
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 02/12/2019
+ms.date: 03/13/2019
 ms.author: harelbr
-ms.openlocfilehash: 4bcbed82a78caff62a9459ecb44c6513f367f6b7
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f984a34be1c5d5fdd18a00812107318df8f5d9bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458199"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889286"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>スマート検出の電子メール通知に関する変更
 
@@ -22,7 +22,7 @@ ms.locfileid: "56458199"
 
 ## <a name="what-is-changing"></a>何が変わるのですか?
 
-現在、スマート検出の電子メール通知は、既定では _サブスクリプションの所有者_、_サブスクリプションの共同作成者_、および _サブスクリプションの閲覧者_ の各ロールに送信されています。 これらのロールには、多くの場合、監視に積極的に関与していないユーザーが含まれているため、多数のユーザーが不必要に通知を受信する原因になっています。 このエクスペリエンスを改善するために、電子メール通知は既定では[監視閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)ロールと[監視共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)ロールのみに送信されるようにするための変更が進行しています。
+現在、スマート検出の電子メール通知は、既定では_サブスクリプションの所有者_、_サブスクリプションの共同作成者_、および_サブスクリプションの閲覧者_の各ロールに送信されています。 これらのロールには、多くの場合、監視に積極的に関与していないユーザーが含まれているため、多数のユーザーが不必要に通知を受信する原因になっています。 このエクスペリエンスを改善するために、電子メール通知は既定では[監視閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)ロールと[監視共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)ロールのみに送信されるようにするための変更が進行しています。
 
 ## <a name="scope-of-this-change"></a>この変更の範囲
 
@@ -34,7 +34,7 @@ ms.locfileid: "56458199"
 
 ## <a name="how-to-prepare-for-this-change"></a>この変更に備える方法は?
 
-スマート検出の電子メール通知が関連するユーザーに確実に送信されるようにするには、それらのユーザーを[監視閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)ロールと[監視共同作業者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)ロールに割り当てる必要があります。 割り当ては、サブスクリプション レベルで行う (サブスクリプション内のすべての Application Insights リソースに影響します) か、Application Insights リソース レベルで行う (特定のリソースのみに影響します) 必要があります。
+スマート検出のメール通知が関連するユーザーに確実に送信されるようにするには、それらのユーザーをサブスクリプションの[監視閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader)ロールまたは[監視共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor)ロールに割り当てる必要があります。
 
 Azure portal を使用してユーザーを監視閲覧者または監視共同作業者に割り当てるには、「[ロールの割り当てを追加する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment)」で説明されている手順に従います。 ユーザーが割り当てられるロールとして、必ず "_監視閲覧者_" または "_監視共同作業者_" を選択してください。
 

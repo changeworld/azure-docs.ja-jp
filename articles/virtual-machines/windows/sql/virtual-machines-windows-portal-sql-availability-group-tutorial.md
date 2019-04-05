@@ -3,7 +3,7 @@ title: SQL Server 可用性グループ - Azure Virtual Machines - チュート�
 description: このチュートリアルでは、Azure Virtual Machines に SQL Server Always On 可用性グループを作成する方法を説明します。
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,14 +16,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359716"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003452"
 ---
-# <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
+# <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>チュートリアル:Azure VM での AlwaysOn 可用性グループの手動構成
 
 このチュートリアルでは、Azure Virtual Machines に SQL Server Always On 可用性グループを作成する方法を説明します。 チュートリアル全体では、2 つの SQL Server にデータベース レプリカで可用性グループを作成します。
 
@@ -53,7 +53,7 @@ ms.locfileid: "54359716"
 チュートリアルを始める前に、[Azure Virtual Machines で Always On 可用性グループを作成するための前提条件を満たす](virtual-machines-windows-portal-sql-availability-group-prereq.md)必要があります。 これらの前提条件が既に満たされている場合は、「[クラスターを作成する](#CreateCluster)」に進んでかまいません。
 
   >[!NOTE]
-  > このチュートリアルの手順の多くは、Azure クイックスタート テンプレートを使用して自動化できます。 詳しくは、「[WSFC、リスナーを作成し、Azure クイックスタート テンプレートを使用して、SQL Server VM に Always On 可用性グループ用の ILB を構成する](virtual-machines-windows-sql-availability-group-quickstart-template.md)」をご覧ください。
+  > このチュートリアルで説明する手順の多くは、[Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) と [Azure クイック スタート テンプレート](virtual-machines-windows-sql-availability-group-quickstart-template.md)で自動化できるようになりました。
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
@@ -415,6 +415,7 @@ Azure Load Balancer には、Standard Load Balancer または Basic Load Balance
 1. ロード バランサーをクリックし、**[負荷分散規則]** をクリックして、**[+ 追加]** をクリックします。
 
 1. 次のようにリスナーの負荷分散規則を設定します。
+
    | Setting | 説明 | 例
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointListener |
@@ -455,6 +456,7 @@ WSFC の IP アドレスもロード バランサー上に存在する必要が�
 1. 負荷分散規則を設定します。 **[負荷分散規則]** をクリックし、**[+ 追加]** をクリックします。
 
 1. クラスターのコア IP アドレスの負荷分散規則を次のように設定します。
+
    | Setting | 説明 | 例
    | --- | --- |---
    | **Name** | Text | WSFCEndPoint |
@@ -505,15 +507,15 @@ SQL Server Management Studio で、リスナー ポートを設定します。
 
 1. **sqlcmd** ユーティリティを使用して接続をテストします。 たとえば次のスクリプトは、Windows 認証を使用し、リスナー経由でプライマリ レプリカとの **sqlcmd** 接続を確立しています。
 
-  ```cmd
-  sqlcmd -S <listenerName> -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName> -E
+   ```
 
-  リスナーが既定のポート (1433) 以外のポートを使用している場合は、そのポートを接続文字列で指定します。 たとえば、次の sqlcmd コマンドは、ポート 1435 でリスナーに接続します。
+   リスナーが既定のポート (1433) 以外のポートを使用している場合は、そのポートを接続文字列で指定します。 たとえば、次の sqlcmd コマンドは、ポート 1435 でリスナーに接続します。
 
-  ```cmd
-  sqlcmd -S <listenerName>,1435 -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName>,1435 -E
+   ```
 
 SQLCMD 接続では、プライマリ レプリカをホストしている SQL Server インスタンスに対して自動的に接続されます。
 

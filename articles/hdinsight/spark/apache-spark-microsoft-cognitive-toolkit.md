@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 76fc2c9a0864417e380471f8de59d148e0fbf7b4
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 093685ff2fa48799f0a91ee25727f5124dec6292
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651829"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225792"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit ディープ ラーニング モデルを使用する
 
@@ -52,13 +52,13 @@ ms.locfileid: "53651829"
 
 ## <a name="install-microsoft-cognitive-toolkit"></a>Microsoft Cognitive Toolkit をインストールする
 
-スクリプト アクションを使用して Spark クラスターに Microsoft Cognitive Toolkit をインストールします。 スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。 カスタム スクリプトは、Azure Portal から使用するか、HDInsight .NET SDK または Azure PowerShell によって使用できます。 スクリプトを使用して、ツールキットのインストールをクラスター作成の一環として、またはクラスターの稼働後に実行することもできます。 
+スクリプト アクションを使用して Spark クラスターに Microsoft Cognitive Toolkit をインストールします。 スクリプト アクションは、既定で使用できないクラスターにコンポーネントをインストールするためにカスタム スクリプトを使用します。 カスタム スクリプトは、Azure portal から使用するか、HDInsight .NET SDK または Azure PowerShell によって使用できます。 スクリプトを使用して、ツールキットのインストールをクラスター作成の一環として、またはクラスターの稼働後に実行することもできます。 
 
 この記事では、クラスターの作成後にポータルを使用してツールキットをインストールします。 カスタム スクリプトを実行する他の方法については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](../hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
-### <a name="using-the-azure-portal"></a>Azure Portal の使用
+### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-Azure Portal を使用してスクリプト アクションを実行する方法については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)に関するページを参照してください。 Microsoft Cognitive Toolkit をインストールするには、次の入力を行ってください。
+Azure portal を使用してスクリプト アクションを実行する方法については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](../hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)に関するページを参照してください。 Microsoft Cognitive Toolkit をインストールするには、次の入力を行ってください。
 
 * スクリプト アクション名の値を指定します。
 
@@ -74,7 +74,7 @@ Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit を使用�
 
 1. GitHub リポジトリ [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) を複製します。 複製の手順については、「[Cloning a repository (リポジトリの複製)](https://help.github.com/articles/cloning-a-repository/)」を参照してください。
 
-2. Azure Portal から、既にプロビジョニングしている Spark クラスターのブレードを開き、**[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。
+2. Azure portal から、既にプロビジョニングしている Spark クラスターのブレードを開き、**[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。
 
     Jupyter Notebook は URL `https://<clustername>.azurehdinsight.net/jupyter/` に移動して起動することもできます。 \<clustername> を、使用する HDInsight クラスターの名前に置き換えます。
 

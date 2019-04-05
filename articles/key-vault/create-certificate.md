@@ -3,7 +3,7 @@ title: 証明書の作成方法
 description: Key Vault で証明書を作成する方法。
 services: key-vault
 documentationcenter: ''
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
 ms.assetid: e17b4c9b-4ff3-472f-8c9d-d130eb443968
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: bryanla
-ms.openlocfilehash: 3258683b950b537dd106323fe95105289034f727
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 53b4d03ac8f5d22595d3a4e840a04583f7ec963d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114860"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995534"
 ---
 # <a name="certificate-creation-methods"></a>証明書の作成方法
 
@@ -35,7 +35,7 @@ ms.locfileid: "56114860"
 1. 上の図では、アプリケーションが証明書を作成しています。これは、キー コンテナー内にキーを作成することによって、内部的に開始します。
 2. Key Vault がアプリケーションに証明書署名要求 (CSR) を返します。
 3. アプリケーションが、選択された CA に CSR を渡します。
-4. 選択された CA が、X509 証明書で応答します。
+4. 選択した CA は、X509 証明書で応答します。
 5. アプリケーションが、CA からの X509 証明書のマージャーで新しい証明書の作成を完了します。
 
 -   **既知の発行者プロバイダーで証明書を作成する:** この方法では、発行者オブジェクトを作成する 1 回限りのタスクを実行する必要があります。 キー コンテナーに発行者オブジェクトが作成されると、KV 証明書のポリシーでその名前を参照できます。 そのような KV 証明書の作成の要求では、コンテナーにキー ペアが作成され、参照されている発行者オブジェクトの情報を使用して発行者プロバイダー サービスと通信して、x509 証明書が取得されます。 x509 証明書が発行者サービスから取得され、キー ペアとマージされて、KV 証明書の作成が完了します。  
@@ -94,6 +94,6 @@ KV 証明書の作成要求が完了すると、保留中オブジェクトの�
 
  Authorization:証明書/作成アクセス許可が必要です。
 
- ## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>関連項目
  - [キー、シークレット、証明書について](about-keys-secrets-and-certificates.md)
  - [証明書作成の監視と管理](create-certificate-scenarios.md)

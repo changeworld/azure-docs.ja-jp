@@ -3,20 +3,20 @@ title: Azure Database for MySQL へのオンライン移行に関する既知の
 description: Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項について学習します。
 services: database-migration
 author: HJToland3
-ms.author: scphang
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 09/22/2018
-ms.openlocfilehash: ec91eec9baba1f337f18e1927a87971bf1499040
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: f52eb1699b980e84195ec34eb543c4523328c893
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724143"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181998"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -97,7 +97,7 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **対処法**: 32 KB を超える LOB オブジェクトがある場合は、エンジニアリング チーム ([dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)) に相談してください。
+    **対処法**: 32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
 - **制限事項**:テーブルにLOB 列があり、テーブルに主キーが設定されていない場合、このテーブルのデータが移行されない可能性があります。
 

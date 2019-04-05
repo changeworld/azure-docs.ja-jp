@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: aabd0ab55c061c9d2cdc27b4ab5a241ad9e9793c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a5ebd50b3a5fe3b611bae28db98979eee40f9490
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899028"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -23,7 +23,7 @@ Azure Monitor には、さまざまな Azure サービスで監視を実施す�
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 たとえば、[Azure portal](https://portal.azure.com)、Azure Monitor API (REST および .Net) のほか、Event Hub などの分析ソリューションからアクセスできます。 詳細については、[Azure Monitor のメトリック](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関するページをご覧ください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 たとえば、[Azure portal](https://portal.azure.com)、Azure Monitor API シリーズ (REST および .NET) のほか、Event Hubs などの分析ソリューションからアクセスできます。 詳細については、[Azure Monitor のメトリック](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関するページをご覧ください。
 
 メトリックは既定で有効になっており、過去 93 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../../azure-monitor/platform/diagnostic-logs-overview.md)で構成されます。
 
@@ -134,13 +134,13 @@ BLOB、テーブル、ファイル、またはキューのメトリック定義�
 
 ```
 
-### <a name="access-metrics-with-the-net-sdk"></a>.Net SDK でメトリックにアクセスする
+### <a name="access-metrics-with-the-net-sdk"></a>.NET SDK でメトリックにアクセスする
 
-Azure Monitor には、メトリックの定義と値を読み取るための [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) が用意されています。 [サンプル コード](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)では、さまざまなパラメーターで SDK を使用する方法を示します。 ストレージ メトリックスについては `0.18.0-preview` 以降のバージョンを使用する必要があります。 リソース ID は .Net SDK で使用されます。 詳細については、Azure Storage サービスのリソース ID に関するページを参照してください。
+Azure Monitor には、メトリックの定義と値を読み取るための [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) が用意されています。 [サンプル コード](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/)では、さまざまなパラメーターで SDK を使用する方法を示します。 ストレージ メトリックスについては `0.18.0-preview` 以降のバージョンを使用する必要があります。 リソース ID は .NET SDK で使用されます。 詳細については、Azure Storage サービスのリソース ID に関するページを参照してください。
 
-次の例では、Azure Monitor .Net SDK を使用してストレージ メトリックスを読み取る方法を示します。
+次の例では、Azure Monitor .NET SDK を使用してストレージ メトリックスを読み取る方法を示します。
 
-#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>.Net SDK でアカウント レベルのメトリック定義を一覧表示する
+#### <a name="list-account-level-metric-definition-with-the-net-sdk"></a>.NET SDK を使用してアカウント レベルのメトリック定義を一覧表示する
 
 次の例は、アカウント レベルでメトリック定義を一覧表示する方法を示しています。
 
@@ -177,7 +177,7 @@ Azure Monitor には、メトリックの定義と値を読み取るための [.
 
 BLOB、テーブル、ファイル、またはキューのメトリック定義を一覧表示するには、API でサービスごとに異なるリソース ID を指定する必要があります。
 
-#### <a name="read-metric-values-with-the-net-sdk"></a>.Net SDK を使用してメトリックの値を読み取る
+#### <a name="read-metric-values-with-the-net-sdk"></a>.NET SDK を使用してメトリックの値を読み取る
 
 次の例は、アカウント レベルで `UsedCapacity` データを読み取る方法を示しています。
 
@@ -227,7 +227,7 @@ BLOB、テーブル、ファイル、またはキューのメトリック定義�
 
 上の例で、BLOB、テーブル、ファイル、またはキューのメトリック値を読み取るには、API でサービスごとに異なるリソース ID を指定する必要があります。
 
-#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>.Net SDK を使用して多次元メトリック値を読み取る
+#### <a name="read-multi-dimensional-metric-values-with-the-net-sdk"></a>.NET SDK を使用して多次元メトリック値を読み取る
 
 多次元メトリックの場合、特定のディメンション値に対するメトリック データを読み取る必要がある場合は、メタ データ フィルターを定義する必要があります。
 

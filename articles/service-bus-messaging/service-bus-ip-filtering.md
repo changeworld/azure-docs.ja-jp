@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a8d29e7cae20c37adfeccaef01e1625b6ab3e0d0
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 52475a3976ef8897ffed07c499eb06e7476c0156
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852682"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58136295"
 ---
 # <a name="use-firewall-rules"></a>ファイアウォール ルールを使用する
 
@@ -60,7 +60,7 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 ### <a name="creating-a-virtual-network-and-firewall-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して仮想ネットワークとファイアウォール ルールを作成する
 
 > [!IMPORTANT]
-> 仮想ネットワークは、Service Bus の **Premium** レベルでのみサポートされます。
+> ファイアウォールと仮想ネットワークは、Service Bus の **Premium** レベルでのみサポートされます。
 
 次の Resource Manager テンプレートでは、既存の Service Bus 名前空間に仮想ネットワーク ルールを追加できます。
 

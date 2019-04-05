@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8f549c20480e3866725717aa054af6653ab5a913
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 236e4e7079da792d055a8de148d03852ca1012ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343997"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877362"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -180,9 +180,9 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 
 ## <a name="may-2018---preview"></a>2018 年 5 月 - プレビュー
 
-### <a name="net-sdk"></a>.Net SDK
+### <a name="net-sdk"></a>.NET SDK
 
-.Net SDK には次の機能があります。
+.NET SDK には次の機能があります。
 
 * **Transforms** と **Job**: メディア コンテンツをエンコードまたは分析します。 例については、「[ファイルのストリーミング](stream-files-tutorial-with-api.md)」と「[分析](analyze-videos-tutorial-with-api.md)」を参照してください。
 * **ストリーミング ロケーター**: コンテンツをエンドユーザー デバイスに公開およびストリーミングします。

@@ -6,17 +6,17 @@ ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.openlocfilehash: 4accff7410d17e76a000b7cef957b75c65a16960
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/05/2018
+ms.openlocfilehash: 2a59a81b0894cbf58c5d3ab5a5569f4749b64b00
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007670"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543289"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Azure Stream Analytics での時間の処理について
 
-この記事では、Azure Stream Analytics サービスで時間の処理の現実的な問題を解決するために、設計上の選択を行う方法について説明します。 時間の処理の設計上の決定は、イベント順序要素に密接に関連しています。 詳細については、この関連記事「[Azure Stream Analytics のイベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)」を参照してください。
+この記事では、Azure Stream Analytics サービスで時間の処理の現実的な問題を解決するために、設計上の選択を行う方法について説明します。 時間の処理の設計上の決定は、イベント順序要素に密接に関連しています。
 
 ## <a name="background-time-concepts"></a>バック グラウンド時間の概念
 

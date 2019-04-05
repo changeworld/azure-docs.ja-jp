@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: f92fe2432051b148bf0b35fccc3fa33db9b66a14
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5c21f1c9345fcf1b89afc3e1ee6b7f61ee79ddbe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093158"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168104"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Visual Studio 2015 以降を管理者として起動し、新しい **Service Fa
 
 ![Visual Studio 用の Service Fabric ツール - 新しいプロジェクト][1]
 
-次のダイアログ ボックスで、**[.Net Core 2.0]** の下の **[アクター サービス]** を選択し、サービスの名前を入力します。
+次のダイアログ ボックスで、**[.NET Core 2.0]** の下の **[アクター サービス]** を選択し、サービスの名前を入力します。
 
 ![Service Fabric プロジェクトのテンプレート][5]
 

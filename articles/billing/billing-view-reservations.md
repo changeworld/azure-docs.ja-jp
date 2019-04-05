@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: banders
-ms.openlocfilehash: 3a421e71cf93820716298fcfe4ccb1bcbe843bd1
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: a66547ed4bf089bb618dc8b98da7f260b6b5536a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904031"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904305"
 ---
 # <a name="view-reservations-for-azure-in-the-azure-portal"></a>Azure portal で Azure の予約を表示する
 
@@ -73,4 +73,4 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

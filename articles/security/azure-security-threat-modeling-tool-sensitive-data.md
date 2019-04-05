@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5e9104f59173c3d39ef2f2232ed2a9c6864cf84f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 27028903daeaf62a25584300944538341a861c80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892560"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905224"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム: 機密データ | 軽減策 
 | 製品/サービス | 記事 |
@@ -141,7 +141,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN: autocomplete 属性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[HTML での AutoComplete の使用](https://msdn.microsoft.com/library/ms533032.aspx)、[HTML サニタイズの脆弱性](https://technet.microsoft.com/security/bulletin/MS10-071)、[オートコンプリートをまた有効にするのですか](http://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
+| **参照**              | [MSDN: autocomplete 属性](https://msdn.microsoft.com/library/ms533486(VS.85).aspx)、[HTML での AutoComplete の使用](https://msdn.microsoft.com/library/ms533032.aspx)、[HTML サニタイズの脆弱性](https://technet.microsoft.com/security/bulletin/MS10-071)、[オートコンプリートをまた有効にするのですか](https://blog.mindedsecurity.com/2011/10/autocompleteagain.html) |
 | **手順** | autocomplete 属性は、フォームがオートコンプリートをオンまたはオフにするかどうかを指定します。 オートコンプリートがオンのとき、ブラウザーは前にユーザーが入力した値に基づいて値を自動的に完成させます。 たとえば、新しい名前とパスワードがフォームに入力されて、フォームが送信されるとき、ブラウザーはパスワードを保存する必要があるかどうかを尋ねます。その後、フォームが表示されるとき、名前とパスワードは自動的に入力されるか、または名前が入力されると完成されます。 ローカルにアクセスできる攻撃者は、ブラウザーのキャッシュからクリア テキストのパスワードを入手する可能性があります。 既定ではオートコンプリートは有効なので、明示的に無効にする必要があります。 |
 
 ### <a name="example"></a>例
@@ -182,7 +182,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [.NET Crypto API を使ったパスワードのハッシュ](http://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
+| **参照**              | [.NET Crypto API を使ったパスワードのハッシュ](https://docs.asp.net/en/latest/security/data-protection/consumer-apis/password-hashing.html) |
 | **手順** | カスタム ユーザー ストア データベースにパスワードを保存してはなりません。 パスワード ハッシュは、代わりに salt 値を使って保存する必要があります。 ユーザーの salt が常に一意であることを確認し、パスワードを保存する前に 150,000 以上の作業因子反復回数で b-crypt、s-crypt、または PBKDF2 を適用して、ブルート フォース攻撃を受けないようにします。| 
 
 ## <a id="db-encrypted"></a>データベースの列の機密データを暗号化する
@@ -399,7 +399,7 @@ Allow screen capture
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Crypto Obfuscation For .Net](http://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
+| **参照**              | [Crypto Obfuscation For .Net](https://www.ssware.com/cryptoobfuscator/obfuscator-net.htm) |
 | **手順** | 生成されるバイナリ (apk 内のアセンブリ) は、アセンブリのリバース エンジニアリングを止めるために難読化する必要があります。この目的には、`CryptoObfuscator` などのツールを使うことができます。 |
 
 ## <a id="cert"></a>clientCredentialType を Certificate または Windows に設定する
@@ -429,7 +429,7 @@ clientCredentialType を Certificate または Windows に設定してくださ�
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | セキュリティ モード - トランスポート、セキュリティ モード - メッセージ |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF セキュリティの基礎 CoDe マガジン](http://www.codemag.com/article/0611051) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_weak_class_reference)、[WCF セキュリティの基礎 CoDe マガジン](https://www.codemag.com/article/0611051) |
 | **手順** | トランスポートまたはメッセージのセキュリティが定義されていません。 トランスポートまたはメッセージのセキュリティなしでメッセージを送信するアプリケーションは、メッセージの機密性または整合性を保証できません。 WCF セキュリティのバインドが None に設定されている場合、トランスポートとメッセージのセキュリティはどちらも無効になります。 |
 
 ### <a name="example"></a>例
@@ -453,8 +453,8 @@ clientCredentialType を Certificate または Windows に設定してくださ�
 * Both。 トランスポート レベルとメッセージ レベルのセキュリティの設定を指定できます (MSMQ のみがこれをサポートします)。 
 * TransportWithMessageCredential。 メッセージとメッセージ保護で資格情報が渡され、サーバー認証はトランスポート層で提供されます。 
 * TransportCredentialOnly。 トランスポート層でクライアントの資格情報が渡され、メッセージ保護は適用されません。 トランスポートとメッセージのセキュリティを使って、メッセージの機密性と整合性を保護します。 次の構成は、メッセージ資格情報でトランスポート セキュリティを使うようサービスに指示します。
-```
-<system.serviceModel>
+  ```
+  <system.serviceModel>
   <bindings>
     <wsHttpBinding>
     <binding name=""MyBinding""> 
@@ -462,5 +462,5 @@ clientCredentialType を Certificate または Windows に設定してくださ�
     <message clientCredentialType=""Windows""/> 
     </binding> 
   </bindings> 
-</system.serviceModel> 
-```
+  </system.serviceModel> 
+  ```

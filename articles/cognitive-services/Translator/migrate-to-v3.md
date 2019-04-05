@@ -10,17 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 04d7bfcf0527b490bc18f6d85977d899823d5e69
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 1857cd7c4fe6102f94487dbb2cc5ad5c43c18f99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301878"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101178"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API を V2 から V3 に移行する
 
 > [!NOTE]
 > V2 は 2018 年 4 月 30 日をもって非推奨となり、2019 年 4 月 30 日をもってサービス停止となります。
+> 
+> Microsoft Translator Hub は、2019 年 4 月 30 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。  
 
 Microsoft Translator チームは Translator Text API のバージョン 3 (V3) をリリースしました。 このリリースには、新しい機能、非推奨になったメソッド、Microsoft Translator Service との間でデータを送受信するための新しい形式が含まれています。 このドキュメントでは、V3 を使用するためにアプリケーションを変更する方法に関する情報を提供します。 
 
@@ -49,8 +51,8 @@ V2 メソッドと V3 メソッドについてまとめた次のリストで、V
 | `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
 | `Detect`     | [Detect](reference/v3-0-detect.md)         |
 | `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
-| `AddTranslation`     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| `AddTranslationArray`    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| `AddTranslation`     | この機能は現在サポートされていません       |
+| `AddTranslationArray`    | この機能は現在サポートされていません          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | `GetTranslations`      | この機能は現在サポートされていません         |
 | `GetTranslationsArray`      | この機能は現在サポートされていません         |
@@ -106,6 +108,10 @@ Microsoft Translator V3 の価格設定は V2 のときと同じであり、ス�
 
 ## <a name="compatibility-and-customization"></a>互換性とカスタマイズ
 
+> [!NOTE]
+> 
+> Microsoft Translator Hub は、2019 年 4 月 30 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。   
+
 Microsoft Translator V3 では、ニューラル機械翻訳が既定で使用されます。 そのため、Microsoft Translator Hub では使用できません。 Translator Hub は、従来の統計的な機械翻訳のみをサポートしています。 ニューラル翻訳のカスタマイゼーションは、Custom Translator を使用してご利用いただけるようになりました。 [ニューラル機械翻訳のカスタマイゼーションに関する詳細](custom-translator/overview.md)
 
 V3 テキスト API によるニューラル翻訳では、標準カテゴリ (SMT、speech、tech、generalnn) を使用できません。
@@ -130,13 +136,13 @@ V3 テキスト API によるニューラル翻訳では、標準カテゴリ (S
 * Microsoft Translator Hub を使用して作成されたカスタム翻訳システムにアクセスすることができます。
 * 使用しているエンドポイントが api.microsofttranslator.com である場合、ご使用の Translator Text API のバージョンは 2 です。
 
-どのバージョンの Translator API でも、翻訳の記録は作成されません。 翻訳はだれとも共有されません。 詳細については、[Translator の「トレースなし」](http://www.aka.ms/NoTrace)という Web ページを参照してください。
+どのバージョンの Translator API でも、翻訳の記録は作成されません。 翻訳はだれとも共有されません。 詳細については、[Translator の「トレースなし」](https://www.aka.ms/NoTrace)という Web ページを参照してください。
 
 ## <a name="links"></a>リンク
 
 * [Microsoft プライバシーに関する声明](https://privacy.microsoft.com/privacystatement)
 * [Microsoft Azure の法的情報](https://azure.microsoft.com/support/legal)
-* [オンライン サービス規約](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [オンライン サービス規約](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>次の手順
 

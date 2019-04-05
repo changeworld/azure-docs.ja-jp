@@ -4,22 +4,22 @@ description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 2cb4895fc2f884d6da41b55faa91fbcb9e88f52f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a6fcbc0e8adac75f17d7379ff512ba650d0bb118
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978653"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203312"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>JavaScript シングル ページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
@@ -27,7 +27,7 @@ ms.locfileid: "52978653"
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>このガイドで生成されたサンプル アプリの動作
 
-![このガイドで生成されたサンプル アプリの動作](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.png)
+![このチュートリアルで生成されたサンプル アプリの動作の紹介](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro-updated.png)
 
 <!--start-collapse-->
 ### <a name="more-information"></a>詳細情報

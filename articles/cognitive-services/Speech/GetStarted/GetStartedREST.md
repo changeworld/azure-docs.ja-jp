@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: fc40f20349e3424dbcf50f5ca0395b06a818566f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224056"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259943"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>クイック スタート:Bing Speech 認識 REST API を使用する
 
@@ -32,7 +33,7 @@ Speech API は、Cognitive Services (以前の Project Oxford) の一部です�
 > [!IMPORTANT]
 >* サブスクリプション キーを取得します。 REST API にアクセスするには、その前に[サブスクリプション キー](https://azure.microsoft.com/try/cognitive-services/)を入手する必要があります。
 >
->* サブスクリプション キーを使用します。 次の REST サンプルでは、YOUR_SUBSCRIPTION_KEY を自身のサブスクリプション キーに置き換えてください。 
+>* サブスクリプション キーを使用します。 次の REST サンプルでは、YOUR_SUBSCRIPTION_KEY を自身のサブスクリプション キーに置き換えてください。
 >
 >* サブスクリプション キーの取得方法については、[認証](../how-to/how-to-authentication.md)ページをご覧ください。
 
@@ -65,9 +66,9 @@ https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitive
 
 | 認識モード  | 言語 | 出力形式 | サービス URI |
 |---|---|---|---|
-| `interactive` | pt-BR | 既定値 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| `conversation` | en-US | 詳細 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
-| `dictation` | fr-FR | シンプル | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
+| `interactive` | pt-BR | 既定値 | https:\//speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| `conversation` | en-US | 詳細 | https:\//speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
+| `dictation` | fr-FR | シンプル | https:\//speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
 > サービス URI は、アプリケーションでは、REST API を使用して、音声認識サービスを呼び出す場合にのみ必要です。 いずれかの[クライアント ライブラリ](GetStartedClientLibraries.md)を使用する場合、通常、どの URI が使用されるかを知っている必要はありません。 クライアント ライブラリは異なるサービス URI を使用することがあり、それぞれ特定のクライアント ライブラリにのみ適用できます。 詳しくは、ご使用のクライアント ライブラリをご覧ください。

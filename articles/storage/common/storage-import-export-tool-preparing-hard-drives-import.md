@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 7645694e9f2b90bfbe26ac3d0747791570f32d1b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510138"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898688"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 
@@ -25,7 +25,7 @@ WAImportExport ツールは、ドライブの準備および修復用のツー�
 
 - **コンピューターの構成**
   - Windows 7、Windows Server 2008 R2、またはそれ以降の新しい Windows オペレーティング システム
-  - .NET Framework 4 をインストールする必要があります。 .Net Framework がコンピューターにインストールされているかどうかを確認する方法については、「[FAQ](#faq)」を参照してください。
+  - .NET Framework 4 をインストールする必要があります。 .NET Framework がマシンにインストールされているかどうかを確認する方法については、「[FAQ](#faq)」を参照してください。
 - **ストレージ アカウント キー** - ストレージ アカウントのアカウント キーが少なくとも 1 つ必要です。
 
 ### <a name="preparing-disk-for-import-job"></a>インポート ジョブ用のディスクの準備
@@ -151,12 +151,12 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 InitialDriveset に指定したドライブにデータが収まらなかった場合は、ツールを使用して同じコピー セッションにドライブを追加できます。 
 
->[!NOTE] 
->セッション ID は前回のセッション ID と一致する必要があります。ジャーナル ファイルは前回のセッションで指定したファイルと一致する必要があります。
->
-```
-WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
-```
+> [!NOTE]
+> セッション ID は前回のセッション ID と一致する必要があります。ジャーナル ファイルは前回のセッションで指定したファイルと一致する必要があります。
+> 
+> ```
+> WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
+> ```
 
 **例:**
 
@@ -364,7 +364,7 @@ BitLocker で TPM を無効にするには、次の手順に従ってくださ�
 
 Microsoft .NET Framework のすべてのバージョンは %windir%\Microsoft.NET\Framework\ ディレクトリにインストールされています。
 
-ツールを実行する必要のあるコンピューターで上記の場所に移動します。 "v4" で始まるフォルダー名を探します。 このディレクトリがない場合は、.NET v4 がコンピューターにインストールされていません。 .Net 4 をコンピューターにダウンロードするには、[Microsoft .NET Framework 4 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=17851) を使用します。
+ツールを実行する必要のあるコンピューターで上記の場所に移動します。 "v4" で始まるフォルダー名を探します。 このディレクトリがない場合は、.NET v4 がコンピューターにインストールされていません。 .NET 4 をご自分のマシンにダウンロードするには、[Microsoft .NET Framework 4 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=17851) を使用します。
 
 ### <a name="limits"></a>制限
 

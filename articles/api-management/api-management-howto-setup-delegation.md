@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: ab5d6c531b08a13d465811d68a07e07e9fb0167c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: c15dc83929aeaf6811f4d19bfca462abfacf4014
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109462"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892457"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
 委任を使用すると、開発者のサインイン/サインアップおよび成果物のサブスクリプション処理を、開発者ポータルの組み込みの機能ではなく、お客様の既存の Web サイトを使用して行うことができます。 これにより、お客様の Web サイトでユーザー データを保持し、独自の方法でこれらのステップの検証を実行できます。
+
+[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="delegate-signin-up"> </a>開発者のサインインおよびサインアップ処理の委任
 開発者のサインインおよびサインアップ処理をお客様の既存の Web サイトに委任するには、API Management 開発者ポータルから開始される該当する要求のエントリ ポイントとして動作する特殊な委任エンドポイントをサイト上に作成する必要があります。
@@ -45,7 +47,7 @@ ms.locfileid: "37109462"
 
 1. 次の形式の要求を受け取ります。
    
-   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}*
+   > "*http:\//www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={元のページの URL}&salt={文字列}&sig={文字列}*"
    > 
    > 
    
@@ -102,7 +104,7 @@ ms.locfileid: "37109462"
 
 1. 次の形式の要求を受け取ります。
    
-   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
+   > "*http:\//www.yourwebsite.com/apimdelegation?operation={操作}&productId={サブスクライブする成果物}&userId={要求元のユーザー}&salt={文字列}&sig={文字列}*"
    > 
    > 
    
@@ -118,7 +120,7 @@ ms.locfileid: "37109462"
    * **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 2. 要求の送信元が Azure API Management であることを確認します (省略できますが、セキュリティ上強く推奨されます)。
    
-   * **productId**、**userId、および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 を計算します。
+   * **productId**、**userId**、および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 を計算します。
      
      > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
      > 

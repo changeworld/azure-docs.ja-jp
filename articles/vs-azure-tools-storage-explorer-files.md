@@ -11,15 +11,15 @@ ms.service: storage
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 194b13e889de4bc1c5938a6ce9cfded6fe2c88c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768261"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847299"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Azure File Storage でのストレージ エクスプローラーの使用
 
@@ -219,7 +219,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
         c. 必要に応じて、選択したフォルダーの内容のアップロード先となるターゲット フォルダーを指定します。 ターゲット フォルダーが存在しない場合は、作成されます。
 
-        d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[アップロード]** を選択します。
+        d. **[アップロード]** を選択します。
 
     - **ローカル コンピューターにファイルをダウンロードする**
         
@@ -229,7 +229,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
         
         c. **[Specify where to save the downloaded file (ダウンロードしたファイルを保存する場所の指定)]** ダイアログで、ファイルのダウンロード先の場所と、その場所に付ける名前を指定します。
 
-        d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[保存]** を選択します。
+        d. **[保存]** を選択します。
 
     - **ローカル コンピューターでファイルを開く**
         
@@ -247,7 +247,7 @@ Storage Explorer を使用すると、ファイル共有をクリップボード
 
         c. 左側のウィンドウで別のファイル共有に移動し、それをダブルクリックして、メイン ウィンドウに表示します。
 
-        d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 メイン ウィンドウのツール バーで **[貼り付け]** を選択して、ファイルのコピーを作成します。
+        d. メイン ウィンドウのツール バーで **[貼り付け]** を選択して、ファイルのコピーを作成します。
 
     - **ファイルを削除する**
 

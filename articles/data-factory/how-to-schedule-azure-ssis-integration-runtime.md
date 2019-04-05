@@ -13,17 +13,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 9f1ee309156a39078ffdfeed2c75d86476ac8b48
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0b84f02d11e278950e4e44874e7b1af9da58f83f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158654"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092448"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 この記事では、Azure Data Factory (ADF) を使用して、Azure-SSIS Integration Runtime (IR) の開始と停止のスケジュールを設定する方法を説明します。 Azure-SSIS IR は、SQL Server Integration Services (SSIS) パッケージの実行専用の ADF コンピューティング リソースです。 Azure-SSIS IR を実行するには、それに関連するコストがあります。 このため一般には、SSIS パッケージを Azure で実行する必要がある場合にのみ IR を実行し、必要ないときには IR を停止する必要があります。 ADF のユーザー インターフェイス (UI)/アプリまたは Azure PowerShell を使用して、[IR を手動で開始または停止する](manage-azure-ssis-integration-runtime.md)ことができます。
 
 または、ADF パイプラインで Web アクティビティを作成し、スケジュールに従って IR を開始/停止することができます。たとえば、朝、毎日の ETL ワークロードを実行する前に開始し、午後、ワークロードが完了した後で停止することができます。  また、IR を開始および停止する 2 つの Web アクティビティの間を SSIS パッケージの実行アクティビティで連結し、パッケージ実行の直前/直後に必要に応じて IR を開始/停止することもできます。 SSIS パッケージの実行アクティビティについて詳しくは、「[Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する](how-to-invoke-ssis-package-ssis-activity.md)」をご覧ください。
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 ## <a name="prerequisites"></a>前提条件
 Azure-SSIS IR をまだプロビジョニングしていない場合は、[チュートリアル](tutorial-create-azure-ssis-runtime-portal.md)の手順に従ってプロビジョニングします。 
@@ -70,11 +72,11 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
 9. **Create** をクリックしてください。
 10. Azure ダッシュボードに、次のようなタイルと状態が表示されます:**[Deploying data factory]\(データ ファクトリをデプロイしています\)**。 
 
-   ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
+    ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
    
 11. 作成が完了すると、次に示すような ADF ページが表示されます。
    
-   ![データ ファクトリのホーム ページ](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
+    ![データ ファクトリのホーム ページ](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
    
 12. **[作成と監視]** をクリックして、別のタブで ADF UI/アプリを起動します。
 
@@ -92,7 +94,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
   
     2. **[メソッド]** では、**[POST]** を選択します。 
     3. **[本文]** には、「`{"message":"Start my IR"}`」を入力します。 
-    4. **[認証]** で **[MSI]** を選択して、ADF にマネージド ID を使用します。詳しくは、「[Azure Data Factory サービス ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」をご覧ください。
+    4. **[認証]** で **[MSI]** を選択して、ADF にマネージド ID を使用します。詳しくは、「[Managed identiy for Data Factory (Data Factory のマネージド ID)](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」をご覧ください。
     5. **[リソース]** に、「`https://management.azure.com/`」と入力します。
     
        ![ADF Web アクティビティのスケジュールの SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
@@ -187,21 +189,21 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
 
 1. パイプラインの実行の状態を取得します。
 
-  ```powershell
-  Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
-  ```
+   ```powershell
+   Get-AzDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
+   ```
 
 2. トリガーに関する情報を取得します。
 
-  ```powershell
-  Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
-  ```
+   ```powershell
+   Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
+   ```
 
 3. トリガーの実行の状態を取得します。
 
-  ```powershell
-  Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
-  ```
+   ```powershell
+   Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
+   ```
 
 ## <a name="create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir"></a>Azure-SSIS IR を開始/停止する Azure Automation Runbook を作成してスケジュールする
 
@@ -292,7 +294,7 @@ Azure Automation アカウントをまだ持っていない場合は、この手
         $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
     
         "Logging in to Azure..."
-        Connect-AzureRmAccount `
+        Connect-AzAccount `
             -ServicePrincipal `
             -TenantId $servicePrincipalConnection.TenantId `
             -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -312,12 +314,12 @@ Azure Automation アカウントをまだ持っていない場合は、この手
     if($Operation -eq "START" -or $operation -eq "start")
     {
         "##### Starting #####"
-        Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $AzureSSISName -Force
+        Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $AzureSSISName -Force
     }
     elseif($Operation -eq "STOP" -or $operation -eq "stop")
     {
         "##### Stopping #####"
-        Stop-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
+        Stop-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Force
     }  
     "##### Completed #####"    
     ```

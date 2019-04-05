@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/16/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: a83ded660b56028ea311992ba6161e8a8e43f65d
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: d0c5260fcc2e7ac2acbeec308c6a0cba7d6a81be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511974"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098095"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 
@@ -42,7 +42,7 @@ DNS 要求が有効な場合、Azure では 100% の時間において Azure DNS
 
 ドメインとは、ドメイン ネーム システム内の一意の名前です。 一例として contoso.com があります。
 
-DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 たとえば、ドメイン contoso.com に、複数の DNS レコードが含まれることがあります。 これらのレコードに、メール サーバー用の mail.contoso.com と Web サイト用の www.contoso.com が含まれることがあります。 これらのレコードは DNS ゾーン contoso.com でホストされます。
+DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 たとえば、ドメイン contoso.com に、複数の DNS レコードが含まれることがあります。 これらのレコードに、メール サーバー用の mail.contoso.com と Web サイト用の www\.contoso.com が含まれることがあります。 これらのレコードは DNS ゾーン contoso.com でホストされます。
 
 ドメイン名は*単なる名前*です。 DNS ゾーンは、ドメイン名用の DNS レコードを含むデータ リソースです。 Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメインの DNS レコードを管理できます。 また、インターネットからの DNS クエリに応答する DNS ネーム サーバーも提供します。
 
@@ -239,7 +239,7 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 
 はい。 プライベート ゾーンとのリンクを解除せずに登録または解決仮想ネットワークを削除しても、削除操作は成功します。 ただし、仮想ネットワークがプライベート ゾーンにリンクされている場合、そのリンクが自動的に解除されることはありません。 仮想ネットワークのリンクはプライベート ゾーンから手動で解除する必要があります。 この理由から、仮想ネットワークを削除する前に、まずプライベート ゾーンから仮想ネットワークのリンクを解除することをお勧めします。
 
-### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>既定の FQDN (internal.cloudapp.net) を使用している DNS 解決は、プライベート ゾーン (例: contoso.local) が仮想ネットワークにリンクされている場合でも機能しますか。
+### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>既定の FQDN (internal.cloudapp.net) を使用している DNS 解決は、プライベート ゾーン (例: private.contoso.com) が仮想ネットワークにリンクされている場合でも機能しますか。
 
 はい。 Private Zones によって、既定の DNS 解決が Azure 提供の internal.cloudapp.net ゾーンに置き換えられることはありません。 これは、追加の機能や拡張として提供されています。 Azure 提供の internal.cloudapp.net に依存している場合でも、独自のプライベート ゾーンに依存している場合でも、解決するゾーンに対して FQDN を使用できます。 
 
@@ -262,7 +262,7 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>プライベート ゾーンのゾーンやレコードにクォータや制限はありますか。
 
-プライベート ゾーンのサブスクリプションごとに許可されるゾーンの数に制限はありません。 ゾプライベート ゾーンのゾーンごとに許可されるレコード セットの数に制限はありません。 パブリック ゾーンとプライベート ゾーンの両方が DNS 全体の制限としてカウントされます。 詳細については、[Azure サブスクリプションとサービスの制限](../azure-subscription-service-limits.md#dns-limits) に関する記事を参照してください。
+プライベート ゾーンのサブスクリプションごとに許可されるゾーンの数に制限はありません。 ゾプライベート ゾーンのゾーンごとに許可されるレコード セットの数に制限はありません。 パブリック ゾーンとプライベート ゾーンの両方が DNS 全体の制限としてカウントされます。 詳細については、[Azure サブスクリプションとサービスの制限](../azure-subscription-service-limits.md#azure-dns-limits) に関する記事を参照してください。
 
 ### <a name="is-there-portal-support-for-private-zones"></a>プライベート ゾーン用のポータルのサポートはありますか。
 

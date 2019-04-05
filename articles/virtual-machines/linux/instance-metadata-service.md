@@ -3,8 +3,8 @@ title: Azure Instance Metadata Service | Microsoft Docs
 description: Linux VM のコンピューティング、ネットワーク、および今後のメンテナンス イベントに関する情報を取得するための RESTful インターフェイスです。
 services: virtual-machines-linux
 documentationcenter: ''
-author: harijayms
-manager: jeconnoc
+author: KumariSupriya
+manager: harijayms
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/10/2017
-ms.author: harijayms
-ms.openlocfilehash: 388a9f37911c37e9c8921db17c0650146a76e76d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 02/15/2019
+ms.author: sukumari
+ms.reviewer: azmetadata
+ms.openlocfilehash: 0963dc63840e8420118e536b62a2ce58a1b384ac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454040"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847061"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -38,25 +39,46 @@ Azure の Instance Metadata Service は、[Azure Resource Manager](https://docs.
 
 リージョン                                        | 提供状況                                 | サポートされているバージョン
 -----------------------------------------------|-----------------------------------------------|-----------------
-[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01
-[Azure China](https://www.azure.cn/)                                                           | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01
-[パブリック米国中西部](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
+[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
+[Azure China](https://www.azure.cn/)                                                           | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01
+
 この表は、サービスが更新された場合や、バージョンが新しくサポートされた場合に更新されます。
 
-> [!NOTE]
-> 2018-10-01 は現在ロールアウト中であり、間もなく他のリージョンでも利用できるようになります。 この表は、サービスが更新された場合や、バージョンが新しくサポートされた場合に更新されます。
-
-Instance Metadata Service を試すには、上記のリージョンで [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) または [Azure ポータル](http://portal.azure.com)から VM を作成し、この後の例に従います。
+Instance Metadata Service を試すには、上記のリージョンで [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) または [Azure ポータル](https://portal.azure.com)から VM を作成し、この後の例に従います。
 
 ## <a name="usage"></a>使用法
 
 ### <a name="versioning"></a>バージョン管理
 
-インスタンス メタデータ サービスはバージョン管理されています。 バージョンは必須であり、Global Azure の現在のバージョンは `2018-04-02` です。 現在サポートされているバージョンは (2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01) です。
+インスタンス メタデータ サービスはバージョン管理されています。 バージョンは必須であり、Global Azure の現在のバージョンは `2018-10-01` です。 現在サポートされているバージョンは (2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01) です。
 
 新しいバージョンが追加されても、特定のデータ形式への依存関係がスクリプトにある場合、互換性を確保するために古いバージョンにもアクセスできます。
+
+バージョンが指定されていない場合は、最新のサポートされているバージョンの一覧と共にエラーが返されます。
+
+> [!NOTE] 
+> 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
+
+**要求**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance"
+```
+
+**応答**
+
+```json
+{
+    "error": "Bad request. api-version was not specified in the request. For more information refer to aka.ms/azureimds",
+    "newest-versions": [
+        "2018-10-01",
+        "2018-04-02",
+        "2018-02-01"
+    ]
+}
+```
 
 ### <a name="using-headers"></a>ヘッダーの使用
 
@@ -164,7 +186,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 **要求**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-12-01"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"
 ```
 
 **応答**
@@ -175,22 +197,30 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 ```json
 {
   "compute": {
-    "location": "westus",
-    "name": "avset2",
-    "offer": "UbuntuServer",
+    "azEnvironment": "AZUREPUBLICCLOUD",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
     "osType": "Linux",
     "placementGroupId": "",
-    "platformFaultDomain": "1",
-    "platformUpdateDomain": "1",
-    "publisher": "Canonical",
+    "plan": {
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
+    },
+    "platformFaultDomain": "0",
+    "platformUpdateDomain": "0",
+    "provider": "Microsoft.Compute",
+    "publicKeys": [],
+    "publisher": "bitnami",
     "resourceGroupName": "myrg",
-    "sku": "16.04-LTS",
+    "sku": "5-6",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     "tags": "",
-    "version": "16.04.201708030",
+    "version": "7.1.1902271506",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
-    "vmSize": "Standard_D1",
+    "vmSize": "Standard_A1_v2",
     "zone": "1"
   },
   "network": {
@@ -227,13 +257,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 インスタンス メタデータは、Windows で Powershell ユーティリティ `curl` を使用して取得できます。 
 
 ```bash
-curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2017-08-01 | select -ExpandProperty Content
+curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2018-10-01 | select -ExpandProperty Content
 ```
 
 または、`Invoke-RestMethod` コマンドレットを使用して取得できます。
 
 ```powershell
-Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-08-01 -Method get 
+Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2018-10-01 -Method get 
 ```
 
 **応答**
@@ -244,17 +274,31 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ```json
 {
   "compute": {
-    "location": "westus",
-    "name": "SQLTest",
-    "offer": "SQL2016SP1-WS2016",
-    "osType": "Windows",
+    "azEnvironment": "AZUREPUBLICCLOUD",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
+    "osType": "Linux",
+    "placementGroupId": "",
+    "plan": {
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
+    },
     "platformFaultDomain": "0",
     "platformUpdateDomain": "0",
-    "publisher": "MicrosoftSQLServer",
-    "sku": "Enterprise",
-    "version": "13.0.400110",
-    "vmId": "453945c8-3923-4366-b2d3-ea4c80e9b70e",
-    "vmSize": "Standard_DS2"
+    "provider": "Microsoft.Compute",
+    "publicKeys": [],
+    "publisher": "bitnami",
+    "resourceGroupName": "myrg",
+    "sku": "5-6",
+    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "tags": "",
+    "version": "7.1.1902271506",
+    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
+    "vmScaleSetName": "",
+    "vmSize": "Standard_A1_v2",
+    "zone": "1"
   },
   "network": {
     "interface": [
@@ -289,6 +333,7 @@ Instance Metadata Service を通して次のデータ カテゴリを使用で�
 
 データ | Description | 導入されたバージョン
 -----|-------------|-----------------------
+azEnvironment | VM が実行されている Azure 環境 | 2018 年 10 月 1 日
 location | VM を実行中の Azure リージョン | 2017-04-02
 name | VM の名前 | 2017-04-02
 offer | VM イメージのプラン情報。 この値は、Azure イメージ ギャラリーからデプロイされるイメージにのみ存在します。 | 2017-04-02
@@ -305,6 +350,7 @@ tags | お使いの仮想マシンの[タグ](../../azure-resource-manager/resou
 resourceGroupName | お使いの仮想マシンの[リソース グループ](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
 プラン | VM の Azure Marketplace イメージの[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています | 2018-04-02
+provider | VM のプロバイダー | 2018 年 10 月 1 日
 publicKeys | VM とパスに割り当てられた公開キー (https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) のコレクション | 2018-04-02
 vmScaleSetName | お使いの仮想マシン スケール セットの[仮想マシン スケール セット名](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 ゾーン | 仮想マシンの[可用性ゾーン](../../availability-zones/az-overview.md) | 2017-12-01
@@ -326,10 +372,12 @@ Instance Metadata は、169.254.169.254 の http エンドポイントで応答�
 
  > [!NOTE]
 > すべての API の応答は、JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
+
  **要求**
 
+
  ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-version=2010-10-01&nonce=1234567890"
+curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890"
 
 ```
 
@@ -350,7 +398,9 @@ nonce は、提供される省略可能な 10 桁の文字列です。 nonce を
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Windows 仮想マシンでの構成証明済みメタデータの取得
 
- **要求** インスタンス メタデータは、Windows で PowerShell ユーティリティ `curl` を使用して取得できます。
+ **要求**
+
+インスタンス メタデータは、Windows で Powershell ユーティリティ `curl` を使用して取得できます。
 
  ```bash
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
@@ -366,6 +416,7 @@ api-version は必須フィールドであり、構成証明済みデータに�
 nonce は、提供される省略可能な 10 桁の文字列です。 nonce を使用して要求を追跡でき、指定しないと、応答では現在の UTC タイムスタンプのエンコードされた文字列が返されます。
 
  **応答**
+
 > [!NOTE]
 > 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
 
@@ -452,27 +503,11 @@ Azure には、[Azure Government](https://azure.microsoft.com/overview/clouds/go
 
 **要求**
 
-> [!NOTE]
-> jq をインストールする必要があります。
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 
-```bash
-  metadata=$(curl "http://169.254.169.254/metadata/instance/compute?api-version=2018-02-01" -H "Metadata:true")
-  endpoints=$(curl "https://management.azure.com/metadata/endpoints?api-version=2017-12-01")
-
-  location=$(echo $metadata | jq .location -r)
-
-  is_ww=$(echo $endpoints | jq '.cloudEndpoint.public.locations[]' -r | grep -w $location)
-  is_us=$(echo $endpoints | jq '.cloudEndpoint.usGovCloud.locations[]' -r | grep -w $location)
-  is_cn=$(echo $endpoints | jq '.cloudEndpoint.chinaCloud.locations[]' -r | grep -w $location)
-  is_de=$(echo $endpoints | jq '.cloudEndpoint.germanCloud.locations[]' -r | grep -w $location)
-
-  environment="Unknown"
-  if [ ! -z $is_ww ]; then environment="AzureCloud"; fi
-  if [ ! -z $is_us ]; then environment="AzureUSGovernment"; fi
-  if [ ! -z $is_cn ]; then environment="AzureChinaCloud"; fi
-  if [ ! -z $is_de ]; then environment="AzureGermanCloud"; fi
-
-  echo $environment
+**応答**
+```
+AZUREPUBLICCLOUD
 ```
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>VM が Azure で実行されていることの検証
@@ -489,6 +524,8 @@ Azure には、[Azure Government](https://azure.microsoft.com/overview/clouds/go
   base64 -d signature > decodedsignature
   #Get PKCS7 format
   openssl pkcs7 -in decodedsignature -inform DER -out sign.pk7
+  # Get Public key out of pkc7
+  openssl pkcs7 -in decodedsignature -inform DER  -print_certs -out signer.pem
   #Get the intermediate certificate
   wget -q -O intermediate.cer "$(openssl x509 -in signer.pem -text -noout | grep " CA Issuers -" | awk -FURI: '{print $2}')"
   openssl x509 -inform der -in intermediate.cer -out intermediate.pem
@@ -590,7 +627,7 @@ Network Destination        Netmask          Gateway       Interface  Metric
   255.255.255.255  255.255.255.255         On-link         10.0.1.10    266
 ```
 
-3. 次のコマンドを実行し、IPv4 ルーティング テーブルのネットワーク宛先のインターフェイスのアドレス (`0.0.0.0`) を使用します。この例では `10.0.1.10` です。
+1. 次のコマンドを実行し、IPv4 ルーティング テーブルのネットワーク宛先のインターフェイスのアドレス (`0.0.0.0`) を使用します。この例では `10.0.1.10` です。
 
 ```bat
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
@@ -626,7 +663,7 @@ Puppet | https://github.com/keirans/azuremetadata
 5. `500 Internal Server Error` エラーが発生します。なぜですか。
    * 指数バックオフ システムに基づいて、要求を再試行してください。 問題が解決しない場合は、Azure サポートにお問い合わせください。
 6. その他の質問/コメントはどこで共有すればいいですか。
-   * コメントは http://feedback.azure.com で送信してください。
+   * コメントは https://feedback.azure.com で送信してください。
 7. このサービスは仮想マシン スケール セット インスタンスで機能しますか。
    * はい。Metadata Service は、スケール セット インスタンスで利用できます。
 8. このサービスのサポートを受けるにはどうすればよいですか。
@@ -634,9 +671,9 @@ Puppet | https://github.com/keirans/azuremetadata
 9. サービスの呼び出しの要求がタイムアウトになりました。
    * メタデータの呼び出しは、VM のネットワーク カードに割り当てられたプライマリ IP アドレスから行う必要があります。また、ルートを変更した場合は、ネットワーク カードからのアドレス 169.254.0.0/16 用のルートが必要です。
 10. 仮想マシン スケール セットでタグを更新しましたが、VM とは異なり、インスタンスにタグが表示されません。
-   * 現時点では、スケール セットのタグは、再起動/再イメージ化/インスタンスに対するディスクの変更の際に VM に対してのみ表示されます。
+    * 現時点では、スケール セットのタグは、再起動/再イメージ化/インスタンスに対するディスクの変更の際に VM に対してのみ表示されます。
 
-   ![Instance Metadata のサポート](./media/instance-metadata-service/InstanceMetadata-support.png)
+    ![Instance Metadata のサポート](./media/instance-metadata-service/InstanceMetadata-support.png)
 
 ## <a name="next-steps"></a>次の手順
 

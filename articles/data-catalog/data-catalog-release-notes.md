@@ -8,12 +8,12 @@ ms.assetid: 3aca9c49-45a4-4352-92e6-bd25ee3eacf7
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 12b8161cc5845bca749c34188835cef1d92b299a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 60c5b7b55e417a5703010ea34cf75dcb20146c37
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404553"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531681"
 ---
 # <a name="azure-data-catalog-release-notes"></a>Azure Data Catalog リリース ノート
 ## <a name="notes-for-the-november-20-2015-release-of-azure-data-catalog"></a>Azure Data Catalog の 2015 年 11 月 20 日リリースのノート
@@ -29,7 +29,7 @@ ms.locfileid: "47404553"
 ### <a name="registering-and-connecting-to-teradata"></a>Teradata への登録と接続
 Teradata データ ソースに接続する場合は、使用するソフトウェアのビット (32 ビットまたは 64 ビット) と一致する適切な Teradata ODBC ドライバーをインストールする必要があります。
 
-この ADC のリリース日の時点では、最新の [Windows 用の Teradata ODBC ドライバー (バージョン 15.10)](http://downloads.teradata.com/download/connectivity/odbc-driver/windows) は Office 2013 に対応しますが、Office 2016 には対応していません。
+この ADC のリリース日の時点では、最新の [Windows 用の Teradata ODBC ドライバー (バージョン 15.10)](https://downloads.teradata.com/download/connectivity/odbc-driver/windows) は Office 2013 に対応しますが、Office 2016 には対応していません。
 
 ## <a name="notes-for-the-july-13-2015-release-of-azure-data-catalog"></a>Azure Data Catalog の 2015 年 7 月 13 日リリースのノート
 ### <a name="registering-and-connecting-to-oracle-database"></a>Oracle Database への登録と接続
@@ -53,13 +53,13 @@ Oracle Database データ ソースに接続する場合、ユーザーは、使
 
 この問題の動作には 2 つの可能性のある原因があります。
 
-**原因 1: Active Directory Federation Services の構成**。データ ソース登録ツールは、フォーム認証を使用して、Active Directory に対するユーザー ログオンを検証します。 ログオンを成功させるには、Active Directory 管理者によって、グローバル認証ポリシーでフォーム認証が有効にされている必要があります。
+**原因 1:Active Directory フェデレーション サービス (AD FS) の構成**。データ ソース登録ツールは、フォーム認証を使用して、Active Directory に対するユーザー ログオンを検証します。 ログオンを成功させるには、Active Directory 管理者によって、グローバル認証ポリシーでフォーム認証が有効にされている必要があります。
 
 特定の状況で、ユーザーが企業ネットワーク上にいる場合のみ、またはユーザーが企業ネットワークの外部から接続している場合のみ、このエラー動作が発生することがあります。 グローバル認証ポリシーでは、イントラネット接続とエクストラネット接続で個別に認証方法を有効にすることができます。 ログオン エラーは、ユーザーの接続元のネットワークで、フォーム認証が有効にされていない場合に発生する可能性があります。
 
 詳細については、「 [認証ポリシーの構成](https://technet.microsoft.com/library/dn486781.aspx)」を参照してください。
 
-**原因 2: ネットワーク プロキシの構成**。企業ネットワークでプロキシ サーバーを使用している場合、登録ツールが、プロキシ経由で Azure Active Directory に接続できないことがあります。 ユーザーは、ツールの構成ファイルを編集し、このセクションをファイルに追加して、登録ツールが確実に接続できるようにします。
+**原因 2:ネットワーク プロキシの構成**。企業ネットワークでプロキシ サーバーを使用している場合、登録ツールが、プロキシ経由で Azure Active Directory に接続できないことがあります。 ユーザーは、ツールの構成ファイルを編集し、このセクションをファイルに追加して、登録ツールが確実に接続できるようにします。
 
       <system.net>
         <defaultProxy useDefaultCredentials="true" enabled="true">

@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2018
-ms.author: kumud
+ms.date: 03/18/2019
+ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: 4c072ef63c0d4961fba695fc8d9be1d12b4b0e8b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: afadef8b29927f909af5be1e1204180724258b74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167067"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した複数の Azure CDN エンドポイント間でのフェールオーバーの設定
 
@@ -77,7 +77,7 @@ CDN および Traffic Manager プロファイルを設定したら、次の手�
     >
 
 
-2.  Azure CDN プロファイルから、最初の CDN エンドポイント (Akamai) を選択します。 **[カスタム ドメインの追加]** を選択し、「*cdndemo101akamai.azureedge.net*」と入力します。 カスタム ドメインを検証するためのチェックマークが緑色で表示されていることを確認します。 
+2.  Azure CDN プロファイルから、最初の CDN エンドポイント (Akamai) を選択します。 **[カスタム ドメインの追加]** を選択して、「*cdndemo101.dustydogpetcare.online*」と入力します。 カスタム ドメインを検証するためのチェックマークが緑色で表示されていることを確認します。 
 
     Azure CDN は、*cdnverify* サブドメインを使用して DNS マッピングを検証し、この登録プロセスを完了します。 詳細については、「[CNAME DNS レコードを作成する](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)」を参照してください。 この手順により、Azure CDN がカスタム ドメインを認識し、要求に応答できるようになります。
 
@@ -87,7 +87,7 @@ CDN および Traffic Manager プロファイルを設定したら、次の手�
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. Azure CDN プロファイルから、2 番目の CDN エンドポイント (Verizon) を選択し、手順 2 を繰り返します。 **[カスタム ドメインの追加]** を選択し、「*cdndemo101akamai.azureedge.net*」と入力します。
+4. Azure CDN プロファイルから、2 番目の CDN エンドポイント (Verizon) を選択し、手順 2 を繰り返します。 **[カスタム ドメインの追加]** を選択して、「*cdndemo101.dustydogpetcare.online*」と入力します。
  
 これらの手順を完了すると、フェールオーバー機能を備えたマルチ CDN サービスが Azure Traffic Manager で設定されます。 カスタム ドメインからテスト URL にアクセスできます。 機能をテストするには、プライマリ CDN エンドポイントを無効にして、要求がセカンダリ CDN エンドポイントに正しく渡されることを確認します。 
 

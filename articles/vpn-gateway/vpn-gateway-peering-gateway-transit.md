@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 5f8f282db9468d84c3a1fa16c5cd481f2dd0970e
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 05b25a524894248152114ca9c756d4a0f8944ad8
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415920"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199632"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する
 
@@ -37,8 +37,8 @@ ms.locfileid: "56415920"
 1. 2 つの仮想ネットワークの両方が Resource Manager デプロイ モデルを使用している
 2. スポーク仮想ネットワークがクラシックであり、ゲートウェイを含むハブ仮想ネットワークが Resource Manager である
 
-> [!IMPORTANT]
-> ゲートウェイ転送は、現時点では、グローバルな仮想ネットワーク ピアリングではサポートされていません。
+> [!IMPORTANT]  
+> ゲートウェイ転送は、現時点で、プレビュー段階のグローバルな仮想ネットワーク ピアリングでサポートされます。 プレビューは、すべての Azure リージョン、中国のクラウド リージョン、および政府のクラウド リージョンで利用できますが、クラウド間では利用できません。 ホワイト リストに登録する必要はありません。 CLI、PowerShell、テンプレート、または API を介してプレビューをテストできます。 プレビューではポータルはサポートされていません。 
 
 ## <a name="requirements"></a>必要条件
 
@@ -129,13 +129,13 @@ Add-AzVirtualNetworkPeering `
 操作が Hub-RM 仮想ネットワークのみに適用されることを除いて、手順は Resource Manager の例に似ています。
 
 1. Azure Portal で Hub-RM から Spoke-RM への仮想ネットワーク ピアリングを作成するか、そのように更新します。 Hub-RM 仮想ネットワーク リソースに移動し、[ピア リング]、[追加]の順にクリックします。
-    - 仮想ネットワークのデプロイ モデルとして [クラシック] オプションを設定します。
-    - 対応するサブスクリプションの [Spoke-RM] 仮想ネットワークを選択します
-    - [仮想ネットワーク アクセスを許可する] が [有効] になっていることを確認します。
-    - **[ゲートウェイ転送を許可する]** オプションを設定します。
-    - [OK] をクリックします。
+   - 仮想ネットワークのデプロイ モデルとして [クラシック] オプションを設定します。
+   - 対応するサブスクリプションの [Spoke-RM] 仮想ネットワークを選択します
+   - [仮想ネットワーク アクセスを許可する] が [有効] になっていることを確認します。
+   - **[ゲートウェイ転送を許可する]** オプションを設定します。
+   - [OK] をクリックします。
 
-    ![hubrm-to-spokeclassic](./media/vpn-gateway-peering-gateway-transit/hubrm-spokeclassic-peering.png)
+     ![hubrm-to-spokeclassic](./media/vpn-gateway-peering-gateway-transit/hubrm-spokeclassic-peering.png)
 
 2. ピアリングが既に作成されている場合は、ピアリング リソースに移動し、手順 (1) で示したスクリーン ショットのように **[ゲートウェイ転送を許可する]** オプションを有効にします。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure AD パスワード保護 (プレビュー) での監視とログ記録
+title: Azure AD パスワード保護での監視とログ記録
 description: Azure AD パスワード保護の監視とログ記録について
 services: active-directory
 ms.service: active-directory
@@ -11,23 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a3127cde66ce7de9a3920d238193a3a3b2225be
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b1e12addc15afe0c0745e0e8d5a9b6718483d477
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195789"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293721"
 ---
-# <a name="preview-azure-ad-password-protection-monitoring-and-logging"></a>更新:Azure AD パスワード保護の監視とログ記録
-
-|     |
-| --- |
-| Azure AD のパスワード保護は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+# <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD パスワード保護の監視とログ記録
 
 Azure AD パスワード保護のデプロイ後、監視とレポートは重要なタスクです。 この記事では、各サービスが情報をログに記録する場所や、Azure AD パスワード保護の使用について報告する方法など、さまざまな監視手法を理解できるように詳しく説明します。
 
-# <a name="dc-agent-event-logging"></a>DC エージェント イベントのログ記録
+## <a name="dc-agent-event-logging"></a>DC エージェント イベントのログ記録
 
 各ドメイン コントローラーでは、DC エージェント サービス ソフトウェアによって、各個人のパスワード検証操作の結果 (およびその他の状態) がローカルのイベント ログに書き込まれます。
 

@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 60c709108da041dc1e54ba69d3b1b153accebc19
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: e96abfbdbd9394d27fbffbcb64aa9cbfabbbcb69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401403"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835437"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Azure Event Hubs のプログラミング ガイド
 この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](event-hubs-what-is-event-hubs.md)」を参照してください。
@@ -26,8 +26,7 @@ ms.locfileid: "54401403"
 .NET のマネージド API を使用する場合、Event Hubs にデータを発行するための主なコンストラクトは [EventHubClient][] クラスと [EventData][] クラスになります。 [EventHubClient][] は、イベントがイベント ハブに送信されるときに使われる AMQP 通信チャンネルを提供します。 [EventData][] クラスはイベントを表し、イベント ハブにメッセージを発行するために使用されます。 このクラスには、本文、いくつかのメタデータ、イベントに関するヘッダー情報が含まれます。 その他のプロパティは [EventData][] オブジェクトに追加され、イベント ハブに渡されます。
 
 ## <a name="get-started"></a>作業開始
-
-Event Hubs をサポートする .NET クラスが [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet パッケージ内に用意されています。 Visual Studio ソリューション エクスプローラーまたは Visual Studio の [パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)を使用してインストールできます。 これを行うには、 [パッケージ マネージャー コンソール](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) のウィンドウに次のコマンドを入力します。
+Event Hubs をサポートする .NET クラスが [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet パッケージ内に用意されています。 Visual Studio ソリューション エクスプローラーまたは Visual Studio の [パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)を使用してインストールできます。 これを行うには、 [パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) のウィンドウに次のコマンドを入力します。
 
 ```shell
 Install-Package Microsoft.Azure.EventHubs
@@ -99,7 +98,6 @@ for (var i = 0; i < numMessagesToSend; i++)
 イベントは、イベント ハブに非同期に送信されます。 非同期送信を利用すると、クライアントがイベントを送信できる速度が上がります。 [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync)は [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) オブジェクトを返します。 クライアントで [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy) クラスを使用して、クライアント側の再試行オプションを制御できます。
 
 ## <a name="event-consumers"></a>イベント コンシューマー
-
 [EventProcessorHost][] クラスは Event Hubs からのデータを処理します。 .NET プラットフォームでのイベント リーダーを作成するときには、この実装を使用すべきです。 [EventProcessorHost][] はイベント プロセッサ実装のためにスレッドセーフでマルチプロセスの安全なランタイム環境を提供します。さらに、その環境では、チェックポイント処理とパーティション リースの管理が提供されます。
 
 [EventProcessorHost][] クラスを使用するために、[IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) を実装できます。 このインターフェイスには 4 つのメソッドが含まれています。
@@ -110,6 +108,9 @@ for (var i = 0; i < numMessagesToSend; i++)
 * [ProcessErrorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processerrorasync)
 
 イベント処理を開始するには、 [EventProcessorHost][]をインスタンス化し、イベント ハブの適切なパラメーターを提供します。 例: 
+
+> [!NOTE]
+> EventProcessorHost およびその関連クラスは **Microsoft.Azure.EventHubs.Processor** パッケージ内に用意されています。 [この記事](event-hubs-dotnet-framework-getstarted-receive-eph.md#add-the-event-hubs-nuget-package)の手順に従うか、[パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)のウィンドウで `Install-Package Microsoft.Azure.EventHubs.Processor` コマンドを発行して、パッケージをご自分の Visual Studio プロジェクトに追加します。
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(

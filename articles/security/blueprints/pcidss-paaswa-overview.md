@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: cfe0a4f68d77f278745b71c13beefc97cf92aa29
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 5452a1adb419a2f57e2124d5aac49f9cdcff615a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605927"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111669"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-pci-dss"></a>Azure のセキュリティとコンプライアンスのブループリント:PCI DSS のための PaaS Web アプリケーション
 
@@ -43,7 +43,7 @@ PCI DSS への準拠を達成するには、お客様の実稼働ソリューシ
 
 Azure SQL Database は一般的に、SQL Server Management Studio 経由で管理されます。SQL Server Management Studio は、セキュアな VPN または ExpressRoute 接続経由で Azure SQL Database にアクセスするように構成されたローカル コンピューターから実行されます。
 
-さらに、Application Insights は、Log Analytics を通して、リアルタイムでアプリケーションのパフォーマンス管理と分析を行います。 **Microsoft では、参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています。**
+さらに、Application Insights は、Azure Monitor ログを通じて、リアルタイムでアプリケーションのパフォーマンス管理と分析を行います。 **Microsoft では、参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています。**
 
 ![PCI DSS のための PaaS Web アプリケーション参照アーキテクチャ ダイアグラム](images/pcidss-paaswa-architecture.png "PCI DSS のための PaaS Web アプリケーション参照アーキテクチャ ダイアグラム")
 
@@ -76,7 +76,7 @@ Azure SQL Database は一般的に、SQL Server Management Studio 経由で管�
 
 次のセクションで、デプロイと実装の要素について詳しく説明します。
 
-**Azure Resource Manager**:[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) によって、ソリューション内の複数のリソースを 1 つのグループとして操作できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
+**Azure Resource Manager**:[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使って、ソリューション内の複数のリソースを 1 つのグループとして操作できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
 
 **要塞ホスト**:要塞ホストは、この環境にデプロイされたリソースへのユーザーのアクセスを許可する単一エントリ ポイントです。 要塞ホストは、セーフ リスト上のパブリック IP アドレスからのリモート トラフィックのみを許可することで、デプロイ済みのリソースへのセキュリティで保護された接続を提供します。 リモート デスクトップ (RDP) トラフィックを許可するには、トラフィックのソースがネットワーク セキュリティ グループに定義されている必要があります。
 
@@ -118,13 +118,13 @@ App Service 環境は、単一の顧客のアプリケーションだけを実�
 各ネットワーク セキュリティ グループでは、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれます。 さらに、各ネットワーク セキュリティ グループで次の構成を使用できます。
 
 - [診断ログとイベント](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)が有効化され、ストレージ アカウントに格納される
-- Log Analytics が[ネットワーク セキュリティ グループの診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
+- Azure Monitor ログが[ネットワーク セキュリティ グループの診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
 
 **サブネット**:各サブネットは、対応するネットワーク セキュリティ グループに関連付けられています。
 
 **Azure DNS**:ドメイン ネーム システム (DNS) は、Web サイトまたはサービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 [Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) は、DNS ドメインのホスティング サービスであり、Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 Azure DNS は、プライベート DNS ドメインもサポートします。
 
-**Azure Load Balancer**:[Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) によって、アプリケーションを拡張し、サービスを高可用性にすることができます。 ロード バランサーは、受信と送信のどちらのシナリオもサポートし、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。
+**Azure Load Balancer**:[Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) を使って、アプリケーションを拡張し、サービスを高可用性にすることができます。 ロード バランサーは、受信と送信のどちらのシナリオもサポートし、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。
 
 ### <a name="data-in-transit"></a>転送中のデータ
 
@@ -193,9 +193,9 @@ Azure サービスは、システムの正常性だけではなく、システ�
 - **アクティビティ ログ**:[アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)は、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、および状態の判断に役立ちます。
 - **診断ログ**:[診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログ、Azure Storage ログ、Key Vault 監査ログ、および Application Gateway のアクセス ログとファイアウォール ログが含まれます。 すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 リテンション期間には、組織固有の保有要件を満たすために最長 730 日までの日数をユーザーが設定できます。
 
-**Log Analytics**:これらのログは、処理、格納、ダッシュボード レポート表示を行うために、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) に統合されます。 収集されたデータは、その型ごとに Log Analytics ワークスペース内の別個のテーブルにまとめられ、すべてのデータがその収集元にかかわらず一斉に分析できる状態になります。 さらに、Azure Security Center を Log Analytics と統合することで、お客様は Log Analytics クエリを使用してセキュリティ イベント データにアクセスして、それを他のサービスからのデータと組み合わせることができます。
+**Azure Monitor ログ**: これらのログは、処理、格納、処理、格納、ダッシュボードでのレポート表示を行うために、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)に統合されます。 収集されたデータは、その型ごとに Log Analytics ワークスペース内の別個のテーブルにまとめられ、すべてのデータがその収集元にかかわらず一斉に分析できる状態になります。 さらに、Azure Security Center を Azure Monitor ログと統合することで、お客様は Kusto クエリを使用してセキュリティ イベント データにアクセスし、それを他のサービスからのデータと組み合わせることができます。
 
-このアーキテクチャの一部として、次の Log Analytics [管理ソリューション](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)が含まれます。
+このアーキテクチャの一部として、次の Azure [監視ソリューション](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)が含まれます。
 -   [Active Directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment):Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
 - [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment):SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧をお客様に提供します。
 - [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth):Agent Health ソリューションは、デプロイされたエージェント数とその地理的配置に加え、応答しないエージェント数やオペレーショナル データを送信しているエージェント数を報告します。
@@ -228,10 +228,10 @@ Azure サービスは、システムの正常性だけではなく、システ�
 2. 0-Setup-AdministrativeAccountAndPermission.md を確認し、指定されたコマンドを実行します。
 
 3. Contoso のサンプル データでテスト ソリューションをデプロイするか、最初の運用環境を試験します。
-  - 1A-ContosoWebStoreDemoAzureResources.ps1
-    - このスクリプトは Contoso のサンプル データを使用し、Web ストアのデモンストレーションのための Azure リソースをデプロイします。
-  - 1-DeployAndConfigureAzureResources.ps1
-    - このスクリプトは、顧客が所有する Web アプリケーションの運用環境を支援するために必要な Azure リソースをデプロイします。 この環境は、組織要件に基づいて顧客がさらにカスタマイズする必要があります。
+   - 1A-ContosoWebStoreDemoAzureResources.ps1
+     - このスクリプトは Contoso のサンプル データを使用し、Web ストアのデモンストレーションのための Azure リソースをデプロイします。
+   - 1-DeployAndConfigureAzureResources.ps1
+     - このスクリプトは、顧客が所有する Web アプリケーションの運用環境を支援するために必要な Azure リソースをデプロイします。 この環境は、組織要件に基づいて顧客がさらにカスタマイズする必要があります。
 
 ## <a name="guidance-and-recommendations"></a>ガイダンスと推奨事項
 

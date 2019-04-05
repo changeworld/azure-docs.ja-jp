@@ -10,12 +10,12 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: 1247f603b759364edcee2bff12f75bb0a217ecd6
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9fe41cf2946525948897635a4e30213d161431ef
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231256"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295302"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Azure Logic Apps を使用して Dynamics 365 レコードを管理する
 
@@ -42,7 +42,7 @@ Azure Logic Apps および Dynamics 365 コネクタを使用すると、Dynamic
 
 1. [Azure Portal](https://portal.azure.com) において、ロジック アプリ デザイナーで空のロジック アプリを開きます (まだ開いていない場合)。
 
-1. 検索ボックスに、フィルターとして「Dynamics 365」と入力します。 この例では、トリガー一覧で **[レコードが作成されたとき]** トリガーを選択します。
+1. 検索ボックスに、フィルターとして「Dynamics 365」と入力します。 この例では、トリガーの一覧で、次のトリガーを選択します: **レコードが作成されたとき**
 
    ![トリガーの選択](./media/connectors-create-api-crmonline/select-dynamics-365-trigger.png)
 
@@ -66,7 +66,7 @@ Azure Logic Apps および Dynamics 365 コネクタを使用すると、Dynamic
 
 1. トリガーで、**[新しいステップ]** を選択します。
 
-1. 検索ボックスに、フィルターとして「Dynamics 365」と入力します。 アクションの一覧から、**[新しいレコードの作成]** アクションを選択します。
+1. 検索ボックスに、フィルターとして「Dynamics 365」と入力します。 アクションの一覧から、次のアクションを選択します。**新しいレコードを作成する**
 
    ![選択アクション](./media/connectors-create-api-crmonline/select-action.png)
 
@@ -124,7 +124,7 @@ Dynamics 365 アクションでのデータのフィルター処理方法を指�
 |------------|--------------------|-------------|
 | テキスト フィールド | 1 行のテキスト | これらのフィールドでは、1 行のテキスト、またはテキスト型の動的コンテンツが必要です。 <p><p>"*フィールドの例*": **[説明]** や **[カテゴリ]** | 
 | 整数フィールド | 整数 | 一部のフィールドでは、整数、または整数型の動的コンテンツが必要です。 <p><p>"*フィールドの例*": **[達成率]** や **[期間]** | 
-| 日付フィールド | 日付と時刻 | 一部のフィールドでは、/mm/dd/yyyy 形式の日付、または date 型の動的コンテンツが必要です。 <p><p>"*フィールドの例*": **[作成日]**、**[開始日]** **[実際の開始日]**、**[実際の終了日]**、**[期限]** | 
+| 日付フィールド | 日付と時刻 | 一部のフィールドでは、/mm/dd/yyyy 形式の日付、または date 型の動的コンテンツが必要です。 <p><p>"*フィールドの例*": **[作成日]**、**[開始日]**、**[実際の開始日]**、**[実際の終了日]**、**[期限]** | 
 | レコード ID と参照タイプの両方を必要とするフィールド | Primary key (プライマリ キー) | 別のエンティティ レコードを参照する一部のフィールドでは、レコード ID と参照タイプの両方が必要です。 | 
 ||||
 
@@ -187,7 +187,7 @@ Dynamics 365 アクションでのデータのフィルター処理方法を指�
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの Swagger ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/crm/)を参照してください。 
+コネクタの Swagger ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/dynamicscrmonline/)を参照してください。 
 
 ## <a name="get-support"></a>サポートを受ける
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e2c770625cf92e0db269d14d2f63dc0c896cbe9c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267514"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58164928"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは
 
@@ -119,7 +119,7 @@ Azure Import/Export サービスでは、すべての Azure Storage アカウン
 ### <a name="supported-shipping-locations"></a>サポートされる送付先
 
 
-|国  |国  |国  |国  |
+|Country  |Country  |Country  |Country  |
 |---------|---------|---------|---------|
 |米国東部    | 北ヨーロッパ        | インド中部        |US Gov アイオワ         |
 |米国西部     |西ヨーロッパ         | インド南部        | US DoD East        |

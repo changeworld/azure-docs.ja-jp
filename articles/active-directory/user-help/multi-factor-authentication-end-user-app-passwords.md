@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory でアプリ パスワードを管理する方法 | Microsoft Docs
-description: このページは、アプリ パスワードの詳細と、2 段階認証 に関連した用途を理解するのに役立ちます。
+title: アプリ パスワードを管理する方法 - Azure Active Directory | Microsoft Docs
+description: アプリ パスワードの詳細と、2 段階認証に関連した用途について学習します。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,13 +12,14 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdcd078714d8311cf59471492187314183de28b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 47128bce8dbbee1b28f6b0a3a5783e5ccee501bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187306"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177400"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>2 段階認証のアプリ パスワードを管理する
 
@@ -88,7 +89,7 @@ My Apps ポータル経由でアプリ パスワードを作成および削除�
 
 1. 職場または学校のアカウントにサインインします。
 
-2. https://portal.office.com へ移動して、**Office 365 ポータル** ページの右上から **[設定]** アイコンを選択し、**[追加のセキュリティ確認]** を展開します。
+2. [https://portal.office.com](https://portal.office.com) に移動して、**Office 365 ポータル** ページの右上の **[設定]** アイコンを選択し、**[追加のセキュリティ確認]** を展開します。
 
     ![展開した [追加のセキュリティ確認] 領域を示す Office ポータル](media/security-info/security-info-o365password.png)
 
@@ -104,7 +105,7 @@ My Apps ポータル経由でアプリ パスワードを作成および削除�
 
 1. 職場または学校のアカウントにサインインします。
 
-2. https://portal.office.com へ移動して、**Office 365 ポータル** ページの右上から **[設定]** アイコンを選択し、**[追加のセキュリティ確認]** を選択します。
+2. [https://portal.office.com](https://portal.office.com) に移動して、**Office 365 ポータル** ページの右上の **[設定]** アイコンを選択し、**[追加のセキュリティ確認]** を選択します。
 
 3. **アプリ パスワードを作成して管理する**ことを示す該当のテキストを選択して、**アプリ パスワード** ページを開きます。
 

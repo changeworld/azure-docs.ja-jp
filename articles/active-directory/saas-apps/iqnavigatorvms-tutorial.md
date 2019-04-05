@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee936d174aa3e221bbeb0823ba1503c7cb64a9d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5a0700a63d21d089573f757716e08fb03665b28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185164"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58164996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>チュートリアル:Azure Active Directory と IQNavigator VMS の統合
 
@@ -173,9 +173,9 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
 
-### <a name="creating-a-iqnavigator-vms-test-user"></a>IQNavigator VMS テスト ユーザーの作成
+### <a name="creating-an-iqnavigator-vms-test-user"></a>IQNavigator VMS テスト ユーザーの作成
 
 このセクションの目的は、IQNavigator VMS で Britta Simon というユーザーを作成することです。 [IQNavigator VMS サポート チーム](https://www.beeline.com/iqn-product-support/)と協力して、IQNavigator VMS アカウントにユーザーを追加します。
 

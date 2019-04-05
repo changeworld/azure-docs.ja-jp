@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/7/2018
 ms.author: victorh
-ms.openlocfilehash: c27c31bc2f21cfae9036849973301a66a437de42
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 17eef2fc2608ca4ccbabff8179cd63798d275582
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54435245"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119634"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portal を使用して HTTP から HTTPS にリダイレクトするアプリケーション ゲートウェイを作成する
 
@@ -29,7 +29,9 @@ Azure portal を使用し、SSL 終了の証明書を使って[アプリケー�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルでは、証明書を作成して IIS をインストールするために、Azure PowerShell モジュール バージョン 3.6 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。 このチュートリアルでコマンドを実行するには、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+このチュートリアルでは、証明書を作成して IIS をインストールするために、Azure PowerShell モジュール バージョン 1.0.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 このチュートリアルでコマンドを実行するには、`Login-AzAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
@@ -70,20 +72,20 @@ Export-PfxCertificate `
 3. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
 4. 次のアプリケーション ゲートウェイの値を入力します。
 
-    - *myAppGateway* - アプリケーション ゲートウェイの名前です。
-    - *myResourceGroupAG* - 新しいリソース グループの名前です。
+   - *myAppGateway* - アプリケーション ゲートウェイの名前です。
+   - *myResourceGroupAG* - 新しいリソース グループの名前です。
 
-    ![新しいアプリケーション ゲートウェイの作成](./media/create-url-route-portal/application-gateway-create.png)
+     ![新しいアプリケーション ゲートウェイの作成](./media/create-url-route-portal/application-gateway-create.png)
 
 5. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
 6. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
 
-    - *myVNet* - 仮想ネットワークの名前です。
-    - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
-    - *myAGSubnet* - サブネットの名前です。
-    - *10.0.1.0/24* - サブネットのアドレス空間です。
+   - *myVNet* - 仮想ネットワークの名前です。
+   - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
+   - *myAGSubnet* - サブネットの名前です。
+   - *10.0.1.0/24* - サブネットのアドレス空間です。
 
-    ![Create virtual network](./media/create-url-route-portal/application-gateway-vnet.png)
+     ![Create virtual network](./media/create-url-route-portal/application-gateway-vnet.png)
 
 7. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
 8. **[フロントエンド IP 構成]** で、**[IP アドレスの種類]** は **[パブリック]** であり、**[新規作成]** が確実に選択されているようにします。 名前として「*myAGPublicIPAddress*」と入力します。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
@@ -184,14 +186,14 @@ Export-PfxCertificate `
 ```azurepowershell
 $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1"); 
   "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-$vmss = Get-AzureRmVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
+$vmss = Get-AzVmss -ResourceGroupName myResourceGroupAG -VMScaleSetName myvmss
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
   -Name "customScript" `
   -Publisher "Microsoft.Compute" `
   -Type "CustomScriptExtension" `
   -TypeHandlerVersion 1.8 `
   -Setting $publicSettings
-Update-AzureRmVmss `
+Update-AzVmss `
   -ResourceGroupName myResourceGroupAG `
   -Name myvmss `
   -VirtualMachineScaleSet $vmss

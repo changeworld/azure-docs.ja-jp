@@ -16,16 +16,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 824793c9897d7d728f621182a02a6092edc69e89
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 92ff5d21fc30d8fcafe97a2b452ff157a2cd5f86
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452381"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997027"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 
-データ サイエンスまたは AI プロジェクトの最初の技術的ステップの 1 つは、使用するデータセットを識別し、それらを分析環境に取り込むことです。 データ サイエンス仮想マシン (DSVM) は、DSVM 上のローカルの分析データ ストレージに、あるいはクラウドまたは内部設置型のデータ プラットフォームに、さまざまなソースからデータを取り込むためのツールおよびライブラリを提供します。 
+データ サイエンスまたは AI プロジェクトの最初の技術的ステップの 1 つは、使用するデータセットを識別し、それらを分析環境に取り込むことです。 Data Science Virtual Machine (DSVM) は、DSVM 上のローカルの分析データ ストレージに、あるいはクラウドまたは内部設置型のデータ プラットフォームに、さまざまなソースからデータを取り込むためのツールおよびライブラリを提供します。 
 
 ここでは、DSVM で提供しているデータ移動ツールの一部を示します。 
 

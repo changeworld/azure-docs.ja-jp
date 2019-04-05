@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/23/2018
 ms.author: magoedte
-ms.openlocfilehash: 133e617cd6bac1155ba22276887cf0790221e9de
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 21294f61c77f0267601c5d0fc1fc9dcf213008e7
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186975"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258829"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Operations Manager を Log Analytics に接続する
 Operations Manager とLog Analytics ワークスペースを統合することで、[System Center Operations Manager](https://docs.microsoft.com/system-center/scom/key-concepts?view=sc-om-1807) への既存の投資を維持しながら、Log Analytics で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら､Log Analytics を活用することができます。
@@ -132,7 +132,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
 1. [Operations Management Suite] を展開し、 **[接続]** をクリックします。
 1. [OMS の接続] ビューで、 **[プロキシ サーバーの構成]** をクリックします。
-1. **[Operations Management Suite 設定ウィザード:プロキシ サーバー]** ページで **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力し (例: http://corpproxy:80)、**[完了]** をクリックします。
+1. **[Operations Management Suite 設定ウィザード:プロキシ サーバー]** ページで **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力し (例: http:\//corpproxy:80)、**[完了]** をクリックします。
 
 プロキシ サーバーで認証が必要な場合は、次の手順を実行して、管理グループ内の Log Analytics への報告を行うマネージド コンピューターに伝達される必要がある設定と資格情報を構成します。
 

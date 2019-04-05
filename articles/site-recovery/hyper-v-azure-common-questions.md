@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 12/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 11e29aa8d85ed7e3cf5ce7b4a8360e4b5eb628f9
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 9ce236748c1ca4f5e166fe1d7574f6a635d6204b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319219"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855888"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>よくある質問 - Hyper-V から Azure へのディザスター リカバリー
 
@@ -65,10 +65,9 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 ### <a name="what-do-i-need-on-premises"></a>オンプレミスには何が必要ですか?
 
 1 つ以上のスタンドアロン Hyper-V ホストまたはクラスター化された Hyper-V ホストで実行されている 1 つ以上の VM が必要です。 System Center Virtual Machine Manager (VMM) によって管理されているホスト上で実行されている VM をレプリケートすることもできます。
-    - VMM を実行していない場合は、Site Recovery のデプロイ中に、Hyper-V サイトに Hyper-V ホストとクラスターを収集します。 Site Recovery エージェント (Azure Site Recovery プロバイダーと Recovery Services エージェント) は個々の Hyper-V ホストにインストールします。
-    - Hyper-V ホストが VMM クラウドにある場合は、VMM 内でレプリケーションを調整します。 Site Recovery プロバイダーを VMM サーバーにインストールし、Recovery Services エージェントを各 Hyper-V ホストにインストールします。 VMM 論理/VM ネットワークと Azure VNet をマップします。
-    - 
-Hyper-V から Azure へのアーキテクチャについて詳しくは、[こちら](hyper-v-azure-architecture.md)をご覧ください。
+- VMM を実行していない場合は、Site Recovery のデプロイ中に、Hyper-V サイトに Hyper-V ホストとクラスターを収集します。 Site Recovery エージェント (Azure Site Recovery プロバイダーと Recovery Services エージェント) は個々の Hyper-V ホストにインストールします。
+- Hyper-V ホストが VMM クラウドにある場合は、VMM 内でレプリケーションを調整します。 Site Recovery プロバイダーを VMM サーバーにインストールし、Recovery Services エージェントを各 Hyper-V ホストにインストールします。 VMM 論理/VM ネットワークと Azure VNet をマップします。
+- Hyper-V から Azure へのアーキテクチャについて詳しくは、[こちら](hyper-v-azure-architecture.md)をご覧ください。
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>Hyper-V クラスターにある VM をレプリケートできますか?
 
@@ -139,11 +138,11 @@ Azure にレプリケートする場合、レプリケーション トラフィ�
 
 Hyper-V VM は 30 秒 (Premium Storage を除く)、5 分、または 15 分ごとにレプリケートできます。
 
-###<a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
-拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
+### <a name="can-i-extend-replication"></a>レプリケーションを拡張することはできますか?
+拡張またはチェーン レプリケーションはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)でこの機能を要求してください。
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>オフラインの初期レプリケーションを行うことはできますか?
-これはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
+これはサポートされていません。 [フィードバック フォーラム](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
 
 ### <a name="can-i-exclude-disks"></a>ディスクを除外することはできますか?
 はい、レプリケーションからディスクを除外できます。 

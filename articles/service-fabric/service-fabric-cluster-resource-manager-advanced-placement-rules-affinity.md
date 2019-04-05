@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 678073e1-d08d-46c4-a811-826e70aba6c4
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bda70a6854dc6d94d3d4b37e6f587e4dcd045126
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 9c4af55a5ddb05335f8acfdd23711df2290e217b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543841"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085696"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Service Fabric でアフィニティを構成し、使用する
 アフィニティは主に、大規模なモノリシック アプリケーションをクラウドとマイクロサービスの世界に移行しやすくするために提供されるコントロールです。 これはサービスのパフォーマンスを向上させるための最適化としても使用されますが、副作用が伴う場合があります。
@@ -59,6 +59,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 アフィニティは、いくつかの相関スキームのいずれかで表され、2 種類のモードがあります。 アフィニティの最も一般的なモードは、NonAlignedAffinity と呼ばれるものです。 NonAlignedAffinity では、異なるサービスのレプリカまたはインスタンスが同じノード上に配置されます。 もう 1 つのモードは、AlignedAffinity です。 Aligned Affinity を使用できるのはステートフル サービスのみです。 2 つのステートフル サービスを整列したアフィニティが含まれるように構成すると、これらのサービスのプライマリがペアで同じノード上に配置されます。 また、これらのサービスのセカンダリの各ペアも同じノードに配置されます。 ステートフル サービスに対して NonAlignedAffinity を構成することもできます (ただし、あまり一般的ではありません)。 NonAlignedAffinity では、2 つのステートフル サービスの異なるレプリカが同じノードで実行されますが、プライマリは異なるノードになります。
 
 <center>
+
 ![アフィニティのモードとその影響][Image1]
 </center>
 
@@ -69,6 +70,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 現在、クラスター リソース マネージャーでは、アフィニティ関係のチェーンをモデル化することはできません。 これは、あるアフィニティの関係で子になっているサービスは、別のアフィニティの関係では親になれないことを意味します。 この種の関係をモデル化するには、実質的にはチェーンではなく、星としてモデル化する必要があります。 チェーンから星に移行するには、最下位の子を子の最初の親にします。 サービスの配置によっては、これを複数回実行する必要があります。 自然な親サービスがない場合は、プレース ホルダーとして機能するサービスを作成する必要があります。 要件によっては、[アプリケーション グループ](service-fabric-cluster-resource-manager-application-groups.md)の調査が必要になる場合があります。
 
 <center>
+
 ![アフィニティの関係のコンテキストにおけるチェーンと星][Image2]
 </center>
 

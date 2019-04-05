@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 3c5f087ed44c252737e7f45fde12a4b509637499
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: ac52d8fa03c3c3ad1d618d014381fadfa752b7d7
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892883"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202981"
 ---
 # <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL Database のデータの検出と分類
 
@@ -31,7 +31,7 @@ ms.locfileid: "55892883"
 データの検出と分類は、高度な SQL セキュリティ機能の統合パッケージである [Advanced Data Security](sql-database-advanced-data-security.md) (ADS) オファリングの一部です。 データの検出と分類は、SQL ADS ポータルを使って一元的にアクセスおよび管理できます。
 
 > [!NOTE]
-> このドキュメントは、Azure SQL Database にのみ関係があります。 SQL Server (オンプレミス) については、「[SQL Data Discovery and Classification](https://go.microsoft.com/fwlink/?linkid=866999)」(SQL のデータの検出と分類) をご覧ください。
+> このドキュメントは、Azure SQL Database にのみ関係があります。 SQL Server (オンプレミス) については、「[SQL Data Discovery and Classification (SQL のデータの検出と分類)](https://go.microsoft.com/fwlink/?linkid=866999)」をご覧ください。
 
 ## <a id="subheading-1"></a>データの検出と分類とは
 
@@ -144,7 +144,14 @@ REST API を使用して、分類をプログラムで管理することもで�
 - [削除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): 指定された列の機密ラベルを削除します
 - [取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): 指定された列の機密ラベルを取得します
 - [現在の内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 指定されたデータベースの現在の機密ラベルを取得します
-- [推奨される内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 指定されたデータベースの現在の機密ラベルを取得します
+- [推奨される内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 指定されたデータベースの推奨される機密ラベルを取得します
+
+## <a name="permissions"></a>アクセス許可
+`Owner`、`Reader`、`Contributor`、`SQL Security Manager`、`User Access Administrator` の組み込みロールでは Azure SQL データベースのデータ分類を読み取ることができます。
+
+`Owner`、`Contributor`、`SQL Security Manager` の組み込みロールでは Azure SQL データベースのデータ分類を変更することができます。
+
+[Azure リソースの RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)の詳細はこちら
 
 ## <a id="subheading-5"></a>次のステップ
 

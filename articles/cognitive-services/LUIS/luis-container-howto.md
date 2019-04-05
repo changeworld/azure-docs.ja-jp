@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 99647770df9a8ca194559863a1d7212faf1c83a1
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 1cf5fb00e9f1a202fe7ad46253f916e3e6bee7a7
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328216"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295574"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker コンテナーのインストールと実行
  
@@ -46,15 +46,14 @@ LUIS コンテナーを実行するには、以下が必要です。
 
 このコンテナーでは、以下の設定に関して最小値と推奨値がサポートされます。
 
-|Setting| 最小値 | 推奨 |
-|-----------|---------|-------------|
-|コア<BR>`--cpus`|1 コア|1 コア|
-|メモリ<BR>`--memory`|2 GB|4 GB|
-|1 秒あたりのトランザクション数<BR>(TPS)|20 TPS|40 TPS|
+|コンテナー| 最小値 | 推奨 | TPS<br>(最大、最小)|
+|-----------|---------|-------------|--|
+|LUIS|1 コア、2 GB メモリ|1 コア、4 GB メモリ|20、40|
 
-各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上の必要があります。
+* 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
+* TPS - 1 秒あたりのトランザクション数
 
-`--cpus` と `--memory` の設定は、`docker run` コマンドの一部として使用されます。
+コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
 
 ## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` によるコンテナー イメージの取得
 
@@ -247,6 +246,8 @@ ApiKey={ENDPOINT_KEY}
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
 > ApiKey の値は、LUIS ポータルの [Keys and Endpoints]\(キーとエンドポイント\) ページにある **[キー]** です。また、[Azure Language Understanding Resource keys]\(Azure Language Understanding リソース キー\) ページで確認することもできます。  
+
+[!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 

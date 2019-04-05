@@ -2,24 +2,24 @@
 title: 列ストア インデックスのパフォーマンスを上げる - Azure SQL Data WareHouse | Microsoft Docs
 description: メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。
 services: sql-data-warehouse
-author: ckarst
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 03/18/2019
+ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d956322233cb6b4f8502775dcf2f89d96fd5cafe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 859f0d168dcf1cc999f79ef22b5ba6669da79593
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463363"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189565"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>列ストアの行グループの品質を最大限にする
 
-行グループの品質は、行グループ内の行数によって決まります。 メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。  これらのメソッドを使用して、列ストア インデックスの圧縮率およびクエリ パフォーマンスを向上させます。
+行グループの品質は、行グループ内の行数によって決まります。 使用できるメモリを増やすと、列ストア インデックスが各行グループに圧縮する行数を最大化できます。  これらのメソッドを使用して、列ストア インデックスの圧縮率およびクエリ パフォーマンスを向上させます。
 
 ## <a name="why-the-rowgroup-size-matters"></a>行グループのサイズが重要な理由
 列ストアインデックスは個別の行グループの列セグメントをスキャンすることでテーブルをスキャンし、各行グループの行の数を最大限にしてクエリ パフォーマンスを向上させます。 行グループに多くの行がある場合、データ圧縮が向上します。つまり、ディスクから読み取るデータが少なくなります。
@@ -35,11 +35,11 @@ ms.locfileid: "55463363"
 
 それぞれの行グループに 10,000 行以上を圧縮する十分なメモリがない場合、SQL Data Warehouse はエラーを生成します。
 
-一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index)」セクションを参照してください。
+一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](https://msdn.microsoft.com/library/dn935008.aspx#Bulk )」セクションを参照してください。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>行グループの品質を監視する方法
 
-行グループの行数や、トリミングがあった場合はトリミングの理由など、役立つ情報を示す DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats) があります。 次のビューを作成します。これは、この DMV に対してクエリを実行し、行グループのトリミングに関する情報を取得できる便利な方法です。
+行グループの行数や、トリミングがあった場合はトリミングの理由など、役立つ情報を示す DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats があります ([sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) には、SQL DB を SQL Data Warehouse に一致させるビュー定義が含まれます)。 次のビューを作成します。これは、この DMV に対してクエリを実行し、行グループのトリミングに関する情報を取得できる便利な方法です。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -137,14 +137,6 @@ DWU のサイズとユーザー リソースのクラスによって、ユーザ
 
 - DWU を増やす方法については、[パフォーマンスのスケーリング方法](quickstart-scale-compute-portal.md)に関するセクションを参照してください。
 - クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](resource-classes-for-workload-management.md#change-a-users-resource-class)」を参照してください。
-
-たとえば、DWU 100 の場合、smallrc リソース クラス内のユーザーはディストリビューションごとに 100 MB のメモリを使用できます。 詳細については、[SQL Data Warehouse でのコンカレンシー](resource-classes-for-workload-management.md)に関する記事を参照してください。
-
-高品質の行グループのサイズを取得するには 700 MB のメモリが必要と判断したと仮定します。 これらの例では、十分なメモリで読み込みクエリを実行する方法を示します。
-
-- DWU 1000 と mediumrc を使用すると、メモリ許可は 800 MB です。
-- DWU 600 と largerc を使用すると、メモリ許可は 800 MB です。
-
 
 ## <a name="next-steps"></a>次の手順
 

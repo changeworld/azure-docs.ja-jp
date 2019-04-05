@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: eca1379c4f721a0201b01f149b581859c49c6540
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f0f5a4ee5206201cca20e705011126e6cf472a1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234375"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835454"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
 
@@ -133,7 +133,7 @@ U-SQL では現在、.NET Framework 4.5 を使っています。 このため、
 
 アセンブリ DLL とリソース ファイル (別のランタイム、ネイティブ アセンブリ、構成ファイルなど) は、それぞれ最大 400 MB までアップロードできます。 また、DEPLOY RESOURCE またはアセンブリとその追加ファイルの参照によりデプロイしたリソースのサイズは、合計 3 GB を超えることはできません。
 
-最後に、各 U-SQL データベースに格納できるアセンブリのバージョンは 1 つだけであるという点にご注意ください。 たとえば、NewtonSoft Json.Net ライブラリのバージョン 7 とバージョン 8 の両方が必要な場合には、それぞれを異なる 2 つのデータベースに登録する必要があります。 さらに、各スクリプトで参照できるアセンブリ DLL のバージョンも 1 つのみです。 U-SQL はこの点で、C# のアセンブリ管理とバージョン管理の規則に従っています。
+最後に、各 U-SQL データベースに格納できるアセンブリのバージョンは 1 つだけであるという点にご注意ください。 たとえば、NewtonSoft Json.NET ライブラリのバージョン 7 とバージョン 8 の両方が必要な場合には、それぞれを異なる 2 つのデータベースに登録する必要があります。 さらに、各スクリプトで参照できるアセンブリ DLL のバージョンも 1 つのみです。 U-SQL はこの点で、C# のアセンブリ管理とバージョン管理の規則に従っています。
 
 ## <a name="use-user-defined-functions-udf"></a>ユーザー定義関数を使用する: UDF
 U-SQL のユーザー定義関数 (UDF) は、パラメーターを受け取り、複雑な計算などのアクションを実行し、そのアクションの結果を値として返すプログラミング ルーチンです。 UDF の戻り値とすることができるのは、単一のスカラー値のみです。 U-SQL の UDF は、C# の他のスカラー関数と同じく、U-SQL のベース スクリプトから呼び出すことができます。

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: b7ad21bd3185e5e6ba4774cdc5780b0594033f14
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54027454"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903625"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>統合されたコンポーネント間のトランザクションの診断
 
@@ -50,7 +50,7 @@ ms.locfileid: "54027454"
 * 行を選択すると、その[詳細が右側に](#details-of-the-selected-telemetry)表示されます。 
 
 > [!NOTE]
-その他のコンポーネントの呼び出しは 2 つの行で表されます。呼び出しコンポーネントからの送信呼び出し (依存関係) を表す行と、呼び出されたコンポーネントの受信要求に対応する行です。 先頭のアイコンと継続時間バーの個別のスタイルは、これらを区別するのに役立ちます。
+> その他のコンポーネントの呼び出しは 2 つの行で表されます。呼び出しコンポーネントからの送信呼び出し (依存関係) を表す行と、呼び出されたコンポーネントの受信要求に対応する行です。 先頭のアイコンと継続時間バーの個別のスタイルは、これらを区別するのに役立ちます。
 
 ## <a name="all-telemetry-with-this-operation-id"></a>この操作 ID のすべてのテレメトリ
 
@@ -74,9 +74,9 @@ ms.locfileid: "54027454"
 
 [Application Insights Profiler](../../azure-monitor/app/profiler.md) または[スナップショット デバッガー](snapshot-debugger.md)は、パフォーマンスと障害の問題をコード レベルで診断するのに役立ちます。 このエクスペリエンスを使用して、任意のコンポーネントからの Profiler トレースやスナップショットをシングル クリックで表示できます。
 
-プロファイラーが機能しない場合は、**serviceprofilerhelp@microsoft.com** までお問い合わせください。
+Profiler が機能しない場合は、**serviceprofilerhelp\@microsoft.com** までお問い合わせください。
 
-スナップショット デバッガーが機能しない場合は、**snapshothelp@microsoft.com** までお問い合わせください。
+スナップショット デバッガーが機能しない場合は、**snapshothelp\@microsoft.com** までお問い合わせください。
 
 ![Profiler の統合](media/transaction-diagnostics/profilerTraces.png)
 

@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/20/2019
 ms.author: mayg
-ms.openlocfilehash: 0ee3ff8bb1ebfc276550cba3570fdf4360aabf72
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 7bfe382ac1a175aafb4944dffa8d12a372f4fb70
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327869"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286501"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポートの分析
 この記事では、Azure Site Recovery Deployment Planner で、Hyper-V から Azure へのシナリオに関して生成される Excel レポート内のシートについて取り上げます。
@@ -275,7 +275,7 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 ---|---|---|---
 Standard Storage | 8 KB | VM あたり 2 MB/秒 | VM あたり 168 GB
 Premium Storage | 8 KB  | VM あたり 5 MB/秒 | VM あたり 421 GB
-Premium Storage | 16 KB 以上| VM あたり 10 MB/秒 | VM あたり 842 GB
+Premium Storage | 16 KB 以上| VM あたり 20 MB/秒 | VM あたり 1,684 GB
 
 これらの制限は、I/O のオーバーラップを 30% とした場合の平均値です。 Site Recovery は、オーバーラップ比に基づくより高いスループットと、より大きな書き込みサイズ、そして実ワークロード I/O 動作を扱うことができます。 上記の数値には、標準的なバックログとして約 5 分が想定されています。 つまりデータはアップロード後 5 分以内に処理されて復旧ポイントが作成されます。
 

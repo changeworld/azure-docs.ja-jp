@@ -11,16 +11,19 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 13da9e0d731e87b6cdd5830c9295847511c301ef
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 591624e6bab07bfa06799d8e4817622e7a5c280a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567300"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107646"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>コンテナーに Azure Monitor をオンボードする方法  
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 この記事では、Kubernetes 環境にデプロイされ、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) 上でホストされているワークロードのパフォーマンスを監視するために、コンテナーに対して Azure Monitor を設定する方法について説明します。
 
 次のサポートされている方法を使用して、新規または 1 つ以上の既存の AKS のデプロイに対してコンテナー用の Azure Monitor 有効にできます。
@@ -31,8 +34,8 @@ ms.locfileid: "55567300"
 ## <a name="prerequisites"></a>前提条件 
 始める前に、必ず以下のものを用意してください。
 
-- Log Analytics ワークスペース。 新しい AKS クラスターの監視を有効にするときにワークスペースを作成すること、またはオンボード エクスペリエンスを使用して AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースを作成することができます。 自分でワークスペースを作成する場合は、[Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../../azure-monitor/learn/quick-create-workspace.md) のいずれかを使用して作成できます。
-- コンテナーの監視を有効にするための Log Analytics 共同作成者ロールのメンバーであること。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../../azure-monitor/platform/manage-access.md)」を参照してください。
+- **Log Analytics ワークスペース。** 新しい AKS クラスターの監視を有効にするときにワークスペースを作成すること、またはオンボード エクスペリエンスを使用して AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースを作成することができます。 自分でワークスペースを作成する場合は、[Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../../azure-monitor/learn/quick-create-workspace.md) のいずれかを使用して作成できます。
+- コンテナーの監視を有効にするための **Log Analytics 共同作成者ロールのメンバーである**こと。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../../azure-monitor/platform/manage-access.md)」を参照してください。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -76,7 +79,7 @@ Azure CLI で作成した新しい AKS クラスターの監視を有効にす�
 監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。 
 
 ## <a name="enable-monitoring-for-existing-managed-clusters"></a>既存のマネージド クラスターに対する監視を有効にする
-既にデプロイされている AKS クラスターの監視を有効にするには、Azure CLI、ポータル、または提供されている Azure Resource Manager テンプレートで PowerShell コマンドレット `New-AzureRmResourceGroupDeployment` を使用します。 
+既にデプロイされている AKS クラスターの監視を有効にするには、Azure CLI、ポータル、または提供されている Azure Resource Manager テンプレートで PowerShell コマンドレット `New-AzResourceGroupDeployment` を使用します。 
 
 ### <a name="enable-monitoring-using-azure-cli"></a>Azure CLI を使用して監視を有効にする
 Azure CLI を使用して AKS クラスターの監視を有効にするには、次の手順のようにします。 この例では、ワークスペースを事前に作成したり、既存のワークスペースを指定したりする必要はありません。 このコマンドでは、リージョンにワークスペースがまだ存在しない場合、AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースが作成されるので、プロセスが簡単になります。  作成される既定のワークスペースは、*DefaultWorkspace-\<GUID>-\<Region>* のような形式になります。  
@@ -117,7 +120,7 @@ provisioningState       : Succeeded
 
 2. [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) を、Terraform のドキュメントに記載されている手順に従って追加します。
 
-### <a name="enable-monitoring-from-azure-monitor"></a>Azure Monitor からの監視を有効にする
+### <a name="enable-monitoring-from-azure-monitor-in-the-portal"></a>ポータルで Azure Monitor からの監視を有効にする 
 Azure portal で Azure Monitor からの AKS クラスターの監視を有効にするには、次のようにします。
 
 1. Azure portal で、**[モニター]** を選択します。 
@@ -294,31 +297,31 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 5. このファイルを **existingClusterParam.json** としてローカル フォルダーに保存します。
 6. これでこのテンプレートをデプロイする準備が整いました。 
 
-    * テンプレートが含まれているフォルダーで、次の PowerShell コマンドを使用します。
+   * テンプレートが含まれているフォルダーで、次の PowerShell コマンドを使用します。
 
-        ```powershell
-        New-AzureRmResourceGroupDeployment -Name OnboardCluster -ClusterResourceGroupName ClusterResourceGroupName -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
-        ```
-        設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
+       ```powershell
+       New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
+       ```
+       設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
 
-        ```powershell
-        provisioningState       : Succeeded
-        ```
+       ```powershell
+       provisioningState       : Succeeded
+       ```
 
-    * Azure CLI を使用して次のコマンドを実行するには、次の手順を実行します。
+   * Azure CLI を使用して次のコマンドを実行するには、次の手順を実行します。
     
-        ```azurecli
-        az login
-        az account set --subscription "Subscription Name"
-        az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
-        ```
+       ```azurecli
+       az login
+       az account set --subscription "Subscription Name"
+       az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
+       ```
 
-        設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
+       設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
 
-        ```azurecli
-        provisioningState       : Succeeded
-        ```
-監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。 
+       ```azurecli
+       provisioningState       : Succeeded
+       ```
+     監視を有効にした後、クラスターの正常性メトリックが表示されるまで、約 15 分かかる場合があります。 
 
 ## <a name="verify-agent-and-solution-deployment"></a>エージェントとソリューションのデプロイを確認する
 バージョン *06072018* 以降のエージェントでは、エージェントとソリューションの両方が正常にデプロイされていることを確認することができます。 これより前のバージョンのエージェントでは、エージェントのデプロイしか確認できません。

@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2effd6c067a1378d9f774f282f6cea69a50596c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d522b0740b144c39da81a9838f9d6e259fe62d22
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204442"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532781"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Azure Active Directory でフェデレーションからパスワード ハッシュ同期に移行する
 
@@ -139,9 +139,9 @@ AD FS Rapid Restore Tool を使用しない場合は、少なくとも、Microso
 |-|-|
 | 引き続き AD FS を (Azure AD と Office 365 以外の) 他のアプリケーションと一緒に使用する予定である。 | ドメインを変換した後、AD FS と Azure AD の両方を使用します。 ユーザー エクスペリエンスをよく検討してください。 一部のシナリオでは、ユーザーの認証が 2 回必要になる可能性があります。1 回は Azure AD に対するもので (これにより、ユーザーは Office 365 などの他のアプリケーションに対する SSO アクセスを取得します)、もう 1 回は証明書利用者信頼として AD FS にまだバインドされているすべてのアプリケーションに対するものです。 |
 | AD FS インスタンスが大幅にカスタマイズされていて、onload.js ファイル内の特定のカスタマイズ設定に依存している (たとえば、ユーザー名にユーザー プリンシパル名 (UPN) ではなく **SamAccountName** 形式のみを使用するようにサインイン エクスペリエンスを変更している場合や、組織でサインイン エクスペリエンスを大幅にブランド化している場合)。 Azure AD で onload.js ファイルを複製できない。 | 続行する前に、Azure AD で現在のカスタマイズ要件を満たせることを確認する必要があります。 詳細情報とガイダンスについては、AD FS のブランド化と AD FS のカスタマイズに関するセクションを参照してください。|
-| AD FS を使用して、以前のバージョンの認証クライアントをブロックしている。| [条件付きアクセス制御](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)と [Exchange Online のクライアント アクセス規則](http://aka.ms/EXOCAR)の組み合わせを使用して、以前のバージョンの認証クライアントをブロックする AD FS 制御を置き換えることを検討します。 |
+| AD FS を使用して、以前のバージョンの認証クライアントをブロックしている。| [条件付きアクセス制御](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)と [Exchange Online のクライアント アクセス規則](https://aka.ms/EXOCAR)の組み合わせを使用して、以前のバージョンの認証クライアントをブロックする AD FS 制御を置き換えることを検討します。 |
 | ユーザーに、AD FS への認証時にオンプレミスの多要素認証サーバー ソリューションに対する多要素認証を行うことを要求している。| マネージド ID ドメインでは、オンプレミスの多要素認証ソリューションを介して認証フローに多要素認証チャレンジを挿入することはできません。 ただし、ドメインの変換後は、Azure Multi-Factor Authentication サービスを使用して多要素認証を行うことができます。<br /><br /> 現在、ユーザーが Azure Multi-Factor Authentication を使用していない場合は、1 回限りのユーザー登録手順が必要になります。 計画した登録の準備を行い、ユーザーに連絡する必要があります。 |
-| 現在、Office 365 へのアクセスを制御するために、AD FS でアクセス制御ポリシー (AuthZ 規則) を使用している。| ポリシーを同等の Azure AD [条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)と [Exchange Online のクライアント アクセス規則](http://aka.ms/EXOCAR)に置き換えることを検討します。|
+| 現在、Office 365 へのアクセスを制御するために、AD FS でアクセス制御ポリシー (AuthZ 規則) を使用している。| ポリシーを同等の Azure AD [条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)と [Exchange Online のクライアント アクセス規則](https://aka.ms/EXOCAR)に置き換えることを検討します。|
 
 ### <a name="common-ad-fs-customizations"></a>一般的な AD FS のカスタマイズ
 
@@ -319,7 +319,7 @@ Windows 8 および Windows 7 のコンピューター アカウントの場合�
    * **[シームレス シングル サインオン]** が **[有効]** に設定されている。
    * **[パスワード同期]** が **[有効]** に設定されている。<br /> 
 
-   ![[ユーザー サインイン] セクションの設定を示すスクリーンショット ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![[ユーザー サインイン] セクションの設定を示すスクリーンショット](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 「[テストと次のステップ](#testing-and-next-steps)」に進みます。
 
@@ -400,7 +400,7 @@ Azure AD PowerShell モジュールを使用して、変換を完了します。
 パスワード ハッシュ同期をテストするには:
 
 1. シームレス SSO によって自動的にサインインされないように、InPrivate モードで Internet Explorer を開きます。
-2. Office 365 のサインイン ページ ([http://portal.office.com](http://portal.office.com/)) に移動します。
+2. Office 365 のサインイン ページ ([https://portal.office.com](https://portal.office.com/)) に移動します。
 3. ユーザーの UPN を入力し、**[次へ]** を選択します。 必ず、オンプレミスの Active Directory インスタンスから同期されており、以前はフェデレーション認証を使用していた、ハイブリッド ユーザーの UPN を入力してください。 ユーザー名とパスワードを入力するページが表示されます。
 
    ![ユーザー名を入力するサインイン ページを示すスクリーンショット](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 7a090a068984a71c917cf5c33761dd78ac1ad2c8
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 510a243b9133fe0ef0fe33b4dccce97f9d65e301
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453258"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074966"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Azure Portal を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する
 
@@ -31,6 +31,8 @@ Azure Portal を使用して、[Web アプリケーション ファイアウォ�
 
 ![Web アプリケーション ファイアウォールの例](./media/application-gateway-web-application-firewall-portal/scenario-waf.png)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインする
@@ -43,21 +45,21 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
 3. 次のアプリケーション ゲートウェイの値を入力します。
 
-    - *myAppGateway* - アプリケーション ゲートウェイの名前です。
-    - *myResourceGroupAG* - 新しいリソース グループの名前です。
-    - アプリケーション ゲートウェイのレベルとして *[WAF]* を選択します。
+   - *myAppGateway* - アプリケーション ゲートウェイの名前です。
+   - *myResourceGroupAG* - 新しいリソース グループの名前です。
+   - アプリケーション ゲートウェイのレベルとして *[WAF]* を選択します。
 
-    ![新しいアプリケーション ゲートウェイの作成](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
+     ![新しいアプリケーション ゲートウェイの作成](./media/application-gateway-web-application-firewall-portal/application-gateway-create.png)
 
 4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
 5. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
 
-    - *myVNet* - 仮想ネットワークの名前です。
-    - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
-    - *myAGSubnet* - サブネットの名前です。
-    - *10.0.0.0/24* - サブネットのアドレス空間です。
+   - *myVNet* - 仮想ネットワークの名前です。
+   - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
+   - *myAGSubnet* - サブネットの名前です。
+   - *10.0.0.0/24* - サブネットのアドレス空間です。
 
-    ![Create virtual network](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
+     ![Create virtual network](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
 
 6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
 7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順にクリックし、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
@@ -103,7 +105,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -114,7 +116,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
       -Location EastUS
     ```
 
-3. 2 番目の仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 その名前および AzureRmVMExtension の VMName として「*myVM2*」を入力します。
+3. 2 番目の仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 その名前および Set-AzVMExtension の VMName として「*myVM2*」を入力します。
 
 ### <a name="add-backend-servers"></a>バックエンド サーバーの追加
 

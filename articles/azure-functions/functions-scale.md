@@ -10,15 +10,15 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 08/09/2018
+ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08897b2085c2a8f0eafb90b77486d60a0edce190
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 17df4415166c71f49c6b2534289b2c1f79cb6174
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359869"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117253"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -43,9 +43,6 @@ App Service プランの階層間で拡大縮小して、さまざまな量の�
 
 従量課金プランを使用する場合、Azure Functions ホストのインスタンスは、受信イベントの数に基づいて動的に追加および削除されます。 このサーバーレス プランではスケーリングが自動的に行われ、関数の実行中にのみコンピューティング リソースに対して料金が発生します。 従量課金プランでは、構成可能な期間が経過すると関数の実行はタイムアウトします。
 
-> [!NOTE]
-> 従量課金プランの関数に対する既定のタイムアウトは 5 分です。 [host.json](functions-host-json.md#functiontimeout) プロジェクト ファイルの `functionTimeout` プロパティを変更することにより、Function App に対するこの値を最大 10 分まで増やすことができます。
-
 課金は、実行数、実行時間、およびメモリの使用量に基づいて行われ、 関数アプリ内のすべての関数にわたって集計されます。 詳細については、[Azure Functions の価格に関するページ]を参照してください。
 
 従量課金プランは既定のホスティング プランであり、次の利点があります。
@@ -62,7 +59,7 @@ App Service プランの階層間で拡大縮小して、さまざまな量の�
 * 既に他の App Service インスタンスを実行している、使用率の低い既存の VM がある。
 * 関数を継続的に、またはほぼ継続的に実行したい。 この場合、App Service プランは、さらにコスト効率性に優れています。
 * 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。
-* コードを従量課金プランで許可されている最大実行時間 (10 分) よりも長く実行する必要がある。
+* 従量課金プランで[許可されている最大実行時間](#timeout)よりも長くコードを実行する必要がある。
 * App Service 環境、VNET/VPN 接続、大規模な VM のサポートなど、App Service プランでのみ使用できる機能が必要である。
 * Linux 上で Function App を実行するか、または関数を実行するために Linux 上にカスタム イメージを提供したい。
 
@@ -70,13 +67,15 @@ VM を使用すると、コストが実行数、実行時間、メモリの使�
 
 App Service プランでは、VM インスタンスを追加して手動でスケールアウトするか、自動スケールを有効にすることができます。 詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)」を参照してください。 別の App Service プランを選択してスケールアップすることもできます。 詳細については、 [Azure でのアプリのスケールアップ](../app-service/web-sites-scale.md) に関するページを参照してください。 
 
-App Service プランで JavaScript 関数を実行する場合は、CPUの少ないプランを選択してください。 詳細については、[シングルコア App Service プランの選択](functions-reference-node.md#considerations-for-javascript-functions)に関するページをご覧ください。  
+App Service プランで JavaScript 関数を実行する場合は、CPUの少ないプランを選択してください。 詳細については、[シングルコア App Service プランの選択](functions-reference-node.md#choose-single-vcpu-app-service-plans)に関するページをご覧ください。  
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
-<a name="always-on"></a>
-### <a name="always-on"></a>常時接続
+
+### <a name="always-on"></a> 常にオン
 
 App Service プランを実行する場合、関数アプリが正常に実行されるように、**常時接続** 設定を有効にする必要があります。 App Service プランでは、関数のランタイムは非アクティブな状態が数分続くとアイドル状態となるため、関数を "起こす" ことができるのは HTTP トリガーのみとなります。 常時接続は App Service プランでのみ使用可能です。 従量課金プランでは、関数アプリはプラットフォームにより自動的にアクティブ化されます。
+
+[!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 ## <a name="what-is-my-hosting-plan"></a>自分のホスティング プラン
 
@@ -125,7 +124,8 @@ Azure Functions は "*スケール コントローラー*" と呼ばれるコン
 スケーリングはさまざまな要因によって異なる可能性があり、選択したトリガーと言語に基づいて異なる方法でスケールします。 ただし、今日のシステムにはスケーリングのいくつかの側面があります。
 
 * 1 つの関数アプリは、最大 200 インスタンスまでしかスケールアップできません。 1 つのインスタンスで一度に複数のメッセージや要求を処理できるので、同時実行の数に上限は設定されていません。
-* 新しいインスタンスは、10 秒ごとに最大 1 回しか割り当てられません。
+* HTTP トリガーの場合、新しいインスタンスは、10 秒ごとに最大 1 回しか割り当てられません。
+* 非 HTTP トリガーの場合、新しいインスタンスは、30 秒ごとに最大 1 回しか割り当てられません。
 
 次の記事に記載されているように、トリガーごとにスケーリングの上限が異なる場合もあります。
 

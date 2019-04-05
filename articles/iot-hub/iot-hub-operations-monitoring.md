@@ -1,26 +1,26 @@
 ---
-title: Azure IoT Hub 操作の監視 | Microsoft Docs
+title: Azure IoT Hub 操作の監視 (非推奨) | Microsoft Docs
 description: Azure IoT Hub 操作の監視を使用して、IoT Hub に対する操作の状態をリアルタイムで監視する方法。
 author: nberdy
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
+ms.date: 03/11/2019
 ms.author: nberdy
-ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d839e2e9922ac68af3aea37884e8b2f72b80b0e7
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160050"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791581"
 ---
-# <a name="iot-hub-operations-monitoring"></a>IoT Hub 操作の監視
+# <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub 操作の監視 (非推奨)
 
 IoT Hub の操作の監視では、IoT Hub に対する操作の状態をリアルタイムで監視することができます。 IoT Hub は、複数のカテゴリにまたがる操作のイベントを追跡します。 1 つ以上のカテゴリから IoT ハブのエンドポイントにイベントを送信して処理するように選択することができます。 データを監視してエラーがないか確認したり、データ パターンに基づいてより複雑な処理をセットアップしたりできます。
 
 >[!NOTE]
->IoT Hub の操作の監視は非推奨になっており、2019 年 3 月 10 日をもって IoT Hub から削除される予定です。 IoT Hub の操作と正常性を監視する方法については、「[Azure IoT Hub の正常性を監視し、問題をすばやく診断する][lnk-monitor]」をご覧ください。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health][lnk-blog-announcement]」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
+>IoT Hub の**操作の監視は非推奨になっており、2019 年 3 月 10 日をもって IoT Hub から削除される予定です**。 IoT Hub の操作と正常性を監視する方法については、「[Azure IoT Hub の正常性を監視し、問題をすばやく診断する][lnk-monitor]」をご覧ください。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health][lnk-blog-announcement]」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
 
 IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 

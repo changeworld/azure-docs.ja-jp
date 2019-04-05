@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: dc3e654e741fd1a326c83e51c72284f41ad74798
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6a7d79d8a9328eaf0808c79ed359299e1ec37d1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988053"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862721"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>チュートリアル:Video Indexer API の使用
 
@@ -23,7 +23,7 @@ ms.locfileid: "55988053"
 
 Video Indexer は、Microsoft が提供するさまざまなオーディオおよびビデオの人工知能 (AI) テクノロジが 1 つに統合されたサービスです。このサービスを利用すると、開発がより簡単になります。 API は、開発者がクラウド プラットフォームの規模、世界的な展開、可用性、信頼性を気にすることなく、Media AI テクノロジの使用に集中できるように設計されています。 この API を使用すると、ファイルをアップロードし、詳細なビデオの分析情報を取得し、アプリケーションに埋め込む分析情報とプレーヤー ウィジェットの URL を取得するなどのタスクを実行できます。
 
-Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[Azure サブスクリプションと Azure Media Services アカウント](connect-to-azure.md)に接続する Video Indexer アカウントを作成します。 Azure Media Services アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
+Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 Azure Media Services アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
 
 この記事では、開発者が [Video Indexer API](https://api-portal.videoindexer.ai/) を利用する方法について説明します。
 
@@ -33,10 +33,10 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
     
     ![サインイン](./media/video-indexer-use-apis/video-indexer-api01.png)
 
-    > [!Important]
-    > * Video Indexer へのサインアップ時と同じプロバイダーを使用する必要があります。
-    > * 個人用の Google アカウントと Microsoft (Outlook/Live) アカウントは試用アカウントにのみ使用できます。 Azure に接続するアカウントには、Azure AD が必要です。
-    > * 1 つの電子メール アドレスで有効にすることができるアカウントは 1 つのみです。 ユーザーが user@gmail.com を使用して LinkedIn にサインインした後に、user@gmail.com を使用して Google にサインインしようとすると、ユーザーは既に存在しているというエラー ページが表示されます。
+   > [!Important]
+   > * Video Indexer へのサインアップ時と同じプロバイダーを使用する必要があります。
+   > * 個人用の Google アカウントと Microsoft (Outlook/Live) アカウントは試用アカウントにのみ使用できます。 Azure に接続するアカウントには、Azure AD が必要です。
+   > * 1 つの電子メール アドレスで有効にすることができるアカウントは 1 つのみです。 ユーザーが user@gmail.com を使用して LinkedIn にサインインした後に、user@gmail.com を使用して Google にサインインしようとすると、ユーザーは既に存在しているというエラー ページが表示されます。
 
 2. サブスクライブします。
 
@@ -72,7 +72,7 @@ Operations API の各呼び出しは、呼び出しの承認スコープと一�
 
 アクセス トークンの有効期間は 1 時間です。 Operations API を使用する前に、アクセス トークンが有効であることを確認してください。 期限切れの場合は、もう一度 Authorization API を呼び出して新しいアクセス トークンを取得します。
  
-これで API との統合を開始する準備が整いました。 [各 Video Indexer REST API の詳細な説明](http://api-portal.videoindexer.ai/)を参照してください。
+これで API との統合を開始する準備が整いました。 [各 Video Indexer REST API の詳細な説明](https://api-portal.videoindexer.ai/)を参照してください。
 
 ## <a name="location"></a>Location
 

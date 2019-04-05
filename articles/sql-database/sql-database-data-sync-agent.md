@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 78d85239e1e82c290b210d33d3ca7000d6a05a1f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 5d8b3b91771fda3a714112979b8bf9df39c4a9b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567912"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088691"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Azure SQL データ同期のデータ同期エージェント
 
@@ -102,8 +102,8 @@ SQL データ同期サービスは、クライアント エージェントを使
 
 - **解決策**。 エラーの具体的な原因を特定するには、Windows インストーラー ログを生成し、内容を確認します。 ログ記録はコマンド プロンプトから有効にすることができます。 たとえば、ダウンロードしたインストール ファイルが `SQLDataSyncAgent-2.0-x86-ENU.msi` である場合は、次のコマンド ラインを使用してログ ファイルを生成し、内容を確認します。
 
-    -   インストールの場合: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
-    -   アンインストールの場合: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - インストールの場合: `msiexec.exe /i SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
+  - アンインストールの場合: `msiexec.exe /x SQLDataSyncAgent-2.0-x86-ENU.msi /l*v LocalAgentSetup.Log`
 
     Windows インストーラーによって実行されるすべてのインストールについて、ログ記録を有効にすることもできます。 Microsoft サポート技術情報の記事「[Windows インストーラーのログの記録を有効にする方法](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging)」には、Windows インストーラーのログの記録を有効にするワンクリック ソリューションが用意されています。 また、ログの場所も示されています。
 
@@ -151,7 +151,7 @@ SQL Server をホストしているコンピューターで、エージェント
     a. **[開始]** を選択します。  
     b. 検索ボックスに「**services.msc**」と入力します。  
     c. 検索結果で、**[サービス]** を選択します。  
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[サービス]** ウィンドウで、**[SQL Data Sync Agent]\(SQL データ同期エージェント\)** のエントリまでスクロールします。  
+    d. **[サービス]** ウィンドウで、**[SQL Data Sync Agent]\(SQL データ同期エージェント\)** のエントリまでスクロールします。  
   1. **[SQL Data Sync Agent]\(SQL データ同期エージェント\)** を右クリックして、**[停止]** を選択します。
   1. **[SQL Data Sync Agent]\(SQL データ同期エージェント\)** を右クリックして、**[プロパティ]** を選択します。
   1. **[SQL Data Sync Agent Properties]\(SQL データ同期エージェントのプロパティ\)** ウィンドウで、**[ログイン]** タブを選択します。
@@ -326,7 +326,7 @@ SQL データ同期の詳細については、次の記事を参照してくだ�
         -  [PowerShell を使用した複数の Azure SQL データベース間の同期](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   ベスト プラクティス - [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
--   監視 - [Log Analytics による SQL データ同期の監視](sql-database-sync-monitor-oms.md)
+-   監視 - [Azure Monitor ログによる SQL データ同期の監視](sql-database-sync-monitor-oms.md)
 -   トラブルシューティング - [Azure SQL データ同期に関する問題のトラブルシューティング](sql-database-troubleshoot-data-sync.md)
 -   同期スキーマの更新
     -   Transact-SQL の場合 - [Azure SQL データ同期内でスキーマ変更のレプリケートを自動化する](sql-database-update-sync-schema.md)

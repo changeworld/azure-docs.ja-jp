@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 66119ffab8c6117e223468834b59e6d6b19409a0
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f9cbf5033d0ffb84959de94db052626dd1d131c8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54445064"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997953"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 for Customer Engagement の [ネットショップの詳細] タブ
 
@@ -56,7 +56,7 @@ ms.locfileid: "54445064"
 |  アプリの種類             | AppSource 上のアプリで有効にする試用版の種類を選択します。 **[無料]** は、料金なしでアプリを使用できることを示します。**[試用]** は、顧客が短期間無料でアプリを試すことができることを示します。**[連絡を希望する]** は、顧客が AppSource でアプリの試用を要求できることを示します。  |
 | アプリのヘルプ リンク | アプリのオンライン ドキュメントまたは他のヘルプ リソースの URL です。  |
 | サポートされている国/地域 | ポップアップ ダイアログで、アプリを提供する地理的な地域を選択できます。  世界全体での配布が既定値です。 |
-| サポートされている言語   | アプリがサポートする言語を選択します。 現在は、いくつかの言語オプションだけがサポートされています。  (アプリでこの一覧にない他の言語がサポートされている場合は、オファーの公開を継続し、この情報をメール appsource@microsoft.com でお知らせください。)  |
+| サポートされている言語   | アプリがサポートする言語を選択します。 現在は、いくつかの言語オプションだけがサポートされています。  (アプリでこの一覧にない他の言語がサポートされている場合は、オファーの公開を継続し、この情報を appsource\@microsoft.com までメールでお知らせください。)  |
 | アプリのバージョン           | アプリのバージョン番号です    |
 | アプリのリリース日      | アプリのリリース/公開日です |
 | アプリが対応する製品 | アプリと相互運用が可能な製品またはサービスです。 最大 3 つの製品を列挙できます。 製品を一覧表示するには、**[+ 新規]** をクリックして、表示されるテキスト ボックスに製品の名前を入力します。  |

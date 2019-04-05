@@ -3,17 +3,17 @@ title: DevKit デバイスを Azure IoT Central アプリケーションに接�
 description: デバイス開発者として、MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する方法を学習します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/16/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6d2cb95efbff223aecf1f0525dbb93698639d41a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 44af0ccab45f1335d9dfec06287303a34391eded
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198730"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113199"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -26,10 +26,9 @@ ms.locfileid: "54198730"
 1. **サンプル Devkit** アプリケーション テンプレートから作成された Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
 1. DevKit デバイス。 DevKit デバイスを購入するには、「[MXChip IoT DevKit](http://mxchip.com/az3166)」を参照してください。
 
+## <a name="sample-devkits-application"></a>サンプル Devkit アプリケーション
 
-## <a name="sample-devkits-application"></a>**サンプル Devkit** アプリケーション
-
-**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **MXChip** デバイス テンプレートが含まれています。 
+**サンプル Devkit** アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ **MXChip** デバイス テンプレートが含まれています。
 
 - デバイスの**湿度**、**温度**、**圧力**、**磁力計** (X、Y、Z 軸に沿って測定)、**加速度計** (X、Y、Z 軸に沿って測定)、**ジャイロスコープ** (X、Y、Z 軸に沿って測定) の測定値を含むテレメトリ。
 - **デバイス状態**の測定例を含む状態。
@@ -37,37 +36,32 @@ ms.locfileid: "54198730"
 - **電圧**、**電流**、**ファン速度**、**IR** のトグルを示す設定。
 - デバイス プロパティ**ダイ番号**および場所プロパティであり**メーカー** クラウド プロパティ内にある**デバイスの場所**を含むプロパティ。 
 
-
-構成について詳しくは、「[MXChip デバイス テンプレートの詳細](howto-connect-devkit.md#mxchip-device-template-details)」をご覧ください。
+構成について詳しくは、「[MXChip デバイス テンプレートの詳細](#mxchip-device-template-details)」をご覧ください。
 
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
 Azure IoT Central アプリケーションでは、**MXChip** デバイス テンプレートから実デバイスを追加し、デバイスの接続の詳細 (**スコープ ID、デバイス ID、主キー**) を書き留めます。
 
-1. Device Explorer から**実際のデバイス**を追加し、**[+ 新規] > [Real]\(リアル\)** をクリックして実際のデバイスを追加します。
-    * デバイス ID **<span style="color:Red">(小文字のみ)</span>** を入力するか、推奨デバイス ID を使います。
-    * デバイス名を入力するか、推奨名を使います
-    
-    ![デバイスの追加](media/concepts-connectivity/add-device.png)
+1. Device Explorer から**実際のデバイス**を追加し、**[+ 新規] > [Real]\(リアル\)** を選択して実際のデバイスを追加します。
 
+   * デバイス ID **<span style="color:Red">(小文字のみ)</span>** を入力するか、推奨デバイス ID を使います。
+   * デバイス名を入力するか、推奨名を使います
 
-1. デバイス ページの **[接続]** をクリックして、追加したデバイスの **スコープ ID、デバイス ID、プライマリ キー**などの接続の詳細を取得します。
- 
-    ![接続の詳細](media/concepts-connectivity/device-connect.PNG)
+     ![デバイスの追加](media/howto-connect-devkit/add-device.png)
 
-3. これらの詳細を保存します。DevKit デバイスを準備するときに、インターネットから一時的に切断します。 
+1. デバイス ページの **[接続]** を選択して、追加したデバイスの **スコープ ID、デバイス ID、主キー**などの接続の詳細を取得します。
 
+    ![接続の詳細](media/howto-connect-devkit/device-connect.png)
+
+1. これらの詳細を保存します。DevKit デバイスを準備するときに、インターネットから一時的に切断します。
 
 ### <a name="prepare-the-devkit-device"></a>DevKit デバイスを準備する
 
 > [!NOTE]
 > 以前にデバイスを使用したことがあり、WiFi の資格情報が保存されていて、別の WiFi ネットワーク、接続文字列、またはテレメトリ測定を使用するようにデバイスを再構成するには、ボード上の **A** ボタンと **B** ボタンの両方を同時に押します。 それで機能しない場合は、**reset** ボタンを押して再試行します。
 
-
-
-#### <a name="to-prepare-the-devkit-device"></a>DevKit デバイスを準備するには:
-
+#### <a name="to-prepare-the-devkit-device"></a>DevKit デバイスを準備するには
 
 1. GitHub 上の[リリース](https://aka.ms/iotcentral-docs-MXChip-releases) ページから、MXChip 用の事前に構築された最新の Azure IoT Central ファームウェアをダウンロードします。
 1. USB ケーブルを使用して、DevKit デバイスを開発用コンピューターに接続します。 Windows では、DevKit デバイス上のストレージにマッピングされたドライブでファイル エクスプローラー ウィンドウが開きます。 たとえば、このドライブは **AZ3166 (D:)** と呼ばれることがあります。
@@ -78,12 +72,12 @@ Azure IoT Central アプリケーションでは、**MXChip** デバイス テ�
     ```
     Connect HotSpot:
     AZ3166_??????
-    go-> 192.168.0.1 
+    go-> 192.168.0.1
     PIN CODE xxxxx
     ```
 
     > [!NOTE]
-    > 画面に何か表示されている場合は、デバイスをリセットし、デバイスの **A** ボタンと **B** ボタンを同時に押して、デバイスを再起動します。 
+    > 画面に何か表示されている場合は、デバイスをリセットし、デバイスの **A** ボタンと **B** ボタンを同時に押して、デバイスを再起動します。
 
 1. これで、デバイスがアクセス ポイント (AP) モードになりました。 コンピューターまたはモバイル デバイスからこの WiFi アクセス ポイントに接続できます。
 
@@ -178,7 +172,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 サンプル コードを変更、構築、およびデバイスにアップロードする方法については、`AZ3166` フォルダー内の **readme.md** ファイルを参照してください。
 
-## <a name="mxchip-device-template-details"></a>MXChip デバイス テンプレートの詳細 
+## <a name="mxchip-device-template-details"></a>MXChip デバイス テンプレートの詳細
 
 サンプル Devkit アプリケーション テンプレートから作成されたアプリケーションには、次の特性を持つ MXChip デバイス テンプレートが含まれています。
 

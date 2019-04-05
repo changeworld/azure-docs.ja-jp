@@ -3,8 +3,8 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 15db2192703971a8056df34343c427db11c8411a
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: cce0bb9d1a9317396d197d182a424a45c8448f1b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988521"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203606"
 ---
 ## <a name="register-your-application"></a>アプリケーションの登録
 
 アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加する場合、2 つのオプションがあります。
 
-### <a name="option-1-express-mode"></a>オプション 1: 簡易モード
+### <a name="option-1-express-mode"></a>オプション 1:簡易モード
 
 次の手順を実行すると、アプリケーションをすばやく登録できます。
 
@@ -34,7 +34,7 @@ ms.locfileid: "49988521"
 3. ガイド付きセットアップのオプションがオンになっていることを確認します。
 4. 指示に従って、アプリケーションにリダイレクト URL を追加します。
 
-### <a name="option-2-advanced-mode"></a>オプション 2: 詳細モード
+### <a name="option-2-advanced-mode"></a>オプション 2:詳細設定モード
 
 アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
 

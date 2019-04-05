@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: dd7351d2948526905c91f2eac52e48b25cf063ac
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 85296b4549d7c9499b8d0b815ddf1cd2e85e2b1b
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191430"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259586"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
 
@@ -109,7 +109,7 @@ CSR は単なるテキスト ファイルです。 必ずしも、最終的に�
 
 ### <a name="what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate"></a>"Microsoft Azure Service Management for MachineKey" 証明書の目的は何ですか。
 
-この証明書は、Azure Web ロールでマシン キーを暗号化するために使用されます。 詳しくは、こちらのアドバイザリ (https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731) をご覧ください。
+この証明書は、Azure Web ロールでマシン キーを暗号化するために使用されます。 詳しくは、[こちらのアドバイザリ](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731)をご覧ください。
 
 詳細については、次の記事を参照してください。
 - [クラウド サービスのスタートアップ タスクを構成して実行する方法](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
@@ -143,7 +143,7 @@ csdef および cscfg のアップロード先に blob またはローカルを�
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Cloud Services の WAD ログ記録を有効にする方法を教えてください。
 Windows Azure 診断 (WAD) ログ記録は、次のオプションを使用して有効にできます。
 1. [Visual Studio から有効にする](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
-2. [.Net コードを使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
+2. [.NET コードを使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [PowerShell を使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
 クラウド サービスの現在の WAD 設定を取得するには、[Get-AzureServiceDiagnosticsExtensions](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell#get-current-diagnostics-extension-configuration) ps コマンドを使用できます。または、ポータルの [クラウド サービス] --> [拡張機能] ブレードにそれを表示できます。

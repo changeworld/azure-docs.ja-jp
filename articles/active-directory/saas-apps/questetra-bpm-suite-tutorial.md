@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8438bfa567c207e543ed716a2940bce991cc19
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78b069e6534d8394de1f9a9fcdf51b871441c386
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196044"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838036"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>チュートリアル:Azure Active Directory と Questetra BPM Suite の統合
 
@@ -155,7 +155,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
     
     c. **[Sign-in page URL]\(サインイン ページ URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
     
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Sign-out page URL]\(サインアウト ページ URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    d. **[Sign-out page URL]\(サインアウト ページ URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
     
     e. **[NameID format]\(NameID の形式\)** ボックスに、「`urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`」と入力します。
 
@@ -196,7 +196,7 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-questetra-bpm-suite-test-user"></a>Questetra BPM Suite テスト ユーザーの作成
 
@@ -210,13 +210,13 @@ Questetra BPM Suite で Azure AD のシングル サインオンを構成し、�
    
     ![テスト ユーザーの作成][300] 
    
-    a. **[Name]\(名前\)** ボックスに、ユーザーの**名前**を「**britta.simon@contoso.com**」と入力します。
+    a. **[Name]\(名前\)** ボックスに、ユーザーの**名前**を「**britta.simon\@contoso.com**」と入力します。
    
-    b. **[Email]\(電子メール\)** ボックスに、ユーザーの**電子メール**を「**britta.simon@contoso.com**」と入力します。
+    b. **[Email]\(メール\)** ボックスに、ユーザーの**メール**を「**britta.simon\@contoso.com**」と入力します。
    
     c. **[Password]\(パスワード\)** ボックスに、そのユーザーの**パスワード**を入力します。
     
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[新しいユーザーの追加]** をクリックします。
+    d. **[新しいユーザーの追加]** をクリックします。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

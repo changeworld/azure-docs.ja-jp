@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 77eaa6a642e02206eac319b76666bed8ae1fd165
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 72e93b99783441bda97c52ff295a89b0fcf4e629
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822427"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995890"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
 > [!NOTE]
@@ -310,11 +310,11 @@ ms.locfileid: "55822427"
      {
          "name": "ADFTutorialPipelineOnPrem",
          "properties": {
-         "description": "This pipeline has one Copy activity that copies data from an on-prem SQL to Azure blob",
+         "description": "This pipeline has one Copy activity that copies data from an on premises SQL to Azure blob",
          "activities": [
            {
              "name": "CopyFromSQLtoBlob",
-             "description": "Copy data from on-prem SQL server to blob",
+             "description": "Copy data from on premises SQL server to blob",
              "type": "Copy",
              "inputs": [
                {
@@ -362,7 +362,7 @@ ms.locfileid: "55822427"
    * **typeProperties** セクションでは、**ソースの種類**として **SqlSource** が指定され、**シンクの種類**として **BlobSink** が指定されています。
    * **SqlSource** の **sqlReaderQuery** プロパティに、SQL クエリ `select * from emp` を指定します。
 
-   start と end の日時は、いずれも [ISO 形式](http://en.wikipedia.org/wiki/ISO_8601)である必要があります。 例: 2014-10-14T16:32:41Z。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。
+   start と end の日時は、いずれも [ISO 形式](https://en.wikipedia.org/wiki/ISO_8601)である必要があります。 例: 2014-10-14T16:32:41Z。 **end** の時刻は省略可能ですが、このチュートリアルでは使用します。
 
    **end** プロパティの値を指定しない場合、"**start + 48 時間**" として計算されます。 無期限でパイプラインを実行するには、**end** プロパティの値として **9/9/9999** を指定します。
 
@@ -407,7 +407,7 @@ ms.locfileid: "55822427"
 6. **[X]** をクリックしてすべてのページを閉じ、
 7. **ADFTutorialOnPremDF** のホーム ページに戻ります。
 8. (省略可能) **[パイプライン]** をクリックし、**[ADFTutorialOnPremDF]** をクリックして、入力テーブル (**Consumed**) または出力データセット (**Produced**) をドリル スルーします。
-9. [Microsoft ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用して、1 時間ごとに BLOB/ファイルが作成されることを確認します。
+9. [Microsoft ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して、1 時間ごとに BLOB/ファイルが作成されることを確認します。
 
    ![Azure ストレージ エクスプローラー](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 

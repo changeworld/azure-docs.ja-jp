@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault - CLI で論理的な削除を使用する方法
 description: CLI コード スニペットを使用した論理的な削除のユース ケース
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: bryanla
-ms.openlocfilehash: f0c1db2274eea6281bd4a350909b79d048ad21c4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 4311d71775ef877e0090abca9c6caabab503ef08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116725"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097612"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 
@@ -167,19 +167,19 @@ az keyvault set-policy --name ContosoVault --key-permissions get create delete l
 キーと同様、シークレットも独自のコマンドで管理されます。
 
 - SQLPassword という名前のシークレットを削除します。 
-```azurecli
-az keyvault secret delete --vault-name ContosoVault -name SQLPassword
-```
+  ```azurecli
+  az keyvault secret delete --vault-name ContosoVault -name SQLPassword
+  ```
 
 - キー コンテナー内の削除されたシークレットをすべて一覧表示します。 
-```azurecli
-az keyvault secret list-deleted --vault-name ContosoVault
-```
+  ```azurecli
+  az keyvault secret list-deleted --vault-name ContosoVault
+  ```
 
 - 削除された状態のシークレットを復旧します。 
-```azurecli
-az keyvault secret recover --name SQLPassword --vault-name ContosoVault
-```
+  ```azurecli
+  az keyvault secret recover --name SQLPassword --vault-name ContosoVault
+  ```
 
 - 削除された状態のシークレットを消去します。 
 
@@ -195,7 +195,7 @@ az keyvault secret recover --name SQLPassword --vault-name ContosoVault
 > [!IMPORTANT]
 > キー コンテナーまたはそこに含まれているいずれかのオブジェクトを消去するとキー コンテナーは永続的に削除され、復旧できなくなります。
 
-消去機能は、以前論理的に削除されたキー コンテナー オブジェクトまたはキー・コンテナー全体を完全に消去するために使用されます。 前のセクションで示したように、論理的な削除機能が有効になったキー・コンテナーに格納されているオブジェクトは、次の複数の状態を経る可能性があります。
+消去機能は、以前論理的に削除されたキー コンテナー オブジェクトまたはキー コンテナー全体を完全に削除するために使用されます。 前のセクションで示したように、論理的な削除機能が有効になったキー・コンテナーに格納されているオブジェクトは、次の複数の状態を経る可能性があります。
 
 - **アクティブ**: 削除前。
 - **論理的に削除済み**: 削除後。一覧表示およびアクティブ状態への復旧が可能。

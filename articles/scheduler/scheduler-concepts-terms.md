@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 5ed15a58e5b709b003e9f45d04c3654f814aefc7
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 15770246f52e87b8fba4a9ec01e1583d194d002b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334229"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887053"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler の概念、用語集、エンティティ
 
@@ -69,15 +69,15 @@ Azure Scheduler では、複数のジョブの種類がサポートされてい�
 高レベルでは、Scheduler ジョブには次の基本的な部分があります。
 
 * ジョブ タイマーが起動するときに実行するアクション
-* 省略可能: ジョブを実行する時間
-* 省略可能: ジョブを繰り返し実行するタイミングと頻度
-* 省略可能: プライマリ アクションが失敗した場合に実行するエラー アクション
+* 省略可能:ジョブを実行する時間
+* 省略可能:ジョブを繰り返し実行するタイミングと頻度
+* 省略可能:プライマリ アクションが失敗した場合に実行するエラー アクション
 
 ジョブには、ジョブのスケジュールされた次回の実行時刻など、システム指定のデータも含まれています。 ジョブのコードの定義は、JavaScript Object Notation (JSON) 形式のオブジェクトであり、次の要素が含まれます。
 
 | 要素 | 必須 | 説明 | 
 |---------|----------|-------------| 
-| [**startTime**](#start-time) | いいえ  | [ISO 8601 形式](http://en.wikipedia.org/wiki/ISO_8601)のタイム ゾーン オフセットを含むジョブの開始時刻 | 
+| [**startTime**](#start-time) | いいえ  | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)のタイム ゾーン オフセットを含むジョブの開始時刻 | 
 | [**action**](#action) | はい | **errorAction** オブジェクトを含む場合がある、プライマリ アクションの詳細 | 
 | [**errorAction**](#error-action) | いいえ  | プライマリ アクションが失敗した場合に実行するセカンダリ アクションの詳細 |
 | [**recurrence**](#recurrence) | いいえ  | 定期的なジョブの頻度や間隔などの詳細 | 
@@ -137,7 +137,7 @@ Azure Scheduler では、複数のジョブの種類がサポートされてい�
 
 ## <a name="starttime"></a>startTime
 
-**StartTime** オブジェクトでは、開始時刻とタイム ゾーン オフセットを [ISO 8601 形式](http://en.wikipedia.org/wiki/ISO_8601)で指定できます。
+**StartTime** オブジェクトでは、開始時刻とタイム ゾーン オフセットを [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定できます。
 
 <a name="action"></a>
 

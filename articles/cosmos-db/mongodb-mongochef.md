@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: f2ba1a6fef944911c0706ca4e71be6a55bc4b16a
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 9b0a6393d2372c831fdc964dee18acbccfd39a77
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961841"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449378"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>Studio 3T を使用して Cosmos アカウントに接続する
 
@@ -28,22 +28,22 @@ Studio 3T 接続マネージャーに Cosmos アカウントを追加するに�
 
 1. 「[Azure Cosmos DB への MongoDB アプリケーションの接続](connect-mongodb-account.md)」の記事にある手順を使用して、Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウントの接続情報を取得します。
 
-    ![接続文字列ページのスクリーンショット](./media/mongodb-mongochef/ConnectionStringBlade.png)
+    ![接続文字列のページのスクリーンショット](./media/mongodb-mongochef/ConnectionStringBlade.png)
 2. **[Connect (接続)]** をクリックして接続マネージャーを開き、**[New Connection (新しい接続)]** をクリックします。
 
     ![Studio 3T 接続マネージャーのスクリーンショット](./media/mongodb-mongochef/ConnectionManager.png)
 3. **[New Connection]\(新しい接続)** ウィンドウの **[Server]\(サーバー)** タブで、Azure Cosmos DB アカウントのホスト (FQDN) とポートを入力します。
 
-    ![Studio 3T 接続マネージャーの [Server] (サーバー) タブのスクリーンショット](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
+    ![Studio 3T 接続マネージャーの [Server]\(サーバー\) タブのスクリーンショット](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
 4. **[New Connection]\(新しい接続)** ウィンドウの **[認証]** タブで、**[Basic (MONGODB-CR or SCARM-SHA-1)] (基本 (MONGODB-CR または SCARM-SHA-1))** の認証モードを選択し、ユーザー名とパスワードを入力します。  既定の認証データベース (admin) をそのまま使用するか、または独自の値を指定します。
 
-    ![Studio 3T 接続マネージャーの [認証] タブのスクリーンショット](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
+    ![Studio 3T 接続マネージャーの [Authentication]\(認証\) タブのスクリーンショット](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
 5. **[New Connection (新しい接続)]** ウィンドウの **[SSL]** タブで、**[Use SSL protocol to connect (SSL プロトコルを使用して接続する)]** チェック ボックスをオンにし、**[Accept server self-signed SSL certificates (サーバー自己署名 SSL 証明書を受け付ける)]** オプション ボタンをオンにします。
 
     ![Studio 3T 接続マネージャーの [SSL] タブのスクリーンショット](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
 6. **[Test Connection (接続のテスト)]** をクリックして接続情報を検証し、**[OK]** をクリックして [New Connection (新しい接続)] ウィンドウに戻り、**[Save (保存)]** をクリックします。
 
-    ![Studio 3T の [テスト接続] ウィンドウのスクリーンショット](./media/mongodb-mongochef/TestConnectionResults.png)
+    ![Studio 3T のテスト接続ウィンドウのスクリーンショット](./media/mongodb-mongochef/TestConnectionResults.png)
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Studio 3T を使用してデータベース、コレクション、およびドキュメントを作成する
 Studio 3T を使用してデータベース、コレクション、およびドキュメントを作成するには、次の手順を実行します。
@@ -53,13 +53,13 @@ Studio 3T を使用してデータベース、コレクション、およびド�
     ![Studio 3T 接続マネージャーのスクリーンショット](./media/mongodb-mongochef/ConnectToAccount.png)
 2. ホストを右クリックし、**[データベースの追加]** を選択します。  データベースの名前を指定し、 **[OK]** をクリックします。
 
-    ![Studio 3T の [データベースの追加] オプションのスクリーンショット](./media/mongodb-mongochef/AddDatabase1.png)
+    ![Studio 3T の [Add Database]\(データベースの追加\) オプションのスクリーンショット](./media/mongodb-mongochef/AddDatabase1.png)
 3. データベースを右クリックし、**[コレクションの追加]** を選択します。  コレクションの名前を指定し、 **[Create (作成)]** をクリックします。
 
-    ![Studio 3T の [コレクションの追加] オプションのスクリーンショット](./media/mongodb-mongochef/AddCollection.png)
+    ![Studio 3T の [Add Collection]\(コレクションの追加\) オプションのスクリーンショット](./media/mongodb-mongochef/AddCollection.png)
 4. **[Collection (コレクション)]** メニュー項目をクリックし、**[Add Document (ドキュメントの追加)]** をクリックします。
 
-    ![Studio 3T の [ドキュメントの追加] メニュー項目のスクリーンショット](./media/mongodb-mongochef/AddDocument1.png)
+    ![Studio 3T の [Add Document]\(ドキュメントの追加\) オプションのスクリーンショット](./media/mongodb-mongochef/AddDocument1.png)
 5. [Add Document (ドキュメントの追加)] ダイアログに次の情報を貼り付けて **[Add Document (ドキュメントの追加)]** をクリックします。
 
         {
@@ -107,7 +107,7 @@ Studio 3T を使用してデータベース、コレクション、およびド�
         }
 7. サンプル クエリを実行します。 たとえば姓が "Andersen" である世帯を検索し、parents フィールドと state フィールドを取得します。
 
-    ![Screen shot of Mongo Chef query results](./media/mongodb-mongochef/QueryDocument1.png)
+    ![Mongo Chef のクエリ結果のスクリーンショット](./media/mongodb-mongochef/QueryDocument1.png)
 
 ## <a name="next-steps"></a>次の手順
 

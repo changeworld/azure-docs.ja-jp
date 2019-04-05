@@ -5,17 +5,16 @@ description: Azure Machine Learning Studio でのアプリケーション ライ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
-ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.date: 10/27/2016
-ms.openlocfilehash: 26e469076e16f57300cf3e385620a723ddf51a4c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 102d06f6d4a51f7edc1fc269180f8fb3e5b0626c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510726"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121470"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのアプリケーション ライフサイクル管理
 Azure Machine Learning Studio は、Azure クラウド プラットフォームで運用できる機械学習の実験を開発するツールです。 Visual Studio IDE に似ており、1 つのプラットフォームにマージされているスケーラブルなクラウド サービスです。 さまざまな資産のバージョン管理から、自動化された実行とデプロイまで、標準的なアプリケーション ライフサイクル管理 (ALM) プラクティスを Azure Machine Learning Studio に組み込むことができます。 この記事では、一部のオプションとアプローチについて説明します。
@@ -42,7 +41,7 @@ Azure Machine Learning Studio の学習実験の実行モデルでは、実験�
 JSON ファイルは実験グラフのテキスト表現ですが、データセットやトレーニング済みのモデルなど、ワークスペース内の資産への参照を含む場合があります。 その資産のシリアル化されたバージョンは含みません。 このため、JSON ドキュメントをワークスペースにもう一度インポートしようとする場合、これらの参照先資産は実験で参照されているのと同じ資産 ID で既に存在する必要があります。 そうでない場合は、インポートされた実験にアクセスできません。
 
 ## <a name="versioning-trained-model"></a>トレーニング済みのモデルのバージョン管理
-Azure Machine Learning 内のトレーニング済みのモデルは iLearner ファイル (`.iLearner`) と呼ばれる形式にシリアル化され、ワークスペースに関連付けられている Azure Blob Storage アカウント内に格納されます。 iLearner ファイルのコピーを取得する 1 つの方法として、再トレーニング API の使用があります。 この[記事](retrain-models-programmatically.md)では、再トレーニング API の動作について説明します。 手順の概要は次のとおりです。
+Azure Machine Learning Studio 内のトレーニング済みのモデルは iLearner ファイル (`.iLearner`) と呼ばれる形式にシリアル化され、ワークスペースに関連付けられている Azure Blob Storage アカウント内に格納されます。 iLearner ファイルのコピーを取得する 1 つの方法として、再トレーニング API の使用があります。 この[記事](/azure/machine-learning/studio/retrain-machine-learning-model)では、再トレーニング API の動作について説明します。 手順の概要は次のとおりです。
 
 1. トレーニング実験を設定します。
 2. モデルのトレーニング モジュール、またはモデル ハイパーパラメーターの調整や R モデルの作成など、トレーニング済みのモデルを生成するモジュールに、Web サービス出力ポートを追加します。
@@ -57,7 +56,7 @@ iLearner ファイルを取得する別の方法として、PowerShell コマン
 その後、保存されている iLearner ファイルをデプロイされた Web サービスからのスコア付けのために使用できます。
 
 ## <a name="versioning-web-service"></a>バージョン管理 Web サービス
-Azure Machine Learning の実験から、2 種類の Web サービスをデプロイできます。 従来の Web サービスは、実験およびワークスペースと緊密に結合されています。 新しい Web サービスは Azure Resource Manager のフレームワークを活用しており、元の実験とワークスペースのどちらとも結合されなくなりました。
+Azure Machine Learning Studio の実験から、2 種類の Web サービスをデプロイできます。 従来の Web サービスは、実験およびワークスペースと緊密に結合されています。 新しい Web サービスは Azure Resource Manager のフレームワークを活用しており、元の実験とワークスペースのどちらとも結合されなくなりました。
 
 ### <a name="classic-web-service"></a>従来の Web サービス
 従来の Web サービスをバージョン管理するには、Web サービス エンドポイントのコンストラクトを利用できます。 典型的なフローを次に示します。
@@ -79,7 +78,7 @@ Azure Machine Learning の実験から、2 種類の Web サービスをデプ�
 WSD ファイルをエクスポートしてそれをバージョン管理した後で、別の Azure リージョンで別の Web サービス プランの新しい Web サービスとして WSD をデプロイすることもできます。 適切なストレージ アカウント構成だけではなく、新しい Web サービス プラン ID を指定してください。 異なる iLearner ファイルにパッチを適用するには、WSD ファイルを変更し、トレーニング済みのモデルの場所の参照を更新して、それを新しい Web サービスとしてデプロイできます。
 
 ## <a name="automate-experiment-execution-and-deployment"></a>実験の実行とデプロイの自動化
-ALM の重要な側面は、アプリケーションの実行とデプロイのプロセスを自動化できるようにすることです。 Azure Machine Learning では、[PowerShell モジュール](https://aka.ms/amlps)を使用してこれを実現できます。 ここでは、[Azure Machine Learning Studio PowerShell モジュール](https://aka.ms/amlps)を使用することによる、標準的な ALM 自動化実行/デプロイ プロセスに関連するエンド ツー エンドの手順の例を示します。 各手順は、その手順の実行に使用できる 1 つまたは複数の PowerShell コマンドレットにリンクされています。
+ALM の重要な側面は、アプリケーションの実行とデプロイのプロセスを自動化できるようにすることです。 Azure Machine Learning Studio では、[PowerShell モジュール](https://aka.ms/amlps)を使用してこれを実現できます。 ここでは、[Azure Machine Learning Studio PowerShell モジュール](https://aka.ms/amlps)を使用することによる、標準的な ALM 自動化実行/デプロイ プロセスに関連するエンド ツー エンドの手順の例を示します。 各手順は、その手順の実行に使用できる 1 つまたは複数の PowerShell コマンドレットにリンクされています。
 
 1. [データセットをアップロード](https://github.com/hning86/azuremlps#upload-amldataset)します。
 2. [ワークスペース](https://github.com/hning86/azuremlps#copy-amlexperiment)または[ギャラリー](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery)からワークスペースにトレーニング実験をコピーするか、[エクスポート](https://github.com/hning86/azuremlps#export-amlexperimentgraph)された実験をローカル ディスクから[インポート](https://github.com/hning86/azuremlps#import-amlexperimentgraph)します。

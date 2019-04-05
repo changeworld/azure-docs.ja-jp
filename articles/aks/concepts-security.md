@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: df95329128c93f326b6f2c75fb7faef1a46029cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 66fc5c92410118f4e0042738d2107b272d68f9bf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456505"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240339"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションとクラスターに対するセキュリティの概念
 
@@ -28,13 +28,13 @@ Azure Kubernetes Service (AKS) でアプリケーション ワークロードを
 
 ## <a name="master-security"></a>マスターのセキュリティ
 
-AKS では、Kubernetes マスター コンポーネントは、Microsoft で提供されているマネージド サービスの一部です。 各 AKS クラスターには、API サーバーやスケジューラなどを提供する独自シングル テナントの専用 Kubernetes マスターがあります。このマスターの管理と保守は Microsoft によって行われます
+AKS では、Kubernetes マスター コンポーネントは、Microsoft で提供されているマネージド サービスの一部です。 各 AKS クラスターには、API サーバーやスケジューラなどを提供する独自シングル テナントの専用 Kubernetes マスターがあります。このマスターの管理と保守は、Microsoft によって行われます。
 
 既定では、Kubernetes API サーバーは、パブリック IP アドレスを完全修飾ドメイン名 (FQDN) と一緒に使用します。 API サーバーへのアクセスは、Kubernetes のロールベースのアクセス制御と Azure Active Directory を使って制御できます。 詳細については、[Azure AD と AKS の統合][aks-aad]に関するページを参照してください。
 
 ## <a name="node-security"></a>ノードのセキュリティ
 
-AKS ノードは、ユーザーが管理および保守する Azure 仮想マシンです。 ノードは、Docker コンテナー ランタイムを使用して最適化された Ubuntu Linux ディストリビューションを実行します。 AKS クラスターを作成またはスケールアップすると、ノードは自動的に、最新の OS セキュリティ更新プログラムと構成でデプロイされます。
+AKS ノードは、ユーザーが管理および保守する Azure 仮想マシンです。 ノードは、Moby コンテナー ランタイムを使用して、最適化された Ubuntu Linux ディストリビューションを実行します。 AKS クラスターを作成またはスケールアップすると、ノードは自動的に、最新の OS セキュリティ更新プログラムと構成でデプロイされます。
 
 Azure プラットフォームでは、OS セキュリティ更新プログラムが夜間スケジュールでノードに自動的に適用されます。 OS セキュリティ更新プログラムがホストの再起動を必要とする場合、再起動は自動的には実行されません。 ノードは手動で再起動できますが、一般的な方法は [Kured][kured] (Kubernetes 用のオープン ソースの再起動デーモン) を使用する方法です。 Kured は [DaemonSet][aks-daemonsets] として実行され、再起動が必要であることを示すファイルの存在を各ノードで監視します。 再起動は、クラスター アップグレードと同じ[切断およびドレイン プロセス](#cordon-and-drain)を使用するクラスターで管理されます。
 
@@ -65,7 +65,7 @@ Azure プラットフォームでは、OS セキュリティ更新プログラ�
 
 ### <a name="azure-network-security-groups"></a>Azure ネットワーク セキュリティ グループ
 
-仮想ネットワークでのトラフィックのフローをフィルター処理するため、Azure はネットワーク セキュリティ グループ規則を使用します。 これらの規則は、リソースへのアクセスを許可または拒否する発信元と宛先の IP 範囲、ポート、およびプロトコルを定義します。 Kubernetes API サーバーへの TLS トラフィックを許可する、ノードへの SSH アクセスのための、既定の規則が作成されます。 ロード バランサー、ポート マッピング、またはイングレス ルートでサービスを作成すると、AKS が自動的に、トラフィックが適切にフローするようにネットワーク セキュリティ グループを変更します。
+仮想ネットワークでのトラフィックのフローをフィルター処理するため、Azure はネットワーク セキュリティ グループ規則を使用します。 これらの規則は、リソースへのアクセスを許可または拒否する発信元と宛先の IP 範囲、ポート、およびプロトコルを定義します。 Kubernetes API サーバーへの TLS トラフィックを許可する、既定の規則が作成されます。 ロード バランサー、ポート マッピング、またはイングレス ルートでサービスを作成すると、AKS が自動的に、トラフィックが適切にフローするようにネットワーク セキュリティ グループを変更します。
 
 ## <a name="kubernetes-secrets"></a>Kubernetes シークレット
 
@@ -76,6 +76,8 @@ Kubernetes *シークレット*は、アクセス資格情報やキーなどの�
 ## <a name="next-steps"></a>次の手順
 
 AKS クラスターのセキュリティでの保護を開始するには「[AKS クラスターのアップグレード][aks-upgrade-cluster]」を参照してください。
+
+関連付けられているベスト プラクティスについては、[AKS でのクラスターのセキュリティとアップグレードに関するベスト プラクティス][operator-best-practices-cluster-security]のページを参照してください。
 
 Kubernetes と AKS の中心概念の追加情報については、次の記事を参照してください。
 
@@ -99,3 +101,4 @@ Kubernetes と AKS の中心概念の追加情報については、次の記事�
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
+[operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md

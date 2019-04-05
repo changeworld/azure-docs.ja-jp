@@ -11,18 +11,18 @@ author: nishankgu
 ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b735df4e245d6e3ceebd847e91ed7dfdb255c267
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: aa425b6dfeb076448d14fc35cbea964516d603b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245992"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904645"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Azure リソースのクォータの管理と要求
 
 他の Azure サービスと同様に、Azure Machine Learning サービスに関連付けられている特定のリソースにも制限があります。 これらの制限は、作成できるワークスペースの数の上限から、モデルのトレーニングや推論に使用される実際の基盤となるコンピューティングに対する制限まで、多岐にわたります。 この記事では、サブスクリプションのさまざまな Azure リソースに対して事前に構成された制限に関する詳細について説明します。また、リソースの種類ごとにクォータの拡張を要求する便利なリンクも含まれています。 これらの制限は、不正による予算超過を防ぎ、Azure の容量の制約を尊重するために設けられています。
 
-実稼働環境のワークロードに対して Azure Machine Learning service リソースの設計やスケールアップを行う際は、これらのクォータに留意してください。 たとえば、クラスターのノード数がターゲットとして指定した数に満たない場合は、サブスクリプションの Azure Machine Learning コンピューティング コアの制限に達している可能性があります。 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、オンライン カスタマー サポートに申請 (無料) してください。 Azure の容量の制約があるため、次の表に示されている上限の値を超える制限の引き上げはできません。 上限列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
+実稼働環境のワークロードに対して Azure Machine Learning service リソースの設計やスケールアップを行う際は、これらのクォータに留意してください。 たとえば、クラスターのノード数がターゲットとして指定した数に満たない場合は、ご使用のサブスクリプションの Azure Machine Learning コンピューティング コアの制限に達している可能性があります。 制限を引き上げるまたは既定の制限を超えるクォータが必要な場合は、オンライン カスタマー サポートに申請 (無料) してください。 Azure の容量の制約があるため、次の表に示されている上限の値を超える制限の引き上げはできません。 上限列が存在しない場合、記載されているリソースに調整可能な制限がないことを意味します。
 
 ## <a name="special-considerations"></a>特別な考慮事項
 

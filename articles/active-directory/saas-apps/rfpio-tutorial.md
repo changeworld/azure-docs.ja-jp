@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3af5c3d5d92dea804221b2285d4fa5b9cedae665
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c6b8109c8d3834f932ba492eddb8d6332acc1707
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168092"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443620"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>チュートリアル:Azure Active Directory と RFPIO の統合
 
@@ -166,7 +166,7 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
 
     c. **[検証]** をクリックした後、**[SAML(Enabled)(SAML (有効))]** をフリップしてオンにします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[送信]** をクリックします。
+    d. **[送信]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 埋め込みドキュメント機能の詳細については、[Azure AD の埋め込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -201,7 +201,7 @@ RFPIO で Azure AD のシングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-rfpio-test-user"></a>RFPIO のテスト ユーザーの作成
 
@@ -234,7 +234,7 @@ RFPIO の場合、プロビジョニングは手動で行います。
 
     a. **[Enter one email per line(1 行につき 1 つの電子メール アドレスを入力する)]** フィールドに**電子メール アドレス**を入力します。
 
-    b. 要件に応じて **[ロール]** を選択します。
+    b. 要件に応じて **[ロール]** を選択してください。
 
     c. **[メンバーの追加]** をクリックします。
         

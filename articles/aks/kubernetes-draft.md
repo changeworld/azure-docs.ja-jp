@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: iainfou
-ms.openlocfilehash: d94f70771cf3ee364dbb3e4c4256cd2248ce3828
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 5169b8856155df5e62b1e85d291ce6c1b54c8a87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164774"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011932"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Draft の使用
 
@@ -144,7 +144,7 @@ Connect to java:4567 on localhost:49804
 [java]: >> Listening on 0.0.0.0:4567
 ```
 
-アプリケーションにアクセスするには、`draft connect` 出力に示されたアドレスとポートで Web ブラウザーを開きます。(*http://localhost:49804* など)。 
+アプリケーションにアクセスするには、`draft connect` 出力に示されたアドレスとポートで Web ブラウザーを開きます (`http://localhost:49804` など)。 
 
 ![Draft で実行されたサンプル Java アプリ](media/kubernetes-draft/sample-app.png)
 

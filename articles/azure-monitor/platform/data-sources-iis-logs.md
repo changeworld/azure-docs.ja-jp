@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: ca951c813554ae253cbd572e03c53b8687499af9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 94bdc0670fb63b1b4c306a5af3357f437784338c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000167"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007934"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Azure Monitor での IIS ログを収集する
 インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集して[ログ データ](data-collection.md)として格納できるログ ファイル内にユーザー アクティビティを格納します。
@@ -72,7 +72,7 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 | W3CIISLog |IIS ログのすべてのレコード。 |
 | W3CIISLog &#124; where scStatus==500 |戻り状態が 500 であるすべての IIS ログ レコード。 |
 | W3CIISLog &#124; summarize count() by cIP |クライアントの IP アドレス別の IIS ログ エントリの数。 |
-| W3CIISLog &#124; where csHost=="www.contoso.com" &#124; summarize count() by csUriStem |ホスト www.contoso.com の URL 別の IIS ログ エントリの数。 |
+| W3CIISLog &#124; where csHost=="www\.contoso.com" &#124; summarize count() by csUriStem |ホスト www\.contoso.com の URL 別の IIS ログ エントリの数。 |
 | W3CIISLog &#124; summarize sum(csBytes) by Computer &#124; take 500000 |各 IIS コンピューターによって受信された合計バイト数。 |
 
 ## <a name="next-steps"></a>次の手順

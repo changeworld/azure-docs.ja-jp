@@ -6,18 +6,21 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 1/4/2019
+ms.date: 03/19/2019
 ms.author: sogup
-ms.openlocfilehash: 0ab626bffa3520af0ea23314cbaed118d66e280f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0bc1ab0586d1a591464711fb0652f81fb082e6c3
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007510"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199246"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>Azure サブスクリプションとリソース グループをまたいで Recovery Services コンテナーを移動する (限定パブリック プレビュー)
 
 この記事では、Azure Backup 用に構成された Recovery Services コンテナーを、Azure のサブスクリプションをまたいで移動するか、同じサブスクリプション内の別のリソース グループに移動する方法について説明します。 Azure portal または PowerShell を使用して、Recovery Services コンテナーを移動することができます。
+
+> [!NOTE]
+> Recovery Services コンテナーとその関連リソースを別のリソース グループに移動するには、最初に[ソース サブスクリプションを登録する](#register-the-source-subscription-to-move-your-recovery-services-vault)必要があります。
 
 ## <a name="prerequisites-for-moving-a-vault"></a>コンテナーを移動するための前提条件
 
@@ -38,9 +41,7 @@ ms.locfileid: "56007510"
 
 > [!NOTE]
 >
-**Azure Site Recovery** で使用するように構成された Recovery Services コンテナーは、まだ移動できません。 **Azure Site Recovery** を使用して、いずれかの VM (Azure IaaS、HYPER-V、VMware) または物理マシンをディザスター リカバリー用に構成している場合、移動操作はブロックされます。 Site Recovery サービスに対するリソースの移動機能は、まだ使用できません。
->
->
+> **Azure Site Recovery** で使用するように構成された Recovery Services コンテナーは、まだ移動できません。 **Azure Site Recovery** を使用して、いずれかの VM (Azure IaaS、HYPER-V、VMware) または物理マシンをディザスター リカバリー用に構成している場合、移動操作はブロックされます。 Site Recovery サービスに対するリソースの移動機能は、まだ使用できません。
 
 ## <a name="register-the-source-subscription-to-move-your-recovery-services-vault"></a>Recovery Services コンテナーの移動元となるサブスクリプションの登録
 
@@ -48,26 +49,26 @@ Recovery Services コンテナーの**移動**元となるサブスクリプシ�
 
 1. Azure アカウントへのサインイン
 
-  ```
-  Connect-AzureRmAccount
-  ```
+   ```
+   Connect-AzureRmAccount
+   ```
 
-2.  登録するサブスクリプションを選択します
+2. 登録するサブスクリプションを選択します
 
-    ```
-    Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3.  このサブスクリプションを登録します
+   ```
+   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+   ```
+3. このサブスクリプションを登録します
 
-  ```
-  Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
-  ```
+   ```
+   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   ```
 
 4. コマンドを実行します
 
-  ```
-  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-  ```
+   ```
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   ```
 
 Azure portal または PowerShell を使用して移動操作を開始する前に、サブスクリプションがホワイト リストに登録されるまで 30 分間待機します。
 
@@ -78,27 +79,27 @@ Recovery Services コンテナーとその関連リソースを別のリソー�
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **Recovery Services コンテナー**の一覧を開き、移動するコンテナーの名前を選択します。 コンテナーのダッシュボードが開き、次の図のように表示されます。
 
-  ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
+   ![Recover Service コンテナーを開く](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-  コンテナーの **[Essentials]** 情報が表示されない場合、ドロップダウン アイコンをクリックします。 コンテナーの Essentials 情報が表示されるはずです。
+   コンテナーの **[Essentials]** 情報が表示されない場合、ドロップダウン アイコンをクリックします。 コンテナーの Essentials 情報が表示されるはずです。
 
-  ![[Essentials] 情報タブ](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
+   ![[Essentials] 情報タブ](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
 3. コンテナーの概要メニューで、**[リソース グループ]** の横にある **[変更]** をクリックして、**[リソースの移動]** ブレードを開きます。
 
-  ![リソース グループを変更する](./media/backup-azure-move-recovery-services/change-resource-group.png)
+   ![リソース グループを変更する](./media/backup-azure-move-recovery-services/change-resource-group.png)
 
 4. **[リソースの移動]** ブレードで、一部のコンテナーについては次の図のようにチェック ボックスをオンにして、オプションの関連リソースを移動することをお勧めします。
 
-  ![サブスクリプションを移動する](./media/backup-azure-move-recovery-services/move-resource.png)
+   ![サブスクリプションを移動する](./media/backup-azure-move-recovery-services/move-resource.png)
 
 5. ターゲット リソース グループを追加するには、**[リソース グループ]** ドロップダウン リストで、既存のリソース グループを選択するか、**[新しいグループを作成する]** オプションをクリックします。
 
-  ![リソースを作成する](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
+   ![リソースを作成する](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
 6. リソース グループを追加した後、**[移動されたリソースに関連付けられているツールとスクリプトは、新しいリソース ID を使用するように更新するまで動作しないことを理解しました。]** というオプションを確認し、**[OK]** をクリックしてコンテナーの移動を完了します。
 
-  ![確認メッセージ](./media/backup-azure-move-recovery-services/confirmation-message.png)
+   ![確認メッセージ](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
 
 ## <a name="use-azure-portal-to-move-a-recovery-services-vault-to-a-different-subscription"></a>Azure portal を使用して Recovery Services コンテナーを別のサブスクリプションに移動する
@@ -116,16 +117,16 @@ Recovery Services コンテナーとその関連リソースを別のサブス�
 
 3. コンテナーの概要メニューで、**[サブスクリプション]** の横にある **[変更]** をクリックして、**[リソースの移動]** ブレードを開きます。
 
-  ![サブスクリプションを変更する](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
+   ![サブスクリプションを変更する](./media/backup-azure-move-recovery-services/change-resource-subscription.png)
 
 4. 移動するリソースを選択します。 ここで、**[すべて選択]** オプションを使用して、表示されているすべてのオプション リソースを選択することをお勧めします。
 
-  ![リソースの移動](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
+   ![リソースの移動](./media/backup-azure-move-recovery-services/move-resource-source-subscription.png)
 
 5. コンテナーを移動する先のターゲットのサブスクリプションを、**[サブスクリプション]** ドロップダウン リストから選択します。
 6. ターゲット リソース グループを追加するには、**[リソース グループ]** ドロップダウン リストで、既存のリソース グループを選択するか、**[新しいグループを作成する]** オプションをクリックします。
 
-  ![サブスクリプションを追加する](./media/backup-azure-move-recovery-services/add-subscription.png)
+   ![サブスクリプションを追加する](./media/backup-azure-move-recovery-services/add-subscription.png)
 
 7. **[移動されたリソースに関連付けられているツールとスクリプトは、新しいリソース ID を使用するように更新するまで動作しないことを理解しました。]** オプションをクリックして確認し、**[OK]** をクリックします。
 

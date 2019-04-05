@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: cdcf7f466e65cffd36bdcc816a9808ecac2ae242
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b34a1716d077aeead572c60d0c6b9bcad60a5b1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005423"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -38,7 +38,7 @@ Unknown_user_type: Unknown User Type
 
 次の手順で原因を突き止めます。  
 
-1. 特殊文字が使用されていないことを確認します。 このような特殊文字とは、Azure に接続するために使用している Automation 資格情報資産名に含まれる **@** 文字などです。  
+1. 特殊文字が使用されていないことを確認します。 このような特殊文字とは、Azure に接続するために使用している Automation 資格情報資産名に含まれる **\@** 文字などです。  
 2. ローカル PowerShell ISE エディターで、Azure Automation に保存されているユーザー名とパスワードを使用できることを確認します。 PowerShell ISE で次のコマンドレットを実行して、ユーザー名とパスワードが正しいことを確認できます。  
 
    ```powershell
@@ -133,7 +133,7 @@ Azure クラシック デプロイ モデルのコマンドレットで証明書
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Runbook の使用時に発生する一般的なエラー
 
-###<a name="child-runbook-object"></a>出力ストリームに単純なデータ型以外のオブジェクトが含まれている場合、子 Runbook でエラーが返される
+### <a name="child-runbook-object"></a>出力ストリームに単純なデータ型以外のオブジェクトが含まれている場合、子 Runbook でエラーが返される
 
 #### <a name="issue"></a>問題
 

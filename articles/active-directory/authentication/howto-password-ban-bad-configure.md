@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30627994a8fe8cfe73e7945dadf2153ea60860b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ef8f66cda7e80ffdafefbbac5de24d45f01401af
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175134"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286932"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>カスタムの禁止パスワード リストを構成する
-
-|     |
-| --- |
-| Azure AD パスワード保護は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
 
 多くの組織では、ユーザーが学校、スポーツ チーム、有名人などの一般的な地域の用語を使用して推測しやすいパスワードを作成していることがわかっています。 Microsoft のカスタム禁止パスワード リストでは、ユーザーと管理者がパスワードを変更またはリセットしようとしたときに、グローバル禁止パスワード リストに加えて、評価およびブロックする文字列を追加することができます。
 
@@ -31,7 +26,7 @@ ms.locfileid: "56175134"
 
 カスタム禁止パスワード リストを構成するには、Azure Active Directory Premium P1 または P2 ライセンスが必要です。 Azure Active Directory のライセンスの詳細については、[Azure Active Directory の価格ページ](https://azure.microsoft.com/pricing/details/active-directory/)を参照してください。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]**、**[認証方法]**、**[Password protection (Preview)]\(パスワード保護 (プレビュー)\)** の順に参照します。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]**、**[認証方法]**、**[パスワード保護]** の順に選択します。
 1. オプション **[Enforce custom list]\(カスタム リストを適用する\)** を **[はい]** に設定します。
 1. **[Custom banned password list]\(カスタム禁止パスワード リスト\)** に文字列 (1 行に 1 文字列) を追加します。
    * カスタム禁止パスワード リストには、最大 1,000 語を含めることができます。

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2B コラボレーションの FAQ | Microsoft Docs
+title: B2B コラボレーションの FAQ - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションに関してよく寄せられる質問への回答を示します。
 services: active-directory
 ms.service: active-directory
@@ -9,14 +9,15 @@ ms.date: 10/29/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a09ce7f677bcf54355e30fc273ee64b23b1d55c8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 860a059f57578965045ff8e7f404c3b072df03a1
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208165"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293823"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -59,12 +60,12 @@ B2B コラボレーション ユーザーは、制限付き管理者または全
 はい。 このポリシーを構成する場合は、誤ってメンバーと管理者のアクセスをブロックしないように注意してください。
 ゲスト ユーザーの [Azure ポータル](https://portal.azure.com)へのアクセスをブロックするには、Windows Azure クラシック デプロイ モデル API で条件付きアクセス ポリシーを使用します。
 1. **すべてのユーザー** グループをメンバーだけが含まれるように変更します。
-  ![グループの変更スクリーンショット](media/faq/modify-all-users-group.png)
+   ![UserType が [ゲスト] と等しくない [すべてのユーザー] グループを示すスクリーンショット](media/faq/modify-all-users-group.png)
 2. ゲスト ユーザーを含む動的グループを作成します。
-  ![グループの作成スクリーンショット](media/faq/group-with-guest-users.png)
+   ![新しい [すべてのゲスト ユーザー] グループを示すスクリーンショット](media/faq/group-with-guest-users.png)
 3. 次のビデオで示されているように、ゲスト ユーザーによるポータルへのアクセスをブロックする条件付きアクセス ポリシーをセットアップします。
   
-  > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
+   > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Azure AD B2B コラボレーションは、Multi-Factor Authentication とコンシューマー電子メール アカウントをサポートしていますか。
 はい。 Azure AD B2B コラボレーションでは、Multi-Factor Authentication とコンシューマー電子メール アカウントのどちらもサポートされています。
@@ -94,7 +95,7 @@ Azure AD には、文字、パスワードの強度、およびアカウント �
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>ソリューションを共有し、アイデアを提供するための B2B コラボレーション コミュニティにはどこからアクセスできますか。
 B2B コラボレーションを向上させるためのフィードバックは絶えず受け付けています。 ユーザー シナリオ、ベスト プラクティス、また Azure AD B2B コラボレーションに関する意見を提供してください。 [マイクロソフト Tech コミュニティ](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)のディスカッションにご参加ください。
- 
+ 
 また、[B2B Collaboration Ideas](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas) でも、ご意見の送信や、今後の機能への投票を行うことができます。
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>ユーザーがすぐに "準備" できるように、自動的に引き換えられる招待を送信できますか。 それとも、ユーザーは常に引き換えの URL をクリックする必要があるのですか。
@@ -107,7 +108,7 @@ B2B コラボレーションを向上させるためのフィードバックは�
 マイクロソフトでは、サポートされる ID に関して、B2B と business-to-consumer (B2C) のコラボレーションの違いをなくしています。 使用される ID は、B2B と B2C のどちらを使うかを選択する十分な理由になりません。 コラボレーション オプションの選択については、「[Azure Active Directory での B2B コラボレーションと B2C の比較](compare-with-b2c.md)」をご覧ください。
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Azure B2B ゲスト ユーザーをサポートするのはどのアプリケーションとサービスですか。
-すべての Azure AD 統合型アプリケーションでは、Azure B2B ゲスト ユーザーをサポートできますが、ゲスト ユーザーを認証するにはテナント化されたエンドポイントを使用する必要があります。 また、ゲスト ユーザーがアプリに対して認証を行うと発行される SAML トークン内の[要求をカスタマイズする](claims-mapping.md)ことも必要になる場合があります。 
+すべての Azure AD 統合型アプリケーションでは、Azure B2B ゲスト ユーザーをサポートできますが、ゲスト ユーザーを認証するにはテナントとして設定されたエンドポイントを使用する必要があります。 また、ゲスト ユーザーがアプリに対して認証を行うと発行される SAML トークン内の[要求をカスタマイズする](claims-mapping.md)ことも必要になる場合があります。 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>パートナーが Multi-Factor Authentication を使用していない場合に、B2B ゲスト ユーザーに Multi-Factor Authentication を強制できますか。
 はい。 詳細は、「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」をご覧ください。

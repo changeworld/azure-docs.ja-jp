@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7550eac600f5b504d80bcc6b5465e24e8d423d2a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f06dd47a519d992e52ac0010c0ae7d81870a4842
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015085"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544529"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -48,7 +48,7 @@ Salesforce では、API 要求数の合計と、API の同時要求数に上限�
 - 同時要求数が上限を超えると調整が発生し、ランダムにエラーが表示されます。
 - 要求数の合計が上限を超えると、Salesforce アカウントが 24 時間ブロックされます。
 
-また、どちらのシナリオでも、"REQUEST_LIMIT_EXCEEDED" エラー メッセージが表示されることがあります。 詳細については、[Salesforce Developer の制限](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「API Request Limits」(API 要求の制限) をご覧ください。
+また、どちらのシナリオでも、"REQUEST_LIMIT_EXCEEDED" エラー メッセージが表示されることがあります。 詳細については、[Salesforce Developer の制限](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)に関する資料の「API Request Limits」(API 要求の制限) をご覧ください。
 
 ## <a name="get-started"></a>作業開始
 
@@ -314,17 +314,17 @@ Salesforce からデータをコピーするとき、次の Salesforce のデー
 | オート ナンバー |String |
 | チェックボックス |Boolean |
 | 通貨 |Decimal |
-| 日付 |Datetime |
-| 日付/時刻 |Datetime |
+| Date |DateTime |
+| 日付/時刻 |DateTime |
 | 電子メール |String |
-| ID |String |
+| Id |String |
 | 参照リレーションシップ |String |
 | 複数選択の候補リスト |String |
-| 数値 |Decimal |
-| 割合 |Decimal |
+| Number |Decimal |
+| Percent |Decimal |
 | 電話 |String |
 | 候補リスト |String |
-| テキスト |String |
+| Text |String |
 | テキスト領域 |String |
 | テキスト領域 (ロング) |String |
 | テキスト領域 (リッチ) |String |

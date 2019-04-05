@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0885a469877d0ea9f52f6191b4cd894ddbbce5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 92cb4f1093d8450bb2c32d99f4ccedd0a5688253
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162023"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58165919"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>チュートリアル:Azure Active Directory と InsideView の統合
 
@@ -39,7 +39,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 InsideView と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- InsideViewでのシングル サインオンが有効なサブスクリプション
+- InsideView でのシングル サインオンが有効なサブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -146,7 +146,7 @@ InsideView で Azure AD のシングル サインオンを構成してテスト�
     
     c. Azure Portal からダウンロードした base-64 でエンコードされた証明書を開き、その内容をクリップボードにコピーして **[STS 証明書]** ボックスに貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Crm User Id Mapping]\(Crm ユーザー ID マッピング\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
+    d. **[Crm User Id Mapping]\(Crm ユーザー ID マッピング\)** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
         
     e. **[Crm Email Mapping]\(Crm 電子メール マッピング)\** ボックスに、「`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`」を入力します。
 
@@ -189,9 +189,9 @@ InsideView で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
-### <a name="creating-a-insideview-test-user"></a>InsideView テスト ユーザーの作成
+### <a name="creating-an-insideview-test-user"></a>InsideView テスト ユーザーの作成
 
 Azure AD ユーザーが InsideView にログインできるようにするには、そのユーザーを InsideView にプロビジョニングする必要があります。 InsideView の場合、プロビジョニングは手動で行います。
 

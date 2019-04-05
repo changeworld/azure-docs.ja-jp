@@ -11,21 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6ec0742c205204ee74ac9f9474af0394f9d1ab31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 03/12/2019
+ms.openlocfilehash: 52a12486add25cd32400af755aa6cd8cac07c6f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472647"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905064"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
 
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
-
 **エラスティック データベース ジョブ** 用 PowerShell API (プレビュー) を使うと、スクリプトの実行対象となるデータベースのグループを定義できます。 この記事では、PowerShell のコマンドレットを使用して **エラスティック データベース ジョブ** を作成して管理する方法について説明します。 [エラスティック ジョブの概要](sql-database-elastic-jobs-overview.md)に関するページを参照してください。 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 無料評価版については、「 [1 か月間の無料評価版](https://azure.microsoft.com/pricing/free-trial/)」をご覧ください。
@@ -34,9 +34,9 @@ ms.locfileid: "55472647"
 * **Elastic Database ジョブ** PowerShell パッケージ:「[Elastic Database ジョブのインストールの概要](sql-database-elastic-jobs-service-installation.md)」を参照してください。
 
 ### <a name="select-your-azure-subscription"></a>Azure サブスクリプションを選択します。
-サブスクリプションを選択するには、サブスクリプション ID (**-SubscriptionId**) とサブスクリプション名 (**-SubscriptionName**) が必要です。 複数のサブスクリプションがある場合は、 **Get-AzureRmSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。 サブスクリプション情報を取得したら、次のコマンドレットを実行して、そのサブスクリプションを既定 (つまりジョブの作成および管理のターゲット) として設定します。
+サブスクリプションを選択するには、サブスクリプション ID (**-SubscriptionId**) とサブスクリプション名 (**-SubscriptionName**) が必要です。 複数のサブスクリプションがある場合は、**Get-AzSubscription** コマンドレットを実行して、結果セットから目的のサブスクリプション情報をコピーできます。 サブスクリプション情報を取得したら、次のコマンドレットを実行して、そのサブスクリプションを既定 (つまりジョブの作成および管理のターゲット) として設定します。
 
-    Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
+    Select-AzSubscription -SubscriptionId {SubscriptionID}
 
 エラスティック データベース ジョブに対して PowerShell スクリプトを開発して実行する場合には、 [PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) をお勧めします。
 

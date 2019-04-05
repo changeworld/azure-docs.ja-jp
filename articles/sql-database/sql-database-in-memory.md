@@ -7,27 +7,33 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: jodebrui
-ms.author: jodebrui
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 235d6174153e32b40885811350d967af5b98ecc4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 03/19/2019
+ms.openlocfilehash: d2c852b48c219283bba2304a993dd26e802b3252
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478358"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226982"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
-Azure SQL Database のインメモリ テクノロジにより、アプリケーションのパフォーマンスを向上させることができ、また、データベースのコストを削減できる可能性があります。 Azure SQL Database のインメモリ テクノロジを使用すれば、さまざまなワークロードでパフォーマンスの向上を実現できます。
+Azure SQL Database のインメモリ テクノロジにより、アプリケーションのパフォーマンスを向上させることができ、また、データベースのコストを削減できる可能性があります。 
+
+## <a name="when-to-use-in-memory-technologies"></a>インメモリ テクノロジをいつ使用するか
+
+Azure SQL Database のインメモリ テクノロジを使用すれば、さまざまなワークロードでパフォーマンスの向上を実現できます。
 
 - **トランザクション** (オンライン トランザクション処理 (OLTP))。ほとんどの要求でより小さなデータ セットの読み取りや更新を行います (CRUD 操作など)。
 - **分析** (オンライン分析処理 (OLAP))。ほとんどのクエリにレポート目的の複雑な計算が含まれます。一定数のクエリでは、既存のテーブルに対するデータの読み込みや追加が行われたり (一括読み込みと呼ばれる)、テーブルからのデータの削除が行われたりします。 
 - **混合** (ハイブリッド トランザクション/分析処理 (HTAP))。OLTP と OLAP の両方のクエリが同じデータ セットで実行されます。
 
-インメモリ テクノロジでは、メモリに処理する必要があるデータを保持し、クエリのネイティブ コンパイルを使用するか、バッチ処理などの高度な処理および基になるハードウェアで利用可能な SIMD 命令を使用して、これらのワークロードのパフォーマンスを向上させることができます。
+インメモリ テクノロジでは、メモリに処理する必要があるデータを保持し、クエリのネイティブ コンパイルを使用するか、バッチ処理などの高度な処理および基になるハードウェアで利用可能な SIMD 命令を使用して、これらのワークロードのパフォーマンスを向上させることができます。 
+
+## <a name="overview"></a>概要
 
 Azure SQL Database には、次のインメモリ テクノロジがあります。
 - *[インメモリ OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)* により、1 秒あたりのトランザクション数が増え、トランザクション処理の遅延が少なくなります。 インメモリ OLTP が有益なシナリオには、取引やゲームなどのスループットの高いトランザクション処理、イベントまたは IoT デバイスからのデータの取り込み、キャッシュ、データの読み込み、一時テーブルやテーブル変数のシナリオなどがあります。
@@ -77,7 +83,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 
 - **メモリ最適化行ストア**形式。行はそれぞれ別のメモリ オブジェクトになります。 これは、高パフォーマンス OLTP ワークロード用に最適化されたクラシック インメモリ OLTP 形式です。 メモリ最適化行ストア形式で使用できるメモリ最適化テーブルには、次の 2 種類があります。
   - *持続的テーブル* (SCHEMA_AND_DATA)。メモリに配置された行が、サーバーの再起動後に保持されます。 この種のテーブルは、インメモリ最適化の他の利点がある従来の行ストア テーブルのように動作します。
-  - *非持続的テーブル* (SCEMA_ONLY)。再起動後に行は保持されません。 この種のテーブルは一時データ用に設計されています (たとえば、一時テーブルの置換など)。つまり、データを一部の永続化されたテーブルに移動する前に迅速に読み込む必要があるテーブル (ステージング テーブルと呼ばれる) です。
+  - "*非持続的テーブル*" (SCHEMA_ONLY)。再起動後に行は保持されません。 この種のテーブルは一時データ用に設計されています (たとえば、一時テーブルの置換など)。つまり、データを一部の永続化されたテーブルに移動する前に迅速に読み込む必要があるテーブル (ステージング テーブルと呼ばれる) です。
 - **メモリ最適化列ストア**形式。データは列形式で整理されます。 この構造は HTAP シナリオ用に設計されています。OLTP ワークロードが実行されるのと同じデータ構造で分析クエリを行う必要があります。
 
 > [!Note]
@@ -88,7 +94,7 @@ Azure SQL Database には、次のインメモリ テクノロジがあります
 テクノロジについての詳細なビデオ:
 
 - [Azure SQL Database のインメモリ OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (パフォーマンス上のメリットと、こうした結果を自身で再現する手順を示しています)
-- [インメモリ OLTP のビデオ:概要および使用するタイミングと方法](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [インメモリ OLTP のビデオ:概要および使用するタイミングと方法](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
 
 特定のデータベースがインメモリ OLTP をサポートしているかどうかをプログラムによって確認する方法があります。 次の Transact-SQL クエリを実行できます。
 ```
@@ -150,7 +156,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 テクノロジについての詳細なビデオ:
 
-- [列ストア インデックス:インメモリ分析のビデオ (Ignite 2016 から)](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [列ストア インデックス:インメモリ分析のビデオ (Ignite 2016 から)](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>列ストア インデックスのデータ サイズとストレージ
 

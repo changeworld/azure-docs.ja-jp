@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 1daae81f0f642275e1ded20eb29f1e3145463db8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 55aed5d1133756789c3ed8979f0a9599f465e5d9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990174"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315097"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Azure Monitor からのデータを視覚化する
 この記事では、Azure Monitor に格納されたログとメトリック データを視覚化するために使用可能な方法の概要を提供します。
@@ -32,9 +32,9 @@ ms.locfileid: "55990174"
 ![ダッシュボード](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>長所
-- Azure との緊密な統合。 視覚化は、メトリックス エクスプローラー、ログ分析、Application Insights など、複数の Azure ページからダッシュボードにピン留めできます。
+- Azure との緊密な統合。 視覚化は、メトリックス エクスプローラー、Log Analytics、Application Insights など、複数の Azure ページからダッシュボードにピン留めできます。
 - メトリックとログの両方をサポート。
-- [メトリックス エクスプローラー](platform/metrics-charts.md)、[ログ クエリ](log-query/log-query-overview.md)、Application Insights の[マップ](app/app-map.md)と[可用性]()からの出力など、複数のソースからのデータを結合します。
+- [メトリックス エクスプローラー](platform/metrics-charts.md)、[ログ クエリ](log-query/log-query-overview.md)、Application Insights の[マップ](app/app-map.md)と可用性からの出力など、複数のソースからのデータを結合します。
 - 個人または共有のダッシュボードのオプション。 Azure [ロール ベースの認証 (RBAC)](../role-based-access-control/overview.md) との統合。
 - 自動更新。 メトリックの更新は、最短 5 分の時間範囲に依存します。 ログは 1 分で更新されます。
 - タイムスタンプとカスタム パラメーターでパラメーター化されたメトリック ダッシュボード。
@@ -71,9 +71,8 @@ ms.locfileid: "55990174"
 - クエリの応答サイズは 8 MB に制限され、クエリの実行時間は 110 秒に制限される。
 
 
-
-## <a name="application-insights-workbooks"></a>Application Insights Workbooks
-[Workbooks](../application-insights/app-insights-usage-workbooks.md) は、データの詳細な分析情報、調査、およびチーム内のコラボレーションを提供する対話型のドキュメントです。 Workbooks が役立つ具体的な例は、トラブルシューティング ガイドとインシデントの事後分析です。
+## <a name="workbooks"></a>Workbooks
+[Workbooks](../azure-monitor/app/usage-workbooks.md) は、データの詳細な分析情報、調査、およびチーム内のコラボレーションを提供する対話型のドキュメントです。 Workbooks が役立つ具体的な例は、トラブルシューティング ガイドとインシデントの事後分析です。
 
 ![Workbooks](media/visualizations/workbook.png)
 
@@ -122,7 +121,6 @@ ms.locfileid: "55990174"
 - パラメーターのサポート。
 
 ### <a name="limitations"></a>制限事項
-- メトリックはサポートされるがログはサポートされない。
 - Azure の統合はなし。 Azure Resource Manager からダッシュボードとモデルを管理できない。
 - 追加の Grafana インフラストラクチャをサポートするためのコストまたは Grafana クラウドの追加コスト。
 
@@ -142,6 +140,7 @@ Azure Monitor のメトリック データとログ データには、その API
 - [Azure Monitor によって収集されたデータ](platform/data-collection.md)について学習します。
 - [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)について学習します。
 - [Azure Monitor のビュー](platform/view-designer.md)について学習します。
-- [Application Insights の Workbooks](app/usage-workbooks.md) について学習します。
-- [ログ データの Power BI へのインポート](platform/powerbi.md)について学習します。
-- [Grafana Azure Monitor データ ソース プラグイン](platform/grafana-plugin.md)について学習します。
+- [Workbooks](../azure-monitor/app/usage-workbooks.md) について学習します。
+- [ログ データの Power BI へのインポート](../azure-monitor/platform/powerbi.md)について学習します。
+- [Grafana Azure Monitor データ ソース プラグイン](../azure-monitor/platform/grafana-plugin.md)について学習します。
+

@@ -3,17 +3,17 @@ title: 汎用の Node.js クライアント アプリケーションを Azure Io
 description: デバイス開発者として、汎用の Node.js デバイスを Azure IoT Central アプリケーションに接続する方法。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/26/2018
+ms.date: 02/04/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cc6857750534dad2ded29178eb3f140fc25cce0d
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 4d2701f078a26c22f52aebd0ef562dd60eaca923
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410491"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097976"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>汎用のクライアント アプリケーションを Azure IoT Central アプリケーションに接続する (Node.js)
 
@@ -41,7 +41,7 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 | 圧力     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-  テレメトリ測定のデータ型は浮動小数点数です。
+>   テレメトリ測定のデータ型は浮動小数点数です。
 
 デバイス テンプレートに、表に示すように正確にフィールド名を入力します。 フィールド名が対応するデバイス コード内のプロパティ名と一致しない場合は、テレメトリをアプリケーションに表示できません。
 
@@ -54,7 +54,7 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 | Fan Mode     | fanmode     | 1       | 実行中      | 0       | 停止済み      |
 
 > [!NOTE]
-  状態測定のデータ型は文字列です。
+>   状態測定のデータ型は文字列です。
 
 デバイス テンプレートに、表に示すように正確にフィールド名を入力します。 フィールド名が対応するデバイス コード内のプロパティ名と一致しない場合は、状態をアプリケーションに表示できません。
 
@@ -67,7 +67,7 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 | 過熱  | overheat    | Error    |
 
 > [!NOTE]
-  イベント測定のデータ型は文字列です。
+>   イベント測定のデータ型は文字列です。
 
 ### <a name="device-properties"></a>デバイスのプロパティ
 
@@ -93,7 +93,7 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションでは、作成したデバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 Node.js アプリケーションを IoT Central に接続するための詳しい手順については、「チュートリアル」 >「デバイスを追加する」の「[アプリケーションからの実デバイスの接続文字列の生成](tutorial-add-device.md#generate-connection-string-for-real-device-from-application)」と「[クライアント コードの準備](tutorial-add-device.md#prepare-the-client-code)」をご覧ください。
+Azure IoT Central アプリケーションでは、作成したデバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 Node.js アプリケーションを IoT Central に接続するための詳しい手順については、「チュートリアル」 >「デバイスを追加する」の「[アプリケーションからの実デバイスの接続文字列の生成](tutorial-add-device.md#generate-connection-string)」と「[クライアント コードの準備](tutorial-add-device.md#prepare-the-client-code)」をご覧ください。
 
 ### <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
 
@@ -129,11 +129,10 @@ Azure IoT Central アプリケーションでは、作成したデバイス テ�
     var client = clientFromConnectionString(connectionString);
     ```
 
-  > [!NOTE]
-  > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#getting-device-connection-string)し、チュートリアルの残りを続けてください。 詳しい手順については、「チュートリアル」 >「デバイスを追加する」の「[クライアント コードの準備](tutorial-add-device.md#prepare-the-client-code)」でも説明されています。
+    > [!NOTE]
+    > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#get-a-connection-string)し、チュートリアルの残りを続けてください。 詳しい手順については、「チュートリアル」 >「デバイスを追加する」の「[クライアント コードの準備](tutorial-add-device.md#prepare-the-client-code)」でも説明されています。
 
-
-  プレースホルダー `{your device connection string}` をデバイスの接続文字列に更新します。 このサンプルでは、`targetTemperature` を 0 に初期化します。必要に応じて、デバイスから現在の読み取りを取得したり、デバイス ツインから値を取得したりできます。 
+    プレースホルダー `{your device connection string}` をデバイスの接続文字列に更新します。 このサンプルでは、`targetTemperature` を 0 に初期化します。必要に応じて、デバイスから現在の読み取りを取得したり、デバイス ツインから値を取得したりできます。 
 
 1. テレメトリ、状態、およびイベント測定を Azure IoT Central アプリケーションに送信するには、ファイルに次の関数を追加します。
 
@@ -269,11 +268,11 @@ Azure IoT Central アプリケーションのオペレーターとして、実�
 
     ![利用統計情報データを表示する](media/howto-connect-nodejs/viewtelemetry.png)
 
-* **[プロパティ]** ページで、デバイスから送信されたデバイス プロパティ値を表示します。 接続が成功した場合は、デバイス プロパティのタイルが更新されます。 
+* **[プロパティ]** ページで、デバイスから送信されたデバイス プロパティ値を表示します。 接続が成功した場合は、デバイス プロパティのタイルが更新されます。
 
     ![デバイスのプロパティを表示する](media/howto-connect-nodejs/viewproperties.png)
 
-* **[設定]** ページから、ファン速度とターゲット温度を設定します。 接続が成功した場合は、設定値が同期されます。 
+* **[設定]** ページから、ファン速度とターゲット温度を設定します。 接続が成功した場合は、設定値が同期されます。
 
     ![ファン速度を設定する](media/howto-connect-nodejs/setfanspeed.png)
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/14/2019
-ms.author: mahilleb
+ms.date: 03/12/2019
+ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: c9e72ea2762af0d9a4c47ca5b23fe4bdbe53b968
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 1be51c4f5aede58a975dc9441b3bec7a83f7becd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447550"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900915"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service がサポートされているリージョン
 
@@ -38,11 +38,19 @@ Speech SDK は、**音声認識**と**翻訳**のために以下のリージョ�
  米国西部 2 | `westus2` | https://westus2.cris.ai
  米国東部 | `eastus` | https://eastus.cris.ai
  米国東部 2 | `eastus2` | https://eastus2.cris.ai
+ 米国中央部 | "centralus" | https://centralus.cris.ai
+ 米国中北部 | "northcentralus" | https://northcentralus.cris.ai
+ 米国中南部 | "southcentralus" | https://southcentralus.cris.ai
  東アジア | `eastasia` | https://eastasia.cris.ai
  東南アジア | `southeastasia` | https://southeastasia.cris.ai
+ 東日本 | `japaneast` | https://japaneast.cris.ai
+ 韓国中部 | `koreacentral` | https://koreacentral.cris.ai
+ オーストラリア東部 | `australiaeast` | https://australiaeast.cris.ai
+ カナダ中部 | `canadacentral` | https://canadacentral.cris.ai
  北ヨーロッパ | `northeurope` | https://northeurope.cris.ai
  西ヨーロッパ | `westeurope` | https://westeurope.cris.ai
-
+ 英国南部 | `uksouth` | https://uksouth.cris.ai
+ フランス中部 | `francecentral` | https://francecentral.cris.ai
 
 ### <a name="intent-recognition"></a>意図認識
 

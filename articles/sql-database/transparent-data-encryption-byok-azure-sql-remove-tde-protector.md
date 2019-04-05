@@ -11,21 +11,25 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/12/2018
-ms.openlocfilehash: 95a86dafc4705d58ac459ff57e4f221d19fb7a37
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/12/2019
+ms.openlocfilehash: a49c22a0597c34075de3e5fd7b9a324169e1da00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990293"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895178"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell を使用した Transparent Data Encryption (TDE) 保護機能の削除
 
 ## <a name="prerequisites"></a>前提条件
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
 - Azure サブスクリプションがあり、そのサブスクリプションの管理者である必要があります。
-- Azure PowerShell バージョン 4.2.0 以降がインストールされ、実行されている必要があります。 
-- このハウツー ガイドは、Azure SQL Database または Data Warehouse の TDE 保護機能として、Azure Key Vault のキーを既に使用していることを前提としています。 詳細については、[BYOK サポートでの、Transparent Data Encryption と Azure Key Vault の統合](transparent-data-encryption-byok-azure-sql.md)に関するページを参照してください。
+- Azure PowerShell がインストールされ、実行されている必要があります。 
+- このハウツー ガイドは、Azure SQL Database または Data Warehouse の TDE 保護機能として、Azure Key Vault のキーを既に使用していることを前提としています。 詳細については、[BYOK をサポートする Transparent Data Encryption](transparent-data-encryption-byok-azure-sql.md) に関する記事をご覧ください。
 
 ## <a name="overview"></a>概要
 
@@ -44,56 +48,56 @@ Key Vault の TDE 保護機能を削除すると、**サーバーにある暗号
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>暗号化されたリソースを引き続きアクセス可能にしておくには
 
-1. [Key Vault に新しいキー](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey?view=azurermps-4.1.0)を作成します。 アクセス制御はコンテナー レベルでプロビジョニングされるため、この新しいキーは、侵害された可能性のある TDE 保護機能とは別のキー コンテナーに作成する必要があります。 
-2. [Add-AzureRmSqlServerKeyVaultKey](/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) および [Set-AzureRmSqlServerTransparentDataEncryptionProtector](/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) コマンドレットを使用してサーバーに新しいキーを追加し、サーバーの新しい TDE 保護機能として更新します。
+1. [Key Vault に新しいキー](/powershell/module/az.keyvault/add-azkeyvaultkey)を作成します。 アクセス制御はコンテナー レベルでプロビジョニングされるため、この新しいキーは、侵害された可能性のある TDE 保護機能とは別のキー コンテナーに作成する必要があります。
+2. [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) および [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) コマンドレットを使用してサーバーに新しいキーを追加し、サーバーの新しい TDE 保護機能として更新します。
 
    ```powershell
    # Add the key from Key Vault to the server  
-   Add-AzureRmSqlServerKeyVaultKey `
+   Add-AzSqlServerKeyVaultKey `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -ServerName <LogicalServerName> `
    -KeyId <KeyVaultKeyId>
 
    # Set the key as the TDE protector for all resources under the server
-   Set-AzureRmSqlServerTransparentDataEncryptionProtector `
+   Set-AzSqlServerTransparentDataEncryptionProtector `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -ServerName <LogicalServerName> `
    -Type AzureKeyVault -KeyId <KeyVaultKeyId> 
    ```
 
-3. [Get-AzureRmSqlServerTransparentDataEncryptionProtector](/powershell/module/azurerm.sql/get-azurermsqlservertransparentdataencryptionprotector) コマンドレットを使用して、サーバーとすべてのレプリカが新しい TDE 保護機能に更新されたことを確認します。 
+3. [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) コマンドレットを使用して、サーバーとすべてのレプリカが新しい TDE 保護機能に更新されたことを確認します。 
 
    >[!NOTE]
    > サーバーにあるすべてのデータベースとセカンダリ データベースに新しい TDE 保護機能が伝達されるまでに数分かかることがあります。
 
    ```powershell
-   Get-AzureRmSqlServerTransparentDataEncryptionProtector `
+   Get-AzSqlServerTransparentDataEncryptionProtector `
    -ServerName <LogicalServerName> `
    -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-4. Key Vault 内の[新しいキーのバックアップ](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)を作成します。
+4. Key Vault 内の[新しいキーのバックアップ](/powershell/module/az.keyvault/backup-azkeyvaultkey)を作成します。
 
    ```powershell
    <# -OutputFile parameter is optional; 
    if removed, a file name is automatically generated. #>
-   Backup-AzureKeyVaultKey `
+   Backup-AzKeyVaultKey `
    -VaultName <KeyVaultName> `
    -Name <KeyVaultKeyName> `
    -OutputFile <DesiredBackupFilePath>
    ```
-
-5. [Remove-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey) コマンドレットを使用して、侵害されたキーを Key Vault から削除します。 
+ 
+5. [Remove-AzKeyVaultKey](/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey) コマンドレットを使用して、侵害されたキーを Key Vault から削除します。 
 
    ```powershell
-   Remove-AzureKeyVaultKey `
+   Remove-AzKeyVaultKey `
    -VaultName <KeyVaultName> `
    -Name <KeyVaultKeyName>
    ```
-
-6. 今後、Key Vault にキーを復元するときは、[Restore-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey) コマンドレットを使用します。
+ 
+6. 今後、Key Vault にキーを復元するときは、[Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) コマンドレットを使用します。
    ```powershell
-   Restore-AzureKeyVaultKey `
+   Restore-AzKeyVaultKey `
    -VaultName <KeyVaultName> `
    -InputFile <BackupFilePath>
    ```

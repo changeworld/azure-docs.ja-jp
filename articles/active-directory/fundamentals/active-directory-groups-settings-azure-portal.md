@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5802634fe070f5d71fae01706c3cb4e83e04a72e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 691f705574050b15869a0ac8b7d128507e5aae10
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192066"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285634"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>Azure Active Directory を使用してグループ情報を編集する
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) を使用すると、名前、説明、また�
 
 4. グループの **[MDM policy - West]\(MDM ポリシー - 西部\)** を選択して、**[管理]** 領域から **[プロパティ]** を選択します。
 
-    ![数値とメンバーとメンバーのオプションが強調表示されている [グループの概要] ページ](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+    ![[メンバー] オプションと情報が強調表示されている、グループの概要ページ](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
 
 5. 必要に応じて、次のような **[全般設定]** の情報を更新します。
 

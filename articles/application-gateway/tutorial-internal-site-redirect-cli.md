@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 9f82ed280d18be304129bf8b7807213a75110df2
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 186d0bb9161d70d9e458d25dc1b9cbe518bb790e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660988"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082739"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Azure CLI を使用して内部リダイレクトと共にアプリケーション ゲートウェイを作成する
 
-[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure CLI を使用して [Web トラフィック リダイレクト](application-gateway-multi-site-overview.md)を構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを作成します。 その後、Web トラフィックが適切なプールに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www.contoso.com* と *www.contoso.org* の例を使用します。
+[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure CLI を使用して [Web トラフィック リダイレクト](application-gateway-multi-site-overview.md)を構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを作成します。 その後、Web トラフィックが適切なプールに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www\.contoso.com* と *www\.contoso.org* の例を使用します。
 
 この記事では、次のことについて説明します。
 
@@ -101,7 +101,7 @@ az network application-gateway create \
 
 ## <a name="add-listeners-and-rules"></a>リスナーと規則の追加 
 
-アプリケーション ゲートウェイがバックエンド プールに対して適切にトラフィックをルーティングするためにはリスナーが必要です。 このチュートリアルでは、2 つのドメインに対して 2 つのリスナーを作成します。 この例では、*www.contoso.com* と *www.contoso.org* のドメインに対してリスナーを作成しています。
+アプリケーション ゲートウェイがバックエンド プールに対して適切にトラフィックをルーティングするためにはリスナーが必要です。 このチュートリアルでは、2 つのドメインに対して 2 つのリスナーを作成します。 この例では、*www\.contoso.com* と *www\.contoso.org* のドメインに対してリスナーを作成しています。
 
 [az network application-gateway http-listener create](/cli/azure/network/application-gateway) を使用して、トラフィックのルーティングに必要なバックエンド リスナーを追加します。
 
@@ -124,7 +124,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>リダイレクト構成の追加
 
-[az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config) を使用して、アプリケーション ゲートウェイで *www.consoto.org* から *www.contoso.com* のリスナーにトラフィックを送信するリダイレクト構成を追加します。
+[az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config) を使用して、アプリケーション ゲートウェイで *www\.consoto.org* から *www\.contoso.com* のリスナーにトラフィックを送信するリダイレクト構成を追加します。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -213,7 +213,7 @@ az network public-ip show \
 
 ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/tutorial-internal-site-redirect-cli/application-gateway-nginxtest.png)
 
-アドレスを他のドメインに変更します (例: http://www.contoso.org ) 。トラフィックが www.contoso.com のリスナーにリダイレクトされたことがわかります。
+アドレスを他のドメインに変更します (例: http://www.contoso.org)。トラフィックが www\.contoso.com のリスナーにリダイレクトされたことがわかります。
 
 ## <a name="next-steps"></a>次の手順
 

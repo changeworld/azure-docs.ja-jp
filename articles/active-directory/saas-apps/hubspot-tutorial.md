@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26fd70b80dd512b530d367d57cd9fc04ec28f27b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8bbb307654d4aaf753a4a3284875dee4f5707f2a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211701"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901732"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>チュートリアル:Azure Active Directory と HubSpot の統合
 
@@ -163,7 +163,7 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[Identity Provider Identifier or Issuer URL] (ID プロバイダーの識別子または発行者 URL)** テキストボックスに、Azure portal からコピーした **[Azure AD 識別子]** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ID プロバイダー のシングル サインオン URL]** テキストボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
+    d. **[ID プロバイダー のシングル サインオン URL]** テキストボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
     e. ダウンロードした **証明書 (Base64)**  ファイルをメモ帳で開きます。 その内容をクリップボードにコピーし、 **[X.509 証明書]** テキストボックスに貼り付けます。
 
@@ -187,12 +187,12 @@ HubSpot で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+    d. **作成**を選択します。
 
 ### <a name="creating-a-hubspot-test-user"></a>HubSpot のテスト ユーザーの作成
 
@@ -215,7 +215,7 @@ HubSpot の場合、プロビジョニングは手動で行います。
 
     ![Configure single sign-on](./media/hubspot-tutorial/user2.png)
 
-5. **[Add email addess(es)]\(電子メール アドレスの追加)** テキストボックスにユーザーの電子メール アドレスを **brittasimon@contoso.com** のように入力し、**[Next]\(次へ)** をクリックします。
+5. **[Add email addess(es)]\(メール アドレスの追加\)** ボックスにユーザーのメール アドレス (例: **brittasimon\@contoso.com**) を入力し、**[Next]\(次へ\)** をクリックします。
 
     ![Configure single sign-on](./media/hubspot-tutorial/user3.png)
 

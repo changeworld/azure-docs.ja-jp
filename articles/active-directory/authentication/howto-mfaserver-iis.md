@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8326e7bc4b03c8e2828e74e13fc00d6a63f78e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 35c268b5952f2276dc718df955c125c59c51d356
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211021"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014711"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-iis-web-apps"></a>IIS Web アプリの Azure Multi-Factor Authentication Server の構成
 
@@ -30,7 +30,7 @@ Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクション�
 1. Azure Multi-Factor Authentication Server で、左側のメニューの [IIS 認証] アイコンをクリックします。
 2. **[フォームベース]** タブをクリックします。
 3. **[追加]** をクリックします。
-4. ユーザー名、パスワード、およびドメインの変数を自動的に検出するには、[フォームベースの Web サイトの自動構成] ダイアログ ボックス内でログイン URL (例: https://localhost/contoso/auth/login.aspx)) を入力し、**[OK]** をクリックします。
+4. ユーザー名、パスワード、およびドメインの変数を自動的に検出するには、[フォームベースの Web サイトの自動構成] ダイアログ ボックス内でログイン URL (例: `https://localhost/contoso/auth/login.aspx`) を入力し、**[OK]** をクリックします。
 5. すべてのユーザーを Server にインポート済みであるか、インポートする予定であり、多要素認証の対象となる場合は、**[Multi-Factor Authentication のユーザー照合が必要]** チェック ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。
 6. ページ変数を自動的に検出できない場合は、[フォームベースの Web サイトの自動構成] ダイアログ ボックスの **[手動で指定]** をクリックします。
 7. [フォームベースの Web サイトの追加] ダイアログ ボックスで、ログイン ページの URL を [送信 URL] フィールドに入力し、アプリケーション名 (省略可能) を入力します。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
@@ -39,9 +39,9 @@ Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクション�
 10. すべてのユーザーを Server にインポート済みであるか、インポートする予定であり、多要素認証の対象となる場合は、**[Multi-Factor Authentication のユーザー照合が必要]** チェック ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。
 11. **[詳細設定]** をクリックして、次の詳細設定を確認します。
 
-  - カスタム拒否ページ ファイルの選択
-  - Cookie を使用して、Web サイトへの成功した認証を一定期間キャッシュします。
-  - Windows ドメイン、LDAP ディレクトリ、または RADIUS サーバーに対してプライマリ資格情報を認証するかどうかを 選択します。
+    - カスタム拒否ページ ファイルの選択
+    - Cookie を使用して、Web サイトへの成功した認証を一定期間キャッシュします。
+    - Windows ドメイン、LDAP ディレクトリ、または RADIUS サーバーに対してプライマリ資格情報を認証するかどうかを 選択します。
 
 12. **[OK]** をクリックして、[フォームベースの Web サイトの追加] ダイアログ ボックスに戻ります。
 13. Click **OK**.
@@ -53,7 +53,7 @@ Azure Multi-Factor Authentication (MFA) Server の [IIS 認証] セクション�
 1. Azure Multi-Factor Authentication Server で、左側のメニューの [IIS 認証] アイコンをクリックします。
 2. **[HTTP]** タブをクリックします。
 3. **[追加]** をクリックします。
-4. [ベース URL の追加] ダイアログ ボックスで、HTTP 認証が実行される Web サイトの URL (例: http://localhost/owa)) を入力し、アプリケーション名 (省略可能) を指定します。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
+4. [ベース URL の追加] ダイアログ ボックスで、HTTP 認証が実行される Web サイトの URL (例: <http://localhost/owa>) を入力し、アプリケーション名 (省略可能) を指定します。 アプリケーション名は Azure Multi-Factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
 5. 既定値では不十分な場合は、アイドル状態のタイムアウトと最大セッション時間を調整します。
 6. すべてのユーザーを Server にインポート済みであるか、インポートする予定であり、多要素認証の対象となる場合は、**[Multi-Factor Authentication のユーザー照合が必要]** チェック ボックスをオンにします。 多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。
 7. 必要に応じて、**[Cookie のキャッシュ]** チェック ボックスをオンにします。

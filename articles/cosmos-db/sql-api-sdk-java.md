@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 11/29/2018
+ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: ebb6fe9f583c2658f187d3cca1185f1525fb1bf5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c2b0c52ca78f2b9c4273280aa9da16a5ef1bbc00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811037"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003247"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -43,12 +43,23 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="a-name210213"></a><a name="2.1.0"/>2.1.3
+* ハッシュ V2 の PartitionKey のバグが修正されました。
+
+### <a name="a-name210212"></a><a name="2.1.0"/>2.1.2
+* 複合インデックスのサポートが追加されました。
+* グローバル エンドポイント マネージャーが強制的に更新されるように、バグが修正されました。
+* ダイレクト モードでの事前条件のある upsert のバグが修正されました。
+
+### <a name="a-name210211"></a><a name="2.1.0"/>2.1.1
+* ゲートウェイ アドレス キャッシュでのバグが修正されました。
+
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * 直接モードに対するマルチリージョンの書き込みサポートが追加されました。
 * プロキシから、ServiceUnavailable 例外としてスローされた IOExceptions を処理するためのサポートが追加されました。
 * エンドポイントの検出再試行ポリシーのバグが修正されました。
 * 確実に BaseDatabaseAccountConfigurationProvider で null ポインター例外がスローされないように、バグが修正されました。
-* 確実にクエリ反復子で null が返されないように、バグが修正されました。
+* QueryIterator で null が返されないように、バグが修正されました。
 * 確実に大きな PartitionKey が許可されるように、バグが修正されました
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
@@ -212,7 +223,10 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
-| 2.1.1 |2018 年 11 月 21 日 |--- |
+| [2.1.3](#2.1.3) |2018 年 3 月 13 日 |--- |
+| [2.1.2](#2.1.2) |2018 年 3 月 9 日 |--- |
+| [2.1.1](#2.1.1) |2018 年 12 月 13 日 |--- |
+| [2.1.0](#2.1.0) |2018 年 11 月 20 日 |--- |
 | [2.0.0](#2.0.0) |2018 年 9 月 21 日 |--- |
 | [1.16.4](#1.16.4) |2018 年 9 月 10 日 |--- |
 | [1.16.3](#1.16.3) |2018 年 9 月 9 日 |--- |

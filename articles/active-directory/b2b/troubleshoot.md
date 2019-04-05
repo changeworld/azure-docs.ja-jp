@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2B コラボレーションのトラブルシューティング | Microsoft Docs
+title: B2B コラボレーションのトラブルシューティング - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションの一般的な問題の対処方法
 services: active-directory
 ms.service: active-directory
@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f69bad355bf5644988416958c4b4f32ed66714d9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: af106650f6e1d139ec7af2c8d243dc50f2e963fc
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186405"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293960"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションのトラブルシューティング
 
@@ -28,7 +29,7 @@ ms.locfileid: "56186405"
 外部ユーザーが一覧に表示されない場合は、オブジェクトのレプリケートに数分かかっていることがあります。
 
 ## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>B2B のゲスト ユーザーが SharePoint Online/OneDrive ユーザー選択ウィンドウに表示されません 
- 
+ 
 SharePoint Online (SPO) のユーザー選択ウィンドウで既存のゲスト ユーザーを検索する機能は、従来の動作と一致させるために、既定ではオフになっています。
 
 この機能は、テナントとサイト コレクション レベルで 'ShowPeoplePickerSuggestionsForGuestUsers' 設定を使用することで有効にできます。 この機能は、Set-SPOTenant コマンドレットと Set-SPOSite コマンドレットを使用して設定できます。これにより、メンバーは、ディレクトリ内のすべての既存のゲスト ユーザーを検索することができます。 テナントのスコープの変更は、既にプロビジョニングされている SPO サイトには影響しません。
@@ -37,7 +38,7 @@ SharePoint Online (SPO) のユーザー選択ウィンドウで既存のゲス�
 
 ユーザーを招待するアクセス許可がないことを通知された場合は、自分のユーザー アカウントが外部ユーザーの招待を承認されていることを確認します。
 
-![](media/troubleshoot/external-user-settings.png)
+![[外部ユーザー] 設定を示すスクリーンショット](media/troubleshoot/external-user-settings.png)
 
 これらの設定を変更したり、ユーザーにゲストの招待元ロールを割り当てたりしたばかりの場合は、変更が有効になるまでに 15 ～ 60 分かかることがあります。
 
@@ -49,7 +50,7 @@ SharePoint Online (SPO) のユーザー選択ウィンドウで既存のゲス�
 
 Azure Active Directory を使用している組織のユーザーを招待していて、その特定のユーザーのアカウントが存在しない場合 (たとえばユーザーが AAD contoso.com に存在しない場合)、 contoso.com の管理者が、ユーザーが作成されないようにするポリシーを設定している可能性があります。 ユーザーは、外部ユーザーが許可されるかどうかを管理者に確認する必要があります。 外部ユーザーの管理者は、メールで確認済みのユーザーをドメインで許可しなければならない場合があります (メールで確認済みのユーザーの許可については、[こちらの記事](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)を参照してください)。
 
-![](media/troubleshoot/allow-email-verified-users.png)
+![メールで確認済みのユーザーがテナントで許可されないことを示すエラー](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>外部ユーザーがフェデレーション ドメインに既に存在しません
 

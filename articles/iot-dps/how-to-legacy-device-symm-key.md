@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9d82ff29b988925f244fc33d7124fe43487895b8
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: c43d3b236a305f1e6d2bd392527a5206b6a5c974
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341237"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074898"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>対称キーを使用してレガシ デバイスをプロビジョニングする方法
 
@@ -114,23 +114,23 @@ ms.locfileid: "53341237"
 
 ## <a name="create-a-symmetric-key-enrollment-group"></a>対称キーの登録グループを作成する
 
-1. [Azure portal](http://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
+1. [Azure portal](https://portal.azure.com) にサインインし、Device Provisioning Services のインスタンスを開きます。
 
 2. **[登録を管理します]** タブを選択し、ページの上部にある **[登録グループの追加]** ボタンをクリックします。 
 
 3. **[登録グループの追加]** で、次の情報を入力して、**[保存]** ボタンをクリックします。
 
-    - **[グループ名]**: 「**mylegacydevices**」と入力します。
+   - **[グループ名]**: 「**mylegacydevices**」と入力します。
 
-    - **[構成証明の種類]**: **[対称キー]** を選択します。
+   - **[構成証明の種類]**: **[対称キー]** を選択します。
 
-    - **[キーの自動生成]**: このボックスをオンにします。
+   - **[キーの自動生成]**: このボックスをオンにします。
 
-    - **[デバイスをハブに割り当てる方法を選択してください]**: 特定のハブを割り当てることができるように、**[静的構成]** を選択します。
+   - **[デバイスをハブに割り当てる方法を選択してください]**: 特定のハブを割り当てることができるように、**[静的構成]** を選択します。
 
-    - **[このグループを割り当てることができる IoT ハブを選択してください]**: お使いのハブのいずれかを選択します。
+   - **[このグループを割り当てることができる IoT ハブを選択してください]**: お使いのハブのいずれかを選択します。
 
-    ![対称キー構成証明に登録グループを追加する](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![対称キー構成証明に登録グループを追加する](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
 4. 登録を保存したら、**主キー**と**セカンダリ キー**が生成され、登録エントリに追加されます。 対称キーの登録グループが、*[登録グループ]* タブの *[グループ名]* 列に **mylegacydevices** として対表示されます。 
 

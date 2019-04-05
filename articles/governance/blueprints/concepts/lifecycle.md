@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 71a5233c6d5af21d7bc5430cda14e156e16d5cd4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563713"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001575"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Azure Blueprint のライフサイクルの概要
 
@@ -35,7 +35,7 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 
 ブループリントを作成するときは、成果物を追加し、管理グループまたはサブスクリプションに保存し、一意の名前と一意のバージョンを指定します。 この時点で、ブループリントは**ドラフト** モードであり、まだ割り当てることはできません。 **ドラフト** モードの間でも、更新と変更を続けることはできます。
 
-発行されていない**ドラフト** モードのブループリントには、**[ブループリントの定義]** ページで、**発行済み**のブループリントとは異なるアイコンが表示されます。 これらの未発行ブループリントについては、**[最新バージョン]** も **[ドラフト]** と表示されます。
+発行されていない**ドラフト** モードのブループリントには、**[ブループリントの定義]** ページで、**発行済み**のブループリントとは異なるアイコンが表示されます。 これらの未発行ブループリントについては、**[最新バージョン]** に **[ドラフト]** と表示されます。
 
 ブループリントを作成および編集するには、[Azure portal](../create-blueprint-portal.md#create-a-blueprint) または [REST API](../create-blueprint-rest-api.md#create-a-blueprint) を使用します。
 
@@ -68,7 +68,7 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 > [!NOTE]
 > アクティブな割り当てがあるブルー プリントを削除することはできません。 最初に割り当てを削除してから、バージョンを削除する必要があります。
 
-1. **[すべてのサービス]** をクリックし、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** をクリックします。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側のページで **[ブループリントの定義]** を選択し、フィルター オプションを使用してバージョンを削除するブループリントを検索します。 それをクリックして編集ページを開きます。
 
@@ -103,8 +103,8 @@ Azure 内の多くのリソースと同じように、Azure Blueprint のブル�
 
 ## <a name="next-steps"></a>次の手順
 
-- [静的および動的パラメーター](parameters.md)の使用方法を理解する
-- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する
-- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる
-- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する
+- [静的および動的パラメーター](parameters.md)の使用方法を理解する。
+- [ブループリントの優先順位](sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのリソース ロック](resource-locking.md)の使用方法を調べる。
+- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

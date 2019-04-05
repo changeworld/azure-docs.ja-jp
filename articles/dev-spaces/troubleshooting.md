@@ -1,21 +1,20 @@
 ---
-title: トラブルシューティング | Microsoft Docs
+title: トラブルシューティング
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
-ms.subservice: azds-kubernetes
 author: zr-msft
 ms.author: zarhoads
 ms.date: 09/11/2018
-ms.topic: article
+ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 5be6f99067f1209fcd131dfc33c46995b2a537f8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
+ms.openlocfilehash: 1ccb96bc8682ad505bc4b21e90951ea25c4c9954
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498303"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898084"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -146,8 +145,8 @@ PATH 環境変数が正しく設定されているコマンド プロンプト�
 
 最新バージョンの Azure Dev Spaces CLI をダウンロードしてインストールします:
 
-* [Windows](http://aka.ms/get-azds-windows)
-* [Mac](http://aka.ms/get-azds-mac)
+* [Windows](https://aka.ms/get-azds-windows)
+* [Mac](https://aka.ms/get-azds-mac)
 * [Linux](https://aka.ms/get-azds-linux)
 
 ## <a name="error-azds-is-not-recognized-as-an-internal-or-external-command-operable-program-or-batch-file"></a>エラー 'azds' が、内部または外部コマンド、操作可能プログラム、またはバッチ ファイルとして認識されません
@@ -210,7 +209,7 @@ VS Code デバッガーを起動すると、このエラーが発生する場合
 VS Code デバッガーを実行すると次のエラーが報告されます: `Failed to find debugger extension for type:coreclr.`
 
 ### <a name="reason"></a>理由
-開発マシンに C＃ 用の VS コード拡張機能がインストールされていません。 C# 拡張機能には、.Net Core (CoreCLR) 用のデバッグサポートが含まれています。
+開発マシンに C＃ 用の VS コード拡張機能がインストールされていません。 C# 拡張機能には、.NET Core (CoreCLR) 用のデバッグ サポートが含まれています。
 
 ### <a name="try"></a>次の操作を試してください。
 [C# 用 VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)をインストールします。

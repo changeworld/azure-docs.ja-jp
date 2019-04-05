@@ -1,7 +1,7 @@
 ---
 title: v1 から v2 への API の移行
 titleSuffix: Azure Cognitive Services
-description: バージョン 1 のエンドポイントとオーサリング API は非推奨となりました。 このガイドでは、バージョン 2 のエンドポイントとオーサリング API に移行する方法について説明します。
+description: バージョン 1 のエンドポイントとオーサリングに関する Language Understanding API は非推奨となりました。 このガイドでは、バージョン 2 のエンドポイントとオーサリング API に移行する方法について説明します。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: dfd30ce148002e32986c58aff607e182033e02b3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859874"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087926"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS アプリの API v1 から v2 への移行ガイド
 バージョン 1 の[エンドポイント](https://aka.ms/v1-endpoint-api-docs)と[オーサリング](https://aka.ms/v1-authoring-api-docs) API は非推奨となりました。 このガイドでは、バージョン 2 の[エンドポイント](https://aka.ms/luis-endpoint-apis)と[オーサリング](https://aka.ms/luis-authoring-apis) API に移行する方法について説明します。 
 
 ## <a name="new-azure-regions"></a>新しい Azure リージョン
-LUIS では、LUIS API 用の新しい[リージョン](https://aka.ms/LUIS-regions)が用意されています。 LUIS はリージョン グループごとに異なる Web サイトを提供します。 アプリケーションは、クエリを実行するリージョンと同じリージョンに作成する必要があります。 アプリケーションによって、リージョンが自動的に移行されることはありません。 アプリはリージョンからエクスポートして、新しいリージョンで使用できるようにインポートします。
+LUIS では、LUIS API 用の新しい[リージョン](https://aka.ms/LUIS-regions)が用意されています。 LUIS ではリージョン グループごとに異なるポータルが用意されています。 アプリケーションは、クエリを実行するリージョンと同じリージョンに作成する必要があります。 アプリケーションによって、リージョンが自動的に移行されることはありません。 アプリはリージョンからエクスポートして、新しいリージョンで使用できるようにインポートします。
 
 ## <a name="authoring-route-changes"></a>オーサリング ルートの変更
 オーサリング API ルートは、前は **prog** ルートが使用されていましたが、**api** ルートを使用するように変更されました。
@@ -35,7 +35,7 @@ LUIS では、LUIS API 用の新しい[リージョン](https://aka.ms/LUIS-regi
 
 
 ## <a name="endpoint-route-changes"></a>エンドポイント ルートの変更
-エンドポイント API には、新しい querystring パラメーターと、異なる応答があります。 verbose フラグが true の場合、topScoringIntent に加え、すべての意図が、スコアに関係なく intents という名前の配列で返されます。
+エンドポイント API には、新しいクエリ文字列パラメーターと、異なる応答があります。 verbose フラグが true の場合、topScoringIntent に加え、すべての意図が、スコアに関係なく intents という名前の配列で返されます。
 
 | version | GET ルート |
 |--|--|

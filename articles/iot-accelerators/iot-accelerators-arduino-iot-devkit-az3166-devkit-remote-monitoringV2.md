@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: eb2a6692c0b00dc4419c601228453a8cfc44c02a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 3551d088c1d02715bf9ace09d7eb0048bc10111e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156784"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105252"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT DevKit デバイスをリモート監視ソリューション アクセラレータに接続する
 
@@ -40,7 +40,7 @@ VS Code でリモート監視サンプルを開くには:
 
 1. **[リモート監視]** を見つけ、**[Open Sample]\(サンプルを開く\)** をクリックします。 新しい VS Code ウィンドウが開いて、プロジェクト フォルダーが表示されます。
 
-  ![IoT Workbench、リモート監視サンプルの選択](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
+   ![IoT Workbench、リモート監視サンプルの選択](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-workbench-example.png)
 
 ## <a name="configure-the-device"></a>デバイスを構成する
 
@@ -79,7 +79,7 @@ DevKit デバイスにアップロードしたサンプル アプリケーショ
 
 サンプル アプリが実行されているときは、DevKit デバイスのセンサー データから Wi-fi 経由でソリューション アクセラレータにテレメトリが送信されます。 テレメトリを表示するには:
 
-1. ソリューション ダッシュボードに移動し、**[デバイス]** をクリックします。
+1. ソリューション ダッシュボードに移動し、**[デバイス エクスプローラー]** をクリックします。
 
 1. DevKit デバイスのデバイス名をクリックします。 右側のタブで、DevKit から送信されるテレメトリをリアルタイムで確認できます。
 
@@ -87,7 +87,7 @@ DevKit デバイスにアップロードしたサンプル アプリケーショ
 
 ### <a name="control-the-devkit-device"></a>DevKit デバイスを制御する
 
-リモート監視ソリューション アクセラレータを使用して、デバイスをリモートで制御できます。 サンプル コードでは 3 つのメソッドが実装されます。**[デバイス]** ページでデバイスを選択すると表示される **[メソッド]** セクションでこれらを確認できます。
+リモート監視ソリューション アクセラレータを使用して、デバイスをリモートで制御できます。 サンプル コードでは 3 つのメソッドが実装されます。**[デバイス エクスプローラー]** ページでデバイスを選択すると表示される **[メソッド]** セクションでこれらを確認できます。
 
 ![IoT DevKit メソッド](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-methods.png)
 
@@ -99,11 +99,11 @@ DevKit デバイスにアップロードしたサンプル アプリケーショ
 
 1. 次の値を使用してジョブを構成し、**[適用]** をクリックします。
 
-    * ジョブを選択:**Run メソッド**
-    * メソッド名:**LedColor**
-    * ジョブ名:**ChangeLedColor**
+   * ジョブを選択:**Run メソッド**
+   * メソッド名:**LedColor**
+   * ジョブ名:**ChangeLedColor**
 
-    ![ジョブの設定](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
+     ![ジョブの設定](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/iot-suite-change-color.png)
 
 1. 数秒後、DevKit 上の RGB LED (A ボタンの下) の色が変化します。
 

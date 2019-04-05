@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: b3675821cd5565df409fac209b6763845460df1c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 123c5556dc76b35cf4a6b4b34e0c3e2fe437cebe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163378"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996463"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>Bing Image Search API v7 のアップグレード ガイド
 
@@ -26,7 +26,7 @@ ms.locfileid: "56163378"
 
 ### <a name="endpoints"></a>エンドポイント
 
-- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 たとえば、 https://api.cognitive.microsoft.com/bing/\*\*v7.0**/images/search となります。
+- エンドポイントのバージョン番号は、v5 から v7 に変更されました。 たとえば、https:\//api.cognitive.microsoft.com/bing/\*\*v7.0**/images/search のようになっています。
 
 ### <a name="error-response-objects-and-error-codes"></a>エラー応答オブジェクトとエラー コード
 

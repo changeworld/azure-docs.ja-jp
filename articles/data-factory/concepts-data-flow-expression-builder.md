@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: dab0a6a5eee8893f28a221b44d57afe255841fa0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9267360394568f0f9259a3c818b21f4e585fd958
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329747"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543731"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Mapping Data Flow の式ビルダー
 
@@ -51,7 +51,7 @@ Azure Data Factory の Mapping Data Flow には、データ変換の式を入力
 
 ## <a name="regular-expressions"></a>正規表現
 
-Azure Data Factory の Data Flow の式言語では ([詳細なリファレンス ドキュメントはこちら](http://aka.ms/dataflowexpressions))、正規表現構文を含む関数を使用できます。 正規表現関数を使用する場合、式ビルダーでは、円記号 (\)) をエスケープ文字シーケンスとして解釈することが試みられます。 正規表現で円記号を使用するときは、正規表現全体をティック ` ` 内に入れるか、円記号を二重で使用します。
+Azure Data Factory の Data Flow の式言語では ([詳細なリファレンス ドキュメントはこちら](https://aka.ms/dataflowexpressions))、正規表現構文を含む関数を使用できます。 正規表現関数を使用する場合、式ビルダーでは、円記号 (\)) をエスケープ文字シーケンスとして解釈することが試みられます。 正規表現で円記号を使用するときは、正規表現全体をティック ` ` 内に入れるか、円記号を二重で使用します。
 
 ティックの使用例
 
@@ -70,3 +70,12 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 配列を返す式関数では、角かっこ [] を使用して、返される配列オブジェクト内の特定のインデックスをアドレス指定します。 この配列は、1 ベースです。
 
 ![式ビルダーの配列](media/data-flow/expb2.png "式データのプレビュー")
+
+## <a name="handling-names-with-special-characters"></a>特殊文字を使用した名前の処理
+
+特殊文字またはスペースが含まれている列名がある場合は、その名前を中かっこを使って囲みます。
+* ```{[dbo].this_is my complex name$$$}```
+
+## <a name="next-steps"></a>次の手順
+
+[データ変換式の作成を開始する](data-flow-expression-functions.md)

@@ -3,8 +3,8 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/19/2018
-ms.author: andret
+ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: d3f2efc0ae3dcf9bdcae3f82258b28b761944487
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 4c4870dc0f5a423288e6cb561b985501414e8525
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988534"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203632"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -43,9 +43,9 @@ Visual Studio でお使いのアプリケーションをテストするには、
 
 コントローラー ビューを参照した後は、ユーザーの基本プロパティを示す次の表を確認する必要があります。
 
-|プロパティ |値 |説明 |
+|プロパティ |値 |[説明] |
 |---|---|---|
-|**名前** |ユーザーのフルネーム | ユーザーの姓と名。
+|**Name** |ユーザーのフルネーム | ユーザーの姓と名。
 |**ユーザー名** |user<span>@domain.com</span> | ユーザーの識別に使用されているユーザー名。
 |**[件名]** |Subject |Web でユーザーを一意に特定する文字列。|
 |**テナント ID** |Guid | ユーザーの Azure AD 組織を一意に表す **guid**。|
@@ -80,14 +80,14 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 アプリケーションへのユーザーのサインイン アクセスを制限するために、複数のオプションを使用できます。
 
-#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>オプション 1: アプリケーションへのサインインを 1 つの組織の Active Directory インスタンスのユーザーのみに制限する (シングルテナント)
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>オプション 1:アプリケーションへのサインインを 1 つの組織の Active Directory インスタンスのユーザーのみに制限する (シングルテナント)
 
 このオプションは、"*LOB アプリケーション*" で一般的なシナリオです。アプリケーションが特定の Azure Active Directory インスタンスに属するアカウント (そのインスタンスの "*ゲスト アカウント*" を含む) からのサインインのみを受け入れるようにする場合は、以下の手順を実行します。
 
 1. **Web.config** ファイルで、`Tenant` パラメーターの値を `Common` から `contoso.onmicrosoft.com` などの組織のテナント名に変更します。
 2. [OWIN Startup クラス](#configure-the-authentication-pipeline)の `ValidateIssuer` 引数を `true` に設定します。
 
-#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>オプション 2: アプリケーションへのアクセスを組織の特定のリスト内のユーザーに制限する
+#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>オプション 2:アプリケーションへのアクセスを組織の特定のリスト内のユーザーに制限する
 
 許可されている組織の一覧にある Azure AD 組織に属するユーザー アカウントのみに対して、サインイン アクセスを制限できます。
 1. [OWIN Startup クラス](#configure-the-authentication-pipeline)の `ValidateIssuer` 引数を `true` に設定します。

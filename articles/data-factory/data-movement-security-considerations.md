@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: d684ec56c7dfcc28d1057d0b20905db49bce9723
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498069"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099986"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,6 +34,7 @@ Data Factory を利用できるのは少数のリージョンだけですが、�
 Azure Data Factory は、クラウド データ ストアのリンクされたサービス資格情報以外のデータを格納しません。その資格情報は証明書を使用して暗号化されます。 Azure Data Factory を使用すると、データドリブン ワークフローを作成し、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)間でのデータ移動と、他のリージョンまたはオンプレミスの環境にある[コンピューティング サービス](compute-linked-services.md)を使用したデータ処理を調整できます。 また、SDK と Azure Monitor を使用して、ワークフローを監視および管理することもできます。
 
 Data Factory は、次の認証を取得しています。
+
 | **[CSA STAR 認証](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
@@ -45,12 +46,14 @@ Data Factory は、次の認証を取得しています。
 | **[SOC 1、2、3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center (セキュリティ センター)](https://microsoft.com/en-us/trustcenter/default.aspx) にアクセスしてください。 すべての Azure コンプライアンス認証の最新の一覧については、「 http://aka.ms/AzureCompliance」を参照してください。
+Azure コンプライアンスと、Azure が独自のインフラストラクチャをセキュリティで保護するしくみについて興味がある場合は、[Microsoft Trust Center (セキュリティ センター)](https://microsoft.com/en-us/trustcenter/default.aspx) にアクセスしてください。 すべての Azure コンプライアンス認証の最新の一覧については、「 https://aka.ms/AzureCompliance」を参照してください。
 
 この記事では、次の 2 つのデータ移動シナリオでセキュリティに関する考慮事項を確認します。 
 
 - **クラウド シナリオ**:このシナリオでは、ソースと移動先の両方にインターネットを通じてパブリックにアクセスできます。 これには、Azure Storage、Azure SQL Data Warehouse、Azure SQL Database、Azure Data Lake Store、Amazon S3、Amazon Redshift などの管理クラウド ストレージ サービス、Salesforce などの SaaS サービス、FTP や OData などの Web プロトコルが該当します。 サポートされているデータ ソースの完全な一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
 - **ハイブリッド シナリオ**:このシナリオでは、ソースまたは移動先のどちらかが、ファイアウォールの内側またはオンプレミスの企業ネットワーク内にあります。 あるいは、データ ストアがプライベート ネットワークまたは仮想ネットワーク内 (ほとんどの場合はソース) にあり、パブリックにアクセスできません。 仮想マシンでホストされているデータベース サーバーもこのシナリオに該当します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>クラウド シナリオ
 
@@ -89,10 +92,10 @@ Azure Data Lake Store では、アカウントに格納されているデータ�
 Azure Blob Storage と Azure Table Storage では、Storage Service Encryption (SSE) をサポートしています。SSE により、データをストレージに永続化する前の暗号化と取得前の暗号化解除が自動的に実行されます。 詳細については、「[保存データ向け Azure Storage Service Encryption](../storage/common/storage-service-encryption.md)」をご覧ください。
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 では、保存データのクライアント暗号化とサーバー暗号化の両方をサポートしています。 詳細については、「[暗号化を使用したデータの保護](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)」をご覧ください。
+Amazon S3 では、保存データのクライアント暗号化とサーバー暗号化の両方をサポートしています。 詳細については、「[暗号化を使用したデータの保護](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)」をご覧ください。
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift では、保存データのクラスター暗号化をサポートしています。 詳細については、「[Amazon Redshift データベース暗号化](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)」をご覧ください。 
+Amazon Redshift では、保存データのクラスター暗号化をサポートしています。 詳細については、「[Amazon Redshift データベース暗号化](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)」をご覧ください。 
 
 #### <a name="salesforce"></a>Salesforce
 Salesforce では、ファイル、添付ファイル、カスタム フィールドをすべて暗号化できる Shield Platform Encryption をサポートしています。 詳細については、「[Understanding the Web Server OAuth Authentication Flow (Web サーバーの OAuth 認証フローについて)](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)」をご覧ください。  
@@ -109,9 +112,9 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 - **資格情報をローカルに保存します**。 セルフホステッド統合ランタイムでローカルに資格情報を暗号化して格納したい場合、「[Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する](encrypt-credentials-self-hosted-integration-runtime.md)」の手順に従ってください。 このオプションは、すべてのコネクタでサポートされています。 セルフホステッド統合ランタイムは、Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) を使用して機密データと資格情報を暗号化します。 
 
-   リンクされたサービスの資格情報およびリンクされたサービスの機密情報の暗号化には、**New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用してください。 それから (接続文字列の **EncryptedCredential** 要素と共に) 返される JSON を使用して、**Set-AzureRmDataFactoryV2LinkedService** コマンドレットを使用してリンクされたサービスを作成できます。  
+   リンクされたサービスの資格情報およびリンクされたサービスの機密情報の暗号化には、**New-AzDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用してください。 それから (接続文字列の **EncryptedCredential** 要素と共に) 返される JSON を使用して、**Set-AzDataFactoryV2LinkedService** コマンドレットを使用してリンクされたサービスを作成できます。  
 
-- **Azure Data Factory で管理されているストレージに格納します**。 接続文字列と資格情報をインラインで使用して **Set-AzureRmDataFactoryV2LinkedService** コマンドレットを JSON で直接使用する場合、リンクされたサービスは Azure Data Factory によって管理されるストレージで暗号化され格納されます。 それでも機密情報は証明書によって暗号化され、Microsoft がこれらの証明書を管理します。
+- **Azure Data Factory で管理されているストレージに格納します**。 接続文字列と資格情報をインラインで使用して **Set-AzDataFactoryV2LinkedService** コマンドレットを JSON で直接使用する場合、リンクされたサービスは暗号化され Azure Data Factory マネージド ストレージに格納されます。 それでも機密情報は証明書によって暗号化され、Microsoft がこれらの証明書を管理します。
 
 
 
@@ -184,7 +187,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
-- [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

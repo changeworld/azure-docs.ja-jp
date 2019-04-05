@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: ab72091c58420459620352c8169773111149316d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 3676a1e4bf69f7d31bb347f99787c4e2f08721a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245730"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107595"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>構成サーバーの問題のトラブルシューティング
 
@@ -25,9 +25,9 @@ ms.locfileid: "56245730"
 1. C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log ファイルを開きます  (ProgramData フォルダーは非表示のフォルダーである場合があります。 ProgramData フォルダーが表示されない場合は、エクスプローラーの **[表示]** タブにある **[表示/非表示]** セクションで、**[Hidden items]\(非表示の項目\)** チェック ボックスをオンにします)。エラーは、複数の問題が原因で発生する可能性があります。
 
 2. 文字列「**No Valid IP Address found (有効な IP アドレスが見つかりません)**」を検索します。 この文字列が見つかった場合:
-    1. 要求されているホスト ID がソース マシンのホスト ID と同じであることを確認します。
-    2. 物理 NIC に 1 つ以上の IP アドレスが割り当てられていることを確認します。 構成サーバーへのエージェントの登録が成功するためには、ソース マシンの物理 NIC に 1 つ以上の有効な IP v4 アドレスが割り当てられている必要があります。
-    3. ソース マシン上で次のいずれかのコマンドを実行して、ソース マシンのすべての IP アドレスを取得します。
+   1. 要求されているホスト ID がソース マシンのホスト ID と同じであることを確認します。
+   2. 物理 NIC に 1 つ以上の IP アドレスが割り当てられていることを確認します。 構成サーバーへのエージェントの登録が成功するためには、ソース マシンの物理 NIC に 1 つ以上の有効な IP v4 アドレスが割り当てられている必要があります。
+   3. ソース マシン上で次のいずれかのコマンドを実行して、ソース マシンのすべての IP アドレスを取得します。
       - Windows の場合: `> ipconfig /all`
       - Linux の場合: `# ifconfig -a`
 

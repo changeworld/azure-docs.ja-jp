@@ -1,5 +1,5 @@
 ---
-title: アクセス レビューを実行するためのリソース ダッシュボードの使用 - Azure | Microsoft Docs
+title: PIM でアクセス レビューを実行するためのリソース ダッシュボードの使用 - Azure | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) でアクセス レビューを実行するためにリソース ダッシュボードを使用する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30cfafec770aec72faf01563018fbd478e73ab2f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 89abf15731bd125737e7c18ab45782820a856b38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202594"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012678"
 ---
-# <a name="use-a-resource-dashboard-to-perform-an-access-review"></a>アクセス レビューを実行するためのリソース ダッシュボードの使用
+# <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>PIM でアクセス レビューを実行するためのリソース ダッシュボードの使用
 
 Azure リソース向けの Privileged Identity Management (PIM) でアクセス レビューを実行するためにリソース ダッシュボードを使用できます。 [管理者ビュー] のダッシュボードには、3 つの主要なコンポーネントがあります。
 

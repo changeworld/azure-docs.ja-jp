@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7054946a15ca27f4b5a36d3d2ac712cba2fd68d8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e79b0fc0ef23287c8871b7a7634d28d129b900e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185130"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101144"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
 
@@ -85,19 +85,19 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
     ![[Workplace Join for Windows (Windows の社内参加)]](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
     
-    - Autoworkplace.exe が Azure AD または AD FS で自動的に認証できない場合。 これは、AD FS が見つからないか正しく構成されていない (フェデレーション ドメインの場合)、Azure AD シームレス シングル サインオンが見つからないか正しく構成されていない (マネージド ドメインの場合)、またはネットワークの問題によって発生する可能性があります。 
+  - Autoworkplace.exe が Azure AD または AD FS で自動的に認証できない場合。 これは、AD FS が見つからないか正しく構成されていない (フェデレーション ドメインの場合)、Azure AD シームレス シングル サインオンが見つからないか正しく構成されていない (マネージド ドメインの場合)、またはネットワークの問題によって発生する可能性があります。 
     
-     - 多要素認証 (MFA) がユーザーに対して有効化/構成され、WIAORMUTLIAUTHN が AD FS サーバーで構成されていない可能性があります。 
+    - 多要素認証 (MFA) がユーザーに対して有効化/構成され、WIAORMUTLIAUTHN が AD FS サーバーで構成されていない可能性があります。 
      
-     - また、ホーム領域検出 (HRD) ページがユーザーの操作を待っているため、**autoworkplace.exe** では、トークンのサイレント要求ができなくなっていることも考えられます。
+    - また、ホーム領域検出 (HRD) ページがユーザーの操作を待っているため、**autoworkplace.exe** では、トークンのサイレント要求ができなくなっていることも考えられます。
      
-     - AD FS と Azure AD の URL がクライアントの IE のイントラネット ゾーンにない可能性があります。
+    - AD FS と Azure AD の URL がクライアントの IE のイントラネット ゾーンにない可能性があります。
      
-     - ネットワーク接続の問題により、**autoworkplace.exe** で AD FS または Azure AD の URL にアクセスできない場合があります。 
+    - ネットワーク接続の問題により、**autoworkplace.exe** で AD FS または Azure AD の URL にアクセスできない場合があります。 
      
-     - **autoworkplace.exe** は、クライアントに、クライアントから組織のオンプレミスの AD ドメイン コントローラーまでの直接の見通し線があることを必要とします。つまり、ハイブリッド Azure AD 参加は、クライアントが組織のイントラネットに接続されている場合にのみ成功します。
+    - **utoworkplace.exe** は、クライアントに、クライアントから組織のオンプレミスの AD ドメイン コントローラーまでの直接の見通し線があることを必要とします。つまり、ハイブリッド Azure AD 参加は、クライアントが組織のイントラネットに接続されている場合にのみ成功します。
      
-     - 組織は Azure AD シームレス シングル サインオンを使用しており、デバイスの IE イントラネット設定には `https://autologon.microsoftazuread-sso.com` または `https://aadg.windows.net.nsatc.net` が存在せず、イントラネット ゾーンについて **[スクリプトを介したステータス バーの更新を許可する]** が有効にされていません。
+    - 組織は Azure AD シームレス シングル サインオンを使用しており、デバイスの IE イントラネット設定には `https://autologon.microsoftazuread-sso.com` または `https://aadg.windows.net.nsatc.net` が存在せず、イントラネット ゾーンについて **[スクリプトを介したステータス バーの更新を許可する]** が有効にされていません。
 
 - ドメイン ユーザーとしてサインオンしていない
 

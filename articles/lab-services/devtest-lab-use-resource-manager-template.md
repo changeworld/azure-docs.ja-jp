@@ -12,20 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 99c4f838c3c4e4708c3e21ff9c7e63b69a507dbe
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: eaa285318a868d0ccee07d830e1cc1be18f457a2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746916"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181556"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して仮想マシンを作成する 
 
 [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) を介して DevTest Labs で仮想マシン (VM) を作成すると、VM を保存する前に Azure Resource Manager テンプレートを表示できます。 このテンプレートは、同じ設定で追加のラボ VM を作成するベースとして使用できます。
 
 この記事では、複数の VM と単一の VM の Resource Manager テンプレートについて説明します。また、VM の作成時にテンプレートを表示し、保存する方法を示します。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>マルチ VM と単一 VM の Resource Manager テンプレートの比較
 Resource Manager テンプレートを使用して DevTest Labs で VM を作成する方法は 2 つあります。Microsoft.DevTestLab/labs/virtualmachines リソースのプロビジョニング、またはMicrosoft.Commpute/virtualmachines リソースのプロビジョニングです。 それぞれ、異なるシナリオで使用され、異なるアクセス許可が必要です。
@@ -34,7 +36,7 @@ Resource Manager テンプレートを使用して DevTest Labs で VM を作成
 
    ![DevTest Labs 仮想マシンの一覧に 1 つの項目として表示される VM の一覧](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   この種類の Resource Manager テンプレートは、Azure PowerShell コマンド **New-AzureRmResourceGroupDeployment** によって、または Azure CLI コマンド **az group deployment create** によってプロビジョニングできます。 これには管理者のアクセス許可が必要なので、DevTest Labs のユーザー ロールに割り当てられているユーザーはデプロイを実行できません。 
+   この種類の Resource Manager テンプレートは、Azure PowerShell コマンド **New-AzResourceGroupDeployment** によって、または Azure CLI コマンド **az group deployment create** によってプロビジョニングできます。 これには管理者のアクセス許可が必要なので、DevTest Labs のユーザー ロールに割り当てられているユーザーはデプロイを実行できません。 
 
 - Microsoft.Compute/virtualmachines というリソースの種類を使用する Resource Manager テンプレートは、複数の VM を、DevTest Labs 仮想マシンの一覧における 1 つの環境としてプロビジョニングできます。
 
@@ -64,5 +66,5 @@ Resource Manager テンプレートを保存したら、使用する前に、テ
 
 ### <a name="next-steps"></a>次の手順
 * [Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)方法を確認します。
-* [Resource Manager テンプレートをデプロイして VM を作成する](devtest-lab-create-environment-from-arm.md#deploy-a-resource-manager-template-to-create-a-vm)
+* [Resource Manager テンプレートをデプロイして VM を作成する](devtest-lab-create-environment-from-arm.md#automate-deployment-of-environments)
 * [パブリックの DevTest Labs GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)から、DevTest Labs 自動化のためのクイックスタートの Resource Manager テンプレートをもっと探します。

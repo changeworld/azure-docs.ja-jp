@@ -1,5 +1,5 @@
 ---
-title: 複合エンティティ"
+title: 複合エンティティのチュートリアル
 titleSuffix: Azure Cognitive Services
 description: さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0d78c365b171ea80d208c447f4746fe80b965ef2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c49090a5563a6d63c90b29cc7442c1e4ed9886e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883306"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091581"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>チュートリアル:関連するデータのグループ化と抽出
 このチュートリアルでは、さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
@@ -85,18 +85,19 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 1. 意図の一覧から **TransferEmployeeToDepartment** を選択します。
 
-1. 最初の発話で personName エンティティ `John Jackson` を選択し、以下の発話に対するポップアップ メニュー リストで **[Start wrapping composite entity]\(複合エンティティのラップを始める\)** を選択します。
+1. 発話 `place John Jackson in engineering` で、personName エンティティ `John Jackson` を選択し、以下の発話に対するポップアップ メニュー リストで **[Wrap in composite entity]\(複合エンティティにラップする\)** を選択します。 
 
-    `place John Jackson in engineering`
+    ![ラップ複合を選択するドロップダウン ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
 1. 次に、発話内の最後のエンティティ `engineering` を直ちに選択します。 選択された単語の下に、複合エンティティを示す緑色のバーが描画されます。 ポップアップ メニューで、複合名 `TransferEmployeeInfo` を入力して Enter キーを押します。 
 
-1. **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか?\)** では、必要なすべてのフィールドが一覧にあります: `personName` と `Department`。 **[完了]** を選択します。 
+    ![複合名を入力するドロップダウン ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-    事前構築済みのエンティティ personName が複合エンティティに追加されました。 複合エンティティの開始トークンと終了トークンの間に事前構築済みエンティティを出現させることができた場合、複合エンティティにはそれらの事前構築済みエンティティが含まれている必要があります。 事前構築済みエンティティが含まれていない場合、複合エンティティは正しく予測されませんが、個別の要素は正しく予測されます。
+1. **[What type of entity do you want to create?]\(どのような種類のエンティティを作成しますか?\)** では、必要なすべてのフィールドが一覧にあります: `personName` と `Department`。 **[完了]** を選択します。 事前構築済みのエンティティ personName が複合エンティティに追加されました。 複合エンティティの開始トークンと終了トークンの間に事前構築済みエンティティを出現させることができた場合、複合エンティティにはそれらの事前構築済みエンティティが含まれている必要があります。 事前構築済みエンティティが含まれていない場合、複合エンティティは正しく予測されませんが、個別の要素は正しく予測されます。
+
+    ![複合名を入力するドロップダウン ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
 ## <a name="label-example-utterances-with-composite-entity"></a>発話の例に複合エンティティのラベルを付ける
-
 
 1. 各発話の例で、複合に含まれている左端のエンティティを選択します。 次に、**「Wrap in composite entity」(複合エンティティにラップする)** を選択します。
 
@@ -182,7 +183,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
     }
     ```
 
-  この発話は、複合エンティティの配列を返します。 各エンティティには、型と値が与えられます。 子エンティティごとの精度を高めるには、複合の配列項目の型と値の組み合わせを使用して、エンティティの配列内の対応する項目を見つけます。  
+   この発話は、複合エンティティの配列を返します。 各エンティティには、型と値が与えられます。 子エンティティごとの精度を高めるには、複合の配列項目の型と値の組み合わせを使用して、エンティティの配列内の対応する項目を見つけます。  
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fb90dbdb02fc0a0448b8cb6723c980c0fe41bd6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b307a497e69bd6c2dcc7b415b2d94335459f7fd3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424321"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544990"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 
@@ -142,7 +142,7 @@ Log Analytics 共同作成者は、すべての監視データを読み取り、
 |Microsoft.Compute/virtualMachines/extensions/*|従来の仮想マシン拡張機能の作成と管理。|
 |Microsoft.Insights/alertRules/*|アラート ルールの読み取り/書き込み/削除を実行します。|
 |Microsoft.Insights/diagnosticSettings/*|診断設定の読み取り/書き込み/削除を実行します。|
-|Microsoft.OperationalInsights/*|Log Analytics の管理。|
+|Microsoft.OperationalInsights/*|Azure Monitor ログの管理。|
 |Microsoft.OperationsManagement/*|ワークスペースでのソリューションの管理。|
 |Microsoft.Resources/deployments/*|リソース グループ デプロイの作成と管理。|
 |Microsoft.Resources/subscriptions/resourcegroups/deployments/*|リソース グループ デプロイの作成と管理。|
@@ -156,8 +156,8 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |**アクション**  |**説明**  |
 |---------|---------|
 |*/read|機密データを除くあらゆる種類のリソースの読み取り|
-|Microsoft.OperationalInsights/workspaces/analytics/query/action|Log Analytics でのクエリの管理。|
-|Microsoft.OperationalInsights/workspaces/search/action|Log Analytics データの検索。|
+|Microsoft.OperationalInsights/workspaces/analytics/query/action|Azure Monitor ログのクエリの管理。|
+|Microsoft.OperationalInsights/workspaces/search/action|Azure Monitor ログのデータの検索。|
 |Microsoft.Support/*|サポート チケットの作成と管理。|
 |**否認されるアクション**| |
 |Microsoft.OperationalInsights/workspaces/sharedKeys/read|共有アクセス キーを読み取ることはできません。|
@@ -180,11 +180,11 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |Microsoft.Insights/Metrics/*|リソースのメトリックを読み取ります。|
 |Microsoft.Insights/Register/Action|Microsoft Insights プロバイダーを登録します。|
 |Microsoft.Insights/webtests/*|Application Insights の Web テストの管理。|
-|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Log Analytics のソリューション パックの管理。|
-|Microsoft.OperationalInsights/workspaces/savedSearches/*|Log Analytics の保存した検索条件の管理。|
+|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Azure Monitor ログのソリューション パックの管理。|
+|Microsoft.OperationalInsights/workspaces/savedSearches/*|Azure Monitor ログの保存した検索条件の管理。|
 |Microsoft.OperationalInsights/workspaces/search/action|Log Analytics ワークスペースを検索します。|
 |Microsoft.OperationalInsights/workspaces/sharedKeys/action|Log Analytics ワークスペースのキーを一覧表示します。|
-|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Log Analytics ストレージ分析情報構成の管理。|
+|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Azure Monitor ログのストレージ分析情報構成の管理。|
 |Microsoft.Support/*|サポート チケットの作成と管理。|
 |Microsoft.WorkloadMonitor/workloads/*|ワークロードの管理。|
 

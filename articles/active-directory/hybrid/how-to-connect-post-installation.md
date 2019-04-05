@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 576d3d4b9c793c564410335ce35ddd4c40697e4a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 291b3d506993cfea89be072684835c0d4efe75f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197404"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095451"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>次のステップと Azure AD Connect の管理方法
 この記事の操作手順を使用して、組織のニーズや要件を満たすように Azure Active Directory (Azure AD) Connect をカスタマイズします。  
@@ -51,12 +51,16 @@ Azure Portal を使用して、同期の状態を確認します。
 4. ディレクトリ ページの上部にある **[ディレクトリ統合]** を選択します。
 5. **[ローカル Active Directory との統合]** で、最後の同期時刻を確認します。
 
-<center>![ディレクトリ同期時刻](./media/how-to-connect-post-installation/verify.png)</center>
+<center>
+
+![ディレクトリ同期時刻](./media/how-to-connect-post-installation/verify.png)</center>
 
 ## <a name="start-a-scheduled-synchronization-task"></a>スケジュールされた同期タスクを開始する
 同期タスクを実行する必要がある場合は、Azure AD Connect ウィザードをもう一度実行して行うことができます。  Azure AD 資格情報を入力する必要があります。  ウィザードで、**[同期オプションのカスタマイズ]** タスクを選択し、**[次へ]** をクリックして移動します。 最後に、**[初期構成が完了したら、同期処理を開始してください。]** チェック ボックスがオンになっていることをご確認ください。
 
-<center>![同期の開始](./media/how-to-connect-post-installation/startsynch.png)</center>
+<center>
+
+![同期の開始](./media/how-to-connect-post-installation/startsynch.png)</center>
 
 Azure AD Connect 同期スケジューラについて詳しくは、[Azure AD Connect スケジューラ](how-to-connect-sync-feature-scheduler.md)に関する記事をご覧ください。
 

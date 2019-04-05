@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 03/20/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91dd25eadd3842cf1a94608a6f0ad9cfcd25039a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bbfc325d1a33db45afecf30bfa21244e3336961d
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197234"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295489"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](how-to-connect-install-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -221,7 +221,7 @@ Azure AD Connect で追加されたフォレストごとに、ドメイン管理
 >シングル サインオンを使用しない特定のフォレストについては、スキップすることができます。
 
 #### <a name="configure-the-intranet-zone-for-client-machines"></a>クライアント コンピューターのイントラネット ゾーンの構成
-クライアントがイントラネット ゾーンに自動的にサインインするように、2 つの URL はイントラネット ゾーンに含まれるものにする必要があります。 これを行うことで、ドメインに参加しているコンピューターが、企業ネットワークに接続された際に Kerberos チケットを Azure AD に自動的に送信するようになります。
+クライアントがイントラネット ゾーンで自動的にサインインするように、その URL をイントラネット ゾーンに含めるようにする必要があります。 これを行うことで、ドメインに参加しているコンピューターが、企業ネットワークに接続された際に Kerberos チケットを Azure AD に自動的に送信するようになります。
 グループ ポリシー管理ツールがあるコンピューターで次の手順を実行します。
 
 1.  グループ ポリシー管理ツールを開きます。
@@ -365,7 +365,7 @@ Azure AD Connect は、前の手順で PingFederate メタデータから取得�
 
 ステージング モード中は、同期エンジンに必要な変更を加え、エクスポートされる内容を確認することができます。 構成が適切な状態になったら、インストール ウィザードをもう一度実行し、ステージング モードを無効にします。 これで、データはこのサーバーから Azure AD にエクスポートされます。 1 つのサーバーのみをアクティブにしてエクスポートするために、このとき他のサーバーは無効にしてください。
 
-詳細については、「[ステージング モード](how-to-connect-sync-operations.md#staging-mode)」を参照してください。
+詳細については、「[ステージング モード](how-to-connect-sync-staging-server.md)」を参照してください。
 
 ### <a name="verify-your-federation-configuration"></a>フェデレーション構成の確認
 [検証] をクリックすると、Azure AD Connect によって DNS 設定が検証されます。

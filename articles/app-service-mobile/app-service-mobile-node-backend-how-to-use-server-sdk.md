@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725033"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997535"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Mobile Apps Node.js SDK の使用方法
 
@@ -135,7 +135,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
 
     ファイルを保存します。
 
-1. アプリケーションをローカルで実行するか (API は http://localhost:3000) で動作します)、Azure に発行します。
+1. アプリケーションをローカルで実行するか (API は `http://localhost:3000` で動作します)、Azure に発行します。
 
 ### <a name="create-node-backend-portal"></a>Azure Portal を使用して Node.js バックエンドを作成する
 
@@ -372,7 +372,7 @@ azureMobile.js ファイル内のほとんどの設定には、[Azure Portal] �
 
 | アプリ設定 | azureMobile.js setting | 説明 | 有効な値 |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |name |アプリの名前 |string |
+| **MS_MobileAppName** |name |アプリの名前 |文字列 |
 | **MS_MobileLoggingLevel** |logging.level |ログ記録するメッセージの最小ログ レベル |error、warning、info、verbose、debug、silly |
 | **MS_DebugMode** |debug |デバッグ モードを有効または無効にします |true、false |
 | **MS_TableSchema** |data.schema |SQL テーブルの既定のスキーマ名 |string (既定: dbo) |

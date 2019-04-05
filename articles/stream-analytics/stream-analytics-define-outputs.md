@@ -9,19 +9,19 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8ae55028bbc44a9383be6723f9bc6d39787cca45
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 0a3fd2cc66a066d2790d2e12822e3246dc3db382
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767305"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898875"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 この記事では、Azure Stream Analytics ジョブで使用できるさまざまな種類の出力について説明します。 出力を使用すると、Stream Analytics ジョブの結果を格納したり保存したりできます。 出力データを使用して、データのビジネス分析をさらに進めたり、データ ウェアハウスを使用したりできます。
 
 Stream Analytics のクエリを作成するときは、[INTO 句](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics)を使用して出力の名前を参照します。 ジョブごとに 1 つの出力を使用できます。または、クエリで複数の INTO 句を指定することによって、必要に応じてストリーミング ジョブごとに複数の出力を使用できます。
 
-Stream Analytics ジョブの出力を作成、編集、テストするには、[Azure Portal](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.Net API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)、および [Visual Studio](stream-analytics-quick-create-vs.md) を使用できます。
+Stream Analytics ジョブの出力を作成、編集、テストするには、[Azure portal](stream-analytics-quick-create-portal.md#configure-job-output)、[Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job)、[.NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet)、[REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output)、および [Visual Studio](stream-analytics-quick-create-vs.md) を使用できます。
 
 一部の出力の種類は[パーティション分割](#partitioning)に対応します。また、スループットを最適化するために[出力のバッチ サイズ](#output-batch-size)が異なります。
 
@@ -56,7 +56,7 @@ Stream Analytics からの Azure Data Lake Store 出力は、現在、Azure 中�
 | 形式 | JSON のシリアル化のみに適用されます。 [改行区切り] を指定すると、各 JSON オブジェクトを改行で区切って、出力が書式設定されます。 [配列] を指定すると、JSON オブジェクトの配列として出力が書式設定されます。 この配列が閉じられるのは、ジョブが停止したとき、または Stream Analytics が次の時間枠に移動したときだけです。 一般に、改行区切りの JSON を使うことが推奨されます。そうすれば、出力ファイルがまだ書き込まれている間に、特別な処理は必要ありません。|
 
 ### <a name="renew-data-lake-store-authorization"></a>Data Lake Store の承認を更新する
-ジョブが作成されてから、または前回の認証以降に Data Lake Store アカウントのパスワードが変わった場合、そのアカウントを再認証する必要があります。 再認証しないと、ジョブから出力結果が生成されず、操作ログに再認証の必要性を示すエラーが表示されます。 現在、Data Lake Store 出力のあるすべてのジョブについて、90 日おきに認証トークンを手動で更新する必要があるという制限事項があります。
+ジョブが作成されてから、または前回の認証以降に Data Lake Store アカウントのパスワードが変わった場合、そのアカウントを再認証する必要があります。 再認証しないと、ジョブから出力結果が生成されず、操作ログに再認証の必要性を示すエラーが表示されます。 現在、Data Lake Store 出力のあるすべてのジョブについて、90 日おきに認証トークンを手動で更新する必要があるという制限事項があります。 ただし、[マネージド ID (プレビュー) を使用して認証](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-managed-identities-adls)することで、この制限を回避できます。
 
 承認を更新するには、ジョブを **[停止]** して、Data Lake Store の出力に移動し、**[承認の更新]** リンクをクリックします。"**承認にリダイレクトしています**" というページが短時間表示されます。このページは自動的に閉じられ、処理が成功すると "**承認が正常に更新されました**" と表示されます。 ページの下部にある **[保存]** をクリックする必要があります。**[最後に停止した時刻]** からジョブを再開して継続することで、データの損失を防ぐことができます。
 
@@ -169,7 +169,7 @@ Azure Stream Analytics では、出力スキーマが変更されると、デー
 次の表は、Power BI データセットとテーブルが存在しない場合の [Stream Analytics データ型](https://msdn.microsoft.com/library/azure/dn835065.aspx)から Power BI の [Entity Data Model (EDM) 型](https://powerbi.microsoft.com/documentation/powerbi-developer-walkthrough-push-data/)へのデータ型の変換を示します。
 
 Stream Analytics から | Power BI へ
------|-----|------------
+-----|-----
 bigint | Int64
 nvarchar(max) | String
 Datetime | DateTime
@@ -186,7 +186,7 @@ Stream Analytics では、出力内の最初のイベント セットに基づ�
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | String | String | Double
 Double | Double | String | String | Double
-String | String | String | String |  | String |
+String | String | String | String | String 
 DateTime | String | String |  DateTime | String
 
 
@@ -261,6 +261,7 @@ Stream Analytics からの Azure Cosmos DB 出力は、現在、Azure 中国 (21
 > その他の Azure Cosmos DB API は、まだサポートされていません。 Azure Stream Analytics を、その他のAPI で作成した Azure Cosmos DB アカウントへ接続する場合は、データが正しく格納されない可能性があります。
 
 次の表では、Azure Cosmos DB の出力を作成するプロパティについて説明します。
+
 | プロパティ名 | description |
 | --- | --- |
 | 出力エイリアス | Stream Analytics クエリ内でこの出力を意味するエイリアス。 |
@@ -331,7 +332,7 @@ Azure Stream Analytics では、イベントを処理して出力に書き込む
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
-
+> 
 > [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->

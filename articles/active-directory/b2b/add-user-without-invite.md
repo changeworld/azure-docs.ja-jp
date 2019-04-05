@@ -1,5 +1,5 @@
 ---
-title: 招待を使用せずに B2B コラボレーション ユーザーを Azure Active Directory に追加する | Microsoft Docs
+title: 招待リンクまたはメールを使用せずに B2B ゲストを追加する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションの招待を利用しないでゲスト ユーザーが他のゲスト ユーザーを Azure AD に追加することができます。
 services: active-directory
 documentationcenter: ''
@@ -12,14 +12,14 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90e156f1d1d7bbbb6c4f65a4762977d28a5a0b89
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1dca03f84b821d20ee6fecbaec24a1aa840836b5
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182597"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294979"
 ---
-# <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>招待を使用せずに B2B コラボレーション ゲスト ユーザーを追加する
+# <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>招待リンクまたはメールを使用せずに B2B コラボレーション ゲスト ユーザーを追加する
 
 共有アプリに直接リンクを送信してゲスト ユーザーを招待できるようになりました。 この方法を使用すると、特殊な場合を除き、ゲスト ユーザーは招待メールを使用する必要がありません。 ゲスト ユーザーがアプリのリンクをクリックしてプライバシー条項を確認し同意すると、アプリにシームレスにアクセスできます。 詳細については、「[B2B コラボレーションの招待の利用](redemption-experience.md)」を参照してください。   
 
@@ -33,7 +33,7 @@ ms.locfileid: "56182597"
 
 ディレクトリにユーザーを招待した場合、ゲスト ユーザーは、リソース テナント固有の Azure Portal URL (https://portal.azure.com/*resourcetenant* onmicrosoft.com など) に直接アクセスしてプライバシー条項を読み、これに同意する必要があります。
 
-### <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 
 - [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 - [B2B コラボレーションの招待の利用](redemption-experience.md)

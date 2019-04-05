@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/02/2019
-ms.openlocfilehash: 49087792efa5e377beadc78746bcf99c88954e9b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 39ae8dc65c71907a3540277b65a3a8f3d790b6f3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000082"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089014"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート
 
@@ -1155,7 +1155,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 | BUG-98983              | [KNOX-1108](https://issues.apache.org/jira/browse/KNOX-1108)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | NiFiHaDispatch がフェールオーバーしない                                                                                                                |
 | BUG-99107              | [HIVE-19054](https://issues.apache.org/jira/browse/HIVE-19054)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 関数レプリケーションが "hive.repl.replica.functions.root.dir" をルートとして使用する必要がある                                                                  |
 | BUG-99145              | [RANGER-2035](https://issues.apache.org/jira/browse/RANGER-2035)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Oracle のバックエンドで空の implClass により servicedefs へのアクセスが失敗する                                                                          |
-| BUG-99160              | [SLIDER-1259](https://issues.apache.org/jira/browse/SLIDER-1259)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | スライダーがマルチ ホーム環境で機能しない                                                                                               |
+| BUG-99160              | [SLIDER-1259](https://issues.apache.org/jira/browse/SLIDER-1259)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | スライダーがマルチホーム環境で機能しない                                                                                               |
 | BUG-99239              | [ATLAS-2462](https://issues.apache.org/jira/browse/ATLAS-2462)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | すべてのテーブルの Sqoop のインポートでコマンドにテーブルが指定されないと NPE がスローされる                                                                        |
 | BUG-99301              | [ATLAS-2530](https://issues.apache.org/jira/browse/ATLAS-2530)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | hive\_process および hive\_column\_lineage の名前属性の先頭に新しい行                                                    |
 | BUG-99453              | [HIVE-19065](https://issues.apache.org/jira/browse/HIVE-19065)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | metastore クライアントの互換性チェックに syncMetaStoreClient が含まれている必要がある                                                                        |
@@ -1309,116 +1309,116 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 ## <a name="known-issues"></a>既知の問題
 
--   **HDInsight と ADLS Gen 2 の統合** Azure Data Lake Storage Gen 2 を使用する HDInsight ESP クラスターには、ユーザー ディレクトリとアクセス許可に関して次の 2 つの問題があります。
+- **HDInsight と ADLS Gen 2 の統合** Azure Data Lake Storage Gen 2 を使用する HDInsight ESP クラスターには、ユーザー ディレクトリとアクセス許可に関して次の 2 つの問題があります。
    
-   1. ユーザーのホーム ディレクトリが、ヘッド ノード 1 に作成されません。 回避策として、ディレクトリを手動で作成し、所有権をそれぞれのユーザーの UPN に変更します。
+  1. ユーザーのホーム ディレクトリが、ヘッド ノード 1 に作成されません。 回避策として、ディレクトリを手動で作成し、所有権をそれぞれのユーザーの UPN に変更します。
    
-   2. /hdp ディレクトリに対するアクセス許可が、現在は 751 に設定されません。 これを次のように設定する必要があります 
-      ```bash
-      chmod 751 /hdp 
-      chmod –R 755 /hdp/apps
-      ```
+  2. /hdp ディレクトリに対するアクセス許可が、現在は 751 に設定されません。 これを次のように設定する必要があります 
+     ```bash
+     chmod 751 /hdp 
+     chmod –R 755 /hdp/apps
+     ```
 
--   **Spark 2.3**
+- **Spark 2.3**
 
-    -   \[[*SPARK-23523*](https://issues.apache.org/jira/browse/SPARK-23523)\]\[SQL\] ルール OptimizeMetadataOnlyQuery によって正しくない結果が生成される
+  -   \[[*SPARK-23523*](https://issues.apache.org/jira/browse/SPARK-23523)\]\[SQL\] ルール OptimizeMetadataOnlyQuery により正しくない結果になる
 
-    -   \[[*SPARK-23406*](https://issues.apache.org/jira/browse/SPARK-23406)\] ストリーム間の自己結合でバグが発生する
+  -   \[[*SPARK-23406*](https://issues.apache.org/jira/browse/SPARK-23406)\] ストリーム間の自己結合でバグが発生する
 
-    -   Azure Data Lake Storage (Gen2) がクラスターの既定のストレージである場合、Spark のサンプル ノートブックは使用できません。
+  -   Azure Data Lake Storage (Gen2) がクラスターの既定のストレージである場合、Spark のサンプル ノートブックは使用できません。
 
--   **Enterprise セキュリティ パッケージ**
+- **Enterprise セキュリティ パッケージ**
 
-    - Spark Thrift サーバーは、ODBC クライアントからの接続は受け入れません。
-      回避策の手順:
-      1. クラスターの作成後、約 15 分間待機します。
-      2. Ranger UI に hivesampletable_policy があることを確認します。
-      3. Spark サービスを再起動します。
-         これで STS の接続が機能するようになります。
+  - Spark Thrift サーバーは、ODBC クライアントからの接続は受け入れません。
+    回避策の手順:
+    1. クラスターの作成後、約 15 分間待機します。
+    2. Ranger UI に hivesampletable_policy があることを確認します。
+    3. Spark サービスを再起動します。
+       これで STS の接続が機能するようになります。
 
--   **Ranger サービス チェック エラーの回避策**
+- **Ranger サービス チェック エラーの回避策**
 
-    -   [RANGER-1607](https://issues.apache.org/jira/browse/RANGER-1607): 以前の HDP のバージョンから HDP 2.6.2 へのアップグレード中に、Ranger サービス チェック エラーを回避する方法。
+  -   [RANGER-1607](https://issues.apache.org/jira/browse/RANGER-1607): 以前の HDP のバージョンから HDP 2.6.2 へのアップグレード中に、Ranger サービス チェック エラーを回避する方法。
 
-        > [!NOTE]  
-        > SSL が有効な Ranger でのみ有効です。 
+      > [!NOTE]  
+      > SSL が有効な Ranger でのみ有効です。 
      
-    この問題は、Ambari を使用して以前の HDP のバージョンから HDP-2.6.1 へのアップグレードを試行するときに発生します。 Ambari は curl 呼び出しを使用して、Ambari の Rnager サービスのサービス チェックを行います。 Ambari で使用されている JDK バージョンが JDK-1.7 の場合、curl 呼び出しは以下のエラーで失敗します。
+  この問題は、Ambari を使用して以前の HDP のバージョンから HDP-2.6.1 へのアップグレードを試行するときに発生します。 Ambari は curl 呼び出しを使用して、Ambari の Rnager サービスのサービス チェックを行います。 Ambari で使用されている JDK バージョンが JDK-1.7 の場合、curl 呼び出しは以下のエラーで失敗します。
     
-    `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
+  `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
     
-    このエラーは、Ranger で使用されている Tomcat のバージョンが Tomcat-7.0.7\* であることが原因です。 JDK-1.7 の使用は、Tomcat-7.0.7\* で提供されている既定の暗号と競合します。
+  このエラーは、Ranger で使用されている Tomcat のバージョンが Tomcat-7.0.7\* であることが原因です。 JDK-1.7 の使用は、Tomcat-7.0.7\* で提供されている既定の暗号と競合します。
     
-    この問題は、次の 2 つの方法で解決できます。
+  この問題は、次の 2 つの方法で解決できます。
     
-    -   Ambari で使用される JDK を JDK-1.7 から JDK-1.8 に更新します (Ambari リファレンス ガイドの  [JDK バージョンの変更](https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_ambari_reference_guide/content/ch_changing_the_jdk_version_on_an_existing_cluster.html) に関するセクションを参照)。
+  -   Ambari で使用されている JDK を JDK-1.7 から JDK-1.8 に更新する (Ambari リファレンス ガイドの「[Change the JDK Version](https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_ambari_reference_guide/content/ch_changing_the_jdk_version_on_an_existing_cluster.html)」(JDK バージョンの変更) のセクションを参照)。
     
-    -   JDK-1.7 環境のサポートを継続する場合:
+  -   JDK-1.7 環境のサポートを継続する場合:
     
-        1.  Ambari Ranger 構成の ranger-admin-site セクションに次の値を持つプロパティ ranger.tomcat.ciphers を追加します。
+      1.  Ambari Ranger の構成の ranger-admin-site セクションに、プロパティ ranger.tomcat.ciphers を次の値で追加します。
             
-            SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
+          SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
         
-        2.  環境が Ranger-KMS 用に構成されている場合は、Ambari Ranger 構成の theranger-kms-site セクションに次の値を持つプロパティ ranger.tomcat.ciphers を追加します。
+      2.  お使いの環境が Ranger-KMS に対して構成されている場合、Ambari Ranger の構成の ranger-kms-site セクションに、プロパティ ranger.tomcat.ciphers を次の値で追加します。
             
-            SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
+          SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
     
-    >[!NOTE]  
-    >記載されている値は実施例であり、お使いの環境を示していない可能性があります。 これらのプロパティを設定した方法が、お使いの環境の構成方法と一致していることを確認します。   
+  >[!NOTE]  
+  >記載されている値は実施例であり、お使いの環境を示していない可能性があります。 これらのプロパティを設定した方法が、お使いの環境の構成方法と一致していることを確認します。   
 
--   **RangerUI: ポリシー フォームに入力されているポリシー条件テキストのエスケープ**
+- **RangerUI: ポリシー フォームに入力されているポリシー条件テキストのエスケープ**
     
-    **影響を受けるコンポーネント:** Ranger
+  **影響を受けるコンポーネント:** Ranger
     
-    **問題の説明**
+  **問題の説明**
     
-    ユーザーがカスタム ポリシー条件でポリシーを作成することを希望し、式やテキストに特殊文字が含まれている場合、ポリシーの適用が機能しません。 特殊文字は、データベースにポリシーを保存する前に、ASCII に変換されます。
+  ユーザーがカスタム ポリシー条件でポリシーを作成することを希望し、式やテキストに特殊文字が含まれている場合、ポリシーの適用が機能しません。 特殊文字は、データベースにポリシーを保存する前に、ASCII に変換されます。
     
-    **特殊文字:** & &lt; &gt; " \` '
+  **特殊文字:** & &lt; &gt; " \` '
     
-    たとえば、ポリシーが保存されると、条件 tags.attributes\['type'\]='abc' は次のように変換されます。
+  たとえば、ポリシーが保存されると、条件 tags.attributes\['type'\]='abc' は次のように変換されます。
     
-    tags.attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
+  tags.attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
     
-    編集モードでポリシーを開くと、これらの文字でポリシーの条件を確認できます。
+  編集モードでポリシーを開くと、これらの文字でポリシーの条件を確認できます。
     
-    **対処法**
+  **対処法**
     
-    - **オプション \#1: Ranger Rest API を使用してポリシーを作成または更新する**
+  - **オプション \#1: Ranger Rest API を使用してポリシーを作成または更新する**
         
-        REST URL: http://&lt;host&gt;:6080/service/plugins/policies
+      REST URL: http://&lt;host&gt;:6080/service/plugins/policies
         
-        **ポリシー条件でポリシーを作成する:**
+      **ポリシー条件でポリシーを作成する:**
         
-        次の例では、\`tags-test\` のタグを含むポリシーを作成し、それを select、update、create、drop、alter、index、lock、all などの hive コンポーネントのすべてのアクセス許可を選択することによって、ポリシー条件 astags.attr\['type'\]=='abc' と共に \`public\` グループに割り当てます。
+      次の例は、タグを \`tags-test\` としてポリシーを作成し、ポリシー条件 astags.attr\['type'\]=='abc' を使用して、select、update、create、drop、alter、index、lock、all など、Hive コンポーネントのすべてのアクセス許可を選択することで、それを \`public\` グループに割り当てます。
         
-        **例:**
+      **例:**
         
-        `curl -H "Content-Type: application/json" -X POST http://localhost:6080/service/plugins/policies -u admin:admin -d '{"policyType":"0","name":"P100","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"tag":{"values":["tags-test"],"isRecursive":"","isExcludes":false}},"policyItems":[{"groups":["public"],"conditions":[{"type":"accessed-after-expiry","values":[]},{"type":"tag-expression","values":["tags.attr['type']=='abc'"]}],"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"tagdev"}'`
+      `curl -H "Content-Type: application/json" -X POST http://localhost:6080/service/plugins/policies -u admin:admin -d '{"policyType":"0","name":"P100","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"tag":{"values":["tags-test"],"isRecursive":"","isExcludes":false}},"policyItems":[{"groups":["public"],"conditions":[{"type":"accessed-after-expiry","values":[]},{"type":"tag-expression","values":["tags.attr['type']=='abc'"]}],"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"tagdev"}'`
         
-        **ポリシー条件で既存のポリシーを更新する:**
+      **ポリシー条件で既存のポリシーを更新する:**
         
-        次の例では、\`tags-test\` のタグを含むポリシーを更新し、それを select、update、create、drop、alter、index、lock、all などの hive コンポーネントのすべてのアクセス許可を選択することによって、ポリシー条件 astags.attr\['type'\]=='abc' と共に \`public\` グループに割り当てます。
+      次の例は、タグを \`tags-test\` としてポリシーを更新し、ポリシー条件 astags.attr\['type'\]=='abc' を使用して、select、update、create、drop、alter、index、lock、all など、Hive コンポーネントのすべてのアクセス許可を選択することで、それを \`public\` グループに割り当てます。
         
-        REST URL: http://&lt;host-name&gt;:6080/service/plugins/policies/&lt;policy-id&gt;
+      REST URL: http://&lt;host-name&gt;:6080/service/plugins/policies/&lt;policy-id&gt;
         
-        **例:**
+      **例:**
         
-        `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
+      `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
         
-    - **オプション \#2: Javascript の変更を適用する**
+  - **オプション \#2: Javascript の変更を適用する**
         
-        JS ファイルを更新する手順:
+      JS ファイルを更新する手順:
         
-        1.  /usr/hdp/current/ranger-admin の下にある PermissionList.js ファイルを確認する
+      1.  /usr/hdp/current/ranger-admin の下にある PermissionList.js ファイルを確認する
         
-        2.  renderPolicyCondtion 関数の定義を確認する (行番号: 404)。
+      2.  renderPolicyCondtion 関数の定義を確認する (行番号: 404)。
         
-        3.  その関数から次の行を削除する。たとえば、 display 関数 (行番号: 434) から削除します。
+      3.  その関数から次の行を削除する。たとえば、 display 関数 (行番号: 434) から削除します。
             
-            val = \_.escape(val);//Line No:460
+          val = \_.escape(val);//Line No:460
             
-            上記の行を削除すると、Ranger UI で特殊文字を含むポリシー条件を使用してポリシーを作成できるようになり、その同じポリシーでポリシーの評価が正常になります。
+          上記の行を削除すると、Ranger UI で特殊文字を含むポリシー条件を使用してポリシーを作成できるようになり、その同じポリシーでポリシーの評価が正常になります。
 
 **HDInsight と ADLS Gen 2 との統合:ESP クラスターでのユーザー ディレクトリとアクセス許可の問題**
     1.  ユーザーのホーム ディレクトリが、ヘッド ノード 1 に作成されません。 回避策は、これらを手動で作成し、所有権をそれぞれのユーザーの UPN に変更することです。
@@ -1426,7 +1426,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 ## <a name="deprecation"></a>非推奨
 
--   **OMS ポータル:** HDInsight のリソース ページから OMC ポータルへのリンクを削除しました。 当初、Log Analytics では、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。 このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。 HDInsight では、OMC ポータルのサポートが非推奨になりました。 お客様は Azure portal の HDInsight Log Analytics の統合を使用します。
+-   **OMS ポータル:** HDInsight のリソース ページから OMC ポータルへのリンクを削除しました。 Azure Monitor ログでは当初、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。 このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。 HDInsight では、OMC ポータルのサポートが非推奨になりました。 お客様は Azure portal の HDInsight Azure Monitor ログの統合を使用します。
 
 -   **Spark 2.3**
 

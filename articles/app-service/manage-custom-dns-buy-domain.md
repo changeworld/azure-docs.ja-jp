@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d47c560515a13efa8346974e828f14f9a15f0e4a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730282"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121538"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service のカスタム ドメイン名を購入する
 
@@ -102,7 +102,7 @@ Azure App Service ドメインの料金については、[App Service の価格�
 ### <a name="configure-the-domain-purchase"></a>ドメインの購入を構成する
 
 **[App Service ドメイン]** ページの **[ドメインの検索]** ボックスに購入するドメイン名を入力して、`Enter` キーを押します。 推奨される使用可能なドメインがテキスト ボックスの下に表示されます。 購入するドメインを 1 つ以上選びます。
-   
+
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
@@ -111,22 +111,22 @@ Azure App Service ドメインの料金については、[App Service の価格�
 >
 
 **[連絡先情報]** をクリックし、ドメインの連絡先情報フォームに入力します。 終了したら、**[OK]** をクリックして [App Service ドメイン] ページに戻ります。
-   
-すべての必須フィールドにできるだけ正確に入力することが重要です。 連絡先情報に誤ったデータを入力した場合は、ドメインを購入できないことがあります。 
+
+すべての必須フィールドにできるだけ正確に入力することが重要です。 連絡先情報に誤ったデータを入力した場合は、ドメインを購入できないことがあります。
 
 次に、ドメインに必要なオプションを選びます。 次の表の説明をご覧ください。
 
 | Setting | 推奨値 | 説明 |
 |-|-|-|
 |プライバシー保護 | 有効化 | "プライバシー保護" にオプトインします。これは、購入価格に含まれており "_無料_" です。 一部のトップレベル ドメインは、プライバシー保護をサポートしていないレジストラーによって管理されます。これらは、**[プライバシー保護]** ページに表示されます。 |
-| 既定のホスト名の割り当て | **www** および **@** | 必要に応じて、適切なホスト名バインドを選びます。 ドメイン購入操作が完了すると、選んだホスト名でアプリにアクセスできるようになります。 アプリが [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) の背後にある場合、Traffic Manager は A レコードをサポートしていないため、ルート ドメイン (@) を割り当てるオプションは表示されません。 ドメインの購入が完了した後で、ホスト名の割り当てを変更することができます。 |
+| 既定のホスト名の割り当て | **www** および **\@** | 必要に応じて、適切なホスト名バインドを選びます。 ドメイン購入操作が完了すると、選んだホスト名でアプリにアクセスできるようになります。 アプリが [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) の背後にある場合、Traffic Manager は A レコードをサポートしていないため、ルート ドメイン (@) を割り当てるオプションは表示されません。 ドメインの購入が完了した後で、ホスト名の割り当てを変更することができます。 |
 
 ### <a name="accept-terms-and-purchase"></a>ライセンス条項に同意して購入する
 
 **[法律条項]** をクリックして条項と料金を確認した後、**[購入]** をクリックします。
 
 > [!NOTE]
-> App Service ドメインは、Azure DNS を使ってドメインをホストします。 ドメイン登録手数料だけでなく、Azure DNS の使用料が適用されます。 詳しくは、「[Azure DNS の価格](https://azure.microsoft.com/pricing/details/dns/)」をご覧ください。
+> App Service ドメインはドメイン登録のために GoDaddy を使用し、Azure DNS を使用してドメインをホストします。 ドメイン登録手数料だけでなく、Azure DNS の使用料が適用されます。 詳しくは、「[Azure DNS の価格](https://azure.microsoft.com/pricing/details/dns/)」をご覧ください。
 >
 >
 
@@ -146,7 +146,7 @@ Azure App Service ドメインの料金については、[App Service の価格�
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
-ホスト名をテストするには、一覧表示されているホスト名にブラウザーで移動します。 前掲のスクリーンショットの例では、_kontoso.net_ と _www.kontoso.net_ に移動してみます。
+ホスト名をテストするには、一覧表示されているホスト名にブラウザーで移動します。 前掲のスクリーンショットの例では、_kontoso.net_ と _www\.kontoso.net_ に移動してみます。
 
 ## <a name="assign-hostnames-to-app"></a>アプリにホスト名を割り当てる
 
@@ -177,7 +177,7 @@ Azure App Service ドメインの料金については、[App Service の価格�
 **[ホスト名の追加]** ダイアログ ボックスで、App Service ドメインまたは任意のサブドメインの完全修飾ドメイン名を入力します。 例: 
 
 - kontoso.net
-- www.kontoso.net
+- www\.kontoso.net
 - abc.kontoso.net
 
 終わったら、**[検証]** を選びます。 ホスト名のレコードの種類が自動的に選ばれます。

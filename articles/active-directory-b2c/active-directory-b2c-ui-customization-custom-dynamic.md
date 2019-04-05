@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 54d98c02ee9e5202c09e333843f8c16955f4e2d4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: bf7391ea83adf852be0f989a82e89d7f316f2f85
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819249"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090544"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C:カスタム ポリシーを使用して動的コンテンツを含む UI を構成する
 
@@ -196,7 +196,7 @@ HTML5 テンプレートを使用する準備はできています。 ただし�
     >コンテンツをホストしているサイトで CORS が有効になっており、CORS 要求をテストできることを確認するには、[test-cors.org](https://test-cors.org/) Web サイトにアクセスします。 
 
 * コンテンツが **HTTPS** 経由で安全に配信される。
-* すべてのリンク、CSS コンテンツ、およびイメージで、*https://yourdomain/content* などの*絶対 URL* を使用している。
+* すべてのリンク、CSS コンテンツ、およびイメージで、`https://yourdomain/content` などの "*絶対 URL*" を使用している。
 
 ## <a name="step-5-configure-your-content-definition"></a>手順 5:コンテンツ定義を構成する
 `ContentDefinition` を構成するには、次の操作を行います。
@@ -327,7 +327,7 @@ campaignId パラメーターを受け入れるように HomeController `unified
 
     c. 新しいビュー *selfasserted* を作成します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 *selfasserted* を **ホーム** コントローラーに追加します。
+    d. *selfasserted* を **ホーム** コントローラーに追加します。
 
 2. "手順 4" に戻り、次の操作を行います。 
 

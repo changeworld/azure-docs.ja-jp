@@ -3,20 +3,20 @@ title: Azure Data Factory を使って予測データ パイプラインを作�
 description: Azure Data Factory で Azure Machine Learning バッチ実行アクティビティを使用して、予測パイプラインを作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: douglasl
-ms.openlocfilehash: a5ba45b8a7bd507552b49b6a18582c393ad07ff5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: aaf1d72a0c9c56e7d140fb615caf014507ebf263
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446037"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840564"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ ms.locfileid: "56446037"
 3. **Web サービスとしてデプロイする**。 Azure Web サービスとしてスコア付け実験を発行できます。 この Web サービスのエンドポイントを使用して、モデルにデータを送信し、モデルの予測を受信できます。
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory と Machine Learning
-Azure Data Factory を使用すると、公開済みの [Azure Machine Learning][azure-machine-learning] Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで**バッチ実行アクティビティ**を使用すると、Azure Machine Learning Studio Web サービスを呼び出して、データの予測をバッチで行うことができます。
+Azure Data Factory を使用すると、公開された [Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning) Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで**バッチ実行アクティビティ**を使用すると、Azure Machine Learning Studio Web サービスを呼び出して、データの予測をバッチで行うことができます。
 
 時間の経過と共に、Azure Machine Learning Studio スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 次の手順を実行することで、Data Factory パイプラインからモデルを再トレーニングできます。
 

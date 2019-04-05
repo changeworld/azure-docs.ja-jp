@@ -1,21 +1,21 @@
 ---
-title: Machine Learning Studio でモデルの結果を解釈する
+title: モデル結果の解釈
 titleSuffix: Azure Machine Learning Studio
 description: モデルのスコア付け出力を使用して視覚化し、アルゴリズムに最適なパラメーター セットを選択する方法。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 0940cb9e42588990e2109d02fda462f343443876
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c46f22fb5c906aaffa48f39a0c643ca2a48573f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456080"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877277"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 内でモデル結果を解釈する
 このトピックでは、Azure Machine Learning Studio で予測結果を視覚化し、解釈する方法について説明します。 モデルのトレーニングと予測 (「モデルのスコア付け」) が完了したら、予測結果を理解し、解釈する必要があります。
@@ -52,7 +52,7 @@ Azure Machine Learning Studio には、これらの分類を処理するモジ�
 ### <a name="two-class-classification"></a>2 クラス分類
 **実験例**
 
-2 クラス分類問題の例では、あやめの分類を使用します。 ここでのタスクは、特徴に基づいてあやめを分類することです。 Azure Machine Learning Studio に用意されているあやめのデータセットは、最もよく利用されている[あやめデータセット](http://en.wikipedia.org/wiki/Iris_flower_data_set)のサブセットです。これに含まれているインスタンスは、2 種類の花の品種 (クラス 0 とクラス 1) のみです。 それぞれの花には 4 種類の特徴 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。
+2 クラス分類問題の例では、あやめの分類を使用します。 ここでのタスクは、特徴に基づいてあやめを分類することです。 Azure Machine Learning Studio に用意されているあやめのデータセットは、最もよく利用されている[あやめデータセット](https://en.wikipedia.org/wiki/Iris_flower_data_set)のサブセットです。これに含まれているインスタンスは、2 種類の花の品種 (クラス 0 とクラス 1) のみです。 それぞれの花には 4 種類の特徴 (がくの長さ、がくの幅、花弁の長さ、花弁の幅) があります。
 
 ![あやめの実験のスクリーンショット](./media/interpret-model-results/1.png)
 

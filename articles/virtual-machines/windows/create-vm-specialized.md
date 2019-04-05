@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2018
 ms.author: cynthn
-ms.openlocfilehash: 662713a5ef350bd34f25558de69e3cbfd5fc80a3
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 364dca8d7cab3698e501e74d0c2817aac1a36f88
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982864"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58137979"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
@@ -205,7 +205,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-スナップショットを使って高パフォーマンスが必要な VM を作成するには、New-AzSnapshot コマンドに `-AccountType Premium_LRS` パラメーターを追加します。 スナップショットが作成され、Premium マネージド ディスクとして保存されます。 Premium マネージド ディスクは Standard よりも高価なので、Premium が必要になることを理解してからこのパラメーターを使用してください。
+スナップショットを使って高パフォーマンスが必要な VM を作成するには、New-AzSnapshotConfig コマンドに `-AccountType Premium_LRS` パラメーターを追加します。 スナップショットが作成され、Premium マネージド ディスクとして保存されます。 Premium マネージド ディスクは Standard よりも高価なので、Premium が必要になることを理解してからこのパラメーターを使用してください。
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>スナップショットから新しいディスクを作成する
 

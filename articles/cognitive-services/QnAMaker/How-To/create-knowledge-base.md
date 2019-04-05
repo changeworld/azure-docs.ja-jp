@@ -1,26 +1,26 @@
 ---
 title: ナレッジ ベースを作成する
-titleSuffix: QnA Maker - Azure Cognitive Services
-description: QnA Maker ポータルを使用して、おしゃべり機能を備えるナレッジ ベースを作成します。 これにより、アプリが魅力的になります。 上位の事前設定済みのおしゃべりのセットをボットのおしゃべりの開始点として KB に追加すると、最初から作成するよりもコストと時間を節約することができます。
+titleSuffix: QnA Maker API - Azure Cognitive Services
+description: QnA Maker API サービス ポータルを使用して、おしゃべり機能を備えるナレッジ ベースを作成します。 これにより、アプリが魅力的になります。 上位の事前設定済みのおしゃべりのセットをボットのおしゃべりの開始点として KB に追加すると、最初から作成するよりもコストと時間を節約することができます。
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 03/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 4ba744c3d8cc3a785c04bbbb1b476a857859e244
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b4553a392795bb8578f24848ccacc870b654bce9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116234"
 ---
-# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-portal"></a>クイック スタート:QnA Maker ポータルを使用してナレッジ ベースを作成する
+# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>クイック スタート:QnA Maker API サービス ポータルを使用してナレッジ ベースを作成する
 
-QnA Maker では、ナレッジ ベースを作成するときに既存のデータ ソースを簡単に追加できます。 次のドキュメントの種類から、新しい QnA Maker ナレッジ ベースを作成できます。
+QnA Maker API サービス ポータルでは、ナレッジ ベースを作成するときに既存のデータ ソースを簡単に追加できます。 次のドキュメントの種類から、新しい QnA Maker ナレッジ ベースを作成できます。
 
 <!-- added for scanability -->
 * FAQ ページ
@@ -52,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **おしゃべり**を KB に追加します。 3 つのパーソナリティのいずれかを選択して、おしゃべりのサポートをボットに追加します。 
 
-    ![おしゃべりを KB に追加する ](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+    ![おしゃべりを KB に追加する](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
 
 1. **[Create your KB]\(KB の作成\)** を選択します。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e334795a63ff298ff8f0695340f35fdff1ad03e0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d42c86ec262cd9d3d3db3035d252429e44c1208f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166523"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>チュートリアル:Azure Active Directory と Adaptive Insights の統合
 
@@ -155,7 +155,7 @@ Adaptive Insights で Azure AD のシングル サインオンを構成してテ
 
     c. Azure portal からコピーした**ログイン URL** の値を **[Identity provider SSO URL]\(ID プロバイダーの SSO URL\)** ボックスに貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure portal からコピーした**ログアウト URL** の値を **[Custom logout URL]\(カスタム ログアウト URL\)** ボックスに貼り付けます。
+    d. Azure portal からコピーした**ログアウト URL** の値を **[Custom logout URL]\(カスタム ログアウト URL\)** ボックスに貼り付けます。
 
     e. ダウンロードした証明書をアップロードするには、 **[ファイルの選択]** をクリックします。
 
@@ -191,12 +191,12 @@ Adaptive Insights で Azure AD のシングル サインオンを構成してテ
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+    d. **作成**を選択します。
  
 ### <a name="create-an-adaptive-insights-test-user"></a>Adaptive Insights テスト ユーザーの作成
 

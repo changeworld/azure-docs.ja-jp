@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/01/2019
-ms.openlocfilehash: a6b31933f7170006046846c458e21efd8c54034c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 03/12/2019
+ms.openlocfilehash: db62c1ec03ae9005f33a09010486b04ac6976742
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660732"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005895"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
@@ -32,12 +32,18 @@ Azure Database for PostgreSQL のクエリ ストア機能では、一定期間�
 ### <a name="enable-query-store-using-the-azure-portal"></a>Azure portal を使用してクエリ ストアを有効にする
 1. Azure portal にサインインし、ご利用の Azure Database for PostgreSQL サーバーを選択します。
 2. メニューの **[設定]** セクションで、**[サーバー パラメーター]** を選択します。
-3. **pg_qs.query_capture_mode** パラメーターを検索します。
-4. 値を NONE から TOP に更新し、保存します。
+3. `pg_qs.query_capture_mode` パラメーターを検索します。
+4. 値を `TOP` に設定して**保存**します。
 
-または Azure CLI を使用して、このパラメーターを設定することもできます。
+クエリ ストアでの待機統計を有効にするには、次の手順に従います。 
+1. `pgms_wait_sampling.query_capture_mode` パラメーターを検索します。
+1. 値を `ALL` に設定して**保存**します。
+
+
+または Azure CLI を使用して、これらのパラメーターを設定することもできます。
 ```azurecli-interactive
 az postgres server configuration set --name pg_qs.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value TOP
+az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
 ```
 
 azure_sys データベースに保持するデータの最初のバッチには、最大で 20 分ほどかかります。
@@ -81,6 +87,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 クエリ ストアが有効になっている場合、データは 15 分間の集計ウィンドウで保存され、ウィンドウあたり最大 500 件の個別のクエリが保存されます。 
 
 次のオプションは、クエリ ストア パラメーターを構成するために使用できます。
+
 | **パラメーター** | **説明** | **既定値** | **Range**|
 |---|---|---|---|
 | pg_qs.query_capture_mode | 追跡対象のステートメントを設定します。 | なし | none、top、all |
@@ -89,6 +96,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 | pg_qs.track_utility | ユーティリティ コマンドを追跡するかどうかを設定します | on | on、off |
 
 待機統計には次のオプションが適用されます。
+
 | **パラメーター** | **説明** | **既定値** | **Range**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | 待機統計の追跡対象のステートメントを設定します。 | なし | none、all|

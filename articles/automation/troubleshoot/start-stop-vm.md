@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8ef70088d904720a81ac558206a3140d7bbecd6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 1894fc1823772c27f37829b9b27ec515dcb841b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269999"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861062"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours ソリューションのトラブルシューティング
 
@@ -141,7 +141,7 @@ VM の起動/停止ソリューションを構成したが、構成されてい�
 
 * VM を起動および停止するには、Automation アカウントの実行アカウントに VM に対する適切なアクセス許可が必要です。 リソースに対するアクセス許可を確認する方法については、「[クイック スタート:Azure portal を使用してユーザーに割り当てられているロールを表示する](../../role-based-access-control/check-access.md)」を参照してください。 実行アカウントで使用されるサービス プリンシパルのアプリケーション ID を指定する必要があります。 この値を取得するには、Azure portal で Automation アカウントに移動し、**[アカウント設定]** の下で **[実行アカウント]** を選択して適切な実行アカウントをクリックします。
 
-* 起動または割り当て解除に関する問題が VM で発生している場合は、VM 自体の問題が原因でこの動作が引き起こされる可能性があります。 一部の例または潜在的な問題としては、シャットダウン試行時の更新の適用、サービスのハングなどがあります。 VM リソースに移動して、**アクティビティ ログ**にエラーが記録されているかどうかを確認してください。 また、VM にログインしてイベント ログにエラーが記録されているかどうかを確認することもできます。
+* 起動または割り当て解除に関する問題が VM で発生している場合は、VM 自体の問題が原因でこの動作が引き起こされる可能性があります。 一部の例または潜在的な問題としては、シャットダウン試行時の更新の適用、サービスのハングなどがあります。 VM リソースに移動して、**アクティビティ ログ**にエラーが記録されているかどうかを確認してください。 また、VM にログインしてイベント ログにエラーが記録されているかどうかを確認することもできます。 ご自分の VM のトラブルシューティングの詳細については、「[Azure Virtual Machines のトラブルシューティング](../../virtual-machines/troubleshooting/index.md)」を参照してください。
 
 ## <a name="custom-runbook"></a>シナリオ:カスタム Runbook を使用して VM を起動または停止できない
 

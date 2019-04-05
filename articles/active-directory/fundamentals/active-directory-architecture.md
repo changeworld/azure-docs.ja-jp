@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4185f4ad83d083ab1a15208361ee7b44e118c68e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 12819bdc20dea57a8a114bb4ff311f828be8b15a
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168308"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286216"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Azure Active Directory のアーキテクチャの概要
 Azure Active Directory (Azure AD) を使用すると、Azure のサービスやリソースへのアクセスをそのユーザーのために安全に管理することができます。 Azure AD には、必要な ID 管理機能がすべて備わっています。 Azure AD の機能については、「[Azure Active Directory とは](active-directory-whatis.md)」を参照してください。
@@ -39,7 +39,7 @@ Azure AD の地理的に分散されたアーキテクチャでは、広範な�
 
 データ層には、読み取り/書き込み機能を備えたさまざまなフロントエンド サービスが存在します。 次の図は、単一ディレクトリ パーティションの各構成要素が、地理的に分散されたデータ センターを通じて提供されるようすを示しています。 
 
-  ![単一ディレクトリ パーティション](./media/active-directory-architecture/active-directory-architecture.png)
+  ![単一ディレクトリ パーティションの図](./media/active-directory-architecture/active-directory-architecture.png)
 
 Azure AD アーキテクチャの構成要素には、プライマリ レプリカとセカンダリ レプリカが含まれます。
 

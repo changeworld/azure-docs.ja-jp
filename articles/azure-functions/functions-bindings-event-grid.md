@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 3d0c72f0178cddd668c0ac029c803ff339a1f6f4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b2ab07e40ac2652d97e912f8c7bd3b8893bfc114
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311615"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094162"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
@@ -30,17 +30,17 @@ Event Grid は、"*パブリッシャー*" 内で発生したイベントにつ�
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
-
-Event Grid トリガーは、[Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet パッケージ、バージョン 1.x で提供されます。 パッケージのソース コードは、[azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) GitHub リポジトリにあります。
-
-[!INCLUDE [functions-package](../../includes/functions-package.md)]
-
 ## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
 
 Event Grid トリガーは、[Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet パッケージ、バージョン 2.x で提供されます。 パッケージのソース コードは、[azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
+
+## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
+
+Event Grid トリガーは、[Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet パッケージ、バージョン 1.x で提供されます。 パッケージのソース コードは、[azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/master) GitHub リポジトリにあります。
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="example"></a>例
 
@@ -53,31 +53,6 @@ Event Grid トリガーの言語固有の例をご覧ください。
 * [Python](#python-example)
 
 HTTP トリガーの例については、後の「[HTTP トリガーを使用する方法](#use-an-http-trigger-as-an-event-grid-trigger)」をご覧ください。
-
-### <a name="c-version-1x"></a>C# (バージョン 1.x)
-
-次の例は、`JObject` にバインドする Functions 1.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
-
-```cs
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.EventGrid;
-using Microsoft.Azure.WebJobs.Host;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Microsoft.Extensions.Logging;
-
-namespace Company.Function
-{
-    public static class EventGridTriggerCSharp
-    {
-        [FunctionName("EventGridTriggerCSharp")]
-        public static void Run([EventGridTrigger]JObject eventGridEvent, ILogger log)
-        {
-            log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-        }
-    }
-}
-```
 
 ### <a name="c-2x"></a>C# (2.x)
 
@@ -105,6 +80,31 @@ namespace Company.Function
 
 詳しくは、「パッケージ」、「[属性](#attributes)」、「[構成](#configuration)」、および「[使用法](#usage)」をご覧ください。
 
+### <a name="c-version-1x"></a>C# (バージョン 1.x)
+
+次の例は、`JObject` にバインドする Functions 1.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Microsoft.Azure.WebJobs.Host;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Microsoft.Extensions.Logging;
+
+namespace Company.Function
+{
+    public static class EventGridTriggerCSharp
+    {
+        [FunctionName("EventGridTriggerCSharp")]
+        public static void Run([EventGridTrigger]JObject eventGridEvent, ILogger log)
+        {
+            log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+        }
+    }
+}
+```
+
 ### <a name="c-script-example"></a>C# スクリプトの例
 
 次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。
@@ -124,22 +124,6 @@ namespace Company.Function
 }
 ```
 
-#### <a name="c-script-version-1x"></a>C# スクリプト (バージョン 1.x)
-
-`JObject` にバインドする Functions 1.x の C# スクリプト コードを次に示します。
-
-```cs
-#r "Newtonsoft.Json"
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-
-public static void Run(JObject eventGridEvent, TraceWriter log)
-{
-    log.Info(eventGridEvent.ToString(Formatting.Indented));
-}
-```
-
 #### <a name="c-script-version-2x"></a>C# スクリプト (バージョン 2.x)
 
 `EventGridEvent` にバインドする Functions 2.x の C# スクリプト コードを次に示します。
@@ -156,6 +140,22 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 ```
 
 詳しくは、「パッケージ」、「[属性](#attributes)」、「[構成](#configuration)」、および「[使用法](#usage)」をご覧ください。
+
+#### <a name="c-script-version-1x"></a>C# スクリプト (バージョン 1.x)
+
+`JObject` にバインドする Functions 1.x の C# スクリプト コードを次に示します。
+
+```cs
+#r "Newtonsoft.Json"
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject eventGridEvent, TraceWriter log)
+{
+    log.Info(eventGridEvent.ToString(Formatting.Indented));
+}
+```
 
 ### <a name="javascript-example"></a>JavaScript の例
 
@@ -321,7 +321,7 @@ public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, ILog
 次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。 `EventGridTrigger` 属性で設定するコンストラクター パラメーターまたはプロパティはありません。
 
 |function.json のプロパティ |説明|
-|---------|---------|----------------------|
+|---------|---------|
 | **type** | 必須 - `eventGridTrigger` に設定する必要があります。 |
 | **direction** | 必須 - `in` に設定する必要があります。 |
 | **name** | 必須 - イベント データを受信するパラメーターの、関数コードで使われている変数名。 |
@@ -484,10 +484,10 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 Event Grid トリガーをローカルにテストするには、クラウド内の送信元からローカル コンピューターに配信された Event Grid の HTTP 要求を取得する必要があります。 これを行う方法の 1 つは、オンラインで要求をキャプチャし、ローカル コンピューター上でそれを手動で再送信することです。
 
-2. イベント メッセージをキャプチャする[ビューアー Web アプリを作成](#create-a-viewer-web-app)します。
-3. ビューアー アプリにイベントを送信する [Event Grid サブスクリプションを作成](#create-an-event-grid-subscription)します。
-4. [要求を生成](#generate-a-request)し、ビューアー アプリから要求本文をコピーします。
-5. Event Grid トリガー関数の localhost URL に[要求を手動で投稿](#manually-post-the-request)します。
+1. イベント メッセージをキャプチャする[ビューアー Web アプリを作成](#create-a-viewer-web-app)します。
+1. ビューアー アプリにイベントを送信する [Event Grid サブスクリプションを作成](#create-an-event-grid-subscription)します。
+1. [要求を生成](#generate-a-request)し、ビューアー アプリから要求本文をコピーします。
+1. Event Grid トリガー関数の localhost URL に[要求を手動で投稿](#manually-post-the-request)します。
 
 テストが完了したら、エンドポイントを更新することで、同じサブスクリプションを運用環境に使うことができます。 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI コマンドを使います。
 
@@ -528,11 +528,18 @@ Event Grid 関数をローカルで実行します。
 * `Content-Type: application/json` ヘッダーを設定します。
 * `aeg-event-type: Notification` ヘッダーを設定します。
 * 要求本文に RequestBin のデータを貼り付けます。
-* 次のパターンを使って、Event Grid トリガー関数の URL に投稿します。
+* Event Grid トリガー関数の URL に投稿します。
+  * 2.x の場合は、以下のパターンを使用します。
 
-```
-http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={functionname}
-```
+    ```
+    http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
+    ```
+
+  * 1.x の場合は、以下を使用します。
+
+    ```
+    http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
+    ```
 
 `functionName` パラメーターには、`FunctionName` 属性で指定されている名前を指定する必要があります。
 
@@ -550,10 +557,10 @@ Event Grid トリガー関数が実行されて、次の例のようなログが
 
 Event Grid トリガーをローカルにテストするもう 1 つの方法は、インターネットと開発用コンピューターの間の HTTP 接続を自動化することです。 これは、[ngrok](https://ngrok.com/) という名前のオープン ソース ツールを使って行うことができます。
 
-3. [ngrok のエンドポイントを作成](#create-an-ngrok-endpoint)します。
-4. [Event Grid トリガー関数を実行](#run-the-event-grid-trigger-function)します。
-5. ngrok のエンドポイントにイベントを送信する [Event Grid サブスクリプションを作成](#create-a-subscription)します。
-6. [イベントをトリガー](#trigger-an-event)します。
+1. [ngrok のエンドポイントを作成](#create-an-ngrok-endpoint)します。
+1. [Event Grid トリガー関数を実行](#run-the-event-grid-trigger-function)します。
+1. ngrok のエンドポイントにイベントを送信する [Event Grid サブスクリプションを作成](#create-a-subscription)します。
+1. [イベントをトリガー](#trigger-an-event)します。
 
 テストが完了したら、エンドポイントを更新することで、同じサブスクリプションを運用環境に使うことができます。 [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI コマンドを使います。
 
@@ -591,19 +598,19 @@ ngrok の URL は Event Grid によって特別に処理されないので、サ
 
 テストする種類の Event Grid サブスクリプションを作成し、それに ngrok エンドポイントを提供します。
 
-Functions 1.x に対して、次のようにこのエンドポイント パターンを使用します。
-
-```
-https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
-```
-
 Functions 2.x に対して、次のようにこのエンドポイント パターンを使用します。
 
 ```
-https://{subdomain}.ngrok.io/runtime/webhooks/eventgrid?functionName={functionName}
+https://{SUBDOMAIN}.ngrok.io/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
 ```
 
-`functionName` パラメーターには、`FunctionName` 属性で指定されている名前を指定する必要があります。
+Functions 1.x に対して、次のようにこのエンドポイント パターンを使用します。
+
+```
+https://{SUBDOMAIN}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={FUNCTION_NAME}
+```
+
+`{FUNCTION_NAME}` パラメーターには、`FunctionName` 属性で指定されている名前を指定する必要があります。
 
 Azure CLI を使う例を次に示します。
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797ac714d3205a271fe6590a3a320e1b9e2a073e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 908ae768ae471ab6f49452c99323c31d34772d45
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194735"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201850"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 
@@ -33,7 +33,7 @@ ms.locfileid: "56194735"
 2. **[Azure Active Directory]** を選択します。
 3. **[カスタム ドメイン名]** を選択します。
   
-   ![ユーザー管理を開く](./media/domains-manage/add-custom-domain.png)
+   ![ユーザー管理ページを開く](./media/domains-manage/add-custom-domain.png)
 4. プライマリ ドメインにするドメインの名前を選びます。
 5. **[プライマリにする]** コマンドを選びます。 メッセージが表示されたら、選択を確定します。
   
@@ -90,7 +90,7 @@ Azure portal で **ForceDelete** を呼び出すには、ドメイン名に対�
 **Q:このドメイン名に Exchange マスター グループがあることを示すエラーでドメインの削除が失敗するのはなぜですか。** <br>
 **A:** 現在、Exchange のメールが有効なセキュリティ グループや配布リストなどの特定のグループは、Exchange によってプロビジョニングされており、[Exchange 管理センター (EAC)](https://outlook.office365.com/ecp/) で手動によりクリーンアップする必要があります。 カスタム ドメイン名に依存していて、手動で別のドメイン名に更新する必要がある、残留 ProxyAddresses が存在する可能性があります。 
 
-**Q:admin@contoso.com としてログインしても、ドメイン名 "contoso.com" を削除できません。**<br>
+**Q:admin\@contoso.com としてログインしても、ドメイン名 "contoso.com" を削除できません。**<br>
 **A:** ユーザー アカウント名で削除しようとしているカスタム ドメイン名を参照することはできません。 グローバル管理者アカウントで admin@contoso.onmicrosoft.com のような既定の初期ドメイン名 (. onmicrosoft.com) が使用されていることを確認してください。 admin@contoso.onmicrosoft.com などの別のグローバル管理者アカウント、またはアカウントが admin@fabrikam.com である "fabrikam.com" のような別のカスタム ドメイン名で、サインインしてください。
 
 **Q:[ドメインの削除] ボタンをクリックすると、`In Progress` という削除操作の状態が表示されます。どのくらいの時間がかかりますか?失敗するとどうなりますか。**<br>

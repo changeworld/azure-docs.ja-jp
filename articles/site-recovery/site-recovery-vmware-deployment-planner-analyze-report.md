@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 3/20/2019
 ms.author: mayg
-ms.openlocfilehash: 7504d23cbaf8a497e6ea86b5a383413474c0d034
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cbea6785239c70a3cdb229d0811497f051224238
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329969"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286348"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーについての Azure Site Recovery Deployment Planner レポートを分析する
 
@@ -41,6 +41,9 @@ ms.locfileid: "56329969"
 **[Observed typical data churn per day (GB)]\(観察された 1 日あたりの標準的なデータの変更頻度 (GB\))**: プロファイリングの全日数にわたって観察されたデータ変更頻度の平均値です。 この数は、デプロイ後の環境で使用する構成サーバー数と追加プロセス サーバー数を決定するための入力値の 1 つとして使用されます。
 
 ## <a name="recommendations"></a>Recommendations
+
+>[!Note]
+>マネージド ディスクに直接レプリケートする場合は、ストレージ アカウントの数に関する推奨値を無視します。
 
 VMware to Azure レポートの [Recommendations]\(推奨事項\) シートには、[Desired RPO]\(必要な RPO\) の選択内容に応じて、次の情報が表示されます。
 
@@ -155,6 +158,9 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 ![500 Mbps の帯域幅で達成可能な RPO](media/site-recovery-vmware-deployment-planner-analyze-report/achievable-rpo-v2a.png)
 
 ## <a name="vm-storage-placement"></a>VM-Storage placement (VM<->ストレージの配置)
+
+>[!Note]
+>マネージド ディスクに直接レプリケートする場合は、ストレージ アカウントの数について心配する必要はありません。 ストレージについては、ストレージの種類 (Standard または Premium) に関する推奨事項のみを使用します。 同じ型がマネージド ディスクに適用されます。
 
 ![VM-Storage placement (VM<->ストレージの配置)](media/site-recovery-vmware-deployment-planner-analyze-report/vm-storage-placement-v2a.png)
 
@@ -273,7 +279,7 @@ Premium P10 または P15 ディスク | 8 KB  | 2 MB/秒 | (ディスクあた�
 Premium P10 または P15 ディスク | 16 KB | 4 MB/秒 |  (ディスクあたり) 336 GB
 Premium P10 または P15 ディスク | 32 KB 以上 | 8 MB/秒 | (ディスクあたり) 672 GB
 Premium P20、P30、P40、または P50 ディスク | 8 KB    | 5 MB/s | (ディスクあたり) 421 GB
-Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |10 MB/s | (ディスクあたり) 842 GB
+Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 | 20 MB/秒 | (ディスクあたり) 1,684 GB
 
 **ソース データ変更頻度** | **上限**
 ---|---

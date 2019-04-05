@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c09df2a15fbd0bdfdd1478fad587e6a18695002c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c92969015910cc5bd72e2d9339d5c15c1f7af48b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207502"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201536"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -33,21 +33,21 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 ## <a name="how-to-find-license-assignment-errors"></a>ライセンスの割り当てエラーを見つける方法
 **ライセンスの割り当てエラーを見つけるには**
 
-   1. 特定のグループ内でエラー状態にあるユーザーを見つけるには、そのグループのウィンドウを開きます。 エラー状態にあるユーザーが存在する場合は、**[ライセンス]** の下に通知が表示されます。
+1. 特定のグループ内でエラー状態にあるユーザーを見つけるには、そのグループのウィンドウを開きます。 エラー状態にあるユーザーが存在する場合は、**[ライセンス]** の下に通知が表示されます。
 
-   ![グループ、エラー通知](./media/licensing-groups-resolve-problems/group-error-notification.png)
+   ![グループおよびエラーの通知メッセージ](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
-   2. その通知を選択すると、影響を受けているすべてのユーザーの一覧が開きます。 個別に各ユーザーを選択すると、詳細を表示できます。
+2. その通知を選択すると、影響を受けているすべてのユーザーの一覧が開きます。 個別に各ユーザーを選択すると、詳細を表示できます。
 
-   ![グループ、エラー状態のユーザーの一覧](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
+   ![グループ ライセンス エラー状態のユーザーの一覧](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-   3. 少なくとも 1 つのエラーを含むすべてのグループを見つけるには、**[Azure Active Directory]** ブレードで、**[ライセンス]**、**[概要]** の順に選択します。 注意が必要なグループの場合は、情報ボックスが表示されます。
+3. 少なくとも 1 つのエラーを含むすべてのグループを見つけるには、**[Azure Active Directory]** ブレードで、**[ライセンス]**、**[概要]** の順に選択します。 注意が必要なグループの場合は、情報ボックスが表示されます。
 
-   ![概要、エラー状態にあるグループに関する情報](./media/licensing-groups-resolve-problems/group-errors-widget.png)
+   ![概要、およびエラー状態にあるグループに関する情報](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
-   4. エラーのあるグループの一覧を表示するには、ボックスをオンにします。 各グループを選択すると、詳細を表示できます。
+4. エラーのあるグループの一覧を表示するには、ボックスをオンにします。 各グループを選択すると、詳細を表示できます。
 
-   ![概要、エラーのあるグループの一覧](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
+   ![概要、およびエラーのあるグループの一覧](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
 
 
 次のセクションでは、考えられる問題とその解決方法を個別に説明します。
@@ -104,9 +104,9 @@ Exchange Online を使用する場合は、テナント内の一部のユーザ�
 
 > [!TIP]
 > 重複したプロキシ アドレスの有無を確認するには、次の PowerShell コマンドレットを Exchange Online に対して実行します。
-```
-Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
-```
+> ```
+> Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+> ```
 > この問題の詳細については、「[Exchange Online のエラー メッセージ: "プロキシ アドレス <アドレス> は既に使用されています"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)」を参照してください。 この記事では、[リモート PowerShell を使用して Exchange Online に接続する方法](https://technet.microsoft.com/library/jj984289.aspx)に関する情報も確認できます。 Azure AD に proxyAddresses 属性を反映する方法の詳細については、[この記事](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)を参照してください。
 
 関連するユーザーのプロキシ アドレスの問題を解決したら、グループのライセンス処理を強制的に実行して、ライセンスが適用できるようになったことを確認してください。

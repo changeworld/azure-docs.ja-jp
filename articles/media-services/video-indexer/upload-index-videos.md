@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 4127b6b2b2601b640a6fda4ccb60960d1762ee81
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: e7f39b6298dd950147fea7ac21969c53e1b58e2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414746"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877872"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -26,15 +26,17 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 
 この記事では、[Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API を使用して、URL に基づいてビデオのアップロードとインデックス作成を行う方法について説明します。 この記事のコード サンプルには、バイト配列をアップロードする方法を示すコメント アウトされたコードが含まれています。 <br/>この記事では、API の出力を変更および処理するために API で設定できるいくつかのパラメーターについても説明します。
 
-ビデオがアップロードされると、Video Indexer は必要に応じてビデオをエンコードします (後述)。 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[Azure サブスクリプションと Azure Media Services アカウント](connect-to-azure.md)に接続する Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
+ビデオがアップロードされると、Video Indexer は必要に応じてビデオをエンコードします (後述)。 Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[ご使用の Azure サブスクリプションと Azure Media Services アカウントに接続される](connect-to-azure.md) Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
 
 ## <a name="uploading-considerations"></a>アップロードに関する考慮事項
 
 - URL に基づいてビデオをアップロードする場合 (推奨)、エンドポイントは TLS 1.2 (またはそれ以降) を使用してセキュリティで保護する必要があります。
-- URL オプションでのアップロード サイズは、25 GB に制限されます
+- URL オプションでのアップロード サイズは、30 GB に制限されます
+- ほとんどのブラウザーでは、URL の長さは 2,000 文字に制限されています
 - バイト配列オプションでのアップロード サイズは、2 GB に制限されます
 - バイト配列オプションでは 30 分後にタイムアウトします
 - `videoURL` パラメーターに指定する URL はエンコードする必要があります
+- Media Services アセットのインデックス作成には、URL からのインデックス作成と同じ制限が適用されます
 
 > [!Tip]
 > .NET Framework バージョン 4.6.2 以上を使用することをお勧めします。 これは、それ以前の .NET Framework では既定で TLS 1.2 に設定されていないためです。
@@ -62,16 +64,16 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
         |state|ビデオの状態|  
     - 例: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - ビデオで特定された人物:
-    - Properties
+  - Properties
     
-        |Name|説明|
-        |---|---|
-        |id| ビデオ ID|
-        |faceId|ビデオ インデックスに表示される顔 ID|
-        |knownPersonId|顔モデル内で一意の人物 ID|
-        |personName|人物の名前|
+      |Name|説明|
+      |---|---|
+      |id| ビデオ ID|
+      |faceId|ビデオ インデックスに表示される顔 ID|
+      |knownPersonId|顔モデル内で一意の人物 ID|
+      |personName|人物の名前|
         
-     - 例: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - 例: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>メモ
 

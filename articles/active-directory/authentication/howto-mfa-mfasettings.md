@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee6c6559b5dd6c6a6e357ff2f258bad79d57205c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9809993d47141b70484892103e318a6f55381a2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192644"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856262"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -64,7 +64,7 @@ Azure portal で Multi-Factor Authentication に関連する設定にアクセ�
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
 2. **[Azure Active Directory]** > **[MFA]** > **[ユーザーのブロック/ブロック解除]** に移動します。
 3. **[追加]** を選択してユーザーをブロックします。
-4. **[レプリケーション グループ]** を選択します。 ブロックするユーザーのユーザー名を「**username@domain.com**」のように入力します。 **[理由]** フィールドにコメントを入力します。
+4. **[レプリケーション グループ]** を選択します。 ブロックされているユーザーのユーザー名を **username\@domain.com** として入力します。 **[理由]** フィールドにコメントを入力します。
 5. **[追加]** を選択してユーザーのブロックを終了します。
 
 ### <a name="unblock-a-user"></a>ユーザーのブロック解除
@@ -154,7 +154,7 @@ _ワンタイム バイパス_ 機能は、2 段階認証の実行なしでユ�
 2. **[Azure Active Directory]** > **[MFA]** > **[ワンタイム バイパス]** の順に移動します。
 3. **[追加]** を選択します。
 4. 必要に応じて、バイパスのレプリケーション グループを選択します。
-5. ユーザー名を「**username@domain.com**」のように入力します。 バイパスが持続する秒数を入力します。 バイパスの理由を入力します。
+5. ユーザー名を **username\@domain.com** として入力します。 バイパスが持続する秒数を入力します。 バイパスの理由を入力します。
 6. **[追加]** を選択します。 制限時間はすぐに有効になります。 ユーザーはワンタイム バイパスの有効期限が切れる前にサインインする必要があります。
 
 ### <a name="view-the-one-time-bypass-report"></a>ワンタイム バイパス レポートを表示する
@@ -252,7 +252,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 
 ユーザーは、初回の登録時にアプリ パスワードを作成できます。 登録プロセスの最後に、アプリ パスワードを作成するためのオプションが表示されます。
 
-ユーザーによるアプリ パスワードの作成は、登録後も可能です。 アプリ パスワードは、Azure Portal や Office 365 ポータルの設定を使用して変更できます。 アプリ パスワードの詳細と、ユーザーが実行する手順については、「[Azure Multi-Factor Authentication のアプリ パスワードとは](../user-help/multi-factor-authentication-end-user-app-passwords.md)」を参照してください。
+ユーザーによるアプリ パスワードの作成は、登録後も可能です。 アプリ パスワードの詳細と、ユーザーが実行する手順については、「[Azure Multi-Factor Authentication のアプリ パスワードとは](../user-help/multi-factor-authentication-end-user-app-passwords.md)」を参照してください。
 
 ## <a name="trusted-ips"></a>信頼できる IP
 

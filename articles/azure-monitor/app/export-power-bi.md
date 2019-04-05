@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 17c493568953265ac12ebccc680652ed5da6ae4d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a57393918992019844e2ff4ccc13d671f0b90ed5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312993"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58260062"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights のデータを Power BI に入力する
 [Power BI](https://www.powerbi.com/) は、データを分析し、洞察を共有できる一連のビジネス ツールです。 あらゆるデバイスで機能豊富なダッシュボードを利用できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) の Analytics クエリなど、さまざまなソースのデータを組み合わせることができます。
@@ -96,7 +96,7 @@ Application Insights のクエリをインポートするには、Power BI の�
 1. Azure Portal にサインインし、リソースにアクセスできることを確認します。
 2. ダッシュボードの資格情報を更新します。
 
- アクセス権があり、資格情報の更新がうまくいかない場合は、サポート チケットを開いてください。
+   アクセス権があり、資格情報の更新がうまくいかない場合は、サポート チケットを開いてください。
 
 ### <a name="bad-gateway-502"></a>無効なゲートウェイ (502)
 これは通常、分析クエリで大量のデータが返される場合に発生します。 もっと小さい時間の範囲をクエリに使ってみてください。 
@@ -105,8 +105,8 @@ Analytics クエリから取得するデータセットを小さくすると要�
 
 1. [API キー](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID)を作成します。
 2. Azure Resource Manager の URL を Application Insights の API に置き換えて、Analytics からエクスポートした Power BI の M スクリプトを更新します。
-   * 置き換え前 **https://management.azure.com/subscriptions/...**
-   * 置き換え後 **https://api.applicationinsights.io/beta/apps/...**
+   * **https:\//management.azure.com/subscriptions/...** を 
+   * **https:\//api.applicationinsights.io/beta/apps/...** に置き換えます
 3. 最後に、資格情報を基本に更新して、API キーを使います。
 
 **元のスクリプト**

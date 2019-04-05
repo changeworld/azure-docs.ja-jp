@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 7a41bfaada64528e90f43064b34c394f9a9b8f8f
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f3534f3001de1c3e58f0be3fb7bc9639b7dfcd03
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099090"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295424"
 ---
-# <a name="install-and-run-containers"></a>コンテナーのインストールと実行
+# <a name="install-and-run-face-containers"></a>Face コンテナーのインストールと実行
 
 Face には、画像中の人の顔を検出し、顔のパーツ (鼻や目など)、性別、年齢のほか、マシンが予測するその他の顔の特徴などの属性を識別する Face という Docker 用標準 Linux コンテナーが用意されています。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認したり、データベースと顏を比較して、似ている顏や同一の顔が既に存在するかどうかを調べたりできます。 また、同じ視覚的特徴を使用して、似た顔をグループに分けて整理することもできます。
 
@@ -48,11 +48,12 @@ Face API コンテナーを使用する前に、次の前提条件を満たす�
 
 次の表に、各 Face API コンテナーに割り当てる CPU コアとメモリの最小値と推奨値を示します。
 
-| コンテナー | 最小値 | 推奨 |
-|-----------|---------|-------------|
-|Face | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |
+| コンテナー | 最小値 | 推奨 | TPS<br>(最大、最小)|
+|-----------|---------|-------------|--|
+|Face | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |10、20|
 
-各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
+* 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
+* TPS - 1 秒あたりのトランザクション数
 
 コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
 
@@ -110,11 +111,14 @@ ApiKey={BILLING_KEY}
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
 
+[!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
+
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
 
-コンテナーの API のホストとしては https://localhost:5000 を使用します。
+コンテナーの API のホストとしては `https://localhost:5000` を使用します。
 
 ## <a name="stop-the-container"></a>コンテナーの停止
 

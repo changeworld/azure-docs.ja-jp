@@ -13,15 +13,15 @@ ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68655efaf9d6020489b7bc05ed1855ac181cd22f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9820fcae0dfb366c1722c50c95400c7de0fbeb12
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211939"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285787"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
-新しい Azure AD テナントにはすべて、*domainname*.onmicrosoft.com という初期ドメイン名が付いてきます。 初期ドメイン名を変更または削除することはできませんが、一覧に実際の組織の名前を追加することができます。 カスタム ドメイン名を追加することで、*alain@contoso.com* など、ユーザーになじみのあるユーザー名を作成する助けとなります。
+新しい Azure AD テナントにはすべて、*domainname*.onmicrosoft.com という初期ドメイン名が付いてきます。 初期ドメイン名を変更または削除することはできませんが、一覧に実際の組織の名前を追加することができます。 カスタム ドメイン名を追加すると、*alain\@contoso.com* など、ユーザーになじみのあるユーザー名を作成するのに役立ちます。
 
 ## <a name="before-you-begin"></a>開始する前に
 カスタム ドメイン名を追加する前に、ドメイン レジストラーでドメイン名を作成する必要があります。 認定ドメイン レジストラーについては、[ICANN 認定レジストラー](https://www.icann.org/registrar-reports/accredited-list.html)に関するページを参照してください。
@@ -31,7 +31,7 @@ ms.locfileid: "56211939"
 
 1. サブスクリプションの**所有者**ロールを持つアカウントを使用して、お使いのディレクトリの [Azure portal](https://portal.azure.com/) にサインインし、**[Azure Active Directory]** を選択します。 サブスクリプション ロールの詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)」を参照してください。
 
-    ![Azure portal 画面](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    ![Azure AD オプションが表示されている Azure portal 画面](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 
     >[!TIP]
     > オンプレミスの Windows Server AD を Azure AD とフェデレーションする予定の場合は、ディレクトリを同期するために Azure AD Connect ツールを実行する際に **[このドメインを構成して、ローカル Active Directory にシングル サインオンします]** チェックボックスをオンにする必要があります。 また、ウィザードの **[Azure AD ドメイン]** の手順で、オンプレミスのディレクトリとフェデレーションするために選択したのと同じドメイン名を登録する必要があります。 ウィザードの手順の表示内容は [こちらの手順](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation)で確認できます。 Azure AD Connect ツールをお持ちでない場合は、 [こちらからダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)できます。
@@ -46,7 +46,7 @@ ms.locfileid: "56211939"
 
 1. **[カスタム ドメイン名]** を選択し、**[カスタム ドメインの追加]** を選択します。
 
-    ![[Fabrikam - カスタム ドメイン名] ページで [カスタム ドメインの追加] オプションが強調表示されている](media/add-custom-domain/add-custom-domain.png)
+    ![[カスタム ドメイン名] ページ。[カスタム ドメインの追加] が表示されている](media/add-custom-domain/add-custom-domain.png)
 
 2. 組織の新しいドメイン名を **[カスタム ドメイン名]** ボックスに入力し (例: _contoso.com_)、**[ドメインの追加]** を選択します。
 
@@ -55,7 +55,7 @@ ms.locfileid: "56211939"
     >[!Important]
     >これが正しく機能するためには、.com や .net などのトップ レベルの拡張子を含める必要があります。
 
-    ![[Fabrikam - カスタム ドメイン名] ページで [ドメインの追加] ボタンが強調表示されている](media/add-custom-domain/add-custom-domain-blade.png)
+    ![[カスタム ドメイン名] ページとカスタム ドメインの追加ページ](media/add-custom-domain/add-custom-domain-blade.png)
 
 4. **[Contoso]** ページから DNS 情報をコピーします。 たとえば、MS=ms64983159 です。
 
@@ -87,9 +87,9 @@ Azure AD にカスタム ドメイン名を追加したら、ドメイン レジ
 
 ## <a name="common-verification-issues"></a>検証のよくある問題
 - Azure AD でカスタム ドメイン名を検証できない場合は、次の推奨事項を試してください。
-    - **少なくとも 1 時間待機してから、もう一度試します**。 Azure AD がドメインを検証する前に DNS レコードが伝達されている必要があり、このプロセスは 1 時間以上かかる場合があります。
+  - **少なくとも 1 時間待機してから、もう一度試します**。 Azure AD がドメインを検証する前に DNS レコードが伝達されている必要があり、このプロセスは 1 時間以上かかる場合があります。
 
-    - **DNS レコードが正しいことを確認します。** ドメイン名レジストラーのサイトに戻り、エントリがあること、およびそれが Azure AD によって提供される DNS エントリ情報と一致していることを確認します。
+  - **DNS レコードが正しいことを確認します。** ドメイン名レジストラーのサイトに戻り、エントリがあること、およびそれが Azure AD によって提供される DNS エントリ情報と一致していることを確認します。
 
     レジストラー サイトでレコードを更新できない場合は、適切なアクセス許可を持つ誰かとエントリを共有し、エントリを追加してそれが正確であることを検証する必要があります。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43aa43d37099d69441a5dde47327e784d67fa9ac
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5d85c4dbd3cc1c3d827a3f8324e63f75eb942425
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189448"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892984"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>チュートリアル:Azure Active Directory と ThousandEyes の統合
 
@@ -151,7 +151,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
     c. **[Logout Page URL]\(ログアウト ページ URL\)** テキストボックスに、Azure portal からコピーした**サインアウト URL** を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Identity Provider Issuer]\(ID プロバイダーの発行者\)** テキストボックスに、Azure portal からコピーした **SAML エンティティ ID** を貼り付けます。
+    d. **[Identity Provider Issuer]\(ID プロバイダーの発行者\)** テキストボックスに、Azure portal からコピーした **SAML エンティティ ID** を貼り付けます。
 
     e. **[Verification Certificate]\(検証証明書\)** で **[Choose file]\(ファイルの選択\)** をクリックし、Azure Portal からダウンロードした証明書をアップロードします。
 
@@ -186,7 +186,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
 
 ### <a name="creating-a-thousandeyes-test-user"></a>ThousandEyes テスト ユーザーの作成
 
@@ -214,7 +214,7 @@ ThousandEyes で Azure AD のシングル サインオンを構成してテス�
 
     a. **[Name]\(名前\)** ボックスに、ユーザーの氏名 (**Britta Simon** など) を入力します。
 
-    b. **[Email]\(電子メール\)** ボックスに、ユーザーのメール アドレス (**brittasimon@contoso.com** など) を入力します。
+    b. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **brittasimon\@contoso.com**) を入力します。
 
     b. **[Add New User to Account]** をクリックします。
 

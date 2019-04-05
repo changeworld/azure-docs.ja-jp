@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c15b42572648f875ac4bda2eae5813f0cf6b17ef
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8de47aab231c66f3539c2d2f0f0e4c535a04038a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187187"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085373"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
 
@@ -47,9 +47,9 @@ Azure AD にこれらのパラメーターを送信でき、その結果、シ�
 | -- | -- |
 | アクセス パネル | https://myapps.microsoft.com/contoso.com |
 | Web 上の Outlook | https://outlook.office365.com/contoso.com |
-| Office 365 ポータル | https://portal.office.com?domain_hint=contoso.com、 https://www.office.com?domain_hint=contoso.com |
+| Office 365 ポータル | <https://portal.office.com?domain_hint=contoso.com>、<https://www.office.com?domain_hint=contoso.com> |
 
-また、アプリケーションがサインイン要求を、Azure AD の共通エンドポイント (つまり、 https://login.microsoftonline.com/common/<...>) ではなく、Azure AD のテナント エンドポイント (つまり、 https://login.microsoftonline.com/contoso.com/<..> または https://login.microsoftonline.com/<tenant_ID>/<..>) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。 これらの種類のサインイン要求を行うアプリケーションの一部を以下にリストします。
+また、アプリケーションがサインイン要求を、Azure AD の共通エンドポイント (つまり、 https://login.microsoftonline.com/common/<...>) ではなく、Azure AD のテナントとして設定されているエンドポイント (つまり、 https://login.microsoftonline.com/contoso.com/<..> または https://login.microsoftonline.com/<tenant_ID>/<..>) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。 これらの種類のサインイン要求を行うアプリケーションの一部を以下にリストします。
 
 | アプリケーション名 | 使用するアプリケーションの URL |
 | -- | -- |
@@ -95,8 +95,8 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 
 1. `$creds = Get-Credential` を呼び出します。 メッセージが表示されたら、目的の AD フォレストのドメイン管理者の資格情報を入力します。
 
-    >[!NOTE]
-    >Microsoft は、ユーザー プリンシパル名 (UPN) (johndoe@contoso.com) の形式またはドメインで修飾された sam アカウント名 (contoso \johndoe または contoso.com\johndoe) の形式で提供されている、ドメイン管理者のユーザー名を使用して目的の AD フォレストを検索します。 ドメインで修飾された sam アカウント名が使用されている場合、Microsoft はユーザー名のドメイン部分を使用して、[DNS を使用してドメイン管理者のドメイン コントローラー](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)を検索します。 UPN が使用されている場合、Microsoft は[それをドメインで修飾された sam アカウント名に変換](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)してから、適切なドメイン コントローラーを検索します。
+   > [!NOTE]
+   > Microsoft は、ユーザー プリンシパル名 (UPN) (johndoe@contoso.com) の形式またはドメインで修飾された sam アカウント名 (contoso \johndoe または contoso.com\johndoe) の形式で提供されている、ドメイン管理者のユーザー名を使用して目的の AD フォレストを検索します。 ドメインで修飾された sam アカウント名が使用されている場合、Microsoft はユーザー名のドメイン部分を使用して、[DNS を使用してドメイン管理者のドメイン コントローラー](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx)を検索します。 UPN が使用されている場合、Microsoft は[それをドメインで修飾された sam アカウント名に変換](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa)してから、適切なドメイン コントローラーを検索します。
 
 2. `Update-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の AD フォレスト内で `AZUREADSSOACC` コンピューター アカウントの Kerberos 復号化キーを更新し、Azure AD 内でこのキーを更新します。
 3. 機能が有効に設定されている AD フォレストごとに、上記の手順を繰り返します。

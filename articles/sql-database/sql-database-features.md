@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: c2a1cbd75bb3ff0b936d8dd801572e5783ab5260
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: a7f247ba0e13d75c6556508fb432b59c3e4ecdef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100919"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881301"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>機能の比較:Azure SQL Database と SQL Server
 
@@ -32,10 +32,10 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 
 次の表は、SQL Server の主要な機能を一覧にして、その機能が一部または完全にサポートされるかに関する情報と、機能に関する詳細情報へのリンクを示します。
 
-| **SQL の機能** | **単一データベース/エラスティック プールでサポートされる** | **Azure SQL Database/Managed Instance でサポートされる** |
+| **SQL の機能** | **単一データベースとエラスティック プールでサポートされる** | **マネージド インスタンスでサポートされる** |
 | --- | --- | --- |
-| [アクティブ geo レプリケーション](sql-database-active-geo-replication.md) | はい - General Purpose および Business Critical サービス レベルのみ| いいえ。[自動フェールオーバー グループ](sql-database-auto-failover-group.md)に関するページを参照してください |
-| [自動フェールオーバー グループ](sql-database-auto-failover-group.md) | はい - General Purpose および Business Critical サービス レベルのみ| はい、[パブリック プレビュー](sql-database-auto-failover-group.md)中|
+| [アクティブ geo レプリケーション](sql-database-active-geo-replication.md) | はい - ハイパースケール以外のすべてのサービス レベル | いいえ。[自動フェールオーバー グループ](sql-database-auto-failover-group.md)に関するページを参照してください |
+| [自動フェールオーバー グループ](sql-database-auto-failover-group.md) | はい - ハイパースケール以外のすべてのサービス レベル | はい、[パブリック プレビュー](sql-database-auto-failover-group.md)中|
 | [常に暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | ○ - [証明書ストア](sql-database-always-encrypted.md)と[キー コンテナー](sql-database-always-encrypted-azure-key-vault.md)に関する記事を参照してください | ○ - [証明書ストア](sql-database-always-encrypted.md)と[キー コンテナー](sql-database-always-encrypted-azure-key-vault.md)に関する記事を参照してください |
 | [AlwaysOn 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください |
 | [データベースの接続](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | いいえ  | いいえ  |
@@ -55,11 +55,11 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [照合順序 - サーバー/インスタンス](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation) | いいえ  | はい、[パブリック プレビュー](scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md)中|
 | [列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | はい - [Premium レベル、Standard レベル - S3 以上、General Purpose レベル、および Business Critical レベル](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |はい |
 | [共通言語ランタイム (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | いいえ  | はい - [CLR の相違点](sql-database-managed-instance-transact-sql-information.md#clr)に関する記事を参照してください |
-| [包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | はい | はい |
+| [包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | はい | いいえ、[ポイントインタイム リストアなどの復元の欠陥に起因](sql-database-managed-instance-transact-sql-information.md#cannot-restore-contained-database) |
 | [包含ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | はい | はい |
 | [フロー制御言語のキーワード](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | はい | はい |
 | [複数データベース間のクエリ](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | いいえ - [エラスティック クエリ](sql-database-elastic-query-overview.md)に関する記事を参照してください | はい - [エラスティック クエリ](sql-database-elastic-query-overview.md)に関する記事も参照してください |
-| [データベースにまたがるトランザクション](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | いいえ  | はい - [リンク サーバーの違い](sql-database-managed-instance-transact-sql-information.md#linked-servers)に関する記事を参照してください |
+| [データベースにまたがるトランザクション](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | いいえ  | はい、インスタンス内で。 クロスインスタンス クエリについては、[リンク サーバーの違い](sql-database-managed-instance-transact-sql-information.md#linked-servers)に関する記事を参照してください。 |
 | [カーソル](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | はい |はい |
 | [データ圧縮](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression) | はい |はい |
 | [データベース メール](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | いいえ  | はい |
@@ -73,7 +73,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [DDL ステートメント](https://docs.microsoft.com/sql/t-sql/statements/statements) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください | はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
 | [DDL トリガー](https://docs.microsoft.com/sql/relational-databases/triggers/ddl-triggers) | データベースのみ |  はい |
 | [分散パーティション ビュー](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | いいえ  | はい |
-| [分散トランザクション - MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | × - [エラスティック トランザクション](sql-database-elastic-transactions-overview.md)に関する記事を参照してください |  × - [エラスティック トランザクション](sql-database-elastic-transactions-overview.md)に関する記事を参照してください |
+| [分散トランザクション - MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | × - [エラスティック トランザクション](sql-database-elastic-transactions-overview.md)に関する記事を参照してください |  いいえ - [リンク サーバーの違い](sql-database-managed-instance-transact-sql-information.md#linked-servers)に関する記事を参照してください |
 | [DML ステートメント](https://docs.microsoft.com/sql/t-sql/queries/queries) | はい | はい |
 | [DML トリガー](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください |  はい |
 | [DMV](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | ほとんどの場合 - 個々の DMV に関する記事を参照してください |  はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
@@ -87,7 +87,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | いいえ  | いいえ  |
 | [フルテキスト検索](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  サード パーティのワード ブレーカーはサポートされていません |サード パーティのワード ブレーカーはサポートされていません |
 | [関数](https://docs.microsoft.com/sql/t-sql/functions/functions) | ほとんどの場合 - 個々の関数に関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers)に関するページを参照してください |
-| [geo リストア](sql-database-recovery-using-backups.md#geo-restore) | はい - General Purpose および Business Critical サービス レベルのみ | いいえ (定期的に取得する COPY_ONLY の完全バックアップを復元できます) - [バックアップの相違点](sql-database-managed-instance-transact-sql-information.md#backup)と[復元の相違点](sql-database-managed-instance-transact-sql-information.md#restore-statement)に関する記事を参照してください |
+| [geo リストア](sql-database-recovery-using-backups.md#geo-restore) | はい - ハイパースケール以外のすべてのサービス レベル | いいえ (定期的に取得する COPY_ONLY の完全バックアップを復元できます) - [バックアップの相違点](sql-database-managed-instance-transact-sql-information.md#backup)と[復元の相違点](sql-database-managed-instance-transact-sql-information.md#restore-statement)に関する記事を参照してください |
 | [グラフの処理](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | はい | はい |
 | [メモリ内の最適化](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | はい - [Premium レベルと Business Critical レベルのみ](sql-database-in-memory.md) | はい - [Business Critical レベルのみ](sql-database-managed-instance.md) |
 | [JSON データのサポート](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [はい](sql-database-json-features.md) | [はい](sql-database-json-features.md) |
@@ -105,11 +105,12 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [OPENXML](https://docs.microsoft.com/sql/t-sql/functions/openxml-transact-sql)|はい|はい|
 | [演算子](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | ほとんどの場合 - 個々の演算子に関する記事を参照してください |はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
 | [パーティション分割](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | はい | はい |
-| [データベースのポイントインタイム リストア](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | はい - General Purpose および Business Critical サービス レベルのみ - [SQL Database の復旧](sql-database-recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください | ○ - [SQL Database の復旧](sql-database-recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください |
+| [データベースのポイントインタイム リストア](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | はい - ハイパースケール以外のすべてのサービス レベル - [SQL Database の復旧](sql-database-recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください | ○ - [SQL Database の復旧](sql-database-recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください |
 | [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | いいえ  | いいえ  |
 | [ポリシーベースの管理](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | いいえ  | いいえ  |
 | [述語](https://docs.microsoft.com/sql/t-sql/queries/predicates) | はい | はい |
 | [クエリ通知](https://docs.microsoft.com/sql/relational-databases/native-client/features/working-with-query-notifications) | いいえ  | はい |
+| [Query Performance Insight](sql-database-query-performance.md) | はい | いいえ  |
 | [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | はい、[パブリック プレビュー](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services)中  | いいえ  |
 | [リソース ガバナー](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | いいえ  | はい |
 | [RESTORE ステートメント](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | いいえ  | はい - [復元の相違点](sql-database-managed-instance-transact-sql-information.md#restore-statement)に関する記事を参照してください |
@@ -122,6 +123,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [SET ステートメント](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください | はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください|
 | [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | はい | はい |
 | [Spatial](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | はい | はい |
+| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | はい | はい |
 | [SQL データ同期](sql-database-get-started-sql-data-sync.md) | はい | いいえ  |
 | [SQL Server エージェント](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | × - [エラスティック ジョブ](sql-database-elastic-jobs-getting-started.md)に関する記事を参照してください | はい - [SQL Server エージェントの相違点](sql-database-managed-instance-transact-sql-information.md#sql-server-agent)に関する記事を参照してください |
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | いいえ - [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) に関する記事を参照してください | × - [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) に関する記事を参照してください |

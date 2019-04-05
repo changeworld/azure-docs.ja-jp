@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bfa9bbb9816148182b79a8231f2ddb3e46433804
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: d5fdae09055f922fe9783f6eb074457af12c60df
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413245"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880417"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Azure Search で Cognitive Services リソースをスキルセットにアタッチする 
 
@@ -60,21 +60,7 @@ Cognitive Services APIs を呼び出すスキルに対してのみ課金され�
 
 1. **[新しい Cognitive Services リソースを作成します]** の場合は、新しいタブが開き、リソースを作成できます。 リソースに一意の名前を付けます。
 
-1. Azure Search と同じ場所を選択します。 現在、コグニティブ スキルのインデックス作成がサポートされているリージョンは次のとおりです。
-
-  * 米国中西部
-  * 米国中南部
-  * 米国東部
-  * 米国東部 2
-  * 米国西部 2
-  * カナダ中部
-  * 西ヨーロッパ
-  * 英国南部
-  * 北ヨーロッパ
-  * ブラジル南部
-  * 東南アジア
-  * インド中部
-  * オーストラリア東部
+1. 新しい Cognitive Services リソースを作成する場合、お使いの Azure Search リソースと**同じリージョンを選択**します。
 
 1. オールインワン価格レベル **S0** を選択します。 このレベルでは、コグニティブ検索の定義済みスキルの基になる Vision と Language の機能が提供されます。
 

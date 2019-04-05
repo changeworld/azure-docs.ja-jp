@@ -6,15 +6,15 @@ keywords: secrets
 author: aljo-microsoft
 ms.author: aljo
 ms.date: 11/28/2018
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: 06d8519836129a557ec69d59d15eb12129e8099b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 36d0b49f1b9fb1ca5d13283146d134137a5cb028
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236753"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900643"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Azure Service Fabric Mesh アプリケーションのシークレットを管理する
 Service Fabric Mesh では、Azure リソースとしてシークレットがサポートされています。 Service Fabric Mesh のシークレットには、格納や送信を安全に行う必要がある、機密性の高いテキスト情報を指定できます (ストレージ接続文字列やパスワードなど)。 この記事では、Service Fabric Secure Store Service を使用して、シークレットをデプロイし、保持する方法について説明します。
@@ -25,7 +25,7 @@ Mesh アプリケーションのシークレットは、次の要素で構成さ
 
 シークレットの管理は、次の手順で行います。
 1. kind の定義として inlinedValue、contentType の定義として SecretsStoreRef を使用し、Azure Resource Model の YAML または JSON ファイル内で Mesh の**シークレット**を宣言します。
-2. **シークレット** リソース (手順 1 で宣言したもの) に格納される**シークレット/値**リソースを、Azure Resource Model の YAML または JSON ファイル内で宣言します。
+2. **シークレット** リソース (手順 1. で宣言したもの) に格納される**シークレット/値**リソースを、Azure Resource Model の YAML または JSON ファイル内で宣言します。
 3. Mesh のシークレット値を参照するように Mesh アプリケーションを変更します。
 4. Mesh アプリケーションをデプロイするかローリング アップグレードして、シークレット値が使用されるようにします。
 5. Azure の CLI コマンド "az" を使用して、Secure Store Service のライフ サイクルを管理します。
@@ -37,7 +37,7 @@ Mesh のシークレット リソースは、Azure Resource Model の JSON ま�
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -103,7 +103,7 @@ Mesh のシークレット/値リソースは、前の手順で定義した Mesh
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -215,9 +215,9 @@ az mesh secret show --Resource-group <myResourceGroup> --secret-name <mySecret>
 
 - Mesh アプリケーションによって参照されている間は、シークレットを削除することはできません。
 - シークレット リソースを削除すると、すべてのシークレット/リソース バージョンが削除されます。
-```azurecli-interactive
-az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
-```
+  ```azurecli-interactive
+  az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
+  ```
 
 ### <a name="list-secrets-in-subscription"></a>サブスクリプション内のシークレットを一覧表示する
 ```azurecli-interactive

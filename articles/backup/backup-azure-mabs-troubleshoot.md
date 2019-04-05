@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: kasinh
-ms.openlocfilehash: 0ebf1bae023115a268547e5c64e3a2681438092a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 22507a1b89c6a7d6867e9b669e1a2e70106a4e41
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340673"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880570"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
@@ -23,7 +23,7 @@ ms.locfileid: "56340673"
 
 | Operation | エラーの詳細 | 対処法 |
 | --- | --- | --- |
-| コンテナーへの登録 | 無効なコンテナーの資格情報が指定されました。 ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。 | 推奨される操作: <br> <ul><li> コンテナーから最新の資格情報ファイルをダウンロードしてから、やり直します。 <br>(または)</li> <li> 前記の方法で解決できなかった場合は、資格情報を別のローカル ディレクトリにダウンロードするか、新しいコンテナーを作成します。 <br>(または)</li> <li> [このブログ](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/)で説明されているように、日時の設定を更新します。 <br>(または)</li> <li> c:\windows\temp にあるファイルの数が 65,000 を超えているか確認します。 古いファイルを別の場所に移動するか、Temp フォルダー内のアイテムを削除します。 <br>(または)</li> <li> 証明書の状態を確認します。 <br> a. (コントロール パネルで) **[コンピューター証明書の管理]** を開きます。 <br> b. **[個人]** ノードとその子ノードの **[証明書]** を展開します。<br> c.  **Microsoft Azure Tools** 証明書を削除します。 <br> d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure Backup クライアントで登録を再試行します。 <br> (または) </li> <li> グループ ポリシーが存在するかどうか確認します。 </li></ul> |
+| コンテナーへの登録 | 無効なコンテナーの資格情報が指定されました。 ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。 | 推奨される操作: <br> <ul><li> コンテナーから最新の資格情報ファイルをダウンロードしてから、やり直します。 <br>(または)</li> <li> 前記の方法で解決できなかった場合は、資格情報を別のローカル ディレクトリにダウンロードするか、新しいコンテナーを作成します。 <br>(または)</li> <li> [このブログ](https://azure.microsoft.com/blog/troubleshooting-common-configuration-issues-with-azure-backup/)で説明されているように、日時の設定を更新します。 <br>(または)</li> <li> c:\windows\temp にあるファイルの数が 65,000 を超えているか確認します。 古いファイルを別の場所に移動するか、Temp フォルダー内のアイテムを削除します。 <br>(または)</li> <li> 証明書の状態を確認します。 <br> a. (コントロール パネルで) **[コンピューター証明書の管理]** を開きます。 <br> b. **[個人]** ノードとその子ノードの **[証明書]** を展開します。<br> c.  **Microsoft Azure Tools** 証明書を削除します。 <br> d. Azure Backup クライアントで登録を再試行します。 <br> (または) </li> <li> グループ ポリシーが存在するかどうか確認します。 </li></ul> |
 
 ## <a name="replica-is-inconsistent"></a>レプリカに整合性がありません
 
@@ -104,4 +104,4 @@ ms.locfileid: "56340673"
 
 | Operation | エラーの詳細 | 対処法 |
 | --- | --- | --- |
-| Office 365 アカウントを使用した電子メール通知の設定 |エラー ID: 2013| **原因:**<br> Office 365 アカウントを使用しようとしています。 <br>**推奨される操作:**<ol><li> まず、Exchange で DPM サーバーが “受信コネクタで匿名のリレーを許可する” ように設定されていることを確認します。 これを構成する方法の詳細については、TechNet の「[受信コネクタの匿名の中継を許可する](https://technet.microsoft.com/library/bb232021.aspx)」をご覧ください。</li> <li> 内部 SMTP リレーを使用できず、Office 365 サーバーを使用して設定する必要がある場合は、リレーとして IIS を設定することができます。 DPM サーバーが [IIS を使用して SMTP を O365 にリレーする](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx)ように設定します。<br><br> **重要:** ドメイン\ユーザー*ではなく*、必ず user@domain.com 形式を使用してください。<br><br><li>DPM が、SMTP サーバーとしてローカル サーバー名 (およびポート 587) を使用するようにします。 次に、これを電子メールの送信元となるユーザーの電子メール アドレスに向けます。<li> DPM の SMTP セットアップ ページ上のユーザー名とパスワードは、DPM があるドメイン内のドメイン アカウントのものである必要があります。 </li><br> **注**: SMTP サーバーのアドレスを変更するときは、新しい設定を変更し、設定ボックスを閉じてからもう一度開いて、新しい値が反映されていることを確認してください。  変更してテストしただけでは、新しい設定が反映されていない可能性があるため、この方法でテストすることをお勧めします。<br><br>DPM コンソールを閉じて次のレジストリ キーを編集すれば、この操作中にいつでもこれらの設定を削除できます。**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName keys**。 もう一度起動したときに、UI にそれらを追加できます。
+| Office 365 アカウントを使用した電子メール通知の設定 |エラー ID: 2013| **原因:**<br> Office 365 アカウントを使用しようとしています。 <br>**推奨される操作:**<ol><li> まず、Exchange で DPM サーバーが “受信コネクタで匿名のリレーを許可する” ように設定されていることを確認します。 これを構成する方法の詳細については、TechNet の「[受信コネクタの匿名の中継を許可する](https://technet.microsoft.com/library/bb232021.aspx)」をご覧ください。</li> <li> 内部 SMTP リレーを使用できず、Office 365 サーバーを使用して設定する必要がある場合は、リレーとして IIS を設定することができます。 DPM サーバーが [IIS を使用して SMTP を O365 にリレーする](https://technet.microsoft.com/library/aa995718(v=exchg.65).aspx)ように設定します。<br><br> **重要:** ドメイン\ユーザー*ではなく*、必ず user\@domain.com 形式を使用してください。<br><br><li>DPM が、SMTP サーバーとしてローカル サーバー名 (およびポート 587) を使用するようにします。 次に、これを電子メールの送信元となるユーザーの電子メール アドレスに向けます。<li> DPM の SMTP セットアップ ページ上のユーザー名とパスワードは、DPM があるドメイン内のドメイン アカウントのものである必要があります。 </li><br> **注**: SMTP サーバーのアドレスを変更するときは、新しい設定を変更し、設定ボックスを閉じてからもう一度開いて、新しい値が反映されていることを確認してください。  変更してテストしただけでは、新しい設定が反映されていない可能性があるため、この方法でテストすることをお勧めします。<br><br>DPM コンソールを閉じて次のレジストリ キーを編集すれば、この操作中にいつでもこれらの設定を削除できます。**HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Notification\ <br/> Delete SMTPPassword and SMTPUserName keys**。 もう一度起動したときに、UI にそれらを追加できます。

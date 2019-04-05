@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2B コラボレーション ユーザーのプロパティ | Microsoft Docs
+title: B2B コラボレーション ユーザーのプロパティ - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーション ユーザーのプロパティは構成できます
 services: active-directory
 ms.service: active-directory
@@ -10,13 +10,14 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7ef27b1365078ea2c5a7b92338a6c10f8d05de0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209253"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294656"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B コラボレーション ユーザーのプロパティ
 
@@ -32,7 +33,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユ�
 
 - 状態 4:ホスト組織の Azure AD に所属し、UserType = Guest で、資格情報はホスト組織によって管理されています。
 
-  ![招待元のイニシャルの表示](media/user-properties/redemption-diagram.png)
+  ![ユーザーの 4 つの状態を示す図](media/user-properties/redemption-diagram.png)
 
 
 ここで、Azure AD B2B コラボレーション ユーザーが Azure AD でどのように見えるかを見てみましょう。
@@ -41,7 +42,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユ�
 
 状態 1 アカウントと状態 2 アカウントは、ゲスト ユーザー自身の資格情報を使用して共同作業するようにゲスト ユーザーを招待した結果です。 招待が最初にゲスト ユーザーに送信されると、アカウントがディレクトリに作成されます。 認証はゲスト ユーザーの ID プロバイダーによって実行されるため、このアカウントには関連付けられた資格情報はありません。 ディレクトリ内のゲスト ユーザー アカウントの **[ソース]** プロパティは **[ユーザーが招待されました]** に設定されています。 
 
-![オファーに応じる前](media/user-properties/before-redemption.png)
+![招待に応じる前のユーザー プロパティを示すスクリーンショット](media/user-properties/before-redemption.png)
 
 ### <a name="after-invitation-redemption"></a>招待に応じた後
 
@@ -87,7 +88,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション ユ�
 
 ## <a name="filter-for-guest-users-in-the-directory"></a>ディレクトリのゲスト ユーザーのフィルター処理
 
-![ゲスト ユーザーのフィルター処理](media/user-properties/filter-guest-users.png)
+![ゲスト ユーザーのフィルターを示すスクリーンショット](media/user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>UserType の変換
 PowerShell を使用して、UserType をメンバーからゲストに、またはその逆に変換できます。 ただし、UserType プロパティはユーザーと組織の関係を表しています。 そのため、このプロパティは、ユーザーと組織の関係が変化した場合にのみ変更するようにします。 ユーザーの関係が変化した場合に、ユーザー プリンシパル名 (UPN) を変更する必要はありますか。 また、同じリソースへのアクセス権を引き続きユーザーに持たせる必要がありますか。 メールボックスを割り当てる必要があるか、などの疑問です。 PowerShell を使用してアトミック アクティビティとして UserType を変更することはお勧めしません。 また、PowerShell を使用してこのプロパティを変更できなくなる場合に備えて、この値には依存しないことをお勧めします。
@@ -97,7 +98,7 @@ PowerShell を使用して、UserType をメンバーからゲストに、また
 
 既定の制限を無効にして、会社のディレクトリのゲスト ユーザーにメンバー ユーザーと同じアクセス許可を持たせることができます。
 
-![ゲスト ユーザー制限の削除](media/user-properties/remove-guest-limitations.png)
+![ユーザー設定の [外部ユーザー] オプションを示すスクリーンショット](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Exchange のグローバル アドレス一覧にゲスト ユーザーを表示できますか。
 はい。 既定では、ゲスト オブジェクトは組織のグローバル アドレス一覧には表示されませんが、Azure Active Directory PowerShell を使用してそれらを表示できます。 詳細については、「[Office 365 グループでゲスト アクセスを管理する](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq)」の「**グローバル アドレス一覧にゲスト オブジェクトを表示できますか?**」を参照してください。 

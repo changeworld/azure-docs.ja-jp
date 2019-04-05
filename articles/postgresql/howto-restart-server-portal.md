@@ -1,19 +1,19 @@
 ---
 title: Azure portal を使用して Azure Database for PostgreSQL サーバーを再起動する
-description: この記事では、Azure Portal を使用して Azure Database for PostgreSQL サーバーを再起動する方法について説明します。
+description: この記事では、Azure portal を使用して Azure Database for PostgreSQL サーバーを再起動する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 2/7/2019
-ms.openlocfilehash: 28e99f64fdee414549c55f9666bfd53f07fb3efb
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 3/18/2019
+ms.openlocfilehash: 83947571ed835c53c6cf8da6e73deb8dceabdd62
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892696"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168777"
 ---
-# <a name="restart-azure-database-for-postgresql-server-using-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL サーバーを再起動する
+# <a name="restart-azure-database-for-postgresql-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL サーバーを再起動する
 このトピックでは、Azure Database for PostgreSQL サーバーを再起動する方法について説明します。 メンテナンス上の理由でサーバーの再起動が必要な場合があります。これを行うと、サーバーが操作を実行しているときに短時間の停止が発生します。
 
 サービスがビジー状態の場合、サーバーの再起動はブロックされます。 たとえば、仮想コアのスケーリングなどの前に要求した操作がサービスで処理中である場合があります。
@@ -28,7 +28,7 @@ ms.locfileid: "55892696"
 
 次の手順で PostgreSQL サーバーを再起動します。
 
-1. Azure Portal で、ご利用の Azure Database for PostgreSQL サーバーを選択します。
+1. [Azure portal](https://portal.azure.com/) で、ご利用の Azure Database for PostgreSQL サーバーを選択します。
 
 2. サーバーの **[概要]** ページのツール バーで、**[再起動]** をクリックします。
 
@@ -36,16 +36,16 @@ ms.locfileid: "55892696"
 
 3. **[はい]** をクリックして、サーバーを再起動することを確認します。
 
-   ![Azure Database for PostgreSQL - 再起動の確認 ](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![Azure Database for PostgreSQL - 再起動の確認](./media/howto-restart-server-portal/3-restart-confirm.png)
 
 4. サーバーの状態が [再起動中] に変わることを確認します。
 
-   ![Azure Database for PostgreSQL - 再起動状態 ](./media/howto-restart-server-portal/4-restarting-status.png)
+   ![Azure Database for PostgreSQL - 再起動状態](./media/howto-restart-server-portal/4-restarting-status.png)
 
 5. サーバーの再起動が成功したことを確認します。
 
-   ![Azure Database for PostgreSQL - 再起動成功 ](./media/howto-restart-server-portal/5-restart-success.png)
+   ![Azure Database for PostgreSQL - 再起動成功](./media/howto-restart-server-portal/5-restart-success.png)
 
 ## <a name="next-steps"></a>次の手順
 
-[クイック スタート:Azure portal を使用して Azure Database for PostgreSQL サーバーを作成する](./quickstart-create-server-database-portal.md)
+[Azure Database for PostgreSQL でパラメーターを設定する方法](howto-configure-server-parameters-using-portal.md)について確認する。

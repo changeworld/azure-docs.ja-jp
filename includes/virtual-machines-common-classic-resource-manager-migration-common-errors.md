@@ -4,17 +4,18 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 72aadcb5d1459518cda41f1d4dcafc670fa393c5
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f00da12519f21410f773afb96a5e9a83c56166d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985453"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58052163"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>クラシックから Azure Resource Manager への移行中に発生する一般的なエラー
 この記事では、Azure クラシック デプロイ モデルから Azure Resource Manager スタックへの IaaS リソースの移行中に発生する一般的なエラーと軽減策を一覧で示しています。
 
 ## <a name="list-of-errors"></a>エラー一覧
+
 | エラー文字列 | 対応策 |
 | --- | --- |
 | 内部サーバー エラー |場合によっては、これは再試行によって解消される一時的なエラーです。 エラーが解消されない場合は、プラットフォームのログを調べる必要があるため、[Azure サポートにご連絡](../articles/azure-supportability/how-to-create-azure-support-request.md)ください。 <br><br> **注:** サポート チームによるインシデントの追跡が開始されたら、ご自分で対応しようとしないでください。環境で予期しない結果が発生する可能性があります。 |

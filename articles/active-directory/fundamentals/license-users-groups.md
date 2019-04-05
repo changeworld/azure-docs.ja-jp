@@ -14,12 +14,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10346ea0aa292be33f820bd4e92434e2c58a89ab
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1e7a3f80067adb3093bd27e34a45b3afd72b4993
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194310"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286858"
 ---
 # <a name="assign-or-remove-licenses-using-the-azure-active-directory-portal"></a>Azure Active Directory ポータルを使用したライセンスの割り当てと削除
 多くの Azure Active Directory (Azure AD) サービスでは、Azure AD 製品をアクティブ化し、ユーザーまたはグループ (および関連するメンバー) ごとにその製品のライセンスを付与する必要があります。 アクティブなライセンスを持つユーザーのみが、ライセンスされている Azure AD サービスにアクセスおよび使用できるようになります。
@@ -112,7 +112,6 @@ Azure AD 製品に利用できるいくつかのエディションがありま�
 5. **[割り当て]** を選択します。
 
     グループはライセンスされているグループのリストに追加され、そのすべてのメンバーが含まれる Azure AD サービスにアクセスできます。
-
 
 ## <a name="remove-a-license"></a>ライセンスを削除する
 **[ライセンス]** ページからユーザーまたはグループのいずれかからライセンスを削除できます。

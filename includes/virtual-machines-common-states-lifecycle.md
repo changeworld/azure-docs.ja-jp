@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
-ms.openlocfilehash: b48de6a6eeed997fe162cabe4d57e6770e016971
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54122804"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125267"
 ---
 Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは "*プロビジョニング状態*" と "*電源の状態*" に分類することができます。 この記事の目的は、各状態について説明し、ユーザーがインスタンスの使用料金を課金されるタイミングを具体的に明示することです。 
 
@@ -255,14 +255,14 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 - **成功** – ユーザーが開始したアクションが完了しました。
 
     ```
- "statuses": [ 
- {
+  "statuses": [ 
+  {
      "code": "ProvisioningState/succeeded",
      "level": "Info",
      "displayStatus": "Provisioning succeeded",
      "time": "time"
- }
- ]
+  }
+  ]
     ```
 
  
@@ -270,7 +270,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
 - **失敗** – 操作が失敗したことを表します。 詳細と考えられる解決策については、エラー コードを参照してください。
 
     ```
- "statuses": [
+  "statuses": [
     {
       "code": "ProvisioningState/failed/InternalOperationError",
       "level": "Error",

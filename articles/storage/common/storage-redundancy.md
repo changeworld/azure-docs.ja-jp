@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ea6d94ff1ee8c27c1642f24660a6ab4f276137a8
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 347ae6dbdbab866b6d82d64bec4e668689078429
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330785"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791241"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -51,7 +51,7 @@ Azure Storage の持続性と可用性の保証については、[Azure Storage 
 > Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。
 
 ## <a name="changing-replication-strategy"></a>レプリケーション戦略の変更
-[Azure Portal](https://portal.azure.com/)、[Azure Powershell](storage-powershell-guide-full.md)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)、多くの [Azure クライアント ライブラリ](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools)のいずれかを使用して、ストレージ アカウントのレプリケーション戦略を変更できます。 使用しているストレージ アカウントのレプリケーションの種類を変更してもダウンタイムは発生しません。
+[Azure portal](https://portal.azure.com/)、[Azure PowerShell](storage-powershell-guide-full.md)、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure クライアント ライブラリ](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools)のいずれかを使用して、ストレージ アカウントのレプリケーション戦略を変更できます。 使用しているストレージ アカウントのレプリケーションの種類を変更してもダウンタイムは発生しません。
 
    > [!NOTE]
    > 現在、Azure Portal または API を使用してアカウントを ZRS に変換することはできません。 アカウントのレプリケーションを ZRS に変換する場合は、[ゾーン冗長ストレージ (ZRS)](storage-redundancy-zrs.md) に関するページを参照してください。
@@ -59,7 +59,9 @@ Azure Storage の持続性と可用性の保証については、[Azure Storage 
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>アカウントのレプリケーション戦略を変更するためにコストはかかりますか
 変換パスによって変わります。 最も冗長サービスのコストが低いものから高いサービスの順に並べると、LRS、ZRS、GRS、RA-GRS があります。 たとえば、LRS *から*何かに移行する場合、より高度な冗長レベルに移行することになるので、追加料金が発生します。 GRS または RA-GRS *に*移行する場合、(プライマリ リージョン内の) データがリモートのセカンダリ リージョンにレプリケートされているため、送信帯域幅の料金がかかります。 これは初期設定時に 1 回かかる料金です。 データがコピーされた後に、追加の変換料金はかかりません。 新しいデータや既存のデータへの更新をレプリケートする場合にのみ課金されます。 帯域幅の料金の詳細については、[Azure Storage の料金に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)をご覧ください。
 
-GRS から LRS に変更する場合、追加のコストは発生しませんが、レプリケートされたデータはセカンダリ ロケーションから削除されます。
+ストレージ アカウントを GRS から LRS に変換した場合、追加のコストは発生しませんが、レプリケートされたデータはセカンダリ ロケーションから削除されます。
+
+ストレージ アカウントを RA-GRS から GRS または LRS に変換した場合、そのアカウントは変換日からさらに 30 日間、RA-GRS として課金されることにご注意ください。
 
 ## <a name="see-also"></a>関連項目
 
@@ -68,5 +70,5 @@ GRS から LRS に変更する場合、追加のコストは発生しません�
 - [geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)
 - [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)
 - [RA-GRS ストレージを使用した高可用性アプリケーションの設計](../storage-designing-ha-apps-with-ragrs.md)
-- [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [SOSP ペーパー - Azure Storage:強力な整合性を備えた高可用クラウド ストレージ サービス](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

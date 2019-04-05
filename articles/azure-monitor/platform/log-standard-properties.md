@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 03/20/2019
 ms.author: bwren
-ms.openlocfilehash: 2309e7762ad36f59e0833e675e7012ee3c459e3e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c01cdb967fd7f9516b4403aa4f0c76f2577d5050
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997041"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294724"
 ---
 # <a name="standard-properties-in-azure-monitor-log-records"></a>Azure Monitor ログ レコードの標準プロパティ
 Azure Monitor のログ データは、それぞれにプロパティの固有セットがある特定のデータ型を持つ、[レコードのセットとして格納](../log-query/log-query-overview.md)されます。 多くのデータ型には、複数の型にわたって共通の標準プロパティがあります。 この記事では、これらのプロパティについて説明し、プロパティをクエリで使用する方法の例を示します。
@@ -84,6 +84,18 @@ AzureActivity
    | summarize LoggedOnAccounts = makeset(Account) by _ResourceId 
 ) on _ResourceId  
 ```
+
+次のクエリは、**_ResourceId** を解析し、Azure サブスクリプションごとに課金対象のデータ ボリュームを集計します。
+
+```Kusto
+union withsource = tt * 
+| where _IsBillable == true 
+| parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
+    resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
+```
+
+複数の種類のデータにわたるスキャンは、実行コストが高いため、これらの `union withsource = tt *` クエリは多用しないようにします。
 
 ## <a name="isbillable"></a>\_IsBillable
 **\_IsBillable** プロパティでは、取り込まれたデータが課金対象かどうかを指定します。 **\_IsBillable** が _false_ のデータは無料で収集され、Azure アカウントには課金されません。

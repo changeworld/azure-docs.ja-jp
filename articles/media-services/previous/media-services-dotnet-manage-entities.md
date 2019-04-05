@@ -2,7 +2,7 @@
 title: Media Services .NET SDK を使用するアセットと関連エンティティの管理
 description: Media Services SDK for .NET を使用してアセットと関連エンティティを管理する方法について説明します。
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7cab21919eca9ba62fa57e1c6b2089c0b8e115dc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4a1ccd2c4a51fb4cab2337220d36b5c093a8aff5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979974"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58165779"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Media Services .NET SDK を使用するアセットと関連エンティティの管理
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "55979974"
 > 
 > 
 
-このトピックでは、.NET で Azure Media Services エンティティを管理する方法を示します (レガシ)
+このトピックでは、.NET で Azure Media Services エンティティを管理する方法を説明します。
 
 >[!NOTE]
 > 2017 年 4 月 1 日からは、レコードの合計数が最大クォータより小さい場合でも、アカウント内の 90 日前より古いすべてのジョブ レコードが、関連付けられているタスク レコードと共に自動的に削除されます。 たとえば、2017 年 4 月 1 日には、アカウント内の 2016 年 12 月 31 日より古いジョブ レコードはすべて、自動的に削除されます。 ジョブやタスクの情報をアーカイブする必要がある場合は、このトピックで説明するコードを使うことができます。

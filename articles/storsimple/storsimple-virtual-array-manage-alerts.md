@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cd3f506205a3ee4f4435b16fd2185eeb20aef3c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447226"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895466"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャーを使用して StorSimple Virtual Array のアラートを管理する
 
@@ -39,7 +39,7 @@ StorSimple Virtual Array ごとに、アラート状態について電子メー�
 > [!NOTE]
 > 1 つの仮想アレイに対して入力できる電子メール アドレスは最大 20 件です。
 
-仮想アレイの電子メール通知を有効にすると、重大なアラートが発生するたびにアラート リストのメンバーに電子メール メッセージが送信されます。 メッセージは *storsimple-alerts-noreply@mail.windowsazure.com* から送信され、アラートの状態の詳細が示されます。 受信者が自信を電子メール通知のリストから削除するには、**[受信登録の取り消し]** をクリックします。
+仮想アレイの電子メール通知を有効にすると、重大なアラートが発生するたびにアラート リストのメンバーに電子メール メッセージが送信されます。 メッセージは *storsimple-alerts-noreply\@mail.windowsazure.com* から送信され、アラートの状態の詳細が示されます。 受信者が自信を電子メール通知のリストから削除するには、**[受信登録の取り消し]** をクリックします。
 
 #### <a name="to-enable-email-notification-for-alerts"></a>アラートに関する電子メール通知を有効にするには
 
@@ -53,7 +53,7 @@ StorSimple Virtual Array ごとに、アラート状態について電子メー�
    
    1. **[電子メール通知を有効にする]** フィールドで、**[はい]** を選択します。
    2. サービス管理者とすべての共同管理者がアラートの通知を受信するように設定する場合は、**[電子メール サービスの管理者]** フィールドで **[はい]** を選択します。
-   3. **[追加の電子メール受信者]** フィールドに、アラートの通知を受信する他の受信者すべての電子メール アドレスを入力します。 名前は *someone@somewhere.com* の形式で入力します。 電子メール アドレスはセミコロンで区切ります。 1 つの仮想デバイスで構成できる電子メール アドレスは最大 20 件です。
+   3. **[追加の電子メール受信者]** フィールドに、アラートの通知を受信する他の受信者すべての電子メール アドレスを入力します。 名前は *someone\@somewhere.com* の形式で入力します。 電子メール アドレスはセミコロンで区切ります。 1 つの仮想デバイスで構成できる電子メール アドレスは最大 20 件です。
       
        ![アラート通知の構成](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. 電子メールのテスト通知を送信するには、**[テスト電子メールの送信]** をクリックします。 テスト通知を転送すると、StorSimple デバイス マネージャー サービスに状態メッセージが表示されます。
@@ -147,6 +147,7 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 | <*デバイス名*\> の複製を完了できませんでした。 |複製ジョブの失敗。 |複製を作成できませんでした。 次のいずれかを考慮します。<ul><li>バックアップ リストが有効でない可能性があります。 リストを更新して、引き続き有効であることを確認します。</li><li>複製操作を正常に完了できない原因として、接続の問題が考えられます。 接続の問題がないことを確認します。</li><li>使用可能なストレージの上限に達しました。 領域を解放するために、不要になったバックアップの削除を検討してください。</li></ul>問題を解決し、アラートをクリアし、バックアップ操作をもう一度試してください。 |
 
 ### <a name="networking-alerts"></a>ネットワークのアラート
+
 | アラートのテキスト | Event | 追加情報 / 推奨される対処法 |
 |:--- |:--- |:--- |
 | 認証サービスに接続できませんでした。 |データパス エラー |認証に使用されている URL はアクセスできません。 StorSimple デバイスに指定された URL パターンがファイアウォール規則に含まれていることを確認してください。 Azure Portal の URL パターンの詳細については、[StorSimple Virtual Array のネットワーク要件](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules)に関するセクションをご覧ください。|

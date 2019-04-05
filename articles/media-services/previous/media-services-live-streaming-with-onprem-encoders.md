@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 67d86ca7ed79f431bf762d4a3679e18a7b4bc373
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: da20e4601b75bcb22546d21f6ad218ac9ba2728b
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188358"
 ---
-# <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング
+# <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
 
 > [!NOTE]
 > 2018 年 5 月 12日以降は、ライブ チャネルで RTP/MPEG-2 トランスポート ストリーム取り込みプロトコルがサポートされなくなります。 RTP/MPEG-2 から RTMP またはフラグメント化 MP4 (Smooth Streaming) 取り込みプロトコルに移行してください。
@@ -45,7 +45,7 @@ Media Services 2.10 リリース以降では、チャネルを作成するとき
 > [!NOTE]
 > この記事では、ライブ エンコードの実行が無効なチャネルの属性について説明します。 ライブ エンコードの実行が有効なチャネルの操作については、「 [Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 >
->推奨されるオンプレミスのエンコーダーの詳細については、「[Recommended on-prem encoders (推奨されるオンプレミス エンコーダー)](media-services-recommended-encoders.md)」をご覧ください。
+>推奨されるオンプレミスのエンコーダーの詳細については、「[Recommended on premises encoders (推奨されるオンプレミス エンコーダー)](media-services-recommended-encoders.md)」をご覧ください。
 
 次の図は、オンプレミスのライブ エンコーダーを使用してマルチビットレートの RTMP やフラグメント化 MP4 (スムーズ ストリーミング) ストリームを出力として返すライブ ストリーミング ワークフローを表しています。
 
@@ -146,7 +146,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 
 プレビュー URL は、チャネルの作成時に取得できます。 URL を取得するには、チャネルが**実行中**状態である必要はありません。 チャネルがデータの取り込みを開始した後、ストリームをプレビューできます。
 
-現在、プレビュー ストリームを配信できるのは、指定された入力タイプに関係なく、フラグメント化 MP4 (スムーズ ストリーミング) 形式のみです。 スムーズ ストリーミングのテストには、[スムーズ ストリーミング ヘルス モニター](http://playready.directtaps.net/smoothstreaming/) プレーヤーを使用できます。 また、Azure Portal でホストされているプレーヤーを使用してストリームを表示することもできます。
+現在、プレビュー ストリームを配信できるのは、指定された入力タイプに関係なく、フラグメント化 MP4 (スムーズ ストリーミング) 形式のみです。 スムーズ ストリーミングのテストには、[スムーズ ストリーミング ヘルス モニター](https://playready.directtaps.net/smoothstreaming/) プレーヤーを使用できます。 また、Azure Portal でホストされているプレーヤーを使用してストリームを表示することもできます。
 
 #### <a name="allowed-ip-addresses"></a>許可された IP アドレス
 プレビューのエンドポイントへの接続を許可する IP アドレスを定義できます。 IP アドレスを指定しない場合、すべての IP アドレスが許可されます。 使用できる IP アドレスは、次のいずれかとして指定できます。
@@ -185,7 +185,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 次の表は、チャネルの状態と課金モードとの対応を示しています。
 
 | チャネルの状態 | ポータル UI インジケーター | 課金対象 |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **開始中** |**開始中** |いいえ (遷移状態) |
 | **実行中** |**準備完了** (実行中プログラムなし)<p><p>or<p>**ストリーミング** (実行中プログラムが最低 1 つ存在) |はい |
 | **停止中** |**停止中** |いいえ (遷移状態) |
@@ -229,7 +229,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>関連トピック
-[Recommended on-prem encoders (推奨のオンプレミス エンコーダー)](media-services-recommended-encoders.md)
+[推奨されるオンプレミス エンコーダー](media-services-recommended-encoders.md)
 
 [Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](media-services-fmp4-live-ingest-overview.md)
 

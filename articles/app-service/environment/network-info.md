@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 03/14/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d22b181baa9b9e6d01fb92a3644078ecbd6af7be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 73175b326c25d5d9a78155d0d9d888b655da1bfd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191600"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124135"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
@@ -54,6 +54,7 @@ ILB ASE が存在する場合、ILB のアドレスは、HTTP/S、FTP/S、Web �
 |  HTTP/HTTPS  | ユーザーが構成可能 |  80、443 |
 |  FTP/FTPS    | ユーザーが構成可能 |  21、990、10001-10020 |
 |  Visual Studio リモート デバッグ  |  ユーザーが構成可能 |  4020、4022、4024 |
+|  Web 配置サービス | ユーザーが構成可能 | 8172 |
 
 これは、ユーザーが外部 ASE または ILB ASE にいる場合に当てはまります。 外部 ASE にいる場合は、パブリック VIP でこれらのポートにヒットします。 ILB ASE にいる場合は、ILB でこれらのポートにヒットします。 ポート 443 をロックダウンすると、ポータルで公開されている一部の機能に影響が出る場合があります。 詳細については、「[ポータルの依存関係](#portaldep)」を参照してください。
 

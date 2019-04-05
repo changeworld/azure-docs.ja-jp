@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: dececc961e40d83cf44442dc61054bc8833208f0
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d1e896aee4ba699704ce01e0cff8210d53700993
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265031"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899810"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Azure 監視エージェントの概要 
 Microsoft Azure では、Azure、データセンター、または他のクラウド プロバイダーにホストされている、Microsoft Windows や Linux を実行する仮想マシンからの各種のデータをさまざまな方法で収集できます。 VM の監視に使用可能な 3 種類のエージェントがあります。
@@ -52,7 +52,7 @@ Microsoft Azure では、Azure、データセンター、または他のクラ�
 * Cloud Services、従来の VM、および Azure ストレージ アカウントに格納されている Service Fabric ノードから収集したメトリックとログ データをインポートするように Log Analytics を構成する。
 
 ## <a name="log-analytics-agent"></a>Log Analytics エージェント
-メトリックやログのサブセットを収集すること以上の作業が必要な高度な監視を行う場合は、Log Analytics エージェント (Windows および Linux 用) が必要です。 Log Analytics エージェントは、オンプレミスの物理および仮想マシン、System Center Operations Manager によって監視されるコンピューター、その他のクラウドにホストされている VM を包括的に管理するために開発されました。 Windows および Linux エージェントは、監視ソリューション ベースのデータと、自分で構成するカスタム データ ソースの両方を収集するために、Log Analytics ワークスペースに接続します。
+メトリックやログのサブセットを収集すること以上の作業が必要な高度な監視を行う場合は、Windows 用および Linux 用の Log Analytics エージェントが必要です (Windows 用は、Microsoft Monitoring Agent (MMA) とも呼ばれます)。 Log Analytics エージェントは、オンプレミスの物理および仮想マシン、System Center Operations Manager によって監視されるコンピューター、その他のクラウドにホストされている VM を包括的に管理するために開発されました。 Windows および Linux エージェントは、監視ソリューション ベースのデータと、自分で構成するカスタム データ ソースの両方を収集するために、Log Analytics ワークスペースに接続します。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 

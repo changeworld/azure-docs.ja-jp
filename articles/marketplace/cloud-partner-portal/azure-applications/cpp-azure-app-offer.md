@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 82d072cc6f86ae758bd0fdd4d02b68b1ac1de53a
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 9faa38a23b2039902366e5b885ab73c68a2a3d80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097152"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076022"
 ---
 # <a name="azure-application-offer"></a>Azure アプリケーション プラン
 
@@ -44,6 +44,9 @@ Azure アプリケーションには、マネージド アプリケーション�
 
 Azure Marketplace だけでなく、サービス カタログでマネージド アプリケーションを提供することもできます。 サービス カタログは、組織内のユーザー向けの承認済みのソリューションの内部カタログです。 組織の基準を満たしながら、組織内のグループ用のソリューションを提供するには、カタログを使用します。 従業員は、カタログを使用して、IT 部門が推奨し、承認しているアプリケーションを簡単に見つけることができます。
 
+>[!Note]
+>クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](../../cloud-solution-providers.md)」を参照してください。
+
 マネージド アプリケーションの利点と種類について詳しくは、「[Azure マネージド アプリケーションの概要](https://docs.microsoft.com/azure/managed-applications/overview)」をご覧ください。
 
 
@@ -55,16 +58,15 @@ Azure Marketplace だけでなく、サービス カタログでマネージド 
 
 Azure アプリケーション オファーを発行する手順の概要は次のとおりです。
 
-0. [前提条件](./cpp-prerequisites.md)を満たす - (示されていません) Azure Marketplace に Azure アプリを発行するためのビジネス要件と技術的要件を満たしていることを確認します。 
+1. [前提条件](./cpp-prerequisites.md)を満たす - (示されていません) Azure Marketplace に Azure アプリを発行するためのビジネス要件と技術的要件を満たしていることを確認します。 
 
 1. [オファーを作成する](./cpp-create-offer.md) - オファーに関する詳細情報を指定します。 この情報には、オファーの説明、マーケティング資料、サポート情報、資産の仕様などが含まれます。
 
-2. [ビジネス資産と技術資産を作成するか、既存のものを収集する](./cpp-create-technical-assets.md) - 関連付けられたソリューションに対するビジネス資産 (法務文書とマーケティング資料) と技術資産を作成します。
+1. [ビジネス資産と技術資産を作成するか、既存のものを収集する](./cpp-create-technical-assets.md) - 関連付けられたソリューションに対するビジネス資産 (法務文書とマーケティング資料) と技術資産を作成します。
 
-3. [SKU を作成する](./cpp-skus-tab.md) - オファーに関連付けられた SKU を作成します。 発行を計画しているイメージごとに固有の SKU が必要です。
+1. [SKU を作成する](./cpp-skus-tab.md) - オファーに関連付けられた SKU を作成します。 発行を計画しているイメージごとに固有の SKU が必要です。
 
-4. [オファーを認定して発行する](./cpp-publish-offer.md) - オファーと技術資産が完成したら、オファーを送信できます。 この送信によって発行プロセスが開始します。 このプロセスの間に、ソリューションがテストされ、検証され、認定されて、Azure Marketplace での "運用が開始" されます。
-
+1. [オファーを認定して発行する](./cpp-publish-offer.md) - オファーと技術資産が完成したら、オファーを送信できます。 この送信によって発行プロセスが開始します。 このプロセスの間に、ソリューションがテストされ、検証され、認定されて、Azure Marketplace での "運用が開始" されます。
 
 ## <a name="next-steps"></a>次の手順
 

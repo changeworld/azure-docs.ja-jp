@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6194ed8ffa5732c9f187679e934aad306293d46
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 77154ef35242c55724becb77595dbd5ecf8a4da9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186371"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878195"
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -46,7 +46,7 @@ ms.locfileid: "56186371"
   >
 * **Q:ユーザーの代わりにパスワード リセット データを定義することはできますか。**
 
-  > **A:** はい。これは Azure AD Connect、PowerShell、[Azure portal](https://portal.azure.com)、または Office 365 管理センターで実行できます。 詳しくは、[Azure AD のセルフサービスによるパスワードのリセットで使われるデータ](howto-sspr-authenticationdata.md)に関するページをご覧ください。
+  > **A:** はい。これは Azure AD Connect、PowerShell、[Azure portal](https://portal.azure.com)、または [Microsoft 365 管理センター](https://admin.microsoft.com)で実行できます。 詳しくは、[Azure AD のセルフサービスによるパスワードのリセットで使われるデータ](howto-sspr-authenticationdata.md)に関するページをご覧ください。
   >
   >
 * **Q:オンプレミスからセキュリティの質問のデータを同期できますか。**
@@ -98,12 +98,10 @@ ms.locfileid: "56186371"
 * **Q:パスワードのリセットから電子メール、SMS、または電話呼び出しを受け取るまでにどのくらいの時間がかかりますか。**
 
   > **A:** メール、SMS メッセージ、電話呼び出しは、1 分以内に行われるはずです。 通常は 5 から 20 秒です。
-    >この期間内に通知を受け取らない場合は、
-        > * 迷惑メール フォルダーを確認します。
-        > * 連絡を受けている番号やメールが、自分の想定しているものであることを確認してください。
-        > * ディレクトリ内の認証データの書式が正しいことを確認してください (例: +1 4255551234 または *user@contoso.com*)。 
-  >
-  >
+  > この期間内に通知を受け取らない場合は、
+  > * 迷惑メール フォルダーを確認します。
+  > * 連絡を受けている番号やメールが、自分の想定しているものであることを確認してください。
+  > * ディレクトリ内の認証データの書式が正しいことを確認してください (例: +1 4255551234 または *user\@contoso.com*)。 
 * **Q:パスワードのリセットはどの言語に対応していますか。**
 
   > **A:** パスワードのリセット UI、SMS メッセージ、音声通話は、Office 365 でサポートされているのと同じ言語にローカライズされています。
@@ -116,7 +114,7 @@ ms.locfileid: "56186371"
   >
 * **Q:パスワードをリセットするためにアクセスする場所を、どのようにユーザーに案内すればよいですか。**
 
-  > **A:**[SSPR のデプロイ](howto-sspr-deployment.md#sample-communication)に関する記事に記載されている提案をいくつか試します。
+  > **A:** [SSPR のデプロイ](howto-sspr-deployment.md#sample-communication)に関する記事に記載されている提案をいくつか試します。
   >
   >
 * **Q:モバイル デバイスでこのページを使用できますか。**
@@ -141,7 +139,7 @@ ms.locfileid: "56186371"
   >
 * **Q:セキュリティの質問の認証オプションには質問をいくつ設定できますか。**
 
-  > **A:**[Azure portal](https://portal.azure.com) では、カスタムのセキュリティの質問を最大で 20 個設定できます。
+  > **A:** [Azure portal](https://portal.azure.com) では、カスタムのセキュリティの質問を最大で 20 個設定できます。
   >
   >
 * **Q:セキュリティの質問の長さに制限はありますか。**

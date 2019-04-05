@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 4a7e3e9ff414c8f7ba1c49924f1d8659d72ae3e2
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c52565403c7fbc80eacbf65428863db07d634030
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158212"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897284"
 ---
 # <a name="azure-api-management-template-resources"></a>Azure API Management テンプレート リソース
 Azure API Management には、開発者ポータル テンプレート用に次の種類のリソースが用意されています。  
@@ -99,7 +99,7 @@ Azure API Management には、開発者ポータル テンプレート用に次�
 |----------|----------|  
 |WebApplicationsDetailsTitle|Application preview (アプリケーションのプレビュー)|  
 |WebApplicationsRequirementsHeader|必要条件|  
-|WebApplicationsScreenshotAlt|スクリーンショット|  
+|WebApplicationsScreenshotAlt|Screenshot|  
 |WebApplicationsScreenshotsHeader|Screenshots (スクリーンショット)|  
   
 ###  <a name="ApplicationListStrings"></a> ApplicationListStrings  

@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e2c3cfd509c9b0b77d0db00add31b58a07ce6a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b7dcac665dadef7f3f192e7f0e359b6b7c244bde
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206550"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287028"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>組織内の不適切なパスワードを排除する
-
-|     |
-| --- |
-| Azure AD パスワード保護と禁止パスワードのカスタム リストは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
 
 業界のリーダーたちは、複数の場所で同じパスワードを使用しないこと、パスワードを複雑にすること、Password123 のように単純なパスワードにしないことを指示します。 組織は、ユーザーがガイダンスに従うことをどうやって保証できるでしょうか。 また、共通のパスワードや、最近のデータ違反に含まれることがわかっているパスワードをユーザーが使用しないようにするにはどうすればよいでしょうか。
 
@@ -31,7 +26,7 @@ ms.locfileid: "56206550"
 
 Microsoft は常にサイバー犯罪者の一歩先を行く対策を講じています。 そのため、Azure AD Identity Protection チームは、よく使用され、侵害されたパスワードを継続的に探しています。 また、いわゆるグローバル禁止パスワード リストに含まれるあまりにも一般的と見なされるパスワードをブロックしています。 サイバー犯罪者も同様の戦略を攻撃に使用しているため、Microsoft はこのリストの内容を一般公開していません。 これらの脆弱なパスワードは、Microsoft ユーザーにとって現実的な脅威になる前にブロックされます。 セキュリティに関する最新の取り組みについて詳しくは、「[マイクロソフト セキュリティ インテリジェンス レポート](https://www.microsoft.com/security/operations/security-intelligence-report)」を参照してください。
 
-## <a name="preview-custom-banned-password-list"></a>更新:カスタムの禁止パスワードの一覧
+## <a name="custom-banned-password-list"></a>カスタムの禁止パスワードの一覧
 
 組織によっては、グローバル禁止パスワード リストの上に、Microsoft がカスタムの禁止パスワード リストと呼ぶ独自のカスタマイズを追加することで、セキュリティをさらに向上することもできます。 Contoso のような企業ユーザーは、さらにブランド名、企業固有の用語などの項目の変異形をブロックすることもできます。
 
@@ -41,7 +36,7 @@ Microsoft は常にサイバー犯罪者の一歩先を行く対策を講じて�
 
 ## <a name="on-premises-hybrid-scenarios"></a>オンプレミスのハイブリッド シナリオ
 
-クラウドのみのアカウントを保護することは有用ですが、多くの組織では、オンプレミスの Windows Server Active Directory などのハイブリッド シナリオを維持しています。 オンプレミスの Windows Server Active Directory (プレビュー) エージェント用に Azure AD パスワード保護をインストールして、禁止パスワード リストを既存のインフラストラクチャに拡張することができます。 これで、オンプレミスのパスワードを変更、設定、またはリセットするユーザーと管理者は、クラウドのみのユーザーと同じパスワード ポリシーに準拠することが必須になります。
+クラウドのみのアカウントを保護することは有用ですが、多くの組織では、オンプレミスの Windows Server Active Directory などのハイブリッド シナリオを維持しています。 オンプレミスの Windows Server Active Directory エージェント用に Azure AD パスワード保護をインストールして、禁止パスワード リストを既存のインフラストラクチャに拡張することができます。 これで、オンプレミスのパスワードを変更、設定、またはリセットするユーザーと管理者は、クラウドのみのユーザーと同じパスワード ポリシーに準拠することが必須になります。
 
 ## <a name="how-are-passwords-evaluated"></a>パスワードの評価方法
 
@@ -60,7 +55,7 @@ Microsoft は常にサイバー犯罪者の一歩先を行く対策を講じて�
 | '0'  | 'o' |
 | '1'  | 'l' |
 | '$'  | 's' |
-| '@'  | 'a' |
+| '\@'  | 'a' |
 
 例: “blank” というパスワードが禁止されていて、ユーザーがパスワードを "Bl@nK" に変更しようとしているとします。 "Bl@nk" が特に禁止されていないとしても、正規化プロセスによりこのパスワードは、禁止パスワードである "blank" に変換されます。
 
@@ -96,7 +91,7 @@ Microsoft は常にサイバー犯罪者の一歩先を行く対策を講じて�
 
 正規化後、このパスワードは “contosoblank12” になります。 照合プロセスにより、このパスワードには contoso と blank という 2 つの禁止パスワードが含まれていることがわかります。 このパスワードには以下のスコアが与えられます。
 
-[contoso] + [blank] = [1] + [2] = 4 ポイント。このパスワードは 5 ポイント未満のため、拒否されます。
+[contoso] + [blank] + [1] + [2] = 4 ポイント。このパスワードは 5 ポイント未満のため、拒否されます。
 
 例: ユーザーが自分のパスワードを “ContoS0Bl@nkf9” に変更します。
 

@@ -4,15 +4,15 @@ description: Azure Migrate Collector アプライアンスのアップグレー�
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.author: hamusa
 services: azure-migrate
-ms.openlocfilehash: f29556c8f2a5aa727ce80632eaccf5e1ed6d7c1a
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: d7a9a6cb8683116b9e0c432c2aede2b8df3ddc68
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415546"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895622"
 ---
 # <a name="collector-update-release-history"></a>コレクターの更新プログラムのリリース履歴
 
@@ -22,7 +22,17 @@ Azure Migrate Collector は、Azure に移行する前の評価を目的とし�
 
 ## <a name="continuous-discovery-upgrade-versions"></a>継続的な検出:アップグレード バージョン
 
-継続的な検出アプライアンスのアップグレードは、まだ利用できません。
+### <a name="version-101012-released-on-03132019"></a>バージョン 1.0.10.12 (2019 年 3 月 13 日リリース)
+
+アプライアンス内で Azure クラウドを選択する際の問題に対する修正が含まれています。
+
+アップグレード [パッケージ 1.0.10.12](https://aka.ms/migrate/col/upgrade_10_12) のハッシュ値
+
+**アルゴリズム** | **ハッシュ値**
+--- | ---
+MD5 | 27704154082344c058238000dff9ae44
+SHA1 | 41e9e2fb71a8dac14d64f91f0fd780e0d606785e
+SHA256 | c6e7504fcda46908b636bfe25b8c73f067e3465b748f77e50027e66f2727c2a9
 
 ## <a name="one-time-discovery-deprecated-now-previous-upgrade-versions"></a>1 回限りの検出 (現在は非推奨):以前のアップグレード バージョン
 

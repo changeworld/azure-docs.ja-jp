@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f0f6bbf5f235d6ae3e86114e583d55c502296470
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 891d9b7b34e3d30efb46b69ef1aa75566fe634c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895399"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120756"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS アプリケーションの [Technical Info]\(技術情報\) タブ
 
@@ -44,7 +44,7 @@ SaaS アプリは、次の両方のネットショップに対して提供でき
 - SaaS サービスの Web サイトを Microsoft の SaaS API と接続します。 この接続を作成する方法については、「[Azure を通じた SaaS の販売 - API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis)」をご覧ください。
 - Cloud パートナー ポータルの [Technical Configuration]\(技術構成\) フォームで Azure を通じた販売を有効にし、必要な情報を指定します。 この課金モデルとその実装方法について詳しくは、「[SaaS - Azure で販売する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions)」をご覧ください。
 
- ![[Sell through Microsoft]\(Microsoft を通じて販売\) フォーム](./media/saas-techinfo-sellthrough-ms.png)
+  ![[Sell through Microsoft]\(Microsoft を通じて販売\) フォーム](./media/saas-techinfo-sellthrough-ms.png)
 
 次の表では、Microsoft を通じた販売のために必要なフィールドについて説明します。
 
@@ -73,6 +73,9 @@ SaaS アプリは、次の両方のネットショップに対して提供でき
 - [Contact me (お問い合わせ)]
 
 [Call to action]\(勧誘方法\) のオプションについて詳しくは、「公開オプションを選択する」をご覧ください。
+
+>[!Note]
+>クラウド ソリューション プロバイダー (CSP) のパートナー チャネル オプトインが利用できるようになりました。  Microsoft CSP パートナー チャネルを通じたオファーのマーケティングの詳細については、「[Cloud Solution Providers (クラウド ソリューション プロバイダー)](../../cloud-solution-providers.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

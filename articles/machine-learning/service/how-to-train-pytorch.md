@@ -11,16 +11,16 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: e5528cdfc2efa2d5c257732c8b6b6df117421839
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a5ddc17f6200ba2d43d67fcd2e4bcc35c224e6cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250029"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004061"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して PyTorch モデルをトレーニングする
 
-PyTorch を利用したディープ ニューラル ネットワーク (DNN) トレーニングの場合、Azure Machine Learning には `Estimator` のカスタム `PyTorch` クラスが用意されています。 Azure SDK の `PyTorch` エスティメータを使用すると、Azure コンピューティングでの単一ノード実行と分散実行の両方に対して、PyTorch トレーニング ジョブを簡単に送信することができます。
+PyTorch を利用したディープ ニューラル ネットワーク (DNN) トレーニングの場合、Azure Machine Learning では `Estimator` のカスタム [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) クラスが提供されます。 Azure SDK の `PyTorch` エスティメータを使用すると、Azure コンピューティングでの単一ノード実行と分散実行の両方に対して、PyTorch トレーニング ジョブを簡単に送信することができます。
 
 ## <a name="single-node-training"></a>単一ノードのトレーニング
 `PyTorch` エスティメータによるトレーニングは、[基本 `Estimator`](how-to-train-ml-models.md) を使用する場合と似ているので、最初にハウツー記事を読み、そこで紹介されている概念を理解しておいてください。
@@ -42,6 +42,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 ```
 
 ここでは、PyTorch コンストラクターに次のパラメーターを指定します。
+
 パラメーター | 説明
 --|--
 `source_directory` |  トレーニング ジョブに必要なコードのすべてが含まれているローカル ディレクトリ。 このフォルダーは、ローカル コンピューターからリモート コンピューティングにコピーされています
@@ -82,6 +83,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-project',
 ```
 
 このコードでは、PyTorch コンストラクターに対して次の新しいパラメーターを公開しています。
+
 パラメーター | 説明 | 既定値
 --|--|--
 `node_count` |  トレーニング ジョブに使用するノードの数。 | `1`

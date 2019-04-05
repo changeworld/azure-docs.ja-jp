@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 14326714fc8258e184024edb83666d3ed0c3eee7
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 160ff8bbcb8ce5a4f1f32245cc366281640c5919
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271399"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854256"
 ---
-# <a name="azure-data-factory-mapping-data-flow-unpivot-transformation"></a>Azure Data Factory の Mapping Data Flow のピボット解除変換
+# <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory のピボット解除変換
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -42,7 +42,7 @@ ADF の Mapping Data Flow で、正規化されていないデータセットを
 
 (省略可能) 行の値から作成される新しい列の先頭、中間、および末尾に文字列を追加する名前付けパターンを設定できます。
 
-たとえば、"売上" を "地域" によってピボット処理すると、各売上値から新しい列値が算出されるだけです。 たとえば、"25"、"50"、"1000" などです。ただし、"売上" というプレフィックス値を設定すれば、値に "売上" が付加されます。
+たとえば、"売上" を "地域" によってピボット処理すると、各売上値から新しい列値が算出されるだけです。 例: "25"、"50"、"1000" などです。ただし、"売上" というプレフィックス値を設定すれば、値に "売上" が付加されます。
 
 <img src="media/data-flow/unpivot3.png" width="400">
 
@@ -51,3 +51,7 @@ ADF の Mapping Data Flow で、正規化されていないデータセットを
 ![ピボット解除変換](media/data-flow//unpivot7.png "ピボット解除オプション 5")
 
 ピポット解除された最終的なデータの結果セットには、別個の行の値にピボット解除された列の合計が表示されます。
+
+## <a name="next-steps"></a>次の手順
+
+[ピボット解除変換](data-flow-pivot.md)を使用して、行を列にピボットします。

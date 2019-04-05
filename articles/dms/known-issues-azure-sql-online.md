@@ -2,21 +2,21 @@
 title: Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項に関する記事 | Microsoft Docs
 description: Azure SQL Database へのオンライン移行に関する既知の問題と移行の制限事項について学習します。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/11/2019
-ms.openlocfilehash: b066c7f6c32b6e9fe1c1f63b5db88b4deaa2edae
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.date: 03/05/2019
+ms.openlocfilehash: 38a59a3a390977c5a3fd22b185542f5f2ec33d79
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231820"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091496"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Azure SQL DB へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -62,9 +62,9 @@ ms.locfileid: "54231820"
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
- 2. 移行するテーブルを指定する **[Configure migration settings]\(移行設定の構成\)** ブレードからこれらのテーブルを除外します。
+   1. 移行するテーブルを指定する **[Configure migration settings]\(移行設定の構成\)** ブレードからこれらのテーブルを除外します。
 
- 3. 移行アクティビティを再実行します。
+   1. 移行アクティビティを再実行します。
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>"全体のデータの読み込み" または "増分データ同期" 中のスキーマ内のアクティブ トリガーに関する各種の整合性違反による移行エラー
 
@@ -89,7 +89,7 @@ SELECT max(DATALENGTH(ColumnName)) as LEN from TableName
 
 **対処法**
 
-32 KB を超える LOB 列がある場合は、エンジニアリング チーム ([dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)) に相談してください。
+32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
 ### <a name="issues-with-timestamp-columns"></a>タイムスタンプ列に関する問題
 
@@ -99,7 +99,7 @@ DMS は、ソースのタイムスタンプ値を移行しません。代わり�
 
 **対処法**
 
-DMS でソース テーブルに格納されている正確なタイムスタンプ値を移行する必要がある場合は、エンジニアリング チーム ([dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com)) に相談してください。
+DMS でソース テーブルに格納されている正確なタイムスタンプ値を移行する必要がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
 ### <a name="data-migration-errors-do-not-provide-additional-details-on-the-database-detailed-status-blade"></a>データ移行エラーが発生した場合、データベースの詳細な状態ブレードに詳細が表示されません。
 

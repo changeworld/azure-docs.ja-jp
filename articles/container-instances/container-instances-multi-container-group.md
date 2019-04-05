@@ -1,6 +1,6 @@
 ---
 title: Azure Container Instances に複数コンテナー グループをデプロイする
-description: 複数のコンテナーを含むコンテナー グループを Azure Container Instances にデプロイする方法を説明します。
+description: Azure Resource Manager テンプレートを使用して複数のコンテナーを含むコンテナー グループを Azure Container Instances にデプロイする方法を説明します。
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: adb284772291dc901dd5302124982948c1f37eea
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 2dfe1bbf01b7e1fae8c07602ac4faa40ae74ecc9
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856481"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729499"
 ---
-# <a name="deploy-a-container-group"></a>コンテナー グループのデプロイ
+# <a name="deploy-a-multi-container-group-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする
 
 Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 これは、サービスが 2 番目の接続プロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
 
@@ -28,6 +28,8 @@ Azure CLI を使用して複数コンテナー グループをデプロイする
 
 > [!NOTE]
 > 複数コンテナー グループは、現在、Linux コンテナーに限定されています。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) で確認できます。
+
+その他のテンプレート サンプルについては、「[Azure Container Instances のための Azure Resource Manager テンプレート](container-instances-samples-rm.md)」を参照してください。 
 
 ## <a name="configure-the-template"></a>テンプレートの構成
 

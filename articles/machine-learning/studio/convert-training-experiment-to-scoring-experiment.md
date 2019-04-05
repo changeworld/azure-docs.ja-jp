@@ -5,16 +5,16 @@ description: Machine Learning Studio のトレーニング実験を予測実験�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 1d07ad7e60e1ee9ff3216767fcfc77405d557f44
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 2a318edada5cdc4124e221fdc8c441ab323a9289
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455111"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119617"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法
 
@@ -22,7 +22,7 @@ Azure Machine Learning Studio が提供するツールは、予測分析モデ�
 
 これを実行するには、Studio を使用して*トレーニング実験*と呼ばれる実験を作成します。トレーニング実験では、モデルのトレーニング、スコア付け、編集を行います。 満足したら、トレーニング実験をユーザー データがスコア付けされるように構成した*予測実験*に変換することによって、モデルをデプロイする準備を行います。
 
-このプロセスの例は、[チュートリアル 1: 信用リスクの予測](tutorial-part1-credit-risk.md)で参照できます。
+このプロセスの例は、[チュートリアル 1: 信用リスクの予測](tutorial-part1-credit-risk.md)から開始してください。
 
 この記事では、トレーニング実験を予測実験に変換する方法と、予測実験をデプロイする方法について詳しく解説します。 これらの詳細を理解することで、デプロイしたモデルをより効果的にするための構成方法を学ぶことができます。
 

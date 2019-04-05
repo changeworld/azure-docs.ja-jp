@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 204898026dc55e7111d3810d4938101ffaddc3f9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4d7f3c8d8efbdc658e4f7621a0606cb7fd92c88d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698328"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103487"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso の移行: オンプレミス アプリを Azure VM にリホストする
 
@@ -314,17 +314,17 @@ Contoso の管理者は、これらのステップを以下のように実行し
 
 3. レプリケーションの対象として **OSTICKETWEB** VM を選択します。 
 
-    - この段階では、**OSTICKETWEB** のみを選択します。これは、VNet とサブネットの両方を選択する必要があり、VM は同じサブネットの中にないためです。
-    - VM に対してレプリケーションが有効にされると、Site Recovery がモビリティ サービスを自動的にインストールします。
+   - この段階では、**OSTICKETWEB** のみを選択します。これは、VNet とサブネットの両方を選択する必要があり、VM は同じサブネットの中にないためです。
+   - VM に対してレプリケーションが有効にされると、Site Recovery がモビリティ サービスを自動的にインストールします。
 
-    ![レプリケーションを有効にする](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
+     ![レプリケーションを有効にする](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
 
 4. VM のプロパティで、モビリティ サービスをマシンに自動的にインストールするためにプロセス サーバーが使用するアカウントを選択します。
 
      ![モビリティ サービス](./media/contoso-migration-rehost-linux-vm/linux-mobility.png)
 
 5. **[レプリケーションの設定]** > **[レプリケーション設定の構成]** で、正しいレプリケーション ポリシーが適用されていることを確認し、**[Enable Replication]**(レプリケーションを有効にする) を選択します。
-6.  レプリケーションの進行状況は、**[ジョブ]** で追跡します。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
+6. レプリケーションの進行状況は、**[ジョブ]** で追跡します。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
 
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: f2b8b97878fc0970c8cfc95e5bd4420306e34cc0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 5f757218d29317f82339967a327f34438c62ab96
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977102"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294146"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
@@ -26,7 +26,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-Text Analytics コンテナーのいずれかを実行するには、以下が必要です。
+Text Analytics コンテナーのいずれかを実行するには、ホスト コンピューターおよびコンテナー環境が必要です。
 
 ## <a name="preparation"></a>準備
 
@@ -46,11 +46,14 @@ Text Analytics コンテナーを使用する前に、次の前提条件を満�
 
 次の表に、各 Text Analytics コンテナーに割り当てる CPU コア (2.6 GHz (ギガヘルツ) 以上) とメモリ (GB 単位) の最小値と推奨値を示します。
 
-| コンテナー | 最小値 | 推奨 |
-|-----------|---------|-------------|
-|キー フレーズ抽出 | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |
-|言語検出 | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |
-|感情分析 | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |
+| コンテナー | 最小値 | 推奨 | TPS<br>(最小、最大)|
+|-----------|---------|-------------|--|
+|キー フレーズ抽出 | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |15、30|
+|言語検出 | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |15、30|
+|感情分析 | 1 コア、2 GB メモリ | 1 コア、4 GB メモリ |15、30|
+
+* 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
+* TPS - 1 秒あたりのトランザクション数
 
 コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
 
@@ -134,11 +137,13 @@ ApiKey={BILLING_KEY}
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
 
+[!INCLUDE [Running multiple containers on the same host](../../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
 
-コンテナーの API のホストとしては https://localhost:5000 を使用します。
+コンテナーの API のホストとしては `https://localhost:5000` を使用します。
 
 ## <a name="stop-the-container"></a>コンテナーの停止
 

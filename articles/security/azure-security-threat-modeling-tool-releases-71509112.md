@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: 8d3d2acb28a82f50f0255701fe6079ad444ce03f
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: bdf8b701567aaa3a0d9006333557bcec4f312723
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360549"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890918"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA リリース 7.1.50911.2 - 9/12/2018
 
@@ -90,7 +90,7 @@ OneDrive のユーザーには、Microsoft の [OneDrive for Windows](https://on
 - サポートされているオペレーティング システム
   - Microsoft Windows 10
 - 必要な .NET のバージョン
-  - .Net 3.5.2
+  - .NET 3.5.2
 - その他の要件
   - ツールとテンプレートの更新プログラムを受け取るには、インターネット接続が必要です。
 

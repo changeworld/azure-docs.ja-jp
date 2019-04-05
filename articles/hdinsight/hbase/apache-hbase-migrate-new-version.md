@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 1e62495de35c8df4f446d371a0bbbcdc80c7118d
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 3b27fe0bec4ec23739e3cff02d6aed667f1d3e1d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650105"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226829"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase クラスターを新しいバージョンに移行する
 
@@ -199,15 +199,21 @@ Apache HBase をアップグレードする前に、移行元クラスターと�
 
     ![Ambari で、コンテナー名を変更する](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
-8. 変更を保存します。
-9. Ambari の指示に従って、必要なすべてのサービスを再起動します。
-10. アプリケーションが新しいクラスターを指すように設定します。
+8. **拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。この手順は、拡張書き込み機能を備えた HBase クラスターにのみ必要です。**
+   
+   hbase.rootdir パスを、元のクラスターのコンテナーを指すように変更します。
+
+    ![Ambari で、hbase rootdir のコンテナー名を変更する](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+    
+9. 変更を保存します。
+10. Ambari の指示に従って、必要なすべてのサービスを再起動します。
+11. アプリケーションが新しいクラスターを指すように設定します。
 
     > [!NOTE]  
     > アップグレードするとアプリケーションの静的 DNS が変更されます。 この DNS をハードコーディングする代わりに、ドメイン名の DNS 設定でクラスターの名前を指す CNAME を構成できます。 もう 1 つの選択肢は、再デプロイせずに更新できる、アプリケーション用の構成ファイルを使用することです。
 
-11. インジェストを開始して、すべてが期待どおりに機能しているかどうかを確認します。
-12. 新しいクラスターに問題がない場合は、元のクラスターを削除します。
+12. インジェストを開始して、すべてが期待どおりに機能しているかどうかを確認します。
+13. 新しいクラスターに問題がない場合は、元のクラスターを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

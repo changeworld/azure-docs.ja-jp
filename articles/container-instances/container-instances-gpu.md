@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: 2cbfb21469df45f29a70b5d10d8c99ecd894c30c
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: f35b2cd8d360bd46913eaa34b91e1fd19bc1ba9b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53755021"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533597"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 
@@ -28,15 +28,7 @@ ms.locfileid: "53755021"
 
 プレビューでは、コンテナー グループで GPU リソースを使用する場合に、次の制限が適用されます。 
 
-**サポートされているリージョン**:
-
-* 米国東部 (eastus)
-* 米国西部 2 (westus2)
-* 米国中南部 (southcentralus)
-* 西ヨーロッパ (westeurope)
-* 北ヨーロッパ (northeurope)
-* 東アジア (eastasia)
-* インド中部 (centralindia)
+[!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 
 サポート対象リージョンは今後追加される予定です。
 
@@ -59,21 +51,9 @@ ms.locfileid: "53755021"
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
   | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
 
-### <a name="cpu-and-memory"></a>CPU とメモリ
+[!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-GPU リソースをデプロイするときに、ワークロードに適した CPU とメモリ リソースを設定します。最大値を次の表に示します。 これらの値は、現在、GPU リソースのないコンテナー インスタンスの CPU とメモリの制限よりも大きくなっています。  
-
-| GPU SKU | GPU 数 | CPU |  メモリ (GB) |
-| --- | --- | --- | --- |
-| K80 | 1 | 6 | 56 |
-| K80 | 2 | 12 | 112 |
-| K80 | 4 | 24 | 224 |
-| P100 | 1 | 6 | 112 |
-| P100 | 2 | 12 | 224 |
-| P100 | 4 | 24 | 448 |
-| V100 | 1 | 6 | 112 |
-| V100 | 2 | 12 | 224 |
-| V100 | 4 | 24 | 448 |
+GPU リソースをデプロイするときに、ワークロードに適した CPU とメモリ リソースを設定します。上記の表は最大値を表しています。 これらの値は、現在、GPU リソースのないコンテナー グループで使用可能な CPU とメモリ リソースよりも大きくなっています。  
 
 ### <a name="things-to-know"></a>注意事項
 
@@ -85,6 +65,10 @@ GPU リソースをデプロイするときに、ワークロードに適した 
 
 * **CUDA ドライバー** - GPU リソースがあるコンテナー インスタンスは、NVIDIA CUDA ドライバーとコンテナーのランタイムを使用して事前にプロビジョニングされているため、CUDA ワークロード用に開発されたコンテナー イメージを使用できます。
 
+  現時点では、CUDA 9.0 がサポートされています。 たとえば、次の基本イメージを Docker ファイルで使用できます。
+  * [nvidia/cuda:9.0-base-ubuntu16.04](https://hub.docker.com/r/nvidia/cuda/)
+  * [tensorflow/tensorflow: 1.12.0-gpu-py3](https://hub.docker.com/r/tensorflow/tensorflow)
+    
 ## <a name="yaml-example"></a>YAML の例
 
 GPU リソースを追加するには、[YAML ファイル](container-instances-multi-container-yaml.md)を使用してコンテナー グループをデプロイする方法があります。 次の YAML を *gpu-deploy-aci.yaml* という名前の新しいファイルにコピーしてから、ファイルを保存します。 この YAML により、K80 GPU を持つコンテナー インスタンスを指定する *gpucontainergroup* という名前のコンテナー グループが作成されます。 このインスタンスでは、CUDA ベクトル加法アプリケーションのサンプルが実行されます。 ワークロードを実行するには、リソース要求だけで十分です。

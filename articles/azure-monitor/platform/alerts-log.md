@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 29050be7587f88ce7a1f5370f50dcfa1ecd68306
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f26c8e670855513995463ffaaf7e49a8e00e35fa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990447"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57873793"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する
 
@@ -47,29 +47,29 @@ ms.locfileid: "55990447"
 
 1. **[リソースの選択]** のリンクを使用してターゲットを指定し、リソースを選択することで、アラートの条件を定義します。 _サブスクリプション_、_リソースの種類_ を選択し、必要な _リソース_ を選択して、フィルターを適用します。
 
-    >[!NOTE]
-
-    > ログ アラートを作成する場合、続行する前に、選択したリソースに使用可能な**ログ** シグナルを確認します。
-    ![リソースの選択](media/alerts-log/Alert-SelectResourceLog.png)
+   > [!NOTE]
+   > 
+   > ログ アラートを作成する場合、続行する前に、選択したリソースに使用可能な**ログ** シグナルを確認します。
+   >  ![リソースの選択](media/alerts-log/Alert-SelectResourceLog.png)
 
 1. *ログ アラート*: **[リソースの種類]** が *Log Analytics* または *Application Insights* のような分析ソースであり、シグナルの種類が **[ログ]** であることを確認し、適切な**リソース**を選択したら、*[完了]* をクリックします。 次に **[条件の追加]** をクリックして、そのリソースで使用できるシグナル オプションの一覧を表示し、シグナル一覧から、*Log Analytics* または *Application Insights* などの選択したログ監視サービスの **[Custom log search]\(カスタム ログ検索\)** オプションを選択します。
 
    ![リソースの選択 - カスタム ログ検索](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
-
+   > 
    > アラート リストは上の図に示すように、分析クエリをシグナルの種類 - **[Log (Saved Query)]\(ログ (保存されたクエリ)\)** としてインポートできます。 したがって、ユーザーは Analytics でクエリを完成させ、将来使用するためにクエリをアラートに保存することができます。保存クエリの使用について詳しくは、[ログ分析でのログ検索の使用](../../azure-monitor/log-query/log-query-overview.md)または [Application Insights 分析 での共有クエリ](../../azure-monitor/log-query/log-query-overview.md)に関する記事を参照してください。
 
 1. *ログ アラート*: 選択すると、アラート設定のクエリを **[検索クエリ]** フィールドで指定できます。クエリ構文が正しくない場合は、フィールドに赤い文字でエラーが表示されます。 クエリ構文が正しい場合は、直近の 6 時間から最後の週までさまざまな時間枠を微調整するオプションとともに、宣言されたクエリの履歴データが参考としてグラフで表示されます。
 
     ![アラート ルールの構成](media/alerts-log/AlertsPreviewAlertLog.png)
 
-    > [!NOTE]
-    
-    > 履歴データの視覚エフェクトは、時間に関する詳細がクエリ結果にある場合のみ表示されます。 ご利用のクエリが集計されたデータまたは特定の列の値になった場合は、単一のプロットとして同じものが表示されます。
-    > Application Insights、または[新しい API への切り替え](alerts-log-api-switch.md)を使用するメトリック測定タイプのログ アラートでは、以下に示すように、**[集計]** オプションを使用して、データをグループ化する特定の変数を指定できます。
-    >
-    > ![[集計] オプション](media/alerts-log/aggregate-on.png)
+   > [!NOTE]
+   > 
+   > 履歴データの視覚エフェクトは、時間に関する詳細がクエリ結果にある場合のみ表示されます。 ご利用のクエリが集計されたデータまたは特定の列の値になった場合は、単一のプロットとして同じものが表示されます。
+   > Application Insights、または[新しい API への切り替え](alerts-log-api-switch.md)を使用するメトリック測定タイプのログ アラートでは、以下に示すように、**[集計]** オプションを使用して、データをグループ化する特定の変数を指定できます。
+   > 
+   > ![[集計] オプション](media/alerts-log/aggregate-on.png)
 
 1. *ログ アラート*: 所定の視覚エフェクトを使用して、表示される [条件]、[集計]、[しきい値] のオプションから**アラート ロジック**を選択できます。 最後に、そのロジック内で **[期間]** オプションを使用して、指定した条件を評価する期間を指定します。 また、**[頻度]** を選択して Alert を実行する頻度を指定します。 **ログ アラート**は次のものに基づきます。
     - [レコード数](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): クエリによって返されるレコード数が、指定した値より大きいまたは小さい場合に、アラートが作成されます。
@@ -102,9 +102,9 @@ ms.locfileid: "55990447"
 
 1. すべてのフィールドが有効で緑色のチェックマークがついている場合、**[アラート ルールの作成]** をクリックすることができ、アラートが Azure Monitor - アラートで作成されます。 アラート ダッシュボードですべてのアラートを表示できます。
 
-    ![ルールの作成](media/alerts-log/AlertsPreviewCreate.png)
+     ![ルールの作成](media/alerts-log/AlertsPreviewCreate.png)
 
-    数分後にアラートがアクティブになり、前述のようにトリガーされます。
+     数分後にアラートがアクティブになり、前述のようにトリガーされます。
 
 ユーザーは、[Log Analytics](../log-query/portals.md) で分析クエリを最終処理し、[アラートの設定] ボタンでアラートを作成するようにプッシュし、上記のチュートリアルの手順 6 以降の指示に従います。
 
@@ -217,7 +217,7 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
 ```json
 
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
     },
@@ -310,28 +310,29 @@ Azure Monitor のログ アラートはリソースの種類 `Microsoft.Insights
 
 ## <a name="managing-log-alerts-using-powershell-cli-or-api"></a>PowerShell、CLI、または API を使用したログ アラートの管理
 
-[Azure Monitor - Scheduled Query Rules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) は REST API であり、Azure Resource Manager REST API との完全な互換性があります。 そのためこれは、Resource Manager コマンドレットだけでなく Azure CLI を使用して、Powershell を介して使用できます。
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Azure Monitor - Scheduled Query Rules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) は REST API であり、Azure Resource Manager REST API との完全な互換性があります。 そのためこれは、Resource Manager コマンドレットだけでなく Azure CLI を使用して、Powershell を介して使用できます。
+
 
 > [!NOTE]
 > Log Analytics のログ アラートは、従来の [Log Analytics Alert API](../../azure-monitor/platform/api-alerts.md) や [Log Analytics の保存された検索とアラート](../../azure-monitor/insights/solutions-resources-searches-alerts.md)の従来のテンプレートを使用して管理することもできます。 ここで詳しく説明している新しい ScheduledQueryRules API を既定で使用する方法の詳細については、[Log Analytics アラート用の新しい API に切り替える方法](alerts-log-api-switch.md)に関するページを参照してください。
 
-
 現在、ログ アラートには専用の PowerShell コマンドや CLI コマンドはありません。ただし、リソース テンプレートのセクションで前に示したサンプル リソース テンプレート (sampleScheduledQueryRule.json) に対し、Azure Resource Manager PowerShell コマンドレットを介して以下のように使用できます。
+
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
+New-AzResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
 
 リソース テンプレートのセクションで前に示したサンプル リソース テンプレート (sampleScheduledQueryRule.json) に対する Azure Resource Manager コマンドの Azure CLI での使い方を以下に示します。
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json
-```
+On successful operation, 201 will be returned to state new alert rule creation or 200 will be returned if an existing alert rule was modified.
 
-操作が成功すると、新しいアラート ルールの作成を示す 201 が返されます。または、既存のアラート ルールが変更された場合は 200 が返されます。
+## Next steps
 
-## <a name="next-steps"></a>次の手順
-
-* [Azure アラートのログ アラート](../../azure-monitor/platform/alerts-unified-log.md)について学習します。
-* [ログ アラートの Webhook アクション](../../azure-monitor/platform/alerts-log-webhook.md)を理解します。
-* [Application Insights](../../azure-monitor/app/analytics.md) についてさらに学習します。
-* [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) についてさらに学習します。
+* Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
+* Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
+* Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
+* Learn more about [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).

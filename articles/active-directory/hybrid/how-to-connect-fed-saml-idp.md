@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09151dee2d458e2ff4fae8a8a3bc93fa466e4efc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8b5eb46b845bebbb81dce6aadb9d97af08955df3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167798"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096947"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -30,16 +30,16 @@ ms.locfileid: "56167798"
 
 Microsoft では、適切に構成された SAML 2.0 プロファイル ベースの IDP と Microsoft クラウド サービス (Office 365 など) の統合として、このサインオン エクスペリエンスをサポートします。 SAML 2.0 ID プロバイダーはサード パーティ製品であるため、Microsoft では、それらのデプロイ、構成、トラブルシューティングに関するベスト プラクティスをサポートしません。 適切に構成したら、後ほど詳述する Microsoft 接続アナライザー ツールを使用して、SAML 2.0 ID プロバイダーとの統合が適切な構成かどうかをテストできます。 SAML 2.0 SP-Lite プロファイル ベースの ID プロバイダーの詳細については、提供元の組織にお問い合わせください。
 
->[!IMPORTANT]
->SAML 2.0 ID プロバイダーを使用するこのサインオン シナリオで利用できるクライアントは、以下に限定されています。
-
->- Outlook Web Access や SharePoint Online などの Web ベースのクライアント
-- 基本認証を使用し、IMAP、POP、Active Sync、MAPI などのサポートされている Exchange アクセス方法をサポートする以下の電子メール リッチ クライアント (拡張クライアント プロトコル エンドポイントのデプロイが必要です)。
-    - Microsoft Outlook 2010/Outlook 2013/Outlook 2016、Apple iPhone (複数の iOS のバージョン)
-    - 多様な Google Android デバイス
-    - Windows Phone 7、Windows Phone 7.8、および Windows Phone 8.0
-    - Windows 8 メール クライアントと Windows 8.1 メール クライアント
-    - Windows 10 メール クライアント
+> [!IMPORTANT]
+> SAML 2.0 ID プロバイダーを使用するこのサインオン シナリオで利用できるクライアントは、以下に限定されています。
+> 
+> - Outlook Web Access や SharePoint Online などの Web ベースのクライアント
+> - 基本認証を使用し、IMAP、POP、Active Sync、MAPI などのサポートされている Exchange アクセス方法をサポートする以下の電子メール リッチ クライアント (拡張クライアント プロトコル エンドポイントのデプロイが必要です)。
+>     - Microsoft Outlook 2010/Outlook 2013/Outlook 2016、Apple iPhone (複数の iOS のバージョン)
+>     - 多様な Google Android デバイス
+>     - Windows Phone 7、Windows Phone 7.8、および Windows Phone 8.0
+>     - Windows 8 メール クライアントと Windows 8.1 メール クライアント
+>     - Windows 10 メール クライアント
 
 他のすべてのクライアントは、SAML 2.0 ID プロバイダーを使用するこのサインオン シナリオでは利用できません。 たとえば、Lync 2010 デスクトップ クライアントは、シングル サインオン用に SAML 2.0 ID プロバイダーが構成されているサービスにログインすることはできません。
 
@@ -194,9 +194,9 @@ SAML 2.0 ID プロバイダーを使用してフェデレーションする各 A
 "Set-MsolDomainAuthentication" の詳細については [https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx) を参照してください。
 
 >[!NOTE]
->“$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"” は、ID プロバイダーに対して ECP 拡張機能を設定する場合にのみ実行する必要があります。 Outlook Web Application (OWA) を除く Exchange Online クライアントは、POST ベースのアクティブなエンドポイントを活用します。 SAML 2.0 STS でアクティブなエンドポイントの Shibboleth の ECP 実装に似たアクティブなエンドポイントを実装すると、これらのリッチ クライアントが Exchange Online サービスと対話することが可能になる場合があります。
+>`$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` は、ID プロバイダーに対して ECP 拡張機能を設定する場合にのみ実行および使用する必要があります。 Outlook Web Application (OWA) を除く Exchange Online クライアントは、POST ベースのアクティブなエンドポイントを活用します。 SAML 2.0 STS でアクティブなエンドポイントの Shibboleth の ECP 実装に似たアクティブなエンドポイントを実装すると、これらのリッチ クライアントが Exchange Online サービスと対話することが可能になる場合があります。
 
-フェデレーションが構成された後で、"非フェデレーション" ("マネージ") に切り替えることもできます。ただし、この変更は、完了までに最大 2 時間かかり、クラウドベースのサインイン用の新しいランダム パスワードを各ユーザーに割り当てる必要があります。 "マネージド" への切り替えは、一部のシナリオで設定のエラーをリセットするために必要になる場合があります。 ドメインの変換の詳細については、[https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](httpss://msdn.microsoft.com/library/windowsazure/dn194122.aspx) を参照してください。
+フェデレーションが構成された後で、"非フェデレーション" ("マネージ") に切り替えることもできます。ただし、この変更は、完了までに最大 2 時間かかり、クラウドベースのサインイン用の新しいランダム パスワードを各ユーザーに割り当てる必要があります。 "マネージド" への切り替えは、一部のシナリオで設定のエラーをリセットするために必要になる場合があります。 ドメインの変換の詳細については、[https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx) を参照してください。
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>ユーザー プリンシパルを Azure AD/Office 365 にプロビジョニングする
 Office 365 に対してユーザーを認証するには、SAML 2.0 要求のアサーションに対応するユーザー プリンシパルを使用して Azure AD をプロビジョニングしておく必要があります。 これらのユーザー プリンシパルが Azure AD で事前に認識されていない場合、フェデレーション サインインで使用することはできません。 ユーザー プリンシパルは、Azure AD Connect または Windows PowerShell を使用してプロビジョニングできます。

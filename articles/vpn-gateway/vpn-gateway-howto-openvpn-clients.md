@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 73f8b1323f6cd22ef215fba4ec45714f099032f6
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 9818ae9b8571628d9be09f539abf2995a3927e08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415835"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010545"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Azure VPN Gateway 用に OpenVPN クライアントを構成する (プレビュー)
 
@@ -36,29 +36,29 @@ VPN ゲートウェイ用に OpenVPN を構成する手順を完了している�
 4. 作成してゲートウェイ上の P2S 構成にアップロードした P2S クライアント証明書を[エクスポート](vpn-gateway-certificates-point-to-site.md#clientexport)します。
 5. *.pfx* から秘密キーと base64 のサムプリントを抽出します。 これには複数の方法があります。 1 つの方法として、コンピューター上で OpenSSL を使用します。 *profileinfo.txt* ファイルには、CA およびクライアント証明書の秘密キーとサムプリントが含まれています。 必ず、クライアント証明書のサムプリントを使用してください。
 
-  ```
-  openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
-  ```
+   ```
+   openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
+   ```
 6. メモ帳で *profileinfo.txt* を開きます。 クライアント (子) 証明書のサムプリントを取得するには、子の証明書のテキスト "-----BEGIN CERTIFICATE-----" および "-----END CERTIFICATE-----" (これらとその間のテキストを含む) を選択してコピーします。 subject=/ 行を確認して、子の証明書を識別できます。
 7. 手順 3 からメモ帳で開いている *vpnconfig.ovpn* ファイルに切り替えます。 以下に示したセクションを検索して、"cert" と "/cert" の間をすべて置き換えます。
 
-  ```
-  # P2S client certificate
-  # please fill this field with a PEM formatted cert
-  <cert>
-  $CLIENTCERTIFICATE
-  </cert>
-  ```
-8.  メモ帳で *profileinfo.txt* を開きます。 秘密キーを取得するには、テキスト "-----BEGIN PRIVATE KEY-----" および "-----BEGIN PRIVATE KEY-----" (これらとその間のテキストを含む) を選択してコピーします。
-9.  メモ帳の vpnconfig.ovpn ファイルに戻って、このセクションを見つけます。 秘密キーを貼り付けて、"key" と "/key" の間をすべて置き換えます。
+   ```
+   # P2S client certificate
+   # please fill this field with a PEM formatted cert
+   <cert>
+   $CLIENTCERTIFICATE
+   </cert>
+   ```
+8. メモ帳で *profileinfo.txt* を開きます。 秘密キーを取得するには、"-----BEGIN PRIVATE KEY-----" および "-----END PRIVATE KEY-----" (とその間の) テキストを選択してコピーします。
+9. メモ帳の vpnconfig.ovpn ファイルに戻って、このセクションを見つけます。 秘密キーを貼り付けて、"key" と "/key" の間をすべて置き換えます。
 
-  ```
-  # P2S client root certificate private key
-  # please fill this field with a PEM formatted key
-  <key>
-  $PRIVATEKEY
-  </key>
-  ```
+   ```
+   # P2S client root certificate private key
+   # please fill this field with a PEM formatted key
+   <key>
+   $PRIVATEKEY
+   </key>
+   ```
 10. その他のフィールドは変更しないでください。 クライアント入力に入力された構成を使用して VPN に接続します。
 11. vpnconfig.ovpn ファイルを C:\Program Files\OpenVPN\config フォルダーにコピーします。
 12. システム トレイの OpenVPN アイコンを右クリックし、[接続] をクリックします。
@@ -84,56 +84,56 @@ VPN ゲートウェイ用に OpenVPN を構成する手順を完了している�
 1. 新しいターミナル セッションを開きます。 新しいセッションを開くには、Ctrl キーと Alt キーを押しながら t キーを押します。
 2. 次のコマンドを入力して、必要なコンポーネントをインストールします。
 
-  ```
-  sudo apt-get install openvpn
-  sudo apt-get -y install network-manager-openvpn
-  sudo service network-manager restart
-  ```
+   ```
+   sudo apt-get install openvpn
+   sudo apt-get -y install network-manager-openvpn
+   sudo service network-manager restart
+   ```
 3. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [ポイント対サイト構成] タブで実行できます。
-4.  作成してゲートウェイ上の P2S 構成にアップロードした P2S クライアント証明書を[エクスポート](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport)します。 
+4. 作成してゲートウェイ上の P2S 構成にアップロードした P2S クライアント証明書を[エクスポート](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport)します。 
 5. .pfx から秘密キーと base64 サムプリントを抽出します。 これには複数の方法があります。 1 つの方法として、コンピューター上で OpenSSL を使用します。
 
     ```
     openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
-  *profileinfo.txt* ファイルには、CA およびクライアント証明書の秘密キーとサムプリントが含まれています。 必ず、クライアント証明書のサムプリントを使用してください。
+   *profileinfo.txt* ファイルには、CA およびクライアント証明書の秘密キーとサムプリントが含まれています。 必ず、クライアント証明書のサムプリントを使用してください。
 
 6. テキスト エディターで *profileinfo.txt* を開きます。 クライアント (子) 証明書のさむプリントを取得するには、子の証明書の "-----BEGIN CERTIFICATE-----" および "-----END CERTIFICATE-----" とその間のテキストを選択してコピーします。 subject=/ 行を確認して、子の証明書を識別できます。
 
-7.  *vpnconfig.ovpn* ファイルを開いて、以下に示したセクションを見つけます。 "cert" と "/cert" の間をすべて置き換えます。
+7. *vpnconfig.ovpn* ファイルを開いて、以下に示したセクションを見つけます。 "cert" と "/cert" の間をすべて置き換えます。
 
-    ```
-    # P2S client certificate
-    # please fill this field with a PEM formatted cert
-    <cert>
-    $CLIENTCERTIFICATE
-    </cert>
-    ```
-8.  テキスト エディターで profileinfo.txt を開きます。 秘密キーを取得するには、"-----BEGIN PRIVATE KEY-----" および "-----BEGIN PRIVATE KEY-----" とその間のテキストを選択してコピーします。
+   ```
+   # P2S client certificate
+   # please fill this field with a PEM formatted cert
+   <cert>
+   $CLIENTCERTIFICATE
+   </cert>
+   ```
+8. テキスト エディターで profileinfo.txt を開きます。 秘密キーを取得するには、"-----BEGIN PRIVATE KEY-----" および "-----END PRIVATE KEY-----" とその間のテキストを選択してコピーします。
 
-9.  テキスト エディターで vpnconfig.ovpn ファイルを開き、このセクションを見つけます。 秘密キーを貼り付けて、"key" と "/key" の間をすべて置き換えます。
+9. テキスト エディターで vpnconfig.ovpn ファイルを開き、このセクションを見つけます。 秘密キーを貼り付けて、"key" と "/key" の間をすべて置き換えます。
 
-    ```
-    # P2S client root certificate private key
-    # please fill this field with a PEM formatted key
-    <key>
-    $PRIVATEKEY
-    </key>
-    ```
+   ```
+   # P2S client root certificate private key
+   # please fill this field with a PEM formatted key
+   <key>
+   $PRIVATEKEY
+   </key>
+   ```
 
 10. その他のフィールドは変更しないでください。 クライアント入力に入力された構成を使用して VPN に接続します。
 11. コマンド ラインを使用して接続するには、以下のコマンドを入力します。
   
-  ```
-  sudo openvpn –-config <name and path of your VPN profile file>
-  ```
+    ```
+    sudo openvpn –-config <name and path of your VPN profile file>
+    ```
 12. GUI を使用して接続するには、システム設定に移動します。
 13. **+** をクリックして新しい VPN 接続を追加します。
 14. **[VPN の追加]** で **[ファイルからインポート]** を選択します。
 15. プロファイル ファイルを参照して、ダブルクリックするか **[開く]** を選択します。
 16. **[VPN の追加]** ウィンドウで **[追加]** をクリックします。
   
-  ![ファイルからインポート](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
+    ![ファイルからインポート](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
 17. 接続するには、**[ネットワーク設定]** ページで VPN を**オン**にするか、システム トレイのネットワーク アイコンを選択します。
 
 ## <a name="next-steps"></a>次の手順

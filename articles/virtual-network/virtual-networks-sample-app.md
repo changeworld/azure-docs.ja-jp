@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: a8e52af1a1feb8a01ed5556efb6e153c56b25cca
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ca111623f6d3d7c61b1bfc4e1af328f9599c2440
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700589"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884508"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>DMZ で使用するサンプル アプリケーション
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -42,7 +42,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 このスクリプトでは、次のことが行われます。
 
 1. テストを簡単にするために、ローカル サーバーの Windows ファイアウォールで IMCPv4 (Ping) を開きます。
-2. IIS と .Net Framework v4.5 をインストールします。
+2. IIS と .NET Framework v4.5 をインストールします。
 3. ASP.NET Web ページと Web.config ファイルを作成します。
 4. 既定のアプリケーション プールを変更して、ファイルへのアクセスを容易にます。
 5. 管理者アカウントとパスワードに [匿名ユーザー] を設定します。
@@ -61,7 +61,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
 
 # Install IIS
-    Write-Host "Installing IIS and .Net 4.5, this can take some time, like 15+ minutes..." -ForegroundColor Cyan
+    Write-Host "Installing IIS and .NET 4.5, this can take some time, like 15+ minutes..." -ForegroundColor Cyan
     add-windowsfeature Web-Server, Web-WebServer, Web-Common-Http, Web-Default-Doc, Web-Dir-Browsing, Web-Http-Errors, Web-Static-Content, Web-Health, Web-Http-Logging, Web-Performance, Web-Stat-Compression, Web-Security, Web-Filtering, Web-App-Dev, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Net-Ext, Web-Net-Ext45, Web-Asp-Net45, Web-Mgmt-Tools, Web-Mgmt-Console
 
 # Create Web App Pages
@@ -105,7 +105,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
           <div style="border: 2px solid #8AC007; border-radius: 25px; padding: 20px; margin: 10px; width: 650px;">
             <b>Image File Linked from the Internet</b>:<br />
             <br />
-            <img src="http://sd.keepcalm-o-matic.co.uk/i/keep-calm-you-made-it-7.png" alt="You made it!" width="150" length="175"/></div>
+            <img src="https://sd.keepcalm-o-matic.co.uk/i/keep-calm-you-made-it-7.png" alt="You made it!" width="150" length="175"/></div>
         </div>
       </form>
     </body>
@@ -152,12 +152,12 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 2. Web サイト用のディレクトリを作成します。
 3. この Web ページによってリモートでアクセスされるテキスト ファイルを作成します。
 4. ディレクトリおよびファイルに対するアクセス許可を [匿名] に設定して、アクセスを許可します。
-5. [IE セキュリティ強化の構成] をオフにして、このサーバーから簡単に参照できるようにします。 
+5. [IE セキュリティ強化の構成] をオフにして、このサーバーから簡単に参照できるようにします。
 
 > [!IMPORTANT]
 > **ベスト プラクティス**: 運用サーバーでは [IE セキュリティ強化の構成] をオフにしないでください。運用サーバーから Web を閲覧することは一般的にお勧めできません。 さらに、匿名アクセス用にファイル アクセスを開くことはお勧めできませんが、ここでは、便宜上、開いています。
-> 
-> 
+>
+>
 
 この PowerShell スクリプトは、RDP が AppVM01 に転送されるときに、ローカルに実行する必要があります。 PowerShell は、正常に実行されるように、管理者として実行する必要があります。
 

@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 2/8/2019
+ms.date: 3/5/2019
 ms.author: moderakh
-ms.openlocfilehash: 1a86ceefdc5c3b60dc4bca5a1ac659534653aa66
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 356838f16f7f13506657326bae5dbe994d54bdd5
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416277"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570098"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -43,6 +43,17 @@ SQL API Async Java SDK は、[Netty ライブラリ](https://netty.io/)をサポ
 | **サポートされている最小ランタイム**|[JDK 8](https://aka.ms/azure-jdks) | 
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name243243"></a><a name="2.4.3"/>2.4.3
+* client#close() におけるリソース リークのバグ修正 ([github #88](https://github.com/Azure/azure-cosmosdb-java/issues/88))。
+
+### <a name="a-name242242"></a><a name="2.4.2"/>2.4.2
+* クロス パーティション クエリの継続トークンのサポートを追加しました。
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+* 直接モードのバグをいくつか修正しました。
+* 直接モードでのログ記録を強化しました。
+* 接続管理を強化しました。
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
 * 直接モード接続は、一般提供 (GA) になっています。 直接モード接続を使用するサンプルについては、[azure-cosmosdb-java](https://github.com/Azure/azure-cosmosdb-java) GitHub リポジトリをご覧ください。
@@ -135,6 +146,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.4.3](#2.4.3) |2019 年 3 月 5 日|--- |
+| [2.4.2](#2.4.2) |2019 年 3 月 1 日|--- |
+| [2.4.1](#2.4.1) |2019 年 2 月 20 日|--- |
 | [2.4.0](#2.4.0) |2019 年 2 月 8 日|--- |
 | [2.4.0-beta-1](#2.4.0-beta-1) |2019 年 2 月 4 日|--- |
 | [2.3.1](#2.3.1) |2019 年 1 月 15 日|--- |

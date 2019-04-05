@@ -7,15 +7,15 @@ author: Jann-Skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.topic: article
-ms.date: 05/10/2018
+ms.topic: conceptual
+ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: c2ff97c61cee1f2f773710103ac422fc6f1d8714
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e66387a904f0026eb862178b19fd1b005212d674
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876064"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124016"
 ---
 # <a name="customize-your-text-translations"></a>テキスト変換をカスタマイズする
 
@@ -42,7 +42,8 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
-従来の Microsoft Translator Hub を使用して、統計的な機械翻訳を翻訳できます。 [詳細情報](https://www.microsoft.com/en-us/translator/hub.aspx)
+> [!NOTE]
+> 従来の Microsoft Translator Hub は、2019 年 4 月 30 日をもって廃止されます。 [重要な移行情報と日付を確認してください](https://www.microsoft.com/translator/business/hub/)。  
 
 ## <a name="custom-translator-versus-hub"></a>Custom Translator と Hub
 
@@ -59,8 +60,8 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 
 > [!NOTE]
 > 2018 年 2 月 1 日の時点で、AddTranslation() と AddTranslationArray() は Translator Text API V2.0 では使用できなくなっています。 これらのメソッドは失敗し、何も書き込まれません。 Translator Text API V3.0 はこれらのメソッドをサポートしません。
-
->Translator Hub API では類似機能を使用できます。 [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger) をご覧ください。
+> 
+> Translator Hub API では類似機能を使用できます。 [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger) をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

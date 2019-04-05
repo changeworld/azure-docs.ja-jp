@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 933506e732926b0f3827f039a65e78acd3a6932b
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d50c3f4452dd00b5656b6cde5e671caebcb4bb7c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653817"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112536"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
 
@@ -69,7 +69,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 | プロパティ | 値 |
 |----------|-------|
-| 場所 | 米国西部 |
+| Location | 米国西部 |
 | VNet の名前 | &lt;クラスター名のプレフィックス>-vnet1 |
 | アドレス空間プレフィックス | 10.1.0.0/16 |
 | サブネット名 | subnet 1 |
@@ -86,7 +86,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 | プロパティ | 値 |
 |----------|-------|
-| 場所 | 米国東部 |
+| Location | 米国東部 |
 | VNet の名前 | &lt;クラスター名のプレフィックス>-vnet2 |
 | アドレス空間プレフィックス | 10.2.0.0/16 |
 | サブネット名 | subnet 1 |
@@ -288,15 +288,15 @@ sudo service bind9 status
 4. ページの上部にある **[新規で送信]** を選択します。
 5. 次の情報を選択するか入力します。
 
-  1. **名前**:「**Enable replication**」と入力します。
-  2. **バッシュ スクリプト URI**:「**https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**」を入力します。
-  3.  **ヘッド**:これが選択されていることを確認します。 他のノード タイプをオフにします。
-  4. **パラメーター**:次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
+   1. **名前**:「**Enable replication**」と入力します。
+   2. **バッシュ スクリプト URI**:「**https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh**」を入力します。
+   3. **ヘッド**:これが選択されていることを確認します。 他のノード タイプをオフにします。
+   4. **パラメーター**:次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
-    > [!NOTE]
-    > ソースと宛先の両方のクラスター DNS 名に FQDN ではなくホスト名を使用します。
+      > [!NOTE]
+      > ソースと宛先の両方のクラスター DNS 名に FQDN ではなくホスト名を使用します。
 
 6. **作成**を選択します。 このスクリプトの実行には、少し時間がかかます (特に **-copydata** 引数を使用する場合)。
 

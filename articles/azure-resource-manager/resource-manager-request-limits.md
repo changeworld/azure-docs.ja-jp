@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/09/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 0a4be349bfd8ce546ee2a27c206a7bd86306c27a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 91a776ba13ffaeeb4f8184371ae45a80d829ae46
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493561"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550645"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
 
@@ -35,7 +35,7 @@ Resource Manager では、Azure のサブスクリプションおよびテナン
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="remaining-requests"></a>残りの要求数
-残りの要求数を確認するには、応答ヘッダーを調べます。 各要求には、残りの読み取り要求と書き込み要求の数を示す値が含まれています。 これらの値を確認できる応答ヘッダーを次の表に示します。
+残りの要求数を確認するには、応答ヘッダーを調べます。 読み取り要求では、残りの読み取り要求数の値がヘッダーに返されます。 書き込み要求には、残りの書き込み要求数の値が含まれます。 これらの値を確認できる応答ヘッダーを次の表に示します。
 
 | 応答ヘッダー | 説明 |
 | --- | --- |
@@ -82,7 +82,7 @@ OK
 
 Headers:
 Pragma                        : no-cache
-x-ms-ratelimit-remaining-subscription-reads: 14999
+x-ms-ratelimit-remaining-subscription-reads: 11999
 ```
 
 書き込み制限数を取得するには、書き込み操作を使用します。 
@@ -121,7 +121,7 @@ msrest.http_logger :     'Content-Type': 'application/json; charset=utf-8'
 msrest.http_logger :     'Content-Encoding': 'gzip'
 msrest.http_logger :     'Expires': '-1'
 msrest.http_logger :     'Vary': 'Accept-Encoding'
-msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '14998'
+msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '11998'
 ```
 
 書き込み制限数を取得するには、書き込み操作を使用します。 

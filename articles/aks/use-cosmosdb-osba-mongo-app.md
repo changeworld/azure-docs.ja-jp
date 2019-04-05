@@ -10,12 +10,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: Cosmos DB, Open Service Broker, Open Service Broker for Azure
-ms.openlocfilehash: 3146d11f33809391d93305d63bad757ed281fb70
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 46fa5564e5dd3429f812b263295044d867a8511c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977017"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991977"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>既存の MongoDB アプリケーションを MongoDB 用 Azure Cosmos DB API および Open Service Broker for Azure (OSBA) と統合する
 
@@ -81,7 +81,7 @@ BUILD SUCCESSFUL in 10s
 java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 ```
 
-ブラウザーで http://localhost:8080 に移動します。
+ブラウザーで `http://localhost:8080` に移動します。
 
 ![Spring Music アプリと既定のデータ](media/music-app.png)
 
@@ -184,12 +184,12 @@ java -jar -Dspring.profiles.active=mongodb build/libs/spring-music-1.0.jar
 
 アプリケーションではまだ *mongodb* プロファイルと *mongodb://* で始まる URI を使用して Cosmos DB データベースに接続していることに注意してください。 [MongoDB 用 Azure Cosmos DB API](../cosmos-db/mongodb-introduction.md) ではこの互換性が提供されています。 これにより、アプリケーションは MongoDB データベースを使用しているかのように動作し続けますが、実際には Cosmos DB を使用しています。
 
-ブラウザーで http://localhost:8080 に移動します。 既定のデータが復元されていることに注意してください。 アプリケーションと対話して、既存のアルバムをいくつか削除し、新しいアルバムをいくつか作成します。 アプリケーションを停止、再起動して、ブラウザーで再びアクセスすることにより、変更が保存されているのを確認できます。 行った変更が保持されていることに注意してください。 変更は、Open Service Broker for Azure を使用して作成した Cosmos DB に保存されます。
+ブラウザーで `http://localhost:8080` に移動します。 既定のデータが復元されていることに注意してください。 アプリケーションと対話して、既存のアルバムをいくつか削除し、新しいアルバムをいくつか作成します。 アプリケーションを停止、再起動して、ブラウザーで再びアクセスすることにより、変更が保存されているのを確認できます。 行った変更が保持されていることに注意してください。 変更は、Open Service Broker for Azure を使用して作成した Cosmos DB に保存されます。
 
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>AKS クラスターでアプリケーションを実行する
 
-[Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) を使用して、AKS クラスターにアプリケーションをデプロイすることができます。 Azure Dev Spaces は、Dockerfile や Helm チャートなどの成果物を生成し、AKS にアプリケーションを展開して実行するのに役立ちます。
+[Azure Dev Spaces](../dev-spaces/azure-dev-spaces.md) を使用して、AKS クラスターにアプリケーションをデプロイすることができます。 Azure Dev Spaces は、Dockerfile や Helm チャートなどの成果物を生成し、AKS にアプリケーションをデプロイして実行するのに役立ちます。
 
 AKS クラスターで Azure Dev Spaces を有効にするには:
 

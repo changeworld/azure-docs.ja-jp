@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 88efa6b16e33fe928ad9354b7283f7c651e6710c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a4c256a6acd8e51986b40e28a6f658f1103ab337
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881302"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877702"
 ---
 # <a name="support-and-help-options"></a>サポート オプションとヘルプ オプション
 
-Speech Service の機能を調べ始めたばかりですか。 アプリケーションに新しい機能を実装しているのですか。 ここでは、開発者がヘルプを入手するためのヒントを示します。
+Speech Services の機能を調べ始めたばかりですか。 アプリケーションに新しい機能を実装しているのですか。 ここでは、開発者がヘルプを入手するためのヒントを示します。
 
 > [!div class="checklist"]
 > * *Azure Cognitive Services* の新たな開発情報を随時確認し、*Speech Service* に関連する最新ニュースを検索します。
@@ -30,7 +30,7 @@ Speech Service の機能を調べ始めたばかりですか。 アプリケー�
 
 ## <a name="stay-informed"></a>最新情報を入手
 
-Cognitive Services に関するニュースは、[Cognitive Services ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)から収集できます。 Speech Service 関連の最新情報については、[Speech service ブログ](https://azure.microsoft.com/blog/tag/speech-service/)をチェックしてください。
+Cognitive Services に関するニュースは、[Cognitive Services ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)から収集できます。 Speech Services 関連の最新情報については、[Speech Services ブログ](https://azure.microsoft.com/blog/tag/speech-service/)をチェックしてください。
 
 ## <a name="search"></a>Search
 
@@ -61,11 +61,11 @@ Stack Overflow は、開発関連の質問を投稿するのに適したチャ�
 
 |コンポーネント/区分  |Tags  |
 |---------|---------|
-|音声認識 |[[microsoft-cognitive+speech-to-text]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|音声合成 |[[microsoft-cognitive+text-to-speech]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|音声翻訳 |[[microsoft-cognitive+translation]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|音声意図 |[[microsoft-cognitive+luis]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|General Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](http://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
+|音声認識 |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
+|音声合成 |[[microsoft-cognitive+text-to-speech]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
+|音声翻訳 |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
+|音声意図 |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
+|General Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
 
 > [!TIP]
 > Stack Overflow の次の投稿では、質問の作成方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、コミュニティ メンバーからの評価や回答がより早く返ってくる可能性があります。  

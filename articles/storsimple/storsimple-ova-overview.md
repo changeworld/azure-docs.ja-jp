@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/02/2018
+ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: a7aace89ad4323d6fad6942fe03c4240fb53c8fd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e5713af737a6d9d190814b4155a8e772deea06bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811200"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013916"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>StorSimple Virtual Array の概要
 
@@ -74,8 +74,8 @@ StorSimple Virtual Array ソリューションの主なメリットを次の表�
 
 サポートされる StorSimple ワークロードの概要を、次の表に示します。
 
-|シナリオ     |ワークロード     |サポートされています      |制限               |
-|-------------|-------------|---------------|---------------------------|
+|シナリオ     |ワークロード     |サポートされています      |制限               | 適用可能なバージョン|
+|-------------|-------------|---------------|---------------------------|--------------------|
 |リモート オフィス/ブランチ オフィス (ROBO)  |ファイル共有     |はい      |[ファイル サーバーの最大制限](storsimple-ova-limits.md)を参照してください。<br></br>[サポートされている SMB バージョンのシステム要件](storsimple-ova-system-requirements.md)を参照してください。| すべてのバージョン     |
 |クラウド アーカイブ  |アーカイブ ファイル共有     |はい      |[ファイル サーバーの最大制限](storsimple-ova-limits.md)を参照してください。<br></br>[サポートされている SMB バージョンのシステム要件](storsimple-ova-system-requirements.md)を参照してください。| すべてのバージョン     |
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e39bdcde896bca094b60b87308127a6ea01f1dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4aecb2850f80f0991c7466b388147ab4b21c4780
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169737"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170702"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>チュートリアル:Azure Active Directory と IriusRisk の統合
 
@@ -162,9 +162,9 @@ IriusRisk で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
-### <a name="create-a-iriusrisk-test-user"></a>IriusRisk のテスト ユーザーの作成
+### <a name="create-an-iriusrisk-test-user"></a>IriusRisk のテスト ユーザーの作成
 
 このセクションの目的は、IriusRisk で Britta Simon というユーザーを作成することです。 IriusRisk では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 存在しない IriusRisk ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 

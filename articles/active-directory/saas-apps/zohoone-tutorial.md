@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f17a297d3099d51b3a58a6654560a67f9a4192a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aadb3188969e099a709711ac18916b67c83b5da1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208318"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>チュートリアル:Azure Active Directory と Zoho One の統合
 
@@ -115,7 +115,7 @@ Zoho One で Azure AD のシングル サインオンを構成してテストす
 
     c. **[詳細な URL 設定の表示]** をクリックします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[リレー状態]** ボックスに、URL `https://one.zoho.com` を入力します。
+    d. **[リレー状態]** ボックスに、URL `https://one.zoho.com` を入力します。
 
 1. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
@@ -152,7 +152,7 @@ Zoho One で Azure AD のシングル サインオンを構成してテストす
 
     c. **[Browse]\(参照\)** をクリックし、Azure Portal からダウンロードした**証明書 (Base64)** をアップロードします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
+    d. **[Save]** をクリックします。
 
 1. SAML 認証設定を保存した後、**[SAML-Identfier]\(SAML 識別子\)** の値をコピーし、この値を Azure Portal の **[Zoho One ドメインと URL]** セクションの **[応答 URL]** で使用します。
 
@@ -203,7 +203,7 @@ Zoho One で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-zoho-one-test-user"></a>Zoho One テスト ユーザーの作成
 
@@ -223,7 +223,7 @@ Azure AD ユーザーが Zoho One にログインできるようにするには�
     
     a. **[Name]\(名前\)** ボックスに、ユーザーの氏名を入力します (例: **Britta Simon**)。
     
-    b. **[電子メール アドレス]** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
+    b. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (**brittasimon\@contoso.com** など) を入力します。
 
     >[!Note]
     >ドメインの一覧から、確認済みドメインを選択します。

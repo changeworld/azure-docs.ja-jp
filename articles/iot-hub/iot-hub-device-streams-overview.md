@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: ea50902a557e8bd7aa18fbc03fca8fc4a99ac2e2
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 024bb29f9d7276021888e949073f6d45aed0a249
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770790"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076277"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub デバイス ストリーム (プレビュー)
 
@@ -52,7 +52,7 @@ SDK を使用するデバイス ストリームのプログラムによる作成
 
 1. デバイス アプリケーションでは、デバイスに対して新しいデバイス ストリームが開始されたときに通知されるように、事前にコールバックが登録されます。 この手順は、通常、デバイスが起動し、IoT Hub に接続されたときに行われます。
 
-2. サービス側のプログラムでは、(IP アドレス _ではなく_) デバイス ID を提供することで、必要なときにデバイス ストリームを開始します。
+2. サービス側のプログラムでは、(IP アドレス_ではなく_) デバイス ID を提供することで、必要なときにデバイス ストリームを開始します。
 
 3. IoT ハブでは、手順 1 で登録したコールバックを呼び出して、デバイス側のプログラムに通知します。 デバイスでは、ストリームの開始要求を受け入れるか拒否する場合があります。 このロジックは、アプリケーションのシナリオに固有である可能性があります。 ストリーム要求がデバイスによって拒否された場合、IoT Hub で適宜、サービスに通知します。それ以外の場合は、以下の手順が続きます。
 
@@ -117,16 +117,16 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>デバイス ストリーム アクティビティ ログを使用してトラブルシューティングを行う
 
-IoT ハブでデバイス ストリームのアクティビティ ログを収集するように、Azure Log Analytics を設定できます。 これは、トラブルシューティング シナリオで非常に役立つ場合があります。
+IoT ハブでデバイス ストリームのアクティビティ ログを収集するように、Azure Monitor ログを設定できます。 これは、トラブルシューティング シナリオで非常に役立つ場合があります。
 
-IoT Hub のデバイス ストリーム アクティビティのために Azure Log Analytics を構成するには、以下の手順に従います。
+IoT Hub のデバイス ストリーム アクティビティのために Azure Monitor ログを構成するには、以下の手順に従います。
 
 1. IoT Hub の *[診断設定]* タブに移動し、*[診断をオンにする]* リンクをクリックします。
 
-  ![代替テキスト](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "診断ログの有効化")
+   ![代替テキスト](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "診断ログの有効化")
 
 
-2. 診断設定の名前を指定し、*[Log Analytics への送信]* オプションを選びます。 既存の Log Analytics リソースを選ぶか、新しいものを作成するよう指示されます。 さらに、リストの *[DeviceStreams]* を確認します。
+2. 診断設定の名前を指定し、*[Log Analytics への送信]* オプションを選びます。 既存の Log Analytics ワークスペース リソースを選ぶか、新しいものを作成するよう指示されます。 さらに、リストの *[DeviceStreams]* を確認します。
 
     ![代替テキスト](./media/iot-hub-device-streams-overview/device-streams-diagnostics.PNG "デバイス ストリーム ログを有効にする")
 
@@ -153,7 +153,7 @@ IoT Hub のデバイス ストリーム アクティビティのために Azure 
 ## <a name="iot-hub-device-stream-samples"></a>IoT Hub デバイス ストリームのサンプル
 
 アプリケーションでのデバイス ストリームの使用を示すために、2 つの[クイックスタート サンプル](/azure/iot-hub)を公開しました。
-* *エコー* サンプルでは、(SDK API を直接呼び出すことによって) プログラムでデバイス ストリームを使用する方法を示しています。
+* "*エコー*" サンプルでは、(SDK API を直接呼び出すことによって) プログラムでデバイス ストリームを使用する方法を示しています。
 * *ローカル プロキシ* サンプルでは、デバイス ストリームを使用して (SSH、RDP、Web などの) 既存のアプリケーションのトラフィックをトンネリングする方法を示しています。
 
 これらのサンプルについて、以下で詳しく説明します。

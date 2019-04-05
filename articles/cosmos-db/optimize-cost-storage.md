@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 6a6f8b47044d36d767721e2d3503d11518dbf5a6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: aed32db257ddbc8cb5b8f4af5f27024c23583798
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036122"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892406"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのストレージ コストを最適化する
 
@@ -39,7 +39,7 @@ Azure Cosmos DB では、最適なパフォーマンスとコストの利点を�
 
 ## <a name="check-storage-consumed"></a>使用されたストレージを確認する
 
-Azure Cosmos コンテナーのストレージ使用量を確認するには、コンテナーに対して HEAD 要求または GET 要求を実行し、`x-ms-request-quota` ヘッダーと `x-ms-request-usage` ヘッダーを調べます。 または、.Net SDK を使用する場合、[DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)) プロパティと [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) プロパティを使用して、使用されたストレージを取得できます。
+Azure Cosmos コンテナーのストレージ使用量を確認するには、コンテナーに対して HEAD 要求または GET 要求を実行し、`x-ms-request-quota` ヘッダーと `x-ms-request-usage` ヘッダーを調べます。 または、.NET SDK を使用する場合、[DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)) プロパティと [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) プロパティを使用して、使用されたストレージを取得できます。
 
 ## <a name="using-sdk"></a>SDK の使用
 

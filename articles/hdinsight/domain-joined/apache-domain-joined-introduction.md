@@ -9,18 +9,18 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: d1d515786fde06f4622402f2c1d0c3add7cd8843
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: f3d9a2447bdbc2a1a5ce930ffa161d5a9e30069b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913153"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225061"
 ---
 # <a name="an-introduction-to-apache-hadoop-security-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する Apache Hadoop セキュリティの概要
 
 これまでに、Azure HDInsight では、単一ユーザーのローカル管理者のみをサポートしていました。これは、小規模なアプリケーション チームや部門に適していました。 Apache Hadoop ベースのワークロードがエンタープライズ部門に普及するに伴い、Active Directory ベースの認証、マルチユーザーのサポート、ロールベースのアクセス制御などのエンタープライズ レベルの機能の必要性がますます重要になっています。 
 
-Active Directory ドメインに参加する HDInsight クラスターを、Enterprise セキュリティ パッケージ (ESP) を使用して作成できます。 Azure Active Directory を使って HDInsight クラスターへのログオンを認証できる企業の従業員の一覧を構成できるようになります。 社外のユーザーは、HDInsight クラスターにログオンすることもアクセスすることもできません。 
+Active Directory ドメインに参加する HDInsight クラスターを、Enterprise セキュリティ パッケージ (ESP) を使用して作成できます。 その後、Azure Active Directory を介した認証を通じて HDInsight クラスターにサインインできる企業の従業員の一覧を構成できるようになります。 社外のユーザーは、HDInsight クラスターにサインインすることもアクセスすることもできません。 
 
 エンタープライズ管理者は、[Apache Ranger](https://hortonworks.com/apache/ranger/) を使用して Apache Hive のセキュリティを確保するためのロールベースのアクセス制御 (RBAC) を構成できます。 RBAC を構成すると、必要な内容へのデータ アクセスのみに制限されます。 最後に、管理者は従業員によるデータ アクセスとアクセス制御ポリシーに加えられた変更を監査できます。 その後、管理者は企業リソースにおいて高度なガバナンスを実現できます。
 
@@ -39,7 +39,7 @@ HDInsight の境界セキュリティは、仮想ネットワークと Azure VPN
 ## <a name="authentication"></a>Authentication
 エンタープライズ管理者は、ESP を使用する HDInsight クラスターを[仮想ネットワーク](https://azure.microsoft.com/services/virtual-network/)に作成できます。 HDInsight クラスターのノードはすべて、企業が管理するドメインに参加することになります。 これは、[Azure Active Directory Domain Services](../../active-directory-domain-services/active-directory-ds-overview.md) を使用して実現されます。 
 
-この設定により、企業の従業員は、ドメイン資格情報を使用してクラスター ノードにログオンできます。 また、ドメイン資格情報を使用して、クラスターと対話する他の承認済みエンドポイント (Apache Ambari Views、ODBC、JDBC、PowerShell、REST API など) で認証することもできます。 管理者は、これらのエンドポイントを使用してクラスターを操作するユーザーの数の制限を完全に制御できます。
+この設定により、企業の従業員は、ドメイン資格情報を使用してクラスター ノードにサインインできます。 また、ドメイン資格情報を使用して、クラスターと対話する他の承認済みエンドポイント (Apache Ambari Views、ODBC、JDBC、PowerShell、REST API など) で認証することもできます。 管理者は、これらのエンドポイントを使用してクラスターを操作するユーザーの数の制限を完全に制御できます。
 
 ## <a name="authorization"></a>Authorization
 ほとんどの企業では、すべての従業員がすべてのエンタープライズ リソースにはアクセスできないようにするベスト プラクティスに従っています。 同様に、管理者はクラスター リソースのロールベースのアクセス制御ポリシーを定義できます。 

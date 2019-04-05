@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 1/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7403d4f791151b167f03ee79c30623bbd644008
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 7aa0e11ed47219829830369d17b300270d3fbffb
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100690"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259416"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルを Web サービスとして FPGA 上に配置する
 
@@ -28,7 +28,7 @@ ms.locfileid: "56100690"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](http://aka.ms/AMLFree) を今日からお試しいただけます。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
 
 - Azure Machine Learning サービス ワークスペースと、Azure Machine Learning SDK for Python がインストール済み。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
  
@@ -46,12 +46,8 @@ ms.locfileid: "56100690"
     pip install "tensorflow==1.10"
     ```
 
-### <a name="get-the-notebook"></a>ノートブックを入手する
-
-便利なように、このチュートリアルは Jupyter Notebook として提供されています。 ここのコードに従うか、[クイック スタート ノートブック](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/project-brainwave-quickstart.ipynb)を実行します。
-
 ## <a name="create-and-deploy-your-model"></a>モデルを作成してデプロイする
-パイプラインを作成して入力イメージを前処理し、FPGA 上で ResNet 50 を使用して入力イメージを抽出した後、ImageNet データ セットでトレーニング済みの分類器を使って機能を実行します。
+パイプラインを作成して入力イメージを前処理し、それを FPGA 上で ResNet 50 を使用する機能にした後、ImageNet データ セットでトレーニング済みの分類器を使って機能を実行します。
 
 手順に従って次の操作を行います。
 

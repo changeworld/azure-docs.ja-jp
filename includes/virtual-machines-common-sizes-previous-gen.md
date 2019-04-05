@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 937ac1d892cdea849d7e5a89c8e69c6b069f2efd
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c16483f4b8ef160c78ff95582faf54c9a9d24a04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333791"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57964208"
 ---
 この記事では、仮想マシンのサイズの前の世代の情報を提供します。 これらのサイズも、使用できますが、より新しい世代が使用可能です。
 
 
 ## <a name="ds-series"></a>DS シリーズ
 
-ACU: 160
+ACU: 160 から 250 <sup>1</sup>
 
 Premium Storage: サポートされています
 
@@ -33,11 +33,12 @@ Premium Storage Caching: サポートされています
 | Standard_DS3 |4 |14 |28 |16 |16,000/128 (172) |12,800/128 |4/2,000 |
 | Standard_DS4 |8 |28 |56 |32 |32,000/256 (344) |25,600/256 |8/4,000 |
 
+<sup>1</sup> VM ファミリは、次の CPU のいずれかで実行できます。2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell)、または 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 <br>
 
 ## <a name="ds-series---memory-optimized"></a>DS シリーズ - メモリ最適化済み
 
-ACU: 160 <sup>1</sup>
+ACU: 160 から 250 <sup>1、2</sup>
 
 Premium Storage: サポートされています
 
@@ -52,11 +53,11 @@ Premium Storage Caching: サポートされています
 
 <sup>1</sup> DS シリーズの VM で実現可能な最大ディスク スループット (IOPS または MBps) は、接続ディスクの数、サイズ、ストライピングによって制限される場合があります。  詳細については、[高パフォーマンス用の設計](../articles/virtual-machines/windows/premium-storage-performance.md)に関する記事を参照してください。
 
-
+<sup>2</sup> VM ファミリは、次の CPU のいずれかで実行できます。2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell)、または 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 
 ## <a name="d-series"></a>D シリーズ 
 
-ACU: 160
+ACU: 160 から 250 <sup>1</sup>
 
 Premium Storage: サポートされていません
 
@@ -69,11 +70,12 @@ Premium Storage Caching: サポートされていません
 | Standard_D3  | 4         | 14          | 200            | 12000/187/93                                         | 16 / 16x500                         | 4/2,000                     |
 | Standard_D4  | 8         | 28          | 400            | 24000/375/187                                        | 32 / 32x500                       | 8/4,000                     |
 
+<sup>1</sup> VM ファミリは、次の CPU のいずれかで実行できます。2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell)、または 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 <br>
 
 ## <a name="d-series---memory-optimized"></a>D シリーズ - メモリ最適化済み
 
-ACU: 160
+ACU: 160 から 250 <sup>1</sup>
 
 Premium Storage: サポートされていません
 
@@ -86,6 +88,7 @@ Premium Storage Caching: サポートされていません
 | Standard_D13 | 8         | 56          | 400            | 24000/375/187                                        | 32 / 32x500                       | 8/4,000                     |
 | Standard_D14 | 16        | 112         | 800            | 48000/750/375                                        | 64 / 64x500                       | 8/8,000                |
 
+<sup>1</sup> VM ファミリは、次の CPU のいずれかで実行できます。2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell)、または 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)
 <br>
 
 ## <a name="a-series---compute-intensive-instances"></a>A シリーズ - コンピューティング集中型インスタンス
@@ -96,7 +99,7 @@ Premium Storage: サポートされていません
 
 Premium Storage Caching: サポートされていません
 
-A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。  この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。 
+A8 ～ A11 と H シリーズのサイズは、 *コンピューティング集中型インスタンス*とも呼ばれます。 これらのサイズを実行するハードウェアは、ハイ パフォーマンス コンピューティング (HPC) クラスター アプリケーション、モデリング、シミュレーションなど、コンピューティング集中型およびネットワーク集中型アプリケーション用に設計および最適化されています。 A8 ～ A11 シリーズは Intel Xeon E5-2670 @ 2.6 GHZ を使用し、H シリーズは Intel Xeon E5-2667 v3 @ 3.2 GHz を使用します。  
 
 | Size | vCPU | メモリ: GiB | 一時ストレージ (HDD):GiB | 最大データ ディスク数 | データ ディスクの最大スループット:IOPS | 最大 NIC 数|
 | --- | --- | --- | --- | --- | --- | --- |
@@ -127,6 +130,7 @@ Premium Storage Caching: サポートされていません
 | Standard_A5 |2 |14 |135 |4 |4 x 500 |2/500 |
 | Standard_A6 |4 |28 |285 |8 |8 x 500 |2/1,000 |
 | Standard_A7 |8 |56 |605 |16 |16 x 500 |4/2,000 |
+
 <br>
 
 <sup>1</sup> A0 サイズは、物理ハードウェアでオーバーサブスクライブされます。 この特定のサイズの場合のみ、他の顧客デプロイメントは、実行中のワークロードのパフォーマンスに影響することがあります。 下に、予想される基準として相対パフォーマンスを示していますが、約 15% の変動の可能性があります。

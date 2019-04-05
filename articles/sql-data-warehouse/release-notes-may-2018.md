@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 0ffb9b9105ee455d35d080bb45063c158cadce1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c17cb13bff0ea9eb3b0bb2caf5bb527fa3958428
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463397"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852612"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-may-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 5 月 
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 5 月に導入された新しい機能と変更点について説明します。 
@@ -44,7 +44,7 @@ ALTER DATABASE { database_name } SET { AUTO_CREATE_STATISTICS { OFF | ON } } [;]
 詳細については、「[ALTER DATABASE の SET オプション](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options)」の記事を参照してください。
 
 ## <a name="rejected-row-support"></a>拒否された行のサポート
-データ読み込みのパフォーマンスと並列性が高いため、SQL Data Warehouse への[データ読み込みに PolyBase (外部テーブル)](design-elt-data-loading.md) を使用することがよくあります。 PolyBase は、[Azure Data Factory](http://azure.com/adf) を介してデータを読み込む際の既定の読み込みモデルでもあります。 
+データ読み込みのパフォーマンスと並列性が高いため、SQL Data Warehouse への[データ読み込みに PolyBase (外部テーブル)](design-elt-data-loading.md) を使用することがよくあります。 PolyBase は、[Azure Data Factory](https://azure.com/adf) を介してデータを読み込む際の既定の読み込みモデルでもあります。 
 
 SQL Data Warehouse では、[CREATE EXTERNAL TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) ステートメントを使用した `REJECTED_ROW_LOCATION` パラメーターを介して、拒否された行の場所を定義することができます。 外部テーブルから [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) を実行した後、読み込むことができなかった行はすべて、さらなる調査のためにソースに近いファイルに保存されます。 
 
@@ -144,7 +144,7 @@ SQL Data Warehouse の概要について学習したので、次は[SQL Data War
 [Customer Advisory Team のブログ]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [顧客の成功事例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [機能に関する要求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Stack Overflow フォーラム]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow フォーラム]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [ビデオ]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

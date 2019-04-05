@@ -1,7 +1,7 @@
 ---
 title: Azure HDInsight Tools - Hive、LLAP、PySpark に Visual Studio Code を使用する | Microsoft Docs
 description: Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。
-Keywords: Visual Studio Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
+Keywords: Visual Studio Code, Azure HDInsight Tools, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, インタラクティブ Hive, インタラクティブ クエリ
 services: HDInsight
 documentationcenter: ''
 author: hrasheed-msft
@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 3301f3cdea1795db3b17bc2fa7da05bf362c744d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 71e12e661c704af028ac4dc48f255bdee980619c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895073"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100328"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
@@ -81,7 +81,7 @@ Visual Studio Code から HDInsight クラスターにスクリプトを送信�
 
         ![その他の環境でのサインイン手順](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
- 接続すると、Visual Studio Code ウィンドウの左下のステータス バーに Azure アカウント名が表示されます。  
+   接続すると、Visual Studio Code ウィンドウの左下のステータス バーに Azure アカウント名が表示されます。  
   
 
 <h2 id="linkcluster">リンクを作成する:Azure HDInsight</h2>

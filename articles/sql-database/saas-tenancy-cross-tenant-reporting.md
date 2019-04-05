@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ccf6ff75cb041c7d9998f67d579d1b392f83cee9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9562d0cd1ad97a459c3630456a6070ac2b6e63f3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476249"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096029"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>分散クエリを使用したテナント間レポート
 
@@ -27,7 +27,7 @@ ms.locfileid: "55476249"
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-
+> 
 > * レポート データベースをデプロイする方法
 > * すべてのテナント データベースにわたって分散クエリを実行する方法
 > * 各データベースのグローバル ビューがテナント間の効率的なクエリを可能にする方法
@@ -106,7 +106,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 
 1. *PowerShell ISE* で \\...Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1* を開きます。 
 
-1. **$DemoScenario = 2**(_アドホック レポート データベースをデプロイする_) を設定します。
+1. **$DemoScenario = 2**, "_アドホック レポート データベースをデプロイする_" を設定します。
 
 1. **F5** キーを押してスクリプトを実行し、*adhocreporting* データベースを作成します。
 
@@ -181,7 +181,7 @@ Wingtip Tickets SaaS Database Per Tenant アプリケーションでは、各テ
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-
+> 
 > * すべてのテナント データベースにわたって分散クエリを実行する
 > * レポート データベースをデプロイし、分散クエリを実行するために必要なスキーマを定義する
 

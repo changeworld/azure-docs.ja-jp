@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/21/2019
+ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: 4c58d053412b8f90b6423454fcda814e8cf6da75
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 0dac046c359bb8affd69145c73a66cf4ac079012
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329015"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58287198"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Azure リージョン間でレプリケートするためのマトリックスのサポート
 
@@ -33,7 +33,7 @@ ms.locfileid: "56329015"
 ## <a name="resource-support"></a>リソースのサポート
 
 **リソースのアクション** | **詳細**
---- | --- | ---
+--- | --- 
 **リソース グループ間の資格情報コンテナーの移動** | サポートされていません
 **リソース グループ間のコンピューティング、ストレージ、およびネットワークの移動** | サポートされていません。<br/><br/> VM のレプリケート後に VM や関連コンポーネント (ストレージやネットワークなど) を移動する場合は、その VM のレプリケーションを無効にしてから、再度有効にする必要があります。
 **ディザスター リカバリーのためにあるサブスクリプションから別のサブスクリプションに Azure VM をレプリケートする** | 同じ Azure Active Directory テナント内でサポートされます。
@@ -83,6 +83,7 @@ Site Recovery は、このセクションに示したオペレーティング �
 
 **オペレーティング システム** | **詳細**
 --- | ---
+Windows Server 2019 |
 Windows Server 2016  | サーバー コア、デスクトップ エクスペリエンス搭載サーバー
 Windows Server 2012 R2 |
 Windows Server 2012 |
@@ -194,7 +195,7 @@ Standard SSD | サポートされています |
 Windows OS 用 Azure Disk Encryption (ADE) | [Azure AD アプリでの暗号化](https://aka.ms/ade-aad-app)を有効になっているVMはサポートされています。 |
 Linux OS 用 Azure Disk Encryption (ADE) | サポートされていません |
 ディスクのホット アド/削除 | サポートされていません | VM 上でデータ ディスクを追加または削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。
-ディスクの除外 | [PowerShell を介してサポートされています](https://review.docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell?branch=pr-en-us-66458#replicate-azure-virtual-machine) |  一時ディスクは既定で除外されます。
+ディスクの除外 | [PowerShell を介してサポートされています](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine) |   一時ディスクは既定で除外されます。
 記憶域スペース ダイレクト  | クラッシュ整合性復旧ポイントに対してサポートされています。 アプリケーション整合性復旧ポイントはサポートされていません。 |
 スケールアウト ファイル サーバー  | クラッシュ整合性復旧ポイントに対してサポートされています。 アプリケーション整合性復旧ポイントはサポートされていません。 |
 LRS | サポートされています |
@@ -219,7 +220,7 @@ Premium P10 または P15 ディスク | 8 KB  | 2 MB/秒 | (ディスクあた�
 Premium P10 または P15 ディスク | 16 KB | 4 MB/秒 |  (ディスクあたり) 336 GB
 Premium P10 または P15 ディスク | 32 KB 以上 | 8 MB/秒 | (ディスクあたり) 672 GB
 Premium P20、P30、P40、または P50 ディスク | 8 KB    | 5 MB/s | (ディスクあたり) 421 GB
-Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |10 MB/s | (ディスクあたり) 842 GB
+Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |20 MB/秒 | (ディスクあたり) 1,684 GB
 ## <a name="replicated-machines---networking"></a>レプリケートされるマシン - ネットワーク
 **構成** | **サポート** | **詳細**
 --- | --- | ---

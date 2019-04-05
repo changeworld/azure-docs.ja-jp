@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 3/19/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 2a786d383d103f9b45ea7b13de24b8de9c9e9f5e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 665e6651db37cc04693d68bd2de2ede6e595eab4
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445374"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293395"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>テキスト認識コンテナーをインストールして実行する
 
@@ -50,14 +50,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次の表に、各テキスト認識コンテナーに割り当てる CPU コアとメモリの最小値と推奨値を示します。
 
-| コンテナー | 最小値 | 推奨 |
-|-----------|---------|-------------|
-|テキスト認識|1 コア、8 GB メモリ、0.5 TPS|2 コア、8 GB メモリ、1 TPS|
+| コンテナー | 最小値 | 推奨 |TPS<br>(最小、最大)|
+|-----------|---------|-------------|--|
+|テキスト認識|1 コア、8 GB メモリ、0.5 TPS|2 コア、8 GB メモリ、1 TPS|0.5、1|
 
-各コアは 2.6 ギガヘルツ (GHz) 以上
+* 各コアは少なくとも 2.6 ギガヘルツ (GHz) 以上にする必要があります。
+* TPS - 1 秒あたりのトランザクション数
 
 コアとメモリは、`docker run` コマンドの一部として使用される `--cpus` と `--memory` の設定に対応します。
-
 
 ## <a name="get-the-container-image-with-docker-pull"></a>`docker pull` によるコンテナー イメージの取得
 
@@ -116,11 +116,14 @@ ApiKey={BILLING_KEY}
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing)」を参照してください。
 
+[!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
+
+
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 
 コンテナーには、REST ベースのクエリ予測エンドポイント API が用意されています。 
 
-コンテナーの API のホストとしては https://localhost:5000 を使用します。
+コンテナーの API のホストとしては `https://localhost:5000` を使用します。
 
 ### <a name="asynchronous-text-recognition"></a>非同期のテキスト認識
 
@@ -144,7 +147,7 @@ Computer Vision サービスで該当する REST 操作を使用する方法と�
 
 ## <a name="billing"></a>課金
 
-テキスト認識コンテナーは、Azure アカウントの _テキスト認識_ リソースを使用して、Azure に課金情報を送信します。 
+テキスト認識コンテナーは、Azure アカウントの _テキスト認識_リソースを使用して、Azure に課金情報を送信します。 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

@@ -11,17 +11,17 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/09/2019
+ms.topic: conceptual
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 28210c06892097abb831f3f6f27b8c68652a8957
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1482569e415971fba98de8a586cc2868cc574198
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003995"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258090"
 ---
-# <a name="how-to-perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-the-azure-portal-legacy"></a>Media Services を使用してライブ ストリーミングを実行し、Azure portal でマルチビットレートのストリームを作成する方法 (レガシ)
+# <a name="how-to-perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Media Services を使用してライブ ストリーミングを実行し、Azure portal でマルチビットレートのストリームを作成する方法  
 > [!div class="op_single_selector"]
 > * [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -41,18 +41,16 @@ ms.locfileid: "56003995"
 
 > [!NOTE]
 > 現在、ライブ イベントの最大推奨時間は 8 時間です。 チャネルを長時間実行する必要がある場合は、amslived@microsoft.com にお問い合わせください。
-> 
-> 
 
 1. ビデオ カメラをコンピューターに接続します。 オンプレミスのライブ エンコーダーを起動して構成します。このエンコーダーでは、シングル ビットレート ストリームを次のいずれかのプロトコルで出力できます:RTMP またはスムーズ ストリーミング。 詳しくは、「 [Azure Media Services RTMP サポートおよびライブ エンコーダー](https://go.microsoft.com/fwlink/?LinkId=532824)」をご覧ください。
-   
+
     この手順は、チャネルを作成した後でも実行できます。
 2. チャネルを作成し、起動します。 
 3. チャネルの取り込み URL を取得します。 
-   
+
     取り込み URL は、ライブ エンコーダーがチャネルにストリームを送信する際に使用されます。
 4. チャネルのプレビュー URL を取得します。 
-   
+
     この URL を使用して、チャネルがライブ ストリームを正常に受信できることを確認します。
 5. イベントまたはプログラムを作成します (その際、資産も作成します)。 
 6. イベントを発行します (関連付けられた資産の OnDemand ロケーターも作成します)。    
@@ -83,31 +81,31 @@ ms.locfileid: "56003995"
 1. [Azure Portal](https://portal.azure.com/) で [Media Services] を選択し、Media Services アカウント名をクリックします。
 2. **[Live Streaming (ライブ ストリーミング)]** を選択します。
 3. **[カスタム作成]** を選択します。 このオプションを使用すると、ライブ エンコードが有効なチャネルを作成できます。
-   
+
     ![チャネルの作成](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
 4. **[設定]** をクリックします。
-   
+
    1. チャネルの種類に **Live Encoding** を選択します。 この種類の場合、ライブ エンコードが有効なチャネルが作成されます。 つまり、受信シングル ビットレート ストリームはチャネルに送信され、指定のライブ エンコーダー設定によってマルチ ビットレート ストリームにエンコードされます。 詳細については、「 [Live streaming using Azure Media Services to create multi-bitrate streams (Azure Media Services を使用したライブ ストリーミングによるマルチビットレートのストリームの作成)](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。 [OK] をクリックします。
    2. チャネルの名前を指定します。
    3. ページの下部にある [OK] をクリックします。
 5. **[Ingest (取り込み)]** タブを選択します。
-   
+
    1. このページでストリーミング プロトコルを選択できます。 チャネルの種類 **Live Encoding** で有効なプロトコル オプションは、次のとおりです。
-      
+
       * シングル ビットレート Fragmented MP4 (スムーズ ストリーミング)
       * シングル ビットレート RTMP
-        
+
         各プロトコルの詳しい説明については、「 [Live streaming using Azure Media Services to create multi-bitrate streams (Azure Media Services を使用したライブ ストリーミングによるマルチビットレートのストリームの作成)](media-services-manage-live-encoder-enabled-channels.md)」を参照してください。
-        
+
         チャネルや、チャネルに関連付けられたイベントまたはプログラムの実行中は、プロトコル オプションを変更できません。 別のプロトコルが必要な場合は、ストリーミング プロトコルごとに別のチャネルを作成する必要があります。  
    2. 取り込みに関する IP 制限を適用できます。 
-      
+
        このチャネルへのビデオの取り込みが許可される IP アドレスを定義できます。 許可された IP アドレスは、1 つの IP アドレス (例: "10.0.0.1")、IP アドレスと CIDR のサブネット マスクを使用した IP 範囲 (例: "10.0.0.1/22")、または IP アドレスとピリオド区切りのサブネット マスクを使用した IP 範囲 (例: "10.0.0.1(255.255.252.0)") のいずれかの形式で指定できます。
-      
+
        IP アドレスが指定されておらず、規則の定義もない場合は、どの IP アドレスも許可されません。 すべての IP アドレスを許可するには、規則を作成し、0.0.0.0/0 に設定します。
 6. **[プレビュー]** タブで、プレビューに関する IP 制限を適用します。
 7. **[エンコード]** タブで、エンコード プリセットを指定します。 
-   
+
     現時点で選択可能なシステム プリセットは、 **既定 720p**のみです。 カスタム プリセットを指定するには、Microsoft サポート チケットを開きます。 その後、作成されたプリセットの名前を入力します。 
 
 > [!NOTE]
@@ -153,18 +151,18 @@ ms.locfileid: "56003995"
 イベントを開始するには、次の 2 つの方法があります。 
 
 1. **[チャネル]** ページで **[ライブ イベント]** をクリックし、新しいイベントを追加します。
-   
+
     イベント名、資産名、アーカイブ ウィンドウ、暗号化オプションを指定します。
-   
+
     ![createprogram](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
-   
+
     **[Publish this live event now (このライブ イベントを今すぐ発行)]** をオンにしたままにすると、URL の発行イベントが作成されます。
-   
+
     イベントをストリーミングする準備ができたら、いつでも **[開始]** をクリックできます。
-   
+
     イベントを開始すると、 **[Watch (視聴)]** をクリックしてコンテンツの再生を開始できます。
 2. この方法の代わりに、ショートカットを使用して、**[チャネル]** ページの **[起動]** ボタンをクリックすることもできます。 これにより、既定の資産、プログラム、ストリーミング ロケーターが作成されます。
-   
+
     イベント名は **default** となり、アーカイブ ウィンドウは 8 時間に設定されます。
 
 **[ライブ イベント]** ページで、公開されたイベントを視聴できます。 

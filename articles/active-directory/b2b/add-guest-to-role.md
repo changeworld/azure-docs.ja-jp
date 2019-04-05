@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2B コラボレーション ユーザーをロールに追加する | Microsoft Docs
+title: B2B コラボレーション ユーザーをロールに追加する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory でゲスト ユーザーをロールに追加します
 services: active-directory
 ms.service: active-directory
@@ -9,14 +9,15 @@ ms.date: 05/08/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df328228dea53f338c0b2c54422e6b343f96e43e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5ffebd117d1ea69a81395c1517b6f75505b83ac0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172235"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294639"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する
 
@@ -24,15 +25,15 @@ Azure Active Directory (Azure AD) B2B コラボレーション ユーザーは�
 
 ## <a name="default-role"></a>既定のロール
 
-![既定のロール](./media/add-guest-to-role/default-role.png)
+![既定のディレクトリ ロールを示すスクリーンショット](./media/add-guest-to-role/default-role.png)
 
 ## <a name="global-administrator-role"></a>全体管理者ロール
 
-![全体管理者ロール](./media/add-guest-to-role/global-admin-role.png)
+![全体管理者ロールを示すスクリーンショット](./media/add-guest-to-role/global-admin-role.png)
 
 ## <a name="limited-administrator-role"></a>制限付き管理者ロール
 
-![制限付き管理者ロール](./media/add-guest-to-role/limited-admin-role.png)
+![制限付き管理者ロールを示すスクリーンショット](./media/add-guest-to-role/limited-admin-role.png)
 
 ## <a name="next-steps"></a>次の手順
 

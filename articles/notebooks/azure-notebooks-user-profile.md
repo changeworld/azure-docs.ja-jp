@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 7d069d86-660f-4c94-b6e3-0c0f38c52d0e
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 18b698861a791174f2e254543d5d3b7a54052574
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 4186abd215509e0ae9ced50340fb1f3d3b5f9676
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854175"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765919"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Azure Notebooks のプロファイルとユーザー ID
 
@@ -46,7 +46,7 @@ ms.locfileid: "54854175"
 
 いつでもプロファイル ページで自分のユーザー ID を変更することもできます。
 
-ユーザー ID は、少なくとも 4 つの文字、数字、およびハイフンで構成される必要があります。 他の文字は許可されていません。また、ユーザー ID の先頭または末尾にハイフンを使用したり、複数のハイフンを連続して使用したりすることはできません。
+ユーザー ID は、4 から 6 つのアルファベット、数字、およびハイフンで構成する必要があります。 他の文字は許可されていません。また、ユーザー ID の先頭または末尾にハイフンを使用したり、複数のハイフンを連続して使用したりすることはできません。 ユーザー ID はすべての Azure Notebooks アカウントで一意であるため、"User ID is already in use"\(ユーザー ID は既に使用中です\) というメッセージが表示される場合があります (Microsoft の商標をユーザー ID として使用しようとした場合も、このメッセージが表示されます)。この場合は、他のユーザー ID を選択します。
 
 > [!Important]
 > ID を変更すると、前の ID を使用して共有している可能性がある任意の URL が無効になります。 自分の ID を前の ID に戻して、リンクを再検証することができます。 しかし、それまでの間、別のユーザーが使用されていない ID を要求することができます。

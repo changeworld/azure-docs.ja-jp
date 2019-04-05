@@ -8,14 +8,14 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ec66066fe51af97f6355b78dd7af3480a39a5a03
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0bd9f5ed00193aa9f872287b6afaf9e2b28c24dc
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215091"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188341"
 ---
-# <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>トラブルシューティング: Azure データ エクスプローラーでデータベースまたはテーブルの作成または削除が失敗する
+# <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>トラブルシューティング:Azure データ エクスプローラーでデータベースまたはテーブルの作成または削除が失敗する
 
 Azure データ エクスプローラーでは、データベースやテーブルの作業をよく行います。 この記事では、発生する可能性のある問題のトラブルシューティング手順を示します。
 
@@ -37,7 +37,7 @@ Azure データ エクスプローラーでは、データベースやテーブ�
 
     アクセス許可について詳しくは、「[データベースのアクセス許可を管理する](manage-database-permissions.md)」をご覧ください。
 
-1. 同じ名前のテーブルが既に存在しないことを確認します。 存在する場合は、別の名前でテーブルを作成するか、既存のテーブルの名前を変更するか ("*テーブル管理者*" ロールが必要)、既存のテーブルを削除する ("*データベース管理者*" ロールが必要) ことができます。 次のコマンドを使用します。
+1. 同じ名前のテーブルが既に存在しないことを確認します。 存在する場合は、次の操作を実行できます: 別の名前でテーブルを作成するか、既存のテーブルの名前を変更するか ("*テーブル管理者*" ロールが必要)、既存のテーブルを削除する ("*データベース管理者*" ロールが必要)。 次のコマンドを使用します。
 
     ```Kusto
     .drop table <TableName>
@@ -53,7 +53,7 @@ Azure データ エクスプローラーでは、データベースやテーブ�
 
 ## <a name="general-guidance"></a>一般的なガイダンス
 
-1. [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/>)を確認します。 データベースまたはテーブルの作業を行おうとしているリージョンでの Azure データ エクスプローラーの状態を探します。
+1. [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)を確認します。 データベースまたはテーブルの作業を行おうとしているリージョンでの Azure データ エクスプローラーの状態を探します。
 
     状態が **[良好]** (緑色のチェック マーク) でない場合は、状態が改善されてからもう一度試します。
 

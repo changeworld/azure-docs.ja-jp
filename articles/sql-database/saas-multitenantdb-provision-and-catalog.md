@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: fd420e29387aedd3f04fdf7437a3ef27c5589fc8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562897"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835783"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>シャード マルチテナント Azure SQL データベースを使用した SaaS アプリケーションの新しいテナントのプロビジョニングとカタログ化
 
@@ -237,7 +237,7 @@ Azure Portal でテナント データベースを表示しても、共有デー
 - テナント名はテナント テーブルに格納されます。
 - データベース名はシャード管理テーブルに格納されます。
 
-1. SQL Server Management Studio (SSMS) で、[ログイン] = **developer**、[パスワード] = **P@ssword1** を使用して、**catalog-mt.\<USER\>.database.windows.net** にあるテナント サーバーに接続します。
+1. SQL Server Management Studio (SSMS) で、[ログイン] = **developer**、[パスワード] = **P\@ssword1** を使用して、**catalog-mt.\<USER\>.database.windows.net** にあるテナント サーバーに接続します。
 
     ![SSMS 接続ダイアログ](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 

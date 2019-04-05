@@ -6,16 +6,16 @@ keywords: ''
 author: bandersmsft
 manager: vitavor
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 ms.custom: seodec18
-ms.openlocfilehash: 9bb8d74b012b25ca959cdb87b8a3d5e4284b6497
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2d45ce524ff9f544605867ff6596d82f090a8f1e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000792"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure 仮想マシン用の拡張メトリックを追加する
 
@@ -31,7 +31,7 @@ Cloudyn では、Azure VM からの Azure メトリック データを使って�
 たとえば、Azure VM の CPU 使用率とメモリ使用率を監視することができます。 Azure VM のメトリックは、_[Host] Percentage CPU_ および _[Guest] Memory percentage_ に対応します。
 
 > [!NOTE]
-> 拡張メトリック データの収集は、Azure のゲスト レベルの監視でのみサポートされます。 Cloudyn は、Log Analytics VM 拡張機能と互換性がありません。
+> 拡張メトリック データの収集は、Azure のゲスト レベルの監視でのみサポートされます。 Cloudyn は、Azure Monitor ログの VM 拡張機能と互換性がありません。
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>拡張メトリックが有効になっているかどうかを確認する
 

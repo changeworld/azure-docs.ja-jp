@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e56dc54c2c296ee17b04070ac8ee68d2180b7046
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7b458632ddb6e23ab1ddf642752aa0cbfc11f1ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183447"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>チュートリアル:Azure Active Directory と Picturepark の統合
 
@@ -159,7 +159,7 @@ Picturepark で Azure AD のシングル サインオンを構成してテスト
    
     c. **[Set as default]** を選びます。
    
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Issuer URI]\(発行者 URI\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d. **[Issuer URI]\(発行者 URI\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
    
     e. **[Trusted Issuer Thumb Print]\(信頼された発行者の拇印\)** ボックスに、**[SAML 署名証明書]** セクションからコピーした**拇印**の値を貼り付けます。 
 
@@ -202,7 +202,7 @@ Picturepark で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-picturepark-test-user"></a>Picturepark テスト ユーザーの作成
 
@@ -224,13 +224,13 @@ Azure AD ユーザーが Picturepark にログインできるようにするに�
    
     ![Create User](./media/picturepark-tutorial/ic795069.png "Create User")
    
-    a. **[Email Address]\(電子メール アドレス\)** ボックスに、ユーザーの**電子メール アドレス**を「**BrittaSimon@contoso.com**」と入力します。  
+    a. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーの**メール アドレス** (**BrittaSimon\@contoso.com**) を入力します。  
    
     b. **[Password]\(パスワード\)** および **[Confirm Password]\(確認パスワード\)** ボックスに、BrittaSimon の**パスワード**を入力します。 
    
     c. **[First Name]\(名\)** ボックスに、ユーザーの**名**を「**Britta**」と入力します。 
    
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Last Name]\(姓\)** ボックスに、ユーザーの**姓**を「**Simon**」と入力します。
+    d. **[Last Name]\(姓\)** ボックスに、ユーザーの**姓**を「**Simon**」と入力します。
    
     e. **[Company]\(会社\)** ボックスに、ユーザーの**会社名**を入力します。 
    

@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/30/2018
-ms.openlocfilehash: 0d9192e5ca4dba202ca5287481072bb0f8ae5621
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 27a873fac8bf2b53ee06780b8a348eaaa5c94e97
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598521"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768027"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>CI/CD パイプラインで U-SQL アセンブリを管理するためのベスト プラクティス
 
@@ -56,9 +56,9 @@ U-SQL データベース プロジェクトは、クラス ライブラリ (U-SQ
 
     ![Data Lake Tools for Visual Studio -- 参照からのアセンブリの作成](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
 
-7. **[マネージドの依存関係]** と **[追加ファイル]** が存在する場合は追加します。 追加ファイルを追加した場合、ローカル コンピューターと後のビルド コンピューターで確実にアセンブリを検索できるようにするため、ツールでは相対パスが使用されます。 
+7. **[マネージドの依存関係]** と **[追加ファイル]** が存在する場合は追加します。 追加ファイルを追加した場合、ローカル コンピューターと後のビルド コンピューターで確実にアセンブリを検索できるようにするため、ツールでは相対パスが使用されます。
 
-下部にあるエディター ウィンドウの **@_DeployTempDirectory** は、ビルド出力フォルダーを指すツールの定義済み変数です。 ビルド出力フォルダーには、アセンブリ名を名前とするサブフォルダーがすべてのアセンブリにあり、 すべての DLL および追加ファイルがそのサブフォルダーに格納されます。 
+下部にあるエディター ウィンドウの **\@_DeployTempDirectory** は、ビルド出力フォルダーを指すツールの定義済み変数です。 ビルド出力フォルダーには、アセンブリ名を名前とするサブフォルダーがすべてのアセンブリにあり、 すべての DLL および追加ファイルがそのサブフォルダーに格納されます。
 
 ## <a name="build-a-u-sql-database-project"></a>U-SQL データベース プロジェクトの作成
 

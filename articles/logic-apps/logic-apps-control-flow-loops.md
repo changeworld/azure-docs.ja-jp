@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 7237a9a6a99b57401af40512a6d2e21a3fe49e53
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c37e41bce481fff5e172687907cce527c10ae006
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159487"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225010"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 
@@ -44,7 +44,8 @@ ms.locfileid: "54159487"
 
 * 各ループ イテレーション中での変数に対する操作の予測可能な結果を取得するには、これらのループを順番に実行します。 たとえば、同時実行ループが終了すると、変数操作に対する増分、減分、追加で予測可能な結果が返されます。 ただし、同時実行ループでの各イテレーション中に、これらの操作で予期しない結果が返される可能性があります。 
 
-* "Foreach" ループのアクションは、[`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item) の式を使用して、配列内の各項目を参照して処理します。 配列にないデータを指定すると、ロジック アプリのワークフローが失敗します。 
+* "Foreach" ループ内のアクションは、[`@item()`](../logic-apps/workflow-definition-language-functions-reference.md#item)  
+式を使用して、配列内の各項目を参照して処理します。 配列にないデータを指定すると、ロジック アプリのワークフローが失敗します。 
 
 このロジック アプリの例では、Web サイトの RSS フィードの日次サマリーを送信します。 アプリは、新しい項目ごとに電子メールを送信する "Foreach" ループを使用します。
 
@@ -57,7 +58,7 @@ ms.locfileid: "54159487"
 
       ![[アクションの追加] を選択](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
-   1. 検索ボックスで、**[すべて]** を選択します。 検索ボックスに、フィルターとして「for each」と入力します。 アクションの一覧から、**For each - コントロール** アクションを選択します。
+   1. 検索ボックスで、**[すべて]** を選択します。 検索ボックスに、フィルターとして「for each」と入力します。 アクションの一覧から、次のアクションを選択します。**For each - コントロール**
 
       !["For each" ループを追加](media/logic-apps-control-flow-loops/select-for-each.png)
 
@@ -165,7 +166,8 @@ ms.locfileid: "54159487"
 > これらの手順では Office 365 Outlook を使用できますが、Logic Apps がサポートするどの電子メール プロバイダーでも使用できます。 
 > [こちらからコネクタの一覧を確認してください](https://docs.microsoft.com/connectors/)。 別の電子メール アカウントを使用する場合、おおよその手順は変わりませんが、UI の表示がやや異なることがあります。 
 
-1. 空のロジック アプリを作成します。 ロジック アプリ デザイナーの検索ボックスの下で、**[すべて]** を選択します。 「定期的」を検索します。 トリガーの一覧から、**[定期的なスケジュール]** トリガーを選択します。
+1. 空のロジック アプリを作成します。 ロジック アプリ デザイナーの検索ボックスの下で、**[すべて]** を選択します。 「定期的」を検索します。 
+   トリガーの一覧から、**[定期的なスケジュール]** を選択します。
 
    ![[定期的なスケジュール] トリガーの追加](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
@@ -180,7 +182,8 @@ ms.locfileid: "54159487"
    | **設定時刻 (時間)** | 8 |
    ||| 
 
-1. トリガーで、**[新しいステップ]** を選択します。 「変数」を検索し、**変数の初期化 - 変数** アクションを選択します。
+1. トリガーで、**[新しいステップ]** を選択します。 
+   "変数" を検索し、次のアクションを選択します: **[変数の初期化 - 変数]**
 
    ![変数の初期化 - 変数 を追加する](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
@@ -188,7 +191,7 @@ ms.locfileid: "54159487"
 
    ![変数のプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | 値 | [説明] |
    | -------- | ----- | ----------- |
    | **名前** | 制限 | 変数の名前 | 
    | **種類** | 整数 | 変数のデータ型 | 
@@ -197,54 +200,56 @@ ms.locfileid: "54159487"
 
 1. **[変数を初期化する]** アクションの下で、**[新しいステップ]** を選択します。 
 
-1. 検索ボックスで、**[すべて]** を選択します。 「期限」を検索し、**期限 - コントロール** を選択します。
+1. 検索ボックスで、**[すべて]** を選択します。 "期限" を検索し、次のアクションを選択します: **[期限 - コントロール]**
 
    ![[期限] ループを追加する](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
-1. **Limit** 変数と **is equal to** 演算子を選択して、ループの終了条件をビルドします。 比較対象値として **10** と入力します。
+1. **Limit** 変数と **is equal to** 演算子を選択して、ループの終了条件をビルドします。 
+   比較対象値として **10** と入力します。
 
    ![ループを停止させる終了条件をビルドする](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
 1. ループ内で、**[アクションの追加]** を選択します。 
 
-1. 検索ボックスで、**[すべて]** を選択します。 「変数」を検索し、**変数の増分 - 変数** アクションを選択します。
+1. 検索ボックスで、**[すべて]** を選択します。 "変数" を検索し、次のアクションを選択します: **[変数の値を増やす - 変数]**
 
    ![変数の値を増やすアクションを追加する](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable.png)
 
 1. **[名前]** には、**Limit** 変数を選択します。 **[値]** には、「1」と入力します。 
 
-   !["Limit" を 1 ずつ増やす](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
+     !["Limit" を 1 ずつ増やす](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
 1. ループ外部の下側で、**[新しいステップ]** を選択します。 
 
-1. 検索ボックスで、**[すべて]** を選択します。 電子メールを送信するアクションを検索し、追加します。たとえば、次のようにします。 
+1. 検索ボックスで、**[すべて]** を選択します。 
+     電子メールを送信するアクションを検索し、追加します。たとえば、次のようにします。 
 
-   ![電子メールを送信するアクションを追加する](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
+     ![電子メールを送信するアクションを追加する](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
 1. メッセージに従ってメール アカウントにサインインします。
 
 1. 電子メール アクションのプロパティを設定します。 件名に **Limit** 変数を追加します。 こうすることで、次のように、変数の現在の値が指定の条件と一致していることを確認できます。
 
-    ![電子メールのプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
+      ![電子メールのプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-    | プロパティ | 値 | 説明 |
-    | -------- | ----- | ----------- | 
-    | **To** | *<email-address@domain>* | 受信者の電子メール アドレス。 テストのために、自分の電子メール アドレスを使用します。 | 
-    | **[件名]** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、**Limit** 変数が含まれていることを確認してください。 | 
-    | **本文** | <*email-content*> | 送信する電子メール メッセージの内容を指定します。 この例では、任意のテキストを入力してください。 | 
-    |||| 
+      | プロパティ | 値 | [説明] |
+      | -------- | ----- | ----------- | 
+      | **To** | *<メール アドレス\@ドメイン>* | 受信者の電子メール アドレス。 テストのために、自分の電子メール アドレスを使用します。 | 
+      | **[件名]** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、**Limit** 変数が含まれていることを確認してください。 | 
+      | **本文** | <*email-content*> | 送信する電子メール メッセージの内容を指定します。 この例では、任意のテキストを入力してください。 | 
+      |||| 
 
 1. ロジック アプリを保存し、 ロジック アプリを手動でテストするには、デザイナーのツール バーで **[実行]** を選択します。
 
-    ロジックの実行が開始された後に、指定した内容の電子メールを受け取ります。
+      ロジックの実行が開始された後に、指定した内容の電子メールを受け取ります。
 
-    ![受信した電子メール](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+      ![受信した電子メール](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
 ## <a name="prevent-endless-loops"></a>無限ループを防ぐ
 
 "Until" ループには既定の制限が設定されており、次のいずれかの条件が発生すると実行が中止されます。
 
-| プロパティ | 既定値 | 説明 | 
+| プロパティ | 既定値 | [説明] | 
 | -------- | ------------- | ----------- | 
 | **カウント** | 60 | ループが終了するまでに実行されるループの最大数。 既定値は、60 サイクルです。 | 
 | **タイムアウト** | PT1H | ループが終了するまでにループが実行される最大時間数。 既定値は 1 時間で、ISO 8601 形式で指定されます。 <p>タイムアウト値は、ループのサイクルごとに評価されます。 ループ内のアクションがタイムアウト制限より長くなる場合、現在のサイクルは停止しません。 ただし、制限の条件が満たされていないため、次のサイクルは開始しません。 | 

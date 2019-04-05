@@ -12,18 +12,18 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 03/13/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 4b4859c41e7a3903de68b62e8587f1c85805a782
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: b08312040f9702b8a9100886c198138431012e3f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082285"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007377"
 ---
 # <a name="dynamics-365-for-customer-engagement-prerequisites"></a>Dynamics 365 for Customer Engagement の前提条件
 
-この記事では、AppSource Marketplace で Dynamics 365 for Customer Engagement アプリケーション オファーを公開するための技術面およびビジネス面の前提条件について説明します。
+この記事では、AppSource Marketplace で Dynamics 365 for Customer Engagement アプリケーション オファーを公開するための技術面およびビジネス面の前提条件について説明します。  まだお読みになっていない場合は、「[Office 365、Dynamics 365、PowerApps、Power BI 用のオファー発行ガイド](../../appsource-offer-publishing-guide.md)」をご確認ください。
 
 
 ## <a name="technical-requirements"></a>技術的な要件

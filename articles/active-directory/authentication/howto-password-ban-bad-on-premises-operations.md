@@ -1,6 +1,6 @@
 ---
-title: Azure AD パスワード保護プレビューの操作とレポート
-description: Azure AD パスワード保護プレビューのデプロイ後の操作とレポート
+title: Azure AD パスワード保護の操作とレポート
+description: Azure AD パスワード保護のデプロイ後の操作とレポート
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,19 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fda79f16560a5c96e1283f4d9d9f14dbe503d61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ac91a70465d79b235ae43681a1375d47e7691efe
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175244"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58285804"
 ---
-# <a name="preview-azure-ad-password-protection-operational-procedures"></a>更新:Azure AD パスワード保護の操作手順
-
-|     |
-| --- |
-| Azure AD パスワード保護は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
+# <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD パスワード保護の操作手順
 
 [Azure AD パスワード保護のインストール](howto-password-ban-bad-on-premises-deploy.md)をオンプレミスで完了した後、Azure portal で構成する必要があるいくつかの項目があります。
 
@@ -33,7 +28,7 @@ ms.locfileid: "56175244"
 
 ## <a name="enable-password-protection"></a>パスワード保護を有効にする
 
-1. [Azure portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]**、**[認証方法]**、**パスワード保護 (プレビュー)** の順に選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、**[Azure Active Directory]**、**[認証方法]**、**[パスワード保護]** の順に選択します。
 1. **[Windows Server Active Directory のパスワード保護を有効にする]** を **[はい]** に設定します
 1. [デプロイ ガイド](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)のページで説明しているように、最初に **[モード]** を **[監査]** に設定することをお勧めします
    * 機能に問題がなければ、**[モード]** を **[強制]** に切り替えることができます

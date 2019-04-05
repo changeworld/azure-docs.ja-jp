@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e5d097afa3af111a7de8341b90d8c6c05ac0347
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a37a811c7944334571b4043d8ba937ffadc1e71
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205751"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891571"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>チュートリアル:Azure Active Directory と Work.com の統合
 
@@ -174,7 +174,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
     
     c. **[Browse]\(参照\)** をクリックして、Azure Portal からダウンロードした証明書をアップロードします。
     
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Entity Id]\(エンティティ ID\)** ボックスに、「`https://salesforce-work.com`」と入力します。
+    d. **[Entity Id]\(エンティティ ID\)** ボックスに、「`https://salesforce-work.com`」と入力します。
     
     e. **[SAML ID の種類]** として、**[アサーションにはユーザー オブジェクトからのフェデレーション ID が含まれます]** を選択します。
     
@@ -233,7 +233,7 @@ Work.com で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-workcom-test-user"></a>Work.com テスト ユーザーの作成
 Azure Active Directory ユーザーがサインインできるように、Azure Active Directory ユーザーを Work.com に対してプロビジョニングする必要があります。 Work.com の場合、プロビジョニングは手動で行います。
@@ -262,9 +262,9 @@ Azure Active Directory ユーザーがサインインできるように、Azure 
     
     c. **[Alias]\(エイリアス\)** ボックスに、ユーザーの**名前** (**BrittaS**) を入力します。
     
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Email]\(メール\)** ボックスに、ユーザーの**メール アドレス** (**Brittasimon@contoso.com**) を入力します。
+    d. **[Email]\(メール\)** ボックスに、ユーザーの**メール アドレス** (**Brittasimon\@contoso.com**) を入力します。
     
-    e. **[User Name]\(ユーザー名\)** ボックスに、ユーザーのユーザー名 (**Brittasimon@contoso.com** など) を入力します。
+    e. **[User Name]\(ユーザー名\)** ボックスに、ユーザーのユーザー名 (例: **Brittasimon\@contoso.com**) を入力します。
     
     f. **[Nick Name]\(ニック ネーム\)** ボックスに、ユーザーの**ニック ネーム** (**Simon**) を入力します。
     

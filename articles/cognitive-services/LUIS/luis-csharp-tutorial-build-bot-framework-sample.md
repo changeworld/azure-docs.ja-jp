@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: fc8283d85cf7d516edd78f20c9a47d806fbb827b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ca4cd1aa074353914f5187e353c233f8b45140eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328964"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091683"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot Framework 3.x と Azure Web アプリ ボットを使用した C# の LUIS ボット
 
@@ -46,16 +46,16 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 3. [Web App Bot ]\(Web アプリ ボット\) ウィンドウで、**[作成]** をクリックします。
 
 4. **[ボット サービス]** で、必要な情報を指定し、**[作成]** をクリックします。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)を使用するには、ボットを作成する前に、[リージョンの要件](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming)を確認します。 
-    * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
-    * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
-    * **Bot テンプレート**で、以下を選択します。
-        * **SDK v3**
-        * **C#**
-        * **言語の理解**
-    * **LUIS アプリの場所**を選択します。 これは、アプリが作成されるオーサリング [リージョン](luis-reference-regions.md)です。
-    * 法的通知の確認チェック ボックスをオンにします。 法的通知の条項はチェック ボックスの下にあります。
+   * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
+   * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
+   * **Bot テンプレート**で、以下を選択します。
+       * **SDK v3**
+       * **C#**
+       * **言語の理解**
+   * **LUIS アプリの場所**を選択します。 これは、アプリが作成されるオーサリング [リージョン](luis-reference-regions.md)です。
+   * 法的通知の確認チェック ボックスをオンにします。 法的通知の条項はチェック ボックスの下にあります。
 
-    ![ボット サービス](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
+     ![ボット サービス](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
 
 
 5. ボット サービスがデプロイされたことを確認します。
@@ -86,9 +86,9 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 > 1. **[My apps]\(マイ アプリ\)** をクリックします。 
 > 2. HomeAutomation ドメインの意図とエンティティを含む、前に作成した LUIS アプリを検索します。
 > 3. LUIS アプリの **[設定]** ページで、アプリ ID を検索してコピーします。 それが[トレーニング済み](luis-interactive-test.md)および[公開済み](luis-how-to-publish-app.md)であることを確認します。 
-
-    > [!WARNING]
-    > If you delete your app ID or LUIS key, the bot will stop working.
+> 
+> [!WARNING]
+> アプリ ID または LUIS キーを削除すると、ボットは機能しなくなります。
 
 ## <a name="modify-the-bot-code"></a>ボット コードの変更
 
@@ -130,7 +130,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 ## <a name="build-the-bot"></a>ボットのビルド
 コード エディターで `build.cmd` を右クリックし、**[Run from Console]\(コンソールから実行\)** を選択します。
 
-![Web ボットのビルド ](./media/luis-tutorial-cscharp-web-bot/bot-service-build-run-from-console.png)
+![Web ボットのビルド](./media/luis-tutorial-cscharp-web-bot/bot-service-build-run-from-console.png)
 
 コード ビューがターミナル ウィンドウに置き換わり、ビルドの進行状況と結果が表示されます。
 

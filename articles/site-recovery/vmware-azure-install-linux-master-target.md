@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 68892faf707a767ba9c25ce7317f775708e61a90
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217987"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099054"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -168,15 +168,15 @@ Linux 仮想マシンの各 SCSI ハード ディスクの ID を取得するに
 
 5. **[disk.EnableUUID]** と表示される行が存在するかどうかを確認します。
 
-    - その値が存在していて **False** に設定されている場合、**True** に値を変更します (値の大文字小文字は区別されません)。
+   - その値が存在していて **False** に設定されている場合、**True** に値を変更します (値の大文字小文字は区別されません)。
 
-    - その値が存在していて **True** に設定されている場合は、**[Cancel]\(キャンセル\)** をクリックします。
+   - その値が存在していて **True** に設定されている場合は、**[Cancel]\(キャンセル\)** をクリックします。
 
-    - そのような値が存在しない場合、**[Add Row]\(行の追加\)** をクリックします。
+   - そのような値が存在しない場合、**[Add Row]\(行の追加\)** をクリックします。
 
-    - 名前列に **disk.EnableUUID** を追加し、値を **TRUE** に設定します。
+   - 名前列に **disk.EnableUUID** を追加し、値を **TRUE** に設定します。
 
-    ![[disk.EnableUUID] が存在するかどうかを確認する](./media/vmware-azure-install-linux-master-target/image25.png)
+     ![[disk.EnableUUID] が存在するかどうかを確認する](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>カーネルのアップグレードを無効にする
 
@@ -287,7 +287,6 @@ Linux を使用してこれをダウンロードするには、次のように�
 2. 構成サーバーの IP アドレスをメモします。 次のコマンドを実行してマスター ターゲット サーバーをインストールし、さらに構成サーバーに登録します。
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
 

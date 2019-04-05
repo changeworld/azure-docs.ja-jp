@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/08/2019
-ms.openlocfilehash: 513cc1f0155c5e5499d0bf076d21aff46756d769
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 820bb22fee75e5c1159ba90f23b478339f6345b5
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312176"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201927"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
@@ -53,10 +53,7 @@ Microsoft では、Azure Storage を操作する次のユーティリティを�
 ## <a id="commandline"></a>Hadoop コマンド ライン
 Hadoop コマンド ラインは、クラスターのヘッド ノードに既にデータが存在している場合に、Azure Storage BLOB にデータを格納する際にのみ役立ちます。
 
-Hadoop コマンドを使用するためには、まず、次の方法のいずれかを使用してヘッドノードに接続する必要があります。
-
-* **Windows ベースの HDInsight**:[リモート デスクトップを使用して接続する](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **Linux ベースの HDInsight**:[SSH または PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md) を使って接続する。
+Hadoop コマンドを使用するには、最初に [SSH または PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md) を使用してヘッドノードに接続する必要があります。
 
 接続したら、次の構文を使用してファイルをストレージにアップロードすることができます。
 

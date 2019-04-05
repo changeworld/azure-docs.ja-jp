@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: b2330d322c6939ba6d9581c125c512fcea9f924b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 78cc200a7bbaa2673cf6fea71d9be123fc96a75f
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242754"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258073"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Text Analytics (プレビュー段階) で名前付きエンティティの認識を使用する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "56242754"
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Entity Linking と名前付きエンティティ認識
 
-Text Analytics の`entities`エンドポイントは､名前付きエンティティの認識 (NER) とエンティティ リンクの両方をサポートしています｡
+Text Analytics の `entities` エンドポイントは、名前付きエンティティの認識 (NER) とエンティティ リンクの両方をサポートしています。
 
 ### <a name="entity-linking"></a>Entity Linking
 エンティティ リンク設定は、テキスト内で見つかったエンティティの個性を識別してあいまいさを解消する機能です (例: "Mars" が惑星として使用されているか、古代ローマの戦争の神様として使用されているかを判定する)。 このプロセスのためには、認識されたエンティティがリンクされているナレッジ ベースが存在している必要があります。`entities` エンドポイントの Text Analytics には、Wikipedia がナレッジ ベースとして使用されます。
@@ -62,8 +62,9 @@ Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitiv
 | DateTime      | duration      | "1 minute and 45 seconds"   | 
 | DateTime      | Set           | "every Tuesday"     | 
 | DateTime      | TimeZone      |    | 
-| URL           | 該当なし\*         | "http://www.bing.com"    |
+| URL           | 該当なし\*         | "https:\//www.bing.com"    |
 | 電子メール         | 該当なし\*         | "support@contoso.com" |
+
 \* 入力および抽出されたエンティティによっては、一部エンティティで `SubType` が省略されることがあります。
 
 
@@ -74,7 +75,7 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 現在サポートされている言語については、[この一覧](../text-analytics-supported-languages.md)を参照してください。
 
-ドキュメントのサイズは、ドキュメントあたり 5,000 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、エンティティ リンク設定の末尾に付け加えるコンテンツを示しています。
+ドキュメントのサイズは、ドキュメントあたり 5,120 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、エンティティ リンク設定の末尾に付け加えるコンテンツを示しています。
 
 ```
 {"documents": [{"id": "1",

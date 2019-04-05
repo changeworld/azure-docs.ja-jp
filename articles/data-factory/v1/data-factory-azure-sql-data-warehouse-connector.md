@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 72a666db6157300942b966b88d9c3369495b9fd4
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 905d084b46919ad945cf44f5517b95d5321ee3de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331236"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116200"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -197,28 +197,28 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 1. **ソースのリンクされたサービス**の種類が **AzureStorage** または**サービス プリンシパルの認証を使用する AzureDataLakeStore** である。
 2. **入力データセット**の種類が **AzureBlob** または **AzureDataLakeStore** で、`type` プロパティの形式の種類が次の構成の **OrcFormat**、**ParquetFormat** または **TextFormat** である。
 
-    1. `rowDelimiter` が **\n** である。
-    2. `nullValue` が **空の文字列** ("") に設定されている。または、`treatEmptyAsNull` が **true** に設定されている。
-    3. `encodingName` が **utf-8** に設定されている。これは**既定値**です。
-    4. `escapeChar`、`quoteChar`、`firstRowAsHeader`、および `skipLineCount` が指定されていない。
-    5. `compression` が **圧縮なし**、**GZip**、または **Deflate**である。
+   1. `rowDelimiter` が **\n** である。
+   2. `nullValue` が **空の文字列** ("") に設定されている。または、`treatEmptyAsNull` が **true** に設定されている。
+   3. `encodingName` が **utf-8** に設定されている。これは**既定値**です。
+   4. `escapeChar`、`quoteChar`、`firstRowAsHeader`、および `skipLineCount` が指定されていない。
+   5. `compression` が **圧縮なし**、**GZip**、または **Deflate**である。
 
-    ```JSON
-    "typeProperties": {
-        "folderPath": "<blobpath>",
-        "format": {
-            "type": "TextFormat",
-            "columnDelimiter": "<any delimiter>",
-            "rowDelimiter": "\n",
-            "nullValue": "",
-            "encodingName": "utf-8"
-        },
-        "compression": {
-            "type": "GZip",
-            "level": "Optimal"
-        }
-    },
-    ```
+      ```JSON
+      "typeProperties": {
+       "folderPath": "<blobpath>",
+       "format": {
+           "type": "TextFormat",
+           "columnDelimiter": "<any delimiter>",
+           "rowDelimiter": "\n",
+           "nullValue": "",
+           "encodingName": "utf-8"
+       },
+       "compression": {
+           "type": "GZip",
+           "level": "Optimal"
+       }
+      },
+      ```
 
 3. パイプラインのコピー アクティビティでは、**BlobSource** または **AzureDataLakeStore**の下に `skipHeaderLineCount` 設定がないこと。
 4. パイプラインのコピー アクティビティでは、**SqlDWSink** の下に `sliceIdentifierColumnName` 設定がないこと  (PolyBase で保証されるのは、1 回の実行ですべてのデータが更新されるか、何も更新されないかのいずれかです。 **再現性**を実現するには、`sqlWriterCleanupScript` を使用します)。
@@ -228,7 +228,7 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 ソース データが前のセクションで紹介した条件を満たしていない場合は、中間ステージング Azure Blob Storage 経由でのデータのコピーを有効にすることができます (Premium Storage にはできません)。 その場合、Azure Data Factory は PolyBase のデータ形式の要件を満たすためにデータの変換を自動的に実行し、PolyBase を使用して SQL Data Warehouse にデータを読み込み、最後に Blob ストレージから一時データをクリーンアップします。 ステージング Azure BLOB 経由でデータをコピーする通常の操作方法の詳細については、「 [ステージング コピー](data-factory-copy-activity-performance.md#staged-copy) 」をご覧ください。
 
 > [!NOTE]
-> オンプレミスのデータ ストアから PolyBase を使用して Azure SQL Data Warehouse にデータをコピーし、ステージングする場合、Data Management Gateway のバージョンが 2.4 未満であれば、ソース データを適切な形式に変換するために使用するゲートウェイ コンピューターに JRE (Java ランタイム環境) をインストールする必要があります。 このような依存関係を回避するため、ゲートウェイは最新バージョンにアップグレードすることをお勧めします。
+> オンプレミスのデータ ストアから PolyBase を使用して Azure SQL Data Warehouse にデータをコピーし、ステージングする場合、Data Management Gateway のバージョンが 2.4 未満であれば、ソース データを適切な形式に変換するために使用するゲートウェイ マシンに JRE (Java ランタイム環境) をインストールする必要があります。 このような依存関係を回避するため、ゲートウェイは最新バージョンにアップグレードすることをお勧めします。
 >
 
 この機能を使用するには、中間 Blob Storage がある Azure ストレージ アカウントを参照する [Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)を作成し、次のコードに示すように、コピー アクティビティの `enableStaging` および `stagingSettings` プロパティを指定します。
@@ -315,8 +315,8 @@ Data Factory は、コピー元データ ストアのテーブルと同じ名前
 | SmallMoney | SmallMoney |
 | Binary | Binary |
 | Varbinary | Varbinary (最大 8000) |
-| 日付 | 日付 |
-| Datetime | Datetime |
+| Date | Date |
+| DateTime | DateTime |
 | DateTime2 | DateTime2 |
 | Time | Time |
 | DateTimeOffset | DateTimeOffset |
@@ -452,7 +452,7 @@ Azure SQL Data Warehouse との間でデータを移動するとき、SQL 型か
 ```
 **Azure BLOB の出力データセット:**
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+データは新しい BLOB に 1 時間おきに書き込まれます (frequency: hour、interval: 1)。 BLOB のフォルダー パスは、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```JSON
 {

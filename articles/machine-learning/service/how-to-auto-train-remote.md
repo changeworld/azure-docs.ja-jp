@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 95c495bf3a8ad7b82c42d4071899d045cb49f27b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4784ca08366d833d02372393e0e12f0fefe8c5cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247546"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112451"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
@@ -80,8 +80,8 @@ DSVM の名前には次の制限があります。
 
 > [!NOTE]
 >
-> 次のコードでは、`RemoteCompute` ターゲット クラスを使用して、既存の VM をコンピューティング ターゲットとしてアタッチします。
-> `DsvmCompute` クラスは、この設計パターンを優先して今後のリリースで非推奨になります。
+> 次のコードでは、[RemoteCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remote.remotecompute?view=azure-ml-py) ターゲット クラスを使用して、既存の VM をコンピューティング ターゲットとしてアタッチします。
+> [DsvmCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.dsvmcompute?view=azure-ml-py) クラスは、この設計パターンを優先して今後のリリースで非推奨になります。
 
 次のコードを実行して、既存の Linux DSVM からコンピューティング ターゲットを作成します。
 
@@ -107,7 +107,7 @@ compute_target.wait_for_completion(show_output=True)
 
 アクセスを用意するには、次の手順を行う必要があります。
 + `get_data()` 関数を含む get_data.py ファイルを作成します 
-* 絶対パスとしてアクセス可能なディレクトリに、そのファイルを配置します 
++ 絶対パスとしてアクセス可能なディレクトリに、そのファイルを配置します 
 
 BLOB ストレージまたはローカル ディスクからデータを読み取るコードを get_data.py ファイルにカプセル化することができます。 次のコード サンプルでは、sklearn パッケージのデータが使用されています。
 

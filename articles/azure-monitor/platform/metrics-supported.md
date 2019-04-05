@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 8ee900554371644f374e4aeed51f1eeb0c18569e
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: f7bfb4f403104bb91fb1a9ba4b70cb164e0738b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408869"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113301"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。 以下の一覧には、統合された Azure Monitor メトリック パイプラインで使うことができるメトリックのみが含まれます。 これらのメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使ってください。
@@ -676,13 +676,13 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | AvailableStorage| 使用可能なストレージ   |Bytes| 合計|  リージョンあたりの 5 分単位の細分性で報告された使用可能なストレージの合計|   DatabaseName、CollectionName、Region|   5 M| 使用可能なストレージ|   使用可能なストレージ容量を監視するために使用されます (固定ストレージ コレクションにのみ適用されます)。最小の細分性は 5 分にする必要があります。| 
 | DataUsage |データ利用状況 |Bytes| 合計   |リージョンあたりの 5 分単位の細分性で報告されたデータ使用量の合計|    DatabaseName、CollectionName、Region|   5 M  |データ サイズ  | 収集時およびリージョンごとの合計データ使用量を監視するために使用されます。最小の細分性は 5 分にする必要があります。|
 | IndexUsage|   インデックスの使用量|    Bytes|  合計   |リージョンあたりの 5 分単位の細分性で報告されたインデックス使用量の合計|    DatabaseName、CollectionName、Region|   5 M| インデックス サイズ| 収集時およびリージョンごとの合計データ使用量を監視するために使用されます。最小の細分性は 5 分にする必要があります。 |
-| DocumentQuota|    ドキュメントのクォータ| Bytes|  合計|  リージョンあたりの 5 分単位の細分性で報告されたストレージ クォータの合計 適用対象| DatabaseName、CollectionName、Region|   5 M  |ストレージの容量|  収集時およびリージョンごとの合計クォータを監視するために使用されます。最小の細分性は 5 分にする必要があります。|
+| DocumentQuota|    ドキュメントのクォータ| Bytes|  合計|  リージョンあたりの 5 分単位の細分性で報告されたストレージ クォータの合計 固定ストレージ コレクションに適用| DatabaseName、CollectionName、Region|   5 M  |ストレージの容量|  収集時およびリージョンごとの合計クォータを監視するために使用されます。最小の細分性は 5 分にする必要があります。|
 | DocumentCount|    ドキュメント数| Count   |合計  |リージョンあたりの 5 分単位の細分性で報告された合計ドキュメント数|  DatabaseName、CollectionName、Region|   5 M  |ドキュメント数|収集時およびリージョンごとのドキュメント数を監視するために使用されます。最小の細分性は 5 分にする必要があります。|
 
 ### <a name="latency-metrics"></a>待機時間のメトリック
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|Dimensions| 時間の細分性| 使用法 |
-|---|---|---|---|---|---| ---| ---| ---|
+|---|---|---|---|---|---| ---| ---|
 | ReplicationLatency    | レプリケーションの待機時間|  MilliSeconds|   Minimum、Maximum、Average | geo 対応アカウントのソースおよびターゲット リージョン全体の P99 のレプリケーション待機時間| SourceRegion、TargetRegion| All | geo レプリケートされたアカウントの任意の 2 つのリージョン間で P99 のレプリケーション待機時間を監視するために使用されます。 |
 
 ### <a name="availability-metrics"></a>可用性のメトリック
@@ -694,7 +694,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 ### <a name="cassandra-api-metrics"></a>Cassandra API のメトリック
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|Dimensions| 時間の細分性| 使用法 |
-|---|---|---|---|---|---| ---| ---| ---|
+|---|---|---|---|---|---| ---| ---|
 | CassandraRequests | Cassandra 要求 |  Count|  Count|  実行された Cassandra API 要求の数|  DatabaseName、CollectionName、ErrorCode、Region、OperationType、ResourceType|   All| Cassandra 要求を 1 単単位の細分性で監視するために使用されます。 1 秒あたりの平均要求数を取得するには、分単位の Count 集計を使用して 60 で割ります。|
 | CassandraRequestCharges|  Cassandra 要求の料金| Count|   Sum、Min、Max、Avg| Cassandra API 要求によって使用される要求ユニット数|   DatabaseName、CollectionName、Region、OperationType、ResourceType|  All| Cassandra API アカウントによって 1 分あたりで使用される RU を監視するために使用されます。|
 | CassandraConnectionClosures   | Cassandra 接続の終了 |Count| Count   |終了した Cassandra 接続の数|    ClosureReason、Region|  All | クライアントと Azure Cosmos DB Cassandra API の間の接続を監視するために使用されます。|

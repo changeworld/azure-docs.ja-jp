@@ -15,12 +15,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db4c2fc0781225af6cc59df72467a69e0ba73e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0fc2aca2b785329b6faebd37c94493269d65c22b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189560"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182984"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルでリスクのフラグ付きユーザーを修復する
 
@@ -46,7 +46,7 @@ Microsoft は、お客様の環境のセキュリティの保持に努めてい�
 
 Office 365 の資格情報を使用して **Azure 管理センター**にアクセスすることもできます。 Azure AD へのアクセスをアクティブにすると、Azure AD ポータルにリダイレクトされます。 Basic サブスクリプション レベルでは、レポートで提供される詳細情報の量が限定されます。 追加のデータと分析を使用できるのは、Azure Premium サブスクライバーのみです。
 
-Office 365 管理センターで**リスクのフラグ付きユーザー**のレポートにアクセスするには:
+Microsoft 365 管理センターで**リスクのフラグ付きユーザー**のレポートにアクセスするには:
 
 1.  左側のナビゲーション メニューで、**[管理センター]** を選択します。 
 2.  **[Azure AD ]** を選びます。
@@ -69,7 +69,7 @@ Office 365 管理センターで**リスクのフラグ付きユーザー**の�
 
     c. 外部ドメインへのメール転送ルールを無効にします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 メールボックスのグローバル メール転送プロパティを削除します。
+    d. メールボックスのグローバル メール転送プロパティを削除します。
 
     e. ユーザーのアカウントで MFA を有効にします。
 

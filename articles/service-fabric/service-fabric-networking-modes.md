@@ -3,7 +3,7 @@ title: Azure Service Fabric コンテナー サービスのネットワーク �
 description: Azure Service Fabric によってサポートされるさまざまなネットワーク モードを設定する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: twhitney, subramar
-ms.openlocfilehash: 62812dd8f92bcace8f764a21aba608157815cec3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.author: aljo, subramar
+ms.openlocfilehash: 01b1cfafab75acef918b001752837a4dc44ca909
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093161"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899045"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
 
@@ -30,7 +30,7 @@ ms.locfileid: "55093161"
 コンテナー サービスが再起動するか、クラスター内の別のノードに移動すると、IP アドレスが変わります。 このため、動的に割り当てられる IP アドレスを使ってコンテナー サービスを検出することはお勧めしません。 サービスの検出には、Service Fabric ネーム サービスまたは DNS サービスのみを使う必要があります。 
 
 >[!WARNING]
->Azure では、仮想ネットワークごとに全部で 4,096 個の IP アドレスを使うことができます。 仮想ネットワーク内のノードの数とコンテナー サービス インスタンス (Open モードを使っているもの) の数の合計が、IP アドレスの数 4,096 を超えることはできません。 高密度シナリオでは、nat ネットワーク モードお勧めします。
+>Azure では、仮想ネットワークごとに全部で 65,356 個の IP アドレスを使うことができます。 仮想ネットワーク内のノードの数とコンテナー サービス インスタンス (Open モードを使っているもの) の数の合計が、IP アドレスの数 65,356 を超えることはできません。 高密度シナリオでは、nat ネットワーク モードお勧めします。 さらに、ロード バランサーなどの他の依存関係には、考慮すべきその他の[制限](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)があります。 現在、ノードあたり最大 50 個の IP アドレスをテストして、安定性が証明されています。 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Open ネットワーク モードを設定する
@@ -55,15 +55,6 @@ ms.locfileid: "55093161"
                             "name": "IPProviderEnabled",
                             "value": "true"
                       }
-                    ]
-                },
-                {
-                    "name":  "Trace/Etw", 
-                    "parameters": [
-                    {
-                            "name": "Level",
-                            "value": "5"
-                    }
                     ]
                 },
                 {
@@ -223,7 +214,7 @@ ms.locfileid: "55093161"
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>
-    <ApplicationManifest ApplicationTypeName="NodeJsApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <ApplicationManifest ApplicationTypeName="NodeJsApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
       <Description>Calculator Application</Description>
       <Parameters>
         <Parameter Name="ServiceInstanceCount" DefaultValue="3"></Parameter>

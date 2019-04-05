@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2B コラボレーションの API とカスタマイズ | Microsoft Docs
+title: B2B コラボレーションの API とカスタマイズ - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a475c9032d2c4062b506c1e6ebcadd1901c946b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177429"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111312"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B コラボレーションの API とカスタマイズ
 
@@ -44,7 +44,7 @@ API には次の機能が用意されています。
     "sendInvitationMessage": true
     ```
 
-  受信者へのカスタマイズ可能なメッセージを付けることができます。
+   受信者へのカスタマイズ可能なメッセージを付けることができます。
 
     ```
     "customizedMessageBody": "Hello Sam, let's collaborate!"
@@ -58,7 +58,7 @@ API には次の機能が用意されています。
     "sendInvitationMessage": false
     ```
 
-  この場合は、招待に応じるための URL を API から受け取り、それを電子メール テンプレート、IM、またはその他の任意の配布方法に埋め込むことができます。
+   この場合は、招待に応じるための URL を API から受け取り、それを電子メール テンプレート、IM、またはその他の任意の配布方法に埋め込むことができます。
 
 6. 最後に、管理者である場合は、ユーザーをメンバーとして招待することができます。
 

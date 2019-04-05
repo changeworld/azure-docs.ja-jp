@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 252aacfeb85f23699c6a2e2ac1f457f9e2b59b0e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c00e62e237fe263f54926c8e74fb6211a2e5a4e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997185"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993048"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - Docker
 
@@ -96,7 +96,7 @@ Stream Analytics ジョブを開始するには、次の手順に従います。
 
 ### <a name="connect-to-the-dashboard"></a>ダッシュボードに接続する
 
-リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで [http://localhost:8080](http://localhost:8080) に移動します。 Web UI とローカルのマイクロサービスを使用することができます。
+リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで `http://localhost:8080` に移動します。 Web UI とローカルのマイクロサービスを使用することができます。
 
 ## <a name="clean-up"></a>クリーンアップ
 

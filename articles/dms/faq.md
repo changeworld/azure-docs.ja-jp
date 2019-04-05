@@ -2,21 +2,21 @@
 title: Azure Database Migration Service の使用に関する FAQ | Microsoft Docs
 description: Azure Database Migration Service を使用してデータベースを移行する作業に関してよく寄せられる質問に答えます。
 services: database-migration
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: b8001729c85c8447ab22bafffe24a32524a0662a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 3da3a8dbe337f649fe7d0516b49c03a2f01d7eea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714697"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58180587"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ
 この記事では、Azure Database Migration Service の使用に関してよく寄せられる質問とその回答をまとめてあります。
@@ -90,7 +90,7 @@ Azure VNET のセットアップ手順を説明する複数の Microsoft チュ�
 ユーザーが明示的に Azure Database Migration Service (DMS) を停止した場合、またはサービスが 24 時間非アクティブ状態になった場合、サービスは停止状態または自動一時停止状態になります。 いずれの場合も、サービスは利用できなくなり、停止状態になります。  アクティブな移行を再開するには、サービスを再起動します。
 
 ### <a name="q-where-can-i-leave-feedback-about-the-azure-database-migration-service"></a>Q. Azure Database Migration Service についてのフィードバックは、どこで行うことができますか。
-ユーザーからのご意見をお待ちしています。 Azure Database Migration Service に関するフィードバックやご要望は、[こちら](https://feedback.azure.com/forums/906100-azure-database-migration-service)から送信してください。
+ユーザーからのご意見をお待ちしています。 Azure Database Migration Service に関するフィードバックやご要望は、[こちら](https://feedback.azure.com/forums/906100-azure-database-migration-service)から、または [Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でチームまでお送りください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Database Migration Service の概要と、リージョンごとの利用可能性については、「[Azure Database Migration Service とは](dms-overview.md)」という記事をご覧ください。 

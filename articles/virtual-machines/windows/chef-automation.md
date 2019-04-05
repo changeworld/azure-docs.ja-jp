@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 5378151d01418a81977f2fc2f562a6540bbb665d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a973d8dbab18e9ea66afb5ffff83f47c3ad98f93
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663191"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012349"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Chef で Azure 仮想マシンの展開を自動化する
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -32,7 +32,7 @@ Chef は最新のクラウド API リリースで Azure とのシームレスな
 この記事では、Chef 環境を設定し、Azure 仮想マシンをプロビジョニングした後、ポリシーまたは "Cookbook" を作成して、それを Azure 仮想マシンに展開します。
 
 ## <a name="chef-basics"></a>Chef の基礎
-開始する前に、[Chef の基本的な概念を確認します](http://www.chef.io/chef)。
+開始する前に、[Chef の基本的な概念を確認します](https://www.chef.io/chef)。
 
 次の図は、大まかな Chef アーキテクチャを示しています。
 

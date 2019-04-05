@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 01/29/2019
+ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 81b2db2da7c1efe0d09c065270c3493f297e49ad
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 551b1d4924c354eb6fd501c1b82ed306a7ea4822
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55235988"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58305125"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>ExpressRoute Global Reach とは何ですか。
 
@@ -49,7 +49,7 @@ ExpressRoute Global Reach は[選ばれた国や場所](../articles/expressroute
 
 ### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>ExpressRoute Global Reach を有効にした後でオンプレミスのネットワーク間では、どのようなネットワーク スループットを期待できますか。
 
-ExpressRoute Global Reach によって有効にしたオンプレミスのネットワーク間のネットワーク スループットは、2 つの ExpressRoute 回線のうち、小さい方によって制限されます。
+ExpressRoute Global Reach によって有効にしたオンプレミスのネットワーク間のネットワーク スループットは、2 つの ExpressRoute 回線のうち、小さい方によって制限されます。 オンプレミスから Azure へのトラフィックとオンプレミス間のトラフィックでは同じ回線を共有しているため、同じ帯域幅の上限が適用されます。 
 
 ### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>ExpressRoute Global Reach では、アドバタイズできるルートの数と受信できるルートの数はいくつに制限されていますか。
 

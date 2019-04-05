@@ -3,7 +3,6 @@ title: Log Analytics の Azure SQL Analytics ソリューション | Microsoft D
 description: Azure SQL Analytics ソリューションは、Azure SQL データベースの管理に役立ちます
 services: log-analytics
 ms.service: log-analytics
-ms.subservice: performance
 ms.custom: ''
 ms.topic: conceptual
 author: danimir
@@ -11,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 02832ee84e02251239ab4364aac9ad0894c681b9
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 66ab1fa9779aa378c4153adc0da81b3d172e1320
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884783"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170226"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -67,9 +66,13 @@ Azure SQL Analytics ソリューションを Azure ダッシュボードに追�
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 
-ソリューションをワークスペースに追加すると、Azure SQL Analytics のタイルがワークスペースに追加され、[概要] に表示されます。 タイルには、ソリューションが診断テレメトリを受信する Azure SQL Database、エラスティック プール、Managed Instance、および Managed Instance 内のデータベースの数が表示されます。
+ソリューションをワークスペースに追加すると、Azure SQL Analytics のタイルがワークスペースに追加され、[概要] に表示されます。 タイルのコンテンツを読み込むには、[概要の表示] リンクを選択します。
 
-![Azure SQL Analytics のタイル](./media/azure-sql/azure-sql-sol-tile.png)
+![Azure SQL Analytics の概要タイル](./media/azure-sql/azure-sql-sol-tile-01.png)
+
+読み込みが完了すると、タイルに、ソリューションが診断テレメトリを受信する Azure SQL Database、エラスティック プール、Managed Instance、および Managed Instance 内のデータベースの数が表示されます。
+
+![Azure SQL Analytics のタイル](./media/azure-sql/azure-sql-sol-tile-02.png)
 
 ソリューションには、2 つの独立したビューが用意されています。1 つは Azure SQL Database とエラスティック プールの監視用で、他のビューは、Managed Instance と、Managed Instance 内のデータベースの監視用です。
 
@@ -146,14 +149,16 @@ Azure SQL Analytics を使用するには､少なくとも Azure で閲覧者�
 
 ### <a name="creating-a-custom-role-in-portal"></a>ポータルからのカスタム ロールの作成
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 組織によっては､Azure で厳格な許可制御を実施しています｡Azure portal には､｢SQL Analytics Monitoring Operator｣という次の PowerShell スクリプトがあります｡この､スクリプトを利用して､Azure SQL Analytics を最大限活用するために最低限必要な読み取りおよび書き込み許可を持つカスタム ロールを作成することできます｡
 
 次のスクリプトの “{SubscriptionId}" の部分をご自分の Azure サブスクリプション ID に置き換え､スクリプトを実行して､所有者または共同作成者として Azure にログインしてください｡
 
    ```powershell
-    Connect-AzureRmAccount
-    Select-AzureRmSubscription {SubscriptionId}
-    $role = Get-AzureRmRoleDefinition -Name Reader
+    Connect-AzAccount
+    Select-AzSubscription {SubscriptionId}
+    $role = Get-AzRoleDefinition -Name Reader
     $role.Name = "SQL Analytics Monitoring Operator"
     $role.Description = "Lets you monitor database performance with Azure SQL Analytics as a reader. Does not allow change of resources."
     $role.IsCustom = $true
@@ -172,7 +177,7 @@ Azure SQL Analytics を使用するには､少なくとも Azure で閲覧者�
     $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/write");
     $role.Actions.Add("Microsoft.Resources/deployments/write");
     $role.AssignableScopes = "/subscriptions/{SubscriptionId}"
-    New-AzureRmRoleDefinition $role
+    New-AzRoleDefinition $role
    ```
 
 新しいロールが作成されると､Azure SQL Analytics を使用する特別な許可を付与する必要があるユーザーそれぞれにそのロールを割り当てることができます｡

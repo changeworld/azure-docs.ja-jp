@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 2a719fcbe2180e366060fba11bf64ad9770aa672
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 03/12/2019
+ms.openlocfilehash: 45769a2285965395d113f026f0ffc171873a5a99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756123"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842602"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Azure SQL Database でのエラスティック プールの作成と管理
 
@@ -39,6 +39,10 @@ ms.locfileid: "55756123"
 
 ## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell:エラスティック プールとプールされたデータベースの管理
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
 Azure PowerShell を使用して SQL Database エラスティック プールとプールされたデータベースを作成および管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。 エラスティック プール用の SQL Database サーバーを作成および管理する方法については、[SQL Database サーバーの作成と管理](sql-database-servers.md)に関する記事を参照してください。 ファイアウォール ルールを作成および管理する方法については、[PowerShell を使用したファイアウォール ルールの作成と管理](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-azure-powershell)に関する記事を参照してください。
 
 > [!TIP]
@@ -47,15 +51,15 @@ Azure PowerShell を使用して SQL Database エラスティック プールと
 
 | コマンドレット | 説明 |
 | --- | --- |
-|[New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool)|エラスティック プールを作成します。|
-|[Get-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/get-azurermsqlelasticpool)|エラスティック プールとそのプロパティ値を取得します。|
-|[Set-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/set-azurermsqlelasticpool)|エラスティック プールのプロパティを変更します。たとえば、**StorageMB** プロパティを使用して、エラスティック プールの最大容量を変更します。|
-|[Remove-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/remove-azurermsqlelasticpool)|エラスティック プールを削除します。|
-|[Get-AzureRmSqlElasticPoolActivity](/powershell/module/azurerm.sql/get-azurermsqlelasticpoolactivity)|エラスティック プールに対する操作の状態を取得します。|
-|[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|新しいデータベースを既存のプール内に、または単一のデータベースとして作成します。 |
-|[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|1 つまたは複数のデータベースを取得します。|
-|[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|データベースのプロパティを設定するか、または既存のデータベースをエラスティック プール内に、エラスティックから外に、またはエラスティック間で移動します。|
-|[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|データベースを削除します。|
+|[New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|エラスティック プールを作成します。|
+|[Get-AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|エラスティック プールとそのプロパティ値を取得します。|
+|[Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool)|エラスティック プールのプロパティを変更します。たとえば、**StorageMB** プロパティを使用して、エラスティック プールの最大容量を変更します。|
+|[Remove-AzSqlElasticPool](/powershell/module/az.sql/remove-azsqlelasticpool)|エラスティック プールを削除します。|
+|[Get-AzSqlElasticPoolActivity](/powershell/module/az.sql/get-azsqlelasticpoolactivity)|エラスティック プールに対する操作の状態を取得します。|
+|[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|新しいデータベースを既存のプール内に、または単一のデータベースとして作成します。 |
+|[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|1 つまたは複数のデータベースを取得します。|
+|[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)|データベースのプロパティを設定するか、または既存のデータベースをエラスティック プール内に、エラスティックから外に、またはエラスティック間で移動します。|
+|[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase)|データベースを削除します。|
 
 > [!TIP]
 > ポータルまたは PowerShell コマンドレットで一度に作成できるデータベースは 1 つのみであるため、エラスティック プールに多数のデータベースを作成しようとすると時間がかかることがあります。 エラスティック プールへの作成を自動化するには、「[CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae)」を参照してください。
@@ -85,7 +89,7 @@ Transact-SQL を使用して既存のエラスティック プール内のデー
 > Transact-SQL を使用して Azure SQL Database エラスティック プールを作成、更新、または削除するすることはできません。 データベースをエラスティック プールに追加または削除したり、DMV を使用して既存のエラスティック プールに関する情報を返したりすることができます。
 >
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|新しいデータベースを既存のプール内に、または単一のデータベースとして作成します。 新しいデータベースを作成するには、マスター データベースに接続する必要があります。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |データベースをエラスティック プール内に、エラスティックから外に、またはエラスティック間で移動します。|
@@ -97,7 +101,7 @@ Transact-SQL を使用して既存のエラスティック プール内のデー
 
 SQL Database エラスティック プールとプールされたデータベースを作成して管理するには、これらの REST API 要求を使用します。
 
-| コマンド | 説明 |
+| command | 説明 |
 | --- | --- |
 |[エラスティック プール - 作成または更新](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|新しいエラスティック プールを作成するか、既存のエラスティック プールを更新します。|
 |[エラスティック プール - 削除](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|エラスティック プールを削除します。|

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36b717bfd05a71639c5d1f467af8e9238474160d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f1f34796a98acb3ed4241edff57e506990479d1a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170196"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443268"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory v2.0 と OAuth 2.0 のデバイス コード フロー
 
@@ -32,7 +32,7 @@ ms.locfileid: "56170196"
 Azure AD では、ユーザーがスマート TV、IoT デバイス、プリンターなどの入力制限のあるデバイスにサインインできるようにする[デバイス コード付与](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12)がサポートされています。  このフローを実現するには、デバイスのユーザーが別のデバイス上のブラウザーを使って Web ページにアクセスしてサインインするようにします。  ユーザーがサインインすると、デバイスは必要に応じてアクセス トークンと更新トークンを取得できます。  
 
 > [!Important] 
-> 現時点では、v2.0 エンドポイントでサポートされるのは Azure AD テナントのデバイス フローのみで、個人アカウントはサポートされません。  そのため、テナント化されたエンドポイントまたは組織のエンドポイントを使用する必要があります。  
+> 現時点では、v2.0 エンドポイントでサポートされるのは Azure AD テナントのデバイス フローのみで、個人アカウントはサポートされません。  そのため、テナントとして設定されたエンドポイントまたは組織のエンドポイントを使用する必要があります。  
 >
 > Azure AD テナントに招待された個人アカウントはデバイス フロー付与を使用できますが、テナントのコン テキストに限定されます。
 

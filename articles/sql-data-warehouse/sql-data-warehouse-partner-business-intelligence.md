@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: a45ed3ad5360f613a4949799c60ec09f4a30afb9
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 956cf6c8fac34d5fc3e4d3c5bee663247665b69e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427770"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002873"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL Data Warehouse ビジネス インテリジェンス パートナー
 エンド ツー エンドのデータ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。  この記事では、Azure SQL Data Warehouse をサポートするビジネス インテリジェンス (BI) ソリューションを提供している Microsoft パートナー企業について説明しています。
@@ -63,29 +63,29 @@ ms.locfileid: "56427770"
 
 <!--Website links -->
 [birst_website]:https://www.birst.com/
-[clearstory_website]:http://www.clearstorydata.com/
+[clearstory_website]:https://www.clearstorydata.com/
 [dell_statistica_website]:http://www.statsoft.com/Products/STATISTICA-Features
-[dundas_bi_website]:http://www.dundas.com/dundas-bi
-[jinfonet_website]:http://www.jinfonet.com/product/jreport-designer
-[logianalytics_website]:http://www.logianalytics.com/
+[dundas_bi_website]:https://www.dundas.com/dundas-bi
+[jinfonet_website]:https://www.jinfonet.com/product/jreport-designer
+[logianalytics_website]:https://www.logianalytics.com/
 [looker_website]:https://looker.com/partners/microsoft-azure/
-[qlik_website]:http://www.qlik.com/us/products/qlik-sense/enterprise
+[qlik_website]:https://www.qlik.com/us/products/qlik-sense/enterprise
 [sisense_website]:https://www.sisense.com/product/
-[tableau_website]:http://www.tableau.com/
+[tableau_website]:https://www.tableau.com/
 [targit_website]:https://www.targit.com/en/software/deployment/targitonazure
-[yellowfin_website]:http://www.yellowfinbi.com/
+[yellowfin_website]:https://www.yellowfinbi.com/
 
 <!--Get Started Links-->
-[qlik_getstarted]:http://www.qlik.com/us/products/qlik-sense/getting-started
+[qlik_getstarted]:https://www.qlik.com/us/products/qlik-sense/getting-started
 
 <!--Datasheet Links-->
 
 <!--[birst_datasheet]:-->
 
-[clearstory_datasheet]:http://www.clearstorydata.com/wp-content/uploads/2016/05/ClearStoryData-PO01-062015-01-2.pdf
+[clearstory_datasheet]:https://www.clearstorydata.com/wp-content/uploads/2016/05/ClearStoryData-PO01-062015-01-2.pdf
 [dell_statistica_datasheet]:http://www.statsoft.com/Portals/0/Support/Download/Brochures/STATISTICA_Data_Miner.pdf
-[dundas_bi_datasheet]:http://www.dundas.com/resource/getwhitepaper?whitePaperName=27-05-2016-Dundas-BI-Product-Brief-_-Embedded-Analytics%2FEckerson-Group-EBI-Report-DundasProduct-Brief.pdf
-[jinfonet_datasheet]:http://www.jinfonet.com/products/JReport%20Brief.pdf
+[dundas_bi_datasheet]:https://www.dundas.com/resource/getwhitepaper?whitePaperName=27-05-2016-Dundas-BI-Product-Brief-_-Embedded-Analytics%2FEckerson-Group-EBI-Report-DundasProduct-Brief.pdf
+[jinfonet_datasheet]:https://www.jinfonet.com/products/JReport%20Brief.pdf
 [logianalytics_datasheet]:https://www.logianalytics.com/datasheet/logi-info/
 
 [looker_datasheet]:https://info.looker.com/h/i/229169578-looker-for-microsoft-azure
@@ -93,11 +93,11 @@ ms.locfileid: "56427770"
 [qlik_datasheet]:http://www.qlik.com/en/resource-library/the-qlikview-product-family
 [sisense_datasheet]:https://pages.sisense.com/rs/601-OXE-081/images/Product%20Highlights.pdf
 
-[tableau_datasheet]:http://www.tableau.com/stories/workbook/azure-sql-data
+[tableau_datasheet]:https://www.tableau.com/stories/workbook/azure-sql-data
 
 <!--[targit_datasheet]:-->
 
-[yellowfin_datasheet]:http://www.yellowfinbi.com/Document.i4?DocumentId=877299
+[yellowfin_datasheet]:https://www.yellowfinbi.com/Document.i4?DocumentId=877299
 
 <!--Marketplace Links -->
 
@@ -121,7 +121,7 @@ ms.locfileid: "56427770"
 
 <!--[birst_press]:-->
 
-[clearstory_press]:http://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/
+[clearstory_press]:https://www.clearstorydata.com/press/clearstory-data-paired-with-new-microsoft-azure-sql-data-warehouse-release-provides-highly-scalable-data-analysis-at-apache-spark-speed/
 
 <!--[dell_statistica_press]:-->
 
@@ -129,7 +129,7 @@ ms.locfileid: "56427770"
 
 <!--[jinfonet_press]:-->
 
-[logianalytics_press]:http://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/
+[logianalytics_press]:https://www.logianalytics.com/logi-news/announcing-logi-info-integration-with-azure-sql-data-warehouse/
 [looker_press]:https://looker.com/news/press/looker-brings-self-serve-analytics-to-microsoft-azure
 
 <!--[qlik_press]:-->

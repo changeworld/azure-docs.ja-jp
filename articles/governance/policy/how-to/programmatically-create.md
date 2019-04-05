@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b80a2effb4cdfe45ad3f37785f7e97449d60f00c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: e929fd80e87524b62c08a159c457be6f1f21eaad
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340146"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768606"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>ポリシーをプログラムで作成してコンプライアンス データを表示する
 
@@ -95,8 +95,8 @@ ms.locfileid: "56340146"
 
    _ContosoRG_ を対象とするリソース グループの名前に置き換えます。
 
-   `New-AzPolicyAssignment` の **Scope** パラメーターも、サブスクリプションと管理グループで使用できます。 このパラメーターは、`Get-AzResourceGroup` の **ResourceId** プロパティが返す完全なリソース パスを使用します。 各コンテナーの **Scope** のパターンは、次のとおりです。
-   `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。 `{rType}` は、そのリソースの**リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
+   `New-AzPolicyAssignment` の **Scope** パラメーターは、管理グループ、サブスクリプション、リソース グループ、または単一のリソースに使用できます。 このパラメーターは、`Get-AzResourceGroup` の **ResourceId** プロパティが返す完全なリソース パスを使用します。 各コンテナーの **Scope** のパターンは、次のとおりです。 `{rName}`、`{rgName}`、`{subId}`、および `{mgName}` を、それぞれリソース名、リソース グループ名、サブスクリプション ID、および管理グループ名と置き換えます。
+   `{rType}` は、そのリソースの**リソースの種類** (VM の場合は `Microsoft.Compute/virtualMachines` など) に置き換えられます。
 
    - リソース - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - リソース グループ - `/subscriptions/{subId}/resourceGroups/{rgName}`
@@ -183,24 +183,24 @@ Azure Resource Manager PowerShell モジュールを使用したリソース ポ
 
 1. 次の JSON スニペットをコピーして、ポリシー割り当ての JSON ファイルを作成します。
 
-  ```json
-  {
-      "if": {
-          "allOf": [{
-                  "field": "type",
-                  "equals": "Microsoft.Storage/storageAccounts"
-              },
-              {
-                  "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
-                  "equals": "Allow"
-              }
-          ]
-      },
-      "then": {
-          "effect": "audit"
-      }
-  }
-  ```
+   ```json
+   {
+       "if": {
+           "allOf": [{
+                   "field": "type",
+                   "equals": "Microsoft.Storage/storageAccounts"
+               },
+               {
+                   "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
+                   "equals": "Allow"
+               }
+           ]
+       },
+       "then": {
+           "effect": "audit"
+       }
+   }
+   ```
 
    ポリシー定義の作成方法の詳細については、「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を参照してください。
 

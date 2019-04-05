@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 62a3169257001f64e3103cc079e544449ac59663
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 27ebe827e97c8361c7f93a125f09aa9e339a6a14
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328386"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087110"
 ---
 # <a name="luis-bot-in-nodejs-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Bot Framework 3.x と Azure Web アプリ ボットを備えた Node.js の LUIS ボット
 
@@ -45,16 +45,16 @@ Bot を作成する前に、[アプリの作成](./luis-get-started-create-app.m
     ![Web アプリ ボットを選択してリソース作成プロセスを開始する](./media/luis-tutorial-node-bot/bot-service-selection.png)
 
 3. **[ボット サービス]** ブレードで、必要な情報を指定し、**[作成]** を選択します。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)を使用するには、ボットを作成する前に、[リージョンの要件](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming)を確認します。 
-    * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
-    * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
-    * **Bot テンプレート**で、以下を選択します。
-        * **SDK v3**
-        * **Node.js**
-        * **言語の理解**
-    * **LUIS アプリの場所**を選択します。 これは、アプリが作成されるオーサリング [リージョン][LUIS]です。
-    * 法的通知の確認チェック ボックスをオンにします。 法的通知の条項はチェック ボックスの下にあります。
+   * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
+   * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
+   * **Bot テンプレート**で、以下を選択します。
+       * **SDK v3**
+       * **Node.js**
+       * **言語の理解**
+   * **LUIS アプリの場所**を選択します。 これは、アプリが作成されるオーサリング [リージョン][LUIS]です。
+   * 法的通知の確認チェック ボックスをオンにします。 法的通知の条項はチェック ボックスの下にあります。
 
-    ![[ボット サービス] ブレード](./media/luis-tutorial-node-bot/bot-service-setting-callout-template.png)
+     ![[ボット サービス] ブレード](./media/luis-tutorial-node-bot/bot-service-setting-callout-template.png)
 
 
 4. ボット サービスがデプロイされたことを確認します。
@@ -247,7 +247,8 @@ Azure portal で、**[Test in Web Chat]\(Web チャットでのテスト\)** を
 
 ## <a name="next-steps"></a>次の手順
 
-<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.--> ヘルプ、キャンセル、あいさつなど、他の意図を LUIS アプリに追加してみることができます。 その後、新しい意図のダイアログを追加し、ボットを使用してテストします。 
+<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.-->
+ヘルプ、キャンセル、あいさつなど、他の意図を LUIS アプリに追加してみることができます。 その後、新しい意図のダイアログを追加し、ボットを使用してテストします。 
 
 <!-- 
 > [!NOTE] 

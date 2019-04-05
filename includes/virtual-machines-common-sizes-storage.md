@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dbbfea183454b1068558111bf62b45f5fa6415cc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: e05281b2279f5d40f8a3ba4ed3f49a38e5abf0ee
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333903"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58261349"
 ---
 ストレージ最適化済み VM サイズは高いディスク スループットと IO を実現し、ビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、および大規模なトランザクション データベースに最適です。  例としては、Cassandra、MongoDB、Cloudera、および Redis があります。 この記事では、最適化された各サイズのローカル ストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
@@ -31,13 +31,13 @@ Premium Storage: サポートされています
 
 Premium Storage Caching: サポートされていません
 
-| Size          | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS / MBps) | ホスト キャッシュ サイズ<sup>4</sup> | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) | 
+| Size          | vCPU | メモリ (GiB) | 一時ディスク<sup>1</sup> (GiB) | NVMe ディスク<sup>2</sup> | NVMe ディスク スループット<sup>3</sup> (読み取り IOPS / MBps) | キャッシュ不使用時の最大データ ディスク スループット (IOPs/MBps)<sup>4</sup> | 最大データ ディスク数 | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) | 
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
-| Standard_L8s_v2   |  8 |  64 |  80 |  1 x 1.92 TB  | 340,000 / 2,000 | 該当なし | 16 | 2 / 3,200  | 
-| Standard_L16s_v2  | 16 | 128 | 160 |  2 x 1.92 TB  | 680,000 / 4,500 | 該当なし | 32 | 4 / 6,400  | 
-| Standard_L32s_v2  | 32 | 256 | 320 |  4 x 1.92 TB  | 1.4M / 9,000    | 該当なし | 32 | 8 / 12,800 | 
-| Standard_L64s_v2  | 64 | 512 | 640 |  8 x 1.92 TB  | 2.7M / 18,000   | 該当なし | 32 | 8 / 25,600 |
-| Standard_L80s_v2  | 80 | 640 | 800 | 10 x 1.92 TB   | 3.4M / 22,000   | 該当なし | 32 | 8 / 32,000 |
+| Standard_L8s_v2   |  8 |  64 |  80 |  1 x 1.92 TB  | 400,000 / 2,000 | 8,000/160 | 16 | 2 / 3,200  | 
+| Standard_L16s_v2  | 16 | 128 | 160 |  2 x 1.92 TB  | 800,000 / 4,000 | 16,000/320 | 32 | 4 / 6,400  | 
+| Standard_L32s_v2  | 32 | 256 | 320 |  4 x 1.92 TB  | 1.5M / 8,000    | 32,000/640 | 32 | 8 / 12,800 | 
+| Standard_L64s_v2  | 64 | 512 | 640 |  8 x 1.92 TB  | 2.9M / 16,000   | 64,000/1,280 | 32 | 8 / 25,600 |
+| Standard_L80s_v2  | 80 | 640 | 800 | 10 x 1.92 TB   | 3.8M / 20,000   | 80,000/1,400 | 32 | 8 / 32,000 |
  
 <sup>1</sup> Lsv2 シリーズの VM には、OS ページング/スワップ ファイル用の標準 SCSI ベースの一時リソース ディスクがあります (Windows の場合は D:、Linux の場合は /dev/sdb)。 このディスクは、8 vCPU ごとに 80 GiB のストレージ、4,000 IOPS、および 80 MBps の転送速度を提供します (たとえば、Standard_L80s_v2 は、40,000 IOPS および 800 MBPS で 800 GiB を提供します)。 これにより、NVMe ドライブを確実にアプリケーション専用にすることができます。 このディスクはエフェメラルであり、すべてのデータは停止/割り当て解除時に失われます。
 

@@ -4,16 +4,16 @@ description: Windows と Windows Server で Azure ファイル共有を使用す
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 4361ec72f5f9cff924900ddd712aa1aa029c5ef4
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 93ba17c58dfcb5955bafbcc63655778903f60c18
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509022"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076345"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -45,7 +45,9 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 * **ストレージ アカウント キー**: Azure ファイル共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
 
-* **ポート 445 が開いていることを確認する**: SMB プロトコルでは、TCP ポート 445 が開いている必要があります。ポート 445 がブロックされている場合は、接続が失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 次の PowerShell コードは、AzureRM PowerShell モジュールがインストール済みであることを想定しています。詳細については、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resource-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
+* **ポート 445 が開いていることを確認する**: SMB プロトコルでは、TCP ポート 445 が開いている必要があります。ポート 445 がブロックされている場合は、接続が失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 [ポート 445 のブロックを回避するさまざまな方法についてはこちらで](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked)確認できます。
+
+    次の PowerShell コードは、AzureRM PowerShell モジュールがインストール済みであることを想定しています。詳細については、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-az-ps)に関するページを参照してください。 `<your-storage-account-name>` と `<your-resource-group-name>` は、実際のストレージ アカウントの該当する名前に置き換えてください。
 
     ```PowerShell
     $resourceGroupName = "<your-resource-group-name>"
@@ -301,5 +303,5 @@ SMB 1 を無効にするには、このレジストリ キーを作成した後�
 ## <a name="next-steps"></a>次の手順
 Azure Files の詳細については、次のリンクをご覧ください。
 - [Azure Files のデプロイの計画](storage-files-planning.md)
-* [FAQ](../storage-files-faq.md)
-* [Windows 上でのトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)      
+- [FAQ](../storage-files-faq.md)
+- [Windows 上でのトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)      

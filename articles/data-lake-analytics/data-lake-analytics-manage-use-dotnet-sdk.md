@@ -1,6 +1,6 @@
 ---
 title: Azure .NET SDK を使用して Azure Data Lake Analytics を管理する
-description: この記事では、Azure .Net SDK を使用して、Data Lake Analytics のジョブ、データ ソース、ユーザーを管理する方法について説明します。
+description: この記事では、Azure .NET SDK を使用して、Data Lake Analytics のジョブ、データ ソース、ユーザーを管理するアプリを作成する方法について説明します。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,12 +9,12 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: e1e4628a1c777ecc54fdf9a26b334a10b7ab8cb3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3827c9e0b3e51a7a179a7db7fac0152d799a63f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810586"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835817"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>Azure Data Lake Analytics .NET アプリを管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -120,7 +120,7 @@ graphClient.TenantID = domain;
 
 ```
 
-## <a name="manage-accounts"></a>[アカウントの管理]
+## <a name="manage-accounts"></a>アカウントの管理
 
 ### <a name="create-an-azure-resource-group"></a>Azure リソース グループを作成する
 

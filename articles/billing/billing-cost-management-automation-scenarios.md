@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: a20ec22bee17bd73df24a6a0653e458241f90cfc
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746440"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918520"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>請求およびコスト管理の自動化シナリオ
 
@@ -80,9 +80,9 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 
 -   [Usage Details API](https://docs.microsoft.com/rest/api/consumption/usagedetails):Microsoft からすべての Azure リソースの料金と使用状況の情報が取得されます。 情報は、現在 1 日あたり測定あたり 1 回発行される使用状況詳細レコード形式で提供されます。 その情報を使用すると、すべてのリソースのコストを合算したり、特定のリソースのコスト/使用状況を調査したりすることができます。
 
--   [RateCard API](https://msdn.microsoft.com/library/azure/mt219005.aspx):Web Direct のお客様の場合、測定レートが取得されます。 その後、返された情報をリソース使用状況情報と共に使用して、予想される請求書を手動で計算することができます。 
+-   [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)):Web Direct のお客様の場合、測定レートが取得されます。 その後、返された情報をリソース使用状況情報と共に使用して、予想される請求書を手動で計算することができます。 
 
--   [Unrated Usage API](https://msdn.microsoft.com/library/azure/mt219003.aspx):Azure による測定/課金の前に、生の使用状況情報が取得されます。
+-   [Unrated Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)):Azure による測定/課金の前に、生の使用状況情報が取得されます。
 
 ### <a name="billing"></a>課金
 -   [Billing Periods API](https://docs.microsoft.com/rest/api/billing/billingperiods):分析する請求期間を、その期間の請求書 ID と共に決定します。 Invoices API で請求書 ID を使用できます。
@@ -121,7 +121,7 @@ Web Direct および Enterprise のお客様は、特に明記されていない
    - 前払いの年額コミットメントの使用の原因となる変更
    - Azure によって検出された使用状況の不一致の原因となる変更
 
-- [Usage API](https://msdn.microsoft.com/library/Mt219003.aspx) では、Azure のコスト測定システムを経由する前の生の Azure 使用状況情報が提供されます。 このデータは、Azure の課金測定システムの後に表示される使用状況または課金額とは相関関係がない場合があります。
+- [Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)) では、Azure のコスト測定システムを経由する前の生の Azure 使用状況情報が提供されます。 このデータは、Azure の課金測定システムの後に表示される使用状況または課金額とは相関関係がない場合があります。
 
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Invoice API と Usage Details API の違いは何ですか?
 これらの API は、同じデータの異なるビューを提供します。
@@ -135,7 +135,7 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 
 - [Price Sheet API](https://docs.microsoft.com/rest/api/consumption/pricesheet) は、1 社のお客様向けの交渉されたカスタムの価格を提供します。
 
-- [RateCard API](https://msdn.microsoft.com/library/mt219005.aspx) では、Web Direct のお客様に適用される公開価格が提供されます。
+- [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) では、Web Direct のお客様に適用される公開価格が提供されます。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -143,4 +143,4 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 
 - 詳細な毎日の使用状況ファイルおよび Azure portal のコスト管理レポートと、請求書を比較する方法については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。
 
-- ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)してください。
+- ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。

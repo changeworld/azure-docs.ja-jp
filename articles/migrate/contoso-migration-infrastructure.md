@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 17ec8eb779dec560cfc5350fecc0fb819e89195a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 5dfe768ddb3509f896b90f913ffecdf33907357a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340129"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876682"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 移行インフラストラクチャを展開する
 
@@ -101,10 +101,10 @@ Azure の料金を支払った後、Contoso は Azure サブスクリプショ�
 - Azure エンタープライズ加入契約では、企業が Azure サービスを構成して使用する方法、および中心となるガバナンス構造が定義されています。
 - 最初のステップとして、Contoso はエンタープライズ登録の構造 (エンタープライズ スキャフォールディングと呼ばれます) を決定しました。 Contoso では、スキャフォールディングを理解して設計するために、[こちらの記事](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-governance)を読みました。
 - ここでは、Contoso は機能的アプローチを使用してサブスクリプションを管理することを決定しました。
-    - 企業内で、Contoso は Azure の予算を管理する 1 つの IT 部門を利用します。 これがサブスクリプションを持つ唯一のグループになります。
-    - Contoso は将来的にこのモデルを拡張し、会社の他のグループもエンタープライズ登録に部門として参加できるようにする意向です。
-    - IT 部門内には、製造と開発の 2 つのサブスクリプションが構成されています。
-    - 将来、サブスクリプションを追加する必要がある場合は、それらのサブスクリプションのアクセス、ポリシー、コンプライアンスを管理する必要があります。 Contoso では、サブスクリプションの上に追加の階層として [Azure 管理グループ](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview)を導入することで、この管理作業を行うことができます。
+  - 企業内で、Contoso は Azure の予算を管理する 1 つの IT 部門を利用します。 これがサブスクリプションを持つ唯一のグループになります。
+  - Contoso は将来的にこのモデルを拡張し、会社の他のグループもエンタープライズ登録に部門として参加できるようにする意向です。
+  - IT 部門内には、製造と開発の 2 つのサブスクリプションが構成されています。
+  - 将来、サブスクリプションを追加する必要がある場合は、それらのサブスクリプションのアクセス、ポリシー、コンプライアンスを管理する必要があります。 Contoso では、サブスクリプションの上に追加の階層として [Azure 管理グループ](https://docs.microsoft.com/azure/azure-resource-manager/management-groups-overview)を導入することで、この管理作業を行うことができます。
 
     ![エンタープライズの構造](./media/contoso-migration-infrastructure/enterprise-structure.png) 
 
@@ -146,7 +146,7 @@ ID およびアクセス管理 (IAM) によってユーザーが Azure リソー
 
 Contoso は、Azure サブスクリプションに含まれる Azure AD Free エディションを使っています。 Contoso の管理者は、次の手順に従って AD ディレクトリを設定します。
 
-1. [Azure Portal](http://portal.azure.com/) で、**[リソースの作成]** > **[ID]** > **[Azure Active Directory]** の順に移動します。
+1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成]** > **[ID]** > **[Azure Active Directory]** の順に移動します。
 2. **[ディレクトリの作成]** で、ディレクトリの名前、初期ドメイン名、および Azure AD ディレクトリを作成するリージョンを指定します。
 
     ![Azure AD を作成する](./media/contoso-migration-infrastructure/azure-ad-create.png) 
@@ -451,7 +451,7 @@ Azure IaaS コンポーネントは、運用ネットワーク内に配置され
 **PROD-FE-EUS2** | 10.245.32.0/22 | 1019 | フロントエンド/Web 階層の VM
 **PROD-APP-EUS2** | 10.245.36.0/22 | 1019 | アプリ階層の VM
 **PROD-DB-EUS2** | 10.245.40.0/23 | 507 | データベース VM
-**PROD-DC-EUS2** | 10.245.42.0/23 | 251 | ドメイン コントローラー VM
+**PROD-DC-EUS2** | 10.245.42.0/24 | 251 | ドメイン コントローラー VM
 
 
 ![ハブ ネットワークのアーキテクチャ](./media/contoso-migration-infrastructure/azure-networks-eus2.png)
@@ -581,18 +581,18 @@ CUS | CONTOSODC6 | VNET-PROD-CUS | PROD-DC-CUS | 10.255.42.4
 
 1. Azure portal で、新しい Windows Server VM を適切な VNet に展開します。
 2. VM 用の可用性セットを各場所に作成します。 可用性セットは次のことを行います。
-    - Azure ファブリックが Azure リージョン内の異なるインフラストラクチャに VM を分離することを保証します。 
-    -  Contoso が Azure の VM で 99.95% SLA の対象になるようにします。  [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)。
+   - Azure ファブリックが Azure リージョン内の異なるインフラストラクチャに VM を分離することを保証します。 
+   - Contoso が Azure の VM で 99.95% SLA の対象になるようにします。  [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)。
 
-    ![可用性グループ](./media/contoso-migration-infrastructure/availability-group.png) 
+     ![可用性グループ](./media/contoso-migration-infrastructure/availability-group.png) 
 3. VM を展開した後、Contoso は VM に対してネットワーク インターフェイスを開きます。 ここでは、プライベート IP アドレスを静的に設定し、有効なアドレスを指定します。
 
     ![VM NIC](./media/contoso-migration-infrastructure/vm-nic.png)
 
 4. 次に、新しいデータ ディスクを VM に接続します。 このディスクには、Active Directory データベースと sysvol 共有が含まれています。 
-    - ディスクのサイズにより、サポートされる IOPS の値が決まります。
-    - 時間が経過して環境が拡大すると、ディスク サイズを増やすことが必要になる場合があります。
-    - ホスト キャッシュのためにドライブを読み取り/書き込みに設定しないでください。 Active Directory データベースはこれをサポートしません。
+   - ディスクのサイズにより、サポートされる IOPS の値が決まります。
+   - 時間が経過して環境が拡大すると、ディスク サイズを増やすことが必要になる場合があります。
+   - ホスト キャッシュのためにドライブを読み取り/書き込みに設定しないでください。 Active Directory データベースはこれをサポートしません。
 
      ![Active Directory ディスク](./media/contoso-migration-infrastructure/ad-disk.png)
 

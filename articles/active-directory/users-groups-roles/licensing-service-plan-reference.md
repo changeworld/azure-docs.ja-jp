@@ -1,10 +1,10 @@
 ---
 title: ライセンスを付与するための製品名とサービス プラン識別子 - Azure AD | Microsoft Docs
-description: Azure portal、Office 365 ポータル、PowerShell、または Microsoft Graph で Azure Active Directory のライセンスを管理するための識別子マップ
+description: Azure portal、Microsoft 365 管理センター、PowerShell、または Microsoft Graph で Azure Active Directory のライセンスを管理するための識別子マップ
 services: active-directory
 keywords: Azure Active Directory のライセンスのサービス プラン
 documentationcenter: ''
-author: curtand
+author: ajayanti1
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,19 +13,19 @@ ms.workload: identity
 ms.subservice: users-groups-roles
 ms.date: 01/28/2019
 ms.author: curtand
-ms.reviewer: sumitp
+ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f12a300afbf56d5f6149dcc71f2fc4efedbc44f8
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: fc4580b4f600b06fc89e3fc8760679028765e03e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430174"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176429"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>ライセンスのための製品名とサービス プラン 識別子
 
-[Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) または Office 365 ポータルでライセンスを管理する場合、*Office 365 Enterprise E3* のような製品名が表示されます。 PowerShell v1.0 コマンドレットを使用すると、同じ製品が、具体的ですがわかりにくい名前 (*ENTERPRISEPACK*) で識別されます。 PowerShell v2.0 コマンドレットまたは Microsoft Graph を使用すると、同じ製品が GUID 値 (*6fd2c87f-b296-42f0-b197-1e91e994b900*) で識別されます。 次の表は、特に一般的に使用される Microsoft オンライン サービス製品と、それぞれの ID 値を示しています。 これらの表は参照用です。この記事の最終更新時点でのみ正確です。 Microsoft では、新しく追加されたサービスを定期的に更新する予定はありません。
+[Azure portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) または [Microsoft 365 管理センター](https://admin.microsoft.com) でライセンスを管理する場合、*Office 365 Enterprise E3* のような製品名が表示されます。 PowerShell v1.0 コマンドレットを使用すると、同じ製品が、具体的ですがわかりにくい名前 (*ENTERPRISEPACK*) で識別されます。 PowerShell v2.0 コマンドレットまたは Microsoft Graph を使用すると、同じ製品が GUID 値 (*6fd2c87f-b296-42f0-b197-1e91e994b900*) で識別されます。 次の表は、特に一般的に使用される Microsoft オンライン サービス製品と、それぞれの ID 値を示しています。 これらの表は参照用です。この記事の最終更新時点でのみ正確です。 Microsoft では、新しく追加されたサービスを定期的に更新する予定はありません。
 
 - **製品名**:管理ポータルで使用されます。
 - **文字列 ID**:ライセンスでの操作を実行するときに PowerShell v1.0 コマンドレットによって使用されます。

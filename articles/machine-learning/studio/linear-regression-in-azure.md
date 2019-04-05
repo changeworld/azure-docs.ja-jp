@@ -1,21 +1,21 @@
 ---
-title: Excel から Azure Machine Learning Studio に分析を移行する
+title: Excel からの分析の移行
 titleSuffix: Azure Machine Learning Studio
 description: Excel と Azure Machine Learning Studio での線形回帰モデルの比較
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 5db8c4be9317706fcc8a31b916cff72fd13596d6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f6b2f4ef9a4f3f1615081a422a16ea9f2e156571
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453301"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864832"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Excel から Azure Machine Learning Studio に分析を移行する
 
@@ -102,11 +102,11 @@ Excel 内で Machine Learning Web サービスを使用したいと考えまし�
 
 *Web サービスのダッシュボード* のセクションには、ダウンロード可能な Excel ブックが含まれています。 ブックには、Web サービス API とスキーマ情報が埋め込まれて事前に書式設定されています。 *[Download Excel Workbook (Excel ブックのダウンロード)]* をクリックすると、Excel ブックが開き、ローカル コンピューターに保存できます。 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
+![Web サービスのダッシュボードから Excel ブックをダウンロードする](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 以下に示すように、ブックを開いた状態で、定義済みのパラメーターを青色の [パラメーター] セクションにコピーします。 パラメーターが入力されると、Excel は Machine Learning Web サービスを呼び出し、予測されたスコア付けラベルが緑色の [予測値] セクションに表示されます。 ブックは、[パラメーター] に入力されたすべての行項目に対して、トレーニング済みのモデルに基づいてパラメーターの予測を作成していきます。 この機能を使用する方法の詳細については、「 [Excel からの Azure Machine Learning Web サービスの使用](consuming-from-excel.md)」をご覧ください。 
 
-![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
+![デプロイ済みの Web サービスに接続されているテンプレートの Excel ブック](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>最適化と今後の実験
 これまで、Excel モデルを使用してベースラインを構築し、Machine Learning 線形回帰モデルの最適化を進めてきました。 [フィルターに基づく機能の選択][filter-based-feature-selection]モジュールを使用して初期データ要素の選択を改善することで、平均絶対誤差 4.6% のパフォーマンス向上の達成を実現しました。 今後のプロジェクトのために、データ属性に反復処理を行う数週間を節約できる可能性があるこの特徴を使用して、モデリングに使用する正しい特徴セットを検索します。 
@@ -132,13 +132,9 @@ Excel の回帰と Studio の実験を並列して実行することで、多く
 ## <a name="resources"></a>リソース
 次のリソースは、回帰を使用する際に役立ちます。 
 
-* Excel での回帰。 Excel で回帰を試したことがない場合は、このチュートリアル ([http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)) を利用すれば、簡単にできます。
+* Excel での回帰。 Excel で回帰を試したことがない場合は、このチュートリアル ([https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)) を利用すれば、簡単にできます。
 * 回帰と予測。 Tyler Chessman 氏による、初心者向けの優れた線形回帰の説明が書かれた、Excel で時系列予測を実行する方法を説明するブログ記事。 [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts) 
-* 通常の最小二乗法の線形回帰:欠点、問題、注意点。 回帰の概要とディスカッションについては、[http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/) を参照してください。
-
-[1]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
-[2]: ./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png
-
+* 通常の最小二乗法の線形回帰:欠点、問題、注意点。 回帰の概要とディスカッションについては、[https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](https://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/) を参照してください。
 
 <!-- Module References -->
 [bayesian-linear-regression]: https://msdn.microsoft.com/library/azure/ee12de50-2b34-4145-aec0-23e0485da308/

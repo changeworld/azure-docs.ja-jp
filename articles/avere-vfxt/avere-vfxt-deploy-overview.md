@@ -4,14 +4,14 @@ description: Avere vFXT for Azure のデプロイの概要
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1be11fff7139b250e85fe15cec9082a2c85cf857
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0c61db5e34ba58bb767b0bda773a54c8e65cd404
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298536"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991803"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT for Azure - デプロイの概要
 
@@ -52,10 +52,12 @@ vFXT クラスターを起動して実行したら、クライアントを vFXT 
 
      クラスター コントローラーは、Avere vFXT クラスターと同じ仮想ネットワークにあるシンプルな VM で、クラスターの作成と管理のために必要なカスタム ソフトウェアを備えています。 コントローラーによって vFXT ノードが作成され、クラスターが形成されます。また、その有効期間中にクラスターを管理するために、コマンド ライン インターフェイスも提供されます。
 
-     コントローラーをパブリック IP アドレスを使って構成する場合、VNet 外からクラスターに接続するためのジャンプ ホストとして使用することもできます。
+     デプロイ中に新しい vnet を作成すると、コントローラーがパブリック IP アドレスを持ちます。 つまり、コントローラーを vnet 外からクラスターに接続するためのジャンプ ホストとして使用できます。
 
    * クラスター ノード VM の作成
-   * クラスター ノード VM のクラスターとしての構成
+
+   * クラスターを形成するためのクラスター ノード VM の構成
+
    * (オプション) 新しい BLOB コンテナーの作成とクラスター用バックエンド ストレージとしての構成
 
 1. クラスターを構成する 

@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 6ded590ac5a9c30655d8ed19c370ce476d1c9631
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/12/2019
+ms.openlocfilehash: 4af27ad4fb5096f3ccac5de901c76e8d7464e1f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456284"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887121"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>データベース サーバー用の仮想ネットワーク サービス エンドポイントおよび規則を使用する
 
@@ -174,57 +174,61 @@ PolyBase は、Azure ストレージ アカウントから Azure SQL Data Wareho
 
 #### <a name="prerequisites"></a>前提条件
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
+
 1.  この[ガイド](https://docs.microsoft.com/powershell/azure/install-az-ps)を使用して、Azure PowerShell をインストールします。
 2.  汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、最初に汎用 v2 にアップグレードする必要があります。
 3.  Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、**[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)をご覧ください。
  
 #### <a name="steps"></a>手順
-1.  PowerShell で、Azure Active Directory (AAD) に **SQL Database サーバーを登録します**。
+1. PowerShell で、Azure Active Directory (AAD) に **SQL Database サーバーを登録します**。
 
-    ```powershell
-    Add-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
-    ```
+   ```powershell
+   Connect-AzAccount
+   Select-AzSubscription -SubscriptionId your-subscriptionId
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   ```
     
- 1. この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を使用して、**汎用 v2 ストレージ アカウント**を作成します。
+   1. この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を使用して、**汎用 v2 ストレージ アカウント**を作成します。
 
-    > [!NOTE]
-    > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、**最初に v2 にアップグレードする**必要があります。
-    > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)をご覧ください。
+   > [!NOTE]
+   > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、**最初に v2 にアップグレードする**必要があります。
+   > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)をご覧ください。
     
-1.  お使いのストレージ アカウントで、**[アクセス制御 (IAM)]** に移動し、**[ロール割り当ての追加]** をクリックします。 **[ストレージ BLOB データ共同作成者 (プレビュー)]** RBAC ロールを SQL Database サーバーに割り当てます。
+1. お使いのストレージ アカウントで、**[アクセス制御 (IAM)]** に移動し、**[ロール割り当ての追加]** をクリックします。 **[ストレージ BLOB データ共同作成者 (プレビュー)]** RBAC ロールを SQL Database サーバーに割り当てます。
 
-    > [!NOTE] 
-    > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。
+   > [!NOTE] 
+   > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。
   
-1.  **Azure ストレージ アカウントへの Polybase 接続:**
+1. **Azure ストレージ アカウントへの Polybase 接続:**
 
-    1. データベースの**[マスター キー](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql?view=sql-server-2017)** をまだ作成していない場合は、作成します。
-        ```SQL
-        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
-        ```
+   1. データベースの**[マスター キー](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** をまだ作成していない場合は、作成します。
+       ```SQL
+       CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
+       ```
     
-    1. **IDENTITY = 'Managed Service Identity'** を使用して、データベース スコープ資格情報を作成します。
+   1. **IDENTITY = 'Managed Service Identity'** を使用して、データベース スコープ資格情報を作成します。
 
-        ```SQL
-        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
-        ```
-        > [!NOTE] 
-        > - このメカニズムは内部的に[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使用するため、Azure Storage アクセス キーにシークレットを指定する必要はありません。
-        > - VNet に結び付けられた Azure ストレージ アカウントを PolyBase 接続で操作するためには、ID の名前を **"Managed Service Identity"** にする必要があります。    
+       ```SQL
+       CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
+       ```
+       > [!NOTE] 
+       > - このメカニズムは内部的に[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使用するため、Azure Storage アクセス キーにシークレットを指定する必要はありません。
+       > - VNet に結び付けられた Azure ストレージ アカウントを PolyBase 接続で操作するためには、ID の名前を **"Managed Service Identity"** にする必要があります。    
     
-    1. PolyBase を使用して汎用 v2 ストレージ アカウントに接続するために、abfss:// スキームを使用して外部データ ソースを作成します。
+   1. PolyBase を使用して汎用 v2 ストレージ アカウントに接続するために、abfss:// スキームを使用して外部データ ソースを作成します。
 
-        ```SQL
-        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
-        ```
-        > [!NOTE] 
-        > - 汎用 v1 または BLOB ストレージ アカウントに外部テーブルが既に関連付けられている場合は、まずそれらの外部テーブルを削除した後、対応する外部データ ソースを削除する必要があります。 次に上記のように、汎用 v2 ストレージ アカウントに接続するために abfss:// スキームを使用して外部データ ソースを作成し、この新しい外部データ ソースを使用して、すべての外部テーブルを再作成します。 [スクリプトの生成とパブリッシュ ウィザード](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard?view=sql-server-2017)を使用して、すべての外部テーブルを簡単に作成するスクリプトを生成できます。
-        > - abfss:// スキームの詳細については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)をご覧ください。
-        > - 外部データ ソースの作成の詳細については、この[ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)をご覧ください。
+       ```SQL
+       CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
+       ```
+       > [!NOTE] 
+       > - 汎用 v1 または BLOB ストレージ アカウントに外部テーブルが既に関連付けられている場合は、まずそれらの外部テーブルを削除した後、対応する外部データ ソースを削除する必要があります。 次に上記のように、汎用 v2 ストレージ アカウントに接続するために abfss:// スキームを使用して外部データ ソースを作成し、この新しい外部データ ソースを使用して、すべての外部テーブルを再作成します。 [スクリプトの生成とパブリッシュ ウィザード](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard)を使用して、すべての外部テーブルを簡単に作成するスクリプトを生成できます。
+       > - abfss:// スキームの詳細については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri)をご覧ください。
+       > - 外部データ ソースの作成の詳細については、この[ガイド](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql)をご覧ください。
         
-    1. [外部テーブル](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)を使用して、通常どおりクエリを実行します。
+   1. [外部テーブル](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql)を使用して、通常どおりクエリを実行します。
 
 ### <a name="azure-sql-database-blob-auditing"></a>Azure SQL Database BLOB の監査
 
@@ -273,7 +277,7 @@ SQL Database のエラー メッセージの一覧については、[こちら][
 
 ## <a name="powershell-alternative"></a>PowerShell による代替
 
-PowerShell スクリプトでも、仮想ネットワーク規則を作成できます。 重要なコマンドレットは **New-AzureRmSqlServerVirtualNetworkRule** です。 ご興味がある方は、「[PowerShell to create a Virtual Network service endpoint and rule for Azure SQL Database (PowerShell で Azure SQL Database の Virtual Network サービス エンドポイントと規則を作成する)][sql-db-vnet-service-endpoint-rule-powershell-md-52d]」をご覧ください。
+PowerShell スクリプトでも、仮想ネットワーク規則を作成できます。 重要なコマンドレットは **New-AzSqlServerVirtualNetworkRule** です。 ご興味がある方は、「[PowerShell to create a Virtual Network service endpoint and rule for Azure SQL Database (PowerShell で Azure SQL Database の Virtual Network サービス エンドポイントと規則を作成する)][sql-db-vnet-service-endpoint-rule-powershell-md-52d]」をご覧ください。
 
 ## <a name="rest-api-alternative"></a>REST API の代替手段
 

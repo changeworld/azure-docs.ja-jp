@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: b960e0f670b66ea1759da441e7b1cf53151de7f6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/25/2019
+ms.openlocfilehash: 7a8556edd793cbde47c14d2b79792dbe42f8e44b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993607"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894293"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 
@@ -33,7 +33,7 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 サービス レベルの選択は、主に、ビジネス継続性、ストレージ、およびパフォーマンスの要件に依存します。
 
 ||Basic|標準|Premium|
-| :-- | --: |--:| --:| --:|
+| :-- | --: |--:| --:|
 |対象のワークロード|開発、運用|開発、運用|開発、運用|
 |アップタイム SLA|99.99%|99.99%|99.99%|
 |バックアップ保有期間|7 日|35 日|35 日|
@@ -52,10 +52,10 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 コンピューティング サイズは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU ベースの購入モデル](sql-database-purchase-models.md#dtu-based-purchasing-model)に関するページを参照してください。
 
 ||Basic|標準|Premium|
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | 最大ストレージ サイズ | 2 GB | 1 TB (テラバイト) | 4 TB  |
 | 最大 DTU | 5 | 3000 | 4000 | 
-||||||
+|||||
 
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
@@ -63,16 +63,16 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>エラスティック プールの eDTU、ストレージ、プールされているデータベースの上限
 
 | | **Basic** | **Standard** | **Premium** |
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | データベースあたりの最大ストレージ サイズ  | 2 GB | 1 TB (テラバイト) | 1 TB (テラバイト) |
 | プールあたりの最大ストレージ サイズ | 156 GB | 4 TB | 4 TB |
 | データベースあたりの最大 eDTU 数 | 5 | 3000 | 4000 |
 | プールあたりの最大 eDTU 数 | 1600 | 3000 | 4000 |
 | プールあたりのデータベースの最大数 | 500  | 500 | 100 |
-||||||
+|||||
 
 > [!IMPORTANT]
-> 現在、1 TB を超える Premium レベルのストレージは、米国中西部、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、USGov アイオワ、ドイツ北東部、中国北部を除くすべてのリージョンで使用できます。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+> 現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、米国中西部、米国 DoD の各リージョンと、米国政府中部を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。  詳しくは、[P11-P15 の現在の制限事項](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページをご覧ください。  
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 

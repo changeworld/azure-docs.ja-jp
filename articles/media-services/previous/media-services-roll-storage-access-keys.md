@@ -12,20 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: 419e7b1ae05f92b5b97f5317c0315a71958eff9e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c688169dc21304f234aead7196f377a3fa5fd633
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005167"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294928"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>ストレージ アクセス キーをローリングした後に Media Services を更新する 
 
 新しく Azure Media Services (AMS) アカウントを作成すると、メディア コンテンツの保存に使用する Azure Storage アカウントも選択するよう求めるメッセージが表示されます。 Media Services アカウントには複数のストレージ アカウントを追加できます。 この記事では、ストレージ キーを入れ換える方法を示します。 また、メディア アカウントにストレージ アカウントを追加する方法も示します。 
 
-この記事で説明している操作を実行するには、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) と [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.media) を使用する必要があります。  詳細については、[PowerShell とResource Manager を使用して Azure のリソースを管理する方法](../../azure-resource-manager/powershell-azure-resource-manager.md)に関するページをご覧ください。
+この記事で説明している操作を実行するには、[Azure Resource Manager API](/rest/api/media/operations/azure-media-services-rest-api-reference) と [PowerShell](https://docs.microsoft.com/powershell/module/az.media) を使用する必要があります。  詳細については、[PowerShell とResource Manager を使用して Azure のリソースを管理する方法](../../azure-resource-manager/manage-resource-groups-powershell.md)に関するページをご覧ください。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概要
 
@@ -42,15 +44,15 @@ Media Services は、指定されたストレージ キーに依存します。 
 ## <a name="steps-to-rotate-storage-keys"></a>ストレージ キーの入れ換え手順 
  
  1. PowerShell コマンドレットまたは [Azure](https://portal.azure.com/) Portal を使ってストレージ アカウントのプライマリ キーを変更します。
- 2. 適切なパラメーターを指定して Sync-AzureRmMediaServiceStorageKeys コマンドレッドを呼び出し、メディア アカウントによって強制的にストレージ アカウント キーを選択します。
+ 2. 適切なパラメーターを指定して Sync-AzMediaServiceStorageKeys コマンドレッドを呼び出し、メディア アカウントによって強制的にストレージ アカウント キーを選択します。
  
     次の例では、キーをストレージ アカウントに同期する方法を示します。
   
-         Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
+         Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
   
  3. 1 時間ほど待ちます。 ストリーミングのシナリオが機能していることを確認します。
  4. PowerShell コマンドレットまたは Azure Portal を使ってストレージ アカウントのセカンダリ キーを変更します。
- 5. 適切なパラメーターを指定して Sync-AzureRmMediaServiceStorageKeys PowerShell コマンドレッドを呼び出し、メディア アカウントによって強制的に新しいストレージ アカウント キーを選択します。 
+ 5. 適切なパラメーターを指定して Sync-AzMediaServiceStorageKeys PowerShell コマンドレッドを呼び出し、メディア アカウントによって強制的に新しいストレージ アカウント キーを選択します。 
  6. 1 時間ほど待ちます。 ストリーミングのシナリオが機能していることを確認します。
  
 ### <a name="a-powershell-cmdlet-example"></a>PowerShell コマンドレットの例 
@@ -63,7 +65,7 @@ Media Services は、指定されたストレージ キーに依存します。 
     $storageAccountName = "skystorage"
     $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-    Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
+    Sync-AzMediaServiceStorageKeys -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccountId $storageAccountId
 
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>AMS アカウントにストレージ アカウントを追加する手順

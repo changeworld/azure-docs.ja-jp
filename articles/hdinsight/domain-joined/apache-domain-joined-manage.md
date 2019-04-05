@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: b1fc52ac46a6cdb73b9210833e437765398781ef
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0fec9173eb94aa60c3689089e4eacd2d9d47724a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819129"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200023"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
 HDInsight Enterprise セキュリティ パッケージ (ESP) でのユーザーとロール、および ESP クラスターを管理する方法について説明します。
@@ -143,7 +143,7 @@ Beeline をローカルにインストールしている場合に Azure 仮想�
 ## <a name="users-of-hdinsight-clusters-with-esp"></a>ESP を使用する HDInsight クラスターのユーザー
 ESP を使用していない HDInsight クラスターには、クラスターの作成中に作成される、次の 2 つのユーザー アカウントがあります。
 
-* **Ambari 管理者**: このアカウントは、"*Hadoop ユーザー*" または "*HTTP ユーザー*" とも呼ばれます。 このアカウントは、Ambari (https://&lt;clustername>.azurehdinsight.net) にログオンするために使用できます。 また、Ambari ビューに対するクエリの実行、外部ツール (PowerShell、Templeton、Visual Studio など) によるジョブの実行、Hive ODBC ドライバーと BI ツール (Excel、PowerBI、Tableau など) による認証にも使用できます。
+* **Ambari 管理者**: このアカウントは、"*Hadoop ユーザー*" または "*HTTP ユーザー*" とも呼ばれます。 このアカウントは、Ambari (https://&lt;clustername>.azurehdinsight.net) にサインインするために使用できます。 また、Ambari ビューに対するクエリの実行、外部ツール (PowerShell、Templeton、Visual Studio など) によるジョブの実行、Hive ODBC ドライバーと BI ツール (Excel、Power BI、Tableau など) による認証にも使用できます。
 
 ESP を使用している HDInsight クラスターには、Ambari 管理者以外に、3 つの新しいユーザーの種類があります。
 
@@ -179,9 +179,9 @@ HDInsight Enterprise セキュリティ パッケージには次のロールが�
 ## <a name="open-the-ambari-management-ui"></a>Ambari Management UI を開く
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
-2. HDInsight クラスターを開きます。 「[クラスターの一覧と表示](../hdinsight-administer-use-management-portal.md#list-and-show-clusters)」を参照してください。
+2. HDInsight クラスターを開きます。
 3. 上部のメニューで **[ダッシュボード]** をクリックして、Ambari を開きます。
-4. クラスター管理者のドメイン ユーザー名とパスワードを使用して、Ambari にログオンします。
+4. クラスター管理者のドメイン ユーザー名とパスワードを使用して、Ambari にサインインします。
 5. 右上隅のドロップダウン メニューで **[Admin (管理者)]** をクリックし、**[Manage Ambari (Ambari の管理)]** をクリックします。
 
     ![ESP HDInsight での Ambari の管理](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)

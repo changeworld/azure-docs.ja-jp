@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 807643146c4f2821cecf60499ea1985f56e9d251
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9fb657d2c2cd4eeae0eb96dd37505a1c47278725
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168597"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103062"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>組織の Azure Active Directory のサインイン ページにブランドを追加する
 組織のロゴとカスタム カラー スキーマを使用して、Azure Active Directory (Azure AD) のサインイン ページの外観に一貫性を持たせます。 サインイン ページは、Azure AD を ID プロバイダーとして使用している組織の Web ベースのアプリ (Office 365 など) にユーザーが サインインするときに表示されます。
@@ -29,7 +29,7 @@ ms.locfileid: "56168597"
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Azure AD のサインイン ページをカスタマイズする
 Azure AD のサインイン ページをカスタマイズできます。このページは、ユーザーが組織のテナント固有のアプリ ([*https://outlook.com/contoso.com*](https://outlook.com/contoso.com) など) にサインインするとき、またはドメイン変数 ([*https://passwordreset.microsoftonline.com/?whr=contoso.com*](https://passwordreset.microsoftonline.com/?whr=contoso.com)) を渡すときに表示されます。
 
-カスタム ブランドは、ユーザーが www.office.com などのサイトに移動したときにすぐに表示されるわけではありません。 カスタマイズされたブランドは、ユーザーがサインインした後で表示されます。
+カスタム ブランドは、ユーザーが www\.office.com などのサイトに移動したときにすぐに表示されるわけではありません。 カスタマイズされたブランドは、ユーザーがサインインした後で表示されます。
 
 > [!NOTE]
 > すべてのブランド要素は省略可能です。 たとえば、背景画像なしでバナー ロゴを指定した場合、サインイン ページには目的のサイト (たとえば Office 365) の既定の背景画像とロゴが表示されます。<br><br>さらに、サインイン ページのブランド情報は、個人用 Microsoft アカウントに継承されることはありません。 ユーザーまたはゲスト ユーザーが個人用 Microsoft アカウントを使用してサインインした場合、そのサインイン ページには組織のブランドは反映されません。
@@ -103,7 +103,7 @@ Azure AD のサインイン ページをカスタマイズできます。この�
 
 4. **[保存]** を選択します。
 
-  サインイン ページのブランドに加えた変更が表示されるまでに、最大 1 時間かかる場合があります。
+   サインイン ページのブランドに加えた変更が表示されるまでに、最大 1 時間かかる場合があります。
 
 ## <a name="add-language-specific-company-branding-to-your-directory"></a>言語固有の会社のブランドをディレクトリに追加するには
 元の構成の言語を既定の言語から変更することはできません。 ただし、別の言語の構成が必要な場合は、新しい構成を作成できます。

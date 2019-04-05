@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/13/2018
+ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 0086746ee676127a3fcae9e7b05efd3f7a9f65f3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5ae63b1738824095073ac6b9e1071f6b4a3e5ae1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878427"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518849"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>クイック スタート: .NET Core を使用してテキストを音声に変換する
 
 このクイック スタートでは、.NET Core と Text to Speech REST API を使用してテキストを音声に変換する方法について説明します。 このガイドに含まれているサンプル テキストは、[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md) として構成されており、応答の音声と言語を選択することができます。
 
-このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech Service リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Speech Services リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -70,9 +70,9 @@ using System.Threading.Tasks;
 
 ## <a name="create-a-class-for-token-exchange"></a>トークン交換のためのクラスを作成する
 
-Text to Speech REST API は、認証のためのアクセス トークンを必要とします。 アクセス トークンを取得するためには、交換が必要です。 このサンプルでは、`issueToken` エンドポイントを使用して、Speech Service のサブスクリプション キーをアクセス トークンと交換します。
+Text to Speech REST API は、認証のためのアクセス トークンを必要とします。 アクセス トークンを取得するためには、交換が必要です。 このサンプルでは、`issueToken` エンドポイントを使用して、ご利用の Speech Services のサブスクリプション キーをアクセス トークンと交換します。
 
-このサンプルでは、ご利用の Speech Service のサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`FetchTokenUri` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
+このサンプルでは、ご利用の Speech Services のサブスクリプションが米国西部リージョンにあることを想定しています。 別のリージョンを使用している場合は、`FetchTokenUri` の値を更新してください。 完全な一覧については、[リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis)に関するセクションを参照してください。
 
 ```csharp
 public class Authentication
@@ -156,7 +156,7 @@ string host = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
 テキストは、`POST` 要求の本文として送信されます。 SSML では、音声と言語を指定することができます。 このクイック スタートでは、言語を `en-US` に設定し、音声を `ZiraRUS` として設定した SSML を使用します。 要求の SSML を構築してみましょう。
 
 ```csharp
-string body = @"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
+string body = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
               <voice name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>" +
               text + "</voice></speak>";
 ```
@@ -236,6 +236,6 @@ dotnet run
 
 ## <a name="see-also"></a>関連項目
 
-* [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech-api)
+* [Text-to-speech API リファレンス](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [カスタム音声フォントの作成](how-to-customize-voice-font.md)
 * [カスタム音声を作成するための音声サンプルを録音する](record-custom-voice-samples.md)

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b94c5f712469183d64704307316f8bbdaa3d5a11
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e76b5ecd3d6401c317f6500ec376fc25d3fa55b8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751635"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997692"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法
 
@@ -168,7 +168,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-この例では、テーブル値パラメーター **@TestTvp** からの行を **SqlCommand** オブジェクトで挿入しています。 このパラメーターに、先ほど作成した **DataTable** オブジェクトを **SqlCommand.Parameters.Add** メソッドで割り当てます。 これらの挿入操作を 1 回の呼び出しでバッチ処理すれば、挿入操作を逐次的に実行した場合と比べ、大幅にパフォーマンスを高めることができます。
+この例では、テーブル値パラメーター **\@TestTvp** からの行を **SqlCommand** オブジェクトで挿入しています。 このパラメーターに、先ほど作成した **DataTable** オブジェクトを **SqlCommand.Parameters.Add** メソッドで割り当てます。 これらの挿入操作を 1 回の呼び出しでバッチ処理すれば、挿入操作を逐次的に実行した場合と比べ、大幅にパフォーマンスを高めることができます。
 
 先ほどの例をさらに改良するには、テキスト ベースのコマンドをストアド プロシージャに置き換えます。 次の Transact-SQL コマンドでは、 **SimpleTestTableType** テーブル値パラメーターを引数として受け取るストアド プロシージャを作成しています。
 
@@ -277,7 +277,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 この例の意図は基本的な概念の紹介です。 現実には、必要なエンティティをループで処理しながら、クエリ文字列とコマンド パラメーターを同時に構築するのが一般的です。 追加できるクエリ パラメーターの上限は 2,100 個です。そのため、この方法で処理できる行の総数には制限があります。
 
-次の表は、このタイプの挿入ステートメントのパフォーマンスを示すアドホック テストの結果 (ミリ秒単位) を示しています。
+次の表は、このタイプの挿入ステートメントのパフォーマンスを示すアドホック テストの結果です (単位はミリ秒)。
 
 | 操作 | テーブル値パラメーター (ミリ秒) | 単一ステートメントでの挿入 (ミリ秒) |
 | --- | --- | --- |
@@ -298,7 +298,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 ### <a name="entity-framework"></a>Entity framework
 
-Entity Framework では現在、バッチ処理がサポートされていません。 関連するコミュニティのさまざまな開発者によって、 **SaveChanges** メソッドをオーバーライドするなどの回避策を実現する試みがなされてきました。 しかし、その解決策は複雑であることが多く、また、アプリケーションやデータ モデルに合わせてカスタマイズする必要があります。 この機能のリクエストに関して、Entity Framework CodePlex プロジェクトが現在、意見交換のページを開設しています。 この意見交換については、 [デザイン ミーティングの議事録 (2012 年 8 月 2 日)](http://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012)をご覧ください。
+Entity Framework では現在、バッチ処理がサポートされていません。 関連するコミュニティのさまざまな開発者によって、 **SaveChanges** メソッドをオーバーライドするなどの回避策を実現する試みがなされてきました。 しかし、その解決策は複雑であることが多く、また、アプリケーションやデータ モデルに合わせてカスタマイズする必要があります。 この機能のリクエストに関して、Entity Framework CodePlex プロジェクトが現在、意見交換のページを開設しています。 この意見交換については、 [デザイン ミーティングの議事録 (2012 年 8 月 2 日)](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012)をご覧ください。
 
 ### <a name="xml"></a>XML
 

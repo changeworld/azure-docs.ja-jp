@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/11/2019
 ms.author: yushwang
-ms.openlocfilehash: 7545000e0dda959195d3669da877a77c5bedea40
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a4f8e2b6a1367658514cc1bf9711825959ee371e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002061"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095655"
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -48,7 +48,7 @@ VPN Gateway の接続の詳細については、「[VPN Gateway について](vp
 
 ### <a name="what-is-the-difference-between-a-site-to-site-connection-and-point-to-site"></a>サイト間接続とポイント対サイト接続の違いを教えてください。
 
-**サイト間** (IPsec/IKE VPN トンネル) 構成は、オンプレミスの場所と Azure の間で行われます。 つまり、ルーティングとアクセス許可の構成に従って、オンプレミスの場所に存在する任意のコンピューターと仮想ネットワーク内に存在する任意の仮想マシンやロール インスタンスを接続できます。 このオプションはクロスプレミス接続として常に使用可能で、ハイブリッド構成にも適しています。 この種類の接続は IPsec VPN アプライアンス (ハードウェア デバイスまたはソフト アプライアンス) に依存します。このアプライアンスは、ネットワークの境界にデプロイされる必要があります。 この種類の接続を作成するには、NAT の内側にはない、外部に公開された IPv4 アドレスが必要です。
+**サイト間** (IPsec/IKE VPN トンネル) 構成は、オンプレミスの場所と Azure の間で行われます。 つまり、ルーティングとアクセス許可の構成に従って、オンプレミスの場所に存在する任意のコンピューターと仮想ネットワーク内に存在する任意の仮想マシンやロール インスタンスを接続できます。 このオプションはクロスプレミス接続として常に使用可能で、ハイブリッド構成にも適しています。 この種類の接続は IPsec VPN アプライアンス (ハードウェア デバイスまたはソフト アプライアンス) に依存します。このアプライアンスは、ネットワークの境界にデプロイされる必要があります。 この種類の接続を作成するには、外部に公開された IPv4 アドレスが必要です。
 
 **ポイント対サイト** (VPN over SSTP) 構成では、任意の場所に存在する 1 台のコンピューターから仮想ネットワーク内に存在する任意のデバイスに接続できます。 この接続では、Windows に組み込み済みの VPN クライアントを使用します。 ポイント対サイト構成の一部として、証明書と VPN クライアント構成パッケージをインストールします。このパッケージには、コンピューターを仮想ネットワーク内の任意の仮想マシンまたはロール インスタンスに接続できるようにする設定が含まれています。 これは仮想ネットワークに接続する場合には適していますが、オンプレミスに存在している場合は適していません。 また、このオプションは VPN ハードウェアにアクセスできない場合や外部に公開された IPv4 アドレスが存在しない場合にも便利ですが、このどちらでもサイト間接続が必須となります。
 
@@ -71,11 +71,11 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>ポリシー ベースの VPN ゲートウェイをルート ベースに更新できますか。
 いいえ。 Azure Vnet ゲートウェイのタイプをポリシー ベースからルート ベース (またはその逆) に変更することはできません。 ゲートウェイを削除して再作成する必要があります。この処理には約 60 分かかります。 ゲートウェイの IP アドレスは保存されず、事前共有キー (PSK) も保持されません。
 1. 削除するゲートウェイに関連付けられているすべての接続を削除します。
-2. ゲートウェイを削除します。
-* [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
-* [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-* [Azure PowerShell - クラシック](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-3. [目的のタイプの新しいゲートウェイを作成し、VPN 設定を完了します](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+1. ゲートウェイを削除します。
+1. [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+1. [Azure PowerShell - クラシック](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [目的のタイプの新しいゲートウェイを作成し、VPN 設定を完了します](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>'GatewaySubnet' は必要ですか。
 

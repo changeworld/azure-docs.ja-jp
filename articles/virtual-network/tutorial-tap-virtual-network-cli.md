@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 48ccbedd6e3a7da0ec487f27709a47f9364f7da3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 3d95a9ea555cceda82530eb5c487eeb993c1a678
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100059"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188562"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク TAP の作業を行う
 
@@ -28,7 +28,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 
 ## <a name="create-a-virtual-network-tap-resource"></a>仮想ネットワーク TAP リソースを作成する
 
-仮想ネットワーク TAP リソースを作成する前に、[前提条件](virtual-network-tap-overview.md#prerequisites)をお読みください。 以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/bash) で、またはコンピューターから Azure コマンド ライン インターフェイス (CLI) を実行することで、実行できます。 Azure Cloud Shell は無料の対話型シェルであり、コンピューターに Azure CLI をインストールする必要はありません。 適切な[アクセス許可](virtual-network-tap-overview.md#permissions)を持っているアカウントで Azure にサインインする必要があります。 この記事では、Azure CLI バージョン 2.0.46 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
+仮想ネットワーク TAP リソースを作成する前に、[前提条件](virtual-network-tap-overview.md#prerequisites)をお読みください。 以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/bash) で、またはコンピューターから Azure コマンド ライン インターフェイス (CLI) を実行することで、実行できます。 Azure Cloud Shell は無料の対話型シェルであり、コンピューターに Azure CLI をインストールする必要はありません。 適切な[アクセス許可](virtual-network-tap-overview.md#permissions)を持っているアカウントで Azure にサインインする必要があります。 この記事では、Azure CLI バージョン 2.0.46 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 仮想ネットワーク TAP は、現在、拡張機能として使用できます。 拡張機能をインストールするには、`az extension add -n virtual-network-tap` を実行する必要があります。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
 1. サブスクリプションの ID を取得して変数に格納し、後の手順で使用します。
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 46791468e094ffb17a6dc9993b2cf8623a72b9b3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 474048bc9f31e4630110ea099f3e0b375ad74e51
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968810"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087586"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML サービスの概要
 
@@ -23,7 +23,7 @@ Azure HDInsight を使用すると、ML サービス クラスターを作成で
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**:このチュートリアルを開始する前に、Azure サブスクリプションが必要です。 詳細については、[Microsoft Azure 無料試用版の入手](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関する記事を参照してください。
-* **Secure Shell (SSH) クライアント**:SSH クライアントを使用して、HDInsight クラスターにリモート接続し、クラスター上でコマンドを直接実行します。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+* **Secure Shell (SSH) クライアント**:SSH クライアントは、HDInsight クラスターにリモート接続し、そのクラスター上でコマンドを直接実行するために使用されます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 
 <a name="create-hdi-custer-with-aure-portal"></a>
@@ -40,7 +40,7 @@ Azure HDInsight を使用すると、ML サービス クラスターを作成で
     * **クラスター ログイン ユーザー名**および**クラスター ログイン パスワード**:HTTPS 経由でクラスターにアクセスする場合のログイン。 これらの資格情報を使用して、Apache Ambari Web UI や REST API などのサービスにアクセスします。
     * **Secure Shell (SSH) ユーザー名**:SSH 経由でクラスターにアクセスする際に使用されるログイン。 既定では、このパスワードは、クラスター ログイン パスワードと同じです。
     * **リソース グループ**:クラスターが作成されるリソース グループ。
-    * **場所**: クラスターが作成される Azure リージョン。
+    * **[場所]**:クラスターが作成される Azure リージョン。
 
         ![クラスターの基本情報](./media/r-server-get-started/clustername.png)
 
@@ -48,7 +48,7 @@ Azure HDInsight を使用すると、ML サービス クラスターを作成で
 
     * **クラスターの種類**:ML サービス
 
-    * **[オペレーティング システム]**: Linux
+    * **[オペレーティング システム]**:Linux
 
     * **バージョン**:ML Server 9.3 (HDI 3.6)。 ML Server 9.3 のリリース ノートは、[docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server) でご確認いただけます。
 
@@ -79,16 +79,16 @@ HDInsight クラスターの一部として RStudio Server Community Edition を
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 * **方法 2** - Azure portal を使用します。
-ポータルから:
+  ポータルから:
   1. 左側のメニューから **[すべてのサービス]** を選択します。
   2. **[ANALYTICS]** で **[HDInsight クラスター]** を選択します。
   3. **[HDInsight クラスター]** ページから、ご自身のクラスター名を選択します。
   4. **[ML Services ダッシュボード]** から **[R Studio server]\(R Studio サーバー\)** を選択します。 
 
-    ![HDInsight のストレージ アカウント設定](./media/r-server-get-started/r-studio-server-dashboard.png)
+     ![HDInsight のストレージ アカウント設定](./media/r-server-get-started/r-studio-server-dashboard.png)
 
-   > [!IMPORTANT]  
-   > どちらの方法でも、初めてログインするときは認証を 2 回行う必要があります。  最初の認証プロンプトでは、"*クラスター管理者のユーザー ID*" と "*パスワード*" を入力します。 2 回目の認証プロンプトでは、"*SSH ユーザー ID*" と "*パスワード*" を入力します。 以降のログインでは、SSH 資格情報のみが求められます。
+     > [!IMPORTANT]  
+     > どちらの方法でも、初めてログインするときは認証を 2 回行う必要があります。  最初の認証プロンプトでは、"*クラスター管理者のユーザー ID*" と "*パスワード*" を入力します。 2 回目の認証プロンプトでは、"*SSH ユーザー ID*" と "*パスワード*" を入力します。 以降のログインでは、SSH 資格情報のみが求められます。
 
 接続後の画面は、次のスクリーンショットのようになります。
 

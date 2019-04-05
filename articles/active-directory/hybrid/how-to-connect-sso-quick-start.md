@@ -16,12 +16,12 @@ ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69645c4aa9034b9a3459c7ee5fb0378c790a6e18
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 345c97a19f789bb3d850df000824d4c23989a81f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178092"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086821"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン:クイック スタート
 
@@ -74,8 +74,9 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 ![Azure AD Connect:ユーザー サインインの変更](./media/how-to-connect-sso-quick-start/changeusersignin.png)
 
 **[シングル サインオンを有効にする]** ページが表示されるまで、ウィザードの手順を続行します。 次の各 Active Directory フォレストのドメイン管理者の資格情報を入力します。
-    * Azure AD Connect を使用して Azure AD に同期している。
-    * シームレス SSO を有効にさせたいユーザーが含まれている。
+
+* Azure AD Connect を使用して Azure AD に同期している。
+* シームレス SSO を有効にさせたいユーザーが含まれている。
 
 ウィザードの完了後、シームレスな SSO がテナントで有効になります。
 
@@ -120,17 +121,17 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 1. グループ ポリシー管理エディター ツールを開きます。
 2. 一部またはすべてのユーザーに適用されるグループ ポリシーを編集します。 この例では、**既定のドメイン ポリシー**を使用します。
-3. **[ユーザーの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[Internet Explorer]** > **[インターネット コントロール パネル]** > **[セキュリティ ページ]** の順に移動します。 次に **[サイトとゾーンの割り当て一覧]** を選択します。
+3. **[ユーザーの構成]** > **[ポリシー]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[Internet Explorer]** > **[インターネット コントロール パネル]** > **[セキュリティ ページ]** の順に移動します。 次に **[サイトとゾーンの割り当て一覧]** を選択します。
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso6.png)
 4. ポリシーを有効にしてから、ダイアログ ボックスに次の値を入力します。
    - **[値の名前]**:Kerberos チケットの転送先となる Azure AD URL。
    - **[値]** (データ):**1** (イントラネット ゾーンを示す)。
 
-    結果は次のようになります。
+     結果は次のようになります。
 
-    値の名前: `https://autologon.microsoftazuread-sso.com`
+     値の名前: `https://autologon.microsoftazuread-sso.com`
   
-    値 (データ):1
+     値 (データ):1
 
    >[!NOTE]
    > 一部のユーザーに対してシームレス SSO の使用を許可したくない場合 ( ユーザー共有キオスクでサインインする場合など) は、前述の値を **4** に設定します。 この操作により、Azure AD の URL が [制限付きゾーン] に追加され、シームレス SSO は常に失敗するようになります。
@@ -140,7 +141,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. **[ユーザーの構成]** > **[管理用テンプレート]** > **[Windows コンポーネント]** > **[Internet Explorer]** > **[インターネット コントロール パネル]** > **[セキュリティ ページ]** > **[イントラネット ゾーン]** の順に移動します。 次に、**[スクリプトを介したステータス バーの更新を許可する]** を選択します。
+6. **[ユーザーの構成]** > **[管理用テンプレート** **ポリシー]** > **> **[Windows コンポーネント]** > **[Internet Explorer]** > **[インターネット コントロール パネル]** > **[セキュリティ ページ]** > **[イントラネット ゾーン]** の順に移動します。 次に、**[スクリプトを介したステータス バーの更新を許可する]** を選択します。
 
     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -162,9 +163,9 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
    - **値の型**:***REG_DWORD***。
    - **値のデータ**:***00000001***。
  
-    ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso16.png)
+     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso16.png)
  
-    ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso17.png)
+     ![シングル サインオン](./media/how-to-connect-sso-quick-start/sso17.png)
 
 ### <a name="browser-considerations"></a>ブラウザーの考慮事項
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: c6763580a6693020c497c500342ff3ae4dc840d4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 43b672569b398f636b2e02172428cf072febb156
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339230"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202454"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -57,7 +57,7 @@ HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-
 
 * **Ambari (web)** - https://&lt;clustername>.azurehdinsight.net
 
-    クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にログインします。
+    クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にサインインします。
 
     認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
@@ -114,7 +114,8 @@ Azure Storage または Data Lake Storage を使用している場合、HDInsigh
 
 HDInsight では、データ ストレージ リソース (Azure Blob Storage と Azure Data Lake Storage) は、コンピューティング リソースから切り離されています。 したがって、必要なコンピューティング処理を実行するために HDInsight クラスターを作成し、作業完了時にそのクラスターを削除できます。一方で、お使いのデータ ファイルは、必要なだけクラウド ストレージに安全に保持し続けることができます。
 
-### <a name="uri-and-scheme"></a>URI およびスキーム
+
+### <a name="URI-and-scheme"></a>URI およびスキーム
 
 いくつかのコマンドでは、ファイルにアクセスするときに、URI の一部としてスキームを指定する必要があります。 たとえば、Storm-HDFS コンポーネントでは、スキームを指定する必要があります。 既定ではない記憶域 (記憶域クラスターに "追加の" ストレージとして追加した記憶域) を使用する場合は、URI の一部として常にスキームを使用する必要があります。
 
@@ -248,7 +249,7 @@ HDInsight クラスターのスケーリングに関する具体的な情報に�
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Hue (またはその他の Hadoop コンポーネント) のインストール方法
 
-HDInsight は管理されたサービスです。 Azure によってクラスターに関する問題が検出された場合、障害の発生したノードが削除され、新たに作成されたノードで置き換えられる可能性があります。 クラスターに何かを手動でインストールした場合、この操作の実行後は維持されません。 代わりに、[HDInsight スクリプト アクション](hdinsight-hadoop-customize-cluster.md)を使用してください。 次の変更は、スクリプト アクションで行うことができます。
+HDInsight は管理されたサービスです。 Azure によってクラスターに関する問題が検出された場合、障害の発生したノードが削除され、新たに作成されたノードで置き換えられる可能性があります。 クラスターに何かを手動でインストールした場合、この操作の実行後は維持されません。 代わりに、[HDInsight スクリプト アクション](hdinsight-hadoop-customize-cluster-linux.md)を使用してください。 次の変更は、スクリプト アクションで行うことができます。
 
 * サービスや Web サイトをインストールして構成する。
 * クラスターの複数のノードで構成変更を必要とするコンポーネントをインストールして構成する。
@@ -256,7 +257,6 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 スクリプト アクションとは、Bash スクリプトです。 このスクリプトは、クラスターの作成中に実行されるほか、追加コンポーネントのインストールと構成に使用されます。 次のコンポーネントをインストールするスクリプトの例が用意されています。
 
 * [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-* [Apache Solr](hdinsight-hadoop-solr-install-linux.md)
 
 独自のスクリプト アクションを開発する方法の詳細については、「 [HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」を参照してください。
 

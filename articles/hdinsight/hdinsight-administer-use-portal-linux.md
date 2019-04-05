@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: hrasheed
-ms.openlocfilehash: a0da4339586982f5210834bcec5acfe463bc1a9a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3258f4d36d80c2a501e4ceba3b428128fc3f781b
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816443"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201009"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -56,7 +56,7 @@ ms.locfileid: "55816443"
     - **[ツール]**:HDInsight 関連ツールのヘルプ情報です。
 
 - **設定メニュー**  
-  - **クラスター サイズ**:クラスターの worker ノードの数を確認したり、増減したりします。 「[クラスターのスケール](hdinsight-administer-use-management-portal.md#scale-clusters)」を参照してください。
+  - **クラスター サイズ**:クラスターの worker ノードの数を確認したり、増減したりします。 「[クラスターのスケール](hdinsight-administer-use-portal-linux.md#scale-clusters)」を参照してください。
   - **[クォータ制限]**:サブスクリプションの使用されているコアと使用可能なコアを表示します。
   - **[SSH およびクラスターのログイン]**:Secure Shell (SSH) 接続を使用してクラスターに接続する方法を表示します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
   - **[Data Lake Storage Gen1]**:Data Lake Storage Gen1 へのアクセスを構成します。  「[クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
@@ -71,9 +71,9 @@ ms.locfileid: "55816443"
 
 - **監視メニュー**
   - **[アラート]**:アラートとアクションを管理します。
-  - **[メトリック]**:Azure Log Analytics でクラスター メトリックを監視します。
+  - **[メトリック]**:Azure Monitor ログでクラスター メトリックを監視します。
   - **[診断の設定]**:診断メトリックを格納する場所に関する設定。
-  - **Operations Management Suite**:Azure Operations Management Suite (OMS) および Azure Log Analytics でクラスターを監視します。
+  - **Operations Management Suite**:Azure Operations Management Suite (OMS) および Azure Monitor ログでクラスターを監視します。
 
 - **[サポート + トラブルシューティング] メニュー**
   - **[リソース正常性]**:「[Azure Resource Health の概要](../service-health/resource-health-overview.md)」をご覧ください。
@@ -186,7 +186,7 @@ Hadoop ジョブの大半は、たまにしか実行されないバッチ ジョ
 このプロセスをプログラムで実行する方法は数多くあります。
 
 * Azure Data Factory を使用する。 オンデマンドの HDInsight がリンクされたサービスを作成する詳細については、[Azure Data Factory を使用して HDInsight でオンデマンドの Linux ベースの Apache Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-adf.md)に関するページを参照してください。
-* Azure PowerShell を使用する。  「 [HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
+* Azure PowerShell を使用する。  「 [HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data-linux.md)」をご覧ください。
 * Azure クラシック CLI を使用する。 [Azure クラシック CLI を使用した HDInsight クラスターの管理](hdinsight-administer-use-command-line.md)に関するページをご覧ください。
 * HDInsight .NET SDK を使用する。 [Apache Hadoop ジョブを送信する](hadoop/submit-apache-hadoop-jobs-programmatically.md)に関するページをご覧ください。
 

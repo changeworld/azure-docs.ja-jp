@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c94c564434df0e9c48facedba1d2232f9510662e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cc7b935833a6b212bb008be86b26c613d8817133
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206476"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182610"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -87,7 +87,7 @@ Azure Multi-factor Authentication のサブスクリプションを購入する�
 
 場合によります。
 
-Azure 管理者向けの Multi-Factor Authentication では、一部の Azure MFA 機能を無料で利用し、Azure と Office 365 管理者ポータルを含む Microsoft オンライン サービスにアクセスできます。 このプランは、Azure Active Directory インスタンスのグローバル管理者のうち、MFA ライセンス、バンドル、またはスタンドアロンの使用量ベースのプロバイダーを通じて提供される、通常版の Azure MFA を所有していない管理者のみに適用されます。 管理者が、無料版を使用していて、その後、完全バージョンの Azure MFA を購入すると、すべてのグローバル管理者が有償版に自動的に昇格されます。
+Azure 管理者向けの Multi-Factor Authentication では、一部の Azure MFA 機能を無料で利用し、[Azure portal](https://portal.azure.com) と [Microsoft 365 管理センター](https://admin.microsoft.com)を含む Microsoft オンライン サービスにアクセスできます。 このプランは、Azure Active Directory インスタンスのグローバル管理者のうち、MFA ライセンス、バンドル、またはスタンドアロンの使用量ベースのプロバイダーを通じて提供される、通常版の Azure MFA を所有していない管理者のみに適用されます。 管理者が、無料版を使用していて、その後、完全バージョンの Azure MFA を購入すると、すべてのグローバル管理者が有償版に自動的に昇格されます。
 
 Office 365 ユーザー向けの Multi-Factor Authentication では、一部の Azure MFA 機能を無料で利用し、Exchange Online と SharePoint Online を含む Office 365 サービスにアクセスできます。 このプランは、Office 365 ライセンスに対応する Azure Active Directory インスタンスに、MFA ライセンス、バンドル、またはスタンドアロンの使用量ベースのプロバイダーを通じて提供される通常版の Azure MFA がない場合、その Office 365 ライセンスが割り当てられているユーザーに適用されます。
 

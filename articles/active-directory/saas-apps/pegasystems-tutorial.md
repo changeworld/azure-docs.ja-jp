@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7a6fd51ad14395b3c195ae1ceb5a188dd2c708c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fa3a3dbda3f184b0c2541dc9df6c39afa86458e4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162511"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437634"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>チュートリアル:Azure Active Directory と Pega Systems の統合
 
@@ -155,7 +155,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
     
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[OK]** をクリックします。
+    d. **[OK]** をクリックします。
 
 1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -170,7 +170,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
-1. **[Create Aauthentication Service]\(認証サービスの作成\)** 画面で次の操作を実行します。
+1. **[Create Authentication Service]\(認証サービスの作成\)** 画面で次の操作を実行します。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/pegasystems-tutorial/tutorial_pegasystems_admin1.png)
 
@@ -180,7 +180,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     c. **[Short Description]\(簡単な説明\)** ボックスに、任意の説明を入力します  
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Create and open]\(作成して開く\)** をクリックします 
+    d. **[Create and open]\(作成して開く\)** をクリックします 
     
 1. **[Identity Provider (IdP) information]\(ID プロバイダー (IdP) 情報\)** セクションで **[Import IdP metadata]\(IdP メタデータのインポート\)** をクリックし、Azure Portal からダウンロードしたメタデータ ファイルを参照します。 **[Submit]\(送信\)** をクリックして、メタデータを読み込みます。
 
@@ -235,7 +235,7 @@ Pega Systems で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-pega-systems-test-user"></a>Pega Systems テスト ユーザーの作成
 

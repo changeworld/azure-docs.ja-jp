@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 80b99880362c3979ae5ead6d1cdff4091d23d065
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118977"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437600"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Azure で仮想マシンを管理するときに発生する一般的なエラー メッセージについて説明します
 
@@ -99,8 +99,8 @@ Azure VM では、エラー応答に次の JSON 形式を使用します。
 |  InvalidParameter  |  指定したパスワードは、長さが {0} から {1} 文字であり、次のパスワードの複雑さの要件のうちの少なくとも {2} 個を満たしている必要があります: <ol><li> 大文字が含まれている</li><li>小文字が含まれている</li><li>数字が含まれている</li><li>特殊文字が含まれている</li></ol>  |
 |  InvalidParameter  |  指定した管理者のユーザー名は許可されません。  |
 |  InvalidParameter  |  VM がプラットフォーム イメージまたはユーザー イメージから作成されている場合は、既存の OS ディスクを接続することはできません。  |
-|  InvalidParameter  |  コンテナー名 {0} は無効です。 コンテナー名は 3 から 63 文字の長さでなければならず、使用できるのは小文字の英数字とハイフンのみです。 ハイフンの後に英数字を続ける必要があります。  |
-|  InvalidParameter  |  URL {1} のコンテナー名 {0} は無効です。 コンテナー名は 3 から 63 文字の長さでなければならず、使用できるのは小文字の英数字とハイフンのみです。 ハイフンの後に英数字を続ける必要があります。  |
+|  InvalidParameter  |  コンテナー名 {0} は無効です。 コンテナー名は 3 から 63 文字の長さでなければならず、使用できるのは小文字の英数字とハイフンのみです。 ハイフンの前後には英数字を指定する必要があります。  |
+|  InvalidParameter  |  URL {1} のコンテナー名 {0} は無効です。 コンテナー名は 3 から 63 文字の長さでなければならず、使用できるのは小文字の英数字とハイフンのみです。 ハイフンの前後には英数字を指定する必要があります。  |
 |  InvalidParameter  |  URL {0} の BLOB 名にスラッシュが含まれています。 現時点では、ディスクに含めることはできません。  |
 |  InvalidParameter  |  URI {0} は正しい BLOB URI ではないようです。  |
 |  InvalidParameter  |  '{0}' という名前のディスクで既に同じ LUN: {1} を使用しています。  |

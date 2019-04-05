@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: c2cc1b5829f3bb530c01e2bfc3538006bb8663cb
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 02/27/2019
+ms.openlocfilehash: 09ab154494ad3e1276239e36068255c2042358c5
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339313"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223820"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Azure SQL Database Managed Instance のリソース制限の概要
 
@@ -55,8 +55,8 @@ Managed Instance には、General Purpose と Business Critical の 2 つのサ�
 | データベースあたりの最大ストレージ容量 | インスタンスごとの最大ストレージ サイズによって決まります | インスタンスごとの最大ストレージ サイズによって決まります |
 | インスタンスごとの最大データベース数 | 100 | 100 |
 | インスタンスごとの最大データベース ファイル数 | 最大 280 | データベースあたり 32,767 ファイル |
-| データ/ログの IOPS (概算) | ファイルあたり 500 ～ 7,500<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines)| 11 ～ 110 K (仮想コアあたり 1,375) |
-|ログ スループット | インスタンスあたり 22 MB/秒 | 仮想コアあたり 3 MB/秒<br/>最大 48 MB/秒 |
+| データ/ログの IOPS (概算) | ファイルあたり 500 ～ 7,500<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 ～ 110 K (仮想コアあたり 1,375) |
+| ログ スループット | インスタンスあたり 22 MB/秒 | 仮想コアあたり 3 MB/秒<br/>インスタンスあたり最大 48 MB/秒|
 | データ スループット (概算) | ファイルあたり 100 ～ 250 MB/秒<br/>\*[ファイル サイズによって異なる](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 仮想コアあたり 24 ～ 48 MB/秒 |
 | IO 待機時間 (概算) | 5 ～ 10 ms | 1 ～ 2 ms |
 | 最大 tempDB サイズ | 192 ～ 1,920 GB (仮想コアあたり 24 GB) | 制約なし - 最大インスタンス ストレージ サイズにより制限される |
@@ -90,6 +90,9 @@ Managed Instance は現在、次の種類のサブスクリプションのみで
 - **サブネットの制限**: マネージド インスタンスが単一リージョンにデプロイされているサブネットの最大数。
 - **インスタンス数の制限**: 単一リージョンにデプロイできるインスタンスの最大数。
 
+> [!Note]
+> これらの制限は既定の設定であり、技術的な制限ではありません。 現在のリージョンでさらに多くの Managed Instance が必要な場合、[Azure portal でサポート リクエスト](#obtaining-a-larger-quota-for-sql-managed-instance)を特別に作成して、これらの制限をオンデマンドで引き上げることができます。 サポート要求を送信せずに、代わりに、別の Azure リージョンに新しい Managed Instance を作成することも可能です。
+
 次の表は、サポートされているサブスクリプションの既定のリージョン制限を示しています。
 
 |サブスクリプションの種類| Managed Instance のサブネットの最大数 | インスタンスの最大数 |GP マネージド インスタンスの最大数*|BC マネージド インスタンスの最大数*|
@@ -104,7 +107,7 @@ Managed Instance は現在、次の種類のサブスクリプションのみで
 
 ** 別のサービス レベルにインスタンスがない場合、1 つのサービス レベルにインスタンスの最大数が適用されます。 GP インスタンスと BC インスタンスを同じサブネット内で共存させることを計画している場合、許可される組み合わせの参考として、次のセクションを利用してください。 単純なルールとしては、サブネットの総数を 3 以内、インスタンス ユニットの総数を 12 以内にする必要があります。
 
-現在のリージョンでさらに多くの Managed Instance が必要な場合、[Azure portal でサポート要求](#obtaining-a-larger-quota-for-sql-managed-instance)を特別に作成して、これらの制限を引き上げることができます。 サポート要求を送信せずに、代わりに、別の Azure リージョンに新しい Managed Instance を作成することも可能です。
+
 
 > [!IMPORTANT]
 > デプロイを計画するときは、Business Critical (BC) インスタンス は (冗長性が追加されているため) 一般的に、General Purpose (GP) インスタンスの 4 倍の大きさの容量を消費することを考慮してください。 そのため、計算では、1 GP インスタンス = 1 インスタンス ユニット、1 BC インスタンス = 4 インスタンス ユニットとなります。 既定の制限に対する消費量分析を簡素化するために、Managed Instance がデプロイされているリージョン内のすべてのサブネットのインスタンス ユニットを集計して、その結果をサブスクリプションの種類のインスタンス ユニットの制限と比較します。

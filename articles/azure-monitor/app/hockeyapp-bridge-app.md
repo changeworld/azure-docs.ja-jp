@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4115ec5add9ac523852b4c60c4f9d750bc430a37
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 79adfbfde25903bfe92c94507071c9d0fe303ef1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121449"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448392"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Application Insights での HockeyApp データの探索
 
@@ -58,7 +58,7 @@ HockeyApp ブリッジのフィールドが表示されます。
 ## <a name="analytics"></a>Analytics
 Analytics はデータのアドホック クエリのための強力なツールです。使用すると、テレメトリを診断、分析し、根本原因とパターンを迅速に突き止めることができます。
 
-![[分析]](./media/hockeyapp-bridge-app/05.png)
+![Analytics](./media/hockeyapp-bridge-app/05.png)
 
 * [Analytics の詳細](../../azure-monitor/log-query/get-started-portal.md)
 

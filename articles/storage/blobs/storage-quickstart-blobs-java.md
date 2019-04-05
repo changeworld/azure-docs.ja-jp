@@ -8,19 +8,19 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: rogarana
-ms.openlocfilehash: 3bf82f37752009a488512d720093bc9c595dff8e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c9aaa22a656d1164ad4e9f9c1ed7539a93dd0457
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999935"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Java v7 用のクライアント ライブラリを使用して BLOB をアップロード、ダウンロード、および一覧表示する方法
 
 この攻略ガイドでは、Java v7 用のクライアント ライブラリを使用して、Azure Blob Storage に対して、コンテナー内のブロック BLOB をアップロード、ダウンロード、および一覧表示する方法について説明します。
 
 > [!TIP]
-> Java 用の Azure Storage クライアント ライブラリの最新バージョンは v10 です。 可能であれば、クライアント ライブラリの最新バージョンを使用することをお勧めします。 v10 の使用を開始する場合、[クイック スタート: Java Storage SDK V10 を使用した BLOB のアップロード、ダウンロード、および一覧表示](storage-quickstart-blobs-java-v10.md)に関するページを参照してください。
+> Java 用の Azure Storage クライアント ライブラリの最新バージョンは v10 です。 可能であれば、クライアント ライブラリの最新バージョンを使用することをお勧めします。 V10 の使用を開始するには、「[クイック スタート: Java Storage SDK V10 を使用して BLOB をアップロード、ダウンロード、および一覧表示する](storage-quickstart-blobs-java-v10.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * または、Maven をインストールして、コマンド ラインから使用するように構成する。
 
-このガイドでは、"Eclipse IDE for Java Developers" 構成の [Eclipse](http://www.eclipse.org/downloads/) を使用します。
+このガイドでは、"Eclipse IDE for Java Developers" 構成の [Eclipse](https://www.eclipse.org/downloads/) を使用します。
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 
@@ -87,7 +87,7 @@ Deleting the source, and downloaded files
 続行する前に、既定のディレクトリ (Windows ユーザーの場合は *C:\Users\<user>\AppData\Local\Temp*) にファイルがあることを確認します。 コンソール ウィンドウから BLOB の URL をコピーしてブラウザーに貼り付け、Blob Storage のファイルの内容を表示します。 ディレクトリ内のサンプル ファイルと Blob Storage に格納されているコンテンツを比較すると、これらが同じであることがわかります。 
 
   >[!NOTE]
-  >[Azure Storage Explorer](http://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) などのツールを使って、Blob Storage のファイルを表示することもできます。 Microsoft Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。
+  >[Azure Storage Explorer](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) などのツールを使って、Blob Storage のファイルを表示することもできます。 Microsoft Azure Storage Explorer は無料のクロスプラットフォーム ツールであり、ストレージ アカウントの情報にアクセスできます。
 
 ファイルを確認した後、**Enter** キーを押してデモを終了し、テスト ファイルを削除します。 サンプルの機能がわかったら、**AzureApp.java** ファイルを開いてコードを確認します。 
 

@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: d6897e35aa60be11cf556335d211c5ea616295b6
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 31909d007727ca5b440343e3c5a035984399b77a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652697"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201740"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
 
@@ -57,9 +57,9 @@ Azure HDInsight で Apache Hive を使用して JavaScript Object Notation (JSON
 }
 ```
 
-ファイルは、**wasb://processjson@hditutorialdata.blob.core.windows.net/** で参照できます。 HDInsight での Azure BLOB ストレージの使用方法については、[HDInsight の Apache Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](../hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 クラスターの既定のコンテナーにファイルをコピーできます。
+このファイルは **wasb://processjson\@hditutorialdata.blob.core.windows.net/** にあります。 HDInsight での Azure BLOB ストレージの使用方法については、[HDInsight の Apache Hadoop での HDFS と互換性のある Azure BLOB ストレージの使用](../hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 クラスターの既定のコンテナーにファイルをコピーできます。
 
-このチュートリアルでは、Apache Hive コンソールを使用します。 Hive コンソールを開く方法については、[リモート デスクトップによる HDInsight での Apache Hive と Apache Hadoop の使用](apache-hadoop-use-hive-remote-desktop.md)に関するページを参照してください。
+このチュートリアルでは、Apache Hive コンソールを使用します。 Hive コンソールを開く方法については、「[HDInsight 上の Apache Hadoop で Apache Ambari Hive ビューを使用する](apache-hadoop-use-hive-ambari-view.md)」を参照してください。
 
 ## <a name="flatten-json-documents"></a>JSON ドキュメントの平坦化
 次のセクションで一覧表示されているメソッドでは、JSON ドキュメントが 1 行で構成されている必要があります。 このため、JSON ドキュメントを文字列にフラット化する必要があります。 JSON ドキュメントがすでにフラット化されている場合、このステップをスキップして、JSON データの分析に関する次のセクションに直接進むことができます。 JSON ドキュメントをフラット化するには、次のスクリプトを実行します。
@@ -83,7 +83,7 @@ SELECT CONCAT_WS(' ',COLLECT_LIST(textcol)) AS singlelineJSON
 SELECT * FROM StudentsOneLine
 ```
 
-未加工の JSON ファイルは **wasb://processjson@hditutorialdata.blob.core.windows.net/** にあります。 **StudentsRaw** Hive テーブルは、未加工のフラット化されていない JSON ドキュメントを指しています。
+未加工の JSON ファイルは **wasb://processjson\@hditutorialdata.blob.core.windows.net/** にあります。 **StudentsRaw** Hive テーブルは、未加工のフラット化されていない JSON ドキュメントを指しています。
 
 **StudentsOneLine** Hive テーブルは、**/json/students/** パスの下にある HDInsight の既定のファイル システムにデータを保存します。
 
@@ -153,8 +153,8 @@ SerDe は、入れ子になった JSON ドキュメントの解析に最適な�
 関連記事については、次を参照してください。
 
 * [HDInsight で Apache Hive Hadoop と共に Apache Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](../hdinsight-use-hive.md)
-* [HDInsight での Apache Hive を使用したフライトの遅延データの分析](../hdinsight-analyze-flight-delay-data.md)
-* [HDInsight での Apache Hive を使用した Twitter データの分析](../hdinsight-analyze-twitter-data.md)
+* [HDInsight での Apache Hive を使用したフライトの遅延データの分析](../hdinsight-analyze-flight-delay-data-linux.md)
+* [HDInsight での Apache Hive を使用した Twitter データの分析](../hdinsight-analyze-twitter-data-linux.md)
 
 [hdinsight-python]:python-udf-hdinsight.md
 

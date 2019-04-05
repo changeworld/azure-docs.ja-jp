@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96ceeec3acd77af7174f1394677f6a52b18dec67
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9067f8521d9794dccc0b745d54eff474d94eedc8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207196"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wrike"></a>チュートリアル:Azure Active Directory と Wrike の統合
 
@@ -145,12 +145,12 @@ Wrike で Azure AD のシングル サインオンを構成してテストする
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **作成**を選択します。
+    d. **作成**を選択します。
 
 ### <a name="creating-a-wrike-test-user"></a>Wrike のテスト ユーザーの作成
 

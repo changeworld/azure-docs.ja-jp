@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3fc8ae7eac8d54e332d43925ede6ad690ae1dde
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9634e2578ea256d1dec71389f676ee53627e6272
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167832"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077770"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する
 
@@ -27,8 +27,10 @@ ms.locfileid: "56167832"
 
 Microsoft Authenticator アプリは、アカウント資格情報と、アカウントの順序などの関連アプリ設定をクラウドにバックアップします。 バックアップ後に、アプリを使用して情報を新しいデバイスに復旧することもできます。これにより、ロックアウトやアカウントの再作成の必要性を回避できる可能性があります。
 
->[!IMPORTANT]
-> バックアップの保存場所ごとに 1 つの個人用 Microsoft アカウントと 1 つの iCloud アカウントが必要です。 ただし、その保存場所内で複数のアカウントをバックアップできます。 たとえば、個人用アカウント、学校のアカウントと、Facebook や Google などのサードパーティのアカウントがある場合があります。<br><br>個人およびサードパーティのアカウントの資格情報のみが格納されます。これには、本人確認を行うために必要なユーザー名とアカウント確認コードが含まれます。 電子メールやファイルなど、アカウントに関連付けられているその他の情報は格納されません。 アカウントをなんらかの方法で他の製品やサービスに関連付けたり共有したりすることはありません。 最後に、IT 管理者がこれらのアカウントに関する情報を取得することはありません。
+> [!IMPORTANT]
+> バックアップの保存場所ごとに 1 つの個人用 Microsoft アカウントと 1 つの iCloud アカウントが必要です。 ただし、その保存場所内で複数のアカウントをバックアップできます。 たとえば、個人用アカウント、学校のアカウントと、Facebook や Google などのサードパーティのアカウントがある場合があります。
+> 
+> 個人およびサードパーティのアカウントの資格情報のみが格納されます。これには、本人確認を行うために必要なユーザー名とアカウント確認コードが含まれます。 電子メールやファイルなど、アカウントに関連付けられているその他の情報は格納されません。 アカウントをなんらかの方法で他の製品やサービスに関連付けたり共有したりすることはありません。 最後に、IT 管理者がこれらのアカウントに関する情報を取得することはありません。
 
 ## <a name="back-up-your-account-credentials"></a>アカウントの資格情報のバックアップ
 資格情報をバックアップする前に、次の両方が必要です。
@@ -84,7 +86,7 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
     ![QR コードをスキャンできる Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >QR コードを取得する方法の詳細については、管理者がセキュリティ情報を有効にしたかどうかに基づいて、「[Microsoft Authenticator アプリの概要](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)」または「[Authenticator アプリを使用するようにセキュリティ情報を設定する](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app)」を参照してください。
+    >QR コードを取得する方法の詳細については、管理者がセキュリティ情報を有効にしたかどうかに基づいて、「[Microsoft Authenticator アプリの概要](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)」または「[Authenticator アプリを使用するようにセキュリティ情報を設定する](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)」を参照してください。
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>バックアップと復旧に関する問題のトラブルシューティング
 バックアップを使用できない理由はいくつかあります。
@@ -98,10 +100,12 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 -   **既存の Microsoft Authenticator アカウント。** Microsoft Authenticator アプリ内にアカウントを既に設定してある場合、アプリではバックアップしたアカウントを復旧できません。 復旧防止により、アカウントの詳細情報が古い情報で上書きされないことが保証されます。 このような状況では、バックアップを復旧する前に Authenticator アプリで設定した既存のアカウントから既存のアカウント情報を削除する必要があります。
 
 ## <a name="next-steps"></a>次の手順
-アカウントの資格情報をバックアップし、新しいデバイスに復旧したので、Microsoft Authenticator アプリを使用した本人確認に進むことができます。
+アカウントの資格情報をバックアップし、新しいデバイスに復旧したので、Microsoft Authenticator アプリを使用した本人確認に進むことができます。 詳細については、[Microsoft Authenticator アプリを使用してアカウントにサインインする方法](user-help-sign-in.md)に関するページを参照してください。
 
 ## <a name="related-topics"></a>関連トピック
-- [Microsoft Authenticator アプリの概要](user-help-auth-app-download-install.md)  
+
+- [Microsoft Authenticator アプリとは](user-help-auth-app-overview.md)
+
 - [Microsoft Authenticator アプリに関する FAQ](user-help-auth-app-faq.md)
 
 - [Multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/)

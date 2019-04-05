@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 33edfdc58d82530bc1a5d0245b5e18e94b0a6dc1
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077557"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842451"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>クラウド マーケットプレース パブリッシャーになる
 
@@ -45,23 +45,23 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 *   [Microsoft Partner Network](https://partner.microsoft.com/commercial) の利点について確認する。
 *   所属している組織に既存のメンバーシップがある場合は、登録時に組織に参加する。 [パートナー センター](https://partnercenter.microsoft.com/partner/home)を使用する場合は、パートナー センターのアカウントで ID を確認できます。 [パートナー メンバーシップ センター (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx) を使用する場合は、パートナー メンバーシップ センターのアカウントで ID を確認できます。 
 
----  
+---
 
 ## <a name="2-create-a-microsoft-account"></a>2.Microsoft アカウントを作成する  
 | 15 分 |  
-*@outlook.com や @live.com* などの Microsoft アカウントは、多数の Microsoft デバイスおよびサービスにアクセスするために使用されます。 Azure Marketplace トランザクション オファーにはこのアカウントが必要であり、すべてのクラウド パブリッシャーに使用することをお勧めします。 Microsoft アカウントの利点と用途に関する詳細については、[こちらのページを確認](https://account.microsoft.com/account/)してください。 マーケットプレースのオファーの作成および管理に使用される投稿用プラットフォーム、Cloud パートナー ポータルにアクセスするには、個人用 Microsoft アカウントを使用します。 
+*\@outlook.com や \@live.com* などの Microsoft アカウントは、多数の Microsoft デバイスおよびサービスにアクセスするために使用されます。 Azure Marketplace トランザクション オファーにはこのアカウントが必要であり、すべてのクラウド パブリッシャーに使用することをお勧めします。 Microsoft アカウントの利点と用途に関する詳細については、[こちらのページを確認](https://account.microsoft.com/account/)してください。 マーケットプレースのオファーの作成および管理に使用される投稿用プラットフォーム、Cloud パートナー ポータルにアクセスするには、個人用 Microsoft アカウントを使用します。 
 
 [! 重要] 職場の電子メールに関連付けられた Microsoft アカウントでは、ポータルにアクセスできないことに注意してください。
 
->[!Note]
->既に Microsoft アカウントを所有している場合、[Microsoft ID を作成してマーケットプレース アカウントを管理するためのガイドライン](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)を確認して、マーケットプレースの公開に使用できるかどうかを判断してください。 
-
->Azure Active Directory フェデレーション企業アカウントを持つユーザーは、既存の Microsoft アカウントの作成または使用を試行する前に、[こちらの記事](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)に目を通す必要があります。
+> [!Note]
+> 既に Microsoft アカウントを所有している場合、[Microsoft ID を作成してマーケットプレース アカウントを管理するためのガイドライン](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account)を確認して、マーケットプレースの公開に使用できるかどうかを判断してください。 
+> 
+> Azure Active Directory フェデレーション企業アカウントを持つユーザーは、既存の Microsoft アカウントの作成または使用を試行する前に、[こちらの記事](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain)に目を通す必要があります。
 
 *   Microsoft アカウントの作成または管理については、[Microsoft アカウントのヘルプ サポート ページ](https://support.microsoft.com/products/microsoft-account?category=manage-account)を確認してください。
 
 
----  
+---
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>手順 3.Marketplace 登録フォームを送信する  
 | 15 分 |  
@@ -72,7 +72,7 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 *   オファーが最も密接に連携する Microsoft 製品やサービスなど、公開を予定している初期のアプリやコンサルティング サービスのオファーに関する簡単な説明
 *   アプリやサービスの対象となる顧客 
 
----  
+---
 ## <a name="4-sign-into-cloud-partner-portal"></a>4.Cloud パートナー ポータルにサインインする
 | 1 ～ 3 日 | <br>
 マーケットプレース オンボーディング チームは、手順 3 で提示されたマーケットプレース登録の詳細情報を検証します。 承認されると、[Cloud Partner Portal](https://cloudpartner.azure.com) へのサインイン時に、アカウント資格情報とガイダンスを記載したウェルカム メールを受信します。
@@ -108,4 +108,4 @@ Microsoft のクラウド マーケットプレースへの参加には、Micros
 *   [ソリューションの登録リストの種類を選定する](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。
 
  
----  
+---

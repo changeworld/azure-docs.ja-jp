@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: f21d92dabfcfbe51cf8135388a1ab489c20593a4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c37e2357038e4f711b015fda80a0de8c4dbd9498
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537547"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880927"
 ---
 # <a name="azure-networking"></a>Azure のネットワーク
 
@@ -29,7 +29,7 @@ Azure には、単独でまたは組み合わせて使用できるさまざま�
 - [インターネット接続](#internet-connectivity):インターネットを介して双方向で Azure リソースと通信します。
 - [オンプレミスの接続](#on-premises-connectivity):インターネット上の仮想プライベート ネットワーク (VPN) を介して、または Azure への専用接続を介して、オンプレミスのネットワークを Azure リソースに接続します。
 - [負荷分散とトラフィックの方向](#load-balancing):同じ場所のサーバー間でトラフィックを負荷分散したり、異なる場所のサーバーにトラフィックを誘導したりします。
-- [セキュリティ](#security):ネットワーク サブネット間や個々の仮想マシン (VM) 間のネットワーク トラフィックをフィルタリングします。
+- [セキュリティ](#security): ネットワーク サブネット間や個々の仮想マシン (VM) 間のネットワーク トラフィックをフィルタリングします。
 - [ルーティング](#routing):Azure リソースとオンプレミス リソースとの間で既定のルーティングまたは完全制御のルーティングを使用します。
 - [管理性](#manageability):Azure のネットワーク リソースを監視したり管理したりします。
 - [デプロイ ツールと構成ツール](#tools):Web ベースのポータルまたはクロスプラットフォームのコマンド ライン ツールを使って、ネットワーク リソースのデプロイと構成を行います。
@@ -136,7 +136,7 @@ Azure では、VNet 内の任意のサブネットに接続されている複数
 
 Azure には、ネットワークを監視したり管理したりするための手段として以下のツールが用意されています。
 - **アクティビティ ログ:** すべての Azure リソースには、実行された操作とその状態、操作の実行者を記録したアクティビティ ログがあります。 アクティビティ ログの詳細については、[アクティビティ ログの概要](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
-- **診断ログ:** 定期イベントと自然発生イベントがネットワーク リソースにより作成され、Azure Storage アカウント内に記録されるか、Azure イベント ハブまたは Azure Log Analytics に送信されます。 診断ログを通じて、リソースの正常性についての洞察を得ることができます。 診断ログは、ロード バランサー (インターネット接続)、ネットワーク セキュリティ グループ、ルーティング、Application Gateway で利用できます。 診断ログの詳細については、[診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
+- **診断ログ:** 定期イベントと自然発生イベントがネットワーク リソースにより作成され、Azure Storage アカウント内に記録されるか、Azure イベント ハブまたは Azure Monitor ログに送信されます。 診断ログを通じて、リソースの正常性についての洞察を得ることができます。 診断ログは、ロード バランサー (インターネット接続)、ネットワーク セキュリティ グループ、ルーティング、Application Gateway で利用できます。 診断ログの詳細については、[診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **メトリック:** メトリックとは、リソースに関して一定期間にわたり収集されたパフォーマンスの測定値とカウンターのことです。 メトリックを使用すると、しきい値に基づいてアラートをトリガーすることができます。 現在、Application Gateway に関するメトリックが利用できます。 メトリックの詳細については、[メトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **トラブルシューティング:** トラブルシューティング情報には、Azure portal から直接アクセスすることができます。 この情報を基に、ExpressRoute 、VPN Gateway、Application Gateway、ネットワーク セキュリティ ログ、ルーティング、DNS、ロード バランサー、Traffic Manager に関する一般的な問題を診断することができます。
 - **ロールベースのアクセス制御 (RBAC):** ネットワーク リソースをだれが作成し、だれが管理できるかは、ロールベースのアクセス制御 (RBAC) を使って制御します。 RBAC の詳細については、[RBAC の基礎](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。 
@@ -149,7 +149,7 @@ Azure には、ネットワークを監視したり管理したりするため�
 
 Azure のネットワーク リソースのデプロイと構成は、以下のツールを使って実行できます。
 
-- **Azure portal:** ブラウザーで動作するグラフィカル ユーザー インターフェイスです。 [Azure Portal](http://portal.azure.com)を開きます。
+- **Azure portal:** ブラウザーで動作するグラフィカル ユーザー インターフェイスです。 [Azure Portal](https://portal.azure.com)を開きます。
 - **Azure PowerShell:** Windows コンピューターから Azure を管理するためのコマンド ライン ツールです。 Azure PowerShell の詳細については、[Azure PowerShell の概要](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **Azure コマンド ライン インターフェイス (CLI):** Linux、macOS、または Windows コンピューターから Azure を管理するためのコマンド ライン ツールです。 Azure CLI の詳細については、[Azure CLI の概要](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **Azure Resource Manager テンプレート:** Azure ソリューションのインフラストラクチャと構成を定義するファイル (JSON 形式) です。 テンプレートを使えば、ソリューションをそのライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。 テンプレート作成の詳細については、[テンプレート作成のベスト プラクティス](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。 テンプレートのデプロイには、Azure Portal、CLI、PowerShell のいずれかを使用できます。 今すぐテンプレートを使用するには、あらかじめ構成されているいずれかのテンプレートを「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=network)」ライブラリから入手してデプロイしてください。 

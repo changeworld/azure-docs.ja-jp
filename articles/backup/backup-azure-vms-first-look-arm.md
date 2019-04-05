@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 40557d4e71dfea5996396cde634f7a1c80913556
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 2fe786d90612feff312983dbd25dc6d691be6e70
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430541"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089779"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM の設定から Azure VM をバックアップする
 
@@ -44,18 +44,18 @@ Azure VM をバックアップするため、Azure Backup ではマシンで実�
 3. VM の一覧から、バックアップする VM を選択します。
 4. VM のメニューで、**[バックアップ]** をクリックします。 
 5. **[Recovery Services コンテナー]** で次のようにします。
-  - コンテナーが既にある場合は、**[既存のものを選択]** をクリックしてコンテナーを選択します。
-  - コンテナーがない場合は、**[新規作成]** をクリックします。 コンテナーの名前を指定します。 VM と同じリージョンおよびリソース グループに作成されます。 VM の設定からの直接バックアップを有効にするときは、これらの設定を変更できません。
+   - コンテナーが既にある場合は、**[既存のものを選択]** をクリックしてコンテナーを選択します。
+   - コンテナーがない場合は、**[新規作成]** をクリックします。 コンテナーの名前を指定します。 VM と同じリージョンおよびリソース グループに作成されます。 VM の設定からの直接バックアップを有効にするときは、これらの設定を変更できません。
 
-  ![バックアップの有効化ウィザード](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
+   ![バックアップの有効化ウィザード](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
 6. **[バックアップ ポリシーの選択]** で次のようにします。
 
-  - 既定のポリシーをそのままにします。 これにより、1 日に 1 回指定時刻に VM がバックアップされ、30 日間コンテナーに保持されます。
-  - ある場合は、既存のバックアップ ポリシーを選択します。
-  - 新しいポリシーを作成し、ポリシーの設定を定義します。  
+   - 既定のポリシーをそのままにします。 これにより、1 日に 1 回指定時刻に VM がバックアップされ、30 日間コンテナーに保持されます。
+   - ある場合は、既存のバックアップ ポリシーを選択します。
+   - 新しいポリシーを作成し、ポリシーの設定を定義します。  
 
-  ![Select backup policy](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
+   ![Select backup policy](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
 7. **[バックアップの有効化]** をクリックします。 これにより、バックアップ ポリシーと VM が関連付けられます。 
 
@@ -64,9 +64,9 @@ Azure VM をバックアップするため、Azure Backup ではマシンで実�
 8. ポータルの通知で構成の進行状況を追跡できます。
 9. ジョブが完了した後、VM のメニューで **[バックアップ]** をクリックします。 ページに、VM のバックアップの状態、復旧ポイントに関する情報、実行されているジョブ、発行されたアラートが表示されます。
 
-  ![バックアップの状態](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
+   ![バックアップの状態](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
-10. バックアップを有効にした後は、[初回バックアップ](#run-the-initial-backup)が実行されます。 初回バックアップは、すぐに開始することも、バックアップ スケジュールに従って開始されるまで待つこともできます。
+10. バックアップを有効にした後は、初回バックアップが実行されます。 初回バックアップは、すぐに開始することも、バックアップ スケジュールに従って開始されるまで待つこともできます。
     - 初回バックアップが完了するまで、**[前回のバックアップの状態]** には **[警告 (初回のバックアップが保留中)]** と表示されます。
     - 次のスケジュールされたバックアップがいつ実行されるかを確認するには、バックアップ ポリシー名をクリックします。
     

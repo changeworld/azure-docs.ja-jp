@@ -3,21 +3,20 @@ title: Azure Data Factory 用のテンプレートの概要 | Microsoft Docs
 description: 定義済みのテンプレートを使用して Azure Data Factory の使用をすぐに開始する方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.author: douglasl
-ms.reviewer: douglasl
-ms.openlocfilehash: c3571aec55d5050df01f740a163db18e9c6c1095
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+author: gauravmalhot
+ms.author: gamal
+manager: craigg
+ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55967086"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003551"
 ---
 # <a name="templates"></a>テンプレート
 
@@ -46,6 +45,8 @@ Data Factory では、データ ファクトリ パイプライン テンプレ�
 -   コピー テンプレート:
 
     -   [データベースからの一括コピー](solution-template-bulk-copy-with-control-table.md)
+    
+    -   [LastModifiedDate を基準にした新しいファイルのコピー](solution-template-copy-new-files-lastmodifieddate.md)
 
     -   [ファイルベースのストア間での複数のファイル コンテナーのコピー](solution-template-copy-files-multiple-containers.md)
 

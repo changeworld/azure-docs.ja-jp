@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 07f4506b7dd0ac8ca0462e2a418983e561859c91
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e0a0a88e249c0a032e5afaeea14b9b3cfcbdc319
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208382"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080662"
 ---
 ## <a name="control-flow"></a>制御フロー
 
@@ -25,13 +25,13 @@ ms.locfileid: "55208382"
 
 1. ユーザーはボットに、「シアトルはどんな天気ですか?」のような用語や句を入力します
 1. CL は、エンティティを抽出する機械学習モデルにユーザー入力を渡します
-    - このモデルは、Conversation Learner によってビルドされ、www.luis.ai によってホストされています
+   - このモデルは、Conversation Learner によってビルドされ、www.luis.ai によってホストされています
 1. 抽出されたすべてのエンティティとユーザーの入力テキストは、ボットのコードで Entity Detection Callback メソッドに渡されます。
     - このコードは、エンティティ値を設定/クリア/操作できます
 1. CL ニューラル ネットワークが続いて、エンティティ抽出の出力とユーザー入力を受け取り、ボットに定義されているすべてのアクションを点数化します
-    - この例では、最も可能性の高いアクションは、天気予報を提供することになります。
+   - この例では、最も可能性の高いアクションは、天気予報を提供することになります。
 
-    ![](media/controlflow_forecast.PNG)
+     ![](media/controlflow_forecast.PNG)
 
 1. この場合、選択したアクションは、API 呼び出しに天気予報を取得するように要求します。 
 1. CL.AddCallback メソッドを使用して登録されたこの API が続いて呼び出されます。  次にこの API の結果が、「晴れ、華氏 67 度」のようなメッセージとしてユーザーに返されます。

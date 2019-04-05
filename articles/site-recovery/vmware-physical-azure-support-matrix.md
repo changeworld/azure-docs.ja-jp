@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: 8115065afcbd81da1527e09c07ca89ce89100d7d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 2fe2e972d16bdb27c5d2fbd2d552dac825235b6d
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236993"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286467"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -48,7 +48,7 @@ RAM | 16 GB
 ディスクの空き領域 | リテンション ドライブのために必要な 600 GB の領域。
 オペレーティング システム  | Windows Server 2012 R2 または Windows Server 2016 |
 オペレーティング システムのロケール | 英語 (en-us)
-PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") をインストールする必要があります。
+PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") は、バージョン [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) 以降の構成サーバーには必要ありません。
 Windows Server の役割 | 以下は有効にしません: <br/> - Active Directory Domain Services <br/>- インターネット インフォメーション サービス <br/> - Hyper-V |
 グループ ポリシー| 以下は有効にしません: <br/> - コマンド プロンプトへのアクセス禁止。 <br/> - レジストリ編集ツールへのアクセス禁止。 <br/> - ファイル添付の信頼ロジック。 <br/> - スクリプト実行の有効化。 <br/> [詳細情報](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
 IIS | 以下を実行します。<br/><br/> - 既定の Web サイトが事前に存在しないようにする <br/> - [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br/> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする  <br/> - ポート 443 でリッスンしている既存の Web サイト/アプリがないようにする<br/>
@@ -64,8 +64,10 @@ Site Recovery は、サポートされているマシンで実行されている
 --- | ---
 マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
 マシンのワークロード | Site Recovery は、サポートされているマシンで実行されている任意のワークロード (たとえば Active Directory、SQL サーバーなど) のレプリケーションをサポートします。 詳細については、[ここ](https://aka.ms/asr_workload)をクリックしてください。
-Windows オペレーティング システム | 64 ビット Windows Server 2019、64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。 </br></br>  [Windows Server 2008 SP2 以降 - 32 ビットおよび 64 ビット](migrate-tutorial-windows-server-2008.md) (移行のみ)。 </br></br> Windows 2016 の Nano Server はサポートされていません。
+Windows オペレーティング システム | 64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。 </br></br>  [Windows Server 2008 SP2 以降 - 32 ビットおよび 64 ビット](migrate-tutorial-windows-server-2008.md) (移行のみ)。 </br></br> Windows 2016 の Nano Server はサポートされていません。
+Linux オペレーティング システムのアーキテクチャ | 64 ビット システムのみがサポートされています。 32 ビット システムはサポートされていません
 Linux オペレーティング システム | Red Hat Enterprise Linux:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>CentOS:5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.6 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [ (サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b> または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) を実行している Oracle Linux 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5 <br/><br/></br>-レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。</br></br> - Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。 Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> - Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> - 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> - Azure でマシンが起動するには、Red Hat Enterprise Linux 5.2 から 5.11 または CentOS 5.2 から 5.11 を実行しているサーバーに [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。
+
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu カーネルのバージョン
 
@@ -183,7 +185,7 @@ Docker ディスク構成 | いいえ
 
 > [!NOTE]
 > Windows Server 2012 以降を実行する VMware 仮想マシンの UEFI ブートは、Azure に移行できます。 次の制限事項が適用されます。
-
+> 
 > - Azure への移行のみがサポートされています。 オンプレミスの VMware サイトへのフェールバックはサポートされていません。
 > - サーバーには、OS ディスクに 4 個を超えるパーティションを持たせないでください。
 > - バージョン 9.13 以降のモビリティ サービスが必要です。
@@ -209,6 +211,7 @@ Premium Storage | はい
 **機能** | **サポートされています**
 --- | ---
 可用性セット | はい
+可用性ゾーン | いいえ 
 ハブ | はい
 マネージド ディスク | はい
 
@@ -230,6 +233,26 @@ FC ディスク | サポートされていません。 | サポートされて�
 BitLocker | サポートされていません。 | マシンのレプリケーションを有効にする前に、BitLocker を無効にする必要があります。 |
 VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文字、数字、およびハイフンのみです。<br/><br/> マシン名の最初と最後は、文字か数字とする必要があります。 |  Site Recovery でマシンのプロパティの値を更新します。
 
+## <a name="azure-site-recovery-churn-limits"></a>Azure Site Recovery のチャーンの制限
+
+以下の表は、Azure Site Recovery の制限を示したものです。 上記の制限は、弊社のテストに基づいて公開されていますが、アプリケーション I/O として想定されるすべての組み合わせを網羅したものではありません。 実際の結果は、ご使用のアプリケーションで発生するさまざまな I/O によって異なることが考えられます。 最良の結果を得るためには、[Deployment Planner ツールを実行](site-recovery-deployment-planner.md)し、テスト フェールオーバーを実行して広範なアプリケーション テストを実行し、アプリケーションの実際のパフォーマンスを把握することを強くお勧めします。
+
+**レプリケーション先のストレージ** | **レプリケーション元の平均ディスク I/O サイズ** |**レプリケーション元ディスクの平均データ変更頻度** | **レプリケーション元ディスクの 1 日あたりのデータ変更頻度合計**
+---|---|---|---
+Standard Storage | 8 KB | 2 MB/秒 | (ディスクあたり) 168 GB
+Premium P10 または P15 ディスク | 8 KB  | 2 MB/秒 | (ディスクあたり) 168 GB
+Premium P10 または P15 ディスク | 16 KB | 4 MB/秒 |  (ディスクあたり) 336 GB
+Premium P10 または P15 ディスク | 32 KB 以上 | 8 MB/秒 | (ディスクあたり) 672 GB
+Premium P20、P30、P40、または P50 ディスク | 8 KB    | 5 MB/s | (ディスクあたり) 421 GB
+Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |20 MB/秒 | (ディスクあたり) 1,684 GB
+
+**ソース データ変更頻度** | **上限**
+---|---
+VM あたりの平均データ変更頻度| 25 MB/秒
+VM 上の全ディスクにおけるデータ変更頻度のピーク | 54 MB/秒
+プロセス サーバーでサポートされる 1 日あたりのデータ変更頻度の上限 | 2 TB
+
+前述の数値は、I/O のオーバーラップを 30% とした場合の平均値です。 Site Recovery は、オーバーラップ比に基づくより高いスループットと、より大きな書き込みサイズ、そして実ワークロード I/O 動作を扱うことができます。 上記の数値には、標準的なバックログとして約 5 分が想定されています。 つまりデータはアップロード後 5 分以内に処理されて復旧ポイントが作成されます。
 
 ## <a name="vault-tasks"></a>資格情報コンテナーのタスク
 
@@ -242,10 +265,10 @@ VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文
 ## <a name="download-latest-azure-site-recovery-components"></a>Azure Site Recovery コンポーネントのダウンロード
 
 **Name** | **説明** | **最新バージョンのダウンロード手順**
---- | --- | --- | --- | ---
+--- | --- | --- 
 構成サーバー | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/> オンプレミスの VMware サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-deploy-configuration-server.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をクリックしてください。
 プロセス サーバー|構成サーバーに既定でインストールされます。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。 デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立したプロセス サーバーを追加できます。| 新規インストールについては、[こちら](vmware-azure-set-up-process-server-scale.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-process-server.md#upgrade-a-process-server)をクリックしてください。
-モビリティ サービス | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-install-mobility-service.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-physical-mobility-service-overview.md#update-the-mobility-service)をクリックしてください。
+モビリティ サービス | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-install-mobility-service.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-physical-mobility-service-overview.md##update-mobility-service-from-azure-portal)をクリックしてください。
 
 最新の機能と修正プログラムについては、[こちら](https://aka.ms/ASR_latest_release_notes)をクリックしてください。
 

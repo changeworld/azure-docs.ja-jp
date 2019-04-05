@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b5c4779605922bf6d523a9bc6e65e4d9a27f32a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fa78ec2b5623dfd010a8fe5709916a47e221a9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163718"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902197"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>チュートリアル:Azure Active Directory と TalentLMS の統合
 
@@ -150,7 +150,7 @@ TalentLMS で Azure AD のシングル サインオンを構成してテスト�
  
     c. Azure Portal の**拇印**の値を、**[Certificate fingerprint]\(証明書のフィンガープリント\)** ボックスに貼り付けます。    
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。  **[Remote sign-in URL]\(リモート サインイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    d.  **[Remote sign-in URL]\(リモート サインイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
  
     e. **[Remote sign-out URL]\(リモート サインアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
@@ -199,7 +199,7 @@ TalentLMS で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-talentlms-test-user"></a>TalentLMS テスト ユーザーの作成
 
@@ -219,9 +219,9 @@ Azure AD ユーザーが TalentLMS にログインできるようにするには
 
     b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
  
-    c. **[Email address]\(電子メール アドレス\)** ボックスに、ユーザーの電子メール アドレスを入力します (この例では **brittasimon@contoso.com**)。
+    c. **[Email Address]\(メール アドレス\)** ボックスに、ユーザーのメール アドレス (例: **brittasimon\@contoso.com**) を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ユーザーの追加]** をクリックします。
+    d. **[ユーザーの追加]** をクリックします。
 
 >[!NOTE]
 >TalentLMS から提供されている他の TalentLMS ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。

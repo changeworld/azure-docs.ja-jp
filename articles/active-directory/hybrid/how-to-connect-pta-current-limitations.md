@@ -16,12 +16,12 @@ ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de42312c580b6bd5b4a5148fd877d55aa00e8804
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97dc67d46b08bf5765c59806b45edd82f38720cd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204595"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011975"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証:現時点での制限事項
 
@@ -34,7 +34,7 @@ ms.locfileid: "56204595"
 
 - Web ブラウザー ベースのアプリケーションへのユーザー サインイン。
 - Exchange ActiveSync、EAS、SMTP、POP、IMAP などの従来のプロトコルを使用した Outlook クライアントへのユーザー サインイン。
-- [先進認証](https://aka.ms/modernauthga)をサポートする旧 Office クライアント アプリケーションと Office アプリケーションへのユーザー サインイン:Office 2010、2013、2016 バージョン。
+- [先進認証](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)をサポートする旧 Office クライアント アプリケーションと Office アプリケーションへのユーザー サインイン:Office 2013 および 2016 バージョン。
 - PowerShell バージョン 1.0 など、旧プロトコル アプリケーションへのユーザー サインイン。
 - Azure AD の Windows 10 デバイスへの参加。
 - Multi-Factor Authentication のアプリ パスワード。
@@ -47,11 +47,11 @@ ms.locfileid: "56204595"
 - Azure AD Domain Services を使用するには、パスワード ハッシュの同期をテナントで有効にする必要があります。 そのため、パススルー認証 _のみ_ を使用するテナントは、Azure AD Domain Services を必要とするシナリオに対応していません。
 - パススルー認証は [Azure AD Connect Health](whatis-hybrid-identity-health.md) にはTS統合されていません。
 
->[!IMPORTANT]
->サポートされていないシナリオ _のみ_ の対処法として (Azure AD Connect Health 統合を除く)、Azure AD Connect ウィザードの [[オプション機能]](how-to-connect-install-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。
-
->[!NOTE]
-パスワード ハッシュ同期を有効にすると、オンプレミスのインフラストラクチャが中断された場合に認証をフェールオーバーするオプションが提供されます。 パススルー認証からパスワード ハッシュ同期へのこのフェールオーバーは自動的には行われません。 Azure AD Connect を使用して手動でサインイン方法を切り替える必要があります。 Azure AD Connect を実行しているサーバーで障害が発生した場合、パススルー認証をオフにするには、Microsoft サポートに対処方法をお問い合わせください。
+> [!IMPORTANT]
+> サポートされていないシナリオ _のみ_ の対処法として (Azure AD Connect Health 統合を除く)、Azure AD Connect ウィザードの [[オプション機能]](how-to-connect-install-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。
+> 
+> [!NOTE]
+> パスワード ハッシュ同期を有効にすると、オンプレミスのインフラストラクチャが中断された場合に認証をフェールオーバーするオプションが提供されます。 パススルー認証からパスワード ハッシュ同期へのこのフェールオーバーは自動的には行われません。 Azure AD Connect を使用して手動でサインイン方法を切り替える必要があります。 Azure AD Connect を実行しているサーバーで障害が発生した場合、パススルー認証をオフにするには、Microsoft サポートに対処方法をお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
 - [クイック スタート](how-to-connect-pta-quick-start.md): Azure AD パススルー認証を起動および実行します。

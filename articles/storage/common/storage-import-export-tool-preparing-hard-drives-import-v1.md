@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 185e243838d2ccdc920fa5b5714995801567a24f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7db50e8bd1de609256bad58b293af8b7b1ea5dbb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454676"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086719"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 インポート ジョブ用に 1 つ以上のハード ドライブを準備するには、次の手順を実行します。
 
--   Blob service にインポートするデータを特定します
+- Blob service にインポートするデータを特定します
 
--   Blob service 内から、ターゲットとなる仮想ディレクトリと BLOB を特定します
+- Blob service 内から、ターゲットとなる仮想ディレクトリと BLOB を特定します
 
--   必要となるドライブの数を決定します
+- 必要となるドライブの数を決定します
 
--   各ハード ドライブにデータをコピーします
+- 各ハード ドライブにデータをコピーします
 
- サンプル ワークフローについては、「[インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)」をご覧ください。
+  サンプル ワークフローについては、「[インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md)」をご覧ください。
 
 ## <a name="identify-the-data-to-be-imported"></a>インポートするデータを特定する
  インポート ジョブを作成するには、インポートするディレクトリとファイルを最初に決定します。 その際には、ディレクトリの一覧、一意のファイルの一覧、またはその 2 つの組み合わせを指定できます。 ディレクトリが含まれる場合は、そのディレクトリとサブディレクトリ内のすべてのファイルがインポート ジョブの対象となります。
@@ -51,11 +51,11 @@ ms.locfileid: "55454676"
 ## <a name="determine-how-many-drives-are-needed"></a>必要なドライブの数を決定する
  次に、以下のこと確認する必要があります。
 
--   データの格納に必要なハード ドライブの数。
+- データの格納に必要なハード ドライブの数。
 
--   各ハード ドライブにコピーするディレクトリやスタンドアロン ファイル。
+- 各ハード ドライブにコピーするディレクトリやスタンドアロン ファイル。
 
- 転送するデータを格納するためのハード ドライブが必要数あることを確認してください。
+  転送するデータを格納するためのハード ドライブが必要数あることを確認してください。
 
 ## <a name="copy-data-to-your-hard-drive"></a>データをハード ドライブにコピーする
  このセクションでは、Azure Import/Export ツールを呼び出して、1 つまたは複数のハード ドライブにデータをコピーする方法について説明します。 Azure Import/Export ツールを呼び出す際には、その都度新しい*コピー セッション*を作成します。 データのコピー先となる各ドライブに対し、少なくとも 1 つのコピー セッションを作成します。場合によっては、すべてのデータを 1 つのドライブにコピーするために、複数のコピー セッションが必要になることもあります。 複数のコピー セッションが必要になる理由を次に示します。

@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 03/20/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 5194fa73d246cee039e113207bbde277b06d7130
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 51be74d0adbd5ce75234be2a5b7c99fcd36ca91c
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53753201"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295268"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -65,6 +65,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 | [同時実行タスク数](batch-parallel-node-tasks.md)  | ノードのコア数 x 4 |
 | [アプリケーション](batch-application-packages.md) 数 | 20 |
 | アプリケーションあたりのアプリケーション パッケージ数 | 40 |
+| プールあたりのアプリケーション パッケージ数 | 10 |
 | タスクの最長有効期間 | 180 日<sup>1</sup> |
 
 <sup>1</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、180 日間です。 完了したタスクは 7 日間保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
@@ -135,6 +136,6 @@ Azure 仮想ネットワークにデプロイされている仮想マシンの�
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/
-[support_sev]: http://aka.ms/supportseverity
+[support_sev]: https://aka.ms/supportseverity
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.png

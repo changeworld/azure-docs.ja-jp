@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 9a5e75b762c2ab0591212ce0bc3d7fac42132f8a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3cffd09a54b09a425f3b7f3519b4ceb7a04a6d08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116917"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855352"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用できるようにする
 
@@ -28,7 +28,7 @@ Azure にサインインします ( https://portal.azure.com )。
 
 Azure Portal で**仮想マシン**に移動します。
 
-チェックボックスを使用して、Change Tracking と Inventory または Update Management を使用準備する仮想マシンを選択します。 使用準備は、同時に最大 3 つの異なるリソース グループに対して行うことができます。
+チェックボックスを使用して、Change Tracking と Inventory または Update Management を使用準備する仮想マシンを選択します。 使用準備は、同時に最大 3 つの異なるリソース グループに対して行うことができます。 Azure VM は、ご使用の Automation アカウントの場所に関係なく任意のリージョンに存在できます。
 
 ![VM の一覧](media/automation-onboard-solutions-from-browse/vmlist.png)
 > [!TIP]
@@ -68,14 +68,19 @@ Log Analytics ワークスペースと Automation アカウントの選択を確
 |AustraliaSoutheast|AustraliaSoutheast|
 |CanadaCentral|CanadaCentral|
 |CentralIndia|CentralIndia|
-|EastUS|EastUS2|
+|EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
 |WestCentralUS|WestCentralUS|
 |西ヨーロッパ|西ヨーロッパ|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
-|EastUS2EUAP|CentralUSEUAP|
+|EastUS2EUAP<sup>1</sup>|CentralUSEUAP|
+
+<sup>1</sup> EastUS2EUAP および EastUS の Log Analytics ワークスペースと Automation アカウントのマッピングは、同じリージョンどうしのマッピングではありませんが、正しいマッピングです。
+
+> [!NOTE]
+> 需要によっては、ご自分の Automation アカウントまたは Log Analytics ワークスペースを作成するときにリージョンを使用できない場合があります。  その場合は、前の表に記載されている、リソースを作成できるリージョンを使用していることを確認してください。
 
 有効にしない仮想マシンの横のチェックボックスをオフにします。 有効にできない仮想マシンは既に選択解除されています。
 
@@ -89,7 +94,7 @@ Log Analytics ワークスペースと Automation アカウントの選択を確
 * [変更の追跡](automation-change-tracking.md)
 * [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 
-Automation アカウントを Log Analytics と統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。 作業を進める前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを続行できません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
+ご使用の Automation アカウントを Log Analytics ワークスペースと統合する必要がなくなった場合は、Azure portal から直接、そのアカウントのリンクを解除できます。 作業を進める前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを続行できません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
 
 これらのソリューションを削除したら、以下の手順を行うと、Automation アカウントのリンクを解除できます。
 

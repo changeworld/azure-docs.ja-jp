@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f78275af5faaf19a4993a5ae4414b0163f9a4d9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822750"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124152"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -26,9 +26,12 @@ ms.locfileid: "55822750"
 
 この記事では、大規模なデータセットの移動と処理をスケジュールに沿って自動的に行う、サンプル ソリューションのアーキテクチャについて説明します。 また、Data Factory と Azure Batch を使用してソリューションを実装する、エンドツーエンドのチュートリアルも提供します。
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 この記事には、サンプル ソリューション全体のチュートリアルが含まれるため、通常の記事よりも長くなっています。 Batch と Data Factory のご使用が初めての方は、Batch と Data Factory のサービスについて知り、これらがどのように連携するかを学ぶことができます。 サービスについてある程度知識があり、ソリューションを設計、構築している場合は、この記事のアーキテクチャのセクションに重点を置くこともできます。 プロトタイプまたはソリューションを開発している場合は、チュートリアルの詳細な手順を試すこともお勧めです。 内容に関するご意見や、ご利用法についてお聞かせください。
 
 最初に、クラウドの大規模なデータセットの処理に、Data Factory と Batch のサービスがどのように役立つかについて説明します。     
+
 
 ## <a name="why-azure-batch"></a>Azure Batch を選ぶ理由
  Batch を使用して、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行することができます。 Batch は、仮想マシン (VM) の管理されたコレクションを実行するため、大量の計算を必要とする作業をスケジュールするためのプラットフォーム サービスです。 ジョブのニーズに合わせてコンピューティング リソースを自動的にスケーリングできます。
@@ -93,7 +96,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 このチュートリアルでは、ストレージ アカウントを使用してデータを保存します。 ストレージ アカウントがない場合は、[ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)に関するページを参照してください。 サンプル ソリューションでは、Blob Storage を使用します。
 
 #### <a name="azure-batch-account"></a>Azure Batch アカウント
-[Azure Portal](http://portal.azure.com/) を使用して Batch アカウントを作成します。 詳細については、[Batch アカウントの作成と管理](../../batch/batch-account-create-portal.md)に関するページを参照してください。 Batch のアカウント名とアカウント キーをメモしておきます。 また、[New-AzureRmBatchAccount](https://docs.microsoft.com/powershell/module/azurerm.batch/new-azurermbatchaccount) コマンドレットを使用して Batch アカウントを作成することもできます。 このコマンドレットの使用手順については、[Batch PowerShell コマンドレットの概要](../../batch/batch-powershell-cmdlets-get-started.md)に関するページを参照してください。
+[Azure Portal](https://portal.azure.com/) を使用して Batch アカウントを作成します。 詳細については、[Batch アカウントの作成と管理](../../batch/batch-account-create-portal.md)に関するページを参照してください。 Batch のアカウント名とアカウント キーをメモしておきます。 また、[New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) コマンドレットを使用して Batch アカウントを作成することもできます。 このコマンドレットの使用手順については、[Batch PowerShell コマンドレットの概要](../../batch/batch-powershell-cmdlets-get-started.md)に関するページを参照してください。
 
 サンプル ソリューションでは、(データ ファクトリ パイプラインを通じて間接的に) Batch を使用して、VM の管理コレクションであるコンピューティング ノードのプールで、同じ方法でデータを処理します。
 
@@ -114,7 +117,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
    c. **ノード価格レベル**を選択します。
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[ターゲットの専用数]** の設定値として、「**2**」と入力します。
+   d. **[ターゲットの専用数]** の設定値として、「**2**」と入力します。
 
    e. **[ノードごとの最大タスク]** の設定値として、「**2**」と入力します。
 
@@ -183,7 +186,7 @@ public IDictionary<string, string> Execute(
 
    c. **[テンプレート]** を展開し、**[Visual C#]\#** を選択します。 このチュートリアルでは C\# を使用しますが、カスタム アクティビティの開発には、どの .NET 言語でも使用できます。
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 右側にあるプロジェクトの種類の一覧から **[クラス ライブラリ]** を選択します。
+   d. 右側にあるプロジェクトの種類の一覧から **[クラス ライブラリ]** を選択します。
 
    e. **[プロジェクト名]** に「**MyDotNetActivity**」と入力します。
 
@@ -201,7 +204,7 @@ public IDictionary<string, string> Execute(
 1. **Azure Storage** NuGet パッケージをプロジェクトにインポートします。 このパッケージは、このサンプルで Blob Storage API を使用するために必要です。
 
     ```powershell
-    Install-Package Azure.Storage
+    Install-Package Az.Storage
     ```
 1. 次の using ディレクティブをプロジェクト内のソース ファイルに追加します。
 
@@ -574,7 +577,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    c. **poolName** プロパティにプールの ID を入力します。 このプロパティでは、プール名またはプール ID のいずれかを指定できます。
 
-   d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **batchUri** JSON プロパティにバッチ URI を入力します。
+   d. **batchUri** JSON プロパティにバッチ URI を入力します。
 
       > [!IMPORTANT]
       > **[Batch アカウント]** ブレードの URL は、\<accountname\>.\<region\>.batch.azure.com という形式です。 JSON の **batchUri** プロパティでは、URL から a88"accountname."** を削除する必要があります。 例: `"batchUri": "https://eastus.batch.azure.com"`。
@@ -799,8 +802,8 @@ test custom activity Microsoft test custom activity Microsoft
    * カスタム アクティビティの **linkedServiceName** プロパティは、**AzureBatchLinkedService** を示します。これによって、Batch でカスタム アクティビティが実行する必要がある Data Factory がわかります。
    * **concurrency** の設定は重要です。 既定値を使用する場合は、Batch プールにコンピューティング ノードが複数ある場合でも、スライスは 1 つずつ処理されます。 そのため、Batch の並行処理機能を利用することはありません。 **concurrency** をより大きな値に設定した場合、2 とすると、つまり 2 つのスライス (Batch 内の 2 つのタスクに対応する) が、同時に処理できます。 この場合、Batch プール内の VM が両方利用されます。 concurrency プロパティを適切に設定します。
    * 既定では、1 つのみのタスク (スライス) が、VM 上で任意のポイントで実行されます。 Batch プールの既定では、**[VM ごとの最大タスク]** は 1 に設定されています。 前提条件の一環で、このプロパティを 2 に設定してプールを作成しました。 そのため、VM 上で 2 つのデータ ファクトリ スライスを同時に実行できます。
-    - **isPaused** プロパティは、既定で false に設定されています。 この例では、スライスが過去に開始されているので、パイプラインは即時に実行されます。 このプロパティを **true** に設定すると、パイプラインを一時停止できます。また **false** に設定し直すと再開されます。
-    -   **start** 時刻と **end** 時刻は 5 時間離れています。 スライスは毎時生成されるため、パイプラインによって 5 つのスライスが生成されます。
+     - **isPaused** プロパティは、既定で false に設定されています。 この例では、スライスが過去に開始されているので、パイプラインは即時に実行されます。 このプロパティを **true** に設定すると、パイプラインを一時停止できます。また **false** に設定し直すと再開されます。
+     -   **start** 時刻と **end** 時刻は 5 時間離れています。 スライスは毎時生成されるため、パイプラインによって 5 つのスライスが生成されます。
 
 1. コマンド バーの **[デプロイ]** を選択して、パイプラインをデプロイします。
 
@@ -977,4 +980,4 @@ Data Factory および Batch の機能の詳細については、このサンプ
   * [.NET 向け Batch クライアント ライブラリの概要](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
+[batch-explorer-walkthrough]: https://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: 250931c9b53692dff4006a0114b6da20948b3f59
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 87f608163e20d98179eb6c666158386a99858eeb
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096672"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188385"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java アプリケーション開発用の Service Fabric プラグイン
 Eclipse は、Java 開発者の間で最も広く使用されている統合開発環境 (IDE) の 1 つです。 この記事では、Eclipse 開発環境をセットアップして Azure Service Fabric を操作する方法について説明します。 Service Fabric プラグインのインストール、Service Fabric アプリケーションの作成、ローカルまたはリモートの Service Fabric クラスターへの Service Fabric アプリケーションのデプロイを Eclipse で行う方法を確認します。 
@@ -41,7 +41,7 @@ Service Fabric プラグインを Eclipse にインストールすることが�
 -   Eclipse の更新プログラムを確認してインストールするには、**[Help]\(ヘルプ\)** > **[Check for Updates]\(更新プログラムの確認\)** の順に移動します。
 
 Service Fabric プラグインをインストールするために、Eclipse で **[Help]\(ヘルプ\)** > **[Install New Software]\(新しいソフトウェアのインストール\)** の順に移動します。
-1. **[Work with]\(作業対象\)** ボックスに「**http://dl.microsoft.com/eclipse**」と入力します。
+1. **[Work with]\(作業対象\)** ボックスに、「https:\//dl.microsoft.com/eclipse」と入力します。
 2. **[追加]** をクリックします。
 
    ![Eclipse 用の Service Fabric プラグイン][sf-eclipse-plugin-install]
@@ -54,7 +54,7 @@ Service Fabric プラグインが既にインストールされている場合�
 3. Service Fabric プラグインを更新したら、Gradle プロジェクトも更新します。  **build.gradle** を右クリックし、**[Refresh]\(最新の情報に更新\)** を選択します。
 
 > [!NOTE]
-> Service Fabric プラグインのインストールまたは更新に時間がかかる場合、Eclipse の設定が原因である可能性があります。 Eclipse は、Eclipse インスタンスに登録されている更新サイトに対するすべての変更のメタデータを収集します。 Service Fabric プラグインの更新プログラムを確認してインストールする手順を高速化するには、**[Available Software Sites (利用できるソフトウェア サイト)]** に移動します。 Service Fabric プラグインの場所 (http://dl.microsoft.com/eclipse/azure/servicefabric)) を指すサイトを除き、すべてのサイトのチェック ボックスをオフにします。
+> Service Fabric プラグインのインストールまたは更新に時間がかかる場合、Eclipse の設定が原因である可能性があります。 Eclipse は、Eclipse インスタンスに登録されている更新サイトに対するすべての変更のメタデータを収集します。 Service Fabric プラグインの更新プログラムを確認してインストールする手順を高速化するには、**[Available Software Sites (利用できるソフトウェア サイト)]** に移動します。 Service Fabric プラグインの場所 (https://dl.microsoft.com/eclipse/azure/servicefabric)) を指すサイトを除き、すべてのサイトのチェック ボックスをオフにします。
 
 > [!NOTE]
 >Eclipse が Mac で意図したように動かない場合、またはスーパー ユーザーとして実行する必要がある場合は、**ECLIPSE_INSTALLATION_PATH** フォルダーの **Eclipse.app/Contents/MacOS** サブフォルダーに移動します。 `./eclipse` を実行して Eclipse を起動します。
@@ -141,8 +141,8 @@ Service Fabric アプリケーションを構築したら、以下の手順に�
    - `ClientKey` フィールドは、クライアントまたはクラスター証明書のための秘密キーを含む、ローカル コンピューター上の PEM 形式の .pem または .key ファイルを指す必要があります。
    - `ClientCert` フィールドは、クライアントまたはクラスター 証明書のための証明書データを含む、ローカル コンピューター上の PEM 形式の .pem または .crt ファイルを指す必要があります。 
 
-    ```bash
-    {
+     ```bash
+     {
          "ClusterConnectionParameters":
          {
             "ConnectionIPOrURL": "lnxxug0tlqm5.westus.cloudapp.azure.com",
@@ -150,8 +150,8 @@ Service Fabric アプリケーションを構築したら、以下の手順に�
             "ClientKey": "[path_to_your_pem_file_on_local_machine]",
             "ClientCert": "[path_to_your_pem_file_on_local_machine]"
          }
-    }
-    ```
+     }
+     ```
 
 2. Service Fabric アプリケーションを右クリックして、**[Service Fabric]** を選択します。
 3. コンテキスト メニューから **[Publish Application...]\(アプリケーションの発行)\** をクリックします。
@@ -159,8 +159,8 @@ Service Fabric アプリケーションを構築したら、以下の手順に�
 
     ![クラウドの [発行] ダイアログ](./media/service-fabric-get-started-eclipse/cloudjson.png)
 
-4.  発行操作の進捗状況は、コンソール ウィンドウから確認できます。
-5.  アプリケーションが実行されていることを確認するには、ブラウザーのウィンドウで Azure クラスターの Service Fabric Explorer を開きます。 上記の例では、これは `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer` のようになります。 **Applications** ノードを展開し、アプリケーションが実行されていることを確認します。 
+4. 発行操作の進捗状況は、コンソール ウィンドウから確認できます。
+5. アプリケーションが実行されていることを確認するには、ブラウザーのウィンドウで Azure クラスターの Service Fabric Explorer を開きます。 上記の例では、これは `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer` のようになります。 **Applications** ノードを展開し、アプリケーションが実行されていることを確認します。 
 
 
 セキュリティで保護された Linux クラスターの場合、アプリケーションに Reliable Services サービスが含まれている場合は、Service Fabric runtime API を呼び出すためにサービスが使用できる証明書を構成する必要もあります。 詳しくは、「[Reliable Services アプリを Linux クラスター上で実行するように構成する](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)」をご覧ください。

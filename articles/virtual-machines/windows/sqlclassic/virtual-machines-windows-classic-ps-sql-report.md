@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 8c12190e3c34c3294d2735fdd228aafbf6073f12
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c8b32e1d52768ea8450a2256d92d8cdb09f9fe8b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820115"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445638"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
 > [!IMPORTANT] 
@@ -63,7 +63,7 @@ ms.locfileid: "55820115"
    
    * **バージョンのリリース日**が複数存在する場合は、最新バージョンを選択します。
    * **[仮想マシン名]**: このマシン名は、次の構成ページで既定のクラウド サービス DNS 名としても使用されます。 DNS 名は、Azure サービス全体で一意であることが必要です。 VM の用途を示すコンピューター名で VM を構成するよう考慮してください  (例: ssrsnativecloud)。
-   * **レベル**:標準
+   * **レベル**:Standard
    * **[サイズ]** : SQL Server のワークロードに推奨される VM サイズは A3 です。 VM をレポート サーバーとしてのみ使用する場合、レポート サーバーで大規模なワークロードが発生しないのであれば、VM サイズは A2 で十分です。 VM の価格については、「 [Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/)」をご覧ください。
    * **[新しいユーザー名]**: 指定した名前が VM の管理者として作成されます。
    * **[新しいパスワード]** と **[確認]**: このパスワードは、新しい管理者アカウントに使用されるので、強力なパスワードを使用することをお勧めします。
@@ -124,8 +124,8 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
       
        たとえば、次の図では、VM 名が **ssrsnativecloud** で、ユーザー名が **testuser** です。
       
-       ![VM 名が含まれたログイン](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
-   2. Mmc.exe を実行します。 詳細については、「[方法:MMC スナップインを使用して証明書を参照する](https://msdn.microsoft.com/library/ms788967.aspx)」を参照してください。
+       ![ログインには VM 名が含まれる](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+   2. Mmc.exe を実行します。 詳細については、[方法:MMC スナップインを使用して証明書を参照する](https://msdn.microsoft.com/library/ms788967.aspx)」を参照してください。
    3. コンソール アプリケーションの **[ファイル]** メニューで、**[証明書]** スナップインを追加します。メッセージが表示されたら、**[コンピューター アカウント]** を選択し、**[次へ]** をクリックします。
    4. 管理対象として **[ローカル コンピューター]** を選択し、**[完了]** をクリックします。
    5. **[OK]** をクリックし、**[証明書 - 個人]** ノードを展開して、**[証明書]** をクリックします。 証明書の名前は VM の DNS 名に基づいており、 **cloudapp.net**で終わります。 証明書の名前を右クリックし、 **[コピー]** をクリックします。
@@ -160,7 +160,7 @@ Windows PowerShell スクリプトを使用してレポート サーバーを構
    
     たとえば、次の図では、VM 名が **ssrsnativecloud** で、ユーザー名が **testuser** です。
    
-    ![VM 名が含まれたログイン](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![ログインには VM 名が含まれる](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. VM で、管理者特権を使用して **Windows PowerShell ISE** を開きます。 PowerShell ISE は、Windows Server 2012 に既定でインストールされています。 標準の Windows PowerShell ウィンドウではなく、ISE を使用することをお勧めします。ISE では、スクリプトを貼り付けて変更してから、スクリプトを実行できます。
 3. Windows PowerShell ISE で、**[表示]** メニューをクリックし、**[スクリプト ウィンドウの表示]** をクリックします。
 4. 次のスクリプトをコピーし、Windows PowerShell ISE のスクリプト ウィンドウに貼り付けます。
@@ -294,7 +294,7 @@ Windows PowerShell を使用してレポート サーバーを構成するには
    
     たとえば、次の図では、VM 名が **ssrsnativecloud** で、ユーザー名が **testuser** です。
    
-    ![VM 名が含まれたログイン](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![ログインには VM 名が含まれる](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. VM で、管理者特権を使用して **Windows PowerShell ISE** を開きます。 PowerShell ISE は、Windows Server 2012 に既定でインストールされています。 標準の Windows PowerShell ウィンドウではなく、ISE を使用することをお勧めします。ISE では、スクリプトを貼り付けて変更してから、スクリプトを実行できます。
 3. スクリプトの実行を有効にするには、次の Windows PowerShell コマンドを実行します。
    

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/10/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4782afa71919a3545bd023f33f873969c86b6cc6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6d3bb9708c7bab41f87ad9c2b6ae18ac62849a2d
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208352"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223922"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Azure CLI を使用して Azure VM 上に Azure リソースのマネージド ID を構成する
 
@@ -107,12 +107,8 @@ az vm update -n myVM -g myResourceGroup --set identity.type='UserAssigned'
 ```azurecli-interactive
 az vm update -n myVM -g myResourceGroup --set identity.type="none"
 ```
-
-Azure リソースのマネージド ID VM 拡張機能 (2019 年 1 月に非推奨になる予定) を削除するには、[az vm extension delete](https://docs.microsoft.com/cli/azure/vm/) で、(VM の種類に応じて) `-n ManagedIdentityExtensionForWindows` または `-n ManagedIdentityExtensionForLinux` スイッチを使用します。
-
-```azurecli-interactive
-az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
-```
+> [!NOTE]
+> Azure リソースの VM 拡張機能 (非推奨になる予定) のマネージド ID をプロビジョニングしている場合は、[az vm extension delete](https://docs.microsoft.com/cli/azure/vm/) を使用して削除する必要があります。 詳細については、[認証のための VM 拡張機能から Azure IMDS への移行](howto-migrate-vm-extension.md)に関するページを参照してください。
 
 ## <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID
 
@@ -135,7 +131,7 @@ az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentit
    ```azurecli-interactive
    az identity create -g myResourceGroup -n myUserAssignedIdentity
    ```
-   応答には、次のように、作成されたユーザー割り当てマネージド ID の詳細が含まれています。 ユーザー割り当てマネージド ID に割り当てられたリソース id 値は、次の手順で使用されます。
+   応答には、次のように、作成されたユーザー割り当てマネージド ID の詳細が含まれています。 ユーザー割り当てマネージド ID に割り当てられたリソース ID 値は、次の手順で使用されます。
 
    ```json
    {

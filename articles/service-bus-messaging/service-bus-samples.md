@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 03/13/2019
 ms.author: aschhab
-ms.openlocfilehash: eefe624462609a69296ec6d6e409d72745da0846
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7b34233e10c5d622b598d35c6eb136b88daf8eb6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856691"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880162"
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus メッセージングのサンプル
+Service Bus メッセージングのサンプルでは、[Service Bus メッセージング](https://azure.microsoft.com/services/service-bus/)の主要な機能をデモンストレーションしています。 現在、サンプルは次の場所でご覧いただけます。
 
-Service Bus メッセージングのサンプルでは、[Service Bus メッセージング](https://azure.microsoft.com/services/service-bus/)の主要な機能をデモンストレーションしています。 現在、サンプルは次の 2 か所でご覧いただけます。
-
-- [.NET と Java](https://github.com/Azure/azure-service-bus/tree/master/samples)。 .NET のサンプルの説明についてはリポジトリの [.NET readme](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.ServiceBus.Messaging/README.md) を、Java のサンプルの説明については [Java readme](https://github.com/Azure/azure-service-bus/tree/master/samples/Java) をご覧ください。
-- [Typescript](https://github.com/Azure/azure-service-bus-node/tree/master/examples)
+| プログラミング言語 | SDK またはサンプルの場所 |
+| -------------------- | ----------------------- |
+| .NET、Java、および管理 | https://github.com/Azure/azure-service-bus/ |
+| Node.js | https://github.com/Azure/azure-sdk-for-js/tree/master/packages/%40azure/servicebus/data-plane/examples |
+| Python | https://github.com/Azure/azure-sdk-for-python/tree/master/azure-servicebus |
 
 ## <a name="service-bus-explorer"></a>サービス バス Explorer
 

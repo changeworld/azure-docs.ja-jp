@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f0232c8d2627cd600f4f05b5b501db85fa7d2ec4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6330e941f3308920ff4d5404663824633484146a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051392"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108360"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (C#)
 
@@ -68,13 +68,13 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 
 1. .NET プロジェクトを初期化し、必要な NuGet パッケージを追加するには、次のコマンドを実行します。
 
-  ```cmd/sh
-  mkdir pisample
-  cd pisample
-  dotnet new console
-  dotnet add package Microsoft.Azure.Devices.Client
-  dotnet restore
-  ```
+   ```cmd/sh
+   mkdir pisample
+   cd pisample
+   dotnet new console
+   dotnet add package Microsoft.Azure.Devices.Client
+   dotnet restore
+   ```
 
 1. Visual Studio Code で `pisample` フォルダーを開きます。 次に、**pisample.csproj** プロジェクト ファイルを開きます。 次のスニペットに示されている `<RuntimeIdentifiers>` タグを追加します。
 
@@ -275,16 +275,16 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 デバイスが Azure IoT Central で認証されるためのコードにデバイス固有の接続文字列を追加します。 この接続文字列は、実デバイスを Azure IoT Central アプリケーションに追加したときに書きとめました。
 
   > [!NOTE]
-   > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#getting-device-connection-string)し、チュートリアルの残りを続けてください。
+   > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#get-a-connection-string)し、チュートリアルの残りを続けてください。
 
 1. **Program.cs** ファイル内の `{your device connection string}` を、前に書きとめた接続文字列に置き換えます。
 
 1. コマンドライン環境で次のコマンドを実行します。
 
-  ```cmd/sh
-  dotnet restore
-  dotnet publish -r linux-arm
-  ```
+   ```cmd/sh
+   dotnet restore
+   dotnet publish -r linux-arm
+   ```
 
 1. `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` フォルダーを Raspberry Pi デバイスにコピーします。 たとえば、**scp** コマンドを使用してファイルをコピーできます。
 
@@ -313,13 +313,13 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 
 1. Azure IoT Central アプリケーションでは、Raspberry Pi 上で実行されているコードがアプリケーションとどのように対話するかを確認できます。
 
-    * 実デバイスの **[Measurements] (測定)** ページで、テレメトリを表示できます。
-    * **[プロパティ]** ページで、報告された **[Die Number] (サイコロの数字)** プロパティの値を表示できます。
-    * **[設定]** ページで、電圧やファン速度などの Raspberry Pi 上のさまざまな設定を変更できます。
+   * 実デバイスの **[Measurements] (測定)** ページで、テレメトリを表示できます。
+   * **[プロパティ]** ページで、報告された **[Die Number] (サイコロの数字)** プロパティの値を表示できます。
+   * **[設定]** ページで、電圧やファン速度などの Raspberry Pi 上のさまざまな設定を変更できます。
 
-    次のスクリーンショットは、Raspberry Pi が設定の変更を受信するようすを示しています。
+     次のスクリーンショットは、Raspberry Pi が設定の変更を受信するようすを示しています。
 
-    ![Raspberry Pi が設定の変更を受信する](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
+     ![Raspberry Pi が設定の変更を受信する](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
 
 
 ## <a name="raspberry-pi-device-template-details"></a>Raspberry PI デバイス テンプレートの詳細
@@ -364,7 +364,7 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 | type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
-| Text            | 場所     | location   | 該当なし       |
+| Text            | Location     | location   | 該当なし       |
 
 ## <a name="next-steps"></a>次の手順
 

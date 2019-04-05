@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 94ed136b48c53bd582a8b3ad210d421764b9f0f6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 271e18d370068e0445f183af0c694b19f0da22f2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808461"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102756"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso の移行: Azure Web App と Azure SQL Database にオンプレミス アプリをリファクターする
 
@@ -244,9 +244,9 @@ Contoso 管理者は、DMA を使用して SmartHotel360 データベースを�
 
 Contoso は、アプリケーションのために DevOps インフラストラクチャとパイプラインを構築する必要があります。  これを行うために、Contoso 管理者は新しい DevOps プロジェクトを作成し、コードをインポートしてから、ビルドとリリース パイプラインを設定します。
 
-1.   Contoso Azure DevOps アカウントで、新しいプロジェクト (**ContosoSmartHotelRefactor**) を作成し、バージョン コントロールに **[Git]** を選択します。
+1. Contoso Azure DevOps アカウントで、新しいプロジェクト (**ContosoSmartHotelRefactor**) を作成し、バージョン コントロールに **[Git]** を選択します。
 
-    ![新しいプロジェクト](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
+   ![新しいプロジェクト](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
 2. アプリ コードを現在保持している Git リポジトリをインポートします。 [パブリック リポジトリ](https://github.com/Microsoft/SmartHotel360-internal-booking-apps)内にあるので、ダウンロードすることができます。
 
     ![アプリ コードをダウンロードする](./media/contoso-migration-refactor-web-app-sql/vsts2.png)
@@ -306,8 +306,8 @@ Contoso 管理者は、Web アプリとデータベースがすべて通信で�
 
 6. **Drop** フォルダーにはビルドの結果が格納されています。
 
-    - 2 つの zip ファイルは、アプリを格納するパッケージです。
-    - これらのファイルは、Azure Web Apps にデプロイするためにリリース パイプラインで使用されます。
+   - 2 つの zip ファイルは、アプリを格納するパッケージです。
+   - これらのファイルは、Azure Web Apps にデプロイするためにリリース パイプラインで使用されます。
 
      ![アーティファクト](./media/contoso-migration-refactor-web-app-sql/pipeline6.png)
 
@@ -341,7 +341,7 @@ Contoso 管理者は、Web アプリとデータベースがすべて通信で�
 
 16. 継続的配置トリガーを **[有効]** に設定する必要があります。
 
-   ![有効な継続的配置](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
+    ![有効な継続的配置](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
 
 17. ここで、ステージ 1 のジョブ (I タスク) に戻り **Deploy Azure App Service** (Azure App Service のデプロイ) をクリックします。
 

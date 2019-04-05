@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62927e78b8f1a771de74c0f9215a7bd946a46672
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d6c82d6a8cf2281ebd77c9880903f8f20505f52c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199597"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル:Azure Active Directory と Bonusly の統合
 
@@ -144,7 +144,7 @@ Bonusly で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[IdP Login URL]\(IdP ログイン URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 Azure portal からコピーした **拇印** の値を、**[証明書の指紋]** ボックスに貼り付けます。
+    d. Azure portal からコピーした **拇印** の値を、**[証明書の指紋]** ボックスに貼り付けます。
    
 1. **[Save]** をクリックします。
 
@@ -181,7 +181,7 @@ Bonusly で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **Create** をクリックしてください。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-bonusly-test-user"></a>Bonusly テスト ユーザーの作成
 
@@ -219,9 +219,9 @@ Azure AD ユーザーが Bonusly にログインできるようにするには�
 
     b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
  
-    c. **[電子メール]** テキスト ボックスに、ユーザーの電子メール (**brittasimon@contoso.com** など) を入力します。
+    c. **[Email]\(メール\)** ボックスに、ユーザーのメール アドレス (例: **brittasimon\@contoso.com**) を入力します。
 
-    d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。 **[Save]** をクリックします。
+    d. **[Save]** をクリックします。
    
      >[!NOTE]
      >アカウントがアクティブになる前に、Azure AD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。

@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 86404f4eb2eb2de4243c6bb725f4292e7b560d18
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 5548a62218aaac2e4da3853e8e5d43a584922bc0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271534"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569894"
 ---
 # <a name="azure-data-factory-mapping-data-flow-pivot-transformation"></a>Azure Data Factory Mapping Data Flow のピボット変換
 
@@ -42,7 +42,7 @@ ADF Data Flow のピボットを集計として使用します。この場合、
 
 (省略可能) 行の値から作成される新しい列の先頭、中間、および末尾に文字列を追加する名前付けパターンを設定できます。
 
-たとえば、"売上" を "地域" によってピボット処理すると、各売上の値が新しい列の値になります (例:"25"、"50"、"1000" など)。ただし、"売上" というプレフィックス値を設定すると、 
+たとえば、"売上" を "地域" によってピボット処理すると、各売上の値が新しい列の値になります (例:"25"、"50"、"1000" など)。ただし、"売上" というプレフィックス値を設定すれば、各列の値の先頭に "売上" が付加されます。
 
 ![ピボットのオプション](media/data-flow/pivot5.png "ピボット 5")
 
@@ -57,3 +57,7 @@ ADF Data Flow のピボットを集計として使用します。この場合、
 ### <a name="how-to-rejoin-original-fields"></a>元のフィールドを再結合する方法
 > [!NOTE]
 > ピボット変換では、集計、グループ化、およびピボット操作で使用された列のみが出力されます。 フロー内に前の手順の別の列を含めたい場合は、前の手順からの新しい分岐を使用し、自己結合パターンを使ってフローを元のメタデータと接続します。
+
+## <a name="next-steps"></a>次の手順
+
+列の値を行の値に変換する[ピボット解除変換](data-flow-unpivot.md)を試します。 

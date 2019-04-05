@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: c3cb9b7988269f394615b6498bbe7af5bb0ab1e1
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 1e55552e238e16f2221b138b6e12afa5635d2ab2
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743359"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202675"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -163,7 +163,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
     Connect-AzureRmAccount
     ```
 
-    プロンプトが表示されたら、Azure サブスクリプションのアカウントでログインします。
+    プロンプトが表示されたら、Azure サブスクリプションのアカウントを使用してサインインします。
 
     アカウントが複数の Azure サブスクリプションに関連付けられている場合は、`Select-AzureRmSubscription` を使用して、使用するサブスクリプションを選択します。
 
@@ -175,7 +175,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
     このスクリプトを実行すると、リソース グループとストレージ アカウントを作成するときに、PowerShell プロンプトにログ出力されます。 HDInsight クラスターの HTTP ユーザーを入力するように求められます。 このアカウントは、クラスターへの HTTP(S) アクセスのセキュリティを保護するために使用されます。
 
-    Linux ベースのクラスターを作成している場合、SSH ユーザー アカウント名とパスワードを求めるメッセージが表示されます。 このアカウントは、クラスターへのリモート ログインに使用されます。
+    Linux ベースのクラスターを作成している場合、SSH ユーザー アカウント名とパスワードを求めるメッセージが表示されます。 このアカウントは、クラスターへのリモート サインインに使用されます。
 
    > [!IMPORTANT]  
    > HTTP(S) または SSH のユーザー名とパスワードを求められると、次の条件を満たすパスワードを指定する必要があります。
@@ -219,13 +219,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
 ## <a name="test-restricted-access"></a>制限付きアクセスをテストする
 
-制限付きアクセスがあることを確認するには、次のメソッドを使用します。
-
-* **Windows ベース** の HDInsight クラスターでは、リモート デスクトップを使用してクラスターに接続します。 詳細については、 [RDP を使用した HDInsight への接続](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)に関する記事をご覧ください。
-
-    接続されたら、デスクトップ上の **[Hadoop コマンド ライン]** アイコンを使用して、コマンド プロンプトを開きます。
-
-* **Linux ベース** の HDInsight クラスターでは、SSH を使用してクラスターに接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+アクセスが制限されていることを確認するには、SSH を使用してクラスターに接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 クラスターに接続したら、次の手順を使用して、SAS ストレージ アカウント上の項目を読み取りまたは一覧表示のみすることができることを確認します。
 

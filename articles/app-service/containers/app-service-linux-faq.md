@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: a12d3708cdb547cc036b249bebf901d2ec5121c3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 4c2ed5fa65528a690d618e45c118d2433820ddc6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729321"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871495"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -35,9 +35,17 @@ App Service on Linux のリリースでは、機能の追加とプラットフ�
 
 すべての Docker ファイルは [GitHub](https://github.com/azure-app-service) にあります。 すべての Docker コンテナーは [Docker Hub](https://hub.docker.com/u/appsvc/) にあります。
 
+<a id="#startup-file"></a>
+
 **ランタイム スタックを構成する場合、[スタートアップ ファイル] セクションではどのような値が有効ですか。**
 
-Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイルを指定します。 .NET Core の場合は、コンパイル済みの DLL 名を `dotnet <myapp>.dll` として指定します。 Ruby の場合は、アプリの初期化に使用する Ruby スクリプトを指定できます。
+| スタック     | 必要な値                                                                |
+|-----------|-------------------------------------------------------------------------------|
+| Java SE   | ご自分の `.jar` アプリケーションを起動するコマンド                                    |
+| Tomcat    | ご自分のアプリに必要なすべての構成を実行するスクリプトの場所 |
+| Node.js   | PM2 構成ファイルまたは独自のスクリプト ファイル                                |          
+| .NET Core | `dotnet <myapp>.dll` としてコンパイルされた DLL 名                                 |
+| Ruby      | ご自分のアプリの初期化に使用する Ruby スクリプト                     
 
 ## <a name="management"></a>管理
 
@@ -75,7 +83,7 @@ Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイ�
 
 Linux Web アプリに対して Git デプロイが失敗する場合は、以下のいずれかのオプションを選択してアプリケーション コードをデプロイします。
 
-- 継続的配信 (プレビュー) 機能を使用する:アプリのソース コードを、Azure DevOps の Git リポジトリか GitHub リポジトリに格納して、Azure の継続的配信を使用できます。 詳しくは、[Linux Web アプリに対して継続的配信を構成する方法](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)に関するページをご覧ください。
+- 継続的配信 (プレビュー) 機能を使用する:ご自分のアプリのソース コードを、Azure DevOps の Git リポジトリか GitHub リポジトリに格納して、Azure の継続的デリバリーを使用できます。 詳しくは、[Linux Web アプリに対して継続的配信を構成する方法](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/)に関するページをご覧ください。
 
 - [ZIP デプロイ API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file) を使用する:この API を使用するには、[Web アプリに SSH で接続](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support)し、コードをデプロイするフォルダーに移動します。 次のコードを実行します。
 
@@ -92,7 +100,7 @@ Linux Web アプリに対して Git デプロイが失敗する場合は、以�
 はい、サーバー側の Node.js コードで `perMessageDeflate` を無効にします。 たとえば、socket.io を使用している場合、次のコードを使います。
 
 ```nodejs
-var io = require('socket.io')(server,{
+const io = require('socket.io')(server,{
   perMessageDeflate :false
 });
 ```

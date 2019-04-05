@@ -1,6 +1,6 @@
 ---
-title: 既存の割り当てを更新する方法
-description: Azure Blueprint で既存の割り当てを更新するためのメカニズムについて学習します。
+title: ポータルから既存の割り当てを更新する方法
+description: Azure Blueprints でポータルから既存の割り当てを更新するためのメカニズムについて学習します。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2ada0ccc1286677300c005da4fa0e92be94a3ca8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 572a962e98332fc70c276346f497ed2e67e3c329
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314831"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999849"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>既存のブループリントの割り当てを更新する方法
 
@@ -26,11 +26,11 @@ ms.locfileid: "53314831"
 
 ## <a name="updating-assignments"></a>割り当ての更新
 
-1. **[すべてのサービス]** をクリックし、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** をクリックします。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側のページから **[割り当てられたブループリント]** を選択します。
 
-1. ブループリントの一覧で、ブループリントの割り当てをクリックします。 **[割り当ての更新]** ボタンをクリックするか、またはブループリントの割り当てを右クリックし、**[割り当ての更新]** を選択します。
+1. ブループリントの一覧で、ブループリントの割り当てをクリックします。 **[割り当ての更新]** ボタンをクリックするか、ブループリントの割り当てを右クリックし、**[割り当ての更新]** を選択します。
 
    ![割り当てを更新する](../media/update-existing-assignments/update-assignment.png)
 
@@ -40,7 +40,7 @@ ms.locfileid: "53314831"
 
    ![更新された割り当て - ロック](../media/update-existing-assignments/updated-assignment.png)
 
-1. ドロップダウン リストを使用して、他の**割り当て操作**に関する詳細を確認します。 選択した割り当て操作によって、**管理対象リソース**のテーブルが更新されます。
+1. ドロップダウン リストを使用して、他の**割り当て操作**に関する詳細を確認します。 選択した割り当て操作によって、**マネージド リソース**のテーブルが更新されます。
 
    ![割り当て操作](../media/update-existing-assignments/assignment-operations.png)
 
@@ -69,8 +69,8 @@ ms.locfileid: "53314831"
 
 ## <a name="next-steps"></a>次の手順
 
-- [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する
-- [静的および動的パラメーター](../concepts/parameters.md)の使用方法を理解する
-- [ブループリントの優先順位](../concepts/sequencing-order.md)のカスタマイズを参照する
-- [ブループリントによるリソース ロック](../concepts/resource-locking.md)の使い方
-- ブループリントの割り当て中に発生した問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する
+- [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する。
+- [静的および動的パラメーター](../concepts/parameters.md)の使用方法を理解する。
+- [ブループリントの優先順位](../concepts/sequencing-order.md)のカスタマイズを参照する。
+- [ブループリントのリソース ロック](../concepts/resource-locking.md)の使用方法を調べる。
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する。

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 03/18/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 2d57097e4d3317bfba5055a6b75ae72dd60f046a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fe19510d9b4c6311923b4b2ea15f133249e6cbd5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244694"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190041"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのインデックス作成
 Azure SQL Data Warehouse でのテーブル のインデックス作成に関する推奨事項と例。
@@ -45,12 +45,12 @@ WITH ( CLUSTERED COLUMNSTORE INDEX );
 
 - 列ストア テーブルでは、varchar(max)、nvarchar(max)、および varbinary(max) は使用できません。 代わりに、ヒープまたはクラスター化インデックスを検討します。
 - 列ストア テーブルでは、一時的なデータで効率が低下する可能性があります。 ヒープと、場合によっては一時テーブルも検討してください。
-- 1 億行未満を格納する小さなテーブルの場合、 ヒープ テーブルを検討してください。
+- 6,000 万行未満の小さなテーブル。 ヒープ テーブルを検討してください。
 
 ## <a name="heap-tables"></a>ヒープ テーブル
 データを一時的に SQL Data Warehouse に読み込む際は、ヒープ テーブルを使用すると、プロセス全体が高速になる場合があります。 これは、ヒープの読み込みがインデックス テーブルの読み込みより高速になり、場合によってはキャッシュから後続の読み取りを実行できる場合があるためです。  さまざまな変換を実行する前にデータをステージングするためにのみ読み込む場合は、ヒープ テーブルにテーブルを読み込むと、データをクラスター化列ストア テーブルに読み込む場合よりもはるかに高速に読み込まれます。 さらに、テーブルを永続記憶域に読み込むよりも、データを[一時テーブル](sql-data-warehouse-tables-temporary.md)に読み込んだ方が読み込みが速くなります。  
 
-1 億行未満の小さなルックアップ テーブルでは、多くの場合、ヒープ テーブルが役立ちます。  クラスター列ストア テーブルは、1 億行を超えて初めて最適な圧縮が実現されます。
+6,000 万行未満の小さなルックアップ テーブルでは、多くの場合、ヒープ テーブルが役立ちます。  クラスター列ストア テーブルは、6,000 万行を超えて初めて最適な圧縮が実現されます。
 
 ヒープ テーブルを作成するには、単純に WITH 句で HEAP を指定します。
 
@@ -182,7 +182,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 これらの根本原因により、列ストア インデックスの列グループあたりの行が最適な 100 万行より大幅に少なくなる可能性があります。 また、行が圧縮行グループではなくデルタ行グループに移動される可能性もあります。 
 
 ### <a name="memory-pressure-when-index-was-built"></a>インデックスが構築されたときのメモリ不足
-圧縮行グループあたりの行の数は、行の幅と行グループの処理に使用可能なメモリの量に直接関連します。  行を列ストア テーブルに書き込む際にメモリ負荷が発生すると、列ストア セグメントの質が低下する可能性があります。  そのため、列ストア インデックス テーブルへの書き込みセッションに、できるだけ多くメモリへのアクセスを与えることをお勧めします。  メモリとコンカレンシーの間にトレードオフがあるため、適切なメモリの割り当てに関するガイドラインは、テーブルの各行のデータ、システムに割り当てられた Data Warehouse ユニット、テーブルにデータを書き込むセッションに提供するコンカレンシー スロットの数によって異なります。  ベスト プラクティスとして、DW300 かそれ未満を使用している場合は xlargerc、DW400 から DW600 を使用している場合は largerc、DW1000 かそれ以上を使用している場合は mediumrc で始めることをお勧めします。
+圧縮行グループあたりの行の数は、行の幅と行グループの処理に使用可能なメモリの量に直接関連します。  行を列ストア テーブルに書き込む際にメモリ負荷が発生すると、列ストア セグメントの質が低下する可能性があります。  そのため、列ストア インデックス テーブルへの書き込みセッションに、できるだけ多くメモリへのアクセスを与えることをお勧めします。  メモリとコンカレンシーの間にトレードオフがあるため、適切なメモリの割り当てに関するガイドラインは、テーブルの各行のデータ、システムに割り当てられた Data Warehouse ユニット、テーブルにデータを書き込むセッションに提供するコンカレンシー スロットの数によって異なります。
 
 ### <a name="high-volume-of-dml-operations"></a>大量の DML 操作
 行を更新および削除する大量の DML 操作では、列ストアの効率性が低下する可能性があります。 これは、行グループ内の多数の行が変更される場合に特に当てはまります。
@@ -205,7 +205,7 @@ SQL Data Warehouse にフローする小規模な読み込みは、少量の読�
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>セグメントの品質を向上させるためのインデックスの再構築
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>手順 1:適切なリソース クラスを使用しているユーザーを特定または作成する
-セグメントの品質を簡単に高める方法の 1 つが、インデックスの再構築です。  上記のビューが返す SQL によって、インデックスを再構築するために使用できる ALTER INDEX REBUILD ステートメントが返されます。 インデックスを再構築するときは、インデックスを再構築するセッションに必ず十分なメモリを割り当ててください。  これを実行するには、次のテーブルのインデックスを再構築するためのアクセス許可を持っているユーザーのリソース クラスを、推奨される最小値に変更します。 データベース所有者のユーザーのリソース クラスは変更できないため、システムにユーザーを作成していない場合は、最初にこのように対応する必要があります。 お勧めの最小リソース クラスは、DW300 かそれ未満を使用している場合は xlargerc、DW400 から DW600 を使用している場合は largerc、DW1000 かそれ以上を使用している場合は mediumrc です。
+セグメントの品質を簡単に高める方法の 1 つが、インデックスの再構築です。  上記のビューが返す SQL によって、インデックスを再構築するために使用できる ALTER INDEX REBUILD ステートメントが返されます。 インデックスを再構築するときは、インデックスを再構築するセッションに必ず十分なメモリを割り当ててください。  これを実行するには、次のテーブルのインデックスを再構築するためのアクセス許可を持っているユーザーのリソース クラスを、推奨される最小値に変更します。 
 
 次に、リソース クラスを増やすことでより多くのメモリをユーザーに割り当てる方法の例を示します。 リソース クラスの使用については、[「ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。
 
@@ -216,7 +216,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>手順 2:より高いリソース クラス ユーザーでクラスター化列ストア インデックスを再構築する
 手順 1 でリソース クラスを上位に変更したユーザー (たとえば LoadUser) としてログインし、ALTER INDEX ステートメントを実行します。 このユーザーは、インデックスが再構築されるテーブルに対して ALTER 権限を持っている必要があるのでご注意ください。 これらの例では、列ストア インデックス全体を再構築する方法や単一のパーティションを再構築する方法を示します。 大規模なテーブルでは、単一のパーティションとインデックスを同時に再構築すると、より実用的です。
 
-または、インデックスを再構築せずに、[CTAS を使用して](sql-data-warehouse-develop-ctas.md)テーブルを新しいテーブルにコピーできます。 最良の方法はどちらでしょうか。 大量のデータの場合は、通常、CTAS の方が [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql) より高速です。 少量のデータの場合は、ALTER INDEX を簡単に使用できるため、テーブルを入れ替える必要はありません。 CTAS を使用してインデックスを再構築する方法の詳細については、後の「 **CTAS とパーティションの切り替えを使用したインデックスの再構築** 」を参照してください。
+または、インデックスを再構築せずに、[CTAS を使用して](sql-data-warehouse-develop-ctas.md)テーブルを新しいテーブルにコピーできます。 最良の方法はどちらでしょうか。 大量のデータの場合は、通常、CTAS の方が [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql) より高速です。 少量のデータの場合は、ALTER INDEX を簡単に使用できるため、テーブルを入れ替える必要はありません。 
 
 ```sql
 -- Rebuild the entire clustered index
@@ -263,25 +263,8 @@ WHERE   [OrderDateKey] >= 20000101
 AND     [OrderDateKey] <  20010101
 ;
 
--- Step 2: Create a SWITCH out table
-CREATE TABLE dbo.FactInternetSales_20000101
-    WITH    (   DISTRIBUTION = HASH(ProductKey)
-            ,   CLUSTERED COLUMNSTORE INDEX
-            ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
-                                (20000101
-                                )
-                            )
-            )
-AS
-SELECT *
-FROM    [dbo].[FactInternetSales]
-WHERE   1=2 -- Note this table will be empty
-
--- Step 3: Switch OUT the data 
-ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales_20000101] PARTITION 2;
-
--- Step 4: Switch IN the rebuilt data
-ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
+-- Step 2: Switch IN the rebuilt data with TRUNCATE_TARGET option
+ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
 CTAS を使用してパーティションを再作成する方法の詳細については、[SQL Data Warehouse でのパーティション分割の使用](sql-data-warehouse-tables-partition.md)に関するページを参照してください。

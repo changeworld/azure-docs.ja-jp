@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 01db1de5c6b533c346ce35c8474d996213873d10
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: fd2614c258aff146397e24e688eae18d84d3cfa6
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002197"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201162"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight での大規模なストリーミング
 
@@ -45,7 +45,7 @@ Spark Streaming は、Spark の拡張機能で、バッチ処理に使用する�
 
 ## <a name="scaling-a-cluster"></a>クラスターのスケーリング
 
-作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。 すべての HDInsight クラスターで、[クラスター内のノード数を変更](hdinsight-administer-use-management-portal.md#scale-clusters)できます。 すべてのデータが Azure Storage または Data Lake Storage に格納されるため、Spark クラスターはデータの損失なく削除できます。
+作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。 すべての HDInsight クラスターで、[クラスター内のノード数を変更](hdinsight-administer-use-portal-linux.md#scale-clusters)できます。 すべてのデータが Azure Storage または Data Lake Storage に格納されるため、Spark クラスターはデータの損失なく削除できます。
 
 分離テクノロジには利点があります。 たとえば、Kafka はイベント バッファリング テクノロジであるため、IO 集中型であり、大量の処理能力を必要としません。 比較すると、Spark Streaming などのストリーム プロセッサはコンピューティング集中型であり、より強力な VM を必要とします。 これらのテクノロジを異なるクラスターに分離することによって、VM を最適に利用しながら、それらを独立してスケーリングできます。
 

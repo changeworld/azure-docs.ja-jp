@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: a6c17ad8d4af568d910597da4b44f09676d1c36a
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: ffded5705e61538a8bec886483a49705bb2298c1
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652492"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203032"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Apache Sqoop の使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -41,14 +41,14 @@ HDInsight クラスターにはサンプル データがいくつか付属して
   
   | フィールド | データ型 |
   | --- | --- |
-  | clientid |string |
-  | querytime |string |
-  | market |string |
-  | deviceplatform |string |
-  | devicemake |string |
-  | devicemodel |string |
-  | state |string |
-  | country |string |
+  | clientid |文字列 |
+  | querytime |文字列 |
+  | market |文字列 |
+  | deviceplatform |文字列 |
+  | devicemake |文字列 |
+  | devicemodel |文字列 |
+  | state |文字列 |
+  | country |文字列 |
   | querydwelltime |double |
   | sessionid |bigint |
   | sessionpagevieworder |bigint |
@@ -56,7 +56,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 このチュートリアルでは、これら 2 つのデータセットを使用して Sqoop のインポートとエクスポートをテストします。
 
 ## <a name="create-cluster-and-sql-database"></a>クラスターと SQL Database を作成します。
-ここでは、Azure Portal と Azure Resource Manager テンプレートを使用してチュートリアルを実行するために、クラスター、SQL Database、および SQL データベース スキーマを作成する方法を説明します。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/) にあります。 Resource Manager テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。  bacpac パッケージは、パブリック BLOB コンテナー、 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac の中にあります。 bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
+ここでは、Azure Portal と Azure Resource Manager テンプレートを使用してチュートリアルを実行するために、クラスター、SQL Database、および SQL データベース スキーマを作成する方法を説明します。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)にあります。 Resource Manager テンプレートでは、SQL Database にテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。  bacpac パッケージは、パブリック BLOB コンテナー、 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac の中にあります。 bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
    
 ```json
 "storageKeyType": "Primary",
@@ -163,7 +163,7 @@ HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行
 PowerShell のサンプルでは、次の手順を実行します。
 
 1. Azure に接続します。
-2. Azure リソース グループを作成します。 詳細については、 [Azure リソース マネージャーでの Windows PowerShell の使用](../../azure-resource-manager/powershell-azure-resource-manager.md)
+2. Azure リソース グループを作成します。 詳細については、 [Azure リソース マネージャーでの Windows PowerShell の使用](../../azure-resource-manager/manage-resource-groups-powershell.md)
 3. Azure SQL Database サーバー、Azure SQL Database、および 2 つのテーブルを作成します。 
    
     SQL Server を使用する場合は、次のステートメントを使用してテーブルを作成します。
@@ -627,7 +627,6 @@ Get-AzureRmHDInsightJobOutput `
 [hdinsight-provision]: ../hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
-[hdinsight-analyze-flight-data]: hdinsight-analyze-flight-delay-data.md
 [hdinsight-use-oozie]: hdinsight-use-oozie.md
 [hdinsight-upload-data]: ../hdinsight-upload-data.md
 [hdinsight-submit-jobs]:submit-apache-hadoop-jobs-programmatically.md

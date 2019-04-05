@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 248167eca532beb957c723f5074fc1546982efc8
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463322"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259297"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する
 この記事では、Azure で自動スケール操作に基づいて特定の Web URL を呼び出すことや電子メールを送信することができるようにトリガーを設定する方法について説明します。  
@@ -59,6 +59,7 @@ REST API または Resource Manager テンプレートを使用している場�
       }
     ]
 ```
+
 | フィールド | 必須 | 説明 |
 | --- | --- | --- |
 | operation |はい |値は "Scale" にする必要があります。 |
@@ -70,7 +71,7 @@ REST API または Resource Manager テンプレートを使用している場�
 | properties |はい |値は空 {} にするか、キーと値のペアを指定できます。 |
 
 ## <a name="authentication-in-webhooks"></a>Webhook での認証
-webhook はトークンベースの認証を利用して認証できます。クエリ パラメーターとしてトークン ID を使用し、webhook URI を保存します。 たとえば、 https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue のように指定します。
+webhook はトークンベースの認証を利用して認証できます。クエリ パラメーターとしてトークン ID を使用し、webhook URI を保存します。 https:\//mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue などです
 
 ## <a name="autoscale-notification-webhook-payload-schema"></a>自動スケール通知の Webhook ペイロード スキーマ
 自動スケール通知が生成されると、次のメタデータが Webhook ペイロードに含まれます。
