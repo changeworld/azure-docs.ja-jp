@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 39ab31cd06707dbd488914da248941ab6d174c29
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 632fa14bd96eaee2ca58b59dd855584c1fd961e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388771"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010096"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service Environment の管理アドレス
 
@@ -40,7 +40,7 @@ ASE への受信管理トラフィックをロック ダウンするために、
 
 ## <a name="configuring-a-network-security-group"></a>ネットワーク セキュリティ グループの構成
 
-ネットワーク セキュリティ グループがあれば、個々のアドレスや、独自の構成を維持することについて心配する必要がありません。 すべてのアドレスを保持して最新の状態に保たれる AppServiceManagement という名前の IP サービス タグがあります。 この IP サービス タグを NSG で使用するには、ポータルに移動し、お使いのネットワーク セキュリティ グループの UI を開き、[受信セキュリティ規則] を選択します。 受信管理トラフィック用の既存のルールがある場合は、それを編集します。 この NSG がお使いの ASE で作成されたものでない場合や、すべて新しいものの場合は、**[追加]** を選択します。 [ソース] ドロップダウンで、**[サービス タグ]** を選択します。  [ソース サービス タグ] で、[AppServiceManagement] を選択します。 ソース ポートの範囲を \*、[宛先] を **[任意]**、宛先ポート範囲を **[454 455]**、プロトコルを **[TCP]**、[アクション] を **[許可]** に設定します。 ルールを作成する場合は、[優先度] を設定する必要があります。 
+ネットワーク セキュリティ グループがあれば、個々のアドレスや、独自の構成を維持することについて心配する必要がありません。 すべてのアドレスを保持して最新の状態に保たれる AppServiceManagement という名前の IP サービス タグがあります。 この IP サービス タグを NSG で使用するには、ポータルに移動し、お使いのネットワーク セキュリティ グループの UI を開き、[受信セキュリティ規則] を選択します。 受信管理トラフィック用の既存のルールがある場合は、それを編集します。 この NSG がお使いの ASE で作成されたものでない場合や、すべて新しいものの場合は、**[追加]** を選択します。 [ソース] ドロップダウンで、**[Service Tag]\(サービス タグ)** を選択します。  [ソース サービス タグ] で **AppServiceManagement** を選択します。 ソース ポートの範囲を \*、[Destination]\(宛先) を **[Any]\(任意)**、宛先ポート範囲を **[454 455]**、プロトコルを **[TCP]**、[アクション] を **[許可]** に設定します。 ルールを作成する場合は、[優先度] を設定する必要があります。 
 
 ![サービス タグでの NSG の作成][1]
 
