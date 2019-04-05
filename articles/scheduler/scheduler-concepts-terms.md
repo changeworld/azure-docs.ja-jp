@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 15770246f52e87b8fba4a9ec01e1583d194d002b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67f51b078b8e92592e9593d7d254e6985265eee8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887053"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651271"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Azure Scheduler の概念、用語集、エンティティ
 
@@ -143,7 +143,7 @@ Azure Scheduler では、複数のジョブの種類がサポートされてい�
 
 ## <a name="action"></a>action
 
-Scheduler ジョブは、指定されたスケジュールに基づいてプライマリ **アクション**を実行します。 Scheduler は、HTTP、Storage キュー、Service Bus キュー、Service Bus トピックのアクションをサポートしています。 プライマリ **アクション**が失敗した場合、Scheduler はエラーを処理するセカンダリ [ **errorAction** ](#errorAction) を実行できます。 **アクション** オブジェクトでは次の要素が記述されています。
+Scheduler ジョブは、指定されたスケジュールに基づいてプライマリ **アクション**を実行します。 Scheduler は、HTTP、Storage キュー、Service Bus キュー、Service Bus トピックのアクションをサポートしています。 プライマリ **アクション**が失敗した場合、Scheduler はエラーを処理するセカンダリ [ **errorAction** ](#erroraction) を実行できます。 **アクション** オブジェクトでは次の要素が記述されています。
 
 * アクションのサービスの種類
 * アクションの詳細

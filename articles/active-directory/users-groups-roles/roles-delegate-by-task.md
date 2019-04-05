@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e81d5513f43882093883256cf9eab4a22e9ca01
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875276"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361372"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -235,13 +235,13 @@ ID プロバイダーを管理する | グローバル管理者 |
 
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
-認証方法を構成する | グローバル管理者 | 
-カスタマイズを構成する | グローバル管理者 | 
-通知を構成する | グローバル管理者 | 
-オンプレミスの統合を構成する | グローバル管理者 | 
-パスワードのリセット プロパティを構成する | グローバル管理者 | 
-登録を構成する | グローバル管理者 | 
-すべての構成を読み取る | セキュリティ管理者、ユーザー管理者 | 
+認証方法を構成する | グローバル管理者 |
+カスタマイズを構成する | グローバル管理者 |
+通知を構成する | グローバル管理者 |
+オンプレミスの統合を構成する | グローバル管理者 |
+パスワードのリセット プロパティを構成する | ユーザー管理者 | グローバル管理者
+登録を構成する | グローバル管理者 |
+すべての構成を読み取る | セキュリティ管理者 | ユーザー管理者 |
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 

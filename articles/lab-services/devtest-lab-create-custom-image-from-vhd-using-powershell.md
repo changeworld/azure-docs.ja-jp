@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e594ace368799f85eea2e7291ead6febea0ea4b7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dc6e218fe048e1781f53c53935308eb193fcd094
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543884"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487160"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>PowerShell を使用して VHD ファイルからカスタム イメージを作成する
 
@@ -37,20 +37,20 @@ ms.locfileid: "57543884"
 
 1. PowerShell プロンプトで、**Connect-AzAccount** コマンドレットに対する次の呼び出しを使用して Azure アカウントにログインします。  
     
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 
 1.  **Select-AzSubscription** コマンドレットを呼び出して、目的の Azure サブスクリプションを選択します。 次の **$subscriptionId** 変数のプレース ホルダーを、有効な Azure サブスクリプション ID に置き換えます。 
 
-    ```PowerShell
+    ```powershell
     $subscriptionId = '<Specify your subscription ID here>'
     Select-AzSubscription -SubscriptionId $subscriptionId
     ```
 
 1.  **Get-AzResource** コマンドレットを呼び出して、ラボ オブジェクトを取得します。 次の **$labRg** 変数と **$labName** 変数のプレース ホルダーを、環境の適切な値に置き換えます。 
 
-    ```PowerShell
+    ```powershell
     $labRg = '<Specify your lab resource group name here>'
     $labName = '<Specify your lab name here>'
     $lab = Get-AzResource -ResourceId ('/subscriptions/' + $subscriptionId + '/resourceGroups/' + $labRg + '/providers/Microsoft.DevTestLab/labs/' + $labName)
@@ -58,20 +58,20 @@ ms.locfileid: "57543884"
  
 1.  ラボ オブジェクトから、ラボ ストレージ アカウントとラボ ストレージ アカウント キーの値を取得します。 
 
-    ```PowerShell
+    ```powershell
     $labStorageAccount = Get-AzResource -ResourceId $lab.Properties.defaultStorageAccount 
     $labStorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $labStorageAccount.ResourceGroupName -Name $labStorageAccount.ResourceName)[0].Value
     ```
 
 1.  次の **$vhdUri** 変数のプレース ホルダーを、アップロードした VHD ファイルの URI に置き換えます。 VHD ファイルの URI は、Azure Portal でストレージ アカウントの [BLOB] ブレードから取得できます。
 
-    ```PowerShell
+    ```powershell
     $vhdUri = '<Specify the VHD URI here>'
     ```
 
 1.  **New-AzResourceGroupDeployment** コマンドレットを使用してカスタム イメージを作成します。 次の **$customImageName** 変数と **$customImageDescription** 変数のプレースホルダーを、環境で意味のある名前に置き換えます。
 
-    ```PowerShell
+    ```powershell
     $customImageName = '<Specify the custom image name>'
     $customImageDescription = '<Specify the custom image description>'
 
@@ -84,7 +84,7 @@ ms.locfileid: "57543884"
 
 次の PowerShell スクリプトを使用して、VHD ファイルからカスタム イメージを作成できます。 プレース ホルダー (山かっこで始まり、山かっこで終わります) を、ニーズに合った適切な値に置き換えます。 
 
-```PowerShell
+```powershell
 # Log in to your Azure account.  
 Connect-AzAccount
 

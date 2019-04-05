@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: ca111623f6d3d7c61b1bfc4e1af328f9599c2440
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6753b3a76ff5d3e0266f238d8e354943dec694a8
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884508"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58480460"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>DMZ で使用するサンプル アプリケーション
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -30,7 +30,7 @@ ms.locfileid: "57884508"
 ## <a name="firewall-rule-to-allow-icmp"></a>ICMP を許可するファイアウォール ルール
 この単純な PowerShell ステートメントを任意の Windows VM で実行することで、ICMP (Ping) トラフィックを許可することができます。 このファイアウォールの更新により、ping プロトコルが Windows ファイアウォールを通過するのを許可して、テストやトラブルシューティングを容易にすることができます (ほとんどの Linux ディストリビューションでは、ICMP が既定でオンになっています)。
 
-```PowerShell
+```powershell
 # Turn On ICMPv4
 New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
     -Protocol ICMPv4 -Enabled True -Profile Any -Action Allow
@@ -49,7 +49,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 
 この PowerShell スクリプトは、RDP が IIS01 に転送されるときに、ローカルに実行する必要があります。
 
-```PowerShell
+```powershell
 # IIS Server Post Build Config Script
 # Get Admin Account and Password
     Write-Host "Please enter the admin account information used to create this VM:" -ForegroundColor Cyan
@@ -161,7 +161,7 @@ New-NetFirewallRule -Name Allow_ICMPv4 -DisplayName "Allow ICMPv4" `
 
 この PowerShell スクリプトは、RDP が AppVM01 に転送されるときに、ローカルに実行する必要があります。 PowerShell は、正常に実行されるように、管理者として実行する必要があります。
 
-```PowerShell
+```powershell
 # AppVM01 Server Post Build Config Script
 # PowerShell must be run as Administrator for Net Share commands to work
 

@@ -2,17 +2,17 @@
 title: AKS と Azure Container Registry で Draft を使用します。
 description: AKS と Azure Container Registry で Draft を使用します。
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
-ms.author: iainfou
-ms.openlocfilehash: 5169b8856155df5e62b1e85d291ce6c1b54c8a87
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: zarhoads
+ms.openlocfilehash: 462cfd6ec0a6b25f85dda0245dd4f5feed7cb712
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011932"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755657"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Draft の使用
 

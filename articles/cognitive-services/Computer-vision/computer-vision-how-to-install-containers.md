@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 3/19/2019
+ms.date: 3/22/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 665e6651db37cc04693d68bd2de2ede6e595eab4
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: b7e60b4fbdf076c50a7d9a29092de9ab1c32b210
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293395"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520651"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>テキスト認識コンテナーをインストールして実行する
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="the-host-computer"></a>ホスト コンピューター
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-host-computer.md)]
+[!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
 
 ### <a name="container-requirements-and-recommendations"></a>コンテナーの要件と推奨事項
@@ -133,6 +133,11 @@ Computer Vision サービスで該当する REST 操作を使用する方法と�
 
 `POST /vision/v2.0/recognizeTextDirect` 操作を使用し、イメージ内の印刷されたテキストが同期認識されます。 この操作は同期のため、この操作の要求本文は `POST /vision/v2.0/recognizeText` 操作のそれと同じになりますが、この操作の応答本文は `GET /vision/v2.0/textOperations/*{id}*` 操作によって返されるそれと同じになります。
 
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
+
 ## <a name="stop-the-container"></a>コンテナーの停止
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
@@ -141,9 +146,6 @@ Computer Vision サービスで該当する REST 操作を使用する方法と�
 
 出力[マウント](./computer-vision-resource-container-config.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。 
 
-## <a name="containers-api-documentation"></a>コンテナーの API ドキュメント
-
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="billing"></a>課金
 

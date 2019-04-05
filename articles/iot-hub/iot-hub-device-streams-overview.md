@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 024bb29f9d7276021888e949073f6d45aed0a249
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 672b06dda41edb18cbf31352188b0fdd2a155782
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076277"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649648"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub デバイス ストリーム (プレビュー)
 
@@ -101,7 +101,7 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="whitelist-device-streaming-endpoints"></a>デバイス ストリーミング エンドポイントをホワイトリストに登録する
 
-[前述](#Overview)のとおり、デバイスでは、デバイス ストリームの開始プロセス中に IoT Hub ストリーミング エンドポイントへのアウトバウンド接続が作成されます。 デバイスまたはそのネットワーク上のファイアウォールでは、ポート 443 経由のストリーミング ゲートウェイへのアウトバウンド接続 (TLS を使用して暗号化される WebSocket 接続によって通信が行われることに注意してください) を許可する必要があります。
+[前述](#overview)のとおり、デバイスでは、デバイス ストリームの開始プロセス中に IoT Hub ストリーミング エンドポイントへのアウトバウンド接続が作成されます。 デバイスまたはそのネットワーク上のファイアウォールでは、ポート 443 経由のストリーミング ゲートウェイへのアウトバウンド接続 (TLS を使用して暗号化される WebSocket 接続によって通信が行われることに注意してください) を許可する必要があります。
 
 デバイス ストリーミング エンドポイントのホスト名は、Azure IoT Hub ポータルの [概要] タブで確認できます。![代替テキスト](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "デバイス ストリーム エンドポイント")
 

@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7401a77e79ec42930c411856defd48a0ba3c3bf7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d145407331ed652f21510483b51a4617bf28e2fa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170248"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879120"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
@@ -249,7 +249,7 @@ Azure AD での同期サービスのアカウント数の上限は 20 です。 
 |Express 設定を使用したインストール | [Azure AD Connect の高速インストール](how-to-connect-install-express.md)|
 |カスタマイズした設定を使用したインストール | [Azure AD Connect のカスタム インストール](./how-to-connect-install-custom.md)|
 |DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](how-to-dirsync-upgrade-get-started.md)|
-|インストール後に | [インストールの確認とライセンスの割り当て ](how-to-connect-post-installation.md)|
+|インストール後に | [インストールの確認とライセンスの割り当て](how-to-connect-post-installation.md)|
 
 ## <a name="next-steps"></a>次の手順
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

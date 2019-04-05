@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 6a13988af7a46ff6fafe352e850ee238cda79c08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996705"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58794021"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -34,6 +34,7 @@ Office 365 管理ソリューションでは、Azure Monitor で Office 365 環�
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
+
 このソリューションをインストールして構成する前に、次のものが必要です。
 
 - 組織の Office 365 サブスクリプション。
@@ -42,12 +43,16 @@ Office 365 管理ソリューションでは、Azure Monitor で Office 365 環�
  
 
 ## <a name="management-packs"></a>管理パック
+
 このソリューションでは、[接続されている管理グループ](../platform/om-agents.md)に管理パックがインストールされることはありません。
   
+
 ## <a name="install-and-configure"></a>インストールと構成
+
 [サブスクリプションに Office 365 ソリューション](solutions.md#install-a-monitoring-solution)を追加することで開始します。 追加されたら、Office 365 サブスクリプションへのアクセス権を付与するため、このセクションの構成手順を実行する必要があります。
 
 ### <a name="required-information"></a>必要な情報
+
 この手順を開始する前に、次の情報を収集します。
 
 Log Analytics ワークスペースから:
@@ -64,6 +69,7 @@ Office 365 サブスクリプションから:
 - クライアント シークレット: 認証に必要な暗号化された文字列。
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>Azure Active Directory に Office 365 アプリケーションを作成する
+
 最初の手順では、管理ソリューションが Office 365 ソリューションへのアクセスに使用する Azure Active Directory でアプリケーションを作成します。
 
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にログインします。
@@ -111,11 +117,12 @@ Office 365 サブスクリプションから:
     ![構成する](media/solution-office-365/keys.png)
 
 ### <a name="add-admin-consent"></a>管理者の同意の入力
+
 最初に管理者アカウントを有効にするには、アプリケーションの管理者の同意を指定する必要があります。 これは PowerShell スクリプトで行うことができます。 
 
 1. 次のスクリプトを *office365_consent.ps1* として保存します。
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,     
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -161,9 +168,11 @@ Office 365 サブスクリプションから:
     ```
 
 2. 次のコマンドを実行して、スクリプトを実行します。 資格情報を求めるメッセージが 2 回表示されます。 最初に Log Analytics ワークスペースの資格情報を指定し、次に Office 365 テナントのグローバル管理者の資格情報を指定します。
+
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
+
     例:
 
     ```
@@ -175,11 +184,12 @@ Office 365 サブスクリプションから:
     ![管理者の同意](media/solution-office-365/admin-consent.png)
 
 ### <a name="subscribe-to-log-analytics-workspace"></a>Log Analytics ワークスペースへの送信
+
 最後の手順では、Log Analytics ワークスペースにアプリケーションを送信します。 これは PowerShell スクリプトでも行うことができます。
 
 1. 次のスクリプトを *office365_subscription.ps1* として保存します。
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -342,12 +352,14 @@ Office 365 サブスクリプションから:
     ```
 
 2. 次のコマンドを実行して、スクリプトを実行します。
+
     ```
     .\office365_subscription.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeUsername <OfficeUsername> -OfficeTennantID <Tenant ID> -OfficeClientId <Client ID> -OfficeClientSecret <Client secret>
     ```
+
     例:
 
-    ```
+    ```powershell
     .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
     ```
 
@@ -355,7 +367,7 @@ Office 365 サブスクリプションから:
 
 アプリケーションがこのワークスペースに既にサブスクライブしている場合や、このテナントが別のワークスペースにサブスクライブしている場合は、次のエラーが表示されることがあります。
 
-```
+```Output
 Invoke-WebRequest : {"Message":"An error has occurred."}
 At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 + $officeresponse = Invoke-WebRequest @Officeparams
@@ -366,7 +378,7 @@ At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 
 無効なパラメーター値を指定した場合は、次のエラーが表示される場合があります。
 
-```
+```Output
 Select-AzSubscription : Please provide a valid tenant or a valid subscription.
 At line:12 char:18
 + ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
@@ -377,11 +389,12 @@ At line:12 char:18
 ```
 
 ## <a name="uninstall"></a>アンインストール
+
 [管理ソリューションを削除する](solutions.md#remove-a-monitoring-solution)のプロセスを使用して Office 365 管理ソリューションを削除できます。 ただしこれによって、Office 365 から Azure Monitor に収集されているデータは停止されません。 Office 365 からのサブスクリプションを解除し、データの収集を停止するには、以下の手順に従います。
 
 1. 次のスクリプトを *office365_unsubscribe.ps1* として保存します。
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -472,15 +485,18 @@ At line:12 char:18
 
     例:
 
-    ```
+    ```powershell
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
     ```
 
 ## <a name="data-collection"></a>データ収集
+
 ### <a name="supported-agents"></a>サポートされているエージェント
+
 Office 365 ソリューションは、どの [Log Analytics エージェント](../platform/agent-data-sources.md)からもデータを取得しません。  Office 365 から直接データを取得します。
 
 ### <a name="collection-frequency"></a>収集の頻度
+
 最初のデータ収集には数時間かかる場合があります。 収集が開始されると、レコードが作成されるたびに、Office 365 は [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)と詳細なデータを Azure Monitor に送信します。 このレコードは、受信した後、数分以内に Azure Monitor で使用できます。
 
 ## <a name="using-the-solution"></a>ソリューションの使用
@@ -511,11 +527,12 @@ Log Analytics ワークスペースに Office 365 ソリューションを追加
 Azure Monitor の Log Analytics ワークスペースで Office 365 ソリューションによって作成されたすべてのレコードは、**型** が **OfficeActivity** です。  **OfficeWorkload**プロパティは、レコードが参照する Office 365 サービス (Exchange、AzureActiveDirectory、SharePoint、または OneDrive) を決定します。  **RecordType** プロパティは操作の種類を指定します。  プロパティは操作の種類ごとに異なり、次の表に示しています。
 
 ### <a name="common-properties"></a>共通のプロパティ
+
 次のプロパティは、Office 365 のすべてのレコードに共通です。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--- |:--- |
-| type | *OfficeActivity* |
+| Type | *OfficeActivity* |
 | ClientIP | アクティビティが記録されたときに使用されたデバイスの IP アドレス。 IP アドレスは IPv4 または IPv6 アドレスの形式で表示されます。 |
 | OfficeWorkload | レコードが参照する Office 365 サービス。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
 | Operation | ユーザーまたは管理者アクティビティの名前。  |
@@ -528,6 +545,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory ベース
+
 次のプロパティは、Azure Active Directory のすべてのレコードに共通です。
 
 | プロパティ | 説明 |
@@ -539,6 +557,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ### <a name="azure-active-directory-account-logon"></a>Azure Active Directory アカウント ログオン
+
 これらのレコードは、Active Directory のユーザーがログオンを試みたときに作成されます。
 
 | プロパティ | 説明 |
@@ -552,6 +571,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
+
 これらのレコードは、変更または追加が Azure Active Directory オブジェクトに行われたときに作成されます。
 
 | プロパティ | 説明 |
@@ -569,6 +589,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ### <a name="data-center-security"></a>データ センター セキュリティ
+
 これらのレコードは、データ センター セキュリティの監査データから作成されます。  
 
 | プロパティ | 説明 |
@@ -584,6 +605,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ### <a name="exchange-admin"></a>Exchange 管理者
+
 これらのレコードは、Exchange 構成が変更されたときに作成されます。
 
 | プロパティ | 説明 |
@@ -598,6 +620,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ### <a name="exchange-mailbox"></a>Exchange メールボックス
+
 これらのレコードは、変更または追加が Exchange メールボックスに行われたときに作成されます。
 
 | プロパティ | 説明 |
@@ -620,6 +643,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ### <a name="exchange-mailbox-audit"></a>Exchange メールボックス監査
+
 これらのレコードは、メールボックス監査エントリが作成されるときに作成されます。
 
 | プロパティ | 説明 |
@@ -634,6 +658,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ### <a name="exchange-mailbox-audit-group"></a>Exchange メールボックス監査グループ
+
 これらのレコードは、変更または追加が Exchange グループに行われたときに作成されます。
 
 | プロパティ | 説明 |
@@ -652,6 +677,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ### <a name="sharepoint-base"></a>SharePoint ベース
+
 これらのプロパティは、SharePoint のすべてのレコードに共通です。
 
 | プロパティ | 説明 |
@@ -668,6 +694,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ### <a name="sharepoint-schema"></a>SharePoint スキーマ
+
 これらのレコードは、SharePoint の構成変更が行われたときに作成されます。
 
 | プロパティ | 説明 |
@@ -680,6 +707,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ### <a name="sharepoint-file-operations"></a>SharePoint ファイル操作
+
 これらのレコードは、SharePoint でのファイル操作に応答して作成されます。
 
 | プロパティ | 説明 |
@@ -700,6 +728,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ## <a name="sample-log-searches"></a>サンプル ログ検索
+
 次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
 
 | Query | 説明 |
@@ -713,6 +742,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 ## <a name="next-steps"></a>次の手順
+
 * [Azure Monitor でログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な更新プログラムのデータを表示します。
 * [独自のダッシュボードを作成](../learn/tutorial-logs-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。
 * [アラートを作成](../platform/alerts-overview.md)して、重要な Office 365 アクティビティがあらかじめ通知されるようにします。  

@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 7d4748ced196abdb4f3f0bcb70ad6fe254b24bf7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657587"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850294"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Azure SQL Database、SQL Data Warehouse、Data Factory、Power BI による SaaS 分析を調べる
 
@@ -94,7 +94,7 @@ Wingtip Tickets アプリでは、テナントのトランザクション デー
 
 次に、デプロイした Azure リソースを確認します。
 #### <a name="tenant-databases-and-analytics-store"></a>テナント データベースと分析ストア
-[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使って、**tenants1-dpt-&lt;ユーザー&gt;** および **catalog-dpt-&lt;ユーザー&gt;** サーバーに接続します。 &lt;ユーザー&gt; は、アプリをデプロイしたときに使った値に置き換えます。 ログインには *developer* を、パスワードには *P@ssword1* を使います。 詳しいガイダンスについては、[入門チュートリアル](saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
+[SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) を使って、**tenants1-dpt-&lt;ユーザー&gt;** および **catalog-dpt-&lt;ユーザー&gt;** サーバーに接続します。 &lt;ユーザー&gt; は、アプリをデプロイしたときに使った値に置き換えます。 ログインには *developer* を、パスワードには *P\@ssword1* を使います。 詳しいガイダンスについては、[入門チュートリアル](saas-dbpertenant-wingtip-app-overview.md)をご覧ください。
 
 ![SSMS から SQL Database サーバーに接続する](media/saas-tenancy-tenant-analytics/ssmsSignIn.JPG)
 
@@ -113,7 +113,7 @@ Wingtip Tickets アプリでは、テナントのトランザクション デー
 #### <a name="blob-storage"></a>BLOB ストレージ
 1. [Azure portal](https://ms.portal.azure.com) で、アプリケーションのデプロイに使ったリソース グループに移動します。 **wingtipstaging\<ユーザー\>** というストレージ アカウントが追加されていることを確認します。
 
-  ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
+   ![DWtables](media/saas-tenancy-tenant-analytics/adf-staging-storage.PNG)
 
 1. **wingtipstaging\<ユーザー\>** ストレージ アカウントをクリックして、存在するオブジェクトを調べます。
 1. **[BLOB]** タイルをクリックします
@@ -195,7 +195,7 @@ SQL Data Warehouse は、テナント データに対して集計を実行する
 
     ![sign-in-to-power-bi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として *developer*、パスワードとして *P@ssword1* を入力します。 **[接続]** をクリックします。  
+5. 左側のウィンドウで **[データベース]** を選択し、ユーザー名として「*developer*」、パスワードとして「*P\@ssword1*」を入力します。 **[接続]** をクリックします。  
 
     ![database-sign-in](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c6c44525018e2115f1df8ed2d3f15432b95490c6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903625"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619834"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>統合されたコンポーネント間のトランザクションの診断
 
@@ -32,7 +32,7 @@ ms.locfileid: "57903625"
 * コンポーネントは、個別の Application Insights インストルメンテーション キーである場合も (サブスクリプションが異なる場合も)、単一の Application Insights インストルメンテーション キーにレポートするさまざまなロールである場合もあります。 新しいエクスペリエンスでは、その設定方法に関係なく、すべてのコンポーネントの詳細が表示されます。
 
 > [!NOTE]
-> * **関連項目のリンクが見つからない場合**: 関連するすべてのテレメトリは、左側の[一番上](#cross-component-transaction-chart)と[一番下](#all-telemetry-with-this-Operation-Id)のセクションにあります。 
+> * **関連項目のリンクが見つからない場合**: 関連するすべてのテレメトリは、左側の[一番上](#cross-component-transaction-chart)と[一番下](#all-telemetry-with-this-operation-id)のセクションにあります。 
 
 ## <a name="transaction-diagnostics-experience"></a>トランザクションの診断エクスペリエンス
 このビューには 4 つの重要な部分があります。結果リスト、コンポーネント間のトランザクションのグラフ、この操作に関連するすべてのテレメトリの時系列順の一覧、左側で選択されたテレメトリ項目の詳細ウィンドウです。

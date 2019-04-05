@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: a3dfca48b52af39e7a536b3012a3f4cdac4e9a94
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955169"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894151"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Azure リソース グループのデプロイ プロジェクトを使用した Azure DevOps Services での継続的インテグレーション
 Azure テンプレートをデプロイするには、さまざまな段階 (ビルド、テスト、Azure へのコピー ("ステージング" とも呼ばれる)、テンプレートのデプロイ) でタスクを実行します。 テンプレートを Azure DevOps Services にデプロイする方法は 2 つあります。 どちらの方法でも同じ結果になるため、ワークフローに最適な方法を選択します。
@@ -37,7 +37,7 @@ Azure テンプレートをデプロイするには、さまざまな段階 (ビ
 * アプリケーションのバイナリ
 
 ### <a name="nested-templates-and-configuration-scripts"></a>入れ子になったテンプレートと構成スクリプト
-Visual Studio が提供する (または、Visual Studio のスニペットでビルドされた) テンプレートを使用すると、PowerShell スクリプトはアーティファクトをステージングするだけでなく、さまざまなデプロイメントのリソースに対する URI もパラメーター化します。 次に、スクリプトはアーティファクトを Azure のセキュリティで保護されたコンテナーにコピーし、そのコンテナーの SaS トークンを作成して、テンプレート デプロイメントにその情報を渡します。 入れ子になったテンプレートの詳細については、「 [テンプレート デプロイメントの作成](https://msdn.microsoft.com/library/azure/dn790564.aspx) 」を参照してください。  Azure DevOps Services のタスクを使用する場合は、テンプレートのデプロイに適したタスクを選択する必要があります。必要に応じて、ステージング手順からテンプレートのデプロイにパラメーター値を渡してください。
+Visual Studio が提供する (または、Visual Studio のスニペットでビルドされた) テンプレートを使用すると、PowerShell スクリプトはアーティファクトをステージングするだけでなく、さまざまなデプロイメントのリソースに対する URI もパラメーター化します。 次に、スクリプトはアーティファクトを Azure のセキュリティで保護されたコンテナーにコピーし、そのコンテナーの SaS トークンを作成して、テンプレート デプロイメントにその情報を渡します。 入れ子になったテンプレートの詳細については、「 [テンプレート デプロイメントの作成](/previous-versions/azure/reference/dn790564(v=azure.100)) 」を参照してください。  Azure DevOps Services のタスクを使用する場合は、テンプレートのデプロイに適したタスクを選択する必要があります。必要に応じて、ステージング手順からテンプレートのデプロイにパラメーター値を渡してください。
 
 ## <a name="set-up-continuous-deployment-in-azure-pipelines"></a>Azure Pipelines での継続的なデプロイの設定
 Azure Pipelines で PowerShell スクリプトを呼び出すには、ビルド パイプラインを更新する必要があります。 簡単に言うと、手順は次のとおりです。 
@@ -53,7 +53,7 @@ Azure Pipelines で PowerShell スクリプトを呼び出すには、ビルド 
 1. Azure DevOps Services のビルド パイプラインを編集し、Azure PowerShell のビルド ステップを追加します。 **[ビルド パイプライン]** カテゴリでビルド パイプラインを選択し、**[編集]** リンクを選択します。
    
    ![ビルド パイプラインの編集][0]
-2. 新しい **Azure PowerShell** のビルド ステップをビルド パイプラインに追加して、**[ビルド ステップの追加...]** ボタンを選択します。
+2. 新しい **Azure PowerShell** のビルド ステップをビルド パイプラインに追加して、**[ビルド ステップの追加...]**  ボタンを選択します。
    
    ![ビルド ステップの追加][1]
 3. **[タスクのデプロイ]** カテゴリを選択し、**Azure PowerShell** タスクを選択して、**[追加]** ボタンをクリックします。
@@ -137,7 +137,7 @@ Azure Pipelines で PowerShell スクリプトを呼び出すには、ビルド 
 1. Azure DevOps Services のビルド パイプラインを編集し、2 つの新しいビルド ステップを追加します。 **[ビルド定義]** カテゴリでビルド パイプラインを選択し、**[編集]** リンクを選択します。
    
    ![ビルド定義の編集][12]
-2. **[ビルド ステップの追加...]** ボタンを使用して、ビルド パイプラインに新しいビルド ステップを追加します。 ボタンを選択します。
+2. **[ビルド ステップの追加...]** ボタンを使用して、ビルド パイプラインに新しいビルド ステップを追加します。  ボタンを選択します。
    
    ![ビルド ステップの追加][13]
 3. **[タスクのデプロイ]** カテゴリを選択し、**[Azure ファイル コピー]** タスクを選択して、**[追加]** ボタンをクリックします。

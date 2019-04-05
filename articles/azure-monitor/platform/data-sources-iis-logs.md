@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 94bdc0670fb63b1b4c306a5af3357f437784338c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 402cd4723791c0bc33db22c8857d1b785862f596
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007934"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850611"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Azure Monitor での IIS ログを収集する
-インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集して[ログ データ](data-collection.md)として格納できるログ ファイル内にユーザー アクティビティを格納します。
+インターネット インフォメーション サービス (IIS) は、Azure Monitor が収集して[ログ データ](data-platform.md)として格納できるログ ファイル内にユーザー アクティビティを格納します。
 
 ![IIS ログ](media/data-sources-iis-logs/overview.png)
 

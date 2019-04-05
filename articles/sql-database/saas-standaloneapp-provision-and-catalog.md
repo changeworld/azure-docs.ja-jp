@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: 57a8a89c73e2be51e54130d9c37194a7513a47d8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 28deb9b7ba15744b9bd3d273d02db4398d2b2ef3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562516"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896944"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>テナントごとのアプリケーション SaaS パターンを使用して、新しいテナントのプロビジョニングとカタログ化を行います
 
@@ -99,7 +99,7 @@ Azure Resource Manager テンプレートを使用して、アプリケーショ
 ここで、作成したリソースを見てみましょう。
 
 1. [Azure Portal](https://portal.azure.com/) を開き、リソース グループを参照します。  **wingtip-sa-catalog-\<ユーザー\>** リソース グループを開き、カタログ サーバーとデータベースに注目します。
-1. ポータルでデータベースを開き、左側のメニューから*データ エクスプローラー*を選択します。  ログイン コマンドをクリックし、パスワードに **P@ssword1** を入力します。
+1. ポータルでデータベースを開き、左側のメニューから*データ エクスプローラー*を選択します。  ログイン コマンドをクリックし、パスワードに「**P\@ssword1**」を入力します。
 
 
 1. *tenantcatalog* データベースのスキーマを調べます。  

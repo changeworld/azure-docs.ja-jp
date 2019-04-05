@@ -3,8 +3,8 @@ title: Visual Studio Code で Java Azure Service Fabric アプリケーション
 description: この記事では、Visual Studio Code を使用して Java Service Fabric アプリケーションをビルド、デプロイ、およびデバッグする方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: JimacoMS
-manager: timlt
+author: peterpogorski
+manager: chackdan
 editor: ''
 ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
-ms.author: v-jamebr
-ms.openlocfilehash: 9e5a2138de7e2c0e892bd0efeb0db1e2aee87422
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pepogors
+ms.openlocfilehash: 7f60371fb533526ef5bdb154d0c08dface9c0d1f
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014694"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667754"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code を使用して Java Service Fabric アプリケーションを開発する
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 8dc3dcbe3a84a0c35c1e3fc6e367c63393bebb70
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9accf09da240f6d3235edd3c9da1876529d8654
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003143"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650752"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Azure VM でリモート デスクトップ サービスが起動しない
 
@@ -99,15 +99,15 @@ VM に接続しようとすると、次のシナリオが発生します。
 
     |  Error |  推奨事項 |
     |---|---|
-    |5 - ACCESS DENIED |[アクセス拒否エラーによる TermService サービスの停止](#termService-service-is-stopped-because-of-an-access-denied-problem)に関する記述を参照してください。 |
-    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |「[TermService サービスが無効化されている](#termService-service-is-disabled)」を参照してください。  |  
-    |1058 - ERROR_SERVICE_DISABLED  |「[TermService サービスがクラッシュまたはハングする](#termService-service-crashes-or-hangs)」を参照してください。  |
+    |5 - ACCESS DENIED |[アクセス拒否エラーによる TermService サービスの停止](#termservice-service-is-stopped-because-of-an-access-denied-problem)に関する記述を参照してください。 |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |「[TermService サービスが無効化されている](#termservice-service-is-disabled)」を参照してください。  |  
+    |1058 - ERROR_SERVICE_DISABLED  |「[TermService サービスがクラッシュまたはハングする](#termservice-service-crashes-or-hangs)」を参照してください。  |
     |1059 - ERROR_CIRCULAR_DEPENDENCY |問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。|
-    |1067 - ERROR_PROCESS_ABORTED  |「[TermService サービスがクラッシュまたはハングする](#termService-service-crashes-or-hangs)」を参照してください。  |
+    |1067 - ERROR_PROCESS_ABORTED  |「[TermService サービスがクラッシュまたはハングする](#termservice-service-crashes-or-hangs)」を参照してください。  |
     |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。|
-    |1069 - ERROR_SERVICE_LOGON_FAILED  |「[TermService service fails because of logon failure](#termService-service-fails-because-of-logon-failure)」 (ログオンの失敗が原因で TermService サービスが失敗する) を参照してください |
-    |1070 - ERROR_SERVICE_START_HANG   | 「[TermService サービスがクラッシュまたはハングする](#termService-service-crashes-or-hangs)」を参照してください。 |
-    |1077 - ERROR_SERVICE_NEVER_STARTED   | 「[TermService サービスが無効化されている](#termService-service-is-disabled)」を参照してください。  |
+    |1069 - ERROR_SERVICE_LOGON_FAILED  |「[TermService service fails because of logon failure](#termservice-service-fails-because-of-logon-failure)」 (ログオンの失敗が原因で TermService サービスが失敗する) を参照してください |
+    |1070 - ERROR_SERVICE_START_HANG   | 「[TermService サービスがクラッシュまたはハングする](#termservice-service-crashes-or-hangs)」を参照してください。 |
+    |1077 - ERROR_SERVICE_NEVER_STARTED   | 「[TermService サービスが無効化されている](#termservice-service-is-disabled)」を参照してください。  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 |
     |1753   |問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。   |
     

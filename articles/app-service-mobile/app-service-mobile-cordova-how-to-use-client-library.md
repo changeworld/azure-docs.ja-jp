@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: cddb3769cfc5a2ba002e19036d986f4165670dc1
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 3c22aab20a9260bfd21869f0b327211e2f3d8894
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962453"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004209"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Azure Mobile Apps 向け Apache Cordova クライアント ライブラリの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -106,7 +106,7 @@ Apache Cordova アプリで認証を使用する場合は、次の Cordova プ�
              "https://localhost:3000"
          ],
 
-    URL をご使用のサービスの URL に置き換えます。  例には、"http://localhost:3000" (Node.js サンプル サービス用)、または "http://localhost:4400" (Ripple サービス用) が含まれています。  ただし、これらの URL は例にすぎません。例に示されているサービスの状況など、状況が異なる場合があります。
+    URL をご使用のサービスの URL に置き換えます。  例には、`http://localhost:3000` (Node.js サンプル サービス用)、または `http://localhost:4400` (Ripple サービス用) が含まれています。  ただし、これらの URL は例にすぎません。例に示されているサービスの状況など、状況が異なる場合があります。
 8. 画面の右上隅にある **[読み取り/書き込み]** ボタンをクリックします。
 9. 緑色の **[PUT]** ボタンをクリックします。
 

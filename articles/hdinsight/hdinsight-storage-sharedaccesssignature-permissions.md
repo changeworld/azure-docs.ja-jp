@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1e55552e238e16f2221b138b6e12afa5635d2ab2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d248db787db1e3945fb632c6770d45e4bf9a8f02
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202675"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360998"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -27,6 +27,8 @@ HDInsight には、クラスターに関連付けられた Azure Storage アカ�
 > HDInsight には、クラスターの既定のストレージへのフル アクセス権が必要です。
 
 ## <a name="requirements"></a>必要条件
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Azure サブスクリプション
 * C# または Python。 C# のサンプル コードは、Visual Studio のソリューションとして提供されます。
@@ -160,12 +162,12 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 1. プロンプトから次のコマンドを使用して、Azure サブスクリプションを認証します。
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
     プロンプトが表示されたら、Azure サブスクリプションのアカウントを使用してサインインします。
 
-    アカウントが複数の Azure サブスクリプションに関連付けられている場合は、`Select-AzureRmSubscription` を使用して、使用するサブスクリプションを選択します。
+    アカウントが複数の Azure サブスクリプションに関連付けられている場合は、`Select-AzSubscription` を使用して、使用するサブスクリプションを選択します。
 
 4. プロンプトから、ディレクトリを HDInsightSAS.ps1 ファイルを含む `CreateCluster` ディレクトリに移動します。 次のコマンドを使用してスクリプトを実行します。
 
@@ -273,11 +275,11 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
 **現象**: PowerShell スクリプトを使用してクラスターを作成するときに、次のエラー メッセージが表示される場合があります。
 
-    New-AzureRmHDInsightCluster : A task was canceled.
+    New-AzHDInsightCluster : A task was canceled.
     At C:\Users\larryfr\Documents\GitHub\hdinsight-azure-storage-sas\CreateCluster\HDInsightSAS.ps1:62 char:5
-    +     New-AzureRmHDInsightCluster `
+    +     New-AzHDInsightCluster `
     +     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
+        + CategoryInfo          : NotSpecified: (:) [New-AzHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
 **原因**: クラスターの管理者または HTTP ユーザー、または (Linux ベースのクラスターの場合) SSH ユーザーのパスワードを使用する場合に、このエラーが発生する可能性があります。

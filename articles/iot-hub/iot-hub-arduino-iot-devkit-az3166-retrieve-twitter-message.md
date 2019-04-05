@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: f488f8aa991b3d4baae05097af9b6e2f2db481cc
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158926"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101212"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>シェイク、シェイクしてツイート -- Azure Functions を使用して Twitter メッセージを取得する
 
@@ -52,7 +52,7 @@ ms.locfileid: "54158926"
 左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、**[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、**[ShakeShake]** を選択します。 プロジェクト フォルダーを表示する、新しい VS Code ウィンドウが開きます。 MXCHIP AZ3166 セクションが表示されない場合は、デバイスが正しく接続されていることを確認し、Visual Studio Code を再起動します。  
 ![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/vscode_examples.png)
 
-コマンド パレットから同じプロジェクトを開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P`) をクリックしてコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Examples](Arduino: 例)** を見つけて選択します。
+コマンド パレットから同じプロジェクトを開くこともできます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino:Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ## <a name="provision-azure-services"></a>Azure サービスのプロビジョニング
 
@@ -118,7 +118,7 @@ static const char* iot_event = "{\"topic\":\"iot\"}";
 
 2. DevKit が再起動され、コードの実行が開始されます。
 
-エラー メッセージ "エラー: AZ3166: 不明なパッケージ" が表示される場合があります。 このエラーは、ボード パッケージ インデックスが正しく更新されない場合に発生します。 この問題を解決するには、[IoT DevKit の FAQ の "不明なパッケージ" エラー](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)を確認してください。
+"エラー: AZ3166:不明なパッケージ" というエラー メッセージが表示される場合があります。 このエラーは、ボード パッケージ インデックスが正しく更新されない場合に発生します。 この問題を解決するには、[IoT DevKit の FAQ の "不明なパッケージ" エラー](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development)を確認してください。
 
 ## <a name="test-the-project"></a>プロジェクトのテスト
 
@@ -167,7 +167,7 @@ Arduino スケッチは、Azure IoT Hub にイベントを送信します。 こ
 
 3. [何らかのユーティリティ](https://gearside.com/nebula/utilities/twitter-bearer-token-generator/)を使用して、これら 2 つのキーから Twitter ベアラー トークンを生成します。
 
-4. [Microsoft Azure portal](https://portal.azure.com/){:target="_blank"} で、**[リソース グループ]** に移動して、"Shake, Shake" プロジェクトの Azure Functions (タイプ: App Service) を見つけます。 名前には、常に 'shake...' 文字列が含まれます。
+4. [Azure portal](https://portal.azure.com/){:target="_blank"} で、**[リソース グループ]** に移動して、"Shake, Shake" プロジェクトの Azure Functions (タイプ: App Service) を見つけます。 名前には、常に 'shake...' 文字列が含まれます。
 
    ![azure-function](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
@@ -175,9 +175,9 @@ Arduino スケッチは、Azure IoT Hub にイベントを送信します。 こ
 
    ```csharp
    string authHeader = "Bearer " + "[your own token]";
-  ```
+   ```
   
-  ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
+   ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
 6. ファイルを保存して **[実行]** をクリックします。
 
@@ -201,7 +201,7 @@ Arduino スケッチは、Azure IoT Hub にイベントを送信します。 こ
 
 その他の問題が発生した場合は、[IoT DevKit の FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) に関するページを参照するか、以下のチャネルを使用して Microsoft までお問い合わせください。
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>次の手順

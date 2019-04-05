@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: d39ec71315bec98c35ac7fb76ed9a88a094817ca
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: fef016d87cc60bc916fdcb08f92171e115221fe5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117148"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884122"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>要求テレメトリ:Application Insights データ モデル
 
@@ -29,7 +29,7 @@ ms.locfileid: "54117148"
 
 要求の名前は、要求を処理するために使用されたコード パスを表します。 小さなカーディナリティの値を使用すると、要求をより適切にグループ化できます。 HTTP 要求では、これは、実際の `id` 値ではなく、`GET /values/{id}`のような HTTP メソッドとURL パス テンプレートを表します。
 
-Application Insights Web SDK は、要求の名前の大文字小文字を "そのまま" 送信します。 UI では大文字と小文字を区別してグループ化されるため、`GET /Home/Index` と `GET /home/INDEX` は別々にカウントされます (多くの場合、これらは同じコントローラーとアクションの実行に至ります)。 区別する理由は、URL では一般的に[大文字と小文字が区別](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)されるためです。 大文字で入力した URL で `404` が発生するかどうかを確認できます。 ASP.Net Web SDK による要求名のコレクションについては、[ブログの投稿](https://apmtips.com/blog/2015/02/23/request-name-and-url/)で詳細を確認できます。
+Application Insights Web SDK は、要求の名前の大文字小文字を "そのまま" 送信します。 UI では大文字と小文字を区別してグループ化されるため、`GET /Home/Index` と `GET /home/INDEX` は別々にカウントされます (多くの場合、これらは同じコントローラーとアクションの実行に至ります)。 区別する理由は、URL では一般的に[大文字と小文字が区別](https://www.w3.org/TR/WD-html40-970708/htmlweb.html)されるためです。 大文字で入力した URL で `404` が発生するかどうかを確認できます。 ASP.NET Web SDK による要求名のコレクションについては、[ブログの投稿](https://apmtips.com/blog/2015/02/23/request-name-and-url/)で詳細を確認できます。
 
 最大長:1024 文字
 

@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a49c22a0597c34075de3e5fd7b9a324169e1da00
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 73fcb2753fa7eb15f34b04ddc5bb0b55c4636623
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895178"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847805"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell を使用した Transparent Data Encryption (TDE) 保護機能の削除
 
@@ -87,7 +87,7 @@ Key Vault の TDE 保護機能を削除すると、**サーバーにある暗号
    -OutputFile <DesiredBackupFilePath>
    ```
  
-5. [Remove-AzKeyVaultKey](/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey) コマンドレットを使用して、侵害されたキーを Key Vault から削除します。 
+5. [Remove-AzKeyVaultKey](/powershell/module/az.keyvault/remove-azkeyvaultkey) コマンドレットを使用して、侵害されたキーを Key Vault から削除します。 
 
    ```powershell
    Remove-AzKeyVaultKey `

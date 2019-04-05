@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 0d0452cba099bbc568f2b9e926258eb16060eaf4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 25a100a224984b0d5608ba933b7a4fa024c22c9d
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855922"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481163"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 
@@ -91,7 +91,7 @@ Azure Automation を使用するには、まず Automation アカウントを作
 
 複数のサブスクリプションがある場合は、スクリプトのヘッダーにある "$subscriptions" プロパティにコンマで区切って追加できます。
 
-```PowerShell
+```powershell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
 #
 # Provided “as-is” with no implied warranties or support.

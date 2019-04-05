@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 5c45918a2cdcdd0a848e392d125849953af976ea
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f3522f065d22ce276174fbd165c37df3914e32b9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445119"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56962028"
 ---
 # <a name="ship-an-application"></a>アプリケーションの出荷
 
@@ -42,8 +42,10 @@ Cognitive Services Speech SDK には、[Visual Studio 2017 の Microsoft Visual 
 | Name | 関数
 |:-----|:----|
 | `Microsoft.CognitiveServices.Speech.core.dll` | Core SDK。ネイティブおよびマネージド展開に必要
-| `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` | マネージド展開に必要
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | マネージド展開に必要
+
+>[!NOTE]
+> リリース 1.3.0 以降、(以前のリリースで提供されていた) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ファイルは不要になりました。 この機能はコア SDK に統合されました。
 
 ## <a name="linux"></a>Linux
 

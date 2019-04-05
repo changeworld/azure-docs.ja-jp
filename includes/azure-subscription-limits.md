@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: d8fa510d8a7eb7d9f5a0e9d3c7475dc76fe8207d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 188cb21688ee092db426e51c6ae327def3ff02d0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553999"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919277"
 ---
-| リソース | 既定の制限 | 上限 |
+| Resource | 既定の制限 | 上限 |
 | --- | --- | --- |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの vCPU 数<sup>1</sup> |20 |10,000 |
 | サブスクリプションあたりの[共同管理者](../articles/billing-add-change-azure-subscription-administrator.md)数 |200 |200 |
 | サブスクリプションあたりの[ストレージ アカウント数](../articles/storage/common/storage-create-storage-account.md)<sup>2</sup> |100 |100 |
 | [クラウド サービス](../articles/cloud-services/cloud-services-choose-me.md) 数 |20 |200 |
-| [ローカル ネットワーク](https://msdn.microsoft.com/library/jj157100.aspx) 数 |10 |500 |
+| [ローカル ネットワーク](/previous-versions/azure/reference/jj157100(v=azure.100)) 数 |10 |500 |
 | サブスクリプションあたりの DNS サーバー数 |9 |100 |
 | サブスクリプションあたりの予約済み IP 数 |20 |100 |
 | [アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) 数 |256 |256 |

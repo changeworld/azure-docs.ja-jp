@@ -8,14 +8,15 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: f7bfb4f403104bb91fb1a9ba4b70cb164e0738b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 55258dc0c99a918a6314be8317f19c03576a95f5
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113301"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851171"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
+
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。 他のメトリックについては、ポータルや従来の API で使用できる場合があります。 以下の一覧には、統合された Azure Monitor メトリック パイプラインで使うことができるメトリックのみが含まれます。 これらのメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使ってください。
 
 > [!NOTE]
@@ -660,7 +661,6 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 | MetadataRequests |    メタデータの要求数   |Count| Count   | メタデータの要求数。 Azure Cosmos DB はメタデータ コレクションをアカウントごとに保持します。これにより、コレクションやデータベースなどとそれらの構成を無料で列挙できます。    | DatabaseName、CollectionName、Region、StatusCode| All|  |メタデータ要求によるスロットルを監視するために使用されます。|
 | MongoRequests |   Mongo Requests (Mongo 要求数)| Count | Count|  実行された Mongo 要求の数   | DatabaseName、CollectionName、Region、CommandName、ErrorCode| All |Mongo クエリ要求率、Mongo 更新要求率、Mongo 削除要求率、Mongo 挿入要求率、Mongo カウント要求率|   Mongo 要求エラー、コマンドのタイプごとの使用量を監視するために使用されます。 |
 
-
 ### <a name="request-unit-metrics"></a>要求ユニット メトリック
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|Dimensions| 時間の細分性| 従来のメトリックのマッピング | 使用法 |
@@ -673,7 +673,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|Dimensions| 時間の細分性| 従来のメトリックのマッピング | 使用法 |
 |---|---|---|---|---|---| ---| ---| ---|
-| AvailableStorage| 使用可能なストレージ   |Bytes| 合計|  リージョンあたりの 5 分単位の細分性で報告された使用可能なストレージの合計|   DatabaseName、CollectionName、Region|   5 M| 使用可能なストレージ|   使用可能なストレージ容量を監視するために使用されます (固定ストレージ コレクションにのみ適用されます)。最小の細分性は 5 分にする必要があります。| 
+| AvailableStorage| 使用可能なストレージ   |Bytes| 合計|  リージョンあたりの 5 分単位の細分性で報告された使用可能なストレージの合計|   DatabaseName、CollectionName、Region|   5 M| 使用可能なストレージ|   使用可能なストレージ容量を監視するために使用されます (固定ストレージ コレクションにのみ適用されます)。最小の細分性は 5 分にする必要があります。|
 | DataUsage |データ利用状況 |Bytes| 合計   |リージョンあたりの 5 分単位の細分性で報告されたデータ使用量の合計|    DatabaseName、CollectionName、Region|   5 M  |データ サイズ  | 収集時およびリージョンごとの合計データ使用量を監視するために使用されます。最小の細分性は 5 分にする必要があります。|
 | IndexUsage|   インデックスの使用量|    Bytes|  合計   |リージョンあたりの 5 分単位の細分性で報告されたインデックス使用量の合計|    DatabaseName、CollectionName、Region|   5 M| インデックス サイズ| 収集時およびリージョンごとの合計データ使用量を監視するために使用されます。最小の細分性は 5 分にする必要があります。 |
 | DocumentQuota|    ドキュメントのクォータ| Bytes|  合計|  リージョンあたりの 5 分単位の細分性で報告されたストレージ クォータの合計 固定ストレージ コレクションに適用| DatabaseName、CollectionName、Region|   5 M  |ストレージの容量|  収集時およびリージョンごとの合計クォータを監視するために使用されます。最小の細分性は 5 分にする必要があります。|
@@ -805,6 +805,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ScaleActionsInitiated|スケール アクション開始|Count|合計|スケール操作の指示。|ScaleDirection|
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
+
 (パブリック プレビュー)
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|Dimensions|
@@ -1224,7 +1225,6 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |アップデート|アップデート|Count|平均|アップデート|Computer、Product、Classification、UpdateState、Optional、Approved|
 |Event|Event|Count|平均|Event|Source、EventLog、Computer、EventCategory、EventLevel、EventLevelName、EventID|
 
-
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
 |メトリック|メトリックの表示名|単位|集計の種類|説明|Dimensions|
@@ -1287,8 +1287,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |MessageCount|メッセージ数|Count|合計|メッセージの総量。|ディメンションなし|
 |InboundTraffic|受信トラフィック|Bytes|合計|サービスの受信トラフィック|ディメンションなし|
 |OutboundTraffic|送信トラフィック|Bytes|合計|サービスの送信トラフィック|ディメンションなし|
-|UserErrors|User Errors (ユーザー エラー)|Percent|最大値|ユーザー エラーの割合|ディメンションなし|
-|SystemErrors|System Errors (システム エラー)|Percent|最大値|システム エラーの割合|ディメンションなし|
+|UserErrors|User Errors (ユーザー エラー)|Percent|平均|ユーザー エラーの割合|ディメンションなし|
+|SystemErrors|System Errors (システム エラー)|Percent|平均|システム エラーの割合|ディメンションなし|
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
@@ -1608,7 +1608,6 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |MemoryPercentage|メモリの割合|Percent|平均|メモリの割合|インスタンス|
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Monitor のメトリックを確認します](../../azure-monitor/platform/data-collection.md)
-* [メトリックでアラートを作成します](../../azure-monitor/platform/alerts-overview.md)
-* [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](../../azure-monitor/platform/diagnostic-logs-overview.md)
-
+* [Azure Monitor のメトリックを確認します](data-platform.md)
+* [メトリックでアラートを作成します](alerts-overview.md)
+* [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](diagnostic-logs-overview.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e76c8ae671333bcbf50995c4bd9345f8434fbea2
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d7084a42f64234cff4e5e2742ed3d27a3fd00e1e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745964"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652299"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search でリソースの消費量とクエリ アクティビティを監視する
 
@@ -58,14 +58,14 @@ Azure Search では管理対象のオブジェクトの外部にデータは格�
 
 次の表は、ログの格納、および Application Insights によるサービス操作とクエリ ワークロードの詳細監視の追加に関して、オプションを比較したものです。
 
-| リソース | 使用対象 |
+| Resource | 使用対象 |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | アプリのユーザー イベントと関連付けられた、後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 これは、アプリケーション コードによって送信されたフィルター要求ではなく、ユーザーが開始した検索からのイベントをマッピングする、ユーザーのアクションまたはシグナルが考慮された唯一のソリューションです。 この方法を使用するには、インストルメンテーション コードをコピーしてソース ファイルに貼り付け、要求の情報を Application Insights にルーティングします。 詳しくは、「[検索トラフィックの分析](search-traffic-analytics.md)」をご覧ください。 |
-| [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントは Log Analytics のワークスペースに記録されます。 ワークスペースに対してクエリを実行し、ログから詳細な情報を取得することができます。 詳細については、[Log Analytics の概要](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata)に関するページをご覧ください。 |
+| [Azure Monitor ログ](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントは Log Analytics ワークスペースに記録されます。 ワークスペースに対してクエリを実行し、ログから詳細な情報を取得することができます。 詳細については、[Azure Monitor ログの使用](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata)に関するページを参照してください |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントのログは BLOB コンテナーに記録されて、JSON ファイルに格納されます。 ファイルの内容を表示するには JSON エディターを使用します。|
 | [イベント ハブ](https://docs.microsoft.com/azure/event-hubs/) | この記事に記載されているスキーマに基づいてログに記録されるイベントとクエリ メトリック。 非常に大きなログに対する代替データ コレクション サービスとしては、これを選択します。 |
 
-Log Analytics と Blob Storage の両方は、無料の共有サービスとして利用でき、Azure サブスクリプションの有効期間にわたって無料で試すことができます。 Application Insights は、アプリケーション データのサイズが一定の制限以下である限りは無料でサインアップして使用できます (詳しくは[価格のページ](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください)。
+Azure Monitor ログと Blob Storage は、どちらも無料の共有サービスとして利用でき、Azure サブスクリプションの有効期間にわたって無料で試すことができます。 Application Insights は、アプリケーション データのサイズが一定の制限以下である限りは無料でサインアップして使用できます (詳しくは[価格のページ](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください)。
 
 次のセクションでは、Azure Blob Storage を有効にして使用し、Azure Search の操作によって作成されるログ データを収集してそれにアクセスする手順を説明します。
 
@@ -81,7 +81,7 @@ Log Analytics と Blob Storage の両方は、無料の共有サービスとし�
 
    ![監視を有効にする](./media/search-monitor-usage/enable-monitoring.png "監視を有効にする")
 
-3. エクスポートするデータを選択します (ログ、メトリック、または両方)。 データはストレージ アカウントにコピーする、イベント ハブに送信する、または Log Analytics にエクスポートできます。
+3. エクスポートするデータを選択します (ログ、メトリック、または両方)。 データはストレージ アカウントにコピーする、イベント ハブに送信する、または Azure Monitor ログにエクスポートすることができます。
 
    Blob Storage にアーカイブするには、ストレージ アカウントのみが存在する必要があります。 ログ データをエクスポートすると、コンテナーと BLOB が作成されます。
 
@@ -98,7 +98,7 @@ Log Analytics と Blob Storage の両方は、無料の共有サービスとし�
 
 Blob Storage にコンテナーが表示されるまで 1 時間かかります。 1 時間ごと、コンテナーごとに、1 つの BLOB があります。 
 
-[Visual Studio Code](#Download-and-open-in-Visual-Studio-Code) または別の JSON エディターを使用して、ファイルを表示できます。 
+[Visual Studio Code](#download-and-open-in-visual-studio-code) または別の JSON エディターを使用して、ファイルを表示できます。 
 
 ### <a name="example-path"></a>パスの例
 
@@ -109,7 +109,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>ログのスキーマ
 検索サービスのトラフィック ログが格納される BLOB は、このセクションで説明するような構成になっています。 各 BLOB には、ログ オブジェクトの配列を含む、**レコード**と呼ばれるルート オブジェクトが 1 つあります。 各 BLOB には、同じ時間帯に行われたすべての操作に関するレコードが含まれます。
 
-| Name | type | 例 | メモ |
+| 名前 | Type | 例 | メモ |
 | --- | --- | --- | --- |
 | time |Datetime |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | resourceId |文字列 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
@@ -123,7 +123,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 
 **プロパティのスキーマ**
 
-| Name | type | 例 | メモ |
+| 名前 | Type | 例 | メモ |
 | --- | --- | --- | --- |
 | 説明 |文字列 |"GET /indexes('content')/docs" |操作のエンドポイント |
 | クエリ |文字列 |"?search=AzureSearch&$count=true&api-version=2017-11-11" |クエリ パラメーター |
@@ -134,7 +134,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 
 メトリックはクエリ要求に対してキャプチャされます。
 
-| Name | type | 例 | メモ |
+| 名前 | Type | 例 | メモ |
 | --- | --- | --- | --- |
 | resourceId |文字列 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
 | metricName |文字列 |"Latency" |メトリックの名前 |

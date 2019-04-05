@@ -2,18 +2,18 @@
 title: Azure Kubernetes Service (AKS) での GPU の使用
 description: Azure Kubernetes Service (AKS) で高パフォーマンス コンピューティングやグラフィックを集中的に使用するワークロードに GPU を使用する方法について説明します
 services: container-service
-author: iainfoulds
+author: zr-msft
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 64cd6276c00126a745e77f3d32679c54ebc2f190
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: zarhoads
+ms.openlocfilehash: 150eaa6a4df558ed0c737d99cbcc8010baf63e96
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771125"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758242"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する
 

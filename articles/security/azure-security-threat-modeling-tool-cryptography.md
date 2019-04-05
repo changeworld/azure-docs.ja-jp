@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: be702571d178fc67eeb92de4e52a48d5bef72b18
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 608792d8389a87bad3521d3a48947b20dd036d67
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824628"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887104"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>セキュリティ フレーム: 暗号化 | 軽減策 
+
 | 製品/サービス | 記事 |
 | --------------- | ------- |
 | **Web アプリケーション** | <ul><li>[承認済みの対称ブロック暗号とキー長のみを使用する](#cipher-length)</li><li>[対称暗号に承認済みのブロック暗号モードと初期化ベクトルを使用する](#vector-ciphers)</li><li>[承認済みの非対称アルゴリズム、キー長、パディングを使用する](#padding)</li><li>[承認済みの乱数ジェネレーターを使用する](#numgen)</li><li>[対称ストリーム暗号は使用しない](#stream-ciphers)</li><li>[承認済みの MAC/HMAC/キー付きハッシュ アルゴリズムを使用する](#mac-hash)</li><li>[承認済みの暗号化ハッシュ関数のみを使用する](#hash-functions)</li></ul> |
@@ -96,7 +97,7 @@ ms.locfileid: "54824628"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>製品では、承認済みのメッセージ認証コード (MAC) アルゴリズムまたはハッシュ ベース メッセージ認証コード (HMAC) アルゴリズムのみを使用する必要があります。</p><p>メッセージ認証コード (MAC) はメッセージに添付される情報の一部です。MAC により、メッセージの受信者は、秘密キーを使用して送信元の信頼性とメッセージの整合性を確認することが可能になります。 基になるすべてのハッシュ アルゴリズムまたは対称暗号化アルゴリズムも使用が承認されていれば、ハッシュ ベースの MAC ([HMAC](http://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) または[ブロック暗号ベースの MAC](http://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) の使用が許容されます。現時点では、これには HMAC-SHA2 関数 (HMAC-SHA256、HMAC-SHA384、HMAC-SHA512) と、ブロック暗号ベースの MAC である CMAC/OMAC1 および OMAC2 (これらは AES に基づいています) が含まれます。</p><p>プラットフォームの互換性を確保するために、HMAC-SHA1 の使用が許容される場合もありますが、この手順の例外を申請し、組織の暗号委員会のレビューを受ける必要があります。 HMAC を 128 ビット未満に切り捨てることは許可されていません。 顧客独自の方法を使用したキーとデータのハッシュは承認されておらず、使用前に組織の暗号委員会によるレビューを受ける必要があります。</p>|
+| **手順** | <p>製品では、承認済みのメッセージ認証コード (MAC) アルゴリズムまたはハッシュ ベース メッセージ認証コード (HMAC) アルゴリズムのみを使用する必要があります。</p><p>メッセージ認証コード (MAC) はメッセージに添付される情報の一部です。MAC により、メッセージの受信者は、秘密キーを使用して送信元の信頼性とメッセージの整合性を確認することが可能になります。 基になるすべてのハッシュ アルゴリズムまたは対称暗号化アルゴリズムも使用が承認されていれば、ハッシュ ベースの MAC ([HMAC](https://csrc.nist.gov/publications/nistpubs/800-107-rev1/sp800-107-rev1.pdf)) または[ブロック暗号ベースの MAC](https://csrc.nist.gov/publications/nistpubs/800-38B/SP_800-38B.pdf) の使用が許容されます。現時点では、これには HMAC-SHA2 関数 (HMAC-SHA256、HMAC-SHA384、HMAC-SHA512) と、ブロック暗号ベースの MAC である CMAC/OMAC1 および OMAC2 (これらは AES に基づいています) が含まれます。</p><p>プラットフォームの互換性を確保するために、HMAC-SHA1 の使用が許容される場合もありますが、この手順の例外を申請し、組織の暗号委員会のレビューを受ける必要があります。 HMAC を 128 ビット未満に切り捨てることは許可されていません。 顧客独自の方法を使用したキーとデータのハッシュは承認されておらず、使用前に組織の暗号委員会によるレビューを受ける必要があります。</p>|
 
 ## <a id="hash-functions"></a>承認済みの暗号化ハッシュ関数のみを使用する
 

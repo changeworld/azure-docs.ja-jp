@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs の欠落した通知の診断
+title: Azure Notification Hubs - 欠落した通知の診断
 description: Azure Notification Hubs で欠落した通知に関する一般的な問題を診断する方法について説明します。
 services: notification-hubs
 documentationcenter: Mobile
@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 9dd6a66ea416ad61682b8e33c6163db3ac345d92
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: c0fd7dec31a2c4054c59db3bae52cdb15ba01eed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447719"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884423"
 ---
-# <a name="diagnose-dropped-notifications-in-notification-hubs"></a>Notification Hubs での欠落した通知の診断
+# <a name="azure-notification-hubs---diagnose-dropped-notifications"></a>Azure Notification Hubs - 欠落した通知の診断
 
 Azure Notification Hubs のお客様からよく寄せられる質問の 1 つに、アプリケーションから送信された通知がクライアント デバイスに表示されない場合のトラブルシューティングの方法があります。 お客様は、通知が欠落した場所と理由、さらに問題の解決方法を知りたいと考えます。 この記事では、通知が欠落する、つまりデバイスで受信されない理由を特定します。 根本原因を分析し、特定する方法を説明します。
 
@@ -246,10 +246,7 @@ The Token obtained from the Token Provider is wrong
 
 * **プログラムによるアクセス**
 
-プログラムによるアクセスの詳細については、以下の記事をご覧ください。
-
-* [プログラムによるテレメトリへのアクセス]  
-* [API サンプルを使用したテレメトリへのアクセス]
+プログラムによるアクセスの詳細については、[プログラムによるテレメトリへのアクセス]に関する記事をご覧ください。
 
 > [!NOTE]
 > 登録のエクスポートおよびインポートや、API を使用したテレメトリへのアクセスなど、テレメトリに関連する一部の機能は、Standard サービス レベルでのみ使用できます。 Free または Basic サービス レベルでこれらの機能を使用しようとすると、SDK を使用している場合は例外メッセージが、REST API から直接これらの機能を使用している場合は HTTP 403 (アクセス不可) エラーが表示されます。
@@ -274,12 +271,11 @@ The Token obtained from the Token Provider is wrong
 [Templates]: https://msdn.microsoft.com/library/dn530748.aspx
 [APNs の概要]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
 [FCM メッセージについて]: https://firebase.google.com/docs/cloud-messaging/concept-options
-[Export and modify registrations in bulk]: http://msdn.microsoft.com/library/dn790624.aspx
+[Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
 [Service Bus Explorer]: https://msdn.microsoft.com/library/dn530751.aspx#sb_explorer
 [Service Bus Explorer のコード]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
-[通知ハブのデバイス登録の表示]: http://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
-[詳細:Visual Studio 2013 Update 2 RC および Azure SDK 2.3]: http://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
-[Visual Studio 2013 Update 3 および Azure SDK 2.4 のリリースの発表]: http://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
+[通知ハブのデバイス登録の表示]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
+[詳細:Visual Studio 2013 Update 2 RC および Azure SDK 2.3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
+[Visual Studio 2013 Update 3 および Azure SDK 2.4 のリリースの発表]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
 [EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
-[プログラムによるテレメトリへのアクセス]: http://msdn.microsoft.com/library/azure/dn458823.aspx
-[API サンプルを使用したテレメトリへのアクセス]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
+[プログラムによるテレメトリへのアクセス]: https://msdn.microsoft.com/library/azure/dn458823.aspx

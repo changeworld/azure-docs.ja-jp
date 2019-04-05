@@ -1,21 +1,19 @@
 ---
 title: サンプルの使用
 description: この記事では、Power BI ワークスペース コレクションの使用を開始するためのサンプルを紹介します。
-services: power-bi-embedded
+services: power-bi-workspace-collections
+ms.service: power-bi-workspace-collections
 author: markingmyname
-ROBOTS: NOINDEX
-ms.assetid: d8a9ef78-ad4e-4bc7-9711-89172dc5c548
-ms.service: power-bi-embedded
+ms.author: maghan
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.author: maghan
-ms.openlocfilehash: 222c2983d83fe2373159ea542260be7b5a8d8ce5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6c80dc2ca4d0062fcb98aeb6431566ce6ca39411
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885183"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519495"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Power BI ワークスペース コレクションのサンプルの使用
 

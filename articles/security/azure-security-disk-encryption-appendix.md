@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 63d4f8e2f1b88084b2bac5f1a29514b5e289cbd4
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 675ce2de91dd4e53f4945ceef3b174c33be001f6
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286518"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649664"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Azure Disk Encryption に関する付録 
 
@@ -685,7 +685,7 @@ $SecretUrl
     $secretUrl = $response.id
 ```
 
-[KEK を使用して OS ディスクをアタッチする](#BKMK_URLKEK)場合は、次の手順で `$KeyEncryptionKey` と `$secretUrl` を使用します。
+[KEK を使用して OS ディスクをアタッチする](#bkmk_URLKEK)場合は、次の手順で `$KeyEncryptionKey` と `$secretUrl` を使用します。
 
 ##  <a name="bkmk_SecretURL"></a> OS ディスクをアタッチするときにシークレット URL を指定する
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: e4037e79812f0cf548ddfcc277c1b66332e0f1f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 08430f3eee858cdb6c9a7fbdfe11bd4c00ef148d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57902877"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630399"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics のプレビュー機能
 
@@ -54,10 +54,6 @@ Visual Studio Tools for Azure Stream Analytics ではローカル テスト機�
 ### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge 用の C# カスタム デシリアライザー
 
 開発者は、C# でカスタム デシリアライザーを実装して、Azure Stream Analytics で受信したイベントを逆シリアル化できるようになりました。 逆シリアル化できる形式としては、Parquet、Protobuf、XML、または任意のバイナリ形式などがあります。
-
-### <a name="managed-identities-for-azure-resource-authentication-to-azure-data-lake-storage"></a>Azure Data Lake Storage に対する Azure リソース認証用のマネージド ID
-
-Azure Data Lake Storage Gen1 に書き込みながら、Azure リソース ベースの認証用のマネージド ID でリアルタイム パイプラインを運用化できるようになり、プログラムでジョブを作成できます。 詳しくは、「[Azure Stream Analytics ジョブを認証するマネージド ID を Azure Data Lake Storage Gen1 出力で使用する](stream-analytics-managed-identities-adls.md)」をご覧ください。
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Azure Stream Analytics 用の Visual Studio Code
 

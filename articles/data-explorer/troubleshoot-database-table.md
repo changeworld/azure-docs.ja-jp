@@ -2,18 +2,18 @@
 title: Azure データ エクスプローラーでデータベースまたはテーブルの作成または削除が失敗する
 description: この記事では、Azure データ エクスプローラーでのデータベースおよびテーブルの作成と削除に関するトラブルシューティング手順について説明します。
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0bd9f5ed00193aa9f872287b6afaf9e2b28c24dc
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 62eccebab81745f85450390f64b6b22f3c17b32e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188341"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758321"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>トラブルシューティング:Azure データ エクスプローラーでデータベースまたはテーブルの作成または削除が失敗する
 

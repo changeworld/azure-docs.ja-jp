@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 0bd19492c844e217dc520ae0c189ca467bb7ac0a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: afcd180146bc349bda9375f10eb56f85f67ccb52
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011089"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498739"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Azure に移行されたワークロードのセキュリティ保護と管理に関するベスト プラクティス
 
@@ -437,7 +437,7 @@ Azure Functions は多かれ少なかれコードとして機能するので、G
 
 **詳細情報:**
 
-- Azure DevOps に対する[データ保護](https://docs.microsoft.com/azure/devops/articles/team-services-security-whitepaper?view=vsts)。
+- Azure DevOps に対する[データ保護](/azure/devops/organizations/security/data-protection)。
 
 ## <a name="best-practice-set-up-disaster-recovery"></a>ベスト プラクティス:ディザスター リカバリーを設定する 
 

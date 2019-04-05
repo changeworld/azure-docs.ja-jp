@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 11b1b46e29ac9a4147c4dc319753edd0fadce8bc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 325cd0d2f52405ae1cbf463f6335c8738317ea1f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088912"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878708"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
@@ -106,7 +106,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 
 ### <a name="parameters"></a>parameters
 
-|パラメーター名| type | 説明| 値|
+|パラメーター名| Type | 説明| 値|
 |-|-|-|-|
 | /ServerMode|必須|構成サーバーとプロセス サーバーの両方をインストールするか、プロセス サーバーだけをインストールするかを指定します。|CS<br>PS|
 |/InstallLocation|必須|コンポーネントがインストールされているフォルダー。| コンピューター上の任意のフォルダー|
@@ -149,7 +149,7 @@ ProxyPassword="Password"
 次のように、構成サーバー マシンのプロキシ設定を変更できます。
 
 1. 構成サーバーにログオンします。
-2. ショートカットを使用して cspsconfigtool.exe を起動します。
+2. デスクトップのショートカットを使用して cspsconfigtool.exe を起動します。
 3. **[Vault Registration (コンテナーの登録)]** タブをクリックします。
 4. ポータルから新しいコンテナー登録ファイルをダウンロードし、これをツールへの入力として指定します。
 
@@ -158,7 +158,7 @@ ProxyPassword="Password"
 6. 管理者として PowerShell コマンド ウィンドウを開きます。
 7. 次のコマンドを実行します。
 
-   ```PowerShell
+   ```powershell
    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
    net stop obengine
@@ -178,7 +178,7 @@ ProxyPassword="Password"
 6. 管理者の PowerShell コマンド ウィンドウを開きます。
 7. 次のコマンドを実行します。
 
-    ```PowerShell
+    ```powershell
     $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
     Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
     net stop obengine
@@ -265,7 +265,7 @@ ProxyPassword="Password"
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>構成サーバーの削除または登録解除 (PowerShell)
 
-1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-4.4.0)します。
+1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)します。
 2. 次のコマンドを使用して、Azure アカウントにログインします。
     
     `Connect-AzureRmAccount`
@@ -274,7 +274,7 @@ ProxyPassword="Password"
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
 3.  コンテナーのコンテキストを設定します。
     
-    ```PowerShell
+    ```powershell
     $Vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
     Set-AzureRmSiteRecoveryVaultSettings -ARSVault $Vault
     ```
@@ -283,7 +283,7 @@ ProxyPassword="Password"
     `$Fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. 構成サーバーを削除します。
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $Fabric [-Force] `
+    `Remove-AzureRmSiteRecoveryFabric -Fabric $Fabric [-Force]`
 
 > [!NOTE]
 > Remove-AzureRmSiteRecoveryFabric の **-Force** オプションを使用すると、構成サーバーを強制的に削除できます。

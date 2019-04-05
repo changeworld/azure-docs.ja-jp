@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 9748cd2c37775a47eb630797dd09981c38f8f7e1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4b2763629a3036551cb3d362e609c72737436f4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995409"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012226"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の文字列を操作する
 
 
 > [!NOTE]
-> このチュートリアルを完了する前に、「[Azure Monitor ログ分析の使用を開始する](get-started-portal.md)」と、「[Azure Monitor でログ クエリの使用を開始する](get-started-queries.md)」を完了しておく必要があります。
+> このチュートリアルを完了する前に、「[Azure Monitor ログ分析の使用を開始する](get-started-portal.md)」と、[Azure Monitor ログ クエリの使用の開始](get-started-queries.md)に関するチュートリアルを完了しておく必要があります。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -64,9 +64,9 @@ print @"C:\backslash\not\escaped\with @ prefix"
 `hasprefix_cs`    |右辺が左辺の用語のプレフィックスとして含まれる         |はい            |`"North America" hasprefix_cs "Ame"`
 `!hasprefix_cs`   |右辺が左辺の用語のプレフィックスとして含まれない     |はい            |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`    |右辺が左辺の用語のサフィックスとして含まれる         |いいえ             |`"North America" hassuffix "ica"`
-`!hassuffix`   |右辺が左辺の用語のサフィックスに含まれない     |いいえ             |`"North America" !hassuffix "americ"
+`!hassuffix`   |右辺が左辺の用語のサフィックスに含まれない     |いいえ             |`"North America" !hassuffix "americ"`
 `hassuffix_cs`    |右辺が左辺の用語のサフィックスとして含まれる         |はい            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |右辺が左辺の用語のサフィックスに含まれない     |はい            |`"North America" !hassuffix_cs "icA"
+`!hassuffix_cs`   |右辺が左辺の用語のサフィックスに含まれない     |はい            |`"North America" !hassuffix_cs "icA"`
 `contains`     |右辺が左辺のサブシーケンスとして出現する  |いいえ             |`"FabriKam" contains "BRik"`
 `!contains`    |右辺が左辺のサブシーケンスとして出現しない           |いいえ             |`"Fabrikam" !contains "xyz"`
 `contains_cs`   |右辺が左辺のサブシーケンスとして出現する  |はい           |`"FabriKam" contains_cs "Kam"`
@@ -259,6 +259,7 @@ SecurityEvent
 ```
 
 結果は次のとおりです。
+
 アクティビティ                                        |replaced
 ------------------------------------------------|----------------------------------------------------------
 4663 - オブジェクトへのアクセスが試行されました  |アクティビティ ID 4663: オブジェクトへのアクセスが試行されました。

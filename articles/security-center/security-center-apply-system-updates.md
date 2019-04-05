@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: afd6ded48bc330032b77be4bc8cd186a6f71ee5f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ebd9939128d1f2b870541e82710792d13b69728e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105129"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099003"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Azure Security Center でシステムの更新プログラムを適用する
 Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows および Linux 仮想マシン (VM) およびコンピューターの監視が毎日行われています。 Security Center は、Windows コンピューターに構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムにおける最新の更新プログラムについても確認します。 VM またはコンピューターでシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。
@@ -43,7 +43,7 @@ Azure Security Center では、オペレーティング システムに不足し
     - VM とコンピューター全体で不足している重要な更新プログラムの合計数。
     - VM とコンピューター全体で不足しているセキュリティ更新プログラムの合計数。
 
-  ダッシュボードの下部には、VM とコンピューターのすべての不足している更新プログラムと、インストールされていない更新プログラムの重要度が一覧表示されます。  一覧には次の項目が含まれています。
+   ダッシュボードの下部には、VM とコンピューターのすべての不足している更新プログラムと、インストールされていない更新プログラムの重要度が一覧表示されます。  一覧には次の項目が含まれています。
 
     - [名前]:不足している更新プログラムの名前。
     - なし [VM とコンピューターの数]:この更新プログラムが適用されていない VM とコンピューターの合計台数です。
@@ -63,13 +63,13 @@ Azure Security Center では、オペレーティング システムに不足し
 
    ![不足しているセキュリティ更新プログラム][3]
 
-4. 上部のリボンの **[検索]** アイコンをクリックします。  更新プログラムが不足しているコンピューターにフィルターされた Log Analytics 検索クエリが開きます。
+4. 上部のリボンの **[検索]** アイコンをクリックします。  更新プログラムが不足しているコンピューターにフィルターされた Azure Monitor ログ検索クエリが開きます。
 
-   ![Log Analytics 検索][4]
+   ![Azure Monitor ログ検索][4]
 
 5. 一覧でコンピューターを選択して詳細を確認します。 そのコンピューターだけを対象にフィルター処理された情報が含まれた別の検索結果が表示されます。
 
-    ![Log Analytics 検索][5]
+    ![Azure Monitor ログ検索][5]
 
 ## <a name="reboot-after-system-updates"></a>システムの更新後に再起動する
 1. **[推奨事項]** ブレードに戻ります。 システムの更新プログラムを適用した後は、 **[システムの更新後に再起動する]** という新しいエントリが生成されています。 このエントリは、システムの更新プログラムの適用プロセスを完了するために、VM の再起動が必要であることを示しています。

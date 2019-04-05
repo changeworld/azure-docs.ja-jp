@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1894fc1823772c27f37829b9b27ec515dcb841b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f503d890dcc8ba90a8a4d8bafc09d5fd8b2856e6
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861062"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804855"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours ソリューションのトラブルシューティング
 
@@ -24,23 +24,23 @@ ms.locfileid: "57861062"
 
 [時間外の VM の起動/停止ソリューション](../automation-solution-vm-management.md)のデプロイで、次のいずれかのエラーが発生しました。
 
-```
+```error
 Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
 ```
 
-```
+```error
 Resource 'StartStop_VM_Notification' was disallowed by policy. Policy identifiers: '[{\\\"policyAssignment\\\":{\\\"name\\\":\\\"[MyPolicyName]”.
 ```
 
-```
+```error
 The subscription is not registered to use namespace 'Microsoft.OperationsManagement'.
 ```
 
-```
+```error
 The subscription is not registered to use namespace 'Microsoft.Insights'.
 ```
 
-```
+```error
 The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
 ```
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2019
+ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 38236cba6af46df2701bb0128fe9d78e95aa6ec7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 987d28470b8a848755cdd7d1264ba7f7f66544df
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076821"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918945"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) を使用して Azure 仮想マシンの正常性を把握する
 Azure には監視領域において特定の役割やタスクを個別に実行する複数のサービスが含まれますが、Azure 仮想マシン上でホストされているオペレーティング システムの詳細な正常性情報を提供することはできませんでした。  Azure Monitor を使用してさまざまな条件を監視することができたものの、仮想マシンのコア コンポーネントの正常性または全体的な正常性をモデル化して表現するようには設計されていませんでした。  VM の Azure Monitor 正常性機能では、主要なコンポーネントとその関係、それらのコンポーネントの正常性を測定する方法を指定する基準、および異常な状態が検出されたときのアラートを表すモデルを使用して、Windows または Linux ゲスト OS の可用性とパフォーマンスが事前に監視されます。  
@@ -28,23 +28,6 @@ Azure VM と基になるオペレーティング システムの全体的な正�
 この記事は、検出された正常性の問題をすばやく評価、調査、および解決する方法を理解するのに役立ちます。
 
 Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有効化](vminsights-onboard.md)に関する記事をご覧ください。
-
-> [!NOTE]
-> 2019 年 2 月 11 日から、Azure Monitor for VMs 正常性機能の現在の正常性モデル (正常性診断エクスペリエンスで表示されます) から、新しいバージョンの正常性モデルへの移行を開始します。 この更新により、正常性のロールアップ処理のパフォーマンスが向上し、洗練された正常性モデルが組み込まれ、正常性診断ビューで表示されるようになります。 
-> 
-> 新しい正常性モデルにより、親/エンティティ レベルの正常性基準に対する子の正常性基準のロールアップの速度が向上します。その結果、親の正常性状態が、少ない待機時間で目的または対象の状態に更新されます。 ビューでカテゴリを選択する以前のタブベースの方法とは異なり、**[パフォーマンス]** カテゴリと **[可用性]** カテゴリで正常性基準をフィルター処理できます。
-> 
-> 正常性診断エクスペリエンスの詳細については、この記事の「[正常性の診断](#health-diagnostics)」セクションを参照してください。 
-> 
-> この更新により、以下の機能向上が実現します。 
-> 
-> - 正常性のロールアップ処理の待機時間の短縮  
-> - 正常性状態の変化に対する迅速なアラート 
-> - すべての VM の集約された仮想マシン ビューで正常性状態の更新が高速化 
-> 
-> Azure Monitor for VMs の正常性機能で現在提供されている機能に退行的な影響はありません。
-> 
-> この変更の結果として、正常性診断の 2 つのエクスペリエンスが影響を受けます。状態変化履歴はリセットされ、正常性基準の以前の状態変化は、[正常性の診断] ページの [State Change]\(状態の変化\) 列で確認できなくなります。 ミッション クリティカルな VM の履歴データが必要な場合は、参照用として正常性基準データと対応する状態変化のスクリーンショットを作成できます。 
 
 ## <a name="monitoring-configuration-details"></a>監視の構成の詳細
 このセクションでは、Azure の Windows および Linux 仮想マシンを監視するために定義されている既定の正常性基準について説明します。 すべての正常性条件は、非正常状態になったら通知するように事前に構成されています。 
@@ -70,7 +53,7 @@ Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有�
 - Percent Bandwidth Used Total (使用された帯域幅の割合 (合計))
 - Percent Bandwidth Used Write (使用された帯域幅の割合 (書き込み))
 - Percentage of Committed Memory in Use (使用されているコミット済みメモリの割合)
-- Physical Disk Percent Idle Time (物理ディスク アイドル時間の割合)
+- Disk Percent Idle Time (ディスク アイドル時間の割合)
 - DHCP Client Service Health (DHCP クライアント サービスの正常性)
 - DNS Client Service Health (DNS クライアント サービスの正常性)
 - RPC Service Health (RPC サービスの正常性)
@@ -89,13 +72,10 @@ Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有�
 - Logical Disk % Free Space (論理ディスクの空き領域 (%))
 - Logical Disk % Free Inodes (論理ディスクの空き inode (%))
 - Network Adapter Health (ネットワーク アダプターの正常性)
-- Processor Percent DPC Time (プロセッサ DPC 時間 (%))
-- Processor Percent Processor Time (プロセッサ プロセッサ時間 (%))
 - Total Percent Processor Time (合計プロセッサ時間 (%))
-- Total Percent DPC Time (合計 DPC 時間 (%))
 - Operating System Available Megabytes of Memory (オペレーティング システムの使用可能なメモリ メガバイト数)
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
 [Azure Portal](https://portal.azure.com) にサインインします。 
 
 ## <a name="introduction-to-health-experience"></a>正常性エクスペリエンスの概要
@@ -260,7 +240,7 @@ VM の Azure Monitor 正常性機能は [Azure アラート](../../azure-monitor
 |サブスクリプション |Azure サブスクリプションを選択します。 このビューには、選択したサブスクリプション内のアラートのみが含まれます。 | 
 |リソース グループ |1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 | 
 |リソースの種類 |1 つ以上のリソースの種類を選択します。 既定では、ターゲットが**仮想マシン**のアラートのみが選択されて、このビューに表示されます。 この列は、リソース グループを指定した後でのみ使用できます。 | 
-|リソース |リソースを選択します。 このビューには、そのリソースをターゲットとして含むアラートのみが含まれます。 この列は、リソースの種類を指定した後でのみ使用できます。 | 
+|Resource |リソースを選択します。 このビューには、そのリソースをターゲットとして含むアラートのみが含まれます。 この列は、リソースの種類を指定した後でのみ使用できます。 | 
 |severity |アラートの重大度を選択するか、または *[すべて]* を選択してすべての重大度のアラートを含めます。 | 
 |[Monitor Condition] (監視条件) |アラートをフィルター処理する監視状態として、システムによるアラートの "*生成*" または状態がアクティブではなくなった場合のシステムによる "*解決*" を選択します。 または、"*すべて*" を選択してすべての状態のアラートを含めます。 | 
 |アラートの状態 |アラートの状態を *[新規]*、*[確認済み]*、*[解決済み]* から選択するか、または *[すべて]* を選択してすべての状態のアラートを含めます。 | 

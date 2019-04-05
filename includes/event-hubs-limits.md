@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: cd64bdabc2b7b34687296c855c27882925d80f63
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d6b54027adcf2b12c6ca4081a11208a31f620e8
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124411"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919285"
 ---
 次の表に、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) に固有のクォータと制限を示します。 Event Hubs の価格については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 
 | 制限 | Scope (スコープ) | メモ | 値 |
 | --- | --- | --- | --- |
-| サブスクリプションあたりの Event Hubs 名前空間の数 |サブスクリプション |- |1,000 |
+| サブスクリプションあたりの Event Hubs 名前空間の数 |サブスクリプション |- |100 |
 | 名前空間あたりのイベント ハブの数 |名前空間 |以後、新しいイベント ハブの作成要求は拒否されます。 |10 |
 | イベント ハブあたりのパーティションの数 |エンティティ |- |32 |
 | イベント ハブあたりのコンシューマー グループの数 |エンティティ |- |20 |

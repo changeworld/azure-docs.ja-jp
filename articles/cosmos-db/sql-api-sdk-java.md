@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: c2b0c52ca78f2b9c4273280aa9da16a5ef1bbc00
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 298f4d8cb62ce1d71ed8922483115606f8876d79
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003247"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648558"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -43,15 +43,15 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 
 ## <a name="release-notes"></a>リリース ノート
 
-### <a name="a-name210213"></a><a name="2.1.0"/>2.1.3
+### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 * ハッシュ V2 の PartitionKey のバグが修正されました。
 
-### <a name="a-name210212"></a><a name="2.1.0"/>2.1.2
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
 * 複合インデックスのサポートが追加されました。
 * グローバル エンドポイント マネージャーが強制的に更新されるように、バグが修正されました。
 * ダイレクト モードでの事前条件のある upsert のバグが修正されました。
 
-### <a name="a-name210211"></a><a name="2.1.0"/>2.1.1
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
 * ゲートウェイ アドレス キャッシュでのバグが修正されました。
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
@@ -221,7 +221,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| Version | リリース日 | 提供終了日 |
+| バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
 | [2.1.3](#2.1.3) |2018 年 3 月 13 日 |--- |
 | [2.1.2](#2.1.2) |2018 年 3 月 9 日 |--- |

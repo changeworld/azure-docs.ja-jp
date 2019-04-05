@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 8c1e463378cc2c1ba3fdc0bcf91f800f634cc5f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 66ee211856bb451caad7af02103aa306d76e8f97
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077124"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916276"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404 状態コードを返す Azure CDN エンドポイントのトラブルシューティング
 この記事により、404 HTTP 応答状態コードを返す Content Delivery Network (CDN) エンドポイントに関する問題のトラブルシューティングを行うことができます。
@@ -76,7 +76,7 @@ CDN プロファイルとエンドポイントを作成しましたが、コン�
 ただし、前にテストした配信元のファイルの URL は http:\//www.contoso.com:8080/file.txt です。 ホスト名セグメントの末尾の *:8080* の部分に注意してください。 この数値は、ブラウザーに対して、ポート 8080 を使用して www\.contoso.com の Web サーバーに接続するよう指示します。したがって、**[HTTP ポート]** フィールドには「*8080*」と入力する必要があります。 これらのポート設定が影響するのは、配信元から情報を取得するためにエンドポイントが使用するポートのみであることに注意してください。
 
 > [!NOTE]
-> **Azure CDN Standard from Akamai** エンドポイントでは、配信元の TCP ポート範囲全体が許可されません。  使用できない配信元ポートの一覧については、「 [Azure CDN from Akamai Allowed Origin Ports (Azure CDN from Akamai で使用できる配信元ポート)](https://msdn.microsoft.com/library/mt757337.aspx)」を参照してください。  
+> **Azure CDN Standard from Akamai** エンドポイントでは、配信元の TCP ポート範囲全体が許可されません。  使用できない配信元ポートの一覧については、「 [Azure CDN from Akamai Allowed Origin Ports (Azure CDN from Akamai で使用できる配信元ポート)](/previous-versions/azure/mt757337(v=azure.100))」を参照してください。  
 > 
 > 
 

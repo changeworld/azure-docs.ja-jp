@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 051aa6b6ca8571fe948fa30e1e4a4320bb564a52
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7ca7e653cc42323f4313ef955de40416154b4ecf
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593320"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651670"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 
@@ -83,17 +83,17 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 3. [サービス構成ファイルの CA 証明書を更新する](#update-ca-certificate-in-service-configuration-file)
 4. [クライアント証明書を発行する](#issue-client-certificates)
 5. [クライアント証明書の PFX ファイルを作成する](#create-pfx-files-for-client-certificates)
-6. [クライアント証明書をインポートする](#Import-Client-Certificate)
+6. [クライアント証明書をインポートする](#import-client-certificate)
 7. [クライアント証明書のサムプリントをコピーする](#copy-client-certificate-thumbprints)
 8. [許可されているクライアントをサービス構成ファイルに構成する](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>既存のクライアント証明書を使用する
 1. [Find CA Public Key](#find-ca-public-key)
-2. [CA 証明書をクラウド サービスにアップロードする](#Upload-CA-certificate-to-cloud-service)
-3. [サービス構成ファイルの CA 証明書を更新する](#Update-CA-Certificate-in-Service-Configuration-File)
-4. [クライアント証明書のサムプリントをコピーする](#Copy-Client-Certificate-Thumbprints)
+2. [CA 証明書をクラウド サービスにアップロードする](#upload-ca-certificate-to-cloud-service)
+3. [サービス構成ファイルの CA 証明書を更新する](#update-ca-certificate-in-service-configuration-file)
+4. [クライアント証明書のサムプリントをコピーする](#copy-client-certificate-thumbprints)
 5. [許可されているクライアントをサービス構成ファイルに構成する](#configure-allowed-clients-in-the-service-configuration-file)
-6. [クライアント証明書の失効確認を構成する](#Configure-Client-Certificate-Revocation-Check)
+6. [クライアント証明書の失効確認を構成する](#configure-client-certificate-revocation-check)
 
 ## <a name="allowed-ip-addresses"></a>許可された IP アドレス
 サービス エンドポイントへのアクセスは特定範囲の IP アドレスに制限できます。

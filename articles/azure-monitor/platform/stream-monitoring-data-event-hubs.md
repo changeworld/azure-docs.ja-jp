@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 549ec74514ff03e06ff25893d3fa865f179470e9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ab439eb77113c53ab046256dd8d448a18b63f887
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870688"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850073"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
@@ -70,10 +70,10 @@ Azure アクティビティ ログのデータを Event Hubs 名前空間に送�
 ## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Azure リソースのメトリックと診断ログ
 
 Azure リソースは、次の 2 種類の監視データを出力します。
-1. [リソース診断ログ](./../../azure-monitor/platform/diagnostic-logs-overview.md)
-2. [メトリック](../../azure-monitor/platform/data-collection.md)
+1. [リソース診断ログ](diagnostic-logs-overview.md)
+2. [メトリック](data-platform.md)
 
-どちらの種類のデータも、リソース診断設定を使用してイベント ハブに送信されます。 特定のリソースにリソース診断設定をセットアップするには、[このガイド](./../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)に従ってください。 ログの収集先の各リソースで、リソース診断設定を設定します。
+どちらの種類のデータも、リソース診断設定を使用してイベント ハブに送信されます。 特定のリソースにリソース診断設定をセットアップするには、[このガイド](diagnostic-logs-stream-event-hubs.md)に従ってください。 ログの収集先の各リソースで、リソース診断設定を設定します。
 
 > [!TIP]
 > Azure Policy を使用すると、特定のスコープ内のすべてのリソースを常に確実に診断設定でセットアップできます。それには、[ポリシー規則の DeployIfNotExists 効果を使用](../../governance/policy/concepts/definition-structure.md#policy-rule)します。

@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 4e4de6d487aaad8a0d036928fe59b47f25157bf6
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/28/2019
+ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963847"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010239"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 
@@ -200,6 +200,20 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 また、より多くのメトリックを選択してこのデータベース テーブルで並列に表示し、データベース パフォーマンスのより詳細なビューを取得することもできます。
 
 詳細については、[Azure Portal での SQL Database アラートの作成](sql-database-insights-alerts-portal.md)に関するトピックを参照してください。
+
+## <a name="customer-case-studies"></a>お客様導入事例
+
+- [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
+
+  SnelStart は、Azure SQL Database とエラスティック プールを使用して、新しい Azure SQL データベースを 1 か月あたり 1,000 台追加し、自社のビジネス サービスを急速に拡大しました。
+
+- [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
+
+  Umbraco は、Azure SQL Database とエラスティック プールを使用して、クラウド上の数千のテナント向けに迅速にサービスをプロビジョニングしてスケーリングしています。
+
+- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+
+  Daxko/CSI は、Azure SQL Database とエラスティック プールを使用して、開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化しています。
 
 ## <a name="next-steps"></a>次の手順
 

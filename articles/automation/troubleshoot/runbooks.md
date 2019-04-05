@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b34a1716d077aeead572c60d0c6b9bcad60a5b1e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 84db71f8dabfb7557b5efbc06e024c43e654b56d
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005423"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805076"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -26,7 +26,7 @@ ms.locfileid: "58005423"
 `Add-AzureAccount` または `Connect-AzureRmAccount` コマンドレットを使用するときに、次のエラーを受け取ります。
 :
 
-```
+```error
 Unknown_user_type: Unknown User Type
 ```
 
@@ -81,7 +81,7 @@ Unknown_user_type: Unknown User Type
 
 `Select-AzureSubscription` または `Select-AzureRmSubscription` コマンドレットを使用するときに、次のエラーを受け取ります。
 
-```
+```error
 The subscription named <subscription name> cannot be found.
 ```
 
@@ -119,7 +119,7 @@ The subscription named <subscription name> cannot be found.
 
 Azure のユーザー名とパスワードで Azure に対して認証するときに、次のエラーを受け取ります。
 
-```
+```error
 Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required
 ```
 
@@ -139,7 +139,7 @@ Azure クラシック デプロイ モデルのコマンドレットで証明書
 
 `-Wait` スイッチを使用して子 Runbook を呼び出し、出力ストリームにオブジェクトが含まれていると、次のエラーを受け取ります。
 
-```
+```error
 Object reference not set to an instance of an object
 ```
 
@@ -179,7 +179,7 @@ $jobResults | Get-AzureRmAutomationJobOutput | Get-AzureRmAutomationJobOutputRec
 
 ジョブ ストリームで、次のメッセージと共に Runbook のエラーが表示されます。
 
-```
+```error
 Connect-AzureRMAccount : Method 'get_SerializationSettings' in type 
 'Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient' from assembly 
 'Microsoft.Azure.Commands.ResourceManager.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35' 
@@ -205,7 +205,7 @@ Az と AzureRM のコマンドレットは同じ Runbook にインポートし�
 
 Runbook が、次の例のようなエラーで失敗します。
 
-```
+```error
 Exception: A task was canceled.
 ```
 
@@ -264,7 +264,7 @@ Start-AzureRmAutomationRunbook `
 
 Runbook が、次の例のようなエラーで失敗します。
 
-```
+```error
 The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, function, script file, or operable program.  Check the spelling of the name, or if the path was included verify that the path is correct and try again.
 ```
 
@@ -289,7 +289,7 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 
 Runbook がエラーで失敗します。
 
-```
+```error
 The job was tried three times but it failed
 ```
 
@@ -323,7 +323,7 @@ The job was tried three times but it failed
 
 Runbook がエラーで失敗します。
 
-```
+```error
 Cannot bind parameter <ParameterName>.
 
 Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to type <ParameterType>.
@@ -375,7 +375,7 @@ Runbook として実行すると失敗するスクリプトが、ローカルで
 
 Runbook ジョブがエラーで失敗します。
 
-```
+```error
 The quota for the monthly total job run time has been reached for this subscription
 ```
 
@@ -398,7 +398,7 @@ The quota for the monthly total job run time has been reached for this subscript
 
 Runbook ジョブがエラーで失敗します。
 
-```
+```error
 <cmdlet name>: The term <cmdlet name> is not recognized as the name of a cmdlet, function, script file, or operable program.
 ```
 
@@ -421,7 +421,7 @@ Runbook ジョブがエラーで失敗します。
 
 Runbook は、3 時間実行すると**停止**状態になります。 次のエラーを受け取る可能性もあります。
 
-```
+```error
 The job was evicted and subsequently reached a Stopped state. The job cannot continue running
 ```
 
@@ -469,7 +469,7 @@ Webhook が無効な場合は、Azure portal から Webhook を再度有効に�
 
 `Get-AzureRmAutomationJobOutput` コマンドレットを実行すると、次のエラー メッセージを受け取ります。
 
-```
+```error
 429: The request rate is currently too large. Please try again
 ```
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: c8b32e1d52768ea8450a2256d92d8cdb09f9fe8b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6339b49d0bc9c635457f305dad7b1a075327a1dd
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445638"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650276"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
 > [!IMPORTANT] 
@@ -130,7 +130,7 @@ VM をプロビジョニングしたときに、VM 上に自己署名証明書�
    4. 管理対象として **[ローカル コンピューター]** を選択し、**[完了]** をクリックします。
    5. **[OK]** をクリックし、**[証明書 - 個人]** ノードを展開して、**[証明書]** をクリックします。 証明書の名前は VM の DNS 名に基づいており、 **cloudapp.net**で終わります。 証明書の名前を右クリックし、 **[コピー]** をクリックします。
    6. **[信頼されたルート証明機関]** ノードを展開し、**[証明書]** を右クリックして、**[貼り付け]** をクリックします。
-   7. 検証するために、 **[信頼されたルート証明機関]** で証明書の名前をダブルクリックし、エラーがないことと、追加した証明書であることを確認します。 このトピックに用意されている HTTPS スクリプトを使用してレポート サーバーを構成する場合、スクリプトのパラメーターとして証明書の **[拇印]** の値が必要となります。 **拇印の値を取得するには**、次の手順を実行します。 「 [スクリプトを使用してレポート サーバーと HTTPS を構成する](#use-script-to-configure-the-report-server-and-HTTPS)」には、拇印を取得するための PowerShell サンプルも用意されています。
+   7. 検証するために、 **[信頼されたルート証明機関]** で証明書の名前をダブルクリックし、エラーがないことと、追加した証明書であることを確認します。 このトピックに用意されている HTTPS スクリプトを使用してレポート サーバーを構成する場合、スクリプトのパラメーターとして証明書の **[拇印]** の値が必要となります。 **拇印の値を取得するには**、次の手順を実行します。 「 [スクリプトを使用してレポート サーバーと HTTPS を構成する](#use-script-to-configure-the-report-server-and-https)」には、拇印を取得するための PowerShell サンプルも用意されています。
       
       1. 証明書の名前 (例: ssrsnativecloud.cloudapp.net) をダブルクリックします。
       2. **[詳細]** タブをクリックします。

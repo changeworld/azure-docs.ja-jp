@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: c37e2357038e4f711b015fda80a0de8c4dbd9498
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 02db9f2b8cb2ec71d23ad077b90eeacb905d2a16
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880927"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445635"
 ---
 # <a name="azure-networking"></a>Azure のネットワーク
 
@@ -34,7 +34,7 @@ Azure には、単独でまたは組み合わせて使用できるさまざま�
 - [管理性](#manageability):Azure のネットワーク リソースを監視したり管理したりします。
 - [デプロイ ツールと構成ツール](#tools):Web ベースのポータルまたはクロスプラットフォームのコマンド ライン ツールを使って、ネットワーク リソースのデプロイと構成を行います。
 
-## <a name="Connectivity"></a>Azure リソースの間の接続
+## <a name="connectivity"></a>Azure リソースの間の接続
 
 Azure リソース (Virtual Machines、Cloud Services、Virtual Machines スケール セット、Azure App Service Environment など) は、Azure Virtual Network (VNet) を介してプライベートに相互通信を行うことができます。 特定の[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json)専用に論理上、Azure クラウドを分離したものが VNet です。 各 Azure サブスクリプションと Azure [リージョン](https://azure.microsoft.com/regions)内に複数の VNet を実装できます。 VNet 同士は分離されています。 各 VNet では、次のことを実行できます。
 
@@ -150,7 +150,7 @@ Azure には、ネットワークを監視したり管理したりするため�
 Azure のネットワーク リソースのデプロイと構成は、以下のツールを使って実行できます。
 
 - **Azure portal:** ブラウザーで動作するグラフィカル ユーザー インターフェイスです。 [Azure Portal](https://portal.azure.com)を開きます。
-- **Azure PowerShell:** Windows コンピューターから Azure を管理するためのコマンド ライン ツールです。 Azure PowerShell の詳細については、[Azure PowerShell の概要](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
+- **Azure PowerShell:** Windows コンピューターから Azure を管理するためのコマンド ライン ツールです。 Azure PowerShell の詳細については、[Azure PowerShell の概要](/powershell/azure/overview?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **Azure コマンド ライン インターフェイス (CLI):** Linux、macOS、または Windows コンピューターから Azure を管理するためのコマンド ライン ツールです。 Azure CLI の詳細については、[Azure CLI の概要](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 - **Azure Resource Manager テンプレート:** Azure ソリューションのインフラストラクチャと構成を定義するファイル (JSON 形式) です。 テンプレートを使えば、ソリューションをそのライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。 テンプレート作成の詳細については、[テンプレート作成のベスト プラクティス](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。 テンプレートのデプロイには、Azure Portal、CLI、PowerShell のいずれかを使用できます。 今すぐテンプレートを使用するには、あらかじめ構成されているいずれかのテンプレートを「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=network)」ライブラリから入手してデプロイしてください。 
 

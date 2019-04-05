@@ -6,16 +6,16 @@ author: KavithaJonnakuti
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
+ms.subservice: security
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 6ca5ac013716db9712063e8efc0e2116570008a9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: be31547e8f4063a1b1fe225420fb6c06d9a1588b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455611"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840581"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>SQL Data Warehouse での Transparent Data Encryption (TDE) の概要
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "55455611"
 > 
 > 
 
-## <a name="required-permssions"></a>必要なアクセス許可
+## <a name="required-permissions"></a>必要なアクセス許可
 Transparent Data Encryption (TDE) を有効にするには、管理者か dbmanager ロールのメンバーである必要があります。
 
 ## <a name="enabling-encryption"></a>暗号化の有効化
@@ -57,7 +57,7 @@ SQL Data Warehouse の TDE を無効にするには、次の手順を実行し�
 
 <!--MSDN references-->
 [Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[sys.databases]: http://msdn.microsoft.com/library/ms178534.aspx
+[sys.databases]: https://msdn.microsoft.com/library/ms178534.aspx
 [sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
 <!--Image references-->

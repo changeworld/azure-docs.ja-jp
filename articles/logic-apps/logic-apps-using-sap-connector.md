@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 27da87c11ca35be72690965a2359ff6ff6b9f999
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 468e73c64037a76da612cba8d6c2e9507dd3ac87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391278"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887087"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
-この記事では、SAP ERP Central Component (ECC) コネクタを使用し、Logic Apps 内からオンプレミス SAP リソースにアクセスする方法を紹介します。 SAP ECC コネクタでは、Intermediate Document (IDoc)、Business Application Programming Interface (BAPI)、Remote Function Call (RFC) を介し、SAP Netweaver ベースのシステムとの間でメッセージやデータが統合されます。
+この記事では、SAP ERP Central Component (ECC) コネクタを使用し、Logic Apps 内からオンプレミス SAP リソースにアクセスする方法を紹介します。 コネクタは、オンプレミスの ECC と S/4 HANA の両方のシステムで動作します。 SAP ECC コネクタでは、Intermediate Document (IDoc)、Business Application Programming Interface (BAPI)、Remote Function Call (RFC) を介し、SAP Netweaver ベースのシステムとの間でメッセージやデータが統合されます。
 
-SAP ECC コネクタでは <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .Net Connector (NCo) ライブラリ</a>が使用され、次のような動作が行われます。
+SAP ECC コネクタでは <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .NET Connector (NCo) ライブラリ</a>が使用され、次のような動作が行われます。
 
 - **SAP に送信する**: SAP システムに tRFC で IDoc を送信したり、BAPI 関数を呼び出したりします。
 - **SAP から受信する**: SAP システムから tRFC で IDoc や BAPI 関数呼び出しを受信します。

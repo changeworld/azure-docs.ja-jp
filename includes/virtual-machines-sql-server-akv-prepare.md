@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 4ff99cab168abeb0bbeeb8b29de0ea0285c255b0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 01020a23b102c896bbeb3d8cf455afabfc164917
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457807"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505671"
 ---
 ## <a name="prepare-for-akv-integration"></a>AKV 統合の準備
 Azure Key Vault 統合を使用し、SQL Server VM を構成するには、いくつかの前提条件があります。 
@@ -29,8 +29,10 @@ Azure Key Vault 統合を使用し、SQL Server VM を構成するには、い�
 
 次のセクションでは、これらの前提条件と、後に PowerShell コマンドレットを実行するために必要な情報について説明します。
 
+[!INCLUDE [updated-for-az](./updated-for-az.md)]
+
 ### <a id="install"></a> Azure PowerShell をインストールする
-最新の Azure PowerShell SDK がインストールされていることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+最新の Azure PowerShell SDK がインストールされていることを確認します。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-az-ps)」を参照してください。
 
 ### <a id="register"></a> ご利用の Azure Active Directory にアプリケーションを登録する
 
@@ -49,7 +51,7 @@ Azure Key Vault 統合を使用し、SQL Server VM を構成するには、い�
 
 * アプリケーション ID とシークレットは、SQL Server で資格情報を作成する場合も使用されます。
 
-* この新しいクライアント ID に権限を与え、アクセス許可 (**get**、**wrapKey**、**unwrapKey**) を与える必要があります。 これは [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) コマンドレットで行われます。 詳細については、[Azure Key Vault の概要](../articles/key-vault/key-vault-overview.md)に関する記事を参照してください。
+* この新しいクライアント ID に権限を与え、アクセス許可 (**get**、**wrapKey**、**unwrapKey**) を与える必要があります。 これは [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) コマンドレットで行われます。 詳細については、[Azure Key Vault の概要](../articles/key-vault/key-vault-overview.md)に関する記事を参照してください。
 
 ### <a id="createkeyvault"></a> キー コンテナーを作成する
 Azure Key Vault を使用して VM の暗号化に使用する鍵を保存するには、Key Vault へのアクセス許可が必要です。 キー コンテナーをまだ設定していない場合、「[Azure Key Vault の概要](../articles/key-vault/key-vault-overview.md)」記事の手順で作成します。 これらの手順を完了する前に、後で SQL VM で Azure Key Vault 統合を有効にするときに必要になるいくつかの情報をこの設定中に集める必要があります。

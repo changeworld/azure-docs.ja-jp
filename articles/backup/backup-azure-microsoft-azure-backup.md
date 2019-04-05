@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: b94d6bd9cc129d80f3ece82c13df375abecafd26
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 26f25a0dcbeef0d5b7456d42caaca392c3ca6a1a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493413"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075614"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 > [!div class="op_single_selector"]
@@ -231,16 +231,16 @@ MABS は、System Center Data Protection Manager 保護エージェントを使�
 
 2. 表示ウィンドウで、保護エージェントを更新するクライアント コンピューターを選択します。
 
-  > [!NOTE]
-  > **[Agent Updates]** \(エージェントの更新プログラム) 列は、保護されるコンピューターごとに保護エージェントの更新がいつ行われるかを示します。 **[アクション]** ウィンドウでは、**[更新する]** アイコンは、保護されるコンピューターが選択されていて、更新プログラムが利用可能なときのみ表示されます。
-  >
-  >
+   > [!NOTE]
+   > **[Agent Updates]** \(エージェントの更新プログラム) 列は、保護されるコンピューターごとに保護エージェントの更新がいつ行われるかを示します。 **[アクション]** ウィンドウでは、**[更新する]** アイコンは、保護されるコンピューターが選択されていて、更新プログラムが利用可能なときのみ表示されます。
+   >
+   >
 
 3. 選択したコンピューターに更新された保護エージェントをインストールするには、**[アクション]** ウィンドウで、**[更新する]** を選択します。
 
 4. ネットワークに接続されていないクライアント コンピューターでは、コンピューターがネットワークに接続されるまで、**[エージェントの状態]** 列には **[更新保留中]** の状態が表示されます。
 
-  クライアント コンピューターがネットワークに接続された後、クライアント コンピューターの **[Agent Updates]** \(エージェントの更新プログラム) 列には、**[更新中]** の状態が表示されます。
+   クライアント コンピューターがネットワークに接続された後、クライアント コンピューターの **[Agent Updates]** \(エージェントの更新プログラム) 列には、**[更新中]** の状態が表示されます。
 
 ## <a name="move-mabs-to-a-new-server"></a>MABS を新しいサーバーに移動する
 
@@ -262,10 +262,11 @@ MABS は、System Center Data Protection Manager 保護エージェントを使�
 9. SQL から DPMDB を復元します。
 10. 新しいサーバーで、管理コマンド ラインから Microsoft Azure Backup のインストール場所と bin フォルダーに cd します。
 
-パスの例:C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\
-to Azure backup
+    パスの例:C:\windows\system32>cd "c:\Program Files\Microsoft Azure Backup\DPM\DPM\bin\" 
 
-10) DPMSYNC -SYNC を実行します。注: DPM 記憶域プールに古いディスクを移動するではなく、新しいディスクを追加している場合は、DPMSYNC -Reallocatereplica を実行します。
+11. Azure Backup に対して、DPMSYNC -SYNC を実行します
+
+    DPM 記憶域プールに古いディスクを移動するのではなく、新しいディスクを追加している場合は、DPMSYNC -Reallocatereplica を実行します
 
 ## <a name="network-connectivity"></a>ネットワーク接続
 Azure Backup Server が正常に動作するためには、Azure Backup サービスに接続されている必要があります。 マシンが Azure に接続されているかどうかを確認するには、Azure Backup Server PowerShell コンソールで ```Get-DPMCloudConnection``` コマンドレットを使用します。 コマンドレットの出力が TRUE の場合、マシンは接続されていますが、それ以外の場合は接続されていません。
@@ -306,33 +307,33 @@ MABS をアップグレードするには、次の手順を使用します。
 ### <a name="upgrade-from-mabs-v2-to-v3"></a>MABS V2 から V3 にアップグレードする
 
 > [!NOTE]
-
+> 
 > MABS V2 は MABS V3 をインストールするための前提条件ではありません。 ただし、MABS V3 にアップグレードできるのは MABS V2 からのみです。
 
 次の手順を使用して MABS をアップグレードします。
 
 1. MABS V2 を MABS V3 にアップグレードするには、OS を Windows Server 2016 または Windows Server 2019 (必要な場合) にアップグレードします。
 
-2.  サーバーをアップグレードします。 手順は[インストール](#install-and-upgrade-azure-backup-server)と同様です。 ただし、SQL の設定で、SQL インスタンスを SQL 2017 にアップグレードするか、SQL Server 2017 の独自のインスタンスを使用するかという選択肢があります。
+2. サーバーをアップグレードします。 手順は[インストール](#install-and-upgrade-azure-backup-server)と同様です。 ただし、SQL の設定で、SQL インスタンスを SQL 2017 にアップグレードするか、SQL Server 2017 の独自のインスタンスを使用するかという選択肢があります。
 
-  > [!NOTE]
+   > [!NOTE]
+   > 
+   > SQL インスタンスのアップグレード中に終了しないでください。終了すると、SQL レポート インスタンスがアンインストールされるため、MABS を再アップグレードする試みが失敗します。
 
-  > SQL インスタンスのアップグレード中に終了しないでください。終了すると、SQL レポート インスタンスがアンインストールされるため、MABS を再アップグレードする試みが失敗します。
+   注意すべき重要な点を次に示します。
 
-  注意すべき重要な点を次に示します。
-
-  > [!IMPORTANT]
-
-  >  SQL 2017 アップグレードの一環として、SQL 暗号化キーをバックアップし、レポート サービスをアンインストールします。 SQL Server のアップグレード後に、レポート サービス (14.0.6827.4788) がインストールされ、暗号化キーが復元されます。
-
- > SQL 2017 を手動で構成するときは、インストール手順の下にある「*SQL 2017 の SSRS 構成*」セクションを参照してください。
+   > [!IMPORTANT]
+   > 
+   >  SQL 2017 アップグレードの一環として、SQL 暗号化キーをバックアップし、レポート サービスをアンインストールします。 SQL Server のアップグレード後に、レポート サービス (14.0.6827.4788) がインストールされ、暗号化キーが復元されます。
+   > 
+   > SQL 2017 を手動で構成するときは、インストール手順の下にある「*SQL 2017 の SSRS 構成*」セクションを参照してください。
 
 3. 保護サーバー上の保護エージェントを更新します。
 4. バックアップを続行します。実稼働サーバーを再起動する必要はありません。
 5. これで、データの保護を開始できます。 保護しながら、Modern Backup Storage にアップグレードする場合は、バックアップを格納するボリュームを選択して、プロビジョニングされた領域の下をチェックすることもできます。 [詳細情報](backup-mabs-add-storage.md)。
 
 > [!NOTE]
-
+> 
 > MABS V1 を V2 にアップグレードする場合は、OS が Windows Server 2016 または Windows Server 2012 R2 であることを確認します。 System Center 2016 Data Protection Manager Modern Backup Storage のような新機能を利用するには、Backup Server V2 を Windows Server 2016 にインストールする必要があります。 Backup Server V2 にアップグレードまたはこれをインストールする前に、MABS に該当する[インストールの前提条件](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)を確認してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング

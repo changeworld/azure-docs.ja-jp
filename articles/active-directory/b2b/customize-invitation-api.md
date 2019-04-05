@@ -11,18 +11,19 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17b472b647dd27306ca95345e49dfeb3aee60665
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111312"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793387"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B コラボレーションの API とカスタマイズ
 
 多くのお客様から、組織に最適な方法で招待の処理をカスタマイズできるようにしてほしいという要望がありました。 API を使用すると、そのようにすることができます。 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>招待 API の機能
+
 API には次の機能が用意されています。
 
 1. "*任意の*" 電子メール アドレスで外部ユーザーを招待できます。
@@ -68,21 +69,25 @@ API には次の機能が用意されています。
 
 
 ## <a name="authorization-model"></a>承認モデル
+
 API は、以下の承認モードで実行できます。
 
 ### <a name="app--user-mode"></a>アプリ + ユーザー モード
+
 このモードでは、API を使用するユーザーは、B2B 招待を作成できるアクセス許可を付与されている必要があります。
 
 ### <a name="app-only-mode"></a>アプリのみモード
+
 アプリのみのコンテキストで招待を成功させるには、アプリに User.Invite.All スコープが必要です。
 
 詳しくは、 https://developer.microsoft.com/graph/docs/authorization/permission_scopes をご覧ください
 
 
 ## <a name="powershell"></a>PowerShell
+
 PowerShell を使用して、簡単に外部ユーザーを組織に追加および招待できます。 次のコマンドレットを使用して招待を作成します。
 
-```
+```powershell
 New-AzureADMSInvitation
 ```
 
@@ -102,7 +107,8 @@ New-AzureADMSInvitation
 
 **Filter** オプションを使用して、**UserState** で結果をフィルター処理できます。 次の例では、保留中の招待を持っているユーザーのみを表示するように結果をフィルター処理する方法を示しています。 表示するプロパティを指定するための **Format-List** オプションも示しています。 
  
-```
+
+```powershell
 Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
 ```
 
@@ -119,4 +125,3 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 - [B2B コラボレーションの招待メールの要素](invitation-email-elements.md)
 - [B2B コラボレーションの招待の利用](redemption-experience.md)
 - [招待を使用せずに B2B コラボレーション ユーザーを追加する](add-user-without-invite.md)
-

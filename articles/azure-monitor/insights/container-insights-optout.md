@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 16abcd2130e92f182dc129c2d7f5cd07ac04a766
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2493866f2926f29e673a7825dbd3c4a2d0e41808
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313533"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579531"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>コンテナー用の Azure Monitor で Azure Kubernetes Service (AKS) の監視を停止する方法
 
@@ -32,7 +32,7 @@ AKS クラスターの監視を有効にした後、監視する必要がなく�
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
 ```
 
-クラスターの監視を再度有効にする方法については、「[Azure CLI を使用して監視を有効にする](container-insights-onboard.md#enable-monitoring-using-azure-cli)」をご覧ください。
+クラスターの監視を再度有効にする方法については、「[Azure CLI を使用して監視を有効にする](container-insights-onboard.md#enable-using-azure-cli)」をご覧ください。
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 リソース グループ内のソリューション リソースの一貫した反復的な削除をサポートするため、2 つの Azure Resource Manager テンプレートが提供されています。 1 つは監視を停止する構成を指定する JSON テンプレートであり、もう一方には、クラスターがデプロイされている AKS クラスター リソース ID とリソース グループを指定するために構成するパラメーター値が含まれています。 
