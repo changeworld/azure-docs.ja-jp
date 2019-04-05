@@ -469,6 +469,9 @@ items:
       href: how-to-create-container.md
     - name: コンテナーの照会
       href: how-to-query-container.md
+    - name: データのモデリングとパーティション分割 - 実際の例
+      displayName: model, partition, example
+      href: how-to-model-partition-example.md
     - name: Time to Live の構成
       displayName: delete, delete data, ttl
       href: how-to-time-to-live.md
@@ -659,9 +662,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 5400c02829ce14da6226fb6ce85c476b3ed96edf
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 2c9b87d1cdecb70a581086d04eba55e30d9ad78a
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886745"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917585"

@@ -7,16 +7,28 @@ items:
       href: overview.md
     - name: ワークロード
       href: partner-workloads.md
+  - name: 概念
+    items:
+    - name: Compute
+      href: concepts/mainframe-compute-azure.md
+    - name: Storage
+      href: concepts/mainframe-storage-azure.md
   - name: Micro Focus
     items:
     - name: 作業開始
       href: microfocus/get-started.md
-    - name: Micro Focus Enterprise Server をインストールする
-      href: microfocus/set-up-micro-focus-on-azure.md
-    - name: デモ
+    - name: Enterprise Server をインストールする
+      href: microfocus/set-up-micro-focus-azure.md
+    - name: CICS BankDemo を実行する
       href: microfocus/demo.md
+    - name: コンテナー内の Enterprise Server
+      href: microfocus/run-enterprise-server-container.md
   - name: TmaxSoft OpenFrame
-    href: https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/
+    items:
+    - name: 作業開始
+      href: tmaxsoft/get-started.md
+    - name: OpenFrame のインストール
+      href: tmaxsoft/install-openframe-azure.md
   - name: IBM
     items:
     - name: 作業開始
@@ -29,9 +41,15 @@ items:
       href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
     - name: IBM DB2 pureScale のデプロイ
       href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
-ms.openlocfilehash: e89b8301a325ab25d78598cfd3e58e6ac74198a6
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+  - name: リソース
+    items:
+    - name: ホワイト ペーパー
+      href: mainframe-white-papers.md
+    - name: Azure のロードマップ
+      href: https://azure.microsoft.com/updates/
+ms.openlocfilehash: c0cec35997d398045f9c34904c8ee07755724572
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342549"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895226"

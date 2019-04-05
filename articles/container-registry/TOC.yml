@@ -7,13 +7,15 @@ items:
     href: container-registry-intro.md
 - name: クイック スタート
   items:
-  - name: Container Registry - CLI
+  - name: コンテナー レジストリの作成 - CLI
     href: container-registry-get-started-azure-cli.md
-  - name: Container Registry - ポータル
+  - name: コンテナー レジストリの作成 - ポータル
     href: container-registry-get-started-portal.md
-  - name: Container Registry - PowerShell
+  - name: コンテナー レジストリの作成 - PowerShell
     href: container-registry-get-started-powershell.md
-  - name: Event Grid を使用したイベント - CLI
+  - name: イメージのビルドと実行 - CLI
+    href: container-registry-quickstart-task-cli.md
+  - name: Event Grid へのイベントの送信 - CLI
     href: container-registry-event-grid-quickstart.md
   expanded: true
 - name: チュートリアル
@@ -89,10 +91,8 @@ items:
     items:
     - name: ACR タスク
       href: container-registry-tasks-overview.md
-    - name: 複数ステップのタスク (プレビュー)
+    - name: 複数ステップのタスク
       href: container-registry-tasks-multi-step.md
-    - name: 複数ステップのタスクの参照 (プレビュー)
-      href: container-registry-tasks-reference-yaml.md
   - name: レジストリと他の Azure サービス
     items:
     - name: Azure Container Instances
@@ -119,6 +119,8 @@ items:
     href: /javascript/api/overview/azure/container-registry
   - name: Resource Manager テンプレート
     href: /azure/templates/microsoft.containerregistry/registries
+  - name: 'ACR タスク: YAML'
+    href: container-registry-tasks-reference-yaml.md
   - name: webhook スキーマ
     href: container-registry-webhook-reference.md
   - name: Event Grid スキーマ
@@ -140,9 +142,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-container-registry
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: 3b5c8cc63db967fd582d15765f2fd1ca1c7bbb3e
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 987b70f527afe9b9d09eeef70c7fa706c3e58932
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847669"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917874"

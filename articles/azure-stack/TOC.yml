@@ -4,21 +4,21 @@ items:
 - name: 概要
   items:
   - name: Azure Stack とは
-    href: azure-stack-poc.md
-  - name: 主要機能および概念
-    href: azure-stack-key-features.md
+    href: azure-stack-overview.md
+  - name: Azure エコシステムの比較
+    href: compare-azure-azure-stack.md
   - name: リリース ノート
     items:
     - name: 最新の更新
       href: azure-stack-servicing-policy.md
+    - name: 1903 更新プログラム
+      href: azure-stack-update-1903.md
     - name: 1902 更新プログラム
       href: azure-stack-update-1902.md
     - name: 1901 更新プログラム
       href: azure-stack-update-1901.md
     - name: 1811 更新プログラム
       href: azure-stack-update-1811.md
-    - name: 1809 更新プログラム
-      href: azure-stack-update-1809.md
 - name: クイック スタート
   items:
   - name: 管理ポータルの使用
@@ -115,12 +115,12 @@ items:
         href: azure-stack-integrate-security.md
       - name: デバイスの監査
         href: azure-stack-integrate-physical-device-auditing.md
-  - name: 管理の基本
-    href: azure-stack-manage-basics.md
 - name: ハウツー ガイド
   items:
   - name: Azure Stack の管理
     items:
+    - name: 管理の基本
+      href: azure-stack-manage-basics.md
     - name: テレメトリの収集の構成
       href: azure-stack-telemetry.md
     - name: Azure Stack の登録
@@ -233,6 +233,8 @@ items:
       href: azure-stack-redhat-create-upload-vhd.md
     - name: Kubernetes クラスターの提供
       href: azure-stack-solution-template-kubernetes-cluster-add.md
+    - name: サイト間 VPN 接続の作成
+      href: azure-stack-create-vpn-connection-one-node.md
   - name: サービスの提供
     href: azure-stack-offer-services-overview.md
   - name: SQL を PaaS として提供する
@@ -403,9 +405,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: f2ea6b4ae7ff49d3263805460a30e5d407f7c0e6
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: a0c5682428d740bd109411333f13849c0e74d88e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338362"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906312"

@@ -105,6 +105,8 @@ items:
         href: service-bus-sas.md
     - name: トピック フィルターとアクション
       href: topic-filters.md
+    - name: Standard 名前空間から Premium 名前空間への移行
+      href: service-bus-migrate-standard-premium.md
     - name: パーティション分割されたキューとトピック
       href: service-bus-partitioning.md
     - name: メッセージ セッション
@@ -121,6 +123,8 @@ items:
         href: service-bus-amqp-protocol-guide.md
       - name: AMQP 要求 - 応答ベースの操作
         href: service-bus-amqp-request-response.md
+      - name: AMQP エラー
+        href: service-bus-amqp-troubleshoot.md
     - name: 高度な機能
       items:
       - name: ファイアウォールの使用
@@ -234,9 +238,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azureservicebus
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: 09a7759c89411d53b374552a969f7aefdb89ee98
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 464e19bc796e41045d0c8422718da39f2aa66a9b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848099"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906278"

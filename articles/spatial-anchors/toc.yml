@@ -29,6 +29,8 @@ items:
     href: tutorials/tutorial-share-anchors-across-devices.md
   - name: Azure Cosmos DB を使用した Unity での共有
     href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+  - name: 新しい Android アプリの開始
+    href: tutorials/tutorial-new-android-app.md
 - name: 操作方法
   items:
   - name: アンカーの作成と配置
@@ -80,9 +82,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-spatial-anchors
   - name: サポート
     href: spatial-anchor-support.md
-ms.openlocfilehash: 9723bcbe3605907ddd1c40f0c680dc931e6e96b1
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 69465b1f2184476f8c18738474a6585fdd681bb2
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629794"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915851"
