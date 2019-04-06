@@ -89,7 +89,7 @@ HTTP プロキシを使用する場合は、SDK `ConnectionPolicy` で構成さ�
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
-[[要求率が大きすぎる]]: #request-rate-too-large
+[要求率が大きすぎる]: #request-rate-too-large
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) ポート不足]: #snat
 [Production check list]: #production-check-list
